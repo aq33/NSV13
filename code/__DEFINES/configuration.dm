@@ -44,3 +44,5 @@
 #define MEDIEVAL_SPEECH_FILE "medieval_speech.json"
 // NSV13 - starmap file
 #define STARMAP_FILE "starmap/starmap.json"
+
+#define HERETIC_INFLUENCE_FILE "heretic_influences.json"
