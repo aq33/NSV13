@@ -4106,6 +4106,5 @@
 #endif
 
 // AQUILA
-#include "aquila\code\modules\cargo\packs.dm"
-#include "aquila\code\modules\uplink\uplink_items.dm"
+#include "aquila.dm"
 // END_AQUILA
