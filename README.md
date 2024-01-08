@@ -144,9 +144,7 @@ Please see [CONTRIBUTING.md](.github/CONTRIBUTING.md)
 
 ## Modularyzacja
 
-Od rebase teraz stosujemy nową metode co do wprowadzania zmian, polega ona na dodawaniu nowego folderu w modular_aquila. W tym folderze jest EXAMPLE_MODULE a w nim plik readme.md. ![modularyzacja guide 1](https://user-images.githubusercontent.com/60329232/113522111-5fd38080-959e-11eb-93df-6adc94a06947.png)
-Po zrobieniu folderu głównego twoich zmian dodaj foldery osobne dla code/icons/sounds, czyli jak tylko coś od kodu to tylko code przykładowo. Jeżeli twoja zmiana nie jest tak spora by robić osobne pliki to robisz tak jak na zdjęciu poniżej;![modularyzacja guide 2](https://user-images.githubusercontent.com/60329232/113522310-af667c00-959f-11eb-9eb6-0c28c98d95ef.png) lub; ![modularyzacja guide 3](https://user-images.githubusercontent.com/60329232/113522328-d624b280-959f-11eb-96d8-4c36f7863fda.png) Sprite wymagają nowych osobnych plików, jeżeli dany plik dmi jest używany przez wiele innych objektów i jest łatwiej zamienić jedną ścieżke niż dodać mase nowych to dodaj takie coś przy zmienionych sprite;
-![modularyzacja guide 5](https://user-images.githubusercontent.com/60329232/113522574-edfd3600-95a1-11eb-8dfd-6d44e7e8ab8e.png)
+Wszystkie porty/zmiany które nie znajdują sie na NSV powinny być w folderze aquila z taką samą strukturą jakby było normalnie (aquila/code/game... etc.)
 
 ## Twój PR musi się stosować do zasad modularyzacji jak chcesz by twoja zmiana nie została odrzucona odrazu.
 
