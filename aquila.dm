@@ -1,2 +1,12 @@
 #include "aquila\code\modules\cargo\packs.dm"
 #include "aquila\code\modules\uplink\uplink_items.dm"
+
+#include "aquila\code\game\objects\effects\spawners\lootdrop.dm"
+#include "aquila\code\game\objects\effects\spawners\xenospawner.dm"
+#include "aquila\code\modules\mob\living\simple_animal\friendly\cockroach.dm"
+#include "aquila\code\modules\mob\living\simple_animal\friendly\mouse.dm"
+#include "aquila\code\modules\mob\living\simple_animal\friendly\snake.dm"
+#include "aquila\code\modules\mob\living\simple_animal\constructs.dm"
+#include "aquila\code\modules\mob\living\simple_animal\simple_animal.dm"
+#include "aquila\code\modules\research\designs\machine_designs.dm"
+#include "aquila\code\modules\research\techweb\all_nodes.dm"
