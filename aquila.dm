@@ -5,3 +5,5 @@
 #include "aquila\code\modules\clothing\spacesuits\hardsuit.dm"
 #include "aquila\code\modules\clothing\mob\living\carbon\human\species_types\IPC.dm"
 #include "aquila\code\modules\uplink\uplink_items.dm"
+#include "aquila\code\controllers\subsystem\vote.dm"
+#include "aquila\code\modules\client\preferences.dm"
