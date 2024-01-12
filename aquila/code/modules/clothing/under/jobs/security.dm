@@ -11,6 +11,6 @@
 
 /obj/item/clothing/under/rank/security/officer/germ/germalt
 	name = "german officer uniform"
-	desc = "Bestraft die Juden fur ihre Verbrechen."
+	desc = "Bestraft die Verbundeten fur ihre Verbrechen."
 	icon_state = "germ_alt"
 	item_state = "germ_alt"
