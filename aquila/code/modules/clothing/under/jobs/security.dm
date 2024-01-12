@@ -1,7 +1,7 @@
 //1945 hugo boss collection
 /obj/item/clothing/under/rank/security/officer/germ
 	name = "german soldier uniform"
-	desc = "Bestraft die Verbundeten fur ihren Widerstand."
+	desc = "Bestraft die Reddit-Nutzer fur ihren Widerstand."
 	icon_state = "germ"
 	item_state = "germ"
 	icon = 'aquila/icons/obj/clothing/uniforms.dmi'
@@ -11,6 +11,6 @@
 
 /obj/item/clothing/under/rank/security/officer/germ/germalt
 	name = "german officer uniform"
-	desc = "Bestraft die Verbundeten fur ihre Verbrechen."
+	desc = "Bestraft die Reddit-Nutzer fur ihre Verbrechen."
 	icon_state = "germ_alt"
 	item_state = "germ_alt"
