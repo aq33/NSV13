@@ -6,7 +6,13 @@
 		return
 	icon = sign.icon_file
 	..()
-
+/*
+// DODAJESZ NOWE SZYLDY BAROWE???
+// prosze umiesc ikony w aquila/icons/obj/barsigns.dmi
+// nie zapomnij dodać
+	icon_file = 'aquila/icons/obj/barsigns.dmi'
+// do podtypu /datum/barsign ktory robisz
+*/
 /datum/barsign/podpapugami
 	name = "Pod Papugami"
 	icon = "podpapugami"
