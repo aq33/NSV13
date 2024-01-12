@@ -35,7 +35,9 @@
 					/obj/item/clothing/under/rank/security/officer/mallcop = 3,
 					/obj/item/clothing/neck/tie/red = 6,
 					/obj/item/clothing/neck/tie/black = 6,)
-	contraband = list(/obj/item/clothing/suit/hooded/wintercoat/security/old = 3)
+	contraband = list(/obj/item/clothing/suit/hooded/wintercoat/security/old = 3, //AQUILA EDIT start
+					/obj/item/clothing/under/rank/security/officer/germ = 3,
+					/obj/item/clothing/under/rank/security/officer/germ/germalt = 3) // AQUILA EDIT END
 	premium = list(/obj/item/clothing/under/rank/security/officer/formal = 3,
 					/obj/item/clothing/suit/security/officer = 3,
 					/obj/item/clothing/head/beret/sec/navyofficer = 3)
