@@ -3,7 +3,7 @@
 #define NANITE_SHOCK_IMMUNE 1
 #define NANITE_EMP_IMMUNE 2
 
-#define NANITE_PROGRAM_LIMIT 20
+#define NANITE_PROGRAM_LIMIT 40 //AQUILA EDIT
 
 
 #define NANITE_BASE_RESEARCH 3.5
@@ -14,7 +14,7 @@
 
 ///Nanite Protocol types
 #define NANITE_PROTOCOL_REPLICATION "nanite_replication"
-#define NANITE_PROTOCOL_STORAGE "nanite_storage"
+//#define NANITE_PROTOCOL_STORAGE "nanite_storage" AQUILA EDIT
 
 ///Nanite extra settings types: used to help uis know what type an extra setting is
 #define NESTYPE_TEXT "text"
@@ -54,3 +54,12 @@
 #define NL_OR "OR"
 #define NL_NOR "NOR"
 #define NL_NAND "NAND"
+
+//AQUILA EDIT
+#define NES_HOST_AGGRESSION "Host Aggression"
+#define NES_NANO_RECEIVE "Receive Messages"
+#define NES_NANO_SEND "Send Messages"
+
+//Nanite excess thresholds
+#define NANITE_EXCESS_MINOR 50
+#define NANITE_EXCESS_VOMIT 150 //AQUILA EDIT END

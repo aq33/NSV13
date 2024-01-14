@@ -163,7 +163,7 @@
 	name = "Mind Control"
 	desc = "The nanites imprint an absolute directive onto the host's brain for one minute when triggered."
 	trigger_cost = 30
-	trigger_cooldown = 1800
+	trigger_cooldown = 300 //AQUILA EDIT
 	rogue_types = list(/datum/nanite_program/brain_decay, /datum/nanite_program/brain_misfire)
 
 /datum/nanite_program/comm/mind_control/register_extra_settings()

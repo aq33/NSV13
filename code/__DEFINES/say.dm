@@ -42,7 +42,7 @@
 #define MODE_KEY_VOCALCORDS "x"
 
 //#define MODE_SING "%" //NSV13 - DISABLED - RADIO EMOTES AND STUFF
-//NSV13 ALSO START
+#define MODE_NANO "nanolink" // Aquila Edit
 #define MODE_SING "sing"
 #define MODE_CUSTOM_SAY_EMOTE "custom_say"
 #define MODE_CUSTOM_SAY_ERASE_INPUT "erase_input"

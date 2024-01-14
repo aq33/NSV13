@@ -5,7 +5,7 @@
 	desc = "The nanites cause rapid narcolepsy when triggered."
 	can_trigger = TRUE
 	trigger_cost = 15
-	trigger_cooldown = 1200
+	trigger_cooldown = 300 //AQUILA EDIT
 	rogue_types = list(/datum/nanite_program/brain_misfire, /datum/nanite_program/brain_decay)
 
 /datum/nanite_program/sleepy/on_trigger(comm_message)

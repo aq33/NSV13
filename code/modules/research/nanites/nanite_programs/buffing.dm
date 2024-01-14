@@ -23,7 +23,7 @@
 	desc = "The nanites cause a burst of adrenaline when triggered, allowing the user to push their body past its normal limits."
 	can_trigger = TRUE
 	trigger_cost = 20
-	trigger_cooldown = 1200
+	trigger_cooldown = 600 //AQUILA EDIT
 	rogue_types = list(/datum/nanite_program/toxic, /datum/nanite_program/nerve_decay)
 
 /datum/nanite_program/adrenaline/on_trigger()
@@ -36,7 +36,7 @@
 /datum/nanite_program/hardening
 	name = "Dermal Hardening"
 	desc = "The nanites form a mesh under the host's skin, protecting them from melee and bullet impacts."
-	use_rate = 0.5
+	use_rate = 1 //AQUILA EDIT original value was 0,5
 	rogue_types = list(/datum/nanite_program/skin_decay)
 
 //TODO on_hit effect that turns skin grey for a moment
@@ -58,7 +58,7 @@
 /datum/nanite_program/refractive
 	name = "Dermal Refractive Surface"
 	desc = "The nanites form a membrane above the host's skin, reducing the effect of laser and energy impacts."
-	use_rate = 0.50
+	use_rate = 1 //AQUILA EDIT original value was 0,50
 	rogue_types = list(/datum/nanite_program/skin_decay)
 
 /datum/nanite_program/refractive/enable_passive_effect()
@@ -130,7 +130,7 @@
 	desc = "The nanites synthesize amphetamine when triggered, which temporarily increases the host's running speed."
 	can_trigger = TRUE
 	trigger_cost = 10
-	trigger_cooldown = 1200
+	trigger_cooldown = 600 //AQUILA EDIT
 	rogue_types = list(/datum/nanite_program/toxic, /datum/nanite_program/nerve_decay)
 
 /datum/nanite_program/haste/on_trigger()
