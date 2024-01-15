@@ -1,4 +1,5 @@
 #include "aquila\code\controllers\subsystem\vote.dm"
+#include "aquila\code\game\machinery\newscaster.dm"
 #include "aquila\code\game\objects\effects\contraband.dm"
 #include "aquila\code\game\objects\structures\barsigns.dm"
 #include "aquila\code\modules\cargo\packs.dm"
