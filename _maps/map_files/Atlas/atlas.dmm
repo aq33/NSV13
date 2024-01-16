@@ -2071,9 +2071,8 @@
 /turf/open/floor/carpet/red,
 /area/nsv/weapons)
 "gE" = (
-/obj/structure/closet/crate,
-/obj/item/stack/ore/iron,
 /obj/effect/turf_decal/tile/ship/half/neutral,
+/obj/structure/ore_box,
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck2/primary)
 "gF" = (
@@ -4215,6 +4214,9 @@
 /area/nsv/weapons)
 "ng" = (
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/sign/departments/minsky/supply/mining{
+	pixel_x = -32
+	},
 /turf/open/floor/plasteel/techmaint,
 /area/hallway/nsv/deck2/primary)
 "nh" = (
@@ -5205,6 +5207,10 @@
 /obj/machinery/camera/autoname,
 /turf/open/floor/monotile/steel,
 /area/nsv/weapons)
+"pQ" = (
+/obj/structure/marker_beacon,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "pS" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/plating,
@@ -9224,6 +9230,11 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
+"Ds" = (
+/obj/structure/closet/crate,
+/obj/item/stack/ore/iron,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "Dt" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -14189,10 +14200,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/carpet/red,
 /area/security/brig)
-"Ts" = (
-/obj/structure/marker_beacon,
-/turf/open/floor/plating/airless,
-/area/space/nearstation)
 "Tt" = (
 /obj/machinery/door/airlock/ship/maintenance/defaultaccess{
 	name = "EVA";
@@ -37147,7 +37154,7 @@ jZ
 ms
 jZ
 Hl
-Hl
+Ds
 xi
 xi
 an
@@ -37405,7 +37412,7 @@ jZ
 jZ
 jZ
 Ei
-Ts
+pQ
 xi
 an
 Nh

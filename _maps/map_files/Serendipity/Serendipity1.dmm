@@ -4981,6 +4981,15 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/apothecary)
+"qx" = (
+/obj/machinery/door/firedoor/border_only/directional/south,
+/obj/machinery/door/firedoor/border_only/directional/north,
+/obj/effect/landmark/zebra_interlock_point,
+/obj/structure/sign/departments/minsky/supply/mining{
+	pixel_x = 32
+	},
+/turf/open/floor/plasteel/techmaint,
+/area/hallway/secondary/exit)
 "qz" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -9130,6 +9139,15 @@
 /obj/machinery/light/floor,
 /turf/open/floor/plating,
 /area/bridge/cic)
+"DW" = (
+/obj/structure/hull_plate,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/closet/crate,
+/obj/item/stack/ore/iron,
+/turf/open/floor/engine/airless/light,
+/area/space/nearstation)
 "DX" = (
 /obj/structure/cable{
 	icon_state = "4-10"
@@ -15484,6 +15502,14 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /turf/open/floor/plating,
 /area/maintenance/department/medical)
+"Yn" = (
+/obj/structure/hull_plate,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/ore_box,
+/turf/open/floor/engine/airless/light,
+/area/space/nearstation)
 "Yo" = (
 /obj/machinery/computer/iff_console,
 /obj/machinery/door/window/brigdoor/southright{
@@ -43382,7 +43408,7 @@ Ct
 KY
 tq
 tq
-um
+Yn
 Te
 Te
 Te
@@ -43639,7 +43665,7 @@ iu
 iu
 Jr
 tq
-um
+DW
 Te
 Te
 Te
@@ -44133,7 +44159,7 @@ cF
 xH
 ae
 Qw
-FB
+qx
 gs
 Oa
 WD

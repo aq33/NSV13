@@ -248,6 +248,10 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 5
 	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 1
 	},
@@ -828,6 +832,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plating,
 /area/engine/engineering)
 "da" = (
@@ -1102,6 +1109,9 @@
 /obj/machinery/suit_storage_unit/standard_unit{
 	helmet_type = /obj/item/clothing/head/helmet/space/fragile;
 	suit_type = /obj/item/clothing/suit/space/fragile
+	},
+/obj/structure/sign/departments/minsky/supply/mining{
+	pixel_x = -32
 	},
 /turf/open/floor/plasteel/tech/grid,
 /area/engine/engineering)
@@ -1852,6 +1862,10 @@
 	},
 /turf/open/floor/carpet/orange,
 /area/nsv/crew_quarters/heads/maa)
+"gO" = (
+/obj/effect/landmark/asteroid_spawn,
+/turf/open/space/basic,
+/area/space/nearstation)
 "gP" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -1879,14 +1893,6 @@
 /obj/item/radio/intercom/directional/west,
 /turf/open/floor/plasteel/white,
 /area/science/server)
-"gV" = (
-/obj/machinery/computer/ship/mineral_magnet{
-	density = 0;
-	req_access = null;
-	pixel_x = 32
-	},
-/turf/open/floor/plating/airless,
-/area/space/nearstation)
 "gW" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1936,6 +1942,11 @@
 "ha" = (
 /turf/closed/wall/r_wall,
 /area/tcommsat/computer)
+"hb" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/marker_beacon,
+/turf/open/space/basic,
+/area/space/nearstation)
 "hc" = (
 /turf/open/floor/mech_bay_recharge_floor,
 /area/science/robotics)
@@ -2189,9 +2200,6 @@
 /obj/effect/landmark/start/assistant,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit)
-"hT" = (
-/turf/open/floor/plasteel/dark/corner,
-/area/engine/engineering)
 "hU" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/item/radio/intercom/directional/east,
@@ -2488,15 +2496,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/robotics)
-"iS" = (
-/obj/machinery/door/airlock/ship/external/glass{
-	name = "Engineering External airlock"
-	},
-/obj/machinery/atmospherics/pipe/layer_manifold{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/engine/engineering)
 "iT" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -3680,6 +3679,9 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 1
@@ -4871,6 +4873,19 @@
 /mob/living/simple_animal/bot/medbot,
 /turf/open/floor/plasteel/white,
 /area/medical/sleeper)
+"sa" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/techmaint,
+/area/engine/engineering)
 "sc" = (
 /obj/structure/mirror{
 	pixel_y = 30
@@ -6309,6 +6324,17 @@
 	},
 /turf/open/floor/plating,
 /area/hydroponics)
+"wQ" = (
+/obj/machinery/computer/ship/mineral_magnet{
+	density = 0;
+	req_access = null;
+	pixel_x = 32
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "wR" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -6948,6 +6974,10 @@
 /obj/effect/landmark/start/bridge,
 /turf/open/floor/plasteel/dark,
 /area/bridge/cic)
+"zc" = (
+/obj/effect/spawner/structure/window/reinforced/shutter,
+/turf/open/floor/plating,
+/area/engine/engineering)
 "zd" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
@@ -7161,6 +7191,12 @@
 /obj/machinery/door/firedoor/border_only/directional/east,
 /turf/open/floor/plasteel,
 /area/security/brig)
+"zD" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/engine/atmos)
 "zE" = (
 /obj/machinery/light_switch/east,
 /obj/structure/disposalpipe/trunk{
@@ -7687,10 +7723,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/storage)
-"Bj" = (
-/obj/machinery/atmospherics/pipe/simple/dark/visible/layer4,
-/turf/closed/wall/r_wall,
-/area/engine/atmos)
 "Bk" = (
 /obj/machinery/seed_extractor,
 /obj/effect/turf_decal/tile/ship/full/green,
@@ -7875,6 +7907,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 1
 	},
@@ -7991,10 +8026,6 @@
 /obj/effect/landmark/start/scientist,
 /turf/open/floor/plasteel,
 /area/science/lab)
-"Cp" = (
-/obj/effect/spawner/structure/window/reinforced/shutter,
-/turf/open/floor/plating,
-/area/engine/engineering)
 "Cq" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
@@ -8404,6 +8435,13 @@
 /obj/effect/landmark/start/head_of_personnel,
 /turf/open/floor/plasteel/dark,
 /area/bridge/cic)
+"DH" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "DJ" = (
 /turf/open/floor/plasteel,
 /area/crew_quarters/cryopods)
@@ -8666,6 +8704,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 4
 	},
@@ -8821,7 +8862,6 @@
 /obj/item/clothing/glasses/meson,
 /obj/item/mining_scanner,
 /obj/item/clothing/ears/earmuffs,
-/obj/machinery/light,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -10951,6 +10991,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plating,
 /area/engine/engineering)
 "Mk" = (
@@ -10994,13 +11037,6 @@
 /obj/structure/extinguisher_cabinet/east,
 /turf/open/floor/wood,
 /area/lawoffice)
-"Mv" = (
-/obj/machinery/camera/autoname{
-	dir = 1
-	},
-/obj/structure/closet/emcloset/anchored,
-/turf/open/floor/plating,
-/area/engine/engineering)
 "Mx" = (
 /obj/machinery/vending/hydronutrients,
 /obj/effect/turf_decal/tile/ship/full/green,
@@ -11341,10 +11377,8 @@
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "Nz" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer4{
-	dir = 1
-	},
-/turf/open/floor/plating/airless,
+/obj/machinery/atmospherics/pipe/simple/dark/visible/layer4,
+/turf/closed/wall/r_wall,
 /area/engine/atmos)
 "NB" = (
 /obj/effect/spawner/structure/window/reinforced/shutter,
@@ -12413,6 +12447,11 @@
 /obj/effect/turf_decal/tile/ship/orange{
 	dir = 1
 	},
+/obj/machinery/computer/ship/mineral_magnet{
+	density = 0;
+	req_access = null;
+	pixel_x = 32
+	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 8
 	},
@@ -12643,6 +12682,10 @@
 	dir = 4
 	},
 /area/chapel/main)
+"RF" = (
+/obj/structure/ore_box,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "RG" = (
 /turf/open/floor/plasteel/dark,
 /area/engine/atmos)
@@ -12858,6 +12901,13 @@
 /obj/machinery/door/firedoor/window,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
+"SD" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "SE" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -12952,6 +13002,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/techmaint,
 /area/engine/engineering)
@@ -13655,9 +13708,12 @@
 /turf/open/floor/plasteel/dark,
 /area/hallway/secondary/entry)
 "Vk" = (
-/obj/structure/closet/crate,
-/turf/open/floor/plating/airless,
-/area/space/nearstation)
+/obj/machinery/camera/autoname{
+	dir = 1
+	},
+/obj/structure/closet/emcloset/anchored,
+/turf/open/floor/plating,
+/area/engine/engineering)
 "Vl" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
@@ -13937,11 +13993,8 @@
 /turf/open/floor/wood,
 /area/crew_quarters/dorms)
 "VY" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/open/space/basic,
-/area/space/nearstation)
+/turf/open/floor/plasteel/dark/corner,
+/area/engine/engineering)
 "VZ" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -14126,6 +14179,18 @@
 	dir = 1
 	},
 /area/hallway/primary/aft)
+"WG" = (
+/obj/machinery/door/airlock/ship/external/glass{
+	name = "Engineering External airlock"
+	},
+/obj/machinery/atmospherics/pipe/layer_manifold{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/engine/engineering)
 "WH" = (
 /obj/structure/ladder,
 /obj/machinery/light_switch/south,
@@ -14231,8 +14296,9 @@
 /turf/open/floor/plating,
 /area/hydroponics)
 "WX" = (
-/obj/effect/landmark/asteroid_spawn,
-/turf/open/space/basic,
+/obj/structure/closet/crate,
+/obj/item/stack/ore/iron,
+/turf/open/floor/plating/airless,
 /area/space/nearstation)
 "WY" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
@@ -14667,8 +14733,9 @@
 /turf/open/floor/plasteel,
 /area/security/courtroom)
 "YL" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/marker_beacon,
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/open/space/basic,
 /area/space/nearstation)
 "YM" = (
@@ -14740,6 +14807,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 10
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering)
@@ -20748,7 +20818,7 @@ aJ
 aJ
 aJ
 aJ
-YL
+hb
 Ub
 Ub
 Ub
@@ -20789,7 +20859,7 @@ Ub
 Ub
 Ub
 Ub
-YL
+hb
 aJ
 aJ
 aJ
@@ -21045,7 +21115,7 @@ gb
 gb
 gb
 gb
-WX
+gO
 Ub
 aJ
 aJ
@@ -31285,7 +31355,7 @@ aJ
 aJ
 aJ
 aJ
-YL
+hb
 Ub
 Ub
 Ub
@@ -31326,7 +31396,7 @@ Ub
 Ub
 Ub
 Ub
-YL
+hb
 aJ
 aJ
 aJ
@@ -31817,7 +31887,7 @@ aJ
 aJ
 oe
 oe
-Vk
+WX
 fO
 fO
 Ub
@@ -32074,10 +32144,10 @@ aJ
 aJ
 aJ
 oe
-Vk
-gV
-Ub
-Ub
+RF
+wQ
+SD
+DH
 Ub
 oe
 oe
@@ -32331,11 +32401,11 @@ aJ
 aJ
 aJ
 aJ
-VY
+YL
 Dx
-Cp
-iS
-Cp
+zc
+WG
+zc
 Dx
 oe
 aJ
@@ -32592,7 +32662,7 @@ oe
 Dx
 Ee
 Mj
-Mv
+Vk
 Dx
 oe
 aJ
@@ -33362,7 +33432,7 @@ fO
 fO
 Dx
 Wp
-SQ
+sa
 Ck
 Dx
 fO
@@ -33618,7 +33688,7 @@ Bw
 Bw
 Bw
 Dx
-hT
+VY
 EE
 OQ
 Dx
@@ -36197,12 +36267,12 @@ Sv
 Sv
 Kz
 Ak
-Bj
-Bj
-Bj
-Bj
-Bj
 Nz
+Nz
+Nz
+Nz
+Nz
+zD
 oe
 aJ
 aJ
