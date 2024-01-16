@@ -859,7 +859,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 		alert = TRUE
 		update_icon()
 		addtimer(CALLBACK(src,PROC_REF(remove_alert)),alert_delay,TIMER_UNIQUE|TIMER_OVERRIDE)
-		playsound(loc, 'aquila/sound/misc/teleexpres_intro_2012.ogg', 50, FALSE, 1) // AQ EDIT
+		playsound(loc, 'aquila/sound/misc/ciu.ogg', 70, FALSE, 1) // AQ EDIT
 	else
 		say("UWAGA! OSZOBA POSZUKIWANA!") // AQ EDIT tłumaczenie
 		playsound(loc, 'aquila/sound/misc/rdr2_low_honor.ogg', 75, 1) // AQ EDIT
