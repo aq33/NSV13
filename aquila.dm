@@ -7,3 +7,6 @@
 #include "aquila\code\modules\clothing\spacesuits\hardsuit.dm"
 #include "aquila\code\modules\mob\living\carbon\human\species_types\IPC.dm"
 #include "aquila\code\modules\uplink\uplink_items.dm"
+#include "aquila\code\controllers\subsystem\jukeboxes.dm"
+#include "aquila\code\datum\wires\wires_jukebox.dm"
+#include "aquila\code\game\machinery\jukebox.dm"

@@ -13,6 +13,8 @@
 #define CHANNEL_SHIP_FX 1013 //nsv13 - sound channel for general ship ambience / FX
 #define CHANNEL_IMPORTANT_SHIP_ALERT 1012 //nsv13 - sound channel for really REALLY IMPORTANT ship
 #define CHANNEL_FTL_MANIFOLD 1011 //nsv13 - sound channel for FTL manifold, needed for sound cancelling
+#define CHANNEL_JUKEBOX_END 1021 // AQUILA EDIT
+#define CHANNEL_JUKEBOX_START 1020 // AQUILA EDIT
 
 ///Default range of a sound.
 #define SOUND_RANGE 17
@@ -39,6 +41,7 @@
 #define PICKUP_SOUND_VOLUME 40
 #define DROP_SOUND_VOLUME 50
 #define YEET_SOUND_VOLUME 90
+#define MUSIC_VOLUME 50 // AQUILA EDIT
 
 #define AMBIENCE_GENERIC "generic"
 #define AMBIENCE_HOLY "holy"
