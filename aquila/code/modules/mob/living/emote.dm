@@ -8,7 +8,6 @@
 
 /datum/emote/living/cough/get_sound(mob/living/user)
 	if(user.mind && ishuman(user) && !user.mind.miming)
-		return 'aquila/sound/voice/human/cough.ogg'
 		if(user.gender == FEMALE)
 			return pick('aquila/sound/voice/human/femalecough1.ogg', 'aquila/sound/voice/human/femalecough2.ogg', 'aquila/sound/voice/human/cough.ogg')
 		else
@@ -39,7 +38,7 @@
 	key_third_person = "gnomes"
 	message = "gnomuje"
 
-datum/emote/living/gnome/get_sound(mob/living/user)
+/datum/emote/living/gnome/get_sound(mob/living/user)
 	if(user.mind && ishuman(user) && !user.mind.miming)
 		return 'aquila/sound/misc/gnome.ogg'
 
@@ -48,7 +47,7 @@ datum/emote/living/gnome/get_sound(mob/living/user)
 		if(user.gender == FEMALE)
 			return pick('aquila/sound/voice/human/femalesigh1.ogg', 'aquila/sound/voice/human/femalesigh2.ogg', 'aquila/sound/voice/human/femalesigh3.ogg', 'aquila/sound/voice/human/femalesigh4.ogg')
 		else
-			return 'aquila/sound/human/voice/sigh.ogg'
+			return 'aquila/sound/voice/human/sigh.ogg'
 
 /datum/emote/living/sneeze/get_sound(mob/living/user)
 	if(user.mind && ishuman(user) && !user.mind.miming)
