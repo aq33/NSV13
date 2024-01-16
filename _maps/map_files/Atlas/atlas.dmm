@@ -3652,15 +3652,9 @@
 /turf/open/floor/monotile/dark,
 /area/science)
 "lk" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/computer/ship/mineral_magnet{
-	density = 0;
-	pixel_y = 26;
-	req_access = null
-	},
-/turf/open/floor/plating/airless,
+/obj/structure/lattice/catwalk,
+/obj/structure/marker_beacon,
+/turf/open/space/basic,
 /area/space/nearstation)
 "lm" = (
 /turf/open/floor/plating{
@@ -4974,6 +4968,9 @@
 	dir = 8
 	},
 /obj/effect/landmark/zebra_interlock_point,
+/obj/structure/sign/ship/space{
+	pixel_y = 32
+	},
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck2/primary)
 "pl" = (
@@ -14192,6 +14189,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/carpet/red,
 /area/security/brig)
+"Ts" = (
+/obj/structure/marker_beacon,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "Tt" = (
 /obj/machinery/door/airlock/ship/maintenance/defaultaccess{
 	name = "EVA";
@@ -26325,6 +26326,7 @@ Nh
 Nh
 Nh
 Nh
+lk
 an
 an
 an
@@ -26365,8 +26367,7 @@ an
 an
 an
 an
-an
-an
+lk
 Nh
 Nh
 Nh
@@ -36862,6 +36863,7 @@ Nh
 Nh
 Nh
 Nh
+lk
 an
 an
 an
@@ -36902,8 +36904,7 @@ an
 an
 an
 an
-an
-an
+lk
 Nh
 Nh
 Nh
@@ -37404,7 +37405,7 @@ jZ
 jZ
 jZ
 Ei
-xi
+Ts
 xi
 an
 Nh
@@ -38177,7 +38178,7 @@ ms
 ms
 jZ
 jZ
-lk
+uN
 Nh
 Nh
 Nh
@@ -41515,7 +41516,7 @@ oL
 MO
 MO
 MO
-cb
+jy
 AW
 yV
 ZA
