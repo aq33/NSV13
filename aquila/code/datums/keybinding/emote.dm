@@ -1,6 +1,7 @@
 /datum/keybinding/emote
 	category = CATEGORY_EMOTE
 	weight = WEIGHT_EMOTE
+	keybind_signal = COMSIG_KB_EMOTE_DO_EMOTE
 	var/emote_key
 
 /datum/keybinding/emote/proc/link_to_emote(datum/emote/faketype)
@@ -12,6 +13,8 @@
 
 /datum/keybinding/emote/down(client/user)
 	. = ..()
+	if (.)
+		return
 	return user.mob.emote(emote_key, intentional=TRUE)
 
 /datum/emote/flip/check_cooldown(mob/user, intentional)

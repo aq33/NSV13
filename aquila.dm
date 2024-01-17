@@ -1,3 +1,4 @@
+#include "aquila\code\__DEFINES\keybinding.dm"
 #include "aquila\code\__DEFINES\melee.dm"
 #include "aquila\code\__DEFINES\nanites.dm"
 #include "aquila\code\__DEFINES\say.dm"
