@@ -6893,6 +6893,10 @@
 /obj/structure/sign/poster/official/random{
 	pixel_y = -32
 	},
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = 16
+	},
 /turf/open/floor/durasteel/lino,
 /area/janitor)
 "uY" = (
@@ -7943,6 +7947,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/south,
+/obj/item/reagent_containers/syringe/lethal/execution,
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/security/armory)
 "yI" = (

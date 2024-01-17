@@ -1346,16 +1346,15 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/obj/structure/disposalpipe/sorting/mail/flip{
-	dir = 8;
-	sortType = 13
-	},
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer4,
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=right";
 	location = "down"
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck1/hallway)
 "fD" = (
@@ -1418,9 +1417,6 @@
 /turf/open/openspace,
 /area/maintenance/nsv/deck1/starboard)
 "fR" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 8
 	},
@@ -3295,7 +3291,6 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tile/ship/half/purple,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -3999,10 +3994,7 @@
 	pixel_y = 30;
 	receive_ore_updates = 1
 	},
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/obj/machinery/disposal/bin,
+/obj/machinery/suit_storage_unit/rd,
 /turf/open/floor/carpet/ship/beige_carpet,
 /area/crew_quarters/heads/hor)
 "rt" = (
@@ -7599,7 +7591,6 @@
 	name = "Research Director";
 	req_one_access_txt = "30"
 	},
-/obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -11583,9 +11574,6 @@
 "Yz" = (
 /obj/structure/cable{
 	icon_state = "1-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 9
