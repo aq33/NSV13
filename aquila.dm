@@ -7,3 +7,8 @@
 #include "aquila\code\modules\clothing\spacesuits\hardsuit.dm"
 #include "aquila\code\modules\mob\living\carbon\human\species_types\IPC.dm"
 #include "aquila\code\modules\uplink\uplink_items.dm"
+#include "aquila\code\modules\mob\living\simple_animal\friendly\gondola.dm"
+#include "aquila\code\modules\mob\living\simple_animal\hostile\alien.dm"
+#include "aquila\code\modules\mob\living\simple_animal\hostile\headcrab.dm"
+#include "aquila\code\modules\mob\living\simple_animal\hostile\retaliate\clown.dm"
+#include "aquila\code\modules\mob\living\simple_animal\hostile\skeleton.dm"
