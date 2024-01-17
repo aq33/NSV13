@@ -6,6 +6,9 @@
 /obj/structure/sign/directions
 	icon = 'aquila/icons/obj/decals.dmi'
 
+/obj/structure/sign/directions/plaque
+	icon = 'icons/obj/decals.dmi'
+
 /obj/structure/sign/directions/science
 	name = "Dział naukowy"
 	desc = "Znak wskazujący drogę do działu naukowego."
