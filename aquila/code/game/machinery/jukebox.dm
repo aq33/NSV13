@@ -24,6 +24,17 @@
 	var/stop_blocked = FALSE
 	var/list_source = list()
 
+/obj/machinery/jukebox/disco
+	name = "Disco Jukebox"
+	desc = "Odtwarzacz muzyczny w wersji Disco."
+
+/obj/machinery/jukebox/disco/indestructible
+	name = "Niezniszczalny Disco Jukebox"
+	req_access = null
+	anchored = TRUE
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	flags_1 = NODECONSTRUCT_1
+
 /obj/machinery/jukebox/Initialize()
 	. = ..()
 	wires = new /datum/wires/jukebox(src)
