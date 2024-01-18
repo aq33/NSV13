@@ -44,11 +44,10 @@
 		stop = 0
 
 /obj/machinery/jukebox/obj_break()
-	if(!(machine_stat & BROKEN) && !(flags_1 & NODECONSTRUCT_1))
+	. = ..()
+	if(.)
 		stop = 0
-		machine_stat |= BROKEN
 		playsound(loc, 'sound/effects/glassbr3.ogg', 100, 1)
-		update_icon()
 
 /obj/machinery/jukebox/attackby(obj/item/I, mob/user, params)
 	if(default_unfasten_wrench(user, I))
