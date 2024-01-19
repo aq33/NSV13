@@ -32,7 +32,7 @@
 	mid_sounds = list('aquila/sound/machines/electronics/lathe_idle.ogg'=10, 'aquila/sound/machines/electronics/lathe_working.ogg'=1, 'aquila/sound/machines/electronics/lathe_working2.ogg'=1, 'aquila/sound/machines/electronics/lathe_working3.ogg'=1, 'aquila/sound/machines/electronics/lathe_working4.ogg'=1)
 	mid_length = 2
 	end_sound = 'aquila/sound/machines/electronics/computer_stop.ogg'
-	volume = 8
+	volume = 12
 	extra_range = 1
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
