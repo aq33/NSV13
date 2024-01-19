@@ -109,6 +109,7 @@
 
 /obj/machinery/mineral/ore_redemption/proc/process_ores(list/ores_to_process)
 	for(var/ore in ores_to_process)
+		playsound(src, 'aquila/sound/machines/ormsmelt.ogg', 20) // AQ EDIT
 		smelt_ore(ore)
 
 /obj/machinery/mineral/ore_redemption/proc/send_console_message()
