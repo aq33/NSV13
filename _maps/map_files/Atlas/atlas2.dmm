@@ -3432,10 +3432,6 @@
 	},
 /turf/open/floor/durasteel/techfloor,
 /area/ai_monitored/turret_protected/ai)
-"oD" = (
-/obj/structure/lattice,
-/turf/open/openspace/airless,
-/area/space)
 "oE" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
@@ -8214,7 +8210,6 @@
 /turf/open/floor/bronze,
 /area/ai_monitored/turret_protected/ai)
 "JK" = (
-/obj/structure/lattice,
 /obj/structure/lattice,
 /turf/open/openspace/airless,
 /area/space)
@@ -51550,7 +51545,7 @@ cL
 cL
 cL
 cL
-oD
+JK
 Oa
 GL
 GL
@@ -51807,10 +51802,10 @@ cL
 cL
 cL
 cL
-oD
-oD
-oD
-oD
+JK
+JK
+JK
+JK
 Oj
 XO
 Xe
@@ -53095,8 +53090,8 @@ cL
 cL
 cL
 cL
-oD
-oD
+JK
+JK
 Cf
 jv
 mK

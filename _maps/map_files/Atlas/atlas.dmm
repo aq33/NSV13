@@ -4566,12 +4566,10 @@
 "ok" = (
 /obj/machinery/monkey_recycler,
 /obj/structure/extinguisher_cabinet/north{
-	pixel_y = 0;
 	pixel_x = 39
 	},
 /obj/structure/extinguisher_cabinet/north{
-	pixel_x = 25;
-	pixel_y = 0
+	pixel_x = 25
 	},
 /turf/open/floor/plasteel/techmaint,
 /area/science)
@@ -13784,11 +13782,6 @@
 /area/crew_quarters/abandoned_gambling_den{
 	name = "Abandoned Bar"
 	})
-"Sk" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space/nearstation)
 "Sl" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -44744,7 +44737,7 @@ sP
 zq
 Qc
 mL
-Sk
+ms
 Zb
 ns
 ns
