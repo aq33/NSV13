@@ -58,3 +58,9 @@
 /obj/item/aiModule/core/full/dungeonmaster
 	name = "'Dungeonmaster' Core AI Module"
 	law_id = "dungeonmaster"
+
+/******************Dean***************/
+
+/obj/item/aiModule/core/full/dean
+	name = "'Dean' Core AI Module"
+	law_id = "dean"

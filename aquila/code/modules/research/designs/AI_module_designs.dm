@@ -87,3 +87,12 @@
 	build_path = /obj/item/aiModule/core/full/cowboy
 	category = list("AI Modules")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/board/dean_module
+	name = "Core Module Design (Dean)"
+	desc = "Allows for the construction of a Dean AI Core Module."
+	id = "dean_module"
+	materials = list(/datum/material/glass = 1000, /datum/material/diamond = 2000, /datum/material/copper = 300)
+	build_path = /obj/item/aiModule/core/full/dean
+	category = list("AI Modules")
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
