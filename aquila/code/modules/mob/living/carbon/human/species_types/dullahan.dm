@@ -9,4 +9,4 @@
 			var/obj/O = myhead.loc
 			O.speech_sound = speech_sound
 			if(gendered_speech)
-				O.speech_sound += gender
+				O.speech_sound += H.gender
