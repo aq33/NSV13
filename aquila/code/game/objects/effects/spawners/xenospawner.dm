@@ -81,3 +81,24 @@
 	icon_state = "hivebot_fab"
 	var/announcement_time = 1200
 
+/obj/effect/spawner/infected_monkey_delivery
+	name = "infected monkey delivery"
+	icon = 'icons/mob/monkey.dmi'
+	icon_state = "monkey1"
+	var/announcement_time = 1200
+
+/obj/effect/spawner/infected_monkey_delivery/Initialize(mapload)
+	..()
+	var/turf/T = get_turf(src)
+
+	var/datum/disease/transformation/jungle_fever/D = new /datum/disease/transformation/jungle_fever
+	D.infect(new /mob/living/carbon/monkey/(T))
+
+	new /obj/effect/temp_visual/gravpush(T)
+	playsound(T, 'sound/items/party_horn.ogg', 50, 1, -1)
+
+	message_admins("An infected monkey has been delivered to [ADMIN_VERBOSEJMP(T)].")
+	log_game("An infected monkey has been delivered to [AREACOORD(T)]")
+	var/message = "Attention [station_name()], we have entrusted you with a research specimen in [get_area_name(T, TRUE)]. Remember to follow all safety precautions when dealing with the specimen."
+	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(print_command_report), message), announcement_time))
+	return INITIALIZE_HINT_QDEL
