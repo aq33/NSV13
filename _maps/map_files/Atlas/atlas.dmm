@@ -1005,6 +1005,9 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/sign/poster/official/random{
+	pixel_y = 32
+	},
 /turf/open/floor/monotile/steel,
 /area/nsv/weapons)
 "du" = (
@@ -1570,6 +1573,7 @@
 /obj/structure/sign/poster/official/random{
 	pixel_y = -32
 	},
+/obj/effect/turf_decal/tile/ship/half/yellow,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "fq" = (
@@ -1770,6 +1774,7 @@
 /obj/effect/turf_decal/tile/ship/half/yellow{
 	dir = 1
 	},
+/obj/effect/turf_decal/tile/ship/yellow,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "fS" = (
@@ -1923,6 +1928,9 @@
 /area/hallway/nsv/deck2/primary)
 "gi" = (
 /obj/machinery/vending/security,
+/obj/structure/sign/poster/official/random{
+	pixel_y = 32
+	},
 /turf/open/floor/monotile/steel,
 /area/security/brig)
 "gk" = (
@@ -3833,7 +3841,9 @@
 /area/hallway/nsv/deck2/primary)
 "lK" = (
 /obj/structure/closet/radiation,
-/obj/effect/turf_decal/tile/ship/half/yellow,
+/obj/effect/turf_decal/tile/ship/half/yellow{
+	dir = 1
+	},
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "lL" = (
@@ -5688,6 +5698,7 @@
 /obj/structure/closet/radiation,
 /obj/item/geiger_counter,
 /obj/machinery/firealarm/directional/east,
+/obj/effect/turf_decal/tile/ship/half/yellow,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "rz" = (
@@ -6449,6 +6460,9 @@
 /obj/machinery/camera/autoname{
 	dir = 1
 	},
+/obj/structure/sign/poster/official/random{
+	pixel_y = -32
+	},
 /turf/open/floor/monotile/steel,
 /area/security/brig)
 "tN" = (
@@ -6761,6 +6775,7 @@
 /obj/item/clothing/suit/radiation,
 /obj/item/clothing/head/radiation,
 /obj/machinery/light,
+/obj/effect/turf_decal/tile/ship/half/yellow,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "uA" = (
@@ -7474,7 +7489,6 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port)
 "wW" = (
-/obj/effect/turf_decal/tile/ship/half/yellow,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 1
 	},
@@ -8599,7 +8613,6 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "Ba" = (
-/obj/effect/turf_decal/tile/ship/half/yellow,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -8669,7 +8682,9 @@
 	dir = 4
 	},
 /obj/structure/closet/secure_closet/engineering_electrical,
-/obj/effect/turf_decal/tile/ship/half/yellow,
+/obj/effect/turf_decal/tile/ship/half/yellow{
+	dir = 1
+	},
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "Br" = (
@@ -8974,6 +8989,13 @@
 /obj/machinery/vending/coffee,
 /turf/open/floor/carpet/red,
 /area/nsv/weapons)
+"Co" = (
+/obj/structure/chair/stool,
+/obj/structure/sign/poster/official/random{
+	pixel_x = 32
+	},
+/turf/open/floor/carpet/red,
+/area/nsv/weapons)
 "Cp" = (
 /obj/machinery/power/apc/auto_name/north,
 /obj/structure/cable{
@@ -9120,7 +9142,6 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/turf_decal/tile/ship/half/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 9
 	},
@@ -10361,6 +10382,9 @@
 	},
 /obj/effect/spawner/lootdrop/armory_contraband,
 /obj/item/gun/ballistic/shotgun/riot,
+/obj/structure/sign/poster/official/random{
+	pixel_x = 32
+	},
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/security/armory)
 "HD" = (
@@ -14640,7 +14664,6 @@
 /turf/open/floor/plasteel/techmaint,
 /area/nsv/hanger/mining)
 "Vi" = (
-/obj/effect/turf_decal/tile/ship/half/yellow,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "Vj" = (
@@ -15186,6 +15209,12 @@
 	},
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck2/primary)
+"WZ" = (
+/obj/effect/turf_decal/tile/ship/yellow{
+	dir = 4
+	},
+/turf/open/floor/monotile/dark,
+/area/engine/engine_room)
 "Xc" = (
 /obj/structure/sign/poster/contraband/random{
 	pixel_y = -32
@@ -40835,8 +40864,8 @@ gS
 gS
 gS
 cH
-kD
-kD
+MO
+MO
 ue
 FQ
 MO
@@ -41091,7 +41120,7 @@ gN
 gS
 gS
 gS
-kD
+MO
 MO
 MO
 MO
@@ -41347,7 +41376,7 @@ gS
 gS
 gS
 gS
-kD
+MO
 MO
 MO
 Dh
@@ -41604,7 +41633,7 @@ gS
 gS
 gS
 gS
-kD
+MO
 MO
 cZ
 mX
@@ -41861,7 +41890,7 @@ hG
 hG
 gS
 gS
-kD
+MO
 MO
 eB
 eN
@@ -43662,9 +43691,9 @@ Jh
 kH
 kH
 yI
-YQ
+MO
 fP
-Vi
+WZ
 oz
 oz
 Zh
@@ -43919,7 +43948,7 @@ aI
 dj
 rR
 qK
-qI
+oF
 oF
 lK
 oz
@@ -55482,7 +55511,7 @@ lz
 eY
 kd
 yA
-RQ
+Co
 Cn
 eY
 lf
