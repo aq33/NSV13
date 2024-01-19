@@ -79,6 +79,7 @@
 		var/amount = O.amount
 		mat_container.insert_item(O, sheet_per_ore) //insert it
 		materials.silo_log(src, "smelted", amount, "someone", mats)
+		playsound(src, 'aquila/sound/machines/ormsmelt.ogg', 20) // AQ EDIT
 		qdel(O)
 
 /obj/machinery/mineral/ore_redemption/proc/can_smelt_alloy(datum/design/D)
@@ -109,7 +110,6 @@
 
 /obj/machinery/mineral/ore_redemption/proc/process_ores(list/ores_to_process)
 	for(var/ore in ores_to_process)
-		playsound(src, 'aquila/sound/machines/ormsmelt.ogg', 20) // AQ EDIT
 		smelt_ore(ore)
 
 /obj/machinery/mineral/ore_redemption/proc/send_console_message()
