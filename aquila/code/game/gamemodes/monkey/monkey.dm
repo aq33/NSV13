@@ -6,6 +6,7 @@
 	name = "monkey"
 	config_tag = "monkey"
 	report_type = "monkey"
+	antag_datum = /datum/antagonist/monkey
 	role_preference = /datum/role_preference/antagonist/monkey
 	false_report_weight = 1
 
