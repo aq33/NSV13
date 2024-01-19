@@ -56,6 +56,7 @@
 #include "aquila\code\modules\mob\living\carbon\human\species_types\golems.dm"
 #include "aquila\code\modules\mob\living\carbon\human\species_types\humans.dm"
 #include "aquila\code\modules\mob\living\carbon\human\species_types\jellypeople.dm"
+#include "aquila\code\modules\mob\living\carbon\human\species_types\IPC.dm"
 #include "aquila\code\modules\mob\living\carbon\human\species_types\lizardpeople.dm"
 #include "aquila\code\modules\mob\living\carbon\human\species_types\monkey.dm"
 #include "aquila\code\modules\mob\living\carbon\human\species_types\mothmen.dm"
