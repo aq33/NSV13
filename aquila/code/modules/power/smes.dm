@@ -12,6 +12,6 @@
 /obj/machinery/power/smes/update_icon()
 	. = ..()
 	if(outputting)
-		soundloop.start()
+		soundloop?.start()
 	else
-		soundloop.stop()
+		soundloop?.stop()

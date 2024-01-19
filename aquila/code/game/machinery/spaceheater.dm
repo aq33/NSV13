@@ -8,9 +8,9 @@
 /obj/machinery/space_heater/update_icon()
 	. = ..()
 	if(on)
-		soundloop.start()
+		soundloop?.start()
 	else
-		soundloop.stop()
+		soundloop?.stop()
 
 /obj/machinery/space_heater/Destroy()
 	QDEL_NULL(soundloop)
