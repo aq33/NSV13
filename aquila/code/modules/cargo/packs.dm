@@ -34,3 +34,42 @@
 		loneop.weight += 7
 		message_admins("a NULL_ENTRY crate has shipped, increasing the weight of the Lone Operative event to [loneop.weight]")
 		log_game("a NULL_ENTRY crate has shipped, increasing the weight of the Lone Operative event to [loneop.weight]")
+
+/datum/supply_pack/organic/kremowka
+	name = "Kremówki"
+	desc = "Skrzynia pełna kremówek prosto z piekarni w Wadowicach."
+	cost = 2137
+	crate_type = /obj/structure/closet/crate
+	contains = list(
+		/obj/item/reagent_containers/food/snacks/pie/kremowka,
+		/obj/item/reagent_containers/food/snacks/pie/kremowka,
+		/obj/item/reagent_containers/food/snacks/pie/kremowka,
+		/obj/item/reagent_containers/food/snacks/pie/kremowka,
+		/obj/item/reagent_containers/food/snacks/pie/kremowka
+		)
+	crate_name = "skrzynia kremowek"
+
+/datum/supply_pack/service/party
+	contains = list(/obj/item/storage/box/drinkingglasses,
+				/obj/item/reagent_containers/food/drinks/shaker,
+				/obj/item/reagent_containers/food/drinks/bottle/patron,
+				/obj/item/reagent_containers/food/drinks/bottle/goldschlager,
+				/obj/item/reagent_containers/food/drinks/ale,
+				/obj/item/reagent_containers/food/drinks/ale,
+				/obj/item/reagent_containers/food/drinks/beer,
+				/obj/item/reagent_containers/food/drinks/beer,
+				/obj/item/reagent_containers/food/drinks/beer,
+				/obj/item/reagent_containers/food/drinks/beer,
+				/obj/item/flashlight/glowstick,
+				/obj/item/flashlight/glowstick/red,
+				/obj/item/flashlight/glowstick/blue,
+				/obj/item/flashlight/glowstick/cyan,
+				/obj/item/flashlight/glowstick/orange,
+				/obj/item/flashlight/glowstick/yellow,
+				/obj/item/flashlight/glowstick/pink,
+				/obj/item/survivalcapsule/party,
+				/obj/item/survivalcapsule/party,
+				/obj/item/reagent_containers/food/drinks/soda_cans/mocnyfull,
+				/obj/item/reagent_containers/food/drinks/soda_cans/mocnyfull,
+				/obj/item/reagent_containers/food/drinks/soda_cans/mocnyfull,
+				/obj/item/reagent_containers/food/drinks/soda_cans/mocnyfull)
