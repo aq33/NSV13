@@ -66,7 +66,6 @@
 #include "aquila\code\modules\mob\living\carbon\human\species_types\shadowpeople.dm"
 #include "aquila\code\modules\mob\living\carbon\human\species_types\skeletons.dm"
 #include "aquila\code\modules\mob\living\carbon\human\species_types\snail.dm"
-#include "aquila\code\modules\mob\living\carbon\human\species_types\synths.dm"
 #include "aquila\code\modules\mob\living\carbon\human\species_types\vampire.dm"
 #include "aquila\code\modules\mob\living\carbon\human\species_types\zombies.dm"
 #include "aquila\code\modules\mob\living\carbon\human\emote.dm"
