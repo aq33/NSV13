@@ -51,7 +51,7 @@
 		return
 	var/datum/component/material_container/mat_container = materials.mat_container
 	if(!update_appearance || panel_open || !powered())
-		update_icon()
+		update_appearance()
 		return
 	var/datum/material/ore = pick(ore_rates)
 	mat_container.insert_amount_mat((ore_rates[ore] * 1000), ore)
