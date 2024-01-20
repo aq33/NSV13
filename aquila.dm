@@ -50,3 +50,8 @@
 #include "aquila\code\modules\research\techweb\all_nodes.dm"
 #include "aquila\code\modules\uplink\uplink_items.dm"
 #include "aquila\code\modules\vending\boozeomat.dm"
+#include "aquila\code\game\objects\items\circuitboards\machine_circuitboards.dm"
+#include "aquila\code\game\objects\structures\crate_lockers\closets\secure\scientist.dm"
+#include "aquila\code\modules\mining\machine_bluespaceminer.dm"
+#include "aquila\code\modules\research\designs\machine_designs.dm"
+#include "aquila\code\controllers\configuration\entries\game_options.dm"

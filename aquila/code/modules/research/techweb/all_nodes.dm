@@ -78,3 +78,18 @@
 	design_ids = list("kickstart_nanites", "factory_nanites", "tinker_nanites", "offline_nanites", "free_range_nanites", "zip_nanites")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000, TECHWEB_POINT_TYPE_NANITES = 4000)
 	export_price = 15000
+
+/datum/techweb_node/bluespace_mining
+	id = "bluespace_mining"
+	hidden = TRUE
+	display_name = "Bluespace Mining Technology"
+	description = "Harness the power of bluespace to make materials out of nothing. Slowly."
+	prereq_ids = list("practical_bluespace", "adv_mining")
+	design_ids = list("bluespace_miner")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+	export_price = 5000
+
+/datum/techweb_node/bluespace_mining/New() //Techweb nodes don't have an init,
+	. = ..()
+
+	hidden = !CONFIG_GET(flag/bsminer_researchable)
