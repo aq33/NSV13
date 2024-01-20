@@ -50,7 +50,7 @@
 		update_appearance()
 		return
 	var/datum/component/material_container/mat_container = materials.mat_container
-	if(!update_appearance || panel_open || !powered())
+	if(!mat_container || panel_open || !powered())
 		update_appearance()
 		return
 	var/datum/material/ore = pick(ore_rates)
