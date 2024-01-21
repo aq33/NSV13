@@ -4866,7 +4866,6 @@
 	req_access_txt = "39"
 	},
 /obj/machinery/door/airlock/ship/medical{
-	dir = 2;
 	id_tag = "virology_airlock_interior";
 	name = "Virology";
 	req_one_access_txt = "39"

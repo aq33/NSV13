@@ -3914,9 +3914,7 @@
 /area/engine/storage)
 "nU" = (
 /obj/machinery/computer/deckgun,
-/obj/effect/turf_decal/stripes/line{
-	dir = 2
-	},
+/obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/tile/ship/orange{
 	dir = 4
 	},
@@ -5466,7 +5464,6 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/light_switch/south{
-	pixel_y = 0;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/dark,
@@ -9930,8 +9927,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/ship/blue{
-	dir = 8;
-	icon_state = "bordercorner"
+	dir = 8
 	},
 /obj/machinery/computer/ship/navigation{
 	dir = 8
@@ -12356,8 +12352,7 @@
 /area/security/courtroom)
 "Qp" = (
 /obj/machinery/computer/message_monitor{
-	dir = 8;
-	icon_state = "computer"
+	dir = 8
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -12525,8 +12520,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/ship/blue{
-	dir = 8;
-	icon_state = "bordercorner"
+	dir = 8
 	},
 /obj/effect/turf_decal/tile/ship/orange{
 	dir = 1
@@ -12645,8 +12639,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/ship/blue{
-	dir = 8;
-	icon_state = "bordercorner"
+	dir = 8
 	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 8
@@ -14721,8 +14714,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/ship/blue{
-	dir = 8;
-	icon_state = "bordercorner"
+	dir = 8
 	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 8
