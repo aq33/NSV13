@@ -4823,7 +4823,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 10
 	},
-/turf/open/floor/fakespace,
+/turf/open/floor/monotile/steel,
 /area/science/nsv/astronomy)
 "exD" = (
 /obj/structure/lattice/catwalk/over/ship,
@@ -6543,18 +6543,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall/steel,
 /area/crew_quarters/bar)
-"ggP" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/fakespace,
-/area/medical/medbay/central)
 "ghq" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable/yellow,
@@ -9254,7 +9242,7 @@
 	dir = 4
 	},
 /obj/machinery/firealarm/directional/north,
-/turf/open/floor/fakespace,
+/turf/open/floor/monotile/steel,
 /area/science/nsv/astronomy)
 "iRB" = (
 /turf/closed/wall/steel,
@@ -9339,7 +9327,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
-/turf/open/floor/fakespace,
+/turf/open/floor/monotile/steel,
 /area/science/nsv/astronomy)
 "iXi" = (
 /obj/structure/lattice,
@@ -10298,7 +10286,7 @@
 /area/nsv/hanger/deck2)
 "jQu" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/turf/open/floor/fakespace,
+/turf/open/floor/monotile/steel,
 /area/science/nsv/astronomy)
 "jRo" = (
 /obj/effect/turf_decal/tile/green{
@@ -17677,7 +17665,7 @@
 /turf/open/floor/monotile/dark/airless,
 /area/nsv/hanger/deck2)
 "rsf" = (
-/turf/open/floor/fakespace,
+/turf/open/floor/monotile/steel,
 /area/science/nsv/astronomy)
 "rsL" = (
 /obj/structure/sink/kitchen{
@@ -65579,10 +65567,10 @@ kUT
 lUD
 qGM
 rbn
-oZa
-oZa
-oZa
-ggP
+bMC
+bMC
+bMC
+lfH
 xAK
 gID
 sEg
@@ -65836,10 +65824,10 @@ ydt
 hYT
 qGM
 bMC
-oZa
-oZa
-oZa
-ggP
+bMC
+bMC
+bMC
+lfH
 xAK
 rND
 sZi
@@ -66093,10 +66081,10 @@ fJe
 bMC
 aQK
 bMC
-oZa
-oZa
-oZa
-ggP
+bMC
+bMC
+bMC
+lfH
 xAK
 umT
 sXx
