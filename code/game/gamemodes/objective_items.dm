@@ -32,7 +32,7 @@
 	excludefromjob = list(JOB_NAME_CAPTAIN)
 
 /datum/objective_item/steal/hoslaser
-	name = "the head of security's personal glock, 'Winona'." //Nsv13 changed this because LASERS BAD
+	name = "osobisty glock Komendanta, 'Winona'."
 	targetitem = /obj/item/gun/ballistic/automatic/pistol/glock/security/hos
 	difficulty = 10
 	excludefromjob = list("Head Of Security")
@@ -50,7 +50,7 @@
 	excludefromjob = list(JOB_NAME_CAPTAIN)
 
 /datum/objective_item/steal/magboots
-	name = "the chief engineer's advanced magnetic boots."
+	name = "zaawansowane buty magnetyczne Szefa Inżynierii."
 	targetitem =  /obj/item/clothing/shoes/magboots/advance
 	difficulty = 5
 	excludefromjob = list(JOB_NAME_CHIEFENGINEER)

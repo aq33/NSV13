@@ -40,7 +40,7 @@
 	name = "Empatia"
 	desc = "Czy to przez szósty zmysł, czy dokładną obserwację języka ciała, jesteś w stanie określić jak się ktoś czuje zaledwie poprzez szybkie spojrzenie."
 	value = 2
-	mob_trait = TRAIT_EMPATH"
+	mob_trait = TRAIT_EMPATH
 	gain_text = "<span class='notice'>Zaczynasz rozumieć otaczających cię ludzi.</span>"
 	lose_text = "<span class='danger'>Przestałeś rozumieć emocje innych.</span>"
 	medical_record_text = "Pacjent zwraca wiele uwagi i jest wrażliwy na cudze uczucia lub choruje na ESP. Potrzebne więcej badań."
