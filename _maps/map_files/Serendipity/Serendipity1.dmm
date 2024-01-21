@@ -193,7 +193,7 @@
 /area/crew_quarters/kitchen)
 "az" = (
 /obj/structure/lattice/catwalk,
-/turf/open/space/basic,
+/turf/open/openspace/airless,
 /area/space/nearstation)
 "aA" = (
 /turf/closed/wall/r_wall/ship,
@@ -506,7 +506,7 @@
 	c_tag = "Vault South";
 	dir = 4
 	},
-/turf/open/space/basic,
+/turf/open/openspace/airless,
 /area/space/nearstation)
 "bE" = (
 /obj/effect/landmark/patrol_node{
@@ -919,7 +919,7 @@
 /turf/open/floor/plasteel/tiled/light,
 /area/science/lab)
 "cU" = (
-/turf/open/space/basic,
+/turf/open/openspace/airless,
 /area/space/nearstation)
 "cW" = (
 /obj/structure/cable{
@@ -1379,7 +1379,7 @@
 	name = "Central Command Ferry Dock";
 	width = 5
 	},
-/turf/open/space/basic,
+/turf/open/openspace/airless,
 /area/space/nearstation)
 "eO" = (
 /obj/structure/cable{
@@ -1581,7 +1581,7 @@
 /area/crew_quarters/heads/cmo)
 "fo" = (
 /obj/structure/lattice,
-/turf/open/space/basic,
+/turf/open/openspace/airless,
 /area/space)
 "fp" = (
 /obj/machinery/atmospherics/pipe/multiz/layer2,
@@ -1860,7 +1860,7 @@
 /area/science/xenobiology)
 "go" = (
 /obj/effect/landmark/asteroid_spawn,
-/turf/open/space/basic,
+/turf/open/openspace/airless,
 /area/space/nearstation)
 "gp" = (
 /obj/machinery/porta_turret/ai,
@@ -4463,7 +4463,7 @@
 /area/science/xenobiology)
 "oJ" = (
 /obj/structure/hull_plate,
-/turf/open/space/basic,
+/turf/open/openspace/airless,
 /area/space/nearstation)
 "oM" = (
 /obj/structure/cable{
@@ -4734,7 +4734,7 @@
 /area/medical/genetics)
 "pC" = (
 /obj/effect/landmark/carpspawn,
-/turf/open/space/basic,
+/turf/open/openspace/airless,
 /area/space)
 "pD" = (
 /obj/structure/cable{
@@ -6793,7 +6793,7 @@
 "wt" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/marker_beacon,
-/turf/open/space/basic,
+/turf/open/openspace/airless,
 /area/space/nearstation)
 "wu" = (
 /obj/structure/disposalpipe/segment{
@@ -7879,7 +7879,7 @@
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/apothecary)
 "zP" = (
-/turf/open/space/basic,
+/turf/open/openspace/airless,
 /area/space)
 "zS" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -10715,8 +10715,7 @@
 "Jb" = (
 /obj/machinery/ship_weapon/gauss_gun{
 	bound_height = 32;
-	bound_width = 32;
-	pixel_y = -96
+	bound_width = 32
 	},
 /turf/open/floor/engine/airless/light,
 /area/space/nearstation)
@@ -13235,7 +13234,7 @@
 /area/hallway/secondary/exit)
 "QW" = (
 /obj/structure/lattice/catwalk,
-/turf/open/space/basic,
+/turf/open/openspace/airless,
 /area/science/xenobiology)
 "QX" = (
 /obj/machinery/computer/ship/salvage,
@@ -13603,7 +13602,7 @@
 	name = "Serendipity evac bay";
 	width = 13
 	},
-/turf/open/space/basic,
+/turf/open/openspace/airless,
 /area/space/nearstation)
 "Sp" = (
 /obj/structure/cable{
@@ -14234,7 +14233,7 @@
 /area/crew_quarters/dorms/nsv/nature_deck)
 "Ub" = (
 /obj/structure/lattice,
-/turf/open/space/basic,
+/turf/open/openspace/airless,
 /area/space/nearstation)
 "Uf" = (
 /obj/structure/cable{
@@ -15538,8 +15537,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/structure/disposalpipe/segment{
-	dir = 10;
-	icon_state = "pipe"
+	dir = 10
 	},
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/xo)
@@ -40877,7 +40875,7 @@ zP
 zP
 zP
 zP
-zP
+pC
 zP
 zP
 zP
@@ -50288,7 +50286,7 @@ zP
 zP
 zP
 zP
-zP
+pC
 zP
 zP
 zP
@@ -55231,7 +55229,7 @@ zP
 zP
 zP
 zP
-pC
+zP
 zP
 zP
 zP
@@ -58308,7 +58306,7 @@ zP
 zP
 zP
 zP
-pC
+zP
 zP
 zP
 zP
@@ -59074,7 +59072,7 @@ zP
 zP
 zP
 zP
-zP
+pC
 zP
 zP
 zP
@@ -59306,7 +59304,7 @@ zP
 zP
 zP
 zP
-zP
+pC
 zP
 zP
 zP
