@@ -109,8 +109,8 @@
 	desc = "Spędziłeś część swojego życia na nauce rozumienia dodatkowego języka. Możesz lub nie posługiwać się nim w zależności od twojej anatomii."
 	value = 1
 	mob_trait = TRAIT_MULTILINGUAL
-	gain_text = "<span class='notice'>You have learned to understand an additional language.</span>"
-	lose_text = "<span class='danger'>You have forgotten how to understand a language.</span>"
+	gain_text = "<span class='notice'>Nauczyłeś się rozumieć dodatkowy język.</span>"
+	lose_text = "<span class='danger'>Zapomniałeś jak rozumieć język.</span>"
 
 /datum/quirk/multilingual/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
@@ -234,8 +234,8 @@
 	desc = "Z jakiegoś powodu zakwalifikowałeś się do programu opieki społecznej i nie bardzo dbasz o własną higienę osobistą." //NSV13 - kept hygiene
 	value = 1
 	mob_trait = TRAIT_NEET
-	gain_text = "<span class='notice'>You feel useless to society.</span>"
-	lose_text = "<span class='danger'>You no longer feel useless to society.</span>"
+	gain_text = "<span class='notice'>czujesz się bezużyteczny dla społeczeństwa.</span>"
+	lose_text = "<span class='danger'>Już nie czujesz się bezużyteczny dla społeczeństwa.</span>"
 	mood_quirk = TRUE
 	process = TRUE
 
