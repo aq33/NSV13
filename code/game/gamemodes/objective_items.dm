@@ -77,7 +77,7 @@
 	return !N.fake
 
 /datum/objective_item/steal/riot
-	name = "a riot suit."
+	name = "strój do zamieszek."
 	targetitem = /obj/item/clothing/suit/armor/riot
 	difficulty = 3
 	excludefromjob = list(JOB_NAME_HEADOFSECURITY, JOB_NAME_WARDEN)
