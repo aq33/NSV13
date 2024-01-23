@@ -105,8 +105,8 @@
 	H.equip_in_one_of_slots(B, slots , qdel_on_fail = TRUE)
 
 /datum/quirk/multilingual
-	name = "Multilingual"
-	desc = "You spent a portion of your life learning to understand an additional language. You may or may not be able to speak it based on your anatomy."
+	name = "Poliglota"
+	desc = "Spędziłeś część swojego życia na nauce rozumienia dodatkowego języka. Możesz lub nie posługiwać się nim w zależności od twojej anatomii."
 	value = 1
 	mob_trait = TRAIT_MULTILINGUAL
 	gain_text = "<span class='notice'>You have learned to understand an additional language.</span>"
@@ -230,8 +230,8 @@
 	lose_text = "<span class='danger'>Już nie czujesz się WYGŁODNIAŁY.</span>"
 
 /datum/quirk/neet
-	name = "NEET"
-	desc = "For some reason you qualified for social welfare and you don't really care about your own personal hygiene." //NSV13 - kept hygiene
+	name = "Socjals"
+	desc = "Z jakiegoś powodu zakwalifikowałeś się do programu opieki społecznej i nie bardzo dbasz o własną higienę osobistą." //NSV13 - kept hygiene
 	value = 1
 	mob_trait = TRAIT_NEET
 	gain_text = "<span class='notice'>You feel useless to society.</span>"
