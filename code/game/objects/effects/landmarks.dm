@@ -102,11 +102,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "Shaft Miner"
 
 /obj/effect/landmark/start/exploration
-	name = "Exploration Crew"
+	name = "Odrywca"
 	icon_state = "Exploration Crew"
 
 /obj/effect/landmark/start/security_officer
-	name = "Military Police" //Nsv13 - Crayon eaters & MPs
+	name = "Policjant" //Nsv13 - Crayon eaters & MPs
 	icon_state = "Military Police" //Nsv13 - Crayon eaters & MPs
 
 /obj/effect/landmark/start/botanist
@@ -114,7 +114,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "Botanist"
 
 /obj/effect/landmark/start/head_of_security
-	name = "Szef Ochrony"
+	name = "Komendandt"
 	icon_state = "Head of Security"
 
 /obj/effect/landmark/start/captain
@@ -138,7 +138,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "Head of Personnel"
 
 /obj/effect/landmark/start/librarian
-	name = "Kurator"
+	name = "Bibliotekarz"
 	icon_state = "Curator"
 
 /obj/effect/landmark/start/lawyer
@@ -154,7 +154,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "Medical Doctor"
 
 /obj/effect/landmark/start/paramedic
-	name = "Paramedyk"
+	name = "Ratownik Medyczny"
 	icon_state = "Medical Doctor"
 
 /obj/effect/landmark/start/scientist
@@ -212,7 +212,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	latejoin_active = FALSE
 
 /obj/effect/landmark/start/brig_physician
-	name = "Lekarz Ochrony"
+	name = "Medyk Więzienny"
 
 /obj/effect/landmark/start/randommaint
 	name = "maintjobstart"
