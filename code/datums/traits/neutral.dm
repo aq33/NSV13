@@ -108,10 +108,10 @@
 	quirk_holder.remove_client_colour(/datum/client_colour/monochrome)
 
 /datum/quirk/mute
-	name = "Mute"
-	desc = "You are unable to speak."
+	name = "Niemy"
+	desc = "Nie możesz mówić."
 	value = 0
 	mob_trait = TRAIT_MUTE
-	gain_text = "<span class='danger'>You feel unable to talk.</span>"
-	lose_text = "<span class='notice'>You feel able to talk again.</span>"
-	medical_record_text = "Patient is unable to speak."
+	gain_text = "<span class='danger'>Czujesz niemoc, by mówić.</span>"
+	lose_text = "<span class='notice'>Znów czujesz niemoc, by mówić.</span>"
+	medical_record_text = "Pacjent nie może mówić."
