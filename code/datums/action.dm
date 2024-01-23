@@ -241,10 +241,10 @@
 	name = "Rozłóż/Złóż Barierę"
 
 /datum/action/item_action/equip_unequip_TED_Gun
-	name = "Equip/Unequip TED Gun"
+	name = "Aktywuj/Dezaktywuj TED Gun"
 
 /datum/action/item_action/toggle_paddles
-	name = "Toggle Paddles"
+	name = "Przełącz płetwy"
 
 /datum/action/item_action/set_internals
 	name = "Włącz/Wyłącz Zbiorniki Wewnętrzne"
@@ -260,7 +260,7 @@
 	name = "Wybierz Kolor"
 
 /datum/action/item_action/toggle_mister
-	name = "Toggle Mister"
+	name = "Przełącz Mister"
 
 /datum/action/item_action/activate_injector
 	name = "Aktywuj Wstrzykiwacz"
@@ -344,17 +344,17 @@
 	name = "Zmień Tryb Hełmu"
 
 /datum/action/item_action/toggle_beacon
-	name = "Toggle Hardsuit Locator Beacon"
+	name = "Włącz/wyłącz Lokalizator Kombinezonu"
 	icon_icon = 'icons/mob/actions.dmi'
 	button_icon_state = "toggle-transmission"
 
 /datum/action/item_action/toggle_beacon_hud
-	name = "Toggle Hardsuit Locator HUD"
+	name = "Włącz/wyłącz interfejs lokalizatora w kombinezonie"
 	icon_icon = 'icons/mob/actions.dmi'
 	button_icon_state = "toggle-hud"
 
 /datum/action/item_action/toggle_beacon_frequency
-	name = "Toggle Hardsuit Locator Frequency"
+	name = "Przełącz Częstotliwość Lokalizatora Kombinezonu"
 	icon_icon = 'icons/mob/actions.dmi'
 	button_icon_state = "change-code"
 
@@ -372,7 +372,7 @@
 	name = "STÓJ!"
 
 /datum/action/item_action/toggle_voice_box
-	name = "Toggle Voice Box"
+	name = "Przełącz Syntezator Mowy"
 
 /datum/action/item_action/change
 	name = "Zmień"
@@ -403,7 +403,7 @@
 	name = "Zacznij/Przestań Używać Ludzkiej Głowy"
 
 /datum/action/item_action/toggle_helmet
-	name = "Toggle Helmet"
+	name = "ZAłóż/Zdejmij Hełm"
 
 /datum/action/item_action/toggle_jetpack
 	name = "Włącz/Wyłącz Jetpack"
@@ -464,7 +464,7 @@
 	return ..()
 
 /datum/action/item_action/activate_remote_view
-	name = "Activate Remote View"
+	name = "Aktywuj Zdalny Widok"
 	desc = "Activates the Remote View of your spy sunglasses."
 
 /datum/action/item_action/organ_action
