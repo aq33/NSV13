@@ -640,6 +640,7 @@
 /obj/machinery/camera/autoname{
 	dir = 4
 	},
+/obj/effect/landmark/latejoin,
 /turf/open/floor/wood,
 /area/crew_quarters/cryopods)
 "bY" = (
@@ -1581,8 +1582,9 @@
 /area/crew_quarters/heads/cmo)
 "fo" = (
 /obj/structure/lattice,
+/obj/structure/grille,
 /turf/open/openspace/airless,
-/area/space)
+/area/space/nearstation)
 "fp" = (
 /obj/machinery/atmospherics/pipe/multiz/layer2,
 /turf/open/floor/plating,
@@ -3377,8 +3379,7 @@
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 9;
-	icon_state = "pipe11-1"
+	dir = 9
 	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
@@ -3799,9 +3800,10 @@
 /turf/closed/wall/ship,
 /area/maintenance/department/medical)
 "mk" = (
-/obj/effect/landmark/latejoin,
-/turf/open/floor/wood,
-/area/crew_quarters/cryopods)
+/obj/structure/table/wood/fancy/green,
+/obj/item/hatchet,
+/turf/open/floor/grass,
+/area/crew_quarters/dorms/nsv/nature_deck)
 "mm" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -7482,7 +7484,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 1
 	},
-/obj/effect/landmark/latejoin,
 /turf/open/floor/wood,
 /area/crew_quarters/cryopods)
 "yp" = (
@@ -7523,7 +7524,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 1
 	},
-/obj/effect/landmark/latejoin,
 /turf/open/floor/wood,
 /area/crew_quarters/cryopods)
 "yx" = (
@@ -9120,6 +9120,7 @@
 /obj/machinery/camera/autoname{
 	dir = 1
 	},
+/obj/effect/landmark/latejoin,
 /turf/open/floor/wood,
 /area/crew_quarters/cryopods)
 "DR" = (
@@ -9626,6 +9627,7 @@
 /obj/machinery/cryopod{
 	dir = 1
 	},
+/obj/effect/landmark/latejoin,
 /turf/open/floor/wood,
 /area/crew_quarters/cryopods)
 "FA" = (
@@ -10663,11 +10665,10 @@
 /turf/open/floor/plasteel/tiled/light,
 /area/bridge/cic)
 "IQ" = (
-/obj/machinery/recharge_station,
-/obj/effect/landmark/start/cyborg,
-/obj/effect/landmark/latejoin,
-/turf/open/floor/wood,
-/area/crew_quarters/cryopods)
+/obj/structure/grille,
+/obj/structure/lattice,
+/turf/open/openspace/airless,
+/area/space/nearstation)
 "IT" = (
 /obj/structure/table/glass/plasma,
 /obj/item/paper_bin,
@@ -10999,9 +11000,6 @@
 /obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/xo)
-"JW" = (
-/turf/closed/wall/r_wall/ship,
-/area/space/nearstation)
 "JX" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 8
@@ -11044,6 +11042,7 @@
 /obj/machinery/computer/cryopod{
 	pixel_x = -32
 	},
+/obj/effect/landmark/latejoin,
 /turf/open/floor/wood,
 /area/crew_quarters/cryopods)
 "Kf" = (
@@ -11832,12 +11831,10 @@
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/xo)
 "Mh" = (
-/obj/structure/bed,
-/obj/item/bedsheet/random,
-/obj/effect/landmark/start/assistant,
-/obj/effect/landmark/latejoin,
-/turf/open/floor/wood,
-/area/crew_quarters/cryopods)
+/obj/structure/lattice/catwalk,
+/obj/structure/lattice/catwalk,
+/turf/open/openspace/airless,
+/area/space/nearstation)
 "Mi" = (
 /obj/machinery/stasis,
 /obj/effect/turf_decal/tile/ship/blue{
@@ -14848,7 +14845,6 @@
 	pixel_y = -30
 	},
 /obj/effect/landmark/start/assistant,
-/obj/effect/landmark/latejoin,
 /turf/open/floor/wood,
 /area/crew_quarters/cryopods)
 "Wk" = (
@@ -44931,8 +44927,8 @@ Gu
 Tc
 yw
 yo
-mk
-mk
+Kf
+Kf
 wF
 Vp
 Lr
@@ -45186,9 +45182,9 @@ kG
 SB
 Fe
 mm
-IQ
-mk
-Mh
+zw
+Kf
+zA
 Wj
 vP
 Sf
@@ -46467,7 +46463,7 @@ yi
 WG
 ym
 sg
-td
+mk
 td
 Jh
 mm
@@ -55468,7 +55464,7 @@ cZ
 vi
 la
 Mk
-Et
+fx
 Et
 Hx
 aX
@@ -55725,7 +55721,7 @@ VV
 tG
 tg
 fx
-Et
+fx
 Et
 Lq
 qS
@@ -55982,7 +55978,7 @@ Wu
 fs
 IK
 fx
-JW
+fx
 RD
 Lq
 Lq
@@ -56227,8 +56223,8 @@ az
 bD
 az
 az
-az
-az
+Qn
+Qn
 fx
 fx
 FH
@@ -56239,7 +56235,7 @@ bV
 rX
 fx
 fx
-JW
+fx
 Et
 Lq
 Lq
@@ -56483,10 +56479,10 @@ zP
 zP
 zP
 zP
-zP
-zP
 az
 az
+fx
+fx
 fx
 eY
 SZ
@@ -56495,7 +56491,7 @@ bV
 yN
 QO
 fx
-az
+fx
 az
 Et
 iQ
@@ -56741,9 +56737,9 @@ zP
 zP
 zP
 zP
-zP
-zP
 az
+az
+fx
 fx
 fx
 My
@@ -56752,7 +56748,7 @@ XG
 Jl
 fx
 fx
-az
+fx
 az
 Et
 Et
@@ -56999,17 +56995,17 @@ zP
 zP
 zP
 zP
-zP
 az
-az
+fx
+fx
 fx
 gK
 gK
 gK
 gK
 fx
-az
-az
+fx
+fx
 az
 az
 az
@@ -57256,18 +57252,18 @@ zP
 zP
 zP
 zP
-zP
-zP
 az
+az
+fx
 fx
 DV
 BZ
 BZ
 DV
 fx
+fx
+Mh
 az
-zP
-zP
 zP
 zP
 zP
@@ -57512,20 +57508,20 @@ zP
 zP
 zP
 zP
-zP
-zP
+IQ
 zP
 az
+fx
 fx
 gK
 gK
 gK
 gK
 fx
+fx
 az
 zP
-zP
-zP
+IQ
 zP
 zP
 zP
@@ -57769,20 +57765,20 @@ zP
 zP
 zP
 zP
+IQ
 zP
+Ub
+fx
+az
+az
+az
+az
+az
+az
+fx
+Ub
 zP
-zP
-az
-az
-az
-az
-az
-az
-az
-az
-zP
-zP
-zP
+IQ
 zP
 zP
 zP
@@ -58026,20 +58022,20 @@ zP
 zP
 zP
 zP
+IQ
+IQ
+Ub
+Ub
 zP
 zP
 zP
-fo
 zP
 zP
 zP
-zP
-zP
-zP
-fo
-zP
-zP
-zP
+Ub
+Ub
+IQ
+IQ
 zP
 zP
 zP
@@ -58284,18 +58280,18 @@ zP
 zP
 zP
 zP
+IQ
 zP
-zP
-fo
-zP
-zP
-zP
+Ub
 zP
 zP
 zP
-fo
 zP
 zP
+zP
+Ub
+zP
+IQ
 zP
 zP
 zP
@@ -58541,8 +58537,8 @@ zP
 zP
 zP
 zP
-zP
-zP
+IQ
+IQ
 fo
 zP
 zP
@@ -58551,8 +58547,8 @@ zP
 zP
 zP
 fo
-zP
-zP
+IQ
+IQ
 zP
 zP
 zP
@@ -59058,12 +59054,12 @@ zP
 zP
 zP
 fo
-zP
-zP
-zP
-zP
-zP
-zP
+IQ
+IQ
+IQ
+IQ
+IQ
+IQ
 fo
 zP
 zP
@@ -59314,14 +59310,14 @@ zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
@@ -59571,14 +59567,14 @@ zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
@@ -59828,14 +59824,14 @@ zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
@@ -60085,14 +60081,14 @@ zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
@@ -60342,14 +60338,14 @@ zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
@@ -60599,14 +60595,14 @@ zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
@@ -60856,14 +60852,14 @@ zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
@@ -61113,14 +61109,14 @@ zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
@@ -61370,14 +61366,14 @@ zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
@@ -61627,14 +61623,14 @@ zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
 zP
 zP
 zP
-fo
+Ub
 zP
 zP
 zP
