@@ -12128,10 +12128,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/xo)
-"Mh" = (
-/obj/structure/lattice/catwalk,
-/turf/open/openspace/airless,
-/area/space/nearstation)
 "Mi" = (
 /obj/machinery/stasis,
 /obj/effect/turf_decal/tile/ship/blue{
@@ -13489,10 +13485,8 @@
 /turf/open/floor/plasteel/tiled/light,
 /area/bridge/cic)
 "QP" = (
+/obj/machinery/light/floor,
 /obj/machinery/camera/autoname,
-/obj/machinery/door/window/eastleft{
-	req_one_access_txt = "55"
-	},
 /turf/open/floor/engine/light,
 /area/science/xenobiology)
 "QS" = (
@@ -13705,6 +13699,7 @@
 /obj/machinery/computer/ship/viewscreen{
 	pixel_y = -30
 	},
+/obj/item/reagent_containers/syringe/lethal/execution,
 /turf/open/floor/carpet/ship/red_carpet,
 /area/ai_monitored/security/armory/lockup)
 "Ry" = (
@@ -14727,11 +14722,6 @@
 /obj/structure/hull_plate,
 /turf/closed/wall/r_wall/ship,
 /area/maintenance/department/crew_quarters/dorms)
-"UE" = (
-/obj/structure/window/plasma/reinforced/spawner/west,
-/obj/effect/spawner/lootdrop/two_percent_xeno_egg_spawner,
-/turf/open/floor/engine/light,
-/area/science/xenobiology)
 "UF" = (
 /obj/machinery/flasher/portable{
 	density = 0;
@@ -43209,7 +43199,7 @@ qb
 qb
 vA
 uw
-UE
+sC
 XJ
 sC
 tq
@@ -43466,7 +43456,7 @@ qb
 qb
 vA
 uw
-QP
+FX
 qf
 xl
 tq
@@ -44236,7 +44226,7 @@ vA
 KC
 vA
 vA
-AD
+QP
 sW
 eX
 Hs
@@ -57588,7 +57578,7 @@ BZ
 DV
 fx
 fx
-Mh
+az
 az
 zP
 zP
