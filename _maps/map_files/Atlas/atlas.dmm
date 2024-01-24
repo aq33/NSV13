@@ -3368,6 +3368,10 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/hallway/secondary/exit/departure_lounge)
+"kw" = (
+/obj/item/banhammer,
+/turf/open/floor/monotile/dark,
+/area/nsv/weapons)
 "kx" = (
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/layer_manifold{
@@ -15163,6 +15167,10 @@
 	id = "atlas_torp";
 	verted = -1
 	},
+/turf/open/floor/monotile/dark,
+/area/nsv/weapons)
+"WF" = (
+/obj/item/analyzer,
 /turf/open/floor/monotile/dark,
 /area/nsv/weapons)
 "WH" = (
@@ -52744,7 +52752,7 @@ DT
 mP
 fa
 uZ
-mP
+WF
 Fq
 Te
 Eu
@@ -53001,7 +53009,7 @@ mP
 mP
 gc
 mk
-mP
+kw
 PX
 qB
 gk
