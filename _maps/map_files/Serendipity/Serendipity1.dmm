@@ -12130,7 +12130,6 @@
 /area/crew_quarters/heads/xo)
 "Mh" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/lattice/catwalk,
 /turf/open/openspace/airless,
 /area/space/nearstation)
 "Mi" = (
