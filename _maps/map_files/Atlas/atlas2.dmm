@@ -5629,6 +5629,12 @@
 "yE" = (
 /turf/closed/wall/r_wall,
 /area/engine/gravity_generator)
+"yH" = (
+/obj/structure/hull_plate/end{
+	dir = 5
+	},
+/turf/open/floor/engine/airless,
+/area/space)
 "yJ" = (
 /turf/open/floor/circuit/telecomms/server,
 /area/tcommsat/server)
@@ -8548,10 +8554,10 @@
 /area/ai_monitored/nuke_storage)
 "KN" = (
 /obj/structure/hull_plate/end{
-	dir = 2
+	dir = 1
 	},
 /turf/open/floor/engine/airless,
-/area/space/nearstation)
+/area/space)
 "KO" = (
 /obj/machinery/light_switch/north,
 /obj/structure/table,
@@ -9642,6 +9648,12 @@
 "Ph" = (
 /turf/template_noop,
 /area/maintenance/nsv/deck1/starboard)
+"Pj" = (
+/obj/structure/hull_plate/end{
+	dir = 4
+	},
+/turf/open/floor/engine/airless,
+/area/space)
 "Pk" = (
 /turf/closed/wall/steel,
 /area/hallway/nsv/deck1/hallway)
@@ -10503,6 +10515,10 @@
 /obj/machinery/dna_scannernew,
 /turf/open/floor/durasteel/lino,
 /area/medical/medbay)
+"Ty" = (
+/obj/structure/hull_plate,
+/turf/open/floor/engine/airless,
+/area/space)
 "Tz" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/camera/autoname{
@@ -48196,7 +48212,7 @@ cL
 cL
 cL
 cL
-cL
+KN
 lx
 Ok
 HW
@@ -48453,7 +48469,7 @@ cL
 cL
 cL
 cL
-cL
+KN
 lx
 Iq
 pu
@@ -48710,7 +48726,7 @@ cL
 cL
 cL
 cL
-cL
+KN
 lx
 Ok
 pu
@@ -48967,7 +48983,7 @@ cL
 cL
 cL
 cL
-cL
+KN
 lx
 ok
 HW
@@ -49224,7 +49240,7 @@ cL
 cL
 cL
 cL
-cL
+KN
 lx
 VT
 Yd
@@ -49481,7 +49497,7 @@ cL
 cL
 cL
 cL
-cL
+KN
 lx
 nt
 Yf
@@ -49738,7 +49754,7 @@ cL
 cL
 cL
 cL
-cL
+KN
 lx
 lx
 GX
@@ -49995,8 +50011,8 @@ cL
 cL
 cL
 cL
-cL
-cL
+KN
+lx
 lx
 HW
 Nh
@@ -50251,9 +50267,9 @@ cL
 cL
 cL
 cL
-Cw
 cL
-cL
+KN
+Ty
 lx
 lx
 lx
@@ -50509,10 +50525,10 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
+KN
+Ty
+Ty
+Ty
 lx
 Oa
 bo
@@ -50761,15 +50777,15 @@ cL
 cL
 cL
 cL
+Cw
 cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
+yH
+Pj
+Pj
+Pj
 lx
 Oa
 iV
@@ -51027,7 +51043,7 @@ cL
 cL
 cL
 cL
-cL
+KN
 Oa
 Es
 ed
@@ -51058,7 +51074,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 cx
 cx
 cx
@@ -51284,7 +51300,7 @@ cL
 cL
 cL
 cL
-cL
+KN
 Oa
 Oa
 GL
@@ -51315,7 +51331,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 cx
 cx
 cx
@@ -51541,11 +51557,11 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-JK
+yH
+Pj
+Pj
+Pj
+Pj
 Oa
 GL
 GL
@@ -51572,7 +51588,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 cx
 cx
 cx
@@ -51802,10 +51818,10 @@ cL
 cL
 cL
 cL
-JK
-JK
-JK
-JK
+cL
+cL
+cL
+cL
 Oj
 XO
 Xe
@@ -51829,7 +51845,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 cx
 cx
 cx
@@ -52086,7 +52102,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 cx
 cx
 cx
@@ -52343,7 +52359,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 cx
 cx
 cx
@@ -52600,7 +52616,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 cx
 cx
 cx
@@ -52857,7 +52873,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 cx
 cx
 cx
@@ -53114,7 +53130,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 cx
 cx
 cx
@@ -53371,7 +53387,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 cx
 vc
 vc
@@ -53893,7 +53909,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 cx
 cx
 cx
@@ -54150,7 +54166,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 cx
 cx
 cx
@@ -54407,7 +54423,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 cx
 cx
 cx
@@ -54664,7 +54680,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 cx
 cx
 Cf
@@ -54921,7 +54937,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 Cf
 Cf
 cL
@@ -55434,7 +55450,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 cL
 Cf
 cL
@@ -55691,7 +55707,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 cL
 Cf
 cL
@@ -56206,7 +56222,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 Cf
 cL
 cL
@@ -56463,7 +56479,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 Cf
 cL
 cL
@@ -56720,7 +56736,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 Cf
 cL
 cL
@@ -56977,7 +56993,7 @@ mK
 mK
 mK
 mK
-KN
+Rg
 Cf
 cL
 cL

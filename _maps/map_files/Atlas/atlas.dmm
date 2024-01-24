@@ -10562,6 +10562,11 @@
 	},
 /turf/open/floor/plating,
 /area/engine/atmos)
+"HX" = (
+/obj/structure/lattice,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space/nearstation)
 "Ia" = (
 /obj/structure/table_frame,
 /obj/item/relic,
@@ -55282,8 +55287,8 @@ Nh
 Nh
 Nh
 Nh
-Nh
-iV
+ms
+ms
 iV
 iV
 iV
@@ -55545,9 +55550,9 @@ iV
 iV
 iV
 iV
-Ly
-sh
-sh
+iV
+iV
+iV
 CY
 iV
 iV
@@ -55798,13 +55803,13 @@ Nh
 Nh
 Nh
 Nh
-Nh
+ms
 iV
 iV
 iV
 iV
 iV
-Ly
+iV
 iV
 iV
 iV
@@ -56057,12 +56062,12 @@ Nh
 Nh
 Nh
 Nh
-iV
-iV
-iV
-iV
-iV
-iV
+Nh
+Nh
+HX
+ms
+ms
+ms
 iV
 iV
 iV
@@ -56318,8 +56323,8 @@ Nh
 Nh
 Nh
 Nh
-iV
-iV
+ms
+ms
 iV
 iV
 iV
@@ -56575,7 +56580,7 @@ Nh
 Nh
 Nh
 Nh
-Nh
+ms
 Nh
 iV
 iV
@@ -56832,9 +56837,9 @@ Nh
 Nh
 Nh
 Nh
-Nh
-Nh
-Nh
+ms
+ms
+ms
 iV
 iV
 iV
@@ -57091,7 +57096,7 @@ Nh
 Nh
 Nh
 Nh
-Nh
+ms
 Nh
 iV
 iV
@@ -57348,8 +57353,8 @@ Nh
 Nh
 Nh
 Nh
-Nh
-Nh
+ms
+ms
 iV
 iV
 EE
