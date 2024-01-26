@@ -6071,6 +6071,9 @@
 /area/nsv/weapons/gauss/battery/deck2/starboard)
 "sE" = (
 /obj/effect/turf_decal/tile/yellow,
+/obj/machinery/armour_plating_nanorepair_pump/aft_starboard{
+	apnw_id = "atlas_comedy"
+	},
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck2/primary)
 "sF" = (
@@ -6749,9 +6752,6 @@
 	},
 /obj/effect/turf_decal/tile/yellow,
 /obj/machinery/firealarm/directional/east,
-/obj/machinery/armour_plating_nanorepair_pump/aft_starboard{
-	apnw_id = "atlas_comedy"
-	},
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck2/primary)
 "ux" = (
@@ -7927,12 +7927,12 @@
 /turf/open/floor/monotile/dark,
 /area/nsv/weapons)
 "yy" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/armour_plating_nanorepair_pump/aft_port{
+	apnw_id = "atlas_comedy"
 	},
-/obj/effect/spawner/lootdrop/grille_or_trash,
-/turf/open/floor/plating,
-/area/maintenance/nsv/deck2/port)
+/turf/open/floor/monotile/steel,
+/area/hallway/nsv/deck2/primary)
 "yA" = (
 /obj/machinery/newscaster/directional/east,
 /turf/open/floor/carpet/red,
@@ -10637,9 +10637,6 @@
 	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
-	},
-/obj/machinery/armour_plating_nanorepair_pump/aft_port{
-	apnw_id = "atlas_comedy"
 	},
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck2/primary)
@@ -45814,7 +45811,7 @@ wb
 PZ
 Ir
 Bc
-sE
+yy
 YQ
 Ie
 qG
@@ -47069,7 +47066,7 @@ Nb
 kH
 bs
 dl
-yy
+dl
 dl
 fH
 gF
