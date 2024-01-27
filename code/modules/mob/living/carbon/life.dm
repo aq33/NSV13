@@ -380,11 +380,11 @@ All effects don't start immediately, but rather get worse over time; the rate is
 91-100: Dangerously toxic - swift death
 */
 #define BALLMER_POINTS 5
-GLOBAL_LIST_INIT(ballmer_good_msg, list("Hey guys, what if we rolled out a bluespace wiring system so mice can't destroy the powergrid anymore?",
-										"Hear me out here. What if, and this is just a theory, we made R&D controllable from our PDAs?",
-										"I'm thinking we should roll out a git repository for our research under the AGPLv3 license so that we can share it among the other stations freely.",
-										"I dunno about you guys, but IDs and PDAs being separate is clunky as fuck. Maybe we should merge them into a chip in our arms? That way they can't be stolen easily.",
-										"Why the fuck aren't we just making every pair of shoes into galoshes? We have the technology."))
+GLOBAL_LIST_INIT(ballmer_good_msg, list("Hej, chłopaki, co by było, gdybyśmy wdrożyli system okablowania Bluespace, tak aby myszy nie mogły już niszczyć sieci energetycznej?",
+										"Słuchaj tego. A co jeśli – a to tylko teoria – umożliwimy sterowanie pracami badawczo-rozwojowymi za pomocą naszych urządzeń PDA?",
+										"Myślę, że powinniśmy udostępnić repozytorium gita dla naszych badań na licencji AGPLv3, abyśmy mogli swobodnie udostępniać je innym stacjom.",
+										"Nie wiem jak wy, ale rozdzielenie identyfikatorów i urządzeń PDA jest cholernie nieporęczne. Może powinniśmy połączyć je w chip w naszych ramionach? Dzięki temu nie będzie można ich łatwo ukraść.",
+										"Dlaczego, kurwa, nie zrobimy po prostu z każdej pary butów kaloszy? Mamy technologię."))
 GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Ej stary, co jeśli byśmy, eee, włożyli serwer internetowy, który jest automatycznie włączony z domyślnym hasłem, w każde PDA?",
 												"Więc tak, wiesz jak oddzielamy nasz kod źródłowy od głównej kopii, która działa na naszych konsumenckich pudłach? Co jeśli połączymy te dwa i zniesiemy separację między bazą kodu a serwerem?",
 												"Stary, radykalny pomysł: H.O.N.K. mechy, ale bez wymaganego bananium.",
