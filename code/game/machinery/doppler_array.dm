@@ -6,7 +6,7 @@
 	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "tdoppler"
 	density = TRUE
-	verb_say = "states coldly"
+	verb_say = "ozięble stwierdza"
 	var/cooldown = 10
 	var/next_announce = 0
 	var/integrated = FALSE
