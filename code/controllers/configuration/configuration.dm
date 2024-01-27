@@ -468,6 +468,9 @@
 			continue
 		if(findtextEx(line,"#",1,2))
 			continue
+		if(findtextEx(line,"$",1,2))
+			roleplay_filter += "\\b[REGEX_QUOTE(copytext(line, 2))]\\b"
+			continue
 		roleplay_filter += REGEX_QUOTE(line)
 
 	rp_filter_regex = roleplay_filter.len ? regex("([jointext(roleplay_filter, "|")])", "i") : null
