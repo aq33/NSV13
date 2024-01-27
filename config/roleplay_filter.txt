@@ -1,0 +1,6 @@
+#################################################################################################################
+# Words that will give you actual, in-game brain damage when you say them in-game.                        		#
+# Case is not important. Commented-out examples are listed below, just remove the "#".        					#
+#################################################################################################################
+xd
+bruh
