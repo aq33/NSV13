@@ -470,7 +470,7 @@
 			continue
 		roleplay_filter += REGEX_QUOTE(line)
 
-	rp_filter_regex = roleplay_filter.len ? regex("\\b([jointext(roleplay_filter, "|")])\\b", "i") : null
+	rp_filter_regex = roleplay_filter.len ? regex("([jointext(roleplay_filter, "|")])", "i") : null
 
 	// AQ EDIT END
 
