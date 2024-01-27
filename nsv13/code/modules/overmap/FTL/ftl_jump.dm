@@ -49,7 +49,7 @@
 	//End the round upon entering O45.
 	if(system_traits & STARSYSTEM_END_ON_ENTER)
 		if(OM.role == MAIN_OVERMAP)
-			priority_announce("[station_name()] has successfully returned to [src] for resupply and crew transfer, excellent work crew.", "Naval Command")
+			priority_announce("[station_name()] z powodzeniem powróciła do [src] na uzupełnienia i wymianę personelu. Doskonała robota, załogo.", "Dowództwo Marynarki")
 			GLOB.crew_transfer_risa = TRUE
 			SSticker.mode.check_finished()
 			SSticker.news_report = SHIP_VICTORY
@@ -228,7 +228,7 @@
 	SSstar_system.ships[src]["to_time"] = world.time + speed MINUTES
 	SEND_SIGNAL(src, COMSIG_FTL_STATE_CHANGE)
 	if(role == MAIN_OVERMAP) //Scuffed please fix
-		priority_announce("Attention: All hands brace for FTL translation. Destination: [target_system]. Projected arrival time: [station_time_timestamp("hh:mm", world.time + speed MINUTES)] (Local time)","Automated announcement")
+		priority_announce("Uwaga: Przygotować się na transfer FTL. Cel: [target_system]. Przewidywany czas przybycia: [station_time_timestamp("hh:mm", world.time + speed MINUTES)] (Local time)","Automatyczne ogłoszenie")
 		if(structure_crit && !istype(src, /obj/structure/overmap/small_craft)) //Tear the ship apart if theyre trying to limp away.
 			for(var/i = 0, i < rand(4,8), i++)
 				var/name = pick(GLOB.teleportlocs)
