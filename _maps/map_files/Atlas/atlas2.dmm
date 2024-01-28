@@ -3579,6 +3579,10 @@
 /obj/effect/spawner/lootdrop/maintenance/four,
 /turf/open/floor/durasteel/techfloor_grid,
 /area/maintenance/nsv/deck1/port)
+"nv" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/medical/genetics)
 "nD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -7626,10 +7630,6 @@
 /obj/structure/table/reinforced,
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck1/hallway)
-"DQ" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/medical/genetics)
 "DR" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -10029,13 +10029,6 @@
 	},
 /turf/open/floor/durasteel/techfloor,
 /area/ai_monitored/turret_protected/aisat)
-"MI" = (
-/obj/machinery/door/firedoor/border_only/directional/west,
-/obj/machinery/door/firedoor/border_only/directional/east,
-/obj/effect/landmark/zebra_interlock_point,
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/medical/medbay)
 "MJ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
@@ -10888,6 +10881,7 @@
 /turf/open/floor/plasteel/airless/solarpanel,
 /area/space/nearstation)
 "PK" = (
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/medical/chemistry)
 "PM" = (
@@ -47654,7 +47648,7 @@ RQ
 ur
 dO
 Tx
-DQ
+nv
 wy
 Lw
 Zb
@@ -47907,11 +47901,11 @@ nV
 HT
 TX
 nD
-DQ
+nv
 Jw
 qK
 BD
-DQ
+nv
 dM
 bi
 AJ
@@ -48164,11 +48158,11 @@ Dp
 TZ
 fn
 uv
-DQ
+nv
 ep
 jH
 qS
-DQ
+nv
 VE
 xm
 pJ
@@ -48425,7 +48419,7 @@ RQ
 DC
 Zl
 CG
-DQ
+nv
 AY
 Ky
 rX
@@ -48679,16 +48673,16 @@ MQ
 wu
 FE
 RQ
-DQ
+nv
 vD
-DQ
+nv
 RQ
 NC
 Cu
 WJ
 WJ
 ES
-MI
+Wa
 cH
 Nj
 yM
