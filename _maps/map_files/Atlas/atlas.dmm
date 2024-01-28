@@ -806,8 +806,6 @@
 /turf/open/floor/plating,
 /area/science)
 "cB" = (
-/obj/machinery/power/port_gen/pacman,
-/obj/item/stack/cable_coil,
 /obj/machinery/requests_console{
 	department = "Engineering";
 	departmentType = 4;
@@ -817,12 +815,13 @@
 /obj/effect/turf_decal/tile/ship/half/yellow{
 	dir = 1
 	},
+/obj/structure/tank_dispenser,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "cD" = (
 /obj/effect/turf_decal/tile/ship/half/yellow,
 /obj/machinery/firealarm/directional/south,
-/obj/machinery/rnd/production/techfab/department/engineering,
+/obj/machinery/rnd/production/protolathe/department/engineering,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "cF" = (
@@ -1468,9 +1467,11 @@
 /turf/open/floor/carpet/orange,
 /area/engine/engine_room)
 "eO" = (
-/obj/effect/spawner/structure/window/reinforced/shutter,
-/turf/open/floor/plating,
-/area/hallway/secondary/exit/departure_lounge)
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/monotile/steel/airless,
+/area/nsv/hanger/mining)
 "eR" = (
 /obj/item/trash/chips,
 /turf/open/floor/plating,
@@ -1962,9 +1963,13 @@
 /turf/open/floor/carpet/ship,
 /area/nsv/hanger/notkmcstupidhanger)
 "gf" = (
-/obj/structure/tank_dispenser,
 /obj/structure/sign/poster/official/random{
 	pixel_x = 32
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/fax{
+	fax_name = "Engineering";
+	name = "Engineerings Fax Machine"
 	},
 /turf/open/floor/carpet/orange,
 /area/engine/engine_room)
@@ -2041,6 +2046,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "gq" = (
@@ -2210,9 +2216,8 @@
 /turf/open/floor/engine/airless,
 /area/space/nearstation)
 "gU" = (
-/obj/effect/spawner/structure/window/reinforced/shutter,
-/turf/open/floor/plating,
-/area/quartermaster/miningoffice)
+/turf/closed/wall/r_wall,
+/area/space)
 "gV" = (
 /obj/machinery/atmospherics/pipe/manifold/general/hidden/layer2{
 	dir = 1
@@ -2665,9 +2670,6 @@
 	icon_state = "1-2"
 	},
 /obj/effect/turf_decal/tile/ship/half/yellow,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "in" = (
@@ -3722,13 +3724,7 @@
 "lo" = (
 /obj/effect/turf_decal/tile/ship/half/yellow,
 /obj/machinery/power/apc/auto_name/south,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/machinery/computer/station_alert{
-	dir = 1;
-	name = "ship alert console"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "lp" = (
@@ -3863,7 +3859,6 @@
 "lF" = (
 /obj/machinery/airalarm/directional/east,
 /obj/structure/disposalpipe/segment,
-/mob/living/simple_animal/bot/floorbot,
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "lG" = (
@@ -4066,7 +4061,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/effect/spawner/structure/window/reinforced/shutter,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port)
 "mv" = (
@@ -5174,6 +5169,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/monotile/steel,
 /area/nsv/weapons)
 "pE" = (
@@ -5203,6 +5199,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/monotile/steel,
 /area/nsv/weapons)
 "pH" = (
@@ -6361,6 +6358,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 5
 	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
 /turf/open/floor/carpet/orange,
 /area/engine/engine_room)
 "tv" = (
@@ -7126,10 +7126,9 @@
 /turf/open/floor/monotile/steel,
 /area/nsv/weapons/gauss/battery/deck2/starboard)
 "vD" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/effect/landmark/zebra_interlock_point,
-/turf/open/floor/plating,
-/area/science)
+/mob/living/simple_animal/bot/floorbot,
+/turf/open/floor/monotile/steel,
+/area/engine/engine_room)
 "vE" = (
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -7278,7 +7277,7 @@
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "vZ" = (
-/obj/effect/spawner/structure/window/reinforced/shutter,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/crew_quarters/abandoned_gambling_den{
 	name = "Abandoned Bar"
@@ -7447,6 +7446,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 5
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
 	},
 /turf/open/floor/carpet/orange,
 /area/engine/engine_room)
@@ -8455,6 +8457,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
+/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "Aa" = (
@@ -8677,6 +8680,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "Bc" = (
@@ -8739,10 +8745,11 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/closet/secure_closet/engineering_electrical,
 /obj/effect/turf_decal/tile/ship/half/yellow{
 	dir = 1
 	},
+/obj/item/stack/cable_coil,
+/obj/machinery/power/port_gen/pacman,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "Br" = (
@@ -9800,11 +9807,6 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/fax{
-	fax_name = "Engineering";
-	name = "Engineerings Fax Machine"
-	},
-/obj/structure/table/reinforced,
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "Fu" = (
@@ -10055,6 +10057,9 @@
 /obj/effect/landmark/start/station_engineer,
 /obj/structure/chair/office/light{
 	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
 	},
 /turf/open/floor/carpet/orange,
 /area/engine/engine_room)
@@ -10346,7 +10351,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/effect/spawner/structure/window/reinforced/shutter,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/starboard)
 "Hl" = (
@@ -10604,14 +10609,17 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
 /obj/machinery/power/solar_control{
 	dir = 1
 	},
 /obj/machinery/camera/autoname{
 	dir = 1
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
 	},
 /turf/open/floor/carpet/orange,
 /area/engine/engine_room)
@@ -10721,7 +10729,7 @@
 /turf/open/floor/engine,
 /area/engine/engine_room)
 "IG" = (
-/obj/effect/spawner/structure/window/reinforced/shutter,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port)
 "II" = (
@@ -11488,17 +11496,13 @@
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck2/primary)
 "KZ" = (
-/obj/machinery/computer/ship/reactor_control_computer{
-	dir = 1;
-	reactor_id = "atlas_69420"
+/obj/machinery/light,
+/obj/machinery/computer/monitor{
+	dir = 1
 	},
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/light,
 /turf/open/floor/carpet/orange,
 /area/engine/engine_room)
 "La" = (
@@ -11794,14 +11798,12 @@
 /turf/open/floor/monotile/steel,
 /area/security/brig)
 "LR" = (
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
+/obj/machinery/computer/station_alert{
+	dir = 1;
+	name = "ship alert console"
 	},
-/obj/machinery/computer/monitor{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
+/obj/structure/cable{
+	icon_state = "0-4"
 	},
 /turf/open/floor/carpet/orange,
 /area/engine/engine_room)
@@ -12287,11 +12289,12 @@
 /turf/open/floor/durasteel/techfloor,
 /area/maintenance/nsv/deck2/starboard)
 "Nu" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable/yellow{
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "Nv" = (
 /obj/effect/decal/cleanable/cobweb,
@@ -12341,9 +12344,7 @@
 "NI" = (
 /obj/effect/turf_decal/tile/ship/half/yellow,
 /obj/machinery/light,
-/obj/machinery/computer/rdconsole/production{
-	dir = 1
-	},
+/obj/machinery/rnd/production/circuit_imprinter,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "NN" = (
@@ -12377,12 +12378,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck2/primary)
-"NQ" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
 "NR" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -13176,6 +13171,9 @@
 /obj/effect/turf_decal/tile/ship/half/yellow,
 /obj/structure/sign/poster/official/random{
 	pixel_y = -32
+	},
+/obj/machinery/computer/rdconsole/production{
+	dir = 1
 	},
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
@@ -14118,7 +14116,7 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "Tj" = (
-/obj/effect/spawner/structure/window/reinforced/shutter,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/starboard)
 "Tk" = (
@@ -15223,7 +15221,6 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 8
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/science)
 "WQ" = (
@@ -15392,6 +15389,9 @@
 "Xx" = (
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
 	},
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
@@ -42482,7 +42482,7 @@ MO
 MO
 Un
 zZ
-Nu
+Qf
 MO
 rj
 Ax
@@ -42739,7 +42739,7 @@ MO
 MO
 om
 Ba
-NQ
+Zr
 Ft
 QT
 TT
@@ -42996,7 +42996,7 @@ kH
 MO
 qe
 wW
-Sl
+Nu
 Sl
 Sl
 nx
@@ -43253,7 +43253,7 @@ ys
 iS
 rA
 CS
-NT
+Ld
 NT
 XI
 nA
@@ -43505,12 +43505,12 @@ kH
 bh
 AU
 Sf
-bh
+ML
 Jo
 MO
 cB
 Vi
-oz
+vD
 PW
 Yy
 nB
@@ -49448,7 +49448,7 @@ AS
 In
 In
 ye
-eO
+JT
 Od
 Nh
 Nh
@@ -49705,7 +49705,7 @@ sq
 ND
 Vj
 Lm
-eO
+JT
 Od
 Nh
 Nh
@@ -53293,7 +53293,7 @@ Dy
 Dy
 Dy
 Dy
-vD
+sn
 fc
 oo
 tP
@@ -53562,7 +53562,7 @@ Qs
 De
 cY
 De
-gU
+Jq
 Od
 Nh
 Nh
@@ -53819,7 +53819,7 @@ ar
 wt
 zJ
 ya
-gU
+Jq
 Od
 Nh
 Nh
@@ -54076,7 +54076,7 @@ NN
 wk
 sA
 Ja
-gU
+Jq
 Od
 Nh
 Nh
@@ -54847,7 +54847,7 @@ Uy
 DH
 Vy
 zc
-gU
+Jq
 Od
 Nh
 Nh
@@ -55104,7 +55104,7 @@ LX
 DH
 lg
 kx
-gU
+Jq
 Od
 Nh
 Nh
@@ -55617,9 +55617,9 @@ xs
 be
 be
 PJ
+eO
 fn
-Pm
-Nh
+gU
 Nh
 Nh
 Nh
@@ -55874,9 +55874,9 @@ qk
 sH
 sH
 sH
+sH
 BF
-Pm
-Nh
+gU
 Nh
 Nh
 Nh
@@ -56130,10 +56130,10 @@ Pm
 LW
 sH
 sH
+sH
 Vg
 BF
-Pm
-Nh
+gU
 Nh
 Nh
 Nh
@@ -56388,9 +56388,9 @@ HP
 sH
 sH
 sH
+sH
 hJ
-Pm
-Nh
+gU
 Nh
 Nh
 Nh
@@ -56645,9 +56645,9 @@ Ju
 sH
 sH
 sH
+sH
 no
-Pm
-Nh
+gU
 Nh
 Nh
 Nh
@@ -56901,10 +56901,10 @@ Pm
 Ju
 sH
 sH
+sH
 Vg
 BF
-Pm
-Nh
+gU
 Nh
 Nh
 Nh
@@ -57159,9 +57159,9 @@ Ju
 sH
 sH
 sH
+sH
 BF
-Pm
-Nh
+gU
 Nh
 Nh
 Nh
@@ -57416,9 +57416,9 @@ Ju
 sH
 sH
 sH
+sH
 BF
-Pm
-Nh
+gU
 Nh
 Nh
 Nh
@@ -57673,9 +57673,9 @@ oi
 Zs
 Zs
 Zs
+Zs
 Hd
-Pm
-Nh
+gU
 Nh
 Nh
 Nh
@@ -57930,9 +57930,9 @@ Pm
 VO
 VO
 VO
+VO
 uA
-Pm
-Nh
+gU
 Nh
 Nh
 Nh

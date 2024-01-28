@@ -1822,10 +1822,6 @@
 	},
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck1/hallway)
-"gS" = (
-/obj/effect/spawner/structure/window/reinforced/shutter,
-/turf/open/floor/plating,
-/area/crew_quarters/bar/mess_hall)
 "gT" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk,
@@ -3064,14 +3060,6 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/starboard)
 "lj" = (
-/obj/machinery/button/door{
-	dir = 8;
-	id = "atlas_dorm_1";
-	name = "Lock Control";
-	normaldoorcontrol = 1;
-	pixel_x = -32;
-	specialfunctions = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 6
 	},
@@ -3591,11 +3579,6 @@
 /obj/effect/spawner/lootdrop/maintenance/four,
 /turf/open/floor/durasteel/techfloor_grid,
 /area/maintenance/nsv/deck1/port)
-"nv" = (
-/obj/effect/spawner/structure/window,
-/obj/effect/landmark/zebra_interlock_point,
-/turf/open/floor/plating,
-/area/medical/genetics)
 "nD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -4770,7 +4753,10 @@
 /turf/open/floor/durasteel/alt,
 /area/medical/storage)
 "sn" = (
-/obj/structure/mineral_door/wood,
+/obj/machinery/door/airlock/ship/public{
+	dir = 4;
+	name = "WC"
+	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/crew_quarters/toilet)
 "sp" = (
@@ -5332,11 +5318,11 @@
 /turf/open/floor/monotile/light,
 /area/crew_quarters/kitchen)
 "uK" = (
-/obj/effect/spawner/structure/window/reinforced/shutter,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/ai_monitored/turret_protected/aisat)
 "uL" = (
-/obj/effect/spawner/structure/window,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/library)
 "uN" = (
@@ -5539,7 +5525,7 @@
 /turf/open/floor/circuit/telecomms/server,
 /area/tcommsat/server)
 "vx" = (
-/obj/effect/spawner/structure/window/reinforced/shutter,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/medical/virology)
 "vy" = (
@@ -5621,10 +5607,10 @@
 	dir = 4;
 	id = "atlas_cap"
 	},
-/obj/effect/spawner/structure/window/reinforced/shutter,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/crew_quarters/heads/captain)
 "vL" = (
@@ -6388,7 +6374,7 @@
 /area/medical/morgue)
 "yW" = (
 /obj/structure/disposalpipe/segment,
-/obj/effect/spawner/structure/window/reinforced/shutter,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/medical/virology)
 "yY" = (
@@ -7641,7 +7627,7 @@
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck1/hallway)
 "DQ" = (
-/obj/effect/spawner/structure/window,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/medical/genetics)
 "DR" = (
@@ -8406,7 +8392,7 @@
 	},
 /area/maintenance/nsv/deck1/starboard)
 "GL" = (
-/obj/effect/spawner/structure/window/reinforced/shutter,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/crew_quarters/theatre)
 "GM" = (
@@ -8557,6 +8543,14 @@
 	},
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/spawner/lootdrop/costume,
+/obj/machinery/button/door{
+	dir = 8;
+	id = "atlas_dorm_1";
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	pixel_x = -32;
+	specialfunctions = 4
+	},
 /turf/open/floor/carpet/ship,
 /area/crew_quarters/dorms)
 "Hn" = (
@@ -9219,10 +9213,6 @@
 /obj/structure/lattice,
 /turf/open/openspace/airless,
 /area/space)
-"JL" = (
-/obj/effect/spawner/structure/window,
-/turf/open/floor/plating,
-/area/crew_quarters/theatre)
 "JM" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -10040,10 +10030,10 @@
 /turf/open/floor/durasteel/techfloor,
 /area/ai_monitored/turret_protected/aisat)
 "MI" = (
-/obj/effect/spawner/structure/window,
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/effect/landmark/zebra_interlock_point,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/medical/medbay)
 "MJ" = (
@@ -10898,8 +10888,6 @@
 /turf/open/floor/plasteel/airless/solarpanel,
 /area/space/nearstation)
 "PK" = (
-/obj/effect/spawner/structure/window,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/medical/chemistry)
 "PM" = (
@@ -12075,7 +12063,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/effect/spawner/structure/window/reinforced/shutter,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/crew_quarters/heads/captain)
 "Uy" = (
@@ -12133,7 +12121,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/effect/spawner/structure/window/reinforced/shutter,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/ai_monitored/turret_protected/aisat)
 "UK" = (
@@ -12234,6 +12222,7 @@
 /obj/machinery/computer/ship/viewscreen{
 	pixel_y = 32
 	},
+/obj/machinery/newscaster/directional/east,
 /turf/open/floor/plasteel/showroomfloor,
 /area/crew_quarters/toilet)
 "Vg" = (
@@ -12437,8 +12426,7 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port)
 "Wa" = (
-/obj/effect/spawner/structure/window,
-/obj/effect/landmark/zebra_interlock_point,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/medical/medbay)
 "Wb" = (
@@ -47919,7 +47907,7 @@ nV
 HT
 TX
 nD
-nv
+DQ
 Jw
 qK
 BD
@@ -48176,7 +48164,7 @@ Dp
 TZ
 fn
 uv
-nv
+DQ
 ep
 jH
 qS
@@ -48691,9 +48679,9 @@ MQ
 wu
 FE
 RQ
-nv
+DQ
 vD
-nv
+DQ
 RQ
 NC
 Cu
@@ -52263,7 +52251,7 @@ Az
 YJ
 jX
 EC
-JL
+GL
 kD
 Fy
 Dt
@@ -52520,7 +52508,7 @@ Az
 Qf
 qe
 nk
-JL
+GL
 sr
 Qi
 hI
@@ -54321,8 +54309,8 @@ cL
 JK
 Oj
 Oj
-gS
-gS
+Fl
+Fl
 xf
 xf
 xf
