@@ -825,7 +825,7 @@ Proc to spool up a new Z-level for a player ship and assign it a treadmill.
 	if(world.time < next_maneuvre)
 		to_chat(pilot, "<span class='notice'>Engines on cooldown to prevent overheat</span>")
 		return FALSE
-	relay('nsv13/sound/effects/ship/afterburner.ogg', message="<span class='warning'>You feel the ship lurch suddenly.</span>", loop=FALSE)
+	relay('nsv13/sound/effects/ship/afterburner.ogg', message="<span class='warning'>Czujesz, że statek się nagle przechyla.</span>", loop=FALSE)
 	if(helm && prob(80))
 		var/sound = pick(GLOB.computer_beeps)
 		playsound(helm, sound, 100, 1)
