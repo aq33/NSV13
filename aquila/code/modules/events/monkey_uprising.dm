@@ -1,7 +1,7 @@
 /datum/round_event_control/monkey_uprising
 	name = "Monkey Uprising"
 	typepath = /datum/round_event/monkey_uprising
-	weight = 15
+	weight = 10
 	max_occurrences = 1
 	min_players = 15
 
