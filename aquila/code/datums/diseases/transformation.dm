@@ -26,6 +26,7 @@
 
 /datum/disease/transformation/jungle_fever/proc/init_monkey(var/mob/living/carbon/monkey/M)
 	M.ai_controller = new /datum/ai_controller/monkey/angry(M)
+	M.ventcrawler = VENTCRAWLER_ALWAYS
 
 /datum/disease/transformation/jungle_fever/after_add()
 	if(ismonkey(affected_mob))
@@ -50,7 +51,6 @@
 			affected_mob.junglegorillize()
 		else
 			var/mob/living/carbon/monkey/M = affected_mob.monkeyize(TR_KEEPITEMS | TR_KEEPIMPLANTS | TR_KEEPVIRUS | TR_KEEPSE)
-			M.ventcrawler = VENTCRAWLER_ALWAYS
 			var/datum/atom_hud/H = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 			H.add_hud_to(M)
 			init_monkey(M)
