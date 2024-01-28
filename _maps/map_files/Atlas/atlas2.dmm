@@ -5121,7 +5121,6 @@
 /area/maintenance/nsv/deck1/port)
 "tL" = (
 /obj/structure/lattice,
-/obj/structure/lattice,
 /turf/open/openspace/airless,
 /area/space/nearstation)
 "tM" = (
@@ -7984,7 +7983,6 @@
 	pixel_x = -2
 	},
 /obj/machinery/computer/ship/viewscreen{
-	pixel_y = 0;
 	pixel_x = -32
 	},
 /turf/open/floor/monotile/light,
