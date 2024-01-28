@@ -2215,9 +2215,6 @@
 "gS" = (
 /turf/open/floor/engine/airless,
 /area/space/nearstation)
-"gU" = (
-/turf/closed/wall/r_wall,
-/area/space)
 "gV" = (
 /obj/machinery/atmospherics/pipe/manifold/general/hidden/layer2{
 	dir = 1
@@ -55619,7 +55616,7 @@ be
 PJ
 eO
 fn
-gU
+kD
 Nh
 Nh
 Nh
@@ -55876,7 +55873,7 @@ sH
 sH
 sH
 BF
-gU
+kD
 Nh
 Nh
 Nh
@@ -56133,7 +56130,7 @@ sH
 sH
 Vg
 BF
-gU
+kD
 Nh
 Nh
 Nh
@@ -56390,7 +56387,7 @@ sH
 sH
 sH
 hJ
-gU
+kD
 Nh
 Nh
 Nh
@@ -56647,7 +56644,7 @@ sH
 sH
 sH
 no
-gU
+kD
 Nh
 Nh
 Nh
@@ -56904,7 +56901,7 @@ sH
 sH
 Vg
 BF
-gU
+kD
 Nh
 Nh
 Nh
@@ -57161,7 +57158,7 @@ sH
 sH
 sH
 BF
-gU
+kD
 Nh
 Nh
 Nh
@@ -57418,7 +57415,7 @@ sH
 sH
 sH
 BF
-gU
+kD
 Nh
 Nh
 Nh
@@ -57675,7 +57672,7 @@ Zs
 Zs
 Zs
 Hd
-gU
+kD
 Nh
 Nh
 Nh
@@ -57932,7 +57929,7 @@ VO
 VO
 VO
 uA
-gU
+kD
 Nh
 Nh
 Nh
