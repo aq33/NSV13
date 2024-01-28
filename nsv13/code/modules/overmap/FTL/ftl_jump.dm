@@ -220,7 +220,7 @@
 	for(var/datum/space_level/SL as() in occupying_levels)
 		SL.set_parallax("transit", EAST)
 
-	relay(ftl_drive.ftl_loop, "<span class='warning'>You feel the ship lurch forward</span>", loop=TRUE, channel = CHANNEL_SHIP_ALERT)
+	relay(ftl_drive.ftl_loop, "<span class='warning'>Czujesz, że statek się nagle pochyla</span>", loop=TRUE, channel = CHANNEL_SHIP_ALERT)
 	var/datum/star_system/curr = SSstar_system.ships[src]["current_system"]
 	SEND_SIGNAL(src, COMSIG_SHIP_DEPARTED) // Let missions know we have left the system
 	curr.remove_ship(src)
@@ -283,7 +283,7 @@
 	SSstar_system.ships[src]["from_time"] = 0
 	SSstar_system.ships[src]["to_time"] = 0
 	SEND_SIGNAL(src, COMSIG_FTL_STATE_CHANGE)
-	relay(ftl_drive.ftl_exit, "<span class='warning'>You feel the ship lurch to a halt</span>", loop=FALSE, channel = CHANNEL_SHIP_ALERT)
+	relay(ftl_drive.ftl_exit, "<span class='warning'>Czujesz, że statek staje</span>", loop=FALSE, channel = CHANNEL_SHIP_ALERT)
 
 	var/list/pulled = list()
 	for(var/obj/structure/overmap/SOM as() in GLOB.overmap_objects) //Needs to go through global objects due to being in jumpspace not a system.
