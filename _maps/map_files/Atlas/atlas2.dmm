@@ -3529,7 +3529,7 @@
 "nh" = (
 /obj/machinery/door/airlock/ship/hatch{
 	name = "Network Administration";
-	req_one_access_txt = "61;65"
+	req_one_access_txt = "61;65;19"
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -4779,7 +4779,9 @@
 /obj/effect/turf_decal/tile/ship/half/bar{
 	dir = 1
 	},
-/obj/machinery/vending/snack/random,
+/obj/structure/closet/lasertag/blue,
+/obj/item/clothing/head/soft/blue,
+/obj/item/clothing/neck/tie/blue,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/bar/mess_hall)
 "ss" = (
@@ -4809,7 +4811,9 @@
 /obj/effect/turf_decal/tile/ship/half/bar{
 	dir = 1
 	},
-/obj/machinery/vending/cigarette,
+/obj/structure/closet/lasertag/red,
+/obj/item/clothing/head/soft/red,
+/obj/item/clothing/neck/tie/red,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/bar/mess_hall)
 "sx" = (
@@ -7058,6 +7062,7 @@
 	materials = list(/datum/material/gold=50);
 	name = "golden crowbar"
 	},
+/obj/item/circuitboard/machine/protolathe,
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/nuke_storage)
 "BL" = (
@@ -7078,7 +7083,7 @@
 "BN" = (
 /obj/machinery/door/airlock/ship/hatch{
 	name = "Mission Critical Systems";
-	req_one_access_txt = "61;65;16"
+	req_one_access_txt = "61;65;16;19"
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/structure/lattice/catwalk/over/ship,
@@ -7140,10 +7145,6 @@
 /obj/machinery/holopad,
 /turf/open/floor/monotile/dark,
 /area/hydroponics)
-"Cf" = (
-/obj/structure/lattice,
-/turf/open/openspace/airless,
-/area/space/nearstation)
 "Ch" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 8
@@ -8800,7 +8801,7 @@
 	},
 /obj/machinery/door/airlock/ship/command{
 	name = "Gravity Generator";
-	req_one_access_txt = "56"
+	req_one_access_txt = "56;19"
 	},
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/firedoor/border_only{
@@ -10023,7 +10024,7 @@
 	},
 /obj/machinery/door/airlock/ship/hatch{
 	name = "Mission Critical Systems";
-	req_one_access_txt = "61;65;16"
+	req_one_access_txt = "61;65;16;19"
 	},
 /turf/open/floor/durasteel/techfloor,
 /area/ai_monitored/turret_protected/aisat)
@@ -11938,6 +11939,7 @@
 /obj/structure/closet/secure_closet/bar,
 /obj/item/gun/ballistic/shotgun/doublebarrel,
 /obj/item/clothing/under/rank/civilian/bartender,
+/obj/item/storage/lockbox/dueling,
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/kitchen)
 "Ud" = (
@@ -34524,13 +34526,13 @@ cL
 Ax
 Ax
 Zp
-Cf
-Cf
-Cf
-Cf
-Cf
-Cf
-Cf
+tL
+tL
+tL
+tL
+tL
+tL
+tL
 Zp
 Ax
 Ax
@@ -35038,13 +35040,13 @@ cL
 Ax
 Ns
 Ax
-Cf
-Cf
-Cf
+tL
+tL
+tL
 hE
-Cf
-Cf
-Cf
+tL
+tL
+tL
 Ax
 Zp
 Ax
@@ -35300,8 +35302,8 @@ pT
 pT
 pT
 pT
-Cf
-Cf
+tL
+tL
 Ax
 Zp
 Ax
@@ -35558,11 +35560,11 @@ bH
 pT
 pT
 pT
-Cf
-Cf
+tL
+tL
 Ax
 Ax
-Cf
+tL
 Zp
 Zp
 Zp
@@ -35816,11 +35818,11 @@ tk
 pT
 pT
 pT
-Cf
+tL
 Ax
 cL
 cL
-Cf
+tL
 cL
 Zp
 cL
@@ -36073,12 +36075,12 @@ nH
 nf
 pT
 pT
-Cf
+tL
 Ax
 cL
 cL
 qD
-Cf
+tL
 Zp
 cL
 cL
@@ -36330,7 +36332,7 @@ Mz
 nH
 JJ
 pT
-Cf
+tL
 Ax
 Ax
 Ax
@@ -36587,9 +36589,9 @@ Mz
 nH
 lL
 pT
-Cf
-Cf
-Cf
+tL
+tL
+tL
 PG
 fW
 cL
@@ -36850,7 +36852,7 @@ jw
 PG
 Xh
 yK
-Cf
+tL
 Zp
 cL
 cL
@@ -37364,7 +37366,7 @@ jw
 PG
 Xh
 yK
-Cf
+tL
 Zp
 cL
 cL
@@ -38135,7 +38137,7 @@ jw
 PG
 Xh
 yK
-Cf
+tL
 Zp
 cL
 cL
@@ -38913,8 +38915,8 @@ bA
 bA
 bA
 bA
-Cf
-Cf
+tL
+tL
 cL
 cL
 cL
@@ -39899,10 +39901,10 @@ cL
 cL
 cL
 cL
-Cf
+tL
 Zp
 cL
-Cf
+tL
 cx
 cx
 cx
@@ -39942,7 +39944,7 @@ Ph
 Ph
 MS
 MS
-Cf
+tL
 SP
 cL
 cL
@@ -40156,10 +40158,10 @@ cL
 cL
 cL
 cL
-Cf
+tL
 Zp
 cL
-Cf
+tL
 cx
 ys
 cx
@@ -40415,8 +40417,8 @@ cL
 cL
 gn
 Zp
-Cf
-Cf
+tL
+tL
 cx
 cx
 cx
@@ -40670,8 +40672,8 @@ cL
 cL
 cL
 cL
-Cf
-Cf
+tL
+tL
 cL
 bA
 cx
@@ -40713,7 +40715,7 @@ Ph
 Ph
 MS
 MS
-Cf
+tL
 SP
 cL
 cL
@@ -42513,7 +42515,7 @@ Od
 MS
 MS
 Rg
-Cf
+tL
 cL
 cL
 cL
@@ -44010,7 +44012,7 @@ cL
 cL
 cL
 cL
-Cf
+tL
 cL
 HI
 HI
@@ -44268,7 +44270,7 @@ cL
 cL
 cL
 SP
-Cf
+tL
 HI
 HI
 qO
@@ -44782,7 +44784,7 @@ cL
 cL
 cL
 gn
-Cf
+tL
 HI
 HI
 qO
@@ -45038,7 +45040,7 @@ cL
 cL
 cL
 cL
-Cf
+tL
 cL
 HI
 HI
@@ -46630,7 +46632,7 @@ MS
 MS
 MS
 cx
-Cf
+tL
 cL
 cL
 cL
@@ -48432,9 +48434,9 @@ PY
 NU
 jJ
 hN
-Cf
-Cf
-Cf
+tL
+tL
+tL
 Zp
 Zp
 cL
@@ -48693,7 +48695,7 @@ cL
 cL
 cL
 cL
-Cf
+tL
 SP
 cL
 cL
@@ -48950,7 +48952,7 @@ cp
 cp
 cp
 cp
-Cf
+tL
 cL
 cL
 cL
@@ -50490,7 +50492,7 @@ cp
 aC
 YG
 cp
-Cf
+tL
 cL
 cL
 cL
@@ -50747,7 +50749,7 @@ cp
 vx
 vx
 cp
-Cf
+tL
 Zp
 cL
 cL
@@ -51001,10 +51003,10 @@ dQ
 cx
 cx
 cx
-Cf
-Cf
 tL
-Cf
+tL
+tL
+tL
 Zp
 cL
 cL
@@ -51259,7 +51261,7 @@ cx
 cx
 cx
 cL
-Cf
+tL
 cL
 SP
 SP
@@ -51516,7 +51518,7 @@ cx
 cx
 cx
 cL
-Cf
+tL
 cL
 cL
 cL
@@ -51773,7 +51775,7 @@ cx
 cx
 cx
 cL
-Cf
+tL
 cL
 cL
 cL
@@ -52287,7 +52289,7 @@ cx
 cx
 cx
 cL
-Cf
+tL
 cL
 cL
 cL
@@ -52544,7 +52546,7 @@ cx
 cx
 cx
 SP
-Cf
+tL
 cL
 cL
 cL
@@ -53571,7 +53573,7 @@ cx
 cx
 cx
 cx
-Cf
+tL
 cL
 cL
 cL
@@ -54557,7 +54559,7 @@ cL
 cL
 JK
 JK
-Cf
+tL
 jv
 mK
 mK
@@ -54814,7 +54816,7 @@ cL
 cL
 cL
 cL
-Cf
+tL
 jv
 mK
 mK
@@ -54856,7 +54858,7 @@ cx
 cx
 cx
 cx
-Cf
+tL
 cL
 cL
 cL
@@ -55071,7 +55073,7 @@ cL
 cL
 cL
 cL
-Cf
+tL
 xg
 uf
 uf
@@ -55108,8 +55110,8 @@ vc
 vc
 cx
 SP
-Cf
-Cf
+tL
+tL
 SP
 SP
 SP
@@ -55328,11 +55330,11 @@ cL
 cL
 cL
 cL
-Cf
-Cf
-Cf
-Cf
-Cf
+tL
+tL
+tL
+tL
+tL
 jv
 mK
 mK
@@ -55589,7 +55591,7 @@ cL
 cL
 cL
 cL
-Cf
+tL
 xg
 uf
 mK
@@ -55846,9 +55848,9 @@ cL
 cL
 cL
 cL
-Cf
-Cf
-Cf
+tL
+tL
+tL
 jv
 mK
 mK
@@ -55876,8 +55878,8 @@ Rg
 cx
 cx
 cx
-Cf
-Cf
+tL
+tL
 SP
 cL
 cL
@@ -56105,7 +56107,7 @@ cL
 cL
 cL
 cL
-Cf
+tL
 jv
 mK
 mK
@@ -56132,8 +56134,8 @@ mK
 Rg
 cx
 cx
-Cf
-Cf
+tL
+tL
 cL
 cL
 cL
@@ -56362,7 +56364,7 @@ cL
 cL
 cL
 cL
-Cf
+tL
 jv
 mK
 mK
@@ -56387,8 +56389,8 @@ mK
 mK
 mK
 Rg
-Cf
-Cf
+tL
+tL
 cL
 cL
 cL
@@ -56619,7 +56621,7 @@ cL
 cL
 cL
 cL
-Cf
+tL
 jv
 mK
 mK
@@ -56644,7 +56646,7 @@ mK
 mK
 mK
 nP
-Cf
+tL
 cL
 cL
 cL
@@ -56876,7 +56878,7 @@ cL
 cL
 cL
 cL
-Cf
+tL
 jv
 mK
 mK
@@ -56901,7 +56903,7 @@ mK
 mK
 Rg
 cL
-Cf
+tL
 cL
 cL
 cL
@@ -57133,7 +57135,7 @@ cL
 cL
 cL
 cL
-Cf
+tL
 jv
 mK
 mK
@@ -57158,7 +57160,7 @@ mK
 mK
 Rg
 cL
-Cf
+tL
 cL
 cL
 cL
@@ -57390,7 +57392,7 @@ cL
 cL
 cL
 cL
-Cf
+tL
 jv
 mK
 mK
@@ -57415,7 +57417,7 @@ mK
 mK
 mK
 yt
-Cf
+tL
 cL
 cL
 cL
@@ -57647,7 +57649,7 @@ cL
 cL
 cL
 cL
-Cf
+tL
 jv
 mK
 mK
@@ -57672,7 +57674,7 @@ mK
 mK
 mK
 Rg
-Cf
+tL
 cL
 cL
 cL
@@ -57904,7 +57906,7 @@ cL
 cL
 cL
 cL
-Cf
+tL
 jv
 mK
 mK
@@ -57929,7 +57931,7 @@ mK
 mK
 mK
 Rg
-Cf
+tL
 cL
 cL
 cL
@@ -58161,7 +58163,7 @@ cL
 cL
 cL
 cL
-Cf
+tL
 jv
 mK
 mK
@@ -58186,7 +58188,7 @@ mK
 mK
 mK
 Rg
-Cf
+tL
 cL
 cL
 cL
@@ -58418,21 +58420,21 @@ cL
 cL
 cL
 cL
-Cf
+tL
 xg
 uf
 nP
-Cf
-Cf
-Cf
-Cf
-Cf
-Cf
-Cf
-Cf
-Cf
-Cf
-Cf
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
 xg
 uf
 uf
@@ -58443,7 +58445,7 @@ mK
 mK
 mK
 Rg
-Cf
+tL
 cL
 cL
 cL
@@ -58675,11 +58677,11 @@ cL
 cL
 cL
 cL
-Cf
-Cf
-Cf
-Cf
-Cf
+tL
+tL
+tL
+tL
+tL
 cL
 cL
 cL
@@ -58689,10 +58691,10 @@ cL
 cL
 cL
 cL
-Cf
-Cf
-Cf
-Cf
+tL
+tL
+tL
+tL
 xg
 mK
 mK
@@ -58700,7 +58702,7 @@ mK
 mK
 mK
 nP
-Cf
+tL
 cL
 cL
 cL
@@ -58949,15 +58951,15 @@ cL
 cL
 cL
 cL
-Cf
-Cf
+tL
+tL
 xg
 uf
 uf
 uf
 nP
-Cf
-Cf
+tL
+tL
 cL
 cL
 cL
@@ -59207,13 +59209,13 @@ cL
 cL
 cL
 cL
-Cf
-Cf
-Cf
-Cf
-Cf
-Cf
-Cf
+tL
+tL
+tL
+tL
+tL
+tL
+tL
 cL
 cL
 cL

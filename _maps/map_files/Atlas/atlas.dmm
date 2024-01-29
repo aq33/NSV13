@@ -2958,12 +2958,12 @@
 	},
 /obj/machinery/navbeacon{
 	codes_txt = "delivery;dir=8";
-	location = "QM #2"
+	location = "Cargo Bay"
 	},
 /mob/living/simple_animal/bot/mulebot{
-	desc = "Oh lawd he is coming!!";
+	desc = "Oh lawd he comin!!!";
 	gender = "male";
-	home_destination = "QM #2";
+	home_destination = "Cargo Bay";
 	name = "Chonker";
 	suffix = "#3"
 	},
@@ -4489,6 +4489,7 @@
 	},
 /obj/item/bedsheet/qm,
 /obj/machinery/airalarm/directional/east,
+/obj/item/circuitboard/machine/ore_silo,
 /turf/open/floor/carpet/ship/beige_carpet,
 /area/quartermaster/qm)
 "nL" = (
@@ -5378,6 +5379,7 @@
 	req_one_access_txt = "12"
 	},
 /obj/structure/closet/crate,
+/obj/item/storage/belt/utility/full,
 /obj/effect/spawner/lootdrop/maintenance/four,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/starboard)
@@ -8019,6 +8021,9 @@
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/south,
 /obj/item/reagent_containers/syringe/lethal/execution,
+/obj/item/storage/box/chemimp,
+/obj/item/storage/box/trackimp,
+/obj/item/storage/box/exileimp,
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/security/armory)
 "yI" = (
@@ -12626,9 +12631,16 @@
 /obj/item/stamp/denied,
 /obj/item/stamp,
 /obj/machinery/light_switch/east,
-/obj/item/clothing/ears/earmuffs,
-/obj/item/clothing/ears/earmuffs,
-/obj/item/circuitboard/machine/ore_silo,
+/obj/item/stack/package_wrap{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/obj/item/stack/wrapping_paper,
+/obj/item/dest_tagger{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/hand_labeler,
 /turf/open/floor/monotile/steel,
 /area/quartermaster/storage)
 "Oy" = (
@@ -15313,6 +15325,20 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/nsv/weapons)
+"Xh" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/maintenance{
+	lootcount = 2;
+	name = "2maintenance loot spawner"
+	},
+/obj/effect/landmark/trader_drop_point,
+/obj/effect/turf_decal/ship/delivery/yellow,
+/obj/item/clothing/ears/earmuffs,
+/turf/open/floor/engine,
+/area/quartermaster/storage)
 "Xl" = (
 /obj/structure/sign/ship/armoury{
 	name = "Munitions Department"
@@ -50220,7 +50246,7 @@ Qe
 kv
 CR
 NE
-Nh
+Km
 Nh
 Nh
 Nh
@@ -50734,7 +50760,7 @@ Qe
 kv
 CR
 NE
-Km
+Nh
 Nh
 Nh
 Nh
@@ -52011,7 +52037,7 @@ GP
 pj
 IM
 cy
-cy
+Xh
 wv
 CT
 qj
