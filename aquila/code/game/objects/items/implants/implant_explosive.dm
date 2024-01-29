@@ -27,6 +27,8 @@
 /datum/job/after_spawn(mob/living/H, mob/M)
 	. = ..()
 	if(M.real_name == "Zachary Andromalis")
+		var/obj/item/implant/explosive/engineering/zachary_fucked_up = new
+		zachary_fucked_up.implant(H, null, silent = TRUE)
 
 
 /datum/job/chief_engineer/after_spawn(mob/living/H, mob/M)
