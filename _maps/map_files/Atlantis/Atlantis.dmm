@@ -147,7 +147,6 @@
 /turf/open/floor/wood,
 /area/science)
 "agj" = (
-/obj/structure/lattice,
 /turf/closed/wall/r_wall,
 /area/maintenance/nsv/deck2/port/fore)
 "agL" = (
@@ -2757,7 +2756,6 @@
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/security/armory/security)
 "bYU" = (
-/obj/structure/lattice,
 /turf/closed/wall/r_wall,
 /area/maintenance/nsv/deck2/starboard/fore)
 "bZW" = (
@@ -13276,7 +13274,6 @@
 /turf/open/floor/plasteel/grid/steel,
 /area/engine/atmos)
 "kqe" = (
-/obj/structure/lattice,
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
@@ -25519,8 +25516,6 @@
 /turf/open/floor/durasteel/alt,
 /area/engine/engineering)
 "tUb" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
 /turf/closed/wall/r_wall,
 /area/space/nearstation)
 "tUf" = (
@@ -28034,7 +28029,6 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/starboard)
 "vXQ" = (
-/obj/structure/lattice,
 /turf/closed/wall/r_wall,
 /area/space/nearstation)
 "vYd" = (

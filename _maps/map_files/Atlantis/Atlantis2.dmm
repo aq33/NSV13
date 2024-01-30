@@ -99,7 +99,6 @@
 /area/medical/medbay/central)
 "afX" = (
 /obj/structure/lattice,
-/obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
 "agN" = (
@@ -3752,7 +3751,6 @@
 /turf/open/floor/carpet/ship,
 /area/quartermaster/storage)
 "dyw" = (
-/obj/structure/lattice,
 /obj/structure/lattice,
 /obj/structure/grille{
 	max_integrity = 100;
