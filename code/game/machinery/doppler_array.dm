@@ -165,9 +165,9 @@
 	R.factual_radius["outer_radius"] = heavy_impact_range
 	R.factual_radius["shockwave_radius"] = light_impact_range
 
-	var/list/messages = list("Explosive disturbance detected.",
-							 "Epicenter at: grid ([epicenter.x], [epicenter.y]). Temporal displacement of tachyons: [took] seconds.",
-							 "Factual: Epicenter radius: [devastation_range]. Outer radius: [heavy_impact_range]. Shockwave radius: [light_impact_range].")
+	var/list/messages = list("Wykryto zaburzenia wywołane wybuchem.",
+							 "Epicentrum w: współrzędne ([epicenter.x], [epicenter.y]). Czasowe przemieszczenie tachionów [took] sekund.",
+							 "Rzeczywiste: Zasię epicentrum: [devastation_range]. Zewnętrzny zasięg: [heavy_impact_range]. Zasięg fali uderzeniowe: [light_impact_range].")
 
 	// If the bomb was capped, say its theoretical size.
 	if(devastation_range < orig_dev_range || heavy_impact_range < orig_heavy_range || light_impact_range < orig_light_range)
