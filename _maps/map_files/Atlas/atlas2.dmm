@@ -383,6 +383,11 @@
 /obj/structure/dresser,
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/theatre)
+"bq" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/ship/letter,
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "bs" = (
 /obj/machinery/computer/ship/viewscreen,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
@@ -918,6 +923,11 @@
 /obj/structure/lattice/catwalk/over/ship,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/central)
+"dG" = (
+/obj/structure/hull_plate,
+/obj/machinery/light/floor,
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "dH" = (
 /obj/machinery/power/apc/auto_name/north,
 /obj/structure/cable{
@@ -2031,6 +2041,9 @@
 /obj/effect/landmark/zebra_interlock_point,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
+	},
+/obj/structure/sign/directions/evac{
+	pixel_y = -30
 	},
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck1/hallway)
@@ -4581,6 +4594,13 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/starboard)
+"rF" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/ship/letter{
+	icon_state = "L"
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "rK" = (
 /obj/effect/turf_decal/ship/delivery/yellow,
 /obj/machinery/door/firedoor/border_only,
@@ -5499,7 +5519,6 @@
 /area/engine/gravity_generator)
 "vp" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -5507,6 +5526,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/cell_charger,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/bar/mess_hall)
 "vs" = (
@@ -7343,6 +7363,13 @@
 	},
 /turf/open/floor/durasteel/techfloor,
 /area/engine/gravity_generator)
+"CQ" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/ship/letter{
+	icon_state = "T"
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "CT" = (
 /obj/effect/turf_decal/ship/delivery/yellow,
 /turf/open/floor/monotile/dark,
@@ -7356,10 +7383,11 @@
 "CW" = (
 /obj/structure/rack,
 /obj/item/stack/cable_coil/random,
-/obj/effect/spawner/lootdrop/maintenance/three,
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/item/wrench,
+/obj/effect/spawner/lootdrop/maintenance/three,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port)
 "Da" = (
@@ -9464,7 +9492,6 @@
 /area/medical/surgery)
 "Kz" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -9477,6 +9504,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/reagent_containers/food/snacks/rationpack,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/bar/mess_hall)
 "KC" = (
@@ -9775,6 +9804,13 @@
 "LL" = (
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port)
+"LM" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/ship/letter{
+	icon_state = "S"
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "LN" = (
 /turf/open/floor/durasteel/alt,
 /area/medical/storage)
@@ -10756,6 +10792,11 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/crew_quarters/bar/mess_hall)
+"Pc" = (
+/obj/structure/hull_plate,
+/obj/structure/hull_plate,
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "Pe" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
 /obj/effect/turf_decal/tile/ship/green{
@@ -42257,12 +42298,12 @@ Gv
 MS
 MS
 MS
-Rg
-cL
-cL
-cL
-cL
-cL
+cx
+cx
+cx
+cx
+SP
+SP
 cL
 cL
 cL
@@ -42514,16 +42555,16 @@ vI
 Od
 MS
 MS
-Rg
+cx
+cx
+cx
+cx
+cx
+cx
+cx
+cx
+cx
 tL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
 cL
 cL
 cL
@@ -42771,17 +42812,17 @@ LU
 RD
 MS
 MS
-Rg
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+yt
+cx
 SP
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
+tL
 cL
 cL
 cL
@@ -43028,17 +43069,17 @@ Up
 Ng
 MS
 MS
+mK
+mK
+mK
+mK
+mK
+mK
+mK
 Rg
-SP
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
+cx
+tL
+tL
 cL
 cL
 cL
@@ -43285,17 +43326,17 @@ VS
 Ih
 MS
 MS
+mK
+mK
+mK
+mK
+mK
+mK
+mK
 Rg
+cx
+cx
 SP
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
 cL
 cL
 cL
@@ -43542,17 +43583,17 @@ rV
 Od
 MS
 MS
+mK
+mK
+mK
+mK
+mK
+mK
+mK
 Rg
-gn
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
+cx
+cx
+SP
 cL
 cL
 cL
@@ -43799,16 +43840,16 @@ yl
 ux
 MS
 MS
+mK
+mK
+mK
+mK
+mK
+mK
+mK
 Rg
-SP
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
+cx
+cx
 cL
 cL
 cL
@@ -44056,16 +44097,16 @@ Ej
 zS
 MS
 MS
+mK
+Pc
+Pc
+mK
+mK
+mK
+mK
 Rg
-SP
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
+cx
+tL
 cL
 cL
 cL
@@ -44313,16 +44354,16 @@ rV
 zS
 MS
 MS
+mK
+mK
+Pc
+Pc
+mK
+mK
+mK
 Rg
-SP
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
+cx
+gn
 cL
 cL
 cL
@@ -44570,16 +44611,16 @@ MS
 MS
 MS
 MS
+mK
+mK
+mK
+mK
+Pc
+Pc
+mK
 Rg
-SP
-SP
-cL
-cL
-cL
-cL
-cL
-cL
-cL
+cx
+tL
 cL
 cL
 cL
@@ -44827,17 +44868,17 @@ mK
 mK
 mK
 mK
+mK
+mK
+mK
+mK
+mK
+Pc
+Pc
 Rg
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
+cx
+tL
+SP
 cL
 cL
 cL
@@ -45084,18 +45125,18 @@ kN
 mK
 mK
 mK
+mK
+mK
+mK
+mK
+mK
+mK
+mK
 Rg
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
+cx
+cx
+cx
+cx
 cL
 cL
 cL
@@ -45341,19 +45382,19 @@ mK
 mK
 mK
 mK
+mK
+mK
+mK
+mK
+mK
+mK
+mK
 Rg
 cx
 cx
 cx
 cx
-cx
-cL
-cL
-cL
-cL
-cL
-cL
-cL
+tL
 cL
 cL
 cL
@@ -45598,23 +45639,23 @@ mK
 mK
 mK
 mK
+mK
+mK
+mK
+mK
+mK
+mK
+mK
 Rg
 cx
 cx
 cx
 cx
-cx
-cL
+SP
 cL
 cL
 cL
 Cw
-cL
-cL
-cL
-cL
-cL
-cL
 cL
 cL
 cL
@@ -45855,19 +45896,19 @@ kN
 mK
 mK
 mK
+mK
+mK
+mK
+mK
+mK
+mK
+mK
 Rg
 cx
 cx
 cx
 cx
-cx
-cL
-cL
-cL
-cL
-cL
-cL
-cL
+SP
 cL
 cL
 cL
@@ -46112,19 +46153,19 @@ mK
 mK
 mK
 mK
+mK
+mK
+mK
+mK
+mK
+mK
+mK
 Rg
 cx
 cx
 cx
 cx
-cx
-cL
-cL
-cL
-cL
-cL
-cL
-cL
+SP
 cL
 cL
 cL
@@ -46373,15 +46414,15 @@ MS
 MS
 MS
 MS
+mK
+mK
+mK
+Rg
 cx
-cx
-Zp
+tL
 cL
-cL
-cL
-cL
-cL
-cL
+tL
+SP
 cL
 cL
 cL
@@ -46631,13 +46672,13 @@ zS
 MS
 MS
 MS
+mK
+mK
+Rg
 cx
 tL
-cL
-cL
-cL
-cL
-cL
+SP
+tL
 cL
 cL
 cL
@@ -46892,8 +46933,8 @@ hN
 hN
 hN
 hN
-cL
 SP
+Zp
 cL
 cL
 cL
@@ -47150,9 +47191,9 @@ NU
 yQ
 hN
 cx
-gn
-cL
-cL
+cx
+cx
+Zp
 cL
 cL
 cL
@@ -47407,9 +47448,9 @@ NU
 jz
 hN
 cx
-SP
-cL
-cL
+cx
+cx
+Zp
 cL
 cL
 cL
@@ -47664,9 +47705,9 @@ NU
 jz
 hN
 cx
-SP
-cL
-cL
+cx
+cx
+Zp
 cL
 cL
 cL
@@ -47921,8 +47962,8 @@ KO
 Lk
 hN
 cx
-gn
-cL
+cx
+cx
 cL
 cL
 cL
@@ -48178,8 +48219,8 @@ pI
 jM
 hN
 cx
-SP
-cL
+cx
+cx
 cL
 cL
 cL
@@ -54063,7 +54104,7 @@ mK
 mK
 mK
 mK
-mK
+bq
 mK
 mK
 mK
@@ -54576,8 +54617,8 @@ mK
 mK
 mK
 mK
-mK
-mK
+dG
+CQ
 mK
 mK
 mK
@@ -55090,8 +55131,8 @@ mK
 mK
 mK
 mK
-mK
-mK
+dG
+rF
 mK
 mK
 mK
@@ -55604,8 +55645,8 @@ mK
 mK
 mK
 mK
-mK
-mK
+dG
+bq
 mK
 mK
 mK
@@ -56118,8 +56159,8 @@ mK
 mK
 mK
 mK
-mK
-mK
+dG
+LM
 mK
 mK
 mK
