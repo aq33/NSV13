@@ -14441,7 +14441,6 @@
 /area/nsv/weapons)
 "ljl" = (
 /obj/structure/lattice/catwalk/over/ship,
-/obj/structure/lattice/catwalk/over/ship,
 /turf/open/floor/plating,
 /area/nsv/weapons)
 "ljx" = (
