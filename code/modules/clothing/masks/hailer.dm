@@ -134,58 +134,58 @@
 
 			switch(phrase)	//sets the properties of the chosen phrase
 				if(1)				// good cop
-					phrase_text = "HALT! HALT! HALT!"
+					phrase_text = "STAĆ! STAĆ! STAĆ!"
 					phrase_sound = "halt"
 				if(2)
-					phrase_text = "Stop in the name of the Law."
+					phrase_text = "W imię prawa, stój."
 					phrase_sound = "bobby"
 				if(3)
-					phrase_text = "Compliance is in your best interest."
+					phrase_text = "Współpracowanie jest w twoim najlepszym interesie."
 					phrase_sound = "compliance"
 				if(4)
-					phrase_text = "Prepare for justice!"
+					phrase_text = "Przygotuj się na sprawiedliwość!"
 					phrase_sound = "justice"
 				if(5)
-					phrase_text = "Running will only increase your sentence."
+					phrase_text = "Uciekanie tylko wydłuży twój wyrok."
 					phrase_sound = "running"
 				if(6)				// bad cop
-					phrase_text = "Don't move, Creep!"
+					phrase_text = "Nie ruszaj się, popaprańcu"
 					phrase_sound = "dontmove"
 				if(7)
-					phrase_text = "Down on the floor, Creep!"
+					phrase_text = "Na ziemie, popaprańcu!"
 					phrase_sound = "floor"
 				if(8)
-					phrase_text = "Dead or alive you're coming with me."
+					phrase_text = "Żywy lub martwy, idziesz ze mną."
 					phrase_sound = "robocop"
 				if(9)
-					phrase_text = "God made today for the crooks we could not catch yesterday."
+					phrase_text = "Bóg dał stworzył dzisiejszy dzień byśmy połapać kryminalistów z wczoraj."
 					phrase_sound = "god"
 				if(10)
-					phrase_text = "Freeze, Scum Bag!"
+					phrase_text = "Ani drgnij, szumowino!"
 					phrase_sound = "freeze"
 				if(11)
-					phrase_text = "Stop right there, criminal scum!"
+					phrase_text = "Stój, śmieciu!"
 					phrase_sound = "imperial"
 				if(12)				// LA-PD
-					phrase_text = "Stop or I'll bash you."
+					phrase_text = "Stój albo ci jebnę."
 					phrase_sound = "bash"
 				if(13)
 					phrase_text = "Go ahead, make my day."
 					phrase_sound = "harry"
 				if(14)
-					phrase_text = "Stop breaking the law, ass hole."
+					phrase_text = "Przestań łamać prawo, dupku."
 					phrase_sound = "asshole"
 				if(15)
-					phrase_text = "You have the right to shut the fuck up."
+					phrase_text = "Masz prawo, by się kurwa zamknąć."
 					phrase_sound = "stfu"
 				if(16)
-					phrase_text = "Shut up crime!"
+					phrase_text = "Cicho, zbrodnio!"
 					phrase_sound = "shutup"
 				if(17)
-					phrase_text = "Face the wrath of the golden bolt."
+					phrase_text = "Staw czoła gniewowi złotego pioruna."
 					phrase_sound = "super"
 				if(18)
-					phrase_text = "I am, the LAW!"
+					phrase_text = "To ja jestem PRAWEM!"
 					phrase_sound = "dredd"
 
 		usr.audible_message("[usr]'s Compli-o-Nator: <font color='red' size='4'><b>[phrase_text]</b></font>")
