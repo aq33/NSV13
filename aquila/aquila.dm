@@ -47,6 +47,7 @@
 #include "code\game\objects\items\circuitboards\circuitboard.dm"
 #include "code\game\objects\items\circuitboards\machine_circuitboards.dm"
 #include "code\game\objects\items\clown_items.dm"
+#include "code\game\objects\items\custom_guns.dm"
 #include "code\game\objects\items\devices\geiger_counter.dm"
 #include "code\game\objects\items\devices\glue.dm"
 #include "code\game\objects\items\devices\multitool.dm"
