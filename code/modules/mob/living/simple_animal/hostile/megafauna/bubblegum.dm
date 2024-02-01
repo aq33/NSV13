@@ -355,8 +355,8 @@ Difficulty: Hard
 
 /obj/effect/decal/cleanable/blood/bubblegum
 	bloodiness = 0
-	can_dry = FALSE
-	is_slippery = FALSE
+	can_dry = FALSE // AQ EDIT
+	is_slippery = FALSE // AQ EDIT
 
 /obj/effect/decal/cleanable/blood/bubblegum/can_bloodcrawl_in()
 	return TRUE
@@ -408,8 +408,8 @@ Difficulty: Hard
 	desc = "Thick, splattered blood."
 	random_icon_states = list("gib3", "gib5", "gib6")
 	bloodiness = 20
-	can_dry = FALSE
-	is_slippery = FALSE
+	can_dry = FALSE // AQ EDIT
+	is_slippery = FALSE // AQ EDIT
 
 /obj/effect/decal/cleanable/blood/gibs/bubblegum/can_bloodcrawl_in()
 	return TRUE

@@ -12,7 +12,7 @@
 	C.add_bloodiness(bloodiness) // AQ EDIT
 	return ..()
 
-/obj/effect/decal/cleanable/blood/old
+/obj/effect/decal/cleanable/blood/old // AQ EDIT
 	var/list/disease = list()
 	is_old = TRUE
 
@@ -36,7 +36,7 @@
 /obj/effect/decal/cleanable/blood/splatter
 	icon_state = "gibbl1"
 	random_icon_states = list("gibbl1", "gibbl2", "gibbl3", "gibbl4", "gibbl5")
-	is_slippery = TRUE
+	is_slippery = TRUE // AQ EDIT
 
 /obj/effect/decal/cleanable/blood/tracks
 	name = "tracks"
@@ -44,7 +44,7 @@
 	icon_state = "tracks"
 	random_icon_states = null
 
-/obj/effect/decal/cleanable/blood/trail_holder
+/obj/effect/decal/cleanable/blood/trail_holder // AQ EDIT - made a child of blood
 	name = "bloody trails"
 	icon = 'icons/effects/blood.dmi'
 	icon_state = null //rendered through overlays
@@ -64,7 +64,7 @@
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6")
 	mergeable_decal = FALSE
 	turf_loc_check = FALSE
-	is_slippery = TRUE
+	is_slippery = TRUE // AQ EDIT
 
 	var/already_rotting = FALSE
 		///Information about the diseases our streaking spawns
@@ -183,7 +183,7 @@
 /obj/effect/decal/cleanable/blood/footprints
 	name = "footprints"
 	icon = 'icons/effects/footprints.dmi'
-	icon_state = null //rendered through overlays
+	icon_state = null //rendered through overlays // AQ EDIT
 	random_icon_states = null
 	desc = "WHOSE FOOTPRINTS ARE THESE?"
 	blood_state = BLOOD_STATE_HUMAN //the icon state to load images from

@@ -74,7 +74,7 @@
 		var/mob/M = loc
 		M.update_inv_head()
 
-/obj/item/clothing/head/compile_monkey_icon()
+/obj/item/clothing/head/compile_monkey_icon() // AQ EDIT - made it support multiple icon_states per item
 	var/identity = "[type]_[icon_state]" //Allows using multiple icon states for piece of clothing
 	//If the icon, for this type of item, is already made by something else, don't make it again
 	if(GLOB.monkey_icon_cache[identity])

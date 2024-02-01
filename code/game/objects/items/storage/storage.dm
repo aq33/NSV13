@@ -61,7 +61,7 @@
 		dat += "[custom_data ? ",\n[custom_data]" : ""]"
 	return dat
 
-/obj/item/storage/compile_monkey_icon()
+/obj/item/storage/compile_monkey_icon() // AQ EDIT - made it support multiple icon_states per item
 	var/identity = "[type]_[icon_state]" //Allows using multiple icon states for piece of clothing
 	//If the icon, for this type of item, is already made by something else, don't make it again
 	if(GLOB.monkey_icon_cache[identity])

@@ -89,6 +89,7 @@
 			//always non-positive
 			var/change = add_bloodiness(-BLOOD_GAIN_PER_STEP)
 			S.bloody_shoes[blood_state] = min(MAX_SHOE_BLOODINESS, S.bloody_shoes[blood_state] - change)
+			// AQ EDIT END
 			S.add_blood_DNA(return_blood_DNA())
 			S.blood_state = blood_state
 			update_icon()
