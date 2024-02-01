@@ -174,7 +174,7 @@ Bullet reactions
 			if(structure_crit_alert == 6)
 				structure_crit_no_return = TRUE //Better launch those escape pods pronto
 				stop_relay(channel=CHANNEL_SHIP_FX)
-				priority_announce("ZAGROŻENIE. Możliwość naprawy superstruktury statku wygasła. Statek eksploduje za 5 minut.","Automated announcement ([src])","null")
+				priority_announce("ZAGROŻENIE. Możliwość naprawy superstruktury statku przepadła. Statek eksploduje za 5 minut.","Automated announcement ([src])","null")
 				relay('nsv13/sound/effects/ship/sscrit/hullcrit_5.ogg', message=null, loop=FALSE, channel=CHANNEL_IMPORTANT_SHIP_ALERT)
 				structure_crit_alert ++
 		if(10.1 MINUTES to 14.5 MINUTES)
