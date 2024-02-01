@@ -220,7 +220,7 @@
 	for(var/datum/space_level/SL as() in occupying_levels)
 		SL.set_parallax("transit", EAST)
 
-	relay(ftl_drive.ftl_loop, "<span class='warning'>Czujesz, że statek się nagle pochyla</span>", loop=TRUE, channel = CHANNEL_SHIP_ALERT)
+	relay(ftl_drive.ftl_loop, "<span class='warning'>Czujesz nagłe szarpnięcie statku do przodu</span>", loop=TRUE, channel = CHANNEL_SHIP_ALERT)
 	var/datum/star_system/curr = SSstar_system.ships[src]["current_system"]
 	SEND_SIGNAL(src, COMSIG_SHIP_DEPARTED) // Let missions know we have left the system
 	curr.remove_ship(src)
