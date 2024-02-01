@@ -55,7 +55,7 @@ GLOBAL_LIST_INIT(pecking_order, world.file2list("config/ranks/pecking_order.txt"
 	if(myClout == theirClout)
 		return "<span class='notice'>Masz tę samą rangę.</span>"
 	if(myClout > theirClout)
-		return "<span class='boldnotice'>Przwyższasz jego rangę [theirRank].</span>"
+		return "<span class='boldnotice'>Przewyższasz jego rangę [theirRank].</span>"
 	if(myClout < theirClout)
 		return "<span class='boldwarning'>Przewyższa cie rangą jako [myRank].</span>"
 	return "<span class='warning'>You've forgotten how ranks work.</span>"
