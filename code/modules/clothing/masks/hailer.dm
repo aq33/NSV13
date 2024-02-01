@@ -128,7 +128,7 @@
 				phrase = rand(12,18)	// user has broke the restrictor, it will now only play shitcurity phrases
 
 		if(!safety)
-			phrase_text = "Ty no nie wiemjak tam twoja szmaciura jebana zrogowaciała niedźwiedzica co się kurwi pod mostem za wojaka i siada kurwa na butle od vanishai kurwę w taczce pijana wozili po osiedlu wiesz o co chodzi mnie nie przegadaszbo mi spermę z pały zjadasz frajerze zrogowaciały frajerska chmurochuj ci na matule i jebać ci starego."
+			phrase_text = "Ty no nie wiem jak tam twoja szmaciura jebana zrogowaciała niedźwiedzica co się kurwi pod mostem za wojaka i siada kurwa na butle od vanishai kurwę w taczce pijana wozili po osiedlu wiesz o co chodzi mnie nie przegadaszbo mi spermę z pały zjadasz frajerze zrogowaciały frajerska chmurochuj ci na matule i jebać ci starego."
 			phrase_sound = "emag"
 		else
 
