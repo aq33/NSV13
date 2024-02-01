@@ -235,9 +235,13 @@
 		monkey_icon = GLOB.monkey_icon_cache[identity]
 		return
 
+	var/icon_to_mod = 'icons/mob/uniform.dmi'
+	if(worn_icon)
+		icon_to_mod = worn_icon
+
 	//Start with a base and align it with the mask
-	var/icon/base = icon(worn_icon, icon_state, SOUTH) //This takes the icon and uses the worn version of the icon
-	var/icon/back = icon(worn_icon, icon_state, NORTH) //Awkard but, we have to manually insert the back
+	var/icon/base = icon(icon_to_mod, icon_state, SOUTH) //This takes the icon and uses the worn version of the icon
+	var/icon/back = icon(icon_to_mod, icon_state, NORTH) //Awkard but, we have to manually insert the back
 	back.Shift(SOUTH, 2) //Allign with masks
 	base.Shift(SOUTH, 2)
 
