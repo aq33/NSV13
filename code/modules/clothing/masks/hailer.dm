@@ -158,7 +158,7 @@
 					phrase_text = "Żywy lub martwy, idziesz ze mną."
 					phrase_sound = "robocop"
 				if(9)
-					phrase_text = "Bóg dał stworzył dzisiejszy dzień byśmy połapać kryminalistów z wczoraj."
+					phrase_text = "Bóg stworzył dzisiejszy dzień byśmy połapać kryminalistów z wczoraj."
 					phrase_sound = "god"
 				if(10)
 					phrase_text = "Ani drgnij, szumowino!"
