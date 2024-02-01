@@ -167,7 +167,7 @@
 
 	var/list/messages = list("Wykryto zaburzenia wywołane wybuchem.",
 							 "Epicentrum w: współrzędne ([epicenter.x], [epicenter.y]). Czasowe przemieszczenie tachionów: [took] sekund.",
-							 "Rzeczywiste: Zasię epicentrum: [devastation_range]. Zewnętrzny zasięg: [heavy_impact_range]. Zasięg fali uderzeniowe: [light_impact_range].")
+							 "Rzeczywiste: Zasięg epicentrum: [devastation_range]. Zewnętrzny zasięg: [heavy_impact_range]. Zasięg fali uderzeniowe: [light_impact_range].")
 
 	// If the bomb was capped, say its theoretical size.
 	if(devastation_range < orig_dev_range || heavy_impact_range < orig_heavy_range || light_impact_range < orig_light_range)
