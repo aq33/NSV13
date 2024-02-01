@@ -161,7 +161,7 @@
 					phrase_text = "Bóg stworzył dzisiejszy dzień byśmy połapać kryminalistów z wczoraj."
 					phrase_sound = "god"
 				if(10)
-					phrase_text = "Ani drgnij, szumowino!"
+					phrase_text = "Ani drgnij, borowiku!"
 					phrase_sound = "freeze"
 				if(11)
 					phrase_text = "Stój, śmieciu!"
