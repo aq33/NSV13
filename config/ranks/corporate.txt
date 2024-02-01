@@ -40,7 +40,7 @@ Naukowiec=WS
 Robotyk=WS
 
 Detektyw=WS
-Policjant=WS
+Żandarm=WS
 Lekarz Więzienny=WS
 
 Flight Leader=Spv
