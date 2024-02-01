@@ -11,11 +11,8 @@
 ###############################################################################################
 
 #NSV Operational Staff
-Francinum = Host
-KMC2000 = Project Lead
-Bokkiewokkie = Project Lead
 Joker13666 = Host
-smorgli = Admin
+
 
 #Upstream Operational Staff
 crossedfall = Server Ops Team
