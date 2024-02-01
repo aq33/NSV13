@@ -80,7 +80,7 @@
 	if(GLOB.monkey_icon_cache[identity])
 		monkey_icon = GLOB.monkey_icon_cache[identity]
 		return
-	var/icon_to_mod = 'icons/mob/head.dmi'
+	var/icon_to_mod = 'icons/mob/clothing/head.dmi'
 	if(worn_icon)
 		icon_to_mod = worn_icon
 	//Start with two sides for the front
