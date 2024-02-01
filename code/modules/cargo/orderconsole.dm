@@ -359,7 +359,7 @@
 			SSshuttle.shoppinglist += SO
 
 	if(self_paid)
-		say("Zamówienie przyjęte. PRzy dostawie kosztami zostanie obciążone konto [account.account_holder].")
+		say("Zamówienie przyjęte. Przy dostawie kosztami zostanie obciążone konto [account.account_holder].")
 	if(requestonly && message_cooldown < world.time)
 		var/message = amount == 1 ? "Nowe zamówienie zostało złożone." : "[amount] zamówień zostało złożonych."
 		radio.talk_into(src, message, RADIO_CHANNEL_SUPPLY)
