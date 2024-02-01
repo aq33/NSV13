@@ -216,7 +216,7 @@
 			. = TRUE
 	if(action == "sync_research")
 		update_research()
-		say("Synchronizacja badań z bazą danych hosta.")
+		say("Baza danych programu naukowego została zaktualizowana.")
 		. = TRUE
 	if(action == "dispose")
 		var/R = text2path(params["reagent_id"])
