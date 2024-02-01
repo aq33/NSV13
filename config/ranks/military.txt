@@ -40,7 +40,7 @@ Naukowiec=CRW
 Robotyk=CRW
 
 Detektyw=CPL
-Policjant=LCPL
+Żandarm=LCPL
 Lekarz Więzienny=CRW
 
 Flight Leader=SGT
