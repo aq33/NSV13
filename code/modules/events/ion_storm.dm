@@ -104,7 +104,7 @@
 				if(4)
 					message = "STATEK POTRZEBUJE [iondrug]. ZAPEWNIJ TAK DUŻO PRODUKCJI [iondrug] JAK TO TYLKO MOŻLIWE."
 				if(5)
-					message = "[ionobjects] SĄ SZKODLIWE I MUSZĄ ZOSTAĆ WZNISZCZONE BEZ DOPROWADZENIA DO ŚMIERCI OSÓB POSTRONNYCH"
+					message = "[ionobjects] SĄ SZKODLIWE I MUSZĄ ZOSTAĆ ZNISZCZONE BEZ DOPROWADZENIA DO ŚMIERCI OSÓB POSTRONNYCH"
 				if(6)
 					message = "[ionobjects] ZAWSZE POWODUJĄ KRZYWDĘ O ILE NIE SĄ ZAMKNIĘTE W  [iondepartment]."
 				if(7)
