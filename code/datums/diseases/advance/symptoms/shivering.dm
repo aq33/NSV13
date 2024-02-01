@@ -55,7 +55,7 @@ Bonus
 	if(!unsafe || A.stage < 4)
 		to_chat(M, "<span class='warning'>[pick("Czujesz chłód.", "Czujesz dreszcze.")]</span>")
 	else
-		to_chat(M, "<span class='userdanger'>[pick("Czujesz jakby twoja krew zamarzała.", "Czujesz lod w żyłach.", "Czujesz jakbyś nie mógł się ogrzać.", "Odczuwasz silne dreszcze." )]</span>")
+		to_chat(M, "<span class='userdanger'>[pick("Czujesz jakby twoja krew zamarzała.", "Czujesz lód w żyłach.", "Czujesz jakbyś nie mógł się ogrzać.", "Odczuwasz silne dreszcze." )]</span>")
 	if(M.bodytemperature > BODYTEMP_COLD_DAMAGE_LIMIT || unsafe)
 		Chill(M, A)
 
