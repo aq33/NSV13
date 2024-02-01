@@ -35,7 +35,7 @@ Defending fleets have priority for shooting (A turn iterates through a system's 
 				continue
 			if(EF.faction_id != F.faction_id)
 				if(!already_announced_combat && !hidden)
-					minor_announce("Raporty wskazują na to, żę \a [F] podjęła walkę z  \a [EF] w [src].", "Whiterapids EAS")
+					minor_announce("Raporty wskazują na to, że \a [F] podjęła walkę z  \a [EF] w [src].", "Whiterapids EAS")
 					already_announced_combat = TRUE
 				fleet_fire(F, EF)
 				break
