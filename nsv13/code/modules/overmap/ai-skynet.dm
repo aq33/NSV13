@@ -255,7 +255,7 @@ Adding tasks is easy! Just define a datum for it.
 				current_system.mission_sector = TRUE
 	if(!hide_movements && !current_system.hidden)
 		if((alignment == "syndicate") || (alignment == "pirate"))
-			mini_announce("Sygnatury typu Typhonn wyktyte w [current_system]", "White Rapids EAS")
+			mini_announce("Sygnatury napędu Typhoon wykryte w [current_system]", "White Rapids EAS")
 	for(var/obj/structure/overmap/OM in current_system.system_contents)
 		//Boarding ships don't want to go to brasil
 		if(OM.mobs_in_ship?.len && OM.reserved_z)
