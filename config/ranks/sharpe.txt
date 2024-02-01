@@ -42,7 +42,7 @@ Wirolog=ENS
 Naukowiec=SPC
 Robotyk=SPC
 
-Policjant=SGM
+Żandarm=SGM
 Detektyw=CPL
 Lekarz Więzienny=SPC
 Aspirant=PVT
