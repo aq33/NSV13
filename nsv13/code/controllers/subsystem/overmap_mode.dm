@@ -245,7 +245,7 @@ SUBSYSTEM_DEF(overmap_mode)
 					var/datum/star_system/S = SSstar_system.return_system
 					if(length(OM.current_system?.enemies_in_system))
 						if(objective_reminder_stacks == 3)
-							priority_announce("Automatyczny powrót do [S.name] nastąpi kiiedy zakończycie walkę.", "[mode.reminder_origin]")
+							priority_announce("Automatyczny powrót do [S.name] nastąpi kiedy zakończycie walkę.", "[mode.reminder_origin]")
 						return // Don't send them home while there are enemies to kill
 					switch(objective_reminder_stacks) //Less Stacks Here, Prevent The Post-Round Stalling
 						if(1)
