@@ -107,7 +107,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	if(!rp_acceptable) // AQ EDIT
 		// So unfunny you get brain damage from saying it
-		to_chat(src, "<span class='warning'>Poczułeś takie zażenowanie po twojej wypowiedzi, że czujesz jak, topi ci się mózg.</span>")
+		to_chat(src, "<span class='warning'>Poczułeś takie zażenowanie po swojej wypowiedzi, że czujesz, jak topi ci się mózg.</span>")
 		src.adjustOrganLoss(ORGAN_SLOT_BRAIN, 10) // bruh to death
 
 	var/list/message_mods = list()
