@@ -10,7 +10,7 @@
 		"Podchodzę przeciwnika!"
 	)
 	call_lines = list(
-		"Przeciwnik dostrzeżony! Potrzebne wsparcie",
+		"Przeciwnik dostrzeżony! Potrzebne wsparcie w",
 		"OPFOR spostrzeżony",
 		"Wzywam wsparcie do"
 	)
