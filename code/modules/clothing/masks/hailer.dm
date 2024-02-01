@@ -170,7 +170,7 @@
 					phrase_text = "Stój albo ci jebnę."
 					phrase_sound = "bash"
 				if(13)
-					phrase_text = "Go ahead, make my day."
+					phrase_text = "No dawaj, popraw mi humor."
 					phrase_sound = "harry"
 				if(14)
 					phrase_text = "Przestań łamać prawo, dupku."
