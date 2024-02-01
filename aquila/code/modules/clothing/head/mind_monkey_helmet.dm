@@ -1,9 +1,10 @@
 /obj/item/clothing/head/monkey_sentience_helmet
 	name = "Monkey mind-magnification helmet"
 	desc = "This helmet rapidly stimulates a monkey's mind to increase brain function, and in turn enables critical thinking skills."
-
 	flags_inv = HIDEHAIR
+	icon = 'aquila/icons/obj/clothing/hats.dmi'
 	icon_state = "monkeymind"
+	worn_icon = 'aquila/icons/mob/head.dmi'
 	var/base_icon_state = "monkeymind"
 	strip_delay = 100
 	clothing_flags = EFFECT_HAT | SNUG_FIT

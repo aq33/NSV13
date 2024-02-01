@@ -274,6 +274,9 @@
 	R.SetLockdown(TRUE)
 	R.anchored = TRUE
 	R.logevent("Chassis configuration has been set to [name].")
+	var/datum/effect_system/smoke_spread/smoke = new
+	smoke.set_up(1, R.loc)
+	smoke.start()
 	sleep(1)
 	for(var/i in 1 to 4)
 		playsound(R, pick('sound/items/drill_use.ogg', 'sound/items/jaws_cut.ogg', 'sound/items/jaws_pry.ogg', 'sound/items/welder.ogg', 'sound/items/ratchet.ogg'), 80, 1, -1)

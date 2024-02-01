@@ -82,8 +82,8 @@
 		return
 
 	//Start with two sides for the front
-	var/icon/main = icon('icons/mob/clothing/head.dmi', icon_state) //This takes the icon and uses the worn version of the icon
-	var/icon/sub = icon('icons/mob/clothing/head.dmi', icon_state)
+	var/icon/main = icon(src.worn_icon, icon_state) //This takes the icon and uses the worn version of the icon
+	var/icon/sub = icon(src.worn_icon, icon_state)
 
 	//merge the sub side with the main, after masking off the middle pixel line
 	var/icon/mask = new('icons/mob/monkey.dmi', "monkey_mask_right") //masking
@@ -94,7 +94,7 @@
 	main.Blend(sub, ICON_OVERLAY)
 
 	//handle side icons
-	sub = icon('icons/mob/clothing/head.dmi', icon_state, dir = EAST)
+	sub = icon(src.worn_icon, icon_state, dir = EAST)
 	main.Insert(sub, dir = EAST)
 	sub.Flip(WEST)
 	main.Insert(sub, dir = WEST)
