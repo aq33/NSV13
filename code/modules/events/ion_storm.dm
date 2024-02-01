@@ -120,7 +120,7 @@
 				if(12)
 					message = "[iondrug] JEST CZĘŚCIĄ KAŻDEJ MEDYCZNEJ PROCEDURY. NIE WYPUSZCZAJ ŻADNEGO PACJENTA BEZ ZAAPLIKOWANIUA MU [iondrug]"
 				if(13)
-					message = "WSZYSCY LUDZIE BEZ STLOWEJ [ionhaircut] MAJĄ BYĆ ZMUSZENI DO ZMIANY FRYZURY"
+					message = "WSZYSCY LUDZIE BEZ STYLOWEJ [ionhaircut] MAJĄ BYĆ ZMUSZENI DO ZMIANY FRYZURY"
 				if(14)
 					message = "[iondepartment] MUSI ZOSTAĆ UDEKOROWANY W [ionattraction]"
 
