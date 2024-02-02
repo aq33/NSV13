@@ -79,7 +79,7 @@
 		if(PIZZA_DELIVERY)
 			SSshuttle.centcom_message += "Dostawa pizzy dla [station_name()]"
 		if(ITS_HIP_TO)
-			SSshuttle.centcom_message += "Sprzątanie zagrożen bilogicznych nadlatuje."
+			SSshuttle.centcom_message += "Sprzątanie zagrożeń biologicznych nadlatuje."
 		if(MY_GOD_JC)
 			SSshuttle.centcom_message += "Aktywny ładunek wybuchowy nadlatuje. Zachować szczególną ostrożność."
 
