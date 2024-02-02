@@ -271,7 +271,7 @@ A way for syndies to track where the player ship is going in advance, so they ca
 	if(ftl_state == FTL_STATE_IDLE)
 		playsound(src, 'nsv13/sound/effects/computer/hum3.ogg', 100, 1)
 		playsound(src, 'nsv13/sound/voice/ftl_spoolup.wav', 100, FALSE)
-		radio.talk_into(src, "FTL spoolup initiated.", radio_channel)
+		radio.talk_into(src, "Rozgrzewanie FTL zainicjowane.", radio_channel)
 		icon_state = "ftl_charging"
 		ftl_state = FTL_STATE_SPOOLING
 
