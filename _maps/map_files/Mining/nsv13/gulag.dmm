@@ -23,6 +23,7 @@
 	pixel_y = 32
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/structure/gulag_beacon,
 /turf/open/floor/plasteel/techmaint,
 /area/mine/laborcamp)
 "aT" = (
@@ -381,6 +382,16 @@
 /obj/item/pickaxe/emergency,
 /turf/open/floor/plating/asteroid,
 /area/space/nearstation)
+"jH" = (
+/obj/docking_port/stationary{
+	dwidth = 2;
+	height = 6;
+	id = "laborcamp_away";
+	name = "labor camp dock";
+	width = 12
+	},
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "jN" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -670,10 +681,6 @@
 	},
 /turf/open/floor/plating/asteroid/airless,
 /area/space/nearstation)
-"rn" = (
-/obj/machinery/light,
-/turf/open/floor/plating/asteroid/airless,
-/area/lavaland/surface/outdoors/explored)
 "rt" = (
 /obj/machinery/conveyor_switch/oneway{
 	id = "gulag"
@@ -1756,13 +1763,6 @@
 "UI" = (
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
-"UP" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/machinery/light,
-/turf/open/floor/plating/asteroid/airless,
-/area/mine/laborcamp)
 "Vw" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
@@ -1900,7 +1900,7 @@
 /area/mine/laborcamp)
 "Zs" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/gulag_beacon,
+/obj/machinery/computer/shuttle_flight/labor/one_way,
 /turf/open/floor/plasteel/techmaint,
 /area/mine/laborcamp)
 "Zz" = (
@@ -34689,7 +34689,7 @@ XG
 XG
 XG
 XG
-rn
+js
 XT
 NO
 QI
@@ -35456,8 +35456,8 @@ XG
 rX
 XG
 XG
+XG
 rc
-io
 io
 Eu
 io
@@ -35713,9 +35713,9 @@ XG
 XG
 XG
 XG
+XG
 Ak
 Br
-Wu
 Wu
 Wu
 Wu
@@ -35970,9 +35970,9 @@ XG
 XG
 hw
 XG
+XG
 Ak
 ak
-UI
 UI
 UI
 UI
@@ -36227,9 +36227,9 @@ XG
 XG
 XG
 XG
+XG
 Ak
 ak
-UI
 UI
 UI
 UI
@@ -36484,9 +36484,9 @@ XG
 XG
 rX
 rX
+XG
 Ak
 ak
-UI
 UI
 UI
 UI
@@ -36741,6 +36741,7 @@ XG
 XG
 XG
 XG
+XG
 Ak
 ak
 UI
@@ -36748,8 +36749,7 @@ UI
 UI
 UI
 UI
-UI
-UI
+jH
 AJ
 tl
 DV
@@ -36998,9 +36998,9 @@ XG
 hw
 XG
 XG
+XG
 Ak
 ak
-UI
 UI
 UI
 UI
@@ -37255,9 +37255,9 @@ XG
 hw
 XG
 XG
+XG
 Ak
 ak
-UI
 UI
 UI
 UI
@@ -37512,9 +37512,9 @@ XG
 XG
 XG
 XG
+XG
 Ak
 ak
-UI
 UI
 UI
 UI
@@ -37769,9 +37769,9 @@ XG
 rX
 XG
 XG
+XG
 Ak
 ak
-UI
 UI
 UI
 UI
@@ -38026,9 +38026,9 @@ XG
 rX
 rX
 XG
+XG
 Ak
 ak
-UI
 UI
 UI
 UI
@@ -38283,9 +38283,9 @@ XG
 XG
 XG
 XG
+XG
 Ak
 ak
-UI
 UI
 UI
 UI
@@ -38540,15 +38540,15 @@ XG
 XG
 XG
 XG
+XG
 Ak
-ak
-UI
-UI
-UI
-UI
-UI
-UI
-UI
+Rj
+OM
+OM
+OM
+OM
+OM
+OM
 NE
 yJ
 mv
@@ -38797,15 +38797,15 @@ rX
 XG
 XG
 XG
-Ak
-ak
-UI
-UI
-UI
-UI
-UI
-UI
-UI
+XG
+ux
+io
+io
+io
+io
+io
+io
+XT
 XT
 XT
 ld
@@ -39054,15 +39054,15 @@ rX
 XG
 XG
 XG
-Ak
-Rj
-OM
-OM
-OM
-OM
-OM
-OM
-UP
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XT
 XT
 Xa
 Dc
@@ -39311,14 +39311,14 @@ XG
 XG
 XG
 XG
-ux
-io
-io
-io
-io
-io
-io
-io
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
 XT
 XT
 XT
