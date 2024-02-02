@@ -7,7 +7,7 @@
 		"Żryj to!",
 		"Słabeusze!",
 		"Wracasz do domu w trumnie, dzieciaku!",
-		"Podchodzę przeciwnika!"
+		"Walczę z przeciwnikiem!"
 	)
 	call_lines = list(
 		"Przeciwnik dostrzeżony! Potrzebne wsparcie w",
