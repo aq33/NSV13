@@ -11,7 +11,7 @@
 	)
 	call_lines = list(
 		"Przeciwnik dostrzeżony! Potrzebne wsparcie w",
-		"OPFOR spostrzeżony",
+		"OPFOR spostrzeżony w",
 		"Wzywam wsparcie do"
 	)
 	response_lines = list(
