@@ -53,11 +53,11 @@
 /turf/closed/mineral,
 /area/space/nearstation)
 "bW" = (
-/obj/effect/spawner/structure/window,
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/firedoor/border_only{
 	dir = 1
 	},
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/mine/laborcamp)
 "ci" = (
@@ -381,14 +381,6 @@
 /obj/item/pickaxe/emergency,
 /turf/open/floor/plating/asteroid,
 /area/space/nearstation)
-"jH" = (
-/obj/effect/spawner/structure/window,
-/obj/machinery/door/firedoor/border_only{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/border_only,
-/turf/open/floor/plating,
-/area/mine/laborcamp)
 "jN" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -445,7 +437,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
-/obj/effect/spawner/structure/window/reinforced/shutter,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/mine/laborcamp)
 "ld" = (
@@ -453,7 +445,9 @@
 /turf/open/floor/plasteel/freezer,
 /area/mine/laborcamp)
 "lX" = (
-/obj/machinery/power/smes/engineering,
+/obj/machinery/power/smes/engineering{
+	charge = 5e+006
+	},
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
 	},
@@ -633,10 +627,6 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel/grid/steel,
 /area/mine/laborcamp)
-"qF" = (
-/obj/effect/spawner/structure/window/reinforced/shutter,
-/turf/open/floor/plating,
-/area/mine/laborcamp/security)
 "qU" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -1497,14 +1487,15 @@
 /turf/open/floor/plasteel,
 /area/mine/laborcamp)
 "NE" = (
-/obj/effect/spawner/structure/window/reinforced/shutter,
 /obj/structure/curtain,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/mine/laborcamp)
 "NK" = (
 /mob/living/simple_animal/bot/secbot/beepsky{
 	desc = "Powered by the tears and sweat of laborers.";
-	name = "Prison Ofitser"
+	name = "Prison Ofitser";
+	on = 0
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -1756,10 +1747,10 @@
 /turf/open/floor/plasteel/freezer,
 /area/mine/laborcamp)
 "Uh" = (
-/obj/machinery/power/rtg,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
+/obj/machinery/power/rtg/advanced,
 /turf/open/floor/plating,
 /area/mine/laborcamp)
 "UI" = (
@@ -34198,7 +34189,7 @@ pL
 GF
 XT
 XT
-pL
+mP
 XT
 XT
 XG
@@ -34956,7 +34947,7 @@ XG
 XG
 XG
 XG
-pL
+mP
 Fx
 Fx
 Fx
@@ -35734,7 +35725,7 @@ KZ
 XT
 hT
 Da
-jH
+mP
 cw
 Sw
 gA
@@ -36248,7 +36239,7 @@ UI
 XT
 rY
 aT
-jH
+mP
 cw
 Sw
 IL
@@ -36777,7 +36768,7 @@ Jb
 pl
 wP
 EQ
-pL
+mP
 XG
 XG
 XG
@@ -37548,7 +37539,7 @@ Jb
 yK
 wP
 EQ
-pL
+mP
 XG
 XG
 XG
@@ -38319,7 +38310,7 @@ Jb
 mY
 uW
 EQ
-pL
+mP
 XG
 XG
 XG
@@ -40362,9 +40353,9 @@ la
 XT
 LG
 LG
-qF
-qF
-qF
+SD
+SD
+SD
 LG
 rX
 rX
