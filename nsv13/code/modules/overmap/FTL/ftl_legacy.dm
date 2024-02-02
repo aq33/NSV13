@@ -136,7 +136,7 @@ A way for syndies to track where the player ship is going in advance, so they ca
 */
 
 /obj/machinery/computer/ship/ftl_computer/proc/announce_jump()
-	radio.talk_into(src, "TRACKING: FTL signature detected. Tracking information updated.",radio_channel)
+	radio.talk_into(src, "Śledzenie: Sygnatura FTL wykryta. Informacje śledzące zaktualizowane.",radio_channel)
 	for(var/list/L in tracking)
 		var/obj/structure/overmap/target = L["ship"]
 		var/datum/star_system/target_system = SSstar_system.ships[target]["target_system"]
