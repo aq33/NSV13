@@ -1034,10 +1034,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port)
-"dn" = (
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space)
 "do" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -5666,9 +5662,6 @@
 /obj/machinery/airalarm/directional/north,
 /turf/open/floor/engine,
 /area/science/explab)
-"pY" = (
-/turf/template_noop,
-/area/space/nearstation)
 "pZ" = (
 /obj/effect/turf_decal/tile/ship/half/green{
 	dir = 4
@@ -5970,7 +5963,7 @@
 "qW" = (
 /obj/effect/spawner/room/threexfive,
 /turf/template_noop,
-/area/space/nearstation)
+/area/maintenance/nsv/deck2/port)
 "qY" = (
 /obj/structure/table,
 /obj/item/folder/red{
@@ -6399,9 +6392,6 @@
 "sh" = (
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port/fore)
-"si" = (
-/turf/closed/wall/r_wall,
-/area/space)
 "sj" = (
 /obj/machinery/door/airlock/ship/maintenance,
 /obj/machinery/door/firedoor/border_only,
@@ -6427,10 +6417,6 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/chapel/main)
-"sl" = (
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space/nearstation)
 "sm" = (
 /obj/machinery/nanite_program_hub,
 /turf/open/floor/plasteel/techmaint,
@@ -7708,9 +7694,6 @@
 /obj/machinery/light_switch/south,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port/fore)
-"vV" = (
-/turf/open/floor/engine/airless,
-/area/space)
 "vW" = (
 /obj/machinery/atmospherics/pipe/layer_manifold,
 /obj/machinery/advanced_airlock_controller/directional/south,
@@ -11549,9 +11532,6 @@
 /area/crew_quarters/abandoned_gambling_den{
 	name = "Abandoned Bar"
 	})
-"IJ" = (
-/turf/template_noop,
-/area/space)
 "IK" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable{
@@ -44877,7 +44857,7 @@ gS
 gS
 gS
 gS
-kD
+CE
 CE
 CE
 CE
@@ -45134,7 +45114,7 @@ gS
 gS
 gS
 gS
-kD
+CE
 CE
 ET
 Zx
@@ -45387,11 +45367,11 @@ Nh
 Nh
 eH
 Nh
-dn
+HX
 gS
 gS
 gS
-kD
+CE
 CE
 FX
 Tc
@@ -45644,11 +45624,11 @@ Nh
 Nh
 Nh
 Nh
-vV
 gS
 gS
 gS
-kD
+gS
+CE
 CE
 CE
 CE
@@ -45901,7 +45881,7 @@ Nh
 Nh
 Nh
 Nh
-dn
+HX
 gS
 gS
 gS
@@ -46158,7 +46138,7 @@ Nh
 Nh
 Nh
 Nh
-dn
+HX
 gS
 gS
 gS
@@ -46415,7 +46395,7 @@ Nh
 Nh
 Nh
 Nh
-dn
+HX
 gS
 gS
 gS
@@ -46671,12 +46651,12 @@ Nh
 Nh
 Nh
 Nh
-si
-si
-kD
-kD
-kD
-kD
+kH
+kH
+kH
+kH
+kH
+kH
 kH
 xM
 Kt
@@ -46928,11 +46908,11 @@ Nh
 Nh
 Nh
 Nh
-kD
-pY
-pY
-pY
-pY
+kH
+oD
+oD
+oD
+oD
 qW
 kH
 Yu
@@ -47185,12 +47165,12 @@ Nh
 Nh
 Nh
 Nh
-kD
-IJ
-pY
-pY
-pY
-pY
+kH
+oD
+oD
+oD
+oD
+oD
 iW
 bh
 Yt
@@ -47442,12 +47422,12 @@ Nh
 Nh
 Nh
 Nh
-kD
-IJ
-pY
-pY
-pY
-pY
+kH
+oD
+oD
+oD
+oD
+oD
 kH
 ah
 dM
@@ -47699,12 +47679,12 @@ Nh
 Nh
 Nh
 Nh
-kD
-kD
-kD
-kD
-kD
-kD
+kH
+kH
+kH
+kH
+kH
+kH
 kH
 bh
 iw
@@ -51035,7 +51015,7 @@ Nh
 Nh
 Nh
 Nh
-sl
+HX
 kH
 kH
 kH
