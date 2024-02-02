@@ -73,7 +73,7 @@
 		if(SPIDER_GIFT)
 			SSshuttle.centcom_message += "Prezent od Pajęczego Klanu nadlatuje."
 		if(DEPARTMENT_RESUPPLY)
-			SSshuttle.centcom_message += "Depeartamentowe uzupełnienie nadlatują."
+			SSshuttle.centcom_message += "Departamentowe uzupełnienie nadlatuje."
 		if(ANTIDOTE_NEEDED)
 			SSshuttle.centcom_message += "Próbki wirusa nadlatują."
 		if(PIZZA_DELIVERY)
