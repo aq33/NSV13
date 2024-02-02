@@ -6429,7 +6429,6 @@
 /area/chapel/main)
 "sl" = (
 /obj/structure/lattice,
-/obj/structure/lattice,
 /turf/open/space/basic,
 /area/space/nearstation)
 "sm" = (
