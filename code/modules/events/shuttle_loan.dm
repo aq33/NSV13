@@ -29,7 +29,7 @@
 	SSshuttle.shuttle_loan = src
 	switch(dispatch_type)
 		if(HIJACK_SYNDIE)
-			priority_announce("Zaopatrzenie: Syndykat próbuje zinflitrować wasz statek. Jeśli pozwolicie im porwać prom, zaoszczędzicie nam sporo problemu.", "Kontrwywiad Centrali", SSstation.announcer.get_rand_alert_sound())
+			priority_announce("Zaopatrzenie: Syndykat próbuje zinflitrować wasz statek. Jeśli pozwolicie im porwać prom towarowy, zaoszczędzicie nam sporo problemu.", "Kontrwywiad Centrali", SSstation.announcer.get_rand_alert_sound())
 		if(RUSKY_PARTY)
 			priority_announce("Zaopatrzenie: Grupa wściekłych ruskich ma ochotę na imprezkę. Możecie podesłać po nich prom, byśmy się ich pozbyli?", "Rosyjski Program Informacyjny Centrali", SSstation.announcer.get_rand_alert_sound())
 		if(SPIDER_GIFT)
