@@ -167,11 +167,11 @@
 
 	var/list/messages = list("Wykryto zaburzenia wywołane wybuchem.",
 							 "Epicentrum w: współrzędne ([epicenter.x], [epicenter.y]). Czasowe przemieszczenie tachionów: [took] sekund.",
-							 "Rzeczywiste: Zasięg epicentrum: [devastation_range]. Zewnętrzny zasięg: [heavy_impact_range]. Zasięg fali uderzeniowe: [light_impact_range].")
+							 "Rzeczywisty: Zasięg epicentrum: [devastation_range]. Zewnętrzny zasięg: [heavy_impact_range]. Zasięg fali uderzeniowe: [light_impact_range].")
 
 	// If the bomb was capped, say its theoretical size.
 	if(devastation_range < orig_dev_range || heavy_impact_range < orig_heavy_range || light_impact_range < orig_light_range)
-		messages += "Theoretical: Epicenter radius: [orig_dev_range]. Outer radius: [orig_heavy_range]. Shockwave radius: [orig_light_range]."
+		messages += "Teoretyczny: Zasięg epicentrum: [orig_dev_range]. Zewnętrzny zasięg: [orig_heavy_range]. Zasięg fali uderzeniowej: [orig_light_range]."
 		R.theory_radius["epicenter_radius"] = orig_dev_range
 		R.theory_radius["outer_radius"] = orig_heavy_range
 		R.theory_radius["shockwave_radius"] = orig_light_range
