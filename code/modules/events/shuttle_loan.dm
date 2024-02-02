@@ -39,7 +39,7 @@
 			thanks_msg = "Prom zaopatrzeniowy powinien wrócić za 5 minut."
 			bonus_points = 0
 		if(ANTIDOTE_NEEDED)
-			priority_announce("Zaopatrzenie: Wasz statek został wybrany do epidemiologicznego programu badawczego. Wyślijce nam swój prom, a prześlemy wam próbki.", "Inicjatywa Badawcza Centrali", SSstation.announcer.get_rand_alert_sound())
+			priority_announce("Zaopatrzenie: Wasz statek został wybrany do epidemiologicznego programu badawczego. Wyślijce nam swój prom towarowy, a prześlemy wam próbki.", "Inicjatywa Badawcza Centrali", SSstation.announcer.get_rand_alert_sound())
 		if(PIZZA_DELIVERY)
 			priority_announce("Zaopatrzenie: Wygląda na to, że przelatujący statek przypadkiem zamówił pizze do was.", "Oddział Kosmopizzy Centrali", SSstation.announcer.get_rand_alert_sound())
 			thanks_msg = "Prom zaopatrzeniowy powinien wrócić za 5 minut."
