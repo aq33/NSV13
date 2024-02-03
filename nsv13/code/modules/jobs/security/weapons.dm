@@ -297,7 +297,8 @@
 
 /obj/item/projectile/energy/electrode/hitscan
 	range = 2 //Real life tazers have an effective range of 4.5 meters.
-	damage = 75 //4 second stun by itself
+	//damage = 75 //4 second stun by itself
+	damage = 105 // AQ EDIT - should be around 5.5s
 	damage_type = STAMINA
 	hitscan = TRUE
 
