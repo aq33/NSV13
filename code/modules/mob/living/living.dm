@@ -32,6 +32,11 @@
 				qdel(S)
 			else
 				S.be_replaced()
+	//NSV13 - stop runtiming
+	if(registered_z)
+		SSmobs.clients_by_zlevel[registered_z] -= src
+		registered_z = null
+	//NSV13 end
 	if(ranged_ability)
 		ranged_ability.remove_ranged_ability(src)
 	if(buckled)
@@ -668,7 +673,7 @@
 		return
 	var/blood_exists = FALSE
 
-	for(var/obj/effect/decal/cleanable/trail_holder/C in start) //checks for blood splatter already on the floor
+	for(var/obj/effect/decal/cleanable/blood/trail_holder/C in start) //checks for blood splatter already on the floor
 		blood_exists = TRUE
 	if(isturf(start))
 		var/trail_type = getTrail()
@@ -686,9 +691,9 @@
 				if((newdir in GLOB.cardinals) && (prob(50)))
 					newdir = turn(get_dir(target_turf, start), 180)
 				if(!blood_exists)
-					new /obj/effect/decal/cleanable/trail_holder(start, get_static_viruses())
+					new /obj/effect/decal/cleanable/blood/trail_holder(start, get_static_viruses())
 
-				for(var/obj/effect/decal/cleanable/trail_holder/TH in start)
+				for(var/obj/effect/decal/cleanable/blood/trail_holder/TH in start)
 					if((!(newdir in TH.existing_dirs) || trail_type == "trails_1" || trail_type == "trails_2") && TH.existing_dirs.len <= 16) //maximum amount of overlays is 16 (all light & heavy directions filled)
 						TH.existing_dirs += newdir
 						TH.add_overlay(image('icons/effects/blood.dmi', trail_type, dir = newdir))

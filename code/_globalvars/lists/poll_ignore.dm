@@ -16,6 +16,8 @@
 #define POLL_IGNORE_SPLITPERSONALITY "split_personality"
 #define POLL_IGNORE_GHOSTSHIP "ghost ships" //NSV13
 #define POLL_IGNORE_WIZARD_HELPER "wizard_helper"
+#define POLL_IGNORE_MONKEY "monkey" // AQUILA EDIT
+#define POLL_IGNORE_MONKEY_HELMET "monkey_helmet" // AQ EDIT
 
 GLOBAL_LIST_INIT(poll_ignore_list, list(
 	POLL_IGNORE_ALIEN_LARVA,
@@ -31,10 +33,11 @@ GLOBAL_LIST_INIT(poll_ignore_list, list(
 	POLL_IGNORE_SPIDER,
 	POLL_IGNORE_GHOSTSHIP, //NSV13
 	POLL_IGNORE_WIZARD_HELPER,
+	POLL_IGNORE_MONKEY, // AQUILA EDIT
+	POLL_IGNORE_MONKEY_HELMET, // AQ EDIT
 ))
 
 GLOBAL_LIST_INIT(poll_ignore, init_poll_ignore())
-
 
 /proc/init_poll_ignore()
 	. = list()

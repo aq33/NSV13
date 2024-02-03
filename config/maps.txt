@@ -31,7 +31,7 @@ endmap
 
 map eclipse
 	maxplayers 20
-	votable
+#	votable
 endmap
 
 map galactica
@@ -55,11 +55,16 @@ endmap
 
 map shrike
 	maxplayers 24
-	votable
+#	votable
 endmap
 
 map snake
 #	maxplayers 30
+	votable
+endmap
+
+map atlantis
+	maxplayers 60
 	votable
 endmap
 
