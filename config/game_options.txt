@@ -672,6 +672,22 @@ SHIFT_TIME_REALTIME
 ## Enable the capitalist agenda on your server.
 ECONOMY
 
+## Allow withdrawing money from departmental budget cards
+#ALLOW_BUDGET_MONEY_WITHDRAWAL
+
+## Allow converting money from your shift end bank balance to metacoins
+ALLOW_ENDROUND_BANK_BALANCE_METACOIN_CONVERSION
+
+## Shift end bank account balance to metacurrency conversion coefficient
+## metacurrency += balance * coefficient
+## so with a coefficient of 0.1 you'd get 100 metacoins if you had 1000$ in your account
+BANK_BALANCE_METACOIN_CONVERSION_COEFFICIENT 1
+
+## Allow the ship's request for nuclear authentication codes
+## to be automatically accepted after a certain amount of time.
+## Admins can cancel this manually.
+ALLOW_NUKE_REQUEST_AUTO_ACCEPT
+
 ## Crew objectives
 ALLOW_CREW_OBJECTIVES
 

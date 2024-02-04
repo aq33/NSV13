@@ -802,6 +802,12 @@ update_label("John Doe", "Clowny")
 	SSeconomy.dep_cards -= src
 	return ..()
 
+/obj/item/card/id/departmental_budget/alt_click_can_use_id(mob/living/user)
+	if(!CONFIG_GET(flag/allow_budget_money_withdrawal))
+		return
+
+	. = ..()
+
 /obj/item/card/id/departmental_budget/civ
 	department_ID = ACCOUNT_CIV
 	department_name = ACCOUNT_CIV_NAME
