@@ -9170,6 +9170,10 @@
 /obj/item/flashlight/lamp{
 	pixel_y = -16
 	},
+/obj/item/reagent_containers/food/snacks/grown/poppy{
+	pixel_y = 10;
+	pixel_x = -7
+	},
 /turf/open/floor/wood,
 /area/chapel/main)
 "AI" = (
@@ -10792,7 +10796,7 @@
 	},
 /obj/effect/landmark/zebra_interlock_point,
 /obj/machinery/door/airlock/ship/engineering{
-	req_access_txt = "24;10"
+	req_one_access_txt = "24;10"
 	},
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
@@ -11400,9 +11404,6 @@
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
 	},
 /turf/open/floor/carpet/orange,
 /area/engine/engine_room)
@@ -12153,13 +12154,13 @@
 /area/hallway/nsv/deck2/primary)
 "KA" = (
 /obj/structure/chair,
-/obj/machinery/status_display/ai/north,
 /obj/effect/turf_decal/tile/ship/red{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/ship/red{
 	dir = 4
 	},
+/obj/machinery/status_display/evac/north,
 /turf/open/floor/durasteel/alt,
 /area/hallway/secondary/exit/departure_lounge)
 "KB" = (
@@ -12320,8 +12321,8 @@
 /obj/machinery/computer/monitor{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
+/obj/structure/cable{
+	icon_state = "0-4"
 	},
 /turf/open/floor/carpet/orange,
 /area/engine/engine_room)
@@ -12637,6 +12638,9 @@
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/carpet/orange,
 /area/engine/engine_room)
@@ -15588,7 +15592,7 @@
 	},
 /obj/machinery/door/airlock/ship/engineering/glass{
 	name = "Engineering";
-	req_access_txt = "24;10"
+	req_one_access_txt = "24;10"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -16092,7 +16096,9 @@
 /area/nsv/weapons)
 "Wf" = (
 /obj/machinery/atmospherics/pipe/layer_manifold,
-/obj/structure/closet/crate,
+/obj/structure/closet/crate{
+	icon_state = "engi_crate"
+	},
 /obj/item/control_rod,
 /obj/item/control_rod,
 /obj/item/control_rod,
@@ -16238,6 +16244,11 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/nsv/weapons)
+"WG" = (
+/obj/machinery/computer/ship/viewscreen,
+/obj/structure/lattice/catwalk,
+/turf/open/space/basic,
+/area/space/nearstation)
 "WH" = (
 /obj/effect/turf_decal/tile/ship/half/green{
 	dir = 1
@@ -38971,8 +38982,8 @@ an
 an
 an
 cb
-cb
-jZ
+kD
+WG
 EQ
 DG
 Nh
@@ -39227,8 +39238,8 @@ HX
 HX
 HX
 HX
-HX
-HX
+cb
+cb
 jZ
 jZ
 uN
