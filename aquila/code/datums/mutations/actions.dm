@@ -1,4 +1,4 @@
-/datum/mutation/human/tentacle
+/datum/mutation/tentacle
 	name = "Tentacle Arm"
 	desc = "A horrific mutation that gives the user the abilitiy to turn their arm into tentacle made out of muscle and tendons."
 	quality = POSITIVE
@@ -64,7 +64,7 @@
 /***************************************\
 |***********ARMBLADE MUTATION***********|
 \***************************************/
-/datum/mutation/human/armblade
+/datum/mutation/armblade
 	name = "Arm Blade"
 	desc = "A horrific mutation that gives user the ability to turn their arm into a grotesque blade made of bone and flesh."
 	locked = TRUE
@@ -123,7 +123,7 @@
 /*************************************\
 |***********VORE MUTATION*************|
 \*************************************/
-/datum/mutation/human/vore //ta mutacja to nie byl moj pomysl, miejcie pretensje do jokura
+/datum/mutation/vore //ta mutacja to nie byl moj pomysl, miejcie pretensje do jokura
 	name = "Matter Eater"
 	desc = "A mutation that gives a subject the ability to eat anything around them whole."
 	quality = POSITIVE
