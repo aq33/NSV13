@@ -137,11 +137,11 @@
 	REMOVE_TRAIT(owner, TRAIT_UNINTELLIGIBLE_SPEECH, GENETIC_MUTATION)
 
 /datum/mutation/swedish
-	name = "Swedish"
-	desc = "A horrible mutation originating from the distant past. Thought to be eradicated after the incident in 2037."
+	name = "Polish"
+	desc = "A horrible mutation originating from the distant past. Thought to be eradicated after the incident in 2137."
 	quality = MINOR_NEGATIVE
-	text_gain_indication = "<span class='notice'>You feel Swedish, however that works.</span>"
-	text_lose_indication = "<span class='notice'>The feeling of Swedishness passes.</span>"
+	text_gain_indication = "<span class='notice'>You feel Polish, however that works.</span>"
+	text_lose_indication = "<span class='notice'>The feeling of Polishness passes.</span>"
 
 /datum/mutation/swedish/on_acquiring(mob/living/carbon/owner)
 	if(..())
@@ -158,13 +158,15 @@
 
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message)
-		message = replacetext(message,"w","v")
-		message = replacetext(message,"j","y")
-		message = replacetext(message,"a",pick("å","ä","æ","a"))
-		message = replacetext(message,"bo","bjo")
-		message = replacetext(message,"o",pick("ö","ø","o"))
+		message = replacetext(message,"o","ó")
+		message = replacetext(message,"a","ą")
+		message = replacetext(message,"e","ę")
+		message = replacetext(message,"e","ę")
+		message = replacetext(message,"l","ł")
+		message = replacetext(message,"c","ć")
+		message = replacetext(message,"z",pick("ź","ż"))
 		if(prob(30))
-			message += " Bork[pick("",", bork",", bork, bork")]!"
+			message += " Kurwa[pick("",", kurwa",", kurła, kurrrr")]!"
 		speech_args[SPEECH_MESSAGE] = trim(message)
 
 /datum/mutation/chav
