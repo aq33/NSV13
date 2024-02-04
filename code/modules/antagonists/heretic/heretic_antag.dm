@@ -17,6 +17,7 @@
 	roundend_category = "Heretics"
 	antagpanel_category = "Heretic"
 	ui_name = "AntagInfoHeretic"
+	banning_key = ROLE_HERETIC
 	antag_moodlet = /datum/mood_event/heretics
 	/// Whether we've ascended! (Completed one of the final rituals)
 	var/ascended = FALSE

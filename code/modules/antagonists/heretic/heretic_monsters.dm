@@ -5,6 +5,7 @@
 	antagpanel_category = "Heretic Beast"
 	antag_moodlet = /datum/mood_event/heretics
 	show_in_antagpanel = FALSE
+	banning_key = ROLE_HERETIC_MONSTER
 	var/antag_hud_type = ANTAG_HUD_HERETIC
 	var/antag_hud_name = "heretic_beast"
 	/// Our master (a heretic)'s mind.
