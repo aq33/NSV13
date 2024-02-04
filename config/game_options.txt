@@ -673,7 +673,7 @@ SHIFT_TIME_REALTIME
 ECONOMY
 
 ## Allow withdrawing money from departmental budget cards
-#ALLOW_BUDGET_MONEY_WITHDRAWAL
+ALLOW_BUDGET_MONEY_WITHDRAWAL
 
 ## Allow converting money from your shift end bank balance to metacoins
 ALLOW_ENDROUND_BANK_BALANCE_METACOIN_CONVERSION
