@@ -75,7 +75,7 @@
 					var/datum/antagonist/A = _A
 					if (A.show_to_ghosts)
 						was_antagonist = TRUE
-						serialized["antag"] = A.name
+						serialized["antag"] = A.get_antag_name()
 						antagonists += list(serialized)
 						break
 

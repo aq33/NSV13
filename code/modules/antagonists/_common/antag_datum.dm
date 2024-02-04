@@ -352,3 +352,7 @@ GLOBAL_LIST(admin_antag_list)
 				to_chat(C, "<span class='boldnotice'>[message]</span>")
 		else
 			C.dna.add_mutation(CLOWNMUT) // We're removing their antag status, add back clumsy
+
+/// gets antag name for orbit category. Reasoning is described in each subtype
+/datum/antagonist/proc/get_antag_name()
+	return name

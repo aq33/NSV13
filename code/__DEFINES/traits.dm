@@ -415,3 +415,5 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NODAMPENERS "nodampeners" //! Prevents a ship with this trait from using dampeners.
 	#define TRAIT_SOURCE_OVERMAP_BLACKHOLE "overmap_singularity"
 //NSV13 traits end
+
+#define ELEMENT_TRAIT(source) "element_trait_[source]"

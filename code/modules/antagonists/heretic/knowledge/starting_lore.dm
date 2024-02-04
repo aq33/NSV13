@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 		you will additionally require a usable organic heart in the transmutation."
 	required_atoms = list(
 		/obj/effect/decal/cleanable/blood = 1,
-		/obj/item/reagent_containers/food/snacks/grown/flower = 1,
+		/obj/item/reagent_containers/food/snacks/grown/poppy = 1,
 	)
 	var/required_organ_type = /obj/item/organ/heart
 	cost = 0
@@ -97,8 +97,6 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 	// Otherwise, seek out a replacement in our atoms
 	for(var/obj/item/organ/nearby_organ in atoms)
 		if(!istype(nearby_organ, required_organ_type))
-			continue
-		if(!nearby_organ.useable)
 			continue
 		if(nearby_organ.status != ORGAN_ORGANIC || (nearby_organ.organ_flags & (ORGAN_SYNTHETIC|ORGAN_FAILING)))
 			continue
