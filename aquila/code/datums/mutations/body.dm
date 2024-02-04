@@ -1,4 +1,4 @@
-/datum/mutation/human/jellybones
+/datum/mutation/jellybones
 	name = "Jelly Bones"
 	desc = "All of that yoga seems to have paid off."
 	quality = POSITIVE
@@ -7,17 +7,17 @@
 	difficulty = 14
 	instability = 25
 
-/datum/mutation/human/jellybones/on_acquiring(mob/living/carbon/human/owner)
+/datum/mutation/jellybones/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
 	owner.ventcrawler = VENTCRAWLER_NUDE
 
-/datum/mutation/human/jellybones/on_losing(mob/living/carbon/human/owner)
+/datum/mutation/jellybones/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
 	owner.ventcrawler = VENTCRAWLER_NONE
 
-/datum/mutation/human/breathless
+/datum/mutation/breathless
 	name = "Breathless"
 	desc = "Affected person does not need to breathe."
 	quality = POSITIVE
@@ -26,17 +26,17 @@
 	difficulty = 14
 	instability = 35
 
-/datum/mutation/human/breathless/on_acquiring(mob/living/carbon/human/owner)
+/datum/mutation/breathless/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
 	ADD_TRAIT(owner, TRAIT_NOBREATH, GENETIC_MUTATION)
 
-/datum/mutation/human/breathless/on_losing(mob/living/carbon/human/owner)
+/datum/mutation/breathless/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
 	REMOVE_TRAIT(owner, TRAIT_NOBREATH, GENETIC_MUTATION)
 
-/datum/mutation/human/toxicfart
+/datum/mutation/toxicfart
 	name = "Toxic Fart"
 	desc = "A mutation that causes the subject to synthesize plasma in their intestines."
 	quality = POSITIVE
@@ -45,18 +45,18 @@
 	difficulty = 16
 	instability = 20
 
-/datum/mutation/human/toxicfart/on_acquiring(mob/living/carbon/human/owner)
+/datum/mutation/toxicfart/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
 	ADD_TRAIT(owner, TRAIT_TOXICFART, GENETIC_MUTATION)
 
-/datum/mutation/human/toxicfart/on_losing(mob/living/carbon/human/owner)
+/datum/mutation/toxicfart/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
 	REMOVE_TRAIT(owner, TRAIT_TOXICFART, GENETIC_MUTATION)
 
 
-/datum/mutation/human/megafart
+/datum/mutation/megafart
 	name = "Mega Fart"
 	desc = "A mutation that causes the subject to fart with enough force to knock everyone around them back."
 	locked = TRUE
@@ -64,12 +64,12 @@
 	text_lose_indication = "<span class='notice'>You feel light again.</span>"
 	instability = 25
 
-/datum/mutation/human/megafart/on_acquiring(mob/living/carbon/human/owner)
+/datum/mutation/megafart/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
 	ADD_TRAIT(owner, TRAIT_MEGAFART, GENETIC_MUTATION)
 
-/datum/mutation/human/megafart/on_losing(mob/living/carbon/human/owner)
+/datum/mutation/megafart/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
 	REMOVE_TRAIT(owner, TRAIT_MEGAFART, GENETIC_MUTATION)

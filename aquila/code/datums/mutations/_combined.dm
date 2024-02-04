@@ -1,11 +1,11 @@
 /datum/generecipe/megafart
-	required = "/datum/mutation/human/strong; /datum/mutation/human/toxicfart"
+	required = "/datum/mutation/strong; /datum/mutation/toxicfart"
 	result = MEGAFART
 
 /datum/generecipe/armblade
-	required = "/datum/mutation/human/strong; /datum/mutation/human/claws"
+	required = "/datum/mutation/strong; /datum/mutation/catclaws"
 	result = ARMBLADE
 
 /datum/generecipe/lasereyes
-	required = "/datum/mutation/human/thermal; /datum/mutation/human/glow"
+	required = "/datum/mutation/thermal; /datum/mutation/glow"
 	result = LASEREYES
