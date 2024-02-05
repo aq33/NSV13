@@ -156,8 +156,8 @@
 		playsound(M, 'sound/items/sheath.ogg', 25, TRUE)
 
 /obj/item/melee/classic_baton
-	name = "classic baton"
-	desc = "A wooden truncheon for beating criminal scum."
+	name = "klasyczna pałka"
+	desc = "Drewniana pałka do bicia kryminalnych szumowin."
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "baton"
 	item_state = "classic_baton"
@@ -195,8 +195,8 @@
 /obj/item/melee/classic_baton/proc/get_on_description()
 	. = list()
 
-	.["local_on"] = "<span class ='warning'>You extend the baton.</span>"
-	.["local_off"] = "<span class ='notice'>You collapse the baton.</span>"
+	.["local_on"] = "<span class ='warning'>Wyciągasz pałkę.</span>"
+	.["local_off"] = "<span class ='notice'>Zsuwasz pałkę.</span>"
 
 	return .
 
@@ -204,12 +204,12 @@
 /obj/item/melee/classic_baton/proc/get_stun_description(mob/living/target, mob/living/user)
 	. = list()
 
-	.["visibletrip"] =  "<span class ='danger'>[user] has knocked [target]'s legs out from under them with [src]!</span>"
-	.["localtrip"] = "<span class ='danger'>[user] has knocked your legs out from under you [src]!</span>"
-	.["visibledisarm"] =  "<span class ='danger'>[user] has disarmed [target] with [src]!</span>"
-	.["localdisarm"] = "<span class ='danger'>[user] whacks your arm with [src], causing a coursing pain!</span>"
-	.["visiblestun"] =  "<span class ='danger'>[user] beat [target] with [src]!</span>"
-	.["localstun"] = "<span class ='danger'>[user] has beat you with [src]!</span>"
+	.["visibletrip"] =  "<span class ='danger'>[user] wybił balans [target] z pod nóg[src]!</span>"
+	.["localtrip"] = "<span class ='danger'>[user] wybił ciebie z balansu [src]!</span>"
+	.["visibledisarm"] =  "<span class ='danger'>[user] rozbroił [target] za pomocą [src]!</span>"
+	.["localdisarm"] = "<span class ='danger'>[user] uderza cię w ramię [src], powodując przeszywający ból!</span>"
+	.["visiblestun"] =  "<span class ='danger'>[user] uderzył [target] z [src]!</span>"
+	.["localstun"] = "<span class ='danger'>[user] spałował ciebie z [src]!</span>"
 
 	return .
 
@@ -217,8 +217,8 @@
 /obj/item/melee/classic_baton/proc/get_silicon_stun_description(mob/living/target, mob/living/user)
 	. = list()
 
-	.["visible"] = "<span class='danger'>[user] pulses [target]'s sensors with the baton!</span>"
-	.["local"] = "<span class='danger'>You pulse [target]'s sensors with the baton!</span>"
+	.["visible"] = "<span class='danger'>[user] szturchnął [target] w sensor pałką!</span>"
+	.["local"] = "<span class='danger'>Dźgnąłeś [target] w sensor pałką!</span>"
 
 	return .
 
@@ -232,11 +232,11 @@
 
 //Police Baton
 /obj/item/melee/classic_baton/police
-	name = "police baton"
+	name = "pałka policyjna"
 	// NSV13 - added stun and knockdown, removed stamina, added silicon effects
 	stun_time_carbon = (3 SECONDS)
 	knockdown_time_carbon = (6 SECONDS)
-	stamina_damage = 0
+	stamina_damage = 40 //AQ EDIT
 	affect_silicon = TRUE
 
 /obj/item/melee/classic_baton/police/attack(mob/living/target, mob/living/user)
@@ -246,7 +246,7 @@
 
 	add_fingerprint(user)
 	if((HAS_TRAIT(user, TRAIT_CLUMSY)) && prob(50))
-		to_chat(user, "<span class ='danger'>You hit yourself over the head.</span>")
+		to_chat(user, "<span class ='danger'>Spałowałeś się!</span>")
 		user.adjustStaminaLoss(stamina_damage)
 		//NSV13 - added stamina and knockdown
 		user.Paralyze(stun_time_carbon * force)
@@ -332,15 +332,15 @@
 				to_chat(user, wait_desc)
 
 /obj/item/melee/classic_baton/police/deputy
-	name = "deputy baton"
+	name = "pałka bezpieczeństwa"
 	force = 12
 	cooldown = 10
-	stamina_damage = 20
+	stamina_damage = 30
 
 //Telescopic Baton
 /obj/item/melee/classic_baton/police/telescopic
-	name = "telescopic baton"
-	desc = "A compact and harmless personal defense weapon. Sturdy enough to knock the feet out from under attackers and robust enough to disarm with a quick strike to the hand"
+	name = "pałka teleskopowa"
+	desc = "Kompaktowa broń do obrony osobistej. Jest w stanie wytrącić z balansu atakujących lub by rozbroić szybkim uderzeniem w dłoń."
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "telebaton_0"
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
@@ -356,8 +356,8 @@
 	on_icon_state = "telebaton_1"
 	off_icon_state = "telebaton_0"
 	on_item_state = "nullrod"
-	force_on = 0
-	force_off = 0
+	force_on = 12 //AQ EDIT
+	force_off = 5 //AQ EDIT
 	weight_class_on = WEIGHT_CLASS_BULKY
 
 /obj/item/melee/classic_baton/telescopic/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
@@ -408,8 +408,8 @@
 
 //Contractor Baton
 /obj/item/melee/classic_baton/contractor_baton
-	name = "contractor baton"
-	desc = "A compact, specialised baton assigned to Syndicate contractors. Applies light electric shocks that can resonate with a specific targets brain frequency causing significant stunning effects."
+	name = "pałka zleceniowa"
+	desc = "Kompaktowa, specjalistyczna pałka przeznaczona dla kontrahentów Syndykatu. Stosuje lekkie wstrząsy elektryczne, które mogą rezonować z określoną częstotliwością mózgu celu, powodując znaczące efekty ogłuszenia."
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "contractor_baton_0"
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
@@ -442,7 +442,7 @@
 	var/datum/antagonist/traitor/owner_data = null
 
 /obj/item/melee/classic_baton/contractor_baton/get_wait_description()
-	return "<span class='danger'>The baton is still charging!</span>"
+	return "<span class='danger'>Pałka nadal się ładuje!</span>"
 
 /obj/item/melee/classic_baton/contractor_baton/additional_effects_carbon(mob/living/target, mob/living/user)
 	target.Jitter(20)
@@ -482,7 +482,7 @@
 
 	add_fingerprint(user)
 	if((HAS_TRAIT(user, TRAIT_CLUMSY)) && prob(50))
-		to_chat(user, "<span class ='danger'>You hit yourself over the head.</span>")
+		to_chat(user, "<span class ='danger'>Spałowałeś się!</span>")
 
 		user.Paralyze(knockdown_time_carbon * force)
 		user.adjustStaminaLoss(stamina_damage)
@@ -568,7 +568,7 @@
 		var/datum/antagonist/traitor/traitor_data = user.mind.has_antag_datum(/datum/antagonist/traitor)
 		if(traitor_data)
 			owner_data = traitor_data
-			to_chat(user, "<span class='notice'>[src] scans your genetic data as you pick it up, creating an uplink with the syndicate database. Attacking your current target will stun and mute them, however the baton is weak against non-targets.</span>")
+			to_chat(user, "<span class='notice'>[src] Przeskanowuje twoje dane genetyczne w trakcie podnoszenia, tworząc połączenie z bazą danych syndykatu. Atakowanie obecnego celu spowoduje ich ogłuszenie i pozbawienie mowy, jednak pałka jest słaba wobec ludzi niebędącymi celami.</span>")
 
 // Supermatter Sword
 /obj/item/melee/supermatter_sword
