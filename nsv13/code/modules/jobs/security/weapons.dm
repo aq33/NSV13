@@ -252,7 +252,7 @@
 
 /obj/item/projectile/bullet/c9mm/rubber
 	name = "Pocisk 9mm"
-	damage = 20
+	damage = 30
 	damage_type = STAMINA
 	icon = 'nsv13/icons/obj/projectiles_nsv.dmi'
 	icon_state = "pdc"
