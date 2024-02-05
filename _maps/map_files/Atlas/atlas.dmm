@@ -6792,7 +6792,8 @@
 "tv" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/southright{
-	name = "Cargo Desk"
+	name = "Cargo Desk";
+	req_one_access_txt = "31; 48"
 	},
 /obj/item/folder/white{
 	pixel_x = 4;
