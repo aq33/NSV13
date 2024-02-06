@@ -169,11 +169,11 @@
 
 	var/cooldown_check = 0 // Used interally, you don't want to modify
 
-	var/cooldown = 20 // Default wait time until can stun again.
+	var/cooldown = 0 // Default wait time until can stun again. //AQ EDIT
 	var/knockdown_time_carbon = 0 //NSV13 - added knockdown times
 	var/stun_time_carbon = 0 //NSV13 - readded stun time variable
 	var/stun_time_silicon_multiplier = 0.6 //NSV13 - Multiplier for stunning silicons; if enabled, is 60% of human stun time.
-	var/stamina_damage = 55 // Do we deal stamina damage.
+	var/stamina_damage = 0 // Do we deal stamina damage. //AQ EDIT
 	var/affect_silicon = FALSE // Does it stun silicons.
 	var/on_sound // "On" sound, played when switching between able to stun or not.
 	var/on_stun_sound = "sound/effects/woodhit.ogg" // Default path to sound for when we stun.
@@ -234,10 +234,11 @@
 /obj/item/melee/classic_baton/police
 	name = "pałka policyjna"
 	// NSV13 - added stun and knockdown, removed stamina, added silicon effects
-	stun_time_carbon = (3 SECONDS)
+	stun_time_carbon = (1 SECONDS) //AQ EDIT
 	knockdown_time_carbon = (6 SECONDS)
-	stamina_damage = 40 //AQ EDIT
+	stamina_damage = 20 //AQ EDIT
 	affect_silicon = TRUE
+	cooldown = 1 //AQ EDIT
 
 /obj/item/melee/classic_baton/police/attack(mob/living/target, mob/living/user)
 	if(!on)
@@ -249,7 +250,7 @@
 		to_chat(user, "<span class ='danger'>Spałowałeś się!</span>")
 		user.adjustStaminaLoss(stamina_damage)
 		//NSV13 - added stamina and knockdown
-		user.Paralyze(stun_time_carbon * force)
+//		user.Paralyze(stun_time_carbon * force) //AQ EDIT
 		user.Knockdown(knockdown_time_carbon * force)
 
 		additional_effects_carbon(user) // user is the target here
@@ -302,7 +303,8 @@
 			playsound(get_turf(src), on_stun_sound, 75, 1, -1)
 			additional_effects_carbon(target, user)
 			if((user.zone_selected == BODY_ZONE_HEAD) || (user.zone_selected == BODY_ZONE_CHEST))
-				target.Paralyze(stun_time_carbon) //NSV13 - readded stuns
+//				target.Paralyze(stun_time_carbon) //NSV13 - readded stuns
+				target.Knockdown(2 SECONDS) //AQ EDIT
 				target.apply_damage(stamina_damage, STAMINA, BODY_ZONE_CHEST, def_check)
 				log_combat(user, target, "stunned", src)
 				target.visible_message(desc["visiblestun"], desc["localstun"])
@@ -334,8 +336,8 @@
 /obj/item/melee/classic_baton/police/deputy
 	name = "pałka bezpieczeństwa"
 	force = 12
-	cooldown = 10
-	stamina_damage = 30
+//	cooldown = 10 //AQ EDIT
+	stamina_damage = 35 //AQ EDIT
 
 //Telescopic Baton
 /obj/item/melee/classic_baton/police/telescopic
