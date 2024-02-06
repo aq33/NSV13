@@ -296,12 +296,13 @@
 		//check for protection
 		//actually handle the pepperspray effects
 		if(!victim.is_eyes_covered() || !victim.is_mouth_covered())
-			victim.blur_eyes(8) // 10 seconds -> 16 AQ EDIT
-			victim.blind_eyes(3) // 6 seconds
-			victim.Knockdown(3 SECONDS)
+			victim.blur_eyes(15) // 10 seconds -> 30 AQ EDIT start
+			victim.blind_eyes(6) // 6 seconds -> 12
+			victim.Knockdown(6 SECONDS)
+			victim.Paralyze(3 SECONDS)
 			if(prob(5))
 				victim.emote("scream")
-			victim.confused = max(M.confused, 5) // 10 seconds
+			victim.confused = max(M.confused, 10) // 10 seconds -> 20 AQ EDIT ebd
 			victim.add_movespeed_modifier(MOVESPEED_ID_PEPPER_SPRAY, update=TRUE, priority=100, multiplicative_slowdown=0.25, blacklisted_movetypes=(FLYING|FLOATING))
 			addtimer(CALLBACK(victim, TYPE_PROC_REF(/mob, remove_movespeed_modifier), MOVESPEED_ID_PEPPER_SPRAY), 10 SECONDS)
 		victim.update_damage_hud()
