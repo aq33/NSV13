@@ -10,6 +10,15 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 5000
 
+/datum/techweb_node/autodoc
+	id = "autodoc"
+	display_name = "Autodoc"
+	description = "A machine that can perform surgery and other medical procedures automatically."
+	prereq_ids = list("exp_surgery")
+	design_ids = list("autodoc")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
+	export_price = 3000
+
 /*****************************\
 |*********** NANITE **********|
 \*****************************/

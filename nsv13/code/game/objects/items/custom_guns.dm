@@ -76,8 +76,8 @@
 		icon_state = "[initial(icon_state)]-0"
 
 /obj/item/gun/ballistic/automatic/mp_smg
-	name = "MP-16A4 'peacemaker' military police SMG"
-	desc = "A bullpup style 9mm SMG used by peacekeeping forces. While bulky, it's an imposing weapon designed to instill order into the masses."
+	name = "Pistolet maszynowy PM-98 Glauberyt"
+	desc = "Kompaktowy pistolet maszynowy kalibru 9 mm przeznaczony do uzbrojenia Żandarmerii na pokładach Okrętów Wojennych."
 	icon = 'nsv13/icons/obj/guns/guns_big.dmi'
 	icon_state = "mp16"
 	lefthand_file = 'nsv13/icons/mob/inhands/weapons/guns_lefthand.dmi'
@@ -101,8 +101,8 @@
 	full_auto = TRUE
 
 /obj/item/gun/ballistic/automatic/marine_rifle
-	name = "M4A-16A1 assault rifle"
-	desc = "A 5.56mm caliber assault rifle used by Blue Phalanx marines in boarding operations. While it's a relatively old-fashioned design, it's proven cheap to mass produce and exceptionally reliable."
+	name = "Karabinek szturmowy wz. 96 Beryl"
+	desc = "Karabinek kalibru 5.56mm uzywany przez Sily Zbrojne Czwartej Rzeczypospolitej Polski. Pomimo relatywnie przestarzalej konstrukcji oraz mechanizmow nadal jest masowo produkowany przez Wielka Fabryke Broni Borowik."
 	icon = 'nsv13/icons/obj/guns/guns_big.dmi'
 	icon_state = "m4a4"
 	lefthand_file = 'nsv13/icons/mob/inhands/weapons/guns_lefthand.dmi'
