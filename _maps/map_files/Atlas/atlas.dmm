@@ -2044,6 +2044,10 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/dark,
 /area/security/brig)
+"fX" = (
+/obj/machinery/holopad,
+/turf/open/floor/plating,
+/area/engine/atmos)
 "fZ" = (
 /turf/open/floor/monotile/dark,
 /area/science/explab)
@@ -2390,6 +2394,7 @@
 	dir = 8
 	},
 /obj/machinery/airalarm/directional/south,
+/obj/item/kirbyplants/random,
 /turf/open/floor/monotile/steel,
 /area/security/brig)
 "gV" = (
@@ -2772,7 +2777,6 @@
 "hV" = (
 /obj/effect/turf_decal/tile/ship/half/purple,
 /obj/machinery/firealarm/directional/south,
-/obj/machinery/recharge_station,
 /turf/open/floor/monotile/dark,
 /area/science/explab)
 "hW" = (
@@ -2989,10 +2993,6 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/security/brig)
-"iJ" = (
-/obj/machinery/holopad,
-/turf/open/floor/plating,
-/area/engine/atmos)
 "iL" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -3882,9 +3882,8 @@
 	},
 /area/nsv/hanger/notkmcstupidhanger)
 "kV" = (
-/obj/structure/table/glass,
-/obj/item/storage/firstaid/regular,
 /obj/effect/turf_decal/tile/ship/half/purple,
+/obj/machinery/recharge_station,
 /turf/open/floor/monotile/dark,
 /area/science/explab)
 "kW" = (
@@ -8419,14 +8418,6 @@
 	},
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck2/primary)
-"xW" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/landmark/event_spawn,
-/obj/effect/landmark/xeno_spawn,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
-/area/maintenance/nsv/deck2/starboard)
 "xX" = (
 /obj/structure/reagent_dispensers/fueltank/cryogenic_fuel,
 /obj/item/radio/intercom/directional/north,
@@ -10327,6 +10318,14 @@
 	},
 /turf/open/space/basic,
 /area/hallway/nsv/deck2/primary)
+"Ej" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/landmark/event_spawn,
+/obj/effect/landmark/xeno_spawn,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/maintenance/nsv/deck2/starboard)
 "Ek" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -10906,13 +10905,6 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/science/explab)
-"Ge" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/holopad,
-/turf/open/floor/carpet/red,
-/area/nsv/weapons)
 "Gf" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -11207,6 +11199,7 @@
 /obj/effect/turf_decal/tile/ship/half/purple{
 	dir = 1
 	},
+/obj/machinery/computer/rdconsole/experiment,
 /turf/open/floor/monotile/dark,
 /area/science/explab)
 "GY" = (
@@ -12579,10 +12572,9 @@
 	pixel_x = -29;
 	pixel_y = -3
 	},
-/obj/machinery/computer/rdconsole/experiment{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/ship/half/purple,
+/obj/structure/table/glass,
+/obj/item/storage/firstaid/regular,
 /turf/open/floor/plasteel/techmaint,
 /area/science/explab)
 "Ld" = (
@@ -15558,6 +15550,13 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck2/primary)
+"TL" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/holopad,
+/turf/open/floor/plasteel/ridged/steel,
+/area/engine/armour_pump)
 "TN" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
@@ -15788,6 +15787,13 @@
 	},
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck2/primary)
+"Uu" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/holopad,
+/turf/open/floor/carpet/red,
+/area/nsv/weapons)
 "Uv" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/generic,
@@ -16394,13 +16400,6 @@
 /obj/machinery/light_switch/west,
 /turf/open/floor/monotile/steel,
 /area/nsv/weapons/gauss/battery/deck2/starboard)
-"Wh" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/holopad,
-/turf/open/floor/plasteel/ridged/steel,
-/area/engine/armour_pump)
 "Wk" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /obj/machinery/camera/autoname,
@@ -45491,7 +45490,7 @@ vf
 qd
 LJ
 Sk
-xW
+Ej
 sP
 zq
 Qc
@@ -47799,7 +47798,7 @@ xt
 qb
 CF
 Mj
-Wh
+TL
 sp
 HI
 Ie
@@ -50355,7 +50354,7 @@ RN
 gu
 YT
 BC
-iJ
+fX
 iu
 rx
 UQ
@@ -56002,7 +56001,7 @@ eY
 eY
 GF
 fj
-Ge
+Uu
 rC
 eY
 lf

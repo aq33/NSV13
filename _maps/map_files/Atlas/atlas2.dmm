@@ -419,6 +419,7 @@
 /obj/effect/turf_decal/tile/ship/green{
 	dir = 1
 	},
+/obj/item/kirbyplants/random,
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck1/hallway)
 "bu" = (
