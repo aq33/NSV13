@@ -583,6 +583,17 @@
 	},
 /turf/open/openspace/airless,
 /area/space/nearstation)
+"cf" = (
+/obj/effect/landmark/zebra_interlock_point,
+/obj/machinery/door/firedoor/border_only/directional/east,
+/obj/machinery/door/firedoor/border_only/directional/west,
+/obj/machinery/door/window/westright{
+	name = "Genetics Desk";
+	req_access_txt = "5;33"
+	},
+/obj/structure/table/reinforced,
+/turf/open/floor/plating,
+/area/medical/genetics)
 "ci" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
 /obj/structure/cable{
@@ -1058,7 +1069,6 @@
 "dM" = (
 /obj/structure/closet/crate/freezer/blood,
 /obj/machinery/iv_drip,
-/obj/item/reagent_containers/blood/APlus,
 /obj/item/organ/ears/cat,
 /obj/item/organ/tail/cat,
 /turf/open/floor/monotile/dark,
@@ -3309,6 +3319,7 @@
 	dir = 8
 	},
 /obj/structure/extinguisher_cabinet/east,
+/obj/machinery/vending/games,
 /turf/open/floor/monotile/steel,
 /area/crew_quarters/bar/mess_hall)
 "kZ" = (
@@ -4319,7 +4330,14 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/structure/filingcabinet/chestdrawer,
+/obj/item/dest_tagger{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/structure/table/glass,
+/obj/item/stack/package_wrap{
+	pixel_y = -5
+	},
 /turf/open/floor/monotile/steel,
 /area/bridge/cic)
 "ox" = (
@@ -5006,6 +5024,7 @@
 /area/hallway/nsv/deck1/hallway)
 "qS" = (
 /obj/machinery/light,
+/obj/structure/table/glass,
 /turf/open/floor/durasteel/lino,
 /area/medical/genetics)
 "qT" = (
@@ -5568,6 +5587,13 @@
 "sJ" = (
 /turf/open/indestructible/sound/pool,
 /area/crew_quarters/bar/mess_hall)
+"sK" = (
+/obj/structure/hull_plate,
+/obj/machinery/camera/autoname{
+	dir = 1
+	},
+/turf/open/floor/engine/airless,
+/area/hallway/nsv/deck1/hallway)
 "sL" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -5674,6 +5700,15 @@
 "td" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/stack/package_wrap{
+	pixel_y = -5
+	},
+/obj/item/stack/package_wrap{
+	pixel_y = -5
+	},
+/obj/item/dest_tagger{
+	pixel_x = -12
+	},
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/bar/mess_hall)
 "te" = (
@@ -7239,9 +7274,7 @@
 	pixel_x = 35
 	},
 /obj/machinery/light_switch/east,
-/obj/machinery/sleeper{
-	dir = 8
-	},
+/obj/machinery/stasis,
 /turf/open/floor/monotile/light,
 /area/medical/medbay)
 "yQ" = (
@@ -8036,8 +8069,7 @@
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/bar/mess_hall)
 "BF" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/fancy/coffee_condi_display,
+/obj/machinery/vending/games,
 /turf/open/floor/monotile/steel,
 /area/crew_quarters/bar/mess_hall)
 "BG" = (
@@ -8299,7 +8331,6 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/starboard)
 "CG" = (
-/obj/structure/table/glass,
 /turf/open/floor/durasteel/lino,
 /area/medical/genetics)
 "CI" = (
@@ -8930,10 +8961,6 @@
 /obj/item/roller{
 	pixel_x = -15
 	},
-/obj/item/storage/box/pillbottles{
-	pixel_x = -6;
-	pixel_y = 4
-	},
 /obj/item/clothing/glasses/hud/health{
 	pixel_x = 6
 	},
@@ -8946,6 +8973,11 @@
 	},
 /obj/effect/turf_decal/tile/ship/blue,
 /obj/machinery/airalarm/directional/south,
+/obj/item/wallframe/defib_mount,
+/obj/item/storage/box/pillbottles{
+	pixel_x = -6;
+	pixel_y = 4
+	},
 /turf/open/floor/durasteel/alt,
 /area/medical/storage)
 "EH" = (
@@ -11035,6 +11067,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/auto_name/west,
+/obj/machinery/anesthetic_machine,
 /turf/open/floor/durasteel/lino,
 /area/medical/surgery)
 "Lx" = (
@@ -12544,8 +12577,14 @@
 	name = "Mess Hall RC";
 	pixel_y = -32
 	},
-/obj/machinery/coffeemaker,
+/obj/machinery/coffeemaker{
+	pixel_y = 10
+	},
 /obj/structure/table/reinforced,
+/obj/item/storage/fancy/coffee_condi_display{
+	pixel_y = -5;
+	pixel_x = 5
+	},
 /turf/open/floor/monotile/steel,
 /area/crew_quarters/bar/mess_hall)
 "Ql" = (
@@ -13976,7 +14015,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/firealarm/directional/north,
-/obj/item/wrench/medical,
 /obj/structure/table/glass,
 /obj/item/reagent_containers/glass/beaker/cryoxadone{
 	pixel_x = 8;
@@ -13989,6 +14027,13 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/ship/blue,
+/obj/item/stack/package_wrap{
+	pixel_y = -5
+	},
+/obj/item/dest_tagger{
+	pixel_x = -12
+	},
+/obj/item/wrench/medical,
 /turf/open/floor/durasteel/alt,
 /area/medical/medbay)
 "VK" = (
@@ -50524,7 +50569,7 @@ FE
 RQ
 nv
 vD
-nv
+cf
 RQ
 NC
 Cu
@@ -53086,7 +53131,7 @@ mK
 mK
 mK
 mK
-qG
+sK
 Am
 od
 Bh
