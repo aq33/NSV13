@@ -20,8 +20,8 @@
 	flight_y_offset = 12
 
 /obj/item/gun/ballistic/automatic/pistol/glock
-	name = "Glock-13"
-	desc = "A small 9mm handgun used by Nanotrasen crewmen. It has a polymer handle and a full durasteel body construction, giving it a nice weight."
+	name = "Walther P99-C"
+	desc = "Niewielki pistolet samopowtarzalny kalibru 9mm, wariant cywilny przeznaczony do ochrony osobistej."
 	icon = 'nsv13/icons/obj/guns/projectile.dmi'
 	icon_state = "crewglock"
 	lefthand_file = 'nsv13/icons/mob/inhands/weapons/guns_lefthand.dmi'
@@ -38,8 +38,8 @@
 	fire_rate = 2
 
 /obj/item/gun/ballistic/automatic/pistol/glock/security
-	name = "Glock-13BR"
-	desc = "A small 9mm handgun used by Nanotrasen security forces. It has burst-fire capabilities and a weighted grip to tame the recoil."
+	name = "Walther P99"
+	desc = "Niewielki pistolet samopowtarzalny kalibru 9mm, wariant zaprojektowany dla służb mundurowych. Posiada możliwość wystrzału serii trzech pocisków."
 	icon = 'nsv13/icons/obj/guns/projectile.dmi'
 	icon_state = "secglock"
 	item_state = "glock"
@@ -89,13 +89,13 @@
 
 
 /obj/item/gun/ballistic/automatic/pistol/glock/command
-	name = "Command Glock-13"
-	desc = "A small 9mm handgun used by high ranking Nanotrasen officers, it's been customized with a nice wooden handle painted with a small emblem and blue stripes."
+	name = "Kolekcjonerski Walther P99"
+	desc = "Ekskluzywny wariant popularnego pistoletu samopowtarzalnego, spersonalizowany do każdego Oficera który go posiada"
 	icon_state = "commandglock"
 
 /obj/item/gun/ballistic/automatic/pistol/glock/security/hos
 	name = "Winona"
-	desc = "A handgun that's never let its owner down before. It's got a pleasant wooden grip with plenty of detailing etched into it. A nice, all round weapon to defend yourself with."
+	desc = "Niewielki pistolet samopowtarzalny kalibru 9mm, ten model został wykonany na zlecenie Komendanta Żandarmerii. Usprawniona konstrukcja broni pozwala na strzelanie z jednej ręki zachowując perfekcyjną precyzję!."
 	icon_state = "commandglock"
 	full_auto = TRUE
 	requires_wielding = FALSE //While the HoS's upgraded energy gun gets a ion setting, Winona gets to fire with one hand without decreased accuracy.
@@ -103,7 +103,7 @@
 	investigate_flags = ADMIN_INVESTIGATE_TARGET
 
 /datum/design/lethal9mm
-	name = "9mm Ammo Box"
+	name = "Pojemnik z amunicją 9mm"
 	id = "glock_lethalammo"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 30000)
@@ -112,7 +112,7 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/lethalglockmag
-	name = "Glock Magazine"
+	name = "Magazynek P99"
 	id = "glock_lethalmag"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 16500)
@@ -121,7 +121,7 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/rubbershot
-	name = "9mm rubber Glock round"
+	name = "Gumowy pocisk kalibru 9mm"
 	id = "glock_ammo"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 500)
@@ -129,7 +129,7 @@
 	category = list("initial", "Security")
 
 /datum/design/rubber9mm
-	name = "9mm Ammo Box (Rubber)"
+	name = "Pojemnik z gumową amunicją 9mm"
 	id = "glock_rubberammo"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 25000)
@@ -138,7 +138,7 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/glockmag
-	name = "Glock Magazine (Rubber)"
+	name = "Magazynek P99 na gumową amunicję"
 	id = "glock_rubbermag"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 14000)
@@ -147,7 +147,7 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/ap9mm
-	name = "9mm Ammo Box (Armour Piercing)"
+	name = "Pojemnik z amunicją przeciwpancerną 9mm"
 	id = "glock_apammo"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 25000, /datum/material/titanium = 4000, /datum/material/silver = 1000)
@@ -156,7 +156,7 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/apglockmag
-	name = "Glock Magazine (Armour Piercing)"
+	name = "Magazynek P99 na amunicję przeciwpancerną"
 	id = "glock_apmag"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 14000, /datum/material/titanium = 150, /datum/material/silver = 150)
@@ -165,7 +165,7 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/inc9mm
-	name = "9mm Ammo box (Incendiary)"
+	name = "Pojemnik z amunicją zapalającą 9mm"
 	id = "glock_incammo"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 25000, /datum/material/plasma = 4000, /datum/material/glass = 500, /datum/material/gold = 500)
@@ -174,7 +174,7 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/incglockmag
-	name = "Glock Magazine (Incendiary)"
+	name = "Magazynek P99 na amunicję zapalającą"
 	id = "glock_incmag"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 14000, /datum/material/plasma = 150, /datum/material/glass = 50, /datum/material/gold = 50)
@@ -191,32 +191,32 @@
 	category = list("initial", "Security")
 
 /obj/item/ammo_box/magazine/glock/lethal
-	name = "pistol magazine (9mm Lethal)"
-	desc = "Loaded with lead bullets that excel in dealing with hostile threats onboard or offboard the ship."
+	name = "Magazynek P99"
+	desc = "Załadowany ostrą amunicją kalibru 9mm, perfekcyjna do obrony pokładu okrętu podczas sytuacji abordażowej!"
 	icon_state = "Glock-lethal"
 	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = "9mm"
 	max_ammo = 15
 
 /obj/item/ammo_box/magazine/glock
-	name = "pistol magazine (9mm Non-lethal)"
-	desc = "Loaded with rubber bullets that excel in disabling limbs and pacifying at range."
+	name = "Magazynek P99 na gumową amunicję"
+	desc = "Załadowany gumową amunicją kalibru 9mm, perfekcyjna do pacyfikowania Zacharego, który wysadził reaktor."
 	icon_state = "Glock-nonlethal"
 	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 	caliber = "9mm"
 	max_ammo = 15
 
 /obj/item/ammo_box/magazine/glock/ap
-	name = "pistol magazine (9mm Armour Piercing)"
-	desc = "Loaded with titanium tipped bullets that excel in dealing with armored hostile threats onboard or offboard the ship."
+	name = "Magazynek P99 na amunicję przeciwpancerną"
+	desc = "Załadowany amunicją przeciwpancerną kalibru 9mm, tzw. Zielonym Czubkiem. Perfekcyjna do eliminowania opancerzonego zagrożenia na pokładzie."
 	icon_state = "Glock-ap"
 	ammo_type = /obj/item/ammo_casing/c9mm/ap
 	caliber = "9mm"
 	max_ammo = 15
 
 /obj/item/ammo_box/magazine/glock/inc
-	name = "pistol magazine (9mm Incendiary)"
-	desc = "Loaded with plasma tipped bullets that excel in setting any living target on fire."
+	name = "Magazynek P99 na amunicję zapalającą"
+	desc = "Załadowany plazmową amunicją zapalającą kalibru 9mm, perfekcyjna do podpalania plazmoludów!"
 	icon_state = "Glock-lethal"
 	ammo_type = /obj/item/ammo_casing/c9mm/inc
 	caliber = "9mm"
@@ -227,31 +227,31 @@
     icon_state = "[initial(icon_state)][ammo_count() ? "" : "-0"]"
 
 /obj/item/ammo_box/c9mm/ap // for colouring
-	name = "ammo box (9mm Armour Piercing)"
+	name = "Pojemnik z amunicją przeciwpancerną 9mm"
 	icon_state = "45box"
 	ammo_type = /obj/item/ammo_casing/c9mm/ap
 	max_ammo = 30
 
 /obj/item/ammo_box/c9mm/inc
-	name = "ammo box (9mm Incendiary)"
+	name = "Pojemnik z amunicją zapalającą 9mm"
 	icon_state = "10mmbox"
 	ammo_type = /obj/item/ammo_casing/c9mm/inc
 	max_ammo = 30
 
 /obj/item/ammo_casing/c9mm/rubber
-	name = "9mm rubber bullet casing"
-	desc = "A 9mm rubber bullet casing."
+	name = "Łuska po gumowej kuli kalibru 9mm"
+	desc = "Pojedyncza łuska po gumowej kuli kalibru 9mm."
 	caliber = "9mm"
 	projectile_type = /obj/item/projectile/bullet/c9mm/rubber
 
 /obj/item/ammo_box/c9mm/rubber
-	name = "ammo box (9mm Rubber)"
-	icon_state = "9mmbox"
+	name = "Pojemnik z gumową amunicją 9mm"
+	icon_state = "9mmboxrubber"
 	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 	max_ammo = 30
 
 /obj/item/projectile/bullet/c9mm/rubber
-	name = "9mm bullet"
+	name = "Pocisk 9mm"
 	damage = 20
 	damage_type = STAMINA
 	icon = 'nsv13/icons/obj/projectiles_nsv.dmi'
@@ -297,7 +297,8 @@
 
 /obj/item/projectile/energy/electrode/hitscan
 	range = 2 //Real life tazers have an effective range of 4.5 meters.
-	damage = 75 //4 second stun by itself
+	//damage = 75 //4 second stun by itself
+	damage = 105 // AQ EDIT - should be around 5.5s
 	damage_type = STAMINA
 	hitscan = TRUE
 

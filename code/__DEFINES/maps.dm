@@ -49,6 +49,7 @@ require only minor tweaks.
 #define ZTRAIT_SYNDIE_SHIP "Syndicate Ship" //NSV13 - System defines blah
 #define ZTRAIT_MINING_SHIP "Mining ship" //NSV13 - System defines blah
 
+#define ZTRAIT_VOIDSTORM "Weather_Voidstorm"
 /// number - bombcap is multiplied by this before being applied to bombs
 #define ZTRAIT_BOMBCAP_MULTIPLIER "Bombcap Multiplier"
 
@@ -77,9 +78,9 @@ require only minor tweaks.
 #define ZTRAITS_SPACE list(ZTRAIT_LINKAGE = SELFLOOPING, ZTRAIT_DYNAMIC_LEVEL = TRUE, ZTRAIT_BOARDABLE = TRUE) //Nsv13 - Added ZTRAIT_BOARDABLE HERE
 #define ZTRAITS_LAVALAND list(\
     ZTRAIT_MINING = TRUE, \
-	ZTRAIT_ASHSTORM = TRUE, \
     ZTRAIT_LAVA_RUINS = TRUE, \
     ZTRAIT_BOMBCAP_MULTIPLIER = 2, \
+	ZTRAIT_ASHSTORM = TRUE, \
     ZTRAIT_BASETURF = /turf/open/lava/smooth/lava_land_surface)
 // NSV13 - traits for overmap types
 #define ZTRAITS_OVERMAP list(ZTRAIT_LINKAGE = SELFLOOPING, ZTRAIT_OVERMAP = TRUE, ZTRAIT_BOARDABLE = FALSE, ZTRAIT_CENTCOM = TRUE) //NSV13

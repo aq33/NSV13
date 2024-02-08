@@ -14,7 +14,7 @@
 		icon_state = "75-0"
 
 /obj/item/ammo_box/magazine/m556
-	name = "toploader magazine (5.56mm)"
+	name = "Magazynek kalibru 5.56mm"
 	icon_state = "5.56m"
 	ammo_type = /obj/item/ammo_casing/a556
 	caliber = "a556"
