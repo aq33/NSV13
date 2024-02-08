@@ -22,7 +22,7 @@
 /datum/station_goal/bluespace_cannon/check_completion()
 	if(..())
 		return TRUE
-	var/obj/machinery/bsa/full/B = locate()
+	var/obj/machinery/ship_weapon/energy/beam/bsa/built/B = locate() // aq13
 	if(B && !B.machine_stat)
 		return TRUE
 	return FALSE
@@ -351,8 +351,12 @@
 	var/datum/effect_system/smoke_spread/s = new
 	s.set_up(4,get_turf(centerpiece))
 	s.start()
-	var/obj/machinery/bsa/full/cannon = new(get_turf(centerpiece),centerpiece.get_cannon_direction())
+	//aq13 - Galactica moment
+	var/obj/machinery/ship_weapon/energy/beam/bsa/built/cannon = new(get_turf(centerpiece),centerpiece.get_cannon_direction())
 	QDEL_NULL(centerpiece.front_ref)
 	QDEL_NULL(centerpiece.back_ref)
 	qdel(centerpiece)
+	new /obj/machinery/computer/sts_bsa_control(get_turf(src))
+	qdel(src)
+	// /aq13
 	return cannon
