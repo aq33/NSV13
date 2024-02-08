@@ -68,6 +68,7 @@
 #include "code\game\objects\items\tools\wirecutters.dm"
 #include "code\game\objects\items\tools\wrench.dm"
 #include "code\game\objects\structures\barsigns.dm"
+#include "code\game\objects\structures\crucifix.dm"
 #include "code\game\objects\structures\crate_lockers\closets\secure\scientist.dm"
 #include "code\game\objects\structures\door_assembly_types.dm"
 #include "code\game\objects\structures\signs\signs_departments.dm"
