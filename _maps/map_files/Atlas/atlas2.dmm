@@ -406,7 +406,6 @@
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/theatre)
 "bq" = (
-/obj/structure/hull_plate,
 /obj/effect/turf_decal/ship/letter,
 /turf/open/floor/engine/airless,
 /area/space/nearstation)
@@ -471,7 +470,6 @@
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "bJ" = (
-/obj/structure/hull_plate,
 /obj/machinery/light/floor,
 /turf/open/floor/engine/airless,
 /area/maintenance/department/science/xenobiology)
@@ -589,7 +587,7 @@
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/window/westright{
 	name = "Genetics Desk";
-	req_access_txt = "5;33"
+	req_access_txt = "9"
 	},
 /obj/structure/table/reinforced,
 /turf/open/floor/plating,
@@ -5248,7 +5246,6 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/starboard)
 "rF" = (
-/obj/structure/hull_plate,
 /obj/effect/turf_decal/ship/letter{
 	icon_state = "L"
 	},
@@ -5490,12 +5487,12 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port)
 "st" = (
-/obj/structure/hull_plate/end{
-	dir = 4
+/obj/structure/hull_plate,
+/obj/machinery/light/small{
+	dir = 1
 	},
-/obj/machinery/light/floor,
 /turf/open/floor/engine/airless,
-/area/maintenance/department/science/xenobiology)
+/area/maintenance/nsv/deck1/starboard)
 "su" = (
 /obj/effect/turf_decal/tile/ship/green,
 /obj/effect/turf_decal/tile/ship/green{
@@ -7111,7 +7108,7 @@
 /obj/structure/hull_plate,
 /obj/machinery/camera/autoname,
 /turf/open/floor/engine/airless,
-/area/space/nearstation)
+/area/maintenance/nsv/deck1/starboard)
 "yh" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -8405,7 +8402,6 @@
 /turf/open/floor/durasteel/techfloor,
 /area/engine/gravity_generator)
 "CQ" = (
-/obj/structure/hull_plate,
 /obj/effect/turf_decal/ship/letter{
 	icon_state = "T"
 	},
@@ -11149,7 +11145,6 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port)
 "LM" = (
-/obj/structure/hull_plate,
 /obj/effect/turf_decal/ship/letter{
 	icon_state = "S"
 	},
@@ -46716,7 +46711,7 @@ Ya
 rO
 MS
 MS
-mK
+st
 mK
 mK
 mK
@@ -48001,7 +47996,7 @@ Ge
 lh
 MS
 MS
-mK
+st
 mK
 mK
 mK
@@ -57238,11 +57233,11 @@ mK
 mK
 mK
 mK
-mK
-mK
+Rg
+cx
 bJ
 bq
-mK
+jv
 Tf
 kC
 Aq
@@ -57495,11 +57490,11 @@ mK
 mK
 mK
 mK
-mK
-mK
-mK
-mK
-mK
+Rg
+cx
+cx
+cx
+jv
 Tf
 dN
 Tf
@@ -57752,11 +57747,11 @@ mK
 mK
 mK
 mK
-mK
-mK
+Rg
+cx
 bJ
 CQ
-mK
+jv
 DT
 mK
 mK
@@ -58009,11 +58004,11 @@ mK
 mK
 mK
 mK
-mK
-mK
-mK
-mK
-mK
+Rg
+cx
+cx
+cx
+jv
 mK
 mK
 mK
@@ -58266,11 +58261,11 @@ mK
 mK
 mK
 mK
-mK
-mK
+Rg
+cx
 bJ
 rF
-mK
+jv
 mK
 mK
 mK
@@ -58523,11 +58518,11 @@ mK
 mK
 mK
 mK
-mK
-mK
-mK
-mK
-mK
+Rg
+cx
+cx
+cx
+jv
 mK
 mK
 mK
@@ -58780,11 +58775,11 @@ mK
 mK
 mK
 mK
-mK
-mK
+Rg
+cx
 bJ
 bq
-mK
+jv
 mK
 mK
 mK
@@ -59037,11 +59032,11 @@ mK
 mK
 mK
 UC
-mK
-mK
-mK
-mK
-mK
+Rg
+cx
+cx
+cx
+jv
 mK
 mK
 mK
@@ -59294,11 +59289,11 @@ mK
 mK
 mK
 mK
-mK
-mK
+Rg
+cx
 bJ
 LM
-mK
+jv
 mK
 mK
 mK
@@ -59551,11 +59546,11 @@ mK
 mK
 mK
 mK
-mK
-mK
-mK
-mK
-mK
+Rg
+cx
+cx
+cx
+jv
 mK
 mK
 mK
@@ -59808,11 +59803,11 @@ mK
 uf
 uf
 uf
-uf
-uf
-st
-uf
-uf
+nP
+cx
+bJ
+cx
+xg
 uf
 mK
 mK
