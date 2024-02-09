@@ -26,7 +26,7 @@
 	src.playable = FALSE
 	src.key = user.key
 	sentience_act() // prevent weirdness such as AI still doing its thing
-	src.stop_automated_movement = TRUE
+	src.stop_automated_movement = TRUE // bo sie borowik rusza
 
 	message_admins("[ADMIN_LOOKUPFLW(user)] has taken possession of \a [src] in [AREACOORD(src)].")
 	log_game("[key_name(user)] has taken possession of \a [src] in [AREACOORD(src)].")
