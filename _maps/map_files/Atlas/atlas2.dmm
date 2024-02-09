@@ -2134,9 +2134,6 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port)
 "he" = (
-/obj/effect/turf_decal/tile/ship/half/neutral{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -2850,7 +2847,6 @@
 /turf/open/floor/plating,
 /area/medical/morgue)
 "jA" = (
-/obj/effect/turf_decal/tile/ship/full/neutral,
 /obj/structure/closet/crate,
 /obj/item/storage/belt/utility/full,
 /obj/effect/spawner/lootdrop/maintenance/three,
@@ -3676,10 +3672,6 @@
 /obj/effect/landmark/start/cook,
 /turf/open/floor/monotile/light,
 /area/crew_quarters/kitchen)
-"me" = (
-/obj/effect/turf_decal/tile/ship/full/neutral,
-/turf/open/floor/plating,
-/area/maintenance/department/science/xenobiology)
 "mf" = (
 /obj/machinery/porta_turret/ai,
 /obj/effect/turf_decal/stripes/box,
@@ -7116,11 +7108,11 @@
 /turf/open/floor/monotile/steel,
 /area/bridge/cic)
 "yi" = (
-/obj/effect/turf_decal/tile/ship/half/neutral{
-	dir = 4
+/obj/structure/hull_plate/end{
+	dir = 6
 	},
-/turf/open/floor/plating,
-/area/maintenance/department/science/xenobiology)
+/turf/open/openspace/airless,
+/area/space/nearstation)
 "yj" = (
 /obj/machinery/door/airlock/ship/external{
 	name = "Escape Pod"
@@ -11036,11 +11028,8 @@
 /turf/open/floor/plating,
 /area/maintenance/department/science/xenobiology)
 "Lq" = (
-/obj/effect/turf_decal/tile/purple,
-/turf/open/floor/plating{
-	icon_state = "platingdmg2"
-	},
-/area/maintenance/department/science/xenobiology)
+/turf/open/floor/glass/reinforced,
+/area/space/nearstation)
 "Lt" = (
 /obj/effect/turf_decal/tile/ship/green,
 /obj/effect/turf_decal/tile/ship/green{
@@ -13968,13 +13957,10 @@
 /turf/closed/wall/r_wall,
 /area/crew_quarters/heads/cmo)
 "VC" = (
-/obj/effect/turf_decal/tile/purple{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/turf/open/floor/plating,
-/area/maintenance/department/science/xenobiology)
+/obj/machinery/light/floor,
+/obj/structure/hull_plate,
+/turf/open/floor/engine/airless,
+/area/nsv/hanger/notkmcstupidhanger)
 "VD" = (
 /obj/machinery/vending/wardrobe/medi_wardrobe,
 /obj/effect/turf_decal/stripes/line,
@@ -14574,9 +14560,6 @@
 /turf/open/floor/monotile/dark,
 /area/medical/chemistry)
 "XJ" = (
-/obj/effect/turf_decal/tile/ship/half/neutral{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/plating{
@@ -14842,9 +14825,6 @@
 /turf/open/floor/grass,
 /area/medical/virology)
 "YI" = (
-/obj/effect/turf_decal/tile/ship/half/neutral{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 9
 	},
@@ -56471,10 +56451,10 @@ Ak
 Ak
 qt
 pn
-Lq
-yi
+TK
+XU
 he
-me
+XU
 JZ
 JZ
 vi
@@ -56728,7 +56708,7 @@ XU
 ly
 Xs
 Xs
-VC
+Xs
 XJ
 YI
 jA
@@ -57481,8 +57461,8 @@ cL
 cL
 cL
 tL
-xg
-uf
+jv
+mK
 mK
 mK
 mK
@@ -57731,16 +57711,16 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-tL
-tL
-tL
-jv
+Lv
+nY
+nY
+nY
+nY
+nY
+nY
+mK
+mK
+mK
 mK
 mK
 mK
@@ -57988,16 +57968,16 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-tL
 jv
+mK
+mK
+mK
+mK
+mK
+mK
+mK
+mK
+mK
 mK
 mK
 mK
@@ -58245,16 +58225,16 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-tL
 jv
+mK
+mK
+mK
+VC
+mK
+mK
+mK
+mK
+mK
 mK
 mK
 mK
@@ -58502,16 +58482,16 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-tL
 jv
+mK
+Lq
+Lq
+Lq
+Lq
+Lq
+Lq
+mK
+mK
 mK
 mK
 mK
@@ -58759,16 +58739,16 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-tL
 jv
+mK
+Lq
+Lq
+Lq
+Lq
+Lq
+Lq
+mK
+mK
 mK
 mK
 mK
@@ -59016,16 +58996,16 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-tL
 jv
+mK
+Lq
+Lq
+Lq
+Lq
+Lq
+Lq
+mK
+mK
 mK
 mK
 mK
@@ -59273,16 +59253,16 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-tL
 jv
+mK
+Lq
+Lq
+Lq
+Lq
+Lq
+Lq
+mK
+mK
 mK
 mK
 mK
@@ -59530,16 +59510,16 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-tL
 jv
+mK
+mK
+mK
+VC
+mK
+mK
+mK
+mK
+mK
 mK
 mK
 mK
@@ -59787,16 +59767,16 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-tL
-jv
+xg
+uf
+uf
+uf
+uf
+uf
+uf
+uf
+mK
+mK
 mK
 mK
 mK
@@ -60056,7 +60036,7 @@ tL
 jv
 mK
 mK
-nP
+Rg
 cL
 cL
 cL
@@ -60312,8 +60292,8 @@ cL
 tL
 xg
 uf
-nP
-tL
+uf
+yi
 tL
 tL
 tL
