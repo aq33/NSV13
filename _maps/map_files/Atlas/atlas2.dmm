@@ -587,7 +587,7 @@
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/window/westright{
 	name = "Genetics Desk";
-	req_access_txt = "5;33"
+	req_access_txt = "9"
 	},
 /obj/structure/table/reinforced,
 /turf/open/floor/plating,
