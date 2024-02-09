@@ -5,23 +5,17 @@
 	dir = 1
 	},
 /obj/structure/fans/tiny/invisible,
+/obj/effect/turf_decal/box,
 /turf/open/floor/mineral/titanium/yellow,
 /area/shuttle/supply)
 "i" = (
 /obj/structure/fans/tiny/invisible,
+/obj/machinery/light/runway/delay2,
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/supply)
-"o" = (
-/obj/effect/turf_decal/tile/brown,
-/obj/effect/turf_decal/tile/brown{
-	dir = 1
-	},
-/obj/structure/fans/tiny/invisible,
-/turf/open/floor/mineral/titanium/yellow,
-/area/space)
 "I" = (
 /obj/structure/fans/tiny/invisible,
-/obj/effect/turf_decal/ship/delivery/yellow,
+/obj/machinery/light/runway/delay3,
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/supply)
 "N" = (
@@ -29,14 +23,14 @@
 /obj/effect/turf_decal/loading_area{
 	dir = 8
 	},
+/obj/machinery/light/runway,
 /obj/docking_port/mobile/supply{
 	dwidth = 1;
 	height = 2;
 	width = 3
 	},
-/obj/machinery/light/runway,
 /turf/open/floor/mineral/plastitanium,
-/area/space)
+/area/shuttle/supply)
 
 (1,1,1) = {"
 a
@@ -49,7 +43,7 @@ i
 a
 "}
 (3,1,1) = {"
-o
+a
 N
-o
+a
 "}
