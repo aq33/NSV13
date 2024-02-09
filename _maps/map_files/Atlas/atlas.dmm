@@ -2892,6 +2892,10 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/quartermaster/storage)
+"ii" = (
+/obj/machinery/light/floor,
+/turf/open/floor/monotile/dark/airless,
+/area/nsv/hanger/notkmcstupidhanger)
 "ik" = (
 /obj/machinery/airalarm/server{
 	pixel_y = 23
@@ -4534,7 +4538,7 @@
 	network = list("ss13","hangar_atlas");
 	dir = 5
 	},
-/turf/open/floor/monotile/steel/airless,
+/turf/open/floor/monotile/dark/airless,
 /area/nsv/hanger/notkmcstupidhanger)
 "mJ" = (
 /obj/machinery/portable_atmospherics/pump,
@@ -14280,7 +14284,7 @@
 "PK" = (
 /obj/machinery/light/floor,
 /obj/structure/reagent_dispensers/fueltank/cryogenic_fuel,
-/turf/open/floor/monotile/steel/airless,
+/turf/open/floor/monotile/dark/airless,
 /area/nsv/hanger/notkmcstupidhanger)
 "PL" = (
 /obj/machinery/airalarm/directional/north,
@@ -17309,6 +17313,11 @@
 /obj/machinery/rnd/production/techfab/department/munitions,
 /turf/open/floor/carpet/red,
 /area/nsv/weapons)
+"YK" = (
+/obj/structure/rack,
+/obj/item/storage/toolbox/mechanical,
+/turf/open/floor/monotile/dark/airless,
+/area/nsv/hanger/notkmcstupidhanger)
 "YM" = (
 /obj/effect/turf_decal/tile/ship/green{
 	dir = 4
@@ -60548,12 +60557,12 @@ Nh
 an
 oT
 FD
-IT
-xX
+ii
+YK
 mI
-IT
-xX
-xX
+ii
+Kl
+Kl
 PK
 jx
 jx
@@ -60805,12 +60814,12 @@ Nh
 an
 oT
 JL
-su
-Jc
-Jc
-Jc
-Jc
-CI
+xX
+xX
+xX
+xX
+xX
+xX
 xX
 Kl
 UB
@@ -61062,12 +61071,12 @@ Nh
 an
 oT
 JL
-Jc
+su
 Jc
 Jc
 Jc
 DW
-Jc
+CI
 xX
 Kl
 UB
