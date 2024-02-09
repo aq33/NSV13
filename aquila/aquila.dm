@@ -77,6 +77,7 @@
 #include "code\modules\admin\verbs\modify_metacoins.dm"
 #include "code\modules\antagonists\devil\sintouched\objectives.dm"
 #include "code\modules\antagonists\monkey\monkey.dm"
+#include "code\modules\antagonists\morph\morph.dm"
 #include "code\modules\antagonists\role_preference\role_monkey.dm"
 #include "code\modules\cargo\packs.dm"
 #include "code\modules\client\verbs\input_box.dm"
