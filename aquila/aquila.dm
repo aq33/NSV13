@@ -178,6 +178,7 @@
 #include "code\modules\shuttle\super_cruise\orbital_map_components\orbital_objects\beacon.dm"
 #include "code\modules\spells\spell_types\godhand.dm"
 #include "code\modules\spells\spell_types\touch_attacks.dm"
+#include "code\modules\surgery\gender_reassignment.dm"
 #include "code\modules\uplink\uplink_items.dm"
 #include "code\modules\vending\boozeomat.dm"
 #include "code\modules\vending\wardrobes.dm"
