@@ -154,8 +154,7 @@
 /area/ruin/powered/beach)
 "aF" = (
 /obj/machinery/vending/boozeomat{
-	set_obj_flags = "EMAGGED";
-	req_access_txt = "0"
+	set_obj_flags = "EMAGGED"
 	},
 /turf/open/floor/wood,
 /area/ruin/powered/beach)
@@ -443,13 +442,6 @@
 /obj/machinery/light,
 /turf/open/floor/plating/beach/water,
 /area/ruin/powered/beach)
-"cR" = (
-/obj/structure/table/wood,
-/obj/item/tank/internals/oxygen,
-/obj/item/pickaxe,
-/obj/item/clothing/mask/gas,
-/turf/open/floor/pod/dark,
-/area/ruin/powered/beach)
 "dw" = (
 /obj/machinery/door/airlock/sandstone{
 	name = "Beach Access"
@@ -487,10 +479,6 @@
 /turf/open/floor/pod/dark{
 	initial_gas_mix = "o2=14;n2=5;co2=13;TEMP=300"
 	},
-/area/ruin/powered/beach)
-"lM" = (
-/obj/structure/dresser,
-/turf/open/floor/pod/dark,
 /area/ruin/powered/beach)
 "mh" = (
 /obj/effect/spawner/structure/window,
@@ -594,6 +582,8 @@
 /obj/item/clothing/shoes/sandal,
 /obj/item/clothing/shoes/sandal,
 /obj/effect/turf_decal/sand,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
 /turf/open/floor/pod/dark,
 /area/ruin/powered/beach)
 "QS" = (
@@ -674,7 +664,7 @@ wY
 pg
 wY
 Xp
-cR
+VO
 bW
 bW
 bW
@@ -706,7 +696,7 @@ Gc
 Gc
 wY
 VO
-lM
+VO
 bW
 ad
 bQ
@@ -1506,7 +1496,7 @@ wY
 Gc
 Gc
 jF
-lM
+VO
 bW
 bN
 bR
@@ -1538,7 +1528,7 @@ wY
 qT
 Gc
 pU
-cR
+VO
 bW
 bW
 bW

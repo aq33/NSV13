@@ -1,0 +1,2293 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"bu" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2.9
+	},
+/obj/structure/chair/stool,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"cA" = (
+/obj/effect/overlay/coconut,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"do" = (
+/obj/effect/turf_decal/sand,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"dr" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"dw" = (
+/obj/effect/turf_decal/sand,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/pod/dark,
+/area/ruin/space/has_grav/powered)
+"dQ" = (
+/obj/effect/turf_decal/sand,
+/obj/machinery/door/airlock/ship/public,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"dU" = (
+/obj/effect/overlay/palmtree_l,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"eo" = (
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"eJ" = (
+/obj/effect/turf_decal/sand,
+/obj/machinery/door/airlock/ship/public/glass,
+/turf/open/floor/pod/dark,
+/area/ruin/space/has_grav/powered)
+"fm" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/effect/mob_spawn/human/beach/alive/lifeguard,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"fy" = (
+/obj/machinery/suit_storage_unit/standard_unit{
+	helmet_type = /obj/item/clothing/head/helmet/space/fragile;
+	suit_type = /obj/item/clothing/suit/space/fragile
+	},
+/turf/open/floor/pod/dark,
+/area/ruin/space/has_grav/powered)
+"gu" = (
+/obj/machinery/shower{
+	dir = 8
+	},
+/turf/open/floor/pod/light,
+/area/ruin/space/has_grav/powered)
+"gW" = (
+/obj/structure/reagent_dispensers/beerkeg,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"hp" = (
+/turf/open/floor/pod/light,
+/area/ruin/space/has_grav/powered)
+"hA" = (
+/obj/structure/closet/crate/bin,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/trash/candy,
+/obj/item/toy/talking/owl,
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/powered)
+"ia" = (
+/obj/structure/tank_dispenser/oxygen,
+/turf/open/floor/pod/dark,
+/area/ruin/space/has_grav/powered)
+"iW" = (
+/obj/effect/turf_decal/caution{
+	dir = 4
+	},
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/powered)
+"jg" = (
+/obj/effect/turf_decal/caution{
+	dir = 1
+	},
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/powered)
+"kg" = (
+/turf/open/floor/plasteel/stairs/old,
+/area/ruin/space/has_grav/powered)
+"kl" = (
+/obj/structure/rack,
+/obj/item/clothing/shoes/sandal,
+/obj/item/clothing/shoes/sandal,
+/obj/effect/turf_decal/sand,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
+/turf/open/floor/pod/dark,
+/area/ruin/space/has_grav/powered)
+"lc" = (
+/obj/structure/table,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/item/book/manual/wiki/barman_recipes,
+/obj/item/reagent_containers/food/drinks/shaker,
+/obj/item/reagent_containers/glass/rag,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"lx" = (
+/obj/structure/flora/ausbushes/reedbush,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"mr" = (
+/obj/machinery/light,
+/turf/open/floor/plating/beach/water,
+/area/ruin/space/has_grav/powered)
+"nH" = (
+/obj/structure/flora/rock,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"nV" = (
+/obj/machinery/jukebox/disco/indestructible,
+/turf/open/floor/light/colour_cycle,
+/area/ruin/space/has_grav/powered)
+"oq" = (
+/obj/structure/urinal{
+	pixel_y = 32
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered)
+"oU" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/powered)
+"oX" = (
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"oY" = (
+/obj/effect/turf_decal/sand,
+/turf/open/floor/pod/dark,
+/area/ruin/space/has_grav/powered)
+"pU" = (
+/obj/structure/closet/secure_closet/freezer/meat/open,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"qG" = (
+/obj/item/reagent_containers/spray/spraytan,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"qL" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered)
+"rg" = (
+/obj/structure/flora/ausbushes/leafybush,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"rB" = (
+/turf/open/floor/pod/dark,
+/area/ruin/space/has_grav/powered)
+"rW" = (
+/obj/structure/chair,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"st" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered)
+"sz" = (
+/obj/vehicle/ridden/scooter/skateboard{
+	dir = 4
+	},
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"uu" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"uW" = (
+/obj/structure/table,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/stack/cable_coil,
+/obj/item/storage/box/lights/mixed,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered)
+"uX" = (
+/obj/effect/turf_decal/sand,
+/obj/machinery/door/airlock/ship/public,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered)
+"vE" = (
+/obj/machinery/light/small{
+	brightness = 3;
+	dir = 8
+	},
+/turf/open/floor/pod/dark,
+/area/ruin/space/has_grav/powered)
+"vL" = (
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered)
+"vV" = (
+/obj/structure/table,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/chem_dispenser/drinks,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"wx" = (
+/obj/effect/mob_spawn/human/bartender/alive,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered)
+"wY" = (
+/obj/structure/table,
+/obj/item/storage/box/drinkingglasses,
+/obj/item/storage/box/drinkingglasses,
+/obj/item/storage/box/beakers,
+/obj/item/storage/box/donkpockets,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered)
+"xw" = (
+/obj/machinery/door/airlock/ship/public,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered)
+"xy" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"xz" = (
+/turf/template_noop,
+/area/template_noop)
+"xL" = (
+/obj/item/camera,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"xT" = (
+/obj/machinery/vending/cola,
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/powered)
+"yj" = (
+/turf/open/floor/plating/beach/coastline_b,
+/area/ruin/space/has_grav/powered)
+"yp" = (
+/mob/living/simple_animal/crab,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"yA" = (
+/obj/item/reagent_containers/spray/spraytan,
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/powered)
+"Ag" = (
+/obj/machinery/vending/cigarette/beach,
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/powered)
+"Aj" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/closed/wall/mineral/sandstone,
+/area/ruin/space/has_grav/powered)
+"AX" = (
+/obj/structure/weightmachine/weightlifter,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"Bo" = (
+/obj/effect/turf_decal/sand{
+	density = 1
+	},
+/obj/effect/decal/fakelattice,
+/turf/open/floor/pod/light{
+	density = 1
+	},
+/area/ruin/space/has_grav/powered)
+"BU" = (
+/obj/structure/closet/secure_closet/freezer/kitchen{
+	req_access = null
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"Cx" = (
+/obj/effect/turf_decal/sand,
+/turf/open/floor/pod/light,
+/area/ruin/space/has_grav/powered)
+"CD" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/bikehorn/airhorn,
+/obj/structure/table/wood,
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/brute,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"CW" = (
+/obj/effect/turf_decal/sand,
+/obj/machinery/shower{
+	dir = 4
+	},
+/turf/open/floor/pod/light,
+/area/ruin/space/has_grav/powered)
+"Dj" = (
+/obj/structure/table/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"DJ" = (
+/turf/open/floor/plating/beach/water,
+/area/ruin/space/has_grav/powered)
+"Ew" = (
+/obj/item/reagent_containers/food/drinks/beer,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"Fu" = (
+/obj/machinery/door/airlock/ship/public,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"Gb" = (
+/obj/item/flashlight/lantern,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered)
+"GH" = (
+/obj/effect/turf_decal/caution{
+	dir = 8
+	},
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/powered)
+"GO" = (
+/obj/effect/turf_decal/caution,
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/powered)
+"GT" = (
+/obj/structure/toilet,
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered)
+"Hs" = (
+/obj/effect/light_emitter,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"Hv" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/powered)
+"HH" = (
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/open/floor/plating/beach/water,
+/area/ruin/space/has_grav/powered)
+"HJ" = (
+/obj/machinery/processor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"IE" = (
+/obj/structure/table,
+/obj/machinery/microwave,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"IL" = (
+/obj/effect/overlay/palmtree_l,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"Jf" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/powered)
+"Jv" = (
+/obj/effect/turf_decal/sand,
+/obj/structure/tank_dispenser/oxygen,
+/turf/open/floor/pod/dark,
+/area/ruin/space/has_grav/powered)
+"JY" = (
+/obj/effect/turf_decal/sand,
+/obj/structure/closet/athletic_mixed,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/powered)
+"Ka" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/item/megaphone,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"KP" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/powered)
+"KS" = (
+/obj/machinery/vending/boozeomat{
+	set_obj_flags = "EMAGGED"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"Lb" = (
+/obj/structure/weightmachine/stacklifter,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"Lv" = (
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/powered)
+"LT" = (
+/obj/structure/flora/ausbushes/reedbush,
+/turf/open/floor/plating/beach/coastline_t,
+/area/ruin/space/has_grav/powered)
+"Mb" = (
+/obj/machinery/vending/snack,
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/powered)
+"MF" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered)
+"MV" = (
+/obj/item/clothing/neck/necklace/dope,
+/obj/item/reagent_containers/spray/spraytan,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"Ng" = (
+/obj/effect/mob_spawn/human/beach/alive,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"Nl" = (
+/obj/item/tank/internals/oxygen,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered)
+"Nw" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered)
+"NF" = (
+/obj/structure/chair/stool,
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/powered)
+"OF" = (
+/obj/structure/sign/barsign,
+/turf/closed/wall/mineral/sandstone,
+/area/ruin/space/has_grav/powered)
+"Pv" = (
+/obj/structure/flora/ausbushes/sunnybush,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"PG" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/pod/dark,
+/area/ruin/space/has_grav/powered)
+"Ru" = (
+/obj/item/toy/beach_ball,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"Sq" = (
+/turf/closed/wall/mineral/sandstone,
+/area/ruin/space/has_grav/powered)
+"SB" = (
+/obj/effect/turf_decal/sand,
+/obj/machinery/light/small{
+	brightness = 3;
+	dir = 8
+	},
+/turf/open/floor/pod/dark,
+/area/ruin/space/has_grav/powered)
+"SQ" = (
+/obj/structure/extinguisher_cabinet,
+/turf/closed/wall/mineral/sandstone,
+/area/ruin/space/has_grav/powered)
+"SU" = (
+/turf/open/floor/plating/beach/coastline_t,
+/area/ruin/space/has_grav/powered)
+"Tq" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/drinks/bottle/tequila,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"Ts" = (
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"Tu" = (
+/obj/structure/table,
+/obj/machinery/reagentgrinder,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"TM" = (
+/obj/structure/urinal{
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered)
+"Ux" = (
+/obj/effect/turf_decal/sand,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"Vc" = (
+/obj/structure/table,
+/obj/machinery/chem_dispenser/drinks/beer,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"Vk" = (
+/obj/item/storage/backpack/duffelbag,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"VL" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/obj/effect/turf_decal/sand,
+/obj/structure/mirror{
+	pixel_x = 28
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered)
+"WK" = (
+/obj/machinery/door/airlock/ship/public/glass,
+/turf/open/floor/pod/dark,
+/area/ruin/space/has_grav/powered)
+"WQ" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"XS" = (
+/obj/structure/table,
+/obj/item/clothing/mask/gas,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/item/clothing/glasses/sunglasses,
+/obj/item/clothing/glasses/sunglasses,
+/obj/item/clothing/glasses/sunglasses,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered)
+"Yg" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/ship/hatch,
+/turf/open/floor/pod/dark,
+/area/ruin/space/has_grav/powered)
+"Yv" = (
+/obj/effect/turf_decal/sand,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/beach/sand,
+/area/ruin/space/has_grav/powered)
+"Za" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/powered)
+"ZY" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/open/floor/plating/beach/coastline_t,
+/area/ruin/space/has_grav/powered)
+
+(1,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(2,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(3,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(4,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(5,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(6,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+oU
+xz
+KP
+KP
+KP
+Yg
+KP
+Yg
+KP
+KP
+KP
+xz
+oU
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(7,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+KP
+KP
+KP
+KP
+KP
+ia
+vE
+hp
+CW
+hp
+SB
+fy
+KP
+KP
+KP
+KP
+KP
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(8,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+KP
+KP
+uu
+xy
+eo
+eo
+KP
+kl
+rB
+Cx
+Cx
+hp
+rB
+fy
+KP
+rg
+LT
+yj
+KP
+KP
+KP
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(9,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+KP
+uu
+eo
+eo
+eo
+eo
+eo
+KP
+st
+st
+st
+WK
+st
+st
+st
+KP
+uu
+SU
+yj
+DJ
+mr
+KP
+KP
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(10,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+KP
+rg
+eo
+eo
+Lb
+eo
+AX
+eo
+xy
+eo
+eo
+Yv
+Ts
+Yv
+eo
+eo
+xy
+lx
+SU
+yj
+DJ
+DJ
+DJ
+KP
+KP
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(11,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+Pv
+eo
+eo
+eo
+eo
+Ng
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+yp
+eo
+rW
+eo
+ZY
+yj
+DJ
+DJ
+DJ
+DJ
+KP
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(12,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+KP
+eo
+uu
+MV
+eo
+Lb
+eo
+AX
+eo
+eo
+eo
+dU
+cA
+eo
+eo
+eo
+eo
+eo
+eo
+SU
+yj
+DJ
+DJ
+DJ
+mr
+KP
+KP
+xz
+xz
+xz
+xz
+xz
+"}
+(13,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+rg
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+rW
+qG
+SU
+yj
+DJ
+DJ
+DJ
+DJ
+DJ
+KP
+xz
+xz
+xz
+xz
+xz
+"}
+(14,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+KP
+KP
+KP
+Ux
+Ts
+Ts
+Ts
+Ts
+Ts
+Ts
+Ts
+Ts
+eo
+eo
+eo
+uu
+eo
+eo
+xL
+SU
+yj
+DJ
+DJ
+DJ
+DJ
+DJ
+st
+xz
+xz
+xz
+xz
+xz
+"}
+(15,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+uW
+wY
+KP
+Za
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+yA
+Ts
+eo
+eo
+uu
+nH
+eo
+rW
+eo
+SU
+yj
+DJ
+DJ
+HH
+DJ
+DJ
+st
+xz
+xz
+xz
+xz
+xz
+"}
+(16,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+XS
+MF
+Sq
+Sq
+Sq
+Sq
+Za
+Lv
+Lv
+Lv
+Lv
+Ts
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+SU
+yj
+DJ
+DJ
+DJ
+DJ
+DJ
+KP
+xz
+xz
+xz
+xz
+xz
+"}
+(17,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+qL
+MF
+Fu
+oX
+oX
+Dj
+NF
+Lv
+GH
+Lv
+Lv
+Ts
+eo
+eo
+uu
+eo
+eo
+rW
+eo
+SU
+yj
+DJ
+DJ
+DJ
+DJ
+mr
+KP
+xz
+xz
+xz
+xz
+xz
+"}
+(18,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+wx
+MF
+Sq
+vV
+oX
+dr
+NF
+jg
+nV
+GO
+Lv
+Ts
+eo
+nH
+eo
+eo
+eo
+Vk
+eo
+SU
+yj
+DJ
+DJ
+DJ
+DJ
+DJ
+st
+xz
+xz
+xz
+xz
+xz
+"}
+(19,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+Nw
+Nl
+SQ
+Vc
+oX
+Dj
+NF
+Lv
+iW
+Lv
+Lv
+Ts
+eo
+uu
+eo
+eo
+eo
+rW
+eo
+SU
+yj
+DJ
+DJ
+DJ
+DJ
+DJ
+st
+xz
+xz
+xz
+xz
+xz
+"}
+(20,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+Aj
+Sq
+Sq
+KS
+oX
+Tq
+NF
+Lv
+Lv
+Lv
+Lv
+Ts
+eo
+eo
+eo
+eo
+qG
+eo
+eo
+SU
+yj
+DJ
+DJ
+DJ
+DJ
+DJ
+st
+xz
+xz
+xz
+xz
+xz
+"}
+(21,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+GT
+vL
+Sq
+Tu
+oX
+Sq
+Sq
+dQ
+Sq
+Hv
+Lv
+Ts
+Hs
+eo
+eo
+eo
+eo
+rW
+eo
+SU
+yj
+DJ
+DJ
+DJ
+DJ
+DJ
+st
+xz
+xz
+xz
+xz
+xz
+"}
+(22,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+Sq
+xw
+Sq
+lc
+oX
+oX
+oX
+oX
+OF
+Za
+Lv
+Ts
+eo
+eo
+dU
+eo
+eo
+eo
+eo
+SU
+yj
+DJ
+HH
+DJ
+DJ
+DJ
+st
+xz
+xz
+xz
+xz
+xz
+"}
+(23,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+oq
+MF
+Sq
+IE
+gW
+HJ
+pU
+BU
+Sq
+Za
+Lv
+Ts
+eo
+cA
+eo
+eo
+Ru
+eo
+yp
+SU
+yj
+DJ
+DJ
+DJ
+DJ
+mr
+KP
+xz
+xz
+xz
+xz
+xz
+"}
+(24,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+TM
+MF
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Hv
+Lv
+Ts
+eo
+eo
+eo
+eo
+WQ
+eo
+eo
+SU
+yj
+DJ
+DJ
+DJ
+DJ
+DJ
+KP
+xz
+xz
+xz
+xz
+xz
+"}
+(25,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+Gb
+vL
+Sq
+hA
+Ag
+xT
+Mb
+JY
+JY
+Lv
+Lv
+Ts
+eo
+eo
+eo
+CD
+Ka
+Bo
+eo
+SU
+yj
+DJ
+DJ
+DJ
+DJ
+DJ
+KP
+xz
+xz
+xz
+xz
+xz
+"}
+(26,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+st
+VL
+vL
+uX
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Ts
+eo
+eo
+eo
+bu
+fm
+kg
+eo
+SU
+yj
+DJ
+DJ
+DJ
+DJ
+DJ
+st
+xz
+xz
+xz
+xz
+xz
+"}
+(27,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+KP
+KP
+KP
+Ux
+Ts
+Ts
+Ts
+Ts
+Ts
+Ts
+Ts
+Ts
+eo
+eo
+eo
+eo
+eo
+eo
+Ew
+SU
+yj
+DJ
+DJ
+DJ
+HH
+DJ
+st
+xz
+xz
+xz
+xz
+xz
+"}
+(28,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+uu
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+rW
+eo
+SU
+yj
+DJ
+DJ
+DJ
+DJ
+DJ
+KP
+xz
+xz
+xz
+xz
+xz
+"}
+(29,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+KP
+eo
+uu
+eo
+eo
+dU
+qG
+eo
+eo
+yp
+eo
+eo
+eo
+eo
+eo
+cA
+eo
+eo
+eo
+SU
+yj
+DJ
+DJ
+DJ
+mr
+KP
+KP
+xz
+xz
+xz
+xz
+xz
+"}
+(30,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+Pv
+eo
+eo
+eo
+eo
+cA
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+ZY
+yj
+DJ
+DJ
+DJ
+DJ
+KP
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(31,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+KP
+uu
+eo
+eo
+Pv
+Ng
+sz
+eo
+WQ
+eo
+eo
+do
+Ts
+do
+eo
+eo
+IL
+eo
+SU
+yj
+DJ
+DJ
+DJ
+KP
+KP
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(32,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+KP
+rg
+eo
+eo
+eo
+eo
+eo
+KP
+st
+st
+st
+eJ
+st
+st
+st
+KP
+uu
+SU
+yj
+DJ
+mr
+KP
+KP
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(33,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+KP
+KP
+uu
+WQ
+uu
+eo
+KP
+Jv
+rB
+hp
+Cx
+Cx
+oY
+fy
+KP
+lx
+SU
+yj
+KP
+KP
+KP
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(34,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+KP
+KP
+KP
+KP
+KP
+KP
+kl
+dw
+hp
+gu
+Cx
+PG
+fy
+KP
+KP
+KP
+KP
+KP
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(35,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+Jf
+xz
+KP
+KP
+KP
+Yg
+KP
+Yg
+KP
+KP
+KP
+xz
+Jf
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(36,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(37,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(38,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(39,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+"}
+(40,1,1) = {"
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+"}

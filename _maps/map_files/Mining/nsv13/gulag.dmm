@@ -1175,7 +1175,7 @@
 "FS" = (
 /obj/structure/marker_beacon,
 /turf/open/space/basic,
-/area/ruin/space/has_grav)
+/area/space)
 "FU" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -17971,7 +17971,7 @@ hw
 hw
 hw
 hw
-hw
+FS
 hw
 hw
 hw
@@ -20027,7 +20027,7 @@ hw
 hw
 hw
 hw
-hw
+FS
 hw
 hw
 hw
@@ -21826,7 +21826,7 @@ hw
 hw
 hw
 hw
-hw
+FS
 hw
 hw
 hw
@@ -23368,7 +23368,7 @@ hw
 hw
 hw
 XG
-XG
+wq
 XG
 XG
 xc
