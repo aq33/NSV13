@@ -44,6 +44,14 @@
 	var/mob/dead/observer/G = usr
 	G.register_pai()
 
+/atom/movable/screen/ghost/spawners
+	name = "Ghost role spawners"
+	icon_state = "spawners"
+
+/atom/movable/screen/ghost/spawners/Click()
+	var/mob/dead/observer/G = usr
+	G.open_spawners_menu()
+
 /datum/hud/ghost/New(mob/owner)
 	..()
 	var/atom/movable/screen/using
@@ -65,6 +73,11 @@
 
 	using = new /atom/movable/screen/ghost/teleport()
 	using.screen_loc = ui_ghost_teleport
+	using.hud = src
+	static_inventory += using
+
+	using = new /atom/movable/screen/ghost/spawners()
+	using.screen_loc = ui_ghost_spawners
 	using.hud = src
 	static_inventory += using
 
