@@ -96,6 +96,12 @@
 	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/powered)
+"fa" = (
+/obj/effect/mob_spawn/human/gamer{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered)
 "fy" = (
 /obj/structure/sign/warning/securearea{
 	desc = "A warning sign which reads 'SECURE SNACK STORAGE'.";
@@ -1608,7 +1614,7 @@ XR
 Ag
 hB
 Ag
-Ag
+fa
 oN
 Ca
 Ca
@@ -1650,7 +1656,7 @@ XR
 Ag
 Ag
 Ag
-Ag
+fa
 oN
 Ca
 Ca
@@ -1692,7 +1698,7 @@ XR
 Ag
 Ag
 Ag
-Ag
+fa
 oN
 Ca
 Ca
@@ -1734,7 +1740,7 @@ XR
 Ag
 Ag
 Ag
-Ag
+fa
 oN
 Ca
 Ca
