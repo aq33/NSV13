@@ -1511,3 +1511,11 @@
 	centerspawner = FALSE
 	template_height = 40
 	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_glg_05
+	name = "Syndicate Bioweapons Facility"
+	room_id = "sk_rdm_glg_05_syndicate_bio"
+	mappath = "_maps/RandomRuins/GulagRuins/syndicate_bio.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
