@@ -1495,3 +1495,19 @@
 	centerspawner = FALSE
 	template_height = 40
 	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_glg_03
+	name = "Space Seed Vault"
+	room_id = "sk_rdm_glg_03_seed"
+	mappath = "_maps/RandomRuins/GulagRuins/seed.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_glg_04
+	name = "Menele Beach"
+	room_id = "sk_rdm_glg_04_menele"
+	mappath = "_maps/RandomRuins/GulagRuins/menele.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
