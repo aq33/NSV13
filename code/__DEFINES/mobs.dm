@@ -389,7 +389,7 @@
 #define POCKET_STRIP_DELAY	(4 SECONDS)	//! time taken to search somebody's pockets
 #define DOOR_CRUSH_DAMAGE	15	//! the amount of damage that airlocks deal when they crush you
 
-#define	HUNGER_FACTOR		0.1	//! factor at which mob nutrition decreases
+#define	HUNGER_FACTOR		0.2	//! factor at which mob nutrition decreases // AQ EDIT (0.1 -> 0.2)
 #define	HYGIENE_FACTOR  	0.1	//! NSV13 - factor at which mob hygiene decreases
 #define ETHEREAL_CHARGE_FACTOR	2.0 //! NSV13 - factor at which ethereal's charge decreases
 #define	REAGENTS_METABOLISM 0.4	//! How many units of reagent are consumed per tick, by default.

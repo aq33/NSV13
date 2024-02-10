@@ -2892,6 +2892,18 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/quartermaster/storage)
+"ii" = (
+/obj/machinery/light/floor,
+/turf/open/floor/monotile/dark/airless,
+/area/nsv/hanger/notkmcstupidhanger)
+"ik" = (
+/obj/machinery/airalarm/server{
+	pixel_y = 23
+	},
+/turf/open/floor/plasteel/techmaint{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/nsv/hanger/notkmcstupidhanger)
 "il" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -3916,13 +3928,6 @@
 /turf/open/floor/monotile/dark,
 /area/janitor)
 "kU" = (
-/obj/item/ship_weapon/ammunition/missile,
-/obj/item/ship_weapon/ammunition/missile{
-	pixel_y = 4
-	},
-/obj/item/ship_weapon/ammunition/missile{
-	pixel_y = 10
-	},
 /obj/machinery/computer/ship/viewscreen,
 /turf/open/floor/plasteel/techmaint{
 	initial_gas_mix = "TEMP=2.7"
@@ -3971,13 +3976,8 @@
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck2/primary)
 "kZ" = (
-/obj/machinery/airalarm/server{
-	pixel_y = 23
-	},
 /obj/structure/reagent_dispensers/fueltank/cryogenic_fuel,
-/turf/open/floor/plasteel/techmaint{
-	initial_gas_mix = "TEMP=2.7"
-	},
+/turf/open/floor/monotile/dark/airless,
 /area/nsv/hanger/notkmcstupidhanger)
 "lb" = (
 /obj/structure/table,
@@ -4532,6 +4532,14 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/starboard)
+"mI" = (
+/obj/machinery/camera{
+	c_tag = "Atlas Dropship Hangar";
+	network = list("ss13","hangar_atlas");
+	dir = 5
+	},
+/turf/open/floor/monotile/dark/airless,
+/area/nsv/hanger/notkmcstupidhanger)
 "mJ" = (
 /obj/machinery/portable_atmospherics/pump,
 /turf/open/floor/plating,
@@ -5311,6 +5319,13 @@
 /area/crew_quarters/abandoned_gambling_den{
 	name = "Abandoned Bar"
 	})
+"oT" = (
+/obj/machinery/door/poddoor/ship{
+	dir = 1;
+	id = "atlas_dropship_hangar"
+	},
+/turf/open/floor/monotile/dark/airless,
+/area/nsv/hanger/notkmcstupidhanger)
 "oU" = (
 /turf/closed/wall/steel,
 /area/hallway/secondary/exit/departure_lounge)
@@ -5374,7 +5389,9 @@
 /obj/machinery/camera/autoname{
 	dir = 8
 	},
-/turf/open/floor/monotile/dark/airless,
+/turf/open/floor/plasteel/techmaint{
+	initial_gas_mix = "TEMP=2.7"
+	},
 /area/nsv/hanger/notkmcstupidhanger)
 "pc" = (
 /obj/machinery/door/firedoor/border_only{
@@ -5752,7 +5769,6 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/reagent_dispensers/fueltank/cryogenic_fuel,
 /turf/open/floor/plasteel/techmaint{
 	initial_gas_mix = "TEMP=2.7"
 	},
@@ -6560,6 +6576,14 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck2/primary)
+"su" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/plasteel/techmaint{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/nsv/hanger/notkmcstupidhanger)
 "sx" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -8215,12 +8239,18 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/power/floodlight,
 /obj/machinery/requests_console{
 	department = "Hangar";
 	departmentType = 5;
 	name = "Hangar RC";
 	pixel_y = 26
+	},
+/obj/item/ship_weapon/ammunition/missile{
+	pixel_y = 4
+	},
+/obj/item/ship_weapon/ammunition/missile,
+/obj/item/ship_weapon/ammunition/missile{
+	pixel_y = 10
 	},
 /turf/open/floor/monotile/dark/airless,
 /area/nsv/hanger/notkmcstupidhanger)
@@ -8452,12 +8482,15 @@
 	},
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck2/primary)
-"xX" = (
-/obj/structure/reagent_dispensers/fueltank/cryogenic_fuel,
-/obj/item/radio/intercom/directional/north,
-/turf/open/floor/plasteel/techmaint{
-	initial_gas_mix = "TEMP=2.7"
+"xV" = (
+/obj/structure/chair,
+/obj/machinery/light/small{
+	dir = 8
 	},
+/turf/open/floor/plating,
+/area/maintenance/nsv/deck2/starboard)
+"xX" = (
+/turf/open/floor/monotile/steel/airless,
 /area/nsv/hanger/notkmcstupidhanger)
 "xY" = (
 /obj/machinery/power/apc/auto_name/south,
@@ -9322,16 +9355,7 @@
 /turf/open/floor/durasteel/alt,
 /area/hallway/secondary/exit/departure_lounge)
 "AG" = (
-/obj/structure/table/wood,
-/obj/item/paper_bin,
-/obj/item/pen,
-/obj/item/flashlight/lamp{
-	pixel_y = -16
-	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
-	pixel_y = 10;
-	pixel_x = -7
-	},
+/obj/structure/kitchenspike/crucifix,
 /turf/open/floor/wood,
 /area/chapel/main)
 "AI" = (
@@ -9721,9 +9745,8 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/auto_name/north,
-/turf/open/floor/monotile/steel{
-	initial_gas_mix = "TEMP=2.7"
-	},
+/obj/structure/reagent_dispensers/fueltank/cryogenic_fuel,
+/turf/open/floor/monotile/dark/airless,
 /area/nsv/hanger/notkmcstupidhanger)
 "Cb" = (
 /obj/structure/disposalpipe/segment,
@@ -9958,6 +9981,14 @@
 	},
 /turf/open/floor/plasteel/techmaint,
 /area/science/nanite)
+"CI" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/plasteel/techmaint{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/nsv/hanger/notkmcstupidhanger)
 "CN" = (
 /obj/machinery/power/apc/auto_name/east,
 /obj/structure/cable{
@@ -10187,6 +10218,7 @@
 /area/maintenance/nsv/deck2/port)
 "DE" = (
 /obj/machinery/light_switch/west,
+/obj/structure/reagent_dispensers/fueltank/cryogenic_fuel,
 /turf/open/floor/monotile/dark/airless,
 /area/nsv/hanger/notkmcstupidhanger)
 "DG" = (
@@ -10247,6 +10279,12 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/steel,
 /area/nsv/weapons)
+"DW" = (
+/obj/structure/overmap/small_craft/transport/starter,
+/turf/open/floor/plasteel/techmaint{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/nsv/hanger/notkmcstupidhanger)
 "DX" = (
 /obj/structure/overmap/small_craft/combat/light,
 /obj/machinery/light,
@@ -10638,7 +10676,6 @@
 /obj/item/ammo_box/magazine/glock/lethal,
 /obj/item/ammo_box/magazine/glock/lethal,
 /obj/item/ammo_box/magazine/glock/lethal,
-/obj/item/ammo_box/magazine/glock/lethal,
 /obj/item/gun/ballistic/automatic/pistol/glock/security,
 /obj/item/gun/ballistic/automatic/pistol/glock/security,
 /obj/item/gun/ballistic/automatic/pistol/glock/security,
@@ -10661,6 +10698,15 @@
 	},
 /turf/open/space/basic,
 /area/nsv/hanger/notkmcstupidhanger)
+"Fj" = (
+/obj/machinery/button/door{
+	id = "atlas_dropship_hangar";
+	name = "Pod Bay Doors";
+	req_one_access_txt = "69";
+	pixel_y = -28
+	},
+/turf/open/space/basic,
+/area/space)
 "Fm" = (
 /obj/machinery/nanite_programmer,
 /obj/machinery/camera/autoname{
@@ -10669,13 +10715,6 @@
 /turf/open/floor/circuit/green/anim,
 /area/science/nanite)
 "Fo" = (
-/obj/item/ship_weapon/ammunition/missile,
-/obj/item/ship_weapon/ammunition/missile{
-	pixel_y = 4
-	},
-/obj/item/ship_weapon/ammunition/missile{
-	pixel_y = 10
-	},
 /obj/machinery/status_display/ai/north{
 	pixel_y = 26
 	},
@@ -10773,6 +10812,20 @@
 /obj/machinery/portable_atmospherics/canister/toxins,
 /turf/open/floor/plating,
 /area/engine/atmos)
+"FD" = (
+/obj/machinery/button/door{
+	id = "atlas_dropship_hangar";
+	name = "Pod Bay Doors";
+	req_one_access_txt = "69";
+	pixel_x = -28
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1
+	},
+/turf/open/floor/plasteel/techmaint{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/nsv/hanger/notkmcstupidhanger)
 "FE" = (
 /obj/machinery/airalarm{
 	dir = 1;
@@ -11798,6 +11851,14 @@
 /obj/effect/turf_decal/ship/delivery/yellow,
 /turf/open/floor/engine,
 /area/quartermaster/storage)
+"IP" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/plasteel/techmaint{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/nsv/hanger/notkmcstupidhanger)
 "IQ" = (
 /obj/machinery/vending/sovietsoda,
 /turf/open/floor/plating{
@@ -11825,6 +11886,10 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port)
+"IT" = (
+/obj/machinery/light/floor,
+/turf/open/floor/monotile/steel/airless,
+/area/nsv/hanger/notkmcstupidhanger)
 "IV" = (
 /obj/structure/sign/ship/deck/two{
 	dir = 4
@@ -11964,6 +12029,7 @@
 	dir = 4;
 	network = list("ss13","hangar_atlas")
 	},
+/obj/item/radio/intercom/directional/west,
 /turf/open/floor/monotile/dark/airless,
 /area/nsv/hanger/notkmcstupidhanger)
 "Jo" = (
@@ -12127,6 +12193,14 @@
 	initial_gas_mix = "TEMP=2.7"
 	},
 /area/nsv/hanger/notkmcstupidhanger)
+"JL" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 1
+	},
+/turf/open/floor/plasteel/techmaint{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/nsv/hanger/notkmcstupidhanger)
 "JM" = (
 /obj/structure/closet/secure_closet/genpop,
 /obj/effect/turf_decal/ship/delivery/yellow,
@@ -12252,7 +12326,13 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/power/floodlight,
+/obj/item/ship_weapon/ammunition/missile,
+/obj/item/ship_weapon/ammunition/missile{
+	pixel_y = 4
+	},
+/obj/item/ship_weapon/ammunition/missile{
+	pixel_y = 10
+	},
 /turf/open/floor/monotile/dark/airless,
 /area/nsv/hanger/notkmcstupidhanger)
 "Ka" = (
@@ -13838,10 +13918,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/item/ammo_box/magazine/m556,
-/obj/item/ammo_box/magazine/m556,
-/obj/item/ammo_box/magazine/m556,
-/obj/item/ammo_box/magazine/m556,
+/obj/item/storage/box/breacherslug,
 /obj/item/ammo_box/magazine/m556,
 /obj/item/ammo_box/magazine/m556,
 /obj/item/ammo_box/magazine/m556,
@@ -14204,6 +14281,11 @@
 	},
 /turf/open/floor/monotile/steel/airless,
 /area/nsv/hanger/mining)
+"PK" = (
+/obj/machinery/light/floor,
+/obj/structure/reagent_dispensers/fueltank/cryogenic_fuel,
+/turf/open/floor/monotile/dark/airless,
+/area/nsv/hanger/notkmcstupidhanger)
 "PL" = (
 /obj/machinery/airalarm/directional/north,
 /obj/machinery/atmospherics/pipe/multiz/layer2{
@@ -15743,6 +15825,7 @@
 	name = "Armory RC";
 	pixel_y = 26
 	},
+/obj/item/gun/grenadelauncher/security,
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/security/armory)
 "TZ" = (
@@ -15821,6 +15904,14 @@
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/starboard)
+"Ui" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/open/floor/plasteel/techmaint{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/nsv/hanger/notkmcstupidhanger)
 "Ul" = (
 /obj/structure/window/reinforced{
 	dir = 1;
@@ -16789,6 +16880,7 @@
 	dir = 4
 	},
 /obj/machinery/light_switch/west,
+/obj/item/ammo_box/c9mm,
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/security/armory)
 "Xp" = (
@@ -17221,6 +17313,11 @@
 /obj/machinery/rnd/production/techfab/department/munitions,
 /turf/open/floor/carpet/red,
 /area/nsv/weapons)
+"YK" = (
+/obj/structure/rack,
+/obj/item/storage/toolbox/mechanical,
+/turf/open/floor/monotile/dark/airless,
+/area/nsv/hanger/notkmcstupidhanger)
 "YM" = (
 /obj/effect/turf_decal/tile/ship/green{
 	dir = 4
@@ -17306,7 +17403,18 @@
 	dir = 8
 	},
 /obj/structure/table/wood,
-/obj/item/storage/crayons,
+/obj/item/storage/crayons{
+	pixel_y = -15
+	},
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/item/reagent_containers/food/snacks/grown/poppy{
+	pixel_y = 10;
+	pixel_x = -7
+	},
+/obj/item/flashlight/lamp{
+	pixel_y = -16
+	},
 /turf/open/floor/wood,
 /area/chapel/main)
 "Zb" = (
@@ -44548,7 +44656,7 @@ Ie
 Ie
 qL
 Ie
-kC
+xV
 TZ
 nL
 fe
@@ -59161,7 +59269,7 @@ Nh
 Nh
 Nh
 Nh
-Nh
+eH
 Nh
 Nh
 Nh
@@ -59421,7 +59529,7 @@ Nh
 Nh
 Nh
 Nh
-Nh
+HX
 iV
 iV
 iV
@@ -59442,7 +59550,7 @@ Vd
 Og
 Kl
 DE
-BN
+kZ
 fI
 fI
 fI
@@ -59678,11 +59786,11 @@ Nh
 Nh
 Nh
 Nh
+HX
 Nh
+HX
 Nh
-Nh
-Nh
-Nh
+HX
 iV
 iV
 ER
@@ -59936,9 +60044,9 @@ Nh
 Nh
 Nh
 Nh
-Nh
-Nh
-Nh
+HX
+HX
+HX
 Nh
 iV
 iV
@@ -60189,16 +60297,16 @@ Nh
 Nh
 Nh
 Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
+Fj
+jx
+jx
+jx
+jx
+jx
+jx
+jx
+jx
+jx
 jx
 jx
 Fo
@@ -60446,16 +60554,16 @@ Nh
 Nh
 Nh
 Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
+an
+oT
+FD
+ii
+YK
+mI
+ii
+Kl
+Kl
+PK
 jx
 jx
 kU
@@ -60703,19 +60811,19 @@ Nh
 Nh
 Nh
 Nh
-Nh
-Nh
-eH
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-jx
-jx
+an
+oT
+JL
 xX
+xX
+xX
+xX
+xX
+xX
+xX
+Kl
+UB
+Jc
 Jc
 wX
 UB
@@ -60960,19 +61068,19 @@ Nh
 Nh
 Nh
 Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-jx
-jx
-kZ
+an
+oT
+JL
+su
+Jc
+Jc
+Jc
+DW
+CI
+xX
+Kl
+UB
+Jc
 Jc
 wX
 UB
@@ -61217,16 +61325,16 @@ Nh
 Nh
 Nh
 Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
+an
+oT
+JL
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+xX
 jx
 jx
 pV
@@ -61474,16 +61582,16 @@ Nh
 Nh
 Nh
 Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
+an
+oT
+JL
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+xX
 jx
 jx
 Qr
@@ -61731,19 +61839,19 @@ Nh
 Nh
 Nh
 Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
+an
+oT
+JL
+Ui
+Jc
+Jc
+Jc
+Jc
+IP
+xX
 jx
 jx
-BN
+ik
 pb
 wX
 UB
@@ -61755,7 +61863,7 @@ BN
 US
 BN
 pb
-BN
+Jc
 jx
 QD
 ag
@@ -61988,16 +62096,16 @@ Nh
 Nh
 Nh
 Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
+an
+oT
+JL
+IT
+xX
+xX
+IT
+xX
+xX
+IT
 jx
 jx
 jx
@@ -62246,15 +62354,15 @@ Nh
 Nh
 Nh
 Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
-Nh
+jx
+jx
+jx
+jx
+jx
+jx
+jx
+jx
+jx
 jx
 jx
 jx
@@ -62504,13 +62612,13 @@ Nh
 Nh
 Nh
 Nh
+HX
+HX
 Nh
+HX
+HX
 Nh
-Nh
-Nh
-Nh
-Nh
-Nh
+HX
 Nh
 jx
 jx
@@ -62763,12 +62871,12 @@ Nh
 Nh
 Nh
 Nh
+HX
+HX
+HX
 Nh
-Nh
-Nh
-Nh
-Nh
-Nh
+HX
+HX
 jx
 jx
 jx
@@ -63023,9 +63131,9 @@ Nh
 Nh
 Nh
 Nh
+HX
 Nh
-Nh
-Nh
+HX
 Nh
 Nh
 Nh
@@ -63276,7 +63384,7 @@ Nh
 Nh
 Nh
 Nh
-Nh
+eH
 Nh
 Nh
 Nh

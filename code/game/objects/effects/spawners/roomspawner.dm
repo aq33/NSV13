@@ -72,3 +72,7 @@
 	room_width = 5
 	room_height = 11
 
+/obj/effect/spawner/room/gulag
+	name = "gulag ghost role spawner"
+	room_width = 40
+	room_height = 40

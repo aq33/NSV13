@@ -406,7 +406,6 @@
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/theatre)
 "bq" = (
-/obj/structure/hull_plate,
 /obj/effect/turf_decal/ship/letter,
 /turf/open/floor/engine/airless,
 /area/space/nearstation)
@@ -471,7 +470,6 @@
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "bJ" = (
-/obj/structure/hull_plate,
 /obj/machinery/light/floor,
 /turf/open/floor/engine/airless,
 /area/maintenance/department/science/xenobiology)
@@ -589,7 +587,7 @@
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/window/westright{
 	name = "Genetics Desk";
-	req_access_txt = "5;33"
+	req_access_txt = "9"
 	},
 /obj/structure/table/reinforced,
 /turf/open/floor/plating,
@@ -2136,9 +2134,6 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port)
 "he" = (
-/obj/effect/turf_decal/tile/ship/half/neutral{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -2852,7 +2847,6 @@
 /turf/open/floor/plating,
 /area/medical/morgue)
 "jA" = (
-/obj/effect/turf_decal/tile/ship/full/neutral,
 /obj/structure/closet/crate,
 /obj/item/storage/belt/utility/full,
 /obj/effect/spawner/lootdrop/maintenance/three,
@@ -3678,10 +3672,6 @@
 /obj/effect/landmark/start/cook,
 /turf/open/floor/monotile/light,
 /area/crew_quarters/kitchen)
-"me" = (
-/obj/effect/turf_decal/tile/ship/full/neutral,
-/turf/open/floor/plating,
-/area/maintenance/department/science/xenobiology)
 "mf" = (
 /obj/machinery/porta_turret/ai,
 /obj/effect/turf_decal/stripes/box,
@@ -5248,7 +5238,6 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/starboard)
 "rF" = (
-/obj/structure/hull_plate,
 /obj/effect/turf_decal/ship/letter{
 	icon_state = "L"
 	},
@@ -5490,12 +5479,12 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port)
 "st" = (
-/obj/structure/hull_plate/end{
-	dir = 4
+/obj/structure/hull_plate,
+/obj/machinery/light/small{
+	dir = 1
 	},
-/obj/machinery/light/floor,
 /turf/open/floor/engine/airless,
-/area/maintenance/department/science/xenobiology)
+/area/maintenance/nsv/deck1/starboard)
 "su" = (
 /obj/effect/turf_decal/tile/ship/green,
 /obj/effect/turf_decal/tile/ship/green{
@@ -7111,7 +7100,7 @@
 /obj/structure/hull_plate,
 /obj/machinery/camera/autoname,
 /turf/open/floor/engine/airless,
-/area/space/nearstation)
+/area/maintenance/nsv/deck1/starboard)
 "yh" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -7119,11 +7108,11 @@
 /turf/open/floor/monotile/steel,
 /area/bridge/cic)
 "yi" = (
-/obj/effect/turf_decal/tile/ship/half/neutral{
-	dir = 4
+/obj/structure/hull_plate/end{
+	dir = 6
 	},
-/turf/open/floor/plating,
-/area/maintenance/department/science/xenobiology)
+/turf/open/openspace/airless,
+/area/space/nearstation)
 "yj" = (
 /obj/machinery/door/airlock/ship/external{
 	name = "Escape Pod"
@@ -8405,7 +8394,6 @@
 /turf/open/floor/durasteel/techfloor,
 /area/engine/gravity_generator)
 "CQ" = (
-/obj/structure/hull_plate,
 /obj/effect/turf_decal/ship/letter{
 	icon_state = "T"
 	},
@@ -11040,11 +11028,8 @@
 /turf/open/floor/plating,
 /area/maintenance/department/science/xenobiology)
 "Lq" = (
-/obj/effect/turf_decal/tile/purple,
-/turf/open/floor/plating{
-	icon_state = "platingdmg2"
-	},
-/area/maintenance/department/science/xenobiology)
+/turf/open/floor/glass/reinforced,
+/area/space/nearstation)
 "Lt" = (
 /obj/effect/turf_decal/tile/ship/green,
 /obj/effect/turf_decal/tile/ship/green{
@@ -11149,7 +11134,6 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port)
 "LM" = (
-/obj/structure/hull_plate,
 /obj/effect/turf_decal/ship/letter{
 	icon_state = "S"
 	},
@@ -13973,13 +13957,10 @@
 /turf/closed/wall/r_wall,
 /area/crew_quarters/heads/cmo)
 "VC" = (
-/obj/effect/turf_decal/tile/purple{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/turf/open/floor/plating,
-/area/maintenance/department/science/xenobiology)
+/obj/machinery/light/floor,
+/obj/structure/hull_plate,
+/turf/open/floor/engine/airless,
+/area/nsv/hanger/notkmcstupidhanger)
 "VD" = (
 /obj/machinery/vending/wardrobe/medi_wardrobe,
 /obj/effect/turf_decal/stripes/line,
@@ -14579,9 +14560,6 @@
 /turf/open/floor/monotile/dark,
 /area/medical/chemistry)
 "XJ" = (
-/obj/effect/turf_decal/tile/ship/half/neutral{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/plating{
@@ -14847,9 +14825,6 @@
 /turf/open/floor/grass,
 /area/medical/virology)
 "YI" = (
-/obj/effect/turf_decal/tile/ship/half/neutral{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 9
 	},
@@ -46716,7 +46691,7 @@ Ya
 rO
 MS
 MS
-mK
+st
 mK
 mK
 mK
@@ -48001,7 +47976,7 @@ Ge
 lh
 MS
 MS
-mK
+st
 mK
 mK
 mK
@@ -56476,10 +56451,10 @@ Ak
 Ak
 qt
 pn
-Lq
-yi
+TK
+XU
 he
-me
+XU
 JZ
 JZ
 vi
@@ -56733,7 +56708,7 @@ XU
 ly
 Xs
 Xs
-VC
+Xs
 XJ
 YI
 jA
@@ -57238,11 +57213,11 @@ mK
 mK
 mK
 mK
-mK
-mK
+Rg
+cx
 bJ
 bq
-mK
+jv
 Tf
 kC
 Aq
@@ -57486,8 +57461,7 @@ cL
 cL
 cL
 tL
-xg
-uf
+jv
 mK
 mK
 mK
@@ -57496,10 +57470,11 @@ mK
 mK
 mK
 mK
-mK
-mK
-mK
-mK
+Rg
+cx
+cx
+cx
+jv
 Tf
 dN
 Tf
@@ -57736,16 +57711,13 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-tL
-tL
-tL
-jv
+Lv
+nY
+nY
+nY
+nY
+nY
+nY
 mK
 mK
 mK
@@ -57754,9 +57726,12 @@ mK
 mK
 mK
 mK
+mK
+Rg
+cx
 bJ
 CQ
-mK
+jv
 DT
 mK
 mK
@@ -57993,15 +57968,6 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-tL
 jv
 mK
 mK
@@ -58014,6 +57980,15 @@ mK
 mK
 mK
 mK
+mK
+mK
+mK
+mK
+Rg
+cx
+cx
+cx
+jv
 mK
 mK
 mK
@@ -58250,27 +58225,27 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-tL
 jv
 mK
 mK
 mK
+VC
 mK
 mK
 mK
 mK
 mK
+mK
+mK
+mK
+mK
+mK
+mK
+Rg
+cx
 bJ
 rF
-mK
+jv
 mK
 mK
 mK
@@ -58507,17 +58482,14 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-tL
 jv
 mK
+Lq
+Lq
+Lq
+Lq
+Lq
+Lq
 mK
 mK
 mK
@@ -58526,8 +58498,11 @@ mK
 mK
 mK
 mK
-mK
-mK
+Rg
+cx
+cx
+cx
+jv
 mK
 mK
 mK
@@ -58764,17 +58739,14 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-tL
 jv
 mK
+Lq
+Lq
+Lq
+Lq
+Lq
+Lq
 mK
 mK
 mK
@@ -58782,9 +58754,12 @@ mK
 mK
 mK
 mK
+mK
+Rg
+cx
 bJ
 bq
-mK
+jv
 mK
 mK
 mK
@@ -59021,27 +58996,27 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-tL
 jv
+mK
+Lq
+Lq
+Lq
+Lq
+Lq
+Lq
+mK
+mK
 mK
 mK
 mK
 mK
 mK
 UC
-mK
-mK
-mK
-mK
-mK
+Rg
+cx
+cx
+cx
+jv
 mK
 mK
 mK
@@ -59278,17 +59253,14 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-tL
 jv
 mK
+Lq
+Lq
+Lq
+Lq
+Lq
+Lq
 mK
 mK
 mK
@@ -59296,9 +59268,12 @@ mK
 mK
 mK
 mK
+mK
+Rg
+cx
 bJ
 LM
-mK
+jv
 mK
 mK
 mK
@@ -59535,19 +59510,11 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-tL
 jv
 mK
 mK
 mK
+VC
 mK
 mK
 mK
@@ -59556,6 +59523,14 @@ mK
 mK
 mK
 mK
+mK
+mK
+mK
+Rg
+cx
+cx
+cx
+jv
 mK
 mK
 mK
@@ -59792,27 +59767,27 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-tL
-jv
+xg
+uf
+uf
+uf
+uf
+uf
+uf
+uf
 mK
 mK
 mK
+mK
+mK
 uf
 uf
 uf
-uf
-uf
-st
-uf
-uf
+nP
+cx
+bJ
+cx
+xg
 uf
 mK
 mK
@@ -60061,7 +60036,7 @@ tL
 jv
 mK
 mK
-nP
+Rg
 cL
 cL
 cL
@@ -60317,8 +60292,8 @@ cL
 tL
 xg
 uf
-nP
-tL
+uf
+yi
 tL
 tL
 tL
