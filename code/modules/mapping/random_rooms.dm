@@ -1479,3 +1479,19 @@
 	centerspawner = FALSE
 	template_height = 11
 	template_width = 5
+
+/datum/map_template/random_room/sk_rdm_glg_01
+	name = "Ashwalker Research Facility"
+	room_id = "sk_rdm_glg_01_ashwalker"
+	mappath = "_maps/RandomRuins/GulagRuins/ashwalker.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_glg_02
+	name = "Crashed Free Golem Ship"
+	room_id = "sk_rdm_glg_02_golem"
+	mappath = "_maps/RandomRuins/GulagRuins/golem.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
