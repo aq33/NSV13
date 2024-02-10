@@ -1519,3 +1519,11 @@
 	centerspawner = FALSE
 	template_height = 40
 	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_glg_06
+	name = "Syndicate Listening Post"
+	room_id = "sk_rdm_glg_06_syndicate_listening"
+	mappath = "_maps/RandomRuins/GulagRuins/syndicate_listening.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
