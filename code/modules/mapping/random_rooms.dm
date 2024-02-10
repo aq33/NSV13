@@ -1527,3 +1527,11 @@
 	centerspawner = FALSE
 	template_height = 40
 	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_glg_07
+	name = "Gaming Room"
+	room_id = "sk_rdm_glg_07_gameroom"
+	mappath = "_maps/RandomRuins/GulagRuins/gameroom.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
