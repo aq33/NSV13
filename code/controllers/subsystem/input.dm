@@ -34,6 +34,7 @@ SUBSYSTEM_DEF(input)
 			"O" = "ooc",
 			"L" = "looc",
 			"T" = "\".winset \\\"command=\\\".start_typing say\\\";command=.init_say;saywindow.is-visible=true;saywindow.input.focus=true\\\"\"",
+			"Y" = "\".winset \\\"command=\\\".start_typing say\\\";command=.init_rsay;rsaywindow.is-visible=true;rsaywindow.input.focus=true\\\"\"", // AQ EDIT - Y to speak on radio
 			"M" = "\".winset \\\"command=\\\".start_typing me\\\";command=.init_me;mewindow.is-visible=true;mewindow.input.focus=true\\\"\"",
 			"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"", // This makes it so backspace can remove default inputs
 			"Any" = "\"KeyDown \[\[*\]\]\"",
