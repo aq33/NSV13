@@ -117,6 +117,7 @@
 GLOBAL_LIST_INIT(input_window_presets, list(
 	"say" = list("saywindow", "say \\\"text\\\"", ".say", ".cancel_typing say"),
 	"me"  = list("mewindow",  "me (text)",        ".me",  ".cancel_typing me"),
+	"rsay" = list("rsaywindow", "say \\\";text\\\"", ".rsay", ".cancel_typing rsay"), // AQ EDIT: Y radio say keybind
 ))
 
 /client/proc/create_preset_input_window(name, force=FALSE, show=TRUE)

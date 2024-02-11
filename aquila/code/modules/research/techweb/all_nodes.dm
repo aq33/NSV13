@@ -135,10 +135,10 @@
 //najtańsze, słabe i kosztowne
 /datum/techweb_node/prototype_beam_weapons
 	id = "prototype_beam_weapons"
-	tech_tier = 1
-	starting_node = TRUE
+	tech_tier = 2
 	display_name = "Prototype Beam Weapons"
 	description = "First generation energy based weapons, they use special lenses to focus light and turn it into high-energy weapon platform, expensive with inefficient energy usage."
+	prereq_ids = list("engineering")
 	design_ids = list("firstgenegun", "firstgenlasergun")
 //średnia półka
 /datum/techweb_node/improved_beam_weapons

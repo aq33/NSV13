@@ -18,12 +18,12 @@
 		SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "back_pain")
 
 /datum/quirk/blooddeficiency
-	name = "Niedobór Krwii"
-	desc = "Twoje ciało nie jest w stanie wyprodukować wystarczająco krwii, żeby się utrzymać."
+	name = "Niedobór krwi"
+	desc = "Twoje ciało nie jest w stanie wyprodukować wystarczająco krwi, żeby się utrzymać."
 	value = -2
 	gain_text = "<span class='danger'>Czujesz, że twoje siły powoli cię opuszczają.</span>"
 	lose_text = "<span class='notice'>Czujesz się bardziej rześki.</span>"
-	medical_record_text = "Pacjent wymaga regularnej transfuzji krwii ze względu na jej niską produkcję."
+	medical_record_text = "Pacjent wymaga regularnej transfuzji krwi ze względu na jej niską produkcję."
 	process = TRUE
 
 /datum/quirk/blooddeficiency/on_process(delta_time)

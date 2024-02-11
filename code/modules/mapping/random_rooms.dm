@@ -1479,3 +1479,59 @@
 	centerspawner = FALSE
 	template_height = 11
 	template_width = 5
+
+/datum/map_template/random_room/sk_rdm_glg_01
+	name = "Ashwalker Research Facility"
+	room_id = "sk_rdm_glg_01_ashwalker"
+	mappath = "_maps/RandomRuins/GulagRuins/ashwalker.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_glg_02
+	name = "Crashed Free Golem Ship"
+	room_id = "sk_rdm_glg_02_golem"
+	mappath = "_maps/RandomRuins/GulagRuins/golem.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_glg_03
+	name = "Space Seed Vault"
+	room_id = "sk_rdm_glg_03_seed"
+	mappath = "_maps/RandomRuins/GulagRuins/seed.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_glg_04
+	name = "Menele Beach"
+	room_id = "sk_rdm_glg_04_menele"
+	mappath = "_maps/RandomRuins/GulagRuins/menele.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_glg_05
+	name = "Syndicate Bioweapons Facility"
+	room_id = "sk_rdm_glg_05_syndicate_bio"
+	mappath = "_maps/RandomRuins/GulagRuins/syndicate_bio.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_glg_06
+	name = "Syndicate Listening Post"
+	room_id = "sk_rdm_glg_06_syndicate_listening"
+	mappath = "_maps/RandomRuins/GulagRuins/syndicate_listening.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_glg_07
+	name = "Gaming Room"
+	room_id = "sk_rdm_glg_07_gameroom"
+	mappath = "_maps/RandomRuins/GulagRuins/gameroom.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40

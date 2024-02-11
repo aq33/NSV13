@@ -165,6 +165,8 @@
 		gain_knowledge(starting_knowledge)
 
 	GLOB.reality_smash_track.add_tracked_mind(owner)
+	menu = new(src)
+	menu.Grant(owner.current)
 	addtimer(CALLBACK(src, PROC_REF(passive_influence_gain)), passive_gain_timer) // Gain +1 knowledge every 20 minutes.
 	return ..()
 
