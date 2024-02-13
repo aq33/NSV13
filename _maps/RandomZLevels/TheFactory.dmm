@@ -2982,8 +2982,7 @@
 /area/awaymission/factory/factoryafter/down)
 "cRg" = (
 /turf/open/floor/plasteel/vaporwave,
-/area/ruin/space/has_grav/powered/aesthetic{
-	ambient_buzz = null
+/area/ruin/space/has_grav/powered/aesthetic)
 "cRv" = (
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryduring)
