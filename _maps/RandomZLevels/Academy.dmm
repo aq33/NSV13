@@ -1387,7 +1387,6 @@
 /turf/open/floor/plating,
 /area/awaymission/academy)
 "eA" = (
-/obj/machinery/door/airlock/public/glass,
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4

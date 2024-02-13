@@ -629,7 +629,6 @@
 /area/space/nearstation)
 "cu" = (
 /obj/structure/lattice,
-/obj/structure/lattice,
 /turf/open/space,
 /area/space/nearstation)
 "cv" = (

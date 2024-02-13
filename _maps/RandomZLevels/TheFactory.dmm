@@ -49,7 +49,7 @@
 	resistance_flags = 243
 	},
 /obj/item/paper{
-	info = "<b>You've found a secret!</b>"
+	default_raw_text = "<b>You've found a secret!</b>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/awaymission/factory/secret)
@@ -200,7 +200,7 @@
 	})
 "amo" = (
 /obj/item/paper{
-	info = "Anomaly 7 was actually found nearby. One of the villagers found this bat in a forest. It was literally separated from the world by chasm and it also was placed in a burning bonfire. The villager cut a tree, tall enough to make a bridge and get over the chasm to the bat. Then they threw the bat away because they actually needed the bonfire rather than some useless piece of wood, as he said. Several days later the villagers spotted a burning bonfire surrounded by chasm nearby the forest. We decided take the bat here and make a cell for it. We don't want people outside to accidentally fall into an abyss. Anyway the baseball hole got filled by some dirt and is now safe to walk over. Maybe.";
+	default_raw_text = "Anomaly 7 was actually found nearby. One of the villagers found this bat in a forest. It was literally separated from the world by chasm and it also was placed in a burning bonfire. The villager cut a tree, tall enough to make a bridge and get over the chasm to the bat. Then they threw the bat away because they actually needed the bonfire rather than some useless piece of wood, as he said. Several days later the villagers spotted a burning bonfire surrounded by chasm nearby the forest. We decided take the bat here and make a cell for it. We don't want people outside to accidentally fall into an abyss. Anyway the baseball hole got filled by some dirt and is now safe to walk over. Maybe.";
 	name = "Anomaly 7"
 	},
 /turf/open/floor/engine{
@@ -300,8 +300,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter/down)
 "aqr" = (
@@ -506,8 +505,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged3";
-	temperature = 251
+	icon_state = "damaged3"
 	},
 /area/awaymission/factory/factoryafter/down)
 "ayw" = (
@@ -784,8 +782,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged3";
-	temperature = 251
+	icon_state = "damaged3"
 	},
 /area/awaymission/factory/factoryafter/down)
 "aOp" = (
@@ -794,8 +791,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryafter/down)
 "aPb" = (
@@ -901,8 +897,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter/down)
 "aVL" = (
@@ -910,8 +905,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryafter/down)
 "aWi" = (
@@ -920,8 +914,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryafter/down)
 "aWw" = (
@@ -939,8 +932,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged3";
-	temperature = 251
+	icon_state = "damaged3"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "aWU" = (
@@ -1196,7 +1188,7 @@
 	})
 "bhQ" = (
 /obj/item/paper{
-	info = "<i>Fuck, that was a bad idea to change direction. Maybe try to dig in another way?</i>"
+	default_raw_text = "<i>Fuck, that was a bad idea to change direction. Maybe try to dig in another way?</i>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered{
@@ -1350,7 +1342,7 @@
 	})
 "bpm" = (
 /obj/item/paper{
-	info = "<i>Fuck, that was a bad idea to change direction. Maybe try to dig in another way?</i>"
+	default_raw_text = "<i>Fuck, that was a bad idea to change direction. Maybe try to dig in another way?</i>"
 	},
 /turf/closed/mineral/random,
 /area/ruin/unpowered{
@@ -1737,7 +1729,7 @@
 /area/awaymission/factory/clownplanet)
 "bNn" = (
 /obj/item/paper{
-	info = "<i>That thing must hit my brain hard because... Why the fuck was I digging in THAT way?!</i>"
+	default_raw_text = "<i>That thing must hit my brain hard because... Why the fuck was I digging in THAT way?!</i>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered{
@@ -1770,7 +1762,7 @@
 /area/awaymission/factory/factoryduring/down)
 "bOA" = (
 /obj/item/paper{
-	info = "<i>That thing must hit my brain hard because... Why the fuck was I digging in THAT way?!</i>"
+	default_raw_text = "<i>That thing must hit my brain hard because... Why the fuck was I digging in THAT way?!</i>"
 	},
 /turf/closed/mineral/random,
 /area/ruin/unpowered{
@@ -1857,7 +1849,7 @@
 "bRR" = (
 /obj/structure/table/wood,
 /obj/item/paper{
-	info = "<i>God, I've managed to sneak to this place unseen. I didn't even look at the glassed doors because I was afraid they will see me. Something is not right here, I hear someone screaming loudly, lots of gunshots. Thats may be the reason nobody came after me when I accidentally walked on the sight of a security camera.</i>";
+	default_raw_text = "<i>God, I've managed to sneak to this place unseen. I didn't even look at the glassed doors because I was afraid they will see me. Something is not right here, I hear someone screaming loudly, lots of gunshots. Thats may be the reason nobody came after me when I accidentally walked on the sight of a security camera.</i>";
 	name = "Adam's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -2017,7 +2009,7 @@
 "bYB" = (
 /obj/structure/table/wood,
 /obj/item/paper{
-	info = "<i>God, I've managed to sneak to this place unseen. I didn't even look at the glassed doors because I was afraid they will see me. Something is not right here, I hear someone screaming loudly, lots of gunshots. Thats may be the reason nobody came after me when I accidentally walked on the sight of a security camera.</i>";
+	default_raw_text = "<i>God, I've managed to sneak to this place unseen. I didn't even look at the glassed doors because I was afraid they will see me. Something is not right here, I hear someone screaming loudly, lots of gunshots. Thats may be the reason nobody came after me when I accidentally walked on the sight of a security camera.</i>";
 	name = "Adam's note"
 	},
 /turf/open/floor/carpet/royalblue,
@@ -2049,8 +2041,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "cbG" = (
@@ -2125,7 +2116,7 @@
 /area/awaymission/factory/factoryafter/down/levelthree)
 "cez" = (
 /obj/item/paper{
-	info = "<i>If you see this messaage then you might have some troubles with your stomach as well. My advice - don't be me. Don't eat that food the factory making.</i>";
+	default_raw_text = "<i>If you see this messaage then you might have some troubles with your stomach as well. My advice - don't be me. Don't eat that food the factory making.</i>";
 	name = "guard's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -2173,7 +2164,7 @@
 	})
 "cgR" = (
 /obj/item/paper{
-	info = "<i>Oh god oh fuck</i>"
+	default_raw_text = "<i>Oh god oh fuck</i>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/awaymission/factory/clownplanet)
@@ -2261,7 +2252,7 @@
 "clx" = (
 /obj/structure/table/reinforced,
 /obj/item/paper{
-	info = "<i>I feel something bad gonna happen soon. I'm taking that stuff our squad found and augmenting myself to prevent myself turning into a brainlet subhuman in case someone breaks into mind batterer's chamber. I'm sure I'm going to behave much less like a human and I won't be able to turn it back any more, but I will need to get used to it or else I have a big chance becoming a fucking zombie.</i>";
+	default_raw_text = "<i>I feel something bad gonna happen soon. I'm taking that stuff our squad found and augmenting myself to prevent myself turning into a brainlet subhuman in case someone breaks into mind batterer's chamber. I'm sure I'm going to behave much less like a human and I won't be able to turn it back any more, but I will need to get used to it or else I have a big chance becoming a fucking zombie.</i>";
 	name = "The Boss' note"
 	},
 /turf/open/floor/circuit/green/anim,
@@ -2291,7 +2282,7 @@
 /area/awaymission/factory/factoryduring/down)
 "cmy" = (
 /obj/item/paper{
-	info = "<i>If you see this messaage then you might have some troubles with your stomach as well. My advice - don't be me. Don't eat that food the factory making.</i>";
+	default_raw_text = "<i>If you see this messaage then you might have some troubles with your stomach as well. My advice - don't be me. Don't eat that food the factory making.</i>";
 	name = "guard's note"
 	},
 /turf/open/floor/plasteel/showroomfloor,
@@ -2534,8 +2525,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryafter/down)
 "cyR" = (
@@ -2571,7 +2561,7 @@
 /area/awaymission/factory/factoryduring/down/levelthree)
 "cAs" = (
 /obj/item/paper{
-	info = "<i>Still going.</i>"
+	default_raw_text = "<i>Still going.</i>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered{
@@ -2589,7 +2579,7 @@
 	})
 "cAH" = (
 /obj/item/paper{
-	info = "<i>It's dark and I don't like it at all. I think I just saw someone standing there... Is that a dead body? Oh I forgot I may just inhaled too much leaked BZ. I guess that mad engineer with an axe that was chasing me did it.</i>"
+	default_raw_text = "<i>It's dark and I don't like it at all. I think I just saw someone standing there... Is that a dead body? Oh I forgot I may just inhaled too much leaked BZ. I guess that mad engineer with an axe that was chasing me did it.</i>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered{
@@ -2714,7 +2704,7 @@
 /area/awaymission/factory/factoryduring/down)
 "cFg" = (
 /obj/item/paper{
-	info = "<i>It's dark and I don't like it at all. I think I just saw someone standing there... Is that a dead body? Oh I forgot I may just inhaled too much leaked BZ. I guess that mad engineer with an axe that was chasing me did it.</i>"
+	default_raw_text = "<i>It's dark and I don't like it at all. I think I just saw someone standing there... Is that a dead body? Oh I forgot I may just inhaled too much leaked BZ. I guess that mad engineer with an axe that was chasing me did it.</i>"
 	},
 /turf/closed/mineral/random,
 /area/ruin/unpowered{
@@ -2761,8 +2751,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "cHj" = (
@@ -2843,8 +2832,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "cKF" = (
@@ -2961,7 +2949,7 @@
 /area/awaymission/factory/factoryafter/down)
 "cPh" = (
 /obj/item/paper{
-	info = "This one is the most cursed shit we've ever seen. When our squad brought it here, it was only a spider, but the body was replaced by human head. It was agressive and tried to bite everyone, so we injected some chloral hydrate in it. A few days later we decided to bring one of the cultists' dead body as a food for it. Few hours later, the spider dissapeared, and the only thing left in it's cell is the same cultist body, but staying on top of it's own blood and flesh. We decided to keep this thing here, but I bet once it will try to break out and will cause a big trouble.";
+	default_raw_text = "This one is the most cursed shit we've ever seen. When our squad brought it here, it was only a spider, but the body was replaced by human head. It was agressive and tried to bite everyone, so we injected some chloral hydrate in it. A few days later we decided to bring one of the cultists' dead body as a food for it. Few hours later, the spider dissapeared, and the only thing left in it's cell is the same cultist body, but staying on top of it's own blood and flesh. We decided to keep this thing here, but I bet once it will try to break out and will cause a big trouble.";
 	name = "Anomaly 4"
 	},
 /turf/open/floor/engine{
@@ -3031,7 +3019,7 @@
 /area/awaymission/factory/villageafter/house)
 "cSD" = (
 /obj/item/paper{
-	info = "<i>IT WAS A TERRIBLE MISTAKE</i>";
+	default_raw_text = "<i>IT WAS A TERRIBLE MISTAKE</i>";
 	name = "worker's death note"
 	},
 /obj/effect/decal/cleanable/blood/old{
@@ -3284,8 +3272,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter/down)
 "dkX" = (
@@ -3293,8 +3280,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter/down)
 "dkY" = (
@@ -3576,8 +3562,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter)
 "dzb" = (
@@ -3611,7 +3596,7 @@
 /obj/item/storage/book/bible,
 /obj/item/reagent_containers/food/drinks/bottle/holywater,
 /obj/item/paper{
-	info = "<i>I feel something unholy's coming</i>";
+	default_raw_text = "<i>I feel something unholy's coming</i>";
 	name = "the librarian's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -3635,7 +3620,7 @@
 /area/awaymission/factory/factoryafter/down)
 "dBJ" = (
 /obj/item/paper{
-	info = "<i>This is Mike, the mechanic. I'm currently surrounded by creatures and idiots. Everything is getting out of control, but I'm lucky I got right equipment, so I'm going to make my own way out of here. See you after this shit ends.</i>";
+	default_raw_text = "<i>This is Mike, the mechanic. I'm currently surrounded by creatures and idiots. Everything is getting out of control, but I'm lucky I got right equipment, so I'm going to make my own way out of here. See you after this shit ends.</i>";
 	name = "worker's note"
 	},
 /turf/open/floor/plating/asteroid,
@@ -3860,7 +3845,7 @@
 /area/awaymission/factory/secret)
 "dKO" = (
 /obj/item/paper{
-	info = "<i>I think I see something over there. The rock is slowly turning red. Maybe this is a way out!</i>"
+	default_raw_text = "<i>I think I see something over there. The rock is slowly turning red. Maybe this is a way out!</i>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered{
@@ -3999,8 +3984,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter/down)
 "dTz" = (
@@ -4047,7 +4031,7 @@
 	})
 "dVk" = (
 /obj/item/paper{
-	info = "<i>Mamma mia...</i>"
+	default_raw_text = "<i>Mamma mia...</i>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/awaymission/factory/secret)
@@ -4093,7 +4077,7 @@
 /area/awaymission/factory/secret)
 "dXq" = (
 /obj/item/paper{
-	info = "<b>You've found a secret!</b>"
+	default_raw_text = "<b>You've found a secret!</b>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/awaymission/factory/factoryafter/down)
@@ -4181,8 +4165,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryafter/down)
 "ebm" = (
@@ -4204,8 +4187,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter/down)
 "eci" = (
@@ -4386,7 +4368,7 @@
 /area/awaymission/factory/factoryduring/down)
 "eoj" = (
 /obj/item/paper{
-	info = "Sacrifices must be made, HOP. We will never forget you."
+	default_raw_text = "Sacrifices must be made, HOP. We will never forget you."
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/mineral/titanium/white,
@@ -4554,7 +4536,7 @@
 	})
 "euu" = (
 /obj/item/paper{
-	info = "Sacrifices must be made, HOP. We will never forget you."
+	default_raw_text = "Sacrifices must be made, HOP. We will never forget you."
 	},
 /turf/open/floor/mineral/titanium/white,
 /area/awaymission/factory/factoryduring/down)
@@ -4564,8 +4546,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "euB" = (
@@ -4648,7 +4629,7 @@
 "eyq" = (
 /obj/structure/table/wood/fancy,
 /obj/item/paper{
-	info = "<i>This gardener keep being annoying as much as possible. He planted his goddamn flowers everywhere, so they grew and now he yells at me when I do a step anywhere but on the road.Huh, what was that sound? Probably the factory is doing something crazy again. God, my head...</i>";
+	default_raw_text = "<i>This gardener keep being annoying as much as possible. He planted his goddamn flowers everywhere, so they grew and now he yells at me when I do a step anywhere but on the road.Huh, what was that sound? Probably the factory is doing something crazy again. God, my head...</i>";
 	name = "Frank's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -4782,7 +4763,7 @@
 /area/awaymission/factory/factoryduring/down)
 "eFo" = (
 /obj/item/paper{
-	info = "<i>I don't trust that company at all. Recent suicide was definetly related to that shit they give to us. They supposed to solve the hunger problem, but they definetly focused on something else. Eventually I will find out who they really are, even if they're against it.</i>";
+	default_raw_text = "<i>I don't trust that company at all. Recent suicide was definetly related to that shit they give to us. They supposed to solve the hunger problem, but they definetly focused on something else. Eventually I will find out who they really are, even if they're against it.</i>";
 	name = "Adam's note"
 	},
 /turf/open/floor/carpet/black,
@@ -5222,7 +5203,7 @@
 	})
 "eWY" = (
 /obj/item/paper{
-	info = "<i>I shouldn't change the direction again.</i>"
+	default_raw_text = "<i>I shouldn't change the direction again.</i>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered{
@@ -5296,7 +5277,7 @@
 /area/awaymission/factory/factoryduring/down)
 "eYJ" = (
 /obj/item/paper{
-	info = "<i>I shouldn't change the direction again.</i>"
+	default_raw_text = "<i>I shouldn't change the direction again.</i>"
 	},
 /turf/closed/mineral/random,
 /area/ruin/unpowered{
@@ -5395,8 +5376,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "fdQ" = (
@@ -5609,7 +5589,7 @@
 /area/awaymission/factory/secret)
 "fli" = (
 /obj/item/paper{
-	info = "<b>You've found a secret!</b>"
+	default_raw_text = "<b>You've found a secret!</b>"
 	},
 /obj/item/clothing/head/helmet/knight/red,
 /turf/open/floor/plating/asteroid,
@@ -5678,8 +5658,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "foZ" = (
@@ -6162,8 +6141,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "fMy" = (
@@ -6266,8 +6244,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "fSQ" = (
@@ -6394,8 +6371,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "gak" = (
@@ -6410,8 +6386,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "gbf" = (
@@ -6505,7 +6480,7 @@
 	pixel_y = 3
 	},
 /obj/item/paper{
-	info = "<i>ah mate nice having a good cup oh tea on the loos</i>"
+	default_raw_text = "<i>ah mate nice having a good cup oh tea on the loos</i>"
 	},
 /obj/item/a_gift/anything,
 /turf/open/floor/holofloor/carpet,
@@ -6537,8 +6512,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "ggp" = (
@@ -6628,7 +6602,7 @@
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "glf" = (
 /obj/item/paper/crumpled{
-	info = "<i>Stop destroying my flowers whatever piece of crap is reading this right now</i>";
+	default_raw_text = "<i>Stop destroying my flowers whatever piece of crap is reading this right now</i>";
 	name = "The gardener's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -6740,7 +6714,7 @@
 "gsV" = (
 /obj/structure/table/wood/fancy/red,
 /obj/item/paper{
-	info = "<i>I don't know why you are so mad about this brand new biochemical factory. You guys are stupid. I was watching TV and these guys were showing incredible things there! It just started working recently and they're ready to spread synthesized food soon! We can finally win the hunger! I still don't know why it took so long for that company to build this small building. Maybe t</i>";
+	default_raw_text = "<i>I don't know why you are so mad about this brand new biochemical factory. You guys are stupid. I was watching TV and these guys were showing incredible things there! It just started working recently and they're ready to spread synthesized food soon! We can finally win the hunger! I still don't know why it took so long for that company to build this small building. Maybe t</i>";
 	name = "George's note"
 	},
 /turf/open/floor/carpet,
@@ -6880,8 +6854,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "gyB" = (
@@ -6912,8 +6885,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "gzj" = (
@@ -7048,8 +7020,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "gIy" = (
@@ -7062,8 +7033,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "gIJ" = (
@@ -7126,8 +7096,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "gLE" = (
@@ -7166,8 +7135,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryafter)
 "gNm" = (
@@ -7221,8 +7189,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "gPv" = (
@@ -7586,7 +7553,7 @@
 "hgO" = (
 /obj/structure/table/reinforced,
 /obj/item/paper{
-	info = "Anomaly 2 dissapeared from it's chamber. Code red. Everyone to get armed up AND DO NOT TAKE OFF YOUR HELMETS."
+	default_raw_text = "Anomaly 2 dissapeared from it's chamber. Code red. Everyone to get armed up AND DO NOT TAKE OFF YOUR HELMETS."
 	},
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
@@ -7769,8 +7736,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter)
 "hqC" = (
@@ -7782,8 +7748,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "hrl" = (
@@ -7798,8 +7763,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "hrz" = (
@@ -7966,16 +7930,14 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "hyj" = (
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "hyq" = (
@@ -7989,8 +7951,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "hyr" = (
@@ -8117,8 +8078,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "hEx" = (
@@ -8128,8 +8088,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "hEW" = (
@@ -8395,7 +8354,7 @@
 "hOh" = (
 /obj/structure/table/wood,
 /obj/item/paper{
-	info = "<i>Another day another person says that they don't remember what happened yesterday. Even me as the only doctor here start thinking that the factory is doing something to us.</i>";
+	default_raw_text = "<i>Another day another person says that they don't remember what happened yesterday. Even me as the only doctor here start thinking that the factory is doing something to us.</i>";
 	name = "Lisa's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -8461,8 +8420,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "hQg" = (
@@ -8617,15 +8575,14 @@
 /area/awaymission/factory/factoryduring/down/leveltwo/asylum)
 "hWL" = (
 /obj/item/paper/crumpled{
-	info = "<i>Oh fuck, it's getting worse! One of those fuckin anomalies replaced some of the pool's rubber ducks into highly explosive mines! Don't step any cl</i>"
+	default_raw_text = "<i>Oh fuck, it's getting worse! One of those fuckin anomalies replaced some of the pool's rubber ducks into highly explosive mines! Don't step any cl</i>"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/vomit/old,
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter/down)
 "hXB" = (
@@ -8676,8 +8633,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "ias" = (
@@ -8700,8 +8656,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "iaX" = (
@@ -8714,8 +8669,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "ibt" = (
@@ -8734,7 +8688,7 @@
 	})
 "icu" = (
 /obj/item/paper{
-	info = "<b>You've found a secret!</b>"
+	default_raw_text = "<b>You've found a secret!</b>"
 	},
 /obj/item/nullrod/claymore/chainsaw_sword,
 /turf/open/floor/plating/asteroid,
@@ -8784,8 +8738,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "ifl" = (
@@ -8822,8 +8775,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "ihu" = (
@@ -8843,8 +8795,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "iiw" = (
@@ -8919,8 +8870,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring)
 "imx" = (
@@ -8992,8 +8942,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "ipb" = (
@@ -9010,8 +8959,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "ipl" = (
@@ -9024,8 +8972,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "ipA" = (
@@ -9043,8 +8990,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "ipK" = (
@@ -9077,8 +9023,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryduring)
 "isj" = (
@@ -9341,7 +9286,7 @@
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "iCR" = (
 /obj/item/paper{
-	info = "This anomaly was found by one of our gateway expedition team. We don't really know if it's the bust or the pure maiden statue, but we're sure that one of them causes the area nearby be converted into same kind of places it was found in. Also we found that it takes really long time to at least fully convert a small room. Usually it takes 2-3 years to convert a room with the same size as it's cell.";
+	default_raw_text = "This anomaly was found by one of our gateway expedition team. We don't really know if it's the bust or the pure maiden statue, but we're sure that one of them causes the area nearby be converted into same kind of places it was found in. Also we found that it takes really long time to at least fully convert a small room. Usually it takes 2-3 years to convert a room with the same size as it's cell.";
 	name = "Anomaly 5"
 	},
 /turf/open/floor/engine{
@@ -9421,8 +9366,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "iHN" = (
@@ -9561,7 +9505,7 @@
 	icon_state = "floor3"
 	},
 /obj/item/paper{
-	info = "<i>Oh god they gonna put me into a fucking asylum!.</i>";
+	default_raw_text = "<i>Oh god they gonna put me into a fucking asylum!.</i>";
 	name = "Adam's note"
 	},
 /obj/effect/decal/cleanable/vomit,
@@ -9761,7 +9705,7 @@
 "iWL" = (
 /obj/effect/decal/remains/human,
 /obj/item/paper{
-	info = "This is the quick guide that will help you decide if you're dealing with a criminal or a psycho. Here's conditions why you send them here: They do not understand what they are doing (must be proved); they do not remember it (must be proved); they hear voices from inside; they use ununderstandable words way too often; they speak an unknown language.";
+	default_raw_text = "This is the quick guide that will help you decide if you're dealing with a criminal or a psycho. Here's conditions why you send them here: They do not understand what they are doing (must be proved); they do not remember it (must be proved); they hear voices from inside; they use ununderstandable words way too often; they speak an unknown language.";
 	name = "Medical instructions"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -9799,8 +9743,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "iZP" = (
@@ -9817,8 +9760,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "jan" = (
@@ -9868,7 +9810,7 @@
 "jeb" = (
 /obj/effect/decal/remains/human,
 /obj/item/paper{
-	info = "This is the quick guide that will help you decide if you're dealing with a criminal or a psycho. Here's conditions why you send them here: They do not understand what they are doing (must be proved); they do not remember it (must be proved); they hear voices from inside; they use ununderstandable words way too often; they speak an unknown language.";
+	default_raw_text = "This is the quick guide that will help you decide if you're dealing with a criminal or a psycho. Here's conditions why you send them here: They do not understand what they are doing (must be proved); they do not remember it (must be proved); they hear voices from inside; they use ununderstandable words way too often; they speak an unknown language.";
 	name = "Medical instructions"
 	},
 /turf/open/floor/plasteel/tiled/light,
@@ -9884,8 +9826,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "jen" = (
@@ -10173,8 +10114,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "jqB" = (
@@ -10192,8 +10132,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "jqP" = (
@@ -10203,8 +10142,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "jrz" = (
@@ -11270,8 +11208,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "kyu" = (
@@ -11356,7 +11293,7 @@
 /area/awaymission/factory/villageduring/house)
 "kCZ" = (
 /obj/item/paper{
-	info = "This one was found on some forever winter place. Our expedition group asked us to not to ask a questions about how did they get it here. However, the important thing is that this little portal works like a gate for really creepy shit behind it. Sometimes this shit crawls out of portal and get immediately dealt with by our brave guards. In other words, we have another infinity (maybe?) source of food. Oh, also don't tought the portal if you wanna live.";
+	default_raw_text = "This one was found on some forever winter place. Our expedition group asked us to not to ask a questions about how did they get it here. However, the important thing is that this little portal works like a gate for really creepy shit behind it. Sometimes this shit crawls out of portal and get immediately dealt with by our brave guards. In other words, we have another infinity (maybe?) source of food. Oh, also don't tought the portal if you wanna live.";
 	name = "Anomaly 3"
 	},
 /turf/open/floor/engine{
@@ -11424,8 +11361,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryafter)
 "kGr" = (
@@ -11867,7 +11803,7 @@
 /area/awaymission/factory/factoryafter/down/levelthree)
 "kWw" = (
 /obj/item/paper{
-	info = "<b>You've found a secret!</b>"
+	default_raw_text = "<b>You've found a secret!</b>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/awaymission/factory/secret)
@@ -12148,7 +12084,7 @@
 "lmi" = (
 /obj/structure/table/wood/fancy/red,
 /obj/item/paper{
-	info = "<i>I don't know why you are so mad about this brand new biochemical factory. You guys are stupid. I was watching TV and these guys were showing incredible things there! It just started working recently and they're ready to spread synthesized food soon! We can finally win the hunger! I still don't know why it took so long for that company to build this small building. Maybe t</i>";
+	default_raw_text = "<i>I don't know why you are so mad about this brand new biochemical factory. You guys are stupid. I was watching TV and these guys were showing incredible things there! It just started working recently and they're ready to spread synthesized food soon! We can finally win the hunger! I still don't know why it took so long for that company to build this small building. Maybe t</i>";
 	name = "George's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -12257,8 +12193,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "lrI" = (
@@ -12350,7 +12285,7 @@
 /area/awaymission/factory/villageafter/house/start)
 "lwZ" = (
 /obj/item/paper{
-	info = "<b>You've found a secret!</b>"
+	default_raw_text = "<b>You've found a secret!</b>"
 	},
 /obj/item/multitool/abductor,
 /turf/open/floor/plating/asteroid,
@@ -12405,8 +12340,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryduring)
 "lzc" = (
@@ -12511,8 +12445,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter/down)
 "lFk" = (
@@ -12829,7 +12762,7 @@
 "lRA" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/crumpled/bloody{
-	info = "**DO NOT TRUST THE RUBBER DUCKS**"
+	default_raw_text = "**DO NOT TRUST THE RUBBER DUCKS**"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/freezer,
@@ -12863,8 +12796,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "lSN" = (
@@ -12954,7 +12886,7 @@
 "lYd" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/crumpled/bloody{
-	info = "**DO NOT TRUST THE RUBBER DUCKS**"
+	default_raw_text = "**DO NOT TRUST THE RUBBER DUCKS**"
 	},
 /turf/open/floor/plasteel/freezer,
 /area/awaymission/factory/factoryduring/down/leveltwo)
@@ -13145,8 +13077,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryduring)
 "mhf" = (
@@ -13202,8 +13133,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "mkO" = (
@@ -13214,8 +13144,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "mkY" = (
@@ -13360,8 +13289,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "mvM" = (
@@ -13376,8 +13304,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "mwp" = (
@@ -13531,8 +13458,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring)
 "mAe" = (
@@ -13752,8 +13678,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "mJD" = (
@@ -13766,8 +13691,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "mKg" = (
@@ -13931,7 +13855,7 @@
 "mSM" = (
 /obj/structure/table/reinforced,
 /obj/item/paper{
-	info = "Anomaly 2 dissapeared from it's chamber. Code red. Everyone to get armed up AND DO NOT TAKE OFF YOUR HELMETS."
+	default_raw_text = "Anomaly 2 dissapeared from it's chamber. Code red. Everyone to get armed up AND DO NOT TAKE OFF YOUR HELMETS."
 	},
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
@@ -14061,8 +13985,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "mXv" = (
@@ -14072,8 +13995,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged3";
-	temperature = 251
+	icon_state = "damaged3"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "mYt" = (
@@ -14081,8 +14003,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "mZI" = (
@@ -14095,8 +14016,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "mZS" = (
@@ -14111,8 +14031,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "naA" = (
@@ -14667,8 +14586,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "nsa" = (
@@ -14808,8 +14726,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "nyz" = (
@@ -14860,8 +14777,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "nAJ" = (
@@ -15593,7 +15509,7 @@
 "ofo" = (
 /obj/structure/table/wood,
 /obj/item/paper{
-	info = "<i>Why did we even permit them build that god damned building in our village? We did not understand what we'd signed up for. They're all about this... Research. I don't trust that company at all, but the most of the village does. So I got to follow them.</i>";
+	default_raw_text = "<i>Why did we even permit them build that god damned building in our village? We did not understand what we'd signed up for. They're all about this... Research. I don't trust that company at all, but the most of the village does. So I got to follow them.</i>";
 	name = "the lumberjack's note"
 	},
 /turf/open/floor/wood,
@@ -15756,7 +15672,7 @@
 	dir = 4
 	},
 /obj/item/paper{
-	info = "This is what we used to get all this stuff. We bought the parts on black market and assembled it here. Get prepared before getting in because you don't know what's waiting you there. The only good thing is that it sends you into an area that contains the same teleport machine somewhere nearby, so you can redirect so it sends you back here and then you cut the link to make sure whatever was on your back won't get here.";
+	default_raw_text = "This is what we used to get all this stuff. We bought the parts on black market and assembled it here. Get prepared before getting in because you don't know what's waiting you there. The only good thing is that it sends you into an area that contains the same teleport machine somewhere nearby, so you can redirect so it sends you back here and then you cut the link to make sure whatever was on your back won't get here.";
 	name = "The big teleport"
 	},
 /turf/open/floor/circuit/off,
@@ -15786,7 +15702,7 @@
 /area/awaymission/factory/factoryafter/down/levelthree)
 "oln" = (
 /obj/item/paper{
-	info = "A gift from wizards for stealing their stuff.  We have no idea what does it do, but we keep it here for safety. One of the cult prisoners once did something on that rune and dissapeared. Whatever comes out of that rune must be terminated.";
+	default_raw_text = "A gift from wizards for stealing their stuff.  We have no idea what does it do, but we keep it here for safety. One of the cult prisoners once did something on that rune and dissapeared. Whatever comes out of that rune must be terminated.";
 	name = "Anomaly 1"
 	},
 /turf/open/floor/engine{
@@ -15826,7 +15742,7 @@
 /area/awaymission/factory/villageduring/house)
 "omt" = (
 /obj/item/paper{
-	info = "This was found on the same expidition where the Anomaly 6 was found. Wizards didn't notice us stealing it. We're not sure about what is this thing used for, but tests have shown us that this thing is able to do something bad with your brain. If applied strongly enough it's able to turn an unprepared human being into some mindless creature with animal instricts, you probably call these zombies. This thing must not get in wrong hands.";
+	default_raw_text = "This was found on the same expidition where the Anomaly 6 was found. Wizards didn't notice us stealing it. We're not sure about what is this thing used for, but tests have shown us that this thing is able to do something bad with your brain. If applied strongly enough it's able to turn an unprepared human being into some mindless creature with animal instricts, you probably call these zombies. This thing must not get in wrong hands.";
 	name = "Anomaly 2"
 	},
 /turf/open/floor/engine{
@@ -15975,7 +15891,7 @@
 	dir = 4
 	},
 /obj/item/paper{
-	info = "This is what we used to get all this stuff. We bought the parts on black market and assembled it here. Get prepared before getting in because you don't know what's waiting you there. The only good thing is that it sends you into an area that contains the same teleport machine somewhere nearby, so you can redirect so it sends you back here and then you cut the link to make sure whatever was on your back won't get here.";
+	default_raw_text = "This is what we used to get all this stuff. We bought the parts on black market and assembled it here. Get prepared before getting in because you don't know what's waiting you there. The only good thing is that it sends you into an area that contains the same teleport machine somewhere nearby, so you can redirect so it sends you back here and then you cut the link to make sure whatever was on your back won't get here.";
 	name = "The big teleport"
 	},
 /turf/open/floor/circuit,
@@ -16009,7 +15925,7 @@
 	dir = 8
 	},
 /obj/item/paper{
-	info = "A gift from wizards for stealing their stuff.  We have no idea what does it do, but we keep it here for safety. One of the cult prisoners once did something on that rune and dissapeared. Whatever comes out of that rune must be terminated.";
+	default_raw_text = "A gift from wizards for stealing their stuff.  We have no idea what does it do, but we keep it here for safety. One of the cult prisoners once did something on that rune and dissapeared. Whatever comes out of that rune must be terminated.";
 	name = "Anomaly 1"
 	},
 /turf/open/floor/engine{
@@ -16070,7 +15986,7 @@
 /area/awaymission/factory/factoryduring/down/levelthree)
 "ovB" = (
 /obj/item/paper{
-	info = "This was found on the same expidition where the Anomaly 6 was found. Wizards didn't notice us stealing it. We're not sure about what is this thing used for, but tests have shown us that this thing is able to do something bad with your brain. If applied strongly enough it's able to turn an unprepared human being into some mindless creature with animal instricts, you probably call these zombies. This thing must not get in wrong hands.";
+	default_raw_text = "This was found on the same expidition where the Anomaly 6 was found. Wizards didn't notice us stealing it. We're not sure about what is this thing used for, but tests have shown us that this thing is able to do something bad with your brain. If applied strongly enough it's able to turn an unprepared human being into some mindless creature with animal instricts, you probably call these zombies. This thing must not get in wrong hands.";
 	name = "Anomaly 2"
 	},
 /turf/open/floor/engine{
@@ -16098,7 +16014,7 @@
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "oxb" = (
 /obj/item/paper{
-	info = "This one is the most cursed shit we've ever seen. When our squad brought it here, it was only a spider, but the body was replaced by human head. It was agressive and tried to bite everyone, so we injected some chloral hydrate in it. A few days later we decided to bring one of the cultists' dead body as a food for it. Few hours later, the spider dissapeared, and the only thing left in it's cell is the same cultist body, but staying on top of it's own blood and flesh. We decided to keep this thing here, but I bet once it will try to break out and will cause a big trouble.";
+	default_raw_text = "This one is the most cursed shit we've ever seen. When our squad brought it here, it was only a spider, but the body was replaced by human head. It was agressive and tried to bite everyone, so we injected some chloral hydrate in it. A few days later we decided to bring one of the cultists' dead body as a food for it. Few hours later, the spider dissapeared, and the only thing left in it's cell is the same cultist body, but staying on top of it's own blood and flesh. We decided to keep this thing here, but I bet once it will try to break out and will cause a big trouble.";
 	name = "Anomaly 4"
 	},
 /turf/open/floor/engine{
@@ -16118,7 +16034,7 @@
 /area/awaymission/factory/factoryduring/down/levelthree)
 "oxo" = (
 /obj/item/paper{
-	info = "This one was found on some forever winter place. Our expedition group asked us to not to ask a questions about how did they get it here. However, the important thing is that this little portal works like a gate for really creepy shit behind it. Sometimes this shit crawls out of portal and get immediately dealt with by our brave guards. In other words, we have another infinity (maybe?) source of food. Oh, also don't tought the portal if you wanna live.";
+	default_raw_text = "This one was found on some forever winter place. Our expedition group asked us to not to ask a questions about how did they get it here. However, the important thing is that this little portal works like a gate for really creepy shit behind it. Sometimes this shit crawls out of portal and get immediately dealt with by our brave guards. In other words, we have another infinity (maybe?) source of food. Oh, also don't tought the portal if you wanna live.";
 	name = "Anomaly 3"
 	},
 /turf/open/floor/engine{
@@ -16280,8 +16196,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring)
 "oER" = (
@@ -16788,7 +16703,7 @@
 /area/awaymission/factory/villageafter/house)
 "oVk" = (
 /obj/item/paper{
-	info = "<i>Janitor</i>";
+	default_raw_text = "<i>Janitor</i>";
 	name = "Janitor"
 	},
 /turf/open/floor/circuit/off,
@@ -16810,7 +16725,7 @@
 /area/awaymission/factory/factoryduring/down/levelthree)
 "oWB" = (
 /obj/item/paper{
-	info = "Anomaly 8 appeared spontaneously right in the room. This strange looking person appeared out of nowhere and refused to talk to us. Instead it went agressive and started punching everyone. After termination some days after another one appeared in the room and we heard that the villagers spotted a humanoid thing on the surface. All we can say for now is that it has an ability to appear randomly in any place in our area and start punching whoever they see. Not that dangerous as it could be.";
+	default_raw_text = "Anomaly 8 appeared spontaneously right in the room. This strange looking person appeared out of nowhere and refused to talk to us. Instead it went agressive and started punching everyone. After termination some days after another one appeared in the room and we heard that the villagers spotted a humanoid thing on the surface. All we can say for now is that it has an ability to appear randomly in any place in our area and start punching whoever they see. Not that dangerous as it could be.";
 	name = "Anomaly 8"
 	},
 /turf/open/floor/engine{
@@ -16831,7 +16746,7 @@
 /area/awaymission/factory/villageafter/house)
 "oWW" = (
 /obj/item/paper{
-	info = "Anomaly 7 was actually found nearby. One of the villagers found this bat in a forest. It was literally separated from the world by chasm and it also was placed in a burning bonfire. The villager cut a tree, tall enough to make a bridge and get over the chasm to the bat. Then they threw the bat away because they actually needed the bonfire rather than some useless piece of wood, as he said. Several days later the villagers spotted a burning bonfire surrounded by chasm nearby the forest. We decided take the bat here and make a cell for it. We don't want people outside to accidentally fall into an abyss. Anyway the baseball hole got filled by some dirt and is now safe to walk over. Maybe.";
+	default_raw_text = "Anomaly 7 was actually found nearby. One of the villagers found this bat in a forest. It was literally separated from the world by chasm and it also was placed in a burning bonfire. The villager cut a tree, tall enough to make a bridge and get over the chasm to the bat. Then they threw the bat away because they actually needed the bonfire rather than some useless piece of wood, as he said. Several days later the villagers spotted a burning bonfire surrounded by chasm nearby the forest. We decided take the bat here and make a cell for it. We don't want people outside to accidentally fall into an abyss. Anyway the baseball hole got filled by some dirt and is now safe to walk over. Maybe.";
 	name = "Anomaly 7"
 	},
 /turf/open/floor/engine{
@@ -16845,7 +16760,7 @@
 /area/awaymission/factory/villageduring/house/start)
 "oXq" = (
 /obj/item/paper{
-	info = "This one was found by accident. When our squad was coming through the wizard space ship, a team member noticed that something was very wrong. One of the statues was always looking at them. Moreover, it started changing positions every time the squad was entering the room that contained the statue. So ye, they decided to put it into a wooden box and steal it. The squad did a good job, no wizard knew what happened.";
+	default_raw_text = "This one was found by accident. When our squad was coming through the wizard space ship, a team member noticed that something was very wrong. One of the statues was always looking at them. Moreover, it started changing positions every time the squad was entering the room that contained the statue. So ye, they decided to put it into a wooden box and steal it. The squad did a good job, no wizard knew what happened.";
 	name = "Anomaly 6"
 	},
 /turf/open/floor/engine{
@@ -16875,8 +16790,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "oZd" = (
@@ -17025,7 +16939,7 @@
 /area/awaymission/factory/factoryafter/down/levelthree)
 "pfN" = (
 /obj/item/paper{
-	info = "Anomaly 8 appeared spontaneously right in the room. This strange looking person appeared out of nowhere and refused to talk to us. Instead it went agressive and started punching everyone. After termination some days after another one appeared in the room and we heard that the villagers spotted a humanoid thing on the surface. All we can say for now is that it has an ability to appear randomly in any place in our area and start punching whoever they see. Not that dangerous as it could be.";
+	default_raw_text = "Anomaly 8 appeared spontaneously right in the room. This strange looking person appeared out of nowhere and refused to talk to us. Instead it went agressive and started punching everyone. After termination some days after another one appeared in the room and we heard that the villagers spotted a humanoid thing on the surface. All we can say for now is that it has an ability to appear randomly in any place in our area and start punching whoever they see. Not that dangerous as it could be.";
 	name = "Anomaly 8"
 	},
 /turf/open/floor/engine{
@@ -17080,7 +16994,7 @@
 /area/awaymission/factory/factoryduring/down/levelthree)
 "phH" = (
 /obj/item/paper{
-	info = "This one was found by accident. When our squad was coming through the wizard space ship, a team member noticed that something was very wrong. One of the statues was always looking at them. Moreover, it started changing positions every time the squad was entering the room that contained the statue. So ye, they decided to put it into a wooden box and steal it. The squad did a good job, no wizard knew what happened.";
+	default_raw_text = "This one was found by accident. When our squad was coming through the wizard space ship, a team member noticed that something was very wrong. One of the statues was always looking at them. Moreover, it started changing positions every time the squad was entering the room that contained the statue. So ye, they decided to put it into a wooden box and steal it. The squad did a good job, no wizard knew what happened.";
 	name = "Anomaly 6"
 	},
 /turf/open/floor/engine{
@@ -17270,8 +17184,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter)
 "pnq" = (
@@ -17429,7 +17342,7 @@
 "puk" = (
 /obj/structure/table,
 /obj/item/paper{
-	info = "<i>Aight folks this is the guide that will help you understand why are we sending some people here instead of asylum: A man obviously tried to do or has already done a bad thing; they were understanding what they were doing; they did not try to prevent it or stop that; they were speaking an unknown language. Yes, I know that the last one is also written in medical instructions, but that will at least make it easier to fight with those freaks on our factory.</i>";
+	default_raw_text = "<i>Aight folks this is the guide that will help you understand why are we sending some people here instead of asylum: A man obviously tried to do or has already done a bad thing; they were understanding what they were doing; they did not try to prevent it or stop that; they were speaking an unknown language. Yes, I know that the last one is also written in medical instructions, but that will at least make it easier to fight with those freaks on our factory.</i>";
 	name = "Security instructions"
 	},
 /obj/item/pen/fountain,
@@ -17669,8 +17582,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "pER" = (
@@ -17784,7 +17696,7 @@
 "pHl" = (
 /obj/structure/closet/l3closet/janitor,
 /obj/item/paper{
-	info = "<i>Janitor</i>";
+	default_raw_text = "<i>Janitor</i>";
 	name = "Janitor"
 	},
 /turf/open/floor/engine{
@@ -17872,7 +17784,7 @@
 	})
 "pJY" = (
 /obj/item/paper{
-	info = "We offered the best protection to the engine because this is the only thing that powers the whole Factory. Solars on the surface are made for villagers to think that we do nothing wrong. If you suspect that someone is in the engine room trying to break open the tear in reality: first - laugh at them, second - call security.";
+	default_raw_text = "We offered the best protection to the engine because this is the only thing that powers the whole Factory. Solars on the surface are made for villagers to think that we do nothing wrong. If you suspect that someone is in the engine room trying to break open the tear in reality: first - laugh at them, second - call security.";
 	name = "note"
 	},
 /turf/open/floor/circuit/off,
@@ -17958,7 +17870,7 @@
 "pMP" = (
 /obj/structure/closet/l3closet/janitor,
 /obj/item/paper{
-	info = "<i>Jannie</i>";
+	default_raw_text = "<i>Jannie</i>";
 	name = "Janitor"
 	},
 /turf/open/floor/engine{
@@ -17986,8 +17898,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "pNH" = (
@@ -17998,7 +17909,7 @@
 /area/awaymission/factory/factoryduring/down/levelthree)
 "pOo" = (
 /obj/item/paper{
-	info = "We offered the best protection to the engine because this is the only thing that powers the whole Factory. Solars on the surface are made for villagers to think that we do nothing wrong. If you suspect that someone is in the engine room trying to break open the tear in reality: first - laugh at them, second - call security.";
+	default_raw_text = "We offered the best protection to the engine because this is the only thing that powers the whole Factory. Solars on the surface are made for villagers to think that we do nothing wrong. If you suspect that someone is in the engine room trying to break open the tear in reality: first - laugh at them, second - call security.";
 	name = "note"
 	},
 /turf/open/floor/circuit,
@@ -18038,8 +17949,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryduring)
 "pPs" = (
@@ -18122,7 +18032,7 @@
 "pRK" = (
 /obj/structure/table/reinforced,
 /obj/item/paper{
-	info = "<i>I feel something bad gonna happen soon. I'm taking that stuff our squad found and augmenting myself to prevent myself turning into a brainlet subhuman in case someone breaks into mind batterer's chamber. I'm sure I'm going to behave much less like a human and I won't be able to turn it back any more, but I will need to get used to it or else I have a big chance becoming a fucking zombie.</i>";
+	default_raw_text = "<i>I feel something bad gonna happen soon. I'm taking that stuff our squad found and augmenting myself to prevent myself turning into a brainlet subhuman in case someone breaks into mind batterer's chamber. I'm sure I'm going to behave much less like a human and I won't be able to turn it back any more, but I will need to get used to it or else I have a big chance becoming a fucking zombie.</i>";
 	name = "The Boss' note"
 	},
 /turf/open/floor/circuit/off,
@@ -18401,7 +18311,7 @@
 "qec" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/paper{
-	info = "<i>Oh god they gonna put me into a fucking asylum!.</i>";
+	default_raw_text = "<i>Oh god they gonna put me into a fucking asylum!.</i>";
 	name = "Adam's note"
 	},
 /turf/open/floor/plasteel/tiled/light,
@@ -18531,7 +18441,7 @@
 /obj/structure/table/reinforced,
 /obj/item/storage/belt/janitor,
 /obj/item/paper{
-	info = "<i>Janitor</i>";
+	default_raw_text = "<i>Janitor</i>";
 	name = "Janitor"
 	},
 /turf/open/floor/engine{
@@ -18563,7 +18473,7 @@
 "qmA" = (
 /obj/structure/closet/crate/bin,
 /obj/item/paper{
-	info = "<i>Jannie</i>";
+	default_raw_text = "<i>Jannie</i>";
 	name = "Janitor"
 	},
 /turf/open/floor/engine{
@@ -18590,8 +18500,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "qnC" = (
@@ -18742,14 +18651,13 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "quI" = (
 /obj/structure/closet/crate/bin,
 /obj/item/paper{
-	info = "<i>Jannie</i>";
+	default_raw_text = "<i>Jannie</i>";
 	name = "Janitor"
 	},
 /turf/open/floor/engine{
@@ -19955,8 +19863,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "rsO" = (
@@ -20006,7 +19913,7 @@
 "ruY" = (
 /obj/structure/table/wood,
 /obj/item/paper{
-	info = "<i>Why did we even permit them build that god damned building in our village? We did not understand what we'd signed up for. They're all about this... Research. I don't trust that company at all, but the most of the village does. So I got to follow them.</i>";
+	default_raw_text = "<i>Why did we even permit them build that god damned building in our village? We did not understand what we'd signed up for. They're all about this... Research. I don't trust that company at all, but the most of the village does. So I got to follow them.</i>";
 	name = "the lumberjack's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -20040,7 +19947,7 @@
 "rvj" = (
 /obj/structure/table,
 /obj/item/paper{
-	info = "<i>Alrightt folks this is the guide that will help you understand why are we sending some people here instead of asylum: A man obviously tried to do or has already done a bad thing; they were understanding what they were doing; they did not try to prevent it or stop that; they were speaking an unknown language. Yes, I know that the last one is also written in medical instructions, but that will at least make it easier to fight with those freaks on our factory.</i>";
+	default_raw_text = "<i>Alrightt folks this is the guide that will help you understand why are we sending some people here instead of asylum: A man obviously tried to do or has already done a bad thing; they were understanding what they were doing; they did not try to prevent it or stop that; they were speaking an unknown language. Yes, I know that the last one is also written in medical instructions, but that will at least make it easier to fight with those freaks on our factory.</i>";
 	name = "Security instructions"
 	},
 /obj/item/pen/fountain,
@@ -20351,7 +20258,7 @@
 /area/awaymission/factory/villageafter/house)
 "rHo" = (
 /obj/item/paper{
-	info = "<b>You've found a secret!</b>"
+	default_raw_text = "<b>You've found a secret!</b>"
 	},
 /obj/item/toy/toy_xeno,
 /turf/open/floor/plating/asteroid,
@@ -20526,7 +20433,7 @@
 /area/awaymission/factory/factoryduring/down/levelthree/engine)
 "rOZ" = (
 /obj/item/paper{
-	info = "<b>You've found a secret!</b>"
+	default_raw_text = "<b>You've found a secret!</b>"
 	},
 /obj/item/clothing/mask/gas/hunter,
 /obj/item/a_gift,
@@ -20625,8 +20532,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter/down)
 "rSK" = (
@@ -20879,8 +20785,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "sce" = (
@@ -21429,8 +21334,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter)
 "sBo" = (
@@ -21781,8 +21685,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter)
 "sNN" = (
@@ -21837,8 +21740,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter)
 "sPr" = (
@@ -21850,8 +21752,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter)
 "sPv" = (
@@ -21861,8 +21762,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter)
 "sPJ" = (
@@ -21877,8 +21777,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter)
 "sQq" = (
@@ -21887,8 +21786,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter)
 "sQM" = (
@@ -21897,8 +21795,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter)
 "sQS" = (
@@ -22015,8 +21912,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "sVg" = (
@@ -22046,8 +21942,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring)
 "sWu" = (
@@ -22058,8 +21953,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring)
 "sWw" = (
@@ -22074,8 +21968,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter/down)
 "sWJ" = (
@@ -22084,8 +21977,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring)
 "sXi" = (
@@ -22093,8 +21985,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring)
 "sYb" = (
@@ -22124,8 +22015,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring)
 "sYm" = (
@@ -22144,8 +22034,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring)
 "sZL" = (
@@ -22270,8 +22159,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter)
 "thx" = (
@@ -22326,8 +22214,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter)
 "tjb" = (
@@ -22342,8 +22229,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter)
 "tje" = (
@@ -22358,8 +22244,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter)
 "tjC" = (
@@ -22368,8 +22253,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter)
 "tjU" = (
@@ -22379,8 +22263,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter)
 "tku" = (
@@ -22411,8 +22294,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter)
 "tnk" = (
@@ -22425,7 +22307,7 @@
 /area/awaymission/factory/villageafter/house)
 "tnz" = (
 /obj/item/paper{
-	info = "<i>I don't know how to describe this, but it seems that all the animals are gone. I don't want to know if it's related to that factory, I just hope we get at least some meat because our food is getting low and I don't want to die to hunger.</i>";
+	default_raw_text = "<i>I don't know how to describe this, but it seems that all the animals are gone. I don't want to know if it's related to that factory, I just hope we get at least some meat because our food is getting low and I don't want to die to hunger.</i>";
 	name = "the huntsman's note"
 	},
 /obj/structure/table/wood,
@@ -22558,8 +22440,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryduring)
 "ttL" = (
@@ -22598,8 +22479,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring)
 "tvv" = (
@@ -22643,8 +22523,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring)
 "twZ" = (
@@ -22653,8 +22532,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring)
 "txi" = (
@@ -22663,8 +22541,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring)
 "txo" = (
@@ -22710,8 +22587,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring)
 "tzs" = (
@@ -22722,8 +22598,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring)
 "tAO" = (
@@ -22749,7 +22624,7 @@
 	})
 "tAU" = (
 /obj/item/paper{
-	info = "<i>I don't know how to describe this, but it seems that all the animals are gone. I don't want to know if it's related to that factory, I just hope we get at least some meat because our food is getting low and I don't want to die to hunger.</i>";
+	default_raw_text = "<i>I don't know how to describe this, but it seems that all the animals are gone. I don't want to know if it's related to that factory, I just hope we get at least some meat because our food is getting low and I don't want to die to hunger.</i>";
 	name = "the huntsman's note"
 	},
 /obj/structure/table/wood,
@@ -22768,7 +22643,7 @@
 "tBm" = (
 /obj/structure/table,
 /obj/item/paper{
-	info = "<i>Fuck whoever took all my tools. They cost money, you know.</i>"
+	default_raw_text = "<i>Fuck whoever took all my tools. They cost money, you know.</i>"
 	},
 /obj/item/storage/backpack/duffelbag/med/surgery{
 	pixel_x = -1;
@@ -22901,7 +22776,7 @@
 "tIV" = (
 /obj/structure/table,
 /obj/item/paper{
-	info = "<i>Fuck whoever took all my tools. They cost money, you know.</i>"
+	default_raw_text = "<i>Fuck whoever took all my tools. They cost money, you know.</i>"
 	},
 /obj/item/storage/backpack/duffelbag/med/surgery{
 	pixel_x = -1;
@@ -22999,8 +22874,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter)
 "tPo" = (
@@ -23044,8 +22918,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryafter/down)
 "tQN" = (
@@ -23168,8 +23041,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryduring)
 "uax" = (
@@ -23305,8 +23177,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged3";
-	temperature = 251
+	icon_state = "damaged3"
 	},
 /area/awaymission/factory/factoryafter)
 "ufz" = (
@@ -23351,8 +23222,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter)
 "ugG" = (
@@ -23368,8 +23238,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter)
 "ugW" = (
@@ -23391,8 +23260,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter)
 "uht" = (
@@ -23436,8 +23304,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryafter)
 "ujl" = (
@@ -23494,8 +23361,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged3";
-	temperature = 251
+	icon_state = "damaged3"
 	},
 /area/awaymission/factory/factoryduring)
 "ulV" = (
@@ -23515,16 +23381,14 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring)
 "unJ" = (
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryduring)
 "unZ" = (
@@ -23573,8 +23437,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryduring)
 "urs" = (
@@ -23603,8 +23466,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryduring)
 "usE" = (
@@ -23723,7 +23585,7 @@
 "uwO" = (
 /obj/structure/table/wood,
 /obj/item/paper{
-	info = "<i>Another day another person says that they don't remember what happened yesterday. Even me as the only doctor here start thinking that the factory is doing something to us.</i>";
+	default_raw_text = "<i>Another day another person says that they don't remember what happened yesterday. Even me as the only doctor here start thinking that the factory is doing something to us.</i>";
 	name = "Lisa's note"
 	},
 /turf/open/floor/wood,
@@ -23795,8 +23657,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter)
 "uzE" = (
@@ -23811,8 +23672,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryafter)
 "uBH" = (
@@ -23829,8 +23689,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryafter)
 "uBR" = (
@@ -23839,8 +23698,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryafter)
 "uCi" = (
@@ -23858,8 +23716,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryafter)
 "uCC" = (
@@ -23878,8 +23735,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryafter)
 "uDX" = (
@@ -23972,8 +23828,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring)
 "uHy" = (
@@ -23984,8 +23839,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryduring)
 "uIj" = (
@@ -24001,8 +23855,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryduring)
 "uIH" = (
@@ -24020,8 +23873,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryduring)
 "uJY" = (
@@ -24037,8 +23889,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryduring)
 "uKb" = (
@@ -24048,8 +23899,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryduring)
 "uLb" = (
@@ -24069,8 +23919,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter)
 "uLy" = (
@@ -24089,8 +23938,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter)
 "uLU" = (
@@ -24115,8 +23963,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryafter)
 "uMG" = (
@@ -24128,8 +23975,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryafter)
 "uMI" = (
@@ -24190,7 +24036,7 @@
 	})
 "uOu" = (
 /obj/item/paper/crumpled{
-	info = "<i>Stop destroying my flowers whatever piece of crap is reading this right now</i>";
+	default_raw_text = "<i>Stop destroying my flowers whatever piece of crap is reading this right now</i>";
 	name = "The gardener's note"
 	},
 /obj/effect/trap/nexus/trickyspawner/clowns,
@@ -24211,16 +24057,14 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryduring)
 "uOG" = (
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged1";
-	temperature = 251
+	icon_state = "damaged1"
 	},
 /area/awaymission/factory/factoryduring)
 "uPd" = (
@@ -24235,8 +24079,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryduring)
 "uPz" = (
@@ -24270,8 +24113,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryduring)
 "uRk" = (
@@ -24279,8 +24121,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter/down)
 "uRo" = (
@@ -24680,7 +24521,7 @@
 	})
 "vhE" = (
 /obj/item/paper{
-	info = "<i>I don't trust that company at all. Recent suicide was definetly related to that shit they give to us. They supposed to solve the hunger problem, but they definetly focused on something else. Eventually I will find out who they really are, even if they're against it.</i>";
+	default_raw_text = "<i>I don't trust that company at all. Recent suicide was definetly related to that shit they give to us. They supposed to solve the hunger problem, but they definetly focused on something else. Eventually I will find out who they really are, even if they're against it.</i>";
 	name = "Adam's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -24934,8 +24775,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched2";
-	temperature = 251
+	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "vrA" = (
@@ -25199,7 +25039,7 @@
 	})
 "vAK" = (
 /obj/item/paper{
-	info = "This anomaly was found by one of our gateway expedition team. We don't really know if it's the bust or the pure maiden statue, but we're sure that one of them causes the area nearby be converted into same kind of places it was found in. Also we found that it takes really long time to at least fully convert a small room. Usually it takes 2-3 years to convert a room with the same size as it's cell.";
+	default_raw_text = "This anomaly was found by one of our gateway expedition team. We don't really know if it's the bust or the pure maiden statue, but we're sure that one of them causes the area nearby be converted into same kind of places it was found in. Also we found that it takes really long time to at least fully convert a small room. Usually it takes 2-3 years to convert a room with the same size as it's cell.";
 	name = "Anomaly 5"
 	},
 /turf/open/floor/engine{
@@ -25653,7 +25493,7 @@
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "vSS" = (
 /obj/item/paper/crumpled/bloody{
-	info = "<i>WE WERE NOT READY FOR THE CONSEQUENCES WE WERE NOT READY WE WERE NO...</i>";
+	default_raw_text = "<i>WE WERE NOT READY FOR THE CONSEQUENCES WE WERE NOT READY WE WERE NO...</i>";
 	name = "bloody note"
 	},
 /obj/effect/decal/cleanable/blood/old,
@@ -25703,7 +25543,7 @@
 "vUQ" = (
 /obj/structure/table/wood/fancy,
 /obj/item/paper{
-	info = "<i>This gardener keep being annoying as much as possible. He planted his goddamn flowers everywhere, so they grew and now he yells at me when I do a step anywhere but on the road.Huh, what was that sound? Probably the factory is doing something crazy again. God, my head...</i>";
+	default_raw_text = "<i>This gardener keep being annoying as much as possible. He planted his goddamn flowers everywhere, so they grew and now he yells at me when I do a step anywhere but on the road.Huh, what was that sound? Probably the factory is doing something crazy again. God, my head...</i>";
 	name = "Frank's note"
 	},
 /turf/open/floor/wood,
@@ -25984,8 +25824,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "wkc" = (
@@ -26333,8 +26172,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
+	icon_state = "floorscorched1"
 	},
 /area/awaymission/factory/factoryafter)
 "wxK" = (
@@ -26555,7 +26393,7 @@
 /obj/item/storage/book/bible,
 /obj/item/reagent_containers/food/drinks/bottle/holywater,
 /obj/item/paper{
-	info = "<i>I feel something unholy's coming</i>";
+	default_raw_text = "<i>I feel something unholy's coming</i>";
 	name = "the librarian's note"
 	},
 /obj/item/book/granter/spell/random,
@@ -26665,8 +26503,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged3";
-	temperature = 251
+	icon_state = "damaged3"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "wJV" = (
@@ -26694,7 +26531,7 @@
 "wMi" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/crumpled{
-	info = "<i>Boss if you read this you better explain us where the fuck are our surgical tools.</i>"
+	default_raw_text = "<i>Boss if you read this you better explain us where the fuck are our surgical tools.</i>"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/monotile,
@@ -26979,7 +26816,7 @@
 "wXJ" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/crumpled{
-	info = "<i>Boss if you read this you better explain us where the fuck are our surgical tools.</i>"
+	default_raw_text = "<i>Boss if you read this you better explain us where the fuck are our surgical tools.</i>"
 	},
 /turf/open/floor/monotile,
 /area/awaymission/factory/villageduring/hospital)
@@ -27056,8 +26893,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryduring)
 "xdR" = (
@@ -27206,7 +27042,7 @@
 "xjW" = (
 /obj/structure/table,
 /obj/item/paper{
-	info = "<i>I'm mad. I'm mad that the most of our doctors abandoned us because the factory promised them better than us. Our people suffering shit ton of whatever factory releases into air and we have only me and and Lisa to deal with it.</i>";
+	default_raw_text = "<i>I'm mad. I'm mad that the most of our doctors abandoned us because the factory promised them better than us. Our people suffering shit ton of whatever factory releases into air and we have only me and and Lisa to deal with it.</i>";
 	name = "Head of Hospital's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -27342,8 +27178,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
+	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryduring)
 "xoa" = (
@@ -27467,7 +27302,7 @@
 	spawnwithmagazine = 0
 	},
 /obj/item/paper{
-	info = "<b>You've found a secret!</b>"
+	default_raw_text = "<b>You've found a secret!</b>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/awaymission/factory/secret)
@@ -27494,7 +27329,7 @@
 "xwg" = (
 /obj/structure/table,
 /obj/item/paper{
-	info = "<i>I'm mad. I'm mad that the most of our doctors abandoned us because the factory promised them better than us. Our people suffering shit ton of whatever factory releases into air and we have only me and and Lisa to deal with it.</i>";
+	default_raw_text = "<i>I'm mad. I'm mad that the most of our doctors abandoned us because the factory promised them better than us. Our people suffering shit ton of whatever factory releases into air and we have only me and and Lisa to deal with it.</i>";
 	name = "Head of Hospital's note"
 	},
 /turf/open/floor/monotile,
@@ -27510,8 +27345,7 @@
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
-	icon_state = "damaged4";
-	temperature = 251
+	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryafter)
 "xwI" = (
@@ -28188,7 +28022,7 @@
 /area/awaymission/factory/villageafter/house)
 "yap" = (
 /obj/item/paper{
-	info = "<i>Janitor</i>";
+	default_raw_text = "<i>Janitor</i>";
 	name = "Janitor"
 	},
 /turf/open/floor/engine{
