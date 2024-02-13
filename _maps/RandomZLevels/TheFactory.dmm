@@ -737,14 +737,6 @@
 /obj/item/storage/toolbox/brass/prefilled,
 /turf/open/floor/plating/asteroid,
 /area/awaymission/factory/secret)
-"aKd" = (
-/obj/structure/chair/brass,
-/obj/effect/clockwork/overlay/floor,
-/turf/open/floor/plating/asteroid,
-/area/ruin/unpowered{
-	ambient_buzz = null;
-	teleport_restriction = 1
-	})
 "aKp" = (
 /obj/effect/decal/remains/robot,
 /turf/open/floor/plating/dirt{
@@ -780,12 +772,6 @@
 	ambient_buzz = null;
 	teleport_restriction = 1
 	})
-"aNo" = (
-/obj/structure/chair/sofa/left{
-	dir = 1
-	},
-/turf/open/floor/carpet/royalblack,
-/area/awaymission/factory/villageduring/house)
 "aOk" = (
 /obj/effect/baseturf_helper/asteroid{
 	baseturf_to_replace = list(/turf/baseturf_bottom,/turf/open/space/basic,/turf/open/floor/plating);
@@ -844,14 +830,6 @@
 /area/awaymission/factory/factoryduring/down)
 "aQG" = (
 /obj/item/storage/toolbox/brass/prefilled,
-/obj/effect/clockwork/overlay/floor,
-/turf/open/floor/plating/asteroid,
-/area/ruin/unpowered{
-	ambient_buzz = null;
-	teleport_restriction = 1
-	})
-"aQL" = (
-/obj/item/twohanded/clockwork/brass_spear,
 /obj/effect/clockwork/overlay/floor,
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered{
@@ -1382,14 +1360,6 @@
 "bpW" = (
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
-"bqz" = (
-/obj/effect/clockwork/overlay/floor,
-/obj/item/twohanded/clockwork/brass_sword,
-/turf/open/floor/plating/asteroid,
-/area/ruin/unpowered{
-	ambient_buzz = null;
-	teleport_restriction = 1
-	})
 "bqC" = (
 /mob/living/simple_animal/hostile/retaliate/clown/banana{
 	aggro_vision_range = 3;
@@ -2187,9 +2157,6 @@
 	dir = 8
 	},
 /obj/effect/decal/remains/human,
-/obj/item/card/id/job/sec{
-	access = list(203)
-	},
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/showroomfloor,
@@ -2346,7 +2313,6 @@
 	dir = 8
 	},
 /obj/effect/decal/remains/human,
-/obj/item/card/id/job/sec,
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/plasteel/showroomfloor,
@@ -2717,7 +2683,6 @@
 /obj/item/clothing/under/rank/medical/doctor/blue,
 /obj/item/clothing/under/rank/medical/doctor/green,
 /obj/item/clothing/under/rank/medical/doctor/purple,
-/obj/item/clothing/under/rank/medical/emt,
 /obj/item/clothing/under/rank/medical/doctor,
 /obj/item/clothing/under/rank/medical/doctor,
 /obj/item/clothing/under/rank/medical/doctor,
@@ -2892,14 +2857,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/mineral/titanium,
 /area/awaymission/factory/factoryafter/down/maint)
-"cKP" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/mineral/titanium,
-/area/awaymission/factory/factoryafter/down/maint)
 "cKX" = (
 /turf/closed/mineral/random/high_chance,
 /area/ruin/unpowered{
@@ -2913,7 +2870,6 @@
 /obj/item/clothing/under/rank/medical/doctor/blue,
 /obj/item/clothing/under/rank/medical/doctor/green,
 /obj/item/clothing/under/rank/medical/doctor/purple,
-/obj/item/clothing/under/rank/medical/emt,
 /obj/item/clothing/under/rank/medical/doctor,
 /obj/item/clothing/under/rank/medical/doctor,
 /obj/item/clothing/under/rank/medical/doctor,
@@ -2980,15 +2936,13 @@
 /area/awaymission/factory/factoryafter/down)
 "cOd" = (
 /obj/machinery/door/poddoor/shutters{
-	id = "garageshutters";
-	tgui_id = null
+	id = "garageshutters"
 	},
 /obj/machinery/button{
 	id = "garageshutters";
 	name = "Garage shutters";
 	pixel_x = -3;
-	pixel_y = -29;
-	tgui_id = null
+	pixel_y = -29
 	},
 /turf/open/floor/wood,
 /area/awaymission/factory/villageafter/house)
@@ -3007,7 +2961,6 @@
 /area/awaymission/factory/factoryafter/down)
 "cPh" = (
 /obj/item/paper{
-	desc = null;
 	info = "This one is the most cursed shit we've ever seen. When our squad brought it here, it was only a spider, but the body was replaced by human head. It was agressive and tried to bite everyone, so we injected some chloral hydrate in it. A few days later we decided to bring one of the cultists' dead body as a food for it. Few hours later, the spider dissapeared, and the only thing left in it's cell is the same cultist body, but staying on top of it's own blood and flesh. We decided to keep this thing here, but I bet once it will try to break out and will cause a big trouble.";
 	name = "Anomaly 4"
 	},
@@ -3029,7 +2982,6 @@
 	teleport_restriction = 1
 	})
 "cPO" = (
-/obj/structure/chair/pew/right,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood{
 	icon_state = "wood-broken4"
@@ -3136,10 +3088,6 @@
 "cTC" = (
 /turf/open/floor/mineral/bananium,
 /area/awaymission/factory/clownplanet)
-"cTF" = (
-/obj/item/twohanded/required/kirbyplants/random,
-/turf/open/floor/mineral/titanium,
-/area/awaymission/factory/factoryduring/down/maint)
 "cUw" = (
 /obj/item/ammo_casing/c45{
 	caliber = null;
@@ -3234,9 +3182,6 @@
 /turf/open/floor/carpet/royalblack,
 /area/awaymission/factory/villageafter/house)
 "dbi" = (
-/obj/structure/chair/pew/right{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/remains/human,
 /turf/open/floor/wood{
@@ -3273,12 +3218,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/tiled,
 /area/awaymission/factory/factoryafter/down/leveltwo)
-"dcW" = (
-/obj/structure/chair/comfy/black,
-/turf/open/floor/engine{
-	baseturfs = /turf/open/floor/plating/asteroid
-	},
-/area/awaymission/factory/factoryduring/down/levelthree)
 "dea" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/plasteel/white,
@@ -3329,9 +3268,6 @@
 /obj/item/clothing/mask/breath/medical,
 /obj/effect/spawner/lootdrop/minor/twentyfive_percent_cyborg_mask,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/card/id/job/med{
-	access = list(202)
-	},
 /turf/open/floor/plasteel/tiled/light,
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "dkd" = (
@@ -3533,14 +3469,6 @@
 /obj/effect/trap/trigger,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryduring)
-"duU" = (
-/obj/item/twohanded/clockwork/brass_battlehammer,
-/obj/effect/clockwork/overlay/floor,
-/turf/open/floor/plating/asteroid,
-/area/ruin/unpowered{
-	ambient_buzz = null;
-	teleport_restriction = 1
-	})
 "duY" = (
 /obj/structure/closet/l3closet/security,
 /turf/open/floor/engine{
@@ -3670,16 +3598,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet/blue,
 /area/awaymission/factory/factoryafter/down)
-"dAz" = (
-/obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/clothing/under/color/random,
-/obj/item/clothing/shoes/sneakers/black,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/item/card/id/job/sec{
-	access = list(203)
-	},
-/turf/open/floor/carpet/orange,
-/area/awaymission/factory/factoryafter/down)
 "dAM" = (
 /obj/machinery/light{
 	dir = 1
@@ -3791,13 +3709,6 @@
 /area/awaymission/factory/villageduring{
 	teleport_restriction = 0
 	})
-"dEZ" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/turf/open/floor/mineral/titanium,
-/area/awaymission/factory/factoryduring/down/maint)
 "dFA" = (
 /obj/structure/table/wood,
 /obj/item/grown/log/tree,
@@ -3872,8 +3783,7 @@
 /area/awaymission/factory/factoryduring/down)
 "dHA" = (
 /obj/machinery/door/poddoor/shutters{
-	id = "garageshutters";
-	tgui_id = null
+	id = "garageshutters"
 	},
 /turf/open/floor/wood,
 /area/awaymission/factory/villageafter/house)
@@ -3935,12 +3845,6 @@
 "dJM" = (
 /turf/closed/wall/mineral/iron,
 /area/awaymission/factory/villageduring/hospital)
-"dJR" = (
-/obj/structure/table/wood,
-/obj/item/twohanded/required/chainsaw,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/wood,
-/area/awaymission/factory/villageafter/house)
 "dKr" = (
 /obj/item/seeds/wheat/rice,
 /turf/open/floor/plating/asteroid{
@@ -3995,12 +3899,6 @@
 	color = "#1eff00"
 	},
 /area/awaymission/factory/clownplanet)
-"dMU" = (
-/obj/structure/chair/sofa/right{
-	dir = 1
-	},
-/turf/open/floor/carpet/royalblack,
-/area/awaymission/factory/villageduring/house)
 "dMV" = (
 /obj/effect/decal/cleanable/xenoblood/xgibs/larva,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -4124,9 +4022,6 @@
 /turf/open/floor/plating/snowed/smoothed,
 /area/awaymission/factory/villageduring/house)
 "dTY" = (
-/obj/structure/chair/comfy{
-	dir = 4
-	},
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -28
 	},
@@ -4420,10 +4315,6 @@
 /obj/machinery/camera{
 	dir = 4
 	},
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/mineral/titanium,
 /area/awaymission/factory/factoryafter/down)
@@ -4491,7 +4382,6 @@
 /obj/machinery/camera{
 	dir = 4
 	},
-/obj/item/twohanded/required/kirbyplants/random,
 /turf/open/floor/mineral/titanium,
 /area/awaymission/factory/factoryduring/down)
 "eoj" = (
@@ -4561,7 +4451,6 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/awaymission/factory/factoryafter/down)
 "eqO" = (
-/obj/structure/chair/pew/left,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood{
 	icon_state = "wood-broken2"
@@ -4891,13 +4780,6 @@
 	},
 /turf/open/floor/mineral/plastitanium/red/brig,
 /area/awaymission/factory/factoryduring/down)
-"eFk" = (
-/obj/structure/chair/comfy/brown{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/monotile/steel,
-/area/awaymission/factory/villageafter/hospital)
 "eFo" = (
 /obj/item/paper{
 	info = "<i>I don't trust that company at all. Recent suicide was definetly related to that shit they give to us. They supposed to solve the hunger problem, but they definetly focused on something else. Eventually I will find out who they really are, even if they're against it.</i>";
@@ -5577,7 +5459,6 @@
 /area/awaymission/factory/secret)
 "ffE" = (
 /obj/machinery/door/airlock/command{
-	req_access = null;
 	req_access_txt = "207"
 	},
 /obj/effect/mapping_helpers/airlock/locked,
@@ -5694,9 +5575,6 @@
 /obj/item/storage/belt/security,
 /obj/item/clothing/mask/balaclava,
 /obj/machinery/light/broken,
-/obj/item/card/id/job/sec{
-	access = list(203)
-	},
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
@@ -5754,14 +5632,6 @@
 	item_color = "#2EFEF7";
 	light_color = "#2EFEF7";
 	light_range = 1
-	},
-/turf/open/floor/plating/asteroid,
-/area/awaymission/factory/secret)
-"fnf" = (
-/obj/item/twohanded/clockwork/brass_sword{
-	color = "#2EFEF7";
-	desc = "A large sword made of diamonds.";
-	name = "diamond longsword"
 	},
 /turf/open/floor/plating/asteroid,
 /area/awaymission/factory/secret)
@@ -5826,15 +5696,13 @@
 /area/awaymission/factory/clownplanet)
 "fpC" = (
 /obj/machinery/door/poddoor/shutters{
-	id = "garageshutters";
-	tgui_id = null
+	id = "garageshutters"
 	},
 /obj/machinery/button{
 	id = "garageshutters";
 	name = "Garage shutters";
 	pixel_x = -3;
-	pixel_y = -29;
-	tgui_id = null
+	pixel_y = -29
 	},
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
@@ -5863,13 +5731,6 @@
 	ambient_buzz = null;
 	teleport_restriction = 1
 	})
-"fqx" = (
-/obj/item/card/id/job/med{
-	access = list(202)
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel/tiled/light,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "fqW" = (
 /obj/effect/baseturf_helper/asteroid{
 	baseturf_to_replace = list(/turf/baseturf_bottom,/turf/open/space/basic,/turf/open/floor/plating);
@@ -6166,12 +6027,6 @@
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/plating,
 /area/awaymission/factory/factoryduring/down/leveltwo)
-"fFq" = (
-/obj/structure/chair/comfy/teal{
-	dir = 1
-	},
-/turf/open/floor/wood,
-/area/awaymission/factory/villageduring/house)
 "fFF" = (
 /obj/structure/closet/secure{
 	anchored = 1;
@@ -6267,14 +6122,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryafter/down/leveltwo)
-"fLC" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/turf/open/floor/plasteel,
-/area/awaymission/factory/factoryduring)
 "fLH" = (
 /obj/item/ammo_casing/mm712x82{
 	caliber = null;
@@ -6361,15 +6208,6 @@
 	ambient_buzz = null;
 	teleport_restriction = 1
 	})
-"fOk" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/item/card/id/job/rd{
-	access = list(206)
-	},
-/turf/open/floor/plating{
-	icon_state = "plating_rust"
-	},
-/area/awaymission/factory/factoryafter/down/maint)
 "fOB" = (
 /turf/closed/wall/mineral/wood,
 /area/awaymission/factory/villageafter/house)
@@ -6478,7 +6316,6 @@
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "fVf" = (
 /obj/machinery/door/airlock/command{
-	req_access = null;
 	req_access_txt = "207"
 	},
 /obj/effect/mapping_helpers/airlock/abandoned,
@@ -6797,11 +6634,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageafter/house)
-"glh" = (
-/obj/structure/chair/sofa/left,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel/dark,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "glx" = (
 /obj/item/chair/wood{
 	pixel_y = -6
@@ -6856,14 +6688,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/dark,
 /area/awaymission/factory/factoryafter/down/leveltwo)
-"gnC" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel/dark,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "goV" = (
 /turf/closed/wall/r_wall/rust,
 /area/awaymission/factory/factoryafter/down/leveltwo)
@@ -6895,10 +6719,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/awaymission/factory/factoryduring/down/leveltwo)
-"gqJ" = (
-/obj/structure/chair/sofa/left,
-/turf/open/floor/plasteel/dark,
-/area/awaymission/factory/factoryduring/down/leveltwo)
 "gqT" = (
 /obj/item/chair/wood{
 	pixel_y = -6
@@ -6927,10 +6747,6 @@
 /area/awaymission/factory/villageduring/house)
 "gtt" = (
 /obj/structure/closet/firecloset/full,
-/turf/open/floor/plasteel/dark,
-/area/awaymission/factory/factoryduring/down/leveltwo)
-"gtG" = (
-/obj/item/twohanded/required/kirbyplants/random,
 /turf/open/floor/plasteel/dark,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "gua" = (
@@ -7165,12 +6981,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/awaymission/factory/factoryafter/down/maint)
-"gCa" = (
-/obj/structure/chair/comfy/brown{
-	dir = 4
-	},
-/turf/open/floor/monotile/steel,
-/area/awaymission/factory/villageduring/hospital)
 "gDc" = (
 /obj/item/bikehorn/rubberducky,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -7291,8 +7101,7 @@
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "gJF" = (
 /obj/machinery/door/poddoor/shutters{
-	id = "garageshutters";
-	tgui_id = null
+	id = "garageshutters"
 	},
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
@@ -7336,13 +7145,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/tiled,
 /area/awaymission/factory/factoryafter/down/leveltwo)
-"gMs" = (
-/obj/structure/chair/comfy{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel/tiled/light,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "gMH" = (
 /obj/machinery/light/broken{
 	dir = 1
@@ -7368,14 +7170,6 @@
 	temperature = 251
 	},
 /area/awaymission/factory/factoryafter)
-"gNl" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel/tiled,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "gNm" = (
 /obj/effect/spawner/lootdrop/snowdin/dungeonheavy,
 /turf/open/floor/plating/asteroid,
@@ -7500,13 +7294,6 @@
 "gTj" = (
 /turf/closed/wall/rust,
 /area/awaymission/factory/factoryafter/down/leveltwo/morgue)
-"gUh" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/turf/open/floor/plasteel/tiled,
-/area/awaymission/factory/factoryduring/down/leveltwo)
 "gUo" = (
 /obj/item/pickaxe/drill,
 /turf/open/floor/plating/asteroid,
@@ -7821,10 +7608,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryduring/down/leveltwo)
-"hiD" = (
-/obj/item/twohanded/required/kirbyplants/random,
-/turf/open/floor/plasteel/tiled/light,
-/area/awaymission/factory/factoryduring/down/leveltwo)
 "hiQ" = (
 /obj/machinery/camera,
 /turf/open/floor/plasteel/tiled/light,
@@ -8012,9 +7795,6 @@
 /obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
 /obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/card/id/job/med{
-	access = list(202)
-	},
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
@@ -8352,16 +8132,6 @@
 	temperature = 251
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
-"hEI" = (
-/obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/clothing/under/color/random,
-/obj/item/clothing/shoes/sneakers/white,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/item/card/id/job/sec{
-	access = list(203)
-	},
-/turf/open/floor/carpet/black,
-/area/awaymission/factory/factoryafter/down)
 "hEW" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/vomit/old,
@@ -8424,20 +8194,6 @@
 /turf/open/floor/plasteel/dark/side{
 	dir = 6
 	},
-/area/awaymission/factory/factoryafter/down/leveltwo)
-"hGn" = (
-/obj/structure/chair/sofa/right{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel/dark,
-/area/awaymission/factory/factoryafter/down/leveltwo)
-"hGp" = (
-/obj/structure/chair/sofa/left{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel/dark,
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "hGv" = (
 /obj/machinery/vending/cola/random,
@@ -8663,9 +8419,6 @@
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
 "hOG" = (
-/obj/structure/chair/pew/left{
-	dir = 1
-	},
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood{
@@ -8716,19 +8469,6 @@
 /obj/machinery/camera,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryduring/down/leveltwo)
-"hQu" = (
-/obj/structure/sink{
-	pixel_y = 15
-	},
-/obj/structure/mirror{
-	pixel_y = 32
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/item/card/id/job/med{
-	access = list(202)
-	},
-/turf/open/floor/plasteel/white,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "hQy" = (
 /obj/machinery/conveyor_switch/oneway{
 	dir = 4;
@@ -8783,18 +8523,6 @@
 	},
 /turf/open/floor/carpet/orange,
 /area/awaymission/factory/villageduring/house)
-"hSJ" = (
-/obj/structure/chair/sofa/right{
-	dir = 1
-	},
-/turf/open/floor/plasteel/dark,
-/area/awaymission/factory/factoryduring/down/leveltwo)
-"hSU" = (
-/obj/structure/chair/sofa/left{
-	dir = 1
-	},
-/turf/open/floor/plasteel/dark,
-/area/awaymission/factory/factoryduring/down/leveltwo)
 "hSV" = (
 /obj/machinery/vending/cola/random,
 /turf/open/floor/plasteel/dark,
@@ -8959,12 +8687,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryafter/down/leveltwo)
-"iaA" = (
-/obj/structure/chair/comfy/brown{
-	dir = 8
-	},
-/turf/open/floor/monotile/steel,
-/area/awaymission/factory/villageduring/hospital)
 "iaQ" = (
 /obj/item/shard,
 /obj/item/shard{
@@ -8996,13 +8718,6 @@
 	temperature = 251
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
-"ibs" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/item/card/id/job/rd{
-	access = list(206)
-	},
-/turf/open/floor/plasteel,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "ibt" = (
 /obj/machinery/camera,
 /obj/structure/extinguisher_cabinet{
@@ -9010,13 +8725,6 @@
 	},
 /turf/open/floor/circuit/off,
 /area/awaymission/factory/factoryduring/down/levelthree)
-"ick" = (
-/obj/structure/chair/comfy/beige{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/mineral/titanium,
-/area/awaymission/factory/factoryafter/down)
 "icm" = (
 /obj/item/storage/box/magic/hat,
 /turf/open/floor/plating/asteroid,
@@ -9281,9 +8989,6 @@
 	req_access = list(202)
 	},
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/card/id/job/rd{
-	access = list(206)
-	},
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
@@ -9326,9 +9031,6 @@
 "ipA" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/card/id/job/sec{
-	access = list(203)
-	},
 /obj/effect/decal/cleanable/vomit/old,
 /turf/open/floor/plating{
 	icon_state = "plating_rust"
@@ -9512,17 +9214,6 @@
 /obj/item/storage/backpack/duffelbag/syndie/surgery,
 /turf/open/floor/plasteel/dark,
 /area/awaymission/factory/factoryduring/down/leveltwo/asylum)
-"iyC" = (
-/obj/vehicle/ridden/wheelchair{
-	dir = 8
-	},
-/obj/effect/decal/remains/human,
-/obj/item/card/id/job/med{
-	access = list(202)
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "iyV" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/brigdoor/northright{
@@ -9798,9 +9489,6 @@
 /obj/vehicle/ridden/wheelchair{
 	dir = 8
 	},
-/obj/item/card/id/job/med{
-	access = list(202)
-	},
 /obj/effect/mob_spawn/human/corpse{
 	outfit = /datum/outfit/job/doctor;
 	oxy_damage = 9000
@@ -9821,13 +9509,6 @@
 	},
 /turf/open/floor/plating/asteroid,
 /area/awaymission/factory/factoryduring/down/leveltwo)
-"iKW" = (
-/obj/structure/chair/comfy/brown{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/carpet,
-/area/awaymission/factory/villageafter/house)
 "iKX" = (
 /obj/effect/decal/cleanable/vomit/old,
 /turf/open/floor/carpet/royalblack,
@@ -9863,11 +9544,6 @@
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/plasteel/tiled,
 /area/awaymission/factory/factoryduring/down/leveltwo)
-"iMk" = (
-/obj/structure/chair/comfy/beige,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel,
-/area/awaymission/factory/factoryafter)
 "iMx" = (
 /turf/open/floor/plating/snowed/smoothed,
 /area/awaymission/factory/villageduring/house)
@@ -10070,14 +9746,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryafter/down/leveltwo)
-"iUO" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/turf/open/floor/mineral/titanium/white,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "iVO" = (
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -10126,13 +9794,6 @@
 	},
 /turf/open/floor/circuit,
 /area/awaymission/factory/factoryduring/down/levelthree)
-"iYU" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/item/card/id/job/sec{
-	access = list(203)
-	},
-/turf/open/floor/stone,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "iZa" = (
 /obj/structure/chair,
 /turf/open/floor/plasteel{
@@ -10142,13 +9803,6 @@
 	temperature = 251
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
-"iZN" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/item/card/id/job/rd{
-	access = list(206)
-	},
-/turf/open/floor/stone,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "iZP" = (
 /obj/machinery/light,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -10168,9 +9822,6 @@
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "jan" = (
-/obj/item/card/id/job/rd{
-	access = list(206)
-	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/plasteel{
@@ -10185,14 +9836,6 @@
 	},
 /obj/effect/decal/remains/human,
 /turf/open/floor/plasteel,
-/area/awaymission/factory/factoryduring/down/leveltwo)
-"jaI" = (
-/obj/item/twohanded/required/kirbyplants/random,
-/turf/open/floor/mineral/titanium/white,
-/area/awaymission/factory/factoryduring/down/leveltwo)
-"jaK" = (
-/obj/item/twohanded/required/kirbyplants/random,
-/turf/open/floor/plasteel/tiled,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "jaX" = (
 /obj/effect/decal/cleanable/blood{
@@ -10393,9 +10036,6 @@
 /turf/open/floor/circuit,
 /area/awaymission/factory/factoryduring/down/levelthree)
 "jky" = (
-/obj/structure/chair/pew/right{
-	dir = 1
-	},
 /mob/living/simple_animal/hostile/zombie{
 	deathsound = 'sound/voice/lizard/deathsound.ogg';
 	health = 200;
@@ -10636,10 +10276,6 @@
 	dir = 1
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
-"jtC" = (
-/obj/structure/chair/sofa/right,
-/turf/open/floor/plasteel/dark,
-/area/awaymission/factory/factoryduring/down/leveltwo)
 "jtJ" = (
 /obj/machinery/light/built,
 /obj/structure/closet/crate/bin,
@@ -10671,9 +10307,6 @@
 	teleport_restriction = 0
 	})
 "jva" = (
-/obj/structure/chair/pew/left{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/blood{
 	icon_state = "floor2"
 	},
@@ -10807,12 +10440,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/white,
 /area/awaymission/factory/factoryafter/down/leveltwo)
-"jCJ" = (
-/obj/structure/chair/comfy/beige{
-	dir = 1
-	},
-/turf/open/floor/mineral/titanium,
-/area/awaymission/factory/factoryduring/down)
 "jDW" = (
 /obj/structure/closet/secure_closet/freezer/fridge{
 	req_access = list()
@@ -10820,12 +10447,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/white,
 /area/awaymission/factory/factoryafter/down/leveltwo)
-"jEs" = (
-/obj/structure/chair/sofa/left{
-	dir = 1
-	},
-/turf/open/floor/circuit,
-/area/awaymission/factory/factoryduring/down/levelthree)
 "jEO" = (
 /obj/machinery/power/smes,
 /obj/structure/cable{
@@ -10888,19 +10509,6 @@
 /obj/item/pen/red,
 /turf/open/floor/circuit/off,
 /area/awaymission/factory/factoryafter/down/levelthree)
-"jIK" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/carpet,
-/area/awaymission/factory/factoryafter/down/leveltwo)
-"jKf" = (
-/obj/structure/chair/sofa/right,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/carpet,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "jKH" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/decal/cleanable/blood/old{
@@ -10921,20 +10529,11 @@
 	},
 /area/awaymission/factory/factoryafter/down/maint)
 "jKS" = (
-/obj/structure/chair/sofa,
 /obj/machinery/light{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet,
-/area/awaymission/factory/factoryafter/down/leveltwo)
-"jLe" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/monotile/light,
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "jLo" = (
 /obj/effect/decal/cleanable/blood/old,
@@ -11069,16 +10668,7 @@
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/plasteel/white,
 /area/awaymission/factory/factoryduring/down/leveltwo)
-"jSS" = (
-/obj/item/twohanded/required/kirbyplants/random,
-/turf/open/floor/carpet,
-/area/awaymission/factory/factoryduring/down/leveltwo)
-"jTa" = (
-/obj/structure/chair/sofa/right,
-/turf/open/floor/carpet,
-/area/awaymission/factory/factoryduring/down/leveltwo)
 "jTD" = (
-/obj/structure/chair/sofa,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -11290,13 +10880,6 @@
 /obj/item/multitool,
 /turf/open/floor/plasteel/white,
 /area/awaymission/factory/factoryafter/down/leveltwo)
-"kbg" = (
-/obj/item/card/id/job/med{
-	access = list(202)
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel/white,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "kbh" = (
 /turf/open/floor/grass/snow/basalt{
 	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
@@ -11485,12 +11068,6 @@
 	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryduring)
-"kov" = (
-/obj/item/card/id/job/med{
-	access = list(202)
-	},
-/turf/open/floor/plasteel/white,
-/area/awaymission/factory/factoryduring/down/leveltwo)
 "kpq" = (
 /obj/item/chair{
 	pixel_y = -4
@@ -11779,7 +11356,6 @@
 /area/awaymission/factory/villageduring/house)
 "kCZ" = (
 /obj/item/paper{
-	desc = null;
 	info = "This one was found on some forever winter place. Our expedition group asked us to not to ask a questions about how did they get it here. However, the important thing is that this little portal works like a gate for really creepy shit behind it. Sometimes this shit crawls out of portal and get immediately dealt with by our brave guards. In other words, we have another infinity (maybe?) source of food. Oh, also don't tought the portal if you wanna live.";
 	name = "Anomaly 3"
 	},
@@ -11798,11 +11374,6 @@
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
 /area/awaymission/factory/factoryduring/down/levelthree)
-"kEl" = (
-/obj/structure/chair/sofa/right,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel/dark,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "kEx" = (
 /obj/machinery/power/floodlight{
 	setting = 3
@@ -12332,7 +11903,6 @@
 	},
 /area/awaymission/factory/villageafter/house)
 "kYF" = (
-/obj/structure/chair/pew/right,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageafter/church)
@@ -12811,14 +12381,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/freezer,
 /area/awaymission/factory/factoryafter/down/leveltwo)
-"lyh" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/monotile/steel,
-/area/awaymission/factory/villageafter/hospital)
 "lyt" = (
 /obj/structure/table/reinforced,
 /obj/item/bikehorn/rubberducky{
@@ -12847,14 +12409,6 @@
 	temperature = 251
 	},
 /area/awaymission/factory/factoryduring)
-"lyU" = (
-/obj/structure/bed,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/item/card/id/job/med{
-	access = list(202)
-	},
-/turf/open/floor/monotile/light,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "lzc" = (
 /turf/closed/mineral/random,
 /area/awaymission/factory/factoryafter/down/levelthree)
@@ -12864,15 +12418,6 @@
 "lzj" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/vomit/old,
-/turf/open/floor/monotile/light,
-/area/awaymission/factory/factoryafter/down/leveltwo)
-"lzs" = (
-/obj/structure/bed,
-/obj/effect/decal/remains/human,
-/obj/item/card/id/job/rd{
-	access = list(206)
-	},
-/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/monotile/light,
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "lAr" = (
@@ -12933,10 +12478,6 @@
 	zombiejob = "Cook"
 	},
 /turf/open/floor/plasteel/freezer,
-/area/awaymission/factory/factoryduring/down/leveltwo)
-"lCT" = (
-/obj/item/circuitboard/computer/prototype_cloning,
-/turf/open/floor/carpet/purple,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "lDd" = (
 /obj/structure/chair/noose,
@@ -13122,9 +12663,6 @@
 /turf/open/floor/monotile/light,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "lJP" = (
-/obj/structure/chair/comfy{
-	dir = 4
-	},
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -28
 	},
@@ -13143,14 +12681,6 @@
 "lKl" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "bubblegumfoot"
-	},
-/turf/open/floor/monotile/light,
-/area/awaymission/factory/factoryduring/down/leveltwo)
-"lKv" = (
-/obj/structure/bed,
-/obj/effect/decal/remains/human,
-/obj/item/card/id/job/rd{
-	access = list(206)
 	},
 /turf/open/floor/monotile/light,
 /area/awaymission/factory/factoryduring/down/leveltwo)
@@ -13195,10 +12725,6 @@
 /obj/item/dnainjector/insulated{
 	pixel_x = -2;
 	pixel_y = -3
-	},
-/obj/item/dnainjector/mindread{
-	pixel_x = 6;
-	pixel_y = 4
 	},
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered{
@@ -13317,9 +12843,6 @@
 /turf/open/floor/plating,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "lRR" = (
-/obj/structure/chair/pew/right{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/blood{
 	icon_state = "floor3"
 	},
@@ -13337,9 +12860,6 @@
 /obj/item/reagent_containers/food/snacks/meat/slab/human,
 /obj/item/reagent_containers/food/snacks/meat/slab/hamster,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/card/id/job/sec{
-	access = list(203)
-	},
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
@@ -13446,14 +12966,6 @@
 	icon_state = "plating_rust"
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
-"lZc" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/turf/open/floor/plasteel,
-/area/awaymission/factory/factoryafter)
 "lZA" = (
 /obj/machinery/conveyor/inverted{
 	dir = 5;
@@ -13523,10 +13035,6 @@
 /turf/open/floor/plating,
 /area/awaymission/factory/factoryduring/down/levelthree)
 "mbR" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
 /obj/machinery/light/built{
 	dir = 1
 	},
@@ -13566,11 +13074,6 @@
 /area/awaymission/factory/villageduring{
 	teleport_restriction = 0
 	})
-"meh" = (
-/obj/structure/chair/pew/left,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/wood,
-/area/awaymission/factory/villageafter/church)
 "mew" = (
 /obj/machinery/door/airlock,
 /turf/open/floor/plasteel/freezer,
@@ -13664,12 +13167,8 @@
 /turf/open/floor/plasteel/freezer,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "mib" = (
-/obj/item/clothing/gloves/color/brown/cargo,
 /obj/item/clothing/under/rank/cargo/tech,
 /obj/item/megaphone/cargo,
-/obj/item/card/id/job/cargo{
-	req_access_txt = "50"
-	},
 /obj/effect/decal/remains/human,
 /turf/open/floor/plating/asteroid,
 /area/awaymission/factory/secret)
@@ -13698,18 +13197,6 @@
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
-"mjJ" = (
-/obj/item/card/id/job/med{
-	access = list(202)
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel{
-	dir = 8;
-	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
-	},
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "mku" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel{
@@ -13775,11 +13262,7 @@
 /turf/open/floor/monotile/light,
 /area/awaymission/factory/villageafter/hospital)
 "mnj" = (
-/obj/item/clothing/gloves/color/brown/cargo,
 /obj/item/clothing/under/rank/cargo/tech,
-/obj/item/card/id/job/cargo{
-	req_access_txt = "50"
-	},
 /obj/effect/decal/remains/human,
 /turf/open/floor/plating/asteroid,
 /area/awaymission/factory/secret)
@@ -13873,9 +13356,6 @@
 /turf/open/floor/plasteel/freezer,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "mvg" = (
-/obj/item/card/id/job/med{
-	access = list(202)
-	},
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plasteel{
 	dir = 8;
@@ -14778,9 +14258,6 @@
 	})
 "nfm" = (
 /obj/structure/closet/crate,
-/obj/item/card/id/job/med{
-	access = list(202)
-	},
 /obj/item/card/id/away{
 	access = list(204);
 	desc = "Provides access to the lowest level of the factory";
@@ -14803,14 +14280,6 @@
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
-"nfs" = (
-/obj/structure/table/reinforced,
-/obj/item/card/id/job/med{
-	access = list(202)
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel/tiled/light,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "nfx" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -29
@@ -14836,12 +14305,6 @@
 	desc = "A 7.12x82mm bullet casing. This one is spent.";
 	name = "spent 7.12x82mm bullet casing"
 	},
-/turf/open/floor/engine{
-	baseturfs = /turf/open/floor/plating/asteroid
-	},
-/area/awaymission/factory/factoryafter/down/levelthree)
-"nfC" = (
-/obj/item/twohanded/fireaxe/boneaxe,
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
@@ -15173,7 +14636,6 @@
 	},
 /area/awaymission/factory/factoryduring/down/maint)
 "nqF" = (
-/obj/structure/chair/pew/right,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "floor3"
 	},
@@ -16636,7 +16098,6 @@
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "oxb" = (
 /obj/item/paper{
-	desc = null;
 	info = "This one is the most cursed shit we've ever seen. When our squad brought it here, it was only a spider, but the body was replaced by human head. It was agressive and tried to bite everyone, so we injected some chloral hydrate in it. A few days later we decided to bring one of the cultists' dead body as a food for it. Few hours later, the spider dissapeared, and the only thing left in it's cell is the same cultist body, but staying on top of it's own blood and flesh. We decided to keep this thing here, but I bet once it will try to break out and will cause a big trouble.";
 	name = "Anomaly 4"
 	},
@@ -16657,7 +16118,6 @@
 /area/awaymission/factory/factoryduring/down/levelthree)
 "oxo" = (
 /obj/item/paper{
-	desc = null;
 	info = "This one was found on some forever winter place. Our expedition group asked us to not to ask a questions about how did they get it here. However, the important thing is that this little portal works like a gate for really creepy shit behind it. Sometimes this shit crawls out of portal and get immediately dealt with by our brave guards. In other words, we have another infinity (maybe?) source of food. Oh, also don't tought the portal if you wanna live.";
 	name = "Anomaly 3"
 	},
@@ -16864,12 +16324,6 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/awaymission/factory/factoryduring/down/levelthree)
-"oFS" = (
-/obj/structure/chair/comfy/black{
-	dir = 4
-	},
-/turf/open/floor/circuit/off,
-/area/awaymission/factory/factoryafter/down/levelthree)
 "oGx" = (
 /obj/structure/table,
 /obj/item/radio,
@@ -16901,14 +16355,6 @@
 	},
 /turf/open/floor/circuit/off,
 /area/awaymission/factory/factoryafter/down/levelthree)
-"oHR" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel/white,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "oHU" = (
 /obj/item/ammo_box/magazine/mm712x82{
 	start_empty = 1
@@ -17090,12 +16536,6 @@
 	},
 /turf/open/floor/circuit/off,
 /area/awaymission/factory/factoryafter/down/levelthree)
-"oLF" = (
-/obj/structure/chair/comfy/black{
-	dir = 4
-	},
-/turf/open/floor/circuit/green/anim,
-/area/awaymission/factory/factoryduring/down/levelthree)
 "oLG" = (
 /mob/living/simple_animal/hostile/bear/snow,
 /obj/item/bodypart/r_arm/monkey,
@@ -17314,13 +16754,6 @@
 /obj/structure/table,
 /turf/open/floor/circuit/red/anim,
 /area/awaymission/factory/factoryduring/down/levelthree)
-"oSr" = (
-/obj/structure/chair/comfy/teal{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/wood,
-/area/awaymission/factory/villageafter/house)
 "oSt" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/vomit/old,
@@ -17333,9 +16766,6 @@
 /turf/open/floor/carpet/royalblack,
 /area/awaymission/factory/factoryduring/down/levelthree)
 "oSB" = (
-/obj/structure/chair/sofa{
-	dir = 1
-	},
 /obj/machinery/light,
 /turf/open/floor/carpet/royalblack,
 /area/awaymission/factory/villageafter/house)
@@ -17415,7 +16845,6 @@
 /area/awaymission/factory/villageduring/house/start)
 "oXq" = (
 /obj/item/paper{
-	desc = null;
 	info = "This one was found by accident. When our squad was coming through the wizard space ship, a team member noticed that something was very wrong. One of the statues was always looking at them. Moreover, it started changing positions every time the squad was entering the room that contained the statue. So ye, they decided to put it into a wooden box and steal it. The squad did a good job, no wizard knew what happened.";
 	name = "Anomaly 6"
 	},
@@ -17651,7 +17080,6 @@
 /area/awaymission/factory/factoryduring/down/levelthree)
 "phH" = (
 /obj/item/paper{
-	desc = null;
 	info = "This one was found by accident. When our squad was coming through the wizard space ship, a team member noticed that something was very wrong. One of the statues was always looking at them. Moreover, it started changing positions every time the squad was entering the room that contained the statue. So ye, they decided to put it into a wooden box and steal it. The squad did a good job, no wizard knew what happened.";
 	name = "Anomaly 6"
 	},
@@ -17853,7 +17281,6 @@
 /turf/open/floor/circuit/off,
 /area/awaymission/factory/factoryafter/down/levelthree)
 "pnU" = (
-/obj/structure/chair/pew/right,
 /turf/open/floor/wood{
 	icon_state = "wood-broken4"
 	},
@@ -17872,15 +17299,6 @@
 /obj/structure/table/reinforced,
 /obj/item/radio/off{
 	pixel_y = 3
-	},
-/turf/open/floor/engine{
-	baseturfs = /turf/open/floor/plating/asteroid
-	},
-/area/awaymission/factory/factoryafter/down/levelthree)
-"pot" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
 	},
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
@@ -17911,7 +17329,6 @@
 /obj/item/clothing/under/suit/navy,
 /obj/item/clothing/under/pants/jeans,
 /obj/item/clothing/under/pants/classicjeans,
-/obj/item/twohanded/fireaxe,
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
@@ -17936,9 +17353,6 @@
 /obj/item/grenade/clusterbuster/random,
 /obj/item/key/security,
 /obj/item/melee/baton/loaded,
-/obj/item/card/id/job/sec{
-	access = list(203)
-	},
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
@@ -17974,12 +17388,6 @@
 /obj/item/radio/off{
 	pixel_y = 3
 	},
-/turf/open/floor/engine{
-	baseturfs = /turf/open/floor/plating/asteroid
-	},
-/area/awaymission/factory/factoryduring/down/levelthree)
-"psZ" = (
-/obj/item/twohanded/required/kirbyplants/random,
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
@@ -18029,9 +17437,6 @@
 /area/awaymission/factory/factoryafter/down/levelthree)
 "pun" = (
 /obj/machinery/camera,
-/obj/structure/chair/comfy/black{
-	dir = 4
-	},
 /turf/open/floor/plasteel/vaporwave,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null;
@@ -18171,9 +17576,6 @@
 /turf/open/floor/carpet/blue,
 /area/awaymission/factory/factoryduring/down)
 "pAA" = (
-/obj/structure/chair/sofa{
-	dir = 1
-	},
 /obj/machinery/light,
 /turf/open/floor/carpet/royalblack,
 /area/awaymission/factory/villageduring/house)
@@ -18449,15 +17851,6 @@
 /area/awaymission/factory/villageduring{
 	teleport_restriction = 0
 	})
-"pJv" = (
-/obj/structure/chair/comfy/black{
-	dir = 4
-	},
-/turf/open/floor/plasteel/vaporwave,
-/area/ruin/space/has_grav/powered/aesthetic{
-	ambient_buzz = null;
-	ambient_effects = list('sound/ambience/ambivapor1.ogg','sound/ambience/shore.ogg','sound/ambience/seag1.ogg','sound/ambience/seag2.ogg','sound/ambience/seag2.ogg')
-	})
 "pJD" = (
 /obj/machinery/light/built,
 /turf/open/floor/engine{
@@ -18514,12 +17907,6 @@
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
-"pLn" = (
-/obj/structure/chair/comfy/brown{
-	dir = 1
-	},
-/turf/open/floor/carpet,
-/area/awaymission/factory/villageduring/house)
 "pLF" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/handcuffs,
@@ -19403,13 +18790,6 @@
 	},
 /turf/open/floor/circuit/red/anim,
 /area/awaymission/factory/factoryduring/down/levelthree)
-"qwb" = (
-/obj/structure/chair/comfy/brown{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/monotile/steel,
-/area/awaymission/factory/villageafter/hospital)
 "qwd" = (
 /obj/machinery/power/solar,
 /turf/open/floor/plasteel/solarpanel,
@@ -19484,7 +18864,6 @@
 /obj/item/camera_bug,
 /obj/effect/spawner/lootdrop/armory_contraband,
 /obj/item/gun/ballistic/automatic/pistol/no_mag,
-/obj/item/twohanded/required/cult_bastard,
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
@@ -19712,7 +19091,6 @@
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
 "qHr" = (
-/obj/structure/chair/sofa/left,
 /obj/machinery/camera,
 /turf/open/floor/carpet,
 /area/awaymission/factory/factoryduring/down/leveltwo)
@@ -20120,14 +19498,6 @@
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
-"qXU" = (
-/obj/item/card/id/job/sec{
-	access = list(203)
-	},
-/turf/open/floor/engine{
-	baseturfs = /turf/open/floor/plating/asteroid
-	},
-/area/awaymission/factory/factoryafter/down/levelthree)
 "qYw" = (
 /obj/structure/table/reinforced,
 /obj/item/gun/ballistic/shotgun/sc_pump{
@@ -20238,12 +19608,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet/orange,
 /area/awaymission/factory/villageafter/house)
-"rdC" = (
-/obj/structure/chair/sofa/right{
-	dir = 1
-	},
-/turf/open/floor/circuit,
-/area/awaymission/factory/factoryduring/down/levelthree)
 "reE" = (
 /obj/machinery/door/airlock/security{
 	req_access_txt = "203"
@@ -20341,9 +19705,6 @@
 /obj/structure/closet/l3closet/virology,
 /obj/item/storage/belt/medical,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/card/id/job/med{
-	access = list(202)
-	},
 /turf/open/floor/plasteel/tiled/light,
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "riR" = (
@@ -21050,13 +20411,6 @@
 /obj/structure/fans/tiny,
 /turf/open/floor/circuit,
 /area/awaymission/factory/factoryduring/down/levelthree/engine)
-"rJA" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/turf/open/floor/plasteel/tiled/light,
-/area/awaymission/factory/factoryduring/down/leveltwo)
 "rJI" = (
 /mob/living/simple_animal/hostile/factory/ranged/lmg{
 	dir = 8;
@@ -21422,7 +20776,6 @@
 /turf/open/floor/circuit/off,
 /area/awaymission/factory/factoryafter/down/levelthree/engine)
 "rXn" = (
-/obj/structure/chair/pew/left,
 /obj/effect/gibspawner/human,
 /turf/open/floor/wood{
 	icon_state = "wood-broken2"
@@ -21555,7 +20908,6 @@
 "sdy" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/item/melee/classic_baton/police/telescopic,
-/obj/item/pda/unlicensed,
 /obj/item/storage/box/ids,
 /obj/item/gun/ballistic/automatic/pistol/m1911,
 /obj/item/ammo_box/magazine/m45{
@@ -21578,10 +20930,6 @@
 	icon_state = "panelscorched"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
-"seN" = (
-/obj/structure/chair/comfy/beige,
-/turf/open/floor/plasteel,
-/area/awaymission/factory/factoryduring)
 "sfj" = (
 /obj/structure/table/reinforced,
 /obj/item/weldingtool/hugetank,
@@ -21726,13 +21074,6 @@
 	icon_state = "wood-broken4"
 	},
 /area/awaymission/factory/villageduring/church)
-"snQ" = (
-/obj/structure/chair/pew/left{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/wood,
-/area/awaymission/factory/villageafter/church)
 "snU" = (
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/circuit,
@@ -21749,11 +21090,6 @@
 /turf/open/floor/circuit,
 /area/awaymission/factory/factoryduring/down/levelthree)
 "soR" = (
-/obj/singularity/factory{
-	light_color = "#FFFFFF";
-	light_power = 2;
-	luminosity = 1
-	},
 /turf/open/space/basic,
 /area/awaymission/factory/factoryafter/down/levelthree/engine)
 "soW" = (
@@ -21767,11 +21103,6 @@
 /turf/open/floor/monofloor,
 /area/awaymission/factory/villageduring/basement)
 "spe" = (
-/obj/singularity/factory{
-	light_color = "#FFFFFF";
-	light_power = 2;
-	luminosity = 1
-	},
 /turf/open/space/basic,
 /area/awaymission/factory/factoryduring/down/levelthree/engine)
 "spp" = (
@@ -21871,10 +21202,6 @@
 /turf/open/floor/circuit,
 /area/awaymission/factory/factoryduring/down/levelthree)
 "ssP" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
 /obj/machinery/light/broken,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/engine/light{
@@ -21947,10 +21274,6 @@
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
 "swW" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
 /obj/machinery/light/built{
 	dir = 1
 	},
@@ -22399,13 +21722,6 @@
 /area/awaymission/factory/villageafter{
 	teleport_restriction = 0
 	})
-"sLl" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/turf/open/floor/plasteel,
-/area/awaymission/factory/factoryduring)
 "sLn" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet,
@@ -22438,10 +21754,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/monotile/light,
 /area/awaymission/factory/villageafter/hospital)
-"sMR" = (
-/obj/item/twohanded/required/kirbyplants/random,
-/turf/open/floor/plasteel/white,
-/area/awaymission/factory/factoryduring/down/leveltwo)
 "sMV" = (
 /obj/structure/closet,
 /obj/item/weaponcrafting/receiver,
@@ -23631,16 +22943,7 @@
 /obj/machinery/door/airlock,
 /turf/open/floor/plasteel/checker,
 /area/awaymission/factory/factoryduring/down)
-"tNc" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel,
-/area/awaymission/factory/factoryafter)
 "tNw" = (
-/obj/item/twohanded/required/kirbyplants/random,
 /obj/machinery/light/broken,
 /mob/living/simple_animal/hostile/factory/ranged/smg{
 	dir = 1;
@@ -23714,13 +23017,6 @@
 	},
 /turf/closed/wall/mineral/wood/nonmetal,
 /area/awaymission/factory/villageafter/house/start)
-"tQh" = (
-/obj/structure/table/reinforced,
-/obj/item/card/id/job/med{
-	access = list(202)
-	},
-/turf/open/floor/plasteel/tiled/light,
-/area/awaymission/factory/factoryduring/down/leveltwo)
 "tQn" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/flora/ausbushes/brflowers,
@@ -23816,7 +23112,6 @@
 /turf/open/floor/plasteel/tiled/light,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "tWk" = (
-/obj/structure/chair/pew/left,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/church)
 "tWG" = (
@@ -23929,12 +23224,6 @@
 	},
 /turf/open/floor/plating,
 /area/awaymission/factory/factoryduring/down/levelthree)
-"ubE" = (
-/obj/structure/chair/comfy{
-	dir = 4
-	},
-/turf/open/floor/plasteel/tiled/light,
-/area/awaymission/factory/factoryduring/down/leveltwo)
 "ubF" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -23997,14 +23286,6 @@
 /obj/item/ammo_casing/caseless/rocket,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
-"ueG" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel/tiled/light,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "ueV" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/wood,
@@ -24057,7 +23338,6 @@
 	anchored = 1;
 	icon_state = "tac"
 	},
-/obj/item/clothing/under/rank/security/blueshirt,
 /obj/item/clothing/suit/armor/vest/old,
 /obj/item/storage/belt/security,
 /obj/item/clothing/mask/balaclava,
@@ -24261,9 +23541,6 @@
 /turf/open/floor/circuit/off,
 /area/awaymission/factory/factoryafter/down/levelthree/engine)
 "uoS" = (
-/obj/structure/chair/pew/left{
-	dir = 1
-	},
 /obj/effect/decal/remains/human,
 /turf/open/floor/wood{
 	icon_state = "wood-broken4"
@@ -25086,16 +24363,6 @@
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
 /area/awaymission/factory/factoryduring/down/levelthree)
-"uUW" = (
-/obj/structure/chair/comfy/beige,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel{
-	dir = 8;
-	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
-	},
-/area/awaymission/factory/factoryafter)
 "uVn" = (
 /obj/item/soap,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -25109,16 +24376,6 @@
 	},
 /turf/open/floor/monotile/light,
 /area/awaymission/factory/villageduring/hospital)
-"uWm" = (
-/obj/structure/chair/comfy/beige,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel{
-	dir = 8;
-	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
-	},
-/area/awaymission/factory/factoryafter)
 "uWs" = (
 /obj/effect/decal/cleanable/blood/old{
 	icon_state = "floor4-old"
@@ -25215,24 +24472,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageafter/house)
-"uYF" = (
-/obj/structure/chair/comfy/beige,
-/turf/open/floor/plasteel{
-	dir = 8;
-	heat_capacity = 1e+006;
-	icon_state = "damaged2";
-	temperature = 251
-	},
-/area/awaymission/factory/factoryduring)
-"uYM" = (
-/obj/structure/chair/comfy/beige,
-/turf/open/floor/plasteel{
-	dir = 8;
-	heat_capacity = 1e+006;
-	icon_state = "floorscorched1";
-	temperature = 251
-	},
-/area/awaymission/factory/factoryduring)
 "uYO" = (
 /obj/structure/trap/damage,
 /turf/open/floor/holofloor/grass{
@@ -25322,7 +24561,6 @@
 	})
 "veg" = (
 /obj/machinery/door/airlock/command{
-	req_access = null;
 	req_access_txt = "207"
 	},
 /turf/open/floor/mineral/titanium,
@@ -25418,14 +24656,6 @@
 	},
 /turf/open/floor/plasteel/freezer,
 /area/awaymission/factory/factoryduring/down/leveltwo)
-"vgJ" = (
-/obj/structure/table,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/item/card/id/job/med{
-	access = list(202)
-	},
-/turf/open/floor/mineral/titanium/white,
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "vgY" = (
 /mob/living/simple_animal/hostile/zombie{
 	deathsound = 'sound/voice/lizard/deathsound.ogg';
@@ -26917,9 +26147,6 @@
 	},
 /obj/item/melee/classic_baton/police,
 /obj/item/grenade/clusterbuster/random,
-/obj/item/card/id/job/sec{
-	access = list(203)
-	},
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
@@ -27367,14 +26594,6 @@
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
-"wHQ" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/monotile,
-/area/awaymission/factory/villageafter/hospital)
 "wHZ" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet/purple,
@@ -27401,7 +26620,6 @@
 /turf/open/floor/monotile,
 /area/awaymission/factory/villageduring/hospital)
 "wIF" = (
-/obj/structure/chair/sofa/left,
 /obj/machinery/camera,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet,
@@ -27487,12 +26705,6 @@
 /obj/effect/decal/cleanable/vomit/old,
 /turf/open/floor/monotile,
 /area/awaymission/factory/villageafter/hospital)
-"wMQ" = (
-/obj/structure/chair/sofa/left{
-	dir = 1
-	},
-/turf/open/floor/carpet/royalblack,
-/area/awaymission/factory/villageafter/house)
 "wNi" = (
 /obj/item/clothing/gloves/botanic_leather,
 /turf/open/floor/plating/dirt{
@@ -27590,7 +26802,6 @@
 "wQV" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/item/melee/classic_baton/police/telescopic,
-/obj/item/pda/unlicensed,
 /obj/item/storage/box/ids,
 /obj/item/gun/ballistic/automatic/pistol/m1911,
 /obj/item/ammo_box/magazine/m45{
@@ -27712,13 +26923,6 @@
 /obj/structure/bed/pod,
 /turf/open/floor/monotile,
 /area/awaymission/factory/villageduring/hospital)
-"wVn" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/turf/open/floor/monotile,
-/area/awaymission/factory/villageduring/hospital)
 "wVw" = (
 /obj/structure/table/optable,
 /obj/effect/decal/remains/human,
@@ -27772,13 +26976,6 @@
 /obj/item/ammo_box/magazine/m75,
 /turf/open/floor/carpet/royalblack,
 /area/awaymission/factory/factoryduring/down/levelthree)
-"wXu" = (
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/turf/open/floor/monotile/steel,
-/area/awaymission/factory/villageduring/hospital)
 "wXJ" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/crumpled{
@@ -27830,15 +27027,6 @@
 	},
 /turf/open/floor/monotile/light,
 /area/awaymission/factory/villageduring/hospital)
-"xaX" = (
-/obj/structure/chair/pew/right{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/wood{
-	icon_state = "wood-broken7"
-	},
-/area/awaymission/factory/villageafter/church)
 "xbf" = (
 /obj/effect/mob_spawn/human/corpse{
 	mob_species = /datum/species/golem/bluespace;
@@ -27973,11 +27161,6 @@
 	ambient_buzz = null;
 	ambient_effects = list('sound/ambience/ambivapor1.ogg','sound/ambience/shore.ogg','sound/ambience/seag1.ogg','sound/ambience/seag2.ogg','sound/ambience/seag2.ogg')
 	})
-"xhJ" = (
-/obj/structure/table/wood,
-/obj/item/twohanded/required/chainsaw,
-/turf/open/floor/wood,
-/area/awaymission/factory/villageduring/house)
 "xig" = (
 /turf/open/floor/plating,
 /area/awaymission/factory/factoryduring/down/maint)
@@ -28278,12 +27461,6 @@
 /turf/open/floor/wood{
 	icon_state = "wood-broken6"
 	},
-/area/awaymission/factory/villageafter/house)
-"xvl" = (
-/obj/structure/chair/sofa/right{
-	dir = 1
-	},
-/turf/open/floor/carpet/royalblack,
 /area/awaymission/factory/villageafter/house)
 "xvr" = (
 /obj/item/gun/ballistic/automatic/tommygun{
@@ -28954,15 +28131,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/monotile,
 /area/awaymission/factory/villageafter/hospital)
-"xXv" = (
-/obj/effect/decal/remains/human,
-/obj/item/twohanded/required/kirbyplants/dead{
-	desc = "Plant that nobody looked after for years. It died.";
-	name = "dead plant"
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/monotile,
-/area/awaymission/factory/villageafter/hospital)
 "xXM" = (
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -29141,12 +28309,6 @@
 /obj/item/reagent_containers/spray/waterflower/lube,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
-"ydW" = (
-/obj/item/card/id/job/med{
-	access = list(202)
-	},
-/turf/open/floor/plasteel/tiled/light,
-/area/awaymission/factory/factoryduring/down/leveltwo)
 "yeu" = (
 /obj/structure/chair{
 	dir = 8
@@ -29246,7 +28408,6 @@
 	anchored = 1;
 	icon_state = "tac"
 	},
-/obj/item/clothing/under/rank/security/blueshirt,
 /obj/item/storage/belt/security,
 /obj/item/clothing/mask/balaclava,
 /obj/item/clothing/mask/gas/sechailer/swat,
@@ -30724,7 +29885,7 @@ piy
 gZi
 pFC
 pFC
-oFS
+efA
 pFC
 pFC
 gZi
@@ -33095,7 +32256,7 @@ tRJ
 tRJ
 tRJ
 kac
-wHQ
+ygh
 xkM
 ygh
 kac
@@ -33106,7 +32267,7 @@ kac
 tRJ
 tRJ
 jvz
-dJR
+tRp
 mWs
 mWs
 azW
@@ -33356,7 +32517,7 @@ kac
 kac
 kac
 kac
-xXv
+xXM
 ygh
 aLD
 nCU
@@ -33612,7 +32773,7 @@ kac
 wJt
 xkT
 kac
-wHQ
+ygh
 ygh
 ygh
 vYN
@@ -33783,7 +32944,7 @@ wHZ
 ohs
 goV
 hFg
-ibs
+xNN
 img
 goV
 piy
@@ -34803,7 +33964,7 @@ uxE
 wqy
 wTd
 xPC
-fOk
+xPC
 gcy
 ofs
 gwQ
@@ -35160,9 +34321,9 @@ sMo
 sMo
 kac
 fuA
-qwb
-qwb
-qwb
+cSS
+cSS
+cSS
 kac
 kbh
 tRJ
@@ -35311,7 +34472,7 @@ wQV
 rLj
 eHe
 rLj
-ick
+rLj
 uxE
 uxE
 goV
@@ -35676,7 +34837,7 @@ kac
 cSS
 cSS
 cSS
-lyh
+cSS
 kac
 kbh
 tRJ
@@ -35814,7 +34975,7 @@ fgi
 piy
 cPx
 xCE
-cKP
+pzh
 pzh
 qfw
 xCE
@@ -36959,9 +36120,9 @@ xQR
 xQR
 kac
 fuA
-eFk
-eFk
-eFk
+cSS
+cSS
+cSS
 kac
 kbh
 tRJ
@@ -37101,7 +36262,7 @@ cPx
 xCE
 qfw
 diC
-cKP
+pzh
 xCE
 fBw
 xCE
@@ -37126,7 +36287,7 @@ sPJ
 vQf
 yeu
 yeu
-iyC
+iUK
 iUK
 vQS
 jwr
@@ -37894,7 +37055,7 @@ vQf
 uzE
 uzE
 vQS
-gnC
+glP
 bwJ
 qXh
 iyW
@@ -38146,12 +37307,12 @@ xsu
 xsu
 xsu
 bwJ
-kEl
+glP
 vQf
 rqI
 uzE
 vQS
-hGn
+glP
 bwJ
 qXh
 qXh
@@ -38381,7 +37542,7 @@ xCE
 xCE
 bRf
 vqq
-hEI
+oER
 cye
 oER
 vqq
@@ -38403,12 +37564,12 @@ xsu
 xsu
 xsu
 bwJ
-glh
+glP
 vQf
 uzE
 uzE
 vQS
-hGp
+glP
 bwJ
 qXh
 qXh
@@ -38695,7 +37856,7 @@ oHU
 pFC
 wWw
 pun
-pJv
+cRg
 cRg
 cRg
 cRg
@@ -40012,7 +39173,7 @@ jzs
 rud
 sNS
 tcp
-lZc
+teA
 sHB
 nKs
 uxz
@@ -40275,7 +39436,7 @@ xwG
 xwG
 rXc
 rud
-iMk
+rXc
 rXc
 rXc
 rud
@@ -40442,7 +39603,7 @@ rbc
 vqq
 cPm
 mZI
-dAz
+cPm
 vqq
 dRW
 ebd
@@ -40459,12 +39620,12 @@ xsu
 nQr
 xsu
 bwJ
-kEl
+glP
 vQf
 uzE
 uzE
 vQS
-hGn
+glP
 bwJ
 qXh
 qXh
@@ -40532,7 +39693,7 @@ sBn
 xwG
 rXc
 rud
-iMk
+rXc
 rXc
 rXc
 rud
@@ -40716,12 +39877,12 @@ xsu
 xsu
 xsu
 bwJ
-glh
+glP
 vQf
 uzE
 uzE
 vQS
-hGp
+glP
 bwJ
 qXh
 qXh
@@ -40789,7 +39950,7 @@ ufu
 uys
 uLn
 rud
-uUW
+ugO
 uZz
 rXc
 rud
@@ -40973,7 +40134,7 @@ xsu
 xsu
 xsu
 bwJ
-gnC
+glP
 vQf
 uzE
 uzE
@@ -41295,7 +40456,7 @@ jzs
 jzs
 jzs
 rud
-lZc
+teA
 teA
 dyB
 tPl
@@ -42026,7 +41187,7 @@ efA
 pFC
 pFC
 lrT
-nfC
+pFC
 gZi
 gZi
 gZi
@@ -42326,10 +41487,10 @@ rud
 sPk
 tiL
 rud
-tNc
+rXc
 hsN
 hsN
-tNc
+rXc
 rud
 mwp
 rXc
@@ -42780,8 +41941,8 @@ bwJ
 hHk
 hHk
 imW
-vgJ
-iUO
+imW
+acR
 bwJ
 gZi
 gZi
@@ -43102,7 +42263,7 @@ uin
 uBR
 uMG
 rud
-uWm
+wxm
 rXc
 rXc
 rud
@@ -43295,7 +42456,7 @@ uzE
 uzE
 uzE
 uzE
-gNl
+uzE
 bwJ
 qvG
 jGE
@@ -43359,7 +42520,7 @@ ujf
 uCx
 uCx
 rud
-iMk
+rXc
 uin
 rXc
 rud
@@ -43545,7 +42706,7 @@ cPx
 gdf
 cPx
 bwJ
-gNl
+uzE
 uzE
 uzE
 rqI
@@ -43616,7 +42777,7 @@ ujl
 uDJ
 ujl
 rud
-iMk
+rXc
 vaU
 vEw
 rud
@@ -44327,7 +43488,7 @@ uzE
 bwJ
 qvG
 jGE
-kbg
+qvG
 kwx
 bwJ
 cPx
@@ -44971,7 +44132,7 @@ qiL
 eXd
 daU
 daU
-xvl
+daU
 jvz
 kKC
 kKC
@@ -45353,7 +44514,7 @@ gTj
 uzE
 uzE
 bwJ
-hQu
+jwx
 qvG
 qvG
 qvG
@@ -45485,7 +44646,7 @@ naA
 eXd
 daU
 daU
-wMQ
+daU
 jvz
 kKC
 kKC
@@ -45613,7 +44774,7 @@ bwJ
 jwx
 qvG
 kbn
-oHR
+qvG
 bwJ
 irG
 bwJ
@@ -45878,7 +45039,7 @@ irG
 uTL
 lRi
 maR
-mjJ
+hEg
 mAT
 nnh
 ora
@@ -46373,16 +45534,16 @@ cKX
 piy
 cPx
 bwJ
-ueG
-gMs
+kUm
+kUm
 kUm
 lJP
-gMs
+kUm
 kUm
 kUm
 ahX
 bwJ
-jIK
+sLn
 sLn
 kxi
 bwJ
@@ -46879,7 +46040,7 @@ cPx
 cKX
 aCo
 flG
-fnf
+aCo
 xsu
 xsu
 eRL
@@ -46889,7 +46050,7 @@ cPx
 bwJ
 gXU
 hut
-nfs
+gXU
 kUm
 kUm
 cof
@@ -47151,7 +46312,7 @@ kUm
 kUm
 iBH
 kUm
-ueG
+kUm
 bwJ
 cZJ
 sLn
@@ -47410,7 +46571,7 @@ kUm
 kUm
 rcS
 bwJ
-jIK
+sLn
 jnP
 sLn
 yjR
@@ -47661,19 +46822,19 @@ bwJ
 gZO
 kUm
 vis
-ueG
+kUm
 wVf
 wVf
 wVf
 wVf
 bwJ
-jKf
+sLn
 sLn
 jnP
 bwJ
 myF
 laa
-lyU
+myF
 bwJ
 cPx
 piy
@@ -48950,7 +48111,7 @@ hvy
 kUm
 nOR
 kUm
-fqx
+kUm
 pWB
 sLn
 sLn
@@ -49204,7 +48365,7 @@ haY
 kUm
 kUm
 bwJ
-ueG
+kUm
 cof
 kUm
 nOR
@@ -49215,7 +48376,7 @@ cZJ
 bwJ
 dyi
 laa
-lzs
+dyi
 bwJ
 cPx
 piy
@@ -49466,7 +48627,7 @@ kUm
 iWL
 jpB
 bwJ
-jLe
+cZJ
 jnP
 kxi
 bwJ
@@ -50265,7 +49426,7 @@ qcE
 pFC
 pFC
 qFr
-qXU
+pFC
 rik
 rox
 gZi
@@ -52290,7 +51451,7 @@ goV
 goV
 goV
 jQs
-iYU
+jQs
 goV
 goV
 goV
@@ -53575,7 +52736,7 @@ goV
 goV
 goV
 iFj
-iZN
+jQs
 goV
 goV
 goV
@@ -54748,7 +53909,7 @@ vzA
 lmi
 kAY
 jsF
-iKW
+jPJ
 jvz
 kbh
 tRJ
@@ -54982,7 +54143,7 @@ fJX
 cPO
 aaT
 oBf
-xaX
+xmy
 fJX
 kbh
 kbh
@@ -55236,10 +54397,10 @@ kbh
 fJX
 jlO
 ebm
-meh
+kYF
 mHM
 nOl
-snQ
+kYF
 fJX
 tRJ
 tRJ
@@ -55655,7 +54816,7 @@ odd
 wHP
 oLr
 pdk
-pot
+pFC
 gZi
 cPx
 piy
@@ -55760,7 +54921,7 @@ tRJ
 jvz
 qck
 wcs
-oSr
+mWs
 gYj
 jvz
 tRJ
@@ -59765,7 +58926,7 @@ piy
 iCj
 kfX
 kfX
-oLF
+qKo
 kfX
 kfX
 iCj
@@ -61793,7 +60954,7 @@ eHQ
 vSO
 hhp
 lwD
-lCT
+lwD
 vSO
 eHQ
 eHQ
@@ -62136,7 +61297,7 @@ heJ
 heJ
 heJ
 dJM
-wVn
+igR
 xxt
 qpS
 dJM
@@ -62147,7 +61308,7 @@ dJM
 heJ
 heJ
 xhu
-xhJ
+wrX
 bpW
 rcr
 rvZ
@@ -62397,7 +61558,7 @@ dJM
 dJM
 dJM
 dJM
-wVn
+igR
 rrN
 wVj
 iqd
@@ -62653,7 +61814,7 @@ dJM
 wVw
 xyf
 dJM
-wVn
+igR
 ogb
 rrN
 jAK
@@ -64201,9 +63362,9 @@ cYh
 cYh
 dJM
 mrt
-gCa
-gCa
-gCa
+qbi
+qbi
+qbi
 dJM
 qWl
 heJ
@@ -64352,7 +63513,7 @@ sdy
 rWg
 eOK
 rWg
-jCJ
+rWg
 wot
 vSO
 vSO
@@ -64717,7 +63878,7 @@ dJM
 qbi
 qbi
 qbi
-wXu
+qbi
 dJM
 qWl
 heJ
@@ -64855,7 +64016,7 @@ fgi
 piy
 cPx
 adT
-cTF
+eor
 eor
 hHW
 adT
@@ -66000,9 +65161,9 @@ xWb
 jIr
 dJM
 mrt
-iaA
-iaA
-iaA
+qbi
+qbi
+qbi
 dJM
 qWl
 heJ
@@ -66142,7 +65303,7 @@ cPx
 adT
 hHW
 drY
-dEZ
+eor
 adT
 cPx
 adT
@@ -66935,7 +66096,7 @@ ubM
 xKn
 xKn
 vkX
-gtG
+heB
 nBY
 rri
 iJG
@@ -67187,12 +66348,12 @@ xsu
 xsu
 xsu
 nBY
-jtC
+heB
 ubM
 xKn
 hdL
 vkX
-hSJ
+heB
 nBY
 rri
 rri
@@ -67444,12 +66605,12 @@ xsu
 xsu
 xsu
 nBY
-gqJ
+heB
 ubM
 xKn
 xKn
 vkX
-hSU
+heB
 nBY
 rri
 rri
@@ -67736,7 +66897,7 @@ oMY
 kfX
 vKS
 pun
-pJv
+cRg
 cRg
 cRg
 cRg
@@ -69053,7 +68214,7 @@ ahN
 iid
 sUq
 tpG
-fLC
+tss
 xCA
 oAV
 uHa
@@ -69316,7 +68477,7 @@ imo
 oEK
 qxV
 iid
-seN
+cRv
 cRv
 cRv
 iid
@@ -69500,12 +68661,12 @@ xsu
 xsu
 xsu
 nBY
-jtC
+heB
 ubM
 xKn
 xKn
 vkX
-hSJ
+heB
 nBY
 rri
 rri
@@ -69573,7 +68734,7 @@ mzT
 oEK
 rih
 iid
-seN
+cRv
 cRv
 cRv
 iid
@@ -69757,12 +68918,12 @@ xsu
 xsu
 xsu
 nBY
-gqJ
+heB
 ubM
 xKn
 xKn
 vkX
-hSU
+heB
 nBY
 rri
 rri
@@ -69830,7 +68991,7 @@ ulv
 uHd
 uOF
 iid
-uYF
+unJ
 cRv
 cRv
 iid
@@ -70014,7 +69175,7 @@ xsu
 xsu
 xsu
 nBY
-gtG
+heB
 ubM
 xKn
 xKn
@@ -70336,7 +69497,7 @@ ahN
 ahN
 ahN
 iid
-fLC
+tss
 tss
 mgI
 tZK
@@ -71367,10 +70528,10 @@ iid
 sWh
 tvn
 iid
-sLl
+cRv
 xYW
 xYW
-sLl
+cRv
 iid
 ocP
 cRv
@@ -71822,7 +70983,7 @@ hTL
 hTL
 hwf
 hwf
-jaI
+lFv
 nBY
 iCj
 iCj
@@ -72143,7 +71304,7 @@ urM
 uJl
 uPs
 iid
-uYM
+lyN
 cRv
 cRv
 iid
@@ -72336,7 +71497,7 @@ xKn
 xKn
 xKn
 xKn
-jaK
+xKn
 nBY
 jyq
 jRK
@@ -72363,11 +71524,11 @@ kfX
 woi
 kfX
 iCj
-psZ
 kfX
 kfX
 kfX
-rdC
+kfX
+wSH
 iCj
 iCj
 cPx
@@ -72400,7 +71561,7 @@ urS
 uJY
 uQY
 iid
-seN
+cRv
 urM
 cRv
 iid
@@ -72586,7 +71747,7 @@ cPx
 cPx
 cPx
 nBY
-gUh
+xKn
 xKn
 xKn
 xKn
@@ -72620,11 +71781,11 @@ woi
 kfX
 kfX
 iCj
-dcW
 kfX
 kfX
 kfX
-jEs
+kfX
+wSH
 iCj
 iCj
 iCj
@@ -72657,7 +71818,7 @@ usY
 uKb
 usY
 iid
-seN
+cRv
 vcp
 nsT
 iid
@@ -73368,7 +72529,7 @@ xKn
 nBY
 jyq
 jRK
-kov
+jyq
 kBY
 nBY
 cPx
@@ -74012,7 +73173,7 @@ cAW
 lLK
 rZA
 rZA
-dMU
+tpp
 xhu
 xNv
 xNv
@@ -74526,7 +73687,7 @@ sqj
 lLK
 rZA
 tpp
-aNo
+tpp
 xhu
 xNv
 xNv
@@ -74654,7 +73815,7 @@ nBY
 rVw
 jyq
 kpq
-sMR
+jyq
 nBY
 tcn
 nBY
@@ -75414,16 +74575,16 @@ cKX
 piy
 cPx
 nBY
-hiD
-ubE
+gQo
+gQo
 pAK
 dTY
-ubE
+gQo
 uPd
 gQo
 qFp
 nBY
-jSS
+tuW
 tuW
 kEx
 nBY
@@ -75930,7 +75091,7 @@ cPx
 nBY
 hjH
 hAr
-tQh
+hjH
 ikn
 gQo
 oZm
@@ -76192,7 +75353,7 @@ bRY
 iuK
 gQo
 gQo
-hiD
+gQo
 nBY
 tuW
 tuW
@@ -76451,7 +75612,7 @@ iNf
 gQo
 iHV
 nBY
-jSS
+tuW
 tuW
 aKX
 prS
@@ -76702,13 +75863,13 @@ nBY
 hlE
 gQo
 fBL
-rJA
+gQo
 oca
 oca
 oca
 oca
 nBY
-jTa
+tuW
 tuW
 tuW
 nBY
@@ -77991,7 +77152,7 @@ hBR
 gQo
 nmC
 gQo
-ydW
+gQo
 hBR
 tuW
 tuW
@@ -78245,7 +77406,7 @@ hnv
 gQo
 gQo
 nBY
-rJA
+gQo
 gQo
 uPd
 nmC
@@ -78256,7 +77417,7 @@ tuW
 nBY
 qQf
 ljr
-lKv
+qQf
 nBY
 cPx
 piy
@@ -78463,7 +77624,7 @@ fgi
 piy
 cPx
 cPx
-aKd
+pIX
 cPx
 cPx
 cPx
@@ -78507,7 +77668,7 @@ gQo
 jeb
 qFp
 nBY
-jSS
+tuW
 tuW
 kEx
 nBY
@@ -78722,7 +77883,7 @@ cPx
 cPx
 pIX
 pIX
-duU
+pIX
 pIX
 pIX
 pIX
@@ -79749,7 +78910,7 @@ piy
 cPx
 cPx
 pIX
-aQL
+pIX
 cPx
 pIX
 pIX
@@ -80008,7 +79169,7 @@ piy
 piy
 piy
 piy
-bqz
+pIX
 piy
 piy
 piy
@@ -83789,7 +82950,7 @@ vDC
 gsV
 vqF
 cwa
-pLn
+sQS
 xhu
 qWl
 heJ
@@ -84696,7 +83857,7 @@ ojm
 iPh
 oUw
 plq
-psZ
+kfX
 iCj
 cPx
 piy
@@ -84801,7 +83962,7 @@ heJ
 xhu
 lBJ
 rcr
-fFq
+bpW
 olS
 xhu
 heJ
