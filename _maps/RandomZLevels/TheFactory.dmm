@@ -6808,15 +6808,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryafter/down/leveltwo)
-"gwQ" = (
-/obj/machinery/camera,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel{
-	dir = 8;
-	heat_capacity = 1e+006;
-	icon_state = "floorscorched2"
-	},
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "gxh" = (
 /obj/structure/window/reinforced/spawner,
 /turf/open/floor/noslip/white{
@@ -8962,6 +8953,15 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plating/snowed/smoothed,
 /area/awaymission/factory/villageafter/house)
+"ips" = (
+/obj/machinery/camera,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel{
+	dir = 8;
+	heat_capacity = 1e+006;
+	icon_state = "floorscorched2"
+	},
+/area/awaymission/factory/factoryafter/down/leveltwo)
 "ipA" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -9299,14 +9299,6 @@
 /obj/machinery/camera,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/stone,
-/area/awaymission/factory/factoryafter/down/leveltwo)
-"iFz" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel{
-	dir = 8;
-	heat_capacity = 1e+006;
-	icon_state = "floorscorched2"
-	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "iFI" = (
 /obj/machinery/conveyor/auto{
@@ -12742,14 +12734,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/freezer,
 /area/awaymission/factory/factoryafter/down/leveltwo)
-"lRI" = (
-/obj/machinery/conveyor/inverted{
-	dir = 9;
-	id = "fooddelivery";
-	operating = 1
-	},
-/turf/open/floor/plating,
-/area/awaymission/factory/factoryduring/down/leveltwo)
 "lRR" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "floor3"
@@ -12925,13 +12909,6 @@
 	},
 /turf/open/floor/plating,
 /area/awaymission/factory/factoryduring/down/levelthree)
-"mbw" = (
-/obj/machinery/conveyor/inverted{
-	dir = 5;
-	operating = 1
-	},
-/turf/open/floor/plating,
-/area/awaymission/factory/factoryduring/down/levelthree)
 "mbR" = (
 /obj/machinery/light/built{
 	dir = 1
@@ -13085,6 +13062,14 @@
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
+"mku" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel{
+	dir = 8;
+	heat_capacity = 1e+006;
+	icon_state = "floorscorched2"
+	},
+/area/awaymission/factory/factoryafter/down/leveltwo)
 "mkO" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/light/small/built{
@@ -13124,13 +13109,6 @@
 	dir = 4
 	},
 /obj/item/organ/brain,
-/turf/open/floor/plating,
-/area/awaymission/factory/factoryduring/down/levelthree)
-"mmW" = (
-/obj/machinery/conveyor/inverted{
-	dir = 10;
-	operating = 1
-	},
 /turf/open/floor/plating,
 /area/awaymission/factory/factoryduring/down/levelthree)
 "mna" = (
@@ -13567,14 +13545,6 @@
 	dir = 8
 	},
 /obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/turf/open/floor/plating,
-/area/awaymission/factory/factoryduring/down/levelthree)
-"mFY" = (
-/obj/machinery/conveyor/inverted{
-	dir = 6;
-	movedir = 8;
-	operating = 1
-	},
 /turf/open/floor/plating,
 /area/awaymission/factory/factoryduring/down/levelthree)
 "mFZ" = (
@@ -14342,14 +14312,6 @@
 	icon_state = "platingdmg2"
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
-"nnT" = (
-/obj/machinery/conveyor/inverted{
-	dir = 5;
-	movedir = 2;
-	operating = 1
-	},
-/turf/open/floor/plating,
-/area/awaymission/factory/factoryduring/down/levelthree)
 "nnZ" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -29
@@ -16806,11 +16768,10 @@
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
 "pbB" = (
-/obj/machinery/conveyor/inverted{
-	dir = 6;
-	operating = 1
-	},
 /obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/machinery/conveyor/auto{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/awaymission/factory/factoryduring/down/levelthree)
 "pbT" = (
@@ -30113,7 +30074,7 @@ goV
 kxR
 hpd
 oKJ
-iFz
+mku
 goV
 piy
 piy
@@ -30625,7 +30586,7 @@ gkv
 gvi
 goV
 njM
-iFz
+mku
 hEg
 iah
 goV
@@ -32169,7 +32130,7 @@ wHZ
 wHZ
 goV
 xNN
-iFz
+mku
 fDB
 goV
 piy
@@ -33706,7 +33667,7 @@ xPC
 xPC
 gcy
 ofs
-gwQ
+ips
 gKy
 wHZ
 lSk
@@ -44521,7 +44482,7 @@ lxQ
 bwJ
 irG
 bwJ
-iFz
+mku
 bwJ
 fEE
 bwJ
@@ -54787,7 +54748,7 @@ cPx
 cPx
 goV
 ioW
-iFz
+mku
 bie
 pNG
 goV
@@ -55043,7 +55004,7 @@ cPx
 cPx
 cPx
 goV
-iFz
+mku
 iGP
 clv
 pEA
@@ -55557,7 +55518,7 @@ piy
 cPx
 cPx
 goV
-gwQ
+ips
 iHN
 jan
 jqB
@@ -62252,7 +62213,7 @@ iIr
 iIr
 iIr
 iIr
-lRI
+lhU
 nBY
 tvG
 giJ
@@ -65596,7 +65557,7 @@ nBY
 nBY
 nBY
 vDw
-mFY
+giJ
 mbc
 mCO
 iCj
@@ -65852,7 +65813,7 @@ iCj
 iCj
 lTX
 mbc
-mmW
+mbc
 mFZ
 mUH
 giJ
@@ -66626,7 +66587,7 @@ tdS
 cPx
 cPx
 tdS
-nnT
+mcK
 nBf
 hFB
 nRv
@@ -68421,7 +68382,7 @@ itZ
 kfX
 iCj
 uiN
-mbw
+mcK
 cBz
 mcK
 mcK
