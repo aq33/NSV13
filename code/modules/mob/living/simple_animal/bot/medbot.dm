@@ -536,7 +536,7 @@ GLOBAL_VAR(medibot_unique_id_gen)
 			var/list/messagevoice = list("Pani doktor, pavulon się skończył." = 'aquila/sound/voice/medbot/pani_doktor.ogg') // AQUILA EDIT
 			var/message = pick(messagevoice)
 			speak(message)
-			playsound(src, messagevoice[message], 50)
+			playsound(src, messagevoice[message], 30)
 			bot_reset()
 			tending = FALSE
 		else if(patient)

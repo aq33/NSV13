@@ -541,7 +541,7 @@ MENU_SQUARE_VIEW
 
 ## Name your perpetual currency here
 ## This is used within the metashop and earned by playing the game.
-METACURRENCY_NAME Torp
+METACURRENCY_NAME Aquilosy
 
 ## Grant metacurrency
 ## Comment this out if you don't want players to earn metacurrency
@@ -588,7 +588,7 @@ CENTCOM_BAN_DB https://centcom.melonmesa.com/ban/search
 ## Enable IC/OOC Hard Filtering or RP Soft Filtering. Comment to disable one or more of them
 #IC_FILTER_ENABLED
 #OOC_FILTER_ENABLED
-#RP_FILTER_ENABLED
+RP_FILTER_ENABLED
 
 ## Uncomment to enable redirecting to the specified address. If a user attempts to join after EXTREEME_POPCAP has been reached, redirect them to this address.
 ## The given address is a format example. "byond://" is required to function. Create a potential infinite loop at your own risk.
@@ -600,7 +600,7 @@ VOTE_AUTOTRANSFER_ENABLED
 ## Time (in deciseconds) before the first transfer vote. Default: 90 minutes
 VOTE_AUTOTRANSFER_INITIAL 54000
 ## Time (in deciseconds) between subsequent transfer votes. Default: 30 minutes
-VOTE_AUTOTRANSFER_INTERVAL 18000
+VOTE_AUTOTRANSFER_INTERVAL 36000
 
 ## Ghost role cooldown time after death (In deciseconds)
 GHOST_ROLE_COOLDOWN 3000

@@ -577,4 +577,4 @@
 /obj/structure/closet/Moved(atom/OldLoc, Dir) //AQUILA EDIT
 	. = ..()
 	if(has_gravity())
-		playsound(src, 'aquila/sound/effects/closetpull.ogg', 30, 0)
+		playsound(src, 'aquila/sound/effects/closetpull.ogg', 80, 0)
