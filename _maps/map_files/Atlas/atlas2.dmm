@@ -168,7 +168,6 @@
 /obj/effect/turf_decal/tile/ship/half/green{
 	dir = 4
 	},
-/obj/effect/landmark/start/cook,
 /turf/open/floor/monotile/light,
 /area/crew_quarters/kitchen)
 "aC" = (
@@ -2053,6 +2052,9 @@
 	},
 /obj/effect/landmark/zebra_interlock_point,
 /obj/item/reagent_containers/food/drinks/shaker,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "bar"
+	},
 /turf/open/floor/plating,
 /area/crew_quarters/bar)
 "gM" = (
@@ -3533,7 +3535,6 @@
 /obj/machinery/plantgenes{
 	pixel_y = 6
 	},
-/obj/structure/table/reinforced,
 /obj/effect/landmark/zebra_interlock_point,
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/firedoor/border_only{
@@ -3542,6 +3543,7 @@
 /obj/effect/turf_decal/tile/ship/half/green{
 	dir = 4
 	},
+/obj/structure/table,
 /turf/open/floor/monotile/steel,
 /area/hydroponics)
 "lq" = (
@@ -3675,6 +3677,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
+/obj/effect/landmark/start/cook,
 /turf/open/floor/monotile/steel,
 /area/hallway/secondary/service)
 "lN" = (
@@ -3996,6 +3999,9 @@
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/effect/landmark/zebra_interlock_point,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "bar"
+	},
 /turf/open/floor/plating,
 /area/crew_quarters/bar)
 "mT" = (
@@ -4399,6 +4405,15 @@
 /obj/effect/turf_decal/tile/ship/half/green{
 	dir = 4
 	},
+/obj/structure/closet/crate/bin{
+	pixel_y = 17;
+	pixel_x = 1;
+	name = "kosz pod zlewem";
+	desc = "Jak nie masz kosza pod zlewem to jesteś volksdeutchem."
+	},
+/obj/structure/table{
+	layer = 2.901
+	},
 /turf/open/floor/monotile/light,
 /area/crew_quarters/kitchen)
 "op" = (
@@ -4755,6 +4770,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/effect/landmark/start/botanist,
 /turf/open/floor/monotile/steel,
 /area/hydroponics)
 "pA" = (
@@ -5023,6 +5039,7 @@
 	},
 /obj/machinery/light_switch/west,
 /obj/item/storage/toolbox/mechanical,
+/obj/item/reagent_containers/spray/cleaner,
 /turf/open/floor/monotile/steel,
 /area/hallway/secondary/service)
 "qt" = (
@@ -5036,17 +5053,8 @@
 /turf/open/floor/plating,
 /area/maintenance/department/science/xenobiology)
 "qu" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/structure/disposalpipe/segment,
-/obj/effect/turf_decal/tile/ship/half/green{
-	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/effect/landmark/start/botanist,
-/turf/open/floor/monotile/steel,
+/turf/open/floor/monotile/dark,
 /area/hydroponics)
 "qx" = (
 /obj/machinery/suit_storage_unit/cmo,
@@ -5301,7 +5309,9 @@
 /obj/item/storage/fancy/cigarettes/cigpack_robust{
 	pixel_x = -8
 	},
-/obj/machinery/status_display/evac/west,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "bar"
+	},
 /turf/open/floor/plating,
 /area/crew_quarters/bar)
 "ro" = (
@@ -5408,7 +5418,6 @@
 /obj/effect/landmark/zebra_interlock_point,
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/east,
-/obj/structure/table/reinforced,
 /obj/item/book/manual/wiki/cooking_to_serve_man,
 /obj/item/reagent_containers/food/condiment/saltshaker{
 	pixel_x = -3
@@ -5417,6 +5426,7 @@
 	pixel_x = 3
 	},
 /obj/item/kitchen/rollingpin,
+/obj/structure/table,
 /turf/open/floor/plating,
 /area/crew_quarters/kitchen)
 "rK" = (
@@ -5714,7 +5724,9 @@
 /area/science/xenobiology)
 "sD" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
-/mob/living/carbon/monkey/punpun,
+/mob/living/carbon/monkey/punpun{
+	name = "Szymon"
+	},
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
 "sE" = (
@@ -6260,12 +6272,15 @@
 /area/crew_quarters/heads/cmo)
 "uI" = (
 /obj/structure/window/reinforced/spawner/west,
-/obj/structure/table/reinforced,
 /obj/effect/landmark/zebra_interlock_point,
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/east,
-/obj/machinery/reagentgrinder,
 /obj/item/reagent_containers/food/condiment/enzyme,
+/obj/machinery/reagentgrinder{
+	pixel_y = 21;
+	pixel_x = -5
+	},
+/obj/structure/table,
 /turf/open/floor/plating,
 /area/crew_quarters/kitchen)
 "uK" = (
@@ -7129,16 +7144,6 @@
 /obj/structure/lattice/catwalk/over/ship,
 /obj/machinery/airalarm/directional/west,
 /turf/open/floor/monotile/dark,
-/area/hydroponics)
-"xw" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/ship/half/green{
-	dir = 4
-	},
-/obj/effect/landmark/start/botanist,
-/turf/open/floor/monotile/steel,
 /area/hydroponics)
 "xx" = (
 /obj/structure/cable{
@@ -9411,6 +9416,7 @@
 /obj/machinery/camera/autoname{
 	dir = 4
 	},
+/obj/machinery/status_display/evac/north,
 /turf/open/floor/monotile/steel,
 /area/crew_quarters/bar/mess_hall)
 "Fn" = (
@@ -11507,7 +11513,6 @@
 /area/maintenance/nsv/deck1/port)
 "LX" = (
 /obj/structure/window/reinforced/spawner/west,
-/obj/structure/table/reinforced,
 /obj/effect/landmark/zebra_interlock_point,
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/east,
@@ -11516,8 +11521,9 @@
 	pixel_x = 2
 	},
 /obj/item/storage/box/donkpockets{
-	pixel_x = 2
+	pixel_y = 16
 	},
+/obj/structure/table,
 /turf/open/floor/plating,
 /area/crew_quarters/kitchen)
 "Ma" = (
@@ -13064,6 +13070,11 @@
 	},
 /obj/machinery/light_switch/east{
 	pixel_y = -11
+	},
+/obj/machinery/button/door{
+	id = "bar";
+	pixel_x = 24;
+	pixel_y = 10
 	},
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
@@ -14626,7 +14637,6 @@
 /area/hallway/nsv/deck1/hallway)
 "WD" = (
 /obj/machinery/computer/ship/viewscreen,
-/obj/structure/table/reinforced,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -14642,6 +14652,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/zebra_interlock_point,
+/obj/structure/table,
 /turf/open/floor/monotile/dark,
 /area/hydroponics)
 "WE" = (
@@ -49169,7 +49180,7 @@ Bi
 bm
 Xi
 FL
-qu
+FL
 pz
 FL
 FL
@@ -49427,7 +49438,7 @@ vv
 UU
 DS
 DS
-xw
+rf
 DS
 DS
 ra
@@ -49679,7 +49690,7 @@ PC
 PC
 PC
 WD
-Yj
+qu
 ZS
 YP
 Zs
