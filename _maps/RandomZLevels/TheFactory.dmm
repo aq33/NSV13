@@ -2191,7 +2191,6 @@
 	enemies = list(/mob/living/carbon,/mob/living/carbon/human/species);
 	environment_smash = 1;
 	health = 500;
-	loot = list(/obj/item/clothing/mask/gas/clown_hat,/obj/effect/gibspawner/xeno/bodypartless,/obj/effect/particle_effect/foam,/obj/item/soap,obj/item/organ/heart/gland/trauma,/obj/item/gun/magic/staff/honk,/obj/item/a_gift/anything);
 	maxHealth = 500;
 	melee_damage = 15
 	},
