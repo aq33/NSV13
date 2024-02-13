@@ -8962,15 +8962,6 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plating/snowed/smoothed,
 /area/awaymission/factory/villageafter/house)
-"ips" = (
-/obj/machinery/camera,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel{
-	dir = 8;
-	heat_capacity = 1e+006;
-	icon_state = "floorscorched2"
-	},
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "ipA" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -11896,6 +11887,7 @@
 /turf/open/floor/circuit/red/anim,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "lcE" = (
 /obj/machinery/light/small{
 	brightness = 3;
@@ -12352,6 +12344,7 @@
 /turf/open/floor/holofloor/beach/coast_t,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "lAy" = (
 /obj/effect/gibspawner/generic/animal,
 /turf/open/floor/plating/asteroid,
@@ -12656,16 +12649,6 @@
 	ambient_buzz = null;
 	teleport_restriction = 1
 	})
-"lNr" = (
-/obj/machinery/conveyor/inverted{
-	dir = 9;
-	id = "fooddelivery";
-	operating = 1
-	},
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "lNP" = (
 /obj/machinery/conveyor/auto{
 	dir = 5
@@ -12890,15 +12873,6 @@
 	icon_state = "plating_rust"
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
-"lZA" = (
-/obj/machinery/conveyor/inverted{
-	dir = 5;
-	operating = 1
-	},
-/turf/open/floor/plating{
-	icon_state = "plating_rust"
-	},
-/area/awaymission/factory/factoryafter/down/levelthree)
 "lZN" = (
 /obj/structure/closet/crate,
 /obj/item/storage/box/gloves,
@@ -13055,15 +13029,6 @@
 	icon_state = "plating_rust"
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
-"mfX" = (
-/obj/machinery/conveyor/inverted{
-	dir = 10;
-	operating = 1
-	},
-/turf/open/floor/plating{
-	icon_state = "plating_rust"
-	},
-/area/awaymission/factory/factoryafter/down/levelthree)
 "mgI" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel{
@@ -13120,14 +13085,6 @@
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
-"mku" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel{
-	dir = 8;
-	heat_capacity = 1e+006;
-	icon_state = "floorscorched2"
-	},
-/area/awaymission/factory/factoryafter/down/leveltwo)
 "mkO" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/light/small/built{
@@ -13453,16 +13410,6 @@
 	icon_state = "damaged4"
 	},
 /area/awaymission/factory/factoryduring)
-"mAe" = (
-/obj/machinery/conveyor/inverted{
-	dir = 6;
-	movedir = 8;
-	operating = 1
-	},
-/turf/open/floor/plating{
-	icon_state = "plating_rust"
-	},
-/area/awaymission/factory/factoryafter/down/levelthree)
 "mAn" = (
 /obj/structure/closet/crate,
 /obj/item/stack/conveyor/thirty,
@@ -14128,16 +14075,6 @@
 	dir = 1
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
-"ndQ" = (
-/obj/machinery/conveyor/inverted{
-	dir = 5;
-	movedir = 2;
-	operating = 1
-	},
-/turf/open/floor/plating{
-	icon_state = "plating_rust"
-	},
-/area/awaymission/factory/factoryafter/down/levelthree)
 "ndZ" = (
 /obj/effect/trap/nexus/trickyspawner/clowns,
 /turf/open/floor/carpet/orange,
@@ -17138,6 +17075,7 @@
 /turf/open/floor/circuit/off,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "pmg" = (
 /obj/item/ammo_casing/mm712x82{
 	caliber = null;
@@ -17323,6 +17261,7 @@
 /turf/open/floor/plasteel/vaporwave,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "ptF" = (
 /obj/effect/decal/cleanable/blood/gibs/old,
 /turf/open/floor/plating/snowed,
@@ -17341,6 +17280,7 @@
 /turf/open/floor/plasteel/vaporwave,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "puN" = (
 /obj/machinery/conveyor/auto{
 	id = "fooddelivery"
@@ -17358,6 +17298,7 @@
 /turf/open/floor/plasteel/vaporwave,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "pvq" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27
@@ -17737,6 +17678,7 @@
 /turf/open/floor/holofloor/beach,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "pJh" = (
 /obj/item/clothing/shoes/sandal,
 /turf/open/floor/plating/dirt{
@@ -17762,6 +17704,7 @@
 /turf/open/floor/plasteel/vaporwave,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "pJY" = (
 /obj/item/paper{
 	default_raw_text = "We offered the best protection to the engine because this is the only thing that powers the whole Factory. Solars on the surface are made for villagers to think that we do nothing wrong. If you suspect that someone is in the engine room trying to break open the tear in reality: first - laugh at them, second - call security.";
@@ -18077,6 +18020,7 @@
 /turf/open/floor/plasteel/vaporwave,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "pUv" = (
 /obj/machinery/door/airlock/security{
 	req_access_txt = "203"
@@ -18091,11 +18035,13 @@
 /turf/open/floor/plasteel/vaporwave,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "pVw" = (
 /obj/item/instrument/eguitar,
 /turf/open/floor/holofloor/beach/coast_t,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "pWo" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -18512,6 +18458,7 @@
 /turf/open/floor/plasteel/vaporwave,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "qoJ" = (
 /obj/structure/closet/secure{
 	anchored = 1;
@@ -19246,6 +19193,7 @@
 /turf/open/floor/plasteel/vaporwave,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "qTr" = (
 /obj/structure/window{
 	max_integrity = 9000
@@ -19253,6 +19201,7 @@
 /turf/open/floor/noslip/vaporwave,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "qUj" = (
 /obj/machinery/light/broken,
 /turf/open/floor/engine{
@@ -19284,6 +19233,7 @@
 /turf/open/floor/plasteel/vaporwave,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "qVZ" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/item/clothing/head/soft/red,
@@ -19312,6 +19262,7 @@
 /turf/open/floor/plasteel/vaporwave,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "qXa" = (
 /obj/machinery/door/airlock/command{
 	req_access = "207"
@@ -19891,6 +19842,7 @@
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "rvd" = (
 /obj/machinery/power/solar,
 /turf/open/floor/plasteel/airless/solarpanel,
@@ -20553,6 +20505,7 @@
 /turf/closed/wall/r_wall/rust,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "rUd" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/engine{
@@ -21815,6 +21768,7 @@
 	},
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "sTl" = (
 /obj/structure/chair/noose,
 /obj/effect/mob_spawn/human/corpse/damaged,
@@ -23462,6 +23416,7 @@
 /turf/open/floor/plasteel/vaporwave,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "uto" = (
 /obj/machinery/light/small/broken{
 	dir = 4
@@ -23550,6 +23505,7 @@
 /turf/open/floor/noslip/vaporwave,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "uwW" = (
 /obj/structure/lattice/catwalk/over,
 /obj/structure/lattice/catwalk/over,
@@ -25323,6 +25279,7 @@
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "vLg" = (
 /obj/structure/table/wood,
 /obj/item/clothing/head/peaceflower,
@@ -26646,6 +26603,7 @@
 /turf/open/floor/holofloor/beach/coast_b,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "wRV" = (
 /obj/item/chair/wood,
 /turf/open/floor/carpet/purple,
@@ -26747,6 +26705,7 @@
 /turf/closed/wall/r_wall/rust,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "wWV" = (
 /obj/structure/table/reinforced,
 /obj/item/wirecutters,
@@ -26943,6 +26902,7 @@
 /turf/open/floor/holofloor/beach,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
+	})
 "xig" = (
 /turf/open/floor/plating,
 /area/awaymission/factory/factoryduring/down/maint)
@@ -27389,11 +27349,10 @@
 /turf/open/floor/monotile,
 /area/awaymission/factory/villageduring/hospital)
 "xAA" = (
-/obj/machinery/conveyor/inverted{
-	dir = 6;
-	operating = 1
-	},
 /obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/machinery/conveyor/auto{
+	dir = 8
+	},
 /turf/open/floor/plating{
 	icon_state = "plating_rust"
 	},
@@ -30154,7 +30113,7 @@ goV
 kxR
 hpd
 oKJ
-mku
+iFz
 goV
 piy
 piy
@@ -30666,7 +30625,7 @@ gkv
 gvi
 goV
 njM
-mku
+iFz
 hEg
 iah
 goV
@@ -32210,7 +32169,7 @@ wHZ
 wHZ
 goV
 xNN
-mku
+iFz
 fDB
 goV
 piy
@@ -33252,7 +33211,7 @@ seB
 seB
 seB
 seB
-lNr
+vob
 hdI
 rLd
 phj
@@ -36596,7 +36555,7 @@ bwJ
 hdI
 hdI
 iFI
-mAe
+phj
 lYE
 myv
 gZi
@@ -36852,7 +36811,7 @@ gZi
 gZi
 lNP
 lYE
-mfX
+lYE
 drK
 drK
 phj
@@ -37626,7 +37585,7 @@ gZi
 cPx
 cPx
 gZi
-ndQ
+sbX
 nxK
 pFC
 nMy
@@ -39421,7 +39380,7 @@ kWs
 pFC
 gZi
 qFW
-lZA
+sbX
 meW
 sbX
 sbX
@@ -55084,7 +55043,7 @@ cPx
 cPx
 cPx
 goV
-mku
+iFz
 iGP
 clv
 pEA
@@ -55598,7 +55557,7 @@ piy
 cPx
 cPx
 goV
-ips
+gwQ
 iHN
 jan
 jqB
