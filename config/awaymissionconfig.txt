@@ -16,6 +16,6 @@ _maps/RandomZLevels/spacebattle.dmm
 _maps/RandomZLevels/TheBeach.dmm
 _maps/RandomZLevels/undergroundoutpost45.dmm
 _maps/RandomZLevels/TheFactory.dmm
-_maps/RandomZLevels/Academy.dmm 
+_maps/RandomZLevels/Academy.dmm
 _maps/RandomZLevels/challenge.dmm
 _maps/RandomZLevels/wildwest.dmm
