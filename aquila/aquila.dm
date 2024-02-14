@@ -191,3 +191,7 @@
 #include "code\modules\uplink\uplink_items.dm"
 #include "code\modules\vending\boozeomat.dm"
 #include "code\modules\vending\wardrobes.dm"
+#include "code\modules\research\designs\mecha_designs.dm"
+#include "code\modules\reagents\chemistry\recipes\other_reagents.dm"
+#include "code\modules\reagents\reagent_containers\bottle.dm"
+
