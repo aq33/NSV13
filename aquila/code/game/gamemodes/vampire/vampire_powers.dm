@@ -112,13 +112,13 @@
 	vamp_req = TRUE
 
 /obj/effect/proc_holder/spell/targeted/hypnotise/cast(list/targets, mob/user = usr)
-	for(var/mob/living/target in targets)
+	for(var/mob/living/carbon/target in targets)
 		user.visible_message("<span class='warning'>[user]'s eyes flash briefly as he stares into [target]'s eyes</span>")
 		if(do_mob(user, target, 30))
 			to_chat(user, "<span class='warning'>Your piercing gaze knocks out [target].</span>")
-			to_chat(target, "<span class='warning'>You find yourself unable to move and barely able to speak.</span>")
+			to_chat(target, "<span class='warning'>You find yourself unable to move or speak.</span>")
 			target.Paralyze(150)
-			target.stuttering = 10
+			target.silent = 10 //finally makes this stupid spell USEFUL
 		else
 			revert_cast(usr)
 			to_chat(usr, "<span class='warning'>You broke your gaze.</span>")
@@ -294,6 +294,7 @@
 			add_vampire(target)
 
 
+
 /obj/effect/proc_holder/spell/self/revive
 	name = "Revive"
 	gain_desc = "You have gained the ability to revive after death... However you can still be cremated/gibbed, and you will disintergrate if you're in the chapel!"
@@ -322,7 +323,7 @@
 		L.visible_message("<span class='warning'>[L] disintergrates into dust!</span>", "<span class='userdanger'>Holy energy seeps into our very being, disintergrating us instantly!</span>", "You hear sizzling.")
 		new /obj/effect/decal/remains/human(L.loc)
 		L.dust()
-	to_chat(L, "<span class='notice'>We begin to reanimate... this will take a minute.</span>")
+	to_chat(L, "<span class='notice'>We begin to reanimate... this will take 1 minute.</span>")
 	addtimer(CALLBACK(src, /obj/effect/proc_holder/spell/self/revive.proc/revive, L), 600)
 
 /obj/effect/proc_holder/spell/self/revive/proc/revive(mob/living/user)
