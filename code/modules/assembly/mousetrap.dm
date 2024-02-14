@@ -6,6 +6,7 @@
 	materials = list(/datum/material/iron=100)
 	attachable = TRUE
 	var/armed = FALSE
+	layer = BELOW_OBJ_LAYER //AQ EDIT
 
 	///if we are attached to an assembly holder, we attach a connect_loc element to ourselves that listens to this from the holder
 	var/static/list/holder_connections = list(
