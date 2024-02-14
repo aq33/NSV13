@@ -1772,16 +1772,12 @@
 /turf/open/floor/monotile/dark,
 /area/nsv/weapons)
 "fp" = (
-/obj/structure/closet/secure_closet/engineering_personal,
-/obj/item/clothing/suit/radiation,
-/obj/item/clothing/head/radiation,
-/obj/machinery/camera/autoname{
-	dir = 4
-	},
 /obj/structure/sign/poster/official/random{
 	pixel_y = -32
 	},
 /obj/effect/turf_decal/tile/ship/half/yellow,
+/obj/structure/closet/radiation,
+/obj/item/geiger_counter,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "fq" = (
@@ -2844,6 +2840,12 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck2/primary)
+"ib" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/open/floor/monotile/dark,
+/area/engine/engine_room)
 "ic" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
@@ -3657,7 +3659,7 @@
 	width = 8
 	},
 /turf/open/space/basic,
-/area/space)
+/area/space/nearstation)
 "ko" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -6266,9 +6268,9 @@
 /turf/open/floor/plating,
 /area/engine/atmos)
 "ry" = (
-/obj/structure/closet/radiation,
-/obj/item/geiger_counter,
-/obj/machinery/firealarm/directional/east,
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/item/clothing/suit/radiation,
+/obj/item/clothing/head/radiation,
 /obj/effect/turf_decal/tile/ship/half/yellow,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
@@ -10986,6 +10988,27 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/science/explab)
+"Ge" = (
+/obj/machinery/power/battery{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/machinery/power/battery{
+	pixel_y = 6;
+	pixel_x = 7
+	},
+/obj/machinery/power/battery{
+	pixel_x = -7
+	},
+/obj/structure/table/reinforced,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/power/battery{
+	pixel_x = 9
+	},
+/turf/open/floor/monotile/dark,
+/area/engine/engine_room)
 "Gf" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -15158,6 +15181,15 @@
 /obj/structure/closet/radiation,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port)
+"Sg" = (
+/obj/effect/turf_decal/tile/ship/half/yellow,
+/obj/machinery/camera/autoname{
+	dir = 4
+	},
+/obj/structure/closet/radiation,
+/obj/item/geiger_counter,
+/turf/open/floor/monotile/dark,
+/area/engine/engine_room)
 "Sh" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/ship/delivery/yellow,
@@ -42073,7 +42105,7 @@ MO
 MO
 xi
 ue
-FQ
+TF
 ue
 FQ
 HX
@@ -42328,9 +42360,9 @@ bC
 WJ
 bC
 MO
-xi
-ue
-TF
+kD
+kD
+kD
 ue
 TF
 Nh
@@ -42586,7 +42618,7 @@ dF
 MO
 MO
 MO
-MO
+Ua
 MO
 MO
 HX
@@ -42843,7 +42875,7 @@ sT
 tD
 MO
 MO
-Ua
+oL
 MO
 MO
 HX
@@ -43099,9 +43131,9 @@ VT
 IE
 Qu
 rj
-MO
-oL
-MO
+jV
+Dq
+Sg
 MO
 MO
 jy
@@ -43356,8 +43388,8 @@ wa
 Mv
 dB
 rj
-jV
-Dq
+PD
+QK
 fp
 MO
 MO
@@ -43870,8 +43902,8 @@ Wf
 Mg
 vW
 MO
-PD
-QK
+Ge
+ib
 ry
 MO
 MO
@@ -52319,10 +52351,10 @@ Nh
 Nh
 Nh
 Nh
-Nh
-kH
+HX
 kH
 Kh
+LU
 LU
 wl
 kB
@@ -52576,7 +52608,7 @@ Nh
 Nh
 Nh
 Nh
-Nh
+HX
 kH
 kH
 Lu
@@ -52833,7 +52865,7 @@ Nh
 Nh
 Nh
 Nh
-Nh
+HX
 kH
 kH
 kH
@@ -53089,8 +53121,8 @@ Nh
 Nh
 Nh
 Nh
-Nh
-Nh
+HX
+HX
 kH
 kH
 oD
@@ -53346,8 +53378,8 @@ Nh
 Nh
 Nh
 Nh
-Nh
-Nh
+HX
+kH
 kH
 kH
 oD
@@ -53603,8 +53635,8 @@ Nh
 Nh
 Nh
 Nh
-Nh
-Nh
+HX
+kH
 kH
 kH
 oD
@@ -53860,8 +53892,8 @@ Nh
 Nh
 Nh
 Nh
-Nh
-Nh
+HX
+kH
 kH
 kH
 kH
@@ -54117,8 +54149,8 @@ Nh
 Nh
 Nh
 Nh
-Nh
-Nh
+HX
+HX
 iV
 iV
 iV
