@@ -18,14 +18,12 @@
 /datum/game_mode/vampire
 	name = "vampire"
 	config_tag = "vampire"
-	antag_flag = ROLE_VAMPIRE
 	false_report_weight = 1
 	restricted_jobs = list("AI", "Cyborg")
 	protected_jobs = list("Head of Security", "Captain", "Security Officer", "Chaplain", "Detective", "Warden", "Head of Personnel")
 	required_players = 15
 	required_enemies = 1
 	recommended_enemies = 3
-	enemy_minimum_age = 0
 
 	announce_text = "There are vampires onboard the station!\n\
 		+	<span class='danger'>Vampires</span>: Suck the blood of the crew and complete your objectives!\n\

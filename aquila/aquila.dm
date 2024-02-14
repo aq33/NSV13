@@ -191,7 +191,6 @@
 #include "code\game\gamemodes\vampire\vampire_objective.dm"
 #include "code\game\gamemodes\vampire\vampire_other.dm"
 #include "code\game\gamemodes\vampire\vampire_powers.dm"
-#include "code\modules\admin\topic.dm"
 #include "code\__DEFINES\_onclick\huds\vampire.dm"
 #include "code\modules\antagonists\vampire\vampire.dm"
 #include "code\modules\mob\living\carbon\carbon.dm"

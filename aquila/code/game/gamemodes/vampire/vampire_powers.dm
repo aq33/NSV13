@@ -228,24 +228,10 @@
 	blood_used = 75
 	var/num_bats = 2
 
-/obj/effect/proc_holder/spell/bats/choose_targets(mob/user = usr)
-	var/list/turf/locs = new
-	for(var/direction in GLOB.alldirs) //looking for bat spawns
-		if(locs.len == num_bats) //we found 2 locations and thats all we need
-			break
-		var/turf/T = get_step(usr, direction) //getting a loc in that direction
-		if(AStar(user, T, /turf/proc/Distance, 1, simulated_only = 0)) // if a path exists, so no dense objects in the way its valid salid
-			locs += T
-
-	// pad with player location
-	for(var/i = locs.len + 1 to num_bats)
-		locs += user.loc
-
-	perform(locs, user = user)
 
 /obj/effect/proc_holder/spell/bats/cast(list/targets, mob/user = usr)
 	for(var/T in targets)
-		new /mob/living/simple_animal/hostile/vampire_bat(T)
+		new /mob/living/simple_animal/hostile/vampire_bat(user.loc)
 
 
 /obj/effect/proc_holder/spell/targeted/ethereal_jaunt/mistform
