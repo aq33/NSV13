@@ -170,6 +170,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NOHUNGER			"no_hunger"
 #define TRAIT_NOMETABOLISM		"no_metabolism"
 #define TRAIT_POWERHUNGRY		"power_hungry" //uses electricity instead of food
+#define TRAIT_NOSHITTING		"no_defecation" // AQ edit - no need to shit
 #define TRAIT_NOCLONELOSS		"no_cloneloss"
 #define TRAIT_TOXIMMUNE			"toxin_immune"
 #define TRAIT_EASYDISMEMBER		"easy_dismember"

@@ -14,6 +14,11 @@
 
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
+#include "aquila\code\__DEFINES\mob.dm"
+#include "aquila\code\game\objects\structures\watercloset.dm"
+#include "aquila\code\modules\mob\living\living.dm"
+#include "aquila\code\modules\mob\living\living_defines.dm"
+#include "aquila\code\modules\mob\living\carbon\human\human.dm"
 #include "code\__byond_version_compat.dm"
 #include "code\_compile_options.dm"
 #include "code\_debugger.dm"

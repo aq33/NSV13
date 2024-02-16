@@ -1216,6 +1216,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(HAS_TRAIT(src, TRAIT_NOHUNGER))
 		return //hunger is for BABIES
 
+	var/shitting_enabled = CONFIG_GET(flag/shitting_enabled) // AQ EDIT
+
 	//The fucking TRAIT_FAT mutation is the dumbest shit ever. It makes the code so difficult to work with
 	if(HAS_TRAIT_FROM(H, TRAIT_FAT, OBESITY))//I share your pain, past coder.
 		if(H.overeatduration < 100)
@@ -1253,7 +1255,14 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			hunger_rate = 3 * HUNGER_FACTOR
 		hunger_rate *= H.physiology.hunger_mod
 		H.adjust_nutrition(-hunger_rate)
-
+		if(shitting_enabled && !HAS_TRAIT(H, TRAIT_NOSHITTING)) // AQ EDIT
+			// we adjusted nutrition earlier
+			// changing hunger_rate now will only affect defecation
+			hunger_rate *= H.physiology.defecation_mod
+			hunger_rate *= shitmod
+			if (H.nutrition > NUTRITION_LEVEL_FULL) // this one overate
+				hunger_rate *= 2
+			H.adjust_defecation(hunger_rate)
 
 	if (H.nutrition > NUTRITION_LEVEL_FULL)
 		if(H.overeatduration < 600) //capped so people don't take forever to unfat
@@ -1261,6 +1270,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	else
 		if(H.overeatduration > 1)
 			H.overeatduration -= 2 //doubled the unfat rate
+
+	if(shitting_enabled && !HAS_TRAIT(H, TRAIT_NOSHITTING)) // AQ EDIT
+		if(H.defecation > DEFECATION_ACTUALLY_SHIT_YOURSELF)
+			H.actually_shit_myself()
+			H.set_defecation(DEFECATION_NONE)
 
 	//metabolism change
 	if(H.nutrition > NUTRITION_LEVEL_FAT)

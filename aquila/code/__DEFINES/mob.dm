@@ -1,0 +1,8 @@
+
+// DEFEcation thresholds - how badly do I need to shit???
+#define DEFECATION_NONE 0
+#define DEFECATION_SLIGHTLY 30
+#define DEFECATION_SOMEWHAT 50
+#define DEFECATION_VERY 70
+#define DEFECATION_SHIT_YOURSELF 100
+#define DEFECATION_ACTUALLY_SHIT_YOURSELF 110

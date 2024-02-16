@@ -17,7 +17,7 @@
 	species_traits = list(DYNCOLORS, AGENDER, HAIR)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	species_language_holder = /datum/language_holder/ethereal
-	inherent_traits = list(TRAIT_POWERHUNGRY)
+	inherent_traits = list(TRAIT_POWERHUNGRY, TRAIT_NOSHITTING) // AQ - robots don't shit silly
 	sexes = FALSE //no fetish content allowed
 	hair_color = "fixedmutcolor"
 	hair_alpha = 140

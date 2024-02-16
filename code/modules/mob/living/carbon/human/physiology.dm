@@ -22,6 +22,7 @@
 	var/datum/armor/armor 	// internal armor datum
 
 	var/hunger_mod = 1		//% of hunger rate taken per tick.
+	var/defecation_mod = 1  //% of need to defecate gained per tick
 
 /datum/physiology/New()
 	armor = new
