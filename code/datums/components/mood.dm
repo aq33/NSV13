@@ -74,7 +74,15 @@
 			msg += "<span class='nicegreen'>I feel amazing!<span>\n"
 		if(9)
 			msg += "<span class='nicegreen'>I love life!<span>\n"
-	if(isliving(user) && CONFIG_GET(flag/shitting_enabled))
+	if(isliving(parent) && CONFIG_GET(flag/shitting_enabled))
+		var/mob/living/owner = parent
+		switch(owner.defecate)
+			if(-INFINITY to DEFECATION_VERY)
+				msg += "<span class='nicegreen'>Nie czuję potrzeby skorzystania z toalety.<span>\n"
+			if(DEFECATION_VERY to DEFECATION_SHIT_YOURSELF)
+				msg += "<span class='nicegreen'>Czuję potrzebe skorzystania z toalety.<span>\n"
+			if(DEFECATION_SHIT_YOURSELF to INFINITY)
+				msg += "<span class='boldwarning'>Zaraz się zesram!<span>\n"
 
 	msg += "<span class='notice'>Moodlets:\n</span>"//All moodlets
 	if(mood_events.len)
