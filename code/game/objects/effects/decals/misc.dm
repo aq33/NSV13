@@ -1,4 +1,4 @@
-/obj/effect/temp_visual/point
+/*/obj/effect/temp_visual/point //AQ EDIT
 	name = "pointer"
 	icon = 'icons/mob/screen_gen.dmi'
 	icon_state = "arrow"
@@ -12,7 +12,7 @@
 	pixel_x = old_loc.pixel_x
 	pixel_y = old_loc.pixel_y
 	invisibility = set_invis
-
+*/ //AQ EDIT
 //Used by spraybottles.
 /obj/effect/decal/chempuff
 	name = "chemicals"
