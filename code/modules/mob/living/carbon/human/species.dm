@@ -1259,7 +1259,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			// we adjusted nutrition earlier
 			// changing hunger_rate now will only affect defecation
 			hunger_rate *= H.physiology.defecation_mod
-			hunger_rate *= shitmod
+			hunger_rate *= shitmod // species defecation modifier
 			if (H.nutrition > NUTRITION_LEVEL_FULL) // this one overate
 				hunger_rate *= 2
 			H.adjust_defecation(hunger_rate)
@@ -1275,6 +1275,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(H.defecation > DEFECATION_ACTUALLY_SHIT_YOURSELF)
 			H.actually_shit_myself()
 			H.set_defecation(DEFECATION_NONE)
+		else if (H.defecation > DEFECATION_SHIT_YOURSELF)
+			if(prob(LERP(10, 20, ((H.defecation - DEFECATION_SHIT_YOURSELF)/DEFECATION_ACTUALLY_SHIT_YOURSELF))))
+				to_chat(H, "<span class='warning'><i>Zaraz się zesram...</i></span>")
+		else if(H.defecation > DEFECATION_VERY)
+			if(prob(LERP(0, 7, ((H.defecation - DEFECATION_VERY)/DEFECATION_SHIT_YOURSELF))))
+				to_chat(H, "<span class='notice'><i>Muszę skorzystać z ubikacji...</i></span>")
 
 	//metabolism change
 	if(H.nutrition > NUTRITION_LEVEL_FAT)

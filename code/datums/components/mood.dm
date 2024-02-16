@@ -74,6 +74,7 @@
 			msg += "<span class='nicegreen'>I feel amazing!<span>\n"
 		if(9)
 			msg += "<span class='nicegreen'>I love life!<span>\n"
+	if(isliving(user) && CONFIG_GET(flag/shitting_enabled))
 
 	msg += "<span class='notice'>Moodlets:\n</span>"//All moodlets
 	if(mood_events.len)
