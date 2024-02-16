@@ -26,7 +26,7 @@
 #define SMILE		/datum/mutation/smile
 #define STONER		/datum/mutation/stoner
 #define UNINTELLIGIBLE		/datum/mutation/unintelligible
-#define SWEDISH		/datum/mutation/swedish
+#define POLISH		/datum/mutation/polish//AQ EDIT
 #define CHAV		/datum/mutation/chav
 #define ELVIS		/datum/mutation/elvis
 #define RADIOACTIVE	/datum/mutation/radioactive
