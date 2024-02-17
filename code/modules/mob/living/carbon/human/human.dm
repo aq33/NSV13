@@ -1255,7 +1255,7 @@
 /mob/living/carbon/human/species/golem/soviet
 	race = /datum/species/golem/soviet
 
-mob/living/carbon/human/species/golem/cheese
+/mob/living/carbon/human/species/golem/cheese
 	race = /datum/species/golem/cheese
 
 /mob/living/carbon/human/species/ipc
