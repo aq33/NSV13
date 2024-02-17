@@ -279,6 +279,7 @@
 /obj/item/storage/bag/tray,
 /obj/item/kitchen/fork,
 /obj/structure/table,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/bar/mess_hall)
 "aW" = (
@@ -394,6 +395,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 9
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
@@ -1328,6 +1332,10 @@
 	},
 /turf/open/floor/wood,
 /area/crew_quarters/theatre)
+"eo" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/monotile/dark,
+/area/crew_quarters/bar/mess_hall)
 "ep" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/clonepod/prefilled{
@@ -1679,6 +1687,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
 "ft" = (
@@ -1809,6 +1820,12 @@
 	dir = 4
 	},
 /obj/structure/chair/stool{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
 /turf/open/floor/monotile/dark,
@@ -2452,6 +2469,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/monotile/dark,
 /area/hydroponics)
 "ij" = (
@@ -4002,6 +4020,7 @@
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "bar"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/crew_quarters/bar)
 "mT" = (
@@ -4684,6 +4703,7 @@
 	pixel_x = -12
 	},
 /obj/machinery/airalarm/directional/north,
+/obj/item/book/manual/wiki/barman_recipes,
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
 "pj" = (
@@ -5040,6 +5060,10 @@
 /obj/machinery/light_switch/west,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/reagent_containers/spray/cleaner,
+/obj/machinery/reagentgrinder{
+	pixel_x = -7;
+	pixel_y = 2
+	},
 /turf/open/floor/monotile/steel,
 /area/hallway/secondary/service)
 "qt" = (
@@ -5725,7 +5749,7 @@
 "sD" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
 /mob/living/carbon/monkey/punpun{
-	name = "Szymon"
+	name = "Szymek"
 	},
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
@@ -5793,14 +5817,15 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 9
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
+	},
+/obj/structure/disposalpipe/sorting/mail/flip{
+	dir = 4;
+	sortType = 19
 	},
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
@@ -5876,6 +5901,7 @@
 	pixel_x = -12
 	},
 /obj/structure/table,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/bar/mess_hall)
 "te" = (
@@ -6700,6 +6726,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/durasteel/techfloor_grid,
 /area/hydroponics)
 "vU" = (
@@ -6905,6 +6933,7 @@
 "wH" = (
 /obj/item/folder,
 /obj/structure/table,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/bar/mess_hall)
 "wK" = (
@@ -8096,9 +8125,10 @@
 /turf/open/floor/monotile/steel,
 /area/bridge/cic)
 "AV" = (
+/obj/structure/closet/crate,
+/obj/item/multitool,
 /obj/item/storage/backpack/duffelbag/engineering,
 /obj/effect/spawner/lootdrop/maintenance/four,
-/obj/structure/closet/crate,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port)
 "AX" = (
@@ -8795,6 +8825,7 @@
 /area/crew_quarters/bar/mess_hall)
 "Do" = (
 /obj/structure/closet/crate/trashcart,
+/obj/item/clothing/gloves/color/yellow,
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/item/trash/pistachios,
 /turf/open/floor/plating,
@@ -8896,7 +8927,7 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/engine/airless,
-/area/space/nearstation)
+/area/maintenance/nsv/deck1/port)
 "Dz" = (
 /obj/effect/turf_decal/tile/ship/half/green{
 	dir = 8
@@ -10363,7 +10394,9 @@
 "Ir" = (
 /obj/structure/extinguisher_cabinet/north,
 /obj/structure/closet/crate/hydroponics,
-/obj/effect/spawner/lootdrop/maintenance/three,
+/obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/reagent_containers/food/snacks/grown/wheat,
 /turf/open/floor/durasteel/riveted,
 /area/maintenance/nsv/deck1/port)
 "Is" = (
@@ -10673,6 +10706,13 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck1/hallway)
+"Jp" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/item/multitool,
+/turf/open/floor/durasteel/techfloor_grid,
+/area/maintenance/nsv/deck1/port)
 "Jr" = (
 /obj/machinery/power/apc/auto_name/west,
 /obj/structure/cable{
@@ -11079,12 +11119,12 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/item/reagent_containers/food/snacks/rationpack,
 /obj/item/reagent_containers/food/snacks/rationpack,
 /obj/structure/table,
+/obj/structure/disposalpipe/junction/flip{
+	dir = 4
+	},
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/bar/mess_hall)
 "KC" = (
@@ -13124,11 +13164,11 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port)
 "QX" = (
-/obj/machinery/computer/ship/dradis{
-	dir = 8
-	},
 /obj/structure/railing{
 	dir = 6
+	},
+/obj/machinery/computer/ship/dradis/mining{
+	dir = 8
 	},
 /turf/open/floor/carpet/royalblack,
 /area/bridge/cic)
@@ -14433,7 +14473,7 @@
 	dir = 1
 	},
 /turf/open/floor/engine/airless,
-/area/space/nearstation)
+/area/medical/storage)
 "VO" = (
 /obj/effect/turf_decal/tile/ship/blue{
 	dir = 1
@@ -14653,6 +14693,13 @@
 	},
 /obj/effect/landmark/zebra_interlock_point,
 /obj/structure/table,
+/obj/item/reagent_containers/glass/beaker{
+	pixel_x = -12
+	},
+/obj/item/reagent_containers/dropper{
+	pixel_y = 11;
+	pixel_x = 5
+	},
 /turf/open/floor/monotile/dark,
 /area/hydroponics)
 "WE" = (
@@ -14665,7 +14712,6 @@
 "WG" = (
 /obj/structure/closet/secure_closet/bar,
 /obj/item/storage/lockbox/dueling,
-/obj/item/book/manual/wiki/barman_recipes,
 /obj/item/gun/ballistic/shotgun/doublebarrel,
 /obj/machinery/light{
 	dir = 1
@@ -15065,9 +15111,13 @@
 /turf/open/floor/plating,
 /area/maintenance/department/science/xenobiology)
 "XV" = (
-/obj/effect/spawner/room/threexfive,
-/turf/template_noop,
-/area/maintenance/nsv/deck1/port)
+/obj/effect/turf_decal/tile/ship/half/green,
+/obj/structure/chair/stool/bar{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/monotile/steel,
+/area/crew_quarters/bar/mess_hall)
 "XX" = (
 /obj/structure/chair/office{
 	dir = 4
@@ -41985,7 +42035,7 @@ cx
 HI
 qO
 qO
-XV
+eG
 yE
 yE
 CV
@@ -49166,7 +49216,7 @@ tL
 HI
 xG
 AV
-ok
+Jp
 tc
 qO
 qO
@@ -49942,11 +49992,11 @@ qa
 Is
 BQ
 Ce
-Ce
+uN
 SZ
 Tw
-Ce
-Ce
+PC
+PC
 PC
 MJ
 PC
@@ -50199,7 +50249,7 @@ Iw
 Do
 Ce
 Ce
-uN
+om
 om
 Ko
 or
@@ -51749,12 +51799,12 @@ pM
 tC
 fs
 mS
-rk
-hJ
+XV
+eo
 aT
 td
-hJ
-hJ
+eo
+eo
 wH
 Kz
 Gm
