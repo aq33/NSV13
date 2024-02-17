@@ -184,6 +184,42 @@
 	volume = 20
 	list_reagents = list(/datum/reagent/consumable/blackpepper = 20)
 
+/obj/item/reagent_containers/food/condiment/mesophilic
+	name = "bottle of mesophilic culture"
+	desc = "A mixture of mesophilic bacteria used to make most cheeses."
+	icon_state = "mixedcondiments"
+	amount_per_transfer_from_this = 1
+	volume = 30
+	list_reagents = list(/datum/reagent/consumable/mesophilicculture = 30)
+	possible_states = list()
+
+/obj/item/reagent_containers/food/condiment/pcandidum
+	name = "bottle of penicillium candidum"
+	desc = "A special bacterium used to make brie."
+	icon_state = "mixedcondiments"
+	amount_per_transfer_from_this = 1
+	volume = 30
+	list_reagents = list(/datum/reagent/consumable/penicilliumcandidum = 30)
+	possible_states = list()
+
+/obj/item/reagent_containers/food/condiment/proqueforti
+	name = "bottle of penicillium roqueforti"
+	desc = "A special bacterium used to make blue cheese."
+	icon_state = "mixedcondiments"
+	amount_per_transfer_from_this = 1
+	volume = 30
+	list_reagents = list(/datum/reagent/consumable/penicilliumroqueforti = 30)
+	possible_states = list()
+
+/obj/item/reagent_containers/food/condiment/thermophilic
+	name = "bottle of thermophilic culture"
+	desc = "A mixture of thermophilic bacteria used to make some cheeses."
+	icon_state = "mixedcondiments"
+	amount_per_transfer_from_this = 1
+	volume = 30
+	list_reagents = list(/datum/reagent/consumable/thermophilicculture = 30)
+	possible_states = list()
+
 /obj/item/reagent_containers/food/condiment/milk
 	name = "space milk"
 	desc = "It's milk. White and nutritious goodness!"

@@ -324,6 +324,7 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	desc = "A bundle of raw cotton ready to be spun on the loom."
 	singular_name = "raw cotton ball"
 	icon_state = "sheet-cotton"
+	item_state = "sheet-cotton"
 	resistance_flags = FLAMMABLE
 	force = 0
 	throwforce = 0
@@ -396,6 +397,13 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 
 /obj/item/stack/sheet/cotton/cloth/five
 	amount = 5
+
+/obj/item/stack/sheet/cotton/wool
+	name = "wool"
+	desc = "A bundle of wool ready to be spun on the loom."
+	singular_name = "wool ball"
+	icon_state = "sheet-wool"
+	item_state = "sheet-wool"
 
 /*
  * Silk
@@ -909,3 +917,26 @@ new /datum/stack_recipe("paper frame door", /obj/structure/mineral_door/paperfra
 	desc = "A source of raw socialism, capable of bringing forth the prophesized Soviet Golem."
 	icon_state = "sheet-stalinium"
 	merge_type = /obj/item/stack/sheet/stalinium
+
+	/*
+ * Cheese
+ */
+/obj/item/stack/sheet/cheese
+	name = "reinforced cheese"
+	desc = "A stack of cheese that seems sturdier than regular cheese."
+	icon_state = "sheet-cheese"
+	item_state = "sheet-cheese"
+	icon = 'icons/obj/stack_objects.dmi'
+	singular_name = "reinforced cheese block"
+	sheettype = "cheese"
+	max_amount = 15
+	grind_results = list(/datum/reagent/consumable/milk = 20)
+	merge_type = /obj/item/stack/sheet/cheese
+
+GLOBAL_LIST_INIT(cheese_recipes, list (
+	new/datum/stack_recipe("cheesus statue", /obj/structure/statue/cheese/cheesus, 5, one_per_turf = 1, on_floor = 1)
+	))
+
+/obj/item/stack/sheet/cheese/Initialize(mapload, new_amount, merge = TRUE)
+	recipes = GLOB.cheese_recipes
+	. = ..()
