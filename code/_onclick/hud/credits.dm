@@ -39,6 +39,7 @@ GLOBAL_LIST(end_titles)
 	for(var/client/C in GLOB.clients)
 		if(C.prefs.toggles2 & PREFTOGGLE_2_SHOW_CREDITS)
 			C.screen += new /atom/movable/screen/credit/title_card(null, null, SSticker.mode.title_icon)
+	SSdemo.flush()
 	sleep(CREDIT_SPAWN_SPEED * 3)
 	for(var/i in 1 to GLOB.end_titles.len)
 		var/C = GLOB.end_titles[i]

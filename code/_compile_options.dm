@@ -60,6 +60,8 @@
 #define FORCE_MAP "runtimestation"
 #endif
 
+#define DEMO_WRITER (world.system_type == MS_WINDOWS ? "demo-writer.dll" : "libdemo-writer.so") // AQ EDIT - Replays
+
 //TODO Remove the SDMM check when it supports 1568
 #if !defined(SPACEMAN_DMM) && (DM_VERSION < MIN_COMPILER_VERSION || DM_BUILD < MIN_COMPILER_BUILD) && !defined(FASTDMM)
 //Don't forget to update this part
