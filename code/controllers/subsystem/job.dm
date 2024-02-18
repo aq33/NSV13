@@ -167,10 +167,10 @@ SUBSYSTEM_DEF(job)
 
 		if(istype(job, GetJob(SSjob.overflow_role))) // We don't want to give him assistant, that's boring!
 			continue
-
+/* // AQ EDIT
 		if(job.title in GLOB.command_positions) //If you want a command position, select it!
 			continue
-
+*/
 		if(QDELETED(player))
 			JobDebug("GRJ isbanned failed, Player deleted")
 			break
