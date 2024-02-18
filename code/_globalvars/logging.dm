@@ -1,5 +1,7 @@
 GLOBAL_VAR(log_directory)
 GLOBAL_PROTECT(log_directory)
+GLOBAL_VAR(demo_directory) // AQ EDIT - Replays
+GLOBAL_PROTECT(demo_directory) // AQ EDIT - Replays
 GLOBAL_VAR(world_game_log)
 GLOBAL_PROTECT(world_game_log)
 GLOBAL_VAR(world_objective_log)

@@ -39,7 +39,7 @@
 
 	next_move = 1
 
-	SSdemo.write_event_line("setmob [client.ckey] \ref[src]") // AQ EDIT - Replays
+	//SSdemo.write_event_line("setmob [client.ckey] \ref[src]") // AQ EDIT - Replays
 
 	..()
 

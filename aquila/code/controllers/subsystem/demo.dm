@@ -1,3 +1,5 @@
+/datum/config_entry/flag/demos_enabled
+	default = FALSE
 SUBSYSTEM_DEF(demo)
 	name = "Demo"
 	wait = 1
@@ -19,7 +21,7 @@ SUBSYSTEM_DEF(demo)
 	var/list/chat_list = list()
 
 /datum/controller/subsystem/demo/proc/write_chat(target, message)
-	if(!demo_started && !chat_list)
+	if(!demo_started && !chat_list || !CONFIG_GET(flag/demos_enabled))
 		return
 	var/list/target_list
 	if(target == GLOB.clients || target == world)
@@ -55,11 +57,13 @@ SUBSYSTEM_DEF(demo)
 	if(demo_started)
 		for(var/I in 1 to target_list.len)
 			if(!istext(target_list[I])) target_list[I] = "\ref[target_list[I]]"
-		call(DEMO_WRITER, "demo_chat")(target_list.Join(","), "\ref[message_str]", "[is_text]")
+		LIBCALL(DEMO_WRITER, "demo_chat")(target_list.Join(","), "\ref[message_str]", "[is_text]")
 	else if(chat_list)
 		chat_list[++chat_list.len] = list(world.time, target_list, message_str, is_text)
 
 /datum/controller/subsystem/demo/Initialize()
+	if(!CONFIG_GET(flag/demos_enabled))
+		return FALSE // demos disabled; don't init
 	dummy_observer = new
 	dummy_observer.forceMove(null)
 	dummy_observer.key = dummy_observer.ckey = ckey
@@ -69,9 +73,9 @@ SUBSYSTEM_DEF(demo)
 	if(GLOB.revdata)
 		revdata_list["commit"] = "[GLOB.revdata.commit || GLOB.revdata.originmastercommit]"
 		if(GLOB.revdata.originmastercommit) revdata_list["originmastercommit"] = "[GLOB.revdata.originmastercommit]"
-		revdata_list["repo"] = "yogstation13/Yogstation"
+		revdata_list["repo"] = "aq33/NSV13"
 	var/revdata_str = json_encode(revdata_list);
-	var/result = call(DEMO_WRITER, "demo_start")(GLOB.demo_log, revdata_str)
+	var/result = LIBCALL(DEMO_WRITER, "demo_start")(GLOB.demo_log, revdata_str)
 
 	if(result == "SUCCESS")
 		demo_started = 1
@@ -79,14 +83,14 @@ SUBSYSTEM_DEF(demo)
 			embed_resource(arglist(L))
 
 		for(var/list/L in chat_list)
-			call(DEMO_WRITER, "demo_set_time_override")(L[1])
+			LIBCALL(DEMO_WRITER, "demo_set_time_override")(L[1])
 			var/list/target_list = L[2]
 			for(var/I in 1 to target_list.len)
 				if(!istext(target_list[I])) target_list[I] = "\ref[target_list[I]]"
-			call(DEMO_WRITER, "demo_chat")(target_list.Join(","), "\ref[L[3]]", "[L[4]]")
-		call(DEMO_WRITER, "demo_set_time_override")("null")
+			LIBCALL(DEMO_WRITER, "demo_chat")(target_list.Join(","), "\ref[L[3]]", "[L[4]]")
+		LIBCALL(DEMO_WRITER, "demo_set_time_override")("null")
 
-		last_size = text2num(call(DEMO_WRITER, "demo_get_size")())
+		last_size = text2num(LIBCALL(DEMO_WRITER, "demo_get_size")())
 	else
 		log_world("Failed to initialize demo system: [result]")
 
@@ -96,15 +100,21 @@ SUBSYSTEM_DEF(demo)
 	return ..()
 
 /datum/controller/subsystem/demo/fire()
+	if(!CONFIG_GET(flag/demos_enabled))
+		return
 	if(demo_started)
-		last_size = text2num(call(DEMO_WRITER, "demo_flush")())
+		last_size = text2num(LIBCALL(DEMO_WRITER, "demo_flush")())
 
 /datum/controller/subsystem/demo/proc/flush()
+	if(!CONFIG_GET(flag/demos_enabled))
+		return
 	if(demo_started)
-		last_size = text2num(call(DEMO_WRITER, "demo_flush")())
+		last_size = text2num(LIBCALL(DEMO_WRITER, "demo_flush")())
 
 /datum/controller/subsystem/demo/Shutdown()
-	call(DEMO_WRITER, "demo_end")()
+	if(!CONFIG_GET(flag/demos_enabled))
+		return
+	LIBCALL(DEMO_WRITER, "demo_end")()
 
 /datum/controller/subsystem/demo/stat_entry(msg)
 	msg += "ALL: [format_size(last_size)] | RSC: [format_size(last_embedded_size)]"
@@ -116,6 +126,8 @@ SUBSYSTEM_DEF(demo)
 	return "[round(size / 1000000, 0.01)]MB"
 
 /datum/controller/subsystem/demo/proc/embed_resource(res, path)
+	if(!CONFIG_GET(flag/demos_enabled))
+		return
 	res = fcopy_rsc(res)
 	if(!demo_started)
 		if(embed_list)
@@ -131,7 +143,7 @@ SUBSYSTEM_DEF(demo)
 	var/size = length(file(path))
 	last_embedded_size += size
 	log_world("Embedding \ref[res] [res] from [path] ([size] bytes)")
-	if(call(DEMO_WRITER, "demo_embed_resource")("\ref[res]", path) != "SUCCESS")
+	if(LIBCALL(DEMO_WRITER, "demo_embed_resource")("\ref[res]", path) != "SUCCESS")
 		log_world("Failed to copy \ref[res] [res] from [path]!")
 	embedded_list[res] = 1
 	if(do_del)
