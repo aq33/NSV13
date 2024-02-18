@@ -5,7 +5,7 @@ SUBSYSTEM_DEF(demo)
 	init_order = INIT_ORDER_DEMO
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 
-	loading_points = 1 SECONDS // Yogs -- loading times
+	//loading_points = 1 SECONDS // Yogs -- loading times
 
 	var/last_size = 0
 	var/last_embedded_size = 0
