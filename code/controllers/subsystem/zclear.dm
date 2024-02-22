@@ -70,7 +70,7 @@ SUBSYSTEM_DEF(zclear)
 		if(!L)
 			continue
 		if(L.ckey && L.ckey == SSdemo.ckey)
-			continue // ignore this dummy observer
+			continue // ignore the SSdemo dummy observer
 		//Dead mobs get sent to new ruins
 		if(L.ckey || L.mind || L.client)
 			var/turf/T = get_turf(L)
