@@ -1261,6 +1261,15 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	else
 		if(H.overeatduration > 1)
 			H.overeatduration -= 2 //doubled the unfat rate
+	// thirst decrease
+	if (H.thirst > 0 && H.stat != DEAD && !HAS_TRAIT(H, TRAIT_NOTHIRST))
+		// he need sum milk
+		var/thirst_rate = HUNGER_FACTOR
+		var/datum/component/mood/mood = H.GetComponent(/datum/component/mood)
+		if(mood && mood.sanity > SANITY_DISTURBED)
+			thirst_rate *= max(0.5, 1 - 0.002 * mood.sanity) //0.85 to 0.75
+		thirst_rate *= H.physiology.hunger_mod
+		H.adjust_nutrition(-thirst_rate)
 
 	//metabolism change
 	if(H.nutrition > NUTRITION_LEVEL_FAT)
@@ -1299,6 +1308,18 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				H.throw_alert("nutrition", /atom/movable/screen/alert/hungry)
 			if(0 to NUTRITION_LEVEL_STARVING)
 				H.throw_alert("nutrition", /atom/movable/screen/alert/starving)
+
+	// AQ EDIT START -- handle thirst
+	switch(H.thirst)
+		if(THIRST_LEVEL_TURGID to INFINITY)
+			H.throw_alert("thirst", /atom/movable/screen/alert/turgid)
+		if(THIRST_LEVEL_THIRSTY to THIRST_LEVEL_TURGID)
+			H.clear_alert("thirst")
+		if(THIRST_LEVEL_PARCHED to THIRST_LEVEL_THIRSTY)
+			H.throw_alert("thirst", /atom/movable/screen/alert/thirsty)
+		if(0 to THIRST_LEVEL_PARCHED)
+			H.throw_alert("thirst", /atom/movable/screen/alert/parched)
+
 
 /datum/species/proc/handle_charge(mob/living/carbon/human/H)
 	switch(H.nutrition)
