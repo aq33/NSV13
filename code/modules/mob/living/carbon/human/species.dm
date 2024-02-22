@@ -1319,6 +1319,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			H.throw_alert("thirst", /atom/movable/screen/alert/thirsty)
 		if(0 to THIRST_LEVEL_PARCHED)
 			H.throw_alert("thirst", /atom/movable/screen/alert/parched)
+	// AQ EDIT END
 
 
 /datum/species/proc/handle_charge(mob/living/carbon/human/H)
