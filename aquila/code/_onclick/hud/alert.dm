@@ -2,7 +2,7 @@
 	name = "Nabrzmiały" // tak mi gugel translejt sugeruje
 	desc = "Tak się opiłeś, że czujesz się jak beczka." // idk joker zmienisz na lepsze
 	icon = 'aquila/icons/mob/screen_alert.dmi'
-	icon_state = "purgid"
+	icon_state = "turgid"
 
 /atom/movable/screen/alert/thirsty
 	name = "Spragniony"

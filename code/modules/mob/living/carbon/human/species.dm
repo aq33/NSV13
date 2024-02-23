@@ -1213,6 +1213,30 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 ////////
 
 /datum/species/proc/handle_digestion(mob/living/carbon/human/H)
+	// AQ EDIT START -- we'll handle thirst before hunger
+	// that's because while hunger may be for babies,
+	// thirst is for everyone - what else is the bar for?
+	// thirst decrease
+	if (H.hydration > 0 && H.stat != DEAD && !HAS_TRAIT(H, TRAIT_NOTHIRST))
+		// he need sum milk
+		var/thirst_rate = THIRST_FACTOR
+		var/datum/component/mood/mood = H.GetComponent(/datum/component/mood)
+		if(mood && mood.sanity > SANITY_DISTURBED)
+			thirst_rate *= max(0.5, 1 - 0.002 * mood.sanity) //0.85 to 0.75
+		thirst_rate *= H.physiology.thirst_mod
+		H.adjust_hydration(-thirst_rate)
+	// handle thirst alert
+	if(!HAS_TRAIT(H, TRAIT_NOTHIRST))
+		switch(H.hydration)
+			if(HYDRATION_LEVEL_TURGID to INFINITY)
+				H.throw_alert("thirst", /atom/movable/screen/alert/turgid)
+			if(HYDRATION_LEVEL_DEHYDRATED to HYDRATION_LEVEL_TURGID)
+				H.clear_alert("thirst")
+			if(HYDRATION_LEVEL_PARCHED to HYDRATION_LEVEL_DEHYDRATED)
+				H.throw_alert("thirst", /atom/movable/screen/alert/thirsty)
+			if(0 to HYDRATION_LEVEL_PARCHED)
+				H.throw_alert("thirst", /atom/movable/screen/alert/parched)
+	// AQ EDIT END
 	if(HAS_TRAIT(src, TRAIT_NOHUNGER))
 		return //hunger is for BABIES
 
@@ -1254,22 +1278,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		hunger_rate *= H.physiology.hunger_mod
 		H.adjust_nutrition(-hunger_rate)
 
-
 	if (H.nutrition > NUTRITION_LEVEL_FULL)
 		if(H.overeatduration < 600) //capped so people don't take forever to unfat
 			H.overeatduration++
 	else
 		if(H.overeatduration > 1)
 			H.overeatduration -= 2 //doubled the unfat rate
-	// thirst decrease
-	if (H.thirst > 0 && H.stat != DEAD && !HAS_TRAIT(H, TRAIT_NOTHIRST))
-		// he need sum milk
-		var/thirst_rate = HUNGER_FACTOR
-		var/datum/component/mood/mood = H.GetComponent(/datum/component/mood)
-		if(mood && mood.sanity > SANITY_DISTURBED)
-			thirst_rate *= max(0.5, 1 - 0.002 * mood.sanity) //0.85 to 0.75
-		thirst_rate *= H.physiology.hunger_mod
-		H.adjust_nutrition(-thirst_rate)
 
 	//metabolism change
 	if(H.nutrition > NUTRITION_LEVEL_FAT)
@@ -1309,17 +1323,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(0 to NUTRITION_LEVEL_STARVING)
 				H.throw_alert("nutrition", /atom/movable/screen/alert/starving)
 
-	// AQ EDIT START -- handle thirst
-	switch(H.thirst)
-		if(THIRST_LEVEL_TURGID to INFINITY)
-			H.throw_alert("thirst", /atom/movable/screen/alert/turgid)
-		if(THIRST_LEVEL_THIRSTY to THIRST_LEVEL_TURGID)
-			H.clear_alert("thirst")
-		if(THIRST_LEVEL_PARCHED to THIRST_LEVEL_THIRSTY)
-			H.throw_alert("thirst", /atom/movable/screen/alert/thirsty)
-		if(0 to THIRST_LEVEL_PARCHED)
-			H.throw_alert("thirst", /atom/movable/screen/alert/parched)
-	// AQ EDIT END
 
 
 /datum/species/proc/handle_charge(mob/living/carbon/human/H)
