@@ -181,6 +181,9 @@
 		if(M.client && (M.client.prefs.chat_toggles & CHAT_GHOSTRADIO))
 			receive |= M
 
+	if(SSdemo.dummy_observer) // AQ EDIT - Replays
+		receive |= SSdemo.dummy_observer
+
 	// Render the message and have everybody hear it.
 	// Always call this on the virtualspeaker to avoid issues.
 	var/spans = data["spans"]

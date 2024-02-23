@@ -276,7 +276,7 @@ BLIND     // can't see anything
 	var/icon/female_s				= icon("icon"='icons/mob/clothing/uniform.dmi', "icon_state"="[(type == FEMALE_UNIFORM_FULL) ? "female_full" : "female_top"]")
 	female_clothing_icon.Blend(female_s, ICON_MULTIPLY)
 	female_clothing_icon 			= fcopy_rsc(female_clothing_icon)
-	GLOB.female_clothing_icons[index] = female_clothing_icon
+	GLOB.female_clothing_icons[index] = SSdemo.embed_resource(female_clothing_icon)
 
 /obj/item/clothing/under/proc/set_sensors(mob/user)
 	var/mob/M = user
