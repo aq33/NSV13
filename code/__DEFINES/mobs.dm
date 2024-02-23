@@ -407,7 +407,7 @@
 #define DOOR_CRUSH_DAMAGE	15	//! the amount of damage that airlocks deal when they crush you
 
 #define	HUNGER_FACTOR		0.2	//! factor at which mob nutrition decreases // AQ EDIT (0.1 -> 0.2)
-#define HYDRATION_FACTOR	0.2 //! AQ - factor at which mob thirst increases
+#define THIRST_FACTOR		0.2 //! AQ - factor at which mob thirst increases
 #define	HYGIENE_FACTOR  	0.1	//! NSV13 - factor at which mob hygiene decreases
 #define ETHEREAL_CHARGE_FACTOR	2.0 //! NSV13 - factor at which ethereal's charge decreases
 #define	REAGENTS_METABOLISM 0.4	//! How many units of reagent are consumed per tick, by default.
