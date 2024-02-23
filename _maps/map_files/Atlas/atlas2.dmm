@@ -175,14 +175,6 @@
 	},
 /turf/open/floor/grass,
 /area/medical/virology)
-"aD" = (
-/obj/structure/cable{
-	icon_state = "4-32"
-	},
-/obj/effect/turf_decal/ship/shutoff,
-/obj/effect/turf_decal/box,
-/turf/open/floor/plating,
-/area/maintenance/nsv/deck1/central)
 "aE" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1967,13 +1959,6 @@
 /obj/machinery/disposal/bin,
 /turf/open/floor/monotile/steel,
 /area/hydroponics)
-"gM" = (
-/obj/structure/lattice/catwalk/over/ship,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/open/floor/plating,
-/area/maintenance/nsv/deck1/central)
 "gN" = (
 /obj/structure/table/reinforced,
 /obj/structure/railing{
@@ -3019,9 +3004,6 @@
 /turf/open/floor/monotile/steel,
 /area/crew_quarters/heads/captain)
 "kk" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/effect/landmark/zebra_interlock_point,
 /obj/machinery/door/airlock/ship/maintenance{
 	name = "Engineering wing maintenance";
@@ -6470,18 +6452,6 @@
 /obj/machinery/ship_weapon/deck_turret/east,
 /turf/open/floor/engine/airless,
 /area/space/nearstation)
-"wg" = (
-/obj/effect/turf_decal/tile/ship/green{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/ship/green{
-	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/durasteel/alt,
-/area/hallway/nsv/deck1/hallway)
 "wh" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
@@ -7092,7 +7062,6 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/ladder,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/central)
 "yv" = (
@@ -7387,24 +7356,6 @@
 /obj/item/storage/backpack/duffelbag/engineering,
 /turf/open/floor/durasteel/riveted,
 /area/maintenance/nsv/deck1/port)
-"zL" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/monotile/steel,
-/area/hallway/nsv/deck1/hallway)
 "zM" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -7914,9 +7865,6 @@
 	},
 /area/maintenance/nsv/deck1/port)
 "Bv" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/effect/landmark/zebra_interlock_point,
 /obj/machinery/door/airlock/ship/maintenance{
 	name = "Engineering wing maintenance";
@@ -8235,17 +8183,9 @@
 /obj/structure/table/glass,
 /turf/open/floor/durasteel/lino,
 /area/medical/genetics)
-"CI" = (
-/obj/structure/lattice/catwalk/over/ship,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/plating,
-/area/maintenance/nsv/deck1/central)
 "CJ" = (
 /obj/structure/lattice/catwalk/over/ship,
 /obj/machinery/light/small,
-/obj/structure/ladder,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/central)
 "CK" = (
@@ -8566,24 +8506,6 @@
 /obj/machinery/door/window,
 /turf/open/floor/monotile/dark,
 /area/medical/genetics)
-"DE" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/monotile/steel,
-/area/hallway/nsv/deck1/hallway)
 "DF" = (
 /obj/structure/bookcase/random/reference,
 /obj/effect/turf_decal/siding/wood/corner{
@@ -13597,12 +13519,9 @@
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/hos)
 "UA" = (
-/obj/structure/lattice/catwalk/over/ship,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/machinery/airalarm/directional/north,
 /obj/machinery/light_switch/south,
+/obj/structure/lattice/catwalk/over/ship,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/central)
 "UC" = (
@@ -13807,6 +13726,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/auto_name/west,
+/obj/machinery/atmospherics/pipe/simple/cyan,
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/ai_upload)
 "Vv" = (
@@ -14285,27 +14205,16 @@
 	},
 /area/maintenance/nsv/deck1/port)
 "Xn" = (
-/obj/structure/cable{
-	icon_state = "4-32"
-	},
-/obj/machinery/power/apc/auto_name/west,
-/obj/effect/turf_decal/box,
-/obj/effect/turf_decal/ship/shutoff,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/lattice/catwalk/over/ship,
+/obj/item/hierophant_club,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/central)
 "Xp" = (
-/obj/effect/turf_decal/tile/ship/green,
-/obj/effect/turf_decal/tile/ship/green{
-	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/durasteel/alt,
-/area/hallway/nsv/deck1/hallway)
+/obj/structure/lattice/catwalk/over/ship,
+/obj/machinery/airalarm/directional/north,
+/obj/machinery/light_switch/south,
+/turf/open/floor/plating,
+/area/maintenance/nsv/deck1/central)
 "Xr" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
@@ -45013,7 +44922,7 @@ CC
 NH
 Sc
 Pm
-aD
+dF
 uj
 uj
 Vu
@@ -45270,7 +45179,7 @@ eN
 wu
 YC
 gq
-UA
+Xp
 uj
 NB
 uY
@@ -45524,10 +45433,10 @@ Fq
 vR
 Pk
 HA
-DE
-Xp
+wu
+Sc
 Bv
-gM
+dF
 uj
 kK
 Bc
@@ -45535,10 +45444,10 @@ Fu
 Nr
 ja
 uj
-CI
+dF
 kk
-wg
-zL
+MQ
+wu
 Sc
 Pk
 Qw
