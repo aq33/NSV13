@@ -212,8 +212,9 @@
 		if(C)
 
 			C?.process_endround_metacoin()
+			C?.process_aquilla_endround_metacoin() // AQ EDIT
 			C?.playtitlemusic(20) // AQUILA EDIT 40 -> 20
- 
+
 			if(CONFIG_GET(flag/allow_crew_objectives))
 				var/mob/M = C?.mob
 				if(M?.mind?.current && LAZYLEN(M.mind.crew_objectives))
@@ -340,6 +341,9 @@
 	parts += medal_report()
 	//Station Goals
 	parts += goal_report()
+//	CHECK_TICK
+	//AQ EDIT szczury
+	parts += mouse_report()
 
 	listclearnulls(parts)
 
@@ -765,3 +769,14 @@
         discordmsg += "Nobody died!\n"
     discordmsg += "--------------------------------------\n"
     discordsendmsg("ooc", discordmsg)
+
+//AQ EDIT szczury
+/datum/controller/subsystem/ticker/proc/mouse_report()
+	if(GLOB.mouse_food_eaten)
+		var/list/parts = list()
+		parts += "<span class='header'>Mouse stats:</span>"
+		parts += "Mouse Born: [GLOB.mouse_spawned]"
+		parts += "Mouse Killed: [GLOB.mouse_killed]"
+		parts += "Trash Eaten: [GLOB.mouse_food_eaten]"
+		return "<div class='panel stationborder'>[parts.Join("<br>")]</div>"
+	return ""

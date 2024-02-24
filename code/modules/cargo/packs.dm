@@ -2091,6 +2091,7 @@
 	contains = list(/obj/item/storage/box/donkpockets/donkpocketspicy,
 	/obj/item/storage/box/donkpockets/donkpocketteriyaki,
 	/obj/item/storage/box/donkpockets/donkpocketpizza,
+	/obj/item/storage/box/donkpockets/donkpocketgondola,//AQ EDIT
 	/obj/item/storage/box/donkpockets/donkpocketberry,
 	/obj/item/storage/box/donkpockets/donkpockethonk)
 	crate_name = "donk pocket crate"

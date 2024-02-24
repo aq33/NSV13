@@ -41,3 +41,7 @@
 	message = request
 	timestamp = world.time
 	owner_name = key_name(requestee, FALSE)
+
+	if(req_type == REQUEST_NUKE && CONFIG_GET(flag/allow_nuke_request_auto_accept)) // AQ EDIT
+		spawn(0)
+			auto_generate_nuke_code()

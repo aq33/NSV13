@@ -450,7 +450,22 @@ GLOBAL_LIST_EMPTY(species_list)
 			to_chat(M, rendered_message, avoid_highlighting = speaker_key == M.key)
 		else
 			to_chat(M, message, avoid_highlighting = speaker_key == M.key)
+	// AQ EDIT START - Replay
+	var/demo_message = message
 
+	if(follow_target)
+		var/F
+		if(turf_target)
+			F = FOLLOW_OR_TURF_LINK(SSdemo, follow_target, turf_target)
+		else
+			F = FOLLOW_LINK(SSdemo, follow_target)
+		demo_message = "[F] [message]"
+	else if(turf_target)
+		var/turf_link = TURF_LINK(SSdemo, turf_target)
+		demo_message = "[turf_link] [message]"
+
+	to_chat(SSdemo, demo_message)
+	// AQ EDIT end
 //Used in chemical_mob_spawn. Generates a random mob based on a given gold_core_spawnable value.
 /proc/create_random_mob(spawn_location, mob_class = HOSTILE_SPAWN)
 	var/static/list/mob_spawn_meancritters = list() // list of possible hostile mobs
@@ -766,3 +781,20 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		if("range")
 			. = orange(distance,center)
 	return
+
+/**
+ * Gets the mind from a variable, whether it be a mob, or a mind itself.
+ * If [include_last] is true, then it will also return last_mind for carbons if there isn't a current mind.
+ */
+/proc/get_mind(target, include_last = FALSE)
+	if(istype(target, /datum/mind))
+		return target
+	if(ismob(target))
+		var/mob/mob_target = target
+		if(!QDELETED(mob_target.mind))
+			return mob_target.mind
+		if(include_last && iscarbon(mob_target))
+			var/mob/living/carbon/carbon_target = mob_target
+			if(!QDELETED(carbon_target.last_mind))
+				return carbon_target.last_mind
+

@@ -19,6 +19,7 @@ map tycoon
 endmap
 
 map atlas
+	minplayers 20
 	default
 	votable
 endmap
@@ -60,7 +61,7 @@ endmap
 
 map snake
 #	maxplayers 30
-	votable
+#	votable
 endmap
 
 map atlantis

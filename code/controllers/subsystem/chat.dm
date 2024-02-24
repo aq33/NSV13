@@ -26,7 +26,9 @@ SUBSYSTEM_DEF(chat)
 		if(MC_TICK_CHECK)
 			return
 
-/datum/controller/subsystem/chat/proc/queue(target, message)
+/datum/controller/subsystem/chat/proc/queue(target, message, confidential = FALSE)
+	if(!confidential)
+		SSdemo.write_chat(target, message)
 	if(islist(target))
 		for(var/_target in target)
 			var/client/client = CLIENT_FROM_VAR(_target)

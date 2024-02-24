@@ -8,6 +8,7 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/lasergun)
 	ammo_x_offset = 1
 	shaded_charge = 1
+	fire_rate = 1 //AQ EDIT powolne wystrzały ze względu na hitscan
 
 /obj/item/gun/energy/laser/practice
 	name = "practice laser gun"
@@ -38,11 +39,12 @@
 	force = 10
 	ammo_x_offset = 3
 	selfcharge = 1
-	charge_delay = 8
+	charge_delay = 12 //AQ EDIT 8 -> 12
 	ammo_type = list(/obj/item/ammo_casing/energy/lasergun/captain)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	weapon_weight = WEAPON_LIGHT
 	investigate_flags = ADMIN_INVESTIGATE_TARGET
+	fire_rate = 0.7 //AQ EDIT nieskończona moc w skończonej formie
 
 /obj/item/gun/energy/laser/captain/scattershot
 	name = "scatter shot laser rifle"
@@ -88,6 +90,7 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/accelerator)
 	pin = null
 	ammo_x_offset = 3
+	fire_rate = 1 //AQ EDIT
 
 /obj/item/ammo_casing/energy/laser/accelerator
 	projectile_type = /obj/item/projectile/beam/laser/accelerator
@@ -114,6 +117,7 @@
 	pin = null
 	ammo_x_offset = 3
 	w_class = WEIGHT_CLASS_BULKY
+	fire_rate = 0.8 //AQ EDIT ditto + ignorowanie ściań i 20 strzałów
 
 ////////Laser Tag////////////////////
 

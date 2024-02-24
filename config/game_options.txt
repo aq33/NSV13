@@ -125,7 +125,7 @@ PROBABILITY WIZARD 1
 PROBABILITY GANG 1
 PROBABILITY OVERTHROW 1
 PROBABILITY METEOR 0
-PROBABILITY DEVIL 1
+PROBABILITY DEVIL 0
 PROBABILITY DEVIL_AGENTS 0
 PROBABILITY CHANGELING 1 #Try as I might, I just can't bring myself to re-enable this POS.
 PROBABILITY TRAITORBRO 1 #Everyone hates this anyways...
@@ -225,7 +225,7 @@ MAX_POP CULT -1
 MIN_POP CHANGELING 15
 MAX_POP CHANGELING -1
 
-MIN_POP WIZARD 15
+MIN_POP WIZARD 20
 MAX_POP WIZARD -1
 
 MIN_POP METEOR 0
@@ -374,7 +374,7 @@ ROUNDSTART_AWAY
 
 ## How long the delay is before the Away Mission gate opens. Default is half an hour.
 ## 600 is one minute.
-GATEWAY_DELAY 18000
+GATEWAY_DELAY 300
 
 
 ## ACCESS ###
@@ -671,6 +671,22 @@ SHIFT_TIME_REALTIME
 
 ## Enable the capitalist agenda on your server.
 ECONOMY
+
+## Allow withdrawing money from departmental budget cards
+ALLOW_BUDGET_MONEY_WITHDRAWAL
+
+## Allow converting money from your shift end bank balance to metacoins
+ALLOW_ENDROUND_BANK_BALANCE_METACOIN_CONVERSION
+
+## Shift end bank account balance to metacurrency conversion coefficient
+## metacurrency += balance * coefficient
+## so with a coefficient of 0.1 you'd get 100 metacoins if you had 1000$ in your account
+BANK_BALANCE_METACOIN_CONVERSION_COEFFICIENT 1
+
+## Allow the ship's request for nuclear authentication codes
+## to be automatically accepted after a certain amount of time.
+## Admins can cancel this manually.
+ALLOW_NUKE_REQUEST_AUTO_ACCEPT
 
 ## Crew objectives
 ALLOW_CREW_OBJECTIVES

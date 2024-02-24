@@ -3,7 +3,7 @@
 	typepath = /datum/round_event/ghost_role/space_dragon
 	max_occurrences = 1
 	weight = 10
-	earliest_start = 50 MINUTES
+	earliest_start = 10 MINUTES
 	min_players = 15
 	dynamic_should_hijack = TRUE
 	cannot_spawn_after_shuttlecall = TRUE

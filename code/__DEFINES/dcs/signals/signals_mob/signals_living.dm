@@ -31,3 +31,5 @@
 
 //NSV13 - Crystalized Ethereal
 #define COMSIG_LIVING_POST_FULLY_HEAL "living_post_fully_heal"	///from end of fully_heal(): (admin_revive)
+/// from base of mob/living/Life() (times_fired)
+#define COMSIG_LIVING_LIFE "living_life"

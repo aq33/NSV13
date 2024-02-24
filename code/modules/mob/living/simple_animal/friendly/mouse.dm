@@ -10,7 +10,7 @@
 	emote_see = list("runs in a circle.", "shakes.")
 	speak_chance = 1
 	turns_per_move = 5
-	see_in_dark = 6
+	see_in_dark = 8 //AQ EDIT szczury 6->8
 	maxHealth = 5
 	health = 5
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/mouse = 1)
@@ -29,7 +29,12 @@
 	var/list/ratdisease = list()
 	can_be_held = TRUE
 	worn_slot_flags = ITEM_SLOT_HEAD
-
+	var/full = FALSE //AQ EDIT start szczury
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	move_force = MOVE_FORCE_EXTREMELY_WEAK
+	var/eating = FALSE
+	var/cheesed = FALSE
+	var/cheese_time = 0 //AQ EDIT end szczury
 
 /mob/living/simple_animal/mouse/Initialize(mapload)
 	. = ..()
@@ -59,12 +64,21 @@
 
 
 /mob/living/simple_animal/mouse/proc/splat()
-	src.health = 0
+/*	src.health = 0 //AQ EDIT start szczury
 	src.icon_dead = "mouse_[body_color]_splat"
-	death()
+	death()*/
+	if(!key)
+		src.health = 0
+		src.icon_dead = "mouse_[body_color]_splat"
+		death()
+	else
+		adjustHealth(rand(7,12))
+		if(health <= 0)
+			src.icon_dead = "mouse_[body_color]_splat" //AQ EDIT end szczury
 
 /mob/living/simple_animal/mouse/death(gibbed, toast)
 	var/list/data = list("donor" = src.type, "viruses" = ratdisease) // NSV13 - Add mouse donor field for tracking later
+	GLOB.mouse_killed++ //AQ EDIT szczury
 	if(!ckey)
 		..(1)
 		if(!gibbed)

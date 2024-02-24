@@ -36,6 +36,8 @@
 	var/list/user_vars_to_edit //VARNAME = VARVALUE eg: "name" = "butts"
 	var/list/user_vars_remembered //Auto built by the above + dropped() + equipped()
 
+	/// Trait modification, lazylist of traits to add/take away, on equipment/drop in the correct slot
+
 	var/pocket_storage_component_path
 
 	//These allow head/mask items to dynamically alter the user's hair
@@ -114,7 +116,7 @@
 		user_vars_remembered = initial(user_vars_remembered) // Effectively this sets it to null.
 
 /obj/item/clothing/equipped(mob/user, slot)
-	..()
+	. = ..()
 	if (!istype(user))
 		return
 	if(slot_flags & slot) //Was equipped to a valid slot for this item?
@@ -274,7 +276,7 @@ BLIND     // can't see anything
 	var/icon/female_s				= icon("icon"='icons/mob/clothing/uniform.dmi', "icon_state"="[(type == FEMALE_UNIFORM_FULL) ? "female_full" : "female_top"]")
 	female_clothing_icon.Blend(female_s, ICON_MULTIPLY)
 	female_clothing_icon 			= fcopy_rsc(female_clothing_icon)
-	GLOB.female_clothing_icons[index] = female_clothing_icon
+	GLOB.female_clothing_icons[index] = SSdemo.embed_resource(female_clothing_icon)
 
 /obj/item/clothing/under/proc/set_sensors(mob/user)
 	var/mob/M = user
