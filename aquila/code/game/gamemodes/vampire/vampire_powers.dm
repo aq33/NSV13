@@ -264,6 +264,7 @@
 	for(var/mob/living/carbon/target in targets)
 		if(is_vampire(target))
 			to_chat(user, "<span class='warning'>They're already a vampire!</span>")
+			vamp.usable_blood += blood_used // Refund cost
 			continue
 		user.visible_message("<span class='warning'>[user] latches onto [target]'s neck, pure dread eminating from them.</span>", "<span class='warning'>You latch onto [target]'s neck, preparing to transfer your unholy blood to them.</span>", "<span class='warning'>A dreadful feeling overcomes you</span>")
 		target.reagents.add_reagent("salbutamol", 10) //incase you're choking the victim
@@ -280,6 +281,7 @@
 			if(!do_mob(user, target, 70))
 				to_chat(user, "<span class='danger'>The pact has failed! [target] has not became a vampire.</span>")
 				to_chat(target, "<span class='notice'>The visions stop, and you relax.</span>")
+				vamp.usable_blood += blood_used / 2 // Refund half the cost
 				return
 		if(!QDELETED(user) && !QDELETED(target))
 			to_chat(user, "<span class='notice'>. . .</span>")
