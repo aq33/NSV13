@@ -2540,6 +2540,13 @@
 					/obj/item/clothing/neck/petcollar)
 	crate_name = "pug crate"
 
+/datum/supply_pack/critter/sheep
+	name = "Sheep Crate"
+	desc = "The sheep goes baa!"
+	cost = 2000
+	contains = list(/mob/living/simple_animal/sheep)
+	crate_name = "sheep crate"
+
 /datum/supply_pack/critter/bullterrier
 	name = "Bull Terrier Crate"
 	desc = "Like a normal dog, but with a head the shape of an egg. Comes with a nice collar!"
