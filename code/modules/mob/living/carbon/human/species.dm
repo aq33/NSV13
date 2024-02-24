@@ -1217,28 +1217,38 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	// that's because while hunger may be for babies,
 	// thirst is for everyone - what else is the bar for?
 	// thirst decrease
-	if (H.hydration > 0 && H.stat != DEAD && !HAS_TRAIT(H, TRAIT_NOTHIRST))
-		// he need sum milk
-		var/thirst_rate = THIRST_FACTOR
-		var/datum/component/mood/mood = H.GetComponent(/datum/component/mood)
-		if(mood && mood.sanity > SANITY_DISTURBED)
-			thirst_rate *= max(0.5, 1 - 0.002 * mood.sanity) //0.85 to 0.75
-		thirst_rate *= H.physiology.thirst_mod
-		H.adjust_hydration(-thirst_rate)
-	// handle thirst alert
 	if(!HAS_TRAIT(H, TRAIT_NOTHIRST))
-		switch(H.hydration)
-			if(HYDRATION_LEVEL_TURGID to INFINITY)
-				H.throw_alert("thirst", /atom/movable/screen/alert/turgid)
-			if(HYDRATION_LEVEL_DEHYDRATED to HYDRATION_LEVEL_TURGID)
-				H.clear_alert("thirst")
-			if(HYDRATION_LEVEL_PARCHED to HYDRATION_LEVEL_DEHYDRATED)
-				H.throw_alert("thirst", /atom/movable/screen/alert/thirsty)
-			if(0 to HYDRATION_LEVEL_PARCHED)
-				H.throw_alert("thirst", /atom/movable/screen/alert/parched)
+		if (H.hydration > 0 && H.stat != DEAD)
+			// he need sum milk
+			var/thirst_rate = THIRST_FACTOR
+			var/datum/component/mood/mood = H.GetComponent(/datum/component/mood)
+			if(mood && mood.sanity > SANITY_DISTURBED)
+				thirst_rate *= max(0.5, 1 - 0.002 * mood.sanity) //0.85 to 0.75
+			thirst_rate *= H.physiology.thirst_mod
+			H.adjust_hydration(-thirst_rate)
+		// handle thirst alert
+			switch(H.hydration)
+				if(HYDRATION_LEVEL_TURGID to INFINITY)
+					H.throw_alert("thirst", /atom/movable/screen/alert/turgid)
+				if(HYDRATION_LEVEL_DEHYDRATED to HYDRATION_LEVEL_TURGID)
+					H.clear_alert("thirst")
+				if(HYDRATION_LEVEL_PARCHED to HYDRATION_LEVEL_DEHYDRATED)
+					H.throw_alert("thirst", /atom/movable/screen/alert/thirsty)
+				if(0 to HYDRATION_LEVEL_PARCHED)
+					H.throw_alert("thirst", /atom/movable/screen/alert/parched)
 	// AQ EDIT END
+
 	if(HAS_TRAIT(src, TRAIT_NOHUNGER))
 		return //hunger is for BABIES
+
+	// AQ EDIT START
+	if(!HAS_TRAIT(H, TRAIT_NOTHIRST))
+		if(H.nutrition < NUTRITION_LEVEL_STARVING && H.hydration < HYDRATION_LEVEL_DEHYDRATED)
+			if(prob(35))
+				if(prob(14)) // 5% chance (.35 * .14 ~= .05)
+					to_chat(H, "<font size=2><span class='danger'>Umierasz z niedożywienia! Napij się lub zjedz coś.</span></font>")
+				H.take_overall_damage(rand(1, 3))
+	// AQ EDIT END
 
 	//The fucking TRAIT_FAT mutation is the dumbest shit ever. It makes the code so difficult to work with
 	if(HAS_TRAIT_FROM(H, TRAIT_FAT, OBESITY))//I share your pain, past coder.
