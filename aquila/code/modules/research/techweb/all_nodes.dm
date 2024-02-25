@@ -189,3 +189,12 @@
 	design_ids = list("borg_transform_borgi")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 	export_price = 1500
+
+/datum/techweb_node/syndicate_basic/New()		//Crappy way of making syndicate gear decon supported until there's another way.
+	. = ..()
+	boost_item_paths = list()
+	for(var/path in GLOB.uplink_items)
+		var/datum/uplink_item/UI = new path
+		if(!UI.item || !UI.illegal_tech)
+			continue
+		boost_item_paths |= UI.item	//allows deconning to unlock.
