@@ -15198,6 +15198,14 @@
 /obj/effect/turf_decal/tile/ship/blue{
 	dir = 1
 	},
+/obj/item/pipe_dispenser,
+/obj/item/pipe_dispenser{
+	pixel_y = 8
+	},
+/obj/item/pipe_dispenser{
+	pixel_x = 6
+	},
+/obj/structure/rack,
 /turf/open/floor/durasteel/techfloor_grid,
 /area/engine/atmos)
 "Rl" = (
