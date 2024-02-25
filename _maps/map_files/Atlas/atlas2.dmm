@@ -9720,6 +9720,7 @@
 "Gh" = (
 /obj/item/circuitboard/machine/protolathe,
 /obj/structure/rack,
+/obj/item/circuitboard/machine/circuit_imprinter,
 /turf/open/floor/durasteel/lino,
 /area/ai_monitored/nuke_storage)
 "Gi" = (
@@ -10692,6 +10693,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 4
 	},
+/obj/item/hemostat/alien,
 /turf/open/floor/carpet/ship/beige_carpet,
 /area/crew_quarters/heads/hor)
 "Ju" = (
