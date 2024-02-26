@@ -28,3 +28,11 @@
 	build_path = /obj/item/circuitboard/machine/autodoc
 	category = list("Medical Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+/datum/design/board/plort
+	name = "Machine Design (Plort Redemption Machine)"
+	desc = "The circuit board for a plort redemption machine."
+	id = "plort"
+	build_path = /obj/item/circuitboard/machine/plort
+	category = list("Research Machinery")
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
