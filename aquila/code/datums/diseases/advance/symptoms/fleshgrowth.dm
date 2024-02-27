@@ -24,7 +24,7 @@
 	. = ..()
 	if(A.stage_rate >= 6)
 		severity -= 3
-	if(A.transmisson >= 10)
+	if(A.transmission >= 10)
 		severity += 1
 
 /datum/symptom/flesh/Start(datum/disease/advance/A)
@@ -83,7 +83,7 @@
 					lastcycle += 1
 				if(A.stage_rate >= 8)
 					healfactor += 0.5
-					C.heal_overall_damage(healfactor, required_status = BODYPART_ORGANIC)//max passive healing is 4.5, whilst laying down on a node.
+					C.heal_overall_damage(healfactor, required_status = BODYTYPE_ORGANIC)//max passive healing is 4.5, whilst laying down on a node.
 				if(ishuman(M))
 					var/mob/living/carbon/human/H = M
 					if(istype(H.dna.species, /datum/species/zombie/infectious))
