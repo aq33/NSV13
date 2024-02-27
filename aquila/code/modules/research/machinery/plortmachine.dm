@@ -4,11 +4,10 @@
 /obj/machinery/plortrefinery
 	name = "plort redemption machine"
 	desc = "A machine that accepts slime cores, and sells them to the highest bidder. This generates research, depending on the rarity."
-	icon = 'icons/obj/machines/plortmachine.dmi'
+	icon = 'aquila/icons/obj/machines/plortmachine.dmi'
 	icon_state = "plortmachine"
 	layer = BELOW_OBJ_LAYER
 	density = TRUE
-	speed_process = TRUE
 	var/research_point_multiplier = 1
 	var/point_gain = 0
 	var/datum/techweb/linked_techweb
