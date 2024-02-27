@@ -88,13 +88,13 @@
 					var/mob/living/carbon/human/H = M
 					if(istype(H.dna.species, /datum/species/zombie/infectious))
 						var/datum/species/zombie/infectious/Z = H.dna.species
-						if(Z.limbs_id == "pinkzombie")
+						if(Z.examine_limb_id == "zombie")
 							return
 						else
-							Z.limbs_id = "pinkzombie"
+							Z.examine_limb_id = "zombie"
 							H.regenerate_icons()
 					if(H.skin_tone == "pink")
-						return
+						return 
 					else if(H.dna.features["mcolor"] == "D37")
 						return
 					if(H.dna.species.use_skintones)
