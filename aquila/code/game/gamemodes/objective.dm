@@ -31,7 +31,7 @@
 			/obj/machinery/sleeper,
 			/obj/machinery/clonepod,
 			// OTHER
-			/obj/machinery/autolathe,
+			/obj/machinery/modular_fabricator/autolathe,
 			/obj/machinery/ore_silo,
 			/obj/machinery/teleport/hub,
 			/obj/machinery/rnd/production/protolathe, // hard-mode 2.0
