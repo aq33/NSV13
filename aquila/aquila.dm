@@ -50,7 +50,6 @@
 #include "code\game\objects\effects\decals\cleanable.dm"
 #include "code\game\objects\effects\decals\cleanable\humans.dm"
 #include "code\game\objects\effects\spawners\lootdrop.dm"
-#include "code\game\objects\effects\spawners\mailspawner.dm"
 #include "code\game\objects\effects\spawners\xenospawner.dm"
 #include "code\game\objects\items\AI_modules.dm"
 #include "code\game\objects\items\circuitboards\circuitboard.dm"
