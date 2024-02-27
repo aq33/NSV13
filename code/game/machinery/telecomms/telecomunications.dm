@@ -14,7 +14,8 @@
 
 GLOBAL_LIST_EMPTY(telecomms_list)
 
-/obj/machinery/telecomms
+/obj/machinery/telecomms//AQ edit dodano name
+	name = "telecommunications machine"
 	icon = 'icons/obj/machines/telecomms.dmi'
 	critical_machine = TRUE
 	light_color = LIGHT_COLOR_CYAN
