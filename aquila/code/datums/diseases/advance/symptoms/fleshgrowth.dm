@@ -94,7 +94,7 @@
 							Z.examine_limb_id = "zombie"
 							H.regenerate_icons()
 					if(H.skin_tone == "pink")
-						return 
+						return
 					else if(H.dna.features["mcolor"] == "D37")
 						return
 					if(H.dna.species.use_skintones)
@@ -152,11 +152,11 @@
 	if(icon == initial(icon))
 		switch(rand(1,3))
 			if(1)
-				icon = 'icons/obj/smooth_structures/alien/flesh1.dmi'
+				icon = 'aquila/icons/obj/smooth_structures/alien/flesh1.dmi'
 			if(2)
-				icon = 'icons/obj/smooth_structures/alien/flesh2.dmi'
+				icon = 'aquila/icons/obj/smooth_structures/alien/flesh2.dmi'
 			if(3)
-				icon = 'icons/obj/smooth_structures/alien/flesh3.dmi'
+				icon = 'aquila/icons/obj/smooth_structures/alien/flesh3.dmi'
 	if(LAZYLEN(diseases))
 		for(var/datum/disease/D in diseases)
 			nodediseases += D
@@ -212,7 +212,7 @@
 
 
 /obj/structure/alien/flesh/node/Initialize()
-	icon = 'icons/obj/smooth_structures/alien/fleshpolyp.dmi'
+	icon = 'aquila/icons/obj/smooth_structures/alien/fleshpolyp.dmi'
 	. = ..()
 	set_light(lon_range)
 	var/obj/structure/alien/W = locate(/obj/structure/alien) in loc //we infect and take over alien resin
