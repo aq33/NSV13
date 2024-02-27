@@ -76,22 +76,4 @@ MAP_REMOVE_JOB(brig_phys)
     total_positions = 1
     spawn_positions = 1
 
-/datum/job/paramedic/New()
-    ..()
-    MAP_JOB_CHECK
-    total_positions = 2
-    spawn_positions = 2
-	
-/datum/job/medical_doctor/New()
-    ..()
-    MAP_JOB_CHECK
-    total_positions = 3
-    spawn_positions = 3
-	
-/datum/job/brig_physician/New()
-    ..()
-    MAP_JOB_CHECK
-    total_positions = 1
-    spawn_positions = 1
-
 #undef JOB_MODIFICATION_MAP_NAME
