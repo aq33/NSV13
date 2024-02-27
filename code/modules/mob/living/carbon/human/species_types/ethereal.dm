@@ -17,7 +17,7 @@
 	species_traits = list(DYNCOLORS, AGENDER, HAIR)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	species_language_holder = /datum/language_holder/ethereal
-	screamsound = list('sound/voice/ethereal/ethereal_scream_1.ogg', 'sound/voice/ethereal/ethereal_scream_2.ogg', 'sound/voice/ethereal/ethereal_scream_3.ogg')
+	screamsound = list('aquila/sound/voice/ethereal/ethereal_scream_1.ogg', 'aquila/sound/voice/ethereal/ethereal_scream_2.ogg', 'aquila/sound/voice/ethereal/ethereal_scream_3.ogg')
 	inherent_traits = list(TRAIT_POWERHUNGRY)
 	sexes = FALSE //no fetish content allowed
 	hair_color = "fixedmutcolor"
