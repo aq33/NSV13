@@ -25,8 +25,7 @@
 	if(anchored)
 		connect_to_network()
 
-/obj/machinery/power/port_gen/should_have_node()
-	return anchored
+
 
 /obj/machinery/power/port_gen/connect_to_network()
 	if(!anchored)
