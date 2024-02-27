@@ -7,3 +7,11 @@
 
 /obj/structure/cursed_slot_machine/betterchance //doubled chance of winnning.
 	win_prob = 10
+
+
+/obj/effect/gluttony/Cross(atom/movable/mover, turf/target)
+	if(ismob(mover))
+		var/mob/M = mover
+		if(is_sinfuldemon(M))
+			return TRUE
+	.=..()

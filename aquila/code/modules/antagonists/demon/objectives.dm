@@ -8,7 +8,7 @@
 	explanation_text = "Osiągnij bogactwa których inni będą Ci zazdrościć."
 
 /datum/objective/demon/wrath
-	explanation_text = "Wyciągnij najwięcej cierpienia z tych wokół Ciebie."
+	explanation_text = "Wyciągnij najwięcej cierpienia z tych wokół Ciebie. Pamiętaj że agonia jednej osoby jest więcej warta od szybkiego końca tłumu"
 
 /datum/objective/demon/envy
 	explanation_text = "Nie pozwól drugiemu być popularniejszym od Ciebie."
