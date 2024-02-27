@@ -3,6 +3,7 @@
 	roundend_category = "diseases"
 	antagpanel_category = "Disease"
 	show_to_ghosts = TRUE
+	banning_key = BAN_ROLE_ALL_ANTAGONISTS
 	var/disease_name = ""
 
 /datum/antagonist/disease/on_gain()
