@@ -25,24 +25,14 @@
 ///The list of choosable sins for demons. One will be assigned to a demon when spawned naturally.
 	var/static/list/demonsins = list(SIN_GLUTTONY, SIN_GREED, SIN_WRATH, SIN_ENVY, SIN_PRIDE)
 	var/static/list/demon_spells = typecacheof(list(
-
 		/obj/effect/proc_holder/spell/targeted/shapeshift/demon,
-
 		/obj/effect/proc_holder/spell/targeted/shapeshift/demon/gluttony,
-
 		/obj/effect/proc_holder/spell/targeted/shapeshift/demon/wrath,
-
 		/obj/effect/proc_holder/spell/targeted/forcewall/gluttony,
-
 		/obj/effect/proc_holder/spell/aoe_turf/conjure/summon_greedslots,
-
 		/obj/effect/proc_holder/spell/targeted/inflict_handler/ignite,
-
 		/obj/effect/proc_holder/spell/targeted/touch/envy,
-
 		/obj/effect/proc_holder/spell/aoe_turf/conjure/summon_mirror))
-
-
 	var/static/list/sinfuldemon_traits = list(
 		TRAIT_GENELESS,
 		TRAIT_STABLEHEART,
@@ -196,13 +186,6 @@
 	parts += printplayer(owner)
 	parts += printobjectives(objectives)
 	return parts.Join("<br>")
-
-/datum/antagonist/sinfuldemon/get_preview_icon()
-	var/icon/sinfuldemon_icon = icon('aquila/icons/mob/mob.dmi', "lesserdaemon")
-
-	sinfuldemon_icon.Scale(ANTAGONIST_PREVIEW_ICON_SIZE, ANTAGONIST_PREVIEW_ICON_SIZE)
-
-	return sinfuldemon_icon
 
 
 #undef SIN_ENVY

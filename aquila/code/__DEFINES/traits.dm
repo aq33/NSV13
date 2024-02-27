@@ -4,6 +4,7 @@
 #define TRAIT_TOXICFART				"toxicfart"
 #define TRAIT_EAT_MORE				"eat_more"
 #define TRAIT_BOTTOMLESS_STOMACH	"bottomless_stomach"
+#define TRAIT_GENELESS 				"geneless"
 
 //non-mob traits
 
