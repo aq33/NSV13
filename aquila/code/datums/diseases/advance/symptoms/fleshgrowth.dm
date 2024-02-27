@@ -4,7 +4,7 @@
 	stealth = -2
 	resistance = 3
 	stage_speed = 3
-	transmittable = 1
+	transmission = 1
 	level = 9
 	severity = 2
 	symptom_delay_min = 1
@@ -22,15 +22,15 @@
 
 /datum/symptom/flesh/severityset(datum/disease/advance/A)
 	. = ..()
-	if(A.properties["stage_rate"] >= 6)
+	if(A.stage_rate >= 6)
 		severity -= 3
-	if(A.properties["transmittable"] >= 10)
+	if(A.transmisson >= 10)
 		severity += 1
 
 /datum/symptom/flesh/Start(datum/disease/advance/A)
 	. = ..()
-	requiredcycles = (max(2, round((18 - A.properties["stage_rate"]) / 2))) //14 speed is the highest possible rate of growth
-	maxradius = (round(A.properties["transmittable"] / 3))
+	requiredcycles = (max(2, round((18 - A.stage_rate) / 2))) //14 speed is the highest possible rate of growth
+	maxradius = (round(A.transmission / 3))
 	var/mob/living/M = A.affected_mob
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -67,7 +67,7 @@
 					if(!(C.mobility_flags & MOBILITY_STAND))
 						healfactor *= 2
 				else if(round(cycles / requiredcycles) >= 1)
-					if(A.properties["transmittable"] >= 10)
+					if(A.transmission >= 10)
 						for(var/datum/disease/D in M.diseases)
 							if((D.spread_flags & DISEASE_SPREAD_SPECIAL) || (D.spread_flags & DISEASE_SPREAD_NON_CONTAGIOUS) || (D.spread_flags & DISEASE_SPREAD_FALTERED))
 								continue
@@ -81,7 +81,7 @@
 						new /obj/structure/alien/flesh(currentloc, diseases)
 					C.visible_message("<span class='warning'>The film on [C]'s skin grows onto the floor!</span>", "<span class='userdanger'>The film creeping along your skin secretes onto the floor!</span>")
 					lastcycle += 1
-				if(A.properties["stage_rate"] >= 8)
+				if(A.stage_rate >= 8)
 					healfactor += 0.5
 					C.heal_overall_damage(healfactor, required_status = BODYPART_ORGANIC)//max passive healing is 4.5, whilst laying down on a node.
 				if(ishuman(M))
