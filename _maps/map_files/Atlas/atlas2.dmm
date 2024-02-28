@@ -3670,13 +3670,13 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/machinery/clonepod/prefilled{
 	dir = 1
 	},
-/turf/open/floor/monotile/dark,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/open/floor/plasteel/tech/grid,
 /area/awaymission/research/interior/genetics)
 "lA" = (
 /obj/effect/decal/cleanable/glitter/white{
@@ -4275,13 +4275,12 @@
 /turf/open/floor/circuit/off,
 /area/ai_monitored/turret_protected/ai)
 "nJ" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 5
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 5
+	dir = 4
 	},
-/obj/machinery/light/small,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/maintenance/department/science/xenobiology)
 "nK" = (
@@ -4414,15 +4413,14 @@
 /turf/closed/wall/r_wall,
 /area/maintenance/nsv/deck1/starboard)
 "og" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg2"
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
 	},
+/obj/machinery/light/small,
+/turf/open/floor/plating,
 /area/maintenance/department/science/xenobiology)
 "oi" = (
 /obj/structure/chair/fancy/sofa/old/right{
@@ -5283,17 +5281,6 @@
 /obj/structure/sign/poster/official/random{
 	pixel_x = 32
 	},
-/obj/structure/table/glass,
-/obj/item/storage/box/disks,
-/obj/item/reagent_containers/dropper,
-/obj/item/reagent_containers/glass/beaker{
-	pixel_x = 8;
-	pixel_y = 2
-	},
-/obj/item/storage/box/monkeycubes{
-	pixel_x = 2;
-	pixel_y = -2
-	},
 /turf/open/floor/durasteel/lino,
 /area/awaymission/research/interior/genetics)
 "qZ" = (
@@ -6147,7 +6134,7 @@
 /turf/open/floor/plating,
 /area/crew_quarters/heads/cmo)
 "tS" = (
-/obj/machinery/computer/scan_consolenew{
+/obj/machinery/computer/cloning{
 	dir = 4
 	},
 /turf/open/floor/durasteel/lino,
@@ -6274,28 +6261,19 @@
 	dir = 4
 	},
 /obj/effect/landmark/zebra_interlock_point,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
 /obj/machinery/door/airlock/ship/public/glass{
 	name = "Genetics Lab";
 	req_one_access_txt = "9";
 	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
 	},
 /turf/open/floor/monotile,
 /area/awaymission/research/interior/genetics)
@@ -8725,7 +8703,7 @@
 "Cu" = (
 /obj/machinery/smartfridge/organ,
 /turf/closed/wall/r_wall,
-/area/medical/surgery)
+/area/medical/medbay)
 "Cv" = (
 /obj/structure/bookcase/random/adult,
 /obj/structure/sign/poster/official/random{
@@ -11813,9 +11791,6 @@
 	dir = 4;
 	layer = 3.4
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/research/interior/genetics)
 "LP" = (
@@ -14116,6 +14091,24 @@
 	},
 /turf/open/floor/plating,
 /area/hallway/nsv/deck1/hallway)
+"SW" = (
+/obj/machinery/power/apc/auto_name/north,
+/obj/item/radio/intercom/directional/east{
+	pixel_y = 3
+	},
+/obj/structure/table/glass,
+/obj/item/storage/box/disks,
+/obj/item/reagent_containers/dropper,
+/obj/item/reagent_containers/glass/beaker{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/obj/item/storage/box/monkeycubes{
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/turf/open/floor/durasteel/lino,
+/area/awaymission/research/interior/genetics)
 "SX" = (
 /obj/structure/lattice,
 /turf/open/openspace,
@@ -14353,7 +14346,6 @@
 /turf/open/floor/monotile/steel,
 /area/bridge/cic)
 "TQ" = (
-/obj/machinery/power/apc/auto_name/north,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -14857,9 +14849,6 @@
 "VD" = (
 /obj/machinery/firealarm/directional/north,
 /obj/machinery/dna_scannernew,
-/obj/item/radio/intercom/directional/east{
-	pixel_y = 3
-	},
 /turf/open/floor/durasteel/lino,
 /area/awaymission/research/interior/genetics)
 "VE" = (
@@ -15070,10 +15059,10 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 4
+	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 4
+	dir = 5
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/science/xenobiology)
@@ -15982,7 +15971,7 @@
 /area/medical/chemistry)
 "Zm" = (
 /obj/machinery/status_display/evac/north,
-/obj/machinery/computer/cloning,
+/obj/machinery/computer/scan_consolenew,
 /turf/open/floor/durasteel/lino,
 /area/awaymission/research/interior/genetics)
 "Zn" = (
@@ -53637,16 +53626,16 @@ Xb
 fD
 RT
 fD
-fD
-fD
+dw
+dw
 Gr
 dw
 ur
 cH
 OE
 Cu
-WJ
-na
+cH
+dQ
 bh
 dQ
 mK
@@ -54923,7 +54912,7 @@ Am
 oM
 he
 Za
-Za
+SW
 TQ
 Ja
 qY
@@ -55177,9 +55166,9 @@ Am
 zu
 Am
 Am
-Tf
-Tq
-nJ
+XU
+og
+Za
 Za
 Pu
 Za
@@ -55433,10 +55422,10 @@ mK
 mK
 mK
 mK
-mK
 Tf
 XU
-og
+nJ
+XU
 XU
 HV
 qr
@@ -55690,9 +55679,9 @@ mK
 mK
 mK
 mK
-mK
 Tf
-XU
+Tf
+Tq
 Wg
 JK
 ti
