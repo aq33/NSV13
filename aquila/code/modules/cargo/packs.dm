@@ -88,3 +88,11 @@
 	cost = 10000
 	contains = list(/obj/item/reagent_containers/glass/bottle/concentrated_bz)
 	crate_name = "Changeling testing kit crate"
+
+/datum/supply_pack/engineering/rtg
+	name = "Radioisotope Thermoelectric Generator Crate"
+	desc = "A crate containing a simple nuclear power generator, used in small outposts to reliably provide power for decades."
+	cost = 5000
+	contains = list(/obj/machinery/power/rtg)
+	crate_name = "RTG crate"
+	crate_type = /obj/structure/closet/crate/engineering/electrical
