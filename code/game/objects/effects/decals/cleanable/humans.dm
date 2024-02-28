@@ -73,7 +73,7 @@
 /obj/effect/decal/cleanable/blood/gibs/Initialize(mapload, list/datum/disease/diseases)
 	. = ..()
 	name = "rotten [name]"
-	//AddComponent(/datum/component/rot/gibs)
+	AddComponent(/datum/component/rot/gibs)//AQ EDIT
 	reagents.add_reagent(/datum/reagent/liquidgibs, 5)
 	RegisterSignal(src, COMSIG_MOVABLE_PIPE_EJECTING, PROC_REF(on_pipe_eject))
 
