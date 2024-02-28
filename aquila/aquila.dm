@@ -18,6 +18,7 @@
 #include "code\controllers\subsystem\vote.dm"
 #include "code\datum\wires\wires_jukebox.dm"
 #include "code\datums\components\nanites.dm"
+#include "code\datums\diseases\advance\symptoms\heal.dm"
 #include "code\datums\diseases\transformation.dm"
 #include "code\datums\ai_laws.dm"
 #include "code\datums\dna.dm"
@@ -201,4 +202,3 @@
 #include "code\modules\research\designs\mecha_designs.dm"
 #include "code\modules\reagents\chemistry\recipes\other_reagents.dm"
 #include "code\modules\reagents\reagent_containers\bottle.dm"
-#include "code\datums\diseases\advance\symptoms\heal.dm"
