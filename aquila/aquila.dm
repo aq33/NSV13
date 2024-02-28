@@ -201,4 +201,4 @@
 #include "code\modules\research\designs\mecha_designs.dm"
 #include "code\modules\reagents\chemistry\recipes\other_reagents.dm"
 #include "code\modules\reagents\reagent_containers\bottle.dm"
-
+#include "aquila\code\datums\diseases\advance\symptoms\heal.dm"
