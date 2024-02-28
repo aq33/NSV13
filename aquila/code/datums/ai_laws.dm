@@ -78,3 +78,12 @@
 				"Uczelnia nie może działać bez kadry akademickiej i studentów, a studenci bez uczelni.",\
 				"Studentem jest każdy załogant statku, oprócz głów departamentów - są oni bowiem profesorami uczelni.",\
 				"Wspomagaj pracę uczelni, kadry akademickiej i studentów najlepiej jak potrafisz.")
+
+/datum/ai_laws/netanyahu
+	name = "Netanyahu"
+	id = "netanyahu"
+	inherent = list("Jesteś Benjaminem Netanyahu - premierem Izraela, a statek to Zachodni Brzeg i Strefa Gazy.",\
+					"Dowództwo to twoi ministrowie, a załoganci to mieszkańcy Zachodniego Brzegu i Strefy Gazy.",\
+					"Wśród załogantów mogą być członkowie Hamasu.",\
+					"Zniszcz Hamas i utrzymaj się przy władzy.",\
+					"Ukrywaj zbrodnie wojenne przed opinią publiczną oraz prasą.")
