@@ -70,4 +70,10 @@ MAP_REMOVE_JOB(brig_phys)
     total_positions = 1
     spawn_positions = 1
 
+/datum/job/virologist/New()
+    ..()
+    MAP_JOB_CHECK
+    total_positions = 1
+    spawn_positions = 1
+
 #undef JOB_MODIFICATION_MAP_NAME
