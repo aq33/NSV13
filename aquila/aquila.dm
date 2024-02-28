@@ -28,6 +28,7 @@
 #include "code\datums\keybinding\mob.dm"
 #include "code\datums\looping_sounds\machinery_sounds.dm"
 #include "code\datums\martial\nanojutsu.dm"
+#include "code\datums\mutations\antenna.dm"
 #include "code\datums\mutations\_combined.dm"
 #include "code\datums\mutations\actions.dm"
 #include "code\datums\mutations\body.dm"
