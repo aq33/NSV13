@@ -14,6 +14,8 @@
 	taste_mult = 4
 	var/nutriment_factor = 1 * REAGENTS_METABOLISM
 	var/quality = 0	//affects mood, typically higher for mixed drinks with more complex recipes
+	/// AQ EDIT - How much does this hydrate you?
+	var/hydration_factor = 1 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/on_mob_life(mob/living/carbon/M)
 	current_cycle++
@@ -21,7 +23,12 @@
 		var/mob/living/carbon/human/H = M
 		if(!HAS_TRAIT(H, TRAIT_NOHUNGER) && !HAS_TRAIT(H, TRAIT_POWERHUNGRY))
 			H.adjust_nutrition(nutriment_factor)
+		if(!HAS_TRAIT(H, TRAIT_NOTHIRST))
+			H.adjust_hydration(get_hydration_factor())
 	holder.remove_reagent(type, metabolization_rate)
+
+/datum/reagent/consumable/proc/get_hydration_factor()
+	return hydration_factor
 
 /datum/reagent/consumable/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if(method == INGEST)

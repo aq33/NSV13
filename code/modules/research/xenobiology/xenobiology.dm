@@ -16,6 +16,7 @@
 	var/effectmod
 	var/list/activate_reagents = list() //Reagents required for activation
 	var/recurring = FALSE
+	var/plort_value = 10 //For setting the research points given from each core
 	var/color_slime	///the color of the extract and the slime it came from
 	var/sparkly = FALSE //if true, cargo gets 2x the money for them
 
@@ -107,6 +108,7 @@
 	name = "gold slime extract"
 	icon_state = "gold slime extract"
 	effectmod = "symbiont"
+	plort_value = 50
 	color_slime = "gold"
 	activate_reagents = list(/datum/reagent/blood,/datum/reagent/toxin/plasma,/datum/reagent/water)
 
@@ -137,6 +139,7 @@
 	name = "silver slime extract"
 	icon_state = "silver slime extract"
 	effectmod = "consuming"
+	plort_value = 50
 	color_slime = "silver"
 	activate_reagents = list(/datum/reagent/toxin/plasma,/datum/reagent/water)
 
@@ -161,6 +164,7 @@
 	name = "metal slime extract"
 	icon_state = "metal slime extract"
 	effectmod = "industrial"
+	plort_value = 25
 	color_slime = "metal"
 	activate_reagents = list(/datum/reagent/toxin/plasma,/datum/reagent/water)
 
@@ -184,6 +188,7 @@
 	name = "purple slime extract"
 	icon_state = "purple slime extract"
 	effectmod = "regenerative"
+	plort_value = 25
 	color_slime = "purple"
 	activate_reagents = list(/datum/reagent/blood,/datum/reagent/toxin/plasma)
 
@@ -204,6 +209,7 @@
 	name = "dark purple slime extract"
 	icon_state = "dark purple slime extract"
 	effectmod = "self-sustaining"
+	plort_value = 50
 	color_slime = "darkpurple"
 	activate_reagents = list(/datum/reagent/toxin/plasma)
 
@@ -227,6 +233,7 @@
 	name = "orange slime extract"
 	icon_state = "orange slime extract"
 	effectmod = "burning"
+	plort_value = 25
 	color_slime = "orange"
 	activate_reagents = list(/datum/reagent/blood,/datum/reagent/toxin/plasma,/datum/reagent/water)
 
@@ -248,6 +255,7 @@
 	name = "yellow slime extract"
 	icon_state = "yellow slime extract"
 	effectmod = "charged"
+	plort_value = 50
 	color_slime = "yellow"
 	activate_reagents = list(/datum/reagent/blood,/datum/reagent/toxin/plasma,/datum/reagent/water)
 
@@ -280,6 +288,7 @@
 	name = "red slime extract"
 	icon_state = "red slime extract"
 	effectmod = "sanguine"
+	plort_value = 50
 	color_slime = "red"
 	activate_reagents = list(/datum/reagent/blood,/datum/reagent/toxin/plasma,/datum/reagent/water)
 
@@ -301,6 +310,7 @@
 	name = "blue slime extract"
 	icon_state = "blue slime extract"
 	effectmod = "stabilized"
+	plort_value = 25
 	color_slime = "blue"
 	activate_reagents = list(/datum/reagent/blood,/datum/reagent/toxin/plasma,/datum/reagent/water)
 
@@ -326,6 +336,7 @@
 	name = "dark blue slime extract"
 	icon_state = "dark blue slime extract"
 	effectmod = "chilling"
+	plort_value = 50
 	color_slime = "darkblue"
 	activate_reagents = list(/datum/reagent/toxin/plasma,/datum/reagent/water)
 
@@ -350,6 +361,7 @@
 	name = "pink slime extract"
 	icon_state = "pink slime extract"
 	effectmod = "gentle"
+	plort_value = 50
 	color_slime = "pink"
 	activate_reagents = list(/datum/reagent/blood,/datum/reagent/toxin/plasma)
 
@@ -373,6 +385,7 @@
 	name = "green slime extract"
 	icon_state = "green slime extract"
 	effectmod = "mutative"
+	plort_value = 50
 	color_slime = "green"
 	activate_reagents = list(/datum/reagent/blood,/datum/reagent/toxin/plasma,/datum/reagent/uranium/radium)
 
@@ -398,6 +411,7 @@
 	name = "light pink slime extract"
 	icon_state = "light pink slime extract"
 	effectmod = "loyal"
+	plort_value = 100
 	color_slime = "lightpink"
 	activate_reagents = list(/datum/reagent/toxin/plasma)
 
@@ -421,6 +435,7 @@
 	name = "black slime extract"
 	icon_state = "black slime extract"
 	effectmod = "transformative"
+	plort_value = 100
 	color_slime = "black"
 	activate_reagents = list(/datum/reagent/toxin/plasma)
 
@@ -443,6 +458,7 @@
 	name = "oil slime extract"
 	icon_state = "oil slime extract"
 	effectmod = "detonating"
+	plort_value = 100
 	color_slime = "oil"
 	activate_reagents = list(/datum/reagent/blood,/datum/reagent/toxin/plasma)
 
@@ -467,6 +483,7 @@
 	name = "adamantine slime extract"
 	icon_state = "adamantine slime extract"
 	effectmod = "crystalline"
+	plort_value = 100
 	color_slime = "adamantine"
 	activate_reagents = list(/datum/reagent/toxin/plasma)
 
@@ -497,6 +514,7 @@
 	name = "bluespace slime extract"
 	icon_state = "bluespace slime extract"
 	effectmod = "warping"
+	plort_value = 100
 	color_slime = "bluespace"
 	activate_reagents = list(/datum/reagent/blood,/datum/reagent/toxin/plasma)
 	var/teleport_ready = FALSE
@@ -546,6 +564,7 @@
 	name = "pyrite slime extract"
 	icon_state = "pyrite slime extract"
 	effectmod = "prismatic"
+	plort_value = 100
 	color_slime = "pyrite"
 	activate_reagents = list(/datum/reagent/blood,/datum/reagent/toxin/plasma)
 
@@ -587,6 +606,7 @@
 	name = "cerulean slime extract"
 	icon_state = "cerulean slime extract"
 	effectmod = "recurring"
+	plort_value = 100
 	color_slime = "cerulean"
 	activate_reagents = list(/datum/reagent/blood,/datum/reagent/toxin/plasma)
 
@@ -608,6 +628,7 @@
 	name = "sepia slime extract"
 	icon_state = "sepia slime extract"
 	effectmod = "lengthened"
+	plort_value = 100
 	color_slime = "sepia"
 	activate_reagents = list(/datum/reagent/blood,/datum/reagent/toxin/plasma,/datum/reagent/water)
 
@@ -629,6 +650,7 @@
 	name = "rainbow slime extract"
 	icon_state = "rainbow slime extract"
 	effectmod = "hyperchromatic"
+	plort_value = 250
 	color_slime = "rainbow"
 	activate_reagents = list(/datum/reagent/blood,/datum/reagent/toxin/plasma,"lesser plasma",/datum/reagent/toxin/slimejelly,"holy water and uranium") //Curse this snowflake reagent list.
 
