@@ -1,18 +1,17 @@
 /obj/item/nullrod
 	/var/list/holy_weapons_aquila = list(
-		/obj/item/clothing/neck/crucifix/krucyfiks_egzorcysty
+		/obj/item/gun/ballistic/shotgun/egzorcysta
 	)
 
 /obj/item/storage/box/holy/egzorcysta
 	name = "Zestaw egzorcysty"
 
 /obj/item/storage/box/holy/egzorcysta/PopulateContents()
-	new /obj/item/gun/ballistic/shotgun/egzorcysta(src)
+	new /obj/item/clothing/neck/crucifix/krucyfiks_egzorcysty(src)
 	new /obj/item/clothing/suit/jacket/leather(src)
 	new /obj/item/clothing/under/pants/jeans(src)
 	new /obj/item/clothing/shoes/aquila/laceup_brown(src)
 	for(var/i in 1 to 4)
-		// breneka żeby było śmiesznie, 4 w strzelbie i 4 zapasowe
 		new /obj/item/ammo_casing/shotgun(src)
 
 /obj/item/gun/ballistic/shotgun/egzorcysta
