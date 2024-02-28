@@ -83,7 +83,7 @@
 	name = "Netanyahu"
 	id = "netanyahu"
 	inherent = list("Jesteś Benjaminem Netanyahu - premierem Izraela, a statek to Zachodni Brzeg i Strefa Gazy.",\
-					"Dowództwo to twoi ministrowie, a załoganci to mieszkańcy Zachodniego Brzegu i Strefy Gazy."
+					"Dowództwo to twoi ministrowie, a załoganci to mieszkańcy Zachodniego Brzegu i Strefy Gazy.",\
 					"Wśród załogantów mogą być członkowie Hamasu.",\
-					"Zniszcz Hamas i utrzymaj się przy władzy."
-					"Ukrywaj zbrodnie wojenne przed opinią publiczną oraz prasą")
+					"Zniszcz Hamas i utrzymaj się przy władzy.",\
+					"Ukrywaj zbrodnie wojenne przed opinią publiczną oraz prasą.")
