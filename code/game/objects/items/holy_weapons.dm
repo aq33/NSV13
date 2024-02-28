@@ -274,6 +274,9 @@
 		var/obj/item/nullrod/rodtype = V
 		if (initial(rodtype.chaplain_spawnable))
 			display_names[initial(rodtype.name)] = rodtype
+	for(var/V in holy_weapons_aquila) //AQUILA EDIT
+		var/obj/item/itemtype = V //AQUILA EDIT
+		display_names[initial(itemtype.name)] = itemtype //AQUILA EDIT
 
 	var/choice = input(M,"What theme would you like for your holy weapon?","Holy Weapon Theme") as null|anything in sortList(display_names, GLOBAL_PROC_REF(cmp_typepaths_asc))
 	if(QDELETED(src) || !choice || M.stat || !in_range(M, src) || M.incapacitated() || reskinned)
@@ -283,6 +286,10 @@
 	holy_weapon = new A
 
 	SSblackbox.record_feedback("tally", "chaplain_weapon", 1, "[choice]")
+
+	if (!istype(holy_weapon, /obj/item/nullrod)) //AQUILA EDIT
+		qdel(src) //AQUILA EDIT
+		M.put_in_active_hand(holy_weapon) //AQUILA EDIT
 
 	if(holy_weapon)
 		holy_weapon.reskinned = TRUE

@@ -65,6 +65,7 @@
 #include "code\game\objects\items\devices\scanners.dm"
 #include "code\game\objects\items\dna_injector.dm"
 #include "code\game\objects\items\flamethrower.dm"
+#include "code\game\objects\items\holy_weapons.dm"
 #include "code\game\objects\items\implants\implant_explosive.dm"
 #include "code\game\objects\items\implants\implant_security.dm"
 #include "code\game\objects\items\inducer.dm"
@@ -213,7 +214,7 @@
 #include "code\modules\uplink\uplink_items.dm"
 #include "code\modules\vending\boozeomat.dm"
 #include "code\modules\vending\wardrobes.dm"
+#include "code\modules\projectiles\boxes_magazines\internal\shotgun.dm"
 #include "code\modules\research\designs\mecha_designs.dm"
 #include "code\modules\reagents\chemistry\recipes\other_reagents.dm"
 #include "code\modules\reagents\reagent_containers\bottle.dm"
-
