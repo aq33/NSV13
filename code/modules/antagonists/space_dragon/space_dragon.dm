@@ -1,9 +1,8 @@
 /datum/antagonist/space_dragon
 	name = "Space Dragon"
-	banning_key = ROLE_SPACE_DRAGON
 	roundend_category = "space dragons"
 	antagpanel_category = "Space Dragon"
-	job_rank = ROLE_SPACE_DRAGON
+	banning_key = ROLE_SPACE_DRAGON
 	show_in_antagpanel = TRUE
 	show_name_in_check_antagonists = TRUE
 	show_to_ghosts = TRUE
