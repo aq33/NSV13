@@ -13,6 +13,7 @@
 	glass_icon_state = "glass_orange"
 	glass_name = "glass of orange juice"
 	glass_desc = "Vitamins! Yay!"
+	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/orangejuice/on_mob_life(mob/living/carbon/M)
 	if(M.getOxyLoss() && prob(30))
@@ -29,6 +30,7 @@
 	glass_icon_state = "glass_red"
 	glass_name = "glass of tomato juice"
 	glass_desc = "Are you sure this is tomato juice?"
+	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/tomatojuice/on_mob_life(mob/living/carbon/M)
 	if(M.getFireLoss() && prob(20))
@@ -45,6 +47,7 @@
 	glass_icon_state = "glass_green"
 	glass_name = "glass of lime juice"
 	glass_desc = "A glass of sweet-sour lime juice."
+	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/limejuice/on_mob_life(mob/living/carbon/M)
 	if(M.getToxLoss() && prob(20))
@@ -61,6 +64,7 @@
 	glass_icon_state = "carrotjuice"
 	glass_name = "glass of  carrot juice"
 	glass_desc = "It's just like a carrot but without crunching."
+	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/carrotjuice/on_mob_life(mob/living/carbon/M)
 	M.adjust_blurriness(-1)
@@ -83,6 +87,7 @@
 	glass_icon_state = "berryjuice"
 	glass_name = "glass of berry juice"
 	glass_desc = "Berry juice. Or maybe it's jam. Who cares?"
+	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/applejuice
 	name = "Apple Juice"
@@ -90,6 +95,7 @@
 	color = "#ECFF56" // rgb: 236, 255, 86
 	chem_flags = NONE
 	taste_description = "apples"
+	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/poisonberryjuice
 	name = "Poison Berry Juice"
@@ -100,6 +106,7 @@
 	glass_icon_state = "poisonberryjuice"
 	glass_name = "glass of berry juice"
 	glass_desc = "Berry juice. Or maybe it's poison. Who cares?"
+	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/poisonberryjuice/on_mob_life(mob/living/carbon/M)
 	M.adjustToxLoss(1, 0)
@@ -115,6 +122,7 @@
 	glass_icon_state = "glass_red"
 	glass_name = "glass of watermelon juice"
 	glass_desc = "A glass of watermelon juice."
+	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/lemonjuice
 	name = "Lemon Juice"
@@ -125,6 +133,7 @@
 	glass_icon_state  = "lemonglass"
 	glass_name = "glass of lemon juice"
 	glass_desc = "Sour..."
+	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/banana
 	name = "Banana Juice"
@@ -135,6 +144,7 @@
 	glass_icon_state = "banana"
 	glass_name = "glass of banana juice"
 	glass_desc = "The raw essence of a banana. HONK."
+	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/banana/on_mob_life(mob/living/carbon/M)
 	if((ishuman(M) && M.job == JOB_NAME_CLOWN) || ismonkey(M))
@@ -151,12 +161,14 @@
 	glass_name = "nothing"
 	glass_desc = "Absolutely nothing."
 	shot_glass_icon_state = "shotglass"
+	hydration_factor = 0 * REAGENTS_METABOLISM
 
 
 /datum/reagent/consumable/nothing/on_mob_life(mob/living/carbon/M)
 	if(ishuman(M) && M.job == JOB_NAME_MIME)
 		M.silent = max(M.silent, MIMEDRINK_SILENCE_DURATION)
 		M.heal_bodypart_damage(1,1, 0)
+		M.adjust_hydration(15 * REAGENTS_METABOLISM) // AQ EDIT
 		. = 1
 	..()
 
@@ -208,6 +220,7 @@
 	glass_icon_state = "glass_brown"
 	glass_name = "glass of potato juice"
 	glass_desc = "Bleh..."
+	hydration_factor = 8 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/grapejuice
 	name = "Grape Juice"
@@ -215,6 +228,7 @@
 	color = "#290029" // dark purple
 	chem_flags = NONE
 	taste_description = "grape soda"
+	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/milk
 	name = "Milk"
@@ -226,6 +240,7 @@
 	glass_name = "glass of milk"
 	glass_desc = "White and nutritious goodness!"
 	overdose_threshold = 500 //High calcium intake is bad for bone health. OD is exactly like having taken a normal-ish bone hurt juice. If anyone hits the superoverdose, well I'll be damned
+	hydration_factor = 15 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/milk/goat
 	name = "Goat Milk"
@@ -341,6 +356,7 @@
 	glass_icon_state = "glass_white"
 	glass_name = "glass of soy milk"
 	glass_desc = "White and nutritious soy goodness!"
+	hydration_factor = 12 * REAGENTS_METABOLISM
 
 
 /datum/reagent/consumable/soymilk/on_mob_add(mob/living/L)
@@ -365,6 +381,7 @@
 	glass_icon_state  = "glass_white"
 	glass_name = "glass of cream"
 	glass_desc = "Ewwww..."
+	hydration_factor = 9 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/cream/on_mob_life(mob/living/carbon/M)
 	if(M.getBruteLoss() && prob(20))
@@ -383,6 +400,7 @@
 	glass_icon_state = "glass_brown"
 	glass_name = "glass of coffee"
 	glass_desc = "Don't drop it, or you'll send scalding liquid and glass shards everywhere."
+	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/coffee/overdose_process(mob/living/M)
 	M.Jitter(5)
@@ -409,6 +427,7 @@
 	glass_icon_state = "teaglass"
 	glass_name = "glass of tea"
 	glass_desc = "Drinking it from here would not seem right."
+	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/tea/on_mob_life(mob/living/carbon/M)
 	M.dizziness = max(0,M.dizziness-2)
@@ -430,6 +449,7 @@
 	glass_icon_state = "lemonpitcher"
 	glass_name = "pitcher of lemonade"
 	glass_desc = "This drink leaves you feeling nostalgic for some reason."
+	hydration_factor = 12 * REAGENTS_METABOLISM
 
 
 /datum/reagent/consumable/tea/arnold_palmer
@@ -460,6 +480,7 @@
 	glass_icon_state = "icedcoffeeglass"
 	glass_name = "iced coffee"
 	glass_desc = "A drink to perk you up and refresh you!"
+	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/icecoffee/on_mob_life(mob/living/carbon/M)
 	M.dizziness = max(0,M.dizziness-5)
@@ -480,6 +501,7 @@
 	glass_icon_state = "icedteaglass"
 	glass_name = "iced tea"
 	glass_desc = "All natural, antioxidant-rich flavour sensation."
+	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/icetea/on_mob_life(mob/living/carbon/M)
 	M.dizziness = max(0,M.dizziness-2)
@@ -500,6 +522,7 @@
 	glass_icon_state  = "glass_brown"
 	glass_name = "glass of Space Cola"
 	glass_desc = "A glass of refreshing Space Cola."
+	hydration_factor = 7 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/space_cola/on_mob_life(mob/living/carbon/M)
 	M.drowsyness = max(0,M.drowsyness-5)
@@ -516,6 +539,7 @@
 	glass_icon_state = "nuka_colaglass"
 	glass_name = "glass of Nuka Cola"
 	glass_desc = "Don't cry, Don't raise your eye, It's only nuclear wasteland."
+	hydration_factor = 5 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/nuka_cola/on_mob_metabolize(mob/living/L)
 	..()
@@ -546,6 +570,7 @@
 	glass_icon_state = "grey_bull_glass"
 	glass_name = "glass of Grey Bull"
 	glass_desc = "Surprisingly it isn't grey."
+	hydration_factor = 6 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/grey_bull/on_mob_metabolize(mob/living/L)
 	..()
@@ -572,6 +597,7 @@
 	glass_icon_state = "Space_mountain_wind_glass"
 	glass_name = "glass of Space Mountain Wind"
 	glass_desc = "Space Mountain Wind. As you know, there are no mountains in space, only wind."
+	hydration_factor = 5 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/spacemountainwind/on_mob_life(mob/living/carbon/M)
 	M.drowsyness = max(0,M.drowsyness-7)
@@ -590,6 +616,7 @@
 	glass_icon_state = "dr_gibb_glass"
 	glass_name = "glass of Dr. Gibb"
 	glass_desc = "Dr. Gibb. Not as dangerous as the glass_name might imply."
+	hydration_factor = 5 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/dr_gibb/on_mob_life(mob/living/carbon/M)
 	M.drowsyness = max(0,M.drowsyness-6)
@@ -605,6 +632,7 @@
 	glass_icon_state = "space-up_glass"
 	glass_name = "glass of Space-Up"
 	glass_desc = "Space-up. It helps you keep your cool."
+	hydration_factor = 6 * REAGENTS_METABOLISM
 
 
 /datum/reagent/consumable/space_up/on_mob_life(mob/living/carbon/M)
@@ -620,6 +648,7 @@
 	glass_icon_state = "glass_yellow"
 	glass_name = "glass of lemon-lime"
 	glass_desc = "You're pretty certain a real fruit has never actually touched this."
+	hydration_factor = 5 * REAGENTS_METABOLISM
 
 
 /datum/reagent/consumable/lemon_lime/on_mob_life(mob/living/carbon/M)
@@ -635,6 +664,7 @@
 	glass_icon_state = "glass_red"
 	glass_name = "glass of Pwr Game"
 	glass_desc = "Goes well with a Vlad's salad."
+	hydration_factor = 6 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/pwr_game/on_mob_life(mob/living/carbon/M)
 	M.adjust_bodytemperature(-8 * TEMPERATURE_DAMAGE_COEFFICIENT, BODYTEMP_NORMAL)
@@ -649,6 +679,7 @@
 	glass_icon_state = "glass_red"
 	glass_name = "glass of Shambler's juice"
 	glass_desc = "Mmm mm, shambly."
+	hydration_factor = 6 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/shamblers/on_mob_life(mob/living/carbon/M)
 	M.adjust_bodytemperature(-8 * TEMPERATURE_DAMAGE_COEFFICIENT, BODYTEMP_NORMAL)
@@ -662,6 +693,7 @@
 	glass_icon_state = "glass_clear"
 	glass_name = "glass of soda water"
 	glass_desc = "Soda water. Why not make a scotch and soda?"
+	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/sodawater/on_mob_life(mob/living/carbon/M)
 	M.dizziness = max(0,M.dizziness-5)
@@ -678,6 +710,7 @@
 	glass_icon_state = "glass_clear"
 	glass_name = "glass of tonic water"
 	glass_desc = "Quinine tastes funny, but at least it'll keep that Space Malaria away."
+	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/tonic/on_mob_life(mob/living/carbon/M)
 	M.dizziness = max(0,M.dizziness-5)
@@ -696,6 +729,7 @@
 	glass_icon_state = "monkey_energy_glass"
 	glass_name = "glass of Monkey Energy"
 	glass_desc = "You can unleash the ape, but without the pop of the can?"
+	hydration_factor = 6 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/monkey_energy/on_mob_life(mob/living/carbon/M)
 	M.Jitter(20)
@@ -724,6 +758,7 @@
 	glass_icon_state = "iceglass"
 	glass_name = "glass of ice"
 	glass_desc = "Generally, you're supposed to put something else in there too..."
+	hydration_factor = 14 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/ice/on_mob_life(mob/living/carbon/M)
 	M.adjust_bodytemperature(-5 * TEMPERATURE_DAMAGE_COEFFICIENT, BODYTEMP_NORMAL)
@@ -739,6 +774,7 @@
 	glass_icon_state = "soy_latte"
 	glass_name = "soy latte"
 	glass_desc = "A nice and refreshing beverage while you're reading."
+	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/soy_latte/on_mob_life(mob/living/carbon/M)
 	M.dizziness = max(0,M.dizziness-5)
@@ -761,6 +797,7 @@
 	glass_icon_state = "cafe_latte"
 	glass_name = "cafe latte"
 	glass_desc = "A nice, strong and refreshing beverage while you're reading."
+	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/cafe_latte/on_mob_life(mob/living/carbon/M)
 	M.dizziness = max(0,M.dizziness-5)
@@ -783,6 +820,7 @@
 	glass_icon_state = "doctorsdelightglass"
 	glass_name = "Doctor's Delight"
 	glass_desc = "The space doctor's favorite. Guaranteed to restore bodily injury; side effects include cravings and hunger."
+	hydration_factor = 8 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/doctor_delight/on_mob_life(mob/living/carbon/M)
 	M.adjustBruteLoss(-0.5, 0)
@@ -830,6 +868,7 @@
 	glass_icon_state = "cherryshake"
 	glass_name = "cherry shake"
 	glass_desc = "A cherry flavored milkshake."
+	hydration_factor = 6 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/bluecherryshake
 	name = "Blue Cherry Shake"
@@ -842,6 +881,7 @@
 	glass_icon_state = "bluecherryshake"
 	glass_name = "blue cherry shake"
 	glass_desc = "An exotic blue milkshake."
+	hydration_factor = 6 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/pumpkin_latte
 	name = "Pumpkin Latte"
@@ -854,6 +894,7 @@
 	glass_icon_state = "pumpkin_latte"
 	glass_name = "pumpkin latte"
 	glass_desc = "A mix of coffee and pumpkin juice."
+	hydration_factor = 8 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/gibbfloats
 	name = "Gibb Floats"
@@ -866,6 +907,7 @@
 	glass_icon_state = "gibbfloats"
 	glass_name = "Gibbfloat"
 	glass_desc = "Dr. Gibb with ice cream on top."
+	hydration_factor = 8 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/pumpkinjuice
 	name = "Pumpkin Juice"
@@ -873,6 +915,7 @@
 	color = "#FFA500"
 	chem_flags = CHEMICAL_RNG_BOTANY
 	taste_description = "pumpkin"
+	hydration_factor = 8 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/blumpkinjuice
 	name = "Blumpkin Juice"
@@ -880,6 +923,7 @@
 	color = "#00BFFF"
 	chem_flags = CHEMICAL_RNG_BOTANY
 	taste_description = "a mouthful of pool water"
+	hydration_factor = 8 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/triple_citrus
 	name = "Triple Citrus"
@@ -891,6 +935,7 @@
 	glass_icon_state = "triplecitrus" //needs own sprite mine are trash
 	glass_name = "glass of triple citrus"
 	glass_desc = "A mixture of citrus juices. Tangy, yet smooth."
+	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/grape_soda
 	name = "Grape soda"
@@ -900,6 +945,7 @@
 	taste_description = "grape soda"
 	glass_name = "glass of grape juice"
 	glass_desc = "It's grape (soda)!"
+	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/grape_soda/on_mob_life(mob/living/carbon/M)
 	M.adjust_bodytemperature(-5 * TEMPERATURE_DAMAGE_COEFFICIENT, BODYTEMP_NORMAL)
@@ -912,6 +958,7 @@
 	chem_flags = CHEMICAL_RNG_BOTANY
 	quality = DRINK_NICE
 	taste_description = "chocolate milk"
+	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/menthol
 	name = "Menthol"
@@ -922,6 +969,7 @@
 	glass_icon_state = "glass_green"
 	glass_name = "glass of menthol"
 	glass_desc = "Tastes naturally minty, and imparts a very mild numbing sensation."
+	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/menthol/on_mob_life(mob/living/L)
 	L.apply_status_effect(/datum/status_effect/throat_soothed)
@@ -935,6 +983,7 @@
 	taste_description = "sweet pomegranates"
 	glass_name = "glass of grenadine"
 	glass_desc = "Delicious flavored syrup."
+	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/parsnipjuice
 	name = "Parsnip Juice"
@@ -943,6 +992,7 @@
 	chem_flags = NONE
 	taste_description = "parsnip"
 	glass_name = "glass of parsnip juice"
+	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/peachjuice //Intended to be extremely rare due to being the limiting ingredients in the blazaam drink
 	name = "Peach Juice"
@@ -951,6 +1001,7 @@
 	chem_flags = CHEMICAL_RNG_BOTANY
 	taste_description = "peaches"
 	glass_name = "glass of peach juice"
+	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/pineapplejuice
 	name = "Pineapple Juice"
@@ -960,6 +1011,7 @@
 	taste_description = "pineapple"
 	glass_name = "glass of pineapple juice"
 	glass_desc = "Tart, tropical, and hotly debated."
+	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/cream_soda
 	name = "Cream Soda"
@@ -971,6 +1023,7 @@
 	glass_icon_state = "cream_soda"
 	glass_name = "Cream Soda"
 	glass_desc = "A classic space-American vanilla flavored soft drink."
+	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/cream_soda/on_mob_life(mob/living/carbon/M)
 	M.adjust_bodytemperature(-5 * TEMPERATURE_DAMAGE_COEFFICIENT, BODYTEMP_NORMAL)
@@ -986,6 +1039,7 @@
 	glass_icon_state = "red_queen"
 	glass_name = "Red Queen"
 	glass_desc = "DRINK ME."
+	hydration_factor = 10 * REAGENTS_METABOLISM
 
 	var/current_size = RESIZE_DEFAULT_SIZE
 
@@ -1016,6 +1070,7 @@
 	glass_icon_state = "glass_yellow"
 	glass_name = "glass of bungo juice"
 	glass_desc = "Exotic! You feel like you are on vacation already."
+	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/beefbroth
 	name = "Beef Broth"
@@ -1025,6 +1080,7 @@
 	glass_icon_state  = "glass_brown"
 	glass_name = "glass of Space Cola?"
 	glass_desc = "A glass of what appears to be refreshing Space Cola."
+	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/beefbroth/on_mob_metabolize(mob/living/M)
 	to_chat(M, "<span class='warning'>That drink was way too beefy! You feel sick.</span>")
