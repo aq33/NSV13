@@ -90,6 +90,9 @@
 	color = "#ECFF56" // rgb: 236, 255, 86
 	chem_flags = NONE
 	taste_description = "apples"
+	glass_icon_state = "glass_orange"
+	glass_name = "glass of apple juice"
+	glass_desc = "Apple juice. Or maybe it's cider. Who cares?"
 
 /datum/reagent/consumable/poisonberryjuice
 	name = "Poison Berry Juice"
