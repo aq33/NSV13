@@ -1,5 +1,0 @@
-#define GAS_MIASMA				"miasma"
-
-//ROT MIASMA
-#define MIASMA_CORPSE_MOLES 0.02
-#define MIASMA_GIBS_MOLES 0.005
