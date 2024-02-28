@@ -269,6 +269,7 @@
 /obj/item/nullrod/proc/reskin_holy_weapon(mob/M)
 	var/obj/item/nullrod/holy_weapon
 	var/list/holy_weapons_list = typesof(/obj/item/nullrod)
+	holy_weapons_list |= holy_weapons_aquila //AQUILA EDIT
 	var/list/display_names = list()
 	for(var/V in holy_weapons_list)
 		var/obj/item/nullrod/rodtype = V

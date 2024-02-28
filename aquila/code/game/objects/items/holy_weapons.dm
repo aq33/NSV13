@@ -1,14 +1,18 @@
+/obj/item/nullrod
+	/var/list/holy_weapons_aquila = list(
+		/obj/item/clothing/neck/crucifix/krucyfiks_egzorcysty
+	)
+
 /obj/item/storage/box/holy/egzorcysta
 	name = "Zestaw egzorcysty"
 
 /obj/item/storage/box/holy/egzorcysta/PopulateContents()
 	new /obj/item/gun/ballistic/shotgun/egzorcysta(src)
-	new /obj/item/clothing/neck/crucifix/krucyfiks_egzorcysty(src)
 	new /obj/item/clothing/suit/jacket/leather(src)
 	new /obj/item/clothing/under/pants/jeans(src)
 	new /obj/item/clothing/shoes/aquila/laceup_brown(src)
-	for(var/i in 1 to 6)
-		// breneka żeby było śmiesznie
+	for(var/i in 1 to 4)
+		// breneka żeby było śmiesznie, 4 w strzelbie i 4 zapasowe
 		new /obj/item/ammo_casing/shotgun(src)
 
 /obj/item/gun/ballistic/shotgun/egzorcysta
@@ -16,6 +20,7 @@
 	desc = "Raczej nie masz na nią pozwolenia. Ale chuj, działalność gospodarcza też jest na lewo."
 	spread_multiplier = 2
 	spread = 65
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/slug
 
 /obj/item/gun/ballistic/shotgun/egzorcysta/process_fire(atom/target, mob/living/carbon/user, message, params, zone_override, bonus_spread)
 	if (istype(user, /mob/living/carbon))
@@ -48,4 +53,3 @@
 		log_game("[target_rune.cultist_name] rune erased by [key_name(user)] using a null rod.")
 		message_admins("[ADMIN_LOOKUPFLW(user)] erased a [target_rune.cultist_name] rune with a null rod.")
 	SSshuttle.shuttle_purchase_requirements_met[SHUTTLE_UNLOCK_NARNAR] = TRUE
-
