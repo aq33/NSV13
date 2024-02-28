@@ -2,7 +2,7 @@
 	name = "Corporate Agent"
 	id = "agent"
 	hair_alpha = 0
-	say_mod = "declares"
+	//say_mod = "declares"
 	speedmod = -2//Fast
 	brutemod = 0.7//Tough against firearms
 	burnmod = 0.65//Tough against lasers
