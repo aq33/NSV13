@@ -53,8 +53,8 @@
 		var/mob/living/carbon/human/H = target
 		if (H.check_shields(src, 0, "[user]'s [name]", MELEE_ATTACK))
 			return
-				if(check_martial_counter(H, user))
-					return
+		if(check_martial_counter(H, user))
+			return
 
 			if (stun_animation)
 				user.do_attack_animation(target)
