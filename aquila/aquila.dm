@@ -123,6 +123,8 @@
 #include "code\modules\antagonists\monkey\monkey.dm"
 #include "code\modules\antagonists\morph\morph.dm"
 #include "code\modules\antagonists\role_preference\role_monkey.dm"
+#include "code\modules\antagonists\role_preference\role_infiltrator.dm"
+#include "code\modules\antagonists\role_preference\role_sinfuldemon.dm"
 #include "code\modules\antagonists\traitor\equipment\Malf_Modules.dm"
 #include "code\modules\antagonists\disease\disease_abilities.dm"
 #include "code\modules\antagonists\disease\disease_datum.dm"

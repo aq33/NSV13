@@ -852,9 +852,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
-/obj/machinery/power/smes/engineering{
-	charge = 5e
-	},
+/obj/machinery/power/smes/engineering,
 /turf/open/floor/plating,
 /area/shuttle/stealthcruiser)
 "rY" = (

@@ -16070,8 +16070,8 @@
 	height = 17;
 	id = "syndicate_away";
 	name = "syndicate recon outpost";
-	roundstart_template = /datum/map_template/shuttle/infiltrator/basic;
-	width = 23
+	width = 23;
+	roundstart_template = /datum/map_template/shuttle/infiltrator/basic
 	},
 /turf/open/floor/plating/asteroid/snow/airless,
 /area/syndicate_mothership)
@@ -16954,10 +16954,11 @@
 /obj/docking_port/stationary{
 	dwidth = 14;
 	height = 13;
-	id = "emergency_syndicate";
+	id = "infiltrator_away";
 	name = "Infiltrator Auxillary Shuttle Dock";
 	width = 50;
-	dir = 2
+	dir = 2;
+	roundstart_template = /datum/map_template/shuttle/infiltrator/cutter
 	},
 /turf/open/floor/plating/asteroid/snow/airless,
 /area/syndicate_mothership/infiltrator_base/outside)
