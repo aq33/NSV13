@@ -4,11 +4,6 @@
 	icon_state = "red"
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 
-/area/syndicate_mothership/infiltrator_base/poweralert(state, obj/source)
-	return
-
-/area/syndicate_mothership/infiltrator_base/atmosalert(danger_level, obj/source)
-	return
 
 /area/syndicate_mothership/infiltrator_base/jail
 	name = "Syndicate Infiltrator Base Brig"
