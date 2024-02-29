@@ -27,8 +27,8 @@
 
 
 /mob/living/simple_animal/parrot
-	name = "parrot"
-	desc = "The parrot squaks, \"It's a Parrot! BAWWK!\"" //'
+	name = "papuga"
+	desc = "Papuga się drze, \"To Papuga! BAWWK!\"" //'
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "parrot_fly"
 	icon_living = "parrot_fly"
@@ -43,22 +43,22 @@
 	held_state = "parrot"
 
 
-	speak = list("Hi!","Hello!","Cracker?","BAWWWWK george mellons griffing me!")
-	speak_emote = list("squawks","says","yells")
-	emote_hear = list("squawks.","bawks!")
-	emote_see = list("flutters its wings.")
+	speak = list("Cześć!","Witam!","Krakers?","BAWWWWK george mellons mnie ugryzł!")
+	speak_emote = list("kracze","mówi","krzyczy")
+	emote_hear = list("drze się.","bawks!")
+	emote_see = list("trzepocze skrzydłami.")
 
 	speak_chance = 1 //1% (1 in 100) chance every tick; So about once per 150 seconds, assuming an average tick is 1.5s
 	turns_per_move = 5
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/cracker/ = 1)
 	melee_damage = 5
 
-	response_help  = "pets"
-	response_disarm = "gently moves aside"
-	response_harm   = "swats"
+	response_help  = "głaszcze"
+	response_disarm = "delikatnie przesuwa na bok"
+	response_harm   = "paca"
 	stop_automated_movement = 1
 	a_intent = INTENT_HARM //parrots now start "aggressive" since only player parrots will nuzzle.
-	attacktext = "chomps"
+	attacktext = "chrupie"
 	friendly = "grooms"
 	mob_size = MOB_SIZE_SMALL
 	movement_type = FLYING
@@ -127,7 +127,7 @@
 /mob/living/simple_animal/parrot/examine(mob/user)
 	. = ..()
 	if(stat)
-		. += pick("This parrot is no more.", "This is a late parrot.", "This is an ex-parrot.")
+		. += pick("Ta papuga nie żyje.", "Ta papuga zmarła.", "To jest ex-papuga.")
 
 /mob/living/simple_animal/parrot/death(gibbed)
 	if(held_item)
@@ -202,7 +202,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 		return FALSE
 
 	if(!istype(equipping, /obj/item/radio/headset))
-		to_chat(user, "<span class='warning'>[equipping] won't fit!</span>")
+		to_chat(user, "<span class='warning'>[equipping] nie mieści się!</span>")
 		return FALSE
 
 	return TRUE
@@ -225,7 +225,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 
 	parrot_source.ears = radio
 
-	to_chat(user, "<span class='notice'>You fit [radio] onto [source].</span>")
+	to_chat(user, "<span class='notice'>Umieszczasz [radio] w [source].</span>")
 
 	parrot_source.available_channels.Cut()
 
@@ -266,7 +266,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 		return
 
 	if(!parrot_source.stat)
-		parrot_source.say("[parrot_source.available_channels.len ? "[pick(parrot_source.available_channels)] " : null]BAWWWWWK LEAVE THE HEADSET BAWKKKKK!")
+		parrot_source.say("[parrot_source.available_channels.len ? "[pick(parrot_source.available_channels)] " : null]BAWWWWWK ZOSTAW SŁUCHAWKI BAWKKKKK!")
 
 	return TRUE
 
@@ -347,7 +347,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 			adjustBruteLoss(-10)
 		speak_chance *= 1.27 // 20 crackers to go from 1% to 100%
 		speech_shuffle_rate += 10
-		to_chat(user, "<span class='notice'>[src] eagerly devours the cracker.</span>")
+		to_chat(user, "<span class='notice'>[src] ochoczo pochłania krakersa.</span>")
 	..()
 	return
 
@@ -455,7 +455,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 			//Search for item to steal
 			parrot_interest = search_for_item()
 			if(parrot_interest)
-				emote("me", 1, "looks in [parrot_interest]'s direction and takes flight.")
+				emote("me", 1, "patrzy w kierunku [parrot_interest] jak odlatuje.")
 				parrot_state = PARROT_SWOOP | PARROT_STEAL
 				icon_state = icon_living
 			return
@@ -477,7 +477,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 			if(AM)
 				if(istype(AM, /obj/item) || isliving(AM))	//If stealable item
 					parrot_interest = AM
-					emote("me", 1, "turns and flies towards [parrot_interest].")
+					emote("me", 1, "odwraca się i frunie [parrot_interest].")
 					parrot_state = PARROT_SWOOP | PARROT_STEAL
 					return
 				else	//Else it's a perch
@@ -519,7 +519,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 				if(!parrot_perch || parrot_interest.loc != parrot_perch.loc)
 					held_item = parrot_interest
 					parrot_interest.forceMove(src)
-					visible_message("[src] grabs [held_item]!", "<span class='notice'>You grab [held_item]!</span>", "<span class='italics'>You hear the sounds of wings flapping furiously.</span>")
+					visible_message("[src] grabs [held_item]!", "<span class='notice'>Chwytasz [held_item]!</span>", "<span class='italics'>Słyszysz dźwięk agresywnego trzepotania skrzydeł.</span>")
 
 			parrot_interest = null
 			parrot_state = PARROT_SWOOP | PARROT_RETURN
@@ -593,7 +593,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 					parrot_state = PARROT_WANDER
 				return
 
-			attacktext = pick("claws at", "chomps")
+			attacktext = pick("rzuca się z pazurami", "gryzie")
 			L.attack_animal(src)//Time for the hurt to begin!
 		//Otherwise, fly towards the mob!
 		else
@@ -687,15 +687,15 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
  * Verbs - These are actually procs, but can be used as verbs by player-controlled parrots.
  */
 /mob/living/simple_animal/parrot/proc/steal_from_ground()
-	set name = "Steal from ground"
+	set name = "Kradnie z ziemi"
 	set category = "Parrot"
-	set desc = "Grabs a nearby item."
+	set desc = "Podnosi pobliski przedmiot."
 
 	if(stat)
 		return -1
 
 	if(held_item)
-		to_chat(src, "<span class='warning'>You are already holding [held_item]!</span>")
+		to_chat(src, "<span class='warning'>Nosisz już [held_item]!</span>")
 		return 1
 
 	for(var/obj/item/I in view(1,src))
@@ -708,22 +708,23 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 
 			held_item = I
 			I.forceMove(src)
-			visible_message("[src] grabs [held_item]!", "<span class='notice'>You grab [held_item]!</span>", "<span class='italics'>You hear the sounds of wings flapping furiously.</span>")
+			visible_message("[src] grabs [held_item]!", "<span class='notice'>Chwytasz [held_item]!</span>", "<span class='italics'>drapie</span>")
+.</span>")
 			return held_item
 
-	to_chat(src, "<span class='warning'>There is nothing of interest to take!</span>")
+	to_chat(src, "<span class='warning'>Nie ma tu nic interesującego do wzięcia!</span>")
 	return 0
 
 /mob/living/simple_animal/parrot/proc/steal_from_mob()
-	set name = "Steal from mob"
+	set name = "Kradnie z tłumu"
 	set category = "Parrot"
-	set desc = "Steals an item right out of a person's hand!"
+	set desc = "Wykrada przedmiot z cudzych rąk!"
 
 	if(stat)
 		return -1
 
 	if(held_item)
-		to_chat(src, "<span class='warning'>You are already holding [held_item]!</span>")
+		to_chat(src, "<span class='warning'>Nosisz już [held_item]!</span>")
 		return 1
 
 	var/obj/item/stolen_item = null
@@ -737,16 +738,16 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 		if(stolen_item)
 			C.transferItemToLoc(stolen_item, src, TRUE)
 			held_item = stolen_item
-			visible_message("[src] grabs [held_item] out of [C]'s hand!", "<span class='notice'>You snag [held_item] out of [C]'s hand!</span>", "<span class='italics'>You hear the sounds of wings flapping furiously.</span>")
+			visible_message("[src] grabs [held_item] out of [C]'s hand!", "<span class='notice'>Wyrywasz [held_item] z rąk [C]!</span>", "<span class='italics'>Słyszysz dźwięk agresywnego trzepotania skrzydeł.</span>")
 			return held_item
 
-	to_chat(src, "<span class='warning'>There is nothing of interest to take!</span>")
+	to_chat(src, "<span class='warning'>Nie ma tu nic interesującego do zabrania!</span>")
 	return 0
 
 /mob/living/simple_animal/parrot/verb/drop_held_item_player()
-	set name = "Drop held item"
+	set name = "Upuszczasz trzymany przedmiot"
 	set category = "Parrot"
-	set desc = "Drop the item you're holding."
+	set desc = "Upuszczasz przedmiot, który trzymasz."
 
 	if(stat)
 		return
@@ -756,16 +757,16 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 	return
 
 /mob/living/simple_animal/parrot/proc/drop_held_item(drop_gently = 1)
-	set name = "Drop held item"
+	set name = "Upuszczasz trzymany przedmiot"
 	set category = "Parrot"
-	set desc = "Drop the item you're holding."
+	set desc = "Upuszczasz przedmiot, który trzymasz."
 
 	if(stat)
 		return -1
 
 	if(!held_item)
 		if(src == usr) //So that other mobs wont make this message appear when they're bludgeoning you.
-			to_chat(src, "<span class='danger'>You have nothing to drop!</span>")
+			to_chat(src, "<span class='danger'>Nie możesz nic upuścić!</span>")
 		return 0
 
 
@@ -775,7 +776,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 		held_item = null
 		if(health < maxHealth)
 			adjustBruteLoss(-10)
-		emote("me", 1, "[src] eagerly downs the cracker.")
+		emote("me", 1, "[src] ochoczo rzuca się na krakersa.")
 		return 1
 
 
@@ -784,20 +785,20 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 			var/obj/item/grenade/G = held_item
 			G.forceMove(drop_location())
 			G.prime()
-			to_chat(src, "You let go of [held_item]!")
+			to_chat(src, "Zostawiasz [held_item]!")
 			held_item = null
 			return 1
 
-	to_chat(src, "You drop [held_item].")
+	to_chat(src, "Upuszczasz [held_item].")
 
 	held_item.forceMove(drop_location())
 	held_item = null
 	return 1
 
 /mob/living/simple_animal/parrot/proc/perch_player()
-	set name = "Sit"
+	set name = "Siada"
 	set category = "Parrot"
-	set desc = "Sit on a nice comfy perch."
+	set desc = "Siada na komfortowej żerdzi."
 
 	if(stat || !client)
 		return
@@ -810,7 +811,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 					icon_state = icon_sit
 					parrot_state = PARROT_PERCH
 					return
-	to_chat(src, "<span class='warning'>There is no perch nearby to sit on!</span>")
+	to_chat(src, "<span class='warning'>Nie ma żerdzi, żeby na niej usiąść!</span>")
 	return
 
 /mob/living/simple_animal/parrot/Moved(oldLoc, dir)
@@ -822,9 +823,9 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 		pixel_y = base_pixel_y
 
 /mob/living/simple_animal/parrot/proc/perch_mob_player()
-	set name = "Sit on Human's Shoulder"
+	set name = "Siada na ramieniu człowieka"
 	set category = "Parrot"
-	set desc = "Sit on a nice comfy human being!"
+	set desc = "Siada na miłej i komfortowej istocie ludzkiej!"
 
 	if(stat || !client)
 		return
@@ -835,12 +836,12 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 				continue
 			perch_on_human(H)
 			return
-		to_chat(src, "<span class='warning'>There is nobody nearby that you can sit on!</span>")
+		to_chat(src, "<span class='warning'>Nie ma nikogo na kim mógłbyś usiąść!</span>")
 	else
 		icon_state = icon_living
 		parrot_state = PARROT_WANDER
 		if(buckled)
-			to_chat(src, "<span class='notice'>You are no longer sitting on [buckled]'s shoulder.</span>")
+			to_chat(src, "<span class='notice'>Nie siedzisz już na ramieniu [buckled].</span>")
 			buckled.unbuckle_mob(src, TRUE)
 		buckled = null
 		pixel_x = base_pixel_x
@@ -857,13 +858,13 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 		pixel_x = pick(-8,8) //pick left or right shoulder
 		icon_state = icon_sit
 		parrot_state = PARROT_PERCH
-		to_chat(src, "<span class='notice'>You sit on [H]'s shoulder.</span>")
+		to_chat(src, "<span class='notice'>Siada na ramieniu [H].</span>")
 
 
 /mob/living/simple_animal/parrot/proc/toggle_mode()
 	set name = "Toggle mode"
 	set category = "Parrot"
-	set desc = "Time to bear those claws!"
+	set desc = "Czas, żeby użyć szpon!"
 
 	if(stat || !client)
 		return
@@ -874,7 +875,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 	else
 		melee_damage = parrot_damage_upper
 		a_intent = INTENT_HARM
-	to_chat(src, "You will now [a_intent] others.")
+	to_chat(src, "Będziesz teraz [a_intent] innych.")
 	return
 
 /*
@@ -883,7 +884,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 /mob/living/simple_animal/parrot/Poly
 	name = "Poly"
 	desc = "Poly the Parrot. An expert on quantum cracker theory."
-	speak = list("Poly wanna cracker!", ":e Check the crystal, you chucklefucks!",":e Wire the solars, you lazy bums!",":e WHO TOOK THE DAMN HARDSUITS?",":e OH GOD ITS ABOUT TO DELAMINATE CALL THE SHUTTLE")
+	speak = list("Poly chce krakersa!", ":e Naprawcie reaktor borowiki!",":e Podpiąć panele, nieroby!",":e O JEZU ZARA JEBNIE! DZWOŃCIE PO PROM!",":e Zachary napraw reaktor!", ":e Majster do roboty!")
 	gold_core_spawnable = NO_SPAWN
 	speak_chance = 3
 	var/memory_saved = FALSE
@@ -896,19 +897,19 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 	available_channels = list(":e")
 	Read_Memory()
 	if(rounds_survived == longest_survival)
-		speak += pick("...[longest_survival].", "The things I've seen!", "I have lived many lives!", "What are you before me?")
+		speak += pick("...[longest_survival].", "Widziałem te rzeczy!", "Przeżyłem wiele żyć!", "What are you before me?")
 		desc += " Old as sin, and just as loud. Claimed to be [rounds_survived]."
 		speak_chance = 20 //His hubris has made him more annoying/easier to justify killing
 		add_atom_colour("#EEEE22", FIXED_COLOUR_PRIORITY)
 	else if(rounds_survived == longest_deathstreak)
-		speak += pick("What are you waiting for!", "Violence breeds violence!", "Blood! Blood!", "Strike me down if you dare!")
+		speak += pick("Na co czekasz?!", "Przemoc rodzi przemoc!", "Krew! Krew!", "Uderz mnie jeśli się nie boisz!")
 		desc += " The squawks of [-rounds_survived] dead parrots ring out in your ears..."
 		add_atom_colour("#BB7777", FIXED_COLOUR_PRIORITY)
 	else if(rounds_survived > 0)
-		speak += pick("again?", "No, It was over!", "Let me out!", "It never ends!")
+		speak += pick("Znów?", "Nie, to koniec!", "Wypuść mnie!", "To się nigdy nie skończy!")
 		desc += " Over [rounds_survived] shifts without a \"terrible\" \"accident\"!"
 	else
-		speak += pick("alive?", "This isn't parrot heaven!", "I live, I die, I live again!", "The void fades!")
+		speak += pick("żywy?", "To nie jest niebo dla papug!", "Żyję, Umieram, Przyjdę ponownie!", "The void fades!")
 
 	. = ..()
 
