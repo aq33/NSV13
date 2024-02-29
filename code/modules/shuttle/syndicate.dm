@@ -28,7 +28,7 @@
 		to_chat(usr, "<span class='warning'>Nie możesz ruszyć statku bez wcześniej deklaracji wojny.</span>")
 		return FALSE
 	if(board.challenge && world.time < SYNDICATE_CHALLENGE_TIMER)
-		to_chat(usr, "<span class='warning'>Zadeklarowałeś wojnę! Daj im przynajmniej [DisplayTimeText(SYNDICATE_CHALLENGE_TIMER - world.time)] więcej czasu by się przygotować.</span>")
+		to_chat(usr, "<span class='warning'>Zadeklarowałeś wojnę! Daj im przynajmniej [DisplayTimeText(SYNDICATE_CHALLENGE_TIMER - world.time)] by się przygotować.</span>")
 		return FALSE
 	// AQ EDIT END
 	board.moved = TRUE
