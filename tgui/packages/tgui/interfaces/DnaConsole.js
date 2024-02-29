@@ -679,6 +679,18 @@ const MutationInfo = (props, context) => {
                 is_activator: 0,
                 source: mutation.Source,
               })} />
+                  <Button
+              icon="syringe"
+              disabled={!isInjectorReady || !mutation.Active}
+              content="Print Nullifier"
+              onClick={() =>
+                act('print_injector', {
+                  mutref: mutation.ByondRef,
+                  is_nullifier: 1,
+                  source: mutation.Source,
+                })
+              }
+            />
           </Fragment>
         )}
       </Box>
