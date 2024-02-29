@@ -18,7 +18,7 @@
 	var/static/list/trip_cooldowns = list()
 
 /obj/item/melee/classic_baton/police/tonfa/attack(mob/living/target, mob/living/user)
-	var/def_check = target.getarmor(type = "melee", penetration = "armour_penetration")
+	var/def_check = target.getarmor(type = "melee")
 
 	add_fingerprint(user)
 	if((HAS_TRAIT(user, TRAIT_CLUMSY)) && prob(50))
@@ -56,10 +56,10 @@
 		if(check_martial_counter(H, user))
 			return
 
-			if (stun_animation)
+			//if (stun_animation)
 				user.do_attack_animation(target)
 			playsound(get_turf(src), on_stun_sound, 75, 1, -1)
-			additional_effects_carbon(target, user)
+			additional_effects_carbon(target, user)// do dodania, kiedy zostanie zaimplementowane stun_animation
 			if((user.zone_selected == BODY_ZONE_CHEST))
 				target.apply_damage(stamina_damage, STAMINA, BODY_ZONE_CHEST, def_check)
 				log_combat(user, target, "stunned", src)
