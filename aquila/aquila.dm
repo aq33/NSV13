@@ -11,6 +11,7 @@
 #include "code\__DEFINES\traits.dm"
 #include "code\__DEFINES\wires.dm"
 #include "code\__HELPERS\names.dm"
+#include "code\__HELPERS\pronouns.dm"
 #include "code\controllers\configuration\entries\game_options.dm"
 #include "code\controllers\configuration\entries\general.dm"
 #include "code\controllers\subsystem\demo.dm"
