@@ -139,7 +139,7 @@
 
 	icon_state = "pand[(beaker) ? "1" : "0"][powered() ? "" : "_nopower"]"
 	if(wait)
-		add_overlay("waitlight")
+		add_overlay("waitlight_pand")
 	else
 		cut_overlays()
 
