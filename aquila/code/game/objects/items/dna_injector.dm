@@ -61,3 +61,11 @@
 /obj/item/dnainjector/antifirebreath
 	name = "\improper DNA injector (Anti-Fire Breath)"
 	remove_mutations = list(FIREBREATH)
+
+/obj/item/dnainjector/mindread
+	name = "\improper DNA injector (Mindread)"
+	add_mutations = list(MINDREAD)
+
+/obj/item/dnainjector/antimindread
+	name = "\improper DNA injector (Anti-Mindread)"
+	remove_mutations = list(MINDREAD)

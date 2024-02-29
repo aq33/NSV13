@@ -388,7 +388,8 @@
 				/obj/item/aiModule/core/full/service,
 				/obj/item/aiModule/core/full/science,
 				/obj/item/aiModule/core/full/gamer,
-				/obj/item/aiModule/core/full/cowboy
+				/obj/item/aiModule/core/full/cowboy,
+				/obj/item/aiModule/core/full/netanyahu
 				// AQ EDIT END
 				)
 
