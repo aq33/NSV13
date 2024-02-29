@@ -128,6 +128,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	grind_results = list()
 	heat = 1000
 	var/dragtime = 10
+	/// The cooldown that prevents just huffing the entire cigarette at once.
+	COOLDOWN_DECLARE(drag_cooldown)
+	/// The cooldown that staggers smoke effects.
+	COOLDOWN_DECLARE(smoke_cooldown)
 	var/nextdragtime = 0
 	var/lit = FALSE
 	var/starts_lit = FALSE
@@ -153,6 +157,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(starts_lit)
 		light()
 	AddComponent(/datum/component/knockoff,90,list(BODY_ZONE_PRECISE_MOUTH),list(ITEM_SLOT_MASK))//90% to knock off when wearing a mask
+	COOLDOWN_START(src, smoke_cooldown, 20 SECONDS)
+	new /obj/effect/temp_visual/cig_smoke(drop_location())
 
 /obj/item/clothing/mask/cigarette/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -651,12 +657,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		hitsound = 'sound/items/welder.ogg'
 		attack_verb = list("burnt", "singed")
 		START_PROCESSING(SSobj, src)
-		playsound(loc, pick('sound/items/lighter1.ogg', 'sound/items/lighter2.ogg', 100))
+		playsound(loc,'sound/items/lighter1.ogg', 100)
 	else
 		hitsound = "swing_hit"
 		force = 0
 		attack_verb = null //human_defense.dm takes care of it
 		STOP_PROCESSING(SSobj, src)
+		playsound(loc, 'sound/items/lighter2.ogg', 100)
 	set_light_on(lit)
 	update_icon()
 
