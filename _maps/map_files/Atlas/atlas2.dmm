@@ -13802,7 +13802,9 @@
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "RQ" = (
-/obj/machinery/stasis,
+/obj/machinery/stasis{
+	dir = 8
+	},
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
