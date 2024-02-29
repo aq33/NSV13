@@ -267,13 +267,13 @@
 
 /obj/item/reagent_containers/pill/floorpill
 	name = "floorpill"
-	desc = "A strange pill found in the depths of maintenance. Somehow, it can't be dissolved or used in a grinder."
+	desc = "A strange pill found in the depths of maintenance."// Somehow, it can't be dissolved or used in a grinder."
 	icon_state = "pill21"
 	var/static/list/names = list("maintenance pill","floorpill","mystery pill","suspicious pill","strange pill")
 	var/static/list/descs = list("Your feeling is telling you no, but...","Drugs are expensive, you can't afford not to eat any pills that you find."\
 	, "Surely, there's no way this could go bad.")
-	prevent_grinding = TRUE
-	dissolvable = FALSE
+	//prevent_grinding = TRUE // AQ EDIT - floor pills now grindable
+	//dissolvable = FALSE // AQ EDIT - and dissolvable!
 
 /obj/item/reagent_containers/pill/floorpill/Initialize(mapload)
 	list_reagents = list(get_random_reagent_id(CHEMICAL_RNG_FUN) = rand(10,50))
