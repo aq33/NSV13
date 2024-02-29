@@ -643,6 +643,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/lighter/proc/set_lit(new_lit)
 	if(lit == new_lit)
 		return
+
 	lit = new_lit
 	if(lit)
 		force = 5
@@ -650,6 +651,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		hitsound = 'sound/items/welder.ogg'
 		attack_verb = list("burnt", "singed")
 		START_PROCESSING(SSobj, src)
+		playsound(loc, pick('sound/items/lighter1.ogg', 'sound/items/lighter2.ogg', 100))
 	else
 		hitsound = "swing_hit"
 		force = 0
