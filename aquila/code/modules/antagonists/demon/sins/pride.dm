@@ -1,7 +1,7 @@
 /obj/effect/proc_holder/spell/aoe_turf/conjure/summon_mirror
 	name = "Summon Mirror"
 	desc = "Summon forth a temporary mirror of sin that will allow you and others to change anything they want about themselves."
-	invocation = "Aren't I so amazing?"
+	invocation = "Czyż nie jestem wspaniały?"
 	invocation_type = "whisper"
 	clothes_req = FALSE
 	charge_max = 600

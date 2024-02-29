@@ -1,7 +1,7 @@
 /obj/effect/proc_holder/spell/aoe_turf/conjure/summon_greedslots
 	name = "Summon Slotmachine"
 	desc = "Summon forth a temporary slot machine of greed, allowing you to offer patrons a deadly game where the price is their life (and some money if you'd like) and the possible prize is a one use die of fate."
-	invocation = "Just one game?"
+	invocation = "Tylko jedna gra?"
 	invocation_type = "whisper"
 	clothes_req = FALSE
 	charge_max = 600

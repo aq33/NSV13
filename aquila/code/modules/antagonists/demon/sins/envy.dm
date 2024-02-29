@@ -5,7 +5,7 @@
 	school = "evocation"
 	charge_max = 150
 	clothes_req = FALSE
-	invocation = "ETERNAL FLAMES"
+	invocation = "WIECZNE PŁOMIENIE"
 	invocation_type = "whisper"
 	action_icon = 'icons/mob/actions/actions_changeling.dmi'
 	action_icon_state = "transform"
