@@ -44,3 +44,4 @@
 		PDA.saved_identification = card.registered_name
 		PDA.saved_job = card.assignment
 		PDA.update_id_display()
+	H.faction |= FACTION_SYNDICATE

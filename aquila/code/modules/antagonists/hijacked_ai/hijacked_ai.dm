@@ -4,6 +4,7 @@
 	show_in_antagpanel = TRUE
 	antagpanel_category = "Other"
 	show_name_in_check_antagonists = TRUE
+	banning_key = ROLE_HIJACKED_AI
 
 /datum/antagonist/hijacked_ai/greet()
 	to_chat(owner, span_userdanger("You have been hijacked!</span>"))

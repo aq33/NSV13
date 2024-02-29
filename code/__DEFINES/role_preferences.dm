@@ -50,6 +50,7 @@
 #define ROLE_MONKEY_HELMET		"Sentient Monkey" // AQ EDIT
 #define ROLE_HERETIC_MONSTER	"Heretic Monster"
 #define ROLE_INFILTRATOR 		"Infiltrator" //AQ
+#define ROLE_HIJACKED_AI		"Zkompromitowana SI" // AQ
 #define ROLE_SINFULDEMON 		"Demon of Sin"//AQ
 
 /// Roles that are antagonists, roundstart or not, and have passes to do.. antagonistry
@@ -93,6 +94,7 @@ GLOBAL_LIST_INIT(antagonist_bannable_roles, list(
 	ROLE_CONTRACTOR_SUPPORT_UNIT,
 	ROLE_INFILTRATOR, // AQ
 	ROLE_SINFULDEMON, // AQ
+	ROLE_HIJACKED_AI, //AQ
 ))
 //nsv13 - pvp + bloodling modes added here
 
