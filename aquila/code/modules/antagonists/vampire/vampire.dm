@@ -113,9 +113,9 @@
 		owner.announce_objectives()
 	if(full_vampire == FALSE)
 		if(prob(10))
-			owner.current.playsound_local(get_turf(owner.current), 'yogstation/sound/ambience/antag/lilithspact_alt.ogg',80,0)
+			owner.current.playsound_local(get_turf(owner.current), 'aquila/sound/ambience/antag/lilithspact_alt.ogg',80,0)
 		else
-			owner.current.playsound_local(get_turf(owner.current), 'yogstation/sound/ambience/antag/lilithspact.ogg',80,0)
+			owner.current.playsound_local(get_turf(owner.current), 'aquila/sound/ambience/antag/lilithspact.ogg',80,0)
 	else
 		if(prob(10))
 			owner.current.playsound_local(get_turf(owner.current), 'aquila/sound/ambience/antag/newvampire_alt.ogg',80,0)
@@ -290,20 +290,21 @@
 		blood_coeff = 0.8 //20 blood gain at base for living, 30 with aggressive grab, 10 with stealth
 		if(H.stat == DEAD || !H.key)
 			blood_coeff = 0.2 //5 blood gain at base for dead or uninhabited, 7 with aggressive grab, 2 with stealth
+		blood = round(min(blood_to_take * blood_coeff, H.blood_volume))	//if the victim has less than the amount of blood left to take, just take all of it.
 		total_blood += blood			//get total blood 100% efficiency because fuck waiting out 5 fucking minutes and 1500 actual blood to get your 600 blood for the objective
 		usable_blood += blood * 0.75	//75% usable blood since it's actually used for stuff
 		check_vampire_upgrade()
 		if(old_bloodtotal != total_blood)
 			to_chat(O, "<span class='notice'><b>You have accumulated [total_blood] [total_blood > 1 ? "units" : "unit"] of blood[usable_blood != old_bloodusable ? ", and have [usable_blood] left to use" : ""].</b></span>")
 		H.blood_volume = max(H.blood_volume - blood_to_take, 0)
-		if(silent && !warned && (H.blood_volume <= (BLOOD_VOLUME_SAFE(H) + 20)))
+		if(silent && !warned && (H.blood_volume <= (BLOOD_VOLUME_SAFE + 20)))
 			to_chat(O, "<span class='boldwarning'>Their blood is at a dangerously low level, they will likely begin to feel the effects if you continue...</span>")
 			warned = TRUE
 		if(ishuman(O))
 			O.nutrition = min(O.nutrition + (blood * 0.5), NUTRITION_LEVEL_WELL_FED)
 		if(!silent)
 			playsound(O.loc, 'sound/items/eatfood.ogg', 40, 1, extrarange = -4)//have to be within 3 tiles to hear the sucking
-		else if(H.get_blood_state() <= BLOOD_OKAY)
+		else if(H.blood_volume <= BLOOD_VOLUME_OKAY)
 			to_chat(H, "<span class='warning'>You notice [O] standing oddly close...</span>")
 		if(get_ability(/datum/vampire_passive/nostealth) && silent)
 			to_chat(O, "<span class='boldwarning'>You can no longer suck blood silently!</span>")

@@ -343,7 +343,7 @@
 		user.regenerate_limbs()
 		user.regenerate_organs()
 	user.revive(full_heal = TRUE)
-	user.visible_message(span_warning("[user] reanimates from death!"), span_notice("We get back up."))
+	user.visible_message("<span class='warning'>[user] reanimates from death!</span>", "<span class='notice'>We get back up.</span>")
 
 /obj/effect/proc_holder/spell/self/summon_coat
 	name = "Summon Dracula Coat (100)"
