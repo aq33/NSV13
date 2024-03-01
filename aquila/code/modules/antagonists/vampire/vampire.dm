@@ -248,7 +248,7 @@
 	var/warned = FALSE //has the vampire been warned they're about to alert a target while stealth sucking?
 	var/blood_to_take = BLOOD_SUCK_BASE //how much blood should be removed per succ? changes depending on grab state
 	log_attack("[O] ([O.ckey]) bit [H] ([H.ckey]) in the neck")
-	if(!(O.pulling == H))
+	if(!(O.pulling == H) && !get_ability(/datum/vampire_passive/nostealth))
 		silent = TRUE
 		blood_to_take *= 0.5 //half blood from targets that aren't being pulled, but they also don't get warned until it starts to cause damage
 	else if(O.grab_state >= GRAB_NECK)
@@ -273,7 +273,7 @@
 			to_chat(O, "<span class='warning'>You lose your grip on [H], reducing your bloodsucking speed.</span>")
 		if(blood_to_take == BLOOD_SUCK_BASE && (O.pulling == H && O.grab_state >= GRAB_NECK))//smooth movement from normal suck to aggressive suck
 			blood_to_take *= 1.5
-			to_chat(O, "<span class='warning'>Your enchanced grip on [H] allows you to extract blood faster.</span>")
+			to_chat(O, "<span class='warning'>Your enhanced grip on [H] allows you to extract blood faster.</span>")
 		if(silent && O.pulling == H) //smooth movement from stealth suck to normal suck
 			silent = FALSE
 			blood_to_take = BLOOD_SUCK_BASE
@@ -302,7 +302,10 @@
 		if(!silent)
 			playsound(O.loc, 'sound/items/eatfood.ogg', 40, 1, extrarange = -4)//have to be within 3 tiles to hear the sucking
 		else if(H.get_blood_state() <= BLOOD_OKAY)
-			to_chat(H, "<span class='warning'>You feel oddly faint...</span>")
+			to_chat(H, "<span class='warning'>You notice [O] standing oddly close...</span>")
+		if(get_ability(/datum/vampire_passive/nostealth) && silent)
+			to_chat(O, "<span class='boldwarning'>You can no longer suck blood silently!</span>")
+			break
 
 	draining = null
 	to_chat(owner, "<span class='notice'>You stop draining [H.name] of blood.</span>")
