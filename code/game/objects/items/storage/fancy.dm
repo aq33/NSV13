@@ -150,14 +150,22 @@
 /obj/item/storage/fancy/cigarettes/AltClick(mob/living/carbon/user)
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
-	var/obj/item/I = locate(/obj/item) in contents
+	var/obj/item/lighter/I = locate(/obj/item/lighter) in contents
 	if(I && contents.len > 0)
 		SEND_SIGNAL(src, COMSIG_TRY_STORAGE_TAKE, I, user)
 		user.put_in_hands(I)
 		contents -= I
 		to_chat(user, "<span class='notice'>You take \a [I] out of the pack.</span>")
 	else
-		to_chat(user, "<span class='notice'>There is nothing left in the pack.</span>")
+		var/obj/item/J	= locate(/obj/item) in contents
+		if(J && contents.len > 0)
+			SEND_SIGNAL(src, COMSIG_TRY_STORAGE_TAKE, J, user)
+			user.put_in_hands(J)
+			contents -= J		
+			to_chat(user, "<span class='notice'>You take \a [J] out of the pack.</span>")
+		else
+			to_chat(user, "<span class='notice'>There is nothing left in the pack.</span>")
+
 
 /obj/item/storage/fancy/cigarettes/update_icon()
 	if(fancy_open || !contents.len)
