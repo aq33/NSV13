@@ -102,6 +102,7 @@
 
 		controller.Knockdown(120)
 
-		to_chat(controller, "<span class='userdanger'>The force of being exiled from your bat form knocks you down!</span>")
+		controller.adjustBruteLoss(20)
+		to_chat(controller, "<span class='userdanger'>The force of being exiled from your bat form painfully throws you to the ground!</span>")
 
 	. = ..()
