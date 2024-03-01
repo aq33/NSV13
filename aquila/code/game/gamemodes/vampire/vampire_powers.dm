@@ -336,14 +336,14 @@
 	addtimer(CALLBACK(src, /obj/effect/proc_holder/spell/self/revive.proc/revive, L), 600)
 
 /obj/effect/proc_holder/spell/self/revive/proc/revive(mob/living/user)
-	user.revive(full_heal = TRUE)
-	user.visible_message("<span class='warning'>[user] reanimates from death!</span>", "<span class='notice'>We get back up.</span>")
 	var/list/missing = user.get_missing_limbs()
 	if(missing.len)
 		playsound(user, 'sound/magic/demon_consume.ogg', 50, 1)
 		user.visible_message("<span class='warning'>Shadowy matter takes the place of [user]'s missing limbs as they reform!</span>")
-		user.regenerate_limbs(0, list(BODY_ZONE_HEAD))
+		user.regenerate_limbs()
 		user.regenerate_organs()
+	user.revive(full_heal = TRUE)
+	user.visible_message(span_warning("[user] reanimates from death!"), span_notice("We get back up."))
 
 /obj/effect/proc_holder/spell/self/summon_coat
 	name = "Summon Dracula Coat (100)"
