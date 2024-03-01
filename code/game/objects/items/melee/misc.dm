@@ -212,7 +212,7 @@
 	.["localdisarm"] = "<span class ='danger'>[user] pogruchotał ci rękę używając [src]! Z bólu upuściłeś wszystko z rąk.</span>"
 	.["visiblestun"] =  "<span class ='danger'>[user] uderzył [target] przy użyciu [src]!</span>"
 	.["localstun"] = "<span class ='danger'>[user] uderzył cię przy użyciu [src]!</span>"
-	.["visibleshead"] =  "<span class ='danger'>[user] pieprznął [target] w łeb używając [src]!</span>"
+	.["visiblehead"] =  "<span class ='danger'>[user] pieprznął [target] w łeb używając [src]!</span>"
 	.["localhead"] = "<span class ='danger'>[user] pieprznął cię w łeb używając [src]!</span>"
 	.["visiblearm"] =  "<span class ='danger'>[user] uderzył w rękę [target] używając [src]!</span>"
 	.["localarm"] = "<span class ='danger'>[user] uderzył w twoją rękę przy użyciu [src]!</span>"
