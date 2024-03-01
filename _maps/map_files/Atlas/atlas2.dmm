@@ -105,7 +105,7 @@
 	},
 /obj/effect/turf_decal/tile/ship/blue,
 /obj/structure/bed/roller,
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "aq" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -2928,6 +2928,13 @@
 	},
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/hos)
+"jp" = (
+/obj/effect/turf_decal/ship/letter{
+	icon_state = "U";
+	pixel_y = -2
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "js" = (
 /obj/structure/curtain/obscuring/grey,
 /obj/structure/disposalpipe/segment,
@@ -3418,7 +3425,7 @@
 	pixel_y = -32
 	},
 /obj/effect/turf_decal/tile/ship/blue,
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "kX" = (
 /obj/structure/disposalpipe/segment{
@@ -3585,7 +3592,7 @@
 	name = "Medical requests console";
 	pixel_x = -32
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "ln" = (
 /obj/structure/chair/office{
@@ -4727,7 +4734,7 @@
 /obj/effect/turf_decal/tile/ship/blue{
 	dir = 8
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "pi" = (
 /obj/structure/table/wood/bar,
@@ -5135,7 +5142,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/storage)
 "qz" = (
 /obj/machinery/space_heater,
@@ -5690,7 +5697,7 @@
 /obj/effect/turf_decal/tile/ship/blue{
 	dir = 8
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "sn" = (
 /obj/machinery/door/airlock/ship/public{
@@ -5877,7 +5884,7 @@
 /obj/effect/turf_decal/tile/ship/blue{
 	dir = 4
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/storage)
 "sQ" = (
 /obj/machinery/door/airlock/ship/hatch{
@@ -5896,7 +5903,7 @@
 /obj/effect/turf_decal/tile/ship/blue{
 	dir = 4
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "sV" = (
 /obj/structure/table/reinforced,
@@ -6409,7 +6416,7 @@
 	pixel_x = 23;
 	pixel_y = 2
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "uP" = (
 /obj/docking_port/stationary{
@@ -7659,7 +7666,7 @@
 	},
 /obj/effect/turf_decal/tile/ship/blue,
 /obj/structure/bed/roller,
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "yP" = (
 /obj/effect/turf_decal/tile/ship/blue{
@@ -7951,7 +7958,7 @@
 /obj/effect/turf_decal/tile/ship/blue{
 	dir = 1
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/storage)
 "zS" = (
 /obj/structure/grille,
@@ -8248,7 +8255,7 @@
 /obj/effect/turf_decal/tile/ship/blue{
 	dir = 1
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/storage)
 "AL" = (
 /turf/open/floor/monotile/steel,
@@ -8740,7 +8747,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 1
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "CB" = (
 /obj/machinery/door/airlock/ship/public/glass{
@@ -8811,7 +8818,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "CJ" = (
 /obj/structure/lattice/catwalk/over/ship,
@@ -8878,7 +8885,7 @@
 /area/engine/gravity_generator)
 "CQ" = (
 /obj/effect/turf_decal/ship/letter{
-	icon_state = "T"
+	icon_state = "Q"
 	},
 /turf/open/floor/engine/airless,
 /area/space/nearstation)
@@ -9334,7 +9341,7 @@
 /obj/effect/turf_decal/tile/ship/blue{
 	dir = 8
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "Eq" = (
 /obj/structure/railing{
@@ -9423,7 +9430,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/storage)
 "EH" = (
 /obj/structure/cable{
@@ -9495,7 +9502,7 @@
 /obj/machinery/camera/autoname{
 	dir = 1
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "EZ" = (
 /obj/structure/cable{
@@ -9949,7 +9956,7 @@
 	},
 /obj/structure/curtain/obscuring/grey,
 /obj/machinery/status_display/evac/north,
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "Gp" = (
 /obj/structure/closet/secure_closet/medical1,
@@ -10105,7 +10112,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/ship/blue,
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "GT" = (
 /turf/open/floor/carpet/blue,
@@ -10529,7 +10536,7 @@
 /obj/item/defibrillator/loaded,
 /obj/item/clothing/glasses/hud/health,
 /obj/effect/turf_decal/box,
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/storage)
 "Ig" = (
 /turf/open/floor/carpet/ship/beige_carpet,
@@ -11361,7 +11368,7 @@
 /area/hallway/nsv/deck1/hallway)
 "Ks" = (
 /obj/effect/turf_decal/tile/ship/blue,
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "Ku" = (
 /obj/structure/railing{
@@ -11427,7 +11434,7 @@
 /obj/item/storage/firstaid/brute,
 /obj/item/storage/firstaid/brute,
 /obj/item/storage/firstaid/fire,
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/storage)
 "KC" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -11453,7 +11460,7 @@
 /obj/item/clothing/glasses/hud/health,
 /obj/item/defibrillator/loaded,
 /obj/effect/turf_decal/box,
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/storage)
 "KF" = (
 /obj/machinery/power/smes/engineering,
@@ -11963,7 +11970,7 @@
 /obj/effect/turf_decal/tile/ship/blue{
 	dir = 1
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "Mn" = (
 /obj/machinery/light_switch/north,
@@ -12805,7 +12812,7 @@
 	},
 /obj/effect/turf_decal/tile/ship/blue,
 /obj/machinery/airalarm/directional/east,
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "Oz" = (
 /obj/structure/table/reinforced,
@@ -12899,7 +12906,7 @@
 	location = "Medbay";
 	name = "navigation beacon (Medbay Delivery)"
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "OJ" = (
 /obj/structure/cable{
@@ -13185,7 +13192,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "PM" = (
 /obj/effect/turf_decal/tile/ship/green{
@@ -13795,7 +13802,9 @@
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "RQ" = (
-/obj/machinery/stasis,
+/obj/machinery/stasis{
+	dir = 8
+	},
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -13853,6 +13862,12 @@
 	},
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck1/hallway)
+"Sd" = (
+/obj/effect/turf_decal/ship/letter{
+	icon_state = "I"
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "Sf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -14308,7 +14323,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/storage)
 "TK" = (
 /turf/open/floor/plating{
@@ -15032,7 +15047,7 @@
 /obj/effect/turf_decal/tile/ship/blue{
 	dir = 4
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "Wd" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -15281,7 +15296,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/ship/blue,
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "WZ" = (
 /obj/machinery/chem_master/condimaster,
@@ -15849,7 +15864,7 @@
 /obj/item/storage/firstaid/o2,
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/firstaid/regular,
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/storage)
 "YP" = (
 /obj/machinery/hydroponics/constructable,
@@ -16034,7 +16049,7 @@
 	pixel_y = 24
 	},
 /obj/effect/turf_decal/tile/ship/blue,
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "Zx" = (
 /obj/machinery/door/airlock/research/glass{
@@ -16110,7 +16125,7 @@
 	pixel_y = 10;
 	layer = 3.1
 	},
-/turf/open/floor/plasteel/white/telecomms,
+/turf/open/floor/plasteel/white,
 /area/medical/storage)
 "ZI" = (
 /obj/structure/hull_plate,
@@ -59270,7 +59285,7 @@ mK
 Rg
 cx
 bJ
-rF
+jp
 jv
 mK
 mK
@@ -59784,7 +59799,7 @@ mK
 Rg
 cx
 bJ
-bq
+Sd
 jv
 mK
 mK
@@ -60298,7 +60313,7 @@ mK
 Rg
 cx
 bJ
-LM
+rF
 jv
 mK
 mK
@@ -60806,15 +60821,15 @@ mK
 mK
 mK
 mK
-uf
-uf
-uf
-nP
+mK
+mK
+mK
+Rg
 cx
 bJ
-cx
-xg
-uf
+bq
+jv
+mK
 mK
 mK
 mK
@@ -61062,17 +61077,17 @@ tL
 jv
 mK
 mK
+mK
+mK
+mK
+mK
 Rg
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-xg
+cx
+cx
+cx
+jv
+mK
+mK
 mK
 mK
 mK
@@ -61319,18 +61334,18 @@ tL
 xg
 uf
 uf
-yi
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-tL
-xg
+uf
+uf
+uf
+mK
+Rg
+cx
+bJ
+LM
+jv
+mK
+uf
+uf
 uf
 uf
 mK
@@ -61577,15 +61592,15 @@ tL
 tL
 tL
 tL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
+tL
+tL
+jv
+Rg
+cx
+cx
+cx
+jv
+Rg
 tL
 tL
 tL
@@ -61835,15 +61850,15 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
+tL
+xg
+nP
+cx
+bJ
+cx
+xg
+yi
+tL
 cL
 cL
 tL
@@ -62092,15 +62107,15 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
+tL
 cL
 cL
 cL

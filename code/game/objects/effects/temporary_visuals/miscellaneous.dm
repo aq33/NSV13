@@ -562,3 +562,14 @@
 	layer = FLY_LAYER
 	duration = 4.8
 	mouse_opacity = 0
+
+/obj/effect/temp_visual/cig_smoke
+	icon_state = "smoke_small"
+	duration = 3 SECONDS
+
+/obj/effect/temp_visual/cig_smoke/Initialize(mapload)
+	. = ..()
+	setDir(pick(GLOB.cardinals))
+	pixel_x = rand(0, 13)
+	pixel_y = rand(0, 13)
+	animate(src, alpha = 0, duration, easing = EASE_IN)

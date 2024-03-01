@@ -152,7 +152,6 @@
 					/obj/item/clothing/gloves/fingerless = 3,
 					/obj/item/clothing/head/soft/cargo = 3,
 					/obj/item/clothing/head/beret/supply = 3,
-					/obj/item/clothing/head/aquila/headband/orange = 3, //AQUILA EDIT
 					/obj/item/radio/headset/headset_cargo = 3)
 	premium = list(	/obj/item/clothing/under/rank/cargo/miner = 3,
 					/obj/item/clothing/head/mailman = 2,
@@ -258,7 +257,7 @@
 	name = "CuraDrobe"
 	desc = "A lowstock vendor only capable of vending clothing for curators and librarians."
 	icon_state = "curadrobe"
-	product_ads = "Okuary dla twoich oczu i literatura dla twej duszy, Curadrobe ma to wszystko!; Zaimponuj i oczaruj twoich bibliotekowych gości naszą rozszerzoną linią długopisów!"
+	product_ads = "Okulary dla twoich oczu i literatura dla twej duszy, Curadrobe ma to wszystko!; Zaimponuj i oczaruj twoich bibliotekowych gości naszą rozszerzoną linią długopisów!"
 	vend_reply = "Dziękujemy za użycie CuraDrobe!"
 	light_color = LIGHT_COLOR_WHITE
 	products = list(//obj/item/clothing/under/rank/civilian/curator/skirt = 2, //NSV13 no skirts
