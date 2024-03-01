@@ -342,6 +342,7 @@
 	for(var/mob/M in GLOB.player_list)
 		if(isobserver(M) && (M.client?.prefs.chat_toggles & CHAT_GHOSTPDA))
 			to_chat(M, "[FOLLOW_LINK(M, user)] [ghost_message]")
+	to_chat(SSdemo, "[FOLLOW_LINK(SSdemo, user)] [ghost_message]") // AQ EDIT - Replays
 
 	// Log in the talk log
 	user.log_talk(message, LOG_PDA, tag="PDA: [initial(message_data["name"])] to [target_text]")

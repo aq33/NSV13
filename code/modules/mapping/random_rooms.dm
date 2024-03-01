@@ -1379,8 +1379,81 @@
 	room_id = "sk_rdm161_kilovault"
 	mappath = "_maps/RandomRooms/10x5/sk_rdm161_kilovault.dmm"
 	centerspawner = FALSE
-	template_height = 10
+	template_height = 5
+	template_width = 10
+	weight = 1
+
+/datum/map_template/random_room/sk_rdm162
+	name = "Control Room"
+	room_id = "sk_rdm162_control_room"
+	mappath = "_maps/RandomRooms/3x3/sk_rdm162_control_room.dmm"
+	centerspawner = FALSE
+	template_height = 3
+	template_width = 3
+	weight = 6
+
+/datum/map_template/random_room/sk_rdm163 // potentially traumatising
+	name = "Corgi Butcher"
+	room_id = "sk_rdm163_corgi_butcher"
+	mappath = "_maps/RandomRooms/3x3/sk_rdm163_corgi_butcher.dmm"
+	centerspawner = FALSE
+	template_height = 3
+	template_width = 3
+	weight = 2
+
+/datum/map_template/random_room/sk_rdm164
+	name = "Cornucopia"
+	room_id = "sk_rdm164_cornucopia"
+	mappath = "_maps/RandomRooms/3x3/sk_rdm164_cornucopia.dmm"
+	centerspawner = FALSE
+	template_height = 3
+	template_width = 3
+	weight = 4
+
+/datum/map_template/random_room/sk_rdm165
+	name = "Mini Library"
+	room_id = "sk_rdm165_library"
+	mappath = "_maps/RandomRooms/3x3/sk_rdm165_library.dmm"
+	centerspawner = FALSE
+	template_height = 3
+	template_width = 3
+	weight = 4
+
+/datum/map_template/random_room/sk_rdm166
+	name = "Printing Press"
+	room_id = "sk_rdm166_printing_press"
+	mappath = "_maps/RandomRooms/5x4/sk_rdm166_printing_press.dmm"
+	centerspawner = FALSE
+	template_height = 4
 	template_width = 5
+	weight = 4
+
+/datum/map_template/random_room/sk_rdm167 // has a real (but nonfunctional) cult rune
+	name = "Library Ritual"
+	room_id = "sk_rdm167_library_ritual"
+	mappath = "_maps/RandomRooms/10x10/sk_rdm167_library_ritual.dmm"
+	centerspawner = FALSE
+	template_height = 10
+	template_width = 10
+	weight = 1
+
+/datum/map_template/random_room/sk_rdm168
+	name = "Offish"
+	room_id = "sk_rdm168_offish"
+	mappath = "_maps/RandomRooms/3x5/sk_rdm168_offish.dmm"
+	centerspawner = FALSE
+	template_height = 5
+	template_width = 3
+	weight = 2
+
+/datum/map_template/random_room/sk_rdm169
+	name = "Maint Solars"
+	room_id = "sk_rdm168_solars"
+	mappath = "_maps/RandomRooms/5x4/sk_rdm168_solars.dmm"
+	centerspawner = FALSE
+	template_height = 4
+	template_width = 5
+	weight = 2
 
 //Flandstation Dedicated Random Room
 
@@ -1479,3 +1552,59 @@
 	centerspawner = FALSE
 	template_height = 11
 	template_width = 5
+
+/datum/map_template/random_room/sk_rdm_glg_01
+	name = "Ashwalker Research Facility"
+	room_id = "sk_rdm_glg_01_ashwalker"
+	mappath = "_maps/RandomRuins/GulagRuins/ashwalker.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_glg_02
+	name = "Crashed Free Golem Ship"
+	room_id = "sk_rdm_glg_02_golem"
+	mappath = "_maps/RandomRuins/GulagRuins/golem.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_glg_03
+	name = "Space Seed Vault"
+	room_id = "sk_rdm_glg_03_seed"
+	mappath = "_maps/RandomRuins/GulagRuins/seed.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_glg_04
+	name = "Menele Beach"
+	room_id = "sk_rdm_glg_04_menele"
+	mappath = "_maps/RandomRuins/GulagRuins/menele.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_glg_05
+	name = "Syndicate Bioweapons Facility"
+	room_id = "sk_rdm_glg_05_syndicate_bio"
+	mappath = "_maps/RandomRuins/GulagRuins/syndicate_bio.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_glg_06
+	name = "Syndicate Listening Post"
+	room_id = "sk_rdm_glg_06_syndicate_listening"
+	mappath = "_maps/RandomRuins/GulagRuins/syndicate_listening.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_glg_07
+	name = "Gaming Room"
+	room_id = "sk_rdm_glg_07_gameroom"
+	mappath = "_maps/RandomRuins/GulagRuins/gameroom.dmm"
+	centerspawner = FALSE
+	template_height = 40
+	template_width = 40

@@ -6,8 +6,8 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 
 
 /mob/camera/blob
-	name = "Blob Overmind"
-	real_name = "Blob Overmind"
+	name = "Grzybóg"
+	real_name = "Grzybóg"
 	desc = "The overmind. It controls the blob."
 	icon = 'icons/mob/cameramob.dmi'
 	icon_state = "marker"
@@ -88,10 +88,10 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 		blobstrain = new new_strain(src)
 		blobstrain.on_gain()
 		if (hadstrain)
-			to_chat(src, "Your strain is now: <b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font>!")
-			to_chat(src, "The <b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font> strain [blobstrain.description]")
+			to_chat(src, "Twoja odmiana to teraz: <b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font>!")
+			to_chat(src, "<b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font> Jako [blobstrain.description]")
 			if(blobstrain.effectdesc)
-				to_chat(src, "The <b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font> strain [blobstrain.effectdesc]")
+				to_chat(src, "Co więcej, jako <b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font> [blobstrain.effectdesc]")
 
 
 /mob/camera/blob/proc/is_valid_turf(turf/T)
@@ -104,8 +104,8 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	if(!blob_core)
 		if(!placed)
 			if(manualplace_min_time && world.time >= manualplace_min_time)
-				to_chat(src, "<b><span class='big'><font color=\"#EE4000\">You may now place your blob core.</font></span></b>")
-				to_chat(src, "<span class='big'><font color=\"#EE4000\">You will automatically place your blob core in [DisplayTimeText(autoplace_max_time - world.time)].</font></span>")
+				to_chat(src, "<b><span class='big'><font color=\"#EE4000\">Możesz teraz postawić swój rdzeń.</font></span></b>")
+				to_chat(src, "<span class='big'><font color=\"#EE4000\">Twój rdzeń zostanie automatycznie postawiony za [DisplayTimeText(autoplace_max_time - world.time)].</font></span>")
 				manualplace_min_time = 0
 			if(autoplace_max_time && world.time >= autoplace_max_time)
 				place_blob_core(1)
@@ -113,13 +113,13 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 			qdel(src)
 	else if(!victory_in_progress && (blobs_legit.len >= blobwincount))
 		victory_in_progress = TRUE
-		priority_announce("Biohazard has reached critical mass. Station loss is imminent.", "Biohazard Alert", SSstation.announcer.get_rand_alert_sound())
+		priority_announce("Zagrożenie biologiczne osiągnęło masę krytyczną. Zagłada stacji jest nieunikniona.", "Alert Biologiczny", SSstation.announcer.get_rand_alert_sound())
 		set_security_level("delta")
 		max_blob_points = INFINITY
 		blob_points = INFINITY
 		addtimer(CALLBACK(src, PROC_REF(victory)), 450)
 	else if(!free_strain_rerolls && (last_reroll_time + BLOB_REROLL_TIME<world.time))
-		to_chat(src, "<b><span class='big'><font color=\"#EE4000\">You have gained another free strain re-roll.</font></span></b>")
+		to_chat(src, "<b><span class='big'><font color=\"#EE4000\">Jesteś gotów na darmowe przelosowanie swojej odmiany.</font></span></b>")
 		free_strain_rerolls = 1
 
 	if(!victory_in_progress && max_count < blobs_legit.len)
@@ -169,7 +169,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 		var/datum/objective/blob_takeover/main_objective = locate() in B.objectives
 		if(main_objective)
 			main_objective.completed = TRUE
-	to_chat(world, "<B>[real_name] consumed the station in an unstoppable tide!</B>")
+	to_chat(world, "<B>[real_name] zagrzybił całą stację!</B>")
 	SSticker.news_report = BLOB_WIN
 	SSticker.force_ending = 1
 
@@ -195,7 +195,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 
 /mob/camera/blob/Login()
 	..()
-	to_chat(src, "<span class='notice'>You are the overmind!</span>")
+	to_chat(src, "<span class='notice'>Jesteś Grzybogiem!</span>")
 	blob_help()
 	update_health_hud()
 	add_points(0)
@@ -203,7 +203,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 /mob/camera/blob/examine(mob/user)
 	. = ..()
 	if(blobstrain)
-		. += "Its strain is <font color=\"[blobstrain.color]\">[blobstrain.name]</font>."
+		. += "Jego rodzaj to <font color=\"[blobstrain.color]\">[blobstrain.name]</font>."
 	. += "It currently consists of [blobs_legit.len] nodes, out of the [blobwincount] nodes needed to achieve critical mass."
 
 /mob/camera/blob/update_health_hud()
@@ -246,7 +246,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	src.log_talk(message, LOG_SAY, tag="blob")
 
 	var/message_a = say_quote(message)
-	var/rendered = "<span class='big'><font color=\"#EE4000\"><b>\[Blob Telepathy\] [name](<font color=\"[blobstrain.color]\">[blobstrain.name]</font>)</b> [message_a]</font></span>"
+	var/rendered = "<span class='big'><font color=\"#EE4000\"><b>\[Grzybia Telepatia\] [name](<font color=\"[blobstrain.color]\">[blobstrain.name]</font>)</b> [message_a]</font></span>"
 	for(var/mob/M in GLOB.mob_list)
 		var/datum/component/bloodling/B = M.GetComponent(/datum/component/bloodling) //NSV13: Allows the bloodling to hear blob-comms...
 		if((B && B.can_blob_talk) || isovermind(M) || istype(M, /mob/living/simple_animal/hostile/blob))
@@ -261,15 +261,15 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 /mob/camera/blob/get_stat_tab_status()
 	var/list/tab_data = ..()
 	if(blob_core)
-		tab_data["Core Health"] = GENERATE_STAT_TEXT("[blob_core.obj_integrity]")
-	tab_data["Power Stored"] = GENERATE_STAT_TEXT("[blob_points]/[max_blob_points]")
-	tab_data["Blobs to Win"] = GENERATE_STAT_TEXT("[blobs_legit.len]/[blobwincount]")
+		tab_data["Zdrowie Rdzenia"] = GENERATE_STAT_TEXT("[blob_core.obj_integrity]")
+	tab_data["Zasoby"] = GENERATE_STAT_TEXT("[blob_points]/[max_blob_points]")
+	tab_data["Wymagana ilość blobów do wygranej"] = GENERATE_STAT_TEXT("[blobs_legit.len]/[blobwincount]")
 	if(free_strain_rerolls)
-		tab_data["Strain Reroll"] = GENERATE_STAT_TEXT("You have [free_strain_rerolls] Free Strain Reroll\s Remaining")
+		tab_data["Strain Reroll"] = GENERATE_STAT_TEXT("Ilość twoich darmowych przelosowań odmiany wynosi: [free_strain_rerolls]")
 	if(!placed)
 		if(manualplace_min_time)
-			tab_data["Time Before Manual Placement"] = GENERATE_STAT_TEXT("[max(round((manualplace_min_time - world.time)*0.1, 0.1), 0)]")
-		tab_data["Time Before Automatic Placement"] = GENERATE_STAT_TEXT("[max(round((autoplace_max_time - world.time)*0.1, 0.1), 0)]")
+			tab_data["Czas do ręcznego umieszczenia rdzenia"] = GENERATE_STAT_TEXT("[max(round((manualplace_min_time - world.time)*0.1, 0.1), 0)]")
+		tab_data["Casz do automatycznego umieszczenia rdzenia"] = GENERATE_STAT_TEXT("[max(round((autoplace_max_time - world.time)*0.1, 0.1), 0)]")
 	return tab_data
 
 /mob/camera/blob/canZMove(direction, turf/target)

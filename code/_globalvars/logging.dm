@@ -1,5 +1,7 @@
 GLOBAL_VAR(log_directory)
 GLOBAL_PROTECT(log_directory)
+GLOBAL_VAR(demo_directory) // AQ EDIT - Replays
+GLOBAL_PROTECT(demo_directory) // AQ EDIT - Replays
 GLOBAL_VAR(world_game_log)
 GLOBAL_PROTECT(world_game_log)
 GLOBAL_VAR(world_objective_log)
@@ -46,6 +48,11 @@ GLOBAL_VAR(href_exploit_attempt_log)
 GLOBAL_PROTECT(href_exploit_attempt_log)
 GLOBAL_VAR(tgui_log)
 GLOBAL_PROTECT(tgui_log)
+
+// AQ EDIT START - Replays
+GLOBAL_VAR(demo_log)
+GLOBAL_PROTECT(demo_log)
+// AQ EDIT END
 
 GLOBAL_LIST_EMPTY(bombers)
 GLOBAL_PROTECT(bombers)

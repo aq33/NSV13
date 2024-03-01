@@ -14,7 +14,13 @@
 	taste_description = "alcohol"
 	chem_flags = CHEMICAL_BASIC_ELEMENT | CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	hydration_factor = 8 * REAGENTS_METABOLISM // AQ EDIT
 	var/boozepwr = 65 //Higher numbers equal higher hardness, higher hardness equals more intense alcohol poisoning
+
+// AQ EDIT START
+/datum/reagent/consumable/ethanol/get_hydration_factor()
+	return LERP(15, 0, boozepwr/100)
+// AQ EDIT END
 
 /*
 Boozepwr Chart

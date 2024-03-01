@@ -60,3 +60,5 @@
 
 	///The Examine Panel TGUI. //NSV13
 	var/datum/examine_panel/tgui = new() //create the datum
+	// AQ EDIT strata dumy
+	var/gender_ambiguous = FALSE

@@ -12,7 +12,7 @@ xd
 bruh
 antag
 validhunt
-afk
+$afk
 tg
 virgo orbital
 skyrat
@@ -27,4 +27,6 @@ $essa
 traitor
 $tot
 ping
-lag
+$lag
+hugbox
+powergamer

@@ -1,4 +1,3 @@
-
 /obj/machinery/vending/cola
 	name = "\improper Robust Softdrinks"
 	desc = "A softdrink vendor provided by Robust Industries, LLC."

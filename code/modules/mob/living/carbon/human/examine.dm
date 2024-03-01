@@ -394,6 +394,14 @@
 	//NSV13 - Roleplaying Records - End
 	. += "*---------*</span>"
 
+	//AQ EDIT snip snip
+	if(gender_ambiguous) //jajoskręt
+		if (gender == MALE)
+			. += "[t_He] has a strange feminine quality to [t_him].\n"
+		else
+			. += "[t_He] has a strange masculine quality to [t_him].\n"
+
+
 /mob/living/proc/status_effect_examines(pronoun_replacement) //You can include this in any mob's examine() to show the examine texts of status effects!
 	var/list/dat = list()
 	if(!pronoun_replacement)

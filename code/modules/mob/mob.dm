@@ -577,7 +577,7 @@
   *
   * overridden here and in /mob/dead/observer for different point span classes and sanity checks
   */
-/mob/verb/pointed(atom/A as mob|obj|turf in view())
+/*/mob/verb/pointed(atom/A as mob|obj|turf in view()) //AQ EDIT
 	set name = "Point To"
 	set category = "Object"
 
@@ -596,7 +596,7 @@
 
 	SEND_SIGNAL(src, COMSIG_MOB_POINTED, A)
 	return TRUE
-
+*/ //AQ EDIT
 /**
   * Called by using Activate Held Object with an empty hand/limb
   *

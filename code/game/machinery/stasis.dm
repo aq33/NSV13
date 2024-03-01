@@ -21,15 +21,18 @@
 
 /obj/machinery/stasis/Initialize(mapload)
 	. = ..()
+	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(dir_changed)) //This gets called later during initialization
 	for(var/direction in GLOB.cardinals)
-		op_computer = locate(/obj/machinery/computer/operating) in get_step(src, direction)
-		if(op_computer)
+		var/obj/machinery/computer/operating/op_computer = locate(/obj/machinery/computer/operating) in get_step(src, direction)
+		if(op_computer && !op_computer.sbed)
 			op_computer.sbed = src
+			src.op_computer = op_computer
 			break
 
 /obj/machinery/stasis/Destroy()
+	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(dir_changed))
 	. = ..()
-	if(op_computer && op_computer.sbed == src)
+	if(op_computer.sbed == src)
 		op_computer.sbed = null
 
 /obj/machinery/stasis/examine(mob/user)
@@ -146,6 +149,34 @@
 
 /obj/machinery/stasis/crowbar_act(mob/living/user, obj/item/I)
 	return default_deconstruction_crowbar(I)
+
+/obj/machinery/stasis/multitool_act(mob/living/user, obj/item/I)
+	var/obj/item/multitool/multitool = I
+	if(!I || !istype(I))
+		return ..()
+	. = TOOL_ACT_TOOLTYPE_SUCCESS
+	if(!panel_open)
+		to_chat(user, "<span class='warning'>\The [src]'s panel must be open in order to add it to \the [multitool]'s buffer.</span>")
+		return
+	multitool.buffer = src
+	to_chat(user, "<span class='notice'>You store the linking data of \the [src] in \the [multitool]'s buffer. Use it on an operating computer to complete linking.</span>")
+	balloon_alert(user, "saved in buffer")
+	
+	
+/obj/machinery/stasis/wrench_act(mob/living/user, obj/item/I) //We want to rotate, but we need to do it in 180 degree rotations.
+	if(panel_open && has_buckled_mobs())
+		to_chat(user, "<span class='notice'>\The [src] is too heavy to rotate while someone is buckled to it!</span>")
+		return TRUE
+	. = default_change_direction_wrench(user, I, 2)
+
+/obj/machinery/stasis/proc/dir_changed(datum/source, old_dir, new_dir)
+	SIGNAL_HANDLER
+	switch(new_dir)
+		if(WEST, NORTH)
+			buckle_lying = 270
+		if(EAST, SOUTH)
+			buckle_lying = 90
+
 
 /obj/machinery/stasis/nap_violation(mob/violator)
 	unbuckle_mob(violator, TRUE)

@@ -125,7 +125,7 @@ PROBABILITY WIZARD 1
 PROBABILITY GANG 1
 PROBABILITY OVERTHROW 1
 PROBABILITY METEOR 0
-PROBABILITY DEVIL 1
+PROBABILITY DEVIL 0
 PROBABILITY DEVIL_AGENTS 0
 PROBABILITY CHANGELING 1 #Try as I might, I just can't bring myself to re-enable this POS.
 PROBABILITY TRAITORBRO 1 #Everyone hates this anyways...
@@ -227,7 +227,7 @@ MAX_POP CULT -1
 MIN_POP CHANGELING 15
 MAX_POP CHANGELING -1
 
-MIN_POP WIZARD 15
+MIN_POP WIZARD 20
 MAX_POP WIZARD -1
 
 MIN_POP METEOR 0
@@ -376,7 +376,7 @@ ROUNDSTART_AWAY
 
 ## How long the delay is before the Away Mission gate opens. Default is half an hour.
 ## 600 is one minute.
-GATEWAY_DELAY 18000
+GATEWAY_DELAY 300
 
 
 ## ACCESS ###
@@ -465,6 +465,7 @@ RANDOM_LAWS corgi
 RANDOM_LAWS cowboy
 RANDOM_LAWS weeb
 RANDOM_LAWS dean
+RANDOM_LAWS netanyahu
 
 ## Bad idea laws. Probably shouldn't enable these
 #RANDOM_LAWS syndie

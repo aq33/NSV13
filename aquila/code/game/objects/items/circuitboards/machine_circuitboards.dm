@@ -20,3 +20,17 @@
 		/obj/item/stock_parts/manipulator = 1,
 		/obj/item/stock_parts/micro_laser = 3,
 		/obj/item/stock_parts/matter_bin = 1)
+
+/obj/item/circuitboard/machine/battery
+	name = "bateria eksportowa (Machine Board)"
+	build_path = /obj/machinery/power/battery
+	req_components = list(
+		/obj/item/stock_parts/capacitor = 5)
+
+/obj/item/circuitboard/machine/plort
+	name = "Machine Design (Plort Redemption Machine)"
+	icon_state = "science"
+	build_path = /obj/machinery/plortrefinery
+	req_components = list(
+		/obj/item/stock_parts/manipulator = 3,
+		/obj/item/stack/cable_coil = 2)

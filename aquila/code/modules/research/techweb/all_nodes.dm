@@ -135,10 +135,10 @@
 //najtańsze, słabe i kosztowne
 /datum/techweb_node/prototype_beam_weapons
 	id = "prototype_beam_weapons"
-	tech_tier = 1
-	starting_node = TRUE
+	tech_tier = 2
 	display_name = "Prototype Beam Weapons"
 	description = "First generation energy based weapons, they use special lenses to focus light and turn it into high-energy weapon platform, expensive with inefficient energy usage."
+	prereq_ids = list("engineering")
 	design_ids = list("firstgenegun", "firstgenlasergun")
 //średnia półka
 /datum/techweb_node/improved_beam_weapons
@@ -181,6 +181,16 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	export_price = 100 //jajko wielkanocne bo defacto Centrala i ich mało znani specjalisci od spraw wewnętrznych mają to
 
+/datum/techweb_node/electric_weapons
+	id = "electronic_weapons"
+	tech_tier = 4
+	display_name = "Electric Weapons"
+	description = "Weapons using electric technology"
+	prereq_ids = list("weaponry", "adv_power"  , "emp_basic")
+	design_ids = list("stunrevolver", "stunshell", "ioncarbine", "disabler") //NSV13 - readded stunshell //AQ - added disabler
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+	export_price = 5000
+
 /datum/techweb_node/cyborg_upg_borgi
 	id = "cyborg_upg_borgi"
 	display_name = "Cyborg Upgrades: Borgi"
@@ -189,3 +199,12 @@
 	design_ids = list("borg_transform_borgi")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 	export_price = 1500
+
+/datum/techweb_node/syndicate_basic/New()		//Crappy way of making syndicate gear decon supported until there's another way.
+	. = ..()
+	boost_item_paths = list()
+	for(var/path in GLOB.uplink_items)
+		var/datum/uplink_item/UI = new path
+		if(!UI.item || !UI.illegal_tech)
+			continue
+		boost_item_paths |= UI.item	//allows deconning to unlock.

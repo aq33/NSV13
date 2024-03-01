@@ -332,6 +332,13 @@
 	name = "Yellow Bioluminescence"
 	glow_color = "#FFFF66"
 
+//AQ EDIT START
+/datum/plant_gene/trait/glow/orange
+	//because Yellow doesn't suit Engineering
+	name = "Orange Bioluminescence"
+	glow_color = "#D05800"
+//AQ EDIT END
+
 /datum/plant_gene/trait/glow/green
 	//oh no, now I'm radioactive
 	name = "Green Bioluminescence"
@@ -388,6 +395,7 @@
 	// 2x to max reagents volume.
 	name = "Densified Chemicals"
 	rate = 2
+	trait_id = "chem_boost"
 
 /datum/plant_gene/trait/maxchem/on_new(obj/item/reagent_containers/food/snacks/grown/G, newloc)
 	..()
@@ -515,6 +523,13 @@
 			HY.pestlevel = 0 // Reset
 			HY.update_icon()
 			HY.visible_message("<span class='warning'>The [H.myseed.plantname] spreads!</span>")
+
+// It boosts chemical output of a plant by rate
+/datum/plant_gene/trait/richer_juice
+	name = "Richer Juice"
+	rate = 2
+	trait_id = "chem_boost"
+
 
 /datum/plant_gene/trait/plant_type // Parent type
 	name = "you shouldn't see this"

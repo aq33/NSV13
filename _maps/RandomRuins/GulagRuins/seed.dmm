@@ -1,0 +1,2175 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"au" = (
+/obj/item/storage/toolbox/syndicate,
+/obj/structure/table/wood,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"bz" = (
+/obj/machinery/suit_storage_unit/standard_unit{
+	helmet_type = /obj/item/clothing/head/helmet/space/fragile;
+	suit_type = /obj/item/clothing/suit/space/fragile
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"bP" = (
+/obj/machinery/plantgenes/seedvault{
+	pixel_y = 6
+	},
+/obj/structure/table/wood,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"cm" = (
+/obj/machinery/smartfridge,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"df" = (
+/obj/machinery/biogenerator,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"dQ" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"fO" = (
+/obj/machinery/door/airlock/ship/public/glass,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"fU" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"jf" = (
+/obj/machinery/atmospherics/components/binary/valve,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"kz" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"kM" = (
+/obj/structure/closet/crate/hydroponics,
+/obj/structure/beebox,
+/obj/item/melee/flyswatter,
+/obj/item/honey_frame,
+/obj/item/honey_frame,
+/obj/item/honey_frame,
+/obj/item/queen_bee/bought,
+/obj/item/clothing/head/beekeeper_head,
+/obj/item/clothing/suit/beekeeper_suit,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"lm" = (
+/obj/structure/closet/crate/hydroponics,
+/obj/item/clothing/under/rank/civilian/hydroponics,
+/obj/item/clothing/under/rank/civilian/hydroponics,
+/obj/item/clothing/under/rank/civilian/hydroponics,
+/obj/item/clothing/under/rank/civilian/hydroponics,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"lZ" = (
+/obj/item/hatchet,
+/obj/item/storage/bag/plants,
+/obj/item/reagent_containers/glass/bucket,
+/obj/structure/table/wood,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"mM" = (
+/obj/machinery/atmospherics/components/unary/tank/air,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"mY" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/door/airlock/ship/public/glass,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"nG" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"nN" = (
+/obj/machinery/vending/hydroseeds,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"nO" = (
+/obj/machinery/chem_master/condimaster,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"oy" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/powered)
+"oP" = (
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"oW" = (
+/obj/machinery/reagentgrinder{
+	pixel_y = 5
+	},
+/obj/structure/table/glass,
+/obj/item/reagent_containers/glass/beaker/bluespace,
+/obj/item/reagent_containers/glass/beaker/bluespace,
+/obj/item/reagent_containers/glass/beaker/bluespace,
+/obj/item/reagent_containers/glass/beaker/bluespace,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"pt" = (
+/obj/structure/tank_dispenser/oxygen,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"qj" = (
+/obj/structure/table/wood,
+/obj/machinery/smartfridge/disks{
+	pixel_y = 2
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4/lavaland{
+	dir = 8
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"qo" = (
+/obj/machinery/chem_dispenser/mutagensaltpeter,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"qW" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"tw" = (
+/obj/machinery/light,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"tC" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"um" = (
+/obj/structure/closet/crate/hydroponics,
+/obj/item/cultivator,
+/obj/item/cultivator,
+/obj/item/cultivator,
+/obj/item/cultivator,
+/obj/item/shovel/spade,
+/obj/item/shovel/spade,
+/obj/item/shovel/spade,
+/obj/item/shovel/spade,
+/obj/item/hatchet,
+/obj/item/hatchet,
+/obj/item/hatchet,
+/obj/item/hatchet,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"vH" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4/lavaland{
+	dir = 1
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"wd" = (
+/turf/template_noop,
+/area/template_noop)
+"wq" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4/lavaland{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"yw" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"zC" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"AQ" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"BA" = (
+/obj/structure/table/wood,
+/obj/item/storage/bag/plants,
+/obj/item/storage/bag/plants,
+/obj/item/storage/bag/plants,
+/obj/item/storage/bag/plants,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"CB" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"DK" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"Ef" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/powered)
+"EP" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"Fh" = (
+/obj/machinery/hydroponics/constructable,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"FP" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/door/airlock/ship/public/glass,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"Gi" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"GV" = (
+/obj/structure/disposalpipe/trunk,
+/obj/machinery/disposal/bin,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"Hf" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"Jy" = (
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"Kh" = (
+/obj/machinery/suit_storage_unit/standard_unit{
+	helmet_type = /obj/item/clothing/head/helmet/space/fragile;
+	suit_type = /obj/item/clothing/suit/space/fragile
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"KZ" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"Lj" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"Mi" = (
+/obj/effect/mob_spawn/human/seed_vault,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"MD" = (
+/obj/structure/table/wood,
+/obj/item/lighter,
+/obj/item/lighter,
+/obj/item/storage/fancy/rollingpapers,
+/obj/item/storage/fancy/rollingpapers,
+/obj/item/storage/fancy/rollingpapers,
+/obj/item/storage/fancy/rollingpapers,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"ML" = (
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/powered)
+"MN" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/powered)
+"NW" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/powered)
+"Ow" = (
+/obj/structure/table/wood,
+/obj/item/storage/box/disks_plantgene,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"Pc" = (
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/powered)
+"PG" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4/lavaland{
+	dir = 1
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"Qe" = (
+/obj/machinery/vending/hydronutrients,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"Qx" = (
+/obj/machinery/light{
+	dir = 8;
+	light_color = "#e8eaff"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/powered)
+"Ry" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"Tk" = (
+/obj/machinery/hydroponics/constructable,
+/obj/machinery/light,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"Uc" = (
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/seed_vault,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"UK" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"VB" = (
+/obj/structure/table/wood,
+/obj/item/gun/energy/floragun,
+/obj/item/gun/energy/floragun,
+/obj/item/gun/energy/floragun,
+/obj/item/gun/energy/floragun,
+/obj/item/storage/box/disks_plantgene,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"VW" = (
+/obj/machinery/seed_extractor,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"Wq" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/powered)
+"WQ" = (
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"Xy" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"XN" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/machinery/door/airlock/ship/external/glass,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"Yd" = (
+/obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/machinery/door/airlock/ship/external/glass,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"YV" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer4{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/powered)
+"Zc" = (
+/obj/structure/table/wood,
+/obj/item/storage/box/disks_plantgene,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel/freezer,
+/area/ruin/space/has_grav/powered)
+"Zs" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/powered)
+
+(1,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(2,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(3,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(4,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(5,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(6,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(7,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(8,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(9,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(10,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(11,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(12,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+YV
+oy
+oy
+oy
+oy
+oy
+oy
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(13,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+oy
+oy
+oy
+MN
+Ef
+Mi
+Mi
+Mi
+Mi
+oy
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(14,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+oy
+mM
+jf
+oP
+mY
+Lj
+fU
+fU
+wq
+oy
+oy
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(15,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+oy
+oy
+oy
+oy
+NW
+oy
+fO
+fO
+oy
+oy
+oy
+oy
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(16,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+oy
+oy
+Uc
+oy
+cm
+qW
+EP
+Jy
+Jy
+EP
+AQ
+EP
+oy
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(17,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+oy
+MD
+Jy
+oy
+um
+Ry
+DK
+fU
+fU
+vH
+Jy
+lm
+oy
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(18,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+oy
+Zc
+Jy
+oy
+Fh
+yw
+WQ
+Jy
+Jy
+WQ
+Jy
+Tk
+oy
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(19,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+oy
+Ow
+zC
+FP
+nG
+tC
+Qe
+Jy
+Jy
+GV
+dQ
+dQ
+Pc
+ML
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(20,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+oy
+bP
+Jy
+oy
+WQ
+yw
+cm
+Jy
+Jy
+VW
+Jy
+Uc
+oy
+Wq
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(21,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+oy
+qj
+Jy
+oy
+WQ
+yw
+nN
+Jy
+Jy
+df
+Jy
+WQ
+oy
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(22,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+oy
+Jy
+Jy
+oy
+lZ
+yw
+oW
+Jy
+Jy
+qo
+Jy
+nO
+oy
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(23,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+oy
+Gi
+Jy
+oy
+Fh
+Hf
+PG
+UK
+UK
+CB
+Jy
+Tk
+oy
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(24,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+oy
+kM
+Jy
+oy
+BA
+Jy
+Jy
+WQ
+WQ
+Jy
+Jy
+kz
+oy
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(25,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+oy
+oy
+kM
+oy
+VB
+Xy
+KZ
+Jy
+Jy
+KZ
+Xy
+au
+oy
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(26,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+oy
+oy
+oy
+oy
+oy
+oy
+Jy
+tw
+oy
+oy
+oy
+oy
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(27,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+Zs
+wd
+Zs
+oy
+Kh
+Jy
+Jy
+Jy
+bz
+oy
+oy
+Zs
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(28,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+oy
+bz
+Jy
+Jy
+Jy
+bz
+oy
+Zs
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(29,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+oy
+oy
+oy
+XN
+XN
+oy
+oy
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(30,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+oy
+pt
+Jy
+Jy
+oy
+Zs
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(31,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+oy
+oy
+Yd
+Yd
+oy
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(32,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+Qx
+wd
+wd
+Qx
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(33,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(34,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(35,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(36,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(37,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(38,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(39,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
+(40,1,1) = {"
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+wd
+"}
