@@ -17,7 +17,7 @@
 	school = "transmutation"
 	charge_max = 600
 	clothes_req = FALSE
-	invocation = "BURN IN HELL!!"
+	invocation = "PŁOŃ!!"
 	invocation_type = "shout"
 	message = "<span class='notice'Ogień Piekielny spowija Cię!</span>"
 	cooldown_min = 75
@@ -30,7 +30,7 @@
 	name = "Ignite"
 	desc = "This spell sets a person on fire from range."
 	school = "transmutation"
-	invocation = "BURN IN HELL!!"
+	invocation = "PŁOŃ!!"
 	invocation_type = "shout"
 	charge_max = 600
 	clothes_req = FALSE

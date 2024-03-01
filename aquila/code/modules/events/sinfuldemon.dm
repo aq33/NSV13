@@ -3,8 +3,7 @@
 	typepath = /datum/round_event/ghost_role/sinfuldemon
 	max_occurrences = 2 //misery loves company
 	min_players = 15
-	earliest_start = 20 MINUTES
-	weight = 5 //zmienić to by zwiększyć szansę na Grzech Demon
+	weight = 10 //zmienić to by zwiększyć szansę na Grzech Demon
 
 /datum/round_event/ghost_role/sinfuldemon
 	var/success_spawn = 0

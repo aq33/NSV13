@@ -4,7 +4,7 @@
 	school = "transmutation"
 	charge_max = 150
 	clothes_req = FALSE
-	invocation = "INDULGE"
+	invocation = "ŻREĆ"
 	invocation_type = "shout"
 	sound = 'sound/magic/forcewall.ogg'
 	action_icon = 'aquila/icons/mob/actions/actions_minor_antag.dmi'
