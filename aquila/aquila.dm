@@ -228,6 +228,7 @@
 #include "code\modules\surgery\gender_reassignment.dm"
 #include "code\modules\uplink\uplink_items.dm"
 #include "code\modules\vending\boozeomat.dm"
+#include "code\modules\vending\cola.dm"
 #include "code\modules\vending\wardrobes.dm"
 #include "code\modules\projectiles\boxes_magazines\internal\shotgun.dm"
 #include "code\modules\research\designs\mecha_designs.dm"
