@@ -2,11 +2,11 @@
 /obj/item/melee/classic_baton/police/tonfa
 	name = "milicyjna tonfa"
 	desc = "Milicyjna, biała, gumowa pała z twardym rdzeniem. Obowiązkowe wyposażenie każdego zwyrodniałego milicjanta, który uwielbia odgłos łamanych kości - u niektórych wywołuje nawet pewien rodzaj nostalgii."
-	icon = 'icons/obj/items_and_weapons.dmi'
+	icon = 'aquila/icons/obj/items_and_weapons.dmi'
 	icon_state = "tonfa"
 	item_state = "tonfa"
-	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
+	lefthand_file = 'aquila/icons/mob/inhands/equipment/security_lefthand.dmi'
+	righthand_file = 'aquila/icons/mob/inhands/equipment/security_righthand.dmi'
 	force = 8
 	throwforce = 7
 	cooldown = 0

@@ -208,7 +208,7 @@
 	.["localtrip"] = "<span class ='danger'>[user] skosił cię używając [src]! Chryste Panie, jak to boli...</span>"
 	.["visibleknockout"] =  "<span class ='danger'>[user] przyładował w łeb [target] za pomocą [src]! [target] pada nieprzytomny na glebę.</span>"
 	.["localknockout"] = "<span class ='danger'>[user] przyładował ci w łeb [src] z taką siłą, że straciłeś przytomność...</span>"
-	.["visibledisarm"] =  "<span class ='danger'>[user] celnym uderzeniem rozbroił [target] używając [src]!</span>"
+	.["visibledisarm"] =  "<span class ='danger'>[user] celnym uderzeniem pogruchotał rękę [target] używając [src]!</span>"
 	.["localdisarm"] = "<span class ='danger'>[user] pogruchotał ci rękę używając [src]! Z bólu upuściłeś wszystko z rąk.</span>"
 	.["visiblestun"] =  "<span class ='danger'>[user] uderzył [target] przy użyciu [src]!</span>"
 	.["localstun"] = "<span class ='danger'>[user] uderzył cię przy użyciu [src]!</span>"
