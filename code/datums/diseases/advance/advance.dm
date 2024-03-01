@@ -38,6 +38,7 @@
 	var/processing = FALSE
 	var/mutable = TRUE //set to FALSE to prevent most in-game methods of altering the disease via virology
 	var/oldres
+	var/sentient = FALSE //used to classify if a disease is sentient AQ EDIT
 	var/faltered = FALSE //used if a disease has been made non-contagious
 	// The order goes from easy to cure to hard to cure.
 	var/mutability = 1
@@ -86,11 +87,15 @@
 	var/channel = CheckChannel() //we do this because this can break otherwise, for some obscure reason i cannot fathom
 	for(var/datum/disease/advance/P in infectee.diseases)
 		var/otherchannel = P.CheckChannel()
+		if(sentient)//AQ EDIT
+			if(P.sentient)
+				advance_diseases += P
+			continue
 		if(dormant || P.dormant)//dormant diseases dont interfere with channels, not even with other dormant diseases if you manage to get two
 			continue
 		if(IsSame(P))
 			continue
-		if(channel == otherchannel)
+		if(channel == otherchannel && !P.sentient)//AQ EDIT
 			advance_diseases += P
 	var/replace_num = advance_diseases.len + 1 - DISEASE_LIMIT //amount of diseases that need to be removed to fit this one
 	if(replace_num > 0)

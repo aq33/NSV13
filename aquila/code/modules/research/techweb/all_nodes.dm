@@ -181,6 +181,16 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	export_price = 100 //jajko wielkanocne bo defacto Centrala i ich mało znani specjalisci od spraw wewnętrznych mają to
 
+/datum/techweb_node/electric_weapons
+	id = "electronic_weapons"
+	tech_tier = 4
+	display_name = "Electric Weapons"
+	description = "Weapons using electric technology"
+	prereq_ids = list("weaponry", "adv_power"  , "emp_basic")
+	design_ids = list("stunrevolver", "stunshell", "ioncarbine", "disabler") //NSV13 - readded stunshell //AQ - added disabler
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+	export_price = 5000
+
 /datum/techweb_node/cyborg_upg_borgi
 	id = "cyborg_upg_borgi"
 	display_name = "Cyborg Upgrades: Borgi"

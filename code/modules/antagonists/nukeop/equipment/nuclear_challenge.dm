@@ -21,7 +21,7 @@
 		return
 
 	declaring_war = TRUE
-	var/are_you_sure = alert(user, "Skonsultuj się ze swoją drużyną zanim zadeklarujecie wojnę na [station_name()]].", "Declare war?", "Yes", "No")
+	var/are_you_sure = tgui_alert(user, "Skonsultuj się ze swoją drużyną zanim zadeklarujecie wojnę na [station_name()]. [check_pop()? "" : "Ze względu na wielkość załogi nie dostaniecie dotatkowego ekwipunku. "]", "Declare war?", "Yes", "No")
 	declaring_war = FALSE
 
 	if(!check_allowed(user))
@@ -55,7 +55,7 @@
 
 	play_soundtrack_music(/datum/soundtrack_song/bee/future_perception)
 
-	if(user)
+	if(user && check_pop())
 		to_chat(user, "You've attracted the attention of powerful forces within the syndicate. A bonus bundle of telecrystals has been granted to your team. Great things await you if you complete the mission.")
 
 	for(var/V in GLOB.syndicate_shuttle_boards)
@@ -77,6 +77,12 @@
 			continue
 		uplinks += uplink
 
+	CONFIG_SET(number/shuttle_refuel_delay, max(CONFIG_GET(number/shuttle_refuel_delay), CHALLENGE_SHUTTLE_DELAY))
+	SSblackbox.record_feedback("amount", "nuclear_challenge_mode", 1)
+
+	if(!check_pop())
+		qdel(src)
+		return
 
 	var/tc_to_distribute = CHALLENGE_TELECRYSTALS
 	var/tc_per_nukie = round(tc_to_distribute / (length(orphans)+length(uplinks)))
@@ -99,8 +105,7 @@
 				C.visible_message("<span class='notice'>[C] coughs up a half-digested telecrystal</span>","<span class='usernotice'>You cough up a half-digested telecrystal!</span>")
 				break
 
-	CONFIG_SET(number/shuttle_refuel_delay, max(CONFIG_GET(number/shuttle_refuel_delay), CHALLENGE_SHUTTLE_DELAY))
-	SSblackbox.record_feedback("amount", "nuclear_challenge_mode", 1)
+
 
 	qdel(src)
 
@@ -108,11 +113,6 @@
 	if(declaring_war)
 		to_chat(user, "Jesteś w trakcie deklarowania wojny! Zdecyduj się.")
 		return FALSE
-	/* AQ EDIT - if you have nukies, they can do war.
-	if(GLOB.player_list.len < CHALLENGE_MIN_PLAYERS)
-		to_chat(user, "The enemy crew is too small to be worth declaring war on.")
-		return FALSE
-	*/
 	if(!user.onSyndieBase())
 		to_chat(user, "Musisz być w twojej bazie by tego użyć.")
 		return FALSE
@@ -127,6 +127,11 @@
 		if(board.moved)
 			to_chat(user, "Infiltrator się przemieścił! Straciłeś prawo do deklaracji wojny.")
 			return FALSE
+	return TRUE
+
+/obj/item/nuclear_challenge/proc/check_pop()
+	if(GLOB.player_list.len < CHALLENGE_MIN_PLAYERS)
+		return FALSE
 	return TRUE
 
 /obj/item/nuclear_challenge/clownops

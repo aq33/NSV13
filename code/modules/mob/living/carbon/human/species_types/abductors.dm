@@ -3,7 +3,7 @@
 	id = SPECIES_ABDUCTOR
 	sexes = FALSE
 	species_traits = list(NOBLOOD,NOEYESPRITES,NOMOUTH)
-	inherent_traits = list(TRAIT_VIRUSIMMUNE,TRAIT_NOGUNS,TRAIT_NOHUNGER,TRAIT_NOBREATH)
+	inherent_traits = list(TRAIT_VIRUSIMMUNE,TRAIT_NOGUNS,TRAIT_NOHUNGER,TRAIT_NOBREATH,TRAIT_NOTHIRST) // AQ EDIT - TRAIT_NOTHIRST
 	mutanttongue = /obj/item/organ/tongue/abductor
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	ass_image = 'icons/ass/assgrey.png' //NSV13

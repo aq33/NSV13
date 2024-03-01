@@ -16180,6 +16180,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 5
 	},
+/obj/machinery/vending/wardrobe/cargo_wardrobe,
 /turf/open/floor/monotile/steel,
 /area/quartermaster/miningoffice)
 "TX" = (
