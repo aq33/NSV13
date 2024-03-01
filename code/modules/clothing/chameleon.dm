@@ -200,7 +200,7 @@
 	// don't have to worry
 
 	else
-		update_item(picked_item, emp=TRUE)
+		update_item(picked_item, TRUE) //For some reason it errs here if emp=TRUE but not when TRUE ?????
 		if(ispath(picked_item, /obj/item/card/id))
 			var/mob/living/carbon/human/H = user
 			H?.sec_hud_set_ID()
