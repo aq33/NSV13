@@ -18,6 +18,8 @@
 /datum/game_mode/vampire
 	name = "vampire"
 	config_tag = "vampire"
+	antag_datum = /datum/antagonist/vampire
+	role_preference = ROLE_VAMPIRE
 	false_report_weight = 1
 	restricted_jobs = list("AI", "Cyborg")
 	protected_jobs = list("Head of Security", "Captain", "Security Officer", "Chaplain", "Detective", "Warden", "Head of Personnel")
