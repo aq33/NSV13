@@ -19,7 +19,7 @@
 	name = "vampire"
 	config_tag = "vampire"
 	antag_datum = /datum/antagonist/vampire
-	role_preference = ROLE_VAMPIRE
+	role_preference = /datum/role_preference/antagonist/vampire
 	false_report_weight = 1
 	restricted_jobs = list("AI", "Cyborg")
 	protected_jobs = list("Head of Security", "Captain", "Security Officer", "Chaplain", "Detective", "Warden", "Head of Personnel")
@@ -150,3 +150,7 @@
 	return "The Wizard Federation has created a new being based off ancient mythology. \
 	These beings are known as vampires and are capable of sucking blood from crew members. \
 	No further information is known at this time."
+
+/datum/role_preference/antagonist/vampire
+	name = "Vampire"
+	antag_datum = /datum/antagonist/vampire
