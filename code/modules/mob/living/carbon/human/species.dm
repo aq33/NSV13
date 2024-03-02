@@ -1353,6 +1353,15 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(0 to NUTRITION_LEVEL_STARVING)
 				H.throw_alert("nutrition", /atom/movable/screen/alert/starving)
 
+	if(shitting_enabled && !HAS_TRAIT(H, TRAIT_NOSHITTING))
+		switch(H.defecation)
+			if(DEFECATION_SHIT_YOURSELF to INFINITY)
+				H.throw_alert("defecation", /atom/movable/screen/alert/about_to_shit_myself)
+			if(DEFECATION_VERY to DEFECATION_SHIT_YOURSELF)
+				H.throw_alert("defecation", /atom/movable/screen/alert/need_to_shit)
+			if(DEFECATION_NONE to DEFECATION_VERY)
+				H.clear_alert("defecation")
+
 
 
 /datum/species/proc/handle_charge(mob/living/carbon/human/H)
