@@ -145,7 +145,6 @@
 #include "code\modules\client\preferences.dm"
 #include "code\modules\client\preferences_toggles.dm"
 #include "code\modules\clothing\clothing.dm"
-#include "code\modules\clothing\chameleon.dm"
 #include "code\modules\clothing\head\mind_monkey_helmet.dm"
 #include "code\modules\clothing\head\misc.dm"
 #include "code\modules\clothing\shoes\miscellaneous.dm"

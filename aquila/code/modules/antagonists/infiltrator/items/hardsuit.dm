@@ -4,12 +4,16 @@
 	item_state = "eng_helm"
 	//item_color = "engineering"
 	armor = list("melee" = 35, "bullet" = 15, "laser" = 30,"energy" = 10, "bomb" = 10, "bio" = 100, "rad" = 50, "fire" = 75, "acid" = 75)
+	actions_types = list()
 
 /obj/item/clothing/head/helmet/space/hardsuit/infiltration/Initialize()
 	. = ..()
 	if(istype(loc, /obj/item/clothing/suit/space/hardsuit/infiltration))
 		var/obj/item/clothing/suit/space/hardsuit/infiltration/I = loc
 		I.head_piece = src
+
+/obj/item/clothing/head/helmet/space/hardsuit/infiltration/update_icon()
+	return
 
 /obj/item/clothing/suit/space/hardsuit/infiltration
 	name = "chameleon hardsuit"
