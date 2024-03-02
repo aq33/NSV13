@@ -324,10 +324,10 @@
 /obj/structure/closet/secure_closet/freezer{
 	name = "DNA vault"
 	},
-/obj/item/dnainjector/swedishmut,
-/obj/item/dnainjector/swedishmut,
-/obj/item/dnainjector/swedishmut,
-/obj/item/dnainjector/swedishmut,
+/obj/item/dnainjector/polishmut,
+/obj/item/dnainjector/polishmut,
+/obj/item/dnainjector/polishmut,
+/obj/item/dnainjector/polishmut,
 /turf/open/floor/wood,
 /area/ruin/powered)
 "Ya" = (

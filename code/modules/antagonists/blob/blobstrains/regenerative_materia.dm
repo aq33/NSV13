@@ -1,8 +1,8 @@
 //does toxin damage, hallucination, targets think they're not hurt at all
 /datum/blobstrain/reagent/regenerative_materia
-	name = "Regenerative Materia"
-	description = "will do toxin damage and cause targets to believe they are fully healed."
-	analyzerdescdamage = "Does toxin damage and injects a toxin that causes the target to believe they are fully healed."
+	name = "Muchomor Jadowity"
+	description = "wstrzykujesz ofiarom toksyny, które dodatkowo okłamują system nerwowy, że nic im nie dolega."
+	analyzerdescdamage = "Wstrzykuje on ofiarom toksyny, które dodatkowo okłamują system nerwowy, że nic im nie dolega."
 	color = "#A88FB7"
 	complementary_color = "#AF7B8D"
 	message_living = ", and you feel <i>alive</i>"

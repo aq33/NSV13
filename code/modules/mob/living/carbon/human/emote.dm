@@ -67,7 +67,8 @@
 		return 'sound/voice/moth/scream_moth.ogg'
 	else if(islizard(H))
 		return pick('sound/voice/lizard/lizard_scream_1.ogg', 'sound/voice/lizard/lizard_scream_2.ogg', 'sound/voice/lizard/lizard_scream_3.ogg', 'sound/voice/lizard/lizard_scream_4.ogg')
-
+	else if isethereal(H)
+		return pick('aquila/sound/voice/ethereal/ethereal_scream_1.ogg', 'aquila/sound/voice/ethereal/ethereal_scream_2.ogg', 'aquila/sound/voice/ethereal/ethereal_scream_3.ogg') //AQ EDIT
 
 /datum/emote/living/carbon/human/pale
 	key = "pale"

@@ -463,6 +463,7 @@ RANDOM_LAWS corgi
 RANDOM_LAWS cowboy
 RANDOM_LAWS weeb
 RANDOM_LAWS dean
+RANDOM_LAWS netanyahu
 
 ## Bad idea laws. Probably shouldn't enable these
 #RANDOM_LAWS syndie

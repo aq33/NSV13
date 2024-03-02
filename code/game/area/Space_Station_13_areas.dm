@@ -923,7 +923,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "med_central"
 
 /area/medical/medbay/lobby
-	name = "Izba Przujęć Placówki Medycznej"
+	name = "Izba Przyjęć Placówki Medycznej"
 	icon_state = "med_lobby"
 
 	//Medbay is a large area, these additional areas help level out APC load.

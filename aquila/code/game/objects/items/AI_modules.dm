@@ -64,3 +64,9 @@
 /obj/item/aiModule/core/full/dean
 	name = "'Dean' Core AI Module"
 	law_id = "dean"
+
+/******************Netanyahu***************/
+
+/obj/item/aiModule/core/full/netanyahu
+	name = "'Netanyahu' Core AI Module"
+	law_id = "netanyahu"

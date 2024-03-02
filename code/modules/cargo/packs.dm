@@ -2091,6 +2091,7 @@
 	contains = list(/obj/item/storage/box/donkpockets/donkpocketspicy,
 	/obj/item/storage/box/donkpockets/donkpocketteriyaki,
 	/obj/item/storage/box/donkpockets/donkpocketpizza,
+	/obj/item/storage/box/donkpockets/donkpocketgondola,//AQ EDIT
 	/obj/item/storage/box/donkpockets/donkpocketberry,
 	/obj/item/storage/box/donkpockets/donkpockethonk)
 	crate_name = "donk pocket crate"
@@ -2538,6 +2539,13 @@
 	contains = list(/mob/living/simple_animal/pet/dog/pug,
 					/obj/item/clothing/neck/petcollar)
 	crate_name = "pug crate"
+
+/datum/supply_pack/critter/sheep
+	name = "Sheep Crate"
+	desc = "The sheep goes baa!"
+	cost = 2000
+	contains = list(/mob/living/simple_animal/sheep)
+	crate_name = "sheep crate"
 
 /datum/supply_pack/critter/bullterrier
 	name = "Bull Terrier Crate"

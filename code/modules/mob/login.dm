@@ -39,6 +39,8 @@
 
 	next_move = 1
 
+	//SSdemo.write_event_line("setmob [client.ckey] \ref[src]") // AQ EDIT - Replays
+
 	..()
 
 	//We do this here to prevent hanging refs from ghostize or whatever, since if we were in another mob before this'll take care of it

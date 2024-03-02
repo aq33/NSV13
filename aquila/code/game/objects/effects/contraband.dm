@@ -421,3 +421,53 @@
 	name = "PRACA PRACA"
 	desc = "Coś trzeba zrobić?"
 	icon_state = "poster48_legit"
+
+/obj/structure/sign/poster/official/nfz_sor
+	name = "SOR"
+	desc = "Plakat oznaczający Szpitalny Oddział Ratunkowy"
+	icon_state = "poster49_legit"
+
+/obj/structure/sign/poster/official/nfz_pij_mleko
+	name = "NFZ - Pij mleko!"
+	desc = "Plakat promujący szeroko zakrojoną akcję <Pij Mleko!>"
+	icon_state = "poster50_legit"
+
+/obj/structure/sign/poster/official/nfz_koronawirus
+	name = "NFZ - UWAGA, KORONAWIRUS!"
+	desc = "Plakat ostrzegający przed koronawirusem łudząco przypominającym wschodzące słońce."
+	icon_state = "poster51_legit"
+
+/obj/structure/sign/poster/official/nfz_krwiodawstwo
+	name = "Punkt Krwiodawstwa"
+	desc = "Plakat oznaczający Punkt Krwiodawstwa"
+	icon_state = "poster52_legit"
+
+/obj/structure/sign/poster/official/nfz_myj_rece
+	name = "MYJ RĘCE!"
+	desc = "Plakat przypominający o konieczności mycia rąk, brudasie."
+	icon_state = "poster53_legit"
+
+/obj/structure/sign/poster/official/nfz_infolinia
+	name = "Infolinia NFZ"
+	desc = "Plakat reklamujący Infolinię NFZ - dziwnym trafem nie zawiera numeru telefonu."
+	icon_state = "poster54_legit"
+
+/obj/structure/sign/poster/official/nfz_rak_piersi
+	name = "Uważaj na raka piersi!"
+	desc = "Plakat NFZ z symbolem różowej wstążki - międzynarodowym symbolem oznaczającym walkę z rakiem piersi."
+	icon_state = "poster55_legit"
+
+/obj/structure/sign/poster/official/nfz_poz
+	name = "POZ+"
+	desc = "Plakat reklamujący pionierski system opieki zdrowotnej organizacji opieki koordynowanej."
+	icon_state = "poster56_legit"
+
+/obj/structure/sign/poster/official/nfz_leki75
+	name = "Darmowe leki 75+"
+	desc = "Plakat informujący pacjentów o darmowych lekach dla osób w wieku powyżej 75 lat."
+	icon_state = "poster57_legit"
+
+/obj/structure/sign/poster/official/nfz_ewus
+	name = "eWUŚ"
+	desc = "Plakat informujący o wdrożeniu systemu eWUŚ - Elektronicznej Weryfikacja Uprawnień Świadczeniobiorców. Chyba jesteś ubezpieczony, prawda?"
+	icon_state = "poster58_legit"

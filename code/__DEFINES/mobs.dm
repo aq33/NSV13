@@ -194,6 +194,7 @@
 #define BIOWARE_NERVES "nerves"
 #define BIOWARE_CIRCULATION "circulation"
 #define BIOWARE_LIGAMENTS "ligaments"
+#define BIOWARE_CORTEX "cortex"
 
 //Health hud screws for carbon mobs
 #define SCREWYHUD_NONE 0
@@ -238,13 +239,26 @@
 #define NUTRITION_LEVEL_START_MIN 250
 #define NUTRITION_LEVEL_START_MAX 400
 
-// AQ - Defecation levels for humans, primarily
+// AQ EDIT START
+// Defecation levels for humans, primarily
 #define DEFECATION_NONE 0
 #define DEFECATION_SLIGHTLY 25
 #define DEFECATION_SOMEWHAT 50
 #define DEFECATION_VERY 80
 #define DEFECATION_SHIT_YOURSELF 110
 #define DEFECATION_ACTUALLY_SHIT_YOURSELF 130
+
+// Hydration levels for humans
+#define HYDRATION_LEVEL_TURGID 800
+#define HYDRATION_LEVEL_HYDRATED 550
+#define HYDRATION_LEVEL_SLAKED 450
+#define HYDRATION_LEVEL_THIRSTY 350
+#define HYDRATION_LEVEL_DEHYDRATED 250
+#define HYDRATION_LEVEL_PARCHED 150
+
+#define HYDRATION_LEVEL_START_MIN 250
+#define HYDRATION_LEVEL_START_MAX 400
+// AQ EDIT END
 
 //Disgust levels for humans
 #define DISGUST_LEVEL_MAXEDOUT 150
@@ -254,6 +268,10 @@
 
 //Used as an upper limit for species that continuously gain nutriment
 #define NUTRITION_LEVEL_ALMOST_FULL 535
+
+// AQ EDIT
+//Used as an upper limit for species that continuously gain hydration
+#define HYDRATION_LEVEL_ALMOST_FULL 535
 
 //NSV13 - TG style ethereal charge levels - Crystalized Ethereal
 #define ETHEREAL_CHARGE_NONE 0
@@ -398,6 +416,7 @@
 #define DOOR_CRUSH_DAMAGE	15	//! the amount of damage that airlocks deal when they crush you
 
 #define	HUNGER_FACTOR		0.2	//! factor at which mob nutrition decreases // AQ EDIT (0.1 -> 0.2)
+#define THIRST_FACTOR		0.2 //! AQ - factor at which mob thirst increases
 #define	HYGIENE_FACTOR  	0.1	//! NSV13 - factor at which mob hygiene decreases
 #define ETHEREAL_CHARGE_FACTOR	2.0 //! NSV13 - factor at which ethereal's charge decreases
 #define	REAGENTS_METABOLISM 0.4	//! How many units of reagent are consumed per tick, by default.

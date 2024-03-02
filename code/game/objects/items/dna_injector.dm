@@ -273,13 +273,13 @@
 	name = "\improper DNA injector (Anti-Unintelligible)"
 	remove_mutations = list(UNINTELLIGIBLE)
 
-/obj/item/dnainjector/swedishmut
-	name = "\improper DNA injector (Swedish)"
-	add_mutations = list(SWEDISH)
+/obj/item/dnainjector/polishmut//AQ EDIT
+	name = "\improper DNA injector (Polish)"
+	add_mutations = list(POLISH)
 
-/obj/item/dnainjector/antiswedish
-	name = "\improper DNA injector (Anti-Swedish)"
-	remove_mutations = list(SWEDISH)
+/obj/item/dnainjector/antipolish//AQ EDIT
+	name = "\improper DNA injector (Anti-Polish)"
+	remove_mutations = list(POLISH)
 
 /obj/item/dnainjector/chavmut
 	name = "\improper DNA injector (Chav)"

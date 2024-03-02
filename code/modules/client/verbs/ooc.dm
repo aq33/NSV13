@@ -73,25 +73,57 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	//Get client badges
 	var/badge_data = badge_parse(get_badges())
 	//The linkify span classes and linkify=TRUE below make ooc text get clickable chat href links if you pass in something resembling a url
+	// AQ EDIT START - Replay
+	var/oocmsg = "[badge_data]"
+	var/oocmsg_toadmins = FALSE
+	var/linkify = FALSE
+	// apply appropriate formatting
+	// based off of how yogs did it
+	var/suffix = ""
+	if(holder) // is this guy an admin
+		if(check_rights_for(src, R_ADMIN)) // does this guy get his own ooc color?
+			linkify = TRUE // he sure gets to send links
+			oocmsg += "<span class='adminooc'>"
+			suffix = "[suffix]</span>"
+			if(CONFIG_GET(flag/allow_admin_ooccolor) && prefs.ooccolor)
+				oocmsg += "<font color=[prefs.ooccolor]>"
+				suffix = "[suffix]</font>"
+		else
+			oocmsg += "<span class='adminobserverooc'>"
+			suffix = "[suffix]</span>"
+		oocmsg += "<span class='prefix'>OOC:</span> "
+		if(holder.fakekey) // is this guy being stealthy?
+			oocmsg_toadmins = oocmsg + "<EM>[keyname]/([holder.fakekey]):</EM> <span class='message linkify'>[msg]</span>" + suffix
+			// sent to admins ^^
+			oocmsg += "<EM>[holder.fakekey]:</EM> <span class='message linkify'>[msg]</span>" + suffix
+			// sent to the normal folks ^^
+		else
+			if(GLOB.OOC_COLOR)
+				oocmsg += "<font color='[GLOB.OOC_COLOR]'><b>"
+				suffix = "[suffix]</b></font>"
+			else
+				oocmsg += "<span class='ooc'>"
+				suffix = "[suffix]</span>"
+			oocmsg += "<EM>[keyname]:</EM> <span class='message linkify'>[msg]</span>" + suffix
+			oocmsg_toadmins = oocmsg
+	else // no this guy's not an admin
+		if(GLOB.OOC_COLOR)
+			oocmsg += "<font color='[GLOB.OOC_COLOR]'><b>"
+			suffix = "[suffix]</b></font>"
+		else
+			oocmsg += "<span class='ooc'>"
+			suffix = "[suffix]</span>"
+		oocmsg += "<span class='prefix'>OOC:</span> <EM>[keyname]:</EM> <span class='message linkify'>[msg]</span>" + suffix
+		oocmsg_toadmins = oocmsg
+
 	for(var/client/C in GLOB.clients)
 		if(C.prefs.chat_toggles & CHAT_OOC)
-			if(holder)
-				if(!holder.fakekey || C.holder)
-					if(check_rights_for(src, R_ADMIN))
-						to_chat(C, "[badge_data]<span class='adminooc'>[CONFIG_GET(flag/allow_admin_ooccolor) && prefs.ooccolor ? "<font color=[prefs.ooccolor]>" :"" ]<span class='prefix'>OOC:</span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message linkify'>[msg]</span></span></font>", allow_linkify = TRUE)
-					else
-						to_chat(C, "[badge_data]<span class='adminobserverooc'><span class='prefix'>OOC:</span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message linkify'>[msg]</span></span>")
-				else
-					if(GLOB.OOC_COLOR)
-						to_chat(C, "[badge_data]<font color='[GLOB.OOC_COLOR]'><b><span class='prefix'>OOC:</span> <EM>[holder.fakekey ? holder.fakekey : key]:</EM> <span class='message linkify'>[msg]</span></b></font>")
-					else
-						to_chat(C, "[badge_data]<span class='ooc'><span class='prefix'>OOC:</span> <EM>[holder.fakekey ? holder.fakekey : key]:</EM> <span class='message linkify'>[msg]</span></span>")
-
+			if(C.holder) // guy is admin
+				to_chat(C, oocmsg_toadmins, allow_linkify = linkify)
 			else if(!(key in C.prefs.ignoring))
-				if(GLOB.OOC_COLOR)
-					to_chat(C, "[badge_data]<font color='[GLOB.OOC_COLOR]'><b><span class='prefix'>OOC:</span> <EM>[keyname]:</EM> <span class='message linkify'>[msg]</span></b></font>")
-				else
-					to_chat(C, "[badge_data]<span class='ooc'><span class='prefix'>OOC:</span> <EM>[keyname]:</EM> <span class='message linkify'>[msg]</span></span>")
+				to_chat(C, oocmsg, allow_linkify = linkify)
+	to_chat(SSdemo, oocmsg);
+	// AQ EDIT END - Replays
 	// beestation, send to discord
 	if(holder?.fakekey)
 		discordsendmsg("ooc", "**[holder.fakekey]:** [msg]")

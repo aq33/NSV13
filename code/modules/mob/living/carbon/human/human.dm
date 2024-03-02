@@ -1153,6 +1153,9 @@
 /mob/living/carbon/human/species/apid
 	race = /datum/species/apid
 
+/mob/living/carbon/human/species/corporate//AQ EDIT
+	race = /datum/species/corporate
+
 /mob/living/carbon/human/species/dullahan
 	race = /datum/species/dullahan
 
@@ -1255,6 +1258,9 @@
 /mob/living/carbon/human/species/golem/soviet
 	race = /datum/species/golem/soviet
 
+/mob/living/carbon/human/species/golem/cheese
+	race = /datum/species/golem/cheese
+
 /mob/living/carbon/human/species/ipc
 	race = /datum/species/ipc
 
@@ -1282,6 +1288,8 @@
 /mob/living/carbon/human/species/moth
 	race = /datum/species/moth
 
+/mob/living/carbon/human/species/mush//AQ EDIT
+	race = /datum/species/mush
 
 /mob/living/carbon/human/species/plasma
 	race = /datum/species/plasmaman
