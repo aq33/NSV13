@@ -13,6 +13,7 @@
 #include "code\__DEFINES\antagonists.dm"
 #include "code\__DEFINES\is_helpers.dm"
 #include "code\__HELPERS\names.dm"
+#include "code\__HELPERS\pronouns.dm"
 #include "code\_onclick\hud\alert.dm"
 #include "code\controllers\configuration\entries\game_options.dm"
 #include "code\controllers\configuration\entries\general.dm"

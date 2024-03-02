@@ -18,13 +18,19 @@
 	request_shuttle_message = "Recall Infiltrator"
 	recall_docking_port_id = "syndicate_away"
 
-/obj/machinery/computer/shuttle_flight/syndicate/ui_act(action, params)
+///obj/machinery/computer/shuttle_flight/syndicate/ui_act(action, params)
+/obj/machinery/computer/shuttle_flight/syndicate/Topic(href, href_list) // change to topic; no clue what supercruise is
 	if(!usr.canUseTopic(src))
 		return
+	// AQ EDIT START - moving the computer *requires* a war declaration
 	var/obj/item/circuitboard/computer/syndicate_shuttle/board = circuit
-	if(board.challenge && world.time < SYNDICATE_CHALLENGE_TIMER)
-		to_chat(usr, "<span class='warning'>You've issued a combat challenge to the station! You've got to give them at least [DisplayTimeText(SYNDICATE_CHALLENGE_TIMER - world.time)] more to allow them to prepare.</span>")
+	if(!board.challenge) // && CONFIG_GET(flags/)) // TODO - rework config stuff to make aq specific configs be in their own txt file
+		to_chat(usr, "<span class='warning'>Nie możesz ruszyć statku bez wcześniej deklaracji wojny.</span>")
 		return FALSE
+	if(board.challenge && world.time < SYNDICATE_CHALLENGE_TIMER)
+		to_chat(usr, "<span class='warning'>Zadeklarowałeś wojnę! Daj im przynajmniej [DisplayTimeText(SYNDICATE_CHALLENGE_TIMER - world.time)] by się przygotować.</span>")
+		return FALSE
+	// AQ EDIT END
 	board.moved = TRUE
 	. = ..()
 
