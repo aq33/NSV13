@@ -74,9 +74,9 @@
 			msg += "<span class='nicegreen'>I feel amazing!<span>\n"
 		if(9)
 			msg += "<span class='nicegreen'>I love life!<span>\n"
-	if(isliving(parent) && CONFIG_GET(flag/shitting_enabled))
+	if(isliving(parent) && !HAS_TRAIT(parent, TRAIT_NOSHITTING) &&CONFIG_GET(flag/shitting_enabled))
 		var/mob/living/owner = parent
-		switch(owner.defecate)
+		switch(owner.defecation)
 			if(-INFINITY to DEFECATION_VERY)
 				msg += "<span class='nicegreen'>Nie czuję potrzeby skorzystania z toalety.<span>\n"
 			if(DEFECATION_VERY to DEFECATION_SHIT_YOURSELF)
