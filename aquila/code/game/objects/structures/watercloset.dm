@@ -1,7 +1,7 @@
 /obj/structure/toilet/verb/verb_defecate()
 	set src in view(1)
 	set category = "Object"
-	set name = "Wysraj się"
+	set name = "Skorzystaj z ubikacji"
 
 	if(!usr.canUseTopic(src, BE_CLOSE) || !isturf(loc))
 		return
