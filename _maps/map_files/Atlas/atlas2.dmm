@@ -3748,6 +3748,9 @@
 /turf/open/floor/wood,
 /area/library)
 "lL" = (
+/obj/structure/toilet{
+	dir = 8
+	},
 /turf/open/floor/bronze,
 /area/ai_monitored/turret_protected/ai)
 "lM" = (

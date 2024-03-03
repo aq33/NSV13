@@ -8889,15 +8889,12 @@
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck2/primary)
 "yM" = (
-/obj/structure/table,
-/obj/item/clothing/mask/cigarette/rollie/cannabis,
-/obj/item/clothing/head/soft/blue,
-/obj/item/clothing/head/soft/red{
-	pixel_y = 4
-	},
 /obj/item/radio/intercom/directional/north,
 /obj/structure/sign/poster/official/random{
 	pixel_x = 32
+	},
+/obj/structure/toilet{
+	dir = 8
 	},
 /turf/open/floor/plasteel/techmaint,
 /area/security/prison)
@@ -13242,13 +13239,7 @@
 /obj/machinery/shower{
 	dir = 8
 	},
-/obj/effect/turf_decal/tile/ship/half/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/red{
-	dir = 8
-	},
-/turf/open/floor/monotile/steel,
+/turf/open/floor/plasteel/techmaint,
 /area/security/prison)
 "LP" = (
 /obj/structure/cable{
@@ -15998,6 +15989,11 @@
 /obj/item/clothing/mask/bandana/skull,
 /obj/item/toy/beach_ball/holoball,
 /obj/machinery/light_switch/east,
+/obj/item/clothing/head/soft/blue{
+	pixel_y = 6
+	},
+/obj/item/clothing/head/soft/red,
+/obj/item/clothing/mask/cigarette/rollie/cannabis,
 /turf/open/floor/plasteel/techmaint,
 /area/security/prison)
 "Tv" = (
