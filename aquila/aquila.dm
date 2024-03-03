@@ -44,6 +44,7 @@
 #include "code\game\gamemodes\monkey\monkey.dm"
 #include "code\game\machinery\battery.dm"
 #include "code\game\machinery\computer\_computer.dm"
+#include "code\game\machinery\computer\communications.dm"
 #include "code\game\machinery\doors\airlock_types.dm"
 #include "code\game\machinery\doors\firedoor.dm"
 #include "code\game\machinery\fabricators\modular_fabricator.dm"
