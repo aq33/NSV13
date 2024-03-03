@@ -9474,6 +9474,9 @@
 	name = "Engine Core Access";
 	req_one_access_txt = "24;10"
 	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
 /turf/open/floor/engine,
 /area/engine/engine_room)
 "Ay" = (
@@ -16817,6 +16820,9 @@
 /obj/machinery/door/airlock/ship/external/glass{
 	name = "Engine Core Access";
 	req_one_access_txt = "24;10"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
 	},
 /turf/open/floor/engine,
 /area/engine/engine_room)
