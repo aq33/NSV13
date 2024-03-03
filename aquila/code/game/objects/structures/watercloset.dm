@@ -7,7 +7,7 @@
 		return
 
 	if(!CONFIG_GET(flag/shitting_enabled))
-		to_chat(usr, "<span class='warning'>Sranie zostało wyłączone w konfiguracji serwera.</span>")
+		to_chat(usr, "<span class='warning'>Wypróżnianie się zostało wyłączone w konfiguracji serwera.</span>")
 		return
 
 	if(isliving(usr))
