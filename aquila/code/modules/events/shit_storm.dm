@@ -15,7 +15,7 @@
 /datum/round_event/shit_storm/announce(fake)
 	if(!CONFIG_GET(flag/shitting_enabled))
 		return
-	priority_announce("Wysokie poziomy gówna wykryte w pobliżu stacji. Prosimy udać się do tuneli serwisowych.", "Alarm: Anomalia", ANNOUNCER_RADIATION)
+	priority_announce("Fale rozstrajające wykrytye wokół statku. Prosimy udać się do tuneli serwisowych.", "Alarm: Anomalia", ANNOUNCER_RADIATION)
 	//sound not longer matches the text, but an audible warning is probably good
 
 /datum/round_event/shit_storm/start()
