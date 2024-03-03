@@ -14,7 +14,7 @@
 	weather_sound = 'sound/misc/bloblarm.ogg'
 
 	end_duration = 100
-	end_message = "<span class='notice'>Gówno zdaje się nie spływać.</span>"
+	end_message = "<span class='notice'>Promieniowanie ustaje pozostawiając po sobie charakterystyczny odór.</span>"
 
 	area_type = /area
 	protected_areas = list(/area/maintenance, /area/ai_monitored/turret_protected/ai_upload, /area/ai_monitored/turret_protected/ai_upload_foyer,
@@ -55,7 +55,7 @@
 /datum/weather/shit_storm/end()
 	if(..())
 		return
-	priority_announce("Zagrożenie gównoburzowe minęło. Proszę powrócić na stanowiska pracy.", "Alarm: Anomalia", SSstation.announcer.get_rand_alert_sound())
+	priority_announce("Zagrożenie rozstrajające minęło. Proszę powrócić na stanowiska pracy.", "Alarm: Anomalia", SSstation.announcer.get_rand_alert_sound())
 	status_alarm(FALSE)
 
 /datum/weather/shit_storm/proc/status_alarm(active)	//Makes the status displays show the radiation warning for those who missed the announcement.
