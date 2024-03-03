@@ -24,6 +24,6 @@
 
 /atom/movable/screen/alert/about_to_shit_myself
 	name = "Sranie"
-	desc = "Zaraz się zesrasz!" // tu coś dopisać może
+	desc = "Krecik puka w taborecik!" // tu coś dopisać może
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "toilet10"
