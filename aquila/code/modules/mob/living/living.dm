@@ -15,8 +15,8 @@
 	if(!CONFIG_GET(flag/shitting_enabled))
 		return FALSE
 	visible_message(
-		"<span class='warning'>[src] się zesrał[gender == FEMALE ? "a" : ""]!</span>",
-		"<span class='warning'>Zesrał[gender == FEMALE ? "aś" : "eś"] się!</span>")
+		"<span class='warning'>[src] popuścił[gender == FEMALE ? "a" : ""] w spodnie!</span>",
+		"<span class='warning'>Popuścił[gender == FEMALE ? "aś" : "eś"] w spodnie!</span>")
 
 	// update disgust for viewers
 	for(var/mob/living/L in viewers(7, get_turf(src)))
