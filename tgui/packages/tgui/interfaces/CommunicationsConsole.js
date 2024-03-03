@@ -493,7 +493,7 @@ const PageMain = (props, context) => {
           {!!canRequestERT && (
             <Flex.Item mt={0.3}>
               <Button fluid
-                icon="radiation"
+                icon="dumpster-fire"
                 content="Request Emergency Response Team"
                 disabled={!reinforcementActionReady}
                 onClick={() => setRequestingResponseTeam(true)}
@@ -515,6 +515,7 @@ const PageMain = (props, context) => {
             && !canToggleEmergencyAccess
             && !canMessageAssociates
             && !canRequestNuke
+            && !canRequestERT
             && !emagged
             && (
               <Flex.Item>

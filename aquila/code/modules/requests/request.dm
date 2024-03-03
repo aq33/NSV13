@@ -49,7 +49,7 @@ GLOBAL_VAR_INIT(erts_requested_already, 0)
 
 /datum/request/proc/pick_ert_team_type()
 	var/list/picklist = list(
-		///datum/ert/intern = 40,
+		/datum/ert/intern = 40,
 		ERT_REQUEST_REJECTED = 10
 	)
 	if(GLOB.security_level == SEC_LEVEL_DELTA) // not that theyll ever arrive due to time constraints when this goes in
