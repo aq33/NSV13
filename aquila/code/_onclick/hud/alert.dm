@@ -18,7 +18,7 @@
 
 /atom/movable/screen/alert/need_to_shit
 	name = "Przemiana materii"
-	desc = "Chcę ci się srać." // tu coś dopisać może
+	desc = "Musisz skorzystać z ubikacji." // tu coś dopisać może
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "toilet00"
 
