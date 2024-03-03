@@ -82,7 +82,7 @@
 			if(DEFECATION_VERY to DEFECATION_SHIT_YOURSELF)
 				msg += "<span class='nicegreen'>Czuję potrzebe skorzystania z toalety.<span>\n"
 			if(DEFECATION_SHIT_YOURSELF to INFINITY)
-				msg += "<span class='boldwarning'>Zaraz się zesram!<span>\n"
+				msg += "<span class='boldwarning'>Pilnie potrzebuję do toalety!<span>\n"
 
 	msg += "<span class='notice'>Moodlets:\n</span>"//All moodlets
 	if(mood_events.len)
