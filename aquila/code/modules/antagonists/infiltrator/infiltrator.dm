@@ -12,12 +12,12 @@
 	var/hud_icon = "synd"
 
 /datum/antagonist/infiltrator/proc/update_synd_icons_added(mob/living/M)
-	var/datum/atom_hud/antag/sithud = GLOB.huds[ANTAG_HUD_TRAITOR]
+	var/datum/atom_hud/antag/sithud = GLOB.huds[ANTAG_HUD_OPS]
 	sithud.join_hud(M)
-	set_antag_hud(M, hud_icon)
+	set_antag_hud(M, "synd")
 
 /datum/antagonist/infiltrator/proc/update_synd_icons_removed(mob/living/M)
-	var/datum/atom_hud/antag/sithud = GLOB.huds[ANTAG_HUD_TRAITOR]
+	var/datum/atom_hud/antag/sithud = GLOB.huds[ANTAG_HUD_OPS]
 	sithud.leave_hud(M)
 	set_antag_hud(M, null)
 

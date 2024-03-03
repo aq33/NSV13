@@ -5,11 +5,12 @@
 	var/obj/item/radio/alert_radio
 	var/datum/team/infiltrator/team
 	var/upgraded = FALSE
+	var/datum/component/uplink/uplink
 
 /obj/item/implant/infiltrator/Initialize(mapload, _owner, _team)
 	. = ..()
 	AddComponent(/datum/component/empprotection, EMP_PROTECT_SELF | EMP_PROTECT_WIRES | EMP_PROTECT_CONTENTS)
-	//var/datum/component/uplink/uplink = AddComponent(/datum/component/uplink, _owner, TRUE, FALSE, null, 20)
+	uplink = AddComponent(/datum/component/uplink, _owner, TRUE, FALSE, null, 20)
 	alert_radio = new(src)
 	alert_radio.make_syndie()
 	alert_radio.listening = FALSE
@@ -36,7 +37,6 @@
 	var/obj/item/stack/telecrystal/TC = imp_in.is_holding_item_of_type(/obj/item/stack/telecrystal)
 	if (TC)
 		to_chat(imp_in, span_notice("You put [TC.amount] TC into your hidden uplink."))
-		var/datum/component/uplink/uplink = GetComponent(/datum/component/uplink)
 		uplink.telecrystals += TC.amount
 		TC.use(TC.amount)
 		return
@@ -57,7 +57,6 @@
 		return
 	switch (chosen)
 		if ("Syndicate Uplink")
-			var/datum/component/uplink/uplink = GetComponent(/datum/component/uplink)
 			uplink.implant_activation()
 		if ("Change Pinpointer Target")
 			var/datum/status_effect/infiltrator_pinpointer/pinpointer = imp_in.has_status_effect(/datum/status_effect/infiltrator_pinpointer)
@@ -102,19 +101,19 @@
 					targets[S.targetinfo.name] = locate(S.targetinfo.targetitem)
 	return targets
 
-/obj/screen/alert/status_effect/infiltrator_pinpointer
+/atom/movable/screen/alert/status_effect/infiltrator_pinpointer
 	name = "Infilitrator Integrated Pinpointer"
 	desc = "The stealthiest pinpointer."
 	icon = 'aquila/icons/misc/infiltrator_pinpointer.dmi'
 	icon_state = "overlay"
 
-/obj/screen/alert/status_effect/infiltrator_pinpointer/examine(mob/user)
+/atom/movable/screen/alert/status_effect/infiltrator_pinpointer/examine(mob/user)
 	. = ..()
 	var/datum/status_effect/infiltrator_pinpointer/effect
 	if (effect?.scan_target)
 		. += span_notice("Currently tracking [effect.scan_target]")
 
-/obj/screen/alert/status_effect/infiltrator_pinpointer/Click()
+/atom/movable/screen/alert/status_effect/infiltrator_pinpointer/Click()
 	if (isliving(usr))
 		var/obj/item/implant/infiltrator/implant = locate() in usr
 		implant.activate()
@@ -123,7 +122,7 @@
 	id = "infiltrator_pinpointer"
 	duration = -1
 	tick_interval = 40
-	alert_type = /obj/screen/alert/status_effect/infiltrator_pinpointer
+	alert_type = /atom/movable/screen/alert/status_effect/infiltrator_pinpointer
 	var/atom/movable/scan_target
 	var/minimum_range = 4
 	var/range_mid = 8
