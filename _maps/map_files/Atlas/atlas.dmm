@@ -18,11 +18,9 @@
 /obj/machinery/atmospherics/pipe/simple/violet/hidden{
 	dir = 8
 	},
-/obj/machinery/door/poddoor/incinerator_atmos_main,
-/obj/machinery/door/firedoor/border_only/directional/west,
-/obj/machinery/door/firedoor/border_only/directional/east,
 /obj/effect/turf_decal/delivery/red,
 /obj/effect/decal/cleanable/ash/large,
+/obj/machinery/door/poddoor/incinerator_atmos_main,
 /turf/open/floor/durasteel/riveted,
 /area/engine/atmospherics_engine)
 "ad" = (
@@ -1127,7 +1125,13 @@
 	target_layer = 2;
 	name = "Distribution loop gas flow meter"
 	},
-/turf/open/floor/plating,
+/obj/effect/turf_decal/tile/ship/yellow{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 1
+	},
+/turf/open/floor/durasteel/techfloor_grid,
 /area/engine/atmos)
 "dr" = (
 /obj/effect/turf_decal/ship/techfloor/corner{
@@ -1317,7 +1321,6 @@
 /obj/machinery/atmospherics/components/binary/valve{
 	name = "Output to Space"
 	},
-/obj/machinery/firealarm/directional/north,
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
@@ -4391,7 +4394,7 @@
 	dir = 10
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plating,
+/turf/open/floor/durasteel/riveted,
 /area/engine/atmos)
 "lY" = (
 /obj/machinery/atmospherics/pipe/simple/violet/hidden{
@@ -4492,7 +4495,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/durasteel/riveted,
 /area/engine/atmos)
 "ms" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -4884,10 +4887,13 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 4
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
+/obj/effect/turf_decal/tile/ship/yellow{
+	dir = 4
 	},
-/turf/open/floor/plating,
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 1
+	},
+/turf/open/floor/durasteel/techfloor_grid,
 /area/engine/atmos)
 "nA" = (
 /obj/structure/particle_accelerator/particle_emitter/center{
@@ -4948,7 +4954,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/durasteel/techfloor_grid,
 /area/engine/atmos)
 "nH" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
@@ -6564,11 +6570,9 @@
 /obj/machinery/atmospherics/pipe/simple/cyan{
 	dir = 4
 	},
-/obj/machinery/door/poddoor/incinerator_atmos_main,
-/obj/machinery/door/firedoor/border_only/directional/west,
-/obj/machinery/door/firedoor/border_only/directional/east,
 /obj/effect/turf_decal/delivery/red,
 /obj/effect/decal/cleanable/ash,
+/obj/machinery/door/poddoor/incinerator_atmos_main,
 /turf/open/floor/durasteel/riveted,
 /area/engine/atmospherics_engine)
 "se" = (
@@ -9470,6 +9474,9 @@
 	name = "Engine Core Access";
 	req_one_access_txt = "24;10"
 	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
 /turf/open/floor/engine,
 /area/engine/engine_room)
 "Ay" = (
@@ -9675,10 +9682,7 @@
 /obj/machinery/atmospherics/pipe/layer_manifold/visible{
 	dir = 4
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/plating,
+/turf/open/floor/durasteel/riveted,
 /area/engine/atmos)
 "Bp" = (
 /obj/machinery/light{
@@ -10067,6 +10071,7 @@
 	},
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer,
 /obj/item/wrench,
+/obj/machinery/firealarm/directional/east,
 /turf/open/floor/durasteel/techfloor,
 /area/engine/atmos)
 "Cw" = (
@@ -12000,12 +12005,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port)
-"Im" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/engine/atmos)
 "In" = (
 /obj/effect/turf_decal/tile/ship/red,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
@@ -12952,9 +12951,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer4,
 /obj/effect/turf_decal/stripes/line{
-	dir = 5
+	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/durasteel/techfloor_grid,
 /area/engine/atmos)
 "Lb" = (
 /obj/machinery/suit_storage_unit/pilot,
@@ -14269,7 +14268,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/floor/plating,
+/obj/effect/turf_decal/tile/ship/yellow{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/ship/blue,
+/turf/open/floor/durasteel/techfloor_grid,
 /area/engine/atmos)
 "OO" = (
 /obj/effect/turf_decal/stripes/line,
@@ -15131,6 +15134,7 @@
 	dradis_id = "nt_cargo_torpedo_launcher"
 	},
 /obj/effect/turf_decal/tile/ship/half/brown,
+/obj/machinery/light,
 /turf/open/floor/monotile/dark,
 /area/quartermaster/storage)
 "Rf" = (
@@ -15280,7 +15284,11 @@
 	target_layer = 4;
 	name = "Scrubber loop gas flow meter"
 	},
-/turf/open/floor/plating,
+/obj/effect/turf_decal/tile/ship/yellow{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/ship/blue,
+/turf/open/floor/durasteel/techfloor_grid,
 /area/engine/atmos)
 "Rv" = (
 /obj/effect/turf_decal/stripes/line{
@@ -16813,6 +16821,9 @@
 	name = "Engine Core Access";
 	req_one_access_txt = "24;10"
 	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
 /turf/open/floor/engine,
 /area/engine/engine_room)
 "VG" = (
@@ -16972,6 +16983,7 @@
 /obj/item/control_rod,
 /obj/item/control_rod,
 /obj/item/control_rod,
+/obj/item/shovel,
 /turf/open/floor/engine,
 /area/engine/engine_room)
 "Wg" = (
@@ -17203,7 +17215,7 @@
 	},
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk,
-/turf/open/floor/plating,
+/turf/open/floor/durasteel/riveted,
 /area/engine/atmos)
 "WY" = (
 /obj/machinery/computer/atmos_control/tank/incinerator{
@@ -52502,8 +52514,8 @@ RN
 RN
 RN
 OK
-Im
-Im
+mZ
+mZ
 Bo
 nz
 RN
