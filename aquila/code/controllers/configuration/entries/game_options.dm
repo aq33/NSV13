@@ -16,3 +16,6 @@
 // Allow nuclear code requests to be automatically accepted after some time
 // Admins can cancel this manually if they are quick enough.
 /datum/config_entry/flag/allow_nuke_request_auto_accept
+
+// Toggle defacation and all associated things
+/datum/config_entry/flag/shitting_enabled
