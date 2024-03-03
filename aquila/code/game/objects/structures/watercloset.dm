@@ -20,7 +20,7 @@
 	if(user.defecation > DEFECATION_VERY)
 		//user.adjust_defecation(-rand(DEFECATION_SLIGHTLY, DEFECATION_VERY))
 		user.set_defecation(DEFECATION_NONE)
-		playsound(src, 'aquila/sound/misc/toilet_flush.ogg', vary = FALSE)
+		playsound(src, 'aquila/sound/misc/toilet_flush.ogg', 100, vary = FALSE)
 		to_chat(user, "<span class='notice'><i>Ale ulga...</i></span>")
 	else
-		to_chat(user, "<span class='notice'>Nie chce Ci się srać.</span>")
+		to_chat(user, "<span class='notice'>Nie potrzebujesz skorzystać z ubikacji.</span>")
