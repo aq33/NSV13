@@ -200,7 +200,7 @@
 	// don't have to worry
 
 	else
-		update_item(picked_item, emp=TRUE)
+		update_item(picked_item, TRUE) //For some reason it errs here if emp=TRUE but not when TRUE ?????
 		if(ispath(picked_item, /obj/item/card/id))
 			var/mob/living/carbon/human/H = user
 			H?.sec_hud_set_ID()
@@ -271,6 +271,19 @@
 		target.name = initial(picked_item.name)
 	target.desc = initial(picked_item.desc)
 	target.icon_state = initial(picked_item.icon_state)
+	if(istype(target, /obj/item/clothing/suit/space/hardsuit/infiltration)) //YOGS START
+		var/obj/item/clothing/suit/space/hardsuit/infiltration/I = target
+		var/obj/item/clothing/suit/space/hardsuit/HS = picked_item
+		var/obj/item/clothing/head/helmet/helmet = initial(HS.helmettype)
+		//I.head_piece.initial_state = initial(helmet.icon_state)
+		I.helmettype = initial(helmet)
+		I.head_piece.worn_icon = initial(helmet.worn_icon)
+		I.head_piece.worn_icon_state = initial(helmet.worn_icon_state)
+		I.head_piece.icon_state = initial(helmet.icon_state)
+		I.head_piece.name = initial(helmet.name)
+		I.head_piece.desc = initial(helmet.desc)
+		I.head_piece.actions = list()
+
 
 /datum/action/item_action/chameleon/change/Trigger()
 	if(!IsAvailable())

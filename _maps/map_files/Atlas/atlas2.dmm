@@ -893,12 +893,11 @@
 /area/maintenance/nsv/deck1/starboard)
 "dd" = (
 /obj/docking_port/stationary{
-	dheight = 1;
-	dwidth = 12;
+	dwidth = 14;
 	height = 17;
-	id = "syndicate_se";
+	id = "syndicatecutter_se";
 	name = "southeast of ship";
-	width = 23
+	width = 22
 	},
 /turf/open/openspace/airless,
 /area/space/nearstation)
@@ -3818,6 +3817,16 @@
 /obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/monotile/dark,
 /area/medical/chemistry)
+"lV" = (
+/obj/docking_port/stationary{
+	dwidth = 14;
+	height = 17;
+	id = "syndicatecutter_ne";
+	name = "northeast of ship";
+	width = 23
+	},
+/turf/open/openspace/airless,
+/area/space)
 "lX" = (
 /obj/machinery/door/airlock/ship/external/glass{
 	req_one_access_txt = "24"
@@ -4047,6 +4056,16 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /turf/open/floor/monotile/steel,
 /area/medical/medbay/lobby)
+"mO" = (
+/obj/docking_port/stationary{
+	dwidth = 14;
+	height = 17;
+	id = "syndicatecutter_s";
+	name = "south of ship";
+	width = 22
+	},
+/turf/open/openspace/airless,
+/area/space)
 "mQ" = (
 /obj/machinery/requests_console{
 	department = "Virology";
@@ -6088,6 +6107,17 @@
 /obj/effect/landmark/start/bartender,
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
+"tE" = (
+/obj/docking_port/stationary{
+	dheight = 1;
+	dwidth = 12;
+	height = 17;
+	id = "syndicate_se";
+	name = "southeast of ship";
+	width = 23
+	},
+/turf/open/openspace/airless,
+/area/space)
 "tH" = (
 /obj/machinery/airalarm/directional/west,
 /obj/machinery/teleport/hub,
@@ -7935,6 +7965,16 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/hydroponics)
+"zL" = (
+/obj/docking_port/stationary{
+	dwidth = 14;
+	height = 17;
+	id = "syndicatecutter_sw";
+	name = "southwest of ship";
+	width = 22
+	},
+/turf/open/openspace/airless,
+/area/space)
 "zM" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -9393,6 +9433,16 @@
 /obj/machinery/firealarm/directional/north,
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/theatre)
+"Eu" = (
+/obj/docking_port/stationary{
+	dwidth = 14;
+	height = 17;
+	id = "syndicatecutter_n";
+	name = "north of ship";
+	width = 22
+	},
+/turf/open/openspace/airless,
+/area/space)
 "Ev" = (
 /obj/machinery/chem_dispenser,
 /obj/machinery/airalarm/directional/south,
@@ -15669,6 +15719,16 @@
 /obj/structure/grille/broken,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port)
+"Yh" = (
+/obj/docking_port/stationary{
+	dwidth = 14;
+	height = 17;
+	id = "syndicatecutter_nw";
+	name = "northwest of ship";
+	width = 23
+	},
+/turf/open/openspace/airless,
+/area/space)
 "Yj" = (
 /turf/open/floor/monotile/dark,
 /area/hydroponics)
@@ -31366,7 +31426,7 @@ cL
 cL
 cL
 cL
-cL
+zL
 cL
 cL
 cL
@@ -32003,7 +32063,7 @@ cL
 cL
 cL
 cL
-cL
+Yh
 cL
 cL
 cL
@@ -47814,7 +47874,7 @@ cL
 cL
 cL
 cL
-cL
+mO
 cL
 cL
 cL
@@ -48966,7 +49026,7 @@ cL
 cL
 cL
 cL
-cL
+Eu
 cL
 cL
 cL
@@ -63101,7 +63161,7 @@ cL
 cL
 cL
 cL
-cL
+lV
 cL
 cL
 cL
@@ -63748,7 +63808,7 @@ cL
 cL
 cL
 cL
-cL
+tE
 cL
 cL
 cL
