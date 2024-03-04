@@ -1,0 +1,1 @@
+#define MIASMA_RESEARCH_AMOUNT				40
