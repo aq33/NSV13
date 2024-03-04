@@ -1,14 +1,39 @@
-#define NUKE_CODE_AUTOGENERATION_ADMIN_INTERVENTION_TIME 20
+#define REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME 20
 
 /datum/request
 	/// For nuke code requests; auto-fulfillment
-	var/autogenerate
+	var/autoaccept
+
+/datum/request/Topic(href, href_list)
+	. = ..()
+	if(href_list["cancel_nuke"])
+		if(req_type != REQUEST_NUKE) // what are you trying to cancel???
+			to_chat(usr, "<span class='admin'>You can't cancel this type of request.</span>")
+			return
+		if(!autoaccept)
+			to_chat(usr, "<span class='admin'>You are too late to cancel that!</span>")
+			return
+		autoaccept = FALSE
+		message_admins("[key_name_admin(usr)] cancelled nuke code autogeneration requested by [ADMIN_FULLMONTY(owner)].")
+		log_admin_private("[key_name(usr)] cancelled code autogeneration requested by [ADMIN_FULLMONTY(owner)].")
+		SSblackbox.record_feedback("tally", "nuke_code_autogeneration_admin_cancelled", 1, message)
+	if(href_list["cancel_ert"])
+		if(req_type != REQUEST_ERT) // what are you trying to cancel???
+			to_chat(usr, "<span class='admin'>You can't cancel this type of request.</span>")
+			return
+		if(!autoaccept)
+			to_chat(usr, "<span class='admin'>You are too late to cancel that!</span>")
+			return
+		autoaccept = FALSE
+		message_admins("[key_name_admin(usr)] rejected the response team request from [ADMIN_FULLMONTY(owner)].")
+		log_admin_private("[key_name(usr)] rejected the response team request from [ADMIN_FULLMONTY(owner)].")
+		SSblackbox.record_feedback("tally", "nuke_code_autogeneration_admin_cancelled", 1, message)
 
 /datum/request/proc/auto_generate_nuke_code()
-	autogenerate = TRUE
-	message_admins("Automatically generating nuke codes requested by [ADMIN_FULLMONTY(owner)] in [NUKE_CODE_AUTOGENERATION_ADMIN_INTERVENTION_TIME] seconds. (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)")
-	sleep(NUKE_CODE_AUTOGENERATION_ADMIN_INTERVENTION_TIME SECONDS)
-	if(autogenerate)
+	autoaccept = TRUE
+	message_admins("Automatically generating nuke codes requested by [ADMIN_FULLMONTY(owner)] in [REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME] seconds. (<a href='?src=[REF(src)];cancel_nuke=1'>CANCEL</a>)")
+	sleep(REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME SECONDS)
+	if(autoaccept)
 		var/code = random_code(5)
 		for(var/obj/machinery/nuclearbomb/selfdestruct/SD in GLOB.nuke_list)
 			SD.r_code = code
@@ -19,19 +44,121 @@ System awaryjny automatycznie zatwierdził prośbe.
 Kod do ładunku nuklearnego na pokładzie waszego statku to [code]."}
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(priority_announce), message, "Automatyczny System Awaryjny Centrali"), 2 SECONDS)
 
+#define ERT_REQUEST_REJECTED "dont_waste_company_resources"
+GLOBAL_VAR_INIT(erts_requested_already, 0)
 
-/datum/request/Topic(href, href_list)
-	. = ..()
-	if(href_list["cancel"])
-		if(req_type != REQUEST_NUKE) // what are you trying to cancel???
-			to_chat(usr, "<span class='admin'>You can't cancel this type of request.</span>")
-			return
-		if(!autogenerate)
-			to_chat(usr, "<span class='admin'>You are too late to cancel that!</span>")
-			return
-		autogenerate = FALSE
-		message_admins("[key_name_admin(usr)] cancelled nuke code autogeneration requested by [ADMIN_FULLMONTY(owner)].")
-		log_admin_private("[key_name(usr)] cancelled code autogeneration requested by [ADMIN_FULLMONTY(owner)].")
-		SSblackbox.record_feedback("tally", "nuke_code_autogeneration_admin_cancelled", 1, message)
+/datum/request/proc/pick_ert_team_type()
+	var/list/picklist = list(
+		/datum/ert/intern = 40,
+		ERT_REQUEST_REJECTED = 10
+	)
+	if(GLOB.security_level == SEC_LEVEL_DELTA) // not that theyll ever arrive due to time constraints when this goes in
+		return pickweight(list(
+			/datum/ert/deathsquad = 25,
+			/datum/ert/doomguy = 25,
+			/datum/ert/honk = 20,
+			/datum/ert/inquisition = 20,
+			/datum/ert/janitor = 10
+		))
 
-#undef NUKE_CODE_AUTOGENERATION_ADMIN_INTERVENTION_TIME
+	var/list/all_players = SSticker.mode.current_players[CURRENT_LIVING_PLAYERS] + SSticker.mode.current_players[CURRENT_DEAD_PLAYERS]
+	var/list/dead_players = SSticker.mode.current_players[CURRENT_DEAD_PLAYERS]
+	if(!all_players.len)
+		return pickweight(picklist)
+	var/ratio = LAZYLEN(dead_players)/LAZYLEN(all_players)
+
+	if(ratio >= 0.30)
+		picklist = list(
+			/datum/ert/blue = 45,
+			/datum/ert/amber = 5
+		)
+
+	return pickweight(picklist)
+
+/datum/request/proc/auto_create_response_team()
+	autoaccept = TRUE
+	message_admins("Automatically sending response team requested by [ADMIN_FULLMONTY(owner)] in [REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME] seconds. (<a href='?src=[REF(src)];cancel_ert=1'>CANCEL</a>)")
+	sleep(REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME SECONDS)
+	if(autoaccept) // pod tym jest kopiuj wklej z one_click_antag.dm
+		var/message = "Prośba o przesłanie drużyny szybkiej reakcji została zaakceptowana, jednakże wszystkie drużyny są obecnie zajęte. Za niedogodności przepraszamy."
+		var/datum/ert/ertemplate
+		var/ert_type = pick_ert_team_type()
+		if(ert_type == ERT_REQUEST_REJECTED)
+			message = "Prośba o przesłanie drużyny szybkiej reakcji została odrzucona. Nie marnujcie naszego czasu."
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(priority_announce), message, "Automatyczny System Awaryjny Centrali"), 2 SECONDS)
+			return FALSE
+		ertemplate = new ert_type
+		var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for [ertemplate.polldesc] ?", ROLE_ERT, req_hours = 0)
+		var/teamSpawned = FALSE
+		if(candidates.len <= 0)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(priority_announce), message, "Automatyczny System Awaryjny Centrali"), 2 SECONDS)
+			return FALSE
+		else
+			//Pick the (un)lucky players
+			var/numagents = min(ertemplate.teamsize,candidates.len)
+
+			//Create team
+			var/datum/team/ert/ert_team = new ertemplate.team
+			if(ertemplate.rename_team)
+				ert_team.name = ertemplate.rename_team
+
+			//Asign team objective
+			var/datum/objective/missionobj = new
+			missionobj.team = ert_team
+			missionobj.explanation_text = ertemplate.mission
+			missionobj.completed = TRUE
+			ert_team.objectives += missionobj
+			ert_team.mission = missionobj
+
+			var/list/spawnpoints = GLOB.emergencyresponseteamspawn
+			while(numagents && candidates.len)
+				if (numagents > spawnpoints.len)
+					numagents--
+					continue // This guy's unlucky, not enough spawn points, we skip him.
+				var/spawnloc = spawnpoints[numagents]
+				var/mob/dead/observer/chosen_candidate = pick(candidates)
+				candidates -= chosen_candidate
+				if(!chosen_candidate.key)
+					continue
+
+				//Spawn the body
+				var/mob/living/carbon/human/ERTOperative = new ertemplate.mobtype(spawnloc)
+				chosen_candidate.client.prefs.active_character.copy_to(ERTOperative)
+				ERTOperative.key = chosen_candidate.key
+				log_objective(ERTOperative, missionobj.explanation_text)
+
+				if(ertemplate.enforce_human || !(ERTOperative.dna.species.changesource_flags & ERT_SPAWN)) // Don't want any exploding plasmemes
+					ERTOperative.set_species(/datum/species/human)
+
+				//Give antag datum
+				var/datum/antagonist/ert/ert_antag
+
+				if(numagents == 1)
+					ert_antag = new ertemplate.leader_role
+				else
+					ert_antag = ertemplate.roles[WRAP(numagents,1,length(ertemplate.roles) + 1)]
+					ert_antag = new ert_antag
+
+				ERTOperative.mind.add_antag_datum(ert_antag,ert_team)
+				ERTOperative.mind.assigned_role = ert_antag.name
+
+				//Logging and cleanup
+				log_game("[key_name(ERTOperative)] has been selected as an [ert_antag.name]")
+				numagents--
+				teamSpawned++
+
+			if (teamSpawned)
+				message_admins("[ertemplate.polldesc] has spawned with the mission: [ertemplate.mission]")
+
+			//Open the Armory doors
+			if(ertemplate.opendoors)
+				for(var/obj/machinery/door/poddoor/ert/door in GLOB.airlocks)
+					door.open()
+					CHECK_TICK
+	else
+		message = "Prośba o przesłanie drużyny szybkiej reakcji została odrzucona. Nie marnujcie naszego czasu."
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(priority_announce), message, "Automatyczny System Awaryjny Centrali"), 2 SECONDS)
+		return FALSE
+
+#undef REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME
+#undef ERT_REQUEST_REJECTED
