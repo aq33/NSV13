@@ -244,7 +244,7 @@
 		spawns -= T
 
 
-/obj/effect/proc_holder/spell/ethereal_jaunt/mistform
+/obj/effect/proc_holder/spell/targeted/ethereal_jaunt/mistform
 	name = "Mist Form (30)"
 	gain_desc = "You have gained the Mist Form ability which allows you to take on the form of mist for a short period and pass over any obstacle in your path."
 	blood_used = 30
