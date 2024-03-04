@@ -709,7 +709,6 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 			held_item = I
 			I.forceMove(src)
 			visible_message("[src] grabs [held_item]!", "<span class='notice'>Chwytasz [held_item]!</span>", "<span class='italics'>drapie</span>")
-.</span>")
 			return held_item
 
 	to_chat(src, "<span class='warning'>Nie ma tu nic interesującego do wzięcia!</span>")
