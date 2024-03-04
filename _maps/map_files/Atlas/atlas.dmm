@@ -17491,6 +17491,7 @@
 /obj/effect/turf_decal/tile/ship/red{
 	dir = 4
 	},
+/obj/machinery/vending/gunact,
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck2/primary)
 "XY" = (

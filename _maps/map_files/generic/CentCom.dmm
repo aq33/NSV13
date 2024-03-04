@@ -196,6 +196,14 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/centcom/evac)
+"ck" = (
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
+	},
+/obj/machinery/vending/cigarette,
+/turf/open/floor/plasteel,
+/area/tdome/tdomeobserve)
 "co" = (
 /obj/structure/table,
 /obj/item/flashlight/lamp{
@@ -12692,7 +12700,6 @@
 /turf/open/floor/plasteel/dark,
 /area/tdome/tdomeobserve)
 "GT" = (
-/obj/machinery/vending/cigarette,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -12703,6 +12710,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/machinery/vending/gunact,
 /turf/open/floor/plasteel/dark,
 /area/tdome/tdomeobserve)
 "GU" = (
@@ -62713,7 +62721,7 @@ Fp
 Gp
 Ep
 GQ
-Hf
+ck
 Hu
 Gx
 GM
