@@ -43,6 +43,7 @@
 #include "code\game\dynamic\dynamic_rulesets_roundstart.dm"
 #include "code\game\effects\decals\turfdecal\markings.dm"
 #include "code\game\gamemodes\monkey\monkey.dm"
+#include "code\game\gamemodes\objective.dm"
 #include "code\game\machinery\battery.dm"
 #include "code\game\machinery\computer\_computer.dm"
 #include "code\game\machinery\computer\communications.dm"
