@@ -396,16 +396,17 @@
 	. = ..()
 	playsound(src, 'sound/effects/footstep/rustystep1.ogg', 100, TRUE)
 
-/mob/living/simple_animal/hostile/heretic_summon/rust_spirit/Life(delta_time = SSMOBS_DT, times_fired)
+/mob/living/simple_animal/hostile/heretic_summon/rust_spirit/Life()
 	if(stat == DEAD)
 		return ..()
 
 	var/turf/our_turf = get_turf(src)
 	if(HAS_TRAIT(our_turf, TRAIT_RUSTY))
-		adjustBruteLoss(-1.5 * delta_time, FALSE)
-		adjustFireLoss(-1.5 * delta_time, FALSE)
+		adjustBruteLoss(-1.5, FALSE)
+		adjustFireLoss(-1.5, FALSE)
 
 	return ..()
+
 
 /mob/living/simple_animal/hostile/heretic_summon/ash_spirit
 	name = "Ash Man"
