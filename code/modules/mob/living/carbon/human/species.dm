@@ -1213,8 +1213,43 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 ////////
 
 /datum/species/proc/handle_digestion(mob/living/carbon/human/H)
+	// AQ EDIT START -- we'll handle thirst before hunger
+	// that's because while hunger may be for babies,
+	// thirst is for everyone - what else is the bar for?
+	// thirst decrease
+	if(!HAS_TRAIT(H, TRAIT_NOTHIRST))
+		if (H.hydration > 0 && H.stat != DEAD)
+			// he need sum milk
+			var/thirst_rate = THIRST_FACTOR
+			var/datum/component/mood/mood = H.GetComponent(/datum/component/mood)
+			if(mood && mood.sanity > SANITY_DISTURBED)
+				thirst_rate *= max(0.5, 1 - 0.002 * mood.sanity) //0.85 to 0.75
+			thirst_rate *= H.physiology.thirst_mod
+			H.adjust_hydration(-thirst_rate)
+		// handle thirst alert
+			switch(H.hydration)
+				if(HYDRATION_LEVEL_TURGID to INFINITY)
+					H.throw_alert("thirst", /atom/movable/screen/alert/turgid)
+				if(HYDRATION_LEVEL_DEHYDRATED to HYDRATION_LEVEL_TURGID)
+					H.clear_alert("thirst")
+				if(HYDRATION_LEVEL_PARCHED to HYDRATION_LEVEL_DEHYDRATED)
+					H.throw_alert("thirst", /atom/movable/screen/alert/thirsty)
+				if(0 to HYDRATION_LEVEL_PARCHED)
+					H.throw_alert("thirst", /atom/movable/screen/alert/parched)
+	// AQ EDIT END
+
 	if(HAS_TRAIT(src, TRAIT_NOHUNGER))
 		return //hunger is for BABIES
+
+	var/shitting_enabled = CONFIG_GET(flag/shitting_enabled) // AQ EDIT
+	// AQ EDIT START
+	if(!HAS_TRAIT(H, TRAIT_NOTHIRST))
+		if(H.nutrition < NUTRITION_LEVEL_STARVING && H.hydration < HYDRATION_LEVEL_DEHYDRATED)
+			if(prob(35))
+				if(prob(14)) // 5% chance (.35 * .14 ~= .05)
+					to_chat(H, "<font size=2><span class='danger'>Umierasz z niedożywienia! Napij się lub zjedz coś.</span></font>")
+				H.take_overall_damage(rand(1, 3))
+	// AQ EDIT END
 
 	//The fucking TRAIT_FAT mutation is the dumbest shit ever. It makes the code so difficult to work with
 	if(HAS_TRAIT_FROM(H, TRAIT_FAT, OBESITY))//I share your pain, past coder.
@@ -1253,7 +1288,14 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			hunger_rate = 3 * HUNGER_FACTOR
 		hunger_rate *= H.physiology.hunger_mod
 		H.adjust_nutrition(-hunger_rate)
-
+		if(shitting_enabled && !HAS_TRAIT(H, TRAIT_NOSHITTING)) // AQ EDIT
+			// we adjusted nutrition earlier
+			// changing hunger_rate now will only affect defecation
+			hunger_rate *= H.physiology.defecation_mod
+			hunger_rate *= shitmod // species defecation modifier
+			if (H.nutrition > NUTRITION_LEVEL_FULL) // this one overate
+				hunger_rate *= 2
+			H.adjust_defecation(hunger_rate)
 
 	if (H.nutrition > NUTRITION_LEVEL_FULL)
 		if(H.overeatduration < 600) //capped so people don't take forever to unfat
@@ -1261,6 +1303,17 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	else
 		if(H.overeatduration > 1)
 			H.overeatduration -= 2 //doubled the unfat rate
+
+	if(shitting_enabled && !HAS_TRAIT(H, TRAIT_NOSHITTING)) // AQ EDIT
+		if(H.defecation > DEFECATION_ACTUALLY_SHIT_YOURSELF)
+			H.actually_shit_myself()
+			H.set_defecation(DEFECATION_NONE)
+		else if (H.defecation > DEFECATION_SHIT_YOURSELF)
+			if(prob(LERP(10, 20, ((H.defecation - DEFECATION_SHIT_YOURSELF)/DEFECATION_ACTUALLY_SHIT_YOURSELF))))
+				to_chat(H, "<span class='warning'><i>Pilnie potrzebuję do ubikacji...</i></span>")
+		else if(H.defecation > DEFECATION_VERY)
+			if(prob(LERP(0, 7, ((H.defecation - DEFECATION_VERY)/DEFECATION_SHIT_YOURSELF))))
+				to_chat(H, "<span class='notice'><i>Muszę skorzystać z ubikacji...</i></span>")
 
 	//metabolism change
 	if(H.nutrition > NUTRITION_LEVEL_FAT)
@@ -1299,6 +1352,17 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				H.throw_alert("nutrition", /atom/movable/screen/alert/hungry)
 			if(0 to NUTRITION_LEVEL_STARVING)
 				H.throw_alert("nutrition", /atom/movable/screen/alert/starving)
+
+	if(shitting_enabled && !HAS_TRAIT(H, TRAIT_NOSHITTING))
+		switch(H.defecation)
+			if(DEFECATION_SHIT_YOURSELF to INFINITY)
+				H.throw_alert("defecation", /atom/movable/screen/alert/about_to_shit_myself)
+			if(DEFECATION_VERY to DEFECATION_SHIT_YOURSELF)
+				H.throw_alert("defecation", /atom/movable/screen/alert/need_to_shit)
+			if(DEFECATION_NONE to DEFECATION_VERY)
+				H.clear_alert("defecation")
+
+
 
 /datum/species/proc/handle_charge(mob/living/carbon/human/H)
 	switch(H.nutrition)

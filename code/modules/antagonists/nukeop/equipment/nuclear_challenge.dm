@@ -1,4 +1,4 @@
-#define CHALLENGE_TELECRYSTALS 280
+#define CHALLENGE_TELECRYSTALS (80 + LERP(0, 200, CLAMP01((GLOB.player_list.len-20)/20))) // AQ EDIT - min of 80 + more depending on player count, like 20 per player above 20 up to 280 at 40 players
 #define CHALLENGE_TIME_LIMIT 5 MINUTES
 #define CHALLENGE_MIN_PLAYERS 50
 #define CHALLENGE_SHUTTLE_DELAY 35 MINUTES	//35 minutes, giving nukies at least 20 minutes to enact their assault.
@@ -21,20 +21,20 @@
 		return
 
 	declaring_war = TRUE
-	var/are_you_sure = alert(user, "Consult your team carefully before you declare war on [station_name()]]. Are you sure you want to alert the enemy crew? You have [DisplayTimeText(world.time-SSticker.round_start_time - CHALLENGE_TIME_LIMIT)] to decide", "Declare war?", "Yes", "No")
+	var/are_you_sure = tgui_alert(user, "Skonsultuj się ze swoją drużyną zanim zadeklarujecie wojnę na [station_name()]. [check_pop()? "" : "Ze względu na wielkość załogi nie dostaniecie dotatkowego ekwipunku. "]", "Declare war?", "Yes", "No")
 	declaring_war = FALSE
 
 	if(!check_allowed(user))
 		return
 
 	if(are_you_sure != "Yes")
-		to_chat(user, "On second thought, the element of surprise isn't so bad after all.")
+		//to_chat(user, "On second thought, the element of surprise isn't so bad after all.")
 		return
 
-	var/war_declaration = "[user.real_name] has declared [user.p_their()] intent to utterly destroy [station_name()] with a nuclear device, and dares the crew to try and stop [user.p_them()]."
+	var/war_declaration = "[user.real_name] zadeklarowa[user.gender == MALE ? "ł" : "ła"] [user.p_jego()] zamiar całkowitego zniszczenia [station_name()] przy użyciu ładunku nuklearnego, oraz rzuca wyzwanie załodze, aby spróbować [user.p_je()] powstrzymać."
 
 	declaring_war = TRUE
-	var/custom_threat = alert(user, "Do you want to customize your declaration?", "Customize?", "Yes", "No")
+	var/custom_threat = alert(user, "Czy chcesz zmienić tekst deklaracji?", "Customize?", "Yes", "No")
 	declaring_war = FALSE
 
 	if(!check_allowed(user))
@@ -42,7 +42,7 @@
 
 	if(custom_threat == "Yes")
 		declaring_war = TRUE
-		war_declaration = stripped_input(user, "Insert your custom declaration", "Declaration")
+		war_declaration = stripped_input(user, "Podaj nowy tekst deklaracji", "Declaration")
 		declaring_war = FALSE
 
 	if(!check_allowed(user) || !war_declaration)
@@ -51,11 +51,11 @@
 	declare_war(user, war_declaration)
 
 /obj/item/nuclear_challenge/proc/declare_war(mob/user, war_declaration)
-	priority_announce(war_declaration, "Declaration of War", 'sound/machines/alarm.ogg',  has_important_message = TRUE)
+	priority_announce(war_declaration, "Deklaracja Wojny", 'sound/machines/alarm.ogg',  has_important_message = TRUE)
 
 	play_soundtrack_music(/datum/soundtrack_song/bee/future_perception)
 
-	if(user)
+	if(user && check_pop())
 		to_chat(user, "You've attracted the attention of powerful forces within the syndicate. A bonus bundle of telecrystals has been granted to your team. Great things await you if you complete the mission.")
 
 	for(var/V in GLOB.syndicate_shuttle_boards)
@@ -77,6 +77,12 @@
 			continue
 		uplinks += uplink
 
+	CONFIG_SET(number/shuttle_refuel_delay, max(CONFIG_GET(number/shuttle_refuel_delay), CHALLENGE_SHUTTLE_DELAY))
+	SSblackbox.record_feedback("amount", "nuclear_challenge_mode", 1)
+
+	if(!check_pop())
+		qdel(src)
+		return
 
 	var/tc_to_distribute = CHALLENGE_TELECRYSTALS
 	var/tc_per_nukie = round(tc_to_distribute / (length(orphans)+length(uplinks)))
@@ -99,29 +105,33 @@
 				C.visible_message("<span class='notice'>[C] coughs up a half-digested telecrystal</span>","<span class='usernotice'>You cough up a half-digested telecrystal!</span>")
 				break
 
-	CONFIG_SET(number/shuttle_refuel_delay, max(CONFIG_GET(number/shuttle_refuel_delay), CHALLENGE_SHUTTLE_DELAY))
-	SSblackbox.record_feedback("amount", "nuclear_challenge_mode", 1)
+
 
 	qdel(src)
 
 /obj/item/nuclear_challenge/proc/check_allowed(mob/living/user)
 	if(declaring_war)
-		to_chat(user, "You are already in the process of declaring war! Make your mind up.")
-		return FALSE
-	if(GLOB.player_list.len < CHALLENGE_MIN_PLAYERS)
-		to_chat(user, "The enemy crew is too small to be worth declaring war on.")
+		to_chat(user, "Jesteś w trakcie deklarowania wojny! Zdecyduj się.")
 		return FALSE
 	if(!user.onSyndieBase())
-		to_chat(user, "You have to be at your base to use this.")
+		to_chat(user, "Musisz być w twojej bazie by tego użyć.")
 		return FALSE
+	/* AQ EDIT - at any time, any day. Well, they can't
+	// go station-side until they declare war, so...
 	if(world.time-SSticker.round_start_time > CHALLENGE_TIME_LIMIT)
 		to_chat(user, "It's too late to declare hostilities. Your benefactors are already busy with other schemes. You'll have to make do with what you have on hand.")
 		return FALSE
+	*/
 	for(var/V in GLOB.syndicate_shuttle_boards)
 		var/obj/item/circuitboard/computer/syndicate_shuttle/board = V
 		if(board.moved)
-			to_chat(user, "The shuttle has already been moved! You have forfeit the right to declare war.")
+			to_chat(user, "Infiltrator się przemieścił! Straciłeś prawo do deklaracji wojny.")
 			return FALSE
+	return TRUE
+
+/obj/item/nuclear_challenge/proc/check_pop()
+	if(GLOB.player_list.len < CHALLENGE_MIN_PLAYERS)
+		return FALSE
 	return TRUE
 
 /obj/item/nuclear_challenge/clownops

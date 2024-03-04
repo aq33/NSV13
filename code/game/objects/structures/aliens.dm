@@ -149,7 +149,7 @@
 		return FALSE
 
 	for(var/turf/T in U.GetAtmosAdjacentTurfs())
-		if((locate(/obj/structure/alien/weeds) in T))
+		if((locate(/obj/structure/alien/flesh) in T) || (locate(/obj/structure/alien/weeds) in T))//AQ EDIT
 			continue
 
 		if(is_type_in_typecache(T, blacklisted_turfs))

@@ -12,7 +12,7 @@
 	slowdown = SHOES_SLOWDOWN
 	strip_delay = 1 SECONDS
 	var/blood_state = BLOOD_STATE_NOT_BLOODY
-	var/list/bloody_shoes = list(BLOOD_STATE_HUMAN = 0,BLOOD_STATE_XENO = 0, BLOOD_STATE_OIL = 0, BLOOD_STATE_NOT_BLOODY = 0)
+	var/list/bloody_shoes = list(BLOOD_STATE_HUMAN = 0,BLOOD_STATE_XENO = 0, BLOOD_STATE_OIL = 0, BLOOD_STATE_POOP = 0, BLOOD_STATE_NOT_BLOODY = 0) // AQ EDIT
 	var/offset = 0
 	var/equipped_before_drop = FALSE
 	var/can_be_bloody = TRUE
@@ -83,7 +83,7 @@
 
 	if(strength < CLEAN_STRENGTH_BLOOD)
 		return
-	bloody_shoes = list(BLOOD_STATE_HUMAN = 0,BLOOD_STATE_XENO = 0, BLOOD_STATE_OIL = 0, BLOOD_STATE_NOT_BLOODY = 0)
+	bloody_shoes = list(BLOOD_STATE_HUMAN = 0,BLOOD_STATE_XENO = 0, BLOOD_STATE_OIL = 0, BLOOD_STATE_POOP = 0, BLOOD_STATE_NOT_BLOODY = 0) // AQ EDIT
 	blood_state = BLOOD_STATE_NOT_BLOODY
 	if(ismob(loc))
 		var/mob/M = loc

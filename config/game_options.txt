@@ -463,6 +463,7 @@ RANDOM_LAWS corgi
 RANDOM_LAWS cowboy
 RANDOM_LAWS weeb
 RANDOM_LAWS dean
+RANDOM_LAWS netanyahu
 
 ## Bad idea laws. Probably shouldn't enable these
 #RANDOM_LAWS syndie
@@ -717,6 +718,9 @@ ROUNDSTART_BLUESPACE_MINERS 2
 
 ## Enable the bluespace miner research node?
 BSMINER_RESEARCHABLE
+
+## AQ Is shitting enabled?
+SHITTING_ENABLED
 
 ## NSV13 Do we want the game to save the starmap at the end of the round?
 STARMAP_PERSISTENCE_ENABLED
