@@ -58,7 +58,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 // START LANDMARKS FOLLOW. Don't change the names unless
 // you are refactoring shitty landmark code.
 /obj/effect/landmark/start/assistant
-	name = "Midshipman" //Nsv13 - Crayon eaters
+	name = "Majtek" //Nsv13 - Crayon eaters
 	icon_state = "Midshipman" //Nsv13 - Crayon eaters
 
 /obj/effect/landmark/start/assistant/override
@@ -86,7 +86,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "Mime"
 
 /obj/effect/landmark/start/quartermaster
-	name = "Kwartermistrz"
+	name = "Kwatermistrz"
 	icon_state = "Quartermaster"
 
 /obj/effect/landmark/start/atmospheric_technician
@@ -102,7 +102,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "Shaft Miner"
 
 /obj/effect/landmark/start/exploration
-	name = "Odrywca"
+	name = "Odkrywca"
 	icon_state = "Exploration Crew"
 
 /obj/effect/landmark/start/security_officer
@@ -114,7 +114,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "Botanist"
 
 /obj/effect/landmark/start/head_of_security
-	name = "Komendandt"
+	name = "Komendant"
 	icon_state = "Head of Security"
 
 /obj/effect/landmark/start/captain
@@ -134,7 +134,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "Chief Engineer"
 
 /obj/effect/landmark/start/head_of_personnel
-	name = "Kadrowy"
+	name = "Starszy Oficer"
 	icon_state = "Head of Personnel"
 
 /obj/effect/landmark/start/librarian
