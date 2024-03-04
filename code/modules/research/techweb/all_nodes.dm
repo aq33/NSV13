@@ -551,13 +551,13 @@
 	export_price = 5000
 
 ////////////////////////Computer tech////////////////////////
-/datum/techweb_node/comptech
+/datum/techweb_node/comptech//AQ EDIT dodaje stocks
 	id = "comptech"
 	tech_tier = 1
 	display_name = "Computer Consoles"
 	description = "Computers and how they work."
 	prereq_ids = list("datatheory")
-	design_ids = list("cargo", "cargorequest", "objective", "libraryconsole", "mining", "crewconsole", "rdcamera", "comconsole", "idcardconsole", "seccamera")
+	design_ids = list("cargo", "cargorequest","stockexchange", "objective", "libraryconsole", "mining", "crewconsole", "rdcamera", "comconsole", "idcardconsole", "seccamera")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 	export_price = 5000
 
