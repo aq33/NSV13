@@ -12,7 +12,7 @@
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=abductors'>Make Abductor Team (Requires Ghosts)</a><br>
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=revenant'>Make Revenant (Requires Ghost)</a><br>
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=infiltrator'>Make Infiltration Team (Requires Ghosts)</a>
-   // <a href='?src=[REF(src)];[HrefToken()];makeAntag=vampire'>Make Vampire (Requires Ghosts)</a> Nie wiem czy to działa
+		<a href='?src=[REF(src)];[HrefToken()];makeAntag=vampire'>Make Vampire (Requires Ghosts)</a>
 		"}
 
 	var/datum/browser/popup = new(usr, "oneclickantag", "Quick-Create Antagonist", 400, 400)
@@ -51,9 +51,9 @@
 			var/mob/living/carbon/human/new_character=makeBody(c)
 			new_character.mind.add_antag_datum(/datum/antagonist/infiltrator, TI)
 		TI.update_objectives()
-    	return TRUE
+		return TRUE
 	return FALSE
-  
+
 /datum/admins/proc/makeVampire()
 	var/datum/game_mode/vampire/temp = new
 	if(CONFIG_GET(flag/protect_roles_from_antagonist))
