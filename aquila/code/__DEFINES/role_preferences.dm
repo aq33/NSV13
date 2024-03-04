@@ -1,5 +1,2 @@
 #define ROLE_MONKEY "Monkey"
-
-//GLOBAL_LIST_INIT.add(antagonist_bannable_roles,
-//	ROLE_SINFULDEMON,
-//)
+#define ROLE_VAMPIRE "vampire"

@@ -1,3 +1,4 @@
+
 /datum/admins/one_click_antag()
 	var/dat = {"
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=traitors'>Make Traitors</a><br>
@@ -11,6 +12,7 @@
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=abductors'>Make Abductor Team (Requires Ghosts)</a><br>
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=revenant'>Make Revenant (Requires Ghost)</a><br>
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=infiltrator'>Make Infiltration Team (Requires Ghosts)</a>
+   // <a href='?src=[REF(src)];[HrefToken()];makeAntag=vampire'>Make Vampire (Requires Ghosts)</a> Nie wiem czy to działa
 		"}
 
 	var/datum/browser/popup = new(usr, "oneclickantag", "Quick-Create Antagonist", 400, 400)
@@ -49,5 +51,24 @@
 			var/mob/living/carbon/human/new_character=makeBody(c)
 			new_character.mind.add_antag_datum(/datum/antagonist/infiltrator, TI)
 		TI.update_objectives()
+    	return TRUE
+	return FALSE
+  
+/datum/admins/proc/makeVampire()
+	var/datum/game_mode/vampire/temp = new
+	if(CONFIG_GET(flag/protect_roles_from_antagonist))
+		temp.restricted_jobs += temp.protected_jobs
+	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
+		temp.restricted_jobs += "Assistant"
+	var/list/mob/living/carbon/human/candidates = list()
+	var/mob/living/carbon/human/H
+	for(var/mob/living/carbon/human/applicant in GLOB.player_list)
+		if((ROLE_VAMPIRE in applicant.client.prefs.be_special) && !applicant.stat && applicant.mind && !applicant.mind.special_role)
+			if(!jobban_isbanned(applicant, "vampire") && !jobban_isbanned(applicant, "Syndicate"))
+				if(temp.age_check(applicant.client) && !(applicant.job in temp.restricted_jobs) && !is_vampire(applicant))
+					candidates += applicant
+	if(LAZYLEN(candidates))
+		H = pick(candidates)
+		add_vampire(H)
 		return TRUE
 	return FALSE

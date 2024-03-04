@@ -1241,6 +1241,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(HAS_TRAIT(src, TRAIT_NOHUNGER))
 		return //hunger is for BABIES
 
+	var/shitting_enabled = CONFIG_GET(flag/shitting_enabled) // AQ EDIT
 	// AQ EDIT START
 	if(!HAS_TRAIT(H, TRAIT_NOTHIRST))
 		if(H.nutrition < NUTRITION_LEVEL_STARVING && H.hydration < HYDRATION_LEVEL_DEHYDRATED)
@@ -1287,6 +1288,14 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			hunger_rate = 3 * HUNGER_FACTOR
 		hunger_rate *= H.physiology.hunger_mod
 		H.adjust_nutrition(-hunger_rate)
+		if(shitting_enabled && !HAS_TRAIT(H, TRAIT_NOSHITTING)) // AQ EDIT
+			// we adjusted nutrition earlier
+			// changing hunger_rate now will only affect defecation
+			hunger_rate *= H.physiology.defecation_mod
+			hunger_rate *= shitmod // species defecation modifier
+			if (H.nutrition > NUTRITION_LEVEL_FULL) // this one overate
+				hunger_rate *= 2
+			H.adjust_defecation(hunger_rate)
 
 	if (H.nutrition > NUTRITION_LEVEL_FULL)
 		if(H.overeatduration < 600) //capped so people don't take forever to unfat
@@ -1294,6 +1303,17 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	else
 		if(H.overeatduration > 1)
 			H.overeatduration -= 2 //doubled the unfat rate
+
+	if(shitting_enabled && !HAS_TRAIT(H, TRAIT_NOSHITTING)) // AQ EDIT
+		if(H.defecation > DEFECATION_ACTUALLY_SHIT_YOURSELF)
+			H.actually_shit_myself()
+			H.set_defecation(DEFECATION_NONE)
+		else if (H.defecation > DEFECATION_SHIT_YOURSELF)
+			if(prob(LERP(10, 20, ((H.defecation - DEFECATION_SHIT_YOURSELF)/DEFECATION_ACTUALLY_SHIT_YOURSELF))))
+				to_chat(H, "<span class='warning'><i>Pilnie potrzebuję do ubikacji...</i></span>")
+		else if(H.defecation > DEFECATION_VERY)
+			if(prob(LERP(0, 7, ((H.defecation - DEFECATION_VERY)/DEFECATION_SHIT_YOURSELF))))
+				to_chat(H, "<span class='notice'><i>Muszę skorzystać z ubikacji...</i></span>")
 
 	//metabolism change
 	if(H.nutrition > NUTRITION_LEVEL_FAT)
@@ -1332,6 +1352,15 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				H.throw_alert("nutrition", /atom/movable/screen/alert/hungry)
 			if(0 to NUTRITION_LEVEL_STARVING)
 				H.throw_alert("nutrition", /atom/movable/screen/alert/starving)
+
+	if(shitting_enabled && !HAS_TRAIT(H, TRAIT_NOSHITTING))
+		switch(H.defecation)
+			if(DEFECATION_SHIT_YOURSELF to INFINITY)
+				H.throw_alert("defecation", /atom/movable/screen/alert/about_to_shit_myself)
+			if(DEFECATION_VERY to DEFECATION_SHIT_YOURSELF)
+				H.throw_alert("defecation", /atom/movable/screen/alert/need_to_shit)
+			if(DEFECATION_NONE to DEFECATION_VERY)
+				H.clear_alert("defecation")
 
 
 
