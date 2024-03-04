@@ -32,7 +32,7 @@
 		/obj/effect/proc_holder/spell/targeted/disease = 200,//why is spell-that-kills-people unlocked so early what the fuck
 		/obj/effect/proc_holder/spell/self/batform = 200,
 		/obj/effect/proc_holder/spell/self/screech = 215,
-		/obj/effect/proc_holder/spell/bats = 250,
+		/obj/effect/proc_holder/spell/self/bats = 250,
 		/datum/vampire_passive/regen = 255,
 		/obj/effect/proc_holder/spell/targeted/ethereal_jaunt/mistform = 300,
 		/datum/vampire_passive/full = 420,
