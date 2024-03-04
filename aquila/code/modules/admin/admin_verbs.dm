@@ -1,4 +1,4 @@
-/client/proc/give_spell(mob/spell_recipient in GLOB.mob_list)
+/client/give_spell(mob/spell_recipient in GLOB.mob_list)
 	var/which = tgui_alert(usr, "Chose by name or by type path?", "Chose option", list("Name", "Typepath"))
 	if(!which)
 		return
@@ -32,8 +32,9 @@
 	if(!spell_recipient.mind)
 		to_chat(usr, "<span class='userdanger'Spells given to mindless mobs will belong to the mob and not their mind, \
 			and as such will not be transferred if their mind changes body (Such as from Mindswap).</span>")
+	.=..()
 
-/client/proc/remove_spell(mob/removal_target in GLOB.mob_list)
+/client/remove_spell(mob/removal_target in GLOB.mob_list)
 	var/list/target_spell_list = list()
 	for(var/datum/action/cooldown/spell/spell in removal_target.actions)
 		target_spell_list[spell.name] = spell
@@ -48,6 +49,7 @@
 	log_admin("[key_name(usr)] removed the spell [chosen_spell] from [key_name(removal_target)].")
 	message_admins("[key_name_admin(usr)] removed the spell [chosen_spell] from [key_name_admin(removal_target)].")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Remove Spell") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	.=..()
 
 /// Debug verb for seeing at a glance what all spells have as set requirements
 /client/proc/debug_spell_requirements()

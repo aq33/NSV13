@@ -34,12 +34,7 @@
 // Invocation types - what does the wizard need to do to invoke (cast) the spell?
 /// Allows being able to cast the spell without saying or doing anything.
 #define INVOCATION_NONE "none"
-/// Forces the wizard to shout the invocation to cast the spell.
-#define INVOCATION_SHOUT "shout"
-/// Forces the wizard to whisper the invocation to cast the spell.
-#define INVOCATION_WHISPER "whisper"
-/// Forces the wizard to emote to cast the spell.
-#define INVOCATION_EMOTE "emote"
+
 
 // Bitflags for spell requirements
 /// Whether the spell requires wizard clothes to cast.
@@ -73,7 +68,7 @@ DEFINE_BITFIELD(spell_requirements, list(
 	"SPELL_REQUIRES_MIND" = SPELL_REQUIRES_MIND,
 	"SPELL_REQUIRES_NO_ANTIMAGIC" = SPELL_REQUIRES_NO_ANTIMAGIC,
 	"SPELL_REQUIRES_STATION" = SPELL_REQUIRES_STATION,
-	"SPELL_REQUIRES_WIZARD_GARB" = SPELL_REQUIRES_WIZARD_GARB,
+	"SPELL_REQUIRES_WIZARD_GARB" = SPELL_REQUIRES_WIZARD_GARB
 ))
 
 // Bitflags for teleport spells

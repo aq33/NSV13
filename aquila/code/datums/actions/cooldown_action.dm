@@ -73,15 +73,15 @@
 	return button
 
 /datum/action/cooldown/update_button_status(atom/movable/screen/movable/action_button/button, force = FALSE)
-	. = ..()
 	var/time_left = max(next_use_time - world.time, 0)
-	if(!text_cooldown || !owner || time_left == 0 || time_left >= COOLDOWN_NO_DISPLAY_TIME))
+	if(!text_cooldown || !owner || time_left == 0 || time_left >= COOLDOWN_NO_DISPLAY_TIME)
 		button.maptext = ""
 	else
 		if (cooldown_rounding > 0)
 			button.maptext = MAPTEXT_TINY_UNICODE("[round(time_left/10, cooldown_rounding)]")
 		else
 			button.maptext = MAPTEXT_TINY_UNICODE("[round(time_left/10)]")
+	.=..()
 
 	if(!IsAvailable() || !is_action_active(button))
 		return
@@ -151,7 +151,7 @@
 
 /// Starts a cooldown time to be shared with similar abilities
 /// Will use default cooldown time if an override is not specified
-/datum/action/cooldown/proc/StartCooldown(override_cooldown_time, override_melee_cooldown_time)
+/datum/action/cooldown/StartCooldown(override_cooldown_time, override_melee_cooldown_time)
 	// "Shared cooldowns" covers actions which are not the same type,
 	// but have the same cooldown group and are on the same mob
 	if(shared_cooldown != NONE)
@@ -163,6 +163,7 @@
 		next_melee_use_time = world.time + override_melee_cooldown_time
 	else
 		next_melee_use_time = world.time + melee_cooldown_time
+	.=..()
 
 /// Starts a cooldown time for this ability only
 /// Will use default cooldown time if an override is not specified

@@ -90,7 +90,7 @@
 
 // Lichdom
 /// Sent from /datum/action/cooldown/spell/lichdom/cast(), to the item being imbued: (datum/action/cooldown/spell/spell, mob/user)
-#define COMSIG_ITEM_IMBUE_SOUL "item_imbue_soul"
+#define ACTION_COMSIG_ITEM_IMBUE_SOUL "item_imbue_soul"
 	/// Return to stop the cast and prevent the soul imbue
 	#define COMPONENT_BLOCK_IMBUE (1 << 0)
 
@@ -99,9 +99,8 @@
 
 // Instant Summons
 /// Sent from /datum/action/cooldown/spell/summonitem/cast(), to the item being marked for recall: (datum/action/cooldown/spell/spell, mob/user)
-#define COMSIG_ITEM_MARK_RETRIEVAL "item_mark_retrieval"
 	/// Return to stop the cast and prevent the item from being marked
-	#define COMPONENT_BLOCK_MARK_RETRIEVAL (1 << 0)
+	#define ACTION_COMPONENT_BLOCK_MARK_RETRIEVAL (1 << 0)
 ///When an object is retrieved by a magic recall spell. This will apply to all containers, mobs, etc. that are pulled by the spell.
 #define COMSIG_MAGIC_RECALL "magic_recall"
 

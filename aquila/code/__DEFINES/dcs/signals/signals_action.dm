@@ -1,9 +1,8 @@
 // Action signals
 
 ///from base of datum/action/proc/Trigger(): (datum/action)
-#define COMSIG_ACTION_TRIGGER "action_trigger"
 	// Return to block the trigger from occuring
-	#define COMPONENT_ACTION_BLOCK_TRIGGER (1<<0)
+	#define ACTION_COMPONENT_ACTION_BLOCK_TRIGGER (1<<0)
 /// From /datum/action/Grant(): (mob/grant_to)
 #define COMSIG_ACTION_GRANTED "action_grant"
 /// From /datum/action/Grant(): (datum/action)

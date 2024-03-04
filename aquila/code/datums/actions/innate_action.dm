@@ -43,12 +43,6 @@
 	else
 		return active
 
-/datum/action/innate/proc/Activate()
-	return
-
-/datum/action/innate/proc/Deactivate()
-	return
-
 /**
  * This is gross, but a somewhat-required bit of copy+paste until action code becomes slightly more sane.
  * Anything that uses these functions should eventually be moved to use cooldown actions.

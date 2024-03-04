@@ -54,13 +54,13 @@
 	qdel(action)
 
 
-/obj/item/proc/dropped(mob/user, silent = FALSE)
+/obj/item/dropped(mob/user, silent = FALSE)
 // Remove any item actions we temporary gave out.
 	for(var/datum/action/action_item_has as anything in actions)
 		action_item_has.Remove(user)
 	. = ..()
 
-/obj/item/proc/equipped(mob/user, slot, initial = FALSE)
+/obj/item/equipped(mob/user, slot, initial = FALSE)
 // Give out actions our item has to people who equip it.
 	for(var/datum/action/action as anything in actions)
 		give_item_action(action, user, slot)

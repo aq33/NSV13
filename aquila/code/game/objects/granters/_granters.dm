@@ -51,31 +51,6 @@
 
 	return TRUE
 
-/// Called when the user starts to read the granter.
-/obj/item/book/granter/proc/on_reading_start(mob/living/user)
-	to_chat(user, span_notice("You start reading [name]..."))
-
-/// Called when the reading is interrupted without finishing.
-/obj/item/book/granter/proc/on_reading_stopped(mob/living/user)
-	to_chat(user, span_notice("You stop reading..."))
-
-/// Called when the reading is completely finished. This is where the actual granting should happen.
-/obj/item/book/granter/proc/on_reading_finished(mob/living/user)
-	to_chat(user, span_notice("You finish reading [name]!"))
-
-/// The actual "turning over of the page" flavor bit that happens while someone is reading the granter.
-/obj/item/book/granter/proc/turn_page(mob/living/user)
-	playsound(user, pick(book_sounds), 30, TRUE)
-
-	if(!do_after(user, 5 SECONDS, src))
-		return FALSE
-
-	to_chat(user, span_notice("[length(remarks) ? pick(remarks) : "You keep reading..."]"))
-	return TRUE
-
-/// Effects that occur whenever the book is read when it has no uses left.
-/obj/item/book/granter/proc/recoil(mob/living/user)
-
 /// Checks if the user can learn whatever this granter... grants
 /obj/item/book/granter/proc/can_learn(mob/living/user)
 	return TRUE

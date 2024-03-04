@@ -51,9 +51,10 @@
 	link_to(Target)
 
 /// Links the passed target to our action, registering any relevant signals
-/datum/action/proc/link_to(Target)
+/datum/action/link_to(Target)
 	target = Target
 	RegisterSignal(target, COMSIG_QDELETING, PROC_REF(clear_ref), override = TRUE)
+	.=..()
 
 	if(isatom(target))
 		RegisterSignal(target, COMSIG_ATOM_UPDATED_ICON, PROC_REF(on_target_icon_update))
@@ -78,7 +79,7 @@
 		qdel(src)
 
 /// Grants the action to the passed mob, making it the owner
-/datum/action/proc/Grant(mob/grant_to)
+/datum/action/Grant(mob/grant_to)
 	if(!grant_to)
 		Remove(owner)
 		return
@@ -90,6 +91,7 @@
 	SEND_SIGNAL(grant_to, COMSIG_MOB_GRANTED_ACTION, src)
 	owner = grant_to
 	RegisterSignal(owner, COMSIG_QDELETING, PROC_REF(clear_ref), override = TRUE)
+	.=..()
 
 	// Register some signals based on our check_flags
 	// so that our button icon updates when relevant
@@ -108,7 +110,7 @@
 		GiveAction(grant_to)
 
 /// Remove the passed mob from being owner of our action
-/datum/action/proc/Remove(mob/remove_from)
+/datum/action/Remove(mob/remove_from)
 	SHOULD_CALL_PARENT(TRUE)
 
 	for(var/datum/hud/hud in viewers)
@@ -135,21 +137,22 @@
 		if(target == owner)
 			RegisterSignal(target, COMSIG_QDELETING, PROC_REF(clear_ref))
 		owner = null
+	.=..()
 
 /// Actually triggers the effects of the action.
 /// Called when the on-screen button is clicked, for example.
-/datum/action/proc/Trigger(trigger_flags)
+/datum/action/Trigger(trigger_flags)
 	if(!(trigger_flags & TRIGGER_FORCE_AVAILABLE) && !IsAvailable(feedback = TRUE))
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_ACTION_TRIGGER, src) & COMPONENT_ACTION_BLOCK_TRIGGER)
 		return FALSE
 	return TRUE
-
+	.=..()
 /**
  * Whether our action is currently available to use or not
  * * feedback - If true this is being called to check if we have any messages to show to the owner
  */
-/datum/action/proc/IsAvailable(feedback = FALSE)
+/datum/action/IsAvailable(feedback = FALSE)
 	if(!owner)
 		return FALSE
 	if((check_flags & AB_CHECK_HANDS_BLOCKED) && HAS_TRAIT(owner, TRAIT_HANDS_BLOCKED))
@@ -175,6 +178,7 @@
 			owner.balloon_alert(owner, "unconscious!")
 		return FALSE
 	return TRUE
+	.=..()
 
 /// Builds / updates all buttons we have shared or given out
 /datum/action/proc/build_all_button_icons(update_flags = ALL, force)
