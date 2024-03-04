@@ -21,14 +21,7 @@
 	. = ..()
 	if(.)
 		return
-	// AQ EDIT START - click to shit
-	if(user.a_intent == INTENT_HELP)
-		if(user.defecation < DEFECATION_VERY)
-			to_chat(user, "<span class='notice'>Nie potrzebujesz skorzystać z ubikacji.</span>")
-			return
-		else if(do_after(usr, 3 SECONDS, target = src))
-			shit(user)// AQ EDIT END
-	else if(swirlie)
+	if(swirlie)
 		user.changeNext_move(CLICK_CD_MELEE)
 		playsound(src.loc, "swing_hit", 25, 1)
 		swirlie.visible_message("<span class='danger'>[user] slams the toilet seat onto [swirlie]'s head!</span>", "<span class='userdanger'>[user] slams the toilet seat onto your head!</span>", "<span class='italics'>You hear reverberating porcelain.</span>")

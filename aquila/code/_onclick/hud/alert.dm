@@ -15,15 +15,3 @@
 	desc = "Jesteś odwodniony." // tu coś dopisać może
 	icon = 'aquila/icons/mob/screen_alert.dmi'
 	icon_state = "dehydrated"
-
-/atom/movable/screen/alert/need_to_shit
-	name = "Przemiana materii"
-	desc = "Musisz skorzystać z ubikacji." // tu coś dopisać może
-	icon = 'icons/obj/watercloset.dmi'
-	icon_state = "toilet00"
-
-/atom/movable/screen/alert/about_to_shit_myself
-	name = "Sranie"
-	desc = "Krecik puka w taborecik!" // tu coś dopisać może
-	icon = 'icons/obj/watercloset.dmi'
-	icon_state = "toilet10"

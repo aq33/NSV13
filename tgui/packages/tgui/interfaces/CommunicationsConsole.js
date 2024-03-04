@@ -323,14 +323,12 @@ const PageMain = (props, context) => {
     canMessageAssociates,
     canRecallShuttles,
     canRequestNuke,
-    canRequestERT,
     canSendToSectors,
     canSetAlertLevel,
     canToggleEmergencyAccess,
     emagged,
     emergencyAccess,
     importantActionReady,
-    reinforcementActionReady,
     shuttleCalled,
     shuttleCalledPreviously,
     shuttleCanEvacOrFailReason,
@@ -347,10 +345,6 @@ const PageMain = (props, context) => {
     context, "messaing_sector", null);
   const [requestingNukeCodes, setRequestingNukeCodes] = useLocalState(
     context, "requesting_nuke_codes", false);
-  const [requestingResponseTeam, setRequestingResponseTeam] = useLocalState(
-    context, "requesting_ert", false);
-
-
 
   const [
     [showAlertLevelConfirm, confirmingAlertLevelTick],
@@ -490,17 +484,6 @@ const PageMain = (props, context) => {
             </Flex.Item>
           )}
 
-          {!!canRequestERT && (
-            <Flex.Item mt={0.3}>
-              <Button fluid
-                icon="dumpster-fire"
-                content="Request Emergency Response Team"
-                disabled={!reinforcementActionReady}
-                onClick={() => setRequestingResponseTeam(true)}
-              />
-            </Flex.Item>
-          )}
-
           {!!emagged && (
             <Flex.Item mt={0.3}>
               <Button fluid
@@ -515,7 +498,6 @@ const PageMain = (props, context) => {
             && !canToggleEmergencyAccess
             && !canMessageAssociates
             && !canRequestNuke
-            && !canRequestERT
             && !emagged
             && (
               <Flex.Item>
@@ -548,20 +530,6 @@ const PageMain = (props, context) => {
         onSubmit={reason => {
           setRequestingNukeCodes(false);
           act("requestNukeCodes", {
-            reason,
-          });
-        }}
-      />}
-
-      {!!canRequestERT && requestingResponseTeam && <MessageModal
-        label="Reason for requesting emergency response team"
-        notice="Misuse of the response team requesting system will not be tolerated under any circumstances. Transmission does not guarantee a response."
-        icon="bomb"
-        buttonText="Request ERT"
-        onBack={() => setRequestingResponseTeam(false)}
-        onSubmit={reason => {
-          setRequestingResponseTeam(false);
-          act("requestERT", {
             reason,
           });
         }}

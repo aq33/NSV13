@@ -232,10 +232,10 @@
 /obj/effect/turf_decal/tile/ship/green{
 	dir = 1
 	},
+/obj/machinery/vending/snack/random,
 /obj/structure/sign/poster/official/random{
 	pixel_x = -32
 	},
-/obj/machinery/vending/cola/random,
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck1/hallway)
 "aL" = (
@@ -265,7 +265,6 @@
 "aP" = (
 /obj/effect/turf_decal/tile/ship/half/green,
 /obj/structure/table/glass,
-/obj/machinery/cell_charger,
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck1/hallway)
 "aR" = (
@@ -1065,7 +1064,6 @@
 /obj/effect/turf_decal/tile/ship/bar{
 	dir = 8
 	},
-/obj/machinery/vending/clothing,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/bar/mess_hall)
 "dC" = (
@@ -1409,13 +1407,10 @@
 /turf/open/floor/monotile/dark,
 /area/medical/virology)
 "ez" = (
+/obj/machinery/chem_heater,
 /obj/machinery/power/apc/auto_name/south,
 /obj/structure/cable,
-/obj/machinery/plortrefinery,
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/turf/open/floor/plasteel/techmaint,
+/turf/open/floor/durasteel/alt,
 /area/science/xenobiology)
 "eA" = (
 /obj/machinery/requests_console{
@@ -2066,7 +2061,7 @@
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "bar"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating,
 /area/crew_quarters/bar)
 "gM" = (
 /obj/structure/lattice/catwalk/over/ship,
@@ -2513,7 +2508,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor/engine/airless,
+/turf/open/space/basic,
 /area/medical/surgery)
 "ir" = (
 /obj/structure/chair/office{
@@ -2800,7 +2795,7 @@
 /obj/effect/turf_decal/tile/ship/green{
 	dir = 8
 	},
-/obj/machinery/vending/cola/random,
+/obj/machinery/vending/snack/random,
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck1/hallway)
 "iX" = (
@@ -2935,7 +2930,6 @@
 "jp" = (
 /obj/effect/turf_decal/ship/letter{
 	icon_state = "U";
-	pixel_x = 6;
 	pixel_y = -2
 	},
 /turf/open/floor/engine/airless,
@@ -3320,6 +3314,7 @@
 /obj/item/restraints/handcuffs/cable/zipties,
 /obj/item/restraints/handcuffs/cable/zipties,
 /obj/item/clothing/glasses/blindfold/white,
+/obj/machinery/status_display/evac/north,
 /obj/structure/table,
 /turf/open/floor/noslip/white,
 /area/medical/medbay)
@@ -3390,6 +3385,7 @@
 /obj/structure/closet/crate/secure/loot,
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/effect/spawner/lootdrop/teratoma,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/effect/decal/cleanable/oil/slippery,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/starboard)
@@ -3747,9 +3743,6 @@
 /turf/open/floor/wood,
 /area/library)
 "lL" = (
-/obj/structure/toilet{
-	dir = 8
-	},
 /turf/open/floor/bronze,
 /area/ai_monitored/turret_protected/ai)
 "lM" = (
@@ -3958,8 +3951,8 @@
 /obj/machinery/firealarm/directional/west{
 	pixel_y = 12
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 6
 	},
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/cmo)
@@ -4093,7 +4086,7 @@
 	id = "bar"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/wood,
+/turf/open/floor/plating,
 /area/crew_quarters/bar)
 "mT" = (
 /obj/machinery/vending/hydroseeds,
@@ -5416,7 +5409,7 @@
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "bar"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating,
 /area/crew_quarters/bar)
 "ro" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
@@ -5824,7 +5817,9 @@
 /area/science/xenobiology)
 "sD" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
-/mob/living/carbon/monkey/punpun,
+/mob/living/carbon/monkey/punpun{
+	name = "Szymek"
+	},
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
 "sE" = (
@@ -5927,10 +5922,6 @@
 /obj/effect/turf_decal/tile/ship/blue{
 	dir = 4
 	},
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = 11
-	},
 /turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "sV" = (
@@ -6005,12 +5996,6 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/bar/mess_hall)
-"th" = (
-/obj/machinery/light/floor{
-	pixel_x = 4
-	},
-/turf/open/floor/engine/airless,
-/area/maintenance/department/science/xenobiology)
 "ti" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -6636,8 +6621,6 @@
 /obj/item/storage/bag/bio,
 /obj/structure/table/glass,
 /obj/machinery/camera/autoname,
-/obj/item/wrench,
-/obj/item/crowbar/red,
 /turf/open/floor/monotile/steel,
 /area/science/xenobiology)
 "vj" = (
@@ -10027,6 +10010,8 @@
 /area/medical/medbay)
 "Gp" = (
 /obj/structure/closet/secure_closet/medical1,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/medsprays,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -10337,7 +10322,9 @@
 /turf/open/floor/circuit/telecomms/server,
 /area/tcommsat/server)
 "Ho" = (
-/obj/machinery/chem_master,
+/obj/structure/table/glass,
+/obj/item/wrench,
+/obj/item/crowbar/red,
 /turf/open/floor/monotile/steel,
 /area/science/xenobiology)
 "Hp" = (
@@ -10434,7 +10421,7 @@
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck1/hallway)
 "HB" = (
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/clothing,
 /turf/open/floor/monotile/steel,
 /area/crew_quarters/bar/mess_hall)
 "HC" = (
@@ -11131,9 +11118,12 @@
 /obj/machinery/light_switch/west{
 	pixel_y = 12
 	},
-/mob/living/simple_animal/pet/cat/Runtime,
-/obj/machinery/light,
 /obj/item/bedsheet/cmo,
+/mob/living/simple_animal/pet/cat/Runtime,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/obj/machinery/light,
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/cmo)
 "JB" = (
@@ -11311,10 +11301,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/table/wood,
-/obj/item/stamp/captain{
-	pixel_y = 10
-	},
-/obj/item/storage/lockbox/medal,
+/obj/item/stamp/captain,
 /obj/item/pinpointer/nuke,
 /obj/item/disk/nuclear,
 /turf/open/floor/monotile/steel,
@@ -11340,9 +11327,9 @@
 /area/engine/gravity_generator)
 "Kg" = (
 /obj/machinery/light,
+/obj/machinery/chem_master,
 /obj/effect/turf_decal/stripes/corner,
 /obj/machinery/status_display/evac/south,
-/obj/machinery/chem_heater,
 /turf/open/floor/durasteel/alt,
 /area/science/xenobiology)
 "Kj" = (
@@ -11376,6 +11363,7 @@
 	name = "Captain requests console";
 	pixel_y = 32
 	},
+/obj/item/storage/lockbox/medal,
 /obj/item/melee/chainofcommand/tailwhip/kitty,
 /turf/open/floor/monotile/steel,
 /area/crew_quarters/heads/captain)
@@ -11519,9 +11507,9 @@
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/medical3,
-/obj/effect/turf_decal/box,
-/obj/item/defibrillator/loaded,
 /obj/item/clothing/glasses/hud/health,
+/obj/item/defibrillator/loaded,
+/obj/effect/turf_decal/box,
 /turf/open/floor/plasteel/white,
 /area/medical/storage)
 "KF" = (
@@ -13178,6 +13166,9 @@
 	},
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/east,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /obj/effect/landmark/zebra_interlock_point,
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -13376,8 +13367,10 @@
 	desc = "Skipper's bed! Looks comfy.";
 	name = "Dog Bed"
 	},
+/mob/living/simple_animal/pet/dog/pug{
+	name = "pugasus"
+	},
 /obj/item/bedsheet/captain,
-/mob/living/simple_animal/pet/fox/Renault,
 /turf/open/floor/monotile/steel,
 /area/crew_quarters/heads/captain)
 "Qf" = (
@@ -13444,15 +13437,15 @@
 /obj/machinery/computer/camera_advanced/xenobio{
 	dir = 1
 	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
 /obj/structure/extinguisher_cabinet/south,
 /obj/structure/extinguisher_cabinet/south{
 	pixel_x = -12
 	},
 /obj/structure/extinguisher_cabinet/south{
 	pixel_x = 12
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
 	},
 /turf/open/floor/plasteel/techmaint,
 /area/science/xenobiology)
@@ -13921,8 +13914,7 @@
 /area/hallway/nsv/deck1/hallway)
 "Sd" = (
 /obj/effect/turf_decal/ship/letter{
-	icon_state = "I";
-	pixel_x = 4
+	icon_state = "I"
 	},
 /turf/open/floor/engine/airless,
 /area/space/nearstation)
@@ -14180,9 +14172,6 @@
 	pixel_x = 2;
 	pixel_y = -2
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
 /turf/open/floor/durasteel/lino,
 /area/awaymission/research/interior/genetics)
 "SX" = (
@@ -14214,7 +14203,6 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/openspace,
 /area/maintenance/nsv/deck1/starboard)
 "Tf" = (
@@ -14424,10 +14412,7 @@
 /area/bridge/cic)
 "TQ" = (
 /obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
+	icon_state = "0-8"
 	},
 /turf/open/floor/durasteel/lino,
 /area/awaymission/research/interior/genetics)
@@ -14994,22 +14979,13 @@
 	},
 /obj/item/stack/sheet/mineral/plasma{
 	amount = 5;
-	layer = 3.2;
-	pixel_x = -8;
-	pixel_y = 8
+	layer = 3.2
 	},
 /obj/machinery/button/door{
 	id = "atlas_chemistry";
 	name = "Chemistry Shutters";
 	pixel_x = 23;
 	pixel_y = 24
-	},
-/obj/item/storage/box/medsprays{
-	pixel_x = 7
-	},
-/obj/item/storage/box/pillbottles{
-	pixel_y = -2;
-	pixel_x = -6
 	},
 /turf/open/floor/durasteel/lino,
 /area/medical/chemistry)
@@ -15902,11 +15878,6 @@
 /mob/living/carbon/monkey,
 /turf/open/floor/grass,
 /area/medical/virology)
-"YH" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
-/area/maintenance/department/science/xenobiology)
 "YI" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 9
@@ -16125,6 +16096,9 @@
 /obj/structure/chair{
 	dir = 8
 	},
+/obj/structure/sink{
+	pixel_y = 32
+	},
 /obj/machinery/button/door{
 	dir = 8;
 	id = "izolatka";
@@ -16135,7 +16109,6 @@
 	pixel_y = 24
 	},
 /obj/effect/turf_decal/tile/ship/blue,
-/obj/machinery/status_display/evac/north,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "Zx" = (
@@ -16302,10 +16275,9 @@
 /turf/open/floor/monotile/light,
 /area/medical/medbay)
 "ZV" = (
-/obj/machinery/door/window/brigdoor{
+/obj/machinery/door/window/westright{
 	name = "Monkey Pen";
-	req_access_txt = "39";
-	dir = 8
+	req_access_txt = "39"
 	},
 /turf/open/floor/grass,
 /area/medical/virology)
@@ -52198,7 +52170,7 @@ eD
 cB
 cB
 sk
-mt
+WR
 Fx
 oQ
 WR
@@ -52712,7 +52684,7 @@ cH
 cH
 Zw
 kW
-cH
+WR
 TF
 Yu
 WR
@@ -52969,7 +52941,7 @@ RQ
 cH
 Wa
 Xg
-dQ
+cp
 cp
 cp
 cp
@@ -53995,7 +53967,7 @@ WJ
 iH
 dO
 dR
-dQ
+na
 dQ
 dQ
 mK
@@ -57326,7 +57298,7 @@ Tf
 Tf
 fT
 Lo
-YH
+TK
 pb
 JZ
 gr
@@ -59886,7 +59858,7 @@ mK
 mK
 Rg
 cx
-th
+bJ
 Sd
 jv
 mK
@@ -60904,7 +60876,7 @@ uf
 uf
 uf
 uf
-uf
+mK
 mK
 mK
 mK

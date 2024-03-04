@@ -161,7 +161,7 @@
 // Medical
 #define JOB_NAME_CHIEFMEDICALOFFICER "Ordynator"
 #define JOB_NAME_MEDICALDOCTOR "Lekarz"
-#define JOB_NAME_PARAMEDIC  "Ratownik Medyczny"
+#define JOB_NAME_PARAMEDIC  "Sanitariusz"
 #define JOB_NAME_CHEMIST    "Chemik"
 #define JOB_NAME_VIROLOGIST "Wirolog"
 #define JOB_NAME_GENETICIST "Genetyk"

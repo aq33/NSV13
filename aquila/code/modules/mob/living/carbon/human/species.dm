@@ -2,10 +2,6 @@
 	var/gendered_speech = FALSE	// If true, will play different speech sounds based on gender.
 	var/speech_sound = ""
 
-	// defecation multiplier
-	// instead of setting this to 0
-	// add TRAIT_NOSHITTING to inherent traits
-	var/shitmod = 1
 
 /datum/species/proc/eat_text(fullness, eatverb, obj/O, mob/living/carbon/C, mob/user)
 	if(C == user)
