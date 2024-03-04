@@ -6,6 +6,9 @@
 #define REQUEST_SYNDICATE "request_syndicate"
 /// Requests for the nuke code
 #define REQUEST_NUKE "request_nuke"
+// AQ EDIT
+/// Requests for an ERT
+#define REQUEST_ERT "request_response_team"
 
 /**
  * # Request
@@ -45,3 +48,6 @@
 	if(req_type == REQUEST_NUKE && CONFIG_GET(flag/allow_nuke_request_auto_accept)) // AQ EDIT
 		spawn(0)
 			auto_generate_nuke_code()
+	if(req_type == REQUEST_ERT && CONFIG_GET(flag/allow_nuke_request_auto_accept)) // AQ EDIT
+		spawn(0)
+			auto_create_response_team()

@@ -372,10 +372,12 @@
 		data["canMessageAssociates"] = !issilicon(user) && GLOB.security_level >= SEC_LEVEL_RED
 		data["canRecallShuttles"] = !issilicon(user)
 		data["canRequestNuke"] = FALSE
+		data["canRequestERT"] = FALSE // AQ EDIT
 		data["canSendToSectors"] = FALSE
 		data["canSetAlertLevel"] = FALSE
 		data["canToggleEmergencyAccess"] = FALSE
 		data["importantActionReady"] = COOLDOWN_FINISHED(src, important_action_cooldown)
+		data["reinforcementActionReady"] = COOLDOWN_FINISHED(src, reinforcement_action_cooldown) // AQ EDIT
 		data["shuttleCalled"] = FALSE
 		data["shuttleLastCalled"] = FALSE
 
@@ -387,6 +389,9 @@
 		if (authenticated_as_non_silicon_captain(user))
 			data["canMessageAssociates"] = TRUE
 			data["canRequestNuke"] = TRUE
+
+		if (authenticated_as_cap_sec_or_silicon(user)) // AQ EDIT
+			data["canRequestERT"] = TRUE
 
 		if (can_send_messages_to_other_sectors(user))
 			data["canSendToSectors"] = TRUE
