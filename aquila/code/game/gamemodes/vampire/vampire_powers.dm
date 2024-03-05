@@ -222,7 +222,7 @@
 		W.take_damage(75)
 	playsound(user.loc, 'sound/effects/screech.ogg', 100, 1)
 
-/obj/effect/proc_holder/spell/bats
+/obj/effect/proc_holder/spell/self/bats
 	name = "Summon Bats (30)"
 	desc = "You summon a pair of space bats who attack nearby targets until they or their target is dead."
 	gain_desc = "You have gained the Summon Bats ability."
@@ -235,9 +235,13 @@
 	var/num_bats = 2
 
 
-/obj/effect/proc_holder/spell/bats/cast(list/targets, mob/user = usr)
-	for(var/T in targets)
-		new /mob/living/simple_animal/hostile/vampire_bat(user.loc)
+/obj/effect/proc_holder/spell/self/bats/cast(list/targets, mob/user = usr)
+	. = ..()
+	var/list/turf/spawns = get_adjacent_open_turfs(user.loc)
+	for(var/i = 1 to num_bats)
+		var/T = pick(spawns)
+		new /mob/living/simple_animal/hostile/vampire_bat(T)
+		spawns -= T
 
 
 /obj/effect/proc_holder/spell/targeted/ethereal_jaunt/mistform
