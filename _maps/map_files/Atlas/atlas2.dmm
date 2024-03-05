@@ -268,6 +268,15 @@
 /obj/machinery/cell_charger,
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck1/hallway)
+"aQ" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "aR" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
@@ -644,7 +653,7 @@
 	icon_state = "1-8"
 	},
 /obj/structure/cable/yellow{
-	icon_state = "2-8"
+	icon_state = "1-2"
 	},
 /turf/open/openspace/airless,
 /area/space/nearstation)
@@ -2022,8 +2031,16 @@
 /turf/open/openspace/airless,
 /area/space)
 "gy" = (
-/obj/structure/railing,
-/turf/open/floor/plating/airless,
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/turf/open/floor/engine/airless,
 /area/space/nearstation)
 "gC" = (
 /obj/effect/turf_decal/tile/ship/half/green{
@@ -4127,6 +4144,12 @@
 "na" = (
 /turf/closed/wall/r_wall,
 /area/medical/surgery)
+"nc" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "nf" = (
 /obj/machinery/porta_turret/ai,
 /obj/effect/turf_decal/stripes/box,
@@ -7864,10 +7887,11 @@
 /turf/closed/wall/steel,
 /area/bridge/cic)
 "zC" = (
-/obj/structure/shuttle/engine/huge{
-	dir = 8
+/obj/machinery/power/solar,
+/obj/structure/cable/yellow{
+	icon_state = "0-2"
 	},
-/turf/open/floor/plating/airless,
+/turf/open/floor/plasteel/airless/solarpanel,
 /area/space/nearstation)
 "zD" = (
 /obj/machinery/shower{
@@ -8277,6 +8301,16 @@
 "AL" = (
 /turf/open/floor/monotile/steel,
 /area/science/xenobiology)
+"AO" = (
+/obj/machinery/power/solar{
+	id = "starboardsolar";
+	name = "Starboard Solar Array"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
+	},
+/turf/open/floor/plasteel/airless/solarpanel,
+/area/space)
 "AP" = (
 /obj/machinery/door/airlock/ship/public/glass{
 	name = "Library"
@@ -10063,6 +10097,15 @@
 	},
 /turf/open/floor/engine,
 /area/ai_monitored/turret_protected/aisat)
+"GC" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "GG" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -41075,14 +41118,14 @@ jw
 PG
 Xh
 yK
-pW
-pW
-gy
-pW
-pW
-pW
-pW
-pW
+zC
+aQ
+yK
+cx
+cx
+cx
+cx
+cx
 tL
 cL
 cL
@@ -41332,14 +41375,14 @@ jw
 PG
 Xh
 yK
-pW
-pW
-gy
-pW
-pW
 zC
-pW
-pW
+gy
+yK
+cx
+cx
+ys
+cx
+cx
 TN
 cL
 cL
@@ -41589,14 +41632,14 @@ tp
 PG
 Xh
 yK
-pW
-pW
+zC
 gy
-pW
-pW
-pW
-pW
-pW
+yK
+cx
+cx
+cx
+cx
+cx
 tL
 tL
 tL
@@ -41846,14 +41889,14 @@ PG
 dA
 Xh
 yK
-pW
-pW
+zC
 gy
-pW
-pW
-pW
-pW
-pW
+yK
+cx
+cx
+cx
+cx
+cx
 tL
 tL
 gn
@@ -42103,9 +42146,9 @@ PG
 dA
 Xh
 yK
-pW
-pW
-pW
+zC
+gy
+yK
 of
 of
 of
@@ -42359,10 +42402,10 @@ UI
 Da
 dA
 ce
+nc
+nc
+GC
 yK
-pW
-pW
-pW
 MS
 Ph
 Ph
@@ -44631,8 +44674,8 @@ cL
 cL
 cL
 cL
-cL
 wd
+Pj
 Pj
 Pj
 Pj
@@ -44683,7 +44726,7 @@ iS
 Oc
 mK
 mK
-mK
+cx
 Rg
 tL
 cL
@@ -44888,8 +44931,8 @@ cL
 cL
 cL
 cL
-cL
 lx
+KN
 KN
 KN
 KN
@@ -45144,9 +45187,9 @@ cL
 cL
 cL
 cL
-cL
 SP
 yH
+Pj
 Pj
 Pj
 Pj
@@ -45401,9 +45444,9 @@ cL
 cL
 cL
 cL
-cL
 Zp
 lx
+KN
 KN
 KN
 KN
@@ -45657,10 +45700,10 @@ Cw
 cL
 cL
 cL
-cL
 Zp
-cL
+bA
 yH
+Pj
 Pj
 Pj
 Pj
@@ -45914,10 +45957,10 @@ cL
 cL
 cL
 cL
-cL
 Zp
 tL
 lx
+KN
 KN
 KN
 KN
@@ -46171,10 +46214,10 @@ cL
 cL
 cL
 cL
-cL
 Zp
-cL
+bA
 yH
+Pj
 Pj
 Pj
 Pj
@@ -46428,10 +46471,10 @@ cL
 cL
 cL
 cL
-cL
 tL
 tL
 lx
+KN
 KN
 KN
 KN
@@ -46685,10 +46728,10 @@ cL
 cL
 cL
 cL
-cL
 Zp
 tL
 yH
+Pj
 Pj
 Pj
 Pj
@@ -46943,9 +46986,9 @@ cL
 cL
 cL
 cL
-cL
 tL
 lx
+KN
 KN
 KN
 KN
@@ -47200,9 +47243,9 @@ cL
 cL
 cL
 cL
-cL
 DV
 vh
+Pj
 Pj
 Pj
 Pj
@@ -47458,8 +47501,8 @@ cL
 cL
 cL
 cL
-cL
 yH
+KN
 KN
 KN
 KN
@@ -47715,8 +47758,8 @@ cL
 cL
 cL
 cL
-cL
 Dw
+Pj
 Pj
 Pj
 Pj
@@ -47972,8 +48015,8 @@ cL
 cL
 cL
 cL
-cL
 lx
+KN
 KN
 KN
 KN
@@ -48229,8 +48272,8 @@ cL
 cL
 cL
 cL
-cL
 wh
+Pj
 Pj
 Pj
 Gd
@@ -48487,7 +48530,7 @@ cL
 cL
 cL
 cL
-cL
+AO
 KN
 KN
 KN
