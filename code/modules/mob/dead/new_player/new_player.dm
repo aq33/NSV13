@@ -39,13 +39,14 @@
 	return
 
 /mob/dead/new_player/proc/new_player_panel()
+	var/output = "<center><p><a href='byond://?src=[REF(src)];show_tutorial=1'>Samouczek</a></p>"
 	if (client?.interviewee)
 		return
 
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/lobby)
 	if(!asset_datum.send(client))
 		return
-	var/output = "<center><p><a href='byond://?src=[REF(src)];show_preferences=1'>Ustaw Postać</a></p>"
+	output += "<center><p><a href='byond://?src=[REF(src)];show_preferences=1'>Ustaw Postać</a></p>"
 
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
 		switch(ready)
@@ -200,6 +201,11 @@
 	if(href_list["votepollref"])
 		var/datum/poll_question/poll = locate(href_list["votepollref"]) in GLOB.polls
 		vote_on_poll_handler(poll, href_list)
+
+	if(href_list["show_tutorial"])
+		var/datum/tutorial_menu/menu = new(src)
+		menu.ui_interact(src)
+		return
 
 //When you cop out of the round (NB: this HAS A SLEEP FOR PLAYER INPUT IN IT)
 /mob/dead/new_player/proc/make_me_an_observer(force_observe=FALSE)

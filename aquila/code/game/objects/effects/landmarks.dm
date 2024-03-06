@@ -17,3 +17,8 @@
 	..()
 	GLOB.infiltrator_objective_items += loc
 	return INITIALIZE_HINT_QDEL
+
+/// Marks the bottom left of the tutorial zone.
+/obj/effect/landmark/tutorial_bottom_left
+	name = "tutorial bottom left"
+
