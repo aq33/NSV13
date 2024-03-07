@@ -52,7 +52,11 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 	var/turf/bottom_left_corner_reservation = locate(reservation.bottom_left_coords[1], reservation.bottom_left_coords[2], reservation.bottom_left_coords[3])
 	var/datum/map_template/tutorial/template = new tutorial_template
-	var/datum/async_map_generator/template_placer = template.load(bottom_left_corner_reservation, FALSE, TRUE)
+	to_chat(world, "<span class='announce'> [reservation.bottom_left_coords[1]], [reservation.bottom_left_coords[2]], [reservation.bottom_left_coords[3]]")
+	to_chat(world, "<span class='announce'> [reservation]")
+	to_chat(world, "<span class='announce'> [template]")
+	var/datum/async_map_generator/template_placer = template.load_tut(bottom_left_corner_reservation, FALSE, TRUE)
+	to_chat(world, "<span class='announce'> [template_placer]")
 	template_placer.on_completion(CALLBACK(src, PROC_REF(start_tutorial), tutorial_mob))
 
 /datum/tutorial/proc/start_tutorial(mob/starting_mob)

@@ -116,6 +116,7 @@ GLOBAL_LIST_INIT(typecache_powerfailure_safe_areas, typecacheof(list(
 
 #undef BP_MAX_ROOM_SIZE
 
+
 //Repopulates sortedAreas list
 /proc/repopulate_sorted_areas()
 	GLOB.sortedAreas = list()
