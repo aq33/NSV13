@@ -126,7 +126,10 @@
 	name = "emitter beam"
 	icon_state = "emitter"
 	damage = 30
-	impact_effect_type = /obj/effect/temp_visual/impact_effect/green_laser
+//	impact_effect_type = /obj/effect/temp_visual/impact_effect/green_laser  //AQ EDIT
+	tracer_type = /obj/effect/projectile/tracer/emitter //AQ EDIT
+	muzzle_type = /obj/effect/projectile/muzzle/emitter //AQ EDIT
+	impact_type = /obj/effect/projectile/impact/emitter //AQ EDIT
 	light_color = LIGHT_COLOR_GREEN
 	hitscan = TRUE //AQUILA EDIT
 
