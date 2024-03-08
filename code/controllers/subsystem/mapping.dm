@@ -25,6 +25,8 @@ SUBSYSTEM_DEF(mapping)
 
 	///Random rooms template list, gets initialized and filled when server starts.
 	var/list/random_room_templates = list()
+	//AQ Edit - random engineering departments or engines
+	var/list/random_engine_templates = list()
 	///Temporary list, where room spawners are kept roundstart. Not used later.
 	var/list/random_room_spawners = list()
 	///NSV13 - boarding maps
@@ -73,10 +75,10 @@ SUBSYSTEM_DEF(mapping)
 			to_chat(world, "<span class='boldannounce'>Unable to load next or default map config, defaulting to Box Station</span>")
 			config = old_config
 	initialize_biomes()
+	preloadTemplates()
 	loadWorld()
 	repopulate_sorted_areas()
 	process_teleport_locs()			//Sets up the wizard teleport locations
-	preloadTemplates()
 
 #ifndef LOWMEMORYMODE
 	// Create space ruin levels
@@ -180,6 +182,7 @@ SUBSYSTEM_DEF(mapping)
 	lava_ruins_templates = SSmapping.lava_ruins_templates
 	shuttle_templates = SSmapping.shuttle_templates
 	random_room_templates = SSmapping.random_room_templates
+	random_engine_templates = SSmapping.random_engine_templates
 	shelter_templates = SSmapping.shelter_templates
 	boarding_templates = SSmapping.boarding_templates //NSV13 - boarding maps
 	unused_turfs = SSmapping.unused_turfs
@@ -437,6 +440,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	preloadShelterTemplates()
 	preloadBoardingTemplates() //NSV13 - boarding maps
 	preloadHolodeckTemplates()
+	preloadRandomEngineTemplates() //AQ Edit - random engineering departments or engines
 
 /datum/controller/subsystem/mapping/proc/LoadStationRoomTemplates()
 	for(var/item in subtypesof(/datum/map_template/random_room))
@@ -517,6 +521,17 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		var/datum/map_template/holodeck/holo_template = new holodeck_type()
 
 		holodeck_templates[holo_template.template_id] = holo_template
+
+//AQ EDIT START
+/datum/controller/subsystem/mapping/proc/preloadRandomEngineTemplates()
+	for(var/item in subtypesof(/datum/map_template/random_engine))
+		var/datum/map_template/random_engine/engine_type = item
+		if(!(initial(engine_type.mappath)))
+			continue
+		var/datum/map_template/random_engine/R = new engine_type()
+		random_engine_templates[R.engine_id] = R
+		map_templates[R.engine_id] = R
+//AQ EDIT STOP
 
 //Manual loading of away missions.
 /client/proc/admin_away()
