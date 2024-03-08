@@ -54,11 +54,10 @@
 	// suit_store = /obj/item/gun/energy/e_gun/mini/heads //NSV13 - no lasers
 	r_pocket = /obj/item/assembly/flash/handheld
 	l_pocket = /obj/item/restraints/handcuffs
-	backpack_contents = list(/obj/item/melee/baton/loaded=1,
+	backpack_contents = list(/obj/item/melee/classic_baton/police/tonfa=1,
 		/obj/item/gun/ballistic/tazer,
 		/obj/item/ammo_box/magazine/tazer_cartridge_storage=1,
-		/obj/item/book/granter/martial/jujitsu,
-		/obj/item/melee/classic_baton/police=1) //NSV13 this line)
+		/obj/item/book/granter/martial/jujitsu) //NSV13 this line)
 
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec

@@ -204,12 +204,20 @@
 /obj/item/melee/classic_baton/proc/get_stun_description(mob/living/target, mob/living/user)
 	. = list()
 
-	.["visibletrip"] =  "<span class ='danger'>[user] has knocked [target]'s legs out from under them with [src]!</span>"
-	.["localtrip"] = "<span class ='danger'>[user] has knocked your legs out from under you [src]!</span>"
-	.["visibledisarm"] =  "<span class ='danger'>[user] has disarmed [target] with [src]!</span>"
-	.["localdisarm"] = "<span class ='danger'>[user] whacks your arm with [src], causing a coursing pain!</span>"
-	.["visiblestun"] =  "<span class ='danger'>[user] beat [target] with [src]!</span>"
-	.["localstun"] = "<span class ='danger'>[user] has beat you with [src]!</span>"
+	.["visibletrip"] =  "<span class ='danger'>[user] skosił [target] używając [src]! To musiało boleć.</span>"
+	.["localtrip"] = "<span class ='danger'>[user] skosił cię używając [src]! Chryste Panie, jak to boli...</span>"
+	.["visibleknockout"] =  "<span class ='danger'>[user] przyładował [target] w łeb za pomocą [src]! [target] pada nieprzytomny na glebę.</span>"
+	.["localknockout"] = "<span class ='danger'>[user] przyładował ci w łeb [src] z taką siłą, że straciłeś przytomność...</span>"
+	.["visibledisarm"] =  "<span class ='danger'>[user] pogruchotał rękę [target] używając [src]!</span>"
+	.["localdisarm"] = "<span class ='danger'>[user] pogruchotał ci rękę używając [src]! Z bólu upuściłeś wszystko z ręki.</span>"
+	.["visiblestun"] =  "<span class ='danger'>[user] uderzył [target] przy użyciu [src]!</span>"
+	.["localstun"] = "<span class ='danger'>[user] uderzył cię przy użyciu [src]!</span>"
+	.["visiblehead"] =  "<span class ='danger'>[user] pieprznął [target] w łeb używając [src]!</span>"
+	.["localhead"] = "<span class ='danger'>[user] pieprznął cię w łeb używając [src]!</span>"
+	.["visiblearm"] =  "<span class ='danger'>[user] uderzył [target] w rękę używając [src]!</span>"
+	.["localarm"] = "<span class ='danger'>[user] uderzył w twoją rękę przy użyciu [src]!</span>"
+	.["visibleleg"] =  "<span class ='danger'>[user] uderzył [target] w nogę używając [src]!</span>"
+	.["localleg"] = "<span class ='danger'>[user] uderzył cię w nogę używając [src]!</span>"
 
 	return .
 
