@@ -274,13 +274,6 @@
 /obj/machinery/firealarm/directional/west,
 /turf/open/floor/carpet/ship,
 /area/nsv/weapons)
-"aI" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "atlas_engine_atmo_shutters"
-	},
-/turf/open/floor/plating,
-/area/engine/engine_room)
 "aL" = (
 /obj/machinery/conveyor/slow{
 	dir = 1;
@@ -5582,8 +5575,10 @@
 /turf/closed/wall/r_wall,
 /area/chapel/main)
 "oL" = (
-/turf/open/space/basic,
-/area/engine/engine_room)
+/obj/structure/grille/wall,
+/obj/effect/spawner/engine,
+/turf/template_noop,
+/area/space/nearstation)
 "oM" = (
 /obj/machinery/rnd/experimentor,
 /turf/open/floor/engine,
@@ -6576,8 +6571,7 @@
 /turf/open/floor/monotile/dark,
 /area/nsv/weapons)
 "rj" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
-/turf/open/floor/plating,
+/turf/template_noop,
 /area/engine/engine_room)
 "rk" = (
 /obj/structure/chair/fancy/bench/pew/left{
@@ -6979,13 +6973,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/science)
-"so" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "atlas_engineering"
-	},
-/turf/open/floor/plating,
-/area/engine/engine_room)
 "sp" = (
 /obj/effect/turf_decal/ship/techfloor{
 	dir = 1
@@ -7234,33 +7221,6 @@
 	},
 /turf/open/floor/durasteel/techfloor,
 /area/maintenance/nsv/deck2/starboard)
-"tc" = (
-/obj/machinery/door/firedoor/border_only/directional/south{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/border_only/directional/north{
-	dir = 8
-	},
-/obj/effect/landmark/zebra_interlock_point,
-/obj/machinery/door/window/westright{
-	name = "Engineering Desk";
-	req_one_access_txt = "24;10"
-	},
-/obj/machinery/door/window/northright{
-	dir = 4
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "atlas_engineering"
-	},
-/obj/structure/table/reinforced,
-/obj/item/paper_bin,
-/obj/item/pen,
-/obj/item/stamp,
-/obj/item/stamp/denied{
-	pixel_y = 10
-	},
-/turf/open/floor/plating,
-/area/engine/engine_room)
 "td" = (
 /turf/open/floor/monotile/steel,
 /area/science)
@@ -9667,7 +9627,7 @@
 	dir = 4;
 	pixel_x = -32
 	},
-/turf/closed/wall/r_wall,
+/turf/template_noop,
 /area/engine/engine_room)
 "Aj" = (
 /obj/structure/railing,
@@ -10310,6 +10270,10 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/science)
+"Cc" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/space/nearstation)
 "Cd" = (
 /obj/machinery/atmospherics/components/binary/dp_vent_pump/layer2{
 	dir = 1
@@ -11682,26 +11646,6 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/science/explab)
-"Ge" = (
-/obj/effect/landmark/zebra_interlock_point,
-/obj/machinery/door/firedoor/border_only{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/border_only,
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/purple/hidden,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/door/airlock/ship/engineering/glass{
-	name = "Engineering";
-	req_one_access_txt = "24;10"
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
 "Gf" = (
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
@@ -12386,6 +12330,10 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space/nearstation)
+"HZ" = (
+/obj/structure/grille/wall,
+/turf/template_noop,
+/area/space/nearstation)
 "Ia" = (
 /obj/structure/table_frame,
 /obj/item/relic,
@@ -13017,10 +12965,6 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/nsv/weapons)
-"JQ" = (
-/obj/structure/sign/warning/radiation,
-/turf/closed/wall/r_wall,
-/area/engine/engine_room)
 "JR" = (
 /obj/structure/lattice/catwalk/over/ship,
 /obj/machinery/light/floor,
@@ -13714,19 +13658,7 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port/fore)
 "Lz" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/machinery/door/firedoor/border_only{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/zebra_interlock_point,
-/obj/machinery/door/airlock/ship/engineering/glass{
-	name = "Engineering";
-	req_one_access_txt = "24;10"
-	},
-/turf/open/floor/plating,
+/turf/template_noop,
 /area/hallway/nsv/deck2/primary)
 "LA" = (
 /obj/effect/turf_decal/stripes/line,
@@ -14186,9 +14118,6 @@
 	},
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
-"MO" = (
-/turf/closed/wall/r_wall,
-/area/engine/engine_room)
 "MP" = (
 /obj/structure/cable,
 /obj/effect/spawner/lootdrop/maintenance/four,
@@ -14417,6 +14346,11 @@
 	},
 /turf/open/floor/durasteel/techfloor_grid,
 /area/engine/atmos)
+"Ny" = (
+/obj/structure/lattice,
+/obj/structure/grille/wall,
+/turf/template_noop,
+/area/space/nearstation)
 "NC" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -17008,10 +16942,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
-"Un" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/engine/engine_room)
 "Uo" = (
 /obj/effect/turf_decal/box,
 /obj/structure/extinguisher_cabinet/west,
@@ -41951,24 +41881,24 @@ HX
 HX
 Nh
 cb
-cb
-MO
-MO
-MO
-JQ
-MO
+Ny
 rj
 rj
 rj
 rj
 rj
-MO
-JQ
-MO
-MO
-MO
-HX
-dL
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+Cc
+oL
 Nh
 pK
 Nh
@@ -42208,24 +42138,24 @@ SV
 SV
 Nh
 uh
-MO
-MO
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-MO
-MO
-dL
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+HZ
 HX
 pK
 HX
@@ -42465,24 +42395,24 @@ lX
 lX
 lX
 lX
-MO
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-MO
-dL
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+HZ
 jZ
 pK
 HX
@@ -42722,24 +42652,24 @@ UX
 hv
 Oi
 ke
-aI
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-MO
-dL
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+HZ
 jZ
 NQ
 HX
@@ -42979,24 +42909,24 @@ DA
 TA
 OA
 EX
-aI
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-MO
-MO
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
 Nh
 ID
 hg
@@ -43236,23 +43166,23 @@ wQ
 hT
 IE
 Nw
-MO
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
 rj
 HX
 ID
@@ -43493,23 +43423,23 @@ pg
 to
 dO
 RW
-MO
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
 rj
 HX
 ID
@@ -43750,24 +43680,24 @@ fp
 eZ
 zI
 UN
-MO
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-MO
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
 HX
 uN
 mL
@@ -44007,24 +43937,24 @@ of
 Yp
 xF
 SC
-MO
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-MO
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
 AW
 Jj
 mL
@@ -44264,24 +44194,24 @@ WC
 Wb
 lX
 lX
-MO
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-MO
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
 EN
 kD
 mL
@@ -44521,24 +44451,24 @@ Gs
 vY
 Ri
 hG
-MO
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-MO
-MO
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
 Dn
 YQ
 mL
@@ -44778,23 +44708,23 @@ Ml
 co
 Zx
 WZ
-MO
-MO
-MO
-MO
-MO
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-MO
-MO
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
 Sy
 AM
 YQ
@@ -45039,19 +44969,19 @@ TN
 ms
 oz
 ZG
-MO
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-MO
-MO
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
 YQ
 nh
 YQ
@@ -45296,18 +45226,18 @@ TN
 WG
 xM
 Ts
-MO
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-MO
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
 Ag
 ng
 Yq
@@ -45553,18 +45483,18 @@ KC
 Il
 aq
 GU
-Un
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-MO
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
 Jk
 TD
 LP
@@ -45810,17 +45740,17 @@ ml
 Ku
 cB
 Qi
-Ge
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
 Lz
 Pw
 MJ
@@ -46067,18 +45997,18 @@ jo
 jC
 ys
 Hl
-Un
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-YQ
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+Lz
 Yu
 qa
 Vn
@@ -46324,18 +46254,18 @@ Cg
 wL
 Jo
 HU
-MO
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-YQ
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+Lz
 iS
 ho
 ld
@@ -46581,18 +46511,18 @@ GO
 TN
 yI
 TN
-MO
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-YQ
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+Lz
 pk
 ZM
 LJ
@@ -46838,18 +46768,18 @@ GO
 rR
 qK
 TN
-MO
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-MO
-YQ
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+Lz
 xA
 Zu
 LJ
@@ -47095,17 +47025,17 @@ nq
 rV
 dQ
 jl
-MO
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-oL
-MO
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
 NH
 CS
 Pl
@@ -47352,17 +47282,17 @@ vs
 sG
 dQ
 jl
-MO
-MO
-MO
-so
-tc
-MO
-MO
-MO
-MO
-MO
-MO
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
+rj
 Vr
 CS
 Pl
