@@ -292,6 +292,7 @@
 #include "code\modules\spells\spell_types\godhand.dm"
 #include "code\modules\spells\spell_types\touch_attacks.dm"
 #include "code\modules\spells\spell_types\inflict_handler.dm"
+#include "code\modules\surgery\ear_surgery.dm"
 #include "code\modules\surgery\gender_reassignment.dm"
 #include "code\modules\surgery\implant_removal.dm"
 #include "code\modules\uplink\uplink_devices.dm"
