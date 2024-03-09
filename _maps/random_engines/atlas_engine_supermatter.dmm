@@ -623,7 +623,6 @@
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "sD" = (
-/obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 4
 	},

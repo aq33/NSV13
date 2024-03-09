@@ -4062,14 +4062,7 @@
 /turf/open/floor/monotile/steel,
 /area/medical/medbay/lobby)
 "mO" = (
-/obj/docking_port/stationary{
-	dwidth = 14;
-	height = 17;
-	id = "syndicatecutter_s";
-	name = "south of ship";
-	width = 22
-	},
-/turf/open/openspace/airless,
+/turf/open/space/basic,
 /area/space)
 "mQ" = (
 /obj/machinery/requests_console{
@@ -5961,9 +5954,8 @@
 /turf/open/floor/durasteel/techfloor,
 /area/engine/gravity_generator)
 "tC" = (
-/obj/effect/landmark/start/bartender,
-/turf/open/floor/wood,
-/area/crew_quarters/bar)
+/turf/open/space/basic,
+/area/space/nearstation)
 "tH" = (
 /obj/machinery/airalarm/directional/west,
 /obj/machinery/teleport/hub,
@@ -31362,6 +31354,7 @@ cL
 cL
 cL
 cL
+cL
 "}
 (60,1,1) = {"
 cL
@@ -31943,7 +31936,7 @@ cL
 cL
 cL
 cL
-Yh
+cL
 cL
 cL
 cL
@@ -47754,7 +47747,7 @@ cL
 cL
 cL
 cL
-mO
+cL
 cL
 cL
 cL
@@ -48937,9 +48930,10 @@ cL
 cL
 cL
 cL
+mO
 cL
-cL
-cL
+mO
+mO
 tL
 pW
 HI
@@ -49002,8 +48996,8 @@ cx
 cx
 cx
 SP
-cL
-cL
+tC
+tC
 cL
 cL
 cL
@@ -63040,7 +63034,7 @@ cL
 cL
 cL
 cL
-lV
+cL
 cL
 cL
 cL
@@ -63687,7 +63681,7 @@ cL
 cL
 cL
 cL
-tE
+cL
 cL
 cL
 cL
