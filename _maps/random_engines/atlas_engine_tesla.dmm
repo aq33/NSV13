@@ -3,34 +3,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/open/space/basic,
-/area/engine/engine_room)
-"bm" = (
-/obj/machinery/door/firedoor/border_only/directional/south{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/border_only/directional/north{
-	dir = 8
-	},
-/obj/effect/landmark/zebra_interlock_point,
-/obj/machinery/door/window/westright{
-	name = "Engineering Desk";
-	req_one_access_txt = "24;10"
-	},
-/obj/machinery/door/window/northright{
-	dir = 4
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "atlas_engineering"
-	},
-/obj/structure/table/reinforced,
-/obj/item/paper_bin,
-/obj/item/pen,
-/obj/item/stamp,
-/obj/item/stamp/denied{
-	pixel_y = 10
-	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "bB" = (
 /obj/effect/turf_decal/tile/ship/half/yellow{
@@ -138,9 +111,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/structure/sign/warning/enginesafety{
-	pixel_x = 32
-	},
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "hQ" = (
@@ -152,24 +122,6 @@
 	icon_state = "1-2"
 	},
 /turf/open/space/basic,
-/area/engine/engine_room)
-"ie" = (
-/obj/effect/turf_decal/tile/ship/half/yellow{
-	dir = 4
-	},
-/obj/structure/table/reinforced,
-/obj/machinery/fax{
-	fax_name = "Engineering";
-	name = "Engineerings Fax Machine";
-	pixel_y = 8
-	},
-/obj/machinery/button/door{
-	id = "atlas_engineering";
-	name = "Engineering Shutters";
-	pixel_x = 23;
-	pixel_y = 18
-	},
-/turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "km" = (
 /obj/effect/turf_decal/stripes/line{
@@ -222,26 +174,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
-"mc" = (
-/obj/effect/landmark/zebra_interlock_point,
-/obj/machinery/door/firedoor/border_only{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/border_only,
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/purple/hidden,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/door/airlock/ship/engineering/glass{
-	name = "Engineering";
-	req_one_access_txt = "24;10"
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
 "nu" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -285,13 +217,6 @@
 	icon_state = "0-2"
 	},
 /obj/effect/turf_decal/box/red,
-/turf/open/floor/plating/airless,
-/area/engine/engine_room)
-"oC" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/lattice/catwalk,
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "oD" = (
@@ -367,16 +292,6 @@
 /obj/machinery/suit_storage_unit/engine,
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
-"qF" = (
-/obj/effect/turf_decal/tile/ship/half/yellow{
-	dir = 1
-	},
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/turf/open/floor/monotile/dark,
-/area/engine/engine_room)
 "qX" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -397,18 +312,6 @@
 /obj/item/book/manual/wiki/engineering_singulo_tesla,
 /turf/open/floor/engine,
 /area/engine/engine_room)
-"sD" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/power/terminal{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
 "tH" = (
 /obj/machinery/field/generator{
 	anchored = 1;
@@ -419,18 +322,10 @@
 	},
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
-"tL" = (
-/obj/machinery/holopad,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
 "tZ" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
-/obj/structure/lattice/catwalk,
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "uw" = (
@@ -474,18 +369,6 @@
 /obj/item/stack/cable_coil,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
-"vQ" = (
-/obj/machinery/firealarm/directional/north,
-/obj/machinery/firealarm/directional/south,
-/obj/machinery/camera/autoname{
-	dir = 10
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
-"vV" = (
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/engine/engine_room)
 "vX" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/firedoor/border_only{
@@ -510,37 +393,6 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
-"wx" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/machinery/power/smes/engineering,
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
-"wz" = (
-/obj/effect/turf_decal/tile/ship/half/yellow{
-	dir = 4
-	},
-/obj/item/rcl/pre_loaded,
-/obj/item/storage/box/lights/mixed,
-/obj/item/stack/cable_coil/red,
-/obj/item/stack/package_wrap{
-	pixel_x = -3;
-	pixel_y = 8
-	},
-/obj/item/dest_tagger{
-	pixel_x = 9
-	},
-/obj/machinery/power/apc/auto_name/east,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/structure/table/reinforced,
-/turf/open/floor/monotile/dark,
-/area/engine/engine_room)
 "wC" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -558,18 +410,6 @@
 	icon_state = "0-8"
 	},
 /turf/open/floor/plating/airless,
-/area/engine/engine_room)
-"xn" = (
-/obj/machinery/power/terminal{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
-/turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "ym" = (
 /obj/structure/cable/yellow{
@@ -631,11 +471,6 @@
 /obj/machinery/power/tesla_coil,
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
-"zC" = (
-/mob/living/simple_animal/bot/floorbot,
-/obj/effect/landmark/event_spawn,
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
 "zR" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable/yellow{
@@ -650,15 +485,6 @@
 /obj/machinery/power/tesla_coil,
 /obj/machinery/camera/autoname,
 /turf/open/floor/plating/airless,
-/area/engine/engine_room)
-"Cp" = (
-/obj/effect/turf_decal/tile/ship/half/yellow{
-	dir = 1
-	},
-/obj/effect/spawner/lootdrop/techstorage/engineering,
-/obj/machinery/airalarm/directional/north,
-/obj/structure/table/reinforced,
-/turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "CS" = (
 /obj/effect/turf_decal/stripes/line{
@@ -676,16 +502,6 @@
 	icon_state = "2-4"
 	},
 /turf/open/floor/plating/airless,
-/area/engine/engine_room)
-"Dt" = (
-/obj/effect/turf_decal/tile/ship/half/yellow{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "2-8";
-	tag = ""
-	},
-/turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "DH" = (
 /obj/effect/turf_decal/stripes/line{
@@ -725,24 +541,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
-"EI" = (
-/obj/machinery/door/firedoor/border_only{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/border_only{
-	dir = 8
-	},
-/obj/effect/landmark/zebra_interlock_point,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/ship/engineering/glass{
-	name = "SMES Power Storage";
-	req_one_access_txt = "24;10";
-	dir = 8
-	},
-/turf/open/floor/monotile/dark,
-/area/engine/engine_room)
 "EX" = (
 /obj/machinery/field/generator{
 	anchored = 1;
@@ -756,9 +554,6 @@
 "Fc" = (
 /obj/machinery/power/grounding_rod,
 /turf/open/floor/plating/airless,
-/area/engine/engine_room)
-"Fd" = (
-/turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "Fw" = (
 /obj/item/wirecutters,
@@ -776,18 +571,6 @@
 /obj/structure/reagent_dispensers/foamtank/hull_repair_juice,
 /obj/item/extinguisher/advanced/hull_repair_juice,
 /turf/open/floor/monotile/dark,
-/area/engine/engine_room)
-"FR" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/camera/autoname{
-	dir = 1
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
-	dir = 8
-	},
-/turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "Gw" = (
 /obj/machinery/field/generator{
@@ -921,10 +704,6 @@
 	},
 /turf/open/space/basic,
 /area/engine/engine_room)
-"Kj" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/engine/engine_room)
 "Ky" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -951,23 +730,6 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
-"Lk" = (
-/obj/effect/turf_decal/tile/ship/yellow,
-/obj/effect/turf_decal/tile/ship/yellow{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/ship/yellow{
-	dir = 8
-	},
-/obj/structure/sign/poster/official/random{
-	pixel_x = 32
-	},
-/obj/machinery/computer/monitor{
-	dir = 1
-	},
-/obj/structure/cable,
-/turf/open/floor/monotile/dark,
-/area/engine/engine_room)
 "Ln" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -982,34 +744,12 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
-"Mf" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
-	dir = 8
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
 "MC" = (
 /turf/open/space/basic,
 /area/engine/engine_room)
 "MO" = (
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /turf/open/floor/plating,
-/area/engine/engine_room)
-"No" = (
-/obj/machinery/power/terminal{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
-/obj/machinery/light/small{
-	dir = 4
-	},
-/obj/structure/extinguisher_cabinet/east,
-/turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "NM" = (
 /obj/machinery/power/tesla_coil,
@@ -1072,24 +812,6 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
-"Pa" = (
-/obj/structure/table/reinforced,
-/obj/machinery/power/battery{
-	pixel_x = -4;
-	pixel_y = 4
-	},
-/obj/machinery/power/battery{
-	pixel_y = 6;
-	pixel_x = 7
-	},
-/obj/machinery/power/battery{
-	pixel_x = -7
-	},
-/obj/machinery/power/battery{
-	pixel_x = 9
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
 "Pe" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -1105,50 +827,9 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
-"Pq" = (
-/obj/effect/turf_decal/tile/ship/half/yellow,
-/obj/machinery/light,
-/obj/machinery/computer/station_alert{
-	dir = 1;
-	name = "ship alert console"
-	},
-/obj/structure/cable,
-/obj/machinery/light_switch/south,
-/turf/open/floor/monotile/dark,
-/area/engine/engine_room)
 "Pt" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
-"Pz" = (
-/obj/structure/cable{
-	icon_state = "2-8";
-	tag = ""
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/chair/office,
-/obj/effect/landmark/start/station_engineer,
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
-"PE" = (
-/obj/effect/turf_decal/tile/ship/half/yellow,
-/obj/machinery/power/solar_control{
-	dir = 1
-	},
-/obj/structure/cable/yellow,
-/obj/item/radio/intercom/directional/south,
-/turf/open/floor/monotile/dark,
-/area/engine/engine_room)
-"PJ" = (
-/obj/structure/cable{
-	icon_state = "1-2"
 	},
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
@@ -1169,13 +850,6 @@
 	dir = 8
 	},
 /turf/open/floor/engine,
-/area/engine/engine_room)
-"Qe" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "atlas_engineering"
-	},
-/turf/open/floor/plating,
 /area/engine/engine_room)
 "Qj" = (
 /obj/structure/lattice/catwalk,
@@ -1232,16 +906,6 @@
 	},
 /turf/open/space/basic,
 /area/engine/engine_room)
-"Rj" = (
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/machinery/power/smes/engineering,
-/obj/structure/sign/poster/official/random{
-	pixel_x = 32
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
 "Sd" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing/corner{
@@ -1261,29 +925,9 @@
 	},
 /turf/open/space/basic,
 /area/engine/engine_room)
-"SD" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/engine/engine_room)
 "Tr" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
-/area/engine/engine_room)
-"TM" = (
-/obj/machinery/telecomms/relay/preset/station{
-	name = "Telecommunications Relay Cupboard"
-	},
-/obj/machinery/door/window/westright{
-	req_one_access_txt = "10";
-	name = "Telecommunications Relay Cupboard"
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/open/floor/plasteel/tech/grid,
 /area/engine/engine_room)
 "TX" = (
 /turf/template_noop,
@@ -1312,26 +956,6 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
-"WH" = (
-/obj/structure/table/reinforced,
-/obj/item/clothing/gloves/color/yellow,
-/obj/item/clothing/gloves/color/yellow,
-/obj/item/storage/belt/utility/full,
-/obj/item/storage/belt/utility/full,
-/obj/item/storage/toolbox/mechanical,
-/turf/open/floor/monotile/dark,
-/area/engine/engine_room)
-"WV" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/half/yellow{
-	dir = 1
-	},
-/obj/structure/filingcabinet/chestdrawer,
-/obj/machinery/light_switch/north,
-/turf/open/floor/monotile/dark,
-/area/engine/engine_room)
 "Xx" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1347,12 +971,6 @@
 	icon_state = "2-4"
 	},
 /turf/open/space/basic,
-/area/engine/engine_room)
-"YS" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "YZ" = (
 /obj/effect/turf_decal/tile/ship/half/yellow{
@@ -1413,10 +1031,10 @@ TX
 TX
 "}
 (2,1,1) = {"
-Oy
+TX
 Oy
 gv
-oC
+lw
 uG
 eG
 Ss
@@ -1426,14 +1044,14 @@ hQ
 IS
 zm
 nu
-oC
+lw
 ZJ
 Oy
 Oy
 TX
 "}
 (3,1,1) = {"
-Oy
+TX
 Dl
 aW
 eN
@@ -1460,7 +1078,7 @@ zy
 Hz
 Jc
 Jc
-vV
+Jc
 MC
 Jc
 Jc
@@ -1493,7 +1111,7 @@ Oy
 Oy
 "}
 (6,1,1) = {"
-Oy
+TX
 Xx
 uw
 JA
@@ -1513,7 +1131,7 @@ KH
 MO
 "}
 (7,1,1) = {"
-Oy
+TX
 wF
 uw
 YA
@@ -1533,7 +1151,7 @@ KH
 MO
 "}
 (8,1,1) = {"
-Oy
+TX
 Fc
 uw
 JA
@@ -1547,13 +1165,13 @@ Jc
 Jc
 oa
 zR
-MC
+eN
 Xx
 KH
 Oy
 "}
 (9,1,1) = {"
-Oy
+TX
 Bg
 uw
 oV
@@ -1573,7 +1191,7 @@ NM
 Oy
 "}
 (10,1,1) = {"
-Oy
+TX
 NM
 uw
 tZ
@@ -1593,7 +1211,7 @@ NM
 Oy
 "}
 (11,1,1) = {"
-Oy
+TX
 NM
 KH
 KH
@@ -1613,11 +1231,11 @@ Oy
 Oy
 "}
 (12,1,1) = {"
-Oy
-Oy
-Oy
-Oy
-Oy
+TX
+TX
+TX
+TX
+TX
 Oy
 dS
 fs
@@ -1637,7 +1255,7 @@ TX
 TX
 TX
 TX
-Oy
+TX
 YZ
 nW
 oW
@@ -1657,7 +1275,7 @@ TX
 TX
 TX
 TX
-Oy
+TX
 qk
 nW
 km
@@ -1677,7 +1295,7 @@ TX
 TX
 TX
 TX
-Kj
+TX
 vL
 nW
 ss
@@ -1697,7 +1315,7 @@ TX
 TX
 TX
 TX
-mc
+TX
 Wm
 NP
 nP
@@ -1717,7 +1335,7 @@ TX
 TX
 TX
 TX
-Kj
+TX
 OZ
 Ec
 HX
@@ -1737,18 +1355,18 @@ TX
 TX
 TX
 TX
-Oy
-qF
-Mf
-zC
-FR
-Oy
-Oy
-SD
-EI
-Kj
-Oy
-Oy
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
 TX
 TX
 "}
@@ -1757,18 +1375,18 @@ TX
 TX
 TX
 TX
-Oy
-WV
-Pt
-tL
-lV
-PE
-Oy
-wx
-sD
-Fd
-Pa
-Oy
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
 TX
 TX
 "}
@@ -1777,18 +1395,18 @@ TX
 TX
 TX
 TX
-Oy
-Cp
-YS
-PJ
-Pz
-Pq
-Oy
-wx
-xn
-vQ
-Oy
-Oy
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
 TX
 TX
 "}
@@ -1797,17 +1415,17 @@ TX
 TX
 TX
 TX
-Oy
-WH
-wz
-ie
-Dt
-Lk
-Oy
-Rj
-No
-TM
-Oy
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
 TX
 TX
 TX
@@ -1817,17 +1435,17 @@ TX
 TX
 TX
 TX
-Oy
-Oy
-Oy
-Qe
-bm
-Oy
-Oy
-Oy
-Oy
-Oy
-Oy
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
 TX
 TX
 TX

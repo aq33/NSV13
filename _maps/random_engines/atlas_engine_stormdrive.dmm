@@ -1,40 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aq" = (
-/obj/machinery/firealarm/directional/north,
-/obj/machinery/firealarm/directional/south,
-/obj/machinery/camera/autoname{
-	dir = 10
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
-"bN" = (
-/obj/machinery/holopad,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
 "eh" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /turf/open/floor/engine,
-/area/engine/engine_room)
-"eI" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
-"gV" = (
-/obj/effect/turf_decal/tile/ship/half/yellow{
-	dir = 1
-	},
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "hh" = (
 /obj/structure/cable/yellow{
@@ -58,15 +27,6 @@
 	dir = 6
 	},
 /turf/open/space/basic,
-/area/engine/engine_room)
-"jI" = (
-/obj/effect/turf_decal/tile/ship/half/yellow,
-/obj/machinery/power/solar_control{
-	dir = 1
-	},
-/obj/structure/cable/yellow,
-/obj/item/radio/intercom/directional/south,
-/turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "jR" = (
 /obj/structure/cable/yellow{
@@ -206,16 +166,6 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
-"ug" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/machinery/power/smes/engineering,
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
 "uk" = (
 /obj/effect/turf_decal/tile/ship/half/yellow,
 /obj/structure/reagent_dispensers/foamtank/hull_repair_juice,
@@ -247,13 +197,6 @@
 /obj/structure/extinguisher_cabinet/east,
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
-"vY" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "atlas_engineering"
-	},
-/turf/open/floor/plating,
-/area/engine/engine_room)
 "wa" = (
 /obj/effect/turf_decal/tile/ship/half/yellow,
 /obj/structure/tank_dispenser,
@@ -270,36 +213,6 @@
 	dir = 8
 	},
 /turf/open/floor/engine,
-/area/engine/engine_room)
-"wB" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/power/terminal{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
-"yh" = (
-/obj/effect/turf_decal/tile/ship/half/yellow{
-	dir = 4
-	},
-/obj/structure/table/reinforced,
-/obj/machinery/fax{
-	fax_name = "Engineering";
-	name = "Engineerings Fax Machine";
-	pixel_y = 8
-	},
-/obj/machinery/button/door{
-	id = "atlas_engineering";
-	name = "Engineering Shutters";
-	pixel_x = 23;
-	pixel_y = 18
-	},
-/turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "yx" = (
 /obj/structure/lattice/catwalk,
@@ -364,16 +277,6 @@
 	req_one_access_txt = "24;10"
 	},
 /turf/open/floor/plating,
-/area/engine/engine_room)
-"AL" = (
-/obj/effect/turf_decal/tile/ship/half/yellow{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "2-8";
-	tag = ""
-	},
-/turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "BK" = (
 /obj/structure/sign/warning/radiation,
@@ -459,10 +362,6 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
-"EV" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/engine/engine_room)
 "EX" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -473,43 +372,6 @@
 /obj/effect/landmark/zebra_interlock_point,
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/ship/maintenance,
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
-"Fc" = (
-/obj/effect/turf_decal/tile/ship/yellow,
-/obj/effect/turf_decal/tile/ship/yellow{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/ship/yellow{
-	dir = 8
-	},
-/obj/structure/sign/poster/official/random{
-	pixel_x = 32
-	},
-/obj/machinery/computer/monitor{
-	dir = 1
-	},
-/obj/structure/cable,
-/turf/open/floor/monotile/dark,
-/area/engine/engine_room)
-"Fs" = (
-/obj/effect/landmark/zebra_interlock_point,
-/obj/machinery/door/firedoor/border_only{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/border_only,
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/purple/hidden,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/door/airlock/ship/engineering/glass{
-	name = "Engineering";
-	req_one_access_txt = "24;10"
-	},
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "Ft" = (
@@ -536,25 +398,6 @@
 /obj/item/stack/sheet/mineral/plasma/twenty,
 /obj/item/stack/cable_coil,
 /turf/open/floor/monotile/dark,
-/area/engine/engine_room)
-"FJ" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/engine/engine_room)
-"FX" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/camera/autoname{
-	dir = 1
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
-	dir = 8
-	},
-/turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "GE" = (
 /obj/machinery/atmospherics/pipe/simple/purple/hidden{
@@ -615,19 +458,12 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
-"Ih" = (
-/obj/structure/table/reinforced,
-/obj/item/clothing/gloves/color/yellow,
-/obj/item/clothing/gloves/color/yellow,
-/obj/item/storage/belt/utility/full,
-/obj/item/storage/belt/utility/full,
-/obj/item/storage/toolbox/mechanical,
-/turf/open/floor/monotile/dark,
-/area/engine/engine_room)
 "Iq" = (
-/mob/living/simple_animal/bot/floorbot,
-/obj/effect/landmark/event_spawn,
-/turf/open/floor/monotile/steel,
+/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "atlas_engine_atmo_shutters"
+	},
+/turf/template_noop,
 /area/engine/engine_room)
 "Ja" = (
 /obj/machinery/atmospherics/pipe/layer_manifold,
@@ -675,30 +511,6 @@
 /obj/item/book/manual/wiki/stormdrive,
 /turf/open/floor/engine,
 /area/engine/engine_room)
-"KB" = (
-/obj/effect/turf_decal/tile/ship/half/yellow,
-/obj/machinery/light,
-/obj/machinery/computer/station_alert{
-	dir = 1;
-	name = "ship alert console"
-	},
-/obj/structure/cable,
-/obj/machinery/light_switch/south,
-/turf/open/floor/monotile/dark,
-/area/engine/engine_room)
-"KG" = (
-/obj/machinery/telecomms/relay/preset/station{
-	name = "Telecommunications Relay Cupboard"
-	},
-/obj/machinery/door/window/westright{
-	req_one_access_txt = "10";
-	name = "Telecommunications Relay Cupboard"
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/open/floor/plasteel/tech/grid,
-/area/engine/engine_room)
 "KS" = (
 /obj/effect/turf_decal/tile/ship/half/yellow{
 	dir = 1
@@ -707,72 +519,9 @@
 /obj/item/geiger_counter,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
-"LR" = (
-/obj/effect/turf_decal/tile/ship/half/yellow{
-	dir = 4
-	},
-/obj/item/rcl/pre_loaded,
-/obj/item/storage/box/lights/mixed,
-/obj/item/stack/cable_coil/red,
-/obj/item/stack/package_wrap{
-	pixel_x = -3;
-	pixel_y = 8
-	},
-/obj/item/dest_tagger{
-	pixel_x = 9
-	},
-/obj/machinery/power/apc/auto_name/east,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/structure/table/reinforced,
-/turf/open/floor/monotile/dark,
-/area/engine/engine_room)
-"MB" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/half/yellow{
-	dir = 1
-	},
-/obj/structure/filingcabinet/chestdrawer,
-/obj/machinery/light_switch/north,
-/turf/open/floor/monotile/dark,
-/area/engine/engine_room)
 "MG" = (
 /turf/template_noop,
 /area/template_noop)
-"OO" = (
-/obj/machinery/power/terminal{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
-/obj/machinery/light/small{
-	dir = 4
-	},
-/obj/structure/extinguisher_cabinet/east,
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
-"PL" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
-	dir = 8
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
-"QA" = (
-/obj/effect/turf_decal/tile/ship/half/yellow{
-	dir = 1
-	},
-/obj/effect/spawner/lootdrop/techstorage/engineering,
-/obj/machinery/airalarm/directional/north,
-/obj/structure/table/reinforced,
-/turf/open/floor/monotile/dark,
-/area/engine/engine_room)
 "QD" = (
 /obj/effect/turf_decal/tile/ship/half/yellow{
 	dir = 8
@@ -787,33 +536,6 @@
 	icon_state = "1-8"
 	},
 /turf/open/floor/monotile/dark,
-/area/engine/engine_room)
-"QK" = (
-/obj/machinery/door/firedoor/border_only/directional/south{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/border_only/directional/north{
-	dir = 8
-	},
-/obj/effect/landmark/zebra_interlock_point,
-/obj/machinery/door/window/westright{
-	name = "Engineering Desk";
-	req_one_access_txt = "24;10"
-	},
-/obj/machinery/door/window/northright{
-	dir = 4
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "atlas_engineering"
-	},
-/obj/structure/table/reinforced,
-/obj/item/paper_bin,
-/obj/item/pen,
-/obj/item/stamp,
-/obj/item/stamp/denied{
-	pixel_y = 10
-	},
-/turf/open/floor/plating,
 /area/engine/engine_room)
 "Rb" = (
 /obj/structure/particle_accelerator/power_box{
@@ -843,40 +565,12 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
-"Sg" = (
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/machinery/power/smes/engineering,
-/obj/structure/sign/poster/official/random{
-	pixel_x = 32
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
 "Sl" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/components/unary/outlet_injector/on{
 	dir = 4
 	},
 /turf/open/space/basic,
-/area/engine/engine_room)
-"SQ" = (
-/obj/machinery/door/firedoor/border_only{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/border_only{
-	dir = 8
-	},
-/obj/effect/landmark/zebra_interlock_point,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/ship/engineering/glass{
-	name = "SMES Power Storage";
-	req_one_access_txt = "24;10";
-	dir = 8
-	},
-/turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "SR" = (
 /obj/structure/cable{
@@ -921,57 +615,6 @@
 	pixel_x = -32
 	},
 /turf/open/floor/monotile/dark,
-/area/engine/engine_room)
-"Vo" = (
-/obj/structure/table/reinforced,
-/obj/machinery/power/battery{
-	pixel_x = -4;
-	pixel_y = 4
-	},
-/obj/machinery/power/battery{
-	pixel_y = 6;
-	pixel_x = 7
-	},
-/obj/machinery/power/battery{
-	pixel_x = -7
-	},
-/obj/machinery/power/battery{
-	pixel_x = 9
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
-"Vt" = (
-/obj/machinery/power/terminal{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
-"VS" = (
-/obj/structure/cable{
-	icon_state = "2-8";
-	tag = ""
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/chair/office,
-/obj/effect/landmark/start/station_engineer,
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
-"Xp" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "Yd" = (
 /obj/effect/turf_decal/tile/ship/half/yellow{
@@ -1058,7 +701,7 @@ MG
 MG
 "}
 (2,1,1) = {"
-zm
+MG
 zm
 kX
 kX
@@ -1078,7 +721,7 @@ zm
 MG
 "}
 (3,1,1) = {"
-zm
+MG
 kX
 kX
 kX
@@ -1118,7 +761,7 @@ zm
 MG
 "}
 (5,1,1) = {"
-zZ
+Iq
 kX
 kX
 kX
@@ -1138,7 +781,7 @@ zm
 zm
 "}
 (6,1,1) = {"
-zm
+MG
 kX
 kX
 kX
@@ -1158,7 +801,7 @@ kX
 mC
 "}
 (7,1,1) = {"
-zm
+MG
 kX
 kX
 kX
@@ -1178,7 +821,7 @@ kX
 mC
 "}
 (8,1,1) = {"
-zm
+MG
 kX
 kX
 kX
@@ -1198,7 +841,7 @@ kX
 zm
 "}
 (9,1,1) = {"
-zm
+MG
 kX
 kX
 kX
@@ -1218,7 +861,7 @@ kX
 zm
 "}
 (10,1,1) = {"
-zm
+MG
 kX
 kX
 kX
@@ -1238,7 +881,7 @@ kX
 zm
 "}
 (11,1,1) = {"
-zm
+MG
 kX
 kX
 kX
@@ -1258,11 +901,11 @@ zm
 zm
 "}
 (12,1,1) = {"
-zm
-zm
-zm
-zm
-zm
+MG
+MG
+MG
+MG
+MG
 zm
 ta
 Kc
@@ -1282,7 +925,7 @@ MG
 MG
 MG
 MG
-zm
+MG
 GM
 ta
 qz
@@ -1302,7 +945,7 @@ MG
 MG
 MG
 MG
-zm
+MG
 ZY
 ta
 CV
@@ -1322,7 +965,7 @@ MG
 MG
 MG
 MG
-EV
+MG
 KS
 ta
 kX
@@ -1342,7 +985,7 @@ MG
 MG
 MG
 MG
-Fs
+MG
 Ch
 jR
 kX
@@ -1362,7 +1005,7 @@ MG
 MG
 MG
 MG
-EV
+MG
 Ym
 yA
 iB
@@ -1382,18 +1025,18 @@ MG
 MG
 MG
 MG
-zm
-gV
-PL
-Iq
-FX
-zm
-zm
-FJ
-SQ
-EV
-zm
-zm
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
 MG
 MG
 "}
@@ -1402,18 +1045,18 @@ MG
 MG
 MG
 MG
-zm
-MB
-Yu
-bN
-kG
-jI
-zm
-ug
-wB
-kX
-Vo
-zm
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
 MG
 MG
 "}
@@ -1422,18 +1065,18 @@ MG
 MG
 MG
 MG
-zm
-QA
-Xp
-eI
-VS
-KB
-zm
-ug
-Vt
-aq
-zm
-zm
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
 MG
 MG
 "}
@@ -1442,17 +1085,17 @@ MG
 MG
 MG
 MG
-zm
-Ih
-LR
-yh
-AL
-Fc
-zm
-Sg
-OO
-KG
-zm
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
 MG
 MG
 MG
@@ -1462,17 +1105,17 @@ MG
 MG
 MG
 MG
-zm
-zm
-zm
-vY
-QK
-zm
-zm
-zm
-zm
-zm
-zm
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
+MG
 MG
 MG
 MG
