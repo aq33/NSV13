@@ -9715,7 +9715,6 @@
 	layer = 3.2;
 	density = 0
 	},
-/obj/structure/lattice,
 /obj/structure/munitions_trolley_dummy{
 	pixel_y = 10;
 	pixel_x = -2
@@ -14048,7 +14047,6 @@
 	layer = 3.2;
 	density = 0
 	},
-/obj/structure/lattice,
 /obj/structure/lattice/catwalk/over/ship/dark,
 /turf/open/floor/plating/rust,
 /area/crew_quarters/cryopods)
