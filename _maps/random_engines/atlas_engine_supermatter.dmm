@@ -1592,7 +1592,6 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 6
 	},
-/obj/structure/lattice,
 /obj/structure/lattice/catwalk,
 /turf/open/space,
 /area/engine/engine_room)
