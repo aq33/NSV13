@@ -786,7 +786,7 @@
 /area/maintenance/nsv/deck2/starboard)
 "cb" = (
 /obj/structure/lattice,
-/obj/structure/grille/wall,
+/obj/structure/grille,
 /turf/open/space/basic,
 /area/space/nearstation)
 "cc" = (
@@ -2746,7 +2746,7 @@
 /area/hallway/nsv/deck2/primary)
 "hs" = (
 /obj/structure/lattice,
-/obj/structure/grille/wall,
+/obj/structure/grille,
 /turf/closed/wall/r_wall,
 /area/space/nearstation)
 "ht" = (
@@ -7628,7 +7628,6 @@
 /turf/open/space/basic,
 /area/space)
 "uh" = (
-/obj/structure/grille/wall,
 /obj/structure/grille/wall,
 /turf/open/space/basic,
 /area/space/nearstation)
@@ -14348,7 +14347,7 @@
 /area/engine/atmos)
 "Ny" = (
 /obj/structure/lattice,
-/obj/structure/grille/wall,
+/obj/structure/grille,
 /turf/template_noop,
 /area/space/nearstation)
 "NC" = (

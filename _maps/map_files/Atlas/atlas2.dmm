@@ -5292,7 +5292,6 @@
 	},
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/machinery/computer/ship/viewscreen{
-	pixel_y = 0;
 	pixel_x = 32
 	},
 /turf/open/floor/wood,

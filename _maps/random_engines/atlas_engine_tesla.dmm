@@ -4,7 +4,6 @@
 	icon_state = "1-8"
 	},
 /turf/open/space/basic,
-/turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "bm" = (
 /obj/machinery/door/firedoor/border_only/directional/south{
@@ -484,7 +483,6 @@
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "vV" = (
-/obj/structure/lattice,
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/engine/engine_room)
