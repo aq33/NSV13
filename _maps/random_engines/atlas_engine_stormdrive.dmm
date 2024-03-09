@@ -214,6 +214,13 @@
 	},
 /turf/open/floor/engine,
 /area/engine/engine_room)
+"wB" = (
+/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "atlas_engine_atmo_shutters"
+	},
+/turf/template_noop,
+/area/engine/engine_room)
 "yx" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/grille/wall,
@@ -262,21 +269,6 @@
 	icon_state = "2-4"
 	},
 /turf/open/floor/monotile/dark,
-/area/engine/engine_room)
-"AB" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/machinery/door/firedoor/border_only{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/zebra_interlock_point,
-/obj/machinery/door/airlock/ship/engineering/glass{
-	name = "Engineering";
-	req_one_access_txt = "24;10"
-	},
-/turf/open/floor/plating,
 /area/engine/engine_room)
 "BK" = (
 /obj/structure/sign/warning/radiation,
@@ -457,13 +449,6 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/monotile/steel,
-/area/engine/engine_room)
-"Iq" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "atlas_engine_atmo_shutters"
-	},
-/turf/template_noop,
 /area/engine/engine_room)
 "Ja" = (
 /obj/machinery/atmospherics/pipe/layer_manifold,
@@ -761,7 +746,7 @@ zm
 MG
 "}
 (5,1,1) = {"
-Iq
+wB
 kX
 kX
 kX
@@ -976,7 +961,7 @@ Ao
 lR
 QD
 Fv
-zm
+MG
 MG
 MG
 "}
@@ -996,7 +981,7 @@ kG
 Rp
 hh
 Rm
-AB
+MG
 MG
 MG
 "}
@@ -1016,7 +1001,7 @@ pb
 DY
 uy
 pA
-zm
+MG
 MG
 MG
 "}

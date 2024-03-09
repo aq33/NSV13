@@ -369,21 +369,6 @@
 /obj/item/stack/cable_coil,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
-"vX" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/machinery/door/firedoor/border_only{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/zebra_interlock_point,
-/obj/machinery/door/airlock/ship/engineering/glass{
-	name = "Engineering";
-	req_one_access_txt = "24;10"
-	},
-/turf/open/floor/plating,
-/area/engine/engine_room)
 "wh" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
@@ -1306,7 +1291,7 @@ KS
 yO
 bB
 FN
-Oy
+TX
 TX
 TX
 "}
@@ -1326,7 +1311,7 @@ lV
 Pe
 wC
 zp
-vX
+TX
 TX
 TX
 "}
@@ -1346,7 +1331,7 @@ Ln
 nv
 kZ
 cG
-Oy
+TX
 TX
 TX
 "}

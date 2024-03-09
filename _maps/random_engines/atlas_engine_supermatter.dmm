@@ -1325,21 +1325,6 @@
 	},
 /turf/open/floor/engine,
 /area/engine/supermatter)
-"VG" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/machinery/door/firedoor/border_only{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/zebra_interlock_point,
-/obj/machinery/door/airlock/ship/engineering/glass{
-	name = "Engineering";
-	req_one_access_txt = "24;10"
-	},
-/turf/open/floor/plating,
-/area/engine/engine_room)
 "VQ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -1723,7 +1708,7 @@ ae
 UG
 Jv
 en
-CY
+IC
 IC
 IC
 "}
@@ -1743,7 +1728,7 @@ pJ
 rg
 pc
 Zf
-VG
+IC
 IC
 IC
 "}
@@ -1763,7 +1748,7 @@ zX
 Fi
 Qo
 qm
-CY
+IC
 IC
 IC
 "}
