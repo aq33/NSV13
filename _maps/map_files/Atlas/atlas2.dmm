@@ -5635,7 +5635,7 @@
 	pixel_x = 7;
 	pixel_y = 10;
 	layer = 3.1;
-	default_raw_text = Hej,niewiem,czyczytatoosoba,któratozrobiła,alemamnadzieję,żetak.Widzisztęstertęróżowychuniformów?Tak,gratulacjetłumoku,totwojasprawka.Możenastępnymrazemzwróciszuwagęnato,żebydojasnejcholerysprawdać,cowrzucaszdopralki.NIEMIESZASIĘKOLOROWYCHZBIAŁYM,JASNE?!TEUNIFORMYSĄTERAZBEZUŻYTECZNE!Podejrzewamktotozrobił,aledajęciostatniąszansę.Jeżelitakasytuacjapowtórzysięponownie,zgłaszamciędokadr.
+	default_raw_text = "Hej,niewiem,czyczytatoosoba,któratozrobiła,alemamnadzieję,żetak.Widzisztęstertęróżowychuniformów?Tak,gratulacjetłumoku,totwojasprawka.Możenastępnymrazemzwróciszuwagęnato,żebydojasnejcholerysprawdać,cowrzucaszdopralki.NIEMIESZASIĘKOLOROWYCHZBIAŁYM,JASNE?!TEUNIFORMYSĄTERAZBEZUŻYTECZNE!Podejrzewamktotozrobił,aledajęciostatniąszansę.Jeżelitakasytuacjapowtórzysięponownie,zgłaszamciędokadr."
 	},
 /turf/open/floor/durasteel,
 /area/storage/tech)
