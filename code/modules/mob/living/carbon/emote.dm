@@ -9,16 +9,16 @@
 /datum/emote/living/carbon/blink
 	key = "blink"
 	key_third_person = "blinks"
-	message = "blinks"
+	message = "mruga"
 
 /datum/emote/living/carbon/blink_r
 	key = "blink_r"
-	message = "blinks rapidly"
+	message = "mruga gwałtownie"
 
 /datum/emote/living/carbon/clap
 	key = "clap"
 	key_third_person = "claps"
-	message = "claps"
+	message = "klaszcze"
 	muzzle_ignore = TRUE
 	restraint_check = TRUE
 	emote_type = EMOTE_AUDIBLE
@@ -37,34 +37,34 @@
 /datum/emote/living/carbon/gnarl
 	key = "gnarl"
 	key_third_person = "gnarls"
-	message = "gnarls and shows its teeth.."
+	message = "warczy i pokazuje zęby.."
 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey)
 
 /datum/emote/living/carbon/moan
 	key = "moan"
 	key_third_person = "moans"
-	message = "moans"
-	message_mime = "appears to moan"
+	message = "jęczy"
+	message_mime = "zdaje się jęczeć"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/roll
 	key = "roll"
 	key_third_person = "rolls"
-	message = "rolls"
+	message = "toczy się"
 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey, /mob/living/carbon/alien)
 	restraint_check = TRUE
 
 /datum/emote/living/carbon/scratch
 	key = "scratch"
 	key_third_person = "scratches"
-	message = "scratches"
+	message = "drapie"
 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey, /mob/living/carbon/alien)
 	restraint_check = TRUE
 
 /datum/emote/living/carbon/screech
 	key = "screech"
 	key_third_person = "screeches"
-	message = "screeches"
+	message = "skrzeczy"
 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey)
 	emote_type = EMOTE_AUDIBLE
 
@@ -80,12 +80,12 @@
 /datum/emote/living/carbon/screech/roar
 	key = "roar"
 	key_third_person = "roars"
-	message = "roars."
+	message = "ryczy."
 
 /datum/emote/living/carbon/sign
 	key = "sign"
 	key_third_person = "signs"
-	message_param = "signs the number %t"
+	message_param = "podpisuje numer %t"
 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey, /mob/living/carbon/alien)
 	restraint_check = TRUE
 
@@ -97,16 +97,16 @@
 /datum/emote/living/carbon/sign/signal
 	key = "signal"
 	key_third_person = "signals"
-	message_param = "raises %t fingers"
+	message_param = "unosi %t palce"
 	mob_type_allowed_typecache = list(/mob/living/carbon/human)
 	restraint_check = TRUE
 
 /datum/emote/living/carbon/tail
 	key = "tail"
-	message = "waves their tail"
+	message = "macha ogonem"
 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey, /mob/living/carbon/alien)
 
 /datum/emote/living/carbon/wink
 	key = "wink"
 	key_third_person = "winks"
-	message = "winks"
+	message = "puszcza oczko"
