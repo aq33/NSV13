@@ -4463,6 +4463,16 @@
 	},
 /turf/open/openspace,
 /area/hallway/nsv/deck1/hallway)
+"ejG" = (
+/obj/docking_port/stationary{
+	dwidth = 14;
+	height = 17;
+	id = "syndicatecutter_ne";
+	name = "northeast of ship";
+	width = 23
+	},
+/turf/open/openspace/airless,
+/area/space)
 "ejY" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 1
@@ -4633,6 +4643,16 @@
 /obj/item/hand_labeler,
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/kitchen/coldroom)
+"erD" = (
+/obj/docking_port/stationary{
+	dwidth = 14;
+	height = 17;
+	id = "syndicatecutter_s";
+	name = "south of ship";
+	width = 22
+	},
+/turf/open/openspace/airless,
+/area/space)
 "erF" = (
 /obj/machinery/modular_computer/console/preset/command,
 /obj/item/paper/crumpled,
@@ -11210,6 +11230,16 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/science/explab)
+"kES" = (
+/obj/docking_port/stationary{
+	dwidth = 14;
+	height = 17;
+	id = "syndicatecutter_n";
+	name = "north of ship";
+	width = 22
+	},
+/turf/open/openspace/airless,
+/area/space)
 "kFO" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -12145,6 +12175,16 @@
 /obj/structure/table/wood/poker,
 /turf/open/floor/carpet/royalblack,
 /area/maintenance/department/medical)
+"lBN" = (
+/obj/docking_port/stationary{
+	dwidth = 14;
+	height = 17;
+	id = "syndicatecutter_nw";
+	name = "northwest of ship";
+	width = 23
+	},
+/turf/open/openspace/airless,
+/area/space)
 "lCf" = (
 /obj/structure/table/wood/bar,
 /obj/machinery/door/firedoor/border_only{
@@ -16857,6 +16897,16 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/hydroponics)
+"qDD" = (
+/obj/docking_port/stationary{
+	dwidth = 14;
+	height = 17;
+	id = "syndicatecutter_sw";
+	name = "southwest of ship";
+	width = 22
+	},
+/turf/open/openspace/airless,
+/area/space)
 "qEf" = (
 /turf/closed/wall/r_wall,
 /area/quartermaster/qm)
@@ -21009,6 +21059,17 @@
 	},
 /turf/open/floor/plating,
 /area/hydroponics/garden/abandoned)
+"uCi" = (
+/obj/docking_port/stationary{
+	dheight = 1;
+	dwidth = 12;
+	height = 17;
+	id = "syndicate_se";
+	name = "southeast of ship";
+	width = 23
+	},
+/turf/open/openspace/airless,
+/area/space)
 "uCm" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/carpet/ship/red_carpet,
@@ -33296,7 +33357,7 @@ rYi
 rYi
 rYi
 rYi
-rYi
+qDD
 rYi
 rYi
 rYi
@@ -35165,7 +35226,7 @@ rYi
 rYi
 rYi
 rYi
-rYi
+lBN
 rYi
 rYi
 rYi
@@ -53598,7 +53659,7 @@ rYi
 rYi
 rYi
 rYi
-rYi
+erD
 rYi
 rYi
 rYi
@@ -53925,7 +53986,7 @@ rYi
 rYi
 rYi
 rYi
-rYi
+kES
 rYi
 rYi
 rYi
@@ -78781,7 +78842,7 @@ rYi
 rYi
 rYi
 rYi
-rYi
+uCi
 rYi
 rYi
 rYi
@@ -79112,7 +79173,7 @@ rYi
 rYi
 rYi
 rYi
-rYi
+ejG
 rYi
 rYi
 rYi
