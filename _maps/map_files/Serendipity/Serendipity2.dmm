@@ -210,6 +210,16 @@
 /obj/effect/landmark/start/munitions_tech,
 /turf/open/floor/plasteel/dark,
 /area/nsv/weapons)
+"bf" = (
+/obj/docking_port/stationary{
+	dwidth = 14;
+	height = 17;
+	id = "syndicatecutter_s";
+	name = "south of ship";
+	width = 22
+	},
+/turf/open/space/basic,
+/area/space)
 "bh" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 1
@@ -1858,6 +1868,16 @@
 /obj/machinery/light/floor,
 /turf/open/floor/plasteel/white,
 /area/quartermaster/meeting_room)
+"ih" = (
+/obj/docking_port/stationary{
+	dwidth = 14;
+	height = 17;
+	id = "syndicatecutter_nw";
+	name = "northwest of ship";
+	width = 23
+	},
+/turf/open/space/basic,
+/area/space)
 "ii" = (
 /obj/structure/table/wood,
 /obj/item/stamp,
@@ -1953,6 +1973,16 @@
 	},
 /turf/open/floor/carpet/ship/beige_carpet,
 /area/hallway/nsv/deck1/hallway)
+"iw" = (
+/obj/docking_port/stationary{
+	dwidth = 14;
+	height = 17;
+	id = "syndicatecutter_sw";
+	name = "southwest of ship";
+	width = 22
+	},
+/turf/open/space/basic,
+/area/space)
 "iy" = (
 /obj/structure/lattice/catwalk/over/ship,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
@@ -2294,6 +2324,16 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/engine/armour_pump)
+"ke" = (
+/obj/docking_port/stationary{
+	dwidth = 14;
+	height = 17;
+	id = "syndicatecutter_ne";
+	name = "northeast of ship";
+	width = 23
+	},
+/turf/open/space/basic,
+/area/space)
 "kg" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -4030,6 +4070,17 @@
 /obj/item/fighter_component/targeting_sensor,
 /turf/open/floor/engine/vacuum,
 /area/nsv/hanger)
+"sB" = (
+/obj/docking_port/stationary{
+	dheight = 1;
+	dwidth = 12;
+	height = 17;
+	id = "syndicate_se";
+	name = "southeast of ship";
+	width = 23
+	},
+/turf/open/space/basic,
+/area/space)
 "sH" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
@@ -5173,6 +5224,16 @@
 	},
 /turf/open/floor/engine,
 /area/nsv/engine/engine_room/core)
+"xN" = (
+/obj/docking_port/stationary{
+	dwidth = 14;
+	height = 17;
+	id = "syndicatecutter_n";
+	name = "north of ship";
+	width = 22
+	},
+/turf/open/space/basic,
+/area/space)
 "xO" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -26036,7 +26097,7 @@ Ks
 Ks
 Ks
 Ks
-Ks
+iw
 Ks
 Ks
 Ks
@@ -27694,7 +27755,7 @@ Ks
 Ks
 Ks
 Ks
-Ks
+ih
 Ks
 Ks
 Ks
@@ -43255,7 +43316,7 @@ Ks
 Ks
 Ks
 Ks
-Ks
+bf
 Ks
 Ks
 Ks
@@ -43886,7 +43947,7 @@ Ks
 Ks
 Ks
 Ks
-Ks
+xN
 Ks
 Ks
 Ks
@@ -57904,7 +57965,7 @@ Ks
 Ks
 Ks
 Ks
-Ks
+sB
 Ks
 Ks
 Ks
@@ -60334,7 +60395,7 @@ Ks
 Ks
 Ks
 Ks
-Ks
+ke
 Ks
 Ks
 Ks

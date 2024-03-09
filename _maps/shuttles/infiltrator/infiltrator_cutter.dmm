@@ -461,10 +461,8 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/obj/machinery/computer/shuttle_flight/syndicate{
-	dir = 8;
-	possible_destinations = "infiltrator_away;syndicatecutter_z5;syndicatecutter_ne;syndicatecutter_nw;syndicatecutter_n;syndicatecutter_se;syndicatecutter_sw;syndicatecutter_s;syndicatecutter_custom";
-	shuttleId = "syndicatecutter"
+/obj/machinery/computer/shuttle_flight/cutter{
+	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/stealthcruiser)
