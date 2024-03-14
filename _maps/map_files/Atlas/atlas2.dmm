@@ -468,9 +468,10 @@
 /turf/open/floor/circuit/telecomms/server,
 /area/tcommsat/server)
 "bA" = (
-/obj/effect/landmark/carpspawn,
-/turf/open/floor/engine/airless,
-/area/space/nearstation)
+/obj/structure/hull_plate,
+/obj/machinery/camera/autoname,
+/turf/open/space/basic,
+/area/crew_quarters/dorms)
 "bC" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -787,7 +788,7 @@
 "cM" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/storage/tech)
+/area/crew_quarters/dorms)
 "cN" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/maintenance/three,
@@ -2018,10 +2019,6 @@
 /area/space/nearstation)
 "gz" = (
 /obj/structure/chair,
-/obj/machinery/power/apc/auto_name/west,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
 /turf/open/floor/carpet/ship,
 /area/crew_quarters/dorms)
 "gC" = (
@@ -2334,7 +2331,7 @@
 	pixel_x = -36
 	},
 /turf/open/floor/durasteel,
-/area/storage/tech)
+/area/crew_quarters/dorms)
 "hs" = (
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
@@ -2439,9 +2436,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -2617,7 +2611,7 @@
 	name = "Pralnia"
 	},
 /turf/open/floor/durasteel,
-/area/storage/tech)
+/area/crew_quarters/dorms)
 "iu" = (
 /obj/structure/disposalpipe/trunk/multiz/down{
 	dir = 1
@@ -2824,7 +2818,7 @@
 	},
 /obj/machinery/washing_machine,
 /turf/open/floor/durasteel,
-/area/storage/tech)
+/area/crew_quarters/dorms)
 "iV" = (
 /obj/item/newspaper{
 	layer = 2.9
@@ -4777,7 +4771,7 @@
 /obj/item/reagent_containers/spray/cleaner,
 /obj/item/pushbroom,
 /turf/open/floor/durasteel,
-/area/storage/tech)
+/area/crew_quarters/dorms)
 "pw" = (
 /turf/open/floor/carpet/blue,
 /area/bridge/cic)
@@ -5656,7 +5650,7 @@
 	default_raw_text = "Hej,niewiem,czyczytatoosoba,któratozrobiła,alemamnadzieję,żetak.Widzisztęstertęróżowychuniformów?Tak,gratulacjetłumoku,totwojasprawka.Możenastępnymrazemzwróciszuwagęnato,żebydojasnejcholerysprawdać,cowrzucaszdopralki.NIEMIESZASIĘKOLOROWYCHZBIAŁYM,JASNE?!TEUNIFORMYSĄTERAZBEZUŻYTECZNE!Podejrzewamktotozrobił,aledajęciostatniąszansę.Jeżelitakasytuacjapowtórzysięponownie,zgłaszamciędokadr."
 	},
 /turf/open/floor/durasteel,
-/area/storage/tech)
+/area/crew_quarters/dorms)
 "ss" = (
 /obj/item/trash/waffles,
 /obj/structure/closet/crate/trashcart,
@@ -5848,9 +5842,6 @@
 	specialfunctions = 4
 	},
 /obj/machinery/light_switch/east,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/carpet/ship,
 /area/crew_quarters/dorms)
 "te" = (
@@ -6729,9 +6720,6 @@
 	},
 /obj/structure/extinguisher_cabinet/east{
 	pixel_x = 23
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
 	},
 /turf/open/floor/carpet/ship,
 /area/crew_quarters/dorms)
@@ -7697,9 +7685,6 @@
 	specialfunctions = 4
 	},
 /obj/machinery/light_switch/east,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/carpet/ship,
 /area/crew_quarters/dorms)
 "zn" = (
@@ -7782,7 +7767,7 @@
 /turf/closed/wall/steel,
 /area/bridge/cic)
 "zC" = (
-/obj/structure/grille/broken,
+/obj/structure/lattice,
 /obj/structure/lattice,
 /turf/open/openspace/airless,
 /area/space/nearstation)
@@ -8432,8 +8417,9 @@
 /turf/open/floor/monotile/dark,
 /area/medical/chemistry)
 "BF" = (
-/turf/closed/wall/r_wall,
-/area/storage/tech)
+/obj/effect/landmark/carpspawn,
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "BG" = (
 /obj/machinery/power/apc/auto_name/north,
 /obj/structure/cable{
@@ -8555,6 +8541,18 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck1/hallway)
+"Cc" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "Ce" = (
 /obj/structure/sink{
 	dir = 4;
@@ -10027,9 +10025,6 @@
 	},
 /obj/structure/extinguisher_cabinet/east{
 	pixel_x = 23
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
 	},
 /turf/open/floor/carpet/ship,
 /area/crew_quarters/dorms)
@@ -11639,9 +11634,6 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
 /turf/open/floor/monotile/steel,
 /area/crew_quarters/fitness/recreation)
 "Lo" = (
@@ -12026,10 +12018,6 @@
 	dir = 8
 	},
 /obj/structure/chair,
-/obj/machinery/power/apc/auto_name/west,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
 /turf/open/floor/carpet/ship,
 /area/crew_quarters/dorms)
 "Mo" = (
@@ -12332,16 +12320,9 @@
 /turf/open/floor/monotile/steel,
 /area/science/xenobiology)
 "Ne" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/open/floor/engine/airless,
+/obj/structure/grille/broken,
+/obj/structure/lattice,
+/turf/open/openspace/airless,
 /area/space/nearstation)
 "Nf" = (
 /obj/structure/cable{
@@ -13671,11 +13652,6 @@
 /obj/structure/hull_plate/end,
 /turf/open/floor/engine/airless,
 /area/space/nearstation)
-"Rh" = (
-/obj/structure/hull_plate,
-/obj/machinery/camera/autoname,
-/turf/open/space/basic,
-/area/crew_quarters/dorms)
 "Rl" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -13716,9 +13692,6 @@
 	specialfunctions = 4
 	},
 /obj/machinery/light_switch/east,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/carpet/ship,
 /area/crew_quarters/dorms)
 "Rp" = (
@@ -14458,9 +14431,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
 	},
 /turf/open/floor/monotile/steel,
 /area/crew_quarters/fitness/recreation)
@@ -15272,11 +15242,6 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck1/hallway)
-"WG" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/openspace/airless,
-/area/space/nearstation)
 "WI" = (
 /obj/structure/window/reinforced/spawner/west,
 /obj/item/toy/beach_ball,
@@ -15814,7 +15779,7 @@
 	pixel_x = -36
 	},
 /turf/open/floor/durasteel,
-/area/storage/tech)
+/area/crew_quarters/dorms)
 "Yt" = (
 /obj/item/trash/candy,
 /obj/structure/chair/wood{
@@ -39250,7 +39215,7 @@ cL
 cL
 cL
 tL
-WG
+zC
 SP
 gn
 tL
@@ -39505,7 +39470,7 @@ cL
 cL
 cL
 cL
-zC
+Ne
 cx
 cx
 cx
@@ -41344,8 +41309,8 @@ ys
 cx
 cx
 TN
-cL
-cL
+tL
+tL
 cL
 cL
 cL
@@ -41590,7 +41555,7 @@ tp
 tp
 tp
 PG
-Ne
+Cc
 yK
 cx
 cx
@@ -41600,8 +41565,8 @@ cx
 cx
 cx
 cx
-tL
-tL
+cx
+cx
 tL
 cL
 cL
@@ -41847,7 +41812,7 @@ vH
 uK
 PG
 dA
-Ne
+Cc
 yK
 cx
 cx
@@ -41857,8 +41822,8 @@ cx
 cx
 cx
 cx
-tL
-tL
+cx
+cx
 gn
 cL
 cL
@@ -42104,7 +42069,7 @@ Ei
 uK
 PG
 dA
-Ne
+Cc
 yK
 cx
 cx
@@ -42331,11 +42296,11 @@ cL
 cL
 cL
 cL
-zC
+Ne
 tL
 cx
 cx
-bA
+BF
 cx
 HI
 HI
@@ -52365,7 +52330,7 @@ SN
 ME
 Na
 Ln
-Qu
+Nw
 UW
 zm
 GU
@@ -53136,7 +53101,7 @@ SN
 yG
 Ss
 TR
-Qu
+Nw
 PQ
 td
 GU
@@ -53907,7 +53872,7 @@ Tk
 Tk
 Na
 hJ
-Qu
+Nw
 YJ
 Ro
 vQ
@@ -54170,7 +54135,7 @@ xf
 xf
 xf
 xf
-Rh
+bA
 mK
 mK
 mK
@@ -54425,7 +54390,7 @@ el
 cM
 pv
 sr
-BF
+xf
 hL
 hL
 mK
@@ -54682,7 +54647,7 @@ Qu
 is
 Ys
 hr
-BF
+xf
 hL
 hL
 mK
@@ -54939,7 +54904,7 @@ el
 cM
 iU
 iU
-BF
+xf
 hL
 hL
 mK
@@ -55193,10 +55158,10 @@ Tk
 ag
 sh
 pg
-BF
-BF
-BF
-BF
+xf
+xf
+xf
+xf
 hL
 hL
 mK
