@@ -33,10 +33,6 @@
 /turf/open/space,
 /area/engine/engine_room)
 "bg" = (
-/obj/structure/extinguisher_cabinet/east,
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -286,7 +282,7 @@
 /turf/open/floor/engine,
 /area/engine/engine_room)
 "kA" = (
-/turf/open/space/basic,
+/turf/template_noop,
 /area/engine/engine_room)
 "kO" = (
 /obj/effect/turf_decal/stripes/line,
@@ -474,10 +470,6 @@
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/item/clothing/head/radiation,
 /obj/item/clothing/suit/radiation,
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/light_switch/east,
 /obj/item/clothing/glasses/meson/engine,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
@@ -559,7 +551,6 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/light_switch/north,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
@@ -1433,10 +1424,10 @@ IC
 IC
 "}
 (2,1,1) = {"
+kA
 TX
 WD
 PU
-kA
 CY
 CY
 CY
@@ -1453,10 +1444,10 @@ CY
 IC
 "}
 (3,1,1) = {"
+kA
 Ut
 sD
 mm
-kA
 FG
 Fp
 CY
@@ -1473,10 +1464,10 @@ CY
 IC
 "}
 (4,1,1) = {"
+kA
 qs
 YR
 mk
-kA
 CY
 ZY
 CY
@@ -1493,10 +1484,10 @@ CY
 IC
 "}
 (5,1,1) = {"
+kA
 xQ
 Md
 mm
-kA
 CY
 Kz
 dh
@@ -1513,10 +1504,10 @@ CY
 IC
 "}
 (6,1,1) = {"
+kA
 qs
 YR
 mk
-kA
 CY
 IX
 mv
@@ -1533,10 +1524,10 @@ mS
 Ui
 "}
 (7,1,1) = {"
+kA
 iQ
 Fq
 mm
-kA
 CY
 zq
 En
@@ -1553,10 +1544,10 @@ CY
 CY
 "}
 (8,1,1) = {"
+kA
 qs
 YR
 mk
-kA
 CY
 kO
 En
@@ -1573,10 +1564,10 @@ PP
 mK
 "}
 (9,1,1) = {"
+kA
 kc
 YR
 gH
-kA
 Gv
 Bx
 En
@@ -1593,10 +1584,10 @@ PP
 mK
 "}
 (10,1,1) = {"
+kA
 qs
 Md
 mm
-kA
 CY
 eP
 mv
@@ -1610,13 +1601,13 @@ IM
 bv
 jh
 TD
-CY
+IC
 "}
 (11,1,1) = {"
+kA
 tI
 ip
 aT
-kA
 Gv
 pB
 Dw
@@ -1629,8 +1620,8 @@ KT
 VQ
 ZS
 uw
-CY
-CY
+IC
+IC
 "}
 (12,1,1) = {"
 IC
@@ -1648,8 +1639,8 @@ us
 iR
 TK
 Bb
-CY
-CY
+IC
+IC
 IC
 "}
 (13,1,1) = {"
@@ -1668,7 +1659,7 @@ qY
 QF
 GP
 wl
-CY
+IC
 IC
 IC
 "}
@@ -1688,7 +1679,7 @@ HR
 CY
 hG
 mK
-CY
+IC
 IC
 IC
 "}
