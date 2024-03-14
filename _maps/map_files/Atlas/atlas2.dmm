@@ -7768,7 +7768,6 @@
 /area/bridge/cic)
 "zC" = (
 /obj/structure/lattice,
-/obj/structure/lattice,
 /turf/open/openspace/airless,
 /area/space/nearstation)
 "zH" = (
