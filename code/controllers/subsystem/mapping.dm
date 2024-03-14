@@ -25,8 +25,6 @@ SUBSYSTEM_DEF(mapping)
 
 	///Random rooms template list, gets initialized and filled when server starts.
 	var/list/random_room_templates = list()
-	//AQ Edit - random engineering departments or engines
-	var/list/random_engine_templates = list()
 	///Temporary list, where room spawners are kept roundstart. Not used later.
 	var/list/random_room_spawners = list()
 	///NSV13 - boarding maps
@@ -75,10 +73,10 @@ SUBSYSTEM_DEF(mapping)
 			to_chat(world, "<span class='boldannounce'>Unable to load next or default map config, defaulting to Box Station</span>")
 			config = old_config
 	initialize_biomes()
-	preloadTemplates()
 	loadWorld()
 	repopulate_sorted_areas()
 	process_teleport_locs()			//Sets up the wizard teleport locations
+	preloadTemplates()
 
 #ifndef LOWMEMORYMODE
 	// Create space ruin levels
@@ -182,7 +180,6 @@ SUBSYSTEM_DEF(mapping)
 	lava_ruins_templates = SSmapping.lava_ruins_templates
 	shuttle_templates = SSmapping.shuttle_templates
 	random_room_templates = SSmapping.random_room_templates
-	random_engine_templates = SSmapping.random_engine_templates
 	shelter_templates = SSmapping.shelter_templates
 	boarding_templates = SSmapping.boarding_templates //NSV13 - boarding maps
 	unused_turfs = SSmapping.unused_turfs
