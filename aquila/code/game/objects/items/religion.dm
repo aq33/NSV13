@@ -9,7 +9,7 @@
 	job_loyalties = null
 	warcry = "ZA OJCZYZNĘ!"
 
-/obj/item/banner/security/mundane
+/obj/item/banner/polski_sztandar/mundane
 	inspiration_available = FALSE
 
 /datum/crafting_recipe/polski_sztandar
