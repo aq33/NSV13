@@ -437,7 +437,6 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	preloadShelterTemplates()
 	preloadBoardingTemplates() //NSV13 - boarding maps
 	preloadHolodeckTemplates()
-	preloadRandomEngineTemplates() //AQ Edit - random engineering departments or engines
 
 /datum/controller/subsystem/mapping/proc/LoadStationRoomTemplates()
 	for(var/item in subtypesof(/datum/map_template/random_room))
@@ -518,17 +517,6 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		var/datum/map_template/holodeck/holo_template = new holodeck_type()
 
 		holodeck_templates[holo_template.template_id] = holo_template
-
-//AQ EDIT START
-/datum/controller/subsystem/mapping/proc/preloadRandomEngineTemplates()
-	for(var/item in subtypesof(/datum/map_template/random_engine))
-		var/datum/map_template/random_engine/engine_type = item
-		if(!(initial(engine_type.mappath)))
-			continue
-		var/datum/map_template/random_engine/R = new engine_type()
-		random_engine_templates[R.engine_id] = R
-		map_templates[R.engine_id] = R
-//AQ EDIT STOP
 
 //Manual loading of away missions.
 /client/proc/admin_away()

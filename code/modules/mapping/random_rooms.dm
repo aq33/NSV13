@@ -1553,6 +1553,7 @@
 	template_height = 11
 	template_width = 5
 
+//AQ EDIT START
 /datum/map_template/random_room/sk_rdm_glg_01
 	name = "Ashwalker Research Facility"
 	room_id = "sk_rdm_glg_01_ashwalker"
@@ -1608,3 +1609,27 @@
 	centerspawner = FALSE
 	template_height = 40
 	template_width = 40
+
+/datum/map_template/random_room/sk_rdm_eng_atl_01
+	name = "Stormdrive Atlas Engine"
+	room_id = "sk_rdm_eng_atl_01_atlas_engine_stormdrive"
+	mappath = "_maps/RandomRooms/engine/atlas_engine_stormdrive.dmm"
+	centerspawner = FALSE
+	template_height = 18
+	template_width = 22
+
+/datum/map_template/random_room/sk_rdm_eng_atl_02
+	name = "Supermatter Atlas Engine"
+	room_id = "sk_rdm_eng_atl_02_atlas_engine_supermatter"
+	mappath = "_maps/RandomRooms/engine/atlas_engine_supermatter.dmm"
+	centerspawner = FALSE
+	template_height = 18
+	template_width = 22
+
+/datum/map_template/random_room/sk_rdm_eng_atl_03
+	name = "Tesla Atlas Engine"
+	room_id = "sk_rdm_eng_atl_03_atlas_engine_tesla"
+	mappath = "_maps/RandomRooms/engine/atlas_engine_tesla.dmm"
+	centerspawner = FALSE
+	template_height = 18
+	template_width = 22
