@@ -3631,9 +3631,10 @@
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/effect/landmark/zebra_interlock_point,
-/turf/open/floor/stairs{
+/obj/structure/stairs_dummy{
 	dir = 4
 	},
+/turf/open/floor/plating,
 /area/crew_quarters/kitchen)
 "jj" = (
 /obj/structure/table/reinforced,
@@ -3755,13 +3756,13 @@
 /area/hallway/nsv/deck2/primary)
 "ju" = (
 /obj/effect/turf_decal/tile/bar/tile_marquee,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 10
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 10
 	},
 /obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 10
 	},
 /turf/open/floor/durasteel,
@@ -8672,7 +8673,8 @@
 /turf/open/floor/monotile/dark,
 /area/nsv/weapons)
 "wC" = (
-/turf/open/floor/stairs,
+/obj/structure/stairs_dummy,
+/turf/open/floor/plating,
 /area/crew_quarters/bar/mess_hall)
 "wD" = (
 /obj/machinery/door/poddoor{
@@ -9080,9 +9082,10 @@
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/effect/landmark/zebra_interlock_point,
-/turf/open/floor/stairs{
+/obj/structure/stairs_dummy{
 	dir = 4
 	},
+/turf/open/floor/plating,
 /area/crew_quarters/bar)
 "xJ" = (
 /obj/structure/sign/directions/science,
@@ -11585,9 +11588,10 @@
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/effect/landmark/zebra_interlock_point,
-/turf/open/floor/stairs{
+/obj/structure/stairs_dummy{
 	dir = 1
 	},
+/turf/open/floor/plating,
 /area/hydroponics)
 "Fh" = (
 /obj/structure/rack,
