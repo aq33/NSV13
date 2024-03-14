@@ -20,24 +20,11 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
-"bO" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plating/airless,
-/area/engine/engine_room)
 "cG" = (
 /obj/effect/turf_decal/tile/ship/half/yellow,
 /obj/structure/closet/radiation,
 /obj/item/clothing/glasses/meson/engine,
 /turf/open/floor/monotile/dark,
-/area/engine/engine_room)
-"dH" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/turf/open/floor/engine/airless,
 /area/engine/engine_room)
 "dS" = (
 /obj/structure/cable/yellow{
@@ -52,24 +39,15 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
-"dW" = (
-/obj/effect/decal/cleanable/dirt/dust,
+"eG" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/engine/engine_room)
+"eN" = (
 /turf/open/floor/plating{
 	icon_state = "platingdmg2"
 	},
-/area/engine/engine_room)
-"eG" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/turf/open/floor/engine/airless,
-/area/engine/engine_room)
-"eN" = (
-/obj/structure/lattice/catwalk,
-/turf/open/space/basic,
 /area/engine/engine_room)
 "fs" = (
 /obj/structure/cable/yellow{
@@ -105,8 +83,12 @@
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "gJ" = (
-/obj/machinery/power/rad_collector,
-/obj/effect/turf_decal/delivery,
+/obj/effect/turf_decal/box,
+/obj/machinery/power/emitter/anchored{
+	dir = 1;
+	state = 2
+	},
+/obj/structure/cable,
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "hk" = (
@@ -133,12 +115,6 @@
 	},
 /turf/open/space/basic,
 /area/engine/engine_room)
-"jX" = (
-/obj/machinery/power/rad_collector,
-/obj/effect/turf_decal/delivery,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plating/airless,
-/area/engine/engine_room)
 "km" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -163,24 +139,18 @@
 	},
 /area/engine/engine_room)
 "lp" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "lw" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plating/airless,
-/area/engine/engine_room)
-"lD" = (
-/obj/machinery/light{
-	brightness = 3;
-	bulb_vacuum_brightness = 2;
-	nightshift_brightness = 1
-	},
-/obj/machinery/power/grounding_rod,
-/obj/effect/turf_decal/delivery,
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "lV" = (
@@ -202,14 +172,11 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/light{
-	dir = 8;
-	light_on = 0
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 4
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/turf/open/floor/engine/airless,
+/turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "nv" = (
 /obj/structure/cable/yellow{
@@ -220,16 +187,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 8
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
-"nE" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
-	dir = 4
 	},
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
@@ -274,16 +231,21 @@
 /turf/open/floor/plating,
 /area/engine/engine_room)
 "oE" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/engine/engine_room)
 "oV" = (
-/obj/structure/lattice/catwalk,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/open/space/basic,
+/turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "oW" = (
 /obj/structure/particle_accelerator/particle_emitter/left{
@@ -322,12 +284,9 @@
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "qX" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/power/rad_collector,
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/plating/airless,
+/obj/structure/lattice,
+/obj/item/trash/chips,
+/turf/open/space/basic,
 /area/engine/engine_room)
 "ss" = (
 /obj/machinery/particle_accelerator/control_box,
@@ -337,25 +296,37 @@
 /obj/item/book/manual/wiki/engineering_singulo_tesla,
 /turf/open/floor/engine,
 /area/engine/engine_room)
-"sA" = (
-/obj/structure/lattice,
-/obj/item/trash/chips,
-/turf/open/space/basic,
+"tw" = (
+/obj/structure/tank_dispenser/plasma,
+/turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "tH" = (
-/obj/machinery/field/generator{
-	anchored = 1;
-	state = 2
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/engine/engine_room)
+"tT" = (
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
-/turf/open/floor/engine/airless,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "tZ" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/engine/engine_room)
+"uk" = (
+/obj/machinery/camera/autoname{
+	dir = 10
+	},
+/obj/machinery/power/grounding_rod,
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "uw" = (
@@ -369,17 +340,11 @@
 	dir = 8;
 	light_on = 0
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/turf/open/floor/engine/airless,
+/turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "uY" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
 /obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/engine/airless,
+/turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "vo" = (
 /obj/structure/cable/yellow{
@@ -433,20 +398,20 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
-"yi" = (
+"xp" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plating/airless,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "ym" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/turf/open/floor/engine/airless,
+/turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "yC" = (
 /obj/structure/particle_accelerator/power_box{
@@ -468,10 +433,8 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/turf/open/floor/engine/airless,
+/obj/structure/lattice/catwalk,
+/turf/open/space/basic,
 /area/engine/engine_room)
 "zp" = (
 /obj/structure/cable/yellow{
@@ -497,22 +460,12 @@
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "zR" = (
-/obj/structure/lattice/catwalk,
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/open/space/basic,
-/area/engine/engine_room)
-"AO" = (
-/obj/machinery/power/emitter/anchored{
-	dir = 1;
-	state = 2
-	},
-/obj/effect/turf_decal/box,
-/obj/structure/cable,
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "Bg" = (
@@ -539,10 +492,6 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/open/floor/plating/airless,
-/area/engine/engine_room)
-"DG" = (
-/obj/structure/tank_dispenser/plasma,
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "DH" = (
@@ -578,20 +527,13 @@
 	anchored = 1;
 	state = 2
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
+/obj/effect/turf_decal/stripes/box,
 /turf/open/floor/engine/airless,
 /area/engine/engine_room)
 "EX" = (
-/obj/machinery/field/generator{
-	anchored = 1;
-	state = 2
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/turf/open/floor/engine/airless,
 /area/engine/engine_room)
 "Fc" = (
 /obj/structure/cable{
@@ -618,24 +560,13 @@
 /obj/item/extinguisher/advanced/hull_repair_juice,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
-"Gv" = (
-/obj/effect/turf_decal/box,
-/obj/machinery/power/emitter/anchored{
-	dir = 1;
-	state = 2
-	},
-/obj/structure/cable,
-/turf/open/floor/plating/airless,
-/area/engine/engine_room)
 "Gw" = (
-/obj/machinery/field/generator{
-	anchored = 1;
-	state = 2
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/turf/open/floor/engine/airless,
+/obj/machinery/power/rad_collector,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "Ht" = (
 /obj/item/weldingtool,
@@ -739,9 +670,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "JY" = (
 /obj/structure/lattice/catwalk,
@@ -768,8 +697,9 @@
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "KH" = (
-/obj/machinery/power/tesla_coil,
+/obj/machinery/power/rad_collector,
 /obj/effect/turf_decal/delivery,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "KS" = (
@@ -795,12 +725,28 @@
 "MC" = (
 /turf/open/space/basic,
 /area/engine/engine_room)
+"MI" = (
+/obj/machinery/light{
+	brightness = 3;
+	bulb_vacuum_brightness = 2;
+	nightshift_brightness = 1
+	},
+/obj/machinery/power/grounding_rod,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plating/airless,
+/area/engine/engine_room)
 "MO" = (
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /turf/open/floor/plating,
 /area/engine/engine_room)
+"Nd" = (
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/engine/engine_room)
 "NM" = (
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/power/rad_collector,
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "NP" = (
@@ -823,6 +769,12 @@
 /obj/structure/cable/yellow,
 /obj/effect/turf_decal/box,
 /turf/open/floor/plating/airless,
+/area/engine/engine_room)
+"Om" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
 /area/engine/engine_room)
 "Oy" = (
 /turf/closed/wall/r_wall,
@@ -878,10 +830,15 @@
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "PS" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
 	},
-/turf/open/floor/engine/airless,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
 /area/engine/engine_room)
 "Qc" = (
 /obj/structure/particle_accelerator/particle_emitter/center{
@@ -893,13 +850,13 @@
 /turf/open/floor/engine,
 /area/engine/engine_room)
 "Qj" = (
-/obj/structure/lattice/catwalk,
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
+/obj/structure/lattice,
 /turf/open/space/basic,
 /area/engine/engine_room)
 "QX" = (
@@ -932,10 +889,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/turf/open/floor/engine/airless,
+/obj/structure/lattice/catwalk,
+/turf/open/space/basic,
 /area/engine/engine_room)
 "Rg" = (
 /obj/structure/lattice/catwalk,
@@ -966,15 +921,6 @@
 	},
 /turf/open/space/basic,
 /area/engine/engine_room)
-"Te" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/plating/airless,
-/area/engine/engine_room)
 "Tr" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
@@ -983,10 +929,9 @@
 /turf/template_noop,
 /area/template_noop)
 "Uk" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/turf/open/floor/engine/airless,
+/obj/machinery/power/tesla_coil,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "UT" = (
 /obj/effect/turf_decal/tile/ship/half/yellow,
@@ -1006,36 +951,19 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
-"WH" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
-	dir = 4
-	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
 "Xx" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
-"XM" = (
-/obj/machinery/camera/autoname{
-	dir = 10
-	},
-/obj/machinery/power/grounding_rod,
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/plating/airless,
-/area/engine/engine_room)
 "YA" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
+/obj/machinery/power/emitter/anchored{
+	dir = 1;
+	state = 2
 	},
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
+/obj/effect/turf_decal/box,
+/obj/structure/cable,
 /turf/open/floor/plating/airless,
 /area/engine/engine_room)
 "YZ" = (
@@ -1104,15 +1032,15 @@ Oy
 gv
 lw
 uG
-eG
+zm
 Ss
 hQ
 hQ
 hQ
 IS
 zm
-nu
-lw
+uG
+tH
 ZJ
 Oy
 Oy
@@ -1122,26 +1050,26 @@ Oy
 TX
 Dl
 aW
+Jc
 uw
-dH
 Ek
 Jc
 MC
 MC
 MC
 Jc
-tH
+Ek
 uY
-eN
+Nd
 ZK
 Iy
-AO
+YA
 Oy
 "}
 (4,1,1) = {"
 TX
 Zv
-lp
+EX
 zy
 Hz
 Jc
@@ -1153,16 +1081,16 @@ Jc
 Jc
 oa
 Qj
-eN
+uw
 Xx
-XM
+uk
 Oy
 "}
 (5,1,1) = {"
 TX
 Zv
-uw
-YA
+Jc
+JA
 Oa
 MC
 Jc
@@ -1175,37 +1103,37 @@ Rc
 zR
 Jc
 Xx
-lD
+MI
 Oy
 "}
 (6,1,1) = {"
 TX
 Zv
 uw
-JA
+oE
 Oa
 MC
 MC
 fP
-NM
+uY
 NY
 MC
 MC
 Rc
-zR
-Jc
+PS
+uw
 Xx
-KH
+Uk
 MO
 "}
 (7,1,1) = {"
 TX
 wF
-uw
-YA
+Jc
+JA
 Oa
 MC
-sA
+qX
 hk
 CS
 QZ
@@ -1215,14 +1143,14 @@ Rc
 zR
 Jc
 Xx
-KH
+Uk
 MO
 "}
 (8,1,1) = {"
 TX
 Fc
 uw
-YA
+JA
 Hz
 Jc
 Jc
@@ -1234,34 +1162,34 @@ Jc
 oa
 zR
 eN
-bO
-KH
+tT
+Uk
 Oy
 "}
 (9,1,1) = {"
 TX
 Bg
 uw
-yi
-Uk
-EX
+oV
+uw
+Ek
 Jc
 MC
 MC
 MC
 HZ
-Gw
-PS
+Ek
+uw
 oV
-oE
-Te
-Gv
+eG
+lp
+gJ
 Oy
 "}
 (10,1,1) = {"
 TX
-NM
-dW
+uY
+Om
 tZ
 ym
 Rf
@@ -1270,20 +1198,20 @@ Rg
 JY
 Rg
 QX
-ym
 Rf
+ym
 IT
 uw
-qX
-gJ
+Gw
+NM
 TX
 "}
 (11,1,1) = {"
 TX
-jX
-jX
-jX
-DG
+KH
+KH
+KH
+tw
 gj
 DR
 DR
@@ -1293,7 +1221,7 @@ DR
 gj
 lf
 gv
-lw
+tH
 zz
 TX
 TX
@@ -1365,7 +1293,7 @@ TX
 TX
 TX
 vL
-WH
+xp
 ss
 HU
 Tr
@@ -1409,7 +1337,7 @@ Ec
 HX
 Ky
 hI
-nE
+nu
 Ln
 nv
 kZ

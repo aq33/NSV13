@@ -468,7 +468,8 @@
 /turf/open/floor/circuit/telecomms/server,
 /area/tcommsat/server)
 "bA" = (
-/turf/open/openspace/airless,
+/obj/effect/landmark/carpspawn,
+/turf/open/floor/engine/airless,
 /area/space/nearstation)
 "bC" = (
 /obj/structure/cable{
@@ -634,14 +635,13 @@
 /turf/open/floor/monotile/steel,
 /area/crew_quarters/fitness/recreation)
 "ce" = (
-/obj/structure/lattice/catwalk,
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
-/turf/open/openspace/airless,
+/turf/open/floor/engine/airless,
 /area/space/nearstation)
 "cf" = (
 /obj/machinery/shower{
@@ -1064,11 +1064,10 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port)
 "dA" = (
-/obj/structure/lattice/catwalk,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/open/openspace/airless,
+/turf/open/floor/engine/airless,
 /area/space/nearstation)
 "dB" = (
 /obj/effect/turf_decal/tile/ship/bar,
@@ -2015,7 +2014,7 @@
 /area/space)
 "gy" = (
 /obj/structure/railing,
-/turf/open/floor/plating/airless,
+/turf/open/floor/engine/airless,
 /area/space/nearstation)
 "gz" = (
 /obj/structure/chair,
@@ -6953,7 +6952,7 @@
 	dir = 1
 	},
 /turf/open/floor/engine/airless,
-/area/space/nearstation)
+/area/crew_quarters/dorms)
 "wU" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -7626,7 +7625,7 @@
 	dir = 1
 	},
 /turf/open/floor/durasteel/alt,
-/area/hallway/nsv/deck1/hallway)
+/area/crew_quarters/cryopods)
 "yZ" = (
 /obj/effect/turf_decal/tile/ship/blue{
 	dir = 8
@@ -7783,10 +7782,9 @@
 /turf/closed/wall/steel,
 /area/bridge/cic)
 "zC" = (
-/obj/structure/shuttle/engine/huge{
-	dir = 8
-	},
-/turf/open/floor/plating/airless,
+/obj/structure/grille/broken,
+/obj/structure/lattice,
+/turf/open/openspace/airless,
 /area/space/nearstation)
 "zH" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible{
@@ -9741,8 +9739,9 @@
 	pixel_y = -5;
 	pixel_x = 5
 	},
-/obj/item/camera,
 /obj/machinery/airalarm/directional/north,
+/obj/item/choice_beacon/music,
+/obj/item/camera,
 /turf/open/floor/wood,
 /area/crew_quarters/theatre/backstage)
 "Gb" = (
@@ -12177,6 +12176,7 @@
 	pixel_y = 1
 	},
 /obj/structure/table/wood/fancy,
+/obj/item/choice_beacon/music,
 /turf/open/floor/wood,
 /area/crew_quarters/theatre)
 "MG" = (
@@ -12332,8 +12332,15 @@
 /turf/open/floor/monotile/steel,
 /area/science/xenobiology)
 "Ne" = (
-/obj/structure/hull_plate,
-/obj/machinery/camera/autoname,
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
 /turf/open/floor/engine/airless,
 /area/space/nearstation)
 "Nf" = (
@@ -13664,6 +13671,11 @@
 /obj/structure/hull_plate/end,
 /turf/open/floor/engine/airless,
 /area/space/nearstation)
+"Rh" = (
+/obj/structure/hull_plate,
+/obj/machinery/camera/autoname,
+/turf/open/space/basic,
+/area/crew_quarters/dorms)
 "Rl" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -14060,10 +14072,6 @@
 /obj/structure/extinguisher_cabinet/south{
 	pixel_x = 5
 	},
-/obj/machinery/power/apc/auto_name/west{
-	pixel_x = -26;
-	pixel_y = 6
-	},
 /obj/structure/cable,
 /obj/machinery/firealarm/directional/west{
 	pixel_y = 4;
@@ -14072,6 +14080,7 @@
 /obj/machinery/camera/autoname{
 	dir = 5
 	},
+/obj/machinery/power/apc/auto_name/west,
 /turf/open/floor/durasteel/lino,
 /area/medical/chemistry)
 "SB" = (
@@ -15263,6 +15272,11 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck1/hallway)
+"WG" = (
+/obj/structure/lattice,
+/obj/structure/lattice,
+/turf/open/openspace/airless,
+/area/space/nearstation)
 "WI" = (
 /obj/structure/window/reinforced/spawner/west,
 /obj/item/toy/beach_ball,
@@ -39235,11 +39249,11 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
+tL
+WG
+SP
+gn
+tL
 xK
 xK
 AG
@@ -39491,12 +39505,12 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-Cw
-cL
+zC
+cx
+cx
+cx
+cx
+cx
 xK
 xK
 Hn
@@ -39749,11 +39763,11 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
+cx
+cx
+cx
+cx
+cx
 xK
 xK
 pk
@@ -39784,9 +39798,9 @@ Zp
 cL
 cL
 cL
-cL
-cL
-cL
+SP
+SP
+SP
 cL
 cL
 cL
@@ -40006,11 +40020,11 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
+cx
+cx
+cx
+cx
+cx
 xK
 xK
 oA
@@ -40038,13 +40052,13 @@ Xh
 yK
 cL
 Zp
+tL
+SP
+SP
+tL
+tL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
+gn
 cL
 cL
 cL
@@ -40263,11 +40277,11 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
+cx
+cx
+cx
+cx
+cx
 xK
 xK
 Qm
@@ -40293,15 +40307,15 @@ jw
 PG
 Xh
 yK
-tL
-Zp
-cL
-cL
-cL
-cL
-cL
-cL
-cL
+cx
+cx
+cx
+cx
+cx
+cx
+cx
+cx
+SP
 cL
 cL
 cL
@@ -40519,12 +40533,12 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
+Zp
+cx
+cx
+cx
+cx
+cx
 xK
 xK
 DY
@@ -40550,15 +40564,15 @@ jw
 JF
 Xh
 yK
-cL
-Zp
-cL
-cL
-cL
-cL
-cL
-cL
-cL
+cx
+cx
+cx
+cx
+cx
+cx
+cx
+cx
+SP
 cL
 cL
 cL
@@ -40777,11 +40791,11 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
+cx
+cx
+cx
+cx
+cx
 xK
 xK
 aw
@@ -40807,15 +40821,15 @@ jw
 PG
 Xh
 yK
-cL
-bA
-cL
-cL
-cL
-cL
-cL
-cL
-cL
+cx
+cx
+cx
+cx
+cx
+cx
+cx
+cx
+tL
 cL
 cL
 cL
@@ -41033,12 +41047,12 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
+Zp
+cx
+cx
+cx
+cx
+cx
 xK
 xK
 xK
@@ -41064,14 +41078,14 @@ jw
 PG
 Xh
 yK
-pW
-pW
+cx
+cx
 gy
-pW
-pW
-pW
-pW
-pW
+cx
+cx
+cx
+cx
+cx
 tL
 cL
 cL
@@ -41290,11 +41304,11 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
+SP
+cx
+cx
+cx
+cx
 cx
 xK
 xK
@@ -41321,14 +41335,14 @@ jw
 PG
 Xh
 yK
-pW
-pW
+cx
+cx
 gy
-pW
-pW
-zC
-pW
-pW
+cx
+cx
+ys
+cx
+cx
 TN
 cL
 cL
@@ -41547,11 +41561,11 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
+SP
+cx
+cx
+cx
+cx
 cx
 jv
 mK
@@ -41576,16 +41590,16 @@ tp
 tp
 tp
 PG
-Xh
+Ne
 yK
-pW
-pW
+cx
+cx
 gy
-pW
-pW
-pW
-pW
-pW
+cx
+cx
+cx
+cx
+cx
 tL
 tL
 tL
@@ -41803,12 +41817,12 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
-cL
-cL
-cL
+Zp
+tL
+cx
+cx
+cx
+cx
 cx
 jv
 mK
@@ -41833,16 +41847,16 @@ vH
 uK
 PG
 dA
-Xh
+Ne
 yK
-pW
-pW
+cx
+cx
 gy
-pW
-pW
-pW
-pW
-pW
+cx
+cx
+cx
+cx
+cx
 tL
 tL
 gn
@@ -42061,8 +42075,8 @@ cL
 cL
 cL
 cL
-cL
-cL
+tL
+cx
 cx
 cx
 cx
@@ -42090,11 +42104,11 @@ Ei
 uK
 PG
 dA
-Xh
+Ne
 yK
-pW
-pW
-pW
+cx
+cx
+cx
 of
 of
 of
@@ -42317,11 +42331,11 @@ cL
 cL
 cL
 cL
-cL
-cL
-cL
+zC
+tL
 cx
 cx
+bA
 cx
 HI
 HI
@@ -42349,9 +42363,9 @@ Da
 dA
 ce
 yK
-pW
-pW
-pW
+cx
+cx
+cx
 MS
 Ph
 Ph
@@ -54156,8 +54170,8 @@ xf
 xf
 xf
 xf
-hL
-Ne
+Rh
+mK
 mK
 mK
 mK
