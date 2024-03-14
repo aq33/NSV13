@@ -80,5 +80,5 @@
 
 /obj/effect/spawner/room/atlasengine
 	name = "atlas engine spawner"
-	room_width = 18
-	room_height = 22
+	room_width = 22
+	room_height = 18
