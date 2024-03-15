@@ -248,7 +248,7 @@ GLOBAL_LIST_INIT(plasteel_recipes, list ( \
 
 GLOBAL_LIST_INIT(wood_recipes, list ( \
 	//AQ EDIT START
-	new/datum/stack_recipe("krzyż", 								/obj/item/kszysz/kszysz_drewniany, 2, time = 5), \
+	new/datum/stack_recipe("krzyż", 								/obj/item/wallframe/kszysz/kszysz_drewniany, 2, time = 10), \
 	new/datum/stack_recipe("duży krzyż", 							/obj/structure/kitchenspike/crucifix, 10, time = 40, one_per_turf = TRUE, on_floor = TRUE), \
 	//AQ EDIT STOP
 	new/datum/stack_recipe("wooden sandals",						/obj/item/clothing/shoes/sandal, 1), \
