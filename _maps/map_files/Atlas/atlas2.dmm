@@ -12533,7 +12533,6 @@
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "NG" = (
-/obj/machinery/light,
 /obj/structure/table/glass,
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -12856,6 +12855,9 @@
 	},
 /obj/effect/turf_decal/tile/ship/blue,
 /obj/machinery/airalarm/directional/east,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/plasteel/white,
 /area/medical/medbay)
 "Oz" = (

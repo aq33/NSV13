@@ -11,10 +11,10 @@
 	},
 /obj/effect/landmark/start/station_engineer,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 4
+	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 4
+	dir = 6
 	},
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
@@ -143,9 +143,6 @@
 /obj/effect/landmark/zebra_interlock_point,
 /obj/structure/cable{
 	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 4
 	},
 /obj/machinery/door/airlock/ship/maintenance{
 	dir = 4
@@ -318,6 +315,10 @@
 	},
 /turf/open/floor/engine,
 /area/engine/engine_room)
+"Db" = (
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space/nearstation)
 "DU" = (
 /obj/structure/extinguisher_cabinet/north,
 /obj/structure/cable/yellow{
@@ -345,17 +346,11 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
+"Eg" = (
+/turf/open/space/basic,
+/area/space/nearstation)
 "EX" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/door/firedoor/border_only{
-	dir = 1
-	},
-/obj/effect/landmark/zebra_interlock_point,
-/obj/machinery/door/firedoor/border_only,
-/obj/machinery/door/airlock/ship/maintenance,
-/turf/open/floor/monotile/steel,
+/turf/open/floor/plating,
 /area/engine/engine_room)
 "Ft" = (
 /obj/machinery/atmospherics/pipe/layer_manifold,
@@ -476,6 +471,9 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
+"JS" = (
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "Kc" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -505,12 +503,6 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 4
-	},
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "Rb" = (
@@ -524,6 +516,8 @@
 	icon_state = "1-2"
 	},
 /obj/effect/turf_decal/tile/ship/half/yellow,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
 "Rp" = (
@@ -650,11 +644,11 @@
 /area/engine/engine_room)
 
 (1,1,1) = {"
-MG
-zm
-zm
-zm
-zm
+Eg
+Eg
+Eg
+Eg
+Db
 zm
 mC
 mC
@@ -670,11 +664,11 @@ MG
 MG
 "}
 (2,1,1) = {"
-zm
-zm
-kX
-kX
-kX
+Eg
+Eg
+Eg
+Eg
+Db
 zm
 zm
 ji
@@ -682,19 +676,19 @@ Sl
 yx
 zm
 zm
-kX
-kX
-kX
+EX
+EX
+EX
 zm
 zm
 MG
 "}
 (3,1,1) = {"
 MG
-kX
-kX
-kX
-kX
+Eg
+Eg
+Eg
+Db
 zm
 zm
 zm
@@ -702,19 +696,19 @@ pJ
 zm
 zm
 zm
-kX
-kX
-kX
-kX
+EX
+EX
+EX
+EX
 zm
 MG
 "}
 (4,1,1) = {"
 MG
-kX
-kX
-kX
-kX
+Db
+Eg
+Eg
+Db
 zm
 zm
 CL
@@ -722,19 +716,19 @@ wt
 ux
 zm
 zm
-kX
-kX
-kX
-kX
+EX
+EX
+EX
+EX
 zm
 MG
 "}
 (5,1,1) = {"
 MG
-kX
-kX
-kX
-kX
+JS
+Eg
+Eg
+Db
 zm
 zm
 eh
@@ -742,19 +736,19 @@ Co
 yS
 zm
 zm
-kX
-kX
-kX
-kX
+EX
+EX
+EX
+EX
 zm
 zm
 "}
 (6,1,1) = {"
 MG
-kX
-kX
-kX
-kX
+Db
+Db
+Db
+JS
 zm
 zm
 CV
@@ -762,19 +756,19 @@ nh
 Yh
 zm
 zm
-kX
-kX
-kX
-kX
-kX
+EX
+EX
+EX
+EX
+EX
 mC
 "}
 (7,1,1) = {"
 MG
-kX
-kX
-kX
-kX
+Db
+Eg
+Eg
+Db
 zm
 zm
 mC
@@ -782,19 +776,19 @@ mN
 mC
 zm
 zm
-kX
-kX
-kX
-kX
-kX
+EX
+EX
+EX
+EX
+EX
 mC
 "}
 (8,1,1) = {"
 MG
-kX
-kX
-kX
-kX
+Db
+Eg
+JS
+Db
 zm
 zm
 Ft
@@ -802,19 +796,19 @@ GE
 Ja
 zm
 zm
-kX
-kX
-kX
-kX
-kX
+EX
+EX
+EX
+EX
+EX
 zm
 "}
 (9,1,1) = {"
 MG
-kX
-kX
-kX
-kX
+Db
+Eg
+Db
+Db
 zm
 zm
 mC
@@ -822,39 +816,39 @@ GW
 mC
 BK
 zm
-kX
-kX
-kX
-kX
-kX
+EX
+EX
+EX
+EX
+EX
 zm
 "}
 (10,1,1) = {"
 MG
-kX
-kX
-kX
-kX
-EX
+Db
+JS
+Eg
+Db
+zm
 Uu
 Tk
 JF
 Yd
 Jb
 zm
-kX
-kX
-kX
-kX
-kX
+EX
+EX
+EX
+EX
+EX
 MG
 "}
 (11,1,1) = {"
 MG
-kX
-kX
-kX
-kX
+JS
+JS
+Db
+Db
 zm
 DU
 TY
@@ -863,9 +857,9 @@ ZS
 HA
 zm
 zm
-kX
-kX
-kX
+EX
+EX
+EX
 MG
 MG
 "}
@@ -883,8 +877,8 @@ yS
 zX
 zm
 zm
-kX
-kX
+EX
+EX
 MG
 MG
 MG
@@ -903,8 +897,8 @@ yS
 zX
 wa
 zm
-kX
-kX
+EX
+EX
 MG
 MG
 MG
