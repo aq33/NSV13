@@ -9,7 +9,7 @@
 	supervisors = "the Master At Arms"
 	selection_color = "#ffd1a2"
 	chat_color = "#2681a5"
-	exp_requirements = 600
+	exp_requirements = 0
 	exp_type = EXP_TYPE_MUNITIONS
 	exp_type_department = EXP_TYPE_MUNITIONS
 

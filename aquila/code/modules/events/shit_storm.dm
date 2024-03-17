@@ -2,7 +2,7 @@
 	name = "Shit Storm"
 	typepath = /datum/round_event/shit_storm
 	max_occurrences = 1
-	weight = 6
+	weight = 10
 	can_malf_fake_alert = TRUE
 
 /datum/round_event/shit_storm

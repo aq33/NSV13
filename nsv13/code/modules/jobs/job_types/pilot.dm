@@ -4,12 +4,12 @@
 	department_head = list(JOB_NAME_MASTERATARMS)
 	department_flag = ENGSEC
 	faction = "Station"
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = 2
+	spawn_positions = 2
 	supervisors = "the Master At Arms"
 	selection_color = "#ffd1a2"
 	chat_color = "#2681a5"
-	exp_requirements = 60
+	exp_requirements = 0
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_MUNITIONS
 

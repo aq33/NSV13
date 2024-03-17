@@ -9,7 +9,7 @@
 	supervisors = "chief medical officer"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
-	exp_requirements = 120
+	exp_requirements = 0
 	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/brig_physician

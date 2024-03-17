@@ -23,7 +23,7 @@
 	icon_state = "toilet00"
 
 /atom/movable/screen/alert/about_to_shit_myself
-	name = "Sranie"
+	name = "Pilna potrzeba"
 	desc = "Krecik puka w taborecik!" // tu coś dopisać może
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "toilet10"
