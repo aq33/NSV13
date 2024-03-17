@@ -2289,13 +2289,15 @@
 /turf/open/floor/durasteel/riveted,
 /area/engine/atmos)
 "fS" = (
-/obj/machinery/smartfridge{
-	name = "public botany fridge"
-	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "botany"
 	},
-/turf/closed/wall/steel,
+/obj/machinery/smartfridge{
+	name = "public botany fridge";
+	layer = 3.1
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
 /area/hydroponics)
 "fU" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -2559,10 +2561,10 @@
 /obj/structure/disposalpipe/trunk/multiz{
 	dir = 1
 	},
-/obj/structure/grille,
 /obj/structure/cable{
 	icon_state = "1-16"
 	},
+/obj/structure/grille,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
@@ -4820,6 +4822,19 @@
 	},
 /obj/effect/turf_decal/tile/bar/tile_marquee,
 /obj/machinery/computer/ship/viewscreen,
+/obj/machinery/reagentgrinder{
+	pixel_y = 17;
+	pixel_x = -5;
+	layer = 2.8
+	},
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/food/condiment/saltshaker{
+	pixel_x = -8;
+	pixel_y = 4
+	},
 /turf/open/floor/durasteel,
 /area/crew_quarters/kitchen)
 "mg" = (
@@ -5466,7 +5481,7 @@
 /obj/effect/turf_decal/tile/ship/green{
 	dir = 8
 	},
-/obj/structure/bot_elevator,
+/obj/machinery/vending/cigarette,
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck2/primary)
 "nT" = (
@@ -5511,11 +5526,18 @@
 /obj/machinery/airalarm/directional/north,
 /turf/open/floor/durasteel,
 /area/crew_quarters/kitchen)
+"oa" = (
+/obj/effect/turf_decal/tile/ship/half/green{
+	dir = 1
+	},
+/obj/structure/bot_elevator,
+/turf/open/floor/monotile/steel,
+/area/hallway/nsv/deck2/primary)
 "ob" = (
 /turf/closed/wall/r_wall,
 /area/nsv/weapons/gauss/battery/deck2/starboard)
 "oc" = (
-/obj/machinery/vending/engineering,
+/obj/machinery/vending/wardrobe/hydro_wardrobe,
 /turf/open/floor/durasteel/techfloor_grid,
 /area/nsv/weapons)
 "oe" = (
@@ -5656,6 +5678,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
 	},
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port)
@@ -5826,7 +5851,7 @@
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck2/primary)
 "oW" = (
-/obj/machinery/vending/wardrobe/hydro_wardrobe,
+/obj/machinery/vending/hydroseeds,
 /turf/open/floor/durasteel/techfloor_grid,
 /area/hydroponics)
 "oY" = (
@@ -7034,7 +7059,7 @@
 /obj/effect/turf_decal/tile/ship/yellow{
 	dir = 1
 	},
-/obj/machinery/vending/cola/random,
+/obj/machinery/vending/engineering,
 /turf/open/floor/monotile/dark,
 /area/hallway/nsv/deck2/primary)
 "rS" = (
@@ -7081,7 +7106,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/ship/half/yellow,
-/obj/machinery/vending/snack/random,
+/obj/machinery/vending/cola/random,
 /turf/open/floor/monotile/dark,
 /area/hallway/nsv/deck2/primary)
 "rW" = (
@@ -7312,8 +7337,8 @@
 /area/nsv/hanger/notkmcstupidhanger)
 "sG" = (
 /obj/machinery/camera/autoname,
-/obj/machinery/vending/cigarette,
 /obj/effect/turf_decal/tile/ship/half/yellow,
+/obj/machinery/vending/snack/random,
 /turf/open/floor/monotile/dark,
 /area/hallway/nsv/deck2/primary)
 "sH" = (
@@ -9171,6 +9196,11 @@
 /turf/open/floor/monotile/steel,
 /area/nsv/weapons)
 "xU" = (
+/obj/structure/closet/crate/hydroponics,
+/obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/multitool,
 /turf/open/floor/durasteel,
 /area/hydroponics)
 "xV" = (
@@ -9841,7 +9871,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer4{
 	dir = 10
 	},
-/obj/machinery/airalarm/directional/north,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -10076,21 +10105,16 @@
 /turf/open/floor/plasteel/freezer,
 /area/chapel/office)
 "AL" = (
-/obj/structure/table,
-/obj/machinery/reagentgrinder{
-	pixel_y = 17;
-	pixel_x = -5;
-	layer = 2.8
-	},
-/obj/item/reagent_containers/food/condiment/saltshaker{
-	pixel_x = -8;
-	pixel_y = 4
-	},
-/obj/item/reagent_containers/food/condiment/peppermill{
-	pixel_x = 3;
-	pixel_y = 4
-	},
 /obj/effect/turf_decal/tile/bar/tile_marquee,
+/obj/structure/sink/kitchen{
+	pixel_y = 32
+	},
+/obj/structure/closet/crate/bin{
+	pixel_y = 17;
+	pixel_x = 1;
+	name = "kosz pod zlewem";
+	desc = "Jak nie masz kosza pod zlewem to jesteś volksdeutchem."
+	},
 /turf/open/floor/durasteel,
 /area/crew_quarters/kitchen)
 "AM" = (
@@ -11939,11 +11963,6 @@
 	dir = 1
 	},
 /obj/machinery/light_switch/north,
-/obj/structure/closet/crate/hydroponics,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/multitool,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
 /turf/open/floor/durasteel/techfloor_grid,
 /area/hydroponics)
 "Ga" = (
@@ -13885,6 +13904,7 @@
 /obj/effect/turf_decal/tile/ship/green{
 	dir = 8
 	},
+/obj/machinery/light,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -15210,8 +15230,13 @@
 	dir = 4
 	},
 /obj/structure/table,
-/obj/machinery/plantgenes{
-	pixel_y = 3
+/obj/item/reagent_containers/glass/beaker{
+	pixel_x = 8;
+	pixel_y = 4;
+	layer = 2.8
+	},
+/obj/machinery/smartfridge/disks{
+	pixel_y = 2
 	},
 /turf/open/floor/durasteel,
 /area/hydroponics)
@@ -16308,18 +16333,13 @@
 	dir = 6
 	},
 /obj/structure/table,
-/obj/machinery/smartfridge/disks{
-	pixel_y = 2
-	},
 /obj/item/reagent_containers/dropper{
 	pixel_y = 11;
 	pixel_x = 5;
 	layer = 2.8
 	},
-/obj/item/reagent_containers/glass/beaker{
-	pixel_x = 8;
-	pixel_y = 4;
-	layer = 2.8
+/obj/machinery/plantgenes{
+	pixel_y = 3
 	},
 /turf/open/floor/durasteel,
 /area/hydroponics)
@@ -17967,6 +17987,7 @@
 /obj/machinery/camera/autoname,
 /obj/effect/turf_decal/tile/bar/tile_marquee,
 /obj/machinery/light_switch/north,
+/obj/machinery/vending/dinnerware,
 /turf/open/floor/durasteel,
 /area/crew_quarters/kitchen)
 "VS" = (
@@ -18729,16 +18750,8 @@
 /turf/open/floor/monotile/steel,
 /area/security/brig)
 "Yh" = (
-/obj/structure/sink/kitchen{
-	pixel_y = 32
-	},
-/obj/structure/closet/crate/bin{
-	pixel_y = 17;
-	pixel_x = 1;
-	name = "kosz pod zlewem";
-	desc = "Jak nie masz kosza pod zlewem to jesteś volksdeutchem."
-	},
 /obj/effect/turf_decal/tile/bar/tile_marquee,
+/obj/machinery/vending/wardrobe/chef_wardrobe,
 /turf/open/floor/durasteel,
 /area/crew_quarters/kitchen)
 "Yl" = (
@@ -48313,7 +48326,7 @@ Ua
 Zx
 Nc
 GO
-WH
+oa
 ko
 vd
 lu
@@ -50371,7 +50384,7 @@ iT
 wd
 QG
 lx
-ql
+Lh
 QO
 bx
 Mp
@@ -51142,7 +51155,7 @@ Xc
 wd
 Sz
 SX
-Lh
+Ef
 QO
 AL
 Lf
