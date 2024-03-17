@@ -106,7 +106,7 @@
 
 
 /obj/effect/proc_holder/spell/targeted/hypnotise
-	name = "Hypnotize"
+	name = "Hypnotize (20)"
 	desc= "A piercing stare that incapacitates your victim for a good length of time."
 	action_icon_state = "hypnotize"
 	blood_used = 0
@@ -215,7 +215,7 @@
 		to_chat(C, "<span class='warning'><font size='3'><b>You hear a ear piercing shriek and your senses dull!</font></b></span>")
 		C.Knockdown(40)
 		C.adjustEarDamage(0, 30)
-		C.stuttering = 250
+		C.stuttering = 30
 		C.Stun(40)
 		C.Jitter(150)
 	for(var/obj/structure/window/W in view(4))
@@ -277,7 +277,7 @@
 					to_chat(target, "<span class='danger'>Wicked shadows invade your sight, beckoning to you.</span>")
 					to_chat(user, "<span class='notice'>We begin to drain [target]'s blood in, so Lilith can bless it.</span>")
 				if(2)
-					to_chat(target, "<span class='danger'>Demonic whispers fill your mind, and they become irressistible...</span>")
+					to_chat(target, "<span class='danger'>Demonic whispers fill your mind, and they become irresistible...</span>")
 				if(3)
 					to_chat(target, "<span class='danger'>The world blanks out, and you see a demo- no ange- demon- lil- glory- blessing... Lilith.</span>")
 					to_chat(user, "<span class='notice'>Excitement builds up in you as [target] sees the blessing of Lilith.</span>")

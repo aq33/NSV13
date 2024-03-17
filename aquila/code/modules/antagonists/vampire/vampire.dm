@@ -29,14 +29,14 @@
 		/obj/effect/proc_holder/spell/self/shapeshift = 75,
 		/obj/effect/proc_holder/spell/self/cloak = 100,
 		/obj/effect/proc_holder/spell/self/revive = 100,
-		/obj/effect/proc_holder/spell/targeted/disease = 200,//why is spell-that-kills-people unlocked so early what the fuck
+		/obj/effect/proc_holder/spell/targeted/disease = 225,//why is spell-that-kills-people unlocked so early what the fuck
 		/obj/effect/proc_holder/spell/self/batform = 200,
-		/obj/effect/proc_holder/spell/self/screech = 215,
+		/obj/effect/proc_holder/spell/self/screech = 200,
 		/obj/effect/proc_holder/spell/bats = 250,
-		/datum/vampire_passive/regen = 255,
+		/datum/vampire_passive/regen = 250,
 		/obj/effect/proc_holder/spell/targeted/ethereal_jaunt/mistform = 300,
-		/datum/vampire_passive/full = 420,
-		/obj/effect/proc_holder/spell/self/summon_coat = 420,
+		/datum/vampire_passive/full = 400,
+		/obj/effect/proc_holder/spell/self/summon_coat = 400,
 		/obj/effect/proc_holder/spell/targeted/vampirize = 450)
 
 /datum/antagonist/vampire/new_blood
@@ -53,7 +53,7 @@
 	usable_blood = ALL_POWERS_UNLOCKED
 	total_blood = ALL_POWERS_UNLOCKED
 	check_vampire_upgrade()
-	message_admins("[key_name_admin(admin)] made [owner.current] a full power vampire..")
+	message_admins("[key_name_admin(admin)] made [owner.current] a full-power vampire..")
 	log_admin("[key_name(admin)] made [owner.current] a full power vampire..")
 
 /datum/antagonist/vampire/proc/admin_set_blood(mob/admin)
@@ -105,7 +105,7 @@
 /datum/antagonist/vampire/greet()
 	to_chat(owner, "<span class='userdanger'>You are a Vampire!</span>")
 	to_chat(owner, "<span class='danger bold'>You are a creature of the night -- holy water, the chapel, and space will cause you to burn.</span>")
-	to_chat(owner, "<span class='userdanger'>Hit someone in the head with harm intent to start sucking their blood. However, only blood from living, non-vampiric creatures is usable!</span>")
+	to_chat(owner, "<span class='userdanger'>Hit someone in the head with harm intent and an open hand to start sucking their blood. However, only blood from living, non-vampiric creatures is usable!</span>")
 	to_chat(owner, "<span class='notice bold'>Coffins will heal you.</span>")
 	if(full_vampire == FALSE)
 		to_chat(owner, "<span class='notice bold'>You are not required to obey other vampires, however, you have gained a respect for them.</span>")
@@ -260,7 +260,7 @@
 		O.visible_message("<span class='danger'>[O] grabs [H]'s neck harshly and sinks in their fangs!</span>", "<span class='danger'>You sink your fangs into [H] and begin to [blood_to_take > BLOOD_SUCK_BASE ? "quickly" : ""] drain their blood.</span>", "<span class='notice'>You hear a soft puncture and a wet sucking noise.</span>")
 		playsound(O.loc, 'sound/weapons/bite.ogg', 50, 1)
 	else
-		to_chat(O, "<span class='notice'>You stealthily begin to drain blood from [H], be careful, as they will notice if their blood gets too low.</span>")
+		to_chat(O, "<span class='notice'>You stealthily begin to drain blood from [H]. Be careful, as they will notice if their blood gets too low.</span>")
 		O.playsound_local(O, 'sound/weapons/bite.ogg', 50, 1)
 	if(!iscarbon(owner))
 		H.LAssailant = null
