@@ -2289,13 +2289,15 @@
 /turf/open/floor/durasteel/riveted,
 /area/engine/atmos)
 "fS" = (
-/obj/machinery/smartfridge{
-	name = "public botany fridge"
-	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "botany"
 	},
-/turf/closed/wall/steel,
+/obj/machinery/smartfridge{
+	name = "public botany fridge";
+	layer = 3.1
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
 /area/hydroponics)
 "fU" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -9858,7 +9860,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer4{
 	dir = 10
 	},
-/obj/machinery/airalarm/directional/north,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
