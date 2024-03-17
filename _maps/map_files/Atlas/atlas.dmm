@@ -2559,10 +2559,10 @@
 /obj/structure/disposalpipe/trunk/multiz{
 	dir = 1
 	},
-/obj/structure/grille,
 /obj/structure/cable{
 	icon_state = "1-16"
 	},
+/obj/structure/grille,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
@@ -4820,6 +4820,19 @@
 	},
 /obj/effect/turf_decal/tile/bar/tile_marquee,
 /obj/machinery/computer/ship/viewscreen,
+/obj/machinery/reagentgrinder{
+	pixel_y = 17;
+	pixel_x = -5;
+	layer = 2.8
+	},
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/food/condiment/saltshaker{
+	pixel_x = -8;
+	pixel_y = 4
+	},
 /turf/open/floor/durasteel,
 /area/crew_quarters/kitchen)
 "mg" = (
@@ -5656,6 +5669,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
 	},
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port)
@@ -9171,6 +9187,7 @@
 /turf/open/floor/monotile/steel,
 /area/nsv/weapons)
 "xU" = (
+/obj/machinery/vending/hydroseeds,
 /turf/open/floor/durasteel,
 /area/hydroponics)
 "xV" = (
@@ -10076,21 +10093,16 @@
 /turf/open/floor/plasteel/freezer,
 /area/chapel/office)
 "AL" = (
-/obj/structure/table,
-/obj/machinery/reagentgrinder{
-	pixel_y = 17;
-	pixel_x = -5;
-	layer = 2.8
-	},
-/obj/item/reagent_containers/food/condiment/saltshaker{
-	pixel_x = -8;
-	pixel_y = 4
-	},
-/obj/item/reagent_containers/food/condiment/peppermill{
-	pixel_x = 3;
-	pixel_y = 4
-	},
 /obj/effect/turf_decal/tile/bar/tile_marquee,
+/obj/structure/sink/kitchen{
+	pixel_y = 32
+	},
+/obj/structure/closet/crate/bin{
+	pixel_y = 17;
+	pixel_x = 1;
+	name = "kosz pod zlewem";
+	desc = "Jak nie masz kosza pod zlewem to jesteś volksdeutchem."
+	},
 /turf/open/floor/durasteel,
 /area/crew_quarters/kitchen)
 "AM" = (
@@ -13885,6 +13897,7 @@
 /obj/effect/turf_decal/tile/ship/green{
 	dir = 8
 	},
+/obj/machinery/light,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -15210,8 +15223,13 @@
 	dir = 4
 	},
 /obj/structure/table,
-/obj/machinery/plantgenes{
-	pixel_y = 3
+/obj/item/reagent_containers/glass/beaker{
+	pixel_x = 8;
+	pixel_y = 4;
+	layer = 2.8
+	},
+/obj/machinery/smartfridge/disks{
+	pixel_y = 2
 	},
 /turf/open/floor/durasteel,
 /area/hydroponics)
@@ -16308,18 +16326,13 @@
 	dir = 6
 	},
 /obj/structure/table,
-/obj/machinery/smartfridge/disks{
-	pixel_y = 2
-	},
 /obj/item/reagent_containers/dropper{
 	pixel_y = 11;
 	pixel_x = 5;
 	layer = 2.8
 	},
-/obj/item/reagent_containers/glass/beaker{
-	pixel_x = 8;
-	pixel_y = 4;
-	layer = 2.8
+/obj/machinery/plantgenes{
+	pixel_y = 3
 	},
 /turf/open/floor/durasteel,
 /area/hydroponics)
@@ -18729,16 +18742,8 @@
 /turf/open/floor/monotile/steel,
 /area/security/brig)
 "Yh" = (
-/obj/structure/sink/kitchen{
-	pixel_y = 32
-	},
-/obj/structure/closet/crate/bin{
-	pixel_y = 17;
-	pixel_x = 1;
-	name = "kosz pod zlewem";
-	desc = "Jak nie masz kosza pod zlewem to jesteś volksdeutchem."
-	},
 /obj/effect/turf_decal/tile/bar/tile_marquee,
+/obj/machinery/vending/wardrobe/chef_wardrobe,
 /turf/open/floor/durasteel,
 /area/crew_quarters/kitchen)
 "Yl" = (
@@ -50371,7 +50376,7 @@ iT
 wd
 QG
 lx
-ql
+Lh
 QO
 bx
 Mp
@@ -51142,7 +51147,7 @@ Xc
 wd
 Sz
 SX
-Lh
+Ef
 QO
 AL
 Lf
