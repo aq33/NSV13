@@ -84,7 +84,7 @@
 		else if(in_view[get_turf(client.mob)]) //NSV13 - LOOC AI Stuff - Stop
 			targets |= client
 			to_chat(client, "<span class='looc'><span class='prefix'>LOOC:</span> <EM><span class='name'>[mob.name]</span>:</EM> <span class='message'>[msg]</span></span>", avoid_highlighting = (client == src))
-	to_chat(SSdemo, "<span class='looc'><span class='prefix'>LOOC:</span> <EM><span class='name'>[mob.name]</span>:</EM> <span class='message'>[msg]</span></span>") // AQ EDIT - Replays
+
 	for(var/client/client in GLOB.admins)
 		if(!(client.prefs.chat_toggles & CHAT_LOOC)) //nsv13 - toggles -> chat_toggles, CHAT_OOC -> CHAT_LOOC
 			continue
