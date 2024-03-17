@@ -124,6 +124,7 @@
 #include "code\game\objects\structures\crate_lockers\closets\secure\engineering.dm"
 #include "code\game\objects\structures\crate_lockers\closets\secure\scientist.dm"
 #include "code\game\objects\structures\door_assembly_types.dm"
+#include "code\game\objects\structures\stairs_dummy.dm"
 #include "code\game\objects\structures\watercloset.dm"
 #include "code\game\objects\structures\signs\signs_departments.dm"
 #include "code\game\objects\structures\signs\signs_maps.dm"

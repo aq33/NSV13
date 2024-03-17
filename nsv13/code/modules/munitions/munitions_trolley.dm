@@ -1,3 +1,14 @@
+//AQ EDIT START
+/obj/structure/munitions_trolley_dummy
+	name = "trolley"
+	icon = 'nsv13/icons/obj/munitions.dmi'
+	icon_state = "trolley"
+	desc = "A large trolley designed for ferrying stuff around."
+	anchored = TRUE
+	density = TRUE
+	layer = 2.9
+//AQ EDIT STOP
+
 /obj/structure/munitions_trolley
 	name = "munitions trolley"
 	icon = 'nsv13/icons/obj/munitions.dmi'
