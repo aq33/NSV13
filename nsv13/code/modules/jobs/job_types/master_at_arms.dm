@@ -12,7 +12,7 @@
 	selection_color = "#ffbc79"
 	chat_color = "#ff7f00"
 	minimal_player_age = 7
-	exp_requirements = 1200
+	exp_requirements = 120
 	exp_type = EXP_TYPE_MUNITIONS
 	exp_type_department = EXP_TYPE_MUNITIONS
 

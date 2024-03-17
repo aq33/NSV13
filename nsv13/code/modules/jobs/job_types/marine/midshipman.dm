@@ -7,8 +7,8 @@ Marine & all their unique stuff!
 	display_rank = "MID"
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 100
+	spawn_positions = 100
 	supervisors = "your squad leader and all other military crew during peacetime"
 	selection_color = "#c2d5ee"
 	chat_color = "#c2d5ee"

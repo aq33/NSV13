@@ -10,7 +10,7 @@
 	supervisors = "the head of security"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
-	exp_requirements = 900 //NSV13 changed to 15h
+	exp_requirements = 120 //AQ changed to 2h
 	exp_type = EXP_TYPE_SECURITY
 	exp_type_department = EXP_TYPE_SECURITY
 

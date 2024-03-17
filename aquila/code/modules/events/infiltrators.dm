@@ -2,11 +2,11 @@
 	name = "Infiltrators"
 	typepath = /datum/round_event/ghost_role/infiltrators
 
-	weight = 0
+	weight = 10
 	max_occurrences = 1
-	earliest_start = 30 MINUTES
 
-	min_players = 23
+
+	min_players = 15
 
 	gamemode_blacklist = list("nuclear","wizard","revolution","abduction","infiltration","gang","cult","clockcult","darkspawn")
 

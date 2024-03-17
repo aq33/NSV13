@@ -60,13 +60,15 @@ map shrike
 endmap
 
 map snake
+	minplayers 20
 #	maxplayers 30
-#	votable
+	votable
 endmap
 
 map atlantis
+	minplayers 20
 	maxplayers 60
-	votable
+#	votable
 endmap
 
 #--------------

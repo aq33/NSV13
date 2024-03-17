@@ -4,13 +4,13 @@
 	department_head = list(JOB_NAME_CHIEFMEDICALOFFICER, JOB_NAME_RESEARCHDIRECTOR)
 	department_flag = MEDSCI
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 1
+	spawn_positions = 1
 	supervisors = "the chief medical officer and research director"
 	selection_color = "#d4ebf2" //NSV13
-	exp_requirements = 120
+	exp_requirements = 0
 	exp_type = EXP_TYPE_CREW
-	exp_requirements = 60
+	exp_requirements = 0
 
 	outfit = /datum/outfit/job/geneticist
 
