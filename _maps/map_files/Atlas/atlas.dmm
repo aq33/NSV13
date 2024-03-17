@@ -5481,7 +5481,7 @@
 /obj/effect/turf_decal/tile/ship/green{
 	dir = 8
 	},
-/obj/structure/bot_elevator,
+/obj/machinery/vending/cigarette,
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck2/primary)
 "nT" = (
@@ -5526,11 +5526,18 @@
 /obj/machinery/airalarm/directional/north,
 /turf/open/floor/durasteel,
 /area/crew_quarters/kitchen)
+"oa" = (
+/obj/effect/turf_decal/tile/ship/half/green{
+	dir = 1
+	},
+/obj/structure/bot_elevator,
+/turf/open/floor/monotile/steel,
+/area/hallway/nsv/deck2/primary)
 "ob" = (
 /turf/closed/wall/r_wall,
 /area/nsv/weapons/gauss/battery/deck2/starboard)
 "oc" = (
-/obj/machinery/vending/engineering,
+/obj/machinery/vending/wardrobe/hydro_wardrobe,
 /turf/open/floor/durasteel/techfloor_grid,
 /area/nsv/weapons)
 "oe" = (
@@ -5844,7 +5851,7 @@
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck2/primary)
 "oW" = (
-/obj/machinery/vending/wardrobe/hydro_wardrobe,
+/obj/machinery/vending/hydroseeds,
 /turf/open/floor/durasteel/techfloor_grid,
 /area/hydroponics)
 "oY" = (
@@ -7052,7 +7059,7 @@
 /obj/effect/turf_decal/tile/ship/yellow{
 	dir = 1
 	},
-/obj/machinery/vending/cola/random,
+/obj/machinery/vending/engineering,
 /turf/open/floor/monotile/dark,
 /area/hallway/nsv/deck2/primary)
 "rS" = (
@@ -7099,7 +7106,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/ship/half/yellow,
-/obj/machinery/vending/snack/random,
+/obj/machinery/vending/cola/random,
 /turf/open/floor/monotile/dark,
 /area/hallway/nsv/deck2/primary)
 "rW" = (
@@ -7330,8 +7337,8 @@
 /area/nsv/hanger/notkmcstupidhanger)
 "sG" = (
 /obj/machinery/camera/autoname,
-/obj/machinery/vending/cigarette,
 /obj/effect/turf_decal/tile/ship/half/yellow,
+/obj/machinery/vending/snack/random,
 /turf/open/floor/monotile/dark,
 /area/hallway/nsv/deck2/primary)
 "sH" = (
@@ -9189,7 +9196,11 @@
 /turf/open/floor/monotile/steel,
 /area/nsv/weapons)
 "xU" = (
-/obj/machinery/vending/hydroseeds,
+/obj/structure/closet/crate/hydroponics,
+/obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/multitool,
 /turf/open/floor/durasteel,
 /area/hydroponics)
 "xV" = (
@@ -11952,11 +11963,6 @@
 	dir = 1
 	},
 /obj/machinery/light_switch/north,
-/obj/structure/closet/crate/hydroponics,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/multitool,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
 /turf/open/floor/durasteel/techfloor_grid,
 /area/hydroponics)
 "Ga" = (
@@ -17981,6 +17987,7 @@
 /obj/machinery/camera/autoname,
 /obj/effect/turf_decal/tile/bar/tile_marquee,
 /obj/machinery/light_switch/north,
+/obj/machinery/vending/dinnerware,
 /turf/open/floor/durasteel,
 /area/crew_quarters/kitchen)
 "VS" = (
@@ -48319,7 +48326,7 @@ Ua
 Zx
 Nc
 GO
-WH
+oa
 ko
 vd
 lu
