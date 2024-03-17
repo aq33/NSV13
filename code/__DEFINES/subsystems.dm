@@ -154,7 +154,6 @@
 #define INIT_ORDER_PATH				-50
 #define INIT_ORDER_EXPLOSIONS		-69
 #define INIT_ORDER_OVERMAP_MODE		-120 //NSV13 - As late as possible to get a better grab of player numbers
-#define INIT_ORDER_DEMO 			-149 // AQ EDIT - Replays // To avoid a bunch of changes related to initialization being written, do this last
 #define INIT_ORDER_CHAT				-150 //Should be last to ensure chat remains smooth during init.
 
 // Subsystem fire priority, from lowest to highest priority

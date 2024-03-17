@@ -52,7 +52,6 @@ SUBSYSTEM_DEF(title)
 			continue
 		var/atom/movable/screen/splash/S = new(null, thing, FALSE)
 		S.Fade(FALSE,FALSE)
-	SSdemo.flush() // AQ EDIT - Replays
 
 /datum/controller/subsystem/title/Recover()
 	icon = SStitle.icon
