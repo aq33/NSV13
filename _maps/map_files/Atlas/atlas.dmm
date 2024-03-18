@@ -9201,7 +9201,6 @@
 /obj/item/reagent_containers/food/snacks/grown/wheat,
 /obj/item/reagent_containers/food/snacks/grown/wheat,
 /obj/item/multitool,
-/obj/item/storage/toolbox/mechanical,
 /turf/open/floor/durasteel,
 /area/hydroponics)
 "xV" = (
@@ -9348,6 +9347,9 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/steel,
 /area/engine/break_room)
+"yt" = (
+/turf/closed/wall/r_wall,
+/area/hydroponics)
 "yv" = (
 /obj/structure/extinguisher_cabinet/west,
 /obj/machinery/computer/ams{
@@ -19144,9 +19146,6 @@
 /obj/item/radio/intercom/directional/south,
 /turf/open/floor/durasteel/eris_techfloor_alt,
 /area/engine/shield_generator)
-"Zr" = (
-/turf/closed/wall/r_wall,
-/area/hydroponics)
 "Zs" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -19249,6 +19248,7 @@
 /obj/item/watertank,
 /obj/item/circuitboard/machine/hydroponics,
 /obj/item/book/manual/hydroponics_pod_people,
+/obj/item/storage/toolbox/mechanical,
 /turf/open/floor/durasteel/techfloor_grid,
 /area/hydroponics)
 "ZG" = (
@@ -54243,10 +54243,10 @@ Ep
 GZ
 QP
 ht
-Zr
+yt
 oc
 OJ
-Zr
+yt
 eY
 eY
 eY
