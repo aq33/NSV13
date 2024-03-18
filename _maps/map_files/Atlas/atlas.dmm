@@ -5539,7 +5539,7 @@
 "oc" = (
 /obj/machinery/vending/wardrobe/hydro_wardrobe,
 /turf/open/floor/durasteel/techfloor_grid,
-/area/nsv/weapons)
+/area/hydroponics)
 "oe" = (
 /obj/machinery/light/runway/delay5,
 /turf/open/floor/plasteel/techmaint{
@@ -9201,6 +9201,7 @@
 /obj/item/reagent_containers/food/snacks/grown/wheat,
 /obj/item/reagent_containers/food/snacks/grown/wheat,
 /obj/item/multitool,
+/obj/item/storage/toolbox/mechanical,
 /turf/open/floor/durasteel,
 /area/hydroponics)
 "xV" = (
@@ -15218,7 +15219,7 @@
 "OJ" = (
 /obj/machinery/smartfridge/drying_rack,
 /turf/open/floor/durasteel/techfloor_grid,
-/area/nsv/weapons)
+/area/hydroponics)
 "OK" = (
 /obj/structure/window/reinforced/spawner/north,
 /obj/effect/landmark/zebra_interlock_point,
@@ -19143,6 +19144,9 @@
 /obj/item/radio/intercom/directional/south,
 /turf/open/floor/durasteel/eris_techfloor_alt,
 /area/engine/shield_generator)
+"Zr" = (
+/turf/closed/wall/r_wall,
+/area/hydroponics)
 "Zs" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -19244,7 +19248,6 @@
 /obj/structure/closet/secure_closet/hydroponics,
 /obj/item/watertank,
 /obj/item/circuitboard/machine/hydroponics,
-/obj/item/storage/toolbox/mechanical,
 /obj/item/book/manual/hydroponics_pod_people,
 /turf/open/floor/durasteel/techfloor_grid,
 /area/hydroponics)
@@ -54240,10 +54243,10 @@ Ep
 GZ
 QP
 ht
-eY
+Zr
 oc
 OJ
-eY
+Zr
 eY
 eY
 eY
