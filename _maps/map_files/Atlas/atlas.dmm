@@ -5539,7 +5539,7 @@
 "oc" = (
 /obj/machinery/vending/wardrobe/hydro_wardrobe,
 /turf/open/floor/durasteel/techfloor_grid,
-/area/hydroponics)
+/area/nsv/weapons)
 "oe" = (
 /obj/machinery/light/runway/delay5,
 /turf/open/floor/plasteel/techmaint{
@@ -9347,9 +9347,6 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/steel,
 /area/engine/break_room)
-"yt" = (
-/turf/closed/wall/r_wall,
-/area/hydroponics)
 "yv" = (
 /obj/structure/extinguisher_cabinet/west,
 /obj/machinery/computer/ams{
@@ -15221,7 +15218,7 @@
 "OJ" = (
 /obj/machinery/smartfridge/drying_rack,
 /turf/open/floor/durasteel/techfloor_grid,
-/area/hydroponics)
+/area/nsv/weapons)
 "OK" = (
 /obj/structure/window/reinforced/spawner/north,
 /obj/effect/landmark/zebra_interlock_point,
@@ -19247,8 +19244,8 @@
 /obj/structure/closet/secure_closet/hydroponics,
 /obj/item/watertank,
 /obj/item/circuitboard/machine/hydroponics,
-/obj/item/book/manual/hydroponics_pod_people,
 /obj/item/storage/toolbox/mechanical,
+/obj/item/book/manual/hydroponics_pod_people,
 /turf/open/floor/durasteel/techfloor_grid,
 /area/hydroponics)
 "ZG" = (
@@ -54243,10 +54240,10 @@ Ep
 GZ
 QP
 ht
-yt
+eY
 oc
 OJ
-yt
+eY
 eY
 eY
 eY
