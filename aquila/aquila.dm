@@ -61,6 +61,7 @@
 #include "code\game\gamemodes\monkey\monkey.dm"
 #include "code\game\gamemodes\objective.dm"
 #include "code\game\gamemodes\objective_items.dm"
+#include "code\game\gamemodes\nowicjusz\tutorial.dm"
 #include "code\game\gamemodes\vampire\grave_fever.dm"
 #include "code\game\gamemodes\vampire\traitor_vamp.dm"
 #include "code\game\gamemodes\vampire\vampire.dm"

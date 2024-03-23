@@ -307,6 +307,7 @@
 	var/backpack = /obj/item/storage/backpack
 	var/satchel  = /obj/item/storage/backpack/satchel
 	var/duffelbag = /obj/item/storage/backpack/duffelbag
+	var/datum/action/innate/tutorialmenu/menu
 
 	var/pda_slot = ITEM_SLOT_BELT
 
@@ -326,6 +327,9 @@
 			back = duffelbag //Department duffel bag
 		else
 			back = backpack //Department backpack
+		// Tu zmienić jeżeli chcecie coś z logiką dawania tutoriala zrobić
+	menu = new(src)
+	menu.Grant(H)
 
 	//converts the uniform string into the path we'll wear, whether it's the skirt or regular variant
 	var/holder = "[uniform]" //NSV13 - no skirts
@@ -339,6 +343,15 @@
 	*/
 	uniform = text2path(holder)
 
+
+/datum/outfit/job/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Tutorial")
+		ui.open()
+
+/datum/outfit/job/ui_state(mob/user)
+	return GLOB.always_state
 
 /datum/outfit/job/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)
