@@ -7412,10 +7412,6 @@
 /obj/machinery/advanced_airlock_controller/directional/west,
 /turf/open/floor/plating,
 /area/security/brig)
-"xp" = (
-/obj/structure/lattice,
-/turf/closed/wall/r_wall/ship,
-/area/security/brig)
 "xq" = (
 /obj/machinery/door/window/northleft{
 	dir = 4;
@@ -56044,8 +56040,8 @@ zP
 zP
 zP
 yk
-xp
-xp
+XT
+XT
 XT
 XT
 XT
