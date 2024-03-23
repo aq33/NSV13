@@ -4,8 +4,8 @@
 	department_head = list(JOB_NAME_CHIEFENGINEER)
 	department_flag = ENGSEC
 	faction = "Station"
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 3
+	spawn_positions = 3
 	supervisors = "the chief engineer"
 	selection_color = "#fff5cc"
 	exp_requirements = 120

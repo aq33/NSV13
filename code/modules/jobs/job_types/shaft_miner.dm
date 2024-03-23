@@ -4,8 +4,8 @@
 	department_head = list(JOB_NAME_HEADOFPERSONNEL)
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = 3
+	spawn_positions = 2
 	supervisors = "the quartermaster and the " + JOB_NAME_HEADOFPERSONNEL //NSV13
 	selection_color = "#dcba97"
 

@@ -14,8 +14,7 @@
 		allow_linkify = FALSE,
 		// FIXME: These flags are now pointless and have no effect
 		handle_whitespace = TRUE,
-		trailing_newline = TRUE,
-		confidential = FALSE) // AQ EDIT - Replays
+		trailing_newline = TRUE)
 	if(!target || (!html && !text))
 		return
 	if(target == world)
@@ -29,8 +28,6 @@
 	if(allow_linkify) message["allowLinkify"] = allow_linkify
 	var/message_blob = TGUI_CREATE_MESSAGE("chat/message", message)
 	var/message_html = message_to_html(message)
-	if(!confidential) // AQ EDIT - Replays
-		SSdemo.write_chat(target, message_html)
 	if(islist(target))
 		for(var/_target in target)
 			var/client/client = CLIENT_FROM_VAR(_target)

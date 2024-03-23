@@ -87,7 +87,6 @@ GLOBAL_VAR(restart_counter)
 		var/realtime = world.realtime
 		var/texttime = time2text(realtime, "YYYY/MM/DD")
 		GLOB.log_directory = "data/logs/[texttime]/round-"
-		GLOB.demo_directory = "data/replays" // AQ EDIT
 		GLOB.picture_logging_prefix = "L_[time2text(realtime, "YYYYMMDD")]_"
 		GLOB.picture_log_directory = "data/picture_logs/[texttime]/round-"
 		if(GLOB.round_id)
@@ -104,7 +103,6 @@ GLOBAL_VAR(restart_counter)
 		GLOB.picture_logging_prefix = "O_[override_dir]_"
 		GLOB.picture_log_directory = "data/picture_logs/[override_dir]"
 
-	GLOB.demo_log = "[GLOB.demo_directory]/[GLOB.round_id]_demo.log" // AQ EDIT
 	GLOB.world_game_log = "[GLOB.log_directory]/game.log"
 	GLOB.world_objective_log = "[GLOB.log_directory]/objectives.log"
 	GLOB.world_mecha_log = "[GLOB.log_directory]/mecha.log"
@@ -316,7 +314,6 @@ GLOBAL_VAR(restart_counter)
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
 	if (debug_server)
 		LIBCALL(debug_server, "auxtools_shutdown")()
-	SSdemo?.Shutdown() // AQ EDIT - Replays
 	..()
 
 /world/proc/update_status()

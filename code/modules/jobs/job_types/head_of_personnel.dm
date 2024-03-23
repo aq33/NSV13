@@ -12,7 +12,7 @@
 	selection_color = "#ddddff"
 	req_admin_notify = 1
 	minimal_player_age = 10
-	exp_requirements = 1200 //NSV START -- Locked behind command
+	exp_requirements = 120 //NSV START -- Locked behind command
 	exp_type = EXP_TYPE_COMMAND
 	exp_type_department = EXP_TYPE_COMMAND //NSV END
 

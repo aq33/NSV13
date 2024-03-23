@@ -4,11 +4,11 @@
 	department_head = list(JOB_NAME_CHIEFENGINEER)
 	department_flag = ENGSEC
 	faction = "Station"
-	total_positions = 3
+	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the chief engineer"
 	selection_color = "#fff5cc"
-	exp_requirements = 120
+	exp_requirements = 0
 	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/atmospheric_technician

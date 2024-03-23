@@ -2,54 +2,54 @@
 #Format is: [Job name]=[total positions],[spawn positions]
 #Job names must be identical to the title var of each job datum
 #Positions can be set to -1 to allow unlimited slots
-Captain=1,1
-Head of Personnel=1,1
-Head of Security=1,1
-Chief Engineer=1,1
-Research Director=1,1
-Chief Medical Officer=1,1
-Master At Arms=1,1
+Kapitan=1,1
+Starszy Oficer=1,1
+Komendant=1,1
+Główny Inżynier=1,1
+Dyrektor Naukowr=1,1
+Ordynator=1,1
+Mistrz Broni=1,1
 
-Bridge Staff=4,1
-Munitions Technician=5,2
-Pilot=8,4
-Air Traffic Controller=1,1
+Oficer Pokładowy=3,2
+Technik Amunicyjny=4,2
+Pilot=2,2
+Kontroler Lotów=1,1
 
-Assistant=-1,-1
+Majtek=-1,-1
 
-Quartermaster=1,1
-Cargo Technician=6,2
-Shaft Miner=3,2
+Kwatermistrz=1,1
+Magazynier=3,2
+Górnik=3,2
 
-Bartender=2,1
-Cook=2,1
-Botanist=2,2
-Janitor=2,2
+Barman=1,1
+Kucharz=1,1
+Botanik=2,2
+Woźny=2,2
 
-Clown=1,1
-Mime=1,1
-Curator=1,1
-Lawyer=1,1
+Klaun=1,1
+Mim=1,1
+Kurator=1,1
+Prawnik=1,1
 
-Chaplain=1,1
+Kapłan=1,1
 
-Station Engineer=7,4
-Atmospheric Technician=4,2
+Inżynier=3,3
+Technik Atmosferyki=2,2
 
-Medical Doctor=6,4
-Paramedic=2,1
-Chemist=3,2
-Geneticist=3,2
-Virologist=1,1
+Lekarz=3,2
+Ratownik Medyczny=1,1
+Chemik=1,1
+Genetyk=1,1
+Wirolog=1,1
 
-Scientist=8,6
-Roboticist=1,2
+Naukowiec=3,3
+Robotyk=1,1
 
-Warden=1,1
-Detective=1,1
-Security Officer=10,8
-Brig Physician=1,1
-Deputy=0,0
+Naczelnik=1,1
+Detektyw=1,1
+Żandarm=10,8
+Lekarz Więzienny=0,0
+Aspirant=1,1
 
-AI=1,1
+SI Statku=1,1
 Cyborg=1,1

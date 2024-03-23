@@ -69,8 +69,6 @@ SUBSYSTEM_DEF(zclear)
 	for(var/mob/living/L as () in GLOB.mob_list)
 		if(!L)
 			continue
-		if(L.ckey && L.ckey == SSdemo.ckey)
-			continue // ignore the SSdemo dummy observer
 		//Dead mobs get sent to new ruins
 		if(L.ckey || L.mind || L.client)
 			var/turf/T = get_turf(L)

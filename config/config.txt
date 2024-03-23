@@ -97,9 +97,6 @@ USE_EXP_TRACKING
 ## Allows admins to bypass job playtime requirements.
 USE_EXP_RESTRICTIONS_ADMIN_BYPASS
 
-## Enable demos
-DEMOS_ENABLED
-
 ## log OOC channel
 LOG_OOC
 

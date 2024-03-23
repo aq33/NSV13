@@ -4,11 +4,11 @@
 	department_head = list(JOB_NAME_CHIEFMEDICALOFFICER)
 	department_flag = MEDSCI
 	faction = "Station"
-	total_positions = 2
+	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the chief medical officer"
 	selection_color = "#d4ebf2"
-	exp_requirements = 120
+	exp_requirements = 0
 	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/paramedic
