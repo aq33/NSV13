@@ -4,6 +4,7 @@
  *		kask motocyklowy
  *		kask Riczard'a
  *		kaptur kostiumu ducha
+ *		hełm kapitana bomby
  */
 /****************************\
 |*********** opaski **********|
