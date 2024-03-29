@@ -15,15 +15,6 @@
 	var/portale = 21
 
 /datum/round_event/ghost_role/kapitanbomba/spawn_role()
-	for(var/i = 1, i <= portale, i++)
-		var/turf/T = get_random_station_turf()	//side effect - wormholes won't spawn in space
-		if(istype(T.loc, /area/engine))
-			i--;
-		else
-			if(prob(5))
-				new /obj/structure/spawner/clowiekmaupa(T)
-			else
-				new /obj/structure/spawner/kurwinoxy(T)
 	var/list/possible_spawns = list()//Some xeno spawns are in some spots that will instantly kill the refugees, like atmos
 	for(var/turf/X in GLOB.xeno_spawn)
 		if(istype(X.loc, /area/maintenance))
@@ -35,7 +26,15 @@
 	var/list/candidates = get_candidates(ROLE_TRAITOR, /datum/role_preference/midround_ghost/kapitanbomba)
 	if(!candidates.len >= 1) //solo refugees
 		return NOT_ENOUGH_PLAYERS
-
+	for(var/i = 1, i <= portale, i++)
+		var/turf/T = get_random_station_turf()	//side effect - wormholes won't spawn in space
+		if(istype(T.loc, /area/engine) || istype(T, /turf/closed)) // Niechcemy w ścianach
+			i--;
+		else
+			if(prob(5))
+				new /obj/structure/spawner/clowiekmaupa(T)
+			else
+				new /obj/structure/spawner/kurwinoxy(T)
 	var/member_size = 1
 	var/list/members = list()
 	var/list/spawned_mobs = list()
