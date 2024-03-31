@@ -8563,11 +8563,6 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/nsv/weapons/gauss/battery/deck2/starboard)
-"vD" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/lattice/catwalk,
-/turf/open/space/basic,
-/area/space/nearstation)
 "vE" = (
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -40379,7 +40374,7 @@ an
 an
 an
 an
-vD
+an
 an
 an
 an
