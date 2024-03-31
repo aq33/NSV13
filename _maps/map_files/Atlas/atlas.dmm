@@ -866,7 +866,8 @@
 /area/engine/atmospherics_engine)
 "cg" = (
 /obj/machinery/door/airlock/ship/external/glass{
-	dir = 8
+	dir = 8;
+	req_one_access_txt = "24;10"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
@@ -9548,7 +9549,9 @@
 /turf/open/floor/monotile/steel,
 /area/engine/armour_pump)
 "yz" = (
-/obj/machinery/door/airlock/ship/external/glass,
+/obj/machinery/door/airlock/ship/external/glass{
+	req_one_access_txt = "24;10"
+	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
@@ -18469,13 +18472,6 @@
 /obj/structure/sign/ship/deck/two,
 /turf/closed/wall/steel,
 /area/maintenance/nsv/deck2/port)
-"WC" = (
-/obj/structure/lattice,
-/obj/structure/shuttle/engine/heater{
-	dir = 8
-	},
-/turf/closed/wall/r_wall,
-/area/engine/atmospherics_engine)
 "WD" = (
 /obj/structure/overmap/small_craft/transport/sabre,
 /obj/effect/turf_decal/loading_area{
@@ -41919,8 +41915,8 @@ bi
 HX
 HX
 HX
-WC
-WC
+kr
+kr
 HX
 HX
 HX
