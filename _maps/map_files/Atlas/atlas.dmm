@@ -14074,10 +14074,6 @@
 	},
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck2/primary)
-"KZ" = (
-/obj/structure/lattice/catwalk,
-/turf/closed/wall/r_wall,
-/area/engine/atmos)
 "La" = (
 /obj/effect/landmark/start/botanist,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
@@ -44219,7 +44215,7 @@ Nh
 Nh
 Nh
 an
-KZ
+GO
 GO
 GO
 GO
@@ -44476,7 +44472,7 @@ Nh
 Nh
 Nh
 an
-KZ
+GO
 GO
 Gg
 Ri
@@ -44733,7 +44729,7 @@ Nh
 Nh
 Nh
 an
-KZ
+GO
 GO
 VL
 Zx
@@ -44990,7 +44986,7 @@ Nh
 Nh
 Nh
 an
-KZ
+GO
 GO
 nB
 NJ
@@ -45247,7 +45243,7 @@ Nh
 Nh
 Nh
 an
-KZ
+GO
 GO
 GO
 GO
@@ -45504,7 +45500,7 @@ Nh
 Nh
 Nh
 an
-KZ
+GO
 GO
 Uv
 Ri
@@ -45761,7 +45757,7 @@ Nh
 Nh
 Nh
 an
-KZ
+GO
 GO
 rE
 Zx
