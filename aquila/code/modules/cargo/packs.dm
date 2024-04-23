@@ -96,3 +96,11 @@
 	contains = list(/obj/machinery/power/rtg)
 	crate_name = "RTG crate"
 	crate_type = /obj/structure/closet/crate/engineering/electrical
+
+/datum/supply_pack/misc/maluch
+	name = "Oryginalny Fiat 126p 'Maluch'"
+	desc = "Skrzynia zawierająca delikatnie opakowany egzemplarz oryginalnego Fiata 126p zachowanego w perfekcyjnym stanie. Jeden z niewielu jeszce istniejących egzemplarzy."
+	cost = 69000
+	contains = list(/obj/vehicle/sealed/car/maluch,
+					/obj/item/key)
+	crate_name = "oryginalny Fiat 126p 'Maluch'"

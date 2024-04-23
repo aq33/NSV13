@@ -68,3 +68,34 @@
 /obj/item/clothing/suit/space/hardsuit/aquila/hazard_suit/Initialize(mapload)
 	. = ..()
 	allowed = GLOB.civilian_hardsuit_allowed
+
+// Kapitan Bomba!!!!!!!
+
+/obj/item/clothing/head/helmet/space/kapitanbomba
+	name = "Kosmo-hełm"
+	icon = 'aquila/icons/mob/head.dmi'
+	worn_icon = 'aquila/icons/mob/head.dmi'
+	icon_state = "kpt_kask"
+	worn_icon_state = "kpt_kask"
+	desc = "Kosmiczny Hełm Kapitana Kosmicznego Statku Orzeł 1."
+	item_state = "kpt_kask"
+	armor = list("melee" = 30, "bullet" = 30, "laser" = 30,"energy" = 40, "bomb" = 30, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 70, "stamina" = 10)
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT
+
+/obj/item/clothing/suit/kapitanbomba
+	name = "Kosmo-kombinezon"
+	desc = "Kosmiczny kombinezon Kapitana Kosmicznego Statku Orzeł 1"
+	icon_state = "kpt_kurtka"
+	item_state = "kpt_kurtka"
+	worn_icon_state = "kpt_kurtka"
+	worn_icon = 'aquila/icons/mob/suit.dmi'
+	icon = 'aquila/icons/mob/suit.dmi'
+	w_class = WEIGHT_CLASS_NORMAL
+	gas_transfer_coefficient = 0.01
+	permeability_coefficient = 0.02
+	clothing_flags = NOTCONSUMABLE | STOPSPRESSUREDAMAGE | THICKMATERIAL | SHOWEROKAY //NSV13 - kept SHOWEROKAY
+	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	allowed = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/ammo_box/magazine, /obj/item/gun)
+	slowdown = 0.1 // Malutko bo to Kapitan bomba jest tępe chuje
+	armor = list("melee" = 40, "bullet" = 40, "laser" = 40,"energy" = 40, "bomb" = 40, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 70, "stamina" = 10)
+	resistance_flags = FIRE_PROOF | ACID_PROOF
