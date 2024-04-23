@@ -32,7 +32,9 @@
 		/obj/effect/proc_holder/spell/aoe_turf/conjure/summon_greedslots,
 		/obj/effect/proc_holder/spell/targeted/inflict_handler/ignite,
 		/obj/effect/proc_holder/spell/targeted/touch/envy,
-		/obj/effect/proc_holder/spell/aoe_turf/conjure/summon_mirror))
+		/obj/effect/proc_holder/spell/aoe_turf/conjure/summon_mirror,
+		/obj/effect/proc_holder/spell/targeted/touch/mend,
+		/obj/effect/proc_holder/spell/targeted/touch/torment,))
 	var/static/list/sinfuldemon_traits = list(
 		TRAIT_GENELESS,
 		TRAIT_STABLEHEART,
@@ -128,6 +130,24 @@
 	SEND_SOUND(owner.current, sound('sound/magic/ethereal_exit.ogg'))
 	.=..()
 
+/datum/antagonist/sinfuldemon/proc/update_demon_icons_added(mob/living/M)
+	var/datum/atom_hud/antag/hud = GLOB.huds[ANTAG_HUD_OPS]
+	hud.join_hud(M)
+	set_antag_hud(M, "sinfuldemon")
+
+/datum/antagonist/sinfuldemon/proc/update_demon_icons_removed(mob/living/M)
+	var/datum/atom_hud/antag/hud = GLOB.huds[ANTAG_HUD_SINFULDEMON]
+	hud.leave_hud(M)
+	set_antag_hud(M, null)
+
+/datum/antagonist/sinfuldemon/apply_innate_effects(mob/living/mob_override)
+	var/mob/living/M = mob_override || owner.current
+	update_demon_icons_added(M)
+
+/datum/antagonist/sinfuldemon/remove_innate_effects(mob/living/mob_override)
+	var/mob/living/M = mob_override || owner.current
+	update_demon_icons_removed(M)
+
 /datum/antagonist/sinfuldemon/on_gain()
 	forge_objectives()
 	owner.special_role = "sinfuldemon"
@@ -138,7 +158,7 @@
 		var/mob/living/carbon/human/S = owner.current
 		to_chat(S, "<span class='notice'Your infernal nature has allowed you to overcome your clownishness.</span>")
 		S.dna.remove_mutation(CLOWNMUT)
-
+	owner.AddSpell(new /obj/effect/proc_holder/spell/targeted/ethereal_jaunt/demon)
 	switch(demonsin)
 		if(SIN_GLUTTONY)
 			owner.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/demon/gluttony)
@@ -150,15 +170,19 @@
 		if(SIN_GREED)
 			owner.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/demon)
 			owner.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/conjure/summon_greedslots)
+			owner.AddSpell(new /obj/effect/proc_holder/spell/targeted/conjure_item/cursed_item)
 		if(SIN_WRATH)
 			owner.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/demon/wrath)
 			owner.AddSpell(new /obj/effect/proc_holder/spell/targeted/inflict_handler/ignite)
+			owner.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/torment)
 		if(SIN_ENVY)
 			owner.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/demon)
 			owner.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/envy)
+			owner.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/torment)
 		if(SIN_PRIDE)
 			owner.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/demon)
 			owner.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/conjure/summon_mirror)
+			owner.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/mend)
 	.=..()
 
 /datum/antagonist/sinfuldemon/on_removal()
