@@ -62,6 +62,7 @@
 		/obj/item/organ/vocal_cords/adamantine,
 		/obj/effect/gibspawner/xeno,
 		/obj/effect/mob_spawn/human/corpse/assistant,
+		/obj/effect/mob_spawn/teratomamonkey, //AQ EDIT
 		/obj/item/organ/wings/moth/robust,
 		/obj/item/organ/wings/dragon,)
 	new mail_organmajor(loc)
