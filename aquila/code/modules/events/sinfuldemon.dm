@@ -4,12 +4,15 @@
 	max_occurrences = 2 //misery loves company
 	min_players = 15
 	weight = 10 //zmienić to by zwiększyć szansę na Grzech Demon
+	earliest_start = 25 MINUTES
 
 /datum/round_event/ghost_role/sinfuldemon
 	var/success_spawn = 0
 	minimum_required = 1
 	role_name = "demon of sin"
 	fakeable = FALSE
+	// LAME jobs that people typically do not care about
+	var/static/list/possible_jobs = list("Majtek", "Prawnik", "Bibliotekarz", "Woźny", "Magik", "VIP")
 
 /datum/round_event/ghost_role/sinfuldemon/kill()
 	if(!success_spawn && control)
@@ -26,6 +29,27 @@
 	if(!candidates.len)
 		return NOT_ENOUGH_PLAYERS
 
+// Select the job we spawn as
+	var/datum/job/selected_job
+	var/list/datum/job/potential_job_list = list()
+	var/list/datum/job/job_datum_list = list()
+	for(var/jobname in possible_jobs)
+		var/datum/job/job_datum = SSjob.GetJob(jobname)
+		if(!job_datum || !istype(job_datum))
+			continue
+		potential_job_list |= job_datum // Backup in case all jobs are somehow filled, just bypass job limits
+		if((job_datum.current_positions >= job_datum.total_positions) && job_datum.total_positions != -1)
+			continue
+		job_datum_list |= job_datum
+
+	if(!potential_job_list.len)
+		return "No valid possible_jobs"
+
+	if(!job_datum_list.len)
+		job_datum_list = potential_job_list
+
+	selected_job = pick(job_datum_list)
+
 	var/mob/dead/selected_candidate = pick_n_take(candidates)
 	var/key = selected_candidate.key
 
@@ -39,9 +63,14 @@
 	spawned_mobs += sinfuldemon
 	message_admins("[ADMIN_LOOKUPFLW(sinfuldemon)] has been made into a demon of sin by an event.")
 	log_game("[key_name(sinfuldemon)] was spawned as a demon of sin by an event.")
-	var/datum/job/jobdatum = SSjob.GetJob("Assistant")
-	sinfuldemon.job = jobdatum.title
-	jobdatum.equip(sinfuldemon)
+	selected_job.equip(sinfuldemon)
+	var/obj/item/card/id/id = sinfuldemon.get_idcard()
+	if(id && istype(id))
+		id.assignment = selected_job.title
+		id.update_label()
+
+	GLOB.data_core.manifest_inject(sinfuldemon)
+	sinfuldemon.update_move_intent_slowdown()
 	return SUCCESSFUL_SPAWN
 
 
