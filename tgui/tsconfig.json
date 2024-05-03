@@ -14,6 +14,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": false,
+    "ignoreDeprecations": "5.0",
     "target": "ES3",
     "baseUrl": "./packages"
   },

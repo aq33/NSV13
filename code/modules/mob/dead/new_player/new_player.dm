@@ -45,7 +45,8 @@
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/lobby)
 	if(!asset_datum.send(client))
 		return
-	var/output = "<center><p><a href='byond://?src=[REF(src)];show_preferences=1'>Ustaw Postać</a></p>"
+	var/output = "<center><p><a href='byond://?src=[REF(src)];show_tutorial=1'>Samouczek</a></p>"
+	output += "<center><p><a href='byond://?src=[REF(src)];show_preferences=1'>Ustaw Postać</a></p>"
 
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
 		switch(ready)
@@ -118,6 +119,11 @@
 		relevant_cap = min(hpc, epc)
 	else
 		relevant_cap = max(hpc, epc)
+
+	if(href_list["show_tutorial"])
+		var/datum/action/innate/tutorialmenu/menu = new(src)
+		menu.ui_interact(src)
+		return
 
 	if(href_list["show_preferences"])
 		client.prefs.ShowChoices(src)
