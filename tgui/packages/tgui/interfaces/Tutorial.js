@@ -124,7 +124,12 @@ const Podstawy = () => {
       title="Podstawy"
       overflowY="scroll">
       <b>
-        TBA
+        Wchodzenie na stół - Przeciągnięcie swojej postaci na stół  <br /><br />
+        Rozbieranie kogoś - Przeciągnięcie czyjejś postaci na swoją <br /><br />
+        Aby się ugasić, stawiać opór lub wyswobodzić się wystarczy wcisnąć przycisk <i>RESIST</i><br /><br />
+        Aby zdjąć plecak lub inne obiekty w które można coś włożyć, należy przeciągnąć przedmiot do pustej ręki. <br /><br />
+        Odpięcie się od pasów - Wciśnięcie przycisku <i>BUCKLED</i> w prawym górnym rogu ekranu <br /><br />
+        <img src="https://nsv.beestation13.com/mediawiki2/images/f/ff/Hud-target.gif" /> Kliknięcie na określone części pozwala na wybranie jako celu określonej części ciała <br /><br />
       </b>
     </Section>
   );
@@ -136,7 +141,11 @@ const Intents = () => {
       title="System Zamiaru"
       overflowY="scroll">
       <b>
-        TBA
+        Podstawową formą interakcji w Space Station 13 jest kliknięcie w coś. Jednak to co wydarzy się po kliknięciu, zależy od tego jaką mamy intencje. W tym wprowadzeniu wyjaśnione zostaną różnice między 4 dostępnymi intencjami.<br /><br />
+        Pomoc (kolor zielony) <img src="https://nsv.beestation13.com/mediawiki2/images/1/1e/Intent_Help.png" /> - Podstawowa i pozytywna intencja. Kliknięcie drugiej postaci nie wyrządzi jej szkód. Możemy też swobodnie przechodzić przez inne postaci. Powinna zawsze być domyślnie wybrana <br /><br />
+        Krzywda (kolor czerwony) <img src="https://nsv.beestation13.com/mediawiki2/images/c/c4/Intent_Harm.png" /> - Wybierana wtedy, gdy chcemy zaatakować postać. Kliknięcie w kogoś zada mu obrażenia. Sprawia też, że przez postać nie będzie dało się przejść, zamiast tego będziemy ją przesuwać.<br /><br />
+        Chwyt (kolor żółty) <img src="https://nsv.beestation13.com/mediawiki2/images/2/2c/Intent_Grab.png" /> - jedno kliknięcie na postać złapie ją i będziemy mogli ją ciągnąć, tak samo jak w przypadku skrótu klawiszowego CTRL + LPM. Kliknięcie drugi raz złapie postać agresywnie. Kliknięcie trzeci raz założy jej chwyt. Ostatnie, czwarte kliknięcie zacznie ją dusić. Postać puszczamy klawiszem H. <br /><br />
+        Pchnięcie (kolor niebieski)  <img src="https://nsv.beestation13.com/mediawiki2/images/3/37/Intent_Disarm.png" />- używane by kogoś popchnąć. Jeśli popchniemy kogoś na inny obiekt, to upuści ona trzymany przedmiot i przewróci się. W ten sposób można kogoś rozbroić <br /><br />
       </b>
     </Section>
   );
@@ -148,7 +157,10 @@ const Przetrwanie = () => {
       title="Podstawy Przetrwania 1/2"
       overflowY="scroll">
       <b>
-        TBA
+        Najczęstszą przyczyną śmierci nowych graczy jest uduszenie się, wystawienie na działanie przestrzeni kosmicznej lub spalenie. Poniżej przedstawiony zostanie krok po kroku sposób radzenia sobie z każdym zagrożenie <br /><br />
+        Duszenie się - Informowane za pomocą ikonki <img src="https://nsv.beestation13.com/mediawiki2/images/5/5d/Hud-oxy.gif" />. Każdy załogant jest wyposażony w zestaw do oddychania. Kliknij w plecak. Następnie otwórz pudełko, które się tam znajduje (ALT + LPM). Wyciągnij maskę <img src="https://nsv.beestation13.com/mediawiki2/images/0/00/BreathMask.png" /> i załóż ją na twarz <img src="https://nsv.beestation13.com/mediawiki2/images/9/9c/Hud-Mask.png" />. Następnie wyciągnij butlę z tlenem <img src="https://nsv.beestation13.com/mediawiki2/images/6/68/AirTank.png" /> i włóż ją do kieszeni. Teraz wystarczy tylko włączyć aparaturę klikając w przycisk u góry ekranu <img src="https://nsv.beestation13.com/mediawiki2/images/8/8c/Gmaskinternalsicon.gif" /> <br /><br />
+        Działanie przestrzeni kosmicznej - tutaj umiera się zwykle od niskiej temperatury <img src="https://nsv.beestation13.com/mediawiki2/images/a/a3/Hud-temp.gif" /> i ciśnienia <img src="https://nsv.beestation13.com/mediawiki2/images/0/0c/Hud-pressure.gif" /> zadającego z czasem obrażenia. Rozwiązaniem jest wyciągnięcie z tego samego pudełka co tlen skafandra kosminczego. Hełm zakłada się na głowe. Skafander należy w pierwszej kolejności rozwinać za pomocą aktywacji w ręce (klawisz Z) i założyć w miejsce skafandrów <br /><br />
+        Pożar - <img src="https://nsv.beestation13.com/mediawiki2/images/d/de/Hud-fire.png" /> należy opuścić płonący obszar i zacząć turlać się w celu ugaszenia płomieni (kliknięcie w przycisk RESIST) <br /><br />
       </b>
     </Section>
   );
@@ -160,7 +172,11 @@ const Przetrwanie2 = () => {
       title="Podstawy Przetrwania 2/2"
       overflowY="scroll">
       <b>
-        TBA
+        Nie musisz być lekarzem, by uratować swoje lub cudze życie. Poniżej przedstawione zostaną najpopularniejsze scenariusze niewymagające zaawansowanej wiedzy. <br /><br />
+        Zostałeś ranny - należy wybrać obszar ciała, który jest uszkodzony, a następnie trzymając plastry <img src="https://nsv.beestation13.com/mediawiki2/images/0/0d/Bpack.png" /> lub maść <img src="https://nsv.beestation13.com/mediawiki2/images/0/09/Oint.png" /> kliknąć na swoją postać. Plastry leczą obrażenia od uderzeń, cięć, postrzałów i ciśnienia. Maść jest na oparzenia od wysokich temperatur. Leczenie kogoś wygląda tak samo. Wybiera się obszar ciała i klika na cudzą postać. <br /><br />
+        Znajdujesz kogoś, kto leży - SHIFT + kliknięcie w niego, by dowiedzieć się czy żyje. Jeśli wyświetliła się informacja o tym, że nie żyje, zanieś go do najbliższego lekarza. Lepiej unikać ciągnięcia kogoś po ziemi, ponieważ traci on wtedy krew.  <br /><br />
+        Chwyć poszkodowanego agresywnie (Intencja chwytu <img src="https://nsv.beestation13.com/mediawiki2/images/2/2c/Intent_Grab.png" /> i kliknięcie kogoś dwa razy) a następnie przeciągnąć jego postać na swoją postać. W ten sposób weźmie się go na plecy. Z kolei jeśli osoba żyje, to w pierwszej kolejności należy użyć medipena <img src="https://nsv.beestation13.com/mediawiki2/images/b/b7/MediPen.png" /> dostępnego w pudełku przetrwania w naszym plecaku. <br /><br />
+        Następnie można przystąpić do resuscytacji (Intencja pomocy <img src="https://nsv.beestation13.com/mediawiki2/images/1/1e/Intent_Help.png" /> i klikanie w postać po wybraniu klatki piersiowej). Jeśli to nie pomaga, zanieść go do lekarza <br /><br />
       </b>
     </Section>
   );
