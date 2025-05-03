@@ -39,7 +39,7 @@
 	var/output_path = /obj/machinery/ship_weapon/deck_turret
 
 /obj/structure/ship_weapon/artillery_frame/Initialize(mapload)
-	..()
+	. = ..()
 	LAZYINITLIST(contents)
 
 /obj/structure/ship_weapon/artillery_frame/examine(mob/user)
@@ -366,15 +366,6 @@
 	desc = "this should not exist"
 	var/barrels = 1
 	build_path = null
-
-/datum/design/board/multibarrel_upgrade/_3
-	name = "Naval Artillery Cannon Triple Barrel Upgrade (Circuit)"
-	desc = "An upgrade that allows you to add two more barrels to a Naval Artillery Cannon."
-	id = "deck_gun_triple"
-	materials = list(/datum/material/titanium = 30000,/datum/material/iron = 25000, /datum/material/diamond = 15000, /datum/material/copper = 35000)
-	build_path = /obj/item/circuitboard/multibarrel_upgrade/_3
-	category = list("Advanced Munitions")
-	departmental_flags = DEPARTMENTAL_FLAG_MUNITIONS
 
 /obj/item/circuitboard/multibarrel_upgrade/_3
 	name = "Naval Artillery Cannon Triple Barrel Upgrade"

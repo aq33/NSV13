@@ -41,7 +41,10 @@
 		// get all of the hearers for this atom
 		var/list/newhearers = playsound_range(parent, S, volume, extra_range)
 		// create a dictionary of all of our hearers and their current position
-		for(var/atom/L as() in newhearers)
+		for(var/mob/L in newhearers)
+			if(QDELETED(L) || !istype(L)) //Begone
+				newhearers -= L
+				continue
 			listeners[parent][L] = list(L.x, L.y)
 	current_sound = S
 
@@ -75,8 +78,8 @@
 				return
 			var/coords = locallist[M]
 			if(abs((coords[2] + M.y) - (coords[1] + M.x)) <= deviation_tolerance)
-				return // listener hasn't moved enough to warrent recalculation
+				continue // listener hasn't moved enough to warrent recalculation
 		if(M.recalculate_sound_volume(parent, current_sound, volume))
 			locallist[M] = list(M.x, M.y)
 		else
-			locallist[parent] -= M
+			locallist -= M

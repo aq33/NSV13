@@ -3,11 +3,12 @@
 	duration = 3 SECONDS
 	mouse_opacity = FALSE
 
-/obj/effect/temp_visual/fading_overmap/Initialize(mapload, name, icon, icon_state)
+/obj/effect/temp_visual/fading_overmap/Initialize(mapload, name, icon, icon_state, alpha = 255)
 	. = ..()
 	src.name = name
 	src.icon = icon
 	src.icon_state = icon_state
+	src.alpha = alpha
 	play()
 
 /obj/effect/temp_visual/fading_overmap/proc/play()
@@ -68,6 +69,14 @@
 	name = "Syndicate drop pod"
 	desc = "A large pod which is used to launch syndicate drop troopers at enemy vessels. It's rare to see one of these and survive the encounter."
 	style = STYLE_SYNDICATE
+	explosionSize = list(0,0,0,5)
+	delays = list(POD_TRANSIT = 30, POD_FALLING = 25, POD_OPENING = 30, POD_LEAVING = 30) //Slower than usual so you have time to react
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+
+/obj/structure/closet/supplypod/pirate_odst
+	name = "Tortugan boarding pod"
+	desc = "A remote mining charge drill. This one has been refitted for boarding use by the pirates of Tortuga - and, against all odds, it somehow safely delivered its payload."
+	style = STYLE_PIRATE
 	explosionSize = list(0,0,0,5)
 	delays = list(POD_TRANSIT = 30, POD_FALLING = 25, POD_OPENING = 30, POD_LEAVING = 30) //Slower than usual so you have time to react
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF

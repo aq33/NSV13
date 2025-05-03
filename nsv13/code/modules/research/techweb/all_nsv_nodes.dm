@@ -6,6 +6,7 @@
 	design_ids = list("shield_fan", "shield_capacitor", "shield_modulator", "shield_interface", "shield_frame")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 	export_price = 5000
+	tech_tier = 5
 	hidden = TRUE
 
 /datum/techweb_node/ship_circuits
@@ -16,6 +17,7 @@
 	design_ids = list("helm_circuit", "navigation_console_circuit", "tactical_comp_circuit", "astrometrics_console", "dradis_console", "cargo_dradis_console")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 	export_price = 1000
+	tech_tier = 1
 
 //Munitions tech
 /datum/techweb_node/maa_circuits
@@ -23,9 +25,10 @@
 	display_name = "Munitions computer circuitry"
 	description = "Allows you to rebuild Munitions computers after they suffer from gunpowder overdose."
 	prereq_ids = list("comptech")
-	design_ids = list("fighter_computer_circuit", "ordnance_comp_circuit", "fighter_launcher_circuit", "ammo_sorter_computer", "ammo_sorter", "munitions_computer_circuit")
+	design_ids = list("fighter_computer_circuit", "ordnance_comp_circuit", "fighter_launcher_circuit", "ammo_sorter_computer", "ammo_sorter", "munitions_computer_circuit", "ams_console")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 	export_price = 1000
+	tech_tier = 1
 
 /datum/techweb_node/basic_torpedo_components
 	id = "basic_torpedo_components"
@@ -35,6 +38,7 @@
 	design_ids = list("warhead", "missile_warhead", "decoy_warhead", "freight_warhead", "guidance_system", "propulsion_system", "iff_card")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
 	export_price = 2000
+	tech_tier = 3
 
 /datum/techweb_node/advanced_torpedo_components
 	id = "advanced_torpedo_components"
@@ -44,6 +48,7 @@
 	design_ids = list("bb_warhead", "hellfire_warhead", "probe_warhead")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	export_price = 7500
+	tech_tier = 4
 
 /datum/techweb_node/prototype_disruption_warheads
 	id = "prototype_disruption_warheads"
@@ -53,34 +58,37 @@
 	design_ids = list("proto_disruption_warhead")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 6500)
 	export_price = 7000
-	tech_tier = 3
+	tech_tier = 4
 
 /datum/techweb_node/advanced_ballistics
 	id = "adv_ballistics"
 	display_name = "Advanced Ballistics"
 	description = "More guns means better guns... Right?"
 	prereq_ids = list("ballistic_weapons")
-	design_ids = list("naval_shell", "powder_bag", "gauss_rack_upgrade", "broadside_casing", "broadside_load", "broadside_packer", "plasma_core")
+	design_ids = list("naval_shell", "powder_bag", "naval_artillery_comp", "artillery_loader", "powder_loader", "payload_gate", "broadside_casing", "broadside_load", "broadside_packer", "plasma_core", "swabber")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	export_price = 5000
+	tech_tier = 3
 
 /datum/techweb_node/macro_ballistics
 	id = "macro_ballistics"
 	display_name = "Macro-Ballistics"
 	description = "Asking important questions, like what if we made even bigger guns?"
 	prereq_ids = list("adv_ballistics", "adv_plasma")
-	design_ids = list("naval_shell_ap", "plasma_accelerant", "deck_gun_autorepair", "deck_gun_autoelevator")
+	design_ids = list("naval_shell_ap", "plasma_accelerant", "deck_gun_autorepair", "deck_gun_autoelevator", "gauss_rack_upgrade", "broadside_load_uranium")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
 	export_price = 10000
+	tech_tier = 4
 
 /datum/techweb_node/missile_automation
 	id = "missile_automation"
 	display_name = "Automated Missile Construction"
 	description = "Machines and tools to automate missile construction."
-	prereq_ids = list("explosive_weapons")
+	prereq_ids = list("basic_torpedo_components", "high_efficiency")
 	design_ids = list("missilebuilder", "slowconveyor", "missilewelder", "missilescrewer", "missilewirer", "missileassembler")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 5000
+	tech_tier = 3
 
 //Fighter tech
 /datum/techweb_node/countermeasure_charge
@@ -90,6 +98,7 @@
 	prereq_ids = list("fighter_tier1")
 	design_ids = list("countermeasure_charge")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
+	tech_tier = 2
 	export_price = 1000
 
 /datum/techweb_node/fighter_fabrication
@@ -100,6 +109,7 @@
 	prereq_ids = list("base")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 	export_price = 1000
+	tech_tier = 1
 
 /datum/techweb_node/fighter_tier1
 	id = "fighter_tier1"
@@ -108,7 +118,8 @@
 	design_ids = list("fuel_tank", "avionics", "apu", "armour_plating", "targeting_sensor", "fighter_engine", "countermeasure_dispenser", "oxygenator","docking_computer", "fighter_battery", "refuel_kit", "cargo_hold", "resupply")
 	prereq_ids = list("fighter_fabrication")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
-	export_price = 1000
+	export_price = 2000
+	tech_tier = 2
 
 /datum/techweb_node/fighter_tier2
 	id = "fighter_tier2"
@@ -118,6 +129,7 @@
 	prereq_ids = list("fighter_tier1", "adv_engi")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	export_price = 4000
+	tech_tier = 3
 
 /datum/techweb_node/fighter_tier3
 	id = "fighter_tier3"
@@ -127,6 +139,7 @@
 	prereq_ids = list("fighter_tier2", "bluespace_travel", "bluespace_power")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
 	export_price = 7500
+	tech_tier = 4
 
 /datum/techweb_node/fighter_guns_tier1
 	id = "fightergun1"
@@ -136,6 +149,7 @@
 	prereq_ids = list("fighter_tier1", "weaponry")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 	export_price = 1000
+	tech_tier = 2
 
 /datum/techweb_node/fighter_guns_tier2
 	id = "fightergun2"
@@ -145,6 +159,7 @@
 	prereq_ids = list("fightergun1", "ballistic_weapons")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	export_price = 2500
+	tech_tier = 3
 
 /datum/techweb_node/fighter_guns_tier3
 	id = "fightergun3"
@@ -154,6 +169,7 @@
 	prereq_ids = list("fightergun2", "adv_weaponry")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	export_price = 5000
+	tech_tier = 4
 
 /datum/techweb_node/fighter_mining
 	id = "fightermining"
@@ -163,6 +179,7 @@
 	prereq_ids = list("fighter_tier1", "adv_mining", "adv_plasma")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
 	export_price = 1000
+	tech_tier = 3
 
 /datum/techweb_node/autoinjector
 	id = "autoinjector"
@@ -172,15 +189,17 @@
 	prereq_ids = list("adv_biotech","adv_surgery")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
 	export_price = 1500
+	tech_tier = 4
 
 /datum/techweb_node/xenoorgan_biotech
-    id = "xenoorgan_bio"
-    display_name = "Xeno-organ Biology"
-    description = "Plasmaman, Ethereals, Lizardpeople... What makes our non-human crewmembers tick?"
-    prereq_ids = list("adv_biotech")
-    design_ids = list("limbdesign_felinid", "limbdesign_lizard", "limbdesign_plasmaman", "limbdesign_ethereal", "limbdesign_moth", "limbdesign_apid")
-    research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 6500)
-    export_price = 9000
+	id = "xenoorgan_bio"
+	display_name = "Xeno-organ Biology"
+	description = "Plasmaman, Ethereals, Lizardpeople... What makes our non-human crewmembers tick?"
+	prereq_ids = list("adv_biotech")
+	design_ids = list("limbdesign_felinid", "limbdesign_lizard", "limbdesign_plasmaman", "limbdesign_ethereal", "limbdesign_moth", "limbdesign_apid")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 6500)
+	export_price = 9000
+	tech_tier = 1
 
 //Vehicle Hardpoint tech
 /datum/techweb_node/vehicle_start
@@ -191,6 +210,7 @@
 	prereq_ids = list("engineering")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
 	export_price = 1000
+	tech_tier = 1
 
 /datum/techweb_node/vehicle_utility
 	id = "vehicle_utility"
@@ -200,6 +220,7 @@
 	prereq_ids = list("vehicle_start")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 	export_price = 2000
+	tech_tier = 1
 
 /datum/techweb_node/vehicle_tier1
 	id = "vehicle_tier1"
@@ -209,6 +230,7 @@
 	prereq_ids = list("vehicle_start")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 2500
+	tech_tier = 1
 
 /datum/techweb_node/vehicle_tier2
 	id = "vehicle_tier2"
@@ -218,6 +240,7 @@
 	prereq_ids = list("vehicle_tier1")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3500)
 	export_price = 3500
+	tech_tier = 2
 
 /datum/techweb_node/vehicle_tier3
 	id = "vehicle_tier3"
@@ -227,11 +250,12 @@
 	prereq_ids = list("vehicle_tier2")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	export_price = 5000
+	tech_tier = 3
 
 /// Munitions Upgrade for Engineering Borg
 /datum/techweb_node/cyborg_upg_muni
 	id = "cyborg_upg_muni"
-	tech_tier = 4
+	tech_tier = 3
 	display_name = "Cyborg Upgrades: Munitions"
 	description = "Munition related upgrades for cyborgs."
 	prereq_ids = list("adv_robotics", "adv_engi" , "adv_ballistics")

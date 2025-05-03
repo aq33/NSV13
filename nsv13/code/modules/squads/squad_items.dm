@@ -229,15 +229,6 @@
 	. = ..()
 	apply_squad(squad)
 
-/obj/item/storage/box/squad_lanyards
-	name = "Spare squad lanyards"
-	desc = "A box filled with lanyards for assigning personnel into squads. Repaint them using the squad management console and pass them out."
-
-/obj/item/storage/box/squad_lanyards/PopulateContents()
-	for(var/I = 0; I < 10; I++){
-		new /obj/item/clothing/neck/squad(src)
-	}
-
 
 //When initialized, if passed a squad already, apply its reskin.
 
@@ -415,7 +406,8 @@
 	. = ..()
 	if(torn)
 		return
-	inflate(get_turf(target), user)
+	if(in_range(target, user))
+		inflate(get_turf(target), user)
 
 /obj/item/inflatable/proc/inflate(turf/target, mob/user)
 	playsound(loc, 'sound/items/zip.ogg', 75, 1)

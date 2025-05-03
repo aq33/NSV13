@@ -25,8 +25,8 @@ Adding tasks is easy! Just define a datum for it.
 	//Ai fleet type enum. Add your new one here. Use a define, or text if youre lazy.
 	var/list/taskforces = list("fighters" = list(), "destroyers" = list(), "battleships" = list(), "supply" = list())
 	var/list/fighter_types = list(/obj/structure/overmap/syndicate/ai/fighter, /obj/structure/overmap/syndicate/ai/bomber)
-	var/list/destroyer_types = list(/obj/structure/overmap/syndicate/ai, /obj/structure/overmap/syndicate/ai/destroyer, /obj/structure/overmap/syndicate/ai/destroyer/flak, /obj/structure/overmap/syndicate/ai/cruiser, /obj/structure/overmap/syndicate/ai/mako_flak, /obj/structure/overmap/syndicate/ai/mako_carrier)
-	var/list/battleship_types = list(/obj/structure/overmap/syndicate/ai, /obj/structure/overmap/syndicate/ai/destroyer, /obj/structure/overmap/syndicate/ai/destroyer/flak, /obj/structure/overmap/syndicate/ai/cruiser, /obj/structure/overmap/syndicate/ai/mako_flak, /obj/structure/overmap/syndicate/ai/mako_carrier)
+	var/list/destroyer_types = list(/obj/structure/overmap/syndicate/ai, /obj/structure/overmap/syndicate/ai/destroyer, /obj/structure/overmap/syndicate/ai/destroyer/flak, /obj/structure/overmap/syndicate/ai/mako_flak, /obj/structure/overmap/syndicate/ai/mako_carrier)
+	var/list/battleship_types = list(/obj/structure/overmap/syndicate/ai/cruiser, /obj/structure/overmap/syndicate/ai/assault_cruiser)
 	var/list/supply_types = list(/obj/structure/overmap/syndicate/ai/carrier)
 	var/list/all_ships = list()
 	var/list/lances = list()
@@ -64,6 +64,11 @@ Adding tasks is easy! Just define a datum for it.
 	var/combat_move_delay = 10 MINUTES
 
 	var/list/shared_targets = list()
+
+/datum/fleet/Destroy()
+	QDEL_LIST(all_ships) //We're taking the ships with us
+	current_system.fleets -= src
+	. = ..()
 
 /datum/fleet/proc/start_reporting(target, reporter)
 	//message_admins("[reporter] started reporting [target] to fleet")
@@ -228,7 +233,8 @@ Adding tasks is easy! Just define a datum for it.
 		if(world.time < last_encounter_time + combat_move_delay) //So that fleets don't leave mid combat.
 			return FALSE
 
-		if(SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CHECK_INTERDICT, pick(all_ships)) & BEING_INTERDICTED)	//Hypothesis: All ships within a fleet should have the same faction.
+		var/interdict_return = SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CHECK_INTERDICT, pick(all_ships)) //Hypothesis: All ships within a fleet should have the same faction.
+		if((interdict_return & (WEAK_INTERDICT|STRONG_INTERDICT)))
 			return FALSE
 
 	current_system.fleets -= src
@@ -298,7 +304,7 @@ Adding tasks is easy! Just define a datum for it.
 			if(OOM == OM)
 				L.Remove(OM)
 				break	//Ships should exist once in a each taskforce, unless something is very wrong in there.
-	if(!all_ships.len) //We've been defeated!
+	if(!all_ships.len && !QDELETED(src)) //We've been defeated! But not if we're being deleted
 		defeat()
 
 /datum/fleet/proc/defeat()
@@ -309,7 +315,6 @@ Adding tasks is easy! Just define a datum for it.
 		minor_announce(message, "White Rapids Fleet Command")
 	else
 		mini_announce(message, "White Rapids Fleet Command")
-	current_system.fleets -= src
 	if(current_system.fleets && current_system.fleets.len)
 		var/datum/fleet/F = pick(current_system.fleets)
 		current_system.alignment = F.alignment
@@ -806,7 +811,7 @@ Adding tasks is easy! Just define a datum for it.
 	name = "\improper Tortuga Raiders raiding fleet"
 	destroyer_types = list(/obj/structure/overmap/spacepirate/ai, /obj/structure/overmap/spacepirate/ai/boarding)
 	audio_cues = list()
-	taunts = list("Hej ho! Pokaźny łup płynie w naszą stronę", "Przygotujcie grupę abordażową, mają wystarczająco łupu dla nas wszystkich!")
+	taunts = list("Avast! A fine hold of loot sails our way", "Prepare the boarding crews, they've got enough loot for us all!")
 	size = FLEET_DIFFICULTY_MEDIUM
 
 /datum/fleet/pirate/tortuga
@@ -1531,6 +1536,8 @@ Seek a ship thich we'll station ourselves around
 		OM.send_radar_pulse()
 	if(OM.patrol_target && overmap_dist(OM, OM.patrol_target) <= 8)
 		OM.patrol_target = null	//You have arrived at your destination.
+		if(OM.mines_left >= 1) //Deploy a mine if you have one, this should spread them out nicely
+			OM.deploy_mine()
 	if(!OM.patrol_target || OM.patrol_target.z != OM.z)
 		var/min_x = max(OM.x - 50, 15)
 		var/max_x = min(OM.x + 50, 240)
@@ -1628,6 +1635,7 @@ Seek a ship thich we'll station ourselves around
 	var/decision_delay = 2 SECONDS
 	var/move_mode = 0
 	var/next_boarding_attempt = 0
+	var/mine_cooldown = 0
 
 	var/reloading_torpedoes = FALSE
 	var/reloading_missiles = FALSE
@@ -1636,6 +1644,7 @@ Seek a ship thich we'll station ourselves around
 	//Fleet organisation
 	var/shots_left = 15 //Number of arbitrary shots an AI can fire with its heavy weapons before it has to resupply with a supply ship.
 	var/light_shots_left = 300
+	var/mines_left = 0
 	var/resupply_range = 15
 	var/resupplying = 0	//Are we resupplying things right now? If yes, how many?
 	var/can_resupply = FALSE //Can this ship resupply other ships?
@@ -1705,6 +1714,8 @@ Seek a ship thich we'll station ourselves around
 						SW.next_firetime += SW.ai_fire_delay
 					break
 		fire_mode = new_firemode
+		if(!weapon_types[new_firemode]) //We lack gun
+			return
 		if(uses_main_shot) //Don't penalise them for weapons that are designed to be spammed.
 			shots_left --
 		else
@@ -1983,9 +1994,9 @@ Seek a ship thich we'll station ourselves around
 		switch(angular_difference)
 			if(-15 to 15)
 				boost(NORTH)	//ZOOOM
-			if(-45 to -180)
+			if(-180 to -45)
 				boost(WEST)
-			if(-180 to -INFINITY)
+			if(-INFINITY to -180)
 				boost(EAST)
 			if(45 to 180)
 				boost(EAST)
@@ -2026,6 +2037,8 @@ Seek a ship thich we'll station ourselves around
 	if(!target || QDELETED(target))
 		return
 	desired_angle =	overmap_angle(src, target) - 180
+	if(mines_left >= 1) //if we have mines, we should try to discourage anyone from following
+		deploy_mine()
 
 /obj/structure/overmap/proc/circle_around(atom/target)
 	brakes = FALSE
@@ -2080,6 +2093,16 @@ Seek a ship thich we'll station ourselves around
 		add_enemy(last_target)
 		return TRUE
 	return FALSE
+
+///Make this ship drop a mine.
+/obj/structure/overmap/proc/deploy_mine()
+	if(mines_left <= 0)
+		return //why are we here
+	if(mine_cooldown > world.time) //Don't drop them all at once now
+		return
+	mine_cooldown = world.time + 6 SECONDS
+	mines_left--
+	new /obj/structure/space_mine(get_center(),faction,current_system)
 
 /client/proc/instance_overmap_menu() //Creates a verb for admins to open up the ui
 	set name = "Instance Overmap"
