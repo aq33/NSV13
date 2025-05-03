@@ -93,12 +93,6 @@
 		TGS_DEBUG_LOG("Failed bridge request, HTTP request failed!")
 		return
 
-	var/response_json = file2text(content)
-	if(!response_json)
-		TGS_ERROR_LOG("Failed bridge request, failed to load content!")
-		return
-
-	var/list/bridge_response = json_decode(response_json)
 	var/list/bridge_response = json_decode(result.response_text)
 	if(!bridge_response)
 		TGS_ERROR_LOG("Failed bridge request, bad json: [result.response_text]")
