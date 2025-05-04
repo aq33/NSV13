@@ -1298,8 +1298,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(HAS_TRAIT(src, TRAIT_NOHUNGER))
 		return //hunger is for BABIES
 
-	var/shitting_enabled = CONFIG_GET(flag/shitting_enabled) // AQ EDIT
 	// AQ EDIT START
+	var/shitting_enabled = CONFIG_GET(flag/shitting_enabled) // AQ EDIT
 	if(!HAS_TRAIT(H, TRAIT_NOTHIRST))
 		if(H.nutrition < NUTRITION_LEVEL_STARVING && H.hydration < HYDRATION_LEVEL_DEHYDRATED)
 			if(prob(35))
