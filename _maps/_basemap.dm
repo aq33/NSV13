@@ -11,7 +11,16 @@
 		//Atlas
 		#include "map_files\Atlas\Atlas.dmm"
 		#include "map_files\Atlas\Atlas2.dmm"
+		//Akwilas AQ EDIT
+		#include "map_files\Aquila_Atlas\Aquila_Atlas.dmm"
+		#include "map_files\Aquila_Atlas\Aquila_Atlas2.dmm"
 
+		//Padalec
+		#include "map_files\Aquila_Snake\Aquila_Snake_Lower.dmm"
+		#include "map_files\Aquila_Snake\Aquila_Snake_Upper.dmm"
+		//Trawnik
+		#include "map_files\Aquila_Serendipity\Aquila_Serendipity1.dmm"
+		#include "map_files\Aquila_Serendipity\Aquila_Serendipity2.dmm"
 		//Aetherwhisp
 		#include "map_files\Aetherwhisp\Aetherwhisp2.dmm"
 		#include "map_files\Aetherwhisp\Aetherwhisp1.dmm"
