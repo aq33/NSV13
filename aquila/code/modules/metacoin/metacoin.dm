@@ -1,4 +1,4 @@
-/client/proc/process_aquilla_endround_metacoin()
+/client/proc/process_aquila_endround_metacoin()
 	if(!mob)    return
 	var/mob/M = mob
 	if(M.mind && !isnewplayer(M))
