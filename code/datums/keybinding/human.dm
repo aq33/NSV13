@@ -73,35 +73,35 @@
 /datum/keybinding/human/quick_equip_backpack/down(client/user)
 	. = ..()
 	if(.)
-		return
+		return TRUE
 	var/mob/living/carbon/human/H = user.mob
 	var/obj/item/thing = H.get_active_held_item()
 	var/obj/item/equipped_back = H.get_item_by_slot(ITEM_SLOT_BACK)
 	if(!equipped_back) // We also let you equip a backpack like this
 		if(!thing)
 			to_chat(user, "<span class='notice'>You have no backpack to take something out of.</span>")
-			return
+			return TRUE
 		if(H.equip_to_slot_if_possible(thing, ITEM_SLOT_BACK))
 			H.update_inv_hands()
-		return
+		return TRUE
 	if(!SEND_SIGNAL(equipped_back, COMSIG_CONTAINS_STORAGE)) // not a storage item
 		if(!thing)
 			equipped_back.attack_hand(H)
 		else
 			to_chat(user, "<span class='notice'>You can't fit anything in.</span>")
-		return
+		return TRUE
 	if(thing) // put thing in backpack
 		if(!SEND_SIGNAL(equipped_back, COMSIG_TRY_STORAGE_INSERT, thing, user.mob))
 			to_chat(user, "<span class='notice'>You can't fit anything in.</span>")
-		return
+		return TRUE
 	if(!equipped_back.contents.len) // nothing to take out
 		to_chat(user, "<span class='notice'>There's nothing in your backpack to take out.</span>")
-		return
+		return TRUE
 	var/obj/item/stored = equipped_back.contents[equipped_back.contents.len]
 	if(!stored || stored.on_found(H))
-		return
+		return TRUE
 	stored.attack_hand(H) // take out thing from backpack
-	return
+	return TRUE
 
 
 /datum/keybinding/human/quick_equip_suit_storage
