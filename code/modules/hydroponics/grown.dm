@@ -104,7 +104,7 @@
 			if(seed.get_gene(/datum/plant_gene/trait/squash))
 				squash(hit_atom)
 
-/obj/item/reagent_containers/food/snacks/grown/proc/squash(atom/target)
+/obj/item/reagent_containers/food/snacks/grown/proc/squash(atom/target)//AQ EDIT przywraca sep chems
 	var/turf/T = get_turf(target)
 	forceMove(T)
 	if(ispath(splat_type, /obj/effect/decal/cleanable/food/plant_smudge))
@@ -122,10 +122,14 @@
 	if(seed)
 		for(var/datum/plant_gene/trait/trait in seed.genes)
 			trait.on_squash(src, target)
-	reagents.reaction(T)
-	for(var/A in T)
-		reagents.reaction(A)
-	qdel(src)
+	if(!seed.get_gene(/datum/plant_gene/trait/noreact))
+		reagents.reaction(T)
+		for(var/A in T)
+			reagents.reaction(A)
+		qdel(src)
+	if(seed.get_gene(/datum/plant_gene/trait/noreact))
+		visible_message("<span class='warning'>[src] crumples, and bubbles ominously as its contents mix.</span>")
+		addtimer(CALLBACK(src, .proc/squashreact), 20)
 
 /obj/item/reagent_containers/food/snacks/grown/proc/squashreact()
 	for(var/datum/plant_gene/trait/trait in seed.genes)
