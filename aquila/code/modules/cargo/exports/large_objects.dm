@@ -9,3 +9,4 @@
 	var/obj/machinery/power/battery/B = O
 	var/worth = B.charge
 	return worth
+
