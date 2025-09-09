@@ -104,7 +104,8 @@
 		            /obj/item/clothing/shoes/sandal = 2,
 		            /obj/item/clothing/suit/jacket/miljacket = 1,
 		            /obj/item/clothing/suit/apron/purple_bartender = 2,
-		            /obj/item/clothing/under/rank/civilian/bartender/purple = 2)
+		            /obj/item/clothing/under/rank/civilian/bartender/purple = 2,
+					/obj/item/clothing/shoes/aquila/aq_sandals = 4) //AQ EDIT)
 	contraband = list(/obj/item/clothing/under/syndicate/tacticool = 1,
 		              /obj/item/clothing/mask/balaclava = 1,
 		              /obj/item/clothing/head/ushanka = 1,
