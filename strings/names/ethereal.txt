@@ -21,7 +21,7 @@ Corvus
 Cepheus
 Auriga
 Corona
-Aquilla
+Aquila
 Serpens
 Cetus
 Puppis

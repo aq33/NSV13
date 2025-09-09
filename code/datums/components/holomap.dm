@@ -41,7 +41,7 @@
 /datum/component/holomap/proc/get_user()
 	RETURN_TYPE(/mob/living)
 	var/atom/movable/holder = parent
-	return (isliving(holder) || !isatom(holder)) ? holder : holder.loc
+	return (isliving(holder) || !isatom(holder)) ? holder : holder.loc //FIXME - This proc is terrible (and can runtime). Just save the user and track if they get del'd like a sane person. Why is this like this??????
 
 /datum/component/holomap/Initialize()
 	. = ..()
@@ -95,6 +95,11 @@
 	var/list/z_transitions = SSholomaps.holomap_z_transitions["[current_z_level]"]
 	if(length(z_transitions))
 		legend += z_transitions
+
+	if(SSshuttle.emergency && (SSshuttle.emergency.mode in list(SHUTTLE_CALL, SHUTTLE_DOCKED, SHUTTLE_IGNITING)))
+		var/list/escape_pods = SSholomaps.holomap_pod_locations["[current_z_level]"]
+		if(length(escape_pods))
+			legend += escape_pods
 
 	return legend
 

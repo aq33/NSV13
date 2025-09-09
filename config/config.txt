@@ -170,6 +170,9 @@ LOG_MANIFEST
 ## Log all timers on timer auto reset
 # LOG_TIMERS_ON_BUCKET_RESET
 
+## log speech indicators
+LOG_SPEECH_INDICATORS
+
 ##Log camera pictures - Must have picture logging enabled
 PICTURE_LOGGING_CAMERA
 
@@ -464,10 +467,12 @@ CLIENT_WARN_VERSION 0
 CLIENT_WARN_MESSAGE Currently Unused! If you see this message yell at Francinum!
 
 #Error, Blocks non-admin connection.
-CLIENT_ERROR_VERSION 514
+CLIENT_ERROR_VERSION 515
 CLIENT_ERROR_MESSAGE Your version of byond is not supported. Please upgrade.
-## The minimum build needed for joining the server, if using 513, a good minimum build would be 1526.
-CLIENT_ERROR_BUILD 1583
+## The minimum build needed for joining the server
+CLIENT_ERROR_BUILD 1590
+## The maximum build recommended for clients
+CLIENT_MAX_BUILD 1647
 
 ## TOPIC RATE LIMITING
 ## This allows you to limit how many topic calls (clicking on an interface window) the client can do in any given game second and/or game minute.
@@ -623,3 +628,5 @@ GHOST_ROLE_COOLDOWN 3000
 
 ## Once a typepath causes overrun from hard deletes this many times, stop hard deleting it on garbage collection failures. (set to 0 to disable)
 #HARD_DELETES_OVERRUN_LIMIT 0
+
+ATMOS_EQUALIZE_ENABLED

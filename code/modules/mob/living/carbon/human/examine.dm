@@ -25,7 +25,7 @@
 	display_name += name
 	if(dna?.species && !skipface)
 		apparent_species = ", <span class='[species_examine_font()]'>\an [dna.species.name]</span>" //NSV13 - species name is colored depending on special conditions.
-	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? display_name : "Unknown"][apparent_species]</EM>!")
+	. = list("<span class='info'>This is <EM>[!obscure_name ? display_name : "Unknown"][apparent_species]</EM>!")
 
 	//uniform
 	if(w_uniform && !(obscured & ITEM_SLOT_ICLOTHING) && !(w_uniform.item_flags & EXAMINE_SKIP))
@@ -310,9 +310,9 @@
 			if(InCritical())
 				msg += "[t_He] [t_is] barely conscious.\n"
 		if(getorgan(/obj/item/organ/brain))
-			if(ai_controller?.ai_status == AI_STATUS_ON)
+			if(ai_controller?.ai_status == AI_STATUS_ON || isknpc(src)) //NSV13 added KNPCs
 				msg += "<span class='deadsay'>[t_He] do[t_es]n't appear to be [t_him]self.</span>\n"
-			if(!key)
+			else if(!key)
 				msg += "<span class='deadsay'>[t_He] [t_is] totally catatonic. The stresses of life in deep-space must have been too much for [t_him]. Any recovery is unlikely.</span>\n"
 			else if(!client)
 				msg += "[t_He] [t_has] a blank, absent-minded stare and appears completely unresponsive to anything. [t_He] may snap out of it soon.\n"
@@ -392,7 +392,6 @@
 			. += line
 
 	//NSV13 - Roleplaying Records - End
-	. += "*---------*</span>"
 
 	//AQ EDIT snip snip
 	if(gender_ambiguous) //jajoskręt

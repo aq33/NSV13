@@ -20,7 +20,22 @@ endmap
 
 map atlas
 	minplayers 20
+#	votable
+endmap
+
+map aquila_atlas
+	minplayers 15
 	default
+	votable
+endmap
+
+map aquila_snake
+	minplayers 10
+	votable
+endmap
+
+map aquila_serendipity
+	minplayers 1
 	votable
 endmap
 

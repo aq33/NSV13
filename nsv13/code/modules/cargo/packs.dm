@@ -53,6 +53,18 @@
 	crate_type = /obj/structure/closet/crate/wooden
 	crate_name = "Captain Plasmasalt's finest gunpowder"
 
+/datum/supply_pack/munitions/muni_pointer
+	name = "Munitions Pinpointer"
+	desc = "Clown spaced your turrets? MAA slipped and threw their pointer into the recycler? This is the solution to your problems!"
+	cost = 5000 //Don't lose yours, MAA.
+	contains = list(/obj/item/pinpointer/munitions)
+
+/datum/supply_pack/munitions/muni_pointer/fill(obj/structure/closet/crate/C)
+	if(prob(1))
+		new /obj/item/pinpointer/munitions/not_puce(C)
+	else
+		new /obj/item/pinpointer/munitions(C)
+
 /datum/supply_pack/munitions/pdc_ammo
 	name = "PDC mount rounds (x5)"
 	desc = "5 boxes of PDC rounds, ideal for repelling torpedoes and missiles."
@@ -817,6 +829,16 @@
 					/obj/item/reagent_containers/glass/bottle/sacid,
 					/obj/item/reagent_containers/glass/bottle/sacid)
 	crate_name = "Chemical Supply Crate - Chalcogens"
+
+/datum/supply_pack/medical/robotic_firstaid
+	name = "Synthethic Treatment Kits Crate"
+	desc = "Contains three robotic first aid kits for all of your synthetic repairing needs. Tools, radioactive disinfectant and system cleaner medipens included."
+	contains = list(/obj/item/storage/firstaid/robot,
+					/obj/item/storage/firstaid/robot,
+					/obj/item/storage/firstaid/robot)
+	cost = 1400
+	small_item = TRUE
+	crate_name = "synthethic treatment kits crate"
 
 /datum/supply_pack/materials/plasma_canister //Purely used for the Serendipity's plasma caster
 	name = "Phoron Canister"

@@ -449,6 +449,12 @@
 		if(BODY_ZONE_R_LEG)
 			prosthetic = new/obj/item/bodypart/r_leg/robot/surplus(quirk_holder)
 			slot_string = "prawa noga"
+	//NSV13 - If the old limb is digitigrade, so is your prosthetic.
+	if(old_part.bodytype & BODYTYPE_DIGITIGRADE) //This proc seems to trust old part never missing and so will I :)
+		prosthetic.bodytype |= BODYTYPE_DIGITIGRADE
+		prosthetic.static_icon = 'nsv13/icons/mob/augmentation/digitigrade_legs.dmi'
+		prosthetic.limb_id = "digitigrade"
+	//NSV13 end.
 	prosthetic.replace_limb(H)
 	qdel(old_part)
 	H.regenerate_icons()
@@ -552,7 +558,7 @@
 		drug_container_type = /obj/item/storage/pill_bottle
 	var/obj/item/drug_instance = new drug_container_type(current_turf)
 	if (istype(drug_instance, /obj/item/storage/pill_bottle))
-		var/pill_state = "pill[rand(1,20)]"
+		var/pill_state = pick(PILL_SHAPE_LIST)
 		for(var/i in 1 to 7)
 			var/obj/item/reagent_containers/pill/P = new(drug_instance)
 			P.icon_state = pill_state

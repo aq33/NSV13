@@ -212,7 +212,7 @@
 		if(C)
 
 			C?.process_endround_metacoin()
-			C?.process_aquilla_endround_metacoin() // AQ EDIT
+			C?.process_aquila_endround_metacoin() // AQ EDIT
 			C?.playtitlemusic(20) // AQUILA EDIT 40 -> 20
 
 			if(CONFIG_GET(flag/allow_crew_objectives))
@@ -281,6 +281,10 @@
 			C?.give_award(/datum/award/achievement/misc/threekhours, C.mob)
 		if(hours > 4000)
 			C?.give_award(/datum/award/achievement/misc/fourkhours, C.mob)
+		//NSV13 - emergency repair achievement hook
+		if(C && GLOB.plating_repairers["[C.ckey]"] && GLOB.plating_repairers["[C.ckey]"] >= 200)
+			C.give_award(/datum/award/achievement/misc/emergency_repairs, C.mob)
+		//NSV13 end
 
 	CHECK_TICK
 

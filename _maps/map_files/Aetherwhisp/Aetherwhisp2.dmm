@@ -80,7 +80,6 @@
 	name = "Bathroom Cell"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/toilet/locker)
 "abO" = (
@@ -216,7 +215,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "5-10"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "aiE" = (
@@ -327,7 +325,6 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/cargo)
 "alS" = (
@@ -472,7 +469,6 @@
 	name = "Library Backroom";
 	req_one_access_txt = "37"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/wood,
 /area/library)
 "apz" = (
@@ -721,7 +717,6 @@
 	req_one_access_txt = "12;7"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/science/central)
 "axW" = (
@@ -770,7 +765,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/blue{
 	color = "#9999DD";
 	name = "nanoweave carpet (bluer)"
@@ -816,7 +810,6 @@
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/engine,
 /area/nsv/hanger/storage)
 "aAZ" = (
@@ -1229,7 +1222,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/purple_carpet,
 /area/science/mixing)
 "aPN" = (
@@ -1328,7 +1320,6 @@
 /obj/machinery/door/airlock/ship/maintenance{
 	req_one_access_txt = "10;24"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/engine/engineering/reactor_control)
 "aSI" = (
@@ -1395,7 +1386,6 @@
 	name = "Bridge";
 	req_access_txt = "19"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/blue{
 	color = "#9999DD";
 	name = "nanoweave carpet (bluer)"
@@ -1529,7 +1519,6 @@
 /obj/machinery/door/airlock/ship/maintenance{
 	req_one_access_txt = "12"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "bbg" = (
@@ -2326,7 +2315,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/blue{
 	color = "#9999DD";
 	name = "nanoweave carpet (bluer)"
@@ -2349,7 +2337,6 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/cargo)
 "bxM" = (
@@ -2399,7 +2386,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/crew_quarters/dorms)
 "byg" = (
@@ -2692,7 +2678,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "6-10"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/purple_carpet,
 /area/science/research)
 "bGw" = (
@@ -2871,7 +2856,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/pool_party)
 "bTd" = (
@@ -2936,7 +2920,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/nsv/bridge)
 "bUO" = (
@@ -3733,7 +3716,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/blue{
 	color = "#9999DD";
 	name = "nanoweave carpet (bluer)"
@@ -3797,7 +3779,6 @@
 /obj/structure/cable{
 	icon_state = "5-10"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/science/central)
 "cxr" = (
@@ -4140,7 +4121,6 @@
 	name = "E.X.P.E.R.I-MENTOR Access";
 	req_one_access_txt = "47"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/purple_carpet,
 /area/science/explab)
 "cJa" = (
@@ -4266,7 +4246,6 @@
 "cPh" = (
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/effect/landmark/event_spawn,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/blue,
 /area/bridge)
 "cPn" = (
@@ -4537,7 +4516,6 @@
 	req_one_access_txt = "55"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/purple_carpet,
 /area/science/xenobiology)
 "dbO" = (
@@ -4725,7 +4703,6 @@
 	},
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/east,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/quartermaster/storage)
 "diA" = (
@@ -4881,7 +4858,6 @@
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/door/airlock/ship/public/glass/turbolift,
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/shuttle/turbolift/quinary)
 "dqI" = (
@@ -4904,7 +4880,6 @@
 	dir = 4;
 	id = "aethermunitions"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/engine,
 /area/nsv/weapons/fore)
 "drW" = (
@@ -4921,7 +4896,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "dsu" = (
@@ -5078,7 +5052,6 @@
 /obj/machinery/door/airlock/ship/maintenance{
 	req_one_access_txt = "10;24"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/engine/engineering/reactor_control)
 "dzp" = (
@@ -5145,7 +5118,6 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "dBX" = (
@@ -5362,7 +5334,6 @@
 	name = "Captain Quarters";
 	req_access_txt = "20"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/captain/private)
 "dKo" = (
@@ -5508,7 +5479,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "dOf" = (
@@ -5617,7 +5587,6 @@
 	},
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/machinery/door/firedoor/border_only/directional/west,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/purple_carpet,
 /area/science/robotics/lab)
 "dQY" = (
@@ -5651,7 +5620,6 @@
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/airlock/ship/public/glass/turbolift,
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/shuttle/turbolift/quaternary)
 "dTn" = (
@@ -6053,7 +6021,6 @@
 	},
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/machinery/door/firedoor/border_only/directional/west,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "ejy" = (
@@ -6629,7 +6596,6 @@
 	req_one_access_txt = "31;50"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/quartermaster/sorting)
 "eBS" = (
@@ -6735,7 +6701,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/quartermaster/lobby)
 "eDY" = (
@@ -6939,7 +6904,6 @@
 	name = "Public EVA Storage";
 	req_access_txt = "19"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/blue{
 	color = "#9999DD";
 	name = "nanoweave carpet (bluer)"
@@ -7169,7 +7133,7 @@
 /obj/machinery/air_sensor/atmos{
 	id_tag = "ftl_sensor"
 	},
-/turf/open/floor/engine/nucleum,
+/turf/open/floor/engine/nucleium,
 /area/engine/engine_smes)
 "eSC" = (
 /obj/machinery/light_switch/east,
@@ -7365,7 +7329,6 @@
 	name = "Public EVA Storage"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/blue{
 	color = "#9999DD";
 	name = "nanoweave carpet (bluer)"
@@ -7716,7 +7679,6 @@
 	name = "Server Room";
 	req_one_access_txt = "30"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/science/server)
 "fkg" = (
@@ -8128,7 +8090,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "fwr" = (
@@ -8340,7 +8301,6 @@
 	},
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/effect/landmark/start/bridge,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/blue,
 /area/bridge)
 "fDN" = (
@@ -8585,7 +8545,6 @@
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/crew_quarters/dorms)
 "fKd" = (
@@ -8750,7 +8709,6 @@
 "fRV" = (
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
-/obj/effect/landmark/zebra_interlock_point,
 /obj/machinery/door/airlock/ship/public/glass{
 	name = "Dormitories"
 	},
@@ -8885,7 +8843,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/quartermaster/storage)
 "fTY" = (
@@ -9438,7 +9395,6 @@
 /obj/structure/cable/pink{
 	icon_state = "4-8"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/engine,
 /area/maintenance/fore)
 "gmR" = (
@@ -9493,7 +9449,6 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/blue{
 	color = "#9999DD";
 	name = "nanoweave carpet (bluer)"
@@ -9638,7 +9593,6 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/wood,
 /area/maintenance/department/crew_quarters/dorms)
 "gul" = (
@@ -9674,7 +9628,6 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "gvQ" = (
@@ -9700,7 +9653,6 @@
 	name = "Master At Arms Office";
 	req_access_txt = "70"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/beige_carpet{
 	color = "#CC8899";
 	name = "nanoweave carpet (puce)"
@@ -10258,7 +10210,6 @@
 	},
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "gQT" = (
@@ -10575,7 +10526,6 @@
 	name = "Maintenance Access Executive Officer Office";
 	req_one_access_txt = "57"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/blue{
 	color = "#9999DD";
 	name = "nanoweave carpet (bluer)"
@@ -10783,7 +10733,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "6-9"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/wood,
 /area/crew_quarters/dorms)
 "hkG" = (
@@ -10871,7 +10820,6 @@
 "hnK" = (
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/north,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/blue,
 /area/bridge)
 "hod" = (
@@ -11310,7 +11258,7 @@
 /obj/machinery/camera/autoname{
 	dir = 8
 	},
-/turf/open/floor/engine/nucleum,
+/turf/open/floor/engine/nucleium,
 /area/engine/engine_smes)
 "hEV" = (
 /obj/machinery/atmospherics/components/binary/pump/layer4{
@@ -11449,7 +11397,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/quartermaster/lobby)
 "hLo" = (
@@ -11529,7 +11476,6 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "hOJ" = (
@@ -11689,7 +11635,6 @@
 	name = "Maintenance Access Munitions Weapons Bay";
 	req_one_access_txt = "69;19"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/beige_carpet{
 	color = "#CC8899";
 	name = "nanoweave carpet (puce)"
@@ -11818,7 +11763,6 @@
 	icon_state = "5-10"
 	},
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/purple_carpet,
 /area/crew_quarters/heads/hor)
 "hXr" = (
@@ -12521,7 +12465,6 @@
 	name = "AI Core";
 	req_one_access_txt = "16"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/ai_monitored/turret_protected/aisat_interior)
 "ixT" = (
@@ -12549,7 +12492,6 @@
 	req_one_access_txt = "12;37;55"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "iyw" = (
@@ -12692,7 +12634,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "iDL" = (
@@ -12754,7 +12695,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/quartermaster/qm)
 "iEX" = (
@@ -13029,7 +12969,6 @@
 	name = "Engine Observation Room";
 	req_one_access_txt = "10;24"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/engine/engine_smes)
 "iPS" = (
@@ -13241,7 +13180,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/blue{
 	color = "#9999DD";
 	name = "nanoweave carpet (bluer)"
@@ -13340,7 +13278,6 @@
 	name = "Chief Engineer Office";
 	req_one_access_txt = "56"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/orange_carpet,
 /area/crew_quarters/heads/chief)
 "jbh" = (
@@ -13432,7 +13369,6 @@
 /obj/machinery/door/airlock/ship/public/glass{
 	req_one_access_txt = "30"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/science/server)
 "jdq" = (
@@ -13620,7 +13556,6 @@
 	},
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/east,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/beige_carpet{
 	color = "#CC8899";
 	name = "nanoweave carpet (puce)"
@@ -14442,7 +14377,6 @@
 /obj/structure/cable/pink{
 	icon_state = "9-10"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/blue{
 	color = "#9999DD";
 	name = "nanoweave carpet (bluer)"
@@ -15078,7 +15012,6 @@
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/crew_quarters/dorms)
 "knV" = (
@@ -15226,7 +15159,6 @@
 /obj/machinery/door/airlock/ship/maintenance{
 	req_one_access_txt = "3;12;19;69;72"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/nsv/bridge)
 "kuT" = (
@@ -15496,7 +15428,6 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/disposal)
 "kJc" = (
@@ -15605,7 +15536,6 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/blue{
 	color = "#9999DD";
 	name = "nanoweave carpet (bluer)"
@@ -15691,7 +15621,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/science/central)
 "kPp" = (
@@ -15946,7 +15875,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "lav" = (
@@ -15993,7 +15921,6 @@
 	name = "Custodial Office";
 	req_one_access_txt = "26"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/janitor)
 "lbQ" = (
@@ -16112,7 +16039,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/hallway/nsv/deck2/forward)
 "lgV" = (
@@ -17080,7 +17006,6 @@
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/door/airlock/ship/public/glass/turbolift,
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/shuttle/turbolift/primary)
 "lTy" = (
@@ -17114,7 +17039,6 @@
 /obj/machinery/door/airlock/ship/maintenance{
 	req_one_access_txt = "3;12;19;69;72"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/maintenance/nsv/hangar)
 "lUg" = (
@@ -17126,7 +17050,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/orange_carpet,
 /area/crew_quarters/heads/chief)
 "lUj" = (
@@ -17175,7 +17098,6 @@
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/crew_quarters/dorms)
 "lWu" = (
@@ -17222,7 +17144,6 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/purple_carpet,
 /area/science/research)
 "lYM" = (
@@ -17343,7 +17264,6 @@
 	name = "Engine Observation Room";
 	req_one_access_txt = "10;24"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/engine/engineering/reactor_control)
 "mfF" = (
@@ -17550,12 +17470,6 @@
 	},
 /area/bridge/meeting_room/council)
 "mlm" = (
-/obj/structure/table/glass,
-/obj/item/folder/yellow{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/folder/blue,
 /obj/machinery/computer/ship/viewscreen{
 	pixel_x = -32;
 	pixel_y = -6
@@ -17566,6 +17480,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/machinery/conquest_beacon/nanotrasen,
 /turf/open/floor/carpet/blue,
 /area/bridge)
 "mlt" = (
@@ -17801,7 +17716,6 @@
 	name = "Escape Pod Munitions";
 	req_one_access_txt = "3;69;72"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/nsv/bridge)
 "mqe" = (
@@ -17923,7 +17837,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/quartermaster/sorting)
 "mtJ" = (
@@ -18311,7 +18224,6 @@
 	req_one_access_txt = "69;19"
 	},
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/beige_carpet{
 	color = "#CC8899";
 	name = "nanoweave carpet (puce)"
@@ -18443,7 +18355,6 @@
 	name = "AI Core Access";
 	req_one_access_txt = "16"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/ai_monitored/turret_protected/aisat/hallway)
 "mHQ" = (
@@ -18481,7 +18392,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/purple_carpet,
 /area/science/robotics/lab)
 "mJw" = (
@@ -18567,7 +18477,6 @@
 	},
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/effect/landmark/start/bridge,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/blue,
 /area/bridge)
 "mNk" = (
@@ -19010,7 +18919,6 @@
 	name = "Maintenance Access Metahuman Research";
 	req_one_access_txt = "7;9;29;47"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/medical/genetics)
 "niv" = (
@@ -19085,7 +18993,6 @@
 /obj/machinery/door/airlock/ship/public{
 	name = "Bathroom Cell"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/toilet/auxiliary)
 "njy" = (
@@ -19154,7 +19061,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/structure/barricade/wooden/crude,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/nsv/atc)
 "nkP" = (
@@ -19174,7 +19080,6 @@
 	name = "Vault";
 	req_one_access_txt = "53"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/blue{
 	color = "#9999DD";
 	name = "nanoweave carpet (bluer)"
@@ -19274,7 +19179,6 @@
 	name = "Maintenance Access Xenobiology";
 	req_one_access_txt = "55"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "noZ" = (
@@ -19419,7 +19323,6 @@
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/crew_quarters/dorms)
 "nuy" = (
@@ -19654,7 +19557,6 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/barricade/wooden/crude,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/nsv/atc)
 "nBF" = (
@@ -20252,7 +20154,6 @@
 	name = "Council Chamber Bathroom"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/blue{
 	color = "#9999DD";
 	name = "nanoweave carpet (bluer)"
@@ -20443,7 +20344,6 @@
 	name = "Maintenance Access Cargo Security Checkpoint";
 	req_one_access_txt = "63"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/security/checkpoint/supply)
 "nYQ" = (
@@ -20579,7 +20479,6 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/quartermaster/warehouse)
 "obS" = (
@@ -20939,7 +20838,6 @@
 	name = "Maintenance Access Bathroom";
 	req_one_access_txt = "12"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/nsv/hangar)
 "osO" = (
@@ -21562,7 +21460,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "oNH" = (
@@ -21645,7 +21542,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/orange_carpet,
 /area/crew_quarters/heads/chief)
 "oRv" = (
@@ -21744,7 +21640,6 @@
 	},
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/machinery/door/firedoor/border_only/directional/west,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/science/central)
 "oVB" = (
@@ -21882,7 +21777,6 @@
 /obj/structure/cable/pink{
 	icon_state = "1-2"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/nsv/bridge)
 "oZI" = (
@@ -22167,7 +22061,6 @@
 	},
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/nsv/hangar)
 "phk" = (
@@ -22227,7 +22120,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "pjf" = (
@@ -22329,7 +22221,6 @@
 /obj/machinery/door/airlock/ship/maintenance{
 	req_one_access_txt = "12;31"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "plS" = (
@@ -23128,7 +23019,7 @@
 	id_tag = "ftl_out";
 	internal_pressure_bound = 1000
 	},
-/turf/open/floor/engine/nucleum,
+/turf/open/floor/engine/nucleium,
 /area/engine/engine_smes)
 "pNP" = (
 /obj/machinery/door/firedoor/border_only/directional/west,
@@ -23143,7 +23034,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/purple_carpet,
 /area/medical/genetics)
 "pNQ" = (
@@ -23203,7 +23093,6 @@
 /obj/structure/cable/pink{
 	icon_state = "5-6"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/blue{
 	color = "#9999DD";
 	name = "nanoweave carpet (bluer)"
@@ -23379,7 +23268,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/cargo)
 "pTj" = (
@@ -23600,7 +23488,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/engine,
 /area/nsv/weapons/fore)
 "qek" = (
@@ -23619,7 +23506,6 @@
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/maintenance/department/crew_quarters/dorms)
 "qeu" = (
@@ -24324,7 +24210,6 @@
 /obj/machinery/door/airlock/ship/public/glass{
 	name = "Central Primary Hallway"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/bridge/meeting_room/council)
 "qGo" = (
@@ -25186,7 +25071,6 @@
 "reK" = (
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/machinery/door/firedoor/border_only/directional/west,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/science/central)
 "reN" = (
@@ -25464,7 +25348,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "rnm" = (
@@ -25605,7 +25488,6 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/quartermaster/miningoffice)
 "rrd" = (
@@ -26018,7 +25900,6 @@
 	name = "Maintenance Access Munitions Weapons Bay";
 	req_one_access_txt = "69;19"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/nsv/weapons/starboard)
 "rEj" = (
@@ -26231,7 +26112,6 @@
 	name = "Metahuman Research";
 	req_one_access_txt = "7;9;29;47"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/purple_carpet,
 /area/science/nsv/astronomy)
 "rJE" = (
@@ -26262,7 +26142,6 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /obj/machinery/door/airlock/ship/public{
 	name = "Unnamed Airlock"
 	},
@@ -26347,7 +26226,6 @@
 	name = "Meeting Room";
 	req_access_txt = "19"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/blue{
 	color = "#9999DD";
 	name = "nanoweave carpet (bluer)"
@@ -26913,7 +26791,6 @@
 /obj/machinery/door/airlock/ship/public{
 	name = "Bathroom Cell"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/toilet/locker)
 "sbr" = (
@@ -27066,7 +26943,6 @@
 /obj/machinery/door/airlock/ship/maintenance{
 	name = "Maintenance Access Science Lobby"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/science/central)
 "shx" = (
@@ -27223,7 +27099,6 @@
 	},
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/machinery/door/firedoor/border_only/directional/west,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/science/central)
 "snp" = (
@@ -27384,7 +27259,6 @@
 /obj/machinery/door/airlock/ship/maintenance{
 	req_one_access_txt = "7"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/science/central)
 "ssn" = (
@@ -27410,7 +27284,6 @@
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/airlock/ship/public/glass/turbolift,
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/shuttle/turbolift/secondary)
 "stN" = (
@@ -27527,7 +27400,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "5-6"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/wood,
 /area/maintenance/department/crew_quarters/dorms)
 "sys" = (
@@ -27571,7 +27443,6 @@
 /obj/machinery/door/airlock/ship/maintenance{
 	req_one_access_txt = "7;12;29;47;55"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/science/central)
 "szE" = (
@@ -27610,7 +27481,6 @@
 /obj/machinery/door/airlock/ship/maintenance{
 	req_one_access_txt = "7;12;29;47;55"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/science/central)
 "sAm" = (
@@ -27692,7 +27562,6 @@
 	name = "Maintenance Access Research and Development";
 	req_one_access_txt = "9;47"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/purple_carpet,
 /area/science/research)
 "sDg" = (
@@ -27895,7 +27764,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "6-10"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/science/server)
 "sLR" = (
@@ -28159,7 +28027,6 @@
 	req_one_access_txt = "37"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "sTF" = (
@@ -28201,7 +28068,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/orange_carpet,
 /area/crew_quarters/heads/chief)
 "sUy" = (
@@ -28253,7 +28119,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "6-9"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/blue{
 	color = "#9999DD";
 	name = "nanoweave carpet (bluer)"
@@ -28375,7 +28240,6 @@
 	name = "Metahuman Research";
 	req_one_access_txt = "7;9;29;47"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/purple_carpet,
 /area/medical/genetics)
 "tdz" = (
@@ -28400,7 +28264,6 @@
 	name = "Meeting Room";
 	req_access_txt = "19"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/blue{
 	color = "#9999DD";
 	name = "nanoweave carpet (bluer)"
@@ -28546,7 +28409,6 @@
 /obj/machinery/door/airlock/ship/maintenance{
 	req_one_access_txt = "7;12;29;47;55"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/science/central)
 "toW" = (
@@ -28763,7 +28625,6 @@
 	id_tag = "cabin8";
 	name = "Cabin 8"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/wood,
 /area/crew_quarters/dorms)
 "twL" = (
@@ -28815,7 +28676,6 @@
 	req_one_access_txt = "3;12;19;69;72"
 	},
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/nsv/bridge)
 "tyD" = (
@@ -28862,7 +28722,6 @@
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 1
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plasteel/showroomfloor,
 /area/crew_quarters/heads/captain/private)
 "tBl" = (
@@ -29277,7 +29136,6 @@
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/door/airlock/ship/public/glass/turbolift,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/shuttle/turbolift/tertiary)
 "tTd" = (
@@ -29371,7 +29229,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "5-9"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/wood,
 /area/crew_quarters/dorms)
 "tWI" = (
@@ -29402,7 +29259,6 @@
 	},
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/science/central)
 "tXj" = (
@@ -29847,7 +29703,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/engine,
 /area/nsv/atc)
 "uno" = (
@@ -30127,7 +29982,6 @@
 /obj/structure/cable/white{
 	icon_state = "6-8"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/engine,
 /area/bridge)
 "uBM" = (
@@ -30323,7 +30177,6 @@
 	name = "AI Core Upload Chamber";
 	req_one_access_txt = "16"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/engine,
 /area/ai_monitored/nuke_storage)
 "uLJ" = (
@@ -30393,7 +30246,6 @@
 	req_one_access_txt = "63"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/red_carpet,
 /area/security/checkpoint/science/research)
 "uPh" = (
@@ -30587,7 +30439,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/crew_quarters/heads/hor)
 "uVP" = (
@@ -30813,7 +30664,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/crew_quarters/heads/captain/private)
 "vdZ" = (
@@ -30966,7 +30816,6 @@
 	req_one_access_txt = "26"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/maintenance/nsv/hangar)
 "vlx" = (
@@ -31421,7 +31270,6 @@
 	name = "Artifact Research";
 	req_one_access_txt = "7;47"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/purple_carpet,
 /area/science/research)
 "vCZ" = (
@@ -31437,7 +31285,6 @@
 	id_tag = "cabin5";
 	name = "Cabin 5"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/wood,
 /area/crew_quarters/dorms)
 "vDm" = (
@@ -31501,7 +31348,6 @@
 	name = "AI Core Upload Chamber";
 	req_one_access_txt = "16"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/ai_monitored/turret_protected/aisat_interior)
 "vGa" = (
@@ -31873,7 +31719,6 @@
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
-/obj/effect/landmark/zebra_interlock_point,
 /obj/machinery/door/airlock/ship/public/glass{
 	name = "Dormitories"
 	},
@@ -31940,7 +31785,6 @@
 /obj/machinery/door/airlock/ship/maintenance{
 	req_one_access_txt = "12"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "vWs" = (
@@ -32232,7 +32076,6 @@
 	name = "Maintenance Access Disposals";
 	req_one_access_txt = "31"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/disposal)
 "whM" = (
@@ -32314,7 +32157,6 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /obj/structure/cable/yellow{
 	icon_state = "6-9"
 	},
@@ -32493,7 +32335,6 @@
 /obj/structure/cable/pink{
 	icon_state = "4-8"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/engine,
 /area/nsv/weapons/starboard)
 "wqW" = (
@@ -32809,7 +32650,6 @@
 	dir = 4;
 	id = "aethermunitions"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/engine,
 /area/nsv/weapons/fore)
 "wED" = (
@@ -32824,7 +32664,6 @@
 /obj/machinery/door/airlock/ship/public{
 	name = "Shower"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/toilet/auxiliary)
 "wEG" = (
@@ -32972,7 +32811,6 @@
 /obj/machinery/door/airlock/ship/maintenance{
 	req_one_access_txt = "12"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/science/central)
 "wJI" = (
@@ -33001,7 +32839,6 @@
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/science/mixing)
 "wKz" = (
@@ -33177,7 +33014,6 @@
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/engine/engineering/reactor_control)
 "wPI" = (
@@ -33642,7 +33478,6 @@
 /obj/machinery/door/airlock/ship/public/glass{
 	name = "Central Primary Hallway"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/bridge/meeting_room/council)
 "xdA" = (
@@ -33822,7 +33657,6 @@
 	name = "Maintenance Access Pool Area";
 	req_one_access_txt = "12;46"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "xil" = (
@@ -33908,7 +33742,6 @@
 	id_tag = "cabin6";
 	name = "Cabin 6"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/wood,
 /area/crew_quarters/dorms)
 "xlr" = (
@@ -33964,7 +33797,6 @@
 /obj/machinery/door/airlock/ship/maintenance{
 	req_one_access_txt = "12"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "xnt" = (
@@ -34063,7 +33895,6 @@
 	name = "Server Room";
 	req_one_access_txt = "7;47"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship/purple_carpet,
 /area/science/server)
 "xsN" = (
@@ -34155,7 +33986,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "xvB" = (
@@ -34498,7 +34328,6 @@
 	id = "deck2_bridge";
 	next_id = "deck2_councilchamber2"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/blue,
 /area/bridge)
 "xJT" = (
@@ -34545,13 +34374,18 @@
 /area/bridge/showroom/corporate)
 "xKy" = (
 /obj/structure/table/glass,
-/obj/item/clothing/ears/earmuffs,
-/obj/item/radio/off{
-	pixel_x = -7
-	},
 /obj/machinery/computer/security/telescreen{
 	network = list("ss13");
 	pixel_x = -30
+	},
+/obj/item/folder/yellow{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/folder/blue,
+/obj/item/clothing/ears/earmuffs,
+/obj/item/radio/off{
+	pixel_x = -7
 	},
 /turf/open/floor/carpet/blue,
 /area/bridge)
@@ -34886,7 +34720,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/engine,
 /area/nsv/hanger/storage)
 "xRR" = (
@@ -35244,7 +35077,6 @@
 "yfW" = (
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/south,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/blue,
 /area/bridge)
 "ygf" = (
@@ -35314,7 +35146,6 @@
 	name = "Battle Bridge";
 	req_access_txt = "19"
 	},
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/carpet/ship,
 /area/bridge/secondary)
 "yhd" = (
@@ -35413,7 +35244,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/nsv/weapons/starboard)
 "ylv" = (
