@@ -21,14 +21,14 @@ SUBSYSTEM_DEF(job)
 	//NSV13 - rearranged CoC, renamed HoP to XO, added MAA
 	// Cap > XO > HoS > MAA > CE > CMO > RD
 	var/list/chain_of_command = list(
-		"Captain" = 1,				//Not used yet but captain is first in chain_of_command
-		"Executive Officer" = 2,	//NSV13 - renamed HoP to XO
-		"Head of Security" = 3,
-		"Master At Arms" = 4,
-		"Chief Engineer" = 5,
-		"Chief Medical Officer" = 6,
-		"Research Director" = 7,
-		"Bridge Staff" = 8)
+		(JOB_NAME_CAPTAIN) = 1,				//Not used yet but captain is first in chain_of_command
+		(JOB_NAME_HEADOFPERSONNEL) = 2,	//NSV13 - renamed HoP to XO
+		(JOB_NAME_HEADOFSECURITY) = 3,
+		(JOB_NAME_MASTERATARMS) = 4,
+		(JOB_NAME_CHIEFENGINEER) = 5,
+		(JOB_NAME_CHIEFMEDICALOFFICER) = 6,
+		(JOB_NAME_RESEARCHDIRECTOR) = 7,
+		(JOB_NAME_BRIDGESTAFF) = 8)
 
 	//Crew Objective stuff
 	var/list/crew_obj_list = list()
@@ -245,7 +245,7 @@ SUBSYSTEM_DEF(job)
 
 /datum/controller/subsystem/job/proc/FillAIPosition()
 	var/ai_selected = 0
-	var/datum/job/job = GetJob("AI")
+	var/datum/job/job = GetJob(JOB_NAME_AI)
 	if(!job)
 		return 0
 	for(var/i = job.total_positions, i > 0, i--)
@@ -254,7 +254,7 @@ SUBSYSTEM_DEF(job)
 			candidates = FindOccupationCandidates(job, level)
 			if(candidates.len)
 				var/mob/dead/new_player/candidate = pick(candidates)
-				if(AssignRole(candidate, "AI"))
+				if(AssignRole(candidate, JOB_NAME_AI))
 					ai_selected++
 					break
 	if(ai_selected)
@@ -347,10 +347,10 @@ SUBSYSTEM_DEF(job)
 
 	//NSV13 - fill some other high priority jobs
 	JobDebug("DO, Running Critical Jobs Check")
-	FillPosition("Station Engineer")
-	FillPosition("Munitions Technician")
-	FillPosition("Bridge Staff")
-	FillPosition("Shaft Miner")
+	FillPosition(JOB_NAME_STATIONENGINEER)
+	FillPosition(JOB_NAME_MUNITIONSTECHNICIAN)
+	FillPosition(JOB_NAME_BRIDGESTAFF)
+	FillPosition(JOB_NAME_SHAFTMINER)
 	JobDebug("DO, Critical Jobs Check end")
 
 	//Other jobs are now checked
@@ -560,7 +560,7 @@ SUBSYSTEM_DEF(job)
 		return C.holder.auto_deadmin()
 
 /datum/controller/subsystem/job/proc/setup_officer_positions()
-	var/datum/job/J = SSjob.GetJob("Military Police") //Nsv13 - Crayon eaters & MPs
+	var/datum/job/J = SSjob.GetJob(JOB_NAME_SECURITYOFFICER) //Nsv13 - Crayon eaters & MPs
 	if(!J)
 		CRASH("setup_officer_positions(): Security officer job is missing")
 
@@ -586,11 +586,11 @@ SUBSYSTEM_DEF(job)
 
 
 /datum/controller/subsystem/job/proc/LoadJobs()
-	var/jobstext = rustg_file_read("[global.config.directory]/jobs.txt")
+	var/jobstext = "\n[rustg_file_read("[global.config.directory]/jobs.txt")]" // Leading newline so every title can be matched at a line start
 	for(var/datum/job/J in occupations)
 		if(J.flag == GIMMICK || J.gimmick) //gimmick job slots are dependant on random maint
 			continue
-		var/regex/jobs = new("[J.title]=(-1|\\d+),(-1|\\d+)")
+		var/regex/jobs = new("\n[J.title]=(-1|\\d+),(-1|\\d+)") // Anchored to a line start, otherwise a title that ends another title (Inżynier / Główny Inżynier) matches the wrong line
 		if(jobs.Find(jobstext))
 			J.total_positions = text2num(jobs.group[1])
 			J.spawn_positions = text2num(jobs.group[2])

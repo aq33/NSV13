@@ -2300,7 +2300,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A deadly energy saw. Comes in a slick black finish."
 	cost = 5
 	item = /obj/item/melee/transforming/energy/sword/esaw
-	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Paramedic", "Brig Physician")
+	restricted_roles = list(JOB_NAME_MEDICALDOCTOR, JOB_NAME_CHIEFMEDICALOFFICER, JOB_NAME_PARAMEDIC, JOB_NAME_BRIGPHYSICIAN)
 
 /datum/uplink_item/role_restricted/esaw_arm
 	name = "Energy Saw Arm Implant"
@@ -2360,7 +2360,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A plasma cored control rod designed for sabotaging Stormdrive reactors."
 	cost = 10
 	item = /obj/item/control_rod/plasma
-	restricted_roles = list("Chief Engineer", "Station Engineer", "Atmospheric Technician")
+	restricted_roles = list(JOB_NAME_CHIEFENGINEER, JOB_NAME_STATIONENGINEER, JOB_NAME_ATMOSPHERICTECHNICIAN)
 
 // Pointless
 /datum/uplink_item/badass

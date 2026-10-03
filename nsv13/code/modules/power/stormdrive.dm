@@ -127,7 +127,7 @@ Control Rods
 	var/rod_integrity = 100 //Control rods take damage over time
 	var/obj/item/radio/radio //For engineering alerts.
 	var/radio_key = /obj/item/encryptionkey/headset_eng
-	var/engineering_channel = "Engineering"
+	var/engineering_channel = RADIO_CHANNEL_ENGINEERING
 	var/can_alert = TRUE //Prevents spamming up the radio channels.
 	var/alert_cooldown = 20 SECONDS
 	var/last_power_produced = 0 //For UI tracking. Shows your power output.
@@ -173,7 +173,7 @@ Control Rods
 
 /obj/machinery/atmospherics/components/binary/stormdrive_reactor/syndicate
 	radio_key = /obj/item/encryptionkey/syndicate
-	engineering_channel = "Syndicate"
+	engineering_channel = RADIO_CHANNEL_SYNDICATE
 
 /obj/machinery/atmospherics/components/binary/stormdrive_reactor/solgov
 	name = "class V ionic storm drive"
@@ -1240,7 +1240,7 @@ Control Rods
 		if(C)
 			if(CONFIG_GET(flag/allow_crew_objectives))
 				var/mob/M = C.mob
-				if(M?.mind?.current && LAZYLEN(M.mind.crew_objectives) && (M.job == "Station Engineer" || M.job == "Chief Engineer" || M.job == "Atmospheric Technician"))
+				if(M?.mind?.current && LAZYLEN(M.mind.crew_objectives) && (M.job == JOB_NAME_STATIONENGINEER || M.job == JOB_NAME_CHIEFENGINEER || M.job == JOB_NAME_ATMOSPHERICTECHNICIAN))
 					for(var/datum/objective/crew/meltdown/MO in M.mind.crew_objectives)
 						MO.meltdown = TRUE
 

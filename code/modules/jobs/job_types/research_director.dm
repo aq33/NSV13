@@ -4,7 +4,7 @@
 	auto_deadmin_role_flags = PREFTOGGLE_DEADMIN_POSITION_HEAD
 	department_head = list(JOB_NAME_CAPTAIN)
 	department_flag = MEDSCI
-	head_announce = list("Science")
+	head_announce = list(RADIO_CHANNEL_SCIENCE)
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1

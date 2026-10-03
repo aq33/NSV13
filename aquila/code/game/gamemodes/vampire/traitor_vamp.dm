@@ -3,7 +3,7 @@
 	config_tag = "traitorvamp"
 	false_report_weight = 10
 	traitors_possible = 3 //hard limit on traitors if scaling is turned off
-	restricted_jobs = list("AI", "Cyborg")
+	restricted_jobs = list(JOB_NAME_AI, JOB_NAME_CYBORG)
 	required_players = 25
 	required_enemies = 1	// how many of each type are required
 	recommended_enemies = 3
@@ -33,9 +33,9 @@
 		restricted_jobs += "Assistant"
 
 	//yay lets add chaplain here so he cant be the vampire in traitor+vamps
-	restricted_jobs += "Chaplain"
+	restricted_jobs += JOB_NAME_CHAPLAIN
 	var/list/datum/mind/possible_vamps = get_players_for_role(ROLE_VAMPIRE)
-	restricted_jobs -= "Chaplain"
+	restricted_jobs -= JOB_NAME_CHAPLAIN
 
 	var/num_vamp = 1
 

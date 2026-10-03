@@ -15,6 +15,15 @@
 
 	AddComponent(/datum/component/connect_loc_behalf, parent, swarming_loc_connections)
 
+/datum/component/swarming/Destroy()
+	// Swarm mates hold references to us in their swarm_members, drop them or we hard delete
+	for(var/datum/component/swarming/other_swarm as anything in swarm_members)
+		other_swarm.swarm_members -= src
+		if(!length(other_swarm.swarm_members))
+			other_swarm.unswarm()
+	swarm_members = null
+	return ..()
+
 /datum/component/swarming/proc/join_swarm(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	SIGNAL_HANDLER
 

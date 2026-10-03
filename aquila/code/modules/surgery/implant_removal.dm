@@ -1,5 +1,6 @@
 /datum/surgery_step/extract_implant/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(I)
+		I.removed(target)
 		if (QDELETED(I)) // yogs: properly handle self-deleting implants
 			display_results(user, target, "<span class='notice'>You remove [I] from [target]'s [target_zone], destroying it in the process!</span>",
 				"[user] removes [I] from [target]'s [target_zone], destroying it in the process!",
@@ -23,3 +24,6 @@
 					"[user] places it into [case]!")
 			else
 				qdel(I)
+	else
+		to_chat(user, "<span class='warning'>You can't find anything in [target]'s [target_zone]!</span>")
+	return TRUE

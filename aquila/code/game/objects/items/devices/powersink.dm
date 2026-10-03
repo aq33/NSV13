@@ -15,8 +15,8 @@ GLOBAL_VAR_INIT(powersink_transmitted, 0)
 
 		// found a powernet, so drain up to max power from it
 
-		var/drained = min ( drain_rate, PN.avail )
-		PN.load += drained
+		var/drained = min ( drain_rate, attached.newavail() )
+		attached.add_delayedload(drained) // load added outside the power tick must be delayed or the powernet reset discards it
 		power_drained += drained
 		on_drain(drained)
 
@@ -60,7 +60,7 @@ GLOBAL_VAR_INIT(powersink_transmitted, 0)
 /obj/item/powersink/infiltrator/on_drain(drained)
 	GLOB.powersink_transmitted += drained
 	if(GLOB.powersink_transmitted >= target && !target_reached)
-		alert_radio.talk_into(src, "Power objective reached.", "Syndicate")
+		alert_radio.talk_into(src, "Power objective reached.", RADIO_CHANNEL_SYNDICATE)
 		visible_message("<span class='notice'>[src] beeps.</span>")
 		playsound('sound/machines/ping.ogg', 50, 1)
 		target_reached = TRUE

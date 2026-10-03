@@ -147,9 +147,12 @@
 	. = ..()
 	if(d_state == INTACT)
 		realappearence.icon_state = "clockwork_wall"
-		smooth = SMOOTH_TRUE
-		queue_smooth_neighbors(src)
-		queue_smooth(src)
+		// Only re-smooth when the wall becomes smoothable again (repaired). NSV13 legacy wall smoothing calls
+		// update_icon() itself, so re-queueing unconditionally made every clockwork wall smooth forever.
+		if(!(smooth & SMOOTH_TRUE))
+			smooth = SMOOTH_TRUE
+			queue_smooth_neighbors(src)
+			queue_smooth(src)
 	else
 		realappearence.icon_state = "clockwork_wall-[d_state]"
 		smooth = SMOOTH_FALSE
