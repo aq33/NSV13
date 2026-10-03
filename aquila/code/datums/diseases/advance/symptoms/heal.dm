@@ -52,7 +52,10 @@
 	M.adjustToxLoss(-heal_amount, forced = TRUE) // forced, or toxin-loving species would be poisoned instead
 	return TRUE
 
-// Ghost role spawner. Comes from overclocked Pituitary Disruption loot, xenobiology deliveries and mail. For ling teratomas see changeling/teratoma.dm
+/// At most one living tumor ghost alert per this much time, from any source
+#define TERATOMA_GHOST_NOTIFY_COOLDOWN (150 SECONDS)
+
+// Ghost role spawner. Comes from overclocked Pituitary Disruption loot, xenobiology deliveries, mail and the Living Tumor event (events/teratoma.dm). For ling teratomas see changeling/teratoma.dm
 /obj/effect/mob_spawn/teratomamonkey //spawning these is one of the downsides of overclocking the symptom
 	name = "fleshy mass"
 	desc = "A writhing mass of flesh."
@@ -71,11 +74,18 @@
 	short_desc = "You are a living tumor. By all accounts you should not exist."
 	flavour_text = "Spread misery and chaos upon the station."
 	important_info = "Avoid killing unprovoked, kill only in self defense!"
+	banType = ROLE_TERATOMA // also covers players banned from all antagonist roles
+	/// Shared by every fleshy mass, so a virology farm cannot flood the ghosts with alerts
+	COOLDOWN_STATIC_DECLARE(ghost_notify_cooldown)
+	/// Whether this spawner alerted the ghosts. During the cooldown it still works and shows up in the spawner menu, it just stays quiet
+	var/ghosts_notified = FALSE
 
 /obj/effect/mob_spawn/teratomamonkey/Initialize(mapload)
 	. = ..()
 	var/area/A = get_area(src)
-	if(A)
+	if(A && COOLDOWN_FINISHED(src, ghost_notify_cooldown))
+		COOLDOWN_START(src, ghost_notify_cooldown, TERATOMA_GHOST_NOTIFY_COOLDOWN)
+		ghosts_notified = TRUE
 		notify_ghosts("A living tumor has been born in [A.name].", 'sound/effects/splat.ogg', source = src, action = NOTIFY_ATTACK, flashwindow = FALSE)
 
 /obj/effect/mob_spawn/teratomamonkey/attack_hand(mob/living/user)
@@ -96,8 +106,15 @@
 		return
 	return ..()
 
+// The tumor these spawners make is a side antagonist: a living one must not keep the round going or block a mode conversion
+/datum/antagonist/teratoma/hugbox
+	delay_roundend = FALSE
+	prevent_roundtype_conversion = FALSE
+
 // Overclocked Pituitary Disruption can drop a teratoma monkey again, as before BeeStation#7421
 /obj/effect/spawner/lootdrop/teratoma/major/Initialize(mapload)
 	if(type == /obj/effect/spawner/lootdrop/teratoma/major) // the clown subtype has its own loot
 		loot[/obj/effect/mob_spawn/teratomamonkey] = 1
 	return ..()
+
+#undef TERATOMA_GHOST_NOTIFY_COOLDOWN

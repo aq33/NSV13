@@ -181,6 +181,7 @@
 #include "code\modules\events\infiltrators.dm"
 #include "code\modules\events\shit_storm.dm"
 #include "code\modules\events\sinfuldemon.dm"
+#include "code\modules\events\teratoma.dm"
 #include "code\modules\food_and_drinks\drinks\drinks.dm"
 #include "code\modules\food_and_drinks\food\snacks_pie.dm"
 #include "code\modules\food_and_drinks\recipes\drinks_recipes.dm"
@@ -309,4 +310,5 @@
 #ifdef UNIT_TESTS
 #include "code\modules\unit_tests\aquila_viruses.dm"
 #include "code\modules\unit_tests\bluespace_locker.dm"
+#include "code\modules\unit_tests\teratoma_event.dm"
 #endif
