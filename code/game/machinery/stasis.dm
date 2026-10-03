@@ -32,7 +32,7 @@
 /obj/machinery/stasis/Destroy()
 	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(dir_changed))
 	. = ..()
-	if(op_computer.sbed == src)
+	if(op_computer && op_computer.sbed == src) //AQ EDIT - null guard (was dropped by #233); qdel of an unlinked stasis bed runtimed
 		op_computer.sbed = null
 
 /obj/machinery/stasis/examine(mob/user)

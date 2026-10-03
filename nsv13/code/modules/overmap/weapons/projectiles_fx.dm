@@ -281,7 +281,7 @@ Misc projectile types, effects, think of this as the special FX file.
 		L.flash_act(affect_silicon = TRUE)
 	var/list/throwat_turfs = RANGE_TURFS(6, detonation_turf) - RANGE_TURFS(5, detonation_turf)
 	var/list/plushtypes = subtypesof(/obj/item/toy/plush)
-	for(var/i = 1; i<= 8, i++)
+	for(var/i = 1; i<= 8; i++)
 		var/plushpath = pick(plushtypes)
 		var/obj/item/toy/plush/plushie = new plushpath(detonation_turf)
 		plushie.throw_at(pick(throwat_turfs), 7, 2, spin = TRUE)
@@ -305,6 +305,41 @@ Misc projectile types, effects, think of this as the special FX file.
 /obj/item/projectile/bullet/railgun_slug/process_homing()
 	. = ..()
 	homing = FALSE
+
+/obj/item/projectile/bullet/railgun_forged //The properties of this projectile will be generated on each instance of it being fired
+	icon_state = "mac"
+	name = "railgun slug"
+	icon = 'nsv13/icons/obj/projectiles_nsv.dmi'
+	damage = 1
+	speed = 1
+	armour_penetration = 1
+	flag = "overmap_heavy"
+	impact_effect_type = /obj/effect/temp_visual/impact_effect/torpedo
+	//effect vars passed from ammunition object
+	var/burn = 0
+	var/emp = 0
+
+
+/obj/item/projectile/bullet/railgun_forged/spec_overmap_hit(obj/structure/overmap/target) //Lifted and combined from torp code
+	if(length(target.occupying_levels))
+		return
+	if(burn) //Are we going to burn overmap objects?
+		if(target.ai_controlled || istype(target, /obj/structure/overmap/small_craft))
+			target.hullburn += burn
+			target.hullburn_power = max(target.hullburn_power, 6)
+
+	if(emp) //Are we going to EMP?
+		if(target.ai_controlled)
+			if(target.disruption <= (emp * 2))
+				target.disruption = min(target.disruption + emp, (emp * 2))
+			return
+
+		if(istype(target, /obj/structure/overmap/small_craft))
+			target.disruption += 25
+			return
+
+		target.add_sensor_profile_penalty(150, 10 SECONDS)
+
 
 /obj/item/projectile/bullet/gauss_slug
 	icon_state = "gaussgun"
@@ -379,14 +414,22 @@ Misc projectile types, effects, think of this as the special FX file.
 	if(isovermap(target)) //Were we to explode on an actual overmap, this would oneshot the ship as it's a powerful explosion.
 		return BULLET_ACT_HIT
 	var/obj/item/projectile/P = target //This is hacky, refactor check_faction to unify both of these. I'm bodging it for now.
+
+	//We don't even reach this case, looks like this is usually just done in guided_munition/entered :(
 	if(isprojectile(target) && P.faction != faction && !P.nodamage) //Because we could be in the same faction and collide with another bullet. Let's not blow ourselves up ok?
 		if(obj_integrity <= P.damage) //Tank the hit, take some damage
-			qdel(P)
+			if((P.projectile_piercing & PASSCLOSEDTURF) && P.obj_integrity > damage) //Check for arbitrary pass flag that makes senseish.
+				P.obj_integrity -= damage
+			else
+				qdel(P)
 			explode()
 			return BULLET_ACT_HIT
 		else
+			if((P.projectile_piercing & PASSCLOSEDTURF) && P.obj_integrity > damage) //Check for arbitrary pass flag that makes senseish.
+				P.obj_integrity -= damage
+			else
+				qdel(P)
 			take_damage(P.damage)
-			qdel(P)
 			return FALSE //Didn't take the hit
 	if(!isprojectile(target)) //This is lazy as shit but is necessary to prevent explosions triggering on the overmap when two bullets collide. Fix this shit please.
 		if(isliving(target))
@@ -398,9 +441,13 @@ Misc projectile types, effects, think of this as the special FX file.
 		return FALSE
 	return BULLET_ACT_HIT
 
+//OVERRIDE.
 /obj/item/projectile/guided_munition/bullet_act(obj/item/projectile/P)
-	. = ..()
 	on_hit(P)
+	if((P.projectile_piercing & PASSCLOSEDTURF) && P.obj_integrity > 0)
+		. = BULLET_ACT_FORCE_PIERCE
+	else
+		. = BULLET_ACT_HIT
 
 /obj/item/projectile/guided_munition/proc/detonate(atom/target)
 	explosion(target, 2, 4, 4)
@@ -448,6 +495,12 @@ Misc projectile types, effects, think of this as the special FX file.
 /obj/item/projectile/guided_munition/torpedo/shredder/ai //AI Ship usage
 	obj_integrity = 40
 	max_integrity = 40
+	icon_state = "torpedo_shredder"
+
+/obj/item/projectile/guided_munition/torpedo/shredder/ai/vnc
+	damage = 300
+	armour_penetration = 20
+	icon_state = "torpedo_shredder_vn"
 
 /obj/item/projectile/guided_munition/torpedo/decoy
 	icon_state = "torpedo"

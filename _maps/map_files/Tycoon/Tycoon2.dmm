@@ -39045,6 +39045,13 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/engine/atmos)
+"duE" = (
+/obj/structure/sign/ship/pods/north{
+	pixel_y = 1;
+	pixel_x = 32
+	},
+/turf/open/floor/monotile/steel,
+/area/medical)
 "dwf" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -39564,6 +39571,13 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plating,
 /area/engine/engineering/hangar)
+"eiW" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/plasteel/grid/steel,
+/area/quartermaster/storage)
 "eiX" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
@@ -46717,7 +46731,6 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/engine/engineering/reactor_core)
-<<<<<<< HEAD
 "mZu" = (
 /obj/docking_port/stationary{
 	dheight = 1;
@@ -46729,18 +46742,6 @@
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
-"naO" = (
-/obj/machinery/firealarm{
-	pixel_y = 24
-=======
-"naa" = (
-/obj/structure/sign/ship/pods/north{
-	pixel_y = 1;
-	pixel_x = 32
->>>>>>> d5afbe889c2a66d8b6dfa657907f1bd1323f7299
-	},
-/turf/open/floor/monotile/steel,
-/area/medical)
 "naO" = (
 /obj/machinery/camera/autoname,
 /obj/item/ship_weapon/ammunition/naval_artillery,
@@ -46756,7 +46757,6 @@
 /obj/item/ship_weapon/ammunition/naval_artillery,
 /turf/open/floor/durasteel/techfloor,
 /area/nsv/weapons/fore)
-<<<<<<< HEAD
 "nbp" = (
 /obj/docking_port/stationary{
 	dheight = 1;
@@ -46768,15 +46768,6 @@
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
-=======
-"nbG" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/machinery/light/floor,
-/turf/open/floor/plasteel/grid/steel,
-/area/quartermaster/storage)
->>>>>>> d5afbe889c2a66d8b6dfa657907f1bd1323f7299
 "nbH" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/closet/crate,
@@ -80574,7 +80565,7 @@ rsC
 aZX
 kSo
 aZX
-naa
+duE
 aiY
 aUe
 aUe
@@ -92939,7 +92930,7 @@ buw
 boE
 boE
 bqU
-nbG
+eiW
 boE
 boE
 boE

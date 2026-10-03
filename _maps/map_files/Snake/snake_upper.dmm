@@ -1871,6 +1871,10 @@
 /obj/effect/turf_decal/tile/ship/purple,
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
+"kP" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/turf/open/floor/plasteel/ridged/steel,
+/area/engine/armour_pump)
 "kU" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -7183,11 +7187,6 @@
 	dir = 1
 	},
 /area/ai_monitored/security/armory)
-"Pa" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/turf/open/floor/plasteel/ridged/steel,
-<<<<<<< HEAD
-/area/maintenance/department/engine)
 "Pb" = (
 /obj/docking_port/stationary{
 	dheight = 1;
@@ -7199,9 +7198,6 @@
 	},
 /turf/open/openspace/airless,
 /area/space/nearstation)
-=======
-/area/engine/armour_pump)
->>>>>>> d5afbe889c2a66d8b6dfa657907f1bd1323f7299
 "Pc" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -31227,7 +31223,7 @@ PK
 Dk
 aC
 Qw
-Pa
+kP
 CT
 XR
 eC

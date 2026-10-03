@@ -207,6 +207,9 @@ MAX_POP TRAITOR -1
 ## NSV13 - minimum number of ready players to enable traitor objectives where murder is reasonable/expected
 MIN_POP_KILL_OBJECTIVES 11
 
+## NSV13 - minimum pop of ready players if preround, or total joins if midround, for AIs to be able to become a traitor in that game mode
+AI_TRAITOR_MIN_PLAYERS 20
+
 MIN_POP TRAITORBRO 10
 MAX_POP TRAITORBRO -1
 
@@ -582,8 +585,8 @@ ROUNDSTART_RACES apid
 ## Uncomment to give players the choice of joining as a human with mutant bodyparts before they join the game
 JOIN_WITH_MUTANT_HUMANS
 
-##Overflow job. Default is Midshipman
-OVERFLOW_JOB Midshipman
+##Overflow job. Default is Midshipman (Aquila: renamed to "Majtek", see JOB_NAME_ASSISTANT)
+OVERFLOW_JOB Majtek
 
 ## Overflow slot cap. Set to -1 for unlimited. If limited, it will still open up if every other job is full.
 OVERFLOW_CAP -1
