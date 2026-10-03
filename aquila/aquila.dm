@@ -61,6 +61,7 @@
 #include "code\game\gamemodes\infiltration\infiltration.dm"
 #include "code\game\gamemodes\monkey\monkey.dm"
 #include "code\game\gamemodes\objective.dm"
+#include "code\game\gamemodes\objective_break_machinery.dm"
 #include "code\game\gamemodes\objective_items.dm"
 #include "code\game\gamemodes\vampire\grave_fever.dm"
 #include "code\game\gamemodes\vampire\traitor_vamp.dm"
@@ -311,6 +312,7 @@
 #ifdef UNIT_TESTS
 #include "code\modules\unit_tests\aquila_viruses.dm"
 #include "code\modules\unit_tests\bluespace_locker.dm"
+#include "code\modules\unit_tests\break_machinery.dm"
 #include "code\modules\unit_tests\revenant.dm"
 #include "code\modules\unit_tests\teratoma_event.dm"
 #endif
