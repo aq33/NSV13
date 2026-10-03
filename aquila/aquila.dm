@@ -300,6 +300,7 @@
 #include "code\modules\spells\spell_types\touch_attacks.dm"
 #include "code\modules\spells\spell_types\inflict_handler.dm"
 #include "code\modules\surgery\bodyparts\bodyparts.dm"
+#include "code\modules\surgery\ear_surgery.dm"
 #include "code\modules\surgery\gender_reassignment.dm"
 #include "code\modules\surgery\implant_removal.dm"
 #include "code\modules\uplink\uplink_devices.dm"
@@ -313,6 +314,7 @@
 #include "code\modules\unit_tests\aquila_viruses.dm"
 #include "code\modules\unit_tests\bluespace_locker.dm"
 #include "code\modules\unit_tests\break_machinery.dm"
+#include "code\modules\unit_tests\ear_surgery.dm"
 #include "code\modules\unit_tests\revenant.dm"
 #include "code\modules\unit_tests\teratoma_event.dm"
 #endif
