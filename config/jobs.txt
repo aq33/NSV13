@@ -6,7 +6,7 @@ Kapitan=1,1
 Starszy Oficer=1,1
 Komendant=1,1
 Główny Inżynier=1,1
-Dyrektor Naukowr=1,1
+Dyrektor Naukowy=1,1
 Ordynator=1,1
 Mistrz Broni=1,1
 
@@ -28,7 +28,7 @@ Woźny=2,2
 
 Klaun=1,1
 Mim=1,1
-Kurator=1,1
+Bibliotekarz=1,1
 Prawnik=1,1
 
 Kapłan=1,1

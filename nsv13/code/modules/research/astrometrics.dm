@@ -22,7 +22,7 @@ you build.
 	var/datum/techweb/linked_techweb = null
 	var/obj/item/radio/radio //For engineering alerts.
 	var/radio_key = /obj/item/encryptionkey/headset_sci
-	var/channel = "Science"
+	var/channel = RADIO_CHANNEL_SCIENCE
 	var/broadcast = TRUE
 
 /obj/machinery/computer/ship/navigation/astrometrics/Initialize(mapload)

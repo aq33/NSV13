@@ -3,11 +3,11 @@ GLOBAL_LIST_INIT(pecking_order, world.file2list("config/ranks/pecking_order.txt"
 //For code/controllers/subsystem/job.dm
 /datum/controller/subsystem/job/proc/LoadRanks(rankfile="config/ranks/royal_navy.txt")
 	if (fexists("[rankfile]"))
-		var/rankstext = file2text("[rankfile]")
+		var/rankstext = "\n[file2text("[rankfile]")]" // Leading newline so every title can be matched at a line start
 
 		var/list/missed = list()
 		for(var/datum/job/J in occupations)
-			var/regex/jobs = new("[J.title]=(.+)")
+			var/regex/jobs = new("\n[J.title]=(.+)") // Anchored to a line start, otherwise a title that ends another title (Inżynier / Główny Inżynier) matches the wrong line
 			jobs.Find(rankstext)
 			stoplag() //In case someone gives us a really huge file
 

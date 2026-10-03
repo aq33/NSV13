@@ -33,7 +33,7 @@
 	var/charge_rate = 1 // how much charge is given by each pylon per second
 	var/obj/item/radio/radio //For engineering alerts.
 	var/radio_key = /obj/item/encryptionkey/headset_eng
-	var/radio_channel = "Engineering"
+	var/radio_channel = RADIO_CHANNEL_ENGINEERING
 	var/max_range = 30000
 	var/jump_speed_factor = 1.5 //How quickly do we jump? Larger is faster.
 	var/jump_speed_pylon = 1 // Adds this value onto jump_speed_factor for every active pylon
@@ -232,14 +232,14 @@ Preset classes of FTL drive with pre-programmed behaviours
 /obj/machinery/computer/ship/ftl_core/syndicate
 	name = "syndicate FTL core"
 	radio_key = /obj/item/encryptionkey/syndicate
-	radio_channel = "Syndicate"
+	radio_channel = RADIO_CHANNEL_SYNDICATE
 	faction = "syndicate"
 	req_access = list(ACCESS_SYNDICATE)
 
 /obj/machinery/computer/ship/ftl_core/mining
 	name = "mining FTL core"
 	radio_key = /obj/item/encryptionkey/headset_mining
-	radio_channel = "Supply"
+	radio_channel = RADIO_CHANNEL_SUPPLY
 	req_access = null
 	req_one_access_txt = "31;48"
 

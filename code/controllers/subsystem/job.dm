@@ -586,11 +586,11 @@ SUBSYSTEM_DEF(job)
 
 
 /datum/controller/subsystem/job/proc/LoadJobs()
-	var/jobstext = rustg_file_read("[global.config.directory]/jobs.txt")
+	var/jobstext = "\n[rustg_file_read("[global.config.directory]/jobs.txt")]" // Leading newline so every title can be matched at a line start
 	for(var/datum/job/J in occupations)
 		if(J.flag == GIMMICK || J.gimmick) //gimmick job slots are dependant on random maint
 			continue
-		var/regex/jobs = new("[J.title]=(-1|\\d+),(-1|\\d+)")
+		var/regex/jobs = new("\n[J.title]=(-1|\\d+),(-1|\\d+)") // Anchored to a line start, otherwise a title that ends another title (Inżynier / Główny Inżynier) matches the wrong line
 		if(jobs.Find(jobstext))
 			J.total_positions = text2num(jobs.group[1])
 			J.spawn_positions = text2num(jobs.group[2])

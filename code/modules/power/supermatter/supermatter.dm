@@ -77,7 +77,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 
 	var/obj/item/radio/radio
 	var/radio_key = /obj/item/encryptionkey/headset_eng
-	var/engineering_channel = "Engineering"
+	var/engineering_channel = RADIO_CHANNEL_ENGINEERING
 	var/common_channel = null
 
 	//for logging
