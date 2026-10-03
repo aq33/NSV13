@@ -134,7 +134,7 @@
 	owner.current.faction += "hell"
 	for(var/all_traits in sinfuldemon_traits) ///adds demon traits
 		ADD_TRAIT(owner.current, all_traits, SINFULDEMON_TRAIT)
-	if(owner.assigned_role == "Clown" && ishuman(owner.current))
+	if(owner.assigned_role == JOB_NAME_CLOWN && ishuman(owner.current))
 		var/mob/living/carbon/human/S = owner.current
 		to_chat(S, "<span class='notice'Your infernal nature has allowed you to overcome your clownishness.</span>")
 		S.dna.remove_mutation(CLOWNMUT)

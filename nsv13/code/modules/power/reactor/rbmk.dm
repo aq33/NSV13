@@ -505,7 +505,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	for(var/client/C in GLOB.clients)
 		if(CONFIG_GET(flag/allow_crew_objectives))
 			var/mob/M = C.mob
-			if(M?.mind?.current && LAZYLEN(M.mind.crew_objectives) && (M.job == "Station Engineer" || M.job == "Chief Engineer" || M.job == "Atmospheric Technician"))
+			if(M?.mind?.current && LAZYLEN(M.mind.crew_objectives) && (M.job == JOB_NAME_STATIONENGINEER || M.job == JOB_NAME_CHIEFENGINEER || M.job == JOB_NAME_ATMOSPHERICTECHNICIAN))
 				for(var/datum/objective/crew/meltdown/MO in M.mind.crew_objectives)
 					MO.meltdown = TRUE
 

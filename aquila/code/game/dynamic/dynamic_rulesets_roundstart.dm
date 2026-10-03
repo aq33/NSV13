@@ -8,7 +8,7 @@
 	name = "Monkey"
 	role_preference = /datum/role_preference/antagonist/monkey
 	antag_datum = /datum/antagonist/monkey/leader
-	restricted_roles = list("Cyborg", "AI")
+	restricted_roles = list(JOB_NAME_CYBORG, JOB_NAME_AI)
 	required_candidates = 1
 	weight = 3
 	cost = 0
