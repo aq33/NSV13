@@ -33,6 +33,9 @@
 	CS.pref_species = new /datum/species/zombie
 	CS.be_random_body = TRUE
 	var/datum/job/J = SSjob.GetJob(zombiejob)
+	if(!J) // maps var-edit zombiejob with old English titles that no longer exist (localized or renamed jobs)
+		zombiejob = initial(zombiejob)
+		J = SSjob.GetJob(zombiejob)
 	var/datum/outfit/O
 	if(J.outfit)
 		O = new J.outfit
