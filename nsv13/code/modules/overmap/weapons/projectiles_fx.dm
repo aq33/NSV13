@@ -214,7 +214,7 @@ Misc projectile types, effects, think of this as the special FX file.
 		var/mob/living/L = target
 		if(L.client)
 			L.client.give_award(/datum/award/achievement/misc/torp_directhit, L)
-		if(L.mind && L.mind.assigned_role == "Clown")
+		if(L.mind && L.mind.assigned_role == JOB_NAME_CLOWN)
 			return (prob(50) ? 2 : -2)	//We all know clowns are cursed.
 		return 2
 

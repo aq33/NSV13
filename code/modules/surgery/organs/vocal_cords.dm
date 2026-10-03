@@ -164,7 +164,7 @@
 		if(user.mind.assigned_role == JOB_NAME_CHAPLAIN)
 			power_multiplier *= 2
 		//Curators are very good at speaking in other languages, but not as good as Chaplain with this one
-		if(user.mind.assigned_role == "Curator")
+		if(user.mind.assigned_role == JOB_NAME_CURATOR)
 			power_multiplier *= 1.5
 		//Why are you speaking
 		if(user.mind.assigned_role == JOB_NAME_MIME)

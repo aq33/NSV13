@@ -21,8 +21,8 @@
 	antag_datum = /datum/antagonist/vampire
 	role_preference = /datum/role_preference/antagonist/vampire
 	false_report_weight = 1
-	restricted_jobs = list("AI", "Cyborg")
-	protected_jobs = list("Head of Security", "Captain", "Security Officer", "Chaplain", "Detective", "Warden", "Head of Personnel")
+	restricted_jobs = list(JOB_NAME_AI, JOB_NAME_CYBORG)
+	protected_jobs = list(JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN, JOB_NAME_SECURITYOFFICER, JOB_NAME_CHAPLAIN, JOB_NAME_DETECTIVE, JOB_NAME_WARDEN, JOB_NAME_HEADOFPERSONNEL)
 	required_players = 15
 	required_enemies = 1
 	recommended_enemies = 3

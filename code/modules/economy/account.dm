@@ -1,4 +1,4 @@
-#define DEPARTMENT_LOCKED_JOBS list("VIP", "Captain", "Head of Security")
+#define DEPARTMENT_LOCKED_JOBS list(JOB_NAME_VIP, JOB_NAME_CAPTAIN, JOB_NAME_HEADOFSECURITY)
 #define DUMPTIME 3000
 
 /datum/bank_account

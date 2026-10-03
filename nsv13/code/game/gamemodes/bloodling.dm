@@ -5,7 +5,7 @@
 	role_preference = /datum/role_preference/antagonist/bloodling
 	antag_datum = /datum/antagonist/bloodling
 	false_report_weight = 10
-	restricted_jobs = list("AI", "Cyborg")
+	restricted_jobs = list(JOB_NAME_AI, JOB_NAME_CYBORG)
 	protected_jobs = list(JOB_NAME_SECURITYOFFICER, JOB_NAME_WARDEN, JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN, JOB_NAME_BRIGPHYSICIAN)
 	required_players = 20
 	required_enemies = 2 //Requires at LEAST 1 to play the master. Anything over 1 means how many thralls it should start with.
@@ -29,7 +29,7 @@
 		restricted_jobs += protected_jobs
 
 	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
-		restricted_jobs += "Midshipman" //Nsv13 - Crayon eaters
+		restricted_jobs += JOB_NAME_ASSISTANT //Nsv13 - Crayon eaters
 
 	if(CONFIG_GET(flag/protect_heads_from_antagonist))
 		restricted_jobs += GLOB.command_positions
