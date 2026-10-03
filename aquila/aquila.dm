@@ -316,5 +316,6 @@
 #ifdef UNIT_TESTS
 #include "code\modules\unit_tests\aquila_viruses.dm"
 #include "code\modules\unit_tests\bluespace_locker.dm"
+#include "code\modules\unit_tests\polish_content.dm"
 #include "code\modules\unit_tests\teratoma_event.dm"
 #endif
