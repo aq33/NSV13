@@ -98,6 +98,7 @@
 #include "code\game\objects\items\circuitboards\circuitboard.dm"
 #include "code\game\objects\items\circuitboards\machine_circuitboards.dm"
 #include "code\game\objects\items\clown_items.dm"
+#include "code\game\objects\items\dakimakuras.dm"
 #include "code\game\objects\items\granters.dm"
 #include "code\game\objects\items\devices\geiger_counter.dm"
 #include "code\game\objects\items\devices\glue.dm"
@@ -308,12 +309,14 @@
 #include "code\modules\vending\boozeomat.dm"
 #include "code\modules\vending\cola.dm"
 #include "code\modules\vending\security.dm"
+#include "code\modules\vending\toys.dm"
 #include "code\modules\vending\wardrobes.dm"
 
 #ifdef UNIT_TESTS
 #include "code\modules\unit_tests\aquila_viruses.dm"
 #include "code\modules\unit_tests\bluespace_locker.dm"
 #include "code\modules\unit_tests\break_machinery.dm"
+#include "code\modules\unit_tests\dakimakura.dm"
 #include "code\modules\unit_tests\ear_surgery.dm"
 #include "code\modules\unit_tests\revenant.dm"
 #include "code\modules\unit_tests\teratoma_event.dm"
