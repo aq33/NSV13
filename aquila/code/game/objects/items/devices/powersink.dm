@@ -15,8 +15,8 @@ GLOBAL_VAR_INIT(powersink_transmitted, 0)
 
 		// found a powernet, so drain up to max power from it
 
-		var/drained = min ( drain_rate, PN.avail )
-		PN.load += drained
+		var/drained = min ( drain_rate, attached.newavail() )
+		attached.add_delayedload(drained) // load added outside the power tick must be delayed or the powernet reset discards it
 		power_drained += drained
 		on_drain(drained)
 
