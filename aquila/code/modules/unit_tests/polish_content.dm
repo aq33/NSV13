@@ -85,6 +85,28 @@
 		TEST_ASSERT_EQUAL(mob.icon_state, mob.icon_living, "[mob_type] revived sprite")
 		TEST_ASSERT_EQUAL(mob.stat, CONSCIOUS, "[mob_type] did not revive")
 
+	// Kapitan Bomba: strój z adminowego wyboru wyposażenia
+	var/mob/living/carbon/human/bomba = allocate(/mob/living/carbon/human)
+	bomba.equipOutfit(/datum/outfit/kapitanbomba)
+	TEST_ASSERT(istype(bomba.head, /obj/item/clothing/head/helmet/space/kapitanbomba), "Kapitan Bomba outfit has no helmet")
+	TEST_ASSERT(istype(bomba.wear_suit, /obj/item/clothing/suit/kapitanbomba), "Kapitan Bomba outfit has no suit")
+	TEST_ASSERT(istype(bomba.shoes, /obj/item/clothing/shoes/aquila/kapitanbomba), "Kapitan Bomba outfit has no boots")
+	var/obj/item/gun/ballistic/automatic/l6_saw/blaster/blaster = locate() in bomba.held_items
+	TEST_ASSERT(blaster, "Kapitan Bomba outfit has no blaster")
+	TEST_ASSERT(istype(blaster.magazine, /obj/item/ammo_box/magazine/peacekeeper/lethal/blaster), "Blaster spawned without its magazine")
+	TEST_ASSERT_EQUAL(blaster.get_ammo(), 99, "Blaster ammo (magazine + chambered)")
+	TEST_ASSERT_EQUAL(bomba.real_name, "Tytus Bomba", "Kapitan Bomba name")
+	var/obj/item/card/id/bomba_id = bomba.wear_id
+	TEST_ASSERT_EQUAL(bomba_id?.assignment, "Kapitan Bomba", "Kapitan Bomba ID assignment")
+	blaster.AltClick(bomba)
+	TEST_ASSERT(blaster.cover_open, "Blaster cover did not open")
+	blaster.AltClick(bomba)
+	TEST_ASSERT(!blaster.cover_open, "Blaster cover did not close")
+	// Upstream: usuwanie człowieka z implantem storage zadaje obrażenia już usuniętej klatce piersiowej, więc wyjmujemy implanty przed sprzątaniem
+	for(var/obj/item/implant/implant as anything in bomba.implants)
+		implant.removed(bomba, TRUE, TRUE)
+		qdel(implant)
+
 	// Maluch mieści pięć osób
 	var/obj/vehicle/sealed/car/maluch/maluch = allocate(/obj/vehicle/sealed/car/maluch)
 	TEST_ASSERT_EQUAL(maluch.max_occupants, 5, "Maluch capacity")
@@ -144,7 +166,16 @@
 		/obj/structure/sign/directions/plaque/supply,
 		/obj/structure/sign/directions/plaque/command,
 		/obj/structure/sign/directions/plaque/munitions,
+		/obj/item/clothing/head/helmet/space/kapitanbomba,
+		/obj/item/clothing/suit/kapitanbomba,
+		/obj/item/clothing/shoes/aquila/kapitanbomba,
+		/obj/item/gun/ballistic/automatic/l6_saw/blaster,
+		/obj/item/ammo_box/magazine/peacekeeper/lethal/blaster,
 	)
+	// L6 zawsze dokłada nakładkę pokrywy z pliku broni
+	for(var/door in list("l6_door_open", "l6_door_closed"))
+		if(!icon_exists('aquila/icons/obj/items/guns.dmi', door))
+			return "Blaster icon has no [door] overlay"
 	types += typesof(/obj/structure/sign/flag)
 	types += typesof(/obj/structure/sign/flag_wide)
 	types += typesof(/obj/effect/turf_decal/szachownica)
@@ -157,8 +188,8 @@
 		if(ispath(path, /obj/item))
 			var/obj/item/item_path = path
 			var/held_state = initial(item_path.item_state) || state
-			// Buty nie mają sprite'ów w dłoni w całej grze, a wallframe'y dzielą wspólny sprite skrzynki
-			if(!ispath(path, /obj/item/clothing/shoes))
+			// Buty i magazynki nie mają sprite'ów w dłoni w całej grze, a wallframe'y dzielą wspólny sprite skrzynki
+			if(!ispath(path, /obj/item/clothing/shoes) && !ispath(path, /obj/item/ammo_box))
 				if(!icon_exists(initial(item_path.lefthand_file), held_state))
 					return "[path] has no left inhand \"[held_state]\" in [initial(item_path.lefthand_file)]"
 				if(!icon_exists(initial(item_path.righthand_file), held_state))

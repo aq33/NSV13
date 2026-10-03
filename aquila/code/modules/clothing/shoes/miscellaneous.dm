@@ -12,3 +12,10 @@
 	name = "sandały"
 	desc = "Sandały - teraz w zestawie z białymi skarpetkami"
 	icon_state = "aq_sandals"
+
+// Kapitan Bomba (aq33/NSV13#304); ikona w ekwipunku wygenerowana pod sprite noszony
+/obj/item/clothing/shoes/aquila/kapitanbomba
+	name = "Kosmo-Buty"
+	desc = "Kosmiczne Buty Kapitana Bomby, sam je polerował"
+	icon = 'aquila/icons/obj/clothing/kapitanbomba.dmi'
+	icon_state = "kpt_buty"
