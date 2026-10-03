@@ -1,0 +1,635 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien23"
+	},
+/area/bluespace_locker)
+"ab" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien20"
+	},
+/area/bluespace_locker)
+"ac" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien6"
+	},
+/area/bluespace_locker)
+"ad" = (
+/obj/structure/closet/bluespace/internal,
+/turf/open/indestructible{
+	icon = 'icons/turf/walls.dmi';
+	icon_state = "alien22"
+	},
+/area/bluespace_locker)
+"ae" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien7"
+	},
+/area/bluespace_locker)
+"af" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien17"
+	},
+/area/bluespace_locker)
+"ag" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien8"
+	},
+/area/bluespace_locker)
+"ah" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien18"
+	},
+/area/bluespace_locker)
+"ai" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien4"
+	},
+/area/bluespace_locker)
+"aj" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien11"
+	},
+/area/bluespace_locker)
+"ak" = (
+/turf/open/floor/plating/abductor,
+/area/bluespace_locker)
+"al" = (
+/obj/effect/landmark/bluespace_locker_origin,
+/turf/open/floor/plating/abductor,
+/area/bluespace_locker)
+"am" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien14"
+	},
+/area/bluespace_locker)
+"an" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien19"
+	},
+/area/bluespace_locker)
+"ao" = (
+/turf/open/space/bluespace_locker_mirage,
+/area/bluespace_locker)
+"ap" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien12"
+	},
+/area/bluespace_locker)
+"aq" = (
+/turf/closed/indestructible/abductor,
+/area/bluespace_locker)
+"ar" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien2"
+	},
+/area/bluespace_locker)
+"as" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien15"
+	},
+/area/bluespace_locker)
+"at" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien24"
+	},
+/area/bluespace_locker)
+"au" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien13"
+	},
+/area/bluespace_locker)
+"av" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien3"
+	},
+/area/bluespace_locker)
+"aw" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien21"
+	},
+/area/bluespace_locker)
+"ax" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien5"
+	},
+/area/bluespace_locker)
+"ay" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien9"
+	},
+/area/bluespace_locker)
+"az" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien10"
+	},
+/area/bluespace_locker)
+"ba" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien16"
+	},
+/area/bluespace_locker)
+
+(1,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(2,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(3,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(4,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(5,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(6,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(7,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(8,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ba
+am
+ap
+az
+ac
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(9,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ab
+af
+ak
+ak
+ak
+ae
+aq
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(10,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+aw
+ak
+ak
+ak
+ak
+ak
+ar
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(11,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ad
+ak
+ak
+al
+ak
+ak
+av
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(12,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+aa
+ak
+ak
+ak
+ak
+ak
+ai
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(13,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+at
+ah
+ak
+ak
+ak
+ag
+ax
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(14,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+an
+as
+au
+aj
+ay
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(15,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(16,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(17,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(18,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(19,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(20,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
+
+(21,1,1) = {"
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+ao
+"}
