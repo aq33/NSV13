@@ -144,6 +144,7 @@
 #include "code\modules\antagonists\infiltrator\items\services.dm"
 #include "code\modules\antagonists\monkey\monkey.dm"
 #include "code\modules\antagonists\morph\morph.dm"
+#include "code\modules\antagonists\revenant\revenant.dm"
 #include "code\modules\antagonists\role_preference\role_monkey.dm"
 #include "code\modules\antagonists\role_preference\role_infiltrator.dm"
 #include "code\modules\antagonists\role_preference\role_sinfuldemon.dm"
@@ -310,5 +311,6 @@
 #ifdef UNIT_TESTS
 #include "code\modules\unit_tests\aquila_viruses.dm"
 #include "code\modules\unit_tests\bluespace_locker.dm"
+#include "code\modules\unit_tests\revenant.dm"
 #include "code\modules\unit_tests\teratoma_event.dm"
 #endif
