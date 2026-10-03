@@ -25,6 +25,7 @@
 #include "code\_onclick\hud\alert.dm"
 #include "code\controllers\configuration\entries\game_options.dm"
 #include "code\controllers\configuration\entries\general.dm"
+#include "code\controllers\subsystem\bluespace_locker.dm"
 #include "code\controllers\subsystem\jukeboxes.dm"
 #include "code\controllers\subsystem\vote.dm"
 #include "code\datum\wires\wires_jukebox.dm"
@@ -160,6 +161,7 @@
 #include "code\modules\antagonists\demon\sins\pride.dm"
 #include "code\modules\antagonists\demon\sins\wrath.dm"
 #include "code\modules\antagonists\vampire\vampire.dm"
+#include "code\modules\bluespace_locker\bluespace_locker.dm"
 #include "code\modules\cargo\packs.dm"
 #include "code\modules\cargo\exports\large_objects.dm"
 #include "code\modules\client\verbs\input_box.dm"
@@ -302,3 +304,7 @@
 #include "code\modules\vending\cola.dm"
 #include "code\modules\vending\security.dm"
 #include "code\modules\vending\wardrobes.dm"
+
+#ifdef UNIT_TESTS
+#include "code\modules\unit_tests\bluespace_locker.dm"
+#endif
