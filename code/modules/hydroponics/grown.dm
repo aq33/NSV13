@@ -105,6 +105,8 @@
 				squash(hit_atom)
 
 /obj/item/reagent_containers/food/snacks/grown/proc/squash(atom/target)
+	if(separated_mixing) // AQUILA EDIT - Separated Chemicals: already squashed, its contents are still mixing
+		return
 	var/turf/T = get_turf(target)
 	forceMove(T)
 	if(ispath(splat_type, /obj/effect/decal/cleanable/food/plant_smudge))
@@ -122,6 +124,11 @@
 	if(seed)
 		for(var/datum/plant_gene/trait/trait in seed.genes)
 			trait.on_squash(src, target)
+	// AQUILA EDIT START - Separated Chemicals: the contents react inside the crumpled produce before splashing
+	if(seed?.get_gene(/datum/plant_gene/trait/noreact))
+		start_separated_mixing()
+		return
+	// AQUILA EDIT END
 	reagents.reaction(T)
 	for(var/A in T)
 		reagents.reaction(A)
@@ -130,6 +137,15 @@
 /obj/item/reagent_containers/food/snacks/grown/proc/squashreact()
 	for(var/datum/plant_gene/trait/trait in seed.genes)
 		trait.on_squashreact(src)
+	// AQUILA EDIT START - Separated Chemicals: whatever didn't react still splashes, like any squash
+	if(QDELETED(src) || !reagents)
+		return
+	var/turf/T = get_turf(src)
+	if(T)
+		reagents.reaction(T)
+		for(var/A in T)
+			reagents.reaction(A)
+	// AQUILA EDIT END
 	qdel(src)
 
 /obj/item/reagent_containers/food/snacks/grown/On_Consume()

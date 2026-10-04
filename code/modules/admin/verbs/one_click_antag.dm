@@ -22,6 +22,7 @@
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=abductors'>Make Abductor Team (Requires Ghosts)</a><br>
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=revenant'>Make Revenant (Requires Ghost)</a><br>
 		"}
+	dat += aquila_one_click_antag_links() // AQ EDIT - Aquila antagonist buttons, see aquila/code/modules/admin/verbs/one_click_antag.dm
 
 	var/datum/browser/popup = new(usr, "oneclickantag", "Quick-Create Antagonist", 400, 400)
 	popup.set_content(dat)
