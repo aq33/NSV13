@@ -177,11 +177,21 @@
 			download_objective.owner = owner
 			download_objective.gen_amount_goal()
 			add_objective(download_objective)
-		else
+		else if(prob(50)) // AQ EDIT - half of the steal objectives become break_machinery (aq33/NSV13#248)
 			var/datum/objective/steal/steal_objective = new
 			steal_objective.owner = owner
 			steal_objective.find_target()
 			add_objective(steal_objective)
+		// AQ EDIT START - break_machinery objective (aq33/NSV13#248)
+		else
+			var/datum/objective/break_machinery/break_objective = new
+			break_objective.owner = owner
+			if(break_objective.finalize())
+				add_objective(break_objective)
+			else // nothing on the station to break, pick something else
+				qdel(break_objective)
+				return forge_single_human_objective()
+		// AQ EDIT END
 
 /datum/antagonist/traitor/proc/forge_single_AI_objective()
 	.=1
