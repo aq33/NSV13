@@ -94,6 +94,7 @@
 #include "code\game\objects\effects\temporary_visuals\projectiles\muzzle.dm"
 #include "code\game\objects\effects\temporary_visuals\projectiles\tracer.dm"
 #include "code\game\objects\items\AI_modules.dm"
+#include "code\game\objects\items\cards_ids.dm"
 #include "code\game\objects\items\circuitboards\circuitboard.dm"
 #include "code\game\objects\items\circuitboards\machine_circuitboards.dm"
 #include "code\game\objects\items\clown_items.dm"
@@ -310,6 +311,7 @@
 #include "code\modules\vending\wardrobes.dm"
 
 #ifdef UNIT_TESTS
+#include "code\modules\unit_tests\aquila_budget_card.dm"
 #include "code\modules\unit_tests\aquila_powersink.dm"
 #include "code\modules\unit_tests\aquila_viruses.dm"
 #include "code\modules\unit_tests\bluespace_locker.dm"
