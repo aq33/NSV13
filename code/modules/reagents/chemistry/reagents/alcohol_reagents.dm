@@ -17,11 +17,6 @@
 	hydration_factor = 8 * REAGENTS_METABOLISM // AQ EDIT
 	var/boozepwr = 65 //Higher numbers equal higher hardness, higher hardness equals more intense alcohol poisoning
 
-// AQ EDIT START
-/datum/reagent/consumable/ethanol/get_hydration_factor()
-	return LERP(15, 0, boozepwr/100)
-// AQ EDIT END
-
 /*
 Boozepwr Chart
 Note that all higher effects of alcohol poisoning will inherit effects for smaller amounts (i.e. light poisoning inherts from slight poisoning)
