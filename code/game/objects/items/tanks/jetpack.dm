@@ -247,8 +247,3 @@
 		var/obj/item/clothing/suit/space/hardsuit/C = wear_suit
 		J = C.jetpack
 	return J
-
-/obj/item/tank/jetpack/Moved(atom/OldLoc, Dir) //AQUILA EDIT
-	. = ..()
-	if(on)
-		playsound(src, 'aquila/sound/vehicles/jetpack.ogg', 100, 1)
