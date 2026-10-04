@@ -53,5 +53,70 @@
 	TEST_ASSERT_EQUAL(transmitted, transmitter.drain_rate + 500, "Infiltrator power sink did not count drained power towards its objective")
 	TEST_ASSERT_EQUAL(transmitter.power_drained, transmitter.drain_rate + 500, "Infiltrator power sink drained a different amount than it counted")
 
+/// AQUILA - on_drain(): when the powernet runs short, the sink pulls a flat 50 from every operating APC cell on the net and skips APCs without a cell (hardened)
+/datum/unit_test/aquila_powersink_apc_drain
+
+/datum/unit_test/aquila_powersink_apc_drain/Run()
+	var/obj/structure/cable/node = allocate(/obj/structure/cable, run_loc_floor_bottom_left)
+	// Always a fresh powernet, so only the terminals added below are on it
+	var/datum/powernet/net = new
+	net.add_cable(node)
+
+	// APC built outside mapload: no area, terminal or cell of its own, so it only exists for the drain loop
+	var/obj/machinery/power/apc/apc = allocate(/obj/machinery/power/apc)
+	apc.end_processing()
+	var/obj/item/stock_parts/cell/cell = allocate(/obj/item/stock_parts/cell, apc)
+	cell.maxcharge = 1000
+	cell.charge = 1000
+	apc.cell = cell
+	apc.operating = TRUE
+	apc.charging = 2 // APC_FULLY_CHARGED
+	var/obj/machinery/power/terminal/apc_terminal = allocate(/obj/machinery/power/terminal)
+	apc_terminal.master = apc
+	net.add_machine(apc_terminal)
+
+	var/obj/machinery/power/apc/empty_apc = allocate(/obj/machinery/power/apc)
+	empty_apc.end_processing()
+	empty_apc.operating = TRUE
+	var/obj/machinery/power/terminal/empty_terminal = allocate(/obj/machinery/power/terminal)
+	empty_terminal.master = empty_apc
+	net.add_machine(empty_terminal)
+
+	var/obj/item/powersink/sink = allocate(/obj/item/powersink)
+	sink.attached = node
+	var/list/net_contents = list()
+	for(var/obj/machinery/power/machine as anything in net.nodes)
+		var/obj/machinery/power/terminal/terminal = machine
+		var/obj/machinery/power/apc/master = istype(terminal) ? terminal.master : null
+		net_contents += "[machine.type][istype(master) ? " -> [REF(master)] cell=[master.cell ? master.cell.charge : "none"]" : ""]"
+	var/net_description = jointext(net_contents, ", ")
+	var/runtimes_before = GLOB.total_runtimes
+
+	// Enough power on the net: APC cells are left alone
+	net.newavail = sink.drain_rate * 2
+	sink.process()
+	var/full_net_charge = cell.charge
+	var/full_net_charging = apc.charging
+	var/full_net_drained = sink.power_drained
+
+	// Shortfall: 50 from the APC with a cell, the cell-less APC is skipped
+	net.newavail = 0
+	sink.process()
+	var/short_charge = cell.charge
+	var/short_charging = apc.charging
+	var/short_drained = sink.power_drained
+	var/runtimes = GLOB.total_runtimes - runtimes_before
+
+	apc_terminal.master = null
+	empty_terminal.master = null
+
+	TEST_ASSERT_EQUAL(full_net_charge, 1000, "APC cell drained although the powernet covered the full drain rate")
+	TEST_ASSERT_EQUAL(full_net_charging, 2, "APC charging state changed although the powernet covered the full drain rate")
+	TEST_ASSERT_EQUAL(full_net_drained, sink.drain_rate, "Unexpected drain from a fully powered net")
+	TEST_ASSERT_EQUAL(short_charge, 950, "APC cell was not drained by 50 on a powernet shortfall")
+	TEST_ASSERT_EQUAL(short_charging, 1, "Drained full APC was not switched back to charging")
+	TEST_ASSERT_EQUAL(short_drained, sink.drain_rate + 50, "APC drain was not counted towards the sink (powernet nodes: [net_description])")
+	TEST_ASSERT_EQUAL(runtimes, 0, "Runtimes while draining APCs (cell-less APC must be skipped)")
+
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL

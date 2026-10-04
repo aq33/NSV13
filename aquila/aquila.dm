@@ -322,6 +322,7 @@
 #include "code\modules\unit_tests\aquila_ethanol_hydration.dm"
 #include "code\modules\unit_tests\aquila_laser_balance.dm"
 #include "code\modules\unit_tests\aquila_mouse_report.dm"
+#include "code\modules\unit_tests\aquila_one_click_antag.dm"
 #include "code\modules\unit_tests\aquila_powersink.dm"
 #include "code\modules\unit_tests\aquila_rtg.dm"
 #include "code\modules\unit_tests\aquila_viruses.dm"
