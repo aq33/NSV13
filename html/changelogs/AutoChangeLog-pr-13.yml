@@ -1,0 +1,6 @@
+author: sh4dow321
+delete-after: true
+changes:
+  - bugfix: Wrogie floty nie pojawiają się już w systemie startowym (Argo) zaraz po
+      każdym restarcie serwera. Zajęcie systemu przez flotę nie jest już zapisywane
+      na kolejną rundę.
