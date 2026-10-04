@@ -22,6 +22,7 @@
 #include "code\__HELPERS\unsorted.dm"
 #include "code\_globalvars\lists\game.dm"
 #include "code\__HELPERS\pronouns.dm"
+#include "code\__HELPERS\roundend.dm"
 #include "code\_onclick\hud\alert.dm"
 #include "code\controllers\configuration\entries\game_options.dm"
 #include "code\controllers\configuration\entries\general.dm"
@@ -315,6 +316,7 @@
 
 #ifdef UNIT_TESTS
 #include "code\modules\unit_tests\aquila_budget_card.dm"
+#include "code\modules\unit_tests\aquila_mouse_report.dm"
 #include "code\modules\unit_tests\aquila_powersink.dm"
 #include "code\modules\unit_tests\aquila_viruses.dm"
 #include "code\modules\unit_tests\bluespace_locker.dm"
