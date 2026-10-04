@@ -57,6 +57,48 @@
 	TEST_ASSERT_EQUAL(saved["Unit Test Saved Design"]?["alignment"], "unaligned", "A system without fleets lost its alignment")
 	TEST_ASSERT_EQUAL(saved["Unit Test Saved Design"]?["owner"], "syndicate", "A system without fleets lost its owner")
 
+	// Fallback starmap systems get the owner their alignment implies; explicit owners, unaligned and "random" are left alone
+	var/datum/star_system/fallback = make_system("Unit Test Fallback", "nanotrasen", null)
+	var/datum/star_system/fallback_owned = make_system("Unit Test Fallback Owned", "unaligned", "syndicate")
+	var/datum/star_system/fallback_random = make_system("Unit Test Fallback Random", "random", null)
+	SSstar_system.assign_owners_from_alignment(list(fallback, fallback_owned, fallback_random))
+	TEST_ASSERT_EQUAL(fallback.owner, "nanotrasen", "A fallback system didn't get its alignment as owner")
+	TEST_ASSERT_EQUAL(fallback_owned.owner, "syndicate", "An explicit owner was overwritten")
+	TEST_ASSERT_EQUAL(fallback_random.owner, "unaligned", "A random system's owner was picked early")
+
+	// Neutral zone fleets move again, but only into unaligned/uncharted systems
+	var/datum/star_system/hub = make_system("Unit Test Hub", "unaligned", "unaligned")
+	var/datum/star_system/open = make_system("Unit Test Open", "unaligned", "unaligned")
+	var/datum/star_system/held_nt = make_system("Unit Test NT", "nanotrasen", "nanotrasen")
+	hub.adjacency_list = list(open.name, held_nt.name)
+	SSstar_system.systems += list(hub, open, held_nt)
+	var/datum/fleet/roamer = make_fleet(hub)
+	roamer.can_reinforce = FALSE
+	hub.fleets += roamer
+	TEST_ASSERT_EQUAL(roamer.fleet_trait, FLEET_TRAIT_NEUTRAL_ZONE, "The test fleet isn't a neutral zone fleet")
+	TEST_ASSERT(roamer.move(null, TRUE), "A neutral zone fleet couldn't move to an unaligned neighbour")
+	TEST_ASSERT_EQUAL(roamer.current_system, open, "A neutral zone fleet went somewhere other than the unaligned neighbour")
+	open.adjacency_list = list(held_nt.name)
+	TEST_ASSERT(!roamer.move(null, TRUE), "A neutral zone fleet moved into a Nanotrasen system")
+	TEST_ASSERT_EQUAL(roamer.current_system, open, "A neutral zone fleet left with nowhere valid to go")
+	SSstar_system.systems -= list(hub, open, held_nt)
+
+	// Random fleet spawns skip the starting system, even when it counts as one of the faction's systems
+	var/datum/faction/syndicate = SSstar_system.faction_by_id(FACTION_ID_SYNDICATE)
+	var/list/real_pool = SSstar_system.neutral_zone_systems
+	var/real_next_spawn = syndicate.next_fleet_spawn
+	var/datum/star_system/start_pool = make_system(start_name, "syndicate", "nanotrasen")
+	SSstar_system.neutral_zone_systems = list(start_pool)
+	syndicate.send_fleet(force = TRUE)
+	var/start_fleets = length(start_pool.fleets)
+	var/datum/star_system/other_pool = make_system("Unit Test Spawn Pool", "syndicate", "unaligned")
+	SSstar_system.neutral_zone_systems = list(other_pool)
+	syndicate.send_fleet(force = TRUE)
+	SSstar_system.neutral_zone_systems = real_pool
+	syndicate.next_fleet_spawn = real_next_spawn
+	TEST_ASSERT_EQUAL(start_fleets, 0, "A random fleet spawned in the starting system")
+	TEST_ASSERT_EQUAL(length(other_pool.fleets), 1, "Random fleet spawns stopped working elsewhere")
+
 /datum/unit_test/start_system_protection/Destroy()
 	fdel(TEST_STARMAP)
 	for(var/datum/star_system/S as anything in made)

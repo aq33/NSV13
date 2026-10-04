@@ -25,4 +25,16 @@
 	// Before generate_anomaly() fires and before the first send_fleet(), both of which go by alignment
 	clear_start_system_occupation(system_by_id(player_start_system_name()))
 
+/// The hardcoded fallback systems only set alignment, leaving owner at "unaligned"; since save() writes owner for systems with fleets,
+/// a save after a fallback load would have turned them all unaligned. Give them the owner their alignment implies.
+/datum/controller/subsystem/star_system/instantiate_systems_backup()
+	. = ..()
+	assign_owners_from_alignment(systems)
+
+/// Systems still on the default owner take the owner their alignment implies
+/datum/controller/subsystem/star_system/proc/assign_owners_from_alignment(list/systems_to_fix)
+	for(var/datum/star_system/S as anything in systems_to_fix)
+		if(S.owner == "unaligned" && S.alignment != "unaligned" && S.alignment != "random") // "random" picks both later
+			S.owner = S.alignment
+
 #undef DEFAULT_PLAYER_START_SYSTEM
