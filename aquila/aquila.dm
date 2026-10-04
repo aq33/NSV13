@@ -308,6 +308,7 @@
 #include "code\modules\vending\wardrobes.dm"
 
 #ifdef UNIT_TESTS
+#include "code\modules\unit_tests\aquila_powersink.dm"
 #include "code\modules\unit_tests\aquila_viruses.dm"
 #include "code\modules\unit_tests\bluespace_locker.dm"
 #include "code\modules\unit_tests\storage_implant.dm"
