@@ -11,7 +11,8 @@
 
 #define TEST_STARMAP "config/starmap/unit_test_campaign.json"
 #define TEST_PREFIX "unit_test_campaign"
-#define DEFAULT_STARMAP "config/starmap/starmap_default.json"
+// CI runs from a deployed folder without the real config/starmap/, so the test brings its own default
+#define DEFAULT_STARMAP "config/starmap/unit_test_campaign_default.json"
 
 /// AQUILA - Hard Restart + New Campaign: reset to the default, shutdown save blocking, safe aborts, database untouched
 /datum/unit_test/campaign_reset
@@ -22,8 +23,9 @@
 	var/db_connection = SSdbcore.connection
 	var/list/starmap_files = flist("config/starmap/")
 	var/campaign = "\[{\"name\":\"Unit Test Campaign\"}\]"
-	var/clean = rustg_file_read(DEFAULT_STARMAP)
-	TEST_ASSERT(length(clean), "The default starmap is missing or empty")
+	var/clean = "\[{\"name\":\"Unit Test Default 1\"},{\"name\":\"Unit Test Default 2\"}\]"
+	rustg_file_write(clean, DEFAULT_STARMAP)
+	TEST_ASSERT_EQUAL(rustg_file_read(DEFAULT_STARMAP), clean, "Couldn't write the test default starmap")
 
 	// Path checks: only JSON files under config/starmap/
 	TEST_ASSERT_EQUAL(campaign_starmap_path(TEST_STARMAP), TEST_STARMAP, "A valid starmap path was rejected")
@@ -32,10 +34,10 @@
 
 	// Success: the active file is the clean default, and no extra file is left behind
 	rustg_file_write(campaign, TEST_STARMAP)
-	var/list/result = reset_campaign_starmap(TEST_STARMAP)
+	var/list/result = reset_campaign_starmap(TEST_STARMAP, DEFAULT_STARMAP)
 	TEST_ASSERT(result["success"], "Reset failed: [result["error"]]")
 	TEST_ASSERT_EQUAL(rustg_file_read(TEST_STARMAP), clean, "The starmap wasn't replaced by the default")
-	TEST_ASSERT_EQUAL(length(flist("config/starmap/")), length(starmap_files) + 1, "The reset created extra files")
+	TEST_ASSERT_EQUAL(length(flist("config/starmap/")), length(starmap_files) + 2, "The reset created extra files")
 	// What the next round loads (instantiate_systems reads this file) is the clean default campaign
 	var/list/loaded = json_decode(rustg_file_read(TEST_STARMAP))
 	var/list/default_systems = json_decode(clean)
@@ -60,16 +62,16 @@
 	TEST_ASSERT(!result["success"] && result["error"], "A reset with no default starmap succeeded")
 	TEST_ASSERT_EQUAL(rustg_file_read(TEST_STARMAP), campaign, "A failed reset changed the campaign")
 	TEST_ASSERT_EQUAL(length(flist("config/starmap/")), length(before), "A failed reset left files behind")
-	result = reset_campaign_starmap(DEFAULT_STARMAP)
+	result = reset_campaign_starmap(DEFAULT_STARMAP, DEFAULT_STARMAP)
 	TEST_ASSERT(!result["success"], "Resetting the default starmap onto itself succeeded")
 	TEST_ASSERT_EQUAL(rustg_file_read(DEFAULT_STARMAP), clean, "The default starmap was changed")
-	result = reset_campaign_starmap("config/game_options.txt")
+	result = reset_campaign_starmap("config/game_options.txt", DEFAULT_STARMAP)
 	TEST_ASSERT(!result["success"], "A reset outside config/starmap/ succeeded")
 	TEST_ASSERT(!SSstar_system.campaign_reset_pending, "A failed reset left saving blocked")
 
 	// No starmap saved yet (fresh server): nothing to back up, the default is put in place
 	fdel(TEST_STARMAP)
-	result = reset_campaign_starmap(TEST_STARMAP)
+	result = reset_campaign_starmap(TEST_STARMAP, DEFAULT_STARMAP)
 	TEST_ASSERT(result["success"], "A reset with no saved starmap failed")
 	TEST_ASSERT_EQUAL(rustg_file_read(TEST_STARMAP), clean, "A fresh reset didn't write the default")
 
