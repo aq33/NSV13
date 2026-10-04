@@ -9,7 +9,7 @@ Naczelnik=Spv
 
 Oficer Pokładowy=WS
 
-Marine=EE
+Majtek=EE
 
 Kwatermistrz=Spv
 Magazynier=WS
@@ -31,7 +31,7 @@ Inżynier=WS
 Technik Atmosferyki=WS
 
 Lekarz=WS
-Sanitariusz=WS
+Ratownik Medyczny=WS
 Chemik=WS
 Genetyk=WS
 Wirolog=WS
@@ -42,12 +42,19 @@ Robotyk=WS
 Detektyw=WS
 Żandarm=WS
 Lekarz Więzienny=WS
+Aspirant=WS
 
 Flight Leader=Spv
 Kontroler Lotów=WS
 Technik Amunicyjny=WS
 Technik Pokładowy=WS
 Pilot=WS
+
+Psychiatra=WS
+Magik=WS
+Fryzjer=WS
+Cywilne=WS
+VIP=VIP
 
 SI Statku=CPU
 Cyborg=CPU

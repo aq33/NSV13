@@ -31,7 +31,7 @@ Inżynier=SLT
 Technik Atmosferyki=SPC
 
 Lekarz=SLT
-Sanitariusz=SLT
+Ratownik Medyczny=SLT
 Chemik=SLT
 Genetyk=SLT
 Wirolog=SLT
