@@ -127,6 +127,7 @@
 #include "code\game\objects\structures\flags.dm"
 #include "code\game\objects\structures\crate_lockers\closets\secure\engineering.dm"
 #include "code\game\objects\structures\crate_lockers\closets\secure\scientist.dm"
+#include "code\game\objects\structures\crate_lockers\closets\secure\security.dm"
 #include "code\game\objects\structures\door_assembly_types.dm"
 #include "code\game\objects\structures\stairs_dummy.dm"
 #include "code\game\objects\structures\watercloset.dm"
@@ -318,6 +319,7 @@
 #ifdef UNIT_TESTS
 #include "code\modules\unit_tests\aquila_viruses.dm"
 #include "code\modules\unit_tests\bluespace_locker.dm"
+#include "code\modules\unit_tests\captain_locker.dm"
 #include "code\modules\unit_tests\polish_content.dm"
 #include "code\modules\unit_tests\storage_implant.dm"
 #include "code\modules\unit_tests\teratoma_event.dm"
