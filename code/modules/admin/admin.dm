@@ -529,7 +529,7 @@
 					to_chat(world, "Hard world reboot - [init_by]")
 					world.Reboot(fast_track = TRUE)
 				if("Hard Restart + New Campaign") // AQUILA EDIT
-					hard_restart_new_campaign(init_by)
+					usr.client.holder.hard_restart_new_campaign(init_by) // verbs run with the client as src, so go through the holder
 				if("Server Restart (Kill and restart DD)")
 					to_chat(world, "Server restart - [init_by]")
 					world.TgsEndProcess()
