@@ -15,3 +15,4 @@ GLOBAL_LIST_INIT(hulk_scream_phrases, list(
 	"NNNNNNNNGGGGGGGGHH!",
 	";AAAAAAARRRGH!"
 	))
+#define ORGAN_SLOT_BUTT "butt"
