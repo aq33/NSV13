@@ -107,9 +107,10 @@
 		implant.removed(bomba, TRUE, TRUE)
 		qdel(implant)
 
-	// Maluch mieści pięć osób
-	var/obj/vehicle/sealed/car/maluch/maluch = allocate(/obj/vehicle/sealed/car/maluch)
-	TEST_ASSERT_EQUAL(maluch.max_occupants, 5, "Maluch capacity")
+	// Maluch mieści pięć osób. Sprawdzane na typie: każdy zamknięty pojazd wybucha przy usunięciu (/obj/vehicle/sealed/Destroy),
+	// a wybuch przy sprzątaniu testu rozwalał wspólny pokój testowy i wywalał wszystkie kolejne testy
+	var/obj/vehicle/sealed/car/maluch/maluch = /obj/vehicle/sealed/car/maluch
+	TEST_ASSERT_EQUAL(initial(maluch.max_occupants), 5, "Maluch capacity")
 
 	// Źródła: ClothesMate, cargo, stos drewna, crafting
 	var/obj/machinery/vending/clothing/clothesmate = allocate(/obj/machinery/vending/clothing)
