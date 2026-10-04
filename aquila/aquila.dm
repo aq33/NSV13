@@ -130,6 +130,7 @@
 #include "code\game\objects\structures\signs\signs_departments.dm"
 #include "code\game\objects\structures\signs\signs_maps.dm"
 #include "code\game\objects\structures\signs\signs_warning.dm"
+#include "code\modules\admin\campaign_reset.dm"
 #include "code\modules\admin\verbs\modify_metacoins.dm"
 #include "code\modules\admin\verbs\one_click_antag.dm"
 #include "code\modules\admin\topic.dm"
@@ -310,6 +311,7 @@
 #ifdef UNIT_TESTS
 #include "code\modules\unit_tests\aquila_viruses.dm"
 #include "code\modules\unit_tests\bluespace_locker.dm"
+#include "code\modules\unit_tests\campaign_reset.dm"
 #include "code\modules\unit_tests\storage_implant.dm"
 #include "code\modules\unit_tests\teratoma_event.dm"
 #endif

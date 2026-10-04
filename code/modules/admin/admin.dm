@@ -500,6 +500,8 @@
 	var/list/options = list("Regular Restart", "Regular Restart (with delay)", "Hard Restart (No Delay/Feeback Reason)", "Hardest Restart (No actions, just reboot)")
 	if(world.TgsAvailable())
 		options += "Server Restart (Kill and restart DD)";
+	if(check_rights(R_SERVER, FALSE))
+		options += "Hard Restart + New Campaign" // AQUILA EDIT - resets the persistent starmap, see aquila/code/modules/admin/campaign_reset.dm
 
 	var/rebootconfirm
 	if(SSticker.admin_delay_notice)
@@ -526,6 +528,8 @@
 				if("Hardest Restart (No actions, just reboot)")
 					to_chat(world, "Hard world reboot - [init_by]")
 					world.Reboot(fast_track = TRUE)
+				if("Hard Restart + New Campaign") // AQUILA EDIT
+					hard_restart_new_campaign(init_by)
 				if("Server Restart (Kill and restart DD)")
 					to_chat(world, "Server restart - [init_by]")
 					world.TgsEndProcess()
