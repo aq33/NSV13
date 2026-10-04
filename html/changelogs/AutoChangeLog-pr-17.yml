@@ -1,0 +1,9 @@
+author: sh4dow321
+delete-after: true
+changes:
+  - rscadd: Rewenanci widzą duchy, mogą krążyć wokół obiektów obok siebie i mają zaklęcie
+      powrotu na stację.
+  - rscadd: 'Nowy cel zdrajcy: zniszczenie wszystkich maszyn danego typu w wybranych
+      obszarach.'
+  - rscadd: Dodano operację naprawy uszu.
+  - rscadd: Dodano dakimakury (kontrabanda w automacie z zabawkami Donksoft).
