@@ -191,7 +191,7 @@ Adding tasks is easy! Just define a datum for it.
 					if(FLEET_TRAIT_DEFENSE)
 						return FALSE //These boss fleets do not move.
 					if(FLEET_TRAIT_NEUTRAL_ZONE) //These fleets live in the neutral zone
-						if(sys.alignment != "unaligned" || "uncharted")
+						if(sys.alignment != "unaligned" && sys.alignment != "uncharted") // AQUILA EDIT - was `!= "unaligned" || "uncharted"`, always true, so these fleets never moved
 							continue
 					if(FLEET_TRAIT_BORDER_PATROL)
 						if(sys.owner != alignment)

@@ -67,6 +67,7 @@
 #define ANTAG_HUD_INCURSION 28
 #define ANTAG_HUD_HERETIC	29
 #define ANTAG_HUD_BLOODLING	30 //Nsv13
+#define ANTAG_HUD_VAMPIRE	32 // AQ EDIT - musi być zdefiniowane przed GLOB.huds (code/datums/hud.dm), inaczej HUD wampira trafia pod klucz tekstowy
 
 // Notification action types
 #define NOTIFY_JUMP "jump"
