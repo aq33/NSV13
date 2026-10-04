@@ -17,12 +17,12 @@
 	to_chat(owner, span_bolddanger("<span class='danger bold'>You cannot find the memory files of anything that happened while you were infected...</span>"))
 
 /datum/antagonist/hijacked_ai/proc/update_synd_icons_added(mob/living/M)
-	var/datum/atom_hud/antag/sithud = GLOB.huds[ANTAG_HUD_INFILTRATOR]
+	var/datum/atom_hud/antag/sithud = GLOB.huds[ANTAG_HUD_OPS]
 	sithud.join_hud(M)
 	set_antag_hud(M, "synd")
 
 /datum/antagonist/hijacked_ai/proc/update_synd_icons_removed(mob/living/M)
-	var/datum/atom_hud/antag/sithud = GLOB.huds[ANTAG_HUD_INFILTRATOR]
+	var/datum/atom_hud/antag/sithud = GLOB.huds[ANTAG_HUD_OPS]
 	sithud.leave_hud(M)
 	set_antag_hud(M, null)
 
