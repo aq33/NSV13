@@ -229,7 +229,7 @@ Returns a faction datum by its name (case insensitive!)
 			"desc"=S.desc,
 			"threat_level"=S.threat_level,
 			//General system props
-			"alignment" = S.alignment,
+			"alignment" = length(S.fleets) ? S.owner : S.alignment, // AQUILA EDIT - fleets set alignment while they're in a system; don't save that occupation, or it respawns enemies there next round
 			"owner" = S.owner,
 			"hidden"=initial(S.hidden),
 			"system_type" = json_encode(S.system_type),
