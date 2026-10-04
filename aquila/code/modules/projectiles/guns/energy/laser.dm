@@ -19,3 +19,17 @@
 	can_flashlight = TRUE
 	flight_x_offset = 15
 	flight_y_offset = 10
+
+// Hitscan lasers fire slower (powolne wystrzały ze względu na hitscan)
+/obj/item/gun/energy/laser
+	fire_rate = 1
+
+/obj/item/gun/energy/laser/captain
+	charge_delay = 12 // 8 -> 12
+	fire_rate = 0.7 // nieskończona moc w skończonej formie
+
+/obj/item/gun/energy/lasercannon
+	fire_rate = 1
+
+/obj/item/gun/energy/xray
+	fire_rate = 0.8 // ditto + ignorowanie ściań i 20 strzałów
