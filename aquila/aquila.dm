@@ -185,6 +185,7 @@
 #include "code\modules\food_and_drinks\drinks\drinks.dm"
 #include "code\modules\food_and_drinks\food\snacks_pie.dm"
 #include "code\modules\food_and_drinks\recipes\drinks_recipes.dm"
+#include "code\modules\hydroponics\plant_genes.dm"
 #include "code\modules\metacoin\metacoin.dm"
 #include "code\modules\mining\equipment\mineral_scanner.dm"
 #include "code\modules\mining\machine_bluespaceminer.dm"
@@ -310,5 +311,6 @@
 #ifdef UNIT_TESTS
 #include "code\modules\unit_tests\aquila_viruses.dm"
 #include "code\modules\unit_tests\bluespace_locker.dm"
+#include "code\modules\unit_tests\separated_chemicals.dm"
 #include "code\modules\unit_tests\teratoma_event.dm"
 #endif
