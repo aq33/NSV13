@@ -12,7 +12,7 @@ Naczelnik=LT
 
 Oficer Pokładowy=ENS
 
-Marine=PVT
+Majtek=PVT
 
 Kwatermistrz=LT
 Magazynier=ENS
@@ -34,7 +34,7 @@ Inżynier=ENS
 Technik Atmosferyki=ENS
 
 Lekarz=ENS
-Sanitariusz=SPC
+Ratownik Medyczny=SPC
 Chemik=ENS
 Genetyk=ENS
 Wirolog=ENS

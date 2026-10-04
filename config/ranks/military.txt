@@ -9,7 +9,7 @@ Naczelnik=GSGT
 
 Oficer Pokładowy=SGT
 
-Marine=PFC
+Majtek=PFC
 
 Kwatermistrz=GSGT
 Magazynier=LCPL
@@ -31,7 +31,7 @@ Inżynier=LCPL
 Technik Atmosferyki=LCPL
 
 Lekarz=CPL
-Sanitariusz=LCPL
+Ratownik Medyczny=LCPL
 Chemik=LCPL
 Genetyk=LCPL
 Wirolog=LCPL
@@ -42,12 +42,19 @@ Robotyk=CRW
 Detektyw=CPL
 Żandarm=LCPL
 Lekarz Więzienny=CRW
+Aspirant=PFC
 
 Flight Leader=SGT
 Kontroler Lotów=SGT
 Technik Amunicyjny=SPC
 Technik Pokładowy=SPC
 Pilot=CPL
+
+Psychiatra=CRW
+Magik=CRW
+Fryzjer=CRW
+Cywilne=CRW
+VIP=VIP
 
 SI Statku=CPU
 Cyborg=CPU

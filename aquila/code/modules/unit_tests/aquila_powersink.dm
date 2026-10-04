@@ -63,8 +63,7 @@
 	net.add_cable(node)
 
 	// APC built outside mapload: no area, terminal or cell of its own, so it only exists for the drain loop
-	var/obj/machinery/power/apc/apc = allocate(/obj/machinery/power/apc)
-	apc.end_processing()
+	var/obj/machinery/power/apc/apc = make_bare_apc()
 	var/obj/item/stock_parts/cell/cell = allocate(/obj/item/stock_parts/cell, apc)
 	cell.maxcharge = 1000
 	cell.charge = 1000
@@ -75,8 +74,7 @@
 	apc_terminal.master = apc
 	net.add_machine(apc_terminal)
 
-	var/obj/machinery/power/apc/empty_apc = allocate(/obj/machinery/power/apc)
-	empty_apc.end_processing()
+	var/obj/machinery/power/apc/empty_apc = make_bare_apc()
 	empty_apc.operating = TRUE
 	var/obj/machinery/power/terminal/empty_terminal = allocate(/obj/machinery/power/terminal)
 	empty_terminal.master = empty_apc
@@ -117,6 +115,18 @@
 	TEST_ASSERT_EQUAL(short_charging, 1, "Drained full APC was not switched back to charging")
 	TEST_ASSERT_EQUAL(short_drained, sink.drain_rate + 50, "APC drain was not counted towards the sink (powernet nodes: [net_description])")
 	TEST_ASSERT_EQUAL(runtimes, 0, "Runtimes while draining APCs (cell-less APC must be skipped)")
+
+/// An APC with no cell or terminal of its own. Atoms made while a map is loading in the background (ship interiors, templates)
+/// initialize as mapload, and a mapload APC builds its own 2250 charge cell and a terminal, which made this test flaky.
+/// Built away from the test cable so a terminal it makes can't join the test powernet.
+/datum/unit_test/aquila_powersink_apc_drain/proc/make_bare_apc()
+	var/obj/machinery/power/apc/apc = allocate(/obj/machinery/power/apc, run_loc_floor_top_right)
+	apc.end_processing()
+	QDEL_NULL(apc.cell)
+	if(apc.terminal)
+		apc.terminal.master = null
+		QDEL_NULL(apc.terminal)
+	return apc
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL
