@@ -127,9 +127,9 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 	belt = /obj/item/modular_computer/tablet/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	uniform = /obj/item/clothing/under/rank/security/officer //AQUILA EDIT
+	uniform = /obj/item/clothing/under/ship/peacekeeper
 	neck = /obj/item/clothing/neck/tie/black
-	suit = /obj/item/clothing/suit/armor/vest/alt //AQUILA EDIT
+	suit = /obj/item/clothing/suit/armor/vest
 	suit_store = /obj/item/gun/ballistic/automatic/pistol/glock
 	gloves = /obj/item/clothing/gloves/color/black
 	head = /obj/item/clothing/head/beret/sec/navyofficer
