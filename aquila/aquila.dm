@@ -338,6 +338,11 @@
 #include "code\modules\vending\security.dm"
 #include "code\modules\vending\toys.dm"
 #include "code\modules\vending\wardrobes.dm"
+#include "code\modules\butt\butt_organ.dm"
+#include "code\modules\butt\butt_emotes.dm"
+#include "code\modules\butt\buttbot.dm"
+#include "code\modules\butt\buttflower.dm"
+#include "code\modules\butt\stapler.dm"
 
 #ifdef UNIT_TESTS
 #include "code\modules\unit_tests\antag_huds.dm"

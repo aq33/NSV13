@@ -8,6 +8,10 @@
 	. = TRUE
 	var/mob/living/carbon/human/C = user
 	var/turf/T = get_turf(user)
+	var/obj/item/organ/butt/B = C.getorganslot(ORGAN_SLOT_BUTT)
+	if(!B)
+		to_chat(user, "<span class='warning'>You don't have a butt!</span>")
+		return FALSE
 
 	if(HAS_TRAIT(user, TRAIT_MEGAFART) && HAS_TRAIT(user, TRAIT_TOXICFART))
 		user.visible_message("<span class = 'warning'>[user] hunches down and grits [user.p_their()] teeth!</span>","<span class = 'warning'>You hunch down and grit your teeth. Stand still!</span>")
@@ -42,8 +46,7 @@
 		miałem do wyboru albo przepisać WSZYSTKIE checki na początku i na końcu zostawić ..(), które by wykonało słyszalną akcję i dźwięk
 		albo sprawić żeby ..() wykonało checki na początku, a skutki wklepać ręcznie na koniec.*/
 
-	user.audible_message("<span class='emote'><b>[user]</b> farts!</span>")
-	playsound(user, 'sound/misc/fart1.ogg', 50, TRUE)
+	B.fart(C) // AQ EDIT: butt port from Hippie
 
 /datum/emote/living/carbon/human/cry/get_sound(mob/living/user)
 	if(!ishuman(user))
