@@ -12,11 +12,11 @@
 				"denominator": 38
 			},
 			"protected_roles": [
-				"Security Officer",
-				"Warden",
-				"Detective",
-				"Head of Security",
-				"Captain"
+				"Żandarm",
+				"Naczelnik",
+				"Detektyw",
+				"Komendant",
+				"Kapitan"
 			],
 			"restricted_roles": ["Cyborg"]
 		}

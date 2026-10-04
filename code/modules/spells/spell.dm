@@ -335,7 +335,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		recharging = FALSE
 
 /obj/effect/proc_holder/spell/proc/perform(list/targets, recharge = TRUE, mob/user = usr) //if recharge is started is important for the trigger spells
-	if(!cast_check())
+	if(!cast_check(0, user)) // pass the caster on: usr is null when NPCs cast from a subsystem
 		return
 	use_charge(user)
 	before_cast(targets)

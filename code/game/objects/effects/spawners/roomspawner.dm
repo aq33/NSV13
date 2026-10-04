@@ -18,6 +18,12 @@
 	if(!length(SSmapping.random_room_templates))
 		message_admins("Room spawner created with no templates available. This shouldn't happen.")
 		return INITIALIZE_HINT_QDEL
+	//AQ EDIT START - spawners that are created after SSmapping.LoadStationRooms() (e.g. gulag.dmm) used to load their template right here,
+	//i.e. a map load nested inside SSatoms.InitializeAtoms() ("We started maploading while we were already maploading").
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/effect/spawner/room/LateInitialize()
+	//AQ EDIT END
 	var/list/possibletemplates = list()
 	var/datum/map_template/random_room/candidate
 	shuffle_inplace(SSmapping.random_room_templates)
@@ -34,7 +40,7 @@
 		if(template.stock <= 0)
 			template.spawned = TRUE
 		template.load(get_turf(src), centered = template.centerspawner)
-	return INITIALIZE_HINT_QDEL
+	qdel(src) //AQ EDIT - LateInitialize() return values are ignored
 
 /obj/effect/spawner/room/fivexfour
 	name = "5x4 room spawner"

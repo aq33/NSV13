@@ -207,6 +207,9 @@ MAX_POP TRAITOR -1
 ## NSV13 - minimum number of ready players to enable traitor objectives where murder is reasonable/expected
 MIN_POP_KILL_OBJECTIVES 11
 
+## NSV13 - minimum pop of ready players if preround, or total joins if midround, for AIs to be able to become a traitor in that game mode
+AI_TRAITOR_MIN_PLAYERS 20
+
 MIN_POP TRAITORBRO 10
 MAX_POP TRAITORBRO -1
 
@@ -352,6 +355,23 @@ EVENTS_MIN_TIME_MUL 1
 ## Multiplier for minimal player count (players = alive non-AFK humans) for dangerous events to start.
 ## Set to 0 to make dangerous events avaliable for all populations.
 EVENTS_MIN_PLAYERS_MUL 1
+
+## PARADOX CLONE ###
+## Comment this out to stop the Paradox Clone ghost antagonist from rolling on its own
+## (as a random event, or as a dynamic midround ruleset). Admins can still force it with Trigger Event.
+PARADOX_CLONE_ENABLED
+
+## Random event weight (10 is the default event weight, higher = more likely).
+PARADOX_CLONE_WEIGHT 8
+
+## How many times the random event can happen per round.
+PARADOX_CLONE_MAX_OCCURRENCES 1
+
+## Minimum alive non-AFK human players for the random event (multiplied by EVENTS_MIN_PLAYERS_MUL).
+PARADOX_CLONE_MIN_PLAYERS 10
+
+## Earliest round time, in minutes, for the random event (multiplied by EVENTS_MIN_TIME_MUL).
+PARADOX_CLONE_EARLIEST_START 20
 
 
 ## AI ###
@@ -582,8 +602,8 @@ ROUNDSTART_RACES apid
 ## Uncomment to give players the choice of joining as a human with mutant bodyparts before they join the game
 JOIN_WITH_MUTANT_HUMANS
 
-##Overflow job. Default is Midshipman
-OVERFLOW_JOB Midshipman
+##Overflow job. Default is Midshipman (Aquila: renamed to "Majtek", see JOB_NAME_ASSISTANT)
+OVERFLOW_JOB Majtek
 
 ## Overflow slot cap. Set to -1 for unlimited. If limited, it will still open up if every other job is full.
 OVERFLOW_CAP -1

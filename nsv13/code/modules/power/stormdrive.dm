@@ -127,7 +127,7 @@ Control Rods
 	var/rod_integrity = 100 //Control rods take damage over time
 	var/obj/item/radio/radio //For engineering alerts.
 	var/radio_key = /obj/item/encryptionkey/headset_eng
-	var/engineering_channel = "Engineering"
+	var/engineering_channel = RADIO_CHANNEL_ENGINEERING
 	var/can_alert = TRUE //Prevents spamming up the radio channels.
 	var/alert_cooldown = 20 SECONDS
 	var/last_power_produced = 0 //For UI tracking. Shows your power output.
@@ -173,7 +173,7 @@ Control Rods
 
 /obj/machinery/atmospherics/components/binary/stormdrive_reactor/syndicate
 	radio_key = /obj/item/encryptionkey/syndicate
-	engineering_channel = "Syndicate"
+	engineering_channel = RADIO_CHANNEL_SYNDICATE
 
 /obj/machinery/atmospherics/components/binary/stormdrive_reactor/solgov
 	name = "class V ionic storm drive"
@@ -227,7 +227,7 @@ Control Rods
 						to_chat(user, "<span class='notice'>You begin mounting the [I.name] to the reactor control coupling...</span>")
 						to_chat(user, "<span class='danger'>A blue glow envelopes your hands!</span>")
 						control_rod_installation = TRUE
-						empulse(3, 5)
+						empulse(src, 3, 5)
 						user.radiation += 250 * radiation_modifier
 						radiation_pulse(src, 1000 * radiation_modifier, 5)
 						playsound(src, 'sound/items/welder.ogg', 100, TRUE) //temp - find a better sound
@@ -239,7 +239,7 @@ Control Rods
 						control_rods += I
 						I.forceMove(src)
 						update_icon()
-						empulse(3, 5)
+						empulse(src, 3, 5)
 						user.radiation += 250 * radiation_modifier
 						radiation_pulse(src, 1000 * radiation_modifier, 5)
 						playsound(src, 'sound/items/welder.ogg', 100, TRUE) //temp - find a better sound
@@ -273,7 +273,7 @@ Control Rods
 		var/obj/item/stack/sheet/duranium/D = I
 		if(state == REACTOR_STATE_REPAIR)
 			if(D.get_amount() < 25)
-				to_chat(user, "<span class='notice'>You need at least twenty five pieces of durnaium to reline the reactor pit!</span>")
+				to_chat(user, "<span class='notice'>You need at least twenty five pieces of duranium to reline the reactor pit!</span>")
 				return
 			to_chat(user, "<span class='notice'>You start relining the reactor pit with duranium...</span>")
 			repairing = TRUE
@@ -391,11 +391,12 @@ Control Rods
 						handle_control_rod_efficiency()
 						handle_control_rod_integrity()
 				if(REACTOR_STATE_RUNNING)
-					if(alert("[src] is not in maintenance mode! Manually inserting a control rod into an active nuclear reaction would probably be fatal.",name,"Continue","Reconsider") != "Continue" && Adjacent(usr))
+					if(alert("[src] is not in maintenance mode! Manually removing a control rod from an active nuclear reaction would probably be fatal.",name,"Continue","Reconsider") != "Continue" || !Adjacent(usr))
+						return
+					else
 						if(control_rods.len <= 0)
 							to_chat(usr, "<span class='notice'> [src] has no control rods mounted.</span>")
 							return
-					else
 						var/prot = 0
 						var/mob/living/carbon/human/H = usr
 						if(H.gloves)
@@ -409,7 +410,7 @@ Control Rods
 							var/obj/item/bodypart/affecting = H.get_bodypart("[(usr.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
 							if(affecting && affecting.receive_damage( 0, 20 )) // partially damage the hand
 								H.update_damage_overlays()
-							empulse(3, 5)
+							empulse(src, 3, 5)
 							H.radiation += (heat/2) * radiation_modifier
 							radiation_pulse(src, (heat * 2) * radiation_modifier, 5)
 							playsound(src, 'sound/items/welder.ogg', 100, TRUE) //temp - find a better sound
@@ -424,7 +425,7 @@ Control Rods
 							control_rod_installation = FALSE
 							if(affecting && affecting.receive_damage( 0, 20 )) //damage it even more
 								H.update_damage_overlays()
-							empulse(3, 5)
+							empulse(src, 3, 5)
 							H.radiation += (heat/2) * radiation_modifier
 							radiation_pulse(src, (heat * 2) * radiation_modifier, 5)
 							playsound(src, 'sound/items/welder.ogg', 100, TRUE) //temp - find a better sound
@@ -1108,14 +1109,14 @@ Control Rods
 	if(state == REACTOR_STATE_MELTDOWN)
 		icon_state = "broken"
 		return
-	if(state == REACTOR_STATE_REPAIR) //TEMP
-		icon_state = "broken"
+	if(state == REACTOR_STATE_REPAIR)
+		icon_state = "repair-1"
 		return
-	if(state == REACTOR_STATE_REINFORCE) //TEMP
-		icon_state = "broken"
+	if(state == REACTOR_STATE_REINFORCE)
+		icon_state = "reinforce-2"
 		return
-	if(state == REACTOR_STATE_REINFORCE) //TEMP
-		icon_state = "broken"
+	if(state == REACTOR_STATE_REFIT)
+		icon_state = "refit-3"
 		return
 	cut_overlays()
 	if(can_cool()) //If control rods aren't destroyed.
@@ -1239,7 +1240,7 @@ Control Rods
 		if(C)
 			if(CONFIG_GET(flag/allow_crew_objectives))
 				var/mob/M = C.mob
-				if(M?.mind?.current && LAZYLEN(M.mind.crew_objectives) && (M.job == "Station Engineer" || M.job == "Chief Engineer" || M.job == "Atmospheric Technician"))
+				if(M?.mind?.current && LAZYLEN(M.mind.crew_objectives) && (M.job == JOB_NAME_STATIONENGINEER || M.job == JOB_NAME_CHIEFENGINEER || M.job == JOB_NAME_ATMOSPHERICTECHNICIAN))
 					for(var/datum/objective/crew/meltdown/MO in M.mind.crew_objectives)
 						MO.meltdown = TRUE
 
@@ -1780,9 +1781,9 @@ Control Rods
 
 /obj/item/stormdrive_core
 	name = "\improper Class IV Nuclear Storm Drive Reactor Core"
-	desc = "This crate contains a live reactor core for a class IV nuclear storm drive."
-	icon = 'icons/obj/crates.dmi'
-	icon_state = "crate"
+	desc = "A live reactor core for a class IV nuclear storm drive, packaged and ready for transport by heavy-duty lifting equipment."
+	icon = 'nsv13/icons/obj/control_rod.dmi'
+	icon_state = "stormdrive_core"
 	w_class = WEIGHT_CLASS_GIGANTIC
 
 /obj/item/stormdrive_core/Initialize(mapload)

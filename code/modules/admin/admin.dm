@@ -500,6 +500,8 @@
 	var/list/options = list("Regular Restart", "Regular Restart (with delay)", "Hard Restart (No Delay/Feeback Reason)", "Hardest Restart (No actions, just reboot)")
 	if(world.TgsAvailable())
 		options += "Server Restart (Kill and restart DD)";
+	if(check_rights(R_SERVER, FALSE))
+		options += "Hard Restart + New Campaign" // AQUILA EDIT - resets the persistent starmap, see aquila/code/modules/admin/campaign_reset.dm
 
 	var/rebootconfirm
 	if(SSticker.admin_delay_notice)
@@ -526,6 +528,8 @@
 				if("Hardest Restart (No actions, just reboot)")
 					to_chat(world, "Hard world reboot - [init_by]")
 					world.Reboot(fast_track = TRUE)
+				if("Hard Restart + New Campaign") // AQUILA EDIT
+					usr.client.holder.hard_restart_new_campaign(init_by) // verbs run with the client as src, so go through the holder
 				if("Server Restart (Kill and restart DD)")
 					to_chat(world, "Server restart - [init_by]")
 					world.TgsEndProcess()
@@ -859,18 +863,6 @@
 	log_admin("[key_name(usr)] toggled guests game entering [!new_guest_ban ? "" : "dis"]allowed.")
 	message_admins("<span class='adminnotice'>[key_name_admin(usr)] toggled guests game entering [!new_guest_ban ? "" : "dis"]allowed.</span>")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Guests", "[!new_guest_ban ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-// Aquila edit start
-
-/datum/admins/proc/reloadwhitelist()
-	set category = "Server"
-	set desc="Reloads the whitelist from file"
-	set name="Reload Whitelist"
-	load_whitelist()
-	log_admin("[key_name(usr)] reloaded whitelist from file.")
-	message_admins("<span class='adminnotice'>[key_name_admin(usr)] reloaded whitelist from file.</span>")
-
-// Aquila edit end
 
 /datum/admins/proc/output_ai_laws()
 	var/ai_number = 0

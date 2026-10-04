@@ -8,7 +8,6 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/lasergun)
 	ammo_x_offset = 1
 	shaded_charge = 1
-	fire_rate = 1 //AQ EDIT powolne wystrzały ze względu na hitscan
 
 /obj/item/gun/energy/laser/practice
 	name = "practice laser gun"
@@ -20,13 +19,13 @@
 /obj/item/gun/energy/laser/retro
 	name ="retro laser gun"
 	icon_state = "retro"
-	desc = "An older model of the basic lasergun, no longer used by Nanotrasen's private security or military forces. Nevertheless, it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws."
+	desc = "A modern lasergun, used by Solgov's security or military forces. it is quite deadly and easy to maintain, making it a favorite." //NSV13 changed description
 	ammo_x_offset = 3
 
 /obj/item/gun/energy/laser/retro/old
 	name ="laser gun"
 	icon_state = "retro"
-	desc = "First generation lasergun, developed by Nanotrasen. Suffers from ammo issues but its unique ability to recharge its ammo without the need of a magazine helps compensate. You really hope someone has developed a better lasergun while you were in cryo."
+	desc = "First generation lasergun, designed by Nanotrasen and produced by Solgov. Suffers from ammo issues but its unique ability to recharge its ammo without the need of a magazine helps compensate." //NSV13 changed description
 	ammo_type = list(/obj/item/ammo_casing/energy/lasergun/old)
 	ammo_x_offset = 3
 
@@ -39,12 +38,11 @@
 	force = 10
 	ammo_x_offset = 3
 	selfcharge = 1
-	charge_delay = 12 //AQ EDIT 8 -> 12
+	charge_delay = 8
 	ammo_type = list(/obj/item/ammo_casing/energy/lasergun/captain)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	weapon_weight = WEAPON_LIGHT
 	investigate_flags = ADMIN_INVESTIGATE_TARGET
-	fire_rate = 0.7 //AQ EDIT nieskończona moc w skończonej formie
 
 /obj/item/gun/energy/laser/captain/scattershot
 	name = "scatter shot laser rifle"
@@ -90,7 +88,6 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/accelerator)
 	pin = null
 	ammo_x_offset = 3
-	fire_rate = 1 //AQ EDIT
 
 /obj/item/ammo_casing/energy/laser/accelerator
 	projectile_type = /obj/item/projectile/beam/laser/accelerator
@@ -117,7 +114,6 @@
 	pin = null
 	ammo_x_offset = 3
 	w_class = WEIGHT_CLASS_BULKY
-	fire_rate = 0.8 //AQ EDIT ditto + ignorowanie ściań i 20 strzałów
 
 ////////Laser Tag////////////////////
 

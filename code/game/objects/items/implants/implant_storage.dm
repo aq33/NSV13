@@ -13,6 +13,12 @@
 	if(!special)
 		var/datum/component/storage/lostimplant = GetComponent(/datum/component/storage/concrete/implant)
 		var/mob/living/implantee = source
+		// AQUILA EDIT - the implantee is being deleted (gib, admin delete) and its bodyparts are already gone: just drop the contents
+		if(QDELETED(implantee))
+			lostimplant.do_quick_empty()
+			qdel(lostimplant)
+			return ..()
+		// AQUILA EDIT END
 		for (var/obj/item/I in lostimplant.contents())
 			I.add_mob_blood(implantee)
 		lostimplant.do_quick_empty()

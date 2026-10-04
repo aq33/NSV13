@@ -45,8 +45,16 @@ SUBSYSTEM_DEF(star_system)
 
 	if(enable_npc_combat)
 		if(world.time >= next_combat_cycle)
+			var/new_announcements = FALSE
 			for(var/datum/star_system/SS in contested_systems)
+				var/previous_system_state = SS.already_announced_combat
 				SS.handle_combat()
+				if(SS.already_announced_combat > previous_system_state) //TRUE > FALSE to save on an operator use. (!= and == for alt)
+					new_announcements = TRUE
+			if(new_announcements)
+				for(var/mob/M in GLOB.player_list)
+					if(!isnewplayer(M) && M.can_hear() && (M.client.prefs.toggles & PREFTOGGLE_SOUND_ANNOUNCEMENTS))
+						SEND_SOUND(M, sound('sound/misc/notice2.ogg'))
 			next_combat_cycle = world.time + COMBAT_CYCLE_INTERVAL
 
 	for(var/datum/faction/F in factions)
@@ -221,7 +229,7 @@ Returns a faction datum by its name (case insensitive!)
 			"desc"=S.desc,
 			"threat_level"=S.threat_level,
 			//General system props
-			"alignment" = S.alignment,
+			"alignment" = length(S.fleets) ? S.owner : S.alignment, // AQUILA EDIT - fleets set alignment while they're in a system; don't save that occupation, or it respawns enemies there next round
 			"owner" = S.owner,
 			"hidden"=initial(S.hidden),
 			"system_type" = json_encode(S.system_type),
@@ -1257,7 +1265,7 @@ Random starsystem. Excluded from starmap saving, as they're generated at init.
 		message_admins("Error setting up Badlands - No Rubicon found!") //This should never happen unless admins do bad things.
 		return
 
-	for(var/I=0;I<amount,I++){
+	for(var/I=0;I<amount;I++){
 		var/datum/star_system/random/randy = new /datum/star_system/random()
 		randy.system_type = pick(
 			list(
@@ -1316,13 +1324,14 @@ Random starsystem. Excluded from starmap saving, as they're generated at init.
 		generated += randy
 		if(prob(10))
 			//10 percent of systems have a trader for resupply.
-			var/x = pick(typesof(/datum/trader)-/datum/trader)
+			var/x = pick(subtypesof(/datum/trader))
 			var/datum/trader/randytrader = new x
 			var/obj/structure/overmap/trader/randystation = SSstar_system.spawn_anomaly(randytrader.station_type, randy)
 			randystation.starting_system = randy.name
 			randystation.current_system = randy
 			randystation.set_trader(randytrader)
 			randy.trader = randytrader
+			randytrader.system = randy
 			// randytrader.generate_missions()
 
 		else if(prob(10))
@@ -1452,7 +1461,7 @@ Random starsystem. Excluded from starmap saving, as they're generated at init.
 		message_admins("Error setting up Badlands Lite - No connector found!") //This should never happen unless admins do bad things.
 		return
 
-	for(var/I=0;I<amount,I++){
+	for(var/I=0;I<amount;I++){
 		var/datum/star_system/random/randy = new /datum/star_system/random()
 		randy.system_type = pick(
 			list(
@@ -1508,13 +1517,14 @@ Random starsystem. Excluded from starmap saving, as they're generated at init.
 		generated += randy
 		if(prob(10))
 			//10 percent of systems have a trader for resupply.
-			var/x = pick(typesof(/datum/trader)-/datum/trader-/datum/trader/randy)
+			var/x = pick(subtypesof(/datum/trader) - /datum/trader/randy)
 			var/datum/trader/randytrader = new x
 			var/obj/structure/overmap/trader/randystation = SSstar_system.spawn_anomaly(randytrader.station_type, randy)
 			randystation.starting_system = randy.name
 			randystation.current_system = randy
 			randystation.set_trader(randytrader)
 			randy.trader = randytrader
+			randytrader.system = randy
 			// randytrader.generate_missions()
 
 		else if(prob(10))

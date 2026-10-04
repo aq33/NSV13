@@ -9,3 +9,7 @@
 	glass_icon_state = "amarenaglass"
 	glass_name = "kieliszek amareny"
 	glass_desc = "Dobre wino, niska cena, dobre wino, amarena."
+
+/// Stronger booze hydrates less
+/datum/reagent/consumable/ethanol/get_hydration_factor()
+	return LERP(15, 0, boozepwr/100)

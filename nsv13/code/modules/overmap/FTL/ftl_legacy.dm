@@ -19,7 +19,7 @@
 	var/ftl_state = FTL_STATE_IDLE //Mr Gaeta, spool up the FTLs.
 	var/obj/item/radio/radio //For engineering alerts.
 	var/radio_key = /obj/item/encryptionkey/headset_eng
-	var/radio_channel = "Engineering"
+	var/radio_channel = RADIO_CHANNEL_ENGINEERING
 	var/active = FALSE
 	var/progress = 0 SECONDS
 	var/progress_rate = 1 SECONDS
@@ -104,14 +104,14 @@ Preset classes of FTL drive with pre-programmed behaviours
 	name = "\improper Syndicate FTL computer"
 //	jump_speed_factor = 2 //Twice as fast as NT's shit so they can hunt the ship down or get ahead of them to set up an ambush of raptors
 	radio_key = /obj/item/encryptionkey/syndicate
-	radio_channel = "Syndicate"
+	radio_channel = RADIO_CHANNEL_SYNDICATE
 	faction = "syndicate"
 	req_access = list(ACCESS_SYNDICATE)
 
 /obj/machinery/computer/ship/ftl_computer/mining
 	name = "mining FTL computer"
 	radio_key = /obj/item/encryptionkey/headset_mining
-	radio_channel = "Supply"
+	radio_channel = RADIO_CHANNEL_SUPPLY
 	req_access = null
 	req_one_access_txt = "31;48"
 
