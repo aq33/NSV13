@@ -316,6 +316,7 @@
 
 #ifdef UNIT_TESTS
 #include "code\modules\unit_tests\aquila_budget_card.dm"
+#include "code\modules\unit_tests\aquila_ethanol_hydration.dm"
 #include "code\modules\unit_tests\aquila_mouse_report.dm"
 #include "code\modules\unit_tests\aquila_powersink.dm"
 #include "code\modules\unit_tests\aquila_viruses.dm"
