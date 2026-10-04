@@ -183,6 +183,7 @@
 #include "code\modules\clothing\under\jobs\rnd.dm"
 #include "code\modules\clothing\under\syndicate.dm"
 #include "code\modules\events\monkey_uprising.dm"
+#include "code\modules\events\portal_storm_kurwinox.dm"
 #include "code\modules\events\infiltrators.dm"
 #include "code\modules\events\shit_storm.dm"
 #include "code\modules\events\sinfuldemon.dm"
@@ -321,6 +322,7 @@
 #include "code\modules\unit_tests\bluespace_locker.dm"
 #include "code\modules\unit_tests\captain_locker.dm"
 #include "code\modules\unit_tests\polish_content.dm"
+#include "code\modules\unit_tests\portal_storm_kurwinox.dm"
 #include "code\modules\unit_tests\storage_implant.dm"
 #include "code\modules\unit_tests\teratoma_event.dm"
 #endif
