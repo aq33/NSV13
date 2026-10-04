@@ -5,6 +5,9 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+
 jobs:
   MakeCL:
     runs-on: ubuntu-latest
@@ -24,8 +27,8 @@ jobs:
           pip install -r tools/changelog/requirements.txt
       - name: Make CL
         env:
-          #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} Use this instead if you have unprotected branches
-          GITHUB_TOKEN: ${{ secrets.BEEBOT_PAT }}
+          # Falls back to the workflow token when the BeeStation bot PAT isn't configured (it isn't on this fork)
+          GITHUB_TOKEN: ${{ secrets.BEEBOT_PAT || secrets.GITHUB_TOKEN }}
           GIT_EMAIL: "56381746+ss13-beebot@users.noreply.github.com"
           GIT_NAME: "ss13-beebot"
         run: python tools/changelog/generate_cl.py
