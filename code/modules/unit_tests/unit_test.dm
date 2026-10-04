@@ -108,6 +108,10 @@ GLOBAL_VAR(test_log)
 
 /proc/RunUnitTests()
 	CHECK_TICK
+	// AQ EDIT - NSV13 loads ship interiors one by one after roundstart. Loading the test room z-level on top of that
+	// trips "We started maploading while we were already maploading", and CI fails on any runtime. Wait for the queue (max 5 minutes).
+	var/interiors_deadline = world.time + 5 MINUTES
+	UNTIL((!length(SSstar_system.overmap_interior_queue) && !SSstar_system.initing_interior && !SSatoms.initialized_changed) || world.time > interiors_deadline)
 
 	var/list/tests_to_run = subtypesof(/datum/unit_test)
 	var/list/focused_tests = list()
