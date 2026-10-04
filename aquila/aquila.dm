@@ -312,5 +312,6 @@
 #include "code\modules\unit_tests\aquila_viruses.dm"
 #include "code\modules\unit_tests\bluespace_locker.dm"
 #include "code\modules\unit_tests\separated_chemicals.dm"
+#include "code\modules\unit_tests\storage_implant.dm"
 #include "code\modules\unit_tests\teratoma_event.dm"
 #endif
