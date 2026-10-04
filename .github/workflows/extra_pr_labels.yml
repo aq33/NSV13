@@ -6,6 +6,7 @@ on:
       - master
   pull_request_target:
 
+# The default token on this fork is read-only, so adding labels failed with "Resource not accessible by integration"
 permissions:
   contents: read
   issues: write
