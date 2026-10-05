@@ -24,21 +24,19 @@
 
 	var/list/upgrade_tiers = list(
 		/obj/effect/proc_holder/spell/self/rejuvenate = 0,
-		/obj/effect/proc_holder/spell/self/vampire_help = 0,
 		/obj/effect/proc_holder/spell/pointed/gaze = 0,
 		/obj/effect/proc_holder/spell/pointed/hypno = 0,
 		/datum/vampire_passive/vision = 75,
-		/obj/effect/proc_holder/spell/self/shapeshift = 75,
 		/obj/effect/proc_holder/spell/self/cloak = 100,
 		/obj/effect/proc_holder/spell/self/revive = 100,
-		/obj/effect/proc_holder/spell/targeted/disease = 200,//why is spell-that-kills-people unlocked so early what the fuck
-		/obj/effect/proc_holder/spell/self/batform = 200,
-		/obj/effect/proc_holder/spell/self/screech = 215,
+		/datum/vampire_passive/nostealth = 150, //only lose the ability to stealth once you get a proper way to escape
+		/obj/effect/proc_holder/spell/self/batform = 150,
+		/obj/effect/proc_holder/spell/self/screech = 200,
 		/obj/effect/proc_holder/spell/self/bats = 250,
-		/datum/vampire_passive/regen = 255,
+		/datum/vampire_passive/regen = 250,
 		/obj/effect/proc_holder/spell/targeted/ethereal_jaunt/mistform = 300,
-		/datum/vampire_passive/full = 420,
-		/obj/effect/proc_holder/spell/self/summon_coat = 420,
+		/obj/effect/proc_holder/spell/self/summon_coat = 400,
+		/datum/vampire_passive/full = 400,
 		/obj/effect/proc_holder/spell/targeted/vampirize = 450)
 
 /datum/antagonist/vampire/new_blood
@@ -48,15 +46,15 @@
 
 /datum/antagonist/vampire/get_admin_commands()
 	. = ..()
-	.["Full Power"] = CALLBACK(src,.proc/admin_set_full_power)
-	.["Set Blood Amount"] = CALLBACK(src,.proc/admin_set_blood)
+	.["Full Power"] = CALLBACK(src, .proc/admin_set_full_power)
+	.["Set Blood Amount"] = CALLBACK(src, .proc/admin_set_blood)
 
 /datum/antagonist/vampire/proc/admin_set_full_power(mob/admin)
 	usable_blood = ALL_POWERS_UNLOCKED
 	total_blood = ALL_POWERS_UNLOCKED
 	check_vampire_upgrade()
-	message_admins("[key_name_admin(admin)] made [owner.current] a full power vampire..")
-	log_admin("[key_name(admin)] made [owner.current] a full power vampire..")
+	message_admins("[key_name_admin(admin)] made [owner.current] a full-power vampire.")
+	log_admin("[key_name(admin)] made [owner.current] a full-power vampire.")
 
 /datum/antagonist/vampire/proc/admin_set_blood(mob/admin)
 	total_blood = input(admin, "Set Vampire Total Blood", "Total Blood", total_blood) as null|num
@@ -72,11 +70,12 @@
 	owner.special_role = "vampire"
 	owner.current.faction += "vampire"
 	SSticker.mode.update_vampire_icons_added(owner)
+	handle_clown_mutation(owner.current, "Your bloodlusting desire overcomes your clownish heritage, you are able to use weapons!")
 	var/mob/living/carbon/human/C = owner.current
 	if(istype(C))
 		var/obj/item/organ/brain/B = C.getorganslot(ORGAN_SLOT_BRAIN)
 		if(B)
-			B.organ_flags &= ORGAN_VITAL
+			B.organ_flags &= ~ORGAN_VITAL
 			B.decoy_override = TRUE
 	..()
 
@@ -90,6 +89,7 @@
 		if(owner && H.hud_used && H.hud_used.vamp_blood_display)
 			H.hud_used.vamp_blood_display.invisibility = INVISIBILITY_ABSTRACT
 	SSticker.mode.update_vampire_icons_removed(owner)
+	handle_clown_mutation(owner.current, removing = FALSE)
 	for(var/O in objectives_given)
 		objectives -= O
 	LAZYCLEARLIST(objectives_given)
@@ -100,15 +100,18 @@
 	if(istype(C))
 		var/obj/item/organ/brain/B = C.getorganslot(ORGAN_SLOT_BRAIN)
 		if(B && (B.decoy_override != initial(B.decoy_override)))
-			B.organ_flags &= ORGAN_VITAL
+			B.organ_flags |= ORGAN_VITAL
 			B.decoy_override = FALSE
 	..()
 
 /datum/antagonist/vampire/greet()
 	to_chat(owner, "<span class='userdanger'>You are a Vampire!</span>")
 	to_chat(owner, "<span class='danger bold'>You are a creature of the night -- holy water, the chapel, and space will cause you to burn.</span>")
-	to_chat(owner, "<span class='userdanger'>Hit someone in the head with harm intent to start sucking their blood. However, only blood from living, non-vampiric creatures is usable!</span>")
+	to_chat(owner, "<span class='userdanger'>Hit someone in the head with harm intent and an open hand to start sucking their blood. However, only blood from living, non-vampiric creatures is usable!</span>")
 	to_chat(owner, "<span class='notice bold'>Coffins will heal you.</span>")
+	to_chat(owner, "<span class='notice'>Krew żywych, humanoidalnych istot pijesz <b>uderzając je w głowę otwartą dłonią na intencji krzywdzenia</b>. Krew osób katatonicznych jest bezużyteczna, a ze zwłok i osób bez połączenia (SSD) dostajesz tylko ułamek normalnej ilości.<br>\
+		Ilość wysysanej krwi zależy od chwytu: zaczynając <b>bez chwytu</b> wysysasz <i>potajemnie</i>, ale o 50% wolniej; mając <b>chwyt za szyję lub mocniejszy</b> wysysasz o 50% szybciej, za to głośno - <i>ZAALARMUJE</i> to każdego, kto to zobaczy, a dźwięk słychać w promieniu <b>trzech metrów</b>.<br>\
+		Po zebraniu <b>150</b> jednostek krwi stracisz możliwość potajemnego wysysania.</span>")
 	if(full_vampire == FALSE)
 		to_chat(owner, "<span class='notice bold'>You are not required to obey other vampires, however, you have gained a respect for them.</span>")
 	if(LAZYLEN(objectives_given))
@@ -123,6 +126,7 @@
 			owner.current.playsound_local(get_turf(owner.current), 'aquila/sound/ambience/antag/newvampire_alt.ogg',80,0)
 		else
 			owner.current.playsound_local(get_turf(owner.current), 'aquila/sound/ambience/antag/newvampire.ogg',80,0)
+
 /datum/antagonist/vampire/proc/give_objectives()
 	if(full_vampire)
 		for(var/i = 1, i < CONFIG_GET(number/traitor_objectives_amount), i++)
@@ -229,10 +233,14 @@
 		C.hud_used.vamp_blood_display.invisibility = FALSE
 		C.hud_used.vamp_blood_display.maptext = "<div align='center' valign='middle' style='position:relative; top:0px; left:6px'><font color='#dd66dd'>[round(usable_blood, 1)]</font></div>"
 	handle_vampire_cloak()
+	if(get_ability(/datum/vampire_passive/regen))
+		C.heal_overall_damage(1, 1) //advanced vampire powers give regen to even robotic limbs
+		C.adjustToxLoss(-1, TRUE, TRUE)
+		C.adjustOxyLoss(-2.5)
+
 	if(istype(C.loc, /obj/structure/closet/crate/coffin))
-		C.adjustBruteLoss(-4)
-		C.adjustFireLoss(-4)
-		C.adjustToxLoss(-4)
+		C.heal_overall_damage(4, 4, required_status = BODYTYPE_ORGANIC) //sleepy in coffin doesn't
+		C.adjustToxLoss(-4, TRUE, TRUE)
 		C.adjustOxyLoss(-4)
 		C.adjustCloneLoss(-4)
 		return
@@ -259,16 +267,12 @@
 	else if(O.grab_state >= GRAB_NECK)
 		blood_to_take *= 1.5 //50% more blood from targets that are being neck grabbed or above
 	if(!silent)
-		O.visible_message("<span class='danger'>[O] grabs [H]'s neck harshly and sinks in their fangs!</span>", "<span class='danger'>You sink your fangs into [H] and begin to [blood_to_take > BLOOD_SUCK_BASE ? "quickly" : ""] drain their blood.</span>", "<span class='notice'>You hear a soft puncture and a wet sucking noise.</span>")
+		O.visible_message("<span class='danger'>[O] grabs [H]'s neck harshly and sinks in their fangs!</span>", "<span class='danger'>You sink your fangs into [H] and begin to [blood_to_take > BLOOD_SUCK_BASE ? "quickly " : ""]drain their blood.</span>", "<span class='notice'>You hear a soft puncture and a wet sucking noise.</span>")
 		playsound(O.loc, 'sound/weapons/bite.ogg', 50, 1)
 	else
-		to_chat(O, "<span class='notice'>You stealthily begin to drain blood from [H], be careful, as they will notice if their blood gets too low.</span>")
+		to_chat(O, "<span class='notice'>You stealthily begin to drain blood from [H]. Be careful, as they will notice if their blood gets too low.</span>")
 		O.playsound_local(O, 'sound/weapons/bite.ogg', 50, 1)
-	if(!iscarbon(owner))
-		H.LAssailant = null
-	else
-		H.LAssailant = O
-	playsound(O.loc, 'sound/weapons/bite.ogg', 50, 1)
+	H.LAssailant = WEAKREF(O)
 	while(do_mob(O, H, 50))
 		if(!is_vampire(O))
 			to_chat(O, "<span class='warning'>Your fangs have disappeared!</span>")
@@ -290,7 +294,7 @@
 			to_chat(O, "<span class='warning'>They've got no blood left to give.</span>")
 			break
 		blood_coeff = 0.8 //20 blood gain at base for living, 30 with aggressive grab, 10 with stealth
-		if(H.stat == DEAD || !H.key)
+		if(H.stat == DEAD || !H.client)
 			blood_coeff = 0.2 //5 blood gain at base for dead or uninhabited, 7 with aggressive grab, 2 with stealth
 		blood = round(min(blood_to_take * blood_coeff, H.blood_volume))	//if the victim has less than the amount of blood left to take, just take all of it.
 		total_blood += blood			//get total blood 100% efficiency because fuck waiting out 5 fucking minutes and 1500 actual blood to get your 600 blood for the objective
@@ -362,7 +366,7 @@
 				to_chat(owner.current, "<span class='notice'>[power.gain_desc]</span>")
 			else if(istype(p, /datum/vampire_passive))
 				var/datum/vampire_passive/power = p
-				to_chat(owner, "<span class='notice'>[power.gain_desc]</span>")
+				to_chat(owner.current, power.gain_desc)
 
 /datum/antagonist/vampire/proc/handle_vampire_cloak()
 	if(!ishuman(owner.current))

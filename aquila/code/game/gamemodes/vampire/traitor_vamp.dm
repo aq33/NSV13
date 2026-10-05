@@ -4,11 +4,12 @@
 	false_report_weight = 10
 	traitors_possible = 3 //hard limit on traitors if scaling is turned off
 	restricted_jobs = list(JOB_NAME_AI, JOB_NAME_CYBORG)
-	required_players = 25
+	required_players = 15
 	required_enemies = 1	// how many of each type are required
 	recommended_enemies = 3
 	reroll_friendly = 1
 
+	num_modifier = -2 //less traitors to account for the vamps
 	var/list/possible_vampires = list()
 	var/const/vampire_amt = 2 //hard limit on vampires if scaling is turned off
 	var/list/pre_vamps = list()
@@ -20,7 +21,7 @@
 /datum/game_mode/traitor/vampire/can_start()
 	if(!..())
 		return 0
-	possible_vampires = get_players_for_role(ROLE_VAMPIRE)
+	possible_vampires = get_players_for_role(/datum/antagonist/vampire, /datum/role_preference/antagonist/vampire)
 	if(possible_vampires.len < required_enemies)
 		return 0
 	return 1
@@ -30,11 +31,12 @@
 		restricted_jobs += protected_jobs
 
 	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
-		restricted_jobs += "Assistant"
+		restricted_jobs += JOB_NAME_ASSISTANT
 
 	//yay lets add chaplain here so he cant be the vampire in traitor+vamps
+	var/list/vampire_restricted_jobs = restricted_jobs + JOB_NAME_CHAPLAIN
 	restricted_jobs += JOB_NAME_CHAPLAIN
-	var/list/datum/mind/possible_vamps = get_players_for_role(ROLE_VAMPIRE)
+	var/list/datum/mind/possible_vamps = get_players_for_role(/datum/antagonist/vampire, /datum/role_preference/antagonist/vampire)
 	restricted_jobs -= JOB_NAME_CHAPLAIN
 
 	var/num_vamp = 1
@@ -53,7 +55,7 @@
 			possible_vamps -= vamp
 			antag_candidates -= vamp
 			vamp.special_role = "Vampire"
-			vamp.restricted_roles = restricted_jobs
+			vamp.restricted_roles = vampire_restricted_jobs
 		antag_candidates = old_antag_candidates // So we still have a chance for a traitor vampire.
 		return ..()
 	else
@@ -71,8 +73,12 @@
 		..()
 		return
 	if(SSticker.mode.vampires.len <= (vampcap - 2) || prob(100 / (CONFIG_GET(number/traitor_scaling_coeff) * 4)))
-		if(!(character.job in restricted_jobs))
-			add_vampire(character)
+		if(!QDELETED(character) && character.client?.should_include_for_role(
+			banning_key = ROLE_VAMPIRE,
+			role_preference_key = /datum/role_preference/antagonist/vampire,
+		))
+			if(!(character.job in restricted_jobs) && character.job != JOB_NAME_CHAPLAIN)
+				add_vampire(character)
 	..()
 
 /datum/game_mode/traitor/vampire/generate_report()
