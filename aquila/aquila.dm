@@ -203,6 +203,7 @@
 #include "code\modules\events\paradox_clone.dm"
 #include "code\modules\events\shit_storm.dm"
 #include "code\modules\events\sinfuldemon.dm"
+#include "code\modules\events\ship_partition.dm"
 #include "code\modules\events\teratoma.dm"
 #include "code\modules\food_and_drinks\drinks\drinks.dm"
 #include "code\modules\food_and_drinks\food\snacks_pie.dm"
