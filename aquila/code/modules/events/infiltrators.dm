@@ -12,6 +12,10 @@
 
 /datum/round_event_control/infiltrators/canSpawnEvent(var/players_amt, var/gamemode)
 	. = ..()
+	if(!.)
+		return .
+	if(!SSshuttle.emergency || !GLOB.start_state)
+		return FALSE
 	if(SSshuttle.emergency.mode != SHUTTLE_RECALL && SSshuttle.emergency.mode != SHUTTLE_IDLE) // Don't send infiltrators if the shuttle is coming!
 		return FALSE
 	var/datum/station_state/current_state = new /datum/station_state()
