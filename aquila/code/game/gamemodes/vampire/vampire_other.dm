@@ -11,10 +11,12 @@
 	icon_state = "draculacoat"
 	item_state = "draculacoat"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	armor = list("melee" = 30, "bullet" = 20, "laser" = 10, "energy" = 10, "bomb" = 0, "bio" = 0, "rad" = 0)
+	slowdown = -0.2 //very minor speedboost
 	allowed = null
-	var/blood_restoration_delay = 200
-	var/next_blood_restoration_tick = 0
+	var/blood_regen_delay = 10 SECONDS
+	COOLDOWN_DECLARE(regen_cooldown)
+	var/dodge_delay = 10 SECONDS
+	COOLDOWN_DECLARE(dodge_cooldown)
 
 /obj/item/clothing/suit/draculacoat/Initialize()
 	if(!allowed)
@@ -26,14 +28,23 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
+/obj/item/clothing/suit/draculacoat/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", damage = 0, attack_type = MELEE_ATTACK)
+	if(owner.wear_suit != src || owner.incapacitated() || !COOLDOWN_FINISHED(src, dodge_cooldown) || !is_vampire(owner))
+		return FALSE
+	COOLDOWN_START(src, dodge_cooldown, dodge_delay)
+	owner.balloon_alert_to_viewers("dodged!", "dodged!", COMBAT_MESSAGE_RANGE)
+	owner.visible_message("<span class='danger'>With inhuman speed [owner] dodges [attack_text]!</span>", "<span class='userdanger'>You dodge [attack_text]!</span>", null, COMBAT_MESSAGE_RANGE)
+	playsound(owner, 'sound/effects/space_wind_big.ogg', 50, 1)
+	return TRUE
+
 /obj/item/clothing/suit/draculacoat/process()
 	var/mob/living/carbon/human/user = src.loc
 	if(user && ishuman(user) && is_vampire(user) && (user.wear_suit == src))
-		if (world.time > next_blood_restoration_tick)
-			next_blood_restoration_tick = world.time + blood_restoration_delay
-			var/datum/antagonist/vampire/vampire = user.mind.has_antag_datum(/datum/antagonist/vampire)
-			if (vampire.total_blood >= 5 && vampire.usable_blood <= vampire.total_blood * 0.25)
-				vampire.usable_blood = min(vampire.usable_blood + 5, vampire.total_blood * 0.25) // 5 units every 20 seconds
+		if(COOLDOWN_FINISHED(src, regen_cooldown))
+			COOLDOWN_START(src, regen_cooldown, blood_regen_delay)
+			var/datum/antagonist/vampire/vampire = is_vampire(user)
+			if(vampire.total_blood >= 5 && vampire.usable_blood < vampire.total_blood)
+				vampire.usable_blood = min(vampire.usable_blood + 5, vampire.total_blood) // 5 units every 10 seconds
 
 /mob/living/carbon/human/handle_fire()
 	. = ..()
@@ -46,6 +57,6 @@
 	. = ..()
 	if(!(user.mind && user.mind.holy_role) && is_vampire(user))
 		to_chat(user, "<span class='danger'>[deity_name] channels through \the [src] and sets you ablaze for your blasphemy!</span>")
-		user.fire_stacks += 5
+		user.adjust_fire_stacks(5)
 		user.IgniteMob()
 		user.emote("scream", 1)
