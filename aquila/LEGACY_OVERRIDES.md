@@ -41,6 +41,7 @@ The other ~60 same-type redefinitions in `aquila/` call `..()`, so they are alre
 | `dat += aquila_one_click_antag_links()` | `code/modules/admin/verbs/one_click_antag.dm` | Aquila "Create Antagonist" buttons |
 | `ROLE_PARADOX_CLONE` + `antagonist_bannable_roles` entry | `code/__DEFINES/role_preferences.dm` | Paradox Clone (tgstation#71141 port); the define has to be in core because `aquila.dm` is included after the list |
 | `ROLE_CHRONO_LEGIONNAIRE` + `antagonist_bannable_roles` entry | `code/__DEFINES/role_preferences.dm` | Chrono Legionnaire midround antagonist; same reason as `ROLE_PARADOX_CLONE` |
+| `Destroy()` of `chrono_eraser`, chronosuit helmet and suit | `code/game/objects/items/chrono_eraser.dm`, `code/modules/clothing/spacesuits/chronosuit.dm` | Bugfix for the Chrono Legionnaire gear: they called `dropped()` without a user and runtimed on every delete |
 | `ANTAG_HUD_PARADOX_CLONE` (33) + `GLOB.huds` entry | `code/__DEFINES/atom_hud.dm`, `code/datums/hud.dm` | Paradox Clone HUD; must stay the next index after `ANTAG_HUD_VAMPIRE` |
 | `paradox_clone` icon state | `icons/mob/hud.dmi` | Paradox Clone HUD icon, copied from tgstation's `antag_hud.dmi` |
 

@@ -135,7 +135,7 @@ GLOBAL_LIST_INIT(aquila_chrono_name_exceptions, list(
 
 	owner.announce_objectives()
 	owner.current.client?.tgui_panel?.give_antagonist_popup("Legionista Czasu",
-		"Wyeliminuj [target_mind.name], nim [figure] powróci do historii.")
+		"Wyeliminuj [target_mind.name], nim [figure || "tyran"] powróci do historii.")
 
 /datum/antagonist/chrono_legionnaire/proc/stop_tracking()
 	var/datum/mind/target_mind = target_ref?.resolve()
@@ -208,6 +208,8 @@ GLOBAL_LIST_INIT(aquila_chrono_name_exceptions, list(
 	player_mind.transfer_to(legionnaire)
 
 	var/figure = aquila_chrono_historical_figure(target.real_name)
+	if(!target.mind) // an admin may pick a body nobody has played yet
+		target.mind_initialize()
 	var/datum/antagonist/chrono_legionnaire/legion = player_mind.add_antag_datum(/datum/antagonist/chrono_legionnaire)
 	legion.set_target(target.mind, figure)
 
