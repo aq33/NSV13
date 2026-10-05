@@ -200,6 +200,7 @@
 #include "code\modules\events\monkey_uprising.dm"
 #include "code\modules\events\portal_storm_kurwinox.dm"
 #include "code\modules\events\infiltrators.dm"
+#include "code\modules\events\butt_loss.dm"
 #include "code\modules\events\paradox_clone.dm"
 #include "code\modules\events\shit_storm.dm"
 #include "code\modules\events\sinfuldemon.dm"
