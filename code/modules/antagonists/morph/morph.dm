@@ -36,6 +36,11 @@
 	var/eat_while_disguised = FALSE
 	var/atom/movable/form = null
 	var/morph_time = 0
+	var/eat_count = 0
+	var/corpse_eat_count = 0
+	/// REFs of everything already counted, so spitting things out and re-eating them doesn't pad the objectives
+	var/list/counted_eats = list()
+	var/list/counted_corpses = list()
 	var/static/list/blacklist_typecache = typecacheof(list(
 	/atom/movable/screen,
 	/obj/anomaly,
@@ -122,8 +127,26 @@
 		visible_message("<span class='warning'>[src] swallows [A] whole!</span>")
 		AddContents(A)
 		morph_stomach.ui_update()
+		count_eat(A)
 		return TRUE
 	return FALSE
+
+/mob/living/simple_animal/hostile/morph/proc/count_eat(atom/movable/A)
+	var/ref = REF(A)
+	if(!(ref in counted_eats))
+		counted_eats += ref
+		eat_count++
+	if(isliving(A))
+		var/mob/living/L = A
+		if(L.stat == DEAD && !(ref in counted_corpses))
+			counted_corpses += ref
+			corpse_eat_count++
+
+/mob/living/simple_animal/hostile/morph/get_stat_tab_status()
+	var/list/tab_data = ..()
+	tab_data["Things eaten"] = GENERATE_STAT_TEXT("[eat_count]")
+	tab_data["Corpses eaten"] = GENERATE_STAT_TEXT("[corpse_eat_count]")
+	return tab_data
 
 /mob/living/simple_animal/hostile/morph/ShiftClickOn(atom/movable/A)
 	if(morph_time <= world.time && !stat)
