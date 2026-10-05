@@ -118,6 +118,7 @@
 					capacity_number = 100
 			if (capacity_number)
 				add_overlay("[icon_state]_mag_[capacity_number]")
+	restore_attachment_overlays() // AQ EDIT - cut_overlays() above wiped the flashlight/bayonet
 
 
 /obj/item/gun/ballistic/process_chamber(empty_chamber = TRUE, from_firing = TRUE, chamber_next_round = TRUE)

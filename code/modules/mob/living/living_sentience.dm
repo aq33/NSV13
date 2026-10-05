@@ -72,9 +72,10 @@
 	return flavor_text
 
 /mob/living/proc/remove_from_spawner_menu()
-	for(var/spawner in GLOB.mob_spawners)
+	// AQ EDIT - iterate a copy, removing keys from the list we loop over skipped entries
+	for(var/spawner in GLOB.mob_spawners.Copy())
 		GLOB.mob_spawners[spawner] -= src
 		if(!length(GLOB.mob_spawners[spawner]))
 			GLOB.mob_spawners -= spawner
-		SSmobs.update_spawners()
+	SSmobs.update_spawners()
 	GLOB.poi_list -= src
