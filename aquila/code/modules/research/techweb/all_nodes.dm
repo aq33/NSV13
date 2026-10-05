@@ -208,3 +208,9 @@
 		if(!UI.item || !UI.illegal_tech)
 			continue
 		boost_item_paths |= UI.item	//allows deconning to unlock.
+
+/*****************************\
+|********* BLUESPACE *********|
+\*****************************/
+/datum/techweb_node/bluespace_travel
+	design_ids = list("tele_station", "tele_hub", "teleconsole", "quantumpad", "launchpad", "launchpad_console", "bluespace_pod", "bluespace_pipe") // AQUILA EDIT - bluespace pipes
