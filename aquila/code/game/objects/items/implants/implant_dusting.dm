@@ -20,11 +20,13 @@
 /obj/item/implant/dusting/activate(cause)
 	if(!cause || !imp_in || cause == "emp" || active)
 		return FALSE
-	if(cause == "action_button" && !popup)
+	if(cause == "action_button")
+		if(popup) // confirmation window already open
+			return FALSE
 		popup = TRUE
 		var/response = alert(imp_in, "Are you sure you want to activate your [name]? This will cause you to disintergrate!", "[name] Confirmation", "Yes", "No")
 		popup = FALSE
-		if(response == "No")
+		if(response != "Yes" || !imp_in || active)
 			return FALSE
 	active = TRUE //to avoid it triggering multiple times due to dying
 	to_chat(imp_in, "<span class='notice'>Your dusting implant activates!</span>")
