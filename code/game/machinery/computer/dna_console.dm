@@ -630,6 +630,23 @@
 			if(!HM)
 				return
 
+			// Nullifier - handled before the activator part, since activator injectors can't remove mutations
+			var/is_nullifier = text2num(params["is_nullifier"])
+			if(is_nullifier)
+				var/obj/item/dnainjector/N = new /obj/item/dnainjector(loc)
+				N.remove_mutations += HM.type
+				N.name = "DNA nullifier"
+				N.desc = "Removes a specific mutation on injection."
+				N.icon_state = "dnanullifier"
+				N.base_icon_state = "dnanullifier"
+				// Printing lots of nullifiers wouldn't be good, so it has a longer cooldown
+				if(scanner_operational())
+					N.damage_coeff = connected_scanner.damage_coeff
+					injectorready = world.time + INJECTOR_TIMEOUT * 3 * (1 - 0.1 * connected_scanner.precision_coeff)
+				else
+					injectorready = world.time + INJECTOR_TIMEOUT * 3
+				return
+
 			// Create a new DNA Injector and add the appropriate mutations to it
 			var/obj/item/dnainjector/activator/I = new /obj/item/dnainjector/activator(loc)
 			I.add_mutations += new HM.type(copymut = HM)
