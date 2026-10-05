@@ -285,8 +285,7 @@ GLOBAL_LIST_EMPTY(asteroid_spawn_markers)		//handles mining asteroids, kind of s
 		return FALSE
 	var/list/asteroids = list()
 	for(var/obj/structure/overmap/asteroid/AS in orange(5, linked))
-		if(AS.required_tier <= tier)
-			asteroids += AS
+		asteroids += AS // AQUILA EDIT - no upgrade tier required
 	if(!length(asteroids))
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
