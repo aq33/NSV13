@@ -91,6 +91,28 @@
 	for(var/custom_name_id in GLOB.preferences_custom_names)
 		custom_names[custom_name_id] = get_default_name(custom_name_id)
 
+/// AQ EDIT - json_decode() runtimes on NULL/garbage DB columns, which aborted the whole character load
+/proc/character_json_decode(text, default_value)
+	if(!istext(text) || !length(text))
+		return default_value
+	var/decoded
+	try
+		decoded = json_decode(text)
+	catch
+		return default_value
+	return islist(decoded) ? decoded : default_value
+
+/// AQ EDIT - makes sure a slot can be shown and spawned. Slots that were never saved have no species and broke the editor for good.
+/datum/character_save/proc/ensure_valid(client/C)
+	if(pref_species)
+		return FALSE
+	randomise()
+	if(!real_name)
+		real_name = pref_species.random_name(gender, TRUE)
+	if(C)
+		save(C)
+	return TRUE
+
 #define SAFE_READ_QUERY(idx, target)  if(Q.item[idx]) target = Q.item[idx]
 
 /datum/character_save/proc/handle_query(datum/DBQuery/Q)
@@ -104,6 +126,9 @@
 		var/newtype = GLOB.species_list[species_id]
 		if(newtype)
 			pref_species = new newtype
+	// AQ EDIT - a missing or removed species used to leave pref_species null, which broke the whole character editor
+	if(!pref_species)
+		pref_species = new /datum/species/human
 
 	//Character
 	SAFE_READ_QUERY(3, real_name)
@@ -130,7 +155,7 @@
 	var/tmp_features
 	SAFE_READ_QUERY(23, tmp_features)
 	if(tmp_features)
-		features = json_decode(tmp_features)
+		features = character_json_decode(tmp_features, features)
 
 	if(!CONFIG_GET(flag/join_with_mutant_humans) && !species_id != "felinid") // felinids arent mutant humans anymore i guess
 		features["tail_human"] = "none"
@@ -139,7 +164,7 @@
 	//Custom names
 	var/tmp_names
 	SAFE_READ_QUERY(24, tmp_names)
-	custom_names = json_decode(tmp_names)
+	custom_names = character_json_decode(tmp_names, list())
 
 	SAFE_READ_QUERY(25, helmet_style)
 
@@ -151,17 +176,17 @@
 	//Load prefs
 	var/job_tmp
 	SAFE_READ_QUERY(29, job_tmp)
-	job_preferences = json_decode(job_tmp)
+	job_preferences = character_json_decode(job_tmp, list())
 
 	//Quirks
 	var/quirks_tmp
 	SAFE_READ_QUERY(30, quirks_tmp)
-	all_quirks = json_decode(quirks_tmp)
+	all_quirks = character_json_decode(quirks_tmp, list())
 
 	// Gear
 	var/loadout_tmp
 	SAFE_READ_QUERY(31, loadout_tmp)
-	equipped_gear = json_decode(loadout_tmp)
+	equipped_gear = character_json_decode(loadout_tmp, list())
 
 	//NSV13 - Start
 	SAFE_READ_QUERY(32, preferred_squad)
@@ -185,7 +210,7 @@
 	// Role prefs
 	var/role_preferences_character_tmp
 	SAFE_READ_QUERY(40, role_preferences_character_tmp) //NSV13 - Moved from 32 to 40 due to Roleplaying stuff
-	role_preferences_character = json_decode(role_preferences_character_tmp)
+	role_preferences_character = character_json_decode(role_preferences_character_tmp, list())
 
 
 	//Sanitize. Please dont put query reads below this point. Please.
@@ -488,6 +513,7 @@
 	from_db = TRUE
 
 /datum/character_save/proc/copy_to(mob/living/carbon/human/character, icon_updates = 1, roundstart_checks = TRUE)
+	ensure_valid() // AQ EDIT - empty slots have no species
 	if(be_random_name)
 		real_name = pref_species.random_name(gender)
 

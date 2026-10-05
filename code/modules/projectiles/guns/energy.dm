@@ -222,6 +222,7 @@
 	if(itemState)
 		itemState += "[ratio]"
 		item_state = itemState
+	restore_attachment_overlays() // AQ EDIT - cut_overlays() above wiped the flashlight/bayonet
 
 /obj/item/gun/energy/suicide_act(mob/living/user)
 	if (istype(user) && can_shoot() && can_trigger_gun(user) && user.get_bodypart(BODY_ZONE_HEAD))

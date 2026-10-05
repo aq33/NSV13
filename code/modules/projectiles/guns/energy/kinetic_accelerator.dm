@@ -144,10 +144,15 @@
 
 /obj/item/gun/energy/kinetic_accelerator/update_icon()
 	..()
+	// AQ EDIT - start with a clean slate so the empty overlay never stacks, then put the flashlight/bayonet back
+	cut_overlays()
 	if(!can_shoot())
-		add_overlay("[icon_state]_empty")
-	else
-		cut_overlays()
+		// Cosmetic chassis (kineticgun_u/_h) have no own _empty state, fall back to the default one
+		var/empty_state = "[icon_state]_empty"
+		if(!icon_exists(icon, empty_state))
+			empty_state = "[initial(icon_state)]_empty"
+		add_overlay(empty_state)
+	restore_attachment_overlays()
 
 //Casing
 /obj/item/ammo_casing/energy/kinetic

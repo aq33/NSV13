@@ -414,6 +414,15 @@
 
 /obj/item/gun/update_overlays()
 	. = ..()
+	. += get_attachment_overlays()
+
+/**
+ * AQ EDIT - flashlight and bayonet overlays.
+ * Ballistic, energy and kinetic guns cut_overlays() in their update_icon() after ..() already added these,
+ * which made mounted flashlights and bayonets invisible. Those procs call restore_attachment_overlays() after cutting.
+ */
+/obj/item/gun/proc/get_attachment_overlays()
+	. = list()
 	if(gun_light)
 		var/mutable_appearance/flashlight_overlay
 		var/state = "[gunlight_state][gun_light.on? "_on":""]" //Generic state.
@@ -434,6 +443,16 @@
 		knife_overlay.pixel_x = knife_x_offset
 		knife_overlay.pixel_y = knife_y_offset
 		. += knife_overlay
+
+/// AQ EDIT - re-adds the flashlight/bayonet overlays after a subtype wiped them with cut_overlays()
+/obj/item/gun/proc/restore_attachment_overlays()
+	var/list/attachment_overlays = get_attachment_overlays()
+	managed_overlays = null
+	if(!length(attachment_overlays))
+		return
+	add_overlay(attachment_overlays)
+	// Let the next atom/update_icon() remove them again before re-adding
+	managed_overlays = attachment_overlays
 
 /obj/item/gun/proc/reset_semicd()
 	semicd = FALSE
@@ -478,14 +497,7 @@
 			return
 		balloon_alert(user, "You attach [K] to [src].")
 		bayonet = K
-		var/state = "bayonet"							//Generic state.
-		if(bayonet.icon_state in icon_states('icons/obj/guns/bayonets.dmi'))		//Snowflake state?
-			state = bayonet.icon_state
-		var/icon/bayonet_icons = 'icons/obj/guns/bayonets.dmi'
-		knife_overlay = mutable_appearance(bayonet_icons, state)
-		knife_overlay.pixel_x = knife_x_offset
-		knife_overlay.pixel_y = knife_y_offset
-		add_overlay(knife_overlay, TRUE)
+		update_icon() // AQ EDIT - drawn by get_attachment_overlays(), the old priority overlay doubled up and lingered after removal
 	else
 		return ..()
 
@@ -575,6 +587,7 @@
 	if(knife_overlay)
 		cut_overlay(knife_overlay, TRUE)
 		knife_overlay = null
+	update_icon()
 	return TRUE
 
 /obj/item/gun/proc/clear_gunlight()

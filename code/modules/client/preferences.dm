@@ -111,6 +111,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				active_character = target_save
 			else
 				active_character = character_saves[1] // Default to first if unavailable
+				default_slot = 1
+			// AQ EDIT - the default slot may never have been saved (empty slot), give it a body instead of leaving it broken
+			active_character.ensure_valid(C)
 			return
 
 	//we couldn't load character data so just randomize the character appearance + name
@@ -128,6 +131,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 /datum/preferences/proc/ShowChoices(mob/user)
 	if(!user || !user.client)
 		return
+	// AQ EDIT - never let a broken/empty slot lock the player out of the editor
+	if(!active_character)
+		active_character = character_saves[default_slot] || character_saves[1]
+	active_character.ensure_valid(user.client)
 	active_character.update_preview_icon(user.client)
 	var/list/dat = list("<center>")
 
@@ -2252,6 +2259,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						if(!CS.from_db)
 							CS.randomise()
 							CS.save(user.client)
+						CS.ensure_valid(user.client)
 
 				if("tab")
 					if (href_list["tab"])

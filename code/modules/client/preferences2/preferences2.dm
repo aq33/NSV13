@@ -240,6 +240,11 @@
 	var/char_loaded = FALSE
 	while(read_chars.NextRow())
 		var/idx = read_chars.item[1]
+		// AQ EDIT - a bad slot index used to runtime out of the whole load
+		if(!isnum(idx))
+			idx = text2num(idx)
+		if(!idx || idx < 1 || idx > length(character_saves))
+			continue
 		var/datum/character_save/CS = character_saves[idx]
 		CS.handle_query(read_chars)
 		char_loaded = TRUE
