@@ -790,6 +790,11 @@
 		return 1
 	..()
 
+/mob/living/carbon/human/get_footprint_sprite()
+	var/obj/item/bodypart/l_leg/left_leg = get_bodypart(BODY_ZONE_L_LEG)
+	var/obj/item/bodypart/r_leg/right_leg = get_bodypart(BODY_ZONE_R_LEG)
+	return shoes?.footprint_sprite || left_leg?.footprint_sprite || right_leg?.footprint_sprite
+
 /mob/living/carbon/human/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION("", "---------")

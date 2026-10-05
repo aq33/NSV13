@@ -183,20 +183,66 @@
 /obj/effect/decal/cleanable/blood/footprints
 	name = "footprints"
 	icon = 'icons/effects/footprints.dmi'
-	icon_state = null //rendered through overlays // AQ EDIT
+	icon_state = "blood1" // Only used in the map editor, all of the footprint visuals come from overlays
 	random_icon_states = null
 	desc = "WHOSE FOOTPRINTS ARE THESE?"
 	blood_state = BLOOD_STATE_HUMAN //the icon state to load images from
 	var/entered_dirs = 0
 	var/exited_dirs = 0
 	var/list/shoe_types = list()
+	/// Which kind of prints we are (shoes, paws, claws), see FOOTPRINT_SPRITE_* defines
+	var/footprint_sprite = FOOTPRINT_SPRITE_SHOES
+
+/obj/effect/decal/cleanable/blood/footprints/Initialize(mapload, footprint_sprite)
+	if(footprint_sprite)
+		src.footprint_sprite = footprint_sprite
+	. = ..(mapload)
+	icon_state = null //rendered through overlays // AQ EDIT
+	if(mapload)
+		entered_dirs |= dir //Keep the same appearance as in the map editor
+		update_icon()
+	update_appearance(UPDATE_NAME | UPDATE_DESC)
+
+//Rotate all of the footprint directions too
+/obj/effect/decal/cleanable/blood/footprints/setDir(newdir)
+	if(dir == newdir)
+		return ..()
+
+	var/ang_change = dir2angle(newdir) - dir2angle(dir)
+	var/old_entered_dirs = entered_dirs
+	var/old_exited_dirs = exited_dirs
+	entered_dirs = 0
+	exited_dirs = 0
+
+	for(var/Ddir in GLOB.cardinals)
+		if(old_entered_dirs & Ddir)
+			entered_dirs |= angle2dir_cardinal(dir2angle(Ddir) + ang_change)
+		if(old_exited_dirs & Ddir)
+			exited_dirs |= angle2dir_cardinal(dir2angle(Ddir) + ang_change)
+
+	update_icon()
+	return ..()
+
+/obj/effect/decal/cleanable/blood/footprints/update_name(updates)
+	switch(footprint_sprite)
+		if(FOOTPRINT_SPRITE_CLAWS)
+			name = "clawprints"
+		if(FOOTPRINT_SPRITE_SHOES)
+			name = "footprints"
+		if(FOOTPRINT_SPRITE_PAWS)
+			name = "pawprints"
+	return ..()
+
+/obj/effect/decal/cleanable/blood/footprints/update_desc(updates)
+	desc = "WHOSE [uppertext(name)] ARE THESE?"
+	return ..()
 
 /obj/effect/decal/cleanable/blood/footprints/on_entered(datum/source, atom/movable/O)
 	. = ..()
 	if(ishuman(O))
 		var/mob/living/carbon/human/H = O
 		var/obj/item/clothing/shoes/S = H.shoes
-		if(S && S.bloody_shoes[blood_state])
+		if(S && S.bloody_shoes[blood_state] && H.get_footprint_sprite() == footprint_sprite)
 			S.bloody_shoes[blood_state] = max(S.bloody_shoes[blood_state] - BLOOD_LOSS_PER_STEP, 0)
 			shoe_types |= S.type
 			if (!(entered_dirs & H.dir))
@@ -208,29 +254,38 @@
 	if(ishuman(O))
 		var/mob/living/carbon/human/H = O
 		var/obj/item/clothing/shoes/S = H.shoes
-		if(S && S.bloody_shoes[blood_state])
+		if(S && S.bloody_shoes[blood_state] && H.get_footprint_sprite() == footprint_sprite)
 			S.bloody_shoes[blood_state] = max(S.bloody_shoes[blood_state] - BLOOD_LOSS_PER_STEP, 0)
 			shoe_types  |= S.type
 			if (!(exited_dirs & H.dir))
 				exited_dirs |= H.dir
 				update_icon()
 
+/// Returns the icon state to use for a footprint overlay, based on our blood state and footprint sprite
+/obj/effect/decal/cleanable/blood/footprints/proc/get_footprint_icon_state(entered)
+	var/sprite_suffix = ""
+	switch(footprint_sprite)
+		if(FOOTPRINT_SPRITE_PAWS)
+			sprite_suffix = "paw"
+		if(FOOTPRINT_SPRITE_CLAWS)
+			sprite_suffix = "claw"
+	return "[blood_state][sprite_suffix][entered ? 1 : 2]"
 
 /obj/effect/decal/cleanable/blood/footprints/update_icon()
 	cut_overlays()
 
 	for(var/Ddir in GLOB.cardinals)
 		if(entered_dirs & Ddir)
-			var/image/bloodstep_overlay = GLOB.bloody_footprints_cache["entered-[blood_state]-[Ddir]"]
+			var/image/bloodstep_overlay = GLOB.bloody_footprints_cache["entered-[footprint_sprite]-[blood_state]-[Ddir]"]
 			if(!bloodstep_overlay)
-				bloodstep_overlay = image(icon, "[blood_state]1", dir = Ddir)
-				GLOB.bloody_footprints_cache["entered-[blood_state]-[Ddir]"] = bloodstep_overlay
+				bloodstep_overlay = image(icon, get_footprint_icon_state(TRUE), dir = Ddir)
+				GLOB.bloody_footprints_cache["entered-[footprint_sprite]-[blood_state]-[Ddir]"] = bloodstep_overlay
 			add_overlay(bloodstep_overlay)
 		if(exited_dirs & Ddir)
-			var/image/bloodstep_overlay = GLOB.bloody_footprints_cache["exited-[blood_state]-[Ddir]"]
+			var/image/bloodstep_overlay = GLOB.bloody_footprints_cache["exited-[footprint_sprite]-[blood_state]-[Ddir]"]
 			if(!bloodstep_overlay)
-				bloodstep_overlay = image(icon, "[blood_state]2", dir = Ddir)
-				GLOB.bloody_footprints_cache["exited-[blood_state]-[Ddir]"] = bloodstep_overlay
+				bloodstep_overlay = image(icon, get_footprint_icon_state(FALSE), dir = Ddir)
+				GLOB.bloody_footprints_cache["exited-[footprint_sprite]-[blood_state]-[Ddir]"] = bloodstep_overlay
 			add_overlay(bloodstep_overlay)
 
 	alpha = BLOODY_FOOTPRINT_BASE_ALPHA+bloodiness
@@ -239,13 +294,13 @@
 /obj/effect/decal/cleanable/blood/footprints/examine(mob/user)
 	. = ..()
 	if(shoe_types.len)
-		. += "You recognise the footprints as belonging to:\n"
+		. += "You recognise the [name] as belonging to:\n"
 		for(var/shoe in shoe_types)
 			var/obj/item/clothing/shoes/S = shoe
 			. += "[icon2html(initial(S.icon), user)] Some <B>[initial(S.name)]</B>.\n"
 
-/obj/effect/decal/cleanable/blood/footprints/replace_decal(obj/effect/decal/cleanable/C)
-	if(blood_state != C.blood_state) //We only replace footprints of the same type as us
+/obj/effect/decal/cleanable/blood/footprints/replace_decal(obj/effect/decal/cleanable/blood/footprints/C)
+	if(blood_state != C.blood_state || footprint_sprite != C.footprint_sprite) //We only replace footprints of the same type as us
 		return
 	..()
 
