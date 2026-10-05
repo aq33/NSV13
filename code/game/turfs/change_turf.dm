@@ -156,16 +156,24 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if ((flags & CHANGETURF_INHERIT_AIR) && ispath(path, /turf/open))
 		var/datum/gas_mixture/stashed_air = new()
 		stashed_air.copy_from(air)
+		var/obj/effect/abstract/turf_fire/old_fire = turf_fire
 		. = ..()
 		if (!.) // changeturf failed or didn't do anything
 			QDEL_NULL(stashed_air)
 			return
 		var/turf/open/newTurf = .
+		if(old_fire)
+			if(isgroundlessturf(newTurf))
+				qdel(old_fire)
+			else
+				newTurf.turf_fire = old_fire
 		if (!istype(newTurf.air, /datum/gas_mixture/immutable/space))
 			QDEL_NULL(newTurf.air)
 			newTurf.air = stashed_air
 			update_air_ref(planetary_atmos ? 1 : 2)
 	else
+		if(turf_fire)
+			QDEL_NULL(turf_fire)
 		if(ispath(path,/turf/closed))
 			flags |= CHANGETURF_RECALC_ADJACENT
 			update_air_ref(-1)

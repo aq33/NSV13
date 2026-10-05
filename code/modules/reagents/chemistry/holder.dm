@@ -77,6 +77,13 @@
 		my_atom.reagents = null
 	my_atom = null
 
+/// Returns how much fire power the contained reagents provide, used by molotovs
+/datum/reagents/proc/get_total_accelerant_quality()
+	var/quality = 0
+	for(var/datum/reagent/reagent as anything in reagent_list)
+		quality += reagent.volume * reagent.accelerant_quality
+	return quality
+
 // Used in attack logs for reagents in pills and such
 /datum/reagents/proc/log_list()
 	if(!length(reagent_list))

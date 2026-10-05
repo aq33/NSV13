@@ -16,6 +16,7 @@
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	hydration_factor = 8 * REAGENTS_METABOLISM // AQ EDIT
 	var/boozepwr = 65 //Higher numbers equal higher hardness, higher hardness equals more intense alcohol poisoning
+	accelerant_quality = 5
 
 /*
 Boozepwr Chart

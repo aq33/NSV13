@@ -36,6 +36,7 @@
 	clawfootstep = FOOTSTEP_WOOD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	tiled_dirt = FALSE
+	flammability = 3 // yikes, better put that out quick
 
 /turf/open/floor/wood/examine(mob/user)
 	. = ..()
@@ -101,6 +102,7 @@
 	var/ore_type = /obj/item/stack/ore/glass
 	var/turfverb = "uproot"
 	tiled_dirt = FALSE
+	flammability = 2 // california simulator
 
 /turf/open/floor/grass/Initialize(mapload)
 	. = ..()
@@ -253,6 +255,7 @@
 	clawfootstep = FOOTSTEP_CARPET_BAREFOOT
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	tiled_dirt = FALSE
+	flammability = 3 // this will be abused and i am all for it
 
 /turf/open/floor/carpet/examine(mob/user)
 	. = ..()
