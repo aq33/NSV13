@@ -69,6 +69,7 @@
 #define ANTAG_HUD_BLOODLING	30 //Nsv13
 #define ANTAG_HUD_VAMPIRE	32 // AQ EDIT - musi być zdefiniowane przed GLOB.huds (code/datums/hud.dm), inaczej HUD wampira trafia pod klucz tekstowy
 #define ANTAG_HUD_PARADOX_CLONE	33 // AQ EDIT - paradox clone, kolejny indeks po ANTAG_HUD_VAMPIRE w GLOB.huds
+#define ANTAG_HUD_THIEF	34 // AQ EDIT - thief (tgstation#64144), kolejny indeks po ANTAG_HUD_PARADOX_CLONE w GLOB.huds
 
 // Notification action types
 #define NOTIFY_JUMP "jump"
