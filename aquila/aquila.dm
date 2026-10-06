@@ -180,6 +180,7 @@
 #include "code\modules\antagonists\demon\sins\pride.dm"
 #include "code\modules\antagonists\demon\sins\wrath.dm"
 #include "code\modules\antagonists\vampire\vampire.dm"
+#include "code\modules\atmospherics\machinery\pipes\bluespace.dm"
 #include "code\modules\bluespace_locker\bluespace_locker.dm"
 #include "code\modules\cargo\packs.dm"
 #include "code\modules\cargo\exports\large_objects.dm"
