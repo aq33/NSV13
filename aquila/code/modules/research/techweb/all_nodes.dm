@@ -212,5 +212,6 @@
 /*****************************\
 |********* BLUESPACE *********|
 \*****************************/
-/datum/techweb_node/bluespace_travel
-	design_ids = list("tele_station", "tele_hub", "teleconsole", "quantumpad", "launchpad", "launchpad_console", "bluespace_pod", "bluespace_pipe") // AQUILA EDIT - bluespace pipes
+/datum/techweb_node/bluespace_travel/New() // bluespace pipes, appended so upstream changes to this node's designs still apply
+	. = ..()
+	design_ids += "bluespace_pipe"

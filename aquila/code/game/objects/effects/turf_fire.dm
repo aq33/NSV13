@@ -20,7 +20,7 @@
 #define TURF_FIRE_STATE_LARGE 3
 
 /obj/effect/abstract/turf_fire
-	icon = 'icons/effects/turf_fire.dmi'
+	icon = 'aquila/icons/effects/turf_fire.dmi'
 	icon_state = "red_small"
 	layer = GASFIRE_LAYER
 	anchored = TRUE
