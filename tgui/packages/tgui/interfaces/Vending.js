@@ -134,7 +134,9 @@ export const Vending = (props, context) => {
                 key={product.name}
                 custom={custom}
                 product={product}
-                productStock={data.stock[product.path]} />
+                productStock={custom
+                  ? product.amount
+                  : data.stock[product.path]} />
             ))}
           </Table>
         </Section>
