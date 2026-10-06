@@ -47,6 +47,7 @@ The other ~60 same-type redefinitions in `aquila/` call `..()`, so they are alre
 | `amount` var on `/datum/objective/steal_five_of_type` | `code/game/gamemodes/objective.dm` | Replaces the hardcoded 5 in both `check_completion()`s (default stays 5), so the thief guns/organs objectives can ask for a different count |
 | `thief`, `hoard`, `hoarder_circle` icon states | `icons/mob/hud.dmi`, `icons/mob/actions/actions_minor_antag.dmi`, `icons/mob/telegraphing/telegraph.dmi` | Thief HUD icon, "declare hoard" action and hoard marker, copied from tgstation |
 | `thief_flavor.json` | `strings/` | Thief flavor texts; lives in core `strings/` because `tools/deploy.sh` only ships that folder and `strings()` strips `/` from file names |
+| `standing += H.get_tears_overlays()` / `add_overlay(get_tears_overlays())` | `code/modules/mob/living/carbon/human/species.dm` (`handle_body()`), `code/modules/mob/living/carbon/human/update_icons.dm` (`update_body_parts_head_only()`) | Łzy po `*cry` (Yogstation#15690 port), drawn right after the eyes overlay |
 
 Pre-existing single-call hooks that stay in core: `parts += mouse_report()` (`roundend.dm`) and `/datum/admins/proc/reloadwhitelist` in the admin verb list (`admin_verbs.dm`).
 

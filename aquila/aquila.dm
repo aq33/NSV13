@@ -216,6 +216,7 @@
 #include "code\modules\food_and_drinks\drinks\drinks.dm"
 #include "code\modules\food_and_drinks\food\snacks_pie.dm"
 #include "code\modules\food_and_drinks\recipes\drinks_recipes.dm"
+#include "code\modules\hydroponics\grown\onion.dm"
 #include "code\modules\hydroponics\grown\towercap.dm"
 #include "code\modules\hydroponics\plant_genes.dm"
 #include "code\modules\metacoin\metacoin.dm"
@@ -365,6 +366,7 @@
 #ifdef UNIT_TESTS
 #include "code\modules\unit_tests\antag_huds.dm"
 #include "code\modules\unit_tests\aquila_budget_card.dm"
+#include "code\modules\unit_tests\aquila_crying.dm"
 #include "code\modules\unit_tests\aquila_ethanol_hydration.dm"
 #include "code\modules\unit_tests\aquila_infiltrator_uplink.dm"
 #include "code\modules\unit_tests\aquila_laser_balance.dm"
