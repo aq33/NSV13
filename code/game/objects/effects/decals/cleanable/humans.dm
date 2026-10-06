@@ -181,11 +181,11 @@
 
 //BLOODY FOOTPRINTS
 /obj/effect/decal/cleanable/blood/footprints
-	name = "footprints"
+	name = "ślady stóp"
 	icon = 'icons/effects/footprints.dmi'
 	icon_state = "blood1" // Only used in the map editor, all of the footprint visuals come from overlays
 	random_icon_states = null
-	desc = "WHOSE FOOTPRINTS ARE THESE?"
+	desc = "CZYJE TO ŚLADY STÓP?"
 	blood_state = BLOOD_STATE_HUMAN //the icon state to load images from
 	var/entered_dirs = 0
 	var/exited_dirs = 0
@@ -226,15 +226,15 @@
 /obj/effect/decal/cleanable/blood/footprints/update_name(updates)
 	switch(footprint_sprite)
 		if(FOOTPRINT_SPRITE_CLAWS)
-			name = "clawprints"
+			name = "ślady pazurów"
 		if(FOOTPRINT_SPRITE_SHOES)
-			name = "footprints"
+			name = "ślady stóp"
 		if(FOOTPRINT_SPRITE_PAWS)
-			name = "pawprints"
+			name = "ślady łap"
 	return ..()
 
 /obj/effect/decal/cleanable/blood/footprints/update_desc(updates)
-	desc = "WHOSE [uppertext(name)] ARE THESE?"
+	desc = "CZYJE TO [uppertext(name)]?"
 	return ..()
 
 /obj/effect/decal/cleanable/blood/footprints/on_entered(datum/source, atom/movable/O)
@@ -294,10 +294,10 @@
 /obj/effect/decal/cleanable/blood/footprints/examine(mob/user)
 	. = ..()
 	if(shoe_types.len)
-		. += "You recognise the [name] as belonging to:\n"
+		. += "Rozpoznajesz, że [name] należą do:\n"
 		for(var/shoe in shoe_types)
 			var/obj/item/clothing/shoes/S = shoe
-			. += "[icon2html(initial(S.icon), user)] Some <B>[initial(S.name)]</B>.\n"
+			. += "[icon2html(initial(S.icon), user)] <B>[initial(S.name)]</B>.\n"
 
 /obj/effect/decal/cleanable/blood/footprints/replace_decal(obj/effect/decal/cleanable/blood/footprints/C)
 	if(blood_state != C.blood_state || footprint_sprite != C.footprint_sprite) //We only replace footprints of the same type as us
