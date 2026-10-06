@@ -854,9 +854,17 @@ GENE SCANNER
 		return
 	buffer = C.dna.mutation_index
 	message += "<span class='notice'>Subject [C.name]'s DNA sequence has been saved to buffer.</span>"
-	if(LAZYLEN(buffer))
-		for(var/A in buffer)
-			message += "<span class='notice'>- [get_display_name(A)]</span>"
+	var/list/full_list_mutations = list()
+	for(var/each in buffer) // inherent mutations first
+		full_list_mutations[each] = FALSE
+	for(var/datum/mutation/each_mutation in C.dna.mutations)
+		if(each_mutation.type in buffer)
+			full_list_mutations[each_mutation.type] = "Activated"
+		else
+			full_list_mutations[each_mutation.type] = "Injected"
+	for(var/A in full_list_mutations) // pass full_list_mutations[A] as active_detail to show which mutations are active
+		message += "<span class='notice'>- [get_display_name(A)]</span>"
+	message += "<span class='info'>Genetic Stability: [C.dna.stability]%.</span>"
 	to_chat(user, EXAMINE_BLOCK(jointext(message, "\n")))
 
 /obj/item/sequence_scanner/proc/display_sequence(mob/living/user)
@@ -891,14 +899,14 @@ GENE SCANNER
 	icon_state = initial(icon_state)
 	ready = TRUE
 
-/obj/item/sequence_scanner/proc/get_display_name(mutation)
+/obj/item/sequence_scanner/proc/get_display_name(mutation, active_detail = FALSE)
 	var/datum/mutation/HM = GET_INITIALIZED_MUTATION(mutation)
 	if(!HM)
 		return "ERROR"
 	if(discovered[mutation])
-		return  "[HM.name] ([HM.alias])"
+		return !active_detail ? "[HM.name] ([HM.alias])" : "<span class='green'>[HM.name] ([HM.alias]) - [active_detail]</span>"
 	else
-		return HM.alias
+		return !active_detail ? HM.alias : "<span class='green'>[HM.alias] - [active_detail]</span>"
 
 /obj/item/extrapolator
 	name = "virus extrapolator"

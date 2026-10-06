@@ -51,71 +51,70 @@
 	. = ..()
 	if(vamp_req && is_vampire(target))
 		return FALSE
+
+/// Gives back blood spent on a vampire spell, e.g. when the cast fails partway through
+/obj/effect/proc_holder/spell/proc/refund_vampire_blood(mob/user, amount = blood_used)
+	var/datum/antagonist/vampire/V = is_vampire(user)
+	if(!V || !amount)
+		return
+	V.usable_blood += amount
+	to_chat(user, "<span class='notice'><b>You have [V.usable_blood] left to use.</b></span>")
+
 /datum/vampire_passive
 	var/gain_desc
 
 /datum/vampire_passive/New()
 	..()
 	if(!gain_desc)
-		gain_desc = "You have gained \the [src] ability."
+		gain_desc = "<span class='notice'>You have gained \the [src] ability.</span>"
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /datum/vampire_passive/nostealth
-	gain_desc = "You are no longer able to conceal yourself while sucking blood."
+	gain_desc = "<span class='warning'>You are no longer able to conceal yourself while sucking blood.</span>" //gets a warning span because it's a downgrade
 
 /datum/vampire_passive/regen
-	gain_desc = "Your rejuvenation abilities have improved and will now heal you over time when used."
+	gain_desc = "<span class='notice'>Your innate regenerative abilities have been improved, granting passive healing. Rejuvenate now also helps to reduce disabling effects.</span>"
 
 /datum/vampire_passive/vision
-	gain_desc = "Your vampiric vision has improved."
+	gain_desc = "<span class='notice'>Your vampiric vision has improved.</span>"
 
 /datum/vampire_passive/full
-	gain_desc = "You have reached your full potential and are no longer weak to the effects of anything holy and your vision has been improved greatly."
+	gain_desc = "<span class='notice'>You have reached your full potential and are no longer weak to the effects of anything holy and your vision has been improved greatly.</span>"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/obj/effect/proc_holder/spell/self/vampire_help
-	name = "How to suck blood 101"
-	desc = "Explains how the vampire blood sucking system works."
-	action_icon_state = "bloodymaryglass"
-	action_icon = 'icons/obj/drinks.dmi'
-	action_background_icon_state = "bg_demon"
-	charge_max = 0
-	vamp_req = TRUE //YES YOU NEED TO BE A VAMPIRE TO KNOW HOW TO BE A VAMPIRE SHOCKING
-
-/obj/effect/proc_holder/spell/self/vampire_help/cast(list/targets, mob/user = usr)
-	to_chat(user, "<span class='notice'>Możesz spożywać krew żywych, humanoidalnych istot poprzez <b>uderzenie ich w głowę, mając włączoną intencje krzywdzenia/b>. To <i>ZAALARMUJE</i> każdego kto zdoła to zauważyć, oraz wyda dźwięk, który jest słyszalny w odległości <b>trzech metrów</b>. Pamiętaj, że <b>nie możesz</b> pobierać krwi z <b>katatonicznych osób ani zwłok</b>.\n\
-            Twoja prędkość ssania zależy od siły chwytu. Możesz <i>potajemnie</i> wysysać krew, rozpoczynając ten proces bez chwytu, jednakże wysysasz więcej krwi na cykl ssania, <b>mając chwyt za szyje lub mocniejszy</b>. Obydwie te metody modyfikują ilość pobieranej krwi o 50%; zmniejszona przy metodzie dyskretnej, więcej przy siłowej.</span>")
 
 /obj/effect/proc_holder/spell/self/rejuvenate
-	name = "Rejuvenate"
-	desc= "Flush your system with spare blood to repair minor damage to your body."
+	name = "Rejuvenate (20)"
+	desc= "Flush your system with some spare blood to restore stamina over time."
 	action_icon_state = "rejuv"
 	charge_max = 200
 	stat_allowed = 1
+	blood_used = 20
 	action_icon = 'aquila/icons/mob/vampire.dmi'
 	action_background_icon_state = "bg_demon"
 	vamp_req = TRUE
 
 /obj/effect/proc_holder/spell/self/rejuvenate/cast(list/targets, mob/user = usr)
-	var/mob/living/carbon/U = user
-	U.stuttering = 0
+	if(!iscarbon(user))
+		return
+	heal(user)
 
-	var/datum/antagonist/vampire/V = U.mind.has_antag_datum(/datum/antagonist/vampire)
+/obj/effect/proc_holder/spell/self/rejuvenate/proc/heal(mob/living/carbon/user, iterations = 1)
+	if(iterations > 5 || QDELETED(user)) //5 total instances of stam heal each split by 1 second
+		return
+	user.stuttering = 0
+
+	var/datum/antagonist/vampire/V = is_vampire(user)
 	if(!V) //sanity check
 		return
-	for(var/i = 1 to 5)
-		U.adjustStaminaLoss(-50)
-		if(V.get_ability(/datum/vampire_passive/regen))
-			U.adjustBruteLoss(-1)
-			U.adjustOxyLoss(-2.5)
-			U.adjustToxLoss(-1, TRUE, TRUE)
-			U.adjustFireLoss(-1)
-		sleep(7.5)
+	user.adjustStaminaLoss(-50)
+	if(V.get_ability(/datum/vampire_passive/regen))
+		user.AdjustAllImmobility(-1 SECONDS)
+	addtimer(CALLBACK(src, .proc/heal, user, iterations + 1), 1 SECONDS)
 
 
 /obj/effect/proc_holder/spell/pointed/gaze
@@ -123,8 +122,8 @@
 	desc = "Paralyze your target with fear."
 	charge_max = 300
 	action_icon_state = "gaze"
-	active_msg = "You prepare your vampiric gaze.</span>"
-	deactive_msg = "You stop preparing your vampiric gaze.</span>"
+	active_msg = "You prepare your vampiric gaze."
+	deactive_msg = "You stop preparing your vampiric gaze."
 	vamp_req = TRUE
 	ranged_mousepointer = 'aquila/icons/effects/mouse_pointers/gaze_target.dmi'
 	action_icon = 'aquila/icons/mob/vampire.dmi'
@@ -145,36 +144,27 @@
 		return FALSE
 
 /obj/effect/proc_holder/spell/pointed/gaze/cast(list/targets, mob/user)
-	var/mob/living/target = targets[1]
-	var/mob/living/carbon/human/T = target
+	var/mob/living/carbon/human/T = targets[1]
+	if(!ishuman(T))
+		return
 	user.visible_message("<span class='warning'>[user]'s eyes flash red.</span>",\
-					"<span class='warning'>[user]'s eyes flash red.</span>")
-	if(ishuman(target))
-		var/obj/item/clothing/glasses/G = T.glasses
-		if(G)
-			if(G.flash_protect)
-				to_chat(user,"<span class='warning'>[T] has protective sunglasses on!</span>")
-				to_chat(target, "<span class='warning'>[user]'s paralyzing gaze is blocked by your [G]!</span>")
-				return
-		var/obj/item/clothing/mask/M = T.wear_mask
-		if(M)
-			if(M.flash_protect)
-				to_chat(user,"<span class='warning'>[T]'s mask is covering their eyes!</span>")
-				to_chat(target,"<span class='warning'>[user]'s paralyzing gaze is blocked by your [M]!</span>")
-				return
-		var/obj/item/clothing/head/H = T.head
-		if(H)
-			if(H.flash_protect)
-				to_chat(user, "<span class='vampirewarning'>[T]'s helmet is covering their eyes!</span>")
-				to_chat(target, "<span class='warning'>[user]'s paralyzing gaze is blocked by [H]!</span>")
-				return
-		to_chat(target,"<span class='warning'>You are paralyzed with fear!</span>")
-		to_chat(user,"<span class='notice'>You paralyze [T].</span>")
-		T.Stun(50)
+					"<span class='warning'>Your eyes flash red.</span>")
+	var/protection = T.get_eye_protection()
+	if(protection == INFINITY)
+		to_chat(user, "<span class='warning'>[T] is blind and is unaffected by your gaze!</span>")
+		return
+	if(protection > 0) //eye protection only dampens the gaze
+		to_chat(user, "<span class='warning'>Your gaze is dampened by [T]'s eye protection, only confusing them.</span>")
+		to_chat(T, "<span class='warning'>You feel disoriented as [user]'s gaze is dampened by your eye protection!</span>")
+		T.confused = max(T.confused, 3)
+		return
+	to_chat(T, "<span class='userdanger'>You are paralyzed with fear!</span>")
+	to_chat(user, "<span class='notice'>You paralyze [T].</span>")
+	T.Stun(5 SECONDS)
 
 
 /obj/effect/proc_holder/spell/pointed/hypno
-	name = "Hypnotize"
+	name = "Hypnotize (20)"
 	desc = "Knock out your target."
 	charge_max = 300
 	blood_used = 20
@@ -186,75 +176,45 @@
 	action_icon = 'aquila/icons/mob/vampire.dmi'
 	action_background_icon_state = "bg_demon"
 
-/obj/effect/proc_holder/spell/pointed/hypno/Click()
-	if(!active)
-		usr.visible_message("<span class='warning'>[usr] twirls their finger in a circlular motion.</span>",\
-				"<span class='warning'>You twirl your finger in a circular motion.</span>")
-	..()
-
 /obj/effect/proc_holder/spell/pointed/hypno/can_target(atom/target, mob/user, silent)
 	if(!..())
-		return
+		return FALSE
 	if(!ishuman(target))
 		to_chat(user, "<span class='warning'>Hypnotize will not work on this being.</span>")
 		return FALSE
 
 	var/mob/living/carbon/human/T = target
 	if(T.IsSleeping())
-		to_chat(user, "<span class='warning'>[T] is already asleep!.</span>")
+		to_chat(user, "<span class='warning'>[T] is already asleep!</span>")
 		return FALSE
 	return TRUE
 
 /obj/effect/proc_holder/spell/pointed/hypno/cast(list/targets, mob/user)
-	var/mob/living/target = targets[1]
-	var/mob/living/carbon/human/T = target
-	user.visible_message("<span class='warning'>[user]'s eyes flash red.</span>",\
-					"<span class='warning'>[user]'s eyes flash red.</span>")
-	if(T)
-		var/obj/item/clothing/glasses/G = T.glasses
-		if(G)
-			if(G.flash_protect)
-				to_chat(user, "<span class='warning'>[T] has protective sunglasses on!</span>")
-				to_chat(target, "<span class='warning'>[user]'s paralyzing gaze is blocked by [G]!</span>")
-				return
-		var/obj/item/clothing/mask/M = T.wear_mask
-		if(M)
-			if(M.flash_protect)
-				to_chat(user, "<span class='vampirewarning'>[T]'s mask is covering their eyes!</span>")
-				to_chat(target, "<span class='warning'>[user]'s paralyzing gaze is blocked by [M]!</span>")
-				return
-		var/obj/item/clothing/head/H = T.head
-		if(H)
-			if(H.flash_protect)
-				to_chat(user, "<span class='vampirewarning'>[T]'s helmet is covering their eyes!</span>")
-				to_chat(target, "<span class='warning'>[user]'s paralyzing gaze is blocked by [H]!</span>")
-				return
-	to_chat(target, "<span class='boldwarning'>Your knees suddenly feel heavy. Your body begins to sink to the floor.</span>")
-	to_chat(user, "<span class='notice'>[target] is now under your spell. In four seconds they will be rendered unconscious as long as they are within close range.</span>")
-	if(do_mob(user, target, 40, TRUE)) // 4 seconds...
-		if(get_dist(user, T) <= 3) // 7 range
-			flash_color(T, flash_color="#472040", flash_time=30) // it's the vampires color!
-			T.SetSleeping(300)
+	var/mob/living/carbon/human/T = targets[1]
+	if(!ishuman(T))
+		return
+	user.visible_message("<span class='warning'>[user] twirls their finger in a circular motion.</span>",\
+			"<span class='warning'>You twirl your finger in a circular motion.</span>")
+
+	var/protection = T.get_eye_protection()
+	var/sleep_duration = 30 SECONDS
+	if(protection == INFINITY)
+		to_chat(user, "<span class='warning'>[T] is blind and is unaffected by hypnosis!</span>")
+		return
+	if(protection > 0)
+		to_chat(user, "<span class='warning'>Your hypnotic powers are dampened by [T]'s eye protection.</span>")
+		sleep_duration = 10 SECONDS
+
+	to_chat(T, "<span class='boldwarning'>Your knees suddenly feel heavy. Your body begins to sink to the floor.</span>")
+	to_chat(user, "<span class='notice'>[T] is now under your spell. In four seconds they will be rendered unconscious as long as they are within close range.</span>")
+	if(do_mob(user, T, 4 SECONDS, TRUE)) // 4 seconds...
+		if(get_dist(user, T) <= 3)
+			flash_color(T, flash_color="#472040", flash_time=3 SECONDS) // it's the vampires color!
+			T.SetSleeping(sleep_duration)
 			to_chat(user, "<span class='warning'>[T] has fallen asleep!</span>")
 		else
 			to_chat(T, "<span class='notice'>You feel a whole lot better now.</span>")
 
-/obj/effect/proc_holder/spell/self/shapeshift
-	name = "Shapeshift (50)"
-	desc = "Changes your name and appearance at the cost of 50 blood and has a cooldown of 3 minutes."
-	gain_desc = "You have gained the shapeshifting ability, at the cost of stored blood you can change your form permanently."
-	action_icon_state = "genetic_poly"
-	action_icon = 'aquila/icons/mob/vampire.dmi'
-	action_background_icon_state = "bg_demon"
-	blood_used = 50
-	vamp_req = TRUE
-
-/obj/effect/proc_holder/spell/self/shapeshift/cast(list/targets, mob/user = usr)
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		user.visible_message("<span class='warning'>[H] transforms!</span>")
-		randomize_human(H)
-	user.regenerate_icons()
 
 /obj/effect/proc_holder/spell/self/cloak
 	name = "Cloak of Darkness"
@@ -286,25 +246,6 @@
 	update_name()
 	to_chat(user, "<span class='notice'>You will now be [V.iscloaking ? "hidden" : "seen"] in darkness.</span>")
 
-/obj/effect/proc_holder/spell/targeted/disease
-	name = "Diseased Touch (50)"
-	desc = "Touches your victim with infected blood giving them Grave Fever, which will, left untreated, causes toxic building and frequent collapsing."
-	gain_desc = "You have gained the Diseased Touch ability which causes those you touch to become weak unless treated medically."
-	action_icon_state = "disease"
-	action_icon = 'aquila/icons/mob/vampire.dmi'
-	action_background_icon_state = "bg_demon"
-	blood_used = 50
-	vamp_req = TRUE
-
-/obj/effect/proc_holder/spell/targeted/disease/cast(list/targets, mob/user = usr)
-	for(var/mob/living/carbon/target in targets)
-		to_chat(user, "<span class='warning'>You stealthily infect [target] with your diseased touch.</span>")
-		target.help_shake_act(user)
-		if(is_vampire(target))
-			to_chat(user, "<span class='warning'>They seem to be unaffected.</span>")
-			continue
-		var/datum/disease/D = new /datum/disease/vampire
-		target.ForceContractDisease(D)
 
 /obj/effect/proc_holder/spell/self/screech
 	name = "Chiropteran Screech (20)"
@@ -318,18 +259,21 @@
 
 /obj/effect/proc_holder/spell/self/screech/cast(list/targets, mob/user = usr)
 	user.visible_message("<span class='warning'>[user] lets out an ear piercing shriek!</span>", "<span class='warning'>You let out a loud shriek.</span>", "<span class='warning'>You hear a loud painful shriek!</span>")
-	for(var/mob/living/carbon/C in hearers(4))
-		if(C == user || (ishuman(C) && C.get_ear_protection()) || is_vampire(C))
+	for(var/mob/living/carbon/human/C in hearers(4, user))
+		if(C == user || is_vampire(C))
 			continue
-		to_chat(C, "<span class='warning'><font size='3'><b>You hear a ear piercing shriek and your senses dull!</font></b></span>")
+		if(!C.soundbang_act(1, 0)) //earmuffs and the like protect from it
+			continue
+		to_chat(C, "<span class='warning'><font size='3'><b>You hear a ear piercing shriek and your senses dull!</b></font></span>")
 		C.Knockdown(40)
 		C.adjustEarDamage(0, 30)
-		C.stuttering = 250
-		C.Stun(40)
+		C.stuttering = max(C.stuttering, 30)
+		C.Paralyze(40)
 		C.Jitter(150)
-	for(var/obj/structure/window/W in view(4))
+	for(var/obj/structure/window/W in view(4, user))
 		W.take_damage(75)
 	playsound(user.loc, 'sound/effects/screech.ogg', 100, 1)
+
 
 /obj/effect/proc_holder/spell/self/bats
 	name = "Summon Bats (30)"
@@ -343,14 +287,14 @@
 	blood_used = 30
 	var/num_bats = 2
 
-
 /obj/effect/proc_holder/spell/self/bats/cast(list/targets, mob/user = usr)
 	. = ..()
-	var/list/turf/spawns = get_adjacent_open_turfs(user.loc)
+	var/list/turf/spawns = get_adjacent_open_turfs(user)
 	for(var/i = 1 to num_bats)
-		var/T = pick(spawns)
+		var/turf/T = get_turf(user) //pad with the caster's location if we are boxed in
+		if(length(spawns))
+			T = pick_n_take(spawns)
 		new /mob/living/simple_animal/hostile/vampire_bat(T)
-		spawns -= T
 
 
 /obj/effect/proc_holder/spell/targeted/ethereal_jaunt/mistform
@@ -364,6 +308,7 @@
 	. = ..()
 	range = -1
 	addtimer(VARSET_CALLBACK(src, range, -1), 10) //Avoid fuckery
+
 
 /obj/effect/proc_holder/spell/targeted/vampirize
 	name = "Lilith's Pact (300)"
@@ -380,10 +325,14 @@
 	for(var/mob/living/carbon/target in targets)
 		if(is_vampire(target))
 			to_chat(user, "<span class='warning'>They're already a vampire!</span>")
-			vamp.usable_blood += blood_used // Refund cost
+			refund_vampire_blood(user)
+			continue
+		if(HAS_TRAIT(target, TRAIT_MINDSHIELD))
+			to_chat(user, "<span class='warning'>[target]'s mind is too strong!</span>")
+			refund_vampire_blood(user)
 			continue
 		user.visible_message("<span class='warning'>[user] latches onto [target]'s neck, pure dread eminating from them.</span>", "<span class='warning'>You latch onto [target]'s neck, preparing to transfer your unholy blood to them.</span>", "<span class='warning'>A dreadful feeling overcomes you</span>")
-		target.reagents.add_reagent("salbutamol", 10) //incase you're choking the victim
+		target.reagents.add_reagent(/datum/reagent/medicine/salbutamol, 10) //incase you're choking the victim
 		for(var/progress = 0, progress <= 3, progress++)
 			switch(progress)
 				if(1)
@@ -397,7 +346,7 @@
 			if(!do_mob(user, target, 70))
 				to_chat(user, "<span class='danger'>The pact has failed! [target] has not became a vampire.</span>")
 				to_chat(target, "<span class='notice'>The visions stop, and you relax.</span>")
-				vamp.usable_blood += blood_used / 2 // Refund half the cost
+				refund_vampire_blood(user)
 				return
 		if(!QDELETED(user) && !QDELETED(target))
 			to_chat(user, "<span class='notice'>. . .</span>")
@@ -412,43 +361,58 @@
 			target.Sleeping(600)
 			target.blood_volume = 560
 			add_vampire(target, FALSE)
-			vamp.converted ++
-			add_vampire(target)
-
+			vamp.converted++
 
 
 /obj/effect/proc_holder/spell/self/revive
 	name = "Revive"
-	gain_desc = "You have gained the ability to revive after death... However you can still be cremated/gibbed, and you will disintergrate if you're in the chapel!"
-	desc = "Revives you, provided you are not in the chapel!"
+	gain_desc = "You have gained the ability to revive after death... However you can still be cremated/gibbed, and you will disintegrate if you're in the chapel and not yet strong enough!"
+	desc = "Revives you, provided you are not in the chapel! Use again to cancel the reanimation."
 	blood_used = 0
 	stat_allowed = TRUE
-	charge_max = 1000
+	charge_max = 600 //cooldown is only applied once we actually revive
 	action_icon = 'aquila/icons/mob/vampire.dmi'
 	action_icon_state = "coffin"
 	action_background_icon_state = "bg_demon"
 	vamp_req = TRUE
+	var/reviving = FALSE
+	var/revive_timer
 
 /obj/effect/proc_holder/spell/self/revive/cast(list/targets, mob/user = usr)
+	revert_cast(user) //no cooldown on the button itself
 	if(!is_vampire(user) || !isliving(user))
-		revert_cast()
 		return
 	if(user.stat != DEAD)
 		to_chat(user, "<span class='notice'>We aren't dead enough to do that yet!</span>")
-		revert_cast()
 		return
-	if(user.reagents.has_reagent("holywater"))
+	if(user.reagents.has_reagent(/datum/reagent/water/holywater))
 		to_chat(user, "<span class='danger'>We cannot revive, holy water is in our system!</span>")
 		return
-	var/mob/living/L = user
-	if(istype(get_area(L.loc), /area/chapel))
-		L.visible_message("<span class='warning'>[L] disintergrates into dust!</span>", "<span class='userdanger'>Holy energy seeps into our very being, disintergrating us instantly!</span>", "You hear sizzling.")
-		new /obj/effect/decal/remains/human(L.loc)
-		L.dust()
-	to_chat(L, "<span class='notice'>We begin to reanimate... this will take 1 minute.</span>")
-	addtimer(CALLBACK(src, /obj/effect/proc_holder/spell/self/revive.proc/revive, L), 600)
+	reviving = !reviving
+	deltimer(revive_timer)
+	if(reviving)
+		to_chat(user, "<span class='notice'>We begin to reanimate... this will take 1 minute.</span>")
+		revive_timer = addtimer(CALLBACK(src, .proc/revive, user), 1 MINUTES, TIMER_UNIQUE | TIMER_STOPPABLE)
+	else
+		to_chat(user, "<span class='notice'>We stop our reanimation.</span>")
 
 /obj/effect/proc_holder/spell/self/revive/proc/revive(mob/living/user)
+	reviving = FALSE
+	if(QDELETED(user))
+		return
+	if(istype(get_area(user), /area/chapel))
+		var/datum/antagonist/vampire/V = is_vampire(user)
+		if(V && V.get_ability(/datum/vampire_passive/full)) //full blooded vampire doesn't get dusted if they try to res, it still doesn't work though
+			to_chat(user, "<span class='danger'>The holy energies of this place prevent our revival!</span>")
+			return
+		user.visible_message("<span class='warning'>[user] disintegrates into dust!</span>", "<span class='userdanger'>Holy energy seeps into our very being, disintegrating us instantly!</span>", "You hear sizzling.")
+		new /obj/effect/decal/remains/human(user.loc)
+		user.dust()
+		return
+	if(user.stat != DEAD) //if they somehow revive before it goes off
+		return
+	charge_counter = 0 //start the cooldown when the revive actually happens
+	start_recharge()
 	var/list/missing = user.get_missing_limbs()
 	if(missing.len)
 		playsound(user, 'sound/magic/demon_consume.ogg', 50, 1)
@@ -458,9 +422,10 @@
 	user.revive(full_heal = TRUE)
 	user.visible_message("<span class='warning'>[user] reanimates from death!</span>", "<span class='notice'>We get back up.</span>")
 
+
 /obj/effect/proc_holder/spell/self/summon_coat
 	name = "Summon Dracula Coat (100)"
-	desc = "Allows you to summon a Vampire Coat providing passive usable blood restoration when your usable blood is very low."
+	desc = "Allows you to summon a Vampire Coat providing passive usable blood restoration."
 	gain_desc = "Now that you have reached full power, you can now pull a vampiric coat out of thin air!"
 	blood_used = 100
 	action_icon = 'aquila/icons/mob/vampire.dmi'
@@ -500,9 +465,17 @@
 	if(!V)
 		return FALSE
 	if(!bat || bat.stat == DEAD)
+		if(isliving(user))
+			var/mob/living/L = user
+			if(L.incapacitated())
+				to_chat(user, "<span class='warning'>You can't transform while incapacitated!</span>")
+				revert_cast()
+				return FALSE
 		if(V.usable_blood < 15)
 			to_chat(user, "<span class='warning'>You do not have enough blood to cast this!</span>")
+			revert_cast()
 			return FALSE
+		V.usable_blood -= 15
 		bat = new /mob/living/simple_animal/hostile/vampire_bat(user.loc)
 		user.forceMove(bat)
 		bat.controller = user
