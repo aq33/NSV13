@@ -62,6 +62,7 @@
 	color = "#8228A0"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	toxpwr = 3
+	accelerant_quality = 10
 	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/toxin/plasma/on_mob_life(mob/living/carbon/C)
@@ -294,6 +295,7 @@
 	color = "#9ACD32"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	toxpwr = 0.5
+	accelerant_quality = 10
 	taste_description = "burning"
 
 /datum/reagent/toxin/spore_burning/on_mob_life(mob/living/carbon/M)

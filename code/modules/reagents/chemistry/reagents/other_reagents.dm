@@ -384,6 +384,7 @@
 	description = "YOUR FLESH! IT BURNS!"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	taste_description = "burning"
+	accelerant_quality = 20
 	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/hellwater/on_mob_life(mob/living/carbon/M)
@@ -1126,6 +1127,7 @@
 	glass_icon_state = "dr_gibb_glass"
 	glass_name = "glass of welder fuel"
 	glass_desc = "Unless you're an industrial tool, this is probably not safe for consumption."
+	accelerant_quality = 10
 	process_flags = ORGANIC | SYNTHETIC
 
 

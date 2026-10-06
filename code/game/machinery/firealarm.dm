@@ -136,7 +136,8 @@
 		attack_hand(eminence)
 
 /obj/machinery/firealarm/temperature_expose(datum/gas_mixture/air, temperature, volume)
-	if((temperature > T0C + 200 || temperature < BODYTEMP_COLD_DAMAGE_LIMIT) && (last_alarm+FIREALARM_COOLDOWN < world.time) && !(obj_flags & EMAGGED) && detecting && !machine_stat)
+	var/turf/open/T = get_turf(src)
+	if((temperature >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST || temperature < BODYTEMP_COLD_DAMAGE_LIMIT || (istype(T) && T.turf_fire)) &&(last_alarm+FIREALARM_COOLDOWN < world.time) && !(obj_flags & EMAGGED) && detecting && !machine_stat)
 		alarm()
 	..()
 
