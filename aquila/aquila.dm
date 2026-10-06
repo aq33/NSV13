@@ -66,6 +66,7 @@
 #include "code\game\gamemodes\objective.dm"
 #include "code\game\gamemodes\objective_break_machinery.dm"
 #include "code\game\gamemodes\objective_items.dm"
+#include "code\game\gamemodes\thief\thief.dm"
 #include "code\game\gamemodes\vampire\traitor_vamp.dm"
 #include "code\game\gamemodes\vampire\vampire.dm"
 #include "code\game\gamemodes\vampire\vampire_bat.dm"
