@@ -38,7 +38,7 @@
 	///gas IDs of current active gas overlays
 	var/list/atmos_overlay_types
 	/// How much fuel this open turf provides to turf fires, and how easily they can be ignited in the first place. Can be negative to make fires die out faster.
-	var/flammability = 0.2
+	var/flammability = 0.3
 	var/obj/effect/abstract/turf_fire/turf_fire
 	var/turf/pressure_specific_target
 

@@ -1,4 +1,3 @@
-#define IGNITE_TURF_CHANCE 30
 #define IGNITE_TURF_LOW_POWER 8
 #define IGNITE_TURF_HIGH_POWER 22
 
@@ -6,22 +5,9 @@
 	return null
 
 /turf/open/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
-	if(prob(IGNITE_TURF_CHANCE))
-		IgniteTurf(rand(IGNITE_TURF_LOW_POWER, IGNITE_TURF_HIGH_POWER))
+	//if(prob(flammability * 100))
+	//	ignite_turf(rand(IGNITE_TURF_LOW_POWER,IGNITE_TURF_HIGH_POWER))
 	return ..()
-
-/// Called when attempting to set fire to a turf
-/turf/proc/IgniteTurf(power, fire_color = "red")
-	return
-
-/turf/open/IgniteTurf(power, fire_color = "red")
-	if(!air || air.get_moles(GAS_O2) < 1)
-		return
-	if(turf_fire)
-		turf_fire.AddPower(power)
-		return
-	if(!isgroundlessturf(src))
-		new /obj/effect/abstract/turf_fire(src, power, fire_color)
 
 /turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 	return
@@ -266,6 +252,5 @@
 	light_range = LIGHT_RANGE_FIRE
 
 #undef INSUFFICIENT
-#undef IGNITE_TURF_CHANCE
 #undef IGNITE_TURF_LOW_POWER
 #undef IGNITE_TURF_HIGH_POWER
