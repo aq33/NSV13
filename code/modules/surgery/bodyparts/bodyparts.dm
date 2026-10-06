@@ -687,6 +687,8 @@
 	px_x = -2
 	px_y = 12
 	max_stamina_damage = 50
+	/// Used to make footprints
+	var/footprint_sprite = FOOTPRINT_SPRITE_SHOES
 
 /obj/item/bodypart/l_leg/is_disabled()
 	if(HAS_TRAIT(owner, TRAIT_PARALYSIS_L_LEG))
@@ -713,6 +715,7 @@
 	limb_id = SPECIES_MONKEY
 	animal_origin = MONKEY_BODYPART
 	px_y = 4
+	footprint_sprite = FOOTPRINT_SPRITE_PAWS
 
 /obj/item/bodypart/l_leg/monkey/teratoma
 	icon = 'icons/mob/animal_parts.dmi' //NSV13 - old monkey sprites
@@ -749,6 +752,8 @@
 	px_x = 2
 	px_y = 12
 	max_stamina_damage = 50
+	/// Used to make footprints
+	var/footprint_sprite = FOOTPRINT_SPRITE_SHOES
 
 /obj/item/bodypart/r_leg/is_disabled()
 	if(HAS_TRAIT(owner, TRAIT_PARALYSIS_R_LEG))
@@ -775,6 +780,7 @@
 	limb_id = SPECIES_MONKEY
 	animal_origin = MONKEY_BODYPART
 	px_y = 4
+	footprint_sprite = FOOTPRINT_SPRITE_PAWS
 
 /obj/item/bodypart/r_leg/monkey/teratoma
 	icon = 'icons/mob/animal_parts.dmi' //NSV13 - old monkey sprites
