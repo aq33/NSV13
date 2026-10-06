@@ -108,3 +108,36 @@
 	icon_state = "ghostcostumehood"
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+
+// AQUILA - port aq33/tgstation#564: zabawkowe repliki strojów ERT w automacie Donksoft
+/obj/item/clothing/head/ertcommanderfake
+	name = "replika hełmu dowódcy ERT"
+	icon_state = "hardsuit0-ert_commander"
+	item_state = "hardsuit0-ert_commander"
+	desc = "Plastikowa replika hełmu dowódcy ERT. Wyglądasz w niej zupełnie jak prawdziwy, kompetentny członek ERT! To zabawka, nie nadaje się do użytku w kosmosie!"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	clothing_flags = SNUG_FIT
+
+/obj/item/clothing/head/ertsecurityfake
+	name = "replika hełmu ochroniarza ERT"
+	icon_state = "hardsuit0-ert_security"
+	item_state = "hardsuit0-ert_security"
+	desc = "Plastikowa replika hełmu ochroniarza ERT. Wyglądasz w niej zupełnie jak prawdziwy, kompetentny członek ERT! To zabawka, nie nadaje się do użytku w kosmosie!"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	clothing_flags = SNUG_FIT
+
+/obj/item/clothing/head/ertmedicalfake
+	name = "replika hełmu medyka ERT"
+	icon_state = "hardsuit0-ert_medical"
+	item_state = "hardsuit0-ert_medical"
+	desc = "Plastikowa replika hełmu medyka ERT. Wyglądasz w niej zupełnie jak prawdziwy, kompetentny członek ERT! To zabawka, nie nadaje się do użytku w kosmosie!"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	clothing_flags = SNUG_FIT
+
+/obj/item/clothing/head/ertengineerfake
+	name = "replika hełmu inżyniera ERT"
+	icon_state = "hardsuit0-ert_engineer"
+	item_state = "hardsuit0-ert_engineer"
+	desc = "Plastikowa replika hełmu inżyniera ERT. Wyglądasz w niej zupełnie jak prawdziwy, kompetentny członek ERT! To zabawka, nie nadaje się do użytku w kosmosie!"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	clothing_flags = SNUG_FIT
