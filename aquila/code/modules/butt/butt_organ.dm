@@ -70,6 +70,10 @@
 	return ..()
 
 /obj/item/organ/butt/Insert(mob/living/carbon/M, special = 0, drop_if_replaced = TRUE)
+	// Already in this mob: parent Insert is a no-op here (create_internal_organs() re-inserts
+	// organs that set_species() already placed), so don't re-register our signals.
+	if(owner == M)
+		return
 	. = ..()
 	if(owner != M)
 		return
