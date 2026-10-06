@@ -403,7 +403,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	if(compartmentLoadAccessCheck(user) && user.a_intent != INTENT_HARM)
 		if(canLoadItem(I))
 			loadingAttempt(I,user)
-			updateUsrDialog() //can't put this on the proc above because we spam it below
+			ui_update() //can't put this on the proc above because we spam it below //AQ EDIT - was updateUsrDialog(), which doesn't refresh tgui
 
 		if(istype(I, /obj/item/storage/bag)) //trays USUALLY
 			var/obj/item/storage/T = I
@@ -422,7 +422,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				to_chat(user, "<span class='warning'>[src] refuses some items!</span>")
 			if(loaded)
 				to_chat(user, "<span class='notice'>You insert [loaded] dishes into [src]'s compartment.</span>")
-				updateUsrDialog()
+				ui_update() //AQ EDIT - was updateUsrDialog(), which doesn't refresh tgui
 	else
 		. = ..()
 		if(tiltable && !tilted && I.force)
@@ -969,19 +969,21 @@ GLOBAL_LIST_EMPTY(vending_products)
 			var/base64
 			var/price = 0
 			for(var/obj/T in contents)
-				if(T.name == O)
+				if(format_text(T.name) == O) //AQ EDIT - names are stored through format_text(), so improper-named items never matched
 					price = T.custom_price
 					if(!base64)
-						if(base64_cache[T.type])
-							base64 = base64_cache[T.type]
+						var/cache_key = "[T.icon]_[T.icon_state]" //AQ EDIT - same type can look different (e.g. parcels)
+						if(base64_cache[cache_key])
+							base64 = base64_cache[cache_key]
 						else
 							base64 = icon2base64(icon(T.icon, T.icon_state, frame=1))
-							base64_cache[T.type] = base64
+							base64_cache[cache_key] = base64
 					break
 			var/list/data = list(
 				name = O,
 				price = price,
-				img = base64
+				img = base64,
+				amount = vending_machine_input[O] //AQ EDIT - stock count for the UI
 			)
 			.["vending_machine_input"] += list(data)
 
@@ -1012,7 +1014,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 					return
 				var/datum/bank_account/account = C.registered_account
 				for(var/obj/O in contents)
-					if(O.name == N)
+					if(format_text(O.name) == N) //AQ EDIT - see ui_data
 						S = O
 						break
 				if(S)
