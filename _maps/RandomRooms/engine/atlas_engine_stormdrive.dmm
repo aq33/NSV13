@@ -1,4 +1,115 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/monotile/steel,
+/area/engine/engine_room)
+"ac" = (
+/obj/effect/turf_decal/tile/ship/half/yellow{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/purple/hidden{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/monotile/dark,
+/area/engine/engine_room)
+"ae" = (
+/obj/structure/particle_accelerator/particle_emitter/center{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/engine/engine_room)
+"ag" = (
+/obj/structure/particle_accelerator/power_box{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/engine/engine_room)
+"ai" = (
+/obj/structure/particle_accelerator/fuel_chamber{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/engine/engine_room)
+"ak" = (
+/obj/structure/particle_accelerator/end_cap{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/engine/engine_room)
+"am" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/monotile/steel,
+/area/engine/engine_room)
+"ao" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/monotile/steel,
+/area/engine/engine_room)
 "eh" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -282,17 +393,6 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
-"Cm" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
 "Co" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
@@ -327,23 +427,6 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden{
 	dir = 4
 	},
-/turf/open/floor/monotile/steel,
-/area/engine/engine_room)
-"DW" = (
-/obj/structure/particle_accelerator/end_cap{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/engine,
-/area/engine/engine_room)
-"DY" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
 "Eg" = (
@@ -450,27 +533,6 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/engine/engine_room)
-"Jc" = (
-/obj/structure/particle_accelerator/fuel_chamber{
-	dir = 8
-	},
-/turf/open/floor/engine,
-/area/engine/engine_room)
-"JF" = (
-/obj/effect/turf_decal/tile/ship/half/yellow{
-	dir = 8
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/purple/hidden{
-	dir = 9
-	},
-/turf/open/floor/monotile/dark,
-/area/engine/engine_room)
 "JS" = (
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
@@ -504,12 +566,6 @@
 	icon_state = "1-8"
 	},
 /turf/open/floor/monotile/dark,
-/area/engine/engine_room)
-"Rb" = (
-/obj/structure/particle_accelerator/power_box{
-	dir = 8
-	},
-/turf/open/floor/engine,
 /area/engine/engine_room)
 "Rm" = (
 /obj/structure/cable/yellow{
@@ -592,15 +648,6 @@
 "Yh" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
-	},
-/turf/open/floor/engine,
-/area/engine/engine_room)
-"Yi" = (
-/obj/structure/particle_accelerator/particle_emitter/center{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
 	},
 /turf/open/floor/engine,
 /area/engine/engine_room)
@@ -832,7 +879,7 @@ Db
 zm
 Uu
 Tk
-JF
+ac
 Yd
 Jb
 zm
@@ -852,7 +899,7 @@ Db
 zm
 DU
 TY
-Yi
+ae
 ZS
 HA
 zm
@@ -872,7 +919,7 @@ zm
 zm
 ta
 Kc
-Rb
+ag
 yS
 zX
 zm
@@ -892,7 +939,7 @@ MG
 GM
 ta
 qz
-Jc
+ai
 yS
 zX
 wa
@@ -912,7 +959,7 @@ MG
 ZY
 ta
 CV
-DW
+ak
 Yh
 zX
 uk
@@ -932,7 +979,7 @@ MG
 KS
 ta
 kX
-kX
+am
 kX
 zX
 Ao
@@ -952,7 +999,7 @@ MG
 Ch
 jR
 wB
-kX
+am
 zZ
 Yu
 kG
@@ -972,11 +1019,11 @@ MG
 Ym
 yA
 iB
-Cm
+ao
 vA
 SR
 pb
-DY
+ab
 uy
 pA
 MG

@@ -21,4 +21,12 @@
 #define JOB_MODIFICATION_MAP_NAME "NSV Galactica"
 #include "..\..\..\..\_maps\map_files\Galactica\job_changes.dm"
 
+//AQ EDIT START - our maps are renamed in their .json, so the upstream map_name checks above never match them
+#define JOB_MODIFICATION_MAP_NAME "NSV Aquilas"
+#include "..\..\..\..\_maps\map_files\Aquila_Atlas\job_changes.dm"
+
+#define JOB_MODIFICATION_MAP_NAME "DLV Trawnik"
+#include "..\..\..\..\_maps\map_files\Aquila_Serendipity\job_changes.dm"
+//AQ EDIT END
+
 #undef JOB_MODIFICATION_MAP_NAME
