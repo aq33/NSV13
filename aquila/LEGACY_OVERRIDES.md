@@ -42,6 +42,11 @@ The other ~60 same-type redefinitions in `aquila/` call `..()`, so they are alre
 | `ROLE_PARADOX_CLONE` + `antagonist_bannable_roles` entry | `code/__DEFINES/role_preferences.dm` | Paradox Clone (tgstation#71141 port); the define has to be in core because `aquila.dm` is included after the list |
 | `ANTAG_HUD_PARADOX_CLONE` (33) + `GLOB.huds` entry | `code/__DEFINES/atom_hud.dm`, `code/datums/hud.dm` | Paradox Clone HUD; must stay the next index after `ANTAG_HUD_VAMPIRE` |
 | `paradox_clone` icon state | `icons/mob/hud.dmi` | Paradox Clone HUD icon, copied from tgstation's `antag_hud.dmi` |
+| `ROLE_THIEF` + `antagonist_bannable_roles` entry | `code/__DEFINES/role_preferences.dm` | Thief (tgstation#64144 port); same reason as `ROLE_PARADOX_CLONE` |
+| `ANTAG_HUD_THIEF` (34) + `GLOB.huds` entry | `code/__DEFINES/atom_hud.dm`, `code/datums/hud.dm` | Thief HUD; must stay the next index after `ANTAG_HUD_PARADOX_CLONE` |
+| `amount` var on `/datum/objective/steal_five_of_type` | `code/game/gamemodes/objective.dm` | Replaces the hardcoded 5 in both `check_completion()`s (default stays 5), so the thief guns/organs objectives can ask for a different count |
+| `thief`, `hoard`, `hoarder_circle` icon states | `icons/mob/hud.dmi`, `icons/mob/actions/actions_minor_antag.dmi`, `icons/mob/telegraphing/telegraph.dmi` | Thief HUD icon, "declare hoard" action and hoard marker, copied from tgstation |
+| `thief_flavor.json` | `strings/` | Thief flavor texts; lives in core `strings/` because `tools/deploy.sh` only ships that folder and `strings()` strips `/` from file names |
 
 Pre-existing single-call hooks that stay in core: `parts += mouse_report()` (`roundend.dm`) and `/datum/admins/proc/reloadwhitelist` in the admin verb list (`admin_verbs.dm`).
 
