@@ -5,26 +5,9 @@
 /mob/living/simple_animal/lesserdemon/wrath //slightly more damage.
 	name = "wrathful demon"
 	real_name = "wrathful demon"
-	melee_damage = 28
-	//melee_damage_lower = 28
-	//melee_damage_upper = 28 Chyba to z woundów jest
+	melee_damage = 24
 	icon_state = "lesserdaemon_wrath"
 	icon_living = "lesserdaemon_wrath"
-
-/obj/effect/proc_holder/spell/pointed/trigger/ignite
-	name = "Ignite"
-	desc = "This ranged spell sets a person on fire."
-	school = "transmutation"
-	charge_max = 600
-	clothes_req = FALSE
-	invocation = "PŁOŃ!!"
-	invocation_type = "shout"
-	message = "<span class='notice'Ogień Piekielny spowija Cię!</span>"
-	cooldown_min = 75
-	ranged_mousepointer = 'aquila/icons/effects/mouse_pointers/throw_target.dmi'
-	action_icon = 'aquila/icons/mob/actions/humble/actions_humble.dmi'
-	action_icon_state = "sacredflame"
-	active_msg = "You prepare to ignite a target..."
 
 /obj/effect/proc_holder/spell/targeted/inflict_handler/ignite
 	name = "Ignite"
@@ -34,8 +17,17 @@
 	invocation_type = "shout"
 	charge_max = 600
 	clothes_req = FALSE
-	action_icon = 'aquila/icons/mob/actions/humble/actions_humble.dmi'
-	action_icon_state = "sacredflame"
+	action_icon = 'aquila/icons/mob/actions/actions_minor_antag.dmi'
+	action_icon_state = "ignite"
+	action_background_icon_state = "bg_demon"
 	amt_firestacks = 5
 	ignites = TRUE
 	sound = 'sound/magic/fireball.ogg'
+
+/obj/effect/proc_holder/spell/targeted/ethereal_jaunt/sin/wrath
+	name = "Greater Demonic Jaunt"
+	desc = "Briefly turn to cinder and ash, allowing you to freely pass through objects. Lasts slightly shorter than normal, but is more easily used."
+	charge_max = 25 SECONDS
+	cooldown_min = 25 SECONDS
+	jaunt_duration = 2 SECONDS
+	jaunt_in_time = 0

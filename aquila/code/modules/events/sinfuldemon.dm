@@ -22,7 +22,7 @@
 		return MAP_ERROR
 
 	//selecting a candidate player
-	var/list/candidates = get_candidates(ROLE_SINFULDEMON, null, ROLE_SINFULDEMON)
+	var/list/candidates = get_candidates(ROLE_SINFULDEMON, /datum/role_preference/midround_ghost/sinfuldemon)
 	if(!candidates.len)
 		return NOT_ENOUGH_PLAYERS
 
@@ -39,9 +39,16 @@
 	spawned_mobs += sinfuldemon
 	message_admins("[ADMIN_LOOKUPFLW(sinfuldemon)] has been made into a demon of sin by an event.")
 	log_game("[key_name(sinfuldemon)] was spawned as a demon of sin by an event.")
-	var/datum/job/jobdatum = SSjob.GetJob("Assistant")
-	sinfuldemon.job = jobdatum.title
+	var/datum/job/jobdatum = SSjob.GetJob(JOB_NAME_ASSISTANT)
+	if(SSshuttle.arrivals)
+		SSshuttle.arrivals.QueueAnnounce(sinfuldemon, jobdatum.title)
+	Mind.assigned_role = jobdatum.title //sets up the manifest properly
 	jobdatum.equip(sinfuldemon)
+	var/obj/item/card/id/id = sinfuldemon.get_idcard()
+	if(istype(id))
+		id.assignment = jobdatum.title
+		id.update_label()
+	GLOB.data_core.manifest_inject(sinfuldemon)
 	return SUCCESSFUL_SPAWN
 
 
@@ -49,13 +56,12 @@
 	var/mob/living/carbon/human/new_sinfuldemon = new(spawn_loc)
 	if(!spawn_loc)
 		SSjob.SendToLateJoin(new_sinfuldemon)
-	//var/datum/preferences/A = new() //Randomize appearance for the demon.
-	//A.copy_to(new_sinfuldemon) Brakuje definicji proca z yoga, dodać później
+	var/datum/character_save/CS = new() //Randomize appearance for the demon.
+	CS.copy_to(new_sinfuldemon)
 	new_sinfuldemon.dna.update_dna_identity()
 	return new_sinfuldemon
 
 /proc/create_sinfuldemon_mind(key)
 	var/datum/mind/Mind = new /datum/mind(key)
-	Mind.assigned_role = ROLE_SINFULDEMON
 	Mind.special_role = ROLE_SINFULDEMON
 	return Mind
