@@ -1,4 +1,16 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/spawner/lootdrop/maintenance/six,
+/obj/structure/closet/crate,
+/obj/machinery/power/apc/auto_name/south,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/quartermaster/warehouse)
 "ad" = (
 /obj/structure/rack,
 /obj/item/clothing/ears/earmuffs,
@@ -595,9 +607,6 @@
 /obj/machinery/light/floor,
 /turf/open/floor/monotile/light,
 /area/quartermaster)
-"cR" = (
-/turf/closed/wall/r_wall/ship,
-/area/nsv/weapons/fore)
 "cS" = (
 /obj/structure/lattice/catwalk/over/ship,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
@@ -9120,15 +9129,6 @@
 /obj/effect/landmark/blobstart,
 /turf/open/floor/plating,
 /area/maintenance/aft)
-"Pn" = (
-/obj/effect/spawner/lootdrop/maintenance/six,
-/obj/structure/closet/crate,
-/obj/machinery/power/apc/auto_name/south,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/turf/open/floor/plasteel/tiled/light,
-/area/quartermaster/warehouse)
 "Ps" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
 /obj/machinery/light/floor,
@@ -10874,9 +10874,6 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/quartermaster/warehouse)
-"WW" = (
-/turf/open/space/basic,
-/area/nsv/weapons/gauss/battery/deck2)
 "Xa" = (
 /obj/machinery/suit_storage_unit/ce,
 /turf/open/floor/carpet/ship/orange_carpet,
@@ -40682,7 +40679,7 @@ kx
 ml
 lQ
 xl
-Pn
+aa
 db
 JZ
 gu
@@ -50693,12 +50690,12 @@ Sg
 Sg
 Sg
 zG
-WW
+zG
 MI
 gd
 gd
 gd
-cR
+MI
 dD
 dD
 dD
