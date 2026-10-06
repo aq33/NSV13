@@ -47,6 +47,8 @@ The other ~60 same-type redefinitions in `aquila/` call `..()`, so they are alre
 | `amount` var on `/datum/objective/steal_five_of_type` | `code/game/gamemodes/objective.dm` | Replaces the hardcoded 5 in both `check_completion()`s (default stays 5), so the thief guns/organs objectives can ask for a different count |
 | `thief`, `hoard`, `hoarder_circle` icon states | `icons/mob/hud.dmi`, `icons/mob/actions/actions_minor_antag.dmi`, `icons/mob/telegraphing/telegraph.dmi` | Thief HUD icon, "declare hoard" action and hoard marker, copied from tgstation |
 | `thief_flavor.json` | `strings/` | Thief flavor texts; lives in core `strings/` because `tools/deploy.sh` only ships that folder and `strings()` strips `/` from file names |
+| Custom landing link in `ui_interact()` + `designate` branch in `Topic()` | `nsv13/code/modules/shuttle/computer.dm` | Custom shuttle / bluespace pod landing spot; the var and procs are in `aquila/code/modules/shuttle/computer.dm` |
+| `TRAIT_EAT_MORE`, `TRAIT_GENELESS` defines; `TRAIT_GENELESS` check in `add_mutation()`; `TRAIT_EAT_MORE` hunger multiplier | `code/__DEFINES/traits.dm`, `code/datums/dna.dm`, `code/modules/mob/living/carbon/human/species.dm` | Sinful demons (Yogstation sync); the defines are in core because core procs use them |
 
 Pre-existing single-call hooks that stay in core: `parts += mouse_report()` (`roundend.dm`) and `/datum/admins/proc/reloadwhitelist` in the admin verb list (`admin_verbs.dm`).
 
@@ -62,6 +64,10 @@ Pre-existing single-call hooks that stay in core: `parts += mouse_report()` (`ro
 | `reagents/.../alcohol_reagents.dm` | `aquila/.../alcohol_reagents.dm` | Ethanol `get_hydration_factor()` |
 | `power/rtg.dm` | `aquila/code/modules/power/rtg.dm` | Movable RTG (var, `wrench_act()`, network step of `process()`). The `if(anchored)` in `Initialize()` stays as an AQ EDIT. |
 | `projectiles/guns/energy/laser.dm`, `projectiles/projectile/beams.dm`, `projectiles/guns/ballistic/automatic.dm` | `aquila/code/modules/projectiles/...` | Hitscan laser balance var values |
+| `subsystem/processing/turf_fire.dm`, `effects/turf_fire.dm`, `icons/effects/turf_fire.dmi`, `sound/weapons/flamethrower{1,2,3,_empty}.ogg` | same paths under `aquila/` | Turf fires (Yogstation #19738): the fire effect and its subsystem |
+| `LINDA_fire.dm` (`IgniteTurf()`, ignition in `temperature_expose()`), `LINDA_turf_tile.dm` (`flammability`), `fancy_floor.dm`, `mineral_floor.dm`, `reinf_floor.dm`, `grille.dm`, `tank_types.dm`, `beams.dm` / `_incendiary.dm` (`on_hit()` ignition), `reagents.dm` / `holder.dm` and five reagent files (`accelerant_quality`) | `aquila/code/modules/atmospherics/environmental/LINDA_fire.dm`, `aquila/code/game/turfs/open/floor/turf_fire_flammability.dm`, `aquila/code/game/objects/structures/grille.dm`, `aquila/code/game/objects/items/tanks/tank_types.dm`, `aquila/code/modules/projectiles/projectile/{beams,bullets/_incendiary}.dm`, `aquila/code/modules/reagents/chemistry/accelerants.dm` | Turf fires: var values, new procs and post-`..()` additions |
+| `antagonists/morph/morph.dm`, `morph_antag.dm` | `aquila/code/modules/antagonists/morph/morph_objectives.dm` | Morph objectives (Yogstation #13996); counting hooks in through an `eat()` override |
+| `nsv13/.../clothing/masks/_masks.dm` | `aquila/code/modules/clothing/masks/gasmask.dm` | Gas mask breathing sound only on internals |
 
 ## Remaining core edits, by kind
 
@@ -78,6 +84,7 @@ These change lines *inside* upstream procs. Moving them would mean copying whole
 - **Recent fixes and ports kept inline** (do not move): `stasis.dm` null guard, `implant_storage.dm` deleted-implantee path, `roomspawner.dm` late-load fix, `heal.dm` teratoma loot chance, `macrophage.dm` skin init.
 - **Monkey-like trait rename** (`TRAIT_MONKEYLIKE` → `TRAIT_DISCOORDINATED`: `traits.dm`, `_globalvars/traits.dm`, `severe.dm`, `human_helpers.dm`, `status_composers.dm`, `bloody_eye.dm`). A rename across core uses.
 - **Nanites rework** (`components/nanites.dm`, `nanite_programs.dm`, `nanite_programs/utility.dm` incl. the Aquila-only `cloud_change` program, `__DEFINES/nanites.dm`, `all_nodes.dm` commented nodes).
+- **Turf fires port, interleaved part** (Yogstation #19738): `flamethrower.dm` (fuel and ignition rewrite), `firealarm.dm` (`temperature_expose()` condition), `change_turf.dm` (fire carried over on `ChangeTurf()`), `anomalies.dm` (pyroclastic anomaly), `bottle.dm` (molotov). Everything else of the port is in `aquila/`.
 - **Job datums** (`jobs/job_types/*.dm`, `military_police.dm`, `subsystem/job.dm`). Outfits, implants, slots and exp requirements are mixed with hardened job-title and radio-channel constants. Left alone to avoid touching the job/config parsing hardening.
 
 ### Data tweaks left in core lists (D-like)

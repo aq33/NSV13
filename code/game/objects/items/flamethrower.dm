@@ -31,7 +31,7 @@
 	var/create_with_tank = FALSE
 	var/igniter_type = /obj/item/assembly/igniter
 	var/max_damage = 16 // maximum direct burn damage it can cause
-	var/list/flame_sounds = list('sound/weapons/flamethrower1.ogg','sound/weapons/flamethrower2.ogg','sound/weapons/flamethrower3.ogg')
+	var/list/flame_sounds = list('aquila/sound/weapons/flamethrower1.ogg','aquila/sound/weapons/flamethrower2.ogg','aquila/sound/weapons/flamethrower3.ogg')
 	trigger_guard = TRIGGER_GUARD_NORMAL
 
 /obj/item/flamethrower/Destroy()
@@ -225,7 +225,7 @@
 	visible_message("<span class='danger'>\The [src] breathes a sighed hiss as its flame dies out.</span>")
 	lit = FALSE
 	set_light_on(FALSE)
-	playsound(loc, 'sound/weapons/flamethrower_empty.ogg', 50, TRUE)
+	playsound(loc, 'aquila/sound/weapons/flamethrower_empty.ogg', 50, TRUE)
 	STOP_PROCESSING(SSobj,src)
 	update_icon()
 	return FALSE
