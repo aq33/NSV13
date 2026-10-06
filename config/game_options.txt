@@ -102,6 +102,7 @@ NO_INTERCEPT_REPORT
 
 ## Common gamemodes -- (80% total chance on lowpop, 32% on highpop)
 PROBABILITY TRAITOR 1
+PROBABILITY THIEF 1
 PROBABILITY SECRET_EXTENDED 1
 ## Common on highpop -- 11% chance
 PROBABILITY PVP 1 ## Change to 6 when PVP works again
@@ -151,6 +152,7 @@ REPEATED_MODE_ADJUST 45 30 10
 ## Modes that aren't continuous will end the instant all antagonists are dead.
 
 CONTINUOUS TRAITOR
+CONTINUOUS THIEF
 CONTINUOUS TRAITORBRO
 CONTINUOUS TRAITORCHAN
 CONTINUOUS INCURSION
@@ -206,6 +208,9 @@ MIN_POP TRAITOR 5
 MAX_POP TRAITOR -1
 ## NSV13 - minimum number of ready players to enable traitor objectives where murder is reasonable/expected
 MIN_POP_KILL_OBJECTIVES 11
+
+MIN_POP THIEF 5
+MAX_POP THIEF -1
 
 ## NSV13 - minimum pop of ready players if preround, or total joins if midround, for AIs to be able to become a traitor in that game mode
 AI_TRAITOR_MIN_PLAYERS 20

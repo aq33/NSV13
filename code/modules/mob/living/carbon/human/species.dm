@@ -1343,6 +1343,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(prob(round(-H.satiety/40)))
 				H.Jitter(5)
 			hunger_rate = 3 * HUNGER_FACTOR
+		if(HAS_TRAIT(H, TRAIT_EAT_MORE)) // AQ EDIT - gluttony demons hunger thrice as fast
+			hunger_rate *= 3
 		hunger_rate *= H.physiology.hunger_mod
 		H.adjust_nutrition(-hunger_rate)
 		if(shitting_enabled && !HAS_TRAIT(H, TRAIT_NOSHITTING)) // AQ EDIT
