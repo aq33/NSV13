@@ -761,10 +761,8 @@
 		if(config_tag in initial(G.gamemode_blacklist))
 			continue
 		possible += T
-	var/goal_weights = 0
-	while(possible.len && goal_weights < STATION_GOAL_BUDGET)
-		var/datum/station_goal/picked = pick_n_take(possible)
-		goal_weights += initial(picked.weight)
+	// AQUILA EDIT - every station goal is available each round
+	for(var/datum/station_goal/picked as anything in possible)
 		station_goals += new picked
 
 

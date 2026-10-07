@@ -15,6 +15,9 @@
 				continue
 			destination_found = 1
 			dat += "<A href='?src=[REF(src)];move=[S.id]'>Send to [S.name]</A><br>"
+		if(allow_custom_landing) // AQ EDIT START - custom landing spot, see aquila/code/modules/shuttle/computer.dm
+			destination_found = 1
+			dat += "<A href='?src=[REF(src)];designate=1'>Designate landing location</A><br>" // AQ EDIT END
 		if(!destination_found)
 			dat += "<B>Shuttle Locked</B><br>"
 			if(admin_controlled)
@@ -34,6 +37,10 @@
 	if(!allowed(usr))
 		to_chat(usr, "<span class='danger'>Access denied.</span>")
 		return
+
+	if(href_list["designate"] && allow_custom_landing) // AQ EDIT START - custom landing spot
+		designate_landing(usr)
+		return // AQ EDIT END
 
 	if(href_list["move"])
 		var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)

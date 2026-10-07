@@ -276,13 +276,14 @@
 		var/obj/item/clothing/suit/space/hardsuit/HS = picked_item
 		var/obj/item/clothing/head/helmet/helmet = initial(HS.helmettype)
 		//I.head_piece.initial_state = initial(helmet.icon_state)
-		I.helmettype = initial(helmet)
-		I.head_piece.worn_icon = initial(helmet.worn_icon)
-		I.head_piece.worn_icon_state = initial(helmet.worn_icon_state)
-		I.head_piece.icon_state = initial(helmet.icon_state)
-		I.head_piece.name = initial(helmet.name)
-		I.head_piece.desc = initial(helmet.desc)
-		I.head_piece.actions = list()
+		if(helmet && !QDELETED(I.head_piece)) // AQ EDIT - the helmet can be gone, and not every hardsuit has a helmettype
+			I.head_piece.worn_icon = initial(helmet.worn_icon)
+			I.head_piece.worn_icon_state = initial(helmet.worn_icon_state)
+			I.head_piece.icon_state = initial(helmet.icon_state)
+			I.head_piece.name = initial(helmet.name)
+			I.head_piece.desc = initial(helmet.desc)
+			I.head_piece.actions = list()
+			I.head_piece.update_slot_icon() // AQ EDIT
 
 
 /datum/action/item_action/chameleon/change/Trigger()

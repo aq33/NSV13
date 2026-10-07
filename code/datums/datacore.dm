@@ -214,12 +214,18 @@
 	return dat
 
 
-/datum/datacore/proc/manifest_inject(mob/living/carbon/human/H, client/C)
+/datum/datacore/proc/manifest_inject(mob/living/carbon/human/H, client/C, force = FALSE, record_name, assignment_override) // AQ EDIT - force/record_name/assignment_override for the infiltrator crew manifest spoof
 	set waitfor = FALSE
 	var/static/list/show_directions = list(SOUTH, WEST)
-	if(H.mind && (H.mind.assigned_role != H.mind.special_role))
+	if(H.mind && ((H.mind.assigned_role != H.mind.special_role) || force)) // AQ EDIT
 		var/assignment
-		if(H.mind.assigned_role)
+		// AQ EDIT START
+		if(!record_name)
+			record_name = H.real_name
+		var/locked_rank = assignment_override || H.mind.assigned_role
+		if(assignment_override)
+			assignment = assignment_override
+		else if(H.mind.assigned_role) // AQ EDIT END
 			assignment = H.mind.assigned_role
 		else if(H.job)
 			assignment = H.job
@@ -246,7 +252,7 @@
 		//General Record
 		var/datum/data/record/G = new()
 		G.fields["id"]			= id
-		G.fields["name"]		= H.real_name
+		G.fields["name"]		= record_name // AQ EDIT
 		G.fields["rank"]		= assignment
 		G.fields["hud"]			= get_hud_by_jobname(assignment)
 		G.fields["age"]			= H.age
@@ -273,7 +279,7 @@
 		//Medical Record
 		var/datum/data/record/M = new()
 		M.fields["id"]			= id
-		M.fields["name"]		= H.real_name
+		M.fields["name"]		= record_name // AQ EDIT
 		M.fields["blood_type"]	= H.dna.blood_type
 		M.fields["b_dna"]		= H.dna.unique_enzymes
 		M.fields["mi_dis"]		= "None"
@@ -296,7 +302,7 @@
 		//Security Record
 		var/datum/data/record/S = new()
 		S.fields["id"]			= id
-		S.fields["name"]		= H.real_name
+		S.fields["name"]		= record_name // AQ EDIT
 		S.fields["criminal"]	= "None"
 		S.fields["citation"]	= list()
 		S.fields["crim"]		= list()
@@ -311,9 +317,9 @@
 
 		//Locked Record
 		var/datum/data/record/L = new()
-		L.fields["id"]			= rustg_hash_string(RUSTG_HASH_MD5, "[H.real_name][H.mind.assigned_role]")	//surely this should just be id, like the others?
-		L.fields["name"]		= H.real_name
-		L.fields["rank"] 		= H.mind.assigned_role
+		L.fields["id"]			= rustg_hash_string(RUSTG_HASH_MD5, "[record_name][locked_rank]") // AQ EDIT	//surely this should just be id, like the others?
+		L.fields["name"]		= record_name // AQ EDIT
+		L.fields["rank"] 		= locked_rank // AQ EDIT
 		L.fields["age"]			= H.age
 		L.fields["sex"]			= H.dna.features["body_model"] //NSV13
 		switch(H.gender)

@@ -16,6 +16,8 @@
 	var/offset = 0
 	var/equipped_before_drop = FALSE
 	var/can_be_bloody = TRUE
+	/// Which footprint sprite these shoes leave behind
+	var/footprint_sprite = FOOTPRINT_SPRITE_SHOES
 
 /obj/item/clothing/shoes/ComponentInitialize()
 	. = ..()

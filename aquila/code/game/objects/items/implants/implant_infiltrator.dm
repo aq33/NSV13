@@ -10,7 +10,7 @@
 /obj/item/implant/infiltrator/Initialize(mapload, _owner, _team)
 	. = ..()
 	AddComponent(/datum/component/empprotection, EMP_PROTECT_SELF | EMP_PROTECT_WIRES | EMP_PROTECT_CONTENTS)
-	uplink = AddComponent(/datum/component/uplink, _owner, TRUE, FALSE, null, 20)
+	uplink = AddComponent(/datum/component/uplink, _owner, TRUE, FALSE, UPLINK_INFILTRATORS, 20)
 	alert_radio = new(src)
 	alert_radio.make_syndie()
 	alert_radio.listening = FALSE
@@ -29,7 +29,7 @@
 	. = ..()
 	if (.)
 		target.remove_status_effect(/datum/status_effect/infiltrator_pinpointer)
-		visible_message(T, span_notice("[src] explodes into a bunch of sparks!"))
+		T.visible_message(span_notice("[src] explodes into a bunch of sparks!"))
 		do_sparks(8, FALSE, T)
 		qdel(src)
 
@@ -42,18 +42,19 @@
 		return
 	var/list/radial_menu = list()
 	radial_menu["Syndicate Uplink"] = image(icon = 'icons/obj/radio.dmi', icon_state = "radio")
-	radial_menu["Change Pinpointer Target"] = image(icon = icon = 'icons/obj/device.dmi', icon_state = "pinpointer_syndicate")
+	radial_menu["Change Pinpointer Target"] = image(icon = 'icons/obj/device.dmi', icon_state = "pinpointer_syndicate")
 	var/obj/docking_port/mobile/cutter = SSshuttle.getShuttle("syndicatecutter")
-	var/obj/docking_port/stationary/homePort = SSshuttle.getDock("syndicatecutter_home")
+	var/obj/docking_port/stationary/homePort = SSshuttle.getDock("infiltrator_away")
+	// Created by the cutter's flight console when the infiltrators designate a landing spot
 	var/obj/docking_port/stationary/targetPort = SSshuttle.getDock("syndicatecutter_custom")
 	if (cutter)
 		if (is_centcom_level(cutter.z))
 			if (targetPort)
 				radial_menu["Call Ship"] = image(icon = 'icons/obj/decals.dmi', icon_state = "drop")
-		else
+		else if (homePort)
 			radial_menu["Send Ship Away"] = image(icon = 'icons/obj/decals.dmi', icon_state = "evac")
 	var/chosen = show_radial_menu(imp_in, imp_in, radial_menu, "infiltrator_implant")
-	if (!chosen)
+	if (!chosen || !imp_in)
 		return
 	switch (chosen)
 		if ("Syndicate Uplink")
@@ -81,9 +82,13 @@
 					to_chat(imp_in, span_notice("Pinpointer target set to [pinpointer.scan_target]"))
 				pinpointer.point_to_target()
 		if ("Send Ship Away")
+			if (QDELETED(cutter) || QDELETED(homePort))
+				return
 			alert_radio.talk_into(alert_radio, "The infiltration cruiser has been remotely sent to the base by [imp_in.real_name]")
 			cutter.request(homePort)
 		if ("Call Ship")
+			if (QDELETED(cutter) || QDELETED(targetPort))
+				return
 			alert_radio.talk_into(alert_radio, "The infiltration cruiser has been remotely sent to [station_name()] by [imp_in.real_name]")
 			cutter.request(targetPort)
 
@@ -95,10 +100,14 @@
 			if(istype(O) && !O.check_completion())
 				if(istype(O.target, /datum/mind))
 					var/datum/mind/M = O.target
-					targets[M.current.real_name] = M.current
+					if(M.current)
+						targets[M.current.real_name] = M.current
 				else if(istype(O, /datum/objective/steal))
 					var/datum/objective/steal/S = O
-					targets[S.targetinfo.name] = locate(S.targetinfo.targetitem)
+					if(S.targetinfo)
+						var/atom/item = locate(S.targetinfo.targetitem)
+						if(item)
+							targets[S.targetinfo.name] = item
 	return targets
 
 /atom/movable/screen/alert/status_effect/infiltrator_pinpointer
@@ -109,14 +118,14 @@
 
 /atom/movable/screen/alert/status_effect/infiltrator_pinpointer/examine(mob/user)
 	. = ..()
-	var/datum/status_effect/infiltrator_pinpointer/effect
+	var/datum/status_effect/infiltrator_pinpointer/effect = attached_effect
 	if (effect?.scan_target)
 		. += span_notice("Currently tracking [effect.scan_target]")
 
 /atom/movable/screen/alert/status_effect/infiltrator_pinpointer/Click()
 	if (isliving(usr))
 		var/obj/item/implant/infiltrator/implant = locate() in usr
-		implant.activate()
+		implant?.activate()
 
 /datum/status_effect/infiltrator_pinpointer
 	id = "infiltrator_pinpointer"

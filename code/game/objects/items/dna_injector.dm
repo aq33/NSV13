@@ -3,6 +3,7 @@
 	desc = "A cheap single use autoinjector that injects the user with DNA."
 	icon = 'icons/obj/syringe.dmi'
 	icon_state = "dnainjector"
+	var/base_icon_state = "dnainjector"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	throw_speed = 3
@@ -25,6 +26,8 @@
 		var/log_msg = "[key_name(user)] injected [key_name(M)] with the [name]"
 		for(var/HM in remove_mutations)
 			M.dna.remove_mutation(HM)
+		if(length(remove_mutations))
+			log_msg += " (mutation removal: [english_list(remove_mutations)])"
 		for(var/HM in add_mutations)
 			if(HM == RACEMUT)
 				message_admins("[ADMIN_LOOKUPFLW(user)] injected [key_name_admin(M)] with the [name] <span class='danger'>(MONKEY)</span>")
@@ -74,7 +77,7 @@
 		to_chat(user, "<span class='notice'>It appears that [target] does not have compatible DNA.</span>")
 
 	used = TRUE
-	icon_state = "dnainjector0"
+	icon_state = "[base_icon_state]0"
 	desc += " This one is spent, you better recycle it!"
 
 

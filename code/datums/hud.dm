@@ -37,6 +37,7 @@ GLOBAL_LIST_INIT(huds, list(
 	DATA_HUD_SQUAD = new/datum/atom_hud/data/human/squad_hud(), //NSV13 squad
 	ANTAG_HUD_VAMPIRE = new/datum/atom_hud/antag/hidden(), // AQ EDIT vampire
 	ANTAG_HUD_PARADOX_CLONE = new/datum/atom_hud/antag/hidden(), // AQ EDIT paradox clone
+	ANTAG_HUD_THIEF = new/datum/atom_hud/antag/hidden(), // AQ EDIT thief
 	))
 
 /datum/atom_hud

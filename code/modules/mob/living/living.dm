@@ -45,6 +45,8 @@
 	remove_from_all_data_huds()
 	GLOB.mob_living_list -= src
 	QDEL_LIST(diseases)
+	if(playable) // AQ EDIT - deleted ghost role mobs stayed in the spawner menu (and leaked a hard ref)
+		remove_from_spawner_menu()
 	return ..()
 
 /mob/living/onZImpact(turf/T, levels)

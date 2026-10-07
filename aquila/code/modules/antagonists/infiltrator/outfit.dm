@@ -9,7 +9,7 @@
 	id = /obj/item/card/id/syndicate
 	mask = /obj/item/clothing/mask/chameleon
 	belt = /obj/item/modular_computer/tablet/pda/chameleon
-	backpack_contents = list(/obj/item/storage/box/syndie=1,\
+	backpack_contents = list(/obj/item/storage/box/engineer=1,\
 		/obj/item/kitchen/knife/combat/survival=1,\
 		/obj/item/gun/ballistic/automatic/pistol=1)
 

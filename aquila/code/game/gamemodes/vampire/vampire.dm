@@ -22,7 +22,7 @@
 	role_preference = /datum/role_preference/antagonist/vampire
 	false_report_weight = 1
 	restricted_jobs = list(JOB_NAME_AI, JOB_NAME_CYBORG)
-	protected_jobs = list(JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN, JOB_NAME_SECURITYOFFICER, JOB_NAME_CHAPLAIN, JOB_NAME_DETECTIVE, JOB_NAME_WARDEN, JOB_NAME_HEADOFPERSONNEL)
+	protected_jobs = list(JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN, JOB_NAME_HEADOFPERSONNEL, JOB_NAME_RESEARCHDIRECTOR, JOB_NAME_CHIEFENGINEER, JOB_NAME_CHIEFMEDICALOFFICER, JOB_NAME_SECURITYOFFICER, JOB_NAME_CHAPLAIN, JOB_NAME_DETECTIVE, JOB_NAME_WARDEN, JOB_NAME_BRIGPHYSICIAN, JOB_NAME_PILOT, JOB_NAME_MASTERATARMS) //AQ EDIT: NSV pilots and master at arms
 	required_players = 15
 	required_enemies = 1
 	recommended_enemies = 3
@@ -41,7 +41,7 @@
 		restricted_jobs += protected_jobs
 
 	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
-		restricted_jobs += "Assistant"
+		restricted_jobs += JOB_NAME_ASSISTANT
 
 	var/num_vamps = 1
 
