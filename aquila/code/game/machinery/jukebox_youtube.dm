@@ -25,8 +25,8 @@
 	var/yt_speed = 1
 	/// Klienci, którym aktualnie gra muzyka z tego jukeboxa, z ostatnio wysłaną głośnością
 	var/list/yt_listeners = list()
-	/// Ostatnio wysłana ilość echa dla klienta
-	var/list/yt_listener_echo = list()
+	/// Ostatnio wysłane echo i przytłumienie dla klienta: "echo|muffle"
+	var/list/yt_listener_fx = list()
 
 /// Polecenie yt-dlp: INVOKE_YOUTUBEDL z konfigu, a gdy go brak - yt-dlp.exe z katalogu gry (leży w repo).
 /proc/aquila_ytdl_command()
@@ -238,7 +238,7 @@
 	for(var/client/C as anything in yt_listeners)
 		C?.tgui_panel?.stop_music()
 	yt_listeners.Cut()
-	yt_listener_echo.Cut()
+	yt_listener_fx.Cut()
 
 /// Głośność 0-1 wysyłana do przeglądarki gracza (mnożona jeszcze przez jego suwak głośności muzyki).
 /obj/machinery/jukebox/proc/yt_gain_for(mob/M)
@@ -246,6 +246,9 @@
 
 /obj/machinery/jukebox/proc/yt_echo_for(mob/M)
 	return round(echo_amount(M), 0.05)
+
+/obj/machinery/jukebox/proc/yt_muffle_for(mob/M)
+	return muffle_amount(M)
 
 /// Dołącza graczy wchodzących w zasięg, wycisza tych, którzy wyszli, i ścisza/podgłaśnia wg odległości.
 /obj/machinery/jukebox/proc/yt_update_listeners()
@@ -255,14 +258,16 @@
 		var/gain = (!QDELETED(C) && C.mob) ? yt_gain_for(C.mob) : 0
 		if(gain <= 0)
 			yt_listeners -= C
-			yt_listener_echo -= C
+			yt_listener_fx -= C
 			C?.tgui_panel?.stop_music()
 			continue
 		var/echo = yt_echo_for(C.mob)
-		if(abs(gain - yt_listeners[C]) >= JUKEBOX_YT_GAIN_STEP || echo != yt_listener_echo[C])
+		var/muffle = yt_muffle_for(C.mob)
+		var/fx = "[echo]|[muffle]"
+		if(abs(gain - yt_listeners[C]) >= JUKEBOX_YT_GAIN_STEP || fx != yt_listener_fx[C])
 			yt_listeners[C] = gain
-			yt_listener_echo[C] = echo
-			C.tgui_panel?.set_music_gain(gain, echo)
+			yt_listener_fx[C] = fx
+			C.tgui_panel?.set_music_gain(gain, echo, muffle)
 	for(var/mob/M as anything in GLOB.player_list)
 		var/client/C = M.client
 		if(!C || (C in yt_listeners))
@@ -274,9 +279,10 @@
 		extra["start"] = round((world.time - yt_track_started) / 10 * yt_speed)
 		extra["volume"] = gain
 		extra["echo"] = yt_echo_for(M)
+		extra["muffle"] = yt_muffle_for(M)
 		C.tgui_panel?.play_music(yt_stream_url, extra)
 		yt_listeners[C] = gain
-		yt_listener_echo[C] = extra["echo"]
+		yt_listener_fx[C] = "[extra["echo"]]|[extra["muffle"]]"
 
 /obj/machinery/jukebox/proc/yt_process()
 	if(machine_stat & (BROKEN|NOPOWER) || !mains || !anchored)

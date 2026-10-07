@@ -28,6 +28,8 @@
 	var/music_range = 20
 	/// Do tej odległości muzyka gra pełną głośnością, dalej cichnie
 	var/music_full_range = 3
+	/// O ile kratek "dalej" jest pokład nad/pod jukeboxem
+	var/music_deck_penalty = 4
 
 /obj/machinery/jukebox/disco
 	name = "Disco Jukebox"
@@ -194,18 +196,32 @@
 	return speed_factor
 
 /// Jak daleko gracz jest w strefie wyciszania: 0 = przy jukeboxie (pełna głośność), 1 = na krawędzi okręgu.
-/// null gdy gracz nic nie słyszy (poza okręgiem, inny z-level, wyłączone instrumenty, głuchy).
+/// null gdy gracz nic nie słyszy (poza okręgiem, niepołączony z-level, wyłączone instrumenty, głuchy).
+/// Pokład tuż nad/pod jukeboxem też słyszy, ale jakby był dalej o music_deck_penalty kratek.
 /obj/machinery/jukebox/proc/hearing_fraction(mob/M)
 	if(!M?.client || !(M.client.prefs.toggles & PREFTOGGLE_SOUND_INSTRUMENTS) || !M.can_hear())
 		return null
 	var/turf/T = get_turf(M)
 	var/turf/our_turf = get_turf(src)
-	if(!T || !our_turf || T.z != our_turf.z)
+	if(!T || !our_turf)
 		return null
 	var/distance = sqrt((T.x - our_turf.x) ** 2 + (T.y - our_turf.y) ** 2)
+	if(T.z != our_turf.z)
+		if(!is_adjacent_deck(T))
+			return null
+		distance += music_deck_penalty
 	if(distance > music_range)
 		return null
 	return clamp((distance - music_full_range) / (music_range - music_full_range), 0, 1)
+
+/// Czy turf leży na pokładzie bezpośrednio nad albo pod jukeboxem (połączone z-levele)
+/obj/machinery/jukebox/proc/is_adjacent_deck(turf/T)
+	var/turf/our_turf = get_turf(src)
+	var/turf/other = our_turf?.above()
+	if(other && other.z == T.z)
+		return TRUE
+	other = our_turf?.below()
+	return other && other.z == T.z
 
 /// Mnożnik głośności 0-1: okrąg o promieniu music_range, cichnie płynnie (krzywa cosinusowa, bez skoków na początku i końcu).
 /obj/machinery/jukebox/proc/hearing_gain(mob/M)
@@ -219,4 +235,12 @@
 	var/fraction = hearing_fraction(M)
 	if(isnull(fraction))
 		return 0
-	return clamp((fraction - 0.2) / 0.8, 0, 1)
+	return clamp((fraction - 0.15) / 0.85, 0, 1)
+
+/// Przytłumienie 0-1 (jak zza ściany): pełne na innym pokładzie.
+/obj/machinery/jukebox/proc/muffle_amount(mob/M)
+	var/turf/T = get_turf(M)
+	var/turf/our_turf = get_turf(src)
+	if(!T || !our_turf)
+		return 0
+	return T.z != our_turf.z ? 1 : 0
