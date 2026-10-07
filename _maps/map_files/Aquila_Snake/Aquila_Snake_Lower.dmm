@@ -17,6 +17,16 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/bridge/cic)
+"ae" = (
+/obj/machinery/door/airlock/ship/security/glass{
+	name = "Labor Shuttle Dock";
+	req_access_txt = "2"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/security/brig)
 "af" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -80,6 +90,37 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
+"an" = (
+/obj/machinery/door/airlock/ship/external{
+	name = "Labor Shuttle Dock";
+	req_access_txt = "2"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/security/brig)
+"ao" = (
+/obj/docking_port/stationary{
+	dwidth = 2;
+	height = 5;
+	id = "laborcamp_home";
+	name = "snake gulag shuttle dock";
+	roundstart_template = /datum/map_template/shuttle/labour/corg;
+	width = 8
+	},
+/turf/open/space/basic,
+/area/space)
+"ap" = (
+/obj/effect/turf_decal/tile/ship/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/ship/red{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/turf/open/floor/plasteel,
+/area/security/brig)
 "aq" = (
 /turf/closed/wall/r_wall,
 /area/hydroponics)
@@ -134,6 +175,17 @@
 /obj/effect/landmark/start/cyborg,
 /turf/open/floor/plasteel,
 /area/science/robotics)
+"az" = (
+/obj/effect/turf_decal/tile/ship/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/ship/red{
+	dir = 1
+	},
+/obj/machinery/firealarm/directional/north,
+/obj/machinery/computer/prisoner/gulag_teleporter_computer,
+/turf/open/floor/plasteel,
+/area/security/brig)
 "aA" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 4
@@ -144,6 +196,40 @@
 /obj/machinery/light,
 /turf/open/floor/plasteel/dark,
 /area/engine/atmos)
+"aC" = (
+/obj/effect/turf_decal/tile/ship/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/ship/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/red,
+/obj/machinery/airalarm/directional/north,
+/obj/machinery/gulag_teleporter,
+/obj/machinery/gulag_item_reclaimer{
+	pixel_x = 32
+	},
+/turf/open/floor/plasteel,
+/area/security/brig)
+"aE" = (
+/obj/effect/turf_decal/tile/ship/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/ship/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/red{
+	dir = 8
+	},
+/obj/item/radio/intercom/directional/north,
+/obj/machinery/computer/security/labor{
+	dir = 4
+	},
+/obj/item/paper/guides/jobs/security/labor_camp{
+	pixel_x = 10
+	},
+/turf/open/floor/plasteel,
+/area/security/brig)
 "aI" = (
 /obj/machinery/atmospherics/miner/nitrogen,
 /obj/machinery/portable_atmospherics/canister/nitrogen,
@@ -7275,19 +7361,6 @@
 	dir = 1
 	},
 /area/hallway/primary/central)
-"zp" = (
-/obj/effect/turf_decal/tile/ship/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/ship/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/red{
-	dir = 8
-	},
-/obj/item/radio/intercom/directional/north,
-/turf/open/floor/plasteel,
-/area/security/brig)
 "zq" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/manifold4w/layer2,
 /turf/open/floor/engine,
@@ -7315,16 +7388,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/gravity_generator)
-"zv" = (
-/obj/effect/turf_decal/tile/ship/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/ship/red{
-	dir = 1
-	},
-/obj/machinery/firealarm/directional/north,
-/turf/open/floor/plasteel,
-/area/security/brig)
 "zx" = (
 /obj/item/storage/backpack/duffelbag/med/surgery,
 /obj/structure/table,
@@ -7435,16 +7498,6 @@
 	},
 /turf/open/floor/engine,
 /area/nsv/weapons/fore)
-"zK" = (
-/obj/effect/turf_decal/tile/ship/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/ship/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/red,
-/turf/open/floor/plasteel,
-/area/security/brig)
 "zL" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/pipe/heat_exchanging/manifold{
@@ -10207,17 +10260,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/nsv/weapons/fore)
-"IO" = (
-/obj/effect/turf_decal/tile/ship/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/ship/red{
-	dir = 1
-	},
-/obj/machinery/airalarm/directional/north,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
-/turf/open/floor/plasteel,
-/area/security/brig)
 "IP" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -52007,7 +52049,7 @@ aJ
 aJ
 pY
 pY
-zp
+aE
 Gi
 MF
 Xj
@@ -52518,10 +52560,10 @@ aJ
 aJ
 aJ
 aJ
-aJ
-pY
-pY
-IO
+ao
+an
+ae
+ap
 HE
 pY
 pY
@@ -52778,7 +52820,7 @@ aJ
 aJ
 pY
 pY
-zv
+az
 bM
 NI
 XW
@@ -53035,7 +53077,7 @@ aJ
 aJ
 pY
 pY
-zK
+aC
 Ir
 Oc
 Zj
