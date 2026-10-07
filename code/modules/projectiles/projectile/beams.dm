@@ -22,14 +22,11 @@
 	tracer_type = /obj/effect/projectile/tracer/laser
 	muzzle_type = /obj/effect/projectile/muzzle/laser
 	impact_type = /obj/effect/projectile/impact/laser
-	/// Whether this laser sets fire to the turf it hits
-	var/fire_hazard = FALSE
 
 /obj/item/projectile/beam/laser/heavylaser
 	name = "heavy laser"
 	icon_state = "heavylaser"
 	damage = 40
-	fire_hazard = TRUE
 	tracer_type = /obj/effect/projectile/tracer/heavy_laser
 	muzzle_type = /obj/effect/projectile/muzzle/heavy_laser
 	impact_type = /obj/effect/projectile/impact/heavy_laser
@@ -41,10 +38,6 @@
 		M.IgniteMob()
 	else if(isturf(target))
 		impact_effect_type = /obj/effect/temp_visual/impact_effect/red_laser/wall
-	if(fire_hazard)
-		var/turf/open/target_turf = get_turf(target)
-		if(istype(target_turf))
-			target_turf.IgniteTurf(rand(8, 16))
 
 /obj/item/projectile/beam/weak
 	damage = 12
@@ -110,9 +103,6 @@
 			SSexplosions.med_mov_atom += target
 		else
 			SSexplosions.medturf += target
-	var/turf/open/target_turf = get_turf(target)
-	if(istype(target_turf))
-		target_turf.IgniteTurf(rand(8, 22), "blue")
 
 /obj/item/projectile/beam/pulse/shotgun
 	damage = 40

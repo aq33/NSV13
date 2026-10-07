@@ -62,10 +62,3 @@
 	mid_sounds = list('nsv13/sound/effects/ship/reactor/gasmask.ogg')
 	mid_length = 3 SECONDS
 	volume = 20 // AQUILA EDIT
-
-// AQUILA EDIT - only audible while the wearer is actually breathing from internals
-/datum/looping_sound/gasmask/play(soundfile)
-	var/mob/living/carbon/C = parent?.loc
-	if(!istype(C) || !C.internal || C.stat == DEAD)
-		return
-	return ..()

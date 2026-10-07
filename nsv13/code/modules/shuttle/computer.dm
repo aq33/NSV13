@@ -1,10 +1,3 @@
-/obj/machinery/computer/shuttle_flight
-	/// Can this console pick a custom landing spot with the docking eye (custom built shuttles, the traitor bluespace pod)
-	var/allow_custom_landing = FALSE
-
-/obj/machinery/computer/shuttle_flight/custom_shuttle
-	allow_custom_landing = TRUE
-
 /obj/machinery/computer/shuttle_flight/ui_interact(mob/user)
 	//Ash walkers cannot use the console because they are unga bungas
 	if(user.mind?.has_antag_datum(/datum/antagonist/ashwalker))
@@ -22,9 +15,9 @@
 				continue
 			destination_found = 1
 			dat += "<A href='?src=[REF(src)];move=[S.id]'>Send to [S.name]</A><br>"
-		if(allow_custom_landing)
+		if(allow_custom_landing) // AQ EDIT START - custom landing spot, see aquila/code/modules/shuttle/computer.dm
 			destination_found = 1
-			dat += "<A href='?src=[REF(src)];designate=1'>Designate landing location</A><br>"
+			dat += "<A href='?src=[REF(src)];designate=1'>Designate landing location</A><br>" // AQ EDIT END
 		if(!destination_found)
 			dat += "<B>Shuttle Locked</B><br>"
 			if(admin_controlled)
@@ -45,9 +38,9 @@
 		to_chat(usr, "<span class='danger'>Access denied.</span>")
 		return
 
-	if(href_list["designate"] && allow_custom_landing)
+	if(href_list["designate"] && allow_custom_landing) // AQ EDIT START - custom landing spot
 		designate_landing(usr)
-		return
+		return // AQ EDIT END
 
 	if(href_list["move"])
 		var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
@@ -71,43 +64,6 @@
 				to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
 			else
 				to_chat(usr, "<span class='notice'>Unable to comply.</span>")
-
-/obj/machinery/computer/shuttle_flight/proc/designate_landing(mob/living/user)
-	if(!isliving(user))
-		return
-	var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
-	if(!M)
-		say("Unable to locate linked shuttle.")
-		return
-	if(M.mode == SHUTTLE_RECHARGING)
-		to_chat(user, "<span class='warning'>Shuttle engines are not ready for use.</span>")
-		return
-	if(M.mode != SHUTTLE_IDLE)
-		to_chat(user, "<span class='warning'>Shuttle already in transit.</span>")
-		return
-	if(!M.canMove())
-		say("Warning: The shuttle's movement is being inhibited.")
-		return
-	if(current_user)
-		to_chat(user, "<span class='warning'>Somebody is already docking the shuttle.</span>")
-		return
-	if(!can_designate_landing(user))
-		return
-	if(!shuttlePortId || findtext(shuttlePortId, "unlinked_shuttle_console_"))
-		shuttlePortId = "[shuttleId]_custom"
-	view_range = max(M.width, M.height, M.dwidth, M.dheight) * 0.5 - 4
-	give_eye_control(user)
-
-/// Extra checks before the docking eye is handed out, return FALSE to block
-/obj/machinery/computer/shuttle_flight/proc/can_designate_landing(mob/living/user)
-	return TRUE
-
-/obj/machinery/computer/shuttle_flight/custom_shuttle/can_designate_landing(mob/living/user)
-	calculateStats()
-	if(calculated_acceleration < CUSTOM_SHUTTLE_MIN_THRUST_TO_WEIGHT)
-		say("Insufficient engine power. Check the engines, heaters and plasma supply.")
-		return FALSE
-	return TRUE
 
 /obj/machinery/computer/shuttle_flight/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
 	if(port && (shuttleId == initial(shuttleId) || override))
