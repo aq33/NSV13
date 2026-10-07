@@ -61,7 +61,7 @@ export class TguiSay extends Component<{}, State> {
         $HasKeyedChildren>
         <div className="top-border" />
         <div className="left-border" />
-        <div className="modal__content" $HasKeyedChildren>
+        <div className="modal__content">
           {!!theme && (
             <button
               className={getCss('button', theme)}
