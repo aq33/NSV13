@@ -78,7 +78,7 @@
 	name = "Dough"
 	id = "dough"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/dough
+	build_path = /obj/item/food/dough
 	category = list("Basic Dishes")
 
 /datum/design/replicator/tier2/milk
@@ -177,7 +177,7 @@
 	name = "Cake batter"
 	id = "cakebatter"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/cakebatter
+	build_path = /obj/item/food/cakebatter
 	category = list("Complex Dishes")
 
 /datum/design/replicator/tier3/enzymes

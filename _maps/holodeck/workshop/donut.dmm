@@ -147,7 +147,7 @@
 /area/template_noop)
 "M" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/piedough,
+/obj/item/food/piedough,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},

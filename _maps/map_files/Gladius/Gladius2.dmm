@@ -11253,7 +11253,7 @@
 /area/engine/engineering/ftl_room)
 "hjC" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/dough,
+/obj/item/food/dough,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/kitchen)
 "hjS" = (

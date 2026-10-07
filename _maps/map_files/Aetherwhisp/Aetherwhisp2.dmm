@@ -19651,7 +19651,7 @@
 /area/engine/engineering/reactor_control)
 "pca" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/taco{
+/obj/item/food/taco{
 	name = "taigo"
 	},
 /obj/item/storage/box/matches,

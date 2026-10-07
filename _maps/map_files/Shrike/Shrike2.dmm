@@ -15066,9 +15066,9 @@
 "XW" = (
 /obj/effect/turf_decal/box,
 /obj/structure/closet/crate/radiation,
-/obj/item/reagent_containers/food/snacks/burrito,
-/obj/item/reagent_containers/food/snacks/burrito,
-/obj/item/reagent_containers/food/snacks/burrito,
+/obj/item/food/burrito,
+/obj/item/food/burrito,
+/obj/item/food/burrito,
 /turf/open/floor/monotile/steel,
 /area/quartermaster/storage)
 "XX" = (
