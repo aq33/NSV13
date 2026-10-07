@@ -9,7 +9,7 @@
 
 /mob/living/simple_animal/proc/find_candidates()
 	if(!mind && level == 2)
-		notify_ghosts("\a [src] can be controlled", null, enter_link="<a href=?src=[REF(src)];activate=1>(Click to play)</a>", source=src, action=NOTIFY_ATTACK, ignore_key = POLL_IGNORE_SPIDER)
+		notify_ghosts("\a [src] can be controlled", null, enter_link="<a href=byond://?src=[REF(src)];activate=1>(Click to play)</a>", source=src, action=NOTIFY_ATTACK, ignore_key = POLL_IGNORE_SPIDER)
 
 /mob/living/simple_animal/proc/give_to_ghost(mob/dead/observer/user, bypass_level = FALSE)
 	if(QDELETED(src) || QDELETED(user) || !src.playable || level != 2)

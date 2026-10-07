@@ -134,9 +134,9 @@
 		return
 	var/list/dat = list()
 	dat += "<div class='statusDisplay' style='text-align:center'>"
-	dat += "<b><a href='?src=[REF(src)];action=toggle'>[!active ? "BREAK IT DOWN" : "SHUT IT DOWN"]</a><b><br>"
+	dat += "<b><a href='byond://?src=[REF(src)];action=toggle'>[!active ? "BREAK IT DOWN" : "SHUT IT DOWN"]</a><b><br>"
 	dat += "</div><br>"
-	dat += "<A href='?src=[REF(src)];action=select'> Select Track</A><br>"
+	dat += "<A href='byond://?src=[REF(src)];action=select'> Select Track</A><br>"
 	dat += "Track Selected: [SSjukeboxes.songs[selection].name]<br>"
 	dat += "Track Length: [DisplayTimeText(SSjukeboxes.songs[selection].length)]<br><br>"
 	var/datum/browser/popup = new(user, "vending", "[name]", 400, 350)

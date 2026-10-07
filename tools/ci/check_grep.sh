@@ -133,6 +133,11 @@ if grep -n -P 'set name\s*=\s*"[\S\s]*![\S\s]*"' code/**/*.dm; then
     echo -e "${RED}ERROR: Verb with name containing an exclamation point found. These verbs are not compatible with TGUI chat's statpanel or chat box.${NC}"
     st=1
 fi;
+if grep -n -P '(href|action)[\s='"'"'"\\\\]*\?' code/**/*.dm nsv13/**/*.dm aquila/**/*.dm; then
+    echo
+    echo -e "${RED}ERROR: BYOND 516 requires internal href links to begin with \"byond://\".${NC}"
+    st=1
+fi;
 if grep -Pzo '"\w+" = \(\n[^)]*?/turf/[/\w]*?,\n[^)]*?/turf/[/\w]*?,\n[^)]*?/area/.+?\)' _maps/**/*.dmm; then
 	echo
     echo -e "${RED}ERROR: Multiple turfs detected on the same tile! Please choose only one turf!${NC}"

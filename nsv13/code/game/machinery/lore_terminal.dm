@@ -51,7 +51,7 @@ GLOBAL_DATUM_INIT(lore_terminal_controller, /datum/lore_controller, new)
 		get_entries()
 	for(var/X in entries) //Allows you to remove things individually
 		var/datum/lore_entry/content = X
-		dat += "<a href='?src=[REF(src)];selectitem=\ref[content]'>[content.name]</a><br>"
+		dat += "<a href='byond://?src=[REF(src)];selectitem=\ref[content]'>[content.name]</a><br>"
 	var/datum/browser/popup = new(user, "cd C:/entries/local", name, 300, 500)
 	popup.set_content(dat)
 	popup.open()

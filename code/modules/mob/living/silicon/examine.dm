@@ -7,7 +7,7 @@
 
 	//NSV13 - Silicon Flavor Text - Start
 	if(client)
-		var/line = "<span class='notice'><a href='?src=[REF(src)];lookup_info=1'>Examine closely...</a></span>"
+		var/line = "<span class='notice'><a href='byond://?src=[REF(src)];lookup_info=1'>Examine closely...</a></span>"
 		if(line)
 			. += line
 	//NS13 - Silicon Flavor Text - End

@@ -31,7 +31,7 @@
 
 /datum/request/proc/auto_generate_nuke_code()
 	autoaccept = TRUE
-	message_admins("Automatically generating nuke codes requested by [ADMIN_FULLMONTY(owner)] in [REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME] seconds. (<a href='?src=[REF(src)];cancel_nuke=1'>CANCEL</a>)")
+	message_admins("Automatically generating nuke codes requested by [ADMIN_FULLMONTY(owner)] in [REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME] seconds. (<a href='byond://?src=[REF(src)];cancel_nuke=1'>CANCEL</a>)")
 	sleep(REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME SECONDS)
 	if(autoaccept)
 		var/code = random_code(5)
@@ -77,7 +77,7 @@ GLOBAL_VAR_INIT(erts_requested_already, 0)
 
 /datum/request/proc/auto_create_response_team()
 	autoaccept = TRUE
-	message_admins("Automatically sending response team requested by [ADMIN_FULLMONTY(owner)] in [REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME] seconds. (<a href='?src=[REF(src)];cancel_ert=1'>CANCEL</a>)")
+	message_admins("Automatically sending response team requested by [ADMIN_FULLMONTY(owner)] in [REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME] seconds. (<a href='byond://?src=[REF(src)];cancel_ert=1'>CANCEL</a>)")
 	sleep(REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME SECONDS)
 	if(autoaccept) // pod tym jest kopiuj wklej z one_click_antag.dm
 		var/message = "Prośba o przesłanie drużyny szybkiej reakcji została zaakceptowana, jednakże wszystkie drużyny są obecnie zajęte. Za niedogodności przepraszamy."

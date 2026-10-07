@@ -38,7 +38,7 @@
 	. = ..()
 	switch(maint_state)
 		if(MSTATE_UNSCREWED)
-			. += "There is a button labelled \"<A href='?src=[REF(src)];fire_button=1'>Force Eject Shell</A>\"."
+			. += "There is a button labelled \"<A href='byond://?src=[REF(src)];fire_button=1'>Force Eject Shell</A>\"."
 		if(MSTATE_UNBOLTED)
 			pop(.)// this is the laziest way I know of to change an examine line
 			. += "The inner casing has been <b>unbolted</b>, and the loading tray can be <i>pried out</i>."//deconstruction hint
