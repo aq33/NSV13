@@ -214,6 +214,7 @@
 			C?.process_endround_metacoin()
 			C?.process_aquila_endround_metacoin() // AQ EDIT
 			C?.playtitlemusic(20) // AQUILA EDIT 40 -> 20
+			C?.show_round_survey() // AQUILA EDIT - ankieta po rundzie
 
 			if(CONFIG_GET(flag/allow_crew_objectives))
 				var/mob/M = C?.mob
