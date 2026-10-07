@@ -2,36 +2,32 @@
 // Uses the existing Timeline Eradication Agent gear (chronosuit + T.E.D.). Spawned by the event in
 // aquila/code/modules/events/chrono_legionnaire.dm, only when somebody on the server has such a name.
 
+/// Text file with the names the legion hunts for, read once when the server starts
+#define CHRONO_LEGIONNAIRE_NAMES_FILE "config/chrono_legionnaire_names.txt"
+
 /// Name fragments the legion hunts for, mapped to the historical figure they stand for.
-/// Matched against the character name after aquila_chrono_normalize_name(), so write them in lowercase a-z only.
+/// Loaded from CHRONO_LEGIONNAIRE_NAMES_FILE and kept normalized by aquila_chrono_normalize_name().
 /// Admins can add more at runtime through View Variables on GLOB.
-GLOBAL_LIST_INIT(aquila_chrono_historical_names, list(
-	// Adolf Hitler
-	"hitler" = "Adolf Hitler",
-	"hittler" = "Adolf Hitler",
-	"hitller" = "Adolf Hitler",
-	"hiitler" = "Adolf Hitler",
-	"hytler" = "Adolf Hitler",
-	"hitlr" = "Adolf Hitler",
-	"hidler" = "Adolf Hitler",
-	"gitler" = "Adolf Hitler",
-	"schicklgruber" = "Adolf Hitler",
-	"schickelgruber" = "Adolf Hitler",
-	"shicklgruber" = "Adolf Hitler",
-	"fuhrer" = "Adolf Hitler",
-	"fuehrer" = "Adolf Hitler",
-	// Józef Stalin
-	"stalin" = "Józef Stalin",
-	"stalyn" = "Józef Stalin",
-	"sztalin" = "Józef Stalin",
-	"dzugaszwili" = "Józef Stalin",
-	"dzhugashvili" = "Józef Stalin",
-	"dzugashvili" = "Józef Stalin",
-	"djugashvili" = "Józef Stalin",
-	"jugashvili" = "Józef Stalin",
-	"dzugasvili" = "Józef Stalin",
-	"dschugaschwili" = "Józef Stalin",
-))
+GLOBAL_LIST_INIT(aquila_chrono_historical_names, aquila_chrono_load_names())
+
+/// Reads CHRONO_LEGIONNAIRE_NAMES_FILE: one name per line, optionally "name = historical figure", lines starting with # are skipped
+/proc/aquila_chrono_load_names()
+	. = list()
+	if(!fexists(CHRONO_LEGIONNAIRE_NAMES_FILE))
+		log_config("Chrono Legionnaire: [CHRONO_LEGIONNAIRE_NAMES_FILE] not found, the event can never run.")
+		return
+	for(var/line in world.file2list(CHRONO_LEGIONNAIRE_NAMES_FILE))
+		line = trim(line)
+		if(!length(line) || line[1] == "#")
+			continue
+		var/figure = line
+		var/separator = findtext(line, "=")
+		if(separator)
+			figure = trim(copytext(line, separator + 1))
+			line = trim(copytext(line, 1, separator))
+		var/fragment = aquila_chrono_normalize_name(line)
+		if(fragment)
+			.[fragment] = figure || line
 
 /// Innocent words that happen to contain a hunted fragment, cut out of the name before matching
 GLOBAL_LIST_INIT(aquila_chrono_name_exceptions, list(
@@ -218,3 +214,5 @@ GLOBAL_LIST_INIT(aquila_chrono_name_exceptions, list(
 	message_admins("[ADMIN_LOOKUPFLW(legionnaire)] has been made into a Chrono Legionnaire hunting [ADMIN_LOOKUPFLW(target)] ([figure]).")
 	log_game("[key_name(legionnaire)] was spawned as a Chrono Legionnaire hunting [key_name(target)] ([figure]).")
 	return legionnaire
+
+#undef CHRONO_LEGIONNAIRE_NAMES_FILE
