@@ -13,7 +13,6 @@
 	typepath = /datum/round_event/aquila_magnetic_field
 	weight = 10
 	max_occurrences = 1
-	min_players = 6
 	earliest_start = 10 MINUTES
 
 /datum/round_event/aquila_magnetic_field
