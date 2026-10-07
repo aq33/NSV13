@@ -4,7 +4,8 @@
 
 /obj/effect/proc_holder/spell/targeted/inflict_handler/cast(list/targets,mob/user = usr)
 	for(var/mob/living/target in targets)
+		if(target.anti_magic_check())
+			continue
 		target.adjust_fire_stacks(amt_firestacks)
 		if(ignites)
 			target.IgniteMob()
-	.=..()

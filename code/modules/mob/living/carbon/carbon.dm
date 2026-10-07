@@ -874,6 +874,9 @@
 	for(var/obj/item/bodypart/BP as() in bodyparts)
 		BP.update_disabled()
 
+/mob/living/carbon/proc/get_footprint_sprite()
+	return FOOTPRINT_SPRITE_PAWS
+
 /mob/living/carbon/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION("", "---------")

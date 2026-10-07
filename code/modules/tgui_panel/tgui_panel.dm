@@ -12,6 +12,10 @@
 	var/datum/tgui_window/window
 	var/broken = FALSE
 	var/initialized_at
+	/// TRUE once the client answered a request sent after "ready", meaning the panel really works
+	var/round_trip_ok = FALSE
+	/// How many times we reloaded the panel on our own after a failed load
+	var/auto_reloads = 0
 
 /datum/tgui_panel/New(client/client, id)
 	src.client = client
@@ -41,6 +45,9 @@
 	// Minimal sleep to defer initialization to after client constructor
 	sleep(1)
 	initialized_at = world.time
+	round_trip_ok = FALSE
+	if(force)
+		auto_reloads = 0
 	// Perform a clean initialization
 	window.initialize(assets = list(
 		strict_mode = TRUE,
@@ -58,7 +65,8 @@
 	request_telemetry()
 	// Send verbs
 	set_verb_infomation(client)
-	addtimer(CALLBACK(src, PROC_REF(on_initialize_timed_out)), 5 SECONDS)
+	// TIMER_OVERRIDE so a reload restarts the countdown instead of stacking checks
+	addtimer(CALLBACK(src, PROC_REF(on_initialize_timed_out)), 5 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 /**
  * private
@@ -66,7 +74,15 @@
  * Called when initialization has timed out.
  */
 /datum/tgui_panel/proc/on_initialize_timed_out()
-	// Currently does nothing but sending a message to old chat.
+	if(!client || round_trip_ok)
+		return
+	// Loading during server init often stalls (the server is too busy to answer the page),
+	// and timers only fire once init is over, so a plain reload usually works now.
+	if(auto_reloads < 2)
+		auto_reloads++
+		log_tgui("[client.ckey] fancy chat did not finish loading, reloading it (attempt [auto_reloads]).")
+		Initialize()
+		return
 	SEND_TEXT(client, "<span class=\"userdanger\">Failed to load fancy chat, click <a href='?src=[REF(src)];reload_tguipanel=1'>HERE</a> to attempt to reload it.</span>")
 	log_tgui("ERROR: [client?.ckey] failed to load their fancy chat after a 5 second timeout when loading.")
 	SEND_TEXT(client, "<span class=\"warning\">If the problem persists after fix-chat, try restarting your game as Byond can get confused if the stylesheet it was expecting has changed. (If you have recently played on a server not using TGchat).</span>")
@@ -97,6 +113,7 @@
 		client.admin_music_volume = payload["volume"]
 		return TRUE
 	if(type == "telemetry")
+		round_trip_ok = TRUE
 		analyze_telemetry(payload)
 		return TRUE
 	if(cmptext(copytext(type, 1, 5), "stat"))

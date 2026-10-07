@@ -16,3 +16,8 @@
 #define CLEAN_STRENGTH_FINGERPRINTS CLEAN_IMPRESSIVE
 #define CLEAN_STRENGTH_BLOOD CLEAN_WEAK
 #define CLEAN_STRENGTH_FIBERS CLEAN_IMPRESSIVE
+
+// Footprint sprites to use when making footprints in blood, oil, etc.
+#define FOOTPRINT_SPRITE_SHOES "shoes"
+#define FOOTPRINT_SPRITE_PAWS "paws"
+#define FOOTPRINT_SPRITE_CLAWS "claws"

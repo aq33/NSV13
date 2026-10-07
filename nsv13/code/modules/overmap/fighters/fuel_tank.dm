@@ -18,6 +18,7 @@
 	var/max_range = 2
 	var/datum/beam/current_beam
 	var/allow_refuel = FALSE
+	var/defuelling = FALSE //AQ EDIT - TRUE when pumping fuel out of fuel_target instead of into it
 	var/units_per_second = 50
 
 /obj/structure/reagent_dispensers/fueltank/cryogenic_fuel/Destroy()
@@ -37,10 +38,11 @@
 		visible_message("<span class='warning'>[icon2html(src)] refuelling cancelled.</span>")
 		playsound(src, 'sound/machines/buzz-two.ogg', 100)
 		fuel_target = null
+		defuelling = FALSE //AQ EDIT
 		STOP_PROCESSING(SSobj, src)
 	if(action == "transfer_mode")
 		if(!allow_refuel)
-			to_chat(usr, "<span class='notice'>You open [src]'s fuel inlet valve, it will now intake reagents from containers that it's hit with.</span>")
+			to_chat(usr, "<span class='notice'>You open [src]'s fuel inlet valve, it will now intake reagents from containers that it's hit with and drain fighters its hose is connected to.</span>") //AQ EDIT
 			allow_refuel = TRUE
 		else
 			to_chat(usr, "<span class='notice'>You close [src]'s fuel inlet valve, it will now transfer its reagents to containers that it's hit with.</span>")
@@ -128,6 +130,7 @@
 		qdel(current_beam)
 		nozzle.forceMove(src)
 		fuel_target = null
+		defuelling = FALSE //AQ EDIT
 	else
 		cut_overlay("cryofuel_nozzle")
 		current_beam = new(user, src, beam_icon='nsv13/icons/effects/beam.dmi',time=INFINITY,maxdistance = INFINITY,beam_icon_state="hose",btype=/obj/effect/ebeam/fuel_hose)
@@ -143,14 +146,16 @@
 		if(istype(I, /obj/item/reagent_containers))
 			to_chat(user, "<span class='warning'>You transfer some of [I]'s contents to [src].</span>") //Put anything other than cryogenic fuel in here at your own risk of having to flush out the tank and possibly wreck your fighter :)
 			var/obj/item/reagent_containers/X = I
-			X.reagents.trans_to(X, X.amount_per_transfer_from_this, transfered_by = user)
+			X.reagents.trans_to(src, X.amount_per_transfer_from_this, transfered_by = user) //AQ EDIT - was transferring the container into itself
+			return TRUE //AQ EDIT - don't let the container's afterattack draw it straight back out
 	return ..()
 
-/obj/structure/reagent_dispensers/fueltank/cryogenic_fuel/proc/start_fuelling(target)
+/obj/structure/reagent_dispensers/fueltank/cryogenic_fuel/proc/start_fuelling(target, drain = FALSE) //AQ EDIT - drain: pump fuel out of the target instead
 	if(!target)
 		return
 	soundloop?.start()
 	fuel_target = target
+	defuelling = drain //AQ EDIT
 	START_PROCESSING(SSobj, src)
 
 /obj/structure/reagent_dispensers/fueltank/cryogenic_fuel/proc/check_distance()
@@ -176,6 +181,26 @@
 		soundloop?.stop()
 		visible_message("<span class='warning'>[icon2html(src)] [fuel_target] does not have a fuel tank installed!</span>")
 		return PROCESS_KILL
+	// AQ EDIT START - pumping fuel out of a fighter
+	if(defuelling)
+		var/drain_amount = min(units_per_second * delta_time, sft.reagents.total_volume, reagents.maximum_volume - reagents.total_volume)
+		if(sft.reagents.total_volume <= 0)
+			soundloop?.stop()
+			visible_message("<span class='warning'>[icon2html(src)] fuel draining complete.</span>")
+			playsound(src, 'sound/machines/ping.ogg', 100)
+			fuel_target = null
+			defuelling = FALSE
+			return PROCESS_KILL
+		else if(drain_amount <= 0)
+			soundloop?.stop()
+			visible_message("<span class='warning'>[icon2html(src)] storage tank full.</span>")
+			playsound(src, 'sound/machines/buzz-two.ogg', 100)
+			fuel_target = null
+			defuelling = FALSE
+			return PROCESS_KILL
+		sft.reagents.trans_to(src, drain_amount)
+		return
+	// AQ EDIT END
 	var/transfer_amount = min(min(units_per_second * delta_time, reagents.total_volume), fuel_target.get_max_fuel()-fuel_target.get_fuel()) //Transfer as much as we can
 	if(fuel_target.get_max_fuel() <= fuel_target.get_fuel())
 		soundloop?.stop()
@@ -218,6 +243,19 @@
 			to_chat(user, "<span class='notice'>[f16]'s engine is still running! Refuelling it now would be dangerous.</span>")
 			playsound(src, 'sound/machines/buzz-two.ogg', 100)
 			return
+		// AQ EDIT START - with the inlet valve open the hose drains the fighter instead
+		if(parent.allow_refuel)
+			if(sft.reagents.total_volume <= 0)
+				to_chat(user, "<span class='notice'>[f16]'s fuel tank is already empty.</span>")
+				return
+			if(parent.reagents.total_volume >= parent.reagents.maximum_volume)
+				to_chat(user, "<span class='notice'>[parent] is already full.</span>")
+				return
+			parent.start_fuelling(f16, TRUE)
+			to_chat(user, "<span class='notice'>You slot [src] into [f16]'s refuelling hatch and start draining its fuel.</span>")
+			playsound(user, 'sound/machines/click.ogg', 60, 1)
+			return
+		// AQ EDIT END
 		if(f16.get_fuel() < f16.get_max_fuel())
 			parent.start_fuelling(f16)
 			to_chat(user, "<span class='notice'>You slot [src] into [f16]'s refuelling hatch.</span>")

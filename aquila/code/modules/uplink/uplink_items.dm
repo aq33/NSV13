@@ -133,3 +133,10 @@
 	item = /obj/item/access_kit/syndicate
 	limited_stock = 1
 	cost = 5
+
+/datum/uplink_item/dangerous/gremlin
+	name = "Gremlin Delivery Grenade"
+	desc = "This grenade is filled with several gremlins. They won't hurt anyone, but they love tampering with machinery: airlocks, APCs, the engine... Water makes them multiply. Fun for RnD and engineering!"
+	item = /obj/item/grenade/spawnergrenade/gremlin
+	cost = 2
+	surplus = 30

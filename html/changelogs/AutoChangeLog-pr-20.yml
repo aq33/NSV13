@@ -1,0 +1,10 @@
+author: 'Produkcja: Ewa, Port: sh4dow321'
+delete-after: true
+changes:
+  - imageadd: 'Security dostało spritework Polskiej Policji (Kosmobagiety): mundury,
+      kurtki, kamizelki, kaski, czapki, okulary, pasy, plecaki, ID, tablety, radia,
+      szafki i SecDrobe'
+  - imageadd: Żandarm nosi mundur i pancerz w barwach policji
+  - rscadd: 'Nowe nakrycia głowy security: alternatywna czapka, czapka Naczelnika,
+      bandana, furażerka i czapka oficerska'
+  - tweak: Komendant zaczyna w mundurze policyjnym i kurtce policyjnej (te same statystyki)
