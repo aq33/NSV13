@@ -6,6 +6,8 @@
 #define JUKEBOX_YT_MAX_TRACK_LENGTH (15 MINUTES)
 /// Minimalna zmiana głośności, przy której wysyłamy aktualizację do klienta
 #define JUKEBOX_YT_GAIN_STEP 0.01
+/// Tyle po wyjściu z zasięgu strumień gra jeszcze wyciszony, zanim go zatrzymamy
+#define JUKEBOX_YT_OUT_GRACE (10 SECONDS)
 /// Na tyle przed końcem utworu pobieramy link do następnego, żeby nie było przerwy
 #define JUKEBOX_YT_PREFETCH_TIME (45 SECONDS)
 /// Po takim czasie uznajemy, że yt-dlp się zawiesił, i odblokowujemy jukebox
@@ -38,6 +40,8 @@
 	var/list/yt_listeners = list()
 	/// Ostatnio wysłane echo i przytłumienie dla klienta: "echo|muffle"
 	var/list/yt_listener_fx = list()
+	/// Od kiedy klient jest poza zasięgiem (muzyka wyciszona, ale jeszcze gra)
+	var/list/yt_listener_out = list()
 
 /// Polecenie yt-dlp: INVOKE_YOUTUBEDL z konfigu, a gdy go brak - yt-dlp.exe z katalogu gry (leży w repo).
 /proc/aquila_ytdl_command()
@@ -303,6 +307,7 @@
 		C?.tgui_panel?.stop_music()
 	yt_listeners.Cut()
 	yt_listener_fx.Cut()
+	yt_listener_out.Cut()
 
 /// Głośność 0-1 wysyłana do przeglądarki gracza (mnożona jeszcze przez jego suwak głośności muzyki).
 /obj/machinery/jukebox/proc/yt_gain_for(mob/M)
@@ -319,12 +324,21 @@
 	if(!yt_stream_url)
 		return
 	for(var/client/C as anything in yt_listeners)
-		var/gain = (!QDELETED(C) && C.mob) ? yt_gain_for(C.mob) : 0
-		if(gain <= 0)
-			yt_listeners -= C
-			yt_listener_fx -= C
-			C?.tgui_panel?.stop_music()
+		if(QDELETED(C) || !C.mob)
+			yt_drop_listener(C)
 			continue
+		var/gain = yt_gain_for(C.mob)
+		if(gain <= 0)
+			// poza zasięgiem: przeglądarka płynnie wycisza, strumień gra dalej po cichu,
+			// a zatrzymujemy go dopiero po JUKEBOX_YT_OUT_GRACE (powrót = bez restartu)
+			if(!yt_listener_out[C])
+				yt_listener_out[C] = world.time
+				yt_listeners[C] = 0
+				C.tgui_panel?.set_music_gain(0, 0, 0)
+			else if(world.time - yt_listener_out[C] > JUKEBOX_YT_OUT_GRACE)
+				yt_drop_listener(C)
+			continue
+		yt_listener_out -= C
 		var/echo = yt_echo_for(C.mob)
 		var/muffle = yt_muffle_for(C.mob)
 		var/fx = "[echo]|[muffle]"
@@ -348,6 +362,12 @@
 		yt_listeners[C] = gain
 		yt_listener_fx[C] = "[extra["echo"]]|[extra["muffle"]]"
 
+/obj/machinery/jukebox/proc/yt_drop_listener(client/C)
+	yt_listeners -= C
+	yt_listener_fx -= C
+	yt_listener_out -= C
+	C?.tgui_panel?.stop_music()
+
 /obj/machinery/jukebox/proc/yt_process()
 	if(machine_stat & (BROKEN|NOPOWER) || !mains || !anchored)
 		yt_stop()
@@ -363,6 +383,7 @@
 #undef JUKEBOX_YT_MAX_TRACKS
 #undef JUKEBOX_YT_MAX_TRACK_LENGTH
 #undef JUKEBOX_YT_GAIN_STEP
+#undef JUKEBOX_YT_OUT_GRACE
 #undef JUKEBOX_YT_PREFETCH_TIME
 #undef JUKEBOX_YT_BUSY_TIMEOUT
 #undef JUKEBOX_YT_ARGS
