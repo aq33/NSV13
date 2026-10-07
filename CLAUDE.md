@@ -27,6 +27,7 @@ Język: DM (BYOND). Kod ma polskie elementy, które są ważne.
 - Nie refaktoryzuj ani nie formatuj kodu, którego zadanie nie dotyczy.
 - Przed zmianą pliku przeczytaj go oraz miejsca, które z niego korzystają (grep po nazwie).
 - Jeśli zadanie jest niejasne albo wymaga dużego systemu, napisz krótki plan i listę plików, po czym poczekaj na zgodę.
+- Na początku każdego zadania zasugeruj poziom wysiłku modelu (od `low` do `max`) z jednym zdaniem uzasadnienia: `low` dla drobnych, mechanicznych zmian, wyższy dla portów, debugowania i większych systemów. Przy przeglądzie dużego PR-a zaproponuj też `/code-review ultra`.
 ## Testy
 - Nowa logika (nie same sprite'y) dostaje unit test w `aquila/code/modules/unit_tests/`, dołączony w bloku `#ifdef UNIT_TESTS` na końcu `aquila/aquila.dm`.
 - Makra `TEST_ASSERT*` są `#undef` na końcu `code/modules/unit_tests/_unit_tests.dm`, więc test modularny ma własne kopie (wzór: `polish_content.dm`).
