@@ -104,6 +104,7 @@
 		GAS_PLUOXIUM			= new/datum/tlv(-1, -1, 5, 6), // Unlike oxygen, pluoxium does not fuel plasma/tritium fires
 		GAS_CONSTRICTED_PLASMA			= new/datum/tlv/dangerous, //NSV13
 		GAS_NUCLEIUM			= new/datum/tlv/dangerous, //NSV13
+		GAS_MIASMA			= new/datum/tlv(-1, -1, 15, 30), // AQ EDIT - Miasma
 	)
 
 /obj/machinery/airalarm/server // No checks here. NSV13 - Added Constricted Plasma and Nucleium
@@ -123,6 +124,7 @@
 		GAS_NITRYL			= new/datum/tlv/no_checks,
 		GAS_CONSTRICTED_PLASMA			= new/datum/tlv/no_checks, //NSV13
 		GAS_NUCLEIUM			= new/datum/tlv/no_checks, //NSV13
+		GAS_MIASMA			= new/datum/tlv/no_checks, // AQ EDIT - Miasma
 		GAS_PLUOXIUM			= new/datum/tlv/no_checks
 	)
 
@@ -143,6 +145,7 @@
 		GAS_NITRYL			= new/datum/tlv/dangerous,
 		GAS_CONSTRICTED_PLASMA			= new/datum/tlv/dangerous, //NSV13
 		GAS_NUCLEIUM			= new/datum/tlv/dangerous, //NSV13
+		GAS_MIASMA			= new/datum/tlv(-1, -1, 2, 5), // AQ EDIT - Miasma
 		GAS_PLUOXIUM			= new/datum/tlv(-1, -1, 1000, 1000) // Unlike oxygen, pluoxium does not fuel plasma/tritium fires
 	)
 
@@ -521,7 +524,7 @@
 			for(var/device_id in A.air_scrub_names)
 				send_signal(device_id, list(
 					"power" = 1,
-					"set_filters" = list(GAS_CO2, GAS_BZ),
+					"set_filters" = list(GAS_CO2, GAS_BZ, GAS_MIASMA), // AQ EDIT - Miasma
 					"scrubbing" = 1,
 					"widenet" = 0
 				), signal_source)
@@ -547,6 +550,7 @@
 						GAS_STIMULUM,
 						GAS_CONSTRICTED_PLASMA, //NSV13
 						GAS_NUCLEIUM, //NSV13
+						GAS_MIASMA, // AQ EDIT - Miasma
 						GAS_PLUOXIUM
 					),
 					"scrubbing" = 1,
@@ -575,7 +579,7 @@
 			for(var/device_id in A.air_scrub_names)
 				send_signal(device_id, list(
 					"power" = 1,
-					"set_filters" = list(GAS_CO2, GAS_BZ),
+					"set_filters" = list(GAS_CO2, GAS_BZ, GAS_MIASMA), // AQ EDIT - Miasma
 					"scrubbing" = 1,
 					"widenet" = 0
 				), signal_source)

@@ -80,3 +80,10 @@
 	"#D6B20C",\
 	"#FF902A",\
 )
+
+// AQ EDIT START - Smartwires cable colours (port BeeStation/BeeStation-Hornet#14275)
+#define COLOR_SONIC_SILVER "#757575"
+#define COLOR_DARK_LIME "#00aa00"
+#define COLOR_MOSTLY_PURE_ORANGE "#ff8000"
+#define COLOR_LIGHT_PINK "#ff3cc8"
+// AQ EDIT END

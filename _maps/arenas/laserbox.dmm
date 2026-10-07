@@ -9,7 +9,7 @@
 /obj/machinery/power/emitter/energycannon,
 /obj/effect/turf_decal/box,
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/tdome/arena)
@@ -23,7 +23,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/tdome/arena)
 "ae" = (
@@ -39,7 +39,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/tdome/arena)
@@ -52,7 +52,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/tdome/arena)
@@ -69,7 +69,7 @@
 /obj/machinery/power/emitter/energycannon,
 /obj/effect/turf_decal/box,
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/tdome/arena)
 "ak" = (
@@ -509,7 +509,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /turf/open/floor/circuit/green/anim,
 /area/tdome/arena)
 "be" = (
@@ -528,11 +528,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/tdome/arena)
 "bg" = (
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/tdome/arena)
 "bh" = (
@@ -543,7 +543,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/tdome/arena)
 "bi" = (
@@ -563,16 +563,56 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/engine,
 /area/tdome/arena)
+"uu" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/cable/yellow,
+/turf/open/floor/plating,
+/area/tdome/arena)
+"vP" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/cable/yellow,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/tdome/arena)
+"wt" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/cable/yellow,
+/turf/open/floor/plating,
+/area/tdome/arena)
+"Kn" = (
+/obj/structure/cable/yellow,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/tdome/arena)
+"Nn" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/cable/yellow,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/tdome/arena)
+"WG" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/cable/yellow,
+/turf/open/floor/plating,
+/area/tdome/arena)
 
 (1,1,1) = {"
 aa
-al
+vP
 az
+vP
 al
+wt
 al
-az
-al
-al
+vP
 "}
 (2,1,1) = {"
 ab
@@ -635,7 +675,7 @@ aZ
 bg
 "}
 (8,1,1) = {"
-ag
+uu
 as
 aE
 am
@@ -652,7 +692,7 @@ aK
 am
 ap
 bb
-ak
+Kn
 "}
 (10,1,1) = {"
 ah
@@ -706,11 +746,11 @@ bj
 "}
 (15,1,1) = {"
 ak
+Nn
 ay
+WG
 ay
+Nn
 aM
-ay
-ay
-aM
-ay
+Nn
 "}

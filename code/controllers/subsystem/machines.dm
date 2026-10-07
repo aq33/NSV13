@@ -6,6 +6,12 @@ SUBSYSTEM_DEF(machines)
 	var/list/processing = list()
 	var/list/currentrun = list()
 	var/list/powernets = list()
+	// AQ EDIT START - Smartwires
+	var/list/dirty_powernets = list()
+	var/dirty_index = 1
+	var/dirty_stop_index
+	var/unique_powernets = 0
+	// AQ EDIT END
 
 /datum/controller/subsystem/machines/Initialize()
 	makepowernets()
@@ -24,11 +30,14 @@ SUBSYSTEM_DEF(machines)
 		qdel(PN)
 	powernets.Cut()
 
-	for(var/obj/structure/cable/PC in GLOB.cable_list)
-		if(!PC.powernet)
-			var/datum/powernet/NewPN = new()
-			NewPN.add_cable(PC)
-			propagate_network(PC,PC.powernet)
+	// AQ EDIT START - Smartwires
+	var/datum/powernet/new_powernet = new()
+	for(var/obj/structure/cable/cable as anything in GLOB.cable_list)
+		new_powernet.add_cable(cable)
+	new_powernet.repropogate_cables()
+	new_powernet.dirty = FALSE
+	dirty_powernets.len = 0
+	// AQ EDIT END
 
 /datum/controller/subsystem/machines/stat_entry()
 	. = ..("M:[processing.len]|PN:[powernets.len]")
@@ -39,6 +48,36 @@ SUBSYSTEM_DEF(machines)
 		for(var/datum/powernet/Powernet in powernets)
 			Powernet.reset() //reset the power state.
 		src.currentrun = processing.Copy()
+		// AQ EDIT START - Smartwires
+		dirty_index = 1
+		dirty_stop_index = length(dirty_powernets)
+
+	// Start processing dirty powernets
+	while (dirty_powernets.len && dirty_index <= dirty_stop_index && dirty_index <= length(dirty_powernets))
+		// Get the element to process
+		var/datum/powernet/first_powernet = dirty_powernets[dirty_index]
+		// Move the last element to our current position in the queue
+		dirty_powernets[dirty_index] = dirty_powernets[length(dirty_powernets)]
+		// Increment the dirty index, to point to the next element
+		// If we needed to process the element we just moved to the start
+		// then don't increment, so we process that element
+		// Note that dirty powernets won't be processed in-order, but they
+		// will always be processed by the end of the machines tick after the
+		// one that they were added on.
+		if (dirty_stop_index <= length(dirty_powernets))
+			dirty_index ++
+		// Shorten the queue without needing to propogate the entire list
+		dirty_powernets.len--
+		// Do processing
+		first_powernet.dirty = FALSE
+		if (!QDELETED(first_powernet))
+			first_powernet.repropogate_cables()
+		// Explicitly doesn't use SPLIT_TICK because we need to recalibrate the powernets
+		// before we calculate power consumption, otherwise machines not connected may
+		// get 1 tick of bluespace power transfer.
+		if (MC_TICK_CHECK)
+			return
+		// AQ EDIT END
 
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
@@ -57,16 +96,29 @@ SUBSYSTEM_DEF(machines)
 			return
 
 /datum/controller/subsystem/machines/proc/setup_template_powernets(list/cables)
-	var/obj/structure/cable/PC
+	// AQ EDIT START - Smartwires
+	if(!length(cables))
+		return
+	var/obj/structure/cable/cable
+	var/datum/powernet/new_powernet = new()
 	for(var/A in 1 to cables.len)
-		PC = cables[A]
-		if(!PC.powernet)
-			var/datum/powernet/NewPN = new()
-			NewPN.add_cable(PC)
-			propagate_network(PC,PC.powernet)
+		cable = cables[A]
+		new_powernet.add_cable(cable)
+	new_powernet.repropogate_cables()
+	new_powernet.dirty = FALSE
+	dirty_powernets -= new_powernet
+	// AQ EDIT END
 
 /datum/controller/subsystem/machines/Recover()
 	if (istype(SSmachines.processing))
 		processing = SSmachines.processing
 	if (istype(SSmachines.powernets))
 		powernets = SSmachines.powernets
+
+// AQ EDIT START - Smartwires
+/datum/controller/subsystem/machines/proc/queue_recalculation(datum/powernet/powernet)
+	if (powernet.dirty)
+		return
+	dirty_powernets += powernet
+	powernet.dirty = TRUE
+// AQ EDIT END

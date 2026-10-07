@@ -37,9 +37,7 @@
 /area/ruin/powered)
 "i" = (
 /obj/machinery/door/airlock/highsecurity,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel/dark,
 /area/ruin/powered)
@@ -81,9 +79,7 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/powered)
 "r" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4
@@ -101,20 +97,12 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/powered)
 "u" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/dark,
 /area/ruin/powered)
 "v" = (
 /obj/structure/rack,
 /obj/item/aiModule/core/full/asimov,
-/turf/open/floor/plasteel/dark,
-/area/ruin/powered)
-"w" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/powered)
 "x" = (
@@ -123,25 +111,19 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/powered)
 "y" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel/dark,
 /area/ruin/powered)
 "z" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/powered)
 "A" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
 	},
@@ -156,36 +138,22 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/powered)
 "D" = (
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /obj/machinery/power/terminal,
 /turf/open/floor/plasteel/dark,
 /area/ruin/powered)
 "E" = (
 /obj/machinery/power/smes,
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/dark,
-/area/ruin/powered)
-"F" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/circuit,
 /area/ruin/powered)
 "G" = (
 /obj/item/aiModule/core/full/drone,
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/circuit,
 /area/ruin/powered)
 "H" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/circuit,
 /area/ruin/powered)
 "J" = (
@@ -210,9 +178,7 @@
 /turf/open/floor/plating,
 /area/ruin/powered)
 "N" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -220,18 +186,14 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/powered)
 "O" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/powered)
 "P" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 9
 	},
@@ -264,9 +226,7 @@
 /area/template_noop)
 "Z" = (
 /obj/structure/AIcore/deactivated,
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/yellow,
 /obj/item/reagent_containers/food/snacks/cheesiehonkers,
 /turf/open/floor/circuit,
 /area/ruin/powered)
@@ -1014,7 +974,7 @@ A
 l
 O
 u
-F
+H
 G
 m
 j
@@ -1055,7 +1015,7 @@ Q
 C
 M
 P
-w
+u
 h
 H
 h

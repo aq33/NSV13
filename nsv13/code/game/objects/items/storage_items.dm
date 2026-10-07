@@ -133,7 +133,7 @@ This file contains various storage items in this order:
 	var/static/items_inside = list(
 		/obj/item/weldingtool = 1,
 		/obj/item/clothing/glasses/welding = 1,
-		/obj/item/stack/cable_coil/random = 1,
+		/obj/item/stack/cable_coil = 1,
 		/obj/item/reagent_containers/hypospray/medipen/system_cleaner = 2,
 		/obj/item/reagent_containers/glass/bottle/radioactive_disinfectant = 1,
 		/obj/item/reagent_containers/syringe = 1,

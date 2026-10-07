@@ -75,19 +75,29 @@
 	if(above)
 		var/turf/above_deck_relay = get_turf(above)
 		var/obj/structure/cable/above_cable = above_deck_relay.get_cable_node()
-		if(above_cable)
-			var/datum/powernet/above_powernet = new()
-			propagate_network(above_cable, above_powernet)
 		above.below = null
 		above = null
+		above_cable?.powernet?.mark_dirty() // AQ EDIT - Smartwires: the split happens on the next powernet recalculation
 	if(below)
 		var/turf/below_deck_relay = get_turf(below)
 		var/obj/structure/cable/below_cable = below_deck_relay.get_cable_node()
-		if(below_cable)
-			var/datum/powernet/below_powernet = new()
-			propagate_network(below_cable, below_powernet)
 		below.above = null
 		below = null
+		below_cable?.powernet?.mark_dirty() // AQ EDIT - Smartwires
+
+// AQ EDIT START - Smartwires: keep the decks in one powernet when it gets recalculated
+/obj/machinery/power/deck_relay/get_bridged_cables()
+	if(!anchored || broken_status != RELAY_OK)
+		return null
+	. = list()
+	for(var/obj/machinery/power/deck_relay/relay as anything in list(above, below))
+		if(QDELETED(relay) || !relay.anchored || relay.broken_status != RELAY_OK)
+			continue
+		var/turf/relay_turf = get_turf(relay)
+		var/obj/structure/cable/relay_cable = relay_turf?.get_cable_node()
+		if(relay_cable)
+			. += relay_cable
+// AQ EDIT END
 
 ///Allows you to scan the relay with a multitool to see stats/reconnect relays
 /obj/machinery/power/deck_relay/multitool_act(mob/user, obj/item/I)

@@ -94,9 +94,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/mine/laborcamp)
 "dC" = (
@@ -126,9 +124,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/mine/laborcamp/security)
 "eh" = (
@@ -256,9 +252,6 @@
 /area/mine/laborcamp)
 "gE" = (
 /obj/machinery/power/apc/auto_name/east,
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
 /obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/mine/laborcamp)
@@ -267,9 +260,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/mine/laborcamp/security)
 "he" = (
@@ -463,9 +454,7 @@
 /obj/machinery/power/smes/engineering{
 	charge = 5e+006
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/mine/laborcamp)
 "mv" = (
@@ -608,9 +597,7 @@
 /area/mine/laborcamp)
 "pN" = (
 /obj/effect/turf_decal/tile/red,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/mine/laborcamp/security)
 "pO" = (
@@ -862,9 +849,7 @@
 /area/mine/laborcamp)
 "ye" = (
 /obj/effect/turf_decal/tile/red/tile_side,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/mine/laborcamp/security)
 "yJ" = (
@@ -1273,9 +1258,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/structure/table,
 /obj/item/storage/toolbox/electrical,
 /turf/open/floor/plating,
@@ -1452,9 +1435,7 @@
 /obj/machinery/power/terminal{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/mine/laborcamp)
 "MT" = (
@@ -1516,9 +1497,7 @@
 	name = "Prison Ofitser";
 	on = 0
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/mine/laborcamp/security)
 "NL" = (
@@ -1615,9 +1594,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 9
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/mine/laborcamp/security)
 "PL" = (
@@ -1671,9 +1648,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/mine/laborcamp/security)
 "Rj" = (
@@ -1766,9 +1741,7 @@
 /turf/open/floor/plasteel/freezer,
 /area/mine/laborcamp)
 "Uh" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/machinery/power/rtg/advanced,
 /turf/open/floor/plating,
 /area/mine/laborcamp)
