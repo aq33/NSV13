@@ -69,6 +69,7 @@
 /datum/emote/living/alien/fart
 	key = "fart"
 	key_third_person = "farts"
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/alien/fart/run_emote(mob/user, params, type_override, intentional)
 	if(!..())
@@ -84,6 +85,7 @@
 /datum/emote/living/carbon/human/superfart
 	key = "superfart"
 	key_third_person = "superfarts"
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/superfart/run_emote(mob/user, params, type_override, intentional)
 	if(!..())

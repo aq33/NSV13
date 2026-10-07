@@ -115,7 +115,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	message = get_message_mods(message, message_mods)
 	var/datum/saymode/saymode = SSradio.saymodes[message_mods[RADIO_KEY]]
 	var/in_critical = InCritical()
-	message = check_for_custom_say_emote(message, message_mods) //NSV13
+	if(!forced && !saymode)
+		message = check_for_custom_say_emote(message, message_mods) //NSV13
 
 	if(!message)
 		return

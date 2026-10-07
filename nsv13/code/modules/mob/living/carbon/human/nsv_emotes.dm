@@ -2,6 +2,7 @@
 	key = "purr"
 	key_third_person = "purrs"
 	message = "purrs"
+	emote_type = EMOTE_VISIBLE
 
 //This is going to piss so many people off, I can't wait.
 /datum/emote/living/purr/can_run_emote(mob/user, status_check = TRUE , intentional)
@@ -19,6 +20,7 @@
 	key = "growl"
 	key_third_person = "growls"
 	message = "growls"
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/growl/get_sound(mob/living/user)
 	if(islizard(user))
@@ -28,6 +30,7 @@
 	key = "cheers"
 	key_third_person = "cheers"
 	message = "raises their glass"
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/cheers/can_run_emote(mob/user, status_check = TRUE , intentional)
 	. = ..()

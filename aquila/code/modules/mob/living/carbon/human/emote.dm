@@ -1,6 +1,7 @@
 /datum/emote/living/carbon/human/fart
 	key = "fart"
 	key_third_person = "farts"
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/fart/run_emote(mob/user, params, type_override, intentional)
 	if(!..())
@@ -52,3 +53,9 @@
 	if(!ishuman(user))
 		return
 	return 'aquila/sound/voice/human/cry.ogg'
+
+/datum/emote/living/carbon/human/tilt
+	key = "tilt"
+	key_third_person = "tilts"
+	message = "przechyla głowę na bok"
+	emote_type = EMOTE_VISIBLE
