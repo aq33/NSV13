@@ -17,3 +17,8 @@
 	if(HAS_TRAIT(src, TRAIT_NOTHIRST))
 		return FALSE
 	return ..()
+
+/mob/living/carbon/human/Initialize(mapload)
+	. = ..()
+	if(!istype(src, /mob/living/carbon/human/dummy)) // podgląd postaci kopiuje appearance manekina, a z nim ukryty render_target
+		AddComponent(/datum/component/walk_animation)

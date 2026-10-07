@@ -35,6 +35,7 @@
 #include "code\datum\wires\wires_jukebox.dm"
 #include "code\datums\components\nanites.dm"
 #include "code\datums\components\uplink.dm"
+#include "code\datums\components\walk_animation.dm"
 #include "code\datums\diseases\advance\symptoms\fleshgrowth.dm"
 #include "code\datums\diseases\advance\symptoms\heal.dm"
 #include "code\datums\diseases\transformation.dm"
