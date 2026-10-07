@@ -424,6 +424,14 @@
 	},
 /turf/open/floor/plating,
 /area/gateway)
+"bb" = (
+/obj/machinery/light,
+/obj/structure/rack,
+/obj/item/stack/sheet/mineral/titanium/fifty,
+/obj/item/stack/sheet/duranium/fifty,
+/obj/item/stack/sheet/duranium/fifty,
+/turf/open/floor/monotile/dark,
+/area/maintenance/department/engine)
 "bc" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
@@ -639,23 +647,6 @@
 	},
 /turf/open/floor/engine/airless,
 /area/space/nearstation)
-"bz" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 5
-	},
-/obj/machinery/light,
-/obj/machinery/computer/ship/dradis/minor/cargo{
-	dir = 8;
-	dradis_id = "nt_cargo_torpedo_launcher"
-	},
-/obj/structure/sign/poster/contraband/random{
-	pixel_y = -32
-	},
-/turf/open/floor/plasteel,
-/area/maintenance/fore)
 "bA" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
@@ -788,15 +779,10 @@
 /turf/open/floor/plating,
 /area/gateway)
 "bQ" = (
-/obj/machinery/light,
-/obj/structure/rack,
-/obj/item/stack/sheet/mineral/titanium/fifty,
-/obj/item/stack/sheet/duranium/fifty,
-/obj/item/stack/sheet/duranium/fifty,
 /obj/structure/sign/poster/contraband/random{
-	pixel_y = -32
+	pixel_y = 32
 	},
-/turf/open/floor/monotile/dark,
+/turf/open/floor/plating,
 /area/maintenance/department/engine)
 "bR" = (
 /turf/open/floor/plating,
@@ -856,9 +842,7 @@
 /turf/open/floor/plating,
 /area/maintenance/department/science)
 "bZ" = (
-/obj/machinery/light{
-	dir = 8
-	},
+/obj/structure/chair/wood,
 /obj/structure/sign/poster/contraband/random{
 	pixel_x = -32
 	},
@@ -937,6 +921,26 @@
 	},
 /turf/open/floor/plating,
 /area/crew_quarters/toilet)
+"cg" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/crew_quarters/theatre)
+"ch" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/light,
+/obj/machinery/computer/ship/dradis/minor/cargo{
+	dir = 8;
+	dradis_id = "nt_cargo_torpedo_launcher"
+	},
+/turf/open/floor/plasteel,
+/area/maintenance/fore)
 "ci" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 1
@@ -962,6 +966,17 @@
 	},
 /turf/open/floor/plating,
 /area/crew_quarters/toilet)
+"cl" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/sign/poster/contraband/random{
+	pixel_x = 32
+	},
+/turf/open/floor/plasteel,
+/area/maintenance/fore)
 "cm" = (
 /obj/machinery/power/apc/auto_name/west,
 /obj/structure/cable{
@@ -32131,9 +32146,9 @@ Lc
 ly
 oU
 jD
-bQ
+bb
 BN
-gM
+bQ
 Vo
 KE
 vW
@@ -50901,8 +50916,8 @@ KB
 dI
 dn
 dG
+cg
 bZ
-dG
 cU
 dy
 cT
@@ -57837,7 +57852,7 @@ Oz
 NF
 TP
 Ky
-TP
+cl
 CS
 TP
 qD
@@ -58092,7 +58107,7 @@ bo
 pc
 Oz
 vj
-bz
+ch
 KM
 KM
 XW
