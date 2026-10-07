@@ -45,9 +45,9 @@
 	id = /obj/item/card/id/job/head_of_security
 	belt = /obj/item/modular_computer/tablet/pda/heads/head_of_security
 	ears = /obj/item/radio/headset/heads/hos/alt
-	uniform = /obj/item/clothing/under/ship/peacekeeper //NSV13
+	uniform = /obj/item/clothing/under/rank/security/head_of_security //AQUILA EDIT
 	shoes = /obj/item/clothing/shoes/jackboots
-	suit = /obj/item/clothing/suit/ship/peacekeeper/jacket //NSV13
+	suit = /obj/item/clothing/suit/ship/peacekeeper/jacket/police //NSV13 //AQUILA EDIT
 	gloves = /obj/item/clothing/gloves/color/black
 	head = /obj/item/clothing/head/HoS/beret
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
