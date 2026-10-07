@@ -17,10 +17,10 @@ const logger = createLogger('AudioPlayer');
 // so volume changes glide, distant music echoes and another deck sounds
 // muffled. The element needs CORS for that; when the stream refuses it (or the
 // audio context can't start) we fall back to a plain <audio> element.
-// On old IE (BYOND 515) there is no Web Audio: volume changes are ramped by a
-// timer in tiny steps and muffled music is just quieter. There is no echo -
-// a delayed second copy of the stream can't be kept in sync there and always
-// sounds like two songs playing.
+// On old IE (BYOND 515) there is no Web Audio, so the plain element fakes it:
+// volume changes are ramped by a timer in tiny steps, the echo is a quieter
+// copy of the stream lagging behind ("taps"), and another deck is
+// quieter with relatively more echo, like sound reflected through the hull.
 
 const ECHO_DELAY = 0.28;
 const ECHO_FEEDBACK = 0.35;
@@ -34,6 +34,16 @@ const GAIN_RAMP_STEP = 0.01;
 const GAIN_RAMP_INTERVAL = 25;
 // Plain element: muffled music is this much quieter
 const PLAIN_MUFFLE_VOLUME = 0.4;
+// Plain element echo copies: delay (s) and level relative to the music
+// (one copy - every copy is another download of the stream). The delay is
+// short so it blends in as room reverb instead of sounding like a second song.
+const PLAIN_TAPS = [
+  { delay: 0.12, level: 0.5 },
+];
+// How much the direct sound is lowered at full echo
+const PLAIN_ECHO_DUCK = 0.2;
+// How far an echo copy may drift before it gets re-seeked (s)
+const TAP_MAX_DRIFT = 0.07;
 
 const AudioContextClass = window.AudioContext || window.webkitAudioContext;
 
@@ -84,6 +94,8 @@ export class AudioPlayer {
     this.muffle = 0;
     this.fx = null;
     this.fxBroken = !AudioContextClass;
+    this.taps = [];
+    this.tapInterval = setInterval(() => this.syncTaps(), 250);
     // AQUILA EDIT END
     // Check every second to stop the playback at the right time
     this.playbackInterval = setInterval(() => {
@@ -272,7 +284,68 @@ export class AudioPlayer {
       this.gain = this.targetGain;
     }
     const muffle = 1 - this.muffle * (1 - PLAIN_MUFFLE_VOLUME);
-    this.node.volume = clamp01(this.volume * this.gain * muffle);
+    const volume = this.volume * this.gain * muffle;
+    // Wet/dry: the further away, the more of what you hear is the echo
+    const dry = 1 - this.tapMix() * PLAIN_ECHO_DUCK;
+    this.node.volume = clamp01(volume * dry);
+    const mix = this.tapMix();
+    for (let tap of this.taps) {
+      tap.node.volume = clamp01(volume * mix * tap.level);
+    }
+  }
+
+  // How loud the echo copies are (0-1): distance echo, more of it through a deck
+  tapMix() {
+    return Math.max(this.echo, this.muffle * 0.8);
+  }
+
+  // Keeps the echo copies of the plain element playing, lagging behind it
+  syncTaps() {
+    const active = this.playing && this.url
+      && this.current === this.node && this.node.started
+      && this.tapMix() > 0.02;
+    if (!active) {
+      for (let tap of this.taps) {
+        if (!tap.node.paused) {
+          tap.node.pause();
+        }
+      }
+      return;
+    }
+    if (!this.taps.length) {
+      for (let config of PLAIN_TAPS) {
+        const tap = { ...config, node: createAudioElement(), url: null };
+        tap.node.addEventListener('canplaythrough', () => {
+          tap.ready = true;
+        });
+        this.taps.push(tap);
+      }
+    }
+    const rate = this.node.playbackRate;
+    for (let tap of this.taps) {
+      if (tap.url !== this.url) {
+        tap.url = this.url;
+        tap.ready = false;
+        tap.node.src = this.url;
+        continue;
+      }
+      if (!tap.ready) {
+        continue;
+      }
+      const target = this.node.currentTime - tap.delay * rate;
+      if (target < 0) {
+        continue;
+      }
+      tap.node.playbackRate = rate;
+      if (tap.node.paused
+        || Math.abs(tap.node.currentTime - target) > TAP_MAX_DRIFT) {
+        tap.node.currentTime = target;
+      }
+      if (tap.node.paused) {
+        tap.node.play();
+      }
+    }
+    this.applyVolume();
   }
   // AQUILA EDIT END
 
@@ -284,6 +357,10 @@ export class AudioPlayer {
     document.body.removeChild(this.node);
     clearInterval(this.playbackInterval);
     clearInterval(this.rampInterval);
+    clearInterval(this.tapInterval);
+    for (let tap of this.taps) {
+      document.body.removeChild(tap.node);
+    }
     if (this.fx) {
       document.body.removeChild(this.fx.node);
       this.fx.context.close();
@@ -337,6 +414,12 @@ export class AudioPlayer {
       node.started = false;
       node.pause();
       node.src = '';
+    }
+    for (let tap of this.taps) {
+      tap.node.pause();
+      tap.node.src = '';
+      tap.url = null;
+      tap.ready = false;
     }
   }
 
