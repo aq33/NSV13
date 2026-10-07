@@ -273,7 +273,7 @@
 				return 60 SECONDS
 			else
 				var/obj/effect/dummy/luminescent_glow/glowth = new(user) //copied from glowy mutation, copied from luminescents
-				glowth.set_light(2.5, 2.5, user.dna.features["mcolor"]) //Weaker than regular luminescents
+				glowth.set_light_range_power_color(2.5, 2.5, user.dna.features["mcolor"]) //Weaker than regular luminescents
 				QDEL_IN(glowth, 600)
 				return 60 SECONDS
 
