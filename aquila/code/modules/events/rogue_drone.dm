@@ -5,7 +5,7 @@
 /datum/round_event_control/aquila_rogue_drone
 	name = "Rogue Drone"
 	typepath = /datum/round_event/ghost_role/aquila_rogue_drone
-	weight = 8
+	weight = 10
 	max_occurrences = 1
 	min_players = 10
 	earliest_start = 20 MINUTES
