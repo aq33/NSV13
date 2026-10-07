@@ -6,7 +6,6 @@
 	typepath = /datum/round_event/aquila_skeleton_closet
 	weight = 10
 	max_occurrences = 2
-	min_players = 5
 	earliest_start = 10 MINUTES
 
 /datum/round_event/aquila_skeleton_closet
