@@ -21,19 +21,27 @@
 	var/yt_track_end = 0
 	var/yt_stream_url = null
 	var/list/yt_extra = null
+	/// Tempo bieżącego utworu (kable vaporwave/nightcore), ustalane przy starcie utworu
+	var/yt_speed = 1
 	/// Klienci, którym aktualnie gra muzyka z tego jukeboxa, z ostatnio wysłaną głośnością
 	var/list/yt_listeners = list()
 	/// Ostatnio wysłana ilość echa dla klienta
 	var/list/yt_listener_echo = list()
 
+/// Polecenie yt-dlp: INVOKE_YOUTUBEDL z konfigu, a gdy go brak - yt-dlp.exe z katalogu gry (leży w repo).
+/proc/aquila_ytdl_command()
+	. = CONFIG_GET(string/invoke_youtubedl)
+	if(!. && world.system_type == MS_WINDOWS && fexists("yt-dlp.exe"))
+		return ".\\yt-dlp.exe --no-check-certificate"
+
 /obj/machinery/jukebox/proc/yt_available()
-	return !!CONFIG_GET(string/invoke_youtubedl)
+	return !!aquila_ytdl_command()
 
 /obj/machinery/jukebox/proc/yt_ui()
 	var/list/dat = list()
 	dat += "<hr><b>Playlista YouTube</b><br>"
 	if(!yt_available())
-		dat += "<i>Niedostępne - serwer nie ma skonfigurowanego yt-dlp.</i><br>"
+		dat += "<i>Niedostępne - brak yt-dlp na serwerze (INVOKE_YOUTUBEDL w konfigu ani yt-dlp.exe w katalogu gry).</i><br>"
 		return dat.Join()
 	dat += "<A href='?src=[REF(src)];action=yt_load'>Wczytaj playlistę</A>"
 	if(yt_tracks.len || yt_playlist_url)
@@ -62,9 +70,6 @@
 		if("yt_load")
 			if(yt_busy)
 				return
-			if(active)
-				to_chat(user, "<span class='warning'>Najpierw zatrzymaj odtwarzanie lokalnego utworu.</span>")
-				return
 			var/url = input(user, "Podaj link do playlisty YouTube", "Playlista", yt_playlist_url) as text|null
 			if(!url || QDELETED(src))
 				return
@@ -74,21 +79,13 @@
 				return
 			INVOKE_ASYNC(src, .proc/yt_load_playlist, url, user)
 		if("yt_toggle")
-			if(yt_active)
-				yt_stop()
-			else if(active)
-				to_chat(user, "<span class='warning'>Najpierw zatrzymaj odtwarzanie lokalnego utworu.</span>")
-			else if(!yt_busy)
-				if(!yt_tracks.len && yt_playlist_url)
-					INVOKE_ASYNC(src, .proc/yt_load_playlist, yt_playlist_url, user, TRUE)
-				else
-					INVOKE_ASYNC(src, .proc/yt_next)
+			yt_toggle_playback(user)
 		if("yt_play")
 			var/index = text2num(href_list["index"])
 			if(!index || index < 1 || index > yt_tracks.len || yt_busy)
 				return
-			if(active)
-				to_chat(user, "<span class='warning'>Najpierw zatrzymaj odtwarzanie lokalnego utworu.</span>")
+			if(selection_blocked)
+				to_chat(user, "<span class='warning'>Wciskasz przycisk wyboru utworu, ale nic się nie dzieje. Smutne!</span>")
 				return
 			INVOKE_ASYNC(src, .proc/yt_next, index)
 		if("yt_skip")
@@ -98,8 +95,28 @@
 			yt_shuffle = !yt_shuffle
 	updateUsrDialog()
 
+/// Graj/Stop - z UI i z kabla WIRE_PLAY
+/obj/machinery/jukebox/proc/yt_toggle_playback(mob/user)
+	if(yt_active)
+		if(stop_blocked)
+			if(user)
+				to_chat(user, "<span class='warning'>Wciskasz przycisk zatrzymania odtwarzania, ale nic się nie dzieje. Dziwne.</span>")
+			return
+		yt_stop()
+	else if(!yt_busy && yt_available())
+		if(!yt_tracks.len && yt_playlist_url)
+			INVOKE_ASYNC(src, .proc/yt_load_playlist, yt_playlist_url, user, TRUE)
+		else
+			INVOKE_ASYNC(src, .proc/yt_next)
+
+/// Losowy utwór z playlisty - z kabla WIRE_LISTING
+/obj/machinery/jukebox/proc/yt_play_random()
+	if(yt_busy || !yt_tracks.len)
+		return
+	INVOKE_ASYNC(src, .proc/yt_next, rand(1, yt_tracks.len))
+
 /obj/machinery/jukebox/proc/yt_load_playlist(url, mob/user, autoplay = FALSE)
-	var/ytdl = CONFIG_GET(string/invoke_youtubedl)
+	var/ytdl = aquila_ytdl_command()
 	if(!ytdl)
 		return
 	yt_busy = TRUE
@@ -154,7 +171,7 @@
 	if(machine_stat & (BROKEN|NOPOWER) || !mains || !anchored)
 		yt_stop()
 		return
-	var/ytdl = CONFIG_GET(string/invoke_youtubedl)
+	var/ytdl = aquila_ytdl_command()
 	if(!ytdl)
 		return
 	yt_busy = TRUE
@@ -183,9 +200,6 @@
 		if(!duration || duration * 10 > JUKEBOX_YT_MAX_TRACK_LENGTH)
 			continue
 		yt_busy = FALSE
-		if(active) // ktoś włączył lokalny utwór w trakcie pobierania
-			updateUsrDialog()
-			return
 		yt_start_track(stream, data, duration)
 		return
 	yt_busy = FALSE
@@ -195,9 +209,10 @@
 /obj/machinery/jukebox/proc/yt_start_track(stream, list/data, duration)
 	yt_stop_listeners()
 	yt_stream_url = stream
-	yt_extra = list("title" = data["title"], "link" = data["webpage_url"])
+	yt_speed = get_speed_factor()
+	yt_extra = list("title" = data["title"], "link" = data["webpage_url"], "pitch" = yt_speed)
 	yt_track_started = world.time
-	yt_track_end = world.time + duration * 10 + 2 SECONDS
+	yt_track_end = world.time + duration * 10 / yt_speed + 2 SECONDS
 	if(!yt_active)
 		yt_active = TRUE
 		playsound(src, 'sound/machines/terminal_on.ogg', 50, TRUE)
@@ -214,8 +229,7 @@
 	SSjukeboxes.yt_jukeboxes -= src
 	yt_stop_listeners()
 	if(was_active)
-		if(!active)
-			STOP_PROCESSING(SSobj, src)
+		STOP_PROCESSING(SSobj, src)
 		playsound(src, 'sound/machines/terminal_off.ogg', 50, TRUE)
 	update_icon()
 	updateUsrDialog()
@@ -257,7 +271,7 @@
 		if(gain <= 0)
 			continue
 		var/list/extra = yt_extra.Copy()
-		extra["start"] = round((world.time - yt_track_started) / 10)
+		extra["start"] = round((world.time - yt_track_started) / 10 * yt_speed)
 		extra["volume"] = gain
 		extra["echo"] = yt_echo_for(M)
 		C.tgui_panel?.play_music(yt_stream_url, extra)
