@@ -113,7 +113,9 @@
 /area/ruin/unpowered)
 "J" = (
 /obj/effect/turf_decal/tile/neutral,
-/obj/item/stack/cable_coil/random/five,
+/obj/item/stack/cable_coil{
+	amount = 5
+	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/unpowered)
 "M" = (

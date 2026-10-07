@@ -39,6 +39,18 @@ if grep -P '\td[1-2] =' _maps/**/*.dmm;    then
     echo -e "${RED}ERROR: d1/d2 cable variables detected in maps, please remove them.${NC}"
     st=1
 fi;
+# AQ EDIT START - Smartwires: cables join by colour, so var-edits and two cables of one colour on a tile break powernets
+if grep -Pzo '"\w+" = \(\n[^)]*?/obj/structure/cable[/\w]*?\{' _maps/**/*.dmm;	then
+	echo
+	echo -e "${RED}ERROR: Var-edited cables detected in maps, use the colour subtypes instead (tools/smartwires/convert.py converts old maps).${NC}"
+	st=1
+fi;
+if grep -Pzo '"\w+" = \(\n[^)]*?/obj/structure/cable(?<type>[/\w]*),\n[^)]*?/obj/structure/cable\g{type},\n[^)]*?/area/.+\)' _maps/**/*.dmm;	then
+	echo
+	echo -e "${RED}ERROR: Found multiple cables of the same colour on the same tile, please remove them.${NC}"
+	st=1
+fi;
+# AQ EDIT END
 echo -e "${BLUE}Checking for stacked cables...${NC}"
 if grep -Pzo '"\w+" = \(\n[^)]*?/obj/structure/lattice[/\w]*?,\n[^)]*?/obj/structure/lattice[/\w]*?,\n[^)]*?/area/.+?\)' _maps/**/*.dmm;	then
 	echo
