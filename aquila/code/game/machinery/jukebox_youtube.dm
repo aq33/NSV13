@@ -6,6 +6,12 @@
 #define JUKEBOX_YT_MAX_TRACK_LENGTH (15 MINUTES)
 /// Minimalna zmiana głośności, przy której wysyłamy aktualizację do klienta
 #define JUKEBOX_YT_GAIN_STEP 0.01
+/// Na tyle przed końcem utworu pobieramy link do następnego, żeby nie było przerwy
+#define JUKEBOX_YT_PREFETCH_TIME (45 SECONDS)
+/// Po takim czasie uznajemy, że yt-dlp się zawiesił, i odblokowujemy jukebox
+#define JUKEBOX_YT_BUSY_TIMEOUT (90 SECONDS)
+/// Wspólne argumenty yt-dlp: limit czasu połączenia i ponowień, żeby zapytanie nie wisiało w nieskończoność
+#define JUKEBOX_YT_ARGS "--socket-timeout 10 --retries 2 --extractor-retries 1 --no-warnings"
 
 /obj/machinery/jukebox
 	/// URL playlisty - domyślna playlista wczytuje się przy pierwszym "Graj"
@@ -17,6 +23,11 @@
 	var/yt_shuffle = FALSE
 	/// Trwa zapytanie do yt-dlp
 	var/yt_busy = FALSE
+	var/yt_busy_since = 0
+	/// Trwa pobieranie linku do następnego utworu w tle
+	var/yt_prefetching = FALSE
+	/// Gotowy następny utwór: list("index", "stream", "data", "duration")
+	var/list/yt_prefetched = null
 	var/yt_track_started = 0
 	var/yt_track_end = 0
 	var/yt_stream_url = null
@@ -65,7 +76,21 @@
 		dat += "</div>"
 	return dat.Join()
 
+/// Ustawia flagę zajętości (z czasem startu dla strażnika zawieszenia)
+/obj/machinery/jukebox/proc/yt_set_busy(busy)
+	yt_busy = busy
+	yt_busy_since = busy ? world.time : 0
+
+/// Odblokowuje jukebox, gdy zapytanie do yt-dlp wisi za długo
+/obj/machinery/jukebox/proc/yt_check_stuck()
+	if(yt_busy && world.time - yt_busy_since > JUKEBOX_YT_BUSY_TIMEOUT)
+		log_game("Jukebox YT request timed out at [AREACOORD(src)]")
+		yt_set_busy(FALSE)
+	if(yt_prefetching && world.time - yt_busy_since > JUKEBOX_YT_BUSY_TIMEOUT)
+		yt_prefetching = FALSE
+
 /obj/machinery/jukebox/proc/yt_topic(action, list/href_list, mob/user)
+	yt_check_stuck()
 	switch(action)
 		if("yt_load")
 			if(yt_busy)
@@ -119,10 +144,10 @@
 	var/ytdl = aquila_ytdl_command()
 	if(!ytdl)
 		return
-	yt_busy = TRUE
+	yt_set_busy(TRUE)
 	updateUsrDialog()
-	var/list/output = world.shelleo("[ytdl] --flat-playlist --dump-single-json --playlist-end [JUKEBOX_YT_MAX_TRACKS] -- \"[shell_url_scrub(url)]\"")
-	yt_busy = FALSE
+	var/list/output = world.shelleo("[ytdl] [JUKEBOX_YT_ARGS] --flat-playlist --dump-single-json --playlist-end [JUKEBOX_YT_MAX_TRACKS] -- \"[shell_url_scrub(url)]\"")
+	yt_set_busy(FALSE)
 	if(QDELETED(src))
 		return
 	if(output[SHELLEO_ERRORLEVEL])
@@ -157,12 +182,59 @@
 	yt_playlist_url = url
 	yt_tracks = new_tracks
 	yt_index = 0
+	yt_prefetched = null
 	say("Wczytano [yt_tracks.len] utworów.")
 	log_game("[key_name(user)] loaded YouTube playlist [url] into [src] at [AREACOORD(src)]")
 	message_admins("[ADMIN_LOOKUPFLW(user)] wczytał(a) playlistę YT do jukeboxa: [url] [ADMIN_JMP(src)]")
 	updateUsrDialog()
 	if(autoplay)
 		yt_next()
+
+/// Indeks następnego utworu (kolejny albo losowy)
+/obj/machinery/jukebox/proc/yt_pick_next_index(after)
+	if(yt_shuffle && yt_tracks.len > 1)
+		var/index = after
+		while(index == after)
+			index = rand(1, yt_tracks.len)
+		return index
+	return (after % yt_tracks.len) + 1
+
+/// Pyta yt-dlp o link do strumienia utworu. Zwraca list("stream", "data", "duration") albo null.
+/obj/machinery/jukebox/proc/yt_resolve(index)
+	var/ytdl = aquila_ytdl_command()
+	if(!ytdl || index < 1 || index > yt_tracks.len)
+		return null
+	var/list/T = yt_tracks[index]
+	var/list/output = world.shelleo("[ytdl] [JUKEBOX_YT_ARGS] --geo-bypass --format \"bestaudio\[ext=m4a]/bestaudio\[ext=mp3]/bestaudio\[ext=aac]/best\[ext=mp4]\[height<=360]\" --dump-single-json --no-playlist -- \"https://www.youtube.com/watch?v=[shell_url_scrub(T["id"])]\"")
+	if(QDELETED(src) || output[SHELLEO_ERRORLEVEL])
+		return null
+	var/list/data
+	try
+		data = json_decode(output[SHELLEO_STDOUT])
+	catch
+		return null
+	var/stream = data["url"]
+	if(!stream || !findtext(stream, GLOB.is_http_protocol))
+		return null
+	var/duration = text2num("[data["duration"]]") || T["duration"]
+	if(!duration || duration * 10 > JUKEBOX_YT_MAX_TRACK_LENGTH)
+		return null
+	return list("stream" = stream, "data" = data, "duration" = duration)
+
+/// W tle pobiera link do następnego utworu, żeby po końcu obecnego zagrać go od razu.
+/obj/machinery/jukebox/proc/yt_prefetch()
+	if(yt_prefetching || yt_busy || yt_prefetched || !yt_tracks.len)
+		return
+	yt_prefetching = TRUE
+	yt_busy_since = world.time
+	var/index = yt_pick_next_index(yt_index)
+	var/list/result = yt_resolve(index)
+	if(QDELETED(src))
+		return
+	yt_prefetching = FALSE
+	if(result && yt_active)
+		result["index"] = index
+		yt_prefetched = result
 
 /// Odtwarza wybrany utwór (index) albo następny (kolejny lub losowy), pobiera link do strumienia i puszcza go słuchaczom.
 /obj/machinery/jukebox/proc/yt_next(index)
@@ -171,38 +243,29 @@
 	if(machine_stat & (BROKEN|NOPOWER) || !mains || !anchored)
 		yt_stop()
 		return
-	var/ytdl = aquila_ytdl_command()
-	if(!ytdl)
+	// następny utwór już czeka - bez przerwy
+	var/list/ready = yt_prefetched
+	yt_prefetched = null
+	if(ready && (!index || index == ready["index"]))
+		yt_index = ready["index"]
+		yt_start_track(ready["stream"], ready["data"], ready["duration"])
 		return
-	yt_busy = TRUE
+	if(!aquila_ytdl_command())
+		return
+	yt_set_busy(TRUE)
 	updateUsrDialog()
 	// próbujemy kilku utworów, bo pojedyncze filmy mogą być niedostępne
-	for(var/attempt in 1 to min(5, yt_tracks.len))
-		if(attempt == 1 && index)
-			yt_index = index
-		else
-			yt_index = yt_shuffle ? rand(1, yt_tracks.len) : (yt_index % yt_tracks.len) + 1
-		var/list/T = yt_tracks[yt_index]
-		var/list/output = world.shelleo("[ytdl] --geo-bypass --format \"bestaudio\[ext=m4a]/bestaudio\[ext=mp3]/bestaudio\[ext=aac]/best\[ext=mp4]\[height<=360]\" --dump-single-json --no-playlist -- \"https://www.youtube.com/watch?v=[shell_url_scrub(T["id"])]\"")
+	for(var/attempt in 1 to min(3, yt_tracks.len))
+		yt_index = (attempt == 1 && index) ? index : yt_pick_next_index(yt_index)
+		var/list/result = yt_resolve(yt_index)
 		if(QDELETED(src))
 			return
-		if(output[SHELLEO_ERRORLEVEL])
+		if(!result)
 			continue
-		var/list/data
-		try
-			data = json_decode(output[SHELLEO_STDOUT])
-		catch
-			continue
-		var/stream = data["url"]
-		if(!stream || !findtext(stream, GLOB.is_http_protocol))
-			continue
-		var/duration = text2num("[data["duration"]]") || T["duration"]
-		if(!duration || duration * 10 > JUKEBOX_YT_MAX_TRACK_LENGTH)
-			continue
-		yt_busy = FALSE
-		yt_start_track(stream, data, duration)
+		yt_set_busy(FALSE)
+		yt_start_track(result["stream"], result["data"], result["duration"])
 		return
-	yt_busy = FALSE
+	yt_set_busy(FALSE)
 	say("Nie udało się odtworzyć żadnego utworu z playlisty.")
 	yt_stop()
 
@@ -212,7 +275,7 @@
 	yt_speed = get_speed_factor()
 	yt_extra = list("title" = data["title"], "link" = data["webpage_url"], "pitch" = yt_speed)
 	yt_track_started = world.time
-	yt_track_end = world.time + duration * 10 / yt_speed + 2 SECONDS
+	yt_track_end = world.time + duration * 10 / yt_speed + 1 SECONDS
 	if(!yt_active)
 		yt_active = TRUE
 		playsound(src, 'sound/machines/terminal_on.ogg', 50, TRUE)
@@ -226,6 +289,7 @@
 	var/was_active = yt_active
 	yt_active = FALSE
 	yt_stream_url = null
+	yt_prefetched = null
 	SSjukeboxes.yt_jukeboxes -= src
 	yt_stop_listeners()
 	if(was_active)
@@ -288,11 +352,17 @@
 	if(machine_stat & (BROKEN|NOPOWER) || !mains || !anchored)
 		yt_stop()
 		return
+	yt_check_stuck()
 	if(yt_busy)
 		return
 	if(world.time >= yt_track_end)
 		INVOKE_ASYNC(src, .proc/yt_next)
+	else if(yt_track_end - world.time <= JUKEBOX_YT_PREFETCH_TIME && !yt_prefetched && !yt_prefetching)
+		INVOKE_ASYNC(src, .proc/yt_prefetch)
 
 #undef JUKEBOX_YT_MAX_TRACKS
 #undef JUKEBOX_YT_MAX_TRACK_LENGTH
 #undef JUKEBOX_YT_GAIN_STEP
+#undef JUKEBOX_YT_PREFETCH_TIME
+#undef JUKEBOX_YT_BUSY_TIMEOUT
+#undef JUKEBOX_YT_ARGS

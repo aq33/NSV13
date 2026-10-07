@@ -18,8 +18,8 @@ const logger = createLogger('AudioPlayer');
 // muffled. The element needs CORS for that; when the stream refuses it (or the
 // audio context can't start) we fall back to a plain <audio> element.
 // On old IE (BYOND 515) there is no Web Audio, so the plain element fakes it:
-// volume changes are ramped by a timer in tiny steps, the echo is a couple of
-// quieter copies of the stream lagging behind ("taps"), and another deck is
+// volume changes are ramped by a timer in tiny steps, the echo is a quieter
+// copy of the stream lagging behind ("taps"), and another deck is
 // quieter with relatively more echo, like sound reflected through the hull.
 
 const ECHO_DELAY = 0.28;
@@ -35,12 +35,12 @@ const GAIN_RAMP_INTERVAL = 25;
 // Plain element: muffled music is this much quieter
 const PLAIN_MUFFLE_VOLUME = 0.4;
 // Plain element echo copies: delay (s) and level relative to the music
+// (one copy - every copy is another download of the stream)
 const PLAIN_TAPS = [
-  { delay: 0.16, level: 0.55 },
-  { delay: 0.42, level: 0.35 },
+  { delay: 0.3, level: 0.6 },
 ];
 // How far an echo copy may drift before it gets re-seeked (s)
-const TAP_MAX_DRIFT = 0.25;
+const TAP_MAX_DRIFT = 0.4;
 
 const AudioContextClass = window.AudioContext || window.webkitAudioContext;
 
