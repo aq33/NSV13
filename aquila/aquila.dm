@@ -201,6 +201,7 @@
 #include "code\modules\events\rogue_drone.dm"
 #include "code\modules\events\infiltrators.dm"
 #include "code\modules\events\magnetic_field.dm"
+#include "code\modules\events\butt_loss.dm"
 #include "code\modules\events\paradox_clone.dm"
 #include "code\modules\events\prisoner_transfer.dm"
 #include "code\modules\events\shit_storm.dm"
