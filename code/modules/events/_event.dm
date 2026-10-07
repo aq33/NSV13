@@ -43,6 +43,11 @@
 /datum/round_event_control/wizard
 	wizardevent = TRUE
 
+/// AQ EDIT - the weight SSevents.spawnEvent() picks with. Every event has the same chance, `weight` itself is ignored there
+/// (it still marks round-start events with a negative value)
+/datum/round_event_control/proc/get_random_weight()
+	return 10
+
 // Checks if the event can be spawned. Used by event controller and "false alarm" event.
 // Admin-created events override this.
 /datum/round_event_control/proc/canSpawnEvent(var/players_amt, var/gamemode)
