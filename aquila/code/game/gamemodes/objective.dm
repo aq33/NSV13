@@ -11,31 +11,37 @@ GLOBAL_LIST_INIT(infiltrator_objective_areas, typecacheof(list(/area/syndicate_m
 	.=..()
 
 /datum/objective/steal/check_completion()
-	.=..()
-	if (istype(team, /datum/team/infiltrator))
-		for (var/area/A in world)
-			if (is_type_in_typecache(A, GLOB.infiltrator_objective_areas))
-				for (var/obj/item/I in A.GetAllContents()) //Check for items
-					if (istype(I, steal_target))
-						if (!targetinfo)
-							return TRUE
-						else if (targetinfo.check_special_completion(I))
-							return TRUE
-					if (targetinfo && (I.type in targetinfo.altitems))
-						if (targetinfo.check_special_completion(I))
-							return TRUE
-					CHECK_TICK
-			CHECK_TICK
+	. = ..()
+	if (. || !istype(team, /datum/team/infiltrator))
+		return
+	for (var/area/A in world)
+		if (is_type_in_typecache(A, GLOB.infiltrator_objective_areas))
+			for (var/obj/item/I in A.GetAllContents()) //Check for items
+				if (istype(I, steal_target))
+					if (!targetinfo)
+						return TRUE
+					else if (targetinfo.check_special_completion(I))
+						return TRUE
+				if (targetinfo && (I.type in targetinfo.altitems))
+					if (targetinfo.check_special_completion(I))
+						return TRUE
+				CHECK_TICK
 		CHECK_TICK
 
 /datum/objective/download/check_completion()
+	. = ..()
+	if (. || !istype(team, /datum/team/infiltrator))
+		return
+	// Core only counts research carried by the owners - infiltrators may also stash tech disks on their base or cruiser
 	var/datum/techweb/checking = new
-	if (istype(team, /datum/team/infiltrator))
-		for (var/area/A in world)
-			if (is_type_in_typecache(A, GLOB.infiltrator_objective_areas))
-				for (var/obj/item/disk/tech_disk/TD in A.GetAllContents()) //Check for items
-					TD.stored_research.copy_research_to(checking)
+	for(var/datum/mind/owner as() in get_owners())
+		if(ismob(owner.current))
+			for(var/obj/item/disk/tech_disk/TD in owner.current.GetAllContents())
+				TD.stored_research.copy_research_to(checking)
+	for (var/area/A in world)
+		if (is_type_in_typecache(A, GLOB.infiltrator_objective_areas))
+			for (var/obj/item/disk/tech_disk/TD in A.GetAllContents())
+				TD.stored_research.copy_research_to(checking)
 				CHECK_TICK
-			CHECK_TICK
 		CHECK_TICK
-	.=..()
+	return checking.researched_nodes.len >= target_amount

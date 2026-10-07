@@ -320,31 +320,13 @@ GLOBAL_LIST_EMPTY(created_baseturf_lists)
 		. = target.zImpact(A, levels, src)
 		A.zfalling = FALSE
 
-/turf/proc/handleRCL(obj/item/rcl/C, mob/user)
-	if(C.loaded)
-		for(var/obj/structure/cable/LC in src)
-			if(!LC.d1 || !LC.d2)
-				LC.handlecable(C, user)
-				return
-		C.loaded.place_turf(src, user)
-		if(C.wiring_gui_menu)
-			C.wiringGuiUpdate(user)
-		C.is_empty(user)
-
 /turf/attackby(obj/item/C, mob/user, params)
 	if(..())
 		return TRUE
 	if(can_lay_cable() && istype(C, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/coil = C
-		for(var/obj/structure/cable/LC in src)
-			if(!LC.d1 || !LC.d2)
-				LC.attackby(C,user)
-				return
-		coil.place_turf(src, user)
+		coil.place_on_turf(src, user)
 		return TRUE
-
-	else if(istype(C, /obj/item/rcl))
-		handleRCL(C, user)
 
 	return FALSE
 

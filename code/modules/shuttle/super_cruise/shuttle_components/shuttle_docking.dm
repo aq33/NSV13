@@ -88,7 +88,7 @@
 		var/list/to_add = list()
 		to_add += the_eye.placement_images
 		to_add += the_eye.placed_images
-		if(!shuttleObject.stealth)
+		if(!shuttleObject?.stealth)
 			to_add += SSshuttle.hidden_shuttle_turf_images
 
 		user.client.images += to_add
@@ -122,7 +122,7 @@
 		var/list/to_remove = list()
 		to_remove += the_eye.placement_images
 		to_remove += the_eye.placed_images
-		if(!shuttleObject.stealth)
+		if(!shuttleObject?.stealth)
 			to_remove += SSshuttle.hidden_shuttle_turf_images
 
 		user.client.images -= to_remove
@@ -132,8 +132,10 @@
 	if(designating_target_loc || !current_user)
 		return
 
-	if(QDELETED(shuttleObject))
-		to_chat(usr, "<span class='warning'>Shuttle has already docked.</span>")
+	// AQ EDIT - no supercruise here, shuttles are flown straight from the console (see nsv13/code/modules/shuttle/computer.dm)
+	var/obj/docking_port/mobile/landing_shuttle = SSshuttle.getShuttle(shuttleId)
+	if(!landing_shuttle || landing_shuttle.mode != SHUTTLE_IDLE)
+		to_chat(current_user, "<span class='warning'>Shuttle is not ready to move.</span>")
 		return
 
 	var/mob/camera/ai_eye/remote/shuttle_docker/the_eye = eyeobj
@@ -266,7 +268,7 @@
 	. = SHUTTLE_DOCKER_LANDING_CLEAR
 	// See if the turf is hidden from us
 	var/list/hidden_turf_info
-	if(!shuttleObject.stealth)
+	if(!shuttleObject?.stealth)
 		hidden_turf_info = SSshuttle.hidden_shuttle_turfs[T]
 		if(hidden_turf_info)
 			. = SHUTTLE_DOCKER_BLOCKED_BY_HIDDEN_PORT
@@ -286,7 +288,7 @@
 			continue
 		if(port.delete_after) //Don't worry about it, we're landing on another ship, no ship will land on this port.
 			continue
-		var/port_hidden = !shuttleObject.stealth && port.hidden
+		var/port_hidden = !shuttleObject?.stealth && port.hidden
 		var/list/overlap = overlappers[port]
 		var/list/xs = overlap[1]
 		var/list/ys = overlap[2]

@@ -15,17 +15,24 @@ GLOBAL_VAR_INIT(next_button_push, 0)
 /obj/item/service/manifest/attack_self(mob/user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		var/obj/item/card/id/ID = H.wear_id.GetID()
+		var/obj/item/card/id/ID = H.wear_id?.GetID()
 		if(!ID)
 			to_chat(user, span_notice("You need to wear your ID to properly spoof the manifest! Try again."))
 			return
-		if(alert(user, "Are you sure you want your crew manifest entry to be [H.real_name], [ID.assignment]?", "", "Yes", "No") == "Yes")
-			var/list/all_jobs = (GLOB.command_positions + GLOB.engineering_positions + GLOB.medical_positions + GLOB.science_positions + GLOB.supply_positions + GLOB.civilian_positions + GLOB.security_positions)
-			if((ID.assignment in all_jobs) || (alert(user, "Are you sure you want your job to be '[ID.assignment]'? This is not a default job, and may look strange on the manifest!", "", "Yes", "No") == "Yes"))
-				GLOB.data_core.manifest_inject(H, H.client, ID.assignment)
-				to_chat(user, span_notice("Added to manifest."))
-				do_sparks(2, FALSE, src)
-				qdel(src)
+		var/record_name = ID.registered_name || H.name
+		var/assignment = ID.assignment || "Unassigned"
+		if(alert(user, "Are you sure you want your crew manifest entry to be [record_name], [assignment]?", "", "Yes", "No") != "Yes")
+			return
+		var/list/all_jobs = (GLOB.command_positions + GLOB.engineering_positions + GLOB.medical_positions + GLOB.science_positions + GLOB.supply_positions + GLOB.civilian_positions + GLOB.security_positions)
+		if(!(assignment in all_jobs) && (alert(user, "Are you sure you want your job to be '[assignment]'? This is not a default job, and may look strange on the manifest!", "", "Yes", "No") != "Yes"))
+			return
+		if(QDELETED(src) || !user.is_holding(src))
+			return
+		GLOB.data_core.manifest_inject(H, H.client, force = TRUE, record_name = record_name, assignment_override = assignment)
+		to_chat(user, span_notice("Added to manifest."))
+		log_game("[key_name(user)] spoofed a crew manifest entry as [record_name], [assignment].")
+		do_sparks(2, FALSE, src)
+		qdel(src)
 
 /obj/item/service/ion
 	desc = "Announces a fake ion storm."

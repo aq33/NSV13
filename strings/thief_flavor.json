@@ -1,0 +1,26 @@
+{
+	"Black Market Outfitter": {
+		"goal": "Masz dojście do czarnego rynku i okazuje się, że możesz się szybko wzbogacić, wprowadzając do darknetu trochę broni Nanotrasenu!",
+		"introduction": "Jesteś Dostawcą Czarnego Rynku."
+	},
+	"Chronicler": {
+		"goal": "Chcesz chronić i zachować rodzinne pamiątki. Niestety twoi współtowarzysze nie rozumieją wyższego celu, więc musisz zabrać ich pamiątki bez ich zgody. Wskazówka: rodzinną pamiątkę rozpoznasz, oglądając przedmiot z bliska.",
+		"introduction": "Jesteś Kronikarzem."
+	},
+	"Deranged": {
+		"goal": "Po otwarciu Kodeksu nic już nie było takie samo. Wiesz teraz, że dusze zmarłych zostały na zawsze uwięzione przez Diabła w ich własnych śmiertelnych ciałach. Jedynym rozwiązaniem jest zebrać je wszystkie i urządzić z nimi podwieczorek!",
+		"introduction": "Jesteś Obłąkany."
+	},
+	"Hoarder": {
+		"goal": "Masz poważny problem z chomikowaniem. Do tego masz naprawdę złe przeczucia co do dzisiejszego dnia i musisz przygotować sobie zapasy na wypadek, gdyby wszystko się posypało.",
+		"introduction": "Jesteś Chomikiem."
+	},
+	"Organ Market Collector": {
+		"goal": "Nanotrasen ma pod ręką najnowocześniejszy sprzęt medyczny, co oznacza, że możesz nieźle zarobić, wynosząc trochę organów z medycznego.",
+		"introduction": "Jesteś Handlarzem Organów."
+	},
+	"Thief": {
+		"goal": "Z tego czy innego powodu chcesz dziś ukraść coś drogiego i masz już na oku dobry cel.",
+		"introduction": "Jesteś Złodziejem."
+	}
+}

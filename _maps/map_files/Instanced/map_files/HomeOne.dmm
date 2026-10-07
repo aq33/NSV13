@@ -109,9 +109,7 @@
 "bq" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "br" = (
@@ -171,9 +169,7 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/steel,
 /area/ruin/unpowered/boarding_interior)
 "cb" = (
@@ -216,9 +212,7 @@
 /area/ruin/unpowered/boarding_interior)
 "cA" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/techmaint,
 /area/ruin/unpowered/boarding_interior)
 "cC" = (
@@ -319,7 +313,7 @@
 	name = "Damage Control Crate"
 	},
 /obj/item/pipe_dispenser,
-/obj/item/stack/cable_coil/blue,
+/obj/item/stack/cable_coil,
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "dH" = (
@@ -487,9 +481,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
@@ -558,9 +550,7 @@
 /obj/machinery/door/airlock/ship,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/door/firedoor/heavy{
 	req_one_access = null
 	},
@@ -706,18 +696,14 @@
 /obj/machinery/door/airlock/ship{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/door/firedoor/heavy{
 	req_one_access = null
 	},
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "hl" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -737,9 +723,7 @@
 /area/ruin/unpowered/boarding_interior)
 "hH" = (
 /obj/machinery/light,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/steel,
 /area/ruin/unpowered/boarding_interior)
 "hM" = (
@@ -932,9 +916,7 @@
 /turf/open/floor/plasteel/white,
 /area/ruin/unpowered/boarding_interior)
 "jo" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating/rusty_techgrid,
 /area/ruin/unpowered/boarding_interior)
 "jr" = (
@@ -949,9 +931,7 @@
 /turf/open/floor/monotile/steel,
 /area/ruin/unpowered/boarding_interior)
 "jt" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/structure/closet/radiation,
 /obj/machinery/airalarm/all_access{
 	pixel_y = 23
@@ -1026,9 +1006,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "kn" = (
@@ -1063,9 +1041,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "kz" = (
@@ -1208,9 +1184,7 @@
 /turf/open/floor/plating/rusty_techgrid,
 /area/ruin/unpowered/boarding_interior)
 "me" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "mf" = (
@@ -1223,9 +1197,7 @@
 "ml" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/structure/fluff/support_beam{
 	dir = 4
 	},
@@ -1242,9 +1214,7 @@
 	},
 /area/ruin/unpowered/boarding_interior)
 "mp" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/techmaint,
 /area/ruin/unpowered/boarding_interior)
 "mr" = (
@@ -1316,9 +1286,7 @@
 /turf/open/floor/plating/rusty_techgrid,
 /area/ruin/unpowered/boarding_interior)
 "mN" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/item/reagent_containers/glass/bottle{
 	list_reagents = list(/datum/resl=30);
 	name = "oil bottle";
@@ -1431,9 +1399,7 @@
 "nJ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/heavy{
 	req_one_access = null
 	},
@@ -1518,9 +1484,7 @@
 "oz" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/steel,
 /area/ruin/unpowered/boarding_interior)
 "oB" = (
@@ -1624,12 +1588,7 @@
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "qa" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/steel,
 /area/ruin/unpowered/boarding_interior)
 "qf" = (
@@ -1701,9 +1660,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/steel,
 /area/ruin/unpowered/boarding_interior)
 "qY" = (
@@ -1720,7 +1677,7 @@
 "rr" = (
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/iron/twenty,
-/obj/item/stack/cable_coil/pink,
+/obj/item/stack/cable_coil,
 /obj/item/stack/sheet/glass,
 /obj/item/stack/sheet/glass,
 /obj/item/stack/sheet/glass,
@@ -1740,9 +1697,7 @@
 /obj/machinery/atmospherics/pipe/layer_manifold{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
@@ -1977,9 +1932,7 @@
 /obj/machinery/ship_weapon/hybrid_rail{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "tZ" = (
@@ -2164,9 +2117,7 @@
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "vQ" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/machinery/power/apc/auto_name/west,
 /obj/structure/fluff/support_beam{
 	dir = 1
@@ -2211,14 +2162,6 @@
 	pixel_y = 10
 	},
 /turf/closed/wall/steel,
-/area/ruin/unpowered/boarding_interior)
-"ws" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "wu" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
@@ -2290,9 +2233,7 @@
 "wZ" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "xc" = (
@@ -2312,9 +2253,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "xm" = (
@@ -2463,9 +2402,7 @@
 "yk" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "yl" = (
@@ -2526,7 +2463,7 @@
 	name = "Damage Control Crate"
 	},
 /obj/item/pipe_dispenser,
-/obj/item/stack/cable_coil/blue,
+/obj/item/stack/cable_coil,
 /turf/open/floor/monotile/steel,
 /area/ruin/unpowered/boarding_interior)
 "yL" = (
@@ -2629,12 +2566,6 @@
 /area/ruin/unpowered/boarding_interior)
 "zY" = (
 /obj/structure/closet/firecloset,
-/turf/open/floor/plating/rusty_techgrid,
-/area/ruin/unpowered/boarding_interior)
-"Af" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
 /turf/open/floor/plating/rusty_techgrid,
 /area/ruin/unpowered/boarding_interior)
 "Ap" = (
@@ -2745,9 +2676,7 @@
 /turf/open/space/basic,
 /area/ruin/unpowered/boarding_interior)
 "By" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/structure/closet/radiation,
 /turf/open/floor/plasteel/techmaint,
 /area/ruin/unpowered/boarding_interior)
@@ -2817,9 +2746,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "Co" = (
@@ -2922,9 +2849,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "Di" = (
@@ -2971,14 +2896,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
-"Dz" = (
-/obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/layer2,
-/turf/open/floor/plasteel,
-/area/ruin/unpowered/boarding_interior)
 "DD" = (
 /obj/machinery/ship_weapon/vls,
 /turf/open/floor/plating/rusty_techgrid,
@@ -3007,9 +2924,7 @@
 "DM" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "DN" = (
@@ -3053,9 +2968,7 @@
 /obj/structure/sign/directions/security{
 	pixel_y = -19
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "Ey" = (
@@ -3187,12 +3100,7 @@
 /area/ruin/unpowered/boarding_interior)
 "FU" = (
 /obj/machinery/power/smes/engineering,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "Gg" = (
@@ -3297,9 +3205,7 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "Hz" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/structure/fluff/broken_flooring{
 	dir = 8
 	},
@@ -3357,7 +3263,7 @@
 /obj/item/stack/rods,
 /obj/item/stack/tile/durasteel/techfloor,
 /obj/item/pipe_dispenser,
-/obj/item/stack/cable_coil/blue,
+/obj/item/stack/cable_coil,
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "HW" = (
@@ -3398,9 +3304,7 @@
 /turf/open/floor/plasteel/white,
 /area/ruin/unpowered/boarding_interior)
 "Is" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -3425,9 +3329,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "IB" = (
@@ -3532,12 +3434,6 @@
 /obj/item/ship_weapon/parts/missile/warhead/proto_disruption,
 /obj/item/ship_weapon/parts/missile/warhead/proto_disruption,
 /turf/open/floor/monotile/steel,
-/area/ruin/unpowered/boarding_interior)
-"JD" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "JG" = (
 /obj/structure/munitions_trolley,
@@ -3652,9 +3548,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/techmaint,
 /area/ruin/unpowered/boarding_interior)
 "KJ" = (
@@ -3700,9 +3594,7 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "Ln" = (
@@ -3798,9 +3690,7 @@
 /area/ruin/unpowered/boarding_interior)
 "Mc" = (
 /obj/machinery/power/smes/engineering,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -3834,16 +3724,8 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
-/area/ruin/unpowered/boarding_interior)
-"Ml" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/turf/open/floor/monotile/steel,
 /area/ruin/unpowered/boarding_interior)
 "Mp" = (
 /obj/machinery/atmospherics/pipe/simple/supply/visible/layer2,
@@ -3855,12 +3737,6 @@
 	},
 /turf/open/floor/plating/rusty_techgrid,
 /area/ruin/unpowered/boarding_interior)
-"MB" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/turf/open/floor/plasteel,
-/area/ruin/unpowered/boarding_interior)
 "MH" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
@@ -3868,9 +3744,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
@@ -3889,9 +3763,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating/rusty_techgrid,
 /area/ruin/unpowered/boarding_interior)
 "Nd" = (
@@ -3912,7 +3784,7 @@
 	},
 /obj/item/circuitboard/machine/ore_silo,
 /obj/item/stack/sheet/iron/ten,
-/obj/item/stack/cable_coil/blue,
+/obj/item/stack/cable_coil,
 /obj/item/multitool,
 /turf/open/floor/monotile/steel,
 /area/ruin/unpowered/boarding_interior)
@@ -3982,9 +3854,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "NS" = (
@@ -4048,9 +3918,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating/rusty_techgrid,
 /area/ruin/unpowered/boarding_interior)
 "Oo" = (
@@ -4078,9 +3946,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 6
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "Oy" = (
@@ -4126,9 +3992,7 @@
 /area/ruin/unpowered/boarding_interior)
 "OW" = (
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/layer2,
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
@@ -4187,9 +4051,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "Pv" = (
@@ -4216,12 +4078,7 @@
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "Py" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/power/terminal{
 	dir = 1
 	},
@@ -4277,9 +4134,7 @@
 "PQ" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "PV" = (
@@ -4449,9 +4304,7 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/techmaint,
 /area/ruin/unpowered/boarding_interior)
 "Rp" = (
@@ -4487,9 +4340,7 @@
 /area/ruin/unpowered/boarding_interior)
 "RD" = (
 /obj/machinery/light,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "RI" = (
@@ -4564,9 +4415,7 @@
 /turf/open/floor/monotile/steel,
 /area/ruin/unpowered/boarding_interior)
 "Sj" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "Sx" = (
@@ -4598,9 +4447,7 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/steel,
 /area/ruin/unpowered/boarding_interior)
 "SN" = (
@@ -4633,9 +4480,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/structure/fluff/broken_flooring{
 	dir = 4
 	},
@@ -4659,9 +4504,7 @@
 /turf/open/space/basic,
 /area/ruin/unpowered/boarding_interior)
 "Tk" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
@@ -4726,9 +4569,7 @@
 /area/ruin/unpowered/boarding_interior)
 "TT" = (
 /obj/machinery/atmospherics/pipe/simple/purple/visible/layer4,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/techmaint,
 /area/ruin/unpowered/boarding_interior)
 "TU" = (
@@ -4805,9 +4646,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "Uu" = (
@@ -4899,9 +4738,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/techmaint,
 /area/ruin/unpowered/boarding_interior)
 "Vp" = (
@@ -4915,9 +4752,7 @@
 "Vq" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/techmaint,
 /area/ruin/unpowered/boarding_interior)
 "Vs" = (
@@ -5060,9 +4895,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/boarding_interior)
 "WB" = (
@@ -5074,19 +4907,11 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
-"WE" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/ruin/unpowered/boarding_interior)
 "WG" = (
 /obj/machinery/door/airlock/ship{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/door/firedoor/heavy{
 	req_one_access = null
 	},
@@ -5130,12 +4955,7 @@
 /area/ruin/unpowered/boarding_interior)
 "Xg" = (
 /obj/machinery/power/smes/engineering,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "Xj" = (
@@ -5325,12 +5145,7 @@
 /turf/open/floor/monotile/steel,
 /area/ruin/unpowered/boarding_interior)
 "Zs" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/power/terminal{
 	dir = 1
 	},
@@ -5352,9 +5167,7 @@
 "Zw" = (
 /obj/machinery/door/airlock/ship,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/heavy{
 	req_one_access = null
 	},
@@ -35863,7 +35676,7 @@ YZ
 fs
 YZ
 tb
-JD
+Sj
 Sj
 hl
 mo
@@ -37148,7 +36961,7 @@ YZ
 dV
 YZ
 tf
-WE
+Sj
 Uu
 Uu
 Ps
@@ -38434,7 +38247,7 @@ Mj
 LW
 tf
 By
-WE
+Sj
 CR
 tn
 vi
@@ -38691,7 +38504,7 @@ qK
 CF
 tf
 jt
-WE
+Sj
 CR
 NY
 Uu
@@ -41004,7 +40817,7 @@ qK
 gf
 tf
 uC
-Af
+jo
 NY
 Uu
 NY
@@ -41260,7 +41073,7 @@ YZ
 qK
 YZ
 tf
-Ml
+qa
 qa
 Uu
 uM
@@ -42543,7 +42356,7 @@ Ni
 cd
 NY
 Na
-WE
+Sj
 ti
 NY
 NY
@@ -44085,7 +43898,7 @@ tf
 Oo
 VS
 Mj
-Af
+jo
 tf
 SQ
 jf
@@ -44342,7 +44155,7 @@ Zf
 aq
 Cy
 Ll
-ws
+bq
 rE
 ZB
 Wh
@@ -44599,7 +44412,7 @@ US
 cd
 YZ
 Mj
-Af
+jo
 tf
 VS
 jf
@@ -45627,7 +45440,7 @@ YZ
 Kx
 jf
 bX
-ws
+bq
 uk
 Wh
 LS
@@ -46141,7 +45954,7 @@ jf
 tf
 NE
 Mj
-Af
+jo
 tf
 jw
 ny
@@ -46398,7 +46211,7 @@ Wh
 tz
 Kc
 wZ
-Af
+jo
 tf
 eF
 pt
@@ -47682,7 +47495,7 @@ ml
 oz
 nJ
 DM
-Dz
+OW
 yk
 VN
 Kc
@@ -48711,7 +48524,7 @@ CF
 SB
 YZ
 CZ
-MB
+me
 Sj
 Ou
 Cm

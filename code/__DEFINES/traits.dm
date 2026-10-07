@@ -285,6 +285,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_LIGHT_STEP		"light_step"
 #define TRAIT_SPIRITUAL			"spiritual"
 #define TRAIT_VORACIOUS			"voracious"
+#define TRAIT_EAT_MORE			"eat_more" // AQ EDIT - You get hungry three times as fast
+#define TRAIT_GENELESS			"geneless" // AQ EDIT - Your DNA can't be mutated
 #define TRAIT_SELF_AWARE		"self_aware"
 #define TRAIT_FREERUNNING		"freerunning"
 #define TRAIT_SKITTISH			"skittish"
@@ -416,6 +418,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SUIT_SENSORS "suit_sensors"
 ///Mob is tracked by nanites, and on glob suit sensors list
 #define TRAIT_NANITE_SENSORS "nanite_sensors"
+
+/// Used by ADD_KEEP_TOGETHER and REMOVE_KEEP_TOGETHER to track sources of KEEP_TOGETHER
+#define TRAIT_KEEP_TOGETHER "keep-together"
 
 //NSV13 traits
 #define TRAIT_NODAMPENERS "nodampeners" //! Prevents a ship with this trait from using dampeners.

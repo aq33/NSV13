@@ -80,6 +80,8 @@
 		mutation_type = HM.type
 	if(get_mutation(mutation_type))
 		return
+	if(holder && HAS_TRAIT(holder, TRAIT_GENELESS)) // AQ EDIT - sinful demons can't be mutated
+		return
 	return force_give(new mutation_type (class, time, copymut = mutation))
 
 /datum/dna/proc/remove_mutation(mutation_type)
@@ -455,7 +457,7 @@
 
 //Return the active mutation of a type if there is one
 /datum/dna/proc/get_mutation(A)
-	for(var/datum/mutation/HM as() in mutations)
+	for(var/datum/mutation/HM in mutations)
 		if(HM.type == A)
 			return HM
 

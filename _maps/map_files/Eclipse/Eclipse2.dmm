@@ -69,7 +69,7 @@
 /turf/open/floor/monotile/dark/airless,
 /area/space/nearstation)
 "ho" = (
-/obj/item/stack/cable_coil/red,
+/obj/item/stack/cable_coil,
 /turf/open/floor/plating/airless,
 /area/nsv/weapons/fore)
 "hM" = (
@@ -240,15 +240,6 @@
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
 /area/space)
-"yH" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/open/floor/plating/airless,
-/area/space/nearstation)
 "zg" = (
 /obj/effect/turf_decal/trimline/yellow/filled/warning,
 /turf/open/floor/monotile/dark/airless,
@@ -278,12 +269,6 @@
 /obj/effect/spawner/lootdrop/maintenance/two,
 /obj/item/toy/plush/lizardplushie,
 /turf/open/floor/monotile/dark/airless,
-/area/space/nearstation)
-"Aj" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/open/floor/plating/airless,
 /area/space/nearstation)
 "AH" = (
 /obj/item/stack/tile/durasteel/mono_dark,
@@ -409,9 +394,7 @@
 /turf/open/floor/monotile/steel/airless,
 /area/space/nearstation)
 "Oh" = (
-/obj/structure/cable{
-	icon_state = "2-32"
-	},
+/obj/structure/cable/multiz,
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
 "OA" = (
@@ -451,7 +434,7 @@
 /turf/open/floor/monotile/dark/airless,
 /area/space/nearstation)
 "Qz" = (
-/obj/item/stack/cable_coil/cut/red,
+/obj/item/stack/cable_coil/cut,
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
 "RP" = (
@@ -512,12 +495,6 @@
 	use_power = 0
 	},
 /turf/open/floor/black/airless,
-/area/space/nearstation)
-"Xz" = (
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/turf/open/floor/plating/airless,
 /area/space/nearstation)
 "XJ" = (
 /obj/item/stack/tile/durasteel/mono_dark,
@@ -20984,8 +20961,8 @@ YI
 YI
 YI
 YI
-Xz
-Aj
+rk
+rk
 UK
 UK
 YI
@@ -21242,7 +21219,7 @@ YI
 YI
 UK
 Oh
-yH
+rk
 rk
 YI
 YI

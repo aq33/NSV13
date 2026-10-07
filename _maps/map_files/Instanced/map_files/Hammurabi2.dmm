@@ -126,9 +126,7 @@
 "aL" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/hammurabi)
 "aM" = (
@@ -173,12 +171,6 @@
 /area/quartermaster/pvp)
 "aS" = (
 /turf/open/floor/monotile/dark,
-/area/engine/engineering/pvp)
-"aU" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/tech/grid,
 /area/engine/engineering/pvp)
 "aX" = (
 /turf/open/floor/plasteel/tech/grid,
@@ -333,16 +325,6 @@
 "bX" = (
 /turf/closed/wall/r_wall,
 /area/crew_quarters/heads/captain/pvp)
-"bY" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/hammurabi)
 "ca" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -350,18 +332,14 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 9
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "ce" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
 	},
@@ -369,9 +347,7 @@
 /area/hammurabi/armoury)
 "cf" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
@@ -382,15 +358,11 @@
 /area/crew_quarters/bar/pvp)
 "ci" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/engine/engineering/pvp)
 "ck" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/machinery/power/apc/auto_name/south{
 	req_access = list(150)
 	},
@@ -455,9 +427,7 @@
 	},
 /area/engine/engineering/pvp)
 "cC" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "cG" = (
@@ -494,9 +464,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/engine/engineering/pvp)
 "db" = (
@@ -520,9 +488,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/engine,
 /area/engine/engineering/pvp)
 "df" = (
@@ -549,9 +515,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/quartermaster/pvp)
 "dk" = (
@@ -634,9 +598,7 @@
 /obj/machinery/power/apc/auto_name/north{
 	pixel_y = 24
 	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/bridge/pvp)
 "dE" = (
@@ -799,9 +761,7 @@
 /area/hammurabi/maintenance)
 "em" = (
 /obj/structure/table/reinforced,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 8
 	},
@@ -851,9 +811,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -876,9 +834,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/nsv/weapons/pvp)
 "eC" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/crew_quarters/heads/hos/pvp)
 "eD" = (
@@ -904,9 +860,7 @@
 /area/nsv/weapons/pvp)
 "eP" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 5
 	},
@@ -919,9 +873,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/armoury)
 "eR" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/bridge/pvp)
 "eU" = (
@@ -943,9 +895,7 @@
 	dir = 4;
 	name = "captain's chair"
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/bridge/pvp)
 "eX" = (
@@ -1082,9 +1032,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/nsv/weapons/pvp)
 "fH" = (
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /obj/machinery/power/apc/auto_name/north{
 	req_access = list(150)
 	},
@@ -1104,21 +1052,13 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/mineral/plastitanium/red,
 /area/nsv/weapons/pvp)
-"fM" = (
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
-/turf/open/floor/carpet/red,
-/area/engine/engineering/pvp)
 "fO" = (
 /obj/machinery/door/airlock/ship/hatch{
 	name = "Requisitions";
 	req_one_access_txt = "151;153"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /turf/open/floor/plasteel/tech/grid,
@@ -1136,15 +1076,6 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plasteel/tech/grid,
 /area/nsv/weapons/pvp)
-"gb" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
-/area/hammurabi/maintenance)
 "gc" = (
 /obj/machinery/light{
 	dir = 1
@@ -1164,9 +1095,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/armoury)
 "gh" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/item/radio/intercom/directional/south{
 	freqlock = 1;
 	frequency = 1213;
@@ -1245,9 +1174,7 @@
 /area/hammurabi/maintenance)
 "gA" = (
 /obj/machinery/particle_accelerator/control_box,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/dark,
 /area/engine/engineering/pvp)
 "gC" = (
@@ -1259,15 +1186,11 @@
 /area/hammurabi)
 "gD" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "gG" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/structure/table/reinforced,
 /obj/item/folder/red,
 /turf/open/floor/mineral/plastitanium/red,
@@ -1310,31 +1233,15 @@
 	},
 /turf/open/floor/plasteel/tech/grid,
 /area/nsv/weapons/pvp)
-"gS" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/plating,
-/area/hammurabi/maintenance)
-"gX" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
-/area/hammurabi/maintenance)
 "gY" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "gZ" = (
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /obj/machinery/space_heater,
 /obj/machinery/power/apc/auto_name/north{
 	req_access = list(150)
@@ -1361,34 +1268,20 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/tech/grid,
 /area/hammurabi)
 "hl" = (
 /obj/machinery/light/small,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "hm" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/dark,
 /area/engine/engineering/pvp)
 "hn" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 5
 	},
@@ -1403,9 +1296,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/armoury)
 "hq" = (
@@ -1415,15 +1306,11 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/engine/engineering/pvp)
 "hr" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
@@ -1433,9 +1320,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/armoury)
 "hs" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -1468,19 +1353,11 @@
 /obj/effect/turf_decal/stripes/box,
 /turf/open/floor/mineral/plastitanium,
 /area/nsv/weapons/pvp)
-"hB" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/open/floor/plating,
-/area/hammurabi/maintenance)
 "hC" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /obj/structure/closet/toolcloset,
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/machinery/power/apc/auto_name/north{
@@ -1492,9 +1369,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 5
 	},
@@ -1507,21 +1382,12 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
-	},
-/turf/open/floor/plating,
-/area/hammurabi/maintenance)
-"hK" = (
-/obj/machinery/light/small,
-/obj/structure/cable{
-	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
@@ -1556,12 +1422,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
 	},
@@ -1574,12 +1435,7 @@
 /obj/structure/chair/office{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/carpet/red,
 /area/engine/engineering/pvp)
 "ia" = (
@@ -1637,30 +1493,21 @@
 "in" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/machinery/power/apc/auto_name/west{
 	req_access = list(150)
 	},
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/captain/pvp)
 "ip" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /turf/open/floor/carpet/red,
 /area/engine/engineering/pvp)
 "iq" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/light/small,
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/captain/pvp/admiral)
@@ -1725,9 +1572,7 @@
 /turf/open/floor/plating/airless,
 /area/hammurabi/maintenance/exterior)
 "iD" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -1763,9 +1608,7 @@
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "iO" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
 	},
@@ -1783,21 +1626,15 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/captain/pvp)
 "iQ" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/tech/grid,
 /area/hammurabi)
 "iR" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/hammurabi)
 "iS" = (
@@ -1867,9 +1704,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -1887,17 +1722,13 @@
 	name = "Bridge frame";
 	req_one_access_txt = "150"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/east,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi)
 "jp" = (
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /obj/machinery/power/apc/auto_name/north{
 	pixel_y = 24
 	},
@@ -1965,19 +1796,11 @@
 /area/crew_quarters/heads/hos/pvp)
 "jw" = (
 /obj/item/chair/stool/bar,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/wood{
 	broken = 1
 	},
 /area/hammurabi/maintenance)
-"jx" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
-/turf/open/floor/plasteel/tech/grid,
-/area/engine/engineering/pvp)
 "jy" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -2015,9 +1838,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/meter{
 	target_layer = 2
 	},
@@ -2044,9 +1865,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/mineral/plastitanium,
@@ -2144,9 +1963,7 @@
 /turf/open/floor/carpet/red,
 /area/engine/engineering/pvp)
 "km" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/tech/grid,
 /area/engine/engineering/pvp)
 "kz" = (
@@ -2173,9 +1990,7 @@
 	dir = 4;
 	id = "syndicell1"
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -2200,9 +2015,7 @@
 	req_one_access_txt = "150"
 	},
 /obj/machinery/door/firedoor/border_only/directional/north,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/stairs/medium,
 /area/nsv/weapons/pvp)
 "kW" = (
@@ -2216,9 +2029,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "lc" = (
@@ -2252,16 +2063,6 @@
 "lg" = (
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/mineral/plastitanium/red,
-/area/hammurabi)
-"li" = (
-/obj/structure/chair{
-	dir = 4
-	},
-/obj/effect/landmark/start/nukeop/syndi_crew,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/carpet/red,
 /area/hammurabi)
 "ll" = (
 /obj/machinery/door/firedoor/border_only/directional/west,
@@ -2326,9 +2127,7 @@
 	},
 /area/hammurabi/maintenance)
 "lT" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/item/reagent_containers/food/drinks/drinkingglass,
 /turf/open/floor/wood,
 /area/hammurabi/maintenance)
@@ -2346,15 +2145,6 @@
 /obj/machinery/space_heater,
 /turf/open/floor/monotile/dark,
 /area/engine/engineering/pvp)
-"md" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/hammurabi/armoury)
 "mh" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -2386,9 +2176,7 @@
 /obj/machinery/power/apc/auto_name/north{
 	pixel_y = 24
 	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/structure/extinguisher_cabinet/west,
 /turf/open/floor/monotile/dark,
 /area/hammurabi/tcomms)
@@ -2432,9 +2220,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/hammurabi)
 "mU" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/machinery/power/apc/auto_name/west{
 	req_access = list(150)
 	},
@@ -2486,9 +2272,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/armoury)
 "nq" = (
@@ -2550,27 +2334,17 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 5
 	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /obj/machinery/power/apc/auto_name/south{
 	req_access = list(150)
 	},
 /turf/open/floor/plasteel/tech/grid,
 /area/quartermaster/pvp)
 "nK" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/structure/grille/broken,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
-"nM" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/open/floor/carpet/red,
-/area/engine/engineering/pvp)
 "nO" = (
 /obj/machinery/light{
 	dir = 8
@@ -2603,9 +2377,7 @@
 /turf/open/floor/monotile/dark,
 /area/engine/engineering/pvp)
 "od" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/airlock/ship/hatch{
@@ -2615,12 +2387,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/armoury)
 "of" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -2630,13 +2397,8 @@
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "oj" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/effect/decal/cleanable/generic,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
 /obj/machinery/door/firedoor/border_only/directional/east,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
@@ -2647,9 +2409,7 @@
 	name = "Engineering";
 	req_one_access_txt = "151;152"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/engine/engineering/pvp)
 "or" = (
@@ -2684,9 +2444,7 @@
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/captain/pvp/admiral)
 "oH" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -2703,9 +2461,7 @@
 /area/nsv/weapons/pvp)
 "oO" = (
 /obj/machinery/door/airlock/ship/maintenance,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /turf/open/floor/plating,
@@ -2727,15 +2483,11 @@
 "oU" = (
 /obj/structure/chair/office,
 /obj/machinery/firealarm/directional/north,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/captain/pvp)
 "oV" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -2758,18 +2510,14 @@
 "pf" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/nsv/weapons/pvp)
 "pg" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
 /turf/open/floor/mineral/plastitanium/red,
 /area/hammurabi)
@@ -2792,9 +2540,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 9
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "ps" = (
@@ -2855,9 +2601,7 @@
 /area/quartermaster/pvp)
 "pH" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -2888,12 +2632,7 @@
 	},
 /area/engine/engineering/pvp)
 "pO" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -2930,9 +2669,7 @@
 /obj/machinery/door/airlock/ship/maintenance{
 	req_one_access_txt = "151;153;154"
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -2965,9 +2702,7 @@
 /turf/open/floor/plating,
 /area/hammurabi/armoury)
 "qk" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -2975,12 +2710,7 @@
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "qm" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /obj/structure/chair/office,
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/captain/pvp/admiral)
@@ -3155,9 +2885,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/nsv/weapons/pvp)
 "rA" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
 	},
@@ -3184,9 +2912,7 @@
 /turf/open/floor/carpet/red,
 /area/engine/engineering/pvp)
 "rF" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/dark,
 /area/engine/engineering/pvp)
@@ -3194,9 +2920,7 @@
 /obj/machinery/power/terminal{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
@@ -3224,9 +2948,7 @@
 	},
 /area/engine/engineering/pvp)
 "rX" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/mineral/plastitanium/red,
@@ -3263,9 +2985,7 @@
 	dir = 4;
 	id = "syndicell2"
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -3287,9 +3007,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/start/nukeop/syndi_crew,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/carpet/red,
 /area/hammurabi)
 "sk" = (
@@ -3310,19 +3028,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/bridge/pvp)
-"ss" = (
-/obj/structure/chair{
-	dir = 4
-	},
-/obj/effect/landmark/start/nukeop/syndi_crew,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/carpet/red,
-/area/hammurabi)
 "sy" = (
 /obj/machinery/atmospherics/components/binary/pump/layer2{
 	name = "Nitrogen To Stormdrive"
@@ -3370,9 +3075,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/hammurabi)
 "sO" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/mineral/plastitanium,
@@ -3391,9 +3094,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/ai_monitored/nuke_storage/pvp)
 "sT" = (
@@ -3465,9 +3166,7 @@
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "tt" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/nsv/weapons/pvp)
 "tv" = (
@@ -3512,13 +3211,8 @@
 /area/hammurabi/armoury)
 "tJ" = (
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/hammurabi)
 "tP" = (
@@ -3530,9 +3224,7 @@
 "tV" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "tZ" = (
@@ -3551,9 +3243,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
 	},
@@ -3563,9 +3253,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/armoury)
 "ud" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -3593,15 +3281,11 @@
 	name = "Kitchen";
 	req_one_access_txt = "150"
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/crew_quarters/bar/pvp)
 "ui" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -3617,19 +3301,8 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/hammurabi)
 "uq" = (
@@ -3649,9 +3322,7 @@
 /obj/item/stack/sheet/mineral/plasma{
 	amount = 10
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-2"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
@@ -3678,23 +3349,8 @@
 	},
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/captain/pvp)
-"uB" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/quartermaster/pvp)
 "uG" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/structure/table/reinforced,
 /obj/item/storage/fancy/donut_box,
 /turf/open/floor/mineral/plastitanium/red,
@@ -3736,9 +3392,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/nsv/weapons/pvp)
 "uU" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/closed/wall/r_wall,
 /area/hammurabi/maintenance)
 "uX" = (
@@ -3746,9 +3400,7 @@
 	dir = 4;
 	id = "syndicell2"
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -3763,12 +3415,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/bridge/pvp)
 "uZ" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 8
 	},
@@ -3789,9 +3436,7 @@
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "vm" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /turf/open/floor/engine,
 /area/engine/engineering/pvp)
@@ -3813,9 +3458,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/bridge/pvp)
 "vs" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/crew_quarters/bar/pvp)
 "vu" = (
@@ -3922,9 +3565,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/engine/engineering/pvp)
 "wx" = (
@@ -3942,9 +3583,7 @@
 	req_access = list(150);
 	state = 2
 	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/tech/grid,
 /area/quartermaster/pvp)
 "wI" = (
@@ -3953,9 +3592,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/hammurabi)
 "wL" = (
@@ -3982,12 +3619,7 @@
 /turf/open/floor/plating,
 /area/engine/engineering/pvp)
 "wQ" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/carpet/red,
 /area/hammurabi)
 "wS" = (
@@ -4013,9 +3645,7 @@
 	dir = 4;
 	id = "syndicell1"
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -4029,9 +3659,7 @@
 /area/hammurabi/medbay)
 "xf" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/carpet/red,
 /area/hammurabi)
@@ -4048,12 +3676,6 @@
 /obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/mineral/plastitanium/red,
 /area/bridge/pvp)
-"xl" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/hammurabi/armoury)
 "xr" = (
 /obj/machinery/door/airlock/ship/hatch{
 	name = "Requisitions";
@@ -4077,9 +3699,7 @@
 /area/nsv/weapons/pvp)
 "xC" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 5
 	},
@@ -4091,19 +3711,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/armoury)
-"xD" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/quartermaster/pvp)
 "xF" = (
 /obj/machinery/camera/syndicate/autoname{
 	dir = 8
@@ -4157,23 +3764,16 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/hammurabi)
 "xX" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/tech/grid,
 /area/quartermaster/pvp)
 "xY" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/armoury)
@@ -4202,9 +3802,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/mineral/plastitanium/red,
 /area/hammurabi)
@@ -4228,9 +3826,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/carpet/red,
 /area/ai_monitored/nuke_storage/pvp)
 "yo" = (
@@ -4278,9 +3874,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi)
 "yB" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/quartermaster/pvp)
 "yC" = (
@@ -4311,9 +3905,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/nsv/weapons/pvp)
 "yK" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/door/airlock/ship/maintenance{
 	req_one_access_txt = "151"
 	},
@@ -4346,19 +3938,9 @@
 "yR" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/tech/grid,
 /area/quartermaster/pvp)
-"yX" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/turf/open/floor/plasteel/tech/grid,
-/area/hammurabi)
 "zb" = (
 /obj/machinery/computer/atmos_alert{
 	dir = 8
@@ -4366,9 +3948,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/west,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
@@ -4430,9 +4010,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/hammurabi)
 "zv" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -4507,12 +4085,7 @@
 /area/nsv/weapons/pvp)
 "zQ" = (
 /obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/machinery/door/poddoor/shutters/ship/preopen{
 	dir = 4;
 	id = "SynHos"
@@ -4527,9 +4100,7 @@
 /area/crew_quarters/heads/captain/pvp/admiral)
 "zU" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/door/firedoor/border_only/directional/north,
@@ -4597,9 +4168,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/quartermaster/pvp)
 "Ao" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -4650,9 +4219,7 @@
 /area/engine/engineering/pvp)
 "AE" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/mineral/plastitanium/red,
 /area/hammurabi/medbay)
@@ -4672,9 +4239,7 @@
 /area/hammurabi/maintenance)
 "AR" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 10
 	},
@@ -4693,9 +4258,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/engine/engineering/pvp)
 "AX" = (
@@ -4705,9 +4268,7 @@
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "Bc" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/orange/visible/layer2,
 /turf/open/floor/monotile/dark,
 /area/engine/engineering/pvp)
@@ -4723,9 +4284,7 @@
 "Bk" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/hammurabi/medbay)
 "Bm" = (
@@ -4774,12 +4333,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/nsv/weapons/pvp)
 "BD" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/orange/visible/layer2,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -4808,9 +4362,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/crew_quarters/bar/pvp)
 "BI" = (
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /obj/machinery/computer/monitor,
 /obj/item/radio/intercom/directional/north{
 	freqlock = 1;
@@ -4841,9 +4393,7 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/nsv/weapons/pvp)
 "Ca" = (
@@ -4857,9 +4407,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/carpet/red,
 /area/hammurabi)
 "Cb" = (
@@ -4893,9 +4441,7 @@
 "Cx" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/captain/pvp)
 "Cz" = (
@@ -4942,9 +4488,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/engine/engineering/pvp)
 "CF" = (
@@ -4969,9 +4513,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/hammurabi/armoury)
 "CG" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -4993,13 +4535,7 @@
 /turf/open/floor/monotile/dark,
 /area/hammurabi/tcomms)
 "CM" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4";
-	tag = "90Curve"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi)
 "CQ" = (
@@ -5054,9 +4590,7 @@
 /area/nsv/weapons/pvp)
 "Db" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/door/firedoor/border_only/directional/north,
@@ -5129,9 +4663,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "DN" = (
@@ -5147,9 +4679,7 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/quartermaster/pvp)
 "DR" = (
@@ -5177,9 +4707,7 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -5231,16 +4759,12 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/hammurabi/armoury)
 "Ev" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/engine/engineering/pvp)
 "Ey" = (
 /obj/machinery/power/smes/engineering,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
@@ -5258,9 +4782,7 @@
 /area/hammurabi/armoury)
 "EC" = (
 /obj/machinery/computer/ship/viewscreen,
-/obj/structure/cable/yellow{
-	icon_state = "0-2"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/computer/monitor,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /turf/open/floor/carpet/red,
@@ -5272,9 +4794,7 @@
 	},
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "EE" = (
@@ -5290,9 +4810,7 @@
 /area/hammurabi)
 "EG" = (
 /obj/machinery/power/smes/engineering,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
@@ -5305,15 +4823,7 @@
 /turf/open/floor/plating,
 /area/engine/engineering/pvp)
 "EM" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/effect/landmark/nuclear_waste_spawner,
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -5345,9 +4855,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/crew_quarters/heads/captain/pvp)
 "Fo" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /turf/closed/wall/r_wall,
 /area/engine/engineering/pvp)
 "Fp" = (
@@ -5402,9 +4910,7 @@
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "FK" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/wood,
 /area/hammurabi/maintenance)
 "FL" = (
@@ -5468,9 +4974,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "Gq" = (
@@ -5509,27 +5013,17 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 6
 	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/machinery/light/small{
 	brightness = 3;
 	dir = 8
 	},
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
-"GN" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/hammurabi)
 "GP" = (
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden,
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/hammurabi)
 "GS" = (
@@ -5547,9 +5041,7 @@
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/door/airlock/ship/security{
 	name = "Captain's Office";
 	req_one_access_txt = "151"
@@ -5583,9 +5075,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/armoury)
 "Hz" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/computer/ship/viewscreen{
 	pixel_y = -30
 	},
@@ -5616,9 +5106,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/engine/engineering/pvp)
 "HR" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/airlock/ship/security{
@@ -5628,9 +5116,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/crew_quarters/heads/captain/pvp/admiral)
 "HU" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -5684,22 +5170,10 @@
 /area/nsv/weapons/pvp)
 "Ih" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/steel,
 /area/hammurabi/tcomms)
-"In" = (
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/hammurabi)
 "Iq" = (
 /turf/open/floor/mineral/plastitanium,
 /area/crew_quarters/heads/hos/pvp)
@@ -5715,9 +5189,7 @@
 /area/hammurabi/medbay)
 "IA" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/tech/grid,
 /area/nsv/weapons/pvp)
 "IE" = (
@@ -5757,9 +5229,7 @@
 	name = "Armory";
 	req_one_access_txt = "151;153;154"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
@@ -5779,9 +5249,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/nsv/weapons/pvp)
 "IP" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
 	},
@@ -5791,9 +5259,7 @@
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "IS" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/structure/closet/crate/solarpanel_small,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
@@ -5878,9 +5344,7 @@
 /turf/open/floor/carpet/red,
 /area/hammurabi)
 "JV" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -5893,27 +5357,21 @@
 /turf/open/floor/monotile/dark,
 /area/engine/engineering/pvp)
 "Kb" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/engine/engineering/pvp)
 "Kd" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
 /turf/open/floor/monotile/dark,
 /area/engine/engineering/pvp)
 "Kl" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /turf/open/floor/plating,
@@ -5923,9 +5381,7 @@
 /turf/open/floor/carpet/red,
 /area/engine/engineering/pvp)
 "Kt" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /obj/structure/closet/crate/radiation,
 /obj/item/shovel,
 /obj/item/shovel,
@@ -5965,9 +5421,7 @@
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "KJ" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
 	},
@@ -5977,9 +5431,7 @@
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "KL" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/structure/table/wood,
 /obj/item/stamp/denied,
 /obj/item/toy/prize/mauler{
@@ -6028,9 +5480,7 @@
 /turf/open/floor/carpet/red,
 /area/hammurabi)
 "KU" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -6072,9 +5522,7 @@
 /area/nsv/weapons/pvp)
 "Lq" = (
 /obj/structure/chair/office,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/crew_quarters/heads/hos/pvp)
 "Lr" = (
@@ -6111,21 +5559,10 @@
 /obj/machinery/door/firedoor/border_only/directional/east,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/armoury)
-"LK" = (
-/obj/structure/cable{
-	icon_state = "8-16"
-	},
-/turf/open/floor/plating,
-/area/hammurabi/maintenance)
 "LN" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/bridge/pvp)
 "LP" = (
@@ -6140,9 +5577,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/nsv/weapons/pvp)
 "LQ" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/machinery/power/apc/auto_name/north{
 	req_access = list(150)
 	},
@@ -6177,9 +5612,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/quartermaster/pvp)
 "Mf" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/mineral/plastitanium,
 /area/engine/engineering/pvp)
 "Mh" = (
@@ -6194,9 +5627,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "Mn" = (
@@ -6254,26 +5685,17 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/nsv/weapons/pvp)
 "My" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "ME" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/hammurabi/medbay)
 "MH" = (
@@ -6298,9 +5720,7 @@
 /turf/open/floor/plating,
 /area/engine/engineering/pvp)
 "MS" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/captain/pvp/admiral)
 "MX" = (
@@ -6323,12 +5743,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/hammurabi/medbay)
 "Nd" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
 	},
@@ -6338,12 +5753,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/bridge/pvp)
 "Ne" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/orange/visible/layer2{
 	dir = 9
 	},
@@ -6372,9 +5782,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/crew_quarters/bar/pvp)
 "Nz" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/hammurabi)
@@ -6421,14 +5829,6 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/engine/engineering/pvp)
-"NS" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/reagent_dispensers/foamtank/hull_repair_juice,
-/obj/item/extinguisher/advanced/hull_repair_juice,
-/turf/open/floor/plating,
-/area/hammurabi/maintenance)
 "NY" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -6437,9 +5837,7 @@
 /area/engine/engineering/pvp)
 "Ob" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 1
 	},
@@ -6448,32 +5846,10 @@
 "Oe" = (
 /turf/closed/wall/steel,
 /area/engine/engineering/pvp)
-"Og" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/turf/open/floor/monotile/dark,
-/area/engine/engineering/pvp)
 "Oh" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/mineral/plastitanium/red,
 /area/engine/engineering/pvp)
-"Oj" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/wood{
-	broken = 1
-	},
-/area/hammurabi/maintenance)
 "Ol" = (
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/machinery/door/firedoor/border_only/directional/west,
@@ -6529,9 +5905,7 @@
 /obj/machinery/armour_plating_nanorepair_well{
 	apnw_id = "hammurabi"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/mineral/plastitanium,
 /area/engine/engineering/pvp)
 "OB" = (
@@ -6541,9 +5915,7 @@
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "OD" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
 	},
@@ -6553,9 +5925,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/bridge/pvp)
 "OO" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/machinery/conquest_beacon,
 /turf/open/floor/mineral/plastitanium,
 /area/ai_monitored/nuke_storage/pvp)
@@ -6594,9 +5964,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/plasteel/stairs/medium{
 	dir = 1
@@ -6631,9 +5999,7 @@
 /area/hammurabi/medbay)
 "Py" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/plasteel/tech/grid,
 /area/hammurabi)
@@ -6653,9 +6019,7 @@
 /obj/item/stack/sheet/mineral/plasma{
 	amount = 10
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-2"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
@@ -6683,26 +6047,20 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 4
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/armoury)
 "PO" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/maintenance/two,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "PQ" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -6713,9 +6071,7 @@
 /turf/open/floor/monotile/dark,
 /area/engine/engineering/pvp)
 "PT" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -6737,18 +6093,6 @@
 /obj/machinery/door/firedoor/border_only/directional/east,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
-"PZ" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/hammurabi)
-"Qe" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/monotile/dark,
-/area/engine/engineering/pvp)
 "Qf" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
@@ -6758,7 +6102,7 @@
 /area/hammurabi)
 "Qi" = (
 /obj/structure/rack,
-/obj/item/stack/cable_coil/random,
+/obj/item/stack/cable_coil,
 /obj/item/stack/sheet/iron/fifty,
 /obj/machinery/computer/ship/viewscreen,
 /obj/item/clothing/head/welding,
@@ -6781,9 +6125,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/hammurabi)
 "Qo" = (
@@ -6796,18 +6138,6 @@
 /obj/machinery/chem_heater,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/medbay)
-"Qq" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/hammurabi/maintenance)
 "Qv" = (
 /obj/effect/spawner/lootdrop/grille_or_trash,
 /turf/open/floor/plating,
@@ -6831,16 +6161,12 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/hammurabi)
 "QJ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi)
@@ -6857,18 +6183,14 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
 	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 10
 	},
 /turf/open/floor/plasteel/tech/grid,
 /area/hammurabi)
 "QN" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/door/firedoor/border_only/directional/south,
@@ -6889,15 +6211,6 @@
 /obj/machinery/firealarm/directional/east,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi)
-"QR" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/closed/wall/r_wall,
-/area/engine/engineering/pvp)
 "QW" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/plasteel/tech/grid,
@@ -6909,9 +6222,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/nsv/weapons/pvp)
 "Rb" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/machinery/door/airlock/ship/hatch{
 	req_one_access_txt = "150"
@@ -6985,27 +6296,17 @@
 	},
 /turf/open/floor/plasteel/tech/grid,
 /area/quartermaster/pvp)
-"RI" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/plasteel/tech/grid,
-/area/quartermaster/pvp)
 "RJ" = (
 /turf/closed/wall/r_wall,
 /area/crew_quarters/heads/hos/pvp)
 "RL" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
 "RN" = (
 /obj/machinery/door/airlock/ship/maintenance,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/door/firedoor/border_only/directional/north,
 /turf/open/floor/plating,
@@ -7077,12 +6378,6 @@
 	},
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/captain/pvp)
-"SD" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/carpet/red,
-/area/hammurabi)
 "SE" = (
 /obj/machinery/door/airlock/ship/engineering{
 	name = "Reactor monitoring";
@@ -7090,9 +6385,7 @@
 	},
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/east,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/engine/engineering/pvp)
 "SM" = (
@@ -7147,13 +6440,8 @@
 /turf/closed/wall/r_wall,
 /area/hammurabi/medbay)
 "To" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/orange/visible/layer2,
 /turf/open/floor/monotile/dark,
@@ -7193,9 +6481,7 @@
 	req_access = list(150);
 	state = 2
 	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/tech/grid,
 /area/quartermaster/pvp)
 "TU" = (
@@ -7221,9 +6507,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/computer/security/syndicate{
 	dir = 8
 	},
@@ -7236,9 +6520,7 @@
 /area/crew_quarters/heads/hos/pvp)
 "Ug" = (
 /obj/machinery/light/small,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/structure/closet/radiation,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance)
@@ -7271,9 +6553,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/armoury)
 "Uz" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/computer/security/syndicate{
 	dir = 1
 	},
@@ -7306,9 +6586,7 @@
 /turf/open/floor/monotile/dark,
 /area/engine/engineering/pvp)
 "UJ" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/structure/extinguisher_cabinet/south,
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/captain/pvp/admiral)
@@ -7343,9 +6621,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/nsv/weapons/pvp)
 "UR" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -7361,9 +6637,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/engine/engineering/pvp)
 "UV" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/airlock/ship/hatch{
@@ -7384,9 +6658,7 @@
 /obj/machinery/atmospherics/pipe/simple/orange/visible/layer2{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/engine/engineering/pvp)
 "Ve" = (
@@ -7408,16 +6680,8 @@
 /obj/item/stack/sheet/mineral/titanium/fifty,
 /turf/open/floor/mineral/plastitanium/red,
 /area/engine/engineering/pvp)
-"Vk" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/turf/open/floor/monotile/dark,
-/area/engine/engineering/pvp)
 "Vl" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/armoury)
 "Vm" = (
@@ -7426,16 +6690,6 @@
 /obj/item/pipe_dispenser,
 /turf/open/floor/plating,
 /area/engine/engineering/pvp)
-"Vq" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/turf/open/floor/mineral/plastitanium/red,
-/area/hammurabi)
 "Vs" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
@@ -7464,31 +6718,11 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/stairs/old,
 /area/nsv/weapons/pvp)
-"Vy" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/hammurabi)
 "Vz" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 1
 	},
@@ -7599,9 +6833,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/crew_quarters/heads/hos/pvp)
 "Wo" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/machinery/power/apc/auto_name/west{
 	req_access = list(150)
 	},
@@ -7630,12 +6862,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/quartermaster/pvp)
 "Wy" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/carpet/red,
 /area/engine/engineering/pvp)
 "Wz" = (
@@ -7646,9 +6873,7 @@
 /obj/machinery/power/terminal{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
@@ -7697,9 +6922,7 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 1
 	},
@@ -7761,25 +6984,12 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/bridge/pvp)
-"XI" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/turf/open/floor/carpet/red,
-/area/hammurabi)
 "XK" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /turf/open/floor/mineral/plastitanium,
 /area/nsv/weapons/pvp)
 "XN" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/structure/chair/office{
 	dir = 1
 	},
@@ -7790,14 +7000,6 @@
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /turf/open/floor/plating,
 /area/engine/engineering/pvp)
-"XT" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/rack,
-/obj/effect/spawner/lootdrop/maintenance/two,
-/turf/open/floor/plating,
-/area/hammurabi/maintenance)
 "XU" = (
 /obj/machinery/camera/syndicate/autoname{
 	dir = 1
@@ -7806,9 +7008,7 @@
 /area/hammurabi)
 "XY" = (
 /obj/machinery/door/airlock/ship/maintenance,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/east,
 /turf/open/floor/plating,
@@ -7829,14 +7029,9 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/crew_quarters/heads/hos/pvp)
 "Yd" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
@@ -7850,9 +7045,7 @@
 /obj/machinery/atmospherics/pipe/simple/orange/visible/layer2{
 	dir = 9
 	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/dark,
 /area/engine/engineering/pvp)
 "Yq" = (
@@ -7888,13 +7081,11 @@
 /obj/item/ship_weapon/parts/missile/warhead,
 /obj/item/ship_weapon/parts/missile/warhead,
 /obj/item/ship_weapon/parts/missile/warhead,
-/obj/item/stack/cable_coil/random,
+/obj/item/stack/cable_coil,
 /turf/open/floor/plasteel/tech/grid,
 /area/nsv/weapons/pvp)
 "Yz" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 1
 	},
@@ -7904,9 +7095,7 @@
 /turf/open/floor/monotile/dark,
 /area/engine/engineering/pvp)
 "YA" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/structure/reagent_dispensers/foamtank/hull_repair_juice,
 /obj/item/extinguisher/advanced/hull_repair_juice,
 /turf/open/floor/plating,
@@ -7915,9 +7104,7 @@
 /turf/closed/wall/steel,
 /area/hammurabi/tcomms)
 "YI" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/tech/grid,
 /area/nsv/weapons/pvp)
 "YL" = (
@@ -7940,17 +7127,13 @@
 	name = "Bridge frame";
 	req_one_access_txt = "150"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/east,
 /turf/open/floor/mineral/plastitanium,
 /area/bridge/pvp)
 "YR" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/east,
 /turf/open/floor/plating,
@@ -7963,9 +7146,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/bridge/pvp)
 "YV" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
@@ -8019,9 +7200,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/hammurabi)
 "Zo" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/wood{
 	broken = 1
 	},
@@ -8047,9 +7226,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/nsv/weapons/pvp)
 "ZI" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/structure/barricade/wooden,
@@ -28537,7 +27714,7 @@ EL
 wO
 LY
 Kr
-fM
+Wy
 ia
 LY
 LY
@@ -29309,7 +28486,7 @@ Kb
 LY
 rE
 tm
-nM
+Wy
 AC
 dV
 Wg
@@ -30079,7 +29256,7 @@ KQ
 rF
 LY
 nB
-Og
+KU
 AW
 ri
 Gq
@@ -30338,10 +29515,10 @@ LY
 rs
 Yz
 ww
-Qe
+Ev
 Vb
-Qe
-Qe
+Ev
+Ev
 cZ
 Ev
 jP
@@ -30600,12 +29777,12 @@ Ye
 CZ
 jN
 et
-Vk
+Ev
 hq
 ci
 om
-aU
-jx
+km
+km
 LY
 LY
 LY
@@ -31617,7 +30794,7 @@ ab
 LY
 LY
 LY
-QR
+Fo
 Fo
 LY
 LY
@@ -31868,13 +31045,13 @@ GJ
 tV
 tV
 pp
-gX
-gX
-gX
-gX
+cC
+cC
+cC
+cC
 gY
-gX
-gb
+cC
+cC
 gD
 RN
 hk
@@ -32662,10 +31839,10 @@ aX
 Nz
 Bm
 Rq
-bY
+Nz
 Bm
 Rq
-bY
+Nz
 pI
 ab
 zv
@@ -32916,13 +32093,13 @@ HM
 La
 jT
 aX
-In
+Nz
 wY
 kL
 EM
 uX
 sb
-Vy
+Nz
 rA
 qa
 hW
@@ -33439,9 +32616,9 @@ QO
 Sa
 bT
 ab
-gS
-gX
-gX
+cC
+cC
+cC
 DK
 Wz
 ab
@@ -33679,7 +32856,7 @@ xG
 aX
 QM
 zU
-yX
+Py
 Py
 Wr
 nE
@@ -34984,7 +34161,7 @@ QZ
 xv
 Eo
 ff
-Oj
+Zo
 tv
 ab
 aa
@@ -35204,7 +34381,7 @@ aa
 aa
 aa
 ab
-LK
+cC
 ab
 ab
 hh
@@ -35498,7 +34675,7 @@ QZ
 xv
 fJ
 ff
-Oj
+Zo
 vZ
 ab
 aa
@@ -37266,18 +36443,18 @@ Wh
 aH
 aN
 hd
-RI
+xX
 DO
-uB
 dj
-xD
+dj
+dj
 dj
 jK
 Pd
 CG
 yg
 DW
-Vq
+uk
 uk
 Qm
 GP
@@ -38819,7 +37996,7 @@ ch
 ch
 vs
 uh
-PZ
+CM
 CM
 gr
 yx
@@ -39077,7 +38254,7 @@ ch
 ch
 xP
 bT
-ss
+se
 se
 Ca
 iE
@@ -39097,7 +38274,7 @@ Yq
 wa
 ff
 KH
-hK
+hl
 ab
 aa
 aa
@@ -39334,7 +38511,7 @@ xM
 Bh
 SW
 co
-li
+se
 if
 tx
 KS
@@ -39591,7 +38768,7 @@ gp
 gp
 SW
 OX
-li
+se
 if
 tx
 cu
@@ -39848,13 +39025,13 @@ lE
 wz
 jQ
 bT
-li
+se
 iU
 tx
 bT
 sc
 SV
-xl
+Vl
 VJ
 Yv
 ff
@@ -40619,7 +39796,7 @@ Jy
 mD
 SW
 zV
-GN
+CM
 cv
 yx
 bT
@@ -40882,7 +40059,7 @@ BP
 bk
 gl
 eH
-xl
+Vl
 SV
 gg
 ff
@@ -41133,7 +40310,7 @@ af
 mu
 YF
 bT
-SD
+wQ
 JK
 ye
 Os
@@ -41153,8 +40330,8 @@ ff
 ii
 ii
 Qv
-gS
-gX
+cC
+cC
 RL
 ab
 aa
@@ -41390,7 +40567,7 @@ di
 Ih
 ex
 QJ
-XI
+xf
 Rf
 KT
 HB
@@ -41647,7 +40824,7 @@ cw
 Mo
 YF
 bT
-SD
+wQ
 dG
 WU
 Zc
@@ -41659,7 +40836,7 @@ Vl
 od
 hp
 hr
-md
+hs
 ud
 YV
 hs
@@ -43722,10 +42899,10 @@ eQ
 gl
 eq
 of
-gX
-gX
-gX
-hB
+cC
+cC
+cC
+cC
 ho
 ab
 aa
@@ -43978,7 +43155,7 @@ eG
 eQ
 gl
 aK
-Qq
+of
 aK
 aK
 aK
@@ -44235,7 +43412,7 @@ eG
 eQ
 qj
 aK
-Qq
+of
 ab
 ab
 ab
@@ -44492,7 +43669,7 @@ eG
 eQ
 gl
 yu
-Qq
+of
 NK
 Ou
 ab
@@ -45253,17 +44430,17 @@ aa
 dY
 ix
 ab
-XT
+PO
 oH
-gX
+cC
 Kl
-gX
-gX
-gX
-gX
-gX
-gX
-NS
+cC
+cC
+cC
+cC
+cC
+cC
+YA
 ab
 ix
 ix

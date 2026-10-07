@@ -17,7 +17,7 @@
 
 	var/scrubbing = SCRUBBING //0 = siphoning, 1 = scrubbing
 
-	var/filter_types = list(GAS_CO2, GAS_BZ)
+	var/filter_types = list(GAS_CO2, GAS_BZ, GAS_MIASMA) // AQ EDIT - Miasma
 	var/volume_rate = 200
 	var/widenet = 0 //is this scrubber acting on the 3x3 area around it.
 	var/list/turf/adjacent_turfs = list()

@@ -632,6 +632,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				eye_overlay.pixel_x += H.dna.species.offset_features[OFFSET_FACE][1]
 				eye_overlay.pixel_y += H.dna.species.offset_features[OFFSET_FACE][2]
 			standing += eye_overlay
+			standing += H.get_tears_overlays() // AQ EDIT - łzy po *cry (port Yogstation#15690)
 
 	//organic body markings
 	if(HAS_MARKINGS in species_traits)
@@ -1343,6 +1344,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(prob(round(-H.satiety/40)))
 				H.Jitter(5)
 			hunger_rate = 3 * HUNGER_FACTOR
+		if(HAS_TRAIT(H, TRAIT_EAT_MORE)) // AQ EDIT - gluttony demons hunger thrice as fast
+			hunger_rate *= 3
 		hunger_rate *= H.physiology.hunger_mod
 		H.adjust_nutrition(-hunger_rate)
 		if(shitting_enabled && !HAS_TRAIT(H, TRAIT_NOSHITTING)) // AQ EDIT

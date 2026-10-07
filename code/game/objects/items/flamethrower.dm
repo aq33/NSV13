@@ -30,6 +30,8 @@
 	var/create_full = FALSE
 	var/create_with_tank = FALSE
 	var/igniter_type = /obj/item/assembly/igniter
+	var/max_damage = 16 // maximum direct burn damage it can cause
+	var/list/flame_sounds = list('aquila/sound/weapons/flamethrower1.ogg','aquila/sound/weapons/flamethrower2.ogg','aquila/sound/weapons/flamethrower3.ogg')
 	trigger_guard = TRIGGER_GUARD_NORMAL
 
 /obj/item/flamethrower/Destroy()
@@ -77,11 +79,14 @@
 	if(ishuman(user))
 		if(!can_trigger_gun(user))
 			return
+	if(world.time < user.next_move)
+		return // no spam allowed
 	if(user && user.get_active_held_item() == src) // Make sure our user is still holding us
 		var/turf/target_turf = get_turf(target)
 		if(target_turf)
 			var/turflist = getline(user, target_turf)
 			log_combat(user, target, "flamethrowered", src)
+			user.changeNext_move(CLICK_CD_RANGE)
 			flame_turf(turflist)
 
 /obj/item/flamethrower/attackby(obj/item/W, mob/user, params)
@@ -121,7 +126,7 @@
 	else if(istype(W, /obj/item/tank/internals/plasma))
 		if(ptank)
 			if(user.transferItemToLoc(W,src))
-				ptank.forceMove(get_turf(src))
+				user.put_in_hands(ptank) // FLAMETHROWER TACTICAL RELOAD
 				ptank = W
 				to_chat(user, "<span class='notice'>You swap the plasma tank in [src]!</span>")
 			return
@@ -185,23 +190,68 @@
 	status = TRUE
 	update_icon()
 
+/// Removes fuel from the tank and returns how much damage the flame should do, or FALSE if it went out
+/obj/item/flamethrower/proc/process_fuel(turf/open/target, release_all = FALSE)
+	if(!ptank?.air_contents || !ptank.air_contents.return_pressure())
+		return kill_flame()
+
+	if(!istype(target))
+		return FALSE
+
+	var/ratio_removed = 1
+	if(!release_all)
+		ratio_removed = min(ptank.distribute_pressure, ptank.air_contents.return_pressure()) / ptank.air_contents.return_pressure()
+	var/datum/gas_mixture/fuel_mix = ptank.air_contents.remove_ratio(ratio_removed)
+
+	// Funny rad flamethrower go brrr
+	if(fuel_mix.get_moles(GAS_TRITIUM)) // Tritium fires cause a bit of radiation
+		radiation_pulse(target, min(fuel_mix.get_moles(GAS_TRITIUM), fuel_mix.get_moles(GAS_O2)/2) * FIRE_HYDROGEN_ENERGY_RELEASED / TRITIUM_BURN_RADIOACTIVITY_FACTOR)
+
+	// 8 damage at 0.5 mole transfer or ~17 kPa release pressure
+	// 16 damage at 1 mole transfer or ~35 kPa release pressure
+	var/damage = (fuel_mix.get_moles(GAS_PLASMA) + fuel_mix.get_moles(GAS_CONSTRICTED_PLASMA)) * 16
+	// harder to achieve than plasma
+	damage += fuel_mix.get_moles(GAS_TRITIUM) * 24 // causes minor radiation
+	// Maximum damage restricted by the available oxygen, with a hard cap
+	var/datum/gas_mixture/turf_air = target.return_air()
+	damage = min(damage, (turf_air ? turf_air.get_moles(GAS_O2) : 0) + fuel_mix.get_moles(GAS_O2), max_damage) // capped by combined oxygen in the fuel mix and enviroment
+
+	// If there's not enough fuel and/or oxygen to do more than 1 damage, shut itself off
+	if(damage < 1)
+		return kill_flame()
+	return damage
+
+/obj/item/flamethrower/proc/kill_flame()
+	visible_message("<span class='danger'>\The [src] breathes a sighed hiss as its flame dies out.</span>")
+	lit = FALSE
+	set_light_on(FALSE)
+	playsound(loc, 'aquila/sound/weapons/flamethrower_empty.ogg', 50, TRUE)
+	STOP_PROCESSING(SSobj,src)
+	update_icon()
+	return FALSE
+
 //Called from turf.dm turf/dblclick
 /obj/item/flamethrower/proc/flame_turf(turflist)
 	if(!lit || operating)
-		return
-	playsound(loc, 'aquila/sound/weapons/flamethrower.ogg', 100, 1)
+		return FALSE
 	operating = TRUE
+	var/sound_played = FALSE // don't spam the sound
 	var/turf/previousturf = get_turf(src)
 	for(var/turf/T in turflist)
 		if(T == previousturf)
 			continue	//so we don't burn the tile we be standin on
 		var/list/turfs_sharing_with_prev = previousturf.GetAtmosAdjacentTurfs(alldir=1)
 		if(!(T in turfs_sharing_with_prev))
-			break
+			break // Hit something that blocks atmos
 		if(igniter)
-			igniter.ignite_turf(src,T)
+			if(!igniter.ignite_turf(src,T))
+				break // Out of gas, stop running pointlessly
 		else
-			default_ignite(T)
+			if(!default_ignite(T))
+				break // Out of gas, stop running pointlessly
+		if(!sound_played) // play the sound once if we successfully ignite at least one thing
+			sound_played = TRUE
+			playsound(loc, pick(flame_sounds), 50, TRUE)
 		sleep(1)
 		previousturf = T
 	operating = FALSE
@@ -209,16 +259,22 @@
 		if((M.client && M.machine == src))
 			attack_self(M)
 
+// Return value tells the parent whether to continue calculating the line
+/obj/item/flamethrower/proc/default_ignite(turf/target, release_all = FALSE)
+	// do the fuel stuff
+	var/damage = process_fuel(target, release_all)
+	if(!damage)
+		return FALSE
 
-/obj/item/flamethrower/proc/default_ignite(turf/target, release_amount = 0.05)
-	//TODO: DEFERRED Consider checking to make sure tank pressure is high enough before doing this...
-	//Transfer 5% of current tank air contents to turf
-	var/datum/gas_mixture/air_transfer = ptank.air_contents.remove_ratio(release_amount)
-	air_transfer.set_moles(GAS_PLASMA, air_transfer.get_moles(GAS_PLASMA) * 5)
-	target.assume_air(air_transfer)
-	//Burn it based on transfered gas
-	target.hotspot_expose((ptank.air_contents.return_temperature()*2) + 380,500)
-	//location.hotspot_expose(1000,500,1)
+	//Burn it
+	target.IgniteTurf(rand(damage, damage * 4))
+
+	// Fire go brrrr
+	for(var/mob/living/L in target.contents)
+		var/hit_percent = (100 - L.getarmor(null, "fire")) / 100
+		L.apply_damage_type(damage * hit_percent, BURN)
+		to_chat(L, "<span class='userdanger'>A waft of flames overtakes you!</span>")
+	return TRUE
 
 
 /obj/item/flamethrower/Initialize(mapload)
@@ -243,17 +299,21 @@
 
 /obj/item/flamethrower/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	var/obj/item/projectile/P = hitby
-	if(damage && attack_type == PROJECTILE_ATTACK && P.damage_type != STAMINA && prob(15))
+	if(ptank && damage && attack_type == PROJECTILE_ATTACK && P.damage_type != STAMINA && prob(15))
 		owner.visible_message("<span class='danger'>\The [attack_text] hits the fuel tank on [owner]'s [name], rupturing it! What a shot!</span>")
 		var/turf/target_turf = get_turf(owner)
 		log_game("A projectile ([hitby]) detonated a flamethrower tank held by [key_name(owner)] at [COORD(target_turf)]")
-		igniter.ignite_turf(src,target_turf, release_amount = 100)
-		qdel(ptank)
+		if(igniter)
+			igniter.ignite_turf(src, target_turf, release_all = TRUE)
+		else
+			default_ignite(target_turf, release_all = TRUE)
+		QDEL_NULL(ptank)
+		update_icon()
 		return 1 //It hit the flamethrower, not them
 
 
 /obj/item/assembly/igniter/proc/flamethrower_process(turf/open/location)
 	location.hotspot_expose(700,2)
 
-/obj/item/assembly/igniter/proc/ignite_turf(obj/item/flamethrower/F,turf/open/location,release_amount = 0.05)
-	F.default_ignite(location,release_amount)
+/obj/item/assembly/igniter/proc/ignite_turf(obj/item/flamethrower/F, turf/open/location, release_all = FALSE)
+	return F.default_ignite(location, release_all)

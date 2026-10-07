@@ -1,5 +1,5 @@
 /obj/item/clothing/head/helmet/space/hardsuit/infiltration
-	name = "chameleon hardsuit helmet"
+	name = "engineering hardsuit helmet"
 	icon_state = "hardsuit0-engineering"
 	item_state = "eng_helm"
 	//item_color = "engineering"
@@ -16,7 +16,7 @@
 	return
 
 /obj/item/clothing/suit/space/hardsuit/infiltration
-	name = "chameleon hardsuit"
+	name = "engineering hardsuit"
 	icon_state = "hardsuit-engineering"
 	item_state = "eng_hardsuit"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -27,6 +27,11 @@
 	var/datum/action/item_action/chameleon/change/chameleon_action
 	var/obj/item/clothing/head/helmet/space/hardsuit/infiltration/head_piece
 
+/obj/item/clothing/suit/space/hardsuit/infiltration/examine(mob/user)
+	. = ..()
+	if(is_syndicate(user))
+		. += span_notice("There appears to be a hidden panel on it, showing various customization options.")
+
 /obj/item/clothing/suit/space/hardsuit/infiltration/Initialize()
 	. = ..()
 	chameleon_action = new(src)
@@ -36,4 +41,7 @@
 	chameleon_action.initialize_disguises()
 
 /obj/item/clothing/suit/space/hardsuit/infiltration/emp_act(severity)
+	. = ..()
+	if(. & EMP_PROTECT_SELF)
+		return
 	chameleon_action.emp_randomise()

@@ -845,13 +845,18 @@
 	category = CAT_MISC
 
 
-/datum/crafting_recipe/rcl
-	name = "Makeshift Rapid Cable Layer"
-	result = /obj/item/rcl/ghetto
-	time = 40
-	tools = list(TOOL_WELDER, TOOL_SCREWDRIVER, TOOL_WRENCH)
-	reqs = list(/obj/item/stack/sheet/iron = 15)
+/datum/crafting_recipe/noose
+	name = "Noose"
+	result = /obj/structure/chair/noose
+	time = 80
+	reqs = list(/obj/item/stack/cable_coil = 30)
 	category = CAT_MISC
+
+/datum/crafting_recipe/noose/check_requirements(mob/user, list/collected_requirements)
+	if(!(locate(/obj/structure/chair) in get_turf(user)))
+		to_chat(user, "<span class='warning'>You have to be standing on top of a chair to make a noose!</span>")
+		return FALSE
+	return ..()
 
 /datum/crafting_recipe/mummy
 	name = "Mummification Bandages (Mask)"
