@@ -117,3 +117,6 @@
 #define ANNOUNCER_SHUTTLEDOCK		"announcer_shuttledock"
 #define ANNOUNCER_SHUTTLERECALLED	"announcer_shuttlerecalled"
 #define ANNOUNCER_SPANOMALIES		"announcer_spanomalies"
+
+///Client volume preferences, passed to playsound() as volume_pref
+#define VOLUME_PREF_TESLA "tesla"

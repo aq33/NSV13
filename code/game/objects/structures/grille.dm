@@ -1,3 +1,5 @@
+WANTS_POWER_NODE(/obj/structure/grille) // AQ EDIT - Smartwires
+
 /obj/structure/grille
 	desc = "A flimsy framework of iron rods."
 	name = "grille"

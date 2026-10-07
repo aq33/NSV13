@@ -1396,15 +1396,6 @@
 /obj/effect/turf_decal/tile/blue,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/escape)
-"Lr" = (
-/obj/machinery/power/terminal{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/turf/open/floor/plating,
-/area/shuttle/escape)
 "Lw" = (
 /obj/structure/chair/fancy/shuttle,
 /obj/structure/window/reinforced/spawner{
@@ -1568,12 +1559,7 @@
 /obj/machinery/power/terminal{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/escape)
 "QN" = (
@@ -1610,9 +1596,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/escape)
 "Rb" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/escape)
 "Rd" = (
@@ -1712,9 +1696,7 @@
 /turf/open/floor/plating,
 /area/shuttle/escape)
 "TH" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/machinery/power/port_gen/pacman,
 /obj/item/stack/sheet/mineral/plasma{
 	amount = 5
@@ -2070,7 +2052,7 @@ tm
 qE
 Km
 Bt
-Lr
+QE
 Rb
 QE
 eS

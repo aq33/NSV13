@@ -193,7 +193,7 @@
 	if(GLOB.cameranet.checkTurfVis(remote_eye.loc))
 		for(var/mob/living/simple_animal/slime/S in X.stored_slimes)
 			S.forceMove(remote_eye.loc)
-			S.visible_message("[S] warps in!")
+			remote_eye.loc.visible_message("[S] wylatuje z rury!") // AQ EDIT - tgstation#90775: niewidoczny w trakcie animacji, więc komunikat idzie z kafelka
 			X.stored_slimes -= S
 	else
 		to_chat(owner, "<span class='warning'>Target is not near a camera. Cannot proceed.</span>")
@@ -217,7 +217,7 @@
 			if(!S.ckey)
 				if(S.buckled)
 					S.Feedstop(silent = TRUE)
-				S.visible_message("[S] vanishes in a flash of light!")
+				S.visible_message("[S] znika w rurze ssącej!")
 				S.forceMove(X)
 				X.stored_slimes += S
 	else
@@ -243,9 +243,10 @@
 				food.LAssailant = WEAKREF(C)
 				X.monkeys--
 				X.monkeys = round(X.monkeys, 0.1)		//Prevents rounding errors
-				to_chat(owner, "[X] now has [X.monkeys] monkeys stored.")
+				X.aquila_monkey_spat(food) // AQ EDIT - tgstation#90775: rura i HUD zamiast komunikatu o liczbie małp
 		else
 			to_chat(owner, "[X] needs to have at least 1 monkey stored. Currently has [X.monkeys] monkeys stored.")
+			remote_eye.loc.balloon_alert(owner, "za mało małp") // AQ EDIT - tgstation#90775
 	else
 		to_chat(owner, "<span class='notice'>Target is not near a camera. Cannot proceed.</span>")
 
@@ -269,12 +270,12 @@
 	if(GLOB.cameranet.checkTurfVis(remote_eye.loc))
 		for(var/mob/living/carbon/monkey/M in remote_eye.loc)
 			if(M.stat)
-				M.visible_message("[M] vanishes as [M.p_theyre()] reclaimed for recycling!")
+				M.visible_message("[M] wylatuje rurą do recyklingu!")
 				recycler.use_power(500)
 				X.monkeys += recycler.cube_production
 				X.monkeys = round(X.monkeys, 0.1)		//Prevents rounding errors
+				X.aquila_monkey_sucked(M) // AQ EDIT - tgstation#90775: rura i HUD zamiast komunikatu o liczbie małp
 				qdel(M)
-				to_chat(owner, "[X] now has [X.monkeys] monkeys available.")
 	else
 		to_chat(owner, "<span class='warning'>Target is not near a camera. Cannot proceed.</span>")
 
@@ -314,6 +315,7 @@
 
 	if(GLOB.cameranet.checkTurfVis(remote_eye.loc))
 		for(var/mob/living/simple_animal/slime/S in remote_eye.loc)
+			X.aquila_potion_spat(get_turf(remote_eye)) // AQ EDIT - tgstation#90775
 			X.current_potion.attack(S, C)
 			break
 	else
@@ -394,6 +396,7 @@
 		to_chat(C, "<span class='warning'>No potion loaded.</span>")
 		return
 	if(mobarea.name == E.allowed_area || (mobarea.area_flags & XENOBIOLOGY_COMPATIBLE))
+		X.aquila_potion_spat(get_turf(S)) // AQ EDIT - tgstation#90775
 		X.current_potion.attack(S, C)
 
 //Picks up slime
@@ -410,13 +413,14 @@
 	if(mobarea.name == E.allowed_area || (mobarea.area_flags & XENOBIOLOGY_COMPATIBLE))
 		if(X.stored_slimes.len >= X.max_slimes)
 			to_chat(C, "<span class='warning'>Slime storage is full.</span>")
+			S.balloon_alert(C, "magazyn pełny") // AQ EDIT - tgstation#90775
 			return
 		if(S.ckey)
 			to_chat(C, "<span class='warning'>The slime wiggled free!</span>")
 			return
 		if(S.buckled)
 			S.Feedstop(silent = TRUE)
-		S.visible_message("[S] vanishes in a flash of light!")
+		S.visible_message("[S] znika w rurze ssącej!")
 		S.forceMove(X)
 		X.stored_slimes += S
 
@@ -434,7 +438,7 @@
 	if(turfarea.name == E.allowed_area || (turfarea.area_flags & XENOBIOLOGY_COMPATIBLE))
 		for(var/mob/living/simple_animal/slime/S in X.stored_slimes)
 			S.forceMove(T)
-			S.visible_message("[S] warps in!")
+			T.visible_message("[S] wylatuje z rury!") // AQ EDIT - tgstation#90775: niewidoczny w trakcie animacji, więc komunikat idzie z kafelka
 			X.stored_slimes -= S
 
 //Place monkey
@@ -455,9 +459,10 @@
 				food.LAssailant = WEAKREF(C)
 				X.monkeys--
 				X.monkeys = round(X.monkeys, 0.1)		//Prevents rounding errors
-				to_chat(C, "[X] now has [X.monkeys] monkeys stored.")
+				X.aquila_monkey_spat(food) // AQ EDIT - tgstation#90775: rura i HUD zamiast komunikatu o liczbie małp
 		else
 			to_chat(C, "[X] needs to have at least 1 monkey stored. Currently has [X.monkeys] monkeys stored.")
+			T.balloon_alert(C, "za mało małp") // AQ EDIT - tgstation#90775
 
 //Pick up monkey
 /obj/machinery/computer/camera_advanced/xenobio/proc/XenoMonkeyClickCtrl(mob/living/user, mob/living/carbon/monkey/M)
@@ -476,9 +481,9 @@
 	if(mobarea.name == E.allowed_area || (mobarea.area_flags & XENOBIOLOGY_COMPATIBLE))
 		if(!M.stat)
 			return
-		M.visible_message("[M] vanishes as [p_theyre()] reclaimed for recycling!")
+		M.visible_message("[M] wylatuje rurą do recyklingu!")
 		X.connected_recycler.use_power(500)
 		X.monkeys += connected_recycler.cube_production
 		X.monkeys = round(X.monkeys, 0.1)		//Prevents rounding errors
+		X.aquila_monkey_sucked(M) // AQ EDIT - tgstation#90775: rura i HUD zamiast komunikatu o liczbie małp
 		qdel(M)
-		to_chat(C, "[X] now has [X.monkeys] monkeys available.")

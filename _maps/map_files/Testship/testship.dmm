@@ -82,9 +82,6 @@
 /obj/structure/cable,
 /obj/machinery/light,
 /obj/effect/landmark/start/head_of_personnel,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/carpet/ship,
 /area/bridge)
 "at" = (
@@ -92,9 +89,6 @@
 	dir = 1
 	},
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/carpet/ship,
 /area/bridge)
 "au" = (
@@ -119,9 +113,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/durasteel/eris_techfloor_alt,
 /area/centcom)
 "ay" = (
@@ -135,7 +127,7 @@
 /turf/open/floor/carpet/ship,
 /area/centcom)
 "aA" = (
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /obj/machinery/computer/ship/viewscreen,
 /obj/machinery/computer/ship/dradis,
 /turf/open/floor/carpet/ship,
@@ -153,9 +145,6 @@
 /obj/structure/chair,
 /obj/structure/cable,
 /obj/effect/landmark/start/chaplain,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/carpet/ship,
 /area/centcom)
 "aE" = (
@@ -203,9 +192,7 @@
 /area/centcom)
 "aL" = (
 /obj/machinery/power/deck_relay,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /obj/machinery/computer/ship/viewscreen,
 /turf/open/floor/plating,
 /area/centcom)
@@ -239,7 +226,7 @@
 /obj/machinery/power/terminal{
 	dir = 8
 	},
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
 "aR" = (
@@ -288,7 +275,7 @@
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
 "bb" = (
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /turf/open/floor/carpet/ship,
 /area/bridge)
 "bc" = (
@@ -297,17 +284,15 @@
 /turf/open/floor/durasteel/padded,
 /area/centcom)
 "bd" = (
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /turf/open/floor/durasteel/eris_techfloor_alt,
 /area/centcom)
 "be" = (
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
+/obj/structure/cable/yellow,
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /turf/open/floor/carpet/ship,
 /area/centcom)
 "bf" = (
@@ -362,12 +347,6 @@
 /obj/machinery/suit_storage_unit/captain,
 /turf/open/floor/durasteel/padded,
 /area/centcom)
-"bn" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
-/area/centcom)
 "bo" = (
 /obj/machinery/light,
 /turf/open/floor/durasteel/padded,
@@ -420,9 +399,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/centcom)
 "bv" = (
@@ -440,24 +417,12 @@
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/start/lawyer,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/carpet/ship,
 /area/centcom)
 "by" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
 	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
 	},
 /turf/open/floor/plating,
 /area/centcom)
@@ -466,12 +431,10 @@
 	dir = 8;
 	icon_state = "closed"
 	},
+/obj/structure/cable/yellow,
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
 	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
 	},
 /turf/open/floor/durasteel/padded,
 /area/centcom)
@@ -486,7 +449,7 @@
 /turf/open/floor/carpet/black,
 /area/centcom)
 "bC" = (
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /obj/machinery/computer/monitor,
 /turf/open/floor/durasteel/padded,
 /area/centcom)
@@ -508,12 +471,10 @@
 /turf/open/floor/carpet/black,
 /area/centcom)
 "bG" = (
+/obj/structure/cable/green,
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
 	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
 	},
 /turf/open/floor/carpet/ship,
 /area/centcom)
@@ -521,9 +482,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/carpet/ship,
 /area/centcom)
 "bI" = (
@@ -536,16 +495,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/carpet/ship,
 /area/centcom)
 "bK" = (
 /obj/machinery/power/apc/auto_name/north,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/durasteel/eris_techfloor,
 /area/ai_monitored/turret_protected/ai)
 "bL" = (
@@ -557,10 +512,8 @@
 	dir = 8;
 	icon_state = "closed"
 	},
+/obj/structure/cable/yellow,
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /turf/open/floor/durasteel/padded,
 /area/centcom)
 "bN" = (
@@ -574,34 +527,22 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating,
 /area/centcom)
 "bP" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/carpet/ship,
 /area/centcom)
 "bQ" = (
 /obj/machinery/door/airlock/ship,
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/durasteel/padded,
 /area/centcom)
 "bR" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/durasteel/padded,
 /area/centcom)
 "bS" = (
@@ -613,17 +554,11 @@
 	},
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
 "bT" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
 "bU" = (
@@ -631,9 +566,7 @@
 	dir = 1
 	},
 /obj/machinery/power/apc/auto_name/north,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "bV" = (
@@ -691,7 +624,7 @@
 /turf/open/floor/carpet/ship,
 /area/centcom)
 "ce" = (
-/obj/structure/cable,
+/obj/structure/cable/green,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -711,13 +644,6 @@
 	},
 /turf/open/floor/carpet/ship,
 /area/centcom)
-"ch" = (
-/obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/durasteel/eris_techfloor,
-/area/ai_monitored/turret_protected/ai)
 "ci" = (
 /obj/structure/disposalpipe/junction{
 	dir = 1
@@ -729,7 +655,7 @@
 /obj/structure/chair{
 	dir = 1
 	},
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /obj/effect/landmark/start/librarian,
 /turf/open/floor/carpet/ship,
 /area/centcom)
@@ -751,27 +677,10 @@
 "cn" = (
 /obj/machinery/door/airlock/ship,
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/durasteel/padded,
 /area/ai_monitored/turret_protected/ai)
-"co" = (
-/obj/structure/fluff/support_beam,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
-/area/maintenance/fore)
 "cp" = (
 /obj/structure/fluff/support_beam,
-/turf/open/floor/plating,
-/area/maintenance/fore)
-"cq" = (
-/obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "cr" = (
@@ -782,9 +691,6 @@
 	dir = 8
 	},
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "ct" = (
@@ -806,9 +712,6 @@
 "cw" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
 "cx" = (
@@ -835,9 +738,6 @@
 /area/medical)
 "cz" = (
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/plasteel/white,
 /area/medical)
 "cA" = (
@@ -849,9 +749,6 @@
 	dir = 9
 	},
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
 "cB" = (
@@ -861,17 +758,11 @@
 "cC" = (
 /obj/machinery/door/airlock/ship,
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating,
 /area/centcom)
 "cD" = (
 /obj/structure/fluff/support_beam,
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating,
 /area/centcom)
 "cE" = (
@@ -879,17 +770,11 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating,
 /area/centcom)
 "cF" = (
 /obj/machinery/door/airlock/ship,
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "cG" = (
@@ -897,25 +782,16 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "cH" = (
 /obj/machinery/door/airlock/ship,
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating,
 /area/engine/gravity_generator)
 "cI" = (
 /obj/structure/table/reinforced,
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/carpet/ship,
 /area/centcom)
 "cJ" = (
@@ -925,15 +801,6 @@
 	dir = 8
 	},
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
 /turf/open/floor/carpet/ship,
 /area/centcom)
 "cK" = (
@@ -942,9 +809,6 @@
 	dir = 10
 	},
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/carpet/ship,
 /area/centcom)
 "cL" = (
@@ -952,10 +816,8 @@
 	dir = 8;
 	icon_state = "closed"
 	},
+/obj/structure/cable/green,
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /turf/open/floor/durasteel/padded,
 /area/medical)
 "cM" = (
@@ -966,9 +828,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/white,
 /area/medical)
 "cN" = (
@@ -1007,15 +867,13 @@
 /turf/open/floor/plasteel/white,
 /area/medical)
 "cR" = (
+/obj/structure/cable/yellow,
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/white,
 /area/medical)
@@ -1062,7 +920,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
 "cY" = (
@@ -1089,9 +947,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/start/assistant,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/carpet/ship,
 /area/centcom)
 "db" = (
@@ -1112,11 +968,9 @@
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
 "dd" = (
+/obj/structure/cable/yellow,
 /obj/structure/cable,
 /obj/effect/landmark/start/chief_medical_officer,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /turf/open/floor/plasteel/white,
 /area/medical)
 "de" = (
@@ -1127,9 +981,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/start/detective,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/carpet/ship,
 /area/centcom)
 "df" = (
@@ -1143,7 +995,7 @@
 /obj/structure/chair{
 	dir = 1
 	},
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /obj/effect/landmark/start/janitor,
 /turf/open/floor/carpet/ship,
 /area/centcom)
@@ -1171,9 +1023,6 @@
 /obj/structure/cable,
 /obj/effect/landmark/start/virologist,
 /obj/structure/chair/stool,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
 /turf/open/floor/plasteel/white,
 /area/medical)
 "dn" = (
@@ -1203,16 +1052,11 @@
 /area/engine/gravity_generator)
 "ds" = (
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
 /turf/open/floor/pod,
 /area/engine/gravity_generator)
 "dt" = (
 /obj/machinery/power/apc/auto_name/north,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/pod,
 /area/engine/gravity_generator)
 "du" = (
@@ -1315,9 +1159,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/centcom)
 "ee" = (
@@ -1326,7 +1168,7 @@
 "ei" = (
 /obj/structure/frame/machine,
 /obj/item/circuitboard/machine/deck_gun/powder,
-/obj/item/stack/cable_coil/random,
+/obj/item/stack/cable_coil,
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
 "el" = (
@@ -1407,23 +1249,8 @@
 	dir = 4;
 	name = "Targeting Mainframe"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
-/area/centcom)
-"gc" = (
-/obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/open/floor/durasteel/padded,
 /area/centcom)
 "gg" = (
 /obj/effect/turf_decal/stripes/line{
@@ -1436,26 +1263,26 @@
 	icon_state = "27"
 	},
 /obj/machinery/computer/ship/dradis/minor/console,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/structure/window/plasma/reinforced/spawner/north,
 /turf/open/floor/monotile/dark,
 /area/space)
+"gv" = (
+/obj/structure/cable/green,
+/turf/open/floor/carpet/ship,
+/area/centcom)
+"gz" = (
+/obj/structure/cable/yellow,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/carpet/ship,
+/area/centcom)
 "gS" = (
 /obj/machinery/light,
 /turf/open/floor/monotile/dark,
 /area/centcom)
-"gT" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/obj/structure/lattice/catwalk/over/ship,
-/turf/open/floor/plating,
-/area/space)
 "hf" = (
 /obj/structure/frame/computer,
 /turf/open/floor/durasteel/riveted,
@@ -1479,9 +1306,7 @@
 	dir = 10;
 	name = "secondary alignment matrix"
 	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/dark,
 /area/space)
 "hX" = (
@@ -1504,12 +1329,7 @@
 /obj/machinery/bsa/middle{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/engine,
 /area/centcom)
 "iz" = (
@@ -1525,13 +1345,11 @@
 /obj/structure/table/reinforced,
 /turf/open/floor/monotile/dark,
 /area/centcom)
-"jp" = (
-/obj/machinery/power/smes,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/turf/open/floor/monotile/dark,
-/area/space)
+"ji" = (
+/obj/structure/cable/green,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "jq" = (
 /obj/machinery/missile_builder,
 /turf/open/floor/durasteel/riveted,
@@ -1547,24 +1365,12 @@
 /obj/machinery/power/terminal{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/space)
 "jT" = (
 /obj/machinery/deck_turret/autoelevator,
 /turf/open/floor/durasteel/riveted,
-/area/centcom)
-"ki" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/obj/structure/lattice/catwalk/over/ship,
-/turf/open/floor/engine,
 /area/centcom)
 "kB" = (
 /obj/machinery/computer/console_placholder{
@@ -1615,19 +1421,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
+/obj/structure/cable/yellow,
 /obj/structure/lattice/catwalk/over/ship,
 /obj/structure/window/plasma/reinforced/spawner/north,
 /turf/open/floor/plating,
 /area/space)
-"nc" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/monotile/dark,
-/area/centcom)
 "nw" = (
 /obj/structure/fans/tiny,
 /obj/effect/turf_decal/loading_area{
@@ -1640,9 +1438,7 @@
 	dir = 1
 	},
 /obj/machinery/power/smes,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/centcom)
 "nJ" = (
@@ -1681,10 +1477,12 @@
 /obj/machinery/computer/ship/viewscreen,
 /turf/closed/wall/ship,
 /area/space)
+"oy" = (
+/obj/structure/cable/yellow,
+/turf/open/floor/carpet/ship,
+/area/centcom)
 "oI" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/structure/lattice/catwalk/over/ship,
 /obj/machinery/door/airlock/ship{
 	name = "Heavy Weapons Bay";
@@ -1694,9 +1492,7 @@
 /area/space)
 "pr" = (
 /obj/structure/lattice/catwalk/over/ship,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/steel,
 /area/centcom)
 "pI" = (
@@ -1713,9 +1509,7 @@
 	dir = 4;
 	name = "Targeting Mainframe"
 	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/dark,
 /area/space)
 "pV" = (
@@ -1727,9 +1521,7 @@
 /obj/machinery/power/terminal{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/green,
 /turf/open/floor/plating,
 /area/space)
 "qf" = (
@@ -1745,12 +1537,11 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/space)
-"qm" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/durasteel/eris_techfloor,
-/area/ai_monitored/turret_protected/ai)
+"qj" = (
+/obj/structure/cable/yellow,
+/obj/structure/cable,
+/turf/open/floor/durasteel/padded,
+/area/centcom)
 "qt" = (
 /obj/machinery/missile_builder/welder,
 /turf/open/floor/durasteel/riveted,
@@ -1763,9 +1554,7 @@
 /obj/machinery/power/terminal{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/centcom)
 "rV" = (
@@ -1790,10 +1579,8 @@
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
 "sK" = (
+/obj/structure/cable/green,
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /turf/open/floor/plasteel/white,
 /area/medical)
 "sU" = (
@@ -1819,9 +1606,7 @@
 /turf/open/floor/engine/airless,
 /area/space)
 "td" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/structure/lattice/catwalk/over/ship,
 /turf/open/floor/engine,
 /area/centcom)
@@ -1849,10 +1634,8 @@
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
 "tY" = (
+/obj/structure/cable/green,
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /turf/open/floor/durasteel/padded,
 /area/centcom)
 "um" = (
@@ -1871,16 +1654,8 @@
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
 "uQ" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/computer/sts_bsa_control,
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
 /obj/item/multitool,
 /turf/open/floor/monotile/dark,
 /area/centcom)
@@ -1911,12 +1686,7 @@
 	icon = 'nsv13/goonstation/icons/obj/computer.dmi';
 	icon_state = "computer"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/structure/window/plasma/reinforced/spawner/north,
 /turf/open/floor/monotile/dark,
 /area/space)
@@ -1924,36 +1694,19 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/power/rtg/abductor{
 	power_gen = 200000000000000000
 	},
 /turf/open/floor/monotile/dark,
 /area/centcom)
 "vV" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/centcom)
 "vW" = (
 /obj/machinery/missile_builder/screwdriver,
 /turf/open/floor/durasteel/riveted,
-/area/centcom)
-"wu" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
-/obj/structure/lattice/catwalk/over/ship,
-/turf/open/floor/plating,
-/area/space)
-"wB" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/engine,
 /area/centcom)
 "xe" = (
 /obj/item/ship_weapon/parts/missile/guidance_system,
@@ -2010,22 +1763,10 @@
 	dir = 5;
 	name = "bluespace matrix inverter"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/structure/window/plasma/reinforced/spawner/north,
 /turf/open/floor/monotile/dark,
 /area/space)
-"yq" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
-/obj/structure/lattice/catwalk/over/ship,
-/turf/open/floor/engine,
-/area/centcom)
 "yw" = (
 /obj/machinery/light{
 	dir = 1
@@ -2068,9 +1809,7 @@
 /area/space)
 "zk" = (
 /obj/machinery/power/smes,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/centcom)
 "zv" = (
@@ -2110,12 +1849,7 @@
 	dir = 4;
 	name = "Targeting Mainframe"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/structure/window/plasma/reinforced/spawner/north,
 /turf/open/floor/monotile/dark,
 /area/space)
@@ -2145,24 +1879,8 @@
 	},
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
-"Av" = (
-/obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
-/area/maintenance/fore)
 "AS" = (
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
 /turf/open/floor/durasteel/eris_techfloor,
 /area/ai_monitored/turret_protected/ai)
 "AT" = (
@@ -2170,9 +1888,7 @@
 	dir = 4;
 	name = "Targeting Mainframe"
 	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/centcom)
 "AY" = (
@@ -2184,19 +1900,11 @@
 	},
 /turf/open/floor/engine/airless,
 /area/space)
-"Bo" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/turf/open/floor/engine,
-/area/centcom)
 "Bp" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/ship_weapon/energy/beam/bsa/west{
 	charge = 1;
 	charge_per_shot = 0;
@@ -2231,16 +1939,14 @@
 	dir = 1
 	},
 /obj/machinery/computer/ship/dradis/minor/console,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/centcom)
 "CQ" = (
 /obj/structure/frame/machine,
 /obj/item/circuitboard/machine/deck_gun/payload,
 /obj/item/stack/sheet/mineral/titanium/fifty,
-/obj/item/stack/cable_coil/random,
+/obj/item/stack/cable_coil,
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
 "Dc" = (
@@ -2256,12 +1962,7 @@
 	dir = 1
 	},
 /obj/machinery/computer/monitor/console,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/centcom)
 "DV" = (
@@ -2274,12 +1975,7 @@
 /obj/machinery/power/terminal{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-2"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/centcom)
 "EU" = (
@@ -2303,17 +1999,7 @@
 /area/centcom)
 "Fn" = (
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating,
-/area/centcom)
-"Fu" = (
-/obj/structure/lattice/catwalk/over/ship,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/monotile/dark,
 /area/centcom)
 "Fx" = (
 /obj/structure/ship_weapon/mac_assembly/artillery_frame,
@@ -2335,20 +2021,15 @@
 /obj/effect/turf_decal/ship/delivery/yellow,
 /turf/open/floor/monotile/steel,
 /area/space)
-"GD" = (
-/obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/carpet/ship,
+"Gy" = (
+/obj/structure/cable/yellow,
+/turf/open/floor/durasteel/riveted,
 /area/centcom)
 "GI" = (
 /obj/machinery/bsa/back{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/engine,
 /area/centcom)
 "Hh" = (
@@ -2356,9 +2037,7 @@
 	dir = 1
 	},
 /obj/machinery/power/smes,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /obj/structure/window/plasma/reinforced/spawner/north,
 /turf/open/floor/monotile/dark,
 /area/space)
@@ -2379,12 +2058,7 @@
 	dir = 5;
 	name = "bluespace matrix inverter"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/centcom)
 "Iy" = (
@@ -2408,6 +2082,10 @@
 "IU" = (
 /obj/machinery/missile_builder/assembler,
 /turf/open/floor/durasteel/riveted,
+/area/centcom)
+"IY" = (
+/obj/structure/cable/yellow,
+/turf/open/floor/durasteel/padded,
 /area/centcom)
 "Jl" = (
 /obj/structure/artilleryplaceholder{
@@ -2463,16 +2141,12 @@
 /turf/open/floor/monotile/dark,
 /area/space)
 "KF" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/engine,
 /area/centcom)
 "KK" = (
 /obj/structure/sign/nanotrasen,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/closed/wall/ship,
 /area/centcom)
 "KL" = (
@@ -2494,10 +2168,8 @@
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
 "Lp" = (
+/obj/structure/cable/green,
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /turf/open/floor/carpet/ship,
 /area/centcom)
 "Lv" = (
@@ -2517,28 +2189,12 @@
 /area/space)
 "LM" = (
 /obj/machinery/power/smes,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/structure/window/plasma/reinforced/spawner/north,
 /turf/open/floor/monotile/dark,
 /area/space)
-"Ma" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/turf/open/floor/monotile/dark,
-/area/centcom)
 "Md" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/structure/lattice/catwalk/over/ship,
 /turf/open/floor/plating,
 /area/space)
@@ -2549,17 +2205,12 @@
 /obj/machinery/power/terminal{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/centcom)
 "Mo" = (
 /obj/structure/fluff/support_beam,
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "Mx" = (
@@ -2576,9 +2227,7 @@
 /obj/machinery/bsa/front{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/engine,
 /area/centcom)
 "Nc" = (
@@ -2613,9 +2262,7 @@
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
 "NU" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/structure/lattice/catwalk/over/ship,
 /obj/machinery/door/airlock/ship{
 	name = "Heavy Weapons Bay";
@@ -2627,46 +2274,24 @@
 /obj/machinery/computer/ship/viewscreen,
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
-"Oi" = (
-/obj/machinery/door/airlock/ship,
-/obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/durasteel/padded,
-/area/centcom)
 "OD" = (
 /obj/item/tank/internals/air,
 /turf/open/floor/durasteel/padded,
 /area/centcom)
-"OJ" = (
-/obj/machinery/power/smes,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/turf/open/floor/monotile/dark,
-/area/centcom)
 "OQ" = (
 /obj/structure/lattice/catwalk/over/ship,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/engine,
 /area/centcom)
 "Pv" = (
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "PA" = (
+/obj/structure/cable/green,
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
 	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
 	},
 /turf/open/floor/durasteel/padded,
 /area/centcom)
@@ -2695,16 +2320,22 @@
 /turf/open/floor/engine/airless,
 /area/space)
 "QG" = (
+/obj/structure/cable/yellow,
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "QI" = (
 /obj/item/multitool,
 /turf/open/floor/engine,
 /area/centcom)
+"QO" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable/yellow,
+/turf/open/floor/plating,
+/area/space)
 "QZ" = (
 /obj/structure/artilleryplaceholder{
 	icon_state = "35"
@@ -2712,9 +2343,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/centcom)
 "Ra" = (
@@ -2732,31 +2361,29 @@
 /area/centcom)
 "RY" = (
 /obj/machinery/power/smes,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/dark,
 /area/space)
-"Sa" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/engine,
-/area/centcom)
 "Sc" = (
 /obj/structure/artilleryplaceholder{
 	icon_state = "20"
 	},
 /turf/open/floor/engine/airless,
 /area/space)
+"Sm" = (
+/obj/structure/cable/yellow,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/durasteel/padded,
+/area/centcom)
 "Sw" = (
 /obj/machinery/computer/console_placholder/end{
 	dir = 10;
 	name = "secondary alignment matrix"
 	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/centcom)
 "SF" = (
@@ -2770,6 +2397,11 @@
 /obj/item/ship_weapon/parts/missile/propulsion_system,
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
+"SO" = (
+/obj/machinery/door/airlock/ship,
+/obj/structure/cable/green,
+/turf/open/floor/durasteel/padded,
+/area/centcom)
 "SR" = (
 /turf/open/floor/engine,
 /area/centcom)
@@ -2779,39 +2411,16 @@
 /area/centcom)
 "Tr" = (
 /obj/structure/lattice/catwalk/over/ship,
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/centcom)
 "TA" = (
 /obj/machinery/computer/ship/tactical,
 /turf/open/floor/carpet/ship,
 /area/bridge)
-"TO" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/turf/open/floor/monotile/dark,
-/area/centcom)
 "Uq" = (
 /turf/open/floor/engine/airless,
 /area/space)
-"Uv" = (
-/obj/machinery/power/terminal{
-	dir = 4
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-2"
-	},
-/turf/open/floor/monotile/dark,
-/area/centcom)
 "Vx" = (
 /obj/structure/artilleryplaceholder{
 	icon_state = "5"
@@ -2826,12 +2435,7 @@
 	dir = 1
 	},
 /obj/machinery/computer/monitor/console,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/structure/window/plasma/reinforced/spawner/north,
 /turf/open/floor/monotile/dark,
 /area/space)
@@ -2861,15 +2465,6 @@
 /obj/machinery/ship_weapon/pdc_mount/north,
 /turf/open/floor/durasteel/riveted,
 /area/centcom)
-"XL" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/turf/open/floor/engine,
-/area/centcom)
 "XO" = (
 /obj/structure/artilleryplaceholder{
 	icon_state = "21"
@@ -2889,9 +2484,7 @@
 /obj/machinery/power/terminal{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
+/obj/structure/cable/yellow,
 /obj/structure/window/plasma/reinforced/spawner/north,
 /turf/open/floor/monotile/dark,
 /area/space)
@@ -2906,13 +2499,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
+/obj/structure/cable/yellow,
 /obj/structure/lattice/catwalk/over/ship,
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
 /turf/open/floor/engine,
 /area/centcom)
 "YM" = (
@@ -2928,13 +2516,6 @@
 "Zp" = (
 /obj/item/storage/secure/safe/caps_spare,
 /turf/closed/wall/ship,
-/area/centcom)
-"ZL" = (
-/obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/durasteel/padded,
 /area/centcom)
 
 (1,1,1) = {"
@@ -18779,7 +18360,7 @@ iz
 iz
 iz
 Jz
-pZ
+QO
 pZ
 oI
 Jz
@@ -19272,7 +18853,7 @@ aS
 ab
 oa
 oa
-Uv
+EN
 EN
 vV
 ab
@@ -20556,7 +20137,7 @@ uM
 aS
 ab
 qf
-wB
+KF
 uQ
 zA
 td
@@ -20579,7 +20160,7 @@ iz
 sV
 yN
 Hh
-jp
+RY
 Md
 JG
 iz
@@ -20813,7 +20394,7 @@ uM
 aS
 ab
 qf
-Sa
+KF
 Ig
 Sw
 td
@@ -21070,9 +20651,9 @@ uM
 YD
 ab
 Bp
-XL
+KF
 nF
-OJ
+zk
 td
 FM
 ab
@@ -21093,8 +20674,8 @@ iz
 Iy
 XO
 mE
-gT
-wu
+Md
+Md
 JG
 iz
 iz
@@ -21586,8 +21167,8 @@ ab
 qf
 KF
 YL
-ki
-yq
+td
+td
 FM
 ab
 SR
@@ -22099,12 +21680,12 @@ aS
 ab
 qf
 KF
-Ma
-nc
+dU
+vV
 OQ
 pr
 pr
-Fu
+Tr
 Tr
 Ti
 Ti
@@ -22612,8 +22193,8 @@ aS
 aS
 NU
 qf
-Bo
-TO
+KF
+dU
 XB
 um
 FM
@@ -24405,7 +23986,7 @@ aS
 aS
 ab
 aL
-bn
+Fn
 by
 bO
 bX
@@ -25177,7 +24758,7 @@ bZ
 ap
 bs
 aw
-PA
+Sm
 cc
 bs
 ap
@@ -25958,14 +25539,14 @@ aa
 aa
 bf
 bU
-co
-cq
-cs
-cq
-cq
 Mo
-cq
-cq
+Pv
+cs
+Pv
+Pv
+Mo
+Pv
+Pv
 cG
 Mo
 Pv
@@ -26205,7 +25786,7 @@ ak
 am
 az
 an
-bG
+gz
 ce
 bw
 di
@@ -26464,7 +26045,7 @@ an
 an
 bH
 cd
-bw
+oy
 dj
 ak
 aa
@@ -26482,7 +26063,7 @@ aa
 aa
 aa
 bf
-QG
+ji
 bf
 ee
 ee
@@ -26966,7 +26547,7 @@ aa
 aa
 ac
 bK
-ch
+AS
 AS
 ac
 dy
@@ -26987,7 +26568,7 @@ af
 aH
 aK
 aS
-aR
+Gy
 aS
 aS
 bV
@@ -26996,7 +26577,7 @@ aG
 aG
 aG
 bf
-QG
+ji
 bf
 dA
 el
@@ -27224,13 +26805,13 @@ aa
 ac
 cm
 aV
-qm
+AS
 cn
-ZL
-ZL
-ZL
-Oi
-GD
+bv
+bv
+bv
+bc
+bw
 aD
 cI
 cJ
@@ -27253,7 +26834,7 @@ Fn
 cD
 cE
 cF
-Av
+Pv
 cH
 ds
 em
@@ -27501,7 +27082,7 @@ ah
 aH
 aK
 aS
-aR
+Gy
 aS
 aS
 aY
@@ -27757,7 +27338,7 @@ ab
 ab
 aG
 aM
-aR
+Gy
 aR
 aS
 aS
@@ -28006,7 +27587,7 @@ an
 an
 bH
 an
-bw
+oy
 dk
 ak
 aa
@@ -28262,7 +27843,7 @@ aX
 aB
 aZ
 be
-bw
+gv
 bw
 dl
 ak
@@ -29030,7 +28611,7 @@ cB
 dD
 cv
 bb
-bc
+SO
 bd
 tY
 aw
@@ -29289,7 +28870,7 @@ at
 as
 KK
 ax
-gc
+bv
 dv
 ab
 aa
@@ -29546,7 +29127,7 @@ cv
 cv
 ae
 aw
-tY
+qj
 aw
 ab
 aa
@@ -89941,7 +89522,7 @@ le
 NR
 ak
 bD
-bv
+IY
 bE
 bC
 ab

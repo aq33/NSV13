@@ -66,12 +66,15 @@ SUBSYSTEM_DEF(events)
 	var/sum_of_weights = 0
 
 	//NSV13 - are we using our event list or the full one?
+	//AQ EDIT - the star system lists hold control types (optionally type = weight), not the controls themselves
 	var/obj/structure/overmap/mainship = SSstar_system.find_main_overmap()
-	var/list/possible_events
-	if(mainship.current_system && length(mainship.current_system.possible_events) && prob(50))
-		possible_events = mainship.current_system.possible_events
-	else
-		possible_events = control
+	var/list/system_events = mainship?.current_system?.possible_events
+	var/list/possible_events = control
+	if(length(system_events) && prob(50))
+		possible_events = list()
+		for(var/datum/round_event_control/E in control)
+			if(E.type in system_events)
+				possible_events[E] = system_events[E.type] || E.weight
 
 	for(var/datum/round_event_control/E in possible_events)
 		if(!E.canSpawnEvent(players_amt, gamemode))
@@ -82,14 +85,14 @@ SUBSYSTEM_DEF(events)
 				continue	//like it never happened
 			if(res == EVENT_CANT_RUN)
 				return
-		sum_of_weights += E.weight
+		sum_of_weights += possible_events[E] || E.weight
 
 	sum_of_weights = rand(0,sum_of_weights)	//reusing this variable. It now represents the 'weight' we want to select
 
 	for(var/datum/round_event_control/E in possible_events)
 		if(!E.canSpawnEvent(players_amt, gamemode))
 			continue
-		sum_of_weights -= E.weight
+		sum_of_weights -= possible_events[E] || E.weight
 
 		if(sum_of_weights <= 0)				//we've hit our goal
 			if(TriggerEvent(E))
