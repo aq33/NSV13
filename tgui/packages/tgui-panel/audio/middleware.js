@@ -21,6 +21,14 @@ export const audioMiddleware = store => {
       player.play(url, options);
       return next(action);
     }
+    // AQUILA EDIT
+    if (type === 'audio/setMusicGain') {
+      const gain = payload?.gain;
+      if (typeof gain === 'number') {
+        player.setGain(gain);
+      }
+      return next(action);
+    }
     if (type === 'audio/stopMusic') {
       player.stop();
       return next(action);

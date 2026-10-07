@@ -8,7 +8,9 @@
 	var/channel = null
 	var/speed_factor = 1
 	var/obj/jukebox = null
-	var/listeners = list()
+	/// Gracze, którym wysłano już utwór (dalej dostają tylko aktualizacje głośności)
+	var/list/listeners = list()
+	var/started = 0
 
 SUBSYSTEM_DEF(jukeboxes)
 	name = "Jukeboxes"
@@ -18,7 +20,6 @@ SUBSYSTEM_DEF(jukeboxes)
 	var/list/datum/track/songs = list()
 	var/list/datum/jukebox/active_jukeboxes = list()
 	var/list/free_channels = list()
-	var/falloff = 7
 
 /datum/controller/subsystem/jukeboxes/proc/add_jukebox(obj/jukebox_obj, selection, speed_factor = 1)
 	if(selection > songs.len)
@@ -27,45 +28,67 @@ SUBSYSTEM_DEF(jukeboxes)
 		return null
 	var/channel = pick(free_channels)
 	free_channels -= channel
-	active_jukeboxes.len++
 	var/datum/jukebox/jukebox = new /datum/jukebox()
 	jukebox.song_id = selection
 	jukebox.channel = channel
 	jukebox.jukebox = jukebox_obj
 	jukebox.speed_factor = speed_factor
-	active_jukeboxes[active_jukeboxes.len] = jukebox
-
-	var/sound/song_played = sound(songs[jukebox.song_id].path)
-	song_played.status = SOUND_MUTE | SOUND_STREAM
-
-	for(var/mob/M in GLOB.player_list)
-		if(!M.client)
-			continue
-		if(!(M.client.prefs.toggles & PREFTOGGLE_SOUND_INSTRUMENTS))
-			continue
-
-		M.playsound_local(get_turf(jukebox_obj), null, MUSIC_VOLUME, falloff_distance = falloff, channel = jukebox.channel, S = song_played, frequency = jukebox.speed_factor)
-		sleep(5)
+	jukebox.started = world.time
+	active_jukeboxes += jukebox
+	update_jukebox(jukebox) // słuchacze w zasięgu słyszą od razu, resztę dołącza fire()
 	return channel
 
 /datum/controller/subsystem/jukeboxes/proc/remove_jukebox(channel)
 	var/datum/jukebox/jukebox = null
-	var/id = 1
 	for(var/datum/jukebox/i in active_jukeboxes)
 		if(i.channel == channel)
 			jukebox = i
 			break
-		id++
 	ASSERT(jukebox != null)
 	for(var/mob/M in GLOB.player_list)
 		if(!M.client)
 			continue
 		M.stop_sound_channel(channel)
-		sleep(5)
-	//idk if we have to del the jukebox datum
-	active_jukeboxes.Cut(id, id+1)
+	active_jukeboxes -= jukebox
+	jukebox.listeners = null
 	free_channels += channel
 	return TRUE
+
+/// Ustawia głośność utworu każdemu graczowi wg odległości (okrąg wokół jukeboxa).
+/// Dźwięk nie jest pozycyjny (bez x/y/z), żeby nie uciekał na jedno ucho przy chodzeniu obok.
+/datum/controller/subsystem/jukeboxes/proc/update_jukebox(datum/jukebox/jukebox)
+	var/datum/track/juketrack = songs[jukebox.song_id]
+	if(!istype(juketrack))
+		CRASH("Invalid jukebox track datum.")
+	var/obj/machinery/jukebox/jukebox_obj = jukebox.jukebox
+	if(!istype(jukebox_obj))
+		CRASH("Nonexistant or invalid object associated with jukebox.")
+	var/list/listeners = jukebox.listeners
+	for(var/mob/M as anything in GLOB.player_list)
+		if(!M.client)
+			continue
+		var/volume = round(JUKEBOX_LOCAL_MAX_VOLUME * jukebox_obj.volume / 100 * jukebox_obj.hearing_gain(M))
+		var/sound/song_played = sound(juketrack.path)
+		song_played.channel = jukebox.channel
+		song_played.frequency = jukebox.speed_factor
+		song_played.wait = 0
+		song_played.volume = volume
+		if(listeners[M])
+			song_played.status = SOUND_UPDATE | SOUND_STREAM
+			if(volume <= 0)
+				song_played.status |= SOUND_MUTE //Setting volume = 0 doesn't let the sound properties update at all, which is lame.
+		else
+			if(volume <= 0)
+				continue
+			song_played.status = SOUND_STREAM
+#if DM_VERSION >= 515
+			song_played.offset = (world.time - jukebox.started) * jukebox.speed_factor / 10
+#endif
+			listeners[M] = TRUE
+		SEND_SOUND(M, song_played)
+		CHECK_TICK
+		if(!jukebox.listeners) // jukebox wyłączony w trakcie CHECK_TICK
+			return
 
 /datum/controller/subsystem/jukeboxes/Initialize()
 	var/list/tracks = flist("config/jukebox_music/sounds/")
@@ -94,28 +117,5 @@ SUBSYSTEM_DEF(jukeboxes)
 	return ..()
 
 /datum/controller/subsystem/jukeboxes/fire()
-	if(!active_jukeboxes.len)
-		return
-	for(var/datum/jukebox/jukebox in active_jukeboxes)
-		var/datum/track/juketrack = songs[jukebox.song_id]
-		if(!istype(juketrack))
-			CRASH("Invalid jukebox track datum.")
-		var/obj/jukebox_obj = jukebox.jukebox
-		if(!istype(jukebox_obj))
-			CRASH("Nonexistant or invalid object associated with jukebox.")
-		var/sound/song_played = sound(juketrack.path)
-
-		for(var/mob/M in GLOB.player_list)
-			if(!M.client)
-				continue
-
-			song_played.status = SOUND_UPDATE | SOUND_STREAM
-			if(!(M.client.prefs.toggles & PREFTOGGLE_SOUND_INSTRUMENTS))
-				song_played.status |= SOUND_MUTE
-
-			if(jukebox_obj.z != M.z)
-				song_played.status |= SOUND_MUTE	//Setting volume = 0 doesn't let the sound properties update at all, which is lame.
-
-			M.playsound_local(get_turf(jukebox_obj), null, MUSIC_VOLUME, falloff_distance = falloff, channel = jukebox.channel, S = song_played, frequency = jukebox.speed_factor)
-			CHECK_TICK
-	return
+	for(var/datum/jukebox/jukebox as anything in active_jukeboxes)
+		update_jukebox(jukebox)

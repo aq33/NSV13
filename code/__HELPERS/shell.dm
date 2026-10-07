@@ -28,7 +28,13 @@
 		if(world.system_type == UNIX)
 			errorcode = shell("[interpreter] \"[replacetext(command, "\"", "\\\"")]\" > [out_file] 2> [err_file]")
 		else
-			errorcode = shell("[interpreter] \"[command]\" > [out_file] 2> [err_file]")
+			// AQUILA EDIT START - bez wyskakującego okna cmd na hoście
+			var/hidden_errorcode = aquila_shell_hidden("[command] > [out_file] 2> [err_file]", "[SHELLEO_NAME][shelleo_id].cmdline", out_file)
+			if(!isnull(hidden_errorcode))
+				errorcode = hidden_errorcode
+			else
+				errorcode = shell("[interpreter] \"[command]\" > [out_file] 2> [err_file]")
+			// AQUILA EDIT END
 		if(fexists(out_file))
 			stdout = rustg_file_read(out_file)
 			fdel(out_file)
