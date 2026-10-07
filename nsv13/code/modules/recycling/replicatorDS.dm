@@ -155,7 +155,7 @@
 		qdel(O)
 		return FALSE
 
-	if(istype(O, /obj/item/reagent_containers/food/snacks))
+	if(istype(O, /obj/item/reagent_containers/food/snacks) || istype(O, /obj/item/food))
 		convert_to_biomass(O)
 		success = TRUE
 	else if(istype(O, /obj/item/storage/bag/plants))
@@ -232,7 +232,7 @@
 			var/costs = 0
 			if(D.build_path)
 				var/obj/item/temporary = new D.build_path
-				if(istype(temporary, /obj/item/reagent_containers/food))
+				if(istype(temporary, /obj/item/reagent_containers/food) || istype(temporary, /obj/item/food))
 					costs = temporary.reagents.get_reagent_amount(/datum/reagent/consumable/nutriment)
 				else
 					costs = D.cost ? D.cost : 5
@@ -350,7 +350,7 @@
 	menutype = READY
 	ready = TRUE
 
-/obj/machinery/replicator/proc/convert_to_biomass(obj/item/reagent_containers/food/snacks/S)
+/obj/machinery/replicator/proc/convert_to_biomass(obj/item/S)
 	var/nutrimentgain = S.reagents.get_reagent_amount(/datum/reagent/consumable/nutriment)
 	if(nutrimentgain < 0.1)
 		nutrimentgain = 5 * matter_energy_efficiency

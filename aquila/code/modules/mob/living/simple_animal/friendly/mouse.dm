@@ -97,7 +97,7 @@ GLOBAL_VAR_INIT(mouse_killed, 0)
 		return FALSE
 	if(is_type_in_list(A, GLOB.mouse_comestible))
 		return TRUE
-	if(istype(A, /obj/item/reagent_containers/food) && !(locate(/obj/structure/table) in get_turf(A)))
+	if((istype(A, /obj/item/reagent_containers/food) || istype(A, /obj/item/food)) && !(locate(/obj/structure/table) in get_turf(A)))
 		return TRUE
 
 /mob/living/simple_animal/mouse/proc/regen_health(amt = 5)
