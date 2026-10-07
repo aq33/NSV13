@@ -37,8 +37,10 @@ const PLAIN_MUFFLE_VOLUME = 0.4;
 // Plain element echo copies: delay (s) and level relative to the music
 // (one copy - every copy is another download of the stream)
 const PLAIN_TAPS = [
-  { delay: 0.3, level: 0.6 },
+  { delay: 0.3, level: 0.85 },
 ];
+// How much the direct sound is lowered at full echo
+const PLAIN_ECHO_DUCK = 0.4;
 // How far an echo copy may drift before it gets re-seeked (s)
 const TAP_MAX_DRIFT = 0.4;
 
@@ -282,7 +284,9 @@ export class AudioPlayer {
     }
     const muffle = 1 - this.muffle * (1 - PLAIN_MUFFLE_VOLUME);
     const volume = this.volume * this.gain * muffle;
-    this.node.volume = clamp01(volume);
+    // Wet/dry: the further away, the more of what you hear is the echo
+    const dry = 1 - this.tapMix() * PLAIN_ECHO_DUCK;
+    this.node.volume = clamp01(volume * dry);
     const mix = this.tapMix();
     for (let tap of this.taps) {
       tap.node.volume = clamp01(volume * mix * tap.level);

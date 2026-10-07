@@ -90,6 +90,7 @@
 #include "code\game\machinery\fabricators\modular_fabricator.dm"
 #include "code\game\machinery\jukebox.dm"
 #include "code\game\machinery\jukebox_youtube.dm"
+#include "code\game\sound_dampening.dm"
 #include "code\game\machinery\newscaster.dm"
 #include "code\game\machinery\spaceheater.dm"
 #include "code\game\machinery\status_display.dm"

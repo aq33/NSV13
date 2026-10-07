@@ -312,7 +312,7 @@
 	return round(echo_amount(M), 0.05)
 
 /obj/machinery/jukebox/proc/yt_muffle_for(mob/M)
-	return muffle_amount(M)
+	return round(muffle_amount(M), 0.05)
 
 /// Dołącza graczy wchodzących w zasięg, wycisza tych, którzy wyszli, i ścisza/podgłaśnia wg odległości.
 /obj/machinery/jukebox/proc/yt_update_listeners()

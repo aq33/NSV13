@@ -30,6 +30,10 @@
 	var/music_full_range = 3
 	/// O ile kratek "dalej" jest pokład nad/pod jukeboxem
 	var/music_deck_penalty = 4
+	/// Pamięć wygłuszenia przeszkód: turf słuchacza -> suma (odświeżana co kilka sekund)
+	var/list/dampening_cache = list()
+	var/dampening_cache_time = 0
+	var/turf/dampening_cache_from = null
 
 /obj/machinery/jukebox/disco
 	name = "Disco Jukebox"
@@ -235,12 +239,36 @@
 	var/fraction = hearing_fraction(M)
 	if(isnull(fraction))
 		return 0
-	return clamp((fraction - 0.15) / 0.85, 0, 1)
+	return clamp((fraction - 0.1) / 0.6, 0, 1)
 
-/// Przytłumienie 0-1 (jak zza ściany): pełne na innym pokładzie.
+/// Przytłumienie 0-1 (jak zza ściany): pełne na innym pokładzie, na tym samym - suma wygłuszenia przeszkód po drodze.
 /obj/machinery/jukebox/proc/muffle_amount(mob/M)
 	var/turf/T = get_turf(M)
 	var/turf/our_turf = get_turf(src)
 	if(!T || !our_turf)
 		return 0
-	return T.z != our_turf.z ? 1 : 0
+	if(T.z != our_turf.z)
+		return 1
+	return min(1, obstacle_dampening(T))
+
+/// Suma sound_dampening ścian, okien i zamkniętych drzwi na linii jukebox -> turf (wynik trzymany 3 s na turf).
+/obj/machinery/jukebox/proc/obstacle_dampening(turf/T)
+	var/turf/our_turf = get_turf(src)
+	if(dampening_cache_time + 3 SECONDS < world.time || dampening_cache_from != our_turf)
+		dampening_cache = list()
+		dampening_cache_time = world.time
+		dampening_cache_from = our_turf
+	if(!isnull(dampening_cache[T]))
+		return dampening_cache[T]
+	var/total = 0
+	for(var/turf/line_turf as anything in getline(our_turf, T))
+		if(line_turf == our_turf)
+			continue
+		total += line_turf.get_sound_dampening()
+		for(var/obj/O in line_turf)
+			if(O.sound_dampening)
+				total += O.get_sound_dampening()
+		if(total >= 1)
+			break
+	dampening_cache[T] = total
+	return total
