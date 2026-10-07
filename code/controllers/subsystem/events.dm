@@ -65,26 +65,13 @@ SUBSYSTEM_DEF(events)
 
 	var/sum_of_weights = 0
 
-	//NSV13 - are we using our event list or the full one?
-	//AQ EDIT - the star system lists hold control types (optionally type = weight), not the controls themselves
+	//AQ EDIT - every event that meets its requirements has the same chance, see get_random_weight().
+	//The star system event lists (/datum/star_system/var/possible_events) only let in their weight 0 events
+	//(deadly radiation storm, radioactive sludge), which never roll anywhere else.
 	var/obj/structure/overmap/mainship = SSstar_system.find_main_overmap()
 	var/list/system_events = mainship?.current_system?.possible_events
-	var/list/possible_events = control
-	if(length(system_events) && prob(50))
-		possible_events = list()
-		for(var/datum/round_event_control/E in control)
-			if(E.type in system_events)
-				possible_events[E] = system_events[E.type] || E.weight
-		//AQ EDIT - once the system's events are used up (or none can run), pick from the full list instead of skipping this event
-		var/system_event_ready = FALSE
-		for(var/datum/round_event_control/E in possible_events)
-			if(possible_events[E] > 0 && E.canSpawnEvent(players_amt, gamemode))
-				system_event_ready = TRUE
-				break
-		if(!system_event_ready)
-			possible_events = control
-
-	for(var/datum/round_event_control/E in possible_events)
+	var/list/possible_events = list()
+	for(var/datum/round_event_control/E in control)
 		if(!E.canSpawnEvent(players_amt, gamemode))
 			continue
 		if(E.weight < 0)						//for round-start events etc.
@@ -93,7 +80,14 @@ SUBSYSTEM_DEF(events)
 				continue	//like it never happened
 			if(res == EVENT_CANT_RUN)
 				return
-		sum_of_weights += max(possible_events[E] || E.weight, 0) //AQ EDIT - round-start events (negative weight) do not shift the pick
+			continue
+		var/event_weight = E.get_random_weight()
+		if(event_weight <= 0 && (E.type in system_events))
+			event_weight = 10
+		if(event_weight <= 0)
+			continue
+		possible_events[E] = event_weight
+		sum_of_weights += event_weight
 
 	//AQ EDIT - rand(0, sum) used to land on 0 now and then and pick the first runnable event in the list, even one with weight 0
 	if(sum_of_weights <= 0)
@@ -101,12 +95,7 @@ SUBSYSTEM_DEF(events)
 	sum_of_weights = rand(1,sum_of_weights)	//reusing this variable. It now represents the 'weight' we want to select
 
 	for(var/datum/round_event_control/E in possible_events)
-		if(!E.canSpawnEvent(players_amt, gamemode))
-			continue
-		var/event_weight = possible_events[E] || E.weight
-		if(event_weight <= 0) //AQ EDIT - weight 0 and round-start events are never picked here
-			continue
-		sum_of_weights -= event_weight
+		sum_of_weights -= possible_events[E]
 
 		if(sum_of_weights <= 0)				//we've hit our goal
 			if(TriggerEvent(E))
