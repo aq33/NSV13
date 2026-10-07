@@ -79,9 +79,7 @@
 	req_one_access_txt = "101";
 	security_level = 6
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /turf/open/floor/plasteel/tech/grid,
@@ -272,9 +270,7 @@
 /turf/open/floor/engine,
 /area/awaymission/badmiral/bridge)
 "cx" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -398,16 +394,6 @@
 	},
 /turf/open/floor/carpet/ship/blue,
 /area/awaymission/badmiral/bridge)
-"dB" = (
-/obj/machinery/power/rtg/abductor,
-/obj/structure/cable/white{
-	icon_state = "0-2"
-	},
-/obj/structure/cable/white{
-	icon_state = "2-4"
-	},
-/turf/open/floor/engine,
-/area/awaymission/badmiral/engineering)
 "dC" = (
 /obj/structure/closet/secure_closet/ertSec,
 /obj/item/crowbar/red,
@@ -439,9 +425,7 @@
 /turf/open/floor/engine,
 /area/awaymission/badmiral/engineering)
 "dY" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/nuclearbomb/beer,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
@@ -606,20 +590,12 @@
 /area/awaymission/badmiral/bridge)
 "fe" = (
 /obj/machinery/power/smes/engineering,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
 	},
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/engineering)
@@ -640,7 +616,7 @@
 /area/awaymission/badmiral/lounge)
 "fr" = (
 /obj/machinery/power/generator,
-/obj/structure/cable/white,
+/obj/structure/cable/pink,
 /turf/open/floor/engine,
 /area/awaymission/badmiral/engineering)
 "fv" = (
@@ -657,12 +633,7 @@
 /turf/open/floor/carpet,
 /area/awaymission/badmiral/dorms)
 "fx" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/power/apc/auto_name/west,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
@@ -697,9 +668,7 @@
 /turf/open/floor/carpet/black,
 /area/awaymission/badmiral/lounge)
 "fJ" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -768,9 +737,7 @@
 /area/awaymission/badmiral/bridge)
 "gp" = (
 /obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -844,12 +811,7 @@
 "ha" = (
 /obj/machinery/computer/ship/viewscreen,
 /obj/machinery/power/rtg/abductor,
-/obj/structure/cable/white{
-	icon_state = "0-2"
-	},
-/obj/structure/cable/white{
-	icon_state = "2-8"
-	},
+/obj/structure/cable/pink,
 /turf/open/floor/engine,
 /area/awaymission/badmiral/engineering)
 "hd" = (
@@ -895,9 +857,7 @@
 /turf/open/floor/durasteel/padded,
 /area/awaymission/badmiral/lounge)
 "hy" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/gauss_dispenser,
 /turf/open/floor/engine/airless,
 /area/awaymission/badmiral)
@@ -1011,9 +971,7 @@
 /turf/open/floor/plating,
 /area/awaymission/badmiral/munitions)
 "ij" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
@@ -1021,9 +979,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/munitions)
 "in" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/pink,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/munitions)
@@ -1119,9 +1075,7 @@
 	icon_state = "beacon";
 	name = "tracking beacon"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -1167,17 +1121,12 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/munitions)
 "ju" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 6
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/munitions)
@@ -1234,14 +1183,9 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/bridge)
 "ka" = (
-/obj/structure/cable/white{
-	icon_state = "0-2"
-	},
+/obj/structure/cable/pink,
 /obj/machinery/power/rtg/abductor{
 	power_gen = 2e+7
-	},
-/obj/structure/cable/white{
-	icon_state = "1-8"
 	},
 /turf/open/floor/engine,
 /area/awaymission/badmiral/engineering)
@@ -1334,14 +1278,6 @@
 	},
 /turf/open/floor/plating,
 /area/awaymission/badmiral/cryo)
-"le" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/turf/open/floor/plasteel/tech/grid,
-/area/awaymission/badmiral/munitions)
 "lh" = (
 /obj/structure/shuttle/engine/large{
 	dir = 1
@@ -1379,9 +1315,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/engine,
 /area/awaymission/badmiral/bridge)
 "lu" = (
@@ -1414,9 +1348,7 @@
 /turf/open/floor/wood,
 /area/awaymission/badmiral/munitions)
 "lC" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
 /turf/open/floor/carpet/ship,
@@ -1425,9 +1357,7 @@
 /obj/machinery/computer/monitor{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/firealarm/directional/west,
 /turf/open/floor/engine,
 /area/awaymission/badmiral/bridge)
@@ -1468,9 +1398,7 @@
 /area/awaymission/badmiral/lounge)
 "mg" = (
 /obj/machinery/power/apc/auto_name/east,
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/engine/airless,
 /area/awaymission/badmiral)
 "mh" = (
@@ -1510,19 +1438,6 @@
 /obj/structure/shuttle/engine/large,
 /turf/open/floor/engine/airless,
 /area/awaymission/badmiral)
-"ms" = (
-/obj/machinery/power/rtg/abductor,
-/obj/structure/cable/white{
-	icon_state = "0-2"
-	},
-/obj/structure/cable/white{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/white{
-	icon_state = "1-4"
-	},
-/turf/open/floor/engine,
-/area/awaymission/badmiral/engineering)
 "mv" = (
 /obj/structure/table,
 /obj/item/clothing/mask/surgical,
@@ -1540,9 +1455,7 @@
 /turf/closed/wall/r_wall/ship,
 /area/awaymission/badmiral/lounge)
 "mx" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 1
@@ -1550,9 +1463,7 @@
 /turf/open/floor/carpet/ship/blue,
 /area/awaymission/badmiral/bridge)
 "my" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /turf/open/floor/plasteel/tech/grid,
@@ -1582,15 +1493,11 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 5
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/munitions)
 "mD" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -1715,9 +1622,7 @@
 /turf/open/floor/carpet/ship/red_carpet,
 /area/awaymission/badmiral/lounge)
 "np" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
 /turf/open/floor/carpet/ship,
@@ -1726,9 +1631,7 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/awaymission/badmiral/dorms)
 "nA" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/door/airlock/ship/external/glass,
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
@@ -1749,9 +1652,7 @@
 	req_one_access_txt = "101";
 	security_level = 6
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -1853,9 +1754,7 @@
 /area/awaymission/badmiral)
 "ok" = (
 /obj/machinery/power/apc/auto_name/north,
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -1926,9 +1825,7 @@
 "oY" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile,
 /area/awaymission/badmiral/central)
 "pc" = (
@@ -1938,9 +1835,7 @@
 /turf/open/floor/fakespace,
 /area/awaymission/badmiral/lounge)
 "pj" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -1981,9 +1876,7 @@
 /turf/open/floor/carpet/ship,
 /area/awaymission/badmiral/central)
 "pJ" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 1
@@ -1994,9 +1887,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/engine,
 /area/awaymission/badmiral/munitions)
 "pU" = (
@@ -2039,9 +1930,7 @@
 "qp" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/munitions)
 "qy" = (
@@ -2090,14 +1979,9 @@
 /turf/open/floor/carpet/ship,
 /area/awaymission/badmiral/bridge)
 "qU" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/munitions)
 "qX" = (
@@ -2141,15 +2025,6 @@
 	},
 /turf/open/floor/carpet/ship/blue,
 /area/awaymission/badmiral/bridge)
-"rj" = (
-/obj/structure/cable/white{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/tech/grid,
-/area/awaymission/badmiral/engineering)
 "rl" = (
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/east,
@@ -2195,9 +2070,7 @@
 /area/awaymission/badmiral)
 "rE" = (
 /obj/structure/table/reinforced,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -2234,9 +2107,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/carpet/ship,
 /area/awaymission/badmiral/central)
 "sf" = (
@@ -2325,12 +2196,6 @@
 	id = "hottub"
 	},
 /area/awaymission/badmiral/central)
-"sJ" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/awaymission/badmiral/cryo)
 "sL" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
@@ -2340,21 +2205,8 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/durasteel/padded,
 /area/awaymission/badmiral/munitions)
-"sS" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/turf/open/floor/plasteel/tech/grid,
-/area/awaymission/badmiral/munitions)
 "sU" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating/airless,
 /area/awaymission/badmiral/cryo)
 "td" = (
@@ -2393,25 +2245,6 @@
 /obj/item/clothing/mask/gas,
 /turf/open/floor/engine,
 /area/awaymission/badmiral/bridge)
-"tv" = (
-/obj/machinery/power/smes/engineering,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 4
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
-/turf/open/floor/plasteel/tech/grid,
-/area/awaymission/badmiral/engineering)
 "tx" = (
 /obj/structure/closet/secure_closet/ertSec,
 /obj/structure/window/reinforced,
@@ -2498,14 +2331,6 @@
 /obj/machinery/computer/libraryconsole,
 /turf/open/floor/wood,
 /area/awaymission/badmiral/central)
-"tQ" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/turf/open/floor/plasteel/tech/grid,
-/area/awaymission/badmiral/bridge)
 "tS" = (
 /obj/machinery/computer/ship/navigation/public{
 	name = "starmap console"
@@ -2707,9 +2532,7 @@
 /turf/open/floor/carpet,
 /area/awaymission/badmiral/dorms)
 "vB" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile,
 /area/awaymission/badmiral/central)
 "vC" = (
@@ -2739,12 +2562,7 @@
 /turf/open/floor/light/colour_cycle/dancefloor_b,
 /area/awaymission/badmiral/lounge)
 "vJ" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/power/apc/auto_name/west,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
@@ -2772,13 +2590,8 @@
 /turf/open/floor/carpet,
 /area/awaymission/badmiral/dorms)
 "vY" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/pink,
 /obj/machinery/power/rtg/abductor,
-/obj/structure/cable/white{
-	icon_state = "0-8"
-	},
 /turf/open/floor/engine,
 /area/awaymission/badmiral/engineering)
 "vZ" = (
@@ -2788,9 +2601,7 @@
 	req_one_access_txt = "101";
 	security_level = 6
 	},
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/pink,
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/engineering)
 "wc" = (
@@ -2820,19 +2631,6 @@
 	},
 /turf/open/floor/carpet/black,
 /area/awaymission/badmiral/lounge)
-"wp" = (
-/obj/machinery/power/rtg/abductor,
-/obj/structure/cable/white{
-	icon_state = "0-4"
-	},
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/white{
-	icon_state = "1-8"
-	},
-/turf/open/floor/engine,
-/area/awaymission/badmiral/engineering)
 "wq" = (
 /obj/structure/grille,
 /turf/open/floor/plating,
@@ -2845,9 +2643,7 @@
 /turf/open/floor/engine,
 /area/awaymission/badmiral/munitions)
 "wy" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -2907,12 +2703,7 @@
 /turf/open/floor/carpet,
 /area/awaymission/badmiral/dorms)
 "xd" = (
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -2926,9 +2717,6 @@
 	input_level_max = 1.5e+7;
 	name = "microuniverse power storage unit";
 	output_level_max = 1.5e+7
-	},
-/obj/structure/cable{
-	icon_state = "0-2"
 	},
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/engineering)
@@ -2966,9 +2754,7 @@
 /area/awaymission/badmiral/dorms)
 "xs" = (
 /obj/machinery/computer/ship/viewscreen,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -2979,9 +2765,7 @@
 /turf/open/floor/carpet/ship/blue,
 /area/awaymission/badmiral/bridge)
 "xy" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/pink,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/munitions)
@@ -2997,19 +2781,11 @@
 	},
 /turf/open/floor/engine,
 /area/awaymission/badmiral/munitions)
-"xF" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/tech/grid,
-/area/awaymission/badmiral/engineering)
 "xK" = (
 /obj/machinery/computer/monitor{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/munitions)
 "xN" = (
@@ -3079,9 +2855,7 @@
 	dir = 1
 	},
 /obj/item/pipe_dispenser,
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/pink,
 /turf/open/floor/engine,
 /area/awaymission/badmiral/engineering)
 "yI" = (
@@ -3133,9 +2907,7 @@
 /obj/machinery/airalarm/all_access{
 	pixel_y = 24
 	},
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/pink,
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/engineering)
 "zu" = (
@@ -3164,9 +2936,7 @@
 /area/awaymission/badmiral/lounge)
 "zF" = (
 /obj/item/pipe_dispenser,
-/obj/structure/cable/white{
-	icon_state = "1-4"
-	},
+/obj/structure/cable/pink,
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/engineering)
 "zI" = (
@@ -3200,9 +2970,7 @@
 /turf/open/floor/wood,
 /area/awaymission/badmiral/munitions)
 "zU" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -3397,9 +3165,7 @@
 /turf/open/floor/plating/airless,
 /area/awaymission/badmiral)
 "Bn" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -3575,22 +3341,6 @@
 /obj/machinery/vending/cola/random,
 /turf/open/floor/carpet/ship/blue,
 /area/awaymission/badmiral/bridge)
-"De" = (
-/obj/item/trash/can{
-	desc = "A beacon used by a teleporter. This one is flashing a blue light";
-	hitsound = null;
-	icon = 'icons/obj/device.dmi';
-	icon_state = "beacon";
-	name = "tracking beacon"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/tech/grid,
-/area/awaymission/badmiral/munitions)
 "Dk" = (
 /obj/structure/closet/emcloset,
 /obj/item/storage/toolbox/emergency,
@@ -3736,9 +3486,7 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/awaymission/badmiral/dorms)
 "EE" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/pink,
 /turf/closed/wall/r_wall/ship,
 /area/awaymission/badmiral/munitions)
 "EL" = (
@@ -3747,9 +3495,7 @@
 /area/awaymission/badmiral/central)
 "EQ" = (
 /obj/item/ship_weapon/ammunition/torpedo/hellfire,
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/pink,
 /obj/machinery/airalarm/directional/west,
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/munitions)
@@ -3789,9 +3535,7 @@
 /turf/open/floor/carpet/ship,
 /area/awaymission/badmiral/central)
 "Fh" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 1
 	},
@@ -3804,21 +3548,12 @@
 /obj/item/pen,
 /turf/open/floor/wood,
 /area/awaymission/badmiral/central)
-"Fk" = (
-/obj/machinery/power/terminal,
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/tech/grid,
-/area/awaymission/badmiral/engineering)
 "Fu" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/carpet/ship/blue,
 /area/awaymission/badmiral/bridge)
 "FA" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -3850,9 +3585,7 @@
 "FP" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/carpet/ship,
 /area/awaymission/badmiral/central)
 "FS" = (
@@ -3870,9 +3603,7 @@
 /turf/open/floor/carpet,
 /area/awaymission/badmiral/dorms)
 "FX" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/munitions)
 "FY" = (
@@ -3894,9 +3625,7 @@
 	req_one_access_txt = "101";
 	security_level = 6
 	},
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/pink,
 /turf/open/floor/engine,
 /area/awaymission/badmiral/engineering)
 "Gh" = (
@@ -3910,15 +3639,11 @@
 /turf/open/floor/carpet,
 /area/awaymission/badmiral/dorms)
 "Gk" = (
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/pink,
 /turf/open/floor/engine,
 /area/awaymission/badmiral/engineering)
 "Gl" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/pink,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /turf/open/floor/plasteel/tech/grid,
@@ -4007,9 +3732,7 @@
 	req_one_access_txt = "109";
 	security_level = 6
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -4038,9 +3761,7 @@
 /turf/open/floor/carpet,
 /area/awaymission/badmiral/dorms)
 "GY" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -4065,12 +3786,7 @@
 /area/awaymission/badmiral/munitions)
 "Hd" = (
 /obj/machinery/power/terminal,
-/obj/structure/cable/white{
-	icon_state = "0-8"
-	},
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/pink,
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/engineering)
 "Hh" = (
@@ -4081,9 +3797,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/munitions)
 "Hj" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -4180,9 +3894,7 @@
 /turf/open/floor/plating,
 /area/awaymission/badmiral/central)
 "HW" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -4201,9 +3913,7 @@
 	req_one_access_txt = "101";
 	security_level = 6
 	},
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/pink,
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/munitions)
 "Ie" = (
@@ -4298,16 +4008,6 @@
 /obj/structure/table/reinforced,
 /turf/open/floor/carpet/ship,
 /area/awaymission/badmiral/central)
-"IO" = (
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
-/obj/machinery/power/rtg/abductor,
-/obj/structure/cable/white{
-	icon_state = "2-8"
-	},
-/turf/open/floor/engine,
-/area/awaymission/badmiral/engineering)
 "IR" = (
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
@@ -4358,9 +4058,7 @@
 /area/awaymission/badmiral/lounge)
 "Jy" = (
 /obj/machinery/power/apc/auto_name/west,
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile,
 /area/awaymission/badmiral/central)
 "Jz" = (
@@ -4457,9 +4155,7 @@
 /turf/open/floor/carpet/ship,
 /area/awaymission/badmiral/central)
 "Kb" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 1
@@ -4488,18 +4184,6 @@
 	},
 /turf/open/floor/engine,
 /area/awaymission/badmiral/munitions)
-"Kg" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 4
-	},
-/turf/open/floor/plasteel/tech/grid,
-/area/awaymission/badmiral/bridge)
 "Kh" = (
 /obj/structure/chair/office{
 	dir = 4
@@ -4549,21 +4233,6 @@
 /obj/item/storage/lockbox/loyalty,
 /turf/open/floor/durasteel/padded,
 /area/awaymission/badmiral/munitions)
-"Kz" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 4
-	},
-/turf/open/floor/carpet/ship,
-/area/awaymission/badmiral/central)
 "KG" = (
 /turf/open/floor/durasteel/padded,
 /area/awaymission/badmiral/cryo)
@@ -4575,9 +4244,7 @@
 /turf/open/floor/engine/airless,
 /area/awaymission/badmiral)
 "KR" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -4587,16 +4254,6 @@
 /obj/machinery/firealarm/directional/west,
 /turf/open/floor/carpet/ship,
 /area/awaymission/badmiral/central)
-"KS" = (
-/obj/machinery/power/rtg/abductor,
-/obj/structure/cable/white{
-	icon_state = "0-4"
-	},
-/obj/structure/cable/white{
-	icon_state = "2-4"
-	},
-/turf/open/floor/engine,
-/area/awaymission/badmiral/engineering)
 "KT" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 8
@@ -4604,9 +4261,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/munitions)
 "KW" = (
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/power/apc/auto_name/east,
 /turf/open/floor/engine,
 /area/awaymission/badmiral/munitions)
@@ -4637,14 +4292,6 @@
 	},
 /turf/open/floor/plating,
 /area/awaymission/badmiral/dorms)
-"Lb" = (
-/obj/machinery/power/rtg/abductor,
-/obj/structure/cable/white,
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
-/turf/open/floor/engine,
-/area/awaymission/badmiral/engineering)
 "Ld" = (
 /turf/closed/wall/r_wall/ship,
 /area/awaymission/badmiral/cryo)
@@ -4722,12 +4369,8 @@
 /turf/open/floor/engine,
 /area/awaymission/badmiral/bridge)
 "Lt" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
+/obj/structure/cable/pink,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /turf/open/floor/plasteel/tech/grid,
@@ -4757,9 +4400,7 @@
 	req_one_access_txt = "101";
 	security_level = 6
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -4814,9 +4455,7 @@
 /turf/open/floor/durasteel/padded,
 /area/awaymission/badmiral/munitions)
 "LU" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -4854,9 +4493,7 @@
 /turf/open/floor/carpet/ship/blue,
 /area/awaymission/badmiral/central)
 "Mp" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -4894,9 +4531,7 @@
 	icon_state = "beacon";
 	name = "tracking beacon"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/munitions)
 "MH" = (
@@ -4919,12 +4554,7 @@
 /turf/open/floor/carpet,
 /area/awaymission/badmiral/dorms)
 "ML" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -5050,9 +4680,7 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/awaymission/badmiral/dorms)
 "Nx" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 1
 	},
@@ -5086,9 +4714,7 @@
 /turf/closed/wall/r_wall/ship,
 /area/awaymission/badmiral/bridge)
 "NL" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 8
@@ -5176,7 +4802,7 @@
 /area/awaymission/badmiral/bridge)
 "On" = (
 /obj/machinery/power/rtg/abductor,
-/obj/structure/cable/white,
+/obj/structure/cable/pink,
 /turf/open/floor/engine,
 /area/awaymission/badmiral/engineering)
 "Ou" = (
@@ -5206,9 +4832,7 @@
 /turf/open/floor/durasteel/padded,
 /area/awaymission/badmiral/munitions)
 "OG" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -5307,9 +4931,7 @@
 /turf/open/floor/wood,
 /area/awaymission/badmiral/munitions)
 "PE" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 8
 	},
@@ -5358,9 +4980,7 @@
 /turf/open/floor/durasteel/padded,
 /area/awaymission/badmiral/munitions)
 "Qe" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/pink,
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/munitions)
 "Qf" = (
@@ -5521,9 +5141,7 @@
 	req_one_access_txt = "101";
 	security_level = 6
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/awaymission/badmiral/munitions)
 "Ro" = (
@@ -5543,9 +5161,7 @@
 /area/awaymission/badmiral/central)
 "Rr" = (
 /obj/machinery/shield_generator,
-/obj/structure/cable/white{
-	icon_state = "0-2"
-	},
+/obj/structure/cable/pink,
 /turf/open/floor/engine,
 /area/awaymission/badmiral/engineering)
 "Rv" = (
@@ -5673,12 +5289,7 @@
 "RT" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/computer/monitor,
-/obj/structure/cable/white{
-	icon_state = "0-2"
-	},
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/pink,
 /turf/open/floor/engine,
 /area/awaymission/badmiral/engineering)
 "RU" = (
@@ -5686,9 +5297,7 @@
 /turf/open/floor/plating,
 /area/awaymission/badmiral/munitions)
 "RX" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/awaymission/badmiral/cryo)
 "RZ" = (
@@ -5795,21 +5404,6 @@
 /obj/machinery/vending/tool,
 /turf/open/floor/durasteel/padded,
 /area/awaymission/badmiral/munitions)
-"Tc" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/turf/open/floor/carpet/ship,
-/area/awaymission/badmiral/central)
 "Td" = (
 /obj/item/clothing/mask/surgical,
 /obj/structure/closet/l3closet,
@@ -5833,9 +5427,7 @@
 /turf/open/floor/carpet/black,
 /area/awaymission/badmiral/lounge)
 "To" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
@@ -5877,13 +5469,8 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/engineering)
 "TK" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/pink,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
-/obj/structure/cable/white{
-	icon_state = "1-4"
-	},
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/engineering)
 "TR" = (
@@ -5944,13 +5531,6 @@
 /obj/machinery/bookbinder,
 /turf/open/floor/wood,
 /area/awaymission/badmiral/central)
-"Ur" = (
-/obj/machinery/power/terminal,
-/obj/structure/cable/white{
-	icon_state = "0-8"
-	},
-/turf/open/floor/plasteel/tech/grid,
-/area/awaymission/badmiral/engineering)
 "Us" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 4
@@ -5962,9 +5542,7 @@
 /turf/open/floor/plating,
 /area/awaymission/badmiral/central)
 "UC" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -6002,9 +5580,7 @@
 /turf/open/floor/engine,
 /area/awaymission/badmiral/bridge)
 "UV" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/engine/airless,
 /area/awaymission/badmiral)
 "UX" = (
@@ -6021,9 +5597,7 @@
 	dir = 8;
 	icon_state = "shuttle_chair"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -6053,9 +5627,7 @@
 "Vo" = (
 /obj/machinery/door/airlock/ship/external/glass,
 /obj/structure/fans/tiny,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating/airless,
 /area/awaymission/badmiral/cryo)
 "Vt" = (
@@ -6093,9 +5665,7 @@
 /turf/open/floor/wood,
 /area/awaymission/badmiral/lounge)
 "VE" = (
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/pink,
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/plasmaglass/fifty,
 /obj/item/stack/sheet/mineral/plasma{
@@ -6142,12 +5712,6 @@
 /obj/structure/closet/l3closet,
 /obj/item/clothing/gloves/color/latex,
 /turf/open/floor/plating,
-/area/awaymission/badmiral/munitions)
-"VO" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/munitions)
 "VP" = (
 /obj/machinery/door/firedoor/border_only/directional/west,
@@ -6240,15 +5804,7 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/awaymission/badmiral/lounge)
 "WR" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
@@ -6257,9 +5813,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/munitions)
 "WS" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 1
 	},
@@ -6285,9 +5839,7 @@
 /area/awaymission/badmiral/lounge)
 "Xa" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile,
 /area/awaymission/badmiral/central)
 "Xb" = (
@@ -6300,9 +5852,7 @@
 /turf/open/floor/carpet,
 /area/awaymission/badmiral/dorms)
 "Xh" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 1
 	},
@@ -6333,9 +5883,7 @@
 /turf/open/floor/carpet,
 /area/awaymission/badmiral/lounge)
 "Xu" = (
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/pink,
 /turf/open/floor/plasteel/tech/grid,
 /area/awaymission/badmiral/engineering)
 "Xw" = (
@@ -21115,8 +20663,8 @@ Zr
 Zr
 Zr
 tM
-KS
-Lb
+On
+On
 On
 tM
 VQ
@@ -21627,9 +21175,9 @@ wq
 wq
 wq
 Nk
-dB
-ms
-wp
+On
+On
+On
 tM
 cb
 tM
@@ -21886,7 +21434,7 @@ Nk
 Nk
 ha
 ka
-IO
+vY
 Ge
 Gk
 Ge
@@ -22404,7 +21952,7 @@ iS
 mk
 iS
 QE
-rj
+Xu
 VE
 Xu
 yD
@@ -22918,7 +22466,7 @@ iS
 iS
 iS
 QE
-xF
+Xu
 ko
 TI
 Cd
@@ -23175,7 +22723,7 @@ iS
 iS
 YE
 QE
-xF
+Xu
 UC
 uE
 eg
@@ -23934,26 +23482,26 @@ lu
 jm
 Nk
 Tw
-VO
 FX
-De
+FX
+MF
 ju
-sS
-le
+qU
+qU
 av
-le
-le
-le
-le
-le
+qU
+qU
+qU
+qU
+qU
 Lt
 WR
-le
-le
-le
-le
-le
-le
+qU
+qU
+qU
+qU
+qU
+qU
 av
 qU
 qp
@@ -24220,7 +23768,7 @@ rx
 rx
 Wq
 Nk
-sJ
+RX
 BG
 Ld
 Im
@@ -24477,7 +24025,7 @@ PP
 PP
 PP
 Nk
-sJ
+RX
 HO
 Ld
 Im
@@ -24734,7 +24282,7 @@ kX
 Qq
 Qq
 Nk
-sJ
+RX
 HO
 Ld
 Im
@@ -25248,7 +24796,7 @@ wW
 xN
 xN
 Ld
-sJ
+RX
 HO
 Ld
 Im
@@ -25505,7 +25053,7 @@ KG
 KG
 KG
 Ld
-sJ
+RX
 ts
 Ld
 Im
@@ -25762,7 +25310,7 @@ KG
 KG
 KG
 lb
-sJ
+RX
 ST
 Ld
 Im
@@ -26019,7 +25567,7 @@ KG
 KG
 KG
 Ld
-sJ
+RX
 IA
 Ld
 Im
@@ -26533,7 +26081,7 @@ Ld
 Ld
 Ld
 Ld
-sJ
+RX
 HO
 Ld
 Tm
@@ -26773,7 +26321,7 @@ RB
 tM
 Mi
 QE
-xF
+Xu
 vJ
 TI
 Cd
@@ -26790,7 +26338,7 @@ HO
 HO
 ej
 HO
-sJ
+RX
 HO
 Ld
 Tm
@@ -27030,7 +26578,7 @@ Gx
 tM
 Hs
 QE
-xF
+Xu
 Mp
 TI
 Cd
@@ -27047,7 +26595,7 @@ cP
 cP
 cP
 Ld
-sJ
+RX
 Sh
 Ld
 Im
@@ -27304,7 +26852,7 @@ Vz
 Vz
 Vz
 Ld
-sJ
+RX
 HO
 Ld
 Im
@@ -27544,7 +27092,7 @@ ei
 tM
 sC
 QE
-Fk
+Hd
 xd
 TI
 Cd
@@ -27561,7 +27109,7 @@ Vz
 Vz
 Vz
 Ld
-sJ
+RX
 HO
 Ld
 Im
@@ -27801,8 +27349,8 @@ mL
 tM
 oA
 QE
-Ur
-tv
+Hd
+fe
 TI
 Cd
 nO
@@ -28075,7 +27623,7 @@ Vz
 Vz
 Vz
 Ld
-sJ
+RX
 BG
 Ld
 Im
@@ -28332,7 +27880,7 @@ Vz
 Vz
 Vz
 Ld
-sJ
+RX
 HO
 Ld
 Bf
@@ -31914,7 +31462,7 @@ nt
 yv
 yo
 mn
-Tc
+Nx
 FP
 se
 oY
@@ -34484,7 +34032,7 @@ eU
 ro
 cP
 Fa
-Kz
+mD
 gA
 mn
 hD
@@ -41423,7 +40971,7 @@ ln
 Vt
 RM
 rI
-Kg
+ML
 SO
 uV
 Vt
@@ -41676,7 +41224,7 @@ qm
 jV
 jV
 jV
-tQ
+my
 NL
 my
 my

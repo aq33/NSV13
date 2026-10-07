@@ -218,6 +218,8 @@
 
 #define ACTIVE_SETUPFIELDS 1
 #define ACTIVE_HASFIELDS 2
+WANTS_POWER_NODE(/obj/machinery/shieldwallgen) // AQ EDIT - Smartwires
+
 /obj/machinery/shieldwallgen
 	name = "shield wall generator"
 	desc = "A shield generator."

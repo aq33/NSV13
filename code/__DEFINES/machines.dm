@@ -177,3 +177,16 @@ GLOBAL_LIST_INIT(approved_status_pictures, list(
 	"redalert",
 	"shuttle",
 ))
+
+// AQ EDIT START - Smartwires (port BeeStation/BeeStation-Hornet#14275)
+/// Makes the given type force a power node on the cable it is mapped on top of, so it connects to the powernet even if the cable passes through its tile.
+#define WANTS_POWER_NODE(typepath) ##typepath/Initialize(mapload, ...) {\
+	. = ..();\
+	if (mapload) {\
+		for (var/obj/structure/cable/cable in loc) {\
+			cable.add_power_node();\
+			return;\
+		}\
+	}\
+}
+// AQ EDIT END

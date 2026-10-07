@@ -124,8 +124,12 @@
 /area/template_noop)
 "w" = (
 /obj/structure/table,
-/obj/item/stack/cable_coil/random/five,
-/obj/item/stack/cable_coil/random/five,
+/obj/item/stack/cable_coil{
+	amount = 5
+	},
+/obj/item/stack/cable_coil{
+	amount = 5
+	},
 /turf/open/floor/plating,
 /area/template_noop)
 "x" = (

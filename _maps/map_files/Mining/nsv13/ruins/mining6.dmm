@@ -84,7 +84,7 @@
 /turf/open/floor/plating/asteroid/airless,
 /area/template_noop)
 "u" = (
-/obj/item/stack/cable_coil/yellow{
+/obj/item/stack/cable_coil{
 	amount = 1
 	},
 /turf/open/floor/plating/airless{

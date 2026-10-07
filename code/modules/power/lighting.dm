@@ -155,7 +155,7 @@
 			if(W.tool_behaviour == TOOL_WIRECUTTER)
 				stage = 1
 				icon_state = "[fixture_type]-construct-stage1"
-				new /obj/item/stack/cable_coil(drop_location(), 1, "red")
+				new /obj/item/stack/cable_coil(drop_location(), 1)
 				user.visible_message("[user.name] removes the wiring from [src].", \
 					"<span class='notice'>You remove the wiring from [src].</span>", "<span class='italics'>You hear clicking.</span>")
 				W.play_tool_sound(src, 100)
@@ -579,7 +579,7 @@
 				break_light_tube()
 			if(status != LIGHT_EMPTY)
 				drop_light_tube()
-			new /obj/item/stack/cable_coil(loc, 1, "red")
+			new /obj/item/stack/cable_coil(loc, 1)
 		transfer_fingerprints_to(newlight)
 		if(!QDELETED(cell))
 			newlight.store_cell(cell)

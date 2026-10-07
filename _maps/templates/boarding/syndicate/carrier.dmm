@@ -1,19 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ar" = (
-/obj/structure/cable{
-	icon_state = "2-9"
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/nsv13/boarding_interior)
 "aA" = (
 /obj/structure/table/reinforced,
 /obj/item/lighter{
 	pixel_x = 11
 	},
 /obj/item/reagent_containers/glass/bottle/morphine,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "aD" = (
@@ -127,15 +119,6 @@
 /obj/structure/tank_dispenser/oxygen,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/powered/nsv13/boarding_interior)
-"cS" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/nsv13/boarding_interior)
 "cX" = (
 /obj/item/melee/arm_blade/false{
 	icon = 'icons/obj/items_and_weapons.dmi';
@@ -224,9 +207,7 @@
 /area/ruin/powered/nsv13/boarding_interior)
 "dS" = (
 /mob/living/simple_animal/hostile/syndicate/melee/sword/space,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "dT" = (
@@ -277,16 +258,12 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/powered/nsv13/boarding_interior)
 "eF" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/item/ammo_casing/spent,
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "eV" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
@@ -296,48 +273,24 @@
 /turf/open/floor/engine/airless,
 /area/ruin/powered/nsv13/boarding_interior)
 "fh" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/structure/mecha_wreckage/marauder,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
 /area/ruin/powered/nsv13/boarding_interior)
 "ft" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/item/ammo_casing/spent,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
 /area/ruin/powered/nsv13/boarding_interior)
 "fw" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
-/area/ruin/powered/nsv13/boarding_interior)
-"fA" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
-/area/ruin/powered/nsv13/boarding_interior)
-"fB" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/item/ammo_casing/spent,
-/turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "fG" = (
 /obj/machinery/light{
@@ -347,9 +300,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/powered/nsv13/boarding_interior)
 "fL" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/light/small,
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
@@ -359,9 +310,7 @@
 /turf/open/floor/monotile/dark/airless,
 /area/ruin/powered/nsv13/boarding_interior)
 "fT" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
@@ -389,9 +338,7 @@
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "gy" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/door/airlock/ship/maintenance{
@@ -678,20 +625,12 @@
 /turf/open/floor/engine,
 /area/ruin/powered/nsv13/boarding_interior)
 "ky" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/item/organ/appendix,
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "kO" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/plating,
-/area/ruin/powered/nsv13/boarding_interior)
-"kU" = (
-/obj/structure/cable{
-	icon_state = "2-5"
-	},
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "lg" = (
@@ -726,9 +665,7 @@
 /turf/open/floor/monotile/dark/airless,
 /area/ruin/powered/nsv13/boarding_interior)
 "mf" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /turf/open/floor/monotile/dark,
 /area/ruin/powered/nsv13/boarding_interior)
@@ -764,26 +701,10 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/powered/nsv13/boarding_interior)
 "mI" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/light/small{
 	dir = 4;
 	icon_state = "bulb"
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/nsv13/boarding_interior)
-"mN" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/door/firedoor/border_only/directional/north,
-/obj/machinery/door/firedoor/border_only/directional/south,
-/obj/machinery/door/airlock/ship/maintenance{
-	req_access_txt = "150"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
 	},
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
@@ -859,9 +780,7 @@
 /turf/open/indestructible/sound/pool/spentfuel,
 /area/ruin/powered/nsv13/boarding_interior)
 "og" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/machinery/computer/monitor{
 	dir = 4
 	},
@@ -873,38 +792,15 @@
 /obj/item/card/id/syndi_crew/technician,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/powered/nsv13/boarding_interior)
-"ok" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/monotile/dark,
-/area/ruin/powered/nsv13/boarding_interior)
 "op" = (
 /obj/machinery/airalarm/directional/east,
 /obj/item/kirbyplants/random,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/powered/nsv13/boarding_interior)
 "oq" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/machinery/light{
 	dir = 1
-	},
-/turf/open/floor/monotile/dark,
-/area/ruin/powered/nsv13/boarding_interior)
-"oz" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
 	},
 /turf/open/floor/monotile/dark,
 /area/ruin/powered/nsv13/boarding_interior)
@@ -943,9 +839,7 @@
 /turf/open/floor/monotile/dark,
 /area/ruin/powered/nsv13/boarding_interior)
 "pa" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/airlock/ship/maintenance{
@@ -1027,9 +921,7 @@
 /turf/open/floor/engine/airless,
 /area/ruin/powered/nsv13/boarding_interior)
 "qq" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/light/small{
 	brightness = 3;
 	dir = 1
@@ -1083,15 +975,6 @@
 /obj/structure/overmap/small_craft/combat/light/syndicate,
 /turf/open/floor/engine/airless,
 /area/ruin/powered/nsv13/boarding_interior)
-"rA" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/monotile/dark,
-/area/ruin/powered/nsv13/boarding_interior)
 "rK" = (
 /obj/structure/fighter_launcher{
 	dir = 1;
@@ -1110,13 +993,6 @@
 /obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/powered/nsv13/boarding_interior)
-"sV" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/ruin/powered/nsv13/boarding_interior)
 "sX" = (
 /obj/item/organ/appendix,
 /turf/open/floor/plating,
@@ -1131,32 +1007,20 @@
 /obj/machinery/computer/monitor{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/tech/grid,
 /area/ruin/powered/nsv13/boarding_interior)
 "tr" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/power/terminal{
 	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
 	},
 /turf/open/floor/monotile/dark,
 /area/ruin/powered/nsv13/boarding_interior)
 "ts" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/power/terminal{
 	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
 	},
 /obj/machinery/light,
 /turf/open/floor/monotile/dark,
@@ -1187,12 +1051,6 @@
 "tP" = (
 /obj/machinery/airalarm/directional/west,
 /turf/open/floor/mineral/plastitanium/red,
-/area/ruin/powered/nsv13/boarding_interior)
-"tS" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/turf/open/floor/monotile/dark,
 /area/ruin/powered/nsv13/boarding_interior)
 "tZ" = (
 /obj/machinery/door/airlock/ship/external{
@@ -1226,9 +1084,7 @@
 /obj/machinery/door/airlock/ship/maintenance{
 	req_access_txt = "150"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "uE" = (
@@ -1258,18 +1114,7 @@
 	req_access_txt = "150"
 	},
 /obj/machinery/door/firedoor/border_only/directional/west,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/nsv13/boarding_interior)
-"vo" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "vs" = (
@@ -1337,18 +1182,6 @@
 /obj/item/ammo_box/magazine/nsv/pdc,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/powered/nsv13/boarding_interior)
-"wf" = (
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/nsv13/boarding_interior)
-"wj" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/nsv13/boarding_interior)
 "wo" = (
 /obj/structure/frame/computer{
 	dir = 1
@@ -1413,9 +1246,7 @@
 	dir = 1;
 	req_one_access_txt = "150"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /turf/open/floor/monotile/dark,
@@ -1444,9 +1275,7 @@
 	dir = 1;
 	req_one_access_txt = "150"
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /turf/open/floor/monotile/dark,
@@ -1505,9 +1334,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "yJ" = (
@@ -1621,16 +1448,8 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
-"zI" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/turf/open/floor/monotile/dark,
-/area/ruin/powered/nsv13/boarding_interior)
 "zL" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/firealarm/directional/north,
 /turf/open/floor/monotile/dark,
 /area/ruin/powered/nsv13/boarding_interior)
@@ -1667,18 +1486,6 @@
 /area/ruin/powered/nsv13/boarding_interior)
 "AB" = (
 /turf/closed/wall/r_wall,
-/area/ruin/powered/nsv13/boarding_interior)
-"AG" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/open/floor/monotile/dark,
-/area/ruin/powered/nsv13/boarding_interior)
-"AH" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/monotile/dark,
 /area/ruin/powered/nsv13/boarding_interior)
 "AN" = (
 /obj/structure/guncase{
@@ -1718,9 +1525,7 @@
 /obj/machinery/door/airlock/ship/maintenance{
 	req_access_txt = "150"
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "Bf" = (
@@ -1760,9 +1565,7 @@
 /turf/open/floor/plasteel/techmaint,
 /area/ruin/powered/nsv13/boarding_interior)
 "BB" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/airlock/ship/maintenance{
 	req_access_txt = "150"
@@ -1905,15 +1708,6 @@
 	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ruin/powered/nsv13/boarding_interior)
-"Da" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/monotile/dark,
-/area/ruin/powered/nsv13/boarding_interior)
 "De" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 4
@@ -1963,15 +1757,11 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/powered/nsv13/boarding_interior)
 "Eb" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/dark,
 /area/ruin/powered/nsv13/boarding_interior)
 "Ec" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/firealarm/directional/north,
 /turf/open/floor/monotile/dark,
 /area/ruin/powered/nsv13/boarding_interior)
@@ -1985,15 +1775,11 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "2-5"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "Em" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
 /turf/open/floor/monotile/dark,
 /area/ruin/powered/nsv13/boarding_interior)
@@ -2084,9 +1870,7 @@
 /turf/open/floor/engine/airless,
 /area/space/nearstation)
 "FX" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/light{
 	brightness = 5;
 	dir = 4
@@ -2094,9 +1878,7 @@
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "Ga" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /turf/open/floor/plasteel/ridged/steel,
 /area/ruin/powered/nsv13/boarding_interior)
@@ -2115,12 +1897,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
 /turf/open/floor/plasteel/ridged/steel,
 /area/ruin/powered/nsv13/boarding_interior)
-"Gv" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/monotile/dark,
-/area/ruin/powered/nsv13/boarding_interior)
 "GT" = (
 /mob/living/simple_animal/hostile/lizard{
 	desc = "A tiny little spider";
@@ -2130,9 +1906,7 @@
 	icon_state = "spiderling";
 	name = "spiderling"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "GZ" = (
@@ -2253,9 +2027,7 @@
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "II" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -2269,15 +2041,6 @@
 	dir = 4
 	},
 /turf/open/floor/monotile/dark,
-/area/ruin/powered/nsv13/boarding_interior)
-"IU" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/turf/open/floor/plasteel/ridged/steel,
 /area/ruin/powered/nsv13/boarding_interior)
 "IZ" = (
 /obj/machinery/door/firedoor/border_only/directional/east,
@@ -2294,15 +2057,11 @@
 /obj/machinery/armour_plating_nanorepair_well{
 	apnw_id = "carrier"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/ridged/steel,
 /area/ruin/powered/nsv13/boarding_interior)
 "Ji" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/monotile/dark,
 /area/ruin/powered/nsv13/boarding_interior)
@@ -2403,9 +2162,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/powered/nsv13/boarding_interior)
 "KU" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/ridged/steel,
 /area/ruin/powered/nsv13/boarding_interior)
 "KX" = (
@@ -2540,9 +2297,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/ruin/powered/nsv13/boarding_interior)
 "Mi" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/tech/grid,
 /area/ruin/powered/nsv13/boarding_interior)
 "Mj" = (
@@ -2553,15 +2308,6 @@
 	apnw_id = "carrier"
 	},
 /turf/open/floor/plasteel/tech/grid,
-/area/ruin/powered/nsv13/boarding_interior)
-"Mn" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/open/floor/monotile/dark,
 /area/ruin/powered/nsv13/boarding_interior)
 "Ms" = (
 /obj/structure/table/reinforced{
@@ -2576,9 +2322,7 @@
 /turf/open/floor/mineral/plastitanium/red/airless,
 /area/ruin/powered/nsv13/boarding_interior)
 "MO" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/airlock/ship/hatch{
@@ -2595,12 +2339,6 @@
 	},
 /obj/machinery/door/firedoor/border_only/directional/west,
 /turf/open/floor/monotile/dark,
-/area/ruin/powered/nsv13/boarding_interior)
-"MZ" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "Nc" = (
 /obj/machinery/door/poddoor/ship{
@@ -2627,17 +2365,9 @@
 /turf/open/floor/monotile/dark,
 /area/ruin/powered/nsv13/boarding_interior)
 "Ok" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/airalarm/directional/south,
 /turf/open/floor/monotile/dark,
-/area/ruin/powered/nsv13/boarding_interior)
-"Op" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "ON" = (
 /turf/open/floor/plasteel/techmaint,
@@ -2656,15 +2386,6 @@
 	dir = 4
 	},
 /turf/open/floor/mineral/plastitanium/red,
-/area/ruin/powered/nsv13/boarding_interior)
-"Pg" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/monotile/dark,
 /area/ruin/powered/nsv13/boarding_interior)
 "Pk" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
@@ -2783,36 +2504,12 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
-"Ra" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/turf/open/floor/monotile/dark,
-/area/ruin/powered/nsv13/boarding_interior)
 "Rc" = (
 /obj/machinery/vending/games,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/powered/nsv13/boarding_interior)
-"Rh" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
-/turf/open/floor/monotile/dark,
-/area/ruin/powered/nsv13/boarding_interior)
 "Ri" = (
 /obj/machinery/light,
-/turf/open/floor/monotile/dark,
-/area/ruin/powered/nsv13/boarding_interior)
-"Rs" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/monotile/dark,
-/area/ruin/powered/nsv13/boarding_interior)
-"Rz" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
 /turf/open/floor/monotile/dark,
 /area/ruin/powered/nsv13/boarding_interior)
 "RD" = (
@@ -2989,16 +2686,8 @@
 /obj/machinery/firealarm/directional/north,
 /turf/open/floor/monotile/dark,
 /area/ruin/powered/nsv13/boarding_interior)
-"Ub" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/monotile/dark,
-/area/ruin/powered/nsv13/boarding_interior)
 "Uc" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/machinery/power/apc/highcap/fifteen_k{
 	dir = 1;
 	name = "area power controller";
@@ -3008,9 +2697,7 @@
 /area/ruin/powered/nsv13/boarding_interior)
 "Ud" = (
 /obj/item/trash/popcorn,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "Ug" = (
@@ -3041,12 +2728,6 @@
 	req_access_txt = "150"
 	},
 /turf/open/floor/mineral/plastitanium/red,
-/area/ruin/powered/nsv13/boarding_interior)
-"UB" = (
-/obj/structure/cable{
-	icon_state = "2-10"
-	},
-/turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "UI" = (
 /obj/item/kirbyplants/random,
@@ -3090,15 +2771,6 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/powered/nsv13/boarding_interior)
-"Vh" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/open/floor/monotile/dark,
-/area/ruin/powered/nsv13/boarding_interior)
 "Vk" = (
 /obj/machinery/stasis,
 /obj/machinery/light/small{
@@ -3109,12 +2781,6 @@
 /area/ruin/powered/nsv13/boarding_interior)
 "Vp" = (
 /obj/machinery/light,
-/turf/open/floor/plating,
-/area/ruin/powered/nsv13/boarding_interior)
-"VD" = (
-/obj/structure/cable{
-	icon_state = "1-6"
-	},
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "VG" = (
@@ -3158,27 +2824,13 @@
 /obj/item/trash/raisins,
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
-"WQ" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/nsv13/boarding_interior)
 "WS" = (
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/machinery/door/airlock/ship/maintenance{
 	req_access_txt = "150"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/nsv13/boarding_interior)
-"WW" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "WX" = (
@@ -3187,28 +2839,8 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/ruin/powered/nsv13/boarding_interior)
-"WY" = (
-/obj/structure/cable{
-	icon_state = "1-5"
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/nsv13/boarding_interior)
 "WZ" = (
-/obj/structure/cable{
-	icon_state = "1-9"
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/nsv13/boarding_interior)
-"Xa" = (
-/obj/structure/cable{
-	icon_state = "1-10"
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/nsv13/boarding_interior)
-"Xc" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "Xe" = (
@@ -3237,15 +2869,6 @@
 /obj/structure/overmap/small_craft/combat/light/syndicate,
 /turf/open/floor/engine/airless,
 /area/ruin/powered/nsv13/boarding_interior)
-"XB" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/nsv13/boarding_interior)
 "XC" = (
 /obj/structure/table/reinforced,
 /obj/item/book/random,
@@ -3258,9 +2881,7 @@
 /turf/open/floor/engine,
 /area/ruin/powered/nsv13/boarding_interior)
 "XO" = (
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/components/binary/stormdrive_reactor/syndicate{
 	reactor_id = "carrier"
 	},
@@ -3270,30 +2891,21 @@
 /turf/open/floor/engine,
 /area/ruin/powered/nsv13/boarding_interior)
 "XS" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
 	dir = 9
 	},
 /turf/open/floor/engine,
 /area/ruin/powered/nsv13/boarding_interior)
 "XT" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/ruin/powered/nsv13/boarding_interior)
 "XX" = (
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/powered/nsv13/boarding_interior)
 "Yf" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/landmark/patrol_node{
 	id = "carrier_sd";
 	next_id = "carrier_atmos"
@@ -3305,9 +2917,7 @@
 	dir = 8;
 	icon_state = "emitter_center"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/engine,
 /area/ruin/powered/nsv13/boarding_interior)
 "Yq" = (
@@ -3315,9 +2925,7 @@
 	dir = 8;
 	icon_state = "power_box"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/engine,
 /area/ruin/powered/nsv13/boarding_interior)
 "Yr" = (
@@ -3334,9 +2942,7 @@
 	icon_state = "fuel_chamber"
 	},
 /obj/effect/landmark/nuclear_waste_spawner,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/engine,
 /area/ruin/powered/nsv13/boarding_interior)
 "YF" = (
@@ -3344,9 +2950,7 @@
 	dir = 8;
 	icon_state = "end_cap"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/engine,
 /area/ruin/powered/nsv13/boarding_interior)
 "Za" = (
@@ -26323,7 +25927,7 @@ Cu
 AB
 kO
 AB
-ok
+Eb
 pU
 tr
 AB
@@ -26835,7 +26439,7 @@ Cu
 AB
 lr
 AB
-ok
+Eb
 pU
 tr
 AB
@@ -27091,7 +26695,7 @@ Cu
 AB
 lu
 AB
-ok
+Eb
 pU
 tr
 AB
@@ -27345,22 +26949,22 @@ nm
 UV
 Cu
 AB
-wj
-mN
-oz
+WZ
+gy
+Eb
 jn
-tS
+XT
 xi
-zI
+XT
 Mf
 Mj
 Mj
 Mj
 Mf
-Ra
+XT
 xi
-Ub
-Ub
+XT
+XT
 Yf
 jn
 Ri
@@ -27601,7 +27205,7 @@ nm
 UV
 Cu
 AB
-MZ
+WZ
 AB
 mf
 QK
@@ -27610,10 +27214,10 @@ AB
 zL
 Mi
 Ga
-IU
+KU
 KU
 Mi
-Rh
+XT
 AB
 SB
 Wt
@@ -27857,7 +27461,7 @@ nm
 UV
 Cu
 AB
-MZ
+WZ
 AB
 Ec
 Jv
@@ -28369,21 +27973,21 @@ nm
 UV
 AB
 AB
-MZ
+WZ
 AB
-rA
-Gv
-Gv
+oq
+Eb
+Eb
 xr
-AG
+Eb
 CY
 Mj
 Mj
 Mj
 Mk
-Rs
+Eb
 xr
-Rz
+Eb
 nQ
 YF
 DB
@@ -28625,19 +28229,19 @@ nm
 UV
 AB
 iK
-MZ
+WZ
 AB
 ws
 ws
 qG
 AB
-AH
-Da
-Gv
+Eb
+Eb
+Eb
 Ji
-Gv
-Mn
-Rz
+Eb
+Eb
+Eb
 AB
 jn
 jn
@@ -28881,7 +28485,7 @@ nm
 AB
 AB
 dW
-MZ
+WZ
 AB
 AB
 AB
@@ -29137,7 +28741,7 @@ nm
 AB
 ZG
 xx
-MZ
+WZ
 xx
 xx
 uf
@@ -29393,12 +28997,12 @@ nm
 AB
 gE
 xx
-Xc
+WZ
 yG
-Op
-Op
-XB
-Op
+WZ
+WZ
+WZ
+WZ
 Be
 jn
 XX
@@ -29406,9 +29010,9 @@ XX
 XX
 jn
 Be
-Op
-Op
-WQ
+WZ
+WZ
+WZ
 xx
 Ep
 xx
@@ -31950,15 +31554,15 @@ Cu
 AB
 aA
 dS
-Op
-Op
-Op
-Op
-Op
-Op
-Op
-vo
-Op
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
 Be
 jn
 XX
@@ -31966,9 +31570,9 @@ XX
 XX
 jn
 Be
-Op
+WZ
 Ud
-WW
+WZ
 xx
 xx
 xx
@@ -40405,7 +40009,7 @@ iA
 xx
 xx
 xx
-wj
+WZ
 gy
 ON
 jn
@@ -40415,15 +40019,15 @@ XX
 jn
 ON
 Be
-Op
-WY
-kU
-Op
-VD
+WZ
+WZ
+WZ
+WZ
+WZ
 Ej
-VD
-wf
-VD
+WZ
+WZ
+WZ
 xx
 AB
 FR
@@ -40654,14 +40258,14 @@ Cu
 AB
 xx
 eF
-Op
-Op
-Op
-Op
-Op
-XB
-Op
-WW
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
 AB
 ON
 jn
@@ -40671,15 +40275,15 @@ UI
 jn
 ON
 AB
-UB
-Xa
-xx
-xx
-UB
+WZ
 WZ
 xx
-ar
-Op
+xx
+WZ
+WZ
+xx
+WZ
+WZ
 WZ
 AB
 Cu
@@ -40909,7 +40513,7 @@ UV
 Cu
 AB
 cG
-MZ
+WZ
 AB
 AB
 AB
@@ -42189,7 +41793,7 @@ UV
 Cu
 AB
 xx
-MZ
+WZ
 AB
 hJ
 jq
@@ -42445,7 +42049,7 @@ UV
 Cu
 AB
 du
-fA
+eV
 gy
 XX
 jy
@@ -42701,7 +42305,7 @@ UV
 FR
 AB
 du
-fB
+eF
 AB
 hL
 jn
@@ -42957,7 +42561,7 @@ UV
 Cu
 AB
 xx
-MZ
+WZ
 AB
 hM
 jn
@@ -42983,7 +42587,7 @@ XX
 Du
 KQ
 gy
-WQ
+WZ
 xx
 AB
 Cu
@@ -43469,7 +43073,7 @@ UV
 Cu
 AB
 de
-MZ
+WZ
 AB
 im
 jn
@@ -43725,7 +43329,7 @@ UV
 Cu
 AB
 cG
-fB
+eF
 AB
 ip
 jL
@@ -43751,7 +43355,7 @@ Vk
 OT
 AB
 AB
-MZ
+WZ
 xx
 AB
 Cu
@@ -43981,7 +43585,7 @@ UV
 Cu
 AB
 xx
-MZ
+WZ
 AB
 Fd
 ki
@@ -44007,7 +43611,7 @@ AB
 AB
 Jq
 AB
-MZ
+WZ
 xx
 AB
 Cu
@@ -44237,7 +43841,7 @@ UV
 Cu
 AB
 cG
-MZ
+WZ
 AB
 AB
 AB
@@ -44263,7 +43867,7 @@ AB
 AB
 AB
 AB
-MZ
+WZ
 xx
 AB
 Cu
@@ -44493,7 +44097,7 @@ UV
 Cu
 AB
 dy
-MZ
+WZ
 AB
 AB
 aD
@@ -44519,7 +44123,7 @@ Nl
 Nl
 AB
 AB
-MZ
+WZ
 xx
 AB
 Cu
@@ -44775,7 +44379,7 @@ jn
 jn
 Nl
 AB
-MZ
+WZ
 xx
 AB
 Cu
@@ -45005,7 +44609,7 @@ UV
 Cu
 AB
 xx
-MZ
+WZ
 AB
 cQ
 Zk
@@ -45031,7 +44635,7 @@ ON
 ON
 yl
 gy
-cS
+WZ
 xx
 AB
 Cu
@@ -45517,7 +45121,7 @@ UV
 Cu
 AB
 xx
-MZ
+WZ
 AB
 AB
 Dg
@@ -45543,7 +45147,7 @@ sK
 wZ
 AB
 AB
-MZ
+WZ
 xx
 AB
 Cu
@@ -45774,7 +45378,7 @@ Cu
 AB
 dQ
 fT
-WQ
+WZ
 AB
 AB
 AB
@@ -45799,7 +45403,7 @@ AB
 AB
 AB
 pb
-MZ
+WZ
 xx
 AB
 Cu
@@ -46030,7 +45634,7 @@ Cu
 AB
 AB
 gc
-MZ
+WZ
 xx
 xx
 xx
@@ -46054,8 +45658,8 @@ xx
 xx
 xx
 xx
-wj
-WW
+WZ
+WZ
 AB
 AB
 Cu
@@ -46286,14 +45890,14 @@ FR
 Cu
 AB
 AB
-Xc
-Op
-Op
+WZ
+WZ
+WZ
 mI
-Op
-Op
-sV
-WQ
+WZ
+WZ
+WZ
+WZ
 yJ
 AB
 jn
@@ -46302,15 +45906,15 @@ op
 UI
 jn
 AB
-wj
-Op
-Op
-Op
+WZ
+WZ
+WZ
+WZ
 FX
-Op
-Op
-Op
-WW
+WZ
+WZ
+WZ
+WZ
 AB
 AB
 Cu
@@ -46549,7 +46153,7 @@ AB
 AB
 AB
 AB
-MZ
+WZ
 xx
 AB
 MO
@@ -46558,7 +46162,7 @@ AB
 AB
 MO
 AB
-MZ
+WZ
 xx
 AB
 AB
@@ -46805,7 +46409,7 @@ Cu
 Cu
 Cu
 AB
-MZ
+WZ
 xx
 AB
 Eb
@@ -46814,7 +46418,7 @@ XX
 KX
 Eb
 AB
-MZ
+WZ
 xx
 AB
 Cu
@@ -47070,7 +46674,7 @@ XX
 XX
 Ok
 AB
-MZ
+WZ
 Vp
 AB
 Cu
@@ -47317,16 +46921,16 @@ nm
 UV
 Cu
 AB
-Xc
-Op
+WZ
+WZ
 BB
-Vh
-Gv
-Gv
-Gv
-Pg
+Eb
+Eb
+Eb
+Eb
+Eb
 gy
-WW
+WZ
 VG
 AB
 Cu

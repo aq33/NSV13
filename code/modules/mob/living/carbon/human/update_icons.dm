@@ -795,6 +795,7 @@ generate/load female uniform sprites matching all previously decided variables
 				eye_overlay.pixel_x += dna.species.offset_features[OFFSET_FACE][1]
 				eye_overlay.pixel_y += dna.species.offset_features[OFFSET_FACE][2]
 			add_overlay(eye_overlay)
+			add_overlay(get_tears_overlays()) // AQ EDIT - łzy po *cry (port Yogstation#15690)
 
 	dna.species.handle_hair(src)
 

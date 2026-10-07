@@ -795,7 +795,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/shuttle/stealthcruiser)
 "db" = (
@@ -941,9 +941,7 @@
 /obj/item/stack/sheet/mineral/plasma{
 	amount = 20
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/shuttle/stealthcruiser)
 "FN" = (
@@ -981,9 +979,7 @@
 	pixel_x = -25;
 	req_access = 150
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/stealthcruiser)
 "Lb" = (
