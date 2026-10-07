@@ -151,15 +151,6 @@
 //////////////      Customizable Food Types     /////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 
-/obj/item/reagent_containers/food/snacks/customizable/burger
-	name = "burger"
-	desc = "A timeless classic."
-	ingredients_placement = INGREDIENTS_STACKPLUSTOP
-	icon = 'icons/obj/food/burgerbread.dmi'
-	icon_state = "custburg"
-	foodtype = GRAIN
-
-
 /obj/item/reagent_containers/food/snacks/customizable/cheesewheel/cheddar
 	name = "cheese"
 	ingredients_placement = INGREDIENTS_SCATTER
@@ -179,15 +170,6 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	ingMax = 6
 	icon_state = "rod"
-
-/obj/item/reagent_containers/food/snacks/customizable/pasta
-	name = "spaghetti"
-	desc = "Noodles. With stuff. Delicious."
-	ingredients_placement = INGREDIENTS_SCATTER
-	ingMax = 6
-	icon = 'icons/obj/food/spaghetti.dmi'
-	icon_state = "spaghettiboiled"
-	foodtype = GRAIN
 
 /obj/item/reagent_containers/food/snacks/customizable/pie
 	name = "pie"
