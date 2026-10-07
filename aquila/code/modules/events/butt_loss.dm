@@ -7,7 +7,7 @@
 /datum/round_event_control/aquila_butt_loss
 	name = "Butt Pain"
 	typepath = /datum/round_event/aquila_butt_loss
-	weight = 6
+	weight = 10
 	max_occurrences = 1
 	min_players = 5
 	earliest_start = 15 MINUTES
