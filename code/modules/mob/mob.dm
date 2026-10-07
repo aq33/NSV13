@@ -343,14 +343,14 @@
 /atom/proc/runechat_prefs_check(mob/target, list/visible_message_flags)
 	if(!(target.client?.prefs.toggles & PREFTOGGLE_RUNECHAT_GLOBAL) || !(target.client.prefs.toggles & PREFTOGGLE_RUNECHAT_NONMOBS))
 		return FALSE
-	if(LAZYFIND(visible_message_flags, CHATMESSAGE_EMOTE) && !(target.client.prefs.toggles & PREFTOGGLE_RUNECHAT_EMOTES))
+	if((LAZYFIND(visible_message_flags, CHATMESSAGE_EMOTE)) && !(target.client.prefs.toggles & PREFTOGGLE_RUNECHAT_EMOTES))
 		return FALSE
 	return TRUE
 
 /mob/runechat_prefs_check(mob/target, list/visible_message_flags)
 	if(!(target.client?.prefs.toggles & PREFTOGGLE_RUNECHAT_GLOBAL))
 		return FALSE
-	if(LAZYFIND(visible_message_flags, CHATMESSAGE_EMOTE) && !(target.client.prefs.toggles & PREFTOGGLE_RUNECHAT_EMOTES))
+	if((LAZYFIND(visible_message_flags, CHATMESSAGE_EMOTE)) && !(target.client.prefs.toggles & PREFTOGGLE_RUNECHAT_EMOTES))
 		return FALSE
 	return TRUE
 
