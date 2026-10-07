@@ -42,6 +42,9 @@ The other ~60 same-type redefinitions in `aquila/` call `..()`, so they are alre
 | `ROLE_PARADOX_CLONE` + `antagonist_bannable_roles` entry | `code/__DEFINES/role_preferences.dm` | Paradox Clone (tgstation#71141 port); the define has to be in core because `aquila.dm` is included after the list |
 | `ANTAG_HUD_PARADOX_CLONE` (33) + `GLOB.huds` entry | `code/__DEFINES/atom_hud.dm`, `code/datums/hud.dm` | Paradox Clone HUD; must stay the next index after `ANTAG_HUD_VAMPIRE` |
 | `paradox_clone` icon state | `icons/mob/hud.dmi` | Paradox Clone HUD icon, copied from tgstation's `antag_hud.dmi` |
+| `GAS_MIASMA` define | `code/__DEFINES/atmospherics.dm` | Miasma (restores what BeeStation-Hornet#6445 removed, reworked around `SSmiasma`); in core because the core gas lists below use it |
+| `GAS_MIASMA` list entries | `code/modules/atmospherics/machinery/airalarm.dm` (3 TLV lists, scrubbing/contaminated/refill filters), `components/unary_devices/vent_scrubber.dm` (default `filter_types`), `portable/canister.dm` (label list), `mob/living/simple_animal/bot/atmosbot.dm` (gases to scrub) | Miasma alarms, scrubbing and canister relabelling. Scrubbers filter it by default so it doesn't build up |
+| `handle_miasma_breath()` call | `code/modules/surgery/organs/lungs.dm`, `check_breath()` | Miasma breath effects (`aquila/code/modules/miasma/miasma_breath.dm`); the only breath path that handles miasma |
 | `ROLE_THIEF` + `antagonist_bannable_roles` entry | `code/__DEFINES/role_preferences.dm` | Thief (tgstation#64144 port); same reason as `ROLE_PARADOX_CLONE` |
 | `ANTAG_HUD_THIEF` (34) + `GLOB.huds` entry | `code/__DEFINES/atom_hud.dm`, `code/datums/hud.dm` | Thief HUD; must stay the next index after `ANTAG_HUD_PARADOX_CLONE` |
 | `amount` var on `/datum/objective/steal_five_of_type` | `code/game/gamemodes/objective.dm` | Replaces the hardcoded 5 in both `check_completion()`s (default stays 5), so the thief guns/organs objectives can ask for a different count |
