@@ -9,8 +9,8 @@
 		#include "map_files\debug\runtimestation.dmm"
 
 		//Atlas
-		#include "map_files\Atlas\Atlas.dmm"
-		#include "map_files\Atlas\Atlas2.dmm"
+		#include "map_files\Atlas\atlas.dmm"
+		#include "map_files\Atlas\atlas2.dmm"
 		//Akwilas AQ EDIT
 		#include "map_files\Aquila_Atlas\Aquila_Atlas.dmm"
 		#include "map_files\Aquila_Atlas\Aquila_Atlas2.dmm"

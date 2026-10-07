@@ -86,6 +86,7 @@
 		var/list/atom/movable/nearby_atoms = range(1, our_heretic)
 		nearby_atoms -= our_heretic // Our dude is supposed to be there
 		nearby_atoms -= our_rune // Same with our rune
+		nearby_atoms -= our_heretic.contents // AQ EDIT - range() includes the center's contents, e.g. the butt pocket (aquila/code/modules/butt/butt_organ.dm), which is not on the rune
 
 		// Did we get all the results we want?
 		for(var/result_item_path in knowledge.result_atoms)

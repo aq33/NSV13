@@ -4,6 +4,7 @@
  *		kask motocyklowy
  *		kask Riczard'a
  *		kaptur kostiumu ducha
+ *		nakrycia głowy security (kosmobagiety)
  */
 /****************************\
 |*********** opaski **********|
@@ -108,3 +109,43 @@
 	icon_state = "ghostcostumehood"
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+
+/****************************\
+|******** kosmobagiety *******|
+\****************************/
+/obj/item/clothing/head/soft/sec/alt
+	name = "alternative security cap"
+	desc = "It's a robust baseball hat in police colours."
+	icon = 'aquila/icons/obj/clothing/hats.dmi'
+	worn_icon = 'aquila/icons/mob/head.dmi'
+	icon_state = "secaltsoft"
+	soft_color = "secalt"
+
+/obj/item/clothing/head/soft/sec/warden
+	name = "warden's cap"
+	desc = "It's a robust baseball hat with the warden's insignia."
+	icon = 'aquila/icons/obj/clothing/hats.dmi'
+	worn_icon = 'aquila/icons/mob/head.dmi'
+	icon_state = "wardensoft"
+	soft_color = "warden"
+
+/obj/item/clothing/head/beret/sec/bandana
+	name = "security bandana"
+	desc = "A reinforced bandana in police colours."
+	icon = 'aquila/icons/obj/clothing/hats.dmi'
+	worn_icon = 'aquila/icons/mob/head.dmi'
+	icon_state = "secbandana"
+
+/obj/item/clothing/head/beret/sec/officercap
+	name = "security officer's cap"
+	desc = "A peaked cap worn by security officers. Uses reinforced fabric to offer sufficient protection."
+	icon = 'aquila/icons/obj/clothing/hats.dmi'
+	worn_icon = 'aquila/icons/mob/head.dmi'
+	icon_state = "secofficercap"
+
+/obj/item/clothing/head/beret/sec/garrison
+	name = "security garrison cap"
+	desc = "A foldable garrison cap in police colours. Uses reinforced fabric to offer sufficient protection."
+	icon = 'aquila/icons/obj/clothing/hats.dmi'
+	worn_icon = 'aquila/icons/mob/head.dmi'
+	icon_state = "secgarrisoncap"

@@ -989,6 +989,8 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	name = "ukradnij pięć"
 	explanation_text = "Ukradnij przynajmiej pięć rzeczy!"
 	var/list/wanted_items = list()
+	///how many we want to steal // AQ EDIT - thieves (tgstation#64144)
+	var/amount = 5
 
 /datum/objective/steal_five_of_type/New()
 	..()
@@ -1003,7 +1005,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		for(var/obj/I in all_items) //Check for wanted items
 			if(is_type_in_typecache(I, wanted_items))
 				stolen_count++
-	return (stolen_count >= 5) || ..()
+	return (stolen_count >= amount) || ..() // AQ EDIT - thieves (tgstation#64144)
 
 /datum/objective/steal_five_of_type/summon_guns
 	name = "ukradnij broń"
@@ -1032,7 +1034,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 					stolen_count++ //it counts. nice.
 			else if(is_type_in_typecache(I, wanted_items))
 				stolen_count++
-	return (stolen_count >= 5) || ..()
+	return (stolen_count >= amount) || ..() // AQ EDIT - thieves (tgstation#64144)
 
 //Created by admin tools
 /datum/objective/custom

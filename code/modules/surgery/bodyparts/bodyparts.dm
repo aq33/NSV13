@@ -286,8 +286,8 @@
 //Change limb between
 //Note:This proc only exists because I can't be arsed to remove it yet. Theres no real reason this should ever be used.
 /obj/item/bodypart/proc/change_bodypart_status(new_limb_status, heal_limb, change_icon_to_default)
-	if(!(bodytype & new_limb_status))
-		bodytype &= ~(BODYTYPE_ROBOTIC & BODYTYPE_ORGANIC)
+	if(new_limb_status && !(bodytype & new_limb_status)) //AQ EDIT - null status is a no-op
+		bodytype &= ~(BODYTYPE_ROBOTIC | BODYTYPE_ORGANIC) //AQ EDIT - was &, which cleared nothing and left converted limbs organic
 		bodytype |= new_limb_status
 
 	if(heal_limb)
@@ -301,6 +301,13 @@
 			icon = DEFAULT_BODYPART_ICON_ORGANIC
 		else
 			icon = DEFAULT_BODYPART_ICON_ROBOTIC
+			// AQ EDIT START - fleshy limbs have no states in the robotic icon, so switch them to the robotic look
+			if(should_draw_greyscale)
+				static_icon = DEFAULT_BODYPART_ICON_ROBOTIC
+				limb_id = "robotic"
+				should_draw_greyscale = FALSE
+				is_dimorphic = FALSE
+			// AQ EDIT END
 
 	if(owner)
 		owner.updatehealth()
@@ -680,6 +687,8 @@
 	px_x = -2
 	px_y = 12
 	max_stamina_damage = 50
+	/// Used to make footprints
+	var/footprint_sprite = FOOTPRINT_SPRITE_SHOES
 
 /obj/item/bodypart/l_leg/is_disabled()
 	if(HAS_TRAIT(owner, TRAIT_PARALYSIS_L_LEG))
@@ -706,6 +715,7 @@
 	limb_id = SPECIES_MONKEY
 	animal_origin = MONKEY_BODYPART
 	px_y = 4
+	footprint_sprite = FOOTPRINT_SPRITE_PAWS
 
 /obj/item/bodypart/l_leg/monkey/teratoma
 	icon = 'icons/mob/animal_parts.dmi' //NSV13 - old monkey sprites
@@ -742,6 +752,8 @@
 	px_x = 2
 	px_y = 12
 	max_stamina_damage = 50
+	/// Used to make footprints
+	var/footprint_sprite = FOOTPRINT_SPRITE_SHOES
 
 /obj/item/bodypart/r_leg/is_disabled()
 	if(HAS_TRAIT(owner, TRAIT_PARALYSIS_R_LEG))
@@ -768,6 +780,7 @@
 	limb_id = SPECIES_MONKEY
 	animal_origin = MONKEY_BODYPART
 	px_y = 4
+	footprint_sprite = FOOTPRINT_SPRITE_PAWS
 
 /obj/item/bodypart/r_leg/monkey/teratoma
 	icon = 'icons/mob/animal_parts.dmi' //NSV13 - old monkey sprites
