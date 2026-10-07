@@ -52,8 +52,15 @@
       : null;
   })();
 
+  // Blink engine version (WebView2, BYOND 516+)
+  Byond.BLINK = (function () {
+    var groups = navigator.userAgent.match(/Chrome\/(\d+)\./);
+    var majorVersion = groups && groups[1];
+    return majorVersion ? parseInt(majorVersion, 10) : null;
+  })();
+
   // Basic checks to detect whether this page runs in BYOND
-  var isByond = (Byond.TRIDENT !== null || window.cef_to_byond)
+  var isByond = (Byond.TRIDENT !== null || Byond.BLINK !== null || window.cef_to_byond)
     && location.hostname === '127.0.0.1'
     && location.search !== '?external';
     //As of BYOND 515 the path doesn't seem to include tmp dir anymore if you're trying to open tgui in external browser and looking why it doesn't work
@@ -523,9 +530,6 @@ window.replaceHtml = function (inline_html) {
       + "<!-- tgui:inline-html-end -->"
   );
 };
-
-// Signal tgui that we're ready to receive updates
-Byond.sendMessage('ready');
 </script>
 
 <style>
@@ -658,6 +662,13 @@ Nanotrasen (c) 2525-2559
     <div>Please enable Javascript and restart the game.</div>
   </div>
 </noscript>
+
+<script type="text/javascript">
+// Signal tgui that we're ready to receive updates.
+// Must stay at the very end of <body>: on 516 (WebView2) Byond.call navigates
+// to byond://, which stops parsing anything that comes after it.
+Byond.sendMessage('ready');
+</script>
 
 </body>
 </html>
