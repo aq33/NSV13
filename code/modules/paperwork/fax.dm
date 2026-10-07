@@ -40,7 +40,7 @@
 	/// List of types which should be allowed to be faxed if hacked
 	var/static/list/exotic_types = list(
 		/obj/item/reagent_containers/food/snacks/pizzaslice,
-		/obj/item/reagent_containers/food/snacks/breadslice, //NSV13 - For now until we get the food update.
+		/obj/item/food/breadslice/plain, //NSV13 - For now until we get the food update.
 		/obj/item/reagent_containers/food/snacks/donkpocket,
 		/obj/item/reagent_containers/food/snacks/cookie,
 		/obj/item/reagent_containers/food/snacks/sugarcookie,

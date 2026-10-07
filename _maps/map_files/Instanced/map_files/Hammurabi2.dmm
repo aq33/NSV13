@@ -3735,7 +3735,7 @@
 "xM" = (
 /obj/structure/table/reinforced,
 /obj/machinery/firealarm/directional/north,
-/obj/item/reagent_containers/food/snacks/cakeslice/trumpet,
+/obj/item/food/cakeslice/trumpet,
 /turf/open/floor/mineral/plastitanium,
 /area/crew_quarters/bar/pvp)
 "xP" = (

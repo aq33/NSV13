@@ -18035,22 +18035,22 @@
 /turf/open/floor/carpet/ship/blue,
 /area/crew_quarters/heads/cmo)
 "nut" = (
-/obj/item/reagent_containers/food/snacks/spaghetti{
+/obj/item/food/spaghetti/raw{
 	pixel_x = -5
 	},
-/obj/item/reagent_containers/food/snacks/spaghetti{
+/obj/item/food/spaghetti/raw{
 	pixel_x = 2
 	},
-/obj/item/reagent_containers/food/snacks/spaghetti{
+/obj/item/food/spaghetti/raw{
 	pixel_x = -5
 	},
-/obj/item/reagent_containers/food/snacks/spaghetti{
+/obj/item/food/spaghetti/raw{
 	pixel_x = 2
 	},
-/obj/item/reagent_containers/food/snacks/spaghetti{
+/obj/item/food/spaghetti/raw{
 	pixel_x = 2
 	},
-/obj/item/reagent_containers/food/snacks/spaghetti{
+/obj/item/food/spaghetti/raw{
 	pixel_x = 2
 	},
 /obj/structure/rack,
@@ -18943,7 +18943,7 @@
 /area/maintenance/department/security)
 "oaW" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/cakeslice/plain,
+/obj/item/food/cakeslice/plain,
 /turf/open/floor/carpet/ship,
 /area/crew_quarters/cafeteria)
 "obl" = (
@@ -26753,7 +26753,7 @@
 /area/hydroponics)
 "tLu" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/cakeslice/plain,
+/obj/item/food/cakeslice/plain,
 /obj/item/reagent_containers/food/condiment/saltshaker,
 /obj/item/reagent_containers/food/condiment/peppermill{
 	pixel_x = 3;

@@ -191,7 +191,7 @@
 
 	var/obj/item/I = pick(pickable_items)
 	I.forceMove(src) //shove the item in, even if it isn't food
-	frying = new /obj/item/reagent_containers/food/snacks/deepfryholder(src, I)
+	frying = new /obj/item/food/deepfryholder(src, I)
 	icon_state = "fryer_on"
 	fry_loop.start()
 	log_game("[key_name(L)] deep fried [I.name] ([I.type]) at [AREACOORD(src)].")

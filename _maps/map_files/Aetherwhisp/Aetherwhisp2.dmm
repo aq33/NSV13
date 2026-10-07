@@ -99,7 +99,7 @@
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "afr" = (
-/obj/item/reagent_containers/food/snacks/spaghetti/butternoodles,
+/obj/item/food/spaghetti/butternoodles,
 /obj/item/paper/pamphlet/gateway,
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/pool_party)
@@ -8683,7 +8683,7 @@
 /area/crew_quarters/dorms)
 "gyp" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/cakeslice/plain,
+/obj/item/food/cakeslice/plain,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -22650,7 +22650,7 @@
 /area/bridge/meeting_room/council)
 "rje" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/cakeslice/birthday,
+/obj/item/food/cakeslice/birthday,
 /obj/item/reagent_containers/food/snacks/pie/cream{
 	desc = "BANANANANAAAAA SLAMMMAAAA";
 	pixel_x = 11;
@@ -28411,20 +28411,20 @@
 /area/maintenance/fore)
 "vOM" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/cakeslice/plain{
+/obj/item/food/cakeslice/plain{
 	desc = "In memory of Kazaak-Aerwhisp";
 	pixel_x = 7;
 	pixel_y = 4
 	},
-/obj/item/reagent_containers/food/snacks/cakeslice/plain{
+/obj/item/food/cakeslice/plain{
 	desc = "In memory of Kazaaak-Aerwhisp";
 	pixel_x = -4;
 	pixel_y = 6
 	},
-/obj/item/reagent_containers/food/snacks/cakeslice/plain{
+/obj/item/food/cakeslice/plain{
 	desc = "In memory of Kazaaak-Aerwhisp"
 	},
-/obj/item/reagent_containers/food/snacks/cakeslice/plain{
+/obj/item/food/cakeslice/plain{
 	desc = "In memory of Kazaaak-Aerwhisp. Never forget his sweet tooth, and his sweet heart.";
 	pixel_x = -7;
 	pixel_y = -6
@@ -30798,7 +30798,7 @@
 /turf/open/floor/engine,
 /area/nsv/weapons/starboard)
 "xEv" = (
-/obj/item/reagent_containers/food/snacks/cakeslice/plain,
+/obj/item/food/cakeslice/plain,
 /obj/structure/table/glass,
 /obj/machinery/light{
 	dir = 8

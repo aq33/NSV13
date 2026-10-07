@@ -3452,7 +3452,7 @@
 "ajT" = (
 /obj/item/reagent_containers/food/snacks/cheesiehonkers,
 /obj/structure/closet/crate/wooden,
-/obj/item/reagent_containers/food/snacks/store/bread/banana,
+/obj/item/food/bread/banana,
 /obj/effect/spawner/lootdrop/maintenance/three,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/frame3/starboard)
@@ -7442,7 +7442,7 @@
 /turf/open/space/basic,
 /area/maintenance/ship_exterior)
 "atU" = (
-/obj/item/reagent_containers/food/snacks/store/cake/cheese,
+/obj/item/food/cake/cheese,
 /obj/structure/table,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/frame3/starboard)
