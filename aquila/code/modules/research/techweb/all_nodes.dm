@@ -208,3 +208,10 @@
 		if(!UI.item || !UI.illegal_tech)
 			continue
 		boost_item_paths |= UI.item	//allows deconning to unlock.
+
+/*****************************\
+|********* BLUESPACE *********|
+\*****************************/
+/datum/techweb_node/bluespace_travel/New() // bluespace pipes, appended so upstream changes to this node's designs still apply
+	. = ..()
+	design_ids += "bluespace_pipe"

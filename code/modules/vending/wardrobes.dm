@@ -26,6 +26,9 @@
 					/obj/item/clothing/shoes/jackboots = 3,
 					/obj/item/clothing/head/beret/sec = 3,
 					/obj/item/clothing/head/soft/sec = 3,
+					/obj/item/clothing/head/soft/sec/alt = 3, //AQUILA EDIT
+					/obj/item/clothing/head/beret/sec/bandana = 3, //AQUILA EDIT
+					/obj/item/clothing/head/beret/sec/garrison = 3, //AQUILA EDIT
 					/obj/item/clothing/mask/bandana/red = 3,
 					/obj/item/clothing/head/aquila/headband/red/sec = 3,
 					/obj/item/clothing/mask/gas/sechailer = 6,
@@ -39,7 +42,8 @@
 	contraband = list(/obj/item/clothing/suit/hooded/wintercoat/security/old = 3)
 	premium = list(/obj/item/clothing/under/rank/security/officer/formal = 3,
 					/obj/item/clothing/suit/security/officer = 3,
-					/obj/item/clothing/head/beret/sec/navyofficer = 3)
+					/obj/item/clothing/head/beret/sec/navyofficer = 3,
+					/obj/item/clothing/head/beret/sec/officercap = 3) //AQUILA EDIT
 	refill_canister = /obj/item/vending_refill/wardrobe/sec_wardrobe
 	payment_department = ACCOUNT_SEC
 

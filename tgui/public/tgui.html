@@ -237,9 +237,13 @@
   // Asset loaders
   // ------------------------------------------------------
 
-  var RETRY_ATTEMPTS = 5;
+  // AQ EDIT: was 5 attempts (~7.5s total). Joining while the server is still
+  // initializing can delay big bundles past that, so the page gave up and tgui
+  // stayed blank until reconnect. Now retries for ~2 minutes (waits capped at 5s).
+  var RETRY_ATTEMPTS = 30;
   var RETRY_WAIT_INITIAL = 500;
   var RETRY_WAIT_INCREMENT = 500;
+  var RETRY_WAIT_MAX = 5000;
 
   var loadedAssetByUrl = {};
 
@@ -301,7 +305,7 @@
         loadedAssetByUrl[url] = null;
         options.attempt += 1;
         loadAsset(options);
-      }, RETRY_WAIT_INITIAL + attempt * RETRY_WAIT_INCREMENT);
+      }, Math.min(RETRY_WAIT_INITIAL + attempt * RETRY_WAIT_INCREMENT, RETRY_WAIT_MAX));
     };
     // JS specific code
     if (type === 'js') {

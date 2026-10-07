@@ -132,7 +132,7 @@
 	if(designating_target_loc || !current_user)
 		return
 
-	// NSV13 - no supercruise here, shuttles are flown straight from the console (see nsv13/code/modules/shuttle/computer.dm)
+	// AQ EDIT - no supercruise here, shuttles are flown straight from the console (see nsv13/code/modules/shuttle/computer.dm)
 	var/obj/docking_port/mobile/landing_shuttle = SSshuttle.getShuttle(shuttleId)
 	if(!landing_shuttle || landing_shuttle.mode != SHUTTLE_IDLE)
 		to_chat(current_user, "<span class='warning'>Shuttle is not ready to move.</span>")
