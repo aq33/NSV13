@@ -22,7 +22,6 @@ GLOBAL_LIST_INIT(aquila_prisoner_crimes, list(
 	typepath = /datum/round_event/ghost_role/aquila_prisoner_transfer
 	weight = 10
 	max_occurrences = 1
-	min_players = 10
 	earliest_start = 15 MINUTES
 	cannot_spawn_after_shuttlecall = TRUE
 
