@@ -38,7 +38,7 @@ const PLAIN_MUFFLE_VOLUME = 0.4;
 // (one copy - every copy is another download of the stream). The delay is
 // short so it blends in as room reverb instead of sounding like a second song.
 const PLAIN_TAPS = [
-  { delay: 0.12, level: 0.5 },
+  { delay: 0.09, level: 0.5 },
 ];
 // How much the direct sound is lowered at full echo
 const PLAIN_ECHO_DUCK = 0.2;

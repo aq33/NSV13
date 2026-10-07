@@ -2,7 +2,10 @@
 // Dźwięk idzie przez przeglądarkę klienta (tgui_panel), tak jak "Play Internet Sound".
 // Słyszą go gracze w okręgu wokół jukeboxa na tym samym z-levelu, ciszej im dalej (hearing_gain()), a z daleka dochodzi echo (echo_amount()).
 
-#define JUKEBOX_YT_MAX_TRACKS 100
+/// Maksymalna liczba grywalnych utworów na liście
+#define JUKEBOX_YT_MAX_TRACKS 200
+/// Ile pozycji playlisty czytamy (część odpadnie jako prywatne/usunięte)
+#define JUKEBOX_YT_PLAYLIST_SCAN 400
 #define JUKEBOX_YT_MAX_TRACK_LENGTH (15 MINUTES)
 /// Minimalna zmiana głośności, przy której wysyłamy aktualizację do klienta
 #define JUKEBOX_YT_GAIN_STEP 0.01
@@ -150,7 +153,7 @@
 		return
 	yt_set_busy(TRUE)
 	updateUsrDialog()
-	var/list/output = world.shelleo("[ytdl] [JUKEBOX_YT_ARGS] --flat-playlist --dump-single-json --playlist-end [JUKEBOX_YT_MAX_TRACKS] -- \"[shell_url_scrub(url)]\"")
+	var/list/output = world.shelleo("[ytdl] [JUKEBOX_YT_ARGS] --flat-playlist --dump-single-json --playlist-end [JUKEBOX_YT_PLAYLIST_SCAN] -- \"[shell_url_scrub(url)]\"")
 	yt_set_busy(FALSE)
 	if(QDELETED(src))
 		return
@@ -170,15 +173,25 @@
 	if(!islist(entries)) // pojedynczy film zamiast playlisty
 		entries = list(data)
 	var/list/new_tracks = list()
+	var/skipped = 0
 	for(var/list/E in entries)
 		if(!E["id"])
 			continue
+		// prywatne i usunięte filmy przychodzą jako "[Private video]" / "[Deleted video]" bez długości,
+		// transmisje na żywo też nie mają długości - żadnego z nich nie da się zagrać
 		var/duration = text2num("[E["duration"]]")
-		if(duration && duration * 10 > JUKEBOX_YT_MAX_TRACK_LENGTH)
+		var/title = "[E["title"]]"
+		if(!duration || title == "\[Private video]" || title == "\[Deleted video]" || (E["availability"] && !(E["availability"] in list("public", "unlisted"))))
+			skipped++
 			continue
-		new_tracks += list(list("id" = "[E["id"]]", "title" = "[E["title"] || E["id"]]", "duration" = duration))
+		if(duration * 10 > JUKEBOX_YT_MAX_TRACK_LENGTH)
+			skipped++
+			continue
+		new_tracks += list(list("id" = "[E["id"]]", "title" = title || "[E["id"]]", "duration" = duration))
+		if(new_tracks.len >= JUKEBOX_YT_MAX_TRACKS)
+			break
 	if(!new_tracks.len)
-		say("Playlista jest pusta lub zawiera tylko zbyt długie utwory.")
+		say("Playlista jest pusta albo ma tylko prywatne, usunięte lub zbyt długie utwory.")
 		updateUsrDialog()
 		return
 	if(yt_active)
@@ -187,7 +200,7 @@
 	yt_tracks = new_tracks
 	yt_index = 0
 	yt_prefetched = null
-	say("Wczytano [yt_tracks.len] utworów.")
+	say("Wczytano [yt_tracks.len] utworów[skipped ? " (pominięto [skipped] prywatnych, usuniętych lub zbyt długich)" : ""].")
 	log_game("[key_name(user)] loaded YouTube playlist [url] into [src] at [AREACOORD(src)]")
 	message_admins("[ADMIN_LOOKUPFLW(user)] wczytał(a) playlistę YT do jukeboxa: [url] [ADMIN_JMP(src)]")
 	updateUsrDialog()
@@ -381,6 +394,7 @@
 		INVOKE_ASYNC(src, .proc/yt_prefetch)
 
 #undef JUKEBOX_YT_MAX_TRACKS
+#undef JUKEBOX_YT_PLAYLIST_SCAN
 #undef JUKEBOX_YT_MAX_TRACK_LENGTH
 #undef JUKEBOX_YT_GAIN_STEP
 #undef JUKEBOX_YT_OUT_GRACE
