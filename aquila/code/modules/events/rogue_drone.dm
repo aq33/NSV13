@@ -7,7 +7,6 @@
 	typepath = /datum/round_event/ghost_role/aquila_rogue_drone
 	weight = 10
 	max_occurrences = 1
-	min_players = 10
 	earliest_start = 20 MINUTES
 	cannot_spawn_after_shuttlecall = TRUE
 
