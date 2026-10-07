@@ -28,5 +28,6 @@
 		"1 'Vintergatan' MPAC plasma-based weapon",
 		"3 P.A.C.M.A.N.-type portable generators",
 		"2 M.R.S.P.A.C.M.A.N.-type portable generators"
-	]
+	],
+	"has_gulag": 1
 }
