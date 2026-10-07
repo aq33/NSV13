@@ -7,7 +7,6 @@
 	typepath = /datum/round_event/ghost_role/aquila_chrono_legionnaire
 	weight = 10
 	max_occurrences = 2
-	min_players = 5
 	earliest_start = 10 MINUTES
 	cannot_spawn_after_shuttlecall = TRUE
 	/// Target an admin picked when forcing the event, used once by the next spawn
