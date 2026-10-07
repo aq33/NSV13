@@ -20,6 +20,8 @@ SUBSYSTEM_DEF(jukeboxes)
 	var/list/datum/track/songs = list()
 	var/list/datum/jukebox/active_jukeboxes = list()
 	var/list/free_channels = list()
+	/// Jukeboxy grające z YouTube - głośność/echo ich słuchaczy odświeżamy co tick subsystemu (płynniej niż SSobj)
+	var/list/obj/machinery/jukebox/yt_jukeboxes = list()
 
 /datum/controller/subsystem/jukeboxes/proc/add_jukebox(obj/jukebox_obj, selection, speed_factor = 1)
 	if(selection > songs.len)
@@ -73,6 +75,18 @@ SUBSYSTEM_DEF(jukeboxes)
 		song_played.frequency = jukebox.speed_factor
 		song_played.wait = 0
 		song_played.volume = volume
+		// Dźwięk "3D" tuż przed słuchaczem (oba uszy, bez tłumienia BYOND), żeby działał pogłos.
+		song_played.x = 0
+		song_played.y = 0
+		song_played.z = 1
+		song_played.falloff = 2
+		var/echo = jukebox_obj.echo_amount(M)
+		var/area/A = get_area(M)
+		song_played.environment = (A?.sound_environment != SOUND_ENVIRONMENT_NONE) ? A.sound_environment : SOUND_ENVIRONMENT_HALLWAY
+		var/list/echo_params = new /list(18) // null = domyślna wartość BYOND
+		echo_params[2] = round(-1200 * echo) // DirectHF: z daleka przytłumione wysokie tony
+		echo_params[3] = echo > 0 ? round(2000 * log(10, max(echo, 0.01))) : -10000 // Room: poziom pogłosu w mB
+		song_played.echo = echo_params
 		if(listeners[M])
 			song_played.status = SOUND_UPDATE | SOUND_STREAM
 			if(volume <= 0)
@@ -119,3 +133,5 @@ SUBSYSTEM_DEF(jukeboxes)
 /datum/controller/subsystem/jukeboxes/fire()
 	for(var/datum/jukebox/jukebox as anything in active_jukeboxes)
 		update_jukebox(jukebox)
+	for(var/obj/machinery/jukebox/yt_jukebox as anything in yt_jukeboxes)
+		yt_jukebox.yt_update_listeners()

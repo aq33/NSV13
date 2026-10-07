@@ -1,11 +1,11 @@
 // AQUILA EDIT - Odtwarzanie playlist z YouTube przez jukebox (yt-dlp / youtube-dl z INVOKE_YOUTUBEDL).
 // Dźwięk idzie przez przeglądarkę klienta (tgui_panel), tak jak "Play Internet Sound".
-// Słyszą go gracze w okręgu wokół jukeboxa na tym samym z-levelu, ciszej im dalej (hearing_gain()).
+// Słyszą go gracze w okręgu wokół jukeboxa na tym samym z-levelu, ciszej im dalej (hearing_gain()), a z daleka dochodzi echo (echo_amount()).
 
 #define JUKEBOX_YT_MAX_TRACKS 100
 #define JUKEBOX_YT_MAX_TRACK_LENGTH (15 MINUTES)
 /// Minimalna zmiana głośności, przy której wysyłamy aktualizację do klienta
-#define JUKEBOX_YT_GAIN_STEP 0.02
+#define JUKEBOX_YT_GAIN_STEP 0.01
 
 /obj/machinery/jukebox
 	/// URL playlisty - domyślna playlista wczytuje się przy pierwszym "Graj"
@@ -23,6 +23,8 @@
 	var/list/yt_extra = null
 	/// Klienci, którym aktualnie gra muzyka z tego jukeboxa, z ostatnio wysłaną głośnością
 	var/list/yt_listeners = list()
+	/// Ostatnio wysłana ilość echa dla klienta
+	var/list/yt_listener_echo = list()
 
 /obj/machinery/jukebox/proc/yt_available()
 	return !!CONFIG_GET(string/invoke_youtubedl)
@@ -200,6 +202,7 @@
 		yt_active = TRUE
 		playsound(src, 'sound/machines/terminal_on.ogg', 50, TRUE)
 		START_PROCESSING(SSobj, src)
+	SSjukeboxes.yt_jukeboxes |= src
 	update_icon()
 	yt_update_listeners()
 	updateUsrDialog()
@@ -208,6 +211,7 @@
 	var/was_active = yt_active
 	yt_active = FALSE
 	yt_stream_url = null
+	SSjukeboxes.yt_jukeboxes -= src
 	yt_stop_listeners()
 	if(was_active)
 		if(!active)
@@ -220,10 +224,14 @@
 	for(var/client/C as anything in yt_listeners)
 		C?.tgui_panel?.stop_music()
 	yt_listeners.Cut()
+	yt_listener_echo.Cut()
 
 /// Głośność 0-1 wysyłana do przeglądarki gracza (mnożona jeszcze przez jego suwak głośności muzyki).
 /obj/machinery/jukebox/proc/yt_gain_for(mob/M)
 	return round(JUKEBOX_YT_MAX_GAIN * volume / 100 * hearing_gain(M), 0.01)
+
+/obj/machinery/jukebox/proc/yt_echo_for(mob/M)
+	return round(echo_amount(M), 0.05)
 
 /// Dołącza graczy wchodzących w zasięg, wycisza tych, którzy wyszli, i ścisza/podgłaśnia wg odległości.
 /obj/machinery/jukebox/proc/yt_update_listeners()
@@ -233,10 +241,14 @@
 		var/gain = (!QDELETED(C) && C.mob) ? yt_gain_for(C.mob) : 0
 		if(gain <= 0)
 			yt_listeners -= C
+			yt_listener_echo -= C
 			C?.tgui_panel?.stop_music()
-		else if(abs(gain - yt_listeners[C]) >= JUKEBOX_YT_GAIN_STEP)
+			continue
+		var/echo = yt_echo_for(C.mob)
+		if(abs(gain - yt_listeners[C]) >= JUKEBOX_YT_GAIN_STEP || echo != yt_listener_echo[C])
 			yt_listeners[C] = gain
-			C.tgui_panel?.set_music_gain(gain)
+			yt_listener_echo[C] = echo
+			C.tgui_panel?.set_music_gain(gain, echo)
 	for(var/mob/M as anything in GLOB.player_list)
 		var/client/C = M.client
 		if(!C || (C in yt_listeners))
@@ -247,8 +259,10 @@
 		var/list/extra = yt_extra.Copy()
 		extra["start"] = round((world.time - yt_track_started) / 10)
 		extra["volume"] = gain
+		extra["echo"] = yt_echo_for(M)
 		C.tgui_panel?.play_music(yt_stream_url, extra)
 		yt_listeners[C] = gain
+		yt_listener_echo[C] = extra["echo"]
 
 /obj/machinery/jukebox/proc/yt_process()
 	if(machine_stat & (BROKEN|NOPOWER) || !mains || !anchored)
@@ -258,8 +272,6 @@
 		return
 	if(world.time >= yt_track_end)
 		INVOKE_ASYNC(src, .proc/yt_next)
-		return
-	yt_update_listeners()
 
 #undef JUKEBOX_YT_MAX_TRACKS
 #undef JUKEBOX_YT_MAX_TRACK_LENGTH

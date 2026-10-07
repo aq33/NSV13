@@ -8,6 +8,16 @@ import { createLogger } from 'tgui/logging';
 
 const logger = createLogger('AudioPlayer');
 
+// AQUILA EDIT - jukebox distance falloff and echo
+// The echo is a second, quieter copy of the stream lagging behind the main one.
+const ECHO_DELAY = 0.35;
+const ECHO_LEVEL = 0.5;
+// Max gain change per ramp tick, so distance changes fade instead of jumping
+const GAIN_RAMP_STEP = 0.04;
+const GAIN_RAMP_INTERVAL = 50;
+
+const clamp01 = value => Math.min(1, Math.max(0, value));
+
 export class AudioPlayer {
   constructor() {
     // Doesn't support HTMLAudioElement
@@ -23,6 +33,11 @@ export class AudioPlayer {
     this.volume = 1;
     // AQUILA EDIT - extra volume multiplier set by the server (jukebox distance falloff)
     this.gain = 1;
+    this.targetGain = 1;
+    this.echo = 0;
+    this.url = null;
+    this.echoNode = null;
+    this.echoReady = false;
     this.options = {};
     this.onPlaySubscribers = [];
     this.onStopSubscribers = [];
@@ -32,8 +47,9 @@ export class AudioPlayer {
       this.playing = true;
       this.node.playbackRate = this.options.pitch || 1;
       this.node.currentTime = this.options.start || 0;
-      this.node.volume = this.volume * this.gain;
+      this.applyVolume();
       this.node.play();
+      this.syncEcho();
       for (let subscriber of this.onPlaySubscribers) {
         subscriber();
       }
@@ -59,8 +75,21 @@ export class AudioPlayer {
         && this.node.currentTime >= this.options.end;
       if (shouldStop) {
         this.stop();
+        return;
       }
+      this.syncEcho();
     }, 1000);
+    // AQUILA EDIT - smooth volume changes
+    this.rampInterval = setInterval(() => {
+      if (this.gain === this.targetGain) {
+        return;
+      }
+      const delta = this.targetGain - this.gain;
+      this.gain = Math.abs(delta) <= GAIN_RAMP_STEP
+        ? this.targetGain
+        : this.gain + (delta > 0 ? GAIN_RAMP_STEP : -GAIN_RAMP_STEP);
+      this.applyVolume();
+    }, GAIN_RAMP_INTERVAL);
   }
 
   destroy() {
@@ -70,6 +99,7 @@ export class AudioPlayer {
     this.node.stop();
     document.removeChild(this.node);
     clearInterval(this.playbackInterval);
+    clearInterval(this.rampInterval);
   }
 
   play(url, options = {}) {
@@ -79,6 +109,10 @@ export class AudioPlayer {
     logger.log('playing', url, options);
     this.options = options;
     this.gain = typeof options.volume === 'number' ? options.volume : 1;
+    this.targetGain = this.gain;
+    this.echo = typeof options.echo === 'number' ? options.echo : 0;
+    this.url = url;
+    this.stopEcho();
     this.node.src = url;
   }
 
@@ -93,6 +127,8 @@ export class AudioPlayer {
     }
     logger.log('stopping');
     this.playing = false;
+    this.url = null;
+    this.stopEcho();
     this.node.src = '';
   }
 
@@ -101,17 +137,81 @@ export class AudioPlayer {
       return;
     }
     this.volume = volume;
-    this.node.volume = volume * this.gain;
+    this.applyVolume();
   }
 
-  // AQUILA EDIT
-  setGain(gain) {
+  // AQUILA EDIT START
+  setGain(gain, echo = 0) {
     if (!this.node) {
       return;
     }
-    this.gain = gain;
-    this.node.volume = this.volume * gain;
+    this.targetGain = gain;
+    this.echo = echo;
+    this.applyVolume();
+    this.syncEcho();
   }
+
+  applyVolume() {
+    this.node.volume = clamp01(this.volume * this.gain);
+    if (this.echoNode) {
+      this.echoNode.volume = clamp01(
+        this.volume * this.gain * this.echo * ECHO_LEVEL);
+    }
+  }
+
+  stopEcho() {
+    if (!this.echoNode) {
+      return;
+    }
+    this.echoReady = false;
+    this.echoNode.pause();
+    this.echoNode.src = '';
+  }
+
+  // Starts, pauses or resyncs the echo copy to lag ECHO_DELAY behind
+  syncEcho() {
+    if (!this.playing || !this.url || this.echo <= 0) {
+      if (this.echoNode && !this.echoNode.paused) {
+        this.echoNode.pause();
+      }
+      return;
+    }
+    if (!this.echoNode) {
+      this.echoNode = document.createElement('audio');
+      this.echoNode.style.setProperty('display', 'none');
+      document.body.appendChild(this.echoNode);
+      this.echoNode.addEventListener('canplaythrough', () => {
+        if (this.echoReady) {
+          return;
+        }
+        this.echoReady = true;
+        this.syncEcho();
+      });
+      this.echoNode.addEventListener('error', () => {
+        this.echoReady = false;
+      });
+    }
+    if (!this.echoReady) {
+      if (!this.echoNode.src || this.echoNode.src === window.location.href) {
+        this.echoNode.src = this.url;
+      }
+      return;
+    }
+    const target = this.node.currentTime - ECHO_DELAY;
+    if (target < 0) {
+      return;
+    }
+    this.echoNode.playbackRate = this.node.playbackRate;
+    this.applyVolume();
+    if (this.echoNode.paused
+      || Math.abs(this.echoNode.currentTime - target) > 0.2) {
+      this.echoNode.currentTime = target;
+    }
+    if (this.echoNode.paused) {
+      this.echoNode.play();
+    }
+  }
+  // AQUILA EDIT END
 
   onPlay(subscriber) {
     if (!this.node) {

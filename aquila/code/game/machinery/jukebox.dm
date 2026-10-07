@@ -26,9 +26,9 @@
 	/// Gałka głośności w procentach
 	var/volume = 50
 	/// Promień (w kratkach) okręgu, w którym słychać muzykę
-	var/music_range = 12
+	var/music_range = 20
 	/// Do tej odległości muzyka gra pełną głośnością, dalej cichnie
-	var/music_full_range = 2
+	var/music_full_range = 3
 
 /obj/machinery/jukebox/disco
 	name = "Disco Jukebox"
@@ -287,18 +287,30 @@
 		return
 	updateUsrDialog()
 
-/// Mnożnik głośności 0-1 dla danego gracza: okrąg o promieniu music_range, im dalej tym ciszej.
-/obj/machinery/jukebox/proc/hearing_gain(mob/M)
+/// Jak daleko gracz jest w strefie wyciszania: 0 = przy jukeboxie (pełna głośność), 1 = na krawędzi okręgu.
+/// null gdy gracz nic nie słyszy (poza okręgiem, inny z-level, wyłączone instrumenty, głuchy).
+/obj/machinery/jukebox/proc/hearing_fraction(mob/M)
 	if(!M?.client || !(M.client.prefs.toggles & PREFTOGGLE_SOUND_INSTRUMENTS) || !M.can_hear())
-		return 0
+		return null
 	var/turf/T = get_turf(M)
 	var/turf/our_turf = get_turf(src)
 	if(!T || !our_turf || T.z != our_turf.z)
-		return 0
+		return null
 	var/distance = sqrt((T.x - our_turf.x) ** 2 + (T.y - our_turf.y) ** 2)
 	if(distance > music_range)
+		return null
+	return clamp((distance - music_full_range) / (music_range - music_full_range), 0, 1)
+
+/// Mnożnik głośności 0-1: okrąg o promieniu music_range, cichnie płynnie (krzywa cosinusowa, bez skoków na początku i końcu).
+/obj/machinery/jukebox/proc/hearing_gain(mob/M)
+	var/fraction = hearing_fraction(M)
+	if(isnull(fraction))
 		return 0
-	if(distance <= music_full_range)
-		return 1
-	var/falloff = 1 - (distance - music_full_range) / (music_range - music_full_range)
-	return falloff * falloff
+	return (1 + cos(180 * fraction)) / 2
+
+/// Ilość echa 0-1: brak przy jukeboxie, rośnie z odległością.
+/obj/machinery/jukebox/proc/echo_amount(mob/M)
+	var/fraction = hearing_fraction(M)
+	if(isnull(fraction))
+		return 0
+	return clamp((fraction - 0.2) / 0.8, 0, 1)
