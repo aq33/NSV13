@@ -36129,7 +36129,7 @@
 /area/quartermaster/sorting)
 "uJg" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/burger/ghost,
+/obj/item/food/burger/ghost,
 /turf/open/floor/durasteel/padded,
 /area/maintenance/nsv/deck2/frame5/starboard)
 "uJi" = (

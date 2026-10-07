@@ -9702,7 +9702,7 @@
 /area/tcommsat/computer)
 "glE" = (
 /obj/structure/table/wood/fancy/black,
-/obj/item/reagent_containers/food/snacks/burger/fivealarm,
+/obj/item/food/burger/fivealarm,
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
 "glR" = (

@@ -99,14 +99,14 @@
 	name = "Burger"
 	id = "burger"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/burger/plain
+	build_path = /obj/item/food/burger/plain
 	category = list("Basic Dishes")
 
 /datum/design/replicator/tier2/tofuburger
 	name = "Tofu burger"
 	id = "tofuburger"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/burger/tofu
+	build_path = /obj/item/food/burger/tofu
 	category = list("Basic Dishes")
 
 /datum/design/replicator/tier2/flour
@@ -198,21 +198,21 @@
 	name = "Cheese pizza"
 	id = "cheesepizza"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/pizzaslice/margherita
+	build_path = /obj/item/food/pizzaslice/margherita
 	category = list("Complex Dishes")
 
 /datum/design/replicator/tier3/meatpizza
 	name = "Meat pizza"
 	id = "meatpizza"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/pizzaslice/meat
+	build_path = /obj/item/food/pizzaslice/meat
 	category = list("Complex Dishes")
 
 /datum/design/replicator/tier3/mushroompizza
 	name = "Mushroom pizza"
 	id = "mushroompizza"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/pizzaslice/mushroom
+	build_path = /obj/item/food/pizzaslice/mushroom
 	category = list("Complex Dishes")
 
 /datum/design/replicator/tier3/veggiepizza
@@ -220,7 +220,7 @@
 	id = "veggiepizza"
 	alt_name = list("veggie pizza")
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/pizzaslice/vegetable
+	build_path = /obj/item/food/pizzaslice/vegetable
 	category = list("Complex Dishes")
 
 /datum/design/replicator/tier3/pineapplepizza
@@ -228,7 +228,7 @@
 	id = "pineapplepizza"
 	alt_name = list("an insult to pizza")
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/pizzaslice/pineapple
+	build_path = /obj/item/food/pizzaslice/pineapple
 	category = list("Complex Dishes")
 
 /datum/design/replicator/tier3/donkpizza
@@ -236,7 +236,7 @@
 	id = "donkpizza"
 	alt_name = list("donk pizza")
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/pizzaslice/donkpocket
+	build_path = /obj/item/food/pizzaslice/donkpocket
 	category = list("Complex Dishes")
 
 /datum/design/replicator/tier3/tier4disk
@@ -272,21 +272,21 @@
 	name = "Mime burger"
 	id = "mimeburger"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/burger/mime
+	build_path = /obj/item/food/burger/mime
 	category = list("Exotic Dishes")
 
 /datum/design/replicator/tier4/clownburger
 	name = "Clown burger"
 	id = "clownburger"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/burger/clown
+	build_path = /obj/item/food/burger/clown
 	category = list("Exotic Dishes")
 
 /datum/design/replicator/tier4/spellburger
 	name = "Magic burger"
 	id = "magicburger"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/burger/spell
+	build_path = /obj/item/food/burger/spell
 	category = list("Exotic Dishes")
 
 /datum/design/replicator/tier4/active_iguana

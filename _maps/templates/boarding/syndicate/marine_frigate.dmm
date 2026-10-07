@@ -2125,7 +2125,7 @@
 /area/ruin/powered/nsv13/boarding_interior)
 "Vq" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/burger/corgi,
+/obj/item/food/burger/corgi,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/nsv13/boarding_interior)
 "Vw" = (
