@@ -45,6 +45,11 @@ type ByondType = {
   TRIDENT: number | null;
 
   /**
+   * Version of Blink engine of WebView2. Null if N/A.
+   */
+  BLINK: number | null;
+
+  /**
    * True if browser is IE8 or lower.
    */
   IS_LTE_IE8: boolean;
@@ -191,4 +196,13 @@ const Byond: ByondType;
 
 interface Window {
   Byond: ByondType;
+
+  // IE IndexedDB stuff.
+  msIndexedDB: IDBFactory;
+  msIDBTransaction: IDBTransaction;
+
+  // 516 byondstorage API.
+  hubStorage: Storage;
+  domainStorage: Storage;
+  serverStorage: Storage;
 }

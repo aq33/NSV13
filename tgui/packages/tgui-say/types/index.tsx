@@ -29,6 +29,7 @@ type Events = {
 };
 
 type Fields = {
+  dpi: number;
   historyCounter: number;
   innerRef: RefObject<HTMLInputElement>;
   lightMode: boolean;

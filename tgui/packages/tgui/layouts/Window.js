@@ -86,7 +86,7 @@ export class Window extends Component {
       <Layout
         className="Window"
         theme={theme}
-        style={override_bg ? { 'background-color': `${override_bg} !important` } : null}>
+        backgroundColor={override_bg}>
         <TitleBar
           className="Window__titleBar"
           title={!suspended && (title || decodeHtmlEntities(config.title))}
