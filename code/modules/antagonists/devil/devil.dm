@@ -15,7 +15,7 @@
 
 GLOBAL_LIST_EMPTY(allDevils)
 GLOBAL_LIST_INIT(lawlorify, list (
-		LORE = list(
+		/*LORE = */list(
 			OBLIGATION_FOOD = "This devil seems to always offer its victims food before slaughtering them.",
 			OBLIGATION_FIDDLE = "This devil will never turn down a musical challenge.",
 			OBLIGATION_DANCEOFF = "This devil will never turn down a dance off.",
@@ -46,7 +46,7 @@ GLOBAL_LIST_INIT(lawlorify, list (
 			BANISH_DESTRUCTION = "Its corpse must be utterly destroyed to prevent resurrection.",
 			BANISH_FUNERAL_GARB = "If clad in funeral garments, this devil will be unable to resurrect.  Should the clothes not fit, lay them gently on top of the devil's corpse."
 		),
-		LAW = list(
+		/*LAW = */list(
 			OBLIGATION_FOOD = "When not acting in self defense, you must always offer your victim food before harming them.",
 			OBLIGATION_FIDDLE = "When not in immediate danger, if you are challenged to a musical duel, you must accept it.  You are not obligated to duel the same person twice.",
 			OBLIGATION_DANCEOFF = "When not in immediate danger, if you are challenged to a dance off, you must accept it. You are not obligated to face off with the same person twice.",
