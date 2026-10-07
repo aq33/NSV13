@@ -59,3 +59,7 @@
 	key_third_person = "tilts"
 	message = "przechyla głowę na bok"
 	emote_type = EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/wing/get_sound(mob/living/carbon/human/user)
+	if(istype(user.getorganslot(ORGAN_SLOT_WINGS), /obj/item/organ/wings/moth))
+		return 'aquila/sound/emotes/moth_flutter.ogg'

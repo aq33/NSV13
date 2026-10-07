@@ -3,3 +3,6 @@ Sounds ported from BeeStation-Hornet PR #11617 (Emote Update):
 whistle1.ogg: https://freesound.org/people/taure/sounds/411638/ , license: CC0 1.0 (modified by grungussuss)
 moth_flutter.ogg: modified from https://freesound.org/people/Godowan/sounds/240476/ , license: CC0 1.0
 sec_death.ogg: from tgstation/tgstation#82748 (Sadboysuss), license: CC-BY-SA 3.0 (tgstation sound license)
+male_giggle_1.ogg - male_giggle_3.ogg: https://freesound.org/people/SnowFightStudios/sounds/643665/ , license: CC0 1.0 (via BeeStation #11617)
+female_giggle_1.ogg, female_giggle_2.ogg: BeeStation-Hornet #7804, no source given, license: CC-BY-SA 3.0 (BeeStation asset license)
+boop.ogg: BeeStation-Hornet #8519, license: CC-BY-SA 3.0 (BeeStation asset license)

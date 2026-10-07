@@ -152,3 +152,16 @@
 		return FALSE
 	animate(user, pixel_x = user.pixel_x - 1, time = 0.1 SECONDS)
 	animate(pixel_x = user.pixel_x + 1, time = 0.1 SECONDS)
+
+/datum/emote/living/giggle/get_sound(mob/living/user)
+	if(!ishuman(user))
+		return
+	if(user.gender == FEMALE)
+		return pick('aquila/sound/emotes/female_giggle_1.ogg', 'aquila/sound/emotes/female_giggle_2.ogg')
+	return pick('aquila/sound/emotes/male_giggle_1.ogg', 'aquila/sound/emotes/male_giggle_2.ogg', 'aquila/sound/emotes/male_giggle_3.ogg')
+
+/datum/emote/living/collapse/get_sound(mob/living/user)
+	return pick('sound/effects/bodyfall1.ogg', 'sound/effects/bodyfall2.ogg', 'sound/effects/bodyfall3.ogg', 'sound/effects/bodyfall4.ogg')
+
+/datum/emote/living/surrender/get_sound(mob/living/user)
+	return pick('sound/effects/bodyfall1.ogg', 'sound/effects/bodyfall2.ogg', 'sound/effects/bodyfall3.ogg', 'sound/effects/bodyfall4.ogg')
