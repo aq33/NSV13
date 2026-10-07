@@ -1,11 +1,13 @@
 // AQUILA - Chrono Legionnaire midround ghost antagonist event.
-// Only possible while a living player's character is named after a historical tyrant (see GLOB.aquila_chrono_historical_names).
+// Only possible while a living player's character is named after a historical tyrant (see GLOB.aquila_chrono_historical_names)
+// or a paradox clone is around; the clone itself is then the target.
 // A ghost becomes a time agent with the chronosuit and T.E.D., whose only goal is to eliminate that player.
 
 /datum/round_event_control/aquila_chrono_legionnaire
 	name = "Spawn Chrono Legionnaire"
 	typepath = /datum/round_event/ghost_role/aquila_chrono_legionnaire
-	weight = 10
+	// The event can only roll while it has a target, and then it is meant to be 10 times as likely as a regular weight 10 event
+	weight = 100
 	max_occurrences = 2
 	earliest_start = 10 MINUTES
 	cannot_spawn_after_shuttlecall = TRUE
@@ -23,9 +25,9 @@
 	forced_target = null
 	var/list/choices = list()
 	for(var/mob/living/carbon/human/H as anything in aquila_chrono_find_targets())
-		choices["[H.real_name] ([aquila_chrono_historical_figure(H.real_name)])"] = H
+		choices["[H.real_name] ([aquila_chrono_target_reason(H)])"] = H
 	if(!length(choices))
-		to_chat(usr, "<span class='warning'>Nikt na serwerze nie ma imienia z config/chrono_legionnaire_names.txt, legionista się nie pojawi.</span>")
+		to_chat(usr, "<span class='warning'>Nikt na serwerze nie ma imienia z config/chrono_legionnaire_names.txt ani nie jest Klonem Paradoksu, legionista się nie pojawi.</span>")
 		return
 	var/choice = tgui_input_list(usr, "Kogo ma ścigać legionista? Brak wyboru = losowy gracz z listy.", "Chrono Legionnaire", sortList(choices))
 	var/mob/living/carbon/human/picked = choices[choice]
@@ -45,7 +47,7 @@
 	if(forced && !(forced in aquila_chrono_find_targets())) // only players named from the list, even when an admin picks
 		forced = null
 	if(!forced && !length(aquila_chrono_find_targets()))
-		message_admins("Chrono Legionnaire event found nobody named after a tyrant, nothing was spawned.")
+		message_admins("Chrono Legionnaire event found no target (tyrant name or paradox clone), nothing was spawned.")
 		return NOT_ENOUGH_PLAYERS
 
 	var/list/candidates = get_candidates(ROLE_CHRONO_LEGIONNAIRE, /datum/role_preference/midround_ghost/chrono_legionnaire)
