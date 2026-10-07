@@ -5,7 +5,7 @@
 /datum/round_event_control/aquila_ship_partition
 	name = "Ship Partition"
 	typepath = /datum/round_event/aquila_ship_partition
-	weight = 8
+	weight = 10
 	max_occurrences = 1
 	min_players = 8
 	earliest_start = 15 MINUTES
