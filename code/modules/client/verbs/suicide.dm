@@ -268,6 +268,9 @@
 	if(!(mobility_flags & MOBILITY_USE))	//just while I finish up the new 'fun' suiciding verb. This is to prevent metagaming via suicide
 		to_chat(src, "You can't commit suicide whilst immobile! ((You can type Ghost instead however.))")
 		return
+	if(has_horror_inside()) // AQ EDIT - Yogstation#13033
+		to_chat(src, "Coś w twojej głowie powstrzymuje cię przed tym!")
+		return
 	if(CONFIG_GET(flag/restricted_suicide))
 		if(alert("Commiting suicide is strongly discouraged, and in some cases may be against the rules. Consider entering the cryopods or contacting admins. Are you sure you want to continue?",,"Confirm","Cancel") != "Confirm")
 			return
