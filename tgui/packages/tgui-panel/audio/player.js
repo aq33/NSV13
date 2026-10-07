@@ -35,14 +35,15 @@ const GAIN_RAMP_INTERVAL = 25;
 // Plain element: muffled music is this much quieter
 const PLAIN_MUFFLE_VOLUME = 0.4;
 // Plain element echo copies: delay (s) and level relative to the music
-// (one copy - every copy is another download of the stream)
+// (one copy - every copy is another download of the stream). The delay is
+// short so it blends in as room reverb instead of sounding like a second song.
 const PLAIN_TAPS = [
-  { delay: 0.3, level: 0.85 },
+  { delay: 0.12, level: 0.5 },
 ];
 // How much the direct sound is lowered at full echo
-const PLAIN_ECHO_DUCK = 0.4;
+const PLAIN_ECHO_DUCK = 0.2;
 // How far an echo copy may drift before it gets re-seeked (s)
-const TAP_MAX_DRIFT = 0.4;
+const TAP_MAX_DRIFT = 0.07;
 
 const AudioContextClass = window.AudioContext || window.webkitAudioContext;
 
