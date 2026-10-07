@@ -25,9 +25,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/power/apc/auto_name/north{
 	cell_type = /obj/item/stock_parts/cell/high
 	},
@@ -355,9 +353,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/techmaint,
 /area/shuttle/exploration)
 "vp" = (
@@ -368,9 +364,7 @@
 /turf/open/floor/mineral/titanium,
 /area/shuttle/exploration)
 "vA" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -752,9 +746,7 @@
 /area/shuttle/exploration)
 "RG" = (
 /obj/machinery/power/port_gen/pacman,
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel/tech/grid,

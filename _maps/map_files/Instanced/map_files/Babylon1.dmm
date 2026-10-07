@@ -1,9 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "abm" = (
 /obj/structure/extinguisher_cabinet/east,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /obj/machinery/power/apc/auto_name/east{
 	req_access = list(150)
 	},
@@ -1047,9 +1045,7 @@
 /area/space/nearstation)
 "xLI" = (
 /obj/machinery/firealarm/directional/west,
-/obj/structure/cable{
-	icon_state = "4-32"
-	},
+/obj/structure/cable/multiz,
 /turf/open/floor/plating,
 /area/nsv/hanger/pvp)
 "xMI" = (

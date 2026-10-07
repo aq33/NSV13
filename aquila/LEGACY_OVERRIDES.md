@@ -87,6 +87,16 @@ These change lines *inside* upstream procs. Moving them would mean copying whole
 - **Turf fires port, interleaved part** (Yogstation #19738): `flamethrower.dm` (fuel and ignition rewrite), `firealarm.dm` (`temperature_expose()` condition), `change_turf.dm` (fire carried over on `ChangeTurf()`), `anomalies.dm` (pyroclastic anomaly), `bottle.dm` (molotov). Everything else of the port is in `aquila/`.
 - **Job datums** (`jobs/job_types/*.dm`, `military_police.dm`, `subsystem/job.dm`). Outfits, implants, slots and exp requirements are mixed with hardened job-title and radio-channel constants. Left alone to avoid touching the job/config parsing hardening.
 
+### Smartwires port (BeeStation/BeeStation-Hornet#14275, F)
+
+The power cable system is replaced in core, at the same paths as in BeeStation, so a later upstream sync of smartwires lands on the same files. Merging upstream power code needs care here.
+
+- **Rewritten:** `code/modules/power/cable.dm` (whole file), new `code/modules/power/cable_coil.dm`. NSV13 differences against Bee: cables still hide with `level`/`hide(intact)` (we have no `undertile` element), the `/obj/structure/cable/multiz` mapping subtype (our maps link decks on plain floor), a cable computes its own node on `reform_connections()` and counts linked directions with `!!` (Bee summed the bit values, so only north-ending cables got a node), `clear_connections()` also resets the cable's own links (shuttle moves), player-laid open space cables are multi-z, coil keeps the robotic limb repair, cyborg subtype and `novariants = TRUE`.
+- **Changed procs:** `power.dm` (`WANTS_POWER_NODE`, `get_powernet()`, new `get_bridged_cables()`, `get_cable_node()` uses `has_power_node`, old propagation procs removed; `lateShuttleMove()` kept), `powernet.dm` (`dirty`, `mark_dirty()`, `repropogate_cables()` which also walks multi-z cables and `get_bridged_cables()`), `subsystem/machines.dm` (dirty powernet queue), `multiz.dm` (deck relays bridge through `get_bridged_cables()`, `break_connections()` marks the net dirty), `turf.dm` (`attackby` lays cable with `place_on_turf()`).
+- **Removed:** RCL (`items/RCL.dm`, crafting recipe) and the mech cable layer (`work_tools.dm`); coloured coil subtypes (code and maps repathed); `GLOB.powernets`; cable procs in `on_move.dm` and `shuttle_rotate.dm`; noose stack recipe (now a crafting recipe in `recipes.dm`).
+- **Hooks:** `WANTS_POWER_NODE` define in `__DEFINES/machines.dm`, cable colours in `__DEFINES/colors.dm`, `WANTS_POWER_NODE` lines in `grille.dm` and `shieldgen.dm`, two map lints in `tools/ci/check_grep.sh`. NSV13 machines that feed from the cable under them get their `WANTS_POWER_NODE` in `aquila/code/modules/power/smartwires.dm`.
+- **Maps:** converted with `tools/smartwires/convert.py`, which keeps every old powernet as exactly one powernet. Run it on maps from older branches before merging them.
+
 ### Data tweaks left in core lists (D-like)
 
 Vending product lists (`wardrobes.dm`, `clothesmate.dm`, `autodrobe.dm`, `plasmaresearch.dm`, `munitions_machinery.dm`), loot lists (`lootdrop.dm`, `mailspawner.dm`, `uplink_kits.dm`, `boxes.dm`, `cargo/packs.dm`, `security.dm` closet), techweb `design_ids` (`all_nodes.dm`), `poll_ignore.dm`, ambience lists. Overriding a whole list in `aquila/` would silently hide upstream additions, which is worse than a visible merge conflict.
