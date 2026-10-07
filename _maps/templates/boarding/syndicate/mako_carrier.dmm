@@ -3,9 +3,7 @@
 /obj/machinery/power/terminal{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/powered/nsv13/boarding_interior)
 "aF" = (
@@ -150,12 +148,7 @@
 /turf/open/space/basic,
 /area/ruin/powered/nsv13/boarding_interior)
 "gw" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "5-8"
-	},
+/obj/structure/cable,
 /obj/structure/chair/stool,
 /mob/living/simple_animal/hostile/syndicate/melee,
 /turf/open/floor/mineral/plastitanium/red,
@@ -569,12 +562,6 @@
 /obj/item/fighter_component/oxygenator,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/nsv13/boarding_interior)
-"wy" = (
-/obj/structure/cable{
-	icon_state = "1-10"
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/powered/nsv13/boarding_interior)
 "xv" = (
 /obj/machinery/genpop_interface{
 	req_access = list(150)
@@ -593,9 +580,7 @@
 /turf/open/space/basic,
 /area/ruin/powered/nsv13/boarding_interior)
 "xO" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/nsv13/boarding_interior)
 "yq" = (
@@ -685,9 +670,7 @@
 /area/ruin/powered/nsv13/boarding_interior)
 "CE" = (
 /obj/structure/grille,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /turf/open/space/basic,
 /area/ruin/powered/nsv13/boarding_interior)
 "CG" = (
@@ -1020,9 +1003,7 @@
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "VG" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/closed/wall/r_wall,
 /area/ruin/powered/nsv13/boarding_interior)
 "VL" = (
@@ -30937,7 +30918,7 @@ Cb
 hS
 ng
 fG
-wy
+xO
 xO
 UX
 fG

@@ -29,10 +29,7 @@
 /obj/structure/lattice/catwalk{
 	layer = 2.9
 	},
-/obj/structure/cable{
-	layer = 3;
-	level = 2
-	},
+/obj/structure/cable/yellow,
 /obj/item/screwdriver,
 /turf/open/floor/fakespace,
 /area/tdome/arena)
@@ -40,20 +37,14 @@
 /obj/structure/lattice/catwalk{
 	layer = 2.9
 	},
-/obj/structure/cable{
-	layer = 3;
-	level = 2
-	},
+/obj/structure/cable,
 /turf/open/floor/fakespace,
 /area/tdome/arena)
 "h" = (
 /obj/structure/lattice/catwalk{
 	layer = 2.9
 	},
-/obj/structure/cable{
-	layer = 3;
-	level = 2
-	},
+/obj/structure/cable/green,
 /obj/item/clothing/suit/space/fragile{
 	pixel_x = -2;
 	pixel_y = -4
@@ -67,10 +58,7 @@
 /obj/structure/lattice/catwalk{
 	layer = 2.9
 	},
-/obj/structure/cable{
-	layer = 3;
-	level = 2
-	},
+/obj/structure/cable/yellow,
 /obj/item/stack/cable_coil,
 /turf/open/floor/fakespace,
 /area/tdome/arena)
@@ -82,11 +70,23 @@
 /obj/structure/lattice/catwalk{
 	layer = 2.9
 	},
-/obj/structure/cable{
-	layer = 3;
-	level = 2
-	},
+/obj/structure/cable,
 /obj/item/wrench,
+/turf/open/floor/fakespace,
+/area/tdome/arena)
+"C" = (
+/obj/machinery/power/solar{
+	id = "portsolar";
+	name = "Port Solar Array"
+	},
+/obj/structure/cable/yellow,
+/turf/open/floor/plasteel/airless/solarpanel,
+/area/tdome/arena)
+"Q" = (
+/obj/structure/lattice/catwalk{
+	layer = 2.9
+	},
+/obj/structure/cable/yellow,
 /turf/open/floor/fakespace,
 /area/tdome/arena)
 
@@ -123,31 +123,31 @@ a
 (4,1,1) = {"
 a
 e
-g
+Q
 e
 a
 e
-g
+Q
 e
 "}
 (5,1,1) = {"
 a
-e
+C
 g
-e
+C
 a
-e
+C
 g
-e
+C
 "}
 (6,1,1) = {"
 a
 e
-g
+Q
 e
 a
 e
-g
+Q
 e
 "}
 (7,1,1) = {"
@@ -167,7 +167,7 @@ h
 g
 i
 g
-g
+Q
 g
 "}
 (9,1,1) = {"
@@ -183,31 +183,31 @@ a
 (10,1,1) = {"
 a
 e
-g
+Q
 e
 a
 e
-g
+Q
 e
 "}
 (11,1,1) = {"
 a
-e
+C
 g
-e
+C
 a
-e
+C
 g
-e
+C
 "}
 (12,1,1) = {"
 a
 e
-g
+Q
 e
 a
 e
-g
+Q
 e
 "}
 (13,1,1) = {"

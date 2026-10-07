@@ -3,9 +3,7 @@
 /obj/machinery/atmospherics/pipe/layer_manifold{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/bar)
 "ay" = (
@@ -59,25 +57,8 @@
 /obj/structure/sign/departments/minsky/supply/mining,
 /turf/closed/wall/r_wall,
 /area/hammurabi/hangar)
-"bC" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/hammurabi/bar)
 "bT" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/bar)
 "cc" = (
@@ -95,12 +76,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 10
 	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance/secondary)
 "cz" = (
@@ -281,9 +257,7 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/bar)
 "ih" = (
@@ -303,9 +277,7 @@
 	pixel_y = 24;
 	req_access = list(150)
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/airless,
 /area/hammurabi/hangar)
 "jy" = (
@@ -326,9 +298,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/bar)
 "kw" = (
@@ -396,9 +366,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/hammurabi/bar)
 "nk" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/atc_tower)
 "ns" = (
@@ -470,9 +438,7 @@
 /turf/open/floor/mineral/plastitanium/airless,
 /area/hammurabi/hangar)
 "pD" = (
-/obj/structure/cable{
-	icon_state = "8-32"
-	},
+/obj/structure/cable/multiz,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -487,9 +453,7 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/bar)
 "qn" = (
@@ -515,9 +479,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/light/small,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/atc_tower)
@@ -572,9 +534,7 @@
 /obj/item/kirbyplants{
 	icon_state = "plant-28"
 	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /obj/machinery/power/apc/auto_name/east{
 	req_access = list(150)
 	},
@@ -586,9 +546,7 @@
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance/secondary)
 "sS" = (
@@ -598,9 +556,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/bar)
 "sV" = (
@@ -707,12 +663,6 @@
 /obj/effect/turf_decal/loading_area/red,
 /turf/open/floor/engine/airless,
 /area/hammurabi/maintenance/exterior)
-"xr" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/hammurabi/atc_tower)
 "xu" = (
 /obj/effect/turf_decal/ship/delivery{
 	color = "#8B0000"
@@ -829,9 +779,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/bar)
 "BU" = (
@@ -843,9 +791,7 @@
 "Cp" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/bar)
 "Cv" = (
@@ -926,12 +872,7 @@
 "GW" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/bar)
 "Hf" = (
@@ -953,9 +894,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/atc_tower)
 "IG" = (
@@ -993,17 +932,13 @@
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/atc_tower)
 "Ky" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/atc_tower)
 "Le" = (
@@ -1023,9 +958,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/bar)
 "LU" = (
@@ -1040,9 +973,7 @@
 "Mj" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -1086,9 +1017,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/bar)
 "MK" = (
@@ -1160,9 +1089,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/atc_tower)
 "Pe" = (
@@ -1196,21 +1123,14 @@
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/bar)
 "Qj" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red/airless,
 /area/hammurabi/hangar)
 "Qs" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/machinery/power/apc/auto_name/north{
 	pixel_y = 24;
 	req_access = list(150)
@@ -1273,9 +1193,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
 	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/atc_tower)
 "RY" = (
@@ -1319,15 +1237,11 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
 	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/hammurabi/bar)
 "SS" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/space_heater,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance/secondary)
@@ -1396,9 +1310,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/hammurabi/maintenance/secondary)
 "UZ" = (
@@ -1446,7 +1358,7 @@
 /obj/item/circuitboard/machine/ore_silo,
 /obj/item/circuitboard/machine/ore_redemption,
 /obj/item/stack/sheet/iron/twenty,
-/obj/item/stack/cable_coil/red,
+/obj/item/stack/cable_coil,
 /obj/item/wrench,
 /obj/item/screwdriver,
 /obj/item/stock_parts/micro_laser,
@@ -29349,7 +29261,7 @@ UR
 Tk
 EU
 UR
-bC
+ki
 bT
 bT
 bT
@@ -31667,7 +31579,7 @@ CG
 CG
 UZ
 Sp
-xr
+nk
 oJ
 TS
 Ra

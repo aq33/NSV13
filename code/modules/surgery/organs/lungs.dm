@@ -299,6 +299,7 @@
 				return
 		breath.adjust_moles(GAS_NUCLEIUM, -gas_breathed)
 		//NSV13 end
+		handle_miasma_breath(H, PP(breath, GAS_MIASMA)) // AQ EDIT - Miasma, see aquila/code/modules/miasma/miasma_breath.dm
 
 		handle_breath_temperature(breath, H)
 	return TRUE
