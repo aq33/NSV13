@@ -9,7 +9,7 @@ import { storage } from 'common/storage';
 import { loadSettings, updateSettings } from '../settings/actions';
 import { selectSettings } from '../settings/selectors';
 import { addChatPage, changeChatPage, changeScrollTracking, loadChat, rebuildChat, toggleAcceptedType, updateMessageCount, removeChatPage, saveChatToDisk } from './actions';
-import { MAX_PERSISTED_MESSAGES, MESSAGE_SAVE_INTERVAL } from './constants';
+import { HUB_STORAGE_MAX_PERSISTED_MESSAGES, HUB_STORAGE_SAVE_INTERVAL, MAX_PERSISTED_MESSAGES, MESSAGE_SAVE_INTERVAL } from './constants';
 import { createMessage, serializeMessage } from './model';
 import { chatRenderer } from './renderer';
 import { selectChat, selectCurrentChatPage } from './selectors';
@@ -23,10 +23,16 @@ const FORBID_TAGS = [
   'video',
 ];
 
+// Same check as StorageProxy uses to pick the byondstorage backend
+const usesHubStorage = !Byond.TRIDENT && !!window.hubStorage;
+
 const saveChatToStorage = async store => {
   const state = selectChat(store.getState());
+  const maxPersisted = usesHubStorage
+    ? HUB_STORAGE_MAX_PERSISTED_MESSAGES
+    : MAX_PERSISTED_MESSAGES;
   const fromIndex = Math.max(0,
-    chatRenderer.messages.length - MAX_PERSISTED_MESSAGES);
+    chatRenderer.messages.length - maxPersisted);
   const messages = chatRenderer.messages
     .slice(fromIndex)
     .map(message => serializeMessage(message));
@@ -79,7 +85,8 @@ export const chatMiddleware = store => {
   chatRenderer.events.on('scrollTrackingChanged', scrollTracking => {
     store.dispatch(changeScrollTracking(scrollTracking));
   });
-  setInterval(() => saveChatToStorage(store), MESSAGE_SAVE_INTERVAL);
+  setInterval(() => saveChatToStorage(store),
+    usesHubStorage ? HUB_STORAGE_SAVE_INTERVAL : MESSAGE_SAVE_INTERVAL);
   return next => action => {
     const { type, payload } = action;
     if (!initialized) {
