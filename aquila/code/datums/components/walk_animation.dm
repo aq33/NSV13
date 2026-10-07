@@ -6,7 +6,8 @@
  * w rękach i wszystkie nakładki są więc cięte razem z ciałem.
  * Maski są kierunkowe (aquila/icons/mob/walk_masks.dmi) i dziedziczą kierunek moba po stronie klienta.
  * "arm_a"/"leg_a" to strona lewa na ekranie przy widoku z przodu i z tyłu; w widoku z boku
- * "arm_a" to ręka bliżej patrzącego, "leg_a" noga z tyłu, a "leg_b" noga z przodu.
+ * "arm_a" to ręka bliżej patrzącego, a "leg_a" i "leg_b" pokazują obie nogi w pełnej szerokości.
+ * Z boku "leg_b" jest widoczna tylko w trakcie kroku, żeby w spoczynku nogi nie były rysowane podwójnie.
  */
 /datum/component/walk_animation
 	/// Bufor, do którego rysuje się mob
@@ -34,19 +35,21 @@
 	em_block = new(null, body_target)
 	H.vis_contents += em_block
 
-	// Nogi pod tułowiem, ręce nad nim
+	// Nogi pod tułowiem (wysuwana z boku nad tylną), ręce nad nim
 	add_limb(H, "leg_a", FLOAT_LAYER - 0.2)
-	add_limb(H, "leg_b", FLOAT_LAYER - 0.2)
+	add_limb(H, "leg_b", FLOAT_LAYER - 0.15)
 	add_limb(H, "torso_cut", FLOAT_LAYER - 0.1, MASK_INVERSE)
 	add_limb(H, "arm_a", FLOAT_LAYER)
 	add_limb(H, "arm_b", FLOAT_LAYER)
+	update_side_leg(H.dir)
 
 	RegisterSignal(H, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved))
+	RegisterSignal(H, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
 
 /datum/component/walk_animation/Destroy()
 	var/mob/living/carbon/human/H = parent
 	if(H)
-		UnregisterSignal(H, COMSIG_MOVABLE_MOVED)
+		UnregisterSignal(H, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE))
 		if(H.render_target == body_target)
 			H.render_target = old_render_target
 		H.vis_contents -= em_block
@@ -86,17 +89,34 @@
 	// Czas jednego kroku w decysekundach, odtworzony z glide_size (odwrotność DELAY_TO_GLIDE_SIZE).
 	var/half_step = (world.icon_size / max(source.glide_size, 1)) * world.tick_lag / 2
 	phase = !phase
+	update_side_leg(source.dir)
 
 	if(source.dir & (EAST|WEST))
-		// Z boku: nogi rozchodzą się w krok, ręka na przemian w przód i w tył
+		// Z boku: tylna noga cofa się, a pełna kopia nóg wysuwa się w przód, ręka na przemian w przód i w tył
 		var/forward = (source.dir & EAST) ? 1 : -1
 		swing("leg_a", -forward, 0, half_step)
-		swing("leg_b", forward, 0, half_step)
+		var/obj/effect/overlay/walk_limb/front_leg = limbs["leg_b"]
+		animate(front_leg, alpha = 255, time = 0)
+		animate(pixel_w = forward, time = half_step, easing = SINE_EASING | EASE_OUT)
+		animate(pixel_w = 0, time = half_step, easing = SINE_EASING | EASE_IN)
+		animate(alpha = 0, time = 0)
 		swing("arm_a", phase ? forward : -forward, 0, half_step)
 	else
 		// Z przodu i z tyłu: unosi się jedna noga i ręka po przeciwnej stronie
 		swing(phase ? "leg_a" : "leg_b", 0, 1, half_step)
 		swing(phase ? "arm_b" : "arm_a", 0, 1, half_step)
+
+/datum/component/walk_animation/proc/on_dir_change(mob/living/carbon/human/source, old_dir, new_dir)
+	SIGNAL_HANDLER
+
+	update_side_leg(new_dir)
+
+/// Z boku maska "leg_b" pokrywa się z "leg_a", więc w spoczynku ta noga jest ukryta; z przodu i z tyłu zawsze widoczna.
+/datum/component/walk_animation/proc/update_side_leg(new_dir)
+	var/obj/effect/overlay/walk_limb/leg = limbs["leg_b"]
+	var/target_alpha = (new_dir & (EAST|WEST)) ? 0 : 255
+	if(leg.alpha != target_alpha)
+		animate(leg, alpha = target_alpha, pixel_w = 0, pixel_z = 0, time = 0)
 
 /// Przesuwa fragment o (x, y) pikseli i wraca na miejsce w czasie jednego kroku.
 /datum/component/walk_animation/proc/swing(state, x, y, half_step)
