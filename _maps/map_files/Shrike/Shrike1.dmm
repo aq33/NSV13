@@ -7640,19 +7640,19 @@
 "MH" = (
 /obj/structure/table/glass,
 /obj/item/storage/bag/tray,
-/obj/item/reagent_containers/food/snacks/raisincookie{
+/obj/item/food/cookie/raisin{
 	pixel_x = 4;
 	pixel_y = -4
 	},
-/obj/item/reagent_containers/food/snacks/raisincookie,
-/obj/item/reagent_containers/food/snacks/cookie{
+/obj/item/food/cookie/raisin,
+/obj/item/food/cookie{
 	pixel_y = -8
 	},
-/obj/item/reagent_containers/food/snacks/cookie{
+/obj/item/food/cookie{
 	pixel_x = -5;
 	pixel_y = -5
 	},
-/obj/item/reagent_containers/food/snacks/raisincookie{
+/obj/item/food/cookie/raisin{
 	pixel_x = 2;
 	pixel_y = -2
 	},

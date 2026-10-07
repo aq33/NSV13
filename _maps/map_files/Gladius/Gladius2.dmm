@@ -28790,7 +28790,7 @@
 /area/engine/engineering/ftl_room)
 "rNm" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/muffin/berry,
+/obj/item/food/muffin/berry,
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
 "rNx" = (

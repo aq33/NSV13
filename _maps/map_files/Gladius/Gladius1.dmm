@@ -21921,7 +21921,7 @@
 /area/medical/morgue)
 "lrC" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/waffles,
+/obj/item/food/waffles,
 /turf/open/floor/monotile/steel,
 /area/crew_quarters/dorms/nsv/state_room)
 "lrK" = (

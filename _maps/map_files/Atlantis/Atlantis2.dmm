@@ -17527,7 +17527,7 @@
 /area/bridge/cic)
 "sNm" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/donkpocket,
+/obj/item/food/donkpocket,
 /turf/open/floor/carpet/cyan,
 /area/medical/medbay/central)
 "sOm" = (

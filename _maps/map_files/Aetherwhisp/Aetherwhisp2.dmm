@@ -30631,7 +30631,7 @@
 /obj/item/tank/internals/oxygen/red{
 	desc = "Needed for living"
 	},
-/obj/item/reagent_containers/food/snacks/donkpocket/warm{
+/obj/item/food/donkpocket/warm{
 	desc = "Yummy Donk Pockets! (Paid for by Donk Co.)";
 	pixel_x = 5;
 	pixel_y = -2

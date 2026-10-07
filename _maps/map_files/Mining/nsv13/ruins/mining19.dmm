@@ -88,7 +88,7 @@
 /area/ruin/powered)
 "u" = (
 /obj/structure/table/wood/fancy,
-/obj/item/reagent_containers/food/snacks/raisincookie,
+/obj/item/food/cookie/raisin,
 /turf/open/floor/wood,
 /area/ruin/powered)
 "v" = (

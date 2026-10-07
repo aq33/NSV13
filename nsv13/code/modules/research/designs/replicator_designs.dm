@@ -148,7 +148,7 @@
 	name = "Pancakes"
 	id = "pancakes"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/pancakes
+	build_path = /obj/item/food/pancakes
 	category = list("Basic Dishes")
 
 /datum/design/replicator/tier2/coffee

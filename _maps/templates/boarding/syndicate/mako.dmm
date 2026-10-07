@@ -59,7 +59,7 @@
 /turf/open/floor/engine,
 /area/ruin/powered/nsv13/boarding_interior)
 "bq" = (
-/obj/item/reagent_containers/food/snacks/donut,
+/obj/item/food/donut,
 /obj/item/storage/toolbox/mechanical,
 /obj/structure/closet,
 /turf/open/floor/engine,

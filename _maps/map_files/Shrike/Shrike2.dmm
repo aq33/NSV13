@@ -1862,7 +1862,7 @@
 "gp" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/bag/tray,
-/obj/item/reagent_containers/food/snacks/donut/jelly/caramel{
+/obj/item/food/donut/jelly/caramel{
 	pixel_x = -4;
 	pixel_y = 2
 	},

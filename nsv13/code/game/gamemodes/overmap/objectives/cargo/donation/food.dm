@@ -37,7 +37,7 @@
 		/obj/item/food/nachos,
 		/obj/item/food/cheesynachos,
 		/obj/item/food/cubannachos,
-		/obj/item/reagent_containers/food/snacks/waffles,
+		/obj/item/food/waffles,
 		/obj/item/reagent_containers/food/snacks/pie/cream,
 		/obj/item/reagent_containers/food/snacks/pie/pumpkinpie,
 		/obj/item/reagent_containers/food/snacks/pie/plain,

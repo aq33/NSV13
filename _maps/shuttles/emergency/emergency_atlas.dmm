@@ -303,11 +303,11 @@
 /area/shuttle/escape)
 "ln" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/donkpocket,
-/obj/item/reagent_containers/food/snacks/donkpocket,
-/obj/item/reagent_containers/food/snacks/donkpocket,
-/obj/item/reagent_containers/food/snacks/donkpocket,
-/obj/item/reagent_containers/food/snacks/donkpocket,
+/obj/item/food/donkpocket,
+/obj/item/food/donkpocket,
+/obj/item/food/donkpocket,
+/obj/item/food/donkpocket,
+/obj/item/food/donkpocket,
 /obj/machinery/jukebox{
 	density = 0;
 	desc = "A classic music player tied into the shuttle's intercom.";
