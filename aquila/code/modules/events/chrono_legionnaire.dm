@@ -5,8 +5,7 @@
 /datum/round_event_control/aquila_chrono_legionnaire
 	name = "Spawn Chrono Legionnaire"
 	typepath = /datum/round_event/ghost_role/aquila_chrono_legionnaire
-	// Can only roll while someone is named after a tyrant, so it may as well be likely when it can
-	weight = 25
+	weight = 10
 	max_occurrences = 2
 	min_players = 5
 	earliest_start = 10 MINUTES
@@ -24,12 +23,12 @@
 		return
 	forced_target = null
 	var/list/choices = list()
-	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
-		if(!H.client && !H.mind) // skip random corpses and NPC bodies nobody plays
-			continue
-		var/figure = aquila_chrono_historical_figure(H.real_name)
-		choices["[H.real_name][figure ? " ([figure])" : ""][H.client ? "" : " (bez gracza)"]"] = H
-	var/choice = tgui_input_list(usr, "Kogo ma ścigać legionista? Brak wyboru = losowy gracz o imieniu tyrana.", "Chrono Legionnaire", sortList(choices))
+	for(var/mob/living/carbon/human/H as anything in aquila_chrono_find_targets())
+		choices["[H.real_name] ([aquila_chrono_historical_figure(H.real_name)])"] = H
+	if(!length(choices))
+		to_chat(usr, "<span class='warning'>Nikt na serwerze nie ma imienia z config/chrono_legionnaire_names.txt, legionista się nie pojawi.</span>")
+		return
+	var/choice = tgui_input_list(usr, "Kogo ma ścigać legionista? Brak wyboru = losowy gracz z listy.", "Chrono Legionnaire", sortList(choices))
 	var/mob/living/carbon/human/picked = choices[choice]
 	if(picked)
 		forced_target = WEAKREF(picked)
@@ -44,6 +43,8 @@
 	var/mob/living/carbon/human/forced = chrono_control?.forced_target?.resolve()
 	if(chrono_control)
 		chrono_control.forced_target = null
+	if(forced && !(forced in aquila_chrono_find_targets())) // only players named from the list, even when an admin picks
+		forced = null
 	if(!forced && !length(aquila_chrono_find_targets()))
 		message_admins("Chrono Legionnaire event found nobody named after a tyrant, nothing was spawned.")
 		return NOT_ENOUGH_PLAYERS
@@ -54,7 +55,7 @@
 
 	// The poll takes a while, pick the target afterwards so they are still around
 	var/mob/living/carbon/human/target
-	if(forced && !QDELETED(forced) && forced.stat != DEAD)
+	if(forced && (forced in aquila_chrono_find_targets()))
 		target = forced
 	else
 		var/list/targets = aquila_chrono_find_targets()
