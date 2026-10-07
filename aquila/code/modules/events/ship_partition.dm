@@ -7,7 +7,6 @@
 	typepath = /datum/round_event/aquila_ship_partition
 	weight = 10
 	max_occurrences = 1
-	min_players = 8
 	earliest_start = 15 MINUTES
 
 /datum/round_event/aquila_ship_partition
