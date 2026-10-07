@@ -165,16 +165,16 @@
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/wings/wing_slot = H.getorganslot(ORGAN_SLOT_WINGS)
 		if(istype(wing_slot))
-			. = message + " wings"
+			. = message
 			wings = TRUE
 	if(!wings && iscarbon(user))
 		var/mob/living/carbon/C = user
 		var/obj/item/bodypart/l_arm = C.get_bodypart(BODY_ZONE_L_ARM)
 		var/obj/item/bodypart/r_arm = C.get_bodypart(BODY_ZONE_R_ARM)
 		if(l_arm && r_arm)
-			. = message + " arms"
+			. = replacetext(message, "skrzydłami", "rękami")
 		else
-			. = message + " arm"
+			. = replacetext(message, "skrzydłami", "ręką")
 
 /datum/emote/living/flap/aflap
 	key = "aflap"
@@ -182,12 +182,12 @@
 	message = "trzepocze skrzydłami"
 	restraint_check = TRUE
 	wing_time = 5
-	name = "flap (Angry)"
+	name = "trzepotać skrzydłami (gniewnie)"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/living/flap/aflap/select_message_type(mob/user, intentional)
 	. = ..()
-	. += " aggressively"
+	. += " gniewnie"
 
 /datum/emote/living/frown
 	key = "frown"
@@ -310,7 +310,7 @@
 				message_param = "stara się wskazać nogą na %t, ale <span class='userdanger'>upada!</span>!"
 				H.Paralyze(20)
 			else
-				message_param = "<span class='userdanger'>bumps [user.p_their()] head on the ground</span> trying to motion towards %t."
+				message_param = "<span class='userdanger'>uderza głową o ziemię</span>, próbując wskazać na %t."
 				H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
 	..()
 
@@ -447,7 +447,7 @@
 /datum/emote/living/twitch_s
 	key = "twitch_s"
 	message = "dostaje drgawek"
-	name = "twitch (Slight)"
+	name = "drgnąć lekko"
 	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/wave
@@ -467,7 +467,7 @@
 	key = "wsmile"
 	key_third_person = "wsmiles"
 	message = "lekko się uśmiecha"
-	name = "smile (Weak)"
+	name = "uśmiechnąć się lekko"
 	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/yawn
@@ -485,7 +485,7 @@
 /datum/emote/living/custom/proc/check_invalid(mob/user, input)
 	var/static/regex/stop_bad_mime = regex(@"says|exclaims|yells|asks")
 	if(stop_bad_mime.Find(input, 1, 1))
-		to_chat(user, "<span class='danger'>Invalid emote.</span>")
+		to_chat(user, "<span class='danger'>Nieprawidłowa emotka.</span>")
 		return TRUE
 	return FALSE
 
@@ -496,15 +496,15 @@
 	if(!can_run_emote(user, TRUE, intentional))
 		return FALSE
 	if(is_banned_from(user.ckey, "Emote"))
-		to_chat(user, "You cannot send custom emotes (banned).")
+		to_chat(user, "Nie możesz używać własnych emotek (ban).")
 		return FALSE
 	else if(QDELETED(user))
 		return FALSE
 	else if(user.client && user.client.prefs.muted & MUTE_IC)
-		to_chat(user, "You cannot send IC messages (muted).")
+		to_chat(user, "Nie możesz wysyłać wiadomości IC (wyciszenie).")
 		return FALSE
 	else if(!params)
-		var/custom_emote = stripped_input(user, "Choose an emote to display.")
+		var/custom_emote = stripped_input(user, "Wpisz treść emotki.")
 		if(custom_emote && !check_invalid(user, custom_emote))
 			var/list/emote_list = list("Słyszalna", "Widoczna", "Obie")
 			var/type = tgui_input_list(user, "Czy ta emotka ma być słyszalna, czy widoczna?", "Typ emotki", emote_list)
@@ -516,7 +516,7 @@
 				if("Obie")
 					emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 				else
-					alert("Unable to use this emote, must be either hearable or visible.")
+					alert("Emotka musi być słyszalna lub widoczna.")
 					return
 			message = user.say_emphasis(custom_emote) //NSV13
 	else
@@ -536,7 +536,7 @@
 /datum/emote/living/help/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	var/list/keys = list()
-	var/list/message = list("Available emotes, you can use them with say \"*emote\": ")
+	var/list/message = list("Dostępne emotki, użyjesz ich w say jako \"*emotka\": ")
 
 	for(var/key in GLOB.emote_list)
 		for(var/datum/emote/P in GLOB.emote_list[key])
@@ -562,8 +562,8 @@
 /datum/emote/beep
 	key = "beep"
 	key_third_person = "beeps"
-	message = "beeps"
-	message_param = "beeps at %t"
+	message = "pika"
+	message_param = "pika na %t"
 	sound = 'sound/machines/twobeep.ogg'
 	mob_type_allowed_typecache = list(/mob/living/brain, /mob/living/silicon, /mob/living/simple_animal/hostile/mining_drone)
 	emote_type = EMOTE_AUDIBLE
@@ -602,7 +602,7 @@
 /datum/emote/living/raisehand
 	key = "highfive"
 	key_third_person = "highfives"
-	message = "raises their hand"
+	message = "unosi dłoń"
 	restraint_check = TRUE
 	emote_type = EMOTE_VISIBLE
 
@@ -660,7 +660,7 @@
 /datum/emote/living/zap
 	key = "zap"
 	key_third_person = "zaps"
-	message = "zaps"
+	message = "strzela iskrą"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/zap/can_run_emote(mob/user, status_check = TRUE , intentional)

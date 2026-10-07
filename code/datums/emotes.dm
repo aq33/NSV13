@@ -149,7 +149,7 @@
 	var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
 	if(hologram)
 		if(emote_type & (EMOTE_AUDIBLE | EMOTE_VISIBLE))
-			hologram.audible_message(msg, deaf_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>", audible_message_flags = list(CHATMESSAGE_EMOTE = TRUE))
+			hologram.audible_message(msg, deaf_message = "<span class='emote'>Widzisz, jak <b>[user]</b> [msg]</span>", audible_message_flags = list(CHATMESSAGE_EMOTE = TRUE))
 		else if(emote_type & EMOTE_VISIBLE)
 			hologram.visible_message(msg, visible_message_flags = list(CHATMESSAGE_EMOTE = TRUE))
 	//NSV13 - AI QoL - Stop
@@ -169,7 +169,7 @@
 /datum/emote/proc/select_message_type(mob/user, intentional)
 	. = message
 	if(!muzzle_ignore && user.is_muzzled() && (emote_type & EMOTE_AUDIBLE))
-		return "makes a [pick("strong ", "weak ", "")]noise."
+		return "wydaje [pick("głośny ", "cichy ", "")]dźwięk."
 	if(user.mind?.miming && message_mime)
 		. = message_mime
 	if(isalienadult(user) && message_alien)
@@ -204,11 +204,11 @@
 				return FALSE
 			switch(user.stat)
 				if(SOFT_CRIT)
-					to_chat(user, "<span class='notice'>You cannot [key] while in a critical condition.</span>")
+					to_chat(user, "<span class='notice'>Nie możesz użyć *[key] w stanie krytycznym.</span>")
 				if(UNCONSCIOUS)
-					to_chat(user, "<span class='notice'>You cannot [key] while unconscious.</span>")
+					to_chat(user, "<span class='notice'>Nie możesz użyć *[key], będąc nieprzytomnym.</span>")
 				if(DEAD)
-					to_chat(user, "<span class='notice'>You cannot [key] while dead.</span>")
+					to_chat(user, "<span class='notice'>Nie możesz użyć *[key], będąc martwym.</span>")
 			return FALSE
 		if(restraint_check)
 			if(isliving(user))
@@ -216,12 +216,12 @@
 				if(L.IsParalyzed() || L.IsStun())
 					if(!intentional)
 						return FALSE
-					to_chat(user, "<span class='notice'>You cannot [key] while stunned.</span>")
+					to_chat(user, "<span class='notice'>Nie możesz użyć *[key], będąc ogłuszonym.</span>")
 					return FALSE
 		if(restraint_check && user.restrained())
 			if(!intentional)
 				return FALSE
-			to_chat(user, "<span class='notice'>You cannot [key] while restrained.</span>")
+			to_chat(user, "<span class='notice'>Nie możesz użyć *[key], będąc skrępowanym.</span>")
 			return FALSE
 
 	if(isliving(user))

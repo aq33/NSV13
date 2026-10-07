@@ -11,12 +11,12 @@
 	var/turf/T = get_turf(user)
 	var/obj/item/organ/butt/B = C.getorganslot(ORGAN_SLOT_BUTT)
 	if(!B)
-		to_chat(user, "<span class='warning'>You don't have a butt!</span>")
+		to_chat(user, "<span class='warning'>Nie masz tyłka!</span>")
 		return FALSE
 
 	if(HAS_TRAIT(user, TRAIT_MEGAFART) && HAS_TRAIT(user, TRAIT_TOXICFART))
-		user.visible_message("<span class = 'warning'>[user] hunches down and grits [user.p_their()] teeth!</span>","<span class = 'warning'>You hunch down and grit your teeth. Stand still!</span>")
-		to_chat(user, "<span class = 'userdanger'>You have a very bad feeling about this!</span>")
+		user.visible_message("<span class = 'warning'>[user] kuca i zaciska zęby!</span>","<span class = 'warning'>Kucasz i zaciskasz zęby. Nie ruszaj się!</span>")
+		to_chat(user, "<span class = 'userdanger'>Masz co do tego bardzo złe przeczucia!</span>")
 		if(do_mob(user, user, 3.5 SECONDS))
 			explosion(T, -1, 0, 0, 0, 0, flame_range = 2)
 			C.Knockdown(2 SECONDS)
@@ -25,7 +25,7 @@
 			C.apply_damage(15, BRUTE, BODY_ZONE_CHEST)
 
 	else if(HAS_TRAIT(user, TRAIT_MEGAFART))
-		user.visible_message("<span class = 'warning'>[user] hunches down and grits [user.p_their()] teeth!</span>","<span class = 'warning'>You hunch down and grit your teeth. Stand still!</span>")
+		user.visible_message("<span class = 'warning'>[user] kuca i zaciska zęby!</span>","<span class = 'warning'>Kucasz i zaciskasz zęby. Nie ruszaj się!</span>")
 		if(do_mob(user, user, 2.5 SECONDS))
 			for(var/mob/M in urange(3, user))
 				if(!M.stat)
@@ -36,7 +36,7 @@
 			//why are we still here? just to suffer?
 
 	else if(HAS_TRAIT(user, TRAIT_TOXICFART))
-		user.visible_message("<span class = 'warning'>[user] hunches down and grits [user.p_their()] teeth!</span>","<span class = 'warning'>You hunch down and grit your teeth. Stand still!</span>")
+		user.visible_message("<span class = 'warning'>[user] kuca i zaciska zęby!</span>","<span class = 'warning'>Kucasz i zaciskasz zęby. Nie ruszaj się!</span>")
 		if(do_mob(user, user, 1.5 SECONDS))
 			if(istype(T, /turf/open))
 				T.atmos_spawn_air("plasma=3")

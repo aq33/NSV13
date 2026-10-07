@@ -89,7 +89,7 @@
 /datum/emote/living/carbon/human/salute
 	key = "salute"
 	key_third_person = "salutes"
-	message = "salutes"
+	message = "salutuje"
 	message_param = "salutuje do %t"
 	restraint_check = TRUE
 	emote_type = EMOTE_VISIBLE
@@ -132,7 +132,7 @@
 /datum/emote/living/carbon/human/wing
 	key = "wing"
 	key_third_person = "wings"
-	message = "their wings"
+	message = "skrzydła"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/wing/run_emote(mob/user, params, type_override, intentional)
@@ -145,9 +145,9 @@
 	. = ..()
 	var/mob/living/carbon/human/H = user
 	if(("wings" in H.dna.species.mutant_bodyparts) || ("moth_wings" in H.dna.species.mutant_bodyparts))
-		. = "opens " + message
+		. = "rozkłada " + message
 	else
-		. = "closes " + message
+		. = "składa " + message
 
 /datum/emote/living/carbon/human/wing/can_run_emote(mob/user, status_check = TRUE, intentional)
 	if(!..())
@@ -199,8 +199,8 @@
 /datum/emote/living/carbon/human/robot_tongue/beep
 	key = "beep"
 	key_third_person = "beeps"
-	message = "beeps"
-	message_param = "beeps at %t"
+	message = "pika"
+	message_param = "pika na %t"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/robot_tongue/beep/run_emote(mob/user, params)

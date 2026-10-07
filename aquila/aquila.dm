@@ -41,6 +41,7 @@
 #include "code\datums\action.dm"
 #include "code\datums\ai_laws.dm"
 #include "code\datums\dna.dm"
+#include "code\datums\emote_names.dm"
 #include "code\datums\emotes.dm"
 #include "code\datums\hud.dm"
 #include "code\datums\shuttles.dm"

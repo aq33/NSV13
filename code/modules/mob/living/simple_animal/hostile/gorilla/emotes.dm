@@ -5,8 +5,8 @@
 /datum/emote/gorilla/ooga
 	key = "ooga"
 	key_third_person = "oogas"
-	message = "oogas"
-	message_param = "oogas at %t"
+	message = "uga-bugi"
+	message_param = "uga-bugi na %t"
 	sound = 'sound/creatures/gorilla.ogg'
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 

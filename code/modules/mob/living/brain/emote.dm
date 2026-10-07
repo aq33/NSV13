@@ -11,22 +11,22 @@
 
 /datum/emote/brain/alarm
 	key = "alarm"
-	message = "sounds an alarm."
+	message = "włącza alarm."
 
 /datum/emote/brain/alert
 	key = "alert"
-	message = "lets out a distressed noise."
+	message = "wydaje niespokojny dźwięk."
 
 /datum/emote/brain/flash
 	key = "flash"
-	message = "blinks their lights."
+	message = "mruga światełkami."
 	emote_type = EMOTE_VISIBLE
 
 /datum/emote/brain/notice
 	key = "notice"
-	message = "plays a loud tone."
+	message = "wydaje głośny ton."
 
 /datum/emote/brain/whistle
 	key = "whistle"
 	key_third_person = "whistles"
-	message = "whistles."
+	message = "gwiżdże."

@@ -9,7 +9,7 @@
 	emote_key = initial(faketype.key)
 	name = initial(faketype.key)
 	full_name = capitalize(initial(faketype.key))
-	description = "Do the emote '*[emote_key]'"
+	description = "Wykonaj emotkę '*[emote_key]'"
 
 /datum/keybinding/emote/down(client/user)
 	. = ..()
@@ -28,13 +28,13 @@
 		if(prob(20))
 			flippy_mcgee.Knockdown(1 SECONDS)
 			flippy_mcgee.visible_message(
-				"<span class='notice'>[flippy_mcgee] attempts to do a flip and falls over, what a doofus!</span>",
-				"<span class='notice'>You attempt to do a flip while still off balance from the last flip and fall down!</span>"
+				"<span class='notice'>[flippy_mcgee] próbuje zrobić salto i się przewraca, co za łamaga!</span>",
+				"<span class='notice'>Próbujesz zrobić salto, choć jeszcze nie złapałeś równowagi po poprzednim, i się przewracasz!</span>"
 			)
 			if(prob(50))
 				flippy_mcgee.adjustBruteLoss(1)
 		else
 			flippy_mcgee.visible_message(
-				"<span class='notice'>[flippy_mcgee] stumbles a bit after their flip.</span>",
-				"<span class='notice'>You stumble a bit from still being off balance from your last flip.</span>"
+				"<span class='notice'>[flippy_mcgee] lekko się zatacza po salcie.</span>",
+				"<span class='notice'>Lekko się zataczasz, bo nie złapałeś jeszcze równowagi po ostatnim salcie.</span>"
 			)

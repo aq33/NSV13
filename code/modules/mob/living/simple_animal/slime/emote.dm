@@ -5,25 +5,25 @@
 /datum/emote/slime/bounce
 	key = "bounce"
 	key_third_person = "bounces"
-	message = "bounces in place."
+	message = "podskakuje w miejscu."
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/slime/jiggle
 	key = "jiggle"
 	key_third_person = "jiggles"
-	message = "jiggles!"
+	message = "trzęsie się!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/slime/light
 	key = "light"
 	key_third_person = "lights"
-	message = "lights up for a bit, then stops."
+	message = "rozbłyska na chwilę i gaśnie."
 	emote_type = EMOTE_VISIBLE
 
 /datum/emote/slime/vibrate
 	key = "vibrate"
 	key_third_person = "vibrates"
-	message = "vibrates!"
+	message = "wibruje!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/slime/mood

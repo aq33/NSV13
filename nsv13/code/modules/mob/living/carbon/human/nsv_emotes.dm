@@ -1,7 +1,7 @@
 /datum/emote/living/purr
 	key = "purr"
 	key_third_person = "purrs"
-	message = "purrs"
+	message = "mruczy"
 	emote_type = EMOTE_VISIBLE
 
 //This is going to piss so many people off, I can't wait.
@@ -19,7 +19,7 @@
 /datum/emote/living/growl
 	key = "growl"
 	key_third_person = "growls"
-	message = "growls"
+	message = "warczy"
 	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/growl/get_sound(mob/living/user)
@@ -29,7 +29,7 @@
 /datum/emote/living/cheers
 	key = "cheers"
 	key_third_person = "cheers"
-	message = "raises their glass"
+	message = "wznosi toast"
 	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/cheers/can_run_emote(mob/user, status_check = TRUE , intentional)
@@ -37,5 +37,5 @@
 	if(istype(user.get_active_held_item(), /obj/item/reagent_containers/food/drinks/drinkingglass))
 		return TRUE
 	else
-		to_chat(user, "<span class='warning'>You don't have a glass in your hand!</span>")
+		to_chat(user, "<span class='warning'>Nie masz kieliszka w dłoni!</span>")
 		return FALSE

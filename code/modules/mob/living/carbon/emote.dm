@@ -3,7 +3,7 @@
 
 /datum/emote/living/carbon/airguitar
 	key = "airguitar"
-	message = "is strumming the air and headbanging like a safari chimp"
+	message = "brzdąka w powietrzu i macha głową jak szympans na safari"
 	restraint_check = TRUE
 	emote_type = EMOTE_VISIBLE
 
@@ -16,7 +16,7 @@
 /datum/emote/living/carbon/blink_r
 	key = "blink_r"
 	message = "mruga gwałtownie"
-	name = "blink (Rapid)"
+	name = "mrugać szybko"
 	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/clap
