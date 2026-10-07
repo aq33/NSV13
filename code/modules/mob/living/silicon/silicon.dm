@@ -396,7 +396,7 @@
 			number++
 	list += {"<br><br><A href='byond://?src=[REF(src)];laws=1'>State Laws</A>"}
 
-	usr << browse(list, "window=laws")
+	usr << browse(HTML_SKELETON(list), "window=laws")
 
 /mob/living/silicon/proc/ai_roster()
 	if(!client)

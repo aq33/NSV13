@@ -112,23 +112,27 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 	var/ok = 0
 	switch(action)
 		if("admin_log")
-			var/dat = "<B>Admin Log<HR></B>"
+			var/dat
 			for(var/l in GLOB.admin_log)
 				dat += "<li>[l]</li>"
 			if(!GLOB.admin_log.len)
 				dat += "No one has done anything this round!"
-			usr << browse(dat, "window=admin_log")
+			var/datum/browser/browser = new(usr, "admin_log", "Admin Logs", 600, 500)
+			browser.set_content(dat)
+			browser.open()
 
 		if("mentor_log") // hippie start -- access mentor log
 			admin_datum.MentorLogSecret() // hippie end
 
 		if("show_admins")
-			var/dat = "<B>Current admins:</B><HR>"
+			var/dat
 			if(GLOB.admin_datums)
 				for(var/ckey in GLOB.admin_datums)
 					var/datum/admins/D = GLOB.admin_datums[ckey]
 					dat += "[ckey] - [D.rank.name]<br>"
-				usr << browse(dat, "window=showadmins;size=600x500")
+				var/datum/browser/browser = new(usr, "showadmins", "Current admins", 600, 500)
+				browser.set_content(dat)
+				browser.open()
 
 		if("tdomereset")
 			if(!check_rights(R_ADMIN))
@@ -209,7 +213,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 			var/dat = "<B>Bombing List</B><HR>"
 			for(var/l in GLOB.bombers)
 				dat += text("[l]<BR>")
-			usr << browse(dat, "window=bombers")
+			usr << browse(HTML_SKELETON(dat), "window=bombers")
 
 		if("list_signalers")
 			if(!check_rights(R_ADMIN))
@@ -217,7 +221,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 			var/dat = "<B>Showing last [length(GLOB.lastsignalers)] signalers.</B><HR>"
 			for(var/sig in GLOB.lastsignalers)
 				dat += "[sig]<BR>"
-			usr << browse(dat, "window=lastsignalers;size=800x500")
+			usr << browse(HTML_SKELETON(dat), "window=lastsignalers;size=800x500")
 
 		if("list_lawchanges")
 			if(!check_rights(R_ADMIN))
@@ -225,7 +229,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 			var/dat = "<B>Showing last [length(GLOB.lawchanges)] law changes.</B><HR>"
 			for(var/sig in GLOB.lawchanges)
 				dat += "[sig]<BR>"
-			usr << browse(dat, "window=lawchanges;size=800x500")
+			usr << browse(HTML_SKELETON(dat), "window=lawchanges;size=800x500")
 
 		if("moveminingshuttle")
 			if(!check_rights(R_ADMIN))
@@ -283,7 +287,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 			for(var/datum/data/record/t in GLOB.data_core.general)
 				dat += "<tr><td>[t.fields["name"]]</td><td>[t.fields["rank"]]</td></tr>"
 			dat += "</table>"
-			usr << browse(dat, "window=manifest;size=440x410")
+			usr << browse(HTML_SKELETON(dat), "window=manifest;size=440x410")
 		if("DNA")
 			if(!check_rights(R_ADMIN))
 				return
@@ -293,7 +297,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 				if(H.ckey)
 					dat += "<tr><td>[H]</td><td>[H.dna.unique_enzymes]</td><td>[H.dna.blood_type]</td></tr>"
 			dat += "</table>"
-			usr << browse(dat, "window=DNA;size=440x410")
+			usr << browse(HTML_SKELETON(dat), "window=DNA;size=440x410")
 		if("fingerprints")
 			if(!check_rights(R_ADMIN))
 				return
@@ -303,7 +307,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 				if(H.ckey)
 					dat += "<tr><td>[H]</td><td>[rustg_hash_string(RUSTG_HASH_MD5, H.dna.uni_identity)]</td></tr>"
 			dat += "</table>"
-			usr << browse(dat, "window=fingerprints;size=440x410")
+			usr << browse(HTML_SKELETON(dat), "window=fingerprints;size=440x410")
 
 		if("monkey")
 			if(!check_rights(R_FUN))

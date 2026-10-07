@@ -53,7 +53,7 @@
 
 	dat += text("<br>Stacking: [machine.stack_amt]<br><br>")
 
-	user << browse(dat, "window=console_stacking_machine")
+	user << browse(HTML_SKELETON(dat), "window=console_stacking_machine")
 
 /obj/machinery/mineral/stacking_unit_console/multitool_act(mob/living/user, obj/item/I)
 	if(!multitool_check_buffer(user, I))
