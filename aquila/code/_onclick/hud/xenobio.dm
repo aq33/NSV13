@@ -1,6 +1,5 @@
 // AQUILA - port tgstation/tgstation#90775: HUD konsoli ksenobiologii (małpy, szlamy, załadowana mikstura)
 
-#define FORMAT_XENOBIO_HUD_MAPTEXT(text_to_use) MAPTEXT("<span style='text-align: center; line-height: 1.9;'>[text_to_use]</span>")
 #define POTION_DROP_SPEED 5
 
 /// Used to show how many monkeys & slimes are in the console
@@ -11,6 +10,8 @@
 	screen_loc = ui_xenobiodisplay
 	var/atom/movable/screen/xenobio_potion/potion_hud
 	var/atom/movable/screen/xenobio_potion/potion_launcher
+	var/atom/movable/screen/xenobio_counter/monkey_counter
+	var/atom/movable/screen/xenobio_counter/slime_counter
 
 /atom/movable/screen/xenobio_console/Initialize(mapload)
 	. = ..()
@@ -20,19 +21,38 @@
 	potion_launcher = new()
 	potion_launcher.layer = layer - 2
 	vis_contents += potion_launcher
+	monkey_counter = new()
+	monkey_counter.maptext_y = 18
+	monkey_counter.layer = layer + 0.1
+	vis_contents += monkey_counter
+	slime_counter = new()
+	slime_counter.maptext_y = 8
+	slime_counter.layer = layer + 0.1
+	vis_contents += slime_counter
 
 /atom/movable/screen/xenobio_console/Destroy()
 	vis_contents -= potion_hud
 	QDEL_NULL(potion_hud)
 	vis_contents -= potion_launcher
 	QDEL_NULL(potion_launcher)
+	vis_contents -= monkey_counter
+	QDEL_NULL(monkey_counter)
+	vis_contents -= slime_counter
+	QDEL_NULL(slime_counter)
 	return ..()
 
 /// Called by the console any time we update the monkeys, slimes, or max slimes
 /atom/movable/screen/xenobio_console/proc/on_update_hud(slimes, monkeys, max_slimes)
-	maptext = FORMAT_XENOBIO_HUD_MAPTEXT("[monkeys]\n[slimes]/[max_slimes]")
-	maptext_x = 5
-	maptext_y = 2
+	monkey_counter.maptext = MAPTEXT("[monkeys]")
+	slime_counter.maptext = MAPTEXT("[slimes]/[max_slimes]")
+
+/// One line of the console HUD counters, placed next to its icon
+/atom/movable/screen/xenobio_counter
+	screen_loc = ui_xenobiodisplay
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	maptext_width = 20
+	maptext_height = 9
+	maptext_x = 12
 
 /// Called by the console any time we update the potion
 /atom/movable/screen/xenobio_console/proc/update_potion(obj/item/slimepotion/slime/potion)
@@ -80,5 +100,4 @@
 	icon_state = new_icon_state
 	animate(src, time = POTION_DROP_SPEED, easing = BACK_EASING, pixel_x = -8)
 
-#undef FORMAT_XENOBIO_HUD_MAPTEXT
 #undef POTION_DROP_SPEED
