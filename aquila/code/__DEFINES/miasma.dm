@@ -5,6 +5,8 @@
 #define MIASMA_CORPSE_MOLES 0.02
 /// Miasma a pile of gibs emits, in moles per second
 #define MIASMA_GIBS_MOLES 0.005
+/// Miasma released by a single fart (about 1.5 kPa on the farter's tile before it spreads)
+#define MIASMA_FART_MOLES 1.5
 /// How long a corpse stays fresh after death
 #define MIASMA_CORPSE_GRACE_PERIOD (2 MINUTES)
 /// Total miasma a corpse emits before it has fully rotted (20 minutes of rotting)
