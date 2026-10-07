@@ -4664,7 +4664,7 @@
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "vZ" = (
-/obj/item/reagent_containers/food/snacks/salad/fruit{
+/obj/item/food/salad/fruit{
 	bonus_reagents = null;
 	desc = "A bowl of plastic fruit. Each fruit in the bowl shines with an ominous glare that portrays an aura of foreboding in the room. You feel like it'd be a bad idea to try and eat it.";
 	list_reagents = list(/datum/reagent/toxin/lipolicide=50);

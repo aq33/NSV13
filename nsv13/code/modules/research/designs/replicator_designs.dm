@@ -27,7 +27,7 @@
 	id = "boiledrice"
 	alt_name = list("rice")
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/salad/boiledrice
+	build_path = /obj/item/food/salad/boiledrice
 	category = list("initial", "Nutritional Supplements")
 
 /datum/design/replicator/tier1/rationpack
@@ -258,14 +258,14 @@
 	name = "Wing fang chu"
 	id = "wingfangchu"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/soup/wingfangchu
+	build_path = /obj/item/food/soup/wingfangchu
 	category = list("Exotic Dishes")
 
 /datum/design/replicator/tier4/clownstears
 	name = "Clown's tears"
 	id = "clownstears"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/soup/clownstears
+	build_path = /obj/item/food/soup/clownstears
 	category = list("Exotic Dishes")
 
 /datum/design/replicator/tier4/mimeburger

@@ -44,8 +44,8 @@
 		/obj/item/reagent_containers/food/snacks/pie/applepie,
 		/obj/item/food/pizza/meat,
 		/obj/item/food/pizza/margherita,
-		/obj/item/reagent_containers/food/snacks/salad/fruit,
-		/obj/item/reagent_containers/food/snacks/salad/oatmeal,
+		/obj/item/food/salad/fruit,
+		/obj/item/food/soup/oatmeal,
 		/obj/item/reagent_containers/food/snacks/deadmouse
 	) )
 	var/datum/freight_type/single/object/C = new( picked )

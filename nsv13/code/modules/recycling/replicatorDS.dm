@@ -390,7 +390,7 @@
 					if(5)
 						new /mob/living/simple_animal/hostile/carp(get_turf(src))
 					if(6)
-						food = new /obj/item/reagent_containers/food/snacks/soup/mystery(get_turf(src))
+						food = new /obj/item/food/soup/mystery(get_turf(src))
 				playsound(src.loc, 'sound/effects/explosion3.ogg', 50, 1)
 				var/datum/effect_system/smoke_spread/bad/smoke = new
 				smoke.set_up(2, src.loc)
@@ -398,7 +398,7 @@
 				del(src)
 				return
 			else
-				food = new /obj/item/reagent_containers/food/snacks/soup/mystery(get_turf(src))
+				food = new /obj/item/food/soup/mystery(get_turf(src))
 		if("coffee")
 			food = new /obj/item/reagent_containers/food/drinks/coffee(get_turf(src))
 			food.name = "coffee"

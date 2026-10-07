@@ -772,7 +772,7 @@
 /area/awaymission/wildwest/gov)
 "cV" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/soup/monkeysdelight,
+/obj/item/food/soup/monkeysdelight,
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
 	},
@@ -786,7 +786,7 @@
 /area/awaymission/wildwest/gov)
 "cX" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/soup/stew,
+/obj/item/food/soup/stew,
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
 	},

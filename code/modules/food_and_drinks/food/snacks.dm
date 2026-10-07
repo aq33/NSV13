@@ -378,7 +378,7 @@ All foods are distributed among various categories. Use common sense.
 //NSV13 - added fork and spoon use
 /obj/item/reagent_containers/food/snacks/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/kitchen/fork))
-		if(istype(src, /obj/item/reagent_containers/food/snacks/soup))
+		if(istype(src, /obj/item/food/soup))
 			to_chat(user, "<span class='warning'>You can't eat soup with a fork!</span>")
 			return
 		var/obj/item/kitchen/fork/F = W
@@ -396,7 +396,7 @@ All foods are distributed among various categories. Use common sense.
 				qdel(src)
 		return
 	if(istype(W, /obj/item/kitchen/spoon))
-		if(istype(src, /obj/item/reagent_containers/food/snacks/soup))
+		if(istype(src, /obj/item/food/soup))
 			var/obj/item/kitchen/spoon/F = W
 			if(F.forkload)
 				to_chat(user, "<span class='warning'>You already have spoonful of food!</span>")
