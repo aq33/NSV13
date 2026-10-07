@@ -1716,7 +1716,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						active_character.eye_color = sanitize_hexcolor(new_eyes)
 
 				if("body_size")
-					var/new_size = input(user, "Choose your character's height:", "Character Preference") as null|anything in GLOB.body_sizes
+					var/new_size = input(user, "Choose your character's height:", "Character Preference") as null|anything in active_character.pref_species.get_body_sizes() // AQ EDIT - Polak tylko dla ludzi
 					if(new_size)
 						active_character.features["body_size"] = new_size
 
@@ -1740,6 +1740,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 								var/forced_type = active_character.pref_species.forced_features[forced_part]
 								//Apply the forced bodypart.
 								active_character.features[forced_part] = forced_type
+							// AQ EDIT - Polak tylko dla ludzi
+							if(!(active_character.features["body_size"] in active_character.pref_species.get_body_sizes()))
+								active_character.features["body_size"] = "Normal"
 						else
 							if(alert(parent, "This species is only accessible to our patrons. Would you like to subscribe?", "Patron Locked", "Yes", "No") == "Yes")
 								parent.donate()

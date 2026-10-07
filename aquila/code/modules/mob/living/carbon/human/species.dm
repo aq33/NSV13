@@ -7,6 +7,25 @@
 	// add TRAIT_NOSHITTING to inherent traits
 	var/shitmod = 1
 
+/// Body sizes this species can pick in preferences. "Polak" is human-only.
+/datum/species/proc/get_body_sizes()
+	if(id == SPECIES_HUMAN)
+		return GLOB.body_sizes
+	return GLOB.body_sizes - "Polak"
+
+/// The "Polak" belly drawn over the chest in the skin colour.
+/datum/species/proc/get_polak_overlays(mob/living/carbon/human/H)
+	. = list()
+	if(id != SPECIES_HUMAN || H.dna.features["body_size"] != "Polak" || HAS_TRAIT(H, TRAIT_HUSK))
+		return
+	var/obj/item/bodypart/chest/chest = H.get_bodypart(BODY_ZONE_CHEST)
+	if(!chest || !IS_ORGANIC_LIMB(chest))
+		return
+	var/mutable_appearance/belly = mutable_appearance('aquila/icons/mob/zachary.dmi', "polak_(grayscale)", -BODY_LAYER)
+	if(chest.draw_color)
+		belly.color = "#[chest.draw_color]"
+	. += belly
+
 /datum/species/proc/eat_text(fullness, eatverb, obj/O, mob/living/carbon/C, mob/user)
 	if(C == user)
 		if(fullness<=50)
