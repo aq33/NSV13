@@ -151,6 +151,7 @@
 #include "code\game\objects\structures\signs\signs_maps.dm"
 #include "code\game\objects\structures\signs\signs_warning.dm"
 #include "code\game\turfs\open\floor\turf_fire_flammability.dm"
+#include "code\game\world.dm"
 #include "code\modules\admin\admin.dm"
 #include "code\modules\admin\campaign_reset.dm"
 #include "code\modules\admin\verbs\modify_metacoins.dm"

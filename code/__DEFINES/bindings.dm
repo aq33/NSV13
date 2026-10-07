@@ -183,3 +183,5 @@
 /proc/process_atmos_callbacks(remaining)
 	return call_ext(AUXMOS, "byond:atmos_callback_handle_ffi")(remaining)
 
+/proc/__auxmos_reset()
+	return call_ext(AUXMOS, "byond:reset_hook_ffi")()
