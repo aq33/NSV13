@@ -39510,7 +39510,7 @@
 	name = "Serving Hatch"
 	},
 /obj/machinery/door/firedoor,
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /turf/open/floor/monotile/light,
 /area/crew_quarters/kitchen)
 "bOg" = (
@@ -42188,7 +42188,7 @@
 	})
 "bVR" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /turf/open/floor/wood,
 /area/crew_quarters/theatre)
 "bVS" = (

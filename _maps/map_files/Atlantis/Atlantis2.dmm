@@ -5524,7 +5524,7 @@
 	id = "kitchen";
 	name = "Serving Hatch"
 	},
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},

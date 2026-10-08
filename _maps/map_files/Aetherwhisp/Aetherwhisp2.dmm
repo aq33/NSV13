@@ -18427,7 +18427,7 @@
 "ogk" = (
 /obj/item/healthanalyzer,
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /obj/item/bikehorn,
 /obj/item/soapstone/empty,
 /obj/item/gps,
@@ -22651,7 +22651,7 @@
 "rje" = (
 /obj/structure/table/wood,
 /obj/item/food/cakeslice/birthday,
-/obj/item/reagent_containers/food/snacks/pie/cream{
+/obj/item/food/pie/cream{
 	desc = "BANANANANAAAAA SLAMMMAAAA";
 	pixel_x = 11;
 	pixel_y = 10

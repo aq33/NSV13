@@ -19955,7 +19955,7 @@
 /obj/structure/table/reinforced,
 /obj/machinery/reagentgrinder,
 /obj/machinery/door/firedoor/border_only/directional/south,
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /obj/machinery/door/poddoor/shutters/ship/preopen{
 	id = "kitchen_shutter"
 	},

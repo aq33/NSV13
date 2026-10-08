@@ -16464,7 +16464,7 @@
 /area/quartermaster/storage)
 "aVO" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /obj/machinery/door/poddoor/shutters/ship/preopen{
 	id = "kitchen";
 	name = "Serving Hatch"

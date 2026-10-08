@@ -6585,7 +6585,7 @@
 "eDc" = (
 /obj/structure/table/wood,
 /obj/item/wrench,
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /obj/item/radio/intercom/directional/north{
 	name = "Clown's Comedy Club Microphone"
 	},
@@ -9642,7 +9642,7 @@
 	id = "kitchen";
 	name = "Serving Hatch"
 	},
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},

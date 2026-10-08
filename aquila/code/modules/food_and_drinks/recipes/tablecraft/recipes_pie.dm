@@ -6,5 +6,5 @@ datum/crafting_recipe/food/kremowka
 		/datum/reagent/consumable/cream = 5,
 		/obj/item/food/pastrybase = 1
 	)
-	result = /obj/item/reagent_containers/food/snacks/pie/kremowka
+	result = /obj/item/food/pie/kremowka
 	subcategory = CAT_PIE

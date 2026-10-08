@@ -41,11 +41,11 @@
 	cost = 2137
 	crate_type = /obj/structure/closet/crate
 	contains = list(
-		/obj/item/reagent_containers/food/snacks/pie/kremowka,
-		/obj/item/reagent_containers/food/snacks/pie/kremowka,
-		/obj/item/reagent_containers/food/snacks/pie/kremowka,
-		/obj/item/reagent_containers/food/snacks/pie/kremowka,
-		/obj/item/reagent_containers/food/snacks/pie/kremowka
+		/obj/item/food/pie/kremowka,
+		/obj/item/food/pie/kremowka,
+		/obj/item/food/pie/kremowka,
+		/obj/item/food/pie/kremowka,
+		/obj/item/food/pie/kremowka
 		)
 	crate_name = "skrzynia kremowek"
 
