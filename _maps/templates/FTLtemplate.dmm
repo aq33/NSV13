@@ -18,19 +18,12 @@
 /turf/open/floor/plating,
 /area/engine/engine_room)
 "k" = (
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/power/rtg/abductor,
 /turf/open/floor/plating,
 /area/engine/engine_room)
 "m" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/engine/engine_room)
 "n" = (
@@ -38,9 +31,7 @@
 /turf/open/floor/plating,
 /area/engine/engine_room)
 "p" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/tank/nucleium,
 /turf/open/floor/plating,
 /area/engine/engine_room)
@@ -66,16 +57,8 @@
 	},
 /turf/open/floor/plating,
 /area/engine/engine_room)
-"G" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/engine/engine_room)
 "K" = (
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/binary/drive_pylon,
 /turf/open/floor/plating,
 /area/engine/engine_room)
@@ -117,7 +100,7 @@ a
 a
 a
 a
-G
+m
 a
 "}
 (3,1,1) = {"
@@ -141,7 +124,7 @@ a
 W
 a
 a
-G
+m
 a
 "}
 (5,1,1) = {"
@@ -153,7 +136,7 @@ a
 a
 d
 a
-G
+m
 a
 "}
 (6,1,1) = {"
@@ -177,7 +160,7 @@ a
 a
 j
 a
-G
+m
 Z
 "}
 (8,1,1) = {"

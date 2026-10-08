@@ -3,16 +3,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/computer/ship/viewscreen,
-/turf/open/floor/plating,
-/area/ruin/unpowered/boarding_interior)
-"an" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "at" = (
@@ -62,9 +54,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/ruin/unpowered/boarding_interior)
 "bO" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/ship_weapon/pdc_mount/south,
 /turf/open/floor/engine,
 /area/ruin/unpowered/boarding_interior)
@@ -104,12 +94,6 @@
 "cH" = (
 /obj/machinery/porta_turret/syndicate/pod,
 /turf/closed/wall/r_wall,
-/area/ruin/unpowered/boarding_interior)
-"cN" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "da" = (
 /obj/structure/closet/secure_closet/freezer/money,
@@ -165,9 +149,7 @@
 /area/ruin/unpowered/boarding_interior)
 "dP" = (
 /obj/machinery/door/airlock/ship/maintenance,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "dW" = (
@@ -178,16 +160,12 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/ruin/unpowered/boarding_interior)
 "ek" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/carpet/red,
 /area/ruin/unpowered/boarding_interior)
 "eo" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/engine,
 /area/ruin/unpowered/boarding_interior)
 "eA" = (
@@ -212,9 +190,7 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "ft" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/turf_decal/tile/ship/half/bar,
 /turf/open/floor/plasteel/tech/grid,
 /area/ruin/unpowered/boarding_interior)
@@ -256,15 +232,10 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "hg" = (
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/power/solar{
 	id = "starboardsolar";
 	name = "Starboard Solar Array"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/airless/solarpanel,
 /area/ruin/unpowered/boarding_interior)
@@ -301,9 +272,7 @@
 /turf/open/floor/carpet/red,
 /area/ruin/unpowered/boarding_interior)
 "hy" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /turf/closed/wall/r_wall,
 /area/ruin/unpowered/boarding_interior)
 "hF" = (
@@ -320,9 +289,7 @@
 /obj/machinery/atmospherics/components/binary/stormdrive_reactor/syndicate{
 	reactor_id = "destroyer_comedy_reactor"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/engine,
 /area/ruin/unpowered/boarding_interior)
 "hU" = (
@@ -359,12 +326,7 @@
 	},
 /area/ruin/unpowered/boarding_interior)
 "iH" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/computer/ship/viewscreen,
 /obj/item/skub,
 /turf/open/floor/plating,
@@ -421,12 +383,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
-"kG" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/open/floor/carpet/red,
-/area/ruin/unpowered/boarding_interior)
 "kJ" = (
 /obj/structure/bed,
 /obj/item/bedsheet/syndie,
@@ -482,9 +438,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/unpowered/boarding_interior)
 "ln" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /mob/living/carbon/human/ai_boarder/syndicate/smg,
 /turf/open/floor/engine,
 /area/ruin/unpowered/boarding_interior)
@@ -535,15 +489,6 @@
 	dir = 8
 	},
 /obj/structure/hull_plate,
-/turf/open/floor/engine/airless/light,
-/area/ruin/unpowered/boarding_interior)
-"mu" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
 /turf/open/floor/engine/airless/light,
 /area/ruin/unpowered/boarding_interior)
 "mA" = (
@@ -664,9 +609,7 @@
 /turf/open/floor/carpet/red,
 /area/ruin/unpowered/boarding_interior)
 "pA" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/engine/airless/light,
 /area/ruin/unpowered/boarding_interior)
 "pL" = (
@@ -681,9 +624,7 @@
 	req_access = null;
 	req_one_access_txt = "150"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/ruin/unpowered/boarding_interior)
 "qb" = (
@@ -694,9 +635,7 @@
 /area/ruin/unpowered/boarding_interior)
 "qh" = (
 /obj/machinery/power/smes/engineering,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /obj/effect/turf_decal/pool,
 /turf/open/floor/monotile/dark,
 /area/ruin/unpowered/boarding_interior)
@@ -779,9 +718,7 @@
 /turf/open/floor/carpet/red,
 /area/ruin/unpowered/boarding_interior)
 "rO" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/door/airlock/ship{
 	name = "Canteen"
 	},
@@ -801,9 +738,7 @@
 /mob/living/simple_animal/hostile/syndicate/ranged/smg{
 	name = "Syndicate Vault Guard"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "sn" = (
@@ -812,9 +747,7 @@
 	icon_state = "fuel_chamber"
 	},
 /obj/effect/landmark/nuclear_waste_spawner,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/engine,
 /area/ruin/unpowered/boarding_interior)
 "sx" = (
@@ -929,9 +862,7 @@
 /turf/open/floor/engine,
 /area/ruin/unpowered/boarding_interior)
 "ue" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/turf_decal/ship/techfloor,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -1008,20 +939,8 @@
 	dir = 8;
 	icon_state = "power_box"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/engine,
-/area/ruin/unpowered/boarding_interior)
-"vM" = (
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
-/obj/machinery/power/solar{
-	id = "starboardsolar";
-	name = "Starboard Solar Array"
-	},
-/turf/open/floor/plasteel/airless/solarpanel,
 /area/ruin/unpowered/boarding_interior)
 "wn" = (
 /obj/item/ship_weapon/ammunition/missile,
@@ -1065,9 +984,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/ruin/unpowered/boarding_interior)
 "xB" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/closed/wall/r_wall,
 /area/ruin/unpowered/boarding_interior)
 "xF" = (
@@ -1081,9 +998,7 @@
 /turf/open/floor/monotile/dark,
 /area/ruin/unpowered/boarding_interior)
 "xV" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "yc" = (
@@ -1093,16 +1008,8 @@
 "yw" = (
 /turf/open/floor/engine/n2,
 /area/ruin/unpowered/boarding_interior)
-"yZ" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/turf/open/floor/engine/airless/light,
-/area/ruin/unpowered/boarding_interior)
 "zd" = (
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /obj/machinery/power/apc/highcap/fifteen_k{
 	dir = 1;
 	name = "area power controller";
@@ -1159,18 +1066,14 @@
 /turf/open/floor/monotile/dark,
 /area/ruin/unpowered/boarding_interior)
 "zJ" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/turf_decal/tile/ship/half/bar{
 	dir = 1
 	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ruin/unpowered/boarding_interior)
 "zP" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -1200,9 +1103,7 @@
 /turf/open/floor/carpet/red,
 /area/ruin/unpowered/boarding_interior)
 "Aq" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/computer/ship/fighter_launcher{
 	dir = 8
 	},
@@ -1256,14 +1157,10 @@
 /turf/open/floor/engine,
 /area/ruin/unpowered/boarding_interior)
 "Ba" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
+/obj/structure/cable/yellow,
 /obj/machinery/power/port_gen/pacman,
 /obj/item/stack/cable_coil,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
 /turf/open/floor/engine,
 /area/ruin/unpowered/boarding_interior)
 "Bz" = (
@@ -1288,14 +1185,9 @@
 /turf/open/floor/engine,
 /area/ruin/unpowered/boarding_interior)
 "BD" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/components/trinary/mixer/flipped{
 	dir = 4
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
 	},
 /turf/open/floor/monotile/dark,
 /area/ruin/unpowered/boarding_interior)
@@ -1324,9 +1216,7 @@
 /turf/open/floor/engine,
 /area/ruin/unpowered/boarding_interior)
 "Cf" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/structure/table,
 /turf/open/floor/plating,
@@ -1341,9 +1231,7 @@
 /turf/open/space/basic,
 /area/ruin/unpowered/boarding_interior)
 "Cq" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /mob/living/carbon/human/ai_boarder/syndicate/shotgun,
 /turf/open/floor/engine,
 /area/ruin/unpowered/boarding_interior)
@@ -1428,12 +1316,6 @@
 /obj/machinery/ship_weapon/vls,
 /turf/open/floor/engine,
 /area/ruin/unpowered/boarding_interior)
-"Ef" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/turf/open/floor/engine,
-/area/ruin/unpowered/boarding_interior)
 "Eg" = (
 /obj/structure/hull_plate,
 /obj/machinery/door/firedoor/border_only{
@@ -1456,15 +1338,11 @@
 /area/ruin/unpowered/boarding_interior)
 "Eq" = (
 /obj/machinery/power/solar_control,
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "Eu" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/door/airlock/ship/engineering{
 	name = "Reactor monitoring";
 	req_one_access_txt = "150"
@@ -1477,17 +1355,8 @@
 	},
 /turf/open/floor/engine,
 /area/ruin/unpowered/boarding_interior)
-"Ex" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/open/floor/engine,
-/area/ruin/unpowered/boarding_interior)
 "EU" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/engine,
 /area/ruin/unpowered/boarding_interior)
@@ -1505,9 +1374,7 @@
 /turf/open/floor/monotile/dark,
 /area/ruin/unpowered/boarding_interior)
 "FM" = (
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/power/tracker,
 /turf/open/floor/plasteel/airless/solarpanel,
 /area/ruin/unpowered/boarding_interior)
@@ -1523,9 +1390,7 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "Gp" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -1540,15 +1405,6 @@
 /obj/item/ammo_box/magazine/m10mm,
 /obj/item/ammo_box/magazine/m10mm,
 /turf/open/floor/carpet/red,
-/area/ruin/unpowered/boarding_interior)
-"Gr" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/turf/open/floor/monotile/dark,
 /area/ruin/unpowered/boarding_interior)
 "Gt" = (
 /obj/effect/turf_decal/ship/delivery/yellow,
@@ -1590,9 +1446,7 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "Hv" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/ridged/steel,
 /area/ruin/unpowered/boarding_interior)
 "HG" = (
@@ -1628,9 +1482,7 @@
 /turf/open/floor/plasteel/grid,
 /area/ruin/unpowered/boarding_interior)
 "ID" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
+/obj/structure/cable/yellow,
 /obj/structure/rack,
 /obj/item/key/fighter_tug,
 /turf/open/floor/engine,
@@ -1649,9 +1501,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/unpowered/boarding_interior)
 "IY" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/computer/ship/viewscreen,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
@@ -1669,12 +1519,8 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "Jm" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
+/obj/structure/cable/yellow,
 /turf/open/floor/engine,
 /area/ruin/unpowered/boarding_interior)
 "JS" = (
@@ -1688,9 +1534,7 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "JV" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/yellow/hidden{
 	dir = 8
 	},
@@ -1700,12 +1544,6 @@
 /obj/machinery/meter/atmos,
 /obj/structure/fans/tiny,
 /turf/open/floor/engine,
-/area/ruin/unpowered/boarding_interior)
-"Km" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/turf/open/floor/engine/airless/light,
 /area/ruin/unpowered/boarding_interior)
 "Kz" = (
 /obj/structure/hull_plate/end{
@@ -1721,9 +1559,7 @@
 /area/ruin/unpowered/boarding_interior)
 "Ld" = (
 /obj/effect/spawner/structure/window/plasma/reinforced,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "Lj" = (
@@ -1747,9 +1583,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/unpowered/boarding_interior)
 "LE" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/ruin/unpowered/boarding_interior)
 "Md" = (
@@ -1816,9 +1650,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/unpowered/boarding_interior)
 "NP" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/engine,
 /area/ruin/unpowered/boarding_interior)
 "NQ" = (
@@ -1900,12 +1732,6 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/ruin/unpowered/boarding_interior)
-"Qq" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/turf/open/floor/monotile/dark,
-/area/ruin/unpowered/boarding_interior)
 "Qx" = (
 /obj/effect/turf_decal/ship/techfloor{
 	dir = 1
@@ -1922,15 +1748,11 @@
 /obj/structure/peacekeeper_barricade/metal{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
 "QW" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/door/airlock/ship/maintenance,
 /turf/open/floor/plating,
 /area/ruin/unpowered/boarding_interior)
@@ -1939,9 +1761,7 @@
 	dir = 8;
 	icon_state = "end_cap"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -1965,27 +1785,14 @@
 /turf/open/floor/engine/airless/light,
 /area/ruin/unpowered/boarding_interior)
 "Ta" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/structure/lattice/catwalk/over/ship,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/unpowered/boarding_interior)
 "Tv" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/space/basic,
-/area/ruin/unpowered/boarding_interior)
-"TI" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/monotile/dark,
 /area/ruin/unpowered/boarding_interior)
 "TS" = (
 /obj/machinery/ship_weapon/vls,
@@ -2010,12 +1817,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/ruin/unpowered/boarding_interior)
 "UL" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/item/ammo_box,
 /turf/open/floor/carpet/red,
 /area/ruin/unpowered/boarding_interior)
@@ -2041,12 +1843,6 @@
 	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ruin/unpowered/boarding_interior)
-"Vw" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/engine/airless/light,
-/area/ruin/unpowered/boarding_interior)
 "VG" = (
 /obj/machinery/deck_turret/core{
 	id = "destroyer_comedy_gun"
@@ -2058,9 +1854,7 @@
 	dir = 8;
 	icon_state = "emitter_center"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -2082,19 +1876,11 @@
 /turf/open/floor/engine,
 /area/ruin/unpowered/boarding_interior)
 "Xc" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 10
 	},
 /turf/open/floor/monotile/dark,
-/area/ruin/unpowered/boarding_interior)
-"Xk" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/open/floor/engine/airless/light,
 /area/ruin/unpowered/boarding_interior)
 "XG" = (
 /obj/machinery/computer/communications{
@@ -2103,25 +1889,6 @@
 	req_one_access_txt = "151"
 	},
 /turf/open/floor/mineral/plastitanium/red,
-/area/ruin/unpowered/boarding_interior)
-"XM" = (
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/power/solar{
-	id = "starboardsolar";
-	name = "Starboard Solar Array"
-	},
-/turf/open/floor/plasteel/airless/solarpanel,
-/area/ruin/unpowered/boarding_interior)
-"Yh" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/closed/wall/r_wall,
 /area/ruin/unpowered/boarding_interior)
 "Yn" = (
 /turf/open/floor/monotile/dark,
@@ -2174,36 +1941,11 @@
 /obj/structure/shuttle/engine/router,
 /turf/closed/wall/r_wall,
 /area/ruin/unpowered/boarding_interior)
-"ZE" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/closed/wall/r_wall,
-/area/ruin/unpowered/boarding_interior)
 "ZG" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/nac_ammo,
 /obj/item/stack/sheet/iron/fifty,
 /turf/open/floor/engine,
-/area/ruin/unpowered/boarding_interior)
-"ZJ" = (
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/power/solar{
-	id = "starboardsolar";
-	name = "Starboard Solar Array"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/turf/open/floor/plasteel/airless/solarpanel,
 /area/ruin/unpowered/boarding_interior)
 "ZP" = (
 /obj/effect/turf_decal/stripes/line{
@@ -31272,9 +31014,9 @@ Yn
 Yn
 Yn
 Hk
-Qq
-Gr
-TI
+LE
+LE
+LE
 LE
 tO
 zh
@@ -31787,7 +31529,7 @@ xB
 Jm
 Ba
 bO
-ZE
+hy
 hy
 Hk
 tQ
@@ -32032,7 +31774,7 @@ Hk
 Hk
 Hk
 Hk
-Yh
+xB
 Hk
 Hk
 Hk
@@ -33833,7 +33575,7 @@ tB
 zW
 Hk
 CO
-Ef
+NP
 eo
 nS
 op
@@ -34090,7 +33832,7 @@ zW
 Hk
 CO
 BB
-Ex
+eo
 DU
 op
 TS
@@ -34602,7 +34344,7 @@ Vl
 Md
 Hk
 wn
-an
+xV
 tC
 Hk
 kc
@@ -34848,7 +34590,7 @@ ba
 ba
 Hk
 hc
-kG
+ek
 hc
 Hk
 cr
@@ -34858,7 +34600,7 @@ sW
 AC
 hd
 Pf
-cN
+xV
 xV
 Ep
 Gt
@@ -35115,7 +34857,7 @@ Qx
 Hk
 bo
 Pf
-an
+xV
 Hk
 kc
 Hk
@@ -35359,7 +35101,7 @@ Pu
 ba
 Hk
 dE
-kG
+ek
 qC
 pL
 Hk
@@ -35371,7 +35113,7 @@ AC
 Hk
 wn
 Dj
-an
+xV
 Hk
 Hk
 Hk
@@ -35615,7 +35357,7 @@ Pu
 ba
 Hk
 dK
-kG
+ek
 YX
 Hk
 Hk
@@ -35627,7 +35369,7 @@ iU
 Hk
 Hk
 wn
-an
+xV
 Hk
 Hk
 ba
@@ -36123,11 +35865,11 @@ Pu
 Pu
 hg
 Mk
-vM
+hg
 ba
 Hk
 Pf
-an
+xV
 Hk
 kc
 BT
@@ -36139,7 +35881,7 @@ bG
 DD
 kc
 Hk
-an
+xV
 Dk
 Hk
 hg
@@ -36377,13 +36119,13 @@ Pv
 Pu
 Pu
 Pu
-XM
+hg
 Mk
-XM
+hg
 ba
 Hk
 Pf
-an
+xV
 Hk
 zg
 hb
@@ -36395,12 +36137,12 @@ qC
 AQ
 Hn
 Hk
-an
+xV
 kl
 Hk
-XM
+hg
 Mk
-XM
+hg
 Pu
 Pu
 Pv
@@ -36633,9 +36375,9 @@ Pv
 Pu
 Pu
 Pu
-XM
+hg
 Mk
-XM
+hg
 ba
 Hk
 Zj
@@ -36651,12 +36393,12 @@ qC
 AO
 xy
 Hk
-an
+xV
 tu
 Hk
-XM
+hg
 Mk
-XM
+hg
 Pu
 Pu
 Pv
@@ -36889,13 +36631,13 @@ Pv
 Pu
 Pu
 Pu
-XM
+hg
 Mk
-XM
+hg
 ba
 Hk
 eA
-an
+xV
 Hk
 ml
 hb
@@ -36907,12 +36649,12 @@ qC
 AQ
 xy
 Hk
-an
+xV
 Gd
 Hk
-XM
+hg
 Mk
-XM
+hg
 Pu
 Pu
 Pv
@@ -37145,10 +36887,10 @@ Pv
 Pu
 Pu
 Pu
-XM
+hg
 Mk
-XM
-yZ
+hg
+pA
 xB
 iH
 sl
@@ -37166,9 +36908,9 @@ Hk
 IY
 Cf
 xB
-ZJ
+hg
 Mk
-XM
+hg
 Pu
 Pu
 Pv
@@ -37401,10 +37143,10 @@ Pv
 Pu
 Pu
 Pu
-XM
+hg
 Mk
-XM
-Xk
+hg
+pA
 Hk
 Eq
 Pf
@@ -37422,9 +37164,9 @@ Hk
 Pf
 Lj
 Hk
-XM
+hg
 Mk
-XM
+hg
 Pu
 Pu
 Pv
@@ -37657,10 +37399,10 @@ Pv
 Pu
 Pu
 Pu
-XM
+hg
 Mk
-XM
-Xk
+hg
+pA
 Hk
 Hk
 Pf
@@ -37678,9 +37420,9 @@ Hk
 Pf
 Hk
 Hk
-XM
+hg
 Mk
-XM
+hg
 Pu
 Pu
 Pv
@@ -37913,10 +37655,10 @@ Pv
 Pu
 Pu
 Pu
-XM
+hg
 Mk
-XM
-Xk
+hg
+pA
 ba
 Hk
 Pf
@@ -37934,9 +37676,9 @@ mN
 Pf
 Hk
 ba
-XM
+hg
 Mk
-XM
+hg
 Pu
 Pu
 Pv
@@ -38169,10 +37911,10 @@ Pv
 Pu
 Pu
 Pu
-XM
+hg
 Mk
-XM
-Xk
+hg
+pA
 Hk
 Hk
 hm
@@ -38190,9 +37932,9 @@ eA
 Pf
 Hk
 ba
-XM
+hg
 Mk
-XM
+hg
 Pu
 Pu
 Pv
@@ -38425,10 +38167,10 @@ Pv
 Pu
 Pu
 Pu
-XM
+hg
 Mk
-XM
-Xk
+hg
+pA
 Hk
 da
 Ys
@@ -38446,9 +38188,9 @@ Pf
 qi
 Hk
 ba
-XM
+hg
 Mk
-XM
+hg
 Pu
 Pu
 Pv
@@ -38681,10 +38423,10 @@ Pv
 Pu
 Pu
 Pu
-XM
+hg
 Mk
-XM
-Xk
+hg
+pA
 Hk
 GQ
 Ys
@@ -38702,9 +38444,9 @@ yc
 Hk
 Hk
 ba
-XM
+hg
 Mk
-XM
+hg
 Pu
 Pu
 Pv
@@ -38937,10 +38679,10 @@ Pv
 Pu
 Pu
 Pu
-XM
+hg
 Mk
-XM
-Xk
+hg
+pA
 Hk
 li
 Ys
@@ -38958,9 +38700,9 @@ qY
 Hk
 ba
 ba
-XM
+hg
 Mk
-XM
+hg
 Pu
 Pu
 Pv
@@ -39193,10 +38935,10 @@ Pv
 Pu
 Pu
 Pu
-XM
+hg
 Mk
-XM
-Xk
+hg
+pA
 Hk
 Hk
 hm
@@ -39214,9 +38956,9 @@ Bz
 Hk
 Hk
 ba
-XM
+hg
 Mk
-XM
+hg
 Pu
 Pu
 Pv
@@ -39449,10 +39191,10 @@ Pv
 Pu
 Pu
 Pu
-XM
+hg
 Mk
-XM
-Xk
+hg
+pA
 hU
 wo
 qC
@@ -39470,9 +39212,9 @@ Pf
 gI
 Hk
 ba
-XM
+hg
 Mk
-XM
+hg
 Pu
 Pu
 Pv
@@ -39705,10 +39447,10 @@ Pv
 Pu
 Pu
 Pu
-XM
+hg
 Mk
-XM
-Xk
+hg
+pA
 hU
 qC
 qC
@@ -39726,9 +39468,9 @@ uZ
 uZ
 Hk
 ba
-XM
+hg
 Mk
-XM
+hg
 Pu
 Pu
 Pv
@@ -39961,9 +39703,9 @@ Mk
 Mk
 Mk
 ba
-Km
-Vw
-mu
+pA
+pA
+pA
 pA
 hU
 Ql
@@ -39982,8 +39724,8 @@ jp
 CF
 Hk
 ba
-Km
-Vw
+pA
+pA
 pA
 ba
 ba

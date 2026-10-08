@@ -65,6 +65,7 @@
 	READPREF_INT(parallax, PREFERENCE_TAG_PARALLAX)
 	READPREF_INT(pixel_size, PREFERENCE_TAG_PIXELSIZE)
 	READPREF_INT(tip_delay, PREFERENCE_TAG_TIP_DELAY)
+	READPREF_INT(tesla_volume, PREFERENCE_TAG_TESLA_VOLUME)
 
 	READPREF_RAW(asaycolor, PREFERENCE_TAG_ASAY_COLOUR)
 	READPREF_RAW(ooccolor, PREFERENCE_TAG_OOC_COLOUR)
@@ -97,6 +98,7 @@
 	toggles2		= sanitize_integer(toggles2, FALSE, INFINITY, initial(toggles2))
 	clientfps		= sanitize_integer(clientfps, FALSE, 1000, FALSE)
 	parallax		= sanitize_integer(parallax, PARALLAX_INSANE, PARALLAX_DISABLE, null)
+	tesla_volume	= sanitize_integer(tesla_volume, 0, 100, initial(tesla_volume))
 
 	pixel_size		= sanitize_float(pixel_size, PIXEL_SCALING_AUTO, PIXEL_SCALING_3X, 0.5, initial(pixel_size))
 	scaling_method  = sanitize_text(scaling_method, initial(scaling_method))
@@ -154,6 +156,7 @@
 	PREP_WRITEPREF_RAW(parallax, PREFERENCE_TAG_PARALLAX)
 	PREP_WRITEPREF_RAW(pixel_size, PREFERENCE_TAG_PIXELSIZE)
 	PREP_WRITEPREF_RAW(tip_delay, PREFERENCE_TAG_TIP_DELAY)
+	PREP_WRITEPREF_RAW(tesla_volume, PREFERENCE_TAG_TESLA_VOLUME)
 	PREP_WRITEPREF_RAW(pda_theme, PREFERENCE_TAG_PDA_THEME)
 	PREP_WRITEPREF_RAW(pda_color, PREFERENCE_TAG_PDA_COLOUR)
 	PREP_WRITEPREF_RAW(preferred_syndie_role, PREFERENCE_TAG_PREFERRED_SYNDIE_ROLE) //NSV13

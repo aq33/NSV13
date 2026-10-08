@@ -337,9 +337,7 @@
 /area/ruin/powered)
 "ba" = (
 /obj/machinery/power/port_gen/pacman,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating/airless,
 /area/ruin/powered)
 "bb" = (
@@ -387,9 +385,7 @@
 /turf/open/floor/plasteel,
 /area/ruin/powered)
 "bk" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating/airless,
 /area/ruin/powered)
 "bl" = (
@@ -429,15 +425,6 @@
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/plasteel,
 /area/ruin/powered)
-"bt" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel,
-/area/ruin/powered)
 "bu" = (
 /obj/machinery/door/airlock/atmos,
 /obj/structure/disposalpipe/segment{
@@ -447,9 +434,7 @@
 /area/ruin/powered)
 "bv" = (
 /obj/machinery/power/apc/auto_name/north,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
 	dir = 4
 	},
@@ -467,46 +452,23 @@
 /area/ruin/powered)
 "by" = (
 /obj/machinery/door/airlock/external,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/powered)
-"bz" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel,
-/area/ruin/powered)
 "bA" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/plasteel,
-/area/ruin/powered)
-"bB" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/powered)
 "bC" = (
 /obj/machinery/door/airlock/atmos,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/powered)
 "bD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 6
 	},
@@ -514,64 +476,26 @@
 /area/ruin/powered)
 "bE" = (
 /obj/machinery/door/airlock/atmos,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/engine,
-/area/ruin/powered)
-"bF" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/open/floor/engine,
-/area/ruin/powered)
-"bG" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/engine,
 /area/ruin/powered)
 "bH" = (
 /obj/machinery/blackbox_recorder,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
-	},
-/turf/open/floor/engine,
-/area/ruin/powered)
-"bI" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/engine,
-/area/ruin/powered)
-"bJ" = (
-/obj/structure/cable{
-	icon_state = "2-4"
 	},
 /turf/open/floor/engine,
 /area/ruin/powered)
 "bK" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /obj/effect/mob_spawn/human/corpse/assistant,
 /turf/open/floor/engine,
 /area/ruin/powered)
 "bL" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/turf/open/floor/engine,
-/area/ruin/powered)
-"bM" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/engine,
 /area/ruin/powered)
 "bN" = (
@@ -583,12 +507,7 @@
 /turf/open/floor/plasteel,
 /area/ruin/powered)
 "bO" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /obj/machinery/power/apc/auto_name/north,
 /turf/open/floor/engine,
 /area/ruin/powered)
@@ -597,9 +516,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 4
 	},
@@ -609,9 +526,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 4
 	},
@@ -621,9 +536,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 4
 	},
@@ -633,9 +546,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 10
 	},
@@ -661,15 +572,6 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel,
-/area/ruin/powered)
-"bW" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/open/floor/engine,
 /area/ruin/powered)
 "bX" = (
 /obj/machinery/portable_atmospherics/scrubber,
@@ -700,9 +602,7 @@
 /turf/open/floor/plasteel/airless,
 /area/ruin/powered)
 "eo" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
 /area/ruin/powered)
@@ -742,9 +642,7 @@
 /turf/open/floor/plasteel/airless,
 /area/ruin/powered)
 "hf" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /turf/open/floor/plasteel,
 /area/ruin/powered)
@@ -933,18 +831,14 @@
 /turf/open/floor/plasteel,
 /area/ruin/powered)
 "Eu" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/open/floor/engine,
 /area/ruin/powered)
 "EK" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4
 	},
@@ -958,9 +852,7 @@
 /turf/open/floor/engine,
 /area/ruin/powered)
 "Fg" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
@@ -997,9 +889,7 @@
 /turf/open/floor/plasteel,
 /area/ruin/powered)
 "Hi" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/plasteel,
 /area/ruin/powered)
@@ -1538,7 +1428,7 @@ lc
 bA
 Fg
 bE
-bF
+bL
 am
 am
 bL
@@ -1548,7 +1438,7 @@ ab
 gF
 am
 am
-bG
+bL
 am
 am
 ag
@@ -1577,20 +1467,20 @@ aa
 ab
 bm
 lc
-bB
+bA
 bi
 ab
 bO
 am
 am
-bG
+bL
 am
-bJ
+bL
 bE
-bI
+bL
 EK
-bI
-bM
+bL
+bL
 am
 am
 ag
@@ -1623,9 +1513,9 @@ bC
 cP
 ab
 bH
-bI
-bI
-bW
+bL
+bL
+bL
 Eu
 bK
 ab
@@ -1661,7 +1551,7 @@ aa
 ab
 bf
 CZ
-bB
+bA
 aj
 ab
 pO
@@ -1703,7 +1593,7 @@ ab
 ab
 vA
 CZ
-bB
+bA
 uK
 bg
 jJ
@@ -1784,10 +1674,10 @@ ay
 ba
 bk
 by
-bz
+bA
 Hi
 hf
-bt
+bA
 vB
 wP
 ad

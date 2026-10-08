@@ -632,6 +632,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				eye_overlay.pixel_x += H.dna.species.offset_features[OFFSET_FACE][1]
 				eye_overlay.pixel_y += H.dna.species.offset_features[OFFSET_FACE][2]
 			standing += eye_overlay
+			standing += H.get_tears_overlays() // AQ EDIT - łzy po *cry (port Yogstation#15690)
 
 	//organic body markings
 	if(HAS_MARKINGS in species_traits)

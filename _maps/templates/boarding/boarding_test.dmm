@@ -36,9 +36,7 @@
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "fZ" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/closed/wall/r_wall/ship,
 /area/ruin/powered/nsv13/boarding_interior)
 "gl" = (
@@ -51,9 +49,7 @@
 /turf/open/floor/plasteel,
 /area/ruin/powered/nsv13/boarding_interior)
 "iq" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "iK" = (
@@ -65,33 +61,6 @@
 "jj" = (
 /obj/machinery/door/airlock/ship/external/glass,
 /obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/ruin/powered/nsv13/boarding_interior)
-"ka" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/plasteel,
-/area/ruin/powered/nsv13/boarding_interior)
-"kq" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/nsv13/boarding_interior)
-"kB" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/nsv13/boarding_interior)
-"ln" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "lS" = (
@@ -139,9 +108,7 @@
 /turf/open/floor/plasteel,
 /area/ruin/powered/nsv13/boarding_interior)
 "qW" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/powered/nsv13/boarding_interior)
 "rr" = (
@@ -159,17 +126,6 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel,
-/area/ruin/powered/nsv13/boarding_interior)
-"uu" = (
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/obj/machinery/power/smes,
-/turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "uM" = (
 /obj/machinery/power/terminal{
@@ -278,7 +234,6 @@
 /area/ruin/powered/nsv13/boarding_interior)
 "HM" = (
 /obj/structure/cable,
-/obj/structure/cable,
 /obj/machinery/power/smes,
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
@@ -289,9 +244,7 @@
 /turf/open/floor/plating,
 /area/ruin/powered/nsv13/boarding_interior)
 "Ie" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/item/stock_parts/cell/high,
 /turf/open/floor/plasteel,
 /area/ruin/powered/nsv13/boarding_interior)
@@ -30043,7 +29996,7 @@ xi
 xi
 dy
 hZ
-ka
+qW
 qW
 qW
 qW
@@ -30299,7 +30252,7 @@ dy
 dy
 dy
 eF
-kq
+iq
 eF
 eF
 eF
@@ -30555,9 +30508,9 @@ eF
 eF
 dy
 eF
-kB
 iq
-uu
+iq
+HM
 iq
 iq
 HM
@@ -30811,7 +30764,7 @@ eF
 eF
 fZ
 iq
-ln
+iq
 eF
 uM
 eF
