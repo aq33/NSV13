@@ -24,6 +24,8 @@
 
 	playsound(get_turf(src), 'aquila/sound/creatures/fart.ogg', 100, TRUE)
 	new /obj/effect/decal/cleanable/feces(get_turf(src))
+	var/datum/reagent/consumable/castor_oil/oil = reagents?.get_reagent(/datum/reagent/consumable/castor_oil)
+	oil?.purge(src)
 	return TRUE
 
 /mob/living/carbon/human/actually_shit_myself()

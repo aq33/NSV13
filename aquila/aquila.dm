@@ -348,6 +348,7 @@
 #include "code\modules\projectiles\projectile\reusable\foam_dart.dm"
 #include "code\modules\reagents\chemistry\accelerants.dm"
 #include "code\modules\reagents\chemistry\reagents\alcohol_reagents.dm"
+#include "code\modules\reagents\chemistry\reagents\food_reagents.dm"
 #include "code\modules\reagents\chemistry\reagents\other_reagents.dm"
 #include "code\modules\reagents\chemistry\recipes\other_reagents.dm"
 #include "code\modules\reagents\reagent_containers\bottle.dm"
