@@ -11,7 +11,7 @@
 		return
 
 	if(isliving(usr))
-		if(do_after(usr, 3 SECONDS, target = src))
+		if(do_after(usr, 7 SECONDS, target = src))
 			shit(usr)
 	else
 		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")

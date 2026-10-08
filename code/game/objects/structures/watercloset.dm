@@ -26,7 +26,7 @@
 		if(user.defecation < DEFECATION_VERY)
 			to_chat(user, "<span class='notice'>Nie potrzebujesz skorzystać z ubikacji.</span>")
 			return
-		else if(do_after(usr, 3 SECONDS, target = src))
+		else if(do_after(usr, 7 SECONDS, target = src))
 			shit(user)// AQ EDIT END
 	else if(swirlie)
 		user.changeNext_move(CLICK_CD_MELEE)
