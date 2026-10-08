@@ -139,6 +139,17 @@
 		else
 			to_chat(user, "<span class='warning'>You can't eat this with a spoon!</span>")
 			return
+	if(istype(W, /obj/item/pen)) //renaming food (BeeStation#13360), merged into our fork/spoon attackby
+		var/target_name = tgui_input_text(user, "What would you like to name your masterpiece?", "Name:", name || "Food", MAX_MESSAGE_LEN)
+		if(!target_name || !length(target_name))
+			return
+		if(CHAT_FILTER_CHECK(target_name))
+			to_chat(user, "<span class='warning'>The given name contains prohibited word(s).</span>")
+			return
+		to_chat(user, "<span class='notice'>You rename the '[name]' to '[target_name]'.</span>")
+		name = target_name
+		update_appearance()
+		return
 	return ..()
 
 ///This proc makes things decompose. Set preserved_food to TRUE to make it never decompose.
