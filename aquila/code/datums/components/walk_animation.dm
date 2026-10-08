@@ -136,12 +136,11 @@
 	vis_flags = VIS_INHERIT_ID
 
 /// Maska fragmentu ciała. Niewidoczna, rysuje się tylko do własnego bufora.
-/// Dziedziczy transformację moba (wzrost z dna.update_body_size), żeby skalowała się razem z ciałem.
 /obj/effect/overlay/walk_mask
 	name = ""
 	icon = 'aquila/icons/mob/walk_masks.dmi'
 	plane = FLOAT_PLANE
 	layer = FLOAT_LAYER
-	appearance_flags = RESET_COLOR | RESET_ALPHA | KEEP_APART
+	appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART
 	vis_flags = VIS_INHERIT_DIR
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
