@@ -183,7 +183,7 @@
 		return
 	var/list/pickable_items = list()
 	for(var/obj/item/I in range(1, L))
-		if(I.anchored || (I.resistance_flags & INDESTRUCTIBLE) || is_type_in_typecache(I, deepfry_blacklisted_items) || HAS_TRAIT(I, TRAIT_NODROP) || (I.item_flags & (ABSTRACT | DROPDEL)))
+		if(I.anchored || (I.resistance_flags & INDESTRUCTIBLE) || is_type_in_typecache(I, deepfry_blacklisted_items) || is_type_in_typecache(I, GLOB.oilfry_blacklisted_items) || HAS_TRAIT(I, TRAIT_NODROP) || (I.item_flags & (ABSTRACT | DROPDEL)))
 			continue
 		pickable_items += I
 	if(!length(pickable_items))
@@ -191,9 +191,7 @@
 
 	var/obj/item/I = pick(pickable_items)
 	I.forceMove(src) //shove the item in, even if it isn't food
-	frying = new /obj/item/food/deepfryholder(src, I)
-	icon_state = "fryer_on"
-	fry_loop.start()
+	start_fry(I, L)
 	log_game("[key_name(L)] deep fried [I.name] ([I.type]) at [AREACOORD(src)].")
 
 /obj/machinery/sleeper/npc_tamper_act(mob/living/L)
