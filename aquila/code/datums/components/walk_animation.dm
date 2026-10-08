@@ -7,7 +7,8 @@
  * Maski są kierunkowe (aquila/icons/mob/walk_masks.dmi) i dziedziczą kierunek moba po stronie klienta.
  * "arm_a"/"leg_a" to strona lewa na ekranie przy widoku z przodu i z tyłu; w widoku z boku
  * "arm_a" to ręka bliżej patrzącego, a "leg_a" i "leg_b" pokazują obie nogi w pełnej szerokości.
- * Z boku "leg_b" jest widoczna tylko w trakcie kroku, żeby w spoczynku nogi nie były rysowane podwójnie.
+ * Z boku "leg_b" jest widoczna tylko w trakcie kroku, żeby w spoczynku nogi nie były rysowane podwójnie,
+ * a "arm_b" to dalsza dłoń, która w sprite'ach wystaje 1 px przed brzuch.
  */
 /datum/component/walk_animation
 	/// Bufor, do którego rysuje się mob
@@ -94,6 +95,7 @@
 	if(source.dir & (EAST|WEST))
 		// Z boku: tylna noga cofa się, a pełna kopia nóg wysuwa się w przód.
 		// Ręka wisi przy samych plecach, więc wychyla się tylko w przód (co drugi krok), żeby nie wystawać za obrys.
+		// Dalsza dłoń na przemian z nią: wychyla się w przód albo chowa za ciałem.
 		var/forward = (source.dir & EAST) ? 1 : -1
 		swing("leg_a", -forward, 0, half_step)
 		var/obj/effect/overlay/walk_limb/front_leg = limbs["leg_b"]
@@ -103,6 +105,12 @@
 		animate(alpha = 0, time = 0)
 		if(phase)
 			swing("arm_a", forward, 0, half_step)
+			var/obj/effect/overlay/walk_limb/far_hand = limbs["arm_b"]
+			animate(far_hand, alpha = 0, pixel_w = 0, time = 0)
+			animate(time = half_step * 2)
+			animate(alpha = 255, time = 0)
+		else
+			swing("arm_b", forward, 0, half_step)
 	else
 		// Z przodu i z tyłu: unosi się jedna noga i ręka po przeciwnej stronie
 		swing(phase ? "leg_a" : "leg_b", 0, 1, half_step)
@@ -112,6 +120,9 @@
 	SIGNAL_HANDLER
 
 	update_side_leg(new_dir)
+	// "arm_b" z boku to dalsza dłoń, a z przodu cała ręka; przy zmianie widoku przerywamy jej ukrycie
+	if((old_dir & (EAST|WEST)) != (new_dir & (EAST|WEST)))
+		animate(limbs["arm_b"], alpha = 255, pixel_w = 0, pixel_z = 0, time = 0)
 
 /// Z boku maska "leg_b" pokrywa się z "leg_a", więc w spoczynku ta noga jest ukryta; z przodu i z tyłu zawsze widoczna.
 /datum/component/walk_animation/proc/update_side_leg(new_dir)
