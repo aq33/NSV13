@@ -19,7 +19,7 @@
 	id = "boiledegg"
 	alt_name = list("egg")
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/boiledegg
+	build_path = /obj/item/food/boiledegg
 	category = list("initial", "Nutritional Supplements")
 
 /datum/design/replicator/tier1/boiledrice
@@ -50,7 +50,7 @@
 	name = "Raw egg"
 	id = "rawegg"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/egg
+	build_path = /obj/item/food/egg
 	category = list("initial", "Nutritional Supplements")
 
 /datum/design/replicator/tier1/tea
@@ -141,7 +141,7 @@
 	name = "Fried eggs"
 	id = "friedeggs"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/friedegg
+	build_path = /obj/item/food/friedegg
 	category = list("Basic Dishes")
 
 /datum/design/replicator/tier2/pancakes

@@ -26439,7 +26439,7 @@
 /area/awaymission/factory/villageafter/house)
 "xrF" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/food/egg,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/monotile/dark,
 /area/awaymission/factory/villageafter/house)
@@ -26706,7 +26706,7 @@
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "xBZ" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/food/egg,
 /turf/open/floor/monotile/dark,
 /area/awaymission/factory/villageduring/house)
 "xCl" = (
