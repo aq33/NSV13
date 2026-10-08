@@ -10616,7 +10616,7 @@
 /area/crew_quarters/dorms)
 "iaw" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/honkdae{
+/obj/item/food/honkdae{
 	desc = "Honkdae, a cruel fate for a clown mask, considering you need one for this desert.";
 	pixel_x = -8;
 	pixel_y = 14
@@ -14891,7 +14891,7 @@
 /obj/item/extinguisher{
 	pixel_x = 13
 	},
-/obj/item/reagent_containers/food/snacks/sundae{
+/obj/item/food/sundae{
 	pixel_x = -8;
 	pixel_y = 8
 	},

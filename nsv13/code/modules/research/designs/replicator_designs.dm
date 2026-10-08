@@ -251,7 +251,7 @@
 	name = "Honkdae"
 	id = "honkdae"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/honkdae
+	build_path = /obj/item/food/honkdae
 	category = list("Exotic Dishes")
 
 /datum/design/replicator/tier4/wingfangchu
