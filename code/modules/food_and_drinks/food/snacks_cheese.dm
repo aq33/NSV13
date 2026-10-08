@@ -99,6 +99,10 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/consumable/nutriment/vitamin = 10)
 	tastes = list("cheddar" = 1)
 
+/obj/item/food/cheese/wheel/cheddar/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/customizable_reagent_holder, null, CUSTOM_INGREDIENT_ICON_SCATTER, max_ingredients = 6)
+
 /obj/item/food/cheese/wheel/cheddar/welder_act(mob/living/user, obj/item/W)
 	if(W.use_tool(src, user, 0, volume=40))
 		var/obj/item/stack/sheet/cheese/NR = new (user.loc, 5)
