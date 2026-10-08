@@ -13964,7 +13964,7 @@
 /area/engine/engineering)
 "oXn" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/chocolatebar{
+/obj/item/food/chocolatebar{
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/medicine/adminordrazine = 1, /datum/reagent/consumable/cocoa = 2)
 	},
 /turf/open/floor/carpet/cyan,
@@ -22793,7 +22793,7 @@
 /area/quartermaster/miningdock)
 "ygh" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /turf/open/floor/monotile/light,
 /area/crew_quarters/kitchen)
 "ygM" = (

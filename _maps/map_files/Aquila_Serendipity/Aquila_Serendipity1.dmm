@@ -11246,7 +11246,7 @@
 /obj/structure/table/wood,
 /obj/machinery/airalarm/directional/north,
 /obj/structure/window/plasma/reinforced/spawner/east,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /turf/open/floor/wood,
 /area/crew_quarters/kitchen)
 "OB" = (

@@ -10174,7 +10174,7 @@
 /area/hallway/secondary/entry)
 "gBT" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/kitchen)
 "gCl" = (

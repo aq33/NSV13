@@ -5746,7 +5746,7 @@
 /area/crew_quarters/kitchen)
 "arc" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /turf/open/floor/monotile/light,
 /area/crew_quarters/kitchen)
 "ard" = (

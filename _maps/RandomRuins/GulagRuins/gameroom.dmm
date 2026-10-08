@@ -402,19 +402,19 @@
 /area/ruin/space/has_grav/powered)
 "vv" = (
 /obj/structure/closet/crate,
-/obj/item/reagent_containers/food/snacks/chocolatebar{
+/obj/item/food/chocolatebar{
 	pixel_x = -9;
 	pixel_y = -8
 	},
-/obj/item/reagent_containers/food/snacks/chocolatebar{
+/obj/item/food/chocolatebar{
 	pixel_x = -4;
 	pixel_y = -9
 	},
-/obj/item/reagent_containers/food/snacks/chocolatebar{
+/obj/item/food/chocolatebar{
 	pixel_x = 2;
 	pixel_y = -9
 	},
-/obj/item/reagent_containers/food/snacks/chocolatebar{
+/obj/item/food/chocolatebar{
 	pixel_x = 6;
 	pixel_y = -9
 	},

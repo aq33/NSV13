@@ -25185,7 +25185,7 @@
 "sCZ" = (
 /obj/structure/table,
 /obj/item/kitchen/rollingpin,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /obj/item/clothing/head/chefhat,
 /turf/open/floor/carpet/ship,
 /area/crew_quarters/kitchen)

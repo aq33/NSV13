@@ -2107,7 +2107,7 @@
 "sh" = (
 /obj/structure/closet/secure_closet/freezer/fridge/open,
 /obj/item/reagent_containers/food/condiment/enzyme,
-/obj/item/reagent_containers/food/snacks/chocolatebar,
+/obj/item/food/chocolatebar,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/powered)

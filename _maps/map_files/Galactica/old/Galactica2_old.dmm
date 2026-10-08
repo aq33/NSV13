@@ -38994,7 +38994,7 @@
 /area/ai_monitored/storage/eva)
 "bMy" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /obj/machinery/newscaster/directional/west,
 /turf/open/floor/monotile,
 /area/crew_quarters/kitchen)

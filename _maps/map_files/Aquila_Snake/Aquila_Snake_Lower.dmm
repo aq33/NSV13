@@ -2003,7 +2003,7 @@
 "hH" = (
 /obj/structure/table,
 /obj/item/book/manual/wiki/cooking_to_serve_man,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /turf/open/floor/plasteel,
 /area/crew_quarters/kitchen)
 "hJ" = (

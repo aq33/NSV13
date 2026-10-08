@@ -13739,7 +13739,7 @@
 /area/tdome/tdomeobserve)
 "HB" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /obj/item/reagent_containers/food/condiment/enzyme{
 	pixel_y = 5
 	},
@@ -14224,7 +14224,7 @@
 "Im" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate,
-/obj/item/reagent_containers/food/snacks/chocolatebar{
+/obj/item/food/chocolatebar{
 	pixel_x = -3;
 	pixel_y = 3
 	},

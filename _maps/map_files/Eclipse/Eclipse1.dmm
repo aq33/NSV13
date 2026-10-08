@@ -10205,7 +10205,7 @@
 /area/crew_quarters/dorms)
 "Wf" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /turf/open/floor/plasteel/checker,
 /area/crew_quarters/kitchen)
 "Wg" = (

@@ -3543,7 +3543,7 @@
 /obj/item/clothing/head/hardhat/cakehat,
 /obj/item/book/manual/chef_recipes,
 /obj/item/storage/box/donkpockets,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 6
 	},
