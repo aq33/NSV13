@@ -67,6 +67,7 @@ Decyzje: kod w `aquila/`, teksty dla gracza po polsku, event z wagą 10 + tryb s
 | Event | `get_candidates(ROLE_HORROR, /datum/role_preference/midround_ghost/horror)`, waga 10 | Nasz system preferencji ról. Waga z decyzji 3; reszta parametrów jak w PR |
 | Tryb `traitorhorror` | Nowy, nie ma go w PR | Decyzja 3. Wybrani gracze nie dostają pracy i na starcie stają się horrorem w punkcie spawnu eventów. Liczba horrorów: tak jak wampirów w traitor+vampire. `CONTINUOUS` jak w traitor+changeling |
 | Headcrab changelinga | Bez usunięcia `req_stat = DEAD` | Decyzja 4 |
+| Sklep mutacji (`ui_act`) | `text2path()` na typie zdolności i sprawdzanie punktów przed zakupem zdolności i ulepszenia | Błąd z Yogs: TGUI przysyła ścieżkę jako tekst, `istype()` jej nie dopasowuje, więc zdolność dało się kupować w nieskończoność; punktów nikt nie sprawdzał |
 | Miejsce spawnu (event i tryb secret) | Tylko punkty `event_spawn` na z-levelu statku (`is_station_level`), przez `horror_spawn_locations()` | Gułag ma własne punkty spawnu eventów na z-levelu kosmosu; horror ma się pojawiać tylko na statku |
 | Teksty | Po polsku | Decyzja 2. Nazwy chemikaliów zostały angielskie, bo tak nazywają się reagenty w grze. Nazwa w preferencjach to „Eldritch Horror”, jak Thief i Paradox Clone |
 | Ikona podglądu w preferencjach, combat mode, storytellery itd. | Pominięte | Refaktory Yogs, których u nas nie ma |

@@ -90,8 +90,24 @@
 /mob/living/simple_animal/horror/ui_act(action, params)
 	if(..())
 		return
+	// AQUILA - Yogs passes the text from TGUI straight in: istype() never matches text, so an ability could be bought again and again, and points were never checked
 	switch(action)
 		if("unlock")
-			add_ability(params["typepath"])
+			var/datum/action/innate/horror/ability = text2path(params["typepath"])
+			if(!ispath(ability, /datum/action/innate/horror) || initial(ability.blacklisted) || has_ability(ability))
+				return
+			if(available_points < initial(ability.soul_price))
+				return
+			add_ability(ability)
+			return TRUE
 		if("upgrade")
-			add_upgrade(params["id"])
+			var/id = params["id"]
+			if(has_upgrade(id))
+				return
+			for(var/datum/horror_upgrade/upgrade as anything in subtypesof(/datum/horror_upgrade))
+				if(initial(upgrade.id) != id)
+					continue
+				if(available_points < initial(upgrade.soul_price))
+					return
+				add_upgrade(id)
+				return TRUE
