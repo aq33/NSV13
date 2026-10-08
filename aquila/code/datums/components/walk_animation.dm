@@ -124,7 +124,8 @@
 	if(source.dir & (EAST|WEST))
 		// Z boku: tylna noga cofa się, a pełna kopia nóg wysuwa się w przód.
 		// Ręka wisi przy samych plecach, więc wychyla się tylko w przód (co drugi krok), żeby nie wystawać za obrys.
-		// Dalsza dłoń na przemian z nią: wychyla się w przód albo chowa za ciałem.
+		// Dalsza dłoń wystaje przed brzuch tylko o 1 px, więc się nie przesuwa (oderwałaby się od ciała),
+		// tylko chowa za ciałem, gdy bliższa ręka idzie w przód.
 		var/forward = (source.dir & EAST) ? 1 : -1
 		swing("leg_a", -forward, 0, half_step)
 		var/obj/effect/overlay/walk_limb/front_leg = limbs["leg_b"]
@@ -140,8 +141,6 @@
 			animate(time = half_step * 2)
 			animate(alpha = 255, time = 0)
 			swing(held_item_of("arm_b", source.dir), -forward, 0, half_step)
-		else
-			swing_arm("arm_b", forward, 0, half_step)
 	else
 		// Z przodu i z tyłu: unosi się jedna noga i ręka po przeciwnej stronie
 		swing(phase ? "leg_a" : "leg_b", 0, 1, half_step)
