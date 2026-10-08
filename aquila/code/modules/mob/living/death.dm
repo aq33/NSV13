@@ -2,7 +2,7 @@
 	var/was_dead_before = stat == DEAD
 	. = ..()
 	if(!was_dead_before && client && mind?.current)
-		show_death_info()
+		INVOKE_ASYNC(src, PROC_REF(show_death_info))
 
 ///Okienko z informacją, że gracz umarł i jak może wrócić do gry
 /mob/living/proc/show_death_info()
