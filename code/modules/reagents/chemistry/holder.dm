@@ -13,6 +13,18 @@
 		var/datum/reagent/D = new path()
 		GLOB.chemical_reagents_list[path] = D
 
+///NSV13 - chemical_reactions_list is keyed by reagent, not by reaction type (newfood examine texts look reactions up by type)
+/proc/get_chemical_reaction(reaction_type)
+	var/static/list/reactions_by_type
+	if(!reactions_by_type)
+		if(!GLOB.chemical_reactions_list)
+			build_chemical_reactions_list()
+		reactions_by_type = list()
+		for(var/reagent in GLOB.chemical_reactions_list)
+			for(var/datum/chemical_reaction/reaction as anything in GLOB.chemical_reactions_list[reagent])
+				reactions_by_type[reaction.type] = reaction
+	return reactions_by_type[reaction_type]
+
 /proc/build_chemical_reactions_list()
 	//Chemical Reactions - Initialises all /datum/chemical_reaction into a list
 	// It is filtered into multiple lists within a list.
