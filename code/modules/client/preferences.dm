@@ -896,8 +896,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<tr style='vertical-align:top;'><td width=15%>[G.display_name]\n"
 				var/donator = G.sort_category == "Donator" // purchase box and cost coloumns doesn't appear on donator items
 				if(G.id in purchased_gear)
-					if(G.sort_category == "OOC")
-						dat += "<i>[G.unlocktype != GEAR_DONATOR ? "Unlocked" : "Purchased"].</i></td>" //NSV13 - donator items
+					if(!G.path) // AQ EDIT - was G.sort_category == "OOC", polska bielizna też nie ma przedmiotu
+						dat +="<i>[G.unlocktype != GEAR_DONATOR ? "Unlocked" : "Purchased"].</i></td>" //NSV13 - donator items
 					else
 						dat += "<a style='white-space:normal;' [ticked ? "class='linkOn' " : ""]href='?_src_=prefs;preference=gear;toggle_gear=[G.id]'>Equip</a></td>"
 				else
@@ -1690,7 +1690,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					active_character.facial_hair_style = previous_list_item(active_character.facial_hair_style, GLOB.facial_hair_styles_list)
 
 				if("underwear")
-					var/new_underwear = input(user, "Choose your character's underwear:", "Character Preference")  as null|anything in GLOB.underwear_list
+					var/new_underwear = input(user, "Choose your character's underwear:", "Character Preference")  as null|anything in unlocked_accessories(GLOB.underwear_list, user.client) // AQ EDIT
 					if(new_underwear)
 						active_character.underwear = new_underwear
 
@@ -1700,13 +1700,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						active_character.underwear_color = sanitize_hexcolor(new_underwear_color)
 
 				if("undershirt")
-					var/new_undershirt = input(user, "Choose your character's undershirt:", "Character Preference") as null|anything in GLOB.undershirt_list
+					var/new_undershirt = input(user, "Choose your character's undershirt:", "Character Preference") as null|anything in unlocked_accessories(GLOB.undershirt_list, user.client) // AQ EDIT
 					if(new_undershirt)
 						active_character.undershirt = new_undershirt
 
 				if("socks")
 					var/new_socks
-					new_socks = input(user, "Choose your character's socks:", "Character Preference") as null|anything in GLOB.socks_list
+					new_socks = input(user, "Choose your character's socks:", "Character Preference") as null|anything in unlocked_accessories(GLOB.socks_list, user.client) // AQ EDIT
 					if(new_socks)
 						active_character.socks = new_socks
 
