@@ -24,6 +24,8 @@
 	// Clothing sprites are drawn for a slim body, so the belly is only shown when naked
 	if(H.w_uniform || H.wear_suit)
 		return
+	if((H.underwear && H.underwear != "Nude") || (H.undershirt && H.undershirt != "Nude"))
+		return
 	var/mutable_appearance/belly = mutable_appearance('aquila/icons/mob/zachary.dmi', "polak_(grayscale)", -BODY_LAYER)
 	if(chest.draw_color)
 		belly.color = "#[chest.draw_color]"
