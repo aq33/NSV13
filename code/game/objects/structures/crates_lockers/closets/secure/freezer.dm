@@ -65,7 +65,7 @@
 /obj/structure/closet/secure_closet/freezer/meat/PopulateContents()
 	..()
 	for(var/i = 0, i < 4, i++)
-		new /obj/item/reagent_containers/food/snacks/meat/slab/monkey(src)
+		new /obj/item/food/meat/slab/monkey(src)
 	new /obj/item/storage/box/mixedcubes(src)
 
 /obj/structure/closet/secure_closet/freezer/meat/open

@@ -28,7 +28,7 @@
 		/obj/item/food/benedict,
 		/obj/item/food/icecreamsandwich,
 		/obj/item/food/sundae,
-		/obj/item/reagent_containers/food/snacks/carpmeat,
+		/obj/item/food/fishmeat/carp,
 		/obj/item/food/enchiladas,
 		/obj/item/reagent_containers/food/snacks/popcorn,
 		/obj/item/food/burrito,

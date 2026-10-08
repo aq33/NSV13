@@ -75,7 +75,7 @@
 /area/ruin/powered)
 "s" = (
 /obj/structure/table/wood/fancy,
-/obj/item/reagent_containers/food/snacks/sashimi,
+/obj/item/food/sashimi,
 /turf/open/floor/wood,
 /area/ruin/powered)
 "t" = (
@@ -142,7 +142,7 @@
 /area/ruin/powered)
 "M" = (
 /obj/structure/table/wood/fancy,
-/obj/item/reagent_containers/food/snacks/meatclown,
+/obj/item/food/meatclown,
 /turf/open/floor/wood,
 /area/ruin/powered)
 "N" = (

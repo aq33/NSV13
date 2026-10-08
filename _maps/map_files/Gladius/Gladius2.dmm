@@ -2671,7 +2671,7 @@
 /area/engine/break_room)
 "caD" = (
 /obj/item/kitchen/knife,
-/obj/item/reagent_containers/food/snacks/meat/rawbacon,
+/obj/item/food/meat/rawbacon,
 /obj/item/reagent_containers/food/condiment/saltshaker{
 	pixel_x = -8;
 	pixel_y = 5
@@ -10110,7 +10110,7 @@
 /obj/structure/table/reinforced,
 /obj/item/storage/bag/tray,
 /obj/item/reagent_containers/food/condiment/flour,
-/obj/item/reagent_containers/food/snacks/meat/rawbacon,
+/obj/item/food/meat/rawbacon,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/kitchen)
 "gzE" = (

@@ -120,7 +120,7 @@
 	name = "Steak"
 	id = "steak"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/meat/steak/plain
+	build_path = /obj/item/food/meat/steak/plain
 	category = list("Basic Dishes")
 
 /datum/design/replicator/tier2/fries
@@ -162,7 +162,7 @@
 	id = "meatslab"
 	alt_name = list("slab of meat")
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/meat/slab
+	build_path = /obj/item/food/meat/slab
 	category = list("Basic Dishes")
 
 /datum/design/replicator/tier2/tier3disk

@@ -20159,7 +20159,7 @@
 /obj/structure/kitchenspike,
 /obj/effect/decal/cleanable/blood,
 /obj/item/stack/sheet/animalhide/goliath_hide,
-/obj/item/reagent_containers/food/snacks/meat/slab/goliath,
+/obj/item/food/meat/slab/goliath,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "cJj" = (

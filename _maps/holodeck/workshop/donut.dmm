@@ -189,11 +189,11 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/meat/slab/meatproduct,
-/obj/item/reagent_containers/food/snacks/meat/slab/meatproduct,
-/obj/item/reagent_containers/food/snacks/meat/slab/meatproduct,
-/obj/item/reagent_containers/food/snacks/meat/slab/meatproduct,
-/obj/item/reagent_containers/food/snacks/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
+/obj/item/food/meat/slab/meatproduct,
 /turf/open/floor/holofloor/monotile/steel,
 /area/template_noop)
 "Y" = (

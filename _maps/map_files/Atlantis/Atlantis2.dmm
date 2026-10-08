@@ -21799,7 +21799,7 @@
 /area/nsv/hanger/deck2)
 "xaR" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/cubancarp,
+/obj/item/food/cubancarp,
 /turf/open/floor/carpet/cyan,
 /area/medical/medbay/central)
 "xby" = (

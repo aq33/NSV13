@@ -2809,9 +2809,9 @@
 "cKp" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
@@ -4668,13 +4668,13 @@
 /area/awaymission/factory/factoryduring/down)
 "eCO" = (
 /obj/structure/closet/crate,
-/obj/item/reagent_containers/food/snacks/meat/slab/bear,
-/obj/item/reagent_containers/food/snacks/meat/slab/bear,
-/obj/item/reagent_containers/food/snacks/meat/slab/goliath,
-/obj/item/reagent_containers/food/snacks/meat/slab/goliath,
-/obj/item/reagent_containers/food/snacks/meat/slab/gondola,
-/obj/item/reagent_containers/food/snacks/meat/slab/gondola,
-/obj/item/reagent_containers/food/snacks/meat/slab/gondola,
+/obj/item/food/meat/slab/bear,
+/obj/item/food/meat/slab/bear,
+/obj/item/food/meat/slab/goliath,
+/obj/item/food/meat/slab/goliath,
+/obj/item/food/meat/slab/gondola,
+/obj/item/food/meat/slab/gondola,
+/obj/item/food/meat/slab/gondola,
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
@@ -5265,11 +5265,11 @@
 /obj/item/bodypart/r_arm,
 /obj/item/bodypart/l_leg,
 /obj/item/bodypart/r_leg,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
 /turf/open/floor/plasteel/freezer,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "fbF" = (
@@ -6052,7 +6052,7 @@
 "fMa" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/syringes/variety,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/storage/wallet/random,
 /turf/open/floor/plasteel{
@@ -6155,7 +6155,7 @@
 "fSm" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/syringes/variety,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /obj/item/stack/sheet/mineral/plasma,
 /obj/item/stack/sheet/mineral/plasma,
 /turf/open/floor/plasteel{
@@ -6292,13 +6292,13 @@
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "gak" = (
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "gaE" = (
 /obj/effect/decal/remains/human,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel{
 	dir = 8;
@@ -6433,7 +6433,7 @@
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "ggp" = (
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "ggR" = (
@@ -6585,8 +6585,8 @@
 /turf/open/floor/plating/asteroid,
 /area/awaymission/factory/secret)
 "gqb" = (
-/obj/item/reagent_containers/food/snacks/meat/slab/hamster,
-/obj/item/reagent_containers/food/snacks/meat/slab/human,
+/obj/item/food/meat/slab/hamster,
+/obj/item/food/meat/slab/human,
 /turf/open/floor/plating/snowed/smoothed,
 /area/awaymission/factory/villageafter/house)
 "gqo" = (
@@ -6762,9 +6762,9 @@
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "gyB" = (
-/obj/item/reagent_containers/food/snacks/meat/rawbacon,
-/obj/item/reagent_containers/food/snacks/meat/rawbacon,
-/obj/item/reagent_containers/food/snacks/meat/rawbacon,
+/obj/item/food/meat/rawbacon,
+/obj/item/food/meat/rawbacon,
+/obj/item/food/meat/rawbacon,
 /turf/open/floor/plating/snowed,
 /area/awaymission/factory/villageafter/house)
 "gyM" = (
@@ -6939,9 +6939,9 @@
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "gIJ" = (
-/obj/item/reagent_containers/food/snacks/meat/rawbacon,
-/obj/item/reagent_containers/food/snacks/meat/rawbacon,
-/obj/item/reagent_containers/food/snacks/meat/rawbacon,
+/obj/item/food/meat/rawbacon,
+/obj/item/food/meat/rawbacon,
+/obj/item/food/meat/rawbacon,
 /turf/open/floor/plating/snowed,
 /area/awaymission/factory/villageduring/house)
 "gIW" = (
@@ -7653,12 +7653,12 @@
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "hrl" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel{
 	dir = 8;
@@ -7842,12 +7842,12 @@
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "hyq" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
@@ -12478,7 +12478,7 @@
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
 "lOC" = (
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /obj/machinery/conveyor/auto{
 	dir = 4
 	},
@@ -12576,9 +12576,9 @@
 	},
 /obj/item/food/breadslice/meat,
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/meat/slab/human,
-/obj/item/reagent_containers/food/snacks/meat/slab/human,
-/obj/item/reagent_containers/food/snacks/meat/slab/hamster,
+/obj/item/food/meat/slab/human,
+/obj/item/food/meat/slab/human,
+/obj/item/food/meat/slab/hamster,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel{
 	dir = 8;
@@ -12623,7 +12623,7 @@
 /turf/open/floor/mineral/titanium,
 /area/awaymission/factory/factoryduring/down/maint)
 "lVg" = (
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /obj/machinery/conveyor/auto{
 	dir = 4
 	},
@@ -13179,7 +13179,7 @@
 /obj/machinery/conveyor/auto{
 	dir = 8
 	},
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /turf/open/floor/plating{
 	icon_state = "plating_rust"
 	},
@@ -13370,7 +13370,7 @@
 /obj/machinery/conveyor/auto{
 	dir = 8
 	},
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /turf/open/floor/plating,
 /area/awaymission/factory/factoryduring/down/levelthree)
 "mFZ" = (
@@ -13877,7 +13877,7 @@
 /obj/machinery/conveyor/auto{
 	dir = 10
 	},
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /turf/open/floor/plating{
 	icon_state = "plating_rust"
 	},
@@ -14486,7 +14486,7 @@
 /area/awaymission/factory/factoryduring/down/levelthree)
 "nAG" = (
 /obj/effect/decal/remains/human,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
@@ -14618,13 +14618,13 @@
 /area/awaymission/factory/factoryafter/down/levelthree)
 "nFp" = (
 /obj/structure/closet/crate,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
 /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant,
 /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant,
-/obj/item/reagent_containers/food/snacks/meat/slab/xeno,
+/obj/item/food/meat/slab/xeno,
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
@@ -16571,7 +16571,7 @@
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
 "pbB" = (
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /obj/machinery/conveyor/auto{
 	dir = 8
 	},
@@ -17120,7 +17120,7 @@
 /obj/machinery/conveyor/auto{
 	dir = 10
 	},
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /turf/open/floor/plating,
 /area/awaymission/factory/factoryduring/down/levelthree)
 "pxA" = (
@@ -18160,9 +18160,9 @@
 	},
 /obj/item/food/breadslice/meat,
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/meat/slab/human,
-/obj/item/reagent_containers/food/snacks/meat/slab/human,
-/obj/item/reagent_containers/food/snacks/meat/slab/hamster,
+/obj/item/food/meat/slab/human,
+/obj/item/food/meat/slab/human,
+/obj/item/food/meat/slab/hamster,
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
@@ -19515,9 +19515,9 @@
 "rsj" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel{
 	dir = 8;
@@ -20020,7 +20020,7 @@
 /obj/machinery/conveyor/auto{
 	dir = 4
 	},
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /turf/open/floor/plating{
 	icon_state = "plating_rust"
 	},
@@ -22025,7 +22025,7 @@
 /obj/machinery/conveyor/auto{
 	dir = 4
 	},
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /turf/open/floor/plating,
 /area/awaymission/factory/factoryduring/down/levelthree)
 "tvH" = (
@@ -23275,8 +23275,8 @@
 /turf/open/floor/circuit/off,
 /area/awaymission/factory/factoryafter/down/levelthree)
 "uIP" = (
-/obj/item/reagent_containers/food/snacks/meat/slab/hamster,
-/obj/item/reagent_containers/food/snacks/meat/slab/human,
+/obj/item/food/meat/slab/hamster,
+/obj/item/food/meat/slab/human,
 /turf/open/floor/plating/snowed/smoothed,
 /area/awaymission/factory/villageduring/house)
 "uJl" = (
@@ -26664,7 +26664,7 @@
 /turf/open/floor/monotile,
 /area/awaymission/factory/villageduring/hospital)
 "xAA" = (
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /obj/machinery/conveyor/auto{
 	dir = 8
 	},
@@ -26734,11 +26734,11 @@
 /obj/item/bodypart/r_arm,
 /obj/item/bodypart/l_leg,
 /obj/item/bodypart/r_leg,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/freezer,
 /area/awaymission/factory/factoryafter/down/leveltwo)
@@ -27192,10 +27192,10 @@
 /obj/structure/closet/secure_closet/freezer/fridge{
 	req_access = list()
 	},
-/obj/item/reagent_containers/food/snacks/meat/slab/chicken,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/chicken,
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /obj/item/reagent_containers/glass/waterbottle/large/empty,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/monotile/dark,
@@ -27345,10 +27345,10 @@
 /obj/structure/closet/secure_closet/freezer/fridge{
 	req_access = list()
 	},
-/obj/item/reagent_containers/food/snacks/meat/slab/chicken,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
+/obj/item/food/meat/slab/chicken,
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat,
 /obj/item/reagent_containers/glass/waterbottle/large/empty,
 /turf/open/floor/monotile/dark,
 /area/awaymission/factory/villageduring/house)
