@@ -237,6 +237,7 @@
 #include "code\modules\events\ship_partition.dm"
 #include "code\modules\events\teratoma.dm"
 #include "code\modules\food_and_drinks\drinks\drinks.dm"
+#include "code\modules\food_and_drinks\food\slicing.dm"
 #include "code\modules\food_and_drinks\food\snacks_pie.dm"
 #include "code\modules\food_and_drinks\kitchen_machinery\monkeyrecycler.dm"
 #include "code\modules\food_and_drinks\recipes\drinks_recipes.dm"

@@ -3034,7 +3034,7 @@
 /turf/open/floor/carpet,
 /area/crew_quarters/dorms)
 "cny" = (
-/obj/item/reagent_containers/food/snacks/cheesiehonkers{
+/obj/item/food/cheesiehonkers{
 	layer = 2.89
 	},
 /obj/effect/landmark/start/ai,
@@ -22656,7 +22656,7 @@
 	pixel_x = 11;
 	pixel_y = 10
 	},
-/obj/item/reagent_containers/food/snacks/candyheart{
+/obj/item/food/candyheart{
 	desc = "This map was released on Valantine&#39;s Day, the day where love was shown with cream pies and physical abuse.";
 	pixel_x = -8;
 	pixel_y = 5
@@ -31349,7 +31349,7 @@
 	},
 /obj/item/aiModule/reset/purge,
 /obj/item/aiModule/supplied/oxygen,
-/obj/item/reagent_containers/food/snacks/candyheart,
+/obj/item/food/candyheart,
 /turf/open/floor/engine,
 /area/ai_monitored/nuke_storage)
 "xVt" = (

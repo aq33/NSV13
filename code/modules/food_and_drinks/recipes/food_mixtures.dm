@@ -244,7 +244,7 @@
 /datum/chemical_reaction/american/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/store/cheesewheel/american(location)
+		new /obj/item/food/cheese/wheel/american(location)
 
 /datum/chemical_reaction/bluemix
 	name = "Blue Cheese Mix"
@@ -255,7 +255,7 @@
 /datum/chemical_reaction/bluemix/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/cheesemix/blue(location)
+		new /obj/item/food/cheesemix/blue(location)
 
 /datum/chemical_reaction/briemix
 	name = "Brie Cheese Mix"
@@ -266,7 +266,7 @@
 /datum/chemical_reaction/briemix/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/cheesemix/brie(location)
+		new /obj/item/food/cheesemix/brie(location)
 
 /datum/chemical_reaction/cheddarmix
 	name = "Cheddar Cheese Mix"
@@ -277,7 +277,7 @@
 /datum/chemical_reaction/cheddarmix/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/cheesemix/cheddar(location)
+		new /obj/item/food/cheesemix/cheddar(location)
 
 /datum/chemical_reaction/fetamix
 	name = "Feta Cheese Mix"
@@ -288,7 +288,7 @@
 /datum/chemical_reaction/fetamix/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/cheesemix/feta(location)
+		new /obj/item/food/cheesemix/feta(location)
 
 /datum/chemical_reaction/goatmix
 	name = "Goat Cheese Mix"
@@ -299,7 +299,7 @@
 /datum/chemical_reaction/goatmix/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/cheesemix/goat(location)
+		new /obj/item/food/cheesemix/goat(location)
 
 /datum/chemical_reaction/halloumimix
 	name = "Halloumi Cheese Mix"
@@ -310,7 +310,7 @@
 /datum/chemical_reaction/halloumimix/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/cheesemix/halloumi(location)
+		new /obj/item/food/cheesemix/halloumi(location)
 
 /datum/chemical_reaction/mozzarellamix
 	name = "Mozzarella Cheese Mix"
@@ -321,7 +321,7 @@
 /datum/chemical_reaction/mozzarellamix/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/cheesemix/mozzarella(location)
+		new /obj/item/food/cheesemix/mozzarella(location)
 
 /datum/chemical_reaction/parmesanmix
 	name = "Parmesan Cheese Mix"
@@ -332,7 +332,7 @@
 /datum/chemical_reaction/parmesanmix/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/cheesemix/parmesan(location)
+		new /obj/item/food/cheesemix/parmesan(location)
 
 /datum/chemical_reaction/swissmix
 	name = "Swiss Cheese Mix"
@@ -343,4 +343,4 @@
 /datum/chemical_reaction/swissmix/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/cheesemix/swiss(location)
+		new /obj/item/food/cheesemix/swiss(location)

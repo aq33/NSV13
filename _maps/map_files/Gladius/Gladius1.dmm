@@ -6334,14 +6334,14 @@
 /area/nsv/weapons/starboard)
 "dsX" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/rationpack,
-/obj/item/reagent_containers/food/snacks/rationpack{
+/obj/item/food/rationpack,
+/obj/item/food/rationpack{
 	pixel_x = 2
 	},
-/obj/item/reagent_containers/food/snacks/rationpack{
+/obj/item/food/rationpack{
 	pixel_x = 4
 	},
-/obj/item/reagent_containers/food/snacks/rationpack{
+/obj/item/food/rationpack{
 	pixel_x = 7
 	},
 /turf/open/floor/monotile/steel,
@@ -14243,7 +14243,7 @@
 	pixel_x = 25;
 	pixel_y = -18
 	},
-/obj/item/reagent_containers/food/snacks/cheesiehonkers,
+/obj/item/food/cheesiehonkers,
 /turf/open/floor/circuit/green,
 /area/ai_monitored/turret_protected/ai)
 "hty" = (

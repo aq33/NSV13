@@ -155,7 +155,7 @@
 		qdel(O)
 		return FALSE
 
-	if(istype(O, /obj/item/reagent_containers/food/snacks) || istype(O, /obj/item/food))
+	if(istype(O, /obj/item/food) || istype(O, /obj/item/food))
 		convert_to_biomass(O)
 		success = TRUE
 	else if(istype(O, /obj/item/storage/bag/plants))
@@ -424,7 +424,7 @@
 	if(check_store(nutriment) && check_store(5))
 		//time to check laser power.
 		if(prob(6-failure_grade)) //Chance to make a burned mess so the chef is still useful.
-			var/obj/item/reagent_containers/food/snacks/badrecipe/neelixcooking = new /obj/item/reagent_containers/food/snacks/badrecipe(get_turf(src))
+			var/obj/item/food/badrecipe/neelixcooking = new /obj/item/food/badrecipe(get_turf(src))
 			neelixcooking.name = "replicator mess"
 			neelixcooking.desc = "perhaps you should invest in some higher quality parts."
 			connection_use(5, decrease = TRUE)

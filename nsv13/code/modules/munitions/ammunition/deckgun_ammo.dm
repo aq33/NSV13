@@ -178,7 +178,7 @@
 	name = "[prefix] [initial(name)]"
 
 /obj/item/powder_bag/hungry/attackby(obj/item/I, mob/living/user)
-	if(!istype(I, /obj/item/reagent_containers/food/snacks) && !istype(I, /obj/item/food))
+	if(!istype(I, /obj/item/food) && !istype(I, /obj/item/food))
 		return ..()
 	if(!istype(user, /mob/living/carbon/human))
 		to_chat(user, "<span class='info'>\The [src] is too lonely to eat right now.</span>")
@@ -190,9 +190,6 @@
 		return
 	var/obj/item/F = I
 	var/list/food_reagents = F.reagents.reagent_list.Copy()
-	if(istype(F, /obj/item/reagent_containers/food/snacks))
-		var/obj/item/reagent_containers/food/snacks/S = F
-		food_reagents += S.bonus_reagents
 	var/datum/reagent/toxin/plasma/plasma = locate() in food_reagents
 	if(plasma)
 		// Too spicy for Mr Bag's taste

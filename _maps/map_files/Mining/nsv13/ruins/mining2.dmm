@@ -227,7 +227,7 @@
 "Z" = (
 /obj/structure/AIcore/deactivated,
 /obj/structure/cable/yellow,
-/obj/item/reagent_containers/food/snacks/cheesiehonkers,
+/obj/item/food/cheesiehonkers,
 /turf/open/floor/circuit,
 /area/ruin/powered)
 

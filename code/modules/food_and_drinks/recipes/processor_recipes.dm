@@ -14,23 +14,23 @@
 
 /datum/food_processor_process/potatowedges
 	input = /obj/item/food/grown/potato/wedges
-	output = /obj/item/reagent_containers/food/snacks/fries
+	output = /obj/item/food/fries
 
 /datum/food_processor_process/sweetpotato
 	input = /obj/item/food/grown/potato/sweet
-	output = /obj/item/reagent_containers/food/snacks/yakiimo
+	output = /obj/item/food/yakiimo
 
 /datum/food_processor_process/potato
 	input = /obj/item/food/grown/potato
-	output = /obj/item/reagent_containers/food/snacks/tatortot
+	output = /obj/item/food/tatortot
 
 /datum/food_processor_process/carrot
 	input = /obj/item/food/grown/carrot
-	output = /obj/item/reagent_containers/food/snacks/carrotfries
+	output = /obj/item/food/carrotfries
 
 /datum/food_processor_process/soybeans
 	input = /obj/item/food/grown/soybeans
-	output = /obj/item/reagent_containers/food/snacks/soydope
+	output = /obj/item/food/soydope
 
 /datum/food_processor_process/spaghetti
 	input = /obj/item/food/doughslice
@@ -42,11 +42,11 @@
 
 /datum/food_processor_process/tortilla
 	input = /obj/item/food/tortilla
-	output = /obj/item/reagent_containers/food/snacks/cornchips
+	output = /obj/item/food/cornchips
 
 /datum/food_processor_process/parsnip
 	input = /obj/item/food/grown/parsnip
-	output = /obj/item/reagent_containers/food/snacks/roastparsnip
+	output = /obj/item/food/roastparsnip
 
 /datum/food_processor_process/mob/slime
 	input = /mob/living/simple_animal/slime
@@ -58,37 +58,37 @@
 	output = /obj/item/food/fishmeat
 
 /datum/food_processor_process/bluemix
-	input = /obj/item/reagent_containers/food/snacks/cheesemix_heated/blue
-	output = /obj/item/reagent_containers/food/snacks/store/cheesewheel/blue
+	input = /obj/item/food/cheesemix_heated/blue
+	output = /obj/item/food/cheese/wheel/blue
 
 /datum/food_processor_process/briemix
-	input = /obj/item/reagent_containers/food/snacks/cheesemix_heated/brie
-	output = /obj/item/reagent_containers/food/snacks/store/cheesewheel/brie
+	input = /obj/item/food/cheesemix_heated/brie
+	output = /obj/item/food/cheese/wheel/brie
 
 /datum/food_processor_process/cheddarmix
-	input = /obj/item/reagent_containers/food/snacks/cheesemix_heated/cheddar
-	output = /obj/item/reagent_containers/food/snacks/store/cheesewheel/cheddar
+	input = /obj/item/food/cheesemix_heated/cheddar
+	output = /obj/item/food/cheese/wheel/cheddar
 
 /datum/food_processor_process/fetamix
-	input = /obj/item/reagent_containers/food/snacks/cheesemix_heated/feta
-	output = /obj/item/reagent_containers/food/snacks/store/cheesewheel/feta
+	input = /obj/item/food/cheesemix_heated/feta
+	output = /obj/item/food/cheese/wheel/feta
 
 /datum/food_processor_process/goatmix
-	input = /obj/item/reagent_containers/food/snacks/cheesemix_heated/goat
-	output = /obj/item/reagent_containers/food/snacks/store/cheesewheel/goat
+	input = /obj/item/food/cheesemix_heated/goat
+	output = /obj/item/food/cheese/wheel/goat
 
 /datum/food_processor_process/halloumimix
-	input = /obj/item/reagent_containers/food/snacks/cheesemix_heated/halloumi
-	output = /obj/item/reagent_containers/food/snacks/store/cheesewheel/halloumi
+	input = /obj/item/food/cheesemix_heated/halloumi
+	output = /obj/item/food/cheese/wheel/halloumi
 
 /datum/food_processor_process/mozzarellamix
-	input = /obj/item/reagent_containers/food/snacks/cheesemix_heated/mozzarella
-	output = /obj/item/reagent_containers/food/snacks/store/cheesewheel/mozzarella
+	input = /obj/item/food/cheesemix_heated/mozzarella
+	output = /obj/item/food/cheese/wheel/mozzarella
 
 /datum/food_processor_process/parmesanmix
-	input = /obj/item/reagent_containers/food/snacks/cheesemix_heated/parmesan
-	output = /obj/item/reagent_containers/food/snacks/cheesewheel/preparmesan
+	input = /obj/item/food/cheesemix_heated/parmesan
+	output = /obj/item/food/cheese/preparmesan
 
 /datum/food_processor_process/swissmix
-	input = /obj/item/reagent_containers/food/snacks/cheesemix_heated/swiss
-	output = /obj/item/reagent_containers/food/snacks/store/cheesewheel/swiss
+	input = /obj/item/food/cheesemix_heated/swiss
+	output = /obj/item/food/cheese/wheel/swiss

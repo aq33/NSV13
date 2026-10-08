@@ -3865,7 +3865,7 @@
 /area/maintenance/nsv/deck1/port)
 "td" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/bar/mess_hall)
 "te" = (
@@ -4310,7 +4310,7 @@
 /area/engine/gravity_generator)
 "vp" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7453,7 +7453,7 @@
 /area/bridge/cic)
 "Kz" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4

@@ -12253,7 +12253,7 @@
 	layer = 4.1
 	},
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /turf/open/floor/carpet/royalblack,
 /area/crew_quarters/bar/mess_hall)
 "Jt" = (

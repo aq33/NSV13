@@ -7002,7 +7002,7 @@
 /area/crew_quarters/bar)
 "eNw" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/syndicake,
+/obj/item/food/syndicake,
 /obj/machinery/light{
 	dir = 1
 	},

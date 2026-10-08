@@ -2808,7 +2808,7 @@
 /area/awaymission/factory/factoryafter/down/maint)
 "cKp" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant,
+/obj/item/food/meat/slab/human/mutant,
 /obj/item/food/meat/slab/synthmeat,
 /obj/item/food/meat/slab/synthmeat,
 /obj/item/food/meat/slab/synthmeat,
@@ -14622,8 +14622,8 @@
 /obj/item/food/meat/slab,
 /obj/item/food/meat/slab,
 /obj/item/food/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant,
-/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant,
+/obj/item/food/meat/slab/human/mutant,
+/obj/item/food/meat/slab/human/mutant,
 /obj/item/food/meat/slab/xeno,
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
@@ -19514,7 +19514,7 @@
 /area/awaymission/factory/factoryafter/down/levelthree)
 "rsj" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant,
+/obj/item/food/meat/slab/human/mutant,
 /obj/item/food/meat/slab/synthmeat,
 /obj/item/food/meat/slab/synthmeat,
 /obj/item/food/meat/slab/synthmeat,

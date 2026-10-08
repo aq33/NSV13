@@ -3450,7 +3450,7 @@
 /turf/open/floor/monotile,
 /area/nsv/hanger/deck2/port)
 "ajT" = (
-/obj/item/reagent_containers/food/snacks/cheesiehonkers,
+/obj/item/food/cheesiehonkers,
 /obj/structure/closet/crate/wooden,
 /obj/item/food/bread/banana,
 /obj/effect/spawner/lootdrop/maintenance/three,
@@ -39046,7 +39046,7 @@
 	})
 "bMF" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/dark,
@@ -39531,7 +39531,7 @@
 	})
 "bOj" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/bar{
 	name = "Mess Hall"

@@ -10588,11 +10588,11 @@
 /turf/open/floor/monotile/dark,
 /area/nsv/briefingroom)
 "gbZ" = (
-/obj/item/reagent_containers/food/snacks/rationpack,
-/obj/item/reagent_containers/food/snacks/rationpack{
+/obj/item/food/rationpack,
+/obj/item/food/rationpack{
 	pixel_y = 4
 	},
-/obj/item/reagent_containers/food/snacks/rationpack{
+/obj/item/food/rationpack{
 	pixel_x = 4
 	},
 /obj/structure/rack,
@@ -36856,7 +36856,7 @@
 /turf/open/floor/monotile/dark,
 /area/nsv/briefingroom)
 "vdq" = (
-/obj/item/reagent_containers/food/snacks/deadmouse,
+/obj/item/food/deadmouse,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/frame4/starboard)
 "vdv" = (
@@ -38672,7 +38672,7 @@
 	dir = 4;
 	pixel_y = 10
 	},
-/obj/item/reagent_containers/food/snacks/carrotfries,
+/obj/item/food/carrotfries,
 /turf/open/floor/durasteel/lino,
 /area/maintenance/nsv/deck2/frame5/starboard)
 "wgD" = (

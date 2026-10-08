@@ -2535,7 +2535,7 @@
 /area/engine/engineering)
 "cDA" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /obj/item/reagent_containers/food/drinks/solgovcup,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/cafeteria)
@@ -4375,7 +4375,7 @@
 /area/maintenance/nsv/deck1/port/aft)
 "eus" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /obj/item/reagent_containers/food/drinks/drinkingglass/filled/cola,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/cafeteria)
@@ -8909,7 +8909,7 @@
 /area/maintenance/nsv/deck1/port/aft)
 "jlg" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/cafeteria)
 "jmz" = (
@@ -14305,7 +14305,7 @@
 /area/crew_quarters/heads/captain)
 "psf" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -19481,7 +19481,7 @@
 /area/medical/chemistry)
 "uMV" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /obj/item/reagent_containers/food/drinks/britcup,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/cafeteria)
@@ -22175,7 +22175,7 @@
 /area/maintenance/department/medical)
 "xpp" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},

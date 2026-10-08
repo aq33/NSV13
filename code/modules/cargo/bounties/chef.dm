@@ -16,7 +16,7 @@
 	description = "Upper management wants to host a movie night. Ship bags of popcorn for the occasion."
 	reward = 3000
 	required_count = 3
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/popcorn)
+	wanted_types = list(/obj/item/food/popcorn)
 
 /datum/bounty/item/chef/onionrings
 	name = "Onion Rings"
@@ -63,7 +63,7 @@
 	description = "Night sight can mean life or death! A shipment of carrot fries is the order."
 	reward = 3500
 	required_count = 3
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/carrotfries)
+	wanted_types = list(/obj/item/food/carrotfries)
 
 /datum/bounty/item/chef/superbite
 	name = "Super Bite Burger"
@@ -94,7 +94,7 @@
 	description = "A famous singer will be arriving at CentCom, and their contract demands that they only be served Eggplant Parmigiana. Ship some, please!"
 	reward = 3500
 	required_count = 3
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/eggplantparm)
+	wanted_types = list(/obj/item/food/eggplantparm)
 
 /datum/bounty/item/chef/muffin
 	name = "Muffins"
@@ -141,4 +141,4 @@
 	description = "We're having pasta for dinner, but we ran out of parmesan. Send us a wheel."
 	reward = 10000
 	required_count = 1
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/store/cheesewheel/parmesan)
+	wanted_types = list(/obj/item/food/cheese/wheel/parmesan)

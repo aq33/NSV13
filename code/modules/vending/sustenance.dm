@@ -6,7 +6,7 @@
 	icon_state = "sustenance"
 	light_color = LIGHT_COLOR_BLUEGREEN
 	products = list(/obj/item/food/tofu/prison = 12, //NSV13 halved available tofu
-					/obj/item/reagent_containers/food/snacks/rationpack = 12, //NSV13 added ration packs
+					/obj/item/food/rationpack = 12, //NSV13 added ration packs
 					/obj/item/reagent_containers/food/drinks/ice/prison = 12,
 					/obj/item/food/candy_corn/prison = 6)
 	contraband = list(/obj/item/kitchen/knife = 6,

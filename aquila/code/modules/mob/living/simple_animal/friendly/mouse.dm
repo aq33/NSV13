@@ -39,7 +39,7 @@ GLOBAL_VAR_INIT(mouse_killed, 0)
 				D.throw_at(get_turf(D), 0, 1, src)
 
 /mob/living/simple_animal/mouse/proc/eat_cheese()
-	var/obj/item/reagent_containers/food/snacks/cheesewedge/CW = locate(/obj/item/reagent_containers/food/snacks/cheesewedge) in loc
+	var/obj/item/food/cheese/wedge/CW = locate(/obj/item/food/cheese/wedge) in loc
 	if(!QDELETED(CW) && full == FALSE)
 		say("Burp!")
 		visible_message("<span class='warning'>[src] gobbles up the [CW].</span>")
@@ -48,7 +48,7 @@ GLOBAL_VAR_INIT(mouse_killed, 0)
 		addtimer(VARSET_CALLBACK(src, full, FALSE), 3 MINUTES)
 
 /mob/living/simple_animal/mouse/attackby(obj/item/O, mob/user, params)
-	if(istype(O, /obj/item/reagent_containers/food/snacks/cheesewedge))
+	if(istype(O, /obj/item/food/cheese/wedge))
 		to_chat(user, "<span class='notice'>You feed [O] to [src].</span>")
 		visible_message("[src] squeaks happily!")
 		qdel(O)
@@ -139,19 +139,11 @@ GLOBAL_VAR_INIT(mouse_killed, 0)
 	M.regen_health()
 	qdel(src)
 
-/obj/item/reagent_containers/food/snacks/cheesewedge/mouse_eat(mob/living/simple_animal/mouse/M)
+/obj/item/food/cheese/wedge/mouse_eat(mob/living/simple_animal/mouse/M)
 	M.cheese_up()
 	qdel(src)
 
-/obj/item/reagent_containers/food/snacks/cheesewheel/mouse_eat(mob/living/simple_animal/mouse/M)
-	M.cheese_up()
-	qdel(src)
-
-/obj/item/reagent_containers/food/snacks/store/cheesewheel/mouse_eat(mob/living/simple_animal/mouse/M)
-	M.cheese_up()
-	qdel(src)
-
-/obj/item/reagent_containers/food/snacks/customizable/cheesewheel/mouse_eat(mob/living/simple_animal/mouse/M)
+/obj/item/food/cheese/wheel/mouse_eat(mob/living/simple_animal/mouse/M)
 	M.cheese_up()
 	qdel(src)
 

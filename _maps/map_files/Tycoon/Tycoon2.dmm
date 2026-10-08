@@ -16207,7 +16207,7 @@
 /area/hallway/nsv/deck2/frame2/port)
 "aVg" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/cafeteria{
 	name = "Mess hall"
@@ -18838,7 +18838,7 @@
 	})
 "bbE" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
@@ -19575,7 +19575,7 @@
 	})
 "bdl" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},

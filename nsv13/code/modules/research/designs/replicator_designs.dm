@@ -35,7 +35,7 @@
 	id = "rationpack"
 	alt_name = list("nutrients", "nutritional supplement")
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/rationpack
+	build_path = /obj/item/food/rationpack
 	category = list("initial", "Nutritional Supplements")
 
 /datum/design/replicator/tier1/drinkingglass
@@ -127,7 +127,7 @@
 	name = "Fries"
 	id = "fries"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/fries
+	build_path = /obj/item/food/fries
 	category = list("Basic Dishes")
 
 /datum/design/replicator/tier2/onionrings
@@ -191,7 +191,7 @@
 	name = "Cheese wheel"
 	id = "cheesywheely"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/store/cheesewheel
+	build_path = /obj/item/food/cheese/wheel
 	category = list("Complex Dishes")
 
 /datum/design/replicator/tier3/cheesepizza

@@ -30,7 +30,7 @@
 		/obj/item/food/sundae,
 		/obj/item/food/fishmeat/carp,
 		/obj/item/food/enchiladas,
-		/obj/item/reagent_containers/food/snacks/popcorn,
+		/obj/item/food/popcorn,
 		/obj/item/food/burrito,
 		/obj/item/food/cheesyburrito,
 		/obj/item/food/carneburrito,
@@ -46,7 +46,7 @@
 		/obj/item/food/pizza/margherita,
 		/obj/item/food/salad/fruit,
 		/obj/item/food/soup/oatmeal,
-		/obj/item/reagent_containers/food/snacks/deadmouse
+		/obj/item/food/deadmouse
 	) )
 	var/datum/freight_type/single/object/C = new( picked )
 	C.target = rand( 3, 5 )
