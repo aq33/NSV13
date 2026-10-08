@@ -29,7 +29,7 @@
 	///When you take a bite you cant jam it in for surgery anymore.
 	var/useable = TRUE
 	var/list/food_reagents = list(/datum/reagent/consumable/nutriment = 5)
-	juice_results = list(/datum/reagent/liquidgibs = 5)
+	juice_typepath = /datum/reagent/liquidgibs
 
 /obj/item/organ/Initialize()
 	. = ..()
@@ -42,7 +42,7 @@
 		on_compost = CALLBACK(src, PROC_REF(pre_compost)),\
 		after_eat = CALLBACK(src, PROC_REF(on_eat_from)))
 	if(organ_flags & ORGAN_SYNTHETIC)
-		juice_results = null
+		juice_typepath = null
 
 /obj/item/organ/proc/Insert(mob/living/carbon/M, special = 0, drop_if_replaced = TRUE)
 	if(!iscarbon(M) || owner == M)

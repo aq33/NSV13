@@ -1,5 +1,3 @@
-#define CHEMICAL_QUANTISATION_LEVEL 0.0001 //stops floating point errors causing issues with checking reagent amounts
-
 /proc/build_chemical_reagent_list()
 	//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
 
@@ -587,6 +585,34 @@
 
 	return 0
 
+/**
+ * Turn one reagent into another, preserving volume, temp
+ * Arguments
+ *
+ * * [source_reagent_typepath][/datum/reagent] - the typepath of the reagent you are trying to convert
+ * * [target_reagent_typepath][/datum/reagent] - the final typepath the source_reagent_typepath will be converted into
+ * * multiplier - the multiplier applied on the source_reagent_typepath volume before converting
+ * * include_source_subtypes- if TRUE will convert all subtypes of source_reagent_typepath into target_reagent_typepath as well
+ */
+/datum/reagents/proc/convert_reagent(datum/reagent/source_reagent_typepath, datum/reagent/target_reagent_typepath, multiplier = 1, include_source_subtypes = FALSE)
+	if(!ispath(source_reagent_typepath))
+		stack_trace("invalid reagent path passed to convert reagent [source_reagent_typepath]")
+		return FALSE
+
+	var/reagent_amount
+	if(include_source_subtypes)
+		for(var/datum/reagent/reagent as anything in reagent_list)
+			if(reagent.type in typecacheof(source_reagent_typepath))
+				reagent_amount += reagent.volume
+				remove_reagent(reagent.type, reagent.volume)
+	else
+		var/datum/reagent/source_reagent = get_reagent(source_reagent_typepath)
+		reagent_amount = source_reagent.volume
+		remove_reagent(source_reagent_typepath, reagent_amount)
+	add_reagent(target_reagent_typepath, reagent_amount * multiplier, reagtemp = chem_temp)
+
+
+/// Removes all reagents
 /datum/reagents/proc/clear_reagents()
 	var/list/cached_reagents = reagent_list
 	for(var/reagent in cached_reagents)
@@ -644,9 +670,7 @@
 				R.reaction_obj(A, R.volume * volume_modifier, show_message)
 
 /datum/reagents/proc/holder_full()
-	if(total_volume >= maximum_volume)
-		return TRUE
-	return FALSE
+	return total_volume >= maximum_volume
 
 //Returns the average specific heat for all reagents currently in this holder.
 /datum/reagents/proc/specific_heat()
@@ -665,20 +689,22 @@
 	if(!isnum_safe(amount) || !amount)
 		return FALSE
 
-	if(amount <= 0)
+	// Prevents small amount problems, as well as zero and below zero amounts.
+	if(amount <= CHEMICAL_QUANTISATION_LEVEL)
 		return FALSE
 
 	var/datum/reagent/D = GLOB.chemical_reagents_list[reagent]
 	if(!D)
-		WARNING("[my_atom] attempted to add a reagent called '[reagent]' which doesn't exist. ([usr])")
+		stack_trace("[my_atom] attempted to add a reagent called '[reagent]' which doesn't exist. ([usr])")
 		return FALSE
 
 	update_total()
 	var/cached_total = total_volume
 	if(cached_total + amount > maximum_volume)
-		amount = (maximum_volume - cached_total) //Doesnt fit in. Make it disappear. Shouldnt happen. Will happen.
+		amount = (maximum_volume - cached_total) //Doesnt fit in. Make it disappear. shouldn't happen. Will happen.
 		if(amount <= 0)
 			return FALSE
+
 	var/new_total = cached_total + amount
 	var/cached_temp = chem_temp
 	var/list/cached_reagents = reagent_list
@@ -686,24 +712,22 @@
 	//Equalize temperature - Not using specific_heat() because the new chemical isn't in yet.
 	var/specific_heat = 0
 	var/thermal_energy = 0
-	for(var/i in cached_reagents)
-		var/datum/reagent/R = i
-		specific_heat += R.specific_heat * (R.volume / new_total)
-		thermal_energy += R.specific_heat * R.volume * cached_temp
+	for(var/datum/reagent/iter_reagent as anything in cached_reagents)
+		specific_heat += iter_reagent.specific_heat * (iter_reagent.volume / new_total)
+		thermal_energy += iter_reagent.specific_heat * iter_reagent.volume * cached_temp
 	specific_heat += D.specific_heat * (amount / new_total)
 	thermal_energy += D.specific_heat * amount * reagtemp
 	chem_temp = thermal_energy / (specific_heat * new_total)
-	////
 
 	//add the reagent to the existing if it exists
-	for(var/A in cached_reagents)
-		var/datum/reagent/R = A
-		if (R.type == reagent)
-			R.volume += amount
+	for(var/datum/reagent/iter_reagent as anything in cached_reagents)
+		if (iter_reagent.type == reagent)
+			iter_reagent.volume += amount
 			update_total()
+
 			if(my_atom)
 				my_atom.on_reagent_change(ADD_REAGENT)
-			R.on_merge(data, amount)
+			iter_reagent.on_merge(data, amount)
 			if(!no_react)
 				handle_reactions()
 			return TRUE
@@ -718,7 +742,8 @@
 		R.on_new(data)
 
 	if(isliving(my_atom))
-		R.on_mob_add(my_atom) //Must occur befor it could posibly run on_mob_delete
+		R.on_mob_add(my_atom) //Must occur before it could possibly run on_mob_delete
+
 	update_total()
 	if(my_atom)
 		my_atom.on_reagent_change(ADD_REAGENT)

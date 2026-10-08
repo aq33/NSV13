@@ -432,14 +432,13 @@
 			to_chat(user, "You start grinding...")
 			if((do_after(user, 25, target = src)) && grinded)
 				user.adjustStaminaLoss(40)
-				if(grinded.reagents) //food and pills
-					grinded.reagents.trans_to(src, grinded.reagents.total_volume, transfered_by = user)
-				if(grinded.juice_results) //prioritize juicing
-					grinded.on_juice()
-					reagents.add_reagent_list(grinded.juice_results)
+				if(grinded.juice_typepath) //prioritize juicing
+					grinded.juice(reagents, user) //NSV13 - newfood juicing converts the item's own reagents, so it goes before the plain transfer
 					to_chat(user, "You juice [grinded] into a fine liquid.")
 					QDEL_NULL(grinded)
 					return
+				if(grinded.reagents) //food and pills
+					grinded.reagents.trans_to(src, grinded.reagents.total_volume, transfered_by = user)
 				grinded.on_grind()
 				reagents.add_reagent_list(grinded.grind_results)
 				to_chat(user, "You break [grinded] into powder.")
@@ -458,7 +457,7 @@
 			to_chat(user, "<span class='danger'>You can't grind this!</span>")
 			return
 
-	if(I.juice_results || I.grind_results)
+	if(I.juice_typepath || I.grind_results)
 		I.forceMove(src)
 		grinded = I
 		return
