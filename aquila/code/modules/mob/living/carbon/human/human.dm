@@ -17,3 +17,14 @@
 	if(HAS_TRAIT(src, TRAIT_NOTHIRST))
 		return FALSE
 	return ..()
+
+// The "Polak" belly hides under clothes covering the chest, so redraw the body when they change
+/mob/living/carbon/human/update_inv_w_uniform()
+	. = ..()
+	if(dna?.features["body_size"] == "Polak")
+		update_body()
+
+/mob/living/carbon/human/update_inv_wear_suit()
+	. = ..()
+	if(dna?.features["body_size"] == "Polak")
+		update_body()

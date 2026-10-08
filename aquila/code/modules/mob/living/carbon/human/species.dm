@@ -21,6 +21,9 @@
 	var/obj/item/bodypart/chest/chest = H.get_bodypart(BODY_ZONE_CHEST)
 	if(!chest || !IS_ORGANIC_LIMB(chest))
 		return
+	// Clothing sprites are drawn for a slim body, so the belly would stick out of them
+	if((H.w_uniform?.body_parts_covered & CHEST) || (H.wear_suit?.body_parts_covered & CHEST))
+		return
 	var/mutable_appearance/belly = mutable_appearance('aquila/icons/mob/zachary.dmi', "polak_(grayscale)", -BODY_LAYER)
 	if(chest.draw_color)
 		belly.color = "#[chest.draw_color]"
