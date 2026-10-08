@@ -27,7 +27,7 @@
 	id = "boiledrice"
 	alt_name = list("rice")
 	build_type = REPLICATOR
-	build_path = /obj/item/food/salad/boiledrice
+	build_path = /obj/item/food/boiledrice
 	category = list("initial", "Nutritional Supplements")
 
 /datum/design/replicator/tier1/rationpack
