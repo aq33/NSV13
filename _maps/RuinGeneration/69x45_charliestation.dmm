@@ -892,7 +892,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small,
 /obj/structure/table,
-/obj/item/trash/plate,
+/obj/item/plate,
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "lF" = (
@@ -2808,7 +2808,7 @@
 "Jg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
-/obj/item/trash/plate,
+/obj/item/plate,
 /turf/open/floor/plasteel/cafeteria,
 /area/ruin/unpowered)
 "Js" = (

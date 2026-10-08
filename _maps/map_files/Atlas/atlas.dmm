@@ -9001,7 +9001,7 @@
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/cobweb,
-/obj/item/trash/plate,
+/obj/item/plate,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port)
 "GB" = (

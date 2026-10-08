@@ -4975,7 +4975,7 @@
 /obj/structure/disposalpipe/junction/flip{
 	dir = 4
 	},
-/obj/item/trash/plate{
+/obj/item/plate{
 	name = "ghost plate"
 	},
 /turf/open/floor/grass,
@@ -7435,7 +7435,7 @@
 /area/hallway/secondary/exit)
 "AV" = (
 /obj/structure/table/wood/fancy/green,
-/obj/item/trash/plate{
+/obj/item/plate{
 	name = "ghost plate"
 	},
 /turf/open/floor/grass,

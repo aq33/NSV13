@@ -11072,7 +11072,7 @@
 	pixel_x = -4;
 	pixel_y = 12
 	},
-/obj/item/trash/plate{
+/obj/item/plate{
 	name = "ghost plate"
 	},
 /turf/open/floor/carpet/royalblack,
@@ -17396,7 +17396,7 @@
 	pixel_x = -3;
 	pixel_y = 11
 	},
-/obj/item/trash/plate{
+/obj/item/plate{
 	name = "ghost plate"
 	},
 /obj/machinery/firealarm/directional/east,

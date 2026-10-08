@@ -64,6 +64,7 @@
 #include "gamemode_sanity.dm"
 #include "reagent_id_typos.dm"
 #include "reagent_recipe_collisions.dm"
+#include "serving_tray.dm"
 #include "spawn_humans.dm"
 #include "species_whitelists.dm"
 #include "food_edibility_check.dm"

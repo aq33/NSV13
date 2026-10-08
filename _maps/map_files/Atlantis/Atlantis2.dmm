@@ -1335,7 +1335,7 @@
 	pixel_x = -7;
 	pixel_y = -6
 	},
-/obj/item/trash/plate{
+/obj/item/plate{
 	pixel_y = 2
 	},
 /obj/effect/spawner/lootdrop/maintenance,
@@ -9503,7 +9503,7 @@
 	pixel_y = 4
 	},
 /obj/item/pen,
-/obj/item/trash/plate,
+/obj/item/plate,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/monotile/light,
 /area/bridge)

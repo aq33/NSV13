@@ -314,7 +314,7 @@
  * Trays - Agouri
  */
 /obj/item/storage/bag/tray
-	name = "tray"
+	name = "serving tray"
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "tray"
 	desc = "A metal tray to lay food on."
@@ -322,8 +322,8 @@
 	throwforce = 10
 	throw_speed = 3
 	throw_range = 5
-	w_class = WEIGHT_CLASS_BULKY
 	flags_1 = CONDUCT_1
+	slot_flags = ITEM_SLOT_BELT
 	materials = list(/datum/material/iron=3000)
 
 /obj/item/storage/bag/tray/ComponentInitialize()

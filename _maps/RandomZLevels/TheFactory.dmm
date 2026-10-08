@@ -8048,7 +8048,7 @@
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "hFU" = (
 /obj/structure/closet/crate/bin,
-/obj/item/trash/plate,
+/obj/item/plate,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/dark/side{
 	dir = 6
@@ -8703,7 +8703,7 @@
 	})
 "iiI" = (
 /obj/structure/table/reinforced,
-/obj/item/trash/plate,
+/obj/item/plate,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/white,
 /area/awaymission/factory/factoryafter/down/leveltwo)
@@ -8777,7 +8777,7 @@
 /area/awaymission/factory/villageafter/house)
 "imI" = (
 /obj/structure/table,
-/obj/item/trash/plate,
+/obj/item/plate,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryafter/down/leveltwo)
@@ -8924,7 +8924,7 @@
 /area/awaymission/factory/factoryduring)
 "isj" = (
 /obj/structure/table,
-/obj/item/trash/plate,
+/obj/item/plate,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "ist" = (
@@ -9562,7 +9562,7 @@
 /area/awaymission/factory/factoryduring/down/leveltwo/asylum)
 "iTv" = (
 /obj/structure/table,
-/obj/item/trash/plate,
+/obj/item/plate,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/dark/side{
 	dir = 4
@@ -11100,7 +11100,7 @@
 /area/awaymission/factory/transition)
 "kzM" = (
 /obj/structure/table,
-/obj/item/trash/plate,
+/obj/item/plate,
 /turf/open/floor/plasteel/dark/side{
 	dir = 4
 	},
@@ -18100,7 +18100,7 @@
 /area/awaymission/factory/factoryduring/down)
 "qkp" = (
 /obj/structure/table/reinforced,
-/obj/item/trash/plate,
+/obj/item/plate,
 /turf/open/floor/plasteel/white,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "qks" = (
@@ -25911,7 +25911,7 @@
 /area/awaymission/factory/villageafter/house)
 "wRA" = (
 /obj/structure/closet/crate/bin,
-/obj/item/trash/plate,
+/obj/item/plate,
 /turf/open/floor/plasteel/dark/side{
 	dir = 6
 	},

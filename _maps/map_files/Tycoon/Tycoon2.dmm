@@ -4150,7 +4150,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/item/trash/boritos,
-/obj/item/trash/plate,
+/obj/item/plate,
 /turf/open/floor/durasteel/padded,
 /area/maintenance/department/medical)
 "alC" = (

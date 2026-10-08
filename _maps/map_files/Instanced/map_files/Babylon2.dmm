@@ -1904,7 +1904,7 @@
 /area/engine/engineering/pvp)
 "cfP" = (
 /obj/structure/table/wood,
-/obj/item/trash/plate,
+/obj/item/plate,
 /turf/open/floor/plasteel/dark,
 /area/bridge/meeting_room/pvp)
 "cfZ" = (
@@ -16963,7 +16963,7 @@
 /area/engine/engineering/pvp)
 "rhg" = (
 /obj/structure/table,
-/obj/item/trash/plate,
+/obj/item/plate,
 /obj/item/kitchen/fork,
 /turf/open/floor/plating,
 /area/maintenance/pvp)

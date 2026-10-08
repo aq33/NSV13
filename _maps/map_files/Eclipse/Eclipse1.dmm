@@ -6109,8 +6109,8 @@
 /area/hallway/primary/fore)
 "Do" = (
 /obj/structure/table/wood,
-/obj/item/trash/plate,
-/obj/item/trash/plate{
+/obj/item/plate,
+/obj/item/plate{
 	pixel_x = 3;
 	pixel_y = 5
 	},
@@ -6650,7 +6650,7 @@
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/fore)
 "FU" = (
-/obj/item/trash/plate{
+/obj/item/plate{
 	pixel_x = 4;
 	pixel_y = 7
 	},

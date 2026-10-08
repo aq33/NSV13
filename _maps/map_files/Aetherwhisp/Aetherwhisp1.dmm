@@ -4043,7 +4043,7 @@
 "cOf" = (
 /obj/structure/table,
 /obj/item/kitchen/fork,
-/obj/item/trash/plate,
+/obj/item/plate,
 /obj/item/toy/cards/deck{
 	pixel_x = -6;
 	pixel_y = 9
@@ -12571,7 +12571,7 @@
 /area/crew_quarters/bar)
 "jip" = (
 /obj/structure/table/wood,
-/obj/item/trash/plate,
+/obj/item/plate,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},

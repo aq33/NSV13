@@ -39877,7 +39877,7 @@
 /area/ai_monitored/turret_protected/ai)
 "qGq" = (
 /obj/structure/table,
-/obj/item/trash/plate,
+/obj/item/plate,
 /turf/open/floor/durasteel/padded,
 /area/hallway/primary/central)
 "qHo" = (

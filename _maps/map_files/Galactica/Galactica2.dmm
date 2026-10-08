@@ -635,7 +635,7 @@
 	})
 "att" = (
 /obj/structure/table/reinforced,
-/obj/item/trash/plate,
+/obj/item/plate,
 /obj/item/kitchen/fork,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
@@ -40612,11 +40612,11 @@
 /area/hallway/nsv/deck2/primary)
 "xqv" = (
 /obj/structure/table,
-/obj/item/trash/plate,
-/obj/item/trash/plate{
+/obj/item/plate,
+/obj/item/plate{
 	pixel_y = 2
 	},
-/obj/item/trash/plate{
+/obj/item/plate{
 	pixel_y = 4
 	},
 /obj/item/trash/can/food/beans{

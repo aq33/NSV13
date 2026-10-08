@@ -789,7 +789,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/glass,
-/obj/item/trash/plate,
+/obj/item/plate,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/frame1/starboard)
 "aEq" = (
@@ -27390,7 +27390,7 @@
 /area/security/checkpoint/supply)
 "qXq" = (
 /obj/structure/table/wood,
-/obj/item/trash/plate,
+/obj/item/plate,
 /turf/open/floor/carpet/red,
 /area/crew_quarters/bar)
 "qXH" = (
