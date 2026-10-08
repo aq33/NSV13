@@ -1716,7 +1716,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						active_character.eye_color = sanitize_hexcolor(new_eyes)
 
 				if("body_size")
-					var/new_size = input(user, "Choose your character's height:", "Character Preference") as null|anything in active_character.pref_species.get_body_sizes() // AQ EDIT - Polak tylko dla ludzi
+					var/new_size = input(user, "Choose your character's height:", "Character Preference") as null|anything in get_body_size_choices() // AQ EDIT - Polak tylko dla ludzi, za Aquilosy
 					if(new_size)
 						active_character.features["body_size"] = new_size
 

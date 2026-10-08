@@ -207,6 +207,7 @@
 #include "code\modules\bluespace_locker\bluespace_locker.dm"
 #include "code\modules\cargo\packs.dm"
 #include "code\modules\cargo\exports\large_objects.dm"
+#include "code\modules\client\loadout\loadout_ooc.dm"
 #include "code\modules\client\verbs\input_box.dm"
 #include "code\modules\client\verbs\ooc.dm"
 #include "code\modules\client\preferences.dm"
