@@ -10,7 +10,7 @@
  */
 
 /obj/item/kitchen
-	icon = 'icons/obj/kitchen.dmi'
+	icon = 'icons/obj/service/kitchen.dmi'
 	lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
 
@@ -130,6 +130,7 @@
 
 /obj/item/kitchen/knife
 	name = "kitchen knife"
+	icon = 'icons/obj/kitchen.dmi' //NSV13 - we don't have Bee's knife refactor (/obj/item/knife, knives.dmi), our knives keep their old sprites
 	icon_state = "knife"
 	item_state = "knife"
 	desc = "A general purpose Chef's Knife made by SpaceCook Incorporated. Guaranteed to stay sharp for years to come."

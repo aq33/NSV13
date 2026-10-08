@@ -97,8 +97,8 @@
 /datum/crafting_recipe/food/sausage
 	name = "Sausage"
 	reqs = list(
-		/obj/item/food/meatball = 1,
-		/obj/item/food/meat/cutlet = 2
+		/obj/item/food/raw_meatball = 1,
+		/obj/item/food/meat/rawcutlet = 2
 	)
 	result = /obj/item/food/raw_sausage
 	subcategory = CAT_MEAT

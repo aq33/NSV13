@@ -741,6 +741,7 @@
 /obj/item/melee/roastingstick
 	name = "advanced roasting stick"
 	desc = "A telescopic roasting stick with a miniature shield generator designed to ensure entry into various high-tech shielded cooking ovens and firepits."
+	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "roastingstick_0"
 	item_state = "null"
 	slot_flags = ITEM_SLOT_BELT
