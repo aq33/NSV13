@@ -14,6 +14,7 @@ GLOBAL_LIST_EMPTY(ckey_redirects)
 		if(real_bans_only)
 			return FALSE
 		log_access("Failed Login (invalid data): [key] [address]-[computer_id]")
+		message_admins("<span class='adminnotice'>Nieudane logowanie: [key] - nieprawidłowe dane połączenia (IP: [address], CID: [computer_id]).</span>")
 		return list("reason"="invalid login data", "desc"="Error: Could not check ban status, Please try again. Error message: Your computer provided invalid or blank information to the server on connection (byond username, IP, and Computer ID.) Provided information for reference: Username:'[key]' IP:'[address]' Computer ID:'[computer_id]'. (If you continue to get this error, please restart byond or contact byond support.)")
 
 	if (type == "world")
@@ -45,18 +46,26 @@ GLOBAL_LIST_EMPTY(ckey_redirects)
 					addclientmessage(ckey,"<span class='adminnotice'>You have been allowed to bypass the whitelist</span>")
 			else
 				log_access("Failed Login: [key] - Not on whitelist")
+				if (message)
+					message_admins("<span class='adminnotice'>Nieudane logowanie: [key] - brak na whiteliście.</span>")
 				return list("reason"="whitelist", "desc" = "\nOdwiedź naszego Discorda (https://discord.gg/KE8XTzTuyN), by dostać dostęp na serwer. Przydziel sobie rangę w rolach, napisz na forum lub skontakuj się z adminem by podać swoją nazwę BYOND")
 
 	//Guest Checking
 	if(!real_bans_only && !C && IS_GUEST_KEY(key))
 		if (CONFIG_GET(flag/guest_ban))
 			log_access("Failed Login: [key] - Guests not allowed")
+			if (message)
+				message_admins("<span class='adminnotice'>Nieudane logowanie: [key] - goście są zablokowani.</span>")
 			return list("reason"="guest", "desc"="\nReason: Guests not allowed. Please sign in with a byond account.")
 		if (CONFIG_GET(flag/panic_bunker) && SSdbcore.Connect())
 			log_access("Failed Login: [key] - Guests not allowed during panic bunker")
+			if (message)
+				message_admins("<span class='adminnotice'>Nieudane logowanie: [key] - goście są zablokowani przez panic bunker.</span>")
 			return list("reason"="guest", "desc"="\nReason: Sorry but the server is currently not accepting connections from never before seen players or guests. If you have played on this server with a byond account before, please log in to the byond account you have played from.")
 	if(CONFIG_GET(flag/panic_bunker) && CONFIG_GET(flag/panic_bunker_interview) && !CONFIG_GET(flag/panic_bunker_interview_retries) && GLOB.interviews.denied_ckeys.Find(ckey))
 		log_access("Failed Login: [key] - Interview denied")
+		if (message)
+			message_admins("<span class='adminnotice'>Nieudane logowanie: [key] - odrzucona rozmowa (interview) przy panic bunkrze.</span>")
 		return list("reason"="interview", "desc"="\nReason: You failed an interview while the panic bunker is enabled. Try again during the next round or after the panic bunker is disabled.")
 
 	//Population Cap Checking
@@ -68,9 +77,13 @@ GLOBAL_LIST_EMPTY(ckey_redirects)
 				var/redirect_address = CONFIG_GET(string/redirect_address)
 				if(redirect_address != "")
 					log_access("Failed Login: [key] - Population cap reached. Redirecting to overflow server.")
+					if (message)
+						message_admins("<span class='adminnotice'>Nieudane logowanie: [key] - limit graczy osiągnięty, przekierowanie na serwer zapasowy.</span>")
 					GLOB.ckey_redirects += ckey
 				else
 					log_access("Failed Login: [key] - Population cap reached")
+					if (message)
+						message_admins("<span class='adminnotice'>Nieudane logowanie: [key] - limit graczy osiągnięty.</span>")
 					return list("reason"="popcap", "desc"= "\nReason: [CONFIG_GET(string/extreme_popcap_message)]")
 
 	if(CONFIG_GET(flag/sql_enabled))
@@ -107,6 +120,8 @@ GLOBAL_LIST_EMPTY(ckey_redirects)
 				[global_ban]
 				[expires]"}
 				log_access("Failed Login: [key] [computer_id] [address] - Banned (#[i["id"]]) [text2num(i["global_ban"]) ? "globally" : "locally"]")
+				if (message && !real_bans_only)
+					message_admins("<span class='adminnotice'>Nieudane logowanie: [key] - zbanowany (ban #[i["id"]] na [i["key"]], nałożony przez [i["admin_key"]]).</span>")
 				return list("reason"="Banned","desc"="[desc]")
 
 	var/list/ban = ..()	//default pager ban stuff
@@ -224,6 +239,8 @@ GLOBAL_LIST_EMPTY(ckey_redirects)
 		var/desc = "\nReason:(StickyBan) You, or another user of this computer or connection ([bannedckey]) is banned from playing here. The ban reason is:\n[ban["message"]]\nThis ban was applied by [ban["admin"]]\nThis is a BanEvasion Detection System ban, if you think this ban is a mistake, please wait EXACTLY 6 seconds, then try again before filing an appeal.\n"
 		. = list("reason" = "Stickyban", "desc" = desc)
 		log_access("Failed Login: [key] [computer_id] [address] - StickyBanned [ban["message"]] Target Username: [bannedckey] Placed by [ban["admin"]]")
+		if (message)
+			message_admins("<span class='adminnotice'>Nieudane logowanie: [key] - stickyban na [bannedckey] (nałożony przez [ban["admin"]]).</span>")
 
 	return .
 
