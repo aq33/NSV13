@@ -91,3 +91,7 @@ DEFINE_BITFIELD(food_types, list(
 #define FOOD_LIKED 1
 #define FOOD_DISLIKED 2
 #define FOOD_TOXIC 3
+
+// A reasonable number of maximum overlays an object needs (from Bee code/__DEFINES/overlays.dm, used by customizable_reagent_holder)
+// If you think you need more, rethink it
+#define MAX_ATOM_OVERLAYS 100
