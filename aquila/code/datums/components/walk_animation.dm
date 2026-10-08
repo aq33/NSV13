@@ -3,8 +3,8 @@
  *
  * Mob rysuje się tylko do bufora (render_target z "*"), a pięć fragmentów w jego vis_contents
  * pokazuje ten obraz przycięty maskami alfa: tułów, dwie ręce i dwie nogi. Ubranie i nakładki
- * są więc cięte razem z ciałem. Przedmioty w dłoniach mają własne bufory ("hand_1" lewa, "hand_2" prawa)
- * i są pokazywane w całości, ruszając się razem ze swoją ręką.
+ * są więc cięte razem z ciałem. Przedmioty w dłoniach są kopiowane na osobne fragmenty ("hand_1" lewa,
+ * "hand_2" prawa) i pokazywane w całości, ruszając się razem ze swoją ręką.
  * Maski są kierunkowe (aquila/icons/mob/walk_masks.dmi) i dziedziczą kierunek moba po stronie klienta.
  * "arm_a"/"leg_a" to strona lewa na ekranie przy widoku z przodu i z tyłu; w widoku z boku
  * "arm_a" to ręka bliżej patrzącego, a "leg_a" i "leg_b" pokazują obie nogi w pełnej szerokości.
@@ -46,7 +46,6 @@
 	// Przedmioty w dłoniach nad wszystkim, jak HANDS_LAYER
 	for(var/index in 1 to 2)
 		var/obj/effect/overlay/walk_held/held = new
-		held.render_source = "*walk_hand[index][REF(H)]"
 		limbs["hand_[index]"] = held
 		H.vis_contents += held
 	update_side_leg(H.dir)
@@ -85,10 +84,15 @@
 	limbs[state] = limb
 	H.vis_contents += limb
 
-/// Przenosi nakładki przedmiotów z dłoni 1 i 2 do ich własnych buforów, żeby maski ich nie cięły.
+/// Przenosi przedmioty z dłoni 1 i 2 na fragmenty "hand_1"/"hand_2", żeby maski ich nie cięły.
+/// Fragment dostaje kopię nakładki i dziedziczy kierunek moba, więc sprite obraca się z postacią.
+/// Oryginał zostaje w mobie, ukryty buforem z "*", żeby getFlatIcon (zdjęcia) dalej widział przedmiot.
 /// Wołane po każdym update_inv_hands().
 /datum/component/walk_animation/proc/detach_held_items()
 	var/mob/living/carbon/human/H = parent
+	for(var/index in 1 to 2)
+		var/obj/effect/overlay/walk_held/held = limbs["hand_[index]"]
+		held.cut_overlays()
 	var/list/hand_overlays = H.overlays_standing[HANDS_LAYER]
 	if(!length(hand_overlays))
 		return
@@ -101,8 +105,11 @@
 			break
 		var/hand_index = H.get_held_index_of_item(I)
 		var/mutable_appearance/hand_overlay = hand_overlays[overlay_index]
-		if(hand_index <= 2 && istype(hand_overlay))
-			hand_overlay.render_target = "*walk_hand[hand_index][REF(H)]"
+		if(hand_index > 2 || !istype(hand_overlay))
+			continue
+		var/obj/effect/overlay/walk_held/held = limbs["hand_[hand_index]"]
+		held.add_overlay(new /mutable_appearance(hand_overlay))
+		hand_overlay.render_target = "*walk_hand[hand_index][REF(H)]"
 	H.overlays_standing[HANDS_LAYER] = hand_overlays
 	H.apply_overlay(HANDS_LAYER)
 
@@ -179,14 +186,14 @@
 	appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART | PIXEL_SCALE | TILE_BOUND
 	vis_flags = VIS_INHERIT_ID
 
-/// Przedmiot z jednej dłoni, z bufora jego nakładki, bez przycinania.
-/// Bufor nakładki nie zawiera koloru, przezroczystości ani obrotu moba, więc je dziedziczymy.
+/// Przedmiot z jednej dłoni jako kopia nakładki, bez przycinania.
+/// Dziedziczy kierunek, kolor, przezroczystość i obrót moba, tak jak zwykła nakładka.
 /obj/effect/overlay/walk_held
 	name = ""
 	plane = FLOAT_PLANE
 	layer = FLOAT_LAYER
 	appearance_flags = KEEP_APART | PIXEL_SCALE | TILE_BOUND
-	vis_flags = VIS_INHERIT_ID
+	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_DIR
 
 /// Maska fragmentu ciała. Niewidoczna, rysuje się tylko do własnego bufora.
 /obj/effect/overlay/walk_mask
