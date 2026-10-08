@@ -12,8 +12,9 @@
 	//dried_type = /obj/item/food//sosjerky/healthy
 	bite_consumption = 3
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment/protein = 6,
-		/datum/reagent/consumable/cooking_oil = 2
+		/datum/reagent/consumable/nutriment/protein = 5,
+		/datum/reagent/consumable/nutriment/fat = 2,
+		/datum/reagent/consumable/nutriment/vitamin = 1
 	) //Meat has fats that a food processor can process into cooking oil
 	tastes = list("meat" = 1)
 	foodtypes = MEAT | RAW
@@ -205,7 +206,7 @@
 		/datum/reagent/consumable/nutriment/protein = 16,
 		/datum/reagent/medicine/morphine = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
-		/datum/reagent/consumable/cooking_oil = 6
+		/datum/reagent/consumable/nutriment/fat = 6
 	)
 	tastes = list("meat" = 1, "salmon" = 1)
 	foodtypes = RAW | MEAT
@@ -258,7 +259,7 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 5,
 		/datum/reagent/toxin = 5,
-		/datum/reagent/consumable/cooking_oil = 3
+		/datum/reagent/consumable/nutriment/fat = 3
 	)
 	icon_state = "goliathmeat"
 	tastes = list("meat" = 1)
@@ -276,7 +277,7 @@
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 		/datum/reagent/blood = 5,
-		/datum/reagent/consumable/cooking_oil = 1
+		/datum/reagent/consumable/nutriment/fat = 1
 	)
 	icon_state = "meatwheat_clump"
 	bite_consumption = 4
@@ -289,7 +290,7 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 7,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
-		/datum/reagent/consumable/cooking_oil = 5 //Plenty of fat!
+		/datum/reagent/consumable/nutriment/fat = 5 //Plenty of fat!
 	)
 
 /obj/item/food/meat/rawbacon
@@ -299,10 +300,11 @@
 	bite_consumption = 2
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 2,
-		/datum/reagent/consumable/cooking_oil = 3
+		/datum/reagent/consumable/nutriment/fat = 3
 	)
 	tastes = list("bacon" = 1)
 	foodtypes = RAW | MEAT | BREAKFAST
+	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/meat/rawbacon/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/meat/bacon, rand(25 SECONDS, 45 SECONDS), TRUE, TRUE)
@@ -314,10 +316,11 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
-		/datum/reagent/consumable/cooking_oil = 2
+		/datum/reagent/consumable/nutriment/fat = 2
 	)
 	tastes = list("bacon" = 1)
 	foodtypes = MEAT | BREAKFAST
+	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/meat/slab/gondola
 	name = "gondola meat"
@@ -325,7 +328,7 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/tranquility = 5,
-		/datum/reagent/consumable/cooking_oil = 3
+		/datum/reagent/consumable/nutriment/fat = 3
 	)
 	tastes = list("meat" = 4, "tranquility" = 1)
 	foodtypes = RAW | MEAT
@@ -342,7 +345,7 @@
 	desc = "A slab of penguin meat."
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 4,
-		/datum/reagent/consumable/cooking_oil = 3
+		/datum/reagent/consumable/nutriment/fat = 3
 	)
 	tastes = list("beef" = 1, "cod fish" = 1)
 
@@ -361,7 +364,7 @@
 	bite_consumption = 3
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 3,
-		/datum/reagent/consumable/cooking_oil = 3
+		/datum/reagent/consumable/nutriment/fat = 3
 	)
 	tastes = list("raw crab" = 1)
 	foodtypes = RAW | MEAT
@@ -376,10 +379,11 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
-		/datum/reagent/consumable/cooking_oil = 2
+		/datum/reagent/consumable/nutriment/fat = 2
 	)
 	tastes = list("crab" = 1)
 	foodtypes = MEAT
+	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/meat/slab/chicken
 	name = "chicken meat"
@@ -424,11 +428,13 @@
 	desc = "A piece of hot spicy meat."
 	icon_state = "meatsteak"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment/protein = 8,
+		/datum/reagent/consumable/nutriment/protein = 5,
+		/datum/reagent/consumable/nutriment/fat = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	foodtypes = MEAT
 	tastes = list("meat" = 1)
+	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/meat/steak/Initialize(mapload)
 	. = ..()
@@ -678,6 +684,7 @@
 	)
 	tastes = list("meat" = 1)
 	foodtypes = MEAT
+	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/meat/cutlet/Initialize(mapload)
 	. = ..()

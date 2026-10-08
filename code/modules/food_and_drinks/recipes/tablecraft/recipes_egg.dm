@@ -14,7 +14,8 @@
 	subcategory = CAT_EGG
 
 /datum/crafting_recipe/food/omelette
-	name = "Omelette"
+	name = "Omelette du fromage"
+	result = /obj/item/food/omelette
 	reqs = list(
 		/obj/item/food/egg = 2,
 		/obj/item/food/cheese/wedge = 2

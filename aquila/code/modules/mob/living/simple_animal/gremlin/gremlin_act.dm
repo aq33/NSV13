@@ -179,7 +179,7 @@
 
 /obj/machinery/deepfryer/npc_tamper_act(mob/living/L)
 	//Deepfry a random nearby item
-	if(frying || !reagents.has_reagent(/datum/reagent/consumable/cooking_oil))
+	if(frying || !reagents.has_reagent(/datum/reagent/consumable/nutriment/fat/oil))
 		return
 	var/list/pickable_items = list()
 	for(var/obj/item/I in range(1, L))

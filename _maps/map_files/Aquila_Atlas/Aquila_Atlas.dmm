@@ -11326,7 +11326,7 @@
 /turf/open/floor/durasteel/techfloor_grid,
 /area/engine/atmos)
 "GB" = (
-/obj/structure/reagent_dispensers/cooking_oil,
+/obj/structure/reagent_dispensers/nutriment/fat/oil,
 /obj/structure/extinguisher_cabinet/east,
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/kitchen/coldroom)

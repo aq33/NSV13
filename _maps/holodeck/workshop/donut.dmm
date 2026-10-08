@@ -29,7 +29,7 @@
 /turf/open/floor/holofloor/monotile/steel,
 /area/template_noop)
 "t" = (
-/obj/structure/reagent_dispensers/cooking_oil,
+/obj/structure/reagent_dispensers/nutriment/fat/oil,
 /obj/structure/sign/poster/official/moth1{
 	pixel_y = 32
 	},

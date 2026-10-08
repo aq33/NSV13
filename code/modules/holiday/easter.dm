@@ -151,6 +151,7 @@
 	icon_state = "hotcrossbun"
 	foodtypes = SUGAR | GRAIN
 	tastes = list("easter")
+	crafting_complexity = FOOD_COMPLEXITY_1
 
 /datum/crafting_recipe/food/hotcrossbun
 	name = "Hot-Cross Bun"
@@ -177,6 +178,7 @@
 	icon_state = "scotchegg"
 	bite_consumption = 3
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/nutriment/vitamin = 2)
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /datum/crafting_recipe/food/scotchegg
 	name = "Scotch egg"
@@ -204,6 +206,7 @@
 	desc = "Contains less than 10% real rabbit!"
 	icon_state = "chocolatebunny"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/sugar = 2, /datum/reagent/consumable/cocoa = 2, /datum/reagent/consumable/nutriment/vitamin = 1)
+	crafting_complexity = FOOD_COMPLEXITY_1
 
 /datum/crafting_recipe/food/chocolatebunny
 	name = "Chocolate bunny"

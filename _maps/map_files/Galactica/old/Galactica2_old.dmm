@@ -48419,7 +48419,7 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/frame2/port)
 "kNI" = (
-/obj/structure/reagent_dispensers/cooking_oil,
+/obj/structure/reagent_dispensers/nutriment/fat/oil,
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 6
 	},

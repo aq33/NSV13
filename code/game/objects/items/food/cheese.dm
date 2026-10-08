@@ -4,6 +4,7 @@
 	tastes = list("cheese" = 1)
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 3)
 	foodtypes = DAIRY
+	crafting_complexity = FOOD_COMPLEXITY_1
 
 
 /obj/item/food/cheese/wheel
@@ -18,6 +19,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	///NSV13 - our cheese varieties (snacks_cheese.dm) slice into their own wedges
 	var/obj/item/food/cheese/wedge/slice_type = /obj/item/food/cheese/wedge
+	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/cheese/wedge
 	name = "cheese wedge"
@@ -29,6 +31,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/cheese/wheel/Initialize(mapload)
 	. = ..()

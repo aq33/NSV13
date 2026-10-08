@@ -7677,7 +7677,7 @@
 /turf/open/floor/carpet/ship,
 /area/medical/morgue)
 "BY" = (
-/obj/structure/reagent_dispensers/cooking_oil,
+/obj/structure/reagent_dispensers/nutriment/fat/oil,
 /turf/open/floor/plating,
 /area/maintenance/department/medical)
 "BZ" = (

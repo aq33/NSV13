@@ -72,7 +72,7 @@ GLOBAL_LIST_INIT(oilfry_blacklisted_items, typecacheof(list(
 /obj/machinery/deepfryer/Initialize(mapload)
 	. = ..()
 	create_reagents(50, OPENCONTAINER)
-	reagents.add_reagent(/datum/reagent/consumable/cooking_oil, 25)
+	reagents.add_reagent(/datum/reagent/consumable/nutriment/fat/oil, 25)
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/machine/deep_fryer(null)
 	component_parts += new /obj/item/stock_parts/micro_laser(null)
@@ -119,7 +119,7 @@ GLOBAL_LIST_INIT(oilfry_blacklisted_items, typecacheof(list(
 		qdel(weapon)
 		return
 	// Make sure we have cooking oil
-	if(!reagents.has_reagent(/datum/reagent/consumable/cooking_oil))
+	if(!reagents.has_reagent(/datum/reagent/consumable/nutriment/fat/oil))
 		to_chat(user, "<span class='warning'>[src] has no cooking oil to fry with!</span>")
 		return
 	// Don't deep fry indestructible things, for sanity reasons
@@ -160,7 +160,7 @@ GLOBAL_LIST_INIT(oilfry_blacklisted_items, typecacheof(list(
 
 /obj/machinery/deepfryer/process(delta_time)
 	..()
-	var/datum/reagent/consumable/cooking_oil/frying_oil = reagents.has_reagent(/datum/reagent/consumable/cooking_oil)
+	var/datum/reagent/consumable/nutriment/fat/oil/frying_oil = reagents.has_reagent(/datum/reagent/consumable/nutriment/fat/oil)
 	if(!frying_oil)
 		return
 	reagents.chem_temp = frying_oil.fry_temperature
@@ -207,7 +207,8 @@ GLOBAL_LIST_INIT(oilfry_blacklisted_items, typecacheof(list(
 	// Give them reagents to put frying oil in
 	if(isnull(frying.reagents))
 		frying.create_reagents(50, INJECTABLE)
-	//ADD_TRAIT(frying, TRAIT_FOOD_CHEF_MADE, REF(user)) //Attaching behavior to if the food is made by a chef, later newfood
+	if(user.mind)
+		ADD_TRAIT(frying, TRAIT_FOOD_CHEF_MADE, REF(user.mind))
 	SEND_SIGNAL(frying, COMSIG_ITEM_ENTERED_FRYER)
 
 	icon_state = "fryer_on"

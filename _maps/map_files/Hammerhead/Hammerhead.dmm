@@ -46887,7 +46887,7 @@
 /turf/open/floor/plasteel/dark,
 /area/security/execution/transfer)
 "vBI" = (
-/obj/structure/reagent_dispensers/cooking_oil,
+/obj/structure/reagent_dispensers/nutriment/fat/oil,
 /turf/open/floor/plasteel/dark,
 /area/hallway/secondary/service)
 "vCk" = (

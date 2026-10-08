@@ -22,6 +22,10 @@
   * user: the /mob that initiated the crafting
   * collected_requirements: A list of lists of /obj/item instances that satisfy reqs. Top level list is keyed by requirement path.
   */
+///Called after the result is created and placed (newfood marks chef-made food here)
+/datum/crafting_recipe/proc/on_craft_completion(mob/user, atom/result)
+	return
+
 /datum/crafting_recipe/proc/check_requirements(mob/user, list/collected_requirements)
 	return TRUE
 

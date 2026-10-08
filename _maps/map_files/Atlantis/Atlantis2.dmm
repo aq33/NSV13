@@ -8133,7 +8133,7 @@
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/ai)
 "itx" = (
-/obj/structure/reagent_dispensers/cooking_oil,
+/obj/structure/reagent_dispensers/nutriment/fat/oil,
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/kitchen/coldroom)
 "itI" = (
