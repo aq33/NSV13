@@ -301,7 +301,7 @@ Behavior that's still missing from this component that original food items had t
 		return
 	var/fullness = eater.nutrition + 10 //The theoretical fullness of the person eating if they were to eat this
 
-	var/time_to_eat = (eater = feeder) ? eat_time : EAT_TIME_FORCE_FEED
+	var/time_to_eat = (eater == feeder) ? eat_time : EAT_TIME_FORCE_FEED
 
 	if(eater == feeder)//If you're eating it yourself.
 		if(eat_time && !do_after(feeder, time_to_eat, target = eater)) //Gotta pass the minimal eat time
