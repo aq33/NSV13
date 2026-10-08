@@ -9409,7 +9409,7 @@
 "Ia" = (
 /obj/structure/table_frame,
 /obj/item/relic,
-/obj/item/trash/can/food/beans,
+/obj/item/trash/canned/beans,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port/fore)
 "Ib" = (

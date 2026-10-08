@@ -871,7 +871,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/crew_quarters/bar/pvp)
 "bcF" = (
-/obj/item/trash/can/food/beans,
+/obj/item/trash/canned/beans,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},

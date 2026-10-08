@@ -33831,7 +33831,7 @@
 /turf/open/floor/monotile/dark,
 /area/quartermaster/office)
 "uTj" = (
-/obj/item/trash/can/food,
+/obj/item/trash/canned,
 /obj/item/cigbutt,
 /obj/effect/decal/cleanable/shreds,
 /turf/open/floor/plating,

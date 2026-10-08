@@ -2832,7 +2832,7 @@
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "nh" = (
-/obj/item/trash/can/food/peaches,
+/obj/item/trash/canned/peaches,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/bar)
@@ -5263,7 +5263,7 @@
 	},
 /area/hallway/secondary/entry)
 "zd" = (
-/obj/item/trash/can/food,
+/obj/item/trash/canned,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/bar)
 "zf" = (

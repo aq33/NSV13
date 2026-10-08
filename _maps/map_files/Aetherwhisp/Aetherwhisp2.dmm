@@ -4249,7 +4249,7 @@
 /turf/closed/wall/r_wall/ship,
 /area/maintenance/fore)
 "dkR" = (
-/obj/item/trash/can/food/peaches/maint,
+/obj/item/trash/canned/peaches/maint,
 /obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,

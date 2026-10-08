@@ -40619,7 +40619,7 @@
 /obj/item/plate{
 	pixel_y = 4
 	},
-/obj/item/trash/can/food/beans{
+/obj/item/trash/canned/beans{
 	pixel_y = 14
 	},
 /turf/open/floor/plating,

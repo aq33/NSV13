@@ -12932,7 +12932,7 @@
 /area/gateway)
 "gMB" = (
 /obj/structure/cable,
-/obj/item/trash/can/food,
+/obj/item/trash/canned,
 /turf/open/floor/plating,
 /area/maintenance/nsv/hangar)
 "gME" = (
@@ -43720,7 +43720,7 @@
 /area/medical/nsv/plumbing)
 "wMF" = (
 /obj/structure/closet/crate,
-/obj/item/trash/can/food/peaches/maint,
+/obj/item/trash/canned/peaches/maint,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -43942,7 +43942,7 @@
 /turf/open/floor/monotile/light,
 /area/medical/genetics)
 "wUe" = (
-/obj/item/trash/can/food/beans,
+/obj/item/trash/canned/beans,
 /turf/open/floor/plating,
 /area/maintenance/nsv/hangar)
 "wUf" = (
