@@ -39,6 +39,8 @@
 	var/list/yt_extra = null
 	/// Tempo bieżącego utworu (kable vaporwave/nightcore), ustalane przy starcie utworu
 	var/yt_speed = 1
+	/// Ostatnio wpisane wyszukiwanie na playliście: ckey -> tekst
+	var/list/yt_search_queries = list()
 	/// Klienci, którym aktualnie gra muzyka z tego jukeboxa, z ostatnio wysłaną głośnością
 	var/list/yt_listeners = list()
 	/// Ostatnio wysłane echo i przytłumienie dla klienta: "echo|muffle"
@@ -55,32 +57,107 @@
 /obj/machinery/jukebox/proc/yt_available()
 	return !!aquila_ytdl_command()
 
-/obj/machinery/jukebox/proc/yt_ui()
+/// Czas w sekundach jako m:ss
+/proc/jukebox_time_text(seconds)
+	seconds = max(0, round(seconds))
+	var/secs = seconds % 60
+	return "[round(seconds / 60)]:[secs < 10 ? "0" : ""][secs]"
+
+/obj/machinery/jukebox/proc/yt_link(action, text, extra = "", css = "jb-btn")
+	return "<a class='[css]' href='?src=[REF(src)];action=[action][extra]'>[text]</a>"
+
+/// Całe okno jukeboxa
+/obj/machinery/jukebox/proc/yt_ui(mob/user)
 	var/list/dat = list()
-	dat += "<hr><b>Playlista YouTube</b><br>"
-	if(!yt_available())
-		dat += "<i>Niedostępne - brak yt-dlp na serwerze (INVOKE_YOUTUBEDL w konfigu ani yt-dlp.exe w katalogu gry).</i><br>"
-		return dat.Join()
-	dat += "<A href='?src=[REF(src)];action=yt_load'>Wczytaj playlistę</A>"
-	if(yt_tracks.len || yt_playlist_url)
-		dat += " | <A href='?src=[REF(src)];action=yt_toggle'>[yt_active ? "Stop" : "Graj"]</A>"
-		dat += " | <A href='?src=[REF(src)];action=yt_skip'>Następny</A>"
-		dat += " | <A href='?src=[REF(src)];action=yt_shuffle'>Losowo: [yt_shuffle ? "TAK" : "NIE"]</A>"
-	dat += "<br>"
+	dat += {"<style>
+		.jb-box {background:rgba(0,0,0,0.25); border:1px solid #40628a; padding:8px 10px; margin-bottom:8px;}
+		.jb-label {color:#8ba5c4; font-size:11px; text-transform:uppercase;}
+		.jb-title {font-size:15px; font-weight:bold; margin:2px 0 4px 0;}
+		.jb-muted {color:#8a8a8a;}
+		.jb-row {margin-top:6px;}
+		a.jb-btn {display:inline-block; padding:2px 8px; margin:2px 2px 2px 0; border:1px solid #40628a; background:#2a3f5a; color:#fff; text-decoration:none;}
+		a.jb-btn:hover {background:#40628a;}
+		a.jb-on {background:#2f6b3a; border-color:#3f8a4c;}
+		#jb-q {width:70%; padding:2px 4px;}
+		.jb-list {max-height:330px; overflow-y:auto; border:1px solid #333;}
+		.jb-list table {width:100%; border-collapse:collapse;}
+		.jb-list td {padding:3px 5px; border-bottom:1px solid #2a2a2a;}
+		.jb-list tr.jb-alt td {background:rgba(255,255,255,0.03);}
+		.jb-list tr.jb-cur td {background:#2f4a2f; font-weight:bold;}
+		.jb-list td.jb-n {width:30px; text-align:right; color:#8a8a8a;}
+		.jb-list td.jb-d {width:45px; text-align:right; color:#8a8a8a;}
+		.jb-list a {color:#9fc7ff; text-decoration:none;}
+		.jb-list a:hover {text-decoration:underline;}
+	</style>"}
+	// teraz gra
+	dat += "<div class='jb-box'>"
+	dat += "<div class='jb-label'>Teraz gra</div>"
 	if(yt_busy)
-		dat += "<i>Łączenie z siecią...</i><br>"
-	if(yt_tracks.len)
-		dat += "Utworów na liście: [yt_tracks.len] - kliknij tytuł, aby go odtworzyć.<br>"
-		dat += "<div style='max-height:220px;overflow-y:auto'>"
-		for(var/i in 1 to yt_tracks.len)
-			var/list/T = yt_tracks[i]
-			var/title = html_encode(T["title"])
-			var/duration = T["duration"] ? " <span style='color:#888'>([DisplayTimeText(T["duration"] * 10)])</span>" : ""
-			if(yt_active && i == yt_index)
-				dat += "[i]. <b>&#9654; [title]</b>[duration]<br>"
-			else
-				dat += "[i]. <A href='?src=[REF(src)];action=yt_play;index=[i]'>[title]</A>[duration]<br>"
+		dat += "<div class='jb-title jb-muted'>Łączenie z siecią...</div>"
+	else if(yt_active && yt_index)
+		var/list/current = yt_tracks[yt_index]
+		dat += "<div class='jb-title'>[html_encode(current["title"])]</div>"
+		var/elapsed = (world.time - yt_track_started) / 10 * yt_speed
+		dat += "<div class='jb-muted'>Utwór [yt_index] z [yt_tracks.len] &middot; [jukebox_time_text(elapsed)] / [jukebox_time_text(current["duration"])]</div>"
+	else
+		dat += "<div class='jb-title jb-muted'>Cisza</div>"
+	if(yt_available())
+		dat += "<div class='jb-row'>"
+		if(yt_tracks.len || yt_playlist_url)
+			dat += yt_link("yt_toggle", yt_active ? "&#9632; Stop" : "&#9654; Graj")
+			dat += yt_link("yt_skip", "&#9658;&#9658; Następny")
+			dat += yt_link("yt_shuffle", "Losowo: [yt_shuffle ? "wł." : "wył."]", css = yt_shuffle ? "jb-btn jb-on" : "jb-btn")
 		dat += "</div>"
+	dat += "<div class='jb-row'>Głośność: "
+	dat += yt_link("volume", "&minus;", ";delta=-10")
+	dat += " <b>[volume]%</b> "
+	dat += yt_link("volume", "+", ";delta=10")
+	dat += "</div></div>"
+	// playlista
+	dat += "<div class='jb-box'>"
+	if(!yt_available())
+		dat += "<span class='jb-muted'>Niedostępne - brak yt-dlp na serwerze (INVOKE_YOUTUBEDL w konfigu ani yt-dlp.exe w katalogu gry).</span></div>"
+		return dat.Join()
+	dat += "<div class='jb-label'>Playlista YouTube[yt_tracks.len ? " &middot; [yt_tracks.len] utworów" : ""]</div>"
+	dat += "<div class='jb-row'>[yt_link("yt_load", "Wczytaj playlistę")]</div>"
+	if(!yt_tracks.len)
+		dat += "<div class='jb-row jb-muted'>Brak wczytanej playlisty - &quot;Graj&quot; wczyta domyślną.</div></div>"
+		return dat.Join()
+	var/query = user?.ckey ? yt_search_queries[user.ckey] : null
+	dat += "<div class='jb-row'>Szukaj: <input id='jb-q' type='text' value='[html_encode(query)]' onkeyup='jbFilter(true)' oninput='jbFilter(true)'> "
+	dat += "<a class='jb-btn' href='#' onclick='document.getElementById(\"jb-q\").value=\"\";jbFilter(true);return false;'>&times;</a></div>"
+	dat += "<div class='jb-row jb-list'><table>"
+	for(var/i in 1 to yt_tracks.len)
+		var/list/T = yt_tracks[i]
+		var/title = html_encode(T["title"])
+		var/duration = T["duration"] ? jukebox_time_text(T["duration"]) : ""
+		var/row_class = (yt_active && i == yt_index) ? "jb-cur" : (i % 2 ? "" : "jb-alt")
+		var/title_cell = (yt_active && i == yt_index) ? "&#9654; [title]" : "<a href='?src=[REF(src)];action=yt_play;index=[i]'>[title]</a>"
+		dat += "<tr class='[row_class]'><td class='jb-n'>[i]</td><td class='jb-t'>[title_cell]</td><td class='jb-d'>[duration]</td></tr>"
+	dat += "</table><div id='jb-none' class='jb-muted' style='display:none;padding:6px'>Brak wyników.</div></div></div>"
+	// filtrowanie po stronie przeglądarki; wpisany tekst zapamiętujemy na serwerze, żeby przetrwał odświeżenie okna
+	dat += {"<script>
+		var jbTimer = null;
+		function jbFilter(save) {
+			var q = document.getElementById('jb-q').value.toLowerCase();
+			var rows = document.querySelectorAll('.jb-list tr');
+			var shown = 0;
+			for (var i = 0; i < rows.length; i++) {
+				var text = rows\[i].innerText.toLowerCase();
+				var match = !q || text.indexOf(q) !== -1;
+				rows\[i].style.display = match ? '' : 'none';
+				if (match) shown++;
+			}
+			document.getElementById('jb-none').style.display = shown ? 'none' : 'block';
+			if (save) {
+				clearTimeout(jbTimer);
+				jbTimer = setTimeout(function () {
+					window.location = 'byond://?src=[REF(src)];action=yt_search;q=' + encodeURIComponent(document.getElementById('jb-q').value);
+				}, 600);
+			}
+		}
+		jbFilter(false);
+	</script>"}
 	return dat.Join()
 
 /// Ustawia flagę zajętości (z czasem startu dla strażnika zawieszenia)
@@ -98,6 +175,10 @@
 
 /obj/machinery/jukebox/proc/yt_topic(action, list/href_list, mob/user)
 	yt_check_stuck()
+	if(action == "yt_search") // tylko zapamiętanie tekstu, bez odświeżania okna (nie gubimy kursora)
+		if(user?.ckey)
+			yt_search_queries[user.ckey] = copytext_char(href_list["q"], 1, 101)
+		return
 	switch(action)
 		if("yt_load")
 			if(yt_busy)

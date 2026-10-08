@@ -137,19 +137,8 @@
 	if (!anchored)
 		to_chat(user,"<span class='warning'>To urządzenie musi wpierw był przykręcone do podłoża!</span>")
 		return
-	var/list/dat = list()
-	dat += "<div class='statusDisplay' style='text-align:center'>"
-	if(yt_active && yt_index)
-		dat += "Teraz gra: <b>[html_encode(yt_tracks[yt_index]["title"])]</b><br>"
-	else
-		dat += "<i>Cisza</i><br>"
-	if(yt_active)
-		dat += "<a href='?src=[REF(src)];action=stop'>Zatrzymaj</a> "
-	dat += "Głośność: <a href='?src=[REF(src)];action=volume;delta=-10'>-</a> [volume]% <a href='?src=[REF(src)];action=volume;delta=10'>+</a>"
-	dat += "</div>"
-	dat += yt_ui()
-	var/datum/browser/popup = new(user, "vending", "[name]", 450, 600)
-	popup.set_content(dat.Join())
+	var/datum/browser/popup = new(user, "vending", "[name]", 500, 680)
+	popup.set_content(yt_ui(user))
 	popup.open()
 
 /obj/machinery/jukebox/Topic(href, href_list)
