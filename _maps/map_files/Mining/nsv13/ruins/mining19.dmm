@@ -50,7 +50,7 @@
 /area/ruin/powered)
 "j" = (
 /obj/structure/table/wood/fancy,
-/obj/item/reagent_containers/food/snacks/hotdog,
+/obj/item/food/hotdog,
 /turf/open/floor/wood,
 /area/ruin/powered)
 "k" = (
