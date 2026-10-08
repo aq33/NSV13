@@ -128,7 +128,7 @@ type ByondType = {
    *
    * Returns a promise with the value of that property.
    */
-  winget(id: string | null, propNames: string[]): Promise<object>;
+  winget(id: string | null, propName: string): Promise<any>;
 
   /**
    * Retrieves multiple properties of the BYOND skin element,
