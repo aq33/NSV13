@@ -18,7 +18,7 @@
 		return FALSE
 	return ..()
 
-// The "Polak" belly hides under clothes covering the chest, so redraw the body when they change
+// The "Polak" belly is only shown when naked, so redraw the body when clothes change
 /mob/living/carbon/human/update_inv_w_uniform()
 	. = ..()
 	if(dna?.features["body_size"] == "Polak")
