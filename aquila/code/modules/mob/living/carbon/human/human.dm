@@ -22,3 +22,8 @@
 	. = ..()
 	if(!istype(src, /mob/living/carbon/human/dummy)) // podgląd postaci kopiuje appearance manekina, a z nim ukryty render_target
 		AddComponent(/datum/component/walk_animation)
+
+/mob/living/carbon/human/update_inv_hands()
+	. = ..()
+	var/datum/component/walk_animation/walk_animation = GetComponent(/datum/component/walk_animation)
+	walk_animation?.detach_held_items()
