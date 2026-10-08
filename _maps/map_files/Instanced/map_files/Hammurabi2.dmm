@@ -3051,7 +3051,7 @@
 /obj/structure/closet/crate,
 /obj/effect/spawner/lootdrop/maintenance/two,
 /obj/effect/spawner/lootdrop/glowstick,
-/obj/item/reagent_containers/food/snacks/canned/beans,
+/obj/item/food/canned/beans,
 /turf/open/floor/plasteel/tech/grid,
 /area/quartermaster/pvp)
 "sI" = (
