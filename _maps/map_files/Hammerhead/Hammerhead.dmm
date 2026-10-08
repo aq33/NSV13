@@ -28378,16 +28378,16 @@
 	dir = 8
 	},
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
 /turf/open/floor/plasteel/chapel{
@@ -31283,10 +31283,10 @@
 /area/engine/atmos)
 "kNM" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
 /obj/machinery/light_switch/west,
 /turf/open/floor/plasteel/chapel{
 	dir = 8

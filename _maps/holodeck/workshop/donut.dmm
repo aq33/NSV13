@@ -58,22 +58,22 @@
 	pixel_y = 8
 	},
 /obj/effect/turf_decal/stripes/corner,
-/obj/item/reagent_containers/food/snacks/grown/apple,
-/obj/item/reagent_containers/food/snacks/grown/apple,
-/obj/item/reagent_containers/food/snacks/grown/apple,
-/obj/item/reagent_containers/food/snacks/grown/apple,
+/obj/item/food/grown/apple,
+/obj/item/food/grown/apple,
+/obj/item/food/grown/apple,
+/obj/item/food/grown/apple,
 /turf/open/floor/holofloor/monotile/steel,
 /area/template_noop)
 "w" = (
 /obj/structure/closet/crate/freezer,
 /obj/effect/turf_decal/bot,
-/obj/item/reagent_containers/food/snacks/grown/berries,
-/obj/item/reagent_containers/food/snacks/grown/berries,
-/obj/item/reagent_containers/food/snacks/grown/berries,
-/obj/item/reagent_containers/food/snacks/grown/berries,
-/obj/item/reagent_containers/food/snacks/grown/berries,
-/obj/item/reagent_containers/food/snacks/grown/berries,
-/obj/item/reagent_containers/food/snacks/grown/berries,
+/obj/item/food/grown/berries,
+/obj/item/food/grown/berries,
+/obj/item/food/grown/berries,
+/obj/item/food/grown/berries,
+/obj/item/food/grown/berries,
+/obj/item/food/grown/berries,
+/obj/item/food/grown/berries,
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},

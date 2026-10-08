@@ -134,7 +134,7 @@
 	name = "Onion rings"
 	id = "onionrings"
 	build_type = REPLICATOR
-	build_path = /obj/item/reagent_containers/food/snacks/onionrings
+	build_path = /obj/item/food/onionrings
 	category = list("Basic Dishes")
 
 /datum/design/replicator/tier2/friedeggs

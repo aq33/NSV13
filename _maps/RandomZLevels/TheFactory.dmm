@@ -10618,11 +10618,11 @@
 /obj/item/grown/sunflower{
 	pixel_x = -3
 	},
-/obj/item/reagent_containers/food/snacks/grown/moonflower{
+/obj/item/food/grown/moonflower{
 	pixel_x = 6;
 	pixel_y = -1
 	},
-/obj/item/reagent_containers/food/snacks/grown/rainbow_flower{
+/obj/item/food/grown/rainbow_flower{
 	pixel_x = -1
 	},
 /turf/open/floor/wood,
@@ -11917,7 +11917,7 @@
 /area/awaymission/factory/villageafter/house)
 "lmU" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/moonflower,
+/obj/item/food/grown/moonflower,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
 "lnt" = (
@@ -24695,11 +24695,11 @@
 /obj/item/grown/sunflower{
 	pixel_x = -3
 	},
-/obj/item/reagent_containers/food/snacks/grown/moonflower{
+/obj/item/food/grown/moonflower{
 	pixel_x = 6;
 	pixel_y = -1
 	},
-/obj/item/reagent_containers/food/snacks/grown/rainbow_flower{
+/obj/item/food/grown/rainbow_flower{
 	pixel_x = -1
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -27041,13 +27041,13 @@
 /area/awaymission/factory/villageafter/hospital)
 "xQS" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/rainbow_flower{
+/obj/item/food/grown/rainbow_flower{
 	pixel_y = 4
 	},
-/obj/item/reagent_containers/food/snacks/grown/rainbow_flower{
+/obj/item/food/grown/rainbow_flower{
 	pixel_x = 6
 	},
-/obj/item/reagent_containers/food/snacks/grown/rainbow_flower,
+/obj/item/food/grown/rainbow_flower,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
 "xQV" = (

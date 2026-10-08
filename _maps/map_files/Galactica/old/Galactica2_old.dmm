@@ -2550,15 +2550,15 @@
 /turf/open/floor/monotile/dark,
 /area/maintenance/nsv/deck2/frame1/starboard)
 "ahD" = (
-/obj/item/reagent_containers/food/snacks/grown/banana,
-/obj/item/reagent_containers/food/snacks/grown/banana,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/watermelon,
-/obj/item/reagent_containers/food/snacks/grown/watermelon,
-/obj/item/reagent_containers/food/snacks/grown/watermelon,
-/obj/item/reagent_containers/food/snacks/grown/citrus/orange,
-/obj/item/reagent_containers/food/snacks/grown/grapes,
-/obj/item/reagent_containers/food/snacks/grown/cocoapod,
+/obj/item/food/grown/banana,
+/obj/item/food/grown/banana,
+/obj/item/food/grown/wheat,
+/obj/item/food/grown/watermelon,
+/obj/item/food/grown/watermelon,
+/obj/item/food/grown/watermelon,
+/obj/item/food/grown/citrus/orange,
+/obj/item/food/grown/grapes,
+/obj/item/food/grown/cocoapod,
 /obj/structure/rack,
 /obj/item/seeds/wheat,
 /obj/item/seeds/watermelon,
@@ -2580,7 +2580,7 @@
 /obj/item/seeds/cabbage,
 /obj/item/seeds/ambrosia,
 /obj/item/seeds/grass,
-/obj/item/reagent_containers/food/snacks/grown/mushroom/glowshroom,
+/obj/item/food/grown/mushroom/glowshroom,
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
@@ -40520,22 +40520,22 @@
 /area/chapel/office)
 "bRh" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
 /obj/structure/sign/plaques/kiddie/badger{
@@ -42270,8 +42270,8 @@
 	pixel_y = -26;
 	req_access_txt = "22"
 	},
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
 /turf/open/floor/plasteel/dark,
 /area/chapel/office)
 "bWb" = (
@@ -48938,9 +48938,9 @@
 /obj/item/seeds/grape{
 	pixel_x = -6
 	},
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/watermelon,
-/obj/item/reagent_containers/food/snacks/grown/banana,
+/obj/item/food/grown/wheat,
+/obj/item/food/grown/watermelon,
+/obj/item/food/grown/banana,
 /obj/structure/table/glass,
 /turf/open/floor/monotile/dark,
 /area/hydroponics)

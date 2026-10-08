@@ -160,7 +160,7 @@
 		success = TRUE
 	else if(istype(O, /obj/item/storage/bag/plants))
 		var/obj/item/storage/bag/plants/P = O
-		for(var/obj/item/reagent_containers/food/snacks/grown/G in P.contents)
+		for(var/obj/item/food/grown/G in P.contents)
 			convert_to_biomass(G)
 			success = TRUE
 

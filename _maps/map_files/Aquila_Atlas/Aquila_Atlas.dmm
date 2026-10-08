@@ -8590,9 +8590,9 @@
 /area/nsv/weapons)
 "xU" = (
 /obj/structure/closet/crate/hydroponics,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/food/grown/wheat,
+/obj/item/food/grown/wheat,
+/obj/item/food/grown/wheat,
 /obj/item/multitool,
 /turf/open/floor/durasteel,
 /area/hydroponics)
@@ -11491,7 +11491,7 @@
 	},
 /obj/item/gps,
 /obj/structure/closet/crate/coffin,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
 /turf/open/floor/durasteel/techfloor,
 /area/chapel/main)
 "GZ" = (
@@ -14104,7 +14104,7 @@
 "OB" = (
 /obj/structure/table/wood,
 /obj/item/soulstone/anybody/chaplain,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
 /obj/item/reagent_containers/food/drinks/bottle/holywater{
 	pixel_x = -2;
 	pixel_y = 2
@@ -17639,7 +17639,7 @@
 	},
 /obj/item/paper_bin,
 /obj/item/pen,
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 10;
 	pixel_x = -7
 	},

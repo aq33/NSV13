@@ -7846,8 +7846,8 @@
 "Dm" = (
 /obj/structure/table/wood,
 /obj/item/storage/book/bible,
-/obj/item/reagent_containers/food/snacks/grown/poppy,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/poppy,
+/obj/item/food/grown/harebell,
 /obj/machinery/power/apc/auto_name/south,
 /obj/structure/cable,
 /turf/open/floor/plasteel/chapel,
@@ -8215,9 +8215,9 @@
 /area/hallway/primary/central)
 "ER" = (
 /obj/structure/closet/crate/hydroponics,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/food/grown/wheat,
+/obj/item/food/grown/wheat,
+/obj/item/food/grown/wheat,
 /obj/item/multitool,
 /obj/item/storage/toolbox/mechanical,
 /obj/effect/turf_decal/tile/ship/full/green,

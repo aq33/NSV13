@@ -10987,8 +10987,8 @@
 /obj/machinery/biogenerator,
 /obj/machinery/newscaster/directional/north,
 /obj/item/reagent_containers/glass/beaker/large,
-/obj/item/reagent_containers/food/snacks/grown/carrot,
-/obj/item/reagent_containers/food/snacks/grown/carrot{
+/obj/item/food/grown/carrot,
+/obj/item/food/grown/carrot{
 	pixel_y = 6
 	},
 /turf/open/floor/grass,

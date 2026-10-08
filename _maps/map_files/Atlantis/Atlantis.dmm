@@ -3254,7 +3254,7 @@
 /area/storage/eva)
 "cMA" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
 /turf/open/floor/plasteel/grid/techfloor,
 /area/chapel/office)
 "cMC" = (
@@ -25386,12 +25386,12 @@
 "wfi" = (
 /obj/machinery/door/window/eastleft,
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/poppy,
-/obj/item/reagent_containers/food/snacks/grown/poppy,
-/obj/item/reagent_containers/food/snacks/grown/poppy,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/poppy,
+/obj/item/food/grown/poppy,
+/obj/item/food/grown/poppy,
 /obj/machinery/light{
 	dir = 8
 	},

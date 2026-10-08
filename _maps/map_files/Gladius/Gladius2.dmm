@@ -946,7 +946,7 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
-/obj/item/reagent_containers/food/snacks/onionrings,
+/obj/item/food/onionrings,
 /obj/effect/landmark/zebra_interlock_point,
 /obj/machinery/door/firedoor/border_only{
 	dir = 8
@@ -8320,19 +8320,19 @@
 /obj/structure/sign/plaques/kiddie/badger{
 	pixel_y = 32
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
 /obj/structure/table/wood,
@@ -12607,11 +12607,11 @@
 /area/maintenance/nsv/deck2/starboard/aft)
 "icB" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
 /obj/machinery/newscaster/directional/west,
 /turf/open/floor/plasteel/tech/grid,
 /area/chapel/main)
@@ -17948,19 +17948,19 @@
 /area/lawoffice)
 "luk" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
 /obj/item/radio/intercom/directional/west,
@@ -18673,16 +18673,16 @@
 /area/engine/armour_pump)
 "lOT" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/watermelon,
-/obj/item/reagent_containers/food/snacks/grown/citrus/orange,
-/obj/item/reagent_containers/food/snacks/grown/grapes,
-/obj/item/reagent_containers/food/snacks/grown/cocoapod,
-/obj/item/reagent_containers/food/snacks/grown/apple,
-/obj/item/reagent_containers/food/snacks/grown/chili,
-/obj/item/reagent_containers/food/snacks/grown/cherries,
-/obj/item/reagent_containers/food/snacks/grown/soybeans,
-/obj/item/reagent_containers/food/snacks/grown/citrus/lime,
+/obj/item/food/grown/wheat,
+/obj/item/food/grown/watermelon,
+/obj/item/food/grown/citrus/orange,
+/obj/item/food/grown/grapes,
+/obj/item/food/grown/cocoapod,
+/obj/item/food/grown/apple,
+/obj/item/food/grown/chili,
+/obj/item/food/grown/cherries,
+/obj/item/food/grown/soybeans,
+/obj/item/food/grown/citrus/lime,
 /turf/open/floor/durasteel,
 /area/hydroponics/garden)
 "lPT" = (
@@ -25388,7 +25388,7 @@
 "pSs" = (
 /obj/item/lighter,
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/poppy/lily,
+/obj/item/food/grown/poppy/lily,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -34113,7 +34113,7 @@
 /area/engine/engineering/ftl_room)
 "veD" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
 /turf/open/floor/plating,

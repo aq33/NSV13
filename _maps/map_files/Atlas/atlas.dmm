@@ -4343,7 +4343,7 @@
 	},
 /obj/item/gps,
 /obj/structure/closet/crate/coffin,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/east,
 /turf/open/floor/durasteel/techfloor,
@@ -12669,7 +12669,7 @@
 	pixel_x = -2;
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
 /obj/machinery/requests_console{
 	department = "Chapel";
 	departmentType = 2;

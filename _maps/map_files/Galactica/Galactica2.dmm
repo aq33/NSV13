@@ -4876,7 +4876,7 @@
 /area/engine/engineering/ftl_room)
 "cOd" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
 /obj/machinery/button/massdriver{
@@ -27214,9 +27214,9 @@
 /area/crew_quarters/theatre)
 "pCT" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
 /obj/item/storage/fancy/candle_box,
 /obj/item/storage/fancy/candle_box,
 /obj/machinery/button/door{
@@ -37105,9 +37105,9 @@
 /obj/item/seeds/grape{
 	pixel_x = -6
 	},
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/watermelon,
-/obj/item/reagent_containers/food/snacks/grown/banana,
+/obj/item/food/grown/wheat,
+/obj/item/food/grown/watermelon,
+/obj/item/food/grown/banana,
 /obj/structure/table/glass,
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/plant_analyzer,
@@ -40532,7 +40532,7 @@
 	},
 /obj/structure/closet/crate/coffin,
 /obj/item/gps,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
 /obj/machinery/door/window{
 	name = "Mass Driver";
 	req_access_txt = "22"

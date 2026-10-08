@@ -29927,7 +29927,7 @@
 /obj/structure/table/wood,
 /obj/item/toy/toy_dagger,
 /obj/item/flashlight,
-/obj/item/reagent_containers/food/snacks/grown/banana,
+/obj/item/food/grown/banana,
 /obj/item/trash/can{
 	icon = 'icons/obj/library.dmi';
 	icon_state = "book";

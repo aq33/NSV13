@@ -282,13 +282,13 @@
 /turf/open/floor/plasteel/freezer,
 /area/ruin/space/has_grav/powered)
 "nQ" = (
-/obj/item/reagent_containers/food/snacks/grown/carrot,
-/obj/item/reagent_containers/food/snacks/grown/cabbage,
+/obj/item/food/grown/carrot,
+/obj/item/food/grown/cabbage,
 /obj/structure/closet/crate{
 	name = "Healthy Food Rations"
 	},
-/obj/item/reagent_containers/food/snacks/grown/apple,
-/obj/item/reagent_containers/food/snacks/grown/parsnip,
+/obj/item/food/grown/apple,
+/obj/item/food/grown/parsnip,
 /turf/open/floor/plating/asteroid,
 /area/ruin/space/has_grav)
 "og" = (
