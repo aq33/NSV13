@@ -8,10 +8,10 @@
 	var/strength
 
 /datum/status_effect/food/on_creation(mob/living/new_owner, timeout = 1, strength = 1)
-	. = ..()
 	src.strength = strength
 	if(isnum(timeout))
 		duration *= timeout
+	. = ..()
 	if(istype(linked_alert, /atom/movable/screen/alert/status_effect/food))
 		linked_alert.icon_state = "food_buff_[strength]"
 
