@@ -32,6 +32,8 @@
 	var/filling_color
 	//Amount of discovery points given for scanning
 	var/discovery_points = 0
+	//otherwise this is a huge headache if you are an ashwalker or that survivalist, or just anyone without hydroponic gear access.
+	decomp_req_handle = TRUE
 
 /obj/item/food/grown/Initialize(mapload, obj/item/seeds/new_seed)
 	if(!tastes)
