@@ -19,11 +19,12 @@
 
 	var/mob/dead/selected = pick_n_take(candidates)
 
+	var/list/spawn_locs = horror_spawn_locations()
+	if(!length(spawn_locs))
+		return MAP_ERROR
 	var/datum/mind/player_mind = new /datum/mind(selected.key)
 	player_mind.active = 1
-	if(!GLOB.generic_event_spawns)
-		return MAP_ERROR
-	var/mob/living/simple_animal/horror/S = new /mob/living/simple_animal/horror(get_turf(pick(GLOB.generic_event_spawns)))
+	var/mob/living/simple_animal/horror/S = new /mob/living/simple_animal/horror(pick(spawn_locs))
 	player_mind.transfer_to(S)
 	player_mind.assigned_role = ROLE_HORROR
 	player_mind.special_role = ROLE_HORROR
@@ -34,3 +35,11 @@
 	log_game("[key_name(S)] was spawned as an eldritch horror by an event.")
 	spawned_mobs += S
 	return SUCCESSFUL_SPAWN
+
+/// AQUILA - event spawn points on the ship only. The gulag map has its own event spawns on a space z-level.
+/proc/horror_spawn_locations()
+	. = list()
+	for(var/obj/effect/landmark/event_spawn/spawn_point as anything in GLOB.generic_event_spawns)
+		var/turf/T = get_turf(spawn_point)
+		if(T && is_station_level(T.z))
+			. += T

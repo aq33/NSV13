@@ -25,7 +25,7 @@
 /datum/game_mode/traitor/horror/can_start()
 	if(!..())
 		return FALSE
-	if(!length(GLOB.generic_event_spawns))
+	if(!length(horror_spawn_locations()))
 		return FALSE
 	var/list/possible_horrors = get_players_for_role(/datum/antagonist/horror, /datum/role_preference/antagonist/horror)
 	if(possible_horrors.len < required_enemies)
@@ -59,9 +59,10 @@
 	return ..()
 
 /datum/game_mode/traitor/horror/post_setup()
+	var/list/spawn_locs = horror_spawn_locations()
 	for(var/datum/mind/horror_mind in horrors)
 		var/mob/living/old_body = horror_mind.current
-		var/mob/living/simple_animal/horror/H = new(get_turf(pick(GLOB.generic_event_spawns)))
+		var/mob/living/simple_animal/horror/H = new(pick(spawn_locs))
 		horror_mind.transfer_to(H, TRUE) // force the key, a player who dropped before roundstart would come back to the deleted body
 		if(old_body)
 			qdel(old_body)
