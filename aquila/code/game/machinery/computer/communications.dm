@@ -1,6 +1,8 @@
 /obj/machinery/computer/communications
-	/// Cooldown before you can call in an ERT or wave of assistants
+	/// Cooldown before you can call in an ERT
 	COOLDOWN_DECLARE(static/reinforcement_action_cooldown)
+	/// Cooldown before you can wake up another wave of assistants from cryostasis
+	COOLDOWN_DECLARE(static/crew_wake_cooldown)
 
 /obj/machinery/computer/communications/proc/authenticated_as_cap_sec_or_silicon(mob/user)
 	if (issilicon(user))
@@ -25,4 +27,17 @@
 			priority_announce("An Emergency Response Team has been requested by [usr]. Confirmation or denial of this request will be sent shortly.", "Emergency Response Team Requested", SSstation.announcer.get_rand_report_sound())
 			playsound(src, 'sound/machines/terminal_prompt.ogg', 50, FALSE)
 			COOLDOWN_START(src, reinforcement_action_cooldown, 15 MINUTES)
+			. = TRUE
+		if("requestCrewWake")
+			if (!authenticated_as_cap_sec_or_silicon(usr))
+				return
+			if (!COOLDOWN_FINISHED(src, crew_wake_cooldown))
+				return
+			var/reason = trim(html_encode(params["reason"]), MAX_MESSAGE_LEN)
+			crew_wake_request(reason, usr)
+			to_chat(usr, "<span class='notice'>Prośba wysłana.</span>")
+			usr.log_message("has requested a crew wake from cryostasis with reason \"[reason]\"", LOG_SAY)
+			priority_announce("Wysłano prośbę o wybudzenie dodatkowej załogi z kriostazy (zlecenie: [usr]). Potwierdzenie lub odmowa zostanie wkrótce przesłana.", "Prośba o wybudzenie załogi", SSstation.announcer.get_rand_report_sound())
+			playsound(src, 'sound/machines/terminal_prompt.ogg', 50, FALSE)
+			COOLDOWN_START(src, crew_wake_cooldown, 15 MINUTES)
 			. = TRUE

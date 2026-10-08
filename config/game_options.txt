@@ -722,6 +722,17 @@ BANK_BALANCE_METACOIN_CONVERSION_COEFFICIENT 1
 ## Admins can cancel this manually.
 ALLOW_NUKE_REQUEST_AUTO_ACCEPT
 
+## Allow the ship's request for an emergency response team
+## to be automatically accepted after a certain amount of time.
+## Admins can cancel this manually.
+ALLOW_ERT_REQUEST_AUTO_ACCEPT
+
+## Allow the ship's request to wake up crew from cryostasis
+## (willing ghosts respawn as assistants at the cryopods)
+## to be automatically accepted after a certain amount of time.
+## Admins can cancel this manually.
+ALLOW_CREW_WAKE_REQUEST_AUTO_ACCEPT
+
 ## Crew objectives
 ALLOW_CREW_OBJECTIVES
 
