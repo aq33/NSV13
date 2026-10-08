@@ -295,7 +295,11 @@ const PackagingControls = ({ volume, packagingName }, context) => {
     pill_styles = [],
     chosen_patch_style,
     patch_styles = [],
+    chosen_condi_style,
+    autoCondiStyle,
+    condiStyles = [],
   } = data;
+  const autoCondiStyleChosen = autoCondiStyle === chosen_condi_style;
   return (
     <LabeledList>
       {!condi && (
@@ -395,18 +399,30 @@ const PackagingControls = ({ volume, packagingName }, context) => {
           })} />
       )}
       {!!condi && (
-        <PackagingControlsItem
-          label="Packs"
-          amount={packAmount}
-          amountUnit="packs"
-          sideNote="max 10u"
-          onChangeAmount={(e, value) => setPackAmount(value)}
-          onCreate={() => act('create', {
-            type: 'condimentPack',
-            amount: packAmount,
-            volume: volume,
-            name: packagingName,
-          })} />
+        <LabeledList.Item label="Bottle type">
+          <Button.Checkbox
+            onClick={() => act('condiStyle', { id: autoCondiStyleChosen ? condiStyles[0].id : autoCondiStyle })}
+            checked={autoCondiStyleChosen}
+            disabled={!condiStyles.length}>
+            Guess from contents
+          </Button.Checkbox>
+        </LabeledList.Item>
+      )}
+      {!!condi && !autoCondiStyleChosen && (
+        <LabeledList.Item label="">
+          {condiStyles.map((style) => (
+            <Button
+              key={style.id}
+              width="30px"
+              selected={style.id === chosen_condi_style}
+              textAlign="center"
+              color="transparent"
+              title={style.title}
+              onClick={() => act('condiStyle', { id: style.id })}>
+              <Box mx={-1} className={style.className} />
+            </Button>
+          ))}
+        </LabeledList.Item>
       )}
       {!!condi && (
         <PackagingControlsItem
@@ -421,6 +437,23 @@ const PackagingControls = ({ volume, packagingName }, context) => {
             volume: volume,
             name: packagingName,
           })} />
+      )}
+      {!!condi && (
+        <PackagingControlsItem
+          label="Packs"
+          amount={packAmount}
+          amountUnit="packs"
+          sideNote="max 10u"
+          onChangeAmount={(e, value) => setPackAmount(value)}
+          onCreate={() =>
+            act('create', {
+              type: 'condimentPack',
+              amount: packAmount,
+              volume: volume, // NSV13
+              name: packagingName, // NSV13
+            })
+          }
+        />
       )}
     </LabeledList>
   );
