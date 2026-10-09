@@ -65,6 +65,9 @@
 			H.vis_contents -= limbs[state]
 		for(var/state in masks)
 			H.vis_contents -= masks[state]
+		// Wyłączenie w trakcie gry: przedmioty w dłoniach są ukryte buforem, więc budujemy je od nowa
+		if(!QDELETED(H))
+			H.update_inv_hands()
 	QDEL_NULL(em_block)
 	QDEL_LIST_ASSOC_VAL(limbs)
 	QDEL_LIST_ASSOC_VAL(masks)
@@ -89,6 +92,8 @@
 /// Oryginał zostaje w mobie, ukryty buforem z "*", żeby getFlatIcon (zdjęcia) dalej widział przedmiot.
 /// Wołane po każdym update_inv_hands().
 /datum/component/walk_animation/proc/detach_held_items()
+	if(QDELING(src)) // update_inv_hands() z Destroy() ma zostawić zwykłe nakładki
+		return
 	var/mob/living/carbon/human/H = parent
 	for(var/index in 1 to 2)
 		var/obj/effect/overlay/walk_held/held = limbs["hand_[index]"]
@@ -121,6 +126,8 @@
 	if(source.buckled || source.lying || source.throwing || !(source.mobility_flags & MOBILITY_STAND))
 		return
 	if(source.movement_type & (FLYING|FLOATING|VENTCRAWLING) || !source.has_gravity())
+		return
+	if(source.GetComponent(/datum/component/waddling)) // buty klauna i inne podskakiwanie mają własną animację
 		return
 
 	// Czas jednego kroku w decysekundach, odtworzony z glide_size (odwrotność DELAY_TO_GLIDE_SIZE).
