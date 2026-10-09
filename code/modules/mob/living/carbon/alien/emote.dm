@@ -4,13 +4,15 @@
 /datum/emote/living/alien/gnarl
 	key = "gnarl"
 	key_third_person = "gnarls"
-	message = "gnarls and shows its teeth..."
+	message = "warczy i pokazuje zęby..."
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/alien/hiss
 	key = "hiss"
 	key_third_person = "hisses"
-	message_alien = "hisses."
-	message_larva = "hisses softly."
+	message_alien = "syczy."
+	message_larva = "cicho syczy."
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/living/alien/hiss/get_sound(mob/living/user)
 	if(isalienadult(user))
@@ -19,10 +21,10 @@
 /datum/emote/living/alien/roar
 	key = "roar"
 	key_third_person = "roars"
-	message_alien = "roars."
-	message_larva = "softly roars."
-	emote_type = EMOTE_AUDIBLE
+	message_alien = "ryczy."
+	message_larva = "cicho ryczy."
 	vary = TRUE
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/living/alien/roar/get_sound(mob/living/user)
 	if(isalienadult(user))

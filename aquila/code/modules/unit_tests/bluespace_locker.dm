@@ -47,11 +47,13 @@
 	TEST_ASSERT_EQUAL(SSbluespace_locker.room_origin.get_virtual_z_level(), external_turf.get_virtual_z_level(), "Bluespace room virtual z does not follow the external locker")
 	TEST_ASSERT_EQUAL(SSbluespace_locker.room_reservation.overmap_fallback, external.get_overmap(), "Bluespace room overmap fallback does not follow the external locker")
 
-	var/mirages = 0
+	// The external locker is random and may stand in a small closed room, so only tiles visible from it are projected
 	for(var/turf/open/space/bluespace_locker_mirage/M in get_area(internal))
-		if(length(M.vis_contents))
-			mirages++
-	TEST_ASSERT(mirages, "No mirage turf shows the external locker's surroundings")
+		var/turf/target = locate(external_turf.x + M.x - SSbluespace_locker.room_origin.x, external_turf.y + M.y - SSbluespace_locker.room_origin.y, external_turf.z)
+		if(target && internal.mirage_whitelist[target])
+			TEST_ASSERT(target in M.vis_contents, "Mirage turf at [M.x],[M.y] does not show the visible tile [target.x],[target.y]")
+		else
+			TEST_ASSERT(!length(M.vis_contents), "Mirage turf at [M.x],[M.y] shows a tile that is not visible from the external locker")
 
 	var/room_error = room_problem()
 	TEST_ASSERT(!room_error, room_error)
