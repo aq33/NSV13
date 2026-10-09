@@ -38,8 +38,7 @@ GLOBAL_LIST_INIT(aquila_chrono_name_exceptions, list(
 
 /// Lowercases a name, folds Polish/German letters and leetspeak to plain a-z and drops everything else
 /proc/aquila_chrono_normalize_name(name)
-	// Built on first use: GLOB.aquila_chrono_historical_names calls this during global init,
-	// before static initializers have run, so `var/static/x = ...` would still be null here.
+	// Built on first use: this runs during GLOB init, before static initializers are guaranteed to have run
 	var/static/list/replacements
 	var/static/regex/non_letters
 	if(!replacements)
