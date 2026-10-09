@@ -28,9 +28,15 @@
 	dat += "<li><b>Wydarzenia</b> – w trakcie rundy mogą pojawiać się okienka z propozycją roli (abordaż, piraci, obce formy życia i inne). Włącz je w preferencjach.</li>"
 	dat += "</ul>"
 
+	dat += "<h3>Posiłki wzywane przez załogę</h3>"
+	dat += "<ul>"
+	dat += "<li><b>Drużyna szybkiej reakcji (ERT)</b> – kapitan, szef ochrony albo AI mogą poprosić o nią w konsoli komunikacyjnej. Jeśli Centrala ją wyśle, duchy dostaną okienko z propozycją dołączenia.</li>"
+	dat += "<li><b>Wybudzenie załogi z kriostazy</b> – te same osoby mogą w konsoli komunikacyjnej wybudzić załogę. Duchy dostaną wtedy okienko i mogą wrócić jako Majtek z losową postacią.</li>"
+	dat += "</ul>"
+
 	if(CONFIG_GET(flag/norespawn))
 		dat += "<p>Powrót do lobby (respawn) jest wyłączony. Jeśli nic z powyższych nie zadziała, zagrasz w następnej rundzie.</p>"
 
-	var/datum/browser/popup = new(src, "death_info", "Nie żyjesz", 500, 560)
+	var/datum/browser/popup = new(src, "death_info", "Nie żyjesz", 500, 680)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
