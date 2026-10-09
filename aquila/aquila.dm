@@ -376,6 +376,7 @@
 #include "code\modules\research\stock_parts.dm"
 #include "code\modules\research\techweb\all_nodes.dm"
 #include "code\modules\research\xenobiology\xenobio_tubes.dm"
+#include "code\modules\round_survey\round_survey.dm"
 #include "code\modules\ruins\objects_and_mobs\sin_ruins.dm"
 #include "code\modules\shuttle\super_cruise\orbital_map_components\orbital_objects\beacon.dm"
 #include "code\modules\shuttle\computer.dm"
