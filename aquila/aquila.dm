@@ -292,6 +292,7 @@
 #include "code\modules\mob\living\carbon\human\species_types\vampire.dm"
 #include "code\modules\mob\living\carbon\human\species_types\zombies.dm"
 #include "code\modules\mob\living\carbon\monkey\monkey.dm"
+#include "code\modules\mob\living\death.dm"
 #include "code\modules\mob\living\emote.dm"
 #include "code\modules\mob\living\living.dm"
 #include "code\modules\mob\living\living_defines.dm"
