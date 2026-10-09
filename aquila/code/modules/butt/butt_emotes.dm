@@ -7,6 +7,8 @@
 	var/message
 	var/turf/T = get_turf(user)
 	var/lose_butt = prob(12)
+	if(isopenturf(T) && !isspaceturf(T))
+		SSmiasma.emit(T, MIASMA_FART_MOLES)
 	for(var/mob/living/M in T)
 		if(M == user)
 			continue

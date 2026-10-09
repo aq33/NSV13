@@ -827,7 +827,7 @@ Returns a faction datum by its name (case insensitive!)
 		if("hazardous") //TODO: Make better anomalies spawn in hazardous systems scaling with threat level.
 			possible_events = list(/datum/round_event_control/carp_migration, /datum/round_event_control/electrical_storm)
 		if("wormhole")
-			possible_events = list(/datum/round_event_control/wormholes, /datum/round_event/anomaly) //Wormhole systems are unstable in bluespace
+			possible_events = list(/datum/round_event_control/wormholes, /datum/round_event_control/anomaly) //Wormhole systems are unstable in bluespace
 			event_chance = 70 //Highly unstable region of space.
 			create_wormhole()
 			return

@@ -21,4 +21,6 @@
 		priority_announce("Class [round(power/500) + 1] supermatter surge detected. Intervention may be required.", "Anomaly Alert", SSstation.announcer.get_rand_alert_sound())
 
 /datum/round_event/supermatter_surge/start()
+	if(!GLOB.main_supermatter_engine) // AQ EDIT - admins can force it without a supermatter
+		return
 	GLOB.main_supermatter_engine.matter_power += power

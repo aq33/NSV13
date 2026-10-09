@@ -1488,9 +1488,7 @@
 /turf/closed/wall/rust,
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "bxh" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -1646,9 +1644,7 @@
 /obj/machinery/door/airlock/grunge{
 	req_access_txt = "200"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryafter)
@@ -2014,18 +2010,6 @@
 	},
 /turf/open/floor/carpet/royalblue,
 /area/awaymission/factory/factoryduring/down)
-"bZi" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/lattice/catwalk/over,
-/turf/open/floor/holofloor/grass,
-/area/awaymission/factory/villageafter{
-	teleport_restriction = 0
-	})
 "bZz" = (
 /obj/effect/mine/explosive/traitor,
 /turf/open/floor/plasteel/freezer,
@@ -3445,9 +3429,7 @@
 /turf/open/floor/carpet/blue,
 /area/awaymission/factory/factoryduring/down)
 "duS" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/trap/trigger,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryduring)
@@ -3673,23 +3655,6 @@
 /obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/mineral/titanium,
 /area/awaymission/factory/factoryduring/down/maint)
-"dEN" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/open/floor/holofloor/grass{
-	color = "#A4A4A4"
-	},
-/area/awaymission/factory/villageduring{
-	teleport_restriction = 0
-	})
 "dFA" = (
 /obj/structure/table/wood,
 /obj/item/grown/log/tree,
@@ -3849,9 +3814,7 @@
 	teleport_restriction = 1
 	})
 "dKS" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageafter/house)
@@ -4049,9 +4012,7 @@
 /turf/open/floor/carpet/red,
 /area/awaymission/factory/factoryduring/down)
 "dVB" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/mineral/uranium,
 /obj/item/stack/sheet/mineral/uranium,
@@ -4813,15 +4774,7 @@
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "eIp" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/machinery/power/port_gen/pacman/super,
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
@@ -5045,21 +4998,6 @@
 	},
 /turf/open/floor/mineral/plastitanium/red/brig,
 /area/awaymission/factory/factoryduring/down)
-"eSU" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/holofloor/grass,
-/area/awaymission/factory/villageafter{
-	teleport_restriction = 0
-	})
 "eTl" = (
 /mob/living/simple_animal/hostile/factory/ranged/lmg{
 	dir = 4;
@@ -5524,9 +5462,7 @@
 	teleport_restriction = 1
 	})
 "fiS" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
 "fjh" = (
@@ -5621,18 +5557,6 @@
 /area/ruin/unpowered{
 	ambient_buzz = null;
 	teleport_restriction = 1
-	})
-"foh" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/open/floor/holofloor/grass,
-/area/awaymission/factory/villageafter{
-	teleport_restriction = 0
 	})
 "for" = (
 /mob/living/simple_animal/slaughter{
@@ -5741,9 +5665,7 @@
 	setting = 3
 	},
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/steel,
 /area/awaymission/factory/villageafter/hospital)
 "fvn" = (
@@ -6590,9 +6512,7 @@
 	setting = 3
 	},
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "glf" = (
@@ -6683,9 +6603,7 @@
 /obj/machinery/power/floodlight{
 	setting = 3
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "gqT" = (
@@ -7013,9 +6931,7 @@
 /obj/machinery/power/floodlight{
 	setting = 3
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
@@ -7698,9 +7614,7 @@
 /obj/machinery/door/airlock/vault{
 	req_access_txt = "200"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/villageduring{
 	teleport_restriction = 0
@@ -8068,7 +7982,7 @@
 	},
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "hEx" = (
-/obj/item/stack/cable_coil/random,
+/obj/item/stack/cable_coil,
 /obj/item/circuitboard/machine/clonescanner,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel{
@@ -8153,9 +8067,7 @@
 "hGE" = (
 /obj/structure/floodlight_frame,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "hGG" = (
@@ -8356,9 +8268,7 @@
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "hOE" = (
 /obj/structure/floodlight_frame,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
@@ -9175,9 +9085,7 @@
 /obj/machinery/light/broken{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryafter)
@@ -10074,9 +9982,7 @@
 "jpB" = (
 /obj/structure/floodlight_frame,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/tiled/light,
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "jqq" = (
@@ -10365,18 +10271,14 @@
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "jEO" = (
 /obj/machinery/power/smes,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
 "jFm" = (
 /obj/machinery/power/smes,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/circuit/green/off,
 /area/awaymission/factory/factoryafter/down/levelthree)
 "jFD" = (
@@ -10497,18 +10399,14 @@
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "jNO" = (
 /obj/machinery/power/smes,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
 /area/awaymission/factory/factoryduring/down/levelthree)
 "jOz" = (
 /obj/machinery/power/smes,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/circuit,
 /area/awaymission/factory/factoryduring/down/levelthree)
 "jPe" = (
@@ -10687,9 +10585,7 @@
 /turf/open/floor/plasteel/white,
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "jXU" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
@@ -10709,9 +10605,7 @@
 /turf/open/floor/circuit/red/anim,
 /area/awaymission/factory/factoryduring/down/levelthree)
 "jYR" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/circuit/green/off,
 /area/awaymission/factory/factoryafter/down/levelthree)
 "jYV" = (
@@ -10933,17 +10827,13 @@
 	teleport_restriction = 1
 	})
 "kjF" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
 /area/awaymission/factory/factoryduring/down/levelthree)
 "kkp" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/circuit,
 /area/awaymission/factory/factoryduring/down/levelthree)
 "kmg" = (
@@ -11083,9 +10973,7 @@
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
 "kvm" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/mineral/uranium,
 /obj/item/stack/sheet/mineral/uranium,
@@ -11098,9 +10986,7 @@
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
 "kvG" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -11135,9 +11021,7 @@
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "kwS" = (
 /obj/machinery/door/airlock/engineering,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/effect/trap/trigger,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
@@ -11146,9 +11030,7 @@
 	setting = 3
 	},
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/white,
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "kxi" = (
@@ -11156,9 +11038,7 @@
 	setting = 3
 	},
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/light,
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "kxz" = (
@@ -11257,9 +11137,7 @@
 /obj/machinery/power/floodlight{
 	setting = 3
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/white,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "kCP" = (
@@ -11282,9 +11160,7 @@
 /obj/machinery/power/floodlight{
 	setting = 3
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
@@ -11293,9 +11169,7 @@
 /obj/machinery/power/floodlight{
 	setting = 3
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/carpet,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "kEN" = (
@@ -11343,12 +11217,7 @@
 	},
 /area/awaymission/factory/factoryafter)
 "kGr" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/item/card/id/away{
 	access = list(204);
 	desc = "Provides access to the lowest level of the factory";
@@ -11402,15 +11271,7 @@
 /turf/open/floor/plasteel/white,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "kIm" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/machinery/power/port_gen/pacman/super,
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
@@ -11419,15 +11280,6 @@
 "kIu" = (
 /turf/open/floor/carpet/cyan,
 /area/awaymission/factory/factoryduring/down)
-"kII" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/circuit,
-/area/awaymission/factory/factoryduring/down/levelthree)
 "kJx" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 5
@@ -11736,9 +11588,7 @@
 /turf/open/floor/monotile/light,
 /area/awaymission/factory/villageafter/hospital)
 "kVT" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27
 	},
@@ -11927,9 +11777,7 @@
 /turf/open/floor/plasteel/freezer,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "lgG" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27
 	},
@@ -12072,23 +11920,6 @@
 /obj/item/reagent_containers/food/snacks/grown/moonflower,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
-"lni" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/holofloor/grass{
-	color = "#A4A4A4"
-	},
-/area/awaymission/factory/villageduring{
-	teleport_restriction = 0
-	})
 "lnt" = (
 /obj/item/shard,
 /turf/open/floor/engine{
@@ -12183,7 +12014,7 @@
 /area/awaymission/factory/factoryafter/down/levelthree)
 "lrT" = (
 /obj/item/wallframe/camera,
-/obj/item/stack/cable_coil/cut/random,
+/obj/item/stack/cable_coil/cut,
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
@@ -12211,9 +12042,7 @@
 	})
 "lth" = (
 /obj/machinery/door/airlock/engineering,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageafter/house)
 "lvU" = (
@@ -12872,7 +12701,7 @@
 /area/awaymission/factory/factoryafter/down/levelthree)
 "mao" = (
 /obj/item/wallframe/camera,
-/obj/item/stack/cable_coil/cut/random,
+/obj/item/stack/cable_coil/cut,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 30
 	},
@@ -13189,9 +13018,7 @@
 /obj/machinery/power/floodlight{
 	setting = 3
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/steel,
 /area/awaymission/factory/villageduring/hospital)
 "mtD" = (
@@ -13701,9 +13528,7 @@
 /obj/machinery/power/floodlight{
 	setting = 3
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
@@ -14501,9 +14326,7 @@
 /obj/machinery/power/floodlight{
 	setting = 3
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryduring)
 "nsU" = (
@@ -15360,9 +15183,7 @@
 "odg" = (
 /obj/structure/floodlight_frame,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/engine/light{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
@@ -15609,23 +15430,6 @@
 /obj/machinery/light/small,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
-"olZ" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/holofloor/grass{
-	color = "#A4A4A4"
-	},
-/area/awaymission/factory/villageduring{
-	teleport_restriction = 0
-	})
 "oml" = (
 /obj/machinery/vending/snack/random,
 /turf/open/floor/monotile,
@@ -16674,7 +16478,7 @@
 /turf/open/floor/mineral/gold,
 /area/awaymission/factory/villageafter/church)
 "oYP" = (
-/obj/item/stack/cable_coil/random,
+/obj/item/stack/cable_coil,
 /obj/item/circuitboard/machine/clonescanner,
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/plasteel{
@@ -17401,9 +17205,7 @@
 /area/awaymission/factory/factoryduring/down/levelthree)
 "pBh" = (
 /obj/structure/floodlight_frame,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
@@ -17607,9 +17409,7 @@
 /obj/machinery/power/floodlight{
 	setting = 3
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageafter/house)
 "pIB" = (
@@ -18001,20 +17801,6 @@
 /turf/open/floor/holofloor/beach/coast_t,
 /area/ruin/space/has_grav/powered/aesthetic{
 	ambient_buzz = null
-	})
-"pWo" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/lattice/catwalk/over,
-/turf/open/floor/holofloor/grass{
-	color = "#A4A4A4"
-	},
-/area/awaymission/factory/villageduring{
-	teleport_restriction = 0
 	})
 "pWw" = (
 /obj/structure/closet/secure_closet/personal{
@@ -18947,9 +18733,7 @@
 	},
 /area/awaymission/factory/factoryduring/down/levelthree)
 "qJU" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/holofloor/grass{
 	color = "#A4A4A4"
 	},
@@ -21478,55 +21262,10 @@
 /obj/item/clothing/head/soft/grey,
 /turf/open/floor/carpet/green,
 /area/awaymission/factory/villageduring/house)
-"sLc" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/lattice/catwalk/over,
-/turf/open/floor/holofloor/grass,
-/area/awaymission/factory/villageafter{
-	teleport_restriction = 0
-	})
-"sLg" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/lattice/catwalk/over,
-/turf/open/floor/holofloor/grass,
-/area/awaymission/factory/villageafter{
-	teleport_restriction = 0
-	})
 "sLn" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet,
 /area/awaymission/factory/factoryafter/down/leveltwo)
-"sLq" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/holofloor/grass,
-/area/awaymission/factory/villageafter{
-	teleport_restriction = 0
-	})
-"sLv" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/holofloor/grass,
-/area/awaymission/factory/villageafter{
-	teleport_restriction = 0
-	})
 "sMo" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/monotile/light,
@@ -21561,28 +21300,12 @@
 	icon_state = "damaged2"
 	},
 /area/awaymission/factory/factoryafter)
-"sNN" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/open/floor/holofloor/grass{
-	color = "#A4A4A4"
-	},
-/area/awaymission/factory/villageduring{
-	teleport_restriction = 0
-	})
 "sNS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/power/floodlight{
 	setting = 3
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryafter)
 "sOu" = (
@@ -21688,36 +21411,11 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/monotile,
 /area/awaymission/factory/villageafter/hospital)
-"sSa" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/lattice/catwalk/over,
-/turf/open/floor/holofloor/grass{
-	color = "#A4A4A4"
-	},
-/area/awaymission/factory/villageduring{
-	teleport_restriction = 0
-	})
 "sSi" = (
 /obj/structure/chair,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/monotile,
 /area/awaymission/factory/villageafter/house)
-"sSy" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/lattice/catwalk/over,
-/turf/open/floor/holofloor/grass{
-	color = "#A4A4A4"
-	},
-/area/awaymission/factory/villageduring{
-	teleport_restriction = 0
-	})
 "sSG" = (
 /turf/open/indestructible/binary{
 	density = 1;
@@ -21735,42 +21433,12 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plasteel/freezer,
 /area/awaymission/factory/factoryduring/down/leveltwo)
-"sTu" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/holofloor/grass{
-	color = "#A4A4A4"
-	},
-/area/awaymission/factory/villageduring{
-	teleport_restriction = 0
-	})
-"sTS" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/holofloor/grass{
-	color = "#A4A4A4"
-	},
-/area/awaymission/factory/villageduring{
-	teleport_restriction = 0
-	})
 "sUq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/power/floodlight{
 	setting = 3
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryduring)
 "sUM" = (
@@ -22070,9 +21738,7 @@
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
 "tiE" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel{
 	dir = 8;
@@ -22111,7 +21777,7 @@
 	},
 /area/awaymission/factory/factoryduring/down/levelthree)
 "tjp" = (
-/obj/item/stack/cable_coil/red,
+/obj/item/stack/cable_coil,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel{
 	dir = 8;
@@ -22208,9 +21874,7 @@
 /obj/machinery/power/floodlight{
 	setting = 3
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/circuit/off,
 /area/awaymission/factory/factoryafter/down/levelthree)
 "tpG" = (
@@ -22322,27 +21986,13 @@
 /turf/open/floor/circuit/red/anim,
 /area/awaymission/factory/factoryduring/down/levelthree)
 "ttT" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
 	icon_state = "floorscorched2"
 	},
 /area/awaymission/factory/factoryduring)
-"tuL" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/open/floor/holofloor/grass,
-/area/awaymission/factory/villageafter{
-	teleport_restriction = 0
-	})
 "tuW" = (
 /turf/open/floor/carpet,
 /area/awaymission/factory/factoryduring/down/leveltwo)
@@ -22399,7 +22049,7 @@
 	},
 /area/awaymission/factory/factoryduring)
 "twZ" = (
-/obj/item/stack/cable_coil/red,
+/obj/item/stack/cable_coil,
 /obj/effect/trap/nexus/trickyspawner/clowns,
 /turf/open/floor/plasteel{
 	dir = 8;
@@ -22480,20 +22130,6 @@
 	},
 /turf/open/floor/carpet/green,
 /area/awaymission/factory/villageduring/house)
-"tAT" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/open/floor/holofloor/grass{
-	color = "#A4A4A4"
-	},
-/area/awaymission/factory/villageduring{
-	teleport_restriction = 0
-	})
 "tAU" = (
 /obj/item/paper{
 	default_raw_text = "<i>I don't know how to describe this, but it seems that all the animals are gone. I don't want to know if it's related to that factory, I just hope we get at least some meat because our food is getting low and I don't want to die to hunger.</i>";
@@ -22582,9 +22218,7 @@
 /turf/open/floor/carpet/green,
 /area/awaymission/factory/villageduring/house)
 "tFA" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryafter)
@@ -23427,32 +23061,11 @@
 /area/awaymission/factory/villageduring{
 	teleport_restriction = 0
 	})
-"uuT" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/lattice/catwalk/over,
-/turf/open/floor/holofloor/grass,
-/area/awaymission/factory/villageafter{
-	teleport_restriction = 0
-	})
 "uvc" = (
 /obj/structure/table,
 /obj/item/kitchen/rollingpin,
 /turf/open/floor/plasteel/white,
 /area/awaymission/factory/factoryduring/down/leveltwo)
-"uwd" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/holofloor/grass,
-/area/awaymission/factory/villageafter{
-	teleport_restriction = 0
-	})
 "uwO" = (
 /obj/structure/table/wood,
 /obj/item/paper{
@@ -23469,15 +23082,7 @@
 "uwW" = (
 /obj/structure/lattice/catwalk/over,
 /obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/holofloor/grass,
 /area/awaymission/factory/villageafter{
 	teleport_restriction = 0
@@ -23494,18 +23099,6 @@
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
 /area/awaymission/factory/factoryduring/down/levelthree)
-"uxw" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/holofloor/grass,
-/area/awaymission/factory/villageafter{
-	teleport_restriction = 0
-	})
 "uxz" = (
 /obj/structure/table,
 /obj/machinery/light/broken{
@@ -23552,9 +23145,7 @@
 /obj/machinery/light/broken{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel{
 	dir = 8;
@@ -23626,57 +23217,10 @@
 /area/awaymission/factory/villageduring{
 	teleport_restriction = 0
 	})
-"uEt" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/lattice/catwalk/over,
-/turf/open/floor/holofloor/grass{
-	color = "#A4A4A4"
-	},
-/area/awaymission/factory/villageduring{
-	teleport_restriction = 0
-	})
-"uFl" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/holofloor/grass{
-	color = "#A4A4A4"
-	},
-/area/awaymission/factory/villageduring{
-	teleport_restriction = 0
-	})
 "uGw" = (
 /obj/structure/lattice/catwalk/over,
 /obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/holofloor/grass{
-	color = "#A4A4A4"
-	},
-/area/awaymission/factory/villageduring{
-	teleport_restriction = 0
-	})
-"uGX" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/holofloor/grass{
 	color = "#A4A4A4"
 	},
@@ -23719,9 +23263,7 @@
 /obj/machinery/light/broken{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel{
 	dir = 8;
 	heat_capacity = 1e+006;
@@ -23890,20 +23432,6 @@
 	icon_state = "wood-broken"
 	},
 /area/awaymission/factory/villageafter/house)
-"uOs" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/lattice/catwalk/over,
-/turf/open/floor/holofloor/grass{
-	color = "#A4A4A4"
-	},
-/area/awaymission/factory/villageduring{
-	teleport_restriction = 0
-	})
 "uOu" = (
 /obj/item/paper/crumpled{
 	default_raw_text = "<i>Stop destroying my flowers whatever piece of crap is reading this right now</i>";
@@ -24158,9 +23686,7 @@
 	teleport_restriction = 1
 	})
 "uXL" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryduring)
 "uYh" = (
@@ -24262,9 +23788,7 @@
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryduring)
 "vdy" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/structure/lattice/catwalk/over,
 /turf/open/floor/holofloor/grass,
 /area/awaymission/factory/villageafter{
@@ -24276,37 +23800,9 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/awaymission/factory/factoryduring/down)
-"vet" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/holofloor/grass,
-/area/awaymission/factory/villageafter{
-	teleport_restriction = 0
-	})
 "veD" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/structure/lattice/catwalk/over,
-/turf/open/floor/holofloor/grass{
-	color = "#A4A4A4"
-	},
-/area/awaymission/factory/villageduring{
-	teleport_restriction = 0
-	})
-"veY" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/holofloor/grass{
 	color = "#A4A4A4"
 	},
@@ -24346,7 +23842,7 @@
 	})
 "vgd" = (
 /obj/machinery/power/terminal,
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /obj/machinery/light/small/broken{
 	dir = 8
 	},
@@ -24382,9 +23878,7 @@
 	})
 "vhB" = (
 /obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/holofloor/grass,
 /area/awaymission/factory/villageafter{
 	teleport_restriction = 0
@@ -24403,15 +23897,6 @@
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
-"via" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/open/floor/holofloor/grass,
-/area/awaymission/factory/villageafter{
-	teleport_restriction = 0
-	})
 "vir" = (
 /obj/item/stack/sheet/bone,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -24427,9 +23912,7 @@
 /obj/machinery/door/airlock/vault{
 	req_access_txt = "200"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/villageafter{
@@ -24458,9 +23941,7 @@
 /area/awaymission/factory/villageafter/house/ritual)
 "vjp" = (
 /obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/holofloor/grass{
 	color = "#A4A4A4"
 	},
@@ -24481,9 +23962,7 @@
 	})
 "vkE" = (
 /obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /obj/effect/trap/nexus/trickyspawner/clowns,
 /turf/open/floor/holofloor/grass{
 	color = "#A4A4A4"
@@ -24547,9 +24026,7 @@
 	teleport_restriction = 0
 	})
 "vnn" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/holofloor/grass,
 /area/awaymission/factory/villageafter{
 	teleport_restriction = 0
@@ -24559,9 +24036,7 @@
 /obj/machinery/camera{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/item/crowbar,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/villageafter{
@@ -24655,9 +24130,7 @@
 	},
 /area/awaymission/factory/factoryduring/down/levelthree)
 "vrS" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/holofloor/grass{
 	color = "#A4A4A4"
 	},
@@ -24678,9 +24151,7 @@
 /obj/machinery/camera{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/villageduring{
 	teleport_restriction = 0
@@ -24856,9 +24327,7 @@
 	},
 /area/awaymission/factory/villageafter/house)
 "vzV" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood{
 	icon_state = "wood-broken4"
@@ -24877,16 +24346,6 @@
 	color = "#1eff00"
 	},
 /area/awaymission/factory/clownplanet)
-"vAu" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/grass/snow/basalt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
-	name = "road";
-	planetary_atmos = 0
-	},
-/area/awaymission/factory/villageafter/spooky)
 "vAy" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/neck/tie/black,
@@ -25056,9 +24515,7 @@
 	teleport_restriction = 1
 	})
 "vED" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
 "vER" = (
@@ -25077,18 +24534,6 @@
 	name = "padded floor"
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo/asylum)
-"vFk" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/grass/snow/basalt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
-	name = "road";
-	planetary_atmos = 0
-	},
-/area/awaymission/factory/villageduring{
-	teleport_restriction = 0
-	})
 "vFA" = (
 /obj/structure/fans/tiny/invisible,
 /turf/open/floor/grass/snow/basalt{
@@ -25277,21 +24722,15 @@
 /turf/open/floor/wood,
 /area/awaymission/factory/villageafter/house)
 "vNp" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood{
 	icon_state = "wood-broken5"
 	},
 /area/awaymission/factory/villageafter/house)
 "vNw" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
+/obj/structure/cable/yellow,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/card/id/away/old{
 	access = list(200,53);
@@ -25303,12 +24742,7 @@
 	},
 /area/awaymission/factory/villageafter/house)
 "vOW" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood{
 	icon_state = "wood-broken"
@@ -25332,9 +24766,7 @@
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
 "vPs" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood{
 	icon_state = "wood-broken2"
@@ -25478,28 +24910,9 @@
 	},
 /turf/open/floor/circuit/red/anim,
 /area/awaymission/factory/factoryduring/down/levelthree)
-"vYT" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/wood,
-/area/awaymission/factory/villageduring/house)
 "vZa" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/wood,
-/area/awaymission/factory/villageduring/house)
-"vZB" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
+/obj/structure/cable/yellow,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
 "vZT" = (
@@ -25511,12 +24924,6 @@
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
 /area/awaymission/factory/factoryduring/down/levelthree)
-"vZY" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/wood,
-/area/awaymission/factory/villageduring/house)
 "waw" = (
 /obj/item/kitchen/knife,
 /obj/effect/decal/cleanable/blood/drip,
@@ -25594,7 +25001,7 @@
 	})
 "wgS" = (
 /obj/machinery/power/terminal,
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood{
 	icon_state = "wood-broken6"
@@ -25602,7 +25009,7 @@
 /area/awaymission/factory/villageafter/house)
 "wgX" = (
 /obj/machinery/power/terminal,
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -25631,7 +25038,7 @@
 /area/awaymission/factory/factoryduring/down/maint)
 "wih" = (
 /obj/machinery/power/terminal,
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /obj/machinery/light/small/broken{
 	dir = 8
 	},
@@ -25648,12 +25055,12 @@
 /area/awaymission/factory/villageduring/house)
 "wiN" = (
 /obj/machinery/power/terminal,
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
 "wiW" = (
 /obj/machinery/power/terminal,
-/obj/structure/cable,
+/obj/structure/cable/yellow,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -25668,9 +25075,7 @@
 /turf/open/floor/plasteel/freezer,
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "wjr" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/trap/trigger,
 /turf/open/floor/grass/snow/basalt{
 	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
@@ -25760,16 +25165,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageafter/house)
-"wnK" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/wood,
-/area/awaymission/factory/villageafter/house)
 "woi" = (
 /obj/item/ammo_casing/p50{
 	caliber = null;
@@ -25785,26 +25180,17 @@
 /area/awaymission/factory/factoryduring/down)
 "woF" = (
 /obj/machinery/door/airlock/engineering,
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageafter/house)
 "woL" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/holofloor/grass,
 /area/awaymission/factory/villageafter{
 	teleport_restriction = 0
 	})
 "woR" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/holofloor/grass,
 /area/awaymission/factory/villageafter/spooky)
 "woX" = (
@@ -25812,15 +25198,11 @@
 /obj/structure/closet/body_bag{
 	opened = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/holofloor/grass,
 /area/awaymission/factory/villageafter/spooky)
 "wpd" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/grass/snow/basalt{
 	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
 	name = "road";
@@ -25885,9 +25267,7 @@
 /obj/machinery/light/broken{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryduring)
 "wrT" = (
@@ -25918,35 +25298,16 @@
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
 "wsB" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /obj/effect/trap/nexus/trickyspawner/clowns,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
 "wsX" = (
 /turf/open/floor/plasteel/checker,
 /area/awaymission/factory/factoryduring/down)
-"wtn" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/open/floor/wood,
-/area/awaymission/factory/villageduring/house)
 "wtw" = (
 /obj/machinery/door/airlock/engineering,
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/wood,
 /area/awaymission/factory/villageduring/house)
 "wtJ" = (
@@ -25959,9 +25320,7 @@
 /obj/structure/closet/body_bag{
 	opened = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/holofloor/grass{
 	color = "#A4A4A4"
 	},
@@ -25969,9 +25328,7 @@
 	teleport_restriction = 0
 	})
 "wuf" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/grass/snow/basalt{
 	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
 	name = "road";
@@ -26645,9 +26002,7 @@
 /area/awaymission/factory/villageduring/hospital)
 "wVN" = (
 /obj/machinery/door/airlock/grunge,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryduring)
 "wVX" = (
@@ -27408,21 +26763,6 @@
 /obj/item/book/manual/chef_recipes,
 /turf/open/floor/monotile/dark,
 /area/awaymission/factory/villageduring/house)
-"xGl" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/holofloor/grass,
-/area/awaymission/factory/villageafter{
-	teleport_restriction = 0
-	})
 "xGw" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/light/small/broken{
@@ -27587,9 +26927,7 @@
 	teleport_restriction = 0
 	})
 "xOg" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/mineral/uranium,
 /obj/item/stack/sheet/mineral/uranium,
@@ -27979,18 +27317,6 @@
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/monotile/light,
 /area/awaymission/factory/villageduring/hospital)
-"ycx" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/lattice/catwalk/over,
-/turf/open/floor/holofloor/grass,
-/area/awaymission/factory/villageafter{
-	teleport_restriction = 0
-	})
 "ycQ" = (
 /obj/structure/flora/ausbushes,
 /turf/open/floor/holofloor/grass,
@@ -28165,21 +27491,6 @@
 	baseturfs = /turf/open/floor/plating/asteroid
 	},
 /area/awaymission/factory/factoryafter/down/levelthree)
-"ylS" = (
-/obj/structure/lattice/catwalk/over,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/open/floor/holofloor/grass,
-/area/awaymission/factory/villageafter{
-	teleport_restriction = 0
-	})
 
 (1,1,1) = {"
 bIV
@@ -35786,16 +35097,16 @@ tRJ
 tRJ
 tRJ
 sEG
-sLc
-ycx
-ycx
-ycx
-ycx
-uuT
-bZi
-bZi
-bZi
-bZi
+vdy
+vdy
+vdy
+vdy
+vdy
+vdy
+vdy
+vdy
+vdy
+vdy
 vdy
 ejP
 tRJ
@@ -36048,7 +35359,7 @@ qwd
 qwd
 qwd
 qwd
-uwd
+vhB
 sgy
 sgy
 sgy
@@ -36305,7 +35616,7 @@ qwd
 qwd
 qwd
 qwd
-uwd
+vhB
 sgy
 sgy
 sgy
@@ -36557,17 +35868,17 @@ tRJ
 tRJ
 tRJ
 ejP
-sLg
-xGl
-xGl
-xGl
-xGl
+vdy
+vhB
+vhB
+vhB
+vhB
 uwW
-ylS
-ylS
-ylS
-ylS
-tuL
+vhB
+vhB
+vhB
+vhB
+vhB
 ejP
 tRJ
 fOB
@@ -36819,7 +36130,7 @@ qwd
 qwd
 qwd
 qwd
-uwd
+vhB
 sgy
 sgy
 sgy
@@ -37076,7 +36387,7 @@ qwd
 qwd
 qwd
 qwd
-uwd
+vhB
 sgy
 sgy
 sgy
@@ -37089,7 +36400,7 @@ vzV
 vNw
 wfK
 hKl
-wnK
+dKS
 fOB
 tRJ
 tRJ
@@ -37328,25 +36639,25 @@ tRJ
 tRJ
 tRJ
 ejP
-sLq
-eSU
-eSU
-eSU
-eSU
+vhB
+vhB
+vhB
+vhB
+vhB
 uwW
-ylS
-ylS
-ylS
-ylS
-tuL
-uwd
+vhB
+vhB
+vhB
+vhB
+vhB
+vhB
 tRJ
 fOB
 vzN
 vOW
 wgS
 hKl
-wnK
+dKS
 fOB
 tRJ
 tRJ
@@ -37590,20 +36901,20 @@ qwd
 qwd
 qwd
 qwd
-uwd
+vhB
 sgy
 sgy
 sgy
 sgy
 sgy
-uwd
+vhB
 tRJ
 fOB
 vzN
 vPs
 wgX
 hKl
-wnK
+dKS
 fOB
 tRJ
 tRJ
@@ -37847,13 +37158,13 @@ qwd
 qwd
 qwd
 qwd
-uwd
+vhB
 sgy
 sgy
 sgy
 sgy
 sgy
-uwd
+vhB
 tRJ
 fOB
 fOB
@@ -38099,18 +37410,18 @@ tRJ
 tRJ
 tRJ
 ejP
-sLv
-xGl
-xGl
-xGl
-xGl
-uxw
-foh
-foh
-foh
-foh
-vet
-via
+vhB
+vhB
+vhB
+vhB
+vhB
+vhB
+vhB
+vhB
+vhB
+vhB
+vhB
+vhB
 tRJ
 tRJ
 tRJ
@@ -40683,10 +39994,10 @@ tFA
 viv
 vnW
 viv
-vAu
-vAu
-vAu
-vAu
+wpd
+wpd
+wpd
+wpd
 wpd
 qre
 qre
@@ -64827,16 +64138,16 @@ heJ
 heJ
 heJ
 sHE
-sSa
-uOs
-uOs
-uOs
-uOs
-uEt
-pWo
-pWo
-pWo
-pWo
+veD
+veD
+veD
+veD
+veD
+veD
+veD
+veD
+veD
+veD
 veD
 sIt
 heJ
@@ -65089,7 +64400,7 @@ uli
 uli
 uli
 uli
-uFl
+vjp
 rvd
 rvd
 rvd
@@ -65346,7 +64657,7 @@ uli
 uli
 uli
 uli
-uFl
+vjp
 rvd
 rvd
 rvd
@@ -65598,17 +64909,17 @@ heJ
 heJ
 heJ
 sIt
-sSy
-olZ
-olZ
-olZ
-olZ
+veD
+vjp
+vjp
+vjp
+vjp
 uGw
-dEN
-dEN
-dEN
-dEN
-tAT
+vjp
+vjp
+vjp
+vjp
+vjp
 sIt
 heJ
 vIB
@@ -65860,7 +65171,7 @@ uli
 uli
 uli
 uli
-uFl
+vjp
 rvd
 rvd
 rvd
@@ -65870,7 +65181,7 @@ sIt
 heJ
 vIB
 bpW
-vYT
+fiS
 wih
 tsa
 fiS
@@ -66117,7 +65428,7 @@ uli
 uli
 uli
 uli
-uFl
+vjp
 rvd
 rvd
 rvd
@@ -66319,7 +65630,7 @@ iCj
 jOz
 kkp
 bxh
-kII
+kkp
 bxh
 kkp
 lGd
@@ -66369,25 +65680,25 @@ heJ
 heJ
 heJ
 sIt
-sTu
-lni
-lni
-lni
-lni
+vjp
+vjp
+vjp
+vjp
+vjp
 uGw
-dEN
-dEN
-dEN
-dEN
-tAT
-uFl
+vjp
+vjp
+vjp
+vjp
+vjp
+vjp
 heJ
 vIB
 bpW
-vZB
+fiS
 wiN
 tsa
-wtn
+fiS
 vIB
 heJ
 heJ
@@ -66631,17 +65942,17 @@ uli
 uli
 uli
 uli
-uFl
+vjp
 rvd
 rvd
 rvd
 rvd
 rvd
-uFl
+vjp
 heJ
 vIB
 bpW
-vZY
+fiS
 wiW
 tsa
 wsB
@@ -66888,13 +66199,13 @@ uli
 uli
 uli
 uli
-uFl
+vjp
 rvd
 rvd
 rvd
 rvd
 rvd
-uFl
+vjp
 heJ
 vIB
 vIB
@@ -67140,17 +66451,17 @@ heJ
 heJ
 heJ
 sIt
-sTS
-olZ
-olZ
-olZ
-olZ
-uGX
-sNN
-sNN
-sNN
-sNN
-veY
+vjp
+vjp
+vjp
+vjp
+vjp
+vjp
+vjp
+vjp
+vjp
+vjp
+vjp
 vkE
 heJ
 heJ
@@ -69724,10 +69035,10 @@ uXL
 hoW
 vsB
 hoW
-vFk
-vFk
+wuf
+wuf
 wjr
-vFk
+wuf
 wuf
 mKg
 qWl

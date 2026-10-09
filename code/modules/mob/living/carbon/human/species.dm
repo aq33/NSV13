@@ -632,6 +632,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				eye_overlay.pixel_x += H.dna.species.offset_features[OFFSET_FACE][1]
 				eye_overlay.pixel_y += H.dna.species.offset_features[OFFSET_FACE][2]
 			standing += eye_overlay
+			standing += H.get_tears_overlays() // AQ EDIT - łzy po *cry (port Yogstation#15690)
 
 	//organic body markings
 	if(HAS_MARKINGS in species_traits)
@@ -667,6 +668,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				var/mutable_appearance/markings_l_leg_overlay = mutable_appearance(markings.icon, "[markings.icon_state]_l_leg", -BODY_LAYER)
 				standing += markings_l_leg_overlay
 
+	standing += get_polak_overlays(H) // AQ EDIT - bodytype Polak, pod bielizną
 
 	//Underwear, Undershirts & Socks
 	if(!(NO_UNDERWEAR in species_traits))

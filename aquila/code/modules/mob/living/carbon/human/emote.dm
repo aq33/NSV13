@@ -63,3 +63,50 @@
 /datum/emote/living/carbon/human/wing/get_sound(mob/living/carbon/human/user)
 	if(istype(user.getorganslot(ORGAN_SLOT_WINGS), /obj/item/organ/wings/moth))
 		return 'aquila/sound/emotes/moth_flutter.ogg'
+
+// Łzy na twarzy po *cry (port Yogstation#15690)
+
+/// The time it takes for the crying visual to be removed
+#define CRY_DURATION 12.8 SECONDS
+
+/datum/emote/living/carbon/human/cry/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	if(. && ishuman(user)) // Give them a visual crying effect if they're human
+		var/mob/living/carbon/human/human_user = user
+		ADD_TRAIT(human_user, TRAIT_CRYING, "[type]")
+		human_user.update_body()
+
+		// Use a timer to remove the effect after the defined duration has passed
+		var/list/key_emotes = GLOB.emote_list["cry"]
+		for(var/datum/emote/living/carbon/human/cry/human_emote in key_emotes)
+			// The existing timer restarts if it is already running
+			addtimer(CALLBACK(human_emote, PROC_REF(end_visual), human_user), CRY_DURATION, TIMER_UNIQUE | TIMER_OVERRIDE)
+
+/datum/emote/living/carbon/human/cry/proc/end_visual(mob/living/carbon/human/human_user)
+	if(!QDELETED(human_user))
+		REMOVE_TRAIT(human_user, TRAIT_CRYING, "[type]")
+		human_user.update_body()
+
+#undef CRY_DURATION
+
+// Oryginał przepisuje rysowanie oczu na /obj/item/organ/eyes/proc/generate_body_overlay().
+// U nas oczy rysuje dalej core, a łzy dochodzą jednym hookiem w species.dm i update_icons.dm.
+
+#define OFFSET_X 1
+#define OFFSET_Y 2
+
+/// Returns the tears overlays for this human's face, or an empty list if they are not crying or have no eyes
+/mob/living/carbon/human/proc/get_tears_overlays()
+	. = list()
+	if(!HAS_TRAIT(src, TRAIT_CRYING) || !getorganslot(ORGAN_SLOT_EYES))
+		return
+	var/mutable_appearance/tears_overlay = mutable_appearance('aquila/icons/mob/tears.dmi', "tears", -BODY_ADJ_LAYER)
+	tears_overlay.color = COLOR_DARK_CYAN
+	if(OFFSET_FACE in dna?.species.offset_features)
+		var/offset = dna.species.offset_features[OFFSET_FACE]
+		tears_overlay.pixel_x += offset[OFFSET_X]
+		tears_overlay.pixel_y += offset[OFFSET_Y]
+	. += tears_overlay
+
+#undef OFFSET_X
+#undef OFFSET_Y

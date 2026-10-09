@@ -985,9 +985,7 @@
 /area/awaymission/challenge/end)
 "cZ" = (
 /obj/machinery/gateway,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -1019,12 +1017,6 @@
 "db" = (
 /obj/structure/window/reinforced,
 /turf/open/floor/circuit,
-/area/awaymission/challenge/end)
-"dc" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/dark,
 /area/awaymission/challenge/end)
 "dd" = (
 /obj/structure/window/reinforced{
@@ -1089,21 +1081,14 @@
 /turf/open/floor/plating,
 /area/awaymission/challenge/end)
 "dm" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /mob/living/simple_animal/hostile/syndicate{
 	name = "Syndicate Technician"
 	},
 /turf/open/floor/plasteel/dark,
 /area/awaymission/challenge/end)
 "dn" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/awaymission/challenge/end)
 "do" = (
@@ -29310,9 +29295,9 @@ cN
 cS
 cW
 cZ
-dc
-dc
-dc
+dn
+dn
+dn
 dm
 dq
 bP
