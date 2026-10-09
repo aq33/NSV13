@@ -118,42 +118,35 @@ export const EmotePanelContent = (props, context) => {
             {emotes
               .filter(
                 (emote) =>
-                  emote.key &&
-                  (searchText.length > 0
-                    ? emote.key.toLowerCase().includes(searchText.toLowerCase()) ||
-                    emote.name.toLowerCase().includes(searchText.toLowerCase())
-                    : true) &&
-                  (filterVisible ? emote.visible : true) &&
-                  (filterAudible ? emote.audible : true) &&
-                  (filterSound ? emote.sound : true) &&
-                  (filterHands ? emote.hands : true) &&
-                  (filterUseParams ? emote.use_params : true)
+                  emote.key
+                  && (searchText.length > 0
+                    ? emote.key.toLowerCase().includes(searchText.toLowerCase())
+                    || emote.name.toLowerCase().includes(searchText.toLowerCase())
+                    : true)
+                  && (filterVisible ? emote.visible : true)
+                  && (filterAudible ? emote.audible : true)
+                  && (filterSound ? emote.sound : true)
+                  && (filterHands ? emote.hands : true)
+                  && (filterUseParams ? emote.use_params : true)
               )
               .sort((a, b) => (a.name > b.name ? 1 : -1))
               .map((emote) => (
                 <Button
                   width={showIcons ? 16 : 8}
                   key={emote.name}
-                  tooltip={
-                    showIcons ? (
-                      ''
-                    ) : (
-                      <EmoteIcons
-                        visible={emote.visible}
-                        audible={emote.audible}
-                        sound={emote.sound}
-                        hands={emote.hands}
-                        use_params={emote.use_params}
-                        margin={0.5}
-                      />
-                    )
-                  }
+                  tooltip={showIcons ? '' : <EmoteIcons
+                    visible={emote.visible}
+                    audible={emote.audible}
+                    sound={emote.sound}
+                    hands={emote.hands}
+                    use_params={emote.use_params}
+                    margin={0.5}
+                  />}
                   onClick={() =>
                     act('play_emote', {
                       emote_key: emote.key,
                       use_params: useParams,
-                    })
-                  }>
+                    })}>
                   <Box inline width="50%">
                     {showNames ? capitalize(emote.name.toLowerCase()) : emote.key}
                   </Box>
