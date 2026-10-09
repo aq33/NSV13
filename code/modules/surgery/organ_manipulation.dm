@@ -119,6 +119,11 @@
 	else if(implement_type in implements_extract)
 		current_type = "extract"
 		var/list/organs = target.getorganszone(target_zone)
+		var/mob/living/simple_animal/horror/H = target.has_horror_inside() // AQ EDIT - Yogstation#13033
+		if(H)
+			user.visible_message("[user] zaczyna wyciągać [H] z ciała [target].",
+				"<span class='notice'>Zaczynasz wyciągać [H] z ciała [target]...</span>")
+			return TRUE
 		if(!organs.len)
 			to_chat(user, "<span class='notice'>There are no removable organs in [target]'s [parse_zone(target_zone)]!</span>")
 			return -1
@@ -156,6 +161,13 @@
 			"[user] inserts something into [target]'s [parse_zone(target_zone)]!")
 
 	else if(current_type == "extract")
+		var/mob/living/simple_animal/horror/H = target.has_horror_inside() // AQ EDIT - Yogstation#13033
+		if(H && H.victim == target)
+			user.visible_message("[user] wyciąga [H] z ciała [target]!",
+				"<span class='notice'>Udało ci się wyciągnąć [H] z ciała [target].</span>")
+			log_combat(user, target, "surgically removed [H] from", addition="INTENT: [uppertext(user.a_intent)]")
+			H.leave_victim()
+			return FALSE
 		if(I && I.owner == target)
 			display_results(user, target, "<span class='notice'>You successfully extract [I] from [target]'s [parse_zone(target_zone)].</span>",
 				"[user] successfully extracts [I] from [target]'s [parse_zone(target_zone)]!",

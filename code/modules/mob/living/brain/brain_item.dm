@@ -62,6 +62,9 @@
 
 /obj/item/organ/brain/Remove(mob/living/carbon/C, special = 0, no_id_transfer = FALSE)
 	..()
+	if(!special) // AQ EDIT - Yogstation#13033: the horror falls out together with the brain
+		var/mob/living/simple_animal/horror/B = C.has_horror_inside()
+		B?.leave_victim()
 	for(var/X in traumas)
 		var/datum/brain_trauma/BT = X
 		BT.on_lose(TRUE)

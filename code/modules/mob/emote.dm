@@ -11,7 +11,7 @@
 	// AQ EDIT start
 	if(!length(key_emotes))
 		if(intentional)
-			to_chat(src, "<span class='notice'>'[act]' emote does not exist. Say *help for a list.</span>")
+			to_chat(src, "<span class='notice'>Emotka '[act]' nie istnieje. Wpisz *help, aby zobaczyć listę.</span>")
 		return FALSE
 	var/silenced = FALSE
 	for(var/datum/emote/P in key_emotes)
@@ -22,7 +22,7 @@
 			SEND_SIGNAL(src, COMSIG_MOB_EMOTE, P, act, m_type, message, intentional)
 			return TRUE
 	if(intentional && !silenced)
-		to_chat(src, "<span class='notice'>Unusable emote '[act]'. Say *help for a list.</span>")
+		to_chat(src, "<span class='notice'>Nie możesz teraz użyć emotki '[act]'. Wpisz *help, aby zobaczyć listę.</span>")
 	return FALSE
 	// AQ EDIT end
 
@@ -33,6 +33,7 @@
 	restraint_check = TRUE
 	mob_type_allowed_typecache = list(/mob/living, /mob/dead/observer)
 	mob_type_ignore_stat_typecache = list(/mob/dead/observer)
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/flip/run_emote(mob/user, params , type_override, intentional)
 	. = ..()
@@ -48,6 +49,7 @@
 	restraint_check = TRUE
 	mob_type_allowed_typecache = list(/mob/living, /mob/dead/observer)
 	mob_type_ignore_stat_typecache = list(/mob/dead/observer)
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/spin/run_emote(mob/user, params ,  type_override, intentional)
 	. = ..()
@@ -68,9 +70,11 @@
 /datum/emote/inhale
 	key = "inhale"
 	key_third_person = "inhales"
-	message = "breathes in"
+	message = "bierze wdech"
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/exhale
 	key = "exhale"
 	key_third_person = "exhales"
-	message = "breathes out"
+	message = "robi wydech"
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
