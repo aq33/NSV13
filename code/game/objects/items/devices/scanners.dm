@@ -189,6 +189,9 @@ GENE SCANNER
 			message += "\t<span class='info'>Subject has the following physiological traits: [C.get_trait_string()].</span>"
 	if(advanced)
 		message += "\t<span class='info'>Brain Activity Level: [(200 - M.getOrganLoss(ORGAN_SLOT_BRAIN))/2]%.</span>"
+		if(M.has_horror_inside()) // AQ EDIT - Yogstation#13033
+			message += "\t<span class='alert'>Wykryto pasożytniczy organizm w okolicy czaszki.</span>"
+			message += "\t<span class='alert'>Zalecane postępowanie: <b>operacja manipulacji organami głowy</b>.</span>"
 
 	if(M.radiation)
 		message += "\t<span class='alert'>Subject is irradiated.</span>"

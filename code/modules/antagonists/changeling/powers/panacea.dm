@@ -10,6 +10,13 @@
 //Heals the things that the other regenerative abilities don't.
 /datum/action/changeling/panacea/sting_action(mob/user)
 	to_chat(user, "<span class='notice'>We cleanse impurities from our form.</span>")
+	var/mob/living/simple_animal/horror/H = user.has_horror_inside() // AQ EDIT - Yogstation#13033
+	if(H)
+		H.leave_victim()
+		if(iscarbon(user))
+			var/mob/living/carbon/C = user
+			C.vomit(0, toxic = TRUE)
+			to_chat(user, "<span class='notice'>Pasożyt opuszcza nasze ciało.</span>")
 	..()
 	var/list/bad_organs = list(
 		user.getorgan(/obj/item/organ/body_egg),

@@ -3,6 +3,9 @@
 /mob/living/carbon/proc/monkeyize(tr_flags = (TR_KEEPITEMS | TR_KEEPVIRUS | TR_DEFAULTMSG | TR_KEEPAI), skip_animation = FALSE)
 	if (notransform || transformation_timer)
 		return
+	if(has_horror_inside()) // AQ EDIT - Yogstation#13033
+		to_chat(src, "<span class='warning'>Czujesz, jak coś kurczowo trzyma się twojego człowieczeństwa!</span>")
+		return
 
 	var/list/stored_implants = list()
 

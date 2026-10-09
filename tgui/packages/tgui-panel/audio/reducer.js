@@ -13,9 +13,10 @@ const initialState = {
 export const audioReducer = (state = initialState, action) => {
   const { type, payload } = action;
   if (type === 'audio/playing') {
+    // AQUILA EDIT - don't pop the volume panel open on every track (jukebox);
+    // the player opens it with the music button
     return {
       ...state,
-      visible: true,
       playing: true,
     };
   }

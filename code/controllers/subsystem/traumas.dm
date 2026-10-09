@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(traumas)
 					   /mob/living/simple_animal/drone, /mob/living/simple_animal/bot, /mob/living/simple_animal/hostile/swarmer)),
 					   "doctors"   = typecacheof(list(/mob/living/simple_animal/bot/medbot)),
 					   "the supernatural"   = typecacheof(list(/mob/living/simple_animal/hostile/construct,
-					   /mob/living/simple_animal/revenant, /mob/living/simple_animal/shade)),
+					   /mob/living/simple_animal/revenant, /mob/living/simple_animal/shade, /mob/living/simple_animal/horror)), // AQ EDIT - Yogstation#13033 horror
 					   "aliens"   = typecacheof(list(/mob/living/carbon/alien, /mob/living/simple_animal/slime)),
 					   "conspiracies" = typecacheof(list(/mob/living/simple_animal/bot/secbot, /mob/living/simple_animal/bot/ed209, /mob/living/simple_animal/drone,
 					   /mob/living/simple_animal/pet/penguin)),
@@ -112,7 +112,7 @@ SUBSYSTEM_DEF(traumas)
 						/obj/item/clothing/suit/cultrobes, /obj/item/clothing/suit/space/hardsuit/cult,
 						/obj/item/clothing/suit/hooded/cultrobes, /obj/item/clothing/head/hooded/cult_hoodie, /obj/effect/rune,
 						/obj/item/stack/sheet/runed_metal, /obj/machinery/door/airlock/cult, /obj/eldritch/narsie,
-						/obj/item/soulstone, /obj/item/clockwork,
+						/obj/item/soulstone, /obj/item/clockwork, /obj/item/horrortentacle, // AQ EDIT - Yogstation#13033 horror tentacle
 						/obj/item/stack/tile/brass,
 						/obj/machinery/door/airlock/clockwork,
 						/obj/item/clothing/suit/wizrobe, /obj/item/clothing/head/wizard, /obj/item/spellbook, /obj/item/staff,
@@ -138,7 +138,7 @@ SUBSYSTEM_DEF(traumas)
 
 					   "anime" = typecacheof(list(/obj/item/clothing/under/costume/schoolgirl, /obj/item/katana, /obj/item/reagent_containers/food/snacks/sashimi, /obj/item/reagent_containers/food/snacks/chawanmushi,
 					   /obj/item/reagent_containers/food/drinks/bottle/sake, /obj/item/throwing_star, /obj/item/clothing/head/kitty/genuine, /obj/item/clothing/suit/space/space_ninja,
-					   /obj/item/clothing/mask/gas/space_ninja, /obj/item/clothing/shoes/space_ninja, /obj/item/clothing/gloves/space_ninja, /obj/item/vibro_weapon,
+					   /obj/item/clothing/mask/gas/space_ninja, /obj/item/clothing/shoes/space_ninja, /obj/item/clothing/gloves/space_ninja, /obj/item/vibro_weapon, /obj/item/horrortentacle, // AQ EDIT - Yogstation#13033 horror tentacle
 					   /obj/item/nullrod/scythe/vibro, /obj/item/energy_katana, /obj/item/toy/katana, /obj/item/nullrod/claymore/katana, /obj/item/katana/weak/curator, /obj/structure/window/paperframe, /obj/structure/mineral_door/paperframe))
 						)
 

@@ -3,17 +3,21 @@
 
 /datum/emote/living/carbon/airguitar
 	key = "airguitar"
-	message = "is strumming the air and headbanging like a safari chimp"
+	message = "brzdąka w powietrzu i macha głową jak szympans na safari"
 	restraint_check = TRUE
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/blink
 	key = "blink"
 	key_third_person = "blinks"
 	message = "mruga"
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/blink_r
 	key = "blink_r"
 	message = "mruga gwałtownie"
+	name = "mrugaj szybko"
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/clap
 	key = "clap"
@@ -21,8 +25,8 @@
 	message = "klaszcze"
 	muzzle_ignore = TRUE
 	restraint_check = TRUE
-	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/clap/get_sound(mob/living/user)
 	if(ishuman(user))
@@ -39,13 +43,14 @@
 	key_third_person = "gnarls"
 	message = "warczy i pokazuje zęby.."
 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey)
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/moan
 	key = "moan"
 	key_third_person = "moans"
 	message = "jęczy"
 	message_mime = "zdaje się jęczeć"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/roll
 	key = "roll"
@@ -53,6 +58,7 @@
 	message = "toczy się"
 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey, /mob/living/carbon/alien)
 	restraint_check = TRUE
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/scratch
 	key = "scratch"
@@ -60,6 +66,7 @@
 	message = "drapie"
 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey, /mob/living/carbon/alien)
 	restraint_check = TRUE
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/screech
 	key = "screech"
@@ -81,6 +88,7 @@
 	key = "roar"
 	key_third_person = "roars"
 	message = "ryczy."
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/sign
 	key = "sign"
@@ -88,6 +96,7 @@
 	message_param = "podpisuje numer %t"
 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey, /mob/living/carbon/alien)
 	restraint_check = TRUE
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/sign/select_param(mob/user, params)
 	. = ..()
@@ -100,13 +109,16 @@
 	message_param = "unosi %t palce"
 	mob_type_allowed_typecache = list(/mob/living/carbon/human)
 	restraint_check = TRUE
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/tail
 	key = "tail"
 	message = "macha ogonem"
 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey, /mob/living/carbon/alien)
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/wink
 	key = "wink"
 	key_third_person = "winks"
 	message = "puszcza oczko"
+	emote_type = EMOTE_VISIBLE
