@@ -38,14 +38,15 @@ GLOBAL_LIST_INIT(aquila_chrono_name_exceptions, list(
 
 /// Lowercases a name, folds Polish/German letters and leetspeak to plain a-z and drops everything else
 /proc/aquila_chrono_normalize_name(name)
-	var/static/list/replacements = list(
+	// Not static: this runs from GLOBAL_LIST_INIT(aquila_chrono_historical_names), before proc statics are initialized
+	var/list/replacements = list(
 		"ą" = "a", "Ą" = "a", "ć" = "c", "Ć" = "c", "ę" = "e", "Ę" = "e", "ł" = "l", "Ł" = "l",
 		"ń" = "n", "Ń" = "n", "ó" = "o", "Ó" = "o", "ś" = "s", "Ś" = "s", "ź" = "z", "Ź" = "z",
 		"ż" = "z", "Ż" = "z", "ä" = "a", "Ä" = "a", "ö" = "o", "Ö" = "o", "ü" = "u", "Ü" = "u",
 		"ß" = "ss", "0" = "o", "1" = "i", "3" = "e", "4" = "a", "5" = "s", "7" = "t",
 		"$" = "s", "@" = "a", "!" = "i", "|" = "i",
 	)
-	var/static/regex/non_letters = regex(@"[^a-z]", "g")
+	var/regex/non_letters = regex(@"[^a-z]", "g")
 	. = lowertext(name)
 	for(var/from in replacements)
 		. = replacetext(., from, replacements[from])
