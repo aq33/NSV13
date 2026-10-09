@@ -60,6 +60,8 @@
 	var/mob/living/simple_animal/hostile/headcrab/crab = new(T)
 	for(var/obj/item/organ/I in organs)
 		I.forceMove(crab)
+	var/mob/living/simple_animal/horror/horror = user.has_horror_inside() // AQ EDIT - Yogstation#13033: let the horror out before the gib kills it
+	horror?.leave_victim()
 	crab.origin = M
 	if(crab.origin)
 		crab.origin.active = 1

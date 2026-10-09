@@ -13,21 +13,21 @@
 		if(M == user)
 			continue
 		if(lose_butt)
-			message = "hits <b>[M]</b> in the face with [src]!"
+			message = "uderza <b>[M]</b> tyłkiem w twarz!"
 			M.apply_damage(15, BRUTE, BODY_ZONE_HEAD)
 		else
-			message = "farts in <b>[M]</b>'s face!"
+			message = "puszcza bąka prosto w twarz <b>[M]</b>!"
 	if(!message)
 		message = pick(
-			"rears up and lets loose a fart of tremendous magnitude!",
-			"farts!",
-			"toots.",
-			"harvests methane from uranus at mach 3!",
-			"assists global warming!",
-			"farts and waves [user.p_their()] hand dismissively.",
-			"farts and pretends nothing happened.",
-			"is a <b>farting</b> motherfucker!",
-			"<B><font color='red'>f</font><font color='blue'>a</font><font color='red'>r</font><font color='blue'>t</font><font color='red'>s</font></B>")
+			"unosi się i wypuszcza bąka o niebywałej sile!",
+			"puszcza bąka!",
+			"pierdzi.",
+			"wydobywa metan z odbytu z prędkością 3 machów!",
+			"przyczynia się do globalnego ocieplenia!",
+			"pierdzi i lekceważąco macha ręką.",
+			"pierdzi i udaje, że nic się nie stało.",
+			"to <b>pierdzący</b> skurwiel!",
+			"<B><font color='red'>p</font><font color='blue'>i</font><font color='red'>e</font><font color='blue'>r</font><font color='red'>d</font><font color='blue'>z</font><font color='red'>i</font></B>")
 
 	var/obj/item/storage/book/bible/bible = locate() in T
 	if(bible)
@@ -48,9 +48,9 @@
 		else if(istype(O, /obj/item/bikehorn))
 			for(var/obj/item/bikehorn/Q in inv.contents)
 				playsound(user, 'sound/items/bikehorn.ogg', 50, TRUE, 5)
-			message = "<span class='clown'>farts.</span>"
+			message = "<span class='clown'>pierdzi.</span>"
 		else if(istype(O, /obj/item/megaphone))
-			message = "<span class='reallybig'>farts.</span>"
+			message = "<span class='reallybig'>pierdzi.</span>"
 			playsound(user, 'aquila/sound/misc/fartmassive.ogg', 75, TRUE, 5)
 		else
 			playsound(user, fart_sound, 50, TRUE, 5)
@@ -64,13 +64,14 @@
 	if(lose_butt && owner == user)
 		blow_off(user)
 		user.adjust_nutrition(-rand(5, 20))
-		user.visible_message("<span class='danger'><b>[user]</b> blows [user.p_their()] ass off!</span>", "<span class='userdanger'>Holy shit, your butt flies off in an arc!</span>")
+		user.visible_message("<span class='danger'><b>[user]</b> odstrzeliwuje sobie tyłek!</span>", "<span class='userdanger'>O kurwa, twój tyłek odlatuje łukiem!</span>")
 	else
 		user.adjust_nutrition(-rand(2, 10))
 
 /datum/emote/living/alien/fart
 	key = "fart"
 	key_third_person = "farts"
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/alien/fart/run_emote(mob/user, params, type_override, intentional)
 	if(!..())
@@ -79,13 +80,14 @@
 	var/mob/living/carbon/C = user
 	var/obj/item/organ/butt/B = C.getorganslot(ORGAN_SLOT_BUTT)
 	if(!B)
-		to_chat(user, "<span class='warning'>You don't have a butt!</span>")
+		to_chat(user, "<span class='warning'>Nie masz tyłka!</span>")
 		return FALSE
 	B.fart(C)
 
 /datum/emote/living/carbon/human/superfart
 	key = "superfart"
 	key_third_person = "superfarts"
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/superfart/run_emote(mob/user, params, type_override, intentional)
 	if(!..())
@@ -94,10 +96,10 @@
 	var/mob/living/carbon/human/H = user
 	var/obj/item/organ/butt/B = H.getorganslot(ORGAN_SLOT_BUTT)
 	if(!B)
-		to_chat(user, "<span class='danger'>You don't have a butt!</span>")
+		to_chat(user, "<span class='danger'>Nie masz tyłka!</span>")
 		return FALSE
 	if(B.loose)
-		to_chat(user, "<span class='danger'>Your butt's too loose to superfart!</span>")
+		to_chat(user, "<span class='danger'>Twój tyłek jest zbyt luźny na superpierdnięcie!</span>")
 		return FALSE
 	B.loose = TRUE // to avoid spamsuperfart
 	B.superfart(H)
@@ -148,11 +150,11 @@
 		if(1)
 			for(var/mob/living/M in T)
 				if(M != user)
-					user.visible_message("<span class='danger'><b>[user]</b>'s ass blasts <b>[M]</b> in the face!</span>", "<span class='danger'>You ass blast <b>[M]</b>!</span>")
+					user.visible_message("<span class='danger'>Tyłek <b>[user]</b> wystrzeliwuje prosto w twarz <b>[M]</b>!</span>", "<span class='danger'>Strzelasz tyłkiem w <b>[M]</b>!</span>")
 					M.apply_damage(50, BRUTE, BODY_ZONE_HEAD)
-			user.visible_message("<span class='danger'><b>[user]</b> blows [user.p_their()] ass off!</span>", "<span class='userdanger'>Holy shit, your butt flies off in an arc!</span>")
+			user.visible_message("<span class='danger'><b>[user]</b> odstrzeliwuje sobie tyłek!</span>", "<span class='userdanger'>O kurwa, twój tyłek odlatuje łukiem!</span>")
 		if(2)
-			user.visible_message("<span class='danger'><b>[user]</b> rips [user.p_their()] ass apart in a massive explosion!</span>", "<span class='userdanger'>Holy shit, your butt goes supernova!</span>")
+			user.visible_message("<span class='danger'><b>[user]</b> rozrywa sobie tyłek w potężnej eksplozji!</span>", "<span class='userdanger'>O kurwa, twój tyłek wybucha jak supernowa!</span>")
 			explosion(T, 0, 1, 3, adminlog = FALSE, flame_range = 3)
 			user.gib()
 		if(3)
@@ -168,10 +170,10 @@
 				else
 					endx = world.maxx - 8
 			//ASS BLAST USA
-			user.visible_message("<span class='danger'><b>[user]</b> blows [user.p_their()] ass off with such force, [user.p_they()] explode!</span>", "<span class='userdanger'>Holy shit, your butt flies off into the galaxy!</span>")
+			user.visible_message("<span class='danger'><b>[user]</b> odstrzeliwuje sobie tyłek z taką siłą, że wybucha!</span>", "<span class='userdanger'>O kurwa, twój tyłek odlatuje w głąb galaktyki!</span>")
 			user.gib()
 			new /obj/effect/immovablerod/butt(T, locate(endx, endy, T.z))
-			priority_announce("What the fuck was that?!", "General Alert")
+			priority_announce("Co to, kurwa, było?!", "Alarm ogólny")
 			qdel(src)
 
 /// Thrown out of a superfarting butt: guaranteed to embed in whoever it hits
