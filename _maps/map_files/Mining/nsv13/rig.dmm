@@ -15,21 +15,12 @@
 /area/nostromo)
 "bF" = (
 /obj/machinery/power/apc/auto_name/north,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating/airless,
 /area/nostromo)
 "dL" = (
 /turf/open/space/basic,
 /area/space)
-"fg" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/space/basic,
-/area/nostromo)
 "fZ" = (
 /obj/machinery/computer/ship/dradis/mining{
 	dir = 8
@@ -40,22 +31,7 @@
 /area/nostromo)
 "gb" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/space/basic,
-/area/nostromo)
-"gj" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/plating/airless,
-/area/nostromo)
-"gp" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /turf/open/space/basic,
 /area/nostromo)
 "gP" = (
@@ -67,9 +43,7 @@
 /obj/machinery/power/solar_control{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/pod/light{
 	initial_gas_mix = "TEMP=2.7"
 	},
@@ -82,12 +56,6 @@
 /area/nostromo/maintenance/exterior)
 "kw" = (
 /obj/machinery/light/runway,
-/turf/open/floor/plating/airless,
-/area/nostromo)
-"la" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating/airless,
 /area/nostromo)
 "lO" = (
@@ -121,13 +89,6 @@
 "rR" = (
 /turf/closed/wall/mineral/titanium/survival/pod,
 /area/nostromo/maintenance/exterior)
-"ub" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/space/basic,
-/area/nostromo)
 "vh" = (
 /obj/structure/closet/emcloset{
 	anchored = 1
@@ -164,47 +125,9 @@
 "Bn" = (
 /turf/open/floor/plating/airless,
 /area/nostromo/maintenance/exterior)
-"BO" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/open/space/basic,
-/area/nostromo)
-"CN" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating/airless,
-/area/nostromo)
-"CR" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/open/space/basic,
-/area/nostromo)
 "DR" = (
 /turf/open/space/basic,
 /area/nostromo/maintenance/exterior)
-"DU" = (
-/obj/machinery/power/solar,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/turf/open/floor/plasteel/solarpanel{
-	initial_gas_mix = "TEMP=2.7"
-	},
-/area/nostromo)
 "DY" = (
 /turf/open/floor/pod/light{
 	initial_gas_mix = "TEMP=2.7"
@@ -231,15 +154,7 @@
 /turf/open/floor/plating/airless,
 /area/nostromo)
 "Je" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating/airless,
 /area/nostromo)
 "KP" = (
@@ -248,16 +163,6 @@
 	},
 /turf/open/space/basic,
 /area/nostromo/maintenance/exterior)
-"KV" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/space/basic,
-/area/nostromo)
 "Ma" = (
 /obj/structure/shuttle/engine/propulsion,
 /turf/open/space/basic,
@@ -278,13 +183,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/nostromo/maintenance/exterior)
-"OU" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/open/space/basic,
-/area/nostromo)
 "OY" = (
 /turf/closed/wall/mineral/titanium/survival/pod,
 /area/nostromo)
@@ -293,19 +191,6 @@
 /obj/machinery/light/runway,
 /turf/open/space/basic,
 /area/nostromo/maintenance/exterior)
-"Rv" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/space/basic,
-/area/nostromo)
 "St" = (
 /obj/structure/grille,
 /obj/structure/lattice,
@@ -321,42 +206,12 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/nostromo)
-"UR" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/space/basic,
-/area/nostromo)
 "UZ" = (
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
 /area/nostromo)
 "Va" = (
 /obj/structure/grille,
-/turf/open/space/basic,
-/area/nostromo)
-"Vl" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/space/basic,
-/area/nostromo)
-"VJ" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
 /turf/open/space/basic,
 /area/nostromo)
 "We" = (
@@ -399,16 +254,6 @@
 	initial_gas_mix = "TEMP=2.7"
 	},
 /area/nostromo)
-"XW" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/open/space/basic,
-/area/nostromo)
 "Yf" = (
 /obj/structure/hull_plate/end{
 	dir = 4
@@ -419,32 +264,10 @@
 /obj/structure/grille,
 /turf/open/floor/plating/airless,
 /area/nostromo)
-"Yo" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/open/space/basic,
-/area/nostromo)
 "Zy" = (
 /obj/effect/landmark/asteroid_spawn,
 /turf/open/space/basic,
 /area/nostromo/maintenance/exterior)
-"ZB" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/open/floor/plating/airless,
-/area/nostromo)
 
 (1,1,1) = {"
 dL
@@ -28592,8 +28415,8 @@ DR
 DR
 DR
 DR
-DU
-OU
+Xl
+gb
 Ub
 gb
 Xl
@@ -28849,10 +28672,10 @@ DR
 DR
 DR
 DR
-DU
-XW
+Xl
+gb
 Ub
-KV
+gb
 Xl
 DR
 DR
@@ -29106,10 +28929,10 @@ DR
 DR
 DR
 DR
-DU
-Rv
-ub
-Yo
+Xl
+gb
+gb
+gb
 Xl
 DR
 DR
@@ -29363,10 +29186,10 @@ DR
 DR
 DR
 DR
-DU
-BO
+Xl
+gb
 Ub
-Vl
+gb
 Xl
 DR
 DR
@@ -29620,10 +29443,10 @@ DR
 DR
 DR
 DR
-DU
-BO
+Xl
+gb
 Ub
-gp
+gb
 Xl
 DR
 DR
@@ -29878,7 +29701,7 @@ DR
 DR
 DR
 DR
-fg
+gb
 Ub
 DR
 DR
@@ -30135,7 +29958,7 @@ WN
 WN
 WN
 WN
-fg
+gb
 Ub
 DR
 DR
@@ -30392,7 +30215,7 @@ UZ
 UZ
 UZ
 UZ
-fg
+gb
 vP
 DR
 DR
@@ -30642,13 +30465,13 @@ vP
 DY
 DY
 DY
-gj
-la
-la
-la
-la
-la
-la
+Je
+Je
+Je
+Je
+Je
+Je
+Je
 Je
 zX
 DR
@@ -30899,14 +30722,14 @@ vP
 DY
 DY
 hj
-ZB
+Je
 vP
 UZ
 WN
 DR
 DR
 DR
-fg
+gb
 Ub
 DR
 DR
@@ -31156,14 +30979,14 @@ vP
 DY
 DY
 XT
-CN
+Je
 Yk
 UZ
 DR
 DR
 DR
 DR
-fg
+gb
 Ub
 DR
 DR
@@ -31419,8 +31242,8 @@ UZ
 DR
 DR
 DR
-DU
-XW
+Xl
+gb
 Ub
 gb
 Xl
@@ -31676,10 +31499,10 @@ UZ
 DR
 DR
 DR
-DU
-XW
+Xl
+gb
 Ub
-KV
+gb
 Xl
 DR
 DR
@@ -31933,10 +31756,10 @@ UZ
 DR
 DR
 DR
-DU
-UR
-ub
-CR
+Xl
+gb
+gb
+gb
 Xl
 DR
 DR
@@ -32190,10 +32013,10 @@ DR
 DR
 DR
 DR
-DU
-BO
+Xl
+gb
 Ub
-Vl
+gb
 Xl
 DR
 DR
@@ -32447,10 +32270,10 @@ DR
 DR
 DR
 DR
-DU
-VJ
+Xl
+gb
 Ub
-gp
+gb
 Xl
 DR
 DR

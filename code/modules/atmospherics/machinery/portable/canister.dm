@@ -56,6 +56,7 @@
 		"caution" = /obj/machinery/portable_atmospherics/canister,
 		"nucleium" = /obj/machinery/portable_atmospherics/canister/nucleium,	//NSV13
 		"constricted plasma" = /obj/machinery/portable_atmospherics/canister/constricted_plasma, //NSV13
+		"miasma" = /obj/machinery/portable_atmospherics/canister/miasma, // AQ EDIT - Miasma
 	)
 
 /obj/machinery/portable_atmospherics/canister/interact(mob/user)

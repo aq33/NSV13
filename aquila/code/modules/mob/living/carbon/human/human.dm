@@ -27,3 +27,14 @@
 	. = ..()
 	var/datum/component/walk_animation/walk_animation = GetComponent(/datum/component/walk_animation)
 	walk_animation?.detach_held_items()
+
+// The "Polak" belly is only shown when naked, so redraw the body when clothes change
+/mob/living/carbon/human/update_inv_w_uniform()
+	. = ..()
+	if(dna?.features["body_size"] == "Polak")
+		update_body()
+
+/mob/living/carbon/human/update_inv_wear_suit()
+	. = ..()
+	if(dna?.features["body_size"] == "Polak")
+		update_body()

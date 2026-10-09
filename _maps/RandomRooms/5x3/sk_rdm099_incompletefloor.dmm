@@ -17,7 +17,9 @@
 /area/template_noop)
 "d" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/item/stack/cable_coil/random/five,
+/obj/item/stack/cable_coil{
+	amount = 5
+	},
 /obj/structure/sign/warning,
 /turf/open/floor/plasteel,
 /area/template_noop)

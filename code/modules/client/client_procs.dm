@@ -327,6 +327,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			if(connecting_admin)
 				to_chat_immediate(src, "As an admin, you are being allowed to continue using this version, but please consider changing byond versions")
 			else
+				message_admins("<span class='adminnotice'>Nieudane logowanie: [key_name_admin(src)] - zablokowana wersja BYOND ([byond_version].[byond_build]).</span>")
 				qdel(src)
 				return
 

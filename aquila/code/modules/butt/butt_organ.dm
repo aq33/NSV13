@@ -63,7 +63,7 @@
 		var/turf/T = get_turf(owner || src)
 		for(var/obj/item/I in inv.contents)
 			if(T)
-				I.forceMove(T)
+				eject_item(I, T)
 			else
 				qdel(I)
 		QDEL_NULL(inv)
@@ -142,10 +142,15 @@
 	var/turf/T = get_turf(user)
 	if(inv)
 		for(var/obj/item/I in inv.contents)
-			I.forceMove(T)
+			eject_item(I, T)
 	Remove(user)
 	forceMove(T)
 	new blood_type(T)
+
+/// Take an item out of the pocket through the storage component, so it's cleared from viewers' HUDs
+/obj/item/organ/butt/proc/eject_item(obj/item/I, atom/new_loc)
+	if(!SEND_SIGNAL(inv, COMSIG_TRY_STORAGE_TAKE, I, new_loc, TRUE))
+		I.forceMove(new_loc)
 
 // The hidden pocket
 

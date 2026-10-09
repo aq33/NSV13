@@ -24,7 +24,7 @@
 		qdel(PA)
 
 /obj/item/chrono_eraser/Destroy()
-	dropped()
+	QDEL_NULL(PA) // AQ EDIT - was dropped(), which runtimes without a user
 	return ..()
 
 /obj/item/chrono_eraser/ui_action_click(mob/user)

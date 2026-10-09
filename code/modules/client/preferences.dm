@@ -22,6 +22,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/ooccolor = "#c43b23"
 	var/asaycolor = "#ff4500"			//This won't change the color for current admins, only incoming ones.
 	var/tip_delay = 500 //tip delay in milliseconds
+	var/tesla_volume = 100 //Volume (0-100) of tesla/lightning sounds
 
 	//Antag preferences
 	var/list/role_preferences = list()		//Special role selection
@@ -710,6 +711,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(SCALING_METHOD_BLUR)
 					button_name = "Bilinear"
 			dat += "<b>Scaling Method:</b> <a href='?_src_=prefs;preference=scaling_method'>[button_name]</a><br>"
+
+			dat += "<h2>Volume Controls</h2>"
+			dat += "<b>Tesla Volume:</b> <input type='range' min='0' max='100' step='5' value='[tesla_volume]' style='vertical-align:middle;' oninput='document.getElementById(\"tesla_vol_label\").innerText=this.value+\"%\"' onchange='window.location.href=\"?_src_=prefs;preference=tesla_volume;volume=\"+this.value'> <span id='tesla_vol_label'>[tesla_volume]%</span><br>"
 
 			if (CONFIG_GET(flag/maprotation))
 				var/p_map = preferred_map
@@ -1712,7 +1716,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						active_character.eye_color = sanitize_hexcolor(new_eyes)
 
 				if("body_size")
-					var/new_size = input(user, "Choose your character's height:", "Character Preference") as null|anything in GLOB.body_sizes
+					var/new_size = input(user, "Choose your character's height:", "Character Preference") as null|anything in get_body_size_choices() // AQ EDIT - Polak tylko dla ludzi, za Aquilosy
 					if(new_size)
 						active_character.features["body_size"] = new_size
 
@@ -1736,6 +1740,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 								var/forced_type = active_character.pref_species.forced_features[forced_part]
 								//Apply the forced bodypart.
 								active_character.features[forced_part] = forced_type
+							// AQ EDIT - Polak tylko dla ludzi
+							if(!(active_character.features["body_size"] in active_character.pref_species.get_body_sizes()))
+								active_character.features["body_size"] = "Normal"
 						else
 							if(alert(parent, "This species is only accessible to our patrons. Would you like to subscribe?", "Patron Locked", "Yes", "No") == "Yes")
 								parent.donate()
@@ -2197,6 +2204,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if (parent && parent.mob && parent.mob.hud_used)
 						parent.mob.hud_used.update_parallax_pref(parent.mob)
 
+				if("tesla_volume")
+					var/new_volume = text2num(href_list["volume"])
+					if(!isnull(new_volume))
+						tesla_volume = clamp(round(new_volume), 0, 100)
+
 				if("ambientocclusion")
 					toggles2 ^= PREFTOGGLE_2_AMBIENT_OCCLUSION
 					if(parent && parent.screen && parent.screen.len)
@@ -2392,3 +2404,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(!cached_holoform_icons[filter_type])
 		cached_holoform_icons[filter_type] = process_holoform_icon_filter(custom_holoform_icon, filter_type)
 	return cached_holoform_icons[filter_type]
+
+///Returns the 0-100 volume the client set for the given VOLUME_PREF_* category
+/datum/preferences/proc/get_volume_pref(volume_pref)
+	switch(volume_pref)
+		if(VOLUME_PREF_TESLA)
+			return tesla_volume
+	return 100

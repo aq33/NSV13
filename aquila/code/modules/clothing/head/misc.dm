@@ -4,6 +4,7 @@
  *		kask motocyklowy
  *		kask Riczard'a
  *		kaptur kostiumu ducha
+ *		nakrycia głowy security (kosmobagiety)
  */
 /****************************\
 |*********** opaski **********|
@@ -108,3 +109,76 @@
 	icon_state = "ghostcostumehood"
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+
+// AQUILA - port aq33/tgstation#564: zabawkowe repliki strojów ERT w automacie Donksoft
+/obj/item/clothing/head/ertcommanderfake
+	name = "replika hełmu dowódcy ERT"
+	icon_state = "hardsuit0-ert_commander"
+	item_state = "hardsuit0-ert_commander"
+	desc = "Plastikowa replika hełmu dowódcy ERT. Wyglądasz w niej zupełnie jak prawdziwy, kompetentny członek ERT! To zabawka, nie nadaje się do użytku w kosmosie!"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	clothing_flags = SNUG_FIT
+
+/obj/item/clothing/head/ertsecurityfake
+	name = "replika hełmu ochroniarza ERT"
+	icon_state = "hardsuit0-ert_security"
+	item_state = "hardsuit0-ert_security"
+	desc = "Plastikowa replika hełmu ochroniarza ERT. Wyglądasz w niej zupełnie jak prawdziwy, kompetentny członek ERT! To zabawka, nie nadaje się do użytku w kosmosie!"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	clothing_flags = SNUG_FIT
+
+/obj/item/clothing/head/ertmedicalfake
+	name = "replika hełmu medyka ERT"
+	icon_state = "hardsuit0-ert_medical"
+	item_state = "hardsuit0-ert_medical"
+	desc = "Plastikowa replika hełmu medyka ERT. Wyglądasz w niej zupełnie jak prawdziwy, kompetentny członek ERT! To zabawka, nie nadaje się do użytku w kosmosie!"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	clothing_flags = SNUG_FIT
+
+/obj/item/clothing/head/ertengineerfake
+	name = "replika hełmu inżyniera ERT"
+	icon_state = "hardsuit0-ert_engineer"
+	item_state = "hardsuit0-ert_engineer"
+	desc = "Plastikowa replika hełmu inżyniera ERT. Wyglądasz w niej zupełnie jak prawdziwy, kompetentny członek ERT! To zabawka, nie nadaje się do użytku w kosmosie!"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	clothing_flags = SNUG_FIT
+
+/****************************\
+|******** kosmobagiety *******|
+\****************************/
+/obj/item/clothing/head/soft/sec/alt
+	name = "alternative security cap"
+	desc = "It's a robust baseball hat in police colours."
+	icon = 'aquila/icons/obj/clothing/hats.dmi'
+	worn_icon = 'aquila/icons/mob/head.dmi'
+	icon_state = "secaltsoft"
+	soft_color = "secalt"
+
+/obj/item/clothing/head/soft/sec/warden
+	name = "warden's cap"
+	desc = "It's a robust baseball hat with the warden's insignia."
+	icon = 'aquila/icons/obj/clothing/hats.dmi'
+	worn_icon = 'aquila/icons/mob/head.dmi'
+	icon_state = "wardensoft"
+	soft_color = "warden"
+
+/obj/item/clothing/head/beret/sec/bandana
+	name = "security bandana"
+	desc = "A reinforced bandana in police colours."
+	icon = 'aquila/icons/obj/clothing/hats.dmi'
+	worn_icon = 'aquila/icons/mob/head.dmi'
+	icon_state = "secbandana"
+
+/obj/item/clothing/head/beret/sec/officercap
+	name = "security officer's cap"
+	desc = "A peaked cap worn by security officers. Uses reinforced fabric to offer sufficient protection."
+	icon = 'aquila/icons/obj/clothing/hats.dmi'
+	worn_icon = 'aquila/icons/mob/head.dmi'
+	icon_state = "secofficercap"
+
+/obj/item/clothing/head/beret/sec/garrison
+	name = "security garrison cap"
+	desc = "A foldable garrison cap in police colours. Uses reinforced fabric to offer sufficient protection."
+	icon = 'aquila/icons/obj/clothing/hats.dmi'
+	worn_icon = 'aquila/icons/mob/head.dmi'
+	icon_state = "secgarrisoncap"

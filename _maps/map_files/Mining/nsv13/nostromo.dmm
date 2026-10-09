@@ -63,9 +63,7 @@
 /turf/open/floor/durasteel/eris_techfloor_alt,
 /area/nostromo)
 "ao" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 6
 	},
@@ -118,9 +116,7 @@
 /obj/structure/sign/warning/electricshock{
 	pixel_y = 32
 	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/tech/grid,
 /area/nostromo/maintenance)
 "aw" = (
@@ -151,9 +147,7 @@
 /turf/open/floor/durasteel,
 /area/nostromo)
 "aA" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -229,9 +223,7 @@
 "aN" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/power/apc/auto_name/north,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /obj/machinery/computer/ship/salvage{
 	req_access = null
 	},
@@ -263,12 +255,7 @@
 /turf/open/floor/durasteel,
 /area/nostromo)
 "aS" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
@@ -277,9 +264,7 @@
 /turf/open/floor/monotile/dark,
 /area/nostromo)
 "aT" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/grid/steel,
 /area/nostromo/bridge)
 "aU" = (
@@ -323,9 +308,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 10
 	},
@@ -341,9 +324,7 @@
 /turf/open/floor/monotile/light,
 /area/nostromo/medbay)
 "bb" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/structure/chair/comfy/shuttle{
 	color = "#696969";
 	dir = 4;
@@ -389,9 +370,7 @@
 	name = "Hypersleep pods"
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/plasteel/techmaint,
@@ -400,18 +379,14 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/plasteel/techmaint,
 /area/nostromo)
 "bi" = (
 /obj/structure/fluff/support_beam,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/plasteel/techmaint,
@@ -425,19 +400,11 @@
 /area/nostromo)
 "bl" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/durasteel,
 /area/nostromo)
-"bm" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/open/floor/plasteel/grid/steel,
-/area/nostromo/bridge)
 "bn" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/glass/beaker/cryoxadone,
@@ -454,9 +421,7 @@
 /turf/closed/wall/ship,
 /area/nostromo/tcomms)
 "bq" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/plasteel/techmaint,
@@ -481,9 +446,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating/airless,
 /area/nostromo/maintenance)
 "bv" = (
@@ -497,9 +460,7 @@
 /turf/open/floor/carpet/ship,
 /area/nostromo)
 "bx" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/carpet/ship,
@@ -628,9 +589,7 @@
 /turf/open/floor/carpet/ship,
 /area/nostromo)
 "bT" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/light,
@@ -639,9 +598,7 @@
 /obj/structure/fluff/support_beam{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/light,
@@ -660,9 +617,7 @@
 /turf/closed/wall/ship,
 /area/nostromo)
 "bY" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 8
@@ -731,9 +686,7 @@
 	dir = 8
 	},
 /obj/machinery/power/apc/auto_name/north,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/dark,
 /area/nostromo/tcomms)
 "ch" = (
@@ -782,9 +735,7 @@
 /turf/open/floor/plasteel/ridged/steel,
 /area/nostromo)
 "cp" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile,
 /area/nostromo/tcomms)
@@ -792,9 +743,7 @@
 /turf/open/floor/plasteel/ridged/steel,
 /area/nostromo)
 "cr" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 4
 	},
@@ -868,9 +817,7 @@
 /turf/open/floor/plasteel/grid/steel,
 /area/nostromo)
 "cB" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -882,9 +829,7 @@
 "cC" = (
 /obj/structure/table/reinforced,
 /obj/machinery/computer/ship/viewscreen,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile,
 /area/nostromo)
 "cD" = (
@@ -1072,26 +1017,20 @@
 /turf/open/floor/plating/airless,
 /area/nostromo/maintenance)
 "dk" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/dark,
 /area/nostromo)
 "dn" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/durasteel/padded,
 /area/nostromo)
 "do" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 6
 	},
@@ -1129,9 +1068,7 @@
 	name = "Lounge"
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/plasteel/ridged/steel,
@@ -1200,27 +1137,21 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/nostromo/maintenance)
 "dD" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/engine,
 /area/nostromo/medbay)
 "dE" = (
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 5
 	},
 /turf/open/floor/engine,
 /area/nostromo/medbay)
 "dF" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 4
 	},
@@ -1230,9 +1161,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/general/visible,
 /turf/open/floor/engine,
 /area/nostromo/medbay)
@@ -1243,9 +1172,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 4
 	},
@@ -1263,9 +1190,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/nostromo)
 "dK" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 9
 	},
@@ -1279,9 +1204,7 @@
 /turf/open/floor/plasteel/tiled,
 /area/nostromo/medbay)
 "dM" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/plasteel/ridged/steel,
@@ -1667,9 +1590,7 @@
 /obj/structure/chair/sofa{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /turf/open/floor/monotile,
 /area/nostromo)
@@ -1901,9 +1822,7 @@
 /turf/open/floor/plasteel/ridged/steel,
 /area/nostromo)
 "fg" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 1
 	},
@@ -1942,9 +1861,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/nostromo)
 "fn" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 8
 	},
@@ -2032,9 +1949,7 @@
 	name = "Space suit storage"
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 1
 	},
@@ -2072,9 +1987,7 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/light,
@@ -2097,19 +2010,12 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile,
 /area/nostromo/tcomms)
 "fK" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer4,
 /turf/open/floor/monotile,
@@ -2217,18 +2123,14 @@
 /obj/machinery/power/terminal{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/tech/grid,
 /area/nostromo/maintenance)
 "gh" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/tech/grid,
 /area/nostromo/maintenance)
 "gi" = (
@@ -2248,9 +2150,7 @@
 /turf/open/floor/plasteel/ridged/steel,
 /area/nostromo/maintenance)
 "go" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
 	},
@@ -2307,9 +2207,7 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/auto_name/north,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/tiled,
 /area/nostromo/medbay)
 "gv" = (
@@ -2318,16 +2216,12 @@
 	dir = 1
 	},
 /obj/machinery/power/apc/auto_name/north,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/ridged/steel,
 /area/nostromo)
 "gz" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 5
 	},
@@ -2338,25 +2232,14 @@
 /area/nostromo)
 "gA" = (
 /obj/structure/chair/sofa,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 1
 	},
 /turf/open/floor/monotile,
 /area/nostromo)
-"gB" = (
-/obj/structure/table/reinforced,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/monotile,
-/area/nostromo)
 "gC" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
 	},
@@ -2382,9 +2265,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/nostromo)
 "gJ" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 4
@@ -2395,18 +2276,7 @@
 /obj/structure/window/reinforced/fulltile/ship/interior{
 	layer = 2.9
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile,
 /area/nostromo)
 "gL" = (
@@ -2414,9 +2284,7 @@
 	name = "Bridge"
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
 	},
@@ -2450,9 +2318,7 @@
 	req_one_access_txt = "31;48"
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
 	},
@@ -2473,9 +2339,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 9
 	},
@@ -2494,9 +2358,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
 	},
@@ -2512,9 +2374,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/dark,
 /area/nostromo)
@@ -2634,9 +2494,7 @@
 /turf/open/floor/monotile/light,
 /area/nostromo/medbay)
 "hn" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
 	},
@@ -2673,9 +2531,7 @@
 /turf/open/floor/monotile/dark,
 /area/nostromo)
 "hs" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
 	},
@@ -2685,9 +2541,7 @@
 /turf/open/floor/plasteel/ridged/steel,
 /area/nostromo)
 "ht" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 8
 	},
@@ -2695,16 +2549,12 @@
 /area/nostromo)
 "hu" = (
 /obj/structure/table/reinforced,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile,
 /area/nostromo)
 "hv" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
 	},
@@ -2715,31 +2565,16 @@
 /area/nostromo)
 "hw" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/dark,
 /area/nostromo)
 "hx" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/turf/open/floor/monotile/light,
-/area/nostromo)
-"hz" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/light,
 /area/nostromo)
@@ -2759,9 +2594,7 @@
 /turf/open/floor/plating,
 /area/nostromo)
 "hC" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
 	},
@@ -2777,9 +2610,7 @@
 /turf/open/floor/plasteel/techmaint,
 /area/nostromo)
 "hE" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 1
 	},
@@ -2838,9 +2669,7 @@
 /area/nostromo)
 "hT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 1
 	},
@@ -2898,12 +2727,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/nostromo/maintenance)
 "ic" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/tech/grid,
 /area/nostromo/maintenance)
 "id" = (
@@ -2911,59 +2735,38 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/auto_name/north,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/tech/grid,
 /area/nostromo/maintenance)
 "ie" = (
 /obj/machinery/door/airlock/ship/hatch{
 	name = "storage hatch"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/tech/grid,
-/area/nostromo/maintenance)
-"if" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/tech/grid,
 /area/nostromo/maintenance)
 "ig" = (
 /obj/machinery/door/airlock/ship{
 	name = "Storage junction"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/light,
 /area/nostromo)
 "ih" = (
 /obj/machinery/computer/ship/viewscreen,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/light,
 /area/nostromo)
 "ii" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/monotile/light,
 /area/nostromo)
 "ik" = (
 /obj/machinery/light,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -2977,9 +2780,7 @@
 	name = "Hypersleep pods"
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -2989,9 +2790,7 @@
 /turf/open/floor/monotile/light,
 /area/nostromo)
 "im" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -3011,9 +2810,7 @@
 /turf/open/floor/monotile/light,
 /area/nostromo)
 "ip" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 9
 	},
@@ -3023,9 +2820,7 @@
 /turf/open/floor/monotile/light,
 /area/nostromo)
 "iq" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 5
 	},
@@ -3050,9 +2845,7 @@
 /turf/open/floor/carpet/ship,
 /area/nostromo)
 "iD" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 9
 	},
@@ -3076,9 +2869,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/dark,
@@ -3094,26 +2885,11 @@
 /turf/open/floor/monotile/dark,
 /area/nostromo)
 "iP" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/monotile/light,
-/area/nostromo)
-"iQ" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/monotile/light,
 /area/nostromo)
 "iR" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 4
 	},
@@ -3121,9 +2897,7 @@
 /turf/open/floor/monotile/light,
 /area/nostromo)
 "iS" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -3139,9 +2913,7 @@
 /obj/machinery/airalarm/all_access{
 	pixel_y = 26
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -3154,9 +2926,7 @@
 /obj/machinery/firealarm{
 	pixel_y = 26
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -3170,9 +2940,7 @@
 	color = "#FF7F50";
 	name = "rust"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -3186,9 +2954,7 @@
 	name = "Space suit storage"
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -3202,9 +2968,7 @@
 	name = "Airlock junction room 01"
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
 	},
@@ -3214,12 +2978,7 @@
 /turf/open/floor/monotile/light,
 /area/nostromo)
 "jb" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
 	},
@@ -3234,9 +2993,7 @@
 /turf/open/floor/monotile/dark,
 /area/nostromo)
 "jq" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 1
 	},
@@ -3253,9 +3010,7 @@
 /turf/open/floor/plasteel/grid/steel,
 /area/nostromo)
 "js" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 10
 	},
@@ -3267,18 +3022,9 @@
 "jw" = (
 /obj/structure/window/reinforced/fulltile/ship,
 /obj/structure/grille,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/tech/grid,
 /area/nostromo/maintenance)
-"jx" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/space/basic,
-/area/nostromo/maintenance/exterior)
 "jA" = (
 /obj/machinery/light,
 /turf/open/floor/plasteel/tech/grid,
@@ -3416,9 +3162,7 @@
 	name = "Space suit storage"
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 1
 	},
@@ -3519,9 +3263,7 @@
 /turf/open/floor/carpet/ship,
 /area/nostromo)
 "oj" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 8
@@ -3593,9 +3335,7 @@
 /area/nostromo)
 "qV" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /turf/open/space/basic,
 /area/nostromo/maintenance/exterior)
 "qZ" = (
@@ -3616,9 +3356,7 @@
 /turf/open/floor/monotile/light,
 /area/nostromo)
 "sC" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -3656,9 +3394,7 @@
 /turf/open/floor/plating/airless,
 /area/nostromo/maintenance/exterior)
 "tK" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -3709,9 +3445,7 @@
 /turf/open/floor/plasteel/grid/steel,
 /area/nostromo)
 "wP" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 10
 	},
@@ -3732,9 +3466,7 @@
 	color = "#FF7F50";
 	name = "rust"
 	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 9
 	},
@@ -3804,15 +3536,11 @@
 	density = 0;
 	pixel_y = 26
 	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating/airless,
 /area/nostromo/maintenance)
 "AY" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 1
 	},
@@ -3887,9 +3615,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating/airless,
 /area/nostromo/maintenance)
 "ET" = (
@@ -3914,9 +3640,7 @@
 /turf/closed/wall/ship,
 /area/nostromo/bridge)
 "GB" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
 	},
@@ -3956,15 +3680,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/plasteel/techmaint,
 /area/nostromo)
-"GY" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating/airless,
-/area/nostromo/maintenance)
 "Hf" = (
 /obj/effect/decal/cleanable/dirt{
 	color = "#FF7F50";
@@ -3982,22 +3697,13 @@
 	},
 /turf/open/floor/plating,
 /area/nostromo/maintenance)
-"Hi" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/space/basic,
-/area/nostromo/maintenance/exterior)
 "Ho" = (
 /obj/machinery/atmospherics/pipe/simple/general/hidden,
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/nostromo/maintenance)
 "HA" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/durasteel/padded,
@@ -4010,9 +3716,7 @@
 /obj/structure/fluff/support_beam{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 8
 	},
@@ -4071,9 +3775,7 @@
 /turf/open/floor/plasteel/ridged/steel,
 /area/nostromo)
 "Jw" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
@@ -4085,9 +3787,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/tiled,
 /area/nostromo/medbay)
 "JT" = (
@@ -4097,9 +3797,7 @@
 /turf/open/floor/carpet/ship,
 /area/nostromo)
 "Kn" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 8
 	},
@@ -4108,9 +3806,7 @@
 /area/nostromo)
 "Kp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
@@ -4132,9 +3828,7 @@
 /turf/open/floor/monotile/dark,
 /area/nostromo)
 "Mn" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 4
 	},
@@ -4171,9 +3865,7 @@
 /obj/structure/fluff/support_beam{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 8
@@ -4200,9 +3892,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/nostromo)
 "PM" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 4
 	},
@@ -4290,9 +3980,7 @@
 /turf/open/floor/monotile/light,
 /area/nostromo)
 "Ug" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 8
@@ -4331,9 +4019,7 @@
 	color = "#FF7F50";
 	name = "rust"
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 1
 	},
@@ -4379,9 +4065,7 @@
 /turf/open/floor/plating,
 /area/nostromo/maintenance)
 "WM" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -4427,9 +4111,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/nostromo)
 "Zy" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 8
 	},
@@ -27198,7 +26880,7 @@ ad
 ad
 qV
 bu
-GY
+DI
 DI
 ch
 dj
@@ -27453,7 +27135,7 @@ ad
 ad
 ad
 ad
-Hi
+qV
 aY
 aY
 aY
@@ -27710,7 +27392,7 @@ ad
 ad
 ad
 ad
-Hi
+qV
 aY
 av
 gg
@@ -27967,7 +27649,7 @@ ad
 ad
 ad
 ad
-jx
+qV
 jw
 ic
 fT
@@ -28740,7 +28422,7 @@ aY
 bd
 bd
 bd
-if
+ic
 ap
 ap
 cL
@@ -29768,7 +29450,7 @@ bT
 bU
 bT
 fE
-hz
+bT
 dk
 dk
 bT
@@ -29782,7 +29464,7 @@ bT
 fE
 bT
 bU
-iQ
+bT
 fn
 Ia
 oj
@@ -35426,7 +35108,7 @@ dt
 dM
 fK
 gA
-gB
+hu
 gK
 cC
 eC
@@ -40824,7 +40506,7 @@ ah
 ct
 aN
 bb
-bm
+aT
 bK
 cf
 ct

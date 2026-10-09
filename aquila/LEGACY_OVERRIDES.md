@@ -40,15 +40,24 @@ The other ~60 same-type redefinitions in `aquila/` call `..()`, so they are alre
 | `on_drain(drained)` call | `code/game/objects/items/devices/powersink.dm`, `process()` | Aquila power sink APC draining and infiltrator objective |
 | `dat += aquila_one_click_antag_links()` | `code/modules/admin/verbs/one_click_antag.dm` | Aquila "Create Antagonist" buttons |
 | `ROLE_PARADOX_CLONE` + `antagonist_bannable_roles` entry | `code/__DEFINES/role_preferences.dm` | Paradox Clone (tgstation#71141 port); the define has to be in core because `aquila.dm` is included after the list |
+| `ROLE_CHRONO_LEGIONNAIRE` + `antagonist_bannable_roles` entry | `code/__DEFINES/role_preferences.dm` | Chrono Legionnaire midround antagonist; same reason as `ROLE_PARADOX_CLONE` |
+| `Destroy()` of `chrono_eraser`, chronosuit helmet and suit | `code/game/objects/items/chrono_eraser.dm`, `code/modules/clothing/spacesuits/chronosuit.dm` | Bugfix for the Chrono Legionnaire gear: they called `dropped()` without a user and runtimed on every delete |
 | `ANTAG_HUD_PARADOX_CLONE` (33) + `GLOB.huds` entry | `code/__DEFINES/atom_hud.dm`, `code/datums/hud.dm` | Paradox Clone HUD; must stay the next index after `ANTAG_HUD_VAMPIRE` |
 | `paradox_clone` icon state | `icons/mob/hud.dmi` | Paradox Clone HUD icon, copied from tgstation's `antag_hud.dmi` |
+| `GAS_MIASMA` define | `code/__DEFINES/atmospherics.dm` | Miasma (restores what BeeStation-Hornet#6445 removed, reworked around `SSmiasma`); in core because the core gas lists below use it |
+| `GAS_MIASMA` list entries | `code/modules/atmospherics/machinery/airalarm.dm` (3 TLV lists, scrubbing/contaminated/refill filters), `components/unary_devices/vent_scrubber.dm` (default `filter_types`), `portable/canister.dm` (label list), `mob/living/simple_animal/bot/atmosbot.dm` (gases to scrub) | Miasma alarms, scrubbing and canister relabelling. Scrubbers filter it by default so it doesn't build up |
+| `handle_miasma_breath()` call | `code/modules/surgery/organs/lungs.dm`, `check_breath()` | Miasma breath effects (`aquila/code/modules/miasma/miasma_breath.dm`); the only breath path that handles miasma |
 | `ROLE_THIEF` + `antagonist_bannable_roles` entry | `code/__DEFINES/role_preferences.dm` | Thief (tgstation#64144 port); same reason as `ROLE_PARADOX_CLONE` |
 | `ANTAG_HUD_THIEF` (34) + `GLOB.huds` entry | `code/__DEFINES/atom_hud.dm`, `code/datums/hud.dm` | Thief HUD; must stay the next index after `ANTAG_HUD_PARADOX_CLONE` |
 | `amount` var on `/datum/objective/steal_five_of_type` | `code/game/gamemodes/objective.dm` | Replaces the hardcoded 5 in both `check_completion()`s (default stays 5), so the thief guns/organs objectives can ask for a different count |
 | `thief`, `hoard`, `hoarder_circle` icon states | `icons/mob/hud.dmi`, `icons/mob/actions/actions_minor_antag.dmi`, `icons/mob/telegraphing/telegraph.dmi` | Thief HUD icon, "declare hoard" action and hoard marker, copied from tgstation |
 | `thief_flavor.json` | `strings/` | Thief flavor texts; lives in core `strings/` because `tools/deploy.sh` only ships that folder and `strings()` strips `/` from file names |
+| `standing += H.get_tears_overlays()` / `add_overlay(get_tears_overlays())` | `code/modules/mob/living/carbon/human/species.dm` (`handle_body()`), `code/modules/mob/living/carbon/human/update_icons.dm` (`update_body_parts_head_only()`) | Łzy po `*cry` (Yogstation#15690 port), drawn right after the eyes overlay |
 | Custom landing link in `ui_interact()` + `designate` branch in `Topic()` | `nsv13/code/modules/shuttle/computer.dm` | Custom shuttle / bluespace pod landing spot; the var and procs are in `aquila/code/modules/shuttle/computer.dm` |
 | `TRAIT_EAT_MORE`, `TRAIT_GENELESS` defines; `TRAIT_GENELESS` check in `add_mutation()`; `TRAIT_EAT_MORE` hunger multiplier | `code/__DEFINES/traits.dm`, `code/datums/dna.dm`, `code/modules/mob/living/carbon/human/species.dm` | Sinful demons (Yogstation sync); the defines are in core because core procs use them |
+| `aquila_monkey_spat()`, `aquila_monkey_sucked()`, `aquila_potion_spat()` calls, `balloon_alert()`s | `code/modules/research/xenobiology/xenobio_camera.dm` (actions and click handlers, each path twice) | Xenobio tubes and HUD (tgstation#90775 port). The "now has N monkeys" chat lines were replaced by the HUD. Slime pickup/place needs no hook: `aquila/.../xenobio_tubes.dm` reacts in `Entered()`/`Exited()` |
+| `aquila_shell_hidden()` call in the Windows branch of `world.shelleo()` | `code/__HELPERS/shell.dm` | Runs shell commands through a hidden `wscript` launcher so the host doesn't get a cmd window (e.g. jukebox yt-dlp calls); falls back to plain `shell()`. The proc is in `aquila/code/__HELPERS/shell.dm` |
+| `audio/setMusicGain` message + `gain` multiplier (`volume` option of `audio/playMusic`) | `tgui/packages/tgui-panel/audio/{player,middleware}.js` | Jukebox YouTube music gets quieter with distance; DM side is `/datum/tgui_panel/proc/set_music_gain()` in `aquila/code/modules/tgui_panel/audio.dm` |
 
 Pre-existing single-call hooks that stay in core: `parts += mouse_report()` (`roundend.dm`) and `/datum/admins/proc/reloadwhitelist` in the admin verb list (`admin_verbs.dm`).
 
@@ -86,6 +95,16 @@ These change lines *inside* upstream procs. Moving them would mean copying whole
 - **Nanites rework** (`components/nanites.dm`, `nanite_programs.dm`, `nanite_programs/utility.dm` incl. the Aquila-only `cloud_change` program, `__DEFINES/nanites.dm`, `all_nodes.dm` commented nodes).
 - **Turf fires port, interleaved part** (Yogstation #19738): `flamethrower.dm` (fuel and ignition rewrite), `firealarm.dm` (`temperature_expose()` condition), `change_turf.dm` (fire carried over on `ChangeTurf()`), `anomalies.dm` (pyroclastic anomaly), `bottle.dm` (molotov). Everything else of the port is in `aquila/`.
 - **Job datums** (`jobs/job_types/*.dm`, `military_police.dm`, `subsystem/job.dm`). Outfits, implants, slots and exp requirements are mixed with hardened job-title and radio-channel constants. Left alone to avoid touching the job/config parsing hardening.
+
+### Smartwires port (BeeStation/BeeStation-Hornet#14275, F)
+
+The power cable system is replaced in core, at the same paths as in BeeStation, so a later upstream sync of smartwires lands on the same files. Merging upstream power code needs care here.
+
+- **Rewritten:** `code/modules/power/cable.dm` (whole file), new `code/modules/power/cable_coil.dm`. NSV13 differences against Bee: cables still hide with `level`/`hide(intact)` (we have no `undertile` element), the `/obj/structure/cable/multiz` mapping subtype (our maps link decks on plain floor), a cable computes its own node on `reform_connections()` and counts linked directions with `!!` (Bee summed the bit values, so only north-ending cables got a node), `clear_connections()` also resets the cable's own links (shuttle moves), player-laid open space cables are multi-z, coil keeps the robotic limb repair, cyborg subtype and `novariants = TRUE`.
+- **Changed procs:** `power.dm` (`WANTS_POWER_NODE`, `get_powernet()`, new `get_bridged_cables()`, `get_cable_node()` uses `has_power_node`, old propagation procs removed; `lateShuttleMove()` kept), `powernet.dm` (`dirty`, `mark_dirty()`, `repropogate_cables()` which also walks multi-z cables and `get_bridged_cables()`), `subsystem/machines.dm` (dirty powernet queue), `multiz.dm` (deck relays bridge through `get_bridged_cables()`, `break_connections()` marks the net dirty), `turf.dm` (`attackby` lays cable with `place_on_turf()`).
+- **Removed:** RCL (`items/RCL.dm`, crafting recipe) and the mech cable layer (`work_tools.dm`); coloured coil subtypes (code and maps repathed); `GLOB.powernets`; cable procs in `on_move.dm` and `shuttle_rotate.dm`; noose stack recipe (now a crafting recipe in `recipes.dm`).
+- **Hooks:** `WANTS_POWER_NODE` define in `__DEFINES/machines.dm`, cable colours in `__DEFINES/colors.dm`, `WANTS_POWER_NODE` lines in `grille.dm` and `shieldgen.dm`, two map lints in `tools/ci/check_grep.sh`. NSV13 machines that feed from the cable under them get their `WANTS_POWER_NODE` in `aquila/code/modules/power/smartwires.dm`.
+- **Maps:** converted with `tools/smartwires/convert.py`, which keeps every old powernet as exactly one powernet. Run it on maps from older branches before merging them.
 
 ### Data tweaks left in core lists (D-like)
 

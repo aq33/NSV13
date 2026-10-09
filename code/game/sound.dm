@@ -37,11 +37,12 @@ frequency - playback speed of audio
 channel - The channel the sound is played at
 pressure_affected - Whether or not difference in pressure affects the sound (E.g. if you can hear in space)
 ignore_walls - Whether or not the sound can pass through walls.
+volume_pref - Optional VOLUME_PREF_* define, scales the volume by that client volume preference.
 falloff_distance - Distance at which falloff begins. Sound is at peak volume (in regards to falloff) aslong as it is in this range.
 
 */
 
-/proc/playsound(atom/source, soundin, vol as num, vary, extrarange as num, falloff_exponent = SOUND_FALLOFF_EXPONENT, frequency = null, channel = 0, pressure_affected = TRUE, ignore_walls = TRUE, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, use_reverb = TRUE)
+/proc/playsound(atom/source, soundin, vol as num, vary, extrarange as num, falloff_exponent = SOUND_FALLOFF_EXPONENT, frequency = null, channel = 0, pressure_affected = TRUE, ignore_walls = TRUE, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, use_reverb = TRUE, volume_pref)
 	if(isarea(source))
 		CRASH("playsound(): source is an area")
 
@@ -69,10 +70,10 @@ falloff_distance - Distance at which falloff begins. Sound is at peak volume (in
 		listeners = listeners & hearers(maxdistance,turf_source)
 	for(var/mob/M as() in listeners)
 		if(get_dist(M, turf_source) <= maxdistance)
-			M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff_exponent, channel, pressure_affected, S, maxdistance, falloff_distance, 1, use_reverb)
+			M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff_exponent, channel, pressure_affected, S, maxdistance, falloff_distance, 1, use_reverb, volume_pref)
 	for(var/mob/M as() in dead_listeners)
 		if(get_dist(M, turf_source) <= maxdistance)
-			M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff_exponent, channel, pressure_affected, S, maxdistance, falloff_distance, 1, use_reverb)
+			M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff_exponent, channel, pressure_affected, S, maxdistance, falloff_distance, 1, use_reverb, volume_pref)
 
 /*! playsound
 
@@ -93,7 +94,7 @@ distance_multiplier - Can be used to multiply the distance at which the sound is
 
 */
 
-/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff_exponent = SOUND_FALLOFF_EXPONENT, channel = 0, pressure_affected = TRUE, sound/S, max_distance, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, distance_multiplier = 1, use_reverb = TRUE)
+/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff_exponent = SOUND_FALLOFF_EXPONENT, channel = 0, pressure_affected = TRUE, sound/S, max_distance, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, distance_multiplier = 1, use_reverb = TRUE, volume_pref)
 	if(!client || !can_hear())
 		return
 
@@ -103,6 +104,10 @@ distance_multiplier - Can be used to multiply the distance at which the sound is
 	S.wait = 0 //No queue
 	S.channel = channel || SSsounds.random_available_channel()
 	S.volume = vol
+	if(volume_pref && client.prefs)
+		S.volume *= client.prefs.get_volume_pref(volume_pref) / 100
+		if(S.volume <= 0)
+			return
 
 	if(vary)
 		if(frequency)

@@ -9,9 +9,7 @@
 /obj/structure/frame/computer{
 	anchored = 1
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/ruin/unpowered)
@@ -26,108 +24,41 @@
 "af" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/ship/external,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/ruin/unpowered)
-"ag" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/template_noop,
-/area/template_noop)
-"ah" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "ai" = (
 /obj/machinery/door/airlock/ship/external,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/ruin/unpowered)
-"aj" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/ruin/unpowered)
-"ak" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/plating,
-/area/ruin/unpowered)
-"al" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/template_noop,
-/area/template_noop)
-"am" = (
-/obj/machinery/door/airlock/ship/maintenance{
-	req_one_access_txt = "201"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "an" = (
 /obj/structure/lattice,
 /turf/template_noop,
 /area/template_noop)
-"ao" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/durasteel/padded,
-/area/ruin/unpowered)
 "ap" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/structure/table_frame,
 /obj/item/shard,
 /turf/open/floor/durasteel/padded,
 /area/ruin/unpowered)
 "aq" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/structure/table_frame,
 /turf/open/floor/durasteel/padded,
 /area/ruin/unpowered)
 "ar" = (
 /obj/structure/table/glass,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/durasteel/padded,
 /area/ruin/unpowered)
 "as" = (
 /obj/structure/grille/broken,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "at" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/effect/gibspawner/human,
 /mob/living/simple_animal/hostile/retaliate/bat,
 /turf/open/floor/plating,
@@ -143,9 +74,7 @@
 /obj/machinery/door/airlock/ship/maintenance{
 	req_one_access_txt = "201"
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "ax" = (
@@ -169,9 +98,7 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "aD" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/light/small/broken{
 	dir = 4
 	},
@@ -182,9 +109,7 @@
 /turf/open/floor/carpet/ship/red_carpet,
 /area/ruin/unpowered)
 "aF" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/durasteel/padded,
 /area/ruin/unpowered)
 "aG" = (
@@ -209,18 +134,14 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "aK" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
 	},
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "aL" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
 	},
@@ -267,17 +188,13 @@
 /area/ruin/unpowered)
 "aR" = (
 /obj/structure/grille/broken,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/binary/valve,
 /obj/structure/fluff/support_beam,
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "aS" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/durasteel/padded,
@@ -291,9 +208,7 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "aV" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plating,
 /area/ruin/unpowered)
@@ -359,9 +274,7 @@
 /turf/open/floor/durasteel/padded,
 /area/ruin/unpowered)
 "bh" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/light/broken{
 	dir = 4
 	},
@@ -384,13 +297,6 @@
 	},
 /turf/open/floor/durasteel/riveted,
 /area/ruin/unpowered)
-"bl" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/template_noop,
-/area/template_noop)
 "bm" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
@@ -415,15 +321,7 @@
 /area/template_noop)
 "bp" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/template_noop,
 /area/template_noop)
 "bq" = (
@@ -508,9 +406,7 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "bC" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
 	},
@@ -549,16 +445,8 @@
 	},
 /turf/open/floor/durasteel/padded,
 /area/ruin/unpowered)
-"bJ" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/floor/plating,
-/area/ruin/unpowered)
 "bK" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
 /area/ruin/unpowered)
@@ -626,9 +514,7 @@
 /turf/open/floor/durasteel/riveted,
 /area/ruin/unpowered)
 "bU" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/structure/fluff/support_beam,
 /turf/open/floor/plating,
 /area/ruin/unpowered)
@@ -639,9 +525,7 @@
 /turf/open/floor/durasteel/padded,
 /area/ruin/unpowered)
 "bW" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
 	},
@@ -672,12 +556,6 @@
 	},
 /turf/open/floor/durasteel/riveted,
 /area/ruin/unpowered)
-"cb" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
-/area/ruin/unpowered)
 "cc" = (
 /obj/structure/reagent_dispensers/plumbed,
 /turf/open/floor/plating,
@@ -689,9 +567,7 @@
 /turf/open/floor/durasteel/padded,
 /area/ruin/unpowered)
 "ce" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -756,18 +632,6 @@
 "ck" = (
 /turf/template_noop,
 /area/ruin/unpowered)
-"cl" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/open/floor/plating,
-/area/ruin/unpowered)
-"cm" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/plating,
-/area/ruin/unpowered)
 "cn" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/durasteel/padded,
@@ -804,9 +668,7 @@
 /turf/open/floor/durasteel,
 /area/ruin/unpowered)
 "ct" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
 	},
@@ -943,9 +805,7 @@
 /turf/open/floor/durasteel/riveted,
 /area/ruin/unpowered)
 "cM" = (
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/ruin/unpowered)
@@ -996,9 +856,7 @@
 /turf/open/floor/durasteel/padded,
 /area/ruin/unpowered)
 "cW" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
 	},
@@ -1009,9 +867,7 @@
 /area/ruin/unpowered)
 "cX" = (
 /obj/structure/holosign/barrier,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -1021,9 +877,7 @@
 /turf/open/floor/durasteel/riveted,
 /area/ruin/unpowered)
 "cY" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -1033,12 +887,7 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "cZ" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
 	},
@@ -1048,18 +897,14 @@
 /turf/open/floor/durasteel/riveted,
 /area/ruin/unpowered)
 "da" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
 	dir = 10
 	},
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "db" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "dc" = (
@@ -1987,18 +1832,18 @@ aa
 aa
 aa
 aa
-ag
-bl
-bl
-bl
 bp
-bl
 bp
-bl
 bp
-bl
 bp
-bl
+bp
+bp
+bp
+bp
+bp
+bp
+bp
+bp
 bp
 aO
 aa
@@ -2029,7 +1874,7 @@ aa
 aa
 aa
 aa
-al
+bp
 aa
 aa
 aa
@@ -2113,7 +1958,7 @@ aa
 aa
 ab
 ac
-ah
+db
 au
 ab
 aa
@@ -2197,7 +2042,7 @@ aa
 aa
 aa
 ab
-aj
+db
 av
 ay
 ay
@@ -2239,7 +2084,7 @@ aa
 aa
 aa
 ab
-ak
+db
 aw
 aF
 aL
@@ -2281,7 +2126,7 @@ aa
 aa
 aa
 ab
-aj
+db
 av
 ay
 aM
@@ -2323,7 +2168,7 @@ aa
 aa
 aa
 ab
-aj
+db
 av
 aG
 aM
@@ -2365,7 +2210,7 @@ aa
 aa
 aa
 ab
-aj
+db
 av
 ay
 aM
@@ -2407,7 +2252,7 @@ aa
 aa
 aa
 ab
-aj
+db
 av
 aH
 aN
@@ -2449,7 +2294,7 @@ aa
 aa
 aa
 ab
-aj
+db
 av
 ay
 aM
@@ -2491,7 +2336,7 @@ aa
 aa
 aa
 ab
-am
+aw
 av
 ay
 aM
@@ -2533,7 +2378,7 @@ aa
 aa
 aa
 ab
-ao
+aF
 ay
 ay
 aM
@@ -2701,7 +2546,7 @@ aa
 aa
 aa
 ab
-ao
+aF
 aB
 ay
 aM
@@ -2743,7 +2588,7 @@ aa
 aa
 aa
 ab
-am
+aw
 av
 ay
 aM
@@ -2785,7 +2630,7 @@ aa
 aa
 aa
 ab
-aj
+db
 av
 ay
 aM
@@ -2827,7 +2672,7 @@ aa
 aa
 aa
 ab
-aj
+db
 av
 ay
 aM
@@ -2869,7 +2714,7 @@ aa
 aa
 aa
 ab
-aj
+db
 av
 aG
 aM
@@ -2911,7 +2756,7 @@ aa
 aa
 aa
 ab
-aj
+db
 av
 aH
 aN
@@ -2953,7 +2798,7 @@ aa
 aa
 aa
 ab
-aj
+db
 av
 ay
 aM
@@ -2995,7 +2840,7 @@ aa
 aa
 aa
 ab
-aj
+db
 av
 ay
 aQ
@@ -3037,7 +2882,7 @@ aa
 aa
 aa
 ab
-aj
+db
 av
 ay
 ay
@@ -3121,17 +2966,17 @@ aa
 aa
 aa
 ab
-aj
+db
 aC
 aJ
 av
 aU
 aU
 bB
-bJ
+db
 bU
-cb
-cl
+db
+db
 av
 cs
 ek
@@ -3173,7 +3018,7 @@ bC
 bK
 av
 cc
-cm
+db
 aw
 ct
 cB

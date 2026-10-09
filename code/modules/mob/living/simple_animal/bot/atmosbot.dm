@@ -64,6 +64,7 @@
 		GAS_H2O = 0,
 		GAS_CONSTRICTED_PLASMA = 1, //NSV13
 		GAS_NUCLEIUM = 1, //NSV13
+		GAS_MIASMA = 1, // AQ EDIT - Miasma
 	)
 
 	//Tank type

@@ -7,6 +7,8 @@
 	var/message
 	var/turf/T = get_turf(user)
 	var/lose_butt = prob(12)
+	if(isopenturf(T) && !isspaceturf(T))
+		SSmiasma.emit(T, MIASMA_FART_MOLES)
 	for(var/mob/living/M in T)
 		if(M == user)
 			continue
@@ -53,7 +55,7 @@
 		else
 			playsound(user, fart_sound, 50, TRUE, 5)
 		if(prob(33))
-			O.forceMove(T)
+			eject_item(O, T)
 	else
 		playsound(user, fart_sound, 50, TRUE, 5)
 
@@ -127,7 +129,7 @@
 	var/shoot_dir = turn(user.dir, 180)
 	if(inv)
 		for(var/obj/item/O in inv.contents)
-			O.forceMove(T)
+			eject_item(O, T)
 			var/turf/target = T
 			for(var/i in 1 to 6)
 				var/turf/next = get_step(target, shoot_dir)
