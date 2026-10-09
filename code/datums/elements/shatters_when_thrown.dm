@@ -60,7 +60,7 @@
 	playsound(scatter_turf, shattering_sound, 60, TRUE)
 	if(isobj(source))
 		var/obj/obj_source = source
-		obj_source.deconstruct(FALSE)
+		INVOKE_ASYNC(obj_source, TYPE_PROC_REF(/obj, deconstruct), FALSE) //NSV13 - async, some deconstruct() overrides sleep
 		return
 	else
 		qdel(source)

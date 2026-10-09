@@ -805,14 +805,15 @@
 
 	return
 
-/datum/reagents/proc/get_reagent_amount(reagent)
+/datum/reagents/proc/get_reagent_amount(reagent, include_subtypes = FALSE)
 	var/list/cached_reagents = reagent_list
+	var/total_amount = 0
 	for(var/_reagent in cached_reagents)
 		var/datum/reagent/R = _reagent
-		if (R.type == reagent)
-			return round(R.volume, CHEMICAL_QUANTISATION_LEVEL)
+		if(R.type == reagent || (include_subtypes && ispath(R.type, reagent)))
+			total_amount += round(R.volume, CHEMICAL_QUANTISATION_LEVEL)
 
-	return 0
+	return total_amount
 
 /datum/reagents/proc/get_reagents()
 	var/list/names = list()
