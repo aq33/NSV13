@@ -93,6 +93,10 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/nsv/trauma)
+"aj" = (
+/obj/machinery/griddle,
+/turf/open/floor/wood,
+/area/crew_quarters/kitchen)
 "ak" = (
 /obj/structure/cable,
 /turf/open/floor/carpet/ship/red_carpet,
@@ -114,6 +118,40 @@
 	},
 /turf/open/floor/engine/light,
 /area/crew_quarters/heads/captain/private)
+"an" = (
+/obj/effect/landmark/event_spawn,
+/obj/machinery/oven,
+/turf/open/floor/wood,
+/area/crew_quarters/kitchen)
+"ao" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/condiment/enzyme{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/glass/beaker{
+	list_reagents = list(/datum/reagent/blood=50);
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/kitchen/knife,
+/obj/item/kitchen/rollingpin,
+/turf/open/floor/wood,
+/area/crew_quarters/kitchen)
+"ap" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/condiment/saltshaker,
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/sugar{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/turf/open/floor/wood,
+/area/crew_quarters/kitchen)
 "aq" = (
 /obj/machinery/hydroponics/constructable,
 /turf/open/floor/grass,
@@ -2114,19 +2152,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/effect/landmark/zebra_interlock_point,
-/turf/open/floor/wood,
-/area/crew_quarters/kitchen)
-"hC" = (
-/obj/structure/table/wood,
-/obj/item/reagent_containers/food/condiment/enzyme{
-	pixel_x = -3;
-	pixel_y = 4
-	},
-/obj/item/reagent_containers/glass/beaker{
-	list_reagents = list(/datum/reagent/blood=50);
-	pixel_x = 6;
-	pixel_y = 9
-	},
 /turf/open/floor/wood,
 /area/crew_quarters/kitchen)
 "hE" = (
@@ -6509,13 +6534,6 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/open/floor/grass,
 /area/crew_quarters/dorms/nsv/nature_deck)
-"xK" = (
-/obj/structure/table/wood,
-/obj/item/kitchen/knife,
-/obj/effect/landmark/event_spawn,
-/obj/item/kitchen/rollingpin,
-/turf/open/floor/wood,
-/area/crew_quarters/kitchen)
 "xL" = (
 /obj/machinery/stasis,
 /obj/effect/turf_decal/tile/ship/blue{
@@ -7102,15 +7120,6 @@
 "zU" = (
 /turf/closed/wall/r_wall/ship,
 /area/medical/nsv/trauma)
-"zV" = (
-/obj/structure/table/wood,
-/obj/item/reagent_containers/food/condiment/saltshaker,
-/obj/item/reagent_containers/food/condiment/peppermill{
-	pixel_x = 3;
-	pixel_y = 4
-	},
-/turf/open/floor/wood,
-/area/crew_quarters/kitchen)
 "zY" = (
 /obj/machinery/computer/crew,
 /turf/open/floor/carpet/blue,
@@ -9864,15 +9873,6 @@
 /obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plasteel/tiled/light,
 /area/hallway/secondary/exit)
-"JP" = (
-/obj/structure/table/wood,
-/obj/item/reagent_containers/food/condiment/flour,
-/obj/item/reagent_containers/food/condiment/sugar{
-	pixel_x = 4;
-	pixel_y = 2
-	},
-/turf/open/floor/wood,
-/area/crew_quarters/kitchen)
 "JR" = (
 /obj/machinery/computer/robotics{
 	dir = 1
@@ -43997,7 +43997,7 @@ gJ
 tx
 uX
 Jk
-JP
+aj
 zb
 WS
 Eu
@@ -44254,7 +44254,7 @@ mz
 tx
 NP
 nY
-xK
+an
 jz
 WS
 ut
@@ -44511,7 +44511,7 @@ gJ
 tx
 Uz
 Jk
-hC
+ao
 ib
 hq
 Kb
@@ -44768,7 +44768,7 @@ gJ
 tx
 XD
 iW
-zV
+ap
 yi
 WG
 ym
