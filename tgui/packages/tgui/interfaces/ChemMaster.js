@@ -445,15 +445,12 @@ const PackagingControls = ({ volume, packagingName }, context) => {
           amountUnit="packs"
           sideNote="max 10u"
           onChangeAmount={(e, value) => setPackAmount(value)}
-          onCreate={() =>
-            act('create', {
-              type: 'condimentPack',
-              amount: packAmount,
-              volume: volume, // NSV13
-              name: packagingName, // NSV13
-            })
-          }
-        />
+          onCreate={() => act('create', {
+            type: 'condimentPack',
+            amount: packAmount,
+            volume: volume, // NSV13
+            name: packagingName, // NSV13
+          })} />
       )}
     </LabeledList>
   );

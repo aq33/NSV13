@@ -13965,7 +13965,7 @@
 "oXn" = (
 /obj/structure/table/wood,
 /obj/item/food/chocolatebar{
-	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/medicine/adminordrazine = 1, /datum/reagent/consumable/cocoa = 2)
+	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/medicine/adminordrazine = 1, /datum/reagent/consumable/cocoa = 2)
 	},
 /turf/open/floor/carpet/cyan,
 /area/medical/medbay/central)
