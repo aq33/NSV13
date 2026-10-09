@@ -1,3 +1,5 @@
+// Jukebox gra wyłącznie playlisty z YouTube (jukebox_youtube.dm). Tutaj: maszyna, UI i zasięg słyszenia.
+
 /obj/machinery/jukebox
 	name = "Jukebox"
 	desc = "Tradycyjny odtwarzacz muzyczny."
@@ -9,10 +11,6 @@
 	interaction_flags_machine = INTERACT_MACHINE_SET_MACHINE | INTERACT_MACHINE_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON
 	max_integrity = 500
 	integrity_failure = 250
-	var/active = FALSE
-	var/stop = 0
-	var/selection = 1
-	var/channel = null
 	var/state_base = "jukebox"
 	var/seconds_electrified = MACHINE_NOT_ELECTRIFIED
 	var/speed_servo_regulator_cut = FALSE //vaporwave
@@ -20,9 +18,22 @@
 	var/mains = TRUE
 	var/verify = TRUE
 	var/speed_potentiometer = 1.0
+	/// Przecięty kabel: nie da się wybrać utworu z listy
 	var/selection_blocked = FALSE
+	/// Przecięty kabel: nie da się zatrzymać muzyki
 	var/stop_blocked = FALSE
-	var/list_source = list()
+	/// Gałka głośności w procentach
+	var/volume = 50
+	/// Promień (w kratkach) okręgu, w którym słychać muzykę
+	var/music_range = 20
+	/// Do tej odległości muzyka gra pełną głośnością, dalej cichnie
+	var/music_full_range = 3
+	/// O ile kratek "dalej" jest pokład nad/pod jukeboxem
+	var/music_deck_penalty = 4
+	/// Pamięć wygłuszenia przeszkód: turf słuchacza -> suma (odświeżana co kilka sekund)
+	var/list/dampening_cache = list()
+	var/dampening_cache_time = 0
+	var/turf/dampening_cache_from = null
 
 /obj/machinery/jukebox/disco
 	name = "Disco Jukebox"
@@ -38,26 +49,23 @@
 /obj/machinery/jukebox/Initialize()
 	. = ..()
 	wires = new /datum/wires/jukebox(src)
-	list_source = SSjukeboxes.song_lib
 	update_icon()
 
 /obj/machinery/jukebox/Destroy()
-	if(!isnull(channel))
-		SSjukeboxes.remove_jukebox(channel)
-		channel = null
+	yt_stop()
 	QDEL_NULL(wires)
 	return ..()
 
 /obj/machinery/jukebox/power_change()
 	..()
 	update_icon()
-	if((machine_stat & NOPOWER) || !mains)
-		stop = 0
+	if(((machine_stat & NOPOWER) || !mains) && yt_active)
+		yt_stop()
 
 /obj/machinery/jukebox/obj_break()
 	. = ..()
 	if(.)
-		stop = 0
+		yt_stop()
 		playsound(loc, 'sound/effects/glassbr3.ogg', 100, 1)
 
 /obj/machinery/jukebox/attackby(obj/item/I, mob/user, params)
@@ -85,7 +93,8 @@
 /obj/machinery/jukebox/default_unfasten_wrench(mob/user, obj/item/I, time = 20)
 	. = ..()
 	if(. == SUCCESSFUL_UNFASTEN)
-		stop = 0
+		if(!anchored)
+			yt_stop()
 		update_icon()
 
 /obj/machinery/jukebox/_try_interact(mob/user)
@@ -116,7 +125,7 @@
 			overlays += image(icon = icon, icon_state = "[state_base]-broken")
 		else
 			overlays += image(icon = icon, icon_state = "[state_base]-powered")
-			if(active)
+			if(yt_active)
 				overlays += image(icon = icon, icon_state = "[state_base]-playing")
 
 /obj/machinery/jukebox/ui_interact(mob/user)
@@ -128,19 +137,8 @@
 	if (!anchored)
 		to_chat(user,"<span class='warning'>To urządzenie musi wpierw był przykręcone do podłoża!</span>")
 		return
-	if(!SSjukeboxes.songs.len)
-		to_chat(user,"<span class='warning'>Błąd: nie znaleziono żadnych utworów. Skonsultuj się z Centralą.</span>")
-		playsound(src,'sound/machines/deniedbeep.ogg', 50, 1)
-		return
-	var/list/dat = list()
-	dat += "<div class='statusDisplay' style='text-align:center'>"
-	dat += "<b><a href='byond://?src=[REF(src)];action=toggle'>[!active ? "BREAK IT DOWN" : "SHUT IT DOWN"]</a><b><br>"
-	dat += "</div><br>"
-	dat += "<A href='byond://?src=[REF(src)];action=select'> Select Track</A><br>"
-	dat += "Track Selected: [SSjukeboxes.songs[selection].name]<br>"
-	dat += "Track Length: [DisplayTimeText(SSjukeboxes.songs[selection].length)]<br><br>"
-	var/datum/browser/popup = new(user, "vending", "[name]", 400, 350)
-	popup.set_content(dat.Join())
+	var/datum/browser/popup = new(user, "vending", "[name]", 500, 680)
+	popup.set_content(yt_ui(user))
 	popup.open()
 
 /obj/machinery/jukebox/Topic(href, href_list)
@@ -159,56 +157,28 @@
 	if(seconds_electrified)
 		if(shock(usr, 100))
 			return
+	if(findtext(href_list["action"], "yt_") == 1)
+		yt_topic(href_list["action"], href_list, usr)
+		return
 	switch(href_list["action"])
-		if("toggle")
-			if(!active)
-				attempt_playback()
+		if("stop")
+			if(stop_blocked)
+				to_chat(usr, "<span class='warning'>Wciskasz przycisk zatrzymania odtwarzania, ale nic się nie dzieje. Dziwne.</span>")
 			else
-				if (stop_blocked)
-					to_chat(usr, "<span class='warning'>Wciskasz przycisk zatrzymania odtwarzania, ale nic się nie dzieje. Dziwne.</span>")
-				else
-					stop = 0
-		if("select")
-			if(active)
-				to_chat(usr, "<span class='warning'>Nie można wybrać innego utworu gdy trwa odtwarzanie.</span>")
-				playsound(src, 'sound/machines/deniedbeep.ogg', 50, 1)
-				return
-			if(selection_blocked)
-				to_chat(usr, "<span class='warning'>Wciskasz przycisk wyboru utworu, ale nic się nie dzieje. Smutne!</span>")
-				return
-			var/selected = input(usr, "Choose your song", "Track:") as null|anything in list_source
-			if(QDELETED(src) || !selected)
-				return
-			selection = list_source[selected]
-			updateUsrDialog()
-
-/obj/machinery/jukebox/proc/activate_music()
-	if(machine_stat & (BROKEN|NOPOWER) || !mains)
-		return FALSE
-	var/speed_factor = get_speed_factor()
-	channel = SSjukeboxes.add_jukebox(src, selection, speed_factor)
-	if(isnull(channel))
-		return null
-	active = TRUE
-	playsound(src,'sound/machines/terminal_on.ogg',50,TRUE)
-	update_icon()
-	stop = world.time + (SSjukeboxes.songs[selection].length * (1/speed_factor))
-	START_PROCESSING(SSobj, src)
-	return TRUE
+				yt_stop()
+		if("volume")
+			volume = clamp(volume + text2num(href_list["delta"]), 10, 100)
+			if(yt_active)
+				yt_update_listeners()
+	updateUsrDialog()
 
 /obj/machinery/jukebox/process()
 	if(seconds_electrified > MACHINE_NOT_ELECTRIFIED)
 		seconds_electrified--
-	if(world.time >= stop && active)
-		active = FALSE
-		STOP_PROCESSING(SSobj, src)
-		playsound(src,'sound/machines/terminal_off.ogg',50,TRUE)
-		updateUsrDialog()
-		update_icon()
-		SSjukeboxes.remove_jukebox(channel)
-		channel = null
-		stop = world.time + 25
+	if(yt_active)
+		yt_process()
 
+/// Tempo odtwarzania ustawiane kablami (vaporwave / nightcore)
 /obj/machinery/jukebox/proc/get_speed_factor()
 	var/speed_factor = 1.0
 	if (speed_servo_regulator_cut)
@@ -218,22 +188,76 @@
 	speed_factor *= speed_potentiometer
 	return speed_factor
 
-/obj/machinery/jukebox/proc/pick_random(specific_list = list_source)
-	var/selected = pick(specific_list)
-	if(QDELETED(src) || !selected)
-		return
-	selection = specific_list[selected]
-	updateUsrDialog()
+/// Jak daleko gracz jest w strefie wyciszania: 0 = przy jukeboxie (pełna głośność), 1 = na krawędzi okręgu.
+/// null gdy gracz nic nie słyszy (poza okręgiem, niepołączony z-level, wyłączone instrumenty, głuchy).
+/// Pokład tuż nad/pod jukeboxem też słyszy, ale jakby był dalej o music_deck_penalty kratek.
+/obj/machinery/jukebox/proc/hearing_fraction(mob/M)
+	if(!M?.client || !(M.client.prefs.toggles & PREFTOGGLE_SOUND_INSTRUMENTS) || !M.can_hear())
+		return null
+	var/turf/T = get_turf(M)
+	var/turf/our_turf = get_turf(src)
+	if(!T || !our_turf)
+		return null
+	var/distance = sqrt((T.x - our_turf.x) ** 2 + (T.y - our_turf.y) ** 2)
+	if(T.z != our_turf.z)
+		if(!is_adjacent_deck(T))
+			return null
+		distance += music_deck_penalty
+	if(distance > music_range)
+		return null
+	return clamp((distance - music_full_range) / (music_range - music_full_range), 0, 1)
 
-/obj/machinery/jukebox/proc/attempt_playback()
-	if (QDELETED(src))
-		return
-	if(stop > world.time)
-		to_chat(usr, "<span class='warning'>Urządzenie wciąż parkuje płytę, spróbuj ponownie za [DisplayTimeText(stop-world.time)].</span>")
-		playsound(src, 'sound/machines/deniedbeep.ogg', 50, TRUE)
-		return
-	if(!activate_music())
-		to_chat(usr, "<span class='warning'>Błąd sprzętowy, spróbuj ponownie.</span>")
-		playsound(src, 'sound/machines/deniedbeep.ogg', 50, TRUE)
-		return
-	updateUsrDialog()
+/// Czy turf leży na pokładzie bezpośrednio nad albo pod jukeboxem (połączone z-levele)
+/obj/machinery/jukebox/proc/is_adjacent_deck(turf/T)
+	var/turf/our_turf = get_turf(src)
+	var/turf/other = our_turf?.above()
+	if(other && other.z == T.z)
+		return TRUE
+	other = our_turf?.below()
+	return other && other.z == T.z
+
+/// Mnożnik głośności 0-1: okrąg o promieniu music_range, cichnie płynnie (krzywa cosinusowa, bez skoków na początku i końcu).
+/obj/machinery/jukebox/proc/hearing_gain(mob/M)
+	var/fraction = hearing_fraction(M)
+	if(isnull(fraction))
+		return 0
+	return (1 + cos(180 * fraction)) / 2
+
+/// Ilość echa 0-1: brak przy jukeboxie, rośnie z odległością.
+/obj/machinery/jukebox/proc/echo_amount(mob/M)
+	var/fraction = hearing_fraction(M)
+	if(isnull(fraction))
+		return 0
+	return clamp((fraction - 0.1) / 0.6, 0, 1)
+
+/// Przytłumienie 0-1 (jak zza ściany): pełne na innym pokładzie, na tym samym - suma wygłuszenia przeszkód po drodze.
+/obj/machinery/jukebox/proc/muffle_amount(mob/M)
+	var/turf/T = get_turf(M)
+	var/turf/our_turf = get_turf(src)
+	if(!T || !our_turf)
+		return 0
+	if(T.z != our_turf.z)
+		return 1
+	return min(1, obstacle_dampening(T))
+
+/// Suma sound_dampening ścian, okien i zamkniętych drzwi na linii jukebox -> turf (wynik trzymany 3 s na turf).
+/obj/machinery/jukebox/proc/obstacle_dampening(turf/T)
+	var/turf/our_turf = get_turf(src)
+	if(dampening_cache_time + 3 SECONDS < world.time || dampening_cache_from != our_turf)
+		dampening_cache = list()
+		dampening_cache_time = world.time
+		dampening_cache_from = our_turf
+	if(!isnull(dampening_cache[T]))
+		return dampening_cache[T]
+	var/total = 0
+	for(var/turf/line_turf as anything in getline(our_turf, T))
+		if(line_turf == our_turf)
+			continue
+		total += line_turf.get_sound_dampening()
+		for(var/obj/O in line_turf)
+			if(O.sound_dampening)
+				total += O.get_sound_dampening()
+		if(total >= 1)
+			break
+	dampening_cache[T] = total
+	return total

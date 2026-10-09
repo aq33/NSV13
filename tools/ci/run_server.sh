@@ -7,7 +7,7 @@ mkdir ci_test/config
 
 #test config
 cp tools/ci/ci_config.txt ci_test/config/config.txt
-# AQUILA - aquila_chrono_legionnaire_names reads the tyrant list at runtime
+# AQUILA - configi czytane przez kod przy starcie, testy jednostkowe na nich polegaja
 cp config/chrono_legionnaire_names.txt ci_test/config/
 
 cd ci_test

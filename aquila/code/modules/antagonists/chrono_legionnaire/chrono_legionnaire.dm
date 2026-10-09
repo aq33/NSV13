@@ -1,6 +1,6 @@
 // AQUILA - Chrono Legionnaire: a time agent sent to erase a player who named their character after a historical tyrant.
 // Uses the existing Timeline Eradication Agent gear (chronosuit + T.E.D.). Spawned by the event in
-// aquila/code/modules/events/chrono_legionnaire.dm, only when somebody on the server has such a name.
+// aquila/code/modules/events/chrono_legionnaire.dm, only when somebody on the server has such a name or a paradox clone is around.
 
 /// Text file with the names the legion hunts for, read once when the server starts
 #define CHRONO_LEGIONNAIRE_NAMES_FILE "config/chrono_legionnaire_names.txt"
@@ -68,7 +68,13 @@ GLOBAL_LIST_INIT(aquila_chrono_name_exceptions, list(
 			return GLOB.aquila_chrono_historical_names[fragment]
 	return null
 
-/// Living, connected players whose character is named after a historical tyrant
+/// Why the legion hunts this person: the historical figure their name refers to, or "Klon Paradoksu" for a paradox clone. Null for everyone else.
+/proc/aquila_chrono_target_reason(mob/living/carbon/human/H)
+	if(H.mind?.has_antag_datum(/datum/antagonist/paradox_clone))
+		return "Klon Paradoksu"
+	return aquila_chrono_historical_figure(H.real_name)
+
+/// Living, connected players named after a historical tyrant, plus paradox clones
 /proc/aquila_chrono_find_targets()
 	. = list()
 	for(var/mob/living/carbon/human/player in GLOB.player_list)
@@ -76,7 +82,7 @@ GLOBAL_LIST_INIT(aquila_chrono_name_exceptions, list(
 			continue
 		if(player.mind.has_antag_datum(/datum/antagonist/chrono_legionnaire))
 			continue
-		if(aquila_chrono_historical_figure(player.real_name))
+		if(aquila_chrono_target_reason(player))
 			. += player
 
 /datum/antagonist/chrono_legionnaire
@@ -114,7 +120,7 @@ GLOBAL_LIST_INIT(aquila_chrono_name_exceptions, list(
 /datum/antagonist/chrono_legionnaire/greet()
 	owner.current.playsound_local(get_turf(owner.current), 'sound/magic/timeparadox2.ogg', 50, FALSE, pressure_affected = FALSE)
 	to_chat(owner, "<span class='userdanger'>Jesteś Legionistą Czasu!</span>")
-	to_chat(owner, "<B>Legion Czasu strzeże linii czasu przed powrotem największych tyranów historii. Ktoś na tym statku nosi imię, które nie może się powtórzyć.</B>")
+	to_chat(owner, "<B>Legion Czasu strzeże linii czasu przed powrotem największych tyranów historii. Ktoś na tym statku zagraża linii czasu: nosi imię, które nie może się powtórzyć, albo jest paradoksem, który nie powinien istnieć.</B>")
 	to_chat(owner, "<B>Twój T.E.D. na plecach wymazuje cel z linii czasu: włącz go, trafiaj wiązką i trzymaj cel w zasięgu, aż zniknie. Chronoskafander pozwala ci przemieszczać się przez czasoprzestrzeń.</B>")
 	to_chat(owner, "<B>Interesuje cię tylko twój cel. Po jego wyeliminowaniu zostaniesz wycofany do swojej epoki.</B>")
 
@@ -136,7 +142,7 @@ GLOBAL_LIST_INIT(aquila_chrono_name_exceptions, list(
 
 	owner.announce_objectives()
 	owner.current.client?.tgui_panel?.give_antagonist_popup("Legionista Czasu",
-		"Wyeliminuj [target_mind.name], nim [figure || "tyran"] powróci do historii.")
+		erase.explanation_text)
 
 /datum/antagonist/chrono_legionnaire/proc/stop_tracking()
 	var/datum/mind/target_mind = target_ref?.resolve()
@@ -182,6 +188,9 @@ GLOBAL_LIST_INIT(aquila_chrono_name_exceptions, list(
 	if(!target?.current)
 		explanation_text = "Cel dowolny"
 		return
+	if(target.has_antag_datum(/datum/antagonist/paradox_clone))
+		explanation_text = "Wyeliminuj [target.name]. To klon z innej rzeczywistości, paradoks rozdzierający linię czasu. Nie krzywdź nikogo innego, chyba że musisz."
+		return
 	explanation_text = "Wyeliminuj [target.name], [!target_role_type ? target.assigned_role : target.special_role]. To imię nie może dać [historical_figure || "tyranowi"] drugiej szansy w historii. Nie krzywdź nikogo innego, chyba że musisz."
 
 /datum/outfit/chrono_legionnaire
@@ -208,7 +217,7 @@ GLOBAL_LIST_INIT(aquila_chrono_name_exceptions, list(
 	player_mind.active = TRUE
 	player_mind.transfer_to(legionnaire)
 
-	var/figure = aquila_chrono_historical_figure(target.real_name)
+	var/figure = aquila_chrono_target_reason(target)
 	if(!target.mind) // an admin may pick a body nobody has played yet
 		target.mind_initialize()
 	var/datum/antagonist/chrono_legionnaire/legion = player_mind.add_antag_datum(/datum/antagonist/chrono_legionnaire)

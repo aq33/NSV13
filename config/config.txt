@@ -310,7 +310,8 @@ BANAPPEALS https://forums-nsv.beestation13.com/c/administration/ban-appeals/6
 ## The default value assumes youtube-dl is in your system PATH
 #INVOKE_YOUTUBEDL C:\TGSINSTANCES\NSV\Static\youtube-dl.exe
 
-@INVOKE_YOUTUBEDL C:\youtubedl\youtube-dl.exe --no-check-certificate
+## AQUILA EDIT - yt-dlp.exe leży w repo (katalog główny, obok rust_g.dll) i deploy.sh kopiuje go obok nsv13.dmb
+@INVOKE_YOUTUBEDL .\yt-dlp.exe --no-check-certificate
 
 ## In-game features
 ##Toggle for having jobs load up from the .txt
