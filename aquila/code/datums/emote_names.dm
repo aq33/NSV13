@@ -1,412 +1,412 @@
 // Polish names of emotes, shown in the emote panel. The key (what you type after *) stays English.
 
 /datum/emote/flip
-	name = "zrobić salto"
+	name = "zrób salto"
 
 /datum/emote/spin
-	name = "zakręcić się"
+	name = "zakręć się"
 
 /datum/emote/inhale
-	name = "wziąć wdech"
+	name = "weź wdech"
 
 /datum/emote/exhale
-	name = "zrobić wydech"
+	name = "zrób wydech"
 
 /datum/emote/beep
-	name = "piknąć"
+	name = "piknij"
 
 /datum/emote/brain/alarm
-	name = "włączyć alarm"
+	name = "włącz alarm"
 
 /datum/emote/brain/alert
-	name = "wydać niespokojny dźwięk"
+	name = "wydaj niespokojny dźwięk"
 
 /datum/emote/brain/flash
-	name = "mrugnąć światełkami"
+	name = "mrugnij światełkami"
 
 /datum/emote/brain/notice
-	name = "wydać głośny ton"
+	name = "wydaj głośny ton"
 
 /datum/emote/brain/whistle
-	name = "gwizdać"
+	name = "gwiżdż"
 
 /datum/emote/gorilla/ooga
-	name = "uga-bugać"
+	name = "uga-bugaj"
 
 /datum/emote/silicon/boop
-	name = "zrobić bup"
+	name = "zrób bup"
 
 /datum/emote/silicon/buzz
-	name = "brzęczeć"
+	name = "brzęcz"
 
 /datum/emote/silicon/buzz2
-	name = "brzęczeć dwukrotnie"
+	name = "brzęcz dwukrotnie"
 
 /datum/emote/silicon/chime
-	name = "zadzwonić"
+	name = "zadzwoń"
 
 /datum/emote/silicon/honk
-	name = "zatrąbić"
+	name = "zatrąb"
 
 /datum/emote/silicon/ping
-	name = "brzdęknąć"
+	name = "brzdęknij"
 
 /datum/emote/silicon/sad
-	name = "smutny puzon"
+	name = "zagraj na smutnym puzonie"
 
 /datum/emote/silicon/warn
-	name = "włączyć głośny alarm"
+	name = "włącz głośny alarm"
 
 /datum/emote/slime/bounce
-	name = "podskakiwać"
+	name = "podskakuj"
 
 /datum/emote/slime/jiggle
-	name = "trząść się"
+	name = "trzęś się"
 
 /datum/emote/slime/light
-	name = "rozbłysnąć"
+	name = "rozbłyśnij"
 
 /datum/emote/slime/vibrate
-	name = "wibrować"
+	name = "wibruj"
 
 /datum/emote/slime/mood
-	name = "mina: brak"
+	name = "zrób zwykłą minę"
 
 /datum/emote/slime/mood/sneaky
-	name = "mina: chytra"
+	name = "zrób chytrą minę"
 
 /datum/emote/slime/mood/smile
-	name = "mina: uśmiech"
+	name = "uśmiechnij się"
 
 /datum/emote/slime/mood/cat
-	name = "mina: kocia"
+	name = "zrób kocią minę"
 
 /datum/emote/slime/mood/pout
-	name = "mina: nadąsana"
+	name = "zrób nadąsaną minę"
 
 /datum/emote/slime/mood/sad
-	name = "mina: smutna"
+	name = "zrób smutną minę"
 
 /datum/emote/slime/mood/angry
-	name = "mina: zła"
+	name = "zrób złą minę"
 
 /datum/emote/living/alien/gnarl
-	name = "warczeć"
+	name = "warcz"
 
 /datum/emote/living/alien/hiss
-	name = "syczeć"
+	name = "syknij"
 
 /datum/emote/living/alien/roar
-	name = "ryczeć"
+	name = "rycz"
 
 /datum/emote/living/alien/fart
-	name = "pierdnąć"
+	name = "pierdnij"
 
 /datum/emote/living/carbon/airguitar
-	name = "grać na powietrznej gitarze"
+	name = "graj na powietrznej gitarze"
 
 /datum/emote/living/carbon/blink
-	name = "mrugać"
+	name = "mrugnij"
 
 /datum/emote/living/carbon/clap
-	name = "klaskać"
+	name = "klaszcz"
 
 /datum/emote/living/carbon/gnarl
-	name = "warczeć"
+	name = "warcz"
 
 /datum/emote/living/carbon/moan
-	name = "jęczeć"
+	name = "jęcz"
 
 /datum/emote/living/carbon/roll
-	name = "turlać się"
+	name = "turlaj się"
 
 /datum/emote/living/carbon/scratch
-	name = "drapać się"
+	name = "podrap się"
 
 /datum/emote/living/carbon/screech
-	name = "skrzeczeć"
+	name = "skrzecz"
 
 /datum/emote/living/carbon/screech/roar
-	name = "ryczeć"
+	name = "rycz"
 
 /datum/emote/living/carbon/sign
-	name = "pokazać liczbę"
+	name = "pokaż liczbę"
 
 /datum/emote/living/carbon/sign/signal
-	name = "pokazać palce"
+	name = "pokaż palce"
 
 /datum/emote/living/carbon/tail
-	name = "machać ogonem"
+	name = "machaj ogonem"
 
 /datum/emote/living/carbon/wink
-	name = "puścić oczko"
+	name = "puść oczko"
 
 /datum/emote/living/carbon/human/cry
-	name = "płakać"
+	name = "płacz"
 
 /datum/emote/living/carbon/human/dap
-	name = "przybić żółwika"
+	name = "przybij żółwika"
 
 /datum/emote/living/carbon/human/eyebrow
-	name = "unieść brew"
+	name = "unieś brew"
 
 /datum/emote/living/carbon/human/grumble
-	name = "marudzić"
+	name = "marudź"
 
 /datum/emote/living/carbon/human/handshake
-	name = "uścisnąć dłoń"
+	name = "uściśnij dłoń"
 
 /datum/emote/living/carbon/human/hug
-	name = "przytulić"
+	name = "przytul"
 
 /datum/emote/living/carbon/human/mumble
-	name = "mamrotać"
+	name = "mamrocz"
 
 /datum/emote/living/carbon/human/scream
-	name = "krzyczeć"
+	name = "krzycz"
 
 /datum/emote/living/carbon/human/pale
-	name = "zblednąć"
+	name = "zblednij"
 
 /datum/emote/living/carbon/human/raise
-	name = "podnieść dłoń"
+	name = "podnieś dłoń"
 
 /datum/emote/living/carbon/human/salute
-	name = "zasalutować"
+	name = "zasalutuj"
 
 /datum/emote/living/carbon/human/shrug
-	name = "wzruszyć ramionami"
+	name = "wzrusz ramionami"
 
 /datum/emote/living/carbon/human/wag
-	name = "machać ogonem"
+	name = "machaj ogonem"
 
 /datum/emote/living/carbon/human/wing
-	name = "rozłożyć skrzydła"
+	name = "rozłóż skrzydła"
 
 /datum/emote/living/carbon/human/fart
-	name = "pierdnąć"
+	name = "pierdnij"
 
 /datum/emote/living/carbon/human/superfart
-	name = "superpierdnięcie"
+	name = "zrób superpierdnięcie"
 
 /datum/emote/living/carbon/human/tilt
-	name = "przechylić głowę"
+	name = "przechyl głowę"
 
 /datum/emote/living/carbon/human/robot_tongue/beep
-	name = "piknąć"
+	name = "piknij"
 
 /datum/emote/living/carbon/human/robot_tongue/buzz
-	name = "brzęczeć"
+	name = "brzęcz"
 
 /datum/emote/living/carbon/human/robot_tongue/buzz2
-	name = "brzęczeć dwukrotnie"
+	name = "brzęcz dwukrotnie"
 
 /datum/emote/living/carbon/human/robot_tongue/chime
-	name = "zadzwonić"
+	name = "zadzwoń"
 
 /datum/emote/living/carbon/human/robot_tongue/ping
-	name = "brzdęknąć"
+	name = "brzdęknij"
 
 /datum/emote/living/carbon/human/robot_tongue/clown/honk
-	name = "zatrąbić"
+	name = "zatrąb"
 
 /datum/emote/living/carbon/human/robot_tongue/clown/sad
-	name = "smutny puzon"
+	name = "zagraj na smutnym puzonie"
 
 /datum/emote/living/blush
-	name = "rumienić się"
+	name = "zarumień się"
 
 /datum/emote/living/bow
-	name = "ukłonić się"
+	name = "ukłoń się"
 
 /datum/emote/living/burp
-	name = "beknąć"
+	name = "beknij"
 
 /datum/emote/living/choke
-	name = "dusić się"
+	name = "duś się"
 
 /datum/emote/living/cross
-	name = "skrzyżować ramiona"
+	name = "skrzyżuj ramiona"
 
 /datum/emote/living/chuckle
-	name = "chichrać się"
+	name = "zachichraj się"
 
 /datum/emote/living/collapse
-	name = "upaść"
+	name = "upadnij"
 
 /datum/emote/living/cough
-	name = "kaszleć"
+	name = "zakaszl"
 
 /datum/emote/living/dance
-	name = "tańczyć"
+	name = "tańcz"
 
 /datum/emote/living/deathgasp
-	name = "ostatnie tchnienie"
+	name = "wydaj ostatnie tchnienie"
 
 /datum/emote/living/drool
-	name = "ślinić się"
+	name = "śliń się"
 
 /datum/emote/living/faint
-	name = "zemdleć"
+	name = "zemdlej"
 
 /datum/emote/living/flap
-	name = "machać skrzydłami"
+	name = "machaj skrzydłami"
 
 /datum/emote/living/frown
-	name = "zmarszczyć brwi"
+	name = "zmarszcz brwi"
 
 /datum/emote/living/gag
-	name = "dławić się"
+	name = "dław się"
 
 /datum/emote/living/gasp
-	name = "łapać oddech"
+	name = "łap oddech"
 
 /datum/emote/living/giggle
-	name = "chichotać"
+	name = "zachichocz"
 
 /datum/emote/living/glare
-	name = "wpatrywać się"
+	name = "wpatruj się"
 
 /datum/emote/living/grin
-	name = "szczerzyć się"
+	name = "wyszczerz się"
 
 /datum/emote/living/groan
-	name = "stękać"
+	name = "stęknij"
 
 /datum/emote/living/grimace
-	name = "skrzywić się"
+	name = "skrzyw się"
 
 /datum/emote/living/jump
-	name = "skoczyć"
+	name = "skocz"
 
 /datum/emote/living/kiss
-	name = "posłać buziaka"
+	name = "poślij buziaka"
 
 /datum/emote/living/laugh
-	name = "śmiać się"
+	name = "śmiej się"
 
 /datum/emote/living/look
-	name = "patrzeć"
+	name = "popatrz"
 
 /datum/emote/living/nod
-	name = "kiwnąć głową"
+	name = "kiwnij głową"
 
 /datum/emote/living/point
-	name = "wskazać"
+	name = "wskaż"
 
 /datum/emote/living/pout
-	name = "nadąsać się"
+	name = "nadąsaj się"
 
 /datum/emote/living/scream
-	name = "krzyczeć"
+	name = "krzycz"
 
 /datum/emote/living/scowl
-	name = "spojrzeć gniewnie"
+	name = "spójrz gniewnie"
 
 /datum/emote/living/shake
-	name = "pokręcić głową"
+	name = "pokręć głową"
 
 /datum/emote/living/shiver
-	name = "drżeć"
+	name = "drżyj"
 
 /datum/emote/living/sigh
-	name = "westchnąć"
+	name = "westchnij"
 
 /datum/emote/living/sit
-	name = "usiąść"
+	name = "usiądź"
 
 /datum/emote/living/smile
-	name = "uśmiechnąć się"
+	name = "uśmiechnij się"
 
 /datum/emote/living/sneeze
-	name = "kichnąć"
+	name = "kichnij"
 
 /datum/emote/living/smug
-	name = "szczerzyć się z zadowoleniem"
+	name = "wyszczerz się z zadowoleniem"
 
 /datum/emote/living/sniff
-	name = "niuchać"
+	name = "niuchaj"
 
 /datum/emote/living/snore
-	name = "chrapać"
+	name = "chrap"
 
 /datum/emote/living/stare
-	name = "gapić się"
+	name = "gap się"
 
 /datum/emote/living/strech
-	name = "przeciągnąć się"
+	name = "przeciągnij się"
 
 /datum/emote/living/sulk
-	name = "dąsać się"
+	name = "dąsaj się"
 
 /datum/emote/living/surrender
-	name = "poddać się"
+	name = "poddaj się"
 
 /datum/emote/living/sway
-	name = "kiwać się"
+	name = "kiwaj się"
 
 /datum/emote/living/tremble
-	name = "trząść się"
+	name = "trzęś się"
 
 /datum/emote/living/twitch
-	name = "dostać drgawek"
+	name = "dostań drgawek"
 
 /datum/emote/living/wave
-	name = "pomachać"
+	name = "pomachaj"
 
 /datum/emote/living/whimper
-	name = "skamleć"
+	name = "skamlij"
 
 /datum/emote/living/yawn
-	name = "ziewnąć"
+	name = "ziewnij"
 
 /datum/emote/living/circle
-	name = "zrobić kółko z palców"
+	name = "zrób kółko z palców"
 
 /datum/emote/living/slap
-	name = "klepnąć"
+	name = "klepnij"
 
 /datum/emote/living/raisehand
-	name = "przybić piątkę"
+	name = "przybij piątkę"
 
 /datum/emote/living/snap
-	name = "pstryknąć palcami"
+	name = "pstryknij palcami"
 
 /datum/emote/living/fingergun
-	name = "zrobić pistolet z palców"
+	name = "zrób pistolet z palców"
 
 /datum/emote/living/click
-	name = "kliknąć"
+	name = "kliknij"
 
 /datum/emote/living/zap
-	name = "strzelić iskrą"
+	name = "strzel iskrą"
 
 /datum/emote/living/hum
-	name = "nucić"
+	name = "nuć"
 
 /datum/emote/living/hiss
-	name = "syczeć"
+	name = "syknij"
 
 /datum/emote/living/thumbs_up
-	name = "kciuk w górę"
+	name = "pokaż kciuk w górę"
 
 /datum/emote/living/thumbs_down
-	name = "kciuk w dół"
+	name = "pokaż kciuk w dół"
 
 /datum/emote/living/whistle
-	name = "gwizdać"
+	name = "gwiżdż"
 
 /datum/emote/living/gnome
-	name = "gnomować"
+	name = "gnomuj"
 
 /datum/emote/living/smirk
-	name = "uśmiechnąć się krzywo"
+	name = "uśmiechnij się krzywo"
 
 /datum/emote/living/purr
-	name = "mruczeć"
+	name = "mrucz"
 
 /datum/emote/living/growl
-	name = "warczeć"
+	name = "warcz"
 
 /datum/emote/living/cheers
-	name = "wznieść toast"
+	name = "wznieś toast"

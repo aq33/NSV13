@@ -16,7 +16,7 @@
 /datum/emote/living/carbon/blink_r
 	key = "blink_r"
 	message = "mruga gwałtownie"
-	name = "mrugać szybko"
+	name = "mrugaj szybko"
 	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/clap

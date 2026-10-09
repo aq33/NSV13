@@ -182,7 +182,7 @@
 	message = "trzepocze skrzydłami"
 	restraint_check = TRUE
 	wing_time = 5
-	name = "trzepotać skrzydłami (gniewnie)"
+	name = "trzepocz skrzydłami (gniewnie)"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/living/flap/aflap/select_message_type(mob/user, intentional)
@@ -447,7 +447,7 @@
 /datum/emote/living/twitch_s
 	key = "twitch_s"
 	message = "dostaje drgawek"
-	name = "drgnąć lekko"
+	name = "drgnij lekko"
 	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/wave
@@ -467,7 +467,7 @@
 	key = "wsmile"
 	key_third_person = "wsmiles"
 	message = "lekko się uśmiecha"
-	name = "uśmiechnąć się lekko"
+	name = "uśmiechnij się lekko"
 	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/yawn
