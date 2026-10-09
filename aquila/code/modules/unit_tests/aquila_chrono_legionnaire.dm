@@ -8,9 +8,26 @@
 } while (FALSE)
 
 /// AQUILA - Chrono Legionnaire: tyrant names are recognised through spelling tricks, ordinary names are left alone
+/// The names are read from config/chrono_legionnaire_names.txt, which CI does not copy, so the test brings its own list
 /datum/unit_test/aquila_chrono_legionnaire_names
+	/// The real list, put back after the test
+	var/list/saved_names
+
+/datum/unit_test/aquila_chrono_legionnaire_names/Destroy()
+	if(saved_names)
+		GLOB.aquila_chrono_historical_names = saved_names
+	return ..()
 
 /datum/unit_test/aquila_chrono_legionnaire_names/Run()
+	saved_names = GLOB.aquila_chrono_historical_names
+	GLOB.aquila_chrono_historical_names = list(
+		"hitler" = "Adolf Hitler",
+		"schicklgruber" = "Adolf Hitler",
+		"fuhrer" = "Adolf Hitler",
+		"stalin" = "Józef Stalin",
+		"dzugaszwili" = "Józef Stalin",
+		"dzhugashvili" = "Józef Stalin",
+	)
 	var/list/tyrants = list(
 		"Adolf Hitler" = "Adolf Hitler",
 		"adolf hitler" = "Adolf Hitler",
