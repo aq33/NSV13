@@ -309,6 +309,8 @@
 	set_resting(FALSE)
 
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+	if(M != src && incapacitated()) // AQ EDIT - animacja potrząsania (port tg)
+		shake_up_animation()
 
 /// Check ourselves to see if we've got any shrapnel, return true if we do. This is a much simpler version of what humans do, we only indicate we're checking ourselves if there's actually shrapnel
 /mob/living/carbon/proc/check_self_for_injuries()

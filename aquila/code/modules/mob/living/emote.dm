@@ -84,3 +84,64 @@
 	if(ishuman(user))
 		return 'aquila/sound/voice/yawn.ogg'
 
+
+// Animacje emotek: port z BeeStation-Hornet (code/modules/mob/living/emote.dm)
+#define SHIVER_LOOP_DURATION (1 SECONDS)
+/datum/emote/living/shiver/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+	animate(user, pixel_x = 1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
+	for(var/i in 1 to SHIVER_LOOP_DURATION / (0.2 SECONDS)) //desired total duration divided by the iteration duration to give the necessary iteration count
+		animate(pixel_x = -2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
+		animate(pixel_x = 2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
+	animate(pixel_x = -1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)
+#undef SHIVER_LOOP_DURATION
+
+/datum/emote/living/sway/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+	animate(user, pixel_x = 2, time = 0.5 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
+	for(var/i in 1 to 2)
+		animate(pixel_x = -6, time = 1.0 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
+		animate(pixel_x = 6, time = 1.0 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
+	animate(pixel_x = -2, time = 0.5 SECONDS, flags = ANIMATION_RELATIVE)
+
+#define TREMBLE_LOOP_DURATION (4.4 SECONDS)
+/datum/emote/living/tremble/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+	animate(user, pixel_x = 2, time = 0.2 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
+	for(var/i in 1 to TREMBLE_LOOP_DURATION / (0.4 SECONDS)) //desired total duration divided by the iteration duration to give the necessary iteration count
+		animate(pixel_x = -4, time = 0.2 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
+		animate(pixel_x = 4, time = 0.2 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
+	animate(pixel_x = -2, time = 0.2 SECONDS, flags = ANIMATION_RELATIVE)
+#undef TREMBLE_LOOP_DURATION
+
+/datum/emote/living/twitch/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+	animate(user, pixel_x = 1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
+	animate(pixel_x = -2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)
+	animate(time = 0.1 SECONDS)
+	animate(pixel_x = 2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)
+	animate(pixel_x = -1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)
+
+/datum/emote/living/twitch_s/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+	animate(user, pixel_x = -1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
+	animate(pixel_x = 1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)
+
+// Animacja skoku: port z tgstation (code/modules/mob/emote.dm, jump_animation)
+/datum/emote/living/jump/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+	var/original_transform = user.transform
+	animate(user, transform = user.transform.Translate(0, 4), time = 0.1 SECONDS, flags = ANIMATION_PARALLEL)
+	animate(transform = original_transform, time = 0.1 SECONDS)

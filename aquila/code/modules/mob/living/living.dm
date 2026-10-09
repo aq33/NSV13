@@ -39,3 +39,22 @@
 ///Force set the mob thirst
 /mob/living/proc/set_hydration(var/change)
 	hydration = max(0, change)
+
+// Szarpnięcie przy ogłuszeniu pałką: port z BeeStation-Hornet (code/modules/mob/living/living.dm)
+/mob/living/proc/do_stun_animation()
+	var/matrix/rotation_matrix = matrix()
+	rotation_matrix.Turn(5)
+	var/matrix/reset_matrix = matrix()
+	reset_matrix.Turn(-5)
+	// Offset animation
+	animate(src, time = 1, pixel_x = rand(-2, 2), pixel_y = rand(-1, 1), easing = ELASTIC_EASING, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
+	for (var/i in 1 to 4)
+		var/dx = rand(-4, 2)
+		var/dy = rand(-4, 2)
+		animate(time = 1, pixel_x = dx, pixel_y = dy, easing = ELASTIC_EASING, flags = ANIMATION_RELATIVE)
+		animate(time = 0, pixel_x = -dx, pixel_y = -dy, easing = ELASTIC_EASING, flags = ANIMATION_RELATIVE)
+	animate(time = 1, pixel_x = base_pixel_x , pixel_y = base_pixel_y)
+	// Rotational Animation
+	animate(src, time = 3, transform = rotation_matrix, flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE)
+	animate(time = 2, flags = ANIMATION_RELATIVE)
+	animate(time = 1, transform = reset_matrix, flags = ANIMATION_RELATIVE)

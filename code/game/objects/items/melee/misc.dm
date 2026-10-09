@@ -282,6 +282,7 @@
 
 				if (stun_animation)
 					user.do_attack_animation(target)
+					target.do_stun_animation() // AQ EDIT - animacja ogłuszenia (port Bee)
 			else
 				..()
 		else
@@ -307,6 +308,7 @@
 
 			if (stun_animation)
 				user.do_attack_animation(target)
+				target.do_stun_animation() // AQ EDIT - animacja ogłuszenia (port Bee)
 			playsound(get_turf(src), on_stun_sound, 75, 1, -1)
 			additional_effects_carbon(target, user)
 			if((user.zone_selected == BODY_ZONE_HEAD) || (user.zone_selected == BODY_ZONE_CHEST))
@@ -517,6 +519,7 @@
 
 				if (stun_animation)
 					user.do_attack_animation(target)
+					target.do_stun_animation() // AQ EDIT - animacja ogłuszenia (port Bee)
 			else
 				..()
 		else
@@ -542,6 +545,7 @@
 
 			if (stun_animation)
 				user.do_attack_animation(target)
+				target.do_stun_animation() // AQ EDIT - animacja ogłuszenia (port Bee)
 
 			playsound(get_turf(src), on_stun_sound, 75, 1, -1)
 			if(is_target)
