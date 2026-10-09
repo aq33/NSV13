@@ -1,4 +1,15 @@
-Changelogs are included with commits as text .yml files created individually by the committer. If you want to create a changelog entry you create a .yml file in the /changelogs directory; nothing else needs to be touched unless you are a maintainer.
+Changelogs are generated automatically. Fill in the :cl: ... /:cl: block of your pull request
+description (see .github/PULL_REQUEST_TEMPLATE.md); when the PR is merged, the "Changelog" GitHub
+workflow (.github/workflows/changelog.yml) turns it into an AutoChangeLog-pr-<number>.yml file in
+this directory and compiles html/changelog.html, which players see in game. Lines left at their
+template default text are ignored.
+
+To redo entries for already merged PRs, run the "Changelog" workflow by hand (Actions -> Changelog
+-> Run workflow) with the PR numbers, e.g. `341 353` or a range `9-353`.
+
+The manual way still works too: changelogs can be included with commits as text .yml files created
+individually by the committer. If you want to create a changelog entry you create a .yml file in
+the /changelogs directory; nothing else needs to be touched unless you are a maintainer.
 
 #######################################################
 

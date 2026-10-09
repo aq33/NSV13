@@ -1,0 +1,36 @@
+# Imiona, przy których może pojawić się Legionista Czasu (event "Spawn Chrono Legionnaire").
+# Event odpali się tylko, gdy żywy gracz na serwerze ma postać, której imię zawiera jedną z poniższych nazw.
+#
+# Jedna nazwa na linię. Opcjonalnie po znaku = można podać, kogo ta nazwa oznacza (pojawi się w celu legionisty):
+#   hitler = Adolf Hitler
+#   Pol Pot
+# Wielkość liter, spacje, polskie znaki i "leetspeak" (H1tl3r) nie mają znaczenia.
+# Wpisuj raczej nazwiska niż imiona: "adolf" złapałby też każdego Adolfa Kowalskiego.
+# Linie zaczynające się od # są pomijane. Zmiany działają od następnej rundy.
+
+# Adolf Hitler
+hitler = Adolf Hitler
+hittler = Adolf Hitler
+hitller = Adolf Hitler
+hiitler = Adolf Hitler
+hytler = Adolf Hitler
+hitlr = Adolf Hitler
+hidler = Adolf Hitler
+gitler = Adolf Hitler
+schicklgruber = Adolf Hitler
+schickelgruber = Adolf Hitler
+shicklgruber = Adolf Hitler
+fuhrer = Adolf Hitler
+fuehrer = Adolf Hitler
+
+# Józef Stalin
+stalin = Józef Stalin
+stalyn = Józef Stalin
+sztalin = Józef Stalin
+dzugaszwili = Józef Stalin
+dzhugashvili = Józef Stalin
+dzugashvili = Józef Stalin
+djugashvili = Józef Stalin
+jugashvili = Józef Stalin
+dzugasvili = Józef Stalin
+dschugaschwili = Józef Stalin

@@ -40,6 +40,8 @@ The other ~60 same-type redefinitions in `aquila/` call `..()`, so they are alre
 | `on_drain(drained)` call | `code/game/objects/items/devices/powersink.dm`, `process()` | Aquila power sink APC draining and infiltrator objective |
 | `dat += aquila_one_click_antag_links()` | `code/modules/admin/verbs/one_click_antag.dm` | Aquila "Create Antagonist" buttons |
 | `ROLE_PARADOX_CLONE` + `antagonist_bannable_roles` entry | `code/__DEFINES/role_preferences.dm` | Paradox Clone (tgstation#71141 port); the define has to be in core because `aquila.dm` is included after the list |
+| `ROLE_CHRONO_LEGIONNAIRE` + `antagonist_bannable_roles` entry | `code/__DEFINES/role_preferences.dm` | Chrono Legionnaire midround antagonist; same reason as `ROLE_PARADOX_CLONE` |
+| `Destroy()` of `chrono_eraser`, chronosuit helmet and suit | `code/game/objects/items/chrono_eraser.dm`, `code/modules/clothing/spacesuits/chronosuit.dm` | Bugfix for the Chrono Legionnaire gear: they called `dropped()` without a user and runtimed on every delete |
 | `ANTAG_HUD_PARADOX_CLONE` (33) + `GLOB.huds` entry | `code/__DEFINES/atom_hud.dm`, `code/datums/hud.dm` | Paradox Clone HUD; must stay the next index after `ANTAG_HUD_VAMPIRE` |
 | `paradox_clone` icon state | `icons/mob/hud.dmi` | Paradox Clone HUD icon, copied from tgstation's `antag_hud.dmi` |
 | `GAS_MIASMA` define | `code/__DEFINES/atmospherics.dm` | Miasma (restores what BeeStation-Hornet#6445 removed, reworked around `SSmiasma`); in core because the core gas lists below use it |
@@ -58,6 +60,8 @@ The other ~60 same-type redefinitions in `aquila/` call `..()`, so they are alre
 | Custom landing link in `ui_interact()` + `designate` branch in `Topic()` | `nsv13/code/modules/shuttle/computer.dm` | Custom shuttle / bluespace pod landing spot; the var and procs are in `aquila/code/modules/shuttle/computer.dm` |
 | `TRAIT_EAT_MORE`, `TRAIT_GENELESS` defines; `TRAIT_GENELESS` check in `add_mutation()`; `TRAIT_EAT_MORE` hunger multiplier | `code/__DEFINES/traits.dm`, `code/datums/dna.dm`, `code/modules/mob/living/carbon/human/species.dm` | Sinful demons (Yogstation sync); the defines are in core because core procs use them |
 | `aquila_monkey_spat()`, `aquila_monkey_sucked()`, `aquila_potion_spat()` calls, `balloon_alert()`s | `code/modules/research/xenobiology/xenobio_camera.dm` (actions and click handlers, each path twice) | Xenobio tubes and HUD (tgstation#90775 port). The "now has N monkeys" chat lines were replaced by the HUD. Slime pickup/place needs no hook: `aquila/.../xenobio_tubes.dm` reacts in `Entered()`/`Exited()` |
+| `aquila_shell_hidden()` call in the Windows branch of `world.shelleo()` | `code/__HELPERS/shell.dm` | Runs shell commands through a hidden `wscript` launcher so the host doesn't get a cmd window (e.g. jukebox yt-dlp calls); falls back to plain `shell()`. The proc is in `aquila/code/__HELPERS/shell.dm` |
+| `audio/setMusicGain` message + `gain` multiplier (`volume` option of `audio/playMusic`) | `tgui/packages/tgui-panel/audio/{player,middleware}.js` | Jukebox YouTube music gets quieter with distance; DM side is `/datum/tgui_panel/proc/set_music_gain()` in `aquila/code/modules/tgui_panel/audio.dm` |
 
 Pre-existing single-call hooks that stay in core: `parts += mouse_report()` (`roundend.dm`) and `/datum/admins/proc/reloadwhitelist` in the admin verb list (`admin_verbs.dm`).
 
