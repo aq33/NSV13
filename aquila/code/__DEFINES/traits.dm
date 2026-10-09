@@ -9,3 +9,4 @@
 //non-mob traits
 
 #define SINFULDEMON_TRAIT "sinfuldemon"
+#define HORROR_TRAIT "horror" // Eldritch Horror (Yogstation#13033)
