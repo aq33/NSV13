@@ -5,7 +5,7 @@
 	key = "cry"
 	key_third_person = "cries"
 	message = "płacze"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE //Cry in silence as you should.
 
 /datum/emote/living/carbon/human/dap
 	key = "dap"
@@ -13,10 +13,12 @@
 	message = "Niestety nie ma z kim przybić żółwika i przybija żółwika sam ze sobą. Szkoda"
 	message_param = "przybija żółwika z %t"
 	restraint_check = TRUE
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/eyebrow
 	key = "eyebrow"
 	message = "unosi brew"
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/grumble
 	key = "grumble"
@@ -29,7 +31,7 @@
 	message = "uściska własną dłoń"
 	message_param = "ściska dłonie z %t"
 	restraint_check = TRUE
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/hug
 	key = "hug"
@@ -37,20 +39,20 @@
 	message = "przytula siebie"
 	message_param = "przytula %t"
 	restraint_check = TRUE
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/mumble
 	key = "mumble"
 	key_third_person = "mumbles"
 	message = "mamrocze"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/scream
 	key = "scream"
 	key_third_person = "screams"
 	message = "krzyczy"
-	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/scream/get_sound(mob/living/user)
 	if(!ishuman(user))
@@ -75,29 +77,34 @@
 /datum/emote/living/carbon/human/pale
 	key = "pale"
 	message = "blednie"
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/raise
 	key = "raise"
 	key_third_person = "raises"
 	message = "podnosi dłoń"
 	restraint_check = TRUE
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/salute
 	key = "salute"
 	key_third_person = "salutes"
-	message = "salutes"
+	message = "salutuje"
 	message_param = "salutuje do %t"
 	restraint_check = TRUE
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/shrug
 	key = "shrug"
 	key_third_person = "shrugs"
 	message = "wzrusza ramionami"
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/wag
 	key = "wag"
 	key_third_person = "wags"
 	message = "macha ogonem"
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/wag/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -125,7 +132,8 @@
 /datum/emote/living/carbon/human/wing
 	key = "wing"
 	key_third_person = "wings"
-	message = "their wings"
+	message = "skrzydła"
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/wing/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -137,9 +145,9 @@
 	. = ..()
 	var/mob/living/carbon/human/H = user
 	if(("wings" in H.dna.species.mutant_bodyparts) || ("moth_wings" in H.dna.species.mutant_bodyparts))
-		. = "opens " + message
+		. = "rozkłada " + message
 	else
-		. = "closes " + message
+		. = "składa " + message
 
 /datum/emote/living/carbon/human/wing/can_run_emote(mob/user, status_check = TRUE, intentional)
 	if(!..())
@@ -153,6 +161,7 @@
 			if(istype(wings))
 				if(wings.flight_level >= WINGS_FLYING)
 					return TRUE
+	return FALSE
 
 /mob/living/carbon/human/proc/Togglewings()
 	if(!dna || !dna.species)
@@ -190,8 +199,9 @@
 /datum/emote/living/carbon/human/robot_tongue/beep
 	key = "beep"
 	key_third_person = "beeps"
-	message = "beeps"
-	message_param = "beeps at %t"
+	message = "pika"
+	message_param = "pika na %t"
+	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/robot_tongue/beep/run_emote(mob/user, params)
 	if(..())
@@ -202,6 +212,7 @@
 	key_third_person = "buzzes"
 	message = "brzęczy"
 	message_param = "brzęczy na %t"
+	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/robot_tongue/buzz/run_emote(mob/user, params)
 	if(..())
@@ -210,6 +221,7 @@
 /datum/emote/living/carbon/human/robot_tongue/buzz2
 	key = "buzz2"
 	message = "brzęczy dwukrotnie"
+	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/robot_tongue/buzz2/run_emote(mob/user, params)
 	if(..())
@@ -219,6 +231,7 @@
 	key = "chime"
 	key_third_person = "chimes"
 	message = "dzwoni"
+	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/robot_tongue/chime/run_emote(mob/user, params)
 	if(..())
@@ -229,6 +242,7 @@
 	key_third_person = "pings"
 	message = "brzdęka"
 	message_param = "brzdęka na %t"
+	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/robot_tongue/ping/run_emote(mob/user, params)
 	if(..())
@@ -246,6 +260,7 @@
 	key = "honk"
 	key_third_person = "honks"
 	message = "trąbi"
+	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/robot_tongue/clown/honk/run_emote(mob/user, params)
 	if(..())
@@ -255,6 +270,7 @@
 	key = "sad"
 	key_third_person = "plays a sad trombone"
 	message = "wydaje z siebie dźwięk smutnego puzonu"
+	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/robot_tongue/clown/sad/run_emote(mob/user, params)
 	if(..())

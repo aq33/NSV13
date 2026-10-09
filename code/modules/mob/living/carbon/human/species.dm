@@ -668,6 +668,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				var/mutable_appearance/markings_l_leg_overlay = mutable_appearance(markings.icon, "[markings.icon_state]_l_leg", -BODY_LAYER)
 				standing += markings_l_leg_overlay
 
+	standing += get_polak_overlays(H) // AQ EDIT - bodytype Polak, pod bielizną
 
 	//Underwear, Undershirts & Socks
 	if(!(NO_UNDERWEAR in species_traits))
