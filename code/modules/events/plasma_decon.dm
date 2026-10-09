@@ -16,8 +16,9 @@
 		var/turf/T = get_turf(temp_vent)
 		if(T && is_station_level(T.z) && !temp_vent.welded)
 			vents += temp_vent
-	if(!vents.len)
-		return kill()
+	if(!vents.len) // AQ EDIT - kill() here does nothing, New() adds us to SSevents.running after setup(). End quietly instead
+		announceChance = 0
+		endWhen = startWhen
 
 /datum/round_event/plasma_decon/announce()
 	priority_announce("We are deploying an experimental plasma decontamination system. Please stand away from the vents and do not breathe the smoke that comes out.", "Central Command Update", SSstation.announcer.get_rand_alert_sound())

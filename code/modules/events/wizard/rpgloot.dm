@@ -98,7 +98,7 @@
 	randomise()
 
 /datum/rpg_loot/Destroy()
-	QDEL_NULL(attached)
+	attached = null // AQ EDIT - the item deletes us in its own Destroy(), deleting it back was a qdel loop
 	return ..()
 
 /datum/rpg_loot/proc/randomise()

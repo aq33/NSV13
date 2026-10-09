@@ -168,9 +168,16 @@ for fileName in glob.glob(os.path.join(args.ymlDir, "*.yml")):
     with open(fileName, "r", encoding="utf-8") as f:
         cl = yaml.safe_load(f)
         f.close()
-    if today not in all_changelog_entries:
-        all_changelog_entries[today] = {}
-    author_entries = all_changelog_entries[today].get(cl["author"], [])
+    # An optional `date:` key (set by generate_cl.py to the PR merge date) files the
+    # entry under that day instead of the day the changelog was compiled.
+    entry_date = cl.get("date") or today
+    if isinstance(entry_date, datetime):
+        entry_date = entry_date.date()
+    elif isinstance(entry_date, str):
+        entry_date = date.fromisoformat(entry_date)
+    if entry_date not in all_changelog_entries:
+        all_changelog_entries[entry_date] = {}
+    author_entries = all_changelog_entries[entry_date].get(cl["author"], [])
     if len(cl["changes"]):
         new = 0
         for change in cl["changes"]:
@@ -180,7 +187,7 @@ for fileName in glob.glob(os.path.join(args.ymlDir, "*.yml")):
                     print("  {0}: Invalid prefix {1}".format(fileName, change_type), file=sys.stderr)
                 author_entries += [change]
                 new += 1
-        all_changelog_entries[today][cl["author"]] = author_entries
+        all_changelog_entries[entry_date][cl["author"]] = author_entries
         if new > 0:
             print("  Added {0} new changelog entries.".format(new))
 

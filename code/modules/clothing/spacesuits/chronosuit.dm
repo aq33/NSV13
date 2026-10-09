@@ -14,7 +14,7 @@
 		suit.deactivate(1, 1)
 
 /obj/item/clothing/head/helmet/space/chronos/Destroy()
-	dropped()
+	suit?.deactivate(1, 1) // AQ EDIT - was dropped(), which runtimes without a user
 	return ..()
 
 
@@ -64,7 +64,8 @@
 		deactivate()
 
 /obj/item/clothing/suit/space/chronos/Destroy()
-	dropped()
+	if(activated) // AQ EDIT - was dropped(), which runtimes without a user
+		deactivate()
 	QDEL_NULL(teleport_now)
 	return ..()
 
