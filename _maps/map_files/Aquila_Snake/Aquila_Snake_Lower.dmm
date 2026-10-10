@@ -6,6 +6,19 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/atmos)
+"ab" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/griddle,
+/turf/open/floor/plasteel,
+/area/crew_quarters/kitchen)
 "ac" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
@@ -15,6 +28,16 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/bridge/cic)
+"ae" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/obj/machinery/oven,
+/turf/open/floor/plasteel,
+/area/crew_quarters/kitchen)
 "af" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
@@ -2003,7 +2026,7 @@
 "hH" = (
 /obj/structure/table,
 /obj/item/book/manual/wiki/cooking_to_serve_man,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /turf/open/floor/plasteel,
 /area/crew_quarters/kitchen)
 "hJ" = (
@@ -2875,7 +2898,7 @@
 /area/maintenance/department/crew_quarters/bar)
 "le" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /obj/machinery/door/poddoor/shutters/ship/preopen{
 	id = "kitchen";
 	name = "Serving Hatch"
@@ -5079,18 +5102,6 @@
 /obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/security/brig)
-"ua" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
-/area/crew_quarters/kitchen)
 "ub" = (
 /obj/structure/cable,
 /turf/open/floor/engine,
@@ -7846,8 +7857,8 @@
 "Dm" = (
 /obj/structure/table/wood,
 /obj/item/storage/book/bible,
-/obj/item/reagent_containers/food/snacks/grown/poppy,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/poppy,
+/obj/item/food/grown/harebell,
 /obj/machinery/power/apc/auto_name/south,
 /obj/structure/cable,
 /turf/open/floor/plasteel/chapel,
@@ -8215,9 +8226,9 @@
 /area/hallway/primary/central)
 "ER" = (
 /obj/structure/closet/crate/hydroponics,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/food/grown/wheat,
+/obj/item/food/grown/wheat,
+/obj/item/food/grown/wheat,
 /obj/item/multitool,
 /obj/item/storage/toolbox/mechanical,
 /obj/effect/turf_decal/tile/ship/full/green,
@@ -9287,15 +9298,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit)
-"IC" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 9
-	},
-/turf/open/floor/plasteel,
-/area/crew_quarters/kitchen)
 "ID" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -12083,7 +12085,7 @@
 /turf/open/floor/engine,
 /area/nsv/weapons/fore)
 "SI" = (
-/obj/structure/reagent_dispensers/cooking_oil,
+/obj/structure/reagent_dispensers/nutriment/fat/oil,
 /obj/structure/extinguisher_cabinet/north,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
@@ -46847,7 +46849,7 @@ qB
 GV
 KL
 ze
-ua
+ab
 ze
 iD
 Yr
@@ -47104,7 +47106,7 @@ kO
 GV
 HI
 dl
-IC
+ae
 ze
 JD
 Yr

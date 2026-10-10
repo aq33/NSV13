@@ -2550,15 +2550,15 @@
 /turf/open/floor/monotile/dark,
 /area/maintenance/nsv/deck2/frame1/starboard)
 "ahD" = (
-/obj/item/reagent_containers/food/snacks/grown/banana,
-/obj/item/reagent_containers/food/snacks/grown/banana,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/watermelon,
-/obj/item/reagent_containers/food/snacks/grown/watermelon,
-/obj/item/reagent_containers/food/snacks/grown/watermelon,
-/obj/item/reagent_containers/food/snacks/grown/citrus/orange,
-/obj/item/reagent_containers/food/snacks/grown/grapes,
-/obj/item/reagent_containers/food/snacks/grown/cocoapod,
+/obj/item/food/grown/banana,
+/obj/item/food/grown/banana,
+/obj/item/food/grown/wheat,
+/obj/item/food/grown/watermelon,
+/obj/item/food/grown/watermelon,
+/obj/item/food/grown/watermelon,
+/obj/item/food/grown/citrus/orange,
+/obj/item/food/grown/grapes,
+/obj/item/food/grown/cocoapod,
 /obj/structure/rack,
 /obj/item/seeds/wheat,
 /obj/item/seeds/watermelon,
@@ -2580,7 +2580,7 @@
 /obj/item/seeds/cabbage,
 /obj/item/seeds/ambrosia,
 /obj/item/seeds/grass,
-/obj/item/reagent_containers/food/snacks/grown/mushroom/glowshroom,
+/obj/item/food/grown/mushroom/glowshroom,
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
@@ -3450,9 +3450,9 @@
 /turf/open/floor/monotile,
 /area/nsv/hanger/deck2/port)
 "ajT" = (
-/obj/item/reagent_containers/food/snacks/cheesiehonkers,
+/obj/item/food/cheesiehonkers,
 /obj/structure/closet/crate/wooden,
-/obj/item/reagent_containers/food/snacks/store/bread/banana,
+/obj/item/food/bread/banana,
 /obj/effect/spawner/lootdrop/maintenance/three,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/frame3/starboard)
@@ -7442,7 +7442,7 @@
 /turf/open/space/basic,
 /area/maintenance/ship_exterior)
 "atU" = (
-/obj/item/reagent_containers/food/snacks/store/cake/cheese,
+/obj/item/food/cake/cheese,
 /obj/structure/table,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/frame3/starboard)
@@ -38994,7 +38994,7 @@
 /area/ai_monitored/storage/eva)
 "bMy" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /obj/machinery/newscaster/directional/west,
 /turf/open/floor/monotile,
 /area/crew_quarters/kitchen)
@@ -39046,7 +39046,7 @@
 	})
 "bMF" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/dark,
@@ -39510,7 +39510,7 @@
 	name = "Serving Hatch"
 	},
 /obj/machinery/door/firedoor,
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /turf/open/floor/monotile/light,
 /area/crew_quarters/kitchen)
 "bOg" = (
@@ -39531,7 +39531,7 @@
 	})
 "bOj" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/bar{
 	name = "Mess Hall"
@@ -40520,22 +40520,22 @@
 /area/chapel/office)
 "bRh" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
 /obj/structure/sign/plaques/kiddie/badger{
@@ -42188,7 +42188,7 @@
 	})
 "bVR" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /turf/open/floor/wood,
 /area/crew_quarters/theatre)
 "bVS" = (
@@ -42270,8 +42270,8 @@
 	pixel_y = -26;
 	req_access_txt = "22"
 	},
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
 /turf/open/floor/plasteel/dark,
 /area/chapel/office)
 "bWb" = (
@@ -48419,7 +48419,7 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/frame2/port)
 "kNI" = (
-/obj/structure/reagent_dispensers/cooking_oil,
+/obj/structure/reagent_dispensers/nutriment/fat/oil,
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 6
 	},
@@ -48938,9 +48938,9 @@
 /obj/item/seeds/grape{
 	pixel_x = -6
 	},
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/watermelon,
-/obj/item/reagent_containers/food/snacks/grown/banana,
+/obj/item/food/grown/wheat,
+/obj/item/food/grown/watermelon,
+/obj/item/food/grown/banana,
 /obj/structure/table/glass,
 /turf/open/floor/monotile/dark,
 /area/hydroponics)

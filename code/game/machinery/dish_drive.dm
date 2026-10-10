@@ -10,16 +10,18 @@
 	density = FALSE
 	circuit = /obj/item/circuitboard/machine/dish_drive
 	pass_flags = PASSTABLE
-	var/static/list/collectable_items = list(/obj/item/trash/waffles,
-		/obj/item/trash/plate,
+	var/static/list/collectable_items = list(
+		/obj/item/trash/waffles,
 		/obj/item/trash/tray,
 		/obj/item/reagent_containers/glass/bowl,
 		/obj/item/reagent_containers/food/drinks/drinkingglass,
 		/obj/item/kitchen/fork,
 		/obj/item/shard,
-		/obj/item/broken_bottle)
-	var/static/list/disposable_items = list(/obj/item/trash/waffles,
-		/obj/item/trash/plate,
+		/obj/item/broken_bottle
+	)
+
+	var/static/list/disposable_items = list(
+		/obj/item/trash/waffles,
 		/obj/item/trash/tray,
 		/obj/item/shard,
 		/obj/item/broken_bottle)

@@ -2832,7 +2832,7 @@
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "nh" = (
-/obj/item/trash/can/food/peaches,
+/obj/item/trash/canned/peaches,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/bar)
@@ -4664,12 +4664,10 @@
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "vZ" = (
-/obj/item/reagent_containers/food/snacks/salad/fruit{
-	bonus_reagents = null;
+/obj/item/food/salad/fruit{
 	desc = "A bowl of plastic fruit. Each fruit in the bowl shines with an ominous glare that portrays an aura of foreboding in the room. You feel like it'd be a bad idea to try and eat it.";
-	list_reagents = list(/datum/reagent/toxin/lipolicide=50);
-	name = "plastic fruit bowl";
-	prevent_grinding = 1
+	food_reagents = list(/datum/reagent/toxin/lipolicide=50);
+	name = "plastic fruit bowl"
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/layer2,
@@ -5263,7 +5261,7 @@
 	},
 /area/hallway/secondary/entry)
 "zd" = (
-/obj/item/trash/can/food,
+/obj/item/trash/canned,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/bar)
 "zf" = (
@@ -6109,8 +6107,8 @@
 /area/hallway/primary/fore)
 "Do" = (
 /obj/structure/table/wood,
-/obj/item/trash/plate,
-/obj/item/trash/plate{
+/obj/item/plate,
+/obj/item/plate{
 	pixel_x = 3;
 	pixel_y = 5
 	},
@@ -6650,7 +6648,7 @@
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/fore)
 "FU" = (
-/obj/item/trash/plate{
+/obj/item/plate{
 	pixel_x = 4;
 	pixel_y = 7
 	},
@@ -10205,7 +10203,7 @@
 /area/crew_quarters/dorms)
 "Wf" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /turf/open/floor/plasteel/checker,
 /area/crew_quarters/kitchen)
 "Wg" = (

@@ -86,8 +86,8 @@
 /area/ruin/powered)
 "p" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
 /obj/item/organ/appendix,
 /turf/open/floor/plating/airless,
 /area/ruin/powered)
@@ -137,7 +137,7 @@
 "x" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/organ/brain,
-/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/slime,
+/obj/item/food/meat/slab/human/mutant/slime,
 /turf/open/floor/plating/airless,
 /area/ruin/powered)
 "y" = (

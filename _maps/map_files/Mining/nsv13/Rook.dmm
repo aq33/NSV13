@@ -1524,7 +1524,7 @@
 /obj/item/storage/pill_bottle/floorpill/full{
 	desc = "A treat for a certain miner."
 	},
-/obj/item/reagent_containers/food/snacks/canned/beans,
+/obj/item/food/canned/beans,
 /turf/open/floor/carpet/ship,
 /area/nostromo/crew_quarters)
 "Tv" = (

@@ -13,7 +13,7 @@
 	see_in_dark = 8 //AQ EDIT szczury 6->8
 	maxHealth = 5
 	health = 5
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/mouse = 1)
+	butcher_results = list(/obj/item/food/meat/slab/mouse = 1)
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "splats"
@@ -82,7 +82,7 @@
 	if(!ckey)
 		..(1)
 		if(!gibbed)
-			var/obj/item/reagent_containers/food/snacks/deadmouse/M = new(loc)
+			var/obj/item/food/deadmouse/M = new(loc)
 			M.icon_state = icon_dead
 			M.name = name
 			M.reagents.add_reagent(/datum/reagent/blood, 2, data)
@@ -143,22 +143,47 @@
 	response_harm   = "splats"
 	gold_core_spawnable = NO_SPAWN
 
-/obj/item/reagent_containers/food/snacks/deadmouse
+/obj/item/food/deadmouse
 	name = "dead mouse"
 	desc = "It looks like somebody dropped the bass on it. A lizard's favorite meal. May contain diseases."
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "mouse_gray_dead"
-	bitesize = 3
-	eatverb = "devour"
-	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 2)
-	foodtype = GROSS | MEAT | RAW
-	grind_results = list(/datum/reagent/blood = 20, /datum/reagent/liquidgibs = 5)
+	bite_consumption = 3
+	eatverbs = list("devour")
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 3,
+		/datum/reagent/consumable/nutriment/vitamin = 2
+	)
+	foodtypes = GORE | MEAT | RAW
+	grind_results = list(
+		/datum/reagent/blood = 20,
+		/datum/reagent/liquidgibs = 5
+	)
+	decomp_req_handle = TRUE
+	decomp_type = /obj/item/food/deadmouse/moldy
+
+/obj/item/food/deadmouse/moldy
+	name = "moldy dead mouse"
+	desc = "A dead rodent, consumed by mold and rot. There is a slim chance that a lizard might still eat it."
+	icon_state = "mouse_gray_dead"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 3,
+		/datum/reagent/consumable/nutriment/vitamin = 2,
+		/datum/reagent/consumable/mold = 10
+	)
+	foodtypes = GORE | MEAT | RAW | GROSS
+	grind_results = list(
+		/datum/reagent/blood = 20,
+		/datum/reagent/liquidgibs = 5,
+		/datum/reagent/consumable/mold = 10
+	)
+	preserved_food = TRUE
 
 
-/obj/item/reagent_containers/food/snacks/deadmouse/attackby(obj/item/I, mob/user, params)
+/obj/item/food/deadmouse/attackby(obj/item/I, mob/user, params)
 	if(I.is_sharp() && user.a_intent == INTENT_HARM)
 		if(isturf(loc))
-			new /obj/item/reagent_containers/food/snacks/meat/slab/mouse(loc)
+			new /obj/item/food/meat/slab/mouse(loc)
 			to_chat(user, "<span class='notice'>You butcher [src].</span>")
 			qdel(src)
 		else
@@ -166,5 +191,5 @@
 	else
 		return ..()
 
-/obj/item/reagent_containers/food/snacks/deadmouse/on_grind()
+/obj/item/food/deadmouse/on_grind()
 	reagents.clear_reagents()

@@ -185,12 +185,12 @@
 	reagent_id = /datum/reagent/consumable/virus_food
 
 
-/obj/structure/reagent_dispensers/cooking_oil
+/obj/structure/reagent_dispensers/nutriment/fat/oil
 	name = "vat of cooking oil"
 	desc = "A huge metal vat with a tap on the front. Filled with cooking oil for use in frying food."
 	icon_state = "vat"
 	anchored = TRUE
-	reagent_id = /datum/reagent/consumable/cooking_oil
+	reagent_id = /datum/reagent/consumable/nutriment/fat/oil
 
 /obj/structure/reagent_dispensers/plumbed
 	name = "stationairy water tank"
