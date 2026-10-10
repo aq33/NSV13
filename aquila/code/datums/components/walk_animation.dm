@@ -18,7 +18,7 @@
 	var/old_render_target
 	/// Nazwa maski -> fragment ciała, który ją pokazuje
 	var/list/limbs = list()
-	/// Obiekty masek i źródła przedmiotów z dłoni, rysowane tylko do własnych buforów
+	/// Obiekty masek, rysowane tylko do własnych buforów
 	var/list/masks = list()
 	/// Blokada emisji dla nowego bufora; stara czyta render_target, który tu podmieniamy
 	var/atom/movable/emissive_blocker/em_block
@@ -45,14 +45,9 @@
 	add_limb(H, "torso_cut", FLOAT_LAYER - 0.1, MASK_INVERSE)
 	add_limb(H, "arm_a", FLOAT_LAYER - 0.05)
 	add_limb(H, "arm_b", FLOAT_LAYER - 0.05)
-	// Przedmioty w dłoniach nad wszystkim, jak HANDS_LAYER: źródło rysuje się do bufora, fragment go pokazuje
+	// Przedmioty w dłoniach nad wszystkim, jak HANDS_LAYER; tyłem pod ciałem (update_held_dir)
 	for(var/index in 1 to 2)
-		var/obj/effect/overlay/walk_held_source/source = new
-		source.render_target = "*walk_hand[index][REF(H)]"
-		masks["hand_[index]"] = source
-		H.vis_contents += source
 		var/obj/effect/overlay/walk_held/held = new
-		held.render_source = source.render_target
 		limbs["hand_[index]"] = held
 		H.vis_contents += held
 	update_side_leg(H.dir)
@@ -73,7 +68,7 @@
 			H.vis_contents -= limbs[state]
 		for(var/state in masks)
 			H.vis_contents -= masks[state]
-		// Wyłączenie w trakcie gry: przedmioty w dłoniach są ukryte buforem, więc budujemy je od nowa
+		// Wyłączenie w trakcie gry: przedmioty w dłoniach są zdjęte z moba, więc budujemy je od nowa
 		if(!QDELETED(H))
 			H.update_inv_hands()
 	QDEL_NULL(em_block)
@@ -96,21 +91,22 @@
 	H.vis_contents += limb
 
 /// Przenosi przedmioty z dłoni 1 i 2 na fragmenty "hand_1"/"hand_2", żeby maski ich nie cięły.
-/// Źródło fragmentu dostaje kopię nakładki, a kierunek ustawia mu update_held_dir(), więc sprite obraca się z postacią.
-/// Oryginał zostaje w mobie, ukryty buforem z "*", żeby getFlatIcon (zdjęcia) dalej widział przedmiot.
+/// Fragment dostaje kopię nakładki, a kierunek ustawia mu update_held_dir(), więc sprite obraca się z postacią.
+/// Oryginał jest zdejmowany z moba: nakładka z render_target "*" nie znikała z bufora ciała i rysowała się drugi raz.
 /// Wołane po każdym update_inv_hands().
 /datum/component/walk_animation/proc/detach_held_items()
 	if(QDELING(src)) // update_inv_hands() z Destroy() ma zostawić zwykłe nakładki
 		return
 	var/mob/living/carbon/human/H = parent
 	for(var/index in 1 to 2)
-		var/obj/effect/overlay/walk_held_source/source = masks["hand_[index]"]
-		source.cut_overlays()
+		var/obj/effect/overlay/walk_held/held = limbs["hand_[index]"]
+		held.cut_overlays()
 	var/list/hand_overlays = H.overlays_standing[HANDS_LAYER]
 	if(!length(hand_overlays))
 		return
 	H.remove_overlay(HANDS_LAYER)
 	// update_inv_hands() buduje listę w kolejności held_items, pomijając puste dłonie
+	var/list/kept_overlays = list()
 	var/overlay_index = 0
 	for(var/obj/item/I in H.held_items)
 		overlay_index++
@@ -119,11 +115,11 @@
 		var/hand_index = H.get_held_index_of_item(I)
 		var/mutable_appearance/hand_overlay = hand_overlays[overlay_index]
 		if(hand_index > 2 || !istype(hand_overlay))
+			kept_overlays += hand_overlay
 			continue
-		var/obj/effect/overlay/walk_held_source/source = masks["hand_[hand_index]"]
-		source.add_overlay(new /mutable_appearance(hand_overlay))
-		hand_overlay.render_target = "*walk_hand_hidden[hand_index][REF(H)]"
-	H.overlays_standing[HANDS_LAYER] = hand_overlays
+		var/obj/effect/overlay/walk_held/held = limbs["hand_[hand_index]"]
+		held.add_overlay(hand_overlay)
+	H.overlays_standing[HANDS_LAYER] = kept_overlays
 	H.apply_overlay(HANDS_LAYER)
 
 /datum/component/walk_animation/proc/on_moved(mob/living/carbon/human/source, atom/old_loc, dir, forced)
@@ -166,22 +162,18 @@
 	update_side_leg(new_dir)
 	update_held_dir(new_dir)
 
-/// Nakładki na źródłach przedmiotów biorą kierunek z samego źródła, a VIS_INHERIT_DIR go nie zmienia,
+/// Nakładki na fragmentach przedmiotów biorą kierunek z samego fragmentu, a VIS_INHERIT_DIR go nie zmienia,
 /// więc ustawiamy go wprost. Tyłem fragment z przedmiotem dostaje zwykłą (dodatnią) warstwę tuż pod
-/// warstwą moba, więc rysuje się pod wszystkimi fragmentami ciała. Ujemne warstwy (FLOAT_LAYER - x)
-/// fragmenty z KEEP_APART zrównują z warstwą moba, dlatego nie wystarczały.
+/// warstwą moba, więc rysuje się pod wszystkimi fragmentami ciała.
 /datum/component/walk_animation/proc/update_held_dir(new_dir)
 	var/mob/living/carbon/human/H = parent
-	for(var/index in 1 to 2)
-		var/obj/effect/overlay/walk_held_source/source = masks["hand_[index]"]
-		source.dir = new_dir
 	var/behind = (new_dir == NORTH)
-	if(!behind && !held_behind)
-		return
-	held_behind = behind
 	for(var/index in 1 to 2)
 		var/obj/effect/overlay/walk_held/held = limbs["hand_[index]"]
-		held.layer = behind ? H.layer - 0.001 : FLOAT_LAYER
+		held.dir = new_dir
+		if(behind || held_behind)
+			held.layer = behind ? H.layer - 0.001 : FLOAT_LAYER
+	held_behind = behind
 
 /// Z boku maska "leg_b" pokrywa się z "leg_a", więc w spoczynku ta noga jest ukryta; z przodu i z tyłu zawsze widoczna.
 /datum/component/walk_animation/proc/update_side_leg(new_dir)
@@ -217,23 +209,14 @@
 	appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART | PIXEL_SCALE | TILE_BOUND
 	vis_flags = VIS_INHERIT_ID
 
-/// Przedmiot z jednej dłoni: pokazuje bufor swojego źródła, bez przycinania maskami ciała.
-/// Dziedziczy kolor, przezroczystość i obrót moba, tak jak zwykła nakładka.
+/// Przedmiot z jednej dłoni jako nakładka, bez przycinania maskami ciała.
+/// Dziedziczy kolor, przezroczystość i obrót moba, tak jak zwykła nakładka; kierunek z update_held_dir().
 /obj/effect/overlay/walk_held
 	name = ""
 	plane = FLOAT_PLANE
 	layer = FLOAT_LAYER
 	appearance_flags = KEEP_APART | PIXEL_SCALE | TILE_BOUND
 	vis_flags = VIS_INHERIT_ID
-
-/// Źródło przedmiotu z jednej dłoni: kopia nakładki rysowana tylko do własnego bufora.
-/// Bez koloru, przezroczystości i obrotu moba, bo dokłada je fragment, który ten bufor pokazuje.
-/obj/effect/overlay/walk_held_source
-	name = ""
-	plane = FLOAT_PLANE
-	layer = FLOAT_LAYER
-	appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /// Maska fragmentu ciała. Niewidoczna, rysuje się tylko do własnego bufora.
 /obj/effect/overlay/walk_mask
