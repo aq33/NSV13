@@ -22,7 +22,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	pass_flags = PASSTABLE
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 
-	attacktext = "slices"
+	attacktext = "kroi"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	chat_color = "#CAA25B"
 	mobchatspan = "brassmobsay"

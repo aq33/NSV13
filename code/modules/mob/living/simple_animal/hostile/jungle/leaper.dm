@@ -111,7 +111,7 @@
 
 /datum/reagent/toxin/leaper_venom
 	name = "Leaper venom"
-	description = "A toxin spat out by leapers that, while harmless in small doses, quickly creates a toxic reaction if too much is in the body."
+	description = "Toksyna plwana przez skoczki, która w małych dawkach jest nieszkodliwa, ale przy zbyt dużej ilości w organizmie szybko wywołuje reakcję toksyczną."
 	color = "#801E28" // rgb: 128, 30, 40
 	chem_flags = CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	toxpwr = 0
@@ -249,7 +249,7 @@
 				throw_dir = pick(GLOB.alldirs)
 			var/throwtarget = get_edge_target_turf(src, throw_dir)
 			L.throw_at(throwtarget, 3, 1)
-			visible_message("<span class='warning'>[L] is thrown clear of [src]!</span>")
+			visible_message("<span class='warning'>[src] odrzuca [L]!</span>")
 	if(ckey)//Lessens ability to chain stun as a player
 		ranged_cooldown = ranged_cooldown_time + world.time
 		update_icons()

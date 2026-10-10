@@ -9,9 +9,9 @@
 	gender = NEUTER
 	speak_chance = 0
 	turns_per_move = 5
-	response_help = "brushes"
-	response_disarm = "pushes"
-	response_harm = "hits"
+	response_help = "szczotkuje"
+	response_disarm = "popycha"
+	response_harm = "uderza"
 	faction = list("plants")
 	speed = 1
 	maxHealth = 250
@@ -22,7 +22,7 @@
 	base_pixel_x = -16
 
 	melee_damage = 10
-	attacktext = "bites"
+	attacktext = "gryzie"
 	attack_sound = 'sound/weapons/bite.ogg'
 	speak_emote = list("szumi")
 	emote_taunt = list("growls")
@@ -34,7 +34,7 @@
 	maxbodytemp = 1200
 
 	faction = list("hostile")
-	deathmessage = "is hacked into pieces!"
+	deathmessage = "zostaje posiekany na kawałki!"
 	loot = list(/obj/item/stack/sheet/mineral/wood)
 	gold_core_spawnable = HOSTILE_SPAWN
 	del_on_death = TRUE

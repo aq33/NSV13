@@ -12,10 +12,10 @@
 	maxHealth = 15
 	health = 15
 	melee_damage = 5
-	attacktext = "bites"
-	response_help  = "pets"
-	response_disarm = "pokes"
-	response_harm   = "splats"
+	attacktext = "gryzie"
+	response_help  = "głaszcze"
+	response_disarm = "szturcha"
+	response_harm   = "rozpłaszcza"
 	density = FALSE
 	ventcrawler = VENTCRAWLER_ALWAYS
 	faction = list("hostile")

@@ -25,7 +25,7 @@
 	verb_ask = "trzepocze pytająco"
 	verb_exclaim = "trzepocze głośno"
 	verb_yell = "trzepocze głośno"
-	response_help = "pets"
+	response_help = "głaszcze"
 	speak_emote = list("trzepocze")
 	emote_hear = list("trzepocze.")
 	speak_chance = 1

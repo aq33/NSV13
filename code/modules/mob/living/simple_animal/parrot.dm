@@ -59,7 +59,7 @@
 	stop_automated_movement = 1
 	a_intent = INTENT_HARM //parrots now start "aggressive" since only player parrots will nuzzle.
 	attacktext = "chrupie"
-	friendly = "grooms"
+	friendly = "iska"
 	mob_size = MOB_SIZE_SMALL
 	movement_type = FLYING
 	gold_core_spawnable = FRIENDLY_SPAWN
@@ -737,7 +737,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 		if(stolen_item)
 			C.transferItemToLoc(stolen_item, src, TRUE)
 			held_item = stolen_item
-			visible_message("[src] grabs [held_item] out of [C]'s hand!", "<span class='notice'>Wyrywasz [held_item] z rąk [C]!</span>", "<span class='italics'>Słyszysz dźwięk agresywnego trzepotania skrzydeł.</span>")
+			visible_message("[src] wyrywa [held_item] z ręki [C]!", "<span class='notice'>Wyrywasz [held_item] z rąk [C]!</span>", "<span class='italics'>Słyszysz dźwięk agresywnego trzepotania skrzydeł.</span>")
 			return held_item
 
 	to_chat(src, "<span class='warning'>Nie ma tu nic interesującego do zabrania!</span>")
@@ -896,19 +896,19 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 	available_channels = list(":e")
 	Read_Memory()
 	if(rounds_survived == longest_survival)
-		speak += pick("...[longest_survival].", "Widziałem te rzeczy!", "Przeżyłem wiele żyć!", "What are you before me?")
-		desc += " Old as sin, and just as loud. Claimed to be [rounds_survived]."
+		speak += pick("...[longest_survival].", "Widziałem te rzeczy!", "Przeżyłem wiele żyć!", "Czym jesteś przede mną?")
+		desc += " Stara jak grzech i równie głośna. Twierdzi, że ma [rounds_survived]."
 		speak_chance = 20 //His hubris has made him more annoying/easier to justify killing
 		add_atom_colour("#EEEE22", FIXED_COLOUR_PRIORITY)
 	else if(rounds_survived == longest_deathstreak)
 		speak += pick("Na co czekasz?!", "Przemoc rodzi przemoc!", "Krew! Krew!", "Uderz mnie jeśli się nie boisz!")
-		desc += " The squawks of [-rounds_survived] dead parrots ring out in your ears..."
+		desc += " W uszach dźwięczą ci skrzeki [-rounds_survived] martwych papug..."
 		add_atom_colour("#BB7777", FIXED_COLOUR_PRIORITY)
 	else if(rounds_survived > 0)
 		speak += pick("Znów?", "Nie, to koniec!", "Wypuść mnie!", "To się nigdy nie skończy!")
-		desc += " Over [rounds_survived] shifts without a \"terrible\" \"accident\"!"
+		desc += " Ponad [rounds_survived] zmian bez \"strasznego\" \"wypadku\"!"
 	else
-		speak += pick("żywy?", "To nie jest niebo dla papug!", "Żyję, Umieram, Przyjdę ponownie!", "The void fades!")
+		speak += pick("żywy?", "To nie jest niebo dla papug!", "Żyję, Umieram, Przyjdę ponownie!", "Pustka zanika!")
 
 	. = ..()
 
@@ -1006,7 +1006,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 	forceMove(H)
 	H.ForceContractDisease(P)
 	parrot_interest = null
-	H.visible_message("<span class='danger'>[src] dive bombs into [H]'s chest and vanishes!</span>", "<span class='userdanger'>[src] dive bombs into your chest, vanishing! This can't be good!</span>")
+	H.visible_message("<span class='danger'>[src] nurkuje w klatkę piersiową [H] i znika!</span>", "<span class='userdanger'>[src] nurkuje w twoją klatkę piersiową i znika! To nie może być nic dobrego!</span>")
 
 
 /mob/living/simple_animal/parrot/clock_hawk
@@ -1015,7 +1015,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 	icon_state = "clock_hawk_fly"
 	icon_living = "clock_hawk_fly"
 	icon_sit = "clock_hawk_sit"
-	speak = list("Penpxre!", "Ratvar vf n qhzo anzr naljnl!")
+	speak = list("Xenxref!", "Ratvar vf n qhzo anzr naljnl!")
 	speak_emote = list("skrzeczy zgrzytliwie", "mówi prostacko", "wrzeszczy blaszanie")
 	emote_hear = list("skrzeczy zgrzytliwie.", "gdacze metalicznie!")
 	emote_see = list("trzepocze metalowymi skrzydłami.")

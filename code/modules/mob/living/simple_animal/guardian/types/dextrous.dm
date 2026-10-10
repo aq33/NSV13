@@ -2,11 +2,11 @@
 /mob/living/simple_animal/hostile/guardian/dextrous
 	melee_damage = 10
 	damage_coeff = list(BRUTE = 0.75, BURN = 0.75, TOX = 0.75, CLONE = 0.75, STAMINA = 0, OXY = 0.75)
-	playstyle_string = "<span class='holoparasite'>As a <b>dextrous</b> type you can hold items, store an item within yourself, and have medium damage resistance, but do low damage on attacks. Recalling and leashing will force you to drop unstored items!</span>"
-	magic_fluff_string = "<span class='holoparasite'>..And draw the Drone, a dextrous master of construction and repair.</span>"
-	tech_fluff_string = "<span class='holoparasite'>Boot sequence complete. Dextrous combat modules loaded. Holoparasite swarm online.</span>"
-	carp_fluff_string = "<span class='holoparasite'>CARP CARP CARP! You caught one! It can hold stuff in its fins, sort of.</span>"
-	hive_fluff_string = "<span class='holoparasite'>The mass seems to be able to... hold stuff?</span>"
+	playstyle_string = "<span class='holoparasite'>Jako typ <b>dextrous</b> możesz trzymać przedmioty, przechowywać jeden w sobie i masz średnią odporność na obrażenia, ale zadajesz niewielkie obrażenia. Powrót do użytkownika i ściągnięcie smyczą zmuszają cię do upuszczenia nieschowanych przedmiotów!</span>"
+	magic_fluff_string = "<span class='holoparasite'>...I wyciągasz Drona, zręcznego mistrza budowy i napraw.</span>"
+	tech_fluff_string = "<span class='holoparasite'>Sekwencja startowa zakończona. Wczytano zręczne moduły bojowe. Rój holoparazytów aktywny.</span>"
+	carp_fluff_string = "<span class='holoparasite'>KARP KARP KARP! Złowiony! Potrafi trzymać rzeczy w płetwach, tak jakby.</span>"
+	hive_fluff_string = "<span class='holoparasite'>Masa wydaje się zdolna do... trzymania rzeczy?</span>"
 	dextrous = TRUE
 	held_items = list(null, null)
 	var/obj/item/internal_storage //what we're storing within ourself
@@ -18,12 +18,12 @@
 
 /mob/living/simple_animal/hostile/guardian/dextrous/examine(mob/user)
 	if(dextrous)
-		. = list("<span class='info'>*This is [icon2html(src)] \a <b>[src]</b>!\n[desc]")
+		. = list("<span class='info'>*To [icon2html(src)] <b>[src]</b>!\n[desc]")
 		for(var/obj/item/I in held_items)
 			if(!(I.item_flags & ABSTRACT))
-				. += "It has [I.get_examine_string(user)] in its [get_held_index_name(get_held_index_of_item(I))]."
+				. += "Trzyma [I.get_examine_string(user)] ([get_held_index_name(get_held_index_of_item(I))])."
 		if(internal_storage && !(internal_storage.item_flags & ABSTRACT))
-			. += "It is holding [internal_storage.get_examine_string(user)] in its internal storage."
+			. += "W wewnętrznym schowku trzyma [internal_storage.get_examine_string(user)]."
 		. += "</span>"
 	else
 		return ..()

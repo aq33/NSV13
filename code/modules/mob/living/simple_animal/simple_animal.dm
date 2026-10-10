@@ -25,9 +25,9 @@
 	var/stop_automated_movement_when_pulled = 1 //When set to 1 this stops the animal from moving when someone is pulling it.
 
 	//Interaction
-	var/response_help   = "pokes"
-	var/response_disarm = "shoves"
-	var/response_harm   = "hits"
+	var/response_help   = "szturcha"
+	var/response_disarm = "popycha"
+	var/response_harm   = "uderza"
 	var/force_threshold = 0 //Minimum force required to deal any damage
 
 	//Temperature effect
@@ -45,9 +45,9 @@
 	var/armour_penetration = 0 //How much armour they ignore, as a flat reduction from the targets armour value
 	var/melee_damage_type = BRUTE //Damage type of a simple mob's melee attack, should it do damage.
 	var/list/damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1) // 1 for full damage , 0 for none , -1 for 1:1 heal from that source
-	var/attacktext = "attacks"
+	var/attacktext = "atakuje"
 	var/attack_sound = null
-	var/friendly = "nuzzles" //If the mob does no damage with it's attack
+	var/friendly = "łasi się do" //If the mob does no damage with it's attack
 	var/environment_smash = ENVIRONMENT_SMASH_NONE //Set to 1 to allow breaking of crates,lockers,racks,tables; 2 for walls; 3 for Rwalls
 	var/hardattacks = FALSE //if true, a simplemob is unaffected by NASTY_BLOCKING
 
@@ -139,7 +139,7 @@
 /mob/living/simple_animal/examine(mob/user)
 	. = ..()
 	if(stat == DEAD)
-		. += "<span class='deadsay'>Upon closer examination, [p_they()] appear[p_s()] to be dead.</span>"
+		. += "<span class='deadsay'>Po bliższym przyjrzeniu się wygląda na martwego.</span>"
 
 /mob/living/simple_animal/initialize_footstep()
 	if(do_footstep)
@@ -445,13 +445,13 @@
 
 /mob/living/simple_animal/canUseTopic(atom/movable/M, be_close=FALSE, no_dextery=FALSE, no_tk=FALSE)
 	if(incapacitated())
-		to_chat(src, "<span class='warning'>You can't do that right now!</span>")
+		to_chat(src, "<span class='warning'>Nie możesz teraz tego zrobić!</span>")
 		return FALSE
 	if(be_close && !in_range(M, src))
-		to_chat(src, "<span class='warning'>You are too far away!</span>")
+		to_chat(src, "<span class='warning'>Jesteś za daleko!</span>")
 		return FALSE
 	if(!(no_dextery || dextrous))
-		to_chat(src, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(src, "<span class='warning'>Brakuje ci zręczności, by to zrobić!</span>")
 		return FALSE
 	return TRUE
 
@@ -658,7 +658,7 @@
 	if(isliving(hunted)) // Are we hunting a living mob?
 		var/mob/living/prey = hunted
 		if(inept_hunter) // Make your hunter inept to have them unable to catch their prey.
-			visible_message("<span class='warning'>[src] chases [prey] around, to no avail!</span>")
+			visible_message("<span class='warning'>[src] bezskutecznie goni [prey]!</span>")
 			step(prey, pick(GLOB.cardinals))
 			COOLDOWN_START(src, emote_cooldown, 1 MINUTES)
 			return

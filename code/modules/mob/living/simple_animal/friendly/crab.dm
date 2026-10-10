@@ -11,11 +11,11 @@
 	speak_chance = 1
 	turns_per_move = 5
 	butcher_results = list(/obj/item/food/meat/rawcrab = 2)
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm   = "stomps"
+	response_help  = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm   = "depcze"
 	stop_automated_movement = 1
-	friendly = "pinches"
+	friendly = "szczypie"
 	ventcrawler = VENTCRAWLER_ALWAYS
 	var/obj/item/inventory_head
 	var/obj/item/inventory_mask
@@ -47,9 +47,9 @@
 	real_name = "Coffee"
 	desc = "It's Coffee, the other pet!"
 	gender = FEMALE
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm   = "stomps"
+	response_help  = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm   = "depcze"
 	gold_core_spawnable = NO_SPAWN
 
 /mob/living/simple_animal/crab/evil
@@ -59,9 +59,9 @@
 	icon_state = "evilcrab"
 	icon_living = "evilcrab"
 	icon_dead = "evilcrab_dead"
-	response_help = "pokes"
-	response_disarm = "shoves"
-	response_harm = "stomps"
+	response_help = "szturcha"
+	response_disarm = "popycha"
+	response_harm = "depcze"
 	gold_core_spawnable = HOSTILE_SPAWN
 	held_state = "evilcrab"
 
@@ -72,9 +72,9 @@
 	icon_state = "kreb"
 	icon_living = "kreb"
 	icon_dead = "kreb_dead"
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm   = "stomps"
+	response_help  = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm   = "depcze"
 	gold_core_spawnable = NO_SPAWN
 
 /mob/living/simple_animal/crab/evil/kreb

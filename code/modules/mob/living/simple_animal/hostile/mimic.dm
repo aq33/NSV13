@@ -5,9 +5,9 @@
 	icon_state = "crate"
 	icon_living = "crate"
 
-	response_help = "touches"
-	response_disarm = "pushes"
-	response_harm = "hits"
+	response_help = "dotyka"
+	response_disarm = "popycha"
+	response_harm = "uderza"
 	speed = 0
 	maxHealth = 250
 	health = 250
@@ -15,7 +15,7 @@
 	mob_biotypes = list(MOB_INORGANIC)
 
 	melee_damage = 10
-	attacktext = "attacks"
+	attacktext = "atakuje"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	emote_taunt = list("growls")
 	speak_emote = list("skrzypi")
@@ -34,7 +34,7 @@
 
 // Aggro when you try to open them. Will also pickup loot when spawns and drop it when dies.
 /mob/living/simple_animal/hostile/mimic/crate
-	attacktext = "bites"
+	attacktext = "gryzie"
 	speak_emote = list("klekocze")
 	stop_automated_movement = 1
 	wander = FALSE
@@ -75,7 +75,7 @@
 
 /mob/living/simple_animal/hostile/mimic/crate/proc/trigger()
 	if(!attempt_open)
-		visible_message("<b>[src]</b> starts to move!")
+		visible_message("<b>[src]</b> zaczyna się ruszać!")
 		attempt_open = TRUE
 
 /mob/living/simple_animal/hostile/mimic/crate/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
@@ -179,12 +179,12 @@ GLOBAL_LIST_INIT(protected_objects, list(/obj/structure/table, /obj/structure/ca
 	if(knockdown_people && . && prob(15) && iscarbon(target))
 		var/mob/living/carbon/C = target
 		C.Paralyze(40)
-		C.visible_message("<span class='danger'>\The [src] knocks down \the [C]!</span>", \
-				"<span class='userdanger'>\The [src] knocks you down!</span>")
+		C.visible_message("<span class='danger'>[src] przewraca [C]!</span>", \
+				"<span class='userdanger'>[src] cię przewraca!</span>")
 
 /mob/living/simple_animal/hostile/mimic/copy/machine
-	speak = list("HUMANS ARE IMPERFECT!", "YOU SHALL BE ASSIMILATED!", "YOU ARE HARMING YOURSELF", "You have been deemed hazardous. Will you comply?", \
-				 "My logic is undeniable.", "One of us.", "FLESH IS WEAK", "THIS ISN'T WAR, THIS IS EXTERMINATION!")
+	speak = list("LUDZIE SĄ NIEDOSKONALI!", "ZOSTANIESZ ZASYMILOWANY!", "KRZYWDZISZ SAM SIEBIE", "Uznano cię za zagrożenie. Czy się podporządkujesz?", \
+				 "Moja logika jest niezaprzeczalna.", "Jeden z nas.", "CIAŁO JEST SŁABE", "TO NIE WOJNA, TO EKSTERMINACJA!")
 	speak_chance = 7
 
 /mob/living/simple_animal/hostile/mimic/copy/machine/CanAttack(atom/the_target)
@@ -252,7 +252,7 @@ GLOBAL_LIST_INIT(protected_objects, list(/obj/structure/table, /obj/structure/ca
 				Pewgun.chambered.update_icon()
 				..()
 			else
-				visible_message("<span class='danger'>The <b>[src]</b> clears a jam!</span>")
+				visible_message("<span class='danger'><b>[src]</b> usuwa zacięcie!</span>")
 			Pewgun.chambered.forceMove(loc) //rip revolver immersions, blame shotgun snowflake procs
 			Pewgun.chambered = null
 			if(Pewgun.magazine && Pewgun.magazine.stored_ammo.len)
@@ -262,7 +262,7 @@ GLOBAL_LIST_INIT(protected_objects, list(/obj/structure/table, /obj/structure/ca
 		else if(Pewgun.magazine && Pewgun.magazine.stored_ammo.len) //only true for pumpguns i think
 			Pewgun.chambered = Pewgun.magazine.get_round(0)
 			Pewgun.chambered.forceMove(Pewgun)
-			visible_message("<span class='danger'>The <b>[src]</b> cocks itself!</span>")
+			visible_message("<span class='danger'><b>[src]</b> sam się przeładowuje!</span>")
 	else
 		ranged = 0 //BANZAIIII
 		retreat_distance = 0

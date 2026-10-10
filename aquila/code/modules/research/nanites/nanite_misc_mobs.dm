@@ -10,11 +10,11 @@
 	speak_emote = list("stwierdza")
 	turns_per_move = 0
 	melee_damage = 1
-	attacktext = "bites"
+	attacktext = "gryzie"
 	attack_sound = 'aquila/sound/misc/nanobuzz.ogg'
-	response_help  = "shoos"
-	response_disarm = "swats away"
-	response_harm   = "squashes"
+	response_help  = "przegania"
+	response_disarm = "odgania"
+	response_harm   = "zgniata"
 	maxHealth = 6
 	health = 6
 	healable = 0
@@ -32,7 +32,7 @@
 	movement_type = FLYING
 	ventcrawler = VENTCRAWLER_ALWAYS
 	deathsound = 'aquila/sound/misc/nanodead.ogg'
-	deathmessage = "dissolves into a fine, metallic dust..."
+	deathmessage = "rozpada się w drobny, metaliczny pył..."
 
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0

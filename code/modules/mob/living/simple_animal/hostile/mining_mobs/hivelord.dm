@@ -17,10 +17,10 @@
 	maxHealth = 75
 	health = 75
 	melee_damage = 0
-	attacktext = "lashes out at"
+	attacktext = "rzuca się na"
 	speak_emote = list("woła telepatycznie")
 	attack_sound = 'sound/weapons/pierce.ogg'
-	throw_message = "falls right through the strange body of the"
+	throw_message = "przelatuje prosto przez dziwne ciało"
 	ranged_cooldown = 0
 	ranged_cooldown_time = 20
 	obj_damage = 0
@@ -65,17 +65,17 @@
 	icon_gib = "syndicate_gib"
 	mouse_opacity = MOUSE_OPACITY_OPAQUE
 	move_to_delay = 1
-	friendly = "buzzes near"
+	friendly = "bzyczy przy"
 	vision_range = 10
 	speed = 3
 	maxHealth = 1
 	health = 1
 	movement_type = FLYING
 	melee_damage = 2
-	attacktext = "slashes"
+	attacktext = "tnie"
 	speak_emote = list("woła telepatycznie")
 	attack_sound = 'sound/weapons/pierce.ogg'
-	throw_message = "falls right through the strange body of the"
+	throw_message = "przelatuje prosto przez dziwne ciało"
 	obj_damage = 0
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	pass_flags = PASSTABLE
@@ -99,10 +99,10 @@
 	mouse_opacity = MOUSE_OPACITY_ICON
 	obj_damage = 60
 	melee_damage = 15
-	attacktext = "lashes out at"
+	attacktext = "rzuca się na"
 	speak_emote = list("rozbrzmiewa echem")
 	attack_sound = 'sound/weapons/pierce.ogg'
-	throw_message = "bounces harmlessly off of"
+	throw_message = "nieszkodliwie odbija się od"
 	crusher_loot = /obj/item/crusher_trophy/legion_skull
 	loot = list(/obj/item/organ/regenerative_core/legion)
 	brood_type = /mob/living/simple_animal/hostile/asteroid/hivelordbrood/legion
@@ -132,7 +132,7 @@
 	dwarf_mob = TRUE
 
 /mob/living/simple_animal/hostile/asteroid/hivelord/legion/death(gibbed)
-	visible_message("<span class='warning'>The skulls on [src] wail in anger as they flee from their dying host!</span>")
+	visible_message("<span class='warning'>Czaszki na [src] zawodzą z gniewu, uciekając od umierającego nosiciela!</span>")
 	var/turf/T = get_turf(src)
 	if(T)
 		if(stored_mob)
@@ -159,15 +159,15 @@
 	icon_aggro = "legion_head"
 	icon_dead = "legion_head"
 	icon_gib = "syndicate_gib"
-	friendly = "buzzes near"
+	friendly = "bzyczy przy"
 	vision_range = 10
 	maxHealth = 1
 	health = 5
 	melee_damage = 12
-	attacktext = "bites"
+	attacktext = "gryzie"
 	speak_emote = list("rozbrzmiewa echem")
 	attack_sound = 'sound/weapons/pierce.ogg'
-	throw_message = "is shrugged off by"
+	throw_message = "zostaje strząśnięty przez"
 	pass_flags = PASSTABLE
 	del_on_death = TRUE
 	stat_attack = UNCONSCIOUS
@@ -182,13 +182,13 @@
 	..()
 
 /mob/living/simple_animal/hostile/asteroid/hivelordbrood/legion/proc/infest(mob/living/carbon/human/H)
-	visible_message("<span class='warning'>[name] burrows into the flesh of [H]!</span>")
+	visible_message("<span class='warning'>[name] wgryza się w ciało [H]!</span>")
 	var/mob/living/simple_animal/hostile/asteroid/hivelord/legion/L
 	if(H.dna.check_mutation(DWARFISM)) //dwarf legions aren't just fluff!
 		L = new /mob/living/simple_animal/hostile/asteroid/hivelord/legion/dwarf(H.loc)
 	else
 		L = new(H.loc)
-	visible_message("<span class='warning'>[L] staggers to [L.p_their()] feet!</span>")
+	visible_message("<span class='warning'>[L] chwiejnie staje na nogi!</span>")
 	H.death()
 	H.adjustBruteLoss(1000)
 	L.stored_mob = H
@@ -244,7 +244,7 @@
 
 /mob/living/simple_animal/hostile/big_legion/Initialize(mapload)
 	.=..()
-	AddComponent(/datum/component/spawner, list(/mob/living/simple_animal/hostile/asteroid/hivelord/legion), 200, faction, "peels itself off from", 3)
+	AddComponent(/datum/component/spawner, list(/mob/living/simple_animal/hostile/asteroid/hivelord/legion), 200, faction, "odkleja się od", 3)
 
 //Tendril-spawned Legion remains, the charred skeletons of those whose bodies sank into laval or fell into chasms.
 /obj/effect/mob_spawn/human/corpse/charredskeleton

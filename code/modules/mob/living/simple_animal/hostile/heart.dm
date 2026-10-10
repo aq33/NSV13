@@ -14,18 +14,18 @@
 	health = 24
 	speed = -1
 	melee_damage = 15
-	response_help = "touches"
-	response_disarm = "beats"
-	response_harm = "breaks"
+	response_help = "dotyka"
+	response_disarm = "bije"
+	response_harm = "łamie"
 	density = FALSE
-	attacktext = "beats"
+	attacktext = "bije"
 	ventcrawler = VENTCRAWLER_ALWAYS
 	attack_sound = 'sound/effects/singlebeat.ogg'
 	stat_attack = UNCONSCIOUS
 	attack_same = 1
 	gold_core_spawnable = HOSTILE_SPAWN
 	see_in_dark = 8
-	deathmessage = "falls lifeless."
+	deathmessage = "pada martwy."
 	del_on_death = TRUE
 	loot = list(/obj/item/organ/heart)
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)

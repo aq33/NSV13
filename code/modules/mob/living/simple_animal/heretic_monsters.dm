@@ -6,9 +6,9 @@
 	gender = NEUTER
 	mob_biotypes = NONE
 	attack_sound = 'sound/weapons/punch1.ogg'
-	response_help = "thinks better of touching"
-	response_disarm = "flails at"
-	response_harm = "reaps"
+	response_help = "rozmyśla się i nie dotyka"
+	response_disarm = "macha rękami na"
+	response_harm = "żnie"
 	speak_emote = list("krzyczy")
 	speak_chance = 1
 	speed = 0
@@ -24,7 +24,7 @@
 	movement_type = GROUND
 	pressure_resistance = 100
 	del_on_death = TRUE
-	deathmessage = "implodes into itself."
+	deathmessage = "zapada się w sobie."
 	faction = list(FACTION_HERETIC)
 	simple_mob_flags = SILENCE_RANGED_MESSAGE
 	/// Innate spells that are added when a beast is created.
@@ -86,7 +86,7 @@
 	var/list/views = list()
 	for(var/i in 1 to 10)
 		views |= i
-	var/new_view = input("Choose your new view", "Modify view range", 0) as null|anything in views
+	var/new_view = input("Wybierz nowy widok", "Zmień zasięg widzenia", 0) as null|anything in views
 	if(new_view)
 		usr.client.view_size.setTo(clamp(new_view, 1, 10))
 	else
@@ -107,8 +107,7 @@
 	if(linked_mobs[mob_linked])
 		return FALSE
 
-	to_chat(mob_linked, "<span class='notice'>You feel something new enter your sphere of mind... \
-		You hear whispers of people far away, screeches of horror and a huming of welcome to [src]'s Mansus Link.</span>")
+	to_chat(mob_linked, "<span class='notice'>Czujesz, jak coś nowego wkracza w sferę twojego umysłu... Słyszysz szepty dalekich ludzi, wrzaski grozy i powitalny pomruk Łącza Mansus [src].</span>")
 
 	var/datum/action/innate/mansus_speech/action = new(src)
 	linked_mobs[mob_linked] = action
@@ -133,7 +132,7 @@
 	action.Remove(mob_linked)
 	qdel(action)
 
-	to_chat(mob_linked, "<span class='notice'>Your mind shatters as [src]'s Mansus Link leaves your mind.</span>")
+	to_chat(mob_linked, "<span class='notice'>Twój umysł się rozpada, gdy Łącze Mansus [src] go opuszcza.</span>")
 	INVOKE_ASYNC(mob_linked, TYPE_PROC_REF(/mob, emote), "scream")
 	mob_linked.AdjustParalyzed(0.5 SECONDS) //micro stun
 

@@ -9,9 +9,9 @@
 	speak_chance = 0
 	turns_per_move = 5
 	butcher_results = list(/obj/item/food/meat/slab/dolphinmeat = 2)
-	response_help = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm = "hits"
+	response_help = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm = "uderza"
 	emote_taunt = list("gnashes")
 	taunt_chance = 30
 	speed = 0
@@ -23,7 +23,7 @@
 	environment_smash = 0
 	melee_damage = 15
 	pass_flags = PASSTABLE
-	attacktext = "bites"
+	attacktext = "gryzie"
 	attack_sound = 'sound/weapons/bite.ogg'
 	speak_emote = list("terkocze", "piszczy", "klika")
 

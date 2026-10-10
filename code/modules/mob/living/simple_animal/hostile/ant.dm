@@ -21,13 +21,13 @@
 	hardattacks = TRUE
 	obj_damage = 5
 	melee_damage = 7.5//Higher health than a base carp, so much lower damage.
-	attacktext = "bites" //NSV13 - our simple animals use the older verb vars
+	attacktext = "gryzie" //NSV13 - our simple animals use the older verb vars
 	attack_sound = 'sound/weapons/bite.ogg'
 	//attack_vis_effect = ATTACK_EFFECT_BITE
 	butcher_results = list(/obj/effect/decal/cleanable/ants = 3) //It's just a bunch of ants glued together into a larger ant
-	response_help = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm = "kicks"
+	response_help = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm = "kopie"
 	gold_core_spawnable = FRIENDLY_SPAWN
 	faction = list("neutral")
 	can_be_held = FALSE

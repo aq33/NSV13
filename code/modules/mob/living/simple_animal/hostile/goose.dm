@@ -10,16 +10,16 @@
 	speak_chance = 0
 	turns_per_move = 5
 	butcher_results = list(/obj/item/food/meat/slab = 2) //NSV13 made the goose drop meat
-	response_help = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm = "kicks"
+	response_help = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm = "kopie"
 	emote_taunt = list("hisses")
 	taunt_chance = 30
 	speed = 0
 	maxHealth = 25
 	health = 25
 	melee_damage = 5
-	attacktext = "pecks"
+	attacktext = "dziobie"
 	attack_sound = "goose"
 	speak_emote = list("trąbi")
 	faction = list("neutral")
@@ -42,9 +42,9 @@
 	real_name = "Birdboat"
 	desc = "It's a sick-looking goose, probably ate too much maintenance trash. Best not to move it around too much."
 	gender = MALE
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm   = "kicks"
+	response_help  = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm   = "kopie"
 	gold_core_spawnable = NO_SPAWN
 	random_retaliate = FALSE
 	var/vomiting = FALSE
@@ -68,7 +68,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/goose/vomit/examine(user)
 	. = ..()
-	. += "<span class='notice'>Somehow, it still looks hungry.</span>"
+	. += "<span class='notice'>Jakimś cudem wciąż wygląda na głodną.</span>"
 
 /mob/living/simple_animal/hostile/retaliate/goose/vomit/attacked_by(obj/item/O, mob/user)
 	. = ..()
@@ -79,16 +79,16 @@
 	if (stat == DEAD) // plapatin I swear to god
 		return
 	if (contents.len > GOOSE_SATIATED)
-		visible_message("<span class='notice'>[src] looks too full to eat \the [tasty]!</span>")
+		visible_message("<span class='notice'>[src] wygląda na zbyt najedzoną, by zjeść [tasty]!</span>")
 		return
 	if (tasty.foodtype & GROSS)
-		visible_message("<span class='notice'>[src] hungrily gobbles up \the [tasty]!</span>")
+		visible_message("<span class='notice'>[src] łapczywie pożera [tasty]!</span>")
 		tasty.forceMove(src)
 		playsound(src,'sound/items/eatfood.ogg', 70, 1)
 		vomitCoefficient += 3
 		vomitTimeBonus += 2
 	else
-		visible_message("<span class='notice'>[src] refuses to eat \the [tasty].</span>")
+		visible_message("<span class='notice'>[src] odmawia zjedzenia [tasty].</span>")
 
 /mob/living/simple_animal/hostile/retaliate/goose/vomit/proc/vomit()
 	if (stat == DEAD)

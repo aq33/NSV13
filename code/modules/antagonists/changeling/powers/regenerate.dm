@@ -90,9 +90,9 @@
 	health = 50
 	maxHealth = 50
 	melee_damage = 3
-	attacktext = "bites"
-	response_help  = "pokes"
-	response_disarm = "shoos"
+	attacktext = "gryzie"
+	response_help  = "szturcha"
+	response_disarm = "przegania"
 	response_harm   = "nadeptuje na"
 	ventcrawler = VENTCRAWLER_ALWAYS
 	density = FALSE

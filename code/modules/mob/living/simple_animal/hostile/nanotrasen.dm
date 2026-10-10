@@ -9,16 +9,16 @@
 	mob_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
 	speak_chance = 12
 	turns_per_move = 5
-	response_help = "pokes"
-	response_disarm = "shoves"
-	response_harm = "hits"
+	response_help = "szturcha"
+	response_disarm = "popycha"
+	response_harm = "uderza"
 	speed = 0
 	stat_attack = UNCONSCIOUS
 	robust_searching = 1
 	maxHealth = 100
 	health = 100
 	melee_damage = 12
-	attacktext = "punches"
+	attacktext = "uderza"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	a_intent = INTENT_HARM
 	loot = list(/obj/effect/mob_spawn/human/corpse/nanotrasensoldier)
@@ -35,7 +35,7 @@
 /mob/living/simple_animal/hostile/nanotrasen/Aggro()
 	..()
 	summon_backup(15)
-	say("411 in progress, requesting backup!")
+	say("Trwa 411, potrzebne wsparcie!")
 
 
 /mob/living/simple_animal/hostile/nanotrasen/ranged

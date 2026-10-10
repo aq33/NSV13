@@ -39,11 +39,11 @@ Difficulty: Hard
 	desc = "A massive metal club that hangs in the air as though waiting. It'll make you dance to its beat."
 	health = 2500
 	maxHealth = 2500
-	attacktext = "clubs"
+	attacktext = "pałuje"
 	attack_sound = 'sound/weapons/sonic_jackhammer.ogg'
 	icon_state = "hierophant"
 	icon_living = "hierophant"
-	friendly = "stares down"
+	friendly = "mierzy wzrokiem"
 	icon = 'icons/mob/lavaland/hierophant_new.dmi'
 	faction = list("boss") //asteroid mobs? get that shit out of my beautiful square house
 	speak_emote = list("naucza")
@@ -95,28 +95,28 @@ Difficulty: Hard
 	name = "Blink To Target"
 	icon_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "sniper_zoom"
-	chosen_message = "<span class='colossus'>You are now blinking to your target.</span>"
+	chosen_message = "<span class='colossus'>Teraz teleportujesz się do celu.</span>"
 	chosen_attack_num = 1
 
 /datum/action/innate/megafauna_attack/chaser_swarm
 	name = "Chaser Swarm"
 	icon_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "hierophant_squares_indefinite"
-	chosen_message = "<span class='colossus'>You are firing a chaser swarm at your target.</span>"
+	chosen_message = "<span class='colossus'>Wystrzeliwujesz w cel rój ścigaczy.</span>"
 	chosen_attack_num = 2
 
 /datum/action/innate/megafauna_attack/cross_blasts
 	name = "Cross Blasts"
 	icon_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "hierophant_blast_indefinite"
-	chosen_message = "<span class='colossus'>You are now firing cross blasts at your target.</span>"
+	chosen_message = "<span class='colossus'>Teraz strzelasz w cel krzyżowymi wybuchami.</span>"
 	chosen_attack_num = 3
 
 /datum/action/innate/megafauna_attack/blink_spam
 	name = "Blink Chase"
 	icon_icon = 'icons/obj/lavaland/artefacts.dmi'
 	button_icon_state = "hierophant_club_ready_beacon"
-	chosen_message = "<span class='colossus'>You are now repeatedly blinking at your target.</span>"
+	chosen_message = "<span class='colossus'>Teraz wielokrotnie teleportujesz się do celu.</span>"
 	chosen_attack_num = 4
 
 /mob/living/simple_animal/hostile/megafauna/hierophant/OpenFire()
@@ -340,7 +340,7 @@ Difficulty: Hard
 		B.damage = 30
 	animate(src, alpha = 0, time = 2, easing = EASE_OUT) //fade out
 	SLEEP_CHECK_DEATH(1)
-	visible_message("<span class='hierophant_warning'>[src] fades out!</span>")
+	visible_message("<span class='hierophant_warning'>[src] znika!</span>")
 	density = FALSE
 	SLEEP_CHECK_DEATH(2)
 	forceMove(T)
@@ -348,7 +348,7 @@ Difficulty: Hard
 	animate(src, alpha = 255, time = 2, easing = EASE_IN) //fade IN
 	SLEEP_CHECK_DEATH(1)
 	density = TRUE
-	visible_message("<span class='hierophant_warning'>[src] fades in!</span>")
+	visible_message("<span class='hierophant_warning'>[src] się pojawia!</span>")
 	SLEEP_CHECK_DEATH(1) //at this point the blasts we made detonate
 	blinking = FALSE
 
@@ -405,7 +405,7 @@ Difficulty: Hard
 		set_stat(DEAD)
 		blinking = TRUE //we do a fancy animation, release a huge burst(), and leave our staff.
 		visible_message("<span class='hierophant'>\"Mrmxmexmrk wipj-hiwxvygx wiuyirgi...\"</span>")
-		visible_message("<span class='hierophant_warning'>[src] shrinks, releasing a massive burst of energy!</span>")
+		visible_message("<span class='hierophant_warning'>[src] kurczy się, uwalniając potężny wybuch energii!</span>")
 		var/list/stored_nearby = list()
 		for(var/mob/living/L in oviewers(7,src))
 			stored_nearby += L // store the people to grant the achievements to once we die
@@ -418,7 +418,7 @@ Difficulty: Hard
 		if(!L.dropItemToGround(W))
 			qdel(W)
 	visible_message("<span class='hierophant_warning'>\"[pick(kill_phrases)]\"</span>")
-	visible_message("<span class='hierophant_warning'>[src] annihilates [L]!</span>","<span class='userdanger'>You annihilate [L], restoring your health!</span>")
+	visible_message("<span class='hierophant_warning'>[src] annihilates [L]!</span>","<span class='userdanger'>Unicestwiasz [L], odzyskując zdrowie!</span>")
 	adjustHealth(-L.maxHealth*0.5)
 	L.dust()
 
@@ -665,9 +665,9 @@ Difficulty: Hard
 		if(L.client)
 			flash_color(L.client, "#660099", 1)
 		playsound(L,'sound/weapons/sear.ogg', 50, 1, -4)
-		to_chat(L, "<span class='userdanger'>You're struck by a [name]!</span>")
+		to_chat(L, "<span class='userdanger'>Trafia cię [name]!</span>")
 		var/limb_to_hit = L.get_bodypart(pick(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG))
-		var/armor = L.run_armor_check(limb_to_hit, "melee", "Your armor absorbs [src]!", "Your armor blocks part of [src]!", 50, "Your armor was penetrated by [src]!")
+		var/armor = L.run_armor_check(limb_to_hit, "melee", "Twój pancerz pochłania [src]!", "Twój pancerz blokuje część [src]!", 50, "[src] przebija twój pancerz!")
 		L.apply_damage(damage, BURN, limb_to_hit, armor)
 		if(ishostile(L))
 			var/mob/living/simple_animal/hostile/H = L //mobs find and damage you...
@@ -686,7 +686,7 @@ Difficulty: Hard
 		if(M.occupant)
 			if(friendly_fire_check && caster && caster.faction_check_mob(M.occupant))
 				continue
-			to_chat(M.occupant, "<span class='userdanger'>Your [M.name] is struck by a [name]!</span>")
+			to_chat(M.occupant, "<span class='userdanger'>[name] trafia twój [M.name]!</span>")
 		playsound(M,'sound/weapons/sear.ogg', 50, 1, -4)
 		M.take_damage(damage, BURN, 0, 0)
 
@@ -711,13 +711,13 @@ Difficulty: Hard
 		if(H.timer > world.time)
 			return
 		if(H.beacon == src)
-			to_chat(user, "<span class='notice'>You start removing your hierophant beacon...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz zdejmować swój nadajnik hierofanta...</span>")
 			H.timer = world.time + 51
 			INVOKE_ASYNC(H, TYPE_PROC_REF(/obj/item/hierophant_club, prepare_icon_update))
 			if(do_after(user, 50, target = src))
 				playsound(src,'sound/magic/blind.ogg', 200, 1, -4)
 				new /obj/effect/temp_visual/hierophant/telegraph/teleport(get_turf(src), user)
-				to_chat(user, "<span class='hierophant_warning'>You collect [src], reattaching it to the club!</span>")
+				to_chat(user, "<span class='hierophant_warning'>Zbierasz [src] i ponownie mocujesz go do maczugi!</span>")
 				H.beacon = null
 				user.update_action_buttons_icon()
 				qdel(src)
@@ -725,6 +725,6 @@ Difficulty: Hard
 				H.timer = world.time
 				INVOKE_ASYNC(H, TYPE_PROC_REF(/obj/item/hierophant_club, prepare_icon_update))
 		else
-			to_chat(user, "<span class='hierophant_warning'>You touch the beacon with the club, but nothing happens.</span>")
+			to_chat(user, "<span class='hierophant_warning'>Dotykasz nadajnika maczugą, ale nic się nie dzieje.</span>")
 	else
 		return ..()

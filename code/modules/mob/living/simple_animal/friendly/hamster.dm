@@ -1,8 +1,8 @@
 /mob/living/simple_animal/pet/hamster
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
-	response_help  = "pets"
-	response_disarm = "bops"
-	response_harm   = "bites"
+	response_help  = "głaszcze"
+	response_disarm = "pstryka"
+	response_harm   = "gryzie"
 	speak = list("Pi", "PIII!")
 	speak_emote = list("piszczy", "syczy", "kwiczy")
 	emote_hear = list("piszczy.", "syczy.", "kwiczy.")

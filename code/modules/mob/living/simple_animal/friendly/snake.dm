@@ -18,11 +18,11 @@
 	speak_emote = list("syczy")
 	health = 20
 	maxHealth = 20
-	attacktext = "bites"
+	attacktext = "gryzie"
 	melee_damage = 6
-	response_help  = "pets"
-	response_disarm = "shoos"
-	response_harm   = "steps on"
+	response_help  = "głaszcze"
+	response_disarm = "przegania"
+	response_harm   = "nadeptuje na"
 	faction = list("hostile")
 	ventcrawler = VENTCRAWLER_ALWAYS
 	density = FALSE
@@ -60,7 +60,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/poison/snake/AttackingTarget()
 	if(istype(target, /mob/living/simple_animal/mouse))
-		visible_message("<span class='notice'>[name] consumes [target] in a single gulp!</span>", "<span class='notice'>You consume [target] in a single gulp!</span>")
+		visible_message("<span class='notice'>[name] połyka [target] w całości!</span>", "<span class='notice'>Połykasz [target] w całości!</span>")
 		QDEL_NULL(target)
 		adjustBruteLoss(-2)
 	else

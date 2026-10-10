@@ -2,9 +2,9 @@
 	name = "gondola"
 	real_name = "gondola"
 	desc = "The silent walker. This one seems to be part of a delivery agency."
-	response_help = "pets"
-	response_disarm = "bops"
-	response_harm = "kicks"
+	response_help = "głaszcze"
+	response_disarm = "pstryka"
+	response_harm = "kopie"
 	faction = list("gondola")
 	turns_per_move = 10
 	icon = 'icons/obj/supplypods.dmi'

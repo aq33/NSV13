@@ -13,12 +13,12 @@
 	healable = 0
 	speak_emote = list("syczy")
 	emote_hear = list("zawodzi.","skrzeczy.")
-	response_help  = "puts their hand through"
-	response_disarm = "flails at"
-	response_harm   = "punches"
+	response_help  = "przekłada rękę przez"
+	response_disarm = "macha rękami na"
+	response_harm   = "uderza"
 	speak_chance = 1
 	melee_damage = 5
-	attacktext = "metaphysically strikes"
+	attacktext = "metafizycznie uderza"
 	minbodytemp = 0
 	maxbodytemp = INFINITY
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
@@ -35,7 +35,7 @@
 	discovery_points = 1000
 
 /mob/living/simple_animal/shade/death()
-	deathmessage = "lets out a contented sigh as [p_their()] form unwinds."
+	deathmessage = "wydaje z siebie zadowolone westchnienie, gdy jego forma się rozplata."
 	..()
 
 /mob/living/simple_animal/shade/canSuicide()
@@ -51,10 +51,10 @@
 		if(health < maxHealth)
 			adjustHealth(-25)
 			Beam(M,icon_state="sendbeam",time=4)
-			M.visible_message("<span class='danger'>[M] heals \the <b>[src]</b>.</span>", \
-					   "<span class='cult'>You heal <b>[src]</b>, leaving <b>[src]</b> at <b>[health]/[maxHealth]</b> health.</span>")
+			M.visible_message("<span class='danger'>[M] leczy <b>[src]</b>.</span>", \
+					   "<span class='cult'>Leczysz <b>[src]</b>, zostawiając <b>[src]</b> z <b>[health]/[maxHealth]</b> zdrowia.</span>")
 		else
-			to_chat(M, "<span class='cult'>You cannot heal <b>[src]</b>, as [p_theyre()] unharmed!</span>")
+			to_chat(M, "<span class='cult'>Nie możesz uleczyć <b>[src]</b>, bo nie jest ranny!</span>")
 	else if(src != M)
 		return ..()
 

@@ -155,42 +155,42 @@
 	dust()
 
 /mob/living/simple_animal/drone/examine(mob/user)
-	. = list("<span class='info'>*---------*\nThis is [icon2html(src, user)] \a <b>[src]</b>!")
+	. = list("<span class='info'>*---------*\nTo [icon2html(src, user)] <b>[src]</b>!")
 
 	//Hands
 	for(var/obj/item/I in held_items)
 		if(!(I.item_flags & ABSTRACT))
-			. += "It has [I.get_examine_string(user)] in its [get_held_index_name(get_held_index_of_item(I))]."
+			. += "Trzyma [I.get_examine_string(user)] ([get_held_index_name(get_held_index_of_item(I))])."
 
 	//Internal storage
 	if(internal_storage && !(internal_storage.item_flags & ABSTRACT))
-		. += "It is holding [internal_storage.get_examine_string(user)] in its internal storage."
+		. += "W wewnętrznym schowku trzyma [internal_storage.get_examine_string(user)]."
 
 	//Cosmetic hat - provides no function other than looks
 	if(head && !(head.item_flags & ABSTRACT))
-		. += "It is wearing [head.get_examine_string(user)] on its head."
+		. += "Na głowie ma [head.get_examine_string(user)]."
 
 	//Braindead
 	if(!client && stat != DEAD)
-		. += "Its status LED is blinking at a steady rate."
+		. += "Dioda stanu miga w równym rytmie."
 
 	//Hacked
 	if(hacked)
-		. += "<span class='warning'>Its display is glowing red!</span>"
+		. += "<span class='warning'>Wyświetlacz świeci na czerwono!</span>"
 
 	//Damaged
 	if(health != maxHealth)
 		if(health > maxHealth * 0.33) //Between maxHealth and about a third of maxHealth, between 30 and 10 for normal drones
-			. += "<span class='warning'>Its screws are slightly loose.</span>"
+			. += "<span class='warning'>Śrubki są lekko poluzowane.</span>"
 		else //otherwise, below about 33%
-			. += "<span class='boldwarning'>Its screws are very loose!</span>"
+			. += "<span class='boldwarning'>Śrubki są bardzo poluzowane!</span>"
 
 	//Dead
 	if(stat == DEAD)
 		if(client)
-			. += "<span class='deadsay'>A message repeatedly flashes on its display: \"REBOOT -- REQUIRED\".</span>"
+			. += "<span class='deadsay'>Na wyświetlaczu miga komunikat: \"WYMAGANY -- RESTART\".</span>"
 		else
-			. += "<span class='deadsay'>A message repeatedly flashes on its display: \"ERROR -- OFFLINE\".</span>"
+			. += "<span class='deadsay'>Na wyświetlaczu miga komunikat: \"BŁĄD -- OFFLINE\".</span>"
 	. += "*---------*</span>"
 
 
@@ -203,10 +203,10 @@
 	if(. & EMP_PROTECT_SELF)
 		return
 	Stun(100)
-	to_chat(src, "<span class='danger'><b>ER@%R: MME^RY CO#RU9T!</b> R&$b@0tin)...</span>")
+	to_chat(src, "<span class='danger'><b>BŁ@%D: P^MIĘĆ USZK#DZ9NA!</b> R&$st@rt)...</span>")
 	if(severity == 1)
 		adjustBruteLoss(heavy_emp_damage)
-		to_chat(src, "<span class='userdanger'>HeAV% DA%^MMA+G TO I/O CIR!%UUT!</span>")
+		to_chat(src, "<span class='userdanger'>CIĘ%KIE U%^SZKO+DZENIE OB!%WODU I/O!</span>")
 
 
 /mob/living/simple_animal/drone/proc/triggerAlarm(class, area/home, cameras, obj/source)
@@ -224,7 +224,7 @@
 			return TRUE
 
 	our_sort[home.name] = list(home, list(source))
-	to_chat(src, "--- [class] alarm detected in [home.name]!")
+	to_chat(src, "--- Alarm ([class]) wykryty w [home.name]!")
 
 ///This isn't currently needed since drones do jack shit with cameras. I hate this code so much
 /mob/living/simple_animal/drone/proc/freeCamera(area/home, obj/machinery/camera/cam)
@@ -245,7 +245,7 @@
 					cleared = 1
 					L -= I
 		if(cleared)
-			to_chat(src, "--- [class] alarm in [A.name] has been cleared.")
+			to_chat(src, "--- Alarm ([class]) w [A.name] został odwołany.")
 
 /mob/living/simple_animal/drone/handle_temperature_damage()
 	return

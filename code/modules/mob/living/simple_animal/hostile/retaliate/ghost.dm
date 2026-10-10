@@ -7,9 +7,9 @@
 	mob_biotypes = list(MOB_SPIRIT)
 	speak_chance = 0
 	turns_per_move = 5
-	response_help = "passes through"
-	response_disarm = "shoves"
-	response_harm = "hits"
+	response_help = "przenika przez"
+	response_disarm = "popycha"
+	response_harm = "uderza"
 	a_intent = INTENT_HARM
 	healable = 0
 	speed = 0
@@ -18,10 +18,10 @@
 	melee_damage = 15
 	del_on_death = TRUE
 	emote_see = list("płacze cicho", "jęczy", "mamrocze")
-	attacktext = "grips"
+	attacktext = "chwyta"
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 	speak_emote = list("płacze")
-	deathmessage = "wails, disintegrating into a pile of ectoplasm!"
+	deathmessage = "zawodzi, rozpadając się w stos ektoplazmy!"
 	loot = list(/obj/item/ectoplasm)
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0

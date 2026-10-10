@@ -7,9 +7,9 @@
 	desc = "A large, menacing creature covered in armored black scales."
 	speak_emote = list("rechocze")
 	emote_hear = list("rechocze","skrzeczy")
-	response_help  = "thinks better of touching"
-	response_disarm = "flails at"
-	response_harm   = "punches"
+	response_help  = "rozmyśla się i nie dotyka"
+	response_disarm = "macha rękami na"
+	response_harm   = "uderza"
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "imp"
 	icon_living = "imp"
@@ -23,7 +23,7 @@
 	minbodytemp = 250 //Weak to cold
 	maxbodytemp = INFINITY
 	faction = list("hell")
-	attacktext = "wildly tears into"
+	attacktext = "dziko rozszarpuje"
 	maxHealth = 200
 	health = 200
 	healable = 0

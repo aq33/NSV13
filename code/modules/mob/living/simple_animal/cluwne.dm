@@ -2,7 +2,7 @@
     name = "The Cluwne"
     real_name = "The Cluwne"
     desc = "A cluwne. A barely-human monstrosity that pissed off the gods."
-    friendly = "bops"
+    friendly = "pstryka"
     turns_per_move = 10
     icon_state = "cluwne"
     icon_living = "cluwne"
@@ -15,7 +15,7 @@
     maxbodytemp = 1500
     maxHealth = 150
     health = 150
-    speak = list("HONK! HONK! HONK! HONK!","AAAAAAAAAAAAAAAAAA!!", "ZABIJMNIEZABIJMNIE!!", "HONK HENK HONK!!", "Honk Honk!", "HEEEEEEEEEEEEENK!!")
+    speak = list("HONK! HONK! HONK! HONK!","AAAAAAAAAAAAAAAAAA!!", "ZABIJMNIEZABIJMNIE!!", "HONK HENK HONK!!", "Honk honk!", "HEEEEEEEEEEEEENK!!")
     do_footstep = TRUE
     chat_color = "#F37EF6"
     discovery_points = 1000
@@ -30,7 +30,7 @@
 
 /mob/living/simple_animal/cluwne/emote(act, m_type=1, message = null, intentional = FALSE)
     if(intentional)
-        message = "makes a sad honk."
+        message = "smutno trąbi."
         act = "me"
     ..()
 

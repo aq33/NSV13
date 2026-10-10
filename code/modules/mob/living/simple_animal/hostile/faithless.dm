@@ -8,9 +8,9 @@
 	gender = MALE
 	speak_chance = 0
 	turns_per_move = 5
-	response_help = "passes through"
-	response_disarm = "shoves"
-	response_harm = "hits"
+	response_help = "przenika przez"
+	response_disarm = "popycha"
+	response_harm = "uderza"
 	emote_taunt = list("wails")
 	taunt_chance = 25
 	speed = 0
@@ -22,7 +22,7 @@
 
 	obj_damage = 50
 	melee_damage = 15
-	attacktext = "grips"
+	attacktext = "chwyta"
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 	speak_emote = list("warczy")
 

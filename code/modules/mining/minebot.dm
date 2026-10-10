@@ -27,7 +27,7 @@
 	obj_damage = 10
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	healable = 0
-	deathmessage = "stops moving"
+	deathmessage = "przestaje się ruszać"
 	// AI stuff
 	check_friendly_fire = TRUE
 	move_to_delay = 5
@@ -39,8 +39,8 @@
 						  /obj/item/stack/ore/plasma, /obj/item/stack/ore/uranium, /obj/item/stack/ore/iron,
 						  /obj/item/stack/ore/bananium, /obj/item/stack/ore/titanium)
 	// Response verbs
-	response_help = "pets"
-	attacktext = "drills"
+	response_help = "głaszcze"
+	attacktext = "wierci w"
 	attack_sound = 'sound/weapons/circsawhit.ogg'
 	speak_emote = list("stwierdza")
 	// Light handling

@@ -35,7 +35,7 @@
 	boss_cost = 30
 	boss_type = /mob/living/simple_animal/hostile/boss/paper_wizard
 	needs_target = FALSE
-	say_when_triggered = "Rise, my creations! Jump off your pages and into this realm!"
+	say_when_triggered = "Powstańcie, moje dzieła! Zeskoczcie ze stron do tego świata!"
 	var/static/summoned_minions = 0
 
 /datum/action/boss/wizard_summon_minions/Trigger()
@@ -80,8 +80,8 @@
 				var/mob/living/simple_animal/hostile/boss/paper_wizard/copy/C = new (get_step(target,pick_n_take(directions)))
 				wiz.copies += C
 				C.original = wiz
-				C.say("My craft defines me, you could even say it IS me!")
-			wiz.say("My craft defines me, you could even say it IS me!")
+				C.say("Moja sztuka mnie definiuje, można nawet rzec, że TO JEST ja!")
+			wiz.say("Moja sztuka mnie definiuje, można nawet rzec, że TO JEST ja!")
 			wiz.forceMove(get_step(target,pick_n_take(directions)))
 			wiz.minimum_distance = 1 //so he doesn't run away and ruin everything
 			wiz.retreat_distance = 0
@@ -154,7 +154,7 @@
 
 /obj/effect/temp_visual/paperwiz_dying/Initialize(mapload)
 	. = ..()
-	visible_message("<span class='boldannounce'>The wizard cries out in pain as a gate appears behind him, sucking him in!</span>")
+	visible_message("<span class='boldannounce'>Czarodziej krzyczy z bólu, gdy za nim pojawia się brama, która go wciąga!</span>")
 	playsound(get_turf(src),'sound/magic/mandswap.ogg', 50, 1, 1)
 	playsound(get_turf(src),'sound/hallucinations/wail.ogg', 50, 1, 1)
 

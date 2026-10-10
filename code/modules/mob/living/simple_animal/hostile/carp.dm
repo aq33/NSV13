@@ -12,9 +12,9 @@
 	speak_chance = 0
 	turns_per_move = 5
 	butcher_results = list(/obj/item/food/fishmeat/carp = 2)
-	response_help = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm = "hits"
+	response_help = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm = "uderza"
 	emote_taunt = list("gnashes")
 	taunt_chance = 30
 	speed = 0
@@ -24,7 +24,7 @@
 
 	obj_damage = 50
 	melee_damage = 20
-	attacktext = "bites"
+	attacktext = "gryzie"
 	attack_sound = 'sound/weapons/bite.ogg'
 	speak_emote = list("zgrzyta zębami")
 	chat_color = "#B15FB9"
@@ -172,7 +172,7 @@
 /mob/living/simple_animal/hostile/carp/cayenne/examine(mob/user)
 	. = ..()
 	if(disky)
-		. += "<span class='notice'>Wait... is that [disky] in [p_their()] mouth?</span>"
+		. += "<span class='notice'>Chwila... czy to [disky] w jego pysku?</span>"
 
 /mob/living/simple_animal/hostile/carp/cayenne/AttackingTarget()
 	if(istype(target, /obj/item/disk/nuclear))
@@ -181,14 +181,14 @@
 			return
 		potential_disky.forceMove(src)
 		disky = potential_disky
-		to_chat(src, "<span class='nicegreen'>YES!! You manage to pick up [disky]. (Click anywhere to place it back down.)</span>")
+		to_chat(src, "<span class='nicegreen'>TAK!! Udaje ci się podnieść [disky]. (Kliknij gdziekolwiek, by go odłożyć.)</span>")
 		update_icon()
 		if(!disky.fake)
 			client.give_award(/datum/award/achievement/misc/cayenne_disk, src)
 		return
 	if(disky)
 		if(isopenturf(target))
-			to_chat(src, "<span class='notice'>You place [disky] on [target]</span>")
+			to_chat(src, "<span class='notice'>Kładziesz [disky] na [target]</span>")
 			disky.forceMove(target)
 			disky = null
 			update_icon()

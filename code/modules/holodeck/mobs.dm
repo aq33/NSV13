@@ -15,6 +15,6 @@
 	speak_chance = 1
 	turns_per_move = 2
 	butcher_results = list()
-	response_help = "pets"
-	response_disarm = "pushes aside"
-	response_harm = "kicks"
+	response_help = "głaszcze"
+	response_disarm = "odsuwa na bok"
+	response_harm = "kopie"

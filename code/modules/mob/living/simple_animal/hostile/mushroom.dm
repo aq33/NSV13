@@ -9,13 +9,13 @@
 	maxHealth = 10
 	health = 10
 	butcher_results = list(/obj/item/food/hugemushroomslice = 1)
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm   = "whacks"
+	response_help  = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm   = "wali"
 	obj_damage = 0
 	melee_damage = 1
 	attack_same = 2
-	attacktext = "chomps"
+	attacktext = "chrupie"
 	attack_sound = 'sound/weapons/bite.ogg'
 	faction = list("mushroom")
 	environment_smash = ENVIRONMENT_SMASH_NONE
@@ -26,7 +26,7 @@
 	robust_searching = 1
 	unique_name = 1
 	speak_emote = list("piszczy")
-	deathmessage = "fainted."
+	deathmessage = "mdleje."
 	var/cap_color = "#ffffff"
 	var/powerlevel = 0 //Tracks our general strength level gained from eating other shrooms
 	var/bruised = 0 //If someone tries to cheat the system by attacking a shroom to lower its health, punish them so that it wont award levels to shrooms that eat it
@@ -38,9 +38,9 @@
 /mob/living/simple_animal/hostile/mushroom/examine(mob/user)
 	. = ..()
 	if(health >= maxHealth)
-		. += "<span class='info'>It looks healthy.</span>"
+		. += "<span class='info'>Wygląda na zdrowego.</span>"
 	else
-		. += "<span class='info'>It looks like it's been roughed up.</span>"
+		. += "<span class='info'>Wygląda na poturbowanego.</span>"
 
 /mob/living/simple_animal/hostile/mushroom/Life()
 	..()
@@ -91,7 +91,7 @@
 	if(istype(L, /mob/living/simple_animal/hostile/mushroom) && stat == DEAD)
 		var/mob/living/simple_animal/hostile/mushroom/M = L
 		if(faint_ticker < 2)
-			M.visible_message("[M] chews a bit on [src].")
+			M.visible_message("[M] przeżuwa kawałek [src].")
 			faint_ticker++
 			return TRUE
 		M.visible_message("<span class='warning'>[M] devours [src]!</span>")
@@ -125,7 +125,7 @@
 		add_overlay(cap_living)
 
 /mob/living/simple_animal/hostile/mushroom/proc/Recover()
-	visible_message("[src] slowly begins to recover.")
+	visible_message("[src] powoli zaczyna dochodzić do siebie.")
 	faint_ticker = 0
 	revive(full_heal = 1)
 	UpdateMushroomCap()
@@ -144,7 +144,7 @@
 
 /mob/living/simple_animal/hostile/mushroom/proc/Bruise()
 	if(!bruised && !stat)
-		src.visible_message("The [src.name] was bruised!")
+		src.visible_message("[src.name] zostaje poobijany!")
 		bruised = 1
 
 /mob/living/simple_animal/hostile/mushroom/attackby(obj/item/I, mob/user, params)
@@ -153,7 +153,7 @@
 			Recover()
 			qdel(I)
 		else
-			to_chat(user, "<span class='warning'>[src] won't eat it!</span>")
+			to_chat(user, "<span class='warning'>[src] tego nie zje!</span>")
 		return
 	if(I.force)
 		Bruise()

@@ -8,11 +8,11 @@
 	health = 5
 	maxHealth = 5
 	faction = list("Lizard")
-	attacktext = "bites"
+	attacktext = "gryzie"
 	melee_damage = 1
-	response_help  = "pets"
-	response_disarm = "shoos"
-	response_harm   = "stomps on"
+	response_help  = "głaszcze"
+	response_disarm = "przegania"
+	response_harm   = "depcze"
 	ventcrawler = VENTCRAWLER_ALWAYS
 	density = FALSE
 	pass_flags = PASSTABLE | PASSMOB
@@ -33,7 +33,7 @@
 
 /mob/living/simple_animal/hostile/lizard/AttackingTarget()
 	if(is_type_in_typecache(target,edibles)) //Makes sure player lizards only consume edibles.
-		visible_message("[name] consumes [target] in a single gulp.", "<span class='notice'>You consume [target] in a single gulp.</span>")
+		visible_message("[name] połyka [target] w całości.", "<span class='notice'>Połykasz [target] w całości.</span>")
 		QDEL_NULL(target) //Nom
 		adjustBruteLoss(-2)
 		return TRUE

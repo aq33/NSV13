@@ -8,7 +8,7 @@
 	turns_per_move = 1
 	response_help = "odpycha na bok"
 	response_disarm = "macha rękami na"
-	response_harm = "hits"
+	response_harm = "uderza"
 	speak_chance = 0
 	maxHealth = 20
 	health = 20
@@ -16,7 +16,7 @@
 	see_in_dark = 10
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	melee_damage = 7
-	attacktext = "bites"
+	attacktext = "gryzie"
 	butcher_results = list(/obj/item/food/meat/slab = 1)
 	pass_flags = PASSTABLE
 	faction = list("hostile", "vampire")

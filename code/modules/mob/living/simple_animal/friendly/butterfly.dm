@@ -5,13 +5,13 @@
 	icon_living = "butterfly"
 	icon_dead = "butterfly_dead"
 	turns_per_move = 1
-	response_help = "shoos"
-	response_disarm = "brushes aside"
-	response_harm = "squashes"
+	response_help = "przegania"
+	response_disarm = "odsuwa na bok"
+	response_harm = "zgniata"
 	speak_emote = list("trzepocze")
 	maxHealth = 2
 	health = 2
-	friendly = "nudges"
+	friendly = "trąca"
 	density = FALSE
 	movement_type = FLYING
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB

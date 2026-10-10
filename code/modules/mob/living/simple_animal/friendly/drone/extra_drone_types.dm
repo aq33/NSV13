@@ -103,9 +103,8 @@
 	icon_state = "drone_maint_hat"
 	mob_name = "derelict drone"
 	mob_type = /mob/living/simple_animal/drone/derelict
-	short_desc = "You are a long forgotten drone!"
-	flavour_text = "You are a drone on Kosmicheskaya Stantsiya 13. Something has brought you out of hibernation, and the station is in gross disrepair. \
-	Build, repair, maintain and improve the station that housed you on activation."
+	short_desc = "Jesteś dawno zapomnianym dronem!"
+	flavour_text = "Jesteś dronem na Kosmicheskaya Stantsiya 13. Coś wybudziło cię z hibernacji, a stacja jest w opłakanym stanie. Buduj, naprawiaj, konserwuj i ulepszaj stację, na której cię aktywowano."
 
 /mob/living/simple_animal/drone/derelict
 	name = "derelict drone"

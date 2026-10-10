@@ -13,9 +13,9 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	gender = NEUTER
 	mob_biotypes = list(MOB_INORGANIC)
 	bubble_icon = "guardian"
-	response_help  = "passes through"
-	response_disarm = "flails at"
-	response_harm   = "punches"
+	response_help  = "przenika przez"
+	response_disarm = "macha rękami na"
+	response_harm   = "uderza"
 	icon = 'icons/mob/guardian.dmi'
 	icon_state = "magicOrange"
 	icon_living = "magicOrange"
@@ -28,7 +28,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = INFINITY
-	attacktext = "punches"
+	attacktext = "uderza"
 	maxHealth = INFINITY //The spirit itself is invincible
 	health = INFINITY
 	healable = FALSE //don't brusepack the guardian

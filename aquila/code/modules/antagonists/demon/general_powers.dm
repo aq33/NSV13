@@ -17,7 +17,7 @@
 	emote_hear = list("rechocze","skrzeczy")
 	response_help  = "rozmyśla się i nie dotyka"
 	response_disarm = "macha rękami na"
-	response_harm   = "punches"
+	response_harm   = "uderza"
 	icon = 'aquila/icons/mob/mob.dmi'
 	icon_state = "lesserdaemon"
 	icon_living = "lesserdaemon"

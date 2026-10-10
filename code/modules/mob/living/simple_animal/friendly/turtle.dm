@@ -12,9 +12,9 @@
 	speak_chance = 1
 	turns_per_move = 5
 	butcher_results = list(/obj/item/food/meat/slab = 1, /obj/item/clothing/head/franks_hat = 1)
-	response_help = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm = "kicks"
+	response_help = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm = "kopie"
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
 	gold_core_spawnable = NO_SPAWN
 	melee_damage = 0.5

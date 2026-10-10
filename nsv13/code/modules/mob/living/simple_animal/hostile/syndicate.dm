@@ -19,16 +19,16 @@
 	mob_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
 	speak_chance = 0
 	turns_per_move = 5
-	response_help = "pokes"
-	response_disarm = "shoves"
-	response_harm = "hits"
+	response_help = "szturcha"
+	response_disarm = "popycha"
+	response_harm = "uderza"
 	speed = 0
 	stat_attack = UNCONSCIOUS
 	robust_searching = 1
 	maxHealth = 80
 	health = 80
 	melee_damage = 8
-	attacktext = "punches"
+	attacktext = "uderza"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	a_intent = INTENT_HARM
 	loot = list(/obj/effect/gibspawner/human)
@@ -56,7 +56,7 @@
 	maxHealth = 100
 	health = 100
 	melee_damage = 8
-	attacktext = "punches"
+	attacktext = "uderza"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	a_intent = INTENT_HARM
 	atmos_requirements = list("min_oxy" = 3, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
@@ -74,7 +74,7 @@
 	icon_state = "nsvsyndie_gun"
 	icon_living = "nsvsyndie_gun"
 	melee_damage = 6
-	attacktext = "pistol whips"
+	attacktext = "uderza kolbą"
 	attack_sound = 'sound/weapons/punchmiss.ogg'
 	a_intent = INTENT_HARM
 	atmos_requirements = list("min_oxy" = 3, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
@@ -94,7 +94,7 @@
 	health = 130
 	maxHealth = 130
 	melee_damage = 10
-	attacktext = "bludgeons"
+	attacktext = "tłucze"
 	attack_sound = 'sound/weapons/genhit1.ogg'
 	icon_state = "nsvsyndie_smg"
 	icon_living = "nsvsyndie_smg"
@@ -107,7 +107,7 @@
 	health = 155
 	maxHealth = 155
 	melee_damage = 14
-	attacktext = "bludgeons"
+	attacktext = "tłucze"
 	attack_sound = 'sound/weapons/genhit1.ogg'
 	rapid_fire_delay = 6
 	minimum_distance = 3
@@ -163,7 +163,7 @@
 	health = 175
 	maxHealth = 175
 	melee_damage = 10
-	attacktext = "bludgeons"
+	attacktext = "tłucze"
 	attack_sound = 'sound/weapons/genhit1.ogg'
 	icon_state = "nsvsyndie_smg_space"
 	icon_living = "nsvsyndie_smg_space"
@@ -176,7 +176,7 @@
 	icon_living = "nsvsyndie_melee_space"
 	desc = "Relentless... Fearless... and rapidly approaching."
 	attack_sound = 'sound/weapons/blade1.ogg'
-	attacktext = "slashes"
+	attacktext = "tnie"
 	melee_damage = 32
 	maxHealth = 250
 	health = 250
@@ -206,7 +206,7 @@
 	health = 200
 	maxHealth = 200
 	melee_damage = 10
-	attacktext = "bludgeons"
+	attacktext = "tłucze"
 	attack_sound = 'sound/weapons/genhit1.ogg'
 	rapid_fire_delay = 6
 	minimum_distance = 3

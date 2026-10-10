@@ -15,7 +15,7 @@
 	maxHealth = 15
 	healable = 0
 	melee_damage = 3
-	attacktext = "claws"
+	attacktext = "drapie"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	projectilesound = 'sound/weapons/gunshot.ogg'
 	projectiletype = /obj/item/projectile/hivebotbullet
@@ -33,7 +33,7 @@
 
 /mob/living/simple_animal/hostile/hivebot/Initialize(mapload)
 	. = ..()
-	deathmessage = "[src] blows apart!"
+	deathmessage = "rozpada się na kawałki!"
 
 /mob/living/simple_animal/hostile/hivebot/range
 	name = "hivebot"

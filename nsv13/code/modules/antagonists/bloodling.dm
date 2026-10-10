@@ -21,7 +21,7 @@
 	bubble_icon = "alien"
 	deathsound = 'sound/voice/hiss6.ogg'
 	deathmessage = "wydaje okropny wrzask, gdy uchodzi z niego życie..."
-	attacktext = "glomps"
+	attacktext = "rzuca się na"
 	attack_sound = 'sound/effects/blobattack.ogg'
 	wander = FALSE
 	//IT CAME...from outer space!
@@ -963,14 +963,14 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 	speed = 0 //Rapid
 	melee_damage = 8
 	obj_damage = 15
-	attacktext = "glomps"
+	attacktext = "rzuca się na"
 	attack_sound = 'sound/effects/blobattack.ogg'
 	wander = FALSE
 	verb_say = "syczy"
 	bubble_icon = "alien"
 	deathsound = 'sound/voice/hiss6.ogg'
 	deathmessage = "wydaje okropny wrzask, gdy uchodzi z niego życie..."
-	attacktext = "glomps"
+	attacktext = "rzuca się na"
 	//IT CAME...from outer space!
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0

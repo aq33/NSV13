@@ -19,7 +19,7 @@
 		return
 	pcollar = P
 	regenerate_icons()
-	to_chat(user, "<span class='notice'>You put the [P] around [src]'s neck.</span>")
+	to_chat(user, "<span class='notice'>Zakładasz [P] na szyję [src].</span>")
 	if(P.tagname && !unique_pet)
 		fully_replace_character_name(null, "\proper [P.tagname]")
 
@@ -30,7 +30,7 @@
 
 	if(istype(O, /obj/item/newspaper))
 		if(!stat)
-			user.visible_message("[user] baps [name] on the nose with the rolled up [O].")
+			user.visible_message("[user] pstryka [name] w nos zwiniętym [O].")
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2))
 					setDir(i)
