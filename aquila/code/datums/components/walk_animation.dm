@@ -53,6 +53,9 @@
 	// Przedmioty w dłoniach nad wszystkim, jak HANDS_LAYER; tyłem pod ciałem (update_held_dir)
 	for(var/index in 1 to 2)
 		var/obj/effect/overlay/walk_held/held = new
+		// BYOND 516 ustawia obiekty z vis_contents względem lewego dolnego rogu obszaru moba, który kotwice przesuwają o -32 px
+		held.pixel_x = -world.icon_size
+		held.pixel_y = -world.icon_size
 		limbs["hand_[index]"] = held
 		H.vis_contents += held
 	update_body_offset()
