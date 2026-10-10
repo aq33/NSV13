@@ -64,11 +64,11 @@ GLOBAL_VAR_INIT(staple_recipe_added, FALSE)
 
 /obj/item/staplegun/examine(mob/user)
 	. = ..()
-	. += "It contains [ammo]/[max_ammo] staples."
+	. += "Zawiera zszywek: [ammo]/[max_ammo]."
 	if(P)
-		. += "There's [P] loaded in it."
+		. += "Jest w nim załadowany [P]."
 	if(B)
-		. += "There's... a butt loaded in it? What."
+		. += "Jest w nim załadowany... tyłek? Co."
 
 /obj/item/staplegun/update_overlays()
 	. = ..()
@@ -83,15 +83,15 @@ GLOBAL_VAR_INIT(staple_recipe_added, FALSE)
 		var/mob/living/carbon/human/H = target
 		if(user.zone_selected == BODY_ZONE_PRECISE_GROIN)
 			if(H.w_uniform)
-				to_chat(user, "<span class='danger'>You must remove [H == user ? "your" : "[H]'s"] jumpsuit before doing that!</span>")
+				to_chat(user, "<span class='danger'>Zanim to zrobisz, musisz zdjąć [H == user ? "swój kombinezon" : "kombinezon [H]"]!</span>")
 				return
 			if(H.getorganslot(ORGAN_SLOT_BUTT))
-				to_chat(user, "<span class='danger'>[H == user ? "You already have" : "[H] already has"] a butt!</span>")
+				to_chat(user, "<span class='danger'>[H == user ? "Już masz" : "[H] już ma"] tyłek!</span>")
 				return
 			if(B)
 				B.Insert(H)
 				B.loose = TRUE
-				user.visible_message("<span class='danger'>[user] staples [B] back on [user == H ? user.p_their() : "[H]'s"] groin!</span>", "<span class='userdanger'>You staple [user == H ? "your" : "[H]'s"] butt back on, but it looks loose!</span>")
+				user.visible_message("<span class='danger'>[user] przyszywa zszywkami [B] z powrotem do [user == H ? "swojego krocza" : "krocza [H]"]!</span>", "<span class='userdanger'>Przyszywasz zszywkami [user == H ? "swój tyłek" : "tyłek [H]"] z powrotem, ale wygląda na luźny!</span>")
 				B = null
 		var/obj/item/bodypart/O = H.get_bodypart(ran_zone(check_zone(user.zone_selected), 65))
 		var/armor = istype(O) ? H.run_armor_check(O, "melee") : 100
@@ -107,9 +107,9 @@ GLOBAL_VAR_INIT(staple_recipe_added, FALSE)
 				S.tryEmbed(O, TRUE)
 			H.apply_damage(2, BRUTE, O, armor)
 			log_combat(user, H, "stapled", src)
-			user.visible_message("<span class='danger'>[user] has stapled [H] in the [O.name]!</span>", "<span class='userdanger'>You staple [H]!</span>")
+			user.visible_message("<span class='danger'>[user] zszywa [H] ([O.name])!</span>", "<span class='userdanger'>Zszywasz [H]!</span>")
 		else
-			user.visible_message("<span class='danger'>[user] has attempted to staple [H] in the [O ? O.name : "body"]!</span>")
+			user.visible_message("<span class='danger'>[user] próbuje zszyć [H] ([O ? O.name : "ciało"])!</span>")
 	else
 		return ..()
 
@@ -125,7 +125,7 @@ GLOBAL_VAR_INIT(staple_recipe_added, FALSE)
 		playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
 		return
 	playsound(target, 'aquila/sound/weapons/staplegun.ogg', 50, TRUE)
-	user.visible_message("<span class='danger'>[user] has stapled [P] into [target]!</span>")
+	user.visible_message("<span class='danger'>[user] przyszywa [P] do [target]!</span>")
 	P.forceMove(target)
 	P.anchored = TRUE //like why would you want to pull this around
 	P = null
@@ -134,15 +134,15 @@ GLOBAL_VAR_INIT(staple_recipe_added, FALSE)
 
 /obj/item/staplegun/attack_self(mob/user)
 	if(P)
-		to_chat(user, "<span class='notice'>You take [P] out of [src].</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz [P] z [src].</span>")
 		user.put_in_hands(P)
 		P = null
 	else if(B)
-		to_chat(user, "<span class='notice'>You take [B] out of [src].</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz [B] z [src].</span>")
 		user.put_in_hands(B)
 		B = null
 	else if(ammo)
-		to_chat(user, "<span class='notice'>You take the [ammo > 1 ? "staples" : "staple"] out of [src].</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz [ammo > 1 ? "zszywki" : "zszywkę"] z [src].</span>")
 		new /obj/item/stack/staples(user.drop_location(), ammo)
 		ammo = 0
 		update_icon()
@@ -150,18 +150,18 @@ GLOBAL_VAR_INIT(staple_recipe_added, FALSE)
 /obj/item/staplegun/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/stack/staples))
 		if(ammo >= max_ammo)
-			to_chat(user, "<span class='notice'>[src] is already full!</span>")
+			to_chat(user, "<span class='notice'>[src] jest już pełny!</span>")
 			return
 		var/obj/item/stack/staples/S = I
 		var/amount = min(max_ammo - ammo, S.get_amount())
 		if(S.use(amount))
 			ammo += amount
 			update_icon()
-			to_chat(user, "<span class='notice'>You insert [amount] staples in [src]. Now it contains [ammo] staples.</span>")
+			to_chat(user, "<span class='notice'>Wkładasz zszywki ([amount]) do [src]. Zawiera teraz [ammo] zszywek.</span>")
 		return
 	if(istype(I, /obj/item/paper) || istype(I, /obj/item/organ/butt))
 		if(P || B)
-			to_chat(user, "<span class='notice'>There is already something in [src]!</span>")
+			to_chat(user, "<span class='notice'>W [src] już coś jest!</span>")
 			return
 		if(!user.transferItemToLoc(I, src))
 			return
@@ -169,7 +169,7 @@ GLOBAL_VAR_INIT(staple_recipe_added, FALSE)
 			P = I
 		else
 			B = I
-		to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
+		to_chat(user, "<span class='notice'>Wkładasz [I] do [src].</span>")
 		return
 	return ..()
 
@@ -195,9 +195,9 @@ GLOBAL_VAR_INIT(staple_recipe_added, FALSE)
 	if(!opened && !welded && istype(W, /obj/item/staplegun))
 		var/obj/item/staplegun/WS = W
 		if(WS.ammo < 10)
-			to_chat(user, "<span class='warning'>You need ten staples in [WS] to staple [src] shut!</span>")
+			to_chat(user, "<span class='warning'>Do zszycia [src] potrzebujesz dziesięciu zszywek w [WS]!</span>")
 			return
-		to_chat(user, "<span class='notice'>You begin stapling [src]...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz zszywać [src]...</span>")
 		playsound(src, 'aquila/sound/weapons/staplegun.ogg', 50, TRUE)
 		if(!do_after(user, 4 SECONDS, target = src) || opened || welded || WS.ammo < 10)
 			return
@@ -206,10 +206,10 @@ GLOBAL_VAR_INIT(staple_recipe_added, FALSE)
 		WS.ammo -= 10
 		WS.update_icon()
 		update_icon()
-		user.visible_message("<span class='notice'>[user] staples [src] shut with [WS].</span>", "<span class='notice'>You staple [src] shut.</span>")
+		user.visible_message("<span class='notice'>[user] zszywa [src] za pomocą [WS].</span>", "<span class='notice'>Zszywasz [src].</span>")
 		return
 	if(!opened && welded && W.tool_behaviour == TOOL_CROWBAR)
-		to_chat(user, "<span class='notice'>You begin prying out staples from [src]...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz wyważać zszywki z [src]...</span>")
 		W.play_tool_sound(src)
 		if(!do_after(user, 8 SECONDS, target = src) || opened || !welded)
 			return
@@ -217,6 +217,6 @@ GLOBAL_VAR_INIT(staple_recipe_added, FALSE)
 		welded = FALSE
 		update_icon()
 		new /obj/item/stack/staples(drop_location(), 9)
-		user.visible_message("<span class='notice'>[user] pries out the staples keeping [src] shut.</span>", "<span class='notice'>You pry out the staples keeping [src] shut.</span>")
+		user.visible_message("<span class='notice'>[user] wyważa zszywki trzymające [src].</span>", "<span class='notice'>Wyważasz zszywki trzymające [src].</span>")
 		return
 	return ..()

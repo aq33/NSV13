@@ -14,7 +14,7 @@
 	var/xeno = FALSE
 	var/cooldown = 0
 	var/list/speech_buffer = list()
-	var/list/speech_list = list("butt.", "butts.", "ass.", "fart.", "assblast usa", "woop get an ass inspection", "woop") //Hilarious.
+	var/list/speech_list = list("butt.", "butts.", "ass.", "fart.", "assblast usa", "łiu, czas na inspekcję tyłka", "woop") //Hilarious.
 
 /mob/living/simple_animal/bot/buttbot/Initialize(mapload)
 	. = ..()
@@ -26,11 +26,11 @@
 
 /mob/living/simple_animal/bot/buttbot/proc/make_xeno()
 	xeno = TRUE
-	speech_list = list("hissing butts", "hiss hiss motherfucker", "nice trophy nerd", "butt", "woop get an alien inspection")
+	speech_list = list("hissing butts", "syk syk, skurczybyku", "niezłe trofeum, kujonie", "butt", "łiu, czas na inspekcję obcego")
 	update_icon()
 
 /mob/living/simple_animal/bot/buttbot/explode()
-	visible_message("<span class='userdanger'>[src] blows apart!</span>")
+	visible_message("<span class='userdanger'>[src] rozpada się na kawałki!</span>")
 	var/turf/T = get_turf(src)
 	if(prob(50))
 		new /obj/item/bodypart/l_arm/robot(T)

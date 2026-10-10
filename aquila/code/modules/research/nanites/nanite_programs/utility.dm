@@ -49,7 +49,7 @@
 		SEND_SIGNAL(infectee, COMSIG_NANITE_SET_CLOUD, cloud.get_value())
 		SEND_SIGNAL(infectee, COMSIG_NANITE_SYNC, nanites)
 		infectee.investigate_log("was infected by a nanite cluster by [key_name(host_mob)] at [AREACOORD(infectee)].", INVESTIGATE_NANITES)
-		to_chat(infectee, "<span class='warning'>You feel a tiny prick!</span>")
+		to_chat(infectee, "<span class='warning'>Czujesz maleńkie ukłucie!</span>")
 
 /datum/nanite_program/nutrition_synthesis
 	name = "Nutrition Synthesis"
@@ -100,10 +100,10 @@
 	var/datum/nanite_extra_setting/nano_receive = extra_settings[NES_NANO_RECEIVE]
 	var/datum/nanite_extra_setting/nano_send = extra_settings[NES_NANO_SEND]
 	if(nano_receive.get_value())
-		to_chat(host_mob, "<span class='swarmer'><b>\[NANOLINK\]</b> Connecting to the Nanolink...</span>")
+		to_chat(host_mob, "<span class='swarmer'><b>\[NANOŁĄCZE\]</b> Łączenie z nanołączem...</span>")
 		ADD_TRAIT(host_mob, TRAIT_NANORECEIVE, "nanites")
 		if(nano_send.get_value())
-			to_chat(host_mob, "<span class='swarmer'><b>\[NANOLINK\]</b> Use the \".z\" key to send messages over the Nanolink.</span>")
+			to_chat(host_mob, "<span class='swarmer'><b>\[NANOŁĄCZE\]</b> Użyj klawisza \".z\", by wysyłać wiadomości przez nanołącze.</span>")
 	if(nano_send.get_value())
 		ADD_TRAIT(host_mob, TRAIT_NANOSEND, "nanites")
 

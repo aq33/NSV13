@@ -42,7 +42,7 @@
 	description = "Silny środek przeczyszczający. Wypróżnienie po nim oczyszcza organizm z innych substancji."
 	color = "#F2E6B1"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN
-	taste_description = "thick oily bitterness"
+	taste_description = "gęsta, oleista gorycz"
 	nutriment_factor = 0
 	hydration_factor = 0
 	defecation_factor = 7.5 * REAGENTS_METABOLISM

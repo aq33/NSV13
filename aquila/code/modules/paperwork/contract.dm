@@ -3,7 +3,7 @@
 	contractType = CONTRACT_PLEASURE
 
 /obj/item/paper/contract/infernal/pleasure/update_text(signature = "____________", blood = 0)
-	default_raw_text = "<center><B>Contract of pleasure</B></center><BR><BR><BR>I, [target] of sound mind, do hereby willingly offer my soul to the infernal hells by way of the infernal agent [devil_datum.truename], in exchange for boundless pleasure.  I understand that upon my demise, my soul shall fall into the infernal hells, and my body may not be resurrected, cloned, or otherwise brought back to life.  I also understand that this will prevent my brain from being used in an MMI.<BR><BR><BR>Signed, "
+	default_raw_text = "<center><B>Umowa rozkoszy</B></center><BR><BR><BR>Ja, [target], przy zdrowych zmysłach, niniejszym dobrowolnie oddaję swoją duszę piekłom za pośrednictwem piekielnego agenta [devil_datum.truename] w zamian za bezgraniczną rozkosz. Rozumiem, że po mojej śmierci moja dusza trafi do piekła, a mojego ciała nie będzie można wskrzesić, sklonować ani w inny sposób przywrócić do życia. Rozumiem też, że mój mózg nie będzie mógł zostać użyty w MMI.<BR><BR><BR>Podpisano, "
 	if(blood)
 		default_raw_text += "<font face=\"Nyala\" color=#600A0A size=6><i>[signature]</i></font>"
 	else

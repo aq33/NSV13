@@ -117,16 +117,16 @@
 		var/atom/movable/AM = other.loc
 		AM.relay_container_resist(user, other)
 		return
-	other.visible_message("<span class='warning'>[other] begins to shake violently!</span>")
-	to_chat(user, "<span class='notice'>You start pushing the door open... (this will take about [DisplayTimeText(other.breakout_time)].)</span>")
+	other.visible_message("<span class='warning'>[other] zaczyna gwałtownie się trząść!</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz pchać drzwi... (zajmie to około [DisplayTimeText(other.breakout_time)].)</span>")
 	if(do_after(user, other.breakout_time, target = src))
 		if(QDELETED(other) || user.stat != CONSCIOUS || other.opened || (!other.locked && !other.welded))
 			return
 		other.bust_open()
-		user.visible_message("<span class='danger'>[user] successfully broke out of [other]!</span>",
-							"<span class='notice'>You successfully break out of [other]!</span>")
+		user.visible_message("<span class='danger'>[user] wydostaje się z [other]!</span>",
+							"<span class='notice'>Wydostajesz się z [other]!</span>")
 	else if(!QDELETED(other) && !other.opened)
-		to_chat(user, "<span class='warning'>You fail to break out of [other]!</span>")
+		to_chat(user, "<span class='warning'>Nie udaje ci się wydostać z [other]!</span>")
 
 /obj/structure/closet/bluespace/internal/update_icon()
 	cut_overlays()

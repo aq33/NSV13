@@ -9,14 +9,7 @@
 	return // this one doesn't explode on death
 
 /obj/item/implant/explosive/engineering/get_data()
-	var/dat = {"<b>Implant Specifications:</b><BR>
-				<b>Name:</b> Robust Corp RX-79 Engineering Punishment Implant<BR>
-				<b>Life:</b> Activates upon stormdrive explosion.<BR>
-				<b>Important Notes:</b> Explodes<BR>
-				<HR>
-				<b>Implant Details:</b><BR>
-				<b>Function:</b> Contains a compact, electrically detonated explosive that detonates upon detecting stormdrive explosion.<BR>
-				<b>Special Features:</b> Explodes<BR>
+	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Implant karny dla inżynierów Robust Corp RX-79<BR><b>Żywotność:</b> aktywuje się po wybuchu napędu burzowego.<BR><b>Ważne uwagi:</b> wybucha<BR><HR><b>Szczegóły implantu:</b><BR><b>Działanie:</b> zawiera kompaktowy, detonowany elektrycznie ładunek wybuchowy, który wybucha po wykryciu eksplozji napędu burzowego.<BR><b>Cechy specjalne:</b> wybucha<BR>
 				"}
 	return dat
 

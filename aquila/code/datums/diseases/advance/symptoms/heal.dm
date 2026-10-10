@@ -12,9 +12,8 @@
 	level = 3
 	severity = -1
 	prefixes = list("Symbiotic ")
-	passive_message = "<span class='notice'>You feel calm.</span>"
-	threshold_desc = "<b>Stage Speed 9:</b> Shorter delay until healing starts.<br>\
-					  <b>Resistance 9:</b> Increased rate of healing."
+	passive_message = "<span class='notice'>Czujesz spokój.</span>"
+	threshold_desc = "<b>Szybkość stadiów 9:</b> krótsze opóźnienie przed rozpoczęciem leczenia.<br><b>Odporność 9:</b> zwiększona szybkość leczenia."
 	/// When did the host last move on their own?
 	var/last_moved = 0
 	/// How long the host has to stand still before healing starts
@@ -71,9 +70,9 @@
 	roundstart = FALSE
 	use_cooldown = TRUE
 	show_flavour = FALSE	//it's handled by antag datum
-	short_desc = "You are a living tumor. By all accounts you should not exist."
-	flavour_text = "Spread misery and chaos upon the station."
-	important_info = "Avoid killing unprovoked, kill only in self defense!"
+	short_desc = "Jesteś żywym guzem. Według wszelkich znaków na niebie nie powinieneś istnieć."
+	flavour_text = "Siej niedolę i chaos na stacji."
+	important_info = "Unikaj zabijania bez prowokacji, zabijaj tylko w samoobronie!"
 	banType = ROLE_TERATOMA // also covers players banned from all antagonist roles
 	/// Shared by every fleshy mass, so a virology farm cannot flood the ghosts with alerts
 	COOLDOWN_STATIC_DECLARE(ghost_notify_cooldown)
@@ -92,15 +91,15 @@
 	. = ..()
 	if(.)
 		return
-	to_chat(user, "<span class='notice'>Ew. It would be a bad idea to touch this. It could probably be destroyed with the extreme heat of a welder.</span>")
+	to_chat(user, "<span class='notice'>Fuj. Dotknięcie tego byłoby złym pomysłem. Pewnie da się to zniszczyć skrajnym gorącem spawarki.</span>")
 
 /obj/effect/mob_spawn/teratomamonkey/attackby(obj/item/W, mob/user, params)
 	if(W.tool_behaviour == TOOL_WELDER && user.a_intent != INTENT_HARM)
 		if(!W.tool_start_check(user, amount = 0)) // an unlit welder has no extreme heat
 			return
 		user.visible_message("<span class='warning'>[user] destroys [src].</span>",
-			"<span class='notice'>You hold the welder to [src] and it violently bursts!</span>",
-			"<span class='italics'>You hear a gurgling noise.</span>")
+			"<span class='notice'>Przykładasz spawarkę do [src], a to gwałtownie pęka!</span>",
+			"<span class='italics'>Słyszysz bulgotanie.</span>")
 		new /obj/effect/gibspawner/human(get_turf(src))
 		qdel(src)
 		return

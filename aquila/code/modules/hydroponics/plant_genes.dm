@@ -30,7 +30,7 @@
 /// AQUILA - Separated Chemicals: squash() calls this instead of splashing; the contents react after a short delay, then splash (see squashreact())
 /obj/item/food/grown/proc/start_separated_mixing()
 	separated_mixing = TRUE
-	visible_message("<span class='warning'>[src] crumples, and bubbles ominously as its contents mix.</span>")
+	visible_message("<span class='warning'>[src] się marszczy i złowieszczo bulgocze, gdy jego zawartość się miesza.</span>")
 	addtimer(CALLBACK(src, PROC_REF(squashreact)), SEPARATED_CHEMICALS_MIX_TIME)
 
 #undef SEPARATED_CHEMICALS_MIX_TIME

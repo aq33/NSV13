@@ -2,8 +2,8 @@
 	name = "Jelly Bones"
 	desc = "All of that yoga seems to have paid off."
 	quality = POSITIVE
-	text_gain_indication = "<span class='notice'>Your bones feel like they're made of jelly, you could probably squeeze into a vent.</span>"
-	text_lose_indication = "<span class='notice'>Your bones feel solid again.</span>"
+	text_gain_indication = "<span class='notice'>Twoje kości wydają się galaretowate, pewnie dałbyś radę wcisnąć się do szybu wentylacyjnego.</span>"
+	text_lose_indication = "<span class='notice'>Twoje kości znów wydają się twarde.</span>"
 	difficulty = 14
 	instability = 25
 
@@ -21,8 +21,8 @@
 	name = "Breathless"
 	desc = "Affected person does not need to breathe."
 	quality = POSITIVE
-	text_gain_indication = "<span class='notice'>Your lungs feel like they are filled with air.</span>"
-	text_lose_indication = "<span class='notice'>Your lungs feel empty again.</span>"
+	text_gain_indication = "<span class='notice'>Twoje płuca wydają się wypełnione powietrzem.</span>"
+	text_lose_indication = "<span class='notice'>Twoje płuca znów wydają się puste.</span>"
 	difficulty = 14
 	instability = 35
 
@@ -40,8 +40,8 @@
 	name = "Toxic Fart"
 	desc = "A mutation that causes the subject to synthesize plasma in their intestines."
 	quality = POSITIVE
-	text_gain_indication = "<span class='notice'>Your stomach feels heavy.</span>"
-	text_lose_indication = "<span class='notice'>Your stomach feels light again.</span>"
+	text_gain_indication = "<span class='notice'>Twój żołądek wydaje się ciężki.</span>"
+	text_lose_indication = "<span class='notice'>Twój żołądek znów wydaje się lekki.</span>"
 	difficulty = 16
 	instability = 20
 
@@ -60,8 +60,8 @@
 	name = "Mega Fart"
 	desc = "A mutation that causes the subject to fart with enough force to knock everyone around them back."
 	locked = TRUE
-	text_gain_indication = "<span class='notice'>You feel bloated and gassy.</span>"
-	text_lose_indication = "<span class='notice'>You feel light again.</span>"
+	text_gain_indication = "<span class='notice'>Czujesz się wzdęty i pełen gazów.</span>"
+	text_lose_indication = "<span class='notice'>Znów czujesz się lekko.</span>"
 	instability = 25
 
 /datum/mutation/megafart/on_acquiring(mob/living/carbon/human/owner)

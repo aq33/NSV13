@@ -11,7 +11,7 @@
 		return
 	var/mob/living/carbon/human/H = host_mob
 	martial = new(null)
-	to_chat(H, "<span class='notice'>Your mind is flooded with martial arts knowledge[martial.teach(H, TRUE)?".<br>You can learn more about your newfound art by using the Recall Teachings verb in the Nanojutsu tab":", but you manage to block it out"].</span>")
+	to_chat(H, "<span class='notice'>Twój umysł zalewa wiedza o sztukach walki[martial.teach(H, TRUE)?".<br>Więcej o swojej nowej sztuce dowiesz się z czasownika Recall Teachings w zakładce Nanojutsu":", ale udaje ci się ją zablokować"].</span>")
 
 /datum/nanite_program/nanojutsu/disable_passive_effect()
 	. = ..()
@@ -19,7 +19,7 @@
 		return
 	var/mob/living/carbon/human/H = host_mob
 	martial.remove(H)
-	to_chat(H, "<span class='notice'>Your mind feels clear once again, as thoughts about the martial arts leave your head.</span>")
+	to_chat(H, "<span class='notice'>Twój umysł znów jest jasny, gdy myśli o sztukach walki opuszczają twoją głowę.</span>")
 	QDEL_NULL(martial)
 
 /datum/nanite_program/camo
@@ -31,11 +31,11 @@
 /datum/nanite_program/camo/enable_passive_effect()
 	. = ..()
 	animate(host_mob, alpha = 50,time = 15) //copypasta z ninja suita
-	host_mob.visible_message("<span class='warning'>[host_mob] vanishes into thin air!</span>", \
-					"<span class='notice'>You see your hands turn invisible.</span>")
+	host_mob.visible_message("<span class='warning'>[host_mob] rozpływa się w powietrzu!</span>", \
+					"<span class='notice'>Widzisz, jak twoje dłonie stają się niewidzialne.</span>")
 
 /datum/nanite_program/camo/disable_passive_effect()
 	. = ..()
 	animate(host_mob, alpha = 255, time = 15)
-	host_mob.visible_message("<span class='warning'>[host_mob] appears from thin air!</span>", \
-					"<span class='notice'>You see your hands reappear.</span>")
+	host_mob.visible_message("<span class='warning'>[host_mob] pojawia się znikąd!</span>", \
+					"<span class='notice'>Widzisz, jak twoje dłonie znów się pojawiają.</span>")

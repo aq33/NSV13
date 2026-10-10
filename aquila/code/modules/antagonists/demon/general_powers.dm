@@ -62,7 +62,7 @@
 	if(!.)
 		return
 	if(istype(get_area(src), /area/chapel)) //being a non-carbon will not save you!
-		visible_message(span_warning("[src] zaczyna się topić!"), span_danger("Twoja dusza topi się w świętym pomieszczeniu!"), "You hear sizzling.")
+		visible_message(span_warning("[src] zaczyna się topić!"), span_danger("Twoja dusza topi się w świętym pomieszczeniu!"), "Słyszysz skwierczenie.")
 		adjustHealth(20) //20 damage every ~2 seconds. About 20 seconds for a full HP demon to melt apart in the chapel.
 	else //You passively lose 2 health every 2 seconds, don't stay in demon form for too long.
 		adjustHealth(2)

@@ -81,12 +81,12 @@
 		if(obj_integrity < max_integrity)
 			if(!I.tool_start_check(user, amount=5))
 				return
-			to_chat(user, "<span class='notice'>You begin repairing [src].</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz naprawiać [src].</span>")
 			if(I.use_tool(src, user, 40, amount=5, volume=50))
 				obj_integrity = max_integrity
 				machine_stat &= ~BROKEN
 				update_icon()
-				to_chat(user, "<span class='notice'>You repair [src].</span>")
+				to_chat(user, "<span class='notice'>Naprawiasz [src].</span>")
 				return
 	return ..()
 

@@ -6,14 +6,7 @@
 	var/active = FALSE
 
 /obj/item/implant/dusting/get_data()
-	var/dat = {"<b>Implant Specifications:</b><BR>
-				<b>Name:</b> Ultraviolet Corp XX-13 Security Implant<BR>
-				<b>Life:</b> Activates upon death.<BR>
-				<b>Important Notes:</b> Vaporizes organic matter<BR>
-				<HR>
-				<b>Implant Details:</b><BR>
-				<b>Function:</b> Contains a compact, electrically activated heat source that turns its host to ash upon activation, or their death. <BR>
-				<b>Special Features:</b> Vaporizes<BR>
+	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Implant bezpieczeństwa Ultraviolet Corp XX-13<BR><b>Żywotność:</b> aktywuje się po śmierci.<BR><b>Ważne uwagi:</b> odparowuje materię organiczną<BR><HR><b>Szczegóły implantu:</b><BR><b>Działanie:</b> zawiera kompaktowe, aktywowane elektrycznie źródło ciepła, które po aktywacji lub śmierci nosiciela obraca go w popiół. <BR><b>Cechy specjalne:</b> odparowuje<BR>
 				"}
 	return dat
 
@@ -24,13 +17,13 @@
 		if(popup) // confirmation window already open
 			return FALSE
 		popup = TRUE
-		var/response = alert(imp_in, "Are you sure you want to activate your [name]? This will cause you to disintergrate!", "[name] Confirmation", "Yes", "No")
+		var/response = alert(imp_in, "Na pewno chcesz aktywować [name]? Rozpadniesz się w proch!", "[name] Confirmation", "Yes", "No")
 		popup = FALSE
 		if(response != "Yes" || !imp_in || active)
 			return FALSE
 	active = TRUE //to avoid it triggering multiple times due to dying
-	to_chat(imp_in, "<span class='notice'>Your dusting implant activates!</span>")
-	imp_in.visible_message("<span class='warning'>[imp_in] burns up in a flash!</span>")
+	to_chat(imp_in, "<span class='notice'>Twój implant obracający w proch się aktywuje!</span>")
+	imp_in.visible_message("<span class='warning'>[imp_in] spala się w mgnieniu oka!</span>")
 	var/turf/T = get_turf(imp_in)
 	message_admins("[ADMIN_LOOKUPFLW(imp_in)] has activated their [name] at [ADMIN_VERBOSEJMP(T)], with cause of [cause].")
 	for(var/obj/item/I in imp_in.contents)

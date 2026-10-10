@@ -47,7 +47,7 @@
 	if(!ishuman(user))
 		return
 	if(slot == ITEM_SLOT_OCLOTHING)
-		to_chat("Welcome to the H.E.V. mark IV protective system, for use in hazardous environment conditions.")
+		to_chat("Witamy w systemie ochronnym H.E.V. mark IV, przeznaczonym do pracy w niebezpiecznych warunkach środowiskowych.")
 		user.client << 'aquila/sound/items/hardsuit/hev_logon.ogg'
 	return
 
@@ -55,8 +55,8 @@
 	if(world.time > morphine_cooldown)
 		if(owner.health < 20)
 			owner.reagents.add_reagent(/datum/reagent/medicine/epinephrine, 10)
-			to_chat(owner, "<span class='warning'>You feel a tiny prick!</span>")
-			say("Adrenaline administered.")
+			to_chat(owner, "<span class='warning'>Czujesz maleńkie ukłucie!</span>")
+			say("Podano adrenalinę.")
 			playsound(src, 'aquila/sound/items/hardsuit/hev_morphine.ogg', 50, 0)
 			morphine_cooldown = world.time + morphine_cooldown_duration
 	. = ..()

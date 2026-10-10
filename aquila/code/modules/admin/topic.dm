@@ -3,7 +3,7 @@
 		if(!check_rights(R_ADMIN))
 			return
 		if (!SSticker.mode)
-			to_chat(usr, span_danger("Not until the round starts!"))
+			to_chat(usr, span_danger("Nie przed rozpoczęciem rundy!"))
 			return
 		switch(href_list["makeAntag"])
 			if("infiltrator")

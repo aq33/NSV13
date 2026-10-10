@@ -16,7 +16,7 @@
 		possessible += M
 
 	if(!possessible.len)
-		to_chat(src, "<span class='warning'>There are currently no mice able to be possessed!</span>")
+		to_chat(src, "<span class='warning'>Obecnie nie ma myszy, które można opętać!</span>")
 		return FALSE
 
 	var/mob/living/simple_animal/mouse/M = pick(possessible)
@@ -29,18 +29,18 @@
 		return FALSE
 
 	if(!SSticker.HasRoundStarted())
-		to_chat(usr, "<span class='warning'>The round hasn't started yet!</span>")
+		to_chat(usr, "<span class='warning'>Runda jeszcze się nie zaczęła!</span>")
 		return FALSE
 
 	if(is_banned_from(key, ROLE_SENTIENCE))
-		to_chat(src, "<span class='warning'>You are job banned!</span>")
+		to_chat(src, "<span class='warning'>Masz bana na to stanowisko!</span>")
 		return FALSE
 
-	if(alert("Are you sure you want to become a mouse? (Warning, you can no longer be cloned!)",,"Yes","No") != "Yes")
+	if(alert("Na pewno chcesz zostać myszą? (Uwaga: nie będzie można cię sklonować!)",,"Yes","No") != "Yes")
 		return FALSE
 
 	if(M.key || (M.stat != CONSCIOUS) || (M in GLOB.player_list) || M.mind || QDELETED(src) || QDELETED(M))
-		to_chat(src, "<span class='warning'>This mouse is unable to be controlled, please try again!")
+		to_chat(src, "<span class='warning'>Nie da się sterować tą myszą, spróbuj ponownie!")
 		return FALSE
 
 	log_game("[key_name(src)] has became a mouse")
@@ -55,9 +55,6 @@
 	M.maxHealth = 15
 	M.health = M.maxHealth
 
-	to_chat(M , "<span class='warning'>You are now possessing a mouse. \
-				You do not remember your previous life. You can eat trash and \
-				food on the floor to gain health and help create new mice. Mouse traps will hurt your fragile body \
-				and so will any kind of weapons. You can control click food and trash items in order to eat them. Get. That. Cheese.")
+	to_chat(M , "<span class='warning'>Opętujesz teraz mysz. Nie pamiętasz swojego poprzedniego życia. Możesz jeść śmieci i jedzenie z podłogi, by odzyskiwać zdrowie i pomagać tworzyć nowe myszy. Pułapki na myszy zranią twoje kruche ciało, podobnie jak każda broń. Ctrl-kliknij jedzenie i śmieci, by je zjeść. Zdobądź. Ten. Ser.")
 	return TRUE
 

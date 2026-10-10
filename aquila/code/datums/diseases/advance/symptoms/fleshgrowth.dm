@@ -15,10 +15,7 @@
 	var/lastcycle = 0
 	var/requiredcycles = 0
 	var/maxradius = 1
-	threshold_desc = "<b>Stage Speed:</b>Influences the time the host must stand still to begin spreading infectious mass.<br>\
-                      <b>Stage Speed 6:</b>Infectious mass will patch wounds in the host's flesh, healing their brute damage. Standing on infectious mass heals the host far quicker, and laying down even faster. -3 severity.<br>\
-					  <b>Transmission:</b>Influences the maximum spread radius of infectious mass.<br>\
-                      <b>Transmission 10:</b>Infectious mass will contain all viruses currently afflicting the host. +1 severity."
+	threshold_desc = "<b>Szybkość stadiów:</b> wpływa na czas, przez jaki nosiciel musi stać w miejscu, by zacząć rozsiewać zakaźną masę.<br><b>Szybkość stadiów 6:</b> zakaźna masa łata rany w ciele nosiciela, lecząc urazy. Stanie na zakaźnej masie leczy nosiciela o wiele szybciej, a leżenie jeszcze szybciej. -3 do ciężkości.<br><b>Transmisja:</b> wpływa na maksymalny promień rozprzestrzeniania się zakaźnej masy.<br><b>Transmisja 10:</b> zakaźna masa będzie zawierać wszystkie wirusy, które obecnie trapią nosiciela. +1 do ciężkości."
 
 /datum/symptom/flesh/severityset(datum/disease/advance/A)
 	. = ..()
@@ -79,7 +76,7 @@
 						N.node_range = 0
 					else
 						new /obj/structure/alien/flesh(currentloc, diseases)
-					C.visible_message("<span class='warning'>The film on [C]'s skin grows onto the floor!</span>", "<span class='userdanger'>The film creeping along your skin secretes onto the floor!</span>")
+					C.visible_message("<span class='warning'>Błona na skórze [C] wyrasta na podłogę!</span>", "<span class='userdanger'>Błona pełznąca po twojej skórze wydziela się na podłogę!</span>")
 					lastcycle += 1
 				if(A.stage_rate >= 8)
 					healfactor += 0.5
@@ -99,11 +96,11 @@
 						return
 					if(H.dna.species.use_skintones)
 						H.skin_tone = "pink"
-						H.visible_message("<span class='warning'>A film of pinkish material grows over [H]'s skin!</span>", "<span class='userdanger'>Your skin is completely covered by a film of pinkish, fleshy mass!</span>")
+						H.visible_message("<span class='warning'>Skórę [H] porasta błona różowawego materiału!</span>", "<span class='userdanger'>Twoja skóra jest całkowicie pokryta błoną różowawej, mięsistej masy!</span>")
 						H.regenerate_icons()
 					else if(MUTCOLORS in H.dna.species.species_traits)
 						H.dna.features["mcolor"] = "D37" //pinkish red
-						H.visible_message("<span class='warning'>A film of pinkish material grows over [H]'s skin!</span>", "<span class='userdanger'>Your skin is completely covered by a film of pinkish, fleshy mass!</span>")
+						H.visible_message("<span class='warning'>Skórę [H] porasta błona różowawego materiału!</span>", "<span class='userdanger'>Twoja skóra jest całkowicie pokryta błoną różowawej, mięsistej masy!</span>")
 						H.regenerate_icons()
 
 /datum/symptom/flesh/End(datum/disease/advance/A)
@@ -170,7 +167,7 @@
 		for(var/datum/disease/advance/A in U.diseases)
 			for(var/datum/symptom/S in A.symptoms)
 				if(istype(S, /datum/symptom/flesh))
-					. += "It looks warm and inviting. It would be so wonderful to just lay down in it..."
+					. += "Wygląda ciepło i zachęcająco. Byłoby cudownie się w tym położyć..."
 					return
 
 /obj/structure/alien/flesh/proc/expand()
