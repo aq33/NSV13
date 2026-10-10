@@ -29,7 +29,7 @@
 		update_name()
 	forge_objectives()
 	equipERT()
-	owner.store_memory("Your team's shared tracking beacon frequency is [ert_team.ert_frequency].")
+	owner.store_memory("Wspólna częstotliwość radiolatarni twojej drużyny to [ert_team.ert_frequency].")
 	. = ..()
 
 /datum/antagonist/ert/get_team()
@@ -125,11 +125,11 @@
 	outfit = /datum/outfit/ert/janitor
 
 /datum/antagonist/ert/janitor/heavy
-	role = "Heavy Duty Janitor"
+	role = "Woźny do zadań specjalnych"
 	outfit = /datum/outfit/ert/janitor/heavy
 
 /datum/antagonist/ert/kudzu
-	role = "Weed Whacker"
+	role = "Pogromca chwastów"
 	outfit = /datum/outfit/ert/kudzu
 
 /datum/antagonist/ert/deathsquad/leader
@@ -147,13 +147,13 @@
 /datum/antagonist/ert/intern/leader
 	name = "Starszy stażysta Centrali"
 	outfit = /datum/outfit/centcom_intern/leader
-	role = "Head Intern"
+	role = "Starszy stażysta"
 
 /datum/antagonist/ert/doomguy
 	name = "Juggernaut"
 	outfit = /datum/outfit/death_commando/doomguy
 	random_names = FALSE
-	role = "The Juggernaut"
+	role = "Juggernaut"
 
 /datum/antagonist/ert/clown
 	name = "Komediowy oficer reagowania"
@@ -196,18 +196,18 @@
 	if(!ert_team)
 		return
 
-	to_chat(owner, "<B><font size=3 color=red>You are the [name].</font></B>")
+	to_chat(owner, "<B><font size=3 color=red>Twoja rola: [name].</font></B>")
 
-	var/missiondesc = "Your squad is being sent on a mission to [station_name()] by Nanotrasen's Security Division."
+	var/missiondesc = "Wydział Ochrony Nanotrasen wysyła twój oddział na misję na [station_name()]."
 	if(leader) //If Squad Leader
-		missiondesc += " Lead your squad to ensure the completion of the mission. Board the shuttle when your team is ready."
+		missiondesc += " Prowadź oddział tak, by misja została wykonana. Wejdź na prom, gdy drużyna będzie gotowa."
 	else
-		missiondesc += " Follow orders given to you by your squad leader."
+		missiondesc += " Wykonuj rozkazy dowódcy oddziału."
 
-		missiondesc += "Avoid civilian casualites when possible."
+		missiondesc += " W miarę możliwości unikaj ofiar wśród cywili."
 
-	missiondesc += "<BR><B>Your Mission</B> : [ert_team.mission.explanation_text]"
-	missiondesc += "<BR><b>Your Shared Tracking Frequency</b> : <i>[ert_team.ert_frequency]</i>"
+	missiondesc += "<BR><B>Twoja misja</B>: [ert_team.mission.explanation_text]"
+	missiondesc += "<BR><b>Wspólna częstotliwość namierzania</b>: <i>[ert_team.ert_frequency]</i>"
 
 	to_chat(owner,missiondesc)
 
@@ -215,45 +215,45 @@
 	if(!ert_team)
 		return
 
-	to_chat(owner, "<B><font size=3 color=red>You are the [name].</font></B>")
+	to_chat(owner, "<B><font size=3 color=red>Twoja rola: [name].</font></B>")
 
-	var/missiondesc = "Your squad is being sent on a mission to [station_name()] by Nanotrasen's Security Division."
+	var/missiondesc = "Wydział Ochrony Nanotrasen wysyła twój oddział na misję na [station_name()]."
 	if(leader) //If Squad Leader
-		missiondesc += " Lead your squad to ensure the completion of the mission. Board the shuttle when your team is ready."
+		missiondesc += " Prowadź oddział tak, by misja została wykonana. Wejdź na prom, gdy drużyna będzie gotowa."
 	else
-		missiondesc += " Follow orders given to you by your squad leader."
+		missiondesc += " Wykonuj rozkazy dowódcy oddziału."
 
-	missiondesc += "<BR><B>Your Mission</B> : [ert_team.mission.explanation_text]"
+	missiondesc += "<BR><B>Twoja misja</B>: [ert_team.mission.explanation_text]"
 	to_chat(owner,missiondesc)
 
 /datum/antagonist/ert/doomguy/greet()
 	if(!ert_team)
 		return
 
-	to_chat(owner, "<B><font size=3 color=red>You are the Juggernaut, the latest in Nanotrasen's biologically-enhanced supersoldiers.</font></B>")
+	to_chat(owner, "<B><font size=3 color=red>Jesteś Juggernautem, najnowszym z biologicznie ulepszonych superżołnierzy Nanotrasen.</font></B>")
 
-	var/missiondesc = "You are being sent on a mission to [station_name()] by the one of the highest ranking Nanotrasen officials around."
+	var/missiondesc = "Jeden z najwyższych rangą urzędników Nanotrasen wysyła cię na misję na [station_name()]."
 	if(leader) //If Squad Leader
-		missiondesc += " Take stock of your equipment and teammates (if any) and board the transit shuttle when you are ready."
+		missiondesc += " Sprawdź sprzęt i towarzyszy (jeśli ich masz) i wejdź na prom tranzytowy, gdy będziesz gotowy."
 	else
-		missiondesc += " Rip and tear."
+		missiondesc += " Rozrywaj i rozdzieraj."
 
-	missiondesc += "<BR><B>Your Mission</B> : [ert_team.mission.explanation_text]"
+	missiondesc += "<BR><B>Twoja misja</B>: [ert_team.mission.explanation_text]"
 	to_chat(owner,missiondesc)
 
 /datum/antagonist/ert/clown/greet()
 	if(!ert_team)
 		return
 
-	to_chat(owner, "<B><font size=3 color=red>You are the [name].</font></B>")
+	to_chat(owner, "<B><font size=3 color=red>Twoja rola: [name].</font></B>")
 
-	var/missiondesc = "Your squad is being sent on a mission to [station_name()] by Nanotrasen's Comedy Division."
+	var/missiondesc = "Wydział Komedii Nanotrasen wysyła twój oddział na misję na [station_name()]."
 	if(leader) //If Squad Leader
-		missiondesc += " You are the worst clown here. As such, you were able to stop slipping the admiral for long enough to be given command. Good luck, honk!"
+		missiondesc += " Jesteś tu najgorszym klaunem. Dlatego udało ci się na tyle długo nie przewracać admirała, że dostałeś dowództwo. Powodzenia, honk!"
 	else
-		missiondesc += " Follow orders given to you by your squad leader, or ignore them if it's funnier."
+		missiondesc += " Wykonuj rozkazy dowódcy oddziału albo je ignoruj, jeśli tak będzie zabawniej."
 
-		missiondesc += " Slip as many civilians as possible."
+		missiondesc += " Przewróć na skórce jak najwięcej cywili."
 
-	missiondesc += "<BR><B>Your Mission</B> : [ert_team.mission.explanation_text]"
+	missiondesc += "<BR><B>Twoja misja</B>: [ert_team.mission.explanation_text]"
 	to_chat(owner,missiondesc)

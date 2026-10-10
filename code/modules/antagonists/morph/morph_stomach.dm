@@ -74,7 +74,7 @@
 	switch(action)
 		if("drop")
 			morph.RemoveContents(target)
-			morph.visible_message("<span class='warning'>[morph] spits [target] out!</span>")
+			morph.visible_message("<span class='warning'>[morph] wypluwa [target]!</span>")
 			playsound(morph, 'sound/effects/splat.ogg', 50, 1)
 			return TRUE
 		if("disguise")
@@ -82,7 +82,7 @@
 			return FALSE
 		if("throw")
 			morph.throwatom = target
-			to_chat(morph, "<span class='danger'>You prepare to throw [target]</span>")
+			to_chat(morph, "<span class='danger'>Przygotowujesz się, by rzucić [target]</span>")
 			return TRUE
 		if("unthrow")
 			morph.throwatom = null
@@ -99,7 +99,7 @@
 			if("digest")
 				if(morph.throwatom == L)
 					morph.throwatom = null
-				to_chat(morph, "<span class='danger'>You begin digesting [L]</span>")
+				to_chat(morph, "<span class='danger'>Zaczynasz trawić [L]</span>")
 				if(do_mob(morph, morph, L.maxHealth))
 					if(ishuman(L) || ismonkey(L) || isalienadult(L) || istype(L, /mob/living/simple_animal/pet/dog) || istype(L, /mob/living/simple_animal/parrot))
 						var/list/turfs_to_throw = view(2, morph)
@@ -113,7 +113,7 @@
 					morph.RemoveContents(L)
 					L.dust()
 					morph.adjustHealth(-(L.maxHealth / 2))
-					to_chat(morph, "<span class='danger'>You digest [L], restoring some health</span>")
+					to_chat(morph, "<span class='danger'>Trawisz [L], odzyskując trochę zdrowia</span>")
 					playsound(morph, 'sound/effects/splat.ogg', 50, 1)
 					return TRUE
 	else if(isitem(target))
@@ -123,18 +123,18 @@
 				I.attack_self(morph)
 			if("usethrow")
 				morph.throwatom = I
-				to_chat(morph, "<span class='danger'> You prepare to throw [I]</span>")
+				to_chat(morph, "<span class='danger'> Przygotowujesz się, by rzucić [I]</span>")
 				I.attack_self(morph)
 				return TRUE
 			if("digest")
 				if(morph.throwatom == I)
 					morph.throwatom = null
 				if((I.resistance_flags & UNACIDABLE) || (I.resistance_flags & ACID_PROOF) || (I.resistance_flags & INDESTRUCTIBLE))
-					to_chat(morph, "<span class='danger'>[I] cannot be digested.</span>")
+					to_chat(morph, "<span class='danger'>[I] nie da się strawić.</span>")
 				else
 					playsound(morph, 'sound/items/welder.ogg', 150, 1)
 					qdel(I)
-					to_chat(morph, "<span class='danger'>You digest [I].</span>")
+					to_chat(morph, "<span class='danger'>Trawisz [I].</span>")
 					return TRUE
 
 /datum/action/innate/morph_stomach

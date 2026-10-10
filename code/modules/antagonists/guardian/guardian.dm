@@ -19,9 +19,9 @@
 		parts += "<b>POTENTIAL:</b> [level_to_grade(stats.potential)]"
 		parts += "<b>RANGE:</b> [level_to_grade(stats.range)]"
 		if(stats.ability)
-			parts += "<b>SPECIAL ABILITY:</b> [stats.ability.name]"
+			parts += "<b>ZDOLNOŚĆ SPECJALNA:</b> [stats.ability.name]"
 		for(var/datum/guardian_ability/minor/M in stats.minor_abilities)
-			parts += "<b>MINOR ABILITY:</b> [M.name]"
+			parts += "<b>ZDOLNOŚĆ POMNIEJSZA:</b> [M.name]"
 	return parts.Join("<br>")
 
 /datum/antagonist/guardian/antag_panel_data()

@@ -27,22 +27,22 @@
 /datum/antagonist/fugitive_hunter/proc/forge_objectives() //this isn't an actual objective because it's about round end rosters
 	var/datum/objective/capture = new /datum/objective
 	capture.owner = owner
-	capture.explanation_text = "Capture the fugitives in the station and put them into the bluespace capture machine on your ship."
+	capture.explanation_text = "Schwytaj zbiegów na stacji i umieść ich w maszynie przechwytującej bluespace na swoim statku."
 	objectives += capture
 
 /datum/antagonist/fugitive_hunter/greet()
 	switch(backstory)
 		if("space cop")
-			to_chat(owner, "<span class='boldannounce'>Justice has arrived. I am a member of the Spacepol!</span>")
-			to_chat(owner, "<B>The criminals should be on the station, we have special huds implanted to recognize them.</B>")
-			to_chat(owner, "<B>As we have lost pretty much all power over these damned lawless megacorporations, it's a mystery if their security will cooperate with us.</B>")
+			to_chat(owner, "<span class='boldannounce'>Sprawiedliwość przybyła. Jestem członkiem Kosmopolu!</span>")
+			to_chat(owner, "<B>Przestępcy powinni być na stacji, mamy wszczepione specjalne HUD-y, by ich rozpoznać.</B>")
+			to_chat(owner, "<B>Straciliśmy praktycznie całą władzę nad tymi przeklętymi, bezprawnymi megakorporacjami, więc nie wiadomo, czy ich ochrona będzie z nami współpracować.</B>")
 		if("russian")
-			to_chat(src, "<span class='danger'>Ay blyat. I am a space-russian smuggler! We were mid-flight when our cargo was beamed off our ship!</span>")
-			to_chat(src, "<span class='danger'>We were hailed by a man in a green uniform, promising the safe return of our goods in exchange for a favor:</span>")
-			to_chat(src, "<span class='danger'>There is a local station housing fugitives that the man is after, he wants them returned; dead or alive.</span>")
-			to_chat(src, "<span class='danger'>We will not be able to make ends meet without our cargo, so we must do as he says and capture them.</span>")
+			to_chat(src, "<span class='danger'>Ay blyat. Jestem kosmorosyjskim przemytnikiem! Byliśmy w trakcie lotu, gdy ktoś przeteleportował ładunek z naszego statku!</span>")
+			to_chat(src, "<span class='danger'>Wywołał nas człowiek w zielonym mundurze, obiecując zwrot towaru w zamian za przysługę:</span>")
+			to_chat(src, "<span class='danger'>Na pobliskiej stacji ukrywają się zbiegowie, których szuka. Chce ich z powrotem, żywych lub martwych.</span>")
+			to_chat(src, "<span class='danger'>Bez ładunku nie zwiążemy końca z końcem, więc musimy zrobić, co każe, i ich schwytać.</span>")
 
-	to_chat(owner, "<span class='boldannounce'>You are not an antagonist in that you may kill whomever you please, but you can do anything to ensure the capture of the fugitives, even if that means going through the station.</span>")
+	to_chat(owner, "<span class='boldannounce'>Nie jesteś antagonistą w tym sensie, że możesz zabijać, kogo chcesz, ale możesz zrobić wszystko, by schwytać zbiegów, nawet jeśli trzeba przebić się przez stację.</span>")
 	owner.announce_objectives()
 
 /datum/antagonist/fugitive_hunter/create_team(datum/team/fugitive_hunters/new_team)
@@ -134,42 +134,42 @@
 
 	var/list/result = list()
 
-	result += "<div class='panel redborder'>...And <B>[members.len]</B> [backstory]s tried to hunt them down!"
+	result += "<div class='panel redborder'>...a <B>[members.len]</B> łowców próbowało ich dopaść!"
 
 	for(var/datum/mind/M in members)
 		result += "<b>[printplayer(M)]</b>"
 
 	switch(get_result())
 		if(FUGITIVE_RESULT_BADASS_HUNTER)//use defines
-			result += "<span class='greentext big'>Badass [capitalize(backstory)] Victory!</span>"
-			result += "<B>The [backstory]s managed to capture every fugitive, alive!</B>"
+			result += "<span class='greentext big'>Zabójcze zwycięstwo łowców!</span>"
+			result += "<B>Łowcom udało się schwytać wszystkich zbiegów żywych!</B>"
 		if(FUGITIVE_RESULT_POSTMORTEM_HUNTER)
-			result += "<span class='greentext big'>Postmortem [capitalize(backstory)] Victory!</span>"
-			result += "<B>The [backstory]s managed to capture every fugitive, but all of them died! Spooky!</B>"
+			result += "<span class='greentext big'>Pośmiertne zwycięstwo łowców!</span>"
+			result += "<B>Łowcom udało się schwytać wszystkich zbiegów, ale sami wszyscy zginęli! Upiorne!</B>"
 		if(FUGITIVE_RESULT_MAJOR_HUNTER)
-			result += "<span class='greentext big'>Major [capitalize(backstory)] Victory</span>"
-			result += "<B>The [backstory]s managed to capture every fugitive, dead or alive.</B>"
+			result += "<span class='greentext big'>Wielkie zwycięstwo łowców</span>"
+			result += "<B>Łowcom udało się schwytać wszystkich zbiegów, żywych lub martwych.</B>"
 		if(FUGITIVE_RESULT_HUNTER_VICTORY)
 			result += "<span class='greentext big'>[capitalize(backstory)] Victory</span>"
-			result += "<B>The [backstory]s managed to capture a fugitive, dead or alive.</B>"
+			result += "<B>Łowcom udało się schwytać zbiega, żywego lub martwego.</B>"
 		if(FUGITIVE_RESULT_MINOR_HUNTER)
-			result += "<span class='greentext big'>Minor [capitalize(backstory)] Victory</span>"
-			result += "<B>All the [backstory]s died, but managed to capture a fugitive, dead or alive.</B>"
+			result += "<span class='greentext big'>Małe zwycięstwo łowców</span>"
+			result += "<B>Wszyscy łowcy zginęli, ale schwytali zbiega, żywego lub martwego.</B>"
 		if(FUGITIVE_RESULT_STALEMATE)
-			result += "<span class='neutraltext big'>Bloody Stalemate</span>"
-			result += "<B>Everyone died, and no fugitives were recovered!</B>"
+			result += "<span class='neutraltext big'>Krwawy pat</span>"
+			result += "<B>Wszyscy zginęli, a żadnego zbiega nie odzyskano!</B>"
 		if(FUGITIVE_RESULT_MINOR_FUGITIVE)
-			result += "<span class='redtext big'>Minor Fugitive Victory</span>"
-			result += "<B>All the fugitives died, but none were recovered!</B>"
+			result += "<span class='redtext big'>Małe zwycięstwo zbiegów</span>"
+			result += "<B>Wszyscy zbiegowie zginęli, ale żadnego nie odzyskano!</B>"
 		if(FUGITIVE_RESULT_FUGITIVE_VICTORY)
-			result += "<span class='redtext big'>Fugitive Victory</span>"
-			result += "<B>A fugitive survived, and no bodies were recovered by the [backstory]s.</B>"
+			result += "<span class='redtext big'>Zwycięstwo zbiegów</span>"
+			result += "<B>Jeden ze zbiegów przeżył, a łowcy nie odzyskali żadnych ciał.</B>"
 		if(FUGITIVE_RESULT_MAJOR_FUGITIVE)
-			result += "<span class='redtext big'>Major Fugitive Victory</span>"
-			result += "<B>All of the fugitives survived and avoided capture!</B>"
+			result += "<span class='redtext big'>Wielkie zwycięstwo zbiegów</span>"
+			result += "<B>Wszyscy zbiegowie przeżyli i uniknęli schwytania!</B>"
 		else //get_result returned null- either bugged or no fugitives showed
-			result += "<span class='neutraltext big'>Prank Call!</span>"
-			result += "<B>[capitalize(backstory)]s were called, yet there were no fugitives...?</B>"
+			result += "<span class='neutraltext big'>Głupi żart!</span>"
+			result += "<B>Wezwano łowców, a zbiegów nie było...?</B>"
 
 	result += "</div>"
 

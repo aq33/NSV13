@@ -32,12 +32,12 @@
 	. = ..()
 
 /datum/antagonist/highlander/greet()
-	to_chat(owner, "<span class='boldannounce'>Your [sword.name] cries out for blood. Claim the lives of others, and your own will be restored!\n\
-	Activate it in your hand, and it will lead to the nearest target. Attack the nuclear authentication disk with it, and you will store it.</span>")
+	to_chat(owner, "<span class='boldannounce'>[sword.name] woła o krew. Odbieraj życie innym, a twoje zostanie odnowione!\n\
+	Aktywuj go w dłoni, a wskaże ci najbliższy cel. Uderz nim dysk uwierzytelniający, a go schowasz.</span>")
 
 	owner.announce_objectives()
 	owner.current.client?.tgui_panel?.give_antagonist_popup("Highlander",
-		"Locate victims to fall to your sword and claim the nuclear authentication disk for yourself.")
+		"Znajdź ofiary dla swojego miecza i zdobądź dla siebie nuklearny dysk uwierzytelniający.")
 
 /datum/antagonist/highlander/proc/give_equipment()
 	var/mob/living/carbon/human/H = owner.current

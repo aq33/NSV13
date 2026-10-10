@@ -29,7 +29,7 @@
 /datum/antagonist/brother/on_removal()
 	SSticker.mode.brothers -= owner
 	if(owner.current)
-		to_chat(owner.current,"<span class='userdanger'>You are no longer the Blood Brother!</span>")
+		to_chat(owner.current,"<span class='userdanger'>Nie jesteś już bratem krwi!</span>")
 	owner.special_role = null
 	return ..()
 
@@ -51,17 +51,17 @@
 /datum/antagonist/brother/proc/give_meeting_area()
 	if(!owner.current || !team || !team.meeting_area)
 		return
-	to_chat(owner.current, "<B>Your designated meeting area:</B> [team.meeting_area]")
-	antag_memory += "<b>Meeting Area</b>: [team.meeting_area]<br>"
+	to_chat(owner.current, "<B>Wyznaczone miejsce spotkania:</B> [team.meeting_area]")
+	antag_memory += "<b>Miejsce spotkania</b>: [team.meeting_area]<br>"
 
 /datum/antagonist/brother/greet()
 	var/brother_text = get_brother_names()
-	to_chat(owner.current, "<span class='alertsyndie'>You are the Blood Brother of [brother_text].</span>")
-	to_chat(owner.current, "The Syndicate only accepts those that have proven themselves. Prove yourself and prove your [team.member_name]s by completing your objectives together! You and your team are outfitted with communication implants allowing for direct, encrypted communication.")
+	to_chat(owner.current, "<span class='alertsyndie'>Jesteś bratem krwi: [brother_text].</span>")
+	to_chat(owner.current, "Syndykat przyjmuje tylko tych, którzy się wykazali. Wykaż się ty i twoi bracia, wykonując wspólnie cele! Ty i twoja drużyna macie implanty komunikacyjne do bezpośredniej, szyfrowanej łączności.")
 	owner.announce_objectives()
 	give_meeting_area()
-	owner.current.client?.tgui_panel?.give_antagonist_popup("Blood Brother",
-		"The Syndicate only accepts those that have proven themselves. Prove yourself and prove your [team.member_name]s by completing your objectives together!")
+	owner.current.client?.tgui_panel?.give_antagonist_popup("Brat krwi",
+		"Syndykat przyjmuje tylko tych, którzy się wykazali. Wykaż się ty i twoi bracia, wykonując wspólnie cele!")
 
 /datum/antagonist/brother/proc/finalize_brother()
 	var/obj/item/implant/bloodbrother/I = new /obj/item/implant/bloodbrother()
@@ -98,10 +98,10 @@
 
 /datum/team/brother_team
 	name = "brotherhood"
-	member_name = "blood brother"
+	member_name = "brat krwi"
 	var/team_id
 	var/meeting_area
-	var/static/meeting_areas = list("The Bar", "Dorms", "Escape Dock", "Arrivals", "Holodeck", "Primary Tool Storage", "Recreation Area", "Chapel", "Library")
+	var/static/meeting_areas = list("Bar", "Kwatery", "Dok ewakuacyjny", "Hala przylotów", "Holodek", "Główny magazyn narzędzi", "Strefa rekreacji", "Kaplica", "Biblioteka")
 
 /datum/team/brother_team/New(starting_members)
 	. = ..()
@@ -126,22 +126,22 @@
 /datum/team/brother_team/roundend_report()
 	var/list/parts = list()
 
-	parts += "<span class='header'>The blood brothers of [name] were:</span>"
+	parts += "<span class='header'>Bracia krwi z drużyny [name]:</span>"
 	for(var/datum/mind/M in members)
 		parts += printplayer(M)
 	var/win = TRUE
 	var/objective_count = 1
 	for(var/datum/objective/objective in objectives)
 		if(objective.check_completion())
-			parts += "<B>Objective #[objective_count]</B>: [objective.explanation_text] <span class='greentext'>Success!</span>"
+			parts += "<B>Cel nr [objective_count]</B>: [objective.explanation_text] <span class='greentext'>Sukces!</span>"
 		else
-			parts += "<B>Objective #[objective_count]</B>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
+			parts += "<B>Cel nr [objective_count]</B>: [objective.explanation_text] <span class='redtext'>Porażka.</span>"
 			win = FALSE
 		objective_count++
 	if(win)
-		parts += "<span class='greentext'>The blood brothers were successful!</span>"
+		parts += "<span class='greentext'>Bracia krwi odnieśli sukces!</span>"
 	else
-		parts += "<span class='redtext'>The blood brothers have failed!</span>"
+		parts += "<span class='redtext'>Bracia krwi ponieśli porażkę!</span>"
 
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"
 
@@ -177,4 +177,4 @@
 		add_objective(new/datum/objective/steal, TRUE)
 
 /datum/team/brother_team/antag_listing_name()
-	return "[name] blood brothers"
+	return "bracia krwi [name]"

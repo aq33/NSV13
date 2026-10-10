@@ -15,7 +15,7 @@
 
 /datum/antagonist/santa/greet()
 	. = ..()
-	to_chat(owner, "<span class='boldannounce'>You are Santa! Your objective is to bring joy to the people on this station. You have a magical bag, which generates presents as long as you have it! You can examine the presents to take a peek inside, to make sure that you give the right gift to the right person.</span>")
+	to_chat(owner, "<span class='boldannounce'>Jesteś Mikołajem! Twoim zadaniem jest przynieść radość ludziom na tej stacji. Masz magiczny worek, który tworzy prezenty, dopóki go masz! Możesz obejrzeć prezenty, żeby zajrzeć do środka i mieć pewność, że właściwy prezent trafi do właściwej osoby.</span>")
 
 /datum/antagonist/santa/proc/give_equipment()
 	var/mob/living/carbon/human/H = owner.current
@@ -29,7 +29,7 @@
 	if(!give_objectives)
 		return
 	var/datum/objective/santa_objective = new()
-	santa_objective.explanation_text = "Bring joy and presents to the station!"
+	santa_objective.explanation_text = "Przynieś stacji radość i prezenty!"
 	santa_objective.completed = TRUE //lets cut our santas some slack.
 	santa_objective.owner = owner
 	objectives |= santa_objective

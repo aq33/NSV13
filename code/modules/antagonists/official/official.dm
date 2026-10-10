@@ -9,7 +9,7 @@
 	banning_key = ROLE_ERT
 
 /datum/antagonist/official/greet()
-	to_chat(owner, "<B><font size=3 color=red>You are a CentCom Official.</font></B>")
+	to_chat(owner, "<B><font size=3 color=red>Jesteś urzędnikiem Centrali.</font></B>")
 	if (ert_team)
 		to_chat(owner, "Centralne Dowództwo wysyła Cię do: [station_name()] z następującym zadaniem: [ert_team.mission.explanation_text]")
 	else

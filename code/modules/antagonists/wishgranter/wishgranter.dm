@@ -18,10 +18,10 @@
 	give_powers()
 
 /datum/antagonist/wishgranter/greet()
-	to_chat(owner, "<B>Your inhibitions are swept away, the bonds of loyalty broken, you are free to murder as you please!</B>")
+	to_chat(owner, "<B>Twoje zahamowania znikają, więzy lojalności pękają - możesz mordować, kogo chcesz!</B>")
 	owner.announce_objectives()
-	owner.current.client?.tgui_panel?.give_antagonist_popup("Wishgranter's Avatar",
-		"Your inhibitions are swept away, the bonds of loyalty broken, you are free to murder as you please!")
+	owner.current.client?.tgui_panel?.give_antagonist_popup("Awatar Spełniacza Życzeń",
+		"Twoje zahamowania znikają, więzy lojalności pękają - możesz mordować, kogo chcesz!")
 
 /datum/antagonist/wishgranter/proc/give_powers()
 	var/mob/living/carbon/C = owner.current

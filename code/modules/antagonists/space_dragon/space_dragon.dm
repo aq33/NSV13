@@ -27,15 +27,15 @@
 	var/list/chosen_rift_areas = list()
 
 /datum/antagonist/space_dragon/greet()
-	to_chat(owner, "<b>Endless time and space we have moved through. We do not remember from where we came, we do not know where we will go. All space belongs to us.\n\
-					Space is an empty void, of which our kind is the apex predator, and there was little to rival our claim to this title.\n\
-					But now, we find intruders spread out amongst our claim, willing to fight our teeth with magics unimaginable, their dens like lights flicking in the depths of space.\n\
-					Today, we will snuff out one of those lights.</b>")
-	to_chat(owner, "<span class='boldwarning'>You have five minutes to find a safe location to place down the first rift. If you take longer than five minutes to place a rift, you will enter a depression and become slow and vulnerable.</span>")
+	to_chat(owner, "<b>Przemierzaliśmy nieskończony czas i przestrzeń. Nie pamiętamy, skąd przyszliśmy, nie wiemy, dokąd pójdziemy. Cała przestrzeń należy do nas.\n\
+					Kosmos to pusta otchłań, a nasz gatunek jest w niej szczytowym drapieżnikiem i niewiele mogło podważyć ten tytuł.\n\
+					Lecz teraz na naszym terytorium rozpleniają się intruzi, gotowi stawiać czoła naszym kłom niewyobrażalną magią, a ich nory migoczą jak światła w głębi kosmosu.\n\
+					Dziś zgasimy jedno z tych świateł.</b>")
+	to_chat(owner, "<span class='boldwarning'>Masz pięć minut na znalezienie bezpiecznego miejsca na pierwszą szczelinę. Jeśli zajmie ci to dłużej, popadniesz w depresję i staniesz się powolny i bezbronny.</span>")
 	owner.announce_objectives()
 	SEND_SOUND(owner.current, sound('sound/magic/demon_attack1.ogg'))
-	owner.current.client?.tgui_panel?.give_antagonist_popup("Space Dragon",
-		"You've existed for so long, you have forgotten your purpose. The sight of an intruder in your endless claim of the void of space re-kindles the magic within you. Place rifts and summon an army to snuff out another light intruding in your domain.")
+	owner.current.client?.tgui_panel?.give_antagonist_popup("Kosmiczny smok",
+		"Istniejesz tak długo, że zapomniałeś o swoim celu. Widok intruza w twojej nieskończonej domenie kosmicznej pustki na nowo rozpala w tobie magię. Otwieraj szczeliny i przywołaj armię, by zgasić kolejne światło wdzierające się w twoje królestwo.")
 
 /datum/antagonist/space_dragon/proc/forge_objectives()
 	// Areas that will prove challenging for the dragon and provocative to the crew.
@@ -79,7 +79,7 @@
 	objectives += summon
 	summon.dragon = src
 
-	summon.explanation_text = "Summon 3 rifts in order to flood the station with carp. Your possible rift locations are:\n - [english_list(area_names, "ERROR", "\n - ", "\n - ")]."
+	summon.explanation_text = "Przywołaj 3 szczeliny, by zalać statek karpiami. Możliwe miejsca szczelin:\n - [english_list(area_names, "BŁĄD", "\n - ", "\n - ")]."
 	log_objective(owner, summon.explanation_text)
 
 /datum/antagonist/space_dragon/on_gain()
@@ -120,7 +120,7 @@
 	var/datum/objective/summon_carp/main_objective = locate() in objectives
 	if(main_objective)
 		main_objective.completed = TRUE
-	priority_announce("A large amount of lifeforms have been detected approaching [station_name()] at extreme speeds. Remaining crew are advised to evacuate as soon as possible.", "Central Command Wildlife Observations")
+	priority_announce("Wykryto dużą liczbę form życia zbliżających się do [station_name()] z ogromną prędkością. Pozostałej załodze zaleca się jak najszybszą ewakuację.", "Obserwacja Fauny Centrali")
 	sound_to_playing_players('sound/creatures/space_dragon_roar.ogg')
 	for(var/obj/structure/carp_rift/rift in rift_list)
 		rift.carp_stored = 999999
@@ -148,11 +148,11 @@
 		S.can_summon_rifts = TRUE
 
 /datum/antagonist/space_dragon/proc/rift_warn_callback()
-	to_chat(owner.current, "<span class='boldwarning'>You have a minute left to summon a rift! Get to it!</span>")
+	to_chat(owner.current, "<span class='boldwarning'>Zostało ci minutę na przywołanie szczeliny! Do roboty!</span>")
 	rift_warning_timer_id = TIMER_ID_NULL
 
 /datum/antagonist/space_dragon/proc/rift_fail_callback()
-	to_chat(owner.current, "<span class='boldwarning'>You've failed to summon a rift in a timely manner, and find yourself weakened.</span>")
+	to_chat(owner.current, "<span class='boldwarning'>Nie udało ci się przywołać szczeliny na czas i czujesz się osłabiony.</span>")
 	destroy_rifts()
 	playsound(owner.current, 'sound/magic/demon_dies.ogg', 100, TRUE)
 	rift_fail_timer_id = TIMER_ID_NULL
@@ -216,13 +216,13 @@
 
 /datum/objective/summon_carp
 	var/datum/antagonist/space_dragon/dragon
-	explanation_text = "Summon 3 rifts in order to flood the station with carp. Your possible rift locations are: (ERROR)."
+	explanation_text = "Przywołaj 3 szczeliny, by zalać statek karpiami. Możliwe miejsca szczelin: (BŁĄD)."
 
 /datum/antagonist/space_dragon/roundend_report()
 	var/list/parts = list()
 	var/datum/objective/summon_carp/S = locate() in objectives
 	if(S.check_completion())
-		parts += "<span class='redtext big'>The [name] has succeeded! Station space has been reclaimed by the space carp!</span>"
+		parts += "<span class='redtext big'>[name] zwycięża! Kosmiczne karpie odzyskały przestrzeń wokół statku!</span>"
 	parts += printplayer(owner)
 	var/objectives_complete = TRUE
 	if(length(objectives))
@@ -232,12 +232,12 @@
 				objectives_complete = FALSE
 				break
 	if(objectives_complete)
-		parts += "<span class='greentext big'>The [name] was successful!</span>"
+		parts += "<span class='greentext big'>[name]: sukces!</span>"
 	else
-		parts += "<span class='redtext big'>The [name] has failed!</span>"
-	parts += "<span class='header'>The [name] was assisted by:</span>"
+		parts += "<span class='redtext big'>[name]: porażka!</span>"
+	parts += "<span class='header'>[name] - pomocnicy:</span>"
 	if(length(carp))
-		parts += "<span class='header'>The [name] was assisted by:</span>"
+		parts += "<span class='header'>[name] - pomocnicy:</span>"
 		parts += printplayerlist(carp)
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"
 
@@ -256,7 +256,7 @@
 
 /datum/action/innate/wavespeak/Activate()
 	// This is filtered, treated, and logged in carp_talk
-	var/input = stripped_input(usr, "Enter wavespeak message.", "Carp Wavespeak", "")
+	var/input = stripped_input(usr, "Wpisz wiadomość w mowie fal.", "Mowa fal karpi", "")
 	if(!input || !IsAvailable() || !isliving(owner))
 		return
 	var/mob/living/L = owner

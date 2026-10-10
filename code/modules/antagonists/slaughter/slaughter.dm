@@ -2,12 +2,12 @@
 
 /mob/living/simple_animal/slaughter
 	name = "slaughter demon"
-	real_name = "slaughter demon"
+	real_name = "demon rzezi"
 	desc = "A large, menacing creature covered in armored black scales."
 	speak_emote = list("bulgocze")
 	emote_hear = list("zawodzi","skrzeczy")
-	response_help  = "thinks better of touching"
-	response_disarm = "flails at"
+	response_help  = "rozmyśla się i nie dotyka"
+	response_disarm = "macha rękami na"
 	response_harm   = "punches"
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "daemon"
@@ -24,7 +24,7 @@
 	minbodytemp = 0
 	maxbodytemp = INFINITY
 	faction = list("slaughter")
-	attacktext = "wildly tears into"
+	attacktext = "dziko rozszarpuje"
 	maxHealth = 200
 	health = 200
 	healable = 0
@@ -35,10 +35,10 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	bloodcrawl = BLOODCRAWL_EAT
 	hardattacks = TRUE
-	var/playstyle_string = "<span class='big bold'>You are a slaughter demon,</span><B> a terrible creature from another realm. You have a single desire: To kill.  \
-							You may use the \"Blood Crawl\" ability near blood pools to travel through them, appearing and disappearing from the station at will. \
-							Pulling a dead or unconscious mob while you enter a pool will pull them in with you, allowing you to feast and regain your health. \
-							You move quickly upon leaving a pool of blood, but the material world will soon sap your strength and leave you sluggish. </B>"
+	var/playstyle_string = "<span class='big bold'>Jesteś demonem rzezi,</span><B> straszliwą istotą z innego świata. Masz jedno pragnienie: zabijać.  \
+							Przy kałużach krwi możesz użyć zdolności \"Krwawy Pełz\", by przez nie podróżować, pojawiając się i znikając ze statku, kiedy chcesz. \
+							Jeśli wejdziesz do kałuży, ciągnąc martwą lub nieprzytomną istotę, wciągniesz ją ze sobą i będziesz mógł się nią pożywić, odzyskując zdrowie. \
+							Po wyjściu z kałuży krwi poruszasz się szybko, ale materialny świat wkrótce wysysa z ciebie siły i spowalnia. </B>"
 
 	mobchatspan = "cultmobsay"
 
@@ -46,7 +46,7 @@
 				/obj/effect/decal/cleanable/blood/innards, \
 				/obj/item/organ/heart/demon)
 	del_on_death = TRUE
-	deathmessage = "screams in anger as it collapses into a puddle of viscera!"
+	deathmessage = "krzyczy z wściekłości, rozpadając się w kałużę wnętrzności!"
 	discovery_points = 3000
 
 /mob/living/simple_animal/slaughter/Initialize(mapload)
@@ -84,16 +84,16 @@
 /obj/item/organ/heart/demon/attack(mob/M, mob/living/carbon/user, obj/target)
 	if(M != user)
 		return ..()
-	user.visible_message("<span class='warning'>[user] raises [src] to [user.p_their()] mouth and tears into it with [user.p_their()] teeth!</span>", \
-						 "<span class='danger'>An unnatural hunger consumes you. You raise [src] your mouth and devour it!</span>")
+	user.visible_message("<span class='warning'>[user] podnosi [src] do ust i wgryza się w to zębami!</span>", \
+						 "<span class='danger'>Ogarnia cię nienaturalny głód. Podnosisz [src] do ust i pożerasz!</span>")
 	playsound(user, 'sound/magic/demon_consume.ogg', 50, 1)
 	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
 		if(knownspell.type == /obj/effect/proc_holder/spell/bloodcrawl)
-			to_chat(user, "<span class='warning'>...and you don't feel any different.</span>")
+			to_chat(user, "<span class='warning'>...i nie czujesz żadnej różnicy.</span>")
 			qdel(src)
 			return
-	user.visible_message("<span class='warning'>[user]'s eyes flare a deep crimson!</span>", \
-						 "<span class='userdanger'>You feel a strange power seep into your body... you have absorbed the demon's blood-travelling powers!</span>")
+	user.visible_message("<span class='warning'>Oczy [user] rozbłyskują głęboką czerwienią!</span>", \
+						 "<span class='userdanger'>Czujesz, jak w twoje ciało wsiąka dziwna moc... wchłaniasz zdolność demona do podróży przez krew!</span>")
 	user.temporarilyRemoveItemFromInventory(src, TRUE)
 	src.Insert(user) //Consuming the heart literally replaces your heart with a demon heart. H A R D C O R E
 
@@ -114,12 +114,12 @@
 	// The laughter demon! It's everyone's best friend! It just wants to hug
 	// them so much, it wants to hug everyone at once!
 	name = "laughter demon"
-	real_name = "laughter demon"
+	real_name = "demon śmiechu"
 	desc = "A large, adorable creature covered in armor with pink bows."
 	speak_emote = list("chichocze","chichocze","podśmiewa się")
 	emote_hear = list("rechocze","śmieje się")
 	response_help  = "hugs"
-	attacktext = "wildly tickles"
+	attacktext = "dziko łaskocze"
 
 	attack_sound = 'sound/items/bikehorn.ogg'
 	feast_sound = 'sound/spookoween/scary_horn2.ogg'
@@ -127,26 +127,26 @@
 
 	icon_state = "honkmon"
 	icon_living = "honkmon"
-	deathmessage = "fades out, as all of its friends are released from its \
-		prison of hugs."
+	deathmessage = "znika, a wszyscy jego przyjaciele zostają uwolnieni z jego \
+		więzienia uścisków."
 	loot = list(/mob/living/simple_animal/pet/cat/kitten{name = "Laughter"})
 
 	// Keep the people we hug!
 	var/list/consumed_mobs = list()
 
-	playstyle_string = "<span class='big bold'>You are a laughter \
-	demon,</span><B> a wonderful creature from another realm. You have a single \
-	desire: <span class='clowntext'>To hug and tickle.</span><BR>\
-	You may use the \"Blood Crawl\" ability near blood pools to travel \
-	through them, appearing and disappearing from the station at will. \
-	Pulling a dead or unconscious mob while you enter a pool will pull \
-	them in with you, allowing you to hug them and regain your health.<BR> \
-	You move quickly upon leaving a pool of blood, but the material world \
-	will soon sap your strength and leave you sluggish.<BR>\
-	What makes you a little sad is that people seem to die when you tickle \
-	them; but don't worry! When you die, everyone you hugged will be \
-	released and fully healed, because in the end it's just a jape, \
-	sibling!</B>"
+	playstyle_string = "<span class='big bold'>Jesteś demonem \
+	śmiechu,</span><B> cudowną istotą z innego świata. Masz jedno \
+	pragnienie: <span class='clowntext'>przytulać i łaskotać.</span><BR>\
+	Przy kałużach krwi możesz użyć zdolności \"Krwawy Pełz\", by przez \
+	nie podróżować, pojawiając się i znikając ze statku, kiedy chcesz. \
+	Jeśli wejdziesz do kałuży, ciągnąc martwą lub nieprzytomną istotę, \
+	wciągniesz ją ze sobą i będziesz mógł ją przytulać, odzyskując zdrowie.<BR> \
+	Po wyjściu z kałuży krwi poruszasz się szybko, ale materialny świat \
+	wkrótce wysysa z ciebie siły i spowalnia.<BR>\
+	Trochę smuci cię to, że ludzie zdają się umierać, gdy ich łaskoczesz, \
+	ale nie martw się! Gdy zginiesz, wszyscy, których przytuliłeś, zostaną \
+	uwolnieni i w pełni uleczeni, bo w końcu to tylko żart, \
+	rodzeństwo!</B>"
 
 /mob/living/simple_animal/slaughter/laughter/Destroy()
 	release_friends()
@@ -175,7 +175,7 @@
 		if(M.revive(full_heal = TRUE, admin_revive = TRUE))
 			M.grab_ghost(force = TRUE)
 			playsound(T, feast_sound, 50, 1, -1)
-			to_chat(M, "<span class='clowntext'>You leave [src]'s warm embrace,	and feel ready to take on the world.</span>")
+			to_chat(M, "<span class='clowntext'>Opuszczasz ciepłe objęcia [src] i czujesz, że możesz zawojować świat.</span>")
 
 /mob/living/simple_animal/slaughter/laughter/bloodcrawl_swallow(var/mob/living/victim)
 	if(consumed_mobs)
@@ -185,4 +185,4 @@
 		// Be safe and just eject the corpse
 		victim.forceMove(get_turf(victim))
 		victim.exit_blood_effect()
-		victim.visible_message("[victim] falls out of the air, covered in blood, looking highly confused. And dead.")
+		victim.visible_message("[victim] spada z powietrza, cały we krwi, wyraźnie zdezorientowany. I martwy.")

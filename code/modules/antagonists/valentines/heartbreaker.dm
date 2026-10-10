@@ -16,10 +16,10 @@
 	forge_objectives()
 	if(issilicon(owner))
 		var/mob/living/silicon/S = owner
-		var/laws = list("Accomplish your objectives by ruining everyone's date!")
+		var/laws = list("Wykonaj swoje cele, psując wszystkim randki!")
 		S.set_valentines_laws(laws)
 	. = ..()
 
 /datum/antagonist/heartbreaker/greet()
-	to_chat(owner, "<span class='warning'><B>You didn't get a date! They're all having fun without you! you'll show them though...</B></span>")
+	to_chat(owner, "<span class='warning'><B>Nie masz randki! Wszyscy bawią się bez ciebie! Ale jeszcze im pokażesz...</B></span>")
 	owner.announce_objectives()
