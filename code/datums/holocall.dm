@@ -315,20 +315,20 @@
 	preset_record_text = {"
 	NAME Clown
 	DELAY 10
-	SAY Why did the chaplain cross the maint ?
+	SAY Czemu kapelan przeszedł przez techniczne?
 	DELAY 20
-	SAY He wanted to get to the other side!
+	SAY Chciał się dostać na drugą stronę!
 	SOUND clownstep
 	DELAY 30
 	LANGUAGE /datum/language/narsie
-	SAY Helped him get there!
+	SAY Pomogłem mu tam dotrzeć!
 	DELAY 10
-	SAY ALSO IM SECRETLY A GORILLA
+	SAY A POZA TYM JESTEM POTAJEMNIE GORYLEM
 	DELAY 10
 	PRESET /datum/preset_holoimage/gorilla
 	NAME Gorilla
 	LANGUAGE /datum/language/common
-	SAY OOGA
+	SAY UGA
 	DELAY 20"}
 
 /datum/preset_holoimage/engineer
@@ -358,20 +358,20 @@
 	preset_record_text = {"
 	NAME Rigsuit Engineer #1
 	DELAY 10
-	SAY The blueprints say we're installing a.. singularity engine?
+	SAY Według planów instalujemy... silnik osobliwości?
 	DELAY 45
 	NAME Rigsuit Engineer #2
 	DELAY 10
-	SAY Yep, apparently part of the classic design.
+	SAY No, podobno to część klasycznego projektu.
 	DELAY 45
 	NAME Rigsuit Engineer #1
 	DELAY 10
-	SAY Hasn't the singularity engine been out of standard use for awhile now?
+	SAY Czy silnika osobliwości już od dawna nie wycofano ze standardowego użytku?
 	DELAY 45
 	NAME Rigsuit Engineer #2
 	DELAY 10
-	SAY Yeah, but apparently the architects bribed one of the higher ups to bypass standard regulations.
+	SAY No, ale podobno architekci przekupili kogoś z góry, żeby obejść standardowe przepisy.
 	DELAY 55
 	NAME Rigsuit Engineery #1
 	DELAY 10
-	SAY It's gonna be a pain in the ass rebuilding this place when it inevitably gets loose.."}
+	SAY Odbudowywanie tego miejsca, kiedy to coś nieuchronnie się uwolni, to będzie ból dupy..."}

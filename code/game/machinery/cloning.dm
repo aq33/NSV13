@@ -644,27 +644,27 @@
 
 /obj/item/paper/guides/jobs/medical/cloning
 	name = "paper - 'H-87 Cloning Apparatus Manual"
-	default_raw_text = {"<h4>Getting Started</h4>
-	Congratulations, your station has purchased the H-87 industrial cloning device!<br>
-	Using the H-87 is almost as simple as brain surgery! Simply insert the target humanoid into the scanning chamber and select the scan option to create a new profile!<br>
-	<b>That's all there is to it!</b><br>
-	<i>Notice, cloning system cannot scan inorganic life or small primates.  Scan may fail if subject has suffered extreme brain damage.</i><br>
-	<p>Clone profiles may be viewed through the profiles menu. Scanning implants a complementary HEALTH MONITOR IMPLANT into the subject, which may be viewed from each profile.
-	Profile Deletion has been restricted to \[Station Head\] level access.</p>
-	<h4>Cloning from a profile</h4>
-	Cloning is as simple as pressing the CLONE option at the bottom of the desired profile.<br>
-	Per your company's EMPLOYEE PRIVACY RIGHTS agreement, the H-87 has been blocked from cloning crewmembers while they are still alive.<br>
+	default_raw_text = {"<h4>Pierwsze kroki</h4>
+	Gratulacje, twoja stacja zakupiła przemysłowe urządzenie klonujące H-87!<br>
+	Korzystanie z H-87 jest prawie tak proste jak operacja mózgu! Wystarczy umieścić docelowego humanoida w komorze skanującej i wybrać opcję skanowania, by utworzyć nowy profil!<br>
+	<b>To wszystko!</b><br>
+	<i>Uwaga: system klonujący nie skanuje życia nieorganicznego ani małych naczelnych. Skan może się nie udać, jeśli obiekt ma poważne uszkodzenia mózgu.</i><br>
+	<p>Profile klonów można przeglądać w menu profili. Skanowanie wszczepia obiektowi uzupełniający IMPLANT MONITORUJĄCY ZDROWIE, którego dane widać w każdym profilu.
+	Usuwanie profili ograniczono do poziomu dostępu \[szef działu\].</p>
+	<h4>Klonowanie z profilu</h4>
+	Klonowanie jest tak proste jak naciśnięcie opcji KLONUJ na dole wybranego profilu.<br>
+	Zgodnie z umową o PRAWIE PRACOWNIKÓW DO PRYWATNOŚCI w twojej firmie H-87 nie może klonować członków załogi, którzy wciąż żyją.<br>
 	<br>
-	<p>The provided CLONEPOD SYSTEM will produce the desired clone.  Standard clone maturation times (With SPEEDCLONE technology) are roughly 90 seconds.
-	The cloning pod may be unlocked early with any \[Medical Researcher\] ID after initial maturation is complete.</p><br>
-	<i>Please note that resulting clones may have a small DEVELOPMENTAL DEFECT as a result of genetic drift.</i><br>
-	<h4>Profile Management</h4>
-	<p>The H-87 (as well as your station's standard genetics machine) can accept STANDARD DATA DISKETTES.
-	These diskettes are used to transfer genetic information between machines and profiles.
-	A load/save dialog will become available in each profile if a disk is inserted.</p><br>
-	<i>A good diskette is a great way to counter aforementioned genetic drift!</i><br>
+	<p>Dołączony SYSTEM KAPSUŁ KLONUJĄCYCH wytworzy żądanego klona. Standardowy czas dojrzewania klona (z technologią SPEEDCLONE) to około 90 sekund.
+	Kapsułę klonującą można odblokować wcześniej dowolnym ID z dostępem \[badacz medyczny\] po zakończeniu wstępnego dojrzewania.</p><br>
+	<i>Uwaga: w wyniku dryfu genetycznego powstałe klony mogą mieć niewielką WADĘ ROZWOJOWĄ.</i><br>
+	<h4>Zarządzanie profilami</h4>
+	<p>H-87 (podobnie jak standardowa maszyna genetyczna twojej stacji) przyjmuje STANDARDOWE DYSKIETKI Z DANYMI.
+	Dyskietki służą do przenoszenia informacji genetycznych między maszynami i profilami.
+	Po włożeniu dysku w każdym profilu pojawi się okno wczytywania/zapisu.</p><br>
+	<i>Dobra dyskietka to świetny sposób na przeciwdziałanie wspomnianemu dryfowi genetycznemu!</i><br>
 	<br>
-	<font size=1>This technology produced under license from Thinktronic Systems, LTD.</font>"}
+	<font size=1>Technologia wyprodukowana na licencji Thinktronic Systems, LTD.</font>"}
 
 #undef CLONE_INITIAL_DAMAGE
 #undef SPEAK

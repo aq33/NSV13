@@ -108,18 +108,17 @@ GLOBAL_VAR_INIT(sc_safecode5, "[rand(0,9)]")
 	return ..()
 
 /obj/item/paper/fluff/awaymissions/stationcollision/safehint_paper_shuttle
-	default_raw_text = {"<b>Target:</b> Research-station Epsilon<br>
-			<b>Objective:</b> Prototype weaponry. The captain likely keeps them locked in her safe.<br>
+	default_raw_text = {"<b>Cel:</b> stacja badawcza Epsilon<br>
+			<b>Zadanie:</b> prototypowa broń. Kapitan zapewne trzyma ją zamkniętą w swoim sejfie.<br>
 			<br>
-			Our on-board spy has learned the code and has hidden away a few copies of the code around the station. Unfortunately he has been captured by security
-			Your objective is to split up, locate any of the papers containing the captain's safe code, open the safe and
-			secure anything found inside. If possible, recover the imprisioned syndicate operative and receive the code from him.<br>
+			Nasz szpieg na pokładzie poznał szyfr i ukrył kilka jego kopii na stacji. Niestety został schwytany przez ochronę.
+			Waszym zadaniem jest rozdzielić się, odnaleźć którąkolwiek z kartek z szyfrem do sejfu kapitan, otworzyć sejf i
+			zabezpieczyć wszystko, co znajdziecie w środku. Jeśli to możliwe, odbijcie uwięzionego agenta Syndykatu i zdobądźcie od niego szyfr.<br>
 			<br>
-			<u>As always, eliminate anyone who gets in the way.</u><br>
+			<u>Jak zawsze eliminujcie każdego, kto stanie wam na drodze.</u><br>
 			<br>
-			Your assigned ship is designed specifically for penetrating the hull of another station or ship with minimal damage to operatives.
-			It is completely fly-by-wire meaning you have just have to enjoy the ride and when the red light comes on... find something to hold onto!
-			"}
+			Przydzielony wam statek zaprojektowano specjalnie do przebijania kadłuba innej stacji lub statku przy minimalnych obrażeniach agentów.
+			Jest w pełni sterowany automatycznie, więc musicie tylko cieszyć się lotem, a gdy zapali się czerwona lampka... złapcie się czegoś!"}
 /*
  * Captain's safe
  */
