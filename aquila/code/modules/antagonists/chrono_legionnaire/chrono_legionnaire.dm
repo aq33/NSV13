@@ -38,22 +38,23 @@ GLOBAL_LIST_INIT(aquila_chrono_name_exceptions, list(
 
 /// Lowercases a name, folds Polish/German letters and leetspeak to plain a-z and drops everything else
 /proc/aquila_chrono_normalize_name(name)
-	// Built on first use: this runs during GLOB init, before static initializers are guaranteed to have run
-	var/static/list/replacements
-	var/static/regex/non_letters
-	if(!replacements)
-		replacements = list(
-			"ą" = "a", "Ą" = "a", "ć" = "c", "Ć" = "c", "ę" = "e", "Ę" = "e", "ł" = "l", "Ł" = "l",
-			"ń" = "n", "Ń" = "n", "ó" = "o", "Ó" = "o", "ś" = "s", "Ś" = "s", "ź" = "z", "Ź" = "z",
-			"ż" = "z", "Ż" = "z", "ä" = "a", "Ä" = "a", "ö" = "o", "Ö" = "o", "ü" = "u", "Ü" = "u",
-			"ß" = "ss", "0" = "o", "1" = "i", "3" = "e", "4" = "a", "5" = "s", "7" = "t",
-			"$" = "s", "@" = "a", "!" = "i", "|" = "i",
-		)
-		non_letters = regex(@"[^a-z]", "g")
-	. = lowertext(name)
+	// No proc statics or regexes here: this runs during GLOB init (aquila_chrono_load_names), before the
+	// world has initialized static vars, so a static built on first use reads back as null there
+	var/list/replacements = list(
+		"ą" = "a", "Ą" = "a", "ć" = "c", "Ć" = "c", "ę" = "e", "Ę" = "e", "ł" = "l", "Ł" = "l",
+		"ń" = "n", "Ń" = "n", "ó" = "o", "Ó" = "o", "ś" = "s", "Ś" = "s", "ź" = "z", "Ź" = "z",
+		"ż" = "z", "Ż" = "z", "ä" = "a", "Ä" = "a", "ö" = "o", "Ö" = "o", "ü" = "u", "Ü" = "u",
+		"ß" = "ss", "0" = "o", "1" = "i", "3" = "e", "4" = "a", "5" = "s", "7" = "t",
+		"$" = "s", "@" = "a", "!" = "i", "|" = "i",
+	)
+	var/folded = lowertext(name)
 	for(var/from in replacements)
-		. = replacetext(., from, replacements[from])
-	. = non_letters.Replace(., "")
+		folded = replacetext(folded, from, replacements[from])
+	. = ""
+	for(var/i in 1 to length(folded))
+		var/code = text2ascii(folded, i)
+		if(code >= 97 && code <= 122) // a-z
+			. += ascii2text(code)
 
 /// Returns the historical figure a name refers to, or null if it is an ordinary name
 /proc/aquila_chrono_historical_figure(name)
