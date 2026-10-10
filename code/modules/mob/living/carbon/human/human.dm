@@ -1007,8 +1007,9 @@
 		if(do_after(src, carrydelay, TRUE, target))
 			//Second check to make sure they're still valid to be carried
 			if(can_be_firemanned(target) && !incapacitated(FALSE, TRUE) && !target.buckled)
-				buckle_mob(target, TRUE, TRUE, 90, 1, 0)
-				return
+				// AQ EDIT - check_loc FALSE, the carried mob stands next to us and gets moved onto our turf
+				if(buckle_mob(target, TRUE, FALSE, 90, 1, 0))
+					return
 		visible_message("<span class='warning'>[src] fails to fireman carry [target]!</span>")
 	else
 		to_chat(src, "<span class='notice'>You can't fireman carry [target] while they're standing!</span>")
@@ -1021,7 +1022,9 @@
 				if(target.incapacitated(FALSE, TRUE) || incapacitated(FALSE, TRUE))
 					target.visible_message("<span class='warning'>[target] can't hang onto [src]!</span>")
 					return
-				buckle_mob(target, TRUE, TRUE, FALSE, 0, 2)
+				// AQ EDIT - check_loc FALSE, the rider stands next to us and gets moved onto our turf
+				if(!buckle_mob(target, TRUE, FALSE, FALSE, 0, 2))
+					target.visible_message("<span class='warning'>[target] fails to climb onto [src]!</span>")
 		else
 			visible_message("<span class='warning'>[target] fails to climb onto [src]!</span>")
 	else

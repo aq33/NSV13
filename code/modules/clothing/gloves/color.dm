@@ -180,7 +180,7 @@
 	permeability_coefficient = 0.01
 	transfer_prints = TRUE
 	resistance_flags = NONE
-	var/carrytrait = TRAIT_QUICKER_CARRY
+	var/carrytrait = TRAIT_QUICK_CARRY // AQ EDIT - latex is the cheap one, nitrile gives TRAIT_QUICKER_CARRY
 
 /obj/item/clothing/gloves/color/latex/equipped(mob/user, slot)
 	..()
