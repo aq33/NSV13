@@ -740,7 +740,7 @@
 	dir = 8
 	},
 /obj/item/paper/crumpled{
-	default_raw_text = "Explosive testing on site is STRICTLY forbidden, as this outpost's walls are lined with explosives intended for intentional self-destruct purposes that may be set off prematurely through careless experiments.";
+	default_raw_text = "Testy materiałów wybuchowych na miejscu są SUROWO zabronione, bo ściany tej placówki są wyłożone ładunkami przeznaczonymi do celowej autodestrukcji, które mogą zostać przedwcześnie odpalone przez nieostrożne eksperymenty.";
 	name = "Explosives Testing Warning";
 	pixel_x = -6;
 	pixel_y = -3

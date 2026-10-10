@@ -7684,7 +7684,7 @@
 	},
 /obj/machinery/door/firedoor/border_only/directional/south,
 /obj/item/paper{
-	default_raw_text = "<p>Reminder that squad equipment vendors are located in the council chamber, tool storage, and that 4-way junction at the primary hallway, Deck 1</p>"
+	default_raw_text = "<p>Przypominamy, że automaty ze sprzętem oddziałów znajdują się w sali narad, magazynie narzędzi i na czterokierunkowym skrzyżowaniu głównego korytarza, pokład 1</p>"
 	},
 /obj/item/reagent_containers/spray/cleaner,
 /turf/open/floor/plating,
@@ -14912,7 +14912,7 @@
 	dir = 4
 	},
 /obj/item/paper{
-	default_raw_text = "<p>Executive Officer notice: Modular computers are currently experiencing technical difficulties regarding their ID modification hardware. The 'identification card authentication module' supports 2 ID slots, and was previously paired with the 'ID Card Modification' program that also supported 2 IDs. There was recently a software update that removed the need to insert your own ID to authenticate and log in. However, it did not update the hardware, nor does it allow you to remove an ID from the authentication slot anymore.<br><br>To edit IDs with a modular computer without losing your ID, insert the target's ID but NEVER insert your own ID. You will still be able to log in if you are wearing it. Make sure you never put more than 1 ID in the modular computer.<br><br>If you do accidentally lose your own ID and getting a new one without your XO access is borderline impossible, contact Central Command. Politely ask them to remote into the console, then run subroutine '/proc/eject_id'<br><br>Have a secure shift</p>";
+	default_raw_text = "<p>Komunikat Starszego Oficera: komputery modułowe mają obecnie problemy techniczne ze sprzętem do modyfikacji ID. Moduł uwierzytelniania kart identyfikacyjnych obsługuje 2 gniazda ID i wcześniej współpracował z programem do modyfikacji kart ID, który też obsługiwał 2 ID. Niedawna aktualizacja oprogramowania usunęła konieczność wkładania własnego ID w celu uwierzytelnienia i zalogowania. Nie zaktualizowała jednak sprzętu i nie pozwala już wyjąć ID z gniazda uwierzytelniania.<br><br>Żeby edytować ID na komputerze modułowym bez utraty własnego ID, włóż ID osoby docelowej, ale NIGDY nie wkładaj własnego. Nadal będziesz mógł się zalogować, jeśli masz je na sobie. Nigdy nie wkładaj do komputera modułowego więcej niż 1 ID.<br><br>Jeśli przypadkiem stracisz własne ID, a zdobycie nowego bez dostępu Starszego Oficera jest praktycznie niemożliwe, skontaktuj się z Dowództwem Centralnym. Grzecznie poproś, by połączyli się zdalnie z konsolą i uruchomili podprogram '/proc/eject_id'<br><br>Bezpiecznej zmiany</p>";
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -20175,7 +20175,7 @@
 	},
 /obj/structure/cable,
 /obj/item/paper{
-	default_raw_text = "<p>Executive Officer notice: Modular computers are currently experiencing technical difficulties regarding their ID modification hardware. The 'identification card authentication module' supports 2 ID slots, and was previously paired with the 'ID Card Modification' program that also supported 2 IDs. There was recently a software update that removed the need to insert your own ID to authenticate and log in. However, it did not update the hardware, nor does it allow you to remove an ID from the authentication slot anymore.<br><br>To edit IDs with a modular computer without losing your ID, insert the target's ID but NEVER insert your own ID. You will still be able to log in if you are wearing it. Make sure you never put more than 1 ID in the modular computer.<br><br>If you do accidentally lose your own ID and getting a new one without your XO access is borderline impossible, contact Central Command. Politely ask them to remote into the console, then run subroutine '/proc/eject_id'<br><br>Have a secure shift</p>";
+	default_raw_text = "<p>Komunikat Starszego Oficera: komputery modułowe mają obecnie problemy techniczne ze sprzętem do modyfikacji ID. Moduł uwierzytelniania kart identyfikacyjnych obsługuje 2 gniazda ID i wcześniej współpracował z programem do modyfikacji kart ID, który też obsługiwał 2 ID. Niedawna aktualizacja oprogramowania usunęła konieczność wkładania własnego ID w celu uwierzytelnienia i zalogowania. Nie zaktualizowała jednak sprzętu i nie pozwala już wyjąć ID z gniazda uwierzytelniania.<br><br>Żeby edytować ID na komputerze modułowym bez utraty własnego ID, włóż ID osoby docelowej, ale NIGDY nie wkładaj własnego. Nadal będziesz mógł się zalogować, jeśli masz je na sobie. Nigdy nie wkładaj do komputera modułowego więcej niż 1 ID.<br><br>Jeśli przypadkiem stracisz własne ID, a zdobycie nowego bez dostępu Starszego Oficera jest praktycznie niemożliwe, skontaktuj się z Dowództwem Centralnym. Grzecznie poproś, by połączyli się zdalnie z konsolą i uruchomili podprogram '/proc/eject_id'<br><br>Bezpiecznej zmiany</p>";
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -21911,7 +21911,7 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
 /obj/machinery/suit_storage_unit/standard_unit,
 /obj/item/paper{
-	default_raw_text = "<p>Reminder to deactivate ID requirements for airlocks in the secondary EVA storage located on Deck 1 Chapel maintenance.</p>"
+	default_raw_text = "<p>Przypominamy, by wyłączyć wymóg ID dla śluz w zapasowym magazynie EVA w technicznych przy kaplicy na pokładzie 1.</p>"
 	},
 /obj/structure/window/reinforced{
 	dir = 8
@@ -30434,7 +30434,7 @@
 	req_one_access_txt = "3"
 	},
 /obj/item/paper{
-	default_raw_text = "<p>Reminder that squad equipment vendors are located in the council chamber, tool storage, and that 4-way junction at the primary hallway, Deck 1</p>"
+	default_raw_text = "<p>Przypominamy, że automaty ze sprzętem oddziałów znajdują się w sali narad, magazynie narzędzi i na czterokierunkowym skrzyżowaniu głównego korytarza, pokład 1</p>"
 	},
 /obj/machinery/door/poddoor/ship/preopen{
 	dir = 4;
@@ -31383,22 +31383,22 @@
 	},
 /obj/effect/spawner/lootdrop/maintenance/three,
 /obj/item/paper{
-	default_raw_text = "<p><br>X <br>Sasha Mendell (Research Director) Bethany Joyce (Scientist) Nice!<br><br>X <br>Bethany Joyce (Scientist) Sasha Mendell (Research Director) Want me to do anything wihth them?<br><br>X <br>Julissa Carr (Ship Engineer) Alexis Catherina (Ship Engineer) Im back, did I miss anything<br><br>X <br>Ascalapha Modesta (Head of Security) Sasha Mendell (Research Director) Can you send us the PDA logs for this shift? We're trying to solve a few crimes and we think that might help <br><br>X <br>Sasha Mendell (Research Director) Ascalapha Modesta (Head of Security) Sure, I'll send that right over <br><br>X <br>Ascalapha Modesta (Head of Security) Sasha Mendell (Research Director) Thanks <br></p>";
+	default_raw_text = "<p><br>X <br>Sasha Mendell (Dyrektor Naukowy) Bethany Joyce (naukowiec) Super!<br><br>X <br>Bethany Joyce (naukowiec) Sasha Mendell (Dyrektor Naukowy) Mam coś z nimi zrobić?<br><br>X <br>Julissa Carr (inżynier okrętowy) Alexis Catherina (inżynier okrętowy) Wróciłam, coś mnie ominęło?<br><br>X <br>Ascalapha Modesta (Komendant) Sasha Mendell (Dyrektor Naukowy) Możesz nam wysłać logi PDA z tej zmiany? Próbujemy rozwiązać kilka przestępstw i myślimy, że to może pomóc <br><br>X <br>Sasha Mendell (Dyrektor Naukowy) Ascalapha Modesta (Komendant) Jasne, zaraz wyślę <br><br>X <br>Ascalapha Modesta (Komendant) Sasha Mendell (Dyrektor Naukowy) Dzięki <br></p>";
 	pixel_x = 2;
 	pixel_y = 2
 	},
 /obj/item/paper{
-	default_raw_text = "<p><br>X <br>Violet Koster (Scientist) Stephen Greenawalt (Cargo Technician) I'll see what I can do <br><br>X <br>Violet Koster (Scientist) Stephen Greenawalt (Cargo Technician) Hey I got your key back, you won't believe how lucky I was with the rad storm! Sent from my PDA <br><br>X <br>Violet Koster (Scientist) Stephen Greenawalt (Cargo Technician) How do you want me to get it to you? <br><br>X <br>Violet Koster (Scientist) Stephen Greenawalt (Cargo Technician) Stephen? Hello? <br><br>X <br>Julissa Carr (Ship Engineer) Alexis Catherina (Ship Engineer) brb<br><br>X <br>Violet Koster (Scientist) Ascalapha Modesta (Head of Security) Hey I think a cargo tech has gone missing, Stephen Greenawalt. I just messaged him a few times and he's not responding <br><br>X <br>Ascalapha Modesta (Head of Security) Violet Koster (Scientist) Ok we'll look into it <br><br>X <br>Violet Koster (Scientist) Stephen Greenawalt (Cargo Technician) I'm stowing this contraband stuff in maintenance for now. Do let me know when you get back<br><br>X <br>Bethany Joyce (Scientist) Sasha Mendell (Research Director) Got rainbow in xeno<br></p>";
+	default_raw_text = "<p><br>X <br>Violet Koster (naukowiec) Stephen Greenawalt (technik zaopatrzenia) Zobaczę, co da się zrobić <br><br>X <br>Violet Koster (naukowiec) Stephen Greenawalt (technik zaopatrzenia) Hej, odzyskałam twój kluczyk, nie uwierzysz, jakie miałam szczęście z tą burzą radiacyjną! Wysłano z mojego PDA <br><br>X <br>Violet Koster (naukowiec) Stephen Greenawalt (technik zaopatrzenia) Jak mam ci go przekazać? <br><br>X <br>Violet Koster (naukowiec) Stephen Greenawalt (technik zaopatrzenia) Stephen? Halo? <br><br>X <br>Julissa Carr (inżynier okrętowy) Alexis Catherina (inżynier okrętowy) zaraz wracam<br><br>X <br>Violet Koster (naukowiec) Ascalapha Modesta (Komendant) Hej, chyba zaginął technik zaopatrzenia, Stephen Greenawalt. Napisałam do niego kilka razy i nie odpowiada <br><br>X <br>Ascalapha Modesta (Komendant) Violet Koster (naukowiec) Ok, sprawdzimy to <br><br>X <br>Violet Koster (naukowiec) Stephen Greenawalt (technik zaopatrzenia) Na razie chowam tę kontrabandę w technicznych. Daj znać, jak wrócisz<br><br>X <br>Bethany Joyce (naukowiec) Sasha Mendell (Dyrektor Naukowy) Mam tęczowego w ksenobiologii<br></p>";
 	pixel_x = 2;
 	pixel_y = 2
 	},
 /obj/item/paper{
-	default_raw_text = "<p><br>X <br>Violet Koster (Scientist) Stephen Greenawalt (Cargo Technician) ATV? Cool <br><br>X <br>Violet Koster (Scientist) Stephen Greenawalt (Cargo Technician) Why did they take it in the first place? <br><br>X <br>Stephen Greenawalt (Cargo Technician) Violet Koster (Scientist) i dont know <br><br>X <br>Violet Koster (Scientist) Stephen Greenawalt (Cargo Technician) You'll have to be more specific than that <br><br>X <br>Dustin Stroh (Assistant) In A Nutshell (AI) Law 2 open<br><br>X <br>Violet Koster (Scientist) Stephen Greenawalt (Cargo Technician) Were you joyriding it across the hallways? <br><br>X <br>Stephen Greenawalt (Cargo Technician) Violet Koster (Scientist) yes <br><br>X <br>Stephen Greenawalt (Cargo Technician) Violet Koster (Scientist) will you get it back for me? <br></p>";
+	default_raw_text = "<p><br>X <br>Violet Koster (naukowiec) Stephen Greenawalt (technik zaopatrzenia) Quad? Fajnie <br><br>X <br>Violet Koster (naukowiec) Stephen Greenawalt (technik zaopatrzenia) Czemu w ogóle go zabrali? <br><br>X <br>Stephen Greenawalt (technik zaopatrzenia) Violet Koster (naukowiec) nie wiem <br><br>X <br>Violet Koster (naukowiec) Stephen Greenawalt (technik zaopatrzenia) Musisz powiedzieć coś konkretniej <br><br>X <br>Dustin Stroh (Majtek) In A Nutshell (SI) Prawo 2 otwórz<br><br>X <br>Violet Koster (naukowiec) Stephen Greenawalt (technik zaopatrzenia) Jeździłeś nim dla zabawy po korytarzach? <br><br>X <br>Stephen Greenawalt (technik zaopatrzenia) Violet Koster (naukowiec) tak <br><br>X <br>Stephen Greenawalt (technik zaopatrzenia) Violet Koster (naukowiec) odzyskasz go dla mnie? <br></p>";
 	pixel_x = 2;
 	pixel_y = 2
 	},
 /obj/item/paper{
-	default_raw_text = "<p><br>X<br><br>Sender<br><br>Recipient<br><br>Message<br><br><br>X <br>system System Administrator This is an automated message. The messaging system is functioning correctly. <br><br>X <br>Jalen Khan (Cook) SYS-32EXE (Botanist) wheat carrots sugarcane lemons limes oranges chilis corn <br><br>X <br>Jalen Khan (Cook) SYS-32EXE (Botanist) vwheat carrots sugarcane lemons limes oranges chilis corn <br><br>X <br>SYS-32EXE (Botanist) Jalen Khan (Cook) anything else?<br><br>X <br>Bethany Joyce (Scientist) Violet Koster (Scientist) I'll go to xeno then<br><br>X <br>Stephen Greenawalt (Cargo Technician) Violet Koster (Scientist) hey can you help me with something? security took away my atv key and i want it back <br></p>";
+	default_raw_text = "<p><br>X<br><br>Nadawca<br><br>Odbiorca<br><br>Wiadomość<br><br><br>X <br>system Administrator systemu To jest wiadomość automatyczna. System wiadomości działa poprawnie. <br><br>X <br>Jalen Khan (kucharz) SYS-32EXE (botanik) pszenica marchew trzcina cukrowa cytryny limonki pomarańcze chili kukurydza <br><br>X <br>Jalen Khan (kucharz) SYS-32EXE (botanik) vpszenica marchew trzcina cukrowa cytryny limonki pomarańcze chili kukurydza <br><br>X <br>SYS-32EXE (botanik) Jalen Khan (kucharz) coś jeszcze?<br><br>X <br>Bethany Joyce (naukowiec) Violet Koster (naukowiec) To idę do ksenobiologii<br><br>X <br>Stephen Greenawalt (technik zaopatrzenia) Violet Koster (naukowiec) hej, pomożesz mi z czymś? ochrona zabrała mi kluczyk do quada i chcę go odzyskać <br></p>";
 	pixel_x = 2;
 	pixel_y = 2
 	},
@@ -31666,7 +31666,7 @@
 /obj/structure/table,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/paper{
-	default_raw_text = "<p>Engineering notice: There are three wire colors used on the Aetherwhisp 6 ship model. White cable is wired to the Stormdrive MK-4 and the supermatter crystal near atmospherics. These lead to their own SMES located nearby. Yellow wires are department distribution wires, which deliver power from the engines SMES to deparment SMES. Red wires deliver power from department SMES to department APCs.</p>"
+	default_raw_text = "<p>Komunikat inżynierii: na statku modelu Aetherwhisp 6 używa się trzech kolorów kabli. Biały kabel jest podłączony do Stormdrive MK-4 i kryształu supermaterii przy atmosferyce. Prowadzą one do własnych SMES-ów w pobliżu. Żółte kable to kable dystrybucji działowej, które dostarczają moc z SMES-ów silników do SMES-ów działów. Czerwone kable dostarczają moc z SMES-ów działów do APC działów.</p>"
 	},
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/item/dest_tagger{

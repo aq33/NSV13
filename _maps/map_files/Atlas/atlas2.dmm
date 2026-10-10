@@ -9716,7 +9716,7 @@
 	pixel_y = 25
 	},
 /obj/item/paper/fluff/awaymissions{
-	default_raw_text = "<center>Remember to turn on the Air Alarm- Engineering</center>";
+	default_raw_text = "<center>Pamiętajcie, żeby włączyć alarm powietrza - inżynieria</center>";
 	name = "IMPORTANT REMINDER"
 	},
 /turf/open/floor/carpet/red,

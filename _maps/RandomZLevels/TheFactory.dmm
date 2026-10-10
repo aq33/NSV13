@@ -49,7 +49,7 @@
 	resistance_flags = 243
 	},
 /obj/item/paper{
-	default_raw_text = "<b>You've found a secret!</b>"
+	default_raw_text = "<b>Znalazłeś sekret!</b>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/awaymission/factory/secret)
@@ -200,7 +200,7 @@
 	})
 "amo" = (
 /obj/item/paper{
-	default_raw_text = "Anomaly 7 was actually found nearby. One of the villagers found this bat in a forest. It was literally separated from the world by chasm and it also was placed in a burning bonfire. The villager cut a tree, tall enough to make a bridge and get over the chasm to the bat. Then they threw the bat away because they actually needed the bonfire rather than some useless piece of wood, as he said. Several days later the villagers spotted a burning bonfire surrounded by chasm nearby the forest. We decided take the bat here and make a cell for it. We don't want people outside to accidentally fall into an abyss. Anyway the baseball hole got filled by some dirt and is now safe to walk over. Maybe.";
+	default_raw_text = "Anomalię 7 znaleziono w pobliżu. Jeden z mieszkańców wioski znalazł ten kij w lesie. Był dosłownie odcięty od świata przepaścią i do tego leżał w płonącym ognisku. Wieśniak ściął drzewo dość wysokie, żeby zrobić z niego most i przejść nad przepaścią do kija. Potem wyrzucił kij, bo, jak powiedział, bardziej potrzebował ogniska niż jakiegoś bezużytecznego kawałka drewna. Kilka dni później wieśniacy zauważyli niedaleko lasu płonące ognisko otoczone przepaścią. Postanowiliśmy przynieść kij tutaj i zrobić dla niego celę. Nie chcemy, żeby ludzie na zewnątrz przypadkiem wpadli w otchłań. Tak czy inaczej, dziurę po kiju bejsbolowym zasypała ziemia i można już po niej bezpiecznie chodzić. Chyba.";
 	name = "Anomaly 7"
 	},
 /turf/open/floor/engine{
@@ -1188,7 +1188,7 @@
 	})
 "bhQ" = (
 /obj/item/paper{
-	default_raw_text = "<i>Fuck, that was a bad idea to change direction. Maybe try to dig in another way?</i>"
+	default_raw_text = "<i>Kurwa, zmiana kierunku to był zły pomysł. Może spróbować kopać w inną stronę?</i>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered{
@@ -1342,7 +1342,7 @@
 	})
 "bpm" = (
 /obj/item/paper{
-	default_raw_text = "<i>Fuck, that was a bad idea to change direction. Maybe try to dig in another way?</i>"
+	default_raw_text = "<i>Kurwa, zmiana kierunku to był zły pomysł. Może spróbować kopać w inną stronę?</i>"
 	},
 /turf/closed/mineral/random,
 /area/ruin/unpowered{
@@ -1725,7 +1725,7 @@
 /area/awaymission/factory/clownplanet)
 "bNn" = (
 /obj/item/paper{
-	default_raw_text = "<i>That thing must hit my brain hard because... Why the fuck was I digging in THAT way?!</i>"
+	default_raw_text = "<i>To coś musiało mi mocno walnąć w mózg, bo... Czemu, kurwa, kopałem w TĘ stronę?!</i>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered{
@@ -1758,7 +1758,7 @@
 /area/awaymission/factory/factoryduring/down)
 "bOA" = (
 /obj/item/paper{
-	default_raw_text = "<i>That thing must hit my brain hard because... Why the fuck was I digging in THAT way?!</i>"
+	default_raw_text = "<i>To coś musiało mi mocno walnąć w mózg, bo... Czemu, kurwa, kopałem w TĘ stronę?!</i>"
 	},
 /turf/closed/mineral/random,
 /area/ruin/unpowered{
@@ -1845,7 +1845,7 @@
 "bRR" = (
 /obj/structure/table/wood,
 /obj/item/paper{
-	default_raw_text = "<i>God, I've managed to sneak to this place unseen. I didn't even look at the glassed doors because I was afraid they will see me. Something is not right here, I hear someone screaming loudly, lots of gunshots. Thats may be the reason nobody came after me when I accidentally walked on the sight of a security camera.</i>";
+	default_raw_text = "<i>Boże, udało mi się zakraść tutaj niezauważonym. Nawet nie spojrzałem na szklane drzwi, bo bałem się, że mnie zobaczą. Coś tu jest nie tak, słyszę, jak ktoś głośno krzyczy, mnóstwo strzałów. To pewnie dlatego nikt mnie nie gonił, gdy przypadkiem wszedłem w pole widzenia kamery ochrony.</i>";
 	name = "Adam's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -2005,7 +2005,7 @@
 "bYB" = (
 /obj/structure/table/wood,
 /obj/item/paper{
-	default_raw_text = "<i>God, I've managed to sneak to this place unseen. I didn't even look at the glassed doors because I was afraid they will see me. Something is not right here, I hear someone screaming loudly, lots of gunshots. Thats may be the reason nobody came after me when I accidentally walked on the sight of a security camera.</i>";
+	default_raw_text = "<i>Boże, udało mi się zakraść tutaj niezauważonym. Nawet nie spojrzałem na szklane drzwi, bo bałem się, że mnie zobaczą. Coś tu jest nie tak, słyszę, jak ktoś głośno krzyczy, mnóstwo strzałów. To pewnie dlatego nikt mnie nie gonił, gdy przypadkiem wszedłem w pole widzenia kamery ochrony.</i>";
 	name = "Adam's note"
 	},
 /turf/open/floor/carpet/royalblue,
@@ -2100,7 +2100,7 @@
 /area/awaymission/factory/factoryafter/down/levelthree)
 "cez" = (
 /obj/item/paper{
-	default_raw_text = "<i>If you see this messaage then you might have some troubles with your stomach as well. My advice - don't be me. Don't eat that food the factory making.</i>";
+	default_raw_text = "<i>Jeśli widzisz tę wiadomość, to pewnie też masz problemy z żołądkiem. Moja rada - nie bądź mną. Nie jedz jedzenia, które robi fabryka.</i>";
 	name = "guard's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -2235,7 +2235,7 @@
 "clx" = (
 /obj/structure/table/reinforced,
 /obj/item/paper{
-	default_raw_text = "<i>I feel something bad gonna happen soon. I'm taking that stuff our squad found and augmenting myself to prevent myself turning into a brainlet subhuman in case someone breaks into mind batterer's chamber. I'm sure I'm going to behave much less like a human and I won't be able to turn it back any more, but I will need to get used to it or else I have a big chance becoming a fucking zombie.</i>";
+	default_raw_text = "<i>Czuję, że niedługo stanie się coś złego. Biorę to, co znalazł nasz oddział, i wszczepiam to sobie, żeby nie zmienić się w bezmózgiego podczłowieka, jeśli ktoś włamie się do komory miotacza umysłów. Na pewno będę się zachowywać dużo mniej po ludzku i nie da się już tego odwrócić, ale będę musiał się przyzwyczaić, bo inaczej mam duże szanse zostać pierdolonym zombie.</i>";
 	name = "The Boss' note"
 	},
 /turf/open/floor/circuit/green/anim,
@@ -2265,7 +2265,7 @@
 /area/awaymission/factory/factoryduring/down)
 "cmy" = (
 /obj/item/paper{
-	default_raw_text = "<i>If you see this messaage then you might have some troubles with your stomach as well. My advice - don't be me. Don't eat that food the factory making.</i>";
+	default_raw_text = "<i>Jeśli widzisz tę wiadomość, to pewnie też masz problemy z żołądkiem. Moja rada - nie bądź mną. Nie jedz jedzenia, które robi fabryka.</i>";
 	name = "guard's note"
 	},
 /turf/open/floor/plasteel/showroomfloor,
@@ -2562,7 +2562,7 @@
 	})
 "cAH" = (
 /obj/item/paper{
-	default_raw_text = "<i>It's dark and I don't like it at all. I think I just saw someone standing there... Is that a dead body? Oh I forgot I may just inhaled too much leaked BZ. I guess that mad engineer with an axe that was chasing me did it.</i>"
+	default_raw_text = "<i>Jest ciemno i wcale mi się to nie podoba. Chyba właśnie widziałem, że ktoś tam stoi... Czy to trup? Aha, zapomniałem, że mogłem nawdychać się za dużo wyciekającego BZ. Chyba to ten szalony inżynier z siekierą, który mnie gonił, to zrobił.</i>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered{
@@ -2687,7 +2687,7 @@
 /area/awaymission/factory/factoryduring/down)
 "cFg" = (
 /obj/item/paper{
-	default_raw_text = "<i>It's dark and I don't like it at all. I think I just saw someone standing there... Is that a dead body? Oh I forgot I may just inhaled too much leaked BZ. I guess that mad engineer with an axe that was chasing me did it.</i>"
+	default_raw_text = "<i>Jest ciemno i wcale mi się to nie podoba. Chyba właśnie widziałem, że ktoś tam stoi... Czy to trup? Aha, zapomniałem, że mogłem nawdychać się za dużo wyciekającego BZ. Chyba to ten szalony inżynier z siekierą, który mnie gonił, to zrobił.</i>"
 	},
 /turf/closed/mineral/random,
 /area/ruin/unpowered{
@@ -2932,7 +2932,7 @@
 /area/awaymission/factory/factoryafter/down)
 "cPh" = (
 /obj/item/paper{
-	default_raw_text = "This one is the most cursed shit we've ever seen. When our squad brought it here, it was only a spider, but the body was replaced by human head. It was agressive and tried to bite everyone, so we injected some chloral hydrate in it. A few days later we decided to bring one of the cultists' dead body as a food for it. Few hours later, the spider dissapeared, and the only thing left in it's cell is the same cultist body, but staying on top of it's own blood and flesh. We decided to keep this thing here, but I bet once it will try to break out and will cause a big trouble.";
+	default_raw_text = "To najbardziej przeklęte gówno, jakie kiedykolwiek widzieliśmy. Gdy nasz oddział go tu przyniósł, był tylko pająkiem, ale z ludzką głową zamiast tułowia. Był agresywny i próbował wszystkich gryźć, więc wstrzyknęliśmy mu trochę wodzianu chloralu. Kilka dni później postanowiliśmy przynieść mu na pożarcie zwłoki jednego z kultystów. Kilka godzin później pająk zniknął, a w jego celi zostały tylko te same zwłoki kultysty, ale stojące na jego własnej krwi i mięsie. Postanowiliśmy trzymać to coś tutaj, ale założę się, że kiedyś spróbuje się wyrwać i narobi dużych kłopotów.";
 	name = "Anomaly 4"
 	},
 /turf/open/floor/engine{
@@ -2999,7 +2999,7 @@
 /area/awaymission/factory/villageafter/house)
 "cSD" = (
 /obj/item/paper{
-	default_raw_text = "<i>IT WAS A TERRIBLE MISTAKE</i>";
+	default_raw_text = "<i>TO BYŁ STRASZNY BŁĄD</i>";
 	name = "worker's death note"
 	},
 /obj/effect/decal/cleanable/blood/old{
@@ -3574,7 +3574,7 @@
 /obj/item/storage/book/bible,
 /obj/item/reagent_containers/food/drinks/bottle/holywater,
 /obj/item/paper{
-	default_raw_text = "<i>I feel something unholy's coming</i>";
+	default_raw_text = "<i>Czuję, że nadchodzi coś nieczystego</i>";
 	name = "the librarian's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -3598,7 +3598,7 @@
 /area/awaymission/factory/factoryafter/down)
 "dBJ" = (
 /obj/item/paper{
-	default_raw_text = "<i>This is Mike, the mechanic. I'm currently surrounded by creatures and idiots. Everything is getting out of control, but I'm lucky I got right equipment, so I'm going to make my own way out of here. See you after this shit ends.</i>";
+	default_raw_text = "<i>Tu Mike, mechanik. Otaczają mnie stwory i idioci. Wszystko wymyka się spod kontroli, ale mam szczęście, że mam odpowiedni sprzęt, więc sam wyrąbię sobie drogę na zewnątrz. Do zobaczenia, jak to gówno się skończy.</i>";
 	name = "worker's note"
 	},
 /turf/open/floor/plating/asteroid,
@@ -3806,7 +3806,7 @@
 /area/awaymission/factory/secret)
 "dKO" = (
 /obj/item/paper{
-	default_raw_text = "<i>I think I see something over there. The rock is slowly turning red. Maybe this is a way out!</i>"
+	default_raw_text = "<i>Chyba coś tam widzę. Skała powoli robi się czerwona. Może to wyjście!</i>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered{
@@ -4034,7 +4034,7 @@
 /area/awaymission/factory/secret)
 "dXq" = (
 /obj/item/paper{
-	default_raw_text = "<b>You've found a secret!</b>"
+	default_raw_text = "<b>Znalazłeś sekret!</b>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/awaymission/factory/factoryafter/down)
@@ -4325,7 +4325,7 @@
 /area/awaymission/factory/factoryduring/down)
 "eoj" = (
 /obj/item/paper{
-	default_raw_text = "Sacrifices must be made, HOP. We will never forget you."
+	default_raw_text = "Trzeba składać ofiary, Starszy Oficerze. Nigdy cię nie zapomnimy."
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/mineral/titanium/white,
@@ -4493,7 +4493,7 @@
 	})
 "euu" = (
 /obj/item/paper{
-	default_raw_text = "Sacrifices must be made, HOP. We will never forget you."
+	default_raw_text = "Trzeba składać ofiary, Starszy Oficerze. Nigdy cię nie zapomnimy."
 	},
 /turf/open/floor/mineral/titanium/white,
 /area/awaymission/factory/factoryduring/down)
@@ -4586,7 +4586,7 @@
 "eyq" = (
 /obj/structure/table/wood/fancy,
 /obj/item/paper{
-	default_raw_text = "<i>This gardener keep being annoying as much as possible. He planted his goddamn flowers everywhere, so they grew and now he yells at me when I do a step anywhere but on the road.Huh, what was that sound? Probably the factory is doing something crazy again. God, my head...</i>";
+	default_raw_text = "<i>Ten ogrodnik jest maksymalnie upierdliwy. Posadził wszędzie te swoje cholerne kwiaty, wyrosły, a teraz drze się na mnie, gdy stanę gdziekolwiek poza drogą. Hm, co to był za dźwięk? Pewnie fabryka znowu robi coś szalonego. Boże, moja głowa...</i>";
 	name = "Frank's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -4720,7 +4720,7 @@
 /area/awaymission/factory/factoryduring/down)
 "eFo" = (
 /obj/item/paper{
-	default_raw_text = "<i>I don't trust that company at all. Recent suicide was definetly related to that shit they give to us. They supposed to solve the hunger problem, but they definetly focused on something else. Eventually I will find out who they really are, even if they're against it.</i>";
+	default_raw_text = "<i>Zupełnie nie ufam tej firmie. Niedawne samobójstwo na pewno miało związek z tym gównem, które nam dają. Mieli rozwiązać problem głodu, ale na pewno skupili się na czymś innym. W końcu dowiem się, kim naprawdę są, nawet jeśli będą przeciw.</i>";
 	name = "Adam's note"
 	},
 /turf/open/floor/carpet/black,
@@ -5137,7 +5137,7 @@
 	})
 "eWY" = (
 /obj/item/paper{
-	default_raw_text = "<i>I shouldn't change the direction again.</i>"
+	default_raw_text = "<i>Nie powinienem znowu zmieniać kierunku.</i>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered{
@@ -5211,7 +5211,7 @@
 /area/awaymission/factory/factoryduring/down)
 "eYJ" = (
 /obj/item/paper{
-	default_raw_text = "<i>I shouldn't change the direction again.</i>"
+	default_raw_text = "<i>Nie powinienem znowu zmieniać kierunku.</i>"
 	},
 /turf/closed/mineral/random,
 /area/ruin/unpowered{
@@ -5521,7 +5521,7 @@
 /area/awaymission/factory/secret)
 "fli" = (
 /obj/item/paper{
-	default_raw_text = "<b>You've found a secret!</b>"
+	default_raw_text = "<b>Znalazłeś sekret!</b>"
 	},
 /obj/item/clothing/head/helmet/knight/red,
 /turf/open/floor/plating/asteroid,
@@ -6397,7 +6397,7 @@
 	pixel_y = 3
 	},
 /obj/item/paper{
-	default_raw_text = "<i>ah mate nice having a good cup oh tea on the loos</i>"
+	default_raw_text = "<i>ach, kolego, miło wypić dobrą filiżankę herbatki w kiblu</i>"
 	},
 /obj/item/a_gift/anything,
 /turf/open/floor/holofloor/carpet,
@@ -6517,7 +6517,7 @@
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "glf" = (
 /obj/item/paper/crumpled{
-	default_raw_text = "<i>Stop destroying my flowers whatever piece of crap is reading this right now</i>";
+	default_raw_text = "<i>Przestań niszczyć moje kwiaty, kimkolwiek jesteś, kawałku gówna, który to teraz czytasz</i>";
 	name = "The gardener's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -6627,7 +6627,7 @@
 "gsV" = (
 /obj/structure/table/wood/fancy/red,
 /obj/item/paper{
-	default_raw_text = "<i>I don't know why you are so mad about this brand new biochemical factory. You guys are stupid. I was watching TV and these guys were showing incredible things there! It just started working recently and they're ready to spread synthesized food soon! We can finally win the hunger! I still don't know why it took so long for that company to build this small building. Maybe t</i>";
+	default_raw_text = "<i>Nie wiem, czemu tak się wściekacie na tę nowiutką fabrykę biochemiczną. Jesteście głupi. Oglądałem telewizję i pokazywali tam niesamowite rzeczy! Dopiero niedawno zaczęła działać, a już są gotowi rozprowadzać syntetyczne jedzenie! Wreszcie pokonamy głód! Dalej nie wiem, czemu tej firmie zbudowanie tego małego budynku zajęło tyle czasu. Może t</i>";
 	name = "George's note"
 	},
 /turf/open/floor/carpet,
@@ -7455,7 +7455,7 @@
 "hgO" = (
 /obj/structure/table/reinforced,
 /obj/item/paper{
-	default_raw_text = "Anomaly 2 dissapeared from it's chamber. Code red. Everyone to get armed up AND DO NOT TAKE OFF YOUR HELMETS."
+	default_raw_text = "Anomalia 2 zniknęła ze swojej komory. Kod czerwony. Wszyscy się uzbroić I NIE ZDEJMOWAĆ HEŁMÓW."
 	},
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
@@ -8252,7 +8252,7 @@
 "hOh" = (
 /obj/structure/table/wood,
 /obj/item/paper{
-	default_raw_text = "<i>Another day another person says that they don't remember what happened yesterday. Even me as the only doctor here start thinking that the factory is doing something to us.</i>";
+	default_raw_text = "<i>Kolejny dzień i kolejna osoba mówi, że nie pamięta, co się wczoraj działo. Nawet ja, jedyny lekarz tutaj, zaczynam myśleć, że fabryka coś nam robi.</i>";
 	name = "Lisa's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -8471,7 +8471,7 @@
 /area/awaymission/factory/factoryduring/down/leveltwo/asylum)
 "hWL" = (
 /obj/item/paper/crumpled{
-	default_raw_text = "<i>Oh fuck, it's getting worse! One of those fuckin anomalies replaced some of the pool's rubber ducks into highly explosive mines! Don't step any cl</i>"
+	default_raw_text = "<i>O kurwa, robi się coraz gorzej! Jedna z tych pierdolonych anomalii zamieniła kilka gumowych kaczek w basenie w silnie wybuchowe miny! Nie podchodźcie bl</i>"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/vomit/old,
@@ -8584,7 +8584,7 @@
 	})
 "icu" = (
 /obj/item/paper{
-	default_raw_text = "<b>You've found a secret!</b>"
+	default_raw_text = "<b>Znalazłeś sekret!</b>"
 	},
 /obj/item/nullrod/claymore/chainsaw_sword,
 /turf/open/floor/plating/asteroid,
@@ -9180,7 +9180,7 @@
 /area/awaymission/factory/factoryafter/down/leveltwo)
 "iCR" = (
 /obj/item/paper{
-	default_raw_text = "This anomaly was found by one of our gateway expedition team. We don't really know if it's the bust or the pure maiden statue, but we're sure that one of them causes the area nearby be converted into same kind of places it was found in. Also we found that it takes really long time to at least fully convert a small room. Usually it takes 2-3 years to convert a room with the same size as it's cell.";
+	default_raw_text = "Tę anomalię znalazł jeden z naszych zespołów ekspedycyjnych przez bramę. Nie wiemy dokładnie, czy to popiersie, czy posąg czystej dziewicy, ale jesteśmy pewni, że któreś z nich sprawia, że otoczenie zmienia się w miejsce takie jak to, w którym je znaleziono. Odkryliśmy też, że pełne przekształcenie choćby małego pokoju trwa naprawdę długo. Zwykle przekształcenie pokoju wielkości jego celi trwa 2-3 lata.";
 	name = "Anomaly 5"
 	},
 /turf/open/floor/engine{
@@ -9391,7 +9391,7 @@
 	icon_state = "floor3"
 	},
 /obj/item/paper{
-	default_raw_text = "<i>Oh god they gonna put me into a fucking asylum!.</i>";
+	default_raw_text = "<i>O Boże, zamkną mnie w pierdolonym wariatkowie!</i>";
 	name = "Adam's note"
 	},
 /obj/effect/decal/cleanable/vomit,
@@ -9591,7 +9591,7 @@
 "iWL" = (
 /obj/effect/decal/remains/human,
 /obj/item/paper{
-	default_raw_text = "This is the quick guide that will help you decide if you're dealing with a criminal or a psycho. Here's conditions why you send them here: They do not understand what they are doing (must be proved); they do not remember it (must be proved); they hear voices from inside; they use ununderstandable words way too often; they speak an unknown language.";
+	default_raw_text = "To krótki poradnik, który pomoże ci ustalić, czy masz do czynienia z przestępcą, czy z psycholem. Oto warunki, przy których wysyłasz ich tutaj: nie rozumieją, co robią (trzeba to udowodnić); nie pamiętają tego (trzeba to udowodnić); słyszą głosy w środku; zbyt często używają niezrozumiałych słów; mówią nieznanym językiem.";
 	name = "Medical instructions"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -9696,7 +9696,7 @@
 "jeb" = (
 /obj/effect/decal/remains/human,
 /obj/item/paper{
-	default_raw_text = "This is the quick guide that will help you decide if you're dealing with a criminal or a psycho. Here's conditions why you send them here: They do not understand what they are doing (must be proved); they do not remember it (must be proved); they hear voices from inside; they use ununderstandable words way too often; they speak an unknown language.";
+	default_raw_text = "To krótki poradnik, który pomoże ci ustalić, czy masz do czynienia z przestępcą, czy z psycholem. Oto warunki, przy których wysyłasz ich tutaj: nie rozumieją, co robią (trzeba to udowodnić); nie pamiętają tego (trzeba to udowodnić); słyszą głosy w środku; zbyt często używają niezrozumiałych słów; mówią nieznanym językiem.";
 	name = "Medical instructions"
 	},
 /turf/open/floor/plasteel/tiled/light,
@@ -11149,7 +11149,7 @@
 /area/awaymission/factory/villageduring/house)
 "kCZ" = (
 /obj/item/paper{
-	default_raw_text = "This one was found on some forever winter place. Our expedition group asked us to not to ask a questions about how did they get it here. However, the important thing is that this little portal works like a gate for really creepy shit behind it. Sometimes this shit crawls out of portal and get immediately dealt with by our brave guards. In other words, we have another infinity (maybe?) source of food. Oh, also don't tought the portal if you wanna live.";
+	default_raw_text = "To znaleziono w jakimś miejscu wiecznej zimy. Nasza grupa ekspedycyjna prosiła, żebyśmy nie pytali, jak to tu przyniosła. Ważne jest jednak to, że ten mały portal działa jak brama dla naprawdę przerażającego gówna po drugiej stronie. Czasem to gówno wypełza z portalu i od razu zajmują się nim nasi dzielni strażnicy. Innymi słowy, mamy kolejne (może?) nieskończone źródło jedzenia. A, i nie dotykajcie portalu, jeśli chcecie żyć.";
 	name = "Anomaly 3"
 	},
 /turf/open/floor/engine{
@@ -11631,7 +11631,7 @@
 /area/awaymission/factory/factoryafter/down/levelthree)
 "kWw" = (
 /obj/item/paper{
-	default_raw_text = "<b>You've found a secret!</b>"
+	default_raw_text = "<b>Znalazłeś sekret!</b>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/awaymission/factory/secret)
@@ -11909,7 +11909,7 @@
 "lmi" = (
 /obj/structure/table/wood/fancy/red,
 /obj/item/paper{
-	default_raw_text = "<i>I don't know why you are so mad about this brand new biochemical factory. You guys are stupid. I was watching TV and these guys were showing incredible things there! It just started working recently and they're ready to spread synthesized food soon! We can finally win the hunger! I still don't know why it took so long for that company to build this small building. Maybe t</i>";
+	default_raw_text = "<i>Nie wiem, czemu tak się wściekacie na tę nowiutką fabrykę biochemiczną. Jesteście głupi. Oglądałem telewizję i pokazywali tam niesamowite rzeczy! Dopiero niedawno zaczęła działać, a już są gotowi rozprowadzać syntetyczne jedzenie! Wreszcie pokonamy głód! Dalej nie wiem, czemu tej firmie zbudowanie tego małego budynku zajęło tyle czasu. Może t</i>";
 	name = "George's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -12091,7 +12091,7 @@
 /area/awaymission/factory/villageafter/house/start)
 "lwZ" = (
 /obj/item/paper{
-	default_raw_text = "<b>You've found a secret!</b>"
+	default_raw_text = "<b>Znalazłeś sekret!</b>"
 	},
 /obj/item/multitool/abductor,
 /turf/open/floor/plating/asteroid,
@@ -12557,7 +12557,7 @@
 "lRA" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/crumpled/bloody{
-	default_raw_text = "**DO NOT TRUST THE RUBBER DUCKS**"
+	default_raw_text = "**NIE UFAJCIE GUMOWYM KACZKOM**"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/freezer,
@@ -12673,7 +12673,7 @@
 "lYd" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/crumpled/bloody{
-	default_raw_text = "**DO NOT TRUST THE RUBBER DUCKS**"
+	default_raw_text = "**NIE UFAJCIE GUMOWYM KACZKOM**"
 	},
 /turf/open/floor/plasteel/freezer,
 /area/awaymission/factory/factoryduring/down/leveltwo)
@@ -13588,7 +13588,7 @@
 "mSM" = (
 /obj/structure/table/reinforced,
 /obj/item/paper{
-	default_raw_text = "Anomaly 2 dissapeared from it's chamber. Code red. Everyone to get armed up AND DO NOT TAKE OFF YOUR HELMETS."
+	default_raw_text = "Anomalia 2 zniknęła ze swojej komory. Kod czerwony. Wszyscy się uzbroić I NIE ZDEJMOWAĆ HEŁMÓW."
 	},
 /turf/open/floor/engine{
 	baseturfs = /turf/open/floor/plating/asteroid
@@ -15220,7 +15220,7 @@
 "ofo" = (
 /obj/structure/table/wood,
 /obj/item/paper{
-	default_raw_text = "<i>Why did we even permit them build that god damned building in our village? We did not understand what we'd signed up for. They're all about this... Research. I don't trust that company at all, but the most of the village does. So I got to follow them.</i>";
+	default_raw_text = "<i>Po co w ogóle pozwoliliśmy im zbudować ten cholerny budynek w naszej wiosce? Nie rozumieliśmy, na co się piszemy. Im chodzi tylko o te... badania. Zupełnie nie ufam tej firmie, ale większość wioski tak. Więc muszę iść za nimi.</i>";
 	name = "the lumberjack's note"
 	},
 /turf/open/floor/wood,
@@ -15383,7 +15383,7 @@
 	dir = 4
 	},
 /obj/item/paper{
-	default_raw_text = "This is what we used to get all this stuff. We bought the parts on black market and assembled it here. Get prepared before getting in because you don't know what's waiting you there. The only good thing is that it sends you into an area that contains the same teleport machine somewhere nearby, so you can redirect so it sends you back here and then you cut the link to make sure whatever was on your back won't get here.";
+	default_raw_text = "Tego używaliśmy, żeby zdobyć wszystkie te rzeczy. Kupiliśmy części na czarnym rynku i złożyliśmy to tutaj. Przygotuj się przed wejściem, bo nie wiesz, co cię tam czeka. Jedyny plus jest taki, że wysyła cię w miejsce, gdzie gdzieś w pobliżu jest taka sama maszyna teleportacyjna, więc możesz ją przestawić, żeby odesłała cię tutaj, a potem zerwać połączenie, żeby cokolwiek siedziało ci na ogonie, tu nie trafiło.";
 	name = "The big teleport"
 	},
 /turf/open/floor/circuit/off,
@@ -15413,7 +15413,7 @@
 /area/awaymission/factory/factoryafter/down/levelthree)
 "oln" = (
 /obj/item/paper{
-	default_raw_text = "A gift from wizards for stealing their stuff.  We have no idea what does it do, but we keep it here for safety. One of the cult prisoners once did something on that rune and dissapeared. Whatever comes out of that rune must be terminated.";
+	default_raw_text = "Prezent od czarodziejów za kradzież ich rzeczy. Nie mamy pojęcia, co to robi, ale trzymamy to tutaj dla bezpieczeństwa. Jeden z uwięzionych kultystów zrobił kiedyś coś na tej runie i zniknął. Cokolwiek wyjdzie z tej runy, musi zostać zlikwidowane.";
 	name = "Anomaly 1"
 	},
 /turf/open/floor/engine{
@@ -15436,7 +15436,7 @@
 /area/awaymission/factory/villageduring/house)
 "omt" = (
 /obj/item/paper{
-	default_raw_text = "This was found on the same expidition where the Anomaly 6 was found. Wizards didn't notice us stealing it. We're not sure about what is this thing used for, but tests have shown us that this thing is able to do something bad with your brain. If applied strongly enough it's able to turn an unprepared human being into some mindless creature with animal instricts, you probably call these zombies. This thing must not get in wrong hands.";
+	default_raw_text = "To znaleziono na tej samej ekspedycji, na której znaleziono Anomalię 6. Czarodzieje nie zauważyli, że to kradniemy. Nie jesteśmy pewni, do czego to służy, ale testy pokazały, że potrafi zrobić coś złego z mózgiem. Jeśli zadziała dość mocno, potrafi zmienić nieprzygotowanego człowieka w bezmyślne stworzenie ze zwierzęcymi instynktami; pewnie nazwalibyście je zombie. To nie może wpaść w niepowołane ręce.";
 	name = "Anomaly 2"
 	},
 /turf/open/floor/engine{
@@ -15585,7 +15585,7 @@
 	dir = 4
 	},
 /obj/item/paper{
-	default_raw_text = "This is what we used to get all this stuff. We bought the parts on black market and assembled it here. Get prepared before getting in because you don't know what's waiting you there. The only good thing is that it sends you into an area that contains the same teleport machine somewhere nearby, so you can redirect so it sends you back here and then you cut the link to make sure whatever was on your back won't get here.";
+	default_raw_text = "Tego używaliśmy, żeby zdobyć wszystkie te rzeczy. Kupiliśmy części na czarnym rynku i złożyliśmy to tutaj. Przygotuj się przed wejściem, bo nie wiesz, co cię tam czeka. Jedyny plus jest taki, że wysyła cię w miejsce, gdzie gdzieś w pobliżu jest taka sama maszyna teleportacyjna, więc możesz ją przestawić, żeby odesłała cię tutaj, a potem zerwać połączenie, żeby cokolwiek siedziało ci na ogonie, tu nie trafiło.";
 	name = "The big teleport"
 	},
 /turf/open/floor/circuit,
@@ -15619,7 +15619,7 @@
 	dir = 8
 	},
 /obj/item/paper{
-	default_raw_text = "A gift from wizards for stealing their stuff.  We have no idea what does it do, but we keep it here for safety. One of the cult prisoners once did something on that rune and dissapeared. Whatever comes out of that rune must be terminated.";
+	default_raw_text = "Prezent od czarodziejów za kradzież ich rzeczy. Nie mamy pojęcia, co to robi, ale trzymamy to tutaj dla bezpieczeństwa. Jeden z uwięzionych kultystów zrobił kiedyś coś na tej runie i zniknął. Cokolwiek wyjdzie z tej runy, musi zostać zlikwidowane.";
 	name = "Anomaly 1"
 	},
 /turf/open/floor/engine{
@@ -15680,7 +15680,7 @@
 /area/awaymission/factory/factoryduring/down/levelthree)
 "ovB" = (
 /obj/item/paper{
-	default_raw_text = "This was found on the same expidition where the Anomaly 6 was found. Wizards didn't notice us stealing it. We're not sure about what is this thing used for, but tests have shown us that this thing is able to do something bad with your brain. If applied strongly enough it's able to turn an unprepared human being into some mindless creature with animal instricts, you probably call these zombies. This thing must not get in wrong hands.";
+	default_raw_text = "To znaleziono na tej samej ekspedycji, na której znaleziono Anomalię 6. Czarodzieje nie zauważyli, że to kradniemy. Nie jesteśmy pewni, do czego to służy, ale testy pokazały, że potrafi zrobić coś złego z mózgiem. Jeśli zadziała dość mocno, potrafi zmienić nieprzygotowanego człowieka w bezmyślne stworzenie ze zwierzęcymi instynktami; pewnie nazwalibyście je zombie. To nie może wpaść w niepowołane ręce.";
 	name = "Anomaly 2"
 	},
 /turf/open/floor/engine{
@@ -15708,7 +15708,7 @@
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "oxb" = (
 /obj/item/paper{
-	default_raw_text = "This one is the most cursed shit we've ever seen. When our squad brought it here, it was only a spider, but the body was replaced by human head. It was agressive and tried to bite everyone, so we injected some chloral hydrate in it. A few days later we decided to bring one of the cultists' dead body as a food for it. Few hours later, the spider dissapeared, and the only thing left in it's cell is the same cultist body, but staying on top of it's own blood and flesh. We decided to keep this thing here, but I bet once it will try to break out and will cause a big trouble.";
+	default_raw_text = "To najbardziej przeklęte gówno, jakie kiedykolwiek widzieliśmy. Gdy nasz oddział go tu przyniósł, był tylko pająkiem, ale z ludzką głową zamiast tułowia. Był agresywny i próbował wszystkich gryźć, więc wstrzyknęliśmy mu trochę wodzianu chloralu. Kilka dni później postanowiliśmy przynieść mu na pożarcie zwłoki jednego z kultystów. Kilka godzin później pająk zniknął, a w jego celi zostały tylko te same zwłoki kultysty, ale stojące na jego własnej krwi i mięsie. Postanowiliśmy trzymać to coś tutaj, ale założę się, że kiedyś spróbuje się wyrwać i narobi dużych kłopotów.";
 	name = "Anomaly 4"
 	},
 /turf/open/floor/engine{
@@ -15728,7 +15728,7 @@
 /area/awaymission/factory/factoryduring/down/levelthree)
 "oxo" = (
 /obj/item/paper{
-	default_raw_text = "This one was found on some forever winter place. Our expedition group asked us to not to ask a questions about how did they get it here. However, the important thing is that this little portal works like a gate for really creepy shit behind it. Sometimes this shit crawls out of portal and get immediately dealt with by our brave guards. In other words, we have another infinity (maybe?) source of food. Oh, also don't tought the portal if you wanna live.";
+	default_raw_text = "To znaleziono w jakimś miejscu wiecznej zimy. Nasza grupa ekspedycyjna prosiła, żebyśmy nie pytali, jak to tu przyniosła. Ważne jest jednak to, że ten mały portal działa jak brama dla naprawdę przerażającego gówna po drugiej stronie. Czasem to gówno wypełza z portalu i od razu zajmują się nim nasi dzielni strażnicy. Innymi słowy, mamy kolejne (może?) nieskończone źródło jedzenia. A, i nie dotykajcie portalu, jeśli chcecie żyć.";
 	name = "Anomaly 3"
 	},
 /turf/open/floor/engine{
@@ -16419,7 +16419,7 @@
 /area/awaymission/factory/factoryduring/down/levelthree)
 "oWB" = (
 /obj/item/paper{
-	default_raw_text = "Anomaly 8 appeared spontaneously right in the room. This strange looking person appeared out of nowhere and refused to talk to us. Instead it went agressive and started punching everyone. After termination some days after another one appeared in the room and we heard that the villagers spotted a humanoid thing on the surface. All we can say for now is that it has an ability to appear randomly in any place in our area and start punching whoever they see. Not that dangerous as it could be.";
+	default_raw_text = "Anomalia 8 pojawiła się samoistnie w samym pokoju. Ta dziwnie wyglądająca osoba pojawiła się znikąd i odmówiła rozmowy. Zamiast tego zrobiła się agresywna i zaczęła wszystkich okładać pięściami. Kilka dni po likwidacji w pokoju pojawiła się kolejna, a my usłyszeliśmy, że wieśniacy widzieli na powierzchni coś humanoidalnego. Na razie możemy tylko powiedzieć, że potrafi pojawiać się losowo w dowolnym miejscu naszego terenu i bić każdego, kogo zobaczy. Nie tak groźne, jak mogłoby być.";
 	name = "Anomaly 8"
 	},
 /turf/open/floor/engine{
@@ -16440,7 +16440,7 @@
 /area/awaymission/factory/villageafter/house)
 "oWW" = (
 /obj/item/paper{
-	default_raw_text = "Anomaly 7 was actually found nearby. One of the villagers found this bat in a forest. It was literally separated from the world by chasm and it also was placed in a burning bonfire. The villager cut a tree, tall enough to make a bridge and get over the chasm to the bat. Then they threw the bat away because they actually needed the bonfire rather than some useless piece of wood, as he said. Several days later the villagers spotted a burning bonfire surrounded by chasm nearby the forest. We decided take the bat here and make a cell for it. We don't want people outside to accidentally fall into an abyss. Anyway the baseball hole got filled by some dirt and is now safe to walk over. Maybe.";
+	default_raw_text = "Anomalię 7 znaleziono w pobliżu. Jeden z mieszkańców wioski znalazł ten kij w lesie. Był dosłownie odcięty od świata przepaścią i do tego leżał w płonącym ognisku. Wieśniak ściął drzewo dość wysokie, żeby zrobić z niego most i przejść nad przepaścią do kija. Potem wyrzucił kij, bo, jak powiedział, bardziej potrzebował ogniska niż jakiegoś bezużytecznego kawałka drewna. Kilka dni później wieśniacy zauważyli niedaleko lasu płonące ognisko otoczone przepaścią. Postanowiliśmy przynieść kij tutaj i zrobić dla niego celę. Nie chcemy, żeby ludzie na zewnątrz przypadkiem wpadli w otchłań. Tak czy inaczej, dziurę po kiju bejsbolowym zasypała ziemia i można już po niej bezpiecznie chodzić. Chyba.";
 	name = "Anomaly 7"
 	},
 /turf/open/floor/engine{
@@ -16454,7 +16454,7 @@
 /area/awaymission/factory/villageduring/house/start)
 "oXq" = (
 /obj/item/paper{
-	default_raw_text = "This one was found by accident. When our squad was coming through the wizard space ship, a team member noticed that something was very wrong. One of the statues was always looking at them. Moreover, it started changing positions every time the squad was entering the room that contained the statue. So ye, they decided to put it into a wooden box and steal it. The squad did a good job, no wizard knew what happened.";
+	default_raw_text = "To znaleziono przypadkiem. Gdy nasz oddział przechodził przez statek kosmiczny czarodziejów, jeden z członków zespołu zauważył, że coś jest bardzo nie tak. Jeden z posągów cały czas na nich patrzył. Co więcej, zmieniał pozycję za każdym razem, gdy oddział wchodził do pokoju z posągiem. No więc postanowili zapakować go do drewnianej skrzyni i ukraść. Oddział spisał się dobrze, żaden czarodziej nie wiedział, co się stało.";
 	name = "Anomaly 6"
 	},
 /turf/open/floor/engine{
@@ -16632,7 +16632,7 @@
 /area/awaymission/factory/factoryafter/down/levelthree)
 "pfN" = (
 /obj/item/paper{
-	default_raw_text = "Anomaly 8 appeared spontaneously right in the room. This strange looking person appeared out of nowhere and refused to talk to us. Instead it went agressive and started punching everyone. After termination some days after another one appeared in the room and we heard that the villagers spotted a humanoid thing on the surface. All we can say for now is that it has an ability to appear randomly in any place in our area and start punching whoever they see. Not that dangerous as it could be.";
+	default_raw_text = "Anomalia 8 pojawiła się samoistnie w samym pokoju. Ta dziwnie wyglądająca osoba pojawiła się znikąd i odmówiła rozmowy. Zamiast tego zrobiła się agresywna i zaczęła wszystkich okładać pięściami. Kilka dni po likwidacji w pokoju pojawiła się kolejna, a my usłyszeliśmy, że wieśniacy widzieli na powierzchni coś humanoidalnego. Na razie możemy tylko powiedzieć, że potrafi pojawiać się losowo w dowolnym miejscu naszego terenu i bić każdego, kogo zobaczy. Nie tak groźne, jak mogłoby być.";
 	name = "Anomaly 8"
 	},
 /turf/open/floor/engine{
@@ -16687,7 +16687,7 @@
 /area/awaymission/factory/factoryduring/down/levelthree)
 "phH" = (
 /obj/item/paper{
-	default_raw_text = "This one was found by accident. When our squad was coming through the wizard space ship, a team member noticed that something was very wrong. One of the statues was always looking at them. Moreover, it started changing positions every time the squad was entering the room that contained the statue. So ye, they decided to put it into a wooden box and steal it. The squad did a good job, no wizard knew what happened.";
+	default_raw_text = "To znaleziono przypadkiem. Gdy nasz oddział przechodził przez statek kosmiczny czarodziejów, jeden z członków zespołu zauważył, że coś jest bardzo nie tak. Jeden z posągów cały czas na nich patrzył. Co więcej, zmieniał pozycję za każdym razem, gdy oddział wchodził do pokoju z posągiem. No więc postanowili zapakować go do drewnianej skrzyni i ukraść. Oddział spisał się dobrze, żaden czarodziej nie wiedział, co się stało.";
 	name = "Anomaly 6"
 	},
 /turf/open/floor/engine{
@@ -17033,7 +17033,7 @@
 "puk" = (
 /obj/structure/table,
 /obj/item/paper{
-	default_raw_text = "<i>Aight folks this is the guide that will help you understand why are we sending some people here instead of asylum: A man obviously tried to do or has already done a bad thing; they were understanding what they were doing; they did not try to prevent it or stop that; they were speaking an unknown language. Yes, I know that the last one is also written in medical instructions, but that will at least make it easier to fight with those freaks on our factory.</i>";
+	default_raw_text = "<i>Dobra, ludzie, to poradnik, który pomoże wam zrozumieć, czemu niektórych wysyłamy tutaj zamiast do wariatkowa: człowiek ewidentnie próbował zrobić albo już zrobił coś złego; rozumiał, co robi; nie próbował temu zapobiec ani tego przerwać; mówił nieznanym językiem. Tak, wiem, że to ostatnie jest też w instrukcjach medycznych, ale przynajmniej ułatwi to walkę z tymi świrami w naszej fabryce.</i>";
 	name = "Security instructions"
 	},
 /obj/item/pen/fountain,
@@ -17467,7 +17467,7 @@
 	})
 "pJY" = (
 /obj/item/paper{
-	default_raw_text = "We offered the best protection to the engine because this is the only thing that powers the whole Factory. Solars on the surface are made for villagers to think that we do nothing wrong. If you suspect that someone is in the engine room trying to break open the tear in reality: first - laugh at them, second - call security.";
+	default_raw_text = "Zapewniliśmy silnikowi najlepszą ochronę, bo to jedyna rzecz, która zasila całą Fabrykę. Panele słoneczne na powierzchni są po to, żeby wieśniacy myśleli, że nie robimy nic złego. Jeśli podejrzewasz, że ktoś jest w maszynowni i próbuje rozerwać szczelinę w rzeczywistości: po pierwsze - wyśmiej go, po drugie - wezwij ochronę.";
 	name = "note"
 	},
 /turf/open/floor/circuit/off,
@@ -17592,7 +17592,7 @@
 /area/awaymission/factory/factoryduring/down/levelthree)
 "pOo" = (
 /obj/item/paper{
-	default_raw_text = "We offered the best protection to the engine because this is the only thing that powers the whole Factory. Solars on the surface are made for villagers to think that we do nothing wrong. If you suspect that someone is in the engine room trying to break open the tear in reality: first - laugh at them, second - call security.";
+	default_raw_text = "Zapewniliśmy silnikowi najlepszą ochronę, bo to jedyna rzecz, która zasila całą Fabrykę. Panele słoneczne na powierzchni są po to, żeby wieśniacy myśleli, że nie robimy nic złego. Jeśli podejrzewasz, że ktoś jest w maszynowni i próbuje rozerwać szczelinę w rzeczywistości: po pierwsze - wyśmiej go, po drugie - wezwij ochronę.";
 	name = "note"
 	},
 /turf/open/floor/circuit,
@@ -17715,7 +17715,7 @@
 "pRK" = (
 /obj/structure/table/reinforced,
 /obj/item/paper{
-	default_raw_text = "<i>I feel something bad gonna happen soon. I'm taking that stuff our squad found and augmenting myself to prevent myself turning into a brainlet subhuman in case someone breaks into mind batterer's chamber. I'm sure I'm going to behave much less like a human and I won't be able to turn it back any more, but I will need to get used to it or else I have a big chance becoming a fucking zombie.</i>";
+	default_raw_text = "<i>Czuję, że niedługo stanie się coś złego. Biorę to, co znalazł nasz oddział, i wszczepiam to sobie, żeby nie zmienić się w bezmózgiego podczłowieka, jeśli ktoś włamie się do komory miotacza umysłów. Na pewno będę się zachowywać dużo mniej po ludzku i nie da się już tego odwrócić, ale będę musiał się przyzwyczaić, bo inaczej mam duże szanse zostać pierdolonym zombie.</i>";
 	name = "The Boss' note"
 	},
 /turf/open/floor/circuit/off,
@@ -17977,7 +17977,7 @@
 "qec" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/paper{
-	default_raw_text = "<i>Oh god they gonna put me into a fucking asylum!.</i>";
+	default_raw_text = "<i>O Boże, zamkną mnie w pierdolonym wariatkowie!</i>";
 	name = "Adam's note"
 	},
 /turf/open/floor/plasteel/tiled/light,
@@ -19572,7 +19572,7 @@
 "ruY" = (
 /obj/structure/table/wood,
 /obj/item/paper{
-	default_raw_text = "<i>Why did we even permit them build that god damned building in our village? We did not understand what we'd signed up for. They're all about this... Research. I don't trust that company at all, but the most of the village does. So I got to follow them.</i>";
+	default_raw_text = "<i>Po co w ogóle pozwoliliśmy im zbudować ten cholerny budynek w naszej wiosce? Nie rozumieliśmy, na co się piszemy. Im chodzi tylko o te... badania. Zupełnie nie ufam tej firmie, ale większość wioski tak. Więc muszę iść za nimi.</i>";
 	name = "the lumberjack's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -19605,7 +19605,7 @@
 "rvj" = (
 /obj/structure/table,
 /obj/item/paper{
-	default_raw_text = "<i>Alrightt folks this is the guide that will help you understand why are we sending some people here instead of asylum: A man obviously tried to do or has already done a bad thing; they were understanding what they were doing; they did not try to prevent it or stop that; they were speaking an unknown language. Yes, I know that the last one is also written in medical instructions, but that will at least make it easier to fight with those freaks on our factory.</i>";
+	default_raw_text = "<i>Dobra, ludziee, to poradnik, który pomoże wam zrozumieć, czemu niektórych wysyłamy tutaj zamiast do wariatkowa: człowiek ewidentnie próbował zrobić albo już zrobił coś złego; rozumiał, co robi; nie próbował temu zapobiec ani tego przerwać; mówił nieznanym językiem. Tak, wiem, że to ostatnie jest też w instrukcjach medycznych, ale przynajmniej ułatwi to walkę z tymi świrami w naszej fabryce.</i>";
 	name = "Security instructions"
 	},
 /obj/item/pen/fountain,
@@ -19916,7 +19916,7 @@
 /area/awaymission/factory/villageafter/house)
 "rHo" = (
 /obj/item/paper{
-	default_raw_text = "<b>You've found a secret!</b>"
+	default_raw_text = "<b>Znalazłeś sekret!</b>"
 	},
 /obj/item/toy/toy_xeno,
 /turf/open/floor/plating/asteroid,
@@ -20091,7 +20091,7 @@
 /area/awaymission/factory/factoryduring/down/levelthree/engine)
 "rOZ" = (
 /obj/item/paper{
-	default_raw_text = "<b>You've found a secret!</b>"
+	default_raw_text = "<b>Znalazłeś sekret!</b>"
 	},
 /obj/item/clothing/mask/gas/hunter,
 /obj/item/a_gift,
@@ -21845,7 +21845,7 @@
 /area/awaymission/factory/villageafter/house)
 "tnz" = (
 /obj/item/paper{
-	default_raw_text = "<i>I don't know how to describe this, but it seems that all the animals are gone. I don't want to know if it's related to that factory, I just hope we get at least some meat because our food is getting low and I don't want to die to hunger.</i>";
+	default_raw_text = "<i>Nie wiem, jak to opisać, ale wygląda na to, że wszystkie zwierzęta zniknęły. Nie chcę wiedzieć, czy to ma związek z tą fabryką, mam tylko nadzieję, że dostaniemy choć trochę mięsa, bo kończy nam się jedzenie, a nie chcę umrzeć z głodu.</i>";
 	name = "the huntsman's note"
 	},
 /obj/structure/table/wood,
@@ -22132,7 +22132,7 @@
 /area/awaymission/factory/villageduring/house)
 "tAU" = (
 /obj/item/paper{
-	default_raw_text = "<i>I don't know how to describe this, but it seems that all the animals are gone. I don't want to know if it's related to that factory, I just hope we get at least some meat because our food is getting low and I don't want to die to hunger.</i>";
+	default_raw_text = "<i>Nie wiem, jak to opisać, ale wygląda na to, że wszystkie zwierzęta zniknęły. Nie chcę wiedzieć, czy to ma związek z tą fabryką, mam tylko nadzieję, że dostaniemy choć trochę mięsa, bo kończy nam się jedzenie, a nie chcę umrzeć z głodu.</i>";
 	name = "the huntsman's note"
 	},
 /obj/structure/table/wood,
@@ -22151,7 +22151,7 @@
 "tBm" = (
 /obj/structure/table,
 /obj/item/paper{
-	default_raw_text = "<i>Fuck whoever took all my tools. They cost money, you know.</i>"
+	default_raw_text = "<i>Pierdolić tego, kto zabrał wszystkie moje narzędzia. One kosztują, wiecie.</i>"
 	},
 /obj/item/storage/backpack/duffelbag/med/surgery{
 	pixel_x = -1;
@@ -22282,7 +22282,7 @@
 "tIV" = (
 /obj/structure/table,
 /obj/item/paper{
-	default_raw_text = "<i>Fuck whoever took all my tools. They cost money, you know.</i>"
+	default_raw_text = "<i>Pierdolić tego, kto zabrał wszystkie moje narzędzia. One kosztują, wiecie.</i>"
 	},
 /obj/item/storage/backpack/duffelbag/med/surgery{
 	pixel_x = -1;
@@ -23069,7 +23069,7 @@
 "uwO" = (
 /obj/structure/table/wood,
 /obj/item/paper{
-	default_raw_text = "<i>Another day another person says that they don't remember what happened yesterday. Even me as the only doctor here start thinking that the factory is doing something to us.</i>";
+	default_raw_text = "<i>Kolejny dzień i kolejna osoba mówi, że nie pamięta, co się wczoraj działo. Nawet ja, jedyny lekarz tutaj, zaczynam myśleć, że fabryka coś nam robi.</i>";
 	name = "Lisa's note"
 	},
 /turf/open/floor/wood,
@@ -23434,7 +23434,7 @@
 /area/awaymission/factory/villageafter/house)
 "uOu" = (
 /obj/item/paper/crumpled{
-	default_raw_text = "<i>Stop destroying my flowers whatever piece of crap is reading this right now</i>";
+	default_raw_text = "<i>Przestań niszczyć moje kwiaty, kimkolwiek jesteś, kawałku gówna, który to teraz czytasz</i>";
 	name = "The gardener's note"
 	},
 /obj/effect/trap/nexus/trickyspawner/clowns,
@@ -23885,7 +23885,7 @@
 	})
 "vhE" = (
 /obj/item/paper{
-	default_raw_text = "<i>I don't trust that company at all. Recent suicide was definetly related to that shit they give to us. They supposed to solve the hunger problem, but they definetly focused on something else. Eventually I will find out who they really are, even if they're against it.</i>";
+	default_raw_text = "<i>Zupełnie nie ufam tej firmie. Niedawne samobójstwo na pewno miało związek z tym gównem, które nam dają. Mieli rozwiązać problem głodu, ale na pewno skupili się na czymś innym. W końcu dowiem się, kim naprawdę są, nawet jeśli będą przeciw.</i>";
 	name = "Adam's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -24368,7 +24368,7 @@
 	})
 "vAK" = (
 /obj/item/paper{
-	default_raw_text = "This anomaly was found by one of our gateway expedition team. We don't really know if it's the bust or the pure maiden statue, but we're sure that one of them causes the area nearby be converted into same kind of places it was found in. Also we found that it takes really long time to at least fully convert a small room. Usually it takes 2-3 years to convert a room with the same size as it's cell.";
+	default_raw_text = "Tę anomalię znalazł jeden z naszych zespołów ekspedycyjnych przez bramę. Nie wiemy dokładnie, czy to popiersie, czy posąg czystej dziewicy, ale jesteśmy pewni, że któreś z nich sprawia, że otoczenie zmienia się w miejsce takie jak to, w którym je znaleziono. Odkryliśmy też, że pełne przekształcenie choćby małego pokoju trwa naprawdę długo. Zwykle przekształcenie pokoju wielkości jego celi trwa 2-3 lata.";
 	name = "Anomaly 5"
 	},
 /turf/open/floor/engine{
@@ -24794,7 +24794,7 @@
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "vSS" = (
 /obj/item/paper/crumpled/bloody{
-	default_raw_text = "<i>WE WERE NOT READY FOR THE CONSEQUENCES WE WERE NOT READY WE WERE NO...</i>";
+	default_raw_text = "<i>NIE BYLIŚMY GOTOWI NA KONSEKWENCJE NIE BYLIŚMY GOTOWI NIE BYLIŚMY GO...</i>";
 	name = "bloody note"
 	},
 /obj/effect/decal/cleanable/blood/old,
@@ -24844,7 +24844,7 @@
 "vUQ" = (
 /obj/structure/table/wood/fancy,
 /obj/item/paper{
-	default_raw_text = "<i>This gardener keep being annoying as much as possible. He planted his goddamn flowers everywhere, so they grew and now he yells at me when I do a step anywhere but on the road.Huh, what was that sound? Probably the factory is doing something crazy again. God, my head...</i>";
+	default_raw_text = "<i>Ten ogrodnik jest maksymalnie upierdliwy. Posadził wszędzie te swoje cholerne kwiaty, wyrosły, a teraz drze się na mnie, gdy stanę gdziekolwiek poza drogą. Hm, co to był za dźwięk? Pewnie fabryka znowu robi coś szalonego. Boże, moja głowa...</i>";
 	name = "Frank's note"
 	},
 /turf/open/floor/wood,
@@ -25619,7 +25619,7 @@
 /obj/item/storage/book/bible,
 /obj/item/reagent_containers/food/drinks/bottle/holywater,
 /obj/item/paper{
-	default_raw_text = "<i>I feel something unholy's coming</i>";
+	default_raw_text = "<i>Czuję, że nadchodzi coś nieczystego</i>";
 	name = "the librarian's note"
 	},
 /obj/item/book/granter/spell/random,
@@ -25757,7 +25757,7 @@
 "wMi" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/crumpled{
-	default_raw_text = "<i>Boss if you read this you better explain us where the fuck are our surgical tools.</i>"
+	default_raw_text = "<i>Szefie, jeśli to czytasz, lepiej nam wyjaśnij, gdzie, kurwa, są nasze narzędzia chirurgiczne.</i>"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/monotile,
@@ -26038,7 +26038,7 @@
 "wXJ" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/crumpled{
-	default_raw_text = "<i>Boss if you read this you better explain us where the fuck are our surgical tools.</i>"
+	default_raw_text = "<i>Szefie, jeśli to czytasz, lepiej nam wyjaśnij, gdzie, kurwa, są nasze narzędzia chirurgiczne.</i>"
 	},
 /turf/open/floor/monotile,
 /area/awaymission/factory/villageduring/hospital)
@@ -26263,7 +26263,7 @@
 "xjW" = (
 /obj/structure/table,
 /obj/item/paper{
-	default_raw_text = "<i>I'm mad. I'm mad that the most of our doctors abandoned us because the factory promised them better than us. Our people suffering shit ton of whatever factory releases into air and we have only me and and Lisa to deal with it.</i>";
+	default_raw_text = "<i>Jestem wściekła. Wściekła, że większość naszych lekarzy nas porzuciła, bo fabryka obiecała im więcej niż my. Nasi ludzie cierpią przez kupę tego, co fabryka wypuszcza w powietrze, a zajmujemy się tym tylko ja i Lisa.</i>";
 	name = "Head of Hospital's note"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -26523,7 +26523,7 @@
 	spawnwithmagazine = 0
 	},
 /obj/item/paper{
-	default_raw_text = "<b>You've found a secret!</b>"
+	default_raw_text = "<b>Znalazłeś sekret!</b>"
 	},
 /turf/open/floor/plating/asteroid,
 /area/awaymission/factory/secret)
@@ -26550,7 +26550,7 @@
 "xwg" = (
 /obj/structure/table,
 /obj/item/paper{
-	default_raw_text = "<i>I'm mad. I'm mad that the most of our doctors abandoned us because the factory promised them better than us. Our people suffering shit ton of whatever factory releases into air and we have only me and and Lisa to deal with it.</i>";
+	default_raw_text = "<i>Jestem wściekła. Wściekła, że większość naszych lekarzy nas porzuciła, bo fabryka obiecała im więcej niż my. Nasi ludzie cierpią przez kupę tego, co fabryka wypuszcza w powietrze, a zajmujemy się tym tylko ja i Lisa.</i>";
 	name = "Head of Hospital's note"
 	},
 /turf/open/floor/monotile,
