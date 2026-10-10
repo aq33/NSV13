@@ -9,8 +9,8 @@
 /obj/item/melee/baton/cattleprod/teleprod/attack(mob/living/carbon/M, mob/living/carbon/user)//handles making things teleport when hit
 	..()
 	if(turned_on && HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
-		user.visible_message("<span class='danger'>[user] accidentally hits [user.p_them()]self with [src]!</span>", \
-							"<span class='userdanger'>You accidentally hit yourself with [src]!</span>")
+		user.visible_message("<span class='danger'>[user] przypadkiem uderza się [src]!</span>", \
+							"<span class='userdanger'>Przypadkiem uderzasz się [src]!</span>")
 		if(do_teleport(user, get_turf(user), 50, channel = TELEPORT_CHANNEL_BLUESPACE))//honk honk
 			SEND_SIGNAL(user, COMSIG_LIVING_MINOR_SHOCK)
 			user.Paralyze(stunforce*3)
@@ -37,8 +37,8 @@
 			qdel(src)
 			BSC.use(1)
 			user.put_in_hands(S)
-			to_chat(user, "<span class='notice'>You place the bluespace crystal firmly into the igniter.</span>")
+			to_chat(user, "<span class='notice'>Mocno osadzasz kryształ bluespace w zapalniku.</span>")
 		else
-			user.visible_message("<span class='warning'>You can't put the crystal onto the stunprod while it has a power cell installed!</span>")
+			user.visible_message("<span class='warning'>Nie możesz umieścić kryształu na pałce ogłuszającej, gdy jest w niej ogniwo zasilające!</span>")
 	else
 		return ..()

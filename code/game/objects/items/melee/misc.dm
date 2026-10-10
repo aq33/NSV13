@@ -3,8 +3,8 @@
 
 /obj/item/melee/proc/check_martial_counter(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	if(target.check_block())
-		target.visible_message("<span class='danger'>[target.name] blocks [src] and twists [user]'s arm behind [user.p_their()] back!</span>",
-					"<span class='userdanger'>You block the attack!</span>")
+		target.visible_message("<span class='danger'>[target.name] blokuje [src] i wykręca [user] rękę za plecy!</span>",
+					"<span class='userdanger'>Blokujesz atak!</span>")
 		user.Stun(40)
 		return TRUE
 
@@ -26,7 +26,7 @@
 	materials = list(/datum/material/iron = 1000)
 
 /obj/item/melee/chainofcommand/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is strangling [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] dusi się [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return (OXYLOSS)
 
 /obj/item/melee/synthetic_arm_blade
@@ -92,7 +92,7 @@
 		playsound(B, 'sound/items/sheath.ogg', 25, TRUE)
 
 /obj/item/melee/sabre/suicide_act(mob/living/user)
-	user.visible_message("<span class='suicide'>[user] is trying to cut off all [user.p_their()] limbs with [src]! it looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] próbuje odciąć sobie wszystkie kończyny [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	var/i = 0
 	ADD_TRAIT(src, TRAIT_NODROP, SABRE_SUICIDE_TRAIT)
 	if(iscarbon(user))
@@ -254,7 +254,7 @@
 
 	add_fingerprint(user)
 	if((HAS_TRAIT(user, TRAIT_CLUMSY)) && prob(50))
-		to_chat(user, "<span class ='danger'>You hit yourself over the head.</span>")
+		to_chat(user, "<span class ='danger'>Uderzasz się w głowę.</span>")
 		user.adjustStaminaLoss(stamina_damage)
 		//NSV13 - added stamina and knockdown
 		user.Paralyze(stun_time_carbon * force)
@@ -377,7 +377,7 @@
 	var/mob/living/carbon/human/H = user
 	var/obj/item/organ/brain/B = H.getorgan(/obj/item/organ/brain)
 
-	user.visible_message("<span class='suicide'>[user] stuffs [src] up [user.p_their()] nose and presses the 'extend' button! It looks like [user.p_theyre()] trying to clear [user.p_their()] mind.</span>")
+	user.visible_message("<span class='suicide'>[user] wpycha sobie [src] do nosa i naciska przycisk wysuwania! Wygląda na to, że próbuje oczyścić umysł.</span>")
 	if(!on)
 		src.attack_self(user)
 	else
@@ -450,7 +450,7 @@
 	var/datum/antagonist/traitor/owner_data = null
 
 /obj/item/melee/classic_baton/contractor_baton/get_wait_description()
-	return "<span class='danger'>The baton is still charging!</span>"
+	return "<span class='danger'>Pałka wciąż się ładuje!</span>"
 
 /obj/item/melee/classic_baton/contractor_baton/additional_effects_carbon(mob/living/target, mob/living/user)
 	target.Jitter(20)
@@ -490,7 +490,7 @@
 
 	add_fingerprint(user)
 	if((HAS_TRAIT(user, TRAIT_CLUMSY)) && prob(50))
-		to_chat(user, "<span class ='danger'>You hit yourself over the head.</span>")
+		to_chat(user, "<span class ='danger'>Uderzasz się w głowę.</span>")
 
 		user.Paralyze(knockdown_time_carbon * force)
 		user.adjustStaminaLoss(stamina_damage)
@@ -576,7 +576,7 @@
 		var/datum/antagonist/traitor/traitor_data = user.mind.has_antag_datum(/datum/antagonist/traitor)
 		if(traitor_data)
 			owner_data = traitor_data
-			to_chat(user, "<span class='notice'>[src] scans your genetic data as you pick it up, creating an uplink with the syndicate database. Attacking your current target will stun and mute them, however the baton is weak against non-targets.</span>")
+			to_chat(user, "<span class='notice'>Gdy podnosisz [src], skanuje twoje dane genetyczne i łączy się z bazą danych Syndykatu. Atakowanie obecnego celu ogłusza go i ucisza, ale wobec innych osób pałka jest słaba.</span>")
 
 // Supermatter Sword
 /obj/item/melee/supermatter_sword
@@ -600,7 +600,7 @@
 
 /obj/item/melee/supermatter_sword/on_block(mob/living/carbon/human/owner, atom/movable/hitby, attack_text, damage, attack_type)
 	qdel(hitby)
-	owner.visible_message("<span class='danger'>[hitby] evaporates in midair!</span>")
+	owner.visible_message("<span class='danger'>[hitby] wyparowuje w powietrzu!</span>")
 	return TRUE
 
 /obj/item/melee/supermatter_sword/Initialize(mapload)
@@ -609,7 +609,7 @@
 	qdel(shard.countdown)
 	shard.countdown = null
 	START_PROCESSING(SSobj, src)
-	visible_message("<span class='warning'>[src] appears, balanced ever so perfectly on its hilt. This isn't ominous at all.</span>")
+	visible_message("<span class='warning'>Pojawia się [src], idealnie wyważony na rękojeści. To wcale nie jest złowieszcze.</span>")
 
 /obj/item/melee/supermatter_sword/process()
 	if(balanced || throwing || ismob(src.loc) || isnull(src.loc))
@@ -643,23 +643,23 @@
 	balanced = 0
 
 /obj/item/melee/supermatter_sword/ex_act(severity, target)
-	visible_message("<span class='danger'>The blast wave smacks into [src] and rapidly flashes to ash.</span>",\
-	"<span class='italics'>You hear a loud crack as you are washed with a wave of heat.</span>")
+	visible_message("<span class='danger'>Fala uderzeniowa wbija się w [src] i błyskawicznie obraca się w popiół.</span>",\
+	"<span class='italics'>Słyszysz głośny trzask, gdy zalewa cię fala gorąca.</span>")
 	consume_everything()
 
 /obj/item/melee/supermatter_sword/acid_act()
-	visible_message("<span class='danger'>The acid smacks into [src] and rapidly flashes to ash.</span>",\
-	"<span class='italics'>You hear a loud crack as you are washed with a wave of heat.</span>")
+	visible_message("<span class='danger'>Kwas uderza w [src] i błyskawicznie obraca się w popiół.</span>",\
+	"<span class='italics'>Słyszysz głośny trzask, gdy zalewa cię fala gorąca.</span>")
 	consume_everything()
 
 /obj/item/melee/supermatter_sword/bullet_act(obj/item/projectile/P)
-	visible_message("<span class='danger'>[P] smacks into [src] and rapidly flashes to ash.</span>",\
-	"<span class='italics'>You hear a loud crack as you are washed with a wave of heat.</span>")
+	visible_message("<span class='danger'>[P] uderza w [src] i błyskawicznie obraca się w popiół.</span>",\
+	"<span class='italics'>Słyszysz głośny trzask, gdy zalewa cię fala gorąca.</span>")
 	consume_everything(P)
 	return BULLET_ACT_HIT
 
 /obj/item/melee/supermatter_sword/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] touches [src]'s blade. It looks like [user.p_theyre()] tired of waiting for the radiation to kill [user.p_them()]!</span>")
+	user.visible_message("<span class='suicide'>[user] dotyka ostrza [src]. Wygląda na to, że ma dość czekania, aż zabije go promieniowanie!</span>")
 	user.dropItemToGround(src, TRUE)
 	shard.Bumped(user)
 
@@ -677,8 +677,8 @@
 	if(newT.type == oldtype)
 		return
 	playsound(T, 'sound/effects/supermatter.ogg', 50, 1)
-	T.visible_message("<span class='danger'>[T] smacks into [src] and rapidly flashes to ash.</span>",\
-	"<span class='italics'>You hear a loud crack as you are washed with a wave of heat.</span>")
+	T.visible_message("<span class='danger'>[T] uderza w [src] i błyskawicznie obraca się w popiół.</span>",\
+	"<span class='italics'>Słyszysz głośny trzask, gdy zalewa cię fala gorąca.</span>")
 	shard.Consume()
 
 /obj/item/melee/supermatter_sword/add_blood_DNA(list/blood_dna)
@@ -717,8 +717,8 @@
 	var/obj/item/I = target.get_held_items_for_side(side)
 	if(I)
 		if(target.dropItemToGround(I))
-			target.visible_message("<span class='danger'>[I] is yanked out of [target]'s hands by [src]!</span>","<span class='userdanger'>[user] grabs [I] out of your hands with [src]!</span>")
-			to_chat(user, "<span class='notice'>You yank [I] towards yourself.</span>")
+			target.visible_message("<span class='danger'>[src] wyrywa [I] z rąk [target]!</span>","<span class='userdanger'>[user] wyrywa ci [I] z rąk za pomocą [src]!</span>")
+			to_chat(user, "<span class='notice'>Przyciągasz [I] do siebie.</span>")
 			log_combat(user, target, "disarmed", src)
 			if(!user.get_inactive_held_item())
 				user.throw_mode_on(THROW_MODE_TOGGLE)
@@ -727,16 +727,16 @@
 
 /obj/item/melee/curator_whip/proc/whip_trip(mob/living/user, mob/living/target) //this is bad and ugly but not as bad and ugly as the original code
 	if(get_dist(user, target) < 2)
-		to_chat(user, "<span class='warning'>[target] is too close to trip with the whip!</span>")
+		to_chat(user, "<span class='warning'>[target] jest za blisko, by podciąć go biczem!</span>")
 		return
 	target.Knockdown(3 SECONDS)
 	log_combat(user, target, "tripped", src)
-	target.visible_message("<span class='danger'>[user] knocks [target] off [target.p_their()] feet!</span>", "<span class='userdanger'>[user] yanks your legs out from under you!</span>")
+	target.visible_message("<span class='danger'>[user] podcina [target]!</span>", "<span class='userdanger'>[user] podcina ci nogi!</span>")
 
 /obj/item/melee/curator_whip/proc/whip_lash(mob/living/user, mob/living/target)
 	if(target.getarmor(type = "melee") < 16)
 		target.emote("scream")
-		target.visible_message("<span class='danger'>[user] whips [target]!</span>", "<span class='userdanger'>[user] whips you! It stings!</span>")
+		target.visible_message("<span class='danger'>[user] whips [target]!</span>", "<span class='userdanger'>[user] smaga cię biczem! Piecze!</span>")
 
 /obj/item/melee/roastingstick
 	name = "advanced roasting stick"
@@ -765,7 +765,7 @@
 		extend(user)
 	else
 		if (held_sausage)
-			to_chat(user, "<span class='warning'>You can't retract [src] while [held_sausage] is attached!</span>")
+			to_chat(user, "<span class='warning'>Nie możesz złożyć [src], gdy jest na nim [held_sausage]!</span>")
 			return
 		retract(user)
 
@@ -776,15 +776,15 @@
 	..()
 	if (istype(target, /obj/item/food/sausage))
 		if (!on)
-			to_chat(user, "<span class='warning'>You must extend [src] to attach anything to it!</span>")
+			to_chat(user, "<span class='warning'>Musisz rozłożyć [src], by coś na nim zawiesić!</span>")
 			return
 		if (held_sausage)
-			to_chat(user, "<span class='warning'>[held_sausage] is already attached to [src]!</span>")
+			to_chat(user, "<span class='warning'>[held_sausage] jest już na [src]!</span>")
 			return
 		if (user.transferItemToLoc(target, src))
 			held_sausage = target
 		else
-			to_chat(user, "<span class='warning'>[target] doesn't seem to want to get on [src]!</span>")
+			to_chat(user, "<span class='warning'>[target] chyba nie chce wejść na [src]!</span>")
 	update_icon()
 
 /obj/item/melee/roastingstick/attack_hand(mob/user)
@@ -802,13 +802,13 @@
 		add_overlay(sausage)
 
 /obj/item/melee/roastingstick/proc/extend(user)
-	to_chat(user, "<span class='warning'>You extend [src].</span>")
+	to_chat(user, "<span class='warning'>Rozkładasz [src].</span>")
 	icon_state = "roastingstick_1"
 	item_state = "nullrod"
 	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/melee/roastingstick/proc/retract(user)
-	to_chat(user, "<span class='notice'>You collapse [src].</span>")
+	to_chat(user, "<span class='notice'>Składasz [src].</span>")
 	icon_state = "roastingstick_0"
 	item_state = null
 	w_class = WEIGHT_CLASS_SMALL
@@ -824,14 +824,14 @@
 		return
 	if(is_type_in_typecache(target, ovens))
 		if(held_sausage && held_sausage.roasted)
-			to_chat("Your [held_sausage] has already been cooked.")
+			to_chat("[held_sausage] jest już upieczona.")
 			return
 		if(istype(target, /obj/anomaly) && get_dist(user, target) < 10)
-			to_chat(user, "You send [held_sausage] towards [target].")
+			to_chat(user, "Kierujesz [held_sausage] w stronę [target].")
 			playsound(src, 'sound/items/rped.ogg', 50, 1)
 			beam = user.Beam(target,icon_state="rped_upgrade",time=100)
 		else if (user.Adjacent(target))
-			to_chat(user, "You extend [src] towards [target].")
+			to_chat(user, "Wysuwasz [src] w stronę [target].")
 			playsound(src.loc, 'sound/weapons/batonextend.ogg', 50, 1)
 		else
 			return
@@ -842,7 +842,7 @@
 			playsound(src, 'sound/weapons/batonextend.ogg', 50, 1)
 
 /obj/item/melee/roastingstick/proc/finish_roasting(user, atom/target)
-	to_chat(user, "You finish roasting [held_sausage]")
+	to_chat(user, "Kończysz piec [held_sausage]")
 	playsound(src,'sound/items/welder2.ogg',50,1)
 	held_sausage.add_atom_colour(rgb(103,63,24), FIXED_COLOUR_PRIORITY)
 	held_sausage.name = "[target.name]-roasted [held_sausage.name]"
@@ -871,8 +871,8 @@
 	if(cooldown <= world.time)
 		playsound(get_turf(src), 'sound/effects/woodhit.ogg', 75, 1, -1)
 		log_combat(user, target, "knockedbacked", src)
-		target.visible_message("<span class ='danger'>[user] has knocked back [target] with [src]!</span>", \
-			"<span class ='userdanger'>[user] has knocked you back [target] with [src]!</span>")
+		target.visible_message("<span class ='danger'>[user] odpycha [target] za pomocą [src]!</span>", \
+			"<span class ='userdanger'>[user] odpycha cię za pomocą [src]!</span>")
 
 		var/throw_dir = get_dir(user,target)
 		var/turf/throw_at = get_ranged_target_turf(target, throw_dir, knockbackpower)

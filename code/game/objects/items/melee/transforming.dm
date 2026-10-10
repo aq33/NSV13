@@ -95,5 +95,5 @@
 
 /obj/item/melee/transforming/proc/clumsy_transform_effect(mob/living/user)
 	if(clumsy_check && HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
-		to_chat(user, "<span class='warning'>You accidentally cut yourself with [src], like a doofus!</span>")
+		to_chat(user, "<span class='warning'>Przypadkiem kaleczysz się [src], jak ostatnia oferma!</span>")
 		user.take_bodypart_damage(5,5)

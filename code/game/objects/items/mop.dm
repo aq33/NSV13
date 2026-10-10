@@ -17,7 +17,7 @@
 	var/mopcount = 0
 	var/mopcap = 15
 	var/mopspeed = 15
-	force_string = "robust... against germs"
+	force_string = "robust... przeciw zarazkom"
 	var/insertable = TRUE
 
 /obj/item/mop/Initialize(mapload)
@@ -45,7 +45,7 @@
 		return
 
 	if(reagents.total_volume < 1)
-		to_chat(user, "<span class='warning'>Your mop is dry!</span>")
+		to_chat(user, "<span class='warning'>Twój mop jest suchy!</span>")
 		return
 
 	var/turf/T = get_turf(A)
@@ -54,10 +54,10 @@
 		return
 
 	if(T)
-		user.visible_message("[user] begins to clean \the [T] with [src].", "<span class='notice'>You begin to clean \the [T] with [src]...</span>")
+		user.visible_message("[user] zaczyna czyścić [T] za pomocą [src].", "<span class='notice'>Zaczynasz czyścić [T] za pomocą [src]...</span>")
 
 		if(do_after(user, src.mopspeed, target = T))
-			to_chat(user, "<span class='notice'>You finish mopping.</span>")
+			to_chat(user, "<span class='notice'>Kończysz mopowanie.</span>")
 			clean(T)
 
 /obj/item/mop/proc/janicart_insert(mob/user, obj/structure/janitorialcart/J)
@@ -66,7 +66,7 @@
 		J.mymop=src
 		J.update_icon()
 	else
-		to_chat(user, "<span class='warning'>You are unable to fit your [name] into the [J.name].</span>")
+		to_chat(user, "<span class='warning'>Nie możesz zmieścić [name] w [J.name].</span>")
 		return
 
 /obj/item/mop/cyborg
@@ -99,7 +99,7 @@
 		START_PROCESSING(SSobj, src)
 	else
 		STOP_PROCESSING(SSobj,src)
-	to_chat(user, "<span class='notice'>You set the condenser switch to the '[refill_enabled ? "ON" : "OFF"]' position.</span>")
+	to_chat(user, "<span class='notice'>Ustawiasz przełącznik kondensatora w pozycji „[refill_enabled ? "WŁ." : "WYŁ."]”.</span>")
 	playsound(user, 'sound/machines/click.ogg', 30, 1)
 
 /obj/item/mop/advanced/process(delta_time)
@@ -109,7 +109,7 @@
 
 /obj/item/mop/advanced/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The condenser switch is set to <b>[refill_enabled ? "ON" : "OFF"]</b>.</span>"
+	. += "<span class='notice'>Przełącznik kondensatora jest w pozycji <b>[refill_enabled ? "WŁ." : "WYŁ."]</b>.</span>"
 
 /obj/item/mop/advanced/Destroy()
 	if(refill_enabled)

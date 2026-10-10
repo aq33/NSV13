@@ -253,13 +253,13 @@
 	. = ..()
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, null, FALSE)
 	AddComponent(/datum/component/effect_remover, \
-	success_feedback = "You disrupt the magic of %THEEFFECT with %THEWEAPON.", \
-	success_forcesay = "BEGONE FOUL MAGIKS!!", \
+	success_feedback = "Zakłócasz magię %THEEFFECT za pomocą %THEWEAPON.", \
+	success_forcesay = "PRECZ, PLUGAWA MAGIO!!", \
 	on_clear_callback = CALLBACK(src, PROC_REF(on_cult_rune_removed)), \
 	effects_we_clear = list(/obj/effect/rune, /obj/effect/heretic_rune))
 
 /obj/item/nullrod/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is killing [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to get closer to god!</span>")
+	user.visible_message("<span class='suicide'>[user] zabija się [src]! Wygląda na to, że próbuje zbliżyć się do boga!</span>")
 	return (BRUTELOSS|FIRELOSS)
 
 /obj/item/nullrod/attack_self(mob/user)
@@ -278,7 +278,7 @@
 		var/obj/item/itemtype = V //AQUILA EDIT
 		display_names[initial(itemtype.name)] = itemtype //AQUILA EDIT
 
-	var/choice = input(M,"What theme would you like for your holy weapon?","Holy Weapon Theme") as null|anything in sortList(display_names, GLOBAL_PROC_REF(cmp_typepaths_asc))
+	var/choice = input(M,"Jaki motyw ma mieć twoja święta broń?","Motyw świętej broni") as null|anything in sortList(display_names, GLOBAL_PROC_REF(cmp_typepaths_asc))
 	if(QDELETED(src) || !choice || M.stat || !in_range(M, src) || M.incapacitated() || reskinned)
 		return
 
@@ -458,7 +458,7 @@
 		var/obj/item/I = hitby
 		owner.attackby(src)
 		owner.attackby(src, owner)
-		owner.visible_message("<span class='danger'>[owner] can't get a grip, and stabs himself with both the [I] and the[src] while trying to parry the [I]!</span>")
+		owner.visible_message("<span class='danger'>[owner] nie może złapać pewnego chwytu i, próbując sparować [I], dźga się zarówno [I], jak i [src]!</span>")
 	return ..()
 
 /obj/item/nullrod/scythe
@@ -519,36 +519,36 @@
 	if(possessed)
 		return
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_STATION_SENTIENCE))
-		to_chat(user, "<span class='notice'>Anomalous otherworldly energies block you from awakening the blade!</span>")
+		to_chat(user, "<span class='notice'>Anomalne energie z innego świata nie pozwalają ci przebudzić ostrza!</span>")
 		return
 
-	to_chat(user, "You attempt to wake the spirit of the blade...")
+	to_chat(user, "Próbujesz przebudzić ducha ostrza...")
 
 	possessed = TRUE
 
-	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as the spirit of [user.real_name]'s blade?", ROLE_SPECTRAL_BLADE, null, 10 SECONDS, ignore_category = POLL_IGNORE_SPECTRAL_BLADE)
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Chcesz zagrać jako duch ostrza [user.real_name]?", ROLE_SPECTRAL_BLADE, null, 10 SECONDS, ignore_category = POLL_IGNORE_SPECTRAL_BLADE)
 
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
 		var/mob/living/simple_animal/shade/S = new(src)
 		S.ckey = C.ckey
-		S.fully_replace_character_name(null, "The spirit of [name]")
+		S.fully_replace_character_name(null, "Duch [name]")
 		S.status_flags |= GODMODE
 		S.copy_languages(user, LANGUAGE_MASTER)	//Make sure the sword can understand and communicate with the user.
 		S.update_atom_languages()
 		grant_all_languages(FALSE, FALSE, TRUE)	//Grants omnitongue
-		var/input = sanitize_name(stripped_input(S,"What are you named?", ,"", MAX_NAME_LEN))
+		var/input = sanitize_name(stripped_input(S,"Jak się nazywasz?", ,"", MAX_NAME_LEN))
 
 		if(src && input)
 			name = input
-			S.fully_replace_character_name(null, "The spirit of [input]")
+			S.fully_replace_character_name(null, "Duch [input]")
 	else
-		to_chat(user, "The blade is dormant. Maybe you can try again later.")
+		to_chat(user, "Ostrze jest uśpione. Może spróbuj później.")
 		possessed = FALSE
 
 /obj/item/nullrod/scythe/talking/Destroy()
 	for(var/mob/living/simple_animal/shade/S in contents)
-		to_chat(S, "You were destroyed!")
+		to_chat(S, "Zostajesz zniszczony!")
 		qdel(S)
 	return ..()
 
@@ -629,8 +629,8 @@
 	if(prob(30) && ishuman(A))
 		var/mob/living/carbon/human/H = A
 		user.reagents.trans_to(H, user.reagents.total_volume, 1, 1, 0, transfered_by = user)
-		to_chat(user, "<span class='notice'>Your pride reflects on [H].</span>")
-		to_chat(H, "<span class='userdanger'>You feel insecure, taking on [user]'s burden.</span>")
+		to_chat(user, "<span class='notice'>Twoja duma odbija się na [H].</span>")
+		to_chat(H, "<span class='userdanger'>Czujesz się niepewnie, biorąc na siebie ciężar [user].</span>")
 
 /obj/item/nullrod/whip
 	name = "holy whip"
@@ -696,7 +696,7 @@
 /obj/item/nullrod/carp/attack_self(mob/living/user)
 	if(used_blessing)
 	else if(user.mind && (user.mind.holy_role))
-		to_chat(user, "You are blessed by Carp-Sie. Wild space carp will no longer attack you.")
+		to_chat(user, "Karp-Sie cię błogosławi. Dzikie kosmiczne karpie nie będą cię już atakować.")
 		user.faction |= "carp"
 		used_blessing = TRUE
 

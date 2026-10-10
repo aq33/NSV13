@@ -23,7 +23,7 @@
 	return cell
 
 /obj/item/melee/baton/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is putting the live [name] in [user.p_their()] mouth! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] wkłada sobie naładowany [name] do ust! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return (FIRELOSS)
 
 /obj/item/melee/baton/Initialize(mapload)
@@ -83,23 +83,23 @@
 /obj/item/melee/baton/examine(mob/user)
 	. = ..()
 	if(cell)
-		. += "<span class='notice'>\The [src] is [round(cell.percent())]% charged.</span>"
+		. += "<span class='notice'>[src] jest naładowany w [round(cell.percent())]%.</span>"
 	else
-		. += "<span class='warning'>\The [src] does not have a power source installed.</span>"
+		. += "<span class='warning'>[src] nie ma zainstalowanego źródła zasilania.</span>"
 
 /obj/item/melee/baton/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/stock_parts/cell))
 		var/obj/item/stock_parts/cell/C = W
 		if(cell)
-			balloon_alert(user, "[src] already has a cell.")
+			balloon_alert(user, "[src] ma już ogniwo.")
 		else
 			if(C.maxcharge < hitcost)
-				balloon_alert(user, "[src] requires a higher capacity power cell.")
+				balloon_alert(user, "[src] wymaga ogniwa zasilającego o większej pojemności.")
 				return
 			if(!user.transferItemToLoc(W, src))
 				return
 			cell = W
-			balloon_alert(user, "You insert the power cell.")
+			balloon_alert(user, "Wkładasz ogniwo zasilające.")
 			update_icon()
 
 	else if(W.tool_behaviour == TOOL_SCREWDRIVER)
@@ -107,7 +107,7 @@
 			cell.update_icon()
 			cell.forceMove(get_turf(src))
 			cell = null
-			balloon_alert(user, "You remove the power cell.")
+			balloon_alert(user, "Wyjmujesz ogniwo zasilające.")
 			turned_on = FALSE
 			update_icon()
 	else
@@ -121,16 +121,16 @@
 	else
 		turned_on = FALSE
 		if(!cell)
-			balloon_alert(user, "It has no power source!")
+			balloon_alert(user, "Nie ma źródła zasilania!")
 		else if(obj_flags & OBJ_EMPED)
-			balloon_alert(user, "It's not responding!")
+			balloon_alert(user, "Nie reaguje!")
 	update_icon()
 	add_fingerprint(user)
 
 /obj/item/melee/baton/attack(mob/M, mob/living/carbon/human/user)
 	if(turned_on && HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50) && !(obj_flags & OBJ_EMPED))
-		user.visible_message("<span class='danger'>[user] accidentally hits [user.p_them()]self with [src], electrocuting themselves badly!</span>", \
-							"<span class='userdanger'>You accidentally hit yourself with [src], electrocuting yourself badly!</span>")
+		user.visible_message("<span class='danger'>[user] przypadkiem uderza się [src], mocno się porażając!</span>", \
+							"<span class='userdanger'>Przypadkiem uderzasz się [src], mocno się porażając!</span>")
 		user.adjustStaminaLoss(stunforce*3)
 		user.stuttering = 20
 		user.do_jitter_animation(20)
@@ -152,8 +152,8 @@
 				user.do_attack_animation(M)
 				return
 		else
-			M.visible_message("<span class='warning'>[user] has prodded [M] with [src]. Luckily it was off.</span>", \
-							"<span class='warning'>[user] has prodded you with [src]. Luckily it was off</span>")
+			M.visible_message("<span class='warning'>[user] szturcha [M] za pomocą [src]. Na szczęście była wyłączona.</span>", \
+							"<span class='warning'>[user] szturcha cię [src]. Na szczęście była wyłączona</span>")
 	else
 		if(turned_on)
 			baton_stun(M, user)
@@ -183,8 +183,8 @@
 	if(user)
 		target.lastattacker = user.real_name
 		target.lastattackerckey = user.ckey
-		target.visible_message("<span class='danger'>[user] has electrocuted [target] with [src]!</span>", \
-								"<span class='userdanger'>[user] has electrocuted you with [src]!</span>")
+		target.visible_message("<span class='danger'>[user] razi [target] prądem za pomocą [src]!</span>", \
+								"<span class='userdanger'>[user] razi cię prądem za pomocą [src]!</span>")
 		log_combat(user, target, "stunned")
 
 	playsound(src, 'sound/weapons/egloves.ogg', 50, TRUE, -1)
