@@ -893,7 +893,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if((G.unlocktype == GEAR_DONATOR) && !(usr.ckey == G.ckey)) //NSV13 - donator items
 					continue
-				dat += "<tr style='vertical-align:top;'><td width=15%>[G.display_name]\n"
+				dat += "<tr style='vertical-align:top;'><td width=15%>[G.preview_icon(user.client)][G.display_name]\n" // AQ EDIT - ikonka
+				if(G.can_preview()) // AQ EDIT - podgląd na postaci
+					dat += "<a style='white-space:normal;' [preview_gear == G.id ? "class='linkOn' " : ""]href='?_src_=prefs;preference=gear;preview_gear=[G.id]'>Podgląd</a>"
 				var/donator = G.sort_category == "Donator" // purchase box and cost coloumns doesn't appear on donator items
 				if(G.id in purchased_gear)
 					if(!G.path) // AQ EDIT - was G.sort_category == "OOC", polska bielizna też nie ma przedmiotu
@@ -1546,6 +1548,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					log_href_exploit(user)
 			active_character.save(user.client)
 
+		else if(href_list["preview_gear"]) // AQ EDIT - podgląd na postaci, drugie kliknięcie wyłącza
+			preview_gear = (preview_gear == href_list["preview_gear"]) ? null : href_list["preview_gear"]
 		else if(href_list["select_category"])
 			gear_tab = href_list["select_category"]
 		else if(href_list["clear_loadout"])

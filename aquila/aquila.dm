@@ -224,6 +224,7 @@
 #include "code\modules\client\verbs\input_box.dm"
 #include "code\modules\client\verbs\ooc.dm"
 #include "code\modules\client\loadout\loadout_polskie.dm"
+#include "code\modules\client\loadout\loadout_preview.dm"
 #include "code\modules\client\preferences.dm"
 #include "code\modules\client\preferences_toggles.dm"
 #include "code\modules\clothing\clothing.dm"
