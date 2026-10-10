@@ -24,6 +24,8 @@
 	var/atom/movable/emissive_blocker/em_block
 	/// Która para ręka/noga rusza się przy tym kroku
 	var/phase = FALSE
+	/// Czy przedmioty w dłoniach są teraz za ciałem (widok z tyłu)
+	var/held_behind = FALSE
 
 /datum/component/walk_animation/Initialize()
 	if(!ishuman(parent))
@@ -91,6 +93,7 @@
 /// Przenosi przedmioty z dłoni 1 i 2 na fragmenty "hand_1"/"hand_2", żeby maski ich nie cięły.
 /// Fragment dostaje kopię nakładki, a kierunek ustawia mu update_held_dir(), więc sprite obraca się z postacią.
 /// Oryginał zostaje w mobie, ukryty buforem z "*", żeby getFlatIcon (zdjęcia) dalej widział przedmiot.
+/// Tyłem (held_behind) przedmiot zostaje widoczną nakładką moba pod całym ciałem, więc zasłania go ciało.
 /// Wołane po każdym update_inv_hands().
 /datum/component/walk_animation/proc/detach_held_items()
 	if(QDELING(src)) // update_inv_hands() z Destroy() ma zostawić zwykłe nakładki
@@ -112,6 +115,9 @@
 		var/hand_index = H.get_held_index_of_item(I)
 		var/mutable_appearance/hand_overlay = hand_overlays[overlay_index]
 		if(hand_index > 2 || !istype(hand_overlay))
+			continue
+		if(held_behind)
+			hand_overlay.layer = -(TOTAL_LAYERS + 1) // pod BODY_BEHIND_LAYER, czyli za całym ciałem
 			continue
 		var/obj/effect/overlay/walk_held/held = limbs["hand_[hand_index]"]
 		held.add_overlay(new /mutable_appearance(hand_overlay))
@@ -160,11 +166,17 @@
 	update_held_dir(new_dir)
 
 /// Nakładki na fragmentach przedmiotów biorą kierunek z samego fragmentu, a VIS_INHERIT_DIR go nie zmienia,
-/// więc ustawiamy go wprost. Wariant sprite'a z ręki dla widoku z tyłu sam chowa przedmiot za ciałem, jak w oryginale.
+/// więc ustawiamy go wprost. Tyłem przedmioty wracają do moba jako nakładki pod ciałem (detach_held_items).
 /datum/component/walk_animation/proc/update_held_dir(new_dir)
 	for(var/index in 1 to 2)
 		var/obj/effect/overlay/walk_held/held = limbs["hand_[index]"]
 		held.dir = new_dir
+	var/behind = (new_dir == NORTH)
+	if(behind == held_behind)
+		return
+	held_behind = behind
+	var/mob/living/carbon/human/H = parent
+	H.update_inv_hands()
 
 /// Z boku maska "leg_b" pokrywa się z "leg_a", więc w spoczynku ta noga jest ukryta; z przodu i z tyłu zawsze widoczna.
 /datum/component/walk_animation/proc/update_side_leg(new_dir)
