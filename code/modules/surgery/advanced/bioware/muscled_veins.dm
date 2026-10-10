@@ -17,14 +17,14 @@
 	time = 125
 
 /datum/surgery_step/muscled_veins/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You start wrapping muscles around [target]'s circulatory system.</span>",
-		"[user] starts wrapping muscles around [target]'s circulatory system.",
-		"[user] starts manipulating [target]'s circulatory system.")
+	display_results(user, target, "<span class='notice'>Zaczynasz owijać mięśnie wokół układu krwionośnego [target].</span>",
+		"[user] zaczyna owijać mięśnie wokół układu krwionośnego [target].",
+		"[user] zaczyna manipulować układem krwionośnym [target].")
 
 /datum/surgery_step/muscled_veins/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You reshape [target]'s circulatory system, adding a muscled membrane!</span>",
-		"[user] reshapes [target]'s circulatory system, adding a muscled membrane!",
-		"[user] finishes manipulating [target]'s circulatory system.")
+	display_results(user, target, "<span class='notice'>Przekształcasz układ krwionośny [target], dodając umięśnioną błonę!</span>",
+		"[user] przekształca układ krwionośny [target], dodając umięśnioną błonę!",
+		"[user] kończy manipulować układem krwionośnym [target].")
 	new /datum/bioware/muscled_veins(target)
 	return TRUE
 

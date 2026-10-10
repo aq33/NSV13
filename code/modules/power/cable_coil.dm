@@ -99,9 +99,9 @@
 
 /obj/item/stack/cable_coil/suicide_act(mob/user)
 	if(locate(/obj/structure/chair/stool) in get_turf(user))
-		user.visible_message("<span class='suicide'>[user] is making a noose with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+		user.visible_message("<span class='suicide'>[user] robi pętlę z [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	else
-		user.visible_message("<span class='suicide'>[user] is strangling [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+		user.visible_message("<span class='suicide'>[user] dusi się [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return(OXYLOSS)
 
 ///////////////////////////////////
@@ -116,7 +116,7 @@
 	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
 	if(affecting && (!IS_ORGANIC_LIMB(affecting)))
 		if(user == H)
-			user.visible_message("<span class='notice'>[user] starts to fix some of the wires in [H]'s [parse_zone(affecting.body_zone)].</span>", "<span class='notice'>You start fixing some of the wires in [H == user ? "your" : "[H]'s"] [parse_zone(affecting.body_zone)].</span>")
+			user.visible_message("<span class='notice'>[user] zaczyna naprawiać część przewodów w kończynie [H] ([strefa_pl(affecting.body_zone)]).</span>", "<span class='notice'>Zaczynasz naprawiać część przewodów w [H == user ? "swojej kończynie" : "kończynie [H]"] ([strefa_pl(affecting.body_zone)]).</span>")
 			if(!do_mob(user, H, 50))
 				return
 		if(item_heal_robotic(H, user, 0, 15))
@@ -184,11 +184,11 @@
 		return
 
 	if(targeted_turf.intact || !targeted_turf.can_have_cabling())
-		to_chat(user, "<span class='warning'>You can only lay cables on top of exterior catwalks and plating!</span>")
+		to_chat(user, "<span class='warning'>Kable możesz kłaść tylko na zewnętrznych pomostach i poszyciu!</span>")
 		return
 
 	if(get_dist(targeted_turf, user) > 1) // Too far
-		to_chat(user, "<span class='warning'>You can't lay cable at a place that far away!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz położyć kabla tak daleko!</span>")
 		return
 
 	// Check if cable already exists on the turf
@@ -201,13 +201,13 @@
 			return
 
 		if (resolved_wire.forced_power_node)
-			to_chat(user, "<span class='warning'>There's already a cable at that position!</span>")
+			to_chat(user, "<span class='warning'>W tym miejscu już jest kabel!</span>")
 			return
 		if (!use(1))
-			to_chat(user, "<span class='warning'>There's no cable left!</span>")
+			to_chat(user, "<span class='warning'>Nie został już żaden kabel!</span>")
 			return
 
-		to_chat(user, "<span class='notice'>You add a node to the [resolved_wire], allowing it to connect to machines and structures placed on top of it!</span>")
+		to_chat(user, "<span class='notice'>Dodajesz węzeł do [resolved_wire], co pozwala podłączać do niego maszyny i konstrukcje postawione na nim!</span>")
 		resolved_wire.add_power_node()
 		return TRUE
 
@@ -220,11 +220,11 @@
 		// If there isn't a cable below us, make one
 		if (locate(/obj/structure/cable) in below_turf)
 			if (!use(1))
-				to_chat(user, "<span class='warning'>There's no cable left!</span>")
+				to_chat(user, "<span class='warning'>Nie został już żaden kabel!</span>")
 				return
 		else
 			if (!use(2))
-				to_chat(user, "<span class='warning'>You need at least 2 pieces of cable to wire between decks!</span>")
+				to_chat(user, "<span class='warning'>Do połączenia pokładów potrzebujesz przynajmniej 2 odcinków kabla!</span>")
 				return
 			if (omni)
 				new /obj/structure/cable/omni(below_turf, cable_color)
@@ -234,11 +234,11 @@
 			new /obj/structure/cable/omni(targeted_turf, cable_color, TRUE)
 		else
 			new /obj/structure/cable(targeted_turf, cable_color, TRUE)
-		to_chat(user, "<span class='notice'>You slide the cable downward.</span>")
+		to_chat(user, "<span class='notice'>Przesuwasz kabel w dół.</span>")
 		return TRUE
 
 	if(!use(1))
-		to_chat(user, "<span class='warning'>There's no cable left!</span>")
+		to_chat(user, "<span class='warning'>Nie został już żaden kabel!</span>")
 		return
 
 	if (omni)

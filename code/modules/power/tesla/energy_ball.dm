@@ -77,7 +77,7 @@
 /obj/anomaly/energy_ball/examine(mob/user)
 	. = ..()
 	if(orbiting_balls.len)
-		. += "There are [orbiting_balls.len] mini-balls orbiting it."
+		. += "Wokół orbituje mini-kul: [orbiting_balls.len]."
 
 
 /obj/anomaly/energy_ball/proc/move_the_basket_ball(var/move_amount)
@@ -149,7 +149,7 @@
 /obj/anomaly/energy_ball/attack_tk(mob/user)
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
-		to_chat(C, "<span class='userdanger'>That was a shockingly dumb idea.</span>")
+		to_chat(C, "<span class='userdanger'>To był szokująco głupi pomysł.</span>")
 		var/obj/item/organ/brain/rip_u = locate(/obj/item/organ/brain) in C.internal_organs
 		C.ghostize(0)
 		qdel(rip_u)

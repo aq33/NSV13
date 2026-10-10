@@ -36,14 +36,14 @@
 	return TRUE
 
 /datum/surgery_step/lobotomize/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to perform a lobotomy on [target]'s brain...</span>",
-		"[user] begins to perform a lobotomy on [target]'s brain.",
-		"[user] begins to perform surgery on [target]'s brain.")
+	display_results(user, target, "<span class='notice'>Zaczynasz przeprowadzać lobotomię mózgu [target]...</span>",
+		"[user] zaczyna przeprowadzać lobotomię mózgu [target].",
+		"[user] zaczyna operację mózgu [target].")
 
 /datum/surgery_step/lobotomize/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You succeed in lobotomizing [target].</span>",
-			"[user] successfully lobotomizes [target]!",
-			"[user] completes the surgery on [target]'s brain.")
+	display_results(user, target, "<span class='notice'>Udaje ci się przeprowadzić lobotomię [target].</span>",
+			"[user] pomyślnie przeprowadza lobotomię [target]!",
+			"[user] kończy operację mózgu [target].")
 	target.cure_all_traumas(TRAUMA_RESILIENCE_LOBOTOMY)
 	if(target.mind && target.mind.has_antag_datum(/datum/antagonist/brainwashed))
 		target.mind.remove_antag_datum(/datum/antagonist/brainwashed)
@@ -64,9 +64,9 @@
 /datum/surgery_step/lobotomize/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/item/organ/brain/B = target.getorganslot(ORGAN_SLOT_BRAIN)
 	if(B)
-		display_results(user, target, "<span class='warning'>You remove the wrong part, causing more damage!</span>",
-			"[user] successfully lobotomizes [target]!",
-			"[user] completes the surgery on [target]'s brain.")
+		display_results(user, target, "<span class='warning'>Usuwasz nie tę część, powodując dodatkowe obrażenia!</span>",
+			"[user] pomyślnie przeprowadza lobotomię [target]!",
+			"[user] kończy operację mózgu [target].")
 		B.applyOrganDamage(80)
 		switch(rand(1,3))
 			if(1)
@@ -79,5 +79,5 @@
 			if(3)
 				target.gain_trauma_type(BRAIN_TRAUMA_SPECIAL, TRAUMA_RESILIENCE_MAGIC)
 	else
-		user.visible_message("<span class='warning'>[user] suddenly notices that the brain [user.p_they()] [user.p_were()] working on is not there anymore.", "<span class='warning'>You suddenly notice that the brain you were working on is not there anymore.</span>")
+		user.visible_message("<span class='warning'>[user] nagle zauważa, że mózgu, nad którym pracował, już tam nie ma.", "<span class='warning'>Nagle zauważasz, że mózgu, nad którym pracowałeś, już tam nie ma.</span>")
 	return FALSE

@@ -40,11 +40,11 @@
 
 	switch(construction_state)
 		if(PA_CONSTRUCTION_UNSECURED)
-			. += "Looks like it's not attached to the flooring."
+			. += "Wygląda na to, że nie jest przymocowany do podłogi."
 		if(PA_CONSTRUCTION_UNWIRED)
-			. += "It is missing some cables."
+			. += "Brakuje mu kilku kabli."
 		if(PA_CONSTRUCTION_PANEL_OPEN)
-			. += "The panel is open."
+			. += "Panel jest otwarty."
 
 /obj/structure/particle_accelerator/Destroy()
 	construction_state = PA_CONSTRUCTION_UNSECURED
@@ -67,40 +67,40 @@
 			if(W.tool_behaviour == TOOL_WRENCH && !isinspace())
 				W.play_tool_sound(src, 75)
 				anchored = TRUE
-				user.visible_message("[user.name] secures the [name] to the floor.", \
-					"You secure the external bolts.")
+				user.visible_message("[user.name] mocuje [name] do podłogi.", \
+					"Dokręcasz zewnętrzne śruby.")
 				construction_state = PA_CONSTRUCTION_UNWIRED
 				did_something = TRUE
 		if(PA_CONSTRUCTION_UNWIRED)
 			if(W.tool_behaviour == TOOL_WRENCH)
 				W.play_tool_sound(src, 75)
 				anchored = FALSE
-				user.visible_message("[user.name] detaches the [name] from the floor.", \
-					"You remove the external bolts.")
+				user.visible_message("[user.name] odczepia [name] od podłogi.", \
+					"Odkręcasz zewnętrzne śruby.")
 				construction_state = PA_CONSTRUCTION_UNSECURED
 				did_something = TRUE
 			else if(istype(W, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/CC = W
 				if(CC.use(1))
-					user.visible_message("[user.name] adds wires to the [name].", \
-						"You add some wires.")
+					user.visible_message("[user.name] podłącza przewody do [name].", \
+						"Podłączasz trochę przewodów.")
 					construction_state = PA_CONSTRUCTION_PANEL_OPEN
 					did_something = TRUE
 		if(PA_CONSTRUCTION_PANEL_OPEN)
 			if(W.tool_behaviour == TOOL_WIRECUTTER)//TODO:Shock user if its on?
-				user.visible_message("[user.name] removes some wires from the [name].", \
-					"You remove some wires.")
+				user.visible_message("[user.name] wyjmuje trochę przewodów z [name].", \
+					"Wyjmujesz trochę przewodów.")
 				construction_state = PA_CONSTRUCTION_UNWIRED
 				did_something = TRUE
 			else if(W.tool_behaviour == TOOL_SCREWDRIVER)
-				user.visible_message("[user.name] closes the [name]'s access panel.", \
-					"You close the access panel.")
+				user.visible_message("[user.name] zamyka panel dostępu [name].", \
+					"Zamykasz panel dostępu.")
 				construction_state = PA_CONSTRUCTION_COMPLETE
 				did_something = TRUE
 		if(PA_CONSTRUCTION_COMPLETE)
 			if(W.tool_behaviour == TOOL_SCREWDRIVER)
-				user.visible_message("[user.name] opens the [name]'s access panel.", \
-					"You open the access panel.")
+				user.visible_message("[user.name] otwiera panel dostępu [name].", \
+					"Otwierasz panel dostępu.")
 				construction_state = PA_CONSTRUCTION_PANEL_OPEN
 				did_something = TRUE
 

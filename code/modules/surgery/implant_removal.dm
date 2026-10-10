@@ -17,19 +17,19 @@
 		I = O
 		break
 	if(I)
-		display_results(user, target, "<span class='notice'>You begin to extract [I] from [target]'s [target_zone]...</span>",
-			"[user] begins to extract [I] from [target]'s [target_zone].",
-			"[user] begins to extract something from [target]'s [target_zone].")
+		display_results(user, target, "<span class='notice'>Zaczynasz wydobywać [I] z ciała [target] ([strefa_pl(target_zone)])...</span>",
+			"[user] zaczyna wydobywać [I] z ciała [target] ([strefa_pl(target_zone)]).",
+			"[user] zaczyna coś wydobywać z ciała [target] ([strefa_pl(target_zone)]).")
 	else
-		display_results(user, target, "<span class='notice'>You look for an implant in [target]'s [target_zone]...</span>",
-			"[user] looks for an implant in [target]'s [target_zone].",
-			"[user] looks for something in [target]'s [target_zone].")
+		display_results(user, target, "<span class='notice'>Szukasz implantu w ciele [target] ([strefa_pl(target_zone)])...</span>",
+			"[user] szuka implantu w ciele [target] ([strefa_pl(target_zone)]).",
+			"[user] szuka czegoś w ciele [target] ([strefa_pl(target_zone)]).")
 
 /datum/surgery_step/extract_implant/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(I)
-		display_results(user, target, "<span class='notice'>You successfully remove [I] from [target]'s [target_zone].</span>",
-			"[user] successfully removes [I] from [target]'s [target_zone]!",
-			"[user] successfully removes something from [target]'s [target_zone]!")
+		display_results(user, target, "<span class='notice'>Pomyślnie usuwasz [I] z ciała [target] ([strefa_pl(target_zone)]).</span>",
+			"[user] pomyślnie usuwa [I] z ciała [target] ([strefa_pl(target_zone)])!",
+			"[user] pomyślnie usuwa coś z ciała [target] ([strefa_pl(target_zone)])!")
 		I.removed(target)
 
 		var/obj/item/implantcase/case
@@ -42,14 +42,14 @@
 			case.imp = I
 			I.forceMove(case)
 			case.update_icon()
-			display_results(user, target, "<span class='notice'>You place [I] into [case].</span>",
-				"[user] places [I] into [case]!",
-				"[user] places it into [case]!")
+			display_results(user, target, "<span class='notice'>Umieszczasz [I] w [case].</span>",
+				"[user] umieszcza [I] w [case]!",
+				"[user] umieszcza to w [case]!")
 		else
 			qdel(I)
 
 	else
-		to_chat(user, "<span class='warning'>You can't find anything in [target]'s [target_zone]!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz niczego znaleźć w ciele [target] ([strefa_pl(target_zone)])!</span>")
 	return 1
 
 /datum/surgery/implant_removal/mechanic

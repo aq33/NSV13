@@ -122,20 +122,20 @@
 		return
 
 	if(T.mothership == mothership)
-		to_chat(H, "<span class='notice'>[src] is already attuned to the same channel as your own.</span>")
+		to_chat(H, "<span class='notice'>[src] jest już dostrojony do tego samego kanału co twój.</span>")
 
-	H.visible_message("<span class='notice'>[H] holds [src] in their hands, and concentrates for a moment.</span>", "<span class='notice'>You attempt to modify the attenuation of [src].</span>")
+	H.visible_message("<span class='notice'>[H] trzyma [src] w dłoniach i przez chwilę się koncentruje.</span>", "<span class='notice'>Próbujesz zmienić dostrojenie [src].</span>")
 	if(do_after(H, delay=15, target=src))
-		to_chat(H, "<span class='notice'>You attune [src] to your own channel.</span>")
+		to_chat(H, "<span class='notice'>Dostrajasz [src] do swojego kanału.</span>")
 		mothership = T.mothership
 
 /obj/item/organ/tongue/abductor/examine(mob/M)
 	. = ..()
 	if(HAS_TRAIT(M, TRAIT_ABDUCTOR_TRAINING) || HAS_TRAIT(M.mind, TRAIT_ABDUCTOR_TRAINING) || isobserver(M))
 		if(!mothership)
-			. += "<span class='notice'>It is not attuned to a specific mothership.</span>"
+			. += "<span class='notice'>Nie jest dostrojony do żadnego konkretnego statku-matki.</span>"
 		else
-			. += "<span class='notice'>It is attuned to [mothership].</span>"
+			. += "<span class='notice'>Jest dostrojony do: [mothership].</span>"
 
 /obj/item/organ/tongue/abductor/handle_speech(datum/source, list/speech_args)
 	//Hacks

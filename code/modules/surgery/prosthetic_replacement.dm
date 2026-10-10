@@ -25,42 +25,42 @@
 /datum/surgery_step/add_prosthetic/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(istype(tool, /obj/item/organ_storage))
 		if(!tool.contents.len)
-			to_chat(user, "<span class='notice'>There is nothing inside [tool]!</span>")
+			to_chat(user, "<span class='notice'>W [tool] nic nie ma!</span>")
 			return -1
 		var/obj/item/I = tool.contents[1]
 		if(!isbodypart(I))
-			to_chat(user, "<span class='notice'>[I] cannot be attached!</span>")
+			to_chat(user, "<span class='notice'>[I] nie da się przymocować!</span>")
 			return -1
 		tool = I
 	if(istype(tool, /obj/item/bodypart))
 		var/obj/item/bodypart/BP = tool
 		if(ismonkey(target))// monkey patient only accept organic monkey limbs
 			if(!IS_ORGANIC_LIMB(BP) || BP.animal_origin != MONKEY_BODYPART)
-				to_chat(user, "<span class='warning'>[BP] doesn't match the patient's morphology.</span>")
+				to_chat(user, "<span class='warning'>[BP] nie pasuje do morfologii pacjenta.</span>")
 				return -1
 		if(IS_ORGANIC_LIMB(BP))
 			organ_rejection_dam = 10
 			if(ishuman(target))
 				if(BP.animal_origin)
-					to_chat(user, "<span class='warning'>[BP] doesn't match the patient's morphology.</span>")
+					to_chat(user, "<span class='warning'>[BP] nie pasuje do morfologii pacjenta.</span>")
 					return -1
 				var/mob/living/carbon/human/H = target
 				if(H.dna.species.id != BP.limb_id)
 					organ_rejection_dam = 30
 
 		if(target_zone == BP.body_zone) //so we can't replace a leg with an arm, or a human arm with a monkey arm.
-			display_results(user, target, "<span class ='notice'>You begin to replace [target]'s [parse_zone(target_zone)] with [tool]...</span>",
-				"[user] begins to replace [target]'s [parse_zone(target_zone)] with [tool].",
-				"[user] begins to replace [target]'s [parse_zone(target_zone)].")
+			display_results(user, target, "<span class ='notice'>Zaczynasz wymieniać [strefa_pl(target_zone, TRUE)] [target] na [tool]...</span>",
+				"[user] zaczyna wymieniać [strefa_pl(target_zone, TRUE)] [target] na [tool].",
+				"[user] zaczyna wymieniać [strefa_pl(target_zone, TRUE)] [target].")
 		else
-			to_chat(user, "<span class='warning'>[tool] isn't the right type for [parse_zone(target_zone)].</span>")
+			to_chat(user, "<span class='warning'>[tool] nie pasuje do tej części ciała ([strefa_pl(target_zone)]).</span>")
 			return -1
 	else if(target_zone == BODY_ZONE_L_ARM || target_zone == BODY_ZONE_R_ARM)
-		display_results(user, target, "<span class='notice'>You begin to attach [tool] onto [target]...</span>",
-			"[user] begins to attach [tool] onto [target]'s [parse_zone(target_zone)].",
-			"[user] begins to attach something onto [target]'s [parse_zone(target_zone)].")
+		display_results(user, target, "<span class='notice'>Zaczynasz mocować [tool] do [target]...</span>",
+			"[user] zaczyna mocować [tool] do ciała [target] ([strefa_pl(target_zone)]).",
+			"[user] zaczyna coś mocować do ciała [target] ([strefa_pl(target_zone)]).")
 	else
-		to_chat(user, "<span class='warning'>[tool] must be installed onto an arm.</span>")
+		to_chat(user, "<span class='warning'>[tool] trzeba zamontować na ramieniu.</span>")
 		return -1
 
 /datum/surgery_step/add_prosthetic/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -74,18 +74,18 @@
 		L.attach_limb(target)
 		if(organ_rejection_dam)
 			target.adjustToxLoss(organ_rejection_dam)
-		display_results(user, target, "<span class='notice'>You succeed in replacing [target]'s [parse_zone(target_zone)].</span>",
-			"[user] successfully replaces [target]'s [parse_zone(target_zone)] with [tool]!",
-			"[user] successfully replaces [target]'s [parse_zone(target_zone)]!")
+		display_results(user, target, "<span class='notice'>Udaje ci się wymienić [strefa_pl(target_zone, TRUE)] [target].</span>",
+			"[user] pomyślnie wymienia [strefa_pl(target_zone, TRUE)] [target] na [tool]!",
+			"[user] pomyślnie wymienia [strefa_pl(target_zone, TRUE)] [target]!")
 		return 1
 	else
 		var/obj/item/bodypart/L = target.newBodyPart(target_zone, FALSE, FALSE)
 		L.is_pseudopart = TRUE
 		L.attach_limb(target)
-		user.visible_message("[user] finishes attaching [tool]!", "<span class='notice'>You attach [tool].</span>")
-		display_results(user, target, "<span class='notice'>You attach [tool].</span>",
-			"[user] finishes attaching [tool]!",
-			"[user] finishes the attachment procedure!")
+		user.visible_message("[user] kończy mocować [tool]!", "<span class='notice'>Mocujesz [tool].</span>")
+		display_results(user, target, "<span class='notice'>Mocujesz [tool].</span>",
+			"[user] kończy mocować [tool]!",
+			"[user] kończy procedurę mocowania!")
 		qdel(tool)
 		if(istype(tool, /obj/item/chainsaw/energy/doom))
 			var/obj/item/mounted_chainsaw/super/new_arm = new(target)

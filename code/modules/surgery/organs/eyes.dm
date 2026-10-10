@@ -12,12 +12,12 @@
 	high_threshold = 0.3 * STANDARD_ORGAN_THRESHOLD	//threshold at 30
 	low_threshold = 0.2 * STANDARD_ORGAN_THRESHOLD	//threshold at 20
 
-	low_threshold_passed = "<span class='info'>Distant objects become somewhat less tangible.</span>"
-	high_threshold_passed = "<span class='info'>Everything starts to look a lot less clear.</span>"
-	now_failing = "<span class='warning'>Darkness envelopes you, as your eyes go blind!</span>"
-	now_fixed = "<span class='info'>Color and shapes are once again perceivable.</span>"
-	high_threshold_cleared = "<span class='info'>Your vision functions passably once more.</span>"
-	low_threshold_cleared = "<span class='info'>Your vision is cleared of any ailment.</span>"
+	low_threshold_passed = "<span class='info'>Odległe przedmioty stają się nieco mniej wyraźne.</span>"
+	high_threshold_passed = "<span class='info'>Wszystko zaczyna wyglądać o wiele mniej wyraźnie.</span>"
+	now_failing = "<span class='warning'>Ogarnia cię ciemność, gdy ślepniesz!</span>"
+	now_fixed = "<span class='info'>Znów dostrzegasz kolory i kształty.</span>"
+	high_threshold_cleared = "<span class='info'>Twój wzrok znów działa znośnie.</span>"
+	low_threshold_cleared = "<span class='info'>Twój wzrok jest wolny od wszelkich dolegliwości.</span>"
 
 	var/sight_flags = 0
 	var/see_in_dark = 2
@@ -136,7 +136,7 @@
 		return
 	if(prob(10 * severity))
 		return
-	to_chat(owner, "<span class='warning'>Static obfuscates your vision!</span>")
+	to_chat(owner, "<span class='warning'>Szumy zasłaniają ci widok!</span>")
 	owner.flash_act(visual = 1)
 
 /obj/item/organ/eyes/robotic/xray
@@ -250,10 +250,10 @@
 		activate()
 
 /obj/item/organ/eyes/robotic/glow/proc/prompt_for_controls(mob/user)
-	var/C = input(owner, "Select Color", "Select color", "#ffffff") as color|null
+	var/C = input(owner, "Wybierz kolor", "Wybierz kolor", "#ffffff") as color|null
 	if(!C || QDELETED(src) || QDELETED(user) || QDELETED(owner) || owner != user)
 		return
-	var/range = input(user, "Enter range (0 - [max_light_beam_distance])", "Range Select", 0) as null|num
+	var/range = input(user, "Podaj zasięg (0 - [max_light_beam_distance])", "Wybór zasięgu", 0) as null|num
 
 	set_distance(CLAMP(range, 0, max_light_beam_distance))
 	assume_rgb(C)
@@ -293,7 +293,7 @@
 	start_visuals()
 	RegisterSignal(owner, COMSIG_ATOM_DIR_CHANGE, PROC_REF(update_visuals))
 	if(!silent)
-		to_chat(owner, "<span class='warning'>Your [src] clicks and makes a whining noise, before shooting out a beam of light!</span>")
+		to_chat(owner, "<span class='warning'>[src] klika i wydaje piskliwy dźwięk, po czym wystrzeliwuje wiązkę światła!</span>")
 	active = TRUE
 	cycle_mob_overlay()
 
@@ -301,7 +301,7 @@
 	UnregisterSignal(owner, COMSIG_ATOM_DIR_CHANGE)
 	clear_visuals()
 	if(!silent)
-		to_chat(owner, "<span class='warning'>Your [src] shuts off!</span>")
+		to_chat(owner, "<span class='warning'>[src] się wyłącza!</span>")
 	active = FALSE
 	remove_mob_overlay()
 
