@@ -25,27 +25,27 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/underwear, GLOB.underwear_list, GLOB.underwear_m, GLOB.underwear_f)
 	switch(gender)
 		if(MALE)
-			return pick(GLOB.underwear_m)
+			return pick(unlocked_accessories(GLOB.underwear_m)) // AQ EDIT - bez polskiej bielizny do odblokowania
 		if(FEMALE)
-			return pick(GLOB.underwear_f)
+			return pick(unlocked_accessories(GLOB.underwear_f)) // AQ EDIT - bez polskiej bielizny do odblokowania
 		else
-			return pick(GLOB.underwear_list)
+			return pick(unlocked_accessories(GLOB.underwear_list)) // AQ EDIT - bez polskiej bielizny do odblokowania
 
 /proc/random_undershirt(gender)
 	if(!GLOB.undershirt_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/undershirt, GLOB.undershirt_list, GLOB.undershirt_m, GLOB.undershirt_f)
 	switch(gender)
 		if(MALE)
-			return pick(GLOB.undershirt_m)
+			return pick(unlocked_accessories(GLOB.undershirt_m)) // AQ EDIT - bez polskiej bielizny do odblokowania
 		if(FEMALE)
-			return pick(GLOB.undershirt_f)
+			return pick(unlocked_accessories(GLOB.undershirt_f)) // AQ EDIT - bez polskiej bielizny do odblokowania
 		else
-			return pick(GLOB.undershirt_list)
+			return pick(unlocked_accessories(GLOB.undershirt_list)) // AQ EDIT - bez polskiej bielizny do odblokowania
 
 /proc/random_socks()
 	if(!GLOB.socks_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/socks, GLOB.socks_list)
-	return pick(GLOB.socks_list)
+	return pick(unlocked_accessories(GLOB.socks_list)) // AQ EDIT - bez polskiej bielizny do odblokowania
 
 /proc/random_features()
 	if(!GLOB.tails_list_human.len)

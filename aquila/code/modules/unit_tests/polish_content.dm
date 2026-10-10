@@ -227,6 +227,8 @@
 				return "[accessory.type] uses [accessory.icon]"
 			if(!icon_exists(accessory.icon, accessory.icon_state))
 				return "[accessory.type] has no icon_state \"[accessory.icon_state]\""
+			if(!GLOB.loadout_locked_accessories[name])
+				return "[accessory.type] cannot be unlocked in the loadout"
 			if(istype(accessory, /datum/sprite_accessory/underwear))
 				var/datum/sprite_accessory/underwear/underwear = accessory
 				if(!underwear.use_static)
