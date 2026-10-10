@@ -108,10 +108,7 @@ GLOBAL_LIST_EMPTY(simple_teamchats)
 /datum/component/simple_teamchat/Destroy(force, silent)
 	LAZYREMOVE(GLOB.simple_teamchats[key], src)
 	if(chatAction)
-		if(chatAction.holder)
-			chatAction.Remove(chatAction.holder)
-		else
-			chatAction.Remove(get_user())
+		chatAction.Remove(chatAction.owner) //AQ EDIT - holder may be the pager item, not a mob
 		qdel(chatAction)
 	. = ..()
 
