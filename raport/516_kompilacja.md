@@ -17,7 +17,7 @@ Gałąź `byond-516`, baza `aq33/master` 254a9a8328. Kompilator: `C:\Program Fil
 | `code/modules/mob/living/simple_animal/hostile/mining_mobs/hivelord.dm:317` | j.w. | `pickweight(list(1 = 3, 2 = 2, 3 = 1))` |
 | `interface/stylesheet.dm:125` | `invalid number: '5000ms'` | patrz niżej |
 
-**`caller` nie jest problemem.** Bee pisało w #12240, że to słowo zastrzeżone, ale 516.1688 kompiluje nasze 120 użyć bez ostrzeżenia. Nie ruszamy.
+**`caller` (poprawione później, commit `d9a9369885`):** kompiluje się bez ostrzeżenia, ale w 516 to wbudowane słowo. Argumenty o tej nazwie działają normalnie, za to **zmienna datumu `caller` czytana bez `src.` wewnątrz procedury zwraca wbudowany obiekt wywołujący**. Dotyczyło to tylko `/datum/pathfind` w `code/__HELPERS/path.dm`: pathfinding wszystkich botów był zepsuty (wykryte w CI przez runtime „Invalid A* start or destination”). Zmienna przemianowana na `pathfinding_atom` jak u Bee, `check_grep.sh` blokuje nowe zmienne o tej nazwie.
 
 ## Co zrobiono (commit na `byond-516`)
 
