@@ -5,7 +5,7 @@
 /datum/clockcult/scripture/abscond
 	name = "Abscond"
 	desc = "Return you and anyone you are dragging back to Reebe."
-	tip = "Transports you and anyone you are dragging to Reebe."
+	tip = "Przenosi ciebie i każdego, kogo ciągniesz, na Reebe."
 	button_icon_state = "Abscond"
 	power_cost = 5
 	invokation_time = 25

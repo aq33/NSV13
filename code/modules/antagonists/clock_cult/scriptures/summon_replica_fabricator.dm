@@ -5,7 +5,7 @@
 /datum/clockcult/scripture/replica_fabricator
 	name = "Replica Fabricator"
 	desc = "Summons a replica fabricator, which can fabricate brass for building defenses."
-	tip = "Create brass and repair structures"
+	tip = "Wytwarza mosiądz i naprawia struktury"
 	button_icon_state = "Replica Fabricator"
 	power_cost = 400
 	cogs_required = 2

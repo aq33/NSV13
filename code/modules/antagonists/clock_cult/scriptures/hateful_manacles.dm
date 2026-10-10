@@ -4,7 +4,7 @@
 /datum/clockcult/scripture/slab/hateful_manacles
 	name = "Hateful Manacles"
 	desc = "Forms replicant manacles around a target's wrists that function like handcuffs, restraining the target."
-	tip = "Handcuff a target at close range to subdue them for conversion or vitality extraction."
+	tip = "Skuwa cel z bliska, by go obezwładnić do nawrócenia lub wyssania witalności."
 	button_icon_state = "Hateful Manacles"
 	power_cost = 25
 	invokation_time = 15
@@ -22,11 +22,11 @@
 	if(is_servant_of_ratvar(M))
 		return FALSE
 	if(M.handcuffed)
-		to_chat(invoker, "<span class='brass'>[M] is already restrained!</span>")
+		to_chat(invoker, "<span class='brass'>[M] jest już skrępowany!</span>")
 		return FALSE
 	playsound(M, 'sound/weapons/handcuffs.ogg', 30, TRUE, -2)
-	M.visible_message("<span class='danger'>[invoker] forms a well of energy around [M], brass appearing at their wrists!</span>",\
-						"<span class='userdanger'>[invoker] is trying to restrain you!</span>")
+	M.visible_message("<span class='danger'>[invoker] tworzy studnię energii wokół [M], a na nadgarstkach pojawia się mosiądz!</span>",\
+						"<span class='userdanger'>[invoker] próbuje cię skrępować!</span>")
 	if(do_after(invoker, 30, target=M))
 		if(M.handcuffed)
 			return FALSE

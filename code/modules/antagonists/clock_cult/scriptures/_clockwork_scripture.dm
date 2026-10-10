@@ -76,7 +76,7 @@
 		message_admins("No invoker for [name]")
 		return FALSE
 	if(invoker.get_active_held_item() != invoking_slab && !iscyborg(invoker))
-		to_chat(invoker, "<span class='brass'>You fail to invoke [name].</span>")
+		to_chat(invoker, "<span class='brass'>Nie udaje ci się przywołać: [name].</span>")
 		return FALSE
 	var/invokers
 	for(var/mob/living/M in viewers(invoker))
@@ -85,13 +85,13 @@
 		if(is_servant_of_ratvar(M))
 			invokers++
 	if(invokers < invokers_required)
-		to_chat(invoker, "<span class='brass'>You need [invokers_required] servants to channel [name]!</span>")
+		to_chat(invoker, "<span class='brass'>Do przywołania [name] potrzebujesz [invokers_required] sług!</span>")
 		return FALSE
 	return TRUE
 
 /datum/clockcult/scripture/proc/begin_invoke(mob/living/M, obj/item/clockwork/clockwork_slab/slab, bypass_unlock_checks = FALSE)
 	if(M.get_active_held_item() != slab && !iscyborg(M))
-		to_chat(M, "<span class='brass'>You need to have the [slab.name] in your active hand to recite scriptures.</span>")
+		to_chat(M, "<span class='brass'>Do recytowania pism musisz trzymać [slab.name] w aktywnej dłoni.</span>")
 		return
 	slab.invoking_scripture = src
 	invoker = M
@@ -106,7 +106,7 @@
 	recital()
 	if(do_after(M, invokation_time, target=M, extra_checks=CALLBACK(src, PROC_REF(check_special_requirements), M)))
 		invoke()
-		to_chat(M, "<span class='brass'>You invoke [name].</span>")
+		to_chat(M, "<span class='brass'>Przywołujesz: [name].</span>")
 		if(end_on_invokation)
 			end_invoke()
 	else
@@ -131,7 +131,7 @@
 	if(!..())
 		return FALSE
 	for(var/obj/structure/destructible/clockwork/structure in get_turf(invoker))
-		to_chat(invoker, "<span class='brass'>You cannot invoke that here, the tile is occupied by [structure].</span>")
+		to_chat(invoker, "<span class='brass'>Nie możesz tego tu przywołać, pole zajmuje [structure].</span>")
 		return FALSE
 	return TRUE
 
@@ -183,7 +183,7 @@
 	invoking_slab.charge_overlay = slab_overlay
 	invoking_slab.update_icon()
 	invoking_slab.active_scripture = src
-	PH.add_ranged_ability(invoker, "<span class='brass'>You prepare [name]. <b>Click on a target to use.</b></span>")
+	PH.add_ranged_ability(invoker, "<span class='brass'>Przygotowujesz: [name]. <b>Kliknij cel, by użyć.</b></span>")
 	count_down()
 	invoke_success()
 
@@ -213,7 +213,7 @@
 	if(loop_timer_id)
 		deltimer(loop_timer_id)
 		loop_timer_id = null
-	to_chat(invoker, "<span class='brass'>You are no longer invoking <b>[name]</b></span>")
+	to_chat(invoker, "<span class='brass'>Już nie przywołujesz: <b>[name]</b></span>")
 	qdel(progress)
 	PH.remove_ranged_ability()
 	invoking_slab.charge_overlay = null
@@ -257,7 +257,7 @@
 	desc = scripture.tip
 	button_icon_state = scripture.button_icon_state
 	if(scripture.power_cost)
-		desc += "<br>Draws <b>[scripture.power_cost]W</b> from the ark per use."
+		desc += "<br>Pobiera z arki <b>[scripture.power_cost] W</b> na użycie."
 	..(M)
 	button.locked = TRUE
 	button.ordered = TRUE
@@ -278,7 +278,7 @@
 	if(!activation_slab.invoking_scripture)
 		scripture.begin_invoke(owner, activation_slab)
 	else
-		to_chat(owner, "<span class='brass'>You fail to invoke [name].</span>")
+		to_chat(owner, "<span class='brass'>Nie udaje ci się przywołać: [name].</span>")
 
 //==================================//
 // !     Hierophant Transmit      ! //
@@ -297,7 +297,7 @@
 	return ..()
 
 /datum/action/innate/clockcult/transmit/Activate()
-	hierophant_message(stripped_input(owner, "What do you want to tell your allies?", "Hierophant Transmit", ""), owner, "<span class='brass'>")
+	hierophant_message(stripped_input(owner, "Co chcesz przekazać sojusznikom?", "Przekaz Hierofanta", ""), owner, "<span class='brass'>")
 
 /datum/action/innate/clockcult/transmit/Grant(mob/M)
 	..(M)

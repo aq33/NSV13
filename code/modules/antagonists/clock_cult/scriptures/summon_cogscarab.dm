@@ -4,7 +4,7 @@
 /datum/clockcult/scripture/cogscarab
 	name = "Summon Cogscarab"
 	desc = "Summon a Cogscarab shell, which will be possessed by fallen Rat'Varian soldiers. Requires 2 invokers. Takes longer the more cogscarabs are alive. Requires 20 vitality."
-	tip = "Use Cogscarabs to fortify Reebe while the human servants convert and sabotage the crew."
+	tip = "Używaj zębatkoskarabeuszy do umacniania Reebe, podczas gdy ludzcy słudzy nawracają i sabotują załogę."
 	button_icon_state = "Cogscarab"
 	power_cost = 500
 	vitality_cost = 20
@@ -17,13 +17,13 @@
 /datum/clockcult/scripture/cogscarab/begin_invoke(mob/living/M, obj/item/clockwork/clockwork_slab/slab, bypass_unlock_checks)
 	invokation_time = 120 + (60 * GLOB.cogscarabs.len)
 	if(!is_reebe(M.z))
-		to_chat(M, "<span class='warning'>You must do this on Reebe!</span>")
+		to_chat(M, "<span class='warning'>Musisz to zrobić na Reebe!</span>")
 		return
 	if(GLOB.cogscarabs.len > 8)
-		to_chat(M, "<span class='warning'>You can't summon anymore cogscarabs.</span>")
+		to_chat(M, "<span class='warning'>Nie możesz przywołać więcej zębatkoskarabeuszy.</span>")
 		return
 	if(GLOB.gateway_opening)
-		to_chat(M, "<span class='warning'>It is too late to summon cogscarabs now, Rat'var is coming!</span>")
+		to_chat(M, "<span class='warning'>Za późno na przywoływanie zębatkoskarabeuszy, Rat'var nadchodzi!</span>")
 		return
 	. = ..()
 

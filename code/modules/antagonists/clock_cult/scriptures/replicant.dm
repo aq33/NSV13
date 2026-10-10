@@ -4,7 +4,7 @@
 /datum/clockcult/scripture/replicant
 	name = "Replicant"
 	desc = "Causes the slab to summon a copy of itself, allowing you to replace slabs if they get lost."
-	tip = "Make another slab as a backup."
+	tip = "Tworzy zapasową płytę."
 	button_icon_state = "Replicant"
 	power_cost = 50
 	invokation_time = 30

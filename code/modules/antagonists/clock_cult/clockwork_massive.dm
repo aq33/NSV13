@@ -3,8 +3,8 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 /obj/structure/destructible/clockwork/massive/celestial_gateway
 	name = "\improper Ark of the Clockwork Justiciar"
 	desc = "A massive, hulking amalgamation of parts. It seems to be maintaining a very unstable bluespace anomaly."
-	clockwork_desc = "Nezbere's magnum opus: a hulking clockwork machine capable of combining bluespace and steam power to summon Ratvar. Once activated, \
-	its instability will cause one-way bluespace rifts to open across the station to the City of Cogs, so be prepared to defend it at all costs."
+	clockwork_desc = "Magnum opus Nezbere: potężna mechaniczna maszyna łącząca bluespace i parę, by przywołać Ratvara. Po aktywacji \
+	jej niestabilność otworzy na statku jednokierunkowe szczeliny bluespace do Miasta Zębatek, więc bądź gotów bronić jej za wszelką cenę."
 	max_integrity = 1000
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "clockwork_gateway_components"
@@ -32,17 +32,17 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 	if(GLOB.ratvar_risen)
 		return
 	destroyed = TRUE
-	hierophant_message("The Ark has been destroyed, Reebe is becomming unstable!", null, "<span class='large_brass'>")
+	hierophant_message("Arka została zniszczona, Reebe staje się niestabilne!", null, "<span class='large_brass'>")
 	for(var/mob/living/M in GLOB.player_list)
 		if(!is_reebe(M.z))
 			continue
 		if(is_servant_of_ratvar(M))
-			to_chat(M, "<span class='reallybig hypnophrase'>Your mind is distorted by the distant sound of a thousand screams. <i>YOU HAVE FAILED TO PROTECT MY ARK. YOU WILL BE TRAPPED HERE WITH ME TO SUFFER FOREVER...</i></span>")
+			to_chat(M, "<span class='reallybig hypnophrase'>Twój umysł zniekształca odległy odgłos tysiąca krzyków. <i>NIE OBRONILIŚCIE MOJEJ ARKI. UTKNIECIE TU ZE MNĄ, BY CIERPIEĆ NA WIEKI...</i></span>")
 			continue
 		var/safe_place = find_safe_turf()
 		M.SetSleeping(50)
-		to_chat(M, "<span class='reallybig hypnophrase'>Your mind is distorted by the distant sound of a thousand screams before suddenly everything falls silent.</span>")
-		to_chat(M, "<span class='hypnophrase'>The only thing you remember is suddenly feeling warm and safe.</span>")
+		to_chat(M, "<span class='reallybig hypnophrase'>Twój umysł zniekształca odległy odgłos tysiąca krzyków, po czym nagle wszystko cichnie.</span>")
+		to_chat(M, "<span class='hypnophrase'>Pamiętasz tylko, że nagle zrobiło ci się ciepło i bezpiecznie.</span>")
 		M.forceMove(safe_place)
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
@@ -57,9 +57,9 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 /obj/structure/destructible/clockwork/massive/celestial_gateway/examine(mob/user)
 	. = ..()
 	if(GLOB.ratvar_arrival_tick)
-		. += "It will open in [max((GLOB.ratvar_arrival_tick - world.time)/10, 0)] seconds."
+		. += "Otworzy się za [max((GLOB.ratvar_arrival_tick - world.time)/10, 0)] s."
 	else
-		. += "It doesn't seem to be doing much right now, maybe one day it will serve its purpose."
+		. += "Na razie chyba niewiele robi, może kiedyś spełni swój cel."
 
 /obj/structure/destructible/clockwork/massive/celestial_gateway/process(delta_time)
 	if(DT_PROB(10, delta_time))
@@ -69,7 +69,7 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 	if(!(flags_1 & NODECONSTRUCT_1))
 		if(!disassembled)
 			resistance_flags |= INDESTRUCTIBLE
-			visible_message("<span class='userdanger'>[src] begins to pulse uncontrollably... you might want to run!</span>")
+			visible_message("<span class='userdanger'>[src] zaczyna pulsować w niekontrolowany sposób... może lepiej uciekaj!</span>")
 			sound_to_playing_players(volume = 50, channel = CHANNEL_JUSTICAR_ARK, S = sound('sound/effects/clockcult_gateway_disrupted.ogg'))
 			for(var/mob/M in GLOB.player_list)
 				var/turf/T = get_turf(M)
@@ -90,7 +90,7 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 	. = ..()
 	if(!.)
 		return
-	hierophant_message("The ark is taking damage!", null, "<span class='large_brass'>")
+	hierophant_message("Arka otrzymuje obrażenia!", null, "<span class='large_brass'>")
 	flick("clockwork_gateway_damaged", src)
 	playsound(src, 'sound/machines/clockcult/ark_damage.ogg', 75, FALSE)
 
@@ -104,8 +104,8 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 	icon_state = "clockwork_gateway_charging"
 	for(var/datum/mind/M in GLOB.servants_of_ratvar)
 		SEND_SOUND(M.current, s)
-		to_chat(M, "<span class='big_brass'>The Ark has been activated, you will be transported soon!</span>")
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(hierophant_message), "Invoke 'Clockwork Armaments' using your Clockwork Slab to get powerful armour and weapons.", "Nezbere", "nezbere", FALSE, FALSE), 10)
+		to_chat(M, "<span class='big_brass'>Arka została aktywowana, wkrótce zostaniesz przeniesiony!</span>")
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(hierophant_message), "Przywołaj 'Mechaniczne Uzbrojenie' za pomocą Mechanicznej Płyty, by zdobyć potężny pancerz i broń.", "Nezbere", "nezbere", FALSE, FALSE), 10)
 	addtimer(CALLBACK(src, PROC_REF(announce_gateway)), 300)
 	addtimer(CALLBACK(src, PROC_REF(recall_sound)), 270)
 
@@ -128,10 +128,10 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 	mass_recall(TRUE)
 	var/grace_time = GLOB.narsie_breaching ? 0 : 1800
 	addtimer(CALLBACK(src, PROC_REF(begin_assault)), grace_time)
-	priority_announce("Massive [Gibberish("bluespace", 100)] anomaly detected on all frequencies. All crew are directed to \
-	@!$, [text2ratvar("PURGE ALL UNTRUTHS")] <&. the anomalies and destroy their source to prevent further damage to corporate property. This is \
-	not a drill.[grace_period ? " Estimated time of appearance: [grace_time/10] seconds. Use this time to prepare for an attack on [station_name()]." : ""]"\
-	,"Central Command Higher Dimensional Affairs", 'sound/magic/clockwork/ark_activation.ogg')
+	priority_announce("Na wszystkich częstotliwościach wykryto potężną anomalię [Gibberish("bluespace", 100)]. Cała załoga ma \
+	@!$, [text2ratvar("PURGE ALL UNTRUTHS")] <&. anomalie i zniszczyć ich źródło, by zapobiec dalszym szkodom w mieniu korporacji. To \
+	nie są ćwiczenia.[grace_period ? " Szacowany czas pojawienia się: [grace_time/10] s. Wykorzystajcie ten czas, by przygotować się na atak na [station_name()]." : ""]"\
+	,"Wydział Spraw Wyższych Wymiarów Centrali", 'sound/magic/clockwork/ark_activation.ogg')
 	sound_to_playing_players(volume = 10, channel = CHANNEL_JUSTICAR_ARK, S = sound('sound/effects/clockcult_gateway_charging.ogg', TRUE))
 	GLOB.ratvar_arrival_tick = world.time + 6000 + grace_time
 
@@ -153,10 +153,10 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 		SEND_SOUND(M, 'sound/magic/clockwork/invoke_general.ogg')
 
 /obj/structure/destructible/clockwork/massive/celestial_gateway/proc/begin_assault()
-	priority_announce("Space-time anomalies detected near the station. Source determined to be a temporal \
-		energy pulse emanating from J1523-215. All crew are to enter [text2ratvar("prep#re %o di%")]\
-		and destroy the [text2ratvar("I'd like to see you try")], which has been determined to be the source of the \
-		pulse to prevent mass damage to Nanotrasen property.", "Anomaly Alert", ANNOUNCER_SPANOMALIES)
+	priority_announce("W pobliżu statku wykryto anomalie czasoprzestrzenne. Ustalono, że źródłem jest czasowy \
+		impuls energii z J1523-215. Cała załoga ma wejść do [text2ratvar("prep#re %o di%")]\
+		i zniszczyć [text2ratvar("I'd like to see you try")], które ustalono jako źródło \
+		impulsu, by zapobiec masowym szkodom w mieniu Nanotrasen.", "Alarm - anomalia", ANNOUNCER_SPANOMALIES)
 
 	for(var/i in 1 to 100)
 		var/turf/T = get_random_station_turf()
@@ -169,10 +169,10 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 	addtimer(CALLBACK(src, PROC_REF(begin_ratvar_arrival)), 2400)
 	START_PROCESSING(SSobj, src)
 	phase_messages = list(
-		"<span class='warning'>You hear other-worldly sounds from the north.</span>",
-		"<span class='warning'>You feel the fabric of reality twist and bend.</span>",
-		"<span class='warning'>Your mind buzzes with fear.</span>",
-		"<span class='warning'>You hear otherworldly screams from all around you.</span>"
+		"<span class='warning'>Słyszysz nieziemskie dźwięki z północy.</span>",
+		"<span class='warning'>Czujesz, jak tkanka rzeczywistości się wykręca i zgina.</span>",
+		"<span class='warning'>Twój umysł brzęczy ze strachu.</span>",
+		"<span class='warning'>Słyszysz wokół siebie nieziemskie krzyki.</span>"
 	)
 
 /obj/structure/destructible/clockwork/massive/celestial_gateway/proc/begin_ratvar_arrival()
@@ -180,17 +180,17 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 	icon_state = "clockwork_gateway_closing"
 	addtimer(CALLBACK(src, PROC_REF(ratvar_approaches)), 1200)
 	phase_messages = list(
-		"<span class='warning'>You hear otherworldly sounds from the north.</span>",
-		"<span class='brass'>The Celestial Gateway is feeding into the bluespace rift!</span>",
-		"<span class='warning'>You feel reality shudder for a moment...</span>",
-		"<span class='brass'>You feel time and space distorting around you...</span>"
+		"<span class='warning'>Słyszysz nieziemskie dźwięki z północy.</span>",
+		"<span class='brass'>Niebiańska Brama zasila szczelinę bluespace!</span>",
+		"<span class='warning'>Czujesz, jak rzeczywistość na chwilę drży...</span>",
+		"<span class='brass'>Czujesz, jak czas i przestrzeń zniekształcają się wokół ciebie...</span>"
 	)
 
 /obj/structure/destructible/clockwork/massive/celestial_gateway/proc/ratvar_approaches()
 	if(destroyed)
 		return
 	STOP_PROCESSING(SSobj, src)
-	hierophant_message("Ratvar approaches, you shall be eternally rewarded for your servitude!", null, "<span class='large_brass'>")
+	hierophant_message("Ratvar nadchodzi, zostaniecie wiecznie nagrodzeni za swoją służbę!", null, "<span class='large_brass'>")
 	resistance_flags |= INDESTRUCTIBLE
 	for(var/mob/living/M in GLOB.all_servants_of_ratvar)
 		M.status_flags |= GODMODE
@@ -244,7 +244,7 @@ GLOBAL_VAR(cult_ratvar)
 	. = ..()
 	desc = "[text2ratvar("That's Ratvar, the Clockwork Justicar. The great one has risen.")]"
 	SEND_SOUND(world, 'sound/effects/ratvar_reveal.ogg')
-	to_chat(world, "<span class='ratvar'>The bluespace veil gives way to Ratvar, his light shall shine upon all mortals!</span>")
+	to_chat(world, "<span class='ratvar'>Zasłona bluespace ustępuje przed Ratvarem, jego światło zaświeci nad wszystkimi śmiertelnikami!</span>")
 	UnregisterSignal(src, COMSIG_ATOM_BSA_BEAM)
 	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(trigger_clockcult_victory), src)
 	check_gods_battle()
@@ -265,10 +265,10 @@ GLOBAL_VAR(cult_ratvar)
 					M.Knockdown(5 * delta_time)
 				if(prob(max(GLOB.servants_of_ratvar.len/2, 15)))
 					SEND_SOUND(world, 'sound/magic/demon_dies.ogg')
-					to_chat(world, "<span class='ratvar'>You were a fool for underestimating me...</span>")
+					to_chat(world, "<span class='ratvar'>Głupcy, że mnie nie docenialiście...</span>")
 					qdel(ratvar_target)
 					for(var/datum/mind/M as() in SSticker.mode?.cult)
-						to_chat(M, "<span class='userdanger'>You feel a stabbing pain in your chest... This can't be happening!</span>")
+						to_chat(M, "<span class='userdanger'>Czujesz kłujący ból w piersi... To nie może się dziać!</span>")
 						M.current?.dust()
 				return
 

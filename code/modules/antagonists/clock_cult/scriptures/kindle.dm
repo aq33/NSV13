@@ -5,12 +5,12 @@
 /datum/clockcult/scripture/slab/kindle
 	name = "Kindle"
 	desc = "Stuns and mutes a target from a short range. Significantly less effective on Reebe."
-	tip = "Stuns and mutes a target from a short range."
+	tip = "Ogłusza i ucisza cel z niewielkiej odległości."
 	button_icon_state = "Kindle"
 	power_cost = 125
 	invokation_time = 30
 	invokation_text = list("Divinity, show them your light!")
-	after_use_text = "Let the power flow through you!"
+	after_use_text = "Niech moc przez ciebie przepłynie!"
 	slab_overlay = "volt"
 	use_time = 150
 	cogs_required = 1
@@ -31,8 +31,8 @@
 		var/mutable_appearance/forbearance = mutable_appearance('icons/effects/genetics.dmi', "servitude", -MUTATIONS_LAYER)
 		M.add_overlay(forbearance)
 		addtimer(CALLBACK(M, TYPE_PROC_REF(/atom, cut_overlay), forbearance), 100)
-		M.visible_message("<span class='warning'>[M] stares blankly, as a field of energy flows around them.</span>", \
-									   "<span class='userdanger'>You feel a slight shock as a wave of energy flows past you.</span>")
+		M.visible_message("<span class='warning'>[M] patrzy tępo, a wokół przepływa pole energii.</span>", \
+									   "<span class='userdanger'>Czujesz lekki wstrząs, gdy przepływa obok ciebie fala energii.</span>")
 		playsound(invoker, 'sound/magic/mm_hit.ogg', 50, TRUE)
 		return TRUE
 	//Blood Cultist Effect
@@ -44,7 +44,7 @@
 		M.color = LIGHT_COLOR_BLOOD_MAGIC
 		animate(M, color = mob_color, time = 300)
 		M.say("Fwebar uloft'gib mirlig yro'fara!")
-		to_chat(invoker, "<span class='brass'>You fail to stun [M]!</span>")
+		to_chat(invoker, "<span class='brass'>Nie udaje ci się ogłuszyć [M]!</span>")
 		playsound(invoker, 'sound/magic/mm_hit.ogg', 50, TRUE)
 		return TRUE
 	//Successful Invokation
@@ -53,7 +53,7 @@
 		if(!HAS_TRAIT(M, TRAIT_MINDSHIELD))
 			M.Paralyze(150)
 		else
-			to_chat(invoker, "<span class='brass'>[M] seems somewhat resistant to your powers!</span>")
+			to_chat(invoker, "<span class='brass'>[M] wydaje się nieco odporny na twoje moce!</span>")
 			M.confused = CLAMP(M.confused, 50, INFINITY)
 	if(issilicon(M))
 		var/mob/living/silicon/S = M

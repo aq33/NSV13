@@ -3,7 +3,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 /obj/item/clockwork/clockwork_slab
 	name = "Clockwork Slab"
 	desc = "A mechanical-looking device filled with intricate cogs that swirl to their own accord."
-	clockwork_desc = "A beautiful work of art, harnessing mechanical energy for a variety of useful powers."
+	clockwork_desc = "Piękne dzieło sztuki, wykorzystujące energię mechaniczną do różnych przydatnych mocy."
 	item_flags = NOBLUDGEON
 	icon_state = "dread_ipad"
 	lefthand_file = 'icons/mob/inhands/antag/clockwork_lefthand.dmi'
@@ -117,20 +117,20 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 /obj/item/clockwork/clockwork_slab/attack_self(mob/living/user)
 	. = ..()
 	if(iscultist(user))
-		to_chat(user, "<span class='big_brass'>You shouldn't be playing with my toys...</span>")
+		to_chat(user, "<span class='big_brass'>Nie powinieneś bawić się moimi zabawkami...</span>")
 		user.Stun(60)
 		user.adjust_blindness(150)
 		user.electrocute_act(10, "[name]")
 		return
 	if(!is_servant_of_ratvar(user))
-		to_chat(user, "<span class='warning'>You cannot figure out what the device is used for!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz pojąć, do czego służy to urządzenie!</span>")
 		return
 	if(active_scripture)
 		active_scripture.end_invokation()
 		return
 	if(buffer)
 		buffer = null
-		to_chat(user, "<span class='brass'>You clear the [src]'s buffer.</span>")
+		to_chat(user, "<span class='brass'>Czyścisz bufor [src].</span>")
 		return
 	ui_interact(user)
 
@@ -178,13 +178,13 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 				return FALSE
 			if(S.type in purchased_scriptures)
 				if(invoking_scripture)
-					to_chat(M, "<span class='brass'>You fail to invoke [name].</span>")
+					to_chat(M, "<span class='brass'>Nie udaje ci się przywołać: [name].</span>")
 					return FALSE
 				if(S.power_cost > GLOB.clockcult_power)
-					to_chat(M, "<span class='neovgre'>You need [S.power_cost]W to invoke [S.name].</span>")
+					to_chat(M, "<span class='neovgre'>Potrzebujesz [S.power_cost] W, by przywołać: [S.name].</span>")
 					return FALSE
 				if(S.vitality_cost > GLOB.clockcult_vitality)
-					to_chat(M, "<span class='neovgre'>You need [S.vitality_cost] vitality to invoke [S.name].</span>")
+					to_chat(M, "<span class='neovgre'>Potrzebujesz [S.vitality_cost] witalności, by przywołać: [S.name].</span>")
 					return FALSE
 				var/datum/clockcult/scripture/new_scripture = new S.type()
 				//Create a new scripture temporarilly to process, when it's done it will be qdeleted.
@@ -193,12 +193,12 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 			else
 				if(cogs >= S.cogs_required)
 					cogs -= S.cogs_required
-					to_chat(M, "<span class='brass'>You unlocked [S.name]. It can now be invoked and quickbound through your slab.</span>")
+					to_chat(M, "<span class='brass'>Odblokowujesz: [S.name]. Możesz to teraz przywoływać i przypisać do szybkiego dostępu przez płytę.</span>")
 					log_game("[S.name] purchased by [M.ckey]/[M.name] the [M.job] for [S.cogs_required] cogs, [cogs] cogs remaining.")
 					purchased_scriptures += S.type
 				else
-					to_chat(M, "<span class='brass'>You need [S.cogs_required] cogs to unlock [S.name], you only have [cogs] left!</span>")
-					to_chat(M, "<span class='brass'><b>Tip:</b> Invoke integration cog and insert the cog into APCs to get more.</span>")
+					to_chat(M, "<span class='brass'>Potrzebujesz [S.cogs_required] zębatek, by odblokować [S.name], a masz tylko [cogs]!</span>")
+					to_chat(M, "<span class='brass'><b>Wskazówka:</b> przywołaj zębatkę integracyjną i włóż ją do APC, żeby zdobyć więcej.</span>")
 			return TRUE
 		if("quickbind")
 			var/datum/clockcult/scripture/S = GLOB.clockcult_all_scriptures[params["scriptureName"]]
@@ -211,7 +211,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 					positions += "([i])"
 				else
 					positions += "([i]) - [QB.name]"
-			var/position = input("Where to quickbind to?", "Quickbind Slot", null) as null|anything in positions
+			var/position = input("Gdzie przypisać szybki dostęp?", "Miejsce szybkiego dostępu", null) as null|anything in positions
 			if(!position)
 				return FALSE
 			//Create and assign the quickbind

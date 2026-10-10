@@ -4,7 +4,7 @@
 /datum/clockcult/scripture/create_structure/ocular_warden
 	name = "Ocular Warden"
 	desc = "An eye turret that will fire upon nearby targets. Requires 2 invokers."
-	tip = "Place these around to prevent crew from rushing past your defenses."
+	tip = "Rozstawiaj je, by załoga nie mogła przebiec obok twoich umocnień."
 	button_icon_state = "Ocular Warden"
 	power_cost = 400
 	invokation_time = 50
@@ -18,18 +18,18 @@
 	if(!..())
 		return FALSE
 	for(var/obj/structure/destructible/clockwork/structure in get_turf(invoker))
-		to_chat(invoker, "<span class='brass'>You cannot invoke that here, the tile is occupied by [structure].</span>")
+		to_chat(invoker, "<span class='brass'>Nie możesz tego tu przywołać, pole zajmuje [structure].</span>")
 		return FALSE
 	for(var/obj/structure/destructible/clockwork/ocular_warden/AC in range(OCULAR_WARDEN_PLACE_RANGE))
-		to_chat(invoker, "<span class='nezbere'>There is another ocular warden nearby, placing them too close will cause them to fight!</span>")
+		to_chat(invoker, "<span class='nezbere'>W pobliżu jest inny strażnik oczny - postawione zbyt blisko zaczną ze sobą walczyć!</span>")
 		return FALSE
 	return TRUE
 
 /obj/structure/destructible/clockwork/ocular_warden
 	name = "ocular warden"
 	desc = "A wide, open eye that stares intently into your soul. It seems resistant to energy based weapons."
-	clockwork_desc = "A defensive device that will fight any nearby intruders."
-	break_message = "<span class='warning'>A black ooze leaks from the ocular warden as it slowly sinks to the ground.</span>"
+	clockwork_desc = "Urządzenie obronne, które walczy z pobliskimi intruzami."
+	break_message = "<span class='warning'>Ze strażnika ocznego wycieka czarna maź, a on powoli osuwa się na ziemię.</span>"
 	icon_state = "ocular_warden"
 	max_integrity = 60
 	armor = list("melee" = -80, "bullet" = -50, "laser" = 40, "energy" = 40, "bomb" = 20, "bio" = 0, "rad" = 0, "stamina" = 0)
