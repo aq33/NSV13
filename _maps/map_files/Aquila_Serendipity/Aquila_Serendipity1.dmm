@@ -400,6 +400,13 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plasteel/tiled/light,
 /area/crew_quarters/heads/cmo)
+"aV" = (
+/obj/item/banner/polski_sztandar,
+/obj/machinery/door/firedoor/border_only/directional/west,
+/obj/machinery/door/firedoor/border_only/directional/east,
+/obj/effect/landmark/zebra_interlock_point,
+/turf/open/floor/plasteel/tiled/light,
+/area/bridge/meeting_room/council)
 "aW" = (
 /obj/structure/sign/directions/plaque/munitions{
 	pixel_x = -32
@@ -3763,13 +3770,6 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/ai_monitored/turret_protected/ai_upload)
-"mX" = (
-/obj/item/banner/solgov,
-/obj/machinery/door/firedoor/border_only/directional/west,
-/obj/machinery/door/firedoor/border_only/directional/east,
-/obj/effect/landmark/zebra_interlock_point,
-/turf/open/floor/plasteel/tiled/light,
-/area/bridge/meeting_room/council)
 "mZ" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
@@ -11811,13 +11811,6 @@
 	},
 /turf/open/floor/engine/airless/light,
 /area/space/nearstation)
-"Qv" = (
-/obj/item/banner/dominion,
-/obj/machinery/door/firedoor/border_only/directional/west,
-/obj/machinery/door/firedoor/border_only/directional/east,
-/obj/effect/landmark/zebra_interlock_point,
-/turf/open/floor/plasteel/tiled/light,
-/area/bridge/meeting_room/council)
 "Qw" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
@@ -52819,8 +52812,8 @@ SL
 Uf
 or
 hk
-Qv
-mX
+aV
+aV
 Wk
 or
 ir
