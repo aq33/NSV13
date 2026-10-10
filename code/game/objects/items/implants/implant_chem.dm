@@ -5,19 +5,7 @@
 	activated = FALSE
 
 /obj/item/implant/chem/get_data()
-	var/dat = {"<b>Implant Specifications:</b><BR>
-				<b>Name:</b> Robust Corp MJ-420 Prisoner Management Implant<BR>
-				<b>Life:</b> Deactivates upon death but remains within the body.<BR>
-				<b>Important Notes: Due to the system functioning off of nutrients in the implanted subject's body, the subject<BR>
-				will suffer from an increased appetite.</B><BR>
-				<HR>
-				<b>Implant Details:</b><BR>
-				<b>Function:</b> Contains a small capsule that can contain various chemicals. Upon receiving a specially encoded signal<BR>
-				the implant releases the chemicals directly into the blood stream.<BR>
-				<b>Special Features:</b>
-				<i>Micro-Capsule</i>- Can be loaded with any sort of chemical agent via the common syringe and can hold 50 units.<BR>
-				Can only be loaded while still in its original case.<BR>
-				<b>Integrity:</b> Implant will last so long as the subject is alive."}
+	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Implant zarządzania więźniami Robust Corp MJ-420<BR><b>Żywotność:</b> dezaktywuje się po śmierci, ale pozostaje w ciele.<BR><b>Ważne uwagi: ponieważ system czerpie energię ze składników odżywczych w ciele nosiciela, nosiciel<BR>będzie miał zwiększony apetyt.</B><BR><HR><b>Szczegóły implantu:</b><BR><b>Działanie:</b> zawiera małą kapsułkę, w której można umieścić różne substancje. Po otrzymaniu specjalnie zakodowanego sygnału<BR>implant uwalnia substancje bezpośrednio do krwiobiegu.<BR><b>Cechy specjalne:</b><i>Mikrokapsułka</i> - można ją napełnić dowolną substancją za pomocą zwykłej strzykawki, mieści 50 jednostek.<BR>Można ją napełniać tylko w oryginalnym opakowaniu.<BR><b>Trwałość:</b> implant działa tak długo, jak nosiciel żyje."}
 	return dat
 
 /obj/item/implant/chem/Initialize(mapload)
@@ -46,9 +34,9 @@
 	else
 		injectamount = cause
 	reagents.trans_to(R, injectamount)
-	to_chat(R, "<span class='italics'>You hear a faint beep.</span>")
+	to_chat(R, "<span class='italics'>Słyszysz ciche piknięcie.</span>")
 	if(!reagents.total_volume)
-		to_chat(R, "<span class='italics'>You hear a faint click from your chest.</span>")
+		to_chat(R, "<span class='italics'>Słyszysz ciche kliknięcie w swojej klatce piersiowej.</span>")
 		qdel(src)
 
 

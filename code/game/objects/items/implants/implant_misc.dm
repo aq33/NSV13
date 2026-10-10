@@ -5,11 +5,7 @@
 	activated = 0
 
 /obj/item/implant/weapons_auth/get_data()
-	var/dat = {"<b>Implant Specifications:</b><BR>
-				<b>Name:</b> Firearms Authentication Implant<BR>
-				<b>Life:</b> 4 hours after death of host<BR>
-				<b>Implant Details:</b> <BR>
-				<b>Function:</b> Allows operation of implant-locked weaponry, preventing equipment from falling into enemy hands."}
+	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Implant uwierzytelniania broni palnej<BR><b>Żywotność:</b> 4 godziny po śmierci nosiciela<BR><b>Szczegóły implantu:</b> <BR><b>Działanie:</b> umożliwia obsługę broni blokowanej implantem, zapobiegając wpadnięciu sprzętu w ręce wroga."}
 	return dat
 
 
@@ -20,20 +16,13 @@
 	uses = 3
 
 /obj/item/implant/adrenalin/get_data()
-	var/dat = {"<b>Implant Specifications:</b><BR>
-				<b>Name:</b> Cybersun Industries Adrenaline Implant<BR>
-				<b>Life:</b> Five days.<BR>
-				<b>Important Notes:</b> <font color='red'>Illegal</font><BR>
-				<HR>
-				<b>Implant Details:</b> Subjects injected with implant can activate an injection of medical cocktails.<BR>
-				<b>Function:</b> Removes stuns, increases speed, and has a mild healing effect.<BR>
-				<b>Integrity:</b> Implant can only be used three times before reserves are depleted."}
+	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Implant adrenaliny Cybersun Industries<BR><b>Żywotność:</b> pięć dni.<BR><b>Ważne uwagi:</b> <font color='red'>Nielegalny</font><BR><HR><b>Szczegóły implantu:</b> nosiciel może aktywować wstrzyknięcie koktajlu medycznego.<BR><b>Działanie:</b> usuwa ogłuszenia, zwiększa szybkość i lekko leczy.<BR><b>Trwałość:</b> implantu można użyć tylko trzy razy, zanim wyczerpią się zapasy."}
 	return dat
 
 /obj/item/implant/adrenalin/activate()
 	. = ..()
 	uses--
-	to_chat(imp_in, "<span class='notice'>You feel a sudden surge of energy!</span>")
+	to_chat(imp_in, "<span class='notice'>Czujesz nagły przypływ energii!</span>")
 	imp_in.SetStun(0)
 	imp_in.SetKnockdown(0)
 	imp_in.SetUnconscious(0)
@@ -86,7 +75,7 @@
 	else
 		if(isliving(imp_in))
 			var/mob/living/L = imp_in
-			healthstring = "<small>Oxygen Deprivation Damage => [round(L.getOxyLoss())]<br />Fire Damage => [round(L.getFireLoss())]<br />Toxin Damage => [round(L.getToxLoss())]<br />Brute Force Damage => [round(L.getBruteLoss())]</small>"
+			healthstring = "<small>Obrażenia od niedotlenienia => [round(L.getOxyLoss())]<br />Oparzenia => [round(L.getFireLoss())]<br />Obrażenia od toksyn => [round(L.getToxLoss())]<br />Urazy => [round(L.getBruteLoss())]</small>"
 			raw_data = list() //Reset list
 			raw_data["oxy"] = list("[round(L.getOxyLoss())]")		//Suffocation
 			raw_data["burn"] = list("[round(L.getFireLoss())]")		//Burn
@@ -150,10 +139,7 @@
 	subspace_transmission = TRUE
 
 /obj/item/implant/radio/get_data()
-	var/dat = {"<b>Implant Specifications:</b><BR>
-				<b>Name:</b> Internal Radio Implant<BR>
-				<b>Life:</b> 24 hours<BR>
-				<b>Implant Details:</b> Allows user to use an internal radio, useful if user expects equipment loss, or cannot equip conventional radios."}
+	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Implant radia wewnętrznego<BR><b>Żywotność:</b> 24 godziny<BR><b>Szczegóły implantu:</b> pozwala korzystać z wewnętrznego radia, przydatne, jeśli nosiciel spodziewa się utraty sprzętu albo nie może nosić zwykłego radia."}
 	return dat
 
 /obj/item/implant/radio/syndicate/selfdestruct
@@ -161,7 +147,7 @@
 
 /obj/item/implant/radio/syndicate/selfdestruct/on_implanted(mob/living/user)
 	if(!user.mind.has_antag_datum(/datum/antagonist/incursion))
-		user.visible_message("<span class='warning'>[imp_in] starts beeping ominously!</span>", "<span class='userdanger'>You have a sudden feeling of dread. The implant is rigged to explode!</span>")
+		user.visible_message("<span class='warning'>[imp_in] zaczyna złowieszczo pikać!</span>", "<span class='userdanger'>Nagle ogarnia cię przerażenie. Implant jest uzbrojony do wybuchu!</span>")
 		playsound(user, 'sound/items/timer.ogg', 30, 0)
 		explosion(src,0,0,2,2, flame_range = 2)
 		user.gib(1)

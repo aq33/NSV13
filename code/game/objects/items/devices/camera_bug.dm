@@ -52,7 +52,7 @@
 
 /obj/item/camera_bug/ui_interact(mob/user = usr)
 	. = ..()
-	var/datum/browser/popup = new(user, "camerabug","Camera Bug",nref=src)
+	var/datum/browser/popup = new(user, "camerabug","Pluskwa kamerowa",nref=src)
 	popup.set_content(menu(get_cameras()))
 	popup.open()
 
@@ -67,7 +67,7 @@
 	var/turf/T_user = get_turf(user.loc)
 	var/turf/T_current = get_turf(current)
 	if(T_user.get_virtual_z_level() != T_current.get_virtual_z_level() || !current.can_use())
-		to_chat(user, "<span class='danger'>[src] has lost the signal.</span>")
+		to_chat(user, "<span class='danger'>[src] traci sygnał.</span>")
 		current = null
 		user.unset_machine()
 		return 0
@@ -91,7 +91,7 @@
 
 /obj/item/camera_bug/proc/menu(list/cameras)
 	if(!cameras || !cameras.len)
-		return "No bugged cameras found."
+		return "Nie znaleziono podsłuchiwanych kamer."
 
 	var/html
 	switch(track_mode)
@@ -112,7 +112,7 @@
 
 		if(BUGMODE_MONITOR)
 			if(current)
-				html = "Analyzing Camera '[current.c_tag]' <a href='byond://?[REF(src)];mode=0'>\[Select Camera\]</a><br>"
+				html = "Analiza kamery '[current.c_tag]' <a href='byond://?[REF(src)];mode=0'>\[Wybierz kamerę\]</a><br>"
 				html += camera_report()
 			else
 				track_mode = BUGMODE_LIST
@@ -130,19 +130,19 @@
 					else
 						outstring = last_found
 					if(!time_diff)
-						html += "Last seen near [outstring] (now)<br>"
+						html += "Ostatnio widziany w pobliżu: [outstring] (teraz)<br>"
 					else
 						// 15 second intervals ~ 1/4 minute
 						var/m = round(time_diff/4)
 						var/s = (time_diff - 4*m) * 15
 						if(!s)
 							s = "00"
-						html += "Last seen near [outstring] ([m]:[s] minute\s ago)<br>"
+						html += "Ostatnio widziany w pobliżu: [outstring] ([m]:[s] min temu)<br>"
 					if(camera && (camera.bug == src)) //Checks to see if the camera has a bug
 						html += "<a href='byond://?src=[REF(src)];emp=[REF(camera_ref)]'>\[Disable\]</a>"
 
 				else
-					html += "Not yet seen."
+					html += "Jeszcze niewidziany."
 			else
 				track_mode = BUGMODE_LIST
 				return .(cameras)
@@ -191,13 +191,13 @@
 				if(M.buckled)
 					dat += " (Sitting)"
 				else
-					dat += " (Laying down)"
+					dat += " (Leży)"
 			dat += " <a href='byond://?[REF(src)];track=[REF(M)]'>\[Track\]</a><br>"
 		if(length(dat) == 0)
-			dat += "No motion detected."
+			dat += "Nie wykryto ruchu."
 		return dat
 	else
-		return "Camera Offline<br>"
+		return "Kamera wyłączona<br>"
 
 /obj/item/camera_bug/Topic(href,list/href_list)
 	if(usr != loc)
@@ -255,7 +255,7 @@
 			if(!same_z_level(camera))
 				return
 			if(!camera.can_use())
-				to_chat(usr, "<span class='warning'>Something's wrong with that camera!  You can't get a feed.</span>")
+				to_chat(usr, "<span class='warning'>Coś jest nie tak z tą kamerą! Nie możesz odebrać obrazu.</span>")
 				return
 			current = camera
 			spawn(6)
@@ -312,7 +312,7 @@
 	var/turf/T_cam = get_turf(C)
 	var/turf/T_bug = get_turf(loc)
 	if(!T_bug || T_cam.get_virtual_z_level() != T_bug.get_virtual_z_level())
-		to_chat(usr, "<span class='warning'>You can't get a signal!</span>")
+		to_chat(usr, "<span class='warning'>Nie możesz złapać sygnału!</span>")
 		return FALSE
 	return TRUE
 

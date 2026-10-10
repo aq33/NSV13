@@ -9,28 +9,28 @@
 		var/mob/living/carbon/human/H = M
 		var/cured = 0
 		if(MOB_ROBOTIC in H.mob_biotypes)
-			H.say("Installing [src]. Please do not turn your [H.dna.species] unit off or otherwise disturb it during the installation process", forced = "antivirus")
+			H.say("Instalowanie [src]. Nie wyłączaj ani nie przeszkadzaj jednostce [H.dna.species] podczas instalacji", forced = "antivirus")
 			if(do_mob(user, H, 450)) //it has unlimited uses, but that's balanced by being very slow
-				H.say("[src] succesfully installed. Initiating scan.", forced = "antivirus")
+				H.say("[src] zainstalowany pomyślnie. Rozpoczynanie skanowania.", forced = "antivirus")
 				for(var/thing in H.diseases)
 					var/datum/disease/D = thing
 					if(istype(D, /datum/disease/advance))
 						var/datum/disease/advance/A = D
 						if(A.resistance >= resistcap)
 							if(A.stealth <= 4)
-								H.say("Failed to delete [D].exe", forced = "antivirus")
+								H.say("Nie udało się usunąć [D].exe", forced = "antivirus")
 							continue
 					else if((D.spread_flags & DISEASE_SPREAD_SPECIAL) || (D.spread_flags & DISEASE_SPREAD_NON_CONTAGIOUS))
-						H.say("Failed to delete [D].exe", forced = "antivirus")
+						H.say("Nie udało się usunąć [D].exe", forced = "antivirus")
 						continue
 					cured += 1
-					H.say("[D].exe deleted...", forced = "antivirus")
+					H.say("Usunięto [D].exe...", forced = "antivirus")
 					D.cure(TRUE)
 					stoplag(5 - cured)
 				if(cured)
-					H.say("[cured] malicious files were deleted. Thank you for using [src].", forced = "antivirus")
+					H.say("Usunięto złośliwych plików: [cured]. Dziękujemy za korzystanie z [src].", forced = "antivirus")
 				else
-					H.say("No malicious files detected!", forced = "antivirus")
+					H.say("Nie wykryto złośliwych plików!", forced = "antivirus")
 			return
 		else
 			return ..()

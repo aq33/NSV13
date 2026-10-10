@@ -37,6 +37,6 @@
 /obj/item/doorCharge/examine(mob/user)
 	. = ..()
 	if(user.mind && user.mind.has_antag_datum(/datum/antagonist/traitor, /datum/antagonist/traitor/internal_affairs, /datum/antagonist/incursion, /datum/antagonist/nukeop))
-		. += "A small explosive device that can be used to sabotage airlocks to cause an explosion upon opening. To apply, remove the airlock's maintenance panel and place it within."
+		. += "Małe urządzenie wybuchowe do sabotowania śluz, by wybuchły przy otwarciu. Aby je założyć, zdejmij panel serwisowy śluzy i umieść je w środku."
 	else
-		. += "A small, suspicious object that feels lukewarm when held."
+		. += "Mały, podejrzany przedmiot, który w dłoni wydaje się letni."

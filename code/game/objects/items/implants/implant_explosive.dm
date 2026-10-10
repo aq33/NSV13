@@ -15,14 +15,7 @@
 	activate("death")
 
 /obj/item/implant/explosive/get_data()
-	var/dat = {"<b>Implant Specifications:</b><BR>
-				<b>Name:</b> Robust Corp RX-78 Employee Management Implant<BR>
-				<b>Life:</b> Activates upon death.<BR>
-				<b>Important Notes:</b> Explodes<BR>
-				<HR>
-				<b>Implant Details:</b><BR>
-				<b>Function:</b> Contains a compact, electrically detonated explosive that detonates upon receiving a specially encoded signal or upon host death.<BR>
-				<b>Special Features:</b> Explodes<BR>
+	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Implant zarządzania pracownikami Robust Corp RX-78<BR><b>Żywotność:</b> aktywuje się po śmierci.<BR><b>Ważne uwagi:</b> wybucha<BR><HR><b>Szczegóły implantu:</b><BR><b>Działanie:</b> zawiera kompaktowy ładunek wybuchowy detonowany elektrycznie po otrzymaniu specjalnie zakodowanego sygnału lub po śmierci nosiciela.<BR><b>Cechy specjalne:</b> wybucha<BR>
 				"}
 	return dat
 
@@ -32,14 +25,14 @@
 		return FALSE
 	if(cause == "action_button" && !popup)
 		popup = TRUE
-		var/response = alert(imp_in, "Are you sure you want to activate your [name]? This will cause you to explode!", "[name] Confirmation", "Yes", "No")
+		var/response = alert(imp_in, "Na pewno chcesz aktywować [name]? Wybuchniesz!", "[name] Confirmation", "Yes", "No")
 		popup = FALSE
 		if(response != "Yes")
 			return FALSE
 	heavy = round(heavy)
 	medium = round(medium)
 	weak = round(weak)
-	to_chat(imp_in, "<span class='notice'>You activate your [name].</span>")
+	to_chat(imp_in, "<span class='notice'>Aktywujesz [name].</span>")
 	active = TRUE
 	var/turf/boomturf = get_turf(imp_in)
 	message_admins("[ADMIN_LOOKUPFLW(imp_in)] has activated their [name] at [ADMIN_VERBOSEJMP(boomturf)], with cause of [cause].")
@@ -66,11 +59,11 @@
 	return ..()
 
 /obj/item/implant/explosive/proc/timed_explosion()
-	imp_in.visible_message("<span class='warning'>[imp_in] starts beeping ominously!</span>")
+	imp_in.visible_message("<span class='warning'>[imp_in] zaczyna złowieszczo pikać!</span>")
 	playsound(loc, 'sound/items/timer.ogg', 30, 0)
 	sleep(delay*0.25)
 	if(imp_in && !imp_in.stat)
-		imp_in.visible_message("<span class='warning'>[imp_in] doubles over in pain!</span>")
+		imp_in.visible_message("<span class='warning'>[imp_in] zgina się wpół z bólu!</span>")
 		imp_in.Paralyze(140)
 	playsound(loc, 'sound/items/timer.ogg', 30, 0)
 	sleep(delay*0.25)

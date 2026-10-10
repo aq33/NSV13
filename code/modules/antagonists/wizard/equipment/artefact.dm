@@ -328,7 +328,7 @@
 			target.adjust_bodytemperature(50)
 			GiveHint(target)
 		else if(is_pointed(I))
-			to_chat(target, "<span class='userdanger'>Czujesz kłujący ból: [parse_zone(user.zone_selected)]!</span>")
+			to_chat(target, "<span class='userdanger'>Czujesz kłujący ból: [strefa_pl(user.zone_selected)]!</span>")
 			target.Paralyze(40)
 			GiveHint(target)
 		else if(istype(I, /obj/item/bikehorn))

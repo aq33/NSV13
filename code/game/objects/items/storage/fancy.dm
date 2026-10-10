@@ -36,9 +36,9 @@
 	. = ..()
 	if(fancy_open)
 		if(length(contents) == 1)
-			. += "There is one [icon_type] left."
+			. += "Został jeden: [icon_type]."
 		else
-			. += "There are [contents.len <= 0 ? "no" : "[contents.len]"] [icon_type]s left."
+			. += "Pozostało: [contents.len <= 0 ? "nic" : "[contents.len]"] ([icon_type])."
 
 /obj/item/storage/fancy/attack_self(mob/user)
 	fancy_open = !fancy_open
@@ -142,7 +142,7 @@
 
 /obj/item/storage/fancy/cigarettes/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click to extract contents.</span>"
+	. += "<span class='notice'>Alt-kliknij, by wyjąć zawartość.</span>"
 
 /obj/item/storage/fancy/cigarettes/AltClick(mob/living/carbon/user)
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
@@ -152,16 +152,16 @@
 		SEND_SIGNAL(src, COMSIG_TRY_STORAGE_TAKE, I, user)
 		user.put_in_hands(I)
 		contents -= I
-		to_chat(user, "<span class='notice'>You take \a [I] out of the pack.</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz [I] z paczki.</span>")
 	else
 		var/obj/item/J	= locate(/obj/item) in contents
 		if(J && contents.len > 0)
 			SEND_SIGNAL(src, COMSIG_TRY_STORAGE_TAKE, J, user)
 			user.put_in_hands(J)
 			contents -= J		
-			to_chat(user, "<span class='notice'>You take \a [J] out of the pack.</span>")
+			to_chat(user, "<span class='notice'>Wyjmujesz [J] z paczki.</span>")
 		else
-			to_chat(user, "<span class='notice'>There is nothing left in the pack.</span>")
+			to_chat(user, "<span class='notice'>W paczce nic nie zostało.</span>")
 
 
 /obj/item/storage/fancy/cigarettes/update_icon()
@@ -200,7 +200,7 @@
 		SEND_SIGNAL(src, COMSIG_TRY_STORAGE_TAKE, W, M)
 		M.equip_to_slot_if_possible(W, ITEM_SLOT_MASK)
 		contents -= W
-		to_chat(user, "<span class='notice'>You take \a [W] out of the pack.</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz [W] z paczki.</span>")
 
 /obj/item/storage/fancy/cigarettes/dromedaryco
 	name = "\improper DromedaryCo packet"

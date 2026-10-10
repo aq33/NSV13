@@ -85,7 +85,7 @@
 		var/obj/item/bodypart/B = C.get_holding_bodypart_of_item(src)
 		if(B)
 			forceMove(get_turf(C))
-			C.visible_message("<b><span class='danger'>[src] goes off in [C]'s hand, blowing [C.p_their()] [B.name] to bloody shreds!</span></b>", "<span class='userdanger'>[src] goes off in your hand, blowing your [B.name] to bloody shreds!</span>")
+			C.visible_message("<b><span class='danger'>[src] wybucha w ręce [C], rozrywając mu [B.name] na krwawe strzępy!</span></b>", "<span class='userdanger'>[src] wybucha w twojej ręce, rozrywając ci [B.name] na krwawe strzępy!</span>")
 			B.dismember()
 
 	. = ..()
@@ -120,7 +120,7 @@
 		M.Knockdown(200)
 		M.soundbang_act(1, 200, 10, 15)
 		if(M.apply_damages(10, 10))
-			to_chat(M, "<span class='userdanger'>The blast from \the [src] bruises and burns you!</span>")
+			to_chat(M, "<span class='userdanger'>Podmuch [src] obija cię i parzy!</span>")
 
 	// only checking if they're on top of the tile, cause being one tile over will be its own punishment
 

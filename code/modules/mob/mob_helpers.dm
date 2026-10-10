@@ -466,8 +466,8 @@
 		if((brute_heal > 0 && affecting.brute_dam > 0) || (burn_heal > 0 && affecting.burn_dam > 0))
 			if(affecting.heal_damage(brute_heal, burn_heal, 0, BODYTYPE_ROBOTIC))
 				H.update_damage_overlays()
-			user.visible_message("[user] naprawia część [dam ? "wgnieceń" : "przepalonych przewodów"] na kończynie [H] ([parse_zone(affecting.body_zone)]).", \
-			"<span class='notice'>Naprawiasz część [dam ? "wgnieceń" : "przepalonych przewodów"] na [H == user ? "swojej kończynie" : "kończynie [H]"] ([parse_zone(affecting.body_zone)]).</span>")
+			user.visible_message("[user] naprawia część [dam ? "wgnieceń" : "przepalonych przewodów"] na kończynie [H] ([strefa_pl(affecting.body_zone)]).", \
+			"<span class='notice'>Naprawiasz część [dam ? "wgnieceń" : "przepalonych przewodów"] na [H == user ? "swojej kończynie" : "kończynie [H]"] ([strefa_pl(affecting.body_zone)]).</span>")
 			return 1 //successful heal
 		else
 			to_chat(user, "<span class='warning'>[affecting] jest już w dobrym stanie!</span>")

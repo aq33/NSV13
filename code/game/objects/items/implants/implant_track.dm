@@ -38,17 +38,5 @@
 	imp_type = /obj/item/gps/mining/internal
 
 /obj/item/implant/tracking/get_data()
-	var/dat = {"<b>Implant Specifications:</b><BR>
-				<b>Name:</b> Tracking Beacon<BR>
-				<b>Life:</b> 10 minutes after death of host.<BR>
-				<b>Important Notes:</b> Implant also works as a teleporter beacon.<BR>
-				<HR>
-				<b>Implant Details:</b> <BR>
-				<b>Function:</b> Continuously transmits low power signal. Useful for tracking.<BR>
-				<b>Special Features:</b><BR>
-				<i>Neuro-Safe</i>- Specialized shell absorbs excess voltages self-destructing the chip if
-				a malfunction occurs thereby securing safety of subject. The implant will melt and
-				disintegrate into bio-safe elements.<BR>
-				<b>Integrity:</b> Gradient creates slight risk of being overcharged and frying the
-				circuitry. As a result neurotoxins can cause massive damage."}
+	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Nadajnik śledzący<BR><b>Żywotność:</b> 10 minut po śmierci nosiciela.<BR><b>Ważne uwagi:</b> implant działa też jako nadajnik teleportera.<BR><HR><b>Szczegóły implantu:</b> <BR><b>Działanie:</b> stale nadaje sygnał o niskiej mocy. Przydatny do śledzenia.<BR><b>Cechy specjalne:</b><BR><i>Neuroochrona</i> - specjalna powłoka pochłania nadmiar napięcia i w razie awarii niszczy chip, zapewniając bezpieczeństwo nosiciela. Implant stopi się i rozpadnie na bezpieczne biologicznie składniki.<BR><b>Trwałość:</b> gradient stwarza niewielkie ryzyko przeładowania i przepalenia obwodów. W efekcie neurotoksyny mogą wyrządzić ogromne szkody."}
 	return dat

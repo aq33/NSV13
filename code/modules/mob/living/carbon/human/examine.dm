@@ -153,14 +153,14 @@
 	var/r_limbs_missing = 0
 	for(var/t in missing)
 		if(t==BODY_ZONE_HEAD)
-			msg += "<span class='deadsay'><B>Brakuje kończyny: [parse_zone(t)]!</B><span class='warning'>\n"
+			msg += "<span class='deadsay'><B>Brakuje kończyny: [strefa_pl(t)]!</B><span class='warning'>\n"
 			continue
 		if(t == BODY_ZONE_L_ARM || t == BODY_ZONE_L_LEG)
 			l_limbs_missing++
 		else if(t == BODY_ZONE_R_ARM || t == BODY_ZONE_R_LEG)
 			r_limbs_missing++
 
-		msg += "<B>Brakuje kończyny: [parse_zone(t)]!</B>\n"
+		msg += "<B>Brakuje kończyny: [strefa_pl(t)]!</B>\n"
 
 	if(l_limbs_missing >= 2 && r_limbs_missing == 0)
 		msg += "Wygląda już w porządku.\n"

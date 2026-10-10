@@ -94,7 +94,7 @@
 		if(!blocked)
 			visible_message("<span class='danger'>[I] trafia [src]!</span>", \
 							"<span class='userdanger'>[I] cię trafia!</span>")
-			var/armor = run_armor_check(zone, "melee", "Pancerz ochronił twoją kończynę ([parse_zone(zone)]).", "Pancerz złagodził trafienie w kończynę ([parse_zone(zone)]).",I.armour_penetration)
+			var/armor = run_armor_check(zone, "melee", "Pancerz ochronił twoją kończynę ([strefa_pl(zone)]).", "Pancerz złagodził trafienie w kończynę ([strefa_pl(zone)]).",I.armour_penetration)
 			apply_damage(I.throwforce, dtype, zone, armor)
 
 			var/mob/thrown_by = I.thrownby?.resolve()

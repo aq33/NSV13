@@ -21,24 +21,24 @@
 /obj/item/electroadaptive_pseudocircuit/examine(mob/user)
 	. = ..()
 	if(iscyborg(user))
-		. += "<span class='notice'>It has material for <b>[circuits]</b> circuit[circuits == 1 ? "" : "s"]. Use the pseudocircuit on existing circuits to gain material.</span>\n"+\
-		"<span class='notice'>Serves as a substitute for <b>fire/air alarm</b>, <b>firelock</b>, and <b>APC</b> electronics.</span>\n"+\
-		"<span class='notice'>It can also be used on an APC with no power cell to <b>fabricate a low-capacity cell</b> at a high power cost.</span>"
+		. += "<span class='notice'>Ma materiał na <b>[circuits]</b> obwodów. Użyj pseudoobwodu na istniejących obwodach, by zyskać materiał.</span>\n"+\
+		"<span class='notice'>Zastępuje elektronikę <b>alarmów pożarowych/powietrza</b>, <b>grodzi przeciwpożarowych</b> i <b>APC</b>.</span>\n"+\
+		"<span class='notice'>Można go też użyć na APC bez ogniwa, by <b>wytworzyć ogniwo o małej pojemności</b> kosztem dużej ilości energii.</span>"
 
 /obj/item/electroadaptive_pseudocircuit/proc/adapt_circuit(mob/living/silicon/robot/R, circuit_cost = 0)
 	if(QDELETED(R) || !istype(R))
 		return
 	if(!R.cell)
-		to_chat(R, "<span class='warning'>You need a power cell installed for that.</span>")
+		to_chat(R, "<span class='warning'>Do tego potrzebujesz zainstalowanego ogniwa zasilającego.</span>")
 		return
 	if(!R.cell.use(circuit_cost))
-		to_chat(R, "<span class='warning'>You don't have the energy for that (you need [display_energy(circuit_cost)].)</span>")
+		to_chat(R, "<span class='warning'>Brakuje ci energii (potrzebujesz [display_energy(circuit_cost)]).</span>")
 		return
 	if(recharging)
-		to_chat(R, "<span class='warning'>[src] needs some time to recharge first.</span>")
+		to_chat(R, "<span class='warning'>[src] musi się najpierw naładować.</span>")
 		return
 	if(!circuits)
-		to_chat(R, "<span class='warning'>You need more material. Use [src] on existing simple circuits to break them down.</span>")
+		to_chat(R, "<span class='warning'>Potrzebujesz więcej materiału. Użyj [src] na istniejących prostych obwodach, by je rozłożyć.</span>")
 		return
 	playsound(R, 'sound/items/rped.ogg', 50, TRUE)
 	recharging = TRUE
@@ -57,8 +57,8 @@
 		return
 	circuits++
 	maptext = MAPTEXT("[circuits]")
-	user.visible_message("<span class='notice'>User breaks down [target] with [src].</span>", \
-	"<span class='notice'>You recycle [target] into [src]. It now has material for <b>[circuits]</b> circuits.</span>")
+	user.visible_message("<span class='notice'>Użytkownik rozkłada [target] za pomocą [src].</span>", \
+	"<span class='notice'>Przetwarzasz [target] w [src]. Ma teraz materiał na <b>[circuits]</b> obwodów.</span>")
 	playsound(user, 'sound/items/deconstruct.ogg', 50, TRUE)
 	qdel(target)
 

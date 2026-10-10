@@ -37,7 +37,7 @@
 
 
 /obj/item/storage/toolbox/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] robusts [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] robustuje się [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return (BRUTELOSS)
 
 /obj/item/storage/toolbox/emergency
@@ -273,7 +273,7 @@
 	if(!is_type_in_list(src, allowed_toolbox) && (type != /obj/item/storage/toolbox))
 		return
 	if(contents.len >= 1)
-		to_chat(user, "<span class='warning'>They won't fit in, as there is already stuff inside!</span>")
+		to_chat(user, "<span class='warning'>Nie zmieszczą się, bo w środku już coś jest!</span>")
 		return
 	if(T.use(10))
 		var/obj/item/bot_assembly/floorbot/B = new
@@ -291,8 +291,8 @@
 				B.toolbox_color = "s"
 		user.put_in_hands(B)
 		B.update_icon()
-		to_chat(user, "<span class='notice'>You add the tiles into the empty [name]. They protrude from the top.</span>")
+		to_chat(user, "<span class='notice'>Wkładasz płytki do pustego [name]. Wystają z góry.</span>")
 		qdel(src)
 	else
-		to_chat(user, "<span class='warning'>You need 10 floor tiles to start building a floorbot!</span>")
+		to_chat(user, "<span class='warning'>Do budowy floorbota potrzebujesz 10 płytek podłogowych!</span>")
 		return

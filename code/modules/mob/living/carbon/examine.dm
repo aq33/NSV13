@@ -52,9 +52,9 @@
 
 	for(var/t in missing)
 		if(t==BODY_ZONE_HEAD)
-			msg += "<span class='deadsay'><B>Brakuje kończyny: [parse_zone(t)]!</B></span>\n"
+			msg += "<span class='deadsay'><B>Brakuje kończyny: [strefa_pl(t)]!</B></span>\n"
 			continue
-		msg += "<span class='warning'><B>Brakuje kończyny: [parse_zone(t)]!</B></span>\n"
+		msg += "<span class='warning'><B>Brakuje kończyny: [strefa_pl(t)]!</B></span>\n"
 
 
 	var/temp = getBruteLoss()

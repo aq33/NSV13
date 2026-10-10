@@ -753,7 +753,7 @@
 				msg += "\n<a href='byond://?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>[I] tkwi w twojej kończynie ([LB.name])!</a>"
 
 	for(var/t in missing)
-		msg += "\n<span class='boldannounce'>Brakuje ci kończyny: [parse_zone(t)]!</span>"
+		msg += "\n<span class='boldannounce'>Brakuje ci kończyny: [strefa_pl(t)]!</span>"
 
 	if(bleed_rate)
 		msg += "\n<span class='danger'>[capitalize(bleed_msg)]!</span>"
