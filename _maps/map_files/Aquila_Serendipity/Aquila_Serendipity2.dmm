@@ -6,6 +6,13 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel/tiled/light,
 /area/quartermaster/warehouse)
+"ab" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/obj/structure/table/wood/fancy/orange,
+/obj/machinery/cell_charger,
+/turf/open/floor/carpet/ship/beige_carpet,
+/area/hallway/nsv/deck1/hallway)
 "ad" = (
 /obj/structure/rack,
 /obj/item/clothing/ears/earmuffs,
@@ -24,6 +31,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/nsv/weapons)
+"ae" = (
+/obj/machinery/door/firedoor/border_only/directional/east,
+/obj/machinery/door/firedoor/border_only/directional/west,
+/obj/effect/landmark/zebra_interlock_point,
+/obj/machinery/door/airlock/ship/maintenance,
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating,
+/area/maintenance/starboard/central)
 "af" = (
 /obj/structure/sign/poster/official/moth2{
 	pixel_y = 32
@@ -104,6 +119,20 @@
 	},
 /turf/open/floor/monotile/light,
 /area/quartermaster)
+"as" = (
+/obj/structure/barricade/wooden,
+/obj/effect/spawner/room/fivexfour,
+/turf/open/floor/plating,
+/area/maintenance/starboard/central)
+"at" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating,
+/area/maintenance/starboard/central)
+"au" = (
+/obj/structure/cable,
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating,
+/area/maintenance/starboard/central)
 "av" = (
 /obj/structure/statue/gold/ce{
 	anchored = 1
@@ -116,6 +145,31 @@
 /obj/effect/landmark/observer_start,
 /turf/open/floor/carpet/ship/beige_carpet,
 /area/hallway/nsv/deck1/hallway)
+"aw" = (
+/obj/structure/cable,
+/obj/machinery/power/battery{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/machinery/power/battery{
+	pixel_y = 6;
+	pixel_x = 7
+	},
+/obj/machinery/power/battery{
+	pixel_x = -7
+	},
+/obj/machinery/power/battery{
+	pixel_x = 9
+	},
+/turf/open/floor/plasteel/dark/side{
+	dir = 8
+	},
+/area/engine/engine_room)
+"ax" = (
+/obj/structure/cable,
+/obj/effect/spawner/structure/shield_generator,
+/turf/open/floor/plating,
+/area/maintenance/starboard/central)
 "ay" = (
 /obj/machinery/armour_plating_nanorepair_pump/forward_port{
 	apnw_id = "dipity";
@@ -124,6 +178,13 @@
 /obj/structure/cable,
 /turf/open/floor/monotile/steel,
 /area/engine/armour_pump)
+"az" = (
+/obj/structure/sign/warning/nosmoking/circle{
+	pixel_y = 29
+	},
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating,
+/area/maintenance/starboard/central)
 "aC" = (
 /obj/structure/closet/secure_closet/munitions_technician,
 /obj/structure/window/reinforced/spawner/east,
@@ -1828,11 +1889,6 @@
 	},
 /turf/closed/wall/ship,
 /area/quartermaster)
-"jh" = (
-/obj/structure/barricade/wooden,
-/obj/effect/spawner/room/fivexfour,
-/turf/open/floor/plating,
-/area/maintenance/starboard/central)
 "ji" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/junction/flip,
@@ -2688,11 +2744,6 @@
 /obj/structure/cable,
 /turf/open/floor/mineral/titanium/yellow,
 /area/hallway/nsv/deck1/hallway)
-"om" = (
-/obj/structure/cable,
-/obj/effect/spawner/structure/shield_generator,
-/turf/open/floor/plating,
-/area/maintenance/starboard/central)
 "on" = (
 /obj/machinery/airalarm/directional/north,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
@@ -2704,10 +2755,6 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/plating,
 /area/engine/gravity_generator)
-"or" = (
-/obj/structure/barricade/wooden,
-/turf/open/floor/plating,
-/area/maintenance/starboard/central)
 "ot" = (
 /obj/structure/closet/secure_closet/master_at_arms,
 /obj/machinery/airalarm/directional/north,
@@ -4840,11 +4887,6 @@
 /obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/monotile/light,
 /area/quartermaster/lobby)
-"zP" = (
-/obj/structure/cable,
-/obj/structure/barricade/wooden,
-/turf/open/floor/plating,
-/area/maintenance/starboard/central)
 "zT" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/poddoor/shutters/ship/preopen{
@@ -9482,14 +9524,6 @@
 	},
 /turf/open/floor/engine,
 /area/nsv/engine/engine_room/core)
-"YO" = (
-/obj/machinery/door/firedoor/border_only/directional/east,
-/obj/machinery/door/firedoor/border_only/directional/west,
-/obj/effect/landmark/zebra_interlock_point,
-/obj/machinery/door/airlock/ship/maintenance,
-/obj/structure/barricade/wooden,
-/turf/open/floor/plating,
-/area/maintenance/starboard/central)
 "YS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -9544,13 +9578,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/steel,
 /area/engine/storage_shared)
-"Zh" = (
-/obj/structure/sign/warning/nosmoking/circle{
-	pixel_y = 29
-	},
-/obj/structure/barricade/wooden,
-/turf/open/floor/plating,
-/area/maintenance/starboard/central)
 "Zi" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
@@ -37351,7 +37378,7 @@ xX
 sm
 xX
 xX
-xX
+aw
 xX
 dV
 sJ
@@ -41748,7 +41775,7 @@ xI
 oL
 yc
 yc
-YO
+ae
 yc
 yc
 sn
@@ -42004,10 +42031,10 @@ Gr
 xI
 wo
 yc
-or
-or
-or
-jh
+at
+at
+at
+as
 sn
 tA
 OG
@@ -42261,10 +42288,10 @@ Gr
 UL
 Bk
 yc
-or
-or
-or
-zP
+at
+at
+at
+au
 sn
 vm
 DR
@@ -42518,10 +42545,10 @@ Gr
 Pj
 rJ
 yc
-Zh
+az
 Ln
 Ln
-om
+ax
 sn
 BQ
 DR
@@ -42765,7 +42792,7 @@ YK
 Zu
 Hp
 wu
-wu
+ab
 aK
 fz
 ta
@@ -42775,7 +42802,7 @@ Gr
 sO
 Aj
 yc
-or
+at
 Ln
 SR
 Ln
@@ -43032,7 +43059,7 @@ Gr
 XS
 oL
 yc
-or
+at
 Ln
 Ln
 Ln
