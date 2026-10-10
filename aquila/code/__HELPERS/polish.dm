@@ -12,6 +12,35 @@
 			return isnull(plural) ? male : plural
 	return male
 
+/// Czasownik ataku gatunku (attack_verb, klucz po angielsku) w 3. osobie: "[user] [attack_verb_pl(verb)] [cel]".
+/proc/attack_verb_pl(verb)
+	switch(verb)
+		if("punch")
+			return "uderza"
+		if("kick")
+			return "kopie"
+		if("smash")
+			return "miażdży"
+		if("claw")
+			return "drapie"
+		if("slash")
+			return "tnie"
+		if("bite")
+			return "gryzie"
+		if("burn")
+			return "parzy"
+		if("honk")
+			return "trąbi na"
+		if("whips")
+			return "smaga"
+		if("bluespace punch")
+			return "uderza bluespace'owym ciosem"
+		if("monopoliz")
+			return "monopolizuje"
+		if("nationaliz")
+			return "nacjonalizuje"
+	return "uderza"
+
 /// Polska nazwa poziomu alarmu (get_security_level() zwraca klucze po angielsku).
 /proc/get_security_level_pl()
 	switch(GLOB.security_level)
