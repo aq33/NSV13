@@ -40,8 +40,6 @@
 	body_anchors = add_bounds_anchors(H)
 
 	em_block = new(null, body_target)
-	em_block.pixel_x = -world.icon_size
-	em_block.pixel_y = -world.icon_size
 	H.vis_contents += em_block
 
 	// Nogi pod tułowiem (wysuwana z boku nad tylną), ręce nad nim
@@ -53,12 +51,8 @@
 	// Przedmioty w dłoniach nad wszystkim, jak HANDS_LAYER; tyłem pod ciałem (update_held_dir)
 	for(var/index in 1 to 2)
 		var/obj/effect/overlay/walk_held/held = new
-		// BYOND 516 ustawia obiekty z vis_contents względem lewego dolnego rogu obszaru moba, który kotwice przesuwają o -32 px
-		held.pixel_x = -world.icon_size
-		held.pixel_y = -world.icon_size
 		limbs["hand_[index]"] = held
 		H.vis_contents += held
-	update_body_offset()
 	update_side_leg(H.dir)
 	update_held_dir(H.dir)
 	detach_held_items()
@@ -97,16 +91,14 @@
 	var/obj/effect/overlay/walk_limb/limb = new
 	limb.layer = layer
 	limb.render_source = body_target
-	limb.pixel_x = -world.icon_size
-	limb.pixel_y = -world.icon_size
 	limb.add_filter("walk_mask", 1, alpha_mask_filter(render_source = mask.render_target, flags = mask_flags))
 	limbs[state] = limb
 	H.vis_contents += limb
 
-/// BYOND 516 (1648) kotwiczy obraz z render_source w lewym dolnym rogu bufora, a bufor ma rozmiar tego,
-/// co się w nim narysowało. Nakładki wystające poza kafel przesuwały więc obraz ciała względem masek.
-/// Dwa prawie przezroczyste piksele w rogach obszaru 96x96 wokół kafla dają buforowi stały rozmiar
-/// i położenie; fragmenty pokazujące bufor są przesunięte o -32 px, żeby trafić w kafel.
+/// BYOND 516 (1648) zmienił kotwiczenie obrazu z render_source, a bufor jest przycinany do tego, co się
+/// w nim narysowało. Bez wystających nakładek obraz ciała rozjeżdżał się z maskami (zostawał wąski pasek).
+/// Dwa prawie przezroczyste piksele w rogach obszaru 96x96 wokół kafla dają buforom ciała i masek stały
+/// rozmiar; sprawdzone w Dream Seeker 516 dla zwykłego i zmienionego wzrostu oraz leżenia, bez przesunięć.
 /datum/component/walk_animation/proc/add_bounds_anchors(atom/target)
 	var/mutable_appearance/lower_left = mutable_appearance('aquila/icons/mob/walk_masks.dmi', "anchor_ll")
 	lower_left.pixel_x = -world.icon_size
@@ -116,23 +108,6 @@
 	upper_right.pixel_y = world.icon_size
 	. = list(lower_left, upper_right)
 	target.add_overlay(.)
-
-/// Przesunięcie fragmentów pokazujących bufor ciała: lewy dolny róg obszaru kotwic po transformacji moba
-/// (wzrost postaci skaluje i przesuwa obszar wokół środka kafla).
-/datum/component/walk_animation/proc/update_body_offset()
-	var/mob/living/carbon/human/H = parent
-	var/matrix/M = H.transform
-	var/half_size = world.icon_size * 1.5
-	var/offset_x = round(world.icon_size / 2 - half_size * (abs(M.a) + abs(M.b)) + M.c)
-	var/offset_y = round(world.icon_size / 2 - half_size * (abs(M.d) + abs(M.e)) + M.f)
-	if(offset_x == em_block.pixel_x && offset_y == em_block.pixel_y)
-		return
-	em_block.pixel_x = offset_x
-	em_block.pixel_y = offset_y
-	for(var/state in masks)
-		var/obj/effect/overlay/walk_limb/limb = limbs[state]
-		limb.pixel_x = offset_x
-		limb.pixel_y = offset_y
 
 /// Przenosi przedmioty z dłoni 1 i 2 na fragmenty "hand_1"/"hand_2", żeby maski ich nie cięły.
 /// Fragment dostaje kopię nakładki, a kierunek ustawia mu update_held_dir(), więc sprite obraca się z postacią.
@@ -169,8 +144,6 @@
 /datum/component/walk_animation/proc/on_moved(mob/living/carbon/human/source, atom/old_loc, dir, forced)
 	SIGNAL_HANDLER
 
-	update_body_offset()
-
 	if(forced || !isturf(old_loc) || get_dist(old_loc, source) != 1)
 		return
 	if(source.buckled || source.lying || source.throwing || !(source.mobility_flags & MOBILITY_STAND))
@@ -204,8 +177,6 @@
 
 /datum/component/walk_animation/proc/on_dir_change(mob/living/carbon/human/source, old_dir, new_dir)
 	SIGNAL_HANDLER
-
-	update_body_offset()
 
 	update_side_leg(new_dir)
 	update_held_dir(new_dir)
