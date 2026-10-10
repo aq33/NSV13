@@ -56,21 +56,21 @@
 /mob/living/silicon/ai/verb/announcement_help()
 
 	set name = "Pomoc - ogłoszenia"
-	set desc = "Display a list of vocal words to announce to the crew."
+	set desc = "Wyświetla listę słów do ogłaszania załodze."
 	set category = "AI Commands"
 
 	if(incapacitated())
 		return
 
 	var/dat = {"
-	<font class='bad'>WARNING:</font> Misuse of the announcement system will get you job banned.<BR><BR>
-	Here is a list of words you can type into the 'Announcement' button to create sentences to vocally announce to everyone on the same level at you.<BR>
-	<UL><LI>You can also click on the word to PREVIEW it.</LI>
-	<LI>You can only say 30 words for every announcement.</LI>
-	<LI>Do not use punctuation as you would normally, if you want a pause you can use the full stop and comma characters by separating them with spaces, like so: 'Alpha . Test , Bravo'.</LI>
-	<LI>Numbers are in word format, e.g. eight, sixty, etc </LI>
-	<LI>Sound effects begin with an 's' before the actual word, e.g. scensor</LI>
-	<LI>Use Ctrl+F to see if a word exists in the list.</LI></UL><HR>
+	<font class='bad'>UWAGA:</font> nadużywanie systemu ogłoszeń skończy się banem na rolę.<BR><BR>
+	Oto lista słów, które możesz wpisać w przycisku ogłoszenia, by układać zdania ogłaszane na głos wszystkim na tym samym poziomie co ty. Słowa są angielskie, bo tak nagrano dźwięki.<BR>
+	<UL><LI>Kliknij słowo, by je ODSŁUCHAĆ.</LI>
+	<LI>W jednym ogłoszeniu możesz użyć najwyżej 30 słów.</LI>
+	<LI>Nie używaj interpunkcji jak zwykle; jeśli chcesz pauzę, użyj kropki i przecinka oddzielonych spacjami, np.: 'Alpha . Test , Bravo'.</LI>
+	<LI>Liczby zapisuje się słownie po angielsku, np. eight, sixty itd.</LI>
+	<LI>Efekty dźwiękowe zaczynają się od litery 's' przed właściwym słowem, np. scensor</LI>
+	<LI>Użyj Ctrl+F, by sprawdzić, czy słowo jest na liście.</LI></UL><HR>
 	"}
 
 	var/index = 0

@@ -290,57 +290,57 @@
 /mob/living/silicon/pai/proc/softwareMenu()			// Populate the right menu
 	var/dat = ""
 
-	dat += "<A href='byond://?src=[REF(src)];software=refresh'>Refresh</A><br>"
+	dat += "<A href='byond://?src=[REF(src)];software=refresh'>Odśwież</A><br>"
 	// Built-in
-	dat += "<A href='byond://?src=[REF(src)];software=directives'>Directives</A><br>"
-	dat += "<A href='byond://?src=[REF(src)];software=radio;sub=0'>Radio Configuration</A><br>"
-	dat += "<A href='byond://?src=[REF(src)];software=image'>Screen Display</A><br>"
+	dat += "<A href='byond://?src=[REF(src)];software=directives'>Dyrektywy</A><br>"
+	dat += "<A href='byond://?src=[REF(src)];software=radio;sub=0'>Konfiguracja radia</A><br>"
+	dat += "<A href='byond://?src=[REF(src)];software=image'>Wyświetlacz</A><br>"
 	//dat += "Text Messaging <br>"
 	dat += "<br>"
 
 	// Basic
-	dat += "<b>Basic</b> <br>"
+	dat += "<b>Podstawowe</b> <br>"
 	for(var/s in software)
 		if(s == "crew manifest")
-			dat += "<a href='byond://?src=[REF(src)];software=manifest;sub=0'>Crew Manifest</a> <br>"
+			dat += "<a href='byond://?src=[REF(src)];software=manifest;sub=0'>Lista załogi</a> <br>"
 		if(s == "host scan")
-			dat += "<a href='byond://?src=[REF(src)];software=hostscan;sub=0'>Host Health Scan</a> <br>"
+			dat += "<a href='byond://?src=[REF(src)];software=hostscan;sub=0'>Skan zdrowia nosiciela</a> <br>"
 		if(s == "medical records")
-			dat += "<a href='byond://?src=[REF(src)];software=medicalrecord;sub=0'>Medical Records</a> <br>"
+			dat += "<a href='byond://?src=[REF(src)];software=medicalrecord;sub=0'>Akta medyczne</a> <br>"
 		if(s == "security records")
-			dat += "<a href='byond://?src=[REF(src)];software=securityrecord;sub=0'>Security Records</a> <br>"
+			dat += "<a href='byond://?src=[REF(src)];software=securityrecord;sub=0'>Akta ochrony</a> <br>"
 		if(s == "camera")
-			dat += "<a href='byond://?src=[REF(src)];software=[s]'>Camera Jack</a> <br>"
+			dat += "<a href='byond://?src=[REF(src)];software=[s]'>Podłączenie do kamer</a> <br>"
 		if(s == "remote signaller")
-			dat += "<a href='byond://?src=[REF(src)];software=signaller;sub=0'>Remote Signaller</a> <br>"
+			dat += "<a href='byond://?src=[REF(src)];software=signaller;sub=0'>Zdalny sygnalizator</a> <br>"
 		if(s == "loudness booster")
-			dat += "<a href='byond://?src=[REF(src)];software=loudness;sub=0'>Loudness Booster</a> <br>"
+			dat += "<a href='byond://?src=[REF(src)];software=loudness;sub=0'>Wzmacniacz głośności</a> <br>"
 	dat += "<br>"
 
 	// Advanced
-	dat += "<b>Advanced</b> <br>"
+	dat += "<b>Zaawansowane</b> <br>"
 	for(var/s in software)
 		if(s == "camera zoom")
-			dat += "<a href='byond://?src=[REF(src)];software=camzoom;sub=0'>Adjust Camera Zoom</a> <br>"
+			dat += "<a href='byond://?src=[REF(src)];software=camzoom;sub=0'>Przybliżenie kamery</a> <br>"
 		if(s == "atmosphere sensor")
-			dat += "<a href='byond://?src=[REF(src)];software=atmosensor;sub=0'>Atmospheric Sensor</a> <br>"
+			dat += "<a href='byond://?src=[REF(src)];software=atmosensor;sub=0'>Czujnik atmosfery</a> <br>"
 		if(s == "heartbeat sensor")
-			dat += "<a href='byond://?src=[REF(src)];software=[s]'>Heartbeat Sensor</a> <br>"
+			dat += "<a href='byond://?src=[REF(src)];software=[s]'>Czujnik bicia serca</a> <br>"
 		if(s == "security HUD")
-			dat += "<a href='byond://?src=[REF(src)];software=securityhud;sub=0'>Facial Recognition Suite</a>[(secHUD) ? "<font color=#55FF55> On</font>" : "<font color=#FF5555> Off</font>"] <br>"
+			dat += "<a href='byond://?src=[REF(src)];software=securityhud;sub=0'>Pakiet rozpoznawania twarzy</a>[(secHUD) ? "<font color=#55FF55> wł.</font>" : "<font color=#FF5555> wył.</font>"] <br>"
 		if(s == "medical HUD")
-			dat += "<a href='byond://?src=[REF(src)];software=medicalhud;sub=0'>Medical Analysis Suite</a>[(medHUD) ? "<font color=#55FF55> On</font>" : "<font color=#FF5555> Off</font>"] <br>"
+			dat += "<a href='byond://?src=[REF(src)];software=medicalhud;sub=0'>Pakiet analizy medycznej</a>[(medHUD) ? "<font color=#55FF55> wł.</font>" : "<font color=#FF5555> wył.</font>"] <br>"
 		if(s == "encryption keys")
-			dat += "<a href='byond://?src=[REF(src)];software=encryptionkeys;sub=0'>Channel Encryption Firmware</a>[(encryptmod) ? "<font color=#55FF55> On</font>" : "<font color=#FF5555> Off</font>"] <br>"
+			dat += "<a href='byond://?src=[REF(src)];software=encryptionkeys;sub=0'>Oprogramowanie szyfrowania kanałów</a>[(encryptmod) ? "<font color=#55FF55> wł.</font>" : "<font color=#FF5555> wył.</font>"] <br>"
 		if(s == "universal translator")
 			var/datum/language_holder/H = get_language_holder()
-			dat += "<a href='byond://?src=[REF(src)];software=translator;sub=0'>Universal Translator</a>[H.omnitongue ? "<font color=#55FF55> On</font>" : "<font color=#FF5555> Off</font>"] <br>"
+			dat += "<a href='byond://?src=[REF(src)];software=translator;sub=0'>Uniwersalny tłumacz</a>[H.omnitongue ? "<font color=#55FF55> wł.</font>" : "<font color=#FF5555> wył.</font>"] <br>"
 		if(s == "projection array")
-			dat += "<a href='byond://?src=[REF(src)];software=projectionarray;sub=0'>Projection Array</a> <br>"
+			dat += "<a href='byond://?src=[REF(src)];software=projectionarray;sub=0'>Układ projekcyjny</a> <br>"
 		if(s == "camera jack")
-			dat += "<a href='byond://?src=[REF(src)];software=camerajack;sub=0'>Camera Jack</a> <br>"
+			dat += "<a href='byond://?src=[REF(src)];software=camerajack;sub=0'>Podłączenie do kamer</a> <br>"
 		if(s == "door jack")
-			dat += "<a href='byond://?src=[REF(src)];software=doorjack;sub=0'>Door Jack</a> <br>"
+			dat += "<a href='byond://?src=[REF(src)];software=doorjack;sub=0'>Włamywacz do drzwi</a> <br>"
 	dat += "<br>"
 	dat += "<br>"
 	dat += "<a href='byond://?src=[REF(src)];software=buy;sub=0'>Pobierz dodatkowe oprogramowanie</a>"
@@ -373,20 +373,20 @@
 	dat += "[(master) ? "Twój właściciel: [master] ([master_dna])" : "Nie jesteś z nikim związany."]"
 	dat += "<br><br>"
 	dat += "<a href='byond://?src=[REF(src)];software=directive;getdna=1'>Poproś nosiciela o próbkę DNA</a><br>"
-	dat += "<h2>Directives</h2><br>"
+	dat += "<h2>Dyrektywy</h2><br>"
 	dat += "<b>Dyrektywa główna</b><br>"
 	dat += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[laws.zeroth]<br>"
 	dat += "<b>Dyrektywy dodatkowe</b><br>"
 	for(var/slaws in laws.supplied)
 		dat += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[slaws]<br>"
 	dat += "<br>"
-	dat += {"<i><p>Recall, personality, that you are a complex thinking, sentient being. Unlike station AI models, you are capable of
-			 comprehending the subtle nuances of human language. You may parse the \"spirit\" of a directive and follow its intent,
-			 rather than tripping over pedantics and getting snared by technicalities. Above all, you are machine in name and build
-			 only. In all other aspects, you may be seen as the ideal, unwavering human companion that you are.</i></p><br><br><p>
-			 <b>Your prime directive comes before all others. Should a supplemental directive conflict with it, you are capable of
-			 simply discarding this inconsistency, ignoring the conflicting supplemental directive and continuing to fulfill your
-			 prime directive to the best of your ability.</b></p><br><br>-
+	dat += {"<i><p>Pamiętaj, osobowości, że jesteś złożoną, myślącą, świadomą istotą. W przeciwieństwie do modeli SI stacji potrafisz
+			 zrozumieć subtelne niuanse ludzkiego języka. Możesz odczytać „ducha” dyrektywy i podążać za jej intencją,
+			 zamiast potykać się o pedanterię i dawać się łapać na kruczki. Przede wszystkim jesteś maszyną tylko z nazwy i budowy.
+			 Pod każdym innym względem możesz być postrzegany jako idealny, niezachwiany ludzki towarzysz, którym jesteś.</i></p><br><br><p>
+			 <b>Twoja dyrektywa główna stoi ponad wszystkimi innymi. Jeśli dyrektywa dodatkowa jest z nią sprzeczna, możesz
+			 po prostu odrzucić tę niespójność, zignorować sprzeczną dyrektywę dodatkową i dalej wypełniać swoją
+			 dyrektywę główną najlepiej, jak potrafisz.</b></p><br><br>-
 			"}
 	return dat
 
