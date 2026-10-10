@@ -40,9 +40,9 @@
 	. += "<span class='boldnotice'>Sound File:</span> [sound_file ? sound_file : "None chosen"]"
 	. += "<span class='boldnotice'>Mode:</span> [motus_operandi]</span>"
 	. += "<span class='boldnotice'>Range:</span> [emitter_range]</span>"
-	. += "<b>Sound is playing at [sound_volume]% volume.</b>"
+	. += "<b>Dźwięk gra z głośnością [sound_volume]%.</b>"
 	if(user.client.holder)
-		. += "<b>Alt-click it to quickly activate it!</b>"
+		. += "<b>Alt-klik, by szybko go aktywować!</b>"
 
 //ATTACK GHOST IGNORING PARENT RETURN VALUE
 /obj/effect/sound_emitter/attack_ghost(mob/user)
@@ -78,47 +78,47 @@
 		return
 	var/mob/user = usr
 	if(href_list["edit_label"])
-		var/new_label = stripped_input(user, "Choose a new label.", "Sound Emitter")
+		var/new_label = stripped_input(user, "Wybierz nową etykietę.", "Sound Emitter")
 		if(!new_label)
 			return
 		maptext = MAPTEXT(new_label)
-		to_chat(user, "<span class='notice'>Label set to [maptext].</span>")
+		to_chat(user, "<span class='notice'>Ustawiono etykietę na [maptext].</span>")
 	if(href_list["edit_sound_file"])
-		var/new_file = input(user, "Choose a sound file.", "Sound Emitter") as null|sound
+		var/new_file = input(user, "Wybierz plik dźwiękowy.", "Sound Emitter") as null|sound
 		if(!new_file)
 			return
 		sound_file = new_file
-		to_chat(user, "<span class='notice'>New sound file set to [sound_file].</span>")
+		to_chat(user, "<span class='notice'>Ustawiono nowy plik dźwiękowy [sound_file].</span>")
 	if(href_list["edit_volume"])
 		var/new_volume = input(user, "Choose a volume.", "Sound Emitter", sound_volume) as null|num
 		if(isnull(new_volume))
 			return
 		new_volume = CLAMP(new_volume, 0, 100)
 		sound_volume = new_volume
-		to_chat(user, "<span class='notice'>Volume set to [sound_volume]%.</span>")
+		to_chat(user, "<span class='notice'>Ustawiono głośność na [sound_volume]%.</span>")
 	if(href_list["edit_mode"])
 		var/new_mode
 		var/mode_list = list("Local (normal sound)" = SOUND_EMITTER_LOCAL, "Direct (not affected by environment/location)" = SOUND_EMITTER_DIRECT)
-		new_mode = input(user, "Choose a new mode.", "Sound Emitter") as null|anything in mode_list
+		new_mode = input(user, "Wybierz nowy tryb.", "Sound Emitter") as null|anything in mode_list
 		if(!new_mode)
 			return
 		motus_operandi = mode_list[new_mode]
-		to_chat(user, "<span class='notice'>Mode set to [motus_operandi].</span>")
+		to_chat(user, "<span class='notice'>Ustawiono tryb na [motus_operandi].</span>")
 	if(href_list["edit_range"])
 		var/new_range
 		var/range_list = list("Radius (all mobs within a radius)" = SOUND_EMITTER_RADIUS, "Z-Level (all mobs on the same z)" = SOUND_EMITTER_ZLEVEL, "Global (all players)" = SOUND_EMITTER_GLOBAL)
-		new_range = input(user, "Choose a new range.", "Sound Emitter") as null|anything in range_list
+		new_range = input(user, "Wybierz nowy zasięg.", "Sound Emitter") as null|anything in range_list
 		if(!new_range)
 			return
 		emitter_range = range_list[new_range]
-		to_chat(user, "<span class='notice'>Range set to [emitter_range].</span>")
+		to_chat(user, "<span class='notice'>Ustawiono zasięg na [emitter_range].</span>")
 	if(href_list["edit_radius"])
 		var/new_radius = input(user, "Choose a radius.", "Sound Emitter", sound_volume) as null|num
 		if(isnull(new_radius))
 			return
 		new_radius = CLAMP(new_radius, 0, 127)
 		play_radius = new_radius
-		to_chat(user, "<span class='notice'>Audible radius set to [play_radius].</span>")
+		to_chat(user, "<span class='notice'>Ustawiono promień słyszalności na [play_radius].</span>")
 	if(href_list["play"])
 		activate(user)
 	edit_emitter(user) //Refresh the UI to see our changes

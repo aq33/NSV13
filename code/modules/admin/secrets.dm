@@ -116,7 +116,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 			for(var/l in GLOB.admin_log)
 				dat += "<li>[l]</li>"
 			if(!GLOB.admin_log.len)
-				dat += "No one has done anything this round!"
+				dat += "Nikt nic w tej rundzie nie zrobił!"
 			var/datum/browser/browser = new(usr, "admin_log", "Admin Logs", 600, 500)
 			browser.set_content(dat)
 			browser.open()
@@ -137,7 +137,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 		if("tdomereset")
 			if(!check_rights(R_ADMIN))
 				return
-			var/delete_mobs = alert("Clear all mobs?","Confirm","Yes","No","Cancel")
+			var/delete_mobs = alert("Usunąć wszystkie moby?","Confirm","Yes","No","Cancel")
 			if(delete_mobs == "Cancel" || !delete_mobs)
 				return
 
@@ -157,14 +157,14 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 
 		if("clear_virus")
 
-			var/choice = input("Are you sure you want to remove all disease?") in list("Yes", "Cancel")
+			var/choice = input("Czy na pewno chcesz usunąć wszystkie choroby?") in list("Yes", "Cancel")
 			if(choice == "Yes")
 				message_admins("[key_name_admin(usr)] has cured all diseases.")
 				for(var/thing in SSdisease.active_diseases)
 					var/datum/disease/D = thing
 					D.cure(0)
 		if("delete_virus")
-			var/choice = input("Are you sure you want to vaccinate all disease?") in list("Yes", "Cancel")
+			var/choice = input("Czy na pewno chcesz zaszczepić wszystkie choroby?") in list("Yes", "Cancel")
 			if(choice == "Yes")
 				message_admins("[key_name_admin(usr)] has cured all diseases.")
 				for(var/thing in SSdisease.active_diseases)
@@ -173,17 +173,17 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 		if("set_name")
 			if(!check_rights(R_ADMIN))
 				return
-			var/new_name = capped_input(usr, "Please input a new name for the station.", "What?")
+			var/new_name = capped_input(usr, "Podaj nową nazwę stacji.", "What?")
 			if(!new_name)
 				return
 			set_station_name(new_name)
 			log_admin("[key_name(usr)] renamed the station to \"[new_name]\".")
 			message_admins("<span class='adminnotice'>[key_name_admin(usr)] renamed the station to: [new_name].</span>")
-			priority_announce("[command_name()] has renamed the station to \"[new_name]\".", sound = SSstation.announcer.get_rand_alert_sound())
+			priority_announce("[command_name()] zmienia nazwę stacji na \"[new_name]\".", sound = SSstation.announcer.get_rand_alert_sound())
 		if("night_shift_set")
 			if(!check_rights(R_ADMIN))
 				return
-			var/val = alert(usr, "What do you want to set night shift to? This will override the automatic system until set to automatic again.", "Night Shift", "On", "Off", "Automatic")
+			var/val = alert(usr, "Na co chcesz ustawić zmianę nocną? To nadpisze system automatyczny, dopóki nie ustawisz z powrotem trybu automatycznego.", "Night Shift", "On", "Off", "Automatic")
 			switch(val)
 				if("Automatic")
 					if(CONFIG_GET(flag/enable_night_shifts))
@@ -205,7 +205,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 			set_station_name(new_name)
 			log_admin("[key_name(usr)] reset the station name.")
 			message_admins("<span class='adminnotice'>[key_name_admin(usr)] reset the station name.</span>")
-			priority_announce("[command_name()] has renamed the station to \"[new_name]\".", sound = SSstation.announcer.get_rand_alert_sound())
+			priority_announce("[command_name()] zmienia nazwę stacji na \"[new_name]\".", sound = SSstation.announcer.get_rand_alert_sound())
 
 		if("list_bombers")
 			if(!check_rights(R_ADMIN))
@@ -266,7 +266,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 				message_admins("[key_name_admin(usr)] [new_perma ? "stopped" : "started"] the arrivals shuttle")
 				log_admin("[key_name(usr)] [new_perma ? "stopped" : "started"] the arrivals shuttle")
 			else
-				to_chat(usr, "<span class='admin'>There is no arrivals shuttle</span>")
+				to_chat(usr, "<span class='admin'>Nie ma promu przylotów</span>")
 		if("showailaws")
 			if(!check_rights(R_ADMIN))
 				return
@@ -275,9 +275,9 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 			if(!check_rights(R_ADMIN))
 				return
 			if(!SSticker.HasRoundStarted())
-				alert("The game hasn't started yet!")
+				alert("Gra jeszcze się nie zaczęła!")
 			else if (SSticker.mode)
-				alert("The game mode is [SSticker.mode.name]")
+				alert("Tryb gry to [SSticker.mode.name]")
 			else alert("For some reason there's a SSticker, but not a game mode")
 		if("manifest")
 			if(!check_rights(R_ADMIN))
@@ -321,7 +321,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 		if("allspecies")
 			if(!check_rights(R_FUN))
 				return
-			var/result = input(usr, "Please choose a new species","Species") as null|anything in GLOB.species_list
+			var/result = input(usr, "Wybierz nowy gatunek","Species") as null|anything in GLOB.species_list
 			if(result)
 				SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Mass Species Change", "[result]"))
 				log_admin("[key_name(usr)] turned all humans into [result]", 1)
@@ -364,7 +364,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 			if(!check_rights(R_FUN))
 				return
 			if(!SSticker.HasRoundStarted())
-				alert("The game hasn't started yet!")
+				alert("Gra jeszcze się nie zaczęła!")
 				return
 			if(!GLOB.admin_objective_list)
 				generate_admin_objective_list()
@@ -387,7 +387,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 			new_objective.admin_edit(usr)
 			//Get Percentage
 			var/def_percentage
-			var/selected_percentage = input("Percentage of crew to convert (0-100):", "Antag Percentage", def_percentage) as num|null
+			var/selected_percentage = input("Procent załogi do nawrócenia (0-100):", "Antag Percentage", def_percentage) as num|null
 			if(!selected_percentage)
 				return
 			selected_percentage = selected_percentage > 100 ? 100 : selected_percentage
@@ -421,7 +421,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 				A.objectives += new_objective
 				log_objective(A, new_objective.explanation_text, usr)
 				var/obj_count = 1
-				to_chat(T.owner, "<span class='alertsyndie'>Your contractors have updated your objectives.</span>")
+				to_chat(T.owner, "<span class='alertsyndie'>Twoi zleceniodawcy zaktualizowali twoje cele.</span>")
 				for(var/objective in A.objectives)
 					var/datum/objective/O = objective
 					to_chat(T.owner, "<B>Objective #[obj_count]</B>: [O.explanation_text]")
@@ -452,11 +452,11 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 		if("anime")
 			if(!check_rights(R_FUN))
 				return
-			var/animetype = alert("Would you like to have the clothes be changed?",,"Yes","No","Cancel")
+			var/animetype = alert("Czy chcesz, by zmieniono ubrania?",,"Yes","No","Cancel")
 
 			var/droptype
 			if(animetype =="Yes")
-				droptype = alert("Make the uniforms undroppable?",,"Yes","No","Cancel")
+				droptype = alert("Uczynić mundury niemożliwymi do zdjęcia?",,"Yes","No","Cancel")
 
 			if(animetype == "Cancel" || droptype == "Cancel" || !animetype || (!droptype && animetype == "Yes"))
 				return
@@ -487,7 +487,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 						if(droptype == "Yes")
 							ADD_TRAIT(I, TRAIT_NODROP, ADMIN_TRAIT)
 				else
-					to_chat(H, "You're not kawaii enough for this.")
+					to_chat(H, "Nie jesteś wystarczająco kawaii.")
 
 		if("whiteout")
 			if(!check_rights(R_FUN))
@@ -504,7 +504,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 			if(!check_rights(R_FUN))
 				return
 			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Virus Outbreak"))
-			switch(alert("Do you want this to be a random disease or do you have something in mind?",,"Make Your Own","Random","Choose"))
+			switch(alert("Chcesz losową chorobę czy masz coś na myśli?",,"Make Your Own","Random","Choose"))
 				if("Make Your Own")
 					AdminCreateVirus(usr.client)
 				if("Random")
@@ -520,7 +520,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 				return
 			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Mass Braindamage"))
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
-				to_chat(H, "<span class='boldannounce'>You suddenly feel stupid.</span>")
+				to_chat(H, "<span class='boldannounce'>Nagle czujesz się głupi.</span>")
 				H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 60, 80)
 			message_admins("[key_name_admin(usr)] gave everybody intellectual disability")
 
@@ -530,7 +530,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Mass Australian"))
 			var/s = sound('sound/misc/downunder.ogg')
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
-				to_chat(H, "<span class='boldannounce'>You suddenly feel crikey.</span>")
+				to_chat(H, "<span class='boldannounce'>Nagle czujesz się jak kangur.</span>")
 				var/matrix/M = H.transform
 				H.transform = M.Scale(1,-1) //flip em upside down
 				SEND_SOUND(H, s)
@@ -544,7 +544,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 				if(is_station_level(W.z) && !istype(get_area(W), /area/bridge) && !istype(get_area(W), /area/crew_quarters) && !istype(get_area(W), /area/security/prison))
 					W.req_access = list()
 			message_admins("[key_name_admin(usr)] activated Egalitarian Station mode")
-			priority_announce("CentCom airlock control override activated. Please take this time to get acquainted with your coworkers.", null, SSstation.announcer.get_rand_report_sound())
+			priority_announce("Aktywowano nadpisanie sterowania śluzami przez Centralę. Wykorzystajcie ten czas, by lepiej poznać współpracowników.", null, SSstation.announcer.get_rand_report_sound())
 
 		if("ancap")
 			if(!check_rights(R_FUN))
@@ -553,9 +553,9 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 			SSeconomy.full_ancap = !SSeconomy.full_ancap
 			message_admins("[key_name_admin(usr)] toggled Anarcho-capitalist mode")
 			if(SSeconomy.full_ancap)
-				priority_announce("The NAP is now in full effect.", null, SSstation.announcer.get_rand_report_sound())
+				priority_announce("NAP obowiązuje teraz w pełni.", null, SSstation.announcer.get_rand_report_sound())
 			else
-				priority_announce("The NAP has been revoked.", null, SSstation.announcer.get_rand_report_sound())
+				priority_announce("NAP został odwołany.", null, SSstation.announcer.get_rand_report_sound())
 
 
 
@@ -565,7 +565,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 				return
 			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Summon Guns"))
 			var/survivor_probability = 0
-			switch(alert("Do you want this to create survivors antagonists?",,"No Antags","Some Antags","All Antags!"))
+			switch(alert("Czy ma to stworzyć antagonistów ocalałych?",,"No Antags","Some Antags","All Antags!"))
 				if("Some Antags")
 					survivor_probability = 25
 				if("All Antags!")
@@ -578,7 +578,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 				return
 			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Summon Magic"))
 			var/survivor_probability = 0
-			switch(alert("Do you want this to create survivors antagonists?",,"No Antags","Some Antags","All Antags!"))
+			switch(alert("Czy ma to stworzyć antagonistów ocalałych?",,"No Antags","Some Antags","All Antags!"))
 				if("Some Antags")
 					survivor_probability = 25
 				if("All Antags!")
@@ -590,12 +590,12 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 			if(!check_rights(R_FUN))
 				return
 			if(!SSevents.wizardmode)
-				if(alert("Do you want to toggle summon events on?",,"Yes","No") == "Yes")
+				if(alert("Czy chcesz włączyć przyzywanie zdarzeń?",,"Yes","No") == "Yes")
 					summonevents()
 					SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Summon Events", "Activate"))
 
 			else
-				switch(alert("What would you like to do?",,"Intensify Summon Events","Turn Off Summon Events","Nothing"))
+				switch(alert("Co chcesz zrobić?",,"Intensify Summon Events","Turn Off Summon Events","Nothing"))
 					if("Intensify Summon Events")
 						summonevents()
 						SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Summon Events", "Intensify"))
@@ -699,7 +699,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 		if("flipmovement")
 			if(!check_rights(R_FUN))
 				return
-			if(alert("Flip all movement controls?","Confirm","Yes","Cancel") != "Yes")
+			if(alert("Odwrócić wszystkie sterowanie ruchem?","Confirm","Yes","Cancel") != "Yes")
 				return
 			var/list/movement_keys = SSinput.movement_keys
 			for(var/i in 1 to movement_keys.len)
@@ -711,7 +711,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 		if("randommovement")
 			if(!check_rights(R_FUN))
 				return
-			if(alert("Randomize all movement controls?","Confirm","Yes","Cancel") != "Yes")
+			if(alert("Wylosować całe sterowanie ruchem?","Confirm","Yes","Cancel") != "Yes")
 				return
 			var/list/movement_keys = SSinput.movement_keys
 			for(var/i in 1 to movement_keys.len)
@@ -723,15 +723,15 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 		if("custommovement")
 			if(!check_rights(R_FUN))
 				return
-			if(alert("Are you sure you want to change every movement key?","Confirm","Yes","Cancel") != "Yes")
+			if(alert("Czy na pewno chcesz zmienić każdy klawisz ruchu?","Confirm","Yes","Cancel") != "Yes")
 				return
 			var/list/movement_keys = SSinput.movement_keys
 			var/list/new_movement = list()
 			for(var/i in 1 to movement_keys.len)
 				var/key = movement_keys[i]
 
-				var/msg = "Please input the new movement direction when the user presses [key]. Ex. northeast"
-				var/title = "New direction for [key]"
+				var/msg = "Podaj nowy kierunek ruchu po naciśnięciu [key]. Np. northeast"
+				var/title = "Nowy kierunek dla [key]"
 				var/new_direction = text2dir(capped_input(usr, msg, title))
 				if(!new_direction)
 					new_direction = movement_keys[key]
@@ -744,7 +744,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 		if("resetmovement")
 			if(!check_rights(R_FUN))
 				return
-			if(alert("Are you sure you want to reset movement keys to default?","Confirm","Yes","Cancel") != "Yes")
+			if(alert("Czy na pewno chcesz przywrócić domyślne klawisze ruchu?","Confirm","Yes","Cancel") != "Yes")
 				return
 			SSinput.setup_default_movement_keys()
 			message_admins("[key_name_admin(usr)] has reset all movement keys.")
@@ -779,7 +779,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 				var/list/prefs = settings["mainsettings"]
 
 				if (prefs["amount"]["value"] < 1 || prefs["portalnum"]["value"] < 1)
-					to_chat(usr, "Number of portals and mobs to spawn must be at least 1")
+					to_chat(usr, "Liczba portali i mobów do stworzenia musi wynosić co najmniej 1")
 					return
 
 				var/mob/pathToSpawn = prefs["typepath"]["value"]
@@ -824,7 +824,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 	if(E)
 		E.processing = FALSE
 		if(E.announceWhen>0)
-			if(alert(usr, "Would you like to alert the crew?", "Alert", "Yes", "No") != "Yes")
+			if(alert(usr, "Czy chcesz powiadomić załogę?", "Alert", "Yes", "No") != "Yes")
 				E.announceChance = 0
 		E.processing = TRUE
 	if (usr)

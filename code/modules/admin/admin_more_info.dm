@@ -1,6 +1,6 @@
 /datum/admins/proc/admin_more_info(mob/M)
 	if(!ismob(M))
-		to_chat(usr, "This can only be used on instances of type /mob.")
+		to_chat(usr, "Można tego użyć tylko na instancjach typu /mob.")
 		return
 
 	var/location_description = ""
@@ -38,7 +38,7 @@
 		health_description = "Status = [status]"
 		health_description += "<BR>Oxy: [L.getOxyLoss()] - Tox: [L.getToxLoss()] - Fire: [L.getFireLoss()] - Brute: [L.getBruteLoss()] - Clone: [L.getCloneLoss()] - Brain: [L.getOrganLoss(ORGAN_SLOT_BRAIN)] - Stamina: [L.getStaminaLoss()]"
 	else
-		health_description = "This mob type has no health to speak of."
+		health_description = "Ten typ moba nie ma zdrowia."
 
 	//Gender
 	switch(M.gender)

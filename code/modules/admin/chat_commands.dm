@@ -84,10 +84,10 @@ GLOBAL_LIST(round_end_notifiees)
 
 /datum/tgs_chat_command/notify/Run(datum/tgs_chat_user/sender, params)
 	if(!SSticker.IsRoundInProgress() && SSticker.HasRoundStarted())
-		return "[sender.mention], the round has already ended!"
+		return "[sender.mention], runda już się skończyła!"
 	LAZYINITLIST(GLOB.round_end_notifiees)
 	GLOB.round_end_notifiees[sender.mention] = TRUE
-	return "I will notify [sender.mention] when the round ends."
+	return "Powiadomię [sender.mention], gdy runda się skończy."
 
 /** -- Not for use within BeeStation
 /datum/tgs_chat_command/sdql
