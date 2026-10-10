@@ -30,8 +30,7 @@ Bonus
 	symptom_delay_max = 80
 	prefixes = list("Aural ")
 	bodies = list("Ear")
-	threshold_desc = "<b>Resistance 9:</b> Causes permanent deafness, instead of intermittent.<br>\
-					  <b>Stealth 4:</b> The symptom remains hidden until active."
+	threshold_desc = "<b>Odporność 9:</b> powoduje trwałą głuchotę zamiast okresowej.<br><b>Ukrycie 4:</b> objaw pozostaje ukryty, dopóki nie jest aktywny."
 
 /datum/symptom/deafness/severityset(datum/disease/advance/A)
 	. = ..()
@@ -58,9 +57,9 @@ Bonus
 			if(power >= 2)
 				var/obj/item/organ/ears/ears = M.getorganslot(ORGAN_SLOT_EARS)
 				if(istype(ears) && ears.damage < ears.maxHealth)
-					to_chat(M, "<span class='userdanger'>Your ears pop painfully and start bleeding!</span>")
+					to_chat(M, "<span class='userdanger'>Boleśnie strzela ci w uszach i zaczynają krwawić!</span>")
 					ears.damage = max(ears.damage, ears.maxHealth)
 					M.emote("scream")
 			else
-				to_chat(M, "<span class='userdanger'>Your ears pop and begin ringing loudly!</span>")
+				to_chat(M, "<span class='userdanger'>Strzela ci w uszach i zaczynają głośno dzwonić!</span>")
 				M.minimumDeafTicks(20)

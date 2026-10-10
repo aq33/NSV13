@@ -13,7 +13,7 @@
 	suffixes = list(" Hysteria", " Madness")
 	var/emote
 	var/emotelist = list("flip", "spin", "laugh", "dance", "grin", "grimace", "wave", "yawn", "snap", "clap", "moan", "wink", "eyebrow", "scream", "raise", "shrug")
-	threshold_desc = "<b>Transmission 14:</b>The virus spreads memetically, infecting hosts who can see the target."
+	threshold_desc = "<b>Transmisja 14:</b> wirus rozprzestrzenia się memetycznie, zarażając tych, którzy widzą cel."
 
 /datum/symptom/meme/Copy()
 	var/datum/symptom/meme/new_symp = new type

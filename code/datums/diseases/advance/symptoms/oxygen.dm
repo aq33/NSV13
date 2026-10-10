@@ -30,7 +30,7 @@ Bonus
 	symptom_delay_max = 1
 	prefixes = list("Breathless ", "Anaerobic ")
 	var/regenerate_blood = FALSE
-	threshold_desc = "<b>Resistance 8:</b> Additionally regenerates lost blood.<br>"
+	threshold_desc = "<b>Odporność 8:</b> dodatkowo odtwarza utraconą krew.<br>"
 
 /datum/symptom/oxygen/Start(datum/disease/advance/A)
 	if(!..())

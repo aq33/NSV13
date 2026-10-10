@@ -46,7 +46,7 @@
 	icon_state = "riotshotgun"
 	item_state = "shotgun"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/riot
-	sawn_desc = "Come with me if you want to live."
+	sawn_desc = "Chodź ze mną, jeśli chcesz żyć."
 
 /obj/item/gun/ballistic/shotgun/riot/attackby(obj/item/A, mob/user, params)
 	..()
@@ -112,7 +112,7 @@
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click to pump it.</span>"
+	. += "<span class='notice'>Alt-klik, by przeładować.</span>"
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/Initialize(mapload)
 	. = ..()
@@ -132,9 +132,9 @@
 	alternate_magazine = current_mag
 	toggled = !toggled
 	if(toggled)
-		to_chat(user, "You switch to tube B.")
+		to_chat(user, "Przełączasz na magazynek B.")
 	else
-		to_chat(user, "You switch to tube A.")
+		to_chat(user, "Przełączasz na magazynek A.")
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/AltClick(mob/living/user)
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
@@ -231,7 +231,7 @@
 	force = 10
 	slot_flags = null
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/improvised
-	sawn_desc = "I'm just here for the gasoline."
+	sawn_desc = "Jestem tu tylko po benzynę."
 	unique_reskin = null
 	recoil = 2
 	var/slung = FALSE
@@ -242,11 +242,11 @@
 		var/obj/item/stack/cable_coil/C = A
 		if(C.use(10))
 			slot_flags = ITEM_SLOT_BACK
-			to_chat(user, "<span class='notice'>You tie the lengths of cable to the shotgun, making a sling.</span>")
+			to_chat(user, "<span class='notice'>Przywiązujesz do strzelby odcinki kabla, robiąc z nich pas.</span>")
 			slung = TRUE
 			update_icon()
 		else
-			to_chat(user, "<span class='warning'>You need at least ten lengths of cable if you want to make a sling!</span>")
+			to_chat(user, "<span class='warning'>Potrzebujesz co najmniej dziesięciu odcinków kabla, by zrobić pas!</span>")
 
 /obj/item/gun/ballistic/shotgun/doublebarrel/improvised/update_icon()
 	..()
@@ -294,19 +294,19 @@
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
 	if(toggled)
-		to_chat(user,"<span class='notice'>You switch to the shotgun.</span>")
+		to_chat(user,"<span class='notice'>Przełączasz na strzelbę.</span>")
 		fire_sound = initial(fire_sound)
 	else
-		to_chat(user,"<span class='notice'>You switch to the hook.</span>")
+		to_chat(user,"<span class='notice'>Przełączasz na hak.</span>")
 		fire_sound = 'sound/weapons/batonextend.ogg'
 	toggled = !toggled
 
 /obj/item/gun/ballistic/shotgun/doublebarrel/hook/examine(mob/user)
 	. = ..()
 	if(toggled)
-		. += "<span class='notice'>Alt-click to switch to the shotgun.</span>"
+		. += "<span class='notice'>Alt-klik, by przełączyć na strzelbę.</span>"
 	else
-		. += "<span class='notice'>Alt-click to switch to the hook.</span>"
+		. += "<span class='notice'>Alt-klik, by przełączyć na hak.</span>"
 
 /obj/item/gun/ballistic/shotgun/doublebarrel/hook/afterattack(atom/target, mob/living/user, flag, params)
 	if(toggled)

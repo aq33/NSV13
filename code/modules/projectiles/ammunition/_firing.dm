@@ -67,9 +67,9 @@
 	return locate(target.x + round(gaussian(0, distro) * (dy+2)/8, 1), target.y + round(gaussian(0, distro) * (dx+2)/8, 1), target.z)
 
 /obj/item/ammo_casing/screwdriver_act(mob/living/user, obj/item/I)
-	user.visible_message("<span class='danger'>[user] hits the [src]'s primer with [user.p_their()] [I]!</span>")
+	user.visible_message("<span class='danger'>[user] uderza w spłonkę [src] za pomocą [I]!</span>")
 	if(!user.is_holding(src))
-		to_chat(user, "<span class='warning'>You need to pickup \the [src] first!</span>")
+		to_chat(user, "<span class='warning'>Najpierw musisz podnieść [src]!</span>")
 		return
 	if(prob(75))
 		fire_casing(get_step(src, user.dir), user, spread = rand(-40, 40))

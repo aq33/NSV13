@@ -32,7 +32,7 @@ Bonus
 	var/starving = TRUE
 	prefixes = list("Starving ")
 	bodies = list("Diet")
-	threshold_desc = "<b>Stealth 2:</b> The symptom is less noticeable, and does not cause starvation."
+	threshold_desc = "<b>Ukrycie 2:</b> objaw jest mniej zauważalny i nie powoduje zagłodzenia."
 
 /datum/symptom/weight_loss/severityset(datum/disease/advance/A)
 	. = ..()

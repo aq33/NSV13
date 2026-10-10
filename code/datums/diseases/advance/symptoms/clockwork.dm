@@ -15,9 +15,7 @@
 	var/replaceorgans = FALSE
 	var/replacebody = FALSE
 	var/robustbits = FALSE
-	threshold_desc = "<b>Stage Speed 4:</b>The virus will replace the host's organic organs with mundane, biometallic versions. +1 severity.<br>\
-                      <b>Resistance 4:</b>The virus will eventually convert the host's entire body to biometallic materials, and maintain its cellular integrity. +1 severity.<br>\
-                      <b>Stage Speed 12:</b>Biometallic mass created by the virus will be superior to typical organic mass. -3 severity."
+	threshold_desc = "<b>Szybkość stadiów 4:</b> wirus zastępuje organiczne narządy nosiciela zwykłymi, biometalicznymi wersjami. +1 do ciężkości.<br><b>Odporność 4:</b> wirus w końcu przemienia całe ciało nosiciela w materiały biometaliczne i utrzymuje jego integralność komórkową. +1 do ciężkości.<br><b>Szybkość stadiów 12:</b> biometaliczna masa wytwarzana przez wirusa będzie lepsza od typowej masy organicznej. -3 do ciężkości."
 
 /datum/symptom/robotic_adaptation/OnAdd(datum/disease/advance/A)
 	A.infectable_biotypes |= MOB_ROBOTIC
@@ -79,7 +77,7 @@
 						var/obj/item/organ/stomach/clockwork/organ = new()
 						organ.Insert(H, TRUE, FALSE)
 					if(prob(40))
-						to_chat(H, "<span class='userdanger'>You feel a stabbing pain in your abdomen!</span>")
+						to_chat(H, "<span class='userdanger'>Czujesz kłujący ból w brzuchu!</span>")
 						H.emote("scream")
 					return TRUE
 				if(ORGAN_SLOT_EARS)
@@ -87,7 +85,7 @@
 					if(robustbits)
 						organ.damage_multiplier = 0.5
 					organ.Insert(H, TRUE, FALSE)
-					to_chat(H, "<span class='warning'>Your ears pop.</span>")
+					to_chat(H, "<span class='warning'>Strzela ci w uszach.</span>")
 					return TRUE
 				if(ORGAN_SLOT_EYES)
 					var/obj/item/organ/eyes/robotic/clockwork/organ = new()
@@ -95,7 +93,7 @@
 						organ.flash_protect = 1
 					organ.Insert(H, TRUE, FALSE)
 					if(prob(40))
-						to_chat(H, "<span class='userdanger'>You feel a stabbing pain in your eyeballs!</span>")
+						to_chat(H, "<span class='userdanger'>Czujesz kłujący ból w gałkach ocznych!</span>")
 						H.emote("scream")
 					return TRUE
 				if(ORGAN_SLOT_LUNGS)
@@ -112,13 +110,13 @@
 						organ.gas_stimulation_min = 15
 					organ.Insert(H, TRUE, FALSE)
 					if(prob(40))
-						to_chat(H, "<span class='userdanger'>You feel a stabbing pain in your chest!</span>")
+						to_chat(H, "<span class='userdanger'>Czujesz kłujący ból w klatce piersiowej!</span>")
 						H.emote("scream")
 					return TRUE
 				if(ORGAN_SLOT_HEART)
 					var/obj/item/organ/heart/clockwork/organ = new()
 					organ.Insert(H, TRUE, FALSE)
-					to_chat(H, "<span class='userdanger'>You feel a stabbing pain in your chest!</span>")
+					to_chat(H, "<span class='userdanger'>Czujesz kłujący ból w klatce piersiowej!</span>")
 					H.emote("scream")
 					return TRUE
 				if(ORGAN_SLOT_LIVER)
@@ -127,7 +125,7 @@
 						organ.toxTolerance = 7
 					organ.Insert(H, TRUE, FALSE)
 					if(prob(40))
-						to_chat(H, "<span class='userdanger'>You feel a stabbing pain in your abdomen!</span>")
+						to_chat(H, "<span class='userdanger'>Czujesz kłujący ból w brzuchu!</span>")
 						H.emote("scream")
 					return TRUE
 				if(ORGAN_SLOT_TONGUE)
@@ -148,7 +146,7 @@
 					if(robustbits)
 						organ.flight_level = WINGS_FLYING
 					organ.Insert(H, TRUE, FALSE)
-					to_chat(H, "<span class='warning'>Your wings feel stiff.</span>")
+					to_chat(H, "<span class='warning'>Twoje skrzydła sztywnieją.</span>")
 					return TRUE
 	if(replacebody)
 		for(var/obj/item/bodypart/O in H.bodyparts)
@@ -164,7 +162,7 @@
 						B.brute_reduction = 3 //this is just below the amount that lets augs ignore space damage.
 						B.burn_reduction = 2
 					B.replace_limb(H, TRUE)
-					H.visible_message("<span class='notice'>[H]'s head shifts, and becomes metal before your very eyes", "<span_class='userdanger'>Your head feels numb, and cold.</span>")
+					H.visible_message("<span class='notice'>Głowa [H] się przesuwa i na twoich oczach zamienia się w metal", "<span_class='userdanger'>Twoja głowa drętwieje i robi się zimna.</span>")
 					qdel(O)
 					return TRUE
 				if(BODY_ZONE_CHEST)
@@ -173,7 +171,7 @@
 						B.brute_reduction = 3
 						B.burn_reduction = 2
 					B.replace_limb(H, TRUE)
-					H.visible_message("<span class='notice'>[H]'s [O] shifts, and becomes metal before your very eyes", "<span_class='userdanger'>Your [O] feels numb, and cold.</span>")
+					H.visible_message("<span class='notice'>[O] [H] się przesuwa i na twoich oczach zamienia się w metal", "<span_class='userdanger'>Twój narząd ([O]) drętwieje i robi się zimny.</span>")
 					qdel(O)
 					return TRUE
 				if(BODY_ZONE_L_ARM)
@@ -182,7 +180,7 @@
 						B.brute_reduction = 3
 						B.burn_reduction = 2
 					B.replace_limb(H, TRUE)
-					H.visible_message("<span class='notice'>[H]'s [O] shifts, and becomes metal before your very eyes", "<span_class='userdanger'>Your [O] feels numb, and cold.</span>")
+					H.visible_message("<span class='notice'>[O] [H] się przesuwa i na twoich oczach zamienia się w metal", "<span_class='userdanger'>Twój narząd ([O]) drętwieje i robi się zimny.</span>")
 					qdel(O)
 					return TRUE
 				if(BODY_ZONE_R_ARM)
@@ -191,7 +189,7 @@
 						B.brute_reduction = 3
 						B.burn_reduction = 2
 					B.replace_limb(H, TRUE)
-					H.visible_message("<span class='notice'>[H]'s [O] shifts, and becomes metal before your very eyes", "<span_class='userdanger'>Your [O] feels numb, and cold.</span>")
+					H.visible_message("<span class='notice'>[O] [H] się przesuwa i na twoich oczach zamienia się w metal", "<span_class='userdanger'>Twój narząd ([O]) drętwieje i robi się zimny.</span>")
 					qdel(O)
 					return TRUE
 				if(BODY_ZONE_L_LEG)
@@ -200,7 +198,7 @@
 						B.brute_reduction = 3
 						B.burn_reduction = 2
 					B.replace_limb(H, TRUE)
-					H.visible_message("<span class='notice'>[H]'s [O] shifts, and becomes metal before your very eyes", "<span_class='userdanger'>Your [O] feels numb, and cold.</span>")
+					H.visible_message("<span class='notice'>[O] [H] się przesuwa i na twoich oczach zamienia się w metal", "<span_class='userdanger'>Twój narząd ([O]) drętwieje i robi się zimny.</span>")
 					qdel(O)
 					return TRUE
 				if(BODY_ZONE_R_LEG)
@@ -209,7 +207,7 @@
 						B.brute_reduction = 3
 						B.burn_reduction = 2
 					B.replace_limb(H, TRUE)
-					H.visible_message("<span class='notice'>[H]'s [O] shifts, and becomes metal before your very eyes", "<span_class='userdanger'>Your [O] feels numb, and cold.</span>")
+					H.visible_message("<span class='notice'>[O] [H] się przesuwa i na twoich oczach zamienia się w metal", "<span_class='userdanger'>Twój narząd ([O]) drętwieje i robi się zimny.</span>")
 					qdel(O)
 					return TRUE
 	return FALSE
@@ -220,7 +218,7 @@
 	var/mob/living/carbon/human/H = A.affected_mob
 	REMOVE_TRAIT(H, TRAIT_NANITECOMPATIBLE, DISEASE_TRAIT)
 	if(A.stage >= 5 && (replaceorgans || replacebody)) //sorry. no disease quartets allowed
-		to_chat(H, "<span class='userdanger'>You feel lighter and springier as your innards lose their clockwork facade.</span>")
+		to_chat(H, "<span class='userdanger'>Czujesz się lżejszy i sprężystszy, gdy twoje wnętrzności tracą swoją mechaniczną fasadę.</span>")
 		H.dna.species.regenerate_organs(H, replace_current = TRUE)
 		for(var/obj/item/bodypart/O in H.bodyparts)
 			if(!IS_ORGANIC_LIMB(O))

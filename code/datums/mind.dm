@@ -444,13 +444,13 @@
 		A.admin_remove(usr)
 
 	if (href_list["role_edit"])
-		var/new_role = input("Select new role", "Assigned role", assigned_role) as null|anything in sortList(get_all_jobs())
+		var/new_role = input("Wybierz nową rolę", "Przypisana rola", assigned_role) as null|anything in sortList(get_all_jobs())
 		if (!new_role)
 			return
 		assigned_role = new_role
 
 	else if (href_list["memory_edit"])
-		var/new_memo = stripped_multiline_input(usr, "Write new memory", "Memory", memory, MAX_MESSAGE_LEN)
+		var/new_memo = stripped_multiline_input(usr, "Zapisz nowe wspomnienie", "Memory", memory, MAX_MESSAGE_LEN)
 		if (isnull(new_memo))
 			return
 		memory = new_memo
@@ -470,7 +470,7 @@
 					objective_pos = A.objectives.Find(old_objective)
 					break
 			if(!old_objective)
-				to_chat(usr,"Invalid objective.")
+				to_chat(usr,"Nieprawidłowy cel.")
 				return
 		else
 			if(href_list["target_antag"])
@@ -484,7 +484,7 @@
 					if(1)
 						target_antag = antag_datums[1]
 					else
-						var/datum/antagonist/target = input("Which antagonist gets the objective:", "Antagonist", "(new custom antag)") as null|anything in sortList(antag_datums) + "(new custom antag)"
+						var/datum/antagonist/target = input("Który antagonista otrzymuje cel:", "Antagonist", "(new custom antag)") as null|anything in sortList(antag_datums) + "(new custom antag)"
 						if (QDELETED(target))
 							return
 						else if(target == "(new custom antag)")
@@ -536,7 +536,7 @@
 				A.objectives -= objective
 				break
 		if(!objective)
-			to_chat(usr,"Invalid objective.")
+			to_chat(usr,"Nieprawidłowy cel.")
 			return
 		//qdel(objective) Needs cleaning objective destroys
 		message_admins("[key_name_admin(usr)] removed an objective for [current]: [objective.explanation_text]")
@@ -550,7 +550,7 @@
 				objective = objective
 				break
 		if(!objective)
-			to_chat(usr,"Invalid objective.")
+			to_chat(usr,"Nieprawidłowy cel.")
 			return
 		objective.completed = !objective.completed
 		log_admin("[key_name(usr)] toggled the win state for [current]'s objective: [objective.explanation_text]")
@@ -585,14 +585,14 @@
 				if(check_rights(R_FUN, 0))
 					var/datum/component/uplink/U = find_syndicate_uplink()
 					if(U)
-						var/crystals = input("Amount of telecrystals for [key]","Syndicate uplink", U.telecrystals) as null | num
+						var/crystals = input("Liczba telekryształów dla [key]","Uplink Syndykatu", U.telecrystals) as null | num
 						if(!isnull(crystals))
 							U.telecrystals = crystals
 							message_admins("[key_name_admin(usr)] changed [current]'s telecrystal count to [crystals].")
 							log_admin("[key_name(usr)] changed [current]'s telecrystal count to [crystals].")
 			if("uplink")
 				if(!equip_traitor())
-					to_chat(usr, "<span class='danger'>Equipping a syndicate failed!</span>")
+					to_chat(usr, "<span class='danger'>Nie udało się wyposażyć agenta Syndykatu!</span>")
 					log_admin("[key_name(usr)] tried and failed to give [current] an uplink.")
 				else
 					log_admin("[key_name(usr)] gave [current] an uplink.")

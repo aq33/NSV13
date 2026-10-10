@@ -154,13 +154,13 @@
 /datum/world_topic/comms_console/Run(list/input)
 	. = ..()
 	if(CHAT_FILTER_CHECK(input["message"])) // prevents any.. diplomatic incidents
-		minor_announce("In the interest of station productivity and mental hygiene, a message from [input["message_sender"]] was intercepted by the CCC and determined to be unfit for crew-level access.", "CentCom Communications Commission")
+		minor_announce("W trosce o produktywność stacji i higienę psychiczną wiadomość od [input["message_sender"]] została przechwycona przez KKC i uznana za nieodpowiednią dla załogi.", "Komisja Komunikacji Centrali")
 		message_admins("Incomming cross-comms message from [input["message_sender"]] blocked: [input["message"]]")
 		statuscode = 451 // "Unavailable for legal reasons" ahaha; i.e. censored
 		response = "Censored - Message blocked by chat filter"
 		return
 
-	minor_announce(input["message"], "Incoming message from [input["message_sender"]]")
+	minor_announce(input["message"], "Wiadomość przychodząca od [input["message_sender"]]")
 	for(var/obj/machinery/computer/communications/CM in GLOB.machines)
 		CM.override_cooldown()
 	statuscode = 200
@@ -172,7 +172,7 @@
 
 /datum/world_topic/news_report/Run(list/input)
 	. = ..()
-	minor_announce(input["message"], "Breaking Update From [input["message_sender"]]")
+	minor_announce(input["message"], "Pilna aktualizacja od [input["message_sender"]]")
 	statuscode = 200
 	response = "Message received"
 

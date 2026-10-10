@@ -13,8 +13,7 @@
 	bodies = list("Foot", "Feet")
 	var/morelube = FALSE
 	var/clownshoes = FALSE
-	threshold_desc = "<b>Transmission 10:</b> The host sweats even more profusely, lubing almost every tile they walk over<br>\
-					  <b>Resistance 14:</b> The host's feet turn into a pair of clown shoes."
+	threshold_desc = "<b>Transmisja 10:</b> nosiciel poci się jeszcze obficiej, smarując niemal każde pole, po którym przejdzie<br><b>Odporność 14:</b> stopy nosiciela zamieniają się w parę butów klauna."
 
 /datum/symptom/lubefeet/severityset(datum/disease/advance/A)
 	. = ..()
@@ -36,16 +35,16 @@
 	switch(A.stage)
 		if(1, 2)
 			if(prob(15))
-				to_chat(M, "<span class='notice'>Your feet begin to sweat profusely...</span>")
+				to_chat(M, "<span class='notice'>Twoje stopy zaczynają się obficie pocić...</span>")
 		if(3, 4)
-			to_chat(M, "<span class='danger'>You slide about inside your shoes!</span>")
+			to_chat(M, "<span class='danger'>Ślizgasz się w swoich butach!</span>")
 			if(A.stage == 4 || A.stage == 5)
 				if(morelube)
 					makelube(M, 40)
 				else
 					makelube(M, 20)
 		if(5)
-			to_chat(M, "<span class='danger'>You slide about inside your shoes!</span>")
+			to_chat(M, "<span class='danger'>Ślizgasz się w swoich butach!</span>")
 			if(A.stage == 4 || A.stage == 5)
 				if(morelube)
 					makelube(M, 80)
@@ -59,7 +58,7 @@
 	if(prob(chance))
 		var/turf/open/OT = get_turf(M)
 		if(istype(OT))
-			to_chat(M, "<span class='danger'>The lube pools into a puddle!</span>")
+			to_chat(M, "<span class='danger'>Smar zbiera się w kałużę!</span>")
 			OT.MakeSlippery(TURF_WET_LUBE, min_wet_time = 20 SECONDS, wet_time_to_add = 10 SECONDS)
 
 /datum/symptom/lubefeet/End(datum/disease/advance/A)

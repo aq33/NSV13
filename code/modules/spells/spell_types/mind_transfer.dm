@@ -22,53 +22,51 @@ Also, you never added distance checking after target is selected. I've went ahea
 /obj/effect/proc_holder/spell/targeted/mind_transfer/cast(list/targets, mob/living/user = usr, distanceoverride, silent = FALSE)
 	if(!targets.len)
 		if(!silent)
-			to_chat(user, "<span class='warning'>No mind found!</span>")
+			to_chat(user, "<span class='warning'>Nie znaleziono umysłu!</span>")
 		return
 
 	if(targets.len > 1)
 		if(!silent)
-			to_chat(user, "<span class='warning'>Too many minds! You're not a hive damnit!</span>")
+			to_chat(user, "<span class='warning'>Za dużo umysłów! Nie jesteś rojem, do cholery!</span>")
 		return
 
 	var/mob/living/target = targets[1]
 
-	var/t_He = target.p_they(TRUE)
-	var/t_is = target.p_are()
 
 	if(!(target in oview(range)) && !distanceoverride)//If they are not in overview after selection. Do note that !() is necessary for in to work because ! takes precedence over it.
 		if(!silent)
-			to_chat(user, "<span class='warning'>[t_He] [t_is] too far away!</span>")
+			to_chat(user, "<span class='warning'>Cel jest za daleko!</span>")
 		return
 
 	if(ismegafauna(target))
 		if(!silent)
-			to_chat(user, "<span class='warning'>This creature is too powerful to control!</span>")
+			to_chat(user, "<span class='warning'>To stworzenie jest zbyt potężne, by je kontrolować!</span>")
 		return
 
 	if(target.stat == DEAD)
 		if(!silent)
-			to_chat(user, "<span class='warning'>You don't particularly want to be dead!</span>")
+			to_chat(user, "<span class='warning'>Nie masz szczególnej ochoty być martwym!</span>")
 		return
 
 	if(!target.key || !target.mind)
 		if(!silent)
-			to_chat(user, "<span class='warning'>[t_He] appear[target.p_s()] to be catatonic! Not even magic can affect [target.p_their()] vacant mind.</span>")
+			to_chat(user, "<span class='warning'>Wygląda na to, że cel jest w katatonii! Nawet magia nie dosięgnie pustego umysłu.</span>")
 		return
 
 	if(user.suiciding)
 		if(!silent)
-			to_chat(user, "<span class='warning'>You're killing yourself! You can't concentrate enough to do this!</span>")
+			to_chat(user, "<span class='warning'>Zabijasz się! Nie możesz się na tyle skupić, by to zrobić!</span>")
 		return
 
 	var/datum/mind/TM = target.mind
 	if(target.anti_magic_check() || TM.has_antag_datum(/datum/antagonist/wizard) || TM.has_antag_datum(/datum/antagonist/cult) || TM.has_antag_datum(/datum/antagonist/changeling) || TM.has_antag_datum(/datum/antagonist/rev) || target.key[1] == "@")
 		if(!silent)
-			to_chat(user, "<span class='warning'>[target.p_their(TRUE)] mind is resisting your spell!</span>")
+			to_chat(user, "<span class='warning'>Umysł celu opiera się twojemu zaklęciu!</span>")
 		return
 
 	if(istype(target.get_item_by_slot(ITEM_SLOT_HEAD), /obj/item/clothing/head/foilhat))
-		to_chat(target, "<span class='warning'>Your protective headgear successfully deflects mind controlling brainwaves!</span>")
-		to_chat(user, "<span class='warning'>[target.p_their(TRUE)] mind is protected by a strange ward on their headgear!</span>")
+		to_chat(target, "<span class='warning'>Twoje ochronne nakrycie głowy odbija fale mózgowe kontrolujące umysł!</span>")
+		to_chat(user, "<span class='warning'>Umysł celu chroni dziwna osłona na nakryciu głowy!</span>")
 		return
 
 	if(istype(target, /mob/living/simple_animal/hostile/guardian))
@@ -76,13 +74,13 @@ Also, you never added distance checking after target is selected. I've went ahea
 		if(stand.summoner)
 			if(stand.summoner == user)
 				if(!silent)
-					to_chat(user, "<span class='warning'>Swapping minds with your own guardian would just put you back into your own head!</span>")
+					to_chat(user, "<span class='warning'>Zamiana umysłów z własnym strażnikiem tylko umieściłaby cię z powrotem w twojej głowie!</span>")
 				return
 			else
 				target = stand.summoner
 
 	if(istype(target, /mob/living/simple_animal/slaughter)) //No.
-		to_chat(user, "<span class='warning'>Your mind recoils from the infernal hellfire of [target]'s soul!</span>")
+		to_chat(user, "<span class='warning'>Twój umysł cofa się przed piekielnym ogniem duszy [target]!</span>")
 		user.Unconscious(unconscious_amount_caster)
 		return
 

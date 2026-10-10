@@ -15,9 +15,7 @@
 	var/fireproof = FALSE
 	prefixes = list("Lava ", "Lavaland ", "Eldritch ")
 	bodies = list("Goliath", "Tentacle", "Carapace")
-	threshold_desc = "<b>Stealth 8:</b> Upon death, the host's soul will solidify into an unholy artifact, rendering them utterly unrevivable in the process.<br>\
-					  <b>Resistance 15:</b> The area near the host roils with paralyzing tendrils.<br>\
-					  <b>Resistance 20:</b>	Host becomes immune to heat, ash, and lava"
+	threshold_desc = "<b>Ukrycie 8:</b> po śmierci dusza nosiciela zestala się w bezbożny artefakt, przez co nie da się go już wskrzesić.<br><b>Odporność 15:</b> okolicę nosiciela wypełniają paraliżujące macki.<br><b>Odporność 20:</b> nosiciel staje się odporny na gorąco, popiół i lawę"
 	var/list/cached_tentacle_turfs
 	var/turf/last_location
 	var/tentacle_recheck_cooldown = 100
@@ -47,7 +45,7 @@
 	switch(A.stage)
 		if(2)
 			if(prob(base_message_chance))
-				to_chat(M, "<span class='notice'>Your skin feels scaly.</span>")
+				to_chat(M, "<span class='notice'>Twoja skóra wydaje się łuskowata.</span>")
 		if(3, 4)
 			if(prob(base_message_chance))
 				to_chat(M, "<span class='notice'>[pick("Your skin is hard.", "You feel stronger.", "You feel powerful.")]</span>")
@@ -67,7 +65,7 @@
 				M.weather_immunities |= "lava"
 			if(HAS_TRAIT(M, TRAIT_NECROPOLIS_INFECTED))
 				REMOVE_TRAIT(M, TRAIT_NECROPOLIS_INFECTED, "legion_core_trait")
-				to_chat(M, "<span class='notice'>The tendrils loosen their grip, protecting the necropolis within you.</span>")
+				to_chat(M, "<span class='notice'>Macki rozluźniają uścisk, chroniąc nekropolię w tobie.</span>")
 			if(prob(base_message_chance))
 				to_chat(M, "<span class='notice'>[pick("Your skin has become a hardened carapace", "Your strength is superhuman.", "You feel invincible.")]</span>")
 	return
@@ -93,7 +91,7 @@
 	if(!..())
 		return
 	var/mob/living/carbon/M = A.affected_mob
-	to_chat(M, "<span class='danger'>You feel weak and powerless as the necropolis' blessing leaves your body, leaving you slow and vulnerable.</span>")
+	to_chat(M, "<span class='danger'>Czujesz się słaby i bezsilny, gdy błogosławieństwo nekropolii opuszcza twoje ciało, zostawiając cię powolnym i bezbronnym.</span>")
 	M.dna.species.punchdamage = initial(M.dna.species.punchdamage)
 	M.dna.species.brutemod = initial(M.dna.species.heatmod)
 	M.dna.species.burnmod = initial(M.dna.species.heatmod)
@@ -111,8 +109,8 @@
 		return
 	var/mob/living/M = A.affected_mob
 	if(chest && A.stage >= 5 && M.sethellbound())
-		to_chat(M, "<span class='danger'>Your soul is ripped from your body!</span>")
-		M.visible_message("<span class='danger'>An unearthly roar shakes the ground as [M] explodes into a shower of gore, leaving behind an ominous, fleshy chest.</span>")
+		to_chat(M, "<span class='danger'>Twoja dusza zostaje wyrwana z ciała!</span>")
+		M.visible_message("<span class='danger'>Nieziemski ryk wstrząsa ziemią, gdy [M] eksploduje deszczem krwawych szczątków, zostawiając po sobie złowieszczą, mięsistą skrzynię.</span>")
 		playsound(M.loc,'sound/effects/tendril_destroyed.ogg', 200, 0, 50, 1, 1)
 		addtimer(CALLBACK(M, TYPE_PROC_REF(/mob, gib)), 0.5 SECONDS)	//we can't gib mob while it's already dying
 		if(!ishuman(M) || HAS_TRAIT(M, TRAIT_NONECRODISEASE)) //We don't NEED them to be human. However, I want to avoid people making teratoma-farms for necrochests
@@ -128,7 +126,7 @@
 		if(L == spawner)
 			retract()
 			return
-		visible_message("<span class='danger'>[src] grabs hold of [L]!</span>")
+		visible_message("<span class='danger'>[src] chwyta [L]!</span>")
 		L.Stun(40)
 		L.adjustBruteLoss(rand(1,10))
 		latched = TRUE

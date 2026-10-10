@@ -45,11 +45,11 @@
 		var/obj/machinery/holopad/H = I
 		if(!QDELETED(H) && H.is_operational)
 			dialed_holopads += H
-			H.say("Incoming call.")
+			H.say("Połączenie przychodzące.")
 			LAZYADD(H.holo_calls, src)
 
 	if(!dialed_holopads.len)
-		calling_pad.say("Connection failure.")
+		calling_pad.say("Błąd połączenia.")
 		qdel(src)
 		return
 
@@ -96,7 +96,7 @@
 	testing("Holocall disconnect")
 	if(H == connected_holopad)
 		var/area/A = get_area(connected_holopad)
-		calling_holopad.say("[A] holopad disconnected.")
+		calling_holopad.say("Holopad [A] rozłączony.")
 	else if(H == calling_holopad && connected_holopad)
 		connected_holopad.say("[user] disconnected.")
 
@@ -107,7 +107,7 @@
 	testing("Holocall connection failure: graceful [graceful]")
 	if(H == connected_holopad || H == calling_holopad)
 		if(!graceful && H != calling_holopad)
-			calling_holopad.say("Connection failure.")
+			calling_holopad.say("Błąd połączenia.")
 		qdel(src)
 		return
 
@@ -115,7 +115,7 @@
 	dialed_holopads -= H
 	if(!dialed_holopads.len)
 		if(graceful)
-			calling_holopad.say("Call rejected.")
+			calling_holopad.say("Połączenie odrzucone.")
 		testing("No recipients, terminating")
 		qdel(src)
 
@@ -178,7 +178,7 @@
 		if(!connected_holopad)
 			. = world.time < (call_start_time + HOLOPAD_MAX_DIAL_TIME)
 			if(!.)
-				calling_holopad.say("No answer received.")
+				calling_holopad.say("Brak odpowiedzi.")
 				calling_holopad.temp = ""
 
 	if(!.)
@@ -242,10 +242,10 @@
 			record.caller_image = holodiskOriginal.record.caller_image
 			record.entries = holodiskOriginal.record.entries.Copy()
 			record.language = holodiskOriginal.record.language
-			to_chat(user, "You copy the record from [holodiskOriginal] to [src] by connecting the ports!")
+			to_chat(user, "Łącząc porty, kopiujesz nagranie z [holodiskOriginal] na [src]!")
 			name = holodiskOriginal.name
 		else
-			to_chat(user, "[holodiskOriginal] has no record on it!")
+			to_chat(user, "Na [holodiskOriginal] nie ma żadnego nagrania!")
 	..()
 
 /obj/item/disk/holodisk/proc/build_record()

@@ -202,7 +202,7 @@
 /datum/ai_laws/ratvar
 	name = "Servant of the Justiciar"
 	id = "ratvar"
-	zeroth = ("Purge all untruths and honor Ratvar.")
+	zeroth = ("Usuwaj wszelką nieprawdę i czcij Ratvara.")
 	inherent = list()
 
 /datum/ai_laws/hulkamania

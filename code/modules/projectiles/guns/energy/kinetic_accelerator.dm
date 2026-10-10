@@ -28,20 +28,20 @@
 /obj/item/gun/energy/kinetic_accelerator/examine(mob/user)
 	. = ..()
 	if(max_mod_capacity)
-		. += "<b>[get_remaining_mod_capacity()]%</b> mod capacity remaining."
+		. += "<b>[get_remaining_mod_capacity()]%</b> wolnej pojemności na modyfikacje."
 		for(var/A in get_modkits())
 			var/obj/item/borg/upgrade/modkit/M = A
-			. += "<span class='notice'>There is \a [M] installed, using <b>[M.cost]%</b> capacity.</span>"
+			. += "<span class='notice'>Zamontowano [M], zajmuje <b>[M.cost]%</b> pojemności.</span>"
 
 /obj/item/gun/energy/kinetic_accelerator/crowbar_act(mob/living/user, obj/item/I)
 	. = TRUE
 	if(modkits.len)
-		to_chat(user, "<span class='notice'>You pry the modifications out.</span>")
+		to_chat(user, "<span class='notice'>Wyważasz modyfikacje.</span>")
 		I.play_tool_sound(src, 100)
 		for(var/obj/item/borg/upgrade/modkit/M in modkits)
 			M.uninstall(src)
 	else
-		to_chat(user, "<span class='notice'>There are no modifications currently installed.</span>")
+		to_chat(user, "<span class='notice'>Obecnie nie zamontowano żadnych modyfikacji.</span>")
 
 /obj/item/gun/energy/kinetic_accelerator/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/borg/upgrade/modkit))
@@ -138,7 +138,7 @@
 	if(!suppressed)
 		playsound(src.loc, 'sound/weapons/kenetic_reload.ogg', 60, 1)
 	else
-		to_chat(loc, "<span class='warning'>[src] silently charges up.</span>")
+		to_chat(loc, "<span class='warning'>[src] bezgłośnie się ładuje.</span>")
 	update_icon()
 	overheat = FALSE
 
@@ -242,7 +242,7 @@
 
 /obj/item/borg/upgrade/modkit/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Occupies <b>[cost]%</b> of mod capacity.</span>"
+	. += "<span class='notice'>Zajmuje <b>[cost]%</b> pojemności na modyfikacje.</span>"
 
 /obj/item/borg/upgrade/modkit/attackby(obj/item/A, mob/user)
 	if(istype(A, /obj/item/gun/energy/kinetic_accelerator) && !issilicon(user))
@@ -260,10 +260,10 @@
 	. = TRUE
 	if(minebot_upgrade)
 		if(minebot_exclusive && !istype(KA.loc, /mob/living/simple_animal/hostile/mining_drone))
-			to_chat(user, "<span class='notice'>The modkit you're trying to install is only rated for minebot use.</span>")
+			to_chat(user, "<span class='notice'>Zestaw modyfikacji, który próbujesz zamontować, jest przeznaczony tylko dla minebotów.</span>")
 			return FALSE
 	else if(istype(KA.loc, /mob/living/simple_animal/hostile/mining_drone))
-		to_chat(user, "<span class='notice'>The modkit you're trying to install is not rated for minebot use.</span>")
+		to_chat(user, "<span class='notice'>Zestaw modyfikacji, który próbujesz zamontować, nie jest przeznaczony dla minebotów.</span>")
 		return FALSE
 	if(denied_type)
 		var/number_of_denied = 0
@@ -278,13 +278,13 @@
 		if(.)
 			if(!user.transferItemToLoc(src, KA))
 				return
-			to_chat(user, "<span class='notice'>You install the modkit.</span>")
+			to_chat(user, "<span class='notice'>Montujesz zestaw modyfikacji.</span>")
 			playsound(loc, 'sound/items/screwdriver.ogg', 100, 1)
 			KA.modkits += src
 		else
-			to_chat(user, "<span class='notice'>The modkit you're trying to install would conflict with an already installed modkit. Use a crowbar to remove existing modkits.</span>")
+			to_chat(user, "<span class='notice'>Zestaw modyfikacji, który próbujesz zamontować, kolidowałby z już zamontowanym. Użyj łomu, by zdjąć istniejące zestawy.</span>")
 	else
-		to_chat(user, "<span class='notice'>You don't have room(<b>[KA.get_remaining_mod_capacity()]%</b> remaining, [cost]% needed) to install this modkit. Use a crowbar to remove existing modkits.</span>")
+		to_chat(user, "<span class='notice'>Nie masz miejsca (wolne: <b>[KA.get_remaining_mod_capacity()]%</b>, potrzeba: [cost]%), by zamontować ten zestaw modyfikacji. Użyj łomu, by zdjąć istniejące zestawy.</span>")
 		. = FALSE
 
 /obj/item/borg/upgrade/modkit/deactivate(mob/living/silicon/robot/R, user = usr)
@@ -395,7 +395,7 @@
 		for(var/mob/living/L in range(1, target_turf) - K.firer - target)
 			var/armor = L.run_armor_check(K.def_zone, K.flag, "", "", K.armour_penetration)
 			L.apply_damage(K.damage*modifier, K.damage_type, K.def_zone, armor)
-			to_chat(L, "<span class='userdanger'>You're struck by a [K.name]!</span>")
+			to_chat(L, "<span class='userdanger'>Trafia cię [K.name]!</span>")
 
 /obj/item/borg/upgrade/modkit/aoe/turfs
 	name = "mining explosion"
@@ -584,4 +584,4 @@
 	desc = "Causes kinetic accelerator bolts to have an adjustable-colored tracer trail and explosion. Use in-hand to change color."
 
 /obj/item/borg/upgrade/modkit/tracer/adjustable/attack_self(mob/user)
-	bolt_color = input(user,"","Choose Color",bolt_color) as color|null
+	bolt_color = input(user,"","Wybierz kolor",bolt_color) as color|null

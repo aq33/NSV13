@@ -13,9 +13,7 @@
 	var/factory_blob
 	var/strong_blob
 	var/node_blob
-	threshold_desc = "<b>Resistance 11:</b> There is a chance to spawn a factory blob, instead of a normal blob.<br> \
-					  <b>Resistance 8:</b> Spawns a strong blob instead of a normal blob \
-					  <b>Resistance 14:</b> Has a chance to spawn a blob node instead of a normal blob<br>"
+	threshold_desc = "<b>Odporność 11:</b> jest szansa, że zamiast zwykłego bloba powstanie blob-fabryka.<br><b>Odporność 8:</b> zamiast zwykłego bloba powstaje silny blob <b>Odporność 14:</b> jest szansa, że zamiast zwykłego bloba powstanie węzeł bloba<br>"
 
 /datum/symptom/blobspores/severityset(datum/disease/advance/A)
 	. = ..()
@@ -40,10 +38,10 @@
 	switch(A.stage)
 		if(1)
 			if(prob(2))
-				to_chat(M, "<span class='notice'>You feel bloated.</span>")
+				to_chat(M, "<span class='notice'>Czujesz się wzdęty.</span>")
 
 			if(prob(3) && !M.jitteriness) //We dont want to stack this with other effects.
-				to_chat(M, "<span class='notice'>You feel a bit jittery.</span>")
+				to_chat(M, "<span class='notice'>Jesteś trochę roztrzęsiony.</span>")
 				M.Jitter(10)
 		if(2)
 			if(prob(1) && iscarbon(M))
@@ -51,12 +49,12 @@
 				C.vomit(5, TRUE, FALSE)
 		if(3, 4)
 			if(prob(10))
-				to_chat(M, "<span class='notice'>You feel blobby?</span>")
+				to_chat(M, "<span class='notice'>Czujesz się... blobowaty?</span>")
 				M.reagents.add_reagent(pick(subtypesof(/datum/reagent/blob/)), 5) //Completely harmless due to how blob chemicals work, still gives some good flavour
 		if(5)
 			ready_to_pop = TRUE
 			if(prob(5))
-				M.visible_message("<span class='warning'>[M] coughs blood!</span>")
+				M.visible_message("<span class='warning'>[M] kaszle krwią!</span>")
 				M.add_splatter_floor(M.loc)
 				if(iscarbon(M))
 					var/mob/living/carbon/C = M
@@ -67,7 +65,7 @@
 	if(neutered) //Stops this symptom from making people scared even if this is useless
 		return FALSE
 	var/mob/living/M = A.affected_mob
-	M.visible_message("<span class='danger'>[M] starts swelling grotesquely!</span>")
+	M.visible_message("<span class='danger'>[M] zaczyna groteskowo puchnąć!</span>")
 	addtimer(CALLBACK(src, PROC_REF(blob_the_mob), A, M), 10 SECONDS)
 
 /datum/symptom/blobspores/proc/blob_the_mob(datum/disease/advance/A, mob/living/M)
@@ -92,4 +90,4 @@
 			blobbernaut.add_atom_colour(pick(BLOB_STRAIN_COLOR_LIST), FIXED_COLOUR_PRIORITY)
 		var/atom/blob_tile = new pick_blob(M.loc)
 		blob_tile.add_atom_colour(pick(BLOB_STRAIN_COLOR_LIST), FIXED_COLOUR_PRIORITY) //A random colour for the blob, as this blob isn't going to get a overmind colour
-	M.visible_message("<span class='danger'>A huge mass of blob and blob spores burst out of [M]!</span>")
+	M.visible_message("<span class='danger'>Z [M] wybucha ogromna masa bloba i jego zarodników!</span>")

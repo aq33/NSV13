@@ -43,11 +43,11 @@
 	if(!select)
 		burst_size = 1
 		fire_delay = 0
-		to_chat(user, "<span class='notice'>You switch to [full_auto ? "full-auto": "semi-automatic."]</span>")
+		to_chat(user, "<span class='notice'>Przełączasz na [full_auto ? "ogień ciągły.": "tryb półautomatyczny."]</span>")
 	else
 		burst_size = initial(burst_size)
 		fire_delay = initial(fire_delay)
-		to_chat(user, "<span class='notice'>You switch to [burst_size]-rnd burst.</span>")
+		to_chat(user, "<span class='notice'>Przełączasz na serię [burst_size]-strzałową.</span>")
 
 	playsound(user, 'sound/weapons/empty.ogg', 100, 1)
 	update_icon()
@@ -174,15 +174,15 @@
 			select = 1
 			burst_size = initial(burst_size)
 			fire_delay = initial(fire_delay)
-			to_chat(user, "<span class='notice'>You switch to [burst_size]-rnd burst.</span>")
+			to_chat(user, "<span class='notice'>Przełączasz na serię [burst_size]-strzałową.</span>")
 		if(1)
 			select = 2
-			to_chat(user, "<span class='notice'>You switch to grenades.</span>")
+			to_chat(user, "<span class='notice'>Przełączasz na granaty.</span>")
 		if(2)
 			select = 0
 			burst_size = 1
 			fire_delay = 0
-			to_chat(user, "<span class='notice'>You switch to semi-auto.</span>")
+			to_chat(user, "<span class='notice'>Przełączasz na tryb półautomatyczny.</span>")
 	playsound(user, 'sound/weapons/empty.ogg', 100, 1)
 	update_icon()
 	return
@@ -242,9 +242,9 @@
 
 /obj/item/gun/ballistic/automatic/l6_saw/examine(mob/user)
 	. = ..()
-	. += "<b>alt + click</b> to [cover_open ? "close" : "open"] the dust cover."
+	. += "<b>alt + klik</b>, by [cover_open ? "zamknąć" : "otworzyć"] osłonę przeciwpyłową."
 	if(cover_open && magazine)
-		. += "<span class='notice'>It seems like you could use an <b>empty hand</b> to remove the magazine.</span>"
+		. += "<span class='notice'>Wygląda na to, że możesz wyjąć magazynek <b>wolną ręką</b>.</span>"
 
 
 /obj/item/gun/ballistic/automatic/l6_saw/AltClick(mob/user)
@@ -264,7 +264,7 @@
 
 /obj/item/gun/ballistic/automatic/l6_saw/afterattack(atom/target as mob|obj|turf, mob/living/user as mob|obj, flag, params)
 	if(cover_open)
-		to_chat(user, "<span class='warning'>[src]'s cover is open! Close it before firing!</span>")
+		to_chat(user, "<span class='warning'>Osłona [src] jest otwarta! Zamknij ją przed strzałem!</span>")
 		return
 	else
 		. = ..()
@@ -276,13 +276,13 @@
 		..()
 		return
 	if (!cover_open)
-		to_chat(user, "<span class='warning'>[src]'s cover is closed! Open it before trying to remove the magazine!</span>")
+		to_chat(user, "<span class='warning'>Osłona [src] jest zamknięta! Otwórz ją, zanim spróbujesz wyjąć magazynek!</span>")
 		return
 	..()
 
 /obj/item/gun/ballistic/automatic/l6_saw/attackby(obj/item/A, mob/user, params)
 	if(!cover_open && istype(A, mag_type))
-		to_chat(user, "<span class='warning'>[src]'s dust cover prevents a magazine from being fit.</span>")
+		to_chat(user, "<span class='warning'>Osłona przeciwpyłowa [src] nie pozwala włożyć magazynka.</span>")
 		return
 	..()
 

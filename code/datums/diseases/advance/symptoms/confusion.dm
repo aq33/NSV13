@@ -31,9 +31,7 @@ Bonus
 	prefixes = list("Dizzy ")
 	bodies = list("Ditz")
 	var/brain_damage = FALSE
-	threshold_desc = "<b>Resistance 6:</b> Causes brain damage over time.<br>\
-					  <b>Transmission 6:</b> Increases confusion duration.<br>\
-					  <b>Stealth 4:</b> The symptom remains hidden until active."
+	threshold_desc = "<b>Odporność 6:</b> z czasem uszkadza mózg.<br><b>Transmisja 6:</b> wydłuża czas dezorientacji.<br><b>Ukrycie 4:</b> objaw pozostaje ukryty, dopóki nie jest aktywny."
 
 /datum/symptom/confusion/severityset(datum/disease/advance/A)
 	. = ..()
@@ -59,7 +57,7 @@ Bonus
 			if(prob(base_message_chance) && !suppress_warning)
 				to_chat(M, "<span class='warning'>[pick("Your head hurts.", "Your mind blanks for a moment.")]</span>")
 		else
-			to_chat(M, "<span class='userdanger'>You can't think straight!</span>")
+			to_chat(M, "<span class='userdanger'>Nie możesz jasno myśleć!</span>")
 			M.confused = min(100 * power, M.confused + 8)
 			if(brain_damage)
 				M.adjustOrganLoss(ORGAN_SLOT_BRAIN,3 * power, 80)

@@ -29,16 +29,16 @@ STI KALY - blind
 	switch(stage)
 		if(2)
 			if(prob(1))
-				affected_mob.say(pick("You shall not pass!", "Expeliarmus!", "By Merlins beard!", "Feel the power of the Dark Side!"), forced = "wizarditis")
+				affected_mob.say(pick("Nie przejdziesz!", "Expelliarmus!", "Na brodę Merlina!", "Poczuj moc Ciemnej Strony!"), forced = "wizarditis")
 			if(prob(1))
-				to_chat(affected_mob, "<span class='danger'>You feel [pick("that you don't have enough mana", "that the winds of magic are gone", "an urge to summon familiar")].</span>")
+				to_chat(affected_mob, "<span class='danger'>Czujesz, [pick("że brakuje ci many", "że wiatry magii zniknęły", "chęć przywołania chowańca")].</span>")
 
 
 		if(3)
 			if(prob(1))
 				affected_mob.say(pick("NEC CANTIO!","AULIE OXIN FIERA!", "STI KALY!", "TARCOL MINTI ZHERI!"), forced = "wizarditis")
 			if(prob(1))
-				to_chat(affected_mob, "<span class='danger'>You feel [pick("the magic bubbling in your veins","that this location gives you a +1 to INT","an urge to summon familiar")].</span>")
+				to_chat(affected_mob, "<span class='danger'>Czujesz [pick("bulgoczącą w żyłach magię","że to miejsce daje ci +1 do INT","chęć przywołania chowańca")].</span>")
 
 		if(4)
 
@@ -46,7 +46,7 @@ STI KALY - blind
 				affected_mob.say(pick("NEC CANTIO!","AULIE OXIN FIERA!","STI KALY!","EI NATH!"), forced = "wizarditis")
 				return
 			if(prob(1))
-				to_chat(affected_mob, "<span class='danger'>You feel [pick("the tidal wave of raw power building inside","that this location gives you a +2 to INT and +1 to WIS","an urge to teleport")].</span>")
+				to_chat(affected_mob, "<span class='danger'>Czujesz [pick("narastającą w tobie przypływową falę surowej mocy","że to miejsce daje ci +2 do INT i +1 do MDR","chęć teleportacji")].</span>")
 				spawn_wizard_clothes(50)
 			if(prob(1))
 				wizarditis_teleport(affected_mob)

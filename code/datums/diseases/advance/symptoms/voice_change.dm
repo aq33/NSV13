@@ -31,9 +31,7 @@ Bonus
 	prefixes = list("Vocal ")
 	var/scramble_language = FALSE
 	var/datum/language/current_language
-	threshold_desc = "<b>Transmission 10:</b> The host's language center of the brain is damaged, leading to complete inability to speak or understand any language.<br>\
-					  <b>Stage Speed 7:</b> Changes voice more often.<br>\
-					  <b>Stealth 3:</b> The symptom remains hidden until active."
+	threshold_desc = "<b>Transmisja 10:</b> ośrodek mowy w mózgu nosiciela zostaje uszkodzony, przez co całkowicie traci on zdolność mówienia i rozumienia jakiegokolwiek języka.<br><b>Szybkość stadiów 7:</b> częściej zmienia głos.<br><b>Ukrycie 3:</b> objaw pozostaje ukryty, dopóki nie jest aktywny."
 
 /datum/symptom/voice_change/severityset(datum/disease/advance/A)
 	. = ..()

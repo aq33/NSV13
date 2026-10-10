@@ -11,8 +11,7 @@
 	symptom_delay_max = 10
 	prefixes = list("Drunken ", "Alcoholic ")
 	var/target = 30 //how drunk should the target get? by default, its *just* below enough to cause vomiting
-	threshold_desc = "<b>Stealth 3:</b> The host only reaches a slight buzz.<br>\
-					  <b>Stage Speed 6:</b> The levels of alcohol produced can be lethal. Overriden by the stealth threshold.<br>"
+	threshold_desc = "<b>Ukrycie 3:</b> nosiciel osiąga tylko lekki szum w głowie.<br><b>Szybkość stadiów 6:</b> wytwarzany poziom alkoholu może być śmiertelny. Nadpisywane przez próg ukrycia.<br>"
 
 /datum/symptom/alcohol/severityset(datum/disease/advance/A)
 	. = ..()
@@ -36,11 +35,11 @@
 	var/list/warningstrings = list()
 	switch(A.stage + severity)
 		if(4 to 5)
-			warningstrings = list("You feel buzzed", "You feel a bit tipsy")
+			warningstrings = list("Masz lekki szum w głowie", "Jesteś trochę wstawiony")
 		if(6 to 7)
-			warningstrings = list("You feel drunk", "You feel a bit woozy")
+			warningstrings = list("Jesteś pijany", "Kręci ci się trochę w głowie")
 		if(8 to INFINITY)
-			warningstrings = list("ahyguabngaghabyugbauwf", "You feel sick", "It feels like you drank too much", "You feel like doing something unwise")
+			warningstrings = list("ahyguabngaghabyugbauwf", "Czujesz się chory", "Masz wrażenie, że wypiłeś za dużo", "Masz ochotę zrobić coś nierozsądnego")
 	M.drunkenness = CLAMP(M.drunkenness + target * ((A.stage - 1) * 0.1), M.drunkenness, target)
 	if(length(warningstrings) && prob(5 * A.stage)) //NSV13 - stop runtiming from empty warnings
 		to_chat(M, "<span class='warning'>[pick(warningstrings)]</span>")

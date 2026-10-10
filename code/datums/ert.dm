@@ -7,13 +7,13 @@
 	var/roles = list(/datum/antagonist/ert/security, /datum/antagonist/ert/medic, /datum/antagonist/ert/engineer) //List of possible roles to be assigned to ERT members.
 	var/rename_team
 	var/code
-	var/mission = "Assist the station."
+	var/mission = "Wspieraj stację."
 	var/teamsize = 5
 	var/polldesc
 
 /datum/ert/New()
 	if (!polldesc)
-		polldesc = "a Code [code] Nanotrasen Emergency Response Team"
+		polldesc = "Zespół Reagowania Kryzysowego Nanotrasen (kod [code])"
 
 /datum/ert/blue
 	opendoors = FALSE
@@ -32,8 +32,8 @@
 	leader_role = /datum/antagonist/ert/deathsquad/leader
 	rename_team = "Deathsquad"
 	code = "Delta"
-	mission = "Leave no witnesses."
-	polldesc = "an elite Nanotrasen Strike Team"
+	mission = "Nie zostawiaj świadków."
+	polldesc = "elitarny Oddział Uderzeniowy Nanotrasen"
 
 /datum/ert/centcom_official
 	code = "Green"
@@ -41,18 +41,18 @@
 	opendoors = FALSE
 	leader_role = /datum/antagonist/official
 	roles = list(/datum/antagonist/official)
-	rename_team = "CentCom Officials"
-	polldesc = "a CentCom Official"
+	rename_team = "Urzędnicy Centrali"
+	polldesc = "urzędnik Centrali"
 
 /datum/ert/centcom_official/New()
-	mission = "Conduct a routine performance review of [station_name()] and its Captain."
+	mission = "Przeprowadź rutynową ocenę stacji [station_name()] i jej Kapitana."
 
 /datum/ert/inquisition
 	roles = list(/datum/antagonist/ert/chaplain/inquisitor, /datum/antagonist/ert/security/inquisitor, /datum/antagonist/ert/medic/inquisitor)
 	leader_role = /datum/antagonist/ert/commander/inquisitor
 	rename_team = "Inquisition"
-	mission = "Destroy any traces of paranormal activity aboard the station."
-	polldesc = "a Nanotrasen paranormal response team"
+	mission = "Zniszcz wszelkie ślady aktywności paranormalnej na stacji."
+	polldesc = "zespół Nanotrasen ds. zjawisk paranormalnych"
 
 /datum/ert/janitor
 	roles = list(/datum/antagonist/ert/janitor, /datum/antagonist/ert/janitor/heavy)
@@ -60,34 +60,34 @@
 	teamsize = 4
 	opendoors = FALSE
 	rename_team = "Janitor"
-	mission = "Clean up EVERYTHING."
-	polldesc = "a Nanotrasen Janitorial Response Team"
+	mission = "Posprzątaj WSZYSTKO."
+	polldesc = "Zespół Sprzątający Nanotrasen"
 
 /datum/ert/intern
 	roles = list(/datum/antagonist/ert/intern)
 	leader_role = /datum/antagonist/ert/intern/leader
 	teamsize = 7
 	opendoors = FALSE
-	rename_team = "Horde of Interns"
-	mission = "Assist in conflict resolution."
-	polldesc = "an unpaid internship opportunity with Nanotrasen"
+	rename_team = "Horda Stażystów"
+	mission = "Pomagaj w rozwiązywaniu konfliktów."
+	polldesc = "bezpłatny staż w Nanotrasen"
 
 /datum/ert/doomguy
 	roles = list(/datum/antagonist/ert/doomguy)
 	leader_role = /datum/antagonist/ert/doomguy
 	teamsize = 1
 	opendoors = TRUE
-	rename_team = "The Juggernaut"
-	mission = "Send them straight back to Hell."
-	polldesc = "an elite Nanotrasen enhanced supersoldier"
+	rename_team = "Juggernaut"
+	mission = "Odeślij ich prosto do piekła."
+	polldesc = "elitarny, wzmocniony superżołnierz Nanotrasen"
 
 /datum/ert/clown
 	roles = list(/datum/antagonist/ert/clown)
 	leader_role = /datum/antagonist/ert/clown
 	teamsize = 7
 	opendoors = FALSE
-	rename_team = "The Circus"
-	mission = "Provide vital morale support to the station in this time of crisis"
+	rename_team = "Cyrk"
+	mission = "Zapewnij stacji niezbędne wsparcie morale w tym czasie kryzysu"
 	code = "Banana"
 
 /datum/ert/honk
@@ -95,9 +95,9 @@
 	leader_role = /datum/antagonist/ert/clown/honk
 	teamsize = 5
 	opendoors = TRUE
-	rename_team = "HONK Squad"
-	mission = "HONK them into submission"
-	polldesc = "an elite Nanotrasen tactical pranking squad"
+	rename_team = "Oddział HONK"
+	mission = "Wyhonkuj ich do uległości"
+	polldesc = "elitarny taktyczny oddział psotników Nanotrasen"
 	code = "HOOOOOOOOOONK"
 
 /datum/ert/kudzu
@@ -105,7 +105,7 @@
 	leader_role = /datum/antagonist/ert/kudzu
 	teamsize = 5
 	opendoors = FALSE
-	rename_team = "Weed Whackers"
-	mission = "Eliminate the kudzu with extreme prejudice"
-	polldesc = "an elite gardening team"
+	rename_team = "Pogromcy Chwastów"
+	mission = "Wytęp kudzu z całą bezwzględnością"
+	polldesc = "elitarny zespół ogrodniczy"
 	code = "Vine Green"

@@ -30,9 +30,7 @@ BONUS
 	symptom_delay_min = 15
 	symptom_delay_max = 30
 	bodies = list("Skull", "Migraine")
-	threshold_desc = "<b>Stage Speed 6:</b> Headaches will cause severe pain, that weakens the host.<br>\
-					  <b>Stage Speed 9:</b> Headaches become less frequent but far more intense, preventing any action from the host.<br>\
-					  <b>Stealth 4:</b> Reduces headache frequency until later stages."
+	threshold_desc = "<b>Szybkość stadiów 6:</b> bóle głowy są silne i osłabiają nosiciela.<br><b>Szybkość stadiów 9:</b> bóle głowy są rzadsze, ale o wiele silniejsze, uniemożliwiając nosicielowi jakiekolwiek działanie.<br><b>Ukrycie 4:</b> zmniejsza częstotliwość bólów głowy do późniejszych stadiów."
 
 /datum/symptom/headache/severityset(datum/disease/advance/A)
 	. = ..()

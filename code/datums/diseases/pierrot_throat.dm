@@ -2,7 +2,7 @@
 	name = "Pierrot's Throat"
 	max_stages = 4
 	spread_text = "Airborne"
-	cure_text = "Banana products, especially banana bread."
+	cure_text = "Produkty bananowe, zwłaszcza chlebek bananowy."
 	cures = list(/datum/reagent/consumable/banana)
 	cure_chance = 75
 	agent = "H0NI<42 Virus"
@@ -16,13 +16,13 @@
 	switch(stage)
 		if(1)
 			if(prob(10))
-				to_chat(affected_mob, "<span class='danger'>You feel a little silly.</span>")
+				to_chat(affected_mob, "<span class='danger'>Czujesz się trochę głupkowato.</span>")
 		if(2)
 			if(prob(10))
-				to_chat(affected_mob, "<span class='danger'>You start seeing rainbows.</span>")
+				to_chat(affected_mob, "<span class='danger'>Zaczynasz widzieć tęcze.</span>")
 		if(3)
 			if(prob(10))
-				to_chat(affected_mob, "<span class='danger'>Your thoughts are interrupted by a loud <b>HONK!</b></span>")
+				to_chat(affected_mob, "<span class='danger'>Twoje myśli przerywa głośne <b>HONK!</b></span>")
 		if(4)
 			if(prob(5))
 				affected_mob.say( pick( list("HONK!", "Honk!", "Honk.", "Honk?", "Honk!!", "Honk?!", "Honk...") ) , forced = "pierrot's throat")

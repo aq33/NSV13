@@ -13,8 +13,7 @@
 	bodies = list("Wizard")
 	var/teleport = FALSE
 	var/robes = FALSE
-	threshold_desc = "<b>Transmission 8:</b> The host teleports occasionally.<br>\
-					  <b>Stage Speed 7:</b> The host grows a set of wizard robes."
+	threshold_desc = "<b>Transmisja 8:</b> nosiciel od czasu do czasu się teleportuje.<br><b>Szybkość stadiów 7:</b> nosicielowi wyrastają szaty czarodzieja."
 
 /datum/symptom/wizarditis/severityset(datum/disease/advance/A)
 	. = ..()
@@ -38,16 +37,16 @@
 	switch(A.stage)
 		if(2)
 			if(prob(15) && M.stat != DEAD)
-				M.say(pick("You shall not pass!", "Expeliarmus!", "By Merlins beard!", "Feel the power of the Dark Side!"), forced = "wizarditis")
+				M.say(pick("Nie przejdziesz!", "Expelliarmus!", "Na brodę Merlina!", "Poczuj moc Ciemnej Strony!"), forced = "wizarditis")
 			if(prob(15))
-				to_chat(M, "<span class='danger'>You feel [pick("that you don't have enough mana", "that the winds of magic are gone", "an urge to summon familiar")].</span>")
+				to_chat(M, "<span class='danger'>Czujesz, [pick("że brakuje ci many", "że wiatry magii zniknęły", "chęć przywołania chowańca")].</span>")
 
 
 		if(3)
 			if(prob(15) && M.stat != DEAD)
 				M.say(pick("NEC CANTIO!","AULIE OXIN FIERA!", "STI KALY!", "TARCOL MINTI ZHERI!"), forced = "wizarditis")
 			if(prob(15))
-				to_chat(M, "<span class='danger'>You feel [pick("the magic bubbling in your veins","that this location gives you a +1 to INT","an urge to summon familiar")].</span>")
+				to_chat(M, "<span class='danger'>Czujesz [pick("bulgoczącą w żyłach magię","że to miejsce daje ci +1 do INT","chęć przywołania chowańca")].</span>")
 
 		if(4, 5)
 
@@ -55,7 +54,7 @@
 				M.say(pick("NEC CANTIO!","AULIE OXIN FIERA!","STI KALY!","EI NATH!"), forced = "wizarditis")
 				return
 			if(robes)
-				to_chat(M, "<span class='danger'>You feel [pick("the tidal wave of raw power building inside","that this location gives you a +2 to INT and +1 to WIS","an urge to teleport")].</span>")
+				to_chat(M, "<span class='danger'>Czujesz [pick("narastającą w tobie przypływową falę surowej mocy","że to miejsce daje ci +2 do INT i +1 do MDR","chęć teleportacji")].</span>")
 				spawn_wizard_clothes(50, A)
 			if(prob(20) && teleport)
 				wizarditis_teleport(A.affected_mob)

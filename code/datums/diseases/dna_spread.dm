@@ -1,7 +1,7 @@
 /datum/disease/dnaspread
 	name = "Space Retrovirus"
 	max_stages = 4
-	spread_text = "On contact"
+	spread_text = "Przez kontakt"
 	spread_flags = DISEASE_SPREAD_BLOOD | DISEASE_SPREAD_CONTACT_SKIN | DISEASE_SPREAD_CONTACT_FLUIDS
 	cure_text = "Mutadone"
 	cures = list(/datum/reagent/medicine/mutadone)
@@ -36,11 +36,11 @@
 			if(prob(8))
 				affected_mob.emote("cough")
 			if(prob(1))
-				to_chat(affected_mob, "<span class='danger'>Your muscles ache.</span>")
+				to_chat(affected_mob, "<span class='danger'>Bolą cię mięśnie.</span>")
 				if(prob(20))
 					affected_mob.take_bodypart_damage(1)
 			if(prob(1))
-				to_chat(affected_mob, "<span class='danger'>Your stomach hurts.</span>")
+				to_chat(affected_mob, "<span class='danger'>Boli cię brzuch.</span>")
 				if(prob(20))
 					affected_mob.adjustToxLoss(2)
 					affected_mob.updatehealth()
@@ -50,7 +50,7 @@
 				original_dna = new affected_mob.dna.type
 				affected_mob.dna.copy_dna(original_dna)
 
-				to_chat(affected_mob, "<span class='danger'>You don't feel like yourself..</span>")
+				to_chat(affected_mob, "<span class='danger'>Nie czujesz się sobą..</span>")
 				var/datum/dna/transform_dna = strain_data["dna"]
 
 				transform_dna.transfer_identity(affected_mob, transfer_SE = 1)
@@ -70,5 +70,5 @@
 		affected_mob.updateappearance(mutcolor_update=1)
 		affected_mob.domutcheck()
 
-		to_chat(affected_mob, "<span class='notice'>You feel more like yourself.</span>")
+		to_chat(affected_mob, "<span class='notice'>Znów bardziej czujesz się sobą.</span>")
 	return ..()

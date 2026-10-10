@@ -29,8 +29,7 @@ Bonus
 	prefixes = list("Cardiac ", "Cardio")
 	bodies = list("Heart")
 	var/heartattack = FALSE
-	threshold_desc = "<b>Transmission 10:</b> When the victim has a heart attack, their heart will pop right out of their chest, and attack!.<br>\
-					  <b>Stealth 2:</b> The disease is somewhat less noticable to the host."
+	threshold_desc = "<b>Transmisja 10:</b> gdy ofiara dostaje zawału, jej serce wyskakuje prosto z klatki piersiowej i atakuje!<br><b>Ukrycie 2:</b> choroba jest nieco mniej odczuwalna dla nosiciela."
 
 /datum/symptom/heartattack/severityset(datum/disease/advance/A)
 	. = ..()
@@ -58,7 +57,7 @@ Bonus
 		if(M.getorgan(/obj/item/organ/heart) && M.can_heartattack())
 			if(prob(1) && prob(50))
 				M.set_heartattack(TRUE)
-				to_chat(M, "<span class='userdanger'>Your heart stops!</span>")
+				to_chat(M, "<span class='userdanger'>Twoje serce staje!</span>")
 				if(heartattack)
 					heartattack(M, A)
 
@@ -67,7 +66,7 @@ Bonus
 	if(M.getorgan(/obj/item/organ/heart))
 		heart.Remove(M)
 		qdel(heart)
-		to_chat(M, "<span class='userdanger'>Your heart bursts out of your chest! It looks furious!</span>")
+		to_chat(M, "<span class='userdanger'>Twoje serce wyrywa się z twojej klatki piersiowej! Wygląda na wściekłe!</span>")
 		new /mob/living/simple_animal/hostile/heart(M.loc)
 
 

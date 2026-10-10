@@ -4,7 +4,7 @@
 	spread_text = "Paranormal"
 	spread_flags = DISEASE_SPREAD_SPECIAL
 	disease_flags = CURABLE
-	cure_text = "Holy Water."
+	cure_text = "Woda święcona."
 	cures = list(/datum/reagent/water/holywater)
 	cure_chance = 20
 	agent = "Avian Vengence"
@@ -21,10 +21,10 @@
 		cure()
 	else if(prob(parrot.speak_chance))
 		if(parrot.speech_buffer.len)
-			affected_mob.say(pick(parrot.speech_buffer), forced = "parrot possession")
+			affected_mob.say(pick(parrot.speech_buffer), forced = "opętanie przez papugę")
 
 /datum/disease/parrot_possession/cure()
 	if(parrot && parrot.loc == affected_mob)
 		parrot.forceMove(affected_mob.drop_location())
-		affected_mob.visible_message("<span class='danger'>[parrot] is violently driven out of [affected_mob]!</span>", "<span class='userdanger'>[parrot] bursts out of your chest!</span>")
+		affected_mob.visible_message("<span class='danger'>[parrot] zostaje gwałtownie wypędzona z [affected_mob]!</span>", "<span class='userdanger'>[parrot] wyskakuje z twojej klatki piersiowej!</span>")
 	..()

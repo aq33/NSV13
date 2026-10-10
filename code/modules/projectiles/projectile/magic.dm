@@ -18,7 +18,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		if(M.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			M.visible_message("<span class='warning'>[src] znika w zetknięciu z [target]!</span>")
 			return BULLET_ACT_BLOCK
 		M.death(0)
 
@@ -36,7 +36,7 @@
 		if(target.ishellbound())
 			return BULLET_ACT_BLOCK
 		if(target.anti_magic_check())
-			target.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			target.visible_message("<span class='warning'>[src] znika w zetknięciu z [target]!</span>")
 			return BULLET_ACT_BLOCK
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
@@ -44,9 +44,9 @@
 			C.regenerate_organs()
 		if(target.revive(full_heal = 1))
 			target.grab_ghost(force = TRUE) // even suicides
-			to_chat(target, "<span class='notice'>You rise with a start, you're alive!!!</span>")
+			to_chat(target, "<span class='notice'>Zrywasz się gwałtownie, żyjesz!!!</span>")
 		else if(target.stat != DEAD)
-			to_chat(target, "<span class='notice'>You feel great!</span>")
+			to_chat(target, "<span class='notice'>Czujesz się świetnie!</span>")
 
 /obj/item/projectile/magic/teleport
 	name = "bolt of teleportation"
@@ -63,7 +63,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		if(M.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] fizzles on contact with [target]!</span>")
+			M.visible_message("<span class='warning'>[src] gaśnie w zetknięciu z [target]!</span>")
 			return BULLET_ACT_BLOCK
 	var/teleammount = 0
 	var/teleloc = target
@@ -90,7 +90,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		if(M.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] fizzles on contact with [target]!</span>")
+			M.visible_message("<span class='warning'>[src] gaśnie w zetknięciu z [target]!</span>")
 			return BULLET_ACT_BLOCK
 	if(isturf(target))
 		return BULLET_ACT_HIT
@@ -146,7 +146,7 @@
 	if(ismob(change))
 		var/mob/M = change
 		if(M.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] fizzles on contact with [M]!</span>")
+			M.visible_message("<span class='warning'>[src] gaśnie w zetknięciu z [M]!</span>")
 			qdel(src)
 			return BULLET_ACT_BLOCK
 	wabbajack(change)
@@ -285,14 +285,14 @@
 
 	M.wabbajack_act(new_mob)
 
-	to_chat(new_mob, "<span class='warning'>Your form morphs into that of a [randomize].</span>")
+	to_chat(new_mob, "<span class='warning'>Twoja postać przyjmuje formę: [randomize].</span>")
 
 	var/poly_msg = CONFIG_GET(keyed_list/policy)["polymorph"]
 	if(poly_msg)
 		to_chat(new_mob, poly_msg)
 
 	if((istype(new_mob, /mob/living/silicon/robot/modules/syndicate) || istype(new_mob, /mob/living/carbon/alien/humanoid) || istype(new_mob, /mob/living/simple_animal/hostile)))
-		to_chat(new_mob, "<span class='userdanger'>Despite taking the form of an antagonistic being, you have the same mind as before your transformation. Your loyalties and interests remain the same. Unless you were turned into a shade, or were previously an antagonist, this is not a pass to go antagonize the station.</span>")
+		to_chat(new_mob, "<span class='userdanger'>Mimo że przybrałeś postać wrogiej istoty, masz ten sam umysł co przed przemianą. Twoje lojalności i interesy pozostają takie same. O ile nie zamieniono cię w cień albo nie byłeś wcześniej antagonistą, nie jest to przepustka do antagonizowania stacji.</span>")
 
 	M.transfer_observers_to(new_mob)
 
@@ -328,7 +328,7 @@
 				if(L.mind)
 					L.mind.transfer_to(S)
 					if(owner)
-						to_chat(S, "<span class='userdanger'>You are an animate statue. You cannot move when monitored, but are nearly invincible and deadly when unobserved! Do not harm [owner], your creator.</span>")
+						to_chat(S, "<span class='userdanger'>Jesteś ożywionym posągiem. Nie możesz się ruszać, gdy ktoś na ciebie patrzy, ale niepobserwowany jesteś niemal niezniszczalny i zabójczy! Nie krzywdź [owner], swojego twórcy.</span>")
 				P.forceMove(S)
 				return
 		else
@@ -358,7 +358,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		if(M.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			M.visible_message("<span class='warning'>[src] znika w zetknięciu z [target]!</span>")
 			qdel(src)
 			return BULLET_ACT_BLOCK
 	. = ..()
@@ -378,7 +378,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		if(M.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			M.visible_message("<span class='warning'>[src] znika w zetknięciu z [target]!</span>")
 			qdel(src)
 			return
 	. = ..()
@@ -400,7 +400,7 @@
 	if(isliving(A) && locker_suck)
 		var/mob/living/M = A
 		if(M.anti_magic_check())			// no this doesn't check if ..() returned to phase through do I care no it's magic ain't gotta explain shit
-			M.visible_message("<span class='warning'>[src] vanishes on contact with [A]!</span>")
+			M.visible_message("<span class='warning'>[src] znika w zetknięciu z [A]!</span>")
 			return PROJECTILE_DELETE_WITHOUT_HITTING
 		if(M.incorporeal_move || M.mob_size > MOB_SIZE_HUMAN || LAZYLEN(contents)>=5)
 			return
@@ -475,7 +475,7 @@
 	if(isliving(target))
 		var/mob/living/L = target
 		if(L.anti_magic_check())
-			L.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			L.visible_message("<span class='warning'>[src] znika w zetknięciu z [target]!</span>")
 			return BULLET_ACT_BLOCK
 		var/atom/throw_target = get_edge_target_turf(L, angle2dir(Angle))
 		L.throw_at(throw_target, 200, 4)
@@ -490,7 +490,7 @@
 	if(isliving(target))
 		var/mob/living/L = target
 		if(L.anti_magic_check() || !firer)
-			L.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			L.visible_message("<span class='warning'>[src] znika w zetknięciu z [target]!</span>")
 			return BULLET_ACT_BLOCK
 		L.apply_status_effect(STATUS_EFFECT_BOUNTY, firer)
 
@@ -504,7 +504,7 @@
 	if(isliving(target))
 		var/mob/living/L = target
 		if(L.anti_magic_check())
-			L.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			L.visible_message("<span class='warning'>[src] znika w zetknięciu z [target]!</span>")
 			return BULLET_ACT_BLOCK
 		L.apply_status_effect(STATUS_EFFECT_ANTIMAGIC)
 
@@ -518,7 +518,7 @@
 	if(isliving(target))
 		var/mob/living/L = target
 		if(L.anti_magic_check() || !firer)
-			L.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			L.visible_message("<span class='warning'>[src] znika w zetknięciu z [target]!</span>")
 			return BULLET_ACT_BLOCK
 		var/atom/throw_target = get_edge_target_turf(L, get_dir(L, firer))
 		L.throw_at(throw_target, 200, 4)
@@ -533,7 +533,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		if(M.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			M.visible_message("<span class='warning'>[src] znika w zetknięciu z [target]!</span>")
 			return BULLET_ACT_BLOCK
 		SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, src, /datum/mood_event/sapped)
 
@@ -547,13 +547,13 @@
 	if(isliving(target))
 		var/mob/living/L = target
 		if(L.anti_magic_check() || !L.mind || !L.mind.hasSoul)
-			L.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			L.visible_message("<span class='warning'>[src] znika w zetknięciu z [target]!</span>")
 			return BULLET_ACT_BLOCK
-		to_chat(L, "<span class='danger'>Your body feels drained and there is a burning pain in your chest.</span>")
+		to_chat(L, "<span class='danger'>Czujesz, że twoje ciało jest wyczerpane, a w klatce piersiowej czujesz palący ból.</span>")
 		L.maxHealth -= 20
 		L.health = min(L.health, L.maxHealth)
 		if(L.maxHealth <= 0)
-			to_chat(L, "<span class='userdanger'>Your weakened soul is completely consumed by the [src]!</span>")
+			to_chat(L, "<span class='userdanger'>Twoja osłabiona dusza zostaje całkowicie pochłonięta przez [src]!</span>")
 			L.mind.hasSoul = FALSE
 		for(var/obj/effect/proc_holder/spell/spell in L.mind.spell_list)
 			spell.charge_counter = spell.charge_max
@@ -570,19 +570,19 @@
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
 		if(M.anti_magic_check() || istype(M.get_item_by_slot(ITEM_SLOT_HEAD), /obj/item/clothing/head/foilhat))
-			M.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			M.visible_message("<span class='warning'>[src] znika w zetknięciu z [target]!</span>")
 			return BULLET_ACT_BLOCK
 		for(var/x in M.get_traumas())//checks to see if the victim is already going through possession
 			if(istype(x, /datum/brain_trauma/special/imaginary_friend/trapped_owner))
-				M.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+				M.visible_message("<span class='warning'>[src] znika w zetknięciu z [target]!</span>")
 				return BULLET_ACT_BLOCK
-		to_chat(M, "<span class='warning'>Your mind has been opened to possession!</span>")
+		to_chat(M, "<span class='warning'>Twój umysł został otwarty na opętanie!</span>")
 		possession_test(M)
 		return BULLET_ACT_HIT
 
 /obj/item/projectile/magic/wipe/proc/possession_test(var/mob/living/carbon/M)
 	var/datum/brain_trauma/special/imaginary_friend/trapped_owner/trauma = M.gain_trauma(/datum/brain_trauma/special/imaginary_friend/trapped_owner)
-	var/poll_message = "Do you want to play as [M.real_name]?"
+	var/poll_message = "Chcesz zagrać jako [M.real_name]?"
 	var/ban_key = BAN_ROLE_ALL_ANTAGONISTS
 	if(M.mind?.assigned_role)
 		poll_message = "[poll_message] Job:[M.mind.assigned_role]."
@@ -598,7 +598,7 @@
 		return
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
-		to_chat(M, "You have been noticed by a ghost, and it has possessed you!")
+		to_chat(M, "Zauważył cię duch i cię opętał!")
 		var/oldkey = M.key
 		M.ghostize(0)
 		M.key = C.key
@@ -607,7 +607,7 @@
 		trauma.friend.Show()
 		trauma.friend_initialized = TRUE
 	else
-		to_chat(M, "<span class='notice'>Your mind has managed to go unnoticed in the spirit world.</span>")
+		to_chat(M, "<span class='notice'>Twojemu umysłowi udało się pozostać niezauważonym w świecie duchów.</span>")
 		qdel(trauma)
 
 /obj/item/projectile/magic/aoe
@@ -655,7 +655,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		if(M.anti_magic_check())
-			visible_message("<span class='warning'>[src] fizzles on contact with [target]!</span>")
+			visible_message("<span class='warning'>[src] gaśnie w zetknięciu z [target]!</span>")
 			qdel(src)
 			return BULLET_ACT_BLOCK
 	tesla_zap(src, tesla_range, tesla_power, tesla_flags)
@@ -692,7 +692,7 @@
 	if(ismob(target))
 		var/mob/living/M = target
 		if(M.anti_magic_check())
-			visible_message("<span class='warning'>[src] vanishes into smoke on contact with [target]!</span>")
+			visible_message("<span class='warning'>[src] rozpływa się w dym w zetknięciu z [target]!</span>")
 			return BULLET_ACT_BLOCK
 		M.take_overall_damage(0,10) //between this 10 burn, the 10 brute, the explosion brute, and the onfire burn, your at about 65 damage if you stop drop and roll immediately
 	var/turf/T = get_turf(target)
