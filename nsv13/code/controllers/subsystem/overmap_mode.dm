@@ -284,10 +284,10 @@ SUBSYSTEM_DEF(overmap_mode)
 	- Communication
 	*/
 
-	var/text = "<b>[GLOB.station_name]</b>, <br>You have been assigned the following mission by <b>[capitalize(mode.starting_faction)]</b> and are expected to complete it with all due haste. Please ensure your crew is properly informed of your objectives and delegate tasks accordingly."
+	var/text = "<b>[GLOB.station_name]</b>, <br>Frakcja <b>[capitalize(mode.starting_faction)]</b> przydzieliła wam następującą misję i oczekuje jej jak najszybszego wykonania. Dopilnujcie, by załoga znała cele, i odpowiednio rozdzielcie zadania."
 	var/static/title = ""
 	if(!announced_objectives)
-		title += "Mission Briefing: [random_capital_letter()][random_capital_letter()][random_capital_letter()]-[GLOB.round_id]"
+		title += "Odprawa misji: [random_capital_letter()][random_capital_letter()][random_capital_letter()]-[GLOB.round_id]"
 	else //Add an extension if this isn't roundstart
 		title += "-Ext."
 
@@ -406,7 +406,7 @@ SUBSYSTEM_DEF(overmap_mode)
 	var/debug_mode = FALSE 									//Debug var, for gamemode-specific testing
 
 	//Reminder messages
-	var/reminder_origin = "Naval Command"
+	var/reminder_origin = "Dowództwo Floty"
 	var/reminder_one = "Tu Centrala do wszystkich statków przydzielonych do patrolu Gromady Rosetta, prosimy kontynuować misję"
 	var/reminder_two = "Tu Centrala do wszystkich statków przydzielonych do patrolu Gromady Rosetta, wasza nieaktywność została zauważona i nie będzie tolerowana."
 	var/reminder_three = "Tu Centrala do wszystkich statków przydzielonych do patrolu Gromady Rosetta, nie płacimy wam za dryfowanie w kosmosie podczas wykonywania przydzielonej misji"
@@ -526,7 +526,7 @@ SUBSYSTEM_DEF(overmap_mode)
 			OM.force_return_jump()
 
 /datum/overmap_gamemode/proc/defeat() //Override this if defeat is to be called based on an objective
-	priority_announce("Całkowita porażka misji - Oczekujcie na sterylizacje statku z materii żywej")
+	priority_announce("Całkowita porażka misji - Oczekujcie na sterylizację statku z materii żywej")
 	SSticker.mode.check_finished(TRUE)
 	SSticker.force_ending = TRUE
 

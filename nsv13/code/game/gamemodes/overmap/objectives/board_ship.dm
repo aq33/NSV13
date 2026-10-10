@@ -1,7 +1,7 @@
 /datum/overmap_objective/board_ship
 	name = "Board Ship"
 	desc = "Find and board a ship"
-	brief = "Capture the syndicate vessel CALLANADMIN by boarding it, defeating the enemies therein, and modifying its IFF codes."
+	brief = "Przejmijcie jednostkę Syndykatu CALLANADMIN: wejdźcie na pokład, pokonajcie wrogów i zmieńcie jej kody IFF."
 	var/datum/star_system/target_system = null
 	var/obj/structure/overmap/target_ship = null
 
@@ -32,7 +32,7 @@
 			continue
 		candidates += S
 	target_system = pick(candidates)
-	brief = "Capture the syndicate vessel [target_ship] in [target_system] by boarding it, defeating the enemies therein, and modifying its IFF codes."
+	brief = "Przejmijcie jednostkę Syndykatu [target_ship] w systemie [target_system]: wejdźcie na pokład, pokonajcie wrogów i zmieńcie jej kody IFF."
 	target_system.add_ship(target_ship)
 	target_system.enemies_in_system += target_ship
 	target_system.objective_sector = TRUE

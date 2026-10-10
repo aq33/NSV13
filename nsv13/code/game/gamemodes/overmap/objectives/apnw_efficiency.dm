@@ -1,7 +1,7 @@
 /datum/overmap_objective/apnw_efficiency
 	name = "Test APNW"
 	desc = "Get APNW to target efficiency level"
-	brief = "Test the APNW by raising the repair efficiency to at least target_efficiency %"
+	brief = "Przetestujcie APNW, podnosząc skuteczność napraw do co najmniej target_efficiency %"
 	var/obj/machinery/armour_plating_nanorepair_well/APNW = null
 	var/target_efficiency = 0.50 // out of 1
 
@@ -18,7 +18,7 @@
 /datum/overmap_objective/apnw_efficiency/instance()
 	. = ..()
 	desc = "Get APNW to [target_efficiency * 100]% efficiency level"
-	brief = "Test the APNW by raising the repair efficiency to at least [target_efficiency * 100]%"
+	brief = "Przetestujcie APNW, podnosząc skuteczność napraw do co najmniej [target_efficiency * 100]%"
 
 /datum/overmap_objective/apnw_efficiency/process()
 	check_completion()

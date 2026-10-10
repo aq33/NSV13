@@ -59,8 +59,8 @@
 
 /datum/antagonist/nukeop/syndi_crew/greet()
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ops.ogg',100,0)
-	to_chat(owner, "<span class='notice'>You are a crewman aboard a Syndicate vessel!</span>")
-	to_chat(owner, "<span class='warning'>Ensure the destruction of [station_name()], no matter what. Eliminate Nanotrasen's presence in the Abassi Ridge before they can establish a foothold. The fleet is counting on you!</span>")
+	to_chat(owner, "<span class='notice'>Jesteś członkiem załogi statku Syndykatu!</span>")
+	to_chat(owner, "<span class='warning'>Za wszelką cenę doprowadź do zniszczenia [station_name()]. Wyeliminuj obecność Nanotrasen w Grzbiecie Abassi, zanim zdążą się tu zadomowić. Flota na ciebie liczy!</span>")
 	owner.announce_objectives()
 
 
@@ -214,8 +214,8 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 
 /datum/antagonist/nukeop/leader/syndi_crew/greet()
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ops.ogg',100,0)
-	to_chat(owner, "<span class='notice'>You are a [title] in the Syndicate navy. Your ship is a highly advanced modular battlecruiser, choose a ship loadout wisely, and consult with your crew! <br> You are second only to the <b>admiral</b>, but you have autonomy over the ship unless otherwise ordered.</span>")
-	to_chat(owner, "<span class='warning'>Diminish Nanotrasen's presence in this sector by destroying NT fleets and claiming systems with your lighthouse beacon. Destruction of the [station_name()] via superstructure crit or nuclear detonation are also options. For Abassi!</span>")
+	to_chat(owner, "<span class='notice'>Twoja rola we flocie Syndykatu: [title]. Twój statek to zaawansowany modułowy krążownik liniowy - mądrze wybierz wyposażenie i naradź się z załogą! <br> Ustępujesz tylko <b>admirałowi</b>, ale masz autonomię na statku, chyba że rozkazano inaczej.</span>")
+	to_chat(owner, "<span class='warning'>Osłab obecność Nanotrasen w tym sektorze, niszcząc floty NT i przejmując systemy radiolatarnią. Zniszczenie [station_name()] przez krytyczne uszkodzenie konstrukcji albo wybuch nuklearny to także opcje. Za Abassi!</span>")
 	addtimer(CALLBACK(src, PROC_REF(nuketeam_name_assign)), 1)
 	owner.announce_objectives()
 
@@ -250,8 +250,8 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 
 /datum/antagonist/nukeop/syndi_crew/strategist/greet()
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ops.ogg',100,0)
-	to_chat(owner, "<span class='notice'>You are a Syndicate Strategist!</span>")
-	to_chat(owner, "<span class='warning'>You have been assigned to oversee the operations of an advanced Syndicate cruiser. Despite your rank of admiral, you serve solely as an advisor to the captain, and can dictate strategy or suggested approaches, however you serve on their ship and are not to overrule them.</span>")
+	to_chat(owner, "<span class='notice'>Jesteś strategiem Syndykatu!</span>")
+	to_chat(owner, "<span class='warning'>Masz nadzorować działania zaawansowanego krążownika Syndykatu. Mimo stopnia admirała służysz wyłącznie jako doradca kapitana - możesz ustalać strategię i proponować podejścia, ale służysz na jego statku i nie wolno ci uchylać jego decyzji.</span>")
 	owner.announce_objectives()
 
 /datum/syndicate_crew_role/requisitions_officer
@@ -458,28 +458,28 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 		var result = get_result()
 		//First off, did they manage to nuke the ship?
 		if(result == NUKE_RESULT_NUKE_WIN)
-			parts += "<span class='greentext big'>Syndicate Major Victory!</span>"
-			parts += "<b>The crew of [station_name()] were annihilated by [syndicate_name] operatives in nuclear hellfire.</b>"
+			parts += "<span class='greentext big'>Wielkie zwycięstwo Syndykatu!</span>"
+			parts += "<b>Operatorzy [syndicate_name] unicestwili załogę [station_name()] w nuklearnym piekle.</b>"
 		else
 			switch(mode.winner.id)
 				if(FACTION_ID_NT)
-					parts += "<span class='redtext big'>Nanotrasen Major Victory!</span>"
-					parts += "<b>The crew of [station_name()] were able to put a stop to the SSV Nebuchadnezzar's efforts of galactic conquest, weakening the Syndicate's position in the Abassi Ridge.</b>"
+					parts += "<span class='redtext big'>Wielkie zwycięstwo Nanotrasen!</span>"
+					parts += "<b>Załoga [station_name()] powstrzymała galaktyczny podbój SSV Nebuchadnezzar, osłabiając pozycję Syndykatu w Grzbiecie Abassi.</b>"
 
 				if(FACTION_ID_PIRATES)
-					parts += "<span class='greentext'>Pirate Major Victory!</span>"
-					parts += "<b>The Tortuga Raiders were able to use the chaos created by the Syndicate to establish a strong footing in the Abassi ridge.</b>"
+					parts += "<span class='greentext'>Wielkie zwycięstwo piratów!</span>"
+					parts += "<b>Najeźdźcy z Tortugi wykorzystali chaos wywołany przez Syndykat, by mocno zadomowić się w Grzbiecie Abassi.</b>"
 
 				if(FACTION_ID_SYNDICATE)
-					parts += "<span class='greentext big'>Syndicate Victory!</span>"
-					parts += "<b>The crew of the SSV Nebuchadnezzar were able to weaken NT's presence in the Abassi ridge significantly!</b>"
+					parts += "<span class='greentext big'>Zwycięstwo Syndykatu!</span>"
+					parts += "<b>Załoga SSV Nebuchadnezzar znacznie osłabiła obecność NT w Grzbiecie Abassi!</b>"
 				//Default victory for undefined factions.
 				else
-					parts += "<span class='redtext'>Stalemate!</span>"
-					parts += "<b>[mode.winner] was able to secure the most influence, NT and the Syndicate took equal casualties.</b>"
+					parts += "<span class='redtext'>Pat!</span>"
+					parts += "<b>[mode.winner] zdobywa najwięcej wpływów, a NT i Syndykat ponoszą równe straty.</b>"
 
 
-		var/text = "<br><span class='header'>The syndicate crewmen were:</span>"
+		var/text = "<br><span class='header'>Załoga Syndykatu:</span>"
 		var/purchases = ""
 		var/TC_uses = 0
 		LAZYINITLIST(GLOB.uplink_purchase_logs_by_key)
@@ -491,7 +491,7 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 				purchases += H.generate_render(show_key = FALSE)
 		text += printplayerlist(members)
 		text += "<br>"
-		text += "(Syndicates used [TC_uses] TC) [purchases]"
+		text += "(Syndykat wydał [TC_uses] TC) [purchases]"
 		if(TC_uses == 0 && SSticker.mode.station_was_nuked && !operatives_dead())
 			text += "<BIG>[icon2html('icons/badass.dmi', world, "badass")]</BIG>"
 
@@ -578,7 +578,7 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 			eject()
 		if("accessMod")
 			if(!allowed(usr))
-				to_chat(usr, "<span class='warning'>You are not authorised to use this console.</span>")
+				to_chat(usr, "<span class='warning'>Nie masz uprawnień do tej konsoli.</span>")
 				return FALSE
 			var/access = text2num(params["access"])
 			if(access in modifying.access)
@@ -588,22 +588,22 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 			playsound(src, "terminal_type", 50, 0)
 		if("modifyName")
 			if(!allowed(usr))
-				to_chat(usr, "<span class='warning'>You are not authorised to use this console.</span>")
+				to_chat(usr, "<span class='warning'>Nie masz uprawnień do tej konsoli.</span>")
 				return FALSE
 			if(!modifying)
 				return FALSE
-			var/newName = stripped_input(usr, "Enter a new assigned name for this ID.", "[src]", null)
+			var/newName = stripped_input(usr, "Wpisz nowe imię na tej karcie.", "[src]", null)
 			if(!newName)
 				return FALSE
 			modifying.registered_name = newName
 			modifying.update_label()
 		if("modifyAssignment")
 			if(!allowed(usr))
-				to_chat(usr, "<span class='warning'>You are not authorised to use this console.</span>")
+				to_chat(usr, "<span class='warning'>Nie masz uprawnień do tej konsoli.</span>")
 				return FALSE
 			if(!modifying)
 				return FALSE
-			var/newOccupation = stripped_input(usr, "Enter a new assigned job for this ID.", "[src]", null)
+			var/newOccupation = stripped_input(usr, "Wpisz nowe stanowisko na tej karcie.", "[src]", null)
 			if(!newOccupation)
 				return FALSE
 			modifying.assignment = newOccupation

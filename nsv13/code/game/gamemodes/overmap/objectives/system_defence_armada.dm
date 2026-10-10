@@ -13,7 +13,7 @@
 		selected_system = A.selected_system
 
 	desc = "Defend [selected_system] against a Syndicate invasion fleet"
-	brief = "Defend [selected_system] against a Syndicate invasion fleet"
+	brief = "Obrońcie [selected_system] przed flotą inwazyjną Syndykatu"
 
 /datum/overmap_objective/system_defence_armada/check_completion()
 	if(!armada_arrived)
@@ -21,5 +21,5 @@
 
 	var/datum/star_system/target = SSstar_system.system_by_id(selected_system)
 	if(target.alignment != "nanotrasen")
-		priority_announce("Attention [station_name()]. Our presence in this sector has been severely diminished due to your incompetence. Return to base immediately for disciplinary action.", "Naval Command")
+		priority_announce("Uwaga, [station_name()]. Przez waszą niekompetencję nasza obecność w tym sektorze mocno osłabła. Natychmiast wracajcie do bazy w celu postępowania dyscyplinarnego.", "Dowództwo Floty")
 		SSovermap_mode.mode.defeat()

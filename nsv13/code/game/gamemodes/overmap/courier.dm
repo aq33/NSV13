@@ -2,7 +2,7 @@
 	name = "Courier"
 	config_tag = "courier"
 	desc = "Cargo assignment, bring supplies to stations"
-	brief = "You have been assigned cargo duty for the Rosetta Cluster. Deliver the supplies outlined in the briefing to their destinations, then return back to Outpost 45."
+	brief = "Przydzielono wam służbę transportową w Gromadzie Rosetta. Dostarczcie zaopatrzenie wymienione w odprawie do miejsc przeznaczenia, a potem wróćcie na Posterunek 45."
 	starting_system = "Argo"
 	starting_faction = "nanotrasen"
 

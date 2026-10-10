@@ -125,10 +125,10 @@
 		// 	segments += type.get_brief_segment()
 
 		var/obj/structure/overmap/S = destination
-		brief = "Complete supply request form #[GLOB.round_id]-[objective_number] by delivering its contents to station [S] (system [S.current_system])"
+		brief = "Zrealizujcie formularz zamówienia nr [GLOB.round_id]-[objective_number], dostarczając jego zawartość na stację [S] (system [S.current_system])"
 
 /datum/overmap_objective/cargo/print_objective_report()
-	var/title = "Secure Supply Request Form: #[GLOB.round_id]-[objective_number]"
+	var/title = "Poufny formularz zamówienia: nr [GLOB.round_id]-[objective_number]"
 
 	var/info = "<strong>[title]</strong><br/> \
 		Destination: [destination]<br/> \
