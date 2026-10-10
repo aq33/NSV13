@@ -1314,6 +1314,11 @@
 /obj/item/beacon,
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"cQ" = (
+/obj/structure/cable,
+/obj/item/banner/polski_sztandar,
+/turf/open/floor/monotile/dark,
+/area/bridge/cic)
 "cR" = (
 /obj/structure/lattice/catwalk/over/ship,
 /obj/machinery/portable_atmospherics/scrubber,
@@ -48517,7 +48522,7 @@ ec
 zJ
 HF
 GN
-yp
+cQ
 jf
 Op
 ft

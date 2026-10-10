@@ -1102,6 +1102,20 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/aft)
+"cp" = (
+/obj/machinery/light,
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/conquest_beacon/nanotrasen,
+/obj/structure/aquila_wall_decor/godlo{
+	pixel_y = -28
+	},
+/turf/open/floor/plasteel/dark/side{
+	dir = 1
+	},
+/area/bridge/cic)
 "cq" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -2359,17 +2373,6 @@
 /mob/living/simple_animal/bot/cleanbot,
 /turf/open/floor/plasteel,
 /area/janitor)
-"gY" = (
-/obj/machinery/light,
-/obj/effect/turf_decal/tile/ship/brown{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/machinery/conquest_beacon/nanotrasen,
-/turf/open/floor/plasteel/dark/side{
-	dir = 1
-	},
-/area/bridge/cic)
 "gZ" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /turf/open/floor/wood,
@@ -59954,7 +59957,7 @@ MB
 Ye
 xj
 tc
-gY
+cp
 mn
 aJ
 aJ
