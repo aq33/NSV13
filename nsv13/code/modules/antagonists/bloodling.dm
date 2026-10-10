@@ -20,7 +20,7 @@
 	verb_say = "syczy"
 	bubble_icon = "alien"
 	deathsound = 'sound/voice/hiss6.ogg'
-	deathmessage = "lets out a terrible screech as its life fades away..."
+	deathmessage = "wydaje okropny wrzask, gdy uchodzi z niego życie..."
 	attacktext = "glomps"
 	attack_sound = 'sound/effects/blobattack.ogg'
 	wander = FALSE
@@ -149,7 +149,7 @@
 
 /datum/component/bloodling/proc/damage_react(datum/source, amount)
 	remove_biomass(amount)
-	ling.visible_message("<span class='warning'>A chunk of [ling]'s flesh falls to the floor!</span>", "<span class='warning'>A piece of flesh weighing [amount/10] G is ripped from us!</span>")
+	ling.visible_message("<span class='warning'>Kawał ciała [ling] spada na podłogę!</span>", "<span class='warning'>Odrywa się od nas kawałek ciała ważący [amount/10] g!</span>")
 	var/obj/effect/decal/cleanable/blood/bloodling/guts = new /obj/effect/decal/cleanable/blood/bloodling(get_turf(ling))
 	guts.setDir(ling.dir)
 	ling.shake_animation()
@@ -164,7 +164,7 @@
 	biomass += amount
 	if(biomass >= final_form_biomass)
 		biomass = final_form_biomass //Todo: Final form!
-	to_chat(parent, "<span class='noticealien'>Our biomass has increased by [amount] units...</span>")
+	to_chat(parent, "<span class='noticealien'>Nasza biomasa wzrosła o [amount] jednostek...</span>")
 	update_mob()
 
 /datum/component/bloodling/proc/remove_biomass(amount)
@@ -230,7 +230,7 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 /datum/component/bloodling/proc/infest(mob/living/user)
 	user.mind.enslave_mind_to_creator(ling)
 	if(isovermind(user) || isAI(user) || HAS_TRAIT(user, TRAIT_MINDSHIELD))
-		ling.get_overmap().relay_to_nearby('nsv13/sound/effects/bloodling_awaken.ogg', "<span class='userdanger'>Hideous images creep into your mind!</span>", FALSE)
+		ling.get_overmap().relay_to_nearby('nsv13/sound/effects/bloodling_awaken.ogg', "<span class='userdanger'>Do twojego umysłu wkradają się ohydne obrazy!</span>", FALSE)
 	if(ishuman(user))
 		user.mind.add_antag_datum(/datum/antagonist/changeling/bloodling_thrall) //Alright! you caught a human, THRALL TIME
 	else
@@ -239,7 +239,7 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 //Bloodling's very own mindslave!
 /datum/antagonist/changeling/bloodling_thrall
 	name = "Zniewolony zmiennokształtny"
-	roundend_category  = "Bloodling Thralls"
+	roundend_category  = "niewolnicy krwiaka"
 	antagpanel_category = "Bloodling Thralls"
 	tips = "bloodling_thrall"
 	//Gimped changeling powers! Notably missing major healing abilities...
@@ -276,7 +276,7 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 
 /datum/antagonist/bloodling
 	name = "Pan krwiaków"
-	roundend_category  = "Bloodling Thralls"
+	roundend_category  = "niewolnicy krwiaka"
 	antagpanel_category = "Bloodling Thralls"
 	give_objectives = TRUE
 	tips = "bloodling"
@@ -286,10 +286,10 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 	banning_key = ROLE_BLOODLING
 
 /datum/antagonist/bloodling/greet()
-	to_chat(owner.current, "<span class='boldannounce'>We are the master!</span>")
-	to_chat(owner.current, "<span class='boldannounce'>We latched onto this vessel as it was travelling through space, it can sustain us.</span>")
-	to_chat(owner.current, "<span class='boldannounce'>Give the gift of life to this ship, and consume its available biomass by any means necessary...</span>")
-	to_chat(owner.current, "<b>Your objectives are:</b>")
+	to_chat(owner.current, "<span class='boldannounce'>Jesteśmy panem!</span>")
+	to_chat(owner.current, "<span class='boldannounce'>Przyczepiliśmy się do tej jednostki, gdy podróżowała przez kosmos - może nas wyżywić.</span>")
+	to_chat(owner.current, "<span class='boldannounce'>Obdarz ten statek darem życia i wszelkimi sposobami pochłoń dostępną biomasę...</span>")
+	to_chat(owner.current, "<b>Twoje cele:</b>")
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ling_aler.ogg', 100, FALSE, pressure_affected = FALSE)
 	owner.announce_objectives()
 
@@ -311,10 +311,10 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 	log_objective(owner, serve.explanation_text)
 
 /datum/antagonist/bloodling/minion/greet()
-	to_chat(owner.current, "<span class='boldannounce'>You are a bloodling minion!</span>")
-	to_chat(owner.current, "<span class='boldannounce'>Although you exist at a lower level of evolution than the other thralls, you still serve the master faithfully.</span>")
-	to_chat(owner.current, "<span class='boldannounce'>Help the master ascend to its highest plane of existence by bringing it loyal subjects.</span>")
-	to_chat(owner.current, "<b>Your objectives are:</b>")
+	to_chat(owner.current, "<span class='boldannounce'>Jesteś sługą krwiaka!</span>")
+	to_chat(owner.current, "<span class='boldannounce'>Choć stoisz na niższym szczeblu ewolucji niż inni niewolnicy, nadal wiernie służysz panu.</span>")
+	to_chat(owner.current, "<span class='boldannounce'>Pomóż panu wznieść się na najwyższy plan istnienia, sprowadzając mu lojalnych poddanych.</span>")
+	to_chat(owner.current, "<b>Twoje cele:</b>")
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ling_aler.ogg', 100, FALSE, pressure_affected = FALSE)
 	owner.announce_objectives()
 
@@ -353,12 +353,12 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 
 /datum/objective/bloodling_serve
 	name = "Serve the entity"
-	explanation_text = "Serve the entity at all costs. This objective overrides any others."
+	explanation_text = "Służ tej istocie za wszelką cenę. Ten cel jest ważniejszy niż wszystkie inne."
 	completed = TRUE //This is hard to track.
 
 /datum/objective/bloodling_ascend
 	name = "Ascend"
-	explanation_text = "Ascend to your final form."
+	explanation_text = "Osiągnij swoją ostateczną formę."
 	var/list/summon_spots = list() //Where can we ascend?
 
 /datum/objective/bloodling_ascend/check_completion()
@@ -377,7 +377,7 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 	update_explanation_text()
 
 /datum/objective/bloodling_ascend/update_explanation_text()
-	explanation_text = "Ascend to your final form. <b>We can only ascend in [english_list(summon_spots)] - where the consciousness grid is naturally susceptible to our influence.</b>"
+	explanation_text = "Osiągnij swoją ostateczną formę. <b>Wznieść się możemy tylko w miejscach: [english_list(summon_spots)] - tam sieć świadomości jest naturalnie podatna na nasz wpływ.</b>"
 
 /datum/antagonist/changeling/bloodling_thrall/forge_objectives()
 	var/datum/objective/bloodling_serve/serve = new
@@ -387,9 +387,9 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 	. = ..()
 
 /datum/antagonist/changeling/bloodling_thrall/greet()
-	to_chat(owner.current, "<span class='boldannounce'>You are reborn as [changelingID]! We remade you in our image.</span>")
-	to_chat(owner.current, "<span class='boldannounce'>You must serve the master above all else, failure to do so may lead to our generous gift to you being revoked, along with your life...</span>")
-	to_chat(owner.current, "<b>Carry out the master's will above else. Your objectives are:</b>")
+	to_chat(owner.current, "<span class='boldannounce'>Odradzasz się jako [changelingID]! Stworzyliśmy cię na nowo na nasz obraz.</span>")
+	to_chat(owner.current, "<span class='boldannounce'>Ponad wszystko musisz służyć panu - jeśli zawiedziesz, możemy odebrać ci nasz hojny dar, a razem z nim życie...</span>")
+	to_chat(owner.current, "<b>Ponad wszystko wykonuj wolę pana. Twoje cele:</b>")
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ling_aler.ogg', 100, FALSE, pressure_affected = FALSE)
 	owner.announce_objectives()
 
@@ -462,18 +462,18 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 
 /datum/action/bloodling/proc/can_use(mob/living/user)
 	if(!user || !user.mind || user.stat != CONSCIOUS || has_cooldown_timer)
-		to_chat(user, "<span class='warning'>You are unable to do that right now.</span>")
+		to_chat(user, "<span class='warning'>Nie możesz teraz tego zrobić.</span>")
 		return FALSE
 	var/datum/component/bloodling/B = user.GetComponent(/datum/component/bloodling)
 	if(B && B.biomass >= biomass_cost)
 		B.remove_biomass(biomass_cost)
 		return TRUE
-	to_chat(user, "<span class='warning'>You don't have the requisite biomass to do that. </span>")
+	to_chat(user, "<span class='warning'>Nie masz do tego dość biomasy. </span>")
 	return FALSE
 
 /datum/action/bloodling/proc/refund_biomass(mob/living/user, amount)
 	var/datum/component/bloodling/B = user.GetComponent(/datum/component/bloodling)
-	to_chat(user, "<span class='aliennotice'>We have regained [amount] biomass.</span>")
+	to_chat(user, "<span class='aliennotice'>Odzyskaliśmy [amount] biomasy.</span>")
 	B.add_biomass(amount)
 
 /datum/action/bloodling/Trigger()
@@ -503,13 +503,13 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 	if (user.layer != ABOVE_NORMAL_TURF_LAYER)
 		user.layer = ABOVE_NORMAL_TURF_LAYER
 		animate(user, alpha = 50, time = 2 SECONDS)
-		user.visible_message("<span class='name'>[user] scurries to the ground!</span>", \
-						"<span class='noticealien'>You are now hiding.</span>")
+		user.visible_message("<span class='name'>[user] przypada do ziemi!</span>", \
+						"<span class='noticealien'>Teraz się ukrywasz.</span>")
 	else
 		user.layer = MOB_LAYER
 		animate(user, alpha = 255, time = 2 SECONDS)
-		user.visible_message("[user] slowly peeks up from the ground...", \
-					"<span class='noticealien'>You stop hiding.</span>")
+		user.visible_message("[user] powoli wychyla się znad ziemi...", \
+					"<span class='noticealien'>Przestajesz się ukrywać.</span>")
 	return 1
 
 /datum/action/bloodling/hide/Remove(mob/living/M)
@@ -534,14 +534,14 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 		user.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 		user.update_sight()
 		user.sight |= SEE_MOBS | SEE_OBJS | SEE_TURFS //Add sight flags to the user's eyes
-		to_chat(user, "We adjust our eyes to see beyond the darkness.")
+		to_chat(user, "Dostosowujemy oczy, by widzieć w ciemności.")
 		active = TRUE
 		return
 	user.lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	user.update_sight()
 	user.sight ^= SEE_MOBS | SEE_OBJS | SEE_TURFS //Remove sight flags from the user's eyes
 	active = FALSE
-	to_chat(user, "We adjust our eyes to see as our prey do.")
+	to_chat(user, "Dostosowujemy oczy, by widzieć jak nasze ofiary.")
 
 /datum/action/bloodling/thermalvision/Remove(mob/M)
 	M.sight ^= SEE_MOBS | SEE_OBJS | SEE_TURFS //Remove sight flags from the user's eyes
@@ -582,7 +582,7 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 			var/required_pixel_x = (user.x - BR.x) * 32
 			var/required_pixel_y = (user.y - BR.y) * 32
 			BR.shake_animation()
-			BR.visible_message("<span class='warning'>[BR] starts to fly off to the [dir2text(get_dir(BR, user))]!</span>")
+			BR.visible_message("<span class='warning'>[BR] zaczyna odlatywać w kierunku: [dir2text(get_dir(BR, user))]!</span>")
 			animate(BR, pixel_x = required_pixel_x, time = 3 SECONDS)
 			animate(BR, pixel_y = required_pixel_y, time = 3 SECONDS)
 			//animate(BR, alpha = 0, time = 3 SECONDS)
@@ -593,7 +593,7 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 
 
 	if(!foundRemnant)
-		to_chat(user, "<span class='notice'>We could not find any remnant to call forth.</span>")
+		to_chat(user, "<span class='notice'>Nie znaleźliśmy żadnych szczątków do przywołania.</span>")
 	else
 		add_cooldown(5 SECONDS)
 //Succ
@@ -628,7 +628,7 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 		if(M == user || issilicon(M) || !isliving(M) || M.invisibility > 0 || !M.alpha || is_bloodling(M))
 			continue
 		mobs += M
-	var/mob/living/M = input(user, "Who shall we absorb?", "[src]", null) as null|anything in mobs
+	var/mob/living/M = input(user, "Kogo wchłoniemy?", "[src]", null) as null|anything in mobs
 	if(!M)
 		return FALSE
 	var/datum/component/bloodling/B = user.GetComponent(/datum/component/bloodling)
@@ -645,12 +645,12 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 
 	var/datum/beam/current_beam = new(user,M,time=absorb_time,beam_icon_state="tentacle",btype=/obj/effect/ebeam/blood)
 	INVOKE_ASYNC(current_beam, TYPE_PROC_REF(/datum/beam, Start))
-	M.visible_message("<span class='warning'>[user] plunges a tendril deep into [M]'s carotid artery!</span>", "<span class='userdanger'>You feel a stabbing pain in your carotid artery!</span>")
+	M.visible_message("<span class='warning'>[user] wbija mackę głęboko w tętnicę szyjną [M]!</span>", "<span class='userdanger'>Czujesz kłujący ból w tętnicy szyjnej!</span>")
 	M.take_overall_damage(0, 0, 50) //OUCH!
 	M.emote("scream")
 	playsound(M, 'nsv13/sound/effects/bloodling_squelch.ogg', 70, FALSE)
 	if(do_after(user, absorb_time, target=M))
-		M.visible_message("<span class='warning'>[user] retracts their tendril!</span>", "<span class='userdanger'>YOU FEEL SLIGHTLY UNWELL.</span>")
+		M.visible_message("<span class='warning'>[user] cofa mackę!</span>", "<span class='userdanger'>CZUJESZ SIĘ TROCHĘ NIEDOBRZE.</span>")
 		var/gains = M.mob_size*50
 		gains = CLAMP(gains, 1, gains)
 		new /obj/effect/temp_visual/bloodling_remnant(get_turf(M), gains)
@@ -658,7 +658,7 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 		soundloop.stop(user)
 		return TRUE
 	else
-		M.visible_message("<span class='warning'>[user] quickly retracts their tendril!</span>", "<span class='userdanger'>You feel something slip out of your neck!</span>")
+		M.visible_message("<span class='warning'>[user] szybko cofa mackę!</span>", "<span class='userdanger'>Czujesz, jak coś wysuwa ci się z szyi!</span>")
 		qdel(current_beam)
 		soundloop.stop(user)
 
@@ -706,10 +706,10 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 	if(isAI(special_target))
 		var/mob/living/silicon/ai/ai = special_target
 		if(!ai.mind)
-			to_chat(user, "<span class='warning'>We can sense the remnants of a powerful entity here, but its mind is no longer here.</span>")
+			to_chat(user, "<span class='warning'>Wyczuwamy tu szczątki potężnej istoty, ale jej umysłu już tu nie ma.</span>")
 			return FALSE
 		if(B.last_evolution < 4) //You have to be STRONG to do this.
-			to_chat(user, "<span class='warning'>We can sense the essence of a powerful entity inhabiting [special_target], but we are not yet strong enough to infest it.</span>")
+			to_chat(user, "<span class='warning'>Wyczuwamy esencję potężnej istoty zamieszkującej [special_target], ale nie jesteśmy jeszcze dość silni, by ją zainfekować.</span>")
 			return FALSE
 		absorb_mob = ai
 		physical_target = ai
@@ -717,24 +717,24 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 	if(istype(special_target, /obj/structure/blob)) //I'm probably gonna fucking regret this.
 		var/obj/structure/blob/blob = special_target
 		if(!blob.overmind)
-			to_chat(user, "<span class='warning'>We can sense the remnants of a powerful entity here, but its mind is no longer here.</span>")
+			to_chat(user, "<span class='warning'>Wyczuwamy tu szczątki potężnej istoty, ale jej umysłu już tu nie ma.</span>")
 			return FALSE
 		if(B.last_evolution < 4) //You have to be STRONG to do this.
-			to_chat(user, "<span class='warning'>We can sense the essence of a powerful entity inhabiting [special_target], but we are not yet strong enough to infest it.</span>")
+			to_chat(user, "<span class='warning'>Wyczuwamy esencję potężnej istoty zamieszkującej [special_target], ale nie jesteśmy jeszcze dość silni, by ją zainfekować.</span>")
 			return FALSE
 		absorb_mob = blob.overmind
 		physical_target = blob
 
 	if(HAS_TRAIT(special_target, TRAIT_MINDSHIELD))
-		to_chat(user, "<span class='warning'>This one tries to resist our influence with mental walls... But it cannot resist forever.</span>")
+		to_chat(user, "<span class='warning'>Ten próbuje opierać się naszemu wpływowi murami umysłu... Ale nie wytrzyma wiecznie.</span>")
 		physical_target = special_target
 		absorb_mob = special_target
 
 	if(absorb_mob && physical_target)
-		to_chat(user, "<span class='userdanger'>WE HAVE DETECTED A POWERFUL ENTITY'S PRESENCE HERE...</span>")
+		to_chat(user, "<span class='userdanger'>WYKRYLIŚMY TU OBECNOŚĆ POTĘŻNEJ ISTOTY...</span>")
 		can_absorb_normally = FALSE
-		if(alert(user, "Absorb the powerful entity (LOUD)?",name,"Yes","No") == "Yes")
-			to_chat(absorb_mob, "<span class='userdanger'>A strange consciousness starts to intertwine with yours...</span>")
+		if(alert(user, "Wchłonąć potężną istotę (GŁOŚNO)?",name,"Yes","No") == "Yes")
+			to_chat(absorb_mob, "<span class='userdanger'>Dziwna świadomość zaczyna splatać się z twoją...</span>")
 			var/absorb_cooldown = 1 MINUTES - B.last_evolution SECONDS //It'll take everything you have to pull this off...
 			soundloop.start(user)
 			var/datum/beam/current_beam = new(user,physical_target,time=new_absorb_time,beam_icon_state="tentacle",btype=/obj/effect/ebeam/blood)
@@ -742,12 +742,12 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 			add_cooldown(absorb_cooldown*2)
 			user.emote("scream")
 			if(do_after(user, new_absorb_time, target=physical_target))
-				user.visible_message("<span class='warning'>[user] retracts their tendril!</span>", "<span class='userdanger'>That consciousness was strong, but not strong enough.</span>")
-				to_chat(user, "<span class='aliennotice'>We have infested the creature. If they do not do our bidding, we may absorb them for biomass.</span>")
-				to_chat(absorb_mob, "<span class='userdanger'>Your mind has been overtaken by [user]! You must serve them at all costs...</span>")
+				user.visible_message("<span class='warning'>[user] cofa mackę!</span>", "<span class='userdanger'>Ta świadomość była silna, ale nie dość silna.</span>")
+				to_chat(user, "<span class='aliennotice'>Zainfekowaliśmy istotę. Jeśli nie będzie nas słuchać, możemy wchłonąć ją dla biomasy.</span>")
+				to_chat(absorb_mob, "<span class='userdanger'>[user] przejmuje twój umysł! Musisz mu służyć za wszelką cenę...</span>")
 				B.infest(absorb_mob)
 			else
-				user.visible_message("<span class='warning'>[user] quickly retracts their tendril!</span>", "<span class='userdanger'>Our domination of the entity was interrupted!</span>")
+				user.visible_message("<span class='warning'>[user] szybko cofa mackę!</span>", "<span class='userdanger'>Przerwano nasze przejmowanie istoty!</span>")
 				qdel(current_beam)
 				refund_biomass(user, biomass_cost/1.5) //You get most of your biomass back if interrupted, but not _all_
 			soundloop.stop(user)
@@ -765,9 +765,9 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 		if(M == user || !isliving(M) || M.invisibility > 0 || !M.alpha || is_bloodling(M))
 			continue
 		mobs += M
-	var/mob/living/M = input(user, "Who shall we infest?", "[src]", null) as null|anything in mobs
+	var/mob/living/M = input(user, "Kogo zainfekujemy?", "[src]", null) as null|anything in mobs
 	if(!M || !M.mind || is_bloodling(M))
-		to_chat(user, "<span class='warning'>That creature lacks intelligence, we should absorb it instead. </span>")
+		to_chat(user, "<span class='warning'>Ta istota nie ma inteligencji, lepiej ją wchłonąć. </span>")
 		refund_biomass(user, biomass_cost)
 		return FALSE
 	var/datum/component/bloodling/B = user.GetComponent(/datum/component/bloodling)
@@ -775,16 +775,16 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 	soundloop.start(user)
 	var/datum/beam/current_beam = new(user,M,time=absorb_time,beam_icon_state="tentacle",btype=/obj/effect/ebeam/blood)
 	INVOKE_ASYNC(current_beam, TYPE_PROC_REF(/datum/beam, Start))
-	M.visible_message("<span class='warning'>[user] plunges a tendril deep into [M]'s carotid artery!</span>", "<span class='userdanger'>You feel a stabbing pain in your carotid artery!</span>")
+	M.visible_message("<span class='warning'>[user] wbija mackę głęboko w tętnicę szyjną [M]!</span>", "<span class='userdanger'>Czujesz kłujący ból w tętnicy szyjnej!</span>")
 	add_cooldown(absorb_cooldown)
 	M.emote("scream")
 	playsound(M, 'nsv13/sound/effects/bloodling_squelch.ogg', 70, FALSE)
 	if(do_after(user, absorb_time, target=M))
-		M.visible_message("<span class='warning'>[user] retracts their tendril!</span>", "<span class='userdanger'>YOU FEEL SLIGHTLY UNWELL.</span>")
-		to_chat(user, "<span class='aliennotice'>We have infested the creature. If they do not do our bidding, we may absorb them for biomass.</span>")
+		M.visible_message("<span class='warning'>[user] cofa mackę!</span>", "<span class='userdanger'>CZUJESZ SIĘ TROCHĘ NIEDOBRZE.</span>")
+		to_chat(user, "<span class='aliennotice'>Zainfekowaliśmy istotę. Jeśli nie będzie nas słuchać, możemy wchłonąć ją dla biomasy.</span>")
 		B.infest(M)
 	else
-		M.visible_message("<span class='warning'>[user] quickly retracts their tendril!</span>", "<span class='userdanger'>You feel something slip out of your neck!</span>")
+		M.visible_message("<span class='warning'>[user] szybko cofa mackę!</span>", "<span class='userdanger'>Czujesz, jak coś wysuwa ci się z szyi!</span>")
 		qdel(current_beam)
 		refund_biomass(user, biomass_cost/1.5) //You get most of your biomass back if interrupted, but not _all_
 	soundloop.stop(user)
@@ -808,13 +808,13 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 		if(M == user || !isliving(M) || M.invisibility > 0 || !M.alpha)
 			continue
 		mobs += M
-	var/mob/living/M = input(user, "What creature shall we bestow life upon?", "[src]", null) as null|anything in mobs
+	var/mob/living/M = input(user, "Którą istotę obdarzymy życiem?", "[src]", null) as null|anything in mobs
 	if(!M || M.mind)
-		to_chat(user, "<span class='warning'>That creature already has an intelligence, we should infest it instead...</span>")
+		to_chat(user, "<span class='warning'>Ta istota ma już inteligencję, lepiej ją zainfekować...</span>")
 		refund_biomass(user, biomass_cost)
 		return FALSE
 
-	var/list/candidates = pollCandidatesForMob("Do you want to play as a bloodling minion?", ROLE_SENTIENCE, null, ROLE_SENTIENCE, 50, M) // see poll_ignore.dm
+	var/list/candidates = pollCandidatesForMob("Chcesz zagrać jako sługa krwiaka?", ROLE_SENTIENCE, null, ROLE_SENTIENCE, 50, M) // see poll_ignore.dm
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
 		var/datum/component/bloodling/B = user.GetComponent(/datum/component/bloodling)
@@ -822,14 +822,14 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 		if(istype(M, /mob/living/simple_animal))
 			var/mob/living/simple_animal/SM = M
 			SM.sentience_act()
-		to_chat(M, "<span class='warning'>All at once it makes sense: you know what you are and who you are! Self awareness is yours!</span>")
-		to_chat(M, "<span class='userdanger'>You are grateful to be self aware and owe [user.real_name] a great debt. Serve [user.real_name], and assist [user.p_them()] in completing [user.p_their()] goals at any cost.</span>")
+		to_chat(M, "<span class='warning'>Nagle wszystko ma sens: wiesz, czym i kim jesteś! Zyskujesz samoświadomość!</span>")
+		to_chat(M, "<span class='userdanger'>Jesteś wdzięczny za samoświadomość i masz wielki dług wobec [user.real_name]. Służ [user.real_name] i za wszelką cenę pomagaj w realizacji celów.</span>")
 		if(M.flags_1 & HOLOGRAM_1) //Check to see if it's a holodeck creature
-			to_chat(M, "<span class='userdanger'>You also become depressingly aware that you are not a real creature, but instead a holoform. Your existence is limited to the parameters of the holodeck.</span>")
+			to_chat(M, "<span class='userdanger'>Przygnębiająco uświadamiasz sobie też, że nie jesteś prawdziwą istotą, tylko holoformą. Twoje istnienie ogranicza się do parametrów holodeku.</span>")
 		M.copy_languages(user)
 		B.infest(M) //Free infest!
 	else
-		to_chat(user, "<span class='notice'>[M] looks interested for a moment, but then looks back down. Maybe you should try again later.</span>")
+		to_chat(user, "<span class='notice'>[M] przez chwilę wygląda na zainteresowanego, ale potem spuszcza wzrok. Może spróbuj później.</span>")
 		refund_biomass(user, biomass_cost) //Rip, it didn't work
 		return FALSE
 
@@ -848,11 +848,11 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 		if(M == user || !isliving(M) || M.invisibility > 0 || !M.alpha || !is_bloodling(M))
 			continue
 		mobs += M
-	var/mob/living/M = input(user, "To whom shall we transfer biomass?", "[src]", null) as null|anything in mobs
+	var/mob/living/M = input(user, "Komu przekażemy biomasę?", "[src]", null) as null|anything in mobs
 	if(!M || !M.mind)
-		to_chat(user, "<span class='warning'>That creature lacks intelligence, we should reconsider transfering biomass.</span>")
+		to_chat(user, "<span class='warning'>Ta istota nie ma inteligencji, lepiej przemyślmy przekazanie biomasy.</span>")
 		return FALSE
-	var/amount = input(user, "How much biomass do you want to transfer?.","Biomass") as num|null
+	var/amount = input(user, "Ile biomasy chcesz przekazać?","Biomasa") as num|null
 	if(amount == null)
 		return FALSE
 
@@ -861,7 +861,7 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 
 	amount = CLAMP(amount, 0, ours.biomass - 10) //Can't transfer what you don't own...
 	if(amount <= 0)
-		to_chat(user, "<span class='warning'>We do not have enough biomass to transfer!</span>")
+		to_chat(user, "<span class='warning'>Nie mamy dość biomasy do przekazania!</span>")
 		return
 	ours.remove_biomass(amount)
 	theirs.add_biomass(amount)
@@ -886,13 +886,13 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 	if(!..())
 		return
 	add_cooldown(cooldown)
-	user.visible_message("<span class='warning'>[user] leaps up high into the air!</span>")
+	user.visible_message("<span class='warning'>[user] wyskakuje wysoko w powietrze!</span>")
 	user.Paralyze(1 SECONDS)
 	animate(user, pixel_y = 100, 1 SECONDS)
 	sleep(1 SECONDS)
 	animate(user, pixel_y = 0, 1 SECONDS)
 	user.shake_animation()
-	user.visible_message("<span class='warning'>[user] slams into the ground!</span>")
+	user.visible_message("<span class='warning'>[user] uderza o ziemię!</span>")
 	playsound(user, 'sound/effects/gravhit.ogg', 100, TRUE)
 	var/datum/component/bloodling/B = user.GetComponent(/datum/component/bloodling)
 	var/stun_time = base_stun_time + max(B.last_evolution / 2, 0) SECONDS //Bigger bloodling = hit harder
@@ -920,7 +920,7 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 	if(!..())
 		return
 
-	user.visible_message("<span class='warning'>[user] lashes out with a legion of tentacles!</span>")
+	user.visible_message("<span class='warning'>[user] smaga legionem macek!</span>")
 	user.shake_animation()
 	playsound(user, 'sound/magic/tail_swing.ogg', 100, TRUE)
 	INVOKE_ASYNC(src, PROC_REF(summon_tentacles), user)
@@ -936,10 +936,10 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 		INVOKE_ASYNC(current_beam, TYPE_PROC_REF(/datum/beam, Start))
 		animate(M, pixel_y = 70, 0.25 SECONDS)
 		playsound(M, 'nsv13/sound/effects/bloodling_squelch.ogg', 70, FALSE)
-		M.visible_message("<span class='warning'>A tentacle grabs hold of [M]!</span>", "<span class='userdanger'>A tentacle sweeps you high into the air!</span>")
+		M.visible_message("<span class='warning'>Macka chwyta [M]!</span>", "<span class='userdanger'>Macka porywa cię wysoko w powietrze!</span>")
 		sleep(2.5)
 		animate(M, pixel_y = 0, 5)
-		M.visible_message("<span class='warning'>[M] is slammed down into the floor!</span>", "<span class='userdanger'>[user] slams you into the floor!</span>")
+		M.visible_message("<span class='warning'>[M] zostaje rzucony o podłogę!</span>", "<span class='userdanger'>[user] rzuca tobą o podłogę!</span>")
 		playsound(user, 'sound/effects/gravhit.ogg', 100, TRUE)
 		var/turf/throwtarget = get_edge_target_turf(user, get_dir(user, get_step_away(M, user)))
 		var/distfromcaster = get_dist(user, M)
@@ -969,7 +969,7 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 	verb_say = "syczy"
 	bubble_icon = "alien"
 	deathsound = 'sound/voice/hiss6.ogg'
-	deathmessage = "lets out a terrible screech as its life fades away..."
+	deathmessage = "wydaje okropny wrzask, gdy uchodzi z niego życie..."
 	attacktext = "glomps"
 	//IT CAME...from outer space!
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
@@ -1070,14 +1070,14 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 	var/datum/component/bloodling/B = user.GetComponent(/datum/component/bloodling)
 	if(!B || !buildPath)
 		return
-	if(alert(user, "Build [choice]? This will cost [cost] biomass.",name,"Yes","No") == "Yes")
+	if(alert(user, "Zbudować [choice]? Koszt: [cost] biomasy.",name,"Yes","No") == "Yes")
 		if(B.biomass <= cost)
-			to_chat(user, "<span class='warning'>We need [cost - B.biomass] more biomass to build [choice]!</span>")
+			to_chat(user, "<span class='warning'>Potrzebujemy jeszcze [cost - B.biomass] biomasy, by zbudować [choice]!</span>")
 			return
 		add_cooldown(10 SECONDS)
 		user.shake_animation()
 		B.remove_biomass(cost)
-		to_chat(user, "<span class='warning'>We have created a new shell... It will need life.</span>")
+		to_chat(user, "<span class='warning'>Stworzyliśmy nową powłokę... Będzie potrzebować życia.</span>")
 		new buildPath(get_turf(user))
 
 /datum/action/bloodling/dissonant_shriek
@@ -1110,7 +1110,7 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 		if(M == user || !is_bloodling(M) || !iscarbon(M))
 			continue
 		mobs += M
-	var/mob/living/M = input(user, "Which servant shall we heal?", "[src]", null) as null|anything in mobs
+	var/mob/living/M = input(user, "Którego sługę uleczymy?", "[src]", null) as null|anything in mobs
 	if(!M)
 		return FALSE
 	add_cooldown(1 MINUTES)
@@ -1118,21 +1118,21 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 	var/heal_time = 20 SECONDS
 	var/datum/beam/current_beam = new(user,M,time=heal_time,beam_icon_state="tentacle",btype=/obj/effect/ebeam/blood)
 	INVOKE_ASYNC(current_beam, TYPE_PROC_REF(/datum/beam, Start))
-	M.visible_message("<span class='warning'>[user] plunges a tendril deep into [M]'s neck!</span>", "<span class='userdanger'>You feel a stabbing pain in your neck as your wounds knit back together...</span>")
+	M.visible_message("<span class='warning'>[user] wbija mackę głęboko w szyję [M]!</span>", "<span class='userdanger'>Czujesz kłujący ból w szyi, a twoje rany się zrastają...</span>")
 	M.emote("scream")
 	playsound(M, 'nsv13/sound/effects/bloodling_squelch.ogg', 70, FALSE)
 	if(do_after(user, heal_time, target=M))
-		M.visible_message("<span class='warning'>[user] retracts their tendril!</span>", "<span class='userdanger'>Your wounds have been healed!</span>")
+		M.visible_message("<span class='warning'>[user] cofa mackę!</span>", "<span class='userdanger'>Twoje rany zostały uleczone!</span>")
 		var/mob/living/carbon/C = M
 		var/list/missing = C.get_missing_limbs()
 		if(missing.len)
 			playsound(C, 'sound/magic/demon_consume.ogg', 50, 1)
-			C.visible_message("<span class='warning'>[C]'s missing limbs \
-					reform, making a loud, grotesque sound!</span>",
-					"<span class='userdanger'>Your limbs regrow, making a \
-					loud, crunchy sound and giving you great pain!</span>",
-					"<span class='italics'>You hear organic matter ripping \
-					and tearing!</span>")
+			C.visible_message("<span class='warning'>Brakujące kończyny [C] \
+					odrastają z głośnym, groteskowym dźwiękiem!</span>",
+					"<span class='userdanger'>Twoje kończyny odrastają z \
+					głośnym chrupnięciem, sprawiając ci ogromny ból!</span>",
+					"<span class='italics'>Słyszysz rozrywanie \
+					i darcie tkanki organicznej!</span>")
 			C.emote("scream")
 			C.regenerate_limbs(1)
 
@@ -1162,26 +1162,26 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 	var/area/A = get_area(user)
 	var/datum/objective/bloodling_ascend/ascend_objective = locate() in user_antag.objectives
 	if(!(A in ascend_objective.summon_spots))
-		to_chat(user, "<span class='cultlarge'>The consciousness grid here is not receptive to our presence, we may however try to ascend in [english_list(ascend_objective.summon_spots)]!</span>")
+		to_chat(user, "<span class='cultlarge'>Sieć świadomości nie jest tu podatna na naszą obecność, ale możemy spróbować wznieść się w miejscach: [english_list(ascend_objective.summon_spots)]!</span>")
 		refund_biomass(user, biomass_cost)
 		return
 
-	if(alert(user, "Are you sure you wish to attempt an ascension? You will be left vulnerable, and lesser beings will be made aware of your location...",name,"Yes","No") == "Yes")
-		user.get_overmap().relay_to_nearby('nsv13/sound/effects/bloodling_awaken.ogg', "<span class='userdanger'>Hideous images creep into your mind!</span>", FALSE)
+	if(alert(user, "Na pewno chcesz spróbować się wznieść? Będziesz bezbronny, a niższe istoty dowiedzą się, gdzie jesteś...",name,"Yes","No") == "Yes")
+		user.get_overmap().relay_to_nearby('nsv13/sound/effects/bloodling_awaken.ogg', "<span class='userdanger'>Do twojego umysłu wkradają się ohydne obrazy!</span>", FALSE)
 		add_cooldown(15 MINUTES)
 		//Wall the master in
 		new /obj/structure/fluff/bloodling_tendril(get_turf(user))
 		for(var/cdir in GLOB.alldirs)
 			new /obj/structure/alien/resin/wall(get_turf(get_step(user, cdir)))
 
-		to_chat(user, "<span class='userdanger'>We start to channel our mental energy... We will be unable to move while we attempt our ascension.</span>")
+		to_chat(user, "<span class='userdanger'>Zaczynamy skupiać energię umysłu... Podczas próby wzniesienia nie będziemy mogli się ruszać.</span>")
 		//No moving for you.
 		//user.add_movespeed_modifier(BLOODLING_ASCENSION_MODIFIER, TRUE, 100, multiplicative_slowdown = INFINITY, override = TRUE)
 
-		user.get_overmap().relay_to_nearby('nsv13/sound/effects/bloodling_awaken.ogg', "<span class='userdanger'>You can feel your consciousness being drawn to something terrible...</span>", FALSE)
+		user.get_overmap().relay_to_nearby('nsv13/sound/effects/bloodling_awaken.ogg', "<span class='userdanger'>Czujesz, jak twoja świadomość jest przyciągana do czegoś strasznego...</span>", FALSE)
 		sleep(5 SECONDS)
 		var/datum/component/bloodling/B = user.GetComponent(/datum/component/bloodling)
-		priority_announce("Attention all hands, possible Patmos-Omega 'end-of-the-world' class event detected. An extra-dimensional consciousness grid is forming in: [get_area(user)]. All forces must attempt to contain the event.","Central Command Higher Dimensional Affairs", 'sound/misc/airraid.ogg')
+		priority_announce("Uwaga, cała załoga: wykryto możliwe zdarzenie klasy Patmos-Omega, 'koniec świata'. Pozawymiarowa sieć świadomości formuje się w: [get_area(user)]. Wszystkie siły muszą spróbować powstrzymać zdarzenie.","Wydział Spraw Wyższych Wymiarów Centrali", 'sound/misc/airraid.ogg')
 		B.begin_the_beginning_of_the_end()
 
 	else
@@ -1193,7 +1193,7 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 	if(!user || QDELETED(user) || user.health <= 0)
 		SSticker.mode.check_win()
 		return FALSE //Well! he dead...
-	priority_announce("Simulations indicate that a christ-consciousness grid will be formed in [get_area(user)] in T-5 minutes.","Central Command Higher Dimensional Affairs")
+	priority_announce("Symulacje wskazują, że sieć świadomości chrystusowej powstanie w [get_area(user)] za T-5 minut.","Wydział Spraw Wyższych Wymiarów Centrali")
 	set_security_level("delta")
 	sleep(5 SECONDS)
 	//No escape
@@ -1206,9 +1206,9 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 	if(!user || QDELETED(user) || user.health <= 0)
 		SSticker.mode.check_win()
 		return FALSE //Well! he dead...
-	user.get_overmap().relay_to_nearby('nsv13/sound/effects/bloodling_awaken.ogg', "<span class='userdanger'>Something horrible has awoken!</span>", FALSE)
+	user.get_overmap().relay_to_nearby('nsv13/sound/effects/bloodling_awaken.ogg', "<span class='userdanger'>Przebudziło się coś strasznego!</span>", FALSE)
 	//Give them a chance to resolve it.
-	priority_announce("WARNING: AN EXTRA-DIMENSIONAL CONSCIOUSNESS GRID HAS BEEN ESTABLISHED ABOARD [station_name()]... Eliminate the focal entity at all costs. Reports estimate total reality failure in T-10 minutes.","Central Command Higher Dimensional Affairs")
+	priority_announce("UWAGA: NA POKŁADZIE [station_name()] POWSTAŁA POZAWYMIAROWA SIEĆ ŚWIADOMOŚCI... Za wszelką cenę wyeliminujcie istotę w jej centrum. Szacuje się, że całkowity rozpad rzeczywistości nastąpi za T-10 minut.","Wydział Spraw Wyższych Wymiarów Centrali")
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(bloodling_win)), 10 MINUTES)
 
@@ -1236,7 +1236,7 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 
 /mob/living/simple_animal/hostile/eldritch/armsy/prime/bloodling_ascended
 	name = "Fleshy Entity"
-	real_name = "The Master"
+	real_name = "Pan"
 	desc = "Your mind screams as it tries to comprehend what stands before you..."
 	icon = 'nsv13/icons/mob/bloodling.dmi'
 	health = 3000
@@ -1260,7 +1260,7 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 	var/area/A = get_area(src)
 	if(A)
 		var/mutable_appearance/alert_overlay = mutable_appearance('nsv13/icons/mob/actions/actions_bloodling.dmi', "ascend")
-		notify_ghosts("The master calls to you. Reach out to him to be given life.", source = src, alert_overlay = alert_overlay, action=NOTIFY_ATTACK)
+		notify_ghosts("Pan cię wzywa. Zwróć się do niego, by otrzymać życie.", source = src, alert_overlay = alert_overlay, action=NOTIFY_ATTACK)
 
 /mob/living/simple_animal/hostile/eldritch/armsy/prime/bloodling_ascended/proc/update_biomass()
 	biomass = GetComponent(/datum/component/bloodling)

@@ -6,8 +6,8 @@
 	name = "Space Pirate Boarding Crew"
 
 /datum/antagonist/pirate/boarder/greet()
-	to_chat(owner, "<span class='boldannounce'>You are a Space Pirate!</span>")
-	to_chat(owner, "<B>You've managed to dock within proximity of a Nanotrasen war vessel. You're outnumbered, outgunned, and under prepared in every conceivable way, but if you can manage to successfully pull off a heist on this vessel, it'd be enough to put your pirate crew on the map.</B>")
+	to_chat(owner, "<span class='boldannounce'>Jesteś kosmicznym piratem!</span>")
+	to_chat(owner, "<B>Udało się wam zadokować w pobliżu okrętu wojennego Nanotrasen. Jesteście w mniejszości, gorzej uzbrojeni i pod każdym względem gorzej przygotowani, ale jeśli uda wam się obrabować ten statek, wasza piracka załoga zyska sławę.</B>")
 	owner.announce_objectives()
 
 /datum/antagonist/pirate/boarder/get_team()
@@ -49,4 +49,4 @@
 			B.objectives |= objectives
 
 /datum/objective/loot/plunder
-	explanation_text = "Loot and pillage the ship, transport 50000 credits worth of loot." //replace me
+	explanation_text = "Złup i spustosz statek, przewożąc łupy warte 50000 kredytów." //replace me
