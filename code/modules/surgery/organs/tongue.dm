@@ -4,7 +4,7 @@
 	icon_state = "tonguenormal"
 	zone = BODY_ZONE_PRECISE_MOUTH
 	slot = ORGAN_SLOT_TONGUE
-	attack_verb = list("licked", "slobbered", "slapped", "frenched", "tongued")
+	attack_verb = list("liże", "śliniąc się, liże", "policzkuje", "całuje z języczkiem", "liże")
 	var/list/languages_possible
 	var/say_mod = "mówi"
 	var/ask_mod = "pyta"
@@ -219,7 +219,7 @@
 	desc = "Apparently skeletons alter the sounds they produce through oscillation of their teeth, hence their characteristic rattling."
 	icon_state = "tonguebone"
 	say_mod = "grzechocze"
-	attack_verb = list("bitten", "chattered", "chomped", "enamelled", "boned")
+	attack_verb = list("gryzie", "szczęka na", "chrupie", "emaliuje", "kościeje")
 	taste_sensitivity = 101 // skeletons cannot taste anything
 	modifies_speech = TRUE
 	liked_food = GROSS | MEAT | RAW | GORE
@@ -257,7 +257,7 @@
 	organ_flags = NONE
 	icon_state = "tonguerobot"
 	say_mod = "stwierdza"
-	attack_verb = list("beeped", "booped")
+	attack_verb = list("pika na", "pstryka w nos")
 	modifies_speech = TRUE
 	taste_sensitivity = 25 // not as good as an organic tongue
 
@@ -293,7 +293,7 @@
 	desc = "A sophisticated ethereal organ, capable of synthesising speech via electrical discharge."
 	icon_state = "electrotongue"
 	say_mod = "trzeszczy"
-	attack_verb = list("shocked", "jolted", "zapped")
+	attack_verb = list("razi prądem", "wstrząsa", "razi")
 	taste_sensitivity = 101 // Not a tongue, they can't taste shit
 	toxic_food = NONE
 

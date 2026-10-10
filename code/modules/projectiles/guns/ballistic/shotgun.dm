@@ -280,7 +280,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_MEDIUM
 	force = 10 //it has a hook on it
-	attack_verb = list("slashed", "hooked", "stabbed")
+	attack_verb = list("ciacha", "zahacza", "dźga")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	//our hook gun!
 	var/obj/item/gun/magic/hook/bounty/hook

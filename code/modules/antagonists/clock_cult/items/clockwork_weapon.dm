@@ -14,7 +14,7 @@
 	armour_penetration = 10
 	materials = list(/datum/material/iron=1150, /datum/material/gold=2750)
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "poked", "jabbed", "torn", "gored")
+	attack_verb = list("atakuje", "szturcha", "dźga", "rozdziera", "bodzie")
 	sharpness = IS_SHARP_ACCURATE
 	max_integrity = 200
 	var/clockwork_hint = ""
@@ -91,7 +91,7 @@
 	throwforce = 25
 	armour_penetration = 6
 	sharpness = IS_BLUNT
-	attack_verb = list("bashed", "smitted", "hammered", "attacked")
+	attack_verb = list("grzmoci", "razi", "wali młotem", "atakuje")
 	clockwork_hint = "Na Reebe trafieni wrogowie zostają odrzuceni."
 
 /obj/item/clockwork/weapon/brass_battlehammer/ComponentInitialize()
@@ -112,7 +112,7 @@
 	force = 26
 	throwforce = 20
 	armour_penetration = 12
-	attack_verb = list("attacked", "slashed", "cut", "torn", "gored")
+	attack_verb = list("atakuje", "ciacha", "tnie", "rozdziera", "bodzie")
 	clockwork_hint = "Na Reebe trafione cele dostają potężnym impulsem elektromagnetycznym."
 	COOLDOWN_DECLARE(emp_cooldown)
 

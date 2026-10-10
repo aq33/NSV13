@@ -35,7 +35,7 @@
 	materials = list(/datum/material/iron=5000, /datum/material/glass=2500)
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY
-	attack_verb = list("attacked", "pinched")
+	attack_verb = list("atakuje", "szczypie")
 	tool_behaviour = TOOL_HEMOSTAT
 	toolspeed = 1
 
@@ -49,7 +49,7 @@
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY
 	toolspeed = 0.5
-	attack_verb = list("attacked", "pinched")
+	attack_verb = list("atakuje", "szczypie")
 
 
 /obj/item/cautery
@@ -63,7 +63,7 @@
 	materials = list(/datum/material/iron=2500, /datum/material/glass=750)
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY
-	attack_verb = list("burnt")
+	attack_verb = list("parzy")
 	tool_behaviour = TOOL_CAUTERY
 	toolspeed = 1
 
@@ -77,7 +77,7 @@
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY
 	toolspeed = 0.5
-	attack_verb = list("burnt")
+	attack_verb = list("parzy")
 
 
 /obj/item/blood_filter
@@ -90,7 +90,7 @@
 	materials = list(/datum/material/iron=2000, /datum/material/glass=1500, /datum/material/silver=500)
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("pumps", "siphons")
+	attack_verb = list("pompuje", "wysysa")
 	tool_behaviour = TOOL_BLOODFILTER
 	toolspeed = 1
 
@@ -107,7 +107,7 @@
 	flags_1 = CONDUCT_1
 	force = 15
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("drilled")
+	attack_verb = list("wierci w")
 	tool_behaviour = TOOL_DRILL
 	toolspeed = 1
 
@@ -129,7 +129,7 @@
 	force = 10
 	w_class = WEIGHT_CLASS_SMALL
 	toolspeed = 0.5
-	attack_verb = list("drilled")
+	attack_verb = list("wierci w")
 
 
 /obj/item/scalpel
@@ -147,7 +147,7 @@
 	throw_speed = 3
 	throw_range = 5
 	materials = list(/datum/material/iron=4000, /datum/material/glass=1000)
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP_ACCURATE
 	tool_behaviour = TOOL_SCALPEL
@@ -169,7 +169,7 @@
 	throw_speed = 3
 	throw_range = 5
 	materials = list(/datum/material/iron=4000, /datum/material/glass=1000)
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	toolspeed = 0.5
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP_ACCURATE
@@ -195,7 +195,7 @@
 	throw_speed = 2
 	throw_range = 5
 	materials = list(/datum/material/iron=10000, /datum/material/glass=6000)
-	attack_verb = list("attacked", "slashed", "sawed", "cut")
+	attack_verb = list("atakuje", "ciacha", "piłuje", "tnie")
 	sharpness = IS_SHARP
 	tool_behaviour = TOOL_SAW
 	toolspeed = 1
@@ -219,7 +219,7 @@
 	throw_range = 5
 	materials = list(/datum/material/iron=10000, /datum/material/glass=6000)
 	toolspeed = 0.5
-	attack_verb = list("attacked", "slashed", "sawed", "cut")
+	attack_verb = list("atakuje", "ciacha", "piłuje", "tnie")
 	sharpness = IS_SHARP
 
 /obj/item/surgical_drapes
@@ -231,7 +231,7 @@
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	item_state = "drapes"
 	w_class = WEIGHT_CLASS_TINY
-	attack_verb = list("slapped")
+	attack_verb = list("policzkuje")
 
 //NSV13 - Surgery-Initiation Componentizes - Start
 /obj/item/surgical_drapes/Initialize(mapload)

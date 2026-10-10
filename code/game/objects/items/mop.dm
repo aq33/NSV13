@@ -11,7 +11,7 @@
 	throw_speed = 3
 	throw_range = 7
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("mopped", "bashed", "bludgeoned", "whacked")
+	attack_verb = list("mopuje", "grzmoci", "tłucze", "wali")
 	resistance_flags = FLAMMABLE
 	var/mopping = 0
 	var/mopcount = 0
@@ -125,6 +125,6 @@
 	force = 10
 	throwforce = 18
 	throw_speed = 4
-	attack_verb = list("mopped", "stabbed", "shanked", "jousted")
+	attack_verb = list("mopuje", "dźga", "kosi nożem", "potyka się z")
 	sharpness = IS_SHARP
 	embedding = list("armour_block" = 40)

@@ -14,7 +14,7 @@
 	name = "cyborg left arm"
 	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
 	limb_id = "robotic"
-	attack_verb = list("slapped", "punched")
+	attack_verb = list("policzkuje", "uderza pięścią")
 	item_state = "buildpipe"
 	static_icon =  'icons/mob/augmentation/augments.dmi'
 	icon = null
@@ -39,7 +39,7 @@
 /obj/item/bodypart/r_arm/robot
 	name = "cyborg right arm"
 	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
-	attack_verb = list("slapped", "punched")
+	attack_verb = list("policzkuje", "uderza pięścią")
 	item_state = "buildpipe"
 	static_icon =  'icons/mob/augmentation/augments.dmi'
 	icon = null
@@ -65,7 +65,7 @@
 /obj/item/bodypart/l_leg/robot
 	name = "cyborg left leg"
 	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
-	attack_verb = list("kicked", "stomped")
+	attack_verb = list("kopie", "depcze")
 	item_state = "buildpipe"
 	static_icon =  'icons/mob/augmentation/augments.dmi'
 	icon = null
@@ -91,7 +91,7 @@
 /obj/item/bodypart/r_leg/robot
 	name = "cyborg right leg"
 	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
-	attack_verb = list("kicked", "stomped")
+	attack_verb = list("kopie", "depcze")
 	item_state = "buildpipe"
 	static_icon =  'icons/mob/augmentation/augments.dmi'
 	icon = null

@@ -9,7 +9,7 @@
 	block_level = 1
 	block_upgrade_walk = 1
 	w_class = WEIGHT_CLASS_BULKY
-	attack_verb = list("attacked", "impaled", "pierced")
+	attack_verb = list("atakuje", "nadziewa", "przebija")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP
 	max_integrity = 200

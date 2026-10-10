@@ -11,7 +11,7 @@
 	force = 10
 	throwforce = 20
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "rends")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozszarpuje", "rozrywa", "sieka", "rozszarpuje")
 	actions_types = list(/datum/action/item_action/rune_shatter)
 	embedding = list(
 		ignore_throwspeed_threshold = TRUE,

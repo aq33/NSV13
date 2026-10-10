@@ -125,13 +125,13 @@
 	if(I.attack_verb?.len)
 		message_verb = "[pick(I.attack_verb)]"
 	else if(I.force)
-		message_verb = "attacked"
+		message_verb = "atakuje"
 
-	var/attack_message = "[src] has been [message_verb] with [I]."
+	var/attack_message = "[I] [message_verb] [src]."
 	if(user)
 		user.do_attack_animation(src)
 		if(user in viewers(src))
-			attack_message = "[user] has [message_verb] [src] with [I]!"
+			attack_message = "[user] [message_verb] [src], używając [I]!"
 	if(message_verb)
 		visible_message("<span class='danger'>[attack_message]</span>",
 		"<span class='userdanger'>[attack_message]</span>", null, COMBAT_MESSAGE_RANGE)

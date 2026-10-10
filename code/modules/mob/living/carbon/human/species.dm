@@ -1857,7 +1857,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	hit_area = parse_zone(affecting.body_zone)
 	var/def_zone = affecting.body_zone
 
-	var/armor_block = H.run_armor_check(affecting, "melee", "<span class='notice'>Pancerz ochronił twoją kończynę ([hit_area])!</span>", "<span class='warning'>Pancerz złagodził trafienie w twoją kończynę ([hit_area])!</span>",I.armour_penetration)
+	var/armor_block = H.run_armor_check(affecting, "melee", "<span class='notice'>Pancerz ochronił twoją kończynę ([strefa_pl(hit_area)])!</span>", "<span class='warning'>Pancerz złagodził trafienie w twoją kończynę ([strefa_pl(hit_area)])!</span>",I.armour_penetration)
 	armor_block = min(90,armor_block) //cap damage reduction at 90%
 	var/Iforce = I.force //to avoid runtimes on the forcesay checks at the bottom. Some items might delete themselves if you drop them. (stunning yourself, ninja swords)
 

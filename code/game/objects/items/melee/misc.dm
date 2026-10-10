@@ -21,7 +21,7 @@
 	force = 10
 	throwforce = 7
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
+	attack_verb = list("chłoszcze", "chłoszcze", "smaga", "dyscyplinuje")
 	hitsound = 'sound/weapons/chainhit.ogg'
 	materials = list(/datum/material/iron = 1000)
 
@@ -42,7 +42,7 @@
 	force = 20
 	throwforce = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	sharpness = IS_SHARP
 
 /obj/item/melee/synthetic_arm_blade/Initialize(mapload)
@@ -67,7 +67,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	armour_penetration = 75
 	sharpness = IS_SHARP
-	attack_verb = list("slashed", "cut")
+	attack_verb = list("ciacha", "tnie")
 	hitsound = 'sound/weapons/rapierhit.ogg'
 	materials = list(/datum/material/iron = 1000)
 
@@ -401,7 +401,7 @@
 		item_state = on_item_state
 		w_class = weight_class_on
 		force = force_on
-		attack_verb = list("smacked", "struck", "cracked", "beaten")
+		attack_verb = list("trzepie", "uderza", "rozłupuje", "bije")
 	else
 		to_chat(user, desc["local_off"])
 		icon_state = off_icon_state
@@ -409,7 +409,7 @@
 		slot_flags = ITEM_SLOT_BELT
 		w_class = WEIGHT_CLASS_SMALL
 		force = force_off
-		attack_verb = list("hit", "poked")
+		attack_verb = list("uderza", "szturcha")
 
 	playsound(src.loc, on_sound, 50, 1)
 	add_fingerprint(user)
@@ -466,7 +466,7 @@
 		item_state = on_item_state
 		w_class = weight_class_on
 		force = force_on
-		attack_verb = list("smacked", "struck", "cracked", "beaten")
+		attack_verb = list("trzepie", "uderza", "rozłupuje", "bije")
 	else
 		to_chat(user, desc["local_off"])
 		icon_state = off_icon_state
@@ -474,7 +474,7 @@
 		slot_flags = ITEM_SLOT_BELT
 		w_class = WEIGHT_CLASS_SMALL
 		force = force_off
-		attack_verb = list("hit", "poked")
+		attack_verb = list("uderza", "szturcha")
 
 	playsound(src.loc, on_sound, 50, 1)
 	add_fingerprint(user)
@@ -695,7 +695,7 @@
 	force = 0.001 //"Some attack noises shit"
 	reach = 3
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
+	attack_verb = list("chłoszcze", "chłoszcze", "smaga", "dyscyplinuje")
 	hitsound = 'sound/weapons/whip.ogg'
 
 /obj/item/melee/curator_whip/attack(mob/living/target, mob/living/user)
@@ -748,7 +748,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	item_flags = NONE
 	force = 0
-	attack_verb = list("hit", "poked")
+	attack_verb = list("uderza", "szturcha")
 	var/obj/item/food/sausage/held_sausage
 	var/static/list/ovens
 	var/on = FALSE
@@ -861,7 +861,7 @@
 	force = 0
 	throwforce = 0
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("repelled")
+	attack_verb = list("odpycha")
 	var/cooldown = 0
 	var/knockbackpower = 6
 

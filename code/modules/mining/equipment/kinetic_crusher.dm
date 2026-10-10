@@ -16,7 +16,7 @@
 	armour_penetration = 10
 	materials = list(/datum/material/iron=1150, /datum/material/glass=2075)
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("smashed", "crushed", "cleaved", "chopped", "pulped")
+	attack_verb = list("rozbija", "miażdży", "rozłupuje", "rąbie", "miażdży na miazgę")
 	sharpness = IS_SHARP
 	actions_types = list(/datum/action/item_action/toggle_light)
 	light_system = MOVABLE_LIGHT

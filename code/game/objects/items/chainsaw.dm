@@ -17,7 +17,7 @@
 	throw_speed = 2
 	throw_range = 4
 	materials = list(/datum/material/iron=13000)
-	attack_verb = list("sawed", "tore", "cut", "chopped", "diced")
+	attack_verb = list("piłuje", "rozdziera", "tnie", "rąbie", "sieka")
 	hitsound = "swing_hit"
 	sharpness = IS_SHARP
 	actions_types = list(/datum/action/item_action/startchainsaw)
@@ -89,7 +89,7 @@
 	righthand_file = 'icons/mob/inhands/weapons/chainsaw_righthand.dmi'
 	force_on = 40
 	w_class = WEIGHT_CLASS_HUGE
-	attack_verb = list("sawed", "shred", "rended", "gutted", "eviscerated")
+	attack_verb = list("piłuje", "szatkuje", "rozszarpuje", "patroszy", "wypatrosza")
 	actions_types = list(/datum/action/item_action/startchainsaw)
 	block_power = 50
 	armour_penetration = 50

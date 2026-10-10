@@ -12,7 +12,7 @@
 	throw_range = 7
 	force = 10
 	materials = list(/datum/material/iron = 90)
-	attack_verb = list("slammed", "whacked", "bashed", "thunked", "battered", "bludgeoned", "thrashed")
+	attack_verb = list("grzmoci", "wali", "grzmoci", "stuka", "okłada", "tłucze", "młóci")
 	dog_fashion = /datum/dog_fashion/back
 	resistance_flags = FIRE_PROOF
 	var/max_water = 50

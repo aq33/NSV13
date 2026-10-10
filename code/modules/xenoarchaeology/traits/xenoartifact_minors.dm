@@ -82,7 +82,7 @@
 /datum/xenoartifact_trait/minor/sharp/on_init(obj/item/xenoartifact/X)
 	X.sharpness = IS_SHARP_ACCURATE
 	X.force = X.charge_req*0.12
-	X.attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	X.attack_verb = list("rozłupuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	X.attack_weight = 2
 	X.armour_penetration = 5
 

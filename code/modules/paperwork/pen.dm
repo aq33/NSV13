@@ -201,7 +201,7 @@
  * (Alan) Edaggers
  */
 /obj/item/pen/edagger
-	attack_verb = list("slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut") //these wont show up if the pen is off
+	attack_verb = list("ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie") //these wont show up if the pen is off
 	var/on = FALSE
 
 /obj/item/pen/edagger/Initialize(mapload)

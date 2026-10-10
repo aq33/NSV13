@@ -54,3 +54,34 @@
 			return "stan Zebra"
 		if(SEC_LEVEL_DELTA)
 			return "delta"
+
+/// Polska nazwa strefy ciała (wynik parse_zone() albo BODY_ZONE_*). biernik = TRUE zwraca formę "w [...]": głowę, lewą rękę.
+/proc/strefa_pl(zone, biernik = FALSE)
+	switch(zone)
+		if(BODY_ZONE_HEAD)
+			return biernik ? "głowę" : "głowa"
+		if(BODY_ZONE_CHEST)
+			return biernik ? "klatkę piersiową" : "klatka piersiowa"
+		if(BODY_ZONE_PRECISE_GROIN)
+			return "krocze"
+		if(BODY_ZONE_PRECISE_EYES)
+			return "oczy"
+		if(BODY_ZONE_PRECISE_MOUTH)
+			return "usta"
+		if("left arm", BODY_ZONE_L_ARM)
+			return biernik ? "lewą rękę" : "lewa ręka"
+		if("right arm", BODY_ZONE_R_ARM)
+			return biernik ? "prawą rękę" : "prawa ręka"
+		if("left leg", BODY_ZONE_L_LEG)
+			return biernik ? "lewą nogę" : "lewa noga"
+		if("right leg", BODY_ZONE_R_LEG)
+			return biernik ? "prawą nogę" : "prawa noga"
+		if("left hand", BODY_ZONE_PRECISE_L_HAND)
+			return biernik ? "lewą dłoń" : "lewa dłoń"
+		if("right hand", BODY_ZONE_PRECISE_R_HAND)
+			return biernik ? "prawą dłoń" : "prawa dłoń"
+		if("left foot", BODY_ZONE_PRECISE_L_FOOT)
+			return biernik ? "lewą stopę" : "lewa stopa"
+		if("right foot", BODY_ZONE_PRECISE_R_FOOT)
+			return biernik ? "prawą stopę" : "prawa stopa"
+	return zone

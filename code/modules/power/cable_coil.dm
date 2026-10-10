@@ -21,7 +21,7 @@
 	throwforce = 0
 	throw_speed = 3
 	throw_range = 5
-	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
+	attack_verb = list("chłoszcze", "smaga", "dyscyplinuje", "chłoszcze")
 
 	custom_price = 15
 

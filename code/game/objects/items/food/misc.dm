@@ -186,7 +186,7 @@
 	attack_weight = 2
 	armour_penetration = 80
 	//wound_bonus = -50
-	attack_verb = list("slapped", "slathered")
+	attack_verb = list("policzkuje", "smaruje")
 	w_class = WEIGHT_CLASS_BULKY
 	tastes = list("cherry" = 1, "crepe" = 1)
 	foodtypes = GRAIN | FRUIT | SUGAR

@@ -251,7 +251,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 1
 	throw_range = 3
-	attack_verb = list("roasted", "scorched", "burned")
+	attack_verb = list("piecze", "przypieka", "parzy")
 	grind_results = list(/datum/reagent/consumable/capsaicin = 0, /datum/reagent/consumable/condensedcapsaicin = 0)
 	discovery_points = 300
 

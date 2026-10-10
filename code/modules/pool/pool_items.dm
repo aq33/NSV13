@@ -6,7 +6,7 @@
 	damtype = STAMINA
 	w_class = WEIGHT_CLASS_BULKY
 	block_sound = 'sound/weapons/tap.ogg'
-	attack_verb = list("wacked")
+	attack_verb = list("wali")
 
 
 /obj/item/pool/Initialize(mapload)

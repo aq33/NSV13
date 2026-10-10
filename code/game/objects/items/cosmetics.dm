@@ -248,7 +248,7 @@
 	throw_speed = 3
 	throw_range = 6
 	hitsound = 'sound/weapons/genhit.ogg'
-	attack_verb = list("stubbed", "poked")
+	attack_verb = list("przytyka", "szturcha")
 	extended = 0
 	var/extended_force = 10
 	var/extended_throwforce = 7
@@ -275,7 +275,7 @@
 		w_class = WEIGHT_CLASS_SMALL //if it becomes normal you can decapitate a guy with a straight razor
 		throwforce = extended_throwforce
 		icon_state = extended_icon_state
-		attack_verb = list("slashed", "stabbed", "sliced", "slit", "shaved", "diced", "cut")
+		attack_verb = list("ciacha", "dźga", "kroi", "rozcina", "goli", "sieka", "tnie")
 		hitsound = 'sound/weapons/bladeslice.ogg'
 		sharpness = IS_SHARP
 		tool_behaviour = TOOL_SCALPEL
@@ -284,7 +284,7 @@
 		w_class = WEIGHT_CLASS_TINY
 		throwforce = initial(throwforce)
 		icon_state = initial(icon_state)
-		attack_verb = list("stubbed", "poked")
+		attack_verb = list("przytyka", "szturcha")
 		hitsound = 'sound/weapons/genhit.ogg'
 		sharpness = IS_BLUNT
 		tool_behaviour = null

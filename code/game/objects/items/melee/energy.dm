@@ -80,7 +80,7 @@
 	w_class_on = WEIGHT_CLASS_HUGE
 	flags_1 = CONDUCT_1
 	armour_penetration = 100
-	attack_verb_off = list("attacked", "chopped", "cleaved", "tore", "cut")
+	attack_verb_off = list("atakuje", "rąbie", "rozłupuje", "rozdziera", "tnie")
 	attack_verb_on = list()
 	light_color = "#40ceff"
 
@@ -98,7 +98,7 @@
 	throwforce = 5
 	throwforce_on = 35	//Does a lot of damage on throw, but will embed
 	hitsound = "swing_hit" //it starts deactivated
-	attack_verb_off = list("tapped", "poked")
+	attack_verb_off = list("stuka", "szturcha")
 	throw_speed = 3
 	throw_range = 5
 	sharpness = IS_SHARP

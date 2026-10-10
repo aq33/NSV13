@@ -9,7 +9,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 3
 	throw_range = 7
-	attack_verb = list("banned")
+	attack_verb = list("banuje")
 	max_integrity = 200
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 70, "stamina" = 0)
 	resistance_flags = FIRE_PROOF
@@ -44,7 +44,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	block_upgrade_walk = 1
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 
 /obj/item/sord/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is trying to impale [user.p_them()]self with [src]! It might be a suicide attempt if it weren't so shitty.</span>", \
@@ -73,7 +73,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throwforce = 10
 	w_class = WEIGHT_CLASS_NORMAL
 	attack_weight = 1
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	block_power = 40
 	block_upgrade_walk = 1
 	block_level = 1
@@ -97,7 +97,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	item_flags = DROPDEL
 	slot_flags = null
 	light_range = 3
-	attack_verb = list("brutalized", "eviscerated", "disemboweled", "hacked", "carved", "cleaved") //ONLY THE MOST VISCERAL ATTACK VERBS
+	attack_verb = list("brutalnie traktuje", "wypatrosza", "wypatrosza", "siecze", "rzeźbi w", "rozłupuje") //ONLY THE MOST VISCERAL ATTACK VERBS
 	var/notches = 0 //HOW MANY PEOPLE HAVE BEEN SLAIN WITH THIS BLADE
 	var/obj/item/disk/nuclear/nuke_disk //OUR STORED NUKE DISK
 
@@ -230,7 +230,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	armour_penetration = 15
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	block_level = 0
 	block_power = 30
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50, "stamina" = 0)
@@ -249,7 +249,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throwforce = 10
 	w_class = WEIGHT_CLASS_HUGE
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	block_power = 20
 	block_level = 1
 	block_upgrade_walk = 1
@@ -276,7 +276,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throwforce = 10
 	w_class = WEIGHT_CLASS_NORMAL
 	materials = list(/datum/material/iron=1150, /datum/material/glass=75)
-	attack_verb = list("hit", "bludgeoned", "whacked", "bonked")
+	attack_verb = list("uderza", "tłucze", "wali", "bonkuje")
 
 /obj/item/wirerod/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/shard))
@@ -348,7 +348,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	w_class = WEIGHT_CLASS_BULKY
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	throw_range = 0 //throwing these invalidates the speargun
-	attack_verb = list("stabbed", "ripped", "gored", "impaled")
+	attack_verb = list("dźga", "rozrywa", "bodzie", "nadziewa")
 	embedding = list("pain_mult" = 8, "embed_chance" = 1000, "fall_chance" = 0, "armour_block" = 100)
 
 /obj/item/switchblade
@@ -365,7 +365,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throw_range = 6
 	materials = list(/datum/material/iron=12000)
 	hitsound = 'sound/weapons/genhit.ogg'
-	attack_verb = list("stubbed", "poked")
+	attack_verb = list("przytyka", "szturcha")
 	resistance_flags = FIRE_PROOF
 	var/extended = 0
 	var/extended_force = 20
@@ -380,7 +380,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		w_class = WEIGHT_CLASS_NORMAL
 		throwforce = extended_throwforce
 		icon_state = extended_icon_state
-		attack_verb = list("slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+		attack_verb = list("ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 		hitsound = 'sound/weapons/bladeslice.ogg'
 		sharpness = IS_SHARP
 	else
@@ -388,7 +388,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		w_class = WEIGHT_CLASS_SMALL
 		throwforce = initial(throwforce)
 		icon_state = initial(icon_state)
-		attack_verb = list("stubbed", "poked")
+		attack_verb = list("przytyka", "szturcha")
 		hitsound = 'sound/weapons/genhit.ogg'
 		sharpness = IS_BLUNT
 
@@ -426,7 +426,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throw_speed = 3
 	throw_range = 4
 	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("called", "rang")
+	attack_verb = list("woła", "dzwoni na")
 	hitsound = 'sound/weapons/ring.ogg'
 
 /obj/item/phone/suicide_act(mob/user)
@@ -449,7 +449,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throwforce = 5
 	w_class = WEIGHT_CLASS_SMALL
 	materials = list(/datum/material/iron=50)
-	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
+	attack_verb = list("tłucze", "wali", "dyscyplinuje", "młóci")
 
 /obj/item/staff
 	name = "wizard staff"
@@ -465,7 +465,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
 	armour_penetration = 100
-	attack_verb = list("bludgeoned", "whacked", "disciplined")
+	attack_verb = list("tłucze", "wali", "dyscyplinuje")
 	resistance_flags = FLAMMABLE
 
 /obj/item/staff/broom
@@ -522,7 +522,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throw_range = 0
 	throw_speed = 0
 	sharpness = IS_SHARP
-	attack_verb = list("sawed", "tore", "cut", "chopped", "diced")
+	attack_verb = list("piłuje", "rozdziera", "tnie", "rąbie", "sieka")
 	hitsound = 'sound/weapons/chainsawhit.ogg'
 	tool_behaviour = TOOL_SAW
 	toolspeed = 1
@@ -598,7 +598,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throwforce = 10
 	throw_speed = 5
 	throw_range = 2
-	attack_verb = list("busted")
+	attack_verb = list("rozwala")
 
 /obj/item/statuebust/hippocratic
 	name = "hippocrates bust"
@@ -625,7 +625,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	force = 12
 	throwforce = 4
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("smacked", "whacked", "slammed", "smashed")
+	attack_verb = list("trzepie", "wali", "grzmoci", "rozbija")
 	///The vehicle counterpart for the board
 	var/board_item_type = /obj/vehicle/ridden/scooter/skateboard
 
@@ -669,7 +669,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	attack_weight = 2
 	force = 13
 	throwforce = 6
-	attack_verb = list("beat", "smacked")
+	attack_verb = list("bije", "trzepie")
 	w_class = WEIGHT_CLASS_HUGE
 	var/homerun_ready = 0
 	var/homerun_able = 0
@@ -740,7 +740,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 	force = 1
 	throwforce = 1
-	attack_verb = list("swatted", "smacked")
+	attack_verb = list("pacnięciem trąca", "trzepie")
 	hitsound = 'sound/effects/snap.ogg'
 	w_class = WEIGHT_CLASS_SMALL
 	//Things in this list will be instantly splatted.  Flyman weakness is handled in the flyman species weakness proc.
@@ -775,7 +775,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	force = 0
 	throwforce = 0
 	item_flags = DROPDEL | ABSTRACT
-	attack_verb = list("bopped")
+	attack_verb = list("pstryka")
 
 /obj/item/slapper
 	name = "slapper"
@@ -785,7 +785,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	force = 0
 	throwforce = 0
 	item_flags = DROPDEL | ABSTRACT
-	attack_verb = list("slapped")
+	attack_verb = list("policzkuje")
 	hitsound = 'sound/effects/snap.ogg'
 	/// How many smaller table smacks we can do before we're out
 	var/table_smacks_left = 3
@@ -898,7 +898,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	force = 0
 	throwforce = 0
 	item_flags = DROPDEL | ABSTRACT
-	attack_verb = list("is left hanging by")
+	attack_verb = list("zostawia bez przybicia piątki")
 
 /obj/item/highfive/attack(mob/target, mob/user)
 	if(target == user)
@@ -924,7 +924,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
 	force = 10
 	throwforce = 5
-	attack_verb = list("clubbed", "bludgeoned")
+	attack_verb = list("pałuje", "tłucze")
 	var/breakforce = 30
 	var/stamforce = 15
 
@@ -964,7 +964,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	block_upgrade_walk = 1
 	block_flags = BLOCKING_ACTIVE | BLOCKING_NASTY
 	sharpness = IS_SHARP
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 
 //HF blade
@@ -983,7 +983,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throwforce = 20
 	throw_speed = 4
 	sharpness = IS_SHARP
-	attack_verb = list("cut", "sliced", "diced")
+	attack_verb = list("tnie", "kroi", "sieka")
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
 	hitsound = 'sound/weapons/bladeslice.ogg'

@@ -262,7 +262,7 @@
 	throw_speed = 2
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("warned", "cautioned", "smashed")
+	attack_verb = list("ostrzega", "upomina", "rozbija")
 	resistance_flags = NONE
 	dynamic_hair_suffix = ""
 
@@ -433,7 +433,7 @@
 	name = "rainbow flower crown"
 	desc = "A flower crown made out of the flowers of the rainbow bunch plant."
 	dynamic_hair_suffix = ""
-	attack_verb = list("crowned")
+	attack_verb = list("koronuje")
 
 /obj/item/clothing/head/rainbowbunchcrown/Initialize(mapload)
 	. = ..()
@@ -457,21 +457,21 @@
 	desc = "A bright flower crown made out sunflowers that is sure to brighten up anyone's day!"
 	icon_state = "sunflower_crown"
 	dynamic_hair_suffix = ""
-	attack_verb = list("crowned")
+	attack_verb = list("koronuje")
 
 /obj/item/clothing/head/poppycrown
 	name = "poppy crown"
 	desc = "A flower crown made out of a string of bright red poppies."
 	icon_state = "poppy_crown"
 	dynamic_hair_suffix = ""
-	attack_verb = list("crowned")
+	attack_verb = list("koronuje")
 
 /obj/item/clothing/head/lilycrown
 	name = "lily crown"
 	desc = "A leafy flower crown with a cluster of large white lilies at at the front."
 	icon_state = "lily_crown"
 	dynamic_hair_suffix = ""
-	attack_verb = list("crowned")
+	attack_verb = list("koronuje")
 
 /////////////////
 //DONATOR ITEMS//

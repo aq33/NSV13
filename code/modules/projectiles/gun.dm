@@ -17,7 +17,7 @@
 	throw_range = 5
 	force = 5
 	item_flags = NEEDS_PERMIT
-	attack_verb = list("struck", "hit", "bashed")
+	attack_verb = list("uderza", "uderza", "grzmoci")
 
 	var/fire_sound = "gunshot"
 	var/vary_fire_sound = TRUE

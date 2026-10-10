@@ -23,7 +23,7 @@
 	force = 4
 	throwforce = 8
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("stung", "pined")
+	attack_verb = list("żądli", "tęskni za")
 	throw_speed = 1
 	throw_range = 5
 	w_class = WEIGHT_CLASS_NORMAL

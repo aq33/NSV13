@@ -470,7 +470,7 @@
 	throwforce = 5
 	throw_speed = 5
 	throw_range = 20
-	attack_verb = list("hit", "whacked", "sliced")
+	attack_verb = list("uderza", "wali", "kroi")
 	max_amount = 20
 	merge_type = /obj/item/stack/barbed_wire
 

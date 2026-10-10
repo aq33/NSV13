@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 	materials = list(/datum/material/iron=1000)
 	max_amount = 50
 	merge_type = /obj/item/stack/rods
-	attack_verb = list("hit", "bludgeoned", "whacked")
+	attack_verb = list("uderza", "tłucze", "wali")
 	hitsound = 'sound/weapons/grenadelaunch.ogg'
 	embedding = list()
 	novariants = TRUE

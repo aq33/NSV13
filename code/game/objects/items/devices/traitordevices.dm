@@ -194,7 +194,7 @@ effective or pretty fucking useless.
 	item_state = "utility"
 	worn_icon_state = "utility"
 	slot_flags = ITEM_SLOT_BELT
-	attack_verb = list("whipped", "lashed", "disciplined")
+	attack_verb = list("chłoszcze", "smaga", "dyscyplinuje")
 
 	var/mob/living/carbon/human/user = null
 	var/charge = 300

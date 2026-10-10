@@ -17,7 +17,7 @@
 	max_amount = 10
 	merge_type = /obj/item/stack/staples
 	novariants = TRUE
-	attack_verb = list("stapled")
+	attack_verb = list("zszywa")
 	embedding = list("embed_chance" = 100, "fall_chance" = 1, "ignore_throwspeed_threshold" = TRUE)
 
 /obj/item/stack/staples/update_icon_state()
@@ -47,7 +47,7 @@ GLOBAL_VAR_INIT(staple_recipe_added, FALSE)
 	throw_range = 5
 	throwforce = 5
 	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("stapled")
+	attack_verb = list("zszywa")
 	var/ammo = 5
 	var/max_ammo = 10
 	var/obj/item/paper/P

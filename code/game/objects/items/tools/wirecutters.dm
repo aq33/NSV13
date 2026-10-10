@@ -13,7 +13,7 @@
 	throw_range = 7
 	w_class = WEIGHT_CLASS_SMALL
 	materials = list(/datum/material/iron=80)
-	attack_verb = list("pinched", "nipped")
+	attack_verb = list("szczypie", "podgryza")
 	hitsound = 'sound/items/wirecutter.ogg'
 	usesound = 'sound/items/wirecutter.ogg'
 	drop_sound = 'sound/items/handling/wirecutter_drop.ogg'

@@ -146,21 +146,21 @@
 			return CLAMP(w_class * 6, 10, 100) // Multiply the item's weight class by 6, then clamp the value between 10 and 100
 
 /mob/living/proc/send_item_attack_message(obj/item/I, mob/living/user, hit_area)
-	var/message_verb = "attacked"
+	var/message_verb = "atakuje"
 	if(I.attack_verb && I.attack_verb.len)
 		message_verb = "[pick(I.attack_verb)]"
 	else if(!I.force)
 		return
 	var/message_hit_area = ""
 	if(hit_area)
-		message_hit_area = " in the [hit_area]"
-	var/attack_message = "[src] is [message_verb][message_hit_area] with [I]!"
-	var/attack_message_local = "You're [message_verb][message_hit_area] with [I]!"
+		message_hit_area = " w [strefa_pl(hit_area, TRUE)]"
+	var/attack_message = "[I] [message_verb] [src][message_hit_area]!"
+	var/attack_message_local = "[I] [message_verb] cię[message_hit_area]!"
 	if(user in viewers(src))
-		attack_message = "[user] [message_verb] [src][message_hit_area] with [I]!"
-		attack_message_local = "[user] [message_verb] you[message_hit_area] with [I]!"
+		attack_message = "[user] [message_verb] [src][message_hit_area], używając [I]!"
+		attack_message_local = "[user] [message_verb] cię[message_hit_area], używając [I]!"
 	if(user == src)
-		attack_message_local = "You [message_verb] yourself[message_hit_area] with [I]!"
+		attack_message_local = "Ranisz się[message_hit_area], używając [I]!"
 	visible_message("<span class='danger'>[attack_message]</span>",\
 		"<span class='userdanger'>[attack_message_local]</span>", null, COMBAT_MESSAGE_RANGE)
 	return 1

@@ -130,7 +130,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	item_state = "beer"
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("stabbed", "slashed", "attacked")
+	attack_verb = list("dźga", "ciacha", "atakuje")
 	sharpness = IS_SHARP
 	var/static/icon/broken_outline = icon('icons/obj/drinks.dmi', "broken")
 

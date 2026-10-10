@@ -18,7 +18,7 @@
 	armour_penetration = 35
 	var/saber_color = "green"
 	light_color = "#00ff00"//green
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	block_level = 2
 	block_upgrade_walk = 1
 	block_power = 70

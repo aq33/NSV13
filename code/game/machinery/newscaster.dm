@@ -873,7 +873,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 	lefthand_file = 'icons/mob/inhands/misc/books_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/misc/books_righthand.dmi'
 	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("bapped")
+	attack_verb = list("pacnięciem trąca")
 	resistance_flags = FLAMMABLE
 	var/screen = 0
 	var/pages = 0

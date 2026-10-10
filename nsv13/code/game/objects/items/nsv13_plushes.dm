@@ -14,7 +14,7 @@
 	desc = "An adorable stuffed toy shaped like a Su-410 Scimitar heavy fighter."
 	icon = 'nsv13/icons/obj/custom_plushes.dmi'
 	icon_state = "heavyfighter"
-	attack_verb = list("bombed", "bumped", "rammed", "torpedoed")
+	attack_verb = list("bombarduje", "trąca", "taranuje", "torpeduje")
 	squeak_override = list('nsv13/sound/effects/fighters/BRRTTTTTT.ogg'=1)
 
 /obj/item/toy/plush/lfighter
@@ -22,7 +22,7 @@
 	desc = "An adorable stuffed toy shaped like a Su-818 Rapier light fighter."
 	icon = 'nsv13/icons/obj/custom_plushes.dmi'
 	icon_state = "lightfighter"
-	attack_verb = list("bumped", "rammed", "missiled")
+	attack_verb = list("trąca", "taranuje", "ostrzeliwuje rakietą")
 	squeak_override = list('nsv13/sound/effects/fighters/autocannon.ogg'=1)
 
 /obj/item/toy/plush/lfighter/synlfighter
@@ -35,7 +35,7 @@
 	desc = "An adorable stuffed toy shaped like a Su-437 Sabre utility vessel."
 	icon = 'nsv13/icons/obj/custom_plushes.dmi'
 	icon_state = "transport"
-	attack_verb = list("bumped", "rammed")
+	attack_verb = list("trąca", "taranuje")
 	squeak_override = list('nsv13/sound/effects/fighters/warmup.ogg'=1)
 
 /obj/item/toy/plush/transport/mining

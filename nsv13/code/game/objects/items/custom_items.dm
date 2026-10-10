@@ -12,7 +12,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	force = 10
 	on_stun_sound = 'nsv13/sound/effects/saberhit.ogg'
-	attack_verb = list("immolated", "slashed")
+	attack_verb = list("podpala", "ciacha")
 	hitsound = 'sound/weapons/rapierhit.ogg'
 	materials = list(/datum/material/iron = 1000)
 	var/stuntime_on = (4 SECONDS)
@@ -49,7 +49,7 @@
 		item_state = on_item_state
 		force = force_on
 		stuntime = stuntime_on
-		attack_verb = list("sliced", "cut", "striken", "immobilized")
+		attack_verb = list("kroi", "tnie", "uderza", "unieruchamia")
 		hitsound = 'nsv13/sound/effects/saberhit.ogg'
 		set_light(3)
 		on = FALSE
@@ -65,7 +65,7 @@
 		slot_flags = ITEM_SLOT_BELT
 		stuntime = stuntime_off
 		force = force_off
-		attack_verb = list("immolated", "slashed")
+		attack_verb = list("podpala", "ciacha")
 		hitsound = 'sound/weapons/rapierhit.ogg'
 		set_light(0)
 		on = TRUE
@@ -82,8 +82,8 @@
 		playsound(user.loc, hitsound, 100, 1)
 		target.lastattacker = user.real_name
 		target.lastattackerckey = user.ckey
-		target.visible_message("<span class='danger'>[user] has [pick(attack_verb)] [target] with [src]!</span>", \
-								"<span class='userdanger'>[user] has [pick(attack_verb)] you with [src]!</span>")
+		target.visible_message("<span class='danger'>[user] [pick(attack_verb)] [target], używając [src]!</span>", \
+								"<span class='userdanger'>[user] [pick(attack_verb)] cię, używając [src]!</span>")
 		log_combat(user, target, "stunned")
 		return
 	else

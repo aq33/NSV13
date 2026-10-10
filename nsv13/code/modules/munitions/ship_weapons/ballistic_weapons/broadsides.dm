@@ -398,7 +398,7 @@
 	throw_speed = 3
 	throw_range = 7
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("swabbed", "scrubbed", "plunged", "maintained")
+	attack_verb = list("przeciera", "szoruje", "przepycha", "konserwuje")
 	resistance_flags = FLAMMABLE
 
 /obj/machinery/ship_weapon/broadside/attackby(obj/item/I, user) //why can they queue up a thousand cleaning bars at once?

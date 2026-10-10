@@ -77,7 +77,7 @@
 	desc = "A 'Mura' brand banjo. It's pretty much just a drum with a neck and strings."
 	icon_state = "banjo"
 	item_state = "banjo"
-	attack_verb = list("scruggs-styled", "hum-diggitied", "shin-digged", "clawhammered")
+	attack_verb = list("gra bluegrassa", "hum-diggituje", "kopie w goleń", "wali młotkiem")
 	hitsound = 'sound/weapons/banjoslap.ogg'
 	allowed_instrument_ids = "banjo"
 
@@ -86,7 +86,7 @@
 	desc = "It's made of wood and has bronze strings."
 	icon_state = "guitar"
 	item_state = "guitar"
-	attack_verb = list("played metal on", "serenaded", "crashed", "smashed")
+	attack_verb = list("gra metal na", "śpiewa serenadę", "wbija się w", "rozbija")
 	hitsound = 'sound/weapons/stringsmash.ogg'
 	allowed_instrument_ids = list("guitar","csteelgt","cnylongt", "ccleangt", "cmutedgt")
 
@@ -96,7 +96,7 @@
 	icon_state = "eguitar"
 	item_state = "eguitar"
 	force = 12
-	attack_verb = list("played metal on", "shredded", "crashed", "smashed")
+	attack_verb = list("gra metal na", "szatkuje", "wbija się w", "rozbija")
 	hitsound = 'sound/weapons/stringsmash.ogg'
 	allowed_instrument_ids = "eguitar"
 
@@ -127,7 +127,7 @@
 	icon_state = "trumpet"
 	item_state = "trombone"
 	force = 0
-	attack_verb = list("played","jazzed","trumpeted","mourned","dooted","spooked")
+	attack_verb = list("gra na","jazzuje","trąbi na","opłakuje","dudni na","straszy")
 
 /obj/item/instrument/trumpet/spectral/Initialize(mapload)
 	. = ..()
@@ -151,7 +151,7 @@
 	item_state = "saxophone"
 	allowed_instrument_ids = "saxophone"
 	force = 0
-	attack_verb = list("played","jazzed","saxxed","mourned","dooted","spooked")
+	attack_verb = list("gra na","jazzuje","saksofonuje","opłakuje","dudni na","straszy")
 
 /obj/item/instrument/saxophone/spectral/Initialize(mapload)
 	. = ..()
@@ -174,7 +174,7 @@
 	icon_state = "trombone"
 	item_state = "trombone"
 	force = 0
-	attack_verb = list("played","jazzed","tromboned","mourned","dooted","spooked")
+	attack_verb = list("gra na","jazzuje","puzonuje","opłakuje","dudni na","straszy")
 
 /obj/item/instrument/trombone/spectral/Initialize(mapload)
 	. = ..()
@@ -225,7 +225,7 @@
 	item_state = "bike_horn"
 	lefthand_file = 'icons/mob/inhands/equipment/horns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/horns_righthand.dmi'
-	attack_verb = list("beautifully honks")
+	attack_verb = list("pięknie trąbi na")
 	allowed_instrument_ids = list("bikehorn", "honk")
 	w_class = WEIGHT_CLASS_TINY
 	force = 0
@@ -267,7 +267,7 @@
 	desc = "Despite its popularity, this controversial musical toy was eventually banned due to its unethically sampled sounds of moths screaming in agony."
 	icon_state = "mothsician"
 	allowed_instrument_ids = "mothscream"
-	attack_verb = list("flutter", "flap")
+	attack_verb = list("trzepocze na", "klapie")
 	w_class = WEIGHT_CLASS_TINY
 	force = 0
 	hitsound = 'sound/voice/moth/scream_moth.ogg'

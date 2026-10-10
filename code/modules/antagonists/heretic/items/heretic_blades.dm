@@ -14,7 +14,7 @@
 	force = 24
 	throwforce = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "rends")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozszarpuje", "rozrywa", "sieka", "rozszarpuje")
 	var/after_use_message = ""
 
 /obj/item/melee/sickly_blade/attack(mob/living/M, mob/living/user)

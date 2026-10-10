@@ -14,7 +14,7 @@
 	materials = list(/datum/material/iron=150)
 	drop_sound = 'sound/items/handling/wrench_drop.ogg'
 	pickup_sound =  'sound/items/handling/wrench_pickup.ogg'
-	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
+	attack_verb = list("grzmoci", "okłada", "tłucze", "wali")
 	tool_behaviour = TOOL_WRENCH
 	toolspeed = 1
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 30, "stamina" = 0)
@@ -45,7 +45,7 @@
 	icon_state = "wrench_medical"
 	force = 2 //MEDICAL
 	throwforce = 4
-	attack_verb = list("healed", "medicaled", "tapped", "poked", "analyzed") //"cobbyed"
+	attack_verb = list("leczy", "leczy", "stuka", "szturcha", "analizuje") //"cobbyed"
 	///var to hold the name of the person who suicided
 	var/suicider
 

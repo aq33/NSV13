@@ -25,7 +25,7 @@
 	throw_range = 5
 	materials = list(/datum/material/iron=80)
 	flags_1 = CONDUCT_1
-	attack_verb = list("attacked", "stabbed", "poked")
+	attack_verb = list("atakuje", "dźga", "szturcha")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 30, "stamina" = 0)
 	var/datum/reagent/forkload //NSV13 - used to eat any food (who coded this to just work for omlettes?)
@@ -76,7 +76,7 @@
 	throw_range = 5
 	materials = list(/datum/material/iron=80)
 	flags_1 = CONDUCT_1
-	attack_verb = list("attacked", "scooped",)
+	attack_verb = list("atakuje", "zgarnia",)
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 30, "stamina" = 0)
 	var/datum/reagent/forkload //used to eat omelette
@@ -143,7 +143,7 @@
 	throw_speed = 3
 	throw_range = 6
 	materials = list(/datum/material/iron=12000)
-	attack_verb = list("slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	sharpness = IS_SHARP_ACCURATE
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "stamina" = 0)
 	var/bayonet = FALSE	//Can this be attached to a gun?
@@ -187,7 +187,7 @@
 	force = 15
 	throwforce = 10
 	materials = list(/datum/material/iron=18000)
-	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("rozłupuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	w_class = WEIGHT_CLASS_NORMAL
 	custom_price = 60
 
@@ -235,7 +235,7 @@
 	embedding = list("pain_mult" = 4, "embed_chance" = 65, "fall_chance" = 10, "ignore_throwspeed_threshold" = TRUE, "armour_block" = 60)
 	force = 20
 	throwforce = 20
-	attack_verb = list("slashed", "stabbed", "sliced", "tore", "ripped", "cut")
+	attack_verb = list("ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "tnie")
 	bayonet = TRUE
 
 /obj/item/kitchen/knife/combat/survival
@@ -275,7 +275,7 @@
 	force = 8
 	throwforce = 12//fuck git
 	materials = list()
-	attack_verb = list("shanked", "shivved")
+	attack_verb = list("kosi nożem", "dźga kosą")
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0)
 
 // Shank - Makeshift weapon that can embed on throw
@@ -292,7 +292,7 @@
 	throw_speed = 5 //yeets
 	armour_penetration = 10 //spear has 10 armour pen, I think its fitting another glass tipped item should have it too
 	embedding = list("embedded_pain_multiplier" = 6, "embed_chance" = 40, "embedded_fall_chance" = 5, "armour_block" = 30) // Incentive to disengage/stop chasing when stuck
-	attack_verb = list("stuck", "shanked")
+	attack_verb = list("wbija się w", "kosi nożem")
 
 /obj/item/kitchen/knife/shank/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is slitting [user.p_their()] [pick("wrists", "throat")] with the shank! It looks like [user.p_theyre()] trying to commit suicide.</span>")
@@ -307,7 +307,7 @@
 	throw_speed = 3
 	throw_range = 7
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
+	attack_verb = list("grzmoci", "okłada", "tłucze", "młóci", "wali")
 	custom_price = 20
 	tool_behaviour = TOOL_ROLLINGPIN
 

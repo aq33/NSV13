@@ -195,7 +195,7 @@
 	slot_flags = ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_NORMAL
 	materials = list(/datum/material/iron=10, /datum/material/glass=10)
-	attack_verb = list("struck", "pistol whipped", "hit", "bashed")
+	attack_verb = list("uderza", "uderza kolbą", "uderza", "grzmoci")
 	var/bullets = 7
 
 /obj/item/toy/gun/examine(mob/user)
@@ -271,7 +271,7 @@
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	var/active = 0
 	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("attacked", "struck", "hit")
+	attack_verb = list("atakuje", "uderza", "uderza")
 	var/hacked = FALSE
 	var/saber_color
 
@@ -334,7 +334,7 @@
 	item_state = "arm_blade"
 	lefthand_file = 'icons/mob/inhands/antag/changeling_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/antag/changeling_righthand.dmi'
-	attack_verb = list("pricked", "absorbed", "gored")
+	attack_verb = list("kłuje", "pochłania", "bodzie")
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = FLAMMABLE
 
@@ -349,7 +349,7 @@
 	item_state = "baton"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
-	attack_verb = list("batonged", "stunned", "hit")
+	attack_verb = list("pałuje", "ogłusza", "uderza")
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/toy/windupToolbox
@@ -364,7 +364,7 @@
 	hitsound = 'sound/weapons/smash.ogg'
 	drop_sound = 'sound/items/handling/toolbox_drop.ogg'
 	pickup_sound = 'sound/items/handling/toolbox_pickup.ogg'
-	attack_verb = list("robusted")
+	attack_verb = list("robustuje")
 
 /obj/item/toy/windupToolbox/attack_self(mob/user)
 	if(!active)
@@ -410,7 +410,7 @@
 	throw_speed = 3
 	throw_range = 5
 	twohand_force = 0
-	attack_verb = list("attacked", "struck", "hit")
+	attack_verb = list("atakuje", "uderza", "uderza")
 	block_upgrade_walk = 0
 	block_level = 0
 
@@ -438,7 +438,7 @@
 	force = 5
 	throwforce = 5
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	block_flags = BLOCKING_ACTIVE | BLOCKING_PROJECTILE //if it some how gets block level, katanas block projectiles for the meme
 
@@ -706,7 +706,7 @@
 	var/card_throwforce = 0
 	var/card_throw_speed = 3
 	var/card_throw_range = 7
-	var/list/card_attack_verb = list("attacked")
+	var/list/card_attack_verb = list("atakuje")
 	var/card_sharpness
 
 /obj/item/toy/cards/suicide_act(mob/living/carbon/user)
@@ -1528,7 +1528,7 @@
 	icon = 'icons/obj/heretic.dmi'
 	icon_state = "book"
 	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("sacrificed", "transmuted", "grasped", "cursed")
+	attack_verb = list("składa w ofierze", "transmutuje", "chwyta", "przeklina")
 	var/open = FALSE
 
 /obj/item/toy/eldrich_book/attack_self(mob/user)

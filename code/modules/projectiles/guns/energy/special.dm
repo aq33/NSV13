@@ -133,7 +133,7 @@
 	item_state = "plasmacutter"
 	ammo_type = list(/obj/item/ammo_casing/energy/plasma)
 	flags_1 = CONDUCT_1
-	attack_verb = list("attacked", "slashed", "cut", "sliced")
+	attack_verb = list("atakuje", "ciacha", "tnie", "kroi")
 	force = 12
 	sharpness = IS_SHARP
 	can_charge = FALSE
