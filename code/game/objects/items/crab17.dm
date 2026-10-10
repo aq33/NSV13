@@ -9,12 +9,12 @@
 
 /obj/item/suspiciousphone/attack_self(mob/user)
 	if(!ishuman(user))
-		to_chat(user, "<span class='warning'>This device is too advanced for you!</span>")
+		to_chat(user, "<span class='warning'>To urządzenie jest dla ciebie zbyt zaawansowane!</span>")
 		return
 	if(dumped)
-		to_chat(user, "<span class='warning'>You already activated Protocol CRAB-17.</span>")
+		to_chat(user, "<span class='warning'>Protokół CRAB-17 jest już aktywny.</span>")
 		return FALSE
-	if(alert(user, "Are you sure you want to crash this market with no survivors?", "Protocol CRAB-17", "Yes", "No") == "Yes")
+	if(alert(user, "Na pewno chcesz zrujnować ten rynek bez ocalałych?", "Protokół CRAB-17", "Yes", "No") == "Yes")
 		if(dumped || QDELETED(src)) //Prevents fuckers from cheesing alert
 			return FALSE
 		var/turf/targetturf = get_safe_random_station_turfs()
@@ -40,7 +40,7 @@
 
 /obj/structure/checkoutmachine/examine(mob/living/user)
 	. = ..()
-	. += "<span class='info'>It's integrated integrity meter reads: <b>HEALTH: [obj_integrity]</b>.</span>"
+	. += "<span class='info'>Wbudowany miernik integralności pokazuje: <b>STAN: [obj_integrity]</b>.</span>"
 
 /obj/structure/checkoutmachine/proc/check_if_finished()
 	for(var/i in accounts_to_rob)
@@ -56,15 +56,15 @@
 	if(istype(W, /obj/item/card/id))
 		var/obj/item/card/id/card = W
 		if(!card.registered_account)
-			to_chat(user, "<span class='warning'>This card does not have a registered account!</span>")
+			to_chat(user, "<span class='warning'>Ta karta nie ma zarejestrowanego konta!</span>")
 			return
 		if(!card.registered_account.being_dumped)
-			to_chat(user, "<span class='warning'>It appears that your funds are safe from draining!</span>")
+			to_chat(user, "<span class='warning'>Wygląda na to, że twoje środki są bezpieczne!</span>")
 			return
 		if(do_after(user, 40, target = src))
 			if(!card.registered_account.being_dumped)
 				return
-			to_chat(user, "<span class='warning'>You quickly cash out your funds to a more secure banking location. Funds are safu.</span>") // This is a reference and not a typo
+			to_chat(user, "<span class='warning'>Szybko przelewasz swoje środki do bezpieczniejszego banku. Środki są bezpieczne.</span>") // This is a reference and not a typo
 			card.registered_account.being_dumped = FALSE
 			card.registered_account.withdrawDelay = 0
 			if(check_if_finished())
@@ -149,7 +149,7 @@
 /obj/structure/checkoutmachine/Destroy()
 	stop_dumping()
 	STOP_PROCESSING(SSfastprocess, src)
-	priority_announce("The credit deposit machine at [get_area(src)] has been destroyed. Station funds have stopped draining!", sound = SSstation.announcer.get_rand_alert_sound(), sender_override = "CRAB-17 Protocol", )
+	priority_announce("Wpłatomat kredytów w [get_area(src)] został zniszczony. Środki stacji przestały wyciekać!", sound = SSstation.announcer.get_rand_alert_sound(), sender_override = "CRAB-17 Protocol", )
 	explosion(src, 0,0,1, flame_range = 2)
 	return ..()
 
@@ -171,7 +171,7 @@
 		var/datum/bank_account/account = bogdanoff.get_bank_account()
 		if (account) // get_bank_account() may return FALSE
 			account.transfer_money(B, amount)
-			B.bank_card_talk("You have lost [percentage_lost * 100]% of your funds! A spacecoin credit deposit machine is located at: [get_area(src)].")
+			B.bank_card_talk("Tracisz [percentage_lost * 100]% swoich środków! Wpłatomat spacecoinów znajduje się w: [get_area(src)].")
 	addtimer(CALLBACK(src, PROC_REF(dump)), 150) //Drain every 15 seconds
 
 /obj/structure/checkoutmachine/process()
@@ -211,12 +211,12 @@
 	bogdanoff = user
 	addtimer(CALLBACK(src, PROC_REF(startLaunch)), 100)
 	sound_to_playing_players('sound/items/dump_it.ogg', 20)
-	deadchat_broadcast("<span class='deadsay'>Protocol CRAB-17 has been activated. A space-coin market has been launched at the station!</span>", turf_target = get_turf(src))
+	deadchat_broadcast("<span class='deadsay'>Aktywowano Protokół CRAB-17. Na stacji uruchomiono rynek spacecoinów!</span>", turf_target = get_turf(src))
 
 /obj/effect/dumpeetTarget/proc/startLaunch()
 	DF = new /obj/effect/dumpeetFall(drop_location())
 	dump = new /obj/structure/checkoutmachine(null, bogdanoff)
-	priority_announce("The spacecoin bubble has popped! Get to the credit deposit machine at [get_area(src)] and cash out before you lose all of your funds!", sound = SSstation.announcer.get_rand_alert_sound(), sender_override = "CRAB-17 Protocol")
+	priority_announce("Bańka spacecoinów pękła! Dotrzyj do wpłatomatu w [get_area(src)] i wypłać środki, zanim stracisz wszystko!", sound = SSstation.announcer.get_rand_alert_sound(), sender_override = "CRAB-17 Protocol")
 	animate(DF, pixel_z = -8, time = 5, , easing = LINEAR_EASING)
 	playsound(src,  'sound/weapons/mortar_whistle.ogg', 70, 1, 6)
 	addtimer(CALLBACK(src, PROC_REF(endLaunch)), 5, TIMER_CLIENT_TIME) //Go onto the last step after a very short falling animation

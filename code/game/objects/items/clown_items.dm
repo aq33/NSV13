@@ -24,7 +24,7 @@
 	throw_range = 7
 	grind_results = list(/datum/reagent/lye = 10)
 	var/cleanspeed = 35 //slower than mop
-	force_string = "robust... against germs"
+	force_string = "robust... przeciw zarazkom"
 	var/uses = 100
 
 /obj/item/soap/ComponentInitialize()
@@ -34,20 +34,20 @@
 /obj/item/soap/examine(mob/user)
 	. = ..()
 	var/max_uses = initial(uses)
-	var/msg = "It looks like it just came out of the package."
+	var/msg = "Wygląda, jakby dopiero co wyjęto je z opakowania."
 	if(uses != max_uses)
 		var/percentage_left = uses / max_uses
 		switch(percentage_left)
 			if(0 to 0.15)
-				msg = "There's just a tiny bit left of what it used to be, you're not sure it'll last much longer."
+				msg = "Został tylko maleńki kawałek, nie wiadomo, czy jeszcze długo wytrzyma."
 			if(0.15 to 0.30)
-				msg = "It's dissolved quite a bit, but there's still some life to it."
+				msg = "Sporo się rozpuściło, ale wciąż ma w sobie trochę życia."
 			if(0.30 to 0.50)
-				msg = "It's past its prime, but it's definitely still good."
+				msg = "Najlepsze lata ma za sobą, ale wciąż jest całkiem dobre."
 			if(0.50 to 0.75)
-				msg = "It's started to get a little smaller than it used to be, but it'll definitely still last for a while."
+				msg = "Zaczyna robić się trochę mniejsze niż kiedyś, ale jeszcze długo wytrzyma."
 			else
-				msg = "It's seen some light use, but it's still pretty fresh."
+				msg = "Było trochę używane, ale wciąż jest dość świeże."
 	. += "<span class='notice'>[msg]</span>"
 
 /obj/item/soap/nanotrasen
@@ -74,14 +74,14 @@
 
 /obj/item/soap/suicide_act(mob/user)
 	user.say(";FFFFFFFFFFFFFFFFUUUUUUUDGE!!", forced="soap suicide")
-	user.visible_message("<span class='suicide'>[user] lifts [src] to [user.p_their()] mouth and gnaws on it furiously, producing a thick froth! [user.p_they(TRUE)]'ll never get that BB gun now!</span>")
+	user.visible_message("<span class='suicide'>[user] podnosi [src] do ust i zaczyna je wściekle obgryzać, wytwarzając gęstą pianę! Teraz już nigdy nie dostanie wiatrówki!</span>")
 	new /obj/effect/particle_effect/foam(loc)
 	return (TOXLOSS)
 
 /obj/item/soap/proc/decreaseUses(mob/user)
 	uses--
 	if(uses <= 0)
-		to_chat(user, "<span class='warning'>[src] crumbles into tiny bits!</span>")
+		to_chat(user, "<span class='warning'>[src] kruszy się na drobne kawałki!</span>")
 		qdel(src)
 
 /obj/item/soap/afterattack(atom/target, mob/user, proximity)
@@ -91,11 +91,11 @@
 	//I couldn't feasibly  fix the overlay bugs caused by cleaning items we are wearing.
 	//So this is a workaround. This also makes more sense from an IC standpoint. ~Carn
 	if(user.client && ((target in user.client.screen) && !user.is_holding(target)))
-		to_chat(user, "<span class='warning'>You need to take that [target.name] off before cleaning it!</span>")
+		to_chat(user, "<span class='warning'>Musisz zdjąć [target.name], zanim to wyczyścisz!</span>")
 	else if(istype(target, /obj/effect/decal/cleanable))
-		user.visible_message("[user] begins to scrub \the [target.name] out with [src].", "<span class='warning'>You begin to scrub \the [target.name] out with [src]...</span>")
+		user.visible_message("[user] zaczyna szorować [target.name] za pomocą [src].", "<span class='warning'>Zaczynasz szorować [target.name] za pomocą [src]...</span>")
 		if(do_after(user, src.cleanspeed, target = target))
-			to_chat(user, "<span class='notice'>You scrub \the [target.name] out.</span>")
+			to_chat(user, "<span class='notice'>Szorujesz [target.name].</span>")
 			qdel(target)
 			decreaseUses(user)
 
@@ -103,26 +103,26 @@
 		var/mob/living/carbon/human/H = user
 		// NSV13 - kept hygiene effects
 		if(user.zone_selected == "mouth")
-			user.visible_message("<span class='warning'>\the [user] washes \the [target]'s mouth out with [src.name]!</span>", "<span class='notice'>You wash \the [target]'s mouth out with [src.name]!</span>") //washes mouth out with soap sounds better than 'the soap' here
+			user.visible_message("<span class='warning'>\t[user] myje [target] usta [src.name]!</span>", "<span class='notice'>Myjesz [target] usta [src.name]!</span>") //washes mouth out with soap sounds better than 'the soap' here
 			H.lip_style = null //removes lipstick
 			H.adjust_hygiene(5) //it kinda works i guess
 		else
-			user.visible_message("<span class='warning'>\the [user] washes \the [target] with [src.name]!</span>", "<span class='notice'>You wash \the [target] with [src.name]!</span>")
+			user.visible_message("<span class='warning'>\t[user] myje [target] za pomocą [src.name]!</span>", "<span class='notice'>Myjesz [target] za pomocą [src.name]!</span>")
 			H.adjust_hygiene(20)
 		H.update_body()
 		decreaseUses(user)
 		return
 	else if(istype(target, /obj/structure/window))
-		user.visible_message("[user] begins to clean \the [target.name] with [src]...", "<span class='notice'>You begin to clean \the [target.name] with [src]...</span>")
+		user.visible_message("[user] zaczyna czyścić [target.name] za pomocą [src]...", "<span class='notice'>Zaczynasz czyścić [target.name] za pomocą [src]...</span>")
 		if(do_after(user, src.cleanspeed, target = target))
-			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
+			to_chat(user, "<span class='notice'>Czyścisz [target.name].</span>")
 			target.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 			target.set_opacity(initial(target.opacity))
 			decreaseUses(user)
 	else
-		user.visible_message("[user] begins to clean \the [target.name] with [src]...", "<span class='notice'>You begin to clean \the [target.name] with [src]...</span>")
+		user.visible_message("[user] zaczyna czyścić [target.name] za pomocą [src]...", "<span class='notice'>Zaczynasz czyścić [target.name] za pomocą [src]...</span>")
 		if(do_after(user, src.cleanspeed, target = target))
-			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
+			to_chat(user, "<span class='notice'>Czyścisz [target.name].</span>")
 			if(isclothing(target) && HAS_TRAIT(target, TRAIT_SPRAYPAINTED))
 				var/obj/item/clothing/C = target
 				var/mob/living/carbon/human/H = user
@@ -173,7 +173,7 @@
 	return ..()
 
 /obj/item/bikehorn/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] solemnly points [src] at [user.p_their()] temple! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] uroczyście przykłada [src] do skroni! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	playsound(src, 'sound/items/bikehorn.ogg', 50, TRUE)
 	return (BRUTELOSS)
 

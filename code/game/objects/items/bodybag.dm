@@ -11,7 +11,7 @@
 	if(isopenturf(user.loc))
 		deploy_bodybag(user, user.loc)
 	else
-		to_chat(user, "<span class='warning'>You cannot deploy [src] inside of something!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz rozłożyć [src] wewnątrz czegoś!</span>")
 
 /obj/item/bodybag/afterattack(atom/target, mob/user, proximity)
 	. = ..()
@@ -28,7 +28,7 @@
 
 /obj/item/bodybag/suicide_act(mob/user)
 	if(isopenturf(user.loc))
-		user.visible_message("<span class='suicide'>[user] is crawling into [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+		user.visible_message("<span class='suicide'>[user] wczołguje się do [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 		var/obj/structure/closet/body_bag/R = new unfoldedbag_path(user.loc)
 		R.add_fingerprint(user)
 		qdel(src)
@@ -55,14 +55,13 @@
 /obj/item/bodybag/bluespace/examine(mob/user)
 	. = ..()
 	if(contents.len)
-		var/s = contents.len == 1 ? "" : "s"
-		. += "<span class='notice'>You can make out the shape[s] of [contents.len] object[s] through the fabric.</span>"
+		. += "<span class='notice'>Przez materiał widać kształty przedmiotów: [contents.len].</span>"
 
 /obj/item/bodybag/bluespace/Destroy()
 	for(var/atom/movable/A in contents)
 		A.forceMove(get_turf(src))
 		if(isliving(A))
-			to_chat(A, "<span class='notice'>You suddenly feel the space around you tear apart! You're free!</span>")
+			to_chat(A, "<span class='notice'>Nagle czujesz, jak przestrzeń wokół ciebie się rozdziera! Jesteś wolny!</span>")
 	return ..()
 
 /obj/item/bodybag/bluespace/proc/CanReachReact(atom/movable/source, list/next)
@@ -75,7 +74,7 @@
 	for(var/atom/movable/A in contents)
 		A.forceMove(R)
 		if(isliving(A))
-			to_chat(A, "<span class='notice'>You suddenly feel air around you! You're free!</span>")
+			to_chat(A, "<span class='notice'>Nagle czujesz wokół siebie powietrze! Jesteś wolny!</span>")
 	R.open(user)
 	R.add_fingerprint(user)
 	R.foldedbag_instance = src
@@ -83,14 +82,14 @@
 
 /obj/item/bodybag/bluespace/container_resist(mob/living/user)
 	if(user.incapacitated())
-		to_chat(user, "<span class='warning'>You can't get out while you're restrained like this!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz się wydostać, będąc tak skrępowanym!</span>")
 		return
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	to_chat(user, "<span class='notice'>You claw at the fabric of [src], trying to tear it open...</span>")
-	to_chat(loc, "<span class='warning'>Someone starts trying to break free of [src]!</span>")
+	to_chat(user, "<span class='notice'>Drapiesz materiał [src], próbując go rozedrzeć...</span>")
+	to_chat(loc, "<span class='warning'>Ktoś próbuje wydostać się z [src]!</span>")
 	if(!do_after(user, 200, target = src))
-		to_chat(loc, "<span class='warning'>The pressure subsides. It seems that they've stopped resisting...</span>")
+		to_chat(loc, "<span class='warning'>Nacisk słabnie. Wygląda na to, że przestał się opierać...</span>")
 		return
-	loc.visible_message("<span class='warning'>[user] suddenly appears in front of [loc]!</span>", "<span class='userdanger'>[user] breaks free of [src]!</span>")
+	loc.visible_message("<span class='warning'>[user] nagle pojawia się przed [loc]!</span>", "<span class='userdanger'>[user] wydostaje się z [src]!</span>")
 	qdel(src)

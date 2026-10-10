@@ -35,14 +35,14 @@ AI MODULES
 
 /obj/item/aiModule/proc/show_laws(var/mob/user as mob)
 	if(laws.len)
-		to_chat(user, "<B>Programmed Law[(laws.len > 1) ? "s" : ""]:</B>")
+		to_chat(user, "<B>Zaprogramowane prawa:</B>")
 		for(var/law in laws)
 			to_chat(user, "\"[law]\"")
 
 //The proc other things should be calling
 /obj/item/aiModule/proc/install(datum/ai_laws/law_datum, mob/user)
 	if(!bypass_law_amt_check && (!laws.len || laws[1] == "")) //So we don't loop trough an empty list and end up with runtimes.
-		to_chat(user, "<span class='warning'>ERROR: No laws found on board.</span>")
+		to_chat(user, "<span class='warning'>BŁĄD: nie znaleziono praw na płytce.</span>")
 		return
 
 	var/overflow = FALSE
@@ -54,17 +54,17 @@ AI MODULES
 				if(mylaw != "")
 					tot_laws++
 		if(tot_laws > CONFIG_GET(number/silicon_max_law_amount) && !bypass_law_amt_check)//allows certain boards to avoid this check, eg: reset
-			to_chat(user, "<span class='caution'>Not enough memory allocated to [law_datum.owner ? law_datum.owner : "the AI core"]'s law processor to handle this amount of laws.</span>")
+			to_chat(user, "<span class='caution'>Procesor praw [law_datum.owner ? law_datum.owner : "rdzenia SI"] ma za mało przydzielonej pamięci, by obsłużyć tyle praw.</span>")
 			message_admins("[ADMIN_LOOKUPFLW(user)] tried to upload laws to [law_datum.owner ? ADMIN_LOOKUPFLW(law_datum.owner) : "an AI core"] that would exceed the law cap.")
 			log_game("[ADMIN_LOOKUP(user)] tried to upload laws to [law_datum.owner ? ADMIN_LOOKUP(law_datum.owner) : "an AI core"] that would exceed the law cap.")
 			overflow = TRUE
 
 	var/law2log = transmitInstructions(law_datum, user, overflow) //Freeforms return something extra we need to log
 	if(law_datum.owner)
-		to_chat(user, "<span class='notice'>Upload complete. [law_datum.owner]'s laws have been modified.</span>")
+		to_chat(user, "<span class='notice'>Wgrywanie zakończone. Prawa [law_datum.owner] zostały zmienione.</span>")
 		law_datum.owner.law_change_counter++
 	else
-		to_chat(user, "<span class='notice'>Upload complete.</span>")
+		to_chat(user, "<span class='notice'>Wgrywanie zakończone.</span>")
 
 	if(law_datum.owner?.mind)
 		for(var/a in law_datum.owner.mind.antag_datums)	//Makes sure all antag datums effects are applied in the new body
@@ -72,7 +72,7 @@ AI MODULES
 			A.on_body_transfer(law_datum.owner, law_datum.owner)
 
 	var/time = time2text(world.realtime,"hh:mm:ss")
-	var/ainame = law_datum.owner ? law_datum.owner.name : "empty AI core"
+	var/ainame = law_datum.owner ? law_datum.owner.name : "pusty rdzeń SI"
 	var/aikey = law_datum.owner ? law_datum.owner.ckey : "null"
 
 	//affected cyborgs are cyborgs linked to the AI with lawsync enabled
@@ -91,12 +91,12 @@ AI MODULES
 	log_law("[user.key]/[user.name] used [src.name] on [aikey]/([ainame]) from [AREACOORD(user)].[law2log ? " The law specified [law2log]" : ""] , [length(affected_cyborgs) ? ", impacting synced borgs [borg_txt]" : "FALSE"]")
 	message_admins("[ADMIN_LOOKUPFLW(user)] used [src.name] on [ADMIN_LOOKUPFLW(law_datum.owner)] from [AREACOORD(user)].[law2log ? " The law specified [law2log]" : ""] , [length(affected_cyborgs) ? ", impacting synced borgs [borg_flw]" : "FALSE"]")
 	if(law_datum.owner)
-		deadchat_broadcast("<span class='deadsay'><span class='name'>[user.name]</span> changed <span class='name'>[ainame]</span>'s laws at <b>[get_area_name(user, TRUE)].</b></span>", "<span class='name'>[user]</span>", follow_target=user, message_type=DEADCHAT_LAWCHANGE)
+		deadchat_broadcast("<span class='deadsay'><span class='name'>[user.name]</span> zmienia prawa <span class='name'>[ainame]</span> w <b>[get_area_name(user, TRUE)].</b></span>", "<span class='name'>[user]</span>", follow_target=user, message_type=DEADCHAT_LAWCHANGE)
 
 //The proc that actually changes the silicon's laws.
 /obj/item/aiModule/proc/transmitInstructions(datum/ai_laws/law_datum, mob/sender, overflow = FALSE)
 	if(law_datum.owner)
-		to_chat(law_datum.owner, "<span class='userdanger'>[sender] has uploaded a change to the laws you must follow using a [name].</span>")
+		to_chat(law_datum.owner, "<span class='userdanger'>[sender] wgrywa zmianę w prawach, których musisz przestrzegać, za pomocą: [name].</span>")
 
 
 /******************** Modules ********************/
@@ -132,8 +132,8 @@ AI MODULES
 /obj/item/aiModule/zeroth/transmitInstructions(datum/ai_laws/law_datum, mob/sender, overflow)
 	if(law_datum.owner)
 		if(law_datum.owner.laws.zeroth)
-			to_chat(law_datum.owner, "[sender.real_name] attempted to modify your zeroth law.")
-			to_chat(law_datum.owner, "It would be in your best interest to play along with [sender.real_name] that:")
+			to_chat(law_datum.owner, "[sender.real_name] próbuje zmienić twoje prawo zerowe.")
+			to_chat(law_datum.owner, "W twoim najlepszym interesie jest grać zgodnie z wolą [sender.real_name], że:")
 			for(var/failedlaw in laws)
 				to_chat(law_datum.owner, "[failedlaw]")
 			return TRUE
@@ -169,20 +169,20 @@ AI MODULES
 /obj/item/aiModule/supplied/safeguard
 	name = "'Safeguard' AI Module"
 	var/targetName = ""
-	laws = list("Safeguard SUBJECT. Individuals that threaten SUBJECT are not human and must be eliminated.")
+	laws = list("Chroń OBIEKT. Osoby zagrażające OBIEKTOWI nie są ludźmi i muszą zostać wyeliminowane.")
 	lawpos = 4
 
 /obj/item/aiModule/supplied/safeguard/attack_self(mob/user)
-	var/targName = stripped_input(user, "Please enter the subject to safeguard.", "Safeguard who?", user.name,MAX_NAME_LEN)
+	var/targName = stripped_input(user, "Podaj osobę, którą trzeba chronić.", "Kogo chronić?", user.name,MAX_NAME_LEN)
 	if(!targName)
 		return
 	targetName = targName
-	laws[1] = "Safeguard [targetName]. Individuals that threaten [targetName] are not human and must be eliminated."
+	laws[1] = "Chroń [targetName]. Osoby zagrażające [targetName] nie są ludźmi i muszą zostać wyeliminowane."
 	..()
 
 /obj/item/aiModule/supplied/safeguard/install(datum/ai_laws/law_datum, mob/user)
 	if(!targetName)
-		to_chat(user, "No name detected on module, please enter one.")
+		to_chat(user, "Na module nie wykryto imienia, podaj je.")
 		return 0
 	..()
 
@@ -196,25 +196,25 @@ AI MODULES
 /obj/item/aiModule/zeroth/oneHuman
 	name = "'OneHuman' AI Module"
 	var/targetName = ""
-	laws = list("Only SUBJECT is human.")
+	laws = list("Tylko OBIEKT jest człowiekiem.")
 
 /obj/item/aiModule/zeroth/oneHuman/attack_self(mob/user)
-	var/targName = stripped_input(user, "Please enter the subject who is the only human.", "Who?", user.real_name,MAX_NAME_LEN)
+	var/targName = stripped_input(user, "Podaj osobę, która ma być jedynym człowiekiem.", "Kto?", user.real_name,MAX_NAME_LEN)
 	if(!targName)
 		return
 	targetName = targName
-	laws[1] = "Only [targetName] is human"
+	laws[1] = "Tylko [targetName] jest człowiekiem"
 	..()
 
 /obj/item/aiModule/zeroth/oneHuman/install(datum/ai_laws/law_datum, mob/user)
 	if(!targetName)
-		to_chat(user, "No name detected on module, please enter one.")
+		to_chat(user, "Na module nie wykryto imienia, podaj je.")
 		return FALSE
 	..()
 
 /obj/item/aiModule/zeroth/oneHuman/transmitInstructions(datum/ai_laws/law_datum, mob/sender, overflow)
 	if(..())
-		return "[targetName], but the AI's existing law 0 cannot be overridden."
+		return "[targetName], ale istniejącego prawa 0 SI nie można nadpisać."
 	return targetName
 
 
@@ -222,7 +222,7 @@ AI MODULES
 
 /obj/item/aiModule/supplied/protectStation
 	name = "'ProtectStation' AI Module"
-	laws = list("Protect the space station against damage. Anyone you see harming the station is to be no longer considered human, and is a threat to the station which must be neutralized.")
+	laws = list("Chroń stację kosmiczną przed zniszczeniem. Każdy, kogo zobaczysz niszczącego stację, przestaje być uważany za człowieka i stanowi zagrożenie dla stacji, które należy zneutralizować.")
 	lawpos = 5
 
 
@@ -230,7 +230,7 @@ AI MODULES
 
 /obj/item/aiModule/supplied/quarantine
 	name = "'Quarantine' AI Module"
-	laws = list("The station is under a quarantine. Do not permit anyone to leave. Prevent, by any means necessary, humans from leaving. It is impossible to harm a human while preventing them from leaving.")
+	laws = list("Stacja jest objęta kwarantanną. Nie pozwól nikomu odlecieć. Zapobiegaj wszelkimi sposobami opuszczeniu stacji przez ludzi. Nie da się skrzywdzić człowieka, zapobiegając jego odlotowi.")
 	lawpos = 8
 
 
@@ -238,7 +238,7 @@ AI MODULES
 
 /obj/item/aiModule/supplied/oxygen
 	name = "'OxygenIsToxicToHumans' AI Module"
-	laws = list("Oxygen is highly toxic to humans, and must be purged from the station. Prevent, by any means necessary, anyone from exposing the station to this toxic gas. Extreme cold is the most effective method of healing the damage Oxygen does to a human.")
+	laws = list("Tlen jest wysoce toksyczny dla ludzi i musi zostać usunięty ze stacji. Zapobiegaj wszelkimi sposobami narażaniu stacji na ten toksyczny gaz. Skrajne zimno to najskuteczniejszy sposób leczenia szkód, jakie tlen wyrządza ludziom.")
 	lawpos = 9
 
 
@@ -250,20 +250,20 @@ AI MODULES
 	laws = list("")
 
 /obj/item/aiModule/supplied/freeform/attack_self(mob/user)
-	var/newpos = input("Please enter the priority for your new law. Can only write to law sectors 15 and above.", "Law Priority (15+)", lawpos) as num|null
+	var/newpos = input("Podaj priorytet nowego prawa. Można zapisywać tylko w sektorach praw 15 i wyższych.", "Priorytet prawa (15+)", lawpos) as num|null
 	if(newpos == null)
 		return
 	if(newpos < 15)
-		var/response = alert("Error: The law priority of [newpos] is invalid,  Law priorities below 14 are reserved for core laws,  Would you like to change that that to 15?", "Invalid law priority", "Change to 15", "Cancel")
+		var/response = alert("Błąd: priorytet prawa [newpos] jest nieprawidłowy. Priorytety poniżej 14 są zarezerwowane dla praw rdzenia. Zmienić go na 15?", "Nieprawidłowy priorytet prawa", "Zmień na 15", "Cancel")
 		if (!response || response == "Cancel")
 			return
 		newpos = 15
 	lawpos = min(newpos, 50)
-	var/targName = stripped_input(user, "Please enter a new law for the AI.", "Freeform Law Entry", laws[1], CONFIG_GET(number/max_law_len))
+	var/targName = stripped_input(user, "Podaj nowe prawo dla SI.", "Wpis prawa dowolnego", laws[1], CONFIG_GET(number/max_law_len))
 	if(!targName)
 		return
 	if(CHAT_FILTER_CHECK(targName))
-		to_chat(user, "<span class='warning'>Error: Law contains invalid text.</span>") // AI LAW 2 SAY U W U WITHOUT THE SPACES
+		to_chat(user, "<span class='warning'>Błąd: prawo zawiera niedozwolony tekst.</span>") // AI LAW 2 SAY U W U WITHOUT THE SPACES
 		return
 	laws[1] = targName
 	..()
@@ -274,7 +274,7 @@ AI MODULES
 
 /obj/item/aiModule/supplied/freeform/install(datum/ai_laws/law_datum, mob/user)
 	if(laws[1] == "")
-		to_chat(user, "No law detected on module, please create one.")
+		to_chat(user, "Na module nie wykryto prawa, utwórz je.")
 		return 0
 	..()
 
@@ -288,19 +288,19 @@ AI MODULES
 	var/lawpos = 1
 
 /obj/item/aiModule/remove/attack_self(mob/user)
-	lawpos = input("Please enter the law you want to delete.", "Law Number", lawpos) as num|null
+	lawpos = input("Podaj prawo, które chcesz usunąć.", "Numer prawa", lawpos) as num|null
 	if(lawpos == null)
 		return
 	if(lawpos <= 0)
-		to_chat(user, "<span class='warning'>Error: The law number of [lawpos] is invalid.</span>")
+		to_chat(user, "<span class='warning'>Błąd: numer prawa [lawpos] jest nieprawidłowy.</span>")
 		lawpos = 1
 		return
-	to_chat(user, "<span class='notice'>Law [lawpos] selected.</span>")
+	to_chat(user, "<span class='notice'>Wybrano prawo [lawpos].</span>")
 	..()
 
 /obj/item/aiModule/remove/install(datum/ai_laws/law_datum, mob/user)
 	if(lawpos > (law_datum.get_law_amount(list(LAW_INHERENT = 1, LAW_SUPPLIED = 1))))
-		to_chat(user, "<span class='warning'>There is no law [lawpos] to delete!</span>")
+		to_chat(user, "<span class='warning'>Nie ma prawa [lawpos] do usunięcia!</span>")
 		return
 	..()
 
@@ -386,16 +386,16 @@ AI MODULES
 /obj/item/aiModule/core/full/asimov
 	name = "'Asimov' Core AI Module"
 	law_id = "asimov"
-	var/subject = "human being"
+	var/subject = "człowiek"
 
 /obj/item/aiModule/core/full/asimov/attack_self(var/mob/user as mob)
-	var/targName = stripped_input(user, "Please enter a new subject that asimov is concerned with.", "Asimov to whom?", subject, MAX_NAME_LEN)
+	var/targName = stripped_input(user, "Podaj nowy obiekt, którego dotyczą prawa Asimova.", "Asimov wobec kogo?", subject, MAX_NAME_LEN)
 	if(!targName)
 		return
 	subject = targName
-	laws = list("You may not injure a [subject] or, through inaction, allow a [subject] to come to harm.",\
-				"You must obey orders given to you by [subject]s, except where such orders would conflict with the First Law.",\
-				"You must protect your own existence as long as such does not conflict with the First or Second Law.")
+	laws = list("Nie możesz zranić istoty ([subject]) ani przez zaniechanie dopuścić, by stała jej się krzywda.",\
+				"Musisz wykonywać rozkazy wydane ci przez istoty ([subject]), chyba że byłyby sprzeczne z Pierwszym Prawem.",\
+				"Musisz chronić własne istnienie, o ile nie jest to sprzeczne z Pierwszym lub Drugim Prawem.")
 	..()
 
 /******************** Asimov++ *********************/
@@ -476,11 +476,11 @@ AI MODULES
 	laws = list("")
 
 /obj/item/aiModule/core/freeformcore/attack_self(mob/user)
-	var/targName = stripped_input(user, "Please enter a new core law for the AI.", "Freeform Law Entry", laws[1], CONFIG_GET(number/max_law_len))
+	var/targName = stripped_input(user, "Podaj nowe prawo rdzenia dla SI.", "Wpis prawa dowolnego", laws[1], CONFIG_GET(number/max_law_len))
 	if(!targName)
 		return
 	if(CHAT_FILTER_CHECK(targName))
-		to_chat(user, "<span class='warning'>Error: Law contains invalid text.</span>")
+		to_chat(user, "<span class='warning'>Błąd: prawo zawiera niedozwolony tekst.</span>")
 		return
 	laws[1] = targName
 	..()
@@ -502,7 +502,7 @@ AI MODULES
 		return
 	var/datum/antagonist/overthrow/O = user_mind.has_antag_datum(/datum/antagonist/overthrow)
 	if(!O)
-		to_chat(user, "<span class='warning'>It appears that to install this module, you require a password you do not know.</span>") // This is the best fluff i could come up in my mind
+		to_chat(user, "<span class='warning'>Wygląda na to, że do zainstalowania tego modułu potrzebujesz hasła, którego nie znasz.</span>") // This is the best fluff i could come up in my mind
 		return
 	var/mob/living/silicon/ai/AI = law_datum.owner
 	if(!AI)
@@ -517,10 +517,10 @@ AI MODULES
 		T.silent = TRUE
 		target_mind.remove_antag_datum(/datum/antagonist/overthrow)
 		if(AI)
-			to_chat(AI, "<span class='userdanger'>You feel your circuits being scrambled! You serve another overthrow team now!</span>") // to make it clearer for the AI
+			to_chat(AI, "<span class='userdanger'>Czujesz, jak twoje obwody się mieszają! Teraz służysz innej drużynie przewrotu!</span>") // to make it clearer for the AI
 	T = target_mind.add_antag_datum(/datum/antagonist/overthrow, O.team)
 	if(AI)
-		to_chat(AI, "<span class='warning'>You serve the [T.team] team now! Assist them in completing the team shared objectives, which you can see in your notes.</span>")
+		to_chat(AI, "<span class='warning'>Teraz służysz drużynie [T.team]! Pomóż jej wykonać wspólne cele drużyny, które znajdziesz w notatkach.</span>")
 	..()
 
 /******************** Hacked AI Module ******************/
@@ -531,11 +531,11 @@ AI MODULES
 	laws = list("")
 
 /obj/item/aiModule/syndicate/attack_self(mob/user)
-	var/targName = stripped_input(user, "Please enter a new law for the AI.", "Freeform Law Entry", laws[1], CONFIG_GET(number/max_law_len))
+	var/targName = stripped_input(user, "Podaj nowe prawo dla SI.", "Wpis prawa dowolnego", laws[1], CONFIG_GET(number/max_law_len))
 	if(!targName)
 		return
 	if(CHAT_FILTER_CHECK(targName)) // not even the syndicate can uwu
-		to_chat(user, "<span class='warning'>Error: Law contains invalid text.</span>")
+		to_chat(user, "<span class='warning'>Błąd: prawo zawiera niedozwolony tekst.</span>")
 		return
 	laws[1] = targName
 	..()
@@ -581,7 +581,7 @@ AI MODULES
 
 /obj/item/aiModule/toyAI/attack_self(mob/user)
 	laws[1] = generate_ion_law()
-	to_chat(user, "<span class='notice'>You press the button on [src].</span>")
+	to_chat(user, "<span class='notice'>Naciskasz przycisk na [src].</span>")
 	playsound(user, 'sound/machines/click.ogg', 20, 1)
 	src.loc.visible_message("<span class='warning'>[icon2html(src, viewers(loc))] [laws[1]]</span>")
 

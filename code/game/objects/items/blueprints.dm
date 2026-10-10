@@ -8,7 +8,7 @@
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "blueprints"
 	attack_verb = list("atakuje", "pacnięciem trąca", "uderza")
-	var/fluffnotice = "Nobody's gonna read this stuff!"
+	var/fluffnotice = "Nikt nie będzie tego czytał!"
 	var/in_use = FALSE
 
 /obj/item/areaeditor/attack_self(mob/user)
@@ -18,10 +18,10 @@
 				<small>[fluffnotice]</small><hr>"
 	switch(get_area_type())
 		if(AREA_SPACE)
-			. += "<p>According to the [src.name], you are now in an unclaimed territory.</p>"
+			. += "<p>Według [src.name] jesteś teraz na niczyim terenie.</p>"
 		if(AREA_SPECIAL)
-			. += "<p>This place is not noted on the [src.name].</p>"
-	. += "<p><a href='byond://?src=[REF(src)];create_area=1'>Create or modify an existing area</a></p>"
+			. += "<p>Tego miejsca nie ma na [src.name].</p>"
+	. += "<p><a href='byond://?src=[REF(src)];create_area=1'>Utwórz lub zmień istniejący obszar</a></p>"
 
 
 /obj/item/areaeditor/Topic(href, href_list)
@@ -44,7 +44,7 @@
 	desc = "Blueprints of the station. There is a \"Classified\" stamp and several coffee stains on it."
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "blueprints"
-	fluffnotice = "Property of Nanotrasen. For heads of staff only. Store in high-secure storage."
+	fluffnotice = "Własność Nanotrasen. Tylko dla szefów działów. Przechowywać w ściśle strzeżonym miejscu."
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	var/list/image/showing = list()
 	var/client/viewing
@@ -61,14 +61,14 @@
 	if(!legend)
 		var/area/A = get_area(user)
 		if(get_area_type() == AREA_STATION)
-			. += "<p>According to \the [src], you are now in <b>\"[html_encode(A.name)]\"</b>.</p>"
-			. += "<p><a href='byond://?src=[REF(src)];edit_area=1'>Change area name</a></p>"
-		. += "<p><a href='byond://?src=[REF(src)];view_legend=1'>View wire colour legend</a></p>"
+			. += "<p>Według [src] jesteś teraz w <b>\"[html_encode(A.name)]\"</b>.</p>"
+			. += "<p><a href='byond://?src=[REF(src)];edit_area=1'>Zmień nazwę obszaru</a></p>"
+		. += "<p><a href='byond://?src=[REF(src)];view_legend=1'>Pokaż legendę kolorów przewodów</a></p>"
 		if(!viewing)
-			. += "<p><a href='byond://?src=[REF(src)];view_blueprints=1'>View structural data</a></p>"
+			. += "<p><a href='byond://?src=[REF(src)];view_blueprints=1'>Pokaż dane konstrukcyjne</a></p>"
 		else
-			. += "<p><a href='byond://?src=[REF(src)];refresh=1'>Refresh structural data</a></p>"
-			. += "<p><a href='byond://?src=[REF(src)];hide_blueprints=1'>Hide structural data</a></p>"
+			. += "<p><a href='byond://?src=[REF(src)];refresh=1'>Odśwież dane konstrukcyjne</a></p>"
+			. += "<p><a href='byond://?src=[REF(src)];hide_blueprints=1'>Ukryj dane konstrukcyjne</a></p>"
 	else
 		if(legend == TRUE)
 			. += "<a href='byond://?src=[REF(src)];exit_legend=1'><< Back</a>"
@@ -101,9 +101,9 @@
 	if(href_list["view_wireset"])
 		legend = href_list["view_wireset"];
 	if(href_list["view_blueprints"])
-		set_viewer(usr, "<span class='notice'>You flip the blueprints over to view the complex information diagram.</span>")
+		set_viewer(usr, "<span class='notice'>Odwracasz plany, by zobaczyć złożony diagram informacyjny.</span>")
 	if(href_list["hide_blueprints"])
-		clear_viewer(usr,"<span class='notice'>You flip the blueprints over to view the simple information diagram.</span>")
+		clear_viewer(usr,"<span class='notice'>Odwracasz plany, by zobaczyć prosty diagram informacyjny.</span>")
 	if(href_list["refresh"])
 		clear_viewer(usr)
 		set_viewer(usr)
@@ -160,7 +160,7 @@
 	return AREA_STATION
 
 /obj/item/areaeditor/blueprints/proc/view_wire_devices(mob/user)
-	var/message = "<br>You examine the wire legend.<br>"
+	var/message = "<br>Przeglądasz legendę przewodów.<br>"
 	for(var/wireset in GLOB.wire_color_directory)
 		message += "<br><a href='byond://?src=[REF(src)];view_wireset=[wireset]'>[GLOB.wire_name_directory[wireset]]</a>"
 	message += "</p>"
@@ -182,16 +182,16 @@
 /obj/item/areaeditor/proc/edit_area()
 	var/area/A = get_area(usr)
 	var/prevname = "[A.name]"
-	var/str = stripped_input(usr,"New area name:", "Area Creation", "", MAX_NAME_LEN)
+	var/str = stripped_input(usr,"Nowa nazwa obszaru:", "Tworzenie obszaru", "", MAX_NAME_LEN)
 	if(!str || !length(str) || str==prevname) //cancel
 		return
 	if(length(str) > 50)
-		to_chat(usr, "<span class='warning'>The given name is too long.  The area's name is unchanged.</span>")
+		to_chat(usr, "<span class='warning'>Podana nazwa jest za długa. Nazwa obszaru pozostaje bez zmian.</span>")
 		return
 
 	rename_area(A, str)
 
-	to_chat(usr, "<span class='notice'>You rename the '[prevname]' to '[str]'.</span>")
+	to_chat(usr, "<span class='notice'>Zmieniasz nazwę „[prevname]” na „[str]”.</span>")
 	log_game("[key_name(usr)] has renamed [prevname] to [str]")
 	A.update_areasize()
 	interact()
@@ -204,7 +204,7 @@
 	desc = "A digital copy of the station blueprints stored in your memory."
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "blueprints"
-	fluffnotice = "Intellectual Property of Nanotrasen. For use in engineering cyborgs only. Wipe from memory upon departure from the station."
+	fluffnotice = "Własność intelektualna Nanotrasen. Tylko do użytku przez cyborgi inżynieryjne. Wymazać z pamięci po opuszczeniu stacji."
 	investigate_flags = NONE
 
 /proc/rename_area(a, new_name)

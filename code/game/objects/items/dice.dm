@@ -32,7 +32,7 @@
 		new /obj/item/dice/d100(src)
 
 /obj/item/storage/pill_bottle/dice/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is gambling with death! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] gra ze śmiercią w kości! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return (OXYLOSS)
 
 /obj/item/storage/pill_bottle/dice_cup
@@ -70,10 +70,10 @@
 
 /obj/item/dice/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>[result] is face up.</span>"
+	. += "<span class='notice'>Na wierzchu jest [result].</span>"
 
 /obj/item/dice/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is gambling with death! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] gra ze śmiercią w kości! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return (OXYLOSS)
 
 /obj/item/dice/d1
@@ -164,7 +164,7 @@
 	desc = "A weird die with raised text printed on the faces. Everything's white on white so reading it is a struggle. What poor design!"
 	icon_state = "8bd20"
 	sides = 20
-	special_faces = list("It is certain","It is decidedly so","Without a doubt","Yes, definitely","You may rely on it","As I see it, yes","Most likely","Outlook good","Yes","Signs point to yes","Reply hazy try again","Ask again later","Better not tell you now","Cannot predict now","Concentrate and ask again","Don't count on it","My reply is no","My sources say no","Outlook not so good","Very doubtful")
+	special_faces = list("To pewne","Zdecydowanie tak","Without a doubt","Tak, zdecydowanie","Możesz na tym polegać","Jak ja to widzę, tak","Najprawdopodobniej","Perspektywy są dobre","Yes","Znaki wskazują, że tak","Odpowiedź niejasna, spróbuj ponownie","Zapytaj później","Lepiej, żebym teraz nie mówiła","Nie mogę teraz przewidzieć","Skup się i zapytaj ponownie","Nie licz na to","Moja odpowiedź brzmi: nie","Moje źródła mówią, że nie","Perspektywy nie są zbyt dobre","Bardzo wątpliwe")
 
 /obj/item/dice/eightbd20/update_icon()
 	return
@@ -203,18 +203,18 @@
 	if(sides == 20 && result == 20)
 		comment = "NAT 20!"
 	else if(sides == 20 && result == 1)
-		comment = "Ouch, bad luck."
+		comment = "Auć, pech."
 	update_icon()
 	if(initial(icon_state) == "d00")
 		result = (result - 1)*10
 	if(special_faces.len == sides)
 		result = special_faces[result]
 	if(user != null) //Dice was rolled in someone's hand
-		user.visible_message("[user] has thrown [src]. It lands on [result]. [comment]", \
-							 "<span class='notice'>You throw [src]. It lands on [result]. [comment]</span>", \
-							 "<span class='italics'>You hear [src] rolling, it sounds like a [fake_result].</span>")
+		user.visible_message("[user] rzuca [src]. Wypada [result]. [comment]", \
+							 "<span class='notice'>Rzucasz [src]. Wypada [result]. [comment]</span>", \
+							 "<span class='italics'>Słyszysz, jak [src] się toczy, brzmi to jak [fake_result].</span>")
 	else if(!src.throwing) //Dice was thrown and is coming to rest
-		visible_message("<span class='notice'>[src] rolls to a stop, landing on [result]. [comment]</span>")
+		visible_message("<span class='notice'>[src] toczy się i zatrzymuje. Wypada [result]. [comment]</span>")
 
 /obj/item/dice/update_icon()
 	cut_overlays()

@@ -39,10 +39,10 @@
 		return
 	if(layer == initial(layer))
 		layer = ABOVE_MOB_LAYER
-		to_chat(user, "<span class='notice'>You cover yourself with [src].</span>")
+		to_chat(user, "<span class='notice'>Przykrywasz się [src].</span>")
 	else
 		layer = initial(layer)
-		to_chat(user, "<span class='notice'>You smooth [src] out beneath you.</span>")
+		to_chat(user, "<span class='notice'>Wygładzasz [src] pod sobą.</span>")
 	add_fingerprint(user)
 	return
 
@@ -52,7 +52,7 @@
 		transfer_fingerprints_to(C)
 		C.add_fingerprint(user)
 		qdel(src)
-		to_chat(user, "<span class='notice'>You tear [src] up.</span>")
+		to_chat(user, "<span class='notice'>Rozdzierasz [src].</span>")
 	else
 		return ..()
 
@@ -295,7 +295,7 @@
 
 /obj/item/bedsheet/double/Initialize()
 	. = ..()
-	desc += " This one is double."
+	desc += " Ta jest podwójna."
 
 /obj/item/bedsheet/double/blue
 	icon_state = "double_sheetblue"
