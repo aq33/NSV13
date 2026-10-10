@@ -6,7 +6,7 @@
 		to create a Void Cloak. While the hood is down, the cloak functions as a focus, \
 		and while the hood is up, the cloak is completely invisible. It also provide decent armor and \
 		has pockets which can hold one of your blades, various ritual components (such as organs), and small heretical trinkets."
-	gain_text = "The Owl is the keeper of things that are not quite in practice, but in theory are. Many things are."
+	gain_text = "Sowa strzeże rzeczy, których w praktyce do końca nie ma, ale w teorii są. Wiele rzeczy takich jest."
 	next_knowledge = list(
 		/datum/heretic_knowledge/limited_amount/flesh_ghoul,
 		/datum/heretic_knowledge/cold_snap,
@@ -25,8 +25,8 @@
 	desc = "Allows you to transmute a knife, a shard of glass, and a piece of paper to create a Carving Knife. \
 		The Carving Knife allows you to etch difficult to see traps that trigger on heathens who walk overhead. \
 		Also makes for a handy throwing weapon."
-	gain_text = "Etched, carved... eternal. There is power hidden in everything. I can unveil it! \
-		I can carve the monolith to reveal the chains!"
+	gain_text = "Wyryte, wycięte... wieczne. We wszystkim kryje się moc. Mogę ją odsłonić! \
+		Mogę wyrzeźbić monolit, by odsłonić łańcuchy!"
 	next_knowledge = list(
 		/datum/heretic_knowledge/spell/void_phase,
 		/datum/heretic_knowledge/summon/raw_prophet,
@@ -43,7 +43,7 @@
 /datum/heretic_knowledge/spell/blood_siphon
 	name = "Blood Siphon"
 	desc = "Grants you Blood Siphon, a spell that drains a victim of blood and health, transferring it to you."
-	gain_text = "\"No matter the man, we bleed all the same.\" That's what the Marshal told me."
+	gain_text = "\"Bez względu na to, kim jesteśmy, krwawimy tak samo.\" Tak powiedział mi Marszałek."
 	next_knowledge = list(
 		/datum/heretic_knowledge/summon/stalker,
 		/datum/heretic_knowledge/spell/voidpull,

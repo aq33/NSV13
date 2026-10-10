@@ -19,7 +19,7 @@
 
 /obj/item/melee/sickly_blade/attack(mob/living/M, mob/living/user)
 	if(!IS_HERETIC_OR_MONSTER(user))
-		to_chat(user, "<span class='danger'>You feel a pulse of alien intellect lash out at your mind!</span>")
+		to_chat(user, "<span class='danger'>Czujesz, jak puls obcego intelektu uderza w twój umysł!</span>")
 		var/mob/living/carbon/human/human_user = user
 		human_user.AdjustParalyzed(5 SECONDS)
 		return TRUE
@@ -30,11 +30,11 @@
 	var/turf/safe_turf = find_safe_turf(zlevels = z, extended_safety_checks = TRUE)
 	if(IS_HERETIC_OR_MONSTER(user))
 		if(do_teleport(user, safe_turf, channel = TELEPORT_CHANNEL_MAGIC))
-			to_chat(user, "<span class='warning'>As you shatter [src], you feel a gust of energy flow through your body. [after_use_message]</span>")
+			to_chat(user, "<span class='warning'>Gdy rozbijasz [src], przez twoje ciało przepływa podmuch energii. [after_use_message]</span>")
 		else
-			to_chat(user, "<span class='warning'>You shatter [src], but your plea goes unanswered.</span>")
+			to_chat(user, "<span class='warning'>Rozbijasz [src], ale twoja prośba pozostaje bez odpowiedzi.</span>")
 	else
-		to_chat(user,"<span class='warning'>You shatter [src].</span>")
+		to_chat(user,"<span class='warning'>Rozbijasz [src].</span>")
 	playsound(src, "shatter", 70, TRUE) //copied from the code for smashing a glass sheet onto the ground to turn it into a shard
 	qdel(src)
 
@@ -53,7 +53,7 @@
 	if(!IS_HERETIC_OR_MONSTER(user))
 		return
 
-	. += "<span class='notice'>You can shatter the blade to teleport to a random, (mostly) safe location by <b>activating it in-hand</b>.</span>"
+	. += "<span class='notice'>Możesz rozbić ostrze, <b>aktywując je w dłoni</b>, by teleportować się w losowe (w miarę) bezpieczne miejsce.</span>"
 
 /obj/item/melee/sickly_blade/rust
 	name = "\improper rusted blade"
@@ -61,7 +61,7 @@
 		Yet still it bites, ripping flesh and bone with jagged, rotten teeth."
 	icon_state = "rust_blade"
 	item_state = "rust_blade"
-	after_use_message = "The Rusted Hills hear your call..."
+	after_use_message = "Rdzawe Wzgórza słyszą twoje wołanie..."
 
 /obj/item/melee/sickly_blade/ash
 	name = "\improper ashen blade"
@@ -69,7 +69,7 @@
 		Unmade, it aspires to be more than it is, and shears soot-filled wounds with a blunt edge."
 	icon_state = "ash_blade"
 	item_state = "ash_blade"
-	after_use_message = "The Nightwatcher hears your call..."
+	after_use_message = "Nocny Strażnik słyszy twoje wołanie..."
 
 /obj/item/melee/sickly_blade/flesh
 	name = "\improper bloody blade"
@@ -77,7 +77,7 @@
 		Keenly aware, it seeks to spread to others the suffering it has endured from its dreadful origins."
 	icon_state = "flesh_blade"
 	item_state = "flesh_blade"
-	after_use_message = "The Marshal hears your call..."
+	after_use_message = "Marszałek słyszy twoje wołanie..."
 
 /obj/item/melee/sickly_blade/void
 	name = "\improper void blade"
@@ -85,4 +85,4 @@
 		It is a real depiction of purity, and chaos that ensues after its implementation."
 	icon_state = "void_blade"
 	item_state = "void_blade"
-	after_use_message = "The Aristocrat hears your call..."
+	after_use_message = "Arystokrata słyszy twoje wołanie..."

@@ -15,7 +15,7 @@
 /obj/effect/proc_holder/spell/pointed/void_phase/can_target(atom/target, mob/user, silent)
 	. = ..()
 	if(get_dist(get_turf(user), get_turf(target)) < 3 )
-		user.balloon_alert(user, "Too close")
+		user.balloon_alert(user, "Za blisko")
 		return FALSE
 
 /obj/effect/proc_holder/spell/pointed/void_phase/cast(list/targets, mob/user)

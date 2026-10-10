@@ -13,7 +13,7 @@
 
 /obj/effect/proc_holder/spell/pointed/cleave/cast(list/targets, mob/user)
 	if(!targets.len)
-		user.balloon_alert(user, "No targets")
+		user.balloon_alert(user, "Brak celów")
 		return FALSE
 	if(!can_target(targets[1], user))
 		return FALSE
@@ -26,8 +26,8 @@
 			continue
 		if(victim.anti_magic_check())
 			victim.visible_message(
-				"<span class='danger'>[victim]'s body flashes in a fiery glow, but repels the blaze!</span>",
-				"<span class='danger'>Your body begins to flash in a fiery glow, but you are protected!</span>"
+				"<span class='danger'>Ciało [victim] rozbłyska ognistą poświatą, ale odpiera płomienie!</span>",
+				"<span class='danger'>Twoje ciało rozbłyska ognistą poświatą, ale jesteś chroniony!</span>"
 			)
 			continue
 
@@ -35,8 +35,8 @@
 			continue
 
 		victim.visible_message(
-			"<span class='danger'>[victim]'s veins are shredded from within as an unholy blaze erupts from [victim.p_their()] blood!</span>",
-			"<span class='danger'>Your veins burst from within and unholy flame erupts from your blood!</span>"
+			"<span class='danger'>Żyły [victim] rozrywają się od środka, a z krwi wybucha nieświęty płomień!</span>",
+			"<span class='danger'>Twoje żyły pękają od środka, a z krwi wybucha nieświęty płomień!</span>"
 		)
 
 		victim.bleed_rate += 5
@@ -46,7 +46,7 @@
 /obj/effect/proc_holder/spell/pointed/cleave/can_target(atom/target, mob/user, silent)
 	if(!ishuman(target))
 		if(!silent)
-			target.balloon_alert(user, "Invalid target")
+			target.balloon_alert(user, "Nieprawidłowy cel")
 		return FALSE
 	return TRUE
 

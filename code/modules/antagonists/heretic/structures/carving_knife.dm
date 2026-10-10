@@ -37,8 +37,8 @@
 	if(!IS_HERETIC_OR_MONSTER(user) && !isobserver(user))
 		return
 
-	. += "<span class='notice'><b>[length(current_runes)] / [max_rune_amt]</b> total carvings have been drawn.</span>"
-	. += "<span class='info'>The following runes can be carved:</span>"
+	. += "<span class='notice'>Wyrzeźbiono łącznie <b>[length(current_runes)] / [max_rune_amt]</b> znaków.</span>"
+	. += "<span class='info'>Można wyrzeźbić następujące runy:</span>"
 	for(var/obj/structure/trap/eldritch/trap as anything in subtypesof(/obj/structure/trap/eldritch))
 		var/potion_string = "<span class='info'>\tThe " + initial(trap.name) + " - " + initial(trap.carver_tip) + "</span>"
 		. += potion_string
@@ -64,11 +64,11 @@
  */
 /obj/item/melee/rune_carver/proc/try_carve_rune(turf/open/target_turf, mob/user)
 	if(drawing)
-		target_turf.balloon_alert(user, "Already carving")
+		target_turf.balloon_alert(user, "Już rzeźbisz")
 		return
 
 	if(locate(/obj/structure/trap/eldritch) in range(1, target_turf))
-		target_turf.balloon_alert(user, "Too close to another carving")
+		target_turf.balloon_alert(user, "Za blisko innego znaku")
 		return
 
 	for(var/datum/weakref/rune_ref as anything in current_runes)
@@ -76,7 +76,7 @@
 			current_runes -= rune_ref
 
 	if(length(current_runes) >= max_rune_amt)
-		target_turf.balloon_alert(user, "Too many carvings")
+		target_turf.balloon_alert(user, "Za dużo znaków")
 		return
 
 	drawing = TRUE
@@ -111,7 +111,7 @@
 	if(!ispath(to_make, /obj/structure/trap/eldritch))
 		CRASH("[type] attempted to create a rune of incorrect type! (got: [to_make])")
 
-	target_turf.balloon_alert(user, "You begin carving the [picked_choice]")
+	target_turf.balloon_alert(user, "Zaczynasz rzeźbić: [picked_choice]")
 	user.playsound_local(target_turf, 'sound/items/sheath.ogg', 50, TRUE)
 	if(!do_after(user, 5 SECONDS, target = target_turf))
 		target_turf.balloon_alert(user, "Interrupted")
@@ -188,7 +188,7 @@
 
 /obj/structure/trap/eldritch/attacked_by(obj/item/weapon, mob/living/user)
 	if(istype(weapon, /obj/item/melee/rune_carver) || istype(weapon, /obj/item/nullrod))
-		loc.balloon_alert(user, "Carving dispelled")
+		loc.balloon_alert(user, "Znak rozproszony")
 		playsound(src, 'sound/items/sheath.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, ignore_walls = FALSE)
 		qdel(src)
 
@@ -200,12 +200,12 @@
 	alpha = 10
 	time_between_triggers = 5 SECONDS
 	sparks = FALSE
-	carver_tip = "A nearly invisible rune that, when stepped on, alerts the carver as to who triggered it and where."
+	carver_tip = "Niemal niewidoczna runa, która po nadepnięciu informuje rzeźbiarza, kto ją uruchomił i gdzie."
 
 /obj/structure/trap/eldritch/alert/trap_effect(mob/living/victim)
 	var/mob/living/real_owner = owner?.resolve()
 	if(real_owner)
-		to_chat(real_owner, "<span class='userdanger'>[victim.real_name] has stepped on the alert rune in [get_area(src)]!</span>")
+		to_chat(real_owner, "<span class='userdanger'>[victim.real_name] nadepnął na runę alarmową w [get_area(src)]!</span>")
 		real_owner.playsound_local(get_turf(real_owner), 'sound/magic/curse.ogg', 50, TRUE)
 
 /obj/structure/trap/eldritch/tentacle
@@ -213,7 +213,7 @@
 	icon_state = "tentacle_rune"
 	time_between_triggers = 45 SECONDS
 	charges = 1
-	carver_tip = "When stepped on, causes heavy leg damage and stuns the victim for 5 seconds. Has 1 charge."
+	carver_tip = "Po nadepnięciu mocno rani nogi i ogłusza ofiarę na 5 sekund. Ma 1 ładunek."
 
 /obj/structure/trap/eldritch/tentacle/trap_effect(mob/living/victim)
 	if(!iscarbon(victim))
@@ -229,7 +229,7 @@
 	icon_state = "madness_rune"
 	time_between_triggers = 20 SECONDS
 	charges = 2
-	carver_tip = "When stepped on, adds heavy stamina damage, blindness, and a variety of ailments to the victim. Has 2 charges."
+	carver_tip = "Po nadepnięciu zadaje ofierze duże obrażenia wytrzymałości, oślepia ją i wywołuje różne dolegliwości. Ma 2 ładunki."
 
 /obj/structure/trap/eldritch/mad/trap_effect(mob/living/victim)
 	if(!iscarbon(victim))

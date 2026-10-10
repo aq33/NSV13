@@ -3,7 +3,7 @@
 	name = "Ashen Eyes"
 	desc = "Allows you to transmute a pair of eyes, a candle, and a glass shard into an Eldritch Medallion. \
 		The Eldritch Medallion grants you thermal vision while worn, and also functions as a focus."
-	gain_text = "Piercing eyes guided them through the mundane. Neither darkness nor terror could stop them."
+	gain_text = "Przenikliwe oczy prowadziły ich przez codzienność. Ani ciemność, ani groza nie mogły ich zatrzymać."
 	next_knowledge = list(
 		/datum/heretic_knowledge/spell/ash_passage,
 		/datum/heretic_knowledge/limited_amount/flesh_ghoul,
@@ -23,7 +23,7 @@
 		and an item containing fingerprints to cast a curse of immobility \
 		on one of the fingerprints' owners for five minutes. While cursed, \
 		the victim will be unable to walk."
-	gain_text = "The flesh of humanity is weak. Make them bleed. Show them their fragility."
+	gain_text = "Ludzkie ciało jest słabe. Niech krwawią. Pokaż im, jak są kruche."
 	next_knowledge = list(
 		/datum/heretic_knowledge/mad_mask,
 		/datum/heretic_knowledge/summon/raw_prophet,
@@ -39,9 +39,9 @@
 
 /datum/heretic_knowledge/curse/paralysis/curse(mob/living/carbon/human/chosen_mob)
 	if(chosen_mob.get_num_legs() <= 0) // What're you gonna do, curse someone who already can't walk?
-		to_chat(chosen_mob, "<span class='notice'>You feel a slight pain for a moment, but it passes shortly. Odd.</span>")
+		to_chat(chosen_mob, "<span class='notice'>Przez chwilę czujesz lekki ból, ale szybko mija. Dziwne.</span>")
 	else
-		to_chat(chosen_mob, "<span class='danger'>You suddenly lose feeling in your leg[chosen_mob.get_num_legs() == 1 ? "":"s"]!</span>")
+		to_chat(chosen_mob, "<span class='danger'>Nagle tracisz czucie w [chosen_mob.get_num_legs() == 1 ? "nodze":"nogach"]!</span>")
 
 	ADD_TRAIT(chosen_mob, TRAIT_PARALYSIS_L_LEG, type)
 	ADD_TRAIT(chosen_mob, TRAIT_PARALYSIS_R_LEG, type)
@@ -51,16 +51,16 @@
 	REMOVE_TRAIT(chosen_mob, TRAIT_PARALYSIS_R_LEG, type)
 
 	if(chosen_mob.get_num_legs() <= 0) // What're you gonna do, curse someone who already can't walk?
-		to_chat(chosen_mob, "<span class='notice'>The slight pain returns, but disperses shortly.</span>")
+		to_chat(chosen_mob, "<span class='notice'>Lekki ból wraca, ale szybko ustępuje.</span>")
 	else
-		to_chat(chosen_mob, "<span class='notice'>You regain feeling in your leg[chosen_mob.get_num_legs() == 1 ? "":"s"]!</span>")
+		to_chat(chosen_mob, "<span class='notice'>Odzyskujesz czucie w [chosen_mob.get_num_legs() == 1 ? "nodze":"nogach"]!</span>")
 
 /datum/heretic_knowledge/summon/ashy
 	name = "Ashen Ritual"
 	desc = "Allows you to transmute a head, a pile of ash, and a book to create an Ash Man. \
 		Ash Men have a short range jaunt and the ability to cause bleeding in foes at range. \
 		They also have the ability to create a ring of fire around themselves for a length of time."
-	gain_text = "I combined my principle of hunger with my desire for destruction. The Marshal knew my name, and the Nightwatcher gazed on."
+	gain_text = "Połączyłem swoją zasadę głodu z żądzą zniszczenia. Marszałek znał moje imię, a Nocny Strażnik patrzył."
 	next_knowledge = list(
 		/datum/heretic_knowledge/summon/stalker,
 		/datum/heretic_knowledge/spell/flame_birth,
