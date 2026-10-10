@@ -138,6 +138,11 @@ if grep -n -P '(href|action)\s*=[\s='"'"'"\\\\]*\?' code/**/*.dm nsv13/**/*.dm a
     echo -e "${RED}ERROR: BYOND 516 requires internal href links to begin with \"byond://\".${NC}"
     st=1
 fi;
+if grep -n -P '^\s*var/([\w/]*/)?caller\b' code/**/*.dm nsv13/**/*.dm aquila/**/*.dm; then
+    echo
+    echo -e "${RED}ERROR: 'caller' is a BYOND 516 built-in: a var with that name reads as the calling proc inside procs. Rename it.${NC}"
+    st=1
+fi;
 if grep -Pzo '"\w+" = \(\n[^)]*?/turf/[/\w]*?,\n[^)]*?/turf/[/\w]*?,\n[^)]*?/area/.+?\)' _maps/**/*.dmm; then
 	echo
     echo -e "${RED}ERROR: Multiple turfs detected on the same tile! Please choose only one turf!${NC}"
