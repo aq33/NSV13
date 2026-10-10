@@ -28,7 +28,7 @@
 	. = ..()
 	if(!.)
 		var/obj/item/held_item = get_active_held_item()
-		to_chat(usr, "<span class='warning'>Your other hand is too busy holding [held_item].</span>")
+		to_chat(usr, "<span class='warning'>Twoja druga ręka jest zajęta trzymaniem [held_item].</span>")
 		return
 
 	if(!held_index)
@@ -80,7 +80,7 @@
 		if(!(victim.movement_type & FLYING))
 			if(victim.can_catch_item())
 				visible_message("<span class='danger'>[victim] catches [src]!</span>",\
-					"<span class='userdanger'>[victim] catches you!</span>")
+					"<span class='userdanger'>[victim] cię łapie!</span>")
 				grabbedby(victim, TRUE)
 				victim.throw_mode_off(THROW_MODE_TOGGLE)
 				log_combat(victim, src, "caught [src]")
@@ -90,8 +90,8 @@
 				take_bodypart_damage(10,check_armor = TRUE)
 				victim.Paralyze(20)
 				Paralyze(20)
-				visible_message("<span class='danger'>[src] crashes into [victim], knocking them both over!</span>",\
-					"<span class='userdanger'>You violently crash into [victim]!</span>")
+				visible_message("<span class='danger'>[src] wpada na [victim] i oboje się przewracają!</span>",\
+					"<span class='userdanger'>Z impetem wpadasz na [victim]!</span>")
 			playsound(src,'sound/weapons/punch1.ogg',50,1)
 
 	. = ..()
@@ -153,7 +153,7 @@
 				thrown_thing = throwable_mob
 				stop_pulling()
 				if(HAS_TRAIT(src, TRAIT_PACIFISM))
-					to_chat(src, "<span class='notice'>You gently let go of [throwable_mob].</span>")
+					to_chat(src, "<span class='notice'>Delikatnie puszczasz [throwable_mob].</span>")
 				var/turf/start_T = get_turf(loc) //Get the start and target tile for the descriptors
 				var/turf/end_T = get_turf(target)
 				if(start_T && end_T)
@@ -169,12 +169,12 @@
 			I.item_flags |= WAS_THROWN
 		dropItemToGround(I, silent = TRUE)
 		if(pacifist)
-			to_chat(src, "<span class='notice'>You set [I] down gently on the ground.</span>")
+			to_chat(src, "<span class='notice'>Delikatnie odkładasz [I] na ziemię.</span>")
 			return TRUE
 
 	if(thrown_thing)
 		visible_message("<span class='danger'>[src] throws [thrown_thing].</span>", \
-						"<span class='danger'>You throw [thrown_thing].</span>")
+						"<span class='danger'>Rzucasz [thrown_thing].</span>")
 		log_message("has thrown [I]", LOG_ATTACK)
 		newtonian_move(get_dir(target, src))
 		thrown_thing.safe_throw_at(target, thrown_thing.throw_range, thrown_thing.throw_speed, src, null, null, null, move_force)
@@ -226,15 +226,15 @@
 		if(handcuffed)
 			var/obj/item/restraints/O = src.get_item_by_slot(ITEM_SLOT_HANDCUFFED)
 			buckle_cd = O.breakouttime
-		visible_message("<span class='warning'>[src] attempts to unbuckle [p_them()]self!</span>", \
-					"<span class='notice'>You attempt to unbuckle yourself... (This will take around [round(buckle_cd/600,1)] minute\s, and you need to stay still.)</span>")
+		visible_message("<span class='warning'>[src] próbuje się odpiąć!</span>", \
+					"<span class='notice'>Próbujesz się odpiąć... (Zajmie to około [round(buckle_cd/600,1)] min i musisz się nie ruszać.)</span>")
 		if(do_after(src, buckle_cd, 0, target = src))
 			if(!buckled)
 				return
 			buckled.user_unbuckle_mob(src,src)
 		else
 			if(src && buckled)
-				to_chat(src, "<span class='warning'>You fail to unbuckle yourself!</span>")
+				to_chat(src, "<span class='warning'>Nie udaje ci się odpiąć!</span>")
 	else
 		buckled.user_unbuckle_mob(src,src)
 
@@ -242,12 +242,12 @@
 	fire_stacks -= 5
 	Paralyze(60, TRUE, TRUE)
 	spin(32,2)
-	visible_message("<span class='danger'>[src] rolls on the floor, trying to put [p_them()]self out!</span>", \
-		"<span class='notice'>You stop, drop, and roll!</span>")
+	visible_message("<span class='danger'>[src] tarza się po podłodze, próbując się ugasić!</span>", \
+		"<span class='notice'>Padasz i tarzasz się po ziemi!</span>")
 	sleep(30)
 	if(fire_stacks <= 0)
-		visible_message("<span class='danger'>[src] has successfully extinguished [p_them()]self!</span>", \
-			"<span class='notice'>You extinguish yourself.</span>")
+		visible_message("<span class='danger'>[src] gasi się!</span>", \
+			"<span class='notice'>Gasisz się.</span>")
 		ExtinguishMob()
 	return
 
@@ -272,26 +272,26 @@
 
 /mob/living/carbon/proc/cuff_resist(obj/item/I, breakouttime = 600, cuff_break = 0)
 	if(I.item_flags & BEING_REMOVED)
-		to_chat(src, "<span class='warning'>You're already attempting to remove [I]!</span>")
+		to_chat(src, "<span class='warning'>Już próbujesz zdjąć [I]!</span>")
 		return
 	I.item_flags |= BEING_REMOVED
 	breakouttime = I.breakouttime
 	if(!cuff_break)
-		visible_message("<span class='warning'>[src] attempts to remove [I]!</span>")
-		to_chat(src, "<span class='notice'>You attempt to remove [I]... (This will take around [DisplayTimeText(breakouttime)] and you need to stand still.)</span>")
+		visible_message("<span class='warning'>[src] próbuje zdjąć [I]!</span>")
+		to_chat(src, "<span class='notice'>Próbujesz zdjąć [I]... (Zajmie to około [DisplayTimeText(breakouttime)] i musisz się nie ruszać.)</span>")
 		if(do_after(src, breakouttime, 0, target = src))
 			clear_cuffs(I, cuff_break)
 		else
-			to_chat(src, "<span class='warning'>You fail to remove [I]!</span>")
+			to_chat(src, "<span class='warning'>Nie udaje ci się zdjąć [I]!</span>")
 
 	else if(cuff_break == FAST_CUFFBREAK)
 		breakouttime = 50
-		visible_message("<span class='warning'>[src] is trying to break [I]!</span>")
-		to_chat(src, "<span class='notice'>You attempt to break [I]... (This will take around 5 seconds and you need to stand still.)</span>")
+		visible_message("<span class='warning'>[src] próbuje zniszczyć [I]!</span>")
+		to_chat(src, "<span class='notice'>Próbujesz zniszczyć [I]... (Zajmie to około 5 sekund i musisz się nie ruszać.)</span>")
 		if(do_after(src, breakouttime, 0, target = src))
 			clear_cuffs(I, cuff_break)
 		else
-			to_chat(src, "<span class='warning'>You fail to break [I]!</span>")
+			to_chat(src, "<span class='warning'>Nie udaje ci się zniszczyć [I]!</span>")
 
 	else if(cuff_break == INSTANT_CUFFBREAK)
 		clear_cuffs(I, cuff_break)
@@ -331,8 +331,8 @@
 /mob/living/carbon/proc/clear_cuffs(obj/item/I, cuff_break)
 	if(!I.loc || buckled)
 		return
-	visible_message("<span class='danger'>[src] manages to [cuff_break ? "break" : "remove"] [I]!</span>")
-	to_chat(src, "<span class='notice'>You successfully [cuff_break ? "break" : "remove"] [I].</span>")
+	visible_message("<span class='danger'>[src] [cuff_break ? "niszczy" : "zdejmuje"] [I]!</span>")
+	to_chat(src, "<span class='notice'>[cuff_break ? "Niszczysz" : "Zdejmujesz"] [I].</span>")
 
 	if(cuff_break)
 		. = !((I == handcuffed) || (I == legcuffed))
@@ -422,8 +422,8 @@
 
 	if(nutrition < 100 && !blood)
 		if(message)
-			visible_message("<span class='warning'>[src] dry heaves!</span>", \
-							"<span class='userdanger'>You try to throw up, but there's nothing in your stomach!</span>")
+			visible_message("<span class='warning'>[src] ma suche odruchy wymiotne!</span>", \
+							"<span class='userdanger'>Próbujesz zwymiotować, ale masz pusty żołądek!</span>")
 		if(stun)
 			Paralyze(30)
 			Knockdown(180)
@@ -431,13 +431,13 @@
 
 	if(is_mouth_covered()) //make this add a blood/vomit overlay later it'll be hilarious
 		if(message)
-			visible_message("<span class='danger'>[src] throws up all over [p_them()]self!</span>", \
-							"<span class='userdanger'>You throw up all over yourself!</span>")
+			visible_message("<span class='danger'>[src] wymiotuje na siebie!</span>", \
+							"<span class='userdanger'>Wymiotujesz na siebie!</span>")
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "vomit", /datum/mood_event/vomitself)
 		distance = 0
 	else
 		if(message)
-			visible_message("<span class='danger'>[src] throws up!</span>", "<span class='userdanger'>You throw up!</span>")
+			visible_message("<span class='danger'>[src] wymiotuje!</span>", "<span class='userdanger'>Wymiotujesz!</span>")
 			if(!isflyperson(src))
 				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "vomit", /datum/mood_event/vomit)
 
@@ -845,7 +845,7 @@
 			O.Remove(src)
 			O.forceMove(drop_location())
 	if(organs_amt)
-		to_chat(user, "<span class='notice'>You retrieve some of [src]\'s internal organs!</span>")
+		to_chat(user, "<span class='notice'>Wyciągasz część organów wewnętrznych [src]!</span>")
 
 /mob/living/carbon/ExtinguishMob()
 	for(var/X in get_equipped_items())
@@ -1040,7 +1040,7 @@
 			dna.features["body_model"] = ngender
 			if(!silent)
 				var/adj = ngender == MALE ? "masculine" : "feminine"
-				visible_message("<span class='boldnotice'>[src] suddenly looks more [adj]!</span>", "<span class='boldwarning'>You suddenly feel more [adj]!</span>")
+				visible_message("<span class='boldnotice'>[src] nagle wygląda na bardziej [adj]!</span>", "<span class='boldwarning'>Nagle czujesz się bardziej [adj]!</span>")
 		else if(ngender == NEUTER)
 			dna.features["body_model"] = MALE
 	if(update_icon)

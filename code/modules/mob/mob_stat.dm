@@ -303,7 +303,7 @@
 				message_admins("[usr.client] attempted to interact with the MC without sufficient perms.")
 				return
 			if(!target)
-				to_chat(usr, "<span class='warning'>Could not locate target, report this!</span>")
+				to_chat(usr, "<span class='warning'>Nie można znaleźć celu, zgłoś to!</span>")
 				log_runtime("[usr] attempted to interact with a statClickDebug, but was unsuccessful due to the target not existing.")
 				return
 			usr.client.debug_variables(target)
@@ -331,9 +331,9 @@
 					if(client.current_ticket)
 						client.current_ticket.MessageNoRecipient(message)
 					else
-						to_chat(src, "<span class='warning'>Your issue has already been resolved!</span>")
+						to_chat(src, "<span class='warning'>Twoje zgłoszenie zostało już rozwiązane!</span>")
 				else
-					to_chat(src, "<span class='warning'>You are sending messages too fast!</span>")
+					to_chat(src, "<span class='warning'>Wysyłasz wiadomości za szybko!</span>")
 		if("start_br")
 			if(client.holder && check_rights(R_FUN))
 				client.battle_royale()

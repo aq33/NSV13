@@ -59,9 +59,9 @@
 	return
 
 /mob/living/carbon/alien/larva/stripPanelUnequip(obj/item/what, mob/who)
-	to_chat(src, "<span class='warning'>You don't have the dexterity to do this!</span>")
+	to_chat(src, "<span class='warning'>Nie masz do tego dość zręczności!</span>")
 	return
 
 /mob/living/carbon/alien/larva/stripPanelEquip(obj/item/what, mob/who)
-	to_chat(src, "<span class='warning'>You don't have the dexterity to do this!</span>")
+	to_chat(src, "<span class='warning'>Nie masz do tego dość zręczności!</span>")
 	return

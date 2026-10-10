@@ -150,7 +150,7 @@
   * Return the desc of this mob for a photo
   */
 /mob/proc/get_photo_description(obj/item/camera/camera)
-	return "You can also see a ... thing?"
+	return "Widzisz też... coś?"
 
 /**
   * Show a message to this mob (visual or audible)
@@ -185,7 +185,7 @@
 	// voice muffling
 	if(stat == UNCONSCIOUS)
 		if(type & MSG_AUDIBLE) //audio
-			to_chat(src, "<I>... You can almost hear something ...</I>")
+			to_chat(src, "<I>...Prawie coś słyszysz...</I>")
 		return
 	to_chat(src, msg, avoid_highlighting = avoid_highlighting)
 	return .
@@ -406,7 +406,7 @@
 		if(qdel_on_fail)
 			qdel(W)
 		else if(!disable_warning)
-			to_chat(src, "<span class='warning'>You are unable to equip that!</span>")
+			to_chat(src, "<span class='warning'>Nie możesz tego założyć!</span>")
 		return FALSE
 	equip_to_slot(W, slot, redraw_mob) //This proc should not ever fail.
 	return TRUE
@@ -555,27 +555,27 @@
 /mob/living/blind_examine_check(atom/examined_thing)
 	//need to be next to something and awake
 	if(!Adjacent(examined_thing) || incapacitated())
-		to_chat(src, "<span class='warning'>Something is there, but you can't see it!</span>")
+		to_chat(src, "<span class='warning'>Coś tam jest, ale tego nie widzisz!</span>")
 		return FALSE
 
 	var/active_item = get_active_held_item()
 	if(active_item && active_item != examined_thing)
-		to_chat(src, "<span class='warning'>Your hands are too full to examine this!</span>")
+		to_chat(src, "<span class='warning'>Masz zbyt zajęte ręce, żeby to obejrzeć!</span>")
 		return FALSE
 
 	//you can only initiate exaimines if you have a hand, it's not disabled, and only as many examines as you have hands
 	/// our active hand, to check if it's disabled/detatched
 	var/obj/item/bodypart/active_hand = has_active_hand()? get_active_hand() : null
 	if(!active_hand || active_hand.is_disabled() || LAZYLEN(do_afters) >= get_num_arms())
-		to_chat(src, "<span class='warning'>You don't have a free hand to examine this!</span>")
+		to_chat(src, "<span class='warning'>Nie masz wolnej ręki, żeby to obejrzeć!</span>")
 		return FALSE
 
 	//you can only queue up one examine on something at a time
 	if(examined_thing in do_afters)
 		return FALSE
 
-	to_chat(src, "<span class='notice'>You start feeling around for something...</span>")
-	visible_message("<span class='notice'> [name] begins feeling around for \the [examined_thing.name]...</span>")
+	to_chat(src, "<span class='notice'>Zaczynasz macać wokół siebie...</span>")
+	visible_message("<span class='notice'> [name] zaczyna macać w poszukiwaniu [examined_thing.name]...</span>")
 
 	/// how long it takes for the blind person to find the thing they're examining
 	var/examine_delay_length = rand(1 SECONDS, 2 SECONDS)
@@ -585,7 +585,7 @@
 		examine_delay_length *= 2
 
 	if(examine_delay_length > 0 && !do_after(src, examine_delay_length, target = examined_thing))
-		to_chat(src, "<span class='notice'>You can't get a good feel for what is there.</span>")
+		to_chat(src, "<span class='notice'>Nie możesz dobrze wyczuć, co tam jest.</span>")
 		return FALSE
 
 	//now we touch the thing we're examining
@@ -709,7 +709,7 @@
 	if(mind)
 		mind.show_memory(src)
 	else
-		to_chat(src, "You don't have a mind datum for some reason, so you can't look at your notes, if you had any.")
+		to_chat(src, "Z jakiegoś powodu nie masz datumu umysłu, więc nie możesz przejrzeć notatek (jeśli jakieś miałeś).")
 
 /**
   * Add a note to the mind datum
@@ -726,7 +726,7 @@
 
 		mind.store_memory(msg)
 	else
-		to_chat(src, "You don't have a mind datum for some reason, so you can't add a note to it.")
+		to_chat(src, "Z jakiegoś powodu nie masz datumu umysłu, więc nie możesz dodać notatki.")
 
 /**
   * Allows you to respawn, abandoning your current mob
@@ -742,12 +742,12 @@
 	if (CONFIG_GET(flag/norespawn))
 		return
 	if ((stat != DEAD || !( SSticker )))
-		to_chat(usr, "<span class='boldnotice'>You must be dead to use this!</span>")
+		to_chat(usr, "<span class='boldnotice'>Musisz być martwy, żeby tego użyć!</span>")
 		return
 
 	log_game("[key_name(usr)] used abandon mob.")
 
-	to_chat(usr, "<span class='boldnotice'>Please roleplay correctly!</span>")
+	to_chat(usr, "<span class='boldnotice'>Odgrywaj postać porządnie!</span>")
 
 	if(!client)
 		log_game("[key_name(usr)] AM failed due to disconnect.")
@@ -914,7 +914,7 @@
 /mob/proc/swap_hand()
 	var/obj/item/held_item = get_active_held_item()
 	if(SEND_SIGNAL(src, COMSIG_MOB_SWAP_HANDS, held_item) & COMPONENT_BLOCK_SWAP)
-		to_chat(src, "<span class='warning'>Your other hand is too busy holding [held_item].</span>")
+		to_chat(src, "<span class='warning'>Twoja druga ręka jest zajęta trzymaniem [held_item].</span>")
 		return FALSE
 	return TRUE
 
@@ -1183,10 +1183,10 @@
 ///Can this mob read (is literate and not blind)
 /mob/proc/can_read(obj/O)
 	if(is_blind(src))
-		to_chat(src, "<span class='warning'>As you are trying to read [O], you suddenly feel very stupid!</span>")
+		to_chat(src, "<span class='warning'>Gdy próbujesz przeczytać [O], nagle czujesz się bardzo głupi!</span>")
 		return
 	if(!is_literate())
-		to_chat(src, "<span class='notice'>You try to read [O], but can't comprehend any of it.</span>")
+		to_chat(src, "<span class='notice'>Próbujesz przeczytać [O], ale nic z tego nie rozumiesz.</span>")
 		return
 	return TRUE
 

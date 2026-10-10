@@ -17,7 +17,7 @@
 	leap_icon.icon_state = "leap_[leap_on_click ? "on" : "off"]"
 	update_icons()
 	if(message)
-		to_chat(src, "<span class='noticealien'>You will now [leap_on_click ? "leap at" : "slash at"] enemies!</span>")
+		to_chat(src, "<span class='noticealien'>Będziesz teraz [leap_on_click ? "skakać na" : "ciąć"] wrogów!</span>")
 
 /mob/living/carbon/alien/humanoid/hunter/ClickOn(atom/A, params)
 	face_atom(A)
@@ -33,11 +33,11 @@
 		return
 
 	if(!(COOLDOWN_FINISHED(src, pounce_cooldown)))
-		to_chat(src, "<span class='alertalien'>You are too fatigued to pounce right now!</span>")
+		to_chat(src, "<span class='alertalien'>Jesteś zbyt zmęczony, żeby teraz skoczyć!</span>")
 		return
 
 	if(!has_gravity() || !A.has_gravity())
-		to_chat(src, "<span class='alertalien'>It is unsafe to leap without gravity!</span>")
+		to_chat(src, "<span class='alertalien'>Skakanie bez grawitacji jest niebezpieczne!</span>")
 		//It's also extremely buggy visually, so it's balance+bugfix
 		return
 
@@ -67,7 +67,7 @@
 				if(H.check_shields(src, 0, "the [name]", attack_type = LEAP_ATTACK))
 					blocked = TRUE
 			if(!blocked)
-				L.visible_message("<span class ='danger'>[src] pounces on [L]!</span>", "<span class ='userdanger'>[src] pounces on you!</span>")
+				L.visible_message("<span class ='danger'>[src] rzuca się na [L]!</span>", "<span class ='userdanger'>[src] rzuca się na ciebie!</span>")
 				L.Paralyze(100)
 				sleep(2)//Runtime prevention (infinite bump() calls on hulks)
 				step_towards(src, L)
@@ -76,7 +76,7 @@
 
 			toggle_leap(FALSE)
 		else if(hit_atom.density && !hit_atom.CanPass(src))
-			visible_message("<span class ='danger'>[src] smashes into [hit_atom]!</span>", "<span class ='alertalien'>[src] smashes into [hit_atom]!</span>")
+			visible_message("<span class ='danger'>[src] wpada z impetem na [hit_atom]!</span>", "<span class ='alertalien'>[src] wpada z impetem na [hit_atom]!</span>")
 			Paralyze(40, 1, 1)
 
 		if(leaping)

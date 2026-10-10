@@ -67,22 +67,22 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 	switch(csa.len)
 		if(0)
 			remove_verb(/mob/dead/proc/server_hop)
-			to_chat(src, "<span class='notice'>Server Hop has been disabled.</span>")
+			to_chat(src, "<span class='notice'>Zmiana serwera jest wyłączona.</span>")
 		if(1)
 			pick = csa[1]
 		else
-			pick = input(src, "Pick a server to jump to", "Server Hop") as null|anything in csa
+			pick = input(src, "Wybierz serwer, na który chcesz przejść", "Zmiana serwera") as null|anything in csa
 
 	if(!pick)
 		return
 
 	var/addr = csa[pick]
 
-	if(alert(src, "Jump to server [pick] ([addr])?", "Server Hop", "Yes", "No") != "Yes")
+	if(alert(src, "Przejść na serwer [pick] ([addr])?", "Zmiana serwera", "Yes", "No") != "Yes")
 		return
 
 	var/client/C = client
-	to_chat(C, "<span class='notice'>Sending you to [pick].</span>")
+	to_chat(C, "<span class='notice'>Przekierowanie na [pick].</span>")
 	new /atom/movable/screen/splash(null, C)
 
 	notransform = TRUE

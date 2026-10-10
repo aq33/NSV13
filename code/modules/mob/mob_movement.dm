@@ -171,7 +171,7 @@
 			return TRUE
 		else if(mob.restrained(ignore_grab = 1))
 			move_delay = world.time + 10
-			to_chat(src, "<span class='warning'>You're restrained! You can't move!</span>")
+			to_chat(src, "<span class='warning'>Jesteś skrępowany! Nie możesz się ruszać!</span>")
 			return TRUE
 		else if(mob.pulledby.grab_state == GRAB_AGGRESSIVE)
 			move_delay = world.time + 10
@@ -205,7 +205,7 @@
 			if(T)
 				L.forceMove(T)
 			else
-				to_chat(L, "<span class='warning'>There's nothing in that direction!</span>")
+				to_chat(L, "<span class='warning'>W tym kierunku nic nie ma!</span>")
 			L.setDir(direct)
 		if(INCORPOREAL_MOVE_SHADOW)
 			if(prob(50))
@@ -253,21 +253,21 @@
 			var/turf/open/floor/stepTurf = get_step_multiz(mobloc, direct)
 			if(stepTurf)
 				for(var/obj/effect/decal/cleanable/food/salt/S in stepTurf)
-					to_chat(L, "<span class='warning'>[S] bars your passage!</span>")
+					to_chat(L, "<span class='warning'>[S] zagradza ci drogę!</span>")
 					if(isrevenant(L))
 						var/mob/living/simple_animal/revenant/R = L
 						R.reveal(20)
 						R.stun(20)
 					return
 				if(stepTurf.flags_1 & NOJAUNT_1)
-					to_chat(L, "<span class='warning'>Some strange aura is blocking the way.</span>")
+					to_chat(L, "<span class='warning'>Jakaś dziwna aura blokuje przejście.</span>")
 					return
 				if(locate(/obj/effect/blessing, stepTurf))
-					to_chat(L, "<span class='warning'>Holy energies block your path!</span>")
+					to_chat(L, "<span class='warning'>Święte energie blokują ci drogę!</span>")
 					return
 				L.forceMove(stepTurf)
 			else
-				to_chat(L, "<span class='warning'>There's nothing in that direction!</span>")
+				to_chat(L, "<span class='warning'>W tym kierunku nic nie ma!</span>")
 			L.setDir(direct)
 
 		if(INCORPOREAL_MOVE_EMINENCE) //Incorporeal move for emincence. Blocks move like Jaunt but lets it pass through clockwalls
@@ -275,18 +275,18 @@
 			var/turf/loccheck = get_turf(stepTurf)
 			if(stepTurf)
 				for(var/obj/effect/decal/cleanable/food/salt/S in stepTurf)
-					to_chat(L, "<span class='warning'>[S] bars your passage!</span>")
+					to_chat(L, "<span class='warning'>[S] zagradza ci drogę!</span>")
 					return
 				if(stepTurf.flags_1 & NOJAUNT_1)
 					if(!is_reebe(loccheck.z))
-						to_chat(L, "<span class='warning'>Some strange aura is blocking the way.</span>")
+						to_chat(L, "<span class='warning'>Jakaś dziwna aura blokuje przejście.</span>")
 						return
 				if(locate(/obj/effect/blessing, stepTurf))
-					to_chat(L, "<span class='warning'>Holy energies block your path!</span>")
+					to_chat(L, "<span class='warning'>Święte energie blokują ci drogę!</span>")
 					return
 				L.forceMove(stepTurf)
 			else
-				to_chat(L, "<span class='warning'>There's nothing in that direction!</span>")
+				to_chat(L, "<span class='warning'>W tym kierunku nic nie ma!</span>")
 			L.setDir(direct)
 	return TRUE
 
@@ -306,7 +306,7 @@
 	if(backup)
 		if(istype(backup) && movement_dir && !backup.anchored)
 			if(backup.newtonian_move(turn(movement_dir, 180), instant = TRUE)) //You're pushing off something movable, so it moves
-				to_chat(src, "<span class='info'>You push off of [backup] to propel yourself.</span>")
+				to_chat(src, "<span class='info'>Odpychasz się od [backup], żeby się rozpędzić.</span>")
 		return TRUE
 	return FALSE
 
@@ -500,11 +500,11 @@
 				AI.eyeobj.forceMove(T)
 				return TRUE
 			else
-				to_chat(AI, "<span class='warning'>You cannot move here</span>")
+				to_chat(AI, "<span class='warning'>Nie możesz się tu przemieścić</span>")
 		return FALSE
 
 	if(isturf(loc) && zMove(UP, TRUE)) // NSV13 - No moving Z while inside another object
-		to_chat(src, "<span class='notice'>You move upwards.</span>")
+		to_chat(src, "<span class='notice'>Przemieszczasz się w górę.</span>")
 
 ///Moves a mob down a z level
 /mob/verb/down()
@@ -521,11 +521,11 @@
 				AI.eyeobj.forceMove(T)
 				return TRUE
 			else
-				to_chat(AI, "<span class='warning'>You cannot move here</span>")
+				to_chat(AI, "<span class='warning'>Nie możesz się tu przemieścić</span>")
 		return FALSE
 
 	if(isturf(loc) && zMove(DOWN, TRUE)) // NSV13 - No moving Z while inside another object
-		to_chat(src, "<span class='notice'>You move down.</span>")
+		to_chat(src, "<span class='notice'>Przemieszczasz się w dół.</span>")
 
 ///Move a mob between z levels, if it's valid to move z's on this turf
 /mob/proc/zMove(dir, feedback = FALSE)
@@ -538,11 +538,11 @@
 		return
 	if(!target)
 		if(feedback)
-			to_chat(src, "<span class='warning'>There's nothing in that direction!</span>")
+			to_chat(src, "<span class='warning'>W tym kierunku nic nie ma!</span>")
 		return FALSE
 	if(!canZMove(dir, target))
 		if(feedback)
-			to_chat(src, "<span class='warning'>You couldn't move there!</span>")
+			to_chat(src, "<span class='warning'>Nie udało ci się tam przemieścić!</span>")
 		return FALSE
 	forceMove(target)
 	return TRUE

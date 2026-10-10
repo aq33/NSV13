@@ -53,7 +53,7 @@ GLOBAL_LIST_INIT(strippable_monkey_items, create_strippable_list(list(
 		var/cap = CONFIG_GET(number/max_cube_monkeys)
 		if (LAZYLEN(SSmobs.cubemonkeys) > cap)
 			if (spawner)
-				to_chat(spawner, "<span class='warning'>Bluespace harmonics prevent the spawning of more than [cap] monkeys on the station at one time!</span>")
+				to_chat(spawner, "<span class='warning'>Harmoniczne bluespace nie pozwalają na więcej niż [cap] małp na statku naraz!</span>")
 			return INITIALIZE_HINT_QDEL
 		SSmobs.cubemonkeys += src
 

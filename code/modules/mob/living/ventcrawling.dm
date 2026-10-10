@@ -10,19 +10,19 @@ GLOBAL_LIST_INIT(ventcrawl_machinery, typecacheof(list(
 	if(!ventcrawler || !Adjacent(A))
 		return
 	if(stat)
-		to_chat(src, "You must be conscious to do this!")
+		to_chat(src, "Musisz być przytomny, żeby to zrobić!")
 		return
 	if(IsStun() || IsParalyzed())
-		to_chat(src, "You can't vent crawl while you're stunned!")
+		to_chat(src, "Nie możesz chodzić wywietrznikami, będąc ogłuszonym!")
 		return
 	if(restrained())
-		to_chat(src, "You can't vent crawl while you're restrained!")
+		to_chat(src, "Nie możesz chodzić wywietrznikami, będąc skrępowanym!")
 		return
 	if(has_buckled_mobs())
-		to_chat(src, "You can't vent crawl with other creatures on you!")
+		to_chat(src, "Nie możesz chodzić wywietrznikami z innymi istotami na sobie!")
 		return
 	if(buckled)
-		to_chat(src, "You can't vent crawl while buckled!")
+		to_chat(src, "Nie możesz chodzić wywietrznikami, będąc przypiętym!")
 		return
 
 	var/obj/machinery/atmospherics/components/vent_found
@@ -48,7 +48,7 @@ GLOBAL_LIST_INIT(ventcrawl_machinery, typecacheof(list(
 	if(vent_found)
 		var/datum/pipeline/vent_found_parent = vent_found.parents[1]
 		if(vent_found_parent && (vent_found_parent.members.len || vent_found_parent.other_atmos_machines))
-			visible_message("<span class='notice'>[src] begins climbing into the ventilation system.</span>" ,"<span class='notice'>You begin climbing into the ventilation system.</span>")
+			visible_message("<span class='notice'>[src] zaczyna wchodzić do systemu wentylacji.</span>" ,"<span class='notice'>Zaczynasz wchodzić do systemu wentylacji.</span>")
 
 			if(!do_after(src, 25, target = vent_found))
 				return
@@ -65,17 +65,17 @@ GLOBAL_LIST_INIT(ventcrawl_machinery, typecacheof(list(
 					failed = 1
 					break
 				if(failed)
-					to_chat(src, "<span class='warning'>You can't crawl around in the ventilation ducts with items!</span>")
+					to_chat(src, "<span class='warning'>Nie możesz pełzać po kanałach wentylacyjnych z przedmiotami!</span>")
 					return
 
-			visible_message("<span class='notice'>[src] scrambles into the ventilation ducts!</span>","<span class='notice'>You climb into the ventilation ducts.</span>")
+			visible_message("<span class='notice'>[src] wczołguje się do kanałów wentylacyjnych!</span>","<span class='notice'>Wchodzisz do kanałów wentylacyjnych.</span>")
 			forceMove(vent_found)
 	else
-		to_chat(src, "<span class='warning'>This ventilation duct is not connected to anything!</span>")
+		to_chat(src, "<span class='warning'>Ten kanał wentylacyjny do niczego nie prowadzi!</span>")
 
 /mob/living/simple_animal/slime/handle_ventcrawl(atom/A)
 	if(buckled)
-		to_chat(src, "<i>I can't vent crawl while feeding...</i>")
+		to_chat(src, "<i>Nie mogę chodzić wywietrznikami podczas jedzenia...</i>")
 		return
 	..()
 

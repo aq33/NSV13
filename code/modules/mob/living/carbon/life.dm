@@ -530,16 +530,16 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Ej stary, co jeśli byśmy, eee, 
 		if(drunkenness >= 81)
 			adjustToxLoss(1)
 			if(prob(5) && !stat)
-				to_chat(src, "<span class='warning'>Maybe you should lie down for a bit.</span>")
+				to_chat(src, "<span class='warning'>Może warto się na chwilę położyć.</span>")
 
 		if(drunkenness >= 91)
 			adjustToxLoss(1)
 			adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.4)
 			if(prob(20) && !stat)
 				if(SSshuttle.emergency.mode == SHUTTLE_DOCKED && is_station_level(z)) //QoL mainly
-					to_chat(src, "<span class='warning'>You're so tired, but you can't miss that shuttle.</span>")
+					to_chat(src, "<span class='warning'>Jesteś taki zmęczony, ale nie możesz przegapić promu.</span>")
 				else
-					to_chat(src, "<span class='warning'>Just a quick nap.</span>")
+					to_chat(src, "<span class='warning'>Tylko krótka drzemka.</span>")
 					Sleeping(900)
 
 		if(drunkenness >= 101)
@@ -586,7 +586,7 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Ej stary, co jeśli byśmy, eee, 
 		return
 	adjustToxLoss(4, TRUE,  TRUE)
 	if(prob(30))
-		to_chat(src, "<span class='warning'>You feel a stabbing pain in your abdomen!</span>")
+		to_chat(src, "<span class='warning'>Czujesz kłujący ból w brzuchu!</span>")
 
 /////////////////////////////////////
 //MONKEYS WITH TOO MUCH CHOLOESTROL//
