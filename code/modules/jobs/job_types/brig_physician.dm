@@ -6,7 +6,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "główny lekarz"
+	supervisors = JOB_NAME_CHIEFMEDICALOFFICER
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 0

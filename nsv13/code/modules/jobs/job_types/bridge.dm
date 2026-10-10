@@ -7,7 +7,7 @@
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
-	supervisors = "pierwszy oficer"
+	supervisors = JOB_NAME_HEADOFPERSONNEL
 	selection_color = "#ddddff"
 	req_admin_notify = 1
 	minimal_player_age = 2

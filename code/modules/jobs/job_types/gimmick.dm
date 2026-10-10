@@ -28,7 +28,7 @@
 /datum/job/gimmick/barber
 	title = JOB_NAME_BARBER
 	flag = BARBER
-	supervisors = "szef personelu"
+	supervisors = JOB_NAME_HEADOFPERSONNEL
 	department_head = list(JOB_NAME_HEADOFPERSONNEL)
 	department_flag = CIVILIAN
 	gimmick = TRUE
@@ -63,7 +63,7 @@
 /datum/job/gimmick/stage_magician
 	title = JOB_NAME_STAGEMAGICIAN
 	flag = MAGICIAN
-	supervisors = "szef personelu"
+	supervisors = JOB_NAME_HEADOFPERSONNEL
 	department_head = list(JOB_NAME_HEADOFPERSONNEL)
 	department_flag = CIVILIAN
 	gimmick = TRUE
@@ -101,7 +101,7 @@
 /datum/job/gimmick/psychiatrist
 	title = JOB_NAME_PSYCHIATRIST
 	flag = PSYCHIATRIST
-	supervisors = "główny lekarz"
+	supervisors = JOB_NAME_CHIEFMEDICALOFFICER
 	department_head = list(JOB_NAME_CHIEFMEDICALOFFICER)
 	department_flag = MEDSCI
 	gimmick = TRUE

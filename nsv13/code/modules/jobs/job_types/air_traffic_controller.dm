@@ -6,7 +6,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Master At Arms"
+	supervisors = JOB_NAME_MASTERATARMS
 	selection_color = "#ffd1a2"
 	chat_color = "#2681a5"
 	exp_requirements = 0
