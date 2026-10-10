@@ -301,7 +301,7 @@
 	random_gain = FALSE
 
 /datum/brain_trauma/mild/phobia/supernatural
-	phobia_type = "the supernatural"
+	phobia_type = "siły nadprzyrodzone"
 	random_gain = FALSE
 
 /datum/brain_trauma/mild/phobia/aliens

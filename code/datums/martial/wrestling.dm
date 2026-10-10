@@ -289,7 +289,7 @@
 				fluff = "atomic [fluff]"
 
 		D.visible_message("<span class='danger'><B>[A] [fluff] [D]!</B></span>", \
-						"<span class='userdanger'>[A] [fluff] you!</span>", null, COMBAT_MESSAGE_RANGE)
+						"<span class='userdanger'>[A] [fluff] cię!</span>", null, COMBAT_MESSAGE_RANGE)
 		playsound(A.loc, "swing_hit", 50, 1)
 		if (!D.stat)
 			D.emote("scream")

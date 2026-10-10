@@ -428,21 +428,7 @@
 
 /obj/item/paper/bluespace_tap
 	name = "paper- 'The Experimental NT Bluespace Harvester - Mining other universes for science and profit!'"
-	default_raw_text = "<h1>Important Instructions!</h1>Please follow all setup instructions to ensure proper operation. <br>\
-	1. Create a wire node with ample access to spare power. The device operates independently of APCs. <br>\
-	2. Create a machine frame as normal on the wire node, taking into account the device's dimensions (3 by 3 meters). <br>\
-	3. Insert wiring, circuit board and required components and finish construction according to NT engineering standards. <br>\
-	4. Ensure the device is connected to the proper power network and the network contains sufficient power. <br>\
-	5. Set machine to desired level. Check periodically on machine progress. <br>\
-	6. Optionally, spend earned points on fun and exciting rewards. <br><hr>\
-	<h2>Operational Principles</h2> \
-	<p>The Bluespace Harvester is capable of accepting a nearly limitless amount of power to search other universes for valuables to recover. The speed of this search is controlled via the 'level' control of the device. \
-	While it can be run on a low level by almost any power generation system, higher levels require work by a dedicated engineering team to power. \
-	As we are interested in testing how the device performs under stress, we wish to encourage you to stress-test it and see how much power you can provide it. \
-	For this reason, total shift point production will be calculated and announced at shift end. High totals may result in bonus payments to members of the Engineering department. <p>\
-	<p>NT Science Directorate, Extradimensional Exploitation Research Group</p> \
-	<p><small>Device highly experimental. Not for sale. Do not operate near small children or vital NT assets. Do not tamper with machine. In case of existential dread, stop machine immediately. \
-	Please document any and all extradimensional incursions. In case of imminent death, please leave said documentation in plain sight for clean-up teams to recover.</small></p>"
+	default_raw_text = "<h1>Ważne instrukcje!</h1>Postępuj zgodnie ze wszystkimi instrukcjami montażu, by zapewnić prawidłowe działanie. <br>1. Utwórz węzeł przewodu z dużym dostępem do zapasowej mocy. Urządzenie działa niezależnie od APC. <br>2. Zbuduj na węźle przewodu zwykłą ramę maszyny, uwzględniając wymiary urządzenia (3 na 3 metry). <br>3. Włóż okablowanie, płytkę i wymagane komponenty i dokończ budowę zgodnie ze standardami inżynieryjnymi NT. <br>4. Upewnij się, że urządzenie jest podłączone do właściwej sieci energetycznej, a sieć ma dość mocy. <br>5. Ustaw maszynę na żądany poziom. Okresowo sprawdzaj postęp maszyny. <br>6. Opcjonalnie wydaj zdobyte punkty na zabawne i ekscytujące nagrody. <br><hr><h2>Zasady działania</h2> <p>Kombajn Bluespace potrafi przyjąć niemal nieograniczoną ilość mocy, by przeszukiwać inne wszechświaty w poszukiwaniu cennych rzeczy do odzyskania. Szybkość wyszukiwania reguluje się „poziomem” urządzenia. Choć na niskim poziomie może go zasilać niemal każdy system wytwarzania energii, wyższe poziomy wymagają pracy oddanego zespołu inżynieryjnego. Ponieważ interesuje nas, jak urządzenie radzi sobie pod obciążeniem, zachęcamy do testów obciążeniowych i sprawdzenia, ile mocy jesteście w stanie mu dostarczyć. Z tego powodu łączna produkcja punktów w trakcie zmiany zostanie obliczona i ogłoszona na jej końcu. Wysokie wyniki mogą skutkować premiami dla członków działu inżynieryjnego. <p><p>Dyrektoriat Naukowy NT, Grupa Badawcza Eksploatacji Międzywymiarowej</p> <p><small>Urządzenie wysoce eksperymentalne. Nie na sprzedaż. Nie używać w pobliżu małych dzieci ani ważnych zasobów NT. Nie ingerować w maszynę. W razie egzystencjalnego lęku natychmiast zatrzymać maszynę. Prosimy dokumentować wszelkie wtargnięcia z innych wymiarów. W razie bliskiej śmierci prosimy zostawić tę dokumentację na widoku, by mogły ją odzyskać ekipy sprzątające.</small></p>"
 
 #undef kW
 #undef MW

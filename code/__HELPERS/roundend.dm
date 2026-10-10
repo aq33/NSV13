@@ -222,7 +222,7 @@
 						if(!C) //Yes, the client can be null here. BYOND moment.
 							break
 						if(CO.check_completion())
-							C?.inc_metabalance(METACOIN_CO_REWARD, reason="Completed your crew objective!")
+							C?.inc_metabalance(METACOIN_CO_REWARD, reason="Wykonałeś swój cel załogi!")
 							break
 
 	to_chat(world, "<BR><BR><BR><span class='big bold'>Runda dobiegła końca.</span>")
@@ -314,7 +314,7 @@
 /datum/controller/subsystem/ticker/proc/standard_reboot()
 	if(ready_for_reboot)
 		if(mode.station_was_nuked)
-			Reboot("Station destroyed by Nuclear Device.", "nuke")
+			Reboot("Stacja zniszczona ładunkiem jądrowym.", "nuke")
 		else
 			Reboot("Round ended.", "proper completion")
 	else
@@ -768,7 +768,7 @@
     var/list/ded = SSblackbox.first_death
     if(ded)
         discordmsg += "First Death: [ded["name"]], [ded["role"]], at [ded["area"]]\n"
-        var/last_words = ded["last_words"] ? "Their last words were: \"[ded["last_words"]]\"\n" : "They had no last words.\n"
+        var/last_words = ded["last_words"] ? "Their last words were: \"[ded["last_words"]]\"\n" : "Nie mieli ostatnich słów.\n"
         discordmsg += "[last_words]\n"
     else
         discordmsg += "Nobody died!\n"

@@ -693,7 +693,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	ambience_index = AMBIENCE_HOLY
 	flags_1 = NONE
 	clockwork_warp_allowed = FALSE
-	clockwork_warp_fail = "The consecration here prevents you from warping in."
+	clockwork_warp_fail = "Poświęcenie tego miejsca nie pozwala ci się tu przenieść."
 	sound_environment = SOUND_AREA_LARGE_ENCLOSED
 
 /area/chapel/main
@@ -780,7 +780,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Pomieszczenie Generatora Grawitacyjnego"
 	icon_state = "grav_gen"
 	clockwork_warp_allowed = FALSE
-	clockwork_warp_fail = "The gravitons generated here could throw off your warp's destination and possibly throw you into deep space."
+	clockwork_warp_fail = "Generowane tu grawitony mogą zaburzyć cel twojego przeniesienia i wyrzucić cię w głęboki kosmos."
 
 /area/engine/storage
 	name = "Magazyn Inżynieryjny"
@@ -1523,7 +1523,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/tcommsat
 	clockwork_warp_allowed = FALSE
-	clockwork_warp_fail = "For safety reasons, warping here is disallowed; the radio and bluespace noise could cause catastrophic results."
+	clockwork_warp_fail = "Ze względów bezpieczeństwa przenoszenie się tutaj jest zabronione; zakłócenia radiowe i bluespace mogłyby mieć katastrofalne skutki."
 	ambientsounds = list('sound/ambience/ambisin2.ogg', 'sound/ambience/signal.ogg', 'sound/ambience/signal.ogg', 'sound/ambience/ambigen10.ogg', 'sound/ambience/ambitech.ogg',\
 											'sound/ambience/ambitech2.ogg', 'sound/ambience/ambitech3.ogg', 'sound/ambience/ambimystery.ogg')
 	network_root_id = STATION_NETWORK_ROOT	// They should of unpluged the router before they left
