@@ -90,6 +90,17 @@
 			continue
 		var/prefix = "[(client in targets) ? "" : "(R)"]LOOC"
 		to_chat(client, "<span class='looc'><span class='prefix'>[prefix]:</span> <EM>[ADMIN_LOOKUPFLW(mob)]:</EM> <span class='message'>[msg]</span></span>", avoid_highlighting = (client == src))
+		if(in_view[get_turf(client.mob)]) // AQ EDIT - port BeeStation #12918: admini w zasięgu też widzą LOOC nad głową
+			targets |= client
+
+	// AQ EDIT START - port BeeStation #12918: LOOC nad głową mówiącego
+	var/list/client/runechat_targets = list()
+	for(var/client/client as anything in targets)
+		if((client.prefs.toggles & PREFTOGGLE_RUNECHAT_GLOBAL) && !(client.prefs.chat_toggles & CHAT_DISABLE_LOOC_RUNECHAT))
+			runechat_targets += client
+	if(length(runechat_targets))
+		new /datum/chatmessage("\[LOOC: [raw_msg]\]", mob, runechat_targets, null, list("looc"))
+	// AQ EDIT END
 
 /proc/toggle_looc(toggle = null) //nsv13 - adds a toggle for looc
 	if(toggle != null) //if we're specifically en/disabling looc

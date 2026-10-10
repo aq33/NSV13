@@ -73,6 +73,7 @@
 #define CHAT_GHOSTRADIO 	(1<<10)
 #define CHAT_BANKCARD       (1<<11)
 #define CHAT_GHOSTLAWS	    (1<<12)
+#define CHAT_DISABLE_LOOC_RUNECHAT (1<<13) // AQ EDIT - port BeeStation #12918; flaga wyłączająca, więc LOOC nad głową jest domyślnie włączony także dla istniejących zapisów
 
 //nsv13 for below: add chat_looc
 #define TOGGLES_DEFAULT_CHAT (CHAT_OOC|CHAT_LOOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_PULLR|CHAT_GHOSTWHISPER|CHAT_GHOSTPDA|CHAT_GHOSTRADIO|CHAT_BANKCARD|CHAT_GHOSTLAWS)

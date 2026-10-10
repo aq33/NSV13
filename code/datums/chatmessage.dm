@@ -51,6 +51,7 @@
 
 #define COLOR_PERSON_UNKNOWN "#999999"
 #define COLOR_CHAT_EMOTE "#727272"
+#define COLOR_CHAT_LOOC "#ffde5c" // AQ EDIT - port BeeStation #12918
 
 /datum/chatmessage_group
 	/// List of clients in this group
@@ -216,6 +217,12 @@
 		var/image/r_icon = image('icons/ui_icons/chat/chat_icons.dmi', icon_state = "emote")
 		LAZYADD(prefixes, "\icon[r_icon]")
 		tgt_color = COLOR_CHAT_EMOTE
+	// AQ EDIT START - port BeeStation #12918: LOOC nad głową
+	else if (extra_classes.Find("looc"))
+		var/image/r_icon = image('aquila/icons/ui_icons/chat/chat_icons.dmi', icon_state = "looc")
+		LAZYADD(prefixes, "\icon[r_icon]")
+		tgt_color = COLOR_CHAT_LOOC
+	// AQ EDIT END
 
 	// Append language icon if the language uses one
 	var/datum/language/language_instance = GLOB.language_datum_instances[language]
@@ -694,3 +701,4 @@
 #undef CHATMESSAGE_CANNOT_HEAR
 #undef CHATMESSAGE_HEAR
 #undef CHATMESSAGE_SHOW_LANGUAGE_ICON
+#undef COLOR_CHAT_LOOC
