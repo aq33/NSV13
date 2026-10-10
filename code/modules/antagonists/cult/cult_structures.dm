@@ -35,8 +35,6 @@
 		. += "<span class='cult italic'>Magia w [src] jest zbyt słaba, znów będzie gotowy za [DisplayTimeText(cooldowntime - world.time)].</span>"
 
 /obj/structure/destructible/cult/examine_status(mob/user)
-	if(iscultist(user) || isobserver(user))
-		var/t_It = p_they(TRUE)
 		var/t_is = p_are()
 		return "<span class='cult'>Stabilność: <b>[round(obj_integrity * 100 / max_integrity)]%</b>.</span>"
 	return ..()
