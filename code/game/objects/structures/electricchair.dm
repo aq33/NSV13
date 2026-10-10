@@ -41,6 +41,6 @@
 		for(var/m in buckled_mobs)
 			var/mob/living/buckled_mob = m
 			buckled_mob.electrocute_act(85, src, 1)
-			to_chat(buckled_mob, "<span class='userdanger'>You feel a deep shock course through your body!</span>")
+			to_chat(buckled_mob, "<span class='userdanger'>Czujesz, jak przez twoje ciało przechodzi silny wstrząs!</span>")
 			addtimer(CALLBACK(buckled_mob, TYPE_PROC_REF(/mob/living, electrocute_act), 85, src, 1), 1)
-	visible_message("<span class='danger'>The electric chair went off!</span>", "<span class='italics'>You hear a deep sharp shock!</span>")
+	visible_message("<span class='danger'>Krzesło elektryczne zostaje uruchomione!</span>", "<span class='italics'>Słyszysz głośny, ostry trzask elektryczny!</span>")

@@ -125,7 +125,7 @@
 			if(!airlock.close())
 				airlock.safe = FALSE
 				airlock.close(3)//yank that bitch shut as hard as you can. this'll be noisy
-				airlock.visible_message("<span class='warning'>[airlock] shudders for a second, and then grinds closed ominously.</span>")
+				airlock.visible_message("<span class='warning'>[airlock] na chwilę drży, po czym złowieszczo się zamyka.</span>")
 		airlock.bolt()
 	stoplag(locktime)
 	for(var/obj/machinery/door/airlock/airlock in airlocks)
@@ -277,7 +277,7 @@
 	name = "odd drawing"
 	desc = "a drawing on the floor, done in crayon. Odd."
 	cultist_name = "Invocation rune"
-	cultist_desc = "tears apart dimensional barriers, allowing a powerful elder being to exert its will upon the world. Requires at least nine invokers" //only shown to cultists, it does not actually require nine invokers if not used by cultists
+	cultist_desc = "rozdziera bariery między wymiarami, pozwalając potężnej pradawnej istocie narzucić swoją wolę światu. Wymaga co najmniej dziewięciu wzywających" //only shown to cultists, it does not actually require nine invokers if not used by cultists
 	invocation = "HONK!!"
 	req_cultists = 9//if a cultist invokes this, it acts like an invocation rune by asking them to check this.
 	icon = 'icons/effects/96x96.dmi'
@@ -292,10 +292,10 @@
 	if(istype(I, /obj/item/melee/cultblade/dagger) && iscultist(user))
 		SEND_SOUND(user,'sound/items/sheath.ogg')
 		if(do_after(user, 15, target = src))
-			to_chat(user, "<span class='clowntext'>It's not within your power to erase the [lowertext(cultist_name)].</span>")
+			to_chat(user, "<span class='clowntext'>Nie masz mocy, by zmazać runę [lowertext(cultist_name)].</span>")
 	else if(istype(I, /obj/item/nullrod))
-		user.say("BEGONE FOUL MAGIKS!!", forced = "nullrod")
-		to_chat(user, "<span class='danger'>You try to disrupt the magic of [src] with the [I], and nothing happens to the crude crayon markings. You feel foolish.</span>")
+		user.say("PRECZ, PLUGAWA MAGIO!!", forced = "nullrod")
+		to_chat(user, "<span class='danger'>Próbujesz zakłócić magię [src] za pomocą [I], ale z prymitywnymi bazgrołami kredką nic się nie dzieje. Czujesz się głupio.</span>")
 
 /obj/effect/rune/cluwne/attack_hand(mob/living/user)//this is where we check if someone is able to use the rune
 	var/cluwne = FALSE
@@ -307,33 +307,33 @@
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(HAS_TRAIT(H, TRAIT_CLUMSY) || H.job == JOB_NAME_CLOWN || H.dna.check_mutation(CLUWNEMUT))
-				to_chat(user, "<span class='warning'>We need a connection! One of the honkmother's manifested forms!</span>")
+				to_chat(user, "<span class='warning'>Potrzebujemy połączenia! Jednej z objawionych postaci Matki Honk!</span>")
 			else
-				to_chat(user, "<span class='warning'>You touch the crayon drawing, and feel somewhat foolish.</span>")
+				to_chat(user, "<span class='warning'>Dotykasz rysunku kredką i czujesz się trochę głupio.</span>")
 		return
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if((HAS_TRAIT(H, TRAIT_MUTE)) || H.silent)// NO MIMES
-			to_chat(user, "<span class='warning'>The quiet cannot comprehend [src].</span>")
+			to_chat(user, "<span class='warning'>Cisza nie potrafi pojąć [src].</span>")
 			return
 		if(HAS_TRAIT(H, TRAIT_LAW_ENFORCEMENT_METABOLISM) || HAS_TRAIT(H, TRAIT_MINDSHIELD))// NO SHITSEC
-			to_chat(user, "<span class='warning'>You're too disgusted by [src] to even consider touching it.</span>")
+			to_chat(user, "<span class='warning'>[src] budzi w tobie takie obrzydzenie, że nawet nie myślisz o dotknięciu.</span>")
 			return
 		if(HAS_TRAIT(H, TRAIT_CLUMSY) || H.job == JOB_NAME_CLOWN || H.dna.check_mutation(CLUWNEMUT))
 			var/list/invokers = can_invoke(user)
 			if(invokers.len >= 5)
-				to_chat(user, "<span class='warning'>Honestly, this is so simple even a baby could do it!</span>")
+				to_chat(user, "<span class='warning'>Szczerze, to takie proste, że nawet niemowlę dałoby radę!</span>")
 				invoke(invokers)
 			else
-				to_chat(user, "<span class='warning'>This would be no fun without at least five people on the rune!</span>")
+				to_chat(user, "<span class='warning'>Bez przynajmniej pięciu osób na runie nie byłoby zabawy!</span>")
 			return
 		if(iscultist(H)) //cultists are good at this kind of magic, so they can use it too
 			var/list/invokers = can_invoke(user)
 			if(invokers.len >= req_cultists)
 				invoke(invokers)
-				to_chat(user, "<span class='warning'>You have a bad feeling about this, but fuck it.</span>")
+				to_chat(user, "<span class='warning'>Masz złe przeczucia, ale pieprzyć to.</span>")
 			return
-	to_chat(user, "<span class='warning'>You touch the crayon drawing, and feel somewhat foolish.</span>")
+	to_chat(user, "<span class='warning'>Dotykasz rysunku kredką i czujesz się trochę głupio.</span>")
 
 /obj/effect/rune/cluwne/attack_animal(mob/living/simple_animal/M)
 	if(rune_in_use)
@@ -343,7 +343,7 @@
 		if(locate(/mob/living/simple_animal/hostile/floor_cluwne) in range(5, src))
 			cluwne = TRUE
 		if(!cluwne)
-			to_chat(M, "<span class='warning'>We need a connection! One of the honkmother's manifested forms!</span>")
+			to_chat(M, "<span class='warning'>Potrzebujemy połączenia! Jednej z objawionych postaci Matki Honk!</span>")
 		else
 			var/list/invokers = can_invoke(M)
 			invoke(invokers)
@@ -367,7 +367,7 @@
 	color = RUNE_COLOR_SUMMON
 	for(var/mob/living/carbon/C in hearers(10, src))
 		C.Stun(350, ignore_canstun = TRUE)
-	priority_announce("Figments of an elder god have been detected in your sector. Exercise extreme caution, and abide by the 'buddy system' at all times.","Central Command Higher Dimensional Affairs", ANNOUNCER_SPANOMALIES)
+	priority_announce("W waszym sektorze wykryto przejawy pradawnego boga. Zachowajcie najwyższą ostrożność i zawsze stosujcie „system par”.","Wydział Spraw Wyżej Wymiarowych Centrali", ANNOUNCER_SPANOMALIES)
 	message_admins("A dangerous cluwne rune was invoked at [AREACOORD(src)][ADMIN_COORDJMP(src)]")
 	log_game("A dangerous cluwne rune was invoked at [AREACOORD(src)][ADMIN_COORDJMP(src)]")
 	stoplag(315)
@@ -381,7 +381,7 @@
 			cluwne.stage = 4
 			if(prob(75))
 				cluwne.delete_after_target_killed = TRUE
-			to_chat(H, "<span class='clowntext'>YOU'RE MINE!</span>")
+			to_chat(H, "<span class='clowntext'>JESTEŚ MÓJ!</span>")
 			message_admins("A floor cluwne has been spawned by rune at [AREACOORD(src)][ADMIN_COORDJMP(src)] following [ADMIN_LOOKUPFLW(H)]. It [cluwne.delete_after_target_killed ? "will" : "will not"] kill additional people")
 			log_game("A floor cluwne has been spawned by rune at [AREACOORD(src)] following [ADMIN_LOOKUP(H)]. It [cluwne.delete_after_target_killed ? "will" : "will not"] kill additional people")
 			H.log_message("was targetted by cluwne from rune", LOG_ATTACK)
@@ -391,7 +391,7 @@
 			cluwne.force_target(H)
 			if(prob(75))
 				cluwne.delete_after_target_killed = TRUE
-			to_chat(H, "<span class='clowntext'>Do you want to play a game?</span>")
+			to_chat(H, "<span class='clowntext'>Zagramy w grę?</span>")
 			message_admins("A floor cluwne has been spawned by rune at [AREACOORD(src)][ADMIN_COORDJMP(src)] following [ADMIN_LOOKUPFLW(H)]. It [cluwne.delete_after_target_killed ? "will" : "will not"] kill additional people")
 			log_game("A floor cluwne has been spawned by rune at [AREACOORD(src)] following [ADMIN_LOOKUP(H)]. It [cluwne.delete_after_target_killed ? "will" : "will not"] kill additional people")
 			H.log_message("was targetted by cluwne from rune", LOG_ATTACK)
@@ -399,8 +399,8 @@
 			H.cluwneify()
 			H.log_message("was cluwned by rune", LOG_ATTACK)
 
-			to_chat(H, "<span class='clowntext'>Join us!</span>")
+			to_chat(H, "<span class='clowntext'>Dołącz do nas!</span>")
 		else
-			to_chat(H, "<span class='clowntext'>You bore me.</span>")
+			to_chat(H, "<span class='clowntext'>Nudzisz mnie.</span>")
 	sound_to_playing_players('sound/misc/honk_echo_distant.ogg')
 	qdel(src)

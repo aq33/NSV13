@@ -75,14 +75,14 @@
 	if (pancakeCount)
 		for(var/obj/item/food/pancakes/ING in contents)
 			ingredients_listed += "[ING.name], "
-		. += "It contains [contents.len?"[ingredients_listed]":"no ingredient, "]on top of a [initial(name)]."
+		. += "Zawiera [contents.len?"[ingredients_listed]":"brak dodatków, "]na [initial(name)]."
 
 /obj/item/food/pancakes/attackby(obj/item/item, mob/living/user, params)
 	if(istype(item, /obj/item/food/pancakes))
 		var/obj/item/food/pancakes/pancake = item
 		if(!user.transferItemToLoc(pancake, src))
 			return
-		to_chat(user, "<span class='notice'>You add the [pancake] to the [src].</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [pancake] do [src].</span>")
 		pancake.name = initial(pancake.name)
 		contents += pancake
 		update_snack_overlays(pancake)

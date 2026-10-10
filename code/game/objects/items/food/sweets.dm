@@ -262,7 +262,7 @@
 		UnregisterSignal(user, COMSIG_LIVING_STATUS_KNOCKDOWN)
 
 /obj/item/food/lollipop/long/proc/on_trip(mob/living/carbon/user)
-	visible_message("<span class='danger'>[user] is impaled by the [src]!</span>", "<span class='danger'>You are impaled by the [src]!</span>")
+	visible_message("<span class='danger'>[src] przebija [user]!</span>", "<span class='danger'>[src] cię przebija!</span>")
 	user.adjustBruteLoss(50)
 	user.adjustOxyLoss(50)
 

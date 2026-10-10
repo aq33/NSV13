@@ -26,24 +26,24 @@
 
 			if(M != user)
 				M.visible_message(\
-					"[user.name] pulls [M.name] free from the sticky nest!",\
-					"<span class='notice'>[user.name] pulls you free from the gelatinous resin.</span>",\
-					"<span class='italics'>You hear squelching...</span>")
+					"[user.name] wyciąga [M.name] z lepkiego gniazda!",\
+					"<span class='notice'>[user.name] wyciąga cię z galaretowatej żywicy.</span>",\
+					"<span class='italics'>Słyszysz mlaskanie...</span>")
 			else
 				M.visible_message(\
-					"<span class='warning'>[M.name] struggles to break free from the gelatinous resin!</span>",\
-					"<span class='notice'>You struggle to break free from the gelatinous resin... (Stay still for two minutes.)</span>",\
-					"<span class='italics'>You hear squelching...</span>")
+					"<span class='warning'>[M.name] próbuje wyrwać się z galaretowatej żywicy!</span>",\
+					"<span class='notice'>Próbujesz wyrwać się z galaretowatej żywicy... (Nie ruszaj się przez dwie minuty.)</span>",\
+					"<span class='italics'>Słyszysz mlaskanie...</span>")
 				if(!do_after(M, 1200, target = src))
 					if(M?.buckled)
-						to_chat(M, "<span class='warning'>You fail to unbuckle yourself!</span>")
+						to_chat(M, "<span class='warning'>Nie udaje ci się uwolnić!</span>")
 					return
 				if(!M.buckled)
 					return
 				M.visible_message(\
-					"<span class='warning'>[M.name] breaks free from the gelatinous resin!</span>",\
-					"<span class='notice'>You break free from the gelatinous resin!</span>",\
-					"<span class='italics'>You hear squelching...</span>")
+					"<span class='warning'>[M.name] wyrywa się z galaretowatej żywicy!</span>",\
+					"<span class='notice'>Wyrywasz się z galaretowatej żywicy!</span>",\
+					"<span class='italics'>Słyszysz mlaskanie...</span>")
 
 			unbuckle_mob(M)
 			add_fingerprint(user)
@@ -62,9 +62,9 @@
 
 	if(buckle_mob(M))
 		M.visible_message(\
-			"[user.name] secretes a thick vile goo, securing [M.name] into [src]!",\
-			"<span class='danger'>[user.name] drenches you in a foul-smelling resin, trapping you in [src]!</span>",\
-			"<span class='italics'>You hear squelching...</span>")
+			"[user.name] wydziela gęstą, obrzydliwą maź, unieruchamiając [M.name] w [src]!",\
+			"<span class='danger'>[user.name] oblewa cię cuchnącą żywicą, więżąc cię w [src]!</span>",\
+			"<span class='italics'>Słyszysz mlaskanie...</span>")
 
 /obj/structure/bed/nest/post_buckle_mob(mob/living/M)
 	M.pixel_y = M.base_pixel_y

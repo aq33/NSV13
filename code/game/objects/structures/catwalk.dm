@@ -20,7 +20,7 @@
 
 
 /obj/structure/lattice/catwalk/deconstruction_hints(mob/user)
-	to_chat(user, "<span class='notice'>The supporting rods look like they could be <b>sliced</b>.</span>")
+	to_chat(user, "<span class='notice'>Pręty podporowe wyglądają, jakby dało się je <b>przeciąć</b>.</span>")
 
 /obj/structure/lattice/attackby(obj/item/C, mob/user, params)
 	if(resistance_flags & INDESTRUCTIBLE)
@@ -28,9 +28,9 @@
 	if(C.tool_behaviour == TOOL_WELDER)
 		if(!C.tool_start_check(user, amount=0))
 			return FALSE
-		balloon_alert(user, "You start slicing through the outer plating..")
+		balloon_alert(user, "Zaczynasz przecinać zewnętrzne poszycie..")
 		if(C.use_tool(src, user, 25, volume=100))
-			balloon_alert(user, "You slice [src].")
+			balloon_alert(user, "Przecinasz [src].")
 			deconstruct()
 			return TRUE
 

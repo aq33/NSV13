@@ -16,7 +16,7 @@
 		petrified_mob = L
 		if(L.buckled)
 			L.buckled.unbuckle_mob(L,force=1)
-		L.visible_message("<span class='warning'>[L]'s skin rapidly turns to marble!</span>", "<span class='userdanger'>Your body freezes up! Can't... move... can't...  think...</span>")
+		L.visible_message("<span class='warning'>Skóra [L] błyskawicznie zamienia się w marmur!</span>", "<span class='userdanger'>Twoje ciało zastyga! Nie mogę... się ruszyć... nie mogę... myśleć...</span>")
 		L.forceMove(src)
 		ADD_TRAIT(L, TRAIT_MUTE, STATUE_MUTE)
 		L.faction += "mimic" //Stops mimics from instaqdeling people in statues
@@ -50,7 +50,7 @@
 			if(petrified_mob)
 				S.mind.transfer_to(petrified_mob)
 				petrified_mob.Paralyze(100)
-				to_chat(petrified_mob, "<span class='notice'>You slowly come back to your senses. You are in control of yourself again!</span>")
+				to_chat(petrified_mob, "<span class='notice'>Powoli dochodzisz do siebie. Znów panujesz nad sobą!</span>")
 		qdel(S)
 
 	for(var/obj/O in src)

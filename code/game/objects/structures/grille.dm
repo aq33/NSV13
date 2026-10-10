@@ -46,9 +46,9 @@ WANTS_POWER_NODE(/obj/structure/grille) // AQ EDIT - Smartwires
 /obj/structure/grille/examine(mob/user)
 	. = ..()
 	if(anchored)
-		. += "<span class='notice'>It's secured in place with <b>screws</b>. The rods look like they could be <b>cut</b> through.</span>"
+		. += "<span class='notice'>Jest przymocowana <b>wkrętami</b>. Pręty wyglądają, jakby dało się je <b>przeciąć</b>.</span>"
 	if(!anchored)
-		. += "<span class='notice'>The anchoring screws are <i>unscrewed</i>. The rods look like they could be <b>cut</b> through.</span>"
+		. += "<span class='notice'>Wkręty mocujące są <i>wykręcone</i>. Pręty wyglądają, jakby dało się je <b>przeciąć</b>.</span>"
 
 /obj/structure/grille/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	switch(the_rcd.mode)
@@ -64,13 +64,13 @@ WANTS_POWER_NODE(/obj/structure/grille) // AQ EDIT - Smartwires
 /obj/structure/grille/rcd_act(mob/user, var/obj/item/construction/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_DECONSTRUCT)
-			to_chat(user, "<span class='notice'>You deconstruct the grille.</span>")
+			to_chat(user, "<span class='notice'>Rozbierasz kratę.</span>")
 			qdel(src)
 			return TRUE
 		if(RCD_WINDOWGRILLE)
 			if(locate(/obj/structure/window) in loc)
 				return FALSE
-			to_chat(user, "<span class='notice'>You construct the window.</span>")
+			to_chat(user, "<span class='notice'>Budujesz okno.</span>")
 			var/obj/structure/window/WD = new the_rcd.window_type(drop_location())
 			WD.setAnchored(TRUE)
 			return TRUE
@@ -150,13 +150,13 @@ WANTS_POWER_NODE(/obj/structure/grille) // AQ EDIT - Smartwires
 			W.play_tool_sound(src, 100)
 			setAnchored(!anchored)
 			user.visible_message("<span class='notice'>[user] [anchored ? "fastens" : "unfastens"] [src].</span>", \
-								 "<span class='notice'>You [anchored ? "fasten [src] to" : "unfasten [src] from"] the floor.</span>")
+								 "<span class='notice'>[anchored ? "Przymocowujesz [src] do" : "Odczepiasz [src] od"] podłogi.</span>")
 			return
 	else if(istype(W, /obj/item/stack/rods) && broken)
 		var/obj/item/stack/rods/R = W
 		if(!shock(user, 90))
-			user.visible_message("<span class='notice'>[user] rebuilds the broken grille.</span>", \
-								 "<span class='notice'>You rebuild the broken grille.</span>")
+			user.visible_message("<span class='notice'>[user] odbudowuje zniszczoną kratę.</span>", \
+								 "<span class='notice'>Odbudowujesz zniszczoną kratę.</span>")
 			new grille_type(src.loc)
 			R.use(1)
 			qdel(src)
@@ -167,16 +167,16 @@ WANTS_POWER_NODE(/obj/structure/grille) // AQ EDIT - Smartwires
 		if (!broken)
 			var/obj/item/stack/ST = W
 			if (ST.get_amount() < 2)
-				to_chat(user, "<span class='warning'>You need at least two sheets of glass for that!</span>")
+				to_chat(user, "<span class='warning'>Do tego potrzebujesz przynajmniej dwóch arkuszy szkła!</span>")
 				return
 			var/dir_to_set = SOUTHWEST
 			if(!anchored)
-				to_chat(user, "<span class='warning'>[src] needs to be fastened to the floor first!</span>")
+				to_chat(user, "<span class='warning'>[src] musi być najpierw przymocowana do podłogi!</span>")
 				return
 			for(var/obj/structure/window/WINDOW in loc)
-				to_chat(user, "<span class='warning'>There is already a window there!</span>")
+				to_chat(user, "<span class='warning'>Tam już jest okno!</span>")
 				return
-			to_chat(user, "<span class='notice'>You start placing the window...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz wstawiać okno...</span>")
 			if(do_after(user,20, target = src))
 				if(!src.loc || !anchored) //Grille broken or unanchored while waiting
 					return
@@ -202,7 +202,7 @@ WANTS_POWER_NODE(/obj/structure/grille) // AQ EDIT - Smartwires
 				WD.setAnchored(FALSE)
 				WD.state = 0
 				ST.use(2)
-				to_chat(user, "<span class='notice'>You place [WD] on [src].</span>")
+				to_chat(user, "<span class='notice'>Wstawiasz [WD] na [src].</span>")
 			return
 //window placing end
 

@@ -31,10 +31,10 @@
 	if(!user.mind)
 		return
 	if(user.mind in linked_minds)
-		user.visible_message("<span class='notice'>[user] reaches out and pinches the flame of [src].</span>", "<span class='warning'>You sever the connection between yourself and [src].</span>")
+		user.visible_message("<span class='notice'>[user] sięga i gasi palcami płomień [src].</span>", "<span class='warning'>Zrywasz więź między sobą a [src].</span>")
 		linked_minds -= user.mind
 	else
-		user.visible_message("<span class='notice'>[user] touches [src]. It seems to respond to [user.p_their()] presence!</span>", "<span class='warning'>You create a connection between you and [src].</span>")
+		user.visible_message("<span class='notice'>[user] dotyka [src]. Zdaje się reagować na jego obecność!</span>", "<span class='warning'>Tworzysz więź między sobą a [src].</span>")
 		linked_minds |= user.mind
 
 	update_icon()
@@ -55,9 +55,9 @@
 /obj/structure/life_candle/examine(mob/user)
 	. = ..()
 	if(linked_minds.len)
-		. += "[src] is active, and linked to [linked_minds.len] souls."
+		. += "[src] jest aktywna i połączona z duszami: [linked_minds.len]."
 	else
-		. += "It is static, still, unmoving."
+		. += "Jest nieruchoma, cicha, niewzruszona."
 
 /obj/structure/life_candle/process()
 	if(!linked_minds.len)

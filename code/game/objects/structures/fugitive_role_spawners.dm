@@ -12,7 +12,7 @@
 
 /obj/effect/mob_spawn/human/fugitive/Initialize(mapload)
 	. = ..()
-	notify_ghosts("Hunters are waking up looking for refugees!", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE, ignore_key = POLL_IGNORE_FUGITIVE)
+	notify_ghosts("Łowcy budzą się, szukając uciekinierów!", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE, ignore_key = POLL_IGNORE_FUGITIVE)
 
 /obj/effect/mob_spawn/human/fugitive/special(mob/living/new_spawn)
 	var/datum/antagonist/fugitive_hunter/fughunter = new
@@ -24,10 +24,10 @@
 
 /obj/effect/mob_spawn/human/fugitive/spacepol
 	name = "police pod"
-	short_desc = "You are a member of the Space Police!"
+	short_desc = "Jesteś członkiem Kosmicznej Policji!"
 	desc = "A small sleeper typically used to put people to sleep for briefing on the mission."
 	mob_name = "a spacepol officer"
-	flavour_text = "Justice has arrived. I am a member of the Spacepol!"
+	flavour_text = "Sprawiedliwość przybyła. Jestem członkiem Kosmicznej Policji!"
 	back_story = "space cop"
 	outfit = /datum/outfit/spacepol
 	icon = 'icons/obj/machines/sleeper.dmi'
@@ -35,8 +35,8 @@
 
 /obj/effect/mob_spawn/human/fugitive/russian
 	name = "russian pod"
-	short_desc = "You are a fugitive!"
-	flavour_text = "Ay blyat. I am a space-russian smuggler! We were mid-flight when our cargo was beamed off our ship!"
+	short_desc = "Jesteś zbiegiem!"
+	flavour_text = "Aj, blyat. Jestem kosmicznym rosyjskim przemytnikiem! Byliśmy w połowie lotu, gdy nasz ładunek przeteleportowano z naszego statku!"
 	back_story = "russian"
 	desc = "A small sleeper typically used to make long distance travel a bit more bearable."
 	mob_name = "russian"
@@ -46,8 +46,8 @@
 
 /obj/effect/mob_spawn/human/fugitive/bounty
 	name = "bounty hunter pod"
-	short_desc = "You are a bounty hunter!"
-	flavour_text = "We got a new bounty on some fugitives, dead or alive."
+	short_desc = "Jesteś łowcą nagród!"
+	flavour_text = "Mamy nową nagrodę za jakichś zbiegów, żywych lub martwych."
 	back_story = "bounty hunters"
 	desc = "A small sleeper typically used to make long distance travel a bit more bearable."
 	mob_name = "bounty hunter"

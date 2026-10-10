@@ -274,7 +274,7 @@
 	qdel(src)
 
 /obj/item/food/cake/birthday/energy/proc/energy_bite(mob/living/user)
-	to_chat(user, "<font color='red' size='5'>As you eat the cake, you accidentally hurt yourself on the embedded energy sword!</font>")
+	to_chat(user, "<font color='red' size='5'>Jedząc ciasto, przypadkiem kaleczysz się o ukryty w nim miecz energetyczny!</font>")
 	user.apply_damage(30, BURN, BODY_ZONE_HEAD) // ITs an ENERGY sword, so it burns, duh
 	playsound(user, 'sound/weapons/blade1.ogg', 5, TRUE)
 
@@ -301,7 +301,7 @@
 	crafting_complexity = FOOD_COMPLEXITY_4
 
 /obj/item/food/cakeslice/birthday/energy/proc/energy_bite(mob/living/user)
-	to_chat(user, "<font color='red' size='5'>As you eat the cake slice, you accidentally hurt yourself on the embedded energy dagger!</font>")
+	to_chat(user, "<font color='red' size='5'>Jedząc kawałek ciasta, przypadkiem kaleczysz się o ukryty w nim sztylet energetyczny!</font>")
 	user.apply_damage(18, BURN, BODY_ZONE_HEAD)
 	playsound(user, 'sound/weapons/blade1.ogg', 5, TRUE)
 

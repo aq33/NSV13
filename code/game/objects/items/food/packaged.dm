@@ -27,7 +27,7 @@
 		name = "maintenance [name]"
 
 /obj/item/food/canned/proc/open_can(mob/user)
-	to_chat(user, "You pull back the tab of \the [src].")
+	to_chat(user, "Odciągasz zawleczkę [src].")
 	playsound(user.loc, 'sound/items/foodcanopen.ogg', 50)
 	ENABLE_BITFIELD(reagents.flags, OPENCONTAINER)
 
@@ -39,7 +39,7 @@
 
 /obj/item/food/canned/attack(mob/living/M, mob/user, def_zone)
 	if (!is_drainable())
-		to_chat(user, "<span class='warning'>[src]'s lid hasn't been opened!</span>")
+		to_chat(user, "<span class='warning'>Wieczko [src] nie zostało otwarte!</span>")
 		return 0
 	return ..()
 

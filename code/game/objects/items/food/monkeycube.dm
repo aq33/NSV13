@@ -16,7 +16,7 @@
 
 /obj/item/food/monkeycube/proc/Expand()
 	if(GLOB.total_cube_monkeys >= CONFIG_GET(number/max_cube_monkeys))
-		visible_message("<span class='warning'>[src] refuses to expand!</span>")
+		visible_message("<span class='warning'>[src] nie chce się rozwinąć!</span>")
 		return
 	var/mob/spammer = get_mob_by_ckey(fingerprintslast)
 	var/mob/living/bananas = new spawned_mob(drop_location(), TRUE, spammer)
@@ -26,7 +26,7 @@
 		visible_message("<span class='notice'>[src] expands!</span>")
 		bananas.log_message("Spawned via [src] at [AREACOORD(src)], Last attached mob: [key_name(spammer)].", LOG_ATTACK)
 	else if (!spammer) // Visible message in case there are no fingerprints
-		visible_message("<span class='notice'>[src] fails to expand!</span>")
+		visible_message("<span class='notice'>[src] nie udaje się rozwinąć!</span>")
 	qdel(src)
 
 /obj/item/food/monkeycube/syndicate

@@ -29,12 +29,12 @@
 	if(prob(1))
 		new/obj/effect/particle_effect/smoke(get_turf(src))
 		playsound(src, 'sound/effects/smoke.ogg', 50, TRUE)
-		visible_message("<span class='warning'>Oh, ye gods! [src] is ruined! But what if...?</span>")
+		visible_message("<span class='warning'>O bogowie! [src] jest zrujnowany! Ale może...?</span>")
 		name = "steamed ham"
 		desc = pick("Ahh, Head of Personnel, welcome. I hope you're prepared for an unforgettable luncheon!",
-		"And you call these steamed hams despite the fact that they are obviously microwaved?",
-		"Aurora Station 13? At this time of shift, in this time of year, in this sector of space, localized entirely within your freezer?",
-		"You know, these hamburgers taste quite similar to the ones they have at the Maltese Falcon.")
+		"I nazywasz to hamburgerami na parze, mimo że ewidentnie są z mikrofalówki?",
+		"Stacja Aurora 13? O tej porze zmiany, o tej porze roku, w tym sektorze kosmosu, w całości w twojej zamrażarce?",
+		"Wiesz, te hamburgery smakują całkiem podobnie do tych z Maltańskiego Sokoła.")
 		tastes = list("fast food hamburger" = 1)
 
 /obj/item/food/burger/human
@@ -230,7 +230,7 @@
 	var/paranormal_activity = rand(100)
 	switch(paranormal_activity)
 		if(97 to 100)
-			audible_message("[src] rattles a length of chain.")
+			audible_message("[src] pobrzękuje łańcuchem.")
 			playsound(loc,'sound/spookoween/chain_rattling.ogg', 300, TRUE)
 		if(91 to 96)
 			say(pick("OoOoOoo.", "OoooOOooOoo!!"))
@@ -246,7 +246,7 @@
 		if(62 to 64)
 			playsound(loc,pick('sound/hallucinations/i_see_you1.ogg', 'sound/hallucinations/i_see_you2.ogg'), 50, TRUE, ignore_walls = FALSE)
 		if(61)
-			visible_message("[src] spews out a glob of ectoplasm!")
+			visible_message("[src] wypluwa grudę ektoplazmy!")
 			new /obj/effect/decal/cleanable/greenglow/ecto(loc)
 			playsound(loc,'sound/effects/splat.ogg', 200, TRUE)
 

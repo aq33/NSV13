@@ -373,16 +373,16 @@
 	var/did_the_thing = (l_arm?.dismember() || r_arm?.dismember()) //not all limbs can be removed, so important to check that we did. the. thing.
 	if(!did_the_thing)
 		return
-	to_chat(user, "<span class='userdanger'>Maybe I'll give you a pizza, maybe I'll break off your arm.</span>") //makes the reference more obvious
-	user.visible_message("<span class='warning'>\The [src] breaks off [user]'s arm!</span>", "<span class='warning'>\The [src] breaks off your arm!</span>")
+	to_chat(user, "<span class='userdanger'>Może dam ci pizzę, a może urwę ci rękę.</span>") //makes the reference more obvious
+	user.visible_message("<span class='warning'>[src] urywa [user] rękę!</span>", "<span class='warning'>[src] urywa ci rękę!</span>")
 	playsound(user,pick('sound/misc/desecration-01.ogg','sound/misc/desecration-02.ogg','sound/misc/desecration-01.ogg') ,50, TRUE, -1)
 
 /obj/item/food/proc/i_kill_you(obj/item/I, mob/user)
 	if(istype(I, /obj/item/food/pineappleslice))
-		to_chat(user, "<font color='red' size='7'>If you want something crazy like pineapple, I'll kill you.</font>") //this is in bigger text because it's hard to spam something that gibs you, and so that you're perfectly aware of the reason why you died
+		to_chat(user, "<font color='red' size='7'>Jak będziesz chciał czegoś szalonego, na przykład ananasa, to cię zabiję.</font>") //this is in bigger text because it's hard to spam something that gibs you, and so that you're perfectly aware of the reason why you died
 		user.gib() //if you want something crazy like pineapple, i'll kill you
 	else if(istype(I, /obj/item/food/grown/mushroom) && iscarbon(user))
-		to_chat(user, "<span class='userdanger'>So, if you want mushroom, shut up.</span>") //not as large as the pineapple text, because you could in theory spam it
+		to_chat(user, "<span class='userdanger'>Więc jak chcesz grzyby, to się zamknij.</span>") //not as large as the pineapple text, because you could in theory spam it
 		var/mob/living/carbon/shutup = user
 		shutup.gain_trauma(/datum/brain_trauma/severe/mute)
 

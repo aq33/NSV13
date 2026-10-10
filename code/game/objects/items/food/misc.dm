@@ -89,7 +89,7 @@
 		return
 	var/turf/T = get_turf(src)
 	var/obj/effect/decal/cleanable/ash/A = new /obj/effect/decal/cleanable/ash(T)
-	A.desc += "\nLooks like this used to be \an [name] some time ago."
+	A.desc += "\nWygląda na to, że kiedyś to było [name]."
 	if(resistance_flags & ON_FIRE)
 		SSfire_burning.processing -= src
 	qdel(src)
@@ -217,15 +217,15 @@
 
 /obj/item/food/butter/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>If you had a rod you could make <b>butter on a stick</b>.</span>"
+	. += "<span class='notice'>Gdybyś miał pręt, mógłbyś zrobić <b>masło na patyku</b>.</span>"
 
 /obj/item/food/butter/attackby(obj/item/item, mob/user, params)
 	if(istype(item, /obj/item/stack/rods))
 		var/obj/item/stack/rods/rods = item
 		if(!rods.use(1))//borgs can still fail this if they have no metal
-			to_chat(user, "<span class='warning'>You do not have enough metal to put [src] on a stick!</span>")
+			to_chat(user, "<span class='warning'>Masz za mało metalu, by nabić [src] na patyk!</span>")
 			return ..()
-		to_chat(user, "<span class='notice'>You stick the rod into the stick of butter.</span>")
+		to_chat(user, "<span class='notice'>Wbijasz pręt w kostkę masła.</span>")
 		var/obj/item/food/butter/on_a_stick/new_item = new(usr.loc)
 		var/replace = (user.get_inactive_held_item() == rods)
 		if(!rods && replace)

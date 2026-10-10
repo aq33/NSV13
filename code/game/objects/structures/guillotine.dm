@@ -36,22 +36,22 @@
 /obj/structure/guillotine/examine(mob/user)
 	. = ..()
 
-	var/msg = "It is [anchored ? "wrenched to the floor." : "unsecured. A wrench should fix that."]<br/>"
+	var/msg = "[anchored ? "Jest przykręcona do podłogi." : "Nie jest zamocowana. Klucz powinien to naprawić."]<br/>"
 
 	if (blade_status == GUILLOTINE_BLADE_RAISED)
-		msg += "The blade is raised, ready to fall, and"
+		msg += "Ostrze jest uniesione, gotowe do opadnięcia, i"
 
 		if (blade_sharpness >= GUILLOTINE_DECAP_MIN_SHARP)
-			msg += " looks sharp enough to decapitate without any resistance."
+			msg += " wygląda na dość ostre, by bez oporu ściąć głowę."
 		else
-			msg += " doesn't look particularly sharp. Perhaps a whetstone can be used to sharpen it."
+			msg += " nie wygląda na szczególnie ostre. Może da się je naostrzyć osełką."
 	else
-		msg += "The blade is hidden inside the stocks."
+		msg += "Ostrze jest schowane w dybach."
 
 	. += msg
 
 	if (LAZYLEN(buckled_mobs))
-		. += "Someone appears to be strapped in. You can help them out, or you can harm them by activating the guillotine."
+		. += "Ktoś wydaje się być przypięty. Możesz mu pomóc wyjść albo zrobić mu krzywdę, uruchamiając gilotynę."
 
 /obj/structure/guillotine/attack_hand(mob/user)
 	add_fingerprint(user)
@@ -71,8 +71,8 @@
 		if (GUILLOTINE_BLADE_RAISED)
 			if (LAZYLEN(buckled_mobs))
 				if (user.a_intent == INTENT_HARM)
-					user.visible_message("<span class='warning'>[user] begins to pull the lever!</span>",
-						                 "<span class='warning'>You begin to the pull the lever.</span>")
+					user.visible_message("<span class='warning'>[user] zaczyna ciągnąć za dźwignię!</span>",
+						                 "<span class='warning'>Zaczynasz ciągnąć za dźwignię.</span>")
 					current_action = GUILLOTINE_ACTION_INUSE
 
 					if (do_after(user, GUILLOTINE_ACTIVATE_DELAY, target = src) && blade_status == GUILLOTINE_BLADE_RAISED)
@@ -157,8 +157,8 @@
 				blade_status = GUILLOTINE_BLADE_SHARPENING
 				if(do_after(user, 7, target = src))
 					blade_status = GUILLOTINE_BLADE_RAISED
-					user.visible_message("<span class='notice'>[user] sharpens the large blade of the guillotine.</span>",
-						                 "<span class='notice'>You sharpen the large blade of the guillotine.</span>")
+					user.visible_message("<span class='notice'>[user] ostrzy wielkie ostrze gilotyny.</span>",
+						                 "<span class='notice'>Ostrzysz wielkie ostrze gilotyny.</span>")
 					blade_sharpness += 1
 					playsound(src, 'sound/items/unsheath.ogg', 100, 1)
 					return
@@ -166,25 +166,25 @@
 					blade_status = GUILLOTINE_BLADE_RAISED
 					return
 			else
-				to_chat(user, "<span class='warning'>The blade is sharp enough!</span>")
+				to_chat(user, "<span class='warning'>Ostrze jest wystarczająco ostre!</span>")
 				return
 		else
-			to_chat(user, "<span class='warning'>You need to raise the blade in order to sharpen it!</span>")
+			to_chat(user, "<span class='warning'>Musisz unieść ostrze, by je naostrzyć!</span>")
 			return
 	else
 		return ..()
 
 /obj/structure/guillotine/buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
 	if (!anchored)
-		to_chat(usr, "<span class='warning'>The [src] needs to be wrenched to the floor!</span>")
+		to_chat(usr, "<span class='warning'>[src] musi być przykręcona do podłogi!</span>")
 		return FALSE
 
 	if (!istype(M, /mob/living/carbon/human))
-		to_chat(usr, "<span class='warning'>It doesn't look like [M.p_they()] can fit into this properly!</span>")
+		to_chat(usr, "<span class='warning'>Wygląda na to, że nie zmieści się tu porządnie!</span>")
 		return FALSE // Can't decapitate non-humans
 
 	if (blade_status != GUILLOTINE_BLADE_RAISED)
-		to_chat(usr, "<span class='warning'>You need to raise the blade before buckling someone in!</span>")
+		to_chat(usr, "<span class='warning'>Zanim kogoś przypniesz, musisz unieść ostrze!</span>")
 		return FALSE
 
 	return ..(M, user, FALSE)
@@ -222,7 +222,7 @@
 /obj/structure/guillotine/can_be_unfasten_wrench(mob/user, silent)
 	if (LAZYLEN(buckled_mobs))
 		if (!silent)
-			to_chat(user, "<span class='warning'>Can't unfasten, someone's strapped in!</span>")
+			to_chat(user, "<span class='warning'>Nie można odczepić, ktoś jest przypięty!</span>")
 		return FAILED_UNFASTEN
 
 	if (current_action)

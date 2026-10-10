@@ -67,20 +67,20 @@
 		var/clr = C.crayon_color
 
 		if(!(clr in list("blue", "green", "mime", "orange", "purple", "rainbow", "red", "yellow")))
-			to_chat(usr, "<span class='notice'>[src] refuses to take on this colour!</span>")
+			to_chat(usr, "<span class='notice'>[src] nie chce przyjąć tego koloru!</span>")
 			return
 
-		to_chat(usr, "<span class='notice'>You colour [src] with [W].</span>")
+		to_chat(usr, "<span class='notice'>Kolorujesz [src] za pomocą [W].</span>")
 		icon_state = "egg-[clr]"
 
 	else if(istype(W, /obj/item/reagent_containers))
 		var/obj/item/reagent_containers/dunk_test_container = W
 		if(dunk_test_container.is_drainable() && dunk_test_container.reagents.has_reagent(/datum/reagent/water))
-			to_chat(user, "<span class='notice'>You check if [src] is rotten.</span>")
+			to_chat(user, "<span class='notice'>Sprawdzasz, czy [src] jest zepsute.</span>")
 			if(istype(src, /obj/item/food/egg/rotten))
-				to_chat(user, "<span class='warning'>[src] floats in the [dunk_test_container]!</span>")
+				to_chat(user, "<span class='warning'>[src] unosi się w [dunk_test_container]!</span>")
 			else
-				to_chat(user,"<span class='notice'>[src] sinks into the [dunk_test_container]!</span>")
+				to_chat(user,"<span class='notice'>[src] tonie w [dunk_test_container]!</span>")
 	else
 		..()
 
@@ -165,11 +165,11 @@
 	if(istype(W, /obj/item/kitchen/fork))
 		var/obj/item/kitchen/fork/F = W
 		if(F.forkload)
-			to_chat(user, "<span class='warning'>You already have omelette on your fork!</span>")
+			to_chat(user, "<span class='warning'>Już masz omlet na widelcu!</span>")
 		else
 			F.icon_state = "forkloaded"
-			user.visible_message("[user] takes a piece of omelette with [user.p_their()] fork!", \
-				"<span class='notice'>You take a piece of omelette with your fork.</span>")
+			user.visible_message("[user] nabiera kawałek omletu na widelec!", \
+				"<span class='notice'>Nabierasz kawałek omletu na widelec.</span>")
 
 			var/datum/reagent/R = pick(reagents.reagent_list)
 			reagents.remove_reagent(R.type, 1)
