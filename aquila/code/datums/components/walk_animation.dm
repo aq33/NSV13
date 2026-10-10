@@ -43,12 +43,13 @@
 	add_limb(H, "torso_cut", FLOAT_LAYER - 0.1, MASK_INVERSE)
 	add_limb(H, "arm_a", FLOAT_LAYER - 0.05)
 	add_limb(H, "arm_b", FLOAT_LAYER - 0.05)
-	// Przedmioty w dłoniach nad wszystkim, jak HANDS_LAYER
+	// Przedmioty w dłoniach nad wszystkim, jak HANDS_LAYER; tyłem pod ciałem (update_held_layer)
 	for(var/index in 1 to 2)
 		var/obj/effect/overlay/walk_held/held = new
 		limbs["hand_[index]"] = held
 		H.vis_contents += held
 	update_side_leg(H.dir)
+	update_held_layer(H.dir)
 	detach_held_items()
 
 	RegisterSignal(H, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved))
@@ -127,8 +128,6 @@
 		return
 	if(source.movement_type & (FLYING|FLOATING|VENTCRAWLING) || !source.has_gravity())
 		return
-	if(source.GetComponent(/datum/component/waddling)) // buty klauna i inne podskakiwanie mają własną animację
-		return
 
 	// Czas jednego kroku w decysekundach, odtworzony z glide_size (odwrotność DELAY_TO_GLIDE_SIZE).
 	var/half_step = (world.icon_size / max(source.glide_size, 1)) * world.tick_lag / 2
@@ -158,6 +157,14 @@
 	SIGNAL_HANDLER
 
 	update_side_leg(new_dir)
+	update_held_layer(new_dir)
+
+/// Tyłem do patrzącego przedmioty w dłoniach chowają się za ciałem, w pozostałych widokach są nad nim.
+/datum/component/walk_animation/proc/update_held_layer(new_dir)
+	var/held_layer = (new_dir == NORTH) ? FLOAT_LAYER - 0.3 : FLOAT_LAYER
+	for(var/index in 1 to 2)
+		var/obj/effect/overlay/walk_held/held = limbs["hand_[index]"]
+		held.layer = held_layer
 
 /// Z boku maska "leg_b" pokrywa się z "leg_a", więc w spoczynku ta noga jest ukryta; z przodu i z tyłu zawsze widoczna.
 /datum/component/walk_animation/proc/update_side_leg(new_dir)
