@@ -31,6 +31,7 @@
 #include "code\_onclick\hud\ghost.dm"
 #include "code\_onclick\hud\horror.dm"
 #include "code\_onclick\hud\locked_slots.dm"
+#include "code\_onclick\hud\mouse_pointer.dm"
 #include "code\_onclick\hud\xenobio.dm"
 #include "code\controllers\configuration\entries\game_options.dm"
 #include "code\controllers\configuration\entries\general.dm"
