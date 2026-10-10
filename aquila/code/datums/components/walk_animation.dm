@@ -24,8 +24,6 @@
 	var/atom/movable/emissive_blocker/em_block
 	/// Która para ręka/noga rusza się przy tym kroku
 	var/phase = FALSE
-	/// Czy przedmioty w dłoniach są teraz schowane za ciałem (widok z tyłu)
-	var/held_behind = FALSE
 
 /datum/component/walk_animation/Initialize()
 	if(!ishuman(parent))
@@ -45,13 +43,13 @@
 	add_limb(H, "torso_cut", FLOAT_LAYER - 0.1, MASK_INVERSE)
 	add_limb(H, "arm_a", FLOAT_LAYER - 0.05)
 	add_limb(H, "arm_b", FLOAT_LAYER - 0.05)
-	// Przedmioty w dłoniach nad wszystkim, jak HANDS_LAYER; tyłem nakładka moba pod ciałem (update_held_layer)
+	// Przedmioty w dłoniach nad wszystkim, jak HANDS_LAYER
 	for(var/index in 1 to 2)
 		var/obj/effect/overlay/walk_held/held = new
 		limbs["hand_[index]"] = held
 		H.vis_contents += held
 	update_side_leg(H.dir)
-	update_held_layer(H.dir)
+	update_held_dir(H.dir)
 	detach_held_items()
 
 	RegisterSignal(H, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved))
@@ -91,9 +89,8 @@
 	H.vis_contents += limb
 
 /// Przenosi przedmioty z dłoni 1 i 2 na fragmenty "hand_1"/"hand_2", żeby maski ich nie cięły.
-/// Fragment dostaje kopię nakładki i dziedziczy kierunek moba, więc sprite obraca się z postacią.
+/// Fragment dostaje kopię nakładki, a kierunek ustawia mu update_held_dir(), więc sprite obraca się z postacią.
 /// Oryginał zostaje w mobie, ukryty buforem z "*", żeby getFlatIcon (zdjęcia) dalej widział przedmiot.
-/// Tyłem (held_behind) przedmiot zostaje w mobie jako widoczna nakładka pod całym ciałem.
 /// Wołane po każdym update_inv_hands().
 /datum/component/walk_animation/proc/detach_held_items()
 	if(QDELING(src)) // update_inv_hands() z Destroy() ma zostawić zwykłe nakładki
@@ -115,9 +112,6 @@
 		var/hand_index = H.get_held_index_of_item(I)
 		var/mutable_appearance/hand_overlay = hand_overlays[overlay_index]
 		if(hand_index > 2 || !istype(hand_overlay))
-			continue
-		if(held_behind)
-			hand_overlay.layer = -(TOTAL_LAYERS + 1) // pod BODY_BEHIND_LAYER, czyli za całym ciałem
 			continue
 		var/obj/effect/overlay/walk_held/held = limbs["hand_[hand_index]"]
 		held.add_overlay(new /mutable_appearance(hand_overlay))
@@ -163,18 +157,14 @@
 	SIGNAL_HANDLER
 
 	update_side_leg(new_dir)
-	update_held_layer(new_dir)
+	update_held_dir(new_dir)
 
-/// Tyłem do patrzącego przedmioty w dłoniach chowają się za ciałem, w pozostałych widokach są nad nim.
-/// Fragmenty z KEEP_APART nie układają się po layer ani nie dają się pewnie przyciąć, więc tyłem przedmiot
-/// zostaje zwykłą nakładką moba pod ciałem (detach_held_items) i zasłania go samo ciało.
-/datum/component/walk_animation/proc/update_held_layer(new_dir)
-	var/behind = (new_dir == NORTH)
-	if(behind == held_behind)
-		return
-	held_behind = behind
-	var/mob/living/carbon/human/H = parent
-	H.update_inv_hands()
+/// Nakładki na fragmentach przedmiotów biorą kierunek z samego fragmentu, a VIS_INHERIT_DIR go nie zmienia,
+/// więc ustawiamy go wprost. Wariant sprite'a z ręki dla widoku z tyłu sam chowa przedmiot za ciałem, jak w oryginale.
+/datum/component/walk_animation/proc/update_held_dir(new_dir)
+	for(var/index in 1 to 2)
+		var/obj/effect/overlay/walk_held/held = limbs["hand_[index]"]
+		held.dir = new_dir
 
 /// Z boku maska "leg_b" pokrywa się z "leg_a", więc w spoczynku ta noga jest ukryta; z przodu i z tyłu zawsze widoczna.
 /datum/component/walk_animation/proc/update_side_leg(new_dir)
@@ -211,7 +201,7 @@
 	vis_flags = VIS_INHERIT_ID
 
 /// Przedmiot z jednej dłoni jako kopia nakładki, bez przycinania.
-/// Dziedziczy kierunek, kolor, przezroczystość i obrót moba, tak jak zwykła nakładka.
+/// Dziedziczy kolor, przezroczystość i obrót moba, tak jak zwykła nakładka; kierunek z update_held_dir().
 /obj/effect/overlay/walk_held
 	name = ""
 	plane = FLOAT_PLANE
