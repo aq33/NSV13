@@ -63,6 +63,7 @@ The other ~60 same-type redefinitions in `aquila/` call `..()`, so they are alre
 | `aquila_monkey_spat()`, `aquila_monkey_sucked()`, `aquila_potion_spat()` calls, `balloon_alert()`s | `code/modules/research/xenobiology/xenobio_camera.dm` (actions and click handlers, each path twice) | Xenobio tubes and HUD (tgstation#90775 port). The "now has N monkeys" chat lines were replaced by the HUD. Slime pickup/place needs no hook: `aquila/.../xenobio_tubes.dm` reacts in `Entered()`/`Exited()` |
 | `aquila_shell_hidden()` call in the Windows branch of `world.shelleo()` | `code/__HELPERS/shell.dm` | Runs shell commands through a hidden `wscript` launcher so the host doesn't get a cmd window (e.g. jukebox yt-dlp calls); falls back to plain `shell()`. The proc is in `aquila/code/__HELPERS/shell.dm` |
 | `audio/setMusicGain` message + `gain` multiplier (`volume` option of `audio/playMusic`) | `tgui/packages/tgui-panel/audio/{player,middleware}.js` | Jukebox YouTube music gets quieter with distance; DM side is `/datum/tgui_panel/proc/set_music_gain()` in `aquila/code/modules/tgui_panel/audio.dm` |
+| Health HUD without stamina (`if(..())` instead of `min(health, maxHealth - getStaminaLoss())`) | `code/modules/mob/living/carbon/human/human.dm`, `update_health_hud()` | Stamina HUD (BeeStation#11521 port, `aquila/code/_onclick/hud/stamina.dm`); stamina has its own indicator now |
 
 Pre-existing single-call hooks that stay in core: `parts += mouse_report()` (`roundend.dm`) and `/datum/admins/proc/reloadwhitelist` in the admin verb list (`admin_verbs.dm`).
 
