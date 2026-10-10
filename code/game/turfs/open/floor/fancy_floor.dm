@@ -269,6 +269,8 @@
 		if(smooth)
 			queue_smooth(src)
 	else
+		if(QDELETED(src)) //AQ EDIT - re-entered from Destroy (decal detach) while already turning into plating
+			return
 		make_plating()
 		if(smooth)
 			queue_smooth_neighbors(src)

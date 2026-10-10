@@ -231,7 +231,9 @@
 	if(istype(reference, /obj/machinery/atmospherics/pipe))
 		var/obj/machinery/atmospherics/pipe/P = reference
 		P.destroy_network()
-	nodes[nodes.Find(reference)] = null // for some reason things can still be acted on even though they've been deleted this is a really fucky way of detecting that
+	var/node_index = nodes.Find(reference) //AQ EDIT - reference may already be gone from nodes (mass destruction)
+	if(node_index)
+		nodes[node_index] = null // for some reason things can still be acted on even though they've been deleted this is a really fucky way of detecting that
 	update_icon()
 
 /obj/machinery/atmospherics/attackby(obj/item/W, mob/user, params)
