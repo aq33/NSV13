@@ -1,7 +1,8 @@
-import { CHANNELS, RADIO_PREFIXES, WINDOW_SIZES } from '../constants';
 import { KEY_0, KEY_Z } from 'common/keycodes';
 import { classes } from 'common/react';
 import { debounce, throttle } from 'common/timer';
+
+import { CHANNELS, RADIO_PREFIXES, WINDOW_SIZES } from '../constants';
 
 /**
  * Window functions
@@ -26,7 +27,7 @@ export const windowClose = (dpi: number) => {
 
 /** Some QoL to hide the window on load. Doesn't log this event */
 export const windowLoad = (dpi: number) => {
-  Byond.winset('tgui_say', {
+  Byond.winset(Byond.windowId, {
     pos: '848,500',
   });
   setClosed(dpi);
@@ -38,19 +39,23 @@ export const windowLoad = (dpi: number) => {
  * Parameters:
  *  size - The size of the window in pixels. Optional.
  */
-export const windowSet = (size: number = WINDOW_SIZES.small, dpi: number = 1) => {
-  Byond.winset('tgui_say', { size: `${Math.round(WINDOW_SIZES.width * dpi)}x${Math.round(size * dpi)}` });
-  Byond.winset('tgui_say.browser', { size: `${Math.round(WINDOW_SIZES.width * dpi)}x${Math.round(size * dpi)}` });
+export const windowSet = (size: number = WINDOW_SIZES.small, dpi: number) => {
+  Byond.winset(Byond.windowId, {
+    size: `${Math.round(WINDOW_SIZES.width * dpi)}x${Math.round(size * dpi)}`,
+  });
+  Byond.winset(`${Byond.windowId}.browser`, {
+    size: `${Math.round(WINDOW_SIZES.width * dpi)}x${Math.round(size * dpi)}`,
+  });
 };
 
 /** Private functions */
 /** Sets the skin props as opened. Focus might be a placebo here. */
 const setOpen = (dpi: number) => {
-  Byond.winset('tgui_say', {
+  Byond.winset(Byond.windowId, {
     'is-visible': true,
     size: `${Math.round(WINDOW_SIZES.width * dpi)}x${Math.round(WINDOW_SIZES.small * dpi)}`,
   });
-  Byond.winset('tgui_say.browser', {
+  Byond.winset(`${Byond.windowId}.browser`, {
     'is-visible': true,
     size: `${Math.round(WINDOW_SIZES.width * dpi)}x${Math.round(WINDOW_SIZES.small * dpi)}`,
   });
@@ -58,7 +63,7 @@ const setOpen = (dpi: number) => {
 
 /** Sets the skin props as closed.  */
 const setClosed = (dpi: number) => {
-  Byond.winset('tgui_say', {
+  Byond.winset(Byond.windowId, {
     'is-visible': false,
     size: `${Math.round(WINDOW_SIZES.width * dpi)}x${Math.round(WINDOW_SIZES.small * dpi)}`,
   });
@@ -107,7 +112,7 @@ export const storeChat = (message: string): void => {
 export const getCss = (
   element: string,
   theme?: string,
-  options?: string | number
+  options?: string | number,
 ): string =>
   classes([
     element,
@@ -128,12 +133,12 @@ export const getCss = (
 export const getTheme = (
   lightMode: boolean,
   radioPrefix: string,
-  channel: number
+  channel: number,
 ): string => {
   return (
-    (lightMode && 'lightMode')
-    || RADIO_PREFIXES[radioPrefix]?.id
-    || CHANNELS[channel]?.toLowerCase()
+    (lightMode && 'lightMode') ||
+    RADIO_PREFIXES[radioPrefix]?.id ||
+    CHANNELS[channel]?.toLowerCase()
   );
 };
 
@@ -147,7 +152,7 @@ export const timers = {
   forceDebounce: debounce(
     (entry) => Byond.sendMessage('force', entry),
     1000,
-    true
+    true,
   ),
   typingThrottle: throttle(() => Byond.sendMessage('typing'), 4000),
 };

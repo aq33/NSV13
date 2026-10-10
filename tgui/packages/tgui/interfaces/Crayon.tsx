@@ -1,0 +1,74 @@
+import { Button, LabeledList, Section } from 'tgui-core/components';
+
+import { useBackend } from '../backend';
+import { Window } from '../layouts';
+
+type Data = {
+  can_change_colour: any;
+  drawables: any;
+  has_cap: any;
+  is_capped: any;
+  selected_stencil: any;
+  text_buffer: any;
+};
+
+export const Crayon = (props) => {
+  const { act, data } = useBackend<Data>();
+  const capOrChanges = data.has_cap || data.can_change_colour;
+  const drawables = data.drawables || [];
+  return (
+    <Window width={600} height={600}>
+      <Window.Content scrollable>
+        {!!capOrChanges && (
+          <Section title="Basic">
+            <LabeledList>
+              <LabeledList.Item label="Cap">
+                <Button
+                  icon={data.is_capped ? 'power-off' : 'times'}
+                  content={data.is_capped ? 'On' : 'Off'}
+                  selected={data.is_capped}
+                  onClick={() => act('toggle_cap')}
+                />
+              </LabeledList.Item>
+            </LabeledList>
+            <Button
+              content="Select New Color"
+              onClick={() => act('select_colour')}
+            />
+          </Section>
+        )}
+        <Section title="Stencil">
+          <LabeledList>
+            {drawables.map((drawable) => {
+              const items = drawable.items || [];
+              return (
+                <LabeledList.Item key={drawable.name} label={drawable.name}>
+                  {items.map((item) => (
+                    <Button
+                      key={item.item}
+                      content={item.item}
+                      selected={item.item === data.selected_stencil}
+                      onClick={() =>
+                        act('select_stencil', {
+                          item: item.item,
+                        })
+                      }
+                    />
+                  ))}
+                </LabeledList.Item>
+              );
+            })}
+          </LabeledList>
+        </Section>
+        <Section title="Text">
+          <LabeledList>
+            <LabeledList.Item label="Current Buffer">
+              {data.text_buffer}
+            </LabeledList.Item>
+          </LabeledList>
+          <Button content="New Text" onClick={() => act('enter_text')} />
+        </Section>
+      </Window.Content>
+    </Window>
+  );
+};

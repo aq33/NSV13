@@ -1,4 +1,4 @@
-import { RefObject } from 'inferno';
+import { RefObject } from 'react';
 
 export type Modal = {
   events: Events;
@@ -29,11 +29,11 @@ type Events = {
 };
 
 type Fields = {
-  dpi: number;
   historyCounter: number;
   innerRef: RefObject<HTMLInputElement>;
   lightMode: boolean;
   showRadioPrefix: boolean;
+  dpi: number;
   maxLength: number;
   radioPrefix: string;
   tempHistory: string;
@@ -48,9 +48,18 @@ export type State = {
 };
 
 type Timers = {
-  channelDebounce: (options: { mode: boolean }) => void;
-  forceDebounce: (options: { channel: string; entry: string }) => void;
+  channelDebounce: (ModeDebounce) => void;
+  forceDebounce: (ForceDebounce) => void;
   typingThrottle: () => void;
+};
+
+type ModeDebounce = {
+  mode: boolean;
+};
+
+type ForceDebounce = {
+  channel: number;
+  entry: string;
 };
 
 export type DragzoneProps = {

@@ -1,12 +1,23 @@
+import {
+  Box,
+  Button,
+  Collapsible,
+  Icon,
+  Input,
+  LabeledList,
+  NoticeBox,
+  Section,
+  Stack,
+} from 'tgui-core/components';
+
 import { filter, sortBy } from '../../../common/collections';
 import { flow } from '../../../common/fp';
 import { useBackend, useLocalState } from '../../backend';
-import { Button, Collapsible, Icon, Input, LabeledList, NoticeBox, Section, Stack, Box } from '../../components';
 import { Window } from '../../layouts';
-import { getMostRelevant, getDisplayColor, isJobOrNameMatch } from './helpers';
+import { getDisplayColor, getMostRelevant, isJobOrNameMatch } from './helpers';
 import type { Trackable, TrackingData } from './types';
 
-export const Tracking = (props, context) => {
+export const Tracking = (props) => {
   return (
     <Window title="Tracking" width={400} height={550}>
       <Window.Content scrollable>
@@ -26,25 +37,18 @@ export const Tracking = (props, context) => {
 };
 
 /** Controls filtering out the list of trackables via search */
-const TrackableSearch = (props, context) => {
-  const { act, data } = useBackend<TrackingData>(context);
-  const {
-    carbon = [],
-    simple_mob = [],
-  } = data;
+const TrackableSearch = (props) => {
+  const { act, data } = useBackend<TrackingData>();
+  const { carbon = [], simple_mob = [] } = data;
 
   const [searchQuery, setSearchQuery] = useLocalState<string>(
-    context,
     'searchQuery',
-    ''
+    '',
   );
 
   /** Gets a list of Trackables, then filters the most relevant to track */
   const trackMostRelevant = (searchQuery: string) => {
-    const mostRelevant = getMostRelevant(searchQuery, [
-      carbon,
-      simple_mob,
-    ]);
+    const mostRelevant = getMostRelevant(searchQuery, [carbon, simple_mob]);
 
     if (mostRelevant !== undefined) {
       act('track', {
@@ -61,10 +65,10 @@ const TrackableSearch = (props, context) => {
         </Stack.Item>
         <Stack.Item grow>
           <Input
-            autofocus
+            autoFocus
             fluid
             onEnter={(e, value) => trackMostRelevant(value)}
-            onInput={(e) => setSearchQuery(e.target.value)}
+            onInput={(e, value) => setSearchQuery(value)}
             placeholder="Search..."
             value={searchQuery}
           />
@@ -89,15 +93,16 @@ const TrackableSearch = (props, context) => {
  * Renders a scrollable section replete with subsections for each
  * trackable group.
  */
-const TrackableContent = (props, context) => {
-  const { data } = useBackend<TrackingData>(context);
-  const {
-    carbon = [],
-    simple_mob = [],
-  } = data;
+const TrackableContent = (props) => {
+  const { data } = useBackend<TrackingData>();
+  const { carbon = [], simple_mob = [] } = data;
   return (
     <Stack vertical>
-      <TrackableSection color="blue" section={carbon} title="Humanoid Organics" />
+      <TrackableSection
+        color="blue"
+        section={carbon}
+        title="Humanoid Organics"
+      />
       <TrackableSection section={simple_mob} title="Non-sapient Organics" />
     </Stack>
   );
@@ -107,27 +112,21 @@ const TrackableContent = (props, context) => {
  * Displays a collapsible with a map of trackable items.
  * Filters the results if there is a provided search query.
  */
-const TrackableSection = (
-  props: {
-    color?: string;
-    section: Trackable[];
-    title: string;
-  },
-  context
-) => {
+const TrackableSection = (props: {
+  color?: string;
+  section: Trackable[];
+  title: string;
+}) => {
   const { color, section = [], title } = props;
 
   if (!section.length) {
     return null;
   }
-  const [searchQuery] = useLocalState<string>(context, 'searchQuery', '');
+  const [searchQuery] = useLocalState<string>('searchQuery', '');
 
   const filteredSection: Trackable[] = flow([
-    filter<Trackable>((trackable) =>
-      isJobOrNameMatch(trackable, searchQuery)
-    ),
-    sortBy<Trackable>((trackable) => trackable.name.toLowerCase()
-    ),
+    filter<Trackable>((trackable) => isJobOrNameMatch(trackable, searchQuery)),
+    sortBy<Trackable>((trackable) => (trackable.name || '').toLowerCase()),
   ])(section);
 
   if (!filteredSection.length) {
@@ -140,7 +139,8 @@ const TrackableSection = (
         bold
         color={color ?? 'grey'}
         open={!!color}
-        title={title + ` - (${filteredSection.length})`}>
+        title={title + ` - (${filteredSection.length})`}
+      >
         {filteredSection.map((poi, index) => {
           return <TrackableItem color={color} item={poi} key={index} />;
         })}
@@ -150,11 +150,8 @@ const TrackableSection = (
 };
 
 /** Renders a trackable button */
-const TrackableItem = (
-  props: { color?: string; item: Trackable },
-  context
-) => {
-  const { act } = useBackend<TrackingData>(context);
+const TrackableItem = (props: { color?: string; item: Trackable }) => {
+  const { act } = useBackend<TrackingData>();
   const { color, item } = props;
   const { role_icon, health, name, ref } = item;
 
@@ -162,15 +159,18 @@ const TrackableItem = (
     <Button
       color={getDisplayColor(item, color)}
       onClick={() => act('track', { name: name })}
-      tooltip={(!!health) && <TrackableTooltip item={item} />}
-      tooltipPosition="bottom-start">
+      tooltip={!!health && <TrackableTooltip item={item} />}
+      tooltipPosition="bottom-start"
+    >
       {role_icon && (
-        <Box inline
+        <Box
+          inline
           ml={-0.5}
-          style={{ "transform": "translateY(2.5px)" }}
-          className={`job-icon16x16 job-icon-${role_icon}`} />
+          style={{ transform: 'translateY(2.5px)' }}
+          className={`job-icon16x16 job-icon-${role_icon}`}
+        />
       )}
-      {nameToUpper(name).slice(0, 44) /** prevents it from overflowing */}
+      {nameToUpper(name || '').slice(0, 44) /** prevents it from overflowing */}
     </Button>
   );
 };
@@ -189,16 +189,10 @@ const TrackableTooltip = (props: { item: Trackable }) => {
       </NoticeBox>
       <LabeledList>
         <>
-          {!!name && (
-            <LabeledList.Item label="Name">{name}</LabeledList.Item>
-          )}
-          {!!job && (
-            <LabeledList.Item label="Job">{job}</LabeledList.Item>
-          )}
+          {!!name && <LabeledList.Item label="Name">{name}</LabeledList.Item>}
+          {!!job && <LabeledList.Item label="Job">{job}</LabeledList.Item>}
           {!!health && (
-            <LabeledList.Item label="Health">
-              {displayHealth}
-            </LabeledList.Item>
+            <LabeledList.Item label="Health">{displayHealth}</LabeledList.Item>
           )}
         </>
       </LabeledList>

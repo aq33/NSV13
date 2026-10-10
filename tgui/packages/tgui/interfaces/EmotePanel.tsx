@@ -1,9 +1,10 @@
-import { useBackend, useLocalState } from '../backend';
-import { Window } from '../layouts';
-import { Button, Section, Flex, Icon, Box } from '../components';
+import { Box, Button, Flex, Icon, Section } from 'tgui-core/components';
+
 import { BooleanLike } from '../../common/react';
-import { SearchBar } from '../components/SearchBar';
 import { capitalize } from '../../common/string';
+import { useBackend, useLocalState } from '../backend';
+import { SearchBar } from '../components/SearchBar';
+import { Window } from '../layouts';
 
 type Emote = {
   key: string;
@@ -19,27 +20,51 @@ type EmotePanelData = {
   emotes: Emote[];
 };
 
-export const EmotePanelContent = (props, context) => {
-  const { act, data } = useBackend<EmotePanelData>(context);
+export const EmotePanelContent = (props) => {
+  const { act, data } = useBackend<EmotePanelData>();
   const { emotes } = data;
 
-  const [filterVisible, toggleVisualFilter] = useLocalState<boolean>(context, 'filterVisible', false);
+  const [filterVisible, toggleVisualFilter] = useLocalState<boolean>(
+    'filterVisible',
+    false,
+  );
 
-  const [filterAudible, toggleAudibleFilter] = useLocalState<boolean>(context, 'filterAudible', false);
+  const [filterAudible, toggleAudibleFilter] = useLocalState<boolean>(
+    'filterAudible',
+    false,
+  );
 
-  const [filterSound, toggleSoundFilter] = useLocalState<boolean>(context, 'filterSound', false);
+  const [filterSound, toggleSoundFilter] = useLocalState<boolean>(
+    'filterSound',
+    false,
+  );
 
-  const [filterHands, toggleHandsFilter] = useLocalState<boolean>(context, 'filterHands', false);
+  const [filterHands, toggleHandsFilter] = useLocalState<boolean>(
+    'filterHands',
+    false,
+  );
 
-  const [filterUseParams, toggleUseParamsFilter] = useLocalState<boolean>(context, 'filterUseParams', false);
+  const [filterUseParams, toggleUseParamsFilter] = useLocalState<boolean>(
+    'filterUseParams',
+    false,
+  );
 
-  const [useParams, toggleUseParams] = useLocalState<boolean>(context, 'useParams', false);
+  const [useParams, toggleUseParams] = useLocalState<boolean>(
+    'useParams',
+    false,
+  );
 
-  const [searchText, setSearchText] = useLocalState<string>(context, 'search_text', '');
+  const [searchText, setSearchText] = useLocalState<string>('search_text', '');
 
-  const [showNames, toggleShowNames] = useLocalState<boolean>(context, 'showNames', true);
+  const [showNames, toggleShowNames] = useLocalState<boolean>(
+    'showNames',
+    true,
+  );
 
-  const [showIcons, toggleShowIcons] = useLocalState<boolean>(context, 'showIcons', false);
+  const [showIcons, toggleShowIcons] = useLocalState<boolean>(
+    'showIcons',
+    false,
+  );
 
   return (
     <Section>
@@ -93,62 +118,95 @@ export const EmotePanelContent = (props, context) => {
               onClick={() => toggleUseParamsFilter(!filterUseParams)}
             />
           </Flex>
-        }>
-        <SearchBar query={searchText} onSearch={setSearchText} placeholder="Szukaj emotek..." />
+        }
+      >
+        <SearchBar
+          query={searchText}
+          onSearch={setSearchText}
+          placeholder="Szukaj emotek..."
+        />
       </Section>
       <Section
-        title={searchText.length > 0 ? `Wyniki wyszukiwania "${searchText}"` : `Wszystkie emotki`}
+        title={
+          searchText.length > 0
+            ? `Wyniki wyszukiwania "${searchText}"`
+            : `Wszystkie emotki`
+        }
         buttons={
           <Flex>
             <Flex.Item>
-              <Button onClick={() => toggleShowNames(!showNames)}>{showNames ? 'Pokaż nazwy' : 'Pokaż klucze'}</Button>
-              <Button selected={showIcons} onClick={() => toggleShowIcons(!showIcons)}>
+              <Button onClick={() => toggleShowNames(!showNames)}>
+                {showNames ? 'Pokaż nazwy' : 'Pokaż klucze'}
+              </Button>
+              <Button
+                selected={showIcons}
+                onClick={() => toggleShowIcons(!showIcons)}
+              >
                 Pokaż ikony
               </Button>
             </Flex.Item>
             <Flex.Item>
-              <Button icon="crosshairs" selected={useParams} onClick={() => toggleUseParams(!useParams)}>
+              <Button
+                icon="crosshairs"
+                selected={useParams}
+                onClick={() => toggleUseParams(!useParams)}
+              >
                 Użyj parametrów
               </Button>
             </Flex.Item>
           </Flex>
-        }>
+        }
+      >
         <Flex>
           <Flex.Item>
             {emotes
               .filter(
                 (emote) =>
-                  emote.key
-                  && (searchText.length > 0
-                    ? emote.key.toLowerCase().includes(searchText.toLowerCase())
-                    || emote.name.toLowerCase().includes(searchText.toLowerCase())
-                    : true)
-                  && (filterVisible ? emote.visible : true)
-                  && (filterAudible ? emote.audible : true)
-                  && (filterSound ? emote.sound : true)
-                  && (filterHands ? emote.hands : true)
-                  && (filterUseParams ? emote.use_params : true)
+                  emote.key &&
+                  (searchText.length > 0
+                    ? emote.key
+                        .toLowerCase()
+                        .includes(searchText.toLowerCase()) ||
+                      emote.name
+                        .toLowerCase()
+                        .includes(searchText.toLowerCase())
+                    : true) &&
+                  (filterVisible ? emote.visible : true) &&
+                  (filterAudible ? emote.audible : true) &&
+                  (filterSound ? emote.sound : true) &&
+                  (filterHands ? emote.hands : true) &&
+                  (filterUseParams ? emote.use_params : true),
               )
               .sort((a, b) => (a.name > b.name ? 1 : -1))
               .map((emote) => (
                 <Button
                   width={showIcons ? 16 : 8}
                   key={emote.name}
-                  tooltip={showIcons ? '' : <EmoteIcons
-                    visible={emote.visible}
-                    audible={emote.audible}
-                    sound={emote.sound}
-                    hands={emote.hands}
-                    use_params={emote.use_params}
-                    margin={0.5}
-                  />}
+                  tooltip={
+                    showIcons ? (
+                      ''
+                    ) : (
+                      <EmoteIcons
+                        visible={emote.visible}
+                        audible={emote.audible}
+                        sound={emote.sound}
+                        hands={emote.hands}
+                        use_params={emote.use_params}
+                        margin={0.5}
+                      />
+                    )
+                  }
                   onClick={() =>
                     act('play_emote', {
                       emote_key: emote.key,
                       use_params: useParams,
-                    })}>
+                    })
+                  }
+                >
                   <Box inline width="50%">
-                    {showNames ? capitalize(emote.name.toLowerCase()) : emote.key}
+                    {showNames
+                      ? capitalize(emote.name.toLowerCase())
+                      : emote.key}
                   </Box>
                   {showIcons ? (
                     <EmoteIcons
@@ -171,21 +229,46 @@ export const EmotePanelContent = (props, context) => {
   );
 };
 
-const EmoteIcons = (props, context) => {
+const EmoteIcons = (props) => {
   const { visible, audible, sound, hands, use_params, margin } = props;
 
   return (
     <Box inline align="right">
-      <Icon name="eye" m={margin} color={!visible ? 'red' : ''} opacity={!visible ? 0.5 : 1} />
-      <Icon name="comment" m={margin} color={!audible ? 'red' : ''} opacity={!audible ? 0.5 : 1} />
-      <Icon name="volume-up" m={margin} color={!sound ? 'red' : ''} opacity={!sound ? 0.5 : 1} />
-      <Icon name="hand-paper" m={margin} color={!hands ? 'red' : ''} opacity={!hands ? 0.5 : 1} />
-      <Icon name="crosshairs" m={margin} color={!use_params ? 'red' : ''} opacity={!use_params ? 0.5 : 1} />
+      <Icon
+        name="eye"
+        m={margin}
+        color={!visible ? 'red' : ''}
+        opacity={!visible ? 0.5 : 1}
+      />
+      <Icon
+        name="comment"
+        m={margin}
+        color={!audible ? 'red' : ''}
+        opacity={!audible ? 0.5 : 1}
+      />
+      <Icon
+        name="volume-up"
+        m={margin}
+        color={!sound ? 'red' : ''}
+        opacity={!sound ? 0.5 : 1}
+      />
+      <Icon
+        name="hand-paper"
+        m={margin}
+        color={!hands ? 'red' : ''}
+        opacity={!hands ? 0.5 : 1}
+      />
+      <Icon
+        name="crosshairs"
+        m={margin}
+        color={!use_params ? 'red' : ''}
+        opacity={!use_params ? 0.5 : 1}
+      />
     </Box>
   );
 };
 
-export const EmotePanel = (props, context) => {
+export const EmotePanel = (props) => {
   return (
     <Window title="Panel emotek" width={630} height={500}>
       <Window.Content scrollable>

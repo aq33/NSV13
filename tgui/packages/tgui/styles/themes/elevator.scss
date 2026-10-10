@@ -1,0 +1,120 @@
+@use 'sass:color';
+@use 'sass:meta';
+
+$elevator-gray: hsl(0, 0%, 38.8%) !default;
+$elevator-gray-fg: hsl(0, 0%, 56.5%) !default;
+$elevator-label: hsl(0, 0%, 12.5%) !default;
+$elevator-text: hsl(0, 0%, 100%) !default;
+$elevator-selected: hsl(0, 0%, 88.6%) !default;
+
+@use '../colors.scss' with (
+  $fg-map-keys: (),
+  $bg-map-keys: ()
+);
+@use '../base.scss' with (
+  $color-bg: $elevator-gray,
+  $color-fg: $elevator-gray-fg,
+  $color-bg-grad-spread: 10%
+);
+
+.theme-elevator {
+  body {
+    background: linear-gradient(
+      to bottom,
+      hsl(202.5, 13.6%, 76.9%),
+      #eee,
+      hsl(202.5, 13.6%, 76.9%)
+    );
+  }
+  // Components
+  @include meta.load-css(
+    '../components/Button.scss',
+    $with: ('color-default': $elevator-gray-fg)
+  );
+
+  .button-container {
+    background-color: $elevator-label;
+    width: 115px;
+    height: 65px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 60px;
+    padding: 0;
+    overflow: visible;
+    .button-label {
+      vertical-align: middle;
+      color: $elevator-text;
+      font-size: 45px;
+      margin-left: 15px;
+      margin-right: 3px;
+      margin-top: 5px;
+      float: left;
+    }
+    .Button {
+      $button-height: 65px;
+      position: relative;
+      font-size: 1.5rem;
+      padding: 0;
+      margin: 0;
+      height: $button-height;
+      width: $button-height;
+      border-radius: $button-height;
+      background: linear-gradient(
+        to bottom,
+        hsl(200, 2.4%, 49.4%),
+        hsl(0, 0%, 72.5%),
+        hsl(200, 2.4%, 49.4%)
+      );
+      border: 3px solid $elevator-gray;
+      &.Button--disabled {
+        background-color: $elevator-gray-fg !important;
+      }
+      &.Button--selected {
+        border-color: $elevator-selected;
+        box-shadow:
+          inset 0px 0px 5px $elevator-selected,
+          0px 0px 5px $elevator-selected;
+        &:after {
+          background-color: $elevator-selected;
+          box-shadow: 0px 0px 5px $elevator-selected;
+        }
+      }
+      transition:
+        0.1s linear border-color,
+        0.1s ease background,
+        0.1s linear box-shadow;
+      &:hover {
+        background: linear-gradient(
+          to bottom,
+          hsl(200, 2.4%, 49.4%),
+          hsl(0, 0.6%, 65.7%),
+          hsl(200, 2.4%, 49.4%)
+        );
+      }
+      &:after {
+        content: '';
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        padding: 0;
+        margin: 0;
+        border-radius: 5px;
+        background-color: hsl(0, 0%, 38.8%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+  @include meta.load-css('../components/ProgressBar.scss');
+  @include meta.load-css('../components/Section.scss');
+
+  // Layouts
+  @include meta.load-css('../layouts/Layout.scss');
+  @include meta.load-css('../layouts/Window.scss');
+  @include meta.load-css('../layouts/TitleBar.scss');
+  .Layout__content {
+    background-image: none;
+  }
+}

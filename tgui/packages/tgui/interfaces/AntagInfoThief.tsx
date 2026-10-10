@@ -1,13 +1,14 @@
 // AQUILA - Thief antagonist info (tgstation#64144)
+import { Section, Stack } from 'tgui-core/components';
+
 import { useBackend } from '../backend';
-import { Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 type Objective = {
   count: number;
   name: string;
   explanation: string;
-}
+};
 
 type Info = {
   objectives: Objective[];
@@ -15,16 +16,11 @@ type Info = {
   intro: string;
 };
 
-export const AntagInfoThief = (props, context) => {
-  const { data } = useBackend<Info>(context);
-  const {
-    intro,
-    goal,
-  } = data;
+export const AntagInfoThief = (props) => {
+  const { data } = useBackend<Info>();
+  const { intro, goal } = data;
   return (
-    <Window
-      width={620}
-      height={300}>
+    <Window width={620} height={300}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item grow>
@@ -33,9 +29,7 @@ export const AntagInfoThief = (props, context) => {
                 <Stack.Item textColor="red" fontSize="20px">
                   {intro}
                 </Stack.Item>
-                <Stack.Item>
-                  {goal}
-                </Stack.Item>
+                <Stack.Item>{goal}</Stack.Item>
                 <Stack.Item>
                   <ObjectivePrintout />
                 </Stack.Item>
@@ -53,23 +47,19 @@ export const AntagInfoThief = (props, context) => {
   );
 };
 
-const ObjectivePrintout = (props, context) => {
-  const { data } = useBackend<Info>(context);
-  const {
-    objectives,
-  } = data;
+const ObjectivePrintout = (props) => {
+  const { data } = useBackend<Info>();
+  const { objectives } = data;
   return (
     <Stack vertical>
-      <Stack.Item bold>
-        Twoje cele na dzisiejszy skok:
-      </Stack.Item>
+      <Stack.Item bold>Twoje cele na dzisiejszy skok:</Stack.Item>
       <Stack.Item>
-        {!objectives && "Brak!"
-        || objectives.map(objective => (
-          <Stack.Item key={objective.count}>
-            #{objective.count}: {objective.explanation}
-          </Stack.Item>
-        )) }
+        {(!objectives && 'Brak!') ||
+          objectives.map((objective) => (
+            <Stack.Item key={objective.count}>
+              #{objective.count}: {objective.explanation}
+            </Stack.Item>
+          ))}
       </Stack.Item>
     </Stack>
   );

@@ -4,23 +4,38 @@
  * @license MIT
  */
 
-import { changeSettingsTab, loadSettings, openChatSettings, toggleSettings, updateSettings } from './actions';
-import { FONTS, SETTINGS_TABS } from './constants';
+import {
+  addHighlightSetting,
+  changeSettingsTab,
+  loadSettings,
+  openChatSettings,
+  removeHighlightSetting,
+  toggleSettings,
+  updateHighlightSetting,
+  updateSettings,
+} from './actions';
+import { FONTS, MAX_HIGHLIGHT_SETTINGS, SETTINGS_TABS } from './constants';
+import { createDefaultHighlightSetting } from './model';
+
+const defaultHighlightSetting = createDefaultHighlightSetting();
 
 const initialState = {
   version: 1,
   fontSize: 13,
   fontFamily: FONTS[0],
   lineHeight: 1.2,
-  theme: 'light',
+  theme: 'blue',
   statSize: 40,
   adminMusicVolume: 0.5,
+  highContrast: false,
+  // Keep these two state vars for compatibility with other servers
   highlightText: '',
   highlightColor: '#ffdd44',
-  highContrast: false,
-  matchWord: false,
-  matchCase: false,
-  highlightSelf: false,
+  // END compatibility state vars
+  highlightSettings: [defaultHighlightSetting.id],
+  highlightSettingById: {
+    [defaultHighlightSetting.id]: defaultHighlightSetting,
+  },
   view: {
     visible: false,
     activeTab: SETTINGS_TABS[0].id,
@@ -40,11 +55,40 @@ export const settingsReducer = (state = initialState, action) => {
     if (!payload?.version) {
       return state;
     }
+
     delete payload.view;
-    return {
+    const nextState = {
       ...state,
       ...payload,
     };
+    // Lazy init the list for compatibility reasons
+    if (!nextState.highlightSettings) {
+      nextState.highlightSettings = [defaultHighlightSetting.id];
+      nextState.highlightSettingById[defaultHighlightSetting.id] =
+        defaultHighlightSetting;
+    }
+    // Compensating for mishandling of default highlight settings
+    else if (!nextState.highlightSettingById[defaultHighlightSetting.id]) {
+      nextState.highlightSettings = [
+        defaultHighlightSetting.id,
+        ...nextState.highlightSettings,
+      ];
+      nextState.highlightSettingById[defaultHighlightSetting.id] =
+        defaultHighlightSetting;
+    }
+    // Migrate old highlights to include enabled: true
+    Object.keys(nextState.highlightSettingById).forEach((key) => {
+      if (nextState.highlightSettingById[key].enabled === undefined) {
+        nextState.highlightSettingById[key].enabled = true;
+      }
+    });
+    // Update the highlight settings for default highlight
+    // settings compatibility
+    const highlightSetting =
+      nextState.highlightSettingById[defaultHighlightSetting.id];
+    highlightSetting.highlightColor = nextState.highlightColor;
+    highlightSetting.highlightText = nextState.highlightText;
+    return nextState;
   }
   if (type === toggleSettings.type) {
     return {
@@ -74,6 +118,75 @@ export const settingsReducer = (state = initialState, action) => {
         activeTab: tabId,
       },
     };
+  }
+  if (type === addHighlightSetting.type) {
+    const highlightSetting = payload;
+    if (state.highlightSettings.length >= MAX_HIGHLIGHT_SETTINGS) {
+      return state;
+    }
+    return {
+      ...state,
+      highlightSettings: [...state.highlightSettings, highlightSetting.id],
+      highlightSettingById: {
+        ...state.highlightSettingById,
+        [highlightSetting.id]: highlightSetting,
+      },
+    };
+  }
+  if (type === removeHighlightSetting.type) {
+    const { id } = payload;
+    const nextState = {
+      ...state,
+      highlightSettings: [...state.highlightSettings],
+      highlightSettingById: {
+        ...state.highlightSettingById,
+      },
+    };
+    if (id === defaultHighlightSetting.id) {
+      nextState.highlightSettings[defaultHighlightSetting.id] =
+        defaultHighlightSetting;
+    } else {
+      delete nextState.highlightSettingById[id];
+      nextState.highlightSettings = nextState.highlightSettings.filter(
+        (sid) => sid !== id,
+      );
+      if (!nextState.highlightSettings.length) {
+        nextState.highlightSettings.push(defaultHighlightSetting.id);
+        nextState.highlightSettingById[defaultHighlightSetting.id] =
+          defaultHighlightSetting;
+      }
+    }
+    return nextState;
+  }
+  if (type === updateHighlightSetting.type) {
+    const { id, ...settings } = payload;
+    const nextState = {
+      ...state,
+      highlightSettings: [...state.highlightSettings],
+      highlightSettingById: {
+        ...state.highlightSettingById,
+      },
+    };
+
+    // Transfer this data from the default highlight setting
+    // so they carry over to other servers
+    if (id === defaultHighlightSetting.id) {
+      if (settings.highlightText) {
+        nextState.highlightText = settings.highlightText;
+      }
+      if (settings.highlightColor) {
+        nextState.highlightColor = settings.highlightColor;
+      }
+    }
+
+    if (nextState.highlightSettingById[id]) {
+      nextState.highlightSettingById[id] = {
+        ...nextState.highlightSettingById[id],
+        ...settings,
+      };
+    }
+
+    return nextState;
   }
   return state;
 };

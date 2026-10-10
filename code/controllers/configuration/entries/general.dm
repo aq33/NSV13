@@ -619,3 +619,12 @@
 /datum/config_entry/string/elasticsearch_metrics_endpoint
 
 /datum/config_entry/string/elasticsearch_metrics_apikey
+
+// AQ EDIT START - TGUI na React (port z BeeStation): dzielenie dużych pakietów z okien TGUI
+/**
+ * tgui_max_chunk_count
+ * This flag represents the maximum chunk count the server is willing to receive.
+ */
+/datum/config_entry/number/tgui_max_chunk_count
+	config_entry_value = 32
+// AQ EDIT END

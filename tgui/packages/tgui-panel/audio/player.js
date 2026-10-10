@@ -37,9 +37,7 @@ const PLAIN_MUFFLE_VOLUME = 0.4;
 // Plain element echo copies: delay (s) and level relative to the music
 // (one copy - every copy is another download of the stream). The delay is
 // short so it blends in as room reverb instead of sounding like a second song.
-const PLAIN_TAPS = [
-  { delay: 0.04, level: 0.5 },
-];
+const PLAIN_TAPS = [{ delay: 0.04, level: 0.5 }];
 // How much the direct sound is lowered at full echo
 const PLAIN_ECHO_DUCK = 0.2;
 // How far an echo copy may drift before it gets re-seeked (s)
@@ -47,7 +45,7 @@ const TAP_MAX_DRIFT = 0.07;
 
 const AudioContextClass = window.AudioContext || window.webkitAudioContext;
 
-const clamp01 = value => Math.min(1, Math.max(0, value));
+const clamp01 = (value) => Math.min(1, Math.max(0, value));
 
 const createAudioElement = () => {
   const node = document.createElement('audio');
@@ -57,7 +55,7 @@ const createAudioElement = () => {
 };
 
 // Stereo noise with an exponential tail, used as the reverb impulse
-const createImpulse = context => {
+const createImpulse = (context) => {
   const length = Math.floor(context.sampleRate * REVERB_SECONDS);
   const impulse = context.createBuffer(2, length, context.sampleRate);
   for (let channel = 0; channel < 2; channel++) {
@@ -102,8 +100,8 @@ export class AudioPlayer {
       if (!this.playing) {
         return;
       }
-      const shouldStop = this.options.end > 0
-        && this.current.currentTime >= this.options.end;
+      const shouldStop =
+        this.options.end > 0 && this.current.currentTime >= this.options.end;
       if (shouldStop) {
         this.stop();
       }
@@ -114,9 +112,10 @@ export class AudioPlayer {
         return;
       }
       const delta = this.targetGain - this.gain;
-      this.gain = Math.abs(delta) <= GAIN_RAMP_STEP
-        ? this.targetGain
-        : this.gain + (delta > 0 ? GAIN_RAMP_STEP : -GAIN_RAMP_STEP);
+      this.gain =
+        Math.abs(delta) <= GAIN_RAMP_STEP
+          ? this.targetGain
+          : this.gain + (delta > 0 ? GAIN_RAMP_STEP : -GAIN_RAMP_STEP);
       if (this.current === this.node) {
         this.applyVolume();
       }
@@ -153,7 +152,7 @@ export class AudioPlayer {
       this.stop();
     });
     // Listen for playback errors
-    node.addEventListener('error', e => {
+    node.addEventListener('error', (e) => {
       // Clearing src on stop also raises an error - ignore that one
       const cleared = !node.src || node.src === window.location.href;
       if (node !== this.current || !this.url || cleared) {
@@ -263,8 +262,7 @@ export class AudioPlayer {
         if (instant) {
           param.cancelScheduledValues(now);
           param.setValueAtTime(value, now);
-        }
-        else {
+        } else {
           param.setTargetAtTime(value, now, GLIDE);
         }
       };
@@ -274,9 +272,8 @@ export class AudioPlayer {
       glide(echo.gain, this.echo * ECHO_LEVEL);
       glide(reverb.gain, this.echo * REVERB_LEVEL);
       // Far away takes the edge off the highs, another deck muffles hard
-      const cutoff = this.muffle > 0
-        ? 2500 - this.muffle * 2000
-        : 20000 - this.echo * 15000;
+      const cutoff =
+        this.muffle > 0 ? 2500 - this.muffle * 2000 : 20000 - this.echo * 15000;
       glide(lowpass.frequency, cutoff);
       return;
     }
@@ -301,9 +298,12 @@ export class AudioPlayer {
 
   // Keeps the echo copies of the plain element playing, lagging behind it
   syncTaps() {
-    const active = this.playing && this.url
-      && this.current === this.node && this.node.started
-      && this.tapMix() > 0.02;
+    const active =
+      this.playing &&
+      this.url &&
+      this.current === this.node &&
+      this.node.started &&
+      this.tapMix() > 0.02;
     if (!active) {
       for (let tap of this.taps) {
         if (!tap.node.paused) {
@@ -337,8 +337,10 @@ export class AudioPlayer {
         continue;
       }
       tap.node.playbackRate = rate;
-      if (tap.node.paused
-        || Math.abs(tap.node.currentTime - target) > TAP_MAX_DRIFT) {
+      if (
+        tap.node.paused ||
+        Math.abs(tap.node.currentTime - target) > TAP_MAX_DRIFT
+      ) {
         tap.node.currentTime = target;
       }
       if (tap.node.paused) {

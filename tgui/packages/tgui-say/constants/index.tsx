@@ -1,6 +1,18 @@
 /** Radio channels */
-export const CHANNELS = ['Say', 'Radio', 'Me', 'OOC', 'LOOC'];
+export const CHANNELS = [
+  'Say',
+  'Radio',
+  'Me',
+  'OOC',
+  'LOOC',
+  'Asay',
+  'Dsay',
+  'Msay',
+];
+export const CYCLEABLE_CHANNELS = ['Say', 'Radio', 'Me', 'OOC', 'LOOC'];
 export const NO_RADIO_CHANNELS = ['Me', 'OOC', 'LOOC'];
+
+export const RESTRICTED_CHANNELS = ['Asay', 'Dsay', 'Msay'];
 
 /** Window sizes in pixels */
 export enum WINDOW_SIZES {
@@ -67,11 +79,10 @@ export const RADIO_PREFIXES = {
     id: 'ai',
     label: 'AI',
   },
-  // NSV13 - We need this stuff
-  // ':q ': {
-  //  id: 'exploration',
-  //  label: 'Explo',
-  // },
+  ':q ': {
+    id: 'exploration',
+    label: 'Explo',
+  },
   ':r ': {
     id: 'right',
     label: 'Right',
@@ -96,18 +107,8 @@ export const RADIO_PREFIXES = {
     id: 'centcom',
     label: 'CCom',
   },
-  // NSV13 - Start of NSV13 Comms
-  ':q ': {
-    id: 'atc',
-    label: 'ATC',
+  ':p ': {
+    id: 'holoparasite',
+    label: 'HPara',
   },
-  ':w ': {
-    id: 'munition',
-    label: 'Muni',
-  },
-  ':z ': {
-    id: 'space_pirate',
-    label: 'SP',
-  },
-  // NSV13 - End of NSV13 Comms
 } as const;
