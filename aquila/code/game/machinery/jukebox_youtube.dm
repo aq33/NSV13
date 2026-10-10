@@ -16,7 +16,8 @@
 /// Po takim czasie uznajemy, że yt-dlp się zawiesił, i odblokowujemy jukebox
 #define JUKEBOX_YT_BUSY_TIMEOUT (90 SECONDS)
 /// Wspólne argumenty yt-dlp: limit czasu połączenia i ponowień, żeby zapytanie nie wisiało w nieskończoność
-#define JUKEBOX_YT_ARGS "--socket-timeout 10 --retries 2 --extractor-retries 1 --no-warnings"
+/// (tylko opcje znane też staremu youtube-dl, gdyby nadal był używany)
+#define JUKEBOX_YT_ARGS "--socket-timeout 10 --retries 2 --no-warnings"
 
 /obj/machinery/jukebox
 	/// URL playlisty - domyślna playlista wczytuje się przy pierwszym "Graj"
@@ -48,11 +49,12 @@
 	/// Od kiedy klient jest poza zasięgiem (muzyka wyciszona, ale jeszcze gra)
 	var/list/yt_listener_out = list()
 
-/// Polecenie yt-dlp: INVOKE_YOUTUBEDL z konfigu, a gdy go brak - yt-dlp.exe z katalogu gry (leży w repo).
+/// Polecenie yt-dlp: yt-dlp.exe z katalogu gry (leży w repo), a gdy go brak - INVOKE_YOUTUBEDL z konfigu.
+/// yt-dlp.exe ma pierwszeństwo - stary youtube-dl z konfigu nie radzi sobie z YouTube i nie zna części opcji.
 /proc/aquila_ytdl_command()
-	. = CONFIG_GET(string/invoke_youtubedl)
-	if(!. && world.system_type == MS_WINDOWS && fexists("yt-dlp.exe"))
+	if(world.system_type == MS_WINDOWS && fexists("yt-dlp.exe"))
 		return ".\\yt-dlp.exe --no-check-certificate"
+	return CONFIG_GET(string/invoke_youtubedl)
 
 /obj/machinery/jukebox/proc/yt_available()
 	return !!aquila_ytdl_command()
