@@ -11,7 +11,7 @@
 	)
 	tastes = list("leaves" = 1)
 	foodtypes = VEGETABLES
-	eatverbs = list("devour","nibble","gnaw","gobble","chomp") //who the fuck gnaws and devours on a salad
+	eatverbs = list("pożera","skubie","obgryza","pochłania","chrupie") //who the fuck gnaws and devours on a salad
 	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/salad/aesirsalad

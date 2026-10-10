@@ -2,8 +2,8 @@
 	name = "Telepathy"
 	desc = "A rare mutation that allows the user to telepathically communicate to others."
 	quality = POSITIVE
-	text_gain_indication = "<span class='notice'>You can hear your own voice echoing in your mind!</span>"
-	text_lose_indication = "<span class='notice'>You don't hear your mind echo anymore.</span>"
+	text_gain_indication = "<span class='notice'>Słyszysz w umyśle echo własnego głosu!</span>"
+	text_lose_indication = "<span class='notice'>Nie słyszysz już echa swojego umysłu.</span>"
 	difficulty = 12
 	power = /obj/effect/proc_holder/spell/targeted/telepathy
 	instability = 10
@@ -15,8 +15,8 @@
 	desc = "Your sense of smell is comparable to that of a canine."
 	quality = POSITIVE
 	difficulty = 12
-	text_gain_indication = "<span class='notice'>Smells begin to make more sense...</span>"
-	text_lose_indication = "<span class='notice'>Your sense of smell goes back to normal.</span>"
+	text_gain_indication = "<span class='notice'>Zapachy zaczynają mieć więcej sensu...</span>"
+	text_lose_indication = "<span class='notice'>Twój węch wraca do normy.</span>"
 	power = /obj/effect/proc_holder/spell/targeted/olfaction
 	instability = 30
 	synchronizer_coeff = 1
@@ -29,17 +29,17 @@
 	if(hygiene_now < 100 && prob(3))
 		owner.adjust_disgust(GET_MUTATION_SYNCHRONIZER(src) * (rand(3,5)))
 	if(hygiene_now < HYGIENE_LEVEL_DIRTY && prob(15))
-		to_chat(owner,"<span class='danger'>You get a whiff of your stench and feel sick!</span>")
+		to_chat(owner,"<span class='danger'>Czujesz swój własny smród i robi ci się niedobrze!</span>")
 		owner.adjust_disgust(GET_MUTATION_SYNCHRONIZER(src) * rand(5,10))
 
 	if(hygiene_now < HYGIENE_LEVEL_NORMAL && reek >= HYGIENE_LEVEL_NORMAL)
-		to_chat(owner,"<span class='warning'>Your inhumanly strong nose picks up a faint odor. Maybe you should shower soon.</span>")
+		to_chat(owner,"<span class='warning'>Twój nieludzko silny nos wyczuwa słaby zapach. Może niedługo powinieneś się umyć.</span>")
 	if(hygiene_now < 150 && reek >= 150)
-		to_chat(owner,"<span class='warning'>Your odor is getting bad, what with you having a super-nose and all.</span>")
+		to_chat(owner,"<span class='warning'>Twój zapach robi się nieprzyjemny, zwłaszcza że masz supernos.</span>")
 	if(hygiene_now < 100 && reek >= 100)
-		to_chat(owner,"<span class='danger'>Your odor begins to make you gag. You silently curse your godly nose. You should really get clean!</span>")
+		to_chat(owner,"<span class='danger'>Twój zapach zaczyna przyprawiać cię o odruch wymiotny. Po cichu przeklinasz swój boski nos. Naprawdę powinieneś się umyć!</span>")
 	if(hygiene_now < HYGIENE_LEVEL_DIRTY && reek >= HYGIENE_LEVEL_DIRTY)
-		to_chat(owner,"<span class='userdanger'>Your super-nose is 100% fed up with your stench. You absolutely must get clean.</span>")
+		to_chat(owner,"<span class='userdanger'>Twój supernos ma w 100% dość twojego smrodu. Koniecznie musisz się umyć.</span>")
 	reek = hygiene_now
 
 /obj/effect/proc_holder/spell/targeted/olfaction
@@ -63,42 +63,42 @@
 			if(prints[rustg_hash_string(RUSTG_HASH_MD5, C.dna.uni_identity)])
 				possible |= C
 		if(!length(possible))
-			to_chat(user,"<span class='warning'>Despite your best efforts, there are no scents to be found on [sniffed]...</span>")
+			to_chat(user,"<span class='warning'>Mimo twoich starań na [sniffed] nie ma żadnych zapachów...</span>")
 			return
-		tracking_target = input(user, "Choose a scent to remember.", "Scent Tracking") as null|anything in sortNames(possible)
+		tracking_target = input(user, "Wybierz zapach do zapamiętania.", "Śledzenie zapachu") as null|anything in sortNames(possible)
 		if(!tracking_target)
 			if(!old_target)
-				to_chat(user,"<span class='warning'>You decide against remembering any scents. Instead, you notice your own nose in your peripheral vision. This goes on to remind you of that one time you started breathing manually and couldn't stop. What an awful day that was.</span>")
+				to_chat(user,"<span class='warning'>Postanawiasz nie zapamiętywać żadnych zapachów. Zamiast tego zauważasz kątem oka własny nos. Przypomina ci to, jak kiedyś zacząłeś oddychać ręcznie i nie mogłeś przestać. Co to był za okropny dzień.</span>")
 				return
 			tracking_target = old_target
 			on_the_trail(user)
 			return
-		to_chat(user,"<span class='notice'>You pick up the scent of [tracking_target]. The hunt begins.</span>")
+		to_chat(user,"<span class='notice'>Wyczuwasz zapach [tracking_target]. Polowanie się zaczyna.</span>")
 		on_the_trail(user)
 		return
 
 	if(!tracking_target)
-		to_chat(user,"<span class='warning'>You're not holding anything to smell, and you haven't smelled anything you can track. You smell your palm instead; it's kinda salty.</span>")
+		to_chat(user,"<span class='warning'>Nie trzymasz niczego do powąchania i nie wyczułeś niczego, co dałoby się wyśledzić. Zamiast tego wąchasz swoją dłoń; jest trochę słona.</span>")
 		return
 
 	on_the_trail(user)
 
 /obj/effect/proc_holder/spell/targeted/olfaction/proc/on_the_trail(mob/living/user)
 	if(!tracking_target)
-		to_chat(user,"<span class='warning'>You're not tracking a scent, but the game thought you were. Something's gone wrong! Report this as a bug.</span>")
+		to_chat(user,"<span class='warning'>Nie śledzisz zapachu, ale gra myślała, że tak. Coś poszło nie tak! Zgłoś to jako błąd.</span>")
 		return
 	if(tracking_target == user)
-		to_chat(user,"<span class='warning'>You smell out the trail to yourself. Yep, it's you.</span>")
+		to_chat(user,"<span class='warning'>Wyczuwasz trop prowadzący do ciebie samego. Tak, to ty.</span>")
 		return
 	if(usr.get_virtual_z_level() < tracking_target.get_virtual_z_level())
-		to_chat(user,"<span class='warning'>The trail leads... way up above you? Huh. They must be really, really far away.</span>")
+		to_chat(user,"<span class='warning'>Trop prowadzi... daleko w górę? Hm. Ta osoba musi być naprawdę bardzo daleko.</span>")
 		return
 	else if(usr.get_virtual_z_level() > tracking_target.get_virtual_z_level())
-		to_chat(user,"<span class='warning'>The trail leads... way down below you? Huh. They must be really, really far away.</span>")
+		to_chat(user,"<span class='warning'>Trop prowadzi... daleko w dół? Hm. Ta osoba musi być naprawdę bardzo daleko.</span>")
 		return
 	var/direction_text = "[dir2text(get_dir(usr, tracking_target))]"
 	if(direction_text)
-		to_chat(user,"<span class='notice'>You consider [tracking_target]'s scent. The trail leads <b>[direction_text].</b></span>")
+		to_chat(user,"<span class='notice'>Analizujesz zapach [tracking_target]. Trop prowadzi <b>[direction_text].</b></span>")
 
 /datum/mutation/firebreath
 	name = "Fire Breath"
@@ -106,8 +106,8 @@
 	quality = POSITIVE
 	difficulty = 12
 	locked = TRUE
-	text_gain_indication = "<span class='notice'>Your throat is burning!</span>"
-	text_lose_indication = "<span class='notice'>Your throat is cooling down.</span>"
+	text_gain_indication = "<span class='notice'>Pali cię w gardle!</span>"
+	text_lose_indication = "<span class='notice'>Twoje gardło się schładza.</span>"
 	power = /obj/effect/proc_holder/spell/aimed/firebreath
 	instability = 30
 	energy_coeff = 1
@@ -131,8 +131,8 @@
 	base_icon_state = "fireball"
 	action_icon_state = "fireball0"
 	sound = 'sound/magic/demon_dies.ogg' //horrifying lizard noises
-	active_msg = "You built up heat in your mouth."
-	deactive_msg = "You swallow the flame."
+	active_msg = "Zbierasz w ustach żar."
+	deactive_msg = "Połykasz płomień."
 	var/strength = 1
 
 /obj/effect/proc_holder/spell/aimed/firebreath/before_cast(list/targets)
@@ -142,7 +142,7 @@
 		if(C.is_mouth_covered())
 			C.adjust_fire_stacks(2)
 			C.IgniteMob()
-			to_chat(C,"<span class='warning'>Something in front of your mouth caught fire!</span>")
+			to_chat(C,"<span class='warning'>Coś przed twoimi ustami zajmuje się ogniem!</span>")
 			return FALSE
 
 /obj/effect/proc_holder/spell/aimed/firebreath/ready_projectile(obj/item/projectile/P, atom/target, mob/user, iteration)
@@ -164,7 +164,7 @@
 	name = "Void Magnet"
 	desc = "A rare genome that attracts odd forces not usually observed."
 	quality = MINOR_NEGATIVE //upsides and downsides
-	text_gain_indication = "<span class='notice'>You feel a heavy, dull force just beyond the walls watching you.</span>"
+	text_gain_indication = "<span class='notice'>Czujesz ciężką, tępą siłę tuż za ścianami, która cię obserwuje.</span>"
 	instability = 30
 	power = /obj/effect/proc_holder/spell/self/void
 	energy_coeff = 1
@@ -199,7 +199,7 @@
 	name = "Autotomy"
 	desc = "Allows a creature to voluntary discard a random appendage."
 	quality = POSITIVE
-	text_gain_indication = "<span class='notice'>Your joints feel loose.</span>"
+	text_gain_indication = "<span class='notice'>Twoje stawy wydają się luźne.</span>"
 	instability = 30
 	power = /obj/effect/proc_holder/spell/self/self_amputation
 
@@ -228,7 +228,7 @@
 			if(BP.dismemberable)
 				parts += BP
 	if(!parts.len)
-		to_chat(usr, "<span class='notice'>You can't shed any more limbs!</span>")
+		to_chat(usr, "<span class='notice'>Nie możesz zrzucić więcej kończyn!</span>")
 		return
 
 	var/obj/item/bodypart/BP = pick(parts)
@@ -239,7 +239,7 @@
 	desc = "Allows an Ethereal to overload their skin to cause a bright flash."
 	quality = POSITIVE
 	locked = TRUE
-	text_gain_indication = "<span class='notice'>Your skin feels more crackly.</span>"
+	text_gain_indication = "<span class='notice'>Twoja skóra wydaje się bardziej trzeszcząca.</span>"
 	instability = 30
 	power = /obj/effect/proc_holder/spell/self/overload
 	species_allowed = list(SPECIES_ETHEREAL)
@@ -258,7 +258,7 @@
 		return
 
 	var/list/mob/targets = oviewers(max_distance, get_turf(user))
-	visible_message("<span class='disarm'>[user] emits a blinding light!</span>")
+	visible_message("<span class='disarm'>[user] wydziela oślepiające światło!</span>")
 	for(var/mob/living/carbon/C in targets)
 		if(C.flash_act(1))
 			C.Paralyze(10 + (5*max_distance))
@@ -273,7 +273,7 @@
 	desc = "Allows an Oozeling to metabolize some of their blood into acid, concentrated on their hands."
 	quality = POSITIVE
 	locked = TRUE
-	text_gain_indication = "<span class='notice'>Your hands feel sore.</span>"
+	text_gain_indication = "<span class='notice'>Bolą cię dłonie.</span>"
 	instability = 30
 	power = /obj/effect/proc_holder/spell/targeted/touch/acidooze
 	species_allowed = list(SPECIES_OOZELING)
@@ -287,8 +287,8 @@
 	action_icon_state = "summons"
 	var/volume = 10
 	hand_path = /obj/item/melee/touch_attack/acidooze
-	drawmessage = "You secrete acid into your hand."
-	dropmessage = "You let the acid in your hand dissipate."
+	drawmessage = "Wydzielasz kwas do dłoni."
+	dropmessage = "Pozwalasz, by kwas w twojej dłoni się rozwiał."
 
 /obj/item/melee/touch_attack/acidooze
 	name = "\improper acidic hand"
@@ -316,12 +316,12 @@
 	if(!target || user.incapacitated())
 		return FALSE
 	if(C.blood_volume < 40)
-		to_chat(user, "<span class='warning'>You don't have enough blood to do that!</span>")
+		to_chat(user, "<span class='warning'>Masz za mało krwi, by to zrobić!</span>")
 		return FALSE
 	if(target.acid_act(50, 15))
-		user.visible_message("<span class='warning'>[user] rubs globs of vile stuff all over [target].</span>")
+		user.visible_message("<span class='warning'>[user] rozsmarowuje grudy obrzydliwej mazi po [target].</span>")
 		C.blood_volume = max(C.blood_volume - 20, 0)
 		return ..()
 	else
-		to_chat(user, "<span class='notice'>You cannot dissolve this object.</span>")
+		to_chat(user, "<span class='notice'>Nie możesz rozpuścić tego przedmiotu.</span>")
 		return FALSE

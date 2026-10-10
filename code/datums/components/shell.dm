@@ -70,16 +70,16 @@
 /datum/component/shell/proc/on_examine(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
 	if(!attached_circuit)
-		examine_text += "<span class='notice'>There is no integrated circuit attached.</span>"
+		examine_text += "<span class='notice'>Nie podłączono żadnego układu scalonego.</span>"
 		return
 
-	examine_text += "<span class='notice'>There is an integrated circuit attached. Use a multitool to access the wiring. Use a screwdriver to remove it from [source].</span>"
-	examine_text += "<span class='notice'>The cover panel to the integrated circuit is [locked? "locked" : "unlocked"].</span>"
+	examine_text += "<span class='notice'>Podłączony jest układ scalony. Użyj multitoola, by dostać się do okablowania. Użyj śrubokręta, by wyjąć go z [source].</span>"
+	examine_text += "<span class='notice'>Panel układu scalonego jest [locked? "zablokowany" : "odblokowany"].</span>"
 	var/obj/item/stock_parts/cell/cell = attached_circuit.cell
-	examine_text += "<span class='notice'>The charge meter reads [cell ? round(cell.percent(), 1) : 0]%.</span>"
+	examine_text += "<span class='notice'>Miernik ładunku pokazuje [cell ? round(cell.percent(), 1) : 0]%.</span>"
 
 	if (shell_flags & SHELL_FLAG_USB_PORT)
-		examine_text += "<span class='notice'>There is a <b>USB port</b> on the front.</span>"
+		examine_text += "<span class='notice'>Z przodu jest <b>port USB</b>.</span>"
 
 
 /**
@@ -98,7 +98,7 @@
 	SIGNAL_HANDLER
 
 	if(istype(item, /obj/item/stock_parts/cell))
-		source.balloon_alert(attacker, "Can't pull cell in directly!")
+		source.balloon_alert(attacker, "Nie można wciągnąć ogniwa bezpośrednio!")
 		return
 
 	if(attached_circuit?.owner_id && item == attached_circuit.owner_id.resolve())
@@ -119,11 +119,11 @@
 		return
 
 	if(attached_circuit)
-		source.balloon_alert(attacker, "There is already a circuitboard inside!")
+		source.balloon_alert(attacker, "W środku już jest płytka!")
 		return
 
 	if(length(logic_board.attached_components) > capacity)
-		source.balloon_alert(attacker, "This is too large to fit into [parent]!")
+		source.balloon_alert(attacker, "To jest za duże, by zmieścić się w [parent]!")
 		return
 
 	logic_board.inserter_mind = WEAKREF(attacker.mind)
@@ -158,7 +158,7 @@
 		return COMPONENT_BLOCK_TOOL_ATTACK
 
 	tool.play_tool_sound(parent)
-	source.balloon_alert(user, "You unscrew [attached_circuit] from [parent].")
+	source.balloon_alert(user, "Odkręcasz [attached_circuit] od [parent].")
 	remove_circuit()
 	return COMPONENT_BLOCK_TOOL_ATTACK
 
@@ -185,7 +185,7 @@
 		return COMPONENT_CANCEL_ADD_COMPONENT
 
 	if(length(attached_circuit.attached_components) - length(unremovable_circuit_components) >= capacity)
-		source.balloon_alert(user, "It's at maximum capacity!")
+		source.balloon_alert(user, "Osiągnięto maksymalną pojemność!")
 		return COMPONENT_CANCEL_ADD_COMPONENT
 
 /**
@@ -203,7 +203,7 @@
 		attached_circuit.add_component(to_add)
 	RegisterSignal(circuitboard, COMSIG_CIRCUIT_ADD_COMPONENT_MANUALLY, PROC_REF(on_circuit_add_component_manually))
 	attached_circuit.set_shell(parent)
-	user.balloon_alert(user, "Attached [circuitboard] to [parent]")
+	user.balloon_alert(user, "Podłączono [circuitboard] do [parent]")
 
 	if(shell_flags & SHELL_FLAG_REQUIRE_ANCHOR)
 		var/atom/movable/parent_atom = parent
@@ -233,11 +233,11 @@
 	SIGNAL_HANDLER
 
 	if (!(shell_flags & SHELL_FLAG_USB_PORT))
-		source.balloon_alert(user, "This shell has no usb ports")
+		source.balloon_alert(user, "Ta powłoka nie ma portów USB")
 		return COMSIG_CANCEL_USB_CABLE_ATTACK
 
 	if (isnull(attached_circuit))
-		source.balloon_alert(user, "No circuit inside")
+		source.balloon_alert(user, "Brak układu w środku")
 		return COMSIG_CANCEL_USB_CABLE_ATTACK
 
 	usb_cable.attached_circuit = attached_circuit

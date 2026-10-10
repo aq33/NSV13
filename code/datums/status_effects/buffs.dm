@@ -11,7 +11,7 @@
 	icon_state = "shadow_mend"
 
 /datum/status_effect/shadow_mend/on_apply()
-	owner.visible_message("<span class='notice'>Violet light wraps around [owner]'s body!</span>", "<span class='notice'>Violet light wraps around your body!</span>")
+	owner.visible_message("<span class='notice'>Ciało [owner] otula fioletowe światło!</span>", "<span class='notice'>Twoje ciało otula fioletowe światło!</span>")
 	playsound(owner, 'sound/magic/teleport_app.ogg', 50, 1)
 	return ..()
 
@@ -20,7 +20,7 @@
 	owner.adjustFireLoss(-15)
 
 /datum/status_effect/shadow_mend/on_remove()
-	owner.visible_message("<span class='warning'>The violet light around [owner] glows black!</span>", "<span class='warning'>The tendrils around you cinch tightly and reap their toll...</span>")
+	owner.visible_message("<span class='warning'>Fioletowe światło wokół [owner] świeci na czarno!</span>", "<span class='warning'>Macki wokół ciebie mocno się zaciskają i pobierają swoją daninę...</span>")
 	playsound(owner, 'sound/magic/teleport_diss.ogg', 50, 1)
 	owner.apply_status_effect(STATUS_EFFECT_VOID_PRICE)
 
@@ -80,14 +80,12 @@
 /atom/movable/screen/alert/status_effect/his_grace/MouseEntered(location,control,params)
 	desc = initial(desc)
 	var/datum/status_effect/his_grace/HG = attached_effect
-	desc += "<br><font size=3><b>Current Bloodthirst: [HG.bloodlust]</b></font>\
-	<br>Becomes undroppable at <b>[HIS_GRACE_FAMISHED]</b>\
-	<br>Will consume you at <b>[HIS_GRACE_CONSUME_OWNER]</b>"
+	desc += "<br><font size=3><b>Obecna żądza krwi: [HG.bloodlust]</b></font><br>Nie da się go upuścić od <b>[HIS_GRACE_FAMISHED]</b><br>Pożre cię przy <b>[HIS_GRACE_CONSUME_OWNER]</b>"
 	..()
 
 /datum/status_effect/his_grace/on_apply()
 	owner.log_message("gained His Grace's stun immunity", LOG_ATTACK)
-	owner.add_stun_absorption("hisgrace", INFINITY, 3, null, "His Grace protects you from the stun!")
+	owner.add_stun_absorption("hisgrace", INFINITY, 3, null, "Jego Łaska chroni cię przed ogłuszeniem!")
 	return ..()
 
 /datum/status_effect/his_grace/tick()
@@ -121,12 +119,12 @@
 	alert_type = /atom/movable/screen/alert/status_effect/wish_granters_gift
 
 /datum/status_effect/wish_granters_gift/on_apply()
-	to_chat(owner, "<span class='notice'>Death is not your end! The Wish Granter's energy suffuses you, and you begin to rise...</span>")
+	to_chat(owner, "<span class='notice'>Śmierć to nie twój koniec! Przenika cię energia Spełniacza Życzeń i zaczynasz powstawać...</span>")
 	return ..()
 
 /datum/status_effect/wish_granters_gift/on_remove()
 	owner.revive(full_heal = TRUE, admin_revive = TRUE)
-	owner.visible_message("<span class='warning'>[owner] appears to wake from the dead, having healed all wounds!</span>", "<span class='notice'>You have regenerated.</span>")
+	owner.visible_message("<span class='warning'>[owner] zdaje się powstawać z martwych, z zaleczonymi wszystkimi ranami!</span>", "<span class='notice'>Regenerujesz się.</span>")
 	owner.update_mobility()
 
 /atom/movable/screen/alert/status_effect/wish_granters_gift
@@ -149,7 +147,7 @@
 		if(isliving(B.current))
 			var/mob/living/M = B.current
 			SEND_SOUND(M, sound('sound/hallucinations/veryfar_noise.ogg'))
-			to_chat(M, "<span class='cultlarge'>The Cult's Master, [owner], has fallen in \the [A]!</span>")
+			to_chat(M, "<span class='cultlarge'>Mistrz Kultu, [owner], poległ w [A]!</span>")
 
 /datum/status_effect/cult_master/tick()
 	if(owner.stat != DEAD && !alive)
@@ -297,10 +295,10 @@
 
 
 /datum/status_effect/sword_spin/on_apply()
-	owner.visible_message("<span class='danger'>[owner] begins swinging the sword with inhuman strength!</span>")
+	owner.visible_message("<span class='danger'>[owner] zaczyna wymachiwać mieczem z nieludzką siłą!</span>")
 	var/oldcolor = owner.color
 	owner.color = "#ff0000"
-	owner.add_stun_absorption("bloody bastard sword", duration, 2, "doesn't even flinch as the sword's power courses through them!", "You shrug off the stun!", " glowing with a blazing red aura!")
+	owner.add_stun_absorption("bloody bastard sword", duration, 2, "nawet nie drgnie, gdy przepływa przez niego moc miecza!", "Otrząsasz się z ogłuszenia!", " płonąc jaskrawą czerwoną aurą!")
 	owner.spin(duration,1)
 	animate(owner, color = oldcolor, time = duration, easing = EASE_IN)
 	addtimer(CALLBACK(owner, TYPE_PROC_REF(/atom, update_atom_colour)), duration)
@@ -316,7 +314,7 @@
 		slashy.attack(M, owner)
 
 /datum/status_effect/sword_spin/on_remove()
-	owner.visible_message("<span class='warning'>[owner]'s inhuman strength dissipates and the sword's runes grow cold!</span>")
+	owner.visible_message("<span class='warning'>Nieludzka siła [owner] słabnie, a runy miecza stygną!</span>")
 
 //Used by changelings to rapidly heal
 //Being on fire will suppress this healing
@@ -337,7 +335,7 @@
 	if(ticks_passed < 2)
 		return
 	else if(ticks_passed == 2)
-		to_chat(owner, "<span class=changeling>We begin to repair our tissue damage...</span>")
+		to_chat(owner, "<span class=changeling>Zaczynamy naprawiać uszkodzenia naszych tkanek...</span>")
 	//Heals 2 brute per second, for a total of 60
 	owner.adjustBruteLoss(-2, FALSE, TRUE)
 	//Heals 1 fireloss per second, for a total of 30
@@ -453,7 +451,7 @@
 	status_type = STATUS_EFFECT_UNIQUE
 	duration = -1
 	tick_interval = 25
-	examine_text = "<span class='notice'>They seem to have an aura of healing and helpfulness about them.</span>"
+	examine_text = "<span class='notice'>Wydaje się otaczać ich aura uzdrowienia i pomocności.</span>"
 	alert_type = null
 	var/hand
 	var/deathTick = 0
@@ -475,7 +473,7 @@
 		if(deathTick < 4)
 			deathTick += 1
 		else
-			owner.visible_message("[owner]'s soul is absorbed into the rod, relieving the previous snake of its duty.")
+			owner.visible_message("Dusza [owner] zostaje wchłonięta przez laskę, zwalniając poprzedniego węża z obowiązku.")
 			var/mob/living/simple_animal/hostile/retaliate/poison/snake/healSnake = new(owner.loc)
 			var/list/chems = list(/datum/reagent/medicine/bicaridine, /datum/reagent/medicine/salbutamol, /datum/reagent/medicine/kelotane, /datum/reagent/medicine/antitoxin)
 			healSnake.poison_type = pick(chems)
@@ -502,11 +500,11 @@
 						var/obj/item/bodypart/L = itemUser.newBodyPart(BODY_ZONE_L_ARM, FALSE, FALSE)
 						L.attach_limb(itemUser)
 						itemUser.put_in_hand(newRod, hand, forced = TRUE)
-					to_chat(itemUser, "<span class='notice'>Your arm suddenly grows back with the Rod of Asclepius still attached!</span>")
+					to_chat(itemUser, "<span class='notice'>Twoja ręka nagle odrasta, wciąż z przyczepioną Laską Asklepiosa!</span>")
 				else
 					//Otherwise get rid of whatever else is in their hand and return the rod to said hand
 					itemUser.put_in_hand(newRod, hand, forced = TRUE)
-					to_chat(itemUser, "<span class='notice'>The Rod of Asclepius suddenly grows back out of your arm!</span>")
+					to_chat(itemUser, "<span class='notice'>Laska Asklepiosa nagle odrasta z twojej ręki!</span>")
 			//Because a servant of medicines stops at nothing to help others, lets keep them on their toes and give them an additional boost.
 			if(itemUser.health < itemUser.maxHealth)
 				new /obj/effect/temp_visual/heal(get_turf(itemUser), "#375637")
@@ -551,7 +549,7 @@
 
 /datum/status_effect/regenerative_core/on_apply()
 	if(!HAS_TRAIT(owner, TRAIT_NECROPOLIS_INFECTED))
-		to_chat(owner, "<span class='userdanger'>Tendrils of vile corruption knit your flesh together and strengthen your sinew. You resist the temptation of giving in to the corruption.</span>")
+		to_chat(owner, "<span class='userdanger'>Macki plugawego zepsucia zszywają twoje ciało i wzmacniają ścięgna. Opierasz się pokusie, by poddać się zepsuciu.</span>")
 	else
 		alreadyinfected = TRUE
 	ADD_TRAIT(owner, TRAIT_IGNOREDAMAGESLOWDOWN, "legion_core_trait")
@@ -575,7 +573,7 @@
 	REMOVE_TRAIT(owner, TRAIT_IGNOREDAMAGESLOWDOWN, "legion_core_trait")
 	REMOVE_TRAIT(owner, TRAIT_NECROPOLIS_INFECTED, "legion_core_trait")
 	if(!alreadyinfected)
-		to_chat(owner, "<span class='userdanger'>You feel empty as the vile tendrils slink out of your flesh and leave you, a fragile human once more.</span>")
+		to_chat(owner, "<span class='userdanger'>Czujesz pustkę, gdy plugawe macki wysuwają się z twojego ciała i cię opuszczają, znów kruchego człowieka.</span>")
 
 /datum/status_effect/good_music
 	id = "Good Music"
@@ -593,10 +591,10 @@
 /datum/status_effect/antimagic
 	id = "antimagic"
 	duration = 10 SECONDS
-	examine_text = "<span class='notice'>They seem to be covered in a dull, grey aura.</span>"
+	examine_text = "<span class='notice'>Wydaje się, że otacza ich matowa, szara aura.</span>"
 
 /datum/status_effect/antimagic/on_apply()
-	owner.visible_message("<span class='notice'>[owner] is coated with a dull aura!</span>")
+	owner.visible_message("<span class='notice'>[owner] pokrywa się matową aurą!</span>")
 	ADD_TRAIT(owner, TRAIT_ANTIMAGIC, MAGIC_TRAIT)
 	//glowing wings overlay
 	playsound(owner, 'sound/weapons/fwoosh.ogg', 75, 0)
@@ -604,25 +602,25 @@
 
 /datum/status_effect/antimagic/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_ANTIMAGIC, MAGIC_TRAIT)
-	owner.visible_message("<span class='warning'>[owner]'s dull aura fades away...</span>")
+	owner.visible_message("<span class='warning'>Matowa aura [owner] zanika...</span>")
 
 /datum/status_effect/crucible_soul
 	id = "Blessing of Crucible Soul"
 	status_type = STATUS_EFFECT_REFRESH
 	duration = 15 SECONDS
-	examine_text = "<span class='notice'>They don't seem to be all here.</span>"
+	examine_text = "<span class='notice'>Wydaje się nie do końca obecny.</span>"
 	alert_type = /atom/movable/screen/alert/status_effect/crucible_soul
 	var/turf/location
 
 /datum/status_effect/crucible_soul/on_apply()
-	to_chat(owner,"<span class='notice'>You phase through reality, nothing is out of bounds!</span>")
+	to_chat(owner,"<span class='notice'>Przenikasz przez rzeczywistość, nic nie jest poza twoim zasięgiem!</span>")
 	owner.alpha = 180
 	owner.pass_flags |= PASSCLOSEDTURF | PASSGRILLE | PASSMACHINE | PASSSTRUCTURE | PASSTABLE | PASSMOB
 	location = get_turf(owner)
 	return TRUE
 
 /datum/status_effect/crucible_soul/on_remove()
-	to_chat(owner,"<span class='notice'>You regain your physicality, returning you to your original location...</span>")
+	to_chat(owner,"<span class='notice'>Odzyskujesz cielesność i wracasz do pierwotnego miejsca...</span>")
 	owner.alpha = initial(owner.alpha)
 	owner.pass_flags &= ~(PASSCLOSEDTURF | PASSGRILLE | PASSMACHINE | PASSSTRUCTURE | PASSTABLE | PASSMOB)
 	owner.forceMove(location)

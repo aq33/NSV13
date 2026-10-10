@@ -8,9 +8,9 @@
 /datum/brain_trauma/magic/lumiphobia
 	name = "Lumiphobia"
 	desc = "Patient has an inexplicable adverse reaction to light."
-	scan_desc = "light hypersensitivity"
-	gain_text = "<span class='warning'>You feel a craving for darkness.</span>"
-	lose_text = "<span class='notice'>Light no longer bothers you.</span>"
+	scan_desc = "nadwrażliwość na światło"
+	gain_text = "<span class='warning'>Czujesz głód ciemności.</span>"
+	lose_text = "<span class='notice'>Światło już ci nie przeszkadza.</span>"
 	var/next_damage_warning = 0
 
 /datum/brain_trauma/magic/lumiphobia/on_life()
@@ -20,16 +20,16 @@
 		var/light_amount = T.get_lumcount()
 		if(light_amount > SHADOW_SPECIES_LIGHT_THRESHOLD) //if there's enough light, start dying
 			if(world.time > next_damage_warning)
-				to_chat(owner, "<span class='warning'><b>The light burns you!</b></span>")
+				to_chat(owner, "<span class='warning'><b>Światło cię parzy!</b></span>")
 				next_damage_warning = world.time + 100 //Avoid spamming
 			owner.take_overall_damage(0,3)
 
 /datum/brain_trauma/magic/poltergeist
 	name = "Poltergeist"
 	desc = "Patient appears to be targeted by a violent invisible entity."
-	scan_desc = "paranormal activity"
-	gain_text = "<span class='warning'>You feel a hateful presence close to you.</span>"
-	lose_text = "<span class='notice'>You feel the hateful presence fade away.</span>"
+	scan_desc = "aktywność paranormalna"
+	gain_text = "<span class='warning'>Czujesz blisko siebie nienawistną obecność.</span>"
+	lose_text = "<span class='notice'>Czujesz, jak nienawistna obecność się rozwiewa.</span>"
 
 /datum/brain_trauma/magic/poltergeist/on_life()
 	..()
@@ -48,9 +48,9 @@
 /datum/brain_trauma/magic/antimagic
 	name = "Athaumasia"
 	desc = "Patient is completely inert to magical forces."
-	scan_desc = "thaumic blank"
-	gain_text = "<span class='notice'>You realize that magic cannot be real.</span>"
-	lose_text = "<span class='notice'>You realize that magic might be real.</span>"
+	scan_desc = "pustka taumatyczna"
+	gain_text = "<span class='notice'>Uświadamiasz sobie, że magia nie może być prawdziwa.</span>"
+	lose_text = "<span class='notice'>Uświadamiasz sobie, że magia może być prawdziwa.</span>"
 
 /datum/brain_trauma/magic/antimagic/on_gain()
 	ADD_TRAIT(owner, TRAIT_ANTIMAGIC, TRAUMA_TRAIT)
@@ -63,9 +63,9 @@
 /datum/brain_trauma/magic/stalker
 	name = "Stalking Phantom"
 	desc = "Patient is stalked by a phantom only they can see."
-	scan_desc = "extra-sensory paranoia"
-	gain_text = "<span class='warning'>You feel like something wants to kill you...</span>"
-	lose_text = "<span class='notice'>You no longer feel eyes on your back.</span>"
+	scan_desc = "paranoja pozazmysłowa"
+	gain_text = "<span class='warning'>Masz wrażenie, że coś chce cię zabić...</span>"
+	lose_text = "<span class='notice'>Nie czujesz już na plecach niczyjego wzroku.</span>"
 	var/obj/effect/hallucination/simple/stalker_phantom/stalker
 	var/close_stalker = FALSE //For heartbeat
 
@@ -93,7 +93,7 @@
 
 	if(get_dist(owner, stalker) <= 1)
 		playsound(owner, 'sound/magic/demon_attack1.ogg', 50)
-		owner.visible_message("<span class='warning'>[owner] is torn apart by invisible claws!</span>", "<span class='userdanger'>Ghostly claws tear your body apart!</span>")
+		owner.visible_message("<span class='warning'>Niewidzialne szpony rozrywają [owner]!</span>", "<span class='userdanger'>Upiorne szpony rozrywają twoje ciało!</span>")
 		owner.take_bodypart_damage(rand(20, 45))
 	else if(prob(50))
 		stalker.forceMove(get_step_towards(stalker, owner))

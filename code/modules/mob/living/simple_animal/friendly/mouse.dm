@@ -149,7 +149,7 @@
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "mouse_gray_dead"
 	bite_consumption = 3
-	eatverbs = list("devour")
+	eatverbs = list("pożera")
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 2

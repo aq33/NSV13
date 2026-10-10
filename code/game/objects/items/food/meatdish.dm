@@ -32,7 +32,7 @@
 	bite_consumption = 6
 	tastes = list("fish" = 1)
 	foodtypes = MEAT
-	eatverbs = list("bite", "chew", "gnaw", "swallow", "chomp")
+	eatverbs = list("gryzie", "przeżuwa", "obgryza", "połyka", "chrupie")
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -332,7 +332,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 5, /datum/reagent/consumable/nutriment/vitamin = 2)
 	tastes = list("meat" = 1)
 	foodtypes = MEAT | RAW
-	eatverbs = list("bite","chew","nibble","deep throat","gobble","chomp")
+	eatverbs = list("gryzie","przeżuwa","skubie","połyka w całości","pochłania","chrupie")
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
 
@@ -351,7 +351,7 @@
 	tastes = list("meat" = 1)
 	foodtypes = MEAT | BREAKFAST
 	food_flags = FOOD_FINGER_FOOD
-	eatverbs = list("bite", "chew", "nibble", "gobble", "chomp")
+	eatverbs = list("gryzie", "przeżuwa", "skubie", "pochłania", "chrupie")
 	w_class = WEIGHT_CLASS_SMALL
 	var/roasted = FALSE
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -442,7 +442,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 2
 	)
 	tastes = list("soy" = 1, "vegetables" = 1)
-	eatverbs = list("slurp", "sip", "inhale", "drink")
+	eatverbs = list("siorbie", "popija", "wciąga", "pije")
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2

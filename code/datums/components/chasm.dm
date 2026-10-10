@@ -1,8 +1,8 @@
 // Used by /turf/open/chasm and subtypes to implement the "dropping" mechanic
 /datum/component/chasm
 	var/turf/target_turf
-	var/fall_message = "GAH! Ah... where are you?"
-	var/oblivion_message = "You stumble and stare into the abyss before you. It stares back, and you fall into the enveloping dark."
+	var/fall_message = "GAH! Ach... gdzie jesteś?"
+	var/oblivion_message = "Potykasz się i wpatrujesz w otchłań przed sobą. Ona odwzajemnia spojrzenie, a ty wpadasz w otulającą ciemność."
 
 	/// List of refs to falling objects -> how many levels deep we've fallen
 	var/static/list/falling_atoms = list()
@@ -85,7 +85,7 @@
 			if(istype(H.belt, /obj/item/wormhole_jaunter))
 				var/obj/item/wormhole_jaunter/J = H.belt
 				//To freak out any bystanders
-				H.visible_message("<span class='boldwarning'>[H] falls into [parent]!</span>")
+				H.visible_message("<span class='boldwarning'>[H] wpada do [parent]!</span>")
 				J.chasm_react(H)
 				return FALSE
 	return TRUE
@@ -101,8 +101,8 @@
 
 	if(T)
 		// send to the turf below
-		AM.visible_message("<span class='boldwarning'>[AM] falls into [parent]!</span>", "<span class='userdanger'>[fall_message]</span>")
-		T.visible_message("<span class='boldwarning'>[AM] falls from above!</span>")
+		AM.visible_message("<span class='boldwarning'>[AM] wpada do [parent]!</span>", "<span class='userdanger'>[fall_message]</span>")
+		T.visible_message("<span class='boldwarning'>[AM] spada z góry!</span>")
 		AM.forceMove(T)
 		if(isliving(AM))
 			var/mob/living/L = AM
@@ -112,7 +112,7 @@
 
 	else
 		// send to oblivion
-		AM.visible_message("<span class='boldwarning'>[AM] falls into [parent]!</span>", "<span class='userdanger'>[oblivion_message]</span>")
+		AM.visible_message("<span class='boldwarning'>[AM] wpada do [parent]!</span>", "<span class='userdanger'>[oblivion_message]</span>")
 		if (isliving(AM))
 			var/mob/living/L = AM
 			L.notransform = TRUE
@@ -142,7 +142,7 @@
 		qdel(AM)
 		if(AM && !QDELETED(AM))	//It's indestructible
 			var/atom/parent = src.parent
-			parent.visible_message("<span class='boldwarning'>[parent] spits out [AM]!</span>")
+			parent.visible_message("<span class='boldwarning'>[parent] wypluwa [AM]!</span>")
 			AM.alpha = oldalpha
 			AM.color = oldcolor
 			AM.transform = oldtransform

@@ -11,7 +11,7 @@
 	)
 	tastes = list("tasteless soup" = 1)
 	foodtypes = VEGETABLES
-	eatverbs = list("slurp", "sip", "inhale", "drink")
+	eatverbs = list("siorbie", "popija", "wciąga", "pije")
 
 /obj/item/food/soup/wish
 	name = "wish soup"

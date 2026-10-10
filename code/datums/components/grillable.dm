@@ -72,7 +72,7 @@
 	grilled_result.pixel_x = original_object.pixel_x
 	grilled_result.pixel_y = original_object.pixel_y
 
-	grill_source.visible_message("<span class='[positive_result ? "notice" : "warning"]'>[parent] turns into \a [grilled_result]!</span>")
+	grill_source.visible_message("<span class='[positive_result ? "notice" : "warning"]'>[parent] zamienia się w [grilled_result]!</span>")
 	original_object.reagents?.trans_to(grilled_result, original_object.reagents.total_volume)
 	SEND_SIGNAL(parent, COMSIG_GRILL_COMPLETED, grilled_result)
 	currently_grilling = FALSE
@@ -85,18 +85,18 @@
 	if(!current_cook_time) //Not grilled yet
 		if(positive_result)
 			if(initial(cook_result.name) == PLURAL)
-				examine_list += "<span class='notice'>[parent] can be ["<span class='bold'>grilled</span>"] into some [initial(cook_result.name)].</span>"
+				examine_list += "<span class='notice'>[parent] można ["<span class='bold'>zgrillować</span>"], by powstało: [initial(cook_result.name)].</span>"
 			else
-				examine_list += "<span class='notice'>[parent] can be ["<span class='bold'>grilled</span>"] into \a [initial(cook_result.name)].</span>"
+				examine_list += "<span class='notice'>[parent] można ["<span class='bold'>zgrillować</span>"], by powstało: [initial(cook_result.name)].</span>"
 		return
 
 	if(positive_result)
 		if(current_cook_time <= required_cook_time * 0.75)
-			examine_list += "<span class='notice'>[parent] probably needs to be cooked a bit longer!</span>"
+			examine_list += "<span class='notice'>[parent] chyba trzeba jeszcze trochę smażyć!</span>"
 		else if(current_cook_time <= required_cook_time)
-			examine_list += "<span class='notice'>[parent] seems to be almost finished cooking!</span>"
+			examine_list += "<span class='notice'>[parent] wydaje się prawie gotowy!</span>"
 	else
-		examine_list += "<span class='danger'>[parent] should probably not be put on the grill</span>"
+		examine_list += "<span class='danger'>[parent] raczej nie powinien trafić na grill</span>"
 
 ///Ran when an object moves from the grill
 /datum/component/grillable/proc/OnMoved(atom/A, atom/OldLoc, Dir, Forced)

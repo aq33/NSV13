@@ -102,7 +102,7 @@
 	SIGNAL_HANDLER
 
 	if(rotation_flags & ROTATION_ALTCLICK)
-		examine_list += "<span class='notice'>Alt-click to rotate it clockwise.</span>"
+		examine_list += "<span class='notice'>Alt-kliknij, by obrócić zgodnie z ruchem wskazówek zegara.</span>"
 
 /datum/component/simple_rotation/proc/HandRot(datum/source, mob/user, rotation = default_rotation_direction)
 	SIGNAL_HANDLER

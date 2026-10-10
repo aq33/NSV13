@@ -36,7 +36,7 @@
 	bite_consumption = 0.1 //this snack is supposed to be eating during looooong time. And this it not dinner food! --rastaf0
 	tastes = list("popcorn" = 3, "butter" = 1)
 	foodtypes = JUNKFOOD
-	eatverbs = list("bite", "nibble", "gnaw", "gobble", "chomp")
+	eatverbs = list("gryzie", "skubie", "obgryza", "pochłania", "chrupie")
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
 

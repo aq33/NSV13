@@ -95,7 +95,7 @@
 
 /datum/component/uplink/proc/LoadTC(mob/user, obj/item/stack/telecrystal/TC, silent = FALSE)
 	if(!silent)
-		to_chat(user, "<span class='notice'>You slot [TC] into [parent] and charge its internal uplink.</span>")
+		to_chat(user, "<span class='notice'>Wkładasz [TC] do [parent], ładując jego wewnętrzny uplink.</span>")
 	var/amt = TC.amount
 	telecrystals += amt
 	TC.use(amt)
@@ -294,7 +294,7 @@
 		return
 	locked = FALSE
 	interact(null, user)
-	to_chat(user, "<span class='hear'>The computer softly beeps.</span>")
+	to_chat(user, "<span class='hear'>Komputer cicho pika.</span>")
 	return COMPONENT_STOP_RINGTONE_CHANGE
 
 // Radio signal responses
@@ -325,7 +325,7 @@
 		return
 	locked = FALSE
 	interact(null, user)
-	to_chat(user, "As you whisper the code into your headset, a soft chime fills your ears.")
+	to_chat(user, "Gdy szepczesz kod do słuchawek, w uszach rozbrzmiewa cichy dzwonek.")
 
 // Pen signal responses
 
@@ -342,7 +342,7 @@
 		previous_attempts.Cut()
 		master.degrees = 0
 		interact(null, user)
-		to_chat(user, "<span class='warning'>Your pen makes a clicking noise, before quickly rotating back to 0 degrees!</span>")
+		to_chat(user, "<span class='warning'>Twój długopis klika, po czym szybko obraca się z powrotem do 0 stopni!</span>")
 
 	else if(compare_list(previous_attempts, failsafe_code))
 		failsafe()
@@ -351,11 +351,11 @@
 	unlock_code = generate_code()
 	var/obj/item/P = parent
 	if(istype(parent,/obj/item/modular_computer/tablet))
-		unlock_note = "<B>Uplink Passcode:</B> [unlock_code] ([P.name])."
+		unlock_note = "<B>Hasło uplinku:</B> [unlock_code] ([P.name])."
 	else if(istype(parent,/obj/item/radio))
-		unlock_note = "<B>Radio Passcode:</B> [unlock_code] ([P.name] on the :d channel)."
+		unlock_note = "<B>Hasło radiowe:</B> [unlock_code] ([P.name] na kanale :d)."
 	else if(istype(parent,/obj/item/pen))
-		unlock_note = "<B>Uplink Degrees:</B> [english_list(unlock_code)] ([P.name])."
+		unlock_note = "<B>Stopnie uplinku:</B> [english_list(unlock_code)] ([P.name])."
 
 /datum/component/uplink/proc/generate_code()
 	if(istype(parent,/obj/item/modular_computer/tablet))

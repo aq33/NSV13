@@ -289,7 +289,7 @@ GLOBAL_LIST_EMPTY(tracker_beacons)
 		to_chat(user, "<span class='warning'>Invalid frequency. Encrypted tracking HUD disabled.</span>")
 		return
 	if(new_freq < 1 || new_freq > 999)
-		to_chat(user, "<span class='warning'>Frequency is out of range. Must be between 1 and 999.</span>")
+		to_chat(user, "<span class='warning'>Częstotliwość poza zakresem. Musi mieścić się między 1 a 999.</span>")
 		return
 	set_frequency(new_freq)
 	to_chat(user, "<span class='notice'>Tracking HUD now scanning on frequency <i>[team_frequency]</i>.</span>")
@@ -530,7 +530,7 @@ GLOBAL_LIST_EMPTY(tracker_beacons)
 		to_chat(user, "<span class='warning'>Invalid frequency. Encrypted tracking beacon disabled.</span>")
 		return
 	if(new_freq < 1 || new_freq > 999)
-		to_chat(user, "<span class='warning'>Frequency is out of range. Must be between 1 and 999.</span>")
+		to_chat(user, "<span class='warning'>Częstotliwość poza zakresem. Musi mieścić się między 1 a 999.</span>")
 		return
 	set_frequency(new_freq)
 	to_chat(user, "<span class='notice'>Tracking HUD now transmitting on frequency <i>[team_frequency]</i>.</span>")

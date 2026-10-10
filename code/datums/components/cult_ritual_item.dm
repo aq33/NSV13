@@ -297,7 +297,7 @@
 			return
 
 	cultist.visible_message(
-		"<span class='warning'>[cultist] [cultist.blood_volume ? "cuts open [cultist.p_their()] arm and begins writing in [cultist.p_their()] own blood":"begins sketching out a strange design"]!</span>",
+		"<span class='warning'>[cultist] [cultist.blood_volume ? "rozcina sobie rękę i zaczyna pisać własną krwią":"zaczyna szkicować dziwny wzór"]!</span>",
 		"<span class='cult'>[cultist.blood_volume ? "Rozcinasz sobie rękę i z":"Z"]aczynasz kreślić znak Geometry.</span>"
 		)
 
@@ -347,7 +347,7 @@
 	if(summon_objective.check_completion())
 		to_chat(cultist, "<span class='cultlarge'>\"Już tu jestem. Nie ma potrzeby mnie teraz przywoływać.\"</span>")
 		return FALSE
-	var/confirm_final = alert(cultist, "To OSTATNI krok do przywołania Nar'Sie; to długi, bolesny rytuał, a załoga dowie się o twojej obecności.", "Jesteś gotowy na ostateczną bitwę?", "My life for Nar'Sie!", "No")
+	var/confirm_final = alert(cultist, "To OSTATNI krok do przywołania Nar'Sie; to długi, bolesny rytuał, a załoga dowie się o twojej obecności.", "Jesteś gotowy na ostateczną bitwę?", "Moje życie dla Nar'Sie!", "No")
 	if(confirm_final == "No" || !confirm_final)
 		to_chat(cultist, "<span class='cult'>Postanawiasz lepiej się przygotować, zanim nakreślisz runę.</span>")
 		return
