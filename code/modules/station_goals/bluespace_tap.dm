@@ -6,13 +6,13 @@
 /datum/station_goal/bluespace_tap/get_report()
 	return list(
 	"<blockquote><b>Bluespace Harvester Experiment</b>",
-	"Another research station has developed a device called a Bluespace Harvester.",
-	"It reaches through bluespace into other dimensions to shift through them for interesting objects.",
-	"Due to unforeseen circumstances the large-scale test of the prototype could not be completed on the original research station. It will instead be carried out on your station.",
-	"Acquire the circuit board, construct the device over a wire knot and feed it enough power to generate [goal] mining points by shift end.",
+	"Inna stacja badawcza opracowała urządzenie zwane Kombajnem Bluespace.",
+	"Sięga ono przez bluespace do innych wymiarów, by przeczesywać je w poszukiwaniu ciekawych obiektów.",
+	"Z powodu nieprzewidzianych okoliczności test prototypu na dużą skalę nie mógł zostać przeprowadzony na pierwotnej stacji badawczej. Zamiast tego zostanie przeprowadzony na waszej stacji.",
+	"Zdobądźcie płytkę, zbudujcie urządzenie na węźle przewodów i dostarczcie mu dość energii, by do końca zmiany wygenerowało [goal] pkt górniczych.",
 	"",
-	"Be advised that the device is experimental and might act in slightly unforeseen ways if sufficiently powered.",
-	"Nanotrasen Science Directorate</blockquote>",
+	"Uwaga: urządzenie jest eksperymentalne i przy wystarczającym zasilaniu może zachowywać się w nieco nieprzewidziany sposób.",
+	"Dyrektoriat Naukowy Nanotrasen</blockquote>",
 	).Join("\n")
 
 /datum/station_goal/bluespace_tap/on_report()
@@ -25,7 +25,7 @@
 	var/highscore = 0
 	for(var/obj/machinery/power/bluespace_tap/T in GLOB.machines)
 		highscore = max(highscore, T.total_points)
-	to_chat(world, "<b>Bluespace Harvester Highscore</b>: [highscore >= goal ? "<span class='greenannounce'>": "<span class='boldannounce'>"][highscore]</span>")
+	to_chat(world, "<b>Rekord Kombajnu Bluespace</b>: [highscore >= goal ? "<span class='greenannounce'>": "<span class='boldannounce'>"][highscore]</span>")
 	if(highscore >= goal)
 		return TRUE
 	return FALSE
@@ -320,7 +320,7 @@
 	else if(input_level > desired_level)
 		input_level--
 	if(prob(input_level - safe_levels + (emagged * 5)))	//at dangerous levels, start doing freaky shit. prob with values less than 0 treat it as 0
-		priority_announce("Unexpected power spike during Bluespace Harvester Operation. Extra-dimensional intruder alert. Expected location: [get_area_name(src)]. [emagged ? "DANGER: Emergency shutdown failed! Please proceed with manual shutdown." : "Emergency shutdown initiated."]", "Bluespace Harvester Malfunction",sound = SSstation.announcer.get_rand_report_sound())
+		priority_announce("Nieoczekiwany skok mocy podczas pracy Kombajnu Bluespace. Alarm: intruz z innego wymiaru. Spodziewana lokalizacja: [get_area_name(src)]. [emagged ? "NIEBEZPIECZEŃSTWO: awaryjne wyłączenie nie powiodło się! Przeprowadźcie ręczne wyłączenie." : "Rozpoczęto awaryjne wyłączenie."]", "Awaria Kombajnu Bluespace",sound = SSstation.announcer.get_rand_report_sound())
 		if(!emagged)
 			input_level = 0	//emergency shutdown unless we're sabotaged
 			desired_level = 0
@@ -415,7 +415,7 @@
 	emagged = TRUE
 	do_sparks(5, FALSE, src)
 	if(user)
-		user.visible_message("<span class='warning'>[user] overrides the safety protocols of [src].</span>", "<span class='warning'>You override the safety protocols.</span>")
+		user.visible_message("<span class='warning'>[user] obchodzi protokoły bezpieczeństwa [src].</span>", "<span class='warning'>Obchodzisz protokoły bezpieczeństwa.</span>")
 
 /obj/structure/spawner/nether/bluespace_tap
 	spawn_time = 30 SECONDS

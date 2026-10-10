@@ -171,10 +171,10 @@
 		broken = 0
 		burnt = 0
 		if(user && !silent)
-			to_chat(user, "<span class='notice'>You remove the broken plating.</span>")
+			to_chat(user, "<span class='notice'>Zdejmujesz zepsute poszycie.</span>")
 	else
 		if(user && !silent)
-			to_chat(user, "<span class='notice'>You remove the floor tile.</span>")
+			to_chat(user, "<span class='notice'>Zdejmujesz płytkę podłogową.</span>")
 		if(floor_tile && make_tile)
 			new floor_tile(src)
 	return make_plating()
@@ -236,18 +236,18 @@
 /turf/open/floor/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_FLOORWALL)
-			to_chat(user, "<span class='notice'>You build a wall.</span>")
+			to_chat(user, "<span class='notice'>Budujesz ścianę.</span>")
 			PlaceOnTop(/turf/closed/wall/ship) //NSV13 - Ship construction
 			return TRUE
 		if(RCD_LADDER)
-			to_chat(user, "<span class='notice'>You build a ladder.</span>")
+			to_chat(user, "<span class='notice'>Budujesz drabinę.</span>")
 			var/obj/structure/ladder/L = new(src)
 			L.anchored = TRUE
 			return TRUE
 		if(RCD_AIRLOCK)
 			if(locate(/obj/machinery/door/airlock) in src)
 				return FALSE
-			to_chat(user, "<span class='notice'>You build an airlock.</span>")
+			to_chat(user, "<span class='notice'>Budujesz śluzę.</span>")
 			var/obj/machinery/door/airlock/A = new the_rcd.airlock_type(src)
 			A.electronics = new /obj/item/electronics/airlock(A)
 			if(the_rcd.airlock_electronics)
@@ -266,12 +266,12 @@
 		if(RCD_DECONSTRUCT)
 			if(ScrapeAway(flags = CHANGETURF_INHERIT_AIR) == src)
 				return FALSE
-			to_chat(user, "<span class='notice'>You deconstruct [src].</span>")
+			to_chat(user, "<span class='notice'>Rozbierasz [src].</span>")
 			return TRUE
 		if(RCD_WINDOWGRILLE)
 			if(locate(/obj/structure/grille) in src)
 				return FALSE
-			to_chat(user, "<span class='notice'>You construct the grille.</span>")
+			to_chat(user, "<span class='notice'>Budujesz kratę.</span>")
 			var/obj/structure/grille/G = new(src)
 			G.anchored = TRUE
 			return TRUE

@@ -15,72 +15,72 @@
 	if(istype(W, /obj/item/card/id))
 		if(W == my_card)
 			locked = !locked
-			to_chat(user, "<span class='notice'>You [src.locked ? "lock" : "unlock"] the bolts on the paystand.</span>")
+			to_chat(user, "<span class='notice'>[src.locked ? "Blokujesz" : "Odblokowujesz"] śruby stoiska płatniczego.</span>")
 			return
 		if(!my_card)
 			var/obj/item/card/id/assistant_mains_need_to_die = W
 			if(assistant_mains_need_to_die.registered_account)
-				var/msg = stripped_input(user, "Name of pay stand:", "Paystand Naming", "[user]'s Awesome Paystand")
+				var/msg = stripped_input(user, "Nazwa stoiska płatniczego:", "Nazywanie stoiska płatniczego", "Super stoisko [user]")
 				if(!msg)
 					return
 				name = msg
 				desc = "Owned by [assistant_mains_need_to_die.registered_account.account_holder], pays directly into [user.p_their()] account."
 				my_card = assistant_mains_need_to_die
-				to_chat(user, "You link the stand to your account.")
+				to_chat(user, "Łączysz stoisko ze swoim kontem.")
 				return
 		var/obj/item/card/id/vbucks = W
 		if(vbucks.registered_account)
-			var/momsdebitcard = input(user, "How much would you like to deposit?", "Money Deposit") as null|num
+			var/momsdebitcard = input(user, "Ile chcesz wpłacić?", "Wpłata") as null|num
 			if(momsdebitcard < 1)
-				to_chat(user, "<span class='warning'>ERROR: Invalid amount designated.</span>")
+				to_chat(user, "<span class='warning'>BŁĄD: podano nieprawidłową kwotę.</span>")
 				return
 			if(vbucks.registered_account.adjust_money(-momsdebitcard))
 				purchase(vbucks.registered_account.account_holder, momsdebitcard)
-				to_chat(user, "Thanks for purchasing! The vendor has been informed.")
+				to_chat(user, "Dziękujemy za zakup! Sprzedawca został powiadomiony.")
 				return
 			else
-				to_chat(user, "<span class='warning'>ERROR: Account has insufficient funds to make transaction.</span>")
+				to_chat(user, "<span class='warning'>BŁĄD: na koncie brakuje środków na tę transakcję.</span>")
 				return
 		else
-			to_chat(user, "<span class='warning'>ERROR: No bank account assigned to identification card.</span>")
+			to_chat(user, "<span class='warning'>BŁĄD: do karty identyfikacyjnej nie przypisano konta bankowego.</span>")
 			return
 	if(istype(W, /obj/item/holochip))
 		var/obj/item/holochip/H = W
-		var/cashmoney = input(user, "How much would you like to deposit?", "Money Deposit") as null|num
+		var/cashmoney = input(user, "Ile chcesz wpłacić?", "Wpłata") as null|num
 		if(H.spend(cashmoney, FALSE))
 			purchase(user, cashmoney)
-			to_chat(user, "Thanks for purchasing! The vendor has been informed.")
+			to_chat(user, "Dziękujemy za zakup! Sprzedawca został powiadomiony.")
 			return
 		else
-			to_chat(user, "<span class='warning'>ERROR: Insufficient funds to make transaction.</span>")
+			to_chat(user, "<span class='warning'>BŁĄD: brak środków na tę transakcję.</span>")
 			return
 	if(istype(W, /obj/item/stack/spacecash))
-		to_chat(user, "What is this, the 2000s? We only take card here.")
+		to_chat(user, "Co to, lata 2000? Tutaj przyjmujemy tylko karty.")
 		return
 	if(istype(W, /obj/item/coin))
-		to_chat(user, "What is this, the 1800s? We only take card here.")
+		to_chat(user, "Co to, XIX wiek? Tutaj przyjmujemy tylko karty.")
 		return
 	if(istype(W, /obj/item/assembly/signaler))
 		var/obj/item/assembly/signaler/S = W
 		if(S.secured)
-			to_chat(user, "<span class='warning'>The signaler needs to be in attachable mode to add it to the paystand!</span>")
+			to_chat(user, "<span class='warning'>Aby dodać sygnalizator do stoiska płatniczego, musi być w trybie łączenia!</span>")
 			return
 		if(!my_card)
-			to_chat(user, "<span class='warning'>ERROR: No identification card has been assigned to this paystand yet!</span>")
+			to_chat(user, "<span class='warning'>BŁĄD: do tego stoiska płatniczego nie przypisano jeszcze żadnej karty identyfikacyjnej!</span>")
 			return
 		if(!signaler)
-			var/cash_limit = input(user, "Enter the minimum amount of cash needed to deposit before the signaler is activated.", "Signaler Activation Threshold") as null|num
+			var/cash_limit = input(user, "Podaj minimalną kwotę wpłaty, po której zostanie aktywowany sygnalizator.", "Próg aktywacji sygnalizatora") as null|num
 			if(cash_limit < 1)
-				to_chat(user, "<span class='warning'>ERROR: Invalid amount designated.</span>")
+				to_chat(user, "<span class='warning'>BŁĄD: podano nieprawidłową kwotę.</span>")
 				return
 			if(cash_limit)
 				S.forceMove(src)
 				signaler = S
 				signaler_threshold = cash_limit
-				to_chat(user, "You attach the signaler to the paystand.")
-				desc += " A signaler appears to be attached to the scanner."
+				to_chat(user, "Mocujesz sygnalizator do stoiska płatniczego.")
+				desc += " Wygląda na to, że do skanera jest przymocowany sygnalizator."
 		else
-			to_chat(user, "<span class='warning'>A signaler is already attached to this unit!</span>")
+			to_chat(user, "<span class='warning'>Do tego urządzenia jest już przymocowany sygnalizator!</span>")
 
 	if(default_deconstruction_screwdriver(user, "card_scanner", "card_scanner", W))
 		return
@@ -98,7 +98,7 @@
 
 /obj/machinery/paystand/proc/purchase(buyer, price)
 	my_card.registered_account.adjust_money(price)
-	my_card.registered_account.bank_card_talk("Purchase made at your vendor by [buyer] for [price] credits.")
+	my_card.registered_account.bank_card_talk("[buyer] dokonał zakupu w twoim stoisku za [price] kr.")
 	amount_deposited = amount_deposited + price
 	if(signaler && amount_deposited >= signaler_threshold)
 		signaler.activate()
@@ -106,6 +106,6 @@
 
 /obj/machinery/paystand/default_unfasten_wrench(mob/user, obj/item/I, time = 20)
 	if(locked)
-		to_chat(user, "<span class='warning'>The anchored bolts on this paystand are currently locked!</span>")
+		to_chat(user, "<span class='warning'>Śruby kotwiące tego stoiska płatniczego są obecnie zablokowane!</span>")
 		return
 	. = ..()

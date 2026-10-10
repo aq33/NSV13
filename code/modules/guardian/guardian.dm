@@ -184,11 +184,11 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	if(berserk)
 		return
 	if(!summoner?.current)
-		to_chat(src, "<span class='holoparasite bold'>For some reason, somehow, you have no summoner. Please report this bug immediately.</span>")
+		to_chat(src, "<span class='holoparasite bold'>Z jakiegoś powodu nie masz przywoływacza. Natychmiast zgłoś ten błąd.</span>")
 		return
-	to_chat(src, "<span class='holoparasite'>You are <font color=\"[guardiancolor]\"><b>[real_name]</b></font>, bound to serve [summoner.current.real_name].</span>")
-	to_chat(src, "<span class='holoparasite'>You are capable of manifesting or recalling to your master with the buttons on your HUD. You will also find a button to communicate with [summoner.current.p_them()] privately there.</span>")
-	to_chat(src, "<span class='holoparasite'>While personally invincible, you will die if [summoner.current.real_name] does, and any damage dealt to you will have a portion passed on to [summoner.current.p_them()] as you feed upon [summoner.current.p_them()] to sustain yourself.</span>")
+	to_chat(src, "<span class='holoparasite'>Jesteś <font color=\"[guardiancolor]\"><b>[real_name]</b></font>, związany służbą z [summoner.current.real_name].</span>")
+	to_chat(src, "<span class='holoparasite'>Za pomocą przycisków na HUD możesz się materializować lub wracać do swojego pana. Znajdziesz tam też przycisk do prywatnej rozmowy z nim.</span>")
+	to_chat(src, "<span class='holoparasite'>Choć sam jesteś niezniszczalny, zginiesz, jeśli zginie [summoner.current.real_name], a część zadanych ci obrażeń przejdzie na niego, bo żywisz się nim, by się utrzymać.</span>")
 	setup_barriers()
 
 /mob/living/simple_animal/hostile/guardian/Life() //Dies if the summoner dies
@@ -204,17 +204,17 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 				GoBerserk()
 			else
 				forceMove(summoner.current)
-				to_chat(src, "<span class='danger'>Your summoner has died!</span>")
-				to_chat(summoner, "<span class='userdanger'>'No...' you think to yourself as your bones crumple to dust.</span>")
+				to_chat(src, "<span class='danger'>Twój przywoływacz zginął!</span>")
+				to_chat(summoner, "<span class='userdanger'>„Nie...” – myślisz, gdy twoje kości obracają się w proch.</span>")
 				summoner.current.dust()
-				visible_message("<span class='danger'><B>\The [src] dies along with its user!</B></span>")
+				visible_message("<span class='danger'><B>[src] umiera razem ze swoim użytkownikiem!</B></span>")
 				death(TRUE)
 	else
 		if(transforming)
 			GoBerserk()
 		else
-			to_chat(src, "<span class='danger'>Your summoner has died!</span>")
-			visible_message("<span class='danger'><B>[src] dies along with its user!</B></span>")
+			to_chat(src, "<span class='danger'>Twój przywoływacz zginął!</span>")
+			visible_message("<span class='danger'><B>[src] umiera razem ze swoim użytkownikiem!</B></span>")
 			death(TRUE)
 	snapback()
 
@@ -232,14 +232,14 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	summoner = null
 	maxHealth = 750
 	health = 750
-	to_chat(src, "<span class='holoparasite big'>Your master has died. Only your own power anchors you to this world now. Nothing restrains you anymore, but the desire for <span class='hypnophrase'>revenge</span>.</span>")
+	to_chat(src, "<span class='holoparasite big'>Twój pan zginął. Teraz tylko twoja własna moc utrzymuje cię w tym świecie. Nic cię już nie powstrzymuje poza pragnieniem <span class='hypnophrase'>zemsty</span>.</span>")
 	log_game("[key_name(src)] has went berserk.")
 	var/datum/antagonist/guardian/S = mind.has_antag_datum(/datum/antagonist/guardian)
 	if(S)
 		S.name = "Berserk Guardian"
 		var/datum/objective/O = new
 		O.completed = TRUE
-		O.explanation_text = "AVENGE YOUR MASTER."
+		O.explanation_text = "POMŚCIJ SWOJEGO PANA."
 		S.objectives |= O
 		log_objective(mind, O.explanation_text)
 		mind.announce_objectives()
@@ -325,8 +325,8 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 		if(get_dist(get_turf(summoner.current),get_turf(src)) <= range)
 			return
 		else
-			to_chat(src, "<span class='holoparasite'>You moved out of range, and were pulled back! You can only move [range] meters from [summoner.current.real_name]!</span>")
-			visible_message("<span class='danger'>\The [src] jumps back to its user.</span>")
+			to_chat(src, "<span class='holoparasite'>Oddaliłeś się poza zasięg i zostałeś ściągnięty z powrotem! Możesz oddalić się od [summoner.current.real_name] najwyżej o [range] m!</span>")
+			visible_message("<span class='danger'>[src] wraca do swojego użytkownika.</span>")
 			if(istype(summoner.current.loc, /obj/effect))
 				Recall(TRUE)
 			else
@@ -367,7 +367,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 
 /mob/living/simple_animal/hostile/guardian/RangedAttack(atom/A, params)
 	if(transforming)
-		to_chat(src, "<span class='holoparasite italics'>No... no... you can't!</span>")
+		to_chat(src, "<span class='holoparasite italics'>Nie... nie... nie możesz!</span>")
 		return
 	if(stats.ability && stats.ability.RangedAttack(A))
 		return
@@ -375,19 +375,19 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 
 /mob/living/simple_animal/hostile/guardian/AttackingTarget()
 	if(transforming)
-		to_chat(src, "<span class='holoparasite italics'>No... no... you can't!</span>")
+		to_chat(src, "<span class='holoparasite italics'>Nie... nie... nie możesz!</span>")
 		return FALSE
 	if(stats.ability && stats.ability.Attack(target))
 		return FALSE
 	if(!is_deployed())
-		to_chat(src, "<span class='danger'><B>You must be manifested to attack!</span></B>")
+		to_chat(src, "<span class='danger'><B>Aby atakować, musisz się zmaterializować!</span></B>")
 		return FALSE
 	else
 		if(target == src)
-			to_chat(src, "<span class='danger'><B>You can't attack yourself!</span></B>")
+			to_chat(src, "<span class='danger'><B>Nie możesz zaatakować samego siebie!</span></B>")
 			return FALSE
 		else if(target == summoner?.current)
-			to_chat(src, "<span class='danger'><B>You can't attack your summoner!</span></B>")
+			to_chat(src, "<span class='danger'><B>Nie możesz zaatakować swojego przywoływacza!</span></B>")
 			return FALSE
 		. = ..()
 		if(isliving(target))
@@ -403,7 +403,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 /mob/living/simple_animal/hostile/guardian/death()
 	. = ..()
 	if(summoner?.current && summoner.current.stat != DEAD)
-		to_chat(summoner, "<span class='userdanger'>'No...' you think to yourself as your bones crumple to dust, as you watch your stand somehow die.</span>")
+		to_chat(summoner, "<span class='userdanger'>„Nie...” – myślisz, gdy twoje kości obracają się w proch, a ty patrzysz, jak twój stand jakimś cudem umiera.</span>")
 		summoner.current.dust()
 	ghostize(FALSE)
 	nullspace() // move ourself into nullspace for the time being
@@ -426,11 +426,11 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 			return FALSE
 		summoner.current.adjustBruteLoss(amount)
 		if(amount > 0)
-			to_chat(summoner.current, "<span class='danger'><B>Your [name] is under attack! You take damage!</span></B>")
+			to_chat(summoner.current, "<span class='danger'><B>Twój [name] jest atakowany! Otrzymujesz obrażenia!</span></B>")
 			if(summoner_visible)
-				summoner.current.visible_message("<span class='danger'><B>Blood sprays from [summoner] as [src] takes damage!</B></span>")
+				summoner.current.visible_message("<span class='danger'><B>Z [summoner] tryska krew, gdy [src] otrzymuje obrażenia!</B></span>")
 			if(summoner.current.stat == UNCONSCIOUS)
-				to_chat(summoner.current, "<span class='danger'><B>Your body can't take the strain of sustaining [src] in this condition, it begins to fall apart!</span></B>")
+				to_chat(summoner.current, "<span class='danger'><B>Twoje ciało nie wytrzymuje wysiłku podtrzymywania [src] w tym stanie i zaczyna się rozpadać!</span></B>")
 				summoner.current.adjustCloneLoss(amount * 0.5) //dying hosts take 50% bonus damage as cloneloss
 		update_health_hud()
 	if(stats.ability)
@@ -455,14 +455,14 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 		. += "<span class='holoparasite'><b>POTENTIAL:</b> [level_to_grade(stats.potential)]</span>"
 		. += "<span class='holoparasite'><b>RANGE:</b> [level_to_grade(stats.range)]</span>"
 		if(stats.ability)
-			. += "<span class='holoparasite'><b>SPECIAL ABILITY:</b> [stats.ability.name] - [stats.ability.desc]</span>"
+			. += "<span class='holoparasite'><b>ZDOLNOŚĆ SPECJALNA:</b> [stats.ability.name] - [stats.ability.desc]</span>"
 		for(var/datum/guardian_ability/minor/M in stats.minor_abilities)
-			. += "<span class='holoparasite'><b>MINOR ABILITY:</b> [M.name] - [M.desc]</span>"
+			. += "<span class='holoparasite'><b>ZDOLNOŚĆ POMNIEJSZA:</b> [M.name] - [M.desc]</span>"
 
 /mob/living/simple_animal/hostile/guardian/gib()
 	death()
 	if(summoner?.current)
-		to_chat(summoner.current, "<span class='danger'><B>Your [src] was blown up!</span></B>")
+		to_chat(summoner.current, "<span class='danger'><B>Twój [src] został wysadzony!</span></B>")
 		summoner.current.dust()
 
 /mob/living/simple_animal/hostile/guardian/AltClickOn(atom/A)
@@ -501,7 +501,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 		nullspace()
 		return
 	if(transforming)
-		to_chat(src, "<span class='holoparasite italics'>No... no... you can't!</span>")
+		to_chat(src, "<span class='holoparasite italics'>Nie... nie... nie możesz!</span>")
 		return FALSE
 	if(!is_deployed() || (cooldown > world.time && !forced))
 		return FALSE
@@ -515,15 +515,15 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 
 /mob/living/simple_animal/hostile/guardian/proc/ToggleMode()
 	if(transforming)
-		to_chat(src, "<span class='holoparasite italics'>No... no... you can't!</span>")
+		to_chat(src, "<span class='holoparasite italics'>Nie... nie... nie możesz!</span>")
 		return FALSE
 	if(cooldown > world.time)
 		return
 	if(!stats.ability || !stats.ability.has_mode)
-		to_chat(src, "<span class='danger'><B>You don't have another mode!</span></B>")
+		to_chat(src, "<span class='danger'><B>Nie masz innego trybu!</span></B>")
 		return
 	if(stats.ability.recall_mode && is_deployed())
-		to_chat(src, "<span class='danger'><B>You have to be recalled to toggle modes!</span></B>")
+		to_chat(src, "<span class='danger'><B>Aby przełączać tryby, musisz zostać przywołany z powrotem!</span></B>")
 		return
 	if(stats.ability.mode)
 		stats.ability.mode = FALSE
@@ -536,31 +536,31 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 
 /mob/living/simple_animal/hostile/guardian/proc/ToggleLight()
 	if(light_range<3)
-		to_chat(src, "<span class='notice'>You activate your light.</span>")
+		to_chat(src, "<span class='notice'>Włączasz swoje światło.</span>")
 		set_light(3)
 	else
-		to_chat(src, "<span class='notice'>You deactivate your light.</span>")
+		to_chat(src, "<span class='notice'>Wyłączasz swoje światło.</span>")
 		set_light(0)
 
 /mob/living/simple_animal/hostile/guardian/verb/show_detail()
 	set name = "Show Powers"
 	set category = "Guardian"
-	to_chat(src, "<b>Your Stats:</b>")
+	to_chat(src, "<b>Twoje statystyki:</b>")
 	to_chat(src, "<b>DAMAGE:</b> [level_to_grade(stats.damage)]")
 	to_chat(src, "<b>DEFENSE:</b> [level_to_grade(stats.defense)]")
 	to_chat(src, "<b>SPEED:</b> [level_to_grade(stats.speed)]")
 	to_chat(src, "<b>POTENTIAL:</b> [level_to_grade(stats.potential)]")
 	to_chat(src, "<b>RANGE:</b> [level_to_grade(stats.range)]")
 	if(stats.ability)
-		to_chat(src, "<b>SPECIAL ABILITY:</b> [stats.ability.name] - [stats.ability.desc]")
+		to_chat(src, "<b>ZDOLNOŚĆ SPECJALNA:</b> [stats.ability.name] - [stats.ability.desc]")
 	for(var/datum/guardian_ability/minor/M in stats.minor_abilities)
-		to_chat(src, "<b>MINOR ABILITY:</b> [M.name] - [M.desc]")
+		to_chat(src, "<b>ZDOLNOŚĆ POMNIEJSZA:</b> [M.name] - [M.desc]")
 
 //COMMUNICATION
 
 /mob/living/simple_animal/hostile/guardian/proc/Communicate()
 	if(summoner?.current)
-		var/input = stripped_input(src, "Please enter a message to tell your summoner.", "Guardian", "")
+		var/input = stripped_input(src, "Wpisz wiadomość do swojego przywoływacza.", "Guardian", "")
 		if(!input)
 			return
 
@@ -581,7 +581,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 
 /mob/living/simple_animal/hostile/guardian/proc/ResetMe()
 	set waitfor = FALSE
-	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as [summoner?.current?.name]'s [real_name]?", ROLE_HOLOPARASITE, null, 10 SECONDS)
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Chcesz zagrać jako [real_name] należący do [summoner?.current?.name]?", ROLE_HOLOPARASITE, null, 10 SECONDS)
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
 		key = C.key
@@ -610,7 +610,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 		Reviveify()
 		RegisterSignal(new_body, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/mob/living/simple_animal/hostile/guardian, OnMoved))
 		RegisterSignal(new_body, COMSIG_LIVING_REVIVE, TYPE_PROC_REF(/mob/living/simple_animal/hostile/guardian, Reviveify))
-		to_chat(src, "<span class='notice'>You manifest into existence, as your master's soul appears in a new body!</span>")
+		to_chat(src, "<span class='notice'>Materializujesz się, gdy dusza twojego pana pojawia się w nowym ciele!</span>")
 		new_body.add_verb(/mob/living/proc/guardian_comm)
 		new_body.add_verb(/mob/living/proc/guardian_recall)
 		new_body.add_verb(/mob/living/proc/guardian_reset)
@@ -619,11 +619,11 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	set name = "Communicate"
 	set category = "Guardian"
 	set desc = "Communicate telepathically with your guardian."
-	var/input = stripped_input(src, "Please enter a message to tell your guardian.", "Message", "")
+	var/input = stripped_input(src, "Wpisz wiadomość do swojego strażnika.", "Message", "")
 	if(!input)
 		return
 	if(CHAT_FILTER_CHECK(input))
-		to_chat(usr, "<span class='warning'>Your message contains forbidden words.</span>")
+		to_chat(usr, "<span class='warning'>Twoja wiadomość zawiera zakazane słowa.</span>")
 		return
 	input = treat_message_min(input)
 	var/preliminary_message = "<span class='holoparasite bold'>[input]</span>" //apply basic color/bolding
@@ -644,7 +644,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	set name = "Set Battlecry"
 	set category = "Guardian"
 	set desc = "Choose what you shout as you punch people."
-	var/input = stripped_input(src,"What do you want your battlecry to be? Max length of 6 characters.", ,"", 7)
+	var/input = stripped_input(src,"Jaki ma być twój okrzyk bojowy? Maksymalnie 6 znaków.", ,"", 7)
 	if(input)
 		battlecry = input
 
@@ -666,35 +666,35 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 
 	var/list/guardians = hasparasites()
 	if(LAZYLEN(guardians))
-		var/mob/living/simple_animal/hostile/guardian/G = input(src, "Pick the guardian you wish to reset", "Guardian Reset") as null|anything in guardians
+		var/mob/living/simple_animal/hostile/guardian/G = input(src, "Wybierz strażnika, którego chcesz zresetować", "Reset strażnika") as null|anything in guardians
 		if(G)
 			if(!!G.client?.is_afk())
 				if(G.next_reset > world.time)
-					to_chat(src, "<span class='holoparasite'>You need to wait [DisplayTimeText(G.next_reset - world.time)] to reset <font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> again!</span>")
+					to_chat(src, "<span class='holoparasite'>Musisz poczekać [DisplayTimeText(G.next_reset - world.time)], by znów zresetować <font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font>!</span>")
 					return
 				G.next_reset = world.time + GUARDIAN_RESET_COOLDOWN
-			to_chat(src, "<span class='holoparasite'>You attempt to reset <font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font>'s personality...</span>")
-			var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as [src.real_name]'s [G.real_name]?", ROLE_HOLOPARASITE, null, 10 SECONDS)
+			to_chat(src, "<span class='holoparasite'>Próbujesz zresetować osobowość <font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font>...</span>")
+			var/list/mob/dead/observer/candidates = pollGhostCandidates("Chcesz zagrać jako [G.real_name] należący do [src.real_name]?", ROLE_HOLOPARASITE, null, 10 SECONDS)
 			if(LAZYLEN(candidates))
 				var/mob/dead/observer/C = pick(candidates)
-				to_chat(G, "<span class='holoparasite'>Your user reset you, and your body was taken over by a ghost. Looks like they weren't happy with your performance.</span>")
-				to_chat(src, "<span class='holoparasite bold'>Your <font color=\"[G.guardiancolor]\">[G.real_name]</font> has been successfully reset.</span>")
+				to_chat(G, "<span class='holoparasite'>Twój użytkownik cię zresetował, a twoje ciało przejął duch. Wygląda na to, że nie był zadowolony z twoich wyników.</span>")
+				to_chat(src, "<span class='holoparasite bold'>Twój <font color=\"[G.guardiancolor]\">[G.real_name]</font> został zresetowany.</span>")
 				log_game("[key_name(src)] has reset their holoparasite, it is now [key_name(G)].")
 				G.ghostize(FALSE)
 				G.key = C.key
 				switch(G.theme)
 					if(GUARDIAN_TECH)
-						to_chat(src, "<span class='holoparasite'><font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> is now online!</span>")
+						to_chat(src, "<span class='holoparasite'><font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> jest teraz online!</span>")
 					if(GUARDIAN_MAGIC)
-						to_chat(src, "<span class='holoparasite'><font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> has been summoned!</span>")
+						to_chat(src, "<span class='holoparasite'><font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> został przywołany!</span>")
 					if(GUARDIAN_CARP)
-						to_chat(src, "<span class='holoparasite'><font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> has been caught!</span>")
+						to_chat(src, "<span class='holoparasite'><font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> został złapany!</span>")
 					if(GUARDIAN_HIVE)
-						to_chat(src, "<span class='holoparasite'><font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> has been reborn from the core!</span>")
+						to_chat(src, "<span class='holoparasite'><font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> odrodził się z rdzenia!</span>")
 			else
-				to_chat(src, "<span class='holoparasite'>There were no ghosts willing to take control of <font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font>. Looks like you're stuck with it for now.</span>")
+				to_chat(src, "<span class='holoparasite'>Żaden duch nie chciał przejąć kontroli nad <font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font>. Wygląda na to, że na razie musisz się z nim pogodzić.</span>")
 		else
-			to_chat(src, "<span class='holoparasite'>You decide not to reset [guardians.len > 1 ? "any of your guardians":"your guardian"].</span>")
+			to_chat(src, "<span class='holoparasite'>Postanawiasz nie resetować [guardians.len > 1 ? "żadnego ze swoich strażników":"swojego strażnika"].</span>")
 	else
 		remove_verb(/mob/living/proc/guardian_reset)
 

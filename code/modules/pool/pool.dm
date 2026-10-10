@@ -76,7 +76,7 @@ Place a pool filter somewhere in the pool if you want people to be able to modif
 	if(S)
 		if(do_after(user, 1 SECONDS, target = dropping))
 			S.RemoveComponent()
-			visible_message("<span class='notice'>[dropping] climbs out of the pool.</span>")
+			visible_message("<span class='notice'>[dropping] wychodzi z basenu.</span>")
 			AM.forceMove(src)
 	else
 		. = ..()
@@ -89,25 +89,25 @@ Place a pool filter somewhere in the pool if you want people to be able to modif
 		return FALSE
 	. = ..()
 	if(user != dropping)
-		dropping.visible_message("<span class='notice'>[user] starts to lower [dropping] down into [src].</span>", \
-		 "<span class='notice'>You start to lower [dropping] down into [src].</span>")
+		dropping.visible_message("<span class='notice'>[user] zaczyna opuszczać [dropping] do [src].</span>", \
+		 "<span class='notice'>Zaczynasz opuszczać [dropping] do [src].</span>")
 	else
-		to_chat(user, "<span class='notice'>You start climbing down into [src]...")
+		to_chat(user, "<span class='notice'>Zaczynasz schodzić do [src]...")
 	if(do_after(user, 4 SECONDS, target = dropping))
 		splash(dropping)
 
 /datum/mood_event/poolparty
-	description = "<span class='nicegreen'>I love swimming!.</span>\n"
+	description = "<span class='nicegreen'>Uwielbiam pływać!</span>\n"
 	mood_change = 2
 	timeout = 2 MINUTES
 
 /datum/mood_event/robotpool
-	description = "<span class='warning'>I really wasn't built with water resistance in mind...</span>\n"
+	description = "<span class='warning'>Naprawdę nie zostałem zbudowany z myślą o wodoodporności...</span>\n"
 	mood_change = -3
 	timeout = 2 MINUTES
 
 /datum/mood_event/poolwet
-	description = "<span class='warning'>Eugh! my clothes are soaking wet from that swim.</span>\n"
+	description = "<span class='warning'>Fuj! Moje ubrania są przemoczone po tym pływaniu.</span>\n"
 	mood_change = -4
 	timeout = 4 MINUTES
 
@@ -121,7 +121,7 @@ Place a pool filter somewhere in the pool if you want people to be able to modif
 	if(!W.tool_use_check(user,10))
 		return
 	if(!istype(get_step(src,NORTH), /turf/open/indestructible/sound/pool)) //Ladders only face up, and no stacking!
-		balloon_alert(user, "You start installing a pool ladder...")
+		balloon_alert(user, "Zaczynasz montować drabinkę basenową...")
 		if(do_after(user, 5 SECONDS, target=src))
 			//NSV13 - yeah I know 50 ladders are funny but lets not.
 			if(locate(/obj/structure/pool_ladder) in src)
@@ -156,7 +156,7 @@ Place a pool filter somewhere in the pool if you want people to be able to modif
 		user.emp_act(zap)
 		user.emote("scream") //Chad coders use M.say("*scream")
 		do_sparks(zap, TRUE, user)
-		to_chat(user, "<span class='userdanger'>WARNING: WATER DAMAGE DETECTED!</span>")
+		to_chat(user, "<span class='userdanger'>OSTRZEŻENIE: WYKRYTO USZKODZENIA OD WODY!</span>")
 		SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "robotpool", /datum/mood_event/robotpool)
 	else
 		if(!check_clothes(user))
@@ -205,10 +205,10 @@ Place a pool filter somewhere in the pool if you want people to be able to modif
 
 /obj/structure/pool_ladder/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>There are <b>bolts</b> securing it to the side of the pool.</span>"
+	. += "<span class='notice'>Do krawędzi basenu przymocowują ją <b>śruby</b>.</span>"
 
 /obj/structure/pool_ladder/wrench_act(mob/living/user, obj/item/I)
-	balloon_alert(user, "You start disassembling [src].")
+	balloon_alert(user, "Zaczynasz rozbierać [src].")
 	if(I.use_tool(src, user, 5 SECONDS))
 		deconstruct()
 
@@ -219,13 +219,13 @@ Place a pool filter somewhere in the pool if you want people to be able to modif
 /obj/structure/pool_ladder/attack_hand(mob/user)
 	var/datum/component/swimming/S = user.GetComponent(/datum/component/swimming)
 	if(S)
-		to_chat(user, "<span class='notice'>You start to climb out of the pool...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz wychodzić z basenu...</span>")
 		if(do_after(user, 1 SECONDS, target=src))
 			S.RemoveComponent()
-			visible_message("<span class='notice'>[user] climbs out of the pool.</span>")
+			visible_message("<span class='notice'>[user] wychodzi z basenu.</span>")
 			user.forceMove(get_turf(get_step(src, NORTH))) //Ladders shouldn't adjoin another pool section. Ever.
 	else
-		to_chat(user, "<span class='notice'>You start to climb into the pool...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz wchodzić do basenu...</span>")
 		var/turf/T = get_turf(src)
 		if(do_after(user, 1 SECONDS, target=src))
 			if(!istype(T, /turf/open/indestructible/sound/pool)) //Ugh, fine. Whatever.
@@ -255,7 +255,7 @@ GLOBAL_LIST_EMPTY(pool_filters)
 
 /obj/machinery/pool_filter/examine(mob/user)
 	. = ..()
-	. += "<span class='boldnotice'>The thermostat on it reads [current_temperature].</span>"
+	. += "<span class='boldnotice'>Termostat pokazuje [current_temperature].</span>"
 
 /obj/machinery/pool_filter/Initialize(mapload)
 	. = ..()
@@ -285,7 +285,7 @@ GLOBAL_LIST_EMPTY(pool_filters)
 	wrench_act(user, null)
 
 /obj/machinery/pool_filter/wrench_act(mob/living/user, obj/item/I)
-	var/newTemp = input(user, "Set a new temperature for [src] (Kelvin).", "[src]", null) as num
+	var/newTemp = input(user, "Ustaw nową temperaturę [src] (w kelwinach).", "[src]", null) as num
 	if(!newTemp)
 		return
 	newTemp = CLAMP(newTemp, T0C, 320)
@@ -323,9 +323,9 @@ GLOBAL_LIST_EMPTY(pool_filters)
 				if(current_temperature <= 283.5) //Colder than 10 degrees is going to make you very cold
 					if(iscarbon(M))
 						C.adjust_bodytemperature(-80, 80)
-					to_chat(M, "<span class='warning'>The water is freezing cold!</span>")
+					to_chat(M, "<span class='warning'>Woda jest lodowata!</span>")
 				else if(current_temperature >= 308.5) //Hotter than 35 celsius is going to make you burn up
 					if(iscarbon(M))
 						C.adjust_bodytemperature(35, 0, 500)
 					M.adjustFireLoss(2.5 * delta_time)
-					to_chat(M, "<span class='danger'>The water is searing hot!</span>")
+					to_chat(M, "<span class='danger'>Woda jest parząco gorąca!</span>")

@@ -33,15 +33,15 @@
 
 /datum/station_goal/dna_vault/get_report()
 	return list(
-		"<blockquote>Our long term prediction systems indicate a 99% chance of system-wide cataclysm in the near future.",
-		"We need you to construct a DNA Vault aboard your ship.",
+		"<blockquote>Nasze systemy długoterminowego przewidywania wskazują 99% szans na kataklizm w całym układzie w najbliższej przyszłości.",
+		"Musicie zbudować na pokładzie Skarbiec DNA.",
 		"",
-		"The DNA Vault needs to contain samples of:",
-		"* [animal_count] unique animal data",
-		"* [plant_count] unique non-standard plant data",
-		"* [human_count] unique sapient humanoid DNA data",
+		"Skarbiec DNA musi zawierać próbki:",
+		"* unikalne dane zwierząt: [animal_count]",
+		"* unikalne dane niestandardowych roślin: [plant_count]",
+		"* unikalne dane DNA rozumnych humanoidów: [human_count]",
 		"",
-		"Base vault parts are available for shipping via cargo.</blockquote>",
+		"Podstawowe części skarbca można zamówić przez zaopatrzenie.</blockquote>",
 	).Join("\n") //NSV13 - The Shippening
 
 /datum/station_goal/dna_vault/on_report()
@@ -88,13 +88,13 @@
 		if(!H.myseed)
 			return
 		if(!H.harvest)// So it's bit harder.
-			to_chat(user, "<span class='warning'>Plant needs to be ready to harvest to perform full data scan.</span>") //Because space dna is actually magic
+			to_chat(user, "<span class='warning'>Aby przeprowadzić pełny skan danych, roślina musi być gotowa do zbioru.</span>") //Because space dna is actually magic
 			return
 		if(plants[H.myseed.type])
-			to_chat(user, "<span class='notice'>Plant data already present in local storage.</span>")
+			to_chat(user, "<span class='notice'>Dane rośliny są już w pamięci lokalnej.</span>")
 			return
 		plants[H.myseed.type] = 1
-		to_chat(user, "<span class='notice'>Plant data added to local storage.</span>")
+		to_chat(user, "<span class='notice'>Dane rośliny dodane do pamięci lokalnej.</span>")
 
 	//animals
 	var/static/list/non_simple_animals = typecacheof(list(/mob/living/carbon/monkey, /mob/living/carbon/alien))
@@ -102,22 +102,22 @@
 		if(isanimal(target))
 			var/mob/living/simple_animal/A = target
 			if(!A.healable || (A.flags_1 & HOLOGRAM_1)) //simple approximation of being animal not a robot or similar. Also checking if holographic
-				to_chat(user, "<span class='warning'>No compatible DNA detected.</span>")
+				to_chat(user, "<span class='warning'>Nie wykryto zgodnego DNA.</span>")
 				return
 		if(animals[target.type])
-			to_chat(user, "<span class='notice'>Animal data already present in local storage.</span>")
+			to_chat(user, "<span class='notice'>Dane zwierzęcia są już w pamięci lokalnej.</span>")
 			return
 		animals[target.type] = 1
-		to_chat(user, "<span class='notice'>Animal data added to local storage.</span>")
+		to_chat(user, "<span class='notice'>Dane zwierzęcia dodane do pamięci lokalnej.</span>")
 
 	//humans
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		if(dna[H.dna.uni_identity])
-			to_chat(user, "<span class='notice'>Humanoid data already present in local storage.</span>")
+			to_chat(user, "<span class='notice'>Dane humanoida są już w pamięci lokalnej.</span>")
 			return
 		dna[H.dna.uni_identity] = 1
-		to_chat(user, "<span class='notice'>Humanoid data added to local storage.</span>")
+		to_chat(user, "<span class='notice'>Dane humanoida dodane do pamięci lokalnej.</span>")
 
 /obj/machinery/dna_vault
 	name = "DNA Vault"
@@ -248,7 +248,7 @@
 				uploaded++
 				dna[ui] = 1
 		check_goal()
-		to_chat(user, "<span class='notice'>[uploaded] new datapoints uploaded.</span>")
+		to_chat(user, "<span class='notice'>Wysłano nowe punkty danych: [uploaded].</span>")
 	else
 		return ..()
 
@@ -259,31 +259,31 @@
 	var/datum/species/S = H.dna.species
 	switch(upgrade_type)
 		if(VAULT_TOXIN)
-			to_chat(H, "<span class='notice'>You feel resistant to airborne toxins.</span>")
+			to_chat(H, "<span class='notice'>Czujesz się odporny na toksyny w powietrzu.</span>")
 			if(locate(/obj/item/organ/lungs) in H.internal_organs)
 				var/obj/item/organ/lungs/L = H.internal_organs_slot[ORGAN_SLOT_LUNGS]
 				L.gas_max -= GAS_PLASMA
 				L.gas_max -= GAS_CONSTRICTED_PLASMA //NSV13
 			ADD_TRAIT(H, TRAIT_VIRUSIMMUNE, "dna_vault")
 		if(VAULT_NOBREATH)
-			to_chat(H, "<span class='notice'>Your lungs feel great.</span>")
+			to_chat(H, "<span class='notice'>Twoje płuca czują się świetnie.</span>")
 			ADD_TRAIT(H, TRAIT_NOBREATH, "dna_vault")
 		if(VAULT_FIREPROOF)
-			to_chat(H, "<span class='notice'>You feel fireproof.</span>")
+			to_chat(H, "<span class='notice'>Czujesz się ognioodporny.</span>")
 			S.burnmod = 0.5
 			ADD_TRAIT(H, TRAIT_RESISTHEAT, "dna_vault")
 			ADD_TRAIT(H, TRAIT_NOFIRE, "dna_vault")
 		if(VAULT_STUNTIME)
-			to_chat(H, "<span class='notice'>Nothing can keep you down for long.</span>")
+			to_chat(H, "<span class='notice'>Nic nie powali cię na długo.</span>")
 			S.stunmod = 0.5
 		if(VAULT_ARMOUR)
-			to_chat(H, "<span class='notice'>You feel tough.</span>")
+			to_chat(H, "<span class='notice'>Czujesz się twardy.</span>")
 			S.armor = 30
 			ADD_TRAIT(H, TRAIT_PIERCEIMMUNE, "dna_vault")
 		if(VAULT_SPEED)
-			to_chat(H, "<span class='notice'>Your legs feel faster.</span>")
+			to_chat(H, "<span class='notice'>Twoje nogi wydają się szybsze.</span>")
 			H.add_movespeed_modifier(MOVESPEED_ID_DNA_VAULT, update=TRUE, priority=100, multiplicative_slowdown=-0.5, blacklisted_movetypes=(FLYING|FLOATING))
 		if(VAULT_QUICK)
-			to_chat(H, "<span class='notice'>Your arms move as fast as lightning.</span>")
+			to_chat(H, "<span class='notice'>Twoje ręce poruszają się szybko jak błyskawica.</span>")
 			H.next_move_modifier = 0.5
 	power_lottery[H] = list()

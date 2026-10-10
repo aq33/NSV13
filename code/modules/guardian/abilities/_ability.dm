@@ -16,7 +16,7 @@
 		return
 	var/msg
 	if(!can_cast(user))
-		msg = "<span class='warning'>You can no longer cast [name]!</span>"
+		msg = "<span class='warning'>Nie możesz już użyć [name]!</span>"
 		remove_ranged_ability(msg)
 		return
 	if(active)
@@ -30,7 +30,7 @@
 
 /obj/effect/proc_holder/spell/targeted/guardian/InterceptClickOn(mob/living/caller, params, atom/t)
 	if(!isliving(t))
-		to_chat(caller, "<span class='warning'>You may only use this ability on living things!</span>")
+		to_chat(caller, "<span class='warning'>Możesz użyć tej zdolności tylko na żywych istotach!</span>")
 		revert_cast()
 		return FALSE
 	return TRUE

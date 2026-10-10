@@ -100,7 +100,7 @@ Contents:
 	if(!QDELETED(n_shoes))
 		qdel(n_shoes)
 	if(!QDELETED(energyKatana))
-		energyKatana.visible_message("<span class='warning'>[src] flares and then turns to dust!</span>")
+		energyKatana.visible_message("<span class='warning'>[src] rozbłyska, po czym obraca się w pył!</span>")
 		qdel(energyKatana)
 	if(!QDELETED(src))
 		qdel(src)
@@ -123,13 +123,13 @@ Contents:
 		H.gib()
 		return FALSE
 	if(!istype(H.head, /obj/item/clothing/head/helmet/space/space_ninja))
-		to_chat(H, "<span class='userdanger'>ERROR</span>: 100113 UNABLE TO LOCATE HEAD GEAR\nABORTING...")
+		to_chat(H, "<span class='userdanger'>BŁĄD</span>: 100113 NIE MOŻNA ZLOKALIZOWAĆ NAKRYCIA GŁOWY\nPRZERYWANIE...")
 		return FALSE
 	if(!istype(H.shoes, /obj/item/clothing/shoes/space_ninja))
-		to_chat(H, "<span class='userdanger'>ERROR</span>: 122011 UNABLE TO LOCATE FOOT GEAR\nABORTING...")
+		to_chat(H, "<span class='userdanger'>BŁĄD</span>: 122011 NIE MOŻNA ZLOKALIZOWAĆ OBUWIA\nPRZERYWANIE...")
 		return FALSE
 	if(!istype(H.gloves, /obj/item/clothing/gloves/space_ninja))
-		to_chat(H, "<span class='userdanger'>ERROR</span>: 110223 UNABLE TO LOCATE HAND GEAR\nABORTING...")
+		to_chat(H, "<span class='userdanger'>BŁĄD</span>: 110223 NIE MOŻNA ZLOKALIZOWAĆ RĘKAWIC\nPRZERYWANIE...")
 		return FALSE
 	affecting = H
 	ADD_TRAIT(src, TRAIT_NODROP, NINJA_SUIT_TRAIT)
@@ -172,17 +172,17 @@ Contents:
 	. = .()
 	if(s_initialized)
 		if(user == affecting)
-			. += "All systems operational. Current energy capacity: <B>[display_energy(cell.charge)]</B>.\n"+\
-			"The CLOAK-tech device is <B>[stealth?"active":"inactive"]</B>.\n"+\
-			"There are <B>[s_bombs]</B> smoke bomb\s remaining.\n"+\
-			"There are <B>[a_boost]</B> adrenaline booster\s remaining."
+			. += "Wszystkie systemy sprawne. Obecny zapas energii: <B>[display_energy(cell.charge)]</B>.\n"+\
+			"Urządzenie CLOAK-tech jest <B>[stealth?"aktywne":"nieaktywne"]</B>.\n"+\
+			"Pozostałe bomby dymne: <B>[s_bombs]</B>.\n"+\
+			"Pozostałe dopalacze adrenaliny: <B>[a_boost]</B>."
 
 /obj/item/clothing/suit/space/space_ninja/ui_action_click(mob/user, action)
 	if(istype(action, /datum/action/item_action/initialize_ninja_suit))
 		toggle_on_off()
 		return TRUE
 	if(!s_initialized)
-		to_chat(user, "<span class='warning'><b>ERROR</b>: suit offline.  Please activate suit.</span>")
+		to_chat(user, "<span class='warning'><b>BŁĄD</b>: kombinezon offline. Aktywuj kombinezon.</span>")
 		return FALSE
 	if(istype(action, /datum/action/item_action/ninjasmoke))
 		ninjasmoke()

@@ -33,7 +33,7 @@
 	///All tabs
 	var/list/tab_index = list("Listings", "Export", "Linking")
 	var/current_tab = "Listings"
-	var/current_tab_info = "Here you can find listings for various research samples, usually fresh from the field. These samples aren't distrubuted by the Nanotrasen affiliated cargo system, so instead listing data is sourced from stray bluespace-threads."
+	var/current_tab_info = "Tutaj znajdziesz oferty różnych próbek badawczych, zwykle prosto z terenu. Te próbki nie są rozprowadzane przez powiązany z Nanotrasen system zaopatrzenia, więc dane ofert pochodzą z zabłąkanych nici bluespace."
 	///used for 'shipping'
 	var/obj/machinery/xenoartifact_inbox/linked_inbox
 	///List of linked machines for UI purposes
@@ -134,23 +134,23 @@
 			current_tab = t
 			switch(t)
 				if("Listings")//Not the best way of doing this but I can't be fucked otherwise.
-					current_tab_info = "Here you can find listings for various research samples, usually fresh from the field. These samples aren't distrubuted by the Nanotrasen affiliated cargo system, so instead listing data is sourced from stray bluespace-threads."
+					current_tab_info = "Tutaj znajdziesz oferty różnych próbek badawczych, zwykle prosto z terenu. Te próbki nie są rozprowadzane przez powiązany z Nanotrasen system zaopatrzenia, więc dane ofert pochodzą z zabłąkanych nici bluespace."
 				if("Export")
-					current_tab_info = "Sell any export your department produces through open bluespace strings. Anonymously trade and sell ancient alien bombs, explosive slime cores, or just regular bombs."
+					current_tab_info = "Sprzedawaj każdy produkt eksportowy swojego działu przez otwarte nici bluespace. Anonimowo handluj i sprzedawaj starożytne obce bomby, wybuchowe rdzenie szlamów albo po prostu zwykłe bomby."
 				if("Linking")
-					current_tab_info = "Link machines to the Listing Console."
+					current_tab_info = "Połącz maszyny z konsolą ofert."
 		return
 	else //Buy xenoartifact
 		var/datum/xenoartifact_seller/S = locate(action)
 
 		if(stability < STABILITY_COST)
-			say("Error. Insufficient thread stability.")
+			say("Błąd. Niewystarczająca stabilność nici.")
 			return
 		if(!linked_inbox)
-			say("Error. No linked hardware.")
+			say("Błąd. Brak połączonego sprzętu.")
 			return
 		else if(budget.account_balance-S.price < 0)
-			say("Error. Insufficient funds.")
+			say("Błąd. Niewystarczające środki.")
 			return
 
 		if(linked_inbox && budget.account_balance-S.price >= 0)
@@ -161,7 +161,7 @@
 				sellers -= S
 				stability = max(0, stability - STABILITY_COST)
 				budget.adjust_money(-1*S.price)
-				say("Purchase complete. [budget.account_balance] credits remaining in Research Budget")
+				say("Zakup zakończony. W budżecie badań pozostało [budget.account_balance] kr")
 				addtimer(CALLBACK(src, PROC_REF(generate_new_seller)), (rand(1,3)*60) SECONDS)
 				A = null
 	update_icon()
@@ -169,7 +169,7 @@
 //Auto sells item on pad, finds seller for you
 /obj/machinery/computer/xenoartifact_console/proc/sell()
 	if(!linked_inbox)
-		say("Error. No linked hardware.")
+		say("Błąd. Brak połączonego sprzętu.")
 		return
 	var/obj/selling_item
 	for(var/obj/I in oview(1, linked_inbox))
@@ -197,8 +197,8 @@
 				linked_techweb.add_point_type(TECHWEB_POINT_TYPE_DISCOVERY, ((XENOA_SOLD_DP*(final_price/X.price)) * max(1, final_price/1000)) * (final_price >= X.price))
 
 				//Handle player info
-				entry.main = "[selling_item.name] sold at [station_time_timestamp()] for [final_price] credits, bought for [X.price]."
-				entry.gain = "Awarded [(final_price*2.3) * (final_price >= X.price)] Research Points & [XENOA_SOLD_DP*(final_price/X.price) * (final_price >= X.price)] Discovery Points."
+				entry.main = "[selling_item.name] sprzedano o [station_time_timestamp()] za [final_price] kr, kupiono za [X.price]."
+				entry.gain = "Przyznano [(final_price*2.3) * (final_price >= X.price)] pkt badań i [XENOA_SOLD_DP*(final_price/X.price) * (final_price >= X.price)] pkt odkryć."
 				info = "[entry.main]\n[entry.gain]\n"
 
 				//append sticker traits & pass it off
@@ -246,9 +246,9 @@
 			I.linked_console = src
 			I.RegisterSignal(src, COMSIG_PARENT_QDELETING, /obj/machinery/xenoartifact_inbox/proc/on_machine_del)
 			RegisterSignal(I, COMSIG_PARENT_QDELETING, PROC_REF(on_inbox_del))
-			say("Successfully linked [I].")
+			say("Połączono [I].")
 			return
-	say("Unable to find linkable hadrware.")
+	say("Nie znaleziono sprzętu do połączenia.")
 
 /obj/machinery/computer/xenoartifact_console/proc/on_inbox_del() //Hard del measures
 	SIGNAL_HANDLER

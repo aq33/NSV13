@@ -43,17 +43,17 @@
 /obj/item/camera/attack_self(mob/user)
 	if(!disk)
 		return
-	to_chat(user, "<span class='notice'>You eject [disk] out the back of [src].</span>")
+	to_chat(user, "<span class='notice'>Wysuwasz [disk] z tyłu [src].</span>")
 	user.put_in_hands(disk)
 	disk = null
 
 /obj/item/camera/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click to change its focusing, allowing you to set how big of an area it will capture.</span>"
+	. += "<span class='notice'>Alt-klik, by zmienić ostrość i ustawić, jak duży obszar zostanie uchwycony.</span>"
 
 /obj/item/camera/proc/adjust_zoom(mob/user)
-	var/desired_x = input(user, "How high do you want the camera to shoot, between [picture_size_x_min] and [picture_size_x_max]?", "Zoom", picture_size_x) as num
-	var/desired_y = input(user, "How wide do you want the camera to shoot, between [picture_size_y_min] and [picture_size_y_max]?", "Zoom", picture_size_y) as num
+	var/desired_x = input(user, "Na jaką wysokość ma robić zdjęcia aparat, od [picture_size_x_min] do [picture_size_x_max]?", "Zoom", picture_size_x) as num
+	var/desired_y = input(user, "Na jaką szerokość ma robić zdjęcia aparat, od [picture_size_y_min] do [picture_size_y_max]?", "Zoom", picture_size_y) as num
 	picture_size_x = min(CLAMP(desired_x, picture_size_x_min, picture_size_x_max), CAMERA_PICTURE_SIZE_HARD_LIMIT)
 	picture_size_y = min(CLAMP(desired_y, picture_size_y_min, picture_size_y_max), CAMERA_PICTURE_SIZE_HARD_LIMIT)
 
@@ -68,29 +68,29 @@
 /obj/item/camera/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/camera_film))
 		if(pictures_left)
-			to_chat(user, "<span class='notice'>[src] still has some film in it!</span>")
+			to_chat(user, "<span class='notice'>W [src] wciąż jest trochę kliszy!</span>")
 			return
 		if(!user.temporarilyRemoveItemFromInventory(I))
 			return
-		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
+		to_chat(user, "<span class='notice'>Wkładasz [I] do [src].</span>")
 		qdel(I)
 		pictures_left = pictures_max
 		return
 	if(istype(I, /obj/item/disk/holodisk))
 		if (!disk)
 			if(!user.transferItemToLoc(I, src))
-				to_chat(user, "<span class='warning'>[I] is stuck to your hand!</span>")
+				to_chat(user, "<span class='warning'>[I] przykleił ci się do ręki!</span>")
 				return TRUE
-			to_chat(user, "<span class='notice'>You slide [I] into the back of [src].</span>")
+			to_chat(user, "<span class='notice'>Wsuwasz [I] z tyłu [src].</span>")
 			disk = I
 		else
-			to_chat(user, "<span class='warning'>There's already a disk inside [src].</span>")
+			to_chat(user, "<span class='warning'>W [src] jest już dysk.</span>")
 		return TRUE //no afterattack
 	..()
 
 /obj/item/camera/examine(mob/user)
 	. = ..()
-	. += "It has [pictures_left] photos left."
+	. += "Pozostałe zdjęcia: [pictures_left]."
 
 //user can be atom or mob
 /obj/item/camera/proc/can_target(atom/target, mob/user, prox_flag)
@@ -122,7 +122,7 @@
 			disk.record.caller_name = M.name
 			disk.record.set_caller_image(M)
 		else
-			to_chat(user, "<span class='warning'>Invalid holodisk target.</span>")
+			to_chat(user, "<span class='warning'>Nieprawidłowy cel holodysku.</span>")
 			return
 
 	if(!can_target(target, user, flag))
@@ -225,14 +225,14 @@
 	if(in_range(src, user)) //needed because of TK
 		user.put_in_hands(p)
 		pictures_left--
-		to_chat(user, "<span class='notice'>[pictures_left] photos left.</span>")
+		to_chat(user, "<span class='notice'>Pozostałe zdjęcia: [pictures_left].</span>")
 		var/customise = "No"
 		if(can_customise)
-			customise = alert(user, "Do you want to customize the photo?", "Customization", "Yes", "No")
+			customise = alert(user, "Czy chcesz dostosować zdjęcie?", "Customization", "Yes", "No")
 		if(customise == "Yes")
-			var/name1 = stripped_input(user, "Set a name for this photo, or leave blank. 32 characters max.", "Name", max_length = 32)
-			var/desc1 = stripped_input(user, "Set a description to add to photo, or leave blank. 128 characters max.", "Caption", max_length = 128)
-			var/caption = stripped_input(user, "Set a caption for this photo, or leave blank. 256 characters max.", "Caption", max_length = 256)
+			var/name1 = stripped_input(user, "Nadaj nazwę temu zdjęciu albo zostaw puste. Maks. 32 znaki.", "Name", max_length = 32)
+			var/desc1 = stripped_input(user, "Dodaj opis do zdjęcia albo zostaw puste. Maks. 128 znaków.", "Caption", max_length = 128)
+			var/caption = stripped_input(user, "Dodaj podpis do zdjęcia albo zostaw puste. Maks. 256 znaków.", "Caption", max_length = 256)
 			if(name1)
 				picture.picture_name = name1
 			if(desc1)

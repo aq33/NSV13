@@ -4,12 +4,12 @@
 //============
 /datum/xenoartifact_trait/minor/looped
 	desc = "Looped"
-	label_desc = "Looped: The Artifact feeds into itself and amplifies its own charge."
+	label_desc = "Zapętlony: artefakt zasila sam siebie i wzmacnia własny ładunek."
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 
 /datum/xenoartifact_trait/minor/looped/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
 	if(istype(item, /obj/item/multitool))
-		to_chat(user, "<span class='info'>The [item.name] displays a resistance reading of [X.charge_req*0.1].</span>")
+		to_chat(user, "<span class='info'>[item.name] pokazuje odczyt oporu [X.charge_req*0.1].</span>")
 		return TRUE
 	return ..()
 
@@ -21,7 +21,7 @@
 //============
 /datum/xenoartifact_trait/minor/capacitive
 	desc = "Capacitive"
-	label_desc = "Capacitive: The Artifact's structure allows it to hold extra charges."
+	label_desc = "Pojemnościowy: struktura artefaktu pozwala mu przechowywać dodatkowe ładunki."
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 	var/charges //Extra uses, not total
 	var/saved_cooldown //This may be considered messy but it's a more practical approach that avoids making an edgecase
@@ -30,7 +30,7 @@
 	charges = pick(0, 1, 2) //Extra charges, not total
 
 /datum/xenoartifact_trait/minor/capacitive/on_touch(obj/item/xenoartifact/X, mob/user)
-	to_chat(user, "<span class='notice'>The hairs on your neck stand up after touching the [X.name].</span>")
+	to_chat(user, "<span class='notice'>Po dotknięciu [X.name] jeżą ci się włosy na karku.</span>")
 	return TRUE
 
 /datum/xenoartifact_trait/minor/capacitive/activate(obj/item/xenoartifact/X)
@@ -47,7 +47,7 @@
 
 /datum/xenoartifact_trait/minor/capacitive/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
 	if(istype(item, /obj/item/multitool))
-		to_chat(user, "<span class='info'>The [item.name] displays an overcharge reading of [charges/3].</span>")
+		to_chat(user, "<span class='info'>[item.name] pokazuje odczyt przeładowania [charges/3].</span>")
 		return TRUE
 	return ..()
 
@@ -56,7 +56,7 @@
 //============
 /datum/xenoartifact_trait/minor/dense //Rather large, quite gigantic, particularly big
 	desc = "Dense"
-	label_desc = "Dense: The Artifact is dense and cannot be easily lifted but, the design has a slightly higher reaction rate."
+	label_desc = "Gęsty: artefakt jest gęsty i trudno go podnieść, ale konstrukcja ma nieco wyższe tempo reakcji."
 	blacklist_traits = list(/datum/xenoartifact_trait/minor/wearable, /datum/xenoartifact_trait/minor/sharp, /datum/xenoartifact_trait/minor/light, /datum/xenoartifact_trait/minor/heavy, /datum/xenoartifact_trait/minor/blocking, /datum/xenoartifact_trait/minor/anchor, /datum/xenoartifact_trait/minor/slippery)
 	flags = BLUESPACE_TRAIT | URANIUM_TRAIT
 
@@ -71,12 +71,12 @@
 //============
 /datum/xenoartifact_trait/minor/sharp
 	desc = "Sharp"
-	label_desc = "Sharp: The Artifact is shaped into a fine point. Perfect for popping balloons."
+	label_desc = "Ostry: artefakt jest zakończony cienkim szpicem. Idealny do przebijania balonów."
 	blacklist_traits = list(/datum/xenoartifact_trait/minor/dense)
 	flags = PLASMA_TRAIT | URANIUM_TRAIT
 
 /datum/xenoartifact_trait/minor/sharp/on_touch(obj/item/xenoartifact/X, mob/user)
-	to_chat(user, "<span class='notice'>The [X.name] feels sharp.</span>")
+	to_chat(user, "<span class='notice'>[X.name] wydaje się ostry.</span>")
 	return TRUE
 
 /datum/xenoartifact_trait/minor/sharp/on_init(obj/item/xenoartifact/X)
@@ -91,11 +91,11 @@
 //============
 /datum/xenoartifact_trait/minor/cooler
 	desc = "Frosted"
-	label_desc = "Frosted: The Artifact has the unique property of actively cooling itself. This also seems to reduce time between uses."
+	label_desc = "Oszroniony: artefakt ma wyjątkową właściwość aktywnego chłodzenia się. Wydaje się to też skracać czas między użyciami."
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 
 /datum/xenoartifact_trait/minor/cooler/on_touch(obj/item/xenoartifact/X, mob/user)
-	to_chat(user, "<span class='notice'>The [X.name] feels cold.</span>")
+	to_chat(user, "<span class='notice'>[X.name] wydaje się zimny.</span>")
 	return TRUE
 
 /datum/xenoartifact_trait/minor/cooler/on_init(obj/item/xenoartifact/X)
@@ -109,7 +109,7 @@
 //============
 /datum/xenoartifact_trait/minor/sentient
 	label_name = "Sentient"
-	label_desc = "Sentient: The Artifact seems to be alive, influencing events around it. The Artifact wants to return to its master..."
+	label_desc = "Świadomy: artefakt wydaje się żywy, wpływając na wydarzenia wokół siebie. Artefakt chce wrócić do swojego pana..."
 	//Slightly increase weight - muh arpee serber
 	weight = 55
 	///he who lives inside
@@ -118,7 +118,7 @@
 	var/obj/effect/mob_spawn/sentient_artifact/S
 
 /datum/xenoartifact_trait/minor/sentient/on_touch(obj/item/xenoartifact/X, mob/user)
-	to_chat(user, "<span class='warning'>The [X.name] whispers to you...</span>")
+	to_chat(user, "<span class='warning'>[X.name] szepcze do ciebie...</span>")
 	return TRUE
 
 /datum/xenoartifact_trait/minor/sentient/on_init(obj/item/xenoartifact/X)
@@ -127,11 +127,11 @@
 
 //Proc used to give access to ghosts when original player leaves
 /datum/xenoartifact_trait/minor/sentient/proc/handle_ghost(datum/source, mob/M, list/examine_text)
-	if(isobserver(M) && man && !man?.key && (alert(M, "Are you sure you want to control of [man]?", "Assume control of [man]", "Yes", "No") == "Yes"))
+	if(isobserver(M) && man && !man?.key && (alert(M, "Czy na pewno chcesz przejąć kontrolę nad [man]?", "Przejmij kontrolę nad [man]", "Yes", "No") == "Yes"))
 		man.key = M.ckey
 
 /datum/xenoartifact_trait/minor/sentient/proc/get_canidate(obj/item/xenoartifact/X, mob/M)
-	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as the maleviolent force inside the [X.name]?", ROLE_SENTIENT_XENOARTIFACT, null, 8 SECONDS)
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Chcesz zagrać jako złośliwa siła w [X.name]?", ROLE_SENTIENT_XENOARTIFACT, null, 8 SECONDS)
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
 		setup_sentience(X, C.ckey)
@@ -154,7 +154,7 @@
 	var/obj/effect/proc_holder/spell/targeted/xeno_senitent_action/P = new /obj/effect/proc_holder/spell/targeted/xeno_senitent_action(,X)
 	man.AddSpell(P)
 	//show little guy his traits
-	to_chat(man, "<span class='notice'>Your traits are: \n</span>")
+	to_chat(man, "<span class='notice'>Twoje cechy: \n</span>")
 	for(var/datum/xenoartifact_trait/T in X.traits)
 		to_chat(man, "<span class='notice'>[(T.desc || T.label_name)]\n</span>")
 	if(man.key)
@@ -194,8 +194,8 @@
 /obj/effect/mob_spawn/sentient_artifact
 	death = FALSE
 	name = "Sentient Xenoartifact"
-	short_desc = "You're a maleviolent sentience, possesing an ancient alien artifact."
-	flavour_text = "Return to your master..."
+	short_desc = "Jesteś złośliwą świadomością, która opętała starożytny obcy artefakt."
+	flavour_text = "Wróć do swojego pana..."
 	use_cooldown = TRUE
 	banType = ROLE_SENTIENT_XENOARTIFACT
 	invisibility = 101
@@ -217,7 +217,7 @@
 //============
 /datum/xenoartifact_trait/minor/delicate
 	desc = "Fragile"
-	label_desc = "Fragile: The Artifact is poorly made. Continuous use will destroy it."
+	label_desc = "Kruchy: artefakt jest kiepsko wykonany. Ciągłe używanie go zniszczy."
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 
 /datum/xenoartifact_trait/minor/delicate/on_init(obj/item/xenoartifact/X)
@@ -228,9 +228,9 @@
 /datum/xenoartifact_trait/minor/delicate/activate(obj/item/xenoartifact/X, atom/user)
 	if(X.obj_integrity > 0)
 		X.obj_integrity -= 100
-		X.visible_message("<span class='danger'>The [X.name] cracks!</span>", "<span class='danger'>The [X.name] cracks!</span>")
+		X.visible_message("<span class='danger'>[X.name] pęka!</span>", "<span class='danger'>[X.name] pęka!</span>")
 	else
-		X.visible_message("<span class='danger'>The [X.name] shatters!</span>", "<span class='danger'>The [X.name] shatters!</span>")
+		X.visible_message("<span class='danger'>[X.name] się roztrzaskuje!</span>", "<span class='danger'>[X.name] się roztrzaskuje!</span>")
 		var/obj/effect/decal/cleanable/ash/A = new(get_turf(X))
 		A.color = X.material
 		playsound(get_turf(X), 'sound/effects/glassbr1.ogg', 50, TRUE)
@@ -241,7 +241,7 @@
 //============
 /datum/xenoartifact_trait/minor/aura
 	desc = "Expansive"
-	label_desc = "Expansive: The Artifact's surface reaches towards every creature in the room. Even the empty space behind you..."
+	label_desc = "Rozległy: powierzchnia artefaktu sięga ku każdemu stworzeniu w pomieszczeniu. Nawet ku pustej przestrzeni za tobą..."
 	blacklist_traits = list(/datum/xenoartifact_trait/major/timestop, /datum/xenoartifact_trait/minor/long)
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 
@@ -263,7 +263,7 @@
 //============
 /datum/xenoartifact_trait/minor/long
 	desc = "Scoped"
-	label_desc = "Scoped: The Artifact has an almost magnifying effect to it. You could probably target someone from really far away with it."
+	label_desc = "Lunetowy: artefakt ma niemal powiększający efekt. Pewnie dałoby się nim namierzyć kogoś z bardzo daleka."
 	blacklist_traits = list(/datum/xenoartifact_trait/minor/aura)
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 
@@ -275,7 +275,7 @@
 //============
 /datum/xenoartifact_trait/minor/wearable
 	desc = "Shaped"
-	label_desc = "Shaped: The Artifact is small and shaped. It looks as if it'd fit on someone's finger."
+	label_desc = "Ukształtowany: artefakt jest mały i ukształtowany. Wygląda, jakby pasował komuś na palec."
 	blacklist_traits = list(/datum/xenoartifact_trait/minor/dense)
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT
 
@@ -290,7 +290,7 @@
 //============
 /datum/xenoartifact_trait/minor/blocking
 	desc = "Shielded"
-	label_desc = "Shielded: The Artifact's composistion lends itself well to blocking attacks. It would do you good to bring this to a rage cage."
+	label_desc = "Osłaniający: skład artefaktu dobrze nadaje się do blokowania ataków. Dobrze byłoby zabrać go na arenę."
 	blacklist_traits = list(/datum/xenoartifact_trait/minor/dense)
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 
@@ -304,7 +304,7 @@
 //============
 /datum/xenoartifact_trait/minor/light
 	desc = "Light"
-	label_desc = "Light: The Artifact is made from a light material. You can pitch it pretty far."
+	label_desc = "Lekki: artefakt jest wykonany z lekkiego materiału. Można nim rzucić dość daleko."
 	blacklist_traits = list(/datum/xenoartifact_trait/minor/dense, /datum/xenoartifact_trait/minor/heavy)
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 
@@ -316,7 +316,7 @@
 //============
 /datum/xenoartifact_trait/minor/heavy
 	desc = "Heavy"
-	label_desc = "Heavy: The Artifact is made from a heavy material. You can't pitch it very far."
+	label_desc = "Ciężki: artefakt jest wykonany z ciężkiego materiału. Nie da się nim rzucić zbyt daleko."
 	blacklist_traits = list(/datum/xenoartifact_trait/minor/dense, /datum/xenoartifact_trait/minor/light)
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 
@@ -328,7 +328,7 @@
 //============
 /datum/xenoartifact_trait/minor/signalsend
 	label_name = "Signaler"
-	label_desc = "Signaler: The Artifact sends out a signal everytime it's activated."
+	label_desc = "Sygnalizujący: artefakt wysyła sygnał przy każdej aktywacji."
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 
 /datum/xenoartifact_trait/minor/signalsend/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
@@ -352,7 +352,7 @@
 //============
 /datum/xenoartifact_trait/minor/anchor
 	desc = "Anchored"
-	label_desc = "Anchored: The Artifact buckles to the floor with the weight of a sun every time it activates. Heavier than you, somehow."
+	label_desc = "Kotwiczący: przy każdej aktywacji artefakt przywiera do podłogi z ciężarem słońca. Jakimś cudem cięższy od ciebie."
 	blacklist_traits = list(/datum/xenoartifact_trait/minor/wearable, /datum/xenoartifact_trait/minor/haunted)
 	flags = BLUESPACE_TRAIT | URANIUM_TRAIT
 
@@ -360,13 +360,13 @@
 	if(isliving(X.loc))
 		var/mob/living/holder = X.loc
 		holder.dropItemToGround(X)
-	X.visible_message("<span class='danger'>The [X.name] buckles to the floor!</span>")
+	X.visible_message("<span class='danger'>[X.name] przywiera do podłogi!</span>")
 	X.setAnchored(TRUE)
 	X.density = TRUE
 
 /datum/xenoartifact_trait/minor/anchor/on_item(obj/item/xenoartifact/X, atom/user, obj/item/item)
 	if(item.tool_behaviour == TOOL_WRENCH)
-		to_chat(user, "<span class='info'>You [X.anchored ? "unanchor" : "anchor"] the [X.name] to the [get_turf(X)].</span>")
+		to_chat(user, "<span class='info'>[X.anchored ? "Odkotwiczasz" : "Kotwiczysz"] [X.name] do [get_turf(X)].</span>")
 		if(isliving(X.loc))
 			var/mob/living/holder = X.loc
 			holder.dropItemToGround(X)
@@ -381,7 +381,7 @@
 //============
 /datum/xenoartifact_trait/minor/slippery
 	desc = "Slippery"
-	label_desc = "Slippery: The Artifact's surface is perpetually slippery. Popular amongst scientific-clown groups."
+	label_desc = "Śliski: powierzchnia artefaktu jest wiecznie śliska. Popularny wśród naukowo-klaunowych grup."
 	blacklist_traits = list(/datum/xenoartifact_trait/minor/dense)
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 	var/datum/component/slippery/slipper
@@ -398,7 +398,7 @@
 //============
 /datum/xenoartifact_trait/minor/haunted
 	label_name = "Haunted"
-	label_desc = "Haunted: The Artifact's appears to interact with bluespace spatial regression, causing the item to appear haunted."
+	label_desc = "Nawiedzony: artefakt zdaje się oddziaływać z przestrzenną regresją bluespace, przez co przedmiot wydaje się nawiedzony."
 	blacklist_traits = list(/datum/xenoartifact_trait/minor/dense, /datum/xenoartifact_trait/minor/anchor, /datum/xenoartifact_trait/minor/wearable)
 	flags = BLUESPACE_TRAIT
 	weight = 15
@@ -428,7 +428,7 @@
 
 /datum/xenoartifact_trait/minor/haunted/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
 	if(istype(item, /obj/item/storage/book/bible))
-		to_chat(user, "<span class='warning'>The [X.name] rumbles on contact with the [item].</span>")
+		to_chat(user, "<span class='warning'>[X.name] dudni w zetknięciu z [item].</span>")
 		return TRUE
 	return ..()
 
@@ -441,13 +441,13 @@
 //============
 /datum/xenoartifact_trait/minor/delay
 	label_name = "Delayed"
-	label_desc = "Delayed: The Artifact's composistion causes activations to be delayed."
+	label_desc = "Opóźniony: skład artefaktu sprawia, że aktywacje są opóźnione."
 	blacklist_traits = list(/datum/xenoartifact_trait/minor/dense)
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 	weight = 25
 
 /datum/xenoartifact_trait/minor/delay/activate(obj/item/xenoartifact/X, atom/target, atom/user, setup)
-	X.visible_message("<span class='danger'>The [X] halts and begins to hum deeply.", "The [X] halts and begins to hum deeply.</span>")
+	X.visible_message("<span class='danger'>[X] zatrzymuje się i zaczyna głęboko buczeć.", "[X] zatrzymuje się i zaczyna głęboko buczeć.</span>")
 	playsound(get_turf(X), 'sound/effects/seedling_chargeup.ogg', 50, TRUE)
 	sleep(3 SECONDS)
 
@@ -456,19 +456,19 @@
 //============
 /datum/xenoartifact_trait/minor/blink
 	label_name = "Desynced"
-	label_desc = "Desynced: The Artifact falls in & out of existence regularly."
+	label_desc = "Rozsynchronizowany: artefakt regularnie wypada z istnienia i do niego wraca."
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 	///Where your eyes don't go
 	var/obj/effect/confiscate
 
 /datum/xenoartifact_trait/minor/blink/activate(obj/item/xenoartifact/X, atom/target, atom/user, setup)
-	X.visible_message("<span class='warning'>[X] slips between dimensions!</span>")
+	X.visible_message("<span class='warning'>[X] prześlizguje się między wymiarami!</span>")
 	confiscate = new(get_turf(X))
 	X.forceMove(confiscate)
 	addtimer(CALLBACK(src, PROC_REF(comeback), X), X.charge*0.20 SECONDS)
 
 /datum/xenoartifact_trait/minor/blink/proc/comeback(obj/item/xenoartifact/X)
-	X.visible_message("<span class='warning'>[X] slips between dimensions!</span>")
+	X.visible_message("<span class='warning'>[X] prześlizguje się między wymiarami!</span>")
 	X.forceMove(get_turf(confiscate))
 	QDEL_NULL(confiscate)
 

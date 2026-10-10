@@ -51,20 +51,20 @@
 			return
 		if(!O.anchored)
 			if(cargo_holder.cargo.len < cargo_holder.cargo_capacity)
-				chassis.visible_message("[chassis] lifts [target] and starts to load it into it's cargo compartment.")
+				chassis.visible_message("[chassis] podnosi [target] i zaczyna ładować go do swojej ładowni.")
 				O.anchored = TRUE
 				if(do_after_cooldown(target))
 					cargo_holder.cargo += O
 					O.forceMove(chassis)
 					O.anchored = FALSE
-					balloon_alert(chassis.occupant, "[target] has been loaded.")
+					balloon_alert(chassis.occupant, "Załadowano [target].")
 					log_message("Loaded [O]. Cargo compartment capacity: [cargo_holder.cargo_capacity - cargo_holder.cargo.len]", LOG_MECHA)
 				else
 					O.anchored = initial(O.anchored)
 			else
-				balloon_alert(chassis.occupant, "Not enough room in cargo compartment.")
+				balloon_alert(chassis.occupant, "W ładowni nie ma dość miejsca.")
 		else
-			balloon_alert(chassis.occupant, "[target] is firmly secured!")
+			balloon_alert(chassis.occupant, "[target] jest solidnie przymocowany!")
 
 	else if(isliving(target))
 		var/mob/living/M = target
@@ -77,13 +77,13 @@
 			M.adjustOxyLoss(round(dam_force/2))
 			M.updatehealth()
 			target.visible_message("<span class='danger'>[chassis] squeezes [target]!</span>", \
-								"<span class='userdanger'>[chassis] squeezes you!</span>",\
-								"<span class='italics'>You hear something crack.</span>")
+								"<span class='userdanger'>[chassis] cię ściska!</span>",\
+								"<span class='italics'>Słyszysz, jak coś pęka.</span>")
 			log_combat(chassis.occupant, M, "attacked", "[name]", "(INTENT: [uppertext(chassis.occupant.a_intent)]) (DAMTYPE: [uppertext(damtype)])")
 		else
 			step_away(M,chassis)
-			occupant_message("You push [target] out of the way.")
-			chassis.visible_message("[chassis] pushes [target] out of the way.")
+			occupant_message("Odpychasz [target] na bok.")
+			chassis.visible_message("[chassis] odpycha [target] na bok.")
 		return 1
 
 
@@ -111,20 +111,20 @@
 		var/obj/O = target
 		if(!O.anchored)
 			if(cargo_holder.cargo.len < cargo_holder.cargo_capacity)
-				chassis.visible_message("[chassis] lifts [target] and starts to load it into it's cargo compartment.")
+				chassis.visible_message("[chassis] podnosi [target] i zaczyna ładować go do swojej ładowni.")
 				O.anchored = TRUE
 				if(do_after_cooldown(target))
 					cargo_holder.cargo += O
 					O.forceMove(chassis)
 					O.anchored = FALSE
-					balloon_alert(chassis.occupant, "[target] has been loaded.")
+					balloon_alert(chassis.occupant, "Załadowano [target].")
 					log_message("Loaded [O]. Cargo compartment capacity: [cargo_holder.cargo_capacity - cargo_holder.cargo.len]", LOG_MECHA)
 				else
 					O.anchored = initial(O.anchored)
 			else
-				balloon_alert(chassis.occupant, "Not enough room in cargo compartment.")
+				balloon_alert(chassis.occupant, "W ładowni nie ma dość miejsca.")
 		else
-			balloon_alert(chassis.occupant, "[target] is firmly secured!")
+			balloon_alert(chassis.occupant, "[target] jest solidnie przymocowany!")
 
 	else if(isliving(target))
 		var/mob/living/M = target
@@ -137,12 +137,12 @@
 					return
 				M.adjustOxyLoss(round(dam_force/2))
 				M.updatehealth()
-				target.visible_message("<span class='danger'>[chassis] destroys [target] in an unholy fury!</span>", \
-									"<span class='userdanger'>[chassis] destroys you in an unholy fury!</span>")
+				target.visible_message("<span class='danger'>[chassis] niszczy [target] w bezbożnej furii!</span>", \
+									"<span class='userdanger'>[chassis] niszczy cię w bezbożnej furii!</span>")
 				log_combat(chassis.occupant, M, "attacked", "[name]", "(INTENT: [uppertext(chassis.occupant.a_intent)]) (DAMTYPE: [uppertext(damtype)])")
 			else
-				target.visible_message("<span class='danger'>[chassis] destroys [target] in an unholy fury!</span>", \
-									"<span class='userdanger'>[chassis] destroys you in an unholy fury!</span>")
+				target.visible_message("<span class='danger'>[chassis] niszczy [target] w bezbożnej furii!</span>", \
+									"<span class='userdanger'>[chassis] niszczy cię w bezbożnej furii!</span>")
 		else if(chassis.occupant.a_intent == INTENT_DISARM)
 			if(real_clamp)
 				var/mob/living/carbon/C = target
@@ -160,16 +160,16 @@
 					limbs_gone = "[limbs_gone], [affected]"
 				if(play_sound)
 					playsound(src, get_dismember_sound(), 80, TRUE)
-					target.visible_message("<span class='danger'>[chassis] rips [target]'s arms off!</span>", \
-								   "<span class='userdanger'>[chassis] rips your arms off!</span>")
+					target.visible_message("<span class='danger'>[chassis] wyrywa [target] ręce!</span>", \
+								   "<span class='userdanger'>[chassis] wyrywa ci ręce!</span>")
 					log_combat(chassis.occupant, M, "dismembered of[limbs_gone],", "[name]", "(INTENT: [uppertext(chassis.occupant.a_intent)]) (DAMTYPE: [uppertext(damtype)])")
 			else
-				target.visible_message("<span class='danger'>[chassis] rips [target]'s arms off!</span>", \
-								   "<span class='userdanger'>[chassis] rips your arms off!</span>")
+				target.visible_message("<span class='danger'>[chassis] wyrywa [target] ręce!</span>", \
+								   "<span class='userdanger'>[chassis] wyrywa ci ręce!</span>")
 		else
 			step_away(M,chassis)
-			target.visible_message("<span class='danger'>[chassis] tosses [target] like a piece of paper!</span>", \
-								"<span class='userdanger'>[chassis] tosses you like a piece of paper!</span>")
+			target.visible_message("<span class='danger'>[chassis] rzuca [target] jak kartką papieru!</span>", \
+								"<span class='userdanger'>[chassis] rzuca tobą jak kartką papieru!</span>")
 		return 1
 
 
@@ -200,7 +200,7 @@
 	if(istype(target, ext_tank_type) && get_dist(chassis,target) <= 1)
 		var/obj/structure/reagent_dispensers/R = target
 		R.reagents.trans_to(src, 1000)
-		occupant_message("<span class='notice'>[src] has been refilled.</span>")
+		occupant_message("<span class='notice'>[src] został uzupełniony.</span>")
 		playsound(chassis, 'sound/effects/refill.ogg', 50, 1, -6)
 	else
 		if(reagents.total_volume <= 0)
@@ -295,21 +295,21 @@
 		if(1)
 			if(isspaceturf(target))
 				var/turf/open/space/S = target
-				occupant_message("Building Floor...")
+				occupant_message("Budowanie podłogi...")
 				if(do_after_cooldown(S))
 					S.PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 					playsound(S, 'sound/items/deconstruct.ogg', 50, 1)
 					chassis.spark_system.start()
 			else if(isfloorturf(target))
 				var/turf/open/floor/F = target
-				occupant_message("Building Wall...")
+				occupant_message("Budowanie ściany...")
 				if(do_after_cooldown(F))
 					F.PlaceOnTop(/turf/closed/wall)
 					playsound(F, 'sound/items/deconstruct.ogg', 50, 1)
 					chassis.spark_system.start()
 		if(2)
 			if(isfloorturf(target))
-				occupant_message("Building Airlock...")
+				occupant_message("Budowanie śluzy...")
 				if(do_after_cooldown(target))
 					chassis.spark_system.start()
 					var/obj/machinery/door/airlock/T = new /obj/machinery/door/airlock(target)
@@ -328,13 +328,13 @@
 		mode = text2num(href_list["mode"])
 		switch(mode)
 			if(0)
-				occupant_message("Switched RCD to Deconstruct.")
+				occupant_message("Przełączono RCD na rozbiórkę.")
 				energy_drain = initial(energy_drain)
 			if(1)
-				occupant_message("Switched RCD to Construct.")
+				occupant_message("Przełączono RCD na budowę.")
 				energy_drain = 2*initial(energy_drain)
 			if(2)
-				occupant_message("Switched RCD to Construct Airlock.")
+				occupant_message("Przełączono RCD na budowę śluz.")
 				energy_drain = 2*initial(energy_drain)
 	return
 
@@ -353,19 +353,19 @@
 
 /obj/item/mecha_parts/mecha_equipment/ripleyupgrade/can_attach(obj/mecha/working/ripley/M)
 	if(M.type != /obj/mecha/working/ripley)
-		to_chat(loc, "<span class='warning'>This conversion kit can only be applied to APLU MK-I models.</span>")
+		to_chat(loc, "<span class='warning'>Ten zestaw konwersji można zastosować tylko w modelach APLU MK-I.</span>")
 		return FALSE
 	if(M.cargo.len)
-		to_chat(loc, "<span class='warning'>[M]'s cargo hold must be empty before this conversion kit can be applied.</span>")
+		to_chat(loc, "<span class='warning'>Ładownia [M] musi być pusta, zanim zastosujesz ten zestaw konwersji.</span>")
 		return FALSE
 	if(!M.maint_access) //non-removable upgrade, so lets make sure the pilot or owner has their say.
-		to_chat(loc, "<span class='warning'>[M] must have maintenance protocols active in order to allow this conversion kit.</span>")
+		to_chat(loc, "<span class='warning'>Aby zastosować ten zestaw konwersji, [M] musi mieć aktywne protokoły serwisowe.</span>")
 		return FALSE
 	if(M.occupant) //We're actualy making a new mech and swapping things over, it might get weird if players are involved
-		to_chat(loc, "<span class='warning'>[M] must be unoccupied before this conversion kit can be applied.</span>")
+		to_chat(loc, "<span class='warning'>[M] musi być pusty, zanim zastosujesz ten zestaw konwersji.</span>")
 		return FALSE
 	if(!M.cell) //Turns out things break if the cell is missing
-		to_chat(loc, "<span class='warning'>The conversion process requires a cell installed.</span>")
+		to_chat(loc, "<span class='warning'>Proces konwersji wymaga zamontowanego ogniwa.</span>")
 		return FALSE
 	return TRUE
 

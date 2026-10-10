@@ -17,7 +17,7 @@
 	set category = "Guardian"
 	set desc = "Set an invisible snare that will alert you when living creatures walk over it. Max of 5"
 	if(!can_use_abilities)
-		to_chat(src, "<span class='danger'><B>You can't do that right now!</span></B>")
+		to_chat(src, "<span class='danger'><B>Nie możesz tego teraz zrobić!</span></B>")
 		return
 	if(snares.len <6)
 		var/turf/snare_loc = get_turf(src.loc)
@@ -25,19 +25,19 @@
 		S.spawner = src
 		S.name = "[get_area(snare_loc)] snare ([rand(1, 1000)])"
 		snares |= S
-		to_chat(src, "<span class='danger'><B>Surveillance snare deployed!</span></B>")
+		to_chat(src, "<span class='danger'><B>Rozstawiono sidła obserwacyjne!</span></B>")
 	else
-		to_chat(src, "<span class='danger'><B>You have too many snares deployed. Remove some first.</span></B>")
+		to_chat(src, "<span class='danger'><B>Masz rozstawionych za dużo sideł. Najpierw usuń część.</span></B>")
 
 /mob/living/simple_animal/hostile/guardian/proc/DisarmSnare()
 	set name = "Remove Surveillance Snare"
 	set category = "Guardian"
 	set desc = "Disarm unwanted surveillance snares."
-	var/picked_snare = input(src, "Pick which snare to remove", "Remove Snare") as null|anything in src.snares
+	var/picked_snare = input(src, "Wybierz sidła do usunięcia", "Usuń sidła") as null|anything in src.snares
 	if(picked_snare)
 		snares -= picked_snare
 		qdel(picked_snare)
-		to_chat(src, "<span class='danger'><B>Snare disarmed.</span></B>")
+		to_chat(src, "<span class='danger'><B>Sidła rozbrojone.</span></B>")
 
 // the snare
 
@@ -58,10 +58,10 @@
 	SIGNAL_HANDLER
 
 	if(isliving(AM) && spawner && spawner?.summoner?.current && AM != spawner && !spawner.hasmatchingsummoner(AM))
-		to_chat(spawner.summoner.current, "<span class='danger'><B>[AM] has crossed surveillance snare, [name].</span></B>")
+		to_chat(spawner.summoner.current, "<span class='danger'><B>[AM] przekroczył sidła obserwacyjne [name].</span></B>")
 		var/list/guardians = spawner.summoner.current.hasparasites()
 		for(var/para in guardians)
-			to_chat(para, "<span class='danger'><B>[AM] has crossed surveillance snare, [name].</span></B>")
+			to_chat(para, "<span class='danger'><B>[AM] przekroczył sidła obserwacyjne [name].</span></B>")
 
 /obj/effect/snare/singularity_act()
 	return

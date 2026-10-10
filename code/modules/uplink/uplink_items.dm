@@ -55,7 +55,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	for (var/i in 1 to num)
 		var/datum/uplink_item/I = pick_n_take(sale_items)
 		var/datum/uplink_item/A = new I.type
-		var/list/disclaimer = list("Void where prohibited.", "Not recommended for children.", "Contains small parts.", "Check local laws for legality in region.", "Do not taunt.", "Not responsible for direct, indirect, incidental or consequential damages resulting from any defect, error or failure to perform.", "Keep away from fire or flames.", "Product is provided \"as is\" without any implied or expressed warranties.", "As seen on TV.", "For recreational use only.", "Use only as directed.", "16% sales tax will be charged for orders originating within Space Nebraska.")
+		var/list/disclaimer = list("Nieważne tam, gdzie zabronione.", "Niezalecane dla dzieci.", "Zawiera drobne elementy.", "Sprawdź legalność w lokalnych przepisach.", "Nie drażnić.", "Nie odpowiadamy za bezpośrednie, pośrednie, przypadkowe ani wtórne szkody wynikające z jakiejkolwiek wady, błędu lub awarii.", "Trzymać z dala od ognia i płomieni.", "Produkt dostarczany „tak jak jest”, bez jakichkolwiek dorozumianych lub wyraźnych gwarancji.", "Znane z telewizji.", "Wyłącznie do użytku rekreacyjnego.", "Używać wyłącznie zgodnie z zaleceniami.", "Od zamówień z Kosmicznej Nebraski pobierany jest 16% podatek od sprzedaży.")
 		A.limited_stock = limited_stock
 		A.category = category_name
 		I.refundable = FALSE //THIS MAN USES ONE WEIRD TRICK TO GAIN FREE TC, CODERS HATES HIM!
@@ -66,9 +66,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 					//Bulk discount
 					var/count = rand(3,7)
 					var/discount = A.get_discount()
-					A.name += " (Bulk discount - [count] for [((1-discount)*100)]% off!)"
+					A.name += " (Rabat hurtowy – [count] za [((1-discount)*100)]% taniej!)"
 					A.cost = max(round(A.cost*count*discount), 1)
-					A.desc += " Normally costs [initial(A.cost)*count] TC. All sales final. [pick(disclaimer)]"
+					A.desc += " Normalnie kosztuje [initial(A.cost)*count] TC. Sprzedaż ostateczna. [pick(disclaimer)]"
 					A.spawn_amount = count
 				else
 					//X% off!
@@ -77,11 +77,11 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 						discount *= 0.5
 					A.cost = max(round(A.cost * discount), 1)
 					A.name += " ([round(((initial(A.cost)-A.cost)/initial(A.cost))*100)]% off!)"
-					A.desc += " Normally costs [initial(A.cost)] TC. All sales final. [pick(disclaimer)]"
+					A.desc += " Normalnie kosztuje [initial(A.cost)] TC. Sprzedaż ostateczna. [pick(disclaimer)]"
 			if(4)
 				//Buy 1 get 1 free!
 				A.name += " (Buy 1 get 1 free!)"
-				A.desc += " Obtain 2 for the price of 1. All sales final. [pick(disclaimer)]"
+				A.desc += " Dwa w cenie jednego. Sprzedaż ostateczna. [pick(disclaimer)]"
 				A.spawn_amount = 2
 			if(5)
 				//Get 2 items with their combined price reduced.
@@ -91,8 +91,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 				var/final_cost = max(round(total_cost * discount), 1)
 				//Setup the item
 				A.cost = final_cost
-				A.name += " + [second_I.name] (Discounted Bundle - [100-(round((final_cost / total_cost)*100))]% off!)"
-				A.desc += " Also contains [second_I.name]. Normally costs [total_cost] TC when bought together. All sales final. [pick(disclaimer)]"
+				A.name += " + [second_I.name] (pakiet promocyjny – [100-(round((final_cost / total_cost)*100))]% taniej!)"
+				A.desc += " Zawiera też [second_I.name]. Normalnie kosztuje [total_cost] TC przy zakupie razem. Sprzedaż ostateczna. [pick(disclaimer)]"
 				A.bonus_items = list(second_I.item)
 		A.discounted = TRUE
 		A.item = I.item
@@ -159,9 +159,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(H.put_in_hands(A))
-				to_chat(H, "[A] materializes into your hands!")
+				to_chat(H, "[A] materializuje się w twoich rękach!")
 				return A
-	to_chat(user, "[A] materializes onto the floor.")
+	to_chat(user, "[A] materializuje się na podłodze.")
 	return A
 
 //Discounts (dynamically filled above)
@@ -316,8 +316,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	var/index = rand(1, 20)
 	starting_crate_value = index * 5
 	if(index == 1)
-		to_chat(user, "<span class='warning'><b>Incomming transmission from the syndicate.</b></span>")
-		to_chat(user, "<span class='warning'>You feel an overwhelming sense of pride and accomplishment.</span>")
+		to_chat(user, "<span class='warning'><b>Transmisja przychodząca od Syndykatu.</b></span>")
+		to_chat(user, "<span class='warning'>Ogarnia cię przytłaczające poczucie dumy i spełnienia.</span>")
 		var/obj/item/clothing/mask/joy/funny_mask = new(get_turf(user))
 		ADD_TRAIT(funny_mask, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 		var/obj/item/I = user.get_item_by_slot(ITEM_SLOT_MASK)
@@ -326,9 +326,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 		user.equip_to_slot_if_possible(funny_mask, ITEM_SLOT_MASK)
 	else if(index == 20)
 		starting_crate_value = 200
-		print_command_report("Congratulations to [user] for being the [rand(4, 9)]th lucky winner of the syndicate lottery! \
-		Dread Admiral Sabertooth has authorised the beaming of your special equipment immediately! Happy hunting operative.",
-		"Syndicate Gambling Division High Command", TRUE)
+		print_command_report("Gratulacje dla [user], [rand(4, 9)]. szczęśliwego zwycięzcy loterii Syndykatu! Straszliwy Admirał Szablozęby zezwolił na natychmiastowe przesłanie twojego specjalnego wyposażenia! Udanych łowów, agencie.",
+		"Naczelne Dowództwo Wydziału Hazardu Syndykatu", TRUE)
 	var/obj/item/implant/weapons_auth/W = new
 	W.implant(user)	//Gives them the ability to use restricted weapons
 	. = ..()
@@ -1686,9 +1685,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 		return
 	U.failsafe_code = U.generate_code()
 	var/code = "[islist(U.failsafe_code) ? english_list(U.failsafe_code) : U.failsafe_code]"
-	to_chat(user, "<span class='warning'>The new failsafe code for this uplink is now : [code].</span>")
+	to_chat(user, "<span class='warning'>Nowy kod awaryjny tego uplinka to: [code].</span>")
 	if(user.mind)
-		user.mind.store_memory("Failsafe code for [U.parent] : [code]")
+		user.mind.store_memory("Kod awaryjny dla [U.parent]: [code]")
 	return U.parent //For log icon
 
 /datum/uplink_item/device_tools/toolbox

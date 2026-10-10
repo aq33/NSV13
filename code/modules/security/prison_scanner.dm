@@ -17,41 +17,41 @@
 /obj/item/prison_scanner/examine(mob/user)
 	. = ..()
 	if(linked_id)
-		. += "<span class='notice'>[src] is currently linked with [linked_id]'s ID card</span>."
+		. += "<span class='notice'>[src] jest obecnie połączony z kartą ID [linked_id]</span>."
 	if(!linked_id)
-		. += "<span class='notice'>[src] is currently unlinked</span>."
+		. += "<span class='notice'>[src] jest obecnie niepołączony</span>."
 
 /obj/item/prison_scanner/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/card/id/prisoner))
 		var/obj/item/card/id/prisoner/C = I
 		if(!linked_id)
 			linked_id = C.registered_name
-			to_chat(user, "<span class='notice'>Scanner linked to [C.registered_name] succesfully!</span>")
+			to_chat(user, "<span class='notice'>Skaner połączony z [C.registered_name]!</span>")
 		if(linked_id != C.registered_name)
-			to_chat(user, "<span class='warning'>The scanner is already linked to [linked_id]'s ID!</span>")
+			to_chat(user, "<span class='warning'>Skaner jest już połączony z ID [linked_id]!</span>")
 		else if(length(redeemable))
 			C.served_time += (15 * redeemable.len)
 			redeemable.Cut()
 			if(C.served_time >= C.sentence)
-				to_chat(user, "<span class='notice>You have already served your time, no time could be deducted from your non-existant sentence!</span>")
+				to_chat(user, "<span class='notice>Już odbyłeś karę, nie można odjąć czasu z nieistniejącego wyroku!</span>")
 			else
-				to_chat(user, "<span class='notice'>Items redeemed! You now have [DisplayTimeText((C.sentence - C.served_time)*10, 1)] left to serve!</span>")
+				to_chat(user, "<span class='notice'>Przedmioty wymienione! Pozostało ci do odbycia: [DisplayTimeText((C.sentence - C.served_time)*10, 1)]!</span>")
 			linked_id = null
 		else
-			to_chat(user, "<span class='warning'> No items to redeem!</span>")
+			to_chat(user, "<span class='warning'> Brak przedmiotów do wymiany!</span>")
 	else
 		. = ..()
 
 /obj/item/prison_scanner/afterattack(obj/O, mob/user, proximity)
 	. = ..()
 	if(!linked_id)
-		to_chat(user, "<span class='warning'>No linked account!</span>")
+		to_chat(user, "<span class='warning'>Brak połączonego konta!</span>")
 	else if(!istype(O, /obj/item/food/donut) && !istype(O, /obj/item/toy/plush))
-		to_chat(user, "<span class='warning'>Invalid item! Only scan donuts or plushes made in the workshop!</span>")
+		to_chat(user, "<span class='warning'>Nieprawidłowy przedmiot! Skanuj tylko pączki lub pluszaki zrobione w warsztacie!</span>")
 	else
 		if(O.obj_flags & SCANNED)
-			to_chat(user, "<span class='warning'>The [O.name] has been scanned already!</span>")
+			to_chat(user, "<span class='warning'>[O.name] został już zeskanowany!</span>")
 		else
 			redeemable += O
 			O.obj_flags |= SCANNED
-			to_chat(user, "<span class='notice'>The [O.name] has been scanned succesfully! Swipe your id card on the scanner once you want to redeem your earned time.</span>")
+			to_chat(user, "<span class='notice'>[O.name] zeskanowano! Przeciągnij kartę ID przez skaner, gdy zechcesz wymienić zarobiony czas.</span>")
