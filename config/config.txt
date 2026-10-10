@@ -468,10 +468,10 @@ CLIENT_WARN_VERSION 0
 CLIENT_WARN_MESSAGE Currently Unused! If you see this message yell at Francinum!
 
 #Error, Blocks non-admin connection.
-CLIENT_ERROR_VERSION 515
+CLIENT_ERROR_VERSION 516
 CLIENT_ERROR_MESSAGE Your version of byond is not supported. Please upgrade.
 ## The minimum build needed for joining the server
-CLIENT_ERROR_BUILD 1590
+CLIENT_ERROR_BUILD 1666
 ## The maximum build recommended for clients
 CLIENT_MAX_BUILD 1700
 CLIENT_MAX_VERSION 516

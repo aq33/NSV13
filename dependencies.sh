@@ -4,12 +4,8 @@
 #Final authority on what's required to fully build the project
 
 # byond version
-export BYOND_MAJOR=515
-export BYOND_MINOR=1633
-
-# byond version for the 516 compile check in CI (install_byond.sh with BYOND_USE_516=1)
-export BYOND_516_MAJOR=516
-export BYOND_516_MINOR=1688
+export BYOND_MAJOR=516
+export BYOND_MINOR=1688
 
 #rust version
 export RUST_VERSION=1.70

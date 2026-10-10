@@ -57,36 +57,16 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/BYOND
-          key: ${{ runner.os }}-byond-cache-${{ hashFiles('Dockerfile') }}
+          key: ${{ runner.os }}-byond-cache-${{ hashFiles('dependencies.sh') }}
       - name: Install BYOND
         if: steps.cache-byond.outputs.cache-hit != 'true'
         run: bash tools/ci/install_byond.sh
-      - name: Compile All Maps
-        run: |
-          source $HOME/BYOND/byond/bin/byondsetup
-          python3 tools/ci/template_dm_generator.py
-          tools/build/build --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
-  compile_516:
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup cache
-        id: cache-byond-516
-        uses: actions/cache@v3
-        with:
-          path: ~/BYOND
-          key: ${{ runner.os }}-byond-516-cache-${{ hashFiles('dependencies.sh') }}
-      - name: Install BYOND 516
-        if: steps.cache-byond-516.outputs.cache-hit != 'true'
-        run: bash tools/ci/install_byond.sh
-        env:
-          BYOND_USE_516: 1
       - name: Install libcurl (needed by BYOND 516.1664+ on Linux)
         run: |
           sudo dpkg --add-architecture i386
           sudo apt-get update -qq || true
           sudo apt-get install -y --no-install-recommends libcurl4:i386
-      - name: Compile All Maps on 516
+      - name: Compile All Maps
         run: |
           source $HOME/BYOND/byond/bin/byondsetup
           python3 tools/ci/template_dm_generator.py
@@ -108,7 +88,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/BYOND
-          key: ${{ runner.os }}-byond-cache-${{ hashFiles('Dockerfile') }}
+          key: ${{ runner.os }}-byond-cache-${{ hashFiles('dependencies.sh') }}
       - name: Install BYOND
         if: steps.cache-byond.outputs.cache-hit != 'true'
         run: bash tools/ci/install_byond.sh
@@ -121,7 +101,7 @@ jobs:
         run: |
           sudo dpkg --add-architecture i386
           sudo apt update || true
-          sudo apt install libssl3:i386
+          sudo apt install libssl3:i386 libcurl4:i386
           bash tools/ci/install_rust_g.sh
       - name: Install auxmos
         run: |
