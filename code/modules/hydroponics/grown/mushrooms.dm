@@ -296,7 +296,7 @@
 	desc = "<I>Mycena Ruthenia</I>: This species of mushroom glows in the dark, but isn't actually bioluminescent. They're warm to the touch..."
 	icon_state = "glowcap"
 	effect_path = /obj/structure/glowshroom/glowcap
-	tastes = list("glowcap" = 1)
+	tastes = list("świecący kapelusz" = 1)
 	discovery_points = 300
 
 //Shadowshroom
@@ -318,7 +318,7 @@
 	desc = "<I>Mycena Umbra</I>: This species of mushroom emits shadow instead of light."
 	icon_state = "shadowshroom"
 	effect_path = /obj/structure/glowshroom/shadowshroom
-	tastes = list("shadow" = 1, "mushroom" = 1)
+	tastes = list("cień" = 1, "grzyb" = 1)
 	wine_power = 60
 	discovery_points = 300
 

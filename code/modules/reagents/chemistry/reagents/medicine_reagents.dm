@@ -8,7 +8,7 @@
 /datum/reagent/medicine
 	name = "Medicine"
 	chem_flags = CHEMICAL_NOT_DEFINED
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 
 /datum/reagent/medicine/on_mob_life(mob/living/carbon/M)
 	current_cycle++
@@ -42,7 +42,7 @@
 	description = "To magia. Nie musimy tego tłumaczyć."
 	color = "#E0BB00" //golden for the gods
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
-	taste_description = "badmins"
+	taste_description = "badmini"
 
 /datum/reagent/medicine/adminordrazine/on_mob_life(mob/living/carbon/M)
 	M.reagents.remove_all_type(/datum/reagent/toxin, 5*REM, 0, 1)
@@ -87,7 +87,7 @@
 /datum/reagent/medicine/adminordrazine/quantum_heal
 	name = "Quantum Medicine"
 	description = "Rzadkie i eksperymentalne cząstki, które podobno zamieniają ciało użytkownika na ciało z alternatywnego wymiaru, w którym jest całkowicie zdrowe."
-	taste_description = "science"
+	taste_description = "nauka"
 
 /datum/reagent/medicine/synaptizine
 	name = "Synaptizine"
@@ -143,7 +143,7 @@
 	description = "Mieszanka chemiczna o niemal magicznych właściwościach leczniczych. Jej głównym ograniczeniem jest to, że temperatura ciała pacjenta musi być poniżej 270 K, by prawidłowo się metabolizowała."
 	color = "#0000C8"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
-	taste_description = "blue"
+	taste_description = "kolor niebieski"
 
 /datum/reagent/medicine/cryoxadone/on_mob_life(mob/living/carbon/M)
 	var/power = -0.00003 * (M.bodytemperature ** 2) + 3
@@ -163,7 +163,7 @@
 	description = "Substancja pochodna kriooksadonu. Specjalizuje się w leczeniu uszkodzeń genetycznych, ale niczego więcej. Wymaga bardzo niskich temperatur, by się prawidłowo metabolizować, i metabolizuje się szybciej niż kriooksadon."
 	color = "#3D3DC6"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
-	taste_description = "muscle"
+	taste_description = "mięśnie"
 	metabolization_rate = 1.5 * REAGENTS_METABOLISM
 
 /datum/reagent/medicine/clonexadone/on_mob_life(mob/living/carbon/M)
@@ -213,7 +213,7 @@
 	color = "#669900" // rgb: 102, 153, 0
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
 	overdose_threshold = 30
-	taste_description = "fish"
+	taste_description = "ryba"
 
 /datum/reagent/medicine/rezadone/on_mob_life(mob/living/carbon/M)
 	M.setCloneLoss(0) //Rezadone is almost never used in favor of cryoxadone. Hopefully this will change that.
@@ -461,7 +461,7 @@
 	color = "#000000"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST
 	metabolization_rate = REAGENTS_METABOLISM
-	taste_description = "ash"
+	taste_description = "popiół"
 	process_flags = ORGANIC
 
 /datum/reagent/medicine/charcoal/on_mob_life(mob/living/carbon/M)
@@ -494,7 +494,7 @@
 	description = "Naprawia uszkodzenia mózgu u syntetyków."
 	color = "#727272"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "metallic"
+	taste_description = "metal"
 	process_flags = SYNTHETIC
 
 /datum/reagent/medicine/liquid_solder/on_mob_life(mob/living/M)
@@ -540,7 +540,7 @@
 	color = "#19C832"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
-	taste_description = "acid"
+	taste_description = "kwas"
 
 /datum/reagent/medicine/calomel/on_mob_life(mob/living/carbon/M)
 	for(var/datum/reagent/R in M.reagents.reagent_list)
@@ -932,7 +932,7 @@
 	color = "#A0E85E"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
-	taste_description = "magnets"
+	taste_description = "magnesy"
 
 /datum/reagent/medicine/strange_reagent/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if(M.stat == DEAD)
@@ -1004,7 +1004,7 @@
 	description = "Usuwa drżenie i naprawia wady genetyczne."
 	color = "#5096C8"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "acid"
+	taste_description = "kwas"
 
 /datum/reagent/medicine/mutadone/on_mob_life(mob/living/carbon/M)
 	M.jitteriness = 0
@@ -1285,7 +1285,7 @@
 /datum/reagent/medicine/hepanephrodaxon
 	name = "Hepanephrodaxon"
 	description = "Służy do naprawy zwykłych tkanek biorących udział w filtracji."
-	taste_description = "glue"
+	taste_description = "klej"
 	reagent_state = LIQUID
 	color = "#D2691E"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
@@ -1327,7 +1327,7 @@
 	color = "#707A00" //tricord's component chems mixed together, olive.
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG
 	overdose_threshold = 30
-	taste_description = "grossness"
+	taste_description = "obrzydliwość"
 
 /datum/reagent/medicine/tricordrazine/on_mob_life(mob/living/carbon/M)
 	if(prob(80))
@@ -1350,7 +1350,7 @@
 	reagent_state = LIQUID
 	color = "#CC23FF"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "jelly"
+	taste_description = "galaretka"
 
 /datum/reagent/medicine/regen_jelly/on_mob_life(mob/living/carbon/M)
 	M.adjustBruteLoss(-1.5*REM, 0)
@@ -1366,7 +1366,7 @@
 	reagent_state = LIQUID
 	color = "#65d891"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "jelly"
+	taste_description = "galaretka"
 
 /datum/reagent/medicine/regen_ooze/on_mob_life(mob/living/carbon/M)
 	M.adjustBruteLoss(-0.5*REM, 0)
@@ -1555,7 +1555,7 @@
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
 	overdose_threshold = 20 // with the random effects this might be awesome or might kill you at less than 10u (extensively tested)
-	taste_description = "salt" // it actually does taste salty
+	taste_description = "sól" // it actually does taste salty
 	var/overdose_progress = 0 // to track overdose progress
 
 /datum/reagent/medicine/modafinil/on_mob_metabolize(mob/living/M)

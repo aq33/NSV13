@@ -11,7 +11,7 @@
 		/datum/reagent/consumable/cocoa = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("chocolate" = 4, "sweetness" = 1)
+	tastes = list("czekolada" = 4, "słodycz" = 1)
 	foodtypes = JUNKFOOD | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -118,7 +118,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
 	bite_consumption = 1
-	tastes = list("egg" = 4, "salt" = 1, "pepper" = 1)
+	tastes = list("jajko" = 4, "sól" = 1, "pieprz" = 1)
 	foodtypes = MEAT | FRIED | BREAKFAST
 	crafting_complexity = FOOD_COMPLEXITY_1
 
@@ -131,7 +131,7 @@
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("egg" = 1)
+	tastes = list("jajko" = 1)
 	foodtypes = MEAT | BREAKFAST
 	food_flags = FOOD_FINGER_FOOD // pretty sure I've seen people pop these in their mouths... right?
 	w_class = WEIGHT_CLASS_SMALL
@@ -141,7 +141,7 @@
 
 /obj/item/food/boiledegg/rotten
 	food_reagents = list(/datum/reagent/consumable/eggrot = 10)
-	tastes = list("rotten egg" = 1)
+	tastes = list("zgniłe jajko" = 1)
 	foodtypes = GROSS
 	preserved_food = TRUE
 
@@ -156,7 +156,7 @@
 	)
 	bite_consumption = 1
 	w_class = WEIGHT_CLASS_SMALL
-	tastes = list("egg" = 1, "cheese" = 1)
+	tastes = list("jajko" = 1, "ser" = 1)
 	foodtypes = MEAT | BREAKFAST | DAIRY //yeah, I say this just about reaches the threshold of dairy foodgroup
 	crafting_complexity = FOOD_COMPLEXITY_2
 	crafted_food_buff = /datum/status_effect/food/speech/french
@@ -190,7 +190,7 @@
 		/datum/reagent/consumable/nutriment = 3
 	)
 	w_class = WEIGHT_CLASS_SMALL
-	tastes = list("egg" = 1, "bacon" = 1, "bun" = 1)
+	tastes = list("jajko" = 1, "bekon" = 1, "bułka" = 1)
 	foodtypes = MEAT | BREAKFAST | GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -204,7 +204,7 @@
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 3
 	)
-	tastes = list("egg" = 1)
+	tastes = list("jajko" = 1)
 	foodtypes = MEAT | VEGETABLES
 	w_class = WEIGHT_CLASS_TINY
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -219,6 +219,6 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("custard" = 1)
+	tastes = list("budyń" = 1)
 	foodtypes = MEAT | VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_3

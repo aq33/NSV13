@@ -119,7 +119,7 @@
 	name = "Fat"
 	description = "Triglicerydy występujące w olejach roślinnych i tłuszczu zwierzęcym."
 	color = "#f0eed7"
-	taste_description = "lard"
+	taste_description = "smalec"
 	brute_heal = 0
 	burn_heal = 1
 	nutriment_factor = 18 // Twice as nutritious compared to protein and carbohydrates
@@ -178,7 +178,7 @@
 	description = "Rodzaj oleju spożywczego z tłuszczów roślinnych. Używany do przygotowywania i smażenia potraw."
 	color = "#EADD6B" //RGB: 234, 221, 107 (based off of canola oil)
 	taste_mult = 0.8
-	taste_description = "oil"
+	taste_description = "olej"
 	nutriment_factor = 7 //Not very healthy on its own
 	metabolization_rate = 10 * REAGENTS_METABOLISM
 
@@ -199,7 +199,7 @@
 	nutriment_factor = 10 * REAGENTS_METABOLISM
 	metabolization_rate = 2 * REAGENTS_METABOLISM
 	overdose_threshold = 100 // Hyperglycaemic shock
-	taste_description = "sweetness"
+	taste_description = "słodycz"
 
 /datum/reagent/consumable/sugar/overdose_start(mob/living/M)
 	to_chat(M, "<span class='userdanger'>Wpadasz we wstrząs hiperglikemiczny! Odpuść sobie te ciastka!</span>")
@@ -241,7 +241,7 @@
 	nutriment_factor = 5 * REAGENTS_METABOLISM
 	color = "#731008" // rgb: 115, 16, 8
 	chem_flags = CHEMICAL_RNG_BOTANY
-	taste_description = "ketchup"
+	taste_description = "keczup"
 
 
 /datum/reagent/consumable/capsaicin
@@ -281,7 +281,7 @@
 	description = "Specjalny olej, który wyraźnie schładza ciało. Pozyskiwany z lodowych papryczek i szlamów."
 	color = "#8BA6E9" // rgb: 139, 166, 233
 	chem_flags = CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "mint"
+	taste_description = "mięta"
 
 /datum/reagent/consumable/frostoil/on_mob_life(mob/living/carbon/M)
 	var/cooling = 0
@@ -358,7 +358,7 @@
 	reagent_state = SOLID
 	color = "#FFFFFF" // rgb: 255,255,255
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "salt"
+	taste_description = "sól"
 
 /datum/reagent/consumable/sodiumchloride/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if(!istype(M))
@@ -379,7 +379,7 @@
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	reagent_state = SOLID
 	// no color (ie, black)
-	taste_description = "pepper"
+	taste_description = "pieprz"
 
 /datum/reagent/consumable/cocoa
 	name = "Cocoa Powder"
@@ -388,7 +388,7 @@
 	nutriment_factor = 5 * REAGENTS_METABOLISM
 	color = "#302000" // rgb: 48, 32, 0
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 
 /datum/reagent/consumable/cocoa/on_mob_add(mob/living/carbon/M)
 	.=..()
@@ -420,7 +420,7 @@
 	color = "#E700E7" // rgb: 231, 0, 231
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
 	metabolization_rate = 0.2 * REAGENTS_METABOLISM
-	taste_description = "mushroom"
+	taste_description = "grzyb"
 
 /datum/reagent/drug/mushroomhallucinogen/on_mob_life(mob/living/carbon/M)
 	if(!M.slurring)
@@ -450,7 +450,7 @@
 	description = "Zgnieciony czosnek. Kucharze go uwielbiają, ale przez niego można brzydko pachnieć."
 	color = "#FEFEFE"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "garlic"
+	taste_description = "czosnek"
 	metabolization_rate = 0.15 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/garlic/on_mob_life(mob/living/carbon/M)
@@ -487,7 +487,7 @@
 	description = "Uniwersalny enzym używany do przygotowywania niektórych substancji i potraw."
 	color = "#365E30" // rgb: 54, 94, 48
 	chem_flags = NONE
-	taste_description = "sweetness"
+	taste_description = "słodycz"
 
 /datum/reagent/consumable/dry_ramen
 	name = "Dry Ramen"
@@ -541,7 +541,7 @@
 	description = "Absolutnie najlepsze. Do smarowania wyłącznie potraw o doskonałej symetrii bocznej."
 	color = "#801E28" // rgb: 128, 30, 40
 	chem_flags = NONE
-	taste_description = "cherry"
+	taste_description = "wiśnia"
 
 /datum/reagent/consumable/bluecherryjelly
 	name = "Blue Cherry Jelly"
@@ -557,7 +557,7 @@
 	nutriment_factor = 3 * REAGENTS_METABOLISM
 	color = "#FFFFFF" // rgb: 0, 0, 0
 	chem_flags = NONE
-	taste_description = "rice"
+	taste_description = "ryż"
 
 /datum/reagent/consumable/vanilla
 	name = "Vanilla Powder"
@@ -566,7 +566,7 @@
 	nutriment_factor = 5 * REAGENTS_METABOLISM
 	color = "#FFFACD"
 	chem_flags = CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "vanilla"
+	taste_description = "wanilia"
 
 /datum/reagent/consumable/eggyolk
 	name = "Egg Yolk"
@@ -574,14 +574,14 @@
 	nutriment_factor = 3 * REAGENTS_METABOLISM
 	color = "#FFB500"
 	chem_flags = NONE
-	taste_description = "egg"
+	taste_description = "jajko"
 
 /datum/reagent/consumable/corn_starch
 	name = "Corn Starch"
 	description = "Śliski roztwór."
 	color = "#DBCE95"
 	chem_flags = NONE
-	taste_description = "slime"
+	taste_description = "szlam"
 
 /datum/reagent/consumable/corn_syrup
 	name = "Corn Syrup"
@@ -601,7 +601,7 @@
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	nutriment_factor = 15 * REAGENTS_METABOLISM
 	metabolization_rate = 1 * REAGENTS_METABOLISM
-	taste_description = "sweetness"
+	taste_description = "słodycz"
 	var/power = 0
 
 /datum/reagent/consumable/honey/on_mob_life(mob/living/carbon/M)
@@ -632,7 +632,7 @@
 	description = "Biała, oleista mieszanka żółtek jaj."
 	color = "#DFDFDF"
 	chem_flags = NONE
-	taste_description = "mayonnaise"
+	taste_description = "majonez"
 
 /datum/reagent/consumable/mold // yeah, ok, togopal, I guess you could call that a condiment
 	name = "Mold"
@@ -653,7 +653,7 @@
 	description = "Oślepiająca substancja pozyskiwana z niektórych cebul."
 	color = "#c0c9a0"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 
 /datum/reagent/consumable/tearjuice/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if(!istype(M))
@@ -820,7 +820,7 @@
 	color = "#FFFFFF" // rgb: 255, 255, 255
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	taste_mult = 8
-	taste_description = "sweetness"
+	taste_description = "słodycz"
 	overdose_threshold = 17
 
 /datum/reagent/consumable/astrotame/overdose_process(mob/living/carbon/M)
@@ -843,25 +843,25 @@
 	name = "mesophilic culture"
 	description = "Mieszanka bakterii mezofilnych używana do produkcji większości serów."
 	color = "#365E30" // rgb: 54, 94, 48
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 
 /datum/reagent/consumable/thermophilicculture
 	name = "thermophilic culture"
 	description = "Mieszanka bakterii termofilnych używana do produkcji niektórych serów."
 	color = "#365E30" // rgb: 54, 94, 48
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 
 /datum/reagent/consumable/penicilliumcandidum
 	name = "penicillium candidum"
 	description = "Specjalna bakteria używana do produkcji brie."
 	color = "#365E30" // rgb: 54, 94, 48
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 
 /datum/reagent/consumable/penicilliumroqueforti
 	name = "penicillium roqueforti"
 	description = "Specjalna bakteria używana do produkcji sera pleśniowego."
 	color = "#365E30" // rgb: 54, 94, 48
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 
 /datum/reagent/consumable/parmesan_delight
 	name = "Parmesan Delight"
@@ -895,7 +895,7 @@
 	color = "#C8C8C8"
 	chem_flags = NONE
 	taste_mult = 6
-	taste_description = "smoke"
+	taste_description = "dym"
 	overdose_threshold = 25
 
 /datum/reagent/consumable/char/overdose_process(mob/living/carbon/M)

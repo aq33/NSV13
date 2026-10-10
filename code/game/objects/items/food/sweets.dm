@@ -7,7 +7,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/sugar = 2
 	)
-	tastes = list("candy corn" = 1)
+	tastes = list("cukierki kukurydziane" = 1)
 	foodtypes = JUNKFOOD | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -18,7 +18,7 @@
 	desc = "If this candy corn were any harder Security would confiscate it for being a potential shiv."
 	force = 1 // the description isn't lying
 	throwforce = 1 // if someone manages to bust out of jail with candy corn god bless them
-	tastes = list("bitter wax" = 1)
+	tastes = list("gorzki wosk" = 1)
 	foodtypes = JUNKFOOD | GROSS
 
 /obj/item/food/candiedapple
@@ -31,7 +31,7 @@
 		/datum/reagent/consumable/sugar = 3,
 		/datum/reagent/consumable/caramel = 5,
 	)
-	tastes = list("apple" = 2, "caramel" = 3)
+	tastes = list("jabłko" = 2, "karmel" = 3)
 	foodtypes = JUNKFOOD | FRUIT | SUGAR
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -56,7 +56,7 @@
 		/datum/reagent/consumable/sugar = 5,
 		/datum/reagent/ants = 3,
 	)
-	tastes = list("candy" = 1, "insects" = 1)
+	tastes = list("cukierki" = 1, "owady" = 1)
 	foodtypes = JUNKFOOD | SUGAR | BUGS
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -71,7 +71,7 @@
 		/datum/reagent/consumable/sugar = 2,
 		/datum/reagent/consumable/cocoa = 2,
 	)
-	tastes = list("chocolate" = 1)
+	tastes = list("czekolada" = 1)
 	foodtypes = JUNKFOOD | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -86,7 +86,7 @@
 		/datum/reagent/consumable/cocoa = 1,
 		/datum/reagent/consumable/sugar = 1,
 	)
-	tastes = list("chocolate" = 1)
+	tastes = list("czekolada" = 1)
 	foodtypes = JUNKFOOD | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -102,7 +102,7 @@
 		/datum/reagent/consumable/sugar = 1,
 	)
 	trash_type = /obj/item/dice/fudge
-	tastes = list("fudge" = 1)
+	tastes = list("krówki" = 1)
 	foodtypes = JUNKFOOD | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -116,7 +116,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/sugar = 1,
 	)
-	tastes = list("chocolate" = 3, "oranges" = 1)
+	tastes = list("czekolada" = 3, "pomarańcze" = 1)
 	foodtypes = JUNKFOOD | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -131,7 +131,7 @@
 		/datum/reagent/consumable/sugar = 1,
 		/datum/reagent/consumable/cocoa = 1,
 	)
-	tastes = list("chocolate" = 1)
+	tastes = list("czekolada" = 1)
 	foodtypes = DAIRY | JUNKFOOD | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -151,7 +151,7 @@
 		/datum/reagent/medicine/bicaridine = 2,
 		/datum/reagent/medicine/kelotane = 2
 	)	//Kek
-	tastes = list("candy")
+	tastes = list("cukierki")
 	foodtypes = JUNKFOOD
 	food_flags = FOOD_FINGER_FOOD
 	slot_flags = ITEM_SLOT_MASK
@@ -190,7 +190,7 @@
 		/datum/reagent/consumable/sugar = 5,
 		/datum/reagent/medicine/omnizine = 2
 	)
-	tastes = list("candy" = 1)
+	tastes = list("cukierki" = 1)
 	foodtypes = JUNKFOOD | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	slot_flags = ITEM_SLOT_MASK
@@ -293,7 +293,7 @@
 		/datum/reagent/consumable/sugar = 5,
 		/datum/reagent/medicine/omnizine = 2,
 	) //lollipop, but vitamins = toxins
-	tastes = list("cobwebs" = 1, "sugar" = 2)
+	tastes = list("pajęczyny" = 1, "cukier" = 2)
 	foodtypes = JUNKFOOD | SUGAR | BUGS
 	food_flags = FOOD_FINGER_FOOD
 	slot_flags = ITEM_SLOT_MASK
@@ -309,7 +309,7 @@
 		/datum/reagent/consumable/sugar = 5,
 		/datum/reagent/medicine/omnizine = 2
 	)
-	tastes = list("dreams of California beaches" = 1, "adamantine" = 2)
+	tastes = list("marzenia o plażach Kalifornii" = 1, "adamant" = 2)
 	foodtypes = JUNKFOOD | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	crafting_complexity = FOOD_COMPLEXITY_1

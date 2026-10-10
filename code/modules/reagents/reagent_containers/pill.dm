@@ -35,19 +35,19 @@
 		if(/datum/surgery/dental_implant in C.surgeries)
 			return
 	if(M == user)
-		M.visible_message("<span class='notice'>[user] attempts to [apply_method] [src].</span>")
+		M.visible_message("<span class='notice'>[user] próbuje [apply_method == "apply" ? "nakleić sobie" : "połknąć"] [src].</span>")
 		if(self_delay)
 			if(!do_mob(user, M, self_delay))
 				return FALSE
-		to_chat(M, "<span class='notice'>You [apply_method] [src].</span>")
+		to_chat(M, "<span class='notice'>[apply_method == "apply" ? "Naklejasz sobie" : "Połykasz"] [src].</span>")
 
 	else
-		M.visible_message("<span class='danger'>[user] attempts to force [M] to [apply_method] [src].</span>", \
-							"<span class='userdanger'>[user] attempts to force you to [apply_method] [src].</span>")
+		M.visible_message("<span class='danger'>[user] próbuje [apply_method == "apply" ? "nakleić [M]" : "zmusić [M] do połknięcia"] [src]!</span>", \
+							"<span class='userdanger'>[user] próbuje [apply_method == "apply" ? "nakleić ci" : "zmusić cię do połknięcia"] [src]!</span>")
 		if(!do_mob(user, M))
 			return FALSE
-		M.visible_message("<span class='danger'>[user] forces [M] to [apply_method] [src].</span>", \
-							"<span class='userdanger'>[user] forces you to [apply_method] [src].</span>")
+		M.visible_message("<span class='danger'>[user] [apply_method == "apply" ? "nakleja [M]" : "zmusza [M] do połknięcia"] [src]!</span>", \
+							"<span class='userdanger'>[user] [apply_method == "apply" ? "nakleja ci" : "zmusza cię do połknięcia"] [src]!</span>")
 
 	var/makes_me_think = pick(strings(REDPILL_FILE, "redpill_questions"))
 	if(icon_state == "pill_shape_capsule_bloodred" && prob(5)) //you take the red pill - you stay in Wonderland, and I show you how deep the rabbit hole goes

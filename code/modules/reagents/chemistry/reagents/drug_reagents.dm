@@ -2,7 +2,7 @@
 	name = "Drug"
 	chem_flags = CHEMICAL_NOT_DEFINED
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 	var/trippy = TRUE //Does this drug make you trip?
 
 /datum/reagent/drug/on_mob_end_metabolize(mob/living/M)
@@ -42,7 +42,7 @@
 	color = "#60A584" // rgb: 96, 165, 132
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST | CHEMICAL_GOAL_BARTENDER_SERVING
 	addiction_threshold = 10
-	taste_description = "smoke"
+	taste_description = "dym"
 	trippy = FALSE
 	overdose_threshold=15
 	metabolization_rate = 0.125 * REAGENTS_METABOLISM
@@ -285,7 +285,7 @@
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM | CHEMICAL_GOAL_BOTANIST_HARVEST
 	overdose_threshold = 20
 	addiction_threshold = 10
-	taste_description = "salt" // because they're bathsalts?
+	taste_description = "sól" // because they're bathsalts?
 	var/datum/martial_art/psychotic_brawling/brawling
 
 /datum/reagent/drug/bath_salts/on_mob_metabolize(mob/living/L)

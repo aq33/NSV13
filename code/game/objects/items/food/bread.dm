@@ -4,7 +4,7 @@
 	desc = "This shouldn't exist, report to codermonkeys"
 	icon = 'icons/obj/food/burgerbread.dmi'
 	max_volume = 80
-	tastes = list("bread" = 10)
+	tastes = list("chleb" = 10)
 	foodtypes = GRAIN
 	eat_time = 3 SECONDS
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -44,7 +44,7 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 10
 	)
-	tastes = list("bread" = 10)
+	tastes = list("chleb" = 10)
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	slice_type = /obj/item/food/breadslice/plain
@@ -77,7 +77,7 @@
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/mold = 10,
 	)
-	tastes = list("decaying fungus" = 1)
+	tastes = list("gnijący grzyb" = 1)
 	foodtypes = GROSS
 	preserved_food = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -95,7 +95,7 @@
 		/datum/reagent/consumable/nutriment = 20,
 		/datum/reagent/consumable/nutriment/vitamin = 10
 	)
-	tastes = list("bread" = 10, "meat" = 10)
+	tastes = list("chleb" = 10, "mięso" = 10)
 	foodtypes = GRAIN | MEAT
 	slice_type = /obj/item/food/breadslice/meat
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -108,7 +108,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 2
 	)
-	tastes = list("bread" = 1, "meat" = 1)
+	tastes = list("chleb" = 1, "mięso" = 1)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -120,7 +120,7 @@
 		/datum/reagent/consumable/nutriment = 20,
 		/datum/reagent/consumable/nutriment/vitamin = 10
 	)
-	tastes = list("bread" = 10, "acid" = 10)
+	tastes = list("chleb" = 10, "kwas" = 10)
 	foodtypes = GRAIN | MEAT
 	slice_type = /obj/item/food/breadslice/xenomeat
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -133,7 +133,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 2
 	)
-	tastes = list("bread" = 10, "acid" = 10)
+	tastes = list("chleb" = 10, "kwas" = 10)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -146,7 +146,7 @@
 		/datum/reagent/toxin = 15,
 		/datum/reagent/consumable/nutriment/vitamin = 10
 	)
-	tastes = list("bread" = 10, "cobwebs" = 5)
+	tastes = list("chleb" = 10, "pajęczyny" = 5)
 	foodtypes = GRAIN | MEAT | TOXIC
 	slice_type = /obj/item/food/breadslice/spidermeat
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -160,7 +160,7 @@
 		/datum/reagent/toxin = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("bread" = 10, "cobwebs" = 5)
+	tastes = list("chleb" = 10, "pajęczyny" = 5)
 	foodtypes = GRAIN | MEAT | TOXIC
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -172,7 +172,7 @@
 		/datum/reagent/consumable/nutriment = 20,
 		/datum/reagent/consumable/banana = 20
 	)
-	tastes = list("bread" = 10) // bananjuice will also flavour
+	tastes = list("chleb" = 10) // bananjuice will also flavour
 	foodtypes = GRAIN | FRUIT
 	slice_type = /obj/item/food/breadslice/banana
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -185,7 +185,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/banana = 4
 	)
-	tastes = list("bread" = 10)
+	tastes = list("chleb" = 10)
 	foodtypes = GRAIN | FRUIT
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -197,7 +197,7 @@
 		/datum/reagent/consumable/nutriment = 20,
 		/datum/reagent/consumable/nutriment/vitamin = 10
 	)
-	tastes = list("bread" = 10, "tofu" = 10)
+	tastes = list("chleb" = 10, "tofu" = 10)
 	foodtypes = GRAIN | VEGETABLES
 	slice_type = /obj/item/food/breadslice/tofu
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -210,7 +210,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 2
 	)
-	tastes = list("bread" = 10, "tofu" = 10)
+	tastes = list("chleb" = 10, "tofu" = 10)
 	foodtypes = GRAIN | VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -222,7 +222,7 @@
 		/datum/reagent/consumable/nutriment = 20,
 		/datum/reagent/consumable/nutriment/vitamin = 10
 	)
-	tastes = list("bread" = 10, "cheese" = 10)
+	tastes = list("chleb" = 10, "ser" = 10)
 	foodtypes = GRAIN | DAIRY
 	slice_type = /obj/item/food/breadslice/creamcheese
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -235,7 +235,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 2
 	)
-	tastes = list("bread" = 10, "cheese" = 10)
+	tastes = list("chleb" = 10, "ser" = 10)
 	foodtypes = GRAIN | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -249,7 +249,7 @@
 		/datum/reagent/consumable/nothing = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 10
 	)
-	tastes = list("bread" = 10, "silence" = 10)
+	tastes = list("chleb" = 10, "cisza" = 10)
 	foodtypes = GRAIN | FRUIT
 	slice_type = /obj/item/food/breadslice/mimana
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -299,7 +299,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_BELT
 	attack_verb = list("trafia (touché)")
-	tastes = list("bread" = 1)
+	tastes = list("chleb" = 1)
 	foodtypes = GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -325,7 +325,7 @@
 		/datum/reagent/consumable/garlic = 2
 	)
 	bite_consumption = 3
-	tastes = list("bread" = 1, "garlic" = 1, "butter" = 1)
+	tastes = list("chleb" = 1, "czosnek" = 1, "masło" = 1)
 	foodtypes = GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -338,7 +338,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("butter" = 1, "biscuit" = 1)
+	tastes = list("masło" = 1, "herbatnik" = 1)
 	foodtypes = GRAIN | BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -353,7 +353,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("butter" = 1, "exotic butter" = 1)
+	tastes = list("masło" = 1, "egzotyczne masło" = 1)
 	foodtypes = GRAIN | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2

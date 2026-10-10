@@ -117,7 +117,7 @@
 	icon_state = "banana_blue"
 	item_state = "bluespace_peel"
 	trash_type = /obj/item/grown/bananapeel/bluespace
-	tastes = list("banana" = 1)
+	tastes = list("banan" = 1)
 	wine_power = 60
 	wine_flavor = "slippery hypercubes"
 	discovery_points = 300

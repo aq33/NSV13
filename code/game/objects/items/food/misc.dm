@@ -8,7 +8,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 0.2,
 		/datum/reagent/consumable/nutriment = 1,
 	)
-	tastes = list("watermelon" = 1)
+	tastes = list("arbuz" = 1)
 	foodtypes = FRUIT
 	food_flags = FOOD_FINGER_FOOD
 	juice_typepath = /datum/reagent/consumable/watermelonjuice
@@ -23,7 +23,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("mushroom" = 1)
+	tastes = list("grzyb" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -34,7 +34,7 @@
 	trash_type = /obj/item/trash/popcorn
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	bite_consumption = 0.1 //this snack is supposed to be eating during looooong time. And this it not dinner food! --rastaf0
-	tastes = list("popcorn" = 3, "butter" = 1)
+	tastes = list("popcorn" = 3, "masło" = 1)
 	foodtypes = JUNKFOOD
 	eatverbs = list("gryzie", "skubie", "obgryza", "pochłania", "chrupie")
 	w_class = WEIGHT_CLASS_SMALL
@@ -48,7 +48,7 @@
 		/datum/reagent/consumable/nutriment = 1,
 		/datum/reagent/consumable/nutriment/protein = 1,
 	)
-	tastes = list("soy" = 1)
+	tastes = list("soja" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -107,7 +107,7 @@
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/toxin = 2,
 	)
-	tastes = list("cobwebs" = 1)
+	tastes = list("pajęczyny" = 1)
 	foodtypes = MEAT | TOXIC | BUGS
 	w_class = WEIGHT_CLASS_TINY
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -121,7 +121,7 @@
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/toxin = 4,
 	)
-	tastes = list("cobwebs" = 1, "guts" = 2)
+	tastes = list("pajęczyny" = 1, "flaki" = 2)
 	foodtypes = MEAT | TOXIC | BUGS
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -150,7 +150,7 @@
 	)
 	max_volume = 80
 	bite_consumption = 5
-	tastes = list("grain alcohol" = 1, "fruit" = 1)
+	tastes = list("spirytus zbożowy" = 1, "owoce" = 1)
 	foodtypes = FRUIT | ALCOHOL
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -162,7 +162,7 @@
 		/datum/reagent/consumable/nutriment = 5,
 		/datum/reagent/consumable/honey = 5,
 	)
-	tastes = list("oats" = 3, "nuts" = 2, "honey" = 1)
+	tastes = list("owies" = 3, "orzechy" = 2, "miód" = 1)
 	foodtypes = GRAIN | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -188,7 +188,7 @@
 	//wound_bonus = -50
 	attack_verb = list("policzkuje", "smaruje")
 	w_class = WEIGHT_CLASS_BULKY
-	tastes = list("cherry" = 1, "crepe" = 1)
+	tastes = list("wiśnia" = 1, "naleśnik" = 1)
 	foodtypes = GRAIN | FRUIT | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_5
 
@@ -201,7 +201,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 		/datum/reagent/consumable/sodiumchloride = 8,
 	)
-	tastes = list("bran" = 4, "raisins" = 3, "salt" = 1)
+	tastes = list("otręby" = 4, "rodzynki" = 3, "sól" = 1)
 	foodtypes = GRAIN | FRUIT | BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -211,7 +211,7 @@
 	desc = "A stick of delicious, golden, fatty goodness."
 	icon_state = "butter"
 	food_reagents = list(/datum/reagent/consumable/nutriment/fat = 5)
-	tastes = list("butter" = 1)
+	tastes = list("masło" = 1)
 	foodtypes = DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -247,7 +247,7 @@
 	icon_state = "onionrings"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	gender = PLURAL
-	tastes = list("batter" = 3, "onion" = 1)
+	tastes = list("ciasto naleśnikowe" = 3, "cebula" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -257,7 +257,7 @@
 	desc = "A sliced piece of juicy pineapple."
 	icon_state = "pineapple_slice"
 	juice_typepath = /datum/reagent/consumable/pineapplejuice
-	tastes = list("pineapple" = 1)
+	tastes = list("ananas" = 1)
 	foodtypes = FRUIT | PINEAPPLE
 	w_class = WEIGHT_CLASS_TINY
 
@@ -272,7 +272,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
 	w_class = WEIGHT_CLASS_SMALL
-	tastes = list("cream cheese" = 4, "crab" = 3, "crispiness" = 2)
+	tastes = list("serek śmietankowy" = 4, "krab" = 3, "chrupkość" = 2)
 	foodtypes = MEAT | DAIRY | GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -288,7 +288,7 @@
 		/datum/reagent/consumable/sodiumchloride = 3
 	)
 	junkiness = 20
-	tastes = list("fried corn" = 1)
+	tastes = list("smażona kukurydza" = 1)
 	foodtypes = JUNKFOOD | FRIED
 
 /obj/item/food/pingles
@@ -302,7 +302,7 @@
 		/datum/reagent/consumable/sodiumchloride = 2
 	)
 
-	tastes = list("sour cream" = 2, "onion" = 1)
+	tastes = list("kwaśna śmietana" = 2, "cebula" = 1)
 	foodtypes = FRIED
 
 /obj/item/food/rationpack
@@ -311,7 +311,7 @@
 	icon_state = "rationpack"
 	bite_consumption = 3
 	junkiness = 15
-	tastes = list("cardboard" = 3, "sadness" = 3)
+	tastes = list("karton" = 3, "smutek" = 3)
 	foodtypes = null //Don't ask what went into them. You're better off not knowing.
 	food_reagents = list(/datum/reagent/consumable/nutriment/stabilized = 10, /datum/reagent/consumable/nutriment = 2) //Won't make you fat. Will make you question your sanity.
 
@@ -333,7 +333,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 		)
-	tastes = list("rice" = 1, "dried seaweed" = 1)
+	tastes = list("ryż" = 1, "suszone wodorosty" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2

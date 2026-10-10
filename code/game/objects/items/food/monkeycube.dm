@@ -6,7 +6,7 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2
 	)
-	tastes = list("the jungle" = 1, "bananas" = 1)
+	tastes = list("dżungla" = 1, "banany" = 1)
 	foodtypes = MEAT | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -40,7 +40,7 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 15
 	)
-	tastes = list("the jungle" = 1, "bananas" = 1, "jimmies" = 1)
+	tastes = list("dżungla" = 1, "banany" = 1, "posypka" = 1)
 	spawned_mob = /mob/living/simple_animal/hostile/gorilla
 
 /obj/item/food/monkeycube/sheep
@@ -48,7 +48,7 @@
 	desc = "A Farm Town brand sheep cube."
 	bite_consumption = 15
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
-	tastes = list("fluff" = 1, "the farm" = 1)
+	tastes = list("puch" = 1, "farma" = 1)
 	spawned_mob = /mob/living/simple_animal/sheep
 
 /obj/item/food/monkeycube/cow
@@ -56,7 +56,7 @@
 	desc = "A Farm Town brand cow cube."
 	bite_consumption = 18
 	food_reagents = list(/datum/reagent/consumable/nutriment = 10)
-	tastes = list("milk" = 1, "the farm" = 1)
+	tastes = list("mleko" = 1, "farma" = 1)
 	spawned_mob = /mob/living/simple_animal/cow
 
 /obj/item/food/monkeycube/goat
@@ -64,5 +64,5 @@
 	desc = "A Farm Town brand goat cube."
 	bite_consumption = 18
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
-	tastes = list("milk" = 1, "the farm" = 1)
+	tastes = list("mleko" = 1, "farma" = 1)
 	spawned_mob = /mob/living/simple_animal/hostile/retaliate/goat

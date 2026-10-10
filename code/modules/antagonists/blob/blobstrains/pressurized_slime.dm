@@ -34,7 +34,7 @@
 
 /datum/reagent/blob/pressurized_slime
 	name = "Pressurized Slime"
-	taste_description = "a sponge"
+	taste_description = "gąbka"
 	color = "#AAAABB"
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
 

@@ -11,7 +11,7 @@
 	description = "Powszechnie znany alkohol o wielu zastosowaniach."
 	color = "#404030" // rgb: 64, 64, 48
 	nutriment_factor = 0
-	taste_description = "alcohol"
+	taste_description = "alkohol"
 	chem_flags = CHEMICAL_BASIC_ELEMENT | CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	hydration_factor = 8 * REAGENTS_METABOLISM // AQ EDIT
@@ -174,7 +174,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	color = "#664300" // rgb: 102, 67, 0
 	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
 	boozepwr = 75
-	taste_description = "molasses"
+	taste_description = "melasa"
 	glass_icon_state = "whiskeyglass"
 	glass_name = "glass of whiskey"
 	glass_desc = "Jedwabista, dymna whisky w szklance sprawia, że drink wygląda bardzo elegancko."
@@ -285,7 +285,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
 	boozepwr = 10
 	quality = DRINK_FANTASTIC
-	taste_description = "dryness"
+	taste_description = "suchość"
 	glass_icon_state = "threemileislandglass"
 	glass_name = "Three Mile Island Ice Tea"
 	glass_desc = "Szklanka tego na pewno zapobiegnie stopieniu rdzenia."
@@ -557,7 +557,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
 	boozepwr = 55
 	quality = DRINK_NICE
-	taste_description = "oranges"
+	taste_description = "pomarańcze"
 	glass_icon_state = "screwdriverglass"
 	glass_name = "Screwdriver"
 	glass_desc = "Prosta, a jednocześnie wyborna mieszanka wódki i soku pomarańczowego. W sam raz dla zmęczonego inżyniera."
@@ -573,7 +573,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	color = "#8CFF8C" // rgb: 140, 255, 140
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
 	boozepwr = 45
-	taste_description = "sweet 'n creamy"
+	taste_description = "słodko i kremowo"
 	glass_icon_state = "booger"
 	glass_name = "Booger"
 	glass_desc = "Fuuuj..."
@@ -673,7 +673,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	boozepwr = 90 //THE FIST OF THE LAW IS STRONG AND HARD
 	quality = DRINK_GOOD
 	metabolization_rate = 0.5
-	taste_description = "JUSTICE"
+	taste_description = "SPRAWIEDLIWOŚĆ"
 	glass_icon_state = "beepskysmashglass"
 	glass_name = "Beepsky Smash"
 	glass_desc = "Ciężki, gorący i mocny. Jak żelazna pięść PRAWA."
@@ -770,7 +770,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	color = "#AAAAAA77" // rgb: 170, 170, 170, 77 (alpha) (like water)
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING | CHEMICAL_GOAL_BOTANIST_HARVEST
 	boozepwr = 95
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 	glass_icon_state = "glass_clear"
 	glass_name = "Moonshine"
 	glass_desc = "Teraz naprawdę sięgnąłeś dna. Twoja wątroba spakowała się i wyszła zeszłej nocy."
@@ -822,7 +822,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
 	boozepwr = 70
 	quality = DRINK_NICE
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 	glass_icon_state = "blackrussianglass"
 	glass_name = "Black Russian"
 	glass_desc = "Dla osób z nietolerancją laktozy. Wciąż elegancki jak White Russian."
@@ -865,7 +865,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
 	boozepwr = 70
 	quality = DRINK_NICE
-	taste_description = "soda"
+	taste_description = "napój gazowany"
 	glass_icon_state = "whiskeysodaglass2"
 	glass_name = "whiskey soda"
 	glass_desc = "Ostateczne orzeźwienie."
@@ -1069,7 +1069,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
 	boozepwr = 35
 	quality = DRINK_VERYGOOD
-	taste_description = "sweet 'n creamy"
+	taste_description = "słodko i kremowo"
 	glass_icon_state = "aloe"
 	glass_name = "Aloe"
 	glass_desc = "Bardzo, bardzo, bardzo dobry."
@@ -1081,7 +1081,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
 	boozepwr = 40
 	quality = DRINK_GOOD
-	taste_description = "lemons"
+	taste_description = "cytryny"
 	glass_icon_state = "andalusia"
 	glass_name = "Andalusia"
 	glass_desc = "Ładny drink o dziwnej nazwie."
@@ -1191,7 +1191,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
 	boozepwr = 65
 	quality = DRINK_GOOD
-	taste_description = "a beach"
+	taste_description = "plaża"
 	glass_icon_state = "driestmartiniglass"
 	glass_name = "Driest Martini"
 	glass_desc = "Tylko dla doświadczonych. Wydaje ci się, że w szklance pływa piasek."
@@ -1505,7 +1505,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
 	boozepwr = 10
 	quality = DRINK_FANTASTIC
-	taste_description = "blood"
+	taste_description = "krew"
 	glass_icon_state = "narsour"
 	glass_name = "Nar'Sour"
 	glass_desc = "Nowy przebojowy koktajl inspirowany browarami THE ARM sprawi, że w mgnieniu oka będziesz krzyczeć Fuu ma'jin!"
@@ -1587,7 +1587,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
 	boozepwr = 60
 	quality = DRINK_FANTASTIC
-	taste_description = "THE LAW"
+	taste_description = "PRAWO"
 	glass_icon_state = "quintuple_sec"
 	glass_name = "Quintuple Sec"
 	glass_desc = "Teraz stałeś się prawem, niszczycielem klaunów."
@@ -1808,7 +1808,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
 	boozepwr = 80
 	quality = DRINK_GOOD
-	taste_description = "seduction"
+	taste_description = "uwodzenie"
 	glass_icon_state = "between_the_sheets"
 	glass_name = "Between the Sheets"
 	glass_desc = "Jedyny drink z etykietą przypominającą o polityce zerowej tolerancji Nanotrasen wobec rozwiązłości."
@@ -1962,9 +1962,9 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
 	boozepwr = 35
 	quality = DRINK_GOOD
-	taste_description = "bad coding"
+	taste_description = "kiepski kod"
 	var/list/names = list("null fruit" = 1) //Names of the fruits used. Associative list where name is key, value is the percentage of that fruit.
-	var/list/tastes = list("bad coding" = 1) //List of tastes. See above.
+	var/list/tastes = list("kiepski kod" = 1) //List of tastes. See above.
 
 /datum/reagent/consumable/ethanol/fruit_wine/on_new(list/data)
 	names = data["names"]
@@ -2355,7 +2355,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	boozepwr = 0 //I feel like brain traumas is enough
 	quality = DRINK_GOOD
 	metabolization_rate = 0.3
-	taste_description = "binary"
+	taste_description = "kod binarny"
 	glass_icon_state = "fourthwallglass"
 	glass_name = "Fourth Wall"
 	glass_desc = "Samo patrzenie na to przyprawia o ból głowy."
@@ -2424,7 +2424,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
 	boozepwr = 50
 	quality = DRINK_FANTASTIC
-	taste_description = "frostburn"
+	taste_description = "odmrożenie"
 	glass_icon_state = "icewing"
 	glass_name = "Icewing"
 	glass_desc = "Ulubiony drink łowców obserwatorów. Uleczy odmrożenia albo cię schłodzi."

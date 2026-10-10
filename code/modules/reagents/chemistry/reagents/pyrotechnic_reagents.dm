@@ -22,7 +22,7 @@
 	description = "Nitrogliceryna to ciężka, bezbarwna, oleista ciecz wybuchowa otrzymywana przez nitrowanie glicerolu."
 	color = "#808080" // rgb: 128, 128, 128
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "oil"
+	taste_description = "olej"
 
 /datum/reagent/stabilizing_agent
 	name = "Stabilizing Agent"
@@ -39,7 +39,7 @@
 	color = "#FFC8C8"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	metabolization_rate = 4
-	taste_description = "burning"
+	taste_description = "pieczenie"
 	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/clf3/on_mob_life(mob/living/carbon/M)
@@ -100,7 +100,7 @@
 	color = "#000000"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	metabolization_rate = 0.05
-	taste_description = "salt"
+	taste_description = "sól"
 
 /datum/reagent/blackpowder/on_mob_life(mob/living/carbon/M)
 	..()
@@ -120,7 +120,7 @@
 	reagent_state = LIQUID
 	color = "#C8C8C8"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "salt"
+	taste_description = "sól"
 
 /datum/reagent/smoke_powder
 	name = "Smoke Powder"
@@ -128,7 +128,7 @@
 	reagent_state = LIQUID
 	color = "#C8C8C8"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "smoke"
+	taste_description = "dym"
 
 /datum/reagent/sonic_powder
 	name = "Sonic Powder"
@@ -144,7 +144,7 @@
 	reagent_state = LIQUID
 	color = "#FA00AF"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "burning"
+	taste_description = "pieczenie"
 	self_consuming = TRUE
 	process_flags = ORGANIC | SYNTHETIC
 
@@ -168,7 +168,7 @@
 	reagent_state = LIQUID
 	color = "#FA00AF"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "burning"
+	taste_description = "pieczenie"
 	self_consuming = TRUE
 	process_flags = ORGANIC | SYNTHETIC
 
@@ -187,7 +187,7 @@
 	color = "#0000DC"
 	chem_flags = CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 	self_consuming = TRUE
 	process_flags = ORGANIC | SYNTHETIC
 
@@ -209,7 +209,7 @@
 	color = "#64FAC8"
 	chem_flags = CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 	self_consuming = TRUE
 	process_flags = ORGANIC | SYNTHETIC
 
@@ -246,7 +246,7 @@
 	reagent_state = LIQUID
 	color = "#CAFF43"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "jelly"
+	taste_description = "galaretka"
 
 /datum/reagent/teslium/energized_jelly/on_mob_life(mob/living/carbon/M)
 	if(isjellyperson(M))
@@ -265,7 +265,7 @@
 	reagent_state = LIQUID
 	color = "#CAFF43"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "slime"
+	taste_description = "szlam"
 	overdose_threshold = 30
 
 /datum/reagent/teslium/energized_jelly/energized_ooze/on_mob_life(mob/living/carbon/M)

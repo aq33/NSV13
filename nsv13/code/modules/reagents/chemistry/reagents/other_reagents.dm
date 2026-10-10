@@ -3,12 +3,12 @@
 	description = "Lekki, łatwopalny węglowodór. Powszechnie używany do produkcji paliwa kriogenicznego."
 	reagent_state = GAS
 	color = "#ccf6ff"
-	taste_description = "nothing"
+	taste_description = "nic"
 
 /datum/reagent/consumable/creamer
 	name = "Coffee Creamer"
 	description = "Mleko w proszku do taniej kawy. Jak uroczo."
-	taste_description = "milk"
+	taste_description = "mleko"
 	color = "#efeff0"
 	nutriment_factor = 1.5 * REAGENTS_METABOLISM
 

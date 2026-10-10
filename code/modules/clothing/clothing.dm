@@ -77,7 +77,7 @@
 	name = "temporary moth clothing snack item"
 	desc = "If you're reading this it means I messed up. This is related to moths eating clothes and I didn't know a better way to do it than making a new food object." // die
 	food_reagents = list(/datum/reagent/consumable/nutriment = 1)
-	tastes = list("dust" = 1, "lint" = 1)
+	tastes = list("kurz" = 1, "kłaczki" = 1)
 	foodtypes = CLOTH
 
 /obj/item/clothing/attack(mob/M, mob/user, def_zone)

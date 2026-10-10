@@ -150,7 +150,7 @@
 	desc = "The Cross represents the Assistants that died for your sins."
 	icon_state = "hotcrossbun"
 	foodtypes = SUGAR | GRAIN
-	tastes = list("easter")
+	tastes = list("Wielkanoc")
 	crafting_complexity = FOOD_COMPLEXITY_1
 
 /datum/crafting_recipe/food/hotcrossbun

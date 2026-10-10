@@ -7,7 +7,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 2
 	)
-	tastes = list("pancakes" = 1)
+	tastes = list("naleśniki" = 1)
 	foodtypes = GRAIN | SUGAR | BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
 	///Used as a base name while generating the icon states when stacked
@@ -22,7 +22,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("pancakes" = 1, "blueberries" = 1)
+	tastes = list("naleśniki" = 1, "borówki" = 1)
 	stack_name = "bbpancakes"
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -34,7 +34,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("pancakes" = 1, "chocolate" = 1)
+	tastes = list("naleśniki" = 1, "czekolada" = 1)
 	stack_name = "ccpancakes"
 	crafting_complexity = FOOD_COMPLEXITY_3
 

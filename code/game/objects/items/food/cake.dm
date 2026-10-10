@@ -9,7 +9,7 @@
 		/datum/reagent/consumable/nutriment = 20,
 		/datum/reagent/consumable/nutriment/vitamin = 5
 	)
-	tastes = list("cake" = 1)
+	tastes = list("ciasto" = 1)
 	foodtypes = GRAIN | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_2
 	/// type is spawned 5 at a time and replaces this cake when processed by cutting tool
@@ -34,7 +34,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("cake" = 1)
+	tastes = list("ciasto" = 1)
 	foodtypes = GRAIN | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -47,7 +47,7 @@
 		/datum/reagent/consumable/nutriment = 30,
 		/datum/reagent/consumable/nutriment/vitamin = 7
 	)
-	tastes = list("sweetness" = 2, "cake" = 5)
+	tastes = list("słodycz" = 2, "ciasto" = 5)
 	foodtypes = GRAIN | DAIRY | SUGAR
 	slice_type = /obj/item/food/cakeslice/plain
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -56,7 +56,7 @@
 	name = "plain cake slice"
 	desc = "Just a slice of cake, it is enough for everyone."
 	icon_state = "plaincake_slice"
-	tastes = list("sweetness" = 2,"cake" = 5)
+	tastes = list("słodycz" = 2,"ciasto" = 5)
 	foodtypes = GRAIN | DAIRY | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -68,7 +68,7 @@
 		/datum/reagent/consumable/nutriment = 20,
 		/datum/reagent/consumable/nutriment/vitamin = 5
 	)
-	tastes = list("cake" = 5, "sweetness" = 2, "carrot" = 1)
+	tastes = list("ciasto" = 5, "słodycz" = 2, "marchewka" = 1)
 	foodtypes = GRAIN | DAIRY | VEGETABLES | SUGAR
 	slice_type = /obj/item/food/cakeslice/carrot
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -81,7 +81,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("cake" = 5, "sweetness" = 2, "carrot" = 1)
+	tastes = list("ciasto" = 5, "słodycz" = 2, "marchewka" = 1)
 	foodtypes = GRAIN | DAIRY | VEGETABLES | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -94,7 +94,7 @@
 		/datum/reagent/medicine/mannitol = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 5
 	)
-	tastes = list("cake" = 5, "sweetness" = 2, "brains" = 1)
+	tastes = list("ciasto" = 5, "słodycz" = 2, "mózg" = 1)
 	foodtypes = GRAIN | DAIRY | MEAT | GROSS | SUGAR
 	slice_type = /obj/item/food/cakeslice/brain
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -108,7 +108,7 @@
 		/datum/reagent/medicine/mannitol = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("cake" = 5, "sweetness" = 2, "brains" = 1)
+	tastes = list("ciasto" = 5, "słodycz" = 2, "mózg" = 1)
 	foodtypes = GRAIN | DAIRY | MEAT | GROSS | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -120,7 +120,7 @@
 		/datum/reagent/consumable/nutriment = 20,
 		/datum/reagent/consumable/nutriment/vitamin = 8
 	)
-	tastes = list("cake" = 4, "cream cheese" = 3)
+	tastes = list("ciasto" = 4, "serek śmietankowy" = 3)
 	foodtypes = GRAIN | DAIRY
 	slice_type = /obj/item/food/cakeslice/cheese
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -133,7 +133,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 1.3
 	)
-	tastes = list("cake" = 4, "cream cheese" = 3)
+	tastes = list("ciasto" = 4, "serek śmietankowy" = 3)
 	foodtypes = GRAIN | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -145,7 +145,7 @@
 		/datum/reagent/consumable/nutriment = 20,
 		/datum/reagent/consumable/nutriment/vitamin = 10
 	)
-	tastes = list("cake" = 5, "sweetness" = 2, "oranges" = 2)
+	tastes = list("ciasto" = 5, "słodycz" = 2, "pomarańcze" = 2)
 	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
 	slice_type = /obj/item/food/cakeslice/orange
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -154,7 +154,7 @@
 	name = "orange cake slice"
 	desc = "Just a slice of cake, it is enough for everyone."
 	icon_state = "orangecake_slice"
-	tastes = list("cake" = 5, "sweetness" = 2, "oranges" = 2)
+	tastes = list("ciasto" = 5, "słodycz" = 2, "pomarańcze" = 2)
 	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -166,7 +166,7 @@
 		/datum/reagent/consumable/nutriment = 20,
 		/datum/reagent/consumable/nutriment/vitamin = 10
 		)
-	tastes = list("cake" = 5, "sweetness" = 2, "unbearable sourness" = 2)
+	tastes = list("ciasto" = 5, "słodycz" = 2, "nieznośna kwaśność" = 2)
 	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
 	slice_type = /obj/item/food/cakeslice/lime
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -175,7 +175,7 @@
 	name = "lime cake slice"
 	desc = "Just a slice of cake, it is enough for everyone."
 	icon_state = "limecake_slice"
-	tastes = list("cake" = 5, "sweetness" = 2, "unbearable sourness" = 2)
+	tastes = list("ciasto" = 5, "słodycz" = 2, "nieznośna kwaśność" = 2)
 	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -187,7 +187,7 @@
 		/datum/reagent/consumable/nutriment = 20,
 		/datum/reagent/consumable/nutriment/vitamin = 10
 		)
-	tastes = list("cake" = 5, "sweetness" = 3, "sourness" = 1) //lemon cake is never as sour as it is sweet, have you ever actually eaten it?
+	tastes = list("ciasto" = 5, "słodycz" = 3, "kwaśność" = 1) //lemon cake is never as sour as it is sweet, have you ever actually eaten it?
 	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
 	slice_type = /obj/item/food/cakeslice/lemon
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -196,7 +196,7 @@
 	name = "lemon cake slice"
 	desc = "Just a slice of cake, it is enough for everyone."
 	icon_state = "lemoncake_slice"
-	tastes = list("cake" = 5, "sweetness" = 2, "sourness" = 2)
+	tastes = list("ciasto" = 5, "słodycz" = 2, "kwaśność" = 2)
 	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -208,7 +208,7 @@
 		/datum/reagent/consumable/nutriment = 20,
 		/datum/reagent/consumable/nutriment/vitamin = 10
 	)
-	tastes = list("cake" = 5, "sweetness" = 1, "chocolate" = 4)
+	tastes = list("ciasto" = 5, "słodycz" = 1, "czekolada" = 4)
 	foodtypes = GRAIN | DAIRY | JUNKFOOD | SUGAR
 	slice_type = /obj/item/food/cakeslice/chocolate
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -217,7 +217,7 @@
 	name = "chocolate cake slice"
 	desc = "Just a slice of cake, it is enough for everyone."
 	icon_state = "chocolatecake_slice"
-	tastes = list("cake" = 5, "sweetness" = 1, "chocolate" = 4)
+	tastes = list("ciasto" = 5, "słodycz" = 1, "czekolada" = 4)
 	foodtypes = GRAIN | DAIRY | JUNKFOOD | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -230,7 +230,7 @@
 		/datum/reagent/consumable/sprinkles = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 5
 	)
-	tastes = list("cake" = 5, "sweetness" = 1)
+	tastes = list("ciasto" = 5, "słodycz" = 1)
 	foodtypes = GRAIN | DAIRY | JUNKFOOD | SUGAR
 	slice_type = /obj/item/food/cakeslice/birthday
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -248,7 +248,7 @@
 		/datum/reagent/consumable/sprinkles = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("cake" = 5, "sweetness" = 1)
+	tastes = list("ciasto" = 5, "słodycz" = 1)
 	foodtypes = GRAIN | DAIRY | JUNKFOOD | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -265,7 +265,7 @@
 		/datum/reagent/consumable/pwr_game = 10,
 		/datum/reagent/consumable/liquidelectricity = 10
 	)
-	tastes = list("cake" = 3, "a Vlad's Salad" = 1)
+	tastes = list("ciasto" = 3, "Sałatka Vlada" = 1)
 	slice_type = /obj/item/food/cakeslice/birthday/energy
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -297,7 +297,7 @@
 		/datum/reagent/consumable/pwr_game = 2,
 		/datum/reagent/consumable/liquidelectricity = 2
 	)
-	tastes = list("cake" = 3, "a Vlad's Salad" = 1)
+	tastes = list("ciasto" = 3, "Sałatka Vlada" = 1)
 	crafting_complexity = FOOD_COMPLEXITY_4
 
 /obj/item/food/cakeslice/birthday/energy/proc/energy_bite(mob/living/user)
@@ -319,7 +319,7 @@
 		/datum/reagent/consumable/nutriment = 20,
 		/datum/reagent/consumable/nutriment/vitamin = 10
 	)
-	tastes = list("cake" = 5, "sweetness" = 1, "apple" = 1)
+	tastes = list("ciasto" = 5, "słodycz" = 1, "jabłko" = 1)
 	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
 	slice_type = /obj/item/food/cakeslice/apple
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -328,7 +328,7 @@
 	name = "apple cake slice"
 	desc = "A slice of heavenly cake."
 	icon_state = "applecakeslice"
-	tastes = list("cake" = 5, "sweetness" = 1, "apple" = 1)
+	tastes = list("ciasto" = 5, "słodycz" = 1, "jabłko" = 1)
 	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -336,7 +336,7 @@
 	name = "Slime cake"
 	desc = "A cake made of slimes. Probably not electrified."
 	icon_state = "slimecake"
-	tastes = list("cake" = 5, "sweetness" = 1, "slime" = 1)
+	tastes = list("ciasto" = 5, "słodycz" = 1, "szlam" = 1)
 	foodtypes = GRAIN | DAIRY | SUGAR
 	slice_type = /obj/item/food/cakeslice/slimecake
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -345,7 +345,7 @@
 	name = "slime cake slice"
 	desc = "A slice of slime cake."
 	icon_state = "slimecake_slice"
-	tastes = list("cake" = 5, "sweetness" = 1, "slime" = 1)
+	tastes = list("ciasto" = 5, "słodycz" = 1, "szlam" = 1)
 	foodtypes = GRAIN | DAIRY | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -353,7 +353,7 @@
 	name = "pumpkin spice cake"
 	desc = "A hollow cake with real pumpkin."
 	icon_state = "pumpkinspicecake"
-	tastes = list("cake" = 5, "sweetness" = 1, "pumpkin" = 1)
+	tastes = list("ciasto" = 5, "słodycz" = 1, "dynia" = 1)
 	foodtypes = GRAIN | DAIRY | VEGETABLES | SUGAR
 	slice_type = /obj/item/food/cakeslice/pumpkinspice
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -362,7 +362,7 @@
 	name = "pumpkin spice cake slice"
 	desc = "A spicy slice of pumpkin goodness."
 	icon_state = "pumpkinspicecakeslice"
-	tastes = list("cake" = 5, "sweetness" = 1, "pumpkin" = 1)
+	tastes = list("ciasto" = 5, "słodycz" = 1, "dynia" = 1)
 	foodtypes = GRAIN | DAIRY | VEGETABLES | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -370,7 +370,7 @@
 	name = "blackberry and strawberry vanilla cake"
 	desc = "A plain cake, filled with assortment of blackberries and strawberries!"
 	icon_state = "blackberry_strawberries_cake_vanilla_cake"
-	tastes = list("blackberry" = 2, "strawberries" = 2, "vanilla" = 2, "sweetness" = 2, "cake" = 3)
+	tastes = list("jeżyna" = 2, "truskawki" = 2, "wanilia" = 2, "słodycz" = 2, "ciasto" = 3)
 	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
 	slice_type = /obj/item/food/cakeslice/berry_vanilla_cake
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -379,7 +379,7 @@
 	name = "blackberry and strawberry vanilla cake slice"
 	desc = "Just a slice of cake  filled with assortment of blackberries and strawberries!"
 	icon_state = "blackberry_strawberries_cake_vanilla_slice"
-	tastes = list("blackberry" = 2, "strawberries" = 2, "vanilla" = 2, "sweetness" = 2,"cake" = 3)
+	tastes = list("jeżyna" = 2, "truskawki" = 2, "wanilia" = 2, "słodycz" = 2,"ciasto" = 3)
 	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -392,7 +392,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 		/datum/reagent/consumable/cocoa = 5
 	)
-	tastes = list("blackberry" = 2, "strawberries" = 2, "chocolate" = 4, "sweetness" = 2,"cake" = 3)
+	tastes = list("jeżyna" = 2, "truskawki" = 2, "czekolada" = 4, "słodycz" = 2,"ciasto" = 3)
 	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
 	slice_type = /obj/item/food/cakeslice/berry_chocolate_cake
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -401,7 +401,7 @@
 	name = "strawberry chocolate cake slice"
 	desc = "Just a slice of cake with five strawberries on top. For some reason, this configuration of cake is particularly aesthetically pleasing to AIs in SELF." //yes, I know the one referenced has cherries, but I'm not implementing a new cake today.
 	icon_state = "liars_slice"
-	tastes = list("strawberries" = 2, "chocolate" = 2, "sweetness" = 2,"cake" = 3)
+	tastes = list("truskawki" = 2, "czekolada" = 2, "słodycz" = 2,"ciasto" = 3)
 	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -414,7 +414,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 		/datum/reagent/water/holywater = 10
 	)
-	tastes = list("cake" = 5, "sweetness" = 1, "clouds" = 1)
+	tastes = list("ciasto" = 5, "słodycz" = 1, "chmury" = 1)
 	foodtypes = GRAIN | DAIRY | SUGAR
 	slice_type = /obj/item/food/cakeslice/holy_cake_slice
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -423,7 +423,7 @@
 	name = "angel food cake slice"
 	desc = "A slice of heavenly cake."
 	icon_state = "holy_cake_slice"
-	tastes = list("cake" = 5, "sweetness" = 1, "clouds" = 1)
+	tastes = list("ciasto" = 5, "słodycz" = 1, "chmury" = 1)
 	foodtypes = GRAIN | DAIRY | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -435,7 +435,7 @@
 		/datum/reagent/consumable/nutriment = 60,
 		/datum/reagent/consumable/nutriment/vitamin = 5
 	)
-	tastes = list("cake" = 5, "sweetness" = 1, "batter" = 1)
+	tastes = list("ciasto" = 5, "słodycz" = 1, "ciasto naleśnikowe" = 1)
 	foodtypes = GRAIN | DAIRY | SUGAR | JUNKFOOD
 	slice_type = /obj/item/food/cakeslice/pound_cake_slice
 	yield = 10 //cause its so damn THICC (seriously these things are fucking huge a pound of each ingredient are you kidding)
@@ -449,7 +449,7 @@
 		/datum/reagent/consumable/nutriment = 9,
 		/datum/reagent/consumable/nutriment/vitamin = 0.5
 	)
-	tastes = list("cake" = 5, "sweetness" = 5, "batter" = 1)
+	tastes = list("ciasto" = 5, "słodycz" = 5, "ciasto naleśnikowe" = 1)
 	foodtypes = GRAIN | DAIRY | SUGAR | JUNKFOOD
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -463,7 +463,7 @@
 		/datum/reagent/toxin/acid = 15,
 		/datum/reagent/oil = 15
 		)
-	tastes = list("acid" = 3, "metal" = 4, "glass" = 5)
+	tastes = list("kwas" = 3, "metal" = 4, "szkło" = 5)
 	foodtypes = GRAIN | GROSS
 	slice_type = /obj/item/food/cakeslice/hardware_cake_slice
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -478,7 +478,7 @@
 		/datum/reagent/toxin/acid = 3,
 		/datum/reagent/oil = 3
 	)
-	tastes = list("acid" = 3, "metal" = 4, "glass" = 5)
+	tastes = list("kwas" = 3, "metal" = 4, "szkło" = 5)
 	foodtypes = GRAIN | GROSS
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -492,7 +492,7 @@
 		/datum/reagent/consumable/sugar = 15,
 		/datum/reagent/consumable/vanilla = 15
 	)
-	tastes = list("cake" = 1, "sugar" = 1, "vanilla" = 10)
+	tastes = list("ciasto" = 1, "cukier" = 1, "wanilia" = 10)
 	foodtypes = GRAIN | SUGAR | DAIRY
 	slice_type = /obj/item/food/cakeslice/vanilla_slice
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -507,7 +507,7 @@
 		/datum/reagent/consumable/sugar = 3,
 		/datum/reagent/consumable/vanilla = 3
 	)
-	tastes = list("cake" = 1, "sugar" = 1, "vanilla" = 10)
+	tastes = list("ciasto" = 1, "cukier" = 1, "wanilia" = 10)
 	foodtypes = GRAIN | SUGAR | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -520,7 +520,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 		/datum/reagent/consumable/banana = 15
 	)
-	tastes = list("cake" = 1, "sugar" = 1, "joy" = 10)
+	tastes = list("ciasto" = 1, "cukier" = 1, "radość" = 10)
 	foodtypes = GRAIN | SUGAR | DAIRY
 	slice_type = /obj/item/food/cakeslice/clown_slice
 	crafting_complexity = FOOD_COMPLEXITY_5
@@ -534,7 +534,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 		/datum/reagent/consumable/banana = 3
 	)
-	tastes = list("cake" = 1, "sugar" = 1, "joy" = 10)
+	tastes = list("ciasto" = 1, "cukier" = 1, "radość" = 10)
 	foodtypes = GRAIN | SUGAR | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_5
 
@@ -549,7 +549,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 		/datum/reagent/consumable/berryjuice = 5
 	)
-	tastes = list("cake" = 4, "violets" = 2, "jam" = 2)
+	tastes = list("ciasto" = 4, "fiołki" = 2, "dżem" = 2)
 	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
 	slice_type = /obj/item/food/cakeslice/trumpet
 
@@ -564,7 +564,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 		/datum/reagent/consumable/berryjuice = 1
 	)
-	tastes = list("cake" = 4, "violets" = 2, "jam" = 2)
+	tastes = list("ciasto" = 4, "fiołki" = 2, "dżem" = 2)
 	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -572,7 +572,7 @@
 	name = "brioche cake"
 	desc = "A ring of sweet, glazed buns."
 	icon_state = "briochecake"
-	tastes = list("cake" = 4, "butter" = 2, "cream" = 1)
+	tastes = list("ciasto" = 4, "masło" = 2, "śmietana" = 1)
 	foodtypes = GRAIN | DAIRY | SUGAR
 	slice_type = /obj/item/food/cakeslice/brioche
 	yield = 6
@@ -589,7 +589,7 @@
 	name = "pavlova"
 	desc = "A sweet berry pavlova. Invented in New Zealand, but named after a Russian ballerina... And scientifically proven to be the best at dinner parties!"
 	icon_state = "pavlova"
-	tastes = list("meringue" = 5, "creaminess" = 1, "berries" = 1)
+	tastes = list("beza" = 5, "kremowość" = 1, "jagody" = 1)
 	foodtypes = DAIRY | FRUIT | SUGAR
 	slice_type = /obj/item/food/cakeslice/pavlova
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -605,7 +605,7 @@
 	desc = "A cracked slice of pavlova stacked with berries. \
 		You even got it sliced in such a way that more berries ended up on your slice, how delightfully devilish."
 	icon_state = "pavlova_slice"
-	tastes = list("meringue" = 5, "creaminess" = 1, "berries" = 1)
+	tastes = list("beza" = 5, "kremowość" = 1, "jagody" = 1)
 	foodtypes = DAIRY | FRUIT | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -622,7 +622,7 @@
 		/datum/reagent/consumable/sugar = 10,
 		/datum/reagent/consumable/cherryjelly = 5,
 	)
-	tastes = list("dried fruit" = 5, "treacle" = 2, "christmas" = 2)
+	tastes = list("suszone owoce" = 5, "syrop" = 2, "Boże Narodzenie" = 2)
 	force = 7
 	throwforce = 7
 	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
@@ -634,7 +634,7 @@
 	desc = "A proper good slice, innit?"
 	icon_state = "fruitcake_slice1"
 	base_icon_state = "fruitcake_slice"
-	tastes = list("dried fruit" = 5, "treacle" = 2, "christmas" = 2)
+	tastes = list("suszone owoce" = 5, "syrop" = 2, "Boże Narodzenie" = 2)
 	force = 2
 	throwforce = 2
 	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
@@ -653,7 +653,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 		/datum/reagent/impurity/rosenol = 8,
 	)
-	tastes = list("cake" = 5, "sweetness" = 1, "plum" = 2)
+	tastes = list("ciasto" = 5, "słodycz" = 1, "śliwka" = 2)
 	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
 	venue_value = FOOD_PRICE_CHEAP
 	slice_type = /obj/item/food/cakeslice/plum
@@ -663,7 +663,7 @@
 	name = "plum cake slice"
 	desc = "A slice of plum cake."
 	icon_state = "plumcakeslice"
-	tastes = list("cake" = 5, "sweetness" = 1, "plum" = 2)
+	tastes = list("ciasto" = 5, "słodycz" = 1, "śliwka" = 2)
 	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_3
 */

@@ -29,7 +29,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtypes = FRUIT | PINEAPPLE
 	juice_typepath = /datum/reagent/consumable/pineapplejuice
-	tastes = list("pineapple" = 1)
+	tastes = list("ananas" = 1)
 	wine_power = 40
 
 /obj/item/food/grown/pineapple/make_processable()

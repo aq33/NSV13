@@ -9,7 +9,7 @@
 	description = "Pyszny I bogaty w witaminę C, czego chcieć więcej?"
 	color = "#E78108" // rgb: 231, 129, 8
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "oranges"
+	taste_description = "pomarańcze"
 	glass_icon_state = "glass_orange"
 	glass_name = "glass of orange juice"
 	glass_desc = "Witaminy! Hura!"
@@ -26,7 +26,7 @@
 	description = "Pomidory przerobione na sok. Co za marnotrawstwo dużych, soczystych pomidorów, co?"
 	color = "#731008" // rgb: 115, 16, 8
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "tomatoes"
+	taste_description = "pomidory"
 	glass_icon_state = "glass_red"
 	glass_name = "glass of tomato juice"
 	glass_desc = "Na pewno to sok pomidorowy?"
@@ -60,7 +60,7 @@
 	description = "Jak marchewka, tylko bez chrupania."
 	color = "#973800" // rgb: 151, 56, 0
 	chem_flags = CHEMICAL_GOAL_BARTENDER_SERVING
-	taste_description = "carrots"
+	taste_description = "marchewki"
 	glass_icon_state = "carrotjuice"
 	glass_name = "glass of  carrot juice"
 	glass_desc = "To jak marchewka, tylko bez chrupania."
@@ -83,7 +83,7 @@
 	description = "Pyszna mieszanka kilku rodzajów jagód."
 	color = "#863333" // rgb: 134, 51, 51
 	chem_flags = NONE
-	taste_description = "berries"
+	taste_description = "jagody"
 	glass_icon_state = "berryjuice"
 	glass_name = "glass of berry juice"
 	glass_desc = "Sok z jagód. A może to dżem. Kogo to obchodzi?"
@@ -94,7 +94,7 @@
 	description = "Słodki sok z jabłka, dla każdego, w każdym wieku."
 	color = "#ECFF56" // rgb: 236, 255, 86
 	chem_flags = NONE
-	taste_description = "apples"
+	taste_description = "jabłka"
 	glass_icon_state = "glass_orange"
 	glass_name = "glass of apple juice"
 	glass_desc = "Sok jabłkowy. A może to cydr. Kogo to obchodzi?"
@@ -105,7 +105,7 @@
 	description = "Smaczny sok z różnych bardzo śmiercionośnych i trujących jagód."
 	color = "#863353" // rgb: 134, 51, 83
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BARTENDER_SERVING
-	taste_description = "berries"
+	taste_description = "jagody"
 	glass_icon_state = "poisonberryjuice"
 	glass_name = "glass of berry juice"
 	glass_desc = "Sok z jagód. A może to trucizna. Kogo to obchodzi?"
@@ -132,7 +132,7 @@
 	description = "Ten sok jest BARDZO kwaśny."
 	color = "#863333" // rgb: 175, 175, 0
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "sourness"
+	taste_description = "kwaśność"
 	glass_icon_state  = "lemonglass"
 	glass_name = "glass of lemon juice"
 	glass_desc = "Kwaśne..."
@@ -143,7 +143,7 @@
 	description = "Surowa esencja banana. HONK"
 	color = "#863333" // rgb: 175, 175, 0
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "banana"
+	taste_description = "banan"
 	glass_icon_state = "banana"
 	glass_name = "glass of banana juice"
 	glass_desc = "Surowa esencja banana. HONK."
@@ -159,7 +159,7 @@
 	name = "Nothing"
 	description = "Absolutnie nic."
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "nothing"
+	taste_description = "nic"
 	glass_icon_state = "nothing"
 	glass_name = "nothing"
 	glass_desc = "Absolutnie nic."
@@ -181,7 +181,7 @@
 	metabolization_rate = INFINITY
 	color = "#FF4DD2"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "laughter"
+	taste_description = "śmiech"
 
 
 /datum/reagent/consumable/laughter/on_mob_life(mob/living/carbon/M)
@@ -204,7 +204,7 @@
 	metabolization_rate = 1.5 * REAGENTS_METABOLISM
 	color = "#FF4DD2"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN
-	taste_description = "laughter"
+	taste_description = "śmiech"
 
 /datum/reagent/consumable/superlaughter/on_mob_life(mob/living/carbon/M)
 	if(prob(30))
@@ -238,7 +238,7 @@
 	description = "Nieprzezroczysty biały płyn wytwarzany przez gruczoły mleczne ssaków."
 	color = "#DFDFDF" // rgb: 223, 223, 223
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "milk"
+	taste_description = "mleko"
 	glass_icon_state = "glass_white"
 	glass_name = "glass of milk"
 	glass_desc = "Biała i pożywna dobroć!"
@@ -248,43 +248,43 @@
 /datum/reagent/consumable/milk/goat
 	name = "Goat Milk"
 	description = "Nieprzezroczysty biały płyn wytwarzany przez gruczoły mleczne kóz."
-	taste_description = "goat"
+	taste_description = "koza"
 	glass_name = "glass of goat milk"
 
 /datum/reagent/consumable/milk/sheep
 	name = "Sheep Milk"
 	description = "Nieprzezroczysty biały płyn wytwarzany przez gruczoły mleczne owiec."
-	taste_description = "sheep"
+	taste_description = "owca"
 	glass_name = "glass of sheep milk"
 
 /datum/reagent/consumable/milk/blue
 	name = "Blue Cheese Milk"
 	description = "Nieprzezroczysty biały płyn."
-	taste_description = "bitter"
+	taste_description = "gorycz"
 	glass_name = "glass of cheese milk"
 
 /datum/reagent/consumable/milk/brie
 	name = "Brie Cheese Milk"
 	description = "Nieprzezroczysty biały płyn."
-	taste_description = "bitter"
+	taste_description = "gorycz"
 	glass_name = "glass of cheese milk"
 
 /datum/reagent/consumable/milk/cheddar
 	name = "Cheddar Cheese Milk"
 	description = "Nieprzezroczysty biały płyn."
-	taste_description = "bitter"
+	taste_description = "gorycz"
 	glass_name = "glass of cheese milk"
 
 /datum/reagent/consumable/milk/feta
 	name = "Feta Cheese Milk"
 	description = "Nieprzezroczysty biały płyn."
-	taste_description = "bitter"
+	taste_description = "gorycz"
 	glass_name = "glass of cheese milk"
 
 /datum/reagent/consumable/milk/goatcheese
 	name = "Goat Cheese Milk"
 	description = "Nieprzezroczysty biały płyn."
-	taste_description = "bitter"
+	taste_description = "gorycz"
 	glass_name = "glass of cheese milk"
 
 /datum/reagent/consumable/milk/shoat
@@ -296,25 +296,25 @@
 /datum/reagent/consumable/milk/halloumi
 	name = "Halloumi Cheese Milk"
 	description = "Nieprzezroczysty biały płyn."
-	taste_description = "bitter"
+	taste_description = "gorycz"
 	glass_name = "glass of cheese milk"
 
 /datum/reagent/consumable/milk/mozzarella
 	name = "Mozzarella Cheese Milk"
 	description = "Nieprzezroczysty biały płyn."
-	taste_description = "bitter"
+	taste_description = "gorycz"
 	glass_name = "glass of cheese milk"
 
 /datum/reagent/consumable/milk/parmesan
 	name = "Parmesan Cheese Milk"
 	description = "Nieprzezroczysty biały płyn."
-	taste_description = "bitter"
+	taste_description = "gorycz"
 	glass_name = "glass of cheese milk"
 
 /datum/reagent/consumable/milk/swiss
 	name = "Swiss Cheese Milk"
 	description = "Nieprzezroczysty biały płyn."
-	taste_description = "bitter"
+	taste_description = "gorycz"
 	glass_name = "glass of cheese milk"
 
 /datum/reagent/consumable/milk/on_mob_life(mob/living/carbon/M)
@@ -399,7 +399,7 @@
 	chem_flags = CHEMICAL_BASIC_DRINK
 	nutriment_factor = 0
 	overdose_threshold = 80
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 	glass_icon_state = "glass_brown"
 	glass_name = "glass of coffee"
 	glass_desc = "Nie upuść jej, bo wszędzie rozpryśnie się wrzący płyn i odłamki szkła."
@@ -757,7 +757,7 @@
 	reagent_state = SOLID
 	color = "#619494" // rgb: 97, 148, 148
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "ice"
+	taste_description = "lód"
 	glass_icon_state = "iceglass"
 	glass_name = "glass of ice"
 	glass_desc = "Zasadniczo powinieneś tam włożyć jeszcze coś..."
@@ -917,7 +917,7 @@
 	description = "Wyciskany z prawdziwej dyni."
 	color = "#FFA500"
 	chem_flags = CHEMICAL_RNG_BOTANY
-	taste_description = "pumpkin"
+	taste_description = "dynia"
 	hydration_factor = 8 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/blumpkinjuice
@@ -968,7 +968,7 @@
 	description = "Łagodzi objawy kaszlu."
 	color = "#80AF9C"
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "mint"
+	taste_description = "mięta"
 	glass_icon_state = "glass_green"
 	glass_name = "glass of menthol"
 	glass_desc = "Ma naturalnie miętowy smak i daje bardzo lekkie uczucie odrętwienia."
@@ -993,7 +993,7 @@
 	description = "Czemu..."
 	color = "#FFA500"
 	chem_flags = NONE
-	taste_description = "parsnip"
+	taste_description = "pasternak"
 	glass_name = "glass of parsnip juice"
 	hydration_factor = 10 * REAGENTS_METABOLISM
 
@@ -1002,7 +1002,7 @@
 	description = "Po prostu brzoskwiniowo."
 	color = "#E78108"
 	chem_flags = CHEMICAL_RNG_BOTANY
-	taste_description = "peaches"
+	taste_description = "brzoskwinie"
 	glass_name = "glass of peach juice"
 	hydration_factor = 10 * REAGENTS_METABOLISM
 
@@ -1011,7 +1011,7 @@
 	description = "Cierpki, tropikalny i budzący gorące spory."
 	color = "#F7D435"
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "pineapple"
+	taste_description = "ananas"
 	glass_name = "glass of pineapple juice"
 	glass_desc = "Cierpki, tropikalny i budzący gorące spory."
 	hydration_factor = 10 * REAGENTS_METABOLISM
@@ -1038,7 +1038,7 @@
 	color = "#e6ddc3"
 	chem_flags = CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
 	quality = DRINK_GOOD
-	taste_description = "wonder"
+	taste_description = "zachwyt"
 	glass_icon_state = "red_queen"
 	glass_name = "Red Queen"
 	glass_desc = "WYPIJ MNIE."
@@ -1079,7 +1079,7 @@
 	name = "Beef Broth"
 	color = "#100800" // rgb: 16, 8, 0 , just like cola
 	chem_flags = CHEMICAL_RNG_BOTANY
-	taste_description = "Pure Beef Essence"
+	taste_description = "czysta esencja wołowiny"
 	glass_icon_state  = "glass_brown"
 	glass_name = "glass of Space Cola?"
 	glass_desc = "Szklanka czegoś, co wygląda na orzeźwiającą Space Colę."

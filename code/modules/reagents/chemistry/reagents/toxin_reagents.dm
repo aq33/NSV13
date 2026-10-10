@@ -6,7 +6,7 @@
 	description = "Toksyczna substancja."
 	color = "#CF3600" // rgb: 207, 54, 0
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 	taste_mult = 1.2
 	var/toxpwr = 1.5
 	var/silent_toxin = FALSE //won't produce a pain message when processed by liver/life() if there isn't another non-silent toxin present.
@@ -23,7 +23,7 @@
 	color = "#792300" // rgb: 121, 35, 0
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
 	toxpwr = 2.5
-	taste_description = "mushroom"
+	taste_description = "grzyb"
 
 /datum/reagent/toxin/mutagen
 	name = "Unstable Mutagen"
@@ -31,7 +31,7 @@
 	color = "#00FF00"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST
 	toxpwr = 0
-	taste_description = "slime"
+	taste_description = "szlam"
 	taste_mult = 0.9
 
 /datum/reagent/toxin/mutagen/reaction_mob(mob/living/carbon/M, method=TOUCH, reac_volume)
@@ -94,7 +94,7 @@
 	color = "#7DC3A0"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	toxpwr = 0
-	taste_description = "acid"
+	taste_description = "kwas"
 
 /datum/reagent/toxin/lexorin/on_mob_life(mob/living/carbon/C)
 	. = TRUE
@@ -115,7 +115,7 @@
 	color = "#801E28" // rgb: 128, 30, 40
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	toxpwr = 0
-	taste_description = "slime"
+	taste_description = "szlam"
 	taste_mult = 1.3
 
 /datum/reagent/toxin/slimejelly/on_mob_life(mob/living/carbon/M)
@@ -134,7 +134,7 @@
 	color = "#611e80"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	toxpwr = 0
-	taste_description = "slime"
+	taste_description = "szlam"
 	taste_mult = 1.5
 
 /datum/reagent/toxin/slimeooze/on_mob_life(mob/living/carbon/M)
@@ -153,7 +153,7 @@
 	color = "#CF3600" // rgb: 207, 54, 0
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN
 	toxpwr = 0
-	taste_description = "mint"
+	taste_description = "mięta"
 
 /datum/reagent/toxin/minttoxin/on_mob_life(mob/living/carbon/M)
 	if(HAS_TRAIT_FROM(M, TRAIT_FAT, OBESITY))
@@ -168,7 +168,7 @@
 	color = "#003333" // rgb: 0, 51, 51
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
 	toxpwr = 2
-	taste_description = "fish"
+	taste_description = "ryba"
 
 /datum/reagent/toxin/carpotoxin/on_mob_metabolize(mob/living/carbon/L)
 	if(iscatperson(L))
@@ -183,7 +183,7 @@
 	color = "#669900" // rgb: 102, 153, 0
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	toxpwr = 0
-	taste_description = "death"
+	taste_description = "śmierć"
 
 /datum/reagent/toxin/zombiepowder/on_mob_life(mob/living/carbon/M)
 	if(current_cycle >= 10) // delayed activation for toxin
@@ -203,7 +203,7 @@
 	color = "#664700" // rgb: 102, 71, 0
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	toxpwr = 0.8
-	taste_description = "death"
+	taste_description = "śmierć"
 
 /datum/reagent/toxin/ghoulpowder/on_mob_metabolize(mob/living/L)
 	..()
@@ -224,7 +224,7 @@
 	color = "#B31008" // rgb: 139, 166, 233
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
 	toxpwr = 0
-	taste_description = "sourness"
+	taste_description = "kwaśność"
 
 /datum/reagent/toxin/mindbreaker/on_mob_life(mob/living/carbon/M)
 	M.hallucination += 5
@@ -294,7 +294,7 @@
 	color = "#9ACD32"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	toxpwr = 0.5
-	taste_description = "burning"
+	taste_description = "pieczenie"
 
 /datum/reagent/toxin/spore_burning/on_mob_life(mob/living/carbon/M)
 	M.adjust_fire_stacks(2)
@@ -369,7 +369,7 @@
 	color = "#F0F8FF" // rgb: 240, 248, 255
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST | CHEMICAL_GOAL_BARTENDER_SERVING
 	toxpwr = 0
-	taste_description = "silence"
+	taste_description = "cisza"
 
 /datum/reagent/toxin/mutetoxin/on_mob_life(mob/living/carbon/M)
 	M.silent = max(M.silent, 3)
@@ -657,7 +657,7 @@
 	name = "Lipolicide"
 	description = "Silna toksyna niszcząca komórki tłuszczowe, która w krótkim czasie znacznie zmniejsza masę ciała. Śmiertelna dla osób bez składników odżywczych w organizmie."
 	silent_toxin = TRUE
-	taste_description = "mothballs"
+	taste_description = "naftalina"
 	reagent_state = LIQUID
 	color = "#F0FFF0"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
@@ -693,7 +693,7 @@
 	metabolization_rate = REAGENTS_METABOLISM
 	overdose_threshold = 29
 	toxpwr = 0
-	taste_description = "vomit"
+	taste_description = "wymiociny"
 
 /datum/reagent/toxin/spewium/on_mob_life(mob/living/carbon/C)
 	.=..()
@@ -754,7 +754,7 @@
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	metabolization_rate = 0.6 * REAGENTS_METABOLISM
 	toxpwr = 0.5
-	taste_description = "spinning"
+	taste_description = "wirowanie"
 	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/toxin/rotatium/on_mob_life(mob/living/carbon/M)
@@ -801,7 +801,7 @@
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	toxpwr = 1
 	var/acidpwr = 10 //the amount of protection removed from the armour
-	taste_description = "acid"
+	taste_description = "kwas"
 	self_consuming = TRUE
 	process_flags = ORGANIC | SYNTHETIC
 
@@ -869,7 +869,7 @@
 	color = "#F0F8FF" // rgb: 240, 248, 255
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST
 	toxpwr = 0
-	taste_description = "stillness"
+	taste_description = "bezruch"
 
 /datum/reagent/toxin/mimesbane/on_mob_metabolize(mob/living/L)
 	ADD_TRAIT(L, TRAIT_EMOTEMUTE, type)
@@ -945,7 +945,7 @@
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	toxpwr = 0
-	taste_description = "tannin"
+	taste_description = "garbniki"
 
 /datum/reagent/toxin/bungotoxin/on_mob_life(mob/living/carbon/M)
 	M.adjustOrganLoss(ORGAN_SLOT_HEART, 3)
@@ -963,7 +963,7 @@
 	color = "#3cff00"
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
 	toxpwr = 2
-	taste_description = "salt"
+	taste_description = "sól"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 
 /datum/reagent/toxin/morphvenom/on_mob_life(mob/living/carbon/M)

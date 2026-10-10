@@ -62,7 +62,7 @@
 	bite_consumption_mod = 2
 	foodtypes = VEGETABLES
 	wine_power = 35
-	tastes = list("thistle" = 2, "artichoke" = 1)
+	tastes = list("oset" = 2, "karczoch" = 1)
 
 // Cabbage
 /obj/item/seeds/cabbage
@@ -147,7 +147,7 @@
 	trash_type = /obj/item/gun/ballistic/revolver
 	bite_consumption_mod = 2
 	foodtypes = FRUIT
-	tastes = list("gunpowder" = 1)
+	tastes = list("proch strzelniczy" = 1)
 	wine_power = 90 //It burns going down, too.
 
 //Cherry Bombs

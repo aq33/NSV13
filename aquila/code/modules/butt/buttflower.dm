@@ -38,7 +38,7 @@
 	name = "Fartium"
 	description = "Związek chemiczny pobudzający skoncentrowaną produkcję gazów w okolicy krocza."
 	color = "#8A4B08" // rgb: 138, 75, 8
-	taste_description = "farts"
+	taste_description = "bąki"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	overdose_threshold = 30
 	addiction_threshold = 50

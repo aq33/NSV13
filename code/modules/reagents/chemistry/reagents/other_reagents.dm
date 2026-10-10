@@ -4,7 +4,7 @@
 	color = "#C80000" // rgb: 200, 0, 0
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST
 	metabolization_rate = 5 //fast rate so it disappears fast.
-	taste_description = "iron"
+	taste_description = "żelazo"
 	taste_mult = 1.3
 	glass_icon_state = "glass_red"
 	glass_name = "glass of tomato juice"
@@ -114,7 +114,7 @@
 	name = "Vaccine"
 	color = "#C81040" // rgb: 200, 16, 64
 	chem_flags = NONE
-	taste_description = "slime"
+	taste_description = "szlam"
 
 /datum/reagent/vaccine/reaction_mob(mob/living/L, method=TOUCH, reac_volume)
 	if(islist(data) && (method == INGEST || method == INJECT))
@@ -175,7 +175,7 @@
 	description = "Wszechobecna substancja chemiczna złożona z wodoru i tlenu."
 	color = "#AAAAAA77" // rgb: 170, 170, 170, 77 (alpha)
 	chem_flags = CHEMICAL_BASIC_ELEMENT | CHEMICAL_RNG_GENERAL // because we want to give it to oozelings
-	taste_description = "water"
+	taste_description = "woda"
 	var/cooling_temperature = 2
 	glass_icon_state = "glass_clear"
 	glass_name = "glass of water"
@@ -351,7 +351,7 @@
 	name = "Unholy Water"
 	description = "Coś, co nie powinno istnieć na tym planie egzystencji."
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "suffering"
+	taste_description = "cierpienie"
 
 /datum/reagent/fuel/unholywater/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if(method == TOUCH || method == VAPOR)
@@ -383,7 +383,7 @@
 	name = "Hell Water"
 	description = "TWOJE CIAŁO! PŁONIE!"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "burning"
+	taste_description = "pieczenie"
 	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/hellwater/on_mob_life(mob/living/carbon/M)
@@ -405,7 +405,7 @@
 	description = "Smar to substancja wprowadzana między dwie poruszające się powierzchnie, by zmniejszyć tarcie i zużycie. He, he."
 	color = "#009CA8" // rgb: 0, 156, 168
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST | CHEMICAL_GOAL_BARTENDER_SERVING
-	taste_description = "cherry" // by popular demand
+	taste_description = "wiśnia" // by popular demand
 	var/lube_kind = TURF_WET_LUBE ///What kind of slipperiness gets added to turfs.
 
 /datum/reagent/lube/reaction_turf(turf/open/T, reac_volume)
@@ -534,7 +534,7 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
 	metabolization_rate = 0.2 //metabolizes to prevent micro-dosage. about 4u is necessary to transform
-	taste_description = "slime"
+	taste_description = "szlam"
 	var/race = /datum/species/human
 	process_flags = ORGANIC | SYNTHETIC
 	var/list/mutationtexts = list( "You don't feel very well." = MUT_MSG_IMMEDIATE,
@@ -619,7 +619,7 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	chem_flags = CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	race = /datum/species/fly
-	taste_description = "trash"
+	taste_description = "śmieci"
 
 /datum/reagent/mutationtoxin/moth
 	name = "Moth Mutation Toxin"
@@ -627,7 +627,7 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	chem_flags = CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	race = /datum/species/moth
-	taste_description = "clothing"
+	taste_description = "ubrania"
 
 /datum/reagent/mutationtoxin/apid
 	name = "Apid Mutation Toxin"
@@ -635,7 +635,7 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	chem_flags = CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	race = /datum/species/apid
-	taste_description = "honey"
+	taste_description = "miód"
 
 /datum/reagent/mutationtoxin/pod
 	name = "Podperson Mutation Toxin"
@@ -643,7 +643,7 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	chem_flags = CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	race = /datum/species/pod
-	taste_description = "flowers"
+	taste_description = "kwiaty"
 
 /datum/reagent/mutationtoxin/jelly
 	name = "Imperfect Mutation Toxin"
@@ -651,7 +651,7 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	chem_flags = CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	race = /datum/species/jelly
-	taste_description = "grandma's gelatin"
+	taste_description = "galaretka babci"
 
 /datum/reagent/mutationtoxin/jelly/on_mob_life(mob/living/carbon/human/H)
 	if(isjellyperson(H))
@@ -674,7 +674,7 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	chem_flags = CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	race = /datum/species/golem/random
-	taste_description = "rocks"
+	taste_description = "kamienie"
 
 /datum/reagent/mutationtoxin/abductor
 	name = "Abductor Mutation Toxin"
@@ -689,7 +689,7 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	chem_flags = CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	race = /datum/species/ethereal
-	taste_description = "shocking"
+	taste_description = "szok"
 
 /datum/reagent/mutationtoxin/oozeling
 	name = "Oozeling Mutation Toxin"
@@ -731,7 +731,7 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	chem_flags = CHEMICAL_RNG_FUN
 	race = /datum/species/lizard/ashwalker
-	taste_description = "savagery"
+	taste_description = "dzikość"
 
 
 //DANGEROUS RACES
@@ -749,7 +749,7 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	chem_flags = CHEMICAL_RNG_FUN
 	race = /datum/species/plasmaman
-	taste_description = "plasma"
+	taste_description = "plazma"
 
 #undef MUT_MSG_IMMEDIATE
 #undef MUT_MSG_EXTENDED
@@ -761,7 +761,7 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	chem_flags = CHEMICAL_RNG_FUN
 	metabolization_rate = INFINITY
-	taste_description = "slime"
+	taste_description = "szlam"
 
 /datum/reagent/mulligan/on_mob_life(mob/living/carbon/human/H)
 	..()
@@ -776,7 +776,7 @@
 	description = "Zaawansowana wypaczająca toksyna wytwarzana przez szlamy."
 	color = "#13BC5E" // rgb: 19, 188, 94
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
-	taste_description = "slime"
+	taste_description = "szlam"
 
 /datum/reagent/aslimetoxin/reaction_mob(mob/living/L, method=TOUCH, reac_volume)
 	if(method != TOUCH)
@@ -787,7 +787,7 @@
 	description = "Zaawansowana wypaczająca toksyna wytwarzana przez coś okropnego."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
-	taste_description = "decay"
+	taste_description = "rozkład"
 
 /datum/reagent/gluttonytoxin/reaction_mob(mob/living/L, method=TOUCH, reac_volume)
 	L.ForceContractDisease(new /datum/disease/transformation/morph(), FALSE, TRUE)
@@ -798,7 +798,7 @@
 	color = "#202040" // rgb: 20, 20, 40
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 
 /datum/reagent/serotrotium/on_mob_life(mob/living/carbon/M)
 	if(ishuman(M))
@@ -879,7 +879,7 @@
 	reagent_state = SOLID
 	color = "#A0A0A0" // rgb: 160, 160, 160
 	chem_flags = CHEMICAL_BASIC_ELEMENT
-	taste_description = "sweetness"
+	taste_description = "słodycz"
 
 
 /datum/reagent/mercury
@@ -894,7 +894,7 @@
 	description = "Słodka substancja neurotoksyczna. Sekret rzymskiego słodkiego wina."
 	color = "#AAAAAA"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN // because brain damage is fun
-	taste_description = "sweetness"
+	taste_description = "słodycz"
 	taste_mult = 3
 
 /datum/reagent/mercury/on_mob_life(mob/living/carbon/M)
@@ -933,7 +933,7 @@
 	reagent_state = GAS
 	color = "#808080" // rgb: 128, 128, 128
 	chem_flags = CHEMICAL_BASIC_ELEMENT
-	taste_description = "chlorine"
+	taste_description = "chlor"
 
 /datum/reagent/chlorine/on_mob_life(mob/living/carbon/M)
 	M.take_bodypart_damage(1*REM, 0, 0, 0)
@@ -946,7 +946,7 @@
 	reagent_state = GAS
 	color = "#808080" // rgb: 128, 128, 128
 	chem_flags = CHEMICAL_BASIC_ELEMENT
-	taste_description = "acid"
+	taste_description = "kwas"
 	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/fluorine/on_mob_life(mob/living/carbon/M)
@@ -968,7 +968,7 @@
 	reagent_state = SOLID
 	color = "#832828" // rgb: 131, 40, 40
 	chem_flags = CHEMICAL_BASIC_ELEMENT
-	taste_description = "vinegar"
+	taste_description = "ocet"
 
 /datum/reagent/lithium
 	name = "Lithium"
@@ -990,14 +990,14 @@
 	description = "Glicerol to prosty związek z grupy polioli. Ma słodki smak i niską toksyczność."
 	color = "#808080" // rgb: 128, 128, 128
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "sweetness"
+	taste_description = "słodycz"
 
 /datum/reagent/space_cleaner/sterilizine
 	name = "Sterilizine"
 	description = "Odkaża rany przed operacją."
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 
 /datum/reagent/space_cleaner/sterilizine/reaction_mob(mob/living/carbon/C, method=TOUCH, reac_volume)
 	if(method in list(TOUCH, VAPOR, PATCH))
@@ -1013,7 +1013,7 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	chem_flags = CHEMICAL_BASIC_ELEMENT
 	reagent_state = SOLID
-	taste_description = "iron"
+	taste_description = "żelazo"
 
 
 /datum/reagent/iron/on_mob_life(mob/living/carbon/C)
@@ -1153,7 +1153,7 @@
 	description = "Związek do czyszczenia. Teraz z 50% więcej podchlorynu sodu! Nie nadaje się do spożycia. W razie połknięcia natychmiast skontaktuj się z ośrodkiem toksykologicznym"
 	color = "#A5F0EE" // rgb: 165, 240, 238
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "sourness"
+	taste_description = "kwaśność"
 	reagent_weight = 0.6 //so it sprays further
 	var/toxic = FALSE //turn to true if someone drinks this, so it won't poison people who are simply getting sprayed down
 
@@ -1221,7 +1221,7 @@
 	description = "Silny, kwaśny środek czyszczący sprzedawany przez Waffle Co. Działa na materię organiczną, nie naruszając innych przedmiotów."
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	metabolization_rate = 1.5 * REAGENTS_METABOLISM
-	taste_description = "acid"
+	taste_description = "kwas"
 
 /datum/reagent/space_cleaner/ez_clean/on_mob_life(mob/living/carbon/M)
 	M.adjustBruteLoss(3.33)
@@ -1241,7 +1241,7 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST
 	metabolization_rate = 1.5 * REAGENTS_METABOLISM
-	taste_description = "sourness"
+	taste_description = "kwaśność"
 
 /datum/reagent/cryptobiolin/on_mob_life(mob/living/carbon/M)
 	M.Dizzy(1)
@@ -1255,7 +1255,7 @@
 	description = "Impedrezen to narkotyk upośledzający sprawność przez spowolnienie wyższych funkcji komórek mózgowych."
 	color = "#C8A5DC" // rgb: 200, 165, 220A
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "numbness"
+	taste_description = "drętwienie"
 
 /datum/reagent/impedrezene/on_mob_life(mob/living/carbon/M)
 	M.jitteriness = max(M.jitteriness-5,0)
@@ -1272,7 +1272,7 @@
 	description = "Mikroskopijne roboty budowlane."
 	color = "#535E66" // rgb: 83, 94, 102
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
-	taste_description = "sludge"
+	taste_description = "breja"
 
 /datum/reagent/nanomachines/reaction_mob(mob/living/L, method=TOUCH, reac_volume, show_message = 1, touch_protection = 0)
 	if(method==PATCH || method==INGEST || method==INJECT || (method == VAPOR && prob(min(reac_volume,100)*(1 - touch_protection))))
@@ -1283,7 +1283,7 @@
 	description = "Mikroby o zupełnie obcej budowie komórkowej."
 	color = "#535E66" // rgb: 83, 94, 102
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
-	taste_description = "sludge"
+	taste_description = "breja"
 
 /datum/reagent/xenomicrobes/reaction_mob(mob/living/L, method=TOUCH, reac_volume, show_message = 1, touch_protection = 0)
 	if(method==PATCH || method==INGEST || method==INJECT || (method == VAPOR && prob(min(reac_volume,100)*(1 - touch_protection))))
@@ -1294,7 +1294,7 @@
 	description = "Aktywne zarodniki grzybów."
 	color = "#92D17D" // rgb: 146, 209, 125
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
-	taste_description = "slime"
+	taste_description = "szlam"
 
 
 /datum/reagent/fungalspores/reaction_mob(mob/living/L, method=TOUCH, reac_volume, show_message = 1, touch_protection = 0)
@@ -1306,7 +1306,7 @@
 	description = "Czynnik wirusologiczny zarażający gastrolozą."
 	color = "#003300" // rgb(0, 51, 0)
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
-	taste_description = "goo"
+	taste_description = "maź"
 
 /datum/reagent/snail/reaction_mob(mob/living/L, method=TOUCH, reac_volume, show_message = 1, touch_protection = 0)
 	if(method==PATCH || method==INGEST || method==INJECT || (method == VAPOR && prob(min(reac_volume,100)*(1 - touch_protection))))
@@ -1341,14 +1341,14 @@
 	reagent_state = GAS
 	color = "#404030" // rgb: 64, 64, 48
 	chem_flags = NONE
-	taste_description = "mordant"
+	taste_description = "zaprawa"
 
 /datum/reagent/diethylamine
 	name = "Diethylamine"
 	description = "Amina drugorzędowa, lekko żrąca."
 	color = "#604030" // rgb: 96, 64, 48
 	chem_flags = NONE
-	taste_description = "iron"
+	taste_description = "żelazo"
 
 /datum/reagent/carbondioxide
 	name = "Carbon Dioxide"
@@ -1377,7 +1377,7 @@
 	metabolization_rate = 1.5 * REAGENTS_METABOLISM
 	color = "#808080"
 	chem_flags = NONE
-	taste_description = "sweetness"
+	taste_description = "słodycz"
 
 /datum/reagent/nitrous_oxide/reaction_obj(obj/O, reac_volume)
 	if((!O) || (!reac_volume))
@@ -1411,7 +1411,7 @@
 	metabolization_rate = REAGENTS_METABOLISM * 0.5 // Because stimulum/nitryl are handled through gas breathing, metabolism must be lower for breathcode to keep up
 	color = "#E1A116"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "sourness"
+	taste_description = "kwaśność"
 	///stores whether or not the mob has been warned that they are having difficulty breathing.
 	var/warned = FALSE
 
@@ -1449,7 +1449,7 @@
 	metabolization_rate = REAGENTS_METABOLISM * 0.5 // Because stimulum/nitryl are handled through gas breathing, metabolism must be lower for breathcode to keep up
 	color = "#90560B"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "burning"
+	taste_description = "pieczenie"
 
 /datum/reagent/nitryl/on_mob_metabolize(mob/living/L)
 	..()
@@ -1630,7 +1630,7 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	chem_flags = CHEMICAL_BASIC_ELEMENT
-	taste_description = "oil"
+	taste_description = "olej"
 	process_flags = ORGANIC | SYNTHETIC
 
 
@@ -1640,7 +1640,7 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	chem_flags = CHEMICAL_BASIC_ELEMENT
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 	taste_mult = 1.5
 	process_flags = ORGANIC | SYNTHETIC
 
@@ -1664,7 +1664,7 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	chem_flags = CHEMICAL_GOAL_BARTENDER_SERVING // this is lame one to put random. at least good as bartender flavor.
-	taste_description = "carpet" // Your tounge feels furry.
+	taste_description = "dywan" // Your tounge feels furry.
 
 /datum/reagent/carpet/reaction_turf(turf/T, reac_volume)
 	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
@@ -1678,7 +1678,7 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	chem_flags = CHEMICAL_BASIC_ELEMENT
-	taste_description = "chemicals"
+	taste_description = "chemikalia"
 
 /datum/reagent/phenol
 	name = "Phenol"
@@ -1686,7 +1686,7 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	chem_flags = CHEMICAL_RNG_BOTANY
-	taste_description = "acid"
+	taste_description = "kwas"
 
 /datum/reagent/ash
 	name = "Ash"
@@ -1694,7 +1694,7 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	chem_flags = CHEMICAL_RNG_BOTANY
-	taste_description = "ash"
+	taste_description = "popiół"
 
 /datum/reagent/acetone
 	name = "Acetone"
@@ -1702,7 +1702,7 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	chem_flags = CHEMICAL_RNG_BOTANY
-	taste_description = "acid"
+	taste_description = "kwas"
 
 /datum/reagent/colorful_reagent
 	name = "Colorful Reagent"
@@ -1711,7 +1711,7 @@
 	color = "#C8A5DC"
 	var/list/random_color_list = list("#00aedb","#a200ff","#f47835","#d41243","#d11141","#00b159","#00aedb","#f37735","#ffc425","#008744","#0057e7","#d62d20","#ffa700")
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "rainbows"
+	taste_description = "tęcze"
 	var/can_colour_mobs = TRUE
 
 
@@ -1742,7 +1742,7 @@
 	color = "#C8A5DC"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	var/list/potential_colors = list("#0ad","#a0f","#f73","#d14","#d14","#0b5","#0ad","#f73","#fc2","#084","#05e","#d22","#fa0") // fucking hair code
-	taste_description = "sourness"
+	taste_description = "kwaśność"
 
 /datum/reagent/hair_dye/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if(method == TOUCH || method == VAPOR)
@@ -1758,7 +1758,7 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "sourness"
+	taste_description = "kwaśność"
 
 /datum/reagent/barbers_aid/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if(method == TOUCH || method == VAPOR)
@@ -1776,7 +1776,7 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "sourness"
+	taste_description = "kwaśność"
 
 /datum/reagent/concentrated_barbers_aid/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if(method == TOUCH || method == VAPOR)
@@ -1801,7 +1801,7 @@
 	reagent_state = LIQUID
 	chem_flags = NONE
 	color = "#FFFFD6" // very very light yellow
-	taste_description = "acid"
+	taste_description = "kwas"
 
 
 /datum/reagent/drying_agent
@@ -1810,7 +1810,7 @@
 	reagent_state = LIQUID
 	color = "#A70FFF"
 	chem_flags = NONE
-	taste_description = "dryness"
+	taste_description = "suchość"
 
 
 /datum/reagent/drying_agent/reaction_turf(turf/open/T, reac_volume)
@@ -1829,32 +1829,32 @@
 	name = "Mutagenic Agar"
 	color = "#A3C00F" // rgb: 163,192,15
 	chem_flags = CHEMICAL_RNG_BOTANY
-	taste_description = "sourness"
+	taste_description = "kwaśność"
 
 /datum/reagent/toxin/mutagen/mutagenvirusfood/sugar
 	name = "Sucrose Agar"
 	color = "#41B0C0" // rgb: 65,176,192
 	chem_flags = CHEMICAL_RNG_BOTANY
-	taste_description = "sweetness"
+	taste_description = "słodycz"
 
 /datum/reagent/medicine/synaptizine/synaptizinevirusfood
 	name = "Virus Rations"
 	color = "#D18AA5" // rgb: 209,138,165
 	chem_flags = CHEMICAL_RNG_BOTANY
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 
 /datum/reagent/toxin/plasma/plasmavirusfood
 	name = "Virus Plasma"
 	color = "#A69DA9" // rgb: 166,157,169
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 	taste_mult = 1.5
 
 /datum/reagent/toxin/plasma/plasmavirusfood/weak
 	name = "Weakened Virus Plasma"
 	color = "#CEC3C6" // rgb: 206,195,198
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 	taste_mult = 1.5
 
 /datum/reagent/uranium/uraniumvirusfood
@@ -1917,7 +1917,7 @@
 	color = "#123524" // RGB (18, 53, 36)
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN // romerol zombie outbreak from a maint pill? how can this go not fun.
 	metabolization_rate = INFINITY
-	taste_description = "brains"
+	taste_description = "mózg"
 
 /datum/reagent/romerol/reaction_mob(mob/living/carbon/human/H, method=TOUCH, reac_volume)
 	// Silently add the zombie infection organ to be activated upon death
@@ -1944,7 +1944,7 @@
 	color = "#ff0000"//strong red. rgb 255, 0, 0
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
 	var/current_size = RESIZE_DEFAULT_SIZE
-	taste_description = "bitterness" // apparently what viagra tastes like
+	taste_description = "gorycz" // apparently what viagra tastes like
 
 /datum/reagent/growthserum/on_mob_life(mob/living/carbon/H)
 	var/newsize = current_size
@@ -1976,14 +1976,14 @@
 	description = "Ropopochodne składniki plastiku."
 	color = "#f7eded"
 	chem_flags = NONE
-	taste_description = "plastic"
+	taste_description = "plastik"
 
 /datum/reagent/glitter
 	name = "Generic Glitter"
 	description = "Jeśli widzisz ten opis, skontaktuj się z koderem."
 	color = "#FFFFFF" //pure white
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_BOTANY
-	taste_description = "plastic"
+	taste_description = "plastik"
 	reagent_state = SOLID
 	var/glitter_type = /obj/effect/decal/cleanable/glitter
 
@@ -2014,7 +2014,7 @@
 	description = "Bezbarwny płyn, który tłumi u przyjmujących agresywne popędy."
 	color = "#AAAAAA55"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "water"
+	taste_description = "woda"
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 
 /datum/reagent/pax/on_mob_metabolize(mob/living/L)
@@ -2054,7 +2054,7 @@
 	description = "Wytrąca cel z równowagi i przyprawia o zawroty głowy."
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	metabolization_rate = 1.5 * REAGENTS_METABOLISM
-	taste_description = "dizziness"
+	taste_description = "zawroty głowy"
 
 /datum/reagent/peaceborg/confuse/on_mob_life(mob/living/carbon/M)
 	if(M.confused < 6)
@@ -2070,7 +2070,7 @@
 	description = "Wywołuje rozluźnienie mięśni, przez co trudno trzymać przedmioty i stać."
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	metabolization_rate = 1.5 * REAGENTS_METABOLISM
-	taste_description = "relaxing"
+	taste_description = "relaks"
 
 /datum/reagent/peaceborg/inabizine/on_mob_life(mob/living/carbon/M)
 	if(prob(33))
@@ -2087,7 +2087,7 @@
 	description = "Bardzo łagodna toksyna wytrzymałości, która męczy cel. Całkowicie nieszkodliwa."
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	metabolization_rate = 1.5 * REAGENTS_METABOLISM
-	taste_description = "tiredness"
+	taste_description = "zmęczenie"
 
 /datum/reagent/peaceborg/tire/on_mob_life(mob/living/carbon/M)
 	var/healthcomp = (100 - M.health)	//DOES NOT ACCOUNT FOR ADMINBUS THINGS THAT MAKE YOU HAVE MORE THAN 200/210 HEALTH, OR SOMETHING OTHER THAN A HUMAN PROCESSING THIS.
@@ -2159,7 +2159,7 @@
 	description = "Specjalna mikstura, podobno pobłogosławiona przez pradawnego boga. Sprawia, że pijący świeci dosłownym oświeceniem."
 	color = "#B5A642"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "enlightenment"
+	taste_description = "oświecenie"
 	metabolization_rate = 0.8 * REAGENTS_METABOLISM
 	var/datum/language_holder/prev_language
 

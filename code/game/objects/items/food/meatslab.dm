@@ -16,7 +16,7 @@
 		/datum/reagent/consumable/nutriment/fat = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	) //Meat has fats that a food processor can process into cooking oil
-	tastes = list("meat" = 1)
+	tastes = list("mięso" = 1)
 	foodtypes = MEAT | RAW
 	///Legacy code, handles the coloring of the overlay of the cutlets made from this.
 	var/slab_color = "#FF0000"
@@ -38,7 +38,7 @@
 
 /obj/item/food/meat/slab/human
 	name = "meat"
-	tastes = list("tender meat" = 1)
+	tastes = list("delikatne mięso" = 1)
 	foodtypes = MEAT | RAW | GORE
 
 /obj/item/food/meat/slab/human/make_grillable()
@@ -57,7 +57,7 @@
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/toxin/slimejelly = 3
 	)
-	tastes = list("slime" = 1, "jelly" = 1)
+	tastes = list("szlam" = 1, "galaretka" = 1)
 	foodtypes = MEAT | RAW | TOXIC
 
 /obj/item/food/meat/slab/human/mutant/slime/make_dryable()
@@ -70,7 +70,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/iron = 3
 	)
-	tastes = list("rock" = 1)
+	tastes = list("skała" = 1)
 	foodtypes = MEAT | RAW | GROSS
 
 /obj/item/food/meat/slab/human/mutant/golem/make_dryable()
@@ -84,7 +84,7 @@
 /obj/item/food/meat/slab/human/mutant/lizard
 	icon_state = "lizardmeat"
 	desc = "Delicious dino damage."
-	tastes = list("meat" = 4, "scales" = 1)
+	tastes = list("mięso" = 4, "łuski" = 1)
 	foodtypes = MEAT | RAW | GORE
 
 /obj/item/food/meat/slab/human/mutant/lizard/make_grillable()
@@ -96,7 +96,7 @@
 /obj/item/food/meat/slab/human/mutant/plant
 	icon_state = "plantmeat"
 	desc = "All the joys of healthy eating with all the fun of cannibalism."
-	tastes = list("salad" = 1, "wood" = 1)
+	tastes = list("sałatka" = 1, "drewno" = 1)
 	foodtypes = VEGETABLES
 
 /obj/item/food/meat/slab/human/mutant/plant/make_grillable()
@@ -108,7 +108,7 @@
 /obj/item/food/meat/slab/human/mutant/shadow
 	icon_state = "shadowmeat"
 	desc = "Ow, the edge."
-	tastes = list("darkness" = 1, "meat" = 1)
+	tastes = list("ciemność" = 1, "mięso" = 1)
 	foodtypes = MEAT | RAW | GORE
 
 /obj/item/food/meat/slab/human/mutant/fly
@@ -118,7 +118,7 @@
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/uranium = 3
 	)
-	tastes = list("maggots" = 1, "the inside of a reactor" = 1)
+	tastes = list("czerwie" = 1, "wnętrze reaktora" = 1)
 	foodtypes = MEAT | RAW | GROSS | BUGS | GORE
 
 /obj/item/food/meat/slab/human/mutant/fly/make_dryable()
@@ -127,7 +127,7 @@
 /obj/item/food/meat/slab/human/mutant/moth
 	icon_state = "mothmeat"
 	desc = "Unpleasantly powdery and dry. Kind of pretty, though."
-	tastes = list("dust" = 1, "powder" = 1, "meat" = 2)
+	tastes = list("kurz" = 1, "proszek" = 1, "mięso" = 2)
 	foodtypes = MEAT | RAW | BUGS | GORE
 
 /obj/item/food/meat/slab/human/mutant/moth/make_dryable()
@@ -137,7 +137,7 @@
 	name = "bone"
 	icon_state = "skeletonmeat"
 	desc = "There's a point where this needs to stop, and clearly we have passed it."
-	tastes = list("bone" = 1)
+	tastes = list("kość" = 1)
 	foodtypes = GROSS | GORE
 
 /obj/item/food/meat/slab/human/mutant/skeleton/make_processable()
@@ -150,14 +150,14 @@
 	name = " meat (rotten)"
 	icon_state = "rottenmeat"
 	desc = "Halfway to becoming fertilizer for your garden."
-	tastes = list("brains" = 1, "meat" = 1)
+	tastes = list("mózg" = 1, "mięso" = 1)
 	foodtypes = RAW | MEAT | TOXIC | GORE | GROSS // who the hell would eat this
 
 /obj/item/food/meat/slab/human/mutant/ethereal
 	icon_state = "etherealmeat"
 	desc = "So shiny you feel like ingesting it might make you shine too"
 	food_reagents = list(/datum/reagent/consumable/liquidelectricity = 3)
-	tastes = list("pure electricity" = 2, "meat" = 1)
+	tastes = list("czysty prąd" = 2, "mięso" = 1)
 	foodtypes = RAW | MEAT | TOXIC | GORE
 
 /obj/item/food/meat/slab/human/mutant/ethereal/make_dryable()
@@ -166,7 +166,7 @@
 /obj/item/food/meat/slab/human/mutant/apid
 	icon_state = "apidmeat"
 	desc = "Smells like flowers, hopefully doesn't taste like one."
-	tastes = list("honey" = 1, "flowers" = 1, "meat" = 2)
+	tastes = list("miód" = 1, "kwiaty" = 1, "mięso" = 2)
 	foodtypes = MEAT | RAW | BUGS | GORE
 
 /obj/item/food/meat/slab/human/mutant/apid/make_dryable()
@@ -176,7 +176,7 @@
 	icon_state = "psyphoza_meat"
 	desc = "Psychically awaiting consumption, spooky."
 	food_reagents = list(/datum/reagent/drug/mushroomhallucinogen = 3)
-	tastes = list("pop candy" = 1, "meat" = 1)
+	tastes = list("strzelające cukierki" = 1, "mięso" = 1)
 	foodtypes = VEGETABLES | RAW | GORE
 	microwaved_type = /obj/item/food/meat/steak/plain/human/psyphoza
 
@@ -204,7 +204,7 @@
 	name = "meat product"
 	//icon_state = "meatproduct"
 	desc = "A slab of station reclaimed and chemically processed meat product."
-	tastes = list("meat flavoring" = 2, "modified starches" = 2, "natural & artificial dyes" = 1, "butyric acid" = 1) // its supposed to be various processed chemicals seen in very processed food. Butyric acid is a reference to how a certain North American Candymaker puts a chemical commonly seen in vomit into chocolate
+	tastes = list("aromat mięsny" = 2, "skrobia modyfikowana" = 2, "naturalne i sztuczne barwniki" = 1, "kwas masłowy" = 1) // its supposed to be various processed chemicals seen in very processed food. Butyric acid is a reference to how a certain North American Candymaker puts a chemical commonly seen in vomit into chocolate
 	foodtypes = RAW | MEAT
 
 /obj/item/food/meat/slab/meatproduct/make_dryable()
@@ -228,7 +228,7 @@
 /obj/item/food/meat/slab/corgi
 	name = "corgi meat"
 	desc = "Tastes like... well you know..."
-	tastes = list("meat" = 4, "a fondness for wearing hats" = 1)
+	tastes = list("mięso" = 4, "zamiłowanie do kapeluszy" = 1)
 	foodtypes = RAW | MEAT | GORE
 
 /obj/item/food/meat/slab/pug
@@ -239,7 +239,7 @@
 /obj/item/food/meat/slab/hamster
 	name = "hamster meat"
 	desc = "Hey, they eat eachother, so its justified... right..?"
-	tastes = list("meat" = 4, "fluffly adorableness" = 1)
+	tastes = list("mięso" = 4, "puchata uroczość" = 1)
 	foodtypes = RAW | MEAT | GORE
 
 /obj/item/food/meat/slab/killertomato
@@ -247,7 +247,7 @@
 	desc = "A slice from a huge tomato."
 	icon_state = "tomatomeat"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2)
-	tastes = list("tomato" = 1)
+	tastes = list("pomidor" = 1)
 	foodtypes = FRUIT // Yeah, tomatoes are FRUIT. Bite me.
 
 /obj/item/food/meat/slab/killertomato/make_grillable()
@@ -266,7 +266,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 		/datum/reagent/consumable/nutriment/fat = 6
 	)
-	tastes = list("meat" = 1, "salmon" = 1)
+	tastes = list("mięso" = 1, "łosoś" = 1)
 	foodtypes = RAW | MEAT
 
 /obj/item/food/meat/slab/bear/make_grillable()
@@ -284,7 +284,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 3
 	)
 	bite_consumption = 4
-	tastes = list("meat" = 1, "acid" = 1)
+	tastes = list("mięso" = 1, "kwas" = 1)
 	foodtypes = RAW | MEAT
 
 /obj/item/food/meat/slab/xeno/make_processable()
@@ -302,7 +302,7 @@
 		/datum/reagent/toxin = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("cobwebs" = 1)
+	tastes = list("pajęczyny" = 1)
 	foodtypes = RAW | MEAT | TOXIC
 
 /obj/item/food/meat/slab/spider/make_processable()
@@ -323,7 +323,7 @@
 		/datum/reagent/consumable/nutriment/fat = 3
 	)
 	icon_state = "goliathmeat"
-	tastes = list("meat" = 1)
+	tastes = list("mięso" = 1)
 	foodtypes = RAW | MEAT | TOXIC
 
 /obj/item/food/meat/slab/goliath/burn()
@@ -342,7 +342,7 @@
 	)
 	icon_state = "meatwheat_clump"
 	bite_consumption = 4
-	tastes = list("meat" = 1, "wheat" = 1)
+	tastes = list("mięso" = 1, "pszenica" = 1)
 	foodtypes = GRAIN
 
 /obj/item/food/meat/slab/gorilla
@@ -366,7 +366,7 @@
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/fat = 3
 	)
-	tastes = list("bacon" = 1)
+	tastes = list("bekon" = 1)
 	foodtypes = RAW | MEAT | BREAKFAST
 	crafting_complexity = FOOD_COMPLEXITY_1
 
@@ -382,7 +382,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 		/datum/reagent/consumable/nutriment/fat = 2
 	)
-	tastes = list("bacon" = 1)
+	tastes = list("bekon" = 1)
 	foodtypes = MEAT | BREAKFAST
 	crafting_complexity = FOOD_COMPLEXITY_1
 
@@ -394,7 +394,7 @@
 		/datum/reagent/tranquility = 5,
 		/datum/reagent/consumable/nutriment/fat = 3
 	)
-	tastes = list("meat" = 4, "tranquility" = 1)
+	tastes = list("mięso" = 4, "spokój" = 1)
 	foodtypes = RAW | MEAT
 
 /obj/item/food/meat/slab/gondola/make_grillable()
@@ -411,7 +411,7 @@
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/consumable/nutriment/fat = 3
 	)
-	tastes = list("beef" = 1, "cod fish" = 1)
+	tastes = list("wołowina" = 1, "dorsz" = 1)
 
 /obj/item/food/meat/slab/penguin/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/meat/steak/penguin, rand(30 SECONDS, 90 SECONDS), TRUE, TRUE) //Add medium rare later maybe?
@@ -430,7 +430,7 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/fat = 3
 	)
-	tastes = list("raw crab" = 1)
+	tastes = list("surowy krab" = 1)
 	foodtypes = RAW | MEAT
 
 /obj/item/food/meat/slab/rawcrab/make_grillable()
@@ -445,7 +445,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 		/datum/reagent/consumable/nutriment/fat = 2
 	)
-	tastes = list("crab" = 1)
+	tastes = list("krab" = 1)
 	foodtypes = MEAT
 	crafting_complexity = FOOD_COMPLEXITY_1
 
@@ -456,7 +456,7 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 6
 	) //low fat
-	tastes = list("chicken" = 1)
+	tastes = list("kurczak" = 1)
 
 /obj/item/food/meat/slab/chicken/make_dryable()
 	AddElement(/datum/element/dryable, /obj/item/food/sosjerky/healthy/lean)
@@ -471,7 +471,7 @@
 /obj/item/food/meat/slab/mothroach
 	name = "mothroach meat"
 	desc = "a light slab of mothroach meat"
-	tastes = list("gross" = 1)
+	tastes = list("obrzydlistwo" = 1)
 	foodtypes = RAW | MEAT | GORE
 
 /obj/item/food/meat/slab/mothroach/make_dryable()
@@ -488,7 +488,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 2
 	)
 	bite_consumption = 6
-	tastes = list("fish" = 1,"cruelty" = 2)
+	tastes = list("ryba" = 1,"okrucieństwo" = 2)
 	foodtypes = MEAT | RAW
 
 
@@ -503,7 +503,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	foodtypes = MEAT
-	tastes = list("meat" = 1)
+	tastes = list("mięso" = 1)
 	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/meat/steak/Initialize(mapload)
@@ -519,7 +519,7 @@
 	foodtypes = MEAT
 
 /obj/item/food/meat/steak/plain/human
-	tastes = list("tender meat" = 1)
+	tastes = list("delikatne mięso" = 1)
 	foodtypes = MEAT | GORE
 
 ///Make sure the steak has the correct name
@@ -538,20 +538,20 @@
 
 /obj/item/food/meat/steak/killertomato
 	name = "killer tomato steak"
-	tastes = list("tomato" = 1)
+	tastes = list("pomidor" = 1)
 	foodtypes = FRUIT // And dont let anybody tell you otherwise!
 
 /obj/item/food/meat/steak/bear
 	name = "bear steak"
-	tastes = list("meat" = 1, "salmon" = 1)
+	tastes = list("mięso" = 1, "łosoś" = 1)
 
 /obj/item/food/meat/steak/xeno
 	name = "xeno steak"
-	tastes = list("meat" = 1, "acid" = 1)
+	tastes = list("mięso" = 1, "kwas" = 1)
 
 /obj/item/food/meat/steak/spider
 	name = "spider steak"
-	tastes = list("cobwebs" = 1)
+	tastes = list("pajęczyny" = 1)
 
 /obj/item/food/meat/steak/goliath
 	name = "goliath steak"
@@ -559,50 +559,50 @@
 	resistance_flags = LAVA_PROOF | FIRE_PROOF
 	icon_state = "goliathsteak"
 	trash_type = null
-	tastes = list("meat" = 1, "rock" = 1)
+	tastes = list("mięso" = 1, "skała" = 1)
 	foodtypes = MEAT
 
 /obj/item/food/meat/steak/gondola
 	name = "gondola steak"
-	tastes = list("meat" = 1, "tranquility" = 1)
+	tastes = list("mięso" = 1, "spokój" = 1)
 
 /obj/item/food/meat/steak/penguin
 	name = "penguin steak"
 	icon_state = "birdsteak"
-	tastes = list("beef" = 1, "cod fish" = 1)
+	tastes = list("wołowina" = 1, "dorsz" = 1)
 
 /obj/item/food/meat/steak/chicken
 	name = "chicken steak" //Can you have chicken steaks? Maybe this should be renamed once it gets new sprites. //I concur
 	icon_state = "birdsteak"
-	tastes = list("chicken" = 1)
+	tastes = list("kurczak" = 1)
 
 /obj/item/food/meat/steak/plain/human/lizard
 	name = "lizard steak"
 	icon_state = "birdsteak" //cause they're birds. Get it?
-	tastes = list("juicy chicken" = 3, "scales" = 1)
+	tastes = list("soczysty kurczak" = 3, "łuski" = 1)
 	foodtypes = MEAT
 
 /obj/item/food/meat/steak/plain/human/psyphoza
 	name = "psyphoza steak"
 	icon_state = "psyphoza_meat_cooked"
-	tastes = list("dirt" = 3, "wood" = 1)
+	tastes = list("brud" = 3, "drewno" = 1)
 	foodtypes = VEGETABLES
 
 /obj/item/food/meat/steak/plain/human/diona
 	name = "diona steak"
-	tastes = list("salad" = 3, "plant fibre" = 1)
+	tastes = list("sałatka" = 3, "włókno roślinne" = 1)
 	foodtypes = VEGETABLES
 
 /obj/item/food/meat/steak/meatproduct
 	name = "thermally processed meat product"
 	//icon_state = "meatproductsteak"
-	tastes = list("enhanced char" = 2, "suspicious tenderness" = 2, "natural & artificial dyes" = 2, "emulsifying agents" = 1)
+	tastes = list("wzmocniona spalenizna" = 2, "podejrzana delikatność" = 2, "naturalne i sztuczne barwniki" = 2, "emulgatory" = 1)
 
 /obj/item/food/meat/steak/plain/synth
 	name = "synthsteak"
 	desc = "A synthetic meat steak. It doesn't look quite right, now does it?"
 	icon_state = "meatsteak"
-	tastes = list("meat" = 4, "cryoxandone" = 1)
+	tastes = list("mięso" = 4, "kriooksadon" = 1)
 
 /obj/item/food/meat/steak/ashflake
 	name = "ashflaked steak"
@@ -611,7 +611,7 @@
 	food_reagents = list(
 		/datum/reagent/consumable/vitfro = 2
 	)
-	tastes = list("tough meat" = 2, "bubblegum" = 1)
+	tastes = list("twarde mięso" = 2, "guma balonowa" = 1)
 	foodtypes = MEAT
 
 /obj/item/food/meat/steak/dolphinmeat
@@ -625,7 +625,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 2
 	)
 	bite_consumption = 6
-	tastes = list("fish" = 1,"cruelty" = 2)
+	tastes = list("ryba" = 1,"okrucieństwo" = 2)
 	foodtypes = MEAT
 
 //////////////////////////////// MEAT CUTLETS ///////////////////////////////////////////////////////
@@ -640,7 +640,7 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 2
 	)
-	tastes = list("meat" = 1)
+	tastes = list("mięso" = 1)
 	foodtypes = MEAT | RAW
 	var/meat_type = "meat"
 
@@ -661,7 +661,7 @@
 	foodtypes = MEAT
 
 /obj/item/food/meat/rawcutlet/plain/human
-	tastes = list("tender meat" = 1)
+	tastes = list("delikatne mięso" = 1)
 	foodtypes = MEAT | RAW | GORE
 
 /obj/item/food/meat/rawcutlet/plain/human/make_grillable()
@@ -680,7 +680,7 @@
 
 /obj/item/food/meat/rawcutlet/killertomato
 	name = "raw killer tomato cutlet"
-	tastes = list("tomato" = 1)
+	tastes = list("pomidor" = 1)
 	foodtypes = FRUIT
 
 /obj/item/food/meat/rawcutlet/killertomato/make_grillable()
@@ -688,42 +688,42 @@
 
 /obj/item/food/meat/rawcutlet/bear
 	name = "raw bear cutlet"
-	tastes = list("meat" = 1, "salmon" = 1)
+	tastes = list("mięso" = 1, "łosoś" = 1)
 
 /obj/item/food/meat/rawcutlet/bear/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/meat/cutlet/bear, rand(35 SECONDS, 50 SECONDS), TRUE, TRUE)
 
 /obj/item/food/meat/rawcutlet/xeno
 	name = "raw xeno cutlet"
-	tastes = list("meat" = 1, "acid" = 1)
+	tastes = list("mięso" = 1, "kwas" = 1)
 
 /obj/item/food/meat/rawcutlet/xeno/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/meat/cutlet/xeno, rand(35 SECONDS, 50 SECONDS), TRUE, TRUE)
 
 /obj/item/food/meat/rawcutlet/spider
 	name = "raw spider cutlet"
-	tastes = list("cobwebs" = 1)
+	tastes = list("pajęczyny" = 1)
 
 /obj/item/food/meat/rawcutlet/spider/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/meat/cutlet/spider, rand(35 SECONDS, 50 SECONDS), TRUE, TRUE)
 
 /obj/item/food/meat/rawcutlet/gondola
 	name = "raw gondola cutlet"
-	tastes = list("meat" = 1, "tranquility" = 1)
+	tastes = list("mięso" = 1, "spokój" = 1)
 
 /obj/item/food/meat/rawcutlet/gondola/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/meat/cutlet/gondola, rand(35 SECONDS, 50 SECONDS), TRUE, TRUE)
 
 /obj/item/food/meat/rawcutlet/penguin
 	name = "raw penguin cutlet"
-	tastes = list("beef" = 1, "cod fish" = 1)
+	tastes = list("wołowina" = 1, "dorsz" = 1)
 
 /obj/item/food/meat/rawcutlet/penguin/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/meat/cutlet/penguin, rand(35 SECONDS, 50 SECONDS), TRUE, TRUE)
 
 /obj/item/food/meat/rawcutlet/chicken
 	name = "raw chicken cutlet"
-	tastes = list("chicken" = 1)
+	tastes = list("kurczak" = 1)
 
 /obj/item/food/meat/rawcutlet/chicken/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/meat/cutlet/chicken, rand(35 SECONDS, 50 SECONDS), TRUE, TRUE)
@@ -738,7 +738,7 @@
 		/datum/reagent/toxin/slimejelly = 2
 	)
 	bite_consumption = 1
-	tastes = list("slime" = 1, "grub" = 1)
+	tastes = list("szlam" = 1, "robak" = 1)
 	foodtypes = RAW | MEAT | TOXIC
 	microwaved_type = /obj/item/food/meat/cutlet/grub
 
@@ -757,7 +757,7 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 2
 	)
-	tastes = list("meat" = 1)
+	tastes = list("mięso" = 1)
 	foodtypes = MEAT
 	crafting_complexity = FOOD_COMPLEXITY_1
 
@@ -778,7 +778,7 @@
 /obj/item/food/meat/cutlet/plain
 
 /obj/item/food/meat/cutlet/plain/human
-	tastes = list("tender meat" = 1)
+	tastes = list("delikatne mięso" = 1)
 	foodtypes = MEAT | GORE
 
 /obj/item/food/meat/cutlet/plain/human/on_microwave_cooked(datum/source, atom/source_item, cooking_efficiency)
@@ -794,32 +794,32 @@
 
 /obj/item/food/meat/cutlet/killertomato
 	name = "killer tomato cutlet"
-	tastes = list("tomato" = 1)
+	tastes = list("pomidor" = 1)
 	foodtypes = FRUIT
 
 /obj/item/food/meat/cutlet/bear
 	name = "bear cutlet"
-	tastes = list("meat" = 1, "salmon" = 1)
+	tastes = list("mięso" = 1, "łosoś" = 1)
 
 /obj/item/food/meat/cutlet/xeno
 	name = "xeno cutlet"
-	tastes = list("meat" = 1, "acid" = 1)
+	tastes = list("mięso" = 1, "kwas" = 1)
 
 /obj/item/food/meat/cutlet/spider
 	name = "spider cutlet"
-	tastes = list("cobwebs" = 1)
+	tastes = list("pajęczyny" = 1)
 
 /obj/item/food/meat/cutlet/gondola
 	name = "gondola cutlet"
-	tastes = list("meat" = 1, "tranquility" = 1)
+	tastes = list("mięso" = 1, "spokój" = 1)
 
 /obj/item/food/meat/cutlet/penguin
 	name = "penguin cutlet"
-	tastes = list("beef" = 1, "cod fish" = 1)
+	tastes = list("wołowina" = 1, "dorsz" = 1)
 
 /obj/item/food/meat/cutlet/chicken
 	name = "chicken cutlet"
-	tastes = list("chicken" = 1)
+	tastes = list("kurczak" = 1)
 
 /obj/item/food/meat/cutlet/grub
 	name = "redgrub rind"
@@ -832,5 +832,5 @@
 		/datum/reagent/consumable/nutriment = 1,
 		/datum/reagent/medicine/regen_jelly = 1
 	)
-	tastes = list("jelly" = 1, "sweet meat" = 1, "oil" = 1)
+	tastes = list("galaretka" = 1, "słodkie mięso" = 1, "olej" = 1)
 	foodtypes = MEAT

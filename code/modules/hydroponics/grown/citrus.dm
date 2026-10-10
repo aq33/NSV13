@@ -177,7 +177,7 @@
 	bite_consumption_mod = 2
 	juice_typepath = /datum/reagent/consumable/orangejuice
 	distill_reagent = /datum/reagent/consumable/ethanol/triple_sec
-	tastes = list("polygons" = 1, "oranges" = 1)
+	tastes = list("wielokąty" = 1, "pomarańcze" = 1)
 	discovery_points = 300
 
 /obj/item/food/grown/citrus/orange_3d/pickup(mob/user)

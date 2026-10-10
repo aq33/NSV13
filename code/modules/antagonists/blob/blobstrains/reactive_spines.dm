@@ -21,7 +21,7 @@
 
 /datum/reagent/blob/reactive_spines
 	name = "Reactive Spines"
-	taste_description = "rock"
+	taste_description = "skała"
 	color = "#9ACD32"
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
 

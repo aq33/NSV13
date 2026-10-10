@@ -10,7 +10,7 @@
 
 /datum/reagent/blob/regenerative_materia
 	name = "Regenerative Materia"
-	taste_description = "heaven"
+	taste_description = "niebo"
 	color = "#A88FB7"
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
 

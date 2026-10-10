@@ -7,7 +7,7 @@
 		/datum/reagent/consumable/nutriment/protein = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 		)
-	tastes = list("bun" = 2, "beef patty" = 4)
+	tastes = list("bułka" = 2, "kotlet wołowy" = 4)
 	foodtypes = GRAIN | MEAT //lettuce doesn't make burger a vegetable.
 	eat_time = 15 //Quick snack
 	w_class = WEIGHT_CLASS_SMALL
@@ -35,7 +35,7 @@
 		"I nazywasz to hamburgerami na parze, mimo że ewidentnie są z mikrofalówki?",
 		"Stacja Aurora 13? O tej porze zmiany, o tej porze roku, w tym sektorze kosmosu, w całości w twojej zamrażarce?",
 		"Wiesz, te hamburgery smakują całkiem podobnie do tych z Maltańskiego Sokoła.")
-		tastes = list("fast food hamburger" = 1)
+		tastes = list("hamburger z fast foodu" = 1)
 
 /obj/item/food/burger/human
 	name = "human burger"
@@ -45,7 +45,7 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5
 	)
-	tastes = list("bun" = 2, "long pig" = 4)
+	tastes = list("bułka" = 2, "długa świnia" = 4)
 	foodtypes = MEAT | GRAIN | GORE
 	var/subjectname = ""
 	var/subjectjob = null
@@ -84,7 +84,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 7
 	)
 	icon_state = "appendixburger"
-	tastes = list("bun" = 4, "grass" = 2)
+	tastes = list("bułka" = 4, "trawa" = 2)
 	foodtypes = GRAIN | MEAT | GORE
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -97,7 +97,7 @@
 		/datum/reagent/consumable/nutriment/protein = 7,
 		/datum/reagent/consumable/nutriment/vitamin = 4
 	)
-	tastes = list("bun" = 4, "fish" = 4)
+	tastes = list("bułka" = 4, "ryba" = 4)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -110,7 +110,7 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 3
 	)
-	tastes = list("bun" = 4, "tofu" = 4)
+	tastes = list("bułka" = 4, "tofu" = 4)
 	foodtypes = GRAIN | VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -123,7 +123,7 @@
 		/datum/reagent/nanomachines = 7,
 		/datum/reagent/consumable/nutriment/vitamin = 6
 	)
-	tastes = list("bun" = 4, "lettuce" = 2, "sludge" = 1)
+	tastes = list("bułka" = 4, "sałata" = 2, "breja" = 1)
 	foodtypes = GRAIN | TOXIC
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -137,7 +137,7 @@
 		/datum/reagent/nanomachines = 140,
 		/datum/reagent/consumable/nutriment/vitamin = 15
 	)
-	tastes = list("bun" = 4, "lettuce" = 2, "sludge" = 1)
+	tastes = list("bułka" = 4, "sałata" = 2, "breja" = 1)
 	foodtypes = GRAIN | TOXIC
 
 /obj/item/food/burger/xeno
@@ -149,7 +149,7 @@
 		/datum/reagent/consumable/nutriment/protein = 9,
 		/datum/reagent/consumable/nutriment/vitamin = 7
 	)
-	tastes = list("bun" = 4, "acid" = 4)
+	tastes = list("bułka" = 4, "kwas" = 4)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -199,7 +199,7 @@
 		/datum/reagent/medicine/mannitol = 11,
 		/datum/reagent/consumable/nutriment/vitamin = 6
 	)
-	tastes = list("bun" = 4, "brains" = 2)
+	tastes = list("bułka" = 4, "mózg" = 2)
 	foodtypes = GRAIN | MEAT | GORE
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -213,7 +213,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 13,
 		/datum/reagent/consumable/sodiumchloride = 5
 	)
-	tastes = list("bun" = 2, "ectoplasm" = 4)
+	tastes = list("bułka" = 2, "ektoplazma" = 4)
 	foodtypes = GRAIN
 	alpha = 170
 	verb_say = "jęczy"
@@ -377,7 +377,7 @@
 		/datum/reagent/consumable/nutriment/protein = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 11
 	)
-	tastes = list("bun" = 4, "magic" = 2)
+	tastes = list("bułka" = 4, "magia" = 2)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -398,7 +398,7 @@
 	name = "jelly burger"
 	desc = "Culinary delight..?"
 	icon_state = "jellyburger"
-	tastes = list("bun" = 4, "jelly" = 2)
+	tastes = list("bułka" = 4, "galaretka" = 2)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -431,7 +431,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	bite_consumption = 7
 	max_volume = 100
-	tastes = list("bun" = 4, "type two diabetes" = 10)
+	tastes = list("bułka" = 4, "cukrzyca typu drugiego" = 10)
 	foodtypes = GRAIN | MEAT | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_5
 
@@ -482,7 +482,7 @@
 		/datum/reagent/consumable/nutriment/protein = 11,
 		/datum/reagent/consumable/nutriment/vitamin = 2
 	)
-	tastes = list("bacon" = 4, "bun" = 2)
+	tastes = list("bekon" = 4, "bułka" = 2)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -496,7 +496,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 		/datum/reagent/consumable/liquidelectricity = 5
 	)
-	tastes = list("bun" = 2, "pure electricity" = 4)
+	tastes = list("bułka" = 2, "czysty prąd" = 4)
 	foodtypes = GRAIN | TOXIC
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -509,7 +509,7 @@
 		/datum/reagent/consumable/nutriment/protein = 7,
 		/datum/reagent/consumable/nutriment/vitamin = 4
 	)
-	tastes = list("bun" = 2, "crab meat" = 4)
+	tastes = list("bułka" = 2, "mięso kraba" = 4)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -522,7 +522,7 @@
 		/datum/reagent/consumable/nutriment/protein = 9,
 		/datum/reagent/consumable/nutriment/vitamin = 4
 	)
-	tastes = list("bun" = 2, "assistant" = 4)
+	tastes = list("bułka" = 2, "majtek" = 4)
 	foodtypes = GRAIN | MEAT | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -536,7 +536,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/consumable/bbqsauce = 1
 	)
-	tastes = list("bun" = 2, "pork patty" = 4)
+	tastes = list("bułka" = 2, "kotlet wieprzowy" = 4)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -544,7 +544,7 @@
 	name = "mcguffin"
 	desc = "A cheap and greasy imitation of an eggs benedict."
 	icon_state = "mcguffin"
-	tastes = list("muffin" = 2, "bacon" = 3)
+	tastes = list("muffinka" = 2, "bekon" = 3)
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/eggyolk = 3,
@@ -558,7 +558,7 @@
 	name = "chicken sandwich" //Apparently the proud people of Americlapstan object to this thing being called a burger. Apparently McDonald's just calls it a burger in Europe as to not scare and confuse us.
 	desc = "The so-called classic poultry bread cage. Considering how processed this is, the taste holds up pretty well."
 	icon_state = "chickenburger"
-	tastes = list("bun" = 2, "chicken" = 4)
+	tastes = list("bułka" = 2, "kurczak" = 4)
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/mayonnaise = 3,
@@ -573,7 +573,7 @@
 	name = "cheese burger"
 	desc = "This noble burger stands proudly clad in golden cheese."
 	icon_state = "cheeseburger"
-	tastes = list("bun" = 2, "beef patty" = 4, "cheese" = 3)
+	tastes = list("bułka" = 2, "kotlet wołowy" = 4, "ser" = 3)
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/protein = 7,
@@ -591,7 +591,7 @@
 	name = "crazy hamburger"
 	desc = "Crazy hamburger! It is horrible!"
 	icon_state = "crazyhamburger"
-	tastes = list("bread made in turkey" = 2, "horse meat" = 4, "cheese from sao paulo from brazil" = 3, "red hot chili peppers" = 3, "oil from iraq" = 2, "grass of death" = 3)
+	tastes = list("chleb z Turcji" = 2, "konina" = 4, "ser z São Paulo w Brazylii" = 3, "ostre papryczki chili" = 3, "ropa z Iraku" = 2, "trawa śmierci" = 3)
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 5,
 		/datum/reagent/consumable/nutriment/protein = 2,
@@ -605,5 +605,5 @@
 	name = "burger"
 	desc = "A crazy, custom burger made by a mad cook."
 	icon_state = "custburg"
-	tastes = list("bun")
+	tastes = list("bułka")
 	foodtypes = GRAIN

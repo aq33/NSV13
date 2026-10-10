@@ -25,7 +25,7 @@
 	bite_consumption_mod = 2
 	foodtypes = VEGETABLES
 	juice_typepath = /datum/reagent/consumable/corn_starch
-	tastes = list("corn" = 1)
+	tastes = list("kukurydza" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/whiskey
 	discovery_points = 300
 

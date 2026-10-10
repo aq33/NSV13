@@ -2,7 +2,7 @@
 	name = "Highjack"
 	description = "Przetworzony przez syntetyki wywołuje efekty podobne do substancji zmieniających świadomość."
 	color = "#271509"
-	taste_description = "metallic"
+	taste_description = "metal"
 	process_flags = SYNTHETIC
 	overdose_threshold = 30
 

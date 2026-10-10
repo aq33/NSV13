@@ -55,7 +55,7 @@
 		/datum/reagent/consumable/nutriment/protein = 9,
 		/datum/reagent/consumable/ketchup = 4
 	)
-	tastes = list("beans" = 3 , "tomato sauce" = 1, "tin" = 1)
+	tastes = list("fasola" = 3 , "sos pomidorowy" = 1, "cyna" = 1)
 	foodtypes = VEGETABLES
 
 /obj/item/food/canned/peaches
@@ -68,7 +68,7 @@
 		/datum/reagent/consumable/sugar = 8,
 		/datum/reagent/consumable/nutriment = 2,
 	)
-	tastes = list("peaches" = 7, "tin" = 1)
+	tastes = list("brzoskwinie" = 7, "cyna" = 1)
 	foodtypes = FRUIT | SUGAR
 
 /obj/item/food/canned/beefbroth
@@ -77,7 +77,7 @@
 	icon_state = "beef"
 	trash_type = /obj/item/trash/canned/beefbroth
 	food_reagents = list(/datum/reagent/consumable/beefbroth = 50)
-	tastes = list("meat" = 7, "beef gelatin" = 1, "tin" = 1)
+	tastes = list("mięso" = 7, "żelatyna wołowa" = 1, "cyna" = 1)
 	foodtypes = MEAT | GROSS | JUNKFOOD
 
 ///maintenance variants
@@ -97,17 +97,17 @@
 	maint = TRUE
 	desc = "At this point, it's music will outlive the station."
 	trash_type = /obj/item/trash/canned/beans/maint
-	tastes = list("beans" = 1 , "tomato sauce" = 1, "tin" = 7)
+	tastes = list("fasola" = 1 , "sos pomidorowy" = 1, "cyna" = 7)
 
 /obj/item/food/canned/peaches/maint
 	maint = TRUE
 	desc = "I have a mouth and I must eat."
 	trash_type = /obj/item/trash/canned/peaches/maint
-	tastes = list("peaches" = 1, "tin" = 7)
+	tastes = list("brzoskwinie" = 1, "cyna" = 7)
 
 /obj/item/food/canned/beefbroth/maint
 	desc = "Really old beef on a pinch, a gamble really."
 	icon_state = "beef"
 	trash_type = /obj/item/trash/canned/beefbroth/maint
-	tastes = list("disgust" = 3, "beef gelatin" = 1, "tin" = 4)
+	tastes = list("obrzydzenie" = 3, "żelatyna wołowa" = 1, "cyna" = 4)
 

@@ -8,7 +8,7 @@
 	icon_state = "cheesemix"
 	icon = 'icons/obj/food/cheese.dmi'
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/nutriment/vitamin = 1)
-	tastes = list("bitter milk" = 1)
+	tastes = list("gorzkie mleko" = 1)
 	desc = "Cheese mix, ready to be heated."
 	foodtypes = DAIRY
 
@@ -17,7 +17,7 @@
 	icon_state = "cheesemix_heated"
 	icon = 'icons/obj/food/cheese.dmi'
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/nutriment/vitamin = 1)
-	tastes = list("bitter cheese" = 1)
+	tastes = list("gorzki ser" = 1)
 	desc = "Heated cheese mix, you can see curds floating."
 	foodtypes = DAIRY
 
@@ -29,7 +29,7 @@
 	icon_state = "american_block"
 	slice_type = /obj/item/food/cheese/wedge/american
 	food_reagents = list(/datum/reagent/consumable/nutriment = 10, /datum/reagent/consumable/nutriment/vitamin = 5)
-	tastes = list("plastic" = 1)
+	tastes = list("plastik" = 1)
 
 /obj/item/food/cheese/wedge/american
 	name = "american cheese slice"
@@ -37,7 +37,7 @@
 	icon = 'icons/obj/food/cheese.dmi'
 	icon_state = "american_slice"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/nutriment/vitamin = 1)
-	tastes = list("plastic" = 1)
+	tastes = list("plastik" = 1)
 
 //blue
 /obj/item/food/cheese/wheel/blue
@@ -47,7 +47,7 @@
 	icon_state = "blue_wheel"
 	slice_type = /obj/item/food/cheese/wedge/blue
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/consumable/nutriment/vitamin = 15)
-	tastes = list("mold" = 1)
+	tastes = list("pleśń" = 1)
 
 /obj/item/food/cheesemix/blue
 	name = "blue cheese mix"
@@ -62,7 +62,7 @@
 	icon = 'icons/obj/food/cheese.dmi'
 	icon_state = "blue_wedge"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 3)
-	tastes = list("mold" = 1)
+	tastes = list("pleśń" = 1)
 
 //brie
 /obj/item/food/cheese/wheel/brie
@@ -72,7 +72,7 @@
 	icon_state = "brie_wheel"
 	slice_type = /obj/item/food/cheese/wedge/brie
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/consumable/nutriment/vitamin = 15)
-	tastes = list("creamy mold" = 1)
+	tastes = list("kremowa pleśń" = 1)
 
 /obj/item/food/cheesemix/brie
 	name = "brie mix"
@@ -87,7 +87,7 @@
 	icon = 'icons/obj/food/cheese.dmi'
 	icon_state = "brie_wedge"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 3)
-	tastes = list("creamy mold" = 1)
+	tastes = list("kremowa pleśń" = 1)
 
 //cheddar
 /obj/item/food/cheese/wheel/cheddar
@@ -138,7 +138,7 @@
 	icon_state = "feta_block"
 	slice_type = /obj/item/food/cheese/wedge/feta
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/consumable/nutriment/vitamin = 10)
-	tastes = list("sheep" = 1)
+	tastes = list("owca" = 1)
 
 /obj/item/food/cheesemix/feta
 	name = "feta cheese mix"
@@ -153,7 +153,7 @@
 	icon = 'icons/obj/food/cheese.dmi'
 	icon_state = "feta_slice"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 2)
-	tastes = list("sheep" = 1)
+	tastes = list("owca" = 1)
 
 //goat
 /obj/item/food/cheese/wheel/goat
@@ -163,7 +163,7 @@
 	icon_state = "goat_wheel"
 	slice_type = /obj/item/food/cheese/wedge/goat
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/consumable/nutriment/vitamin = 10)
-	tastes = list("goat" = 1)
+	tastes = list("koza" = 1)
 
 /obj/item/food/cheesemix/goat
 	name = "goat cheese mix"
@@ -178,7 +178,7 @@
 	icon = 'icons/obj/food/cheese.dmi'
 	icon_state = "goat_wedge"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 2)
-	tastes = list("goat" = 1)
+	tastes = list("koza" = 1)
 
 //halloumi
 /obj/item/food/cheese/wheel/halloumi
@@ -188,7 +188,7 @@
 	icon_state = "halloumi_block"
 	slice_type = /obj/item/food/cheese/wedge/halloumi
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/consumable/nutriment/vitamin = 10)
-	tastes = list("meat" = 1)
+	tastes = list("mięso" = 1)
 
 /obj/item/food/cheesemix/halloumi
 	name = "halloumi cheese mix"
@@ -203,7 +203,7 @@
 	icon = 'icons/obj/food/cheese.dmi'
 	icon_state = "halloumi_slice"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 2)
-	tastes = list("meat" = 1)
+	tastes = list("mięso" = 1)
 
 //mozzarella
 /obj/item/food/cheese/wheel/mozzarella
@@ -213,7 +213,7 @@
 	icon_state = "mozzarella_ball"
 	slice_type = /obj/item/food/cheese/wedge/mozzarella
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/consumable/nutriment/vitamin = 10)
-	tastes = list("cream" = 1)
+	tastes = list("śmietana" = 1)
 
 /obj/item/food/cheesemix/mozzarella
 	name = "mozzarella cheese mix"
@@ -228,7 +228,7 @@
 	icon = 'icons/obj/food/cheese.dmi'
 	icon_state = "mozzarella_piece"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 2)
-	tastes = list("cream" = 1)
+	tastes = list("śmietana" = 1)
 
 //parmesan
 /obj/item/food/cheese/wheel/parmesan
@@ -240,7 +240,7 @@
 	max_volume = 200
 	slice_type = /obj/item/food/cheese/wedge/parmesan
 	food_reagents = list(/datum/reagent/consumable/nutriment = 100, /datum/reagent/consumable/nutriment/vitamin = 30, /datum/reagent/consumable/parmesan_delight = 20)
-	tastes = list("salt" = 1, "magnificence" = 1, "italy" = 1)
+	tastes = list("sól" = 1, "wspaniałość" = 1, "Włochy" = 1)
 
 /obj/item/food/cheese/preparmesan
 	name = "unmatured parmesan cheese wheel"
@@ -249,7 +249,7 @@
 	icon_state = "preparmesan_wheel"
 	w_class = WEIGHT_CLASS_NORMAL
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/nutriment/vitamin = 1)
-	tastes = list("bitter salt" = 1)
+	tastes = list("gorzka sól" = 1)
 
 /obj/item/food/cheese/preparmesan/Initialize(mapload)
 	. = ..()
@@ -272,7 +272,7 @@
 	icon = 'icons/obj/food/cheese.dmi'
 	icon_state = "parmesan_wedge"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/consumable/nutriment/vitamin = 6, /datum/reagent/consumable/parmesan_delight = 4)
-	tastes = list("salt" = 1, "magnificence" = 1, "italy" = 1)
+	tastes = list("sól" = 1, "wspaniałość" = 1, "Włochy" = 1)
 
 //swiss
 /obj/item/food/cheese/wheel/swiss
@@ -282,7 +282,7 @@
 	icon_state = "swiss_wheel"
 	slice_type = /obj/item/food/cheese/wedge/swiss
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/consumable/nutriment/vitamin = 10)
-	tastes = list("holes" = 1)
+	tastes = list("dziury" = 1)
 
 /obj/item/food/cheesemix/swiss
 	name = "swiss cheese mix"
@@ -297,7 +297,7 @@
 	icon = 'icons/obj/food/cheese.dmi'
 	icon_state = "swiss_wedge"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 2)
-	tastes = list("holes" = 1)
+	tastes = list("dziury" = 1)
 
 //bug cheese
 /obj/item/food/cheese/wheel/bug
@@ -308,7 +308,7 @@
 	foodtypes = SUGAR | MEAT //honey made by a carnivorous scavenging bug
 	slice_type = /obj/item/food/cheese/wedge/bug
 	food_reagents = list(/datum/reagent/consumable/nutriment = 10, /datum/reagent/consumable/nutriment/vitamin = 5)
-	tastes = list("a rather large serving of sugar" = 1, "meat" = 1)
+	tastes = list("spora porcja cukru" = 1, "mięso" = 1)
 
 /obj/item/food/cheese/wedge/bug
 	name = "bug cheese piece"
@@ -317,7 +317,7 @@
 	icon_state = "bug_piece"
 	foodtypes = SUGAR | MEAT
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/nutriment/vitamin = 1)
-	tastes = list("a rather large serving of sugar" = 1, "meat" = 1)
+	tastes = list("spora porcja cukru" = 1, "mięso" = 1)
 
 //Regal rat cheese
 /obj/item/food/royalcheese
@@ -326,5 +326,5 @@
 	icon_state = "royalcheese"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 15, /datum/reagent/consumable/nutriment/vitamin = 5, /datum/reagent/gold = 20, /datum/reagent/toxin/mutagen = 5)
 	w_class = WEIGHT_CLASS_BULKY
-	tastes = list("cheese" = 4, "royalty" = 1)
+	tastes = list("ser" = 4, "królewskość" = 1)
 	foodtypes = DAIRY

@@ -22,7 +22,7 @@
 	bite_consumption_mod = 0.5 // Chewing on wheat grains?
 	foodtypes = GRAIN
 	grind_results = list(/datum/reagent/consumable/flour = 0)
-	tastes = list("wheat" = 1)
+	tastes = list("pszenica" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/beer
 
 // Oat
@@ -44,7 +44,7 @@
 	bite_consumption_mod = 0.5
 	foodtypes = GRAIN
 	grind_results = list(/datum/reagent/consumable/flour = 0)
-	tastes = list("oat" = 1)
+	tastes = list("owies" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/ale
 	discovery_points = 300
 
@@ -68,7 +68,7 @@
 	bite_consumption_mod = 0.5
 	foodtypes = GRAIN
 	grind_results = list(/datum/reagent/consumable/rice = 0)
-	tastes = list("rice" = 1)
+	tastes = list("ryż" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/sake
 
 //Meatwheat - grows into synthetic meat
@@ -90,7 +90,7 @@
 	seed = /obj/item/seeds/wheat/meat
 	foodtypes = MEAT | GRAIN
 	grind_results = list(/datum/reagent/consumable/flour = 0, /datum/reagent/blood = 0)
-	tastes = list("meatwheat" = 1)
+	tastes = list("mięsopszenica" = 1)
 	can_distill = FALSE
 	discovery_points = 300
 

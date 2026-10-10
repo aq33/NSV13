@@ -115,7 +115,7 @@
 	color = "#801E28" // rgb: 128, 30, 40
 	chem_flags = CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	toxpwr = 0
-	taste_description = "french cuisine"
+	taste_description = "kuchnia francuska"
 	taste_mult = 1.3
 
 /datum/reagent/toxin/leaper_venom/on_mob_life(mob/living/carbon/M)
