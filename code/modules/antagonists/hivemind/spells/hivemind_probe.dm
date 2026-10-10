@@ -21,7 +21,7 @@
 	var/detected
 
 
-	to_chat(user, "<span class='notice'>We begin probing [target.name]'s mind!</span>")
+	to_chat(user, "<span class='notice'>Zaczynamy badać umysł [target.name]!</span>")
 	if(do_after(user,15,0,target))
 		for(var/datum/antagonist/hivemind/enemy as() in GLOB.hivehosts)
 			var/datum/mind/M = enemy.owner
@@ -38,17 +38,17 @@
 				flash_color(user, flash_color="#800080", flash_time=10)
 				user.Paralyze(10)
 				user.throw_at(throwtarget, 5, 1,src)
-				to_chat(user, "<span class='userdanger'>A sudden surge of psionic energy, a recognizable presence, this is the host of [hivetarget.hiveID]!</span>")
+				to_chat(user, "<span class='userdanger'>Nagły przypływ energii psionicznej, rozpoznawalna obecność - to nosiciel roju [hivetarget.hiveID]!</span>")
 				return
 			if(enemy.is_carbon_member(target))
 				hive.add_hive_overlay_probe(target)
-				to_chat(user, "<span class='userdanger'>We have found the vile stain of [enemy.hiveID] within this mind!</span>")
+				to_chat(user, "<span class='userdanger'>Znaleźliśmy w tym umyśle plugawą skazę roju [enemy.hiveID]!</span>")
 				detected = TRUE
 				if(target.mind.has_antag_datum(/datum/antagonist/brainwashed) || IS_WOKEVESSEL(target))
-					to_chat(user, "<span class='assimilator'>Our target is being controlled, their actions are not their own!.</span>")
+					to_chat(user, "<span class='assimilator'>Nasz cel jest kontrolowany, jego działania nie są jego własne!</span>")
 					return
 		if(!detected)
-			to_chat(user, "<span class='notice'>Untroubled waters meet our tentative search, there is nothing out of the ordinary here.</span>")
+			to_chat(user, "<span class='notice'>Nasze ostrożne poszukiwania napotykają spokojne wody - nie ma tu nic niezwykłego.</span>")
 	else
-		to_chat(user, "<span class='notice'>Our concentration has been broken!</span>")
+		to_chat(user, "<span class='notice'>Nasza koncentracja została przerwana!</span>")
 		revert_cast()

@@ -28,18 +28,18 @@
 /datum/antagonist/gang/greet()
 	gang.greet_gangster(owner)
 	owner.current.client?.tgui_panel?.give_antagonist_popup("Gangster",
-		"You rule the streets, assist your gang in taking over the station.")
+		"Rządzisz na ulicach - pomóż swojemu gangowi przejąć stację.")
 
 /datum/antagonist/gang/farewell()
 	if(ishuman(owner.current))
-		owner.current.visible_message("<span class='deconversion_message'>[owner.current] looks like [owner.current.p_theyve()] just remembered [owner.current.p_their()] real allegiance!</span>", null, null, null, owner.current)
-		to_chat(owner, "<span class='userdanger'>You are no longer a gangster!</span>")
+		owner.current.visible_message("<span class='deconversion_message'>[owner.current] wygląda, jakby właśnie przypomniał sobie, komu naprawdę jest wierny!</span>", null, null, null, owner.current)
+		to_chat(owner, "<span class='userdanger'>Nie jesteś już gangsterem!</span>")
 
 /datum/antagonist/gang/on_gain()
 	if(!gang)
 		create_team()
 	..()
-	handle_clown_mutation(owner.current, "Your training has allowed you to overcome your clownish nature, allowing you to wield weapons without harming yourself.")
+	handle_clown_mutation(owner.current, "Dzięki szkoleniu przezwyciężasz swoją klaunią naturę i możesz używać broni, nie raniąc samego siebie.")
 	add_to_gang()
 
 /datum/antagonist/gang/on_removal()
@@ -94,7 +94,7 @@
 	old_owner.add_antag_datum(new_boss,old_gang)
 	new_boss.silent = FALSE
 	log_game("[key_name(old_owner)] has been promoted to Lieutenant in the [old_gang.name] Gang")
-	to_chat(old_owner, "<FONT size=3 color=red><B>You have been promoted to Lieutenant!</B></FONT>")
+	to_chat(old_owner, "<FONT size=3 color=red><B>Awansujesz na porucznika!</B></FONT>")
 
 
 // Admin commands
@@ -186,46 +186,46 @@
 		var/obj/item/device/gangtool/G = new()
 		var/where = H.equip_in_one_of_slots(G, slots)
 		if (!where)
-			to_chat(H, "Your Syndicate benefactors were unfortunately unable to get you a Gangtool.")
+			to_chat(H, "Twoi dobroczyńcy z Syndykatu niestety nie zdołali zdobyć dla ciebie Gangtoola.")
 		else
 			G.register_device(H)
-			to_chat(H, "The <b>Gangtool</b> in your [where] will allow you to purchase weapons and equipment, send messages to your gang, and recall the emergency shuttle from anywhere on the station.")
-			to_chat(H, "As the gang boss, you can also promote your gang members to <b>lieutenant</b>. Unlike regular gangsters, Lieutenants cannot be deconverted and are able to use recruitment pens and gangtools.")
+			to_chat(H, "<b>Gangtool</b> (miejsce: [where]) pozwoli ci kupować broń i sprzęt, wysyłać wiadomości do gangu i odwoływać prom ewakuacyjny z dowolnego miejsca na stacji.")
+			to_chat(H, "Jako szef gangu możesz też awansować członków na <b>poruczników</b>. W przeciwieństwie do zwykłych gangsterów porucznicy nie mogą zostać odwróceni i potrafią używać długopisów werbunkowych i gangtooli.")
 
 	if(pen)
 		var/obj/item/pen/gang/T = new()
 		var/where2 = H.equip_in_one_of_slots(T, slots)
 		if (!where2)
-			to_chat(H, "Your Syndicate benefactors were unfortunately unable to get you a recruitment pen to start.")
+			to_chat(H, "Twoi dobroczyńcy z Syndykatu niestety nie zdołali zdobyć dla ciebie długopisu werbunkowego na start.")
 		else
-			to_chat(H, "The <b>recruitment pen</b> in your [where2] will help you get your gang started. Stab unsuspecting crew members with it to recruit them.")
+			to_chat(H, "<b>Długopis werbunkowy</b> (miejsce: [where2]) pomoże ci rozkręcić gang. Dźgaj nim niczego niepodejrzewających członków załogi, żeby ich zwerbować.")
 
 	if(spraycan)
 		var/obj/item/toy/crayon/spraycan/gang/SC = new(null,gang)
 		var/where3 = H.equip_in_one_of_slots(SC, slots)
 		if (!where3)
-			to_chat(H, "Your Syndicate benefactors were unfortunately unable to get you a territory spraycan to start.")
+			to_chat(H, "Twoi dobroczyńcy z Syndykatu niestety nie zdołali zdobyć dla ciebie farby do oznaczania terenu na start.")
 		else
-			to_chat(H, "The <b>territory spraycan</b> in your [where3] can be used to claim areas of the station for your gang. The more territory your gang controls, the more influence you get. All gangsters can use these, so distribute them to grow your influence faster.")
+			to_chat(H, "<b>Farbą do oznaczania terenu</b> (miejsce: [where3]) możesz zajmować obszary stacji dla gangu. Im więcej terenu kontroluje gang, tym więcej wpływów zdobywasz. Mogą jej używać wszyscy gangsterzy, więc rozdawaj ją, żeby szybciej rosły wpływy.")
 
 	if(hud)
 		var/obj/item/clothing/glasses/hud/security/chameleon/C = new(null,gang)
 		var/where4 = H.equip_in_one_of_slots(C, slots)
 		if (!where4)
-			to_chat(H, "Your Syndicate benefactors were unfortunately unable to get you a chameleon security HUD.")
+			to_chat(H, "Twoi dobroczyńcy z Syndykatu niestety nie zdołali zdobyć dla ciebie kameleonowego HUD-a ochrony.")
 		else
-			to_chat(H, "The <b>chameleon security HUD</b> in your [where4] will help you keep track of who is mindshield-implanted, and unable to be recruited.")
+			to_chat(H, "<b>Kameleonowy HUD ochrony</b> (miejsce: [where4]) pokaże ci, kto ma implant ochrony umysłu i nie da się go zwerbować.")
 
 // Admin commands for bosses
 /datum/antagonist/gang/boss/admin_add(datum/mind/new_owner,mob/admin)
 	if(!new_owner.has_antag_datum(parent_type))
 		..()
-		to_chat(new_owner.current, "<span class='userdanger'>You are a member of the [gang.name] Gang leadership now!</span>")
+		to_chat(new_owner.current, "<span class='userdanger'>Należysz teraz do przywództwa gangu [gang.name]!</span>")
 		return
 	promote()
 	message_admins("[key_name_admin(admin)] has made [new_owner.current] a boss of the [gang.name] gang.")
 	log_admin("[key_name(admin)] has made [new_owner.current] a boss of the [gang.name] gang.")
-	to_chat(new_owner.current, "<span class='userdanger'>You are a member of the [gang.name] Gang leadership now!</span>")
+	to_chat(new_owner.current, "<span class='userdanger'>Należysz teraz do przywództwa gangu [gang.name]!</span>")
 
 /datum/antagonist/gang/boss/get_admin_commands()
 	. = ..()
@@ -244,7 +244,7 @@
 	old_owner.add_antag_datum(new_gangster,old_gang)
 	new_gangster.silent = FALSE
 	log_game("[key_name(old_owner)] has been demoted to Gangster in the [gang.name] Gang")
-	to_chat(old_owner, "<span class='userdanger'>The gang has been disappointed of your leader traits! You are a regular gangster now!</span>")
+	to_chat(old_owner, "<span class='userdanger'>Gang zawiódł się na twoich cechach przywódczych! Jesteś teraz zwykłym gangsterem!</span>")
 
 /datum/antagonist/gang/boss/proc/admin_take_gangtool(mob/admin)
 	var/list/L = owner.current.get_contents()
@@ -324,23 +324,23 @@
 	var/list/report = list()
 	report += "<span class='header'>[name]:</span>"
 	if(winner)
-		report += "<span class='greentext'>The [name] gang was successful!</span>"
+		report += "<span class='greentext'>Gang [name] odniósł sukces!</span>"
 	else
-		report += "<span class='redtext'>The [name] gang has failed!</span>"
+		report += "<span class='redtext'>Gang [name] poniósł porażkę!</span>"
 
-	report += "The [name] gang bosses were:"
+	report += "Szefowie gangu [name]:"
 	report += printplayerlist(leaders)
-	report += "The [name] [member_name]s were:"
+	report += "Członkowie gangu [name]:"
 	report += printplayerlist(members-leaders)
 
 	return "<div class='panel redborder'>[report.Join("<br>")]</div>"
 
 /datum/team/gang/proc/greet_gangster(datum/mind/gangster)//THIS NEEDS REVISION
-	to_chat(gangster, "<FONT size=3 color=red><B>You are now a member of the [name] Gang!</B></FONT>")
-	to_chat(gangster, "<font color='red'>Help your bosses take over the station by claiming territory with <b>special spraycans</b> only they can provide. Simply spray on any unclaimed area of the station.</font>")
-	to_chat(gangster, "<font color='red'>Your objective is to take over as many territories as possible, and expand the influence of your gang.</font>")
-	to_chat(gangster, "<font color='red'>You can identify your mates by their <b>large, bright \[G\] <font color='[color]'>icon</font></b>.</font>")
-	gangster.store_memory("You are a member of the [name] Gang!")
+	to_chat(gangster, "<FONT size=3 color=red><B>Jesteś teraz członkiem gangu [name]!</B></FONT>")
+	to_chat(gangster, "<font color='red'>Pomóż szefom przejąć stację, zajmując teren <b>specjalnymi farbami</b>, które mogą dać tylko oni. Po prostu maluj w niezajętych miejscach stacji.</font>")
+	to_chat(gangster, "<font color='red'>Twoim celem jest przejęcie jak największego terenu i poszerzenie wpływów gangu.</font>")
+	to_chat(gangster, "<font color='red'>Kumpli rozpoznasz po <b>dużej, jasnej <font color='[color]'>ikonie</font> \[G\]</b>.</font>")
+	gangster.store_memory("Jesteś członkiem gangu [name]!")
 
 /datum/team/gang/proc/handle_territories()	//influence is counted here
 	next_point_time = world.time + INFLUENCE_INTERVAL
@@ -372,23 +372,23 @@
 		territories += area
 
 	//Report territory changes
-	var/message = "<b>[src] Gang Status Report:</b>.<BR>*---------*<BR>"
-	message += "<b>[new_territories.len] new territories:</b><br><i>[added_names]</i><br>"
-	message += "<b>[lost_territories.len] territories lost:</b><br><i>[lost_names]</i><br>"
+	var/message = "<b>Raport stanu gangu [src]:</b>.<BR>*---------*<BR>"
+	message += "<b>[new_territories.len] nowe tereny:</b><br><i>[added_names]</i><br>"
+	message += "<b>[lost_territories.len] utracone tereny:</b><br><i>[lost_names]</i><br>"
 	//Clear the lists
 	new_territories = list()
 	lost_territories = list()
 	var/total_territories = total_claimable_territories()
 	var/control = round((territories.len/total_territories)*100, 1)
 	var/uniformed = count_gang_swag()
-	message += "Your gang now has <b>[control]% control</b> of the station.<BR>*---------*<BR>"
+	message += "Twój gang kontroluje teraz <b>[control]%</b> stacji.<BR>*---------*<BR>"
 
 	var/new_influence = update_influence()
 	influence =	min(999,influence+new_influence)
 	victory_points += new_influence
 	if(new_influence > 0)
-		message += "Gang influence has increased by [new_influence] for defending [territories.len] territories and [uniformed] swag.<BR>"
-	message += "Your gang now has <b>[influence] influence</b>.<BR>"
+		message += "Wpływy gangu wzrosły o [new_influence] za obronę [territories.len] terenów i [uniformed] szpanu.<BR>"
+	message += "Twój gang ma teraz <b>[influence] wpływów</b>.<BR>"
 
 	message_gangtools(message)
 	addtimer(CALLBACK(src, PROC_REF(handle_territories)), INFLUENCE_INTERVAL)

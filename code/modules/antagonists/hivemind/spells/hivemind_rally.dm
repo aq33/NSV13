@@ -16,7 +16,7 @@
 /obj/effect/proc_holder/spell/targeted/hive_rally/cast(list/targets, mob/living/user = usr)
 	var/datum/antagonist/hivemind/hive = user.mind.has_antag_datum(/datum/antagonist/hivemind)
 	if(!targets)
-		to_chat(user, "<span class='notice'>Nobody is in sight, it'd be a waste to do that now.</span>")
+		to_chat(user, "<span class='notice'>Nikogo nie widać, szkoda to teraz robić.</span>")
 		revert_cast()
 		return
 	var/list/victims = list()
@@ -28,7 +28,7 @@
 			victims += target
 		flash_color(target, flash_color="#800080", flash_time=10)
 	for(var/mob/living/carbon/affected in victims)
-		to_chat(affected, "<span class='assimilator'>Otherworldly strength flows through us!</span>")
+		to_chat(affected, "<span class='assimilator'>Przepływa przez nas nieziemska siła!</span>")
 		affected.SetSleeping(0)
 		affected.SetUnconscious(0)
 		affected.SetStun(0)

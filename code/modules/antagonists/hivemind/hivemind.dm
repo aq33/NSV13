@@ -70,7 +70,7 @@
 			var/obj/effect/proc_holder/spell/the_spell = new power(null)
 			owner.AddSpell(the_spell)
 			if(hive_size > 0)
-				to_chat(owner, "<span class='assimilator'>We have unlocked [the_spell.name].</span><span class='bold'> [the_spell.desc]</span>")
+				to_chat(owner, "<span class='assimilator'>Odblokowaliśmy: [the_spell.name].</span><span class='bold'> [the_spell.desc]</span>")
 	if(!unlocked_dominance && hive_size >= 20)
 		var/lead = TRUE
 		for(var/datum/antagonist/hivemind/enemy in GLOB.hivehosts)
@@ -85,7 +85,7 @@
 		if(lead)
 			unlocked_dominance = TRUE
 			owner.AddSpell(/obj/effect/proc_holder/spell/self/hive_dominance)
-			to_chat(owner, "<span class='assimilator'>Our strength overflowing and our competitors left in the dust, we can proclaim our Dominance and enter a heightened state.</span>")
+			to_chat(owner, "<span class='assimilator'>Nasza siła się przelewa, a rywale zostali daleko w tyle - możemy ogłosić naszą Dominację i wejść w stan wzmocnienia.</span>")
 
 /datum/antagonist/hivemind/proc/add_to_hive(mob/living/carbon/C)
 	if(!C)
@@ -97,7 +97,7 @@
 		add_hive_overlay(C)
 		calc_size()
 
-	var/user_warning = "<span class='userdanger'>We have detected an enemy hivemind using our physical form as a vessel and have begun ejecting their mind! They will be alerted of our disappearance once we succeed!</span>"
+	var/user_warning = "<span class='userdanger'>Wykryliśmy wrogi rój używający naszego ciała jako naczynia i zaczęliśmy wyrzucać jego umysł! Gdy się uda, zostanie powiadomiony o naszym zniknięciu!</span>"
 	if(IS_HIVEHOST(C))
 		var/eject_time = rand(1400,1600) //2.5 minutes +- 10 seconds
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), C, user_warning), rand(500,1300)) // If the host has assimilated an enemy hive host, alert the enemy before booting them from the hive after a short while
@@ -131,14 +131,14 @@
 		return
 	if(IS_HIVEHOST(C) && IS_HIVEHOST(C2))
 		remove_from_hive(C)
-		to_chat(C2, "<span class='assimilator'>We detect a surge of psionic energy from a far away vessel before they disappear from the hive. Whatever happened, there's a good chance they're after us now.</span>")
-		to_chat(C, "<span class='warning'>The enemy host has been ejected from our mind.</span>" )
+		to_chat(C2, "<span class='assimilator'>Wykrywamy przypływ energii psionicznej z dalekiego naczynia, zanim zniknie z roju. Cokolwiek się stało, bardzo możliwe, że teraz polują na nas.</span>")
+		to_chat(C, "<span class='warning'>Wrogi nosiciel został wyrzucony z naszego umysłu.</span>" )
 
 /datum/antagonist/hivemind/proc/handle_implant()
 	var/mob/living/carbon/human/self = owner.current
 	if(HAS_TRAIT(self, TRAIT_MINDSHIELD))
 		for(var/obj/item/implant/mindshield/M in self.implants)
-			to_chat(self, "<span class='notice'>Our latent psychic power destroys our mindshield implant!</span>")
+			to_chat(self, "<span class='notice'>Nasza utajona moc psychiczna niszczy implant ochrony umysłu!</span>")
 			qdel(M)
 
 /datum/antagonist/hivemind/proc/destroy_hive()
@@ -153,7 +153,7 @@
 		owner.RemoveSpell(power)
 
 /datum/antagonist/hivemind/antag_panel_data()
-	return "Vessels Assimilated: [hive_size] (+[size_mod])"
+	return "Przyłączone naczynia: [hive_size] (+[size_mod])"
 
 
 /datum/antagonist/hivemind/on_gain()
@@ -166,7 +166,7 @@
 	..()
 
 /datum/antagonist/hivemind/apply_innate_effects()
-	handle_clown_mutation(owner.current, "The great psionic powers of the Hive lets you overcome your clownish nature, allowing you to wield weapons with impunity.")
+	handle_clown_mutation(owner.current, "Potężne moce psioniczne Roju pozwalają ci przezwyciężyć klaunią naturę i bezkarnie używać broni.")
 	update_hivemind_hud(owner.current)
 
 /datum/antagonist/hivemind/proc/update_hivemind_hud(mob/living/M)
@@ -198,7 +198,7 @@
 		owner.RemoveSpell(power)
 
 	if(!silent && owner.current)
-		to_chat(owner.current,"<span class='userdanger'> Your psionic powers fade, you are no longer the hivemind's host! </span>")
+		to_chat(owner.current,"<span class='userdanger'> Twoje moce psioniczne słabną, nie jesteś już nosicielem roju! </span>")
 	owner.special_role = null
 	..()
 
@@ -251,22 +251,22 @@
 	return
 
 /datum/antagonist/hivemind/greet()
-	to_chat(owner.current, "<B><font size=3 color=red>You are the host of a powerful Hivemind.</font></B>")
-	to_chat(owner.current, "<b>Your psionic powers will grow by assimilating the crew into your hive. Use the Assimilate Vessel spell on a stationary \
-		target, and after ten seconds he will be one of the hive. This is completely silent and safe to use, and failing will reset the cooldown. As \
-		you assimilate the crew, you will gain more powers to use. Most are silent and won't help you in a fight, but grant you great power over your \
-		vessels. Hover your mouse over a power's action icon for an extended description on what it does. There are other hiveminds onboard the station, \
-		collaboration is possible, but a strong enough hivemind can reap many rewards from a well planned betrayal.</b>")
+	to_chat(owner.current, "<B><font size=3 color=red>Jesteś nosicielem potężnego Roju.</font></B>")
+	to_chat(owner.current, "<b>Twoje moce psioniczne rosną, gdy przyłączasz załogę do roju. Użyj zaklęcia Przyłącz Naczynie na nieruchomym \
+		celu, a po dziesięciu sekundach stanie się częścią roju. To całkowicie ciche i bezpieczne, a porażka resetuje odnowienie. W miarę \
+		przyłączania załogi zyskujesz kolejne moce. Większość jest cicha i nie pomoże w walce, ale daje ci wielką władzę nad \
+		naczyniami. Najedź myszą na ikonę mocy, żeby zobaczyć dokładny opis. Na statku są inne roje, \
+		współpraca jest możliwa, ale dość silny rój może wiele zyskać na dobrze zaplanowanej zdradzie.</b>")
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/assimilation.ogg', 100, FALSE, pressure_affected = FALSE)
 
 	owner.announce_objectives()
 	owner.current.client?.tgui_panel?.give_antagonist_popup("Hivemind",
-		"Your psionic powers will grow by assimilating the crew into your hive. Use the Assimilate Vessel spell on a stationary \
-		target, and after ten seconds he will be one of the hive. This is completely silent and safe to use, and failing will reset the cooldown. As \
-		you assimilate the crew, you will gain more powers to use. Most are silent and won't help you in a fight, but grant you great power over your \
-		vessels. Hover your mouse over a power's action icon for an extended description on what it does. There are other hiveminds onboard the station, \
-		our powers will grow if we integrate them with our own consciousness.")
-	to_chat(owner.current,"<span class='assimilator'>We are hive [hiveID]!</span>")
+		"Twoje moce psioniczne rosną, gdy przyłączasz załogę do roju. Użyj zaklęcia Przyłącz Naczynie na nieruchomym \
+		celu, a po dziesięciu sekundach stanie się częścią roju. To całkowicie ciche i bezpieczne, a porażka resetuje odnowienie. W miarę \
+		przyłączania załogi zyskujesz kolejne moce. Większość jest cicha i nie pomoże w walce, ale daje ci wielką władzę nad \
+		naczyniami. Najedź myszą na ikonę mocy, żeby zobaczyć dokładny opis. Na statku są inne roje, \
+		nasze moce urosną, jeśli zintegrujemy je z naszą świadomością.")
+	to_chat(owner.current,"<span class='assimilator'>Jesteśmy rojem [hiveID]!</span>")
 
 /datum/antagonist/hivemind/roundend_report()
 	var/list/result = list()
@@ -280,12 +280,12 @@
 				break
 
 	if(objectives.len == 0 || greentext)
-		result += "<span class='greentext big'>The [name] was successful!</span>"
+		result += "<span class='greentext big'>[name]: sukces!</span>"
 	else
-		result += "<span class='redtext big'>The [name] has failed!</span>"
-	result += "The Hivemind Host was:"
+		result += "<span class='redtext big'>[name]: porażka!</span>"
+	result += "Nosiciel roju:"
 	result += printplayer(owner)
-	result += "The Awakened Vessels were:"
+	result += "Przebudzone naczynia:"
 	for(var/datum/mind/mind in avessels)
 		result += printplayer(mind)
 	return result.Join("<br>")
@@ -298,17 +298,17 @@
 	var/static/list/postfix = list("Flame","Presence","Maw","Revelation","Consciousness","Blanket","Structure","Command","Hierarchy","Aristocrat","Zealotry","Fascination")
 	hiveID = pick_n_take(prefix) + " " + pick_n_take(postfix)
 	var/static/list/types = list(
-		"Domineering and opressive, not a pawn out of place, not a step out of line and ruthless with the oposition.",
-		"Crashing waves of assimilation, no subtlety, just the primal instinct to expand.",
-		"In one hand, the olive branch in the other; a knife.",
-		"Opulent and Aristocratic with ambitions to expand their fiefdom.",
-		"Seething with Rage and teeming with Anger, the former dominant personality amongst all, returning for its throne.",
-		"A Trickster with a preference for chaos, unpredictable, the emboddiment of mischief.",
-		"Benevolent to their own eyes, seeks to free living beings of the burden of free will.",
-		"Caring for their vessels and ruthless against those that would attack them, seeks to expand their protective embrace.",
-		"Diplomatic and calm mannered, may seek alliances of convenience to further their own gain.",
-		"Vulture-like and opportunistic, eager to pounce in a moment of weakness.",
-		"Pawns are mere Pawns, and they are expendable, crush our foes in a wave of meat."
+		"Władczy i opresyjny, żaden pionek nie na swoim miejscu, żaden krok poza szereg, bezwzględny wobec opozycji.",
+		"Rozbijające się fale asymilacji, zero subtelności, tylko pierwotny instynkt ekspansji.",
+		"W jednej ręce gałązka oliwna, w drugiej - nóż.",
+		"Wystawny i arystokratyczny, z ambicjami poszerzenia swoich włości.",
+		"Kipiący wściekłością i przepełniony gniewem, dawniej dominująca osobowość, powracająca po swój tron.",
+		"Kpiarz o upodobaniu do chaosu, nieprzewidywalny, ucieleśnienie psoty.",
+		"Dobrotliwy we własnych oczach, chce uwolnić żywe istoty od ciężaru wolnej woli.",
+		"Troskliwy wobec swoich naczyń i bezwzględny wobec ich napastników, chce rozszerzyć swoje opiekuńcze objęcia.",
+		"Dyplomatyczny i spokojny, może szukać sojuszy z rozsądku dla własnych korzyści.",
+		"Jak sęp - oportunistyczny, gotów rzucić się w chwili słabości.",
+		"Pionki to tylko pionki i można je poświęcić - zmiażdżmy wrogów falą mięsa."
 		)
 	descriptor = pick_n_take(types)
 
@@ -331,7 +331,7 @@
 	var/mob/living/carbon/C = owner.current
 	if(!C)
 		return
-	to_chat(C, "<span class='assimilator'>With our psyche unleashed we will be able to sustain an unlimited ammount of awakened vessels!</span>")
+	to_chat(C, "<span class='assimilator'>Z uwolnioną psychiką możemy utrzymać nieograniczoną liczbę przebudzonych naczyń!</span>")
 	ADD_TRAIT(C, TRAIT_STUNIMMUNE, HIVEMIND_TRAIT)
 	ADD_TRAIT(C, TRAIT_SLEEPIMMUNE, HIVEMIND_TRAIT)
 	ADD_TRAIT(C, TRAIT_VIRUSIMMUNE, HIVEMIND_TRAIT)
