@@ -35,7 +35,7 @@
 
 /obj/machinery/light_switch/examine(mob/user)
 	. = ..()
-	. += "It is [area.lightswitch ? "on" : "off"]."
+	. += "Jest [area.lightswitch ? "włączony" : "wyłączony"]."
 
 /obj/machinery/light_switch/interact(mob/user)
 	. = ..()
@@ -80,6 +80,6 @@
 
 /obj/machinery/light_switch/eminence_act(mob/living/simple_animal/eminence/eminence)
 	. = ..()
-	to_chat(usr, "<span class='brass'>You begin manipulating [src]!</span>")
+	to_chat(usr, "<span class='brass'>Zaczynasz majstrować przy [src]!</span>")
 	if(do_after(eminence, 20, target=get_turf(eminence)))
 		interact(eminence)

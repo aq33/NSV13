@@ -92,36 +92,36 @@
 				C.throw_at(user, 3, 10)
 				if(prob(10))
 					balance = max(balance - SPIN_PRICE, 0)
-				to_chat(user, "<span class='warning'>[src] spits your coin back out!</span>")
+				to_chat(user, "<span class='warning'>[src] wypluwa twoją monetę!</span>")
 
 			else
 				if(!user.temporarilyRemoveItemFromInventory(C))
 					return
-				to_chat(user, "<span class='notice'>You insert a [C.cmineral] coin into [src]'s slot!</span>")
+				to_chat(user, "<span class='notice'>Wrzucasz monetę ([C.cmineral]) do szczeliny [src]!</span>")
 				balance += C.value
 				qdel(C)
 		else
-			to_chat(user, "<span class='warning'>This machine is only accepting holochips!</span>")
+			to_chat(user, "<span class='warning'>Ta maszyna przyjmuje tylko holożetony!</span>")
 	else if(istype(I, /obj/item/holochip))
 		if(paymode == HOLOCHIP)
 			var/obj/item/holochip/H = I
 			if(!user.temporarilyRemoveItemFromInventory(H))
 				return
-			to_chat(user, "<span class='notice'>You insert [H.credits] holocredits into [src]'s slot!</span>")
+			to_chat(user, "<span class='notice'>Wkładasz [H.credits] holokredytów do szczeliny [src]!</span>")
 			balance += H.credits
 			qdel(H)
 		else
-			to_chat(user, "<span class='warning'>This machine is only accepting coins!</span>")
+			to_chat(user, "<span class='warning'>Ta maszyna przyjmuje tylko monety!</span>")
 	else if(I.tool_behaviour == TOOL_MULTITOOL)
 		if(balance > 0)
-			visible_message("<b>[src]</b> says, 'ERROR! Please empty the machine balance before altering paymode'") //Prevents converting coins into holocredits and vice versa
+			visible_message("<b>[src]</b> mówi: 'BŁĄD! Przed zmianą trybu płatności opróżnij saldo maszyny'") //Prevents converting coins into holocredits and vice versa
 		else
 			if(paymode == HOLOCHIP)
 				paymode = COIN
-				visible_message("<b>[src]</b> says, 'This machine now works with COINS!'")
+				visible_message("<b>[src]</b> mówi: 'Ta maszyna działa teraz na MONETY!'")
 			else
 				paymode = HOLOCHIP
-				visible_message("<b>[src]</b> says, 'This machine now works with HOLOCHIPS!'")
+				visible_message("<b>[src]</b> mówi: 'Ta maszyna działa teraz na HOLOŻETONY!'")
 	else
 		return ..()
 
@@ -149,19 +149,12 @@
 		dat = reeltext
 
 	else
-		dat = {"Five credits to play!<BR>
-		<B>Prize Money Available:</B> [money] (jackpot payout is ALWAYS 100%!)<BR>
-		<B>Credit Remaining:</B> [balance]<BR>
-		[plays] players have tried their luck today, and [jackpots] have won a jackpot!<BR>
-		<HR><BR>
-		<A href='byond://?src=[REF(src)];spin=1'>Play!</A><BR>
-		<BR>
-		[reeltext]
+		dat = {"Pięć kredytów za grę!<BR><B>Dostępna pula nagród:</B> [money] (wypłata jackpota ZAWSZE wynosi 100%!)<BR><B>Pozostały kredyt:</B> [balance]<BR>Dziś szczęścia próbowało [plays] graczy, a jackpota wygrało [jackpots]!<BR><HR><BR><A href='byond://?src=[REF(src)];spin=1'>Graj!</A><BR><BR>[reeltext]
 		<BR>"}
 		if(balance > 0)
-			dat+="<font size='1'><A href='byond://?src=[REF(src)];refund=1'>Refund balance</A><BR>"
+			dat+="<font size='1'><A href='byond://?src=[REF(src)];refund=1'>Zwrot salda</A><BR>"
 
-	var/datum/browser/popup = new(user, "slotmachine", "Slot Machine")
+	var/datum/browser/popup = new(user, "slotmachine", "Automat do gry")
 	popup.set_content(dat)
 	popup.open()
 
@@ -199,7 +192,7 @@
 	var/the_name
 	if(user)
 		the_name = user.real_name
-		visible_message("<span class='notice'>[user] pulls the lever and the slot machine starts spinning!</span>")
+		visible_message("<span class='notice'>[user] pociąga za dźwignię, a automat zaczyna się kręcić!</span>")
 	else
 		the_name = "Exaybachay"
 
@@ -227,14 +220,14 @@
 
 /obj/machinery/computer/slot_machine/proc/can_spin(mob/user)
 	if(machine_stat & NOPOWER)
-		to_chat(user, "<span class='warning'>The slot machine has no power!</span>")
+		to_chat(user, "<span class='warning'>Automat nie ma zasilania!</span>")
 	if(machine_stat & BROKEN)
-		to_chat(user, "<span class='warning'>The slot machine is broken!</span>")
+		to_chat(user, "<span class='warning'>Automat jest zepsuty!</span>")
 	if(working)
-		to_chat(user, "<span class='warning'>You need to wait until the machine stops spinning before you can play again!</span>")
+		to_chat(user, "<span class='warning'>Musisz zaczekać, aż automat przestanie się kręcić, zanim znów zagrasz!</span>")
 		return 0
 	if(balance < SPIN_PRICE)
-		to_chat(user, "<span class='warning'>Insufficient money to play!</span>")
+		to_chat(user, "<span class='warning'>Za mało pieniędzy, by zagrać!</span>")
 		return 0
 	return 1
 
@@ -255,8 +248,8 @@
 	var/linelength = get_lines()
 
 	if(reels[1][2] + reels[2][2] + reels[3][2] + reels[4][2] + reels[5][2] == "[SEVEN][SEVEN][SEVEN][SEVEN][SEVEN]")
-		visible_message("<b>[src]</b> says, 'JACKPOT! You win [money] credits!'")
-		priority_announce("Congratulations to [user ? user.real_name : usrname] for winning the jackpot at the slot machine in [get_area(src)]!", sound = SSstation.announcer.get_rand_alert_sound())
+		visible_message("<b>[src]</b> mówi: 'JACKPOT! Wygrywasz [money] kredytów!'")
+		priority_announce("Gratulacje dla [user ? user.real_name : usrname] za wygranie jackpota na automacie w [get_area(src)]!", sound = SSstation.announcer.get_rand_alert_sound())
 		jackpots += 1
 		balance += money - give_payout(JACKPOT)
 		money = 0
@@ -269,20 +262,20 @@
 				random_step(C, 2, 50)
 
 	else if(linelength == 5)
-		visible_message("<b>[src]</b> says, 'Big Winner! You win a thousand credits!'")
+		visible_message("<b>[src]</b> mówi: 'Wielka wygrana! Wygrywasz tysiąc kredytów!'")
 		give_money(BIG_PRIZE)
 
 	else if(linelength == 4)
-		visible_message("<b>[src]</b> says, 'Winner! You win four hundred credits!'")
+		visible_message("<b>[src]</b> mówi: 'Wygrana! Wygrywasz czterysta kredytów!'")
 		give_money(SMALL_PRIZE)
 
 	else if(linelength == 3)
-		to_chat(user, "<span class='notice'>You win three free games!</span>")
+		to_chat(user, "<span class='notice'>Wygrywasz trzy darmowe gry!</span>")
 		balance += SPIN_PRICE * 4
 		money = max(money - SPIN_PRICE * 4, money)
 
 	else
-		to_chat(user, "<span class='warning'>No luck!</span>")
+		to_chat(user, "<span class='warning'>Pech!</span>")
 
 /obj/machinery/computer/slot_machine/proc/get_lines()
 	var/amountthesame

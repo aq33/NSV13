@@ -31,12 +31,12 @@
 
 /obj/machinery/species_converter/close_machine(mob/user)
 	if(panel_open)
-		to_chat(user, "<span class='warning'>You need to close the maintenance hatch first!</span>")
+		to_chat(user, "<span class='warning'>Najpierw musisz zamknąć właz serwisowy!</span>")
 		return
 	..()
 	playsound(src, 'sound/machines/click.ogg', 50)
 	if(occupant)
-		to_chat(occupant, "<span class='notice'>You enter [src]</span>")
+		to_chat(occupant, "<span class='notice'>Wchodzisz do [src]</span>")
 		addtimer(CALLBACK(src, PROC_REF(begin_conversion)), 20, TIMER_OVERRIDE|TIMER_UNIQUE)
 		update_icon()
 
@@ -58,7 +58,7 @@
 	else if(!processing)
 		open_machine()
 	else
-		to_chat(user, "<span class='warning'>You can't open the [src] while it's active!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz otworzyć [src], gdy jest aktywny!</span>")
 
 /obj/machinery/species_converter/update_overlays()
 	. = ..()
@@ -97,8 +97,8 @@
 	if(DT_PROB(iterations * 10 + 10, delta_time)) // conversion has some random variation in it
 		C.set_species(desired_race)
 		if(brainwash)
-			to_chat(C, "<span class='userdanger'>A new compulsion fills your mind... you feel forced to obey it!</span>")
-			var/objective = "Convert as many people as possible into a [initial(desired_race.name)]. Racewar!"
+			to_chat(C, "<span class='userdanger'>Twój umysł wypełnia nowy przymus... czujesz, że musisz go słuchać!</span>")
+			var/objective = "Zamień jak najwięcej osób w: [initial(desired_race.name)]. Wojna ras!"
 			brainwash(C, objective)
 			log_game("[key_name(C)] has been brainwashed with the objective '[objective]' via the species converter.")
 
@@ -116,7 +116,7 @@
 			update_icon()
 			set_light(2, 1, "#ff0000")
 		else
-			say("Occupant is already the desired race.")
+			say("Pacjent już należy do wybranej rasy.")
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 40, FALSE)
 			open_machine()
 
@@ -124,19 +124,19 @@
 	if(!user.canUseTopic(src, BE_CLOSE) || processing)
 		return
 	if(user == occupant)
-		to_chat(user, "<span class='warning'>You can't reach the controls from inside!</span>")
+		to_chat(user, "<span class='warning'>Ze środka nie sięgasz do sterowania!</span>")
 		return
 	if(brainwash && changed)
-		to_chat(user, "<span class='warning'>The species controller is locked!</span>")
+		to_chat(user, "<span class='warning'>Kontroler gatunków jest zablokowany!</span>")
 		return
 	var/list/allowed = GLOB.roundstart_races
 	if(!dangerous)
 		allowed -= "plasmaman"
-	var/choice = input("Select desired race") as null|anything in allowed
+	var/choice = input("Wybierz docelową rasę") as null|anything in allowed
 	if(choice)
 		desired_race = GLOB.species_list[choice]
 		changed = TRUE
-		to_chat(user, "<span class='notice'>You change \the [src]'s desired race setting to [initial(desired_race.name)].</span>")
+		to_chat(user, "<span class='notice'>Zmieniasz docelową rasę [src] na: [initial(desired_race.name)].</span>")
 
 /obj/machinery/species_converter/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
@@ -145,4 +145,4 @@
 	brainwash = prob(30)
 	changed = FALSE
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class='warning'>You quitely disable \the [src]'s safety measures.</span>")
+	to_chat(user, "<span class='warning'>Po cichu wyłączasz zabezpieczenia [src].</span>")

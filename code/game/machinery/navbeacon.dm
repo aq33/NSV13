@@ -123,7 +123,7 @@
 
 /obj/machinery/navbeacon/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!panel_open && cover_locked)
-		balloon_alert(user, "hatch locked!")
+		balloon_alert(user, "właz zablokowany!")
 		return TRUE
 	return default_deconstruction_screwdriver(user, "navbeacon1","navbeacon0",tool)
 
@@ -139,9 +139,9 @@
 				balloon_alert(user, "controls [controls_locked ? "locked" : "unlocked"]")
 				SStgui.update_uis(src)
 			else
-				balloon_alert(user, "access denied")
+				balloon_alert(user, "odmowa dostępu")
 		else
-			balloon_alert(user, "panel open!")
+			balloon_alert(user, "panel otwarty!")
 		return
 
 	return ..()

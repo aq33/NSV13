@@ -48,13 +48,13 @@
 
 /obj/machinery/space_heater/examine(mob/user)
 	. = ..()
-	. += "\The [src] is [on ? "on" : "off"], and the hatch is [panel_open ? "open" : "closed"]."
+	. += "[src] jest [on ? "włączony" : "wyłączony"], a właz jest [panel_open ? "otwarty" : "zamknięty"]."
 	if(cell)
-		. += "The charge meter reads [cell ? round(cell.percent(), 1) : 0]%."
+		. += "Miernik ładunku pokazuje [cell ? round(cell.percent(), 1) : 0]%."
 	else
-		. += "There is no power cell installed."
+		. += "Nie zainstalowano ogniwa zasilającego."
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Temperature range at <b>[settableTemperatureRange]°C</b>.<br>Heating power at <b>[heatingPower*0.001]kJ</b>.<br>Power consumption at <b>[(efficiency*-0.0025)+150]%</b>.</span>" //100%, 75%, 50%, 25%
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: zakres temperatur: <b>[settableTemperatureRange]°C</b>.<br>Moc grzania: <b>[heatingPower*0.001]kJ</b>.<br>Pobór mocy: <b>[(efficiency*-0.0025)+150]%</b>.</span>" //100%, 75%, 50%, 25%
 
 /obj/machinery/space_heater/update_icon()
 	if(on)
@@ -144,21 +144,21 @@
 	else if(istype(I, /obj/item/stock_parts/cell))
 		if(panel_open)
 			if(cell)
-				to_chat(user, "<span class='warning'>There is already a power cell inside!</span>")
+				to_chat(user, "<span class='warning'>W środku już jest ogniwo zasilające!</span>")
 				return
 			else if(!user.transferItemToLoc(I, src))
 				return
 			cell = I
 			I.add_fingerprint(usr)
 
-			user.visible_message("<span class='notice'>\The [user] inserts a power cell into \the [src].</span>", "<span class='notice'>You insert the power cell into \the [src].</span>")
+			user.visible_message("<span class='notice'>[user] wkłada ogniwo zasilające do [src].</span>", "<span class='notice'>Wkładasz ogniwo zasilające do [src].</span>")
 			SStgui.update_uis(src)
 		else
-			to_chat(user, "<span class='warning'>The hatch must be open to insert a power cell!</span>")
+			to_chat(user, "<span class='warning'>Do włożenia ogniwa właz musi być otwarty!</span>")
 			return
 	else if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		panel_open = !panel_open
-		user.visible_message("<span class='notice'>\The [user] [panel_open ? "opens" : "closes"] the hatch on \the [src].</span>", "<span class='notice'>You [panel_open ? "open" : "close"] the hatch on \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] [panel_open ? "otwiera" : "zamyka"] właz [src].</span>", "<span class='notice'>[panel_open ? "Otwierasz" : "Zamykasz"] właz [src].</span>")
 		update_icon()
 	else if(default_deconstruction_crowbar(I))
 		return
@@ -205,7 +205,7 @@
 		if("power")
 			on = !on
 			mode = HEATER_MODE_STANDBY
-			usr.visible_message("<span class='notice'>[usr] switches [on ? "on" : "off"] \the [src].</span>", "<span class='notice'>You switch [on ? "on" : "off"] \the [src].</span>")
+			usr.visible_message("<span class='notice'>[usr] [on ? "włącza" : "wyłącza"] [src].</span>", "<span class='notice'>[on ? "Włączasz" : "Wyłączasz"] [src].</span>")
 			update_icon()
 			if (on)
 				SSair.start_processing_machine(src) //NSV13 - Citadel auxmos

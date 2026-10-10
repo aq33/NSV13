@@ -36,7 +36,7 @@
 /obj/machinery/teleport/hub/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Probability of malfunction decreased by <b>[(accuracy-1)*100/3]%</b>.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: prawdopodobieństwo awarii zmniejszone o <b>[(accuracy-1)*100/3]%</b>.</span>"
 
 /obj/machinery/teleport/hub/proc/link_power_station()
 	if(power_station)
@@ -49,7 +49,7 @@
 
 /obj/machinery/teleport/hub/Bumped(atom/movable/AM)
 	if(is_centcom_level(z))
-		to_chat(AM, "You can't use this here.")
+		to_chat(AM, "Nie możesz tego tu użyć.")
 		return
 	if(is_ready())
 		teleport(AM)
@@ -73,7 +73,7 @@
 		target = com.target_ref.resolve()
 	if (!target)
 		com.target_ref = null
-		visible_message("<span class='alert'>Cannot authenticate locked on coordinates. Please reinstate coordinate matrix.</span>")
+		visible_message("<span class='alert'>Nie można uwierzytelnić namierzonych współrzędnych. Przywróć matrycę współrzędnych.</span>")
 		return
 	if (ismovableatom(M))
 		if(do_teleport(M, target, channel = TELEPORT_CHANNEL_BLUESPACE))
@@ -83,7 +83,7 @@
 					var/mob/living/carbon/human/human = M
 					if(human.dna && !isflyperson(human) && !HAS_TRAIT(M, TRAIT_RADIMMUNE))
 						log_game("[M] ([key_name(M)]) was turned into a fly person")
-						to_chat(M, "<span class='italics'>You hear a buzzing in your ears.</span>")
+						to_chat(M, "<span class='italics'>Słyszysz brzęczenie w uszach.</span>")
 						human.set_species(/datum/species/fly)
 
 					human.apply_effect((rand(160 - accuracy * 40, 240 - accuracy * 60)), EFFECT_IRRADIATE, 0)
@@ -138,11 +138,11 @@
 /obj/machinery/teleport/station/examine(mob/user)
 	. = ..()
 	if(!panel_open)
-		. += "<span class='notice'>The panel is <i>screwed</i> in, obstructing the linking device and wiring panel.</span>"
+		. += "<span class='notice'>Panel jest <i>przykręcony</i>, zasłaniając urządzenie łączące i panel przewodów.</span>"
 	else
-		. += "<span class='notice'>The <i>linking</i> device is now able to be <i>scanned</i> with a multitool.<br>The <i>wiring</i> can be <i>connected<i> to a nearby console and hub with a pair of wirecutters.</span>"
+		. += "<span class='notice'>Urządzenie <i>łączące</i> można teraz <i>zeskanować</i> multitoolem.<br><i>Okablowanie</i> można <i>połączyć</i> z pobliską konsolą i hubem za pomocą nożyc do drutu.</span>"
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: This station can be linked to <b>[efficiency]</b> other station(s).</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: tę stację można połączyć z <b>[efficiency]</b> innymi stacjami.</span>"
 
 /obj/machinery/teleport/station/proc/link_console_and_hub()
 	for(var/direction in GLOB.cardinals)
@@ -177,15 +177,15 @@
 		var/obj/item/multitool/M = W
 		if(panel_open)
 			M.buffer = src
-			to_chat(user, "<span class='caution'>You download the data to the [W.name]'s buffer.</span>")
+			to_chat(user, "<span class='caution'>Pobierasz dane do bufora [W.name].</span>")
 		else
 			if(M.buffer && istype(M.buffer, /obj/machinery/teleport/station) && M.buffer != src)
 				if(linked_stations.len < efficiency)
 					linked_stations.Add(M.buffer)
 					M.buffer = null
-					to_chat(user, "<span class='caution'>You upload the data from the [W.name]'s buffer.</span>")
+					to_chat(user, "<span class='caution'>Wgrywasz dane z bufora [W.name].</span>")
 				else
-					to_chat(user, "<span class='alert'>This station can't hold more information, try to use better parts.</span>")
+					to_chat(user, "<span class='alert'>Ta stacja nie pomieści więcej informacji, spróbuj użyć lepszych części.</span>")
 		return
 	else if(default_deconstruction_screwdriver(user, "controller-o", "controller", W))
 		update_icon()
@@ -197,7 +197,7 @@
 	else if(W.tool_behaviour == TOOL_WIRECUTTER)
 		if(panel_open)
 			link_console_and_hub()
-			to_chat(user, "<span class='caution'>You reconnect the station to nearby machinery.</span>")
+			to_chat(user, "<span class='caution'>Ponownie łączysz stację z pobliskimi urządzeniami.</span>")
 			return
 	else
 		return ..()
@@ -209,15 +209,15 @@
 	if(machine_stat & (BROKEN|NOPOWER) || !teleporter_hub || !teleporter_console )
 		return
 	if(teleporter_hub.panel_open || teleporter_hub.machine_stat & (BROKEN|NOPOWER))
-		to_chat(user, "<span class='alert'>The teleporter hub isn't responding.</span>")
+		to_chat(user, "<span class='alert'>Hub teleportera nie odpowiada.</span>")
 		return
 	if (teleporter_console.target_ref?.resolve())
 		engaged = !engaged
 		use_power(5000)
-		to_chat(user, "<span class='notice'>Teleporter [engaged ? "" : "dis"]engaged!</span>")
+		to_chat(user, "<span class='notice'>Teleporter [engaged ? "włączony" : "wyłączony"]!</span>")
 	else
 		teleporter_console.target_ref = null
-		to_chat(user, "<span class='alert'>No target detected.</span>")
+		to_chat(user, "<span class='alert'>Nie wykryto celu.</span>")
 		engaged = FALSE
 	teleporter_hub.update_icon()
 	add_fingerprint(user)

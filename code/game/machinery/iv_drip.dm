@@ -74,36 +74,36 @@
 		return
 
 	if(attached)
-		visible_message("<span class='warning'>[attached] is detached from [src].</span>")
+		visible_message("<span class='warning'>[attached] zostaje odłączony od [src].</span>")
 		attached = null
 		update_icon()
 		return
 
 	if(!target.has_dna())
-		to_chat(usr, "<span class='danger'>The drip beeps: Warning, incompatible creature!</span>")
+		to_chat(usr, "<span class='danger'>Kroplówka pika: ostrzeżenie, niezgodna istota!</span>")
 		return
 
 	if(Adjacent(target) && usr.Adjacent(target))
 		if(beaker)
-			usr.visible_message("<span class='warning'>[usr] attaches [src] to [target].</span>", "<span class='notice'>You attach [src] to [target].</span>")
+			usr.visible_message("<span class='warning'>[usr] podłącza [src] do [target].</span>", "<span class='notice'>Podłączasz [src] do [target].</span>")
 			log_combat(usr, target, "attached", src, "containing: [beaker.name] - ([beaker.reagents.log_list()])")
 			add_fingerprint(usr)
 			attached = target
 			START_PROCESSING(SSmachines, src)
 			update_icon()
 		else
-			to_chat(usr, "<span class='warning'>There's nothing attached to the IV drip!</span>")
+			to_chat(usr, "<span class='warning'>Do kroplówki nic nie jest podłączone!</span>")
 
 
 /obj/machinery/iv_drip/attackby(obj/item/W, mob/user, params)
 	if(is_type_in_typecache(W, drip_containers) || IS_EDIBLE(W))
 		if(beaker)
-			to_chat(user, "<span class='warning'>There is already a reagent container loaded!</span>")
+			to_chat(user, "<span class='warning'>Pojemnik z odczynnikiem jest już załadowany!</span>")
 			return
 		if(!user.transferItemToLoc(W, src))
 			return
 		beaker = W
-		to_chat(user, "<span class='notice'>You attach [W] to [src].</span>")
+		to_chat(user, "<span class='notice'>Podłączasz [W] do [src].</span>")
 		user.log_message("attached a [W] to [src] at [AREACOORD(src)] containing ([beaker.reagents.log_list()])", LOG_ATTACK)
 		add_fingerprint(user)
 		update_icon()
@@ -121,7 +121,7 @@
 		return PROCESS_KILL
 
 	if(!(get_dist(src, attached) <= 1 && isturf(attached.loc)))
-		to_chat(attached, "<span class='userdanger'>The IV drip needle is ripped out of you!</span>")
+		to_chat(attached, "<span class='userdanger'>Igła kroplówki zostaje z ciebie wyrwana!</span>")
 		attached.apply_damage(3, BRUTE, pick(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM))
 		attached = null
 		update_icon()
@@ -152,7 +152,7 @@
 
 			// If the human is losing too much blood, beep.
 			if(attached.blood_volume < BLOOD_VOLUME_SAFE && prob(5))
-				visible_message("[src] beeps loudly.")
+				visible_message("[src] głośno pika.")
 				playsound(loc, 'sound/machines/twobeep_high.ogg', 50, 1)
 			attached.transfer_blood_to(beaker, amount)
 			update_icon()
@@ -164,7 +164,7 @@
 	if(!ishuman(user))
 		return
 	if(attached)
-		visible_message("[attached] is detached from \the [src].")
+		visible_message("[attached] zostaje odłączony od [src].")
 		attached = null
 		update_icon()
 		return
@@ -179,7 +179,7 @@
 	set src in view(1)
 
 	if(!isliving(usr))
-		to_chat(usr, "<span class='warning'>You can't do that!</span>")
+		to_chat(usr, "<span class='warning'>Nie możesz tego zrobić!</span>")
 		return
 
 	if(usr.incapacitated())
@@ -195,13 +195,13 @@
 	set src in view(1)
 
 	if(!isliving(usr))
-		to_chat(usr, "<span class='warning'>You can't do that!</span>")
+		to_chat(usr, "<span class='warning'>Nie możesz tego zrobić!</span>")
 		return
 
 	if(usr.incapacitated())
 		return
 	mode = !mode
-	to_chat(usr, "The IV drip is now [mode ? "injecting" : "taking blood"].")
+	to_chat(usr, "Kroplówka teraz [mode ? "wstrzykuje" : "pobiera krew"].")
 	update_icon()
 
 /obj/machinery/iv_drip/examine(mob/user)
@@ -209,30 +209,30 @@
 	if(get_dist(user, src) > 2)
 		return
 
-	. += "[src] is [mode ? "injecting" : "taking blood"]."
+	. += "[src] [mode ? "wstrzykuje" : "pobiera krew"]."
 
 	if(beaker)
 		if(beaker.reagents && beaker.reagents.reagent_list.len)
-			. += "<span class='notice'>Attached is \a [beaker] with [beaker.reagents.total_volume] units of liquid.</span>"
+			. += "<span class='notice'>Podłączona jest [beaker] z [beaker.reagents.total_volume] j. płynu.</span>"
 		else
-			. += "<span class='notice'>Attached is an empty [beaker.name].</span>"
+			. += "<span class='notice'>Podłączona jest pusta [beaker.name].</span>"
 	else
-		. += "<span class='notice'>No chemicals are attached.</span>"
+		. += "<span class='notice'>Nie podłączono żadnych substancji.</span>"
 
-	. += "<span class='notice'>[attached ? attached : "No one"] is attached.</span>"
+	. += "<span class='notice'>Podłączony: [attached ? attached : "nikt"].</span>"
 
 
 /obj/machinery/iv_drip/screwdriver_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(user.is_holding_item_of_type(/obj/item/clothing/mask/breath) && can_convert)
-		visible_message("<span class='warning'>[user] attempts to attach the breath mask to [src].</span>", "<span class='notice'>You attempt to attach the breath mask to [src].</span>")
+		visible_message("<span class='warning'>[user] próbuje podłączyć maskę oddechową do [src].</span>", "<span class='notice'>Próbujesz podłączyć maskę oddechową do [src].</span>")
 		if(!do_after(user, 100, FALSE, src))
-			to_chat(user, "<span class='warning'>You fail to attach the breath mask to [src]!</span>")
+			to_chat(user, "<span class='warning'>Nie udaje ci się podłączyć maski oddechowej do [src]!</span>")
 			return
 		var/item = user.is_holding_item_of_type(/obj/item/clothing/mask/breath)
 		if(!item) // Check after the do_after as well
 			return
-		visible_message("<span class='warning'>[user] attaches the breath mask to [src].</span>", "<span class='notice'>You attach the breath mask to [src].</span>")
+		visible_message("<span class='warning'>[user] podłącza maskę oddechową do [src].</span>", "<span class='notice'>Podłączasz maskę oddechową do [src].</span>")
 		qdel(item)
 		new /obj/machinery/anesthetic_machine(loc)
 		qdel(src)

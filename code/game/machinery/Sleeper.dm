@@ -26,7 +26,7 @@
 	)
 	var/list/chem_buttons	//Used when emagged to scramble which chem is used, eg: antitoxin -> morphine
 	var/scrambled_chems = FALSE //Are chem buttons scrambled? used as a warning
-	var/enter_message = "<span class='notice'><b>You feel cool air surround you. You go numb as your senses turn inward.</b></span>"
+	var/enter_message = "<span class='notice'><b>Otacza cię chłodne powietrze. Drętwiejesz, a twoje zmysły zwracają się do wewnątrz.</b></span>"
 	payment_department = ACCOUNT_MED
 	fair_market_price = 5
 /obj/machinery/sleeper/Initialize(mapload)
@@ -58,8 +58,8 @@
 		icon_state = initial(icon_state)
 
 /obj/machinery/sleeper/container_resist(mob/living/user)
-	visible_message("<span class='notice'>[occupant] emerges from [src]!</span>",
-		"<span class='notice'>You climb out of [src]!</span>")
+	visible_message("<span class='notice'>[occupant] wychodzi z [src]!</span>",
+		"<span class='notice'>Wychodzisz z [src]!</span>")
 	open_machine()
 
 /obj/machinery/sleeper/Exited(atom/movable/gone, direction)
@@ -106,10 +106,10 @@
 	if(..())
 		return
 	if(occupant)
-		to_chat(user, "<span class='warning'>[src] is currently occupied!</span>")
+		to_chat(user, "<span class='warning'>[src] jest obecnie zajęty!</span>")
 		return
 	if(state_open)
-		to_chat(user, "<span class='warning'>[src] must be closed to [panel_open ? "close" : "open"] its maintenance hatch!</span>")
+		to_chat(user, "<span class='warning'>[src] musi być zamknięty, by [panel_open ? "zamknąć" : "otworzyć"] właz serwisowy!</span>")
 		return
 	if(default_deconstruction_screwdriver(user, "[initial(icon_state)]-o", initial(icon_state), I))
 		return
@@ -129,7 +129,7 @@
 	. = !(state_open || panel_open || (flags_1 & NODECONSTRUCT_1)) && I.tool_behaviour == TOOL_CROWBAR
 	if(.)
 		I.play_tool_sound(src, 50)
-		visible_message("<span class='notice'>[usr] pries open [src].</span>", "<span class='notice'>You pry open [src].</span>")
+		visible_message("<span class='notice'>[usr] wyważa [src].</span>", "<span class='notice'>Wyważasz [src].</span>")
 		open_machine()
 
 
@@ -160,7 +160,7 @@
 
 /obj/machinery/sleeper/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click [src] to [state_open ? "close" : "open"] it.</span>"
+	. += "<span class='notice'>Alt-kliknij [src], by [state_open ? "zamknąć" : "otworzyć"].</span>"
 
 /obj/machinery/sleeper/process()
 	..()
@@ -232,11 +232,11 @@
 			if(inject_chem(chem, usr))
 				. = TRUE
 				if(scrambled_chems && prob(5))
-					to_chat(usr, "<span class='warning'>Chemical system re-route detected, results may not be as expected!</span>")
+					to_chat(usr, "<span class='warning'>Wykryto zmianę trasy systemu chemicznego, wyniki mogą być nieoczekiwane!</span>")
 
 /obj/machinery/sleeper/emag_act(mob/user)
 	scramble_chem_buttons()
-	to_chat(user, "<span class='warning'>You scramble the sleeper's user interface!</span>")
+	to_chat(user, "<span class='warning'>Mieszasz interfejs użytkownika kapsuły uśpienia!</span>")
 
 /obj/machinery/sleeper/proc/inject_chem(chem, mob/user)
 	if((chem in available_chems) && chem_allowed(chem))
@@ -279,7 +279,7 @@
 	name = "soothing sleeper"
 	desc = "A large cryogenics unit built from brass. Its surface is pleasantly cool the touch."
 	icon_state = "sleeper_clockwork"
-	enter_message = "<span class='bold inathneq_small'>You hear the gentle hum and click of machinery, and are lulled into a sense of peace.</span>"
+	enter_message = "<span class='bold inathneq_small'>Słyszysz delikatny szum i kliknięcia maszynerii, które wprawiają cię w spokój.</span>"
 	possible_chems = list(list(/datum/reagent/medicine/epinephrine, /datum/reagent/medicine/salbutamol, /datum/reagent/medicine/bicaridine, /datum/reagent/medicine/kelotane, /datum/reagent/medicine/oculine, /datum/reagent/medicine/inacusiate, /datum/reagent/medicine/mannitol))
 
 /obj/machinery/sleeper/old

@@ -127,16 +127,16 @@ GLOBAL_LIST_INIT(dye_registry, list(
 /obj/machinery/washing_machine/examine(mob/user)
 	. = ..()
 	if(!busy)
-		. += "<span class='notice'><b>Alt-click</b> it to start a wash cycle.</span>"
+		. += "<span class='notice'><b>Alt-kliknij</b>, by rozpocząć cykl prania.</span>"
 
 /obj/machinery/washing_machine/AltClick(mob/user)
 	if(!user.canUseTopic(src, !issilicon(user)) || busy)
 		return
 	if(state_open)
-		to_chat(user, "<span class='notice'>Close the door first.</span>")
+		to_chat(user, "<span class='notice'>Najpierw zamknij drzwiczki.</span>")
 		return
 	if(bloody_mess)
-		to_chat(user, "<span class='warning'>[src] must be cleaned up first.</span>")
+		to_chat(user, "<span class='warning'>Najpierw trzeba wyczyścić [src].</span>")
 		return
 
 	busy = TRUE
@@ -293,19 +293,19 @@ GLOBAL_LIST_INIT(dye_registry, list(
 	else if(user.a_intent != INTENT_HARM)
 
 		if (!state_open)
-			to_chat(user, "<span class='warning'>Open the door first!</span>")
+			to_chat(user, "<span class='warning'>Najpierw otwórz drzwiczki!</span>")
 			return TRUE
 
 		if(bloody_mess)
-			to_chat(user, "<span class='warning'>[src] must be cleaned up first.</span>")
+			to_chat(user, "<span class='warning'>Najpierw trzeba wyczyścić [src].</span>")
 			return TRUE
 
 		if(contents.len >= max_wash_capacity)
-			to_chat(user, "<span class='warning'>The washing machine is full!</span>")
+			to_chat(user, "<span class='warning'>Pralka jest pełna!</span>")
 			return TRUE
 
 		if(!user.transferItemToLoc(W, src))
-			to_chat(user, "<span class='warning'>\The [W] is stuck to your hand, you cannot put it in the washing machine!</span>")
+			to_chat(user, "<span class='warning'>[W] przykleił się do twojej ręki, nie możesz go włożyć do pralki!</span>")
 			return TRUE
 
 		if(W.dye_color)
@@ -320,7 +320,7 @@ GLOBAL_LIST_INIT(dye_registry, list(
 	if(.)
 		return
 	if(busy)
-		to_chat(user, "<span class='warning'>[src] is busy.</span>")
+		to_chat(user, "<span class='warning'>[src] jest zajęta.</span>")
 		return
 
 	if(user.pulling && user.a_intent == INTENT_GRAB && isliving(user.pulling))

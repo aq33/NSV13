@@ -20,7 +20,7 @@
 /obj/machinery/power/singularity_beacon/proc/Activate(mob/user = null)
 	if(surplus() < 1500)
 		if(user)
-			to_chat(user, "<span class='notice'>The connected wire doesn't have enough current.</span>")
+			to_chat(user, "<span class='notice'>Podłączony przewód nie ma wystarczającego natężenia.</span>")
 		return
 	for(var/datum/component/singularity/singulo as() in GLOB.singularities)
 		var/atom/singulo_atom = singulo.parent
@@ -29,7 +29,7 @@
 	icon_state = "[icontype]1"
 	active = 1
 	if(user)
-		to_chat(user, "<span class='notice'>You activate the beacon.</span>")
+		to_chat(user, "<span class='notice'>Aktywujesz nadajnik.</span>")
 
 
 /obj/machinery/power/singularity_beacon/proc/Deactivate(mob/user = null)
@@ -39,7 +39,7 @@
 	icon_state = "[icontype]0"
 	active = 0
 	if(user)
-		to_chat(user, "<span class='notice'>You deactivate the beacon.</span>")
+		to_chat(user, "<span class='notice'>Dezaktywujesz nadajnik.</span>")
 
 
 /obj/machinery/power/singularity_beacon/attack_ai(mob/user)
@@ -53,30 +53,30 @@
 	if(anchored)
 		return active ? Deactivate(user) : Activate(user)
 	else
-		to_chat(user, "<span class='warning'>You need to screw \the [src] to the floor first!</span>")
+		to_chat(user, "<span class='warning'>Najpierw musisz przykręcić [src] do podłogi!</span>")
 
 /obj/machinery/power/singularity_beacon/attackby(obj/item/W, mob/user, params)
 	if(W.tool_behaviour == TOOL_WRENCH)
 		if(active)
-			to_chat(user, "<span class='warning'>You need to deactivate \the [src] first!</span>")
+			to_chat(user, "<span class='warning'>Najpierw musisz dezaktywować [src]!</span>")
 			return
 
 		if(anchored)
 			setAnchored(FALSE)
-			to_chat(user, "<span class='notice'>You unbolt \the [src] from the floor and detach it from the cable.</span>")
+			to_chat(user, "<span class='notice'>Odkręcasz [src] od podłogi i odłączasz go od kabla.</span>")
 			disconnect_from_network()
 			return
 		else
 			if(!connect_to_network())
-				to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
+				to_chat(user, "<span class='warning'>[src] musi zostać umieszczony nad odsłoniętym, zasilanym węzłem kabla!</span>")
 				return
 			setAnchored(TRUE)
-			to_chat(user, "<span class='notice'>You bolt \the [src] to the floor and attach it to the cable.</span>")
+			to_chat(user, "<span class='notice'>Przykręcasz [src] do podłogi i podłączasz go do kabla.</span>")
 			return
 	else if(W.tool_behaviour == TOOL_SCREWDRIVER)
 		user.visible_message( \
-			"[user] messes with \the [src] for a bit.", \
-			"<span class='notice'>You can't fit the screwdriver into \the [src]'s bolts! Try using a wrench.</span>")
+			"[user] przez chwilę grzebie przy [src].", \
+			"<span class='notice'>Śrubokręt nie pasuje do śrub [src]! Spróbuj klucza.</span>")
 	else
 		return ..()
 
@@ -97,10 +97,10 @@
 			for(var/datum/component/singularity/singulo_component as() in GLOB.singularities)
 				var/atom/singulo = singulo_component.parent
 				if(singulo.get_virtual_z_level() == get_virtual_z_level())
-					say("[singulo] is now [get_dist(src,singulo)] standard lengths away to the [dir2text(get_dir(src,singulo))]")
+					say("[singulo] jest teraz [get_dist(src,singulo)] standardowych jednostek stąd, w kierunku: [dir2text(get_dir(src,singulo))]")
 	else
 		Deactivate()
-		say("Insufficient charge detected - powering down")
+		say("Wykryto za mało ładunku - wyłączanie")
 
 
 /obj/machinery/power/singularity_beacon/syndicate
@@ -121,7 +121,7 @@
 
 /obj/item/sbeacondrop/attack_self(mob/user)
 	if(user)
-		to_chat(user, "<span class='notice'>Locked In.</span>")
+		to_chat(user, "<span class='notice'>Namierzono.</span>")
 		new droptype( user.loc )
 		playsound(src, 'sound/effects/pop.ogg', 100, 1, 1)
 		qdel(src)
