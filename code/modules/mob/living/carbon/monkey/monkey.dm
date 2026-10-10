@@ -104,8 +104,8 @@ GLOBAL_LIST_INIT(strippable_monkey_items, create_strippable_list(list(
 	if(client && mind)
 		var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
 		if(changeling)
-			tab_data["Chemical Storage"] = GENERATE_STAT_TEXT("[changeling.chem_charges]/[changeling.chem_storage]")
-			tab_data["Absorbed DNA"] = GENERATE_STAT_TEXT("[changeling.absorbedcount]")
+			tab_data["Zapas chemikaliów"] = GENERATE_STAT_TEXT("[changeling.chem_charges]/[changeling.chem_storage]")
+			tab_data["Wchłonięte DNA"] = GENERATE_STAT_TEXT("[changeling.absorbedcount]")
 	return tab_data
 
 

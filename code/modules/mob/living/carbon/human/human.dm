@@ -78,29 +78,29 @@
 		var/obj/item/clothing/suit/space/space_ninja/SN = wear_suit
 		if(!SN)
 			return
-		tab_data["SpiderOS Status"] = GENERATE_STAT_TEXT("[SN.s_initialized ? "Initialized" : "Disabled"]")
-		tab_data["Current Time"] = GENERATE_STAT_TEXT("[station_time_timestamp()]")
+		tab_data["Stan SpiderOS"] = GENERATE_STAT_TEXT("[SN.s_initialized ? "Uruchomiony" : "Wyłączony"]")
+		tab_data["Aktualny czas"] = GENERATE_STAT_TEXT("[station_time_timestamp()]")
 		tab_data["divider_spideros"] = GENERATE_STAT_DIVIDER
 		if(SN.s_initialized)
 			//Suit gear
-			tab_data["Energy Charge"] = GENERATE_STAT_TEXT("[round(SN.cell.charge/100)]%")
-			tab_data["Smoke Bombs"] = GENERATE_STAT_TEXT("[SN.s_bombs]")
+			tab_data["Naładowanie energii"] = GENERATE_STAT_TEXT("[round(SN.cell.charge/100)]%")
+			tab_data["Bomby dymne"] = GENERATE_STAT_TEXT("[SN.s_bombs]")
 			//Ninja status
-			tab_data["Fingerprints"] = GENERATE_STAT_TEXT("[rustg_hash_string(RUSTG_HASH_MD5, dna.uni_identity)]")
-			tab_data["Unique Identity"] = GENERATE_STAT_TEXT("[dna.unique_enzymes]")
-			tab_data["Overall Status"] = GENERATE_STAT_TEXT("[stat > 1 ? "dead" : "[health]% healthy"]")
-			tab_data["Nutrition Status"] = GENERATE_STAT_TEXT("[nutrition]")
-			tab_data["Oxygen Loss"] = GENERATE_STAT_TEXT("[getOxyLoss()]")
-			tab_data["Toxin Levels"] = GENERATE_STAT_TEXT("[getToxLoss()]")
-			tab_data["Burn Severity"] = GENERATE_STAT_TEXT("[getFireLoss()]")
-			tab_data["Brute Trauma"] = GENERATE_STAT_TEXT("[getBruteLoss()]")
-			tab_data["Radiation Levels"] = GENERATE_STAT_TEXT("[radiation] rad")
-			tab_data["Body Temperature"] = GENERATE_STAT_TEXT("[bodytemperature-T0C] degrees C ([bodytemperature*1.8-459.67] degrees F)")
+			tab_data["Odciski palców"] = GENERATE_STAT_TEXT("[rustg_hash_string(RUSTG_HASH_MD5, dna.uni_identity)]")
+			tab_data["Unikalna tożsamość"] = GENERATE_STAT_TEXT("[dna.unique_enzymes]")
+			tab_data["Stan ogólny"] = GENERATE_STAT_TEXT("[stat > 1 ? "martwy" : "[health]% zdrowia"]")
+			tab_data["Odżywienie"] = GENERATE_STAT_TEXT("[nutrition]")
+			tab_data["Niedotlenienie"] = GENERATE_STAT_TEXT("[getOxyLoss()]")
+			tab_data["Poziom toksyn"] = GENERATE_STAT_TEXT("[getToxLoss()]")
+			tab_data["Oparzenia"] = GENERATE_STAT_TEXT("[getFireLoss()]")
+			tab_data["Urazy fizyczne"] = GENERATE_STAT_TEXT("[getBruteLoss()]")
+			tab_data["Poziom promieniowania"] = GENERATE_STAT_TEXT("[radiation] rad")
+			tab_data["Temperatura ciała"] = GENERATE_STAT_TEXT("[bodytemperature-T0C] °C ([bodytemperature*1.8-459.67] °F)")
 
 			//Diseases
 			if(diseases.len)
 				tab_data["DivSpiderOs2"] = GENERATE_STAT_DIVIDER
-				tab_data["Viruses"] = GENERATE_STAT_TEXT("")
+				tab_data["Wirusy"] = GENERATE_STAT_TEXT("")
 				for(var/thing in diseases)
 					var/datum/disease/D = thing
 					tab_data["* [D.name]"] = GENERATE_STAT_TEXT("Type: [D.spread_text], Stage: [D.stage]/[D.max_stages], Possible Cure: [D.cure_text]")
@@ -121,15 +121,15 @@
 		if (!internal.air_contents)
 			qdel(internal)
 		else
-			tab_data["Internal Atmosphere Info"] = GENERATE_STAT_TEXT("[internal.name]")
-			tab_data["Tank Pressure"] = GENERATE_STAT_TEXT("[internal.air_contents.return_pressure()]")
-			tab_data["Distribution Pressure"] = GENERATE_STAT_TEXT("[internal.distribute_pressure]")
+			tab_data["Atmosfera wewnętrzna"] = GENERATE_STAT_TEXT("[internal.name]")
+			tab_data["Ciśnienie w butli"] = GENERATE_STAT_TEXT("[internal.air_contents.return_pressure()]")
+			tab_data["Ciśnienie wyjściowe"] = GENERATE_STAT_TEXT("[internal.distribute_pressure]")
 
 	if(mind)
 		var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
 		if(changeling)
-			tab_data["Chemical Storage"] = GENERATE_STAT_TEXT("[changeling.chem_charges]/[changeling.chem_storage]")
-			tab_data["Absorbed DNA"] = GENERATE_STAT_TEXT("[changeling.absorbedcount]")
+			tab_data["Zapas chemikaliów"] = GENERATE_STAT_TEXT("[changeling.chem_charges]/[changeling.chem_storage]")
+			tab_data["Wchłonięte DNA"] = GENERATE_STAT_TEXT("[changeling.absorbedcount]")
 	var/mob/living/simple_animal/horror/H = has_horror_inside() // AQ EDIT - Yogstation#13033
 	if(H?.controlling)
 		tab_data["Chemikalia horroru"] = GENERATE_STAT_TEXT("[H.chemicals]")

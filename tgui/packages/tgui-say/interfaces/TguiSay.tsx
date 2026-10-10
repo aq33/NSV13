@@ -1,5 +1,5 @@
 import { TextArea } from 'tgui/components';
-import { WINDOW_SIZES } from '../constants';
+import { CHANNEL_LABELS, WINDOW_SIZES } from '../constants';
 import { dragStartHandler } from 'tgui/drag';
 import { eventHandlerMap } from '../handlers';
 import { getCss, getTheme, timers } from '../helpers';
@@ -71,7 +71,7 @@ export class TguiSay extends Component<{}, State> {
                 onContextMenu();
               }}
               type="submit">
-              {buttonContent}
+              {CHANNEL_LABELS[String(buttonContent)] || buttonContent}
             </button>
           )}
           <TextArea

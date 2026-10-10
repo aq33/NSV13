@@ -200,9 +200,9 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 			resulthealth = round((abs(HEALTH_THRESHOLD_DEAD - summoner.health) / abs(HEALTH_THRESHOLD_DEAD - summoner.maxHealth)) * 100)
 		else
 			resulthealth = round((summoner.health / summoner.maxHealth) * 100, 0.5)
-		tab_data["Summoner Health"] = GENERATE_STAT_TEXT("[resulthealth]%")
+		tab_data["Zdrowie przywoływacza"] = GENERATE_STAT_TEXT("[resulthealth]%")
 	if(cooldown >= world.time)
-		tab_data["Manifest/Recall Cooldown Remaining"] = GENERATE_STAT_TEXT("[DisplayTimeText(cooldown - world.time)]")
+		tab_data["Odnowienie przywołania/odwołania"] = GENERATE_STAT_TEXT("[DisplayTimeText(cooldown - world.time)]")
 	return tab_data
 
 /mob/living/simple_animal/hostile/guardian/Move() //Returns to summoner if they move out of range

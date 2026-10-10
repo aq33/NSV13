@@ -4,6 +4,10 @@ import { useSettings } from '../settings';
 import { selectStatPanel } from './selectors';
 import { Divider, Table } from '../../tgui/components';
 import { STAT_TEXT, STAT_BUTTON, STAT_ATOM, STAT_DIVIDER, STAT_BLANK } from './constants';
+import { translateVerb } from './translations';
+
+const sortVerbs = verbs => Object.keys(verbs).sort(
+  (a, b) => translateVerb(a).localeCompare(translateVerb(b), 'pl'));
 
 export const StatText = (props, context) => {
   const stat = useSelector(context, selectStatPanel);
@@ -44,8 +48,8 @@ export const StatText = (props, context) => {
               && <br />
             )
           ))
-          : "No data"}
-        {Object.keys(verbs).map(verb => (
+          : "Brak danych"}
+        {sortVerbs(verbs).map(verb => (
           <StatTextVerb
             key={verb}
             title={verb}
@@ -188,7 +192,7 @@ export const StatTextVerb = (props, context) => {
       inline
       width="200px">
       <Button
-        content={title}
+        content={translateVerb(title)}
         onClick={() => Byond.sendMessage('stat/pressed',
           {
             action_id: action_id,
@@ -244,8 +248,8 @@ export const HoboStatText = (props, context) => {
               || null
             )
           ))
-          : "No data"}
-        {Object.keys(verbs).map(verb => (
+          : "Brak danych"}
+        {sortVerbs(verbs).map(verb => (
           <Box
             wrap="wrap"
             key={verb}

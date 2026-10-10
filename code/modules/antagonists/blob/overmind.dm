@@ -265,11 +265,11 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	tab_data["Zasoby"] = GENERATE_STAT_TEXT("[blob_points]/[max_blob_points]")
 	tab_data["Wymagana ilość blobów do wygranej"] = GENERATE_STAT_TEXT("[blobs_legit.len]/[blobwincount]")
 	if(free_strain_rerolls)
-		tab_data["Strain Reroll"] = GENERATE_STAT_TEXT("Ilość twoich darmowych przelosowań odmiany wynosi: [free_strain_rerolls]")
+		tab_data["Przelosowanie odmiany"] = GENERATE_STAT_TEXT("Liczba darmowych przelosowań odmiany: [free_strain_rerolls]")
 	if(!placed)
 		if(manualplace_min_time)
 			tab_data["Czas do ręcznego umieszczenia rdzenia"] = GENERATE_STAT_TEXT("[max(round((manualplace_min_time - world.time)*0.1, 0.1), 0)]")
-		tab_data["Casz do automatycznego umieszczenia rdzenia"] = GENERATE_STAT_TEXT("[max(round((autoplace_max_time - world.time)*0.1, 0.1), 0)]")
+		tab_data["Czas do automatycznego umieszczenia rdzenia"] = GENERATE_STAT_TEXT("[max(round((autoplace_max_time - world.time)*0.1, 0.1), 0)]")
 	return tab_data
 
 /mob/camera/blob/canZMove(direction, turf/target)

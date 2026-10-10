@@ -28,7 +28,7 @@
 /mob/living/simple_animal/hostile/guardian/assassin/get_stat_tab_status()
 	var/list/tab_data = ..()
 	if(stealthcooldown >= world.time)
-		tab_data["Stealth Cooldown Remaining"] = GENERATE_STAT_TEXT("[DisplayTimeText(stealthcooldown - world.time)]")
+		tab_data["Odnowienie kamuflażu"] = GENERATE_STAT_TEXT("[DisplayTimeText(stealthcooldown - world.time)]")
 
 /mob/living/simple_animal/hostile/guardian/assassin/AttackingTarget()
 	. = ..()

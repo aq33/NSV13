@@ -135,7 +135,7 @@
 
 /mob/living/simple_animal/eminence/get_stat_tab_status()
 	var/list/tab_data = ..()
-	tab_data["Cogs Available"] = GENERATE_STAT_TEXT("[cogs] Cogs")
+	tab_data["Dostępne zębatki"] = GENERATE_STAT_TEXT("[cogs] zębatek")
 	return tab_data
 
 /mob/living/simple_animal/eminence/update_health_hud()

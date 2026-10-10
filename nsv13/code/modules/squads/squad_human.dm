@@ -6,25 +6,25 @@
 	var/list/tab_data = list()
 
 	if(!squad)
-		tab_data["Assigned Squad"] = list(
+		tab_data["Przydzielony oddział"] = list(
 			text = "None",
 			type = STAT_TEXT
 		)
 		return tab_data
 
-	tab_data["Assigned Squad"] = list(
+	tab_data["Przydzielony oddział"] = list(
 			text = "[squad.name || "Unassigned"]",
 			type = STAT_TEXT
 		)
-	tab_data["Squad Leader"] = list(
+	tab_data["Dowódca oddziału"] = list(
 			text = "[squad.leader || "None"]",
 			type = STAT_TEXT
 		)
-	tab_data["Primary Objective"] = list(
+	tab_data["Cel główny"] = list(
 			text = "[squad.primary_objective || "None"]",
 			type = STAT_TEXT
 		)
-	tab_data["Secondary Objective"] = list(
+	tab_data["Cel poboczny"] = list(
 			text = "[squad.secondary_objective || "None"]",
 			type = STAT_TEXT
 		)

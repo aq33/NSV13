@@ -20,7 +20,7 @@
 /mob/living/simple_animal/hostile/guardian/bomb/get_stat_tab_status()
 	var/list/tab_data = ..()
 	if(bomb_cooldown >= world.time)
-		tab_data["Bomb Cooldown Remaining"] = GENERATE_STAT_TEXT("[DisplayTimeText(bomb_cooldown - world.time)]")
+		tab_data["Odnowienie bomby"] = GENERATE_STAT_TEXT("[DisplayTimeText(bomb_cooldown - world.time)]")
 
 /mob/living/simple_animal/hostile/guardian/bomb/AttackingTarget()
 	. = ..()

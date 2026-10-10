@@ -182,9 +182,9 @@
 /mob/living/silicon/pai/get_stat_tab_status()
 	var/list/tab_data = ..()
 	if(!stat)
-		tab_data["Emitter Integrity"] = GENERATE_STAT_TEXT("[emitterhealth * (100/emittermaxhealth)]")
+		tab_data["Stan emitera"] = GENERATE_STAT_TEXT("[emitterhealth * (100/emittermaxhealth)]")
 	else
-		tab_data["Systems"] = GENERATE_STAT_TEXT("nonfunctional")
+		tab_data["Systemy"] = GENERATE_STAT_TEXT("niesprawne")
 	return tab_data
 
 /mob/living/silicon/pai/restrained(ignore_grab)

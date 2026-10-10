@@ -25,8 +25,8 @@
 
 /mob/living/simple_animal/hostile/morph/get_stat_tab_status()
 	var/list/tab_data = ..()
-	tab_data["Things eaten"] = GENERATE_STAT_TEXT("[eat_count]")
-	tab_data["Corpses eaten"] = GENERATE_STAT_TEXT("[corpse_eat_count]")
+	tab_data["Zjedzone rzeczy"] = GENERATE_STAT_TEXT("[eat_count]")
+	tab_data["Zjedzone zwłoki"] = GENERATE_STAT_TEXT("[corpse_eat_count]")
 	return tab_data
 
 /datum/antagonist/morph/on_gain()

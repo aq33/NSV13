@@ -247,10 +247,10 @@
 /mob/living/silicon/ai/get_stat_tab_status()
 	var/list/tab_data = ..()
 	if(!stat)
-		tab_data["System integrity"] = GENERATE_STAT_TEXT("[(health+100)/2]%")
+		tab_data["Integralność systemu"] = GENERATE_STAT_TEXT("[(health+100)/2]%")
 		if(isturf(loc)) //only show if we're "in" a core
-			tab_data["Backup Power"] = GENERATE_STAT_TEXT("[battery/2]%")
-		tab_data["Connected cyborgs"] = GENERATE_STAT_TEXT("[connected_robots.len]")
+			tab_data["Zasilanie awaryjne"] = GENERATE_STAT_TEXT("[battery/2]%")
+		tab_data["Podłączone cyborgi"] = GENERATE_STAT_TEXT("[connected_robots.len]")
 		var/index = 0
 		for(var/mob/living/silicon/robot/R in connected_robots)
 			var/robot_status = "Nominal"
@@ -266,9 +266,9 @@
 				text="S.Integrity: [R.health]% | Cell: [R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "Empty"] | \
 					Module: [R.designation] | Loc: [get_area_name(R, TRUE)] | Status: [robot_status]",
 				type=STAT_TEXT)
-		tab_data["AI shell beacons detected"] = GENERATE_STAT_TEXT("[LAZYLEN(GLOB.available_ai_shells)]") //Count of total AI shells
+		tab_data["Wykryte powłoki SI"] = GENERATE_STAT_TEXT("[LAZYLEN(GLOB.available_ai_shells)]") //Count of total AI shells
 	else
-		tab_data["Systems"] = GENERATE_STAT_TEXT("nonfunctional")
+		tab_data["Systemy"] = GENERATE_STAT_TEXT("niesprawne")
 	return tab_data
 
 /mob/living/silicon/ai/proc/update_ai_alerts()

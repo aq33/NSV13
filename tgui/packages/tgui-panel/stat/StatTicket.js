@@ -31,7 +31,7 @@ export const StatTicketChat = (props, context) => {
   {
     return (
       <Box>
-        No data.
+        Brak danych.
       </Box>
     );
   }

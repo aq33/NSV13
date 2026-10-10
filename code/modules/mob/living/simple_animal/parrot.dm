@@ -150,8 +150,8 @@
 
 /mob/living/simple_animal/parrot/get_stat_tab_status()
 	var/list/tab_data = ..()
-	tab_data["Held Item"] = GENERATE_STAT_TEXT("[held_item]")
-	tab_data["Mode"] = GENERATE_STAT_TEXT("[a_intent]")
+	tab_data["Trzymany przedmiot"] = GENERATE_STAT_TEXT("[held_item]")
+	tab_data["Tryb"] = GENERATE_STAT_TEXT("[a_intent]")
 	return tab_data
 
 /mob/living/simple_animal/parrot/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans, list/message_mods = list())

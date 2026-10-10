@@ -20,7 +20,7 @@ export const createPage = obj => {
 
   return {
     id: createUuid(),
-    name: 'New Tab',
+    name: 'Nowa karta',
     acceptedTypes: acceptedTypes,
     unreadCount: 0,
     createdAt: Date.now(),
@@ -34,7 +34,7 @@ export const createMainPage = () => {
     acceptedTypes[typeDef.type] = true;
   }
   return createPage({
-    name: 'Main',
+    name: 'Główna',
     acceptedTypes,
   });
 };

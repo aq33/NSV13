@@ -243,17 +243,17 @@
 /mob/living/simple_animal/slime/get_stat_tab_status()
 	var/list/tab_data = ..()
 	if(!docile)
-		tab_data["Nutrition"] = GENERATE_STAT_TEXT("[nutrition]/[get_max_nutrition()]")
+		tab_data["Odżywienie"] = GENERATE_STAT_TEXT("[nutrition]/[get_max_nutrition()]")
 	if(amount_grown >= SLIME_EVOLUTION_THRESHOLD)
 		if(is_adult)
-			tab_data["Slime Status"] = GENERATE_STAT_TEXT("You can reproduce!")
+			tab_data["Stan szlamu"] = GENERATE_STAT_TEXT("Możesz się rozmnożyć!")
 		else
-			tab_data["Slime Status"] = GENERATE_STAT_TEXT("You can evolve!")
+			tab_data["Stan szlamu"] = GENERATE_STAT_TEXT("Możesz ewoluować!")
 
 	if(stat == UNCONSCIOUS)
-		tab_data["Unconscious"] = GENERATE_STAT_TEXT("You are knocked out by high levels of BZ!")
+		tab_data["Nieprzytomność"] = GENERATE_STAT_TEXT("Wysoki poziom BZ pozbawił cię przytomności!")
 	else
-		tab_data["Power Level"] = GENERATE_STAT_TEXT("[powerlevel]")
+		tab_data["Poziom mocy"] = GENERATE_STAT_TEXT("[powerlevel]")
 	return tab_data
 
 /mob/living/simple_animal/slime/adjustFireLoss(amount, updating_health = TRUE, forced = FALSE)

@@ -149,12 +149,12 @@
 /// Generates the stat tab for player-controlled minebots
 /mob/living/simple_animal/hostile/mining_drone/get_stat_tab_status()
 	var/list/tab_data = ..()
-	tab_data["Mode"] = GENERATE_STAT_TEXT("[mode]")
+	tab_data["Tryb"] = GENERATE_STAT_TEXT("[mode]")
 
 	// Handles Equipment
 	if(stored_cutter)
-		tab_data["Plasma Cutter Charge"] = GENERATE_STAT_TEXT("[round(stored_cutter.cell.percent())]%")
-	tab_data["Equipped Drill"] = GENERATE_STAT_TEXT("[stored_drill]")
+		tab_data["Ładunek przecinaka plazmowego"] = GENERATE_STAT_TEXT("[round(stored_cutter.cell.percent())]%")
+	tab_data["Zamontowane wiertło"] = GENERATE_STAT_TEXT("[stored_drill]")
 
 	// Handles Upgrades
 	if(LAZYLEN(installed_upgrades))

@@ -128,7 +128,7 @@
 
 /mob/living/simple_animal/hostile/swarmer/get_stat_tab_status()
 	var/list/tab_data = ..()
-	tab_data["Resources"] = GENERATE_STAT_TEXT("[resources]")
+	tab_data["Zasoby"] = GENERATE_STAT_TEXT("[resources]")
 	return tab_data
 
 /mob/living/simple_animal/hostile/swarmer/emp_act()

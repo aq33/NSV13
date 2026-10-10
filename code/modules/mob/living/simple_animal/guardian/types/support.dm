@@ -23,7 +23,7 @@
 /mob/living/simple_animal/hostile/guardian/healer/get_stat_tab_status()
 	var/list/tab_data = ..()
 	if(beacon_cooldown >= world.time)
-		tab_data["Beacon Cooldown Remaining"] = GENERATE_STAT_TEXT("[DisplayTimeText(beacon_cooldown - world.time)]")
+		tab_data["Odnowienie radiolatarni"] = GENERATE_STAT_TEXT("[DisplayTimeText(beacon_cooldown - world.time)]")
 
 /mob/living/simple_animal/hostile/guardian/healer/AttackingTarget()
 	. = ..()

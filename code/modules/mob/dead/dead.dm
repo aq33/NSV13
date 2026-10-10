@@ -41,18 +41,18 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 /mob/dead/get_stat_tab_status()
 	var/list/tab_data = ..()
 	if(!SSticker.hide_mode)
-		tab_data["Game Mode"] = GENERATE_STAT_TEXT("[GLOB.master_mode]")
+		tab_data["Tryb gry"] = GENERATE_STAT_TEXT("[GLOB.master_mode]")
 
 	if(SSticker.HasRoundStarted())
 		return tab_data
 
 	var/time_remaining = SSticker.GetTimeLeft()
 	if(time_remaining > 0)
-		tab_data["Time To Start"] = GENERATE_STAT_TEXT("[round(time_remaining/10)]s")
+		tab_data["Czas do startu"] = GENERATE_STAT_TEXT("[round(time_remaining/10)]s")
 	else if(time_remaining == -10)
-		tab_data["Time To Start"] = GENERATE_STAT_TEXT("DELAYED")
+		tab_data["Czas do startu"] = GENERATE_STAT_TEXT("OPÓŹNIONY")
 	else
-		tab_data["Time To Start"] = GENERATE_STAT_TEXT("SOON")
+		tab_data["Czas do startu"] = GENERATE_STAT_TEXT("WKRÓTCE")
 
 	return tab_data
 

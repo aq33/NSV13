@@ -346,15 +346,15 @@
 /mob/living/silicon/robot/get_stat_tab_status()
 	var/list/tab_data = ..()
 	if(cell)
-		tab_data["Charge Left"] = GENERATE_STAT_TEXT("[cell.charge]/[cell.maxcharge]")
+		tab_data["Pozostały ładunek"] = GENERATE_STAT_TEXT("[cell.charge]/[cell.maxcharge]")
 	else
-		tab_data["Charge Left"] = GENERATE_STAT_TEXT("No Cell Inserted!")
+		tab_data["Pozostały ładunek"] = GENERATE_STAT_TEXT("Brak ogniwa!")
 
 	if(module)
 		for(var/datum/robot_energy_storage/st in module.storages)
 			tab_data["[st.name]"] = GENERATE_STAT_TEXT("[st.energy]/[st.max_energy]")
 	if(connected_ai)
-		tab_data["Master AI"] = GENERATE_STAT_TEXT("[connected_ai.name]")
+		tab_data["Nadrzędna SI"] = GENERATE_STAT_TEXT("[connected_ai.name]")
 	return tab_data
 
 /mob/living/silicon/robot/restrained(ignore_grab)

@@ -240,7 +240,7 @@
 	data["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
 	data["gamestate"] = SSticker.current_state
 
-	data["map_name"] = SSmapping.config?.map_name || "Loading..."
+	data["map_name"] = SSmapping.config?.map_name || "Ładowanie..."
 
 	data["security_level"] = get_security_level()
 	data["round_duration"] = SSticker?.round_start_timeofday ? round((world.timeofday - SSticker.round_start_timeofday)/10) : 0

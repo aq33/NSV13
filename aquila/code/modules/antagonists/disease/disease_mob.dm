@@ -89,13 +89,13 @@ the new instance inside the host to be updated to the template's stats.
 /mob/camera/disease/get_stat_tab_status()
 	var/list/tab_data = ..()
 	if(freemove)
-		tab_data["Host Selection Time"] = GENERATE_STAT_TEXT("[round((freemove_end - world.time)/10)]s")
+		tab_data["Czas na wybór nosiciela"] = GENERATE_STAT_TEXT("[round((freemove_end - world.time)/10)]s")
 	else
-		tab_data["Adaptation Points"] = GENERATE_STAT_TEXT("[points]/[total_points]")
-		tab_data["Hosts"] = GENERATE_STAT_TEXT("[disease_instances.len]")
+		tab_data["Punkty adaptacji"] = GENERATE_STAT_TEXT("[points]/[total_points]")
+		tab_data["Nosiciele"] = GENERATE_STAT_TEXT("[disease_instances.len]")
 		var/adapt_ready = next_adaptation_time - world.time
 		if(adapt_ready > 0)
-			tab_data["Adaptation Ready"] = GENERATE_STAT_TEXT("[round(adapt_ready/10, 0.1)]s")
+			tab_data["Adaptacja gotowa za"] = GENERATE_STAT_TEXT("[round(adapt_ready/10, 0.1)]s")
 	return tab_data
 
 /mob/camera/disease/examine(mob/user)
