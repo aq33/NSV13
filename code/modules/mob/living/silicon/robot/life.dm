@@ -9,7 +9,7 @@
 
 /mob/living/silicon/robot/proc/handle_jamming()
 	if(deployed && is_jammed())
-		to_chat(src, "<span class='warning robot'>Remote connection with target lost.</span>")
+		to_chat(src, "<span class='warning robot'>Utracono zdalne połączenie z celem.</span>")
 		undeploy()
 
 /mob/living/silicon/robot/proc/handle_robot_cell()

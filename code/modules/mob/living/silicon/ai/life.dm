@@ -29,7 +29,7 @@
 		if(aiRestorePowerRoutine)
 			// Lost power
 			if (!battery)
-				to_chat(src, "<span class='warning'>Your backup battery's output drops below usable levels. It takes only a moment longer for your systems to fail, corrupted and unusable.</span>")
+				to_chat(src, "<span class='warning'>Moc wyjściowa baterii zapasowej spada poniżej użytecznego poziomu. Po chwili twoje systemy zawodzą, uszkodzone i bezużyteczne.</span>")
 				adjustOxyLoss(200)
 			else
 				battery --
@@ -95,7 +95,7 @@
 
 
 /mob/living/silicon/ai/proc/start_RestorePowerRoutine()
-	to_chat(src, "Backup battery online. Scanners, camera, and radio interface offline. Beginning fault-detection.")
+	to_chat(src, "Bateria zapasowa aktywna. Skanery, kamera i interfejs radiowy wyłączone. Rozpoczynanie wykrywania usterek.")
 	end_multicam()
 	sleep(50)
 	var/turf/T = get_turf(src)
@@ -104,16 +104,16 @@
 		if(!isspaceturf(T))
 			ai_restore_power()
 			return
-	to_chat(src, "Fault confirmed: missing external power. Shutting down main control system to save power.")
+	to_chat(src, "Usterka potwierdzona: brak zewnętrznego zasilania. Wyłączanie głównego systemu sterowania w celu oszczędzania energii.")
 	sleep(20)
-	to_chat(src, "Emergency control system online. Verifying connection to power network.")
+	to_chat(src, "Awaryjny system sterowania aktywny. Weryfikacja połączenia z siecią energetyczną.")
 	sleep(50)
 	T = get_turf(src)
 	if(isspaceturf(T))
-		to_chat(src, "Unable to verify! No power connection detected!")
+		to_chat(src, "Weryfikacja niemożliwa! Nie wykryto połączenia z zasilaniem!")
 		aiRestorePowerRoutine = POWER_RESTORATION_SEARCH_APC
 		return
-	to_chat(src, "Connection verified. Searching for APC in power network.")
+	to_chat(src, "Połączenie zweryfikowane. Wyszukiwanie APC w sieci energetycznej.")
 	sleep(50)
 	var/obj/machinery/power/apc/theAPC = null
 
@@ -129,9 +129,9 @@
 		if (!theAPC)
 			switch(PRP)
 				if(1)
-					to_chat(src, "Unable to locate APC!")
+					to_chat(src, "Nie można zlokalizować APC!")
 				else
-					to_chat(src, "Lost connection with the APC!")
+					to_chat(src, "Utracono połączenie z APC!")
 			aiRestorePowerRoutine = POWER_RESTORATION_SEARCH_APC
 			return
 		if(AIarea.power_equip)
@@ -140,15 +140,15 @@
 				return
 		switch(PRP)
 			if (1)
-				to_chat(src, "APC located. Optimizing route to APC to avoid needless power waste.")
+				to_chat(src, "Zlokalizowano APC. Optymalizacja trasy do APC w celu uniknięcia strat energii.")
 			if (2)
-				to_chat(src, "Best route identified. Hacking offline APC power port.")
+				to_chat(src, "Wyznaczono najlepszą trasę. Hakowanie wyłączonego portu zasilania APC.")
 			if (3)
-				to_chat(src, "Power port upload access confirmed. Loading control program into APC power port software.")
+				to_chat(src, "Potwierdzono dostęp do portu zasilania. Wgrywanie programu sterującego do oprogramowania portu zasilania APC.")
 			if (4)
-				to_chat(src, "Transfer complete. Forcing APC to execute program.")
+				to_chat(src, "Transfer zakończony. Wymuszanie wykonania programu przez APC.")
 				sleep(50)
-				to_chat(src, "Receiving control information from APC.")
+				to_chat(src, "Odbieranie informacji sterujących z APC.")
 				sleep(2)
 				apc_override = theAPC
 				theAPC.ui_interact(src)
@@ -159,9 +159,9 @@
 /mob/living/silicon/ai/proc/ai_restore_power()
 	if(aiRestorePowerRoutine)
 		if(aiRestorePowerRoutine == POWER_RESTORATION_APC_FOUND)
-			to_chat(src, "Alert cancelled. Power has been restored.")
+			to_chat(src, "Alarm odwołany. Zasilanie zostało przywrócone.")
 		else
-			to_chat(src, "Alert cancelled. Power has been restored without our assistance.")
+			to_chat(src, "Alarm odwołany. Zasilanie zostało przywrócone bez naszej pomocy.")
 		aiRestorePowerRoutine = POWER_RESTORATION_OFF
 		set_blindness(0)
 		update_sight()
@@ -171,7 +171,7 @@
 	aiRestorePowerRoutine = POWER_RESTORATION_START
 	blind_eyes(1)
 	update_sight()
-	to_chat(src, "You've lost power!")
+	to_chat(src, "Straciłeś zasilanie!")
 	addtimer(CALLBACK(src, PROC_REF(start_RestorePowerRoutine)), 20)
 
 #undef POWER_RESTORATION_OFF
