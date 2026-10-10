@@ -24,6 +24,8 @@
 	var/atom/movable/emissive_blocker/em_block
 	/// Która para ręka/noga rusza się przy tym kroku
 	var/phase = FALSE
+	/// Czy przedmioty w dłoniach są teraz schowane za ciałem (widok z tyłu)
+	var/held_behind = FALSE
 
 /datum/component/walk_animation/Initialize()
 	if(!ishuman(parent))
@@ -160,18 +162,18 @@
 	update_held_layer(new_dir)
 
 /// Tyłem do patrzącego przedmioty w dłoniach chowają się za ciałem, w pozostałych widokach są nad nim.
-/// Fragmenty z KEEP_APART nie układają się po layer, więc tyłem rysujemy je jako podkład moba (VIS_UNDERLAY).
+/// Fragmenty z KEEP_APART nie układają się po layer, więc tyłem przycinamy przedmiot odwróconą sylwetką ciała.
 /datum/component/walk_animation/proc/update_held_layer(new_dir)
-	var/mob/living/carbon/human/H = parent
 	var/behind = (new_dir == NORTH)
+	if(behind == held_behind)
+		return
+	held_behind = behind
 	for(var/index in 1 to 2)
 		var/obj/effect/overlay/walk_held/held = limbs["hand_[index]"]
-		if(!!(held.vis_flags & VIS_UNDERLAY) == behind)
-			continue
-		// Ponowne dodanie, żeby klient przeliczył miejsce obiektu w vis_contents
-		H.vis_contents -= held
-		held.vis_flags = behind ? (held.vis_flags | VIS_UNDERLAY) : (held.vis_flags & ~VIS_UNDERLAY)
-		H.vis_contents += held
+		if(behind)
+			held.add_filter("walk_behind_body", 1, alpha_mask_filter(render_source = body_target, flags = MASK_INVERSE))
+		else
+			held.remove_filter("walk_behind_body")
 
 /// Z boku maska "leg_b" pokrywa się z "leg_a", więc w spoczynku ta noga jest ukryta; z przodu i z tyłu zawsze widoczna.
 /datum/component/walk_animation/proc/update_side_leg(new_dir)
