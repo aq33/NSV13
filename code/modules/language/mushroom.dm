@@ -1,11 +1,11 @@
 /datum/language/mushroom
 	name = "Mushroom"
 	desc = "A language that consists of the sound of periodic gusts of spore-filled air being released."
-	speech_verb = "puffs"
-	ask_verb = "puffs inquisitively"
-	exclaim_verb = "poofs loudly"
-	whisper_verb = "puffs quietly"
-	sing_verb = "puffs musically"
+	speech_verb = "pyka"
+	ask_verb = "pyka pytająco"
+	exclaim_verb = "puka głośno"
+	whisper_verb = "pyka cicho"
+	sing_verb = "pyka melodyjnie"
 	key = "y"
 	sentence_chance = 0
 	default_priority = 80

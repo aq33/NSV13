@@ -2,8 +2,8 @@
 	name = "Germ"
 	desc = "A giant virus!"
 	icon_state = "macrovirus_small"
-	speak_emote = list("Blubbers")
-	emote_hear = list("Blubbers")
+	speak_emote = list("bulgocze")
+	emote_hear = list("bulgocze")
 	melee_damage = 1
 	attacktext = "pierces"
 	response_help  = "shoos"

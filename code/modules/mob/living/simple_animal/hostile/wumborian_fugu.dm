@@ -12,7 +12,7 @@
 	mouse_opacity = MOUSE_OPACITY_ICON
 	move_to_delay = 5
 	friendly = "floats near"
-	speak_emote = list("puffs")
+	speak_emote = list("pyka")
 	vision_range = 5
 	speed = 0
 	maxHealth = 50

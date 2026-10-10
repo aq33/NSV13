@@ -7,9 +7,9 @@
 	icon_dead = "bear_dead"
 	icon_gib = "bear_gib"
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
-	speak = list("RAWR!","Rawr!","GRR!","Growl!")
-	speak_emote = list("growls", "roars")
-	emote_hear = list("rawrs.","grumbles.","grawls.")
+	speak = list("RAWR!","Rawr!","GRR!","Grrr!")
+	speak_emote = list("warczy", "ryczy")
+	emote_hear = list("ryczy.","burczy.","warczy.")
 	emote_taunt = list("stares ferociously", "stomps")
 	speak_chance = 1
 	taunt_chance = 25

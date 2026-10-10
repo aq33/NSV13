@@ -11,8 +11,8 @@
 	response_help = "pokes"
 	response_disarm = "gently pushes aside"
 	response_harm = "robusts"
-	speak = list("HONK", "Honk!", "Welcome to clown planet!")
-	emote_see = list("honks", "squeaks")
+	speak = list("HONK", "Honk!", "Witaj na planecie klaunów!")
+	emote_see = list("trąbi", "piszczy")
 	speak_chance = 1
 	a_intent = INTENT_HARM
 	maxHealth = 75
@@ -75,7 +75,7 @@
 	turns_per_move = 1
 	response_help = "dips a finger into"
 	response_disarm = "gently scoops and pours aside"
-	emote_see = list("bubbles", "oozes")
+	emote_see = list("bąbelkuje", "sączy się")
 	loot = list(/obj/item/clothing/mask/gas/clown_hat, /obj/effect/particle_effect/foam)
 
 /mob/living/simple_animal/hostile/retaliate/clown/lube/Life()
@@ -94,7 +94,7 @@
 	response_harm = "peels"
 	turns_per_move = 1
 	speak = list("HONK", "Honk!", "YA-HONK!!!")
-	emote_see = list("honks", "bites into the banana", "plucks a banana off its head", "photosynthesizes")
+	emote_see = list("trąbi", "wgryza się w banana", "zrywa banana ze swojej głowy", "fotosyntetyzuje")
 	maxHealth = 120
 	health = 120
 	speed = -10
@@ -122,8 +122,8 @@
 	response_help = "reluctantly pokes"
 	response_disarm = "sinks his hands into the spongy flesh of"
 	response_harm = "cleanses the world of"
-	speak = list("HONK", "Honk!", "I didn't ask for this", "I feel constant and horrible pain", "YA-HONK!!!", "this body is a merciless and unforgiving prison", "I was born out of mirthful pranking but I live in suffering")
-	emote_see = list("honks", "sweats", "jiggles", "contemplates its existence")
+	speak = list("HONK", "Honk!", "Nie prosiłem się o to", "Czuję ciągły, straszny ból", "YA-HONK!!!", "to ciało to bezlitosne i nieprzebaczające więzienie", "zrodziłem się z radosnych psot, ale żyję w cierpieniu")
+	emote_see = list("trąbi", "poci się", "trzęsie się", "rozmyśla nad swoim istnieniem")
 	speak_chance = 5
 	dextrous = TRUE
 	ventcrawler = VENTCRAWLER_ALWAYS
@@ -146,7 +146,7 @@
 	response_disarm = "pushes the unwieldy frame of"
 	response_harm = "tries to shut up"
 	speak = list("YA-HONK!!!")
-	emote_see = list("honks", "squeaks")
+	emote_see = list("trąbi", "piszczy")
 	speak_chance = 60
 	maxHealth = 150
 	health = 150
@@ -167,7 +167,7 @@
 	response_disarm = "foolishly pushes"
 	response_harm = "angers"
 	speak = list("HONK", "Honk!", "HAUAUANK!!!", "GUUURRRRAAAHHH!!!")
-	emote_see = list("honks", "sweats", "grunts")
+	emote_see = list("trąbi", "poci się", "chrząka")
 	speak_chance = 5
 	maxHealth = 400
 	health = 400
@@ -189,7 +189,7 @@
 	response_disarm = "tries to assert dominance over"
 	response_harm = "makes a weak beta attack at"
 	speak = list("HONK", "Honk!", "Bruh", "cheeaaaahhh?")
-	emote_see = list("asserts his dominance", "emasculates everyone implicitly")
+	emote_see = list("pokazuje, kto tu rządzi", "po cichu odbiera wszystkim męskość")
 	maxHealth = 500
 	health = 500
 	speed = -2
@@ -206,7 +206,7 @@
 	response_help = "skeptically pokes"
 	response_disarm = "pushes the unwieldy frame of"
 	speak = list("honk")
-	emote_see = list("squirms", "writhes")
+	emote_see = list("wije się", "skręca się")
 	speak_chance = 1
 	maxHealth = 200
 	health = 200
@@ -224,7 +224,7 @@
 	icon_living = "destroyer"
 	response_disarm = "bounces off of"
 	response_harm = "bounces off of"
-	speak = list("HONK!!!", "The Honkmother is merciful, so I must act out her wrath.", "parce mihi ad beatus honkmother placet mihi ut peccata committere,", "DIE!!!")
+	speak = list("HONK!!!", "Honkmatka jest miłosierna, więc to ja muszę wymierzyć jej gniew.", "parce mihi ad beatus honkmother placet mihi ut peccata committere,", "DIE!!!")
 	maxHealth = 400
 	health = 400
 	speed = 5
@@ -247,7 +247,7 @@
 	response_disarm = "squishes into"
 	response_harm = "squishes into"
 	speak = list("aaaaaahhhhuuhhhuhhhaaaaa", "AAAaaauuuaaAAAaauuhhh", "huuuuuh... hhhhuuuooooonnnnkk", "HuaUAAAnKKKK")
-	emote_see = list("squirms", "writhes", "pulsates", "froths", "oozes")
+	emote_see = list("wije się", "skręca się", "pulsuje", "pieni się", "sączy się")
 	speak_chance = 10
 	maxHealth = 130
 	health = 130
@@ -263,8 +263,8 @@
 	desc = "A grotesque bulging figure far mutated from it's original state."
 	icon_state = "blob"
 	icon_living = "blob"
-	speak = list("hey, buddy", "HONK!!!", "H-h-h-H-HOOOOONK!!!!", "HONKHONKHONK!!!", "HEY, BUCKO, GET BACK HERE!!!", "HOOOOOOOONK!!!")
-	emote_see = list("jiggles", "wobbles")
+	speak = list("hej, kolego", "HONK!!!", "H-h-h-H-HOOOOONK!!!!", "HONKHONKHONK!!!", "HEJ, KOLEŻKO, WRACAJ TU!!!", "HOOOOOOOONK!!!")
+	emote_see = list("trzęsie się", "chybocze się")
 	health = 130
 	mob_size = MOB_SIZE_LARGE
 	speed = 20

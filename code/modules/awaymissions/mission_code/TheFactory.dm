@@ -225,7 +225,7 @@
 /mob/living/simple_animal/hostile/factory
 	name = "Guard"
 	desc = "An armed officer. Looks like they prefer to shoot rather than asking questions."
-	speak = list("Stop resisting!","I need backup!","Die, freak!","It's getting away!")
+	speak = list("Przestań się stawiać!","Potrzebuję wsparcia!","Giń, dziwolągu!","Ucieka!")
 	icon = 'icons/mob/simple_human.dmi'
 	icon_state = "nanotrasen"
 	icon_living = "nanotrasen"
@@ -336,7 +336,7 @@
 	gender = MALE
 	faction = list("nanotrasenprivate")
 	speak_chance = 5
-	speak = list("Come get me!","You can't get away!","Die!")
+	speak = list("No chodź tu!","Nie uciekniesz!","Giń!")
 
 /mob/living/simple_animal/hostile/syndicate/factory/sniper
 	name = "The Warden"
@@ -361,7 +361,7 @@
 	projectilesound = 'sound/weapons/sniper_shot.ogg'
 	speak_chance = 2
 	var/cooldown = 0
-	speak = list("You're pretty good.","You can't dodge everything!","Fall down already!")
+	speak = list("Nieźle ci idzie.","Nie unikniesz wszystkiego!","Padnij wreszcie!")
 	loot = list(/obj/item/gun/ballistic/automatic/sniper_rifle,
 					/obj/effect/mob_spawn/human/corpse/sniper,
 					/obj/item/ammo_box/magazine/sniper_rounds,
@@ -401,7 +401,7 @@
 	response_harm = "hits"
 	speak_chance = 5
 	attack_sound = 'sound/weapons/bite.ogg'
-	speak = list("I'm not mad!","What insanity?","Kill")
+	speak = list("Nie jestem szalony!","Jakie szaleństwo?","Zabić")
 	speed = -2
 	maxHealth = 100
 	health = 100

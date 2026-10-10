@@ -24,8 +24,8 @@
 	icon_living = "guard"
 	icon_dead = "guard_dead"
 	mob_biotypes = list(MOB_ORGANIC, MOB_BUG)
-	speak_emote = list("chitters")
-	emote_hear = list("chitters")
+	speak_emote = list("terkocze")
+	emote_hear = list("terkocze")
 	speak_chance = 5
 	turns_per_move = 5
 	see_in_dark = 10

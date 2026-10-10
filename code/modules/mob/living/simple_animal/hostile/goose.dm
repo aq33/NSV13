@@ -21,7 +21,7 @@
 	melee_damage = 5
 	attacktext = "pecks"
 	attack_sound = "goose"
-	speak_emote = list("honks")
+	speak_emote = list("trąbi")
 	faction = list("neutral")
 	attack_same = TRUE
 	gold_core_spawnable = HOSTILE_SPAWN

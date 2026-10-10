@@ -1,7 +1,7 @@
 /obj/structure/speaking_tile
 	name = "strange tile"
 	desc = "A weird tile that beckons you towards it. Maybe it can help you get out of this mess..."
-	verb_say = "intones"
+	verb_say = "intonuje"
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "speaking_tile"
 	layer = 5

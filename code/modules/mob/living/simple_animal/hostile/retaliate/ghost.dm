@@ -17,10 +17,10 @@
 	health = 40
 	melee_damage = 15
 	del_on_death = TRUE
-	emote_see = list("weeps silently", "groans", "mumbles")
+	emote_see = list("płacze cicho", "jęczy", "mamrocze")
 	attacktext = "grips"
 	attack_sound = 'sound/hallucinations/growl1.ogg'
-	speak_emote = list("weeps")
+	speak_emote = list("płacze")
 	deathmessage = "wails, disintegrating into a pile of ectoplasm!"
 	loot = list(/obj/item/ectoplasm)
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)

@@ -5,9 +5,9 @@
 	icon_state = "sloth"
 	icon_living = "sloth"
 	icon_dead = "sloth_dead"
-	speak_emote = list("yawns")
-	emote_hear = list("snores.","yawns.")
-	emote_see = list("dozes off.", "looks around sleepily.")
+	speak_emote = list("ziewa")
+	emote_hear = list("chrapie.","ziewa.")
+	emote_see = list("przysypia.", "rozgląda się sennie.")
 	speak_chance = 1
 	turns_per_move = 5
 	butcher_results = list(/obj/item/food/meat/slab = 3)

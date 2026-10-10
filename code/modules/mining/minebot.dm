@@ -42,7 +42,7 @@
 	response_help = "pets"
 	attacktext = "drills"
 	attack_sound = 'sound/weapons/circsawhit.ogg'
-	speak_emote = list("states")
+	speak_emote = list("stwierdza")
 	// Light handling
 	light_system = MOVABLE_LIGHT
 	light_range = 6

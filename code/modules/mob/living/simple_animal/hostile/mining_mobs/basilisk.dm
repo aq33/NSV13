@@ -24,7 +24,7 @@
 	melee_damage = 12
 	attacktext = "bites into"
 	a_intent = INTENT_HARM
-	speak_emote = list("chitters")
+	speak_emote = list("terkocze")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	vision_range = 2
 	aggro_vision_range = 9
@@ -73,7 +73,7 @@
 	melee_damage = 15
 	attacktext = "impales"
 	a_intent = INTENT_HARM
-	speak_emote = list("telepathically cries")
+	speak_emote = list("woła telepatycznie")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	stat_attack = UNCONSCIOUS
 	movement_type = FLYING

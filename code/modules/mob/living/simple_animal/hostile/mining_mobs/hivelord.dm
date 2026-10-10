@@ -18,7 +18,7 @@
 	health = 75
 	melee_damage = 0
 	attacktext = "lashes out at"
-	speak_emote = list("telepathically cries")
+	speak_emote = list("woła telepatycznie")
 	attack_sound = 'sound/weapons/pierce.ogg'
 	throw_message = "falls right through the strange body of the"
 	ranged_cooldown = 0
@@ -73,7 +73,7 @@
 	movement_type = FLYING
 	melee_damage = 2
 	attacktext = "slashes"
-	speak_emote = list("telepathically cries")
+	speak_emote = list("woła telepatycznie")
 	attack_sound = 'sound/weapons/pierce.ogg'
 	throw_message = "falls right through the strange body of the"
 	obj_damage = 0
@@ -100,7 +100,7 @@
 	obj_damage = 60
 	melee_damage = 15
 	attacktext = "lashes out at"
-	speak_emote = list("echoes")
+	speak_emote = list("rozbrzmiewa echem")
 	attack_sound = 'sound/weapons/pierce.ogg'
 	throw_message = "bounces harmlessly off of"
 	crusher_loot = /obj/item/crusher_trophy/legion_skull
@@ -165,7 +165,7 @@
 	health = 5
 	melee_damage = 12
 	attacktext = "bites"
-	speak_emote = list("echoes")
+	speak_emote = list("rozbrzmiewa echem")
 	attack_sound = 'sound/weapons/pierce.ogg'
 	throw_message = "is shrugged off by"
 	pass_flags = PASSTABLE

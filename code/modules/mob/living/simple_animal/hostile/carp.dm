@@ -26,7 +26,7 @@
 	melee_damage = 20
 	attacktext = "bites"
 	attack_sound = 'sound/weapons/bite.ogg'
-	speak_emote = list("gnashes")
+	speak_emote = list("zgrzyta zębami")
 	chat_color = "#B15FB9"
 	mobchatspan = "researchdirector"
 
@@ -142,7 +142,7 @@
 	name = "Cayenne"
 	desc = "A failed Syndicate experiment in weaponized space carp technology, it now serves as a lovable mascot."
 	gender = FEMALE
-	speak_emote = list("squeaks")
+	speak_emote = list("piszczy")
 	gold_core_spawnable = NO_SPAWN
 	faction = list(FACTION_SYNDICATE)
 	AIStatus = AI_OFF
@@ -219,7 +219,7 @@
 	real_name = "Lia"
 	desc = "A failed experiment of Nanotrasen to create weaponised carp technology. This less than intimidating carp now serves as the Head of Security's pet."
 	gender = FEMALE
-	speak_emote = list("squeaks")
+	speak_emote = list("piszczy")
 	gold_core_spawnable = NO_SPAWN
 	faction = list("neutral")
 	health = 200

@@ -17,7 +17,7 @@
 	stat_attack = DEAD
 	obj_damage = 0
 	environment_smash = ENVIRONMENT_SMASH_NONE
-	speak_emote = list("squeaks")
+	speak_emote = list("piszczy")
 	ventcrawler = VENTCRAWLER_ALWAYS
 	var/datum/mind/origin
 	var/egg_lain = 0

@@ -26,7 +26,7 @@
 	unsuitable_atmos_damage = 15
 	faction = list("nanotrasenprivate")
 	status_flags = CANPUSH
-	speak = list("Stop resisting!", "I AM THE LAW!", "Face the wrath of the golden bolt!", "Stop breaking the law, asshole!")
+	speak = list("Przestań się stawiać!", "JA JESTEM PRAWEM!", "Poczuj gniew złotego bełtu!", "Przestań łamać prawo, dupku!")
 	search_objects = 1
 
 	do_footstep = TRUE

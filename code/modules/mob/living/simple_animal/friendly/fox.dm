@@ -7,9 +7,9 @@
 	icon_living = "fox"
 	icon_dead = "fox_dead"
 	speak = list("Ack-Ack","Ack-Ack-Ack-Ackawoooo","Geckers","Awoo","Tchoff")
-	speak_emote = list("geckers", "barks")
-	emote_hear = list("howls.","barks.")
-	emote_see = list("shakes its head.", "shivers.")
+	speak_emote = list("skrzeczy", "szczeka")
+	emote_hear = list("wyje.","szczeka.")
+	emote_see = list("potrząsa głową.", "drży.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6

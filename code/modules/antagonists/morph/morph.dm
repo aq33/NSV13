@@ -4,8 +4,8 @@
 	name = "morph"
 	real_name = "morph"
 	desc = "A revolting, pulsating pile of flesh."
-	speak_emote = list("gurgles")
-	emote_hear = list("gurgles")
+	speak_emote = list("bulgocze")
+	emote_hear = list("bulgocze")
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "morph"
 	icon_living = "morph"

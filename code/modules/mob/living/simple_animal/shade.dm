@@ -11,8 +11,8 @@
 	health = 40
 	spacewalk = TRUE
 	healable = 0
-	speak_emote = list("hisses")
-	emote_hear = list("wails.","screeches.")
+	speak_emote = list("syczy")
+	emote_hear = list("zawodzi.","skrzeczy.")
 	response_help  = "puts their hand through"
 	response_disarm = "flails at"
 	response_harm   = "punches"

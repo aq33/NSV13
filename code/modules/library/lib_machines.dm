@@ -197,9 +197,9 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 	name = "book inventory management console"
 	desc = "Librarian's command station."
 	screenstate = 0 // 0 - Main Menu, 1 - Inventory, 2 - Checked Out, 3 - Check Out a Book
-	verb_say = "beeps"
-	verb_ask = "beeps"
-	verb_exclaim = "beeps"
+	verb_say = "pika"
+	verb_ask = "pika"
+	verb_exclaim = "pika"
 	pass_flags = PASSTABLE
 	var/arcanecheckout = 0
 	var/buffer_book

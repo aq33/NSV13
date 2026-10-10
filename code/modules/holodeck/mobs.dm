@@ -9,9 +9,9 @@
 	icon_state = "monkey1"
 	icon_living = "monkey1"
 	icon_dead = "monkey1_dead"
-	speak_emote = list("chimpers")
-	emote_hear = list("chimpers.")
-	emote_see = list("scratches.", "looks around.")
+	speak_emote = list("pokrzykuje")
+	emote_hear = list("pokrzykuje.")
+	emote_see = list("drapie się.", "rozgląda się.")
 	speak_chance = 1
 	turns_per_move = 2
 	butcher_results = list()

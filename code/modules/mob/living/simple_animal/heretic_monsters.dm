@@ -9,7 +9,7 @@
 	response_help = "thinks better of touching"
 	response_disarm = "flails at"
 	response_harm = "reaps"
-	speak_emote = list("screams")
+	speak_emote = list("krzyczy")
 	speak_chance = 1
 	speed = 0
 	stop_automated_movement = TRUE

@@ -36,7 +36,7 @@ Difficulty: Hard
 	icon_dead = ""
 	friendly = "stares down"
 	icon = 'icons/mob/lavaland/96x96megafauna.dmi'
-	speak_emote = list("gurgles")
+	speak_emote = list("bulgocze")
 	armour_penetration = 40
 	melee_damage = 40
 	speed = 5

@@ -19,7 +19,7 @@
 	attacktext = "barrels into"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	a_intent = INTENT_HELP
-	speak_emote = list("screeches")
+	speak_emote = list("skrzeczy")
 	throw_message = "sinks in slowly, before being pushed out of "
 	deathmessage = "spits up the contents of its stomach before dying!"
 	status_flags = CANPUSH

@@ -18,7 +18,7 @@
 	attacktext = "attacks"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	emote_taunt = list("growls")
-	speak_emote = list("creaks")
+	speak_emote = list("skrzypi")
 	taunt_chance = 30
 
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
@@ -35,7 +35,7 @@
 // Aggro when you try to open them. Will also pickup loot when spawns and drop it when dies.
 /mob/living/simple_animal/hostile/mimic/crate
 	attacktext = "bites"
-	speak_emote = list("clatters")
+	speak_emote = list("klekocze")
 	stop_automated_movement = 1
 	wander = FALSE
 	var/attempt_open = FALSE
@@ -206,7 +206,7 @@ GLOBAL_LIST_INIT(protected_objects, list(/obj/structure/table, /obj/structure/ca
 
 /mob/living/simple_animal/hostile/mimic/copy/ranged/CopyObject(obj/O, mob/living/creator, destroy_original = 0)
 	if(..())
-		emote_see = list("aims menacingly")
+		emote_see = list("groźnie celuje")
 		obj_damage = 0
 		environment_smash = ENVIRONMENT_SMASH_NONE //needed? seems weird for them to do so
 		ranged = 1

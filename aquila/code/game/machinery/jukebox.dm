@@ -5,7 +5,7 @@
 	desc = "Tradycyjny odtwarzacz muzyczny."
 	icon = 'aquila/icons/obj/jukebox.dmi'
 	icon_state = "jukebox"
-	verb_say = "states"
+	verb_say = "stwierdza"
 	density = TRUE
 	req_access = list(ACCESS_BAR)
 	interaction_flags_machine = INTERACT_MACHINE_SET_MACHINE | INTERACT_MACHINE_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON

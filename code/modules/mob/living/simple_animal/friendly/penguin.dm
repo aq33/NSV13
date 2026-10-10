@@ -5,9 +5,9 @@
 	response_disarm = "bops"
 	response_harm   = "kicks"
 	speak = list("Gah Gah!", "NOOT NOOT!", "NOOT!", "Noot", "noot", "Prah!", "Grah!")
-	speak_emote = list("squawks", "gakkers")
-	emote_hear = list("squawk!", "gakkers!", "noots.","NOOTS!")
-	emote_see = list("shakes its beak.", "flaps it's wings.","preens itself.")
+	speak_emote = list("skrzeczy", "gęga")
+	emote_hear = list("skrzeczy!", "gęga!", "nootuje.","NOOTUJE!")
+	emote_see = list("potrząsa dziobem.", "trzepocze skrzydłami.","czyści pióra.")
 	faction = list("penguin")
 	minbodytemp = 0
 	see_in_dark = 5

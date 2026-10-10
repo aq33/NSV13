@@ -6,7 +6,7 @@
 	icon_state = "eightball"
 	w_class = WEIGHT_CLASS_TINY
 
-	verb_say = "rattles"
+	verb_say = "grzechocze"
 
 	var/shaking = FALSE
 	var/on_cooldown = FALSE

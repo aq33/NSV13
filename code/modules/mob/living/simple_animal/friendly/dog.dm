@@ -5,10 +5,10 @@
 	response_help  = "pets"
 	response_disarm = "bops"
 	response_harm   = "kicks"
-	speak = list("YAP", "Woof!", "Bark!", "AUUUUUU")
-	speak_emote = list("barks", "woofs")
-	emote_hear = list("barks!", "woofs!", "yaps.","pants.")
-	emote_see = list("shakes its head.", "chases its tail.","shivers.")
+	speak = list("YAP", "Hau!", "Hau hau!", "AUUUUUU")
+	speak_emote = list("szczeka", "hauka")
+	emote_hear = list("szczeka!", "hauka!", "ujada.","dyszy.")
+	emote_see = list("potrząsa głową.", "goni swój ogon.","drży.")
 	faction = list("neutral")
 	see_in_dark = 5
 	speak_chance = 1
@@ -342,10 +342,10 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 	name = real_name
 	desc = initial(desc)
 	// BYOND/DM doesn't support the use of initial on lists.
-	speak = list("YAP", "Woof!", "Bark!", "AUUUUUU")
-	speak_emote = list("barks", "woofs")
-	emote_hear = list("barks!", "woofs!", "yaps.","pants.")
-	emote_see = list("shakes its head.", "chases its tail.","shivers.")
+	speak = list("YAP", "Hau!", "Hau hau!", "AUUUUUU")
+	speak_emote = list("szczeka", "hauka")
+	emote_hear = list("szczeka!", "hauka!", "ujada.","dyszy.")
+	emote_see = list("potrząsa głową.", "goni swój ogon.","drży.")
 	desc = initial(desc)
 	set_light(0)
 
@@ -545,9 +545,9 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 /mob/living/simple_animal/pet/dog/corgi/narsie/update_corgi_fluff()
 	..()
 	speak = list("Tari'karat-pasnar!", "IA! IA!", "BRRUUURGHGHRHR")
-	speak_emote = list("growls", "barks ominously")
-	emote_hear = list("barks echoingly!", "woofs hauntingly!", "yaps in an eldritch manner.", "mutters something unspeakable.")
-	emote_see = list("communes with the unnameable.", "ponders devouring some souls.", "shakes.")
+	speak_emote = list("warczy", "szczeka złowieszczo")
+	emote_hear = list("szczeka echem!", "hauka upiornie!", "ujada w nieziemski sposób.", "mamrocze coś niewypowiedzianego.")
+	emote_see = list("obcuje z bezimiennym.", "rozważa pożarcie kilku dusz.", "trzęsie się.")
 
 /mob/living/simple_animal/pet/dog/corgi/narsie/narsie_act()
 	adjustBruteLoss(-maxHealth)

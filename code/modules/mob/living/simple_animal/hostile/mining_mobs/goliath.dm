@@ -14,7 +14,7 @@
 	ranged = 1
 	ranged_cooldown_time = 120
 	friendly = "wails at"
-	speak_emote = list("bellows")
+	speak_emote = list("ryczy gromko")
 	vision_range = 4
 	speed = 3
 	maxHealth = 300

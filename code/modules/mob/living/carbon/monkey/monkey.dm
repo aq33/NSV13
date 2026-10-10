@@ -1,6 +1,6 @@
 /mob/living/carbon/monkey
 	name = "monkey"
-	verb_say = "chimpers"
+	verb_say = "pokrzykuje"
 	initial_language_holder = /datum/language_holder/monkey
 	possible_a_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_HARM)
 	icon = 'nsv13/icons/mob/legacy_monkey.dmi' //NSV13 - old monkey sprites
@@ -193,7 +193,7 @@ GLOBAL_LIST_INIT(strippable_monkey_items, create_strippable_list(list(
 
 /mob/living/carbon/monkey/tumor
 	name = "living teratoma"
-	verb_say = "blabbers"
+	verb_say = "paple"
 	initial_language_holder = /datum/language_holder/monkey
 	icon = 'icons/mob/monkey.dmi'
 	icon_state = null

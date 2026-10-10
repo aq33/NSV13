@@ -4,7 +4,7 @@
 	desc = ""
 	gender = NEUTER
 	mob_biotypes = list(MOB_INORGANIC)
-	speak_emote = list("hisses")
+	speak_emote = list("syczy")
 	response_help  = "thinks better of touching"
 	response_disarm = "flails at"
 	response_harm   = "punches"

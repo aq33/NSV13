@@ -58,7 +58,7 @@
 	unique_name = 1
 	icon = 'icons/mob/swarmer.dmi'
 	desc = "A robot of unknown design, they seek only to consume materials and replicate themselves indefinitely."
-	speak_emote = list("tones")
+	speak_emote = list("wydaje ton")
 	initial_language_holder = /datum/language_holder/swarmer
 	bubble_icon = "swarmer"
 	mob_biotypes = list(MOB_ROBOTIC)

@@ -25,7 +25,7 @@
 	ventcrawler = VENTCRAWLER_ALWAYS
 	robust_searching = 1
 	unique_name = 1
-	speak_emote = list("squeaks")
+	speak_emote = list("piszczy")
 	deathmessage = "fainted."
 	var/cap_color = "#ffffff"
 	var/powerlevel = 0 //Tracks our general strength level gained from eating other shrooms

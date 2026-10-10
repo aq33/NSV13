@@ -216,8 +216,8 @@
 	tastes = list("bun" = 2, "ectoplasm" = 4)
 	foodtypes = GRAIN
 	alpha = 170
-	verb_say = "moans"
-	verb_yell = "wails"
+	verb_say = "jęczy"
+	verb_yell = "zawodzi"
 	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/burger/ghost/Initialize(mapload)

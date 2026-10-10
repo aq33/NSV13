@@ -6,9 +6,9 @@
 	icon_living = "yeeslow"
 	icon_dead = "yeeslow_dead"
 	var/icon_hiding = "yeeslow_scared"
-	speak_emote = list("yawns")
-	emote_hear = list("snores.","yawns.")
-	emote_see = list("Stretches out their neck.", "looks around slowly.")
+	speak_emote = list("ziewa")
+	emote_hear = list("chrapie.","ziewa.")
+	emote_see = list("wyciąga szyję.", "powoli się rozgląda.")
 	speak_chance = 1
 	turns_per_move = 5
 	butcher_results = list(/obj/item/food/meat/slab = 1, /obj/item/clothing/head/franks_hat = 1)

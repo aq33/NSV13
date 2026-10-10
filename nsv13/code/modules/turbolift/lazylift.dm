@@ -47,9 +47,9 @@ That's it, ok bye!
 	density = FALSE
 	anchored = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
-	verb_say = "beeps"
-	verb_ask = "beeps"
-	verb_exclaim = "beeps"
+	verb_say = "pika"
+	verb_ask = "pika"
+	verb_exclaim = "pika"
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 2
 	var/lift_id = null // A unique ID that can be used to link a specific lift to a specific button

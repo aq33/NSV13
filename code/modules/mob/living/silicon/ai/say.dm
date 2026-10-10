@@ -21,7 +21,7 @@
 	if(incapacitated())
 		return FALSE
 	if(!radio_enabled) //AI cannot speak if radio is disabled (via intellicard) or depowered.
-		to_chat(src, "<span class='danger'>Your radio transmitter is offline!</span>")
+		to_chat(src, "<span class='danger'>Twój nadajnik radiowy jest wyłączony!</span>")
 		return FALSE
 	..()
 
@@ -32,7 +32,7 @@
 	if (!message)
 		return
 	if(CHAT_FILTER_CHECK(message))
-		to_chat(usr, "<span class='warning'>Your message contains forbidden words.</span>")
+		to_chat(usr, "<span class='warning'>Twoja wiadomość zawiera zakazane słowa.</span>")
 		return
 
 	var/obj/machinery/holopad/T = current
@@ -45,9 +45,9 @@
 			padloc = "(UNKNOWN)"
 		src.log_talk(message, LOG_SAY, tag="HOLOPAD in [padloc]")
 		send_speech(message, 7, T, MODE_ROBOT, message_language = language)
-		to_chat(src, "<i><span class='game say'>Holopad transmitted, <span class='name'>[real_name]</span> <span class='message robot'>\"[message]\"</span></span></i>")
+		to_chat(src, "<i><span class='game say'>Przekaz z holopadu, <span class='name'>[real_name]</span> <span class='message robot'>\"[message]\"</span></span></i>")
 	else
-		to_chat(src, "No holopad connected.")
+		to_chat(src, "Brak połączonego holopadu.")
 
 
 // Make sure that the code compiles with AI_VOX undefined
@@ -55,7 +55,7 @@
 #define VOX_DELAY 600
 /mob/living/silicon/ai/verb/announcement_help()
 
-	set name = "Announcement Help"
+	set name = "Pomoc - ogłoszenia"
 	set desc = "Display a list of vocal words to announce to the crew."
 	set category = "AI Commands"
 
@@ -80,7 +80,7 @@
 		if(index != GLOB.vox_sounds.len)
 			dat += " / "
 
-	var/datum/browser/popup = new(src, "announce_help", "Announcement Help", 500, 400)
+	var/datum/browser/popup = new(src, "announce_help", "Pomoc - ogłoszenia", 500, 400)
 	popup.set_content(dat)
 	popup.open()
 
@@ -88,10 +88,10 @@
 /mob/living/silicon/ai/proc/announcement()
 	var/static/announcing_vox = 0 // Stores the time of the last announcement
 	if(announcing_vox > world.time)
-		to_chat(src, "<span class='notice'>Please wait [DisplayTimeText(announcing_vox - world.time)].</span>")
+		to_chat(src, "<span class='notice'>Zaczekaj [DisplayTimeText(announcing_vox - world.time)].</span>")
 		return
 
-	var/message = capped_input(src, "WARNING: Misuse of this verb can result in you being job banned. More help is available in 'Announcement Help'", "Announcement", src.last_announcement)
+	var/message = capped_input(src, "UWAGA: nadużywanie tej komendy może skończyć się banem na rolę. Więcej pomocy znajdziesz w 'Announcement Help'", "Ogłoszenie", src.last_announcement)
 
 	last_announcement = message
 
@@ -102,7 +102,7 @@
 		return
 
 	if(control_disabled)
-		to_chat(src, "<span class='warning'>Wireless interface disabled, unable to interact with announcement PA.</span>")
+		to_chat(src, "<span class='warning'>Interfejs bezprzewodowy wyłączony, nie można użyć systemu ogłoszeń.</span>")
 		return
 
 	var/list/words = splittext(trim(message), " ")
@@ -120,7 +120,7 @@
 			incorrect_words += word
 
 	if(incorrect_words.len)
-		to_chat(src, "<span class='notice'>These words are not available on the announcement system: [english_list(incorrect_words)].</span>")
+		to_chat(src, "<span class='notice'>Tych słów nie ma w systemie ogłoszeń: [english_list(incorrect_words)].</span>")
 		return
 
 	announcing_vox = world.time + VOX_DELAY

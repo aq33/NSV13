@@ -276,7 +276,7 @@
 /obj/item/organ/tongue/snail
 	name = "snail tongue"
 	modifies_speech = TRUE
-	say_mod = "slurs"
+	say_mod = "bełkocze"
 
 /obj/item/organ/tongue/snail/handle_speech(datum/source, list/speech_args)
 	var/new_message
@@ -320,7 +320,7 @@
 /obj/item/organ/tongue/golem/clockwork
 	name = "clockwork tongue"
 	desc = "It's a tongue made out of many tiny cogs. You can hear a very subtle clicking noise emanating from it."
-	say_mod = "clicks"
+	say_mod = "klika"
 
 /obj/item/organ/tongue/cat
 	name = "cat tongue"
@@ -332,10 +332,10 @@
 /obj/item/organ/tongue/slime
 	name = "slimey tongue"
 	desc = "It's a piece of slime, shaped like a tongue."
-	say_mod = list("blorbles", "bubbles")
-	ask_mod = "inquisitively blorbles"
-	yell_mod = "shrilly blorbles"
-	exclaim_mod = "loudly blorbles"
+	say_mod = list("bulgocze", "bąbelkuje")
+	ask_mod = "bulgocze pytająco"
+	yell_mod = "bulgocze piskliwie"
+	exclaim_mod = "bulgocze głośno"
 	liked_food = MEAT | BUGS //cause slimes are mostly carnivores, however the ability to consume RAW or GORE was lost when spliced with humans
 	toxic_food = NONE
 	disliked_food = NONE

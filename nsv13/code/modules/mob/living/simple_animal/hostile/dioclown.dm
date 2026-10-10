@@ -7,8 +7,8 @@
 	icon_dead = "clown_dead"
 	icon_gib = "clown_gib"
 	turns_per_move = 5
-	speak = list("JOJO!", "HJONK!", "Let me feast on your blood!", "So thirsty!", "Escape is impossible!", "MWAHAHAHAH")
-	emote_see = list("honks", "squeaks")
+	speak = list("JOJO!", "HJONK!", "Pozwól mi napić się twojej krwi!", "Tak bardzo chce mi się pić!", "Ucieczka jest niemożliwa!", "MWAHAHAHAH")
+	emote_see = list("trąbi", "piszczy")
 	speak_chance = 1
 	a_intent = INTENT_HARM
 	maxHealth = 200

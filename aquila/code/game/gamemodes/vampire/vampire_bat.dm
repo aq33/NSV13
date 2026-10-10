@@ -26,7 +26,7 @@
 	ventcrawler = VENTCRAWLER_ALWAYS
 	mob_size = MOB_SIZE_TINY
 	movement_type = FLYING
-	speak_emote = list("squeaks")
+	speak_emote = list("piszczy")
 
 	var/mob/living/controller
 

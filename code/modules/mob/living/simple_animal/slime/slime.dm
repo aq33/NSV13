@@ -15,8 +15,8 @@
 	response_help  = "pets"
 	response_disarm = "shoos"
 	response_harm   = "stomps on"
-	emote_see = list("jiggles", "bounces in place")
-	speak_emote = list("blorbles")
+	emote_see = list("trzęsie się", "podskakuje w miejscu")
+	speak_emote = list("bulgocze")
 	bubble_icon = "slime"
 	initial_language_holder = /datum/language_holder/slime
 	chat_color = "#A6E398"
@@ -31,10 +31,10 @@
 
 	see_in_dark = 8
 
-	verb_say = "blorbles"
-	verb_ask = "inquisitively blorbles"
-	verb_exclaim = "loudly blorbles"
-	verb_yell = "loudly blorbles"
+	verb_say = "bulgocze"
+	verb_ask = "bulgocze pytająco"
+	verb_exclaim = "bulgocze głośno"
+	verb_yell = "bulgocze głośno"
 
 	// canstun and canknockdown don't affect slimes because they ignore stun and knockdown variables
 	// for the sake of cleanliness, though, here they are.

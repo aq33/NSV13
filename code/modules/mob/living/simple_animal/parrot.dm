@@ -45,7 +45,7 @@
 
 	speak = list("Cześć!","Witam!","Krakers?","BAWWWWK george mellons mnie ugryzł!")
 	speak_emote = list("kracze","mówi","krzyczy")
-	emote_hear = list("drze się.","bawks!")
+	emote_hear = list("drze się.","skrzeczy!")
 	emote_see = list("trzepocze skrzydłami.")
 
 	speak_chance = 1 //1% (1 in 100) chance every tick; So about once per 150 seconds, assuming an average tick is 1.5s
@@ -1016,9 +1016,9 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 	icon_living = "clock_hawk_fly"
 	icon_sit = "clock_hawk_sit"
 	speak = list("Penpxre!", "Ratvar vf n qhzo anzr naljnl!")
-	speak_emote = list("squawks rustily", "says crassly", "yells brassly")
-	emote_hear = list("squawks rustily.", "bawks metallically!")
-	emote_see = list("flutters its metal wings.")
+	speak_emote = list("skrzeczy zgrzytliwie", "mówi prostacko", "wrzeszczy blaszanie")
+	emote_hear = list("skrzeczy zgrzytliwie.", "gdacze metalicznie!")
+	emote_see = list("trzepocze metalowymi skrzydłami.")
 	faction = list("ratvar")
 	gold_core_spawnable = NO_SPAWN
 	del_on_death = TRUE

@@ -20,10 +20,10 @@
 	response_help   = "pets"
 	response_disarm = "shoos"
 	response_harm   = "stomps"
-	speak = list("Hissssss!", "Squeak!")
-	speak_emote = list("hisses", "squeaks")
-	emote_hear = list("hisses", "squeaks")
-	emote_see = list("pounces")
+	speak = list("Sssssss!", "Pi!")
+	speak_emote = list("syczy", "piszczy")
+	emote_hear = list("syczy", "piszczy")
+	emote_see = list("rzuca się")
 	faction = list("Lizard")
 	health = 15
 	maxHealth = 15

@@ -15,7 +15,7 @@
 	icon_state = "snake"
 	icon_living = "snake"
 	icon_dead = "snake_dead"
-	speak_emote = list("hisses")
+	speak_emote = list("syczy")
 	health = 20
 	maxHealth = 20
 	attacktext = "bites"

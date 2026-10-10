@@ -4,8 +4,8 @@
 	name = "slaughter demon"
 	real_name = "slaughter demon"
 	desc = "A large, menacing creature covered in armored black scales."
-	speak_emote = list("gurgles")
-	emote_hear = list("wails","screeches")
+	speak_emote = list("bulgocze")
+	emote_hear = list("zawodzi","skrzeczy")
 	response_help  = "thinks better of touching"
 	response_disarm = "flails at"
 	response_harm   = "punches"
@@ -116,8 +116,8 @@
 	name = "laughter demon"
 	real_name = "laughter demon"
 	desc = "A large, adorable creature covered in armor with pink bows."
-	speak_emote = list("giggles","titters","chuckles")
-	emote_hear = list("guffaws","laughs")
+	speak_emote = list("chichocze","chichocze","podśmiewa się")
+	emote_hear = list("rechocze","śmieje się")
 	response_help  = "hugs"
 	attacktext = "wildly tickles"
 

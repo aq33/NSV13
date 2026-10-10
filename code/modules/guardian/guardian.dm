@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	name = "Guardian Spirit"
 	real_name = "Guardian Spirit"
 	desc = "A mysterious being that stands by its charge, ever vigilant."
-	speak_emote = list("hisses")
+	speak_emote = list("syczy")
 	gender = NEUTER
 	mob_biotypes = list(MOB_INORGANIC)
 	bubble_icon = "guardian"
@@ -158,7 +158,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 			icon_state = "holocarp"
 			icon_living = "holocarp"
 			icon_dead = "holocarp"
-			speak_emote = list("gnashes")
+			speak_emote = list("zgrzyta zębami")
 			desc = "A mysterious fish that stands by its charge, ever vigilant."
 			attack_sound = 'sound/weapons/bite.ogg'
 			recolorentiresprite = TRUE
@@ -169,7 +169,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 			icon_state = "hivebase"
 			icon_living = "hivebase"
 			icon_dead = "hivebase"
-			speak_emote = list("telepathically cries")
+			speak_emote = list("woła telepatycznie")
 			desc = "A truly alien creature, it is a mass of unknown organic material, standing by its' owner's side."
 			attack_sound = 'sound/weapons/pierce.ogg'
 	if(!recolorentiresprite) //we want this to proc before stand logs in, so the overlay isn't gone for some reason

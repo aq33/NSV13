@@ -4,7 +4,7 @@
 	icon_state = "lizard"
 	icon_living = "lizard"
 	icon_dead = "lizard_dead"
-	speak_emote = list("hisses")
+	speak_emote = list("syczy")
 	health = 5
 	maxHealth = 5
 	faction = list("Lizard")

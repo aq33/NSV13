@@ -4,10 +4,10 @@
 	icon_state = "mouse_gray"
 	icon_living = "mouse_gray"
 	icon_dead = "mouse_gray_dead"
-	speak = list("Squeak!","SQUEAK!","Squeak?")
-	speak_emote = list("squeaks")
-	emote_hear = list("squeaks.")
-	emote_see = list("runs in a circle.", "shakes.")
+	speak = list("Pi!","PIII!","Pi?")
+	speak_emote = list("piszczy")
+	emote_hear = list("piszczy.")
+	emote_see = list("biega w kółko.", "trzęsie się.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 8 //AQ EDIT szczury 6->8

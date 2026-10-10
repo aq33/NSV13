@@ -11,7 +11,7 @@
 	attacktext = "slashes"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	faction = list("creature")
-	speak_emote = list("screams")
+	speak_emote = list("krzyczy")
 	gold_core_spawnable = HOSTILE_SPAWN
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
@@ -22,7 +22,7 @@
 /mob/living/simple_animal/hostile/netherworld/migo
 	name = "mi-go"
 	desc = "A pinkish, fungoid crustacean-like creature with numerous pairs of clawed appendages and a head covered with waving antennae."
-	speak_emote = list("screams", "clicks", "chitters", "barks", "moans", "growls", "meows", "reverberates", "roars", "squeaks", "rattles", "exclaims", "yells", "remarks", "mumbles", "jabbers", "stutters", "seethes")
+	speak_emote = list("krzyczy", "klika", "terkocze", "szczeka", "jęczy", "warczy", "miauczy", "dudni", "ryczy", "piszczy", "grzechocze", "woła", "wrzeszczy", "zauważa", "mamrocze", "trajkocze", "jąka się", "kipi złością")
 	icon_state = "mi-go"
 	icon_living = "mi-go"
 	icon_dead = "mi-go-dead"

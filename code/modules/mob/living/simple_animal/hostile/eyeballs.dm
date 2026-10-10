@@ -15,7 +15,7 @@
 	taunt_chance = 25
 	maxHealth = 45
 	health = 45
-	speak_emote = list("telepathically cries")
+	speak_emote = list("woła telepatycznie")
 
 	obj_damage = 60
 	melee_damage = 20

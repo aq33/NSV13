@@ -3,10 +3,10 @@
 	response_help  = "pets"
 	response_disarm = "bops"
 	response_harm   = "bites"
-	speak = list("Squeak", "SQUEAK!")
-	speak_emote = list("squeak", "hisses", "squeals")
-	emote_hear = list("squeaks.", "hisses.", "squeals.")
-	emote_see = list("skitters", "examines it's claws", "rolls around")
+	speak = list("Pi", "PIII!")
+	speak_emote = list("piszczy", "syczy", "kwiczy")
+	emote_hear = list("piszczy.", "syczy.", "kwiczy.")
+	emote_see = list("drepcze", "ogląda swoje pazurki", "turla się")
 	faction = list("hamster")
 	see_in_dark = 5
 	speak_chance = 1

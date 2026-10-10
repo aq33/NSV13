@@ -121,8 +121,8 @@
 	icon = 'icons/mob/mob.dmi'
 	maxHealth = 1e6
 	health = 1e6
-	speak_emote = list("howls")
-	emote_hear = list("wails","screeches")
+	speak_emote = list("wyje")
+	emote_hear = list("zawodzi","skrzeczy")
 	density = FALSE
 	anchored = TRUE
 	incorporeal_move = 1
@@ -185,7 +185,7 @@
 	speak = list("...", ". . .")
 	maxHealth = 1e6
 	health = 1e6
-	emote_see = list("silently stares")
+	emote_see = list("patrzy w milczeniu")
 	unsuitable_atmos_damage = 0
 	var/timer
 

@@ -38,7 +38,7 @@ Difficulty: Medium
 	icon_living = "dragon"
 	icon_dead = "dragon_dead"
 	friendly = "stares down"
-	speak_emote = list("roars")
+	speak_emote = list("ryczy")
 	armour_penetration = 40
 	melee_damage = 40
 	speed = 5

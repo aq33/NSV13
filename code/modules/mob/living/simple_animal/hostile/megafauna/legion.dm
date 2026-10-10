@@ -19,7 +19,7 @@ Difficulty: Medium
 	icon = 'icons/mob/lavaland/legion.dmi'
 	attacktext = "chomps"
 	attack_sound = 'sound/magic/demon_attack1.ogg'
-	speak_emote = list("echoes")
+	speak_emote = list("rozbrzmiewa echem")
 	armour_penetration = 50
 	melee_damage = 25
 	speed = 5

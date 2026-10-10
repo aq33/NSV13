@@ -13,8 +13,8 @@
 	name = "demon"
 	real_name = "demon"
 	desc = "A large, menacing creature covered in armored red scales."
-	speak_emote = list("cackles")
-	emote_hear = list("cackles","screeches")
+	speak_emote = list("rechocze")
+	emote_hear = list("rechocze","skrzeczy")
 	response_help  = "thinks better of touching"
 	response_disarm = "flails at"
 	response_harm   = "punches"

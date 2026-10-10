@@ -7,7 +7,7 @@
     icon_state = "cluwne"
     icon_living = "cluwne"
     icon_dead = "cluwne_dead"
-    speak_emote = list("sadly honks")
+    speak_emote = list("smutno trąbi")
     attack_sound = 'sound/items/bikehorn.ogg'
     loot = list(/obj/effect/decal/cleanable/blood/gibs)
     atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
@@ -15,7 +15,7 @@
     maxbodytemp = 1500
     maxHealth = 150
     health = 150
-    speak = list("HONK! HONK! HONK! HONK!","AAAAAAAAAAAAAAAAAA!!", "KILLMEKILLME!!", "HONK HENK HONK!!", "Honk Honk!", "HEEEEEEEEEEEEENK!!")
+    speak = list("HONK! HONK! HONK! HONK!","AAAAAAAAAAAAAAAAAA!!", "ZABIJMNIEZABIJMNIE!!", "HONK HENK HONK!!", "Honk Honk!", "HEEEEEEEEEEEEENK!!")
     do_footstep = TRUE
     chat_color = "#F37EF6"
     discovery_points = 1000

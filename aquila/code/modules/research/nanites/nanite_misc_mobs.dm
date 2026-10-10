@@ -7,7 +7,7 @@
 	icon_dead = "nanophage"
 	icon = 'aquila/icons/mob/nanophage.dmi'
 	gender = NEUTER
-	speak_emote = list("states")
+	speak_emote = list("stwierdza")
 	turns_per_move = 0
 	melee_damage = 1
 	attacktext = "bites"

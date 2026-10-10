@@ -7,9 +7,9 @@
 	icon_living = "gutlunch"
 	icon_dead = "gutlunch"
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
-	speak_emote = list("warbles", "quavers")
-	emote_hear = list("trills.")
-	emote_see = list("sniffs.", "burps.")
+	speak_emote = list("gulgocze", "drży")
+	emote_hear = list("trylikuje.")
+	emote_see = list("węszy.", "beka.")
 	weather_immunities = list("lava","ash")
 	faction = list("mining", "ashwalker")
 	density = FALSE

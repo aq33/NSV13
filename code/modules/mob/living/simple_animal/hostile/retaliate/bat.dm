@@ -26,7 +26,7 @@
 	ventcrawler = VENTCRAWLER_ALWAYS
 	mob_size = MOB_SIZE_TINY
 	movement_type = FLYING
-	speak_emote = list("squeaks")
+	speak_emote = list("piszczy")
 	var/max_co2 = 0 //to be removed once metastation map no longer use those for Sgt Araneus
 	var/min_oxy = 0
 	var/max_tox = 0
@@ -46,8 +46,8 @@
 	name = "Sergeant Araneus"
 	real_name = "Sergeant Araneus"
 	desc = "A fierce companion of the Head of Security, this spider has been carefully trained by Nanotrasen specialists. Its beady, staring eyes send shivers down your spine."
-	speak_emote = list("chitters")
-	emote_hear = list("chitters")
+	speak_emote = list("terkocze")
+	emote_hear = list("terkocze")
 	faction = list("spiders")
 	icon_dead = "guard_dead"
 	icon_gib = "guard_dead"

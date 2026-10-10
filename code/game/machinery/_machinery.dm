@@ -84,8 +84,8 @@ Class Procs:
 	name = "machinery"
 	icon = 'icons/obj/stationobjs.dmi'
 	desc = "Some kind of machine."
-	verb_say = "beeps"
-	verb_yell = "blares"
+	verb_say = "pika"
+	verb_yell = "wyje"
 	pressure_resistance = 15
 	pass_flags_self = PASSMACHINE
 	max_integrity = 200

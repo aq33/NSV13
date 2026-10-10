@@ -6,9 +6,9 @@
 	icon_living = "ant"
 	icon_dead = "ant_dead"
 	speak = list("BZZZZT!", "CHTCHTCHT!", "Bzzz", "ChtChtCht")
-	speak_emote = list("buzzes", "chitters")
-	emote_hear = list("buzzes.", "clacks.")
-	emote_see = list("shakes their head.", "twitches their antennae.")
+	speak_emote = list("brzęczy", "terkocze")
+	emote_hear = list("brzęczy.", "klekocze.")
+	emote_see = list("potrząsa głową.", "porusza czułkami.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6

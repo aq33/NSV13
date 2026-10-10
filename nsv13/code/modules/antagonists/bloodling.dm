@@ -17,7 +17,7 @@
 	health = 200
 	maxHealth = 200
 	speed = 0 //Rapid
-	verb_say = "hisses"
+	verb_say = "syczy"
 	bubble_icon = "alien"
 	deathsound = 'sound/voice/hiss6.ogg'
 	deathmessage = "lets out a terrible screech as its life fades away..."
@@ -966,7 +966,7 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 	attacktext = "glomps"
 	attack_sound = 'sound/effects/blobattack.ogg'
 	wander = FALSE
-	verb_say = "hisses"
+	verb_say = "syczy"
 	bubble_icon = "alien"
 	deathsound = 'sound/voice/hiss6.ogg'
 	deathmessage = "lets out a terrible screech as its life fades away..."

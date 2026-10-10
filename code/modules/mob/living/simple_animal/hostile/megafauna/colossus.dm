@@ -33,7 +33,7 @@ Difficulty: Very Hard
 	icon_dead = ""
 	friendly = "stares down"
 	icon = 'icons/mob/lavaland/96x96megafauna.dmi'
-	speak_emote = list("roars")
+	speak_emote = list("ryczy")
 	armour_penetration = 40
 	melee_damage = 40
 	speed = 10
@@ -709,7 +709,7 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 	response_help = "waves away"
 	response_disarm = "brushes aside"
 	response_harm = "disrupts"
-	speak_emote = list("oscillates")
+	speak_emote = list("oscyluje")
 	maxHealth = 2
 	health = 2
 	friendly = "mends"
@@ -719,10 +719,10 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 	ventcrawler = VENTCRAWLER_ALWAYS
 	mob_size = MOB_SIZE_TINY
 	gold_core_spawnable = HOSTILE_SPAWN
-	verb_say = "warps"
-	verb_ask = "floats inquisitively"
-	verb_exclaim = "zaps"
-	verb_yell = "bangs"
+	verb_say = "faluje"
+	verb_ask = "unosi się pytająco"
+	verb_exclaim = "iskrzy"
+	verb_yell = "huczy"
 	initial_language_holder = /datum/language_holder/lightbringer
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	light_range = 4

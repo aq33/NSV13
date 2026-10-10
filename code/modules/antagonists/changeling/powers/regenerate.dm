@@ -86,7 +86,7 @@
 	icon_state = "snake"
 	icon_living = "snake"
 	del_on_death = TRUE
-	speak_emote = list("gargles")
+	speak_emote = list("bulgocze")
 	health = 50
 	maxHealth = 50
 	melee_damage = 3

@@ -24,7 +24,7 @@
 	melee_damage = 10
 	attacktext = "bites"
 	attack_sound = 'sound/weapons/bite.ogg'
-	speak_emote = list("pines")
+	speak_emote = list("szumi")
 	emote_taunt = list("growls")
 	taunt_chance = 20
 
@@ -62,5 +62,5 @@
 	icon_dead = "festivus_pole"
 	icon_gib = "festivus_pole"
 	loot = list(/obj/item/stack/rods)
-	speak_emote = list("polls")
+	speak_emote = list("szeleści")
 	faction = list()

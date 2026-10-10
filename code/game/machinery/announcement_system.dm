@@ -8,8 +8,8 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	icon_state = "AAS_On"
 
 	verb_say = "ozięble stwierdza"
-	verb_ask = "queries"
-	verb_exclaim = "alarms"
+	verb_ask = "pyta"
+	verb_exclaim = "alarmuje"
 
 	idle_power_usage = 20
 	active_power_usage = 50

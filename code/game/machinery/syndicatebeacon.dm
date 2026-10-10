@@ -10,7 +10,7 @@
 	anchored = FALSE
 	density = TRUE
 	layer = BELOW_MOB_LAYER //so people can't hide it and it's REALLY OBVIOUS
-	verb_say = "states"
+	verb_say = "stwierdza"
 	var/cooldown = 0
 
 	var/active = 0

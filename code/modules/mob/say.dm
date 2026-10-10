@@ -6,7 +6,7 @@
 	set category = "IC"
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, "<span class='danger'>Mowa jest obecnie wyłączona przez administrację.</span>")
 		return
 	if(message)
 		say(message)
@@ -16,7 +16,7 @@
 	set name = "Whisper"
 	set category = "IC"
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, "<span class='danger'>Mowa jest obecnie wyłączona przez administrację.</span>")
 		return
 	whisper(message)
 
@@ -31,7 +31,7 @@
 	set desc = "Wykonaj własną emotkę. Zostaw puste, aby wybrać, czy ma być słyszalna, widoczna czy obie."
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, "<span class='danger'>Mowa jest obecnie wyłączona przez administrację.</span>")
 		return
 
 	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
@@ -44,7 +44,7 @@
 	var/alt_name = ""
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, "<span class='danger'>Mowa jest obecnie wyłączona przez administrację.</span>")
 		return
 
 	var/jb = is_banned_from(ckey, "DSAY")
@@ -52,14 +52,14 @@
 		return
 
 	if(jb)
-		to_chat(src, "<span class='danger'>You have been banned from deadchat.</span>")
+		to_chat(src, "<span class='danger'>Masz bana na deadchat.</span>")
 		return
 
 
 
 	if (src.client)
 		if(src.client.prefs.muted & MUTE_DEADCHAT)
-			to_chat(src, "<span class='danger'>You cannot talk in deadchat (muted).</span>")
+			to_chat(src, "<span class='danger'>Nie możesz pisać na deadchacie (wyciszenie).</span>")
 			return
 
 		if(src.client.handle_spam_prevention(message,MUTE_DEADCHAT))
@@ -74,9 +74,9 @@
 		else
 			name = real_name
 		if(name != real_name)
-			alt_name = " (died as [real_name])"
+			alt_name = " (za życia: [real_name])"
 	if(OOC_FILTER_CHECK(message))
-		to_chat(usr, "<span class='warning'>Your message contains forbidden words.</span>")
+		to_chat(usr, "<span class='warning'>Twoja wiadomość zawiera zakazane słowa.</span>")
 		return
 	var/spanned = say_quote(say_emphasis(message)) //NSV13
 	var/rendered = "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name]</span>[alt_name] <span class='message'>[emoji_parse(spanned)]</span></span>"
@@ -127,7 +127,7 @@
 	message = copytext(message, customsaypos + messagetextpos)
 	if(!message)
 		mods[MODE_CUSTOM_SAY_ERASE_INPUT] = TRUE
-		message = "an interesting thing to say"
+		message = "coś ciekawego do powiedzenia"
 	return message
 
 /**

@@ -5,7 +5,7 @@
 	state_open = FALSE
 	icon = 'icons/obj/machines/autodoc.dmi'
 	icon_state = "autodoc_machine"
-	verb_say = "states"
+	verb_say = "stwierdza"
 	idle_power_usage = 500
 	circuit = null
 	var/obj/item/organ/storedorgan

@@ -31,7 +31,7 @@ Difficulty: Medium
 	mob_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
 	light_color = "#E4C7C5"
 	movement_type = GROUND
-	speak_emote = list("roars")
+	speak_emote = list("ryczy")
 	speed = 3
 	move_to_delay = 3
 	projectiletype = /obj/item/projectile/kinetic/miner
