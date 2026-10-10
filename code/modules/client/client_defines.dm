@@ -60,8 +60,8 @@
 	var/player_age = -1
 	/// Date that this account was first seen in the server
 	var/player_join_date = null
-	var/related_accounts_ip = "Requires database"	//So admins know why it isn't working - Used to determine what other accounts previously logged in from this ip
-	var/related_accounts_cid = "Requires database"	//So admins know why it isn't working - Used to determine what other accounts previously logged in from this computer id
+	var/related_accounts_ip = "Wymaga bazy danych"	//So admins know why it isn't working - Used to determine what other accounts previously logged in from this ip
+	var/related_accounts_cid = "Wymaga bazy danych"	//So admins know why it isn't working - Used to determine what other accounts previously logged in from this computer id
 	/// Date of byond account creation in ISO 8601 format
 	var/account_join_date = null
 	/// Age of byond account in days
