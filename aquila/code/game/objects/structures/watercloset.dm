@@ -22,5 +22,7 @@
 		user.set_defecation(DEFECATION_NONE)
 		playsound(src, 'aquila/sound/misc/toilet_flush.ogg', 100, vary = FALSE)
 		to_chat(user, "<span class='notice'><i>Ale ulga...</i></span>")
+		var/datum/reagent/consumable/castor_oil/oil = user.reagents?.get_reagent(/datum/reagent/consumable/castor_oil)
+		oil?.purge(user)
 	else
 		to_chat(user, "<span class='notice'>Nie potrzebujesz skorzystać z ubikacji.</span>")

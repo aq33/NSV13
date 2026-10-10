@@ -9,3 +9,9 @@
 	id = "Fake CBZ"
 	results = list(/datum/reagent/fake_cbz = 1)
 	required_reagents = list(/datum/reagent/concentrated_bz = 1, /datum/reagent/medicine/neurine = 3)
+
+/datum/chemical_reaction/castor_oil
+	name = "Castor Oil"
+	id = /datum/reagent/consumable/castor_oil
+	results = list(/datum/reagent/consumable/castor_oil = 3)
+	required_reagents = list(/datum/reagent/consumable/nutriment/fat/oil = 1, /datum/reagent/sulfur = 1, /datum/reagent/water = 1)
