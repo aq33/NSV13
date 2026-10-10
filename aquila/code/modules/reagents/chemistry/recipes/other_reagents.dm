@@ -14,4 +14,4 @@
 	name = "Castor Oil"
 	id = /datum/reagent/consumable/castor_oil
 	results = list(/datum/reagent/consumable/castor_oil = 3)
-	required_reagents = list(/datum/reagent/consumable/cooking_oil = 1, /datum/reagent/sulfur = 1, /datum/reagent/water = 1)
+	required_reagents = list(/datum/reagent/consumable/nutriment/fat/oil = 1, /datum/reagent/sulfur = 1, /datum/reagent/water = 1)
