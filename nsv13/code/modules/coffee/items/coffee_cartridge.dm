@@ -13,9 +13,9 @@
 /obj/item/coffee_cartridge/examine(mob/user)
 	. = ..()
 	if(charges)
-		. += "<span class='warning'>The cartridge has [charges] portions of grounds remaining.</span>"
+		. += "<span class='warning'>Wkładowi zostało [charges] porcji zmielonej kawy.</span>"
 	else
-		. += "<span class='warning'>The cartridge has no unspent grounds remaining.</span>"
+		. += "<span class='warning'>We wkładzie nie została żadna zmielona kawa.</span>"
 
 /obj/item/coffee_cartridge/fancy
 	name = "coffeemaker cartridge - Caffè Fantasioso"

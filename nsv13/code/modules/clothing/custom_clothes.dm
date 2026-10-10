@@ -281,7 +281,7 @@
 	item_state = "peacekeeper_space"
 	hardsuit_type = "peacekeeper_space"
 	desc = "A hardsuit helmet fitted with highly experimental magnetic interlocks, allowing it to create a vacuum seal around the user, permitting usage in a hard vacuum. It is currently in EVA mode."
-	alt_desc = "A hardsuit helmet fitted with highly experimental magnetic interlocks, allowing it to create a vacuum seal around the user, permitting usage in a hard vacuum. It is currently in IVA mode."
+	alt_desc = "Hełm skafandra wyposażony w wysoce eksperymentalne blokady magnetyczne, które tworzą próżniowe uszczelnienie wokół użytkownika, pozwalając używać go w próżni. Jest obecnie w trybie IVA."
 	armor = list("melee" = 40, "bullet" = 50, "laser" = 15,"energy" = 30, "bomb" = 25, "bio" = 100, "rad" = 50, "fire" = 75, "acid" = 75, "stamina" = 50)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT //we want to see the mask
@@ -289,7 +289,7 @@
 /obj/item/clothing/suit/space/hardsuit/syndi/peacekeeper
 	name = "SG-1 Mjolnir Armour"
 	desc = "An extremely bulky suit of armour fitted with highly experimental magnetic interlocks, allowing it to create a vacuum seal around the user, permitting usage in a hard vacuum. It is currently in EVA mode."
-	alt_desc = "An extremely bulky suit of armour fitted with highly experimental magnetic interlocks, allowing it to create a vacuum seal around the user, permitting usage in a hard vacuum. It is currently in IVA mode."
+	alt_desc = "Niezwykle masywny pancerz wyposażony w wysoce eksperymentalne blokady magnetyczne, które tworzą próżniowe uszczelnienie wokół użytkownika, pozwalając używać go w próżni. Jest obecnie w trybie IVA."
 	icon = 'nsv13/icons/obj/clothing/suits.dmi'
 	worn_icon = 'nsv13/icons/mob/suit.dmi'
 	icon_state = "hardsuit1-peacekeeper_space"
@@ -433,7 +433,7 @@
 	cooldown = TRUE
 	UpdateButtonIcon()
 	addtimer(CALLBACK(src, PROC_REF(reset_cooldown)), 10 SECONDS)
-	var/message = pick("[user] strikes a menacing pose", "[user] poses menacingly", "[user] looks menacing")
+	var/message = pick("[user] przyjmuje groźną pozę", "[user] groźnie pozuje", "[user] wygląda groźnie")
 	user.visible_message("<span class='game deadsay'>[message]</span>")
 	user.shake_animation()
 	for(var/I = 0, I<rand(3,5), I++)
@@ -718,13 +718,13 @@
 
 /obj/item/clothing/accessory/solgov_jacket/proc/toggle(mob/user)
 	if(toggled)
-		to_chat(user, "<span class='notice'>You cover up [src]'s departmental colours.</span>")
+		to_chat(user, "<span class='notice'>Zasłaniasz barwy działu na [src].</span>")
 		icon_state = "trekjacket"
 		worn_icon_state = "trekjacket"
 		item_state = "trekjacket"
 		toggled = FALSE
 	else
-		to_chat(user, "<span class='notice'>You display [src]'s departmental colours.</span>")
+		to_chat(user, "<span class='notice'>Pokazujesz barwy działu na [src].</span>")
 		icon_state = initial(icon_state)
 		worn_icon_state = initial(worn_icon_state)
 		item_state = initial(item_state)
@@ -780,28 +780,28 @@
 /obj/item/clothing/suit/space/skinsuit/mob_can_equip(mob/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
 	if(rolled_up && slot == ITEM_SLOT_OCLOTHING)
 		if(equipper)
-			to_chat(equipper, "<span class='warning'>You need to unroll \the [src], silly.</span>")
+			to_chat(equipper, "<span class='warning'>Najpierw musisz rozwinąć [src], głuptasie.</span>")
 		else
-			to_chat(M, "<span class='warning'>You need to unroll \the [src], silly.</span>")
+			to_chat(M, "<span class='warning'>Najpierw musisz rozwinąć [src], głuptasie.</span>")
 		return FALSE
 	return ..()
 
 /obj/item/clothing/suit/space/skinsuit/examine(mob/user)
 	. = ..()
 	if(rolled_up)
-		. += "<span class='notice'>It is currently rolled up.</span>"
+		. += "<span class='notice'>Jest obecnie zwinięty.</span>"
 	else
-		. += "<span class='notice'>It can be rolled up to fit in a box.</span>"
+		. += "<span class='notice'>Można go zwinąć, by zmieścił się w pudełku.</span>"
 
 
 /obj/item/clothing/suit/space/skinsuit/attack_self(mob/user)
 	if(rolled_up)
-		to_chat(user, "<span class='notice'>You unroll \the [src].</span>")
+		to_chat(user, "<span class='notice'>Rozwijasz [src].</span>")
 		icon_state = "skinsuit"
 		update_icon()
 		w_class = WEIGHT_CLASS_NORMAL
 	else
-		to_chat(user, "<span class='notice'>You roll up \the [src].</span>")
+		to_chat(user, "<span class='notice'>Zwijasz [src].</span>")
 		icon_state = "skinsuit_rolled"
 		update_icon()
 		w_class = WEIGHT_CLASS_SMALL

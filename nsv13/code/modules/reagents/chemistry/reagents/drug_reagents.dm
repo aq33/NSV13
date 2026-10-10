@@ -1,6 +1,6 @@
 /datum/reagent/drug/highjack
 	name = "Highjack"
-	description = "Creates effects akin to mind-altering substances when processed by synthetics."
+	description = "Przetworzony przez syntetyki wywołuje efekty podobne do substancji zmieniających świadomość."
 	color = "#271509"
 	taste_description = "metallic"
 	process_flags = SYNTHETIC
@@ -17,8 +17,8 @@
 	var/obj/item/bodypart/head/head = M.get_bodypart("head")
 	if(prob(30))
 		if(head)
-			to_chat(M, "<span class='userdanger'>You feel really lightheaded...</span>")
+			to_chat(M, "<span class='userdanger'>Kręci ci się w głowie...</span>")
 			head.dismember()
 		else
-			to_chat(M,"<span class='userdanger'>You can feel oil leaking from your headless neck.</span>")
+			to_chat(M,"<span class='userdanger'>Czujesz, jak z twojej bezgłowej szyi wycieka olej.</span>")
 			M.bleed(20) //effectively bleed 2 due to robot physiology bleed mod being 0.1.

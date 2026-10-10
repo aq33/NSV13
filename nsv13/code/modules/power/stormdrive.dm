@@ -189,43 +189,43 @@ Control Rods
 		return
 	if(istype(I, /obj/item/control_rod))
 		if(control_rod_installation) //check for if someone is already moving rods
-			to_chat(user, "<span class='notice'>A control rod is already being installed into [src].</span>")
+			to_chat(user, "<span class='notice'>Pręt sterujący jest już instalowany w [src].</span>")
 			return
 		if(state >= REACTOR_STATE_MELTDOWN)
-			to_chat(user, "<span class='notice'>It is definitely too late to add [src] now.")
+			to_chat(user, "<span class='notice'>Zdecydowanie jest już za późno, by dodać [src].")
 			return
 		switch(state)
 			if(REACTOR_STATE_IDLE) //while we could allow this here, may as well do it safely
-				to_chat(user, "<span class='warning'>[src] is not in maintenance mode! Enagage maintenance safety protocols before opening the lid!</span>")
+				to_chat(user, "<span class='warning'>[src] nie jest w trybie serwisowym! Włącz protokoły bezpieczeństwa serwisowego przed otwarciem pokrywy!</span>")
 				return FALSE
 			if(REACTOR_STATE_MAINTENANCE)
 				if(control_rods.len >= MAX_CONTROL_RODS)
-					to_chat(user, "<span class='notice'>[src] already has [MAX_CONTROL_RODS] mounted.</span>")
+					to_chat(user, "<span class='notice'>[src] ma już zamontowane [MAX_CONTROL_RODS] pręty.</span>")
 					return
 				else
-					to_chat(user, "<span class='notice'>You begin mounting the [I.name] to the reactor control coupling...</span>")
+					to_chat(user, "<span class='notice'>Zaczynasz montować [I.name] do sprzęgu sterującego reaktora...</span>")
 					control_rod_installation = TRUE
 					if(!do_after(user, 50, target = src))
 						control_rod_installation = FALSE
 						return
 					control_rod_installation = FALSE
 					if ( state == REACTOR_STATE_IDLE ) // Need to recheck the maintenance mode in case someone switched it while pushing in rods
-						to_chat(user, "<span class='warning'>[src] is not in maintenance mode! Enagage maintenance safety protocols before opening the lid!</span>")
+						to_chat(user, "<span class='warning'>[src] nie jest w trybie serwisowym! Włącz protokoły bezpieczeństwa serwisowego przed otwarciem pokrywy!</span>")
 						return FALSE
-					to_chat(user, "<span class='notice'>You mount the [I.name] to the reactor control coupleing. </span>")
+					to_chat(user, "<span class='notice'>Montujesz [I.name] do sprzęgu sterującego reaktora. </span>")
 					control_rods += I
 					I.forceMove(src)
 					update_icon()
 					handle_control_rod_efficiency()
 					handle_control_rod_integrity()
 			if(REACTOR_STATE_RUNNING)
-				if(alert("[src] is not in maintenance mode! Manually inserting a control rod into an active nuclear reaction would probably be fatal.",name,"Continue","Reconsider") == "Continue" && Adjacent(user))
+				if(alert("[src] nie jest w trybie serwisowym! Ręczne włożenie pręta sterującego do aktywnej reakcji jądrowej zapewne byłoby śmiertelne.",name,"Continue","Reconsider") == "Continue" && Adjacent(user))
 					if(control_rods.len >= MAX_CONTROL_RODS)
-						to_chat(user, "<span class='notice'>[src] already has [MAX_CONTROL_RODS] control rods installed.</span>")
+						to_chat(user, "<span class='notice'>[src] ma już zainstalowane [MAX_CONTROL_RODS] pręty sterujące.</span>")
 						return
 					else
-						to_chat(user, "<span class='notice'>You begin mounting the [I.name] to the reactor control coupling...</span>")
-						to_chat(user, "<span class='danger'>A blue glow envelopes your hands!</span>")
+						to_chat(user, "<span class='notice'>Zaczynasz montować [I.name] do sprzęgu sterującego reaktora...</span>")
+						to_chat(user, "<span class='danger'>Twoje dłonie otula niebieska poświata!</span>")
 						control_rod_installation = TRUE
 						empulse(src, 3, 5)
 						user.radiation += 250 * radiation_modifier
@@ -234,7 +234,7 @@ Control Rods
 						if(!do_after(user, 50, target = src))
 							control_rod_installation = FALSE
 							return
-						to_chat(user, "<span class='notice'>You mount the [I.name] to the reactor control coupleing. </span>")
+						to_chat(user, "<span class='notice'>Montujesz [I.name] do sprzęgu sterującego reaktora. </span>")
 						control_rod_installation = FALSE
 						control_rods += I
 						I.forceMove(src)
@@ -251,17 +251,17 @@ Control Rods
 		var/obj/item/multitool/M = I
 		M.buffer = src
 		playsound(src, 'sound/items/flashlight_on.ogg', 100, TRUE)
-		to_chat(user, "<span class='notice'>Buffer loaded</span>")
+		to_chat(user, "<span class='notice'>Wczytano bufor</span>")
 
 	if(I.tool_behaviour == TOOL_SHOVEL)
 		if(icon_state != "broken")
 			return
-		to_chat(user, "<span class='notice'>You start cleaning out the reactor pit...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz czyścić komorę reaktora...</span>")
 		repairing = TRUE
 		if(!do_after(user, 5 SECONDS, target=src))
 			repairing = FALSE
 			return
-		to_chat(user, "<span class='warning'>Some of the sludge spills on the floor!</span>")
+		to_chat(user, "<span class='warning'>Trochę szlamu wylewa się na podłogę!</span>")
 		var/obj/effect/landmark/nuclear_waste_spawner/weak/sludge_spawner = new (get_turf(src))
 		if (sludge_spawner)
 			sludge_spawner.fire()
@@ -273,27 +273,27 @@ Control Rods
 		var/obj/item/stack/sheet/duranium/D = I
 		if(state == REACTOR_STATE_REPAIR)
 			if(D.get_amount() < 25)
-				to_chat(user, "<span class='notice'>You need at least twenty five pieces of duranium to reline the reactor pit!</span>")
+				to_chat(user, "<span class='notice'>Do ponownego wyłożenia komory reaktora potrzebujesz przynajmniej dwudziestu pięciu kawałków duranu!</span>")
 				return
-			to_chat(user, "<span class='notice'>You start relining the reactor pit with duranium...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz wykładać komorę reaktora duranem...</span>")
 			repairing = TRUE
 			if(!do_after(user, 5 SECONDS, target=src) || !Adjacent(user))
 				repairing = FALSE
 				return
 			D.use(25)
-			to_chat(user, "<span class='notice'>The reactor pit has been relined with duranium")
+			to_chat(user, "<span class='notice'>Komora reaktora została ponownie wyłożona duranem")
 			state = REACTOR_STATE_REINFORCE
 			repairing = FALSE
 			update_icon()
 
 	if(istype(I, /obj/item/stormdrive_core))
 		if(state == REACTOR_STATE_REFIT)
-			to_chat(user, "<span class='notice'>You start installing the reactor core...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz instalować rdzeń reaktora...</span>")
 			repairing = TRUE
 			if(!do_after(user, 5 SECONDS, target=src) || !Adjacent(user))
 				repairing = FALSE
 				return
-			to_chat(user, "<span class='notice'>The reactor core has been installed.")
+			to_chat(user, "<span class='notice'>Rdzeń reaktora został zainstalowany.")
 			repairing = FALSE
 			qdel(I)
 			control_rods = list()
@@ -304,9 +304,9 @@ Control Rods
 /obj/machinery/atmospherics/components/binary/stormdrive_reactor/welder_act(mob/user, obj/item/tool)
 	. = FALSE
 	if(state == REACTOR_STATE_REINFORCE)
-		to_chat(user, "<span class='notice'>You start reinforcing the reactor shielding...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz wzmacniać osłonę reaktora...</span>")
 		if(tool.use_tool(src, user, 5 SECONDS, volume=100))
-			to_chat(user, "<span class='notice'>The reactor shielding has been reinforced.</span>")
+			to_chat(user, "<span class='notice'>Osłona reaktora została wzmocniona.</span>")
 			state = REACTOR_STATE_REFIT
 			update_icon()
 			return TRUE
@@ -363,27 +363,27 @@ Control Rods
 	switch(action)
 		if("remove_rod")
 			if(control_rod_installation)
-				to_chat(usr, "<span class='notice'>A control rod is already being removed from [src].</span>")
+				to_chat(usr, "<span class='notice'>Pręt sterujący jest już wyjmowany z [src].</span>")
 				return
 			switch(state)
 				if(REACTOR_STATE_IDLE)
-					to_chat(usr, "<span class='warning'>[src] is not in maintenance mode! Enagage maintenance safety protocols before opening the lid!</span>")
+					to_chat(usr, "<span class='warning'>[src] nie jest w trybie serwisowym! Włącz protokoły bezpieczeństwa serwisowego przed otwarciem pokrywy!</span>")
 					return FALSE
 				if(REACTOR_STATE_MAINTENANCE)
 					if(control_rods.len <= 0)
-						to_chat(usr, "<span class='notice'> [src] has no control rods mounted.</span>")
+						to_chat(usr, "<span class='notice'> [src] nie ma zamontowanych prętów sterujących.</span>")
 						return
 					else
-						to_chat(usr, "<span class='notice'>You begin removing a control rod from the [src]...</span>")
+						to_chat(usr, "<span class='notice'>Zaczynasz wyjmować pręt sterujący z [src]...</span>")
 						control_rod_installation = TRUE
 						if(!do_after(usr, 50, target = src))
 							control_rod_installation = FALSE
 							return
 						control_rod_installation = FALSE
 						if ( state == REACTOR_STATE_IDLE ) // Need to recheck the maintenance mode in case someone switched it while pulling out rods
-							to_chat(usr, "<span class='warning'>[src] is not in maintenance mode! Enagage maintenance safety protocols before opening the lid!</span>")
+							to_chat(usr, "<span class='warning'>[src] nie jest w trybie serwisowym! Włącz protokoły bezpieczeństwa serwisowego przed otwarciem pokrywy!</span>")
 							return FALSE
-						to_chat(usr, "<span class='notice'>You remove the control rod from the [src].</span>")
+						to_chat(usr, "<span class='notice'>Wyjmujesz pręt sterujący z [src].</span>")
 						var/obj/item/control_rod/cr = locate(params["target"])
 						control_rods -= cr
 						cr?.forceMove(get_turf(usr))
@@ -391,11 +391,11 @@ Control Rods
 						handle_control_rod_efficiency()
 						handle_control_rod_integrity()
 				if(REACTOR_STATE_RUNNING)
-					if(alert("[src] is not in maintenance mode! Manually removing a control rod from an active nuclear reaction would probably be fatal.",name,"Continue","Reconsider") != "Continue" || !Adjacent(usr))
+					if(alert("[src] nie jest w trybie serwisowym! Ręczne wyjęcie pręta sterującego z aktywnej reakcji jądrowej zapewne byłoby śmiertelne.",name,"Continue","Reconsider") != "Continue" || !Adjacent(usr))
 						return
 					else
 						if(control_rods.len <= 0)
-							to_chat(usr, "<span class='notice'> [src] has no control rods mounted.</span>")
+							to_chat(usr, "<span class='notice'> [src] nie ma zamontowanych prętów sterujących.</span>")
 							return
 						var/prot = 0
 						var/mob/living/carbon/human/H = usr
@@ -404,8 +404,8 @@ Control Rods
 							if(G.max_heat_protection_temperature)
 								prot = (G.max_heat_protection_temperature > heat)
 						if(prot > 0 || HAS_TRAIT(usr, TRAIT_RESISTHEAT) || HAS_TRAIT(usr, TRAIT_RESISTHEATHANDS)) //Investigate RESISTTHEATHANDS and potentially check for other solutions to this
-							to_chat(usr, "<span class='notice'>You begin removing a control rod from the [src]...</span>")
-							to_chat(usr, "<span class='danger'>A blue glow envelopes your hands!</span>")
+							to_chat(usr, "<span class='notice'>Zaczynasz wyjmować pręt sterujący z [src]...</span>")
+							to_chat(usr, "<span class='danger'>Twoje dłonie otula niebieska poświata!</span>")
 							control_rod_installation = TRUE
 							var/obj/item/bodypart/affecting = H.get_bodypart("[(usr.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
 							if(affecting && affecting.receive_damage( 0, 20 )) // partially damage the hand
@@ -417,7 +417,7 @@ Control Rods
 							if(!do_after(usr, 50, target = src))
 								control_rod_installation = FALSE
 								return
-							to_chat(usr, "<span class='notice'>You remove the control rod from the [src].</span>")
+							to_chat(usr, "<span class='notice'>Wyjmujesz pręt sterujący z [src].</span>")
 							var/obj/item/control_rod/cr = locate(params["target"])
 							control_rods -= cr
 							cr?.forceMove(get_turf(usr))
@@ -435,7 +435,7 @@ Control Rods
 						else
 							var/obj/item/bodypart/affecting = H.get_bodypart("[(usr.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
 							if(affecting && affecting.receive_damage( 0, 75 )) // 75 burn damage should disable the body part
-								to_chat(usr, "<span class='danger'><B>The control rod melts through your hand!</B></span>")
+								to_chat(usr, "<span class='danger'><B>Pręt sterujący przetapia ci dłoń!</B></span>")
 								playsound(src, 'sound/effects/phasein.ogg', 100, TRUE) //temp - find a better sound
 								if(prob(25))
 									affecting.dismember(damtype) //Goodbye arm - Investigate how to delete this severed limb
@@ -469,7 +469,7 @@ Control Rods
 
 /obj/machinery/atmospherics/components/binary/stormdrive_reactor/proc/deactivate()
 	if(state == REACTOR_STATE_RUNNING)
-		send_alert("Fission reaction terminated. Reactor now off-line.")
+		send_alert("Reakcja rozszczepienia zakończona. Reaktor wyłączony.")
 	icon_state = initial(icon_state)
 	if(state != REACTOR_STATE_IDLE) //protect our warmup
 		heat = 0
@@ -530,14 +530,14 @@ Control Rods
 
 	if(fuel_check >= start_threshold && heat >= start_threshold) //Checking equivalent of 20 moles of fuel and is hot enough
 		heat = start_threshold+10 //Avoids it getting heated up to 10000 by the PA, then turning it on, then getting insta meltdown.
-		visible_message("<span class='danger'>[src] starts to glow an ominous blue!</span>")
+		visible_message("<span class='danger'>[src] zaczyna złowieszczo świecić na niebiesko!</span>")
 		icon_state = "reactor_on"
 		state = REACTOR_STATE_RUNNING
 		reactor_stability = 100
 		set_light(5)
 		var/startup_sound = pick('nsv13/sound/effects/ship/reactor/startup.ogg', 'nsv13/sound/effects/ship/reactor/startup2.ogg')
 		playsound(loc, startup_sound, 100)
-		send_alert("Fission reaction initiated. Reactor now on-line.", override=TRUE)
+		send_alert("Rozpoczęto reakcję rozszczepienia. Reaktor włączony.", override=TRUE)
 		var/area/AR = get_area(src)
 		AR.ambient_buzz = 'nsv13/sound/ambience/engineering.ogg'
 		if(reaction_rate <= 0)
@@ -605,7 +605,7 @@ Control Rods
 		var/datum/gas_mixture/air2 = airs[2]
 		var/output_starting_pressure = air2.return_pressure()
 		if(output_starting_pressure >= max_output_pressure)
-			send_alert("Error: Dump pressure line exceeds pump pressure capacities. Process aborted.")
+			send_alert("Błąd: ciśnienie w linii zrzutu przekracza wydajność pompy. Proces przerwany.")
 			dumping_fuel = FALSE
 		else if(output_starting_pressure < max_output_pressure)
 			var/moles = air1.total_moles()
@@ -745,11 +745,11 @@ Control Rods
 	if(control_rod_integrity < 0)
 		control_rod_integrity = 0
 		if(state == REACTOR_STATE_RUNNING)
-			send_alert("DANGER: Primary control rods have failed!")
+			send_alert("NIEBEZPIECZEŃSTWO: główne pręty sterujące uległy awarii!")
 		return FALSE
 	if(control_rod_integrity <= 35 && warning_state <= WARNING_STATE_NONE) //If there isn't a more important thing to notify them about, engineers should be told that their rods are failing.
 		if(state == REACTOR_STATE_RUNNING)
-			send_alert("WARNING: Reactor control rods failing at [control_rod_integrity]% integrity, intervention required to avoid possible meltdown.")
+			send_alert("OSTRZEŻENIE: pręty sterujące reaktora zawodzą przy integralności [control_rod_integrity]%, wymagana interwencja, by uniknąć możliwego stopienia rdzenia.")
 	if(control_rod_integrity > 0)
 		return TRUE //TODO: Check control rod health
 	else
@@ -898,13 +898,13 @@ Control Rods
 							C.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5, 60)
 							C.update_damage_overlays() //do i still need this??
 
-					C.visible_message("<span class='warning'>You bonk your head on the outcasing of the [src]</span>")
+					C.visible_message("<span class='warning'>Uderzasz głową o obudowę [src]</span>")
 					playsound(src, 'sound/effects/bang.ogg', 100, TRUE) //temp - find a better sound
 					return
 			if(25 to 50) //Flesh for the Fleshdrive
 				if(C.get_bodypart(BODY_ZONE_L_LEG))
 					var/obj/item/bodypart/affecting = C.get_bodypart(BODY_ZONE_L_LEG)
-					C.visible_message("<span class='danger'><B>A blue glow envelops your leg!</B></span>")
+					C.visible_message("<span class='danger'><B>Twoją nogę otula niebieska poświata!</B></span>")
 					affecting.dismember(damtype) // can't seem to find a command for deleting the limb, rather than dropping it
 					playsound(src, 'sound/effects/phasein.ogg', 100, TRUE) //temp - find a better sound
 
@@ -914,7 +914,7 @@ Control Rods
 
 				if(C.get_bodypart(BODY_ZONE_R_LEG))
 					var/obj/item/bodypart/affecting = C.get_bodypart(BODY_ZONE_R_LEG)
-					C.visible_message("<span class='danger'><B>A blue glow envelops your leg!</B></span>")
+					C.visible_message("<span class='danger'><B>Twoją nogę otula niebieska poświata!</B></span>")
 					affecting.dismember(damtype)
 					playsound(src, 'sound/effects/phasein.ogg', 100, TRUE) //temp - find a better sound
 
@@ -923,7 +923,7 @@ Control Rods
 					return
 
 			if(-INFINITY to 25) //Souls for the Souldrive
-				C.visible_message("<span class='danger'><B>Blue particles surround your body!</B></span>")
+				C.visible_message("<span class='danger'><B>Twoje ciało otaczają niebieskie cząstki!</B></span>")
 				C.gib()
 				playsound(src, 'sound/effects/phasein.ogg', 100, TRUE) //temp - find a better sound
 
@@ -999,7 +999,7 @@ Control Rods
 	if(user.incapacitated())
 		return
 	if(prob(40))
-		audible_message("<span class='danger'>CLANG, clang!</span>")
+		audible_message("<span class='danger'>BRZDĘK, brzdęk!</span>")
 	shake_animation(3)
 	playsound(src, 'sound/effects/clang.ogg', 45, 1)
 
@@ -1166,14 +1166,14 @@ Control Rods
 /obj/machinery/atmospherics/components/binary/stormdrive_reactor/examine(mob/user)
 	. = ..()
 	if(icon_state == "broken")
-		. += "<span class='notice'>The reactor pit is full of plutonium sludge.</span>"
+		. += "<span class='notice'>Komora reaktora jest pełna szlamu plutonowego.</span>"
 	switch(state)
 		if(REACTOR_STATE_REPAIR)
-			. += "<span class='notice'>The duranium lining of the reactor pit is severly degraded.</span>"
+			. += "<span class='notice'>Duranowa wykładzina komory reaktora jest poważnie zdegradowana.</span>"
 		if(REACTOR_STATE_REINFORCE)
-			. += "<span class='notice'>The lining requires reinforcing and welding in place.</span>"
+			. += "<span class='notice'>Wykładzina wymaga wzmocnienia i przyspawania.</span>"
 		if(REACTOR_STATE_REFIT)
-			. += "<span class='notice'>It is missing a reactor core.</span>"
+			. += "<span class='notice'>Brakuje rdzenia reaktora.</span>"
 
 /obj/effect/countdown/stormdrive
 	name = "stormdrive stability"
@@ -1197,7 +1197,7 @@ Control Rods
 		qdel(cr)
 		control_rods += new /obj/item/control_rod/irradiated(src)
 	handle_control_rod_efficiency()
-	send_alert("ERROR IN MODULE FISSREAC0 AT ADDRESS 0x12DF. CONTROL RODS HAVE FAILED. IMMEDIATE INTERVENTION REQUIRED.", override=TRUE)
+	send_alert("BŁĄD W MODULE FISSREAC0 POD ADRESEM 0x12DF. AWARIA PRĘTÓW STERUJĄCYCH. WYMAGANA NATYCHMIASTOWA INTERWENCJA.", override=TRUE)
 	warning_state = WARNING_STATE_MELTDOWN
 	var/sound = 'nsv13/sound/effects/ship/reactor/meltdown.ogg'
 	addtimer(CALLBACK(src, PROC_REF(meltdown)), 18 SECONDS)
@@ -1256,7 +1256,7 @@ Control Rods
 			shake_with_inertia(M, 3, 2)
 			if(!M.mob_negates_gravity())
 				M.Knockdown(50)
-				to_chat(M, "<span class='danger'You feel a wave of energy wash over you!</span>")
+				to_chat(M, "<span class='danger'Czujesz, jak zalewa cię fala energii!</span>")
 
 	for(var/X in GLOB.landmarks_list)
 		if(istype(X, /obj/effect/landmark/nuclear_waste_spawner))
@@ -1308,18 +1308,18 @@ Control Rods
 		reactor = M.buffer
 		M.buffer = null
 		playsound(src, 'sound/items/flashlight_on.ogg', 100, TRUE)
-		to_chat(user, "<span class='notice'>Buffer transfered</span>")
+		to_chat(user, "<span class='notice'>Przesłano bufor</span>")
 
 /obj/machinery/computer/ship/reactor_control_computer/attack_hand(mob/user)
 	if(!allowed(user))
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='warning'>Access denied</span>")
+		to_chat(user, "<span class='warning'>Odmowa dostępu</span>")
 		return
 	if(!reactor)
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='warning'>Unable to detect linked reactor</span>")
+		to_chat(user, "<span class='warning'>Nie wykryto połączonego reaktora</span>")
 		return
 
 	ui_interact(user)
@@ -1329,7 +1329,7 @@ Control Rods
 	if(!reactor)
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='warning'>Unable to detect linked reactor</span>")
+		to_chat(user, "<span class='warning'>Nie wykryto połączonego reaktora</span>")
 		return
 	ui_interact(user)
 
@@ -1338,13 +1338,13 @@ Control Rods
 	if(!reactor)
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='warning'>Unable to detect linked reactor</span>")
+		to_chat(user, "<span class='warning'>Nie wykryto połączonego reaktora</span>")
 		return
 	ui_interact(user)
 
 /obj/machinery/computer/ship/reactor_control_computer/attack_ghost(mob/user)
 	if(!reactor)
-		to_chat(user, "<span class='warning'>Unable to detect linked reactor</span>")
+		to_chat(user, "<span class='warning'>Nie wykryto połączonego reaktora</span>")
 		return
 	. = ..() //parent should call ui_interact
 
@@ -1386,20 +1386,20 @@ Control Rods
 		if("rods_5")
 			reactor.control_rod_percent = 100
 			reactor.update_icon()
-			to_chat(usr, "<span class='danger'>SCRAM protocols engaged. Attempting reactor shutdown!</span>")
+			to_chat(usr, "<span class='danger'>Włączono protokoły SCRAM. Próba wyłączenia reaktora!</span>")
 		if("maintenance")
 			if(reactor.state == REACTOR_STATE_MAINTENANCE)
 				reactor.disengage_maintenance()
-				to_chat(usr, "<span class='danger'>Maintenance protocols disengaged.</span>")
+				to_chat(usr, "<span class='danger'>Wyłączono protokoły serwisowe.</span>")
 				attack_hand(usr)
 				return
 			if(reactor.state == REACTOR_STATE_IDLE)
 				reactor.engage_maintenance()
-				to_chat(usr, "<span class='danger'>Maintenance protocols engaged.</span>")
+				to_chat(usr, "<span class='danger'>Włączono protokoły serwisowe.</span>")
 				attack_hand(usr)
 				return
 			else
-				to_chat(usr, "<span class='danger'>DANGER! Maintenance protocols cannot be initiated while the reactor is active</span>")
+				to_chat(usr, "<span class='danger'>NIEBEZPIECZEŃSTWO! Nie można włączyć protokołów serwisowych, gdy reaktor jest aktywny</span>")
 		if("pipe") //change my words
 			reactor.dumping_fuel = !reactor.dumping_fuel
 
@@ -1472,7 +1472,7 @@ Control Rods
 /datum/techweb_node/stormdrive_reactor_control
 	id = "sd_rcc+cons"
 	display_name = "Seegson Storm Drive Machinery"
-	description = "Seegson's latest and greatest (within your budget range) reactor control and plasma constriction designs!"
+	description = "Najnowsze i najlepsze (w twoim budżecie) konstrukcje sterowania reaktorem i zwężania plazmy od Seegson!"
 	prereq_ids = list("adv_engi", "adv_power")
 	design_ids = list("sd_r_c_c", "mag_cons")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
@@ -1510,8 +1510,8 @@ Control Rods
 	name = "nuclear fallout"
 	desc = "Irradiated dust falls down everywhere."
 	telegraph_duration = 50
-	telegraph_message = "<span class='boldwarning'>The air suddenly becomes dusty..</span>"
-	weather_message = "<span class='userdanger'><i>You feel a wave of hot ash fall down on you.</i></span>"
+	telegraph_message = "<span class='boldwarning'>Powietrze nagle robi się zapylone..</span>"
+	weather_message = "<span class='userdanger'><i>Czujesz, jak spada na ciebie fala gorącego popiołu.</i></span>"
 	weather_overlay = "light_ash"
 	telegraph_overlay = "light_snow"
 	weather_duration_lower = 600
@@ -1524,7 +1524,7 @@ Control Rods
 	protected_areas = list(/area/maintenance, /area/ai_monitored/turret_protected/ai_upload, /area/ai_monitored/turret_protected/ai_upload_foyer,
 	/area/ai_monitored/turret_protected/ai, /area/storage/emergency/starboard, /area/storage/emergency/port, /area/shuttle)
 	target_trait = ZTRAIT_STATION
-	end_message = "<span class='notice'>The ash stops falling.</span>"
+	end_message = "<span class='notice'>Popiół przestaje padać.</span>"
 	immunity_type = "rad"
 
 /datum/weather/nuclear_fallout/weather_act(mob/living/L)
@@ -1585,7 +1585,7 @@ Control Rods
 		else
 			var/code_1 = aSignal.code - code_shift
 			var/code_2 = aSignal.code + code_shift
-			to_chat(user, "<span class='notice'>Analyzing... ERROR: Unable to dete cod//^##e0x000[mem_address] [code_1] - [code_2].</span>")
+			to_chat(user, "<span class='notice'>Analizowanie... BŁĄD: nie można wykr// ^##e0x000[mem_address] [code_1] - [code_2].</span>")
 
 /obj/effect/anomaly/stormdrive/sheer //Radiation + Plasma
 	name = "storm sheer anomaly"
@@ -1659,9 +1659,9 @@ Control Rods
 			return
 		else
 			M.adjustFireLoss(shockdamage)
-			M.visible_message("<span class='danger'>[M] was shocked by \the [name]!</span>", \
-		"<span class='userdanger'>You feel a powerful shock coursing through your body!</span>", \
-		"<span class='italics'>You hear a heavy electrical crack.</span>")
+			M.visible_message("<span class='danger'>[name] razi prądem [M]!</span>", \
+		"<span class='userdanger'>Czujesz, jak przez twoje ciało przepływa potężny wstrząs!</span>", \
+		"<span class='italics'>Słyszysz głośny trzask elektryczny.</span>")
 
 /obj/effect/anomaly/stormdrive/surge/detonate() //because tesla_zap is so awful
 	for(var/mob/living/M in orange(5, src))
@@ -1717,9 +1717,9 @@ Control Rods
 		A.Dizzy(10)
 		A.Jitter(5)
 		A.adjust_disgust(20)
-		A.visible_message("<span class='danger'>The space around [A] begins to shimmer!</span>", \
-		"<span class='userdanger'>Your head swims as space appears to bend around you!</span>",
-		"<span class='italics'>You feel space shift slightly in your vicinity.</span>")
+		A.visible_message("<span class='danger'>Przestrzeń wokół [A] zaczyna migotać!</span>", \
+		"<span class='userdanger'>Kręci ci się w głowie, gdy przestrzeń wokół ciebie się wygina!</span>",
+		"<span class='italics'>Czujesz, jak przestrzeń w twoim otoczeniu lekko się przesuwa.</span>")
 		addtimer(CALLBACK(src, PROC_REF(equalise), A), 5 SECONDS)
 
 /obj/effect/anomaly/stormdrive/squall/proc/equalise(mob/living/A)
@@ -1794,10 +1794,10 @@ Control Rods
 
 /datum/computer_file/program/stormdrive_monitor
 	filename = "stormdrivemonitor"
-	filedesc = "Storm Drive Monitoring"
+	filedesc = "Monitoring napędu burzowego"
 	ui_header = "smmon_0.gif"
 	program_icon_state = "smmon_0"
-	extended_desc = "This program connects to specially calibrated sensors to provide information on the status of the storm drive."
+	extended_desc = "Ten program łączy się ze specjalnie skalibrowanymi czujnikami, by podawać informacje o stanie napędu burzowego."
 	requires_ntnet = TRUE
 	transfer_access = ACCESS_CONSTRUCTION
 	category = PROGRAM_CATEGORY_ENGI
@@ -1883,7 +1883,7 @@ Control Rods
 				if(!shares_overmap(usr, R))
 					continue
 				choices += R
-			reactor = input(usr, "What stormdrive reactor do you wish to monitor?", "[src]", null) as null|anything in choices
+			reactor = input(usr, "Który reaktor napędu burzowego chcesz monitorować?", "[src]", null) as null|anything in choices
 			return TRUE
 
 #undef LOW_ROR

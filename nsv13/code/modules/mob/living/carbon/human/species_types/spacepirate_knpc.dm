@@ -2,7 +2,7 @@
 	faction = list("Pirate")
 	taunts = list(
 		"ARRR!!!!",
-		"YAR HAR!!!",
+		"JO-HO-HO!!!",
 		"CIEPŁA KREW POLEJE SIĘ STRUGAMI!",
 		"WYSKAKUJ Z AQUILOSÓW!!"
 	)

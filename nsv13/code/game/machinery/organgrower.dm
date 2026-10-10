@@ -111,13 +111,13 @@
 
 /obj/machinery/limbgrower/attackby(obj/item/user_item, mob/user, params)
 	if (busy)
-		to_chat(user, "<span class=\"alert\">The Limb Grower is busy. Please wait for completion of previous operation.</span>")
+		to_chat(user, "<span class=\"alert\">Hodowla kończyn jest zajęta. Zaczekaj na zakończenie poprzedniej operacji.</span>")
 		return
 
 	if(istype(user_item, /obj/item/disk/design_disk/limbs))
-		user.visible_message("<span class='notice'>[user] begins to load \the [user_item] in \the [src]...</span>",
-			"<span class='notice'>You begin to load designs from \the [user_item]...</span>",
-			"<span class='hear'>You hear the clatter of a floppy drive.</span>")
+		user.visible_message("<span class='notice'>[user] zaczyna wczytywać [user_item] do [src]...</span>",
+			"<span class='notice'>Zaczynasz wczytywać wzory z [user_item]...</span>",
+			"<span class='hear'>Słyszysz terkot stacji dyskietek.</span>")
 		busy = TRUE
 		var/obj/item/disk/design_disk/limbs/limb_design_disk = user_item
 		if(do_after(user, 2 SECONDS, target = src))
@@ -142,7 +142,7 @@
 	if(.)
 		return
 	if (busy)
-		to_chat(usr, "<span class='danger'>The limb grower is busy. Please wait for completion of previous operation.</span>")
+		to_chat(usr, "<span class='danger'>Hodowla kończyn jest zajęta. Zaczekaj na zakończenie poprzedniej operacji.</span>")
 		return
 
 	switch(action)
@@ -163,7 +163,7 @@
 			for(var/reagent_id in consumed_reagents_list)
 				consumed_reagents_list[reagent_id] *= production_coefficient
 				if(!reagents.has_reagent(reagent_id, consumed_reagents_list[reagent_id]))
-					audible_message("<span class='notice'>The [src] buzzes.</span>")
+					audible_message("<span class='notice'>[src] brzęczy.</span>")
 					playsound(src, 'sound/machines/buzz-sigh.ogg', 50, FALSE)
 					return
 
@@ -192,7 +192,7 @@
 /obj/machinery/limbgrower/proc/build_item(list/modified_consumed_reagents_list)
 	for(var/reagent_id in modified_consumed_reagents_list)
 		if(!reagents.has_reagent(reagent_id, modified_consumed_reagents_list[reagent_id]))
-			audible_message("<span class='notice'>The [src] buzzes.</span>")
+			audible_message("<span class='notice'>[src] brzęczy.</span>")
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 50, FALSE)
 			break
 
@@ -254,7 +254,7 @@
 /obj/machinery/limbgrower/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Storing up to <b>[reagents.maximum_volume]u</b> of reagents.<br>Reagent consumption rate at <b>[production_coefficient * 100]%</b>.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: pojemność: do <b>[reagents.maximum_volume]j.</b> odczynników.<br>Zużycie odczynników: <b>[production_coefficient * 100]%</b>.</span>"
 
 /*
  * Checks our reagent list to see if a design can be built.
@@ -277,6 +277,6 @@
 		var/datum/design/found_design = SSresearch.techweb_design_by_id(design_id)
 		if((found_design.build_type & LIMBGROWER) && ("emagged" in found_design.category))
 			stored_research.add_design(found_design)
-	to_chat(user, "<span class='warning'>A warning flashes onto the screen, stating that safety overrides have been deactivated!</span>")
+	to_chat(user, "<span class='warning'>Na ekranie miga ostrzeżenie, że wyłączono zabezpieczenia!</span>")
 	obj_flags |= EMAGGED
 	update_static_data(user)

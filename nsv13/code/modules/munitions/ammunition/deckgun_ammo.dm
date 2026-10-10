@@ -162,7 +162,7 @@
 		if(16 to 18)
 			prefix = "peckish"
 		if(19 to 21)
-			prefix = "well-fed"
+			prefix = "najedzony"
 			icon_state = "hungrypowder_shake"
 		if(22 to 24)
 			prefix = "stuffed"
@@ -181,12 +181,12 @@
 	if(!istype(I, /obj/item/food) && !istype(I, /obj/item/food))
 		return ..()
 	if(!istype(user, /mob/living/carbon/human))
-		to_chat(user, "<span class='info'>\The [src] is too lonely to eat right now.</span>")
+		to_chat(user, "<span class='info'>[src] jest zbyt samotny, by teraz jeść.</span>")
 		return
 	if(!do_after(user, 7, TRUE, src))
 		return
 	if(is_evolving || devouring)
-		to_chat(user, "<span class='info'>\The [src] can't eat right now.</span>")
+		to_chat(user, "<span class='info'>[src] nie może teraz jeść.</span>")
 		return
 	var/obj/item/F = I
 	var/list/food_reagents = F.reagents.reagent_list.Copy()
@@ -194,7 +194,7 @@
 	if(plasma)
 		// Too spicy for Mr Bag's taste
 		playsound(loc, 'sound/items/eatfood.ogg', 100, 1)
-		visible_message("<span class='danger'>\The [src] begins to expand!</span>")
+		visible_message("<span class='danger'>[src] zaczyna się rozszerzać!</span>")
 		var/delay = max(50 - plasma.volume, 5)
 		var/datum/component/volatile/VC = GetComponent(/datum/component/volatile)
 		addtimer(CALLBACK(VC, TYPE_PROC_REF(/datum/component/volatile/, explode)), delay)
@@ -205,9 +205,9 @@
 	for(var/datum/reagent/consumable/nutriment/N in food_reagents)
 		nutri += N.volume
 	if(!nutri)
-		to_chat(user, "<span class='info'>\The [F] is not nutritious enough!</span>")
+		to_chat(user, "<span class='info'>[F] nie jest wystarczająco pożywny!</span>")
 		return
-	visible_message("<span class='notice'>\The [src] takes a huge bite out of [F]!</span>")
+	visible_message("<span class='notice'>[src] odgryza ogromny kęs [F]!</span>")
 	energy += nutri * 2
 	qdel(F)
 	if(energy >= next_evolve)
@@ -233,7 +233,7 @@
 		if(feeder && prob(devour_chance))
 			devour_chance = max(devour_chance - 10, 1)
 			playsound(feeder, 'sound/effects/tendril_destroyed.ogg', 100, 0)
-			visible_message("<span class='danger'>\The [src] twitches violently as it begins to rapidly roll towards [feeder]!</span>")
+			visible_message("<span class='danger'>[src] gwałtownie drga i zaczyna szybko toczyć się w stronę [feeder]!</span>")
 			sleep(20)
 			var/turf/T = get_turf(src)
 			if(T != loc)
@@ -264,7 +264,7 @@
 	var/datum/component/volatile/VC = GetComponent(/datum/component/volatile)
 	VC.volatility = volatility
 
-	visible_message("<span class='warning'>\The [src] gurgles happily.</span>")
+	visible_message("<span class='warning'>[src] radośnie bulgocze.</span>")
 	new /obj/effect/temp_visual/heart(loc) // :)
 	is_evolving = FALSE
 
@@ -280,7 +280,7 @@
 /obj/item/powder_bag/hungry/proc/devour(mob/living/target, consumeTime = 26, checkEvolve = TRUE, growSize = TRUE)
 	devouring = TRUE
 	forceMove(get_turf(target))
-	visible_message("<span class='danger'>\The [src] wraps around and begins to devour [target]. Cute!</span>")
+	visible_message("<span class='danger'>[src] owija się wokół [target] i zaczyna go pożerać. Uroczo!</span>")
 	target.Stun(100 + consumeTime, TRUE, TRUE)
 	target.notransform = TRUE
 	target.anchored = TRUE
@@ -293,7 +293,7 @@
 	sleep(segsleep)
 	energy = max((next_evolve - energy) * 2, energy)
 	if(isplasmaman(target))
-		visible_message("<span class='danger'>\The [src] doesn't look very well..</span>")
+		visible_message("<span class='danger'>[src] nie wygląda najlepiej..</span>")
 		var/datum/component/volatile/VC = GetComponent(/datum/component/volatile)
 		addtimer(CALLBACK(VC, TYPE_PROC_REF(/datum/component/volatile/, explode)), 20)
 		Shake(10, 10, 20)
@@ -344,4 +344,4 @@
 /obj/item/powder_bag/hungry/examine(mob/user)
 	. = ..()
 	if(enraged)
-		. += "<span class='notice'>It appears to be <font color=red><i><b>very</b></i></font> agitated.</span>"
+		. += "<span class='notice'>Wygląda na <font color=red><i><b>bardzo</b></i></font> wzburzonego.</span>"

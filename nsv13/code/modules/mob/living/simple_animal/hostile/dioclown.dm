@@ -45,7 +45,7 @@
 	if(isspaceturf(get_turf(src)))
 		emote("scream")
 		playsound(src.loc, 'sound/hallucinations/far_noise.ogg', 100, TRUE)
-		visible_message("<span class='warning'>[src] turns to dust in a flash!</span>")
+		visible_message("<span class='warning'>[src] w mgnieniu oka obraca się w proch!</span>")
 		dust()
 
 /mob/living/simple_animal/hostile/dio_clown/attack_hand(mob/living/carbon/human/M)

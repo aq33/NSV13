@@ -224,7 +224,7 @@
 	key = "F"
 	name = "special_weapon_action"
 	full name = "Special Weapon Action"
-	description = "Executes a selected weapon's special action, if one exists."
+	description = "Wykonuje akcję specjalną wybranej broni, jeśli istnieje."
 	keybind_signal = COMSIG_KB_OVERMAP_SPECIAL_WEAPON_ACTION_DOWN
 
 /datum/keybinding/overmap/special_weapon_action/down(client/user)
@@ -244,7 +244,7 @@
 		return
 	. = TRUE
 	if(!current_weapon.has_special_action)
-		to_chat(user, "<span class='warning'>Current weapon has no special action!</span>")
+		to_chat(user, "<span class='warning'>Obecna broń nie ma akcji specjalnej!</span>")
 		return
 	current_weapon.special_action(M)
 

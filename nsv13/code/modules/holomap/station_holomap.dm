@@ -104,9 +104,9 @@
 	use_power = ACTIVE_POWER_USE
 
 	if(bogus)
-		to_chat(user, "<span class='warning'>The holomap failed to initialize. This area of space cannot be mapped.</span>")
+		to_chat(user, "<span class='warning'>Holomapa nie zdołała się zainicjalizować. Tego obszaru kosmosu nie da się zmapować.</span>")
 	else
-		to_chat(user, "<span class='warning'>A hologram of the station appears before your eyes.</span>")
+		to_chat(user, "<span class='warning'>Przed twoimi oczami pojawia się hologram stacji.</span>")
 
 	return TRUE
 
@@ -201,10 +201,10 @@
 
 /obj/machinery/station_map/multitool_act(mob/living/user, obj/item/tool)
 	if(!panel_open)
-		to_chat(user, "<span class='warning'>You need to open the panel to change the [src]'[p_s()] settings!</span")
+		to_chat(user, "<span class='warning'>Aby zmienić ustawienia [src], musisz otworzyć panel!</span")
 		return FALSE
 	if(!SSholomaps.valid_map_indexes.len > 1)
-		to_chat(user, "<span class='warning'>There are no other maps available for [src]!</span>")
+		to_chat(user, "<span class='warning'>Dla [src] nie są dostępne inne mapy!</span>")
 		return FALSE
 
 	tool.play_tool_sound(user, 50)
@@ -214,7 +214,7 @@
 	else
 		current_z_level = SSholomaps.valid_map_indexes[current_index + 1]
 
-	to_chat(user, "<span class='info'>You set the [src]'[p_s()] database index to [current_z_level].</span>")
+	to_chat(user, "<span class='info'>Ustawiasz indeks bazy danych [src] na [current_z_level].</span>")
 	return TRUE
 
 /obj/machinery/station_map/crowbar_act(mob/living/user, obj/item/tool)

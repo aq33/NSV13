@@ -24,15 +24,15 @@
 /obj/item/reagent_containers/hypospray/autoinjector/examine(mob/user)
 	. = ..()
 	if(cap_lost)
-		. += "<span class='notice'>The cap seems to be missing.</span>"
+		. += "<span class='notice'>Wygląda na to, że brakuje zatyczki.</span>"
 	else if(cap_on)
-		. += "<span class='notice'>The cap is firmly on to prevent accidental sticking. Alt-click to remove the cap.</span>"
+		. += "<span class='notice'>Zatyczka jest mocno założona, by zapobiec przypadkowemu ukłuciu. Alt-kliknij, by ją zdjąć.</span>"
 	else
-		. += "<span class='notice'>The cap has been taken off. Alt-click to put a cap on.</span>"
+		. += "<span class='notice'>Zatyczka została zdjęta. Alt-kliknij, by ją założyć.</span>"
 
 /obj/item/reagent_containers/hypospray/autoinjector/AltClick(mob/user)
 	if(cap_lost)
-		to_chat(user, "<span class='warning'>The cap seems to be missing! Where did it go?</span>")
+		to_chat(user, "<span class='warning'>Wygląda na to, że brakuje zatyczki! Gdzie się podziała?</span>")
 		return
 	var/fumbled = HAS_TRAIT(user, TRAIT_CLUMSY) && prob(5)
 	if(cap_on || fumbled)
@@ -40,32 +40,32 @@
 		cut_overlay(cap_overlay, TRUE)
 		animate(src, transform = null, time = 2, loop = 0)
 		if(fumbled)
-			to_chat(user, "<span class='warning'>You fumble with the [src]'s cap! The cap falls onto the ground and simply vanishes. Where the hell did it go?</span>")
+			to_chat(user, "<span class='warning'>Majstrujesz przy zatyczce [src]! Zatyczka spada na ziemię i po prostu znika. Gdzie ona się, do diabła, podziała?</span>")
 			cap_lost = TRUE
 		else
-			to_chat(user, "<span class='notice'>You remove the cap from the [src].</span>")
-			visible_message("<span class='warning'> [user] took the cap off the [src]!</span>")
+			to_chat(user, "<span class='notice'>Zdejmujesz zatyczkę z [src].</span>")
+			visible_message("<span class='warning'> [user] zdejmuje zatyczkę z [src]!</span>")
 	else
 		cap_on = TRUE
 		add_overlay(cap_overlay, TRUE)
-		to_chat(user, "<span class='notice'>You put the cap on the [src].</span>")
+		to_chat(user, "<span class='notice'>Zakładasz zatyczkę na [src].</span>")
 	update_icon()
 
 /obj/item/reagent_containers/hypospray/autoinjector/attack(mob/M, mob/user, obj/target)
 	if(cap_on && reagents.total_volume && istype(M))
-		to_chat(user, "<span class='warning'>You must remove the cap before you can do that!</span>")
+		to_chat(user, "<span class='warning'>Zanim to zrobisz, musisz zdjąć zatyczkę!</span>")
 		return
 	. = ..()
 
 /obj/item/reagent_containers/hypospray/autoinjector/afterattack(obj/target, mob/user, proximity)
 	if(cap_on && (target.is_refillable() || target.is_drainable() || (reagents.total_volume && user.a_intent == INTENT_HARM)))
-		to_chat(user, "<span class='warning'>You must remove the cap before you can do that!</span>")
+		to_chat(user, "<span class='warning'>Zanim to zrobisz, musisz zdjąć zatyczkę!</span>")
 		return
 
 	else if(istype(target, /obj/item/reagent_containers/hypospray/autoinjector))
 		var/obj/item/reagent_containers/hypospray/autoinjector/WB = target
 		if(WB.cap_on)
-			to_chat(user, "<span class='warning'>[WB] has a cap firmly stuck on!</span>")
+			to_chat(user, "<span class='warning'>[WB] ma mocno założoną zatyczkę!</span>")
 	. = ..()
 
 //Self Stabbing
@@ -78,7 +78,7 @@
 			if(affecting)
 				if(affecting.receive_damage(1))
 					C.update_damage_overlays()
-			to_chat(user, "<span class='warning'>You pricked yourself with the [src]!")
+			to_chat(user, "<span class='warning'>Kłujesz się [src]!")
 			attack(user, user)
 		else
 			return

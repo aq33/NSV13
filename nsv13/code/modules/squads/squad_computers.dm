@@ -53,7 +53,7 @@
 		if("message")
 			if(!S)
 				return FALSE
-			var/orders = stripped_input(usr, message="Send a squad-wide message to [S].", max_length=MAX_BROADCAST_LEN)
+			var/orders = stripped_input(usr, message="Wyślij wiadomość do całej drużyny [S].", max_length=MAX_BROADCAST_LEN)
 			if(!orders || length(orders) <= 0)
 				return
 			log_say("[S]: [usr] transmitted: [orders]")
@@ -61,7 +61,7 @@
 		if("primary_objective")
 			if(!S)
 				return FALSE
-			var/orders = input(usr, "Choose squad role:", "Squad Setup") as null|anything in SQUAD_TYPES
+			var/orders = input(usr, "Wybierz rolę w drużynie:", "Ustawienia drużyny") as null|anything in SQUAD_TYPES
 			if(!orders || length(orders) <= 0)
 				return
 			log_say("[S]: [usr] set primary objective: [orders]")
@@ -72,13 +72,13 @@
 		if("secondary_objective")
 			if(!S)
 				return FALSE
-			var/orders = stripped_input(usr, message="Set secondary objective:", max_length=MAX_BROADCAST_LEN, default=S.secondary_objective)
+			var/orders = stripped_input(usr, message="Ustaw cel dodatkowy:", max_length=MAX_BROADCAST_LEN, default=S.secondary_objective)
 			if(!orders || length(orders) <= 0)
 				return
 			log_say("[S]: [usr] set secondary objective: [orders]")
 			S.secondary_objective = orders
 			for(var/mob/living/L in S.members)
-				to_chat(L, "<span class='sciradio'>Secondary squad objective: [S.secondary_objective]</span>")
+				to_chat(L, "<span class='sciradio'>Dodatkowy cel drużyny: [S.secondary_objective]</span>")
 			ui_update()
 		if("toggle_access")
 			if(!S)
@@ -100,7 +100,7 @@
 		if("transfer")
 			if(!M)
 				return FALSE
-			var/datum/squad/newSquad = input(usr, "Transfer [M]:", "Squad Setup") as null|anything in GLOB.squad_manager.squads
+			var/datum/squad/newSquad = input(usr, "Transfer [M]:", "Ustawienia drużyny") as null|anything in GLOB.squad_manager.squads
 			if(newSquad)
 				log_game("[newSquad]: [usr] reassigned [M] to [newSquad]")
 				if(M.squad)
@@ -130,10 +130,10 @@
 
 /datum/computer_file/program/squad_manager
 	filename = "squadmanager"
-	filedesc = "Squad Management"
+	filedesc = "Zarządzanie drużynami"
 	ui_header = "ntnrc_idle.gif"
 	program_icon_state = "ntnrc_idle"
-	extended_desc = "A program to allow you to manage the ship's squads while on the go!"
+	extended_desc = "Program pozwalający zarządzać drużynami okrętu w biegu!"
 	requires_ntnet = TRUE
 	required_access = list(ACCESS_HEADS)
 	transfer_access = list(ACCESS_HEADS)
@@ -182,7 +182,7 @@
 		if("message")
 			if(!S)
 				return FALSE
-			var/orders = stripped_input(usr, message="Send a squad-wide message to [S].", max_length=MAX_BROADCAST_LEN)
+			var/orders = stripped_input(usr, message="Wyślij wiadomość do całej drużyny [S].", max_length=MAX_BROADCAST_LEN)
 			if(!orders || length(orders) <= 0)
 				return
 			log_say("[S]: [usr] transmitted: [orders]")
@@ -190,7 +190,7 @@
 		if("primary_objective")
 			if(!S)
 				return FALSE
-			var/orders = input(usr, "Choose squad role:", "Squad Setup") as null|anything in SQUAD_TYPES
+			var/orders = input(usr, "Wybierz rolę w drużynie:", "Ustawienia drużyny") as null|anything in SQUAD_TYPES
 			if(!orders || length(orders) <= 0)
 				return
 			log_say("[S]: [usr] set primary objective: [orders]")
@@ -201,13 +201,13 @@
 		if("secondary_objective")
 			if(!S)
 				return FALSE
-			var/orders = stripped_input(usr, message="Set secondary objective:", max_length=MAX_BROADCAST_LEN, default=S.secondary_objective)
+			var/orders = stripped_input(usr, message="Ustaw cel dodatkowy:", max_length=MAX_BROADCAST_LEN, default=S.secondary_objective)
 			if(!orders || length(orders) <= 0)
 				return
 			log_say("[S]: [usr] set secondary objective: [orders]")
 			S.secondary_objective = orders
 			for(var/mob/living/L in S.members)
-				to_chat(L, "<span class='sciradio'>Secondary squad objective: [S.secondary_objective]</span>")
+				to_chat(L, "<span class='sciradio'>Dodatkowy cel drużyny: [S.secondary_objective]</span>")
 			ui_update()
 		if("toggle_access")
 			if(!S)
@@ -229,7 +229,7 @@
 		if("transfer")
 			if(!M)
 				return FALSE
-			var/datum/squad/newSquad = input(usr, "Transfer [M]:", "Squad Setup") as null|anything in GLOB.squad_manager.squads
+			var/datum/squad/newSquad = input(usr, "Transfer [M]:", "Ustawienia drużyny") as null|anything in GLOB.squad_manager.squads
 			if(newSquad)
 				log_game("[newSquad]: [usr] reassigned [M] to [newSquad]")
 				if(M.squad)

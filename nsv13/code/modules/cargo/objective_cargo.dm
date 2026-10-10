@@ -19,7 +19,7 @@
 
 /obj/structure/closet/crate/large/freight_objective/attackby(obj/item/W, mob/user, params)
 	if(W.tool_behaviour == TOOL_CROWBAR)
-		var/choice = input("WARNING: The client requests that the cargo must not be tampered with. Opening this crate may mark the objective as failed and cancel the transfer. Are you sure you wish to open it?", "WARNING!", "No") in list("Yes", "No")
+		var/choice = input("OSTRZEŻENIE: klient prosi, by nie naruszać ładunku. Otwarcie tej skrzyni może oznaczyć cel jako nieudany i anulować transfer. Na pewno chcesz ją otworzyć?", "WARNING!", "No") in list("Yes", "No")
 		if(choice != "Yes")
 			return
 		if(get_dist(user, src) > 1) //Check they are still in range
@@ -42,7 +42,7 @@
 /obj/structure/closet/crate/large/freight_objective/proc/poll_for_ghost_sentience()
 	for ( var/mob/living/simple_animal/M in contents )
 		if ( rand( 1, 20 ) == 20 ) // Random sentient mob event!
-			var/list/candidates = pollCandidatesForMob("Do you want to play as [M]?", ROLE_SENTIENCE, null, ROLE_SENTIENCE, 50, M)
+			var/list/candidates = pollCandidatesForMob("Chcesz zagrać jako [M]?", ROLE_SENTIENCE, null, ROLE_SENTIENCE, 50, M)
 			M.AIStatus = AI_ON // Keep the mob asleep unless the poll receives no candidates
 			if(LAZYLEN(candidates))
 				var/mob/dead/observer/C = pick(candidates)
@@ -55,17 +55,17 @@
 /obj/structure/closet/crate/large/freight_objective/examine( mob/user )
 	. = ..()
 	var/text = "<span class='warning'>"
-	text += "This item is tagged as cargo. "
+	text += "Ten przedmiot jest oznaczony jako ładunek. "
 	if ( freight_type )
-		text += "It contains [freight_type.get_brief_segment()]"
+		text += "Zawiera [freight_type.get_brief_segment()]"
 		if ( overmap_objective?.destination )
 			var/obj/structure/overmap/S = overmap_objective.destination
-			text += ", and needs to be delivered to [S] in system [S.current_system]. "
+			text += "i musi zostać dostarczony do [S] w systemie [S.current_system]. "
 		else
 			text += ". "
 	else if ( overmap_objective?.destination )
 		var/obj/structure/overmap/S = overmap_objective.destination
-		text += "It needs to be delivered to [S] in system [S.current_system]. "
+		text += "Musi zostać dostarczony do [S] w systemie [S.current_system]. "
 
 	// text += "<B>Opening this crate will reduce payout!</B>" // No it doesn't
 	text += "</span>\n"

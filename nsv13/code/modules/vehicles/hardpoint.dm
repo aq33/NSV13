@@ -38,11 +38,11 @@
 
 /obj/item/vehicle_hardpoint/proc/hardpoint_interact(mob/user)
 	if(max_capacity)
-		to_chat(user, "<span class='notice'>[src] is currently holding [stored_items.len] / [max_capacity] items.</span>")
+		to_chat(user, "<span class='notice'>[src] trzyma obecnie przedmiotów: [stored_items.len] / [max_capacity].</span>")
 		var/atom/movable/selection = null
-		selection = input(user, "Remove Items loaded in [src]?", "[name]", selection) as null|anything in stored_items
+		selection = input(user, "Wyjąć przedmioty załadowane do [src]?", "[name]", selection) as null|anything in stored_items
 		if(selection)
-			to_chat(user, "<span class='notice'>You dump [selection] out of [src]</span>")
+			to_chat(user, "<span class='notice'>Wysypujesz [selection] z [src]</span>")
 			selection.forceMove(get_turf(owner))
 			stored_items -= selection
 		return TRUE
@@ -65,10 +65,10 @@
 		if(stored_items.len < max_capacity)
 			LAZYADD(stored_items, target)
 			target.forceMove(src)
-			to_chat(user, "<span class='notice'>You load [target] into [src]...</span>")
+			to_chat(user, "<span class='notice'>Ładujesz [target] do [src]...</span>")
 			update_icon()
 			return TRUE
-	to_chat(user, "<span class='notice'>Nothing happens...</span>")
+	to_chat(user, "<span class='notice'>Nic się nie dzieje...</span>")
 
 /obj/item/vehicle_hardpoint/update_icon()
 	owner.update_icon()
@@ -112,7 +112,7 @@
 			LAZYADD(interceptors, HP)
 	var/obj/item/vehicle_hardpoint/HP = null
 	if(interceptors.len > 1)
-		HP = input(user, "Which hardpoint do you want to load [target] into?", "[name]", HP) as null|anything in interceptors
+		HP = input(user, "Do którego punktu mocowania chcesz załadować [target]?", "[name]", HP) as null|anything in interceptors
 	else
 		HP = (interceptors.len) ? interceptors[1] : null//No need to ask them if there's only one hardpoint that accepts this.
 	if(HP)
@@ -124,12 +124,12 @@
 
 /obj/vehicle/sealed/car/realistic/proc/apply_hardpoint(obj/item/vehicle_hardpoint/HP, mob/user)
 	if(get_hardpoint_by_type(HP.type)) //Let's make sure to account for subtypes, too.
-		to_chat(user, "<span class='warning'>[src]'s slot for [HP] is full!</span>")
+		to_chat(user, "<span class='warning'>Gniazdo [src] na [HP] jest pełne!</span>")
 		return FALSE
 	if(!LAZYFIND(valid_hardpoints, HP.type))
-		to_chat(user, "<span class='warning'>You can't seem to find anywhere to put [HP].</span>")
+		to_chat(user, "<span class='warning'>Nie możesz znaleźć miejsca na [HP].</span>")
 		return FALSE
-	to_chat(user, "<span class='warning'>You install [HP].</span>")
+	to_chat(user, "<span class='warning'>Instalujesz [HP].</span>")
 	hardpoints[HP.type] = HP
 	HP.on_insertion(src)
 	update_icon()
@@ -140,7 +140,7 @@
 	var/obj/item/vehicle_hardpoint/HP = get_hardpoint_by_name(target_name)
 	if(!HP || !hardpoints[HP.type])
 		return FALSE
-	to_chat(user, "<span class='warning'>You uninstall [HP].</span>")
+	to_chat(user, "<span class='warning'>Odinstalowujesz [HP].</span>")
 	hardpoints[HP.type] = null
 	HP.on_removal(src)
 	update_icon()
@@ -220,7 +220,7 @@
 		return FALSE
 	var/list/drivers = return_drivers()
 	if(!LAZYFIND(drivers, ui.user))
-		to_chat(ui.user, "<span class='warning'>You can't reach the controls from back here...</span>")
+		to_chat(ui.user, "<span class='warning'>Stąd z tyłu nie sięgasz do sterów...</span>")
 		return
 	var/target_name = params["target"]
 	switch(action)
@@ -333,12 +333,12 @@
 		if(stored_items.len < max_capacity)
 			LAZYADD(stored_items, target)
 			target.forceMove(src)
-			to_chat(user, "<span class='notice'>You load [target] into [src]...</span>")
+			to_chat(user, "<span class='notice'>Ładujesz [target] do [src]...</span>")
 			target.SetStasis(TRUE)
 			target.ExtinguishMob()
 			update_icon()
 			return TRUE
-	to_chat(user, "<span class='notice'>Nothing happens...</span>")
+	to_chat(user, "<span class='notice'>Nic się nie dzieje...</span>")
 	return
 
 /obj/item/vehicle_hardpoint/cryo_stasis/Exited(atom/movable/AM, atom/newloc)

@@ -35,12 +35,12 @@
 		return
 	add_fingerprint(user)
 	anchored = !anchored
-	to_chat(user, "<span class='notice'>You toggle the brakes on [src], [anchored ? "fixing it in place" : "allowing it to move freely"].</span>")
+	to_chat(user, "<span class='notice'>[anchored ? "Zaciągasz" : "Zwalniasz"] hamulce [src], [anchored ? "unieruchamiając go" : "pozwalając mu swobodnie się poruszać"].</span>")
 
 /obj/structure/munitions_trolley/examine(mob/user)
 	. = ..()
 	if(anchored)
-		. += "<span class='notice'>\The [src]'s brakes are enabled!</span>"
+		. += "<span class='notice'>Hamulce [src] są zaciągnięte!</span>"
 
 /obj/structure/munitions_trolley/Bumped(atom/movable/AM)
 	. = ..()
@@ -57,13 +57,13 @@
 	if(!allowed[A.type])
 		return FALSE
 	if(loading)
-		to_chat(user, "<span class='notice'>Someone is already loading something onto [src]!</span>")
+		to_chat(user, "<span class='notice'>Ktoś już coś ładuje na [src]!</span>")
 		return FALSE
-	to_chat(user, "<span class='notice'>You start to load [A] onto [src]...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz ładować [A] na [src]...</span>")
 	loading = TRUE
 	if(do_after(user,20, target = src))
 		load_trolley(A, user)
-		to_chat(user, "<span class='notice'>You load [A] onto [src].</span>")
+		to_chat(user, "<span class='notice'>Ładujesz [A] na [src].</span>")
 	loading = FALSE
 	return TRUE
 
@@ -78,13 +78,13 @@
 	if(!allowed[A.type])
 		return FALSE
 	if(loading)
-		to_chat(user, "<span class='notice'>Someone is already loading something onto [src]!</span>")
+		to_chat(user, "<span class='notice'>Ktoś już coś ładuje na [src]!</span>")
 		return FALSE
-	to_chat(user, "<span class='notice'>You start to load [A] onto [src]...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz ładować [A] na [src]...</span>")
 	loading = TRUE
 	if(do_after(user,20, target = src))
 		load_trolley(A, user)
-		to_chat(user, "<span class='notice'>You load [A] onto [src].</span>")
+		to_chat(user, "<span class='notice'>Ładujesz [A] na [src].</span>")
 	loading = FALSE
 	return
 
@@ -95,7 +95,7 @@
 			return FALSE
 	if(amount >= max_capacity)
 		if(user)
-			to_chat(user, "<span class='warning'>\The [src] is fully loaded!</span>")
+			to_chat(user, "<span class='warning'>[src] jest w pełni załadowany!</span>")
 		return FALSE
 	if(allowed[A.type])
 		playsound(src, 'nsv13/sound/effects/ship/mac_load.ogg', 100, 1)
@@ -149,7 +149,7 @@
 	if(A.loc == src)
 		A.forceMove(get_turf(src))
 		if(usr)
-			to_chat(usr, "<span class='notice'>You unload [A] from [src].</span>")
+			to_chat(usr, "<span class='notice'>Zdejmujesz [A] z [src].</span>")
 		playsound(src, 'nsv13/sound/effects/ship/mac_load.ogg', 100, 1)
 	A.pixel_y = initial(A.pixel_y) //Remove our offset
 	A.layer = initial(A.layer)

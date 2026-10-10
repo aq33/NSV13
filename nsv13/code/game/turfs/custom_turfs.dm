@@ -48,30 +48,30 @@
 			if(state == GIRDER_REINF)
 				if(S.get_amount() < 1)
 					return FALSE
-				to_chat(user, "<span class='notice'>You start finalizing the duranium wall...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz wykańczać duranową ścianę...</span>")
 				if(do_after(user, 50, target = src))
 					if(S.get_amount() < 1)
 						return FALSE
 					S.use(1)
-					to_chat(user, "<span class='notice'>You finish constructing the wall.</span>")
+					to_chat(user, "<span class='notice'>Kończysz budowę ściany.</span>")
 					var/turf/T = get_turf(src)
 					T.PlaceOnTop(/turf/closed/wall/r_wall/ship)
 					transfer_fingerprints_to(T)
 					qdel(src)
 				return TRUE
 			else
-				to_chat(user, "<span class='warning'>The girder is too weak to support the Duranium plating!")
+				to_chat(user, "<span class='warning'>Dźwigar jest za słaby, by utrzymać duranowe poszycie!")
 				return TRUE
 		if(S.get_amount() < 2)
-			to_chat(user, "<span class='warning'>You need two sheets of [S] to finish a wall!</span>")
+			to_chat(user, "<span class='warning'>Do ukończenia ściany potrzebujesz dwóch arkuszy [S]!</span>")
 			return FALSE
-		to_chat(user, "<span class='notice'>You start plating the wall with [S]...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz pokrywać ścianę [S]...</span>")
 		if (do_after(user, 40, target = src))
 			if(S.get_amount() < 2)
-				to_chat(user, "<span class='warning'>You need two sheets of [S] to finish a wall!</span>")
+				to_chat(user, "<span class='warning'>Do ukończenia ściany potrzebujesz dwóch arkuszy [S]!</span>")
 				return FALSE
 			S.use(2)
-			to_chat(user, "<span class='notice'>You add the hull plating.</span>")
+			to_chat(user, "<span class='notice'>Dodajesz poszycie kadłuba.</span>")
 			var/turf/T = get_turf(src)
 			T.PlaceOnTop(S.turf_type)
 			transfer_fingerprints_to(T)
@@ -80,16 +80,16 @@
 
 	else //Build false wall
 		if(S.get_amount() < 2)
-			to_chat(user, "<span class='warning'>You need two sheets of [S] to create a false wall!</span>")
+			to_chat(user, "<span class='warning'>Do stworzenia fałszywej ściany potrzebujesz dwóch arkuszy [S]!</span>")
 			return FALSE
 
-		to_chat(user, "<span class='notice'>You start building a false wall with [S]...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz budować fałszywą ścianę z [S]...</span>")
 		if(do_after(user, 40, target = src))
 			if(S.get_amount() < 2)
-				to_chat(user, "<span class='warning'>You need two sheets of [S] to create a false wall!</span>")
+				to_chat(user, "<span class='warning'>Do stworzenia fałszywej ściany potrzebujesz dwóch arkuszy [S]!</span>")
 				return FALSE
 			S.use(2)
-			to_chat(user, "<span class='notice'>You create a false wall. Push on it to open or close the passage.</span>")
+			to_chat(user, "<span class='notice'>Tworzysz fałszywą ścianę. Popchnij ją, by otworzyć lub zamknąć przejście.</span>")
 
 			var/turf/T = get_turf(src)
 

@@ -118,9 +118,9 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 				else
 					break
 	if(department)
-		to_chat(M, "<b>You have been assigned to [department]!</b>")
+		to_chat(M, "<b>Zostajesz przydzielony do działu: [department]!</b>")
 	else
-		to_chat(M, "<b>You have not been assigned to any department. Patrol the halls and help where needed.</b>")
+		to_chat(M, "<b>Nie przydzielono cię do żadnego działu. Patroluj korytarze i pomagaj, gdzie trzeba.</b>")
 
 /datum/outfit/job/security
 	name = JOB_NAME_SECURITYOFFICER

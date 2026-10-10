@@ -76,10 +76,10 @@ That's it, ok bye!
 
 /obj/machinery/lazylift_button/attack_hand(mob/user)
 	if((machine_stat & NOPOWER) || !lift)
-		to_chat(user, "<span class='warning'>Nothing happens...</span>")
+		to_chat(user, "<span class='warning'>Nic się nie dzieje...</span>")
 		return
 	if(isliving(user) && user.mouse_opacity) //Don't display things like AIs or admin ghosts clicking the button.
-		visible_message("<span class='notice'>[user] [pick("calmly presses", "mashes", "pokes", "slaps", "hits")] [src] </span>", "<span class='notice'>You push [src].</span>")
+		visible_message("<span class='notice'>[user] [pick("calmly presses", "mashes", "pokes", "slaps", "hits")] [src] </span>", "<span class='notice'>Naciskasz [src].</span>")
 	flick("button_lit", src)
 	lift.master.path_to(lift.deck, lift.master.platform_location.deck)
 
@@ -142,7 +142,7 @@ That's it, ok bye!
 	var/list/deckNums = list()
 	for(var/obj/machinery/lazylift/LL in master.decks)
 		deckNums += LL.deck
-	var/theDeck = input(user, "Which deck would you like to go to?", name, null) as null|anything in deckNums
+	var/theDeck = input(user, "Na który pokład chcesz jechać?", name, null) as null|anything in deckNums
 	if(!theDeck)
 		return FALSE
 	master.path_to(theDeck)
@@ -298,7 +298,7 @@ That's it, ok bye!
 	req_access = list()
 	obj_flags |= EMAGGED
 	turbolift_delay = 1 SECONDS //NYOOOOOM
-	to_chat(user, "<span class='notice'>You fry [src]'s safety overrides, de-limiting its speed control circuits, button control priviledges and disabling its ability to avoid crushing people at the bottom of the shaft.</span>")
+	to_chat(user, "<span class='notice'>Przepalasz nadpisania bezpieczeństwa [src], zdejmując ograniczenia z obwodów regulacji prędkości, uprawnień przycisków i wyłączając zdolność unikania miażdżenia ludzi na dnie szybu.</span>")
 
 //Method to generate a path to a specific deck. If we're on deck 1, and want to reach deck 3, we have to go via deck 2 first.
 /obj/machinery/lazylift/master/proc/path_to(target_deck, startDeck=platform_location.deck)
@@ -320,14 +320,14 @@ That's it, ok bye!
 	if(target_deck > startDeck)
 		if(play_voice_lines)
 			playsound(platform_location, 'nsv13/sound/effects/lift/goingdown.ogg', 100, FALSE)
-			platform_location.say("Elevator going down.")
+			platform_location.say("Winda jedzie w dół.")
 		for(var/I = ++startDeck; I <= target_deck; I++)
 			path += I
 
 	else
 		if(play_voice_lines)
 			playsound(platform_location, 'nsv13/sound/effects/lift/goingup.ogg', 100, FALSE)
-			platform_location.say("Elevator going up.")
+			platform_location.say("Winda jedzie w górę.")
 		for(var/I = --startDeck; I >= target_deck; I--)
 			path += I
 
@@ -413,13 +413,13 @@ That's it, ok bye!
 				var/mob/living/karmics_victim = M
 				karmics_victim.Knockdown(5 SECONDS)
 				shake_with_inertia(karmics_victim, 10, 1)
-				to_chat(karmics_victim, "<span class='warning'>You're pressed into the floor as the lift rapidly accelerates!</span>")
+				to_chat(karmics_victim, "<span class='warning'>Zostajesz wciśnięty w podłogę, gdy winda gwałtownie przyspiesza!</span>")
 				if(prob(50)) //Unlucky fucker
-					to_chat(karmics_victim, "<span class='warning'>You hit your head as you're thrown about wildly!</span>")
+					to_chat(karmics_victim, "<span class='warning'>Uderzasz się w głowę, gdy tobą rzuca!</span>")
 					karmics_victim.adjustOrganLoss(ORGAN_SLOT_BRAIN, 10)
 					playsound(karmics_victim.loc, 'nsv13/sound/effects/lift/bonk.ogg', 100)
 				if(HAS_TRAIT(karmics_victim, TRAIT_SEASICK)) //oh my god you poor soul
-					to_chat(karmics_victim, "<span class='warning'>You can feel your head start to swim...</span>")
+					to_chat(karmics_victim, "<span class='warning'>Zaczyna ci się kręcić w głowie...</span>")
 					karmics_victim.adjust_disgust(100)
 				if(HAS_TRAIT(karmics_victim, TRAIT_GFORCE_WEAKNESS))
 					karmics_victim.gravity_crush(4, 3)
@@ -430,7 +430,7 @@ That's it, ok bye!
 	else
 		if(play_voice_lines)
 			playsound(platform_location, 'nsv13/sound/effects/lift/mindthegap.ogg', 100, FALSE)
-			platform_location.say("Please mind the gap.")
+			platform_location.say("Uwaga na przerwę.")
 		for(var/mob/M as() in moblist)
 			SEND_SOUND(M, sound(turbolift_end_sound, repeat = FALSE, wait = 0, volume = 100, channel = CHANNEL_AMBIENT_EFFECTS))
 		sleep(end_delay)

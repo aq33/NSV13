@@ -11,7 +11,7 @@
 
 /datum/component/donator/proc/examine(datum/source, mob/user, list/examine_list)
 	if(user.ckey == owner_ckey)
-		examine_list += "<span class='hypnophrase'>It's your special item.</span>"
+		examine_list += "<span class='hypnophrase'>To twój specjalny przedmiot.</span>"
 	else
-		examine_list += "<span class='hypnophrase'>It's a special item!</span>"
-		examine_list += "<span class='notice'>Consider donating to get one of these for yourself!</span>"
+		examine_list += "<span class='hypnophrase'>To specjalny przedmiot!</span>"
+		examine_list += "<span class='notice'>Rozważ darowiznę, by dostać taki dla siebie!</span>"

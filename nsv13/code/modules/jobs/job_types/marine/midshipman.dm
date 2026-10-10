@@ -74,7 +74,7 @@ Marine & all their unique stuff!
 	// Assign department
 	var/department = M?.client?.prefs?.active_character?.preferred_security_department
 	if(department == "None")
-		to_chat(M, "<b>You have not been assigned to any department. Help in any way you can!</b>")
+		to_chat(M, "<b>Nie przydzielono cię do żadnego działu. Pomagaj, jak tylko możesz!</b>")
 		return
 	else if(!(department in GLOB.available_depts))
 		department = pick(GLOB.available_depts)
@@ -115,7 +115,7 @@ Marine & all their unique stuff!
 	var/obj/item/card/id/W = H.wear_id
 	W.access |= dep_access
 
-	to_chat(M, "<b>You have been assigned to [department]!</b>")
+	to_chat(M, "<b>Zostajesz przydzielony do działu: [department]!</b>")
 
 /datum/job/assistant/register_squad(mob/living/H)
 	if(!ishuman(H)) //Nope

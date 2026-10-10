@@ -35,44 +35,44 @@
 	. = ..()
 	if(!can_interact(user) || !charging_batteries.len)
 		return
-	to_chat(user, "<span class='notice'>You press the quick release as all the cells pop out!</span>")
+	to_chat(user, "<span class='notice'>Naciskasz szybkie zwolnienie i wszystkie ogniwa wyskakują!</span>")
 	for(var/i in charging_batteries)
 		removecell()
 
 /obj/machinery/cell_charger_multi/examine(mob/user)
 	. = ..()
 	if(!charging_batteries.len)
-		. += "There are no cells in [src]."
+		. += "W [src] nie ma ogniw."
 	else
-		. += "There are [charging_batteries.len] cells in [src]."
+		. += "W [src] jest ogniw: [charging_batteries.len]."
 		for(var/obj/item/stock_parts/cell/charging in charging_batteries)
-			. += "There's [charging] cell in the charger, current charge: [round(charging.percent(), 1)]%."
+			. += "W ładowarce jest [charging], obecny ładunek: [round(charging.percent(), 1)]%."
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Charging power: <b>[charge_rate]W</b>.</span>"
-	. += "<span class='notice'>Ctrl+shift click it to remove all the cells at once!</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: moc ładowania: <b>[charge_rate]W</b>.</span>"
+	. += "<span class='notice'>Ctrl+Shift-kliknij, by wyjąć naraz wszystkie ogniwa!</span>"
 
 /obj/machinery/cell_charger_multi/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/stock_parts/cell) && !panel_open)
 		if(machine_stat & BROKEN)
-			to_chat(user, "<span class='warning'>[src] is broken!</span>")
+			to_chat(user, "<span class='warning'>[src] jest zepsuty!</span>")
 		if(!anchored)
-			to_chat(user, "<span class='warning'>[src] isn't attached to the ground!</span>")
+			to_chat(user, "<span class='warning'>[src] nie jest przymocowany do podłoża!</span>")
 			return
 		if(charging_batteries.len >= 4)
-			to_chat(user, "<span class='warning'>[src] is full, and cannot hold anymore cells!</span>")
+			to_chat(user, "<span class='warning'>[src] jest pełny i nie pomieści więcej ogniw!</span>")
 			return
 		else
 			var/area/a = loc.loc // Gets our locations location, like a dream within a dream
 			if(!isarea(a))
 				return
 			if(a.power_equip == 0) // There's no APC in this area, don't try to cheat power!
-				to_chat(user, "<span class='warning'>[src] blinks red as you try to insert the cell!</span>")
+				to_chat(user, "<span class='warning'>[src] miga na czerwono, gdy próbujesz włożyć ogniwo!</span>")
 				return
 			if(!user.transferItemToLoc(W,src))
 				return
 
 			charging_batteries += W
-			user.visible_message("<span class='notice'>[user] inserts a cell into [src].</span>", "<span class='notice'>You insert a cell into [src].</span>")
+			user.visible_message("<span class='notice'>[user] wkłada ogniwo do [src].</span>", "<span class='notice'>Wkładasz ogniwo do [src].</span>")
 			update_icon()
 	else
 		if(!charging_batteries.len && default_deconstruction_screwdriver(user, icon_state, icon_state, W))
@@ -130,7 +130,7 @@
 	user.put_in_hands(charging)
 	charging.add_fingerprint(user)
 
-	user.visible_message("<span class='notice'>[user] removes [charging] from [src].</span>", "<span class='notice'>You remove [charging] from [src].</span>")
+	user.visible_message("<span class='notice'>[user] wyjmuje [charging] z [src].</span>", "<span class='notice'>Wyjmujesz [charging] z [src].</span>")
 
 /obj/machinery/cell_charger_multi/proc/removecell(mob/user)
 	if(!charging_batteries.len)

@@ -28,11 +28,11 @@
 	if(cold_stacks < LIZARD_THERMOGENESIS_COLD_TRIGGER_STACKS && !fibrillating)
 		return ECTOTHERM_NO_THERMOGENESIS_NEEDED
 	if(!fibrillating) // !fibrillating reaching this point means enough stacks exist.
-		to_chat(human_holder, "<span class='warning'>You start shivering and feel the urge to find a sunny spot!</span>")
+		to_chat(human_holder, "<span class='warning'>Zaczynasz drżeć i masz ochotę znaleźć słoneczne miejsce!</span>")
 		SEND_SIGNAL(human_holder, COMSIG_ADD_MOOD_EVENT, "lizard_shivers", /datum/mood_event/lizard_shivers)
 		fibrillating = TRUE
 	else if(cold_stacks == 0) //We also check if we have to stop vibrating here.
-		to_chat(human_holder, "<span class='notice'>You stop shivering.</span>")
+		to_chat(human_holder, "<span class='notice'>Przestajesz drżeć.</span>")
 		SEND_SIGNAL(human_holder, COMSIG_CLEAR_MOOD_EVENT, "lizard_shivers")
 		fibrillating = FALSE
 		return ECTOTHERM_NO_THERMOGENESIS_NEEDED

@@ -119,7 +119,7 @@
 	if(!isobj(entering) || iseffect(entering))
 		return
 	if(!(entering.type in munition_types))
-		visible_message("[src] shakes its arm melancholically.")
+		visible_message("[src] melancholijnie potrząsa ramieniem.")
 		arm.shake_animation()
 		if(world.time >= next_fail_sound)
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 0)
@@ -169,7 +169,7 @@
 		return
 	if(tracked_component_type && istype(entering, tracked_component_type)) //Please do throw these hungry machines some components. AQ EDIT - any part of the tracked kind
 		var/obj/item/entering_item = entering
-		visible_message("<span class='notice'>[src] happily adds [entering_item] to its component storage.</span>")
+		visible_message("<span class='notice'>[src] radośnie dodaje [entering_item] do magazynu komponentów.</span>")
 		if(world.time >= next_success_sound)
 			playsound(src, 'sound/machines/ping.ogg', 50, 0)
 			next_success_sound = world.time + 0.2 SECONDS
@@ -178,7 +178,7 @@
 		held_components += entering_item
 		return
 	if(!(entering.type in munition_types))
-		visible_message("[src] shakes its arm melancholically.")
+		visible_message("[src] melancholijnie potrząsa ramieniem.")
 		arm.shake_animation()
 		if(world.time >= next_fail_sound)
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 0)
@@ -273,7 +273,7 @@
 /obj/machinery/missile_builder/proc/trigger_arm_animation()
 	if(arm.icon_state != "[arm_icon_state]_anim")
 		arm.icon_state = "[arm_icon_state]_anim"
-		visible_message("<span class='notice'>[src] whirrs into life!</span>")
+		visible_message("<span class='notice'>[src] budzi się do życia!</span>")
 	if(active_arm_timer_id)
 		deltimer(active_arm_timer_id)
 	active_arm_timer_id = addtimer(CALLBACK(src, PROC_REF(stop_arm_animation)), 1 SECONDS, TIMER_STOPPABLE)
@@ -298,7 +298,7 @@
 	. = ..()
 	if(!length(held_components))
 		return
-	. += "<span class='notice'>It currently holds...</span>"
+	. += "<span class='notice'>Obecnie zawiera...</span>"
 	var/listofitems = list()
 	for(var/obj/item/C in held_components)
 		var/path = C.type
@@ -331,12 +331,12 @@
 			return TRUE
 		if(!user.transferItemToLoc(I, src))
 			return TRUE
-		to_chat(user, "<span class='notice'>You slot [I] into [src], ready for construction.</span>")
+		to_chat(user, "<span class='notice'>Wkładasz [I] do [src], gotowy do budowy.</span>")
 		tracked_component_type = part_kind(I)
 		store_part(I)
 		return TRUE
 	if(istype(I, /obj/item/card/id) && allowed(user))
-		to_chat(user, "<span class='warning'>You dump [src]'s contents out.</span>")
+		to_chat(user, "<span class='warning'>Wysypujesz zawartość [src].</span>")
 		for(var/obj/item/X in held_components)
 			X.forceMove(get_turf(src))
 		held_components.Cut()
@@ -351,9 +351,9 @@
 	if(istype(A, /obj/structure/closet))
 		// AQ EDIT - LAZYFIND looked for the type path itself in the contents, so loading from a crate never worked
 		if(!(locate(/obj/item/ship_weapon/parts/missile) in A))
-			to_chat(user, "<span class='warning'>There's nothing in [A] that can be loaded into [src]...</span>")
+			to_chat(user, "<span class='warning'>W [A] nie ma niczego, co można by załadować do [src]...</span>")
 			return FALSE
-		to_chat(user, "<span class='notice'>You start to load [src] with the contents of [A]...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz ładować do [src] zawartość [A]...</span>")
 		if(do_after(user, 4 SECONDS , target = src))
 			for(var/obj/item/ship_weapon/parts/missile/P in A)
 				store_part(P)

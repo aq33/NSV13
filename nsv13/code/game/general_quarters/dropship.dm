@@ -130,7 +130,7 @@
 	if(allowed(user))
 		if(do_after(user, 2 SECONDS, target=src))
 			enter(user)
-			to_chat(user, "<span class='notice'>You climb into [src]'s passenger compartment.</span>")
+			to_chat(user, "<span class='notice'>Wspinasz się do przedziału pasażerskiego [src].</span>")
 			return TRUE
 
 /obj/structure/overmap/small_craft/transport/MouseDrop_T(atom/movable/target, mob/user)
@@ -145,11 +145,11 @@
 			enter(user.loc)
 			return
 		else
-			to_chat(target, "[(user == target) ? "You start to climb into [src]'s passenger compartment" : "[user] starts to lift you into [src]'s passenger compartment"]")
+			to_chat(target, "[(user == target) ? "Zaczynasz wspinać się do przedziału pasażerskiego [src]" : "[user] zaczyna wnosić cię do przedziału pasażerskiego [src]"]")
 		if(do_after(user, 2 SECONDS, target=src))
 			enter(user)
 	else
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		to_chat(user, "<span class='warning'>Odmowa dostępu.</span>")
 
 //Bit jank but w/e
 
@@ -174,15 +174,10 @@
 	var/obj/structure/overmap/OM = has_overmap()
 	OM?.start_piloting(user, position)
 	ui_interact(user)
-	to_chat(user, "<span class='notice'>Small craft use directional keys (WASD in hotkey mode) to accelerate/decelerate in a given direction and the mouse to change the direction of craft.\
-			Mouse 1 will fire the selected weapon (if applicable).</span>")
+	to_chat(user, "<span class='notice'>Małymi jednostkami steruje się klawiszami kierunkowymi (WASD w trybie skrótów), przyspieszając lub zwalniając w danym kierunku, a myszą zmienia się kierunek lotu. Lewy przycisk myszy strzela z wybranej broni (jeśli dotyczy).</span>")
 	to_chat(user, "<span class='warning'>=Hotkeys=</span>")
-	to_chat(user, "<span class='notice'>Use <b>tab</b> to activate hotkey mode, then:</span>")
-	to_chat(user, "<span class='notice'>Use the <b> Ctrl + Scroll Wheel</b> to zoom in / out. \
-			Press <b>Space</b> to cycle fire modes. \
-			Press <b>X</b> to cycle inertial dampners. \
-			Press <b>Alt</b> to cycle the handbrake. \
-			Press <b>C</b> to cycle mouse free movement.</span>")
+	to_chat(user, "<span class='notice'>Naciśnij <b>tab</b>, by włączyć tryb skrótów, a następnie:</span>")
+	to_chat(user, "<span class='notice'>Użyj <b>Ctrl + kółka myszy</b>, by przybliżyć/oddalić. Naciśnij <b>spację</b>, by przełączać tryby ognia. Naciśnij <b>X</b>, by przełączać tłumiki bezwładności. Naciśnij <b>Alt</b>, by przełączać hamulec ręczny. Naciśnij <b>C</b>, by przełączać swobodny ruch myszą.</span>")
 
 /obj/machinery/computer/ship/helm/console/dropship/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
