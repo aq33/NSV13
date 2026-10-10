@@ -6,8 +6,8 @@
 	icon_dead = "bat_dead"
 	icon_gib = "bat_dead"
 	turns_per_move = 1
-	response_help = "brushes aside"
-	response_disarm = "flails at"
+	response_help = "odpycha na bok"
+	response_disarm = "macha rękami na"
 	response_harm = "hits"
 	speak_chance = 0
 	maxHealth = 20
@@ -44,7 +44,7 @@
 		release_controller()
 		controller.Knockdown(120)
 		controller.adjustBruteLoss(20)
-		to_chat(controller, "<span class='userdanger'>The force of being exiled from your bat form painfully throws you to the ground!</span>")
+		to_chat(controller, "<span class='userdanger'>Siła wyrzucenia z postaci nietoperza boleśnie ciska tobą o ziemię!</span>")
 		controller = null
 	. = ..()
 

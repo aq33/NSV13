@@ -25,7 +25,7 @@
 
 /mob/living/simple_animal/lesserdemon/gluttony //capable of devouring corpses for health
 	name = "gluttonous demon"
-	real_name = "gluttonous demon"
+	real_name = "demon obżarstwa"
 	icon_state = "lesserdaemon_gluttony"
 	icon_living = "lesserdaemon_gluttony"
 
@@ -42,7 +42,7 @@
 		return FALSE
 	visible_message(
 		span_danger("[src] devours [L]!"),
-		span_userdanger("You feast on [L], restoring your health!"))
+		span_userdanger("Pożerasz [L], odzyskując zdrowie!"))
 	adjustBruteLoss(-50)
 	L.gib()
 	return TRUE

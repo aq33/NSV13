@@ -33,7 +33,7 @@
 		return FALSE
 	COOLDOWN_START(src, dodge_cooldown, dodge_delay)
 	owner.balloon_alert_to_viewers("dodged!", "dodged!", COMBAT_MESSAGE_RANGE)
-	owner.visible_message("<span class='danger'>With inhuman speed [owner] dodges [attack_text]!</span>", "<span class='userdanger'>You dodge [attack_text]!</span>", null, COMBAT_MESSAGE_RANGE)
+	owner.visible_message("<span class='danger'>Z nieludzką szybkością [owner] unika: [attack_text]!</span>", "<span class='userdanger'>Unikasz: [attack_text]!</span>", null, COMBAT_MESSAGE_RANGE)
 	playsound(owner, 'sound/effects/space_wind_big.ogg', 50, 1)
 	return TRUE
 
@@ -56,7 +56,7 @@
 /obj/item/storage/book/bible/attack(mob/living/M, mob/living/carbon/human/user, heal_mode = TRUE)
 	. = ..()
 	if(!(user.mind && user.mind.holy_role) && is_vampire(user))
-		to_chat(user, "<span class='danger'>[deity_name] channels through \the [src] and sets you ablaze for your blasphemy!</span>")
+		to_chat(user, "<span class='danger'>[deity_name] przemawia przez [src] i podpala cię za bluźnierstwo!</span>")
 		user.adjust_fire_stacks(5)
 		user.IgniteMob()
 		user.emote("scream", 1)

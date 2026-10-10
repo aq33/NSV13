@@ -37,12 +37,12 @@
 		return
 	var/mob/living/victim = target
 	if(victim.anti_magic_check())
-		to_chat(user, span_warning("[victim] resists your pride!"))
-		to_chat(victim, span_warning("A deceptive feeling of pleasure dances around your mind before being suddenly dispelled."))
+		to_chat(user, span_warning("[victim] opiera się twojej pysze!"))
+		to_chat(victim, span_warning("Wokół twojego umysłu tańczy zwodnicze uczucie przyjemności, po czym nagle się rozwiewa."))
 		return ..()
 	playsound(user, 'sound/magic/demon_attack1.ogg', 75, TRUE)
 	victim.adjustBruteLoss(-20)
 	victim.adjustFireLoss(-20)
-	victim.visible_message(span_bold("[victim] appears to flash colors of red, before seemingly appearing healthier!"))
-	to_chat(victim, span_warning("You feel a sinister feeling of recovery."))
+	victim.visible_message(span_bold("[victim] błyska na czerwono, po czym wydaje się zdrowszy!"))
+	to_chat(victim, span_warning("Czujesz złowrogie uczucie powrotu do zdrowia."))
 	return ..()

@@ -22,11 +22,11 @@
 	. = ..()
 
 /datum/antagonist/disease/greet()
-	to_chat(owner.current, "<span class='notice'>You are the [owner.special_role]!</span>")
-	to_chat(owner.current, "<span class='notice'>Infect members of the crew to gain adaptation points, and spread your infection further.</span>")
+	to_chat(owner.current, "<span class='notice'>Jesteś świadomą chorobą!</span>")
+	to_chat(owner.current, "<span class='notice'>Zarażaj członków załogi, by zdobywać punkty adaptacji i dalej szerzyć infekcję.</span>")
 	owner.announce_objectives()
-	owner.current.client?.tgui_panel?.give_antagonist_popup("Sentient Disease",
-		"Infect members of the crew to gain adaptation points and spread your infection further.")
+	owner.current.client?.tgui_panel?.give_antagonist_popup("Świadoma choroba",
+		"Zarażaj członków załogi, by zdobywać punkty adaptacji i dalej szerzyć infekcję.")
 
 /datum/antagonist/disease/apply_innate_effects(mob/living/mob_override)
 	if(!istype(owner.current, /mob/camera/disease))
@@ -43,7 +43,7 @@
 /datum/antagonist/disease/roundend_report()
 	var/list/result = list()
 
-	result += "<b>Disease name:</b> [disease_name]"
+	result += "<b>Nazwa choroby:</b> [disease_name]"
 	result += printplayer(owner)
 
 	var/win = TRUE
@@ -51,9 +51,9 @@
 	var/count = 1
 	for(var/datum/objective/objective in objectives)
 		if(objective.check_completion())
-			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='greentext'>Success!</span>"
+			objectives_text += "<br><B>Cel nr [count]</B>: [objective.explanation_text] <span class='greentext'>Sukces!</span>"
 		else
-			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
+			objectives_text += "<br><B>Cel nr [count]</B>: [objective.explanation_text] <span class='redtext'>Porażka.</span>"
 			win = FALSE
 		count++
 
@@ -62,14 +62,14 @@
 	var/special_role_text = lowertext(name)
 
 	if(win)
-		result += "<span class='greentext'>The [special_role_text] was successful!</span>"
+		result += "<span class='greentext'>[capitalize(special_role_text)]: sukces!</span>"
 	else
-		result += "<span class='redtext'>The [special_role_text] has failed!</span>"
+		result += "<span class='redtext'>[capitalize(special_role_text)]: porażka!</span>"
 
 	if(istype(owner.current, /mob/camera/disease))
 		var/mob/camera/disease/D = owner.current
-		result += "<B>[disease_name] completed the round with [D.hosts.len] infected hosts, and reached a maximum of [D.total_points] concurrent infections.</B>"
-		result += "<B>[disease_name] completed the round with the following adaptations:</B>"
+		result += "<B>[disease_name] kończy rundę z [D.hosts.len] zarażonymi nosicielami, osiągając maksymalnie [D.total_points] jednoczesnych infekcji.</B>"
+		result += "<B>[disease_name] kończy rundę z następującymi adaptacjami:</B>"
 		var/list/adaptations = list()
 		for(var/V in D.purchased_abilities)
 			var/datum/disease_ability/A = V
@@ -80,7 +80,7 @@
 
 
 /datum/objective/disease_infect
-	explanation_text = "Survive and infect as many people as possible."
+	explanation_text = "Przetrwaj i zaraź jak najwięcej osób."
 
 /datum/objective/disease_infect/check_completion()
 	var/mob/camera/disease/D = owner.current
@@ -90,7 +90,7 @@
 
 
 /datum/objective/disease_infect_centcom
-	explanation_text = "Ensure that at least one infected host escapes on the shuttle or an escape pod."
+	explanation_text = "Dopilnuj, by co najmniej jeden zarażony nosiciel uciekł promem albo kapsułą ratunkową."
 
 /datum/objective/disease_infect_centcom/check_completion()
 	var/mob/camera/disease/D = owner.current

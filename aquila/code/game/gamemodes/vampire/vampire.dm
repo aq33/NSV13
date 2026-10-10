@@ -5,8 +5,8 @@
 	. = ..()
 	var/datum/antagonist/vampire/vamp = mind.has_antag_datum(/datum/antagonist/vampire)
 	if(vamp && statpanel("Status"))
-		stat("Total Blood", vamp.total_blood)
-		stat("Usable Blood", vamp.usable_blood)
+		stat("Krew łącznie", vamp.total_blood)
+		stat("Krew do wykorzystania", vamp.usable_blood)
 
 /mob/living/carbon/human/Life()
 	. = ..()
@@ -27,9 +27,9 @@
 	required_enemies = 1
 	recommended_enemies = 3
 
-	announce_text = "There are vampires onboard the station!\n\
-		+	<span class='danger'>Vampires</span>: Suck the blood of the crew and complete your objectives!\n\
-		+	<span class='notice'>Crew</span>: Kill the unholy vampires!"
+	announce_text = "Na pokładzie są wampiry!\n\
+		+	<span class='danger'>Wampiry</span>: wysysajcie krew załogi i wykonajcie cele!\n\
+		+	<span class='notice'>Załoga</span>: zabijcie nieświęte wampiry!"
 
 	var/vampires_possible = 4 //hard limit on vampires if scaling is turned off
 	var/num_modifier = 0
@@ -72,7 +72,7 @@
 
 /datum/game_mode/proc/auto_declare_completion_vampire()
 	if(vampires.len)
-		var/text = "<br><font size=3><b>The vampires were:</b></font>"
+		var/text = "<br><font size=3><b>Wampiry:</b></font>"
 		for(var/datum/mind/vamp in vampires)
 			var/vampwin = 1
 			if(!vamp.current)
@@ -86,26 +86,26 @@
 			text += printplayer(vamp)
 
 			//Removed sanity if(vampire) because we -want- a runtime to inform us that the vampire list is incorrect and needs to be fixed.
-			text += "<br><b>Usable Blood:</b> [V.usable_blood]."
-			text += "<br><b>Total Blood:</b> [V.total_blood]"
+			text += "<br><b>Krew do wykorzystania:</b> [V.usable_blood]."
+			text += "<br><b>Krew łącznie:</b> [V.total_blood]"
 
 			if(V.objectives.len)
 				var/count = 1
 				for(var/datum/objective/objective in V.objectives)
 					if(objective.check_completion())
-						text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <font color='green'><b>Success!</b></font>"
+						text += "<br><b>Cel nr [count]</b>: [objective.explanation_text] <font color='green'><b>Sukces!</b></font>"
 						SSblackbox.record_feedback("tally", "vampire_objective", 1, "[objective.type]|SUCCESS")
 					else
-						text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='danger'>Fail.</span>"
+						text += "<br><b>Cel nr [count]</b>: [objective.explanation_text] <span class='danger'>Porażka.</span>"
 						SSblackbox.record_feedback("tally", "vampire_objective", 1, "[objective.type]|FAIL")
 						vampwin = 0
 					count++
 
 			if(vampwin)
-				text += "<br><font color='green'><b>The vampire was successful!</b></font>"
+				text += "<br><font color='green'><b>Wampir odniósł sukces!</b></font>"
 				SSblackbox.record_feedback("tally", "vampire_success", 1, "SUCCESS")
 			else
-				text += "<br><span class='boldannounce'>The vampire has failed.</span>"
+				text += "<br><span class='boldannounce'>Wampir poniósł porażkę.</span>"
 				SSblackbox.record_feedback("tally", "vampire_success", 1, "FAIL")
 			text += "<br>"
 
@@ -147,9 +147,9 @@
 
 
 /datum/game_mode/vampire/generate_report()
-	return "The Wizard Federation has created a new being based off ancient mythology. \
-	These beings are known as vampires and are capable of sucking blood from crew members. \
-	No further information is known at this time."
+	return "Federacja Czarodziejów stworzyła nową istotę na podstawie pradawnej mitologii. \
+	Istoty te znane są jako wampiry i potrafią wysysać krew z członków załogi. \
+	Na razie nic więcej nie wiadomo."
 
 /datum/role_preference/antagonist/vampire
 	name = "Vampire"

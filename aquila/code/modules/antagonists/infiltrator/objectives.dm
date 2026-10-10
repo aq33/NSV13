@@ -4,7 +4,7 @@
 GLOBAL_LIST_INIT(infiltrator_kidnap_areas, typecacheof(list(/area/shuttle/stealthcruiser, /area/syndicate_mothership/infiltrator_base)))
 
 /datum/objective/infiltrator
-	explanation_text = "Generic Infiltrator Objective!"
+	explanation_text = "Ogólny cel infiltratora!"
 	martyr_compatible = FALSE
 	var/item_type
 
@@ -19,7 +19,7 @@ GLOBAL_LIST_INIT(infiltrator_kidnap_areas, typecacheof(list(/area/shuttle/stealt
 	return TRUE
 
 /datum/objective/infiltrator/exploit
-	explanation_text = "Ensure there is at least 1 hijacked AI."
+	explanation_text = "Dopilnuj, by istniała co najmniej 1 przejęta SI."
 	item_type = /obj/item/ai_hijack_device
 
 
@@ -37,9 +37,9 @@ GLOBAL_LIST_INIT(infiltrator_kidnap_areas, typecacheof(list(/area/shuttle/stealt
 /datum/objective/infiltrator/exploit/update_explanation_text()
 	..()
 	if(target && target.current)
-		explanation_text = "Hijack [station_name()]'s AI unit, [target.name]."
+		explanation_text = "Przejmij jednostkę SI statku [station_name()], [target.name]."
 	else
-		explanation_text = "Ensure there is at least 1 hijacked AI on [station_name()]."
+		explanation_text = "Dopilnuj, by na [station_name()] była co najmniej 1 przejęta SI."
 
 /datum/objective/infiltrator/exploit/check_completion()
 	if(!target)
@@ -51,7 +51,7 @@ GLOBAL_LIST_INIT(infiltrator_kidnap_areas, typecacheof(list(/area/shuttle/stealt
 
 
 /datum/objective/infiltrator/power
-	explanation_text = "Drain power from the station with a power sink."
+	explanation_text = "Wyssij energię ze statku za pomocą pochłaniacza mocy."
 
 /datum/objective/infiltrator/power/New()
 	target_amount = rand(MIN_POWER_DRAIN, MAX_POWER_DRAIN) //I don't do this in find_target(), because that is done AFTER New().
@@ -64,16 +64,16 @@ GLOBAL_LIST_INIT(infiltrator_kidnap_areas, typecacheof(list(/area/shuttle/stealt
 /datum/objective/infiltrator/power/update_explanation_text()
 	..()
 	if(target_amount)
-		explanation_text = "Drain [DisplayPower(target_amount)] from [station_name()]'s powernet with a special transmitter powersink. You do not need to bring the powersink back once the objective is complete."
+		explanation_text = "Wyssij [DisplayPower(target_amount)] z sieci energetycznej [station_name()] specjalnym pochłaniaczem mocy z nadajnikiem. Po wykonaniu celu nie musisz go przynosić z powrotem."
 	else
-		explanation_text = "Free Objective"
+		explanation_text = "Cel dowolny"
 
 /datum/objective/infiltrator/power/check_completion()
 	return !target_amount || (GLOB.powersink_transmitted >= target_amount)
 
 
 /datum/objective/infiltrator/kidnap
-	explanation_text = "You were supposed to kidnap someone, but we couldn't find anyone to kidnap!"
+	explanation_text = "Miałeś kogoś porwać, ale nie znaleźliśmy nikogo do porwania!"
 
 /datum/objective/infiltrator/kidnap/proc/potential_targets()
 	var/list/possible_targets = list()
@@ -100,9 +100,9 @@ GLOBAL_LIST_INIT(infiltrator_kidnap_areas, typecacheof(list(/area/shuttle/stealt
 
 /datum/objective/infiltrator/kidnap/update_explanation_text()
 	if(target && target.current)
-		explanation_text = "Kidnap [target.name], the [target.assigned_role], and hold [target.current.p_them()] on the shuttle or base."
+		explanation_text = "Porwij [target.name] ([target.assigned_role]) i przetrzymaj na promie lub w bazie."
 	else
-		explanation_text = "Free Objective"
+		explanation_text = "Cel dowolny"
 
 /datum/objective/infiltrator/kidnap/check_completion()
 	if(!target)

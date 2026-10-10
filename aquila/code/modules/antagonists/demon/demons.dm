@@ -45,16 +45,16 @@
 		if(prob(50) && L.health >= 50)
 			switch(L.health)
 				if(85 to 100)
-					L.visible_message(span_warning("[L]'s skin begins to heat up and darken!"), span_danger("Your flesh begins to sear..."))
+					L.visible_message(span_warning("Skóra [L] zaczyna się nagrzewać i ciemnieć!"), span_danger("Twoje ciało zaczyna się przypiekać..."))
 				if(60 to 85)
-					L.visible_message(span_warning("[L]'s skin begins to melt apart!"), span_danger("Your skin is melting!"), "You hear sizzling.")
+					L.visible_message(span_warning("Skóra [L] zaczyna się topić!"), span_danger("Twoja skóra się topi!"), "Słyszysz skwierczenie.")
 			L.adjustFireLoss(5)
 		else if(L.health < 60)
 			if(!L.on_fire)
-				L.visible_message(span_warning("[L] lights up in a holy blaze!"), span_danger("Your skin catches fire!"))
+				L.visible_message(span_warning("[L] staje w świętych płomieniach!"), span_danger("Twoja skóra zajmuje się ogniem!"))
 				L.emote("scream")
 			else
-				L.visible_message(span_warning("[L] continues to burn!"), span_danger("You continue to burn!"))
+				L.visible_message(span_warning("[L] wciąż płonie!"), span_danger("Wciąż płoniesz!"))
 			L.adjust_fire_stacks(5)
 			L.IgniteMob()
 
@@ -99,14 +99,14 @@
 	log_admin("[key_name(admin)] has demonized [key_name(new_owner)].")
 
 /datum/antagonist/sinfuldemon/antag_listing_name()
-	return ..() + " (demon of [demonsin])" // Boris Smith (demon of wrath)
+	return ..() + " (demon: [demonsin])" // Boris Smith (demon of wrath)
 
 /datum/antagonist/sinfuldemon/greet()
-	to_chat(owner.current, span_warning("<b>You remember your link to the infernal. You are a demon of [demonsin] released from hell to spread sin amongst the living.</b>"))
-	to_chat(owner.current, span_warning("<b>Your half demon, half human form grants you increased fortitude, allowing you to resist more damage before going down.</b>"))
-	to_chat(owner.current, span_warning("<b>However, your infernal form is not without weaknesses.</b>"))
-	to_chat(owner.current, "You are incredibly vulnerable to holy artifacts and influence.")
-	to_chat(owner.current, "While blessed with the unholy ability to transform into your true form, this form is extremely obvious and vulnerable to holy weapons.")
+	to_chat(owner.current, span_warning("<b>Przypominasz sobie swoją więź z piekłem. Jesteś demonem grzechu ([demonsin]), uwolnionym z piekła, by szerzyć grzech wśród żywych.</b>"))
+	to_chat(owner.current, span_warning("<b>Twoja półdemoniczna, półludzka postać daje ci większą wytrzymałość, więc znosisz więcej obrażeń, zanim padniesz.</b>"))
+	to_chat(owner.current, span_warning("<b>Twoja piekielna postać ma jednak słabości.</b>"))
+	to_chat(owner.current, "Jesteś niezwykle podatny na święte artefakty i wpływy.")
+	to_chat(owner.current, "Masz nieświętą zdolność przemiany w prawdziwą postać, ale jest ona bardzo rzucająca się w oczy i podatna na świętą broń.")
 	to_chat(owner.current, "[span_warning("Do your best to complete your objectives without unnessecary death, unless you are a wrathful demon.")]<br>")
 	owner.announce_objectives()
 	SEND_SOUND(owner.current, sound('sound/magic/ethereal_exit.ogg'))
@@ -155,12 +155,12 @@
 	owner.current.faction -= "hell"
 	REMOVE_TRAITS_IN(owner.current, SINFULDEMON_TRAIT)
 	remove_spells()
-	to_chat(owner.current, span_userdanger("Your infernal link has been severed! You are no longer a demon!"))
+	to_chat(owner.current, span_userdanger("Twoja więź z piekłem została zerwana! Nie jesteś już demonem!"))
 	return ..()
 
 /datum/antagonist/sinfuldemon/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/current_mob = mob_override || owner.current
-	handle_clown_mutation(current_mob, mob_override ? null : "Your infernal nature has allowed you to overcome your clownishness.")
+	handle_clown_mutation(current_mob, mob_override ? null : "Dzięki piekielnej naturze przezwyciężasz swoją klauniość.")
 	RegisterSignal(current_mob, COMSIG_LIVING_LIFE, PROC_REF(sinfuldemon_life))
 	RegisterSignal(current_mob, COMSIG_MOB_ALLOWED, PROC_REF(envy_access))
 

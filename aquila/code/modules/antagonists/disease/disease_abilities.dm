@@ -76,7 +76,7 @@ new /datum/disease_ability/symptom/powerful/youth
 			stage_speed += initial(S.stage_speed)
 			transmission += initial(S.transmission)
 			threshold_block += "<br><br>[initial(S.threshold_desc)]"
-			stat_block = "Resistance: [resistance]<br>Stealth: [stealth]<br>Stage Speed: [stage_speed]<br>Transmissibility: [transmission]<br><br>"
+			stat_block = "Odporność: [resistance]<br>Skrytość: [stealth]<br>Szybkość postępu: [stage_speed]<br>Zaraźliwość: [transmission]<br><br>"
 			if(symptoms.len == 1) //lazy boy's dream
 				name = initial(S.name)
 				if(short_desc == "")
@@ -157,8 +157,8 @@ new /datum/disease_ability/symptom/powerful/youth
 	cost = 0
 	required_total_points = 0
 	start_with = TRUE
-	short_desc = "Force the host you are following to cough, spreading your infection to those nearby."
-	long_desc = "Force the host you are following to cough with extra force, spreading your infection to those within two meters of your host even if your transmissibility is low.<br>Cooldown: 10 seconds"
+	short_desc = "Zmusza śledzonego nosiciela do kaszlu, przenosząc infekcję na osoby w pobliżu."
+	long_desc = "Zmusza śledzonego nosiciela do mocnego kaszlu, przenosząc infekcję na osoby w promieniu dwóch metrów, nawet przy niskiej zaraźliwości.<br>Odnowienie: 10 sekund"
 
 
 /datum/action/cooldown/disease_cough
@@ -176,9 +176,9 @@ new /datum/disease_ability/symptom/powerful/youth
 	if(!L)
 		return FALSE
 	if(L.stat != CONSCIOUS)
-		to_chat(D, "<span class='warning'>Your host must be conscious to cough.</span>")
+		to_chat(D, "<span class='warning'>Twój nosiciel musi być przytomny, żeby kaszleć.</span>")
 		return FALSE
-	to_chat(D, "<span class='notice'>You force [L.real_name] to cough.</span>")
+	to_chat(D, "<span class='notice'>Zmuszasz [L.real_name] do kaszlu.</span>")
 	L.emote("cough")
 	if(L.CanSpreadAirborneDisease()) //don't spread germs if they covered their mouth
 		var/datum/disease/advance/sentient_disease/SD = D.hosts[L]
@@ -192,8 +192,8 @@ new /datum/disease_ability/symptom/powerful/youth
 	actions = list(/datum/action/cooldown/disease_sneeze)
 	cost = 2
 	required_total_points = 3
-	short_desc = "Force the host you are following to sneeze, spreading your infection to those in front of them."
-	long_desc = "Force the host you are following to sneeze with extra force, spreading your infection to any victims in a 4 meter cone in front of your host.<br>Cooldown: 20 seconds"
+	short_desc = "Zmusza śledzonego nosiciela do kichnięcia, przenosząc infekcję na osoby przed nim."
+	long_desc = "Zmusza śledzonego nosiciela do mocnego kichnięcia, przenosząc infekcję na wszystkich w stożku 4 metrów przed nim.<br>Odnowienie: 20 sekund"
 
 /datum/action/cooldown/disease_sneeze
 	name = "Sneeze"
@@ -210,9 +210,9 @@ new /datum/disease_ability/symptom/powerful/youth
 	if(!L)
 		return FALSE
 	if(L.stat != CONSCIOUS)
-		to_chat(D, "<span class='warning'>Your host must be conscious to sneeze.</span>")
+		to_chat(D, "<span class='warning'>Twój nosiciel musi być przytomny, żeby kichać.</span>")
 		return FALSE
-	to_chat(D, "<span class='notice'>You force [L.real_name] to sneeze.</span>")
+	to_chat(D, "<span class='notice'>Zmuszasz [L.real_name] do kichnięcia.</span>")
 	L.emote("sneeze")
 	if(L.CanSpreadAirborneDisease()) //don't spread germs if they covered their mouth
 		var/datum/disease/advance/sentient_disease/SD = D.hosts[L]
@@ -230,8 +230,8 @@ new /datum/disease_ability/symptom/powerful/youth
 	actions = list(/datum/action/cooldown/disease_infect)
 	cost = 2
 	required_total_points = 3
-	short_desc = "Cause all objects your host is touching to become infectious for a limited time, spreading your infection to anyone who touches them."
-	long_desc = "Cause the host you are following to excrete an infective substance from their pores, causing all objects touching their skin to transmit your infection to anyone who touches them for the next 30 seconds. This includes the floor, if they are not wearing shoes, and any items they are holding, if they are not wearing gloves.<br>Cooldown: 40 seconds"
+	short_desc = "Sprawia, że wszystko, czego dotyka nosiciel, na pewien czas staje się zakaźne i zaraża każdego, kto tego dotknie."
+	long_desc = "Sprawia, że śledzony nosiciel wydziela porami zakaźną substancję i przez 30 sekund wszystko, co dotyka jego skóry, zaraża dotykających. Dotyczy to podłogi, jeśli nie ma butów, i trzymanych przedmiotów, jeśli nie ma rękawiczek.<br>Odnowienie: 40 sekund"
 
 /datum/action/cooldown/disease_infect
 	name = "Secrete Infection"
@@ -297,46 +297,46 @@ new /datum/disease_ability/symptom/powerful/youth
 /datum/disease_ability/symptom/mild/cough
 	name = "Involuntary Coughing"
 	symptoms = list(/datum/symptom/cough)
-	short_desc = "Cause victims to cough intermittently."
-	long_desc = "Cause victims to cough intermittently, spreading your infection if your transmissibility is high."
+	short_desc = "Wywołuje u ofiar napady kaszlu."
+	long_desc = "Wywołuje u ofiar napady kaszlu, które przy wysokiej zaraźliwości przenoszą infekcję."
 
 /datum/disease_ability/symptom/mild/sneeze
 	name = "Involuntary Sneezing"
 	symptoms = list(/datum/symptom/sneeze)
-	short_desc = "Cause victims to sneeze intermittently."
-	long_desc = "Cause victims to sneeze intermittently, spreading your infection and also increasing transmissibility and resistance, at the cost of stealth."
+	short_desc = "Wywołuje u ofiar napady kichania."
+	long_desc = "Wywołuje u ofiar napady kichania, które przenoszą infekcję i zwiększają zaraźliwość oraz odporność kosztem skrytości."
 
 /******MEDIUM******/
 
 /datum/disease_ability/symptom/medium/beard
 	symptoms = list(/datum/symptom/beard)
-	short_desc = "Cause all victims to grow a luscious beard."
-	long_desc = "Cause all victims to grow a luscious beard. Ineffective against Santa Claus."
+	short_desc = "Sprawia, że wszystkim ofiarom rośnie bujna broda."
+	long_desc = "Sprawia, że wszystkim ofiarom rośnie bujna broda. Nie działa na Świętego Mikołaja."
 
 /datum/disease_ability/symptom/medium/hallucigen
 	symptoms = list(/datum/symptom/hallucigen)
-	short_desc = "Cause victims to hallucinate."
-	long_desc = "Cause victims to hallucinate. Decreases stats, especially resistance."
+	short_desc = "Wywołuje u ofiar halucynacje."
+	long_desc = "Wywołuje u ofiar halucynacje. Obniża statystyki, zwłaszcza odporność."
 
 /datum/disease_ability/symptom/medium/confusion
 	symptoms = list(/datum/symptom/confusion)
-	short_desc = "Cause victims to become confused."
-	long_desc = "Cause victims to become confused intermittently."
+	short_desc = "Wywołuje u ofiar dezorientację."
+	long_desc = "Wywołuje u ofiar napady dezorientacji."
 
 /datum/disease_ability/symptom/medium/vomit
 	symptoms = list(/datum/symptom/vomit)
-	short_desc = "Cause victims to vomit."
-	long_desc = "Cause victims to vomit. Slightly increases transmissibility. Vomiting also also causes the victims to lose nutrition and removes some toxin damage."
+	short_desc = "Wywołuje u ofiar wymioty."
+	long_desc = "Wywołuje u ofiar wymioty. Lekko zwiększa zaraźliwość. Wymioty obniżają też poziom odżywienia ofiar i usuwają część zatrucia."
 
 /datum/disease_ability/symptom/medium/voice_change
 	symptoms = list(/datum/symptom/voice_change)
-	short_desc = "Change the voice of victims."
-	long_desc = "Change the voice of victims, causing confusion in communications."
+	short_desc = "Zmienia głos ofiar."
+	long_desc = "Zmienia głos ofiar, wprowadzając zamęt w komunikacji."
 
 /datum/disease_ability/symptom/medium/visionloss
 	symptoms = list(/datum/symptom/visionloss)
-	short_desc = "Damage the eyes of victims, eventually causing blindness."
-	long_desc = "Damage the eyes of victims, eventually causing blindness. Decreases all stats."
+	short_desc = "Uszkadza oczy ofiar, w końcu prowadząc do ślepoty."
+	long_desc = "Uszkadza oczy ofiar, w końcu prowadząc do ślepoty. Obniża wszystkie statystyki."
 
 /datum/disease_ability/symptom/medium/deafness
 	symptoms = list(/datum/symptom/deafness)
@@ -358,8 +358,8 @@ new /datum/disease_ability/symptom/powerful/youth
 
 /datum/disease_ability/symptom/medium/viraladaptation
 	symptoms = list(/datum/symptom/viraladaptation)
-	short_desc = "Cause your infection to become more resistant to detection and eradication."
-	long_desc = "Cause your infection to mimic the function of normal body cells, becoming much harder to spot and to eradicate, but reducing its speed."
+	short_desc = "Sprawia, że twoja infekcja jest trudniejsza do wykrycia i zwalczenia."
+	long_desc = "Sprawia, że twoja infekcja naśladuje zwykłe komórki ciała, przez co znacznie trudniej ją zauważyć i zwalczyć, ale postępuje wolniej."
 
 /datum/disease_ability/symptom/medium/viralevolution
 	symptoms = list(/datum/symptom/viralevolution)
@@ -378,18 +378,18 @@ new /datum/disease_ability/symptom/powerful/youth
 
 /datum/disease_ability/symptom/medium/itching
 	symptoms = list(/datum/symptom/itching)
-	short_desc = "Cause victims to itch."
-	long_desc = "Cause victims to itch, increasing all stats except stealth."
+	short_desc = "Wywołuje u ofiar swędzenie."
+	long_desc = "Wywołuje u ofiar swędzenie, zwiększając wszystkie statystyki poza skrytością."
 
 /datum/disease_ability/symptom/medium/heal/weight_loss
 	symptoms = list(/datum/symptom/weight_loss)
-	short_desc = "Cause victims to lose weight."
-	long_desc = "Cause victims to lose weight, and make it almost impossible for them to gain nutrition from food. Reduced nutrition allows your infection to spread more easily from hosts, especially by sneezing."
+	short_desc = "Sprawia, że ofiary tracą na wadze."
+	long_desc = "Sprawia, że ofiary tracą na wadze i prawie nie mogą się odżywić jedzeniem. Słabsze odżywienie ułatwia rozprzestrzenianie infekcji z nosicieli, zwłaszcza przez kichanie."
 
 /datum/disease_ability/symptom/medium/heal/sensory_restoration
 	symptoms = list(/datum/symptom/sensory_restoration)
-	short_desc = "Regenerate eye and ear damage of victims."
-	long_desc = "Regenerate eye and ear damage of victims."
+	short_desc = "Leczy uszkodzenia oczu i uszu ofiar."
+	long_desc = "Leczy uszkodzenia oczu i uszu ofiar."
 
 /datum/disease_ability/symptom/medium/heal/mind_restoration
 	symptoms = list(/datum/symptom/mind_restoration)
@@ -416,8 +416,8 @@ new /datum/disease_ability/symptom/powerful/youth
 
 /datum/disease_ability/symptom/powerful/youth
 	symptoms = list(/datum/symptom/youth)
-	short_desc = "Cause victims to become eternally young."
-	long_desc = "Cause victims to become eternally young. Provides boosts to all stats except transmissibility."
+	short_desc = "Sprawia, że ofiary są wiecznie młode."
+	long_desc = "Sprawia, że ofiary są wiecznie młode. Zwiększa wszystkie statystyki poza zaraźliwością."
 
 /****HEALING SUBTYPE****/
 

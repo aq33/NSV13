@@ -65,8 +65,8 @@
 	report += printplayer(owner)
 	if(istype(owner.current, /mob/living/simple_animal/hostile/morph))
 		var/mob/living/simple_animal/hostile/morph/M = owner.current
-		report += "Things eaten: [M.eat_count]"
-		report += "Corpses eaten: [M.corpse_eat_count]"
+		report += "Zjedzone rzeczy: [M.eat_count]"
+		report += "Zjedzone zwłoki: [M.corpse_eat_count]"
 
 	var/objectives_complete = TRUE
 	if(objectives.len)
@@ -77,23 +77,23 @@
 				break
 
 	if(objectives.len == 0 || objectives_complete)
-		report += "<span class='greentext big'>The [name] was successful!</span>"
+		report += "<span class='greentext big'>[name]: sukces!</span>"
 	else
-		report += "<span class='redtext big'>The [name] has failed!</span>"
+		report += "<span class='redtext big'>[name]: porażka!</span>"
 
 	return report.Join("<br>")
 
 // Consume x objects
 /datum/objective/morph_eat_things
 	name = "morph eat objective"
-	explanation_text = "Eat things."
+	explanation_text = "Jedz rzeczy."
 	var/target_things
 
 /datum/objective/morph_eat_things/update_explanation_text()
 	..()
 	if(!target_things)
 		target_things = rand(20, 60)
-	explanation_text = "Eat at least [target_things] things."
+	explanation_text = "Zjedz co najmniej [target_things] rzeczy."
 
 /datum/objective/morph_eat_things/check_completion()
 	if(..())
@@ -106,14 +106,14 @@
 // Consume x corpses
 /datum/objective/morph_eat_corpses
 	name = "morph eat corpses objective"
-	explanation_text = "Eat corpses."
+	explanation_text = "Jedz zwłoki."
 	var/target_corpses
 
 /datum/objective/morph_eat_corpses/update_explanation_text()
 	..()
 	if(!target_corpses)
 		target_corpses = rand(2, 6)
-	explanation_text = "Eat at least [target_corpses] corpses."
+	explanation_text = "Zjedz co najmniej [target_corpses] zwłok."
 
 /datum/objective/morph_eat_corpses/check_completion()
 	if(..())

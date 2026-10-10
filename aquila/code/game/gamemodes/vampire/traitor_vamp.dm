@@ -15,8 +15,8 @@
 	var/list/pre_vamps = list()
 
 /datum/game_mode/traitor/vampire/announce()
-	to_chat(world, "<B>The current game mode is - Traitor+Vampire!</B>")
-	to_chat(world, "<B>There are vampires on the station along with some syndicate operatives out for their own gain! Do not let the vampires and the traitors succeed!</B>")
+	to_chat(world, "<B>Obecny tryb gry to zdrajca i wampir!</B>")
+	to_chat(world, "<B>Na statku są wampiry i agenci Syndykatu działający dla własnych korzyści! Nie pozwólcie wampirom ani zdrajcom wygrać!</B>")
 
 /datum/game_mode/traitor/vampire/can_start()
 	if(!..())
@@ -82,5 +82,5 @@
 	..()
 
 /datum/game_mode/traitor/vampire/generate_report()
-	return "We have received some fuzzy reports about the Syndicate cooperating with a bluespace demon.\
-			Keep a watch out for syndicate agents, and have your Chaplain on standby."
+	return "Dotarły do nas niejasne raporty o współpracy Syndykatu z demonem z bluespace.\
+			Wypatrujcie agentów Syndykatu i trzymajcie kapelana w gotowości."

@@ -11,7 +11,7 @@
 		if(!V)
 			return FALSE
 		if(V.usable_blood < blood_used)
-			to_chat(user, "<span class='warning'>You do not have enough blood to cast this!</span>")
+			to_chat(user, "<span class='warning'>Masz za mało krwi, żeby tego użyć!</span>")
 			return FALSE
 	. = ..(skipcharge, user)
 
@@ -44,7 +44,7 @@
 			targets.Cut()
 
 		if(LAZYLEN(targets))
-			to_chat(usr, "<span class='notice'><b>You have [vampire.usable_blood] left to use.</b></span>")
+			to_chat(usr, "<span class='notice'><b>Krew do wykorzystania: [vampire.usable_blood].</b></span>")
 
 
 /obj/effect/proc_holder/spell/can_target(mob/living/target)
@@ -58,7 +58,7 @@
 	if(!V || !amount)
 		return
 	V.usable_blood += amount
-	to_chat(user, "<span class='notice'><b>You have [V.usable_blood] left to use.</b></span>")
+	to_chat(user, "<span class='notice'><b>Krew do wykorzystania: [V.usable_blood].</b></span>")
 
 /datum/vampire_passive
 	var/gain_desc
@@ -66,23 +66,23 @@
 /datum/vampire_passive/New()
 	..()
 	if(!gain_desc)
-		gain_desc = "<span class='notice'>You have gained \the [src] ability.</span>"
+		gain_desc = "<span class='notice'>Zyskujesz zdolność: [src].</span>"
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /datum/vampire_passive/nostealth
-	gain_desc = "<span class='warning'>You are no longer able to conceal yourself while sucking blood.</span>" //gets a warning span because it's a downgrade
+	gain_desc = "<span class='warning'>Nie możesz już się ukrywać podczas wysysania krwi.</span>" //gets a warning span because it's a downgrade
 
 /datum/vampire_passive/regen
-	gain_desc = "<span class='notice'>Your innate regenerative abilities have been improved, granting passive healing. Rejuvenate now also helps to reduce disabling effects.</span>"
+	gain_desc = "<span class='notice'>Twoje wrodzone zdolności regeneracyjne się poprawiły, dając bierne leczenie. Odmłodzenie pomaga teraz też zmniejszyć efekty obezwładniające.</span>"
 
 /datum/vampire_passive/vision
-	gain_desc = "<span class='notice'>Your vampiric vision has improved.</span>"
+	gain_desc = "<span class='notice'>Twój wampirzy wzrok się poprawił.</span>"
 
 /datum/vampire_passive/full
-	gain_desc = "<span class='notice'>You have reached your full potential and are no longer weak to the effects of anything holy and your vision has been improved greatly.</span>"
+	gain_desc = "<span class='notice'>Osiągasz pełnię możliwości - nie jesteś już podatny na nic świętego, a twój wzrok znacznie się poprawił.</span>"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -122,8 +122,8 @@
 	desc = "Paralyze your target with fear."
 	charge_max = 300
 	action_icon_state = "gaze"
-	active_msg = "You prepare your vampiric gaze."
-	deactive_msg = "You stop preparing your vampiric gaze."
+	active_msg = "Przygotowujesz wampirze spojrzenie."
+	deactive_msg = "Przestajesz przygotowywać wampirze spojrzenie."
 	vamp_req = TRUE
 	ranged_mousepointer = 'aquila/icons/effects/mouse_pointers/gaze_target.dmi'
 	action_icon = 'aquila/icons/mob/vampire.dmi'
@@ -134,32 +134,32 @@
 	if(!.)
 		return FALSE
 	if(!ishuman(target))
-		to_chat(user, "<span class='warning'>Gaze will not work on this being.</span>")
+		to_chat(user, "<span class='warning'>Spojrzenie nie zadziała na tę istotę.</span>")
 		return FALSE
 	var/mob/living/carbon/human/T = target
 
 	if(T.stat == DEAD)
-		to_chat(user,"<span class='warning'>You cannot gaze at corpses... \
-			or maybe you could if you really wanted to.</span>")
+		to_chat(user,"<span class='warning'>Nie możesz wpatrywać się w zwłoki... \
+			a może jednak możesz, jeśli naprawdę chcesz.</span>")
 		return FALSE
 
 /obj/effect/proc_holder/spell/pointed/gaze/cast(list/targets, mob/user)
 	var/mob/living/carbon/human/T = targets[1]
 	if(!ishuman(T))
 		return
-	user.visible_message("<span class='warning'>[user]'s eyes flash red.</span>",\
-					"<span class='warning'>Your eyes flash red.</span>")
+	user.visible_message("<span class='warning'>Oczy [user] błyskają czerwienią.</span>",\
+					"<span class='warning'>Twoje oczy błyskają czerwienią.</span>")
 	var/protection = T.get_eye_protection()
 	if(protection == INFINITY)
-		to_chat(user, "<span class='warning'>[T] is blind and is unaffected by your gaze!</span>")
+		to_chat(user, "<span class='warning'>[T] jest ślepy, więc twoje spojrzenie nie działa!</span>")
 		return
 	if(protection > 0) //eye protection only dampens the gaze
-		to_chat(user, "<span class='warning'>Your gaze is dampened by [T]'s eye protection, only confusing them.</span>")
-		to_chat(T, "<span class='warning'>You feel disoriented as [user]'s gaze is dampened by your eye protection!</span>")
+		to_chat(user, "<span class='warning'>Ochrona oczu [T] tłumi twoje spojrzenie, tylko dezorientując cel.</span>")
+		to_chat(T, "<span class='warning'>Czujesz dezorientację, gdy twoja ochrona oczu tłumi spojrzenie [user]!</span>")
 		T.confused = max(T.confused, 3)
 		return
-	to_chat(T, "<span class='userdanger'>You are paralyzed with fear!</span>")
-	to_chat(user, "<span class='notice'>You paralyze [T].</span>")
+	to_chat(T, "<span class='userdanger'>Paraliżuje cię strach!</span>")
+	to_chat(user, "<span class='notice'>Paraliżujesz [T].</span>")
 	T.Stun(5 SECONDS)
 
 
@@ -169,8 +169,8 @@
 	charge_max = 300
 	blood_used = 20
 	action_icon_state = "hypnotize"
-	active_msg = "<span class='warning'>You prepare your hypnosis technique.</span>"
-	deactive_msg = "<span class='warning'>You stop preparing your hypnosis.</span>"
+	active_msg = "<span class='warning'>Przygotowujesz technikę hipnozy.</span>"
+	deactive_msg = "<span class='warning'>Przestajesz przygotowywać hipnozę.</span>"
 	vamp_req = TRUE
 	ranged_mousepointer = 'aquila/icons/effects/mouse_pointers/hypnotize_target.dmi'
 	action_icon = 'aquila/icons/mob/vampire.dmi'
@@ -180,12 +180,12 @@
 	if(!..())
 		return FALSE
 	if(!ishuman(target))
-		to_chat(user, "<span class='warning'>Hypnotize will not work on this being.</span>")
+		to_chat(user, "<span class='warning'>Hipnoza nie zadziała na tę istotę.</span>")
 		return FALSE
 
 	var/mob/living/carbon/human/T = target
 	if(T.IsSleeping())
-		to_chat(user, "<span class='warning'>[T] is already asleep!</span>")
+		to_chat(user, "<span class='warning'>[T] już śpi!</span>")
 		return FALSE
 	return TRUE
 
@@ -193,33 +193,33 @@
 	var/mob/living/carbon/human/T = targets[1]
 	if(!ishuman(T))
 		return
-	user.visible_message("<span class='warning'>[user] twirls their finger in a circular motion.</span>",\
-			"<span class='warning'>You twirl your finger in a circular motion.</span>")
+	user.visible_message("<span class='warning'>[user] kręci palcem w kółko.</span>",\
+			"<span class='warning'>Kręcisz palcem w kółko.</span>")
 
 	var/protection = T.get_eye_protection()
 	var/sleep_duration = 30 SECONDS
 	if(protection == INFINITY)
-		to_chat(user, "<span class='warning'>[T] is blind and is unaffected by hypnosis!</span>")
+		to_chat(user, "<span class='warning'>[T] jest ślepy, więc hipnoza nie działa!</span>")
 		return
 	if(protection > 0)
-		to_chat(user, "<span class='warning'>Your hypnotic powers are dampened by [T]'s eye protection.</span>")
+		to_chat(user, "<span class='warning'>Ochrona oczu [T] tłumi twoje moce hipnotyczne.</span>")
 		sleep_duration = 10 SECONDS
 
-	to_chat(T, "<span class='boldwarning'>Your knees suddenly feel heavy. Your body begins to sink to the floor.</span>")
-	to_chat(user, "<span class='notice'>[T] is now under your spell. In four seconds they will be rendered unconscious as long as they are within close range.</span>")
+	to_chat(T, "<span class='boldwarning'>Kolana nagle ci ciężeją. Twoje ciało zaczyna osuwać się na podłogę.</span>")
+	to_chat(user, "<span class='notice'>[T] jest teraz pod twoim urokiem. Za cztery sekundy straci przytomność, o ile będzie blisko.</span>")
 	if(do_mob(user, T, 4 SECONDS, TRUE)) // 4 seconds...
 		if(get_dist(user, T) <= 3)
 			flash_color(T, flash_color="#472040", flash_time=3 SECONDS) // it's the vampires color!
 			T.SetSleeping(sleep_duration)
-			to_chat(user, "<span class='warning'>[T] has fallen asleep!</span>")
+			to_chat(user, "<span class='warning'>[T] zasypia!</span>")
 		else
-			to_chat(T, "<span class='notice'>You feel a whole lot better now.</span>")
+			to_chat(T, "<span class='notice'>Czujesz się teraz o wiele lepiej.</span>")
 
 
 /obj/effect/proc_holder/spell/self/cloak
 	name = "Cloak of Darkness"
 	desc = "Toggles whether you are currently cloaking yourself in darkness."
-	gain_desc = "You have gained the Cloak of Darkness ability which when toggled makes you near invisible in the shroud of darkness."
+	gain_desc = "Zyskujesz zdolność Płaszcz Ciemności, która po włączeniu czyni cię niemal niewidzialnym w mroku."
 	action_icon_state = "cloak"
 	charge_max = 10
 	action_icon = 'aquila/icons/mob/vampire.dmi'
@@ -244,13 +244,13 @@
 		return
 	V.iscloaking = !V.iscloaking
 	update_name()
-	to_chat(user, "<span class='notice'>You will now be [V.iscloaking ? "hidden" : "seen"] in darkness.</span>")
+	to_chat(user, "<span class='notice'>W ciemności będziesz teraz [V.iscloaking ? "ukryty" : "widoczny"].</span>")
 
 
 /obj/effect/proc_holder/spell/self/screech
 	name = "Chiropteran Screech (20)"
 	desc = "An extremely loud shriek that stuns nearby humans and breaks windows as well."
-	gain_desc = "You have gained the Chiropteran Screech ability which stuns anything with ears in a large radius and shatters glass in the process."
+	gain_desc = "Zyskujesz zdolność Nietoperzy Wrzask, która ogłusza wszystko, co ma uszy, w dużym promieniu i przy okazji tłucze szkło."
 	action_icon_state = "reeee"
 	action_icon = 'aquila/icons/mob/vampire.dmi'
 	action_background_icon_state = "bg_demon"
@@ -258,13 +258,13 @@
 	vamp_req = TRUE
 
 /obj/effect/proc_holder/spell/self/screech/cast(list/targets, mob/user = usr)
-	user.visible_message("<span class='warning'>[user] lets out an ear piercing shriek!</span>", "<span class='warning'>You let out a loud shriek.</span>", "<span class='warning'>You hear a loud painful shriek!</span>")
+	user.visible_message("<span class='warning'>[user] wydaje przeszywający uszy wrzask!</span>", "<span class='warning'>Wydajesz głośny wrzask.</span>", "<span class='warning'>Słyszysz głośny, bolesny wrzask!</span>")
 	for(var/mob/living/carbon/human/C in hearers(4, user))
 		if(C == user || is_vampire(C))
 			continue
 		if(!C.soundbang_act(1, 0)) //earmuffs and the like protect from it
 			continue
-		to_chat(C, "<span class='warning'><font size='3'><b>You hear a ear piercing shriek and your senses dull!</b></font></span>")
+		to_chat(C, "<span class='warning'><font size='3'><b>Słyszysz przeszywający uszy wrzask i tępieją ci zmysły!</b></font></span>")
 		C.Knockdown(40)
 		C.adjustEarDamage(0, 30)
 		C.stuttering = max(C.stuttering, 30)
@@ -278,7 +278,7 @@
 /obj/effect/proc_holder/spell/self/bats
 	name = "Summon Bats (30)"
 	desc = "You summon a pair of space bats who attack nearby targets until they or their target is dead."
-	gain_desc = "You have gained the Summon Bats ability."
+	gain_desc = "Zyskujesz zdolność Przywołanie Nietoperzy."
 	action_icon_state = "bats"
 	action_icon = 'aquila/icons/mob/vampire.dmi'
 	action_background_icon_state = "bg_demon"
@@ -299,7 +299,7 @@
 
 /obj/effect/proc_holder/spell/targeted/ethereal_jaunt/mistform
 	name = "Mist Form (30)"
-	gain_desc = "You have gained the Mist Form ability which allows you to take on the form of mist for a short period and pass over any obstacle in your path."
+	gain_desc = "Zyskujesz zdolność Postać Mgły, która pozwala na krótko zmienić się w mgłę i pokonać każdą przeszkodę."
 	blood_used = 30
 	action_background_icon_state = "bg_demon"
 	vamp_req = TRUE
@@ -313,7 +313,7 @@
 /obj/effect/proc_holder/spell/targeted/vampirize
 	name = "Lilith's Pact (300)"
 	desc = "You drain a victim's blood, and fill them with new blood, blessed by Lilith, turning them into a new vampire."
-	gain_desc = "You have gained the ability to force someone, given time, to become a vampire."
+	gain_desc = "Zyskujesz zdolność, by z czasem zmusić kogoś do stania się wampirem."
 	action_icon = 'aquila/icons/mob/vampire.dmi'
 	action_background_icon_state = "bg_demon"
 	action_icon_state = "oath"
@@ -324,40 +324,40 @@
 	var/datum/antagonist/vampire/vamp = user.mind.has_antag_datum(/datum/antagonist/vampire)
 	for(var/mob/living/carbon/target in targets)
 		if(is_vampire(target))
-			to_chat(user, "<span class='warning'>They're already a vampire!</span>")
+			to_chat(user, "<span class='warning'>To już jest wampir!</span>")
 			refund_vampire_blood(user)
 			continue
 		if(HAS_TRAIT(target, TRAIT_MINDSHIELD))
-			to_chat(user, "<span class='warning'>[target]'s mind is too strong!</span>")
+			to_chat(user, "<span class='warning'>Umysł [target] jest zbyt silny!</span>")
 			refund_vampire_blood(user)
 			continue
-		user.visible_message("<span class='warning'>[user] latches onto [target]'s neck, pure dread eminating from them.</span>", "<span class='warning'>You latch onto [target]'s neck, preparing to transfer your unholy blood to them.</span>", "<span class='warning'>A dreadful feeling overcomes you</span>")
+		user.visible_message("<span class='warning'>[user] wpija się w szyję [target], emanując czystą grozą.</span>", "<span class='warning'>Wpijasz się w szyję [target], przygotowując się, by przekazać swoją nieświętą krew.</span>", "<span class='warning'>Ogarnia cię straszliwe uczucie</span>")
 		target.reagents.add_reagent(/datum/reagent/medicine/salbutamol, 10) //incase you're choking the victim
 		for(var/progress = 0, progress <= 3, progress++)
 			switch(progress)
 				if(1)
-					to_chat(target, "<span class='danger'>Wicked shadows invade your sight, beckoning to you.</span>")
-					to_chat(user, "<span class='notice'>We begin to drain [target]'s blood in, so Lilith can bless it.</span>")
+					to_chat(target, "<span class='danger'>Złowrogie cienie wdzierają się w twoje pole widzenia, przyzywając cię.</span>")
+					to_chat(user, "<span class='notice'>Zaczynamy wysysać krew [target], by Lilith mogła ją pobłogosławić.</span>")
 				if(2)
-					to_chat(target, "<span class='danger'>Demonic whispers fill your mind, and they become irressistible...</span>")
+					to_chat(target, "<span class='danger'>Demoniczne szepty wypełniają twój umysł i stają się nie do odparcia...</span>")
 				if(3)
-					to_chat(target, "<span class='danger'>The world blanks out, and you see a demo- no ange- demon- lil- glory- blessing... Lilith.</span>")
-					to_chat(user, "<span class='notice'>Excitement builds up in you as [target] sees the blessing of Lilith.</span>")
+					to_chat(target, "<span class='danger'>Świat znika, a ty widzisz demo- nie, anio- demon- lil- chwała- błogosławieństwo... Lilith.</span>")
+					to_chat(user, "<span class='notice'>Narasta w tobie ekscytacja, gdy [target] dostrzega błogosławieństwo Lilith.</span>")
 			if(!do_mob(user, target, 70))
-				to_chat(user, "<span class='danger'>The pact has failed! [target] has not became a vampire.</span>")
-				to_chat(target, "<span class='notice'>The visions stop, and you relax.</span>")
+				to_chat(user, "<span class='danger'>Pakt się nie powiódł! [target] nie zostaje wampirem.</span>")
+				to_chat(target, "<span class='notice'>Wizje ustają, a ty się rozluźniasz.</span>")
 				refund_vampire_blood(user)
 				return
 		if(!QDELETED(user) && !QDELETED(target))
 			to_chat(user, "<span class='notice'>. . .</span>")
-			to_chat(target, "<span class='italics'>Come to me, child.</span>")
+			to_chat(target, "<span class='italics'>Przyjdź do mnie, dziecko.</span>")
 			sleep(10)
-			to_chat(target, "<span class='italics'>The world hasn't treated you well, has it?</span>")
+			to_chat(target, "<span class='italics'>Świat nie traktował cię dobrze, prawda?</span>")
 			sleep(15)
-			to_chat(target, "<span class='italics'>Strike fear into their hearts...</span>")
-			to_chat(user, "<span class='notice italics bold'>They have signed the pact!</span>")
-			to_chat(target, "<span class='userdanger'>You sign Lilith's Pact.</span>")
-			target.mind.store_memory("<B>[user] showed you the glory of Lilith. <I>You are not required to obey [user], however, you have gained a respect for them.</I></B>")
+			to_chat(target, "<span class='italics'>Zasiej strach w ich sercach...</span>")
+			to_chat(user, "<span class='notice italics bold'>Pakt został podpisany!</span>")
+			to_chat(target, "<span class='userdanger'>Podpisujesz Pakt Lilith.</span>")
+			target.mind.store_memory("<B>[user] pokazał ci chwałę Lilith. <I>Nie musisz słuchać [user], ale zyskujesz dla niego szacunek.</I></B>")
 			target.Sleeping(600)
 			target.blood_volume = 560
 			add_vampire(target, FALSE)
@@ -366,7 +366,7 @@
 
 /obj/effect/proc_holder/spell/self/revive
 	name = "Revive"
-	gain_desc = "You have gained the ability to revive after death... However you can still be cremated/gibbed, and you will disintegrate if you're in the chapel and not yet strong enough!"
+	gain_desc = "Zyskujesz zdolność odradzania się po śmierci... Wciąż możesz jednak zostać spopielony lub rozerwany, a w kaplicy, dopóki nie jesteś dość silny, rozpadniesz się w proch!"
 	desc = "Revives you, provided you are not in the chapel! Use again to cancel the reanimation."
 	blood_used = 0
 	stat_allowed = TRUE
@@ -383,18 +383,18 @@
 	if(!is_vampire(user) || !isliving(user))
 		return
 	if(user.stat != DEAD)
-		to_chat(user, "<span class='notice'>We aren't dead enough to do that yet!</span>")
+		to_chat(user, "<span class='notice'>Nie jesteśmy jeszcze dość martwi, by to zrobić!</span>")
 		return
 	if(user.reagents.has_reagent(/datum/reagent/water/holywater))
-		to_chat(user, "<span class='danger'>We cannot revive, holy water is in our system!</span>")
+		to_chat(user, "<span class='danger'>Nie możemy się ożywić, mamy w organizmie wodę święconą!</span>")
 		return
 	reviving = !reviving
 	deltimer(revive_timer)
 	if(reviving)
-		to_chat(user, "<span class='notice'>We begin to reanimate... this will take 1 minute.</span>")
+		to_chat(user, "<span class='notice'>Zaczynamy się reanimować... zajmie to minutę.</span>")
 		revive_timer = addtimer(CALLBACK(src, .proc/revive, user), 1 MINUTES, TIMER_UNIQUE | TIMER_STOPPABLE)
 	else
-		to_chat(user, "<span class='notice'>We stop our reanimation.</span>")
+		to_chat(user, "<span class='notice'>Przerywamy reanimację.</span>")
 
 /obj/effect/proc_holder/spell/self/revive/proc/revive(mob/living/user)
 	reviving = FALSE
@@ -403,9 +403,9 @@
 	if(istype(get_area(user), /area/chapel))
 		var/datum/antagonist/vampire/V = is_vampire(user)
 		if(V && V.get_ability(/datum/vampire_passive/full)) //full blooded vampire doesn't get dusted if they try to res, it still doesn't work though
-			to_chat(user, "<span class='danger'>The holy energies of this place prevent our revival!</span>")
+			to_chat(user, "<span class='danger'>Święte energie tego miejsca uniemożliwiają nam ożywienie!</span>")
 			return
-		user.visible_message("<span class='warning'>[user] disintegrates into dust!</span>", "<span class='userdanger'>Holy energy seeps into our very being, disintegrating us instantly!</span>", "You hear sizzling.")
+		user.visible_message("<span class='warning'>[user] rozpada się w pył!</span>", "<span class='userdanger'>Święta energia przenika naszą istotę, natychmiast nas dezintegrując!</span>", "Słyszysz skwierczenie.")
 		new /obj/effect/decal/remains/human(user.loc)
 		user.dust()
 		return
@@ -416,17 +416,17 @@
 	var/list/missing = user.get_missing_limbs()
 	if(missing.len)
 		playsound(user, 'sound/magic/demon_consume.ogg', 50, 1)
-		user.visible_message("<span class='warning'>Shadowy matter takes the place of [user]'s missing limbs as they reform!</span>")
+		user.visible_message("<span class='warning'>Cienista materia zastępuje brakujące kończyny [user], które się odtwarzają!</span>")
 		user.regenerate_limbs()
 		user.regenerate_organs()
 	user.revive(full_heal = TRUE)
-	user.visible_message("<span class='warning'>[user] reanimates from death!</span>", "<span class='notice'>We get back up.</span>")
+	user.visible_message("<span class='warning'>[user] powstaje z martwych!</span>", "<span class='notice'>Wstajemy z powrotem.</span>")
 
 
 /obj/effect/proc_holder/spell/self/summon_coat
 	name = "Summon Dracula Coat (100)"
 	desc = "Allows you to summon a Vampire Coat providing passive usable blood restoration."
-	gain_desc = "Now that you have reached full power, you can now pull a vampiric coat out of thin air!"
+	gain_desc = "Teraz, gdy osiągasz pełnię mocy, możesz wyciągnąć wampirzy płaszcz z powietrza!"
 	blood_used = 100
 	action_icon = 'aquila/icons/mob/vampire.dmi'
 	action_icon_state = "coat"
@@ -445,12 +445,12 @@
 	else if(get_dist(V.coat, user) > 1 || !(V.coat in user.GetAllContents()))
 		V.coat.forceMove(user.loc)
 	user.put_in_hands(V.coat)
-	to_chat(user, "<span class='notice'>You summon your dracula coat.</span>")
+	to_chat(user, "<span class='notice'>Przywołujesz swój płaszcz Drakuli.</span>")
 
 
 /obj/effect/proc_holder/spell/self/batform
 	name = "Bat Form (15)"
-	gain_desc = "You now have the Bat Form ability, which allows you to turn into a bat (and back!)"
+	gain_desc = "Masz teraz zdolność Postać Nietoperza, która pozwala zmienić się w nietoperza (i z powrotem!)"
 	desc = "Transform into a bat!"
 	action_icon_state = "bat"
 	charge_max = 200
@@ -468,11 +468,11 @@
 		if(isliving(user))
 			var/mob/living/L = user
 			if(L.incapacitated())
-				to_chat(user, "<span class='warning'>You can't transform while incapacitated!</span>")
+				to_chat(user, "<span class='warning'>Nie możesz się przemienić, gdy jesteś obezwładniony!</span>")
 				revert_cast()
 				return FALSE
 		if(V.usable_blood < 15)
-			to_chat(user, "<span class='warning'>You do not have enough blood to cast this!</span>")
+			to_chat(user, "<span class='warning'>Masz za mało krwi, żeby tego użyć!</span>")
 			revert_cast()
 			return FALSE
 		V.usable_blood -= 15

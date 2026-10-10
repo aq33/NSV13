@@ -43,7 +43,7 @@
 	armour_penetration = 15
 
 /obj/item/katana/greedcursed/attack(mob/target, mob/living/carbon/human/user)
-	to_chat(user, span_warning("[src] digs into your hands..."))
+	to_chat(user, span_warning("[src] wbija ci się w dłonie..."))
 	user.apply_damage(rand(force/4, force/2), BRUTE, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)) //5-10 damage to one of your arms
 	return ..()
 
@@ -61,7 +61,7 @@
 		return
 	if(!user.can_read(src))
 		return FALSE
-	to_chat(user, span_notice("You flip through the pages as quickly as possible, the overwhelming stench draining seemingly your very being. As you finish, the book suddenly ignites in a flash of hellfire, and turns to dust."))
+	to_chat(user, span_notice("Kartkujesz strony najszybciej, jak się da, a przytłaczający smród zdaje się wysysać z ciebie samą istotę. Gdy kończysz, księga nagle zajmuje się piekielnym ogniem i obraca w proch."))
 	user.grant_all_languages()
 	user.health -= 20
 	user.maxHealth -= 20
@@ -77,7 +77,7 @@
 /obj/item/greedcursed_bottle/attack_self(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
-	to_chat(user, span_danger("You feel a bit better for but a moment, like your very life force grew stronger. Then, all of a sudden, your flesh sloughs and darkens, revealing your terrible new form..."))
+	to_chat(user, span_danger("Przez chwilę czujesz się lepiej, jakby twoja siła życiowa urosła. Potem nagle twoje ciało złazi płatami i ciemnieje, odsłaniając nową, straszliwą postać..."))
 	user.set_species(/datum/species/shadow)
 	if(user.maxHealth < 100) //cannot bring you above standard max health
 		user.maxHealth += 20

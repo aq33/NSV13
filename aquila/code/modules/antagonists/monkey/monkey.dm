@@ -30,14 +30,14 @@
 		QDEL_NULL(D)
 
 /datum/antagonist/monkey/greet()
-	to_chat(owner, "<b>You are a monkey now!</b>")
-	to_chat(owner, "<b>Bite humans to infect them and healthy monkeys to enlarge your army, and overthrow humans!</b>")
-	to_chat(owner, "<b>Ensure at least one infected monkey escapes on the Emergency Shuttle!</b>")
-	to_chat(owner, "<b><i>As an intelligent monkey, you know how to use technology and how to ventcrawl while wearing things.</i></b>")
-	to_chat(owner, "<b>You can use :k to talk to fellow monkeys!</b>")
+	to_chat(owner, "<b>Jesteś teraz małpą!</b>")
+	to_chat(owner, "<b>Gryź ludzi, żeby ich zarazić, i zdrowe małpy, żeby powiększyć armię, a potem obal ludzi!</b>")
+	to_chat(owner, "<b>Dopilnuj, by co najmniej jedna zarażona małpa uciekła promem ewakuacyjnym!</b>")
+	to_chat(owner, "<b><i>Jako inteligentna małpa umiesz korzystać z technologii i chodzić wywietrznikami w ubraniu.</i></b>")
+	to_chat(owner, "<b>Użyj :k, żeby rozmawiać z innymi małpami!</b>")
 	SEND_SOUND(owner.current, sound('sound/ambience/antag/monkey.ogg'))
 	owner.current.client?.tgui_panel?.give_antagonist_popup("Monkey",
-		"Bite other humans to infect them and escape on the emergency shuttle to succeed.")
+		"Gryź ludzi, żeby ich zarazić, i ucieknij promem ewakuacyjnym, żeby wygrać.")
 
 /datum/antagonist/monkey/on_removal()
 	owner.special_role = null
@@ -102,19 +102,19 @@
 	. = ..()
 
 /datum/antagonist/monkey/leader/greet()
-	to_chat(owner, "<B><span class='notice'>You are the Jungle Fever patient zero!!</B></span>")
-	to_chat(owner, "<b>You have been planted onto this station by the Animal Rights Consortium.</b>")
-	to_chat(owner, "<b>Soon the disease will transform you into an ape. Afterwards, you will be able spread the infection to others with a bite.</b>")
-	to_chat(owner, "<b>While your infection strain is undetectable by scanners, any other infectees will show up on medical equipment.</b>")
-	to_chat(owner, "<b>Your mission will be deemed a success if any of the live infected monkeys reach CentCom.</b>")
-	to_chat(owner, "<b>As an initial infectee, you will be considered a 'leader' by your fellow monkeys.</b>")
-	to_chat(owner, "<b>You can use :k to talk to fellow monkeys!</b>")
+	to_chat(owner, "<B><span class='notice'>Jesteś pacjentem zero Gorączki Dżungli!!</B></span>")
+	to_chat(owner, "<b>Konsorcjum Praw Zwierząt podrzuciło cię na tę stację.</b>")
+	to_chat(owner, "<b>Wkrótce choroba zmieni cię w małpę. Potem będziesz mógł zarażać innych ugryzieniem.</b>")
+	to_chat(owner, "<b>Twojego szczepu nie wykryją skanery, ale pozostali zarażeni będą widoczni na sprzęcie medycznym.</b>")
+	to_chat(owner, "<b>Misja zakończy się sukcesem, jeśli którakolwiek żywa zarażona małpa dotrze do Centrali.</b>")
+	to_chat(owner, "<b>Jako pierwszy zarażony będziesz dla innych małp 'przywódcą'.</b>")
+	to_chat(owner, "<b>Użyj :k, żeby rozmawiać z innymi małpami!</b>")
 	SEND_SOUND(owner.current, sound('sound/ambience/antag/monkey.ogg'))
-	owner.current.client?.tgui_panel?.give_antagonist_popup("Monkey Leader",
-		"Bite other humans to infect them and escape on the emergency shuttle to succeed.")
+	owner.current.client?.tgui_panel?.give_antagonist_popup("Przywódca małp",
+		"Gryź ludzi, żeby ich zarazić, i ucieknij promem ewakuacyjnym, żeby wygrać.")
 
 /datum/objective/monkey
-	explanation_text = "Ensure that infected monkeys escape on the emergency shuttle!"
+	explanation_text = "Dopilnuj, by zarażone małpy uciekły promem ewakuacyjnym!"
 	martyr_compatible = TRUE
 	var/monkeys_to_win = 1
 	var/escaped_monkeys = 0
@@ -191,24 +191,24 @@
 	var/list/parts = list()
 	switch(get_result())
 		if(MONKEYS_ESCAPED)
-			parts += "<span class='greentext big'><B>Monkey Major Victory!</B></span>"
-			parts += "<span class='greentext'><B>Central Command and [station_name()] were taken over by the monkeys! Ook ook!</B></span>"
+			parts += "<span class='greentext big'><B>Wielkie zwycięstwo małp!</B></span>"
+			parts += "<span class='greentext'><B>Małpy przejęły Centralę i [station_name()]! U-u-a-a!</B></span>"
 		if(MONKEYS_LIVED)
-			parts += "<FONT size = 3><B>Monkey Minor Victory!</B></FONT>"
-			parts += "<span class='greentext'><B>[station_name()] was taken over by the monkeys! Ook ook!</B></span>"
+			parts += "<FONT size = 3><B>Małe zwycięstwo małp!</B></FONT>"
+			parts += "<span class='greentext'><B>Małpy przejęły [station_name()]! U-u-a-a!</B></span>"
 		if(DISEASE_LIVED)
-			parts += "<span class='redtext big'><B>Monkey Minor Defeat!</B></span>"
-			parts += "<span class='redtext'><B>All the monkeys died, but the disease lives on! The future is uncertain.</B></span>"
+			parts += "<span class='redtext big'><B>Mała porażka małp!</B></span>"
+			parts += "<span class='redtext'><B>Wszystkie małpy zginęły, ale choroba żyje dalej! Przyszłość jest niepewna.</B></span>"
 		if(MONKEYS_DIED)
-			parts += "<span class='redtext big'><B>Monkey Major Defeat!</B></span>"
-			parts += "<span class='redtext'><B>All the monkeys died, and Jungle Fever was wiped out!</B></span>"
+			parts += "<span class='redtext big'><B>Wielka porażka małp!</B></span>"
+			parts += "<span class='redtext'><B>Wszystkie małpy zginęły, a Gorączka Dżungli została wytępiona!</B></span>"
 	var/list/leaders = get_antag_minds(/datum/antagonist/monkey/leader, TRUE)
 	var/list/monkeys = get_antag_minds(/datum/antagonist/monkey, TRUE)
 
 	if(LAZYLEN(leaders))
-		parts += "<span class='header'>The monkey leaders were:</span>"
+		parts += "<span class='header'>Przywódcy małp:</span>"
 		parts += printplayerlist(SSticker.mode.ape_leaders)
 	if(LAZYLEN(monkeys))
-		parts += "<span class='header'>The monkeys were:</span>"
+		parts += "<span class='header'>Małpy:</span>"
 		parts += printplayerlist(SSticker.mode.ape_infectees)
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"
