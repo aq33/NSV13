@@ -594,7 +594,7 @@ SUBSYSTEM_DEF(overmap_mode)
 
 /datum/overmap_mode_controller/ui_interact(mob/user, datum/tgui/ui)
 	if(!SSovermap_mode.initialized)
-		to_chat(user, "<span class='notice'>You can't open the overmap gamemode controller yet, wait for it to initialize!</span>")
+		to_chat(user, "<span class='notice'>Nie możesz jeszcze otworzyć kontrolera trybu overmapy, zaczekaj na jego inicjalizację!</span>")
 		return FALSE //We don't have anything to control yet
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -631,7 +631,7 @@ SUBSYSTEM_DEF(overmap_mode)
 				return
 			var/newmode = SSovermap_mode.force_mode(S)
 			if(!newmode)
-				to_chat(usr, "<span class='notice'>You can't change the gamemode right now!</span>")
+				to_chat(usr, "<span class='notice'>Nie możesz teraz zmienić trybu gry!</span>")
 			else
 				message_admins("[key_name_admin(usr)] has changed the overmap gamemode to [newmode]")
 			return TRUE
@@ -722,7 +722,7 @@ SUBSYSTEM_DEF(overmap_mode)
 
 			//Choose ghost logic
 			var/target_ghost
-			switch(alert(usr, "Who is going to pilot this ghost ship?", "Pilot Select Format", "Open", "Choose", "Cancel"))
+			switch(alert(usr, "Kto będzie pilotował ten okręt widmo?", "Format wyboru pilota", "Open", "Choose", "Cancel"))
 				if("Cancel")
 					return
 				if("Open")
@@ -733,7 +733,7 @@ SUBSYSTEM_DEF(overmap_mode)
 					else
 						return
 				if("Choose")
-					target_ghost = input(usr, "Select player to pilot ghost ship:", "Select Player") as null|anything in GLOB.clients
+					target_ghost = input(usr, "Wybierz gracza, który będzie pilotował okręt widmo:", "Wybierz gracza") as null|anything in GLOB.clients
 
 			//Now the actual spawning
 			var/obj/structure/overmap/GS = new target_ship(target_location)

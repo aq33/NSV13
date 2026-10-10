@@ -5,10 +5,10 @@
 
 
 /datum/config_entry/string/alert_zebra_downto
-	config_entry_value = "The station's destruction has been averted. There is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised."
+	config_entry_value = "Udało się zapobiec zniszczeniu stacji. Nadal jednak istnieje bezpośrednie, poważne zagrożenie dla stacji. Ochrona może cały czas mieć broń wyciągniętą, a przeszukania losowe są dozwolone i zalecane."
 
 /datum/config_entry/string/alert_zebra_upto
-	config_entry_value = "Attention all hands assume defense condition zebra. Compartmental interlocks have now been activated, prepare for incoming fire."
+	config_entry_value = "Uwaga, cała załoga, przyjąć stan obrony Zebra. Włączono blokady przedziałów, przygotować się na ostrzał."
 
 /datum/config_entry/number/min_pop_kill_objectives
 	config_entry_value = 15

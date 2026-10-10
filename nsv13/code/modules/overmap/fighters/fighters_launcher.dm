@@ -57,11 +57,11 @@
 		if("message") //Lets you DM a pilot to tell them they're stupid or whatever.
 			if(!pilot)
 				return
-			var/what = stripped_input(usr,"What would you like to tell [pilot]?")
+			var/what = stripped_input(usr,"Co chcesz przekazać [pilot]?")
 			if(!what)
 				return
 			next_message = world.time + 5 SECONDS
-			what = "<span class='boldnotice'>Air Traffic Controller: [what]</span>"
+			what = "<span class='boldnotice'>Kontroler lotów: [what]</span>"
 			to_chat(pilot, what)
 
 /obj/structure/fighter_launcher //Fighter launch track! This is both an arrestor and an assisted launch system for ease of use.
@@ -115,7 +115,7 @@
 /obj/structure/overmap/small_craft/can_brake()
 	if(mag_lock)
 		if(pilot)
-			to_chat(pilot, "<span class='warning'>WARNING: Ship is magnetically arrested by an arrestor. Awaiting decoupling signal (O4).</span>")
+			to_chat(pilot, "<span class='warning'>OSTRZEŻENIE: okręt jest magnetycznie zatrzymany przez hak. Oczekiwanie na sygnał odłączenia (O4).</span>")
 		return FALSE
 	return TRUE
 
@@ -160,11 +160,11 @@
 	if(OM && length(OM.operators))
 		for(var/mob/M in OM.operators)
 			shake_with_inertia(M, 10, 1)
-			to_chat(M, "<span class='warning'>You feel a sudden jolt!</span>")
+			to_chat(M, "<span class='warning'>Czujesz nagłe szarpnięcie!</span>")
 			if(iscarbon(M))
 				var/mob/living/carbon/L = M
 				if(HAS_TRAIT(L, TRAIT_SEASICK))
-					to_chat(L, "<span class='warning'>You can feel your head start to swim...</span>")
+					to_chat(L, "<span class='warning'>Zaczyna ci się kręcić w głowie...</span>")
 					if(prob(40)) //Rough landing huh...
 						L.adjust_disgust(40)
 					else
@@ -181,7 +181,7 @@
 	if(!mag_locked)
 		return
 	if(mag_locked.pilot)
-		to_chat(mag_locked.pilot, "<span class='warning'>Launch aborted by operator.</span>")
+		to_chat(mag_locked.pilot, "<span class='warning'>Operator przerwał start.</span>")
 	mag_locked.release_maglock()
 	mag_locked = null
 	icon_state = "launcher_charge"
@@ -307,7 +307,7 @@ d) the ships[] list of ssstarsystem is acting up again.
 	bound_width = 32
 	bound_height = 32
 	if(pilot)
-		to_chat(pilot, "<span class='notice'>Docking mode disabled. Use the 'Ship' verbs tab to re-enable docking mode, then fly into an allied ship to complete docking proceedures.</span>")
+		to_chat(pilot, "<span class='notice'>Tryb dokowania wyłączony. Włącz go ponownie w zakładce czasowników „Ship”, a następnie wleć w sojuszniczy okręt, by dokończyć procedurę dokowania.</span>")
 		DC.docking_mode = FALSE
 	SEND_SIGNAL(src, COMSIG_FTL_STATE_CHANGE) //Let dradis comps update their status too
 	current_system = OM.current_system
@@ -388,7 +388,7 @@ d) the ships[] list of ssstarsystem is acting up again.
 	DC.docking_mode = FALSE
 	weapon_safety = TRUE
 	if(pilot)
-		to_chat(pilot, "<span class='notice'>Docking complete. <b>Gun safeties have been engaged automatically.</b></span>")
+		to_chat(pilot, "<span class='notice'>Dokowanie zakończone. <b>Zabezpieczenia broni zostały automatycznie włączone.</b></span>")
 	if(!pilot || pilot.incapacitated())
 		brakes = TRUE
 	SEND_SIGNAL(src, COMSIG_FTL_STATE_CHANGE)

@@ -106,48 +106,48 @@
 		if(100)
 			if(next_warning == 1)
 				next_warning --
-				say("Local phoron containment field fully stabilized.")
-				radio.talk_into(src, "Local phoron containment field fully stabilized.", RADIO_CHANNEL_MUNITIONS)
+				say("Lokalne pole izolujące foronu w pełni ustabilizowane.")
+				radio.talk_into(src, "Lokalne pole izolujące foronu w pełni ustabilizowane.", RADIO_CHANNEL_MUNITIONS)
 				cut_overlays()
 				add_overlay("on")
 		if(76 to 99)
 			if(next_warning == 0)
 				next_warning ++
-				say("Localized phoron containment field disengaged, preparing to fire.")
+				say("Zlokalizowane pole izolujące foronu wyłączone, przygotowanie do strzału.")
 				cut_overlays()
 				add_overlay("integ_100")
 			else if(next_warning == 2)
 				next_warning --
-				say("Phoron containment field stabilized to ideal levels.")
+				say("Pole izolujące foronu ustabilizowane na idealnym poziomie.")
 				cut_overlays()
 				add_overlay("integ_100")
 		if(51 to 75)
 			if(next_warning == 1)
 				next_warning ++
-				say("Phoron containment field at 75%, stability decreasing.")
+				say("Pole izolujące foronu na 75%, stabilność spada.")
 				cut_overlays()
 				add_overlay("integ_75")
 			else if(next_warning == 3)
-				say("Integrity at 50%, continuing stabilization process...")
+				say("Integralność na 50%, kontynuowanie procesu stabilizacji...")
 				next_warning --
 				cut_overlays()
 				add_overlay("integ_75")
 		if(26 to 50)
 			if(next_warning == 2)
 				next_warning ++
-				say("WARNING! Containment field 50% and falling.")
+				say("OSTRZEŻENIE! Pole izolujące na 50% i spada.")
 				cut_overlays()
 				add_overlay("integ_50")
 			else if(next_warning == 4)
 				next_warning --
-				say("Restored field integrity above critical levels.")
+				say("Przywrócono integralność pola powyżej poziomu krytycznego.")
 				cut_overlays()
 				add_overlay("integ_50")
 		if(1 to 25)
 			if(next_warning == 3)
 				next_warning ++
-				say("WARNING! 25% Integrity! Containment Failure Imminent!")
-				radio.talk_into(src, "WARNING! 25% Integrity! Containment Failure Imminent!", RADIO_CHANNEL_MUNITIONS)
+				say("OSTRZEŻENIE! Integralność 25%! Awaria izolacji nieuchronna!")
+				radio.talk_into(src, "OSTRZEŻENIE! Integralność 25%! Awaria izolacji nieuchronna!", RADIO_CHANNEL_MUNITIONS)
 				cut_overlays()
 				add_overlay("integ_25")
 		if(-INFINITY to 0)
@@ -178,22 +178,22 @@
 	if(cooldown > 0)
 		if(COOLDOWN_FINISHED(src, radio_cooldown))
 			COOLDOWN_START(src, radio_cooldown, 5 SECONDS)
-			radio.talk_into(src, "DANGER! Splines unreticulated, spline reticulization process may take up to [cooldown] seconds to complete.", RADIO_CHANNEL_MUNITIONS)
-			say("DANGER! Splines unreticulated, spline reticulization process may take up to [cooldown] seconds to complete.")
+			radio.talk_into(src, "NIEBEZPIECZEŃSTWO! Splajny niesiatkowane, proces siatkowania splajnów może potrwać do [cooldown] s.", RADIO_CHANNEL_MUNITIONS)
+			say("NIEBEZPIECZEŃSTWO! Splajny niesiatkowane, proces siatkowania splajnów może potrwać do [cooldown] s.")
 		return FALSE
 	if(maintainable && malfunction) //Do we need maintenance?
 		return FALSE
 	if(plasma_mole_amount < plasma_fire_moles) //Is there enough Plasma Gas to fire?
 		if(COOLDOWN_FINISHED(src, radio_cooldown))
 			COOLDOWN_START(src, radio_cooldown, 5 SECONDS)
-			radio.talk_into(src, "DANGER! Not enough phoron to safely dischard core! Please ensure enough gas is present before firing!", RADIO_CHANNEL_MUNITIONS)
-			say("DANGER! Not enough phoron to safely dischard core! Please ensure enough gas is present before firing!")
+			radio.talk_into(src, "NIEBEZPIECZEŃSTWO! Za mało foronu, by bezpiecznie rozładować rdzeń! Przed strzałem upewnij się, że jest dość gazu!", RADIO_CHANNEL_MUNITIONS)
+			say("NIEBEZPIECZEŃSTWO! Za mało foronu, by bezpiecznie rozładować rdzeń! Przed strzałem upewnij się, że jest dość gazu!")
 		return FALSE
 	if(loader && loader.on)
 		if(COOLDOWN_FINISHED(src, radio_cooldown))
 			COOLDOWN_START(src, radio_cooldown, 5 SECONDS)
-			radio.talk_into(src, "DANGER! Phoron Gas Regulator back pressure surge avoided! Ensure the regulator is off before operating!", RADIO_CHANNEL_MUNITIONS)
-			say("DANGER! Phoron Gas Regulator back pressure surge avoided! Ensure the regulator is off before operating!")
+			radio.talk_into(src, "NIEBEZPIECZEŃSTWO! Uniknięto skoku ciśnienia zwrotnego w regulatorze gazu foronowego! Przed użyciem upewnij się, że regulator jest wyłączony!", RADIO_CHANNEL_MUNITIONS)
+			say("NIEBEZPIECZEŃSTWO! Uniknięto skoku ciśnienia zwrotnego w regulatorze gazu foronowego! Przed użyciem upewnij się, że regulator jest wyłączony!")
 		return FALSE
 	if(alignment < 90)
 		if(prob(10))
@@ -217,7 +217,7 @@
 	for(var/mob/living/M in get_hearers_in_view(7, src)) //burn out eyes in view
 		if(M.stat != DEAD && M.get_eye_protection() < 2) //checks for eye protec
 			M.flash_act(10)
-			to_chat(M, "<span class='warning'>Your eyes burn from the brilliance of the Lämp!</span>")
+			to_chat(M, "<span class='warning'>Oczy pieką cię od blasku Lämpy!</span>")
 
 /obj/machinery/ship_weapon/plasma_caster/do_animation()
 	set waitfor = FALSE
@@ -232,8 +232,8 @@
 /obj/machinery/ship_weapon/plasma_caster/proc/misfire()
 	if(COOLDOWN_FINISHED(src, radio_cooldown))
 		COOLDOWN_START(src, radio_cooldown, 5 SECONDS)
-		radio.talk_into(src, "WARNING! Phoron containment field failure, ejecting gas!", RADIO_CHANNEL_MUNITIONS)
-		say("WARNING! Phoron containment field failure, ejecting gas!")
+		radio.talk_into(src, "OSTRZEŻENIE! Awaria pola izolującego foronu, wyrzucanie gazu!", RADIO_CHANNEL_MUNITIONS)
+		say("OSTRZEŻENIE! Awaria pola izolującego foronu, wyrzucanie gazu!")
 	if(prob(15))
 		do_sparks(4, FALSE, src)
 	if(plasma_mole_amount > 0 && prob(5))
@@ -272,10 +272,9 @@
 
 /obj/machinery/ship_weapon/plasma_caster/default_deconstruction_crowbar(obj/item/I, ignore_panel)
 	var/mob/living/fool = usr
-	var/confirm = alert("You feel an electric tingle as you bring your crowbar close, there's an odd heat the closer you get.\
-						 Are you sure this is a good idea?", "Deconstruct Phoron Caster", "Yes", "No")
+	var/confirm = alert("Gdy przysuwasz łom, czujesz elektryczne mrowienie, a im bliżej, tym dziwniej gorąco. Na pewno to dobry pomysł?", "Rozbierz miotacz foronu", "Yes", "No")
 	if(confirm == "Yes")
-		visible_message("<span class='danger'>Burning energy and phoron starts to vent from the gun which chars [usr]!</span>")
+		visible_message("<span class='danger'>Z działa zaczyna buchać płonąca energia i foron, który przypieka [usr]!</span>")
 		field_integrity -= rand(30,50)
 		alignment = max(alignment - rand(50,80), 0)
 		fool.adjustFireLoss(rand(50, 120)) // Don't try to deconstruct it
@@ -283,13 +282,13 @@
 		playsound(usr.loc, 'sound/magic/lightningbolt.ogg', 100, 1, extrarange = 30)
 		return
 	else
-		visible_message("<span class 'notice'>[usr] wisely lowers their crowbar.")
+		visible_message("<span class 'notice'>[usr] rozsądnie opuszcza łom.")
 		return
 
 /obj/machinery/ship_weapon/plasma_caster/multitool_act(mob/living/user, obj/item/I)
 	. = TRUE
 	if(maint_state == 0)
-		to_chat(user, "<span class='notice'>You must first open the maintenance panel before unwrenching the protective casing!</span>")
+		to_chat(user, "<span class='notice'>Zanim odkręcisz osłonę ochronną, musisz najpierw otworzyć panel serwisowy!</span>")
 	if(maint_state == 1)
 		to_chat(user, "<span class='notice'>You must unbolt the protective casing before tuning the magnetic frequency!</span>")
 	else

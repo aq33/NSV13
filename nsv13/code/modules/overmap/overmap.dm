@@ -634,7 +634,7 @@ Proc to spool up a new Z-level for a player ship and assign it a treadmill.
 	if(LAZYFIND(target_painted, target))
 		dump_lock(target)
 		if(gunner)
-			to_chat(gunner, "<span class='notice'>Target painting cancelled on [target].</span>")
+			to_chat(gunner, "<span class='notice'>Anulowano oznaczanie celu [target].</span>")
 		return FALSE
 	relay('nsv13/sound/effects/fighters/being_locked.ogg', message=null, loop=FALSE, channel=CHANNEL_IMPORTANT_SHIP_ALERT)
 	addtimer(CALLBACK(src, PROC_REF(finish_lockon), target), lockon_time)
@@ -647,7 +647,7 @@ Proc to spool up a new Z-level for a player ship and assign it a treadmill.
 	if(!data_link_origin && target.is_sensor_visible(src) < SENSOR_VISIBILITY_TARGETABLE)
 		return
 	if(length(target_painted) >= max_paints)
-		to_chat(gunner, "<span class='notice'>Target painting at maximum capacity. Cancelling painting of [target_painted[1]] to support new target.</span>")
+		to_chat(gunner, "<span class='notice'>Oznaczanie celów osiągnęło maksymalną pojemność. Anulowanie oznaczenia [target_painted[1]] na rzecz nowego celu.</span>")
 		dump_lock(target_painted[1])
 	if(data_link_origin)
 		target_painted[target] = data_link_origin
@@ -655,7 +655,7 @@ Proc to spool up a new Z-level for a player ship and assign it a treadmill.
 	else
 		target_painted[target] = FALSE
 		target_last_tracked[target] = world.time
-	to_chat(gunner, "<span class='notice'>Target painted.</span>")
+	to_chat(gunner, "<span class='notice'>Cel oznaczony.</span>")
 	relay('nsv13/sound/effects/fighters/locked.ogg', message=null, loop=FALSE, channel=CHANNEL_IMPORTANT_SHIP_ALERT)
 	RegisterSignal(target, list(COMSIG_PARENT_QDELETING, COMSIG_FTL_STATE_CHANGE), PROC_REF(dump_lock))
 	SEND_SIGNAL(src, COMSIG_TARGET_PAINTED, target)
@@ -703,8 +703,8 @@ Proc to spool up a new Z-level for a player ship and assign it a treadmill.
 		return FALSE
 	if(length(target.target_painted) < target.max_paints)
 		target.finish_lockon(target_lock, src)
-		to_chat(target.gunner, "<span class='notice'>Targeting data for [target] recieved from [src] via datalink.</span>")
-		to_chat(gunner, "<span class='notice'>Targeting paramaters relayed.</span>")
+		to_chat(target.gunner, "<span class='notice'>Odebrano dane celownicze [target] od [src] przez łącze danych.</span>")
+		to_chat(gunner, "<span class='notice'>Przekazano parametry celownicze.</span>")
 
 // Called when we lose a target's datalink signal.
 /obj/structure/overmap/proc/check_datalink(obj/structure/overmap/data_link_origin, obj/structure/overmap/target)
@@ -757,7 +757,7 @@ Proc to spool up a new Z-level for a player ship and assign it a treadmill.
 /obj/structure/overmap/proc/enable_dampeners(mob/user)
 	if(HAS_TRAIT(src, TRAIT_NODAMPENERS))
 		if(user)
-			to_chat(user, "<span class='danger'>WARNING: Inertia Dampeners Unavailable! Potential causes: Gravity above tolerance, malfunctions, damage, spontanious bluespace displacement.</span>")
+			to_chat(user, "<span class='danger'>OSTRZEŻENIE: tłumiki bezwładności niedostępne! Możliwe przyczyny: grawitacja powyżej tolerancji, awarie, uszkodzenia, samoistne przemieszczenie bluespace.</span>")
 		return FALSE
 	inertial_dampeners = TRUE
 	return TRUE
@@ -880,7 +880,7 @@ Proc to spool up a new Z-level for a player ship and assign it a treadmill.
 
 /obj/structure/overmap/proc/boost(direction)
 	if(world.time < next_maneuvre)
-		to_chat(pilot, "<span class='notice'>Engines on cooldown to prevent overheat</span>")
+		to_chat(pilot, "<span class='notice'>Silniki się chłodzą, by zapobiec przegrzaniu</span>")
 		return FALSE
 	relay('nsv13/sound/effects/ship/afterburner.ogg', message="<span class='warning'>Czujesz, że statek się nagle przechyla.</span>", loop=FALSE)
 	if(helm && prob(80))
@@ -947,13 +947,13 @@ Proc to spool up a new Z-level for a player ship and assign it a treadmill.
 				if(0 to 30)
 					continue
 				if(50 to 70)
-					to_chat(M, "<span class='warning'>You feel lightheaded.</span>")
+					to_chat(M, "<span class='warning'>Kręci ci się w głowie.</span>")
 				if(71 to 89)
-					to_chat(M, "<span class='warning'>Colour starts to drain from your vision. You feel like you're starting to black out....</span>")
+					to_chat(M, "<span class='warning'>Kolory zaczynają odpływać ci z oczu. Masz wrażenie, że zaraz stracisz przytomność....</span>")
 					if(HAS_TRAIT(M, TRAIT_GFORCE_WEAKNESS))
 						M.gravity_crush(3)
 				if(90 to 100) //Blackout. Slow down on the turns there kid!
-					to_chat(M, "<span class='userdanger'>You black out!</span>")
+					to_chat(M, "<span class='userdanger'>Tracisz przytomność!</span>")
 					M.Sleeping(5 SECONDS)
 					if(HAS_TRAIT(M, TRAIT_GFORCE_WEAKNESS))
 						M.gravity_crush(4)
@@ -980,7 +980,7 @@ Proc to spool up a new Z-level for a player ship and assign it a treadmill.
 		if(iscarbon(M))
 			var/mob/living/carbon/L = M
 			if(HAS_TRAIT(L, TRAIT_SEASICK))
-				to_chat(L, "<span class='warning'>Your head swims as the ship violently turns!</span>")
+				to_chat(L, "<span class='warning'>Kręci ci się w głowie, gdy okręt gwałtownie skręca!</span>")
 				if(prob(40)) //Take a roll! First option makes you puke and feel terrible. Second one makes you feel iffy.
 					L.adjust_disgust(20)
 				else
