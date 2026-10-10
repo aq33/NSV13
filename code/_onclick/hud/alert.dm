@@ -101,6 +101,7 @@
 
 
 /atom/movable/screen/alert/MouseEntered(location,control,params)
+	..() // AQ EDIT - screentips potrzebują /atom/MouseEntered() (port BeeStation #11938)
 	if(!QDELETED(src))
 		openToolTip(usr,src,params,title = name,content = desc,theme = alerttooltipstyle)
 
