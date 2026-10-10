@@ -61,3 +61,20 @@
 				and so will any kind of weapons. You can control click food and trash items in order to eat them. Get. That. Cheese.")
 	return TRUE
 
+
+// Port BeeStation/BeeStation-Hornet#12449: wyjście z widoku obserwowanej postaci.
+// Komenda jest dostępna tylko w trakcie obserwacji, bo wtedy HUD ducha jest ukryty.
+/mob/dead/observer/Initialize(mapload)
+	. = ..()
+	remove_verb(/mob/dead/observer/verb/cancel_camera_ghosts)
+
+/mob/dead/observer/verb/cancel_camera_ghosts()
+	set name = "Cancel Camera View"
+	set category = "Ghost"
+	reset_perspective(null)
+	remove_verb(/mob/dead/observer/verb/cancel_camera_ghosts)
+
+/mob/dead/observer/observe()
+	..()
+	if(observetarget)
+		add_verb(/mob/dead/observer/verb/cancel_camera_ghosts)

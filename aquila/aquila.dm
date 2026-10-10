@@ -28,6 +28,7 @@
 #include "code\__HELPERS\roundend.dm"
 #include "code\__HELPERS\shell.dm"
 #include "code\_onclick\hud\alert.dm"
+#include "code\_onclick\hud\ghost.dm"
 #include "code\_onclick\hud\horror.dm"
 #include "code\_onclick\hud\xenobio.dm"
 #include "code\controllers\configuration\entries\game_options.dm"
