@@ -103,8 +103,6 @@
 					to_chat(user, "<span class='notice'>Najpierw musisz zdjąć [(M.head && M.head.flags_cover & HEADCOVERSMOUTH) ? "hełm" : "maskę"].</span>")
 					return
 
-				var/their = M.p_their()
-
 				var/list/mouth_organs = new
 				for(var/obj/item/organ/O in M.internal_organs)
 					if(O.zone == BODY_ZONE_PRECISE_MOUTH)
