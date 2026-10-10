@@ -29,7 +29,7 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	announceWhen = 5
 
 /datum/round_event/immovable_rod/announce(fake)
-	priority_announce("What the fuck was that?!", "General Alert", SSstation.announcer.get_rand_alert_sound())
+	priority_announce("Co to, kurwa, było?!", "Alarm ogólny", SSstation.announcer.get_rand_alert_sound())
 
 /datum/round_event/immovable_rod/start()
 	var/datum/round_event_control/immovable_rod/C = control
@@ -120,7 +120,7 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 /obj/effect/immovablerod/Bump(atom/clong)
 	if(prob(10))
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
-		audible_message("<span class='danger'>You hear a CLANG!</span>")
+		audible_message("<span class='danger'>Słyszysz głośne BRZDĘK!</span>")
 
 	if(clong && prob(25))
 		x = clong.x
@@ -149,7 +149,7 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	return TRUE
 
 /obj/effect/immovablerod/proc/penetrate(mob/living/L)
-	L.visible_message("<span class='danger'>[L] is penetrated by an immovable rod!</span>" , "<span class='userdanger'>The rod penetrates you!</span>" , "<span class ='danger'>You hear a CLANG!</span>")
+	L.visible_message("<span class='danger'>[L] zostaje przebity przez nieruchomy pręt!</span>" , "<span class='userdanger'>Pręt przebija cię na wylot!</span>" , "<span class ='danger'>Słyszysz głośne BRZDĘK!</span>")
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		H.adjustBruteLoss(160)
@@ -165,14 +165,14 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 				if(!M.stat)
 					shake_camera(M, 2, 3)
 			if(wizard)
-				U.visible_message("<span class='boldwarning'>[src] transforms into [wizard] as [U] suplexes them!</span>", "<span class='warning'>As you grab [src], it suddenly turns into [wizard] as you suplex them!</span>")
-				to_chat(wizard, "<span class='boldwarning'>You're suddenly jolted out of rod-form as [U] somehow manages to grab you, slamming you into the ground!</span>")
+				U.visible_message("<span class='boldwarning'>[src] zmienia się w [wizard], gdy [U] wykonuje suplex!</span>", "<span class='warning'>Gdy chwytasz [src], ten nagle zmienia się w [wizard], a ty wykonujesz suplex!</span>")
+				to_chat(wizard, "<span class='boldwarning'>Nagle wypadasz z postaci pręta, bo [U] jakimś cudem cię chwyta i ciska tobą o ziemię!</span>")
 				wizard.Stun(60)
 				wizard.apply_damage(25, BRUTE)
 				qdel(src)
 			else
 				U.client.give_award(/datum/award/achievement/misc/feat_of_strength, U) //rod-form wizards would probably make this a lot easier to get so keep it to regular rods only
-				U.visible_message("<span class='boldwarning'>[U] suplexes [src] into the ground!</span>", "<span class='warning'>You suplex [src] into the ground!</span>")
+				U.visible_message("<span class='boldwarning'>[U] ciska [src] o ziemię suplexem!</span>", "<span class='warning'>Ciskasz [src] o ziemię suplexem!</span>")
 				new /obj/structure/festivus/anchored(drop_location())
 				new /obj/effect/anomaly/flux(drop_location())
 				qdel(src)

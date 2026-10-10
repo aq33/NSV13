@@ -156,7 +156,7 @@ SUBSYSTEM_DEF(ticker)
 				start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
-			to_chat(world, "<span class='boldnotice'>Welcome to [station_name()]!</span>")
+			to_chat(world, "<span class='boldnotice'>Witaj na [station_name()]!</span>")
 			send2chat("New round starting on [SSmapping.config.map_name]!", CONFIG_GET(string/chat_announce_new_game))
 			current_state = GAME_STATE_PREGAME
 			//Everyone who wants to be an observer is now spawned
@@ -268,7 +268,7 @@ SUBSYSTEM_DEF(ticker)
 
 		if(!mode)
 			if(!runnable_modes.len)
-				to_chat(world, "<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby.")
+				to_chat(world, "<B>Nie udało się wybrać grywalnego trybu gry.</B> Powrót do lobby.")
 				return FALSE
 			mode = pickweight(runnable_modes)
 			if(!mode)	//too few roundtypes all run too recently
@@ -277,7 +277,7 @@ SUBSYSTEM_DEF(ticker)
 	else
 		mode = config.pick_mode(GLOB.master_mode)
 		if(!mode.can_start())
-			to_chat(world, "<B>Unable to start [mode.name].</B> Not enough players, [mode.required_players] players and [mode.required_enemies] eligible antagonists needed. Reverting to pre-game lobby.")
+			to_chat(world, "<B>Nie można rozpocząć trybu [mode.name].</B> Za mało graczy: potrzeba [mode.required_players] graczy i [mode.required_enemies] chętnych antagonistów. Powrót do lobby.")
 			qdel(mode)
 			mode = null
 			SSjob.ResetOccupations()
@@ -300,12 +300,12 @@ SUBSYSTEM_DEF(ticker)
 	can_continue = can_continue && SSjob.DivideOccupations(mode.required_jobs) 				//Distribute jobs
 	CHECK_TICK
 
-	to_chat(world, "<span class='boldannounce'>Starting game...</span>")
+	to_chat(world, "<span class='boldannounce'>Rozpoczynanie gry...</span>")
 	if(!GLOB.Debug2 && !emergency_start)
 		if(!can_continue)
 			log_game("[mode.name] failed pre_setup, cause: [mode.setup_error]")
 			QDEL_NULL(mode)
-			to_chat(world, "<B>Error setting up [GLOB.master_mode].</B> Reverting to pre-game lobby.")
+			to_chat(world, "<B>Błąd podczas przygotowywania trybu [GLOB.master_mode].</B> Powrót do lobby.")
 			SSjob.ResetOccupations()
 			return FALSE
 	else
@@ -317,7 +317,7 @@ SUBSYSTEM_DEF(ticker)
 		for (var/datum/game_mode/M in runnable_modes)
 			modes += M.name
 		modes = sortList(modes)
-		to_chat(world, "<b>The gamemode is: secret!\nPossibilities:</B> [english_list(modes)]")
+		to_chat(world, "<b>Tryb gry: tajny!\nMożliwości:</B> [english_list(modes, and_text = " i ")]")
 	else
 		mode.announce()
 
@@ -344,7 +344,7 @@ SUBSYSTEM_DEF(ticker)
 	round_start_timeofday = world.timeofday
 	SSdbcore.SetRoundStart()
 
-	to_chat(world, "<span class='notice'><B>Welcome to [station_name()], enjoy your stay!</B></span>")
+	to_chat(world, "<span class='notice'><B>Witaj na [station_name()], miłego pobytu!</B></span>")
 	SEND_SOUND(world, sound(SSstation.announcer.get_rand_welcome_sound()))
 
 	current_state = GAME_STATE_PLAYING
@@ -493,7 +493,7 @@ SUBSYSTEM_DEF(ticker)
 			m = pick(memetips)
 
 	if(m)
-		to_chat(world, EXAMINE_BLOCK("<span class='purple'><b>Tip of the round: </b>[html_encode(m)]</span>"))
+		to_chat(world, EXAMINE_BLOCK("<span class='purple'><b>Porada rundy: </b>[html_encode(m)]</span>"))
 
 /datum/controller/subsystem/ticker/proc/check_queue()
 	if(!queued_players.len)
@@ -502,7 +502,7 @@ SUBSYSTEM_DEF(ticker)
 	if(!hpc)
 		listclearnulls(queued_players)
 		for (var/mob/dead/new_player/NP in queued_players)
-			to_chat(NP, "<span class='userdanger'>The alive players limit has been released!<br><a href='byond://?src=[REF(NP)];late_join=override'>[html_encode(">>Join Game<<")]</a></span>")
+			to_chat(NP, "<span class='userdanger'>Limit żywych graczy został zniesiony!<br><a href='byond://?src=[REF(NP)];late_join=override'>[html_encode(">>Dołącz do gry<<")]</a></span>")
 			SEND_SOUND(NP, sound('sound/misc/notice1.ogg'))
 			NP.LateChoices()
 		queued_players.len = 0
@@ -517,14 +517,14 @@ SUBSYSTEM_DEF(ticker)
 			listclearnulls(queued_players)
 			if(living_player_count() < hpc)
 				if(next_in_line && next_in_line.client)
-					to_chat(next_in_line, "<span class='userdanger'>A slot has opened! You have approximately 20 seconds to join. <a href='byond://?src=[REF(next_in_line)];late_join=override'>\>\>Join Game\<\<</a></span>")
+					to_chat(next_in_line, "<span class='userdanger'>Zwolniło się miejsce! Masz około 20 sekund, żeby dołączyć. <a href='byond://?src=[REF(next_in_line)];late_join=override'>\>\>Dołącz do gry\<\<</a></span>")
 					SEND_SOUND(next_in_line, sound('sound/misc/notice1.ogg'))
 					next_in_line.LateChoices()
 					return
 				queued_players -= next_in_line //Client disconnected, remove he
 			queue_delay = 0 //No vacancy: restart timer
 		if(25 to INFINITY)  //No response from the next in line when a vacancy exists, remove he
-			to_chat(next_in_line, "<span class='danger'>No response received. You have been removed from the line.</span>")
+			to_chat(next_in_line, "<span class='danger'>Brak odpowiedzi. Usunięto cię z kolejki.</span>")
 			queued_players -= next_in_line
 			queue_delay = 0
 
@@ -702,17 +702,17 @@ SUBSYSTEM_DEF(ticker)
 
 	var/skip_delay = check_rights()
 	if(delay_end && !skip_delay)
-		to_chat(world, "<span class='boldannounce'>An admin has delayed the round end.</span>")
+		to_chat(world, "<span class='boldannounce'>Admin opóźnił koniec rundy.</span>")
 		return
 
-	to_chat(world, "<span class='boldannounce'>Rebooting World in [DisplayTimeText(delay)]. [reason]</span>")
+	to_chat(world, "<span class='boldannounce'>Restart świata za [DisplayTimeText(delay)]. [reason]</span>")
 
 	var/start_wait = world.time
 	UNTIL(round_end_sound_sent || (world.time - start_wait) > (delay * 2))	//don't wait forever
 	sleep(delay - (world.time - start_wait))
 
 	if(delay_end && !skip_delay)
-		to_chat(world, "<span class='boldannounce'>Reboot was cancelled by an admin.</span>")
+		to_chat(world, "<span class='boldannounce'>Admin anulował restart.</span>")
 		return
 	if(end_string)
 		end_state = end_string
@@ -720,9 +720,9 @@ SUBSYSTEM_DEF(ticker)
 	var/statspage = CONFIG_GET(string/roundstatsurl)
 	var/gamelogloc = CONFIG_GET(string/gamelogurl)
 	if(statspage)
-		to_chat(world, "<span class='info'>Round statistics and logs can be viewed <a href=\"[statspage][GLOB.round_id]\">at this website!</a></span>")
+		to_chat(world, "<span class='info'>Statystyki i logi rundy znajdziesz <a href=\"[statspage][GLOB.round_id]\">na tej stronie!</a></span>")
 	else if(gamelogloc)
-		to_chat(world, "<span class='info'>Round logs can be located <a href=\"[gamelogloc]\">at this website!</a></span>")
+		to_chat(world, "<span class='info'>Logi rundy znajdziesz <a href=\"[gamelogloc]\">na tej stronie!</a></span>")
 
 	log_game("<span class='boldannounce'>Rebooting World. [reason]</span>")
 

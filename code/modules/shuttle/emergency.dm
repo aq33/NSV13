@@ -34,16 +34,16 @@
 /obj/machinery/computer/emergency_shuttle/examine(mob/user)
 	. = ..()
 	if(hijack_announce)
-		. += "<span class='danger'>Security systems present on console. Any unauthorized tampering will result in an emergency announcement.</span>"
+		. += "<span class='danger'>Konsola ma systemy zabezpieczeń. Każda nieautoryzowana ingerencja wywoła ogłoszenie alarmowe.</span>"
 	if(user?.mind?.get_hijack_speed())
-		. += "<span class='danger'>Alt click on this to attempt to hijack the shuttle. This will take multiple tries (current: stage [SSshuttle.emergency.hijack_status]/[HIJACKED]).</span>"
-		. += "<span class='notice'>It will take you [(hijack_stage_time * user.mind.get_hijack_speed()) / 10] seconds to reprogram a stage of the shuttle's navigational firmware, and the console will undergo automated timed lockout for [hijack_stage_cooldown/10] seconds after each stage.</span>"
+		. += "<span class='danger'>Kliknij z Altem, żeby spróbować porwać prom. Zajmie to kilka prób (obecnie: etap [SSshuttle.emergency.hijack_status]/[HIJACKED]).</span>"
+		. += "<span class='notice'>Przeprogramowanie jednego etapu oprogramowania nawigacyjnego promu zajmie ci [(hijack_stage_time * user.mind.get_hijack_speed()) / 10] s, a po każdym etapie konsola zablokuje się automatycznie na [hijack_stage_cooldown/10] s.</span>"
 		if(hijack_announce)
-			. += "<span class='warning'>It is probably best to fortify your position as to be uninterrupted during the attempt, given the automatic announcements..</span>"
+			. += "<span class='warning'>Biorąc pod uwagę automatyczne ogłoszenia, najlepiej ufortyfikuj swoją pozycję, żeby nikt ci nie przeszkodził.</span>"
 
 /obj/machinery/computer/emergency_shuttle/attackby(obj/item/I, mob/user,params)
 	if(istype(I, /obj/item/card/id))
-		say("Please equip your ID card into your ID slot to authenticate.")
+		say("Załóż kartę identyfikacyjną w miejsce na ID, aby się uwierzytelnić.")
 	. = ..()
 
 /obj/machinery/computer/emergency_shuttle/attack_alien(mob/living/carbon/alien/humanoid/royal/queen/user)
@@ -96,11 +96,11 @@
 	var/obj/item/card/id/ID = user.get_idcard(TRUE)
 
 	if(!ID)
-		to_chat(user, "<span class='warning'>You don't have an ID.</span>")
+		to_chat(user, "<span class='warning'>Nie masz karty identyfikacyjnej.</span>")
 		return
 
 	if(!(ACCESS_HEADS in ID.access))
-		to_chat(user, "<span class='warning'>The access level of your card is not high enough.</span>")
+		to_chat(user, "<span class='warning'>Twoja karta ma za niski poziom dostępu.</span>")
 		return
 
 	if(user in acted_recently)
@@ -179,7 +179,7 @@
 	if((authorized.len >= auth_need) || (obj_flags & EMAGGED))
 		// shuttle timers use 1/10th seconds internally
 		SSshuttle.emergency.setTimer(ENGINES_START_TIME)
-		var/system_error = obj_flags & EMAGGED ? "SYSTEM ERROR:" : null
+		var/system_error = obj_flags & EMAGGED ? "BŁĄD SYSTEMU:" : null
 		minor_announce("The emergency shuttle will launch in \
 			[TIME_LEFT] seconds", system_error, alert=TRUE)
 		. = TRUE
@@ -190,7 +190,7 @@
 	if(hijack_announce)
 		announce_hijack_stage()
 	hijack_last_stage_increase = world.time
-	say("Navigational protocol error! Rebooting systems.")
+	say("Błąd protokołu nawigacyjnego! Ponowne uruchamianie systemów.")
 	if(shuttle.mode == SHUTTLE_ESCAPE)
 		if(shuttle.hijack_status == HIJACKED)
 			shuttle.setTimer(hijack_completion_flight_time_set)
@@ -206,22 +206,22 @@
 	if(!user.CanReach(src))
 		return
 	if(!user?.mind?.get_hijack_speed())
-		to_chat(user, "<span class='warning'>You manage to open a user-mode shell on [src], and hundreds of lines of debugging output fly through your vision. It is probably best to leave this alone.</span.")
+		to_chat(user, "<span class='warning'>Udaje ci się otworzyć powłokę użytkownika w [src] i przed oczami przelatują ci setki linii danych debugowania. Lepiej to zostawić.</span>")
 		return
 	if(!EMERGENCY_AT_LEAST_DOCKED) // prevent advancing hijack stages on BYOS shuttles until the shuttle has "docked"
-		to_chat(user, "<span class='warning'>The flight plans for the shuttle haven't been loaded yet, you can't hack this right now.</span.")
+		to_chat(user, "<span class='warning'>Plany lotu promu nie zostały jeszcze wczytane, nie możesz tego teraz zhakować.</span>")
 		return
 	if(hijack_hacking == TRUE)
 		return
 	if(SSshuttle.emergency.hijack_status >= HIJACKED)
-		to_chat(user, "<span class='warning'>The emergency shuttle is already loaded with a corrupt navigational payload. What more do you want from it?</span>")
+		to_chat(user, "<span class='warning'>Prom ewakuacyjny ma już wgrany uszkodzony ładunek nawigacyjny. Czego jeszcze od niego chcesz?</span>")
 		return
 	if(hijack_last_stage_increase >= world.time + hijack_stage_cooldown)
-		say("Error - Catastrophic software error detected. Input is currently on timeout.")
+		say("Błąd - wykryto katastrofalny błąd oprogramowania. Wprowadzanie danych chwilowo zablokowane.")
 		return
 	hijack_hacking = TRUE
-	to_chat(user, "<span class='boldwarning'>You [SSshuttle.emergency.hijack_status == NOT_BEGUN? "begin" : "continue"] to override [src]'s navigational protocols.</span>")
-	say("Software override initiated.")
+	to_chat(user, "<span class='boldwarning'>[SSshuttle.emergency.hijack_status == NOT_BEGUN? "Zaczynasz" : "Kontynuujesz"] nadpisywanie protokołów nawigacyjnych [src].</span>")
+	say("Rozpoczęto nadpisywanie oprogramowania.")
 	var/turf/console_hijack_turf = get_turf(src)
 	message_admins("[src] is being overriden for hijack by [ADMIN_LOOKUPFLW(user)] in [ADMIN_VERBOSEJMP(console_hijack_turf)]")
 	log_game("[src] is being overriden for hijack by [key_name(user)] at [AREACOORD(src)]")
@@ -232,7 +232,7 @@
 		message_admins("[src] has had its hijack stage increased to stage [SSshuttle.emergency.hijack_status] out of [HIJACKED] by [ADMIN_LOOKUPFLW(user)] in [ADMIN_VERBOSEJMP(console_hijack_turf)]")
 		log_game("[src] has had its hijack stage increased to stage [SSshuttle.emergency.hijack_status] out of [HIJACKED] by [key_name(user)] at [AREACOORD(src)]")
 		. = TRUE
-		to_chat(user, "<span class='notice'>You reprogram some of [src]'s programming, putting it on timeout for [hijack_stage_cooldown/10] seconds.</span>")
+		to_chat(user, "<span class='notice'>Przeprogramowujesz część [src], blokując konsolę na [hijack_stage_cooldown/10] s.</span>")
 	hijack_hacking = FALSE
 
 /obj/machinery/computer/emergency_shuttle/proc/announce_hijack_stage()
@@ -252,7 +252,7 @@
 			msg = "SYSTEM OVERRIDE - Resetting course to \[[scramble_message_replace_chars("###########", 100)]\] \
 			([scramble_message_replace_chars("#######", 100)]/[scramble_message_replace_chars("#######", 100)]/[scramble_message_replace_chars("#######", 100)]) \
 			{AUTH - ROOT (uid: 0)}.</font>[SSshuttle.emergency.mode == SHUTTLE_ESCAPE ? "Diverting from existing route - Bluespace exit in [hijack_completion_flight_time_set/10] seconds." : ""]"
-	minor_announce(scramble_message_replace_chars(msg, replaceprob = 10), "Emergency Shuttle", TRUE)
+	minor_announce(scramble_message_replace_chars(msg, replaceprob = 10), "Prom ewakuacyjny", TRUE)
 
 /obj/machinery/computer/emergency_shuttle/emag_act(mob/user)
 	// How did you even get on the shuttle before it go to the station?
@@ -260,7 +260,7 @@
 		return
 
 	if((obj_flags & EMAGGED) || ENGINES_STARTED)	//SYSTEM ERROR: THE SHUTTLE WILL LA-SYSTEM ERROR: THE SHUTTLE WILL LA-SYSTEM ERROR: THE SHUTTLE WILL LAUNCH IN 10 SECONDS
-		to_chat(user, "<span class='warning'>The shuttle is already launching!</span>")
+		to_chat(user, "<span class='warning'>Prom już startuje!</span>")
 		return
 
 	var/time = TIME_LEFT
@@ -348,7 +348,7 @@
 	else
 		SSshuttle.emergencyLastCallLoc = null
 
-	priority_announce("The emergency shuttle has been called. [redAlert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [timeLeft(600)] minutes.[reason][SSshuttle.emergencyLastCallLoc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.adminEmergencyNoRecall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]", null, ANNOUNCER_SHUTTLECALLED, "Priority", null, TRUE)
+	priority_announce("Wezwano prom ewakuacyjny. [redAlert ? "Potwierdzono alarm bojowy: wysyłamy prom priorytetowy. " : "" ]Przybędzie za [timeLeft(600)] min.[reason][SSshuttle.emergencyLastCallLoc ? "\n\nNamierzono sygnał wezwania. Wyniki można sprawdzić na dowolnej konsoli komunikacyjnej." : "" ][SSshuttle.adminEmergencyNoRecall ? "\n\nUwaga: procedury odwołania promu są wyłączone; odwołanie nie jest możliwe." : ""]", null, ANNOUNCER_SHUTTLECALLED, "Priority", null, TRUE)
 
 /obj/docking_port/mobile/emergency/cancel(area/signalOrigin)
 	if(mode != SHUTTLE_CALL)
@@ -363,7 +363,7 @@
 		SSshuttle.emergencyLastCallLoc = signalOrigin
 	else
 		SSshuttle.emergencyLastCallLoc = null
-	priority_announce("The emergency shuttle has been recalled.[SSshuttle.emergencyLastCallLoc ? " Recall signal traced. Results can be viewed on any communications console." : "" ]", null, ANNOUNCER_SHUTTLERECALLED, "Priority")
+	priority_announce("Prom ewakuacyjny został odwołany.[SSshuttle.emergencyLastCallLoc ? " Namierzono sygnał odwołania. Wyniki można sprawdzić na dowolnej konsoli komunikacyjnej." : "" ]", null, ANNOUNCER_SHUTTLERECALLED, "Priority")
 
 /**
   * Proc that handles checking if the emergency shuttle was successfully hijacked via being the only people present on the shuttle for the elimination hijack or highlander objective
@@ -467,7 +467,7 @@
 				mode = SHUTTLE_DOCKED
 				setTimer(SSshuttle.emergencyDockTime)
 				send2tgs("Server", "The Emergency Shuttle has docked with the station.")
-				priority_announce("[SSshuttle.emergency] has docked with the station. You have [timeLeft(600)] minutes to board the Emergency Shuttle.", null, ANNOUNCER_SHUTTLEDOCK, "Priority")
+				priority_announce("[SSshuttle.emergency] zadokował przy statku. Macie [timeLeft(600)] min na wejście na pokład promu ewakuacyjnego.", null, ANNOUNCER_SHUTTLEDOCK, "Priority")
 				ShuttleDBStuff()
 
 
@@ -523,7 +523,7 @@
 				mode = SHUTTLE_ESCAPE
 				launch_status = ENDGAME_LAUNCHED
 				setTimer(SSshuttle.emergencyEscapeTime * engine_coeff)
-				priority_announce("The Emergency Shuttle has left the station. Estimate: [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, null, "Priority")
+				priority_announce("Prom ewakuacyjny odleciał od statku. Szacowany czas do zadokowania w Centrali: [timeLeft(600)] min.", null, null, "Priority")
 
 		if(SHUTTLE_STRANDED)
 			SSshuttle.checkHostileEnvironment()
@@ -562,7 +562,7 @@
 					destination_dock = "emergency_syndicate"
 					minor_announce("Corruption detected in \
 						shuttle navigation protocols. Please contact your \
-						supervisor.", "SYSTEM ERROR:", alert=TRUE)
+						supervisor.", "BŁĄD SYSTEMU:", alert=TRUE)
 
 				dock_id(destination_dock)
 				mode = SHUTTLE_ENDGAME
@@ -575,7 +575,7 @@
 	mode = SHUTTLE_ESCAPE
 	launch_status = ENDGAME_LAUNCHED
 	setTimer(SSshuttle.emergencyEscapeTime)
-	priority_announce("The Emergency Shuttle is preparing for direct jump. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, SSstation.announcer.get_rand_alert_sound(), "Priority")
+	priority_announce("Prom ewakuacyjny przygotowuje się do bezpośredniego skoku. Szacowany czas do zadokowania w Centrali: [timeLeft(600)] min.", null, SSstation.announcer.get_rand_alert_sound(), "Priority")
 
 
 /obj/docking_port/mobile/pod
@@ -595,7 +595,7 @@
 			launch_status = EARLY_LAUNCHED
 			return ..()
 	else
-		to_chat(usr, "<span class='warning'>Escape pods will only launch during \"Code Red\" security alert.</span>")
+		to_chat(usr, "<span class='warning'>Kapsuły ratunkowe wystartują tylko podczas alarmu bojowego.</span>")
 		return TRUE
 
 /obj/docking_port/mobile/pod/cancel()
@@ -628,7 +628,7 @@
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class='warning'>You fry the pod's alert level monitoring system.</span>")
+	to_chat(user, "<span class='warning'>Przepalasz system monitorowania poziomu alarmu kapsuły.</span>")
 
 /obj/machinery/computer/shuttle_flight/pod/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
 	. = ..()
@@ -728,7 +728,7 @@
 		return FALSE
 	if(GLOB.security_level >= SEC_LEVEL_RED || unlocked)
 		return TRUE
-	to_chat(user, "The storage unit will only unlock during a Red or Delta security alert.")
+	to_chat(user, "Schowek odblokuje się tylko podczas alarmu bojowego lub Delta.")
 
 /obj/docking_port/mobile/emergency/backup
 	name = "backup shuttle"

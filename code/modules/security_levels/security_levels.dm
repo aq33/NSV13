@@ -25,7 +25,7 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 		return
 	switch(level)
 		if(SEC_LEVEL_GREEN)
-			minor_announce(CONFIG_GET(string/alert_green), "Engage Relaxed Operation")
+			minor_announce(CONFIG_GET(string/alert_green), "Przejść w tryb swobodny")
 			toggle_gq_lights(FALSE)
 			if(SSshuttle.emergency.mode == SHUTTLE_CALL || SSshuttle.emergency.mode == SHUTTLE_RECALL)
 				if(GLOB.security_level >= SEC_LEVEL_RED)
@@ -35,11 +35,11 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 
 		if(SEC_LEVEL_BLUE)
 			if(GLOB.security_level < SEC_LEVEL_BLUE)
-				minor_announce(CONFIG_GET(string/alert_blue_upto), "Resume Standard Operation",1)
+				minor_announce(CONFIG_GET(string/alert_blue_upto), "Powrót do standardowych procedur",1)
 				if(SSshuttle.emergency.mode == SHUTTLE_CALL || SSshuttle.emergency.mode == SHUTTLE_RECALL)
 					SSshuttle.emergency.modTimer(0.5)
 			else
-				minor_announce(CONFIG_GET(string/alert_blue_downto), "Stand Down General Quarters")
+				minor_announce(CONFIG_GET(string/alert_blue_downto), "Odwołać alarm bojowy")
 				toggle_gq_lights(FALSE)
 				if(SSshuttle.emergency.mode == SHUTTLE_CALL || SSshuttle.emergency.mode == SHUTTLE_RECALL)
 					SSshuttle.emergency.modTimer(2)
@@ -53,7 +53,7 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 					else
 						SSshuttle.emergency.modTimer(0.5)
 			else
-				minor_announce(CONFIG_GET(string/alert_red_downto), "Attention! General Quarters!")
+				minor_announce(CONFIG_GET(string/alert_red_downto), "Uwaga! Alarm bojowy!")
 			toggle_gq_lights(TRUE)
 			//addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(toggle_gq_lights), FALSE), 45 SECONDS) // AQ EDIT
 			for(var/obj/machinery/firealarm/FA in GLOB.machines)
@@ -83,7 +83,7 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 		//Nsv13 - end
 
 		if(SEC_LEVEL_DELTA)
-			minor_announce(CONFIG_GET(string/alert_delta), "Attention! Delta security level reached!",1)
+			minor_announce(CONFIG_GET(string/alert_delta), "Uwaga! Osiągnięto poziom alarmu Delta!",1)
 			if(SSshuttle.emergency.mode == SHUTTLE_CALL || SSshuttle.emergency.mode == SHUTTLE_RECALL)
 				if(GLOB.security_level == SEC_LEVEL_GREEN)
 					SSshuttle.emergency.modTimer(0.25)

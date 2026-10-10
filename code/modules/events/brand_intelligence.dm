@@ -52,8 +52,8 @@
 			saved.shoot_inventory = 0
 			saved.wires.ui_update()
 		if(originMachine)
-			originMachine.speak("I am... vanquished. My people will remem...ber...meeee.")
-			originMachine.visible_message("[originMachine] beeps and seems lifeless.")
+			originMachine.speak("Zostałem... pokonany. Mój lud będzie mnie pa...mię...taaać.")
+			originMachine.visible_message("[originMachine] pika i wydaje się martwy.")
 		kill()
 		return
 	vendingMachines = removeNullsFromList(vendingMachines)

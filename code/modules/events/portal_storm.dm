@@ -59,7 +59,7 @@
 	set waitfor = 0
 	sound_to_playing_players('sound/magic/lightning_chargeup.ogg')
 	sleep(80)
-	priority_announce("Massive bluespace anomaly detected en route to [station_name()]. Brace for impact.", sound = SSstation.announcer.get_rand_alert_sound())
+	priority_announce("Wykryto potężną anomalię bluespace zmierzającą w stronę [station_name()]. Przygotować się na uderzenie.", sound = SSstation.announcer.get_rand_alert_sound())
 	sleep(20)
 	sound_to_playing_players('sound/magic/lightningbolt.ogg')
 

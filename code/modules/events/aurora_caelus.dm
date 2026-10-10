@@ -18,9 +18,9 @@
 	var/aurora_progress = 0 //this cycles from 1 to 8, slowly changing colors from gentle green to gentle blue
 
 /datum/round_event/aurora_caelus/announce()
-	priority_announce("[station_name()]: Nieszkodliwa chmura jonowa zbliża się do stacji i spowoduje wyładowania swojej energii obijając się o kadłub. Nanotrasen zezwala na krótką przerwę dla wszystkich pracowników by odprężyć się i obserwować to rzadkie wydarzenie. Podczas jego trwania jasne gwiezdne światło będzie mienić się kolorami niebieskim i zielonym. Personel chcący oglądać światła, może chcieć udać się do miejsc z których kosmos widoczny jest najbardziej. Życzymy wspaniałych wrażeń",
+	priority_announce("[station_name()]: Nieszkodliwa chmura jonowa zbliża się do stacji i spowoduje wyładowania swojej energii obijając się o kadłub. Nanotrasen zezwala wszystkim pracownikom na krótką przerwę, by mogli się odprężyć i obserwować to rzadkie wydarzenie. Podczas jego trwania jasne gwiezdne światło będzie mienić się kolorami niebieskim i zielonym. Personel chcący oglądać światła może udać się w miejsca, z których kosmos widać najlepiej. Życzymy wspaniałych wrażeń.",
 	sound = 'sound/misc/notice2.ogg',
-	sender_override = "Nanotrasen Meteorology Division")
+	sender_override = "Wydział Meteorologii Nanotrasen")
 	for(var/V in GLOB.player_list)
 		var/mob/M = V
 		if((M.client.prefs.toggles & PREFTOGGLE_SOUND_MIDI) && is_station_level(M.z))
@@ -51,7 +51,7 @@
 				fade_to_black(S)
 	priority_announce("Zorza kosmiczna właśnie się kończy. Właściwości światła gwiezdnego będą powoli wracać do normy. Gdy tak się stanie, prosimy powrócić do swoich miejsc pracy i kontynuować wykonywanie obowiązków. Życzymy udanej zmiany, [station_name()], i dziękujemy za wspólny seans.",
 	sound = 'sound/misc/notice2.ogg',
-	sender_override = "Nanotrasen Meteorology Division")
+	sender_override = "Wydział Meteorologii Nanotrasen")
 
 /datum/round_event/aurora_caelus/proc/fade_to_black(turf/open/space/S)
 	set waitfor = FALSE

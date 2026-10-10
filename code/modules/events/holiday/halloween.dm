@@ -20,7 +20,7 @@
 		qdel(Poly)
 
 /datum/round_event/spooky/announce(fake)
-	priority_announce(pick("RATTLE ME BONES!","THE RIDE NEVER ENDS!", "A SKELETON POPS OUT!", "SPOOKY SCARY SKELETONS!", "CREWMEMBERS BEWARE, YOU'RE IN FOR A SCARE!") , "THE CALL IS COMING FROM INSIDE THE HOUSE", SSstation.announcer.get_rand_alert_sound())
+	priority_announce(pick("GRZECHOCZĄ MI KOŚCI!","TA JAZDA NIGDY SIĘ NIE KOŃCZY!", "WYSKAKUJE SZKIELET!", "STRASZNE, UPIORNE SZKIELETY!", "ZAŁOGO, STRZEŻ SIĘ, BĘDZIE STRASZNIE!") , "TEN TELEFON DZWONI Z WNĘTRZA DOMU", SSstation.announcer.get_rand_alert_sound())
 
 //spooky foods (you can't actually make these when it's not halloween)
 /obj/item/food/cookie/sugar/spookyskull

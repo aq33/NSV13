@@ -7,7 +7,7 @@
 
 /obj/item/toy/xmas_cracker/attack(mob/target, mob/user)
 	if( !cracked && ishuman(target) && (target.stat == CONSCIOUS) && !target.get_active_held_item() )
-		target.visible_message("[user] and [target] pop \an [src]! *pop*", "<span class='notice'>You pull \an [src] with [target]! *pop*</span>", "<span class='italics'>You hear a pop.</span>")
+		target.visible_message("[user] i [target] rozrywają [src]! *pyk*", "<span class='notice'>Rozrywasz [src] razem z [target]! *pyk*</span>", "<span class='italics'>Słyszysz pyknięcie.</span>")
 		var/obj/item/paper/joke_paper = new /obj/item/paper(user.loc)
 		joke_paper.name = "[pick("awful","terrible","unfunny")] joke"
 		joke_paper.add_raw_text(pick("What did one snowman say to the other?\n\n<i>'Is it me or can you smell carrots?'</i>",
@@ -83,10 +83,10 @@
 	var/mob/living/carbon/human/santa //who is our santa?
 
 /datum/round_event/santa/announce(fake)
-	priority_announce("Santa is coming to town!", "Unknown Transmission", SSstation.announcer.get_rand_alert_sound())
+	priority_announce("Mikołaj przybywa do miasta!", "Nieznana transmisja", SSstation.announcer.get_rand_alert_sound())
 
 /datum/round_event/santa/start()
-	var/list/candidates = pollGhostCandidates("Santa is coming to town! Do you want to be Santa?", poll_time = 15 SECONDS)
+	var/list/candidates = pollGhostCandidates("Mikołaj przybywa do miasta! Chcesz być Mikołajem?", poll_time = 15 SECONDS)
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
 		santa = new /mob/living/carbon/human(pick(GLOB.blobstart))
