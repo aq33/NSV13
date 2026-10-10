@@ -42,7 +42,7 @@
 
 /datum/request/proc/auto_generate_nuke_code()
 	autoaccept = TRUE
-	message_admins("Automatically generating nuke codes requested by [ADMIN_FULLMONTY(owner)] in [REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME] seconds. (<a href='?src=[REF(src)];cancel_nuke=1'>CANCEL</a>)")
+	message_admins("Automatically generating nuke codes requested by [ADMIN_FULLMONTY(owner)] in [REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME] seconds. (<a href='byond://?src=[REF(src)];cancel_nuke=1'>CANCEL</a>)")
 	sleep(REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME SECONDS)
 	if(autoaccept)
 		var/code = random_code(5)
@@ -88,7 +88,7 @@ GLOBAL_VAR_INIT(erts_requested_already, 0)
 
 /datum/request/proc/auto_create_response_team()
 	autoaccept = TRUE
-	message_admins("Automatically sending response team requested by [ADMIN_FULLMONTY(owner)] in [REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME] seconds. (<a href='?src=[REF(src)];cancel_ert=1'>CANCEL</a>)")
+	message_admins("Automatically sending response team requested by [ADMIN_FULLMONTY(owner)] in [REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME] seconds. (<a href='byond://?src=[REF(src)];cancel_ert=1'>CANCEL</a>)")
 	sleep(REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME SECONDS)
 	if(autoaccept) // pod tym jest kopiuj wklej z one_click_antag.dm
 		var/message = "Prośba o przesłanie drużyny szybkiej reakcji została zaakceptowana, jednakże wszystkie drużyny są obecnie zajęte. Za niedogodności przepraszamy."
@@ -174,7 +174,7 @@ GLOBAL_VAR_INIT(erts_requested_already, 0)
 /// Wakes up willing ghosts as assistants at the cryopods on the ship, unless an admin cancels in time
 /datum/request/proc/auto_wake_crew()
 	autoaccept = TRUE
-	message_admins("Automatically waking up crew from cryostasis requested by [ADMIN_FULLMONTY(owner)] in [REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME] seconds. (<a href='?src=[REF(src)];cancel_wake=1'>CANCEL</a>)")
+	message_admins("Automatically waking up crew from cryostasis requested by [ADMIN_FULLMONTY(owner)] in [REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME] seconds. (<a href='byond://?src=[REF(src)];cancel_wake=1'>CANCEL</a>)")
 	sleep(REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME SECONDS)
 	if(!autoaccept)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(priority_announce), "Prośba o wybudzenie załogi z kriostazy została odrzucona.", "Automatyczny System Awaryjny Centrali"), 2 SECONDS)

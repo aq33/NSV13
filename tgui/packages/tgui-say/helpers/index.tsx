@@ -10,8 +10,8 @@ import { debounce, throttle } from 'common/timer';
  * Once byond signals this via keystroke, it
  * ensures window size, visibility, and focus.
  */
-export const windowOpen = (channel: string) => {
-  setOpen();
+export const windowOpen = (channel: string, dpi: number) => {
+  setOpen(dpi);
   Byond.sendMessage('open', { channel });
 };
 
@@ -19,17 +19,17 @@ export const windowOpen = (channel: string) => {
  * Resets the state of the window and hides it from user view.
  * Sending "close" logs it server side.
  */
-export const windowClose = () => {
-  setClosed();
+export const windowClose = (dpi: number) => {
+  setClosed(dpi);
   Byond.sendMessage('close');
 };
 
 /** Some QoL to hide the window on load. Doesn't log this event */
-export const windowLoad = () => {
+export const windowLoad = (dpi: number) => {
   Byond.winset('tgui_say', {
     pos: '848,500',
   });
-  setClosed();
+  setClosed(dpi);
 };
 
 /**
@@ -38,29 +38,29 @@ export const windowLoad = () => {
  * Parameters:
  *  size - The size of the window in pixels. Optional.
  */
-export const windowSet = (size: number = WINDOW_SIZES.small) => {
-  Byond.winset('tgui_say', { size: `${WINDOW_SIZES.width}x${size}` });
-  Byond.winset('tgui_say.browser', { size: `${WINDOW_SIZES.width}x${size}` });
+export const windowSet = (size: number = WINDOW_SIZES.small, dpi: number = 1) => {
+  Byond.winset('tgui_say', { size: `${Math.round(WINDOW_SIZES.width * dpi)}x${Math.round(size * dpi)}` });
+  Byond.winset('tgui_say.browser', { size: `${Math.round(WINDOW_SIZES.width * dpi)}x${Math.round(size * dpi)}` });
 };
 
 /** Private functions */
 /** Sets the skin props as opened. Focus might be a placebo here. */
-const setOpen = () => {
+const setOpen = (dpi: number) => {
   Byond.winset('tgui_say', {
     'is-visible': true,
-    size: `${WINDOW_SIZES.width}x${WINDOW_SIZES.small}`,
+    size: `${Math.round(WINDOW_SIZES.width * dpi)}x${Math.round(WINDOW_SIZES.small * dpi)}`,
   });
   Byond.winset('tgui_say.browser', {
     'is-visible': true,
-    size: `${WINDOW_SIZES.width}x${WINDOW_SIZES.small}`,
+    size: `${Math.round(WINDOW_SIZES.width * dpi)}x${Math.round(WINDOW_SIZES.small * dpi)}`,
   });
 };
 
 /** Sets the skin props as closed.  */
-const setClosed = () => {
+const setClosed = (dpi: number) => {
   Byond.winset('tgui_say', {
     'is-visible': false,
-    size: `${WINDOW_SIZES.width}x${WINDOW_SIZES.small}`,
+    size: `${Math.round(WINDOW_SIZES.width * dpi)}x${Math.round(WINDOW_SIZES.small * dpi)}`,
   });
   Byond.winset('map', {
     focus: true,

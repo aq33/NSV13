@@ -1,8 +1,8 @@
 
 /// Extra Aquila buttons appended to the end of the core one_click_antag() panel; the makeAntag topics are handled in aquila/code/modules/admin/topic.dm
 /datum/admins/proc/aquila_one_click_antag_links()
-	return {"<a href='?src=[REF(src)];[HrefToken()];makeAntag=infiltrator'>Make Infiltration Team (Requires Ghosts)</a>
-		<a href='?src=[REF(src)];[HrefToken()];makeAntag=vampire'>Make Vampire</a>
+	return {"<a href='byond://?src=[REF(src)];[HrefToken()];makeAntag=infiltrator'>Make Infiltration Team (Requires Ghosts)</a>
+		<a href='byond://?src=[REF(src)];[HrefToken()];makeAntag=vampire'>Make Vampire</a>
 		"}
 
 /datum/admins/proc/makeInfiltratorTeam()

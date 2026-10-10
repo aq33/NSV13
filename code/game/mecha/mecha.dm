@@ -26,7 +26,7 @@
 	max_integrity = 300 //max_integrity is base health
 	var/deflect_chance = 10 //chance to deflect the incoming projectiles, hits, or lesser the effect of ex_act.
 	armor = list("melee" = 20, "bullet" = 10, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100, "stamina" = 0)
-	var/list/facing_modifiers = list(MECHA_FRONT_ARMOUR = 1.5, MECHA_SIDE_ARMOUR = 1, MECHA_BACK_ARMOUR = 0.5)
+	var/list/facing_modifiers = list(/*MECHA_FRONT_ARMOUR = */1.5, /*MECHA_SIDE_ARMOUR = */1, /*MECHA_BACK_ARMOUR = */0.5)
 	var/equipment_disabled = 0 //disabled due to EMP
 	var/obj/item/stock_parts/cell/cell ///Keeps track of the mech's cell
 	var/obj/item/stock_parts/scanning_module/scanmod ///Keeps track of the mech's scanning module
@@ -746,7 +746,7 @@
 			to_chat(user, "[B.get_mecha_info()]")
 			break
 		//Nothing like a big, red link to make the player feel powerful!
-		to_chat(user, "<a href='?src=[REF(user)];ai_take_control=[REF(src)]'><span class='userdanger'>ASSUME DIRECT CONTROL?</span></a><br>")
+		to_chat(user, "<a href='byond://?src=[REF(user)];ai_take_control=[REF(src)]'><span class='userdanger'>ASSUME DIRECT CONTROL?</span></a><br>")
 	else
 		examine(user)
 		if(occupant)
@@ -760,7 +760,7 @@
 		if(!can_control_mech)
 			to_chat(user, "<span class='warning'>You cannot control exosuits without AI control beacons installed.</span>")
 			return
-		to_chat(user, "<a href='?src=[REF(user)];ai_take_control=[REF(src)]'><span class='boldnotice'>Take control of exosuit?</span></a><br>")
+		to_chat(user, "<a href='byond://?src=[REF(user)];ai_take_control=[REF(src)]'><span class='boldnotice'>Take control of exosuit?</span></a><br>")
 
 /obj/mecha/transfer_ai(interaction, mob/user, mob/living/silicon/ai/AI, obj/item/aicard/card)
 	if(!..())

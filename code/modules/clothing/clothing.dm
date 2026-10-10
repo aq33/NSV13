@@ -153,7 +153,7 @@
 		how_cool_are_your_threads += "</span>"
 		. += how_cool_are_your_threads.Join()
 
-	. += "<span class='notice'>It has a <a href='?src=[REF(src)];list_armor=1'>tag</a> listing its protection classes.</span>"
+	. += "<span class='notice'>It has a <a href='byond://?src=[REF(src)];list_armor=1'>tag</a> listing its protection classes.</span>"
 
 /obj/item/clothing/Topic(href, href_list)
 	. = ..()

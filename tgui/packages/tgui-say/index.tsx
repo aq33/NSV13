@@ -10,9 +10,14 @@ const renderApp = createRenderer(() => {
 });
 
 const setupApp = () => {
-  // Delay setup
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupApp);
+  // Delay setup. On 516 (WebView2) DOMContentLoaded does not reach this
+  // inlined bundle, so wait for readyState 'complete' like Bee does.
+  if (document.readyState !== 'complete') {
+    document.onreadystatechange = () => {
+      if (document.readyState === 'complete') {
+        setupApp();
+      }
+    };
     return;
   }
 

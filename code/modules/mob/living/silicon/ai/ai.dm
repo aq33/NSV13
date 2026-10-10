@@ -288,11 +288,11 @@
 				if (C && istype(C, /list))
 					var/dat2 = ""
 					for (var/obj/machinery/camera/I in C)
-						dat2 += text("[]<A HREF=?src=[REF(src)];switchcamera=[REF(I)]>[]</A>", (dat2=="") ? "" : " | ", I.c_tag)
+						dat2 += text("[]<A HREF=byond://?src=[REF(src)];switchcamera=[REF(I)]>[]</A>", (dat2=="") ? "" : " | ", I.c_tag)
 					dat += text("-- [] ([])", A.name, (dat2!="") ? dat2 : "No Camera")
 				else if (C && istype(C, /obj/machinery/camera))
 					var/obj/machinery/camera/Ctmp = C
-					dat += text("-- [] (<A HREF=?src=[REF(src)];switchcamera=[REF(C)]>[]</A>)", A.name, Ctmp.c_tag)
+					dat += text("-- [] (<A HREF=byond://?src=[REF(src)];switchcamera=[REF(C)]>[]</A>)", A.name, Ctmp.c_tag)
 				else
 					dat += text("-- [] (No Camera)", A.name)
 				if (sources.len > 1)
@@ -580,7 +580,7 @@
 	var/ai_Zlevel = ai_current_turf.get_virtual_z_level()
 	var/valid_z = get_level_trait(ai_Zlevel)
 	var/d
-	d += "<A HREF=?src=[REF(src)];botrefresh=1>Query network status</A><br>"
+	d += "<A HREF=byond://?src=[REF(src)];botrefresh=1>Query network status</A><br>"
 	d += "<table width='100%'><tr><td width='40%'><h3>Name</h3></td><td width='30%'><h3>Status</h3></td><td width='30%'><h3>Location</h3></td><td width='10%'><h3>Control</h3></td></tr>"
 	for (Bot in GLOB.alive_mob_list)
 		if((Bot.get_virtual_z_level() in SSmapping.levels_by_trait(valid_z)) && !Bot.remote_disabled) // NSV13 end
@@ -589,8 +589,8 @@
 			//If the bot is on, it will display the bot's current mode status. If the bot is not mode, it will just report "Idle". "Inactive if it is not on at all.
 			d += "<td width='30%'>[bot_mode]</td>"
 			d += "<td width='30%'>[get_area_name(Bot, TRUE)]</td>"
-			d += "<td width='10%'><A HREF=?src=[REF(src)];interface=[REF(Bot)]>Interface</A></td>"
-			d += "<td width='10%'><A HREF=?src=[REF(src)];callbot=[REF(Bot)]>Call</A></td>"
+			d += "<td width='10%'><A HREF=byond://?src=[REF(src)];interface=[REF(Bot)]>Interface</A></td>"
+			d += "<td width='10%'><A HREF=byond://?src=[REF(src)];callbot=[REF(Bot)]>Call</A></td>"
 			d += "</tr>"
 			d = format_text(d)
 
@@ -651,12 +651,12 @@
 
 	if (cameras)
 		if (cam?.can_use())
-			queueAlarm("--- [class] alarm detected in [home.name]! (<A HREF=?src=[REF(src)];switchcamera=[REF(cam)]>[cam.c_tag]</A>)", class)
+			queueAlarm("--- [class] alarm detected in [home.name]! (<A HREF=byond://?src=[REF(src)];switchcamera=[REF(cam)]>[cam.c_tag]</A>)", class)
 		else if (our_cams?.len)
 			var/foo = 0
 			var/dat2 = ""
 			for (var/obj/machinery/camera/I in our_cams)
-				dat2 += text("[]<A HREF=?src=[REF(src)];switchcamera=[REF(I)]>[]</A>", (!foo) ? "" : " | ", I.c_tag) //I'm not fixing this shit...
+				dat2 += text("[]<A HREF=byond://?src=[REF(src)];switchcamera=[REF(I)]>[]</A>", (!foo) ? "" : " | ", I.c_tag) //I'm not fixing this shit...
 				foo = 1
 			queueAlarm(text ("--- [] alarm detected in []! ([])", class, home.name, dat2), class)
 		else
@@ -980,7 +980,7 @@
 	var/treated_message = lang_treat(speaker, message_language, raw_message, spans, message_mods)
 	var/start = "Relayed Speech: "
 	var/namepart = "[speaker.GetVoice()][speaker.get_alt_name()]"
-	var/hrefpart = "<a href='?src=[REF(src)];track=[html_encode(namepart)]'>"
+	var/hrefpart = "<a href='byond://?src=[REF(src)];track=[html_encode(namepart)]'>"
 	var/jobpart = "Unknown"
 
 	if (ishuman(speaker))

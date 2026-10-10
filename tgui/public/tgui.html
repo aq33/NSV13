@@ -52,8 +52,15 @@
       : null;
   })();
 
+  // Blink engine version (WebView2, BYOND 516+)
+  Byond.BLINK = (function () {
+    var groups = navigator.userAgent.match(/Chrome\/(\d+)\./);
+    var majorVersion = groups && groups[1];
+    return majorVersion ? parseInt(majorVersion, 10) : null;
+  })();
+
   // Basic checks to detect whether this page runs in BYOND
-  var isByond = (Byond.TRIDENT !== null || window.cef_to_byond)
+  var isByond = (Byond.TRIDENT !== null || Byond.BLINK !== null || window.cef_to_byond)
     && location.hostname === '127.0.0.1'
     && location.search !== '?external';
     //As of BYOND 515 the path doesn't seem to include tmp dir anymore if you're trying to open tgui in external browser and looking why it doesn't work
@@ -345,6 +352,18 @@
       if (!sync) {
         node.media = 'only x';
       }
+      var removeNodeAndRetry = function () {
+        node.parentNode.removeChild(node);
+        node = null;
+        retry();
+      }
+      // 516: Chromium won't call onload() if there is a 404 error
+      // Legacy IE doesn't use onerror, so we retain that
+      // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#stylesheet_load_events
+      node.onerror = function () {
+        node.onerror = null;
+        removeNodeAndRetry();
+      }
       node.onload = function () {
         node.onload = null;
         if (isStyleSheetLoaded(node, url)) {
@@ -353,9 +372,7 @@
           return;
         }
         // Try again
-        node.parentNode.removeChild(node);
-        node = null;
-        retry();
+        removeNodeAndRetry();
       };
       injectNode(node);
       return;
@@ -513,9 +530,6 @@ window.replaceHtml = function (inline_html) {
       + "<!-- tgui:inline-html-end -->"
   );
 };
-
-// Signal tgui that we're ready to receive updates
-Byond.sendMessage('ready');
 </script>
 
 <style>
@@ -648,6 +662,13 @@ Nanotrasen (c) 2525-2559
     <div>Please enable Javascript and restart the game.</div>
   </div>
 </noscript>
+
+<script type="text/javascript">
+// Signal tgui that we're ready to receive updates.
+// Must stay at the very end of <body>: on 516 (WebView2) Byond.call navigates
+// to byond://, which stops parsing anything that comes after it.
+Byond.sendMessage('ready');
+</script>
 
 </body>
 </html>

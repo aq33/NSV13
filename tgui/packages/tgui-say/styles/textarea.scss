@@ -10,6 +10,9 @@
   font-size: 1.1rem;
   margin-left: 5px;
   padding: 7px;
+  textarea {
+    resize: none;
+  }
   &:focus {
     border-color: #303030;
   }

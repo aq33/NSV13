@@ -748,9 +748,9 @@
 
 		for(var/obj/item/I in LB.embedded_objects)
 			if(I.isEmbedHarmless())
-				msg += "\n<a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] stuck to your [LB.name]!</a>"
+				msg += "\n<a href='byond://?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] stuck to your [LB.name]!</a>"
 			else
-				msg += "\n<a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] embedded in your [LB.name]!</a>"
+				msg += "\n<a href='byond://?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] embedded in your [LB.name]!</a>"
 
 	for(var/t in missing)
 		msg += "\n<span class='boldannounce'>Your [parse_zone(t)] is missing!</span>"

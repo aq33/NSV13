@@ -8,4 +8,4 @@ GLOBAL_PROTECT(mentorlog)
 
     if(!GLOB.mentorlog.len)
         dat += "No mentors have done anything this round!"
-    usr << browse(dat, "window=mentor_log")
+    usr << browse(HTML_SKELETON(dat), "window=mentor_log")

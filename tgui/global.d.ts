@@ -45,6 +45,11 @@ type ByondType = {
   TRIDENT: number | null;
 
   /**
+   * Version of Blink engine of WebView2. Null if N/A.
+   */
+  BLINK: number | null;
+
+  /**
    * True if browser is IE8 or lower.
    */
   IS_LTE_IE8: boolean;
@@ -123,7 +128,7 @@ type ByondType = {
    *
    * Returns a promise with the value of that property.
    */
-  winget(id: string | null, propNames: string[]): Promise<object>;
+  winget(id: string | null, propName: string): Promise<any>;
 
   /**
    * Retrieves multiple properties of the BYOND skin element,
@@ -191,4 +196,13 @@ const Byond: ByondType;
 
 interface Window {
   Byond: ByondType;
+
+  // IE IndexedDB stuff.
+  msIndexedDB: IDBFactory;
+  msIDBTransaction: IDBTransaction;
+
+  // 516 byondstorage API.
+  hubStorage: Storage;
+  domainStorage: Storage;
+  serverStorage: Storage;
 }

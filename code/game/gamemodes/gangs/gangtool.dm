@@ -49,12 +49,12 @@
 			if(promotable && L.gang.leaders.len < L.gang.max_leaders)
 				dat += "Give this device to another member of your organization to use to promote them to Lieutenant.<br><br>"
 				dat += "If this is meant as a spare device for yourself:<br>"
-			dat += "<a href='?src=[REF(src)];register=1'>Register Device as Spare</a><br>"
+			dat += "<a href='byond://?src=[REF(src)];register=1'>Register Device as Spare</a><br>"
 		else if(promotable)
 			var/datum/antagonist/gang/sweet = user.mind.has_antag_datum(/datum/antagonist/gang)
 			if(sweet.gang.leaders.len < sweet.gang.max_leaders)
 				dat += "You have been selected for a promotion!<br>"
-				dat += "<a href='?src=[REF(src)];register=1'>Accept Promotion</a><br>"
+				dat += "<a href='byond://?src=[REF(src)];register=1'>Accept Promotion</a><br>"
 			else
 				dat += "No promotions available: All positions filled.<br>"
 		else
@@ -63,8 +63,8 @@
 		dat += "Registration: <B>[gang.name] Gang Boss</B><br>"
 		dat += "Organization Size: <B>[gang.members.len]</B> | Station Control: <B>[gang.territories.len] territories under control.</B> | Influence: <B>[gang.influence]</B><br>"
 		dat += "Time until Influence grows: <B>[time2text(gang.next_point_time - world.time, "mm:ss")]</B><br>"
-		dat += "<a href='?src=[REF(src)];commute=1'>Send message to Gang</a><br>"
-		dat += "<a href='?src=[REF(src)];recall=1'>Recall shuttle</a><br>"
+		dat += "<a href='byond://?src=[REF(src)];commute=1'>Send message to Gang</a><br>"
+		dat += "<a href='byond://?src=[REF(src)];recall=1'>Recall shuttle</a><br>"
 		dat += "<hr>"
 		for(var/cat in buyable_items)
 			dat += "<b>[cat]</b><br>"
@@ -79,7 +79,7 @@
 
 				var/toAdd = G.get_name_display(user, gang, src)
 				if(G.can_buy(user, gang, src))
-					toAdd = "<a href='?src=[REF(src)];purchase=1;id=[id];cat=[cat]'>[toAdd]</a>"
+					toAdd = "<a href='byond://?src=[REF(src)];purchase=1;id=[id];cat=[cat]'>[toAdd]</a>"
 				dat += toAdd
 				var/extra = G.get_extra_info(user, gang, src)
 				if(extra)
@@ -87,7 +87,7 @@
 				dat += "<br>"
 			dat += "<br>"
 
-	dat += "<a href='?src=[REF(src)];choice=refresh'>Refresh</a><br>"
+	dat += "<a href='byond://?src=[REF(src)];choice=refresh'>Refresh</a><br>"
 
 	var/datum/browser/popup = new(user, "gangtool", "Welcome to GangTool v4.0", 340, 625)
 	popup.set_content(dat)

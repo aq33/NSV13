@@ -92,29 +92,29 @@
 	dat += hack(user)
 	dat += showpai(user)
 	dat += "<TT><B>Hugging Unit Controls v2.0</B></TT><BR><BR>"
-	dat += "Status: <A href='?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A><BR>"
+	dat += "Status: <A href='byond://?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A><BR>"
 	dat += "Maintenance panel panel is [open ? "opened" : "closed"]<BR>"
 	dat += "Behaviour controls are [locked ? "locked" : "unlocked"]<hr>"
 	if(!locked || issilicon(user) || IsAdminGhost(user))
 		dat += "Maximum sanity: "
-		dat += "<a href='?src=[REF(src)];adj_sanity=-10'>-</a> "
+		dat += "<a href='byond://?src=[REF(src)];adj_sanity=-10'>-</a> "
 		dat += "[max_sanity] "
-		dat += "<a href='?src=[REF(src)];adj_sanity=10'>+</a> "
+		dat += "<a href='byond://?src=[REF(src)];adj_sanity=10'>+</a> "
 		dat += "<br>"
 		dat += "Operating mode: "
 		switch(zone_selected)
 			if(BODY_ZONE_CHEST)
-				dat += "<a href='?src=[REF(src)];op_mode=[BODY_ZONE_HEAD]'>Hug</a>"
+				dat += "<a href='byond://?src=[REF(src)];op_mode=[BODY_ZONE_HEAD]'>Hug</a>"
 			if(BODY_ZONE_HEAD)
-				dat += "<a href='?src=[REF(src)];op_mode=[BODY_ZONE_PRECISE_MOUTH]'>Pat</a>"
+				dat += "<a href='byond://?src=[REF(src)];op_mode=[BODY_ZONE_PRECISE_MOUTH]'>Pat</a>"
 			if(BODY_ZONE_PRECISE_MOUTH)
-				dat += "<a href='?src=[REF(src)];op_mode=[BODY_ZONE_CHEST]'>Boop</a>"
+				dat += "<a href='byond://?src=[REF(src)];op_mode=[BODY_ZONE_CHEST]'>Boop</a>"
 		dat += "<br>"
-		dat += "The speaker switch is [shut_up ? "off" : "on"]. <a href='?src=[REF(src)];togglevoice=[1]'>Toggle</a><br>"
-		dat += "Patrol Station: <a href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</a><br>"
-		dat += "Stationary Mode: <a href='?src=[REF(src)];stationary=1'>[stationary_mode ? "Yes" : "No"]</a><br><hr>"
+		dat += "The speaker switch is [shut_up ? "off" : "on"]. <a href='byond://?src=[REF(src)];togglevoice=[1]'>Toggle</a><br>"
+		dat += "Patrol Station: <a href='byond://?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</a><br>"
+		dat += "Stationary Mode: <a href='byond://?src=[REF(src)];stationary=1'>[stationary_mode ? "Yes" : "No"]</a><br><hr>"
 	if(open || IsAdminGhost(user))
-		dat += "There is an exposed pink wire which is <a href='?src=[REF(src)];tania_mode=1'>[tania_mode ? "Cut" : "Intact"]</a><br>"
+		dat += "There is an exposed pink wire which is <a href='byond://?src=[REF(src)];tania_mode=1'>[tania_mode ? "Cut" : "Intact"]</a><br>"
 
 	return dat
 
