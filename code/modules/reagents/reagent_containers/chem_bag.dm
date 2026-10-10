@@ -17,11 +17,11 @@
 	. = ..()
 	if(reagents)
 		if(volume == reagents.total_volume)
-			. += "<span class='notice'>It is fully filled.</span>"
+			. += "<span class='notice'>Jest całkowicie wypełniony.</span>"
 		else if(!reagents.total_volume)
 			. += "<span class='notice'>It's empty.</span>"
 		else
-			. += "<span class='notice'>It seems [round(reagents.total_volume/volume*100)]% filled.</span>"
+			. += "<span class='notice'>Wygląda na wypełniony w [round(reagents.total_volume/volume*100)]%.</span>"
 
 /obj/item/reagent_containers/chem_bag/epinephrine
 	name = "epinephrine chemical bag"

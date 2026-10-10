@@ -78,14 +78,14 @@
 	else if(C.is_mouth_covered(mask_only = 1))
 		covered = "mask"
 	if(covered)
-		var/who = (isnull(user) || eater == user) ? "your" : "[eater.p_their()]"
-		balloon_alert(user, "Remove [who] [covered] first!")
+		var/who = (isnull(user) || eater == user) ? "twój" : "[eater.p_their()]"
+		balloon_alert(user, "Najpierw zdejmij: [who] [covered]!")
 		return FALSE
 	if(!eater.has_mouth())
 		if(eater == user)
-			balloon_alert(eater, "You have no mouth!")
+			balloon_alert(eater, "Nie masz ust!")
 		else
-			balloon_alert(user, "[eater] has no mouth!")
+			balloon_alert(user, "[eater] nie ma ust!")
 		return FALSE
 	return TRUE
 
@@ -120,8 +120,8 @@
 			reagents.total_volume *= rand(5,10) * 0.1 //Not all of it makes contact with the target
 		var/mob/M = target
 		var/R
-		target.visible_message("<span class='danger'>[M] has been splashed with something!</span>", \
-						"<span class='userdanger'>[M] has been splashed with something!</span>")
+		target.visible_message("<span class='danger'>Coś opryskało [M]!</span>", \
+						"<span class='userdanger'>Coś opryskało [M]!</span>")
 		for(var/datum/reagent/A in reagents.reagent_list)
 			R += "[A.type]  ([num2text(A.volume)]),"
 
@@ -130,7 +130,7 @@
 		reagents.reaction(target, TOUCH)
 
 	else if(bartender_check(target) && thrown)
-		visible_message("<span class='notice'>[src] lands onto the [target.name] without spilling a single drop.</span>")
+		visible_message("<span class='notice'>[src] ląduje na [target.name], nie rozlewając ani kropli.</span>")
 		return
 
 	else
@@ -138,7 +138,7 @@
 			log_combat(thrown_by, target, "splashed (thrown) [english_list(reagents.reagent_list)]", "in [AREACOORD(target)]")
 			log_game("[key_name(thrown_by)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [AREACOORD(target)].")
 			message_admins("[ADMIN_LOOKUPFLW(thrown_by)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [ADMIN_VERBOSEJMP(target)].")
-		visible_message("<span class='notice'>[src] spills its contents all over [target].</span>")
+		visible_message("<span class='notice'>[src] rozlewa swoją zawartość na [target].</span>")
 		reagents.reaction(target, TOUCH)
 		if(QDELETED(src))
 			return

@@ -24,9 +24,9 @@
 		// We dont want to spam the same message over and over again at the
 		// person. Give it a bit of a buffer.
 		if(hallucination > 50 && prob(25))
-			text_output = pick("spiders","dreams","nightmares","przyszłość","przeszłość","victory",\
-			"defeat","pain","bliss","revenge","poison","time","space","death","life","truth","lies","justice","memory",\
-			"regrets","twoja dusza","suffering","music","noise","blood","hunger","amerykański styl życia")
+			text_output = pick("pająki","sny","koszmary","przyszłość","przeszłość","zwycięstwo",\
+			"porażka","ból","błogość","zemsta","trucizna","czas","kosmos","śmierć","życie","prawda","kłamstwa","sprawiedliwość","pamięć",\
+			"żal","twoja dusza","cierpienie","muzyka","hałas","krew","głód","amerykański styl życia")
 		if((text_output != last_taste_text || last_taste_time + 100 < world.time) && (taste_sensitivity != NO_TASTE_SENSITIVITY))
 			to_chat(src, "<span class='notice'>Czujesz smak: [text_output].</span>")
 			// "something indescribable" -> too many tastes, not enough flavor.

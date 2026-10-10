@@ -10,7 +10,7 @@
 /datum/reagent/consumable
 	name = "Consumable"
 	chem_flags = CHEMICAL_NOT_DEFINED
-	taste_description = "generic food"
+	taste_description = "zwykłe jedzenie"
 	taste_mult = 4
 	var/nutriment_factor = 1 * REAGENTS_METABOLISM
 	var/quality = 0	//affects mood, typically higher for mixed drinks with more complex recipes
@@ -48,7 +48,7 @@
 
 /datum/reagent/consumable/nutriment
 	name = "Nutriment"
-	description = "All the vitamins, minerals, and carbohydrates the body needs in pure form."
+	description = "Wszystkie witaminy, minerały i węglowodany, których potrzebuje ciało, w czystej postaci."
 	reagent_state = SOLID
 	nutriment_factor = 15 * REAGENTS_METABOLISM
 	color = "#664330" // rgb: 102, 67, 48
@@ -99,7 +99,7 @@
 
 /datum/reagent/consumable/nutriment/vitamin
 	name = "Vitamin"
-	description = "All the best vitamins, minerals, and carbohydrates the body needs in pure form."
+	description = "Wszystkie najlepsze witaminy, minerały i węglowodany, których potrzebuje ciało, w czystej postaci."
 
 	brute_heal = 1
 	burn_heal = 1
@@ -111,13 +111,13 @@
 
 /datum/reagent/consumable/nutriment/protein //this is from a tg pr that actually makes use of this reagent. At the moment that I am porting newfood, we are just using it as filler to have something other than vitamins and nutriments.
 	name = "Protein"
-	description = "A natural polyamide made up of amino acids. An essential constituent of mosts known forms of life."
+	description = "Naturalny poliamid zbudowany z aminokwasów. Niezbędny składnik większości znanych form życia."
 	brute_heal = 0.8 //Rewards the player for eating a balanced diet.
 	nutriment_factor = 9 * REAGENTS_METABOLISM //45% as calorie dense as corn oil.
 
 /datum/reagent/consumable/nutriment/fat
 	name = "Fat"
-	description = "Triglycerides found in vegetable oils and fatty animal tissue."
+	description = "Triglicerydy występujące w olejach roślinnych i tłuszczu zwierzęcym."
 	color = "#f0eed7"
 	taste_description = "lard"
 	brute_heal = 0
@@ -133,15 +133,15 @@
 		return
 	// if the fried obj is indestructible or under the fry blacklist (His Grace), we dont want it to be fried, for obvious reasons
 	if(is_type_in_typecache(exposed_obj, GLOB.oilfry_blacklisted_items) || (exposed_obj.resistance_flags & INDESTRUCTIBLE))
-		exposed_obj.visible_message("<span class='notice'>The hot oil has no effect on [exposed_obj]!</span>")
+		exposed_obj.visible_message("<span class='notice'>Gorący olej nie działa na [exposed_obj]!</span>")
 		return
 	// if we are holding an item/atom inside, we dont want to arbitrarily fry this item
 	if(SEND_SIGNAL(exposed_obj, COMSIG_CONTAINS_STORAGE))
-		exposed_obj.visible_message("<span class='notice'>The hot oil splatters about as [exposed_obj] touches it. It seems too full to cook properly!</span>")
+		exposed_obj.visible_message("<span class='notice'>Gorący olej pryska, gdy [exposed_obj] go dotyka. Wygląda na zbyt pełny, by się porządnie usmażyć!</span>")
 		return
 
 	log_game("[exposed_obj.name] ([exposed_obj.type]) has been deep fried by a reaction with cooking oil reagent at [AREACOORD(exposed_obj)].")
-	exposed_obj.visible_message("<span class='warning'>[exposed_obj] rapidly fries as it's splashed with hot oil! Somehow.</span>")
+	exposed_obj.visible_message("<span class='warning'>[exposed_obj] błyskawicznie się smaży, oblany gorącym olejem! Jakimś cudem.</span>")
 	exposed_obj.AddElement(/datum/element/fried_item, volume)
 	exposed_obj.reagents.add_reagent(src.type, reac_volume)
 
@@ -155,8 +155,8 @@
 		burn_damage *= max(1 - touch_protection, 0)
 	var/FryLoss = round(min(30, burn_damage * reac_volume)) //NSV13 - total damage caps at 30.
 	if(!HAS_TRAIT(exposed_mob, TRAIT_OIL_FRIED))
-		exposed_mob.visible_message("<span class='warning'>The boiling oil sizzles as it covers [exposed_mob]!</span>", \
-		"<span class='userdanger'>You're covered in boiling oil!</span>")
+		exposed_mob.visible_message("<span class='warning'>Wrzący olej skwierczy, pokrywając [exposed_mob]!</span>", \
+		"<span class='userdanger'>Zostajesz oblany wrzącym olejem!</span>")
 		if(FryLoss)
 			exposed_mob.emote("scream")
 		playsound(exposed_mob, 'sound/machines/fryer/deep_fryer_emerge.ogg', 25, TRUE)
@@ -175,7 +175,7 @@
 
 /datum/reagent/consumable/nutriment/fat/oil
 	name = "Vegetable Oil"
-	description = "A variety of cooking oil derived from plant fats. Used in food preparation and frying."
+	description = "Rodzaj oleju spożywczego z tłuszczów roślinnych. Używany do przygotowywania i smażenia potraw."
 	color = "#EADD6B" //RGB: 234, 221, 107 (based off of canola oil)
 	taste_mult = 0.8
 	taste_description = "oil"
@@ -184,14 +184,14 @@
 
 /datum/reagent/consumable/nutriment/fat/oil/olive
 	name = "Olive Oil"
-	description = "A high quality oil, suitable for dishes where the oil is a key flavour."
-	taste_description = "olive oil"
+	description = "Wysokiej jakości olej, odpowiedni do dań, w których olej jest kluczowym smakiem."
+	taste_description = "oliwa z oliwek"
 	color = "#DBCF5C"
 	nutriment_factor = 10
 
 /datum/reagent/consumable/sugar
 	name = "Sugar"
-	description = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste."
+	description = "Związek organiczny powszechnie znany jako cukier stołowy, czasem nazywany sacharozą. Ten biały, bezwonny, krystaliczny proszek ma przyjemny, słodki smak."
 	reagent_state = SOLID
 	color = "#FFFFFF" // rgb: 255, 255, 255
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
@@ -202,7 +202,7 @@
 	taste_description = "sweetness"
 
 /datum/reagent/consumable/sugar/overdose_start(mob/living/M)
-	to_chat(M, "<span class='userdanger'>You go into hyperglycaemic shock! Lay off the twinkies!</span>")
+	to_chat(M, "<span class='userdanger'>Wpadasz we wstrząs hiperglikemiczny! Odpuść sobie te ciastka!</span>")
 	M.AdjustSleeping(600, FALSE)
 	. = 1
 
@@ -213,11 +213,11 @@
 
 /datum/reagent/consumable/virus_food
 	name = "Virus Food"
-	description = "A mixture of water and milk. Virus cells can use this mixture to reproduce."
+	description = "Mieszanka wody i mleka. Komórki wirusów mogą jej używać do rozmnażania."
 	nutriment_factor = 2 * REAGENTS_METABOLISM
 	color = "#899613" // rgb: 137, 150, 19
 	chem_flags = CHEMICAL_RNG_BOTANY
-	taste_description = "watery milk"
+	taste_description = "wodniste mleko"
 
 /datum/reagent/consumable/virus_food/on_mob_life(mob/living/carbon/M)
 	. = ..()
@@ -229,7 +229,7 @@
 
 /datum/reagent/consumable/soysauce
 	name = "Soysauce"
-	description = "A salty sauce made from the soy plant."
+	description = "Słony sos z soi."
 	nutriment_factor = 2 * REAGENTS_METABOLISM
 	color = "#792300" // rgb: 121, 35, 0
 	chem_flags = CHEMICAL_RNG_BOTANY
@@ -237,7 +237,7 @@
 
 /datum/reagent/consumable/ketchup
 	name = "Ketchup"
-	description = "Ketchup, catsup, whatever. It's tomato paste."
+	description = "Keczup, ketchup, jak zwał. To przecier pomidorowy."
 	nutriment_factor = 5 * REAGENTS_METABOLISM
 	color = "#731008" // rgb: 115, 16, 8
 	chem_flags = CHEMICAL_RNG_BOTANY
@@ -246,10 +246,10 @@
 
 /datum/reagent/consumable/capsaicin
 	name = "Capsaicin Oil"
-	description = "This is what makes chilis hot."
+	description = "To właśnie sprawia, że papryczki chili są ostre."
 	color = "#B31008" // rgb: 179, 16, 8
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "hot peppers"
+	taste_description = "ostre papryczki"
 	taste_mult = 1.5
 
 /datum/reagent/consumable/capsaicin/on_mob_life(mob/living/carbon/M)
@@ -278,7 +278,7 @@
 
 /datum/reagent/consumable/frostoil
 	name = "Frost Oil"
-	description = "A special oil that noticably chills the body. Extracted from Icepeppers and slimes."
+	description = "Specjalny olej, który wyraźnie schładza ciało. Pozyskiwany z lodowych papryczek i szlamów."
 	color = "#8BA6E9" // rgb: 139, 166, 233
 	chem_flags = CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
 	taste_description = "mint"
@@ -323,10 +323,10 @@
 
 /datum/reagent/consumable/condensedcapsaicin
 	name = "Condensed Capsaicin"
-	description = "A chemical agent used for self-defense and in police work."
+	description = "Środek chemiczny używany do samoobrony i w pracy policji."
 	color = "#B31008" // rgb: 179, 16, 8
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "scorching agony"
+	taste_description = "paląca agonia"
 
 /datum/reagent/consumable/condensedcapsaicin/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if(!ishuman(M) && !ismonkey(M))
@@ -354,7 +354,7 @@
 
 /datum/reagent/consumable/sodiumchloride
 	name = "Table Salt"
-	description = "A salt made of sodium chloride. Commonly used to season food."
+	description = "Sól z chlorku sodu. Powszechnie używana do przyprawiania jedzenia."
 	reagent_state = SOLID
 	color = "#FFFFFF" // rgb: 255,255,255
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
@@ -375,7 +375,7 @@
 
 /datum/reagent/consumable/blackpepper
 	name = "Black Pepper"
-	description = "A powder ground from peppercorns. *AAAACHOOO*"
+	description = "Proszek z mielonych ziaren pieprzu. *APSIK*"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	reagent_state = SOLID
 	// no color (ie, black)
@@ -383,7 +383,7 @@
 
 /datum/reagent/consumable/cocoa
 	name = "Cocoa Powder"
-	description = "A fatty, bitter paste made from cocoa beans."
+	description = "Tłusta, gorzka pasta z ziaren kakaowca."
 	reagent_state = SOLID
 	nutriment_factor = 5 * REAGENTS_METABOLISM
 	color = "#302000" // rgb: 48, 32, 0
@@ -393,22 +393,22 @@
 /datum/reagent/consumable/cocoa/on_mob_add(mob/living/carbon/M)
 	.=..()
 	if(iscatperson(M))
-		to_chat(M, "<span class='warning'>Your insides revolt at the presence of lethal chocolate!</span>")
+		to_chat(M, "<span class='warning'>Twoje wnętrzności buntują się przeciw śmiercionośnej czekoladzie!</span>")
 		M.vomit(20)
 
 
 
 /datum/reagent/consumable/cocoa/hot_cocoa
 	name = "Hot Chocolate"
-	description = "Made with love! And cocoa beans."
+	description = "Zrobione z miłością! I ziaren kakaowca."
 	reagent_state = LIQUID
 	nutriment_factor = 3 * REAGENTS_METABOLISM
 	color = "#403010" // rgb: 64, 48, 16
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "creamy chocolate"
+	taste_description = "kremowa czekolada"
 	glass_icon_state  = "chocolateglass"
 	glass_name = "glass of chocolate"
-	glass_desc = "Tasty."
+	glass_desc = "Smaczne."
 
 /datum/reagent/consumable/cocoa/hot_cocoa/on_mob_life(mob/living/carbon/M)
 	M.adjust_bodytemperature(5 * TEMPERATURE_DAMAGE_COEFFICIENT, 0, BODYTEMP_NORMAL)
@@ -416,7 +416,7 @@
 
 /datum/reagent/drug/mushroomhallucinogen
 	name = "Mushroom Hallucinogen"
-	description = "A strong hallucinogenic drug derived from certain species of mushroom."
+	description = "Silny halucynogen pozyskiwany z niektórych gatunków grzybów."
 	color = "#E700E7" // rgb: 231, 0, 231
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
 	metabolization_rate = 0.2 * REAGENTS_METABOLISM
@@ -447,7 +447,7 @@
 
 /datum/reagent/consumable/garlic //NOTE: having garlic in your blood stops vampires from biting you.
 	name = "Garlic Juice"
-	description = "Crushed garlic. Chefs love it, but it can make you smell bad."
+	description = "Zgnieciony czosnek. Kucharze go uwielbiają, ale przez niego można brzydko pachnieć."
 	color = "#FEFEFE"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
 	taste_description = "garlic"
@@ -456,7 +456,7 @@
 /datum/reagent/consumable/garlic/on_mob_life(mob/living/carbon/M)
 	if(isvampire(M)) //incapacitating but not lethal. Unfortunately, vampires cannot vomit.
 		if(prob(min(25,current_cycle)))
-			to_chat(M, "<span class='danger'>You can't get the scent of garlic out of your nose! You can barely think...</span>")
+			to_chat(M, "<span class='danger'>Nie możesz pozbyć się zapachu czosnku z nosa! Ledwo możesz myśleć...</span>")
 			M.Paralyze(10)
 			M.Jitter(10)
 	else if(ishuman(M))
@@ -471,10 +471,10 @@
 
 /datum/reagent/consumable/sprinkles
 	name = "Sprinkles"
-	description = "Multi-colored little bits of sugar, commonly found on donuts. Loved by cops."
+	description = "Wielobarwne kawałeczki cukru, często spotykane na pączkach. Kochane przez gliniarzy."
 	color = "#FF00FF" // rgb: 255, 0, 255
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_BOTANY
-	taste_description = "childhood whimsy"
+	taste_description = "dziecięca beztroska"
 
 /datum/reagent/consumable/sprinkles/on_mob_life(mob/living/carbon/M)
 	if(M.mind && HAS_TRAIT(M.mind, TRAIT_LAW_ENFORCEMENT_METABOLISM))
@@ -484,26 +484,26 @@
 
 /datum/reagent/consumable/enzyme
 	name = "Universal Enzyme"
-	description = "A universal enzyme used in the preparation of certain chemicals and foods."
+	description = "Uniwersalny enzym używany do przygotowywania niektórych substancji i potraw."
 	color = "#365E30" // rgb: 54, 94, 48
 	chem_flags = NONE
 	taste_description = "sweetness"
 
 /datum/reagent/consumable/dry_ramen
 	name = "Dry Ramen"
-	description = "Space age food, since August 25, 1958. Contains dried noodles, vegetables, and chemicals that boil in contact with water."
+	description = "Jedzenie ery kosmicznej, od 25 sierpnia 1958. Zawiera suszony makaron, warzywa i substancje, które gotują się w kontakcie z wodą."
 	reagent_state = SOLID
 	color = "#302000" // rgb: 48, 32, 0
 	chem_flags = NONE
-	taste_description = "dry and cheap noodles"
+	taste_description = "suchy i tani makaron"
 
 /datum/reagent/consumable/hot_ramen
 	name = "Hot Ramen"
-	description = "The noodles are boiled, the flavors are artificial, just like being back in school."
+	description = "Makaron jest ugotowany, smaki są sztuczne, zupełnie jak za szkolnych czasów."
 	nutriment_factor = 5 * REAGENTS_METABOLISM
 	color = "#302000" // rgb: 48, 32, 0
 	chem_flags = NONE
-	taste_description = "wet and cheap noodles"
+	taste_description = "mokry i tani makaron"
 
 /datum/reagent/consumable/hot_ramen/on_mob_life(mob/living/carbon/M)
 	M.adjust_bodytemperature(10 * TEMPERATURE_DAMAGE_COEFFICIENT, 0, BODYTEMP_NORMAL)
@@ -511,11 +511,11 @@
 
 /datum/reagent/consumable/hell_ramen
 	name = "Hell Ramen"
-	description = "The noodles are boiled, the flavors are artificial, just like being back in school."
+	description = "Makaron jest ugotowany, smaki są sztuczne, zupełnie jak za szkolnych czasów."
 	nutriment_factor = 5 * REAGENTS_METABOLISM
 	color = "#302000" // rgb: 48, 32, 0
 	chem_flags = NONE
-	taste_description = "wet and cheap noodles on fire"
+	taste_description = "mokry i tani makaron w ogniu"
 
 /datum/reagent/consumable/hell_ramen/on_mob_life(mob/living/carbon/M)
 	M.adjust_bodytemperature(10 * TEMPERATURE_DAMAGE_COEFFICIENT)
@@ -523,11 +523,11 @@
 
 /datum/reagent/consumable/flour
 	name = "Flour"
-	description = "This is what you rub all over yourself to pretend to be a ghost."
+	description = "Tym się smarujesz, żeby udawać ducha."
 	reagent_state = SOLID
 	color = "#FFFFFF" // rgb: 0, 0, 0
 	chem_flags = NONE
-	taste_description = "chalky wheat"
+	taste_description = "kredowa pszenica"
 
 /datum/reagent/consumable/flour/reaction_turf(turf/T, reac_volume)
 	if(!isspaceturf(T))
@@ -538,21 +538,21 @@
 
 /datum/reagent/consumable/cherryjelly
 	name = "Cherry Jelly"
-	description = "Totally the best. Only to be spread on foods with excellent lateral symmetry."
+	description = "Absolutnie najlepsze. Do smarowania wyłącznie potraw o doskonałej symetrii bocznej."
 	color = "#801E28" // rgb: 128, 30, 40
 	chem_flags = NONE
 	taste_description = "cherry"
 
 /datum/reagent/consumable/bluecherryjelly
 	name = "Blue Cherry Jelly"
-	description = "Blue and tastier kind of cherry jelly."
+	description = "Niebieski i smaczniejszy rodzaj galaretki wiśniowej."
 	color = "#00F0FF"
 	chem_flags = NONE
-	taste_description = "blue cherry"
+	taste_description = "niebieska wiśnia"
 
 /datum/reagent/consumable/rice
 	name = "Rice"
-	description = "Tiny nutritious grains. A fast and filling meal!"
+	description = "Małe, pożywne ziarenka. Szybki i sycący posiłek!"
 	reagent_state = SOLID
 	nutriment_factor = 3 * REAGENTS_METABOLISM
 	color = "#FFFFFF" // rgb: 0, 0, 0
@@ -561,7 +561,7 @@
 
 /datum/reagent/consumable/vanilla
 	name = "Vanilla Powder"
-	description = "A fatty, bitter paste made from vanilla pods."
+	description = "Tłusta, gorzka pasta z lasek wanilii."
 	reagent_state = SOLID
 	nutriment_factor = 5 * REAGENTS_METABOLISM
 	color = "#FFFACD"
@@ -570,7 +570,7 @@
 
 /datum/reagent/consumable/eggyolk
 	name = "Egg Yolk"
-	description = "It's full of protein."
+	description = "Jest pełne białka."
 	nutriment_factor = 3 * REAGENTS_METABOLISM
 	color = "#FFB500"
 	chem_flags = NONE
@@ -578,25 +578,25 @@
 
 /datum/reagent/consumable/corn_starch
 	name = "Corn Starch"
-	description = "A slippery solution."
+	description = "Śliski roztwór."
 	color = "#DBCE95"
 	chem_flags = NONE
 	taste_description = "slime"
 
 /datum/reagent/consumable/corn_syrup
 	name = "Corn Syrup"
-	description = "Decays into sugar."
+	description = "Rozkłada się na cukier."
 	color = "#DBCE95"
 	chem_flags = NONE
 	metabolization_rate = 3 * REAGENTS_METABOLISM
-	taste_description = "sweet slime"
+	taste_description = "słodki szlam"
 
 /datum/reagent/consumable/corn_syrup/on_mob_life(mob/living/carbon/M)
 	holder.add_reagent(/datum/reagent/consumable/sugar, 3)
 	..()
 /datum/reagent/consumable/honey
 	name = "Honey"
-	description = "Sweet, sweet honey that decays into sugar. Has antibacterial and natural healing properties."
+	description = "Słodki, słodki miód, który rozkłada się na cukier. Ma właściwości antybakteryjne i naturalnie leczące."
 	color = "#d3a308"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	nutriment_factor = 15 * REAGENTS_METABOLISM
@@ -624,33 +624,33 @@
 
 /datum/reagent/consumable/honey/special
 	name = "Royal Honey"
-	description = "A special honey which heals the imbiber far faster than normal honey"
+	description = "Specjalny miód, który leczy pijącego o wiele szybciej niż zwykły"
 	power = 1
 
 /datum/reagent/consumable/mayonnaise
 	name = "Mayonnaise"
-	description = "An white and oily mixture of mixed egg yolks."
+	description = "Biała, oleista mieszanka żółtek jaj."
 	color = "#DFDFDF"
 	chem_flags = NONE
 	taste_description = "mayonnaise"
 
 /datum/reagent/consumable/mold // yeah, ok, togopal, I guess you could call that a condiment
 	name = "Mold"
-	description = "This condiment will make any food break the mold. Or your stomach."
+	description = "Ta przyprawa sprawi, że każde jedzenie wyjdzie poza schemat. Albo twój żołądek."
 	color ="#708a88"
-	taste_description = "rancid fungus"
+	taste_description = "zjełczały grzyb"
 	chem_flags = NONE
 
 /datum/reagent/consumable/eggrot
 	name = "Rotten Eggyolk"
-	description = "It smells absolutely dreadful."
+	description = "Pachnie absolutnie okropnie."
 	color ="#708a88"
-	taste_description = "rotten eggs"
+	taste_description = "zgniłe jaja"
 	chem_flags = NONE
 
 /datum/reagent/consumable/tearjuice
 	name = "Tear Juice"
-	description = "A blinding substance extracted from certain onions."
+	description = "Oślepiająca substancja pozyskiwana z niektórych cebul."
 	color = "#c0c9a0"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
 	taste_description = "bitterness"
@@ -669,10 +669,10 @@
 				unprotected = TRUE
 	if(unprotected)
 		if(!M.getorganslot(ORGAN_SLOT_EYES))	//can't blind somebody with no eyes
-			to_chat(M, "<span class = 'notice'>Your eye sockets feel wet.</span>")
+			to_chat(M, "<span class = 'notice'>Twoje oczodoły robią się mokre.</span>")
 		else
 			if(!M.eye_blurry)
-				to_chat(M, "<span class = 'warning'>Tears well up in your eyes!</span>")
+				to_chat(M, "<span class = 'warning'>Łzy napływają ci do oczu!</span>")
 			M.blind_eyes(2)
 			M.blur_eyes(5)
 	..()
@@ -682,13 +682,13 @@
 	if(M.eye_blurry)	//Don't worsen vision if it was otherwise fine
 		M.blur_eyes(4)
 		if(prob(10))
-			to_chat(M, "<span class = 'warning'>Your eyes sting!</span>")
+			to_chat(M, "<span class = 'warning'>Pieką cię oczy!</span>")
 			M.blind_eyes(2)
 
 
 /datum/reagent/consumable/nutriment/stabilized
 	name = "Stabilized Nutriment"
-	description = "A bioengineered protein-nutrient structure designed to decompose in high saturation. In layman's terms, it won't get you fat."
+	description = "Biotechnologiczna struktura białkowo-odżywcza zaprojektowana tak, by rozkładać się przy wysokim nasyceniu. Mówiąc po ludzku, nie utyjesz od tego."
 	reagent_state = SOLID
 	nutriment_factor = 15 * REAGENTS_METABOLISM
 	color = "#664330" // rgb: 102, 67, 48
@@ -701,11 +701,11 @@
 
 /datum/reagent/consumable/maltodextrin
 	name = "Maltodextrin"
-	description = "A common filler found in processed foods. Foods containing it will leave you feeling full for a much shorter time."
+	description = "Powszechny wypełniacz w żywności przetworzonej. Jedzenie z nim zapewnia uczucie sytości na znacznie krócej."
 	color = "#ffffff"
 	chem_flags = CHEMICAL_RNG_GENERAL
 	taste_mult = 0.1 // Taste the salt and sugar not the cheap carbs
-	taste_description = "processed goodness"
+	taste_description = "przetworzona dobroć"
 	nutriment_factor = 0
 	metabolization_rate = 0.05 * REAGENTS_METABOLISM //Each unit will last 50 ticks
 
@@ -718,10 +718,10 @@
 
 /datum/reagent/consumable/entpoly
 	name = "Entropic Polypnium"
-	description = "An ichor derived from a certain mushroom. Makes for a bad time."
+	description = "Wydzielina z pewnego grzyba. Sprawia, że jest kiepsko."
 	color = "#1d043d"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "bitter mushroom"
+	taste_description = "gorzki grzyb"
 
 /datum/reagent/consumable/entpoly/on_mob_life(mob/living/carbon/M)
 	if(current_cycle >= 10)
@@ -739,10 +739,10 @@
 
 /datum/reagent/consumable/tinlux
 	name = "Tinea Luxor"
-	description = "A stimulating ichor which causes luminescent fungi to grow on the skin. "
+	description = "Pobudzająca wydzielina, przez którą na skórze wyrastają świecące grzyby. "
 	color = "#b5a213"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "tingling mushroom"
+	taste_description = "mrowiący grzyb"
 	//Lazy list of mobs affected by the luminosity of this reagent.
 	var/list/mobs_affected
 
@@ -771,11 +771,11 @@
 
 /datum/reagent/consumable/vitfro
 	name = "Vitrium Froth"
-	description = "A bubbly paste that heals wounds of the skin."
+	description = "Bąbelkująca pasta lecząca rany skóry."
 	color = "#d3a308"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST
 	nutriment_factor = 3 * REAGENTS_METABOLISM
-	taste_description = "fruity mushroom"
+	taste_description = "owocowy grzyb"
 
 /datum/reagent/consumable/vitfro/on_mob_life(mob/living/carbon/M)
 	if(prob(80))
@@ -786,20 +786,20 @@
 
 /datum/reagent/consumable/clownstears
 	name = "Clown's Tears"
-	description = "The sorrow and melancholy of a thousand bereaved clowns, forever denied their Honkmechs."
+	description = "Smutek i melancholia tysiąca pogrążonych w żałobie klaunów, którym na zawsze odmówiono Honkmechów."
 	nutriment_factor = 5 * REAGENTS_METABOLISM
 	color = "#eef442" // rgb: 238, 244, 66
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN
-	taste_description = "mournful honking"
+	taste_description = "żałobne trąbienie"
 
 
 /datum/reagent/consumable/liquidelectricity
 	name = "Liquid Electricity"
-	description = "The blood of Ethereals, and the stuff that keeps them going. Great for them, horrid for anyone else."
+	description = "Krew eteryków i to, co utrzymuje ich przy życiu. Świetna dla nich, okropna dla wszystkich innych."
 	nutriment_factor = 5 * REAGENTS_METABOLISM
 	color = "#97ee63"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "pure electrictiy"
+	taste_description = "czysta elektryczność"
 
 /datum/reagent/consumable/liquidelectricity/on_mob_life(mob/living/carbon/M)
 	if(HAS_TRAIT(M, TRAIT_POWERHUNGRY))
@@ -813,7 +813,7 @@
 
 /datum/reagent/consumable/astrotame
 	name = "Astrotame"
-	description = "A space age artifical sweetener."
+	description = "Sztuczny słodzik ery kosmicznej."
 	nutriment_factor = 0
 	metabolization_rate = 2 * REAGENTS_METABOLISM
 	reagent_state = SOLID
@@ -831,44 +831,44 @@
 
 /datum/reagent/consumable/caramel
 	name = "Caramel"
-	description = "Who would have guessed that heating sugar is so delicious?"
+	description = "Kto by pomyślał, że podgrzany cukier jest taki pyszny?"
 	nutriment_factor = 10 * REAGENTS_METABOLISM
 	color = "#C65A00"
 	chem_flags = NONE
 	taste_mult = 2
-	taste_description = "bitter sweetness"
+	taste_description = "gorzka słodycz"
 	reagent_state = SOLID
 
 /datum/reagent/consumable/mesophilicculture
 	name = "mesophilic culture"
-	description = "A mixture of mesophilic bacteria used to make most cheese."
+	description = "Mieszanka bakterii mezofilnych używana do produkcji większości serów."
 	color = "#365E30" // rgb: 54, 94, 48
 	taste_description = "bitterness"
 
 /datum/reagent/consumable/thermophilicculture
 	name = "thermophilic culture"
-	description = "A mixture of thermophilic bacteria used to make some cheese."
+	description = "Mieszanka bakterii termofilnych używana do produkcji niektórych serów."
 	color = "#365E30" // rgb: 54, 94, 48
 	taste_description = "bitterness"
 
 /datum/reagent/consumable/penicilliumcandidum
 	name = "penicillium candidum"
-	description = "A special bacterium used to make brie."
+	description = "Specjalna bakteria używana do produkcji brie."
 	color = "#365E30" // rgb: 54, 94, 48
 	taste_description = "bitterness"
 
 /datum/reagent/consumable/penicilliumroqueforti
 	name = "penicillium roqueforti"
-	description = "A special bacterium used to make blue cheese."
+	description = "Specjalna bakteria używana do produkcji sera pleśniowego."
 	color = "#365E30" // rgb: 54, 94, 48
 	taste_description = "bitterness"
 
 /datum/reagent/consumable/parmesan_delight
 	name = "Parmesan Delight"
-	description = "The time spent cultivating parmesan has produced this magical liquid."
+	description = "Czas poświęcony na dojrzewanie parmezanu dał ten magiczny płyn."
 	color = "#FFD700" // rgb: 255, 140, 255
 	quality = DRINK_VERYGOOD
-	taste_description = "salty goodness"
+	taste_description = "słona dobroć"
 
 /datum/reagent/consumable/parmesan_delight/on_mob_life(mob/living/carbon/M)
 	M.adjustBruteLoss(-0.5, 0)
@@ -880,16 +880,16 @@
 
 /datum/reagent/consumable/bbqsauce
 	name = "BBQ Sauce"
-	description = "Sweet, Smokey, Savory, and gets everywhere. Perfect for Grilling."
+	description = "Słodki, dymny, wytrawny i dostaje się wszędzie. Idealny do grillowania."
 	nutriment_factor = 5 * REAGENTS_METABOLISM
 	color = "#78280A" // rgb: 120 40, 10
 	chem_flags = NONE
 	taste_mult = 2.5 //sugar's 1.5, capsacin's 1.5, so a good middle ground.
-	taste_description = "smokey sweetness"
+	taste_description = "dymna słodycz"
 
 /datum/reagent/consumable/char
 	name = "Char"
-	description = "Essence of the grill. Has strange properties when overdosed."
+	description = "Esencja grilla. Przy przedawkowaniu ma dziwne właściwości."
 	reagent_state = LIQUID
 	nutriment_factor = 5 * REAGENTS_METABOLISM
 	color = "#C8C8C8"
@@ -900,5 +900,5 @@
 
 /datum/reagent/consumable/char/overdose_process(mob/living/carbon/M)
 	if(prob(10))
-		M.say(pick("I hate my wife.", "I just want to grill for God's sake.", "I wish I could just go on my lawnmower and cut the grass.", "Yep, Quake. That was a good game...", "Yeah, my PDA has wi-fi. A wife I hate."), forced = /datum/reagent/consumable/char)
+		M.say(pick("Nienawidzę swojej żony.", "Chcę tylko grillować, na litość boską.", "Chciałbym po prostu wsiąść na kosiarkę i skosić trawę.", "No, Quake. To była dobra gra...", "Tak, moje PDA ma wi-fi. Wi-fe, której nienawidzę."), forced = /datum/reagent/consumable/char)
 	..()

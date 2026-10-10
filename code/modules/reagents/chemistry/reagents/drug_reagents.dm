@@ -11,7 +11,7 @@
 
 /datum/reagent/drug/space_drugs
 	name = "Space drugs"
-	description = "An illegal chemical compound used as drug."
+	description = "Nielegalny związek chemiczny używany jako narkotyk."
 	color = "#60A584" // rgb: 96, 165, 132
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM | CHEMICAL_GOAL_BOTANIST_HARVEST | CHEMICAL_GOAL_BARTENDER_SERVING
 	overdose_threshold = 30
@@ -27,7 +27,7 @@
 	..()
 
 /datum/reagent/drug/space_drugs/overdose_start(mob/living/M)
-	to_chat(M, "<span class='userdanger'>You start tripping hard!</span>")
+	to_chat(M, "<span class='userdanger'>Zaczynasz mieć mocny odlot!</span>")
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overdose, name)
 
 /datum/reagent/drug/space_drugs/overdose_process(mob/living/M)
@@ -37,7 +37,7 @@
 
 /datum/reagent/drug/nicotine
 	name = "Nicotine"
-	description = "Slightly reduces stun times. If overdosed it will deal toxin and oxygen damage."
+	description = "Lekko skraca ogłuszenia. Przedawkowany zadaje obrażenia od toksyn i niedotlenienia."
 	reagent_state = LIQUID
 	color = "#60A584" // rgb: 96, 165, 132
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST | CHEMICAL_GOAL_BARTENDER_SERVING
@@ -49,7 +49,7 @@
 
 /datum/reagent/drug/nicotine/on_mob_life(mob/living/carbon/M)
 	if(prob(1))
-		var/smoke_message = pick("You feel relaxed.", "You feel calmed.","You feel alert.","You feel rugged.")
+		var/smoke_message = pick("Czujesz się zrelaksowany.", "Czujesz się uspokojony.","Czujesz się czujny.","Czujesz się twardy.")
 		to_chat(M, "<span class='notice'>[smoke_message]</span>")
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "smoked", /datum/mood_event/smoked, name)
 	M.AdjustStun(-5, FALSE)
@@ -68,7 +68,7 @@
 
 /datum/reagent/drug/crank
 	name = "Crank"
-	description = "Reduces stun times by about 200%. If overdosed or addicted it will deal significant Toxin, Brute and Brain damage."
+	description = "Skraca ogłuszenia o około 200%. Przedawkowany lub uzależniający zadaje znaczne obrażenia od toksyn, urazy i obrażenia mózgu."
 	reagent_state = LIQUID
 	color = "#FA00C8"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM | CHEMICAL_GOAL_BOTANIST_HARVEST
@@ -85,12 +85,12 @@
 
 /datum/reagent/drug/crank/on_mob_life(mob/living/carbon/M)
 	if(prob(5))
-		var/high_message = pick("You feel jittery.", "You feel like you gotta go fast.", "You feel like you need to step it up.")
+		var/high_message = pick("Czujesz się roztrzęsiony.", "Czujesz, że musisz pędzić.", "Czujesz, że musisz przyspieszyć.")
 		to_chat(M, "<span class='notice'>[high_message]</span>")
 	if(prob(8))
 		M.adjustBruteLoss(rand(1,4))
 		M.Stun(5, 0)
-		to_chat(M, "<span class='notice'>You stop to furiously scratch at your skin.</span>")
+		to_chat(M, "<span class='notice'>Zatrzymujesz się, by wściekle drapać skórę.</span>")
 	M.AdjustStun(-20, FALSE)
 	M.AdjustKnockdown(-20, FALSE)
 	M.AdjustUnconscious(-20, FALSE)
@@ -131,7 +131,7 @@
 
 /datum/reagent/drug/krokodil
 	name = "Krokodil"
-	description = "Cools and calms you down. If overdosed it will deal significant Brain and Toxin damage. If addicted it will begin to deal fatal amounts of Brute damage as the subject's skin falls off."
+	description = "Chłodzi i uspokaja. Przedawkowany zadaje znaczne obrażenia mózgu i od toksyn. Przy uzależnieniu zaczyna zadawać śmiertelne urazy, bo skóra zaczyna schodzić."
 	reagent_state = LIQUID
 	color = "#0064B4"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM | CHEMICAL_GOAL_BOTANIST_HARVEST
@@ -140,7 +140,7 @@
 
 
 /datum/reagent/drug/krokodil/on_mob_life(mob/living/carbon/M)
-	var/high_message = pick("You feel calm.", "You feel collected.", "You feel like you need to relax.")
+	var/high_message = pick("Czujesz spokój.", "Czujesz się opanowany.", "Czujesz, że musisz się zrelaksować.")
 	if(prob(5))
 		to_chat(M, "<span class='notice'>[high_message]</span>")
 	..()
@@ -159,12 +159,12 @@
 
 /datum/reagent/drug/krokodil/addiction_act_stage2(mob/living/M)
 	if(prob(25))
-		to_chat(M, "<span class='danger'>Your skin feels loose...</span>")
+		to_chat(M, "<span class='danger'>Twoja skóra wydaje się luźna...</span>")
 	..()
 
 /datum/reagent/drug/krokodil/addiction_act_stage3(mob/living/M)
 	if(prob(25))
-		to_chat(M, "<span class='danger'>Your skin starts to peel away...</span>")
+		to_chat(M, "<span class='danger'>Twoja skóra zaczyna się łuszczyć...</span>")
 	M.adjustBruteLoss(3*REM, 0)
 	..()
 	. = 1
@@ -173,13 +173,13 @@
 	CHECK_DNA_AND_SPECIES(M)
 	if(ishumanbasic(M))
 		if(!istype(M.dna.species, /datum/species/human/krokodil_addict))
-			to_chat(M, "<span class='userdanger'>Your skin falls off easily!</span>")
+			to_chat(M, "<span class='userdanger'>Twoja skóra łatwo odpada!</span>")
 			M.adjustBruteLoss(50*REM, 0) // holy shit your skin just FELL THE FUCK OFF
 			M.set_species(/datum/species/human/krokodil_addict)
 		else
 			M.adjustBruteLoss(5*REM, 0)
 	else
-		to_chat(M, "<span class='danger'>Your skin peels and tears!</span>")
+		to_chat(M, "<span class='danger'>Twoja skóra łuszczy się i pęka!</span>")
 		M.adjustBruteLoss(5*REM, 0) // repeats 5 times and then you get over it
 
 	..()
@@ -187,7 +187,7 @@
 
 /datum/reagent/drug/methamphetamine
 	name = "Methamphetamine"
-	description = "Reduces stun times by about 300%, speeds the user up, and allows the user to quickly recover stamina while dealing a small amount of Brain damage. If overdosed the subject will move randomly, laugh randomly, drop items and suffer from Toxin and Brain damage. If addicted the subject will constantly jitter and drool, before becoming dizzy and losing motor control and eventually suffer heavy toxin damage."
+	description = "Skraca ogłuszenia o około 300%, przyspiesza użytkownika i pozwala szybko odzyskiwać wytrzymałość, zadając przy tym lekkie obrażenia mózgu. Przy przedawkowaniu ofiara porusza się losowo, losowo się śmieje, upuszcza przedmioty i otrzymuje obrażenia od toksyn i mózgu. Przy uzależnieniu ofiara stale się trzęsie i ślini, potem dostaje zawrotów głowy, traci kontrolę ruchową, a w końcu otrzymuje ciężkie obrażenia od toksyn."
 	reagent_state = LIQUID
 	color = "#FAFAFA"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM | CHEMICAL_GOAL_BOTANIST_HARVEST
@@ -211,7 +211,7 @@
 	..()
 
 /datum/reagent/drug/methamphetamine/on_mob_life(mob/living/carbon/M)
-	var/high_message = pick("You feel hyper.", "You feel like you need to go faster.", "You feel like you can run the world.")
+	var/high_message = pick("Czujesz się nakręcony.", "Czujesz, że musisz pędzić jeszcze szybciej.", "Czujesz, że mógłbyś rządzić światem.")
 	if(prob(5))
 		to_chat(M, "<span class='notice'>[high_message]</span>")
 	M.AdjustStun(-40, FALSE)
@@ -235,7 +235,7 @@
 	if(prob(20))
 		M.emote("laugh")
 	if(prob(33))
-		M.visible_message("<span class='danger'>[M]'s hands flip out and flail everywhere!</span>")
+		M.visible_message("<span class='danger'>Dłonie [M] wariują i machają na wszystkie strony!</span>")
 		M.drop_all_held_items()
 	..()
 	M.adjustToxLoss(1, 0)
@@ -279,7 +279,7 @@
 
 /datum/reagent/drug/bath_salts
 	name = "Bath Salts"
-	description = "Makes you impervious to stuns and grants a stamina regeneration buff, but you will be a nearly uncontrollable tramp-bearded raving lunatic."
+	description = "Czyni cię odpornym na ogłuszenia i przyspiesza regenerację wytrzymałości, ale stajesz się niemal niekontrolowanym, brodatym, bredzącym szaleńcem."
 	reagent_state = LIQUID
 	color = "#FAFAFA"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM | CHEMICAL_GOAL_BOTANIST_HARVEST
@@ -312,7 +312,7 @@
 	..()
 
 /datum/reagent/drug/bath_salts/on_mob_life(mob/living/carbon/M)
-	var/high_message = pick("You feel amped up.", "You feel ready.", "You feel like you can push it to the limit.")
+	var/high_message = pick("Czujesz się nabuzowany.", "Czujesz się gotowy.", "Czujesz, że możesz dojść do granic możliwości.")
 	if(prob(5))
 		to_chat(M, "<span class='notice'>[high_message]</span>")
 	M.adjustStaminaLoss(-5, 0)
@@ -386,7 +386,7 @@
 
 /datum/reagent/drug/aranesp
 	name = "Aranesp"
-	description = "Amps you up, gets you going, and rapidly restores stamina damage. Side effects include breathlessness and toxicity."
+	description = "Nakręca cię, napędza i szybko przywraca wytrzymałość. Skutki uboczne to duszności i toksyczność."
 	reagent_state = LIQUID
 	color = "#78FFF0"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
@@ -400,7 +400,7 @@
 	..()
 
 /datum/reagent/drug/aranesp/on_mob_life(mob/living/carbon/M)
-	var/high_message = pick("You feel amped up.", "You feel ready.", "You feel like you can push it to the limit.")
+	var/high_message = pick("Czujesz się nabuzowany.", "Czujesz się gotowy.", "Czujesz, że możesz dojść do granic możliwości.")
 	if(prob(5))
 		to_chat(M, "<span class='notice'>[high_message]</span>")
 	M.adjustStaminaLoss(-20, 0)
@@ -413,7 +413,7 @@
 
 /datum/reagent/drug/happiness
 	name = "Happiness"
-	description = "Fills you with ecstasic numbness and causes minor brain damage. Highly addictive. If overdosed causes sudden mood swings."
+	description = "Wypełnia cię ekstatycznym odrętwieniem i powoduje lekkie uszkodzenia mózgu. Silnie uzależnia. Przedawkowany powoduje nagłe wahania nastroju."
 	reagent_state = LIQUID
 	color = "#FFF378"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
@@ -491,7 +491,7 @@
 //I had to do too much research on this to make this a thing. Hopefully the FBI won't kick my door down.
 /datum/reagent/drug/ketamine
 	name = "Ketamine"
-	description = "A heavy duty tranquilizer found to also invoke feelings of euphoria, and assist with pain. Popular at parties and amongst small frogmen who drive Honda Civics."
+	description = "Silny środek uspokajający, który wywołuje też euforię i pomaga przy bólu. Popularny na imprezach i wśród małych żabolubów jeżdżących Hondami Civic."
 	reagent_state = LIQUID
 	color = "#c9c9c9"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
@@ -511,7 +511,7 @@
 	//Friendly Reminder: Ketamine is a tranquilizer and will sleep you.
 	switch(current_cycle)
 		if(10)
-			to_chat(M, "<span class='warning'>You start to feel tired...</span>" )
+			to_chat(M, "<span class='warning'>Zaczynasz czuć zmęczenie...</span>" )
 		if(11 to 25)
 			M.drowsyness ++
 		if(26 to INFINITY)
@@ -537,11 +537,11 @@
 		if(HAS_TRAIT(M, TRAIT_IGNOREDAMAGESLOWDOWN))
 			REMOVE_TRAIT(M, TRAIT_IGNOREDAMAGESLOWDOWN, type)
 		if(prob(33))
-			to_chat(M, "<span class='warning'>Your limbs begin to feel heavy...</span>")
+			to_chat(M, "<span class='warning'>Twoje kończyny zaczynają ciążyć...</span>")
 		else if(prob(33))
-			to_chat(M, "<span class='warning'>It feels hard to move...</span>")
+			to_chat(M, "<span class='warning'>Trudno ci się ruszać...</span>")
 		else
-			to_chat(M, "<span class='warning'>You feel like you your limbs won't move...</span>")
+			to_chat(M, "<span class='warning'>Masz wrażenie, że twoje kończyny się nie ruszą...</span>")
 		M.drop_all_held_items()
 		M.Dizzy(5)
 	..()

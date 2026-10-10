@@ -30,22 +30,22 @@
 		amount_per_transfer_from_this = squirt_amount
 	else
 		amount_per_transfer_from_this = initial(amount_per_transfer_from_this)
-	to_chat(user, "<span class='notice'>You will now apply the medspray's contents in [squirt_mode ? "short bursts":"extended sprays"]. You'll now use [amount_per_transfer_from_this] units per use.</span>")
+	to_chat(user, "<span class='notice'>Będziesz teraz podawać zawartość medsprayu [squirt_mode ? "krótkimi strzałami":"długim rozpylaniem"]. Na jedno użycie zużyjesz [amount_per_transfer_from_this] j.</span>")
 
 /obj/item/reagent_containers/medspray/attack(mob/living/carbon/M, mob/user, def_zone)
 	if(!iscarbon(M))
 		return
 
 	if(!reagents || !reagents.total_volume)
-		to_chat(user, "<span class='warning'>[src] is empty!</span>")
+		to_chat(user, "<span class='warning'>[src] jest pusty!</span>")
 		return
 
 	var/obj/item/bodypart/affecting = M.get_bodypart(check_zone(user.zone_selected))
 	if(!affecting)
-		balloon_alert(user, "The limb is missing.")
+		balloon_alert(user, "Brakuje tej kończyny.")
 		return
 	if(!IS_ORGANIC_LIMB(affecting))
-		balloon_alert(user, "[src] doesn't work on robotic limbs.")
+		balloon_alert(user, "[src] nie działa na robotyczne kończyny.")
 		return
 
 	if(M == user)

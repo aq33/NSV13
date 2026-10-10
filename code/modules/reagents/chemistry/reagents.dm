@@ -18,10 +18,10 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/name = "Reagent"
 	var/description = ""
 	var/specific_heat = SPECIFIC_HEAT_DEFAULT		//J/(K*mol)
-	var/taste_description = "metaphorical salt"
+	var/taste_description = "metaforyczna sól"
 	var/taste_mult = 1 //how this taste compares to others. Higher values means it is more noticable
 	var/glass_name = "glass of ...what?" // use for specialty drinks.
-	var/glass_desc = "You can't really tell what this is."
+	var/glass_desc = "Nie potrafisz stwierdzić, co to jest."
 	var/glass_icon_state = null // Otherwise just sets the icon to a normal glass with the mixture of the reagents in the glass.
 	var/shot_glass_icon_state = null
 	var/datum/reagents/holder = null
@@ -135,32 +135,32 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	return
 
 /datum/reagent/proc/overdose_start(mob/living/M)
-	to_chat(M, "<span class='userdanger'>You feel like you took too much of [name]!</span>")
+	to_chat(M, "<span class='userdanger'>Masz wrażenie, że wziąłeś za dużo [name]!</span>")
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overdose, name)
 	return
 
 /datum/reagent/proc/addiction_act_stage1(mob/living/M)
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/withdrawal_light, name)
 	if(prob(30))
-		to_chat(M, "<span class='notice'>You feel like having some [name] right about now.</span>")
+		to_chat(M, "<span class='notice'>Masz teraz ochotę na trochę [name].</span>")
 	return
 
 /datum/reagent/proc/addiction_act_stage2(mob/living/M)
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/withdrawal_medium, name)
 	if(prob(30))
-		to_chat(M, "<span class='notice'>You feel like you need [name]. You just can't get enough.</span>")
+		to_chat(M, "<span class='notice'>Czujesz, że potrzebujesz [name]. Po prostu nie masz dość.</span>")
 	return
 
 /datum/reagent/proc/addiction_act_stage3(mob/living/M)
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/withdrawal_severe, name)
 	if(prob(30))
-		to_chat(M, "<span class='danger'>You have an intense craving for [name].</span>")
+		to_chat(M, "<span class='danger'>Masz silny głód [name].</span>")
 	return
 
 /datum/reagent/proc/addiction_act_stage4(mob/living/M)
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/withdrawal_critical, name)
 	if(prob(30))
-		to_chat(M, "<span class='boldannounce'>You're not feeling good at all! You really need some [name].</span>")
+		to_chat(M, "<span class='boldannounce'>W ogóle nie czujesz się dobrze! Naprawdę potrzebujesz trochę [name].</span>")
 	return
 
 /proc/pretty_string_from_reagent_list(list/reagent_list)

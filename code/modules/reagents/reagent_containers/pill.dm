@@ -67,14 +67,14 @@
 	if(!dissolvable || !target.is_refillable())
 		return
 	if(target.is_drainable() && !target.reagents.total_volume)
-		balloon_alert(user, "[target] is empty!")
+		balloon_alert(user, "[target] jest pusty!")
 		return
 
 	if(target.reagents.holder_full())
-		balloon_alert(user, "[target] is full!")
+		balloon_alert(user, "[target] jest pełny!")
 		return
 
-	user.visible_message("<span class='warning'>[user] slips something into [target]!</span>", "<span class='notice'>You dissolve [src] in [target].</span>", null, 2)
+	user.visible_message("<span class='warning'>[user] wrzuca coś do [target]!</span>", "<span class='notice'>Rozpuszczasz [src] w [target].</span>", null, 2)
 	reagents.trans_to(target, reagents.total_volume, transfered_by = user)
 	qdel(src)
 
@@ -271,8 +271,8 @@
 	desc = "A strange pill found in the depths of maintenance."// Somehow, it can't be dissolved or used in a grinder."
 	icon_state = "pill_shape_capsule_black_white"
 	var/static/list/names = list("maintenance pill","floorpill","mystery pill","suspicious pill","strange pill")
-	var/static/list/descs = list("Your feeling is telling you no, but...","Drugs are expensive, you can't afford not to eat any pills that you find."\
-	, "Surely, there's no way this could go bad.")
+	var/static/list/descs = list("Przeczucie mówi ci, że nie, ale...","Leki są drogie, nie stać cię na to, by nie zjadać znalezionych pigułek."\
+	, "Na pewno nic złego się nie stanie.")
 	//prevent_grinding = TRUE // AQ EDIT - floor pills now grindable
 	//dissolvable = FALSE // AQ EDIT - and dissolvable!
 

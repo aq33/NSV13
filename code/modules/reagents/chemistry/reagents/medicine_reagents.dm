@@ -16,7 +16,7 @@
 
 /datum/reagent/medicine/leporazine
 	name = "Leporazine"
-	description = "Leporazine will effectively regulate a patient's body temperature, ensuring it never leaves safe levels."
+	description = "Leporazyna skutecznie reguluje temperaturę ciała pacjenta, dbając, by nigdy nie wyszła poza bezpieczne poziomy."
 	color = "#DB90C6"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
 	overdose_threshold = 30
@@ -39,7 +39,7 @@
 
 /datum/reagent/medicine/adminordrazine //An OP chemical for admins
 	name = "Adminordrazine"
-	description = "It's magic. We don't have to explain it."
+	description = "To magia. Nie musimy tego tłumaczyć."
 	color = "#E0BB00" //golden for the gods
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
 	taste_description = "badmins"
@@ -86,12 +86,12 @@
 
 /datum/reagent/medicine/adminordrazine/quantum_heal
 	name = "Quantum Medicine"
-	description = "Rare and experimental particles, that apparently swap the user's body with one from an alternate dimension where it's completely healthy."
+	description = "Rzadkie i eksperymentalne cząstki, które podobno zamieniają ciało użytkownika na ciało z alternatywnego wymiaru, w którym jest całkowicie zdrowe."
 	taste_description = "science"
 
 /datum/reagent/medicine/synaptizine
 	name = "Synaptizine"
-	description = "Increases resistance to stuns as well as reducing drowsiness and hallucinations."
+	description = "Zwiększa odporność na ogłuszenia oraz zmniejsza senność i halucynacje."
 	color = "#FF00FF"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
 
@@ -112,7 +112,7 @@
 
 /datum/reagent/medicine/synaphydramine
 	name = "Diphen-Synaptizine"
-	description = "Reduces drowsiness, hallucinations, and Histamine from body."
+	description = "Zmniejsza senność, halucynacje i usuwa histaminę z organizmu."
 	color = "#EC536D" // rgb: 236, 83, 109
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 
@@ -130,7 +130,7 @@
 
 /datum/reagent/medicine/inacusiate
 	name = "Inacusiate"
-	description = "Instantly restores all hearing to the patient, but does not cure deafness."
+	description = "Natychmiast przywraca pacjentowi pełny słuch, ale nie leczy głuchoty."
 	color = "#606060" //inacusiate is light grey, oculine is dark grey
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 
@@ -140,7 +140,7 @@
 
 /datum/reagent/medicine/cryoxadone
 	name = "Cryoxadone"
-	description = "A chemical mixture with almost magical healing powers. Its main limitation is that the patient's body temperature must be under 270K for it to metabolise correctly."
+	description = "Mieszanka chemiczna o niemal magicznych właściwościach leczniczych. Jej głównym ograniczeniem jest to, że temperatura ciała pacjenta musi być poniżej 270 K, by prawidłowo się metabolizowała."
 	color = "#0000C8"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
 	taste_description = "blue"
@@ -160,7 +160,7 @@
 
 /datum/reagent/medicine/clonexadone
 	name = "Clonexadone"
-	description = "A chemical that derives from Cryoxadone. It specializes in healing clone damage, but nothing else. Requires very cold temperatures to properly metabolize, and metabolizes quicker than cryoxadone."
+	description = "Substancja pochodna kriooksadonu. Specjalizuje się w leczeniu uszkodzeń genetycznych, ale niczego więcej. Wymaga bardzo niskich temperatur, by się prawidłowo metabolizować, i metabolizuje się szybciej niż kriooksadon."
 	color = "#3D3DC6"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
 	taste_description = "muscle"
@@ -176,10 +176,10 @@
 
 /datum/reagent/medicine/pyroxadone
 	name = "Pyroxadone"
-	description = "A mixture of cryoxadone and slime jelly, that apparently inverses the requirement for its activation."
+	description = "Mieszanka kriooksadonu i galaretki ze szlamu, która podobno odwraca wymóg aktywacji."
 	color = "#f7832a"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
-	taste_description = "spicy jelly"
+	taste_description = "ostra galaretka"
 
 /datum/reagent/medicine/pyroxadone/on_mob_life(mob/living/carbon/M)
 	if(M.bodytemperature > BODYTEMP_HEAT_DAMAGE_LIMIT)
@@ -208,7 +208,7 @@
 
 /datum/reagent/medicine/rezadone
 	name = "Rezadone"
-	description = "A powder derived from fish toxin, Rezadone can effectively treat genetic damage as well as restoring minor wounds. Overdose will cause intense nausea and minor toxin damage."
+	description = "Proszek z rybiej toksyny; rezadon skutecznie leczy uszkodzenia genetyczne i drobne rany. Przedawkowanie wywołuje silne mdłości i lekkie obrażenia od toksyn."
 	reagent_state = SOLID
 	color = "#669900" // rgb: 102, 153, 0
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
@@ -235,11 +235,11 @@
 		var/mob/living/carbon/patient = M
 		if(reac_volume >= 5 && HAS_TRAIT_FROM(patient, TRAIT_HUSK, "burn") && patient.getFireLoss() < THRESHOLD_UNHUSK) //One carp yields 12u rezadone.
 			patient.cure_husk("burn")
-			patient.visible_message("<span class='nicegreen'>[patient]'s body rapidly absorbs moisture from the environment, taking on a more healthy appearance.")
+			patient.visible_message("<span class='nicegreen'>Ciało [patient] błyskawicznie wchłania wilgoć z otoczenia, nabierając zdrowszego wyglądu.")
 
 /datum/reagent/medicine/spaceacillin
 	name = "Spaceacillin"
-	description = "Spaceacillin will prevent a patient from conventionally spreading any diseases they are currently infected with."
+	description = "Spacyklina sprawia, że pacjent nie roznosi w zwykły sposób chorób, którymi jest zarażony."
 	color = "#E1F2E6"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -247,7 +247,7 @@
 //Goon Chems. Ported mainly from Goonstation. Easily mixable (or not so easily) and provide a variety of effects.
 /datum/reagent/medicine/silver_sulfadiazine
 	name = "Silver Sulfadiazine"
-	description = "If used in patch-based applications, immediately restores burn wounds as well as restoring more over time. If ingested through other means, deals minor toxin damage."
+	description = "Stosowany w plastrach natychmiast leczy oparzenia i dalej leczy je z czasem. Przyjęty inną drogą zadaje lekkie obrażenia od toksyn."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
@@ -259,12 +259,12 @@
 		if(method in list(INGEST, VAPOR, INJECT))
 			M.adjustToxLoss(0.5*reac_volume)
 			if(show_message)
-				to_chat(M, "<span class='warning'>You don't feel so good...</span>")
+				to_chat(M, "<span class='warning'>Nie czujesz się najlepiej...</span>")
 		else if(M.getFireLoss() && method == PATCH)
 			M.adjustFireLoss(-reac_volume) //NSV 13 - reverted to old application
 			M.adjustStaminaLoss(reac_volume*2)
 			if(show_message)
-				to_chat(M, "<span class='danger'>You feel your burns healing! It stings like hell!</span>")
+				to_chat(M, "<span class='danger'>Czujesz, jak twoje oparzenia się goją! Piecze jak diabli!</span>")
 			M.emote("scream")
 			SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "painful_medicine", /datum/mood_event/painful_medicine)
 	..()
@@ -281,7 +281,7 @@
 
 /datum/reagent/medicine/oxandrolone
 	name = "Oxandrolone"
-	description = "Stimulates the healing of severe burns. Overdosing will double the effectiveness of healing the burns while also dealing toxin and liver damage"
+	description = "Pobudza gojenie ciężkich oparzeń. Przedawkowanie podwaja skuteczność leczenia oparzeń, zadając przy tym obrażenia od toksyn i wątroby"
 	reagent_state = LIQUID
 	color = "#1E8BFF"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
@@ -303,7 +303,7 @@
 
 /datum/reagent/medicine/styptic_powder
 	name = "Styptic Powder"
-	description = "If used in patch-based applications, immediately restores bruising. If ingested through other means, deals minor toxin damage."
+	description = "Stosowany w plastrach natychmiast leczy stłuczenia. Przyjęty inną drogą zadaje lekkie obrażenia od toksyn."
 	reagent_state = LIQUID
 	color = "#FF9696"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
@@ -315,12 +315,12 @@
 		if(method in list(INGEST, VAPOR, INJECT))
 			M.adjustToxLoss(0.5*reac_volume)
 			if(show_message)
-				to_chat(M, "<span class='warning'>You don't feel so good...</span>")
+				to_chat(M, "<span class='warning'>Nie czujesz się najlepiej...</span>")
 		else if(M.getBruteLoss() && method == PATCH)
 			M.adjustBruteLoss(-reac_volume) //NSV 13 - reverted to old application
 			M.adjustStaminaLoss(reac_volume*2)
 			if(show_message)
-				to_chat(M, "<span class='danger'>You feel your bruises healing! It stings like hell!</span>")
+				to_chat(M, "<span class='danger'>Czujesz, jak twoje stłuczenia się goją! Piecze jak diabli!</span>")
 			M.emote("scream")
 			SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "painful_medicine", /datum/mood_event/painful_medicine)
 	return ..()
@@ -338,13 +338,13 @@
 
 /datum/reagent/medicine/salglu_solution
 	name = "Saline-Glucose Solution"
-	description = "Has a 33% chance per metabolism cycle to heal brute and burn damage. Can be used as a temporary blood substitute."
+	description = "Ma 33% szansy na cykl metabolizmu, by wyleczyć urazy i oparzenia. Może służyć jako tymczasowy zamiennik krwi."
 	reagent_state = LIQUID
 	color = "#DCDCDC"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	overdose_threshold = 60
-	taste_description = "sweetness and salt"
+	taste_description = "słodycz i sól"
 	var/last_added = 0
 	var/maximum_reachable = BLOOD_VOLUME_NORMAL - 10	//So that normal blood regeneration can continue with salglu active
 
@@ -365,11 +365,11 @@
 
 /datum/reagent/medicine/salglu_solution/overdose_process(mob/living/M)
 	if(prob(3))
-		to_chat(M, "<span class = 'warning'>You feel salty.</span>")
+		to_chat(M, "<span class = 'warning'>Czujesz się słony.</span>")
 		holder.add_reagent(/datum/reagent/consumable/sodiumchloride, 1)
 		holder.remove_reagent(/datum/reagent/medicine/salglu_solution, 0.5)
 	else if(prob(3))
-		to_chat(M, "<span class = 'warning'>You feel sweet.</span>")
+		to_chat(M, "<span class = 'warning'>Czujesz się słodki.</span>")
 		holder.add_reagent(/datum/reagent/consumable/sugar, 1)
 		holder.remove_reagent(/datum/reagent/medicine/salglu_solution, 0.5)
 	if(prob(33))
@@ -380,7 +380,7 @@
 
 /datum/reagent/medicine/mine_salve
 	name = "Miner's Salve"
-	description = "A powerful painkiller. Restores bruising and burns in addition to making the patient believe they are fully healed."
+	description = "Silny środek przeciwbólowy. Leczy stłuczenia i oparzenia, a do tego sprawia, że pacjent wierzy, że jest w pełni zdrowy."
 	reagent_state = LIQUID
 	color = "#6D6374"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
@@ -398,7 +398,7 @@
 		if(method in list(INGEST, VAPOR, INJECT))
 			M.adjust_nutrition(-5)
 			if(show_message)
-				to_chat(M, "<span class='warning'>Your stomach feels empty and cramps!</span>")
+				to_chat(M, "<span class='warning'>Twój żołądek jest pusty i dostaje skurczów!</span>")
 		else
 			var/mob/living/carbon/C = M
 			for(var/s in C.surgeries)
@@ -407,7 +407,7 @@
 				// +10% surgery speed on each step, useful while operating in less-than-perfect conditions
 
 			if(show_message)
-				to_chat(M, "<span class='danger'>You feel your wounds fade away to nothing!</span>" )
+				to_chat(M, "<span class='danger'>Czujesz, jak twoje rany bledną i znikają!</span>" )
 	..()
 
 /datum/reagent/medicine/mine_salve/on_mob_end_metabolize(mob/living/M)
@@ -418,7 +418,7 @@
 
 /datum/reagent/medicine/synthflesh
 	name = "Synthflesh"
-	description = "Has a 100% chance of instantly healing brute and burn damage. One unit of the chemical will heal one point of damage. Touch application only."
+	description = "Ma 100% szansy na natychmiastowe wyleczenie urazów i oparzeń. Jedna jednostka leczy jeden punkt obrażeń. Tylko do stosowania zewnętrznego."
 	reagent_state = LIQUID
 	color = "#FFEBEB"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
@@ -434,13 +434,13 @@
 			M.adjustFireLoss(-1 * reac_volume) //NSV 13 - reverted to old application
 			M.adjustStaminaLoss(reac_volume*2)
 			if(show_message)
-				to_chat(M, "<span class='danger'>You feel your burns and bruises healing! It stings like hell!</span>")
+				to_chat(M, "<span class='danger'>Czujesz, jak twoje oparzenia i stłuczenia się goją! Piecze jak diabli!</span>")
 			SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "painful_medicine", /datum/mood_event/painful_medicine)
 			M.emote("scream")
 			//Has to be at less than THRESHOLD_UNHUSK burn damage and have at least 100 synthflesh (currently inside the body + amount now being applied). Corpses dont metabolize.
 			if(HAS_TRAIT_FROM(M, TRAIT_HUSK, "burn") && M.getFireLoss() < THRESHOLD_UNHUSK && (M.reagents.get_reagent_amount(/datum/reagent/medicine/synthflesh) + reac_volume) >= 100)
 				M.cure_husk("burn")
-				M.visible_message("<span class='nicegreen'>You successfully replace most of the burnt off flesh of [M].")
+				M.visible_message("<span class='nicegreen'>Udaje ci się zastąpić większość spalonej tkanki [M].")
 	..()
 
 /datum/reagent/medicine/synthflesh/on_mob_life(mob/living/carbon/M)
@@ -456,7 +456,7 @@
 
 /datum/reagent/medicine/charcoal
 	name = "Charcoal"
-	description = "Heals mild toxin damage as well as slowly removing any other chemicals the patient has in their bloodstream."
+	description = "Leczy lekkie obrażenia od toksyn i powoli usuwa z krwiobiegu pacjenta inne substancje."
 	reagent_state = LIQUID
 	color = "#000000"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST
@@ -474,7 +474,7 @@
 
 /datum/reagent/medicine/system_cleaner
 	name = "System Cleaner"
-	description = "Neutralizes harmful chemical compounds inside synthetic systems."
+	description = "Neutralizuje szkodliwe związki chemiczne w systemach syntetycznych."
 	reagent_state = LIQUID
 	color = "#F1C40F"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
@@ -491,7 +491,7 @@
 
 /datum/reagent/medicine/liquid_solder
 	name = "Liquid Solder"
-	description = "Repairs brain damage in synthetics."
+	description = "Naprawia uszkodzenia mózgu u syntetyków."
 	color = "#727272"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	taste_description = "metallic"
@@ -510,7 +510,7 @@
 
 /datum/reagent/medicine/omnizine
 	name = "Omnizine"
-	description = "Slowly heals all damage types. Overdose will cause damage in all types instead."
+	description = "Powoli leczy wszystkie rodzaje obrażeń. Przedawkowanie zamiast tego zadaje wszystkie rodzaje obrażeń."
 	reagent_state = LIQUID
 	color = "#DCDCDC"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
@@ -535,7 +535,7 @@
 
 /datum/reagent/medicine/calomel
 	name = "Calomel"
-	description = "Quickly purges the body of all chemicals. Toxin damage is dealt if the patient is in good condition."
+	description = "Szybko usuwa z organizmu wszystkie substancje. Zadaje obrażenia od toksyn, jeśli pacjent jest w dobrym stanie."
 	reagent_state = LIQUID
 	color = "#19C832"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
@@ -553,7 +553,7 @@
 
 /datum/reagent/medicine/potass_iodide
 	name = "Potassium Iodide"
-	description = "Efficiently restores low radiation damage."
+	description = "Skutecznie leczy lekkie napromieniowanie."
 	reagent_state = LIQUID
 	color = "#BAA15D"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST
@@ -566,7 +566,7 @@
 
 /datum/reagent/medicine/pen_acid
 	name = "Pentetic Acid"
-	description = "Reduces massive amounts of radiation and toxin damage while purging other chemicals from the body."
+	description = "Usuwa ogromne ilości napromieniowania i obrażeń od toksyn, usuwając przy tym inne substancje z organizmu."
 	reagent_state = LIQUID
 	color = "#E6FFF0"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
@@ -583,7 +583,7 @@
 
 /datum/reagent/medicine/sal_acid
 	name = "Salicyclic Acid"
-	description = "Stimulates the healing of severe bruises. Overdosing will double the effectiveness of healing the bruises while also dealing toxin and liver damage."
+	description = "Pobudza gojenie ciężkich stłuczeń. Przedawkowanie podwaja skuteczność leczenia stłuczeń, zadając przy tym obrażenia od toksyn i wątroby."
 	reagent_state = LIQUID
 	color = "#D2D2D2"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
@@ -606,7 +606,7 @@
 
 /datum/reagent/medicine/salbutamol
 	name = "Salbutamol"
-	description = "Rapidly restores oxygen deprivation as well as preventing more of it to an extent."
+	description = "Szybko leczy niedotlenienie i do pewnego stopnia zapobiega kolejnemu."
 	reagent_state = LIQUID
 	color = "#00FFFF"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG
@@ -627,7 +627,7 @@
 
 /datum/reagent/medicine/perfluorodecalin
 	name = "Perfluorodecalin"
-	description = "Extremely rapidly restores oxygen deprivation, but causes minor toxin damage. Overdose causes significant damage to the lungs."
+	description = "Niezwykle szybko leczy niedotlenienie, ale zadaje lekkie obrażenia od toksyn. Przedawkowanie poważnie uszkadza płuca."
 	reagent_state = LIQUID
 	color = "#FF6464"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
@@ -647,7 +647,7 @@
 
 /datum/reagent/medicine/ephedrine
 	name = "Ephedrine"
-	description = "Increases stun resistance and movement speed. Overdose deals toxin damage and inhibits breathing."
+	description = "Zwiększa odporność na ogłuszenia i szybkość ruchu. Przedawkowanie zadaje obrażenia od toksyn i utrudnia oddychanie."
 	reagent_state = LIQUID
 	color = "#D2FFFA"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
@@ -667,7 +667,7 @@
 	if(prob(20) && iscarbon(M))
 		var/obj/item/I = M.get_active_held_item()
 		if(I && M.dropItemToGround(I))
-			to_chat(M, "<span class ='notice'>Your hands spaz out and you drop what you were holding!</span>")
+			to_chat(M, "<span class ='notice'>Twoje dłonie wariują i upuszczasz to, co trzymałeś!</span>")
 			M.Jitter(10)
 
 	M.AdjustAllImmobility(-20, FALSE)
@@ -679,7 +679,7 @@
 	if(prob(2) && iscarbon(M))
 		var/datum/disease/D = new /datum/disease/heart_failure
 		M.ForceContractDisease(D)
-		to_chat(M, "<span class='userdanger'>You're pretty sure you just felt your heart stop for a second there..</span>")
+		to_chat(M, "<span class='userdanger'>Jesteś prawie pewien, że twoje serce na sekundę stanęło..</span>")
 		M.playsound_local(M, 'sound/effects/singlebeat.ogg', 100, 0)
 
 	if(prob(7))
@@ -693,7 +693,7 @@
 
 /datum/reagent/medicine/ephedrine/addiction_act_stage1(mob/living/M)
 	if(prob(3) && iscarbon(M))
-		M.visible_message("<span class='danger'>[M] starts having a seizure!</span>", "<span class='userdanger'>You have a seizure!</span>")
+		M.visible_message("<span class='danger'>[M] dostaje napadu drgawek!</span>", "<span class='userdanger'>Dostajesz napadu drgawek!</span>")
 		M.Unconscious(100)
 		M.Jitter(350)
 
@@ -705,7 +705,7 @@
 
 /datum/reagent/medicine/ephedrine/addiction_act_stage2(mob/living/M)
 	if(prob(6) && iscarbon(M))
-		M.visible_message("<span class='danger'>[M] starts having a seizure!</span>", "<span class='userdanger'>You have a seizure!</span>")
+		M.visible_message("<span class='danger'>[M] dostaje napadu drgawek!</span>", "<span class='userdanger'>Dostajesz napadu drgawek!</span>")
 		M.Unconscious(100)
 		M.Jitter(350)
 
@@ -717,7 +717,7 @@
 
 /datum/reagent/medicine/ephedrine/addiction_act_stage3(mob/living/M)
 	if(prob(12) && iscarbon(M))
-		M.visible_message("<span class='danger'>[M] starts having a seizure!</span>", "<span class='userdanger'>You have a seizure!</span>")
+		M.visible_message("<span class='danger'>[M] dostaje napadu drgawek!</span>", "<span class='userdanger'>Dostajesz napadu drgawek!</span>")
 		M.Unconscious(100)
 		M.Jitter(350)
 
@@ -729,7 +729,7 @@
 
 /datum/reagent/medicine/ephedrine/addiction_act_stage4(mob/living/M)
 	if(prob(24) && iscarbon(M))
-		M.visible_message("<span class='danger'>[M] starts having a seizure!</span>", "<span class='userdanger'>You have a seizure!</span>")
+		M.visible_message("<span class='danger'>[M] dostaje napadu drgawek!</span>", "<span class='userdanger'>Dostajesz napadu drgawek!</span>")
 		M.Unconscious(100)
 		M.Jitter(350)
 
@@ -741,7 +741,7 @@
 
 /datum/reagent/medicine/diphenhydramine
 	name = "Diphenhydramine"
-	description = "Rapidly purges the body of Histamine and reduces jitteriness. Slight chance of causing drowsiness."
+	description = "Szybko usuwa z organizmu histaminę i zmniejsza drżenie. Niewielka szansa na senność."
 	reagent_state = LIQUID
 	color = "#64FFE6"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
@@ -756,7 +756,7 @@
 
 /datum/reagent/medicine/morphine
 	name = "Morphine"
-	description = "A painkiller that allows the patient to move at full speed even in bulky objects. Causes drowsiness and eventually unconsciousness in high doses. Overdose will cause a variety of effects, ranging from minor to lethal."
+	description = "Środek przeciwbólowy, który pozwala pacjentowi poruszać się z pełną szybkością nawet z masywnymi przedmiotami. W dużych dawkach powoduje senność, a w końcu utratę przytomności. Przedawkowanie wywołuje różne efekty, od łagodnych po śmiertelne."
 	reagent_state = LIQUID
 	color = "#A9FBFB"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
@@ -775,7 +775,7 @@
 /datum/reagent/medicine/morphine/on_mob_life(mob/living/carbon/M)
 	switch(current_cycle)
 		if(11)
-			to_chat(M, "<span class='warning'>You start to feel tired...</span>" )
+			to_chat(M, "<span class='warning'>Zaczynasz czuć zmęczenie...</span>" )
 		if(12 to 24)
 			M.drowsyness += 1
 		if(24 to INFINITY)
@@ -825,12 +825,12 @@
 
 /datum/reagent/medicine/oculine
 	name = "Oculine"
-	description = "Quickly restores eye damage, cures nearsightedness, and has a chance to restore vision to the blind."
+	description = "Szybko leczy uszkodzenia oczu, leczy krótkowzroczność i może przywrócić wzrok niewidomym."
 	reagent_state = LIQUID
 	color = "#404040" //ucline is dark grey, inacusiate is light grey
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM | CHEMICAL_GOAL_BOTANIST_HARVEST
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
-	taste_description = "dull toxin"
+	taste_description = "tępa toksyna"
 
 /datum/reagent/medicine/oculine/on_mob_life(mob/living/carbon/M)
 	var/obj/item/organ/eyes/eyes = M.getorganslot(ORGAN_SLOT_EYES)
@@ -839,13 +839,13 @@
 	eyes.applyOrganDamage(-2)
 	if(HAS_TRAIT_FROM(M, TRAIT_BLIND, EYE_DAMAGE))
 		if(prob(20))
-			to_chat(M, "<span class='warning'>Your vision slowly returns...</span>")
+			to_chat(M, "<span class='warning'>Twój wzrok powoli wraca...</span>")
 			M.cure_blind(EYE_DAMAGE)
 			M.cure_nearsighted(EYE_DAMAGE)
 			M.blur_eyes(35)
 
 	else if(HAS_TRAIT_FROM(M, TRAIT_NEARSIGHT, EYE_DAMAGE))
-		to_chat(M, "<span class='warning'>The blackness in your peripheral vision fades.</span>")
+		to_chat(M, "<span class='warning'>Ciemność na obrzeżach pola widzenia zanika.</span>")
 		M.cure_nearsighted(EYE_DAMAGE)
 		M.blur_eyes(10)
 	else if(M.eye_blind || M.eye_blurry)
@@ -855,7 +855,7 @@
 
 /datum/reagent/medicine/atropine
 	name = "Atropine"
-	description = "If a patient is in critical condition, rapidly heals all damage types as well as regulating oxygen in the body. Excellent for stabilizing wounded patients. Has the side effects of causing minor confusion."
+	description = "Jeśli pacjent jest w stanie krytycznym, szybko leczy wszystkie rodzaje obrażeń i reguluje tlen w organizmie. Doskonały do stabilizowania rannych. Skutkiem ubocznym jest lekka dezorientacja."
 	reagent_state = LIQUID
 	color = "#1D3535" //slightly more blue, like epinephrine
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
@@ -886,7 +886,7 @@
 
 /datum/reagent/medicine/epinephrine
 	name = "Epinephrine"
-	description = "Minor boost to stun resistance. Slowly heals damage if a patient is in critical condition, as well as regulating oxygen loss. Overdose causes weakness and toxin damage."
+	description = "Lekko zwiększa odporność na ogłuszenia. Powoli leczy obrażenia, jeśli pacjent jest w stanie krytycznym, i reguluje utratę tlenu. Przedawkowanie powoduje osłabienie i obrażenia od toksyn."
 	reagent_state = LIQUID
 	color = "#D2FFFA"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
@@ -927,7 +927,7 @@
 
 /datum/reagent/medicine/strange_reagent
 	name = "Strange Reagent"
-	description = "A miracle drug capable of bringing the dead back to life. Only functions when applied by patch or spray, if the target has less than 100 brute and burn damage (independent of one another) and hasn't been husked. Causes slight damage to the living."
+	description = "Cudowny lek zdolny przywracać zmarłych do życia. Działa tylko w plastrze lub sprayu, jeśli cel ma mniej niż 100 obrażeń od urazów i od oparzeń (osobno) i nie jest wysuszony. Lekko szkodzi żywym."
 	reagent_state = LIQUID
 	color = "#A0E85E"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
@@ -937,14 +937,14 @@
 /datum/reagent/medicine/strange_reagent/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if(M.stat == DEAD)
 		if(M.suiciding || M.ishellbound()) //they are never coming back
-			M.visible_message("<span class='warning'>[M]'s body does not react...</span>")
+			M.visible_message("<span class='warning'>Ciało [M] nie reaguje...</span>")
 			return
 		if(M.getBruteLoss() >= 100 || M.getFireLoss() >= 100 || HAS_TRAIT(M, TRAIT_HUSK)) //body is too damaged to be revived
-			M.visible_message("<span class='warning'>[M]'s body convulses a bit, and then falls still once more.</span>")
+			M.visible_message("<span class='warning'>Ciałem [M] wstrząsają lekkie drgawki, po czym znów nieruchomieje.</span>")
 			M.do_jitter_animation(10)
 			return
 		else
-			M.visible_message("<span class='warning'>[M]'s body starts convulsing!</span>")
+			M.visible_message("<span class='warning'>Ciało [M] zaczyna drgać w konwulsjach!</span>")
 			M.notify_ghost_cloning(source = M)
 			M.do_jitter_animation(10)
 			addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living/carbon, do_jitter_animation), 10), 40) //jitter immediately, then again after 4 and 8 seconds
@@ -960,7 +960,7 @@
 
 /datum/reagent/medicine/mannitol
 	name = "Mannitol"
-	description = "Efficiently restores brain damage."
+	description = "Skutecznie leczy uszkodzenia mózgu."
 	color = "#A0A0A0" //mannitol is light grey, neurine is lighter grey"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM | CHEMICAL_GOAL_BOTANIST_HARVEST
 
@@ -988,7 +988,7 @@
 
 /datum/reagent/medicine/neurine
 	name = "Neurine"
-	description = "Reacts with neural tissue, helping reform damaged connections. Can cure minor traumas."
+	description = "Reaguje z tkanką nerwową, pomagając odbudować uszkodzone połączenia. Może leczyć drobne urazy."
 	color = "#C0C0C0" //ditto
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
 
@@ -1001,7 +1001,7 @@
 
 /datum/reagent/medicine/mutadone
 	name = "Mutadone"
-	description = "Removes jitteriness and restores genetic defects."
+	description = "Usuwa drżenie i naprawia wady genetyczne."
 	color = "#5096C8"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	taste_description = "acid"
@@ -1015,10 +1015,10 @@
 
 /datum/reagent/medicine/antihol
 	name = "Antihol"
-	description = "Purges alcoholic substance from the patient's body and eliminates its side effects. Less effective in light drinkers."
+	description = "Usuwa alkohol z organizmu pacjenta i eliminuje jego skutki uboczne. Mniej skuteczny u osób o słabej głowie."
 	color = "#00B4C8"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
-	taste_description = "raw egg"
+	taste_description = "surowe jajko"
 
 /datum/reagent/medicine/antihol/on_mob_life(mob/living/carbon/M)
 	if(!HAS_TRAIT(M, TRAIT_LIGHT_DRINKER))
@@ -1037,7 +1037,7 @@
 //Stimulants. Used in Adrenal Implant
 /datum/reagent/medicine/amphetamine
 	name = "Amphetamine"
-	description = "Increases stun resistance and movement speed in addition to restoring minor damage and weakness. Overdose causes weakness and toxin damage."
+	description = "Zwiększa odporność na ogłuszenia i szybkość ruchu, a do tego leczy drobne obrażenia i osłabienie. Przedawkowanie powoduje osłabienie i obrażenia od toksyn."
 	color = "#78008C"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
@@ -1074,7 +1074,7 @@
 //Pump-Up for Pump-Up Stimpack
 /datum/reagent/medicine/pumpup
 	name = "Pump-Up"
-	description = "Makes you immune to damage slowdown, resistant to all other kinds of slowdown and gives a minor speed boost. Overdose causes weakness and toxin damage."
+	description = "Daje odporność na spowolnienie od obrażeń, odporność na inne spowolnienia i lekko przyspiesza. Przedawkowanie powoduje osłabienie i obrażenia od toksyn."
 	color = "#78008C"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
@@ -1110,7 +1110,7 @@
 
 /datum/reagent/medicine/insulin
 	name = "Insulin"
-	description = "Increases sugar depletion rates."
+	description = "Zwiększa tempo zużywania cukru."
 	reagent_state = LIQUID
 	color = "#FFFFF0"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
@@ -1125,7 +1125,7 @@
 //Trek Chems, used primarily by medibots. Only heals a specific damage type, but is very efficient.
 /datum/reagent/medicine/bicaridine
 	name = "Bicaridine"
-	description = "Restores bruising. Overdose causes liver damage."
+	description = "Leczy stłuczenia. Przedawkowanie uszkadza wątrobę."
 	reagent_state = LIQUID
 	color = "#bf0000"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_BOTANIST_HARVEST
@@ -1147,7 +1147,7 @@
 
 /datum/reagent/medicine/dexalin
 	name = "Dexalin"
-	description = "Restores oxygen loss. Overdose causes it instead."
+	description = "Leczy niedotlenienie. Przedawkowanie zamiast tego je wywołuje."
 	reagent_state = LIQUID
 	color = "#0080FF"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG
@@ -1168,7 +1168,7 @@
 
 /datum/reagent/medicine/dexalinp
 	name = "Dexalin Plus"
-	description = "Restores oxygen loss. Overdose causes large amounts of damage to the heart. It is highly effective."
+	description = "Leczy niedotlenienie. Przedawkowanie poważnie uszkadza serce. Bardzo skuteczny."
 	reagent_state = LIQUID
 	color = "#0040FF"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
@@ -1188,7 +1188,7 @@
 
 /datum/reagent/medicine/kelotane
 	name = "Kelotane"
-	description = "Restores fire damage. Overdose causes liver damage."
+	description = "Leczy oparzenia. Przedawkowanie uszkadza wątrobę."
 	reagent_state = LIQUID
 	color = "#FFa800"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_BOTANIST_HARVEST
@@ -1210,13 +1210,13 @@
 
 /datum/reagent/medicine/antitoxin
 	name = "Anti-Toxin"
-	description = "Heals toxin damage and removes toxins in the bloodstream. Overdose causes toxin damage."
+	description = "Leczy obrażenia od toksyn i usuwa toksyny z krwiobiegu. Przedawkowanie zadaje obrażenia od toksyn."
 	reagent_state = LIQUID
 	color = "#00a000"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	overdose_threshold = 30
-	taste_description = "a roll of gauze"
+	taste_description = "rolka gazy"
 
 /datum/reagent/medicine/antitoxin/on_mob_life(mob/living/carbon/M)
 	if(M.getToxLoss() < 50)
@@ -1233,7 +1233,7 @@
 
 /datum/reagent/medicine/carthatoline
 	name = "Carthatoline"
-	description = "Carthatoline is strong evacuant used to treat severe poisoning."
+	description = "Kartatolina to silny środek przeczyszczający stosowany przy ciężkich zatruciach."
 	reagent_state = LIQUID
 	color = "#225722"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
@@ -1255,7 +1255,7 @@
 
 /datum/reagent/medicine/meclizine
 	name = "Meclizine"
-	description = "A medicine which prevents vomiting."
+	description = "Lek zapobiegający wymiotom."
 	reagent_state = LIQUID
 	color = "#cecece"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
@@ -1284,7 +1284,7 @@
 
 /datum/reagent/medicine/hepanephrodaxon
 	name = "Hepanephrodaxon"
-	description = "Used to repair the common tissues involved in filtration."
+	description = "Służy do naprawy zwykłych tkanek biorących udział w filtracji."
 	taste_description = "glue"
 	reagent_state = LIQUID
 	color = "#D2691E"
@@ -1310,7 +1310,7 @@
 
 /datum/reagent/medicine/inaprovaline
 	name = "Inaprovaline"
-	description = "Stabilizes the breathing of patients. Good for those in critical condition."
+	description = "Stabilizuje oddech pacjentów. Dobry dla osób w stanie krytycznym."
 	reagent_state = LIQUID
 	color = "#A4D8D8"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
@@ -1322,7 +1322,7 @@
 
 /datum/reagent/medicine/tricordrazine
 	name = "Tricordrazine"
-	description = "Has a high chance to heal all types of damage. Overdose causes toxin damage and liver damage."
+	description = "Ma dużą szansę na wyleczenie wszystkich rodzajów obrażeń. Przedawkowanie zadaje obrażenia od toksyn i wątroby."
 	reagent_state = LIQUID
 	color = "#707A00" //tricord's component chems mixed together, olive.
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG
@@ -1346,7 +1346,7 @@
 
 /datum/reagent/medicine/regen_jelly
 	name = "Regenerative Jelly"
-	description = "Gradually regenerates all types of damage, without harming slime anatomy."
+	description = "Stopniowo regeneruje wszystkie rodzaje obrażeń, nie szkodząc anatomii szlamów."
 	reagent_state = LIQUID
 	color = "#CC23FF"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
@@ -1362,7 +1362,7 @@
 
 /datum/reagent/medicine/regen_ooze
 	name = "Regenerative Ooze"
-	description = "Gradually regenerates all types of damage, without harming slime anatomy."
+	description = "Stopniowo regeneruje wszystkie rodzaje obrażeń, nie szkodząc anatomii szlamów."
 	reagent_state = LIQUID
 	color = "#65d891"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
@@ -1378,7 +1378,7 @@
 
 /datum/reagent/medicine/syndicate_nanites //Used exclusively by Syndicate medical cyborgs
 	name = "Restorative Nanites"
-	description = "Miniature medical robots that swiftly restore bodily damage."
+	description = "Miniaturowe roboty medyczne, które szybko leczą obrażenia ciała."
 	reagent_state = SOLID
 	color = "#555555"
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
@@ -1404,7 +1404,7 @@
 
 /datum/reagent/medicine/earthsblood //Created by ambrosia gaia plants
 	name = "Earthsblood"
-	description = "Ichor from an extremely powerful plant. Great for restoring wounds, but it's a little heavy on the brain."
+	description = "Wydzielina z niezwykle potężnej rośliny. Świetna do leczenia ran, ale trochę obciąża mózg."
 	color = "#FFAF00"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST
 	overdose_threshold = 25
@@ -1430,7 +1430,7 @@
 
 /datum/reagent/medicine/haloperidol
 	name = "Haloperidol"
-	description = "Increases depletion rates for most stimulating/hallucinogenic drugs. Reduces druggy effects and jitteriness. Severe stamina regeneration penalty, causes drowsiness. Small chance of brain damage."
+	description = "Zwiększa tempo zużywania większości środków pobudzających i halucynogennych. Zmniejsza efekty narkotyków i drżenie. Poważnie spowalnia regenerację wytrzymałości, powoduje senność. Niewielka szansa na uszkodzenie mózgu."
 	reagent_state = LIQUID
 	color = "#27870a"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
@@ -1452,7 +1452,7 @@
 
 /datum/reagent/medicine/lavaland_extract
 	name = "Lavaland Extract"
-	description = "An extract of lavaland atmospheric and mineral elements. Heals the user in small doses, but is extremely toxic otherwise."
+	description = "Wyciąg z atmosferycznych i mineralnych składników Lavalandu. W małych dawkach leczy, poza tym jest skrajnie toksyczny."
 	color = "#6B372E" //dark and red like lavaland
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	overdose_threshold = 3 //To prevent people stacking massive amounts of a very strong healing reagent
@@ -1472,7 +1472,7 @@
 //used for changeling's adrenaline power
 /datum/reagent/medicine/changelingadrenaline
 	name = "Changeling Adrenaline"
-	description = "Reduces the duration of unconciousness, knockdown and stuns. Restores stamina, but deals toxin damage when overdosed."
+	description = "Skraca czas utraty przytomności, powalenia i ogłuszenia. Przywraca wytrzymałość, ale przedawkowany zadaje obrażenia od toksyn."
 	color = "#C1151D"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	overdose_threshold = 30
@@ -1490,7 +1490,7 @@
 
 /datum/reagent/medicine/changelinghaste
 	name = "Changeling Haste"
-	description = "Drastically increases movement speed, but deals toxin damage."
+	description = "Drastycznie zwiększa szybkość ruchu, ale zadaje obrażenia od toksyn."
 	color = "#AE151D"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	metabolization_rate = 1
@@ -1512,7 +1512,7 @@
 	// Heart attack code will not do damage if corazone is present
 	// because it's SPACE MAGIC ASPIRIN
 	name = "Corazone"
-	description = "A medication used to assist in healing the heart and to stabalize the heart and liver."
+	description = "Lek wspomagający leczenie serca oraz stabilizujący serce i wątrobę."
 	color = "#F49797"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	overdose_threshold = 20
@@ -1536,7 +1536,7 @@
 
 /datum/reagent/medicine/muscle_stimulant
 	name = "Muscle Stimulant"
-	description = "A potent chemical that allows someone under its influence to be at full physical ability even when under massive amounts of pain."
+	description = "Silna substancja, która pozwala osobie pod jej wpływem zachować pełną sprawność fizyczną nawet przy ogromnym bólu."
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 
 /datum/reagent/medicine/muscle_stimulant/on_mob_metabolize(mob/living/M)
@@ -1549,7 +1549,7 @@
 
 /datum/reagent/medicine/modafinil
 	name = "Modafinil"
-	description = "Long-lasting sleep suppressant that very slightly reduces stun and knockdown times. Overdosing has horrendous side effects and deals lethal oxygen damage, will knock you unconscious if not dealt with."
+	description = "Długo działający środek zapobiegający senności, który bardzo lekko skraca ogłuszenia i powalenia. Przedawkowanie ma okropne skutki uboczne i zadaje śmiertelne niedotlenienie; jeśli się tym nie zająć, pozbawi cię przytomności."
 	reagent_state = LIQUID
 	color = "#BEF7D8" // palish blue white
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
@@ -1579,7 +1579,7 @@
 	..()
 
 /datum/reagent/medicine/modafinil/overdose_start(mob/living/M)
-	to_chat(M, "<span class='userdanger'>You feel awfully out of breath and jittery!</span>")
+	to_chat(M, "<span class='userdanger'>Okropnie brakuje ci tchu i drżysz!</span>")
 	metabolization_rate = 0.025 * REAGENTS_METABOLISM // sets metabolism to 0.01 per tick on overdose
 
 /datum/reagent/medicine/modafinil/overdose_process(mob/living/M)
@@ -1600,11 +1600,11 @@
 			if(prob(50))
 				M.losebreath++
 			if(prob(20))
-				to_chat(M, "You have a sudden fit!")
+				to_chat(M, "Dostajesz nagłego ataku!")
 				M.emote("moan")
 				M.Paralyze(20, 1, 0) // you should be in a bad spot at this point unless epipen has been used
 		if(81)
-			to_chat(M, "You feel too exhausted to continue!") // at this point you will eventually die unless you get charcoal
+			to_chat(M, "Jesteś zbyt wyczerpany, by kontynuować!") // at this point you will eventually die unless you get charcoal
 			M.adjustOxyLoss(0.1*REM, 0)
 			M.adjustStaminaLoss(0.1*REM, 0)
 		if(82 to INFINITY)
@@ -1616,7 +1616,7 @@
 
 /datum/reagent/medicine/psicodine
 	name = "Psicodine"
-	description = "Suppresses anxiety and other various forms of mental distress. Overdose causes hallucinations and minor toxin damage."
+	description = "Tłumi niepokój i inne formy cierpienia psychicznego. Przedawkowanie wywołuje halucynacje i lekkie obrażenia od toksyn."
 	reagent_state = LIQUID
 	color = "#07E79E"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_CHEMIST_DRUG | CHEMICAL_GOAL_CHEMIST_BLOODSTREAM
@@ -1644,11 +1644,11 @@
 				if(hive.hivemembers.Find(M.mind))
 					var/mob/living/carbon/C = hive.owner.current
 					if(C?.mind)
-						to_chat(C, "<span class='assimilator'>We detect a surge of psionic energy from a far away vessel before they disappear from the hive. Whatever happened, there's a good chance they're after us now.</span>")
+						to_chat(C, "<span class='assimilator'>Wykrywamy skok energii psionicznej z odległego naczynia, zanim zniknęło z roju. Cokolwiek się stało, jest duża szansa, że teraz na nas polują.</span>")
 			if(IS_WOKEVESSEL(M))
 				M.mind.remove_antag_datum(/datum/antagonist/hivevessel)
 				ADD_TRAIT(M, TRAIT_HIVE_BURNT, HIVEMIND_TRAIT)
-			to_chat(M, "<span class='assimilator'>You hear supernatural wailing echo throughout your mind as you are finally set free. Deep down, you can feel the lingering presence of those who enslaved you... as can they!</span>")
+			to_chat(M, "<span class='assimilator'>W twoim umyśle rozbrzmiewa nadprzyrodzone zawodzenie, gdy w końcu zostajesz uwolniony. W głębi duszy czujesz pozostałą obecność tych, którzy cię zniewolili... a oni czują twoją!</span>")
 			remove_hivemember(M)
 
 	var/datum/component/mood/mood = M.GetComponent(/datum/component/mood)
@@ -1665,7 +1665,7 @@
 
 /datum/reagent/medicine/silibinin
 	name = "Silibinin"
-	description = "A thistle derrived hepatoprotective flavolignan mixture that help reverse damage to the liver."
+	description = "Hepatoprotekcyjna mieszanka flawonolignanów z ostu, która pomaga cofnąć uszkodzenia wątroby."
 	reagent_state = SOLID
 	color = "#FFFFD0"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST
@@ -1678,13 +1678,13 @@
 
 /datum/reagent/medicine/polypyr  //This is intended to be an ingredient in advanced chems.
 	name = "Polypyrylium Oligomers"
-	description = "A purple mixture of short polyelectrolyte chains not easily synthesized in the laboratory. It is valued as an intermediate in the synthesis of the cutting edge pharmaceuticals."
+	description = "Fioletowa mieszanka krótkich łańcuchów polielektrolitów, trudna do syntezy w laboratorium. Ceniona jako półprodukt w syntezie najnowocześniejszych leków."
 	reagent_state = SOLID
 	color = "#9423FF"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BOTANIST_HARVEST
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = 50
-	taste_description = "numbing bitterness"
+	taste_description = "odrętwiająca gorycz"
 
 /datum/reagent/medicine/polypyr/on_mob_life(mob/living/carbon/M) //I wanted a collection of small positive effects, this is as hard to obtain as coniine after all.
 	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, -0.25)
@@ -1711,7 +1711,7 @@
 
 /datum/reagent/medicine/stabilizing_nanites
 	name = "Stabilizing nanites"
-	description = "Rapidly heals a patient out of crit by regenerating damaged cells. Nanites distribution in the blood makes them ineffective against moderately healthy targets."
+	description = "Szybko wyprowadza pacjenta ze stanu krytycznego, regenerując uszkodzone komórki. Rozproszenie nanitów we krwi sprawia, że są nieskuteczne u osób w umiarkowanie dobrym stanie."
 	reagent_state = LIQUID
 	color = "#000000"
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY

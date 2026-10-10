@@ -136,24 +136,24 @@
 	if(istype(I, /obj/item/reagent_containers) && !(I.item_flags & ABSTRACT) && I.is_open_container())
 		. = TRUE // no afterattack
 		if(panel_open)
-			to_chat(user, "<span class='warning'>You can't use the [src.name] while its panel is opened!</span>")
+			to_chat(user, "<span class='warning'>Nie możesz używać [src.name], gdy jego panel jest otwarty!</span>")
 			return
 		var/obj/item/reagent_containers/B = I
 		. = TRUE // no afterattack
 		if(!user.transferItemToLoc(B, src))
 			return
 		replace_beaker(user, B)
-		to_chat(user, "<span class='notice'>You add [B] to [src].</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [B] do [src].</span>")
 		ui_update()
 		update_icon()
 	else if(!condi && istype(I, /obj/item/storage/pill_bottle))
 		if(bottle)
-			to_chat(user, "<span class='warning'>A pill bottle is already loaded into [src]!</span>")
+			to_chat(user, "<span class='warning'>W [src] jest już załadowana butelka na pigułki!</span>")
 			return
 		if(!user.transferItemToLoc(I, src))
 			return
 		bottle = I
-		to_chat(user, "<span class='notice'>You add [I] into the dispenser slot.</span>")
+		to_chat(user, "<span class='notice'>Wkładasz [I] do gniazda dozownika.</span>")
 		ui_update()
 	else
 		return ..()
@@ -269,7 +269,7 @@
 			if(!name)
 				return
 			if(CHAT_FILTER_CHECK(name))
-				to_chat(usr, "<span class='warning'>ERROR: Packaging name contains prohibited word(s).</span>")
+				to_chat(usr, "<span class='warning'>BŁĄD: nazwa opakowania zawiera zakazane słowa.</span>")
 				return
 			saved_name = name
 			. = TRUE
@@ -303,7 +303,7 @@
 			// Custom amount
 			if (amount == -1)
 				amount = text2num(input(
-					"Enter the amount you want to transfer:",
+					"Podaj ilość do przeniesienia:",
 					name, ""))
 			if (amount == null || amount <= 0)
 				return
@@ -336,8 +336,8 @@
 			var/amount = text2num(params["amount"])
 			if(amount == null)
 				amount = text2num(input(usr,
-					"Max 10. Buffer content will be split evenly.",
-					"How many to make?", 1))
+					"Maks. 10. Zawartość bufora zostanie podzielona równo.",
+					"Ile sztuk zrobić?", 1))
 			amount = clamp(round(amount), 0, 10)
 			if (amount <= 0)
 				return
@@ -370,8 +370,8 @@
 				vol_each = vol_each_max
 			if(vol_each == null)
 				vol_each = text2num(input(usr,
-					"Maximum [vol_each_max] units per item.",
-					"How many units to fill?",
+					"Maksymalnie [vol_each_max] j. na przedmiot.",
+					"Ile jednostek napełnić?",
 					vol_each_max))
 			vol_each = clamp(vol_each, 0, vol_each_max)
 			if(vol_each <= 0)
@@ -379,7 +379,7 @@
 			// Get item name
 			var/name = params["name"]
 			if(CHAT_FILTER_CHECK(name))
-				to_chat(usr, "<span class='warning'>ERROR: Packaging name contains prohibited word(s).</span>")
+				to_chat(usr, "<span class='warning'>BŁĄD: nazwa opakowania zawiera zakazane słowa.</span>")
 				return
 			if(name) // if we were passed a name from UI, html_encode it before adding to the world.
 				name = trim(html_encode(name), MAX_NAME_LEN)
@@ -397,7 +397,7 @@
 					name_default += " ([vol_each]u)"
 				name = stripped_input(usr,
 					"Name:",
-					"Give it a name!",
+					"Nadaj nazwę!",
 					name_default,
 					MAX_NAME_LEN)
 			if(!name || !reagents.total_volume || !src || QDELETED(src) || !usr.canUseTopic(src, !issilicon(usr)))
