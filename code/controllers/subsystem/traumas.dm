@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(traumas)
 					   /mob/living/simple_animal/drone, /mob/living/simple_animal/bot, /mob/living/simple_animal/hostile/swarmer)),
 					   "doctors"   = typecacheof(list(/mob/living/simple_animal/bot/medbot)),
 					   "the supernatural"   = typecacheof(list(/mob/living/simple_animal/hostile/construct,
-					   /mob/living/simple_animal/revenant, /mob/living/simple_animal/shade)),
+					   /mob/living/simple_animal/revenant, /mob/living/simple_animal/shade, /mob/living/simple_animal/horror)), // AQ EDIT - Yogstation#13033 horror
 					   "aliens"   = typecacheof(list(/mob/living/carbon/alien, /mob/living/simple_animal/slime)),
 					   "conspiracies" = typecacheof(list(/mob/living/simple_animal/bot/secbot, /mob/living/simple_animal/bot/ed209, /mob/living/simple_animal/drone,
 					   /mob/living/simple_animal/pet/penguin)),
@@ -69,11 +69,11 @@ SUBSYSTEM_DEF(traumas)
 					  "greytide"  = typecacheof(list(/obj/item/clothing/under/color/grey, /obj/item/melee/baton/cattleprod,
 												 /obj/item/spear, /obj/item/clothing/mask/gas/old)),
 
-					  "lizards"   = typecacheof(list(/obj/item/toy/plush/lizardplushie, /obj/item/reagent_containers/food/snacks/kebab/tail,
+					  "lizards"   = typecacheof(list(/obj/item/toy/plush/lizardplushie, /obj/item/food/kebab/tail,
 												 /obj/item/organ/tail/lizard, /obj/item/reagent_containers/food/drinks/bottle/lizardwine)),
 
 					  "skeletons" = typecacheof(list(/obj/item/organ/tongue/bone, /obj/item/clothing/suit/armor/bone, /obj/item/stack/sheet/bone,
-												 /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/skeleton,
+												 /obj/item/food/meat/slab/human/mutant/skeleton,
 												 /obj/effect/decal/remains/human)),
 				   "conspiracies" = typecacheof(list(/obj/item/clothing/under/rank/captain, /obj/item/clothing/under/rank/security/head_of_security,
 												 /obj/item/clothing/under/rank/engineering/chief_engineer, /obj/item/clothing/under/rank/medical/chief_medical_officer,
@@ -112,7 +112,7 @@ SUBSYSTEM_DEF(traumas)
 						/obj/item/clothing/suit/cultrobes, /obj/item/clothing/suit/space/hardsuit/cult,
 						/obj/item/clothing/suit/hooded/cultrobes, /obj/item/clothing/head/hooded/cult_hoodie, /obj/effect/rune,
 						/obj/item/stack/sheet/runed_metal, /obj/machinery/door/airlock/cult, /obj/eldritch/narsie,
-						/obj/item/soulstone, /obj/item/clockwork,
+						/obj/item/soulstone, /obj/item/clockwork, /obj/item/horrortentacle, // AQ EDIT - Yogstation#13033 horror tentacle
 						/obj/item/stack/tile/brass,
 						/obj/machinery/door/airlock/clockwork,
 						/obj/item/clothing/suit/wizrobe, /obj/item/clothing/head/wizard, /obj/item/spellbook, /obj/item/staff,
@@ -120,7 +120,7 @@ SUBSYSTEM_DEF(traumas)
 						/obj/item/gun/magic/staff, /obj/item/gun/magic/wand,
 						/obj/item/nullrod, /obj/item/clothing/under/rank/civilian/chaplain)),
 
-						"aliens"   = typecacheof(list(/obj/item/clothing/mask/facehugger, /obj/item/organ/body_egg/alien_embryo,
+						"aliens" = typecacheof(list(/obj/item/clothing/mask/facehugger, /obj/item/organ/body_egg/alien_embryo,
 						/obj/structure/alien, /obj/item/toy/toy_xeno,
 						/obj/item/clothing/suit/armor/abductor, /obj/item/abductor, /obj/item/gun/energy/alien,
 						/obj/item/abductor/baton, /obj/item/radio/headset/abductor, /obj/item/scalpel/alien, /obj/item/hemostat/alien,
@@ -130,15 +130,24 @@ SUBSYSTEM_DEF(traumas)
 						/obj/machinery/abductor, /obj/item/crowbar/abductor, /obj/item/screwdriver/abductor, /obj/item/weldingtool/abductor,
 						/obj/item/wirecutters/abductor, /obj/item/wrench/abductor, /obj/item/stack/sheet/mineral/abductor)),
 
-						"birds" = typecacheof(list(/obj/item/clothing/mask/gas/plaguedoctor, /obj/item/reagent_containers/food/snacks/cracker,
-						/obj/item/clothing/suit/chickensuit, /obj/item/clothing/head/chicken,
-						/obj/item/clothing/suit/toggle/owlwings, /obj/item/clothing/under/costume/owl, /obj/item/clothing/mask/gas/owl_mask,
-						/obj/item/clothing/under/costume/griffin, /obj/item/clothing/shoes/griffin, /obj/item/clothing/head/griffin,
-						/obj/item/clothing/head/helmet/space/freedom, /obj/item/clothing/suit/space/freedom)),
+						"birds" = typecacheof(list(
+							/obj/item/clothing/mask/gas/plaguedoctor,
+							/obj/item/food/cracker,
+							/obj/item/clothing/suit/chickensuit,
+							/obj/item/clothing/head/chicken,
+							/obj/item/clothing/suit/toggle/owlwings,
+							/obj/item/clothing/under/costume/owl,
+							/obj/item/clothing/mask/gas/owl_mask,
+							/obj/item/clothing/under/costume/griffin,
+							/obj/item/clothing/shoes/griffin,
+							/obj/item/clothing/head/griffin,
+							/obj/item/clothing/head/helmet/space/freedom,
+							/obj/item/clothing/suit/space/freedom
+							)),
 
-					   "anime" = typecacheof(list(/obj/item/clothing/under/costume/schoolgirl, /obj/item/katana, /obj/item/reagent_containers/food/snacks/sashimi, /obj/item/reagent_containers/food/snacks/chawanmushi,
+					   "anime" = typecacheof(list(/obj/item/clothing/under/costume/schoolgirl, /obj/item/katana, /obj/item/food/sashimi, /obj/item/food/chawanmushi,
 					   /obj/item/reagent_containers/food/drinks/bottle/sake, /obj/item/throwing_star, /obj/item/clothing/head/kitty/genuine, /obj/item/clothing/suit/space/space_ninja,
-					   /obj/item/clothing/mask/gas/space_ninja, /obj/item/clothing/shoes/space_ninja, /obj/item/clothing/gloves/space_ninja, /obj/item/vibro_weapon,
+					   /obj/item/clothing/mask/gas/space_ninja, /obj/item/clothing/shoes/space_ninja, /obj/item/clothing/gloves/space_ninja, /obj/item/vibro_weapon, /obj/item/horrortentacle, // AQ EDIT - Yogstation#13033 horror tentacle
 					   /obj/item/nullrod/scythe/vibro, /obj/item/energy_katana, /obj/item/toy/katana, /obj/item/nullrod/claymore/katana, /obj/item/katana/weak/curator, /obj/structure/window/paperframe, /obj/structure/mineral_door/paperframe))
 						)
 

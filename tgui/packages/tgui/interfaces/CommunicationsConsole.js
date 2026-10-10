@@ -331,6 +331,7 @@ const PageMain = (props, context) => {
     emergencyAccess,
     importantActionReady,
     reinforcementActionReady,
+    crewWakeActionReady,
     shuttleCalled,
     shuttleCalledPreviously,
     shuttleCanEvacOrFailReason,
@@ -349,6 +350,8 @@ const PageMain = (props, context) => {
     context, "requesting_nuke_codes", false);
   const [requestingResponseTeam, setRequestingResponseTeam] = useLocalState(
     context, "requesting_ert", false);
+  const [requestingCrewWake, setRequestingCrewWake] = useLocalState(
+    context, "requesting_crew_wake", false);
 
 
 
@@ -501,6 +504,17 @@ const PageMain = (props, context) => {
             </Flex.Item>
           )}
 
+          {!!canRequestERT && (
+            <Flex.Item mt={0.3}>
+              <Button fluid
+                icon="snowflake"
+                content="Wybudź załogę z kriostazy"
+                disabled={!crewWakeActionReady}
+                onClick={() => setRequestingCrewWake(true)}
+              />
+            </Flex.Item>
+          )}
+
           {!!emagged && (
             <Flex.Item mt={0.3}>
               <Button fluid
@@ -562,6 +576,20 @@ const PageMain = (props, context) => {
         onSubmit={reason => {
           setRequestingResponseTeam(false);
           act("requestERT", {
+            reason,
+          });
+        }}
+      />}
+
+      {!!canRequestERT && requestingCrewWake && <MessageModal
+        label="Powód wybudzenia dodatkowej załogi z kriostazy"
+        notice="Wybudzeni zostaną ochotnicy jako Majtkowie, przy komorach snu. Prośba nie gwarantuje odpowiedzi."
+        icon="snowflake"
+        buttonText="Wybudź załogę"
+        onBack={() => setRequestingCrewWake(false)}
+        onSubmit={reason => {
+          setRequestingCrewWake(false);
+          act("requestCrewWake", {
             reason,
           });
         }}

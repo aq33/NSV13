@@ -133,6 +133,7 @@ PROBABILITY CHANGELING 1 #Try as I might, I just can't bring myself to re-enable
 PROBABILITY TRAITORBRO 1 #Everyone hates this anyways...
 PROBABILITY MONKEY 0
 PROBABILITY TRAITORVAMP 1
+PROBABILITY TRAITORHORROR 1
 PROBABILITY VAMPIRE 1
 
 ## Dynamic gamemode go brrr
@@ -155,6 +156,7 @@ CONTINUOUS TRAITOR
 CONTINUOUS THIEF
 CONTINUOUS TRAITORBRO
 CONTINUOUS TRAITORCHAN
+CONTINUOUS TRAITORHORROR
 CONTINUOUS INCURSION
 CONTINUOUS INTERNAL_AFFAIRS
 CONTINUOUS NUCLEAR
@@ -220,6 +222,9 @@ MAX_POP TRAITORBRO -1
 
 MIN_POP TRAITORCHAN 15
 MAX_POP TRAITORCHAN -1
+
+MIN_POP TRAITORHORROR 10
+MAX_POP TRAITORHORROR -1
 
 MIN_POP DOUBLE_AGENTS 15
 MAX_POP DOUBLE_AGENTS -1
@@ -716,6 +721,17 @@ BANK_BALANCE_METACOIN_CONVERSION_COEFFICIENT 1
 ## to be automatically accepted after a certain amount of time.
 ## Admins can cancel this manually.
 ALLOW_NUKE_REQUEST_AUTO_ACCEPT
+
+## Allow the ship's request for an emergency response team
+## to be automatically accepted after a certain amount of time.
+## Admins can cancel this manually.
+ALLOW_ERT_REQUEST_AUTO_ACCEPT
+
+## Allow the ship's request to wake up crew from cryostasis
+## (willing ghosts respawn as assistants at the cryopods)
+## to be automatically accepted after a certain amount of time.
+## Admins can cancel this manually.
+ALLOW_CREW_WAKE_REQUEST_AUTO_ACCEPT
 
 ## Crew objectives
 ALLOW_CREW_OBJECTIVES

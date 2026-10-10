@@ -250,6 +250,7 @@
 			continue
 		var/datum/character_save/CS = character_saves[idx]
 		CS.handle_query(read_chars)
+		CS.remove_locked_accessories(parent) // AQ EDIT - polska bielizna wymaga zakupu w loadoucie
 		char_loaded = TRUE
 
 	qdel(read_chars)

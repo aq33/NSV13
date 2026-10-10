@@ -14438,7 +14438,7 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port)
 "YG" = (
-/obj/item/reagent_containers/food/snacks/grown/banana,
+/obj/item/food/grown/banana,
 /mob/living/carbon/monkey,
 /turf/open/floor/grass,
 /area/medical/virology)

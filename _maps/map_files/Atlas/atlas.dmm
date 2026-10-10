@@ -4343,7 +4343,7 @@
 	},
 /obj/item/gps,
 /obj/structure/closet/crate/coffin,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
 /obj/machinery/door/firedoor/border_only/directional/north,
 /obj/machinery/door/firedoor/border_only/directional/east,
 /turf/open/floor/durasteel/techfloor,
@@ -9001,7 +9001,7 @@
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/cobweb,
-/obj/item/trash/plate,
+/obj/item/plate,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port)
 "GB" = (
@@ -9409,7 +9409,7 @@
 "Ia" = (
 /obj/structure/table_frame,
 /obj/item/relic,
-/obj/item/trash/can/food/beans,
+/obj/item/trash/canned/beans,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port/fore)
 "Ib" = (
@@ -12669,7 +12669,7 @@
 	pixel_x = -2;
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
 /obj/machinery/requests_console{
 	department = "Chapel";
 	departmentType = 2;

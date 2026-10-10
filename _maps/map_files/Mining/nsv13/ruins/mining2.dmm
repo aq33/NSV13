@@ -214,7 +214,7 @@
 /area/ruin/powered)
 "S" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/baguette,
+/obj/item/food/baguette,
 /obj/item/gun/ballistic/revolver/russian{
 	name = "Moral Support"
 	},
@@ -227,7 +227,7 @@
 "Z" = (
 /obj/structure/AIcore/deactivated,
 /obj/structure/cable/yellow,
-/obj/item/reagent_containers/food/snacks/cheesiehonkers,
+/obj/item/food/cheesiehonkers,
 /turf/open/floor/circuit,
 /area/ruin/powered)
 

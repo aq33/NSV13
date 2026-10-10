@@ -4150,7 +4150,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/item/trash/boritos,
-/obj/item/trash/plate,
+/obj/item/plate,
 /turf/open/floor/durasteel/padded,
 /area/maintenance/department/medical)
 "alC" = (
@@ -5746,7 +5746,7 @@
 /area/crew_quarters/kitchen)
 "arc" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /turf/open/floor/monotile/light,
 /area/crew_quarters/kitchen)
 "ard" = (
@@ -12801,7 +12801,7 @@
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/kitchen/coldroom)
 "aMz" = (
-/obj/structure/reagent_dispensers/cooking_oil,
+/obj/structure/reagent_dispensers/nutriment/fat/oil,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 5
 	},
@@ -16207,7 +16207,7 @@
 /area/hallway/nsv/deck2/frame2/port)
 "aVg" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/cafeteria{
 	name = "Mess hall"
@@ -16464,7 +16464,7 @@
 /area/quartermaster/storage)
 "aVO" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /obj/machinery/door/poddoor/shutters/ship/preopen{
 	id = "kitchen";
 	name = "Serving Hatch"
@@ -18838,7 +18838,7 @@
 	})
 "bbE" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
@@ -19469,22 +19469,22 @@
 /area/chapel/office)
 "bda" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
 /obj/structure/sign/plaques/kiddie/badger{
@@ -19575,7 +19575,7 @@
 	})
 "bdl" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
@@ -31952,8 +31952,8 @@
 	pixel_y = -26;
 	req_access_txt = "22"
 	},
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
 /turf/open/floor/plasteel/dark,
 /area/chapel/main)
 "bGq" = (

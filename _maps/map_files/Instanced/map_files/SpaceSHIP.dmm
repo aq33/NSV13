@@ -2383,7 +2383,7 @@
 /area/science/robotics/pvp)
 "gp" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/cafeteria/pvp)
 "gq" = (

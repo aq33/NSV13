@@ -89,6 +89,9 @@ GLOBAL_DATUM_INIT(requests, /datum/request_manager, new)
 /datum/request_manager/proc/ert_request(client/C, message)
 	request_for_client(C, REQUEST_ERT, message)
 
+/datum/request_manager/proc/crew_wake_request(client/C, message)
+	request_for_client(C, REQUEST_CREW_WAKE, message)
+
 /**
  * Creates a request and registers the request with all necessary internal tracking lists
  *

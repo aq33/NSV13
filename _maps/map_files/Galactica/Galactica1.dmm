@@ -16936,7 +16936,7 @@
 	pixel_y = 3
 	},
 /obj/item/trash/popcorn,
-/obj/item/reagent_containers/food/snacks/sosjerky,
+/obj/item/food/sosjerky,
 /turf/open/floor/carpet/green,
 /area/medical/virology)
 "VF" = (

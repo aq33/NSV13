@@ -21,7 +21,7 @@
 	if(..())
 		return
 	///if the thrown object's target zone isn't the head
-	if(thrownthing.target_zone != BODY_ZONE_HEAD)
+	if(thrownthing?.target_zone != BODY_ZONE_HEAD) //AQ EDIT - null when the hat falls down a z-level
 		return
 	///ignore any hats with special effects that prevent removal ie tinfoil hats
 	if(clothing_flags & EFFECT_HAT)

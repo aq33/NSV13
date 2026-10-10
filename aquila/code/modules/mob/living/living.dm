@@ -1,5 +1,6 @@
 /mob/living/Initialize(mapload)
 	. = ..()
+	set_hydration(rand(HYDRATION_LEVEL_START_MIN, HYDRATION_LEVEL_START_MAX))
 	if(CONFIG_GET(flag/shitting_enabled))
 		set_defecation(rand(DEFECATION_NONE, DEFECATION_SOMEWHAT))
 
@@ -24,13 +25,14 @@
 
 	playsound(get_turf(src), 'aquila/sound/creatures/fart.ogg', 100, TRUE)
 	new /obj/effect/decal/cleanable/feces(get_turf(src))
+	var/datum/reagent/consumable/castor_oil/oil = reagents?.get_reagent(/datum/reagent/consumable/castor_oil)
+	oil?.purge(src)
 	return TRUE
 
 /mob/living/carbon/human/actually_shit_myself()
 	. = ..()
 	if(.)
 		set_hygiene(HYGIENE_LEVEL_DISGUSTING)
-	set_hydration(rand(HYDRATION_LEVEL_START_MIN, HYDRATION_LEVEL_START_MAX))
 
 ///Adjust the thirst of a mob
 /mob/living/proc/adjust_hydration(var/change)

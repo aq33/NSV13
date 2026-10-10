@@ -130,6 +130,9 @@
 		if(changeling)
 			tab_data["Chemical Storage"] = GENERATE_STAT_TEXT("[changeling.chem_charges]/[changeling.chem_storage]")
 			tab_data["Absorbed DNA"] = GENERATE_STAT_TEXT("[changeling.absorbedcount]")
+	var/mob/living/simple_animal/horror/H = has_horror_inside() // AQ EDIT - Yogstation#13033
+	if(H?.controlling)
+		tab_data["Chemikalia horroru"] = GENERATE_STAT_TEXT("[H.chemicals]")
 	return tab_data
 
 // called when something steps onto a human
