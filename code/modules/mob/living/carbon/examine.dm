@@ -1,5 +1,4 @@
 /mob/living/carbon/examine(mob/user)
-	var/t_his = p_their()
 
 	. = list("<span class='info'>To jest [icon2html(src, user)] <EM>[src]</EM>!")
 	var/obscured = check_obscured_slots()
@@ -49,7 +48,7 @@
 			damage_text = "bezwładny i martwy"
 		else
 			damage_text = (BP.brute_dam >= BP.burn_dam) ? BP.heavy_brute_msg : BP.heavy_burn_msg
-		msg += "<B>[capitalize(t_his)] [BP.name] is [damage_text]!</B>\n"
+		msg += "<B>Kończyna ([BP.name]): [damage_text]!</B>\n"
 
 	for(var/t in missing)
 		if(t==BODY_ZONE_HEAD)
