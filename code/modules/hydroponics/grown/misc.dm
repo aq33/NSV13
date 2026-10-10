@@ -175,7 +175,7 @@
 	discovery_points = 300
 
 /obj/item/food/grown/cherry_bomb/attack_self(mob/living/user)
-	user.visible_message("<span class='warning'>[user] plucks the stem from [src]!</span>", "<span class='userdanger'>You pluck the stem from [src], which begins to hiss loudly!</span>")
+	user.visible_message("<span class='warning'>[user] wyrywa ogonek z [src]!</span>", "<span class='userdanger'>Wyrywasz ogonek z [src], który zaczyna głośno syczeć!</span>")
 	log_bomber(user, "primed a", src, "for detonation")
 	prime()
 

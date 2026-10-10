@@ -1,12 +1,12 @@
 /datum/computer_file/program/bounty
 	filename = "bounty"
-	filedesc = "Nanotrasen Bounty Hunter"
+	filedesc = "Łowca zleceń Nanotrasen"
 	category = PROGRAM_CATEGORY_SUPL
 	program_icon_state = "bounty"
-	extended_desc = "A basic interface for supply personnel to check and claim bounties."
+	extended_desc = "Prosty interfejs dla personelu zaopatrzenia do sprawdzania i odbierania zleceń."
 	requires_ntnet = TRUE
 	transfer_access = list(ACCESS_CARGO)
-	network_destination = "cargo claims interface"
+	network_destination = "interfejs odbioru zleceń"
 	size = 10
 	tgui_id = "NtosBountyConsole"
 	program_icon = "tags"
@@ -64,7 +64,7 @@
 			return TRUE
 		if("Print")
 			if(!COOLDOWN_FINISHED(src, printer_ready))
-				to_chat(usr, "<span class='warning'>The printer is not ready to print yet!</span>")
+				to_chat(usr, "<span class='warning'>Drukarka nie jest jeszcze gotowa!</span>")
 				return
 			var/obj/item/computer_hardware/printer/printer
 			if(computer)
@@ -72,8 +72,8 @@
 
 			if(printer)
 				if(!printer.print_type(/obj/item/paper/bounty_printout))
-					to_chat(usr, "<span class='notice'>Hardware error: Printer was unable to print the file. It may be out of paper.</span>")
+					to_chat(usr, "<span class='notice'>Błąd sprzętu: drukarka nie mogła wydrukować pliku. Może brakuje papieru.</span>")
 					return
 				else
 					COOLDOWN_START(src, printer_ready, PRINTER_TIMEOUT)
-					computer.visible_message("<span class='notice'>\The [computer] prints out a paper.</span>")
+					computer.visible_message("<span class='notice'>[computer] drukuje kartkę.</span>")

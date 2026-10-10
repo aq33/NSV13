@@ -251,14 +251,14 @@
 		if(!user.temporarilyRemoveItemFromInventory(c))
 			return
 		credits += c.value
-		visible_message("<span class='info'><span class='name'>[user]</span> inserts [c.value] credits into [src].</span>")
+		visible_message("<span class='info'><span class='name'>[user]</span> wkłada [c.value] kr do [src].</span>")
 		qdel(c)
 		ui_update()
 		return
 	else if(istype(I, /obj/item/holochip))
 		var/obj/item/holochip/HC = I
 		credits += HC.credits
-		visible_message("<span class='info'>[user] inserts a $[HC.credits] holocredit chip into [src].</span>")
+		visible_message("<span class='info'>[user] wkłada do [src] żeton holokredytowy o wartości $[HC.credits].</span>")
 		qdel(HC)
 		ui_update()
 		return
@@ -269,10 +269,10 @@
 		var/datum/bank_account/account = ID.registered_account
 		var/target_credits = total_price - credits
 		if(!account.adjust_money(-target_credits))
-			say("Insufficient money on card to purchase!")
+			say("Za mało pieniędzy na karcie, by dokonać zakupu!")
 			return
 		credits += target_credits
-		say("[target_credits] cr have been withdrawn from your account.")
+		say("Z twojego konta pobrano [target_credits] kr.")
 		ui_update()
 		return
 	return ..()
@@ -280,7 +280,7 @@
 // Simplified payment processing, returns 1 on success.
 /obj/machinery/lapvend/proc/process_payment()
 	if(total_price > credits)
-		say("Insufficient credits.")
+		say("Za mało kredytów.")
 		return FALSE
 	else
 		return TRUE
@@ -317,7 +317,7 @@
 				fabricated_tablet.forceMove(src.loc)
 				fabricated_tablet = null
 			credits -= total_price
-			say("Enjoy your new product!")
+			say("Miłego korzystania z nowego produktu!")
 			state = 3
 			addtimer(CALLBACK(src, PROC_REF(reset_order)), 100)
 			ui_update()

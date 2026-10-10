@@ -12,7 +12,7 @@
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/exo/cloak
 
 /obj/item/clothing/neck/cloak/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is strangling [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] dusi się [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return(OXYLOSS)
 
 /obj/item/clothing/neck/cloak/hos

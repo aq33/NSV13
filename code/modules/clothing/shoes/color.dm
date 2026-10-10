@@ -84,7 +84,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/hummie = user
 		if(hummie.shoes == src && chained)
-			to_chat(hummie, "<span class='warning'>You start taking off your [src]!</span>")
+			to_chat(hummie, "<span class='warning'>Zaczynasz zdejmować [src]!</span>")
 			if(!do_after(hummie,15 SECONDS, src))
 				return FALSE
 	return ..()
@@ -94,7 +94,7 @@
 	if(ishuman(m))
 		var/mob/living/carbon/human/hummie = m
 		if(hummie.shoes == src && chained)
-			to_chat(hummie, "<span class='warning'>You start taking off your [src]!</span>")
+			to_chat(hummie, "<span class='warning'>Zaczynasz zdejmować [src]!</span>")
 			if(!do_after(hummie,15 SECONDS, src))
 				return FALSE
 	return ..()

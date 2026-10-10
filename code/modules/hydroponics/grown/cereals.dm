@@ -95,7 +95,7 @@
 	discovery_points = 300
 
 /obj/item/food/grown/meatwheat/attack_self(mob/living/user)
-	user.visible_message("<span class='notice'>[user] crushes [src] into meat.</span>", "<span class='notice'>You crush [src] into something that resembles meat.</span>")
+	user.visible_message("<span class='notice'>[user] rozgniata [src] w mięso.</span>", "<span class='notice'>Rozgniatasz [src] w coś, co przypomina mięso.</span>")
 	playsound(user, 'sound/effects/blobattack.ogg', 50, 1)
 	var/obj/item/food/meat/slab/meatwheat/M = new
 	qdel(src)

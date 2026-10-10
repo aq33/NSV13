@@ -190,7 +190,7 @@
 /obj/item/modular_computer/tablet/pda/syndicate
 	name = "military PDA"
 	desc = "A portable microcomputer by Thinktronic Systems, LTD. This model is a WGW-XL-NTOS series."
-	note = "Congratulations, your -corrupted- has chosen the Thinktronic 5290 WGW-XL-NTOS Series Personal Data Assistant!"
+	note = "Gratulacje, twój -uszkodzone- wybrał osobisty asystent cyfrowy Thinktronic 5290 WGW-XL-NTOS!"
 	default_disk = /obj/item/computer_hardware/hard_drive/role/virus/syndicate/military
 	saved_identification = "John Doe"
 	saved_job = "Citizen"
@@ -227,7 +227,7 @@
 /obj/item/modular_computer/tablet/pda/curator
 	name = "curator PDA"
 	desc = "Przenośny minikomputer, wyprodukowany przez Thinktronic Systems, LTD. Jest to model WGW-11 z serii e-reader."
-	note = "Congratulations, your station has chosen the Thinktronic 5290 WGW-11-NTOS Series E-reader and Personal Data Assistant!"
+	note = "Gratulacje, wasza stacja wybrała czytnik e-booków i osobisty asystent cyfrowy Thinktronic 5290 WGW-11-NTOS!"
 	default_disk = /obj/item/computer_hardware/hard_drive/role/curator
 	icon_state = "pda-library"
 	insert_type = /obj/item/pen/fountain
@@ -237,7 +237,7 @@
 /obj/item/modular_computer/tablet/pda/clear
 	name = "clear PDA"
 	desc = "Przenośny minikomputer, wyprodukowany przez Thinktronic Systems, LTD. Specjalna edycja, z przezroczystą obudową."
-	note = "Congratulations, you have chosen the Thinktronic 5230-NTOS Personal Data Assistant Deluxe Special Max Turbo Limited Edition!"
+	note = "Gratulacje, wybrałeś osobisty asystent cyfrowy Thinktronic 5230-NTOS Deluxe Special Max Turbo Limited Edition!"
 	icon_state = "pda-clear"
 
 /obj/item/modular_computer/tablet/pda/cook
@@ -267,16 +267,16 @@
 /obj/item/modular_computer/tablet/pda/vip
 	name = "fancy PDA"
 	desc = "A portable microcomputer by Thinktronic Systems, LTD. This model is a gold-plated 5230-NTOS LRP Series, and probably quite expensive."
-	note = "Congratulations, you have chosen the Thinktronic 5230-NTOS LRP Series Personal Data Assistant Golden Edition!"
+	note = "Gratulacje, wybrałeś osobisty asystent cyfrowy Thinktronic 5230-NTOS LRP Golden Edition!"
 	default_disk = /obj/item/computer_hardware/hard_drive/role/vip
 	insert_type = /obj/item/pen/fountain
 	icon_state = "pda-gold"
-	init_ringtone = "ch-CHING"
+	init_ringtone = "brzdęk-BRZDĘK"
 
 /obj/item/modular_computer/tablet/pda/unlicensed
 	name = "unlicensed PDA"
 	desc = "A shitty knockoff of a portable microcomputer by Thinktronic Systems, LTD. Complete with a cracked operating system."
-	note = "Error: Unlicensed software detected. Please contact your supervisor."
+	note = "Błąd: wykryto nielicencjonowane oprogramowanie. Skontaktuj się z przełożonym."
 	default_disk = /obj/item/computer_hardware/hard_drive/role/unlicensed
 	icon_state = "pda-knockoff"
 

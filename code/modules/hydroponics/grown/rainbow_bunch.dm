@@ -40,39 +40,39 @@
 			color = "#DA0000"
 			reagents.add_reagent(/datum/reagent/colorful_reagent/powder/red, 3)
 			dye_color = DYE_RED
-			desc += " This one is in a fiery red color."
+			desc += " Ten ma ognistoczerwony kolor."
 		if(2)
 			color = "#FF9300"
 			reagents.add_reagent(/datum/reagent/colorful_reagent/powder/orange, 3)
 			dye_color = DYE_ORANGE
-			desc += " This one is in a citrus orange color."
+			desc += " Ten ma cytrusowo-pomarańczowy kolor."
 		if(3)
 			color = "#FFF200"
 			reagents.add_reagent(/datum/reagent/colorful_reagent/powder/yellow, 3)
 			dye_color = DYE_YELLOW
-			desc += " This one is in a bright yellow color."
+			desc += " Ten ma jaskrawożółty kolor."
 		if(4)
 			color = "#A8E61D"
 			reagents.add_reagent(/datum/reagent/colorful_reagent/powder/green, 3)
 			dye_color = DYE_GREEN
-			desc += " This one is in a grassy green color."
+			desc += " Ten ma trawiastozielony kolor."
 		if(5)
 			color = "#00B7EF"
 			reagents.add_reagent(/datum/reagent/colorful_reagent/powder/blue, 3)
 			dye_color = DYE_BLUE
-			desc += " This one is in a soothing blue color."
+			desc += " Ten ma kojąco niebieski kolor."
 		if(6)
 			color = "#DA00FF"
 			reagents.add_reagent(/datum/reagent/colorful_reagent/powder/purple, 3)
 			dye_color = DYE_PURPLE
-			desc += " This one is in a vibrant purple color."
+			desc += " Ten ma żywy fioletowy kolor."
 		if(7)
 			color = "#1C1C1C"
 			reagents.add_reagent(/datum/reagent/colorful_reagent/powder/black, 3)
 			dye_color = DYE_BLACK
-			desc += " This one is in a midnight black color."
+			desc += " Ten ma kolor czerni o północy."
 		if(8)
 			color = "#FFFFFF"
 			reagents.add_reagent(/datum/reagent/colorful_reagent/powder/white, 3)
 			dye_color = DYE_WHITE
-			desc += " This one is in a pure white color."
+			desc += " Ten ma kolor czystej bieli."

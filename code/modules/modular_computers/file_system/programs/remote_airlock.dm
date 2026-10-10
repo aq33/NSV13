@@ -1,7 +1,7 @@
 /datum/computer_file/program/remote_airlock
 	filename = "remote_airlock"
-	filedesc = "Remote Airlock Control"
-	extended_desc = "Allows remote control of select airlocks via an integrated local bluespace relay."
+	filedesc = "Zdalne sterowanie śluzami"
+	extended_desc = "Pozwala zdalnie sterować wybranymi śluzami przez zintegrowany lokalny przekaźnik bluespace."
 	category = PROGRAM_CATEGORY_MISC
 	program_icon = "lock-open"
 	tgui_id = "NtosAirlockControl"

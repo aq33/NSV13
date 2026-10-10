@@ -126,7 +126,7 @@
 		return
 	if(slot == ITEM_SLOT_HEAD)
 		user.grant_language(/datum/language/piratespeak/, TRUE, TRUE, LANGUAGE_HAT)
-		to_chat(user, "You suddenly know how to speak like a pirate!")
+		to_chat(user, "Nagle wiesz, jak mówić jak pirat!")
 
 /obj/item/clothing/head/pirate/dropped(mob/user)
 	..()
@@ -135,7 +135,7 @@
 	var/mob/living/carbon/human/H = user
 	if(H.get_item_by_slot(ITEM_SLOT_HEAD) == src && !QDELETED(src)) //This can be called as a part of destroy
 		user.remove_language(/datum/language/piratespeak/, TRUE, TRUE, LANGUAGE_HAT)
-		to_chat(user, "You can no longer speak like a pirate.")
+		to_chat(user, "Już nie potrafisz mówić jak pirat.")
 
 /obj/item/clothing/head/pirate/captain
 	icon_state = "hgpiratecap"
@@ -203,7 +203,7 @@
 	if(user.gender == FEMALE)
 		return 0
 	var/mob/living/carbon/human/H = user
-	user.visible_message("<span class='suicide'>[user] is donning [src]! It looks like [user.p_theyre()] trying to be nice to girls.</span>")
+	user.visible_message("<span class='suicide'>[user] zakłada [src]! Wygląda na to, że próbuje być miły dla dziewczyn.</span>")
 	user.say("M'lady.", forced = "fedora suicide")
 	sleep(10)
 	H.facial_hair_style = "Neckbeard"
@@ -440,16 +440,16 @@
 	var/crown_type = rand(1,4)
 	switch(crown_type)
 		if(1)
-			desc += " This one has red, yellow and white flowers."
+			desc += " Ten ma czerwone, żółte i białe kwiaty."
 			icon_state = "rainbow_bunch_crown_1"
 		if(2)
-			desc += " This one has blue, yellow, green and white flowers."
+			desc += " Ten ma niebieskie, żółte, zielone i białe kwiaty."
 			icon_state = "rainbow_bunch_crown_2"
 		if(3)
-			desc += " This one has red, blue, purple and pink flowers."
+			desc += " Ten ma czerwone, niebieskie, fioletowe i różowe kwiaty."
 			icon_state = "rainbow_bunch_crown_3"
 		if(4)
-			desc += " This one has yellow, green and white flowers."
+			desc += " Ten ma żółte, zielone i białe kwiaty."
 			icon_state = "rainbow_bunch_crown_4"
 
 /obj/item/clothing/head/sunflowercrown

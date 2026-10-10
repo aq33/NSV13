@@ -99,12 +99,12 @@
 
 /obj/item/clothing/head/hardhat/cakehat/energycake/turn_on(mob/living/user)
 	playsound(user, 'sound/weapons/saberon.ogg', 5, TRUE)
-	to_chat(user, "<span class='warning'>You turn on \the [src].</span>")
+	to_chat(user, "<span class='warning'>Włączasz [src].</span>")
 	return ..()
 
 /obj/item/clothing/head/hardhat/cakehat/energycake/turn_off(mob/living/user)
 	playsound(user, 'sound/weapons/saberoff.ogg', 5, TRUE)
-	to_chat(user, "<span class='warning'>You turn off \the [src].</span>")
+	to_chat(user, "<span class='warning'>Wyłączasz [src].</span>")
 	return ..()
 /*
  * Ushanka
@@ -126,12 +126,12 @@
 		icon_state = "ushankaup"
 		item_state = "ushankaup"
 		earflaps_down = FALSE
-		to_chat(user, "<span class='notice'>You raise the ear flaps on the ushanka.</span>")
+		to_chat(user, "<span class='notice'>Podnosisz nauszniki uszanki.</span>")
 	else
 		icon_state = initial(icon_state)
 		item_state = initial(item_state)
 		earflaps_down = TRUE
-		to_chat(user, "<span class='notice'>You lower the ear flaps on the ushanka.</span>")
+		to_chat(user, "<span class='notice'>Opuszczasz nauszniki uszanki.</span>")
 
 /*
  * Pumpkin head
@@ -260,14 +260,14 @@
 		. += M
 
 /obj/item/clothing/head/wig/attack_self(mob/user)
-	var/new_style = input(user, "Select a hair style", "Wig Styling")  as null|anything in (GLOB.hair_styles_list - "Bald")
+	var/new_style = input(user, "Wybierz fryzurę", "Stylizacja peruki")  as null|anything in (GLOB.hair_styles_list - "Bald")
 	if(!user.canUseTopic(src, BE_CLOSE))
 		return
 	if(new_style && new_style != hair_style)
 		hair_style = new_style
-		user.visible_message("<span class='notice'>[user] changes \the [src]'s hairstyle to [new_style].</span>", "<span class='notice'>You change \the [src]'s hairstyle to [new_style].</span>")
+		user.visible_message("<span class='notice'>[user] zmienia fryzurę [src] na [new_style].</span>", "<span class='notice'>Zmieniasz fryzurę [src] na [new_style].</span>")
 	if(adjustablecolor)
-		hair_color = input(usr,"","Choose Color",hair_color) as color|null
+		hair_color = input(usr,"","Wybierz kolor",hair_color) as color|null
 	update_icon()
 
 /obj/item/clothing/head/wig/random/Initialize(mapload)
@@ -321,14 +321,14 @@
 		paranoia.clonable = FALSE
 
 		user.gain_trauma(paranoia, TRAUMA_RESILIENCE_MAGIC)
-		to_chat(user, "<span class='warning'>As you don the foiled hat, an entire world of conspiracy theories and seemingly insane ideas suddenly rush into your mind. What you once thought unbelievable suddenly seems.. undeniable. Everything is connected and nothing happens just by accident. You know too much and now they're out to get you. </span>")
+		to_chat(user, "<span class='warning'>Gdy zakładasz czapkę z folii, do twojego umysłu nagle wlewa się cały świat teorii spiskowych i z pozoru szalonych idei. To, co kiedyś wydawało się niewiarygodne, nagle wydaje się... niezaprzeczalne. Wszystko jest połączone i nic nie dzieje się przypadkiem. Wiesz za dużo i teraz oni chcą cię dopaść. </span>")
 
 /obj/item/clothing/head/foilhat/MouseDrop(atom/over_object)
 	//God Im sorry
 	if(usr)
 		var/mob/living/carbon/C = usr
 		if(src == C.head)
-			to_chat(C, "<span class='userdanger'>Why would you want to take this off? Do you want them to get into your mind?!</span>")
+			to_chat(C, "<span class='userdanger'>Czemu miałbyś chcieć to zdjąć? Chcesz, żeby dostali się do twojego umysłu?!</span>")
 			return
 	return ..()
 
@@ -344,7 +344,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(src == C.head)
-			to_chat(user, "<span class='userdanger'>Why would you want to take this off? Do you want them to get into your mind?!</span>")
+			to_chat(user, "<span class='userdanger'>Czemu miałbyś chcieć to zdjąć? Chcesz, żeby dostali się do twojego umysłu?!</span>")
 			return
 	return ..()
 

@@ -18,7 +18,7 @@
 
 /obj/item/modular_computer/proc/break_apart()
 	if(!(flags_1 & NODECONSTRUCT_1))
-		physical.visible_message("\The [src] breaks apart!")
+		physical.visible_message("[src] rozpada się!")
 		var/turf/newloc = get_turf(src)
 		new /obj/item/stack/sheet/iron(newloc, round(steel_sheet_cost/2))
 		for(var/C in all_components)

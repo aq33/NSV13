@@ -1,9 +1,9 @@
 /datum/computer_file/program/contract_uplink
 	filename = "contractor uplink"
-	filedesc = "Syndicate Contractor Uplink"
+	filedesc = "Uplink kontraktora Syndykatu"
 	category = PROGRAM_CATEGORY_MISC
 	program_icon_state = "assign"
-	extended_desc = "A standard, Syndicate issued system for handling important contracts while on the field."
+	extended_desc = "Standardowy system Syndykatu do obsługi ważnych kontraktów w terenie."
 	size = 10
 	requires_ntnet = 0
 	available_on_ntnet = 0
@@ -55,7 +55,7 @@
 					program_icon_state = "contracts"
 					assigned = TRUE
 			else
-				error = "UNAUTHORIZED USER"
+				error = "NIEUPRAWNIONY UŻYTKOWNIK"
 			return TRUE
 		if("PRG_call_extraction")
 			if (hard_drive.traitor_data.contractor_hub.current_contract.status != CONTRACT_STATUS_EXTRACTING)
@@ -66,10 +66,10 @@
 					program_icon_state = "extracted"
 				else
 					user.playsound_local(user, 'sound/machines/uplinkerror.ogg', 50)
-					error = "Either both you or your target aren't at the dropoff location, or the pod hasn't got a valid place to land. Clear space, or make sure you're both inside."
+					error = "Albo ty, albo twój cel nie jesteście w miejscu odbioru, albo kapsuła nie ma gdzie wylądować. Zrób miejsce lub upewnij się, że obaj jesteście w środku."
 			else
 				user.playsound_local(user, 'sound/machines/uplinkerror.ogg', 50)
-				error = "Already extracting... Place the target into the pod. If the pod was destroyed, this contract is no longer possible."
+				error = "Ekstrakcja już trwa... Umieść cel w kapsule. Jeśli kapsuła została zniszczona, ten kontrakt nie jest już możliwy."
 
 			return TRUE
 		if("PRG_contract_abort")
@@ -88,9 +88,9 @@
 				if(ishuman(user))
 					var/mob/living/carbon/human/H = user
 					if(H.put_in_hands(crystals))
-						to_chat(H, "<span class='notice'>Your payment materializes into your hands!</span>")
+						to_chat(H, "<span class='notice'>Twoja zapłata materializuje się w twoich rękach!</span>")
 					else
-						to_chat(user, "<span class='notice'>Your payment materializes onto the floor.</span>")
+						to_chat(user, "<span class='notice'>Twoja zapłata materializuje się na podłodze.</span>")
 
 				hard_drive.traitor_data.contractor_hub.contract_TC_payed_out += hard_drive.traitor_data.contractor_hub.contract_TC_to_redeem
 				hard_drive.traitor_data.contractor_hub.contract_TC_to_redeem = 0
@@ -115,7 +115,7 @@
 					if (hub_item.name == item)
 						hub_item.handle_purchase(hard_drive.traitor_data.contractor_hub, user)
 			else
-				error = "Invalid user... You weren't recognised as the user of this system."
+				error = "Nieprawidłowy użytkownik... Nie rozpoznano cię jako użytkownika tego systemu."
 
 /datum/computer_file/program/contract_uplink/ui_data(mob/user)
 	var/list/data = list()
@@ -189,7 +189,7 @@
 			if(curr.get_virtual_z_level() == dropoff_turf.get_virtual_z_level()) //Direction calculations for same z-level only
 				direction = uppertext(dir2text(get_dir(curr, dropoff_turf))) //Direction text (East, etc). Not as precise, but still helpful.
 				if(get_area(user) == traitor_data.contractor_hub.current_contract.contract.dropoff)
-					direction = "LOCATION CONFIRMED"
+					direction = "LOKALIZACJA POTWIERDZONA"
 			else
 				direction = "???"
 

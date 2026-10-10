@@ -57,7 +57,7 @@
 	else if(istype(old_headgear, /obj/item/clothing/mask/chameleon/drone))
 		new_headgear = new /obj/item/clothing/head/chameleon/drone()
 	else
-		to_chat(owner, "<span class='warning'>You shouldn't be able to toggle a camogear helmetmask if you're not wearing it</span>")
+		to_chat(owner, "<span class='warning'>Nie powinno dać się przełączać maski hełmu kamuflażowego, jeśli go nie nosisz</span>")
 	if(new_headgear)
 		// Force drop the item in the headslot, even though
 		// it's has TRAIT_NODROP
@@ -94,7 +94,7 @@
 /datum/action/chameleon_outfit/proc/select_outfit(mob/user)
 	if(!user || !IsAvailable())
 		return FALSE
-	var/selected = input("Select outfit to change into", "Chameleon Outfit") as null|anything in outfit_options
+	var/selected = input("Wybierz strój, w który chcesz się przebrać", "Strój kameleona") as null|anything in outfit_options
 	if(!IsAvailable() || QDELETED(src) || QDELETED(user))
 		return FALSE
 	var/outfit_type = outfit_options[selected]
@@ -179,7 +179,7 @@
 /datum/action/item_action/chameleon/change/proc/select_look(mob/user)
 	var/obj/item/picked_item
 	var/picked_name
-	picked_name = input("Select [chameleon_name] to change into", "Chameleon [chameleon_name]", picked_name) as null|anything in sortList(chameleon_list, GLOBAL_PROC_REF(cmp_typepaths_asc))
+	picked_name = input("Wybierz [chameleon_name], w który chcesz się przebrać", "Chameleon [chameleon_name]", picked_name) as null|anything in sortList(chameleon_list, GLOBAL_PROC_REF(cmp_typepaths_asc))
 	if(!picked_name)
 		return
 	picked_item = chameleon_list[picked_name]
@@ -259,7 +259,7 @@
 					keepname = TRUE
 					var/mob/M = usr
 					if(initial(ID_from.assignment))
-						var/popup_input = alert(M, "Do you want to reforge the job title as the default one of the chosen chameleon card?", "Agent ID job name", "Yes", "No (Keep the current job title)")
+						var/popup_input = alert(M, "Czy chcesz zmienić stanowisko na domyślne dla wybranej karty kameleona?", "Stanowisko na ID agenta", "Yes", "Nie (zachowaj obecne stanowisko)")
 						if(popup_input == "Yes")
 							ID.assignment = initial(ID_from.assignment)
 							ID.update_label()
@@ -586,7 +586,7 @@
 
 /obj/item/clothing/mask/chameleon/attack_self(mob/user)
 	vchange = !vchange
-	to_chat(user, "<span class='notice'>The voice changer is now [vchange ? "on" : "off"]!</span>")
+	to_chat(user, "<span class='notice'>Modulator głosu jest teraz [vchange ? "włączony" : "wyłączony"]!</span>")
 
 
 /obj/item/clothing/mask/chameleon/drone
@@ -605,7 +605,7 @@
 	randomise_action.UpdateButtonIcon()
 
 /obj/item/clothing/mask/chameleon/drone/attack_self(mob/user)
-	to_chat(user, "<span class='notice'>[src] does not have a voice changer.</span>")
+	to_chat(user, "<span class='notice'>[src] nie ma modulatora głosu.</span>")
 
 /obj/item/clothing/shoes/chameleon
 	name = "black shoes"

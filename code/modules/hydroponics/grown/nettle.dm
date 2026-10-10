@@ -47,7 +47,7 @@
 	attack_verb = list("żądli")
 
 /obj/item/food/grown/nettle/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is eating some of [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] je trochę [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return (BRUTELOSS|TOXLOSS)
 
 /obj/item/food/grown/nettle/pickup(mob/living/user)
@@ -64,7 +64,7 @@
 	if(affecting)
 		if(affecting.receive_damage(0, force))
 			C.update_damage_overlays()
-	to_chat(C, "<span class='userdanger'>The nettle burns your bare hand!</span>")
+	to_chat(C, "<span class='userdanger'>Pokrzywa parzy twoją gołą dłoń!</span>")
 	return TRUE
 
 /obj/item/food/grown/nettle/afterattack(atom/A as mob|obj, mob/user,proximity)
@@ -74,7 +74,7 @@
 	if(force > 0)
 		force -= rand(1, (force / 3) + 1) // When you whack someone with it, leaves fall off
 	else
-		to_chat(usr, "All the leaves have fallen off the nettle from violent whacking.")
+		to_chat(usr, "Wszystkie liście odpadły z pokrzywy od gwałtownego machania.")
 		qdel(src)
 
 /obj/item/food/grown/nettle/basic
@@ -103,11 +103,11 @@
 	if(..())
 		if(prob(50))
 			user.Paralyze(100)
-			to_chat(user, "<span class='userdanger'>You are stunned by [src] as you try picking it up!</span>")
+			to_chat(user, "<span class='userdanger'>Próbując podnieść [src], zostajesz ogłuszony!</span>")
 
 /obj/item/food/grown/nettle/death/attack(mob/living/M, mob/user)
 	if(!M.can_inject(user) && user.a_intent == INTENT_HARM)
-		to_chat(user, "<span class='warning'>The [src] harmlessly bounces off of [M]! They're protected from its needles!</span>")
+		to_chat(user, "<span class='warning'>[src] nieszkodliwie odbija się od [M]! Chroni go przed igłami!</span>")
 		return FALSE
 	else
 		return ..()

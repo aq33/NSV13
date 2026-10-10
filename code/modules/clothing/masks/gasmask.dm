@@ -77,7 +77,7 @@
 	options["The Jester"] ="chaos" //Nepeta33Leijon is holding me captive and forced me to help with this please send help
 	options["The Lunatic"] = "trickymask"
 
-	var/choice = input(user,"To what form do you wish to Morph this mask?","Morph Mask") in sortList(options)
+	var/choice = input(user,"W jaką formę chcesz przemienić tę maskę?","Przemiana maski") in sortList(options)
 
 	if(src && choice && !user.incapacitated() && in_range(user,src))
 		icon_state = options[choice]
@@ -85,7 +85,7 @@
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.UpdateButtonIcon()
-		to_chat(user, "<span class='notice'>Your Clown Mask has now morphed into [choice], all praise the Honkmother!</span>")
+		to_chat(user, "<span class='notice'>Twoja maska klauna przemieniła się w [choice], chwała Honkmatce!</span>")
 		return 1
 
 /obj/item/clothing/mask/gas/sexyclown
@@ -118,7 +118,7 @@
 	options["Effrayé"] = "scaredmime"
 	options["Excité"] ="sexymime"
 
-	var/choice = input(user,"To what form do you wish to Morph this mask?","Morph Mask") in sortList(options)
+	var/choice = input(user,"W jaką formę chcesz przemienić tę maskę?","Przemiana maski") in sortList(options)
 
 	if(src && choice && !user.incapacitated() && in_range(user,src))
 		icon_state = options[choice]
@@ -126,7 +126,7 @@
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.UpdateButtonIcon()
-		to_chat(user, "<span class='notice'>Your Mime Mask has now morphed into [choice]!</span>")
+		to_chat(user, "<span class='notice'>Twoja maska mima przemieniła się w [choice]!</span>")
 		return 1
 
 /obj/item/clothing/mask/gas/monkeymask
@@ -190,7 +190,7 @@
 	options["Confused Tiki"] = "tiki_confused"
 	options["Angry Tiki"] ="tiki_angry"
 
-	var/choice = input(M,"To what form do you wish to change this mask?","Morph Mask") in sortList(options)
+	var/choice = input(M,"W jaką formę chcesz zmienić tę maskę?","Przemiana maski") in sortList(options)
 
 	if(src && choice && !M.stat && in_range(M,src))
 		icon_state = options[choice]
@@ -198,7 +198,7 @@
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.UpdateButtonIcon()
-		to_chat(M, "The Tiki Mask has now changed into the [choice] Mask!")
+		to_chat(M, "Maska tiki zmieniła się w maskę [choice]!")
 		return 1
 
 /obj/item/clothing/mask/gas/tiki_mask/yalp_elor

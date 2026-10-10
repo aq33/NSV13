@@ -16,7 +16,7 @@
 
 /obj/item/clothing/suit/space/eva/plasmaman/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>There [extinguishes_left == 1 ? "is" : "are"] [extinguishes_left] extinguisher charge\s left in this suit.</span>"
+	. += "<span class='notice'>W tym kombinezonie pozostało ładunków gaśnicy: [extinguishes_left].</span>"
 
 
 /obj/item/clothing/suit/space/eva/plasmaman/proc/Extinguish(mob/living/carbon/human/H)
@@ -29,7 +29,7 @@
 				return
 			next_extinguish = world.time + extinguish_cooldown
 			extinguishes_left--
-			H.visible_message("<span class='warning'>[H]'s suit automatically extinguishes [H.p_them()]!</span>","<span class='warning'>Your suit automatically extinguishes you.</span>")
+			H.visible_message("<span class='warning'>Kombinezon [H] automatycznie go gasi!</span>","<span class='warning'>Twój kombinezon automatycznie cię gasi.</span>")
 			H.ExtinguishMob()
 			new /obj/effect/particle_effect/water(get_turf(H))
 
@@ -86,15 +86,15 @@
 /obj/item/clothing/head/helmet/space/plasmaman/examine(mob/user)
 	. = ..()
 	if(attached_hat)
-		. += "<span class='notice'>There's \a [attached_hat.name] on the helmet which can be removed through the context menu.</span>"
+		. += "<span class='notice'>Na hełmie jest [attached_hat.name], który można zdjąć z menu kontekstowego.</span>"
 	else
-		. += "<span class='notice'>A hat can be placed on the helmet.</span>"
+		. += "<span class='notice'>Na hełmie można umieścić kapelusz.</span>"
 
 /obj/item/clothing/head/helmet/space/plasmaman/proc/toggle_welding_screen(mob/living/user)
 	if(!weldingvisortoggle(user))
 		return
 	if(helmet_on)
-		to_chat(user, "<span class='notice'>Your helmet's torch can't pass through your welding visor!</span>")
+		to_chat(user, "<span class='notice'>Latarka twojego hełmu nie przebije się przez przyłbicę spawalniczą!</span>")
 		helmet_on = FALSE
 	playsound(src, 'sound/mecha/mechmove03.ogg', 50, 1) //Visors don't just come from nothing
 	update_icon()
@@ -111,17 +111,17 @@
 	if(istype(item, /obj/item/light/bulb) && !lamp_functional)
 		lamp_functional = TRUE
 		qdel(item)
-		to_chat(user, "<span class='notice'>You repair the broken headlamp!</span>")
+		to_chat(user, "<span class='notice'>Naprawiasz zepsutą latarkę czołową!</span>")
 	if(istype(item, /obj/item/toy/crayon))
 		if(smile)
-			to_chat(user, "<span class='notice'>Seems like someone already drew something on the helmet's visor.</span>")
+			to_chat(user, "<span class='notice'>Wygląda na to, że ktoś już coś narysował na przyłbicy hełmu.</span>")
 		else
 			var/obj/item/toy/crayon/CR = item
-			to_chat(user, "<span class='notice'>You start drawing a smiley face on the helmet's visor..</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz rysować uśmiechniętą buźkę na przyłbicy hełmu..</span>")
 			if(do_after(user, 25, target = src))
 				smile = TRUE
 				smile_color = CR.paint_color
-				to_chat(user, "You draw a smiley on the helmet visor.")
+				to_chat(user, "Rysujesz uśmiech na przyłbicy hełmu.")
 				update_icon()
 				update_button_icons(user)
 		return
@@ -132,7 +132,7 @@
 		&& !istype(item, /obj/item/clothing/head/foilhat))
 		var/obj/item/clothing/head/hat = item
 		if(attached_hat)
-			to_chat(user, "<span class='notice'>There's already a hat on the helmet!</span>")
+			to_chat(user, "<span class='notice'>Na hełmie jest już kapelusz!</span>")
 			return
 		attached_hat = hat
 		hat.forceMove(src)
@@ -201,13 +201,13 @@
 /obj/item/clothing/head/helmet/space/plasmaman/attack_self(mob/user)
 	helmet_on = !helmet_on
 	if(!lamp_functional)
-		to_chat(user, "<span class='notice'>Your helmet's torch is broken! You'll have to repair it with a lightbulb!</span>")
+		to_chat(user, "<span class='notice'>Latarka twojego hełmu jest zepsuta! Musisz ją naprawić żarówką!</span>")
 		set_light_on(FALSE)
 		helmet_on = FALSE
 		return
 	if(helmet_on)
 		if(!up)
-			to_chat(user, "<span class='notice'>Your helmet's torch can't pass through your welding visor!</span>")
+			to_chat(user, "<span class='notice'>Latarka twojego hełmu nie przebije się przez przyłbicę spawalniczą!</span>")
 			helmet_on = FALSE
 			return
 		else
@@ -227,7 +227,7 @@
 	set_light_on(FALSE)
 	helmet_on = FALSE
 	playsound(src, 'sound/effects/glass_step.ogg', 100)
-	to_chat(usr, "<span class='danger'>The [src]'s headlamp is smashed to pieces!</span>")
+	to_chat(usr, "<span class='danger'>Latarka czołowa [src] jest roztrzaskana na kawałki!</span>")
 	lamp_functional = FALSE
 	update_icon()
 	usr.update_inv_head() //So the mob overlay updates

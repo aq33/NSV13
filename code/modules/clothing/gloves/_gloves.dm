@@ -28,7 +28,7 @@
 	transfer_blood = 0
 
 /obj/item/clothing/gloves/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>\the [src] are forcing [user]'s hands around [user.p_their()] neck! It looks like the gloves are possessed!</span>")
+	user.visible_message("<span class='suicide'>[src] zaciskają dłonie [user] na jego szyi! Wygląda na to, że rękawice są opętane!</span>")
 	return OXYLOSS
 
 /obj/item/clothing/gloves/worn_overlays(mutable_appearance/standing, isinhands = FALSE)

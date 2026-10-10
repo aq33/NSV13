@@ -98,7 +98,7 @@
 
 /obj/item/clothing/head/helmet/space/hardsuit/emp_act(severity)
 	. = ..()
-	display_visor_message("[severity > 1 ? "Light" : "Strong"] electromagnetic pulse detected!")
+	display_visor_message("Wykryto [severity > 1 ? "słaby" : "silny"] impuls elektromagnetyczny!")
 
 
 /obj/item/clothing/suit/space/hardsuit
@@ -129,28 +129,28 @@
 /obj/item/clothing/suit/space/hardsuit/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/tank/jetpack/suit))
 		if(jetpack)
-			to_chat(user, "<span class='warning'>[src] already has a jetpack installed.</span>")
+			to_chat(user, "<span class='warning'>[src] ma już zamontowany plecak odrzutowy.</span>")
 			return
 		if(src == user.get_item_by_slot(ITEM_SLOT_OCLOTHING)) //Make sure the player is not wearing the suit before applying the upgrade.
-			to_chat(user, "<span class='warning'>You cannot install the upgrade to [src] while wearing it.</span>")
+			to_chat(user, "<span class='warning'>Nie możesz zamontować ulepszenia w [src], gdy go nosisz.</span>")
 			return
 
 		if(user.transferItemToLoc(I, src))
 			jetpack = I
-			to_chat(user, "<span class='notice'>You successfully install the jetpack into [src].</span>")
+			to_chat(user, "<span class='notice'>Montujesz plecak odrzutowy w [src].</span>")
 			return
 	else if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		if(!jetpack)
-			to_chat(user, "<span class='warning'>[src] has no jetpack installed.</span>")
+			to_chat(user, "<span class='warning'>[src] nie ma zamontowanego plecaka odrzutowego.</span>")
 			return
 		if(src == user.get_item_by_slot(ITEM_SLOT_OCLOTHING))
-			to_chat(user, "<span class='warning'>You cannot remove the jetpack from [src] while wearing it.</span>")
+			to_chat(user, "<span class='warning'>Nie możesz zdjąć plecaka odrzutowego z [src], gdy go nosisz.</span>")
 			return
 
 		jetpack.turn_off(user)
 		jetpack.forceMove(drop_location())
 		jetpack = null
-		to_chat(user, "<span class='notice'>You successfully remove the jetpack from [src].</span>")
+		to_chat(user, "<span class='notice'>Zdejmujesz plecak odrzutowy z [src].</span>")
 		return
 	//NSV13 - added helmet cams
 	else if(I.tool_behaviour == TOOL_WIRECUTTER || istype(I, /obj/item/wallframe/camera))
@@ -374,24 +374,24 @@
 /obj/item/clothing/head/helmet/space/hardsuit/syndi/proc/toggle_hud(mob/user)
 	var/datum/component/team_monitor/monitor = GetComponent(/datum/component/team_monitor)
 	if(!monitor)
-		to_chat(user, "<span class='notice'>The suit is not fitted with a tracking beacon.</span>")
+		to_chat(user, "<span class='notice'>Kombinezon nie jest wyposażony w nadajnik lokalizacyjny.</span>")
 		return
 	monitor.toggle_hud(!monitor.hud_visible, user)
 	if(monitor.hud_visible)
-		to_chat(user, "<span class='notice'>You toggle the heads up display of your suit.</span>")
+		to_chat(user, "<span class='notice'>Przełączasz wyświetlacz HUD swojego kombinezonu.</span>")
 	else
-		to_chat(user, "<span class='warning'>You disable the heads up display of your suit.</span>")
+		to_chat(user, "<span class='warning'>Wyłączasz wyświetlacz HUD swojego kombinezonu.</span>")
 
 /obj/item/clothing/head/helmet/space/hardsuit/syndi/attack_self(mob/user) //Toggle Helmet
 	if(!isturf(user.loc))
-		to_chat(user, "<span class='warning'>You cannot toggle your helmet while in this [user.loc]!</span>" )
+		to_chat(user, "<span class='warning'>Nie możesz przełączyć hełmu, będąc w [user.loc]!</span>" )
 		return
 	on = !on
 	if(on || force)
-		to_chat(user, "<span class='notice'>You switch your hardsuit to EVA mode, sacrificing speed for space protection.</span>")
+		to_chat(user, "<span class='notice'>Przełączasz hardsuit w tryb EVA, poświęcając szybkość dla ochrony w kosmosie.</span>")
 		activate_space_mode()
 	else
-		to_chat(user, "<span class='notice'>You switch your hardsuit to combat mode and can now run at full speed.</span>")
+		to_chat(user, "<span class='notice'>Przełączasz hardsuit w tryb bojowy i możesz teraz biec z pełną prędkością.</span>")
 		activate_combat_mode()
 	update_icon()
 	playsound(src.loc, 'sound/mecha/mechmove03.ogg', 50, 1)
@@ -473,18 +473,18 @@
 /obj/item/clothing/suit/space/hardsuit/syndi/proc/toggle_beacon(mob/user)
 	var/datum/component/tracking_beacon/beacon = GetComponent(/datum/component/tracking_beacon)
 	if(!beacon)
-		to_chat(user, "<span class='notice'>The suit is not fitted with a tracking beacon.</span>")
+		to_chat(user, "<span class='notice'>Kombinezon nie jest wyposażony w nadajnik lokalizacyjny.</span>")
 		return
 	beacon.toggle_visibility(!beacon.visible)
 	if(beacon.visible)
 		to_chat(user, "<span class='notice'>You enable the tracking beacon on [src]. Anybody on the same frequency will now be able to track your location.</span>")
 	else
-		to_chat(user, "<span class='warning'>You disable the tracking beacon on [src].</span>")
+		to_chat(user, "<span class='warning'>Wyłączasz nadajnik lokalizacyjny w [src].</span>")
 
 /obj/item/clothing/suit/space/hardsuit/syndi/proc/set_beacon_freq(mob/user)
 	var/datum/component/tracking_beacon/beacon = GetComponent(/datum/component/tracking_beacon)
 	if(!beacon)
-		to_chat(user, "<span class='notice'>The suit is not fitted with a tracking beacon.</span>")
+		to_chat(user, "<span class='notice'>Kombinezon nie jest wyposażony w nadajnik lokalizacyjny.</span>")
 		return
 	beacon.change_frequency(user)
 
@@ -940,18 +940,18 @@
 /obj/item/clothing/suit/space/hardsuit/shielded/syndi/proc/toggle_beacon(mob/user)
 	var/datum/component/tracking_beacon/beacon = GetComponent(/datum/component/tracking_beacon)
 	if(!beacon)
-		to_chat(user, "<span class='notice'>The suit is not fitted with a tracking beacon.</span>")
+		to_chat(user, "<span class='notice'>Kombinezon nie jest wyposażony w nadajnik lokalizacyjny.</span>")
 		return
 	beacon.toggle_visibility(!beacon.visible)
 	if(beacon.visible)
 		to_chat(user, "<span class='notice'>You enable the tracking beacon on [src]. Anybody on the same frequency will now be able to track your location.</span>")
 	else
-		to_chat(user, "<span class='warning'>You disable the tracking beacon on [src].</span>")
+		to_chat(user, "<span class='warning'>Wyłączasz nadajnik lokalizacyjny w [src].</span>")
 
 /obj/item/clothing/suit/space/hardsuit/shielded/syndi/proc/set_beacon_freq(mob/user)
 	var/datum/component/tracking_beacon/beacon = GetComponent(/datum/component/tracking_beacon)
 	if(!beacon)
-		to_chat(user, "<span class='notice'>The suit is not fitted with a tracking beacon.</span>")
+		to_chat(user, "<span class='notice'>Kombinezon nie jest wyposażony w nadajnik lokalizacyjny.</span>")
 		return
 	beacon.change_frequency(user)
 
@@ -989,13 +989,13 @@
 /obj/item/clothing/head/helmet/space/hardsuit/shielded/syndi/proc/toggle_hud(mob/user)
 	var/datum/component/team_monitor/monitor = GetComponent(/datum/component/team_monitor)
 	if(!monitor)
-		to_chat(user, "<span class='notice'>The suit is not fitted with a tracking beacon.</span>")
+		to_chat(user, "<span class='notice'>Kombinezon nie jest wyposażony w nadajnik lokalizacyjny.</span>")
 		return
 	monitor.toggle_hud(!monitor.hud_visible, user)
 	if(monitor.hud_visible)
-		to_chat(user, "<span class='notice'>You toggle the heads up display of your suit.</span>")
+		to_chat(user, "<span class='notice'>Przełączasz wyświetlacz HUD swojego kombinezonu.</span>")
 	else
-		to_chat(user, "<span class='warning'>You disable the heads up display of your suit.</span>")
+		to_chat(user, "<span class='warning'>Wyłączasz wyświetlacz HUD swojego kombinezonu.</span>")
 
 ///SWAT version
 /obj/item/clothing/suit/space/hardsuit/shielded/swat

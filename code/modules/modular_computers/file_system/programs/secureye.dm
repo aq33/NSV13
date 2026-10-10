@@ -5,7 +5,7 @@
 	filedesc = "SecurEye"
 	category = PROGRAM_CATEGORY_MISC
 	program_icon_state = "generic"
-	extended_desc = "This program allows access to standard security camera networks."
+	extended_desc = "Ten program daje dostęp do standardowych sieci kamer ochrony."
 	requires_ntnet = TRUE
 	transfer_access = list(ACCESS_SECURITY)
 	usage_flags = PROGRAM_CONSOLE | PROGRAM_LAPTOP
