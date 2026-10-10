@@ -1,5 +1,5 @@
 /datum/antagonist/ghost_ship
-	name = "Ghost Ship"
+	name = "Statek widmo"
 	show_name_in_check_antagonists = TRUE
 	show_in_antagpanel = FALSE
 	show_in_roundend = FALSE

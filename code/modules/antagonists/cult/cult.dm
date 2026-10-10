@@ -1,8 +1,8 @@
 #define SUMMON_POSSIBILITIES 3
 
 /datum/antagonist/cult
-	name = "Cultist"
-	roundend_category = "cultists"
+	name = "Kultysta"
+	roundend_category = "kultyści"
 	antagpanel_category = "Cult"
 	antag_moodlet = /datum/mood_event/cult
 	var/datum/action/innate/cult/comm/communion = new

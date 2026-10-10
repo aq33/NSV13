@@ -200,7 +200,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 /obj/effect/meteor/proc/ram_turf(turf/T)
 	//first yell at mobs about them dying horribly
 	for(var/mob/living/living_thing in T)
-		living_thing.visible_message("<span class='warning'>[src] slams into [living_thing].</span>", "<span class='userdanger'>[src] slams into you!.</span>")
+		living_thing.visible_message("<span class='warning'>[src] uderza w [living_thing].</span>", "<span class='userdanger'>[src] uderza w ciebie!</span>")
 
 	//then, ram the turf
 	switch(hitpwr)

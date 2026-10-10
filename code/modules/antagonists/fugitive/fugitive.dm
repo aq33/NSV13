@@ -1,7 +1,7 @@
 
 /datum/antagonist/fugitive
-	name = "Fugitive"
-	roundend_category = "Fugitive"
+	name = "Zbieg"
+	roundend_category = "zbiegowie"
 	banning_key = ROLE_FUGITIVE
 	silent = TRUE //greet called by the event
 	show_in_antagpanel = FALSE

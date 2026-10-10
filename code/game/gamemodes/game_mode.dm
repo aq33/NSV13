@@ -41,7 +41,7 @@
 	var/list/active_specials = list()	//Special roles that have spawned, and can now spawn late
 
 	var/announce_span = "warning" //The gamemode's name will be in this span during announcement.
-	var/announce_text = "This gamemode forgot to set a descriptive text! Uh oh!" //Used to describe a gamemode when it's announced.
+	var/announce_text = "Ten tryb gry zapomniał o opisie! Ojej!" //Used to describe a gamemode when it's announced.
 
 	// title_icon and title_icon_state are used for the credits that roll at the end
 	var/title_icon
@@ -61,7 +61,7 @@
 
 
 /datum/game_mode/proc/announce() //Shows the gamemode's name and a fast description.
-	to_chat(world, "<b>The gamemode is: <span class='[announce_span]'>[name]</span>!</b>")
+	to_chat(world, "<b>Tryb gry: <span class='[announce_span]'>[name]</span>!</b>")
 	to_chat(world, "<b>[announce_text]</b>")
 
 /datum/game_mode/proc/admin_panel()
@@ -373,9 +373,9 @@
 	return 0
 
 /datum/game_mode/proc/send_intercept()
-	var/intercepttext = "<b><i>Central Command Status Summary</i></b><hr>"
-	intercepttext += "<b>Central Command has intercepted and partially decoded a Syndicate transmission with vital information regarding their movements. The following report outlines the most \
-	likely threats to appear in your sector.</b>"
+	var/intercepttext = "<b><i>Podsumowanie sytuacji od Centrali</i></b><hr>"
+	intercepttext += "<b>Centrala przechwyciła i częściowo odszyfrowała transmisję Syndykatu z kluczowymi informacjami o jego ruchach. Poniższy raport przedstawia najbardziej \
+	prawdopodobne zagrożenia w waszym sektorze.</b>"
 	var/list/report_weights = config.mode_false_report_weight.Copy()
 	report_weights[report_type] = 0 //Prevent the current mode from being falsely selected.
 	var/list/reports = list()
@@ -396,8 +396,8 @@
 
 	intercepttext += generate_station_goal_report()
 
-	print_command_report(intercepttext, "Central Command Status Summary", announce=FALSE)
-	priority_announce("A summary has been copied and printed to all communications consoles.", "Enemy communication intercepted. Security level elevated.", ANNOUNCER_INTERCEPT)
+	print_command_report(intercepttext, "Podsumowanie sytuacji od Centrali", announce=FALSE)
+	priority_announce("Podsumowanie zostało skopiowane i wydrukowane na wszystkich konsolach komunikacyjnych.", "Przechwycono komunikację wroga. Podniesiono poziom alarmu.", ANNOUNCER_INTERCEPT)
 	if(GLOB.security_level < SEC_LEVEL_BLUE)
 		set_security_level(SEC_LEVEL_BLUE)
 
@@ -410,7 +410,7 @@
 /datum/game_mode/proc/generate_station_goal_report()
 	if(!station_goals.len)
 		return
-	. = "<hr><b>Special Orders for [station_name()]:</b><BR>"
+	. = "<hr><b>Rozkazy specjalne dla [station_name()]:</b><BR>"
 	var/list/goal_reports = list()
 	for(var/datum/station_goal/station_goal in station_goals)
 		station_goal.on_report()
@@ -662,21 +662,21 @@
 			for(var/dead_dudes_job in reopened_jobs)
 				reopened_job_report_positions = "[reopened_job_report_positions ? "[reopened_job_report_positions]\n":""][dead_dudes_job]"
 
-			var/suicide_command_report = "<font size = 3><b>Central Command Human Resources Board</b><br>\
-								Notice of Personnel Change</font><hr>\
-								To personnel management staff aboard [station_name()]:<br><br>\
-								Our medical staff have detected a series of anomalies in the vital sensors \
-								of some of the staff aboard your station.<br><br>\
-								Further investigation into the situation on our end resulted in us discovering \
-								a series of rather... unforturnate decisions that were made on the part of said staff.<br><br>\
-								As such, we have taken the liberty to automatically reopen employment opportunities for the positions of the crew members \
-								who have decided not to partake in our research. We will be forwarding their cases to our employment review board \
-								to determine their eligibility for continued service with the company (and of course the \
-								continued storage of cloning records within the central medical backup server.)<br><br>\
-								<i>The following positions have been reopened on our behalf:<br><br>\
+			var/suicide_command_report = "<font size = 3><b>Dział Kadr Centrali</b><br>\
+								Zawiadomienie o zmianie personelu</font><hr>\
+								Do działu kadr na pokładzie [station_name()]:<br><br>\
+								Nasz personel medyczny wykrył serię anomalii w czujnikach funkcji życiowych \
+								części załogi waszego statku.<br><br>\
+								Dalsze dochodzenie po naszej stronie pozwoliło odkryć \
+								serię dość... niefortunnych decyzji podjętych przez wspomnianych pracowników.<br><br>\
+								W związku z tym pozwoliliśmy sobie automatycznie ponownie otworzyć rekrutację na stanowiska członków załogi, \
+								którzy postanowili nie brać udziału w naszych badaniach. Ich sprawy przekażemy komisji ds. zatrudnienia, \
+								która oceni, czy mogą dalej pracować w firmie (i oczywiście, czy można dalej \
+								przechowywać ich dane klonowania na centralnym serwerze medycznym).<br><br>\
+								<i>Ponownie otworzyliśmy następujące stanowiska:<br><br>\
 								[reopened_job_report_positions]</i>"
 
-			print_command_report(suicide_command_report, "Central Command Personnel Update")
+			print_command_report(suicide_command_report, "Komunikat kadrowy Centrali")
 
 
 //////////////////////////
@@ -767,7 +767,7 @@
 
 
 /datum/game_mode/proc/generate_report() //Generates a small text blurb for the gamemode in centcom report
-	return "Gamemode report for [name] not set.  Contact a coder."
+	return "Brak raportu dla trybu [name]. Skontaktuj się z koderem."
 
 //By default nuke just ends the round
 /datum/game_mode/proc/OnNukeExplosion(off_station)
@@ -796,95 +796,95 @@
 	var/len_before_addition
 
 	// HEADS OF STAFF
-	round_credits += "<center><h1>The Glorious Command Staff:</h1>"
+	round_credits += "<center><h1>Chwalebne dowództwo:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.command_positions))
-		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		round_credits += "<center><h2>[current.name] jako [current.assigned_role]</h2>"
 	if(round_credits.len == len_before_addition)
-		round_credits += list("<center><h2>A serious bureaucratic error has occurred!</h2>", "<center><h2>No one was in charge of the crew!</h2>")
+		round_credits += list("<center><h2>Wystąpił poważny błąd biurokratyczny!</h2>", "<center><h2>Nikt nie dowodził załogą!</h2>")
 	round_credits += "<br>"
 
 	// SILICONS
-	round_credits += "<center><h1>The Silicon \"Intelligences\":</h1>"
+	round_credits += "<center><h1>Krzemowe \"inteligencje\":</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in SSticker.mode.get_all_silicon())
-		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		round_credits += "<center><h2>[current.name] jako [current.assigned_role]</h2>"
 	if(round_credits.len == len_before_addition)
-		round_credits += list("<center><h2>[station_name()] had no silicon helpers!</h2>", "<center><h2>Not a single door was opened today!</h2>")
+		round_credits += list("<center><h2>[station_name()] nie miał krzemowych pomocników!</h2>", "<center><h2>Dziś nie otworzono ani jednych drzwi!</h2>")
 	round_credits += "<br>"
 
 	// MUNITIONS - NSV13
-	round_credits += "<center><h1>The Valiant Munitions Crew:</h1>"
+	round_credits += "<center><h1>Dzielna obsługa amunicji:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.munitions_positions))
-		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		round_credits += "<center><h2>[current.name] jako [current.assigned_role]</h2>"
 	if(round_credits.len == len_before_addition)
-		round_credits += list("<center><h2>The ship was likely defenceless!</h2>", "<center><h2>No one fired torp today!</h2>")
+		round_credits += list("<center><h2>Statek był chyba bezbronny!</h2>", "<center><h2>Dziś nikt nie odpalił torpedy!</h2>")
 	round_credits += "<br>"
 
 	// SECURITY
-	round_credits += "<center><h1>The Brave Security Officers:</h1>"
+	round_credits += "<center><h1>Odważni funkcjonariusze ochrony:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.security_positions))
-		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		round_credits += "<center><h2>[current.name] jako [current.assigned_role]</h2>"
 	if(round_credits.len == len_before_addition)
-		round_credits += list("<center><h2>[station_name()] has fallen to Communism!</h2>", "<center><h2>No one was there to protect the crew!</h2>")
+		round_credits += list("<center><h2>[station_name()] padł ofiarą komunizmu!</h2>", "<center><h2>Nie było nikogo, kto chroniłby załogę!</h2>")
 	round_credits += "<br>"
 
 	// MEDICAL
-	round_credits += "<center><h1>The Wise Medical Department:</h1>"
+	round_credits += "<center><h1>Mądry dział medyczny:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.medical_positions))
-		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		round_credits += "<center><h2>[current.name] jako [current.assigned_role]</h2>"
 	if(round_credits.len == len_before_addition)
-		round_credits += list("<center><h2>Healthcare was not included!</h2>", "<center><h2>There were no doctors today!</h2>")
+		round_credits += list("<center><h2>Opieka zdrowotna nie była wliczona w cenę!</h2>", "<center><h2>Dziś nie było lekarzy!</h2>")
 	round_credits += "<br>"
 
 	// ENGINEERING
-	round_credits += "<center><h1>The Industrious Engineers:</h1>"
+	round_credits += "<center><h1>Pracowici inżynierowie:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.engineering_positions))
-		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		round_credits += "<center><h2>[current.name] jako [current.assigned_role]</h2>"
 	if(round_credits.len == len_before_addition)
-		round_credits += list("<center><h2>[station_name()] probably did not last long!</h2>", "<center><h2>No one was holding the station together!</h2>")
+		round_credits += list("<center><h2>[station_name()] pewnie długo nie przetrwał!</h2>", "<center><h2>Nikt nie trzymał statku w całości!</h2>")
 	round_credits += "<br>"
 
 	// SCIENCE
-	round_credits += "<center><h1>The Inventive Science Employees:</h1>"
+	round_credits += "<center><h1>Pomysłowi naukowcy:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.science_positions))
-		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		round_credits += "<center><h2>[current.name] jako [current.assigned_role]</h2>"
 	if(round_credits.len == len_before_addition)
-		round_credits += list("<center><h2>No one was doing \"science\" today!</h2>", "<center><h2>Everyone probably made it out alright, then!</h2>")
+		round_credits += list("<center><h2>Dziś nikt nie uprawiał \"nauki\"!</h2>", "<center><h2>To pewnie wszyscy wyszli z tego cało!</h2>")
 	round_credits += "<br>"
 
 	// CARGO
-	round_credits += "<center><h1>The Rugged Cargo Crew:</h1>"
+	round_credits += "<center><h1>Twarda ekipa zaopatrzenia:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.supply_positions))
-		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		round_credits += "<center><h2>[current.name] jako [current.assigned_role]</h2>"
 	if(round_credits.len == len_before_addition)
-		round_credits += list("<center><h2>The station was freed from paperwork!</h2>", "<center><h2>No one worked in cargo today!</h2>")
+		round_credits += list("<center><h2>Statek uwolnił się od papierologii!</h2>", "<center><h2>Dziś nikt nie pracował w zaopatrzeniu!</h2>")
 	round_credits += "<br>"
 
 	// CIVILIANS
 	var/list/human_garbage = list()
-	round_credits += "<center><h1>The Hardy Civilians:</h1>"
+	round_credits += "<center><h1>Wytrwali cywile:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.civilian_positions | GLOB.gimmick_positions))
 		if(current.assigned_role == JOB_NAME_ASSISTANT)
 			human_garbage += current
 		else
-			round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+			round_credits += "<center><h2>[current.name] jako [current.assigned_role]</h2>"
 	if(round_credits.len == len_before_addition)
-		round_credits += list("<center><h2>Everyone was stuck in traffic this morning!</h2>", "<center><h2>No civilians made it to work!</h2>")
+		round_credits += list("<center><h2>Rano wszyscy utknęli w korkach!</h2>", "<center><h2>Żaden cywil nie dotarł do pracy!</h2>")
 	round_credits += "<br>"
 
-	round_credits += "<center><h1>The Helpful Assistants:</h1>"
+	round_credits += "<center><h1>Pomocni asystenci:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in human_garbage)
 		round_credits += "<center><h2>[current.name]</h2>"
 	if(round_credits.len == len_before_addition)
-		round_credits += list("<center><h2>The station was free of <s>greytide</s> assistance!</h2>", "<center><h2>Not a single Assistant showed up on the station today!</h2>")
+		round_credits += list("<center><h2>Statek był wolny od <s>szarej fali</s> pomocy!</h2>", "<center><h2>Dziś na statku nie pojawił się ani jeden asystent!</h2>")
 
 	return round_credits

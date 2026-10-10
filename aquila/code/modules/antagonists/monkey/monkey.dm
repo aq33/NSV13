@@ -4,9 +4,9 @@
 #define DISEASE_LIVED		4
 
 /datum/antagonist/monkey
-	name = "Monkey"
+	name = "Małpa"
 	banning_key = ROLE_MONKEY
-	roundend_category = "monkeys"
+	roundend_category = "małpy"
 	antagpanel_category = "Monkey"
 	show_to_ghosts = TRUE
 	var/datum/team/monkey/monkey_team
@@ -76,7 +76,7 @@
 	. = ..()
 
 /datum/antagonist/monkey/leader
-	name = "Monkey Leader"
+	name = "Przywódca małp"
 	monkey_only = FALSE
 
 /datum/antagonist/monkey/leader/admin_add(datum/mind/new_owner,mob/admin)

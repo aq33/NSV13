@@ -1,9 +1,9 @@
 
 
 /datum/antagonist/hivevessel
-	name = "Awoken Vessel"
+	name = "Przebudzone naczynie"
 	banning_key = ROLE_HIVE_VESSEL
-	roundend_category = "awoken vessels"
+	roundend_category = "przebudzone naczynia"
 	antagpanel_category = "Other"
 	show_name_in_check_antagonists = TRUE
 	var/hiveID = "Hivemind"

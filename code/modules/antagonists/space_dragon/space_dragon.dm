@@ -1,6 +1,6 @@
 /datum/antagonist/space_dragon
-	name = "Space Dragon"
-	roundend_category = "space dragons"
+	name = "Kosmiczny smok"
+	roundend_category = "kosmiczne smoki"
 	antagpanel_category = "Space Dragon"
 	banning_key = ROLE_SPACE_DRAGON
 	show_in_antagpanel = TRUE

@@ -1,8 +1,8 @@
 #define ABDUCTOR_MAX_TEAMS 4
 
 /datum/antagonist/abductor
-	name = "Abductor"
-	roundend_category = "abductors"
+	name = "Porywacz"
+	roundend_category = "porywacze"
 	antagpanel_category = "Abductor"
 	banning_key = ROLE_ABDUCTOR
 	show_in_antagpanel = FALSE //should only show subtypes
@@ -15,7 +15,7 @@
 
 
 /datum/antagonist/abductor/agent
-	name = "Abductor Agent"
+	name = "Agent porywaczy"
 	sub_role = "Agent"
 	outfit = /datum/outfit/abductor/agent
 	landmark_type = /obj/effect/landmark/abductor/agent
@@ -23,7 +23,7 @@
 	show_in_antagpanel = TRUE
 
 /datum/antagonist/abductor/scientist
-	name = "Abductor Scientist"
+	name = "Naukowiec porywaczy"
 	sub_role = "Scientist"
 	outfit = /datum/outfit/abductor/scientist
 	landmark_type = /obj/effect/landmark/abductor/scientist
@@ -31,11 +31,11 @@
 	show_in_antagpanel = TRUE
 
 /datum/antagonist/abductor/scientist/onemanteam
-	name = "Abductor Solo"
+	name = "Samotny porywacz"
 	outfit = /datum/outfit/abductor/scientist/onemanteam
 
 /datum/antagonist/abductor/scientist/onemanteam
-	name = "Abductor Solo"
+	name = "Samotny porywacz"
 	outfit = /datum/outfit/abductor/scientist/onemanteam
 
 /datum/antagonist/abductor/create_team(datum/team/abductor_team/new_team)
@@ -176,8 +176,8 @@
 	return "<div class='panel redborder'>[result.Join("<br>")]</div>"
 
 /datum/antagonist/abductee
-	name = "Abductee"
-	roundend_category = "abductees"
+	name = "Uprowadzony"
+	roundend_category = "uprowadzeni"
 	antagpanel_category = "Abductee"
 	banning_key = UNBANNABLE_ANTAGONIST
 

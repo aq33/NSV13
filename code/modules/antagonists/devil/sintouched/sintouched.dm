@@ -8,8 +8,8 @@
 #define SIN_LUST "lust" // AQ EDIT
 
 /datum/antagonist/sintouched
-	name = "sintouched"
-	roundend_category = "sintouched"
+	name = "naznaczony grzechem"
+	roundend_category = "naznaczeni grzechem"
 	antagpanel_category = "Devil"
 	banning_key = UNBANNABLE_ANTAGONIST
 	var/sin

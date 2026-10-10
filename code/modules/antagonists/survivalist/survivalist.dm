@@ -1,5 +1,5 @@
 /datum/antagonist/survivalist
-	name = "Survivalist"
+	name = "Survivalowiec"
 	show_in_antagpanel = FALSE
 	show_name_in_check_antagonists = TRUE
 	banning_key = ROLE_SURVIVALIST
@@ -47,7 +47,7 @@
 	..()
 
 /datum/antagonist/survivalist/magic
-	name = "Amateur Magician"
+	name = "Magik amator"
 	greet_message = "Grow your newfound talent! Grab as many magical artefacts as possible, by any means necessary. Kill anyone who gets in your way."
 
 /datum/antagonist/survivalist/magic/greet()

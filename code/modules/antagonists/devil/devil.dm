@@ -85,8 +85,8 @@ GLOBAL_LIST_INIT(devil_title, list("Lord ", "Prelate ", "Count ", "Viscount ", "
 GLOBAL_LIST_INIT(devil_syllable, list("hal", "ve", "odr", "neit", "ci", "quon", "mya", "folth", "wren", "geyr", "hil", "niet", "twou", "phi", "coa"))
 GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", ", the Lord of all things", ", Jr."))
 /datum/antagonist/devil
-	name = "Devil"
-	roundend_category = "devils"
+	name = "Diabeł"
+	roundend_category = "diabły"
 	antagpanel_category = "Devil"
 	banning_key = ROLE_DEVIL
 	//Don't delete upon mind destruction, otherwise soul re-selling will break.

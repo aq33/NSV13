@@ -4,8 +4,8 @@
 #define HEAD_UPDATE_PERIOD 300
 
 /datum/antagonist/rev
-	name = "Revolutionary"
-	roundend_category = "revolutionaries" // if by some miracle revolutionaries without revolution happen
+	name = "Rewolucjonista"
+	roundend_category = "rewolucjoniści" // if by some miracle revolutionaries without revolution happen
 	antagpanel_category = "Revolution"
 	banning_key = ROLE_REV
 	antag_moodlet = /datum/mood_event/revolution
@@ -157,7 +157,7 @@
 	demote()
 
 /datum/antagonist/rev/head
-	name = "Head Revolutionary"
+	name = "Przywódca rewolucji"
 	hud_type = "rev_head"
 	banning_key = ROLE_REV_HEAD
 	required_living_playtime = 4
@@ -289,7 +289,7 @@
 
 /// "Enemy of the Revolutionary", given to heads and security when the revolution wins
 /datum/antagonist/revolution_enemy
-	name = "Enemy of the Revolution"
+	name = "Wróg rewolucji"
 	show_in_antagpanel = FALSE
 	banning_key = UNBANNABLE_ANTAGONIST
 

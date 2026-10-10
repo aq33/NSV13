@@ -1,7 +1,7 @@
 //The hunters!!
 /datum/antagonist/fugitive_hunter
-	name = "Fugitive Hunter"
-	roundend_category = "Fugitive"
+	name = "Łowca zbiegów"
+	roundend_category = "zbiegowie"
 	banning_key = ROLE_FUGITIVE_HUNTER
 	silent = TRUE //greet called by the spawn
 	show_in_antagpanel = FALSE

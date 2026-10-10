@@ -1,6 +1,6 @@
 /datum/antagonist/teratoma
 	name = "Teratoma"
-	roundend_category = "other"
+	roundend_category = "pozostali"
 	antagpanel_category = "Changeling"
 	banning_key = ROLE_TERATOMA
 
@@ -42,8 +42,8 @@
 //Mainttoma
 
 /datum/antagonist/teratoma/hugbox
-	name = "Maintenance Teratoma"
-	roundend_category = "other"
+	name = "Teratoma z tuneli"
+	roundend_category = "pozostali"
 	antagpanel_category = "Changeling"
 
 /datum/antagonist/teratoma/hugbox/greet()

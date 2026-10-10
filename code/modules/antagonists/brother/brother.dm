@@ -1,5 +1,5 @@
 /datum/antagonist/brother
-	name = "Brother"
+	name = "Brat krwi"
 	antagpanel_category = "Brother"
 	banning_key = ROLE_BROTHER
 	required_living_playtime = 4

@@ -3,8 +3,8 @@
 #define LING_ABSORB_RECENT_SPEECH			8	//The amount of recent spoken lines to gain on absorbing a mob
 
 /datum/antagonist/changeling
-	name = "Changeling"
-	roundend_category  = "changelings"
+	name = "Zmiennokształtny"
+	roundend_category  = "zmiennokształtni"
 	antagpanel_category = "Changeling"
 	banning_key = ROLE_CHANGELING
 	required_living_playtime = 4
@@ -549,7 +549,7 @@
 	newprofile.id_hud_state = id_hud_state
 
 /datum/antagonist/changeling/xenobio
-	name = "Xenobio Changeling"
+	name = "Ksenobiologiczny zmiennokształtny"
 	give_objectives = FALSE
 	show_in_roundend = FALSE //These are here for admin tracking purposes only
 	you_are_greet = FALSE

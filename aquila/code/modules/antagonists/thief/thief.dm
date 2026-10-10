@@ -2,8 +2,8 @@
 
 ///very low level antagonist that has objectives to steal items and live, but is not allowed to kill.
 /datum/antagonist/thief
-	name = "Thief"
-	roundend_category = "thieves"
+	name = "Złodziej"
+	roundend_category = "złodzieje"
 	antagpanel_category = "Thief"
 	banning_key = ROLE_THIEF
 	show_in_antagpanel = TRUE

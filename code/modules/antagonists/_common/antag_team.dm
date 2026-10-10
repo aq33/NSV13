@@ -39,24 +39,24 @@ GLOBAL_LIST_EMPTY(antagonist_teams)
 	var/list/report = list()
 
 	report += "<span class='header'>[name]:</span>"
-	report += "The [member_name]s were:"
+	report += "Członkowie ([member_name]):"
 	report += printplayerlist(members)
 
 	if(objectives.len)
-		report += "<span class='header'>Team had following objectives:</span>"
+		report += "<span class='header'>Cele drużyny:</span>"
 		var/win = TRUE
 		var/objective_count = 1
 		for(var/datum/objective/objective in objectives)
 			if(objective.check_completion())
-				report += "<B>Objective #[objective_count]</B>: [objective.explanation_text] <span class='greentext'>Success!</span>"
+				report += "<B>Cel nr [objective_count]</B>: [objective.explanation_text] <span class='greentext'>Sukces!</span>"
 			else
-				report += "<B>Objective #[objective_count]</B>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
+				report += "<B>Cel nr [objective_count]</B>: [objective.explanation_text] <span class='redtext'>Porażka.</span>"
 				win = FALSE
 			objective_count++
 		if(win)
-			report += "<span class='greentext'>The [name] was successful!</span>"
+			report += "<span class='greentext'>[name]: sukces!</span>"
 		else
-			report += "<span class='redtext'>The [name] have failed!</span>"
+			report += "<span class='redtext'>[name]: porażka!</span>"
 
 
 	return "<div class='panel redborder'>[report.Join("<br>")]</div>"

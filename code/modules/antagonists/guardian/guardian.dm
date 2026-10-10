@@ -1,7 +1,7 @@
 // why does this exist? simply so guardians show up on roundend screen.
 
 /datum/antagonist/guardian
-	name = "Guardian"
+	name = "Strażnik"
 	show_in_antagpanel = FALSE
 	var/datum/guardian_stats/stats
 	var/datum/mind/summoner

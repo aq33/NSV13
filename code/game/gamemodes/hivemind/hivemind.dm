@@ -91,11 +91,11 @@ GLOBAL_LIST_EMPTY(hivehosts)
 	for(var/datum/antagonist/hivemind/H as() in GLOB.hivehosts)
 		round_credits += "<center><h1>Hive [H.hiveID]:</h1>"
 		len_before_addition = round_credits.len
-		round_credits += "<center><h2>[H.name] as the Hivemind Host</h2>"
+		round_credits += "<center><h2>[H.name] jako nosiciel roju</h2>"
 		for(var/datum/antagonist/hivevessel/V as() in H.avessels)
-			round_credits += "<center><h2>[V.name] as an Awakened Vessel</h2>"
+			round_credits += "<center><h2>[V.name] jako przebudzone naczynie</h2>"
 		if(len_before_addition == round_credits.len)
-			round_credits += list("<center><h2>Hive [H.hiveID] couldn't withstand the competition!</h2>")
+			round_credits += list("<center><h2>Rój [H.hiveID] nie wytrzymał konkurencji!</h2>")
 		round_credits += "<br>"
 
 	round_credits += ..()

@@ -51,7 +51,7 @@
 	C.prefs.save_preferences()
 
 /datum/antagonist/nukeop/syndi_crew
-	name = "Syndicate crew"
+	name = "Załoga Syndykatu"
 	nukeop_outfit = /datum/outfit/syndicate/no_crystals/syndi_crew
 	banning_key = ROLE_SYNDI_CREW
 	tips = "galactic_conquest"
@@ -184,7 +184,7 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 	W.update_label()
 
 /datum/antagonist/nukeop/leader/syndi_crew
-	name = "Syndicate captain"
+	name = "Kapitan Syndykatu"
 	nukeop_outfit = /datum/outfit/syndicate/no_crystals/syndi_crew/leader
 	tips = "galactic_conquest"
 
@@ -228,7 +228,7 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 	essential = FALSE
 
 /datum/antagonist/nukeop/syndi_crew/strategist
-	name = "Syndicate Strategist"
+	name = "Strateg Syndykatu"
 	nukeop_outfit = /datum/outfit/syndicate/no_crystals/syndi_crew/strategist
 	banning_key = ROLE_SYNDI_CREW
 
@@ -261,7 +261,7 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 	antag_datum_type = /datum/antagonist/nukeop/syndi_crew/requisitions_officer
 
 /datum/antagonist/nukeop/syndi_crew/requisitions_officer
-	name = "Syndicate requisitions officer"
+	name = "Kwatermistrz Syndykatu"
 	nukeop_outfit = /datum/outfit/syndicate/no_crystals/syndi_crew/requisitions
 
 /obj/item/clothing/suit/ship/syndicate_crew/syndicate_requisitions
@@ -288,7 +288,7 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 	max_count = 2
 
 /datum/antagonist/nukeop/syndi_crew/bridge
-	name = "Syndicate Bridge Staff"
+	name = "Załoga mostka Syndykatu"
 	nukeop_outfit = /datum/outfit/syndicate/no_crystals/syndi_crew/bridge
 
 /datum/outfit/syndicate/no_crystals/syndi_crew/bridge
@@ -307,7 +307,7 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 	max_count = 4
 
 /datum/antagonist/nukeop/syndi_crew/technician
-	name = "Syndicate technician"
+	name = "Technik Syndykatu"
 	nukeop_outfit = /datum/outfit/syndicate/no_crystals/syndi_crew/technician
 
 /datum/outfit/syndicate/no_crystals/syndi_crew/technician
@@ -326,7 +326,7 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 	antag_datum_type = /datum/antagonist/nukeop/syndi_crew/cag
 
 /datum/antagonist/nukeop/syndi_crew/cag
-	name = "Syndicate CAG"
+	name = "CAG Syndykatu"
 	nukeop_outfit = /datum/outfit/syndicate/no_crystals/syndi_crew/cag
 
 /datum/outfit/syndicate/no_crystals/syndi_crew/cag
@@ -345,7 +345,7 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 	max_count = 4
 
 /datum/antagonist/nukeop/syndi_crew/pilot
-	name = "Syndicate Pilot"
+	name = "Pilot Syndykatu"
 	nukeop_outfit = /datum/outfit/syndicate/no_crystals/syndi_crew/pilot
 
 /datum/outfit/syndicate/no_crystals/syndi_crew/pilot
@@ -362,7 +362,7 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 	antag_datum_type = /datum/antagonist/nukeop/syndi_crew/sergeant
 
 /datum/antagonist/nukeop/syndi_crew/sergeant
-	name = "Syndicate Sergeant"
+	name = "Sierżant Syndykatu"
 	nukeop_outfit = /datum/outfit/syndicate/no_crystals/syndi_crew/sergeant
 
 /datum/outfit/syndicate/no_crystals/syndi_crew/sergeant
@@ -381,7 +381,7 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 	essential = FALSE //No, just no
 
 /datum/antagonist/nukeop/syndi_crew/clown
-	name = "Syndicate Clown"
+	name = "Klaun Syndykatu"
 	nukeop_outfit = /datum/outfit/syndicate/clownop/no_crystals/jojo_reference
 	banning_key = ROLE_SYNDI_CREW
 
@@ -401,7 +401,7 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 	essential = FALSE
 
 /datum/antagonist/nukeop/syndi_crew/line_cook
-	name = "Syndicate Line Cook"
+	name = "Kucharz Syndykatu"
 	nukeop_outfit = /datum/outfit/syndicate/no_crystals/syndi_crew/line_cook
 
 /datum/outfit/syndicate/no_crystals/syndi_crew/line_cook
@@ -427,7 +427,7 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 	item_state = "syndiemarine"
 
 /datum/antagonist/nukeop/syndi_crew/marine
-	name = "Syndicate Marine"
+	name = "Żołnierz piechoty Syndykatu"
 	nukeop_outfit = /datum/outfit/syndicate/no_crystals/syndi_crew/marine
 
 /datum/outfit/syndicate/no_crystals/syndi_crew/marine

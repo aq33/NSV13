@@ -3,9 +3,9 @@
 
 /datum/antagonist/vampire
 
-	name = "Vampire"
+	name = "Wampir"
 	antagpanel_category = "Vampire"
-	roundend_category = "vampires"
+	roundend_category = "wampiry"
 	banning_key = ROLE_VAMPIRE
 
 	var/usable_blood = 0
@@ -41,7 +41,7 @@
 
 /datum/antagonist/vampire/new_blood
 	full_vampire = FALSE
-	roundend_category = "new bloods"
+	roundend_category = "nowa krew"
 	show_in_antagpanel = FALSE
 
 /datum/antagonist/vampire/get_admin_commands()

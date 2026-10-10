@@ -10,7 +10,7 @@
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"
 
 /datum/antagonist/xeno
-	name = "Xenomorph"
+	name = "Ksenomorf"
 	banning_key = ROLE_ALIEN
 	show_in_antagpanel = FALSE
 	prevent_roundtype_conversion = FALSE

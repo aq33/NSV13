@@ -3,8 +3,8 @@
 //==========================
 
 /datum/antagonist/servant_of_ratvar
-	name = "Servant Of Ratvar"
-	roundend_category = "clock cultists"
+	name = "Sługa Ratvara"
+	roundend_category = "kultyści zegara"
 	antagpanel_category = "Clockcult"
 	antag_moodlet = /datum/mood_event/cult
 	banning_key = ROLE_SERVANT_OF_RATVAR

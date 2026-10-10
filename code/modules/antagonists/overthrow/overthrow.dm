@@ -6,8 +6,8 @@
 // to a storage implant they came with when the Syndicate sent them aboard, with one random low-cost traitor item. The initial agent also has this. The only difference between
 // initial agents and converted ones is that the initial agent has the items required to convert people and the AI.
 /datum/antagonist/overthrow
-	name = "Syndicate mutineer"
-	roundend_category = "syndicate mutineers"
+	name = "Buntownik Syndykatu"
+	roundend_category = "buntownicy Syndykatu"
 	antagpanel_category = "Syndicate Mutineers"
 	banning_key = ROLE_OVERTHROW
 	var/datum/team/overthrow/team

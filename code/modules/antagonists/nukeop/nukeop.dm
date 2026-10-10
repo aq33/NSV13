@@ -1,6 +1,6 @@
 /datum/antagonist/nukeop
-	name = "Nuclear Operative"
-	roundend_category = "syndicate operatives" //just in case
+	name = "Operator nuklearny"
+	roundend_category = "operatorzy Syndykatu" //just in case
 	antagpanel_category = "NukeOp"
 	banning_key = ROLE_OPERATIVE
 	required_living_playtime = 8
@@ -171,7 +171,7 @@
 		to_chat(admin, "<span class='danger'>No valid nuke found!</span>")
 
 /datum/antagonist/nukeop/leader
-	name = "Nuclear Operative Leader"
+	name = "Przywódca operatorów nuklearnych"
 	nukeop_outfit = /datum/outfit/syndicate/leader
 	always_new_team = TRUE
 	var/title
@@ -235,7 +235,7 @@
 	return capitalize(newname)
 
 /datum/antagonist/nukeop/lone
-	name = "Lone Operative"
+	name = "Samotny operator"
 	always_new_team = TRUE
 	send_to_spawnpoint = FALSE //Handled by event
 	nukeop_outfit = /datum/outfit/syndicate/full

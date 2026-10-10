@@ -1,7 +1,7 @@
 /datum/antagonist/pirate
-	name = "Space Pirate"
+	name = "Kosmiczny pirat"
 	banning_key = ROLE_SPACE_PIRATE
-	roundend_category = "space pirates"
+	roundend_category = "kosmiczni piraci"
 	antagpanel_category = "Pirate"
 	show_to_ghosts = TRUE
 	var/datum/team/pirate/crew

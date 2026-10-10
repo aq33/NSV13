@@ -1,5 +1,5 @@
 /datum/antagonist/slaughter
-	name = "Slaughter demon"
+	name = "Demon rzezi"
 	show_name_in_check_antagonists = TRUE
 	var/objective_verb = "Kill"
 	var/datum/mind/summoner
@@ -30,5 +30,5 @@
 	log_objective(owner, new_objective2.explanation_text)
 
 /datum/antagonist/slaughter/laughter
-	name = "Laughter demon"
+	name = "Demon śmiechu"
 	objective_verb = "Hug and Tickle"

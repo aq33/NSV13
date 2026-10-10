@@ -61,7 +61,7 @@
 
 
 /datum/antagonist/imp
-	name = "Imp"
+	name = "Chochlik"
 	antagpanel_category = "Devil"
 	show_in_roundend = FALSE
 	banning_key = ROLE_DEVIL

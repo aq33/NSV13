@@ -1,6 +1,6 @@
 /datum/antagonist/blob
 	name = "Blob"
-	roundend_category = "blobs"
+	roundend_category = "bloby"
 	antagpanel_category = "Blob"
 	show_to_ghosts = TRUE
 	banning_key = ROLE_BLOB

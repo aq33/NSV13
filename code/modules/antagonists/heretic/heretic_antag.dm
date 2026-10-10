@@ -13,8 +13,8 @@
 
 /// The heretic antagonist itself.
 /datum/antagonist/heretic
-	name = "\improper Heretic"
-	roundend_category = "Heretics"
+	name = "\improper Heretyk"
+	roundend_category = "heretycy"
 	antagpanel_category = "Heretic"
 	ui_name = "AntagInfoHeretic"
 	banning_key = ROLE_HERETIC

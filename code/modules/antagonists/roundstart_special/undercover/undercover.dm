@@ -15,8 +15,8 @@
 ////////////////////////////////
 
 /datum/antagonist/special/undercover
-	name = "Ex-security agent"
-	roundend_category = "Special Roles"
+	name = "Były agent ochrony"
+	roundend_category = "role specjalne"
 	antag_moodlet = /datum/mood_event/determined
 
 /datum/antagonist/special/undercover/greet()

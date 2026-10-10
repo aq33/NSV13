@@ -1,6 +1,6 @@
 /datum/antagonist/disease
-	name = "Sentient Disease"
-	roundend_category = "diseases"
+	name = "Świadoma choroba"
+	roundend_category = "choroby"
 	antagpanel_category = "Disease"
 	show_to_ghosts = TRUE
 	banning_key = BAN_ROLE_ALL_ANTAGONISTS

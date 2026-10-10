@@ -25,6 +25,7 @@
 #include "code\__HELPERS\unsorted.dm"
 #include "code\_globalvars\lists\game.dm"
 #include "code\__HELPERS\pronouns.dm"
+#include "code\__HELPERS\polish.dm"
 #include "code\__HELPERS\roundend.dm"
 #include "code\__HELPERS\shell.dm"
 #include "code\_onclick\hud\alert.dm"

@@ -9,7 +9,7 @@
 	ert_frequency = get_free_team_frequency("cent")
 
 /datum/antagonist/ert
-	name = "Emergency Response Officer"
+	name = "Oficer szybkiego reagowania"
 	var/datum/team/ert/ert_team
 	var/leader = FALSE
 	var/datum/outfit/outfit = /datum/outfit/ert/security
@@ -83,7 +83,7 @@
 	outfit = /datum/outfit/ert/commander/alert
 
 /datum/antagonist/ert/deathsquad
-	name = "Deathsquad Trooper"
+	name = "Żołnierz szwadronu śmierci"
 	outfit = /datum/outfit/death_commando
 	role = "Trooper"
 	plasmaman_outfit = /datum/outfit/plasmaman/death_commando
@@ -133,36 +133,36 @@
 	outfit = /datum/outfit/ert/kudzu
 
 /datum/antagonist/ert/deathsquad/leader
-	name = "Deathsquad Officer"
+	name = "Oficer szwadronu śmierci"
 	outfit = /datum/outfit/death_commando/officer
 	role = "Officer"
 
 /datum/antagonist/ert/intern
-	name = "CentCom Intern"
+	name = "Stażysta Centrali"
 	outfit = /datum/outfit/centcom_intern
 	random_names = FALSE
 	role = "Intern"
 	plasmaman_outfit = /datum/outfit/plasmaman/intern
 
 /datum/antagonist/ert/intern/leader
-	name = "CentCom Head Intern"
+	name = "Starszy stażysta Centrali"
 	outfit = /datum/outfit/centcom_intern/leader
 	role = "Head Intern"
 
 /datum/antagonist/ert/doomguy
-	name = "The Juggernaut"
+	name = "Juggernaut"
 	outfit = /datum/outfit/death_commando/doomguy
 	random_names = FALSE
 	role = "The Juggernaut"
 
 /datum/antagonist/ert/clown
-	name = "Comedy Response Officer"
+	name = "Komediowy oficer reagowania"
 	outfit = /datum/outfit/centcom_clown
 	role = "Prankster"
 	plasmaman_outfit = /datum/outfit/plasmaman/honk
 
 /datum/antagonist/ert/clown/honk
-	name = "HONK Squad Trooper"
+	name = "Żołnierz oddziału HONK"
 	outfit = /datum/outfit/centcom_clown/honk_squad
 	role = "HONKER"
 	plasmaman_outfit = /datum/outfit/plasmaman/honk_squad

@@ -1,13 +1,13 @@
 
 /datum/antagonist/nukeop/clownop
-	name = "Clown Operative"
-	roundend_category = "clown operatives"
+	name = "Klaun-operator"
+	roundend_category = "klauni-operatorzy"
 	antagpanel_category = "ClownOp"
 	nukeop_outfit = /datum/outfit/syndicate/clownop
 
 /datum/antagonist/nukeop/leader/clownop
-	name = "Clown Operative Leader"
-	roundend_category = "clown operatives"
+	name = "Przywódca klaunów-operatorów"
+	roundend_category = "klauni-operatorzy"
 	antagpanel_category = "ClownOp"
 	nukeop_outfit = /datum/outfit/syndicate/clownop/leader
 

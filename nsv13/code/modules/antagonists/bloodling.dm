@@ -238,7 +238,7 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 
 //Bloodling's very own mindslave!
 /datum/antagonist/changeling/bloodling_thrall
-	name = "Enthralled Changeling"
+	name = "Zniewolony zmiennokształtny"
 	roundend_category  = "Bloodling Thralls"
 	antagpanel_category = "Bloodling Thralls"
 	tips = "bloodling_thrall"
@@ -275,7 +275,7 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 	var/antag_hud_name = "bloodling_thrall"
 
 /datum/antagonist/bloodling
-	name = "Bloodling Master"
+	name = "Pan krwiaków"
 	roundend_category  = "Bloodling Thralls"
 	antagpanel_category = "Bloodling Thralls"
 	give_objectives = TRUE
@@ -300,7 +300,7 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 	log_objective(owner, ascend.explanation_text)
 
 /datum/antagonist/bloodling/minion
-	name = "Bloodling Minion"
+	name = "Sługa krwiaków"
 	component_type = /datum/component/bloodling/lesser
 	tips = 'html/antagtips/bloodling_thrall.html'
 

@@ -168,7 +168,7 @@
 	else
 		tab_data["Grający/połączeni"] = GENERATE_STAT_TEXT("[get_active_player_count()]/[GLOB.clients.len]")
 	if(SSticker.round_start_time)
-		tab_data["Poziom alarmu"] = GENERATE_STAT_TEXT("[capitalize(get_security_level())]")
+		tab_data["Poziom alarmu"] = GENERATE_STAT_TEXT("[capitalize(get_security_level_pl())]")
 
 	tab_data["divider_3"] = GENERATE_STAT_DIVIDER
 

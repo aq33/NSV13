@@ -1,6 +1,6 @@
 /datum/antagonist/gang
 	name = "Gangster"
-	roundend_category = "gangsters"
+	roundend_category = "gangsterzy"
 	can_coexist_with_others = FALSE
 	banning_key = ROLE_GANG
 	antagpanel_category = "Gang"
@@ -153,7 +153,7 @@
 
 // Boss type. Those can use gang tools to buy items for their gang, in particular the Dominator, used to win the gamemode, along with more gang tools to promote fellow gangsters to boss status.
 /datum/antagonist/gang/boss
-	name = "Gang boss"
+	name = "Szef gangu"
 	hud_type = "gang_boss"
 	message_name = "Leader"
 
@@ -265,7 +265,7 @@
 
 
 /datum/antagonist/gang/boss/lieutenant
-	name = "Gang Lieutenant"
+	name = "Porucznik gangu"
 	message_name = "Lieutenant"
 
 #define INFLUENCE_SWAG 2

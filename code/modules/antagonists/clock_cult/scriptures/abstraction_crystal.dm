@@ -4,7 +4,7 @@
 GLOBAL_LIST_INIT(abstraction_crystals, list())
 
 /datum/antagonist/servant_of_ratvar/manifestation
-	name = "Servant Manifestation"
+	name = "Manifestacja sługi"
 	counts_towards_total = FALSE
 
 /datum/clockcult/scripture/create_structure/abstraction_crystal

@@ -1,6 +1,6 @@
 /datum/antagonist/wizard
-	name = "Space Wizard"
-	roundend_category = "wizards/witches"
+	name = "Kosmiczny czarodziej"
+	roundend_category = "czarodzieje i czarownice"
 	antagpanel_category = "Wizard"
 	banning_key = ROLE_WIZARD
 	required_living_playtime = 8
@@ -199,7 +199,7 @@
 	owner.current.forceMove(pick(GLOB.wizardstart))
 
 /datum/antagonist/wizard/apprentice
-	name = "Wizard Apprentice"
+	name = "Uczeń czarodzieja"
 	hud_version = "apprentice"
 	var/datum/mind/master
 	var/school = APPRENTICE_DESTRUCTION
@@ -271,7 +271,7 @@
 
 //Random event wizard
 /datum/antagonist/wizard/apprentice/imposter
-	name = "Wizard Imposter"
+	name = "Fałszywy czarodziej"
 	allow_rename = FALSE
 	move_to_lair = FALSE
 
@@ -314,7 +314,7 @@
 
 
 /datum/antagonist/wizard/academy
-	name = "Academy Teacher"
+	name = "Nauczyciel Akademii"
 	outfit_type = /datum/outfit/wizard/academy
 	move_to_lair = FALSE
 

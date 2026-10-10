@@ -1,5 +1,5 @@
 /datum/antagonist/wishgranter
-	name = "Wishgranter Avatar"
+	name = "Awatar Spełniacza Życzeń"
 	show_in_antagpanel = FALSE
 	show_name_in_check_antagonists = TRUE
 	can_elimination_hijack = ELIMINATION_ENABLED

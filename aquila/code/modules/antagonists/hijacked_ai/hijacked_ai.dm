@@ -1,6 +1,6 @@
 /datum/antagonist/hijacked_ai
-	name = "Hijacked AI"
-	roundend_category = "hijacked AIs"
+	name = "Przejęta SI"
+	roundend_category = "przejęte SI"
 	show_in_antagpanel = TRUE
 	antagpanel_category = "Other"
 	show_name_in_check_antagonists = TRUE

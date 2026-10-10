@@ -1,6 +1,6 @@
 /datum/antagonist/hivemind
-	name = "Hivemind Host"
-	roundend_category = "hiveminds"
+	name = "Nosiciel roju"
+	roundend_category = "roje"
 	antagpanel_category = "Hivemind Host"
 	banning_key = ROLE_HIVE
 	required_living_playtime = 4

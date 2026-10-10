@@ -1,6 +1,6 @@
 /datum/antagonist/infiltrator
-	name = "Syndicate Infiltrator"
-	roundend_category = "syndicate infiltrators" //just in case
+	name = "Infiltrator Syndykatu"
+	roundend_category = "infiltratorzy Syndykatu" //just in case
 	antagpanel_category = "Infiltrator"
 	//job_rank = ROLE_INFILTRATOR
 	banning_key = ROLE_INFILTRATOR

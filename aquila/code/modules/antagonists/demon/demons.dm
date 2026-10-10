@@ -6,8 +6,8 @@
 #define SIN_PRIDE "pride"
 
 /datum/antagonist/sinfuldemon
-	name = "Sinful Demon"
-	roundend_category = "demons of sin"
+	name = "Grzeszny demon"
+	roundend_category = "demony grzechu"
 	antagpanel_category = "Demon"
 	show_to_ghosts = TRUE
 	banning_key = ROLE_SINFULDEMON

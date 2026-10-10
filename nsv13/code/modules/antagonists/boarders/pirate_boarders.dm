@@ -1,5 +1,5 @@
 /datum/antagonist/pirate/boarder
-	name = "Space Pirate"
+	name = "Kosmiczny pirat"
 	var/datum/team/pirate/boarder/boarding_crew
 
 /datum/team/pirate/boarder

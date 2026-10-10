@@ -2,7 +2,7 @@
 	name = "Nation"
 
 /datum/antagonist/separatist
-	name = "Separatists"
+	name = "Separatyści"
 	show_in_antagpanel = FALSE
 	show_name_in_check_antagonists = TRUE
 	var/datum/team/nation/nation

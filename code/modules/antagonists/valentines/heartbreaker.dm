@@ -1,6 +1,6 @@
 /datum/antagonist/heartbreaker
-	name = "heartbreaker"
-	roundend_category = "valentines"
+	name = "łamacz serc"
+	roundend_category = "walentynki"
 	show_in_antagpanel = FALSE
 	show_name_in_check_antagonists = TRUE
 	banning_key = BAN_ROLE_ALL_ANTAGONISTS

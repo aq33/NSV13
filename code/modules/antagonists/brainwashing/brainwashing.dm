@@ -27,9 +27,9 @@
 	L.log_message(rendered, LOG_ATTACK, color="#960000")
 
 /datum/antagonist/brainwashed
-	name = "Brainwashed Victim"
+	name = "Ofiara prania mózgu"
 	banning_key = ROLE_BRAINWASHED
-	roundend_category = "brainwashed victims"
+	roundend_category = "ofiary prania mózgu"
 	show_in_antagpanel = TRUE
 	antagpanel_category = "Other"
 	show_name_in_check_antagonists = TRUE
