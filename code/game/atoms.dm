@@ -249,6 +249,17 @@
   * * clears the light object
   */
 /atom/Destroy()
+	// AQ EDIT START - port BeeStation #12193: wiadomości nad głową nie nasłuchują już usunięcia atomu
+	if (chat_messages)
+		for (var/chatmessage in chat_messages)
+			qdel(chatmessage)
+		chat_messages = null
+	if (balloon_alerts)
+		for (var/balloon_alert in balloon_alerts)
+			qdel(balloon_alert)
+		balloon_alerts = null
+	// AQ EDIT END
+
 	if(alternate_appearances)
 		for(var/current_alternate_appearance in alternate_appearances)
 			var/datum/atom_hud/alternate_appearance/selected_alternate_appearance = alternate_appearances[current_alternate_appearance]
