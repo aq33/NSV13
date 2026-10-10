@@ -6,6 +6,13 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel/tiled/light,
 /area/quartermaster/warehouse)
+"ab" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/obj/structure/table/wood/fancy/orange,
+/obj/machinery/cell_charger,
+/turf/open/floor/carpet/ship/beige_carpet,
+/area/hallway/nsv/deck1/hallway)
 "ad" = (
 /obj/structure/rack,
 /obj/item/clothing/ears/earmuffs,
@@ -42785,7 +42792,7 @@ YK
 Zu
 Hp
 wu
-wu
+ab
 aK
 fz
 ta

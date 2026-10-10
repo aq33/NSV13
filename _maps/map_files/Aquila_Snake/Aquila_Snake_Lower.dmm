@@ -1269,6 +1269,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
+"cL" = (
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/turf/open/floor/plasteel/dark/side,
+/area/hallway/primary/central)
 "cO" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/high_volume/siphon/atmos/air_output{
 	dir = 8
@@ -48887,7 +48892,7 @@ dg
 MH
 RC
 qW
-OY
+cL
 gW
 GZ
 hk
