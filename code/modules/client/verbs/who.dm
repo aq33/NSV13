@@ -28,9 +28,9 @@
 								if(O.started_as_observer)
 									entry += " - <font color='gray'>Observing</font>"
 								else
-									entry += " - <font color='black'><b>DEAD</b></font>"
+									entry += " - <font color='black'><b>MARTWY</b></font>"
 							else
-								entry += " - <font color='black'><b>DEAD</b></font>"
+								entry += " - <font color='black'><b>MARTWY</b></font>"
 					if(is_special_character(C.mob))
 						entry += " - <b><font color='red'>Antagonist</font></b>"
 				entry += " [ADMIN_QUE(C.mob)]"

@@ -18,9 +18,9 @@
 	. = ..()
 	if(key_type)
 		if(!inserted_key)
-			. += "<span class='notice'>Put a key inside it by clicking it with the key.</span>"
+			. += "<span class='notice'>Włóż do niego kluczyk, klikając go kluczykiem.</span>"
 		else
-			. += "<span class='notice'>Alt-click [src] to remove the key.</span>"
+			. += "<span class='notice'>Alt-klik na [src], by wyjąć kluczyk.</span>"
 
 /obj/vehicle/ridden/generate_action_type(actiontype)
 	var/datum/action/vehicle/ridden/A = ..()
@@ -39,21 +39,21 @@
 /obj/vehicle/ridden/attackby(obj/item/I, mob/user, params)
 	if(key_type && !is_key(inserted_key) && is_key(I))
 		if(user.transferItemToLoc(I, src))
-			to_chat(user, "<span class='notice'>You insert \the [I] into \the [src].</span>")
+			to_chat(user, "<span class='notice'>Wkładasz [I] do [src].</span>")
 			if(inserted_key)	//just in case there's an invalid key
 				inserted_key.forceMove(drop_location())
 			inserted_key = I
 		else
-			to_chat(user, "<span class='notice'>[I] seems to be stuck to your hand!</span>")
+			to_chat(user, "<span class='notice'>Wygląda na to, że [I] przykleił ci się do ręki!</span>")
 		return
 	return ..()
 
 /obj/vehicle/ridden/AltClick(mob/user)
 	if(inserted_key && user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		if(!is_occupant(user))
-			to_chat(user, "<span class='notice'>You must be riding the [src] to remove [src]'s key!</span>")
+			to_chat(user, "<span class='notice'>Musisz jechać na [src], by wyjąć z niego kluczyk!</span>")
 			return
-		to_chat(user, "<span class='notice'>You remove \the [inserted_key] from \the [src].</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz [inserted_key] z [src].</span>")
 		inserted_key.forceMove(drop_location())
 		user.put_in_hands(inserted_key)
 		inserted_key = null
@@ -62,27 +62,27 @@
 /obj/vehicle/ridden/driver_move(mob/user, direction)
 	if(key_type && !is_key(inserted_key))
 		if(message_cooldown < world.time)
-			to_chat(user, "<span class='warning'>[src] has no key inserted!</span>")
+			to_chat(user, "<span class='warning'>W [src] nie ma kluczyka!</span>")
 			message_cooldown = world.time + 5 SECONDS
 		return FALSE
 	if(legs_required)
 		var/how_many_legs = user.get_num_legs()
 		if(how_many_legs < legs_required)
-			to_chat(user, "<span class='warning'>You can't seem to manage that with[how_many_legs ? " your leg[how_many_legs > 1 ? "s" : null]" : "out legs"]...</span>")
+			to_chat(user, "<span class='warning'>Nie dajesz rady tego zrobić [how_many_legs ? "z taką liczbą nóg" : "bez nóg"]...</span>")
 			return FALSE
 	if(arms_required)
 		var/how_many_arms = user.get_num_arms()
 		if(how_many_arms < arms_required)
 			if(fall_off_if_missing_arms)
 				unbuckle_mob(user, TRUE)
-				user.visible_message("<span class='danger'>[user] falls off of \the [src].",\
-				"<span class='danger'>You fall of \the [src] while trying to operate it without [arms_required ? "both arms":"an arm"]!</span>")
+				user.visible_message("<span class='danger'>[user] spada z [src].",\
+				"<span class='danger'>Spadasz z [src], próbując nim kierować bez [arms_required ? "obu rąk":"ręki"]!</span>")
 				if(isliving(user))
 					var/mob/living/L = user
 					L.Stun(30)
 				return FALSE
 
-			to_chat(user, "<span class='warning'>You can't seem to manage that with[how_many_arms ? " your arm[how_many_arms > 1 ? "s" : null]" : "out arms"]...</span>")
+			to_chat(user, "<span class='warning'>Nie dajesz rady tego zrobić [how_many_arms ? "z taką liczbą rąk" : "bez rąk"]...</span>")
 			return FALSE
 	var/datum/component/riding/R = GetComponent(/datum/component/riding)
 	R.handle_ride(user, direction)

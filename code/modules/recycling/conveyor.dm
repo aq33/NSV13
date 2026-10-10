@@ -228,15 +228,15 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 // attack with item, place item on conveyor
 /obj/machinery/conveyor/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_CROWBAR)
-		user.visible_message("<span class='notice'>[user] struggles to pry up \the [src] with \the [I].</span>", \
-		"<span class='notice'>You struggle to pry up \the [src] with \the [I].</span>")
+		user.visible_message("<span class='notice'>[user] z trudem podważa [src] za pomocą [I].</span>", \
+		"<span class='notice'>Z trudem podważasz [src] za pomocą [I].</span>")
 		if(I.use_tool(src, user, 40, volume=40))
 			set_operating(FALSE)
 			if(!(machine_stat & BROKEN))
 				var/obj/C = new stack_type(loc, 1, TRUE, null, id) //NSV13 - slow conveyors
 				if(!QDELETED(C)) //God I hate stacks
 					transfer_fingerprints_to(C)
-			to_chat(user, "<span class='notice'>You remove the conveyor belt.</span>")
+			to_chat(user, "<span class='notice'>Zdejmujesz taśmociąg.</span>")
 
 			qdel(src)
 
@@ -245,13 +245,13 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 			I.play_tool_sound(src)
 			setDir(turn(dir,-45))
 			update_move_direction()
-			to_chat(user, "<span class='notice'>You rotate [src].</span>")
+			to_chat(user, "<span class='notice'>Obracasz [src].</span>")
 
 	else if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		if(!(machine_stat & BROKEN))
 			verted = verted * -1
 			update_move_direction()
-			to_chat(user, "<span class='notice'>You reverse [src]'s direction.</span>")
+			to_chat(user, "<span class='notice'>Odwracasz kierunek [src].</span>")
 
 	else if(user.a_intent != INTENT_HARM)
 		user.transferItemToLoc(I, drop_location())
@@ -320,8 +320,8 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 /obj/machinery/conveyor_switch/examine() //NSV13 conveyor switch changes
 	. = ..()
 	if(oneway)
-		. += "It has been set to only go in one direction."
-		. += "<span class='notice'>You can force it to go the other way with Alt-click.</span>"
+		. += "Został ustawiony tak, by jechał tylko w jednym kierunku."
+		. += "<span class='notice'>Możesz go zmusić do jazdy w drugą stronę za pomocą Alt-klik.</span>"
 
 /obj/machinery/conveyor_switch/Initialize(mapload, newid, isoneway, isinvert)
 	. = ..()
@@ -422,7 +422,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 		C.oneway = oneway //NSV13 conveyor switch changes
 		C.invert_icon = invert_icon //NSV13
 		transfer_fingerprints_to(C)
-		to_chat(user, "<span class='notice'>You detach the conveyor switch.</span>")
+		to_chat(user, "<span class='notice'>Odczepiasz przełącznik taśmociągu.</span>")
 		qdel(src)
 
 /obj/machinery/conveyor_switch/oneway
@@ -450,31 +450,31 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 
 /obj/item/conveyor_switch_construct/examine() //NSV13 conveyor switch changes
 	. = ..()
-	. += "Use on a conveyor belt or switch assembly to link them to it."
-	. += "Use a belt assembly on it to use the belt's link instead."
-	. += "You can use a <i>screwdriver</i> to adjust the direction lock, and a <i>wrench</i> to rotate it."
-	. += "Use in hand to reset the switch's links."
+	. += "Użyj na taśmociągu lub zespole przełącznika, by je z nim połączyć."
+	. += "Użyj na nim zespołu taśmociągu, by zamiast tego użyć połączenia taśmy."
+	. += "Możesz użyć <i>śrubokręta</i>, by ustawić blokadę kierunku, i <i>klucza</i>, by go obrócić."
+	. += "Użyj w dłoni, by zresetować połączenia przełącznika."
 
 /obj/item/conveyor_switch_construct/attackby(obj/item/I, mob/user, params) //NSV13 conveyor switch changes
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		if (!oneway)
 			oneway = 1 //forward
-			to_chat(user, "<span class='notice'>You engage the direction lock.</span>")
+			to_chat(user, "<span class='notice'>Włączasz blokadę kierunku.</span>")
 		else if (oneway > 0)
 			oneway = -1 //reverse
-			to_chat(user, "<span class='notice'>You reverse the direction lock.</span>")
+			to_chat(user, "<span class='notice'>Odwracasz blokadę kierunku.</span>")
 		else
 			oneway = 0 //off
-			to_chat(user, "<span class='notice'>You disengage the direction lock.</span>")
+			to_chat(user, "<span class='notice'>Wyłączasz blokadę kierunku.</span>")
 	else if (I.tool_behaviour == TOOL_WRENCH)
 		invert_icon = !invert_icon
-		to_chat(user, "<span class='notice'>You rotate the switch's direction.</span>")
+		to_chat(user, "<span class='notice'>Obracasz kierunek przełącznika.</span>")
 	else if(istype(I, /obj/item/conveyor_switch_construct))
-		to_chat(user, "<span class='notice'>You copy the switch's link to the other.</span>")
+		to_chat(user, "<span class='notice'>Kopiujesz połączenie przełącznika na drugi.</span>")
 		var/obj/item/conveyor_switch_construct/C = I
 		id = C.id
 	else if(istype(I, /obj/item/stack/conveyor))// the opposite of the original linking process - this updates the switch's ID to the belt
-		to_chat(user, "<span class='notice'>You link the switch to the conveyor belt assembly.</span>")
+		to_chat(user, "<span class='notice'>Łączysz przełącznik z zespołem taśmociągu.</span>")
 		var/obj/item/stack/conveyor/C = I
 		id = C.id
 	else
@@ -482,7 +482,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 
 /obj/item/conveyor_switch_construct/attack_self(mob/user)
 	id = "[rand()]" //NSV13 conveyor switch changes
-	to_chat(user, "<span class='notice'>You reset the switch's links.</span>") //NSV13
+	to_chat(user, "<span class='notice'>Resetujesz połączenia przełącznika.</span>") //NSV13
 
 /obj/item/conveyor_switch_construct/afterattack(atom/A, mob/user, proximity)
 	. = ..()
@@ -494,7 +494,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 			found = 1
 			break
 	if(!found)
-		to_chat(user, "[icon2html(src, user)]<span class=notice>The conveyor switch did not detect any linked conveyor belts in range.</span>")
+		to_chat(user, "[icon2html(src, user)]<span class=notice>Przełącznik taśmociągu nie wykrył w zasięgu żadnych połączonych taśmociągów.</span>")
 		return
 	var/obj/machinery/conveyor_switch/NC = new/obj/machinery/conveyor_switch(A, id, oneway, invert_icon) //NSV13 conveyor switch changes
 	transfer_fingerprints_to(NC)
@@ -524,7 +524,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 		return
 	var/cdir = get_dir(A, user)
 	if(A == user.loc)
-		to_chat(user, "<span class='warning'>You cannot place a conveyor belt under yourself!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz położyć taśmociągu pod sobą!</span>")
 		return
 	var/obj/machinery/conveyor/C = new conveyor_type(A, cdir, id) //NSV13 - conveyor type
 	transfer_fingerprints_to(C)
@@ -533,7 +533,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 /obj/item/stack/conveyor/attackby(obj/item/I, mob/user, params)
 	..()
 	if(istype(I, /obj/item/conveyor_switch_construct))
-		to_chat(user, "<span class='notice'>You link the conveyor belt assembly to the switch.</span>") //NSV13 conveyor switch changes
+		to_chat(user, "<span class='notice'>Łączysz zespół taśmociągu z przełącznikiem.</span>") //NSV13 conveyor switch changes
 		var/obj/item/conveyor_switch_construct/C = I
 		id = C.id
 
@@ -545,5 +545,5 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 
 /obj/item/paper/guides/conveyor
 	name = "paper- 'Nano-it-up U-build series, #9: Build your very own conveyor belt, in SPACE'"
-	default_raw_text = "<h1>Congratulations!</h1><p>You are now the proud owner of the best conveyor set available for space mail order! We at Nano-it-up know you love to prepare your own structures without wasting time, so we have devised a special streamlined assembly procedure that puts all other mail-order products to shame!</p><p>Firstly, you need to link the conveyor switch assembly to each of the conveyor belt assemblies. After doing so, you simply need to install the belt assemblies onto the floor, et voila, belt built. Our special Nano-it-up smart switch will detected any linked assemblies as far as the eye can see! This convenience, you can only have it when you Nano-it-up. Stay nano!</p>"
+	default_raw_text = "<h1>Gratulacje!</h1><p>Jesteś teraz dumnym właścicielem najlepszego zestawu taśmociągów dostępnego w kosmicznej sprzedaży wysyłkowej! My w Nano-it-up wiemy, że uwielbiasz przygotowywać własne konstrukcje bez marnowania czasu, więc opracowaliśmy specjalną, uproszczoną procedurę montażu, która zawstydza wszystkie inne produkty wysyłkowe!</p><p>Najpierw musisz połączyć zespół przełącznika taśmociągu z każdym z zespołów taśmociągu. Potem wystarczy zainstalować zespoły taśm na podłodze i voilà, taśma gotowa. Nasz specjalny inteligentny przełącznik Nano-it-up wykryje wszystkie połączone zespoły, jak okiem sięgnąć! Taką wygodę masz tylko wtedy, gdy wybierzesz Nano-it-up. Bądź nano!</p>"
 #undef MAX_CONVEYOR_ITEMS_MOVE

@@ -35,7 +35,7 @@
 
 /obj/item/assembly/infra/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The infrared trigger is [on?"on":"off"].</span>"
+	. += "<span class='notice'>Wyzwalacz podczerwieni jest [on?"włączony":"wyłączony"].</span>"
 
 /obj/item/assembly/infra/activate()
 	if(!..())
@@ -151,7 +151,7 @@
 	if(!secured || !on || next_activate > world.time)
 		return FALSE
 	pulse(FALSE)
-	audible_message("[icon2html(src, hearers(src))] *beep* *beep* *beep*", null, hearing_range)
+	audible_message("[icon2html(src, hearers(src))] *bip* *bip* *bip*", null, hearing_range)
 	playsound(get_turf(src), 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 	next_activate =  world.time + 30
 

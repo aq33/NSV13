@@ -27,7 +27,7 @@
 
 /obj/item/paper/fluff/ruins/crashedship/scribbled
 	name = "scribbled note"
-	default_raw_text = "The next person who takes one of my screwdrivers gets stabbed with one. They are MINE. - Love, Madsen"
+	default_raw_text = "Następna osoba, która weźmie jeden z moich śrubokrętów, zostanie nim dźgnięta. Są MOJE. - Całuski, Madsen"
 
 
 /obj/item/paper/fluff/ruins/crashedship/captains_log

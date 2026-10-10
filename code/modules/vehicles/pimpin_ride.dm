@@ -32,25 +32,25 @@
 /obj/vehicle/ridden/janicart/examine(mob/user)
 	. += ..()
 	if(floorbuffer)
-		. += "It has been upgraded with a floor buffer."
+		. += "Został ulepszony o polerkę do podłóg."
 
 /obj/vehicle/ridden/janicart/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/storage/bag/trash))
 		if(mybag)
-			to_chat(user, "<span class='warning'>[src] already has a trashbag hooked!</span>")
+			to_chat(user, "<span class='warning'>[src] ma już zaczepiony worek na śmieci!</span>")
 			return
 		if(!user.transferItemToLoc(I, src))
 			return
-		to_chat(user, "<span class='notice'>You hook the trashbag onto [src].</span>")
+		to_chat(user, "<span class='notice'>Zaczepiasz worek na śmieci na [src].</span>")
 		mybag = I
 		update_icon()
 	else if(istype(I, /obj/item/janiupgrade))
 		if(floorbuffer)
-			to_chat(user, "<span class='warning'>[src] already has a floor buffer!</span>")
+			to_chat(user, "<span class='warning'>[src] ma już polerkę do podłóg!</span>")
 			return
 		floorbuffer = TRUE
 		qdel(I)
-		to_chat(user, "<span class='notice'>You upgrade [src] with the floor buffer.</span>")
+		to_chat(user, "<span class='notice'>Ulepszasz [src] o polerkę do podłóg.</span>")
 		AddElement(/datum/element/cleaning)
 		update_icon()
 	else

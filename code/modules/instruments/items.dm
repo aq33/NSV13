@@ -27,12 +27,12 @@
 	return user.incapacitated() || !((loc == user) || (isturf(loc) && Adjacent(user)))		// sorry, no more TK playing.
 
 /obj/item/instrument/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] begins to play 'Gloomy Sunday'! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaczyna grać „Gloomy Sunday”! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return (BRUTELOSS)
 
 /obj/item/instrument/attack_self(mob/user)
 	if(!user.IsAdvancedToolUser())
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>Nie masz dość zręczności, by to zrobić!</span>")
 		return TRUE
 	interact(user)
 
@@ -207,7 +207,7 @@
 	SIGNAL_HANDLER
 
 	if(song.playing && ismob(loc))
-		to_chat(loc, "<span class='warning'>You stop playing the harmonica to talk...</span>")
+		to_chat(loc, "<span class='warning'>Przestajesz grać na harmonijce, by coś powiedzieć...</span>")
 		song.playing = FALSE
 
 /obj/item/instrument/harmonica/equipped(mob/M, slot)

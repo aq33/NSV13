@@ -1,7 +1,7 @@
 ///////////	listening station
 
 /obj/item/paper/fluff/ruins/listeningstation/reports
-	default_raw_text = "Nothing of interest to report."
+	default_raw_text = "Nic ciekawego do zgłoszenia."
 
 /obj/item/paper/fluff/ruins/listeningstation/reports/july
 	name = "july report"
@@ -24,15 +24,15 @@
 
 /obj/item/paper/fluff/ruins/listeningstation/reports/may
 	name = "may report"
-	default_raw_text = "Nothing of real interest to report this month. I have intercepted faint transmissions from what appears to be some sort of pirate radio station. They do not appear to be relevant to my assignment."
+	default_raw_text = "W tym miesiącu nic naprawdę ciekawego do zgłoszenia. Przechwyciłem słabe transmisje z czegoś, co wygląda na piracką stację radiową. Nie wydają się mieć związku z moim zadaniem."
 
 /obj/item/paper/fluff/ruins/listeningstation/reports/april
 	name = "april report"
-	default_raw_text = "A good start to the operation: intercepted Nanotrasen military communications. A convoy is scheduled to transfer nuclear warheads to a new military base. This is as good a chance as any to get our hands on some heavy weaponry, I suggest we take it."
+	default_raw_text = "Dobry początek operacji: przechwyciliśmy wojskową łączność Nanotrasen. Zaplanowano konwój, który ma przewieźć głowice jądrowe do nowej bazy wojskowej. To najlepsza okazja, by położyć łapy na ciężkim uzbrojeniu; proponuję ją wykorzystać."
 
 /obj/item/paper/fluff/ruins/listeningstation/receipt
 	name = "receipt"
-	default_raw_text = "1 x Stechkin pistol - $600<br>1 x silencer - $200<br>shipping charge - $4360<br>total - $5160"
+	default_raw_text = "1 x pistolet Stechkin - 600 $<br>1 x tłumik - 200 $<br>koszt wysyłki - 4360 $<br>razem - 5160 $"
 
 /obj/item/paper/fluff/ruins/listeningstation/odd_report
 	name = "odd report"
@@ -40,6 +40,6 @@
 
 /obj/item/paper/fluff/ruins/listeningstation/briefing
 	name = "mission briefing"
-	default_raw_text = "<b>Mission Details</b>: You have been assigned to a newly constructed listening post constructed within an asteroid in Nanotrasen space to monitor their plasma mining operations. Accurate intel is crucial to the success of our operatives onboard, do not fail us."
+	default_raw_text = "<b>Szczegóły misji</b>: zostałeś przydzielony do nowo zbudowanego posterunku nasłuchowego wewnątrz asteroidy w przestrzeni Nanotrasen, by monitorować ich wydobycie plazmy. Dokładne informacje wywiadowcze są kluczowe dla sukcesu naszych agentów na pokładzie; nie zawiedź nas."
 
 

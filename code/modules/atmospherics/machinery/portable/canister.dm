@@ -61,7 +61,7 @@
 
 /obj/machinery/portable_atmospherics/canister/interact(mob/user)
 	if(!allowed(user))
-		to_chat(user, "<span class='warning'>Error - Unauthorized User</span>")
+		to_chat(user, "<span class='warning'>Błąd – nieupoważniony użytkownik</span>")
 		playsound(src, 'sound/misc/compiler-failure.ogg', 50, 1)
 		return
 	..()
@@ -285,11 +285,11 @@
 	if(machine_stat & BROKEN)
 		if(!I.tool_start_check(user, amount=0))
 			return TRUE
-		to_chat(user, "<span class='notice'>You begin cutting [src] apart...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz rozcinać [src]...</span>")
 		if(I.use_tool(src, user, 30, volume=50))
 			deconstruct(TRUE)
 	else
-		to_chat(user, "<span class='notice'>You cannot slice [src] apart when it isn't broken.</span>")
+		to_chat(user, "<span class='notice'>Nie możesz rozciąć [src], gdy nie jest zepsuty.</span>")
 
 	return TRUE
 
@@ -391,7 +391,7 @@
 		return
 	switch(action)
 		if("relabel")
-			var/label = input("New canister label:", name) as null|anything in sortList(label2types)
+			var/label = input("Nowa etykieta kanistra:", name) as null|anything in sortList(label2types)
 			if(label && !..())
 				var/newtype = label2types[label]
 				if(newtype)
@@ -421,7 +421,7 @@
 				pressure = can_max_release_pressure
 				. = TRUE
 			else if(pressure == "input")
-				pressure = input("New release pressure ([can_min_release_pressure]-[can_max_release_pressure] kPa):", name, release_pressure) as num|null
+				pressure = input("Nowe ciśnienie wypuszczania ([can_min_release_pressure]-[can_max_release_pressure] kPa):", name, release_pressure) as num|null
 				if(!isnull(pressure) && !..())
 					. = TRUE
 			else if(text2num(pressure) != null)

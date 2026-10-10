@@ -34,24 +34,24 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 
 /obj/item/hilbertshotel/attack(mob/living/M, mob/living/user)
     if(M.mind)
-        to_chat(user, "<span class='notice'>You invite [M] to the hotel.</span>")
+        to_chat(user, "<span class='notice'>Zapraszasz [M] do hotelu.</span>")
         promptAndCheckIn(M)
     else
-        to_chat(user, "<span class='warning'>[M] is not intelligent enough to understand how to use this device!</span>")
+        to_chat(user, "<span class='warning'>[M] nie jest dość inteligentny, by zrozumieć, jak używać tego urządzenia!</span>")
 
 /obj/item/hilbertshotel/attack_self(mob/user)
     . = ..()
     promptAndCheckIn(user)
 
 /obj/item/hilbertshotel/proc/promptAndCheckIn(mob/user)
-    var/chosenRoomNumber = input(user, "What number room will you be checking into?", "Room Number") as null|num
+    var/chosenRoomNumber = input(user, "W którym pokoju chcesz się zameldować?", "Numer pokoju") as null|num
     if(!chosenRoomNumber)
         return
     if(chosenRoomNumber > SHORT_REAL_LIMIT)
-        to_chat(user, "<span class='warning'>You have to check out the first [SHORT_REAL_LIMIT] rooms before you can go to a higher numbered one!</span>")
+        to_chat(user, "<span class='warning'>Musisz zameldować się w pierwszych [SHORT_REAL_LIMIT] pokojach, zanim przejdziesz do pokoju o wyższym numerze!</span>")
         return
     if((chosenRoomNumber < 1) || (chosenRoomNumber != round(chosenRoomNumber)))
-        to_chat(user, "<span class='warning'>That is not a valid room number!</span>")
+        to_chat(user, "<span class='warning'>To nie jest prawidłowy numer pokoju!</span>")
         return
     if(ismob(loc))
         if(user == loc) //Not always the same as user
@@ -142,7 +142,7 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
                         if(ismob(A))
                             var/mob/M = A
                             if(M.mind)
-                                to_chat(M, "<span class='warning'>As the sphere breaks apart, you're suddenly ejected into the depths of space!")
+                                to_chat(M, "<span class='warning'>Gdy sfera się rozpada, nagle zostajesz wyrzucony w głąb kosmosu!")
                         var/max = world.maxx-TRANSITIONEDGE
                         var/min = 1+TRANSITIONEDGE
                         var/list/possible_transtitons = list()
@@ -239,9 +239,9 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
     if(!user.mind)
         return
     if(!parentSphere)
-        to_chat(user, "<span class='warning'>The door seems to be malfunctioning and refuses to operate!</span>")
+        to_chat(user, "<span class='warning'>Drzwi chyba się zepsuły i nie chcą działać!</span>")
         return
-    if(alert(user, "Hilbert's Hotel would like to remind you that while we will do everything we can to protect the belongings you leave behind, we make no guarantees of their safety while you're gone, especially that of the health of any living creatures. With that in mind, are you ready to leave?", "Exit", "Leave", "Stay") == "Leave")
+    if(alert(user, "Hotel Hilberta przypomina, że choć zrobimy wszystko, by chronić pozostawione przez ciebie rzeczy, nie gwarantujemy ich bezpieczeństwa podczas twojej nieobecności, zwłaszcza zdrowia żywych stworzeń. Mając to na uwadze, czy jesteś gotów wyjść?", "Exit", "Leave", "Stay") == "Leave")
         if(!(user.mobility_flags & MOBILITY_MOVE) || (get_dist(get_turf(src), get_turf(user)) > 1)) //no teleporting around if they're dead or moved away during the prompt.
             return
         user.forceMove(get_turf(parentSphere))
@@ -281,7 +281,7 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 /turf/closed/indestructible/hoteldoor/AltClick(mob/user)
     . = ..()
     if(get_dist(get_turf(src), get_turf(user)) <= 1)
-        to_chat(user, "<span class='notice'>You peak through the door's bluespace peephole...</span>")
+        to_chat(user, "<span class='notice'>Zerkasz przez bluespace'owy wizjer w drzwiach...</span>")
         user.reset_perspective(parentSphere)
         user.set_machine(src)
         var/datum/action/peepholeCancel/PHC = new
@@ -301,7 +301,7 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 
 /datum/action/peepholeCancel/Trigger()
     . = ..()
-    to_chat(owner, "<span class='warning'>You move away from the peephole.</span>")
+    to_chat(owner, "<span class='warning'>Odsuwasz się od wizjera.</span>")
     owner.reset_perspective()
     owner.clear_fullscreen("remote_view", 0)
     qdel(src)
@@ -351,7 +351,7 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
     log_game("[H] entered itself. Moving it to [loc_name(targetturf)].")
     message_admins("[H] entered itself. Moving it to [ADMIN_VERBOSEJMP(targetturf)].")
     for(var/mob/M in A)
-        to_chat(M, "<span class='danger'>[H] almost implodes in upon itself, but quickly rebounds, shooting off into a random point in space!</span>")
+        to_chat(M, "<span class='danger'>[H] niemal imploduje, ale szybko się odbija, wystrzeliwując w losowy punkt w kosmosie!</span>")
     H.forceMove(targetturf)
 
 /area/hilbertshotel/Exited(atom/movable/gone, direction)
@@ -431,21 +431,21 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
     . = ..()
     if(istype(target, /obj/item/hilbertshotel))
         if(!proximity)
-            to_chat(user, "<span class='warning'>It's to far away to scan!</span>")
+            to_chat(user, "<span class='warning'>Jest za daleko, by to zeskanować!</span>")
             return
         var/obj/item/hilbertshotel/sphere = target
         if(sphere.activeRooms.len)
-            to_chat(user, "Currently Occupied Rooms:")
+            to_chat(user, "Obecnie zajęte pokoje:")
             for(var/roomnumber in sphere.activeRooms)
                 to_chat(user, roomnumber)
         else
-            to_chat(user, "No currenty occupied rooms.")
+            to_chat(user, "Brak zajętych pokoi.")
         if(sphere.storedRooms.len)
-            to_chat(user, "Vacated Rooms:")
+            to_chat(user, "Zwolnione pokoje:")
             for(var/roomnumber in sphere.storedRooms)
                 to_chat(user, roomnumber)
         else
-            to_chat(user, "No vacated rooms.")
+            to_chat(user, "Brak zwolnionych pokoi.")
 
 /obj/effect/mob_spawn/human/doctorhilbert
 	name = "Doctor Hilbert"

@@ -4,30 +4,30 @@
 /datum/song/proc/instrument_status_ui()
 	. = list()
 	. += "<div class='statusDisplay'>"
-	. += "<b><a href='byond://?src=[REF(src)];switchinstrument=1'>Current instrument</a>:</b> "
+	. += "<b><a href='byond://?src=[REF(src)];switchinstrument=1'>Obecny instrument</a>:</b> "
 	if(!using_instrument)
-		. += "<span class='danger'>No instrument loaded!</span><br>"
+		. += "<span class='danger'>Nie załadowano instrumentu!</span><br>"
 	else
 		. += "[using_instrument.name]<br>"
-	. += "Playback Settings:<br>"
+	. += "Ustawienia odtwarzania:<br>"
 	if(can_noteshift)
-		. += "<a href='byond://?src=[REF(src)];setnoteshift=1'>Note Shift/Note Transpose</a>: [note_shift] keys / [round(note_shift / 12, 0.01)] octaves<br>"
+		. += "<a href='byond://?src=[REF(src)];setnoteshift=1'>Przesunięcie/transpozycja nut</a>: [note_shift] klawiszy / [round(note_shift / 12, 0.01)] oktaw<br>"
 	var/smt
 	var/modetext = ""
 	switch(sustain_mode)
 		if(SUSTAIN_LINEAR)
 			smt = "Linear"
-			modetext = "<a href='byond://?src=[REF(src)];setlinearfalloff=1'>Linear Sustain Duration</a>: [sustain_linear_duration / 10] seconds<br>"
+			modetext = "<a href='byond://?src=[REF(src)];setlinearfalloff=1'>Czas liniowego podtrzymania</a>: [sustain_linear_duration / 10] s<br>"
 		if(SUSTAIN_EXPONENTIAL)
 			smt = "Exponential"
-			modetext = "<a href='byond://?src=[REF(src)];setexpfalloff=1'>Exponential Falloff Factor</a>: [sustain_exponential_dropoff]% per decisecond<br>"
-	. += "<a href='byond://?src=[REF(src)];setsustainmode=1'>Sustain Mode</a>: [smt]<br>"
+			modetext = "<a href='byond://?src=[REF(src)];setexpfalloff=1'>Współczynnik wykładniczego zaniku</a>: [sustain_exponential_dropoff]% na decysekundę<br>"
+	. += "<a href='byond://?src=[REF(src)];setsustainmode=1'>Tryb podtrzymania</a>: [smt]<br>"
 	. += modetext
-	. += using_instrument?.ready()? "Status: <span class='good'>Ready</span><br>" : "Status: <span class='bad'>!Instrument Definition Error!</span><br>"
-	. += "Instrument Type: [legacy? "Legacy" : "Synthesized"]<br>"
+	. += using_instrument?.ready()? "Stan: <span class='good'>Gotowy</span><br>" : "Stan: <span class='bad'>!Błąd definicji instrumentu!</span><br>"
+	. += "Typ instrumentu: [legacy? "dawny" : "syntetyzowany"]<br>"
 	. += "<a href='byond://?src=[REF(src)];setvolume=1'>Volume</a>: [volume]<br>"
-	. += "<a href='byond://?src=[REF(src)];setdropoffvolume=1'>Volume Dropoff Threshold</a>: [sustain_dropoff_volume]<br>"
-	. += "<a href='byond://?src=[REF(src)];togglesustainhold=1'>Sustain indefinitely last held note</a>: [full_sustain_held_note? "Enabled" : "Disabled"].<br>"
+	. += "<a href='byond://?src=[REF(src)];setdropoffvolume=1'>Próg zaniku głośności</a>: [sustain_dropoff_volume]<br>"
+	. += "<a href='byond://?src=[REF(src)];togglesustainhold=1'>Podtrzymuj bez końca ostatnią przytrzymaną nutę</a>: [full_sustain_held_note? "włączone" : "wyłączone"].<br>"
 	. += "</div>"
 
 /datum/song/ui_interact(mob/user)
@@ -38,50 +38,36 @@
 	if(lines.len > 0)
 		dat += "<H3>Playback</H3>"
 		if(!playing)
-			dat += "<A href='byond://?src=[REF(src)];play=1'>Play</A> <SPAN CLASS='linkOn'>Stop</SPAN><BR><BR>"
-			dat += "Repeat Song: "
+			dat += "<A href='byond://?src=[REF(src)];play=1'>Graj</A> <SPAN CLASS='linkOn'>Stop</SPAN><BR><BR>"
+			dat += "Powtarzaj utwór: "
 			dat += repeat > 0 ? "<A href='byond://?src=[REF(src)];repeat=-10'>-</A><A href='byond://?src=[REF(src)];repeat=-1'>-</A>" : "<SPAN CLASS='linkOff'>-</SPAN><SPAN CLASS='linkOff'>-</SPAN>"
 			dat += " [repeat] times "
 			dat += repeat < max_repeats ? "<A href='byond://?src=[REF(src)];repeat=1'>+</A><A href='byond://?src=[REF(src)];repeat=10'>+</A>" : "<SPAN CLASS='linkOff'>+</SPAN><SPAN CLASS='linkOff'>+</SPAN>"
 			dat += "<BR>"
 		else
-			dat += "<SPAN CLASS='linkOn'>Play</SPAN> <A href='byond://?src=[REF(src)];stop=1'>Stop</A><BR>"
-			dat += "Repeats left: <B>[repeat]</B><BR>"
+			dat += "<SPAN CLASS='linkOn'>Graj</SPAN> <A href='byond://?src=[REF(src)];stop=1'>Stop</A><BR>"
+			dat += "Pozostałe powtórzenia: <B>[repeat]</B><BR>"
 	if(!editing)
-		dat += "<BR><B><A href='byond://?src=[REF(src)];edit=2'>Show Editor</A></B><BR>"
+		dat += "<BR><B><A href='byond://?src=[REF(src)];edit=2'>Pokaż edytor</A></B><BR>"
 	else
 		dat += "<H3>Editing</H3>"
-		dat += "<B><A href='byond://?src=[REF(src)];edit=1'>Hide Editor</A></B>"
-		dat += " <A href='byond://?src=[REF(src)];newsong=1'>Start a New Song</A>"
+		dat += "<B><A href='byond://?src=[REF(src)];edit=1'>Ukryj edytor</A></B>"
+		dat += " <A href='byond://?src=[REF(src)];newsong=1'>Zacznij nowy utwór</A>"
 		dat += " <A href='byond://?src=[REF(src)];import=1'>Import a Song</A><BR><BR>"
 		var/bpm = round(600 / tempo)
 		dat += "Tempo: <A href='byond://?src=[REF(src)];tempo=[world.tick_lag]'>-</A> [bpm] BPM <A href='byond://?src=[REF(src)];tempo=-[world.tick_lag]'>+</A><BR><BR>"
 		var/linecount = 0
 		for(var/line in lines)
 			linecount += 1
-			dat += "Line [linecount]: <A href='byond://?src=[REF(src)];modifyline=[linecount]'>Edit</A> <A href='byond://?src=[REF(src)];deleteline=[linecount]'>X</A> [line]<BR>"
-		dat += "<A href='byond://?src=[REF(src)];newline=1'>Add Line</A><BR><BR>"
+			dat += "Linia [linecount]: <A href='byond://?src=[REF(src)];modifyline=[linecount]'>Edytuj</A> <A href='byond://?src=[REF(src)];deleteline=[linecount]'>X</A> [line]<BR>"
+		dat += "<A href='byond://?src=[REF(src)];newline=1'>Dodaj linię</A><BR><BR>"
 		if(help)
-			dat += "<B><A href='byond://?src=[REF(src)];help=1'>Hide Help</A></B><BR>"
+			dat += "<B><A href='byond://?src=[REF(src)];help=1'>Ukryj pomoc</A></B><BR>"
 			dat += {"
-					Lines are a series of chords, separated by commas (,), each with notes separated by hyphens (-).<br>
-					Every note in a chord will play together, with chord timed by the tempo.<br>
-					<br>
-					Notes are played by the names of the note, and optionally, the accidental, and/or the octave number.<br>
-					By default, every note is natural and in octave 3. Defining otherwise is remembered for each note.<br>
-					Example: <i>C,D,E,F,G,A,B</i> will play a C major scale.<br>
-					After a note has an accidental placed, it will be remembered: <i>C,C4,C,C3</i> is <i>C3,C4,C4,C3</i><br>
-					Chords can be played simply by seperating each note with a hyphon: <i>A-C#,Cn-E,E-G#,Gn-B</i><br>
-					A pause may be denoted by an empty chord: <i>C,E,,C,G</i><br>
-					To make a chord be a different time, end it with /x, where the chord length will be length<br>
-					defined by tempo / x: <i>C,G/2,E/4</i><br>
-					Combined, an example is: <i>E-E4/4,F#/2,G#/8,B/8,E3-E4/4</i>
-					<br>
-					Lines may be up to [MUSIC_MAXLINECHARS] characters.<br>
-					A song may only contain up to [MUSIC_MAXLINES] lines.<br>
+					Linie to ciągi akordów oddzielonych przecinkami (,), a nuty w akordzie oddziela się łącznikami (-).<br>Wszystkie nuty w akordzie zagrają razem, a czas akordu wyznacza tempo.<br><br>Nuty zapisuje się nazwą nuty i opcjonalnie znakiem chromatycznym i/lub numerem oktawy.<br>Domyślnie każda nuta jest naturalna i w oktawie 3. Zmienione ustawienie jest zapamiętywane dla każdej nuty.<br>Przykład: <i>C,D,E,F,G,A,B</i> zagra gamę C-dur.<br>Gdy nuta dostanie znak chromatyczny, zostanie on zapamiętany: <i>C,C4,C,C3</i> to <i>C3,C4,C4,C3</i><br>Akordy można grać, po prostu oddzielając nuty łącznikiem: <i>A-C#,Cn-E,E-G#,Gn-B</i><br>Pauzę oznacza pusty akord: <i>C,E,,C,G</i><br>Aby akord trwał inaczej, zakończ go /x, a długość akordu wyniesie<br>tempo / x: <i>C,G/2,E/4</i><br>Łącznie przykład wygląda tak: <i>E-E4/4,F#/2,G#/8,B/8,E3-E4/4</i><br>Linie mogą mieć do [MUSIC_MAXLINECHARS] znaków.<br>Utwór może mieć najwyżej [MUSIC_MAXLINES] linii.<br>
 					"}
 		else
-			dat += "<B><A href='byond://?src=[REF(src)];help=2'>Show Help</A></B><BR>"
+			dat += "<B><A href='byond://?src=[REF(src)];help=2'>Pokaż pomoc</A></B><BR>"
 
 	var/datum/browser/popup = new(user, "instrument", parent?.name || "instrument", 700, 500)
 	popup.set_content(dat.Join(""))
@@ -103,12 +89,12 @@
 		else
 			tempo = sanitize_tempo(5) // default 120 BPM
 		if(lines.len > MUSIC_MAXLINES)
-			to_chat(usr, "Too many lines!")
+			to_chat(usr, "Za dużo linii!")
 			lines.Cut(MUSIC_MAXLINES + 1)
 		var/linenum = 1
 		for(var/l in lines)
 			if(length_char(l) > MUSIC_MAXLINECHARS)
-				to_chat(usr, "Line [linenum] too long!")
+				to_chat(usr, "Linia [linenum] jest za długa!")
 				lines.Remove(l)
 			else
 				linenum++
@@ -130,12 +116,12 @@
 	else if(href_list["import"])
 		var/t = ""
 		do
-			t = html_encode(input(usr, "Please paste the entire song, formatted:", text("[]", name), t)  as message)
+			t = html_encode(input(usr, "Wklej cały utwór w formacie:", text("[]", name), t)  as message)
 			if(!in_range(parent, usr))
 				return
 
 			if(length_char(t) >= MUSIC_MAXLINES * MUSIC_MAXLINECHARS)
-				var/cont = input(usr, "Your message is too long! Would you like to continue editing it?", "", "yes") in list("yes", "no")
+				var/cont = input(usr, "Twoja wiadomość jest za długa! Czy chcesz kontynuować edycję?", "", "yes") in list("yes", "no")
 				if(cont == "no")
 					break
 		while(length_char(t) > MUSIC_MAXLINES * MUSIC_MAXLINECHARS)
@@ -163,7 +149,7 @@
 		INVOKE_ASYNC(src, PROC_REF(start_playing), usr)
 
 	else if(href_list["newline"])
-		var/newline = html_encode(input("Enter your line: ", parent.name) as text|null)
+		var/newline = html_encode(input("Wpisz swoją linię: ", parent.name) as text|null)
 		if(!newline || !in_range(parent, usr))
 			return
 		if(lines.len > MUSIC_MAXLINES)
@@ -180,7 +166,7 @@
 
 	else if(href_list["modifyline"])
 		var/num = round(text2num(href_list["modifyline"]),1)
-		var/content = stripped_input(usr, "Enter your line: ", parent.name, lines[num], MUSIC_MAXLINECHARS)
+		var/content = stripped_input(usr, "Wpisz swoją linię: ", parent.name, lines[num], MUSIC_MAXLINECHARS)
 		if(!content || !in_range(parent, usr))
 			return
 		if(num > lines.len || num < 1)
@@ -191,22 +177,22 @@
 		stop_playing()
 
 	else if(href_list["setlinearfalloff"])
-		var/amount = input(usr, "Set linear sustain duration in seconds", "Linear Sustain Duration") as null|num
+		var/amount = input(usr, "Ustaw czas liniowego podtrzymania w sekundach", "Czas liniowego podtrzymania") as null|num
 		if(!isnull(amount))
 			set_linear_falloff_duration(round(amount * 10, world.tick_lag))
 
 	else if(href_list["setexpfalloff"])
-		var/amount = input(usr, "Set exponential sustain factor", "Exponential sustain factor") as null|num
+		var/amount = input(usr, "Ustaw współczynnik wykładniczego podtrzymania", "Współczynnik wykładniczego podtrzymania") as null|num
 		if(!isnull(amount))
 			set_exponential_drop_rate(round(amount, 0.00001))
 
 	else if(href_list["setvolume"])
-		var/amount = input(usr, "Set volume", "Volume") as null|num
+		var/amount = input(usr, "Ustaw głośność", "Volume") as null|num
 		if(!isnull(amount))
 			set_volume(round(amount, 1))
 
 	else if(href_list["setdropoffvolume"])
-		var/amount = input(usr, "Set dropoff threshold", "Dropoff Threshold Volume") as null|num
+		var/amount = input(usr, "Ustaw próg zaniku", "Głośność progu zaniku") as null|num
 		if(!isnull(amount))
 			set_dropoff_volume(round(amount, 0.01))
 
@@ -221,11 +207,11 @@
 			var/datum/instrument/I = SSinstruments.get_instrument(i)
 			if(I)
 				LAZYSET(categories[I.category || "ERROR CATEGORY"], I.name, I.id)
-		var/cat = input(usr, "Select Category", "Instrument Category") as null|anything in categories
+		var/cat = input(usr, "Wybierz kategorię", "Kategoria instrumentu") as null|anything in categories
 		if(!cat)
 			return
 		var/list/instruments = categories[cat]
-		var/choice = input(usr, "Select Instrument", "Instrument Selection") as null|anything in instruments
+		var/choice = input(usr, "Wybierz instrument", "Wybór instrumentu") as null|anything in instruments
 		if(!choice)
 			return
 		choice = instruments[choice]		//get id
@@ -233,12 +219,12 @@
 			set_instrument(choice)
 
 	else if(href_list["setnoteshift"])
-		var/amount = input(usr, "Set note shift", "Note Shift") as null|num
+		var/amount = input(usr, "Ustaw przesunięcie nut", "Przesunięcie nut") as null|num
 		if(!isnull(amount))
 			note_shift = clamp(amount, note_shift_min, note_shift_max)
 
 	else if(href_list["setsustainmode"])
-		var/choice = input(usr, "Choose a sustain mode", "Sustain Mode") as null|anything in list("Linear", "Exponential")
+		var/choice = input(usr, "Wybierz tryb podtrzymania", "Tryb podtrzymania") as null|anything in list("Linear", "Exponential")
 		switch(choice)
 			if("Linear")
 				sustain_mode = SUSTAIN_LINEAR

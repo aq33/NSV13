@@ -25,7 +25,7 @@
 	if(holder.fakekey)
 		rank_name = pick(strings(DSAY_NICKNAME_FILE, "ranks", CONFIG_DIRECTORY))
 		admin_name = pick(strings(DSAY_NICKNAME_FILE, "names", CONFIG_DIRECTORY))
-	var/rendered = "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[rank_name]([admin_name])</span> says, <span class='message'>\"[emoji_parse(msg)]\"</span></span>"
+	var/rendered = "<span class='game deadsay'><span class='prefix'>MARTWI:</span> <span class='name'>[rank_name]([admin_name])</span> mówi: <span class='message'>\"[emoji_parse(msg)]\"</span></span>"
 
 	for (var/mob/M in GLOB.player_list)
 		if(isnewplayer(M))

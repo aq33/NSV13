@@ -31,7 +31,7 @@
 
 /obj/machinery/atmospherics/components/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>[src] is on layer [piping_layer].</span>"
+	. += "<span class='notice'>[src] jest na warstwie [piping_layer].</span>"
 
 // Iconnery
 
@@ -208,7 +208,7 @@
 /obj/machinery/atmospherics/components/ui_status(mob/user)
 	if(allowed(user))
 		return ..()
-	to_chat(user, "<span class='danger'>Access denied.</span>")
+	to_chat(user, "<span class='danger'>Odmowa dostępu.</span>")
 	return UI_CLOSE
 
 // Tool acts

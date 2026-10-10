@@ -40,7 +40,7 @@ Passive gate is similar to the regular pump except:
 /obj/machinery/atmospherics/components/binary/passive_gate/AltClick(mob/user)
 	if(can_interact(user))
 		target_pressure = ONE_ATMOSPHERE*100
-		balloon_alert(user, "You set the target pressure to [target_pressure] kPa.")
+		balloon_alert(user, "Ustawiasz docelowe ciśnienie na [target_pressure] kPa.")
 		update_icon()
 		ui_update()
 	return
@@ -162,7 +162,7 @@ Passive gate is similar to the regular pump except:
 /obj/machinery/atmospherics/components/binary/passive_gate/can_unwrench(mob/user)
 	. = ..()
 	if(. && on)
-		to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz odkręcić [src], najpierw go wyłącz!</span>")
 		return FALSE
 
 

@@ -13,13 +13,13 @@
 	var/hearing_range = 3
 
 /obj/item/assembly/timer/suicide_act(mob/living/user)
-	user.visible_message("<span class='suicide'>[user] looks at the timer and decides [user.p_their()] fate! It looks like [user.p_theyre()] going to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] patrzy na zegar i decyduje o swoim losie! Wygląda na to, że zamierza popełnić samobójstwo!</span>")
 	activate()//doesnt rely on timer_end to prevent weird metas where one person can control the timer and therefore someone's life. (maybe that should be how it works...)
 	addtimer(CALLBACK(src, PROC_REF(manual_suicide), user), time SECONDS)//kill yourself once the time runs out
 	return MANUAL_SUICIDE
 
 /obj/item/assembly/timer/proc/manual_suicide(mob/living/user)
-	user.visible_message("<span class='suicide'>[user]'s time is up!</span>")
+	user.visible_message("<span class='suicide'>Czas [user] się skończył!</span>")
 	user.adjustOxyLoss(200)
 	user.death(0)
 
@@ -33,7 +33,7 @@
 
 /obj/item/assembly/timer/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The timer is [timing ? "counting down from [time]":"set for [time] seconds"].</span>"
+	. += "<span class='notice'>Zegar [timing ? "odlicza od [time]":"jest ustawiony na [time] s"].</span>"
 
 /obj/item/assembly/timer/activate()
 	if(!..())
@@ -56,7 +56,7 @@
 	if(!secured || next_activate > world.time)
 		return FALSE
 	pulse(FALSE)
-	audible_message("[icon2html(src, hearers(src))] *beep* *beep* *beep*", null, hearing_range)
+	audible_message("[icon2html(src, hearers(src))] *bip* *bip* *bip*", null, hearing_range)
 	playsound(get_turf(src), 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 	if(loop)
 		timing = TRUE

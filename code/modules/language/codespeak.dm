@@ -42,10 +42,10 @@
 		return
 
 	if(user.has_language(/datum/language/codespeak))
-		to_chat(user, "<span class='boldannounce'>You start skimming through [src], but you already know Codespeak.</span>")
+		to_chat(user, "<span class='boldannounce'>Zaczynasz kartkować [src], ale już znasz Kodomowę.</span>")
 		return
 
-	to_chat(user, "<span class='boldannounce'>You start skimming through [src], and suddenly your mind is filled with codewords and responses.</span>")
+	to_chat(user, "<span class='boldannounce'>Zaczynasz kartkować [src] i nagle twój umysł wypełniają słowa kodowe i odzewy.</span>")
 	user.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
 
 	use_charge(user)
@@ -60,11 +60,11 @@
 	playsound(loc, "punch", 25, 1, -1)
 
 	if(M.stat == DEAD)
-		M.visible_message("<span class='danger'>[user] smacks [M]'s lifeless corpse with [src].</span>", "<span class='userdanger'>[user] smacks your lifeless corpse with [src].</span>", "<span class='italics'>You hear smacking.</span>")
+		M.visible_message("<span class='danger'>[user] okłada bezwładne zwłoki [M] [src].</span>", "<span class='userdanger'>[user] okłada twoje bezwładne zwłoki [src].</span>", "<span class='italics'>Słyszysz plaskanie.</span>")
 	else if(M.has_language(/datum/language/codespeak))
-		M.visible_message("<span class='danger'>[user] beats [M] over the head with [src]!</span>", "<span class='userdanger'>[user] beats you over the head with [src]!</span>", "<span class='italics'>You hear smacking.</span>")
+		M.visible_message("<span class='danger'>[user] wali [M] po głowie [src]!</span>", "<span class='userdanger'>[user] wali cię po głowie [src]!</span>", "<span class='italics'>Słyszysz plaskanie.</span>")
 	else
-		M.visible_message("<span class='notice'>[user] teaches [M] by beating [M.p_them()] over the head with [src]!</span>", "<span class='boldnotice'>As [user] hits you with [src], codewords and responses flow through your mind.</span>", "<span class='italics'>You hear smacking.</span>")
+		M.visible_message("<span class='notice'>[user] uczy [M], waląc go po głowie [src]!</span>", "<span class='boldnotice'>Gdy [user] uderza cię [src], przez twój umysł przepływają słowa kodowe i odzewy.</span>", "<span class='italics'>Słyszysz plaskanie.</span>")
 		M.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
 		use_charge(user)
 
@@ -72,7 +72,7 @@
 	charges--
 	if(!charges)
 		var/turf/T = get_turf(src)
-		T.visible_message("<span class='warning'>The cover and contents of [src] start shifting and changing!</span>")
+		T.visible_message("<span class='warning'>Okładka i treść [src] zaczynają się przesuwać i zmieniać!</span>")
 
 		qdel(src)
 		var/obj/item/book/manual/random/book = new(T)

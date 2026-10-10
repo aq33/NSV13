@@ -54,7 +54,7 @@
 	icon_state = "ship_bottle"
 
 /obj/item/ship_in_a_bottle/attack_self(mob/user)
-	to_chat(user, "You're not sure how they get the ships in these things, but you're pretty sure you know how to get it out.")
+	to_chat(user, "Nie wiesz, jak wkładają statki do tych rzeczy, ale chyba wiesz, jak go stamtąd wyjąć.")
 	playsound(user.loc, 'sound/effects/glassbr1.ogg', 100, 1)
 	new /obj/vehicle/ridden/lavaboat/dragon(get_turf(src))
 	qdel(src)

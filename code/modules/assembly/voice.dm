@@ -44,15 +44,15 @@
 		if(INCLUSIVE_MODE)
 			recorded = raw_message
 			listening = FALSE
-			say("Activation message is '[recorded]'.", message_language)
+			say("Wiadomość aktywująca to „[recorded]”.", message_language)
 		if(EXCLUSIVE_MODE)
 			recorded = raw_message
 			listening = FALSE
-			say("Activation message is '[recorded]'.", message_language)
+			say("Wiadomość aktywująca to „[recorded]”.", message_language)
 		if(RECOGNIZER_MODE)
 			recorded = speaker.GetVoice()
 			listening = FALSE
-			say("Your voice pattern is saved.", message_language)
+			say("Twój wzorzec głosu został zapisany.", message_language)
 		if(VOICE_SENSOR_MODE)
 			if(length(raw_message))
 				addtimer(CALLBACK(src, PROC_REF(pulse), 0), 10)
@@ -76,7 +76,7 @@
 /obj/item/assembly/voice/multitool_act(mob/living/user, obj/item/I)
 	mode %= modes.len
 	mode++
-	to_chat(user, "<span class='notice'>You set [src] into [modes[mode]] mode.</span>")
+	to_chat(user, "<span class='notice'>Ustawiasz [src] w tryb [modes[mode]].</span>")
 	listening = FALSE
 	recorded = ""
 	return TRUE
@@ -85,7 +85,7 @@
 	if(!secured || holder)
 		return FALSE
 	listening = !listening
-	say("[listening ? "Now" : "No longer"] recording input.")
+	say("[listening ? "Teraz nagrywasz" : "Już nie nagrywasz"] dźwięk.")
 	return TRUE
 
 /obj/item/assembly/voice/attack_self(mob/user)
