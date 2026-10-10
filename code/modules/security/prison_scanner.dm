@@ -46,7 +46,7 @@
 	. = ..()
 	if(!linked_id)
 		to_chat(user, "<span class='warning'>No linked account!</span>")
-	else if(!istype(O, /obj/item/reagent_containers/food/snacks/donut) && !istype(O, /obj/item/toy/plush))
+	else if(!istype(O, /obj/item/food/donut) && !istype(O, /obj/item/toy/plush))
 		to_chat(user, "<span class='warning'>Invalid item! Only scan donuts or plushes made in the workshop!</span>")
 	else
 		if(O.obj_flags & SCANNED)

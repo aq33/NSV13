@@ -257,9 +257,9 @@ GLOBAL_LIST_EMPTY(asteroid_spawn_markers)		//handles mining asteroids, kind of s
 	var/dat
 	dat += "<h2>Current asteroid:  </h2>"
 	if(!current_asteroid)
-		dat += "<A href='?src=\ref[src];pull_asteroid=1'>Pull in asteroid</font></A><BR>"
+		dat += "<A href='byond://?src=\ref[src];pull_asteroid=1'>Pull in asteroid</font></A><BR>"
 	else
-		dat += "<A href='?src=\ref[src];push_asteroid=1'>Push away asteroid</font></A><BR>"
+		dat += "<A href='byond://?src=\ref[src];push_asteroid=1'>Push away asteroid</font></A><BR>"
 	var/datum/browser/popup = new(user, "Pull Asteroids", name, 400, 500)
 	popup.set_content(dat)
 	popup.open()

@@ -44,7 +44,7 @@ jobs:
           find . -name "*.php" -print0 | xargs -0 -n1 php -l
           find . -name "*.json" -not -path "*/node_modules/*" -print0 | xargs -0 python ./tools/json_verifier.py
           bash tools/ci/check_grep.sh
-          tools/build/build --ci lint tgui-test
+          tools/build/build --ci lint tgui-test tgui
           tools/bootstrap/python -m dmi.test
           tools/bootstrap/python -m mapmerge2.dmm_test
           ~/dreamchecker
@@ -57,10 +57,15 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/BYOND
-          key: ${{ runner.os }}-byond-cache-${{ hashFiles('Dockerfile') }}
+          key: ${{ runner.os }}-byond-cache-${{ hashFiles('dependencies.sh') }}
       - name: Install BYOND
         if: steps.cache-byond.outputs.cache-hit != 'true'
         run: bash tools/ci/install_byond.sh
+      - name: Install libcurl (needed by BYOND 516.1664+ on Linux)
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt-get update -qq || true
+          sudo apt-get install -y --no-install-recommends libcurl4:i386
       - name: Compile All Maps
         run: |
           source $HOME/BYOND/byond/bin/byondsetup
@@ -83,7 +88,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/BYOND
-          key: ${{ runner.os }}-byond-cache-${{ hashFiles('Dockerfile') }}
+          key: ${{ runner.os }}-byond-cache-${{ hashFiles('dependencies.sh') }}
       - name: Install BYOND
         if: steps.cache-byond.outputs.cache-hit != 'true'
         run: bash tools/ci/install_byond.sh
@@ -96,7 +101,7 @@ jobs:
         run: |
           sudo dpkg --add-architecture i386
           sudo apt update || true
-          sudo apt install libssl3:i386
+          sudo apt install libssl3:i386 libcurl4:i386
           bash tools/ci/install_rust_g.sh
       - name: Install auxmos
         run: |

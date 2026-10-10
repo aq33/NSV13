@@ -116,13 +116,13 @@
 /obj/structure/mirror{
 	pixel_x = -28
 	},
-/obj/structure/chair/comfy{
+/obj/structure/chair/fancy/comfy{
 	dir = 8
 	},
 /turf/open/floor/plasteel/ameridiner,
 /area/template_noop)
 "x" = (
-/obj/structure/chair/fancy/sofa/right{
+/obj/structure/chair/fancy/sofa/old/right{
 	dir = 8
 	},
 /turf/open/floor/carpet{
@@ -256,7 +256,7 @@
 /turf/open/floor/wood,
 /area/template_noop)
 "U" = (
-/obj/structure/chair/fancy/sofa/left{
+/obj/structure/chair/fancy/sofa/old/left{
 	dir = 8
 	},
 /turf/open/floor/carpet{

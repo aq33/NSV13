@@ -64,7 +64,7 @@
 	return "[round(seconds / 60)]:[secs < 10 ? "0" : ""][secs]"
 
 /obj/machinery/jukebox/proc/yt_link(action, text, extra = "", css = "jb-btn")
-	return "<a class='[css]' href='?src=[REF(src)];action=[action][extra]'>[text]</a>"
+	return "<a class='[css]' href='byond://?src=[REF(src)];action=[action][extra]'>[text]</a>"
 
 /// Całe okno jukeboxa
 /obj/machinery/jukebox/proc/yt_ui(mob/user)
@@ -132,7 +132,7 @@
 		var/title = html_encode(T["title"])
 		var/duration = T["duration"] ? jukebox_time_text(T["duration"]) : ""
 		var/row_class = (yt_active && i == yt_index) ? "jb-cur" : (i % 2 ? "" : "jb-alt")
-		var/title_cell = (yt_active && i == yt_index) ? "&#9654; [title]" : "<a href='?src=[REF(src)];action=yt_play;index=[i]'>[title]</a>"
+		var/title_cell = (yt_active && i == yt_index) ? "&#9654; [title]" : "<a href='byond://?src=[REF(src)];action=yt_play;index=[i]'>[title]</a>"
 		dat += "<tr class='[row_class]'><td class='jb-n'>[i]</td><td class='jb-t'>[title_cell]</td><td class='jb-d'>[duration]</td></tr>"
 	dat += "</table><div id='jb-none' class='jb-muted' style='display:none;padding:6px'>Brak wyników.</div></div></div>"
 	// filtrowanie po stronie przeglądarki; wpisany tekst zapamiętujemy na serwerze, żeby przetrwał odświeżenie okna

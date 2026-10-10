@@ -9,8 +9,8 @@
 
 /datum/chemical_reaction/cooking_oil
 	name = "Cooking Oil"
-	id = /datum/reagent/consumable/cooking_oil
-	results = list(/datum/reagent/consumable/cooking_oil = 4)
+	id = /datum/reagent/consumable/nutriment/fat/oil
+	results = list(/datum/reagent/consumable/nutriment/fat/oil = 4)
 	required_reagents = list(/datum/reagent/hydrogen = 1, /datum/reagent/oil = 1, /datum/reagent/consumable/sugar = 1, /datum/reagent/carbon = 1)
 
 /datum/chemical_reaction/lube
@@ -29,7 +29,7 @@
 	name = "Spray Tan"
 	id = /datum/reagent/spraytan
 	results = list(/datum/reagent/spraytan = 2)
-	required_reagents = list(/datum/reagent/consumable/orangejuice = 1, /datum/reagent/consumable/cornoil = 1)
+	required_reagents = list(/datum/reagent/consumable/orangejuice = 1, /datum/reagent/consumable/nutriment/fat/oil = 1)
 
 /datum/chemical_reaction/impedrezene
 	name = "Impedrezene"
@@ -47,7 +47,7 @@
 	name = "Glycerol"
 	id = /datum/reagent/glycerol
 	results = list(/datum/reagent/glycerol = 1)
-	required_reagents = list(/datum/reagent/consumable/cornoil = 3, /datum/reagent/toxin/acid = 1)
+	required_reagents = list(/datum/reagent/consumable/nutriment/fat/oil = 3, /datum/reagent/toxin/acid = 1)
 
 /datum/chemical_reaction/sodiumchloride
 	name = "Sodium Chloride"
@@ -121,13 +121,14 @@
 /datum/chemical_reaction/meatification
 	name = "Meatification"
 	id = "meatification"
-	required_reagents = list(/datum/reagent/liquidgibs = 10, /datum/reagent/consumable/nutriment = 10, /datum/reagent/carbon = 10)
+	required_reagents = list(/datum/reagent/liquidgibs = 10, /datum/reagent/consumable/nutriment = 10)
 	mob_react = FALSE
+	required_catalysts = list(/datum/reagent/consumable/enzyme = 5)
 
 /datum/chemical_reaction/meatification/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/meat/slab/meatproduct(location)
+		new /obj/item/food/meat/slab/meatproduct(location)
 	return
 
 /datum/chemical_reaction/carbondioxide
@@ -782,3 +783,23 @@
 	id = /datum/reagent/mutationtoxin/plasma
 	results = list(/datum/reagent/mutationtoxin/plasma = 5)
 	required_reagents  = list(/datum/reagent/aslimetoxin = 5, /datum/reagent/toxin/plasma = 60, /datum/reagent/uranium = 20)
+
+/datum/chemical_reaction/ants // Breeding ants together, high sugar cost makes this take a while to farm.
+	name = "Ant breeding" //NSV13 - our reactions carry a name and id
+	id = "ants"
+	results = list(/datum/reagent/ants = 3)
+	required_reagents = list(/datum/reagent/ants = 2, /datum/reagent/consumable/sugar = 8)
+
+/datum/chemical_reaction/ant_slurry // We're basically glueing ants together with synthflesh & maint sludge to make a bigger ant.
+	name = "Ant slurry"
+	id = "ant_slurry"
+	required_reagents = list(/datum/reagent/ants = 50, /datum/reagent/medicine/synthflesh = 20, /datum/reagent/ammonia = 5)
+	required_temp = 480
+	//reaction_flags = REACTION_INSTANT
+	//reaction_tags = REACTION_TAG_EASY | REACTION_TAG_UNIQUE
+
+/datum/chemical_reaction/ant_slurry/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i in rand(1, created_volume) to created_volume)
+		new /mob/living/simple_animal/hostile/ant(location)
+	..()

@@ -223,8 +223,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_QUICK_CARRY		"quick-carry"
 #define TRAIT_QUICKER_CARRY		"quicker-carry"
 #define TRAIT_UNINTELLIGIBLE_SPEECH "unintelligible-speech"
-#define TRAIT_UNSTABLE			"unstable"
-#define TRAIT_XENO_IMMUNE		"xeno_immune" //prevents facehuggers implanting races that wouldn't be able to host an egg
+#define TRAIT_UNSTABLE "unstable"
+#define TRAIT_OIL_FRIED "oil_fried"
+#define TRAIT_XENO_IMMUNE "xeno_immune" //prevents facehuggers implanting races that wouldn't be able to host an egg
 #define TRAIT_NECROPOLIS_INFECTED "necropolis-infection"
 #define TRAIT_BEEFRIEND 		"beefriend"
 #define TRAIT_MEDICAL_HUD		"med_hud"
@@ -263,6 +264,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NO_STORAGE_INSERT	"no_storage_insert" //cannot be inserted in a storage.
 #define TRAIT_SPRAYPAINTED		"spraypainted"
 #define TRAIT_T_RAY_VISIBLE     "t-ray-visible" // Visible on t-ray scanners if the atom/var/level == 1
+/// If this item's been fried
+#define TRAIT_FOOD_FRIED "food_fried"
+/// If this item's been made by a chef instead of spawned by the map or admins
+#define TRAIT_FOOD_CHEF_MADE "food_made_by_chef"
 #define TRAIT_NO_TELEPORT		"no-teleport" //you just can't
 #define TRAIT_STARGAZED			"stargazed"	//Affected by a stargazer
 #define TRAIT_DOOR_PRYER		"door-pryer"	//Item can be used on airlocks to pry them open (even when powered)
@@ -305,6 +310,15 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_FRIENDLY			"friendly"
 #define TRAIT_GRABWEAKNESS		"grab_weakness"
 #define TRAIT_BRAIN_TUMOR		"brain_tumor"
+
+///Trait for dryable items
+#define TRAIT_DRYABLE "trait_dryable"
+///Trait for dried items
+#define TRAIT_DRIED "trait_dried"
+// Trait for customizable reagent holder
+#define TRAIT_CUSTOMIZABLE_REAGENT_HOLDER "customizable_reagent_holder"
+// Trait for allowing an item that isn't food into the customizable reagent holder
+#define TRAIT_ODD_CUSTOMIZABLE_FOOD_INGREDIENT "odd_customizable_food_ingredient"
 
 ///Trait applied to turfs when an atmos holosign is placed on them. It will stop firedoors from closing.
 #define TRAIT_FIREDOOR_STOP "firedoor_stop"

@@ -130,6 +130,9 @@
 		if(changeling)
 			tab_data["Chemical Storage"] = GENERATE_STAT_TEXT("[changeling.chem_charges]/[changeling.chem_storage]")
 			tab_data["Absorbed DNA"] = GENERATE_STAT_TEXT("[changeling.absorbedcount]")
+	var/mob/living/simple_animal/horror/H = has_horror_inside() // AQ EDIT - Yogstation#13033
+	if(H?.controlling)
+		tab_data["Chemikalia horroru"] = GENERATE_STAT_TEXT("[H.chemicals]")
 	return tab_data
 
 // called when something steps onto a human
@@ -324,7 +327,7 @@
 					if (c.crimeDetails)
 						to_chat(usr, "<b>Details:</b> [c.crimeDetails]")
 					else
-						to_chat(usr, "<b>Details:</b> <A href='?src=[REF(src)];hud=s;add_details=1;cdataid=[c.dataId]'>\[Add details]</A>")
+						to_chat(usr, "<b>Details:</b> <A href='byond://?src=[REF(src)];hud=s;add_details=1;cdataid=[c.dataId]'>\[Add details]</A>")
 					to_chat(usr, "Added by [c.author] at [c.time]")
 					to_chat(usr, "----------")
 				to_chat(usr, "<b>Notes:</b> [sec_record.fields["notes"]]")
@@ -1004,8 +1007,9 @@
 		if(do_after(src, carrydelay, TRUE, target))
 			//Second check to make sure they're still valid to be carried
 			if(can_be_firemanned(target) && !incapacitated(FALSE, TRUE) && !target.buckled)
-				buckle_mob(target, TRUE, TRUE, 90, 1, 0)
-				return
+				// AQ EDIT - check_loc FALSE, the carried mob stands next to us and gets moved onto our turf
+				if(buckle_mob(target, TRUE, FALSE, 90, 1, 0))
+					return
 		visible_message("<span class='warning'>[src] fails to fireman carry [target]!</span>")
 	else
 		to_chat(src, "<span class='notice'>You can't fireman carry [target] while they're standing!</span>")
@@ -1018,7 +1022,9 @@
 				if(target.incapacitated(FALSE, TRUE) || incapacitated(FALSE, TRUE))
 					target.visible_message("<span class='warning'>[target] can't hang onto [src]!</span>")
 					return
-				buckle_mob(target, TRUE, TRUE, FALSE, 0, 2)
+				// AQ EDIT - check_loc FALSE, the rider stands next to us and gets moved onto our turf
+				if(!buckle_mob(target, TRUE, FALSE, FALSE, 0, 2))
+					target.visible_message("<span class='warning'>[target] fails to climb onto [src]!</span>")
 		else
 			visible_message("<span class='warning'>[target] fails to climb onto [src]!</span>")
 	else

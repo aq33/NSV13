@@ -87,6 +87,11 @@
 	},
 /turf/open/floor/durasteel/techfloor_grid,
 /area/engine/atmospherics_engine)
+"ai" = (
+/obj/effect/turf_decal/tile/bar/tile_marquee,
+/obj/machinery/griddle,
+/turf/open/floor/durasteel,
+/area/crew_quarters/kitchen)
 "aj" = (
 /obj/structure/grille,
 /obj/structure/lattice,
@@ -266,6 +271,11 @@
 /obj/effect/spawner/room/threexthree,
 /turf/template_noop,
 /area/maintenance/nsv/deck2/port)
+"aC" = (
+/obj/effect/turf_decal/tile/bar/tile_marquee,
+/obj/machinery/oven,
+/turf/open/floor/durasteel,
+/area/crew_quarters/kitchen)
 "aD" = (
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/machinery/door/firedoor/border_only/directional/west,
@@ -322,6 +332,41 @@
 /obj/structure/cable,
 /turf/open/floor/monotile/steel,
 /area/nsv/weapons/gauss/battery/deck2/port)
+"aJ" = (
+/obj/structure/table,
+/obj/item/book/manual/wiki/cooking_to_serve_man{
+	pixel_y = 6;
+	pixel_x = 3
+	},
+/obj/item/reagent_containers/food/condiment/enzyme{
+	pixel_y = 8;
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/food/condiment/enzyme{
+	pixel_y = 7;
+	pixel_x = 14
+	},
+/obj/effect/turf_decal/tile/bar/tile_marquee,
+/obj/machinery/computer/ship/viewscreen,
+/obj/machinery/reagentgrinder{
+	pixel_y = 17;
+	pixel_x = -5;
+	layer = 2.8
+	},
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/food/condiment/saltshaker{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_y = 6
+	},
+/obj/item/kitchen/rollingpin,
+/turf/open/floor/durasteel,
+/area/crew_quarters/kitchen)
 "aL" = (
 /obj/machinery/conveyor/slow{
 	dir = 1;
@@ -2456,14 +2501,6 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
-"gn" = (
-/obj/item/storage/box/donkpockets{
-	pixel_y = 6
-	},
-/obj/structure/table,
-/obj/effect/turf_decal/tile/bar/tile_marquee,
-/turf/open/floor/durasteel,
-/area/crew_quarters/kitchen)
 "gq" = (
 /obj/machinery/advanced_airlock_controller/directional/north,
 /turf/open/floor/monotile/steel,
@@ -4555,37 +4592,6 @@
 	},
 /turf/open/floor/plasteel/ridged/steel,
 /area/engine/armour_pump)
-"mf" = (
-/obj/structure/table,
-/obj/item/book/manual/wiki/cooking_to_serve_man{
-	pixel_y = 6;
-	pixel_x = 3
-	},
-/obj/item/reagent_containers/food/condiment/enzyme{
-	pixel_y = 8;
-	pixel_x = 6
-	},
-/obj/item/reagent_containers/food/condiment/enzyme{
-	pixel_y = 7;
-	pixel_x = 14
-	},
-/obj/effect/turf_decal/tile/bar/tile_marquee,
-/obj/machinery/computer/ship/viewscreen,
-/obj/machinery/reagentgrinder{
-	pixel_y = 17;
-	pixel_x = -5;
-	layer = 2.8
-	},
-/obj/item/reagent_containers/food/condiment/peppermill{
-	pixel_x = 3;
-	pixel_y = 4
-	},
-/obj/item/reagent_containers/food/condiment/saltshaker{
-	pixel_x = -8;
-	pixel_y = 4
-	},
-/turf/open/floor/durasteel,
-/area/crew_quarters/kitchen)
 "mg" = (
 /obj/structure/closet/secure_closet/security/sec,
 /obj/item/book/granter/martial/jujitsu,
@@ -7157,12 +7163,6 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel/techmaint,
 /area/security/prison)
-"tA" = (
-/obj/item/kitchen/rollingpin,
-/obj/structure/table,
-/obj/effect/turf_decal/tile/bar/tile_marquee,
-/turf/open/floor/durasteel,
-/area/crew_quarters/kitchen)
 "tB" = (
 /obj/machinery/firealarm{
 	pixel_y = 24
@@ -8384,12 +8384,12 @@
 /area/science)
 "xq" = (
 /obj/structure/closet/secure_closet/freezer/meat,
-/obj/item/reagent_containers/food/snacks/meat/slab/monkey,
-/obj/item/reagent_containers/food/snacks/meat/slab/monkey,
-/obj/item/reagent_containers/food/snacks/meat/slab/monkey,
-/obj/item/reagent_containers/food/snacks/meat/slab/monkey,
-/obj/item/reagent_containers/food/snacks/meat/slab/monkey,
-/obj/item/reagent_containers/food/snacks/meat/slab/monkey,
+/obj/item/food/meat/slab/monkey,
+/obj/item/food/meat/slab/monkey,
+/obj/item/food/meat/slab/monkey,
+/obj/item/food/meat/slab/monkey,
+/obj/item/food/meat/slab/monkey,
+/obj/item/food/meat/slab/monkey,
 /obj/machinery/firealarm/directional/west,
 /obj/machinery/light_switch/north,
 /turf/open/floor/plasteel/freezer,
@@ -8590,9 +8590,9 @@
 /area/nsv/weapons)
 "xU" = (
 /obj/structure/closet/crate/hydroponics,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/food/grown/wheat,
+/obj/item/food/grown/wheat,
+/obj/item/food/grown/wheat,
 /obj/item/multitool,
 /turf/open/floor/durasteel,
 /area/hydroponics)
@@ -11072,7 +11072,7 @@
 	pixel_x = -4;
 	pixel_y = 12
 	},
-/obj/item/trash/plate{
+/obj/item/plate{
 	name = "ghost plate"
 	},
 /turf/open/floor/carpet/royalblack,
@@ -11326,7 +11326,7 @@
 /turf/open/floor/durasteel/techfloor_grid,
 /area/engine/atmos)
 "GB" = (
-/obj/structure/reagent_dispensers/cooking_oil,
+/obj/structure/reagent_dispensers/nutriment/fat/oil,
 /obj/structure/extinguisher_cabinet/east,
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/kitchen/coldroom)
@@ -11491,7 +11491,7 @@
 	},
 /obj/item/gps,
 /obj/structure/closet/crate/coffin,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
 /turf/open/floor/durasteel/techfloor,
 /area/chapel/main)
 "GZ" = (
@@ -11838,7 +11838,7 @@
 "Ia" = (
 /obj/structure/table_frame,
 /obj/item/relic,
-/obj/item/trash/can/food/beans,
+/obj/item/trash/canned/beans,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port/fore)
 "Ib" = (
@@ -12253,7 +12253,7 @@
 	layer = 4.1
 	},
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /turf/open/floor/carpet/royalblack,
 /area/crew_quarters/bar/mess_hall)
 "Jt" = (
@@ -14104,7 +14104,7 @@
 "OB" = (
 /obj/structure/table/wood,
 /obj/item/soulstone/anybody/chaplain,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
 /obj/item/reagent_containers/food/drinks/bottle/holywater{
 	pixel_x = -2;
 	pixel_y = 2
@@ -17396,7 +17396,7 @@
 	pixel_x = -3;
 	pixel_y = 11
 	},
-/obj/item/trash/plate{
+/obj/item/plate{
 	name = "ghost plate"
 	},
 /obj/machinery/firealarm/directional/east,
@@ -17639,7 +17639,7 @@
 	},
 /obj/item/paper_bin,
 /obj/item/pen,
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 10;
 	pixel_x = -7
 	},
@@ -49237,7 +49237,7 @@ rf
 un
 Ef
 QO
-mf
+aJ
 uq
 FB
 LT
@@ -49496,7 +49496,7 @@ ny
 QO
 nZ
 rw
-gn
+ai
 LT
 JU
 eQ
@@ -49753,7 +49753,7 @@ Ef
 QO
 AL
 Lf
-tA
+aC
 mZ
 bU
 at

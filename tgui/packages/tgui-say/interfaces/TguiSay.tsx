@@ -11,6 +11,7 @@ import { KEY_ESCAPE } from 'common/keycodes';
 export class TguiSay extends Component<{}, State> {
   events: Modal['events'] = eventHandlerMap(this);
   fields: Modal['fields'] = {
+    dpi: 1,
     historyCounter: 0,
     innerRef: createRef(),
     lightMode: false,
@@ -60,7 +61,7 @@ export class TguiSay extends Component<{}, State> {
         $HasKeyedChildren>
         <div className="top-border" />
         <div className="left-border" />
-        <div className="modal__content" $HasKeyedChildren>
+        <div className="modal__content">
           {!!theme && (
             <button
               className={getCss('button', theme)}

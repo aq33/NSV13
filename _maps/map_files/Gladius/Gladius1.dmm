@@ -6323,7 +6323,7 @@
 /obj/item/seeds/cabbage,
 /obj/item/seeds/ambrosia,
 /obj/item/seeds/grass,
-/obj/item/reagent_containers/food/snacks/grown/mushroom/glowshroom,
+/obj/item/food/grown/mushroom/glowshroom,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/aft)
 "dsW" = (
@@ -6334,14 +6334,14 @@
 /area/nsv/weapons/starboard)
 "dsX" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/rationpack,
-/obj/item/reagent_containers/food/snacks/rationpack{
+/obj/item/food/rationpack,
+/obj/item/food/rationpack{
 	pixel_x = 2
 	},
-/obj/item/reagent_containers/food/snacks/rationpack{
+/obj/item/food/rationpack{
 	pixel_x = 4
 	},
-/obj/item/reagent_containers/food/snacks/rationpack{
+/obj/item/food/rationpack{
 	pixel_x = 7
 	},
 /turf/open/floor/monotile/steel,
@@ -12932,7 +12932,7 @@
 /area/gateway)
 "gMB" = (
 /obj/structure/cable,
-/obj/item/trash/can/food,
+/obj/item/trash/canned,
 /turf/open/floor/plating,
 /area/maintenance/nsv/hangar)
 "gME" = (
@@ -14243,7 +14243,7 @@
 	pixel_x = 25;
 	pixel_y = -18
 	},
-/obj/item/reagent_containers/food/snacks/cheesiehonkers,
+/obj/item/food/cheesiehonkers,
 /turf/open/floor/circuit/green,
 /area/ai_monitored/turret_protected/ai)
 "hty" = (
@@ -21921,7 +21921,7 @@
 /area/medical/morgue)
 "lrC" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/waffles,
+/obj/item/food/waffles,
 /turf/open/floor/monotile/steel,
 /area/crew_quarters/dorms/nsv/state_room)
 "lrK" = (
@@ -27388,15 +27388,15 @@
 /turf/open/floor/monotile/dark,
 /area/security/checkpoint/science/research)
 "ohW" = (
-/obj/item/reagent_containers/food/snacks/grown/banana,
-/obj/item/reagent_containers/food/snacks/grown/banana,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/watermelon,
-/obj/item/reagent_containers/food/snacks/grown/watermelon,
-/obj/item/reagent_containers/food/snacks/grown/watermelon,
-/obj/item/reagent_containers/food/snacks/grown/citrus/orange,
-/obj/item/reagent_containers/food/snacks/grown/grapes,
-/obj/item/reagent_containers/food/snacks/grown/cocoapod,
+/obj/item/food/grown/banana,
+/obj/item/food/grown/banana,
+/obj/item/food/grown/wheat,
+/obj/item/food/grown/watermelon,
+/obj/item/food/grown/watermelon,
+/obj/item/food/grown/watermelon,
+/obj/item/food/grown/citrus/orange,
+/obj/item/food/grown/grapes,
+/obj/item/food/grown/cocoapod,
 /obj/structure/rack,
 /obj/item/seeds/wheat,
 /obj/item/seeds/watermelon,
@@ -43720,7 +43720,7 @@
 /area/medical/nsv/plumbing)
 "wMF" = (
 /obj/structure/closet/crate,
-/obj/item/trash/can/food/peaches/maint,
+/obj/item/trash/canned/peaches/maint,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -43942,7 +43942,7 @@
 /turf/open/floor/monotile/light,
 /area/medical/genetics)
 "wUe" = (
-/obj/item/trash/can/food/beans,
+/obj/item/trash/canned/beans,
 /turf/open/floor/plating,
 /area/maintenance/nsv/hangar)
 "wUf" = (

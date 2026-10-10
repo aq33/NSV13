@@ -162,7 +162,7 @@ GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
 /obj/item/stack/sheet/rglass/cyborg/get_amount()
 	return min(round(source.energy / metcost), round(glasource.energy / glacost))
 
-/obj/item/stack/sheet/rglass/cyborg/use(used, transfer = FALSE) // Requires special checks, because it uses two storages
+/obj/item/stack/sheet/rglass/cyborg/use(used, transfer = FALSE, check = TRUE) // Requires special checks, because it uses two storages
 	source.use_charge(used * metcost)
 	glasource.use_charge(used * glacost)
 
@@ -263,8 +263,8 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 
 /obj/item/shard/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/caltrop, force)
-	AddComponent(/datum/component/butchering, 150, 65)
+	AddComponent(/datum/component/caltrop, min_damage = force)
+	AddComponent(/datum/component/butchering, 15 SECONDS, 65)
 	icon_state = pick("large", "medium", "small")
 	switch(icon_state)
 		if("small")

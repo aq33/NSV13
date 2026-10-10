@@ -63,11 +63,11 @@ GLOBAL_VAR_INIT(boarding_guns_z_locked, TRUE)
 	dat += "Current alert level: [get_security_level()]<br>"
 
 	if(!GLOB.boarding_guns_z_locked)
-		dat += "<A href='?src=[REF(src)];locked=true'>Lock weapons on ship.</A><br>"
+		dat += "<A href='byond://?src=[REF(src)];locked=true'>Lock weapons on ship.</A><br>"
 	else
-		dat += "<A href='?src=[REF(src)];locked=false'>Unlock weapons during General Quarters.</A><br>"
+		dat += "<A href='byond://?src=[REF(src)];locked=false'>Unlock weapons during General Quarters.</A><br>"
 
-	dat += "<a href='?src=[REF(user)];mach_close=computer'>Close</a>"
+	dat += "<a href='byond://?src=[REF(user)];mach_close=computer'>Close</a>"
 
 	var/datum/browser/popup = new(user, "computer", "boarding weapon management", 300, 150) //width, height
 	popup.set_content("<center>[dat]</center>")

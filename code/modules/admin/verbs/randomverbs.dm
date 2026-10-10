@@ -1047,9 +1047,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 /datum/admins/proc/modify_goals()
 	var/dat = ""
 	for(var/datum/station_goal/S in SSticker.mode.station_goals)
-		dat += "[S.name] - <a href='?src=[REF(S)];[HrefToken()];announce=1'>Announce</a> | <a href='?src=[REF(S)];[HrefToken()];remove=1'>Remove</a><br>"
-	dat += "<br><a href='?src=[REF(src)];[HrefToken()];add_station_goal=1'>Add New Goal</a>"
-	usr << browse(dat, "window=goals;size=400x400")
+		dat += "[S.name] - <a href='byond://?src=[REF(S)];[HrefToken()];announce=1'>Announce</a> | <a href='byond://?src=[REF(S)];[HrefToken()];remove=1'>Remove</a><br>"
+	dat += "<br><a href='byond://?src=[REF(src)];[HrefToken()];add_station_goal=1'>Add New Goal</a>"
+	var/datum/browser/browser = new(usr, "goals", "Modify Goals", 400, 400)
+	browser.set_content(dat)
+	browser.open()
 
 
 /client/proc/toggle_hub()
@@ -1149,7 +1151,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			var/turf/endT = spaceDebrisFinishLoc(startside, T.z)
 			new /obj/effect/immovablerod(startT, endT,target)
 		if(ADMIN_PUNISHMENT_SUPPLYPOD_QUICK)
-			var/target_path = input(usr,"Enter typepath of an atom you'd like to send with the pod (type \"empty\" to send an empty pod):" ,"Typepath","/obj/item/reagent_containers/food/snacks/grown/harebell") as null|text
+			var/target_path = input(usr,"Enter typepath of an atom you'd like to send with the pod (type \"empty\" to send an empty pod):" ,"Typepath","/obj/item/food/grown/harebell") as null|text
 			var/obj/structure/closet/supplypod/centcompod/pod = new()
 			pod.damage = 40
 			pod.explosionSize = list(0,0,0,2)
@@ -1277,11 +1279,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 
 	var/list/msg = list()
-	msg += "<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Playtime Report</title></head><body>Playtime:<BR><UL>"
+	msg += "Playtime:<BR><UL>"
 	for(var/client/C in GLOB.clients)
-		msg += "<LI> - [key_name_admin(C)]: <A href='?_src_=holder;[HrefToken()];getplaytimewindow=[REF(C.mob)]'>" + C.get_exp_living() + "</a></LI>"
-	msg += "</UL></BODY></HTML>"
-	src << browse(msg.Join(), "window=Player_playtime_check")
+		msg += "<LI> - [key_name_admin(C)]: <A href='byond://?_src_=holder;[HrefToken()];getplaytimewindow=[REF(C.mob)]'>" + C.get_exp_living() + "</a></LI>"
+	msg += "</UL>"
+	src << browse(HTML_SKELETON_TITLE("Playtime Report", msg.Join()), "window=Player_playtime_check")
 
 /datum/admins/proc/cmd_show_exp_panel(client/client_to_check)
 	if(!check_rights(R_ADMIN))

@@ -605,6 +605,21 @@
 	else
 		. += INFINITY
 
+/mob/living/carbon/get_permeability_protection(list/target_zones = list(HANDS, CHEST, GROIN, LEGS, FEET, ARMS, HEAD))
+	// Zones are bitflags; BYOND 516 forbids numbers as list keys, so per-zone protection is keyed by text
+	var/list/zone_protection = list()
+	for(var/zone in target_zones)
+		zone_protection["[zone]"] = 0
+	for(var/obj/item/I in get_equipped_items())
+		for(var/zone in target_zones)
+			if(I.body_parts_covered & zone)
+				zone_protection["[zone]"] = max(1 - I.permeability_coefficient, zone_protection["[zone]"])
+	var/protection = 0
+	for(var/zone in target_zones)
+		protection += zone_protection["[zone]"]
+	protection *= INVERSE(target_zones.len)
+	return protection
+
 //this handles hud updates
 /mob/living/carbon/update_damage_hud()
 

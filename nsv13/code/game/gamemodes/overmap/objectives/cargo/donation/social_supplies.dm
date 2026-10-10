@@ -6,10 +6,10 @@
 /datum/overmap_objective/cargo/donation/social_supplies/New()
 	// Pick a cake
 	var/list/picked = pick( list(
-		/obj/item/reagent_containers/food/snacks/store/cake/plain,
-		/obj/item/reagent_containers/food/snacks/store/cake/birthday,
-		/obj/item/reagent_containers/food/snacks/store/cake/holy_cake,
-		/obj/item/reagent_containers/food/snacks/store/cake/pound_cake,
+		/obj/item/food/cake/plain,
+		/obj/item/food/cake/birthday,
+		/obj/item/food/cake/holy_cake,
+		/obj/item/food/cake/pound_cake,
 	) )
 	var/datum/freight_type/single/object/cake = new /datum/freight_type/single/object( picked )
 

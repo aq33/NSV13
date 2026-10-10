@@ -17,7 +17,7 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	melee_damage = 7
 	attacktext = "bites"
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 1)
+	butcher_results = list(/obj/item/food/meat/slab = 1)
 	pass_flags = PASSTABLE
 	faction = list("hostile", "vampire")
 	attack_sound = 'sound/weapons/bite.ogg'

@@ -385,6 +385,7 @@
 		data["canToggleEmergencyAccess"] = FALSE
 		data["importantActionReady"] = COOLDOWN_FINISHED(src, important_action_cooldown)
 		data["reinforcementActionReady"] = COOLDOWN_FINISHED(src, reinforcement_action_cooldown) // AQ EDIT
+		data["crewWakeActionReady"] = COOLDOWN_FINISHED(src, crew_wake_cooldown) // AQ EDIT
 		data["shuttleCalled"] = FALSE
 		data["shuttleLastCalled"] = FALSE
 

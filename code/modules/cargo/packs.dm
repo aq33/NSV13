@@ -477,7 +477,7 @@
 
 /datum/supply_pack/security/vending/security
 	name = "SecTech Supply Crate"
-	desc = "Officer Paul bought all the donuts? Then refill the security vendor with ths crate."
+	desc = "Officer Paul bought all the handcuffs? Then refill the security vendor with ths crate."
 	cost = 1200
 	contains = list(/obj/item/vending_refill/security)
 	crate_name = "SecTech supply crate"
@@ -738,7 +738,7 @@
 	desc = "Hello Comrade, we have the most modern russian military equipment the black market can offer, for the right price of course. Sadly we couldnt remove the lock so it requires Armory access to open."
 	cost = 4000
 	contraband = TRUE
-	contains = list(/obj/item/reagent_containers/food/snacks/rationpack,
+	contains = list(/obj/item/food/rationpack,
 					/obj/item/ammo_box/a762,
 					/obj/item/storage/toolbox/ammo,
 					/obj/item/clothing/suit/armor/vest/russian,
@@ -1666,7 +1666,7 @@
 	desc = "Contains the necessary supplies to start an epidemiological research lab. P.A.N.D.E.M.I.C. not included. Comes with a free virologist action figure!"
 	cost = 1500
 	access = ACCESS_VIROLOGY
-	contains = list(/obj/item/reagent_containers/food/snacks/monkeycube,
+	contains = list(/obj/item/food/monkeycube,
 					/obj/item/reagent_containers/food/drinks/bottle/virusfood,
 					/obj/item/reagent_containers/glass/bottle/mutagen,
 					/obj/item/reagent_containers/glass/bottle/formaldehyde,
@@ -2135,16 +2135,16 @@
 	desc = "The best cuts in the whole galaxy."
 	cost = 1700
 	access_budget = ACCESS_KITCHEN
-	contains = list(/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/slime,
-					/obj/item/reagent_containers/food/snacks/meat/slab/killertomato,
-					/obj/item/reagent_containers/food/snacks/meat/slab/bear,
-					/obj/item/reagent_containers/food/snacks/meat/slab/xeno,
-					/obj/item/reagent_containers/food/snacks/meat/slab/spider,
-					/obj/item/reagent_containers/food/snacks/meat/rawbacon,
-					/obj/item/reagent_containers/food/snacks/meat/slab/penguin,
-					/obj/item/reagent_containers/food/snacks/spiderleg,
-					/obj/item/reagent_containers/food/snacks/carpmeat,
-					/obj/item/reagent_containers/food/snacks/meat/slab/human)
+	contains = list(/obj/item/food/meat/slab/human/mutant/slime,
+					/obj/item/food/meat/slab/killertomato,
+					/obj/item/food/meat/slab/bear,
+					/obj/item/food/meat/slab/xeno,
+					/obj/item/food/meat/slab/spider,
+					/obj/item/food/meat/rawbacon,
+					/obj/item/food/meat/slab/penguin,
+					/obj/item/food/spiderleg,
+					/obj/item/food/fishmeat/carp,
+					/obj/item/food/meat/slab/human)
 	crate_name = "food crate"
 
 /datum/supply_pack/organic/randomized/chef/fill(obj/structure/closet/crate/C)
@@ -2189,10 +2189,10 @@
 					/obj/item/storage/fancy/egg_box,
 					/obj/item/reagent_containers/food/condiment/enzyme,
 					/obj/item/reagent_containers/food/condiment/sugar,
-					/obj/item/reagent_containers/food/snacks/meat/slab/monkey,
-					/obj/item/reagent_containers/food/snacks/grown/banana,
-					/obj/item/reagent_containers/food/snacks/grown/banana,
-					/obj/item/reagent_containers/food/snacks/grown/banana)
+					/obj/item/food/meat/slab/monkey,
+					/obj/item/food/grown/banana,
+					/obj/item/food/grown/banana,
+					/obj/item/food/grown/banana)
 	crate_name = "food crate"
 
 /datum/supply_pack/organic/randomized/chef/fruits
@@ -2200,12 +2200,12 @@
 	desc = "Rich of vitamins, may contain oranges."
 	cost = 1200
 	access_budget = ACCESS_KITCHEN
-	contains = list(/obj/item/reagent_containers/food/snacks/grown/citrus/lime,
-					/obj/item/reagent_containers/food/snacks/grown/citrus/orange,
-					/obj/item/reagent_containers/food/snacks/grown/watermelon,
-					/obj/item/reagent_containers/food/snacks/grown/apple,
-					/obj/item/reagent_containers/food/snacks/grown/berries,
-					/obj/item/reagent_containers/food/snacks/grown/citrus/lemon)
+	contains = list(/obj/item/food/grown/citrus/lime,
+					/obj/item/food/grown/citrus/orange,
+					/obj/item/food/grown/watermelon,
+					/obj/item/food/grown/apple,
+					/obj/item/food/grown/berries,
+					/obj/item/food/grown/citrus/lemon)
 	crate_name = "food crate"
 
 /datum/supply_pack/organic/cream_piee
@@ -2247,7 +2247,8 @@
 
 /datum/supply_pack/organic/pizza
 	name = "Pizza Crate"
-	desc = "Best prices on this side of the galaxy. All deliveries are guaranteed to be 99% anomaly-free!"
+	desc = "Why visit the kitchen when you can have five random pizzas in a fraction of the time? \
+		Best prices this side of the galaxy! All deliveries are guaranteed to be 99% anomaly-free."
 	cost = 5000 // Best prices this side of the galaxy.
 	contains = list(/obj/item/pizzabox/margherita,
 					/obj/item/pizzabox/mushroom,
@@ -2255,15 +2256,37 @@
 					/obj/item/pizzabox/vegetable,
 					/obj/item/pizzabox/pineapple)
 	crate_name = "pizza crate"
+	///Whether we've provided an infinite pizza box already this shift or not.
 	var/static/anomalous_box_provided = FALSE
+	///The percentage chance (per pizza) of this supply pack to spawn an anomalous pizza box.
+	var/anna_molly_box_chance = 1
+	///Total tickets in our figurative lottery (per pizza) to decide if we create a bomb box, and if so what type. 1 to 3 create a bomb. The rest do nothing.
+	var/boombox_tickets = 100
+	///Whether we've provided a bomb pizza box already this shift or not.
+	var/boombox_provided = FALSE
 
 /datum/supply_pack/organic/pizza/fill(obj/structure/closet/crate/C)
 	. = ..()
-	if(!anomalous_box_provided)
-		for(var/obj/item/pizzabox/P in C)
-			if(prob(1)) //1% chance for each box, so 4% total chance per order
+
+	var/list/pizza_types = list(
+		/obj/item/food/pizza/margherita = 10,
+		/obj/item/food/pizza/meat = 10,
+		/obj/item/food/pizza/mushroom = 10,
+		/obj/item/food/pizza/vegetable = 10,
+		/obj/item/food/pizza/donkpocket = 10,
+		/obj/item/food/pizza/dank = 7,
+		/obj/item/food/pizza/sassysage = 10,
+		/obj/item/food/pizza/pineapple = 10,
+		/obj/item/food/pizza/arnold = 3
+	) //weighted by chance to disrupt eaters' rounds
+
+	for(var/obj/item/pizzabox/P in C)
+		if(!anomalous_box_provided)
+			if(prob(anna_molly_box_chance)) //1% chance for each box, so 4% total chance per order
 				var/obj/item/pizzabox/infinite/fourfiveeight = new(C)
 				fourfiveeight.boxtag = P.boxtag
+				fourfiveeight.boxtag_set = TRUE
+				fourfiveeight.update_icon()
 				qdel(P)
 				anomalous_box_provided = TRUE
 				log_game("An anomalous pizza box was provided in a pizza crate at during cargo delivery")
@@ -2271,7 +2294,34 @@
 					addtimer(CALLBACK(src, PROC_REF(anomalous_pizza_report)), rand(300, 1800))
 				else
 					message_admins("An anomalous pizza box was silently created with no command report in a pizza crate delivery.")
-				break
+				continue
+
+		if(!boombox_provided)
+			var/boombox_lottery = rand(1,boombox_tickets)
+			var/boombox_type
+			switch(boombox_lottery)
+				if(1 to 2)
+					boombox_type = /obj/item/pizzabox/bomb/armed //explodes after opening
+				if(3)
+					boombox_type = /obj/item/pizzabox/bomb //free bomb
+
+			if(boombox_type)
+				new boombox_type(C)
+				qdel(P)
+				boombox_provided = TRUE
+				log_game("A bomb pizza box was created by a pizza crate delivery.")
+				message_admins("A bomb pizza box has arrived in a pizza crate delivery.")
+				continue
+
+		//here we randomly replace our pizzas for a chance at the full range
+		var/obj/item/food/pizza/replacement_type = pickweight(pizza_types)
+		pizza_types -= replacement_type
+		if(replacement_type && !istype(P.pizza, replacement_type))
+			QDEL_NULL(P.pizza)
+			P.pizza = new replacement_type
+			P.boxtag = P.pizza.boxtag
+			P.boxtag_set = TRUE
+			P.update_icon()
 
 /datum/supply_pack/organic/pizza/proc/anomalous_pizza_report()
 	print_command_report("[station_name()], our anomalous materials divison has reported a missing object that is highly likely to have been sent to your station during a routine cargo \
@@ -2317,14 +2367,14 @@
 	desc = "Grown in vats."
 	cost = 1000
 	access_budget = ACCESS_KITCHEN
-	contains = list(/obj/item/reagent_containers/food/snacks/grown/chili,
-					/obj/item/reagent_containers/food/snacks/grown/corn,
-					/obj/item/reagent_containers/food/snacks/grown/tomato,
-					/obj/item/reagent_containers/food/snacks/grown/potato,
-					/obj/item/reagent_containers/food/snacks/grown/carrot,
-					/obj/item/reagent_containers/food/snacks/grown/mushroom/chanterelle,
-					/obj/item/reagent_containers/food/snacks/grown/onion,
-					/obj/item/reagent_containers/food/snacks/grown/pumpkin)
+	contains = list(/obj/item/food/grown/chili,
+					/obj/item/food/grown/corn,
+					/obj/item/food/grown/tomato,
+					/obj/item/food/grown/potato,
+					/obj/item/food/grown/carrot,
+					/obj/item/food/grown/mushroom/chanterelle,
+					/obj/item/food/grown/onion,
+					/obj/item/food/grown/pumpkin)
 	crate_name = "food crate"
 
 /datum/supply_pack/organic/vending/hydro_refills
@@ -2365,16 +2415,16 @@
 	cost = 5000
 	contraband = TRUE
 	crate_type = /obj/structure/closet/crate
-	contains = list(/obj/item/reagent_containers/food/snacks/canned/beefbroth,
-					/obj/item/reagent_containers/food/snacks/canned/beefbroth,
-					/obj/item/reagent_containers/food/snacks/canned/beefbroth,
-					/obj/item/reagent_containers/food/snacks/canned/beefbroth,
-					/obj/item/reagent_containers/food/snacks/canned/beefbroth,
-					/obj/item/reagent_containers/food/snacks/canned/beefbroth,
-					/obj/item/reagent_containers/food/snacks/canned/beefbroth,
-					/obj/item/reagent_containers/food/snacks/canned/beefbroth,
-					/obj/item/reagent_containers/food/snacks/canned/beefbroth,
-					/obj/item/reagent_containers/food/snacks/canned/beefbroth
+	contains = list(/obj/item/food/canned/beefbroth,
+					/obj/item/food/canned/beefbroth,
+					/obj/item/food/canned/beefbroth,
+					/obj/item/food/canned/beefbroth,
+					/obj/item/food/canned/beefbroth,
+					/obj/item/food/canned/beefbroth,
+					/obj/item/food/canned/beefbroth,
+					/obj/item/food/canned/beefbroth,
+					/obj/item/food/canned/beefbroth,
+					/obj/item/food/canned/beefbroth
 					)
 	crate_name = "Beef Broth Care"
 //////////////////////////////////////////////////////////////////////////////
@@ -2609,9 +2659,9 @@
 	num_contained = 7
 	contains = list(/obj/item/poster/random_contraband,
 					/obj/item/poster/random_contraband,
-					/obj/item/reagent_containers/food/snacks/grown/cannabis,
-					/obj/item/reagent_containers/food/snacks/grown/cannabis/rainbow,
-					/obj/item/reagent_containers/food/snacks/grown/cannabis/white,
+					/obj/item/food/grown/cannabis,
+					/obj/item/food/grown/cannabis/rainbow,
+					/obj/item/food/grown/cannabis/white,
 					/obj/item/storage/pill_bottle/zoom,
 					/obj/item/storage/pill_bottle/happy,
 					/obj/item/storage/pill_bottle/lsd,
@@ -3087,8 +3137,8 @@
 	cost = 800
 	access_budget = ACCESS_CHAPEL_OFFICE
 	contains = list(/obj/item/clothing/under/misc/burial,
-					/obj/item/reagent_containers/food/snacks/grown/harebell,
-					/obj/item/reagent_containers/food/snacks/grown/poppy/geranium)
+					/obj/item/food/grown/harebell,
+					/obj/item/food/grown/poppy/geranium)
 	crate_name = "coffin"
 	crate_type = /obj/structure/closet/crate/coffin
 

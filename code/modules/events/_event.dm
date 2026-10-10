@@ -43,6 +43,11 @@
 /datum/round_event_control/wizard
 	wizardevent = TRUE
 
+/// AQ EDIT - the weight SSevents.spawnEvent() picks with. Every event has the same chance, `weight` itself is ignored there,
+/// except that weight 0 still means "does not roll" (and a negative value marks round-start events)
+/datum/round_event_control/proc/get_random_weight()
+	return weight > 0 ? 10 : 0
+
 // Checks if the event can be spawned. Used by event controller and "false alarm" event.
 // Admin-created events override this.
 /datum/round_event_control/proc/canSpawnEvent(var/players_amt, var/gamemode)
@@ -80,7 +85,7 @@
 
 	triggering = TRUE
 	if (alert_observers)
-		message_admins("Random Event triggering in [RANDOM_EVENT_ADMIN_INTERVENTION_TIME] seconds: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)")
+		message_admins("Random Event triggering in [RANDOM_EVENT_ADMIN_INTERVENTION_TIME] seconds: [name] (<a href='byond://?src=[REF(src)];cancel=1'>CANCEL</a>)")
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME SECONDS)
 		var/gamemode = SSticker.mode.config_tag
 		var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)

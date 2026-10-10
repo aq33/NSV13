@@ -18,6 +18,37 @@
 		return FALSE
 	return ..()
 
+/mob/living/carbon/human/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, list(COMSIG_COMPONENT_ADDED, COMSIG_COMPONENT_REMOVING), PROC_REF(on_walk_component_change))
+	update_walk_animation()
+
+/// Kaczy chód (buty i uszy klauna, cluwne) ma własną animację, z którą maski się gryzą.
+/mob/living/carbon/human/proc/on_walk_component_change(datum/source, datum/component/component)
+	SIGNAL_HANDLER
+
+	if(istype(component, /datum/component/waddling))
+		update_walk_animation()
+
+/mob/living/carbon/human/Login()
+	. = ..()
+	update_walk_animation()
+
+/// Włącza lub wyłącza animację chodu według preferencji gracza. Postacie bez gracza ją mają, chyba że mają kaczy chód.
+/mob/living/carbon/human/proc/update_walk_animation()
+	if(istype(src, /mob/living/carbon/human/dummy)) // podgląd postaci kopiuje appearance manekina, a z nim ukryty render_target
+		return
+	var/datum/component/walk_animation/walk_animation = GetComponent(/datum/component/walk_animation)
+	if(GetComponent(/datum/component/waddling) || (client?.prefs && (client.prefs.toggles2 & PREFTOGGLE_2_DISABLE_WALK_ANIMATION)))
+		qdel(walk_animation)
+	else if(!walk_animation)
+		AddComponent(/datum/component/walk_animation)
+
+/mob/living/carbon/human/update_inv_hands()
+	. = ..()
+	var/datum/component/walk_animation/walk_animation = GetComponent(/datum/component/walk_animation)
+	walk_animation?.detach_held_items()
+
 // The "Polak" belly is only shown when naked, so redraw the body when clothes change
 /mob/living/carbon/human/update_inv_w_uniform()
 	. = ..()

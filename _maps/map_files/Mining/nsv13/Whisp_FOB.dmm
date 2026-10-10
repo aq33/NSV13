@@ -594,7 +594,7 @@
 	pixel_y = 3
 	},
 /obj/item/storage/box/lights,
-/obj/item/reagent_containers/food/snacks/cakeslice/plain,
+/obj/item/food/cakeslice/plain,
 /turf/open/floor/plasteel,
 /area/nsv/shuttle/fob/central)
 "by" = (

@@ -252,3 +252,7 @@ GLOBAL_LIST_INIT(sinew_recipes, list ( \
 	..()
 	new /obj/item/stack/sheet/leather(drop_location(), amount)
 	qdel(src)
+
+/obj/item/stack/sheet/wetleather/Initialize(mapload, new_amount, merge)
+	. = ..()
+	AddElement(/datum/element/dryable, /obj/item/stack/sheet/leather)

@@ -17,6 +17,14 @@
 // Admins can cancel this manually if they are quick enough.
 /datum/config_entry/flag/allow_nuke_request_auto_accept
 
+// Allow response team requests to be automatically accepted after some time
+// Admins can cancel this manually if they are quick enough.
+/datum/config_entry/flag/allow_ert_request_auto_accept
+
+// Allow crew wake requests (ghosts respawning as assistants at the cryopods) to be automatically accepted after some time
+// Admins can cancel this manually if they are quick enough.
+/datum/config_entry/flag/allow_crew_wake_request_auto_accept
+
 // Toggle defacation and all associated things
 /datum/config_entry/flag/shitting_enabled
 

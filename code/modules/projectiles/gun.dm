@@ -684,6 +684,10 @@
 
 	semicd = FALSE
 
+	if(user == target && user.has_horror_inside()) // AQ EDIT - Yogstation#13033
+		user.visible_message("<span class='warning'>[user] rezygnuje ze strzału.</span>", "<span class='notice'>Coś w twojej głowie powstrzymuje cię przed tym!</span>")
+		return
+
 	target.visible_message("<span class='warning'>[user] pulls the trigger!</span>", "<span class='userdanger'>[(user == target) ? "You pull" : "[user] pulls"] the trigger!</span>")
 
 	if(chambered?.BB)

@@ -104,6 +104,14 @@
 "aj" = (
 /turf/open/floor/durasteel/techfloor,
 /area/engine/gravity_generator)
+"ak" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/corner_white192{
+	dir = 1;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "al" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/reagent_dispensers/beerkeg,
@@ -124,6 +132,14 @@
 /obj/structure/cable,
 /turf/open/floor/monotile/steel,
 /area/crew_quarters/fitness/recreation)
+"an" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/middle_white192{
+	dir = 8;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "ao" = (
 /obj/effect/turf_decal/tile/purple/tile_side{
 	dir = 6
@@ -326,6 +342,14 @@
 /obj/structure/hull_plate,
 /obj/machinery/camera/autoname,
 /turf/open/space/basic,
+/area/space/nearstation)
+"aI" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/border_white192{
+	dir = 8;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
 /area/space/nearstation)
 "aJ" = (
 /obj/effect/decal/cleanable/glitter/white{
@@ -756,6 +780,14 @@
 "bz" = (
 /turf/closed/wall/r_wall,
 /area/medical/genetics)
+"bA" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/border_red192{
+	dir = 8;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "bB" = (
 /obj/machinery/light,
 /obj/machinery/dna_scannernew,
@@ -790,6 +822,14 @@
 /obj/structure/cable,
 /turf/open/floor/durasteel/lino,
 /area/medical/genetics)
+"bF" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/middle_red192{
+	dir = 8;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "bG" = (
 /obj/machinery/firealarm/directional/north,
 /obj/machinery/dna_scannernew,
@@ -876,6 +916,14 @@
 	},
 /turf/open/floor/durasteel/alt,
 /area/science/xenobiology)
+"bR" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/corner_red192{
+	dir = 1;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "bS" = (
 /obj/machinery/cryopod{
 	pixel_y = 21;
@@ -923,6 +971,22 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port)
+"bW" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/middle_white192{
+	dir = 1;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
+"bX" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/spacermiddle_white192{
+	dir = 1;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "bY" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 8
@@ -939,6 +1003,20 @@
 /obj/structure/cable,
 /turf/open/floor/monotile/steel,
 /area/bridge/cic)
+"ca" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/full_white192{
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
+"cb" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/full_red192{
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "cc" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	dir = 1
@@ -957,6 +1035,14 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/steel,
 /area/crew_quarters/fitness/recreation)
+"ce" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/spacermiddle_red192{
+	dir = 1;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "cf" = (
 /obj/machinery/shower{
 	dir = 4;
@@ -971,10 +1057,34 @@
 /obj/machinery/status_display/evac/west,
 /turf/open/floor/plasteel/tech/grid,
 /area/medical/medbay)
+"cg" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/middle_red192{
+	dir = 4;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
+"ch" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/border_white192{
+	dir = 1;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "ci" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
 /turf/open/floor/monotile/dark,
 /area/medical/chemistry)
+"cj" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/border_red192{
+	dir = 4;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "ck" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
@@ -988,6 +1098,14 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/bridge/cic)
+"cl" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/border_red192{
+	dir = 1;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "cm" = (
 /obj/structure/ladder,
 /obj/structure/fluff/bleepypanel{
@@ -1003,9 +1121,33 @@
 /obj/structure/extinguisher_cabinet/north,
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck1/hallway)
+"co" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/border_white192{
+	dir = 4;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "cp" = (
 /turf/closed/wall/r_wall,
 /area/medical/virology)
+"cq" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/middle_red192{
+	dir = 1;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
+"cr" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/spacermiddle_red192{
+	dir = 4;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "cs" = (
 /obj/structure/sign/warning,
 /turf/closed/wall/r_wall,
@@ -1026,6 +1168,22 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/bridge/cic)
+"cu" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/spacermiddle_white192{
+	dir = 4;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
+"cv" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/middle_white192{
+	dir = 4;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "cw" = (
 /obj/structure/window/reinforced/spawner,
 /obj/structure/window/reinforced/spawner/east,
@@ -1053,9 +1211,25 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck1/hallway)
+"cA" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/corner_red192{
+	dir = 4;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "cB" = (
 /turf/open/floor/monotile/light,
 /area/medical/medbay)
+"cC" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/middle_red192{
+	dir = 2;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "cD" = (
 /obj/machinery/door/firedoor/border_only{
 	dir = 8
@@ -1067,6 +1241,14 @@
 /obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/monotile/steel,
 /area/hallway/nsv/deck1/hallway)
+"cE" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/border_red192{
+	dir = 2;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "cF" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/firedoor/border_only{
@@ -1077,6 +1259,14 @@
 /obj/structure/cable,
 /turf/open/floor/monotile/steel,
 /area/maintenance/nsv/deck1/starboard)
+"cG" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/border_white192{
+	dir = 2;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "cH" = (
 /turf/closed/wall/steel,
 /area/medical/medbay)
@@ -1087,6 +1277,22 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port)
+"cJ" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/middle_white192{
+	dir = 2;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
+"cK" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/corner_white192{
+	dir = 4;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless,
+/area/space/nearstation)
 "cL" = (
 /turf/open/openspace/airless,
 /area/space)
@@ -1108,6 +1314,11 @@
 /obj/item/beacon,
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"cQ" = (
+/obj/structure/cable,
+/obj/item/banner/polski_sztandar,
+/turf/open/floor/monotile/dark,
+/area/bridge/cic)
 "cR" = (
 /obj/structure/lattice/catwalk/over/ship,
 /obj/machinery/portable_atmospherics/scrubber,
@@ -14438,7 +14649,7 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port)
 "YG" = (
-/obj/item/reagent_containers/food/snacks/grown/banana,
+/obj/item/food/grown/banana,
 /mob/living/carbon/monkey,
 /turf/open/floor/grass,
 /area/medical/virology)
@@ -48311,7 +48522,7 @@ ec
 zJ
 HF
 GN
-yp
+cQ
 jf
 Op
 ft
@@ -53963,12 +54174,12 @@ hL
 hL
 hL
 mK
-mK
-mK
-mK
-mK
-mK
-mK
+ak
+bW
+ch
+cl
+cq
+cA
 mK
 mK
 mK
@@ -54220,12 +54431,12 @@ hL
 hL
 hL
 mK
-mK
-mK
-mK
-mK
-mK
-mK
+an
+bX
+ca
+cb
+cr
+cC
 mK
 mK
 mK
@@ -54477,12 +54688,12 @@ hL
 hL
 hL
 mK
-mK
-mK
-mK
-mK
-mK
-mK
+aI
+ca
+ca
+cb
+cb
+cE
 mK
 mK
 mK
@@ -54734,12 +54945,12 @@ hL
 hL
 hL
 mK
-mK
-mK
-mK
-mK
-mK
-mK
+bA
+cb
+cb
+ca
+ca
+cG
 mK
 mK
 mK
@@ -54991,12 +55202,12 @@ hL
 hL
 hL
 mK
-mK
-mK
-mK
-mK
-mK
-mK
+bF
+ce
+cb
+ca
+cu
+cJ
 mK
 mK
 mK
@@ -55248,12 +55459,12 @@ hL
 hL
 hL
 mK
-mK
-mK
-mK
-mK
-mK
-mK
+bR
+cg
+cj
+co
+cv
+cK
 mK
 mK
 mK

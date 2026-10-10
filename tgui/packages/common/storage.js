@@ -7,7 +7,7 @@
  */
 
 export const IMPL_MEMORY = 0;
-export const IMPL_LOCAL_STORAGE = 1;
+export const IMPL_HUB_STORAGE = 1;
 export const IMPL_INDEXED_DB = 2;
 
 const INDEXED_DB_VERSION = 1;
@@ -26,13 +26,12 @@ const testGeneric = testFn => () => {
   }
 };
 
-// Localstorage can sometimes throw an error, even if DOM storage is not
-// disabled in IE11 settings.
-// See: https://superuser.com/questions/1080011
-const testLocalStorage = testGeneric(() => (
-  window.localStorage && window.localStorage.getItem
+// 516 byondstorage API (requires "browser-options=byondstorage" on the client)
+const testHubStorage = testGeneric(() => (
+  window.hubStorage && window.hubStorage.getItem
 ));
 
+// TODO: Remove with 516
 const testIndexedDb = testGeneric(() => (
   (window.indexedDB || window.msIndexedDB)
   && (window.IDBTransaction || window.msIDBTransaction)
@@ -44,45 +43,46 @@ class MemoryBackend {
     this.store = {};
   }
 
-  get(key) {
+  async get(key) {
     return this.store[key];
   }
 
-  set(key, value) {
+  async set(key, value) {
     this.store[key] = value;
   }
 
-  remove(key) {
+  async remove(key) {
     this.store[key] = undefined;
   }
 
-  clear() {
+  async clear() {
     this.store = {};
   }
 }
 
-class LocalStorageBackend {
+class HubStorageBackend {
   constructor() {
-    this.impl = IMPL_LOCAL_STORAGE;
+    this.impl = IMPL_HUB_STORAGE;
   }
 
-  get(key) {
-    const value = localStorage.getItem(key);
+  async get(key) {
+    const value = await window.hubStorage.getItem(key);
     if (typeof value === 'string') {
       return JSON.parse(value);
     }
+    return undefined;
   }
 
-  set(key, value) {
-    localStorage.setItem(key, JSON.stringify(value));
+  async set(key, value) {
+    window.hubStorage.setItem(key, JSON.stringify(value));
   }
 
-  remove(key) {
-    localStorage.removeItem(key);
+  async remove(key) {
+    window.hubStorage.removeItem(key);
   }
 
-  clear() {
-    localStorage.clear();
+  async clear() {
+    window.hubStorage.clear();
   }
 }
 
@@ -156,6 +156,10 @@ class IndexedDbBackend {
 class StorageProxy {
   constructor() {
     this.backendPromise = (async () => {
+      if (!Byond.TRIDENT && testHubStorage()) {
+        return new HubStorageBackend();
+      }
+      // TODO: Remove with 516
       if (testIndexedDb()) {
         try {
           const backend = new IndexedDbBackend();
@@ -164,9 +168,7 @@ class StorageProxy {
         }
         catch {}
       }
-      if (testLocalStorage()) {
-        return new LocalStorageBackend();
-      }
+      console.warn('No supported storage backend found. Using in-memory storage.');
       return new MemoryBackend();
     })();
   }

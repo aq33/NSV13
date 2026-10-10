@@ -33,7 +33,7 @@ GLOBAL_LIST_EMPTY(round_surveys)
 	if(!C)
 		return
 	var/list/dat = list()
-	dat += "<form action='?src=[REF(src)]' method='get'>"
+	dat += "<form action='byond://?src=[REF(src)]' method='get'>"
 	dat += "<input type='hidden' name='src' value='[REF(src)]'>"
 	dat += "<p>Runda się skończyła. Poświęć chwilę i oceń ją. Ankieta jest anonimowa dla innych graczy.</p>"
 	dat += rating_row("fun", "Wrażenia", "1 = źle się bawiłem", "5 = dobrze się bawiłem")
