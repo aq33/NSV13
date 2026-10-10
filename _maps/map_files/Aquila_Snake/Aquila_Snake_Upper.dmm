@@ -20,6 +20,10 @@
 /obj/machinery/holopad,
 /turf/open/floor/plasteel/white,
 /area/medical/apothecary)
+"ad" = (
+/obj/effect/spawner/room/fivexfour,
+/turf/open/floor/plating,
+/area/maintenance/department/engine)
 "ae" = (
 /turf/closed/wall/steel,
 /area/gateway)
@@ -184,11 +188,6 @@
 /obj/machinery/holopad,
 /turf/open/floor/plating,
 /area/crew_quarters/fitness/recreation)
-"aA" = (
-/obj/machinery/firealarm/directional/west,
-/obj/machinery/holopad,
-/turf/open/floor/plating,
-/area/engine/shield_generator)
 "aB" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
@@ -353,13 +352,6 @@
 	},
 /turf/open/floor/plating,
 /area/crew_quarters/fitness/recreation)
-"bi" = (
-/obj/structure/cable,
-/obj/structure/sign/poster/official/random{
-	pixel_y = -32
-	},
-/turf/open/floor/plating,
-/area/engine/shield_generator)
 "bj" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
@@ -2246,35 +2238,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
-"hf" = (
-/turf/open/floor/plating,
-/area/engine/shield_generator)
-"hg" = (
-/obj/machinery/door/airlock/ship/engineering{
-	name = "Shield Generator";
-	req_one_access_txt = "24;10"
-	},
-/turf/open/floor/plating,
-/area/maintenance/department/engine)
-"hh" = (
-/obj/machinery/door/airlock/ship/engineering{
-	name = "Shield Generator";
-	req_one_access_txt = "24;10"
-	},
-/turf/open/floor/plating,
-/area/maintenance/aft)
-"hi" = (
-/obj/machinery/door/airlock/ship/engineering{
-	name = "Shield Generator";
-	req_one_access_txt = "24;10"
-	},
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/maintenance/department/engine)
-"hj" = (
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/engine/shield_generator)
 "hk" = (
 /turf/open/floor/plasteel,
 /area/quartermaster/miningdock)
@@ -2293,41 +2256,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/qm)
-"ho" = (
-/obj/machinery/power/apc/auto_name/north,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/engine/shield_generator)
-"hp" = (
-/obj/structure/cable,
-/obj/machinery/shield_generator,
-/turf/open/floor/plating,
-/area/engine/shield_generator)
-"hq" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/maintenance/department/engine)
-"hr" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 1
-	},
-/turf/closed/wall/r_wall,
-/area/maintenance/department/engine)
-"hs" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/engine/shield_generator)
 "ht" = (
 /obj/structure/closet{
 	name = "Evidence Closet"
@@ -2374,25 +2302,6 @@
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/plasteel/dark,
 /area/security/nuke_storage)
-"hx" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/maintenance/department/engine)
-"hy" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 1
-	},
-/turf/closed/wall/r_wall,
-/area/maintenance/department/engine)
 "hz" = (
 /obj/structure/ladder,
 /obj/effect/turf_decal/tile/ship/purple{
@@ -2400,16 +2309,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
-"hA" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/engine/shield_generator)
-"hB" = (
-/obj/machinery/airalarm/directional/east,
-/turf/open/floor/plating,
-/area/engine/shield_generator)
 "hD" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 8
@@ -2420,23 +2319,12 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/science/mixing)
-"hE" = (
-/obj/structure/cable,
-/obj/machinery/light_switch/north,
-/turf/open/floor/plating,
-/area/engine/shield_generator)
 "hF" = (
 /obj/effect/turf_decal/tile/ship/purple{
 	dir = 1
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
-"hG" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/engine/shield_generator)
 "hH" = (
 /obj/machinery/conveyor{
 	id = "QMLoad2"
@@ -2454,12 +2342,6 @@
 /obj/structure/window/reinforced/spawner/north,
 /turf/open/floor/plating,
 /area/maintenance/central)
-"hJ" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/engine/shield_generator)
 "hK" = (
 /obj/machinery/door/airlock/ship/engineering/glass{
 	name = "ATC"
@@ -2473,12 +2355,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/crew_quarters/heads/hos)
-"hM" = (
-/obj/machinery/camera/autoname{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/engine/shield_generator)
 "hN" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
@@ -33212,7 +33088,7 @@ rb
 BN
 BN
 BN
-hg
+QV
 BN
 BN
 BN
@@ -33467,11 +33343,11 @@ gM
 gM
 RI
 BN
-ho
-aA
-hf
-hG
-hM
+gM
+gM
+gM
+gM
+ad
 BN
 xV
 TW
@@ -33724,11 +33600,11 @@ gM
 gM
 KE
 BN
-hE
-hf
-hf
-hf
-hp
+gM
+gM
+gM
+gM
+gM
 BN
 xV
 TW
@@ -33980,12 +33856,12 @@ BN
 gM
 gM
 KE
-hi
-hj
-hj
-hj
-hj
-bi
+QV
+gM
+gM
+gM
+gM
+gM
 BN
 Eo
 TW
@@ -34236,13 +34112,13 @@ Rm
 BN
 gM
 gM
-hq
-hr
-hs
-hf
-hf
-hf
-hf
+KE
+BN
+gM
+gM
+gM
+gM
+gM
 BN
 FO
 TW
@@ -34493,13 +34369,13 @@ Rm
 BN
 gM
 gM
-hx
-hy
-hA
-hB
-hf
-hJ
-hf
+KE
+BN
+gM
+gM
+gM
+gM
+gM
 BN
 jl
 TW
@@ -34754,7 +34630,7 @@ at
 aT
 aT
 aT
-hh
+jX
 aT
 aT
 aT

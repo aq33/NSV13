@@ -287,8 +287,17 @@
 /turf/open/floor/carpet/ship/red_carpet,
 /area/ai_monitored/security/armory/lockup)
 "aF" = (
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/corner_white64{
+	dir = 1;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless/light,
+/area/space/nearstation)
+"aG" = (
+/obj/effect/spawner/room/fivexthree,
 /turf/open/floor/plating,
-/area/crew_quarters/fitness/recreation)
+/area/maintenance/department/crew_quarters/dorms)
 "aH" = (
 /obj/structure/cable,
 /obj/effect/landmark/start/scientist,
@@ -302,15 +311,13 @@
 /turf/closed/wall/r_wall/ship,
 /area/security/detectives_office)
 "aK" = (
-/obj/machinery/door/airlock/ship/public/glass{
-	name = "Recreational Area"
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/corner_red64{
+	dir = 1;
+	layer = 2.25
 	},
-/obj/machinery/door/firedoor/border_only/directional/east,
-/obj/machinery/door/firedoor/border_only/directional/west,
-/obj/effect/landmark/zebra_interlock_point,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/maintenance/department/crew_quarters/dorms)
+/turf/open/floor/engine/airless/light,
+/area/space/nearstation)
 "aL" = (
 /obj/item/radio/intercom/directional/south,
 /obj/structure/disposalpipe/trunk{
@@ -327,9 +334,13 @@
 /turf/open/floor/carpet/ship/red_carpet,
 /area/security/brig)
 "aM" = (
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/crew_quarters/fitness/recreation)
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/corner_red64{
+	dir = 4;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless/light,
+/area/space/nearstation)
 "aN" = (
 /obj/structure/bodycontainer/morgue{
 	dir = 8
@@ -346,6 +357,13 @@
 /obj/machinery/firealarm/directional/west,
 /turf/open/floor/grass,
 /area/crew_quarters/dorms/nsv/nature_deck)
+"aP" = (
+/obj/machinery/door/airlock/ship/maintenance,
+/obj/machinery/door/firedoor/border_only/directional/east,
+/obj/machinery/door/firedoor/border_only/directional/west,
+/obj/effect/landmark/zebra_interlock_point,
+/turf/open/floor/plating,
+/area/maintenance/department/crew_quarters/dorms)
 "aQ" = (
 /obj/machinery/portable_atmospherics/canister/nitrogen{
 	anchored = 1
@@ -367,10 +385,13 @@
 /turf/open/floor/plasteel/tiled/light,
 /area/hallway/secondary/exit)
 "aS" = (
-/obj/machinery/power/apc/auto_name/east,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/crew_quarters/fitness/recreation)
+/obj/structure/hull_plate,
+/obj/effect/turf_decal/szachownica/corner_white64{
+	dir = 4;
+	layer = 2.25
+	},
+/turf/open/floor/engine/airless/light,
+/area/space/nearstation)
 "aT" = (
 /obj/structure/cable,
 /turf/open/floor/plasteel/tiled/light,
@@ -410,10 +431,6 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/genetics)
-"aZ" = (
-/obj/machinery/airalarm/directional/north,
-/turf/open/floor/plating,
-/area/crew_quarters/fitness/recreation)
 "ba" = (
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/carpet/ship/beige_carpet,
@@ -444,10 +461,6 @@
 /obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/wood,
 /area/crew_quarters/kitchen)
-"be" = (
-/obj/machinery/firealarm/directional/south,
-/turf/open/floor/plating,
-/area/crew_quarters/fitness/recreation)
 "bf" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
@@ -464,14 +477,6 @@
 /obj/machinery/status_display/ai/north,
 /turf/open/floor/carpet/ship/red_carpet,
 /area/security/prison)
-"bh" = (
-/obj/structure/closet/lasertag/red,
-/turf/open/floor/plating,
-/area/crew_quarters/fitness/recreation)
-"bi" = (
-/obj/structure/closet/lasertag/blue,
-/turf/open/floor/plating,
-/area/crew_quarters/fitness/recreation)
 "bj" = (
 /obj/structure/disposalpipe/junction{
 	dir = 1
@@ -481,10 +486,6 @@
 /obj/machinery/holopad,
 /turf/open/floor/plasteel/tiled/light,
 /area/science)
-"bk" = (
-/obj/machinery/vending/clothing,
-/turf/open/floor/plating,
-/area/crew_quarters/fitness/recreation)
 "bl" = (
 /obj/machinery/clonepod/prefilled,
 /obj/machinery/firealarm/directional/north,
@@ -506,14 +507,6 @@
 /obj/item/stamp/research_director,
 /turf/open/floor/carpet/purple,
 /area/crew_quarters/heads/hor)
-"bq" = (
-/obj/structure/table/wood,
-/obj/item/clothing/neck/tie/blue,
-/obj/item/clothing/head/soft/blue{
-	pixel_y = 6
-	},
-/turf/open/floor/plating,
-/area/crew_quarters/fitness/recreation)
 "bs" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
@@ -536,19 +529,6 @@
 	},
 /turf/open/floor/engine/light,
 /area/ai_monitored/nuke_storage)
-"bu" = (
-/obj/structure/table/wood,
-/obj/item/clothing/neck/tie/red,
-/obj/item/clothing/head/soft/red{
-	pixel_y = 6
-	},
-/turf/open/floor/plating,
-/area/crew_quarters/fitness/recreation)
-"bv" = (
-/obj/structure/table/wood,
-/obj/machinery/cell_charger,
-/turf/open/floor/plating,
-/area/crew_quarters/fitness/recreation)
 "bw" = (
 /obj/machinery/door/window/eastright,
 /obj/effect/landmark/event_spawn,
@@ -562,15 +542,6 @@
 	},
 /turf/open/floor/carpet/ship/red_carpet,
 /area/ai_monitored/security/armory/security)
-"by" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/structure/chair{
-	dir = 2
-	},
-/turf/open/floor/plating,
-/area/crew_quarters/fitness/recreation)
 "bz" = (
 /obj/structure/sign/poster/official/moth1{
 	pixel_x = -30
@@ -665,12 +636,6 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/plasteel/tiled/light,
 /area/science/xenobiology)
-"bI" = (
-/obj/structure/chair{
-	dir = 2
-	},
-/turf/open/floor/plating,
-/area/crew_quarters/fitness/recreation)
 "bJ" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -678,10 +643,6 @@
 	},
 /turf/open/floor/carpet/purple,
 /area/crew_quarters/heads/hor)
-"bK" = (
-/obj/item/kirbyplants/random,
-/turf/open/floor/plating,
-/area/crew_quarters/fitness/recreation)
 "bL" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
@@ -41049,9 +41010,9 @@ xp
 xp
 xp
 UD
-bh
-by
-bq
+qb
+qb
+aG
 vA
 tq
 QW
@@ -41306,9 +41267,9 @@ Jr
 Jr
 Jr
 dm
-bi
-bI
-bu
+qb
+qb
+qb
 vA
 uw
 sC
@@ -41563,9 +41524,9 @@ JE
 gZ
 hd
 vA
-aZ
-aF
-bv
+qb
+qb
+qb
 vA
 uw
 FX
@@ -41820,9 +41781,9 @@ Gx
 wO
 hd
 vA
-bk
-aF
-be
+qb
+qb
+qb
 vA
 uw
 sW
@@ -42077,9 +42038,9 @@ fm
 rr
 hd
 vA
-bK
-aM
-aS
+qb
+qb
+qb
 vA
 lu
 sW
@@ -42335,7 +42296,7 @@ Xo
 hd
 vA
 vA
-aK
+aP
 vA
 vA
 QP
@@ -42591,8 +42552,8 @@ er
 rd
 oD
 fZ
-LU
-LU
+qb
+qb
 Sw
 vA
 ww
@@ -43117,8 +43078,8 @@ io
 tq
 lE
 lE
-Te
-Te
+aF
+aM
 az
 cU
 cU
@@ -43374,8 +43335,8 @@ kc
 tq
 DI
 Qu
-Te
-Te
+aK
+aS
 az
 cU
 cU
@@ -47949,8 +47910,8 @@ zP
 zP
 az
 Te
-Te
-Te
+aF
+aM
 Te
 eB
 CR
@@ -48000,8 +47961,8 @@ nZ
 MV
 MV
 Te
-Te
-Te
+aF
+aM
 az
 cU
 cU
@@ -48206,8 +48167,8 @@ zP
 zP
 az
 Te
-Te
-Te
+aK
+aS
 Te
 eB
 zd
@@ -48257,8 +48218,8 @@ uo
 cA
 MV
 Te
-Te
-Te
+aK
+aS
 az
 cU
 cU
