@@ -7,6 +7,13 @@
 // Banning snowflake - global antag ban. Does not include ghost roles that aren't antagonists or forced antagonists
 #define BAN_ROLE_ALL_ANTAGONISTS			"All Antagonists"
 
+// AQ EDIT START - port BeeStation #13722; w core, bo używa ich pollCandidates() w code/__HELPERS/game.dm
+/// Do not auto-add anyone to the pull
+#define POLL_AUTO_ADD_NONE null
+/// Auto-add ghosts to the poll when created
+#define POLL_AUTO_ADD_GHOSTS "ghosts"
+// AQ EDIT END
+
 //These are synced with the Database, if you change the values of the defines
 //then you MUST update the database!
 #define ROLE_TRAITOR			"Traitor"
