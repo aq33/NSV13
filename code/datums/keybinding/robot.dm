@@ -9,7 +9,7 @@
 /datum/keybinding/robot/toggle_module_1
 	key = "1"
 	name = "toggle_module_1"
-	full_name = "Toggle Module 1"
+	full_name = "Przełącz moduł 1"
 	description = "Przełącz swój pierwszy moduł jako robot."
 	keybind_signal = COMSIG_KB_SILICON_TOGGLEMODULEONE_DOWN
 
@@ -25,7 +25,7 @@
 /datum/keybinding/robot/toggle_module_2
 	key = "2"
 	name = "toggle_module_2"
-	full_name = "Toggle Module 2"
+	full_name = "Przełącz moduł 2"
 	description = "Przełącz swój drugi moduł jako robot."
 	keybind_signal = COMSIG_KB_SILICON_TOGGLEMODULETWO_DOWN
 
@@ -41,7 +41,7 @@
 /datum/keybinding/robot/toggle_module_3
 	key = "3"
 	name = "toggle_module_3"
-	full_name = "Toggle Module 3"
+	full_name = "Przełącz moduł 3"
 	description = "Przełącz swój trzeci moduł jako robot."
 	keybind_signal = COMSIG_KB_SILICON_TOGGLEMODULETHREE_DOWN
 
@@ -57,7 +57,7 @@
 /datum/keybinding/robot/change_intent_robot
 	key = "4"
 	name = "change_intent_robot"
-	full_name = "Change Intent"
+	full_name = "Zmień intencję"
 	description = "Zmień swoją intencję jako robot."
 	keybind_signal = COMSIG_KB_SILICON_CYCLEINTENT_DOWN
 
@@ -73,7 +73,7 @@
 /datum/keybinding/robot/unequip_module
 	key = "Q"
 	name = "unequip_module"
-	full_name = "Unequip Module"
+	full_name = "Zdejmij moduł"
 	description = "Zdejmij moduł robota."
 	keybind_signal = COMSIG_KB_SILICON_UNEQUIPMODULE_DOWN
 

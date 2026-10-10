@@ -9,7 +9,7 @@
 /datum/keybinding/living/resist
 	key = "B"
 	name = "resist"
-	full_name = "Resist"
+	full_name = "Opieraj się"
 	description = "Uwolnij się z obecnego stanu. Kajdanki, płomienie, uwięzienie w gnieździe obcych? Stawiaj opór!"
 	keybind_signal = COMSIG_KB_LIVING_RESIST_DOWN
 
@@ -26,7 +26,7 @@
 /datum/keybinding/living/rest
 	key = "V"
 	name = "rest"
-	full_name = "Rest"
+	full_name = "Połóż się/wstań"
 	description = "Połóż się albo wstań."
 	keybind_signal = COMSIG_KB_LIVING_REST_DOWN
 

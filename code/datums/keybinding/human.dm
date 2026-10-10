@@ -9,7 +9,7 @@
 /datum/keybinding/human/quick_equip
 	key = "E"
 	name = "quick_equip"
-	full_name = "Quick equip"
+	full_name = "Szybkie założenie"
 	description = ""
 	keybind_signal = COMSIG_KB_HUMAN_QUICKEQUIP_DOWN
 

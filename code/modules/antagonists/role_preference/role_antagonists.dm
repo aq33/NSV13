@@ -1,37 +1,37 @@
 /datum/role_preference/antagonist/blood_brother
-	name = "Blood Brother"
+	name = "Brat krwi"
 	antag_datum = /datum/antagonist/brother
 
 /datum/role_preference/antagonist/blood_cultist
-	name = "Blood Cultist"
+	name = "Kultysta krwi"
 	antag_datum = /datum/antagonist/cult
 
 /datum/role_preference/antagonist/clock_cultist
-	name = "Clock Cultist"
+	name = "Kultysta Ratvara"
 	antag_datum = /datum/antagonist/servant_of_ratvar
 
 /datum/role_preference/antagonist/devil
-	name = "Devil"
+	name = "Diabeł"
 	antag_datum = /datum/antagonist/devil
 
 /datum/role_preference/antagonist/revolutionary
-	name = "Head Revolutionary"
+	name = "Przywódca rewolucji"
 	antag_datum = /datum/antagonist/rev/head
 
 /datum/role_preference/antagonist/heretic
-	name = "Heretic"
+	name = "Heretyk"
 	antag_datum = /datum/antagonist/heretic
 
 /datum/role_preference/antagonist/hivemind_host
-	name = "Hivemind Host"
+	name = "Nosiciel roju"
 	antag_datum = /datum/antagonist/hivemind
 
 /datum/role_preference/antagonist/incursionist
-	name = "Incursionist"
+	name = "Członek inwazji Syndykatu"
 	antag_datum = /datum/antagonist/incursion
 
 /datum/role_preference/antagonist/excommunicate
-	name = "Excommunicated Syndicate Agent"
+	name = "Ekskomunikowany agent Syndykatu"
 	antag_datum = /datum/antagonist/traitor/excommunicate
 
 /datum/role_preference/antagonist/gangster
@@ -39,5 +39,5 @@
 	antag_datum = /datum/antagonist/gang
 
 /datum/role_preference/antagonist/internal_affairs
-	name = "Internal Affairs Agent"
+	name = "Agent spraw wewnętrznych"
 	antag_datum = /datum/antagonist/traitor/internal_affairs

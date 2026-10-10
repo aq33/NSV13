@@ -6,7 +6,7 @@
 /datum/keybinding/client/get_help
 	key = "F1"
 	name = "get_help"
-	full_name = "Get Help"
+	full_name = "Pomoc"
 	description = "Poproś admina lub mentora o pomoc."
 	keybind_signal = COMSIG_KB_CLIENT_GETHELP_DOWN
 
@@ -21,8 +21,8 @@
 /datum/keybinding/client/screenshot
 	key = "F2"
 	name = "screenshot"
-	full_name = "Screenshot"
-	description = "Take a screenshot."
+	full_name = "Zrzut ekranu"
+	description = "Zrób zrzut ekranu."
 	keybind_signal = COMSIG_KB_CLIENT_SCREENSHOT_DOWN
 
 /datum/keybinding/client/screenshot/down(client/user)
@@ -36,7 +36,7 @@
 /datum/keybinding/client/toggleminimalhud
 	key = "F12"
 	name = "toggleminimalhud"
-	full_name = "Toggle Minimal HUD"
+	full_name = "Przełącz minimalny HUD"
 	description = "Przełącz zminimalizowany stan HUD."
 	keybind_signal = COMSIG_KB_CLIENT_MINIMALHUD_DOWN
 
@@ -68,7 +68,7 @@
 /datum/keybinding/client/fullscreen
 	key = "F11"
 	name = "fullscreen"
-	full_name = "Toggle Fullscreen"
+	full_name = "Przełącz pełny ekran"
 	description = "Przełączaj między trybem okienkowym a pełnoekranowym."
 	keybind_signal = COMSIG_KB_CLIENT_FULLSCREEN_DOWN
 
