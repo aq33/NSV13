@@ -2648,7 +2648,7 @@
 /obj/structure/table/reinforced{
 	color = "#aaaaaa"
 	},
-/obj/item/reagent_containers/food/snacks/store/cake/cheese,
+/obj/item/food/cake/cheese,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/powered/nsv13/boarding_interior)
 "Tp" = (

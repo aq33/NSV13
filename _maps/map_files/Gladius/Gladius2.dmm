@@ -789,7 +789,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/glass,
-/obj/item/trash/plate,
+/obj/item/plate,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/frame1/starboard)
 "aEq" = (
@@ -946,7 +946,7 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
-/obj/item/reagent_containers/food/snacks/onionrings,
+/obj/item/food/onionrings,
 /obj/effect/landmark/zebra_interlock_point,
 /obj/machinery/door/firedoor/border_only{
 	dir = 8
@@ -2671,7 +2671,7 @@
 /area/engine/break_room)
 "caD" = (
 /obj/item/kitchen/knife,
-/obj/item/reagent_containers/food/snacks/meat/rawbacon,
+/obj/item/food/meat/rawbacon,
 /obj/item/reagent_containers/food/condiment/saltshaker{
 	pixel_x = -8;
 	pixel_y = 5
@@ -6421,7 +6421,7 @@
 "eyq" = (
 /obj/structure/table/wood,
 /obj/item/clothing/mask/fakemoustache,
-/obj/item/reagent_containers/food/snacks/baguette,
+/obj/item/food/baguette,
 /obj/item/toy/crayon/spraycan/mimecan{
 	charges = 5
 	},
@@ -6585,7 +6585,7 @@
 "eDc" = (
 /obj/structure/table/wood,
 /obj/item/wrench,
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /obj/item/radio/intercom/directional/north{
 	name = "Clown's Comedy Club Microphone"
 	},
@@ -7002,7 +7002,7 @@
 /area/crew_quarters/bar)
 "eNw" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/syndicake,
+/obj/item/food/syndicake,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -8320,19 +8320,19 @@
 /obj/structure/sign/plaques/kiddie/badger{
 	pixel_y = 32
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
 /obj/structure/table/wood,
@@ -9642,7 +9642,7 @@
 	id = "kitchen";
 	name = "Serving Hatch"
 	},
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
@@ -9702,7 +9702,7 @@
 /area/tcommsat/computer)
 "glE" = (
 /obj/structure/table/wood/fancy/black,
-/obj/item/reagent_containers/food/snacks/burger/fivealarm,
+/obj/item/food/burger/fivealarm,
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
 "glR" = (
@@ -10110,7 +10110,7 @@
 /obj/structure/table/reinforced,
 /obj/item/storage/bag/tray,
 /obj/item/reagent_containers/food/condiment/flour,
-/obj/item/reagent_containers/food/snacks/meat/rawbacon,
+/obj/item/food/meat/rawbacon,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/kitchen)
 "gzE" = (
@@ -10174,7 +10174,7 @@
 /area/hallway/secondary/entry)
 "gBT" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/kitchen)
 "gCl" = (
@@ -11253,7 +11253,7 @@
 /area/engine/engineering/ftl_room)
 "hjC" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/dough,
+/obj/item/food/dough,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/kitchen)
 "hjS" = (
@@ -12607,11 +12607,11 @@
 /area/maintenance/nsv/deck2/starboard/aft)
 "icB" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
 /obj/machinery/newscaster/directional/west,
 /turf/open/floor/plasteel/tech/grid,
 /area/chapel/main)
@@ -15074,7 +15074,7 @@
 /turf/open/floor/monotile/dark,
 /area/hallway/nsv/deck2/frame1/central)
 "jBm" = (
-/obj/structure/reagent_dispensers/cooking_oil,
+/obj/structure/reagent_dispensers/nutriment/fat/oil,
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/kitchen/coldroom)
 "jBy" = (
@@ -17948,19 +17948,19 @@
 /area/lawoffice)
 "luk" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
 /obj/item/radio/intercom/directional/west,
@@ -18673,16 +18673,16 @@
 /area/engine/armour_pump)
 "lOT" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/watermelon,
-/obj/item/reagent_containers/food/snacks/grown/citrus/orange,
-/obj/item/reagent_containers/food/snacks/grown/grapes,
-/obj/item/reagent_containers/food/snacks/grown/cocoapod,
-/obj/item/reagent_containers/food/snacks/grown/apple,
-/obj/item/reagent_containers/food/snacks/grown/chili,
-/obj/item/reagent_containers/food/snacks/grown/cherries,
-/obj/item/reagent_containers/food/snacks/grown/soybeans,
-/obj/item/reagent_containers/food/snacks/grown/citrus/lime,
+/obj/item/food/grown/wheat,
+/obj/item/food/grown/watermelon,
+/obj/item/food/grown/citrus/orange,
+/obj/item/food/grown/grapes,
+/obj/item/food/grown/cocoapod,
+/obj/item/food/grown/apple,
+/obj/item/food/grown/chili,
+/obj/item/food/grown/cherries,
+/obj/item/food/grown/soybeans,
+/obj/item/food/grown/citrus/lime,
 /turf/open/floor/durasteel,
 /area/hydroponics/garden)
 "lPT" = (
@@ -25388,7 +25388,7 @@
 "pSs" = (
 /obj/item/lighter,
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/poppy/lily,
+/obj/item/food/grown/poppy/lily,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -27390,7 +27390,7 @@
 /area/security/checkpoint/supply)
 "qXq" = (
 /obj/structure/table/wood,
-/obj/item/trash/plate,
+/obj/item/plate,
 /turf/open/floor/carpet/red,
 /area/crew_quarters/bar)
 "qXH" = (
@@ -28790,7 +28790,7 @@
 /area/engine/engineering/ftl_room)
 "rNm" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/muffin/berry,
+/obj/item/food/muffin/berry,
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
 "rNx" = (
@@ -33831,7 +33831,7 @@
 /turf/open/floor/monotile/dark,
 /area/quartermaster/office)
 "uTj" = (
-/obj/item/trash/can/food,
+/obj/item/trash/canned,
 /obj/item/cigbutt,
 /obj/effect/decal/cleanable/shreds,
 /turf/open/floor/plating,
@@ -34113,7 +34113,7 @@
 /area/engine/engineering/ftl_room)
 "veD" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
 /turf/open/floor/plating,

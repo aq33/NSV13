@@ -1335,7 +1335,7 @@
 	pixel_x = -7;
 	pixel_y = -6
 	},
-/obj/item/trash/plate{
+/obj/item/plate{
 	pixel_y = 2
 	},
 /obj/effect/spawner/lootdrop/maintenance,
@@ -2535,7 +2535,7 @@
 /area/engine/engineering)
 "cDA" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /obj/item/reagent_containers/food/drinks/solgovcup,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/cafeteria)
@@ -4375,7 +4375,7 @@
 /area/maintenance/nsv/deck1/port/aft)
 "eus" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /obj/item/reagent_containers/food/drinks/drinkingglass/filled/cola,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/cafeteria)
@@ -5524,7 +5524,7 @@
 	id = "kitchen";
 	name = "Serving Hatch"
 	},
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
@@ -8133,7 +8133,7 @@
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/ai)
 "itx" = (
-/obj/structure/reagent_dispensers/cooking_oil,
+/obj/structure/reagent_dispensers/nutriment/fat/oil,
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/kitchen/coldroom)
 "itI" = (
@@ -8909,7 +8909,7 @@
 /area/maintenance/nsv/deck1/port/aft)
 "jlg" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/cafeteria)
 "jmz" = (
@@ -9503,7 +9503,7 @@
 	pixel_y = 4
 	},
 /obj/item/pen,
-/obj/item/trash/plate,
+/obj/item/plate,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/monotile/light,
 /area/bridge)
@@ -13964,8 +13964,8 @@
 /area/engine/engineering)
 "oXn" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/chocolatebar{
-	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/medicine/adminordrazine = 1, /datum/reagent/consumable/cocoa = 2)
+/obj/item/food/chocolatebar{
+	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/medicine/adminordrazine = 1, /datum/reagent/consumable/cocoa = 2)
 	},
 /turf/open/floor/carpet/cyan,
 /area/medical/medbay/central)
@@ -14305,7 +14305,7 @@
 /area/crew_quarters/heads/captain)
 "psf" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -17527,7 +17527,7 @@
 /area/bridge/cic)
 "sNm" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/donkpocket,
+/obj/item/food/donkpocket,
 /turf/open/floor/carpet/cyan,
 /area/medical/medbay/central)
 "sOm" = (
@@ -19481,7 +19481,7 @@
 /area/medical/chemistry)
 "uMV" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /obj/item/reagent_containers/food/drinks/britcup,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/cafeteria)
@@ -21799,7 +21799,7 @@
 /area/nsv/hanger/deck2)
 "xaR" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/cubancarp,
+/obj/item/food/cubancarp,
 /turf/open/floor/carpet/cyan,
 /area/medical/medbay/central)
 "xby" = (
@@ -22175,7 +22175,7 @@
 /area/maintenance/department/medical)
 "xpp" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/rationpack,
+/obj/item/food/rationpack,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -22793,7 +22793,7 @@
 /area/quartermaster/miningdock)
 "ygh" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /turf/open/floor/monotile/light,
 /area/crew_quarters/kitchen)
 "ygM" = (

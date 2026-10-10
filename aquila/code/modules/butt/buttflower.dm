@@ -8,7 +8,7 @@
 	icon_state = "seed-butt"
 	species = "butt"
 	plantname = "Replica Butt Flower"
-	product = /obj/item/reagent_containers/food/snacks/grown/buttflower
+	product = /obj/item/food/grown/buttflower
 	lifespan = 25
 	endurance = 10
 	maturation = 8
@@ -22,13 +22,13 @@
 	icon_harvest = "butt-harvest"
 	reagents_add = list(/datum/reagent/drug/fartium = 1)
 
-/obj/item/reagent_containers/food/snacks/grown/buttflower
+/obj/item/food/grown/buttflower
 	seed = /obj/item/seeds/buttseed
 	name = "buttflower"
 	desc = "Gives off a pungent aroma once it blooms."
 	icon = 'aquila/icons/obj/buttflower.dmi'
 	icon_state = "buttflower" //coder spriting ftw
-	trash = /obj/item/organ/butt
+	trash_type = /obj/item/organ/butt
 
 /obj/machinery/vending/hydroseeds/Initialize(mapload)
 	products[/obj/item/seeds/buttseed] = 2

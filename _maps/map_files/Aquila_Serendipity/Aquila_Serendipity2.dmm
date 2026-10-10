@@ -4588,12 +4588,12 @@
 /area/engine/engine_room)
 "xZ" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/energybar{
+/obj/item/food/energybar{
 	pixel_w = 4;
 	pixel_x = -4;
 	pixel_y = 8
 	},
-/obj/item/reagent_containers/food/snacks/energybar{
+/obj/item/food/energybar{
 	pixel_w = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
@@ -7251,7 +7251,7 @@
 /area/engine/armour_pump)
 "Na" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/sosjerky/healthy,
+/obj/item/food/sosjerky/healthy,
 /obj/item/reagent_containers/food/drinks/coffee{
 	pixel_x = 7;
 	pixel_y = 8
@@ -9709,7 +9709,7 @@
 /area/engine/armour_pump)
 "ZJ" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/energybar,
+/obj/item/food/energybar,
 /turf/open/floor/plasteel/white,
 /area/engine/break_room)
 "ZM" = (

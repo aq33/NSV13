@@ -3254,7 +3254,7 @@
 /area/storage/eva)
 "cMA" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
 /turf/open/floor/plasteel/grid/techfloor,
 /area/chapel/office)
 "cMC" = (
@@ -9932,7 +9932,7 @@
 	},
 /obj/effect/turf_decal/tile/ship/full/red,
 /obj/item/folder/blue,
-/obj/item/reagent_containers/food/snacks/donut/apple,
+/obj/item/food/donut/apple,
 /obj/machinery/door/firedoor/border_only{
 	dir = 8
 	},
@@ -23827,7 +23827,7 @@
 	},
 /obj/structure/table/reinforced,
 /obj/item/folder/blue,
-/obj/item/reagent_containers/food/snacks/donut/caramel,
+/obj/item/food/donut/caramel,
 /turf/open/floor/plasteel/grid/techfloor,
 /area/security/brig)
 "uGM" = (
@@ -25386,12 +25386,12 @@
 "wfi" = (
 /obj/machinery/door/window/eastleft,
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/poppy,
-/obj/item/reagent_containers/food/snacks/grown/poppy,
-/obj/item/reagent_containers/food/snacks/grown/poppy,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/poppy,
+/obj/item/food/grown/poppy,
+/obj/item/food/grown/poppy,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -26924,7 +26924,7 @@
 	pixel_x = 7;
 	pixel_y = 7
 	},
-/obj/item/reagent_containers/food/snacks/donut/choco,
+/obj/item/food/donut/choco,
 /turf/open/floor/monotile/steel,
 /area/security/brig)
 "xBk" = (

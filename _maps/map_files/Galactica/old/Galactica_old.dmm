@@ -3700,7 +3700,7 @@
 /area/medical/virology)
 "kn" = (
 /obj/structure/table/glass,
-/obj/item/reagent_containers/food/snacks/sosjerky,
+/obj/item/food/sosjerky,
 /turf/open/floor/carpet/ship,
 /area/medical/virology)
 "ko" = (
@@ -9802,7 +9802,7 @@
 /area/maintenance/department/bridge)
 "GH" = (
 /obj/item/grown/bananapeel,
-/obj/item/reagent_containers/food/snacks/sosjerky,
+/obj/item/food/sosjerky,
 /turf/open/floor/plating,
 /area/maintenance/department/medical)
 "GM" = (

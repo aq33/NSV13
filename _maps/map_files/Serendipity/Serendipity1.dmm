@@ -12,6 +12,10 @@
 	},
 /turf/open/floor/grass,
 /area/crew_quarters/dorms/nsv/nature_deck)
+"ac" = (
+/obj/machinery/griddle,
+/turf/open/floor/wood,
+/area/crew_quarters/kitchen)
 "ad" = (
 /obj/effect/turf_decal/tile/ship/half/purple{
 	dir = 1
@@ -79,6 +83,11 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/nsv/trauma)
+"aj" = (
+/obj/effect/landmark/event_spawn,
+/obj/machinery/oven,
+/turf/open/floor/wood,
+/area/crew_quarters/kitchen)
 "ak" = (
 /obj/structure/cable,
 /turf/open/floor/carpet/ship/red_carpet,
@@ -100,6 +109,35 @@
 	},
 /turf/open/floor/engine/light,
 /area/crew_quarters/heads/captain/private)
+"an" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/condiment/enzyme{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/glass/beaker{
+	list_reagents = list(/datum/reagent/blood=50);
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/kitchen/knife,
+/obj/item/kitchen/rollingpin,
+/turf/open/floor/wood,
+/area/crew_quarters/kitchen)
+"ao" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/condiment/saltshaker,
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/sugar{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/turf/open/floor/wood,
+/area/crew_quarters/kitchen)
 "aq" = (
 /obj/machinery/hydroponics/constructable,
 /turf/open/floor/grass,
@@ -2120,19 +2158,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/door/firedoor/border_only/directional/south,
-/turf/open/floor/wood,
-/area/crew_quarters/kitchen)
-"hC" = (
-/obj/structure/table/wood,
-/obj/item/reagent_containers/food/condiment/enzyme{
-	pixel_x = -3;
-	pixel_y = 4
-	},
-/obj/item/reagent_containers/glass/beaker{
-	list_reagents = list(/datum/reagent/blood=50);
-	pixel_x = 6;
-	pixel_y = 9
-	},
 /turf/open/floor/wood,
 /area/crew_quarters/kitchen)
 "hE" = (
@@ -4975,7 +5000,7 @@
 /obj/structure/disposalpipe/junction/flip{
 	dir = 4
 	},
-/obj/item/trash/plate{
+/obj/item/plate{
 	name = "ghost plate"
 	},
 /turf/open/floor/grass,
@@ -6553,13 +6578,6 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/open/floor/grass,
 /area/crew_quarters/dorms/nsv/nature_deck)
-"xK" = (
-/obj/structure/table/wood,
-/obj/item/kitchen/knife,
-/obj/effect/landmark/event_spawn,
-/obj/item/kitchen/rollingpin,
-/turf/open/floor/wood,
-/area/crew_quarters/kitchen)
 "xL" = (
 /obj/machinery/stasis,
 /obj/effect/turf_decal/tile/ship/blue{
@@ -7169,15 +7187,6 @@
 "zU" = (
 /turf/closed/wall/r_wall/ship,
 /area/medical/nsv/trauma)
-"zV" = (
-/obj/structure/table/wood,
-/obj/item/reagent_containers/food/condiment/saltshaker,
-/obj/item/reagent_containers/food/condiment/peppermill{
-	pixel_x = 3;
-	pixel_y = 4
-	},
-/turf/open/floor/wood,
-/area/crew_quarters/kitchen)
 "zY" = (
 /obj/machinery/computer/crew,
 /turf/open/floor/carpet/blue,
@@ -7435,7 +7444,7 @@
 /area/hallway/secondary/exit)
 "AV" = (
 /obj/structure/table/wood/fancy/green,
-/obj/item/trash/plate{
+/obj/item/plate{
 	name = "ghost plate"
 	},
 /turf/open/floor/grass,
@@ -7763,7 +7772,7 @@
 /turf/open/floor/carpet/ship,
 /area/medical/morgue)
 "BY" = (
-/obj/structure/reagent_dispensers/cooking_oil,
+/obj/structure/reagent_dispensers/nutriment/fat/oil,
 /turf/open/floor/plating,
 /area/maintenance/department/medical)
 "BZ" = (
@@ -9963,15 +9972,6 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/hallway/secondary/exit)
-"JP" = (
-/obj/structure/table/wood,
-/obj/item/reagent_containers/food/condiment/flour,
-/obj/item/reagent_containers/food/condiment/sugar{
-	pixel_x = 4;
-	pixel_y = 2
-	},
-/turf/open/floor/wood,
-/area/crew_quarters/kitchen)
 "JR" = (
 /obj/machinery/computer/robotics{
 	dir = 1
@@ -11113,8 +11113,8 @@
 /obj/machinery/biogenerator,
 /obj/machinery/newscaster/directional/north,
 /obj/item/reagent_containers/glass/beaker/large,
-/obj/item/reagent_containers/food/snacks/grown/carrot,
-/obj/item/reagent_containers/food/snacks/grown/carrot{
+/obj/item/food/grown/carrot,
+/obj/item/food/grown/carrot{
 	pixel_y = 6
 	},
 /turf/open/floor/grass,
@@ -11383,7 +11383,7 @@
 /obj/structure/table/wood,
 /obj/machinery/airalarm/directional/north,
 /obj/structure/window/plasma/reinforced/spawner/east,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /turf/open/floor/wood,
 /area/crew_quarters/kitchen)
 "OB" = (
@@ -44210,7 +44210,7 @@ gJ
 tx
 uX
 Jk
-JP
+ac
 zb
 WS
 Eu
@@ -44467,7 +44467,7 @@ mz
 tx
 NP
 nY
-xK
+aj
 jz
 WS
 ut
@@ -44724,7 +44724,7 @@ gJ
 tx
 Uz
 Jk
-hC
+an
 ib
 hq
 Kb
@@ -44981,7 +44981,7 @@ gJ
 tx
 XD
 iW
-zV
+ao
 yi
 WG
 ym

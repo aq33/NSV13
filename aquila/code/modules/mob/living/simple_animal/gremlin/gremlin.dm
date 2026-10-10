@@ -26,6 +26,7 @@ GLOBAL_LIST(bad_gremlin_items)
 	wanted_objects = list(
 		/obj/machinery,
 		/obj/item/reagent_containers/food,
+		/obj/item/food,
 		/obj/structure/sink,
 	)
 
@@ -74,7 +75,7 @@ GLOBAL_LIST(bad_gremlin_items)
 	return ..()
 
 /mob/living/simple_animal/hostile/gremlin/AttackingTarget()
-	if(istype(target, /obj/item/reagent_containers/food))
+	if(istype(target, /obj/item/reagent_containers/food) || istype(target, /obj/item/food))
 		if(world.time >= next_eat || prob(25)) //eat food if we're hungry or bored
 			eat(target)
 		LoseTarget()
@@ -237,7 +238,7 @@ GLOBAL_LIST(bad_gremlin_items)
 //Lets player-controlled gremlins tamper with machinery and eat food on harm intent
 /mob/living/simple_animal/hostile/gremlin/UnarmedAttack(atom/A, proximity)
 	if(a_intent == INTENT_HARM)
-		if(istype(A, /obj/item/reagent_containers/food))
+		if(istype(A, /obj/item/reagent_containers/food) || istype(A, /obj/item/food))
 			eat(A)
 			return
 		if(istype(A, /obj/machinery) || istype(A, /obj/structure))

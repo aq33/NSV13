@@ -29,20 +29,26 @@
 
 /obj/machinery/processor/proc/process_food(datum/food_processor_process/recipe, atom/movable/what)
 	if (recipe.output && loc && !QDELETED(src))
-		for(var/i = 0, i < rating_amount, i++)
-			new recipe.output(drop_location())
+		var/cached_multiplier = (recipe.food_multiplier * rating_amount)
+		for(var/i in 1 to cached_multiplier)
+			var/atom/processed_food = new recipe.output(drop_location())
+			if(processed_food.reagents && what.reagents)
+				processed_food.reagents.clear_reagents()
+				what.reagents.copy_to(processed_food, what.reagents.total_volume, multiplier = 1 / cached_multiplier)
+
 	if (ismob(what))
 		var/mob/themob = what
 		themob.gib(TRUE,TRUE,TRUE)
 	else
 		qdel(what)
 
-/obj/machinery/processor/proc/select_recipe(X)
-	for (var/type in subtypesof(/datum/food_processor_process) - /datum/food_processor_process/mob)
-		var/datum/food_processor_process/recipe = new type()
-		if (!istype(X, recipe.input) || !istype(src, recipe.required_machine))
-			continue
-		return recipe
+/obj/machinery/processor/proc/select_recipe(input_item)
+	var/most_specific_type = /atom
+	for (var/datum/food_processor_process/recipe as anything in subtypesof(/datum/food_processor_process) - /datum/food_processor_process/mob)
+		var/recipe_input = initial(recipe.input)
+		if (istype(src, initial(recipe.required_machine)) && istype(input_item, recipe_input) && ispath(recipe_input, most_specific_type))
+			most_specific_type = recipe_input
+			. = new recipe()
 
 /obj/machinery/processor/attackby(obj/item/O, mob/user, params)
 	if(processing)
@@ -63,7 +69,9 @@
 	if(istype(O, /obj/item/storage/bag/tray))
 		var/obj/item/storage/T = O
 		var/loaded = 0
-		for(var/obj/item/reagent_containers/food/snacks/S in T.contents)
+		for(var/obj/S in T.contents)
+			if(!IS_EDIBLE(S))
+				continue
 			var/datum/food_processor_process/P = select_recipe(S)
 			if(P)
 				if(SEND_SIGNAL(T, COMSIG_TRY_STORAGE_TAKE, S, src))

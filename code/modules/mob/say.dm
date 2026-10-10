@@ -28,6 +28,7 @@
 /mob/verb/me_verb(message as text)
 	set name = "Me"
 	set category = "IC"
+	set desc = "Wykonaj własną emotkę. Zostaw puste, aby wybrać, czy ma być słyszalna, widoczna czy obie."
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
@@ -35,7 +36,7 @@
 
 	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
 
-	usr.emote("me",1,message,TRUE)
+	usr.emote("me",EMOTE_VISIBLE|EMOTE_AUDIBLE,message,TRUE)
 
 ///Speak as a dead person (ghost etc)
 /mob/proc/say_dead(var/message)
@@ -122,7 +123,7 @@
 		messagetextpos = 2
 	if(is_banned_from(ckey, "Emote"))
 		return copytext(message, customsaypos + messagetextpos)
-	mods[MODE_CUSTOM_SAY_EMOTE] = lowertext(copytext_char(message, 1, customsaypos))
+	mods[MODE_CUSTOM_SAY_EMOTE] = copytext_char(message, 1, customsaypos)
 	message = copytext(message, customsaypos + messagetextpos)
 	if(!message)
 		mods[MODE_CUSTOM_SAY_ERASE_INPUT] = TRUE

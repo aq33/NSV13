@@ -14,7 +14,7 @@
 /area/ruin/powered/nsv13/boarding_interior)
 "aS" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/burger/soylent,
+/obj/item/food/burger/soylent,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/nsv13/boarding_interior)
 "aU" = (
@@ -46,7 +46,7 @@
 /turf/open/floor/engine,
 /area/ruin/powered/nsv13/boarding_interior)
 "bq" = (
-/obj/item/reagent_containers/food/snacks/donut,
+/obj/item/food/donut,
 /obj/item/storage/toolbox/mechanical,
 /obj/structure/closet,
 /turf/open/floor/engine,
@@ -938,7 +938,7 @@
 /area/ruin/powered/nsv13/boarding_interior)
 "ST" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/burger/fish,
+/obj/item/food/burger/fish,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/nsv13/boarding_interior)
 "Tb" = (
