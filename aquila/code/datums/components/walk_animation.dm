@@ -167,22 +167,21 @@
 	update_held_dir(new_dir)
 
 /// Nakładki na źródłach przedmiotów biorą kierunek z samego źródła, a VIS_INHERIT_DIR go nie zmienia,
-/// więc ustawiamy go wprost. Tyłem fragment z przedmiotem dostaje odwróconą maskę z bufora ciała,
-/// więc widać tylko to, co wystaje zza sylwetki, a przedmiot dalej rusza się w całości z ręką.
+/// więc ustawiamy go wprost. Tyłem fragment z przedmiotem dostaje zwykłą (dodatnią) warstwę tuż pod
+/// warstwą moba, więc rysuje się pod wszystkimi fragmentami ciała. Ujemne warstwy (FLOAT_LAYER - x)
+/// fragmenty z KEEP_APART zrównują z warstwą moba, dlatego nie wystarczały.
 /datum/component/walk_animation/proc/update_held_dir(new_dir)
+	var/mob/living/carbon/human/H = parent
 	for(var/index in 1 to 2)
 		var/obj/effect/overlay/walk_held_source/source = masks["hand_[index]"]
 		source.dir = new_dir
 	var/behind = (new_dir == NORTH)
-	if(behind == held_behind)
+	if(!behind && !held_behind)
 		return
 	held_behind = behind
 	for(var/index in 1 to 2)
 		var/obj/effect/overlay/walk_held/held = limbs["hand_[index]"]
-		if(behind)
-			held.add_filter("walk_behind_body", 1, alpha_mask_filter(render_source = body_target, flags = MASK_INVERSE))
-		else
-			held.remove_filter("walk_behind_body")
+		held.layer = behind ? H.layer - 0.001 : FLOAT_LAYER
 
 /// Z boku maska "leg_b" pokrywa się z "leg_a", więc w spoczynku ta noga jest ukryta; z przodu i z tyłu zawsze widoczna.
 /datum/component/walk_animation/proc/update_side_leg(new_dir)
