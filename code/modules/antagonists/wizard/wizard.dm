@@ -58,7 +58,7 @@
 		return
 	if(!GLOB.wizardstart.len)
 		SSjob.SendToLateJoin(owner.current)
-		to_chat(owner, "HOT INSERTION, GO GO GO")
+		to_chat(owner, "GORĄCE WEJŚCIE, NAPRZÓD, NAPRZÓD")
 	owner.current.forceMove(pick(GLOB.wizardstart))
 
 /datum/antagonist/wizard/proc/create_objectives()
@@ -153,18 +153,18 @@
 	H.equipOutfit(outfit_type)
 
 /datum/antagonist/wizard/greet()
-	to_chat(owner, "<span class='boldannounce'>You are the Space Wizard!</span>")
-	to_chat(owner, "<B>The Space Wizards Federation has given you the following tasks:</B>")
+	to_chat(owner, "<span class='boldannounce'>Jesteś kosmicznym czarodziejem!</span>")
+	to_chat(owner, "<B>Federacja Kosmicznych Czarodziejów powierzyła ci następujące zadania:</B>")
 	owner.announce_objectives()
-	to_chat(owner, "You will find a list of available spells in your spell book. Choose your magic arsenal carefully.")
-	to_chat(owner, "The spellbook is bound to you, and others cannot use it.")
-	to_chat(owner, "In your pockets you will find a teleport scroll. Use it as needed.")
-	to_chat(owner,"<B>Remember:</B> Do not forget to prepare your spells.")
-	owner.current.client?.tgui_panel?.give_antagonist_popup("Space Wizard",
-		"Prepare your spells and cause havok upon the accursed station.")
+	to_chat(owner, "Listę dostępnych zaklęć znajdziesz w swojej księdze zaklęć. Starannie dobierz magiczny arsenał.")
+	to_chat(owner, "Księga zaklęć jest z tobą związana i inni nie mogą jej używać.")
+	to_chat(owner, "W kieszeniach znajdziesz zwój teleportacji. Używaj go według potrzeb.")
+	to_chat(owner,"<B>Pamiętaj:</B> nie zapomnij przygotować zaklęć.")
+	owner.current.client?.tgui_panel?.give_antagonist_popup("Kosmiczny czarodziej",
+		"Przygotuj zaklęcia i siej zamęt na tym przeklętym statku.")
 
 /datum/antagonist/wizard/farewell()
-	to_chat(owner, "<span class='userdanger'>You have been brainwashed! You are no longer a wizard!</span>")
+	to_chat(owner, "<span class='userdanger'>Wyprano ci mózg! Nie jesteś już czarodziejem!</span>")
 
 /datum/antagonist/wizard/proc/rename_wizard()
 	set waitfor = FALSE
@@ -173,7 +173,7 @@
 	var/wizard_name_second = pick(GLOB.wizard_second)
 	var/randomname = "[wizard_name_first] [wizard_name_second]"
 	var/mob/living/wiz_mob = owner.current
-	var/newname = sanitize_name(reject_bad_text(stripped_input(wiz_mob, "You are the [name]. Would you like to change your name to something else?", "Name change", randomname, MAX_NAME_LEN)))
+	var/newname = sanitize_name(reject_bad_text(stripped_input(wiz_mob, "Jesteś: [name]. Chcesz zmienić imię?", "Zmiana imienia", randomname, MAX_NAME_LEN)))
 
 	if (!newname)
 		newname = randomname
@@ -207,7 +207,7 @@
 	wiz_age = APPRENTICE_AGE_MIN
 
 /datum/antagonist/wizard/apprentice/greet()
-	to_chat(owner, "<B>You are [master.current.real_name]'s apprentice! You are bound by magic contract to follow [master.p_their()] orders and help [master.p_them()] in accomplishing [master.p_their()] goals.")
+	to_chat(owner, "<B>Jesteś uczniem [master.current.real_name]! Magiczna umowa zobowiązuje cię do wykonywania rozkazów mistrza i pomagania mu w osiąganiu celów.")
 	owner.announce_objectives()
 
 /datum/antagonist/wizard/apprentice/register()
@@ -227,20 +227,20 @@
 		if(APPRENTICE_DESTRUCTION)
 			owner.AddSpell(new /obj/effect/proc_holder/spell/targeted/projectile/magic_missile(null))
 			owner.AddSpell(new /obj/effect/proc_holder/spell/aimed/fireball(null))
-			to_chat(owner, "<b>Your service has not gone unrewarded, however. Studying under [master.current.real_name], you have learned powerful, destructive spells. You are able to cast magic missile and fireball.</b>")
+			to_chat(owner, "<b>Twoja służba nie pozostała jednak bez nagrody. Pod okiem [master.current.real_name] nauczono cię potężnych, niszczycielskich zaklęć. Potrafisz rzucać Magiczny Pocisk i Kulę Ognia.</b>")
 		if(APPRENTICE_BLUESPACE)
 			owner.AddSpell(new /obj/effect/proc_holder/spell/targeted/area_teleport/teleport(null))
 			owner.AddSpell(new /obj/effect/proc_holder/spell/targeted/ethereal_jaunt(null))
-			to_chat(owner, "<b>Your service has not gone unrewarded, however. Studying under [master.current.real_name], you have learned reality bending mobility spells. You are able to cast teleport and ethereal jaunt.</b>")
+			to_chat(owner, "<b>Twoja służba nie pozostała jednak bez nagrody. Pod okiem [master.current.real_name] nauczono cię zaklęć ruchu naginających rzeczywistość. Potrafisz rzucać Teleportację i Eteryczny Spacer.</b>")
 		if(APPRENTICE_HEALING)
 			owner.AddSpell(new /obj/effect/proc_holder/spell/targeted/charge(null))
 			owner.AddSpell(new /obj/effect/proc_holder/spell/targeted/forcewall(null))
 			H.put_in_hands(new /obj/item/gun/magic/staff/healing(H))
-			to_chat(owner, "<b>Your service has not gone unrewarded, however. Studying under [master.current.real_name], you have learned livesaving survival spells. You are able to cast charge and forcewall.</b>")
+			to_chat(owner, "<b>Twoja służba nie pozostała jednak bez nagrody. Pod okiem [master.current.real_name] nauczono cię ratujących życie zaklęć przetrwania. Potrafisz rzucać Ładowanie i Ścianę Mocy.</b>")
 		if(APPRENTICE_ROBELESS)
 			owner.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/knock(null))
 			owner.AddSpell(new /obj/effect/proc_holder/spell/targeted/mind_transfer(null))
-			to_chat(owner, "<b>Your service has not gone unrewarded, however. Studying under [master.current.real_name], you have learned stealthy, robeless spells. You are able to cast knock and mindswap.</b>")
+			to_chat(owner, "<b>Twoja służba nie pozostała jednak bez nagrody. Pod okiem [master.current.real_name] nauczono cię skrytych zaklęć niewymagających szat. Potrafisz rzucać Pukanie i Zamianę Umysłów.</b>")
 		if(APPRENTICE_WILDMAGIC)
 			var/static/list/spell_lists = subtypesof(/datum/spellbook_entry)-typesof(/datum/spellbook_entry/item)-typesof(/datum/spellbook_entry/summon)
 			var/spells_left = 2
@@ -259,13 +259,13 @@
 				var/obj/effect/proc_holder/spell/new_spell = initial(chosen_spell.spell_type)
 				owner.AddSpell(new new_spell(null))
 				spells_left--
-			to_chat(owner, "<b>Your service has not gone unrewarded, however. Studying under [master.current.real_name], you have learned special spells that aren't available to standard apprentices.</b>")
+			to_chat(owner, "<b>Twoja służba nie pozostała jednak bez nagrody. Pod okiem [master.current.real_name] nauczono cię specjalnych zaklęć niedostępnych dla zwykłych uczniów.</b>")
 
 /datum/antagonist/wizard/apprentice/create_objectives()
 	var/datum/objective/protect/new_objective = new /datum/objective/protect
 	new_objective.owner = owner
 	new_objective.set_target(master)
-	new_objective.explanation_text = "Protect [master.current.real_name], the wizard."
+	new_objective.explanation_text = "Chroń czarodzieja [master.current.real_name]."
 	objectives += new_objective
 	log_objective(owner, new_objective.explanation_text)
 
@@ -276,7 +276,7 @@
 	move_to_lair = FALSE
 
 /datum/antagonist/wizard/apprentice/imposter/greet()
-	to_chat(owner, "<B>You are an imposter! Trick and confuse the crew to misdirect malice from your handsome original!</B>")
+	to_chat(owner, "<B>Jesteś oszustem! Zwodź i dezorientuj załogę, żeby odwrócić jej gniew od twojego przystojnego oryginału!</B>")
 	owner.announce_objectives()
 
 /datum/antagonist/wizard/apprentice/imposter/equip_wizard()
@@ -333,7 +333,7 @@
 	Implant.implant(M)
 
 /datum/antagonist/wizard/academy/create_objectives()
-	var/datum/objective/new_objective = new("Protect Wizard Academy from the intruders")
+	var/datum/objective/new_objective = new("Chroń Akademię Czarodziejów przed intruzami")
 	new_objective.owner = owner
 	objectives += new_objective
 	log_objective(owner, new_objective.explanation_text)
@@ -348,19 +348,19 @@
 	var/wizardwin = 1
 	for(var/datum/objective/objective in objectives)
 		if(objective.check_completion())
-			parts += "<B>Objective #[count]</B>: [objective.explanation_text] <span class='greentext'>Success!</span>"
+			parts += "<B>Cel nr [count]</B>: [objective.explanation_text] <span class='greentext'>Sukces!</span>"
 		else
-			parts += "<B>Objective #[count]</B>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
+			parts += "<B>Cel nr [count]</B>: [objective.explanation_text] <span class='redtext'>Porażka.</span>"
 			wizardwin = 0
 		count++
 
 	if(wizardwin)
-		parts += "<span class='greentext'>The wizard was successful!</span>"
+		parts += "<span class='greentext'>Czarodziej odniósł sukces!</span>"
 	else
-		parts += "<span class='redtext'>The wizard has failed!</span>"
+		parts += "<span class='redtext'>Czarodziej poniósł porażkę!</span>"
 
 	if(owner.spell_list.len>0)
-		parts += "<B>[owner.name] used the following spells: </B>"
+		parts += "<B>[owner.name] używał następujących zaklęć: </B>"
 		var/list/spell_names = list()
 		for(var/obj/effect/proc_holder/spell/S in owner.spell_list)
 			spell_names += S.name
@@ -372,10 +372,10 @@
 /datum/team/wizard/roundend_report()
 	var/list/parts = list()
 
-	parts += "<span class='header'>Wizards/witches of [master_wizard.owner.name] team were:</span>"
+	parts += "<span class='header'>Czarodzieje i czarownice z drużyny [master_wizard.owner.name]:</span>"
 	parts += master_wizard.roundend_report()
 	parts += " "
-	parts += "<span class='header'>[master_wizard.owner.name] apprentices were:</span>"
+	parts += "<span class='header'>Uczniowie [master_wizard.owner.name]:</span>"
 	parts += printplayerlist(members - master_wizard.owner)
 
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"

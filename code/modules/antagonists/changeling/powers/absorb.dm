@@ -12,17 +12,17 @@
 	var/mob/living/carbon/target = user.pulling
 	var/datum/antagonist/changeling/changeling = user.mind.has_antag_datum(/datum/antagonist/changeling)
 	if(!target || !iscarbon(target))
-		to_chat(user, "<span class='warning'>We must be grabbing a creature to absorb them!</span>")
+		to_chat(user, "<span class='warning'>Musimy trzymać istotę, żeby ją wchłonąć!</span>")
 		changeling.isabsorbing = FALSE
 		return
 	if(changeling.isabsorbing)
-		to_chat(user, "<span class='warning'>We are already absorbing!</span>")
+		to_chat(user, "<span class='warning'>Już wchłaniamy!</span>")
 		return
 	if(HAS_TRAIT(target, TRAIT_NODEATH))
-		to_chat(user, "<span class='warning'>We can't absorb this creature.</span>")
+		to_chat(user, "<span class='warning'>Nie możemy wchłonąć tej istoty.</span>")
 		return
 	if(user.grab_state <= GRAB_NECK)
-		to_chat(user, "<span class='warning'>We must have a tighter grip to absorb this creature!</span>")
+		to_chat(user, "<span class='warning'>Musimy mocniej chwycić tę istotę, żeby ją wchłonąć!</span>")
 		return
 
 	return changeling.can_absorb_dna(target)
@@ -36,23 +36,23 @@
 	for(var/i in 1 to 3)
 		switch(i)
 			if(1)
-				to_chat(user, "<span class='notice'>This creature is compatible. We must hold still...</span>")
+				to_chat(user, "<span class='notice'>Ta istota jest zgodna. Musimy się nie ruszać...</span>")
 			if(2)
-				user.visible_message("<span class='warning'>[user] extends a proboscis!</span>", "<span class='notice'>We extend a proboscis.</span>")
+				user.visible_message("<span class='warning'>[user] wysuwa ssawkę!</span>", "<span class='notice'>Wysuwamy ssawkę.</span>")
 			if(3)
-				user.visible_message("<span class='danger'>[user] stabs [target] with the proboscis!</span>", "<span class='notice'>We stab [target] with the proboscis.</span>")
-				to_chat(target, "<span class='userdanger'>You feel a sharp stabbing pain!</span>")
+				user.visible_message("<span class='danger'>[user] wbija ssawkę w [target]!</span>", "<span class='notice'>Wbijamy ssawkę w [target].</span>")
+				to_chat(target, "<span class='userdanger'>Czujesz ostry, kłujący ból!</span>")
 				target.take_overall_damage(40)
 
 		SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Absorb DNA", "[i]"))
 		if(!do_mob(user, target, 150))
-			to_chat(user, "<span class='warning'>Our absorption of [target] has been interrupted!</span>")
+			to_chat(user, "<span class='warning'>Przerwano nasze wchłanianie [target]!</span>")
 			changeling.isabsorbing = 0
 			return
 
 	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Absorb DNA", "4"))
-	user.visible_message("<span class='danger'>[user] sucks the fluids from [target]!</span>", "<span class='notice'>We have absorbed [target].</span>")
-	to_chat(target, "<span class='userdanger'>You are absorbed by the changeling!</span>")
+	user.visible_message("<span class='danger'>[user] wysysa płyny z [target]!</span>", "<span class='notice'>Wchłonęliśmy [target].</span>")
+	to_chat(target, "<span class='userdanger'>Zmiennokształtny cię wchłania!</span>")
 
 	if(!changeling.has_dna(target.dna))
 		changeling.add_new_profile(target)
@@ -66,7 +66,7 @@
 		owner.copy_languages(target, LANGUAGE_ABSORB)
 
 		var/datum/mind/suckedbrain = target.mind
-		user.mind.memory += "<BR><b>We've absorbed [target]'s memories into our own...</b><BR>[suckedbrain.memory]<BR>"
+		user.mind.memory += "<BR><b>Wchłonęliśmy wspomnienia [target]...</b><BR>[suckedbrain.memory]<BR>"
 		for(var/A in suckedbrain.antag_datums)
 			var/datum/antagonist/antag_types = A
 			var/list/all_objectives = antag_types.objectives.Copy()
@@ -85,7 +85,7 @@
 							var/datum/mind/M = mind
 							user.mind.memory += "<li>Conspirator: [M.name]</li>"
 						user.mind.memory += "</ul>"
-		user.mind.memory += "<b>That's all [target] had.</b><BR>"
+		user.mind.memory += "<b>To wszystko, co miał [target].</b><BR>"
 		user.memory() //I can read your mind, kekeke. Output all their notes.
 
 		//Some of target's recent speech, so the changeling can attempt to imitate them better.
@@ -111,18 +111,18 @@
 				recent_speech[spoken_memory] = say_log[spoken_memory]
 
 		if(recent_speech.len)
-			changeling.antag_memory += "<B>Some of [target]'s speech patterns, we should study these to better impersonate [target.p_them()]!</B><br>"
-			to_chat(user, "<span class='boldnotice'>Some of [target]'s speech patterns, we should study these to better impersonate [target.p_them()]!</span>")
+			changeling.antag_memory += "<B>Kilka nawyków językowych [target] - powinniśmy je przestudiować, żeby lepiej się podszywać!</B><br>"
+			to_chat(user, "<span class='boldnotice'>Kilka nawyków językowych [target] - powinniśmy je przestudiować, żeby lepiej się podszywać!</span>")
 			for(var/spoken_memory in recent_speech)
 				changeling.antag_memory += "\"[recent_speech[spoken_memory]]\"<br>"
 				to_chat(user, "<span class='notice'>\"[recent_speech[spoken_memory]]\"</span>")
-			changeling.antag_memory += "<B>We have no more knowledge of [target]'s speech patterns.</B><br>"
-			to_chat(user, "<span class='boldnotice'>We have no more knowledge of [target]'s speech patterns.</span>")
+			changeling.antag_memory += "<B>Nie wiemy nic więcej o nawykach językowych [target].</B><br>"
+			to_chat(user, "<span class='boldnotice'>Nie wiemy nic więcej o nawykach językowych [target].</span>")
 
 
 		var/datum/antagonist/changeling/target_ling = target.mind.has_antag_datum(/datum/antagonist/changeling)
 		if(target_ling)//If the target was a changeling, suck out their extra juice and objective points!
-			to_chat(user, "<span class='boldnotice'>[target] was one of us. We have absorbed their power.</span>")
+			to_chat(user, "<span class='boldnotice'>[target] był jednym z nas. Wchłonęliśmy jego moc.</span>")
 			target_ling.remove_changeling_powers()
 			changeling.geneticpoints += round(target_ling.geneticpoints/2)
 			target_ling.geneticpoints = 0

@@ -44,10 +44,10 @@
 
 /datum/antagonist/nukeop/greet()
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ops.ogg',100,0, use_reverb = FALSE)
-	to_chat(owner, "<span class='notice'>You are a [nuke_team ? nuke_team.syndicate_name : "syndicate"] agent!</span>")
+	to_chat(owner, "<span class='notice'>Jesteś agentem [nuke_team ? nuke_team.syndicate_name : "Syndykatu"]!</span>")
 	owner.announce_objectives()
-	owner.current.client?.tgui_panel?.give_antagonist_popup("Nuclear Operative",
-		"Destroy the station with a nuclear device.")
+	owner.current.client?.tgui_panel?.give_antagonist_popup("Operator nuklearny",
+		"Zniszcz statek ładunkiem nuklearnym.")
 
 /datum/antagonist/nukeop/on_gain()
 	give_alias()
@@ -101,16 +101,16 @@
 /datum/antagonist/nukeop/proc/memorize_code()
 	if(nuke_team && nuke_team.tracked_nuke && nuke_team.memorized_code)
 		antag_memory += "<B>[nuke_team.tracked_nuke] Code</B>: [nuke_team.memorized_code]<br>"
-		to_chat(owner, "The nuclear authorization code is: <B>[nuke_team.memorized_code]</B>")
+		to_chat(owner, "Kod autoryzacji ładunku nuklearnego: <B>[nuke_team.memorized_code]</B>")
 	else
-		to_chat(owner, "Unfortunately the syndicate was unable to provide you with nuclear authorization code.")
+		to_chat(owner, "Niestety Syndykat nie zdołał przekazać ci kodu autoryzacji ładunku nuklearnego.")
 
 /datum/antagonist/nukeop/proc/memorize_frequency()
 	if(nuke_team?.team_frequency)
-		antag_memory += "<B>Secure Tracking Beacon Frequency</B>: [nuke_team.team_frequency]<br>"
-		to_chat(owner, "Your team's unique tracking beacon code is: <B>[nuke_team.team_frequency]</B>")
+		antag_memory += "<B>Częstotliwość bezpiecznej radiolatarni</B>: [nuke_team.team_frequency]<br>"
+		to_chat(owner, "Unikalny kod radiolatarni twojej drużyny: <B>[nuke_team.team_frequency]</B>")
 	else
-		to_chat(owner, "You were not assigned a frequency for your hardsuits beacons. You will have to coordinate with each other to decide a frequency to use.")
+		to_chat(owner, "Nie przydzielono ci częstotliwości radiolatarni skafandrów. Musicie się dogadać, jakiej częstotliwości użyć.")
 
 /datum/antagonist/nukeop/proc/forge_objectives()
 	if(!give_objectives)
@@ -165,8 +165,8 @@
 			code = bombue.r_code
 			break
 	if (code)
-		antag_memory += "<B>Syndicate Nuclear Bomb Code</B>: [code]<br>"
-		to_chat(owner.current, "The nuclear authorization code is: <B>[code]</B>")
+		antag_memory += "<B>Kod bomby nuklearnej Syndykatu</B>: [code]<br>"
+		to_chat(owner.current, "Kod autoryzacji ładunku nuklearnego: <B>[code]</B>")
 	else
 		to_chat(admin, "<span class='danger'>No valid nuke found!</span>")
 
@@ -180,7 +180,7 @@
 	..()
 	if(nuke_team?.memorized_code)
 		var/obj/item/paper/nuke_code_paper = new
-		nuke_code_paper.add_raw_text("The nuclear authorization code is: <b>[nuke_team.memorized_code]</b>")
+		nuke_code_paper.add_raw_text("Kod autoryzacji ładunku nuklearnego: <b>[nuke_team.memorized_code]</b>")
 		nuke_code_paper.name = "nuclear bomb code"
 		var/mob/living/carbon/human/H = owner.current
 		if(!istype(H))
@@ -198,13 +198,13 @@
 
 /datum/antagonist/nukeop/leader/greet()
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ops.ogg',100,0, use_reverb = FALSE)
-	to_chat(owner, "<B>You are the Syndicate [title] for this mission. You are responsible for the distribution of telecrystals and your ID is the only one who can open the launch bay doors.</B>")
-	to_chat(owner, "<B>If you feel you are not up to this task, give your ID to another operative.</B>")
-	to_chat(owner, "<B>In your hand you will find a special item capable of triggering a greater challenge for your team. Examine it carefully and consult with your fellow operatives before activating it.</B>")
+	to_chat(owner, "<B>W tej misji jesteś dowódcą Syndykatu ([title]). Odpowiadasz za rozdział telekryształów, a tylko twoja karta otwiera drzwi hangaru startowego.</B>")
+	to_chat(owner, "<B>Jeśli czujesz, że nie podołasz temu zadaniu, oddaj swoją kartę innemu operatorowi.</B>")
+	to_chat(owner, "<B>W dłoni masz specjalny przedmiot, który może rzucić twojej drużynie większe wyzwanie. Obejrzyj go dokładnie i naradź się z resztą operatorów, zanim go użyjesz.</B>")
 	owner.announce_objectives()
 	addtimer(CALLBACK(src, PROC_REF(nuketeam_name_assign)), 1)
-	owner.current.client?.tgui_panel?.give_antagonist_popup("Nuclear Operative Team Leader",
-		"Destroy the station with a nuclear explosive by leading your team.")
+	owner.current.client?.tgui_panel?.give_antagonist_popup("Przywódca operatorów nuklearnych",
+		"Poprowadź drużynę i zniszcz statek ładunkiem nuklearnym.")
 
 /datum/antagonist/nukeop/leader/proc/nuketeam_name_assign()
 	if(!nuke_team)
@@ -224,7 +224,7 @@
 
 /datum/antagonist/nukeop/leader/proc/ask_name()
 	var/randomname = pick(GLOB.last_names_male)
-	var/newname = stripped_input(owner.current,"You are the nuke operative [title]. Please choose a last name for your family.", "Name change",randomname)
+	var/newname = stripped_input(owner.current,"Jesteś operatorem nuklearnym ([title]). Wybierz nazwisko dla swojej rodziny.", "Zmiana imienia",randomname)
 	if (!newname)
 		newname = randomname
 	else
@@ -341,37 +341,37 @@
 
 	switch(get_result())
 		if(NUKE_RESULT_FLUKE)
-			parts += "<span class='redtext big'>Humiliating Syndicate Defeat</span>"
-			parts += "<B>The crew of [station_name()] gave [syndicate_name] operatives back their bomb! The syndicate base was destroyed!</B> Next time, don't lose the nuke!"
+			parts += "<span class='redtext big'>Upokarzająca porażka Syndykatu</span>"
+			parts += "<B>Załoga [station_name()] oddała operatorom [syndicate_name] ich bombę! Baza Syndykatu została zniszczona!</B> Następnym razem nie zgubcie bomby!"
 		if(NUKE_RESULT_NUKE_WIN)
-			parts += "<span class='greentext big'>Syndicate Major Victory!</span>"
-			parts += "<B>[syndicate_name] operatives have destroyed [station_name()]!</B>"
+			parts += "<span class='greentext big'>Wielkie zwycięstwo Syndykatu!</span>"
+			parts += "<B>Operatorzy [syndicate_name] zniszczyli [station_name()]!</B>"
 		if(NUKE_RESULT_NOSURVIVORS)
-			parts += "<span class='neutraltext big'>Total Annihilation</span>"
-			parts +=  "<B>[syndicate_name] operatives destroyed [station_name()] but did not leave the area in time and got caught in the explosion.</B> Next time, don't lose the disk!"
+			parts += "<span class='neutraltext big'>Całkowita zagłada</span>"
+			parts +=  "<B>Operatorzy [syndicate_name] zniszczyli [station_name()], ale nie uciekli na czas i dosięgnął ich wybuch.</B> Następnym razem nie zgubcie dysku!"
 		if(NUKE_RESULT_WRONG_STATION)
-			parts += "<span class='redtext big'>Crew Minor Victory</span>"
-			parts += "<B>[syndicate_name] operatives secured the authentication disk but blew up something that wasn't [station_name()].</B> Next time, don't do that!"
+			parts += "<span class='redtext big'>Małe zwycięstwo załogi</span>"
+			parts += "<B>Operatorzy [syndicate_name] zdobyli dysk uwierzytelniający, ale wysadzili coś, co nie było [station_name()].</B> Następnym razem tego nie róbcie!"
 		if(NUKE_RESULT_WRONG_STATION_DEAD)
-			parts += "<span class='redtext big'>[syndicate_name] operatives have earned Darwin Award!</span>"
-			parts += "<B>[syndicate_name] operatives blew up something that wasn't [station_name()] and got caught in the explosion.</B> Next time, don't do that!"
+			parts += "<span class='redtext big'>Operatorzy [syndicate_name] zdobyli Nagrodę Darwina!</span>"
+			parts += "<B>Operatorzy [syndicate_name] wysadzili coś, co nie było [station_name()], i dosięgnął ich wybuch.</B> Następnym razem tego nie róbcie!"
 		if(NUKE_RESULT_CREW_WIN_SYNDIES_DEAD)
-			parts += "<span class='redtext big'>Crew Major Victory!</span>"
-			parts += "<B>The Research Staff has saved the disk and killed the [syndicate_name] Operatives</B>"
+			parts += "<span class='redtext big'>Wielkie zwycięstwo załogi!</span>"
+			parts += "<B>Załoga ocaliła dysk i zabiła operatorów [syndicate_name]</B>"
 		if(NUKE_RESULT_CREW_WIN)
-			parts += "<span class='redtext big'>Crew Major Victory</span>"
-			parts += "<B>The Research Staff has saved the disk and stopped the [syndicate_name] Operatives!</B>"
+			parts += "<span class='redtext big'>Wielkie zwycięstwo załogi</span>"
+			parts += "<B>Załoga ocaliła dysk i powstrzymała operatorów [syndicate_name]!</B>"
 		if(NUKE_RESULT_DISK_LOST)
-			parts += "<span class='neutraltext big'>Neutral Victory!</span>"
-			parts += "<B>The Research Staff failed to secure the authentication disk but did manage to kill most of the [syndicate_name] Operatives!</B>"
+			parts += "<span class='neutraltext big'>Remis!</span>"
+			parts += "<B>Załodze nie udało się zabezpieczyć dysku uwierzytelniającego, ale zabiła większość operatorów [syndicate_name]!</B>"
 		if(NUKE_RESULT_DISK_STOLEN)
-			parts += "<span class='greentext big'>Syndicate Minor Victory!</span>"
-			parts += "<B>[syndicate_name] operatives survived the assault but did not achieve the destruction of [station_name()].</B> Next time, don't lose the disk!"
+			parts += "<span class='greentext big'>Małe zwycięstwo Syndykatu!</span>"
+			parts += "<B>Operatorzy [syndicate_name] przetrwali szturm, ale nie zniszczyli [station_name()].</B> Następnym razem nie zgubcie dysku!"
 		else
-			parts += "<span class='neutraltext big'>Neutral Victory</span>"
-			parts += "<B>Mission aborted!</B>"
+			parts += "<span class='neutraltext big'>Remis</span>"
+			parts += "<B>Misja przerwana!</B>"
 
-	var/text = "<br><span class='header'>The syndicate operatives were:</span>"
+	var/text = "<br><span class='header'>Operatorzy Syndykatu:</span>"
 	var/purchases = ""
 	var/TC_uses = 0
 	LAZYINITLIST(GLOB.uplink_purchase_logs_by_key)
@@ -383,7 +383,7 @@
 			purchases += H.generate_render(show_key = FALSE)
 	text += printplayerlist(members)
 	text += "<br>"
-	text += "(Syndicates used [TC_uses] TC) [purchases]"
+	text += "(Syndykat wydał [TC_uses] TC) [purchases]"
 	if(TC_uses == 0 && SSticker.mode.station_was_nuked && !operatives_dead())
 		text += "<BIG>[icon2html('icons/badass.dmi', world, "badass")]</BIG>"
 
@@ -398,7 +398,7 @@
 		return "Syndicates"
 
 /datum/team/nuclear/antag_listing_entry()
-	var/disk_report = "<b>Nuclear Disk(s)</b><br>"
+	var/disk_report = "<b>Dyski nuklearne</b><br>"
 	disk_report += "<table cellspacing=5>"
 	for(var/obj/item/disk/nuclear/N in GLOB.poi_list)
 		disk_report += "<tr><td>[N.name], "

@@ -42,7 +42,7 @@
 
 	if(custom_threat == "Yes")
 		declaring_war = TRUE
-		war_declaration = stripped_input(user, "Podaj nowy tekst deklaracji", "Declaration")
+		war_declaration = stripped_input(user, "Podaj nowy tekst deklaracji", "Deklaracja")
 		declaring_war = FALSE
 
 	if(!check_allowed(user) || !war_declaration)
@@ -56,7 +56,7 @@
 	play_soundtrack_music(/datum/soundtrack_song/bee/future_perception)
 
 	if(user && check_pop())
-		to_chat(user, "You've attracted the attention of powerful forces within the syndicate. A bonus bundle of telecrystals has been granted to your team. Great things await you if you complete the mission.")
+		to_chat(user, "Zwracasz na siebie uwagę potężnych sił w Syndykacie. Twoja drużyna otrzymuje dodatkowy zapas telekryształów. Jeśli wykonacie misję, czekają was wielkie rzeczy.")
 
 	for(var/V in GLOB.syndicate_shuttle_boards)
 		var/obj/item/circuitboard/computer/syndicate_shuttle/board = V
@@ -94,7 +94,7 @@
 
 	for (var/mob/living/L in orphans)
 		var/TC = new /obj/item/stack/telecrystal(L.drop_location(), tc_per_nukie)
-		to_chat(L, "<span class='warning'>Your uplink could not be found so your share of the team's bonus telecrystals has been bluespaced to your [L.put_in_hands(TC) ? "hands" : "feet"].</span>")
+		to_chat(L, "<span class='warning'>Nie znaleziono twojego uplinku, więc twoja część dodatkowych telekryształów drużyny trafia przez bluespace [L.put_in_hands(TC) ? "do twoich rąk" : "pod twoje stopy"].</span>")
 		tc_to_distribute -= tc_per_nukie
 
 	if (tc_to_distribute > 0) // What shall we do with the remainder...
@@ -102,7 +102,7 @@
 			if (C.stat != DEAD)
 				var/obj/item/stack/telecrystal/TC = new(C.drop_location(), tc_to_distribute)
 				TC.throw_at(get_step(C, C.dir), 3, 3)
-				C.visible_message("<span class='notice'>[C] coughs up a half-digested telecrystal</span>","<span class='usernotice'>You cough up a half-digested telecrystal!</span>")
+				C.visible_message("<span class='notice'>[C] wykasłuje na wpół strawiony telekryształ</span>","<span class='usernotice'>Wykasłujesz na wpół strawiony telekryształ!</span>")
 				break
 
 
@@ -119,7 +119,7 @@
 	/* AQ EDIT - at any time, any day. Well, they can't
 	// go station-side until they declare war, so...
 	if(world.time-SSticker.round_start_time > CHALLENGE_TIME_LIMIT)
-		to_chat(user, "It's too late to declare hostilities. Your benefactors are already busy with other schemes. You'll have to make do with what you have on hand.")
+		to_chat(user, "Za późno na wypowiedzenie wojny. Twoi dobroczyńcy są już zajęci innymi intrygami. Musisz sobie radzić tym, co masz.")
 		return FALSE
 	*/
 	for(var/V in GLOB.syndicate_shuttle_boards)

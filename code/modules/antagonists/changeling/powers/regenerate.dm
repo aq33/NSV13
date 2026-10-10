@@ -1,7 +1,7 @@
 /datum/action/changeling/regenerate
 	name = "Regenerate"
 	desc = "Allows us to regrow and restore missing external limbs and vital internal organs, as well as removing shrapnel and restoring blood volume. Costs 10 chemicals."
-	helptext = "Will alert nearby crew if any external limbs are regenerated. Can be used while unconscious."
+	helptext = "Ostrzega pobliską załogę, jeśli odtwarzamy zewnętrzne kończyny. Można użyć w stanie nieprzytomności."
 	button_icon_state = "regenerate"
 	chemical_cost = 10
 	dna_cost = 1
@@ -9,19 +9,19 @@
 
 /datum/action/changeling/regenerate/sting_action(mob/living/user)
 	..()
-	to_chat(user, "<span class='notice'>You feel an itching, both inside and \
-		outside as your tissues knit and reknit.</span>")
+	to_chat(user, "<span class='notice'>Czujesz swędzenie, zarówno w środku, jak i \
+		na zewnątrz, gdy twoje tkanki zrastają się raz za razem.</span>")
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		var/list/missing = C.get_missing_limbs()
 		if(missing.len)
 			playsound(user, 'sound/magic/demon_consume.ogg', 50, 1)
-			C.visible_message("<span class='warning'>[user]'s missing limbs \
-				reform, making a loud, grotesque sound!</span>",
-				"<span class='userdanger'>Your limbs regrow, making a \
-				loud, crunchy sound and giving you great pain!</span>",
-				"<span class='italics'>You hear organic matter ripping \
-				and tearing!</span>")
+			C.visible_message("<span class='warning'>Brakujące kończyny [user] \
+				odrastają z głośnym, groteskowym dźwiękiem!</span>",
+				"<span class='userdanger'>Twoje kończyny odrastają z \
+				głośnym chrupnięciem, sprawiając ci ogromny ból!</span>",
+				"<span class='italics'>Słyszysz rozrywanie \
+				i darcie tkanki organicznej!</span>")
 			C.emote("scream")
 			C.regenerate_limbs(1)
 		if(!user.getorganslot(ORGAN_SLOT_BRAIN))
@@ -43,7 +43,7 @@
 /datum/action/changeling/limbsnake
 	name = "Chimera"
 	desc = "We turn our limbs into an autonomous snake. The poison of this creatures can paralyze attackers. Costs 15 chemicals."
-	helptext = "We reform one of our limbs as an autonomous snake-like creature. This grotesque display may ward off attackers, and the creature will inject them with incapacitating poison."
+	helptext = "Zmieniamy jedną z kończyn w samodzielną, wężopodobną istotę. Ten groteskowy widok może odstraszyć napastników, a istota wstrzyknie im obezwładniający jad."
 	button_icon_state = "limbsnake"
 	chemical_cost = 15
 	dna_cost = 2
@@ -61,7 +61,7 @@
 			if(BP.dismemberable)
 				parts += BP
 	if(!LAZYLEN(parts))
-		to_chat(user, "<span class='notice'>We don't have any limbs to detach.</span>")
+		to_chat(user, "<span class='notice'>Nie mamy kończyn do odłączenia.</span>")
 		return
 	//limb related actions
 	var/obj/item/bodypart/BP = pick(parts)
@@ -69,8 +69,8 @@
 		if(Gir.body_part == ARM_RIGHT || Gir.body_part == ARM_LEFT)	//arms first, so they can mitigate the damage with the Armblade ability too, and it's not entirely reliant on regenerate
 			BP = Gir
 	//text message
-	C.visible_message("<span class='warning'>[user]'s [BP] detaches itself and takes the form of a snake!</span>",
-			"<span class='userdanger'>Our [BP] forms into a horrifying snake and heads towards our attackers!</span>")
+	C.visible_message("<span class='warning'>[BP] [user] odłącza się i przybiera postać węża!</span>",
+			"<span class='userdanger'>Nasza kończyna ([BP]) zmienia się w przerażającego węża i rusza na napastników!</span>")
 	BP.dismember()
 	BP.Destroy()
 	C.update_mobility()
@@ -93,7 +93,7 @@
 	attacktext = "bites"
 	response_help  = "pokes"
 	response_disarm = "shoos"
-	response_harm   = "steps on"
+	response_harm   = "nadeptuje na"
 	ventcrawler = VENTCRAWLER_ALWAYS
 	density = FALSE
 	pass_flags = PASSTABLE | PASSMOB

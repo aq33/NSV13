@@ -62,9 +62,9 @@
 /obj/machinery/nuclearbomb/examine(mob/user)
 	. = ..()
 	if(exploding)
-		to_chat(user, "It is in the process of exploding. Perhaps reviewing your affairs is in order.")
+		to_chat(user, "Właśnie wybucha. Może warto uporządkować swoje sprawy.")
 	if(timing)
-		to_chat(user, "There are [get_time_left()] seconds until detonation.")
+		to_chat(user, "Do detonacji pozostało [get_time_left()] s.")
 
 /obj/machinery/nuclearbomb/selfdestruct
 	name = "station self-destruct terminal"
@@ -92,7 +92,7 @@
 
 /obj/machinery/nuclearbomb/proc/disk_check(obj/item/disk/nuclear/D)
 	if(D.fake)
-		say("Authentication failure; disk not recognised.")
+		say("Błąd uwierzytelniania; nie rozpoznano dysku.")
 		return FALSE
 	else
 		return TRUE
@@ -113,10 +113,10 @@
 	switch(deconstruction_state)
 		if(NUKESTATE_INTACT)
 			if(istype(I, /obj/item/screwdriver/nuke))
-				to_chat(user, "<span class='notice'>You start removing [src]'s front panel's screws...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz odkręcać śruby przedniego panelu [src]...</span>")
 				if(I.use_tool(src, user, 60, volume=100))
 					deconstruction_state = NUKESTATE_UNSCREWED
-					to_chat(user, "<span class='notice'>You remove the screws from [src]'s front panel.</span>")
+					to_chat(user, "<span class='notice'>Odkręcasz śruby przedniego panelu [src].</span>")
 					update_icon()
 				return
 
@@ -124,32 +124,32 @@
 			if(I.tool_behaviour == TOOL_WELDER)
 				if(!I.tool_start_check(user, amount=1))
 					return
-				to_chat(user, "<span class='notice'>You start cutting [src]'s inner plate...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz przecinać wewnętrzną płytę [src]...</span>")
 				if(I.use_tool(src, user, 80, volume=100, amount=1))
-					to_chat(user, "<span class='notice'>You cut [src]'s inner plate.</span>")
+					to_chat(user, "<span class='notice'>Przecinasz wewnętrzną płytę [src].</span>")
 					deconstruction_state = NUKESTATE_WELDED
 					update_icon()
 				return
 		if(NUKESTATE_CORE_EXPOSED)
 			if(istype(I, /obj/item/nuke_core_container))
 				var/obj/item/nuke_core_container/core_box = I
-				to_chat(user, "<span class='notice'>You start loading the plutonium core into [core_box]...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz ładować rdzeń plutonowy do [core_box]...</span>")
 				if(do_after(user,50,target=src))
 					if(core_box.load(core, user))
-						to_chat(user, "<span class='notice'>You load the plutonium core into [core_box].</span>")
+						to_chat(user, "<span class='notice'>Ładujesz rdzeń plutonowy do [core_box].</span>")
 						deconstruction_state = NUKESTATE_CORE_REMOVED
 						update_icon()
 						core = null
 					else
-						to_chat(user, "<span class='warning'>You fail to load the plutonium core into [core_box]. [core_box] has already been used!</span>")
+						to_chat(user, "<span class='warning'>Nie udaje ci się załadować rdzenia plutonowego do [core_box]. [core_box] był już użyty!</span>")
 				return
 			if(istype(I, /obj/item/stack/sheet/iron))
 				if(!I.tool_start_check(user, amount=20))
 					return
 
-				to_chat(user, "<span class='notice'>You begin repairing [src]'s inner metal plate...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz naprawiać wewnętrzną metalową płytę [src]...</span>")
 				if(I.use_tool(src, user, 100, amount=20))
-					to_chat(user, "<span class='notice'>You repair [src]'s inner metal plate. The radiation is contained.</span>")
+					to_chat(user, "<span class='notice'>Naprawiasz wewnętrzną metalową płytę [src]. Promieniowanie zostało powstrzymane.</span>")
 					deconstruction_state = NUKESTATE_PANEL_REMOVED
 					STOP_PROCESSING(SSobj, core)
 					update_icon()
@@ -160,16 +160,16 @@
 	. = FALSE
 	switch(deconstruction_state)
 		if(NUKESTATE_UNSCREWED)
-			to_chat(user, "<span class='notice'>You start removing [src]'s front panel...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz zdejmować przedni panel [src]...</span>")
 			if(tool.use_tool(src, user, 30, volume=100))
-				to_chat(user, "<span class='notice'>You remove [src]'s front panel.</span>")
+				to_chat(user, "<span class='notice'>Zdejmujesz przedni panel [src].</span>")
 				deconstruction_state = NUKESTATE_PANEL_REMOVED
 				update_icon()
 			return TRUE
 		if(NUKESTATE_WELDED)
-			to_chat(user, "<span class='notice'>You start prying off [src]'s inner plate...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz podważać wewnętrzną płytę [src]...</span>")
 			if(tool.use_tool(src, user, 30, volume=100))
-				to_chat(user, "<span class='notice'>You pry off [src]'s inner plate. You can see the core's green glow!</span>")
+				to_chat(user, "<span class='notice'>Podważasz wewnętrzną płytę [src]. Widzisz zieloną poświatę rdzenia!</span>")
 				deconstruction_state = NUKESTATE_CORE_EXPOSED
 				update_icon()
 				START_PROCESSING(SSobj, core)
@@ -309,26 +309,26 @@
 	var/second_status
 	switch(ui_mode)
 		if(NUKEUI_AWAIT_DISK)
-			first_status = "DEVICE LOCKED"
+			first_status = "URZĄDZENIE ZABLOKOWANE"
 			if(timing)
-				second_status = "TIME: [get_time_left()]"
+				second_status = "CZAS: [get_time_left()]"
 			else
-				second_status = "AWAIT DISK"
+				second_status = "OCZEKUJĘ NA DYSK"
 		if(NUKEUI_AWAIT_CODE)
-			first_status = "INPUT CODE"
-			second_status = "CODE: [current_code]"
+			first_status = "WPROWADŹ KOD"
+			second_status = "KOD: [current_code]"
 		if(NUKEUI_AWAIT_TIMER)
-			first_status = "INPUT TIME"
-			second_status = "TIME: [current_code]"
+			first_status = "WPROWADŹ CZAS"
+			second_status = "CZAS: [current_code]"
 		if(NUKEUI_AWAIT_ARM)
-			first_status = "DEVICE READY"
-			second_status = "TIME: [get_time_left()]"
+			first_status = "URZĄDZENIE GOTOWE"
+			second_status = "CZAS: [get_time_left()]"
 		if(NUKEUI_TIMING)
-			first_status = "DEVICE ARMED"
-			second_status = "TIME: [get_time_left()]"
+			first_status = "URZĄDZENIE UZBROJONE"
+			second_status = "CZAS: [get_time_left()]"
 		if(NUKEUI_EXPLODED)
-			first_status = "DEVICE DEPLOYED"
-			second_status = "THANK YOU"
+			first_status = "URZĄDZENIE ROZSTAWIONE"
+			second_status = "DZIĘKUJĘ"
 
 	data["status1"] = first_status
 	data["status2"] = second_status
@@ -420,7 +420,7 @@
 
 /obj/machinery/nuclearbomb/proc/set_anchor()
 	if(isinspace() && !anchored)
-		to_chat(usr, "<span class='warning'>There is nothing to anchor to!</span>")
+		to_chat(usr, "<span class='warning'>Nie ma się do czego przymocować!</span>")
 	else
 		anchored = !anchored
 
@@ -440,7 +440,7 @@
 
 /obj/machinery/nuclearbomb/proc/set_active()
 	if(safety)
-		to_chat(usr, "<span class='danger'>The safety is still on.</span>")
+		to_chat(usr, "<span class='danger'>Bezpiecznik jest wciąż włączony.</span>")
 		return
 	timing = !timing
 	if(timing)
@@ -553,16 +553,16 @@
 /obj/machinery/nuclearbomb/beer/examine(mob/user)
 	. = ..()
 	if(keg.reagents.total_volume)
-		to_chat(user, "<span class='notice'>It has [keg.reagents.total_volume] unit\s left.</span>")
+		to_chat(user, "<span class='notice'>Zostało [keg.reagents.total_volume] jedn.</span>")
 	else
-		to_chat(user, "<span class='danger'>It's empty.</span>")
+		to_chat(user, "<span class='danger'>Jest pusty.</span>")
 
 /obj/machinery/nuclearbomb/beer/attackby(obj/item/W, mob/user, params)
 	if(W.is_refillable())
 		W.afterattack(keg, user, TRUE) 	// redirect refillable containers to the keg, allowing them to be filled
 		return TRUE 										// pretend we handled the attack, too.
 	if(istype(W, /obj/item/nuke_core_container))
-		to_chat(user, "<span class='notice'>[src] has had its plutonium core removed as a part of being decommissioned.</span>")
+		to_chat(user, "<span class='notice'>[src] ma usunięty rdzeń plutonowy w ramach wycofania ze służby.</span>")
 		return TRUE
 	return ..()
 
@@ -578,7 +578,7 @@
 		beer_event.runEvent()
 		addtimer(CALLBACK(src, PROC_REF(really_actually_explode)), 110)
 	else
-		visible_message("<span class='notice'>[src] fizzes ominously.</span>")
+		visible_message("<span class='notice'>[src] złowieszczo syczy.</span>")
 		addtimer(CALLBACK(src, PROC_REF(fizzbuzz)), 110)
 
 /obj/machinery/nuclearbomb/beer/proc/disarm()
@@ -699,7 +699,7 @@ This is here to make the tiles around the station mininuke change when it's arme
 				message_admins("[src] is stationary in [ADMIN_VERBOSEJMP(newturf)]. The weight of Lone Operative is now [loneop.weight].")
 				log_game("[src] is stationary for too long in [loc_name(newturf)], and has increased the weight of the Lone Operative event to [loneop.weight].")
 				if(disk_comfort_level >= 2 && (process_tick % 30) == 0)
-					visible_message("<span class='notice'>[src] sleeps soundly. Sleep tight, disky.</span>")
+					visible_message("<span class='notice'>[src] śpi smacznie. Śpij dobrze, dysku.</span>")
 
 	else
 		lastlocation = newturf
@@ -717,17 +717,17 @@ This is here to make the tiles around the station mininuke change when it's arme
 		return
 
 	if(isobserver(user) || HAS_TRAIT(user.mind, TRAIT_DISK_VERIFIER))
-		. += "<span class='warning'>The serial numbers on [src] are incorrect.</span>"
+		. += "<span class='warning'>Numery seryjne na [src] są nieprawidłowe.</span>"
 
 /obj/item/disk/nuclear/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/claymore/highlander) && !fake)
 		var/obj/item/claymore/highlander/H = I
 		if(H.nuke_disk)
-			to_chat(user, "<span class='notice'>Wait... what?</span>")
+			to_chat(user, "<span class='notice'>Chwila... co?</span>")
 			qdel(H.nuke_disk)
 			H.nuke_disk = null
 			return
-		user.visible_message("<span class='warning'>[user] captures [src]!</span>", "<span class='userdanger'>You've got the disk! Defend it with your life!</span>")
+		user.visible_message("<span class='warning'>[user] przejmuje [src]!</span>", "<span class='userdanger'>Masz dysk! Broń go za cenę życia!</span>")
 		forceMove(H)
 		H.nuke_disk = src
 		return TRUE
@@ -740,7 +740,7 @@ This is here to make the tiles around the station mininuke change when it's arme
 	. = ..()
 
 /obj/item/disk/nuclear/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is going delta! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] ogłasza deltę! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	playsound(src, 'sound/machines/alarm.ogg', 50, -1, TRUE)
 	for(var/i in 1 to 100)
 		addtimer(CALLBACK(user, TYPE_PROC_REF(/atom, add_atom_colour), (i % 2)? "#00FF00" : "#FF0000", ADMIN_COLOUR_PRIORITY), i)
@@ -749,7 +749,7 @@ This is here to make the tiles around the station mininuke change when it's arme
 
 /obj/item/disk/nuclear/proc/manual_suicide(mob/living/user)
 	user.remove_atom_colour(ADMIN_COLOUR_PRIORITY)
-	user.visible_message("<span class='suicide'>[user] is destroyed by the nuclear blast!</span>")
+	user.visible_message("<span class='suicide'>Wybuch nuklearny unicestwia [user]!</span>")
 	user.adjustOxyLoss(200)
 	user.death(0)
 
