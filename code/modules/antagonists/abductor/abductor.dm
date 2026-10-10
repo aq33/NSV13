@@ -19,7 +19,7 @@
 	sub_role = "Agent"
 	outfit = /datum/outfit/abductor/agent
 	landmark_type = /obj/effect/landmark/abductor/agent
-	greet_text = "Use your stealth technology and equipment to incapacitate humans for your scientist to retrieve."
+	greet_text = "Używaj technologii maskującej i sprzętu, by obezwładniać ludzi, których potem zabierze twój naukowiec."
 	show_in_antagpanel = TRUE
 
 /datum/antagonist/abductor/scientist
@@ -27,7 +27,7 @@
 	sub_role = "Scientist"
 	outfit = /datum/outfit/abductor/scientist
 	landmark_type = /obj/effect/landmark/abductor/scientist
-	greet_text = "Use your experimental console and surgical equipment to monitor your agent and experiment upon abducted humans."
+	greet_text = "Używaj eksperymentalnej konsoli i sprzętu chirurgicznego, by obserwować agenta i eksperymentować na porwanych ludziach."
 	show_in_antagpanel = TRUE
 
 /datum/antagonist/abductor/scientist/onemanteam
@@ -60,20 +60,20 @@
 
 /datum/antagonist/abductor/on_removal()
 	if(owner.current)
-		to_chat(owner.current,"<span class='userdanger'>You are no longer the [owner.special_role]!</span>")
+		to_chat(owner.current,"<span class='userdanger'>Nie jesteś już porywaczem ([owner.special_role])!</span>")
 	owner.special_role = null
 	REMOVE_TRAIT(owner, TRAIT_ABDUCTOR_TRAINING, ABDUCTOR_ANTAGONIST)
 	return ..()
 
 /datum/antagonist/abductor/greet()
-	to_chat(owner.current, "<span class='notice'>You are the [owner.special_role]!</span>")
-	to_chat(owner.current, "<span class='notice'>With the help of your teammate, kidnap and experiment on station crew members!</span>")
-	to_chat(owner.current, "<span class='notice'>There are two of you! One can monitor cameras while the other infiltrates the station.</span>")
-	to_chat(owner.current, "<span class='notice'>Choose a worthy disguise and plan your targets carefully! Humans will kill you on sight.</span>")
+	to_chat(owner.current, "<span class='notice'>Twoja rola: [name]!</span>")
+	to_chat(owner.current, "<span class='notice'>Z pomocą partnera porywaj członków załogi i przeprowadzaj na nich eksperymenty!</span>")
+	to_chat(owner.current, "<span class='notice'>Jest was dwoje! Jedno może obserwować kamery, a drugie przeniknąć na statek.</span>")
+	to_chat(owner.current, "<span class='notice'>Wybierz godne przebranie i starannie zaplanuj cele! Ludzie zabiją cię, gdy tylko cię zobaczą.</span>")
 	to_chat(owner.current, "<span class='notice'>[greet_text]</span>")
 	owner.announce_objectives()
 	owner.current.client?.tgui_panel?.give_antagonist_popup("Abductor",
-		"Capture and experiment on members of the crew, without being spotted.")
+		"Porywaj członków załogi i eksperymentuj na nich, nie dając się zauważyć.")
 
 /datum/antagonist/abductor/proc/finalize_abductor()
 	//Equip
@@ -164,11 +164,11 @@
 		if(!O.check_completion())
 			won = FALSE
 	if(won)
-		result += "<span class='greentext big'>[name] team fulfilled its mission!</span>"
+		result += "<span class='greentext big'>Drużyna [name] wypełniła misję!</span>"
 	else
-		result += "<span class='redtext big'>[name] team failed its mission.</span>"
+		result += "<span class='redtext big'>Drużyna [name] nie wypełniła misji.</span>"
 
-	result += "<span class='header'>The abductors of [name] were:</span>"
+	result += "<span class='header'>Porywacze z drużyny [name]:</span>"
 	for(var/datum/mind/abductor_mind in members)
 		result += printplayer(abductor_mind)
 	result += printobjectives(objectives)
@@ -186,13 +186,13 @@
 	. = ..()
 
 /datum/antagonist/abductee/greet()
-	to_chat(owner, "<span class='warning'><b>Your mind snaps!</b></span>")
-	to_chat(owner, "<big><span class='warning'><b>You can't remember how you got here...</b></span></big>")
+	to_chat(owner, "<span class='warning'><b>Twój umysł pęka!</b></span>")
+	to_chat(owner, "<big><span class='warning'><b>Nie pamiętasz, jak się tu znalazłeś...</b></span></big>")
 	owner.announce_objectives()
 	var/datum/objective/first_objective = objectives[1]
-	owner.current.client?.tgui_panel?.give_antagonist_popup("Abductee",
-		"Something isn't right with your brain, you feel like there is something you have to do no matter what...\n\
-		[LAZYLEN(objectives)?"<B>Objective</B>: [first_objective.explanation_text]": "Nevermind..."]")
+	owner.current.client?.tgui_panel?.give_antagonist_popup("Uprowadzony",
+		"Coś jest nie tak z twoim mózgiem, czujesz, że musisz coś zrobić bez względu na wszystko...\n\
+		[LAZYLEN(objectives)?"<B>Cel</B>: [first_objective.explanation_text]": "Nieważne..."]")
 
 /datum/antagonist/abductee/proc/give_objective()
 	var/mob/living/carbon/human/H = owner.current
@@ -222,7 +222,7 @@
 	target_amount = 6
 
 /datum/objective/experiment/New()
-	explanation_text = "Experiment on [target_amount] humans."
+	explanation_text = "Przeprowadź eksperymenty na [target_amount] ludziach."
 
 /datum/objective/experiment/check_completion()
 	for(var/obj/machinery/abductor/experiment/E in GLOB.machines)

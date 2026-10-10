@@ -7,28 +7,28 @@
 	explanation_text = pick(world.file2list("strings/abductee_objectives.txt"))
 
 /datum/objective/abductee/steal
-	explanation_text = "Steal all"
+	explanation_text = "Ukradnij wszystkie"
 
 /datum/objective/abductee/steal/New()
-	var/target = pick(list("pets","lights","monkeys","fruits","shoes","bars of soap", "weapons", "computers", "organs"))
+	var/target = pick(list("zwierzęta","lampy","małpy","owoce","buty","kostki mydła", "bronie", "komputery", "organy"))
 	explanation_text+=" [target]."
 
 /datum/objective/abductee/paint
-	explanation_text = "The station is hideous. You must color it all"
+	explanation_text = "Statek jest okropny. Musisz go całego pomalować"
 
 /datum/objective/abductee/paint/New()
-	var/color = pick(list("red", "blue", "green", "yellow", "orange", "purple", "black", "in rainbows", "in blood"))
+	var/color = pick(list("na czerwono", "na niebiesko", "na zielono", "na żółto", "na pomarańczowo", "na fioletowo", "na czarno", "w tęczę", "krwią"))
 	explanation_text+= " [color]!"
 
 /datum/objective/abductee/speech
-	explanation_text = "Your brain is broken... you can only communicate in"
+	explanation_text = "Twój mózg jest zepsuty... możesz porozumiewać się tylko"
 
 /datum/objective/abductee/speech/New()
-	var/style = pick(list("pantomime", "rhyme", "haiku", "extended metaphors", "riddles", "extremely literal terms", "sound effects", "military jargon", "three word sentences"))
+	var/style = pick(list("pantomimą", "rymem", "haiku", "rozbudowanymi metaforami", "zagadkami", "skrajnie dosłownymi określeniami", "efektami dźwiękowymi", "wojskowym żargonem", "zdaniami z trzech słów"))
 	explanation_text+= " [style]."
 
 /datum/objective/abductee/capture
-	explanation_text = "Capture"
+	explanation_text = "Schwytaj"
 
 /datum/objective/abductee/capture/New()
 	var/list/jobs = SSjob.occupations.Copy()
@@ -38,17 +38,17 @@
 			jobs -= J
 	if(jobs.len > 0)
 		var/datum/job/target = pick(jobs)
-		explanation_text += " a [target.title]."
+		explanation_text += " osobę na stanowisku: [target.title]."
 	else
-		explanation_text += " someone."
+		explanation_text += " kogokolwiek."
 
 /datum/objective/abductee/calling/New()
 	var/mob/dead/D = pick(GLOB.dead_mob_list)
 	if(D)
-		explanation_text = "You know that [D] has perished. Hold a seance to call [D.p_them()] from the spirit realm."
+		explanation_text = "Wiesz, że [D] nie żyje. Zorganizuj seans spirytystyczny, by wezwać tę osobę z krainy duchów."
 
 /datum/objective/abductee/forbiddennumber
 
 /datum/objective/abductee/forbiddennumber/New()
 	var/number = rand(2,10)
-	explanation_text = "Ignore anything in a set of [number], they don't exist."
+	explanation_text = "Ignoruj wszystko, co występuje w grupach po [number] - to nie istnieje."
