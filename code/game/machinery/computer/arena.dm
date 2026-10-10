@@ -211,7 +211,7 @@
 	// Could use update_icon on spawnpoints here to show they're on
 	if(ready_to_spawn)
 		for(var/mob/M in all_contestants())
-			to_chat(M,"<span class='userdanger'>Arena you're signed up for is ready!</span>")
+			to_chat(M,"<span class='userdanger'>Arena, na którą się zapisałeś, jest gotowa!</span>")
 
 /obj/machinery/computer/arena/proc/all_contestants()
 	. = list()
@@ -233,9 +233,9 @@
 /obj/machinery/computer/arena/proc/start_match(mob/user)
 	//TODO: Check if everyone is spawned in, if not ask for confirmation.
 	var/timetext = DisplayTimeText(start_delay)
-	to_chat(user,"<span class='notice'>The match will start in [timetext].</span>")
+	to_chat(user,"<span class='notice'>Mecz rozpocznie się za [timetext].</span>")
 	for(var/mob/M in all_contestants())
-		to_chat(M,"<span class='userdanger'>The gates will open in [timetext]!</span>")
+		to_chat(M,"<span class='userdanger'>Bramy otworzą się za [timetext]!</span>")
 	start_time = world.time + start_delay
 	addtimer(CALLBACK(src,PROC_REF(begin)),start_delay)
 	for(var/team in teams)
@@ -414,7 +414,7 @@
 	if(C.ready_to_spawn)
 		var/list/allowed_keys = C.team_keys[team]
 		if(!(user.ckey in allowed_keys))
-			to_chat(user,"<span class='warning'>You're not on the team list.</span>")
+			to_chat(user,"<span class='warning'>Nie ma cię na liście drużyny.</span>")
 			return
 		C.spawn_member(src,user.ckey,team)
 

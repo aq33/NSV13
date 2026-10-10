@@ -278,8 +278,8 @@ GLOBAL_LIST_EMPTY(atmos_air_controllers)
 		var/list/text = splittext(U.id, "_")
 		IO |= text[1]
 	if(!IO.len)
-		to_chat(user, "<span class='alert'>No machinery detected.</span>")
-	var/S = input("Select the device set: ", "Selection", IO[1]) as anything in sortList(IO)
+		to_chat(user, "<span class='alert'>Nie wykryto urządzeń.</span>")
+	var/S = input("Wybierz zestaw urządzeń: ", "Selection", IO[1]) as anything in sortList(IO)
 	if(src)
 		src.input_tag = "[S]_in"
 		src.output_tag = "[S]_out"

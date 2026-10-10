@@ -14,9 +14,9 @@
 /obj/machinery/computer/aifixer/screwdriver_act(mob/living/user, obj/item/I)
 	if(occupier)
 		if(machine_stat & (NOPOWER|BROKEN))
-			to_chat(user, "<span class='warning'>The screws on [name]'s screen won't budge.</span>")
+			to_chat(user, "<span class='warning'>Śruby ekranu [name] ani drgną.</span>")
 		else
-			to_chat(user, "<span class='warning'>The screws on [name]'s screen won't budge and it emits a warning beep.</span>")
+			to_chat(user, "<span class='warning'>Śruby ekranu [name] ani drgną, a urządzenie wydaje ostrzegawcze piknięcie.</span>")
 	else
 		return ..()
 
@@ -63,10 +63,10 @@
 	switch(action)
 		if("PRG_beginReconstruction")
 			if(occupier?.health < 100)
-				to_chat(usr, "<span class='notice'>Reconstruction in progress. This will take several minutes.</span>")
+				to_chat(usr, "<span class='notice'>Rekonstrukcja w toku. Zajmie to kilka minut.</span>")
 				playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 25, FALSE)
 				restoring = TRUE
-				occupier.notify_ghost_cloning("Your core files are being restored!", source = src)
+				occupier.notify_ghost_cloning("Twoje pliki rdzenia są przywracane!", source = src)
 				. = TRUE
 
 /obj/machinery/computer/aifixer/proc/Fix()
@@ -80,7 +80,7 @@
 		occupier.revive(full_heal = FALSE, admin_revive = FALSE)
 		if(!occupier.radio_enabled)
 			occupier.radio_enabled = TRUE
-			to_chat(occupier, "<span class='warning'>Your Subspace Transceiver has been enabled!</span>")
+			to_chat(occupier, "<span class='warning'>Twój nadajnik podprzestrzenny został włączony!</span>")
 	return occupier.health < 100
 
 /obj/machinery/computer/aifixer/process()
@@ -114,31 +114,31 @@
 	//Downloading AI from card to terminal.
 	if(interaction == AI_TRANS_FROM_CARD)
 		if(machine_stat & (NOPOWER|BROKEN))
-			to_chat(user, "<span class='alert'>[src] is offline and cannot take an AI at this time.</span>")
+			to_chat(user, "<span class='alert'>[src] jest wyłączony i nie może teraz przyjąć SI.</span>")
 			return
 		AI.forceMove(src)
 		occupier = AI
 		AI.control_disabled = TRUE
 		AI.radio_enabled = FALSE
-		to_chat(AI, "<span class='alert'>You have been uploaded to a stationary terminal. Sadly, there is no remote access from here.</span>")
-		to_chat(user, "<span class='notice'>Transfer Successful</span>: [AI.name] ([rand(1000,9999)].exe) installed and executed successfully. Local copy has been removed.")
+		to_chat(AI, "<span class='alert'>Zostajesz wgrany do stacjonarnego terminala. Niestety, nie ma stąd zdalnego dostępu.</span>")
+		to_chat(user, "<span class='notice'>Transfer zakończony sukcesem</span>: [AI.name] ([rand(1000,9999)].exe) zainstalowano i uruchomiono pomyślnie. Kopia lokalna została usunięta.")
 		card.AI = null
 		update_icon()
 		ui_update()
 
 	else //Uploading AI from terminal to card
 		if(occupier && !restoring)
-			to_chat(occupier, "<span class='notice'>You have been downloaded to a mobile storage device. Still no remote access.</span>")
-			to_chat(user, "<span class='notice'>Transfer Successful</span>: [occupier.name] ([rand(1000,9999)].exe) removed from host terminal and stored within local memory.")
+			to_chat(occupier, "<span class='notice'>Zostajesz pobrany na przenośne urządzenie pamięci. Wciąż brak zdalnego dostępu.</span>")
+			to_chat(user, "<span class='notice'>Transfer zakończony sukcesem</span>: [occupier.name] ([rand(1000,9999)].exe) usunięto z terminala i zapisano w pamięci lokalnej.")
 			occupier.forceMove(card)
 			card.AI = occupier
 			occupier = null
 			update_icon()
 			ui_update()
 		else if (restoring)
-			to_chat(user, "<span class='alert'>ERROR: Reconstruction in progress.</span>")
+			to_chat(user, "<span class='alert'>BŁĄD: rekonstrukcja w toku.</span>")
 		else if (!occupier)
-			to_chat(user, "<span class='alert'>ERROR: Unable to locate artificial intelligence.</span>")
+			to_chat(user, "<span class='alert'>BŁĄD: nie można zlokalizować sztucznej inteligencji.</span>")
 
 /obj/machinery/computer/aifixer/on_deconstruction()
 	if(occupier)

@@ -6,7 +6,7 @@
 
 /obj/machinery/computer/upload/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/gps, "Encrypted Upload")
+	AddComponent(/datum/component/gps, "Szyfrowane wgrywanie")
 	GLOB.uploads_list += src
 
 /obj/machinery/computer/upload/Destroy()
@@ -21,7 +21,7 @@
 		if(machine_stat & (NOPOWER|BROKEN|MAINT))
 			return
 		if(!current)
-			to_chat(user, "<span class='caution'>You haven't selected anything to transmit laws to!</span>")
+			to_chat(user, "<span class='caution'>Nie wybrano celu, do którego mają zostać przesłane prawa!</span>")
 			return
 	//	var/input = stripped_input(user, "Please enter the Upload code.", "Uplode Code Check")		//NSV13 We don't need this
 //		if(!GLOB.upload_code)
@@ -30,13 +30,13 @@
 //			to_chat(user, "<span class='caution'>Upload failed!</span> The code inputted was incorrect!")
 //			return
 		if(!can_upload_to(current))
-			to_chat(user, "<span class='caution'>Upload failed!</span> Check to make sure [current.name] is functioning properly.")
+			to_chat(user, "<span class='caution'>Wgrywanie nieudane!</span> Sprawdź, czy [current.name] działa prawidłowo.")
 			current = null
 			return
 		var/turf/currentloc = get_turf(current)
 		var/turf/user_turf = get_turf(user)
 		if(currentloc && user.get_virtual_z_level() != currentloc.get_virtual_z_level() && (!is_station_level(currentloc.z) || !is_station_level(user_turf.z)))
-			to_chat(user, "<span class='caution'>Upload failed!</span> Unable to establish a connection to [current.name]. You're too far away!")
+			to_chat(user, "<span class='caution'>Wgrywanie nieudane!</span> Nie można nawiązać połączenia z [current.name]. Jesteś za daleko!")
 			current = null
 			return
 		M.install(current.laws, user)
@@ -62,9 +62,9 @@
 	current = select_active_ai(user)
 
 	if (!current)
-		to_chat(user, "<span class='caution'>No active AIs detected!</span>")
+		to_chat(user, "<span class='caution'>Nie wykryto aktywnych SI!</span>")
 	else
-		to_chat(user, "[current.name] selected for law changes.")
+		to_chat(user, "Wybrano [current.name] do zmiany praw.")
 
 /obj/machinery/computer/upload/ai/can_upload_to(mob/living/silicon/ai/A)
 	if(!A || !isAI(A))
@@ -83,9 +83,9 @@
 	current = select_active_free_borg(user)
 
 	if(!current)
-		to_chat(user, "<span class='caution'>No active unslaved cyborgs detected!</span>")
+		to_chat(user, "<span class='caution'>Nie wykryto aktywnych, niepodległych cyborgów!</span>")
 	else
-		to_chat(user, "[current.name] selected for law changes.")
+		to_chat(user, "Wybrano [current.name] do zmiany praw.")
 
 /obj/machinery/computer/upload/borg/can_upload_to(mob/living/silicon/robot/B)
 	if(!B || !iscyborg(B))
