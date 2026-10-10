@@ -6,7 +6,7 @@
 
 /obj/item/clothing/suit/draculacoat
 	name = "Vampire Coat"
-	desc = "What is a man? A miserable little pile of secrets."
+	desc = "Czym jest człowiek? Żałosną kupką sekretów."
 	icon = 'aquila/icons/obj/clothing/suits.dmi'
 	icon_state = "draculacoat"
 	item_state = "draculacoat"

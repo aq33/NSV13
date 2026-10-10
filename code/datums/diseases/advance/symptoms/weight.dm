@@ -19,7 +19,7 @@ Bonus
 /datum/symptom/weight_loss
 
 	name = "Weight Loss"
-	desc = "The virus mutates the host's metabolism, making it almost unable to gain nutrition from food."
+	desc = "Wirus mutuje metabolizm nosiciela, przez co prawie nie może on czerpać składników odżywczych z jedzenia."
 	stealth = 0
 	resistance = 2
 	stage_speed = -2

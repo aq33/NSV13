@@ -17,7 +17,7 @@ Bonus
 
 /datum/symptom/shivering
 	name = "Shivering"
-	desc = "The virus inhibits the body's thermoregulation, cooling the body down."
+	desc = "Wirus hamuje termoregulację, schładzając ciało."
 	stealth = 0
 	resistance = 2
 	stage_speed = 2

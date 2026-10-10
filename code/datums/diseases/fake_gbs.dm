@@ -7,7 +7,7 @@
 	cures = list(/datum/reagent/medicine/synaptizine,/datum/reagent/sulfur)
 	agent = "Gravitokinetic Bipotential SADS-"
 	viable_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
-	desc = "If left untreated death will occur."
+	desc = "Nieleczona doprowadzi do śmierci."
 	danger = DISEASE_BIOHAZARD
 
 /datum/disease/fake_gbs/stage_act()

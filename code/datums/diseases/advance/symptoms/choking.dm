@@ -19,7 +19,7 @@ Bonus
 /datum/symptom/asphyxiation
 
 	name = "Acute respiratory distress syndrome"
-	desc = "The virus causes shrinking of the host's lungs, causing severe asphyxiation. May also lead to heart attacks."
+	desc = "Wirus powoduje kurczenie się płuc nosiciela, prowadząc do ciężkiego niedotlenienia. Może też prowadzić do zawałów serca."
 	stealth = -2
 	resistance = -0
 	stage_speed = -1

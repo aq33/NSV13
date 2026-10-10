@@ -99,7 +99,7 @@
 	cures = list(/datum/reagent/copper)
 	cure_chance = 5
 	agent = "R2D2 Nanomachines"
-	desc = "An acute nanomachine infection which converts its host into a cyborg."
+	desc = "Ostra infekcja nanomaszynowa, która zmienia nosiciela w cyborga."
 	danger = DISEASE_BIOHAZARD
 	visibility_flags = 0
 	stage1	= list()
@@ -132,7 +132,7 @@
 	cures = list(/datum/reagent/medicine/spaceacillin, /datum/reagent/glycerol)
 	cure_chance = 5
 	agent = "Rip-LEY Alien Microbes"
-	desc = "This disease changes the victim into a xenomorph."
+	desc = "Ta choroba zmienia ofiarę w ksenomorfa."
 	danger = DISEASE_BIOHAZARD
 	visibility_flags = 0
 	stage1	= list()
@@ -161,7 +161,7 @@
 	cures = list(/datum/reagent/consumable/frostoil)
 	cure_chance = 80
 	agent = "Zaawansowana toksyna mutująca"
-	desc = "This highly concentrated extract converts anything into more of itself."
+	desc = "Ten bardzo stężony ekstrakt zmienia wszystko w więcej siebie."
 	danger = DISEASE_BIOHAZARD
 	visibility_flags = 0
 	stage1	= list("Nie czujesz się najlepiej.")
@@ -189,7 +189,7 @@
 	cure_text = "Death"
 	cures = list(/datum/reagent/medicine/adminordrazine)
 	agent = "Fell Doge Majicks"
-	desc = "This disease transforms the victim into a corgi."
+	desc = "Ta choroba zmienia ofiarę w corgi."
 	danger = DISEASE_BIOHAZARD
 	visibility_flags = 0
 	stage1	= list("BARK.")
@@ -214,7 +214,7 @@
 	cure_text = /datum/reagent/consumable/nothing
 	cures = list(/datum/reagent/medicine/adminordrazine)
 	agent = "Gluttony's Blessing"
-	desc = "A 'gift' from somewhere terrible."
+	desc = "„Prezent” z jakiegoś strasznego miejsca."
 	stage_prob = 20
 	danger = DISEASE_BIOHAZARD
 	visibility_flags = 0
@@ -233,7 +233,7 @@
 	cure_chance = 80
 	stage_prob = 5
 	agent = "Tranquility"
-	desc = "Consuming the flesh of a Gondola comes at a terrible price."
+	desc = "Jedzenie mięsa Gondoli ma straszliwą cenę."
 	danger = DISEASE_BIOHAZARD
 	visibility_flags = 0
 	stage1	= list("Stawiasz kroki nieco lżej.")
@@ -275,8 +275,8 @@
 	needs_all_cures = FALSE //NSV13 - only needs hot choco or chocolate, not both.
 	cure_chance = 25
 	stage_prob = 3
-	agent = "Nano-feline Toxoplasmosis"
-	desc = "A lot of tiny cats in the blood that slowly turn you into a big cat."
+	agent = "Nanokocia toksoplazmoza"
+	desc = "Mnóstwo maleńkich kotów we krwi, które powoli zmieniają cię w dużego kota."
 	is_mutagenic = TRUE //So that it won't be autocured after stage 5
 	danger = DISEASE_BIOHAZARD
 	visibility_flags = 0
@@ -377,7 +377,7 @@
 	cure_chance = 10 //about 10 seconds/5 units of Froth to heal. Takes a decent gathering period but just shy of the amount that'll fatten you
 	stage_prob = 5
 	agent = "Odchody legionu"
-	desc = "Who knew that spreading the primordial goop of a vile entity would take a toll on the body?"
+	desc = "Kto by pomyślał, że roznoszenie pierwotnej mazi plugawej istoty odbije się na zdrowiu?"
 	danger = DISEASE_BIOHAZARD
 	visibility_flags = 0
 	stage1	= list("Twoja skóra wydaje się popielata.")

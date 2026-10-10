@@ -6,7 +6,7 @@
 	agent = "XY-rhinovirus"
 	viable_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
 	permeability_mod = 0.5
-	desc = "If left untreated, the subject will contract the flu."
+	desc = "Nieleczony chory zachoruje na grypę."
 	danger = DISEASE_NONTHREAT
 
 /datum/disease/cold/stage_act()

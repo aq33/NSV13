@@ -1,6 +1,6 @@
 /datum/symptom/meme
 	name = "Hysteria"
-	desc = "The virus causes mass hysteria involving a random concept."
+	desc = "Wirus wywołuje masową histerię wokół losowej idei."
 	stealth = 1
 	resistance = 1
 	stage_speed = -1

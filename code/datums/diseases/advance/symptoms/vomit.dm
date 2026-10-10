@@ -22,7 +22,7 @@ Bonus
 /datum/symptom/vomit
 
 	name = "Vomiting"
-	desc = "The virus causes nausea and irritates the stomach, causing occasional vomit."
+	desc = "Wirus wywołuje mdłości i podrażnia żołądek, powodując okazjonalne wymioty."
 	stealth = -2
 	resistance = 0
 	stage_speed = 1

@@ -17,7 +17,7 @@ Bonus
 
 /datum/symptom/heartattack
 	name = "Heart Disease"
-	desc = "This disease infiltrates the host's heart, causing cardiac arrest after a long incubation period"
+	desc = "Ta choroba atakuje serce nosiciela, powodując zatrzymanie akcji serca po długim okresie inkubacji"
 	stealth = 2
 	resistance = 1
 	stage_speed = -6

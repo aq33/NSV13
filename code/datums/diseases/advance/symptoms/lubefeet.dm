@@ -1,6 +1,6 @@
 /datum/symptom/lubefeet
 	name = "Ducatopod"
-	desc = "The host now sweats industrial lubricant from their feet, lubing tiles they walk on. Combine with Pierrot's throat for the penultimate form of torture."
+	desc = "Nosiciel poci się teraz ze stóp przemysłowym smarem, smarując pola, po których chodzi. Połącz z Gardłem Pierrota, by uzyskać przedostatnią formę tortur."
 	stealth = 0
 	resistance = 2
 	stage_speed = 5

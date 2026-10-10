@@ -634,7 +634,7 @@
 
 /datum/quirk/alcoholic
 	name = "Alcoholic"
-	desc = "You can't stand being sober."
+	desc = "Nie znosisz trzeźwości."
 	value = -1
 	gain_text = "<span class='danger'>Naprawdę napiłbyś się teraz czegoś.</span>"
 	lose_text = "<span class='notice'>Masz wrażenie, że powinieneś rzucić picie.</span>"

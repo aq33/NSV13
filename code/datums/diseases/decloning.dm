@@ -4,7 +4,7 @@
 	max_stages = 5
 	stage_prob = 1
 	cure_text = "Rezadon albo śmierć."
-	agent = "Severe Genetic Damage"
+	agent = "Poważne uszkodzenia genetyczne"
 	viable_mobtypes = list(/mob/living/carbon/human)
 	desc = @"If left untreated the subject will [REDACTED]!"
 	danger = DISEASE_DANGEROUS

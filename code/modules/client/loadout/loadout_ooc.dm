@@ -5,7 +5,7 @@
 
 /datum/gear/ooc/char_slot
 	display_name = "extra character slot"
-	description = "An extra charslot. Pretty self-explanatory."
+	description = "Dodatkowe miejsce na postać. Chyba nie trzeba tłumaczyć."
 	cost = 10000
 
 /datum/gear/ooc/char_slot/purchase(var/client/C)
@@ -13,7 +13,7 @@
 
 /datum/gear/ooc/real_antagtoken
 	display_name = "antag token"
-	description = "If you can afford it, you deserve it."
+	description = "Jeśli cię na to stać, zasługujesz na to."
 	cost = 100000
 
 /datum/gear/ooc/real_antagtoken/purchase(var/client/C)

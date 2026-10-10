@@ -7,9 +7,9 @@
 	cure_text = "Woda święcona."
 	cures = list(/datum/reagent/water/holywater)
 	cure_chance = 20
-	agent = "Avian Vengence"
+	agent = "Ptasia Zemsta"
 	viable_mobtypes = list(/mob/living/carbon/human)
-	desc = "Subject is possessed by the vengeful spirit of a parrot. Call the priest."
+	desc = "Chorego opętał mściwy duch papugi. Wezwijcie księdza."
 	danger = DISEASE_MEDIUM
 	infectable_biotypes = list(MOB_ORGANIC, MOB_UNDEAD, MOB_INORGANIC, MOB_ROBOTIC)
 	bypasses_immunity = TRUE //2spook

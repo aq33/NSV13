@@ -1,6 +1,6 @@
 /datum/symptom/light
 	name = "Photosensitive muscle condensation"
-	desc = "The virus will cause muscles to contract when exposed to light, resulting in lowered speed, but increased durability. Muscles will become more malleable in the darkness, resulting in the host moving faster, but being more easily bruised."
+	desc = "Wirus sprawia, że na świetle mięśnie się kurczą, co zmniejsza szybkość, ale zwiększa wytrzymałość. W ciemności mięśnie stają się bardziej elastyczne, przez co nosiciel porusza się szybciej, ale łatwiej o siniaki."
 	stealth = 0
 	resistance = 2
 	stage_speed = -3

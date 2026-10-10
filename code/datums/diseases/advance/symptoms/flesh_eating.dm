@@ -18,7 +18,7 @@ Bonus
 /datum/symptom/flesh_eating
 
 	name = "Hemorrhaging Fasciitis"
-	desc = "The virus aggressively attacks the skin and blood, leading to extreme bleeding."
+	desc = "Wirus agresywnie atakuje skórę i krew, prowadząc do skrajnego krwawienia."
 	stealth = -3
 	resistance = -2
 	stage_speed = 0
@@ -103,7 +103,7 @@ Bonus
 /datum/symptom/flesh_death
 
 	name = "Autophagocytosis Necrosis"
-	desc = "The virus rapidly consumes infected cells, leading to heavy and widespread damage. Contains dormant prions- expert virologists believe it to be the precursor to Romerol, though the mechanism through which they are activated is largely unknown"
+	desc = "Wirus szybko pochłania zarażone komórki, powodując ciężkie i rozległe uszkodzenia. Zawiera uśpione priony – doświadczeni wirusolodzy uważają je za prekursora Romerolu, choć mechanizm ich aktywacji jest w dużej mierze nieznany"
 	stealth = -2
 	resistance = -2
 	stage_speed = 1

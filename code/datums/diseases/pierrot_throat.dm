@@ -8,7 +8,7 @@
 	agent = "H0NI<42 Virus"
 	viable_mobtypes = list(/mob/living/carbon/human)
 	permeability_mod = 0.75
-	desc = "If left untreated the subject will probably drive others to insanity."
+	desc = "Nieleczony chory pewnie doprowadzi innych do szaleństwa."
 	danger = DISEASE_MEDIUM
 
 /datum/disease/pierrot_throat/stage_act()

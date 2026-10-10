@@ -10,7 +10,7 @@
 	viable_mobtypes = list(/mob/living/carbon/human)
 	var/datum/dna/original_dna = null
 	var/transformed = 0
-	desc = "This disease transplants the genetic code of the initial vector into new hosts."
+	desc = "Ta choroba przeszczepia kod genetyczny pierwotnego nosiciela nowym nosicielom."
 	danger = DISEASE_MEDIUM
 
 

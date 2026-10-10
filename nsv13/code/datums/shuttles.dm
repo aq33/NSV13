@@ -65,7 +65,7 @@
 /datum/map_template/shuttle/emergency/void
 	suffix = "void"
 	name = "Void Emergency Shuttle"
-	description = "Not even a shuttle."
+	description = "Nawet nie prom."
 	admin_notes = "Used for escape pod only maps"
 	credit_cost = 0
 	can_be_bought = FALSE
@@ -73,7 +73,7 @@
 /datum/map_template/shuttle/emergency/atlas
 	suffix = "atlas"
 	name = "Danube Class Yacht"
-	description = "A small, luxurious shuttle capable of ferrying small - medium crews in comfort and style."
+	description = "Mały, luksusowy prom, który w komforcie i stylu przewiezie małe i średnie załogi."
 	credit_cost = 4000
 
 /datum/map_template/shuttle/emergency/celerity

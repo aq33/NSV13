@@ -17,7 +17,7 @@ BONUS
 /datum/symptom/vitiligo
 
 	name = "Vitiligo"
-	desc = "The virus destroys skin pigment cells, causing rapid loss of pigmentation in the host."
+	desc = "Wirus niszczy komórki barwnikowe skóry, powodując szybką utratę pigmentacji u nosiciela."
 	stealth = 2
 	resistance = 0
 	stage_speed = 3
@@ -89,7 +89,7 @@ BONUS
 
 /datum/symptom/revitiligo
 	name = "Revitiligo"
-	desc = "The virus causes increased production of skin pigment cells, making the host's skin grow darker over time."
+	desc = "Wirus zwiększa wytwarzanie komórek barwnikowych skóry, przez co skóra nosiciela z czasem ciemnieje."
 	stealth = 1
 	resistance = 2
 	stage_speed = 1
@@ -161,7 +161,7 @@ BONUS
 
 /datum/symptom/polyvitiligo
 	name = "Polyvitiligo"
-	desc = "The virus replaces the melanin in the skin with reactive pigment."
+	desc = "Wirus zastępuje melaninę w skórze reaktywnym barwnikiem."
 	stealth = 0
 	resistance = 1
 	stage_speed = 4
@@ -203,7 +203,7 @@ BONUS
 ***********************************/
 /datum/symptom/skineggs //Thought Exolocomotive Xenomitosis was a weird symptom? Well, this is about 10x weirder.
 	name = "Dermagraphic Ovulogenesis"
-	desc = "The virus causes the host to grow egg-like nodules on their skin, which periodically fall off and contain the disease and some healing chemicals."
+	desc = "Wirus sprawia, że na skórze nosiciela rosną jajowate guzki, które okresowo odpadają i zawierają chorobę oraz trochę substancji leczniczych."
 	stealth = -3 //You are basically growing these weird Egg shits on your skin, this is not stealthy in the slightest
 	resistance = 1
 	stage_speed = 0
@@ -268,7 +268,7 @@ BONUS
 #define EGGSPLODE_DELAY 100 SECONDS
 /obj/item/food/eggsac
 	name = "Fleshy Egg Sac"
-	desc = "A small Egg Sac which appears to be made out of someone's flesh!"
+	desc = "Mały worek jajowy, który wygląda na zrobiony z czyjegoś ciała!"
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = "eggsac"
 	bite_consumption = 4
@@ -307,7 +307,7 @@ BONUS
 
 /obj/item/food/fleshegg
 	name = "Fleshy Egg"
-	desc = "An Egg which appears to be made out of someone's flesh!"
+	desc = "Jajo, które wygląda na zrobione z czyjegoś ciała!"
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "fleshegg"
 	bite_consumption = 1
@@ -344,7 +344,7 @@ Thresholds
 */
 /datum/symptom/spiked
 	name = "Cornu Cutaneum"
-	desc = "The virus causes the host to unpredictably grow and shed sharp spines, damaging those near them."
+	desc = "Wirus sprawia, że nosicielowi nieprzewidywalnie rosną i odpadają ostre kolce, raniąc osoby w pobliżu."
 	stealth = -3
 	resistance = 3
 	stage_speed = -3
@@ -408,7 +408,7 @@ Thresholds
 
 /datum/symptom/pustule
 	name = "Bubonic Infection"
-	desc = "The virus causes festering infections in the host's lymph nodes, leading to festering buboes that deal toxin damage."
+	desc = "Wirus wywołuje ropiejące zakażenia węzłów chłonnych nosiciela, prowadząc do ropiejących dymienic zadających obrażenia od toksyn."
 	stealth = -1
 	resistance = -2
 	stage_speed = 3

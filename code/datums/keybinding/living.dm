@@ -27,7 +27,7 @@
 	key = "V"
 	name = "rest"
 	full_name = "Rest"
-	description = "Lay down, or get up."
+	description = "Połóż się albo wstań."
 	keybind_signal = COMSIG_KB_LIVING_REST_DOWN
 
 /datum/keybinding/living/rest/down(client/user)

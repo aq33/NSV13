@@ -18,7 +18,7 @@ Bonus
 /datum/symptom/oxygen
 
 	name = "Self-Respiration"
-	desc = "The virus rapidly synthesizes oxygen, effectively removing the need for breathing."
+	desc = "Wirus szybko syntetyzuje tlen, praktycznie usuwając potrzebę oddychania."
 	stealth = 1
 	resistance = -3
 	stage_speed = -3

@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/vampire_bat
 	name = "vampire bat"
-	desc = "A bat that sucks blood. Keep away from medical bays."
+	desc = "Nietoperz wysysający krew. Trzymać z dala od ambulatoriów."
 	icon_state = "bat"
 	icon_living = "bat"
 	icon_dead = "bat_dead"

@@ -2,7 +2,7 @@
 
 /datum/symptom/heal
 	name = "Basic Healing (does nothing)" //warning for adminspawn viruses
-	desc = "You should not be seeing this."
+	desc = "Nie powinieneś tego widzieć."
 	stealth = 0
 	resistance = 0
 	stage_speed = 0
@@ -53,7 +53,7 @@
 	power = 2
 	prefixes = list("Toxo")
 	var/food_conversion = FALSE
-	desc = "The virus rapidly breaks down any foreign chemicals in the bloodstream."
+	desc = "Wirus szybko rozkłada wszelkie obce substancje w krwiobiegu."
 	threshold_desc = "<b>Odporność 7:</b> zwiększa szybkość usuwania substancji.<br><b>Szybkość stadiów 6:</b> zużyte substancje odżywiają nosiciela."
 
 /datum/symptom/heal/chem/Start(datum/disease/advance/A)
@@ -75,7 +75,7 @@
 
 /datum/symptom/heal/coma
 	name = "Regenerative Coma"
-	desc = "The virus causes the host to fall into a death-like coma when severely damaged, then rapidly fixes the damage. Only fixes burn and brute damage."
+	desc = "Wirus sprawia, że przy ciężkich obrażeniach nosiciel zapada w śpiączkę przypominającą śmierć, a potem szybko naprawia obrażenia. Leczy tylko oparzenia i obrażenia fizyczne."
 	stealth = 0
 	resistance = 2
 	stage_speed = -3
@@ -173,7 +173,7 @@
 
 /datum/symptom/heal/surface
 	name = "Superficial Healing"
-	desc = "The virus accelerates the body's natural healing, causing the body to heal minor wounds quickly. Causes heavy scarring."
+	desc = "Wirus przyspiesza naturalne gojenie, przez co drobne rany szybko się goją. Powoduje mocne bliznowacenie."
 	stealth = -1
 	resistance = -2
 	stage_speed = -2
@@ -234,8 +234,7 @@
 	bodies = list("Hunger")
 	var/triple_metabolism = FALSE
 	var/reduced_hunger = FALSE
-	desc = "The virus causes the host's metabolism to accelerate rapidly, making them process chemicals twice as fast,\
-	 but also causing increased hunger."
+	desc = "Wirus gwałtownie przyspiesza metabolizm nosiciela, przez co przetwarza on substancje dwa razy szybciej, ale też jest bardziej głodny."
 	threshold_desc = "<b>Ukrycie 3:</b> zmniejsza tempo głodnienia.<br><b>Szybkość stadiów 10:</b> metabolizm substancji jest potrojony zamiast podwojony."
 
 /datum/symptom/heal/metabolism/Start(datum/disease/advance/A)
@@ -268,7 +267,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 
 /datum/symptom/EMP
 	name = "Organic Flux Induction"
-	desc = "Causes electromagnetic interference around the subject"
+	desc = "Wywołuje zakłócenia elektromagnetyczne wokół nosiciela"
 	stealth = 0
 	resistance = -1
 	stage_speed = -1
@@ -317,7 +316,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 
 /datum/symptom/sweat
 	name = "Hyperperspiration"
-	desc = "Causes the host to sweat profusely, leaving small water puddles and extinguishing small fires"
+	desc = "Sprawia, że nosiciel obficie się poci, zostawiając małe kałuże wody i gasząc małe pożary"
 	stealth = 1
 	resistance = -1
 	stage_speed = 0
@@ -388,7 +387,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 
 /datum/symptom/teleport
 	name = "Thermal Retrostable Displacement"
-	desc = "When too hot or cold, the subject will return to a recent location at which they experienced safe homeostasis."
+	desc = "Gdy jest za gorąco lub za zimno, nosiciel wraca do niedawnego miejsca, w którym doświadczył bezpiecznej homeostazy."
 	stealth = 1
 	resistance = 2
 	stage_speed = -2
@@ -456,7 +455,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 
 /datum/symptom/growth
 	name = "Pituitary Disruption"
-	desc = "Causes uncontrolled growth in the subject."
+	desc = "Powoduje niekontrolowany wzrost nosiciela."
 	stealth = -3
 	resistance = -2
 	stage_speed = 1
@@ -562,7 +561,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 
 /datum/symptom/vampirism
 	name = "Hemetophagy"
-	desc = "The host absorbs blood from external sources, and seemlessly reintegrates it into their own bloodstream, regardless of its bloodtype or how it was ingested. However, the virus also slowly consumes the host's blood"
+	desc = "Nosiciel wchłania krew z zewnętrznych źródeł i bezproblemowo włącza ją do własnego krwiobiegu, bez względu na grupę krwi i sposób przyjęcia. Wirus jednak powoli pochłania krew nosiciela"
 	stealth = 1
 	resistance = -2
 	stage_speed = 1
@@ -797,7 +796,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 
 /datum/symptom/parasite
 	name = "Xenobiological Symbiosis"
-	desc = "The virus contains latent DNA blueprints to create a toxin-devouring grub egg, which parasitizes slimes and slime people. Its normally toxic, infectious flesh becomes safe and delicious when cooked."
+	desc = "Wirus zawiera utajone plany DNA do stworzenia jaja robaka pożerającego toksyny, który pasożytuje na szlamach i ludziach-szlamach. Jego normalnie toksyczne, zakaźne mięso po ugotowaniu staje się bezpieczne i pyszne."
 	stealth = 1
 	resistance = 2
 	stage_speed = 2
@@ -901,7 +900,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 
 /datum/symptom/jitters
 	name = "Hyperactivity"
-	desc = "The virus causes restlessness, nervousness and hyperactivity, increasing the rate at which the host needs to eat,but making them harder to tire out"
+	desc = "Wirus powoduje niepokój, nerwowość i nadpobudliwość, zwiększając tempo, w jakim nosiciel musi jeść, ale sprawiając, że trudniej go zmęczyć"
 	stealth = -4
 	resistance = 0
 	stage_speed = 2

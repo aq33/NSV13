@@ -1,6 +1,6 @@
 /datum/symptom/blobspores
 	name = "Blob Spores"
-	desc = "This symptom causes the host to produce blob spores, which will leave the host at the later stages, and if the host dies, all of the spores will erupt from the host at the same time, while also producing a blob tile."
+	desc = "Ten objaw sprawia, że nosiciel wytwarza zarodniki bloba, które w późniejszych stadiach opuszczają nosiciela, a jeśli nosiciel umrze, wszystkie zarodniki wydostaną się z niego naraz, tworząc też pole bloba."
 	stealth = 1
 	resistance = 6
 	stage_speed = -2

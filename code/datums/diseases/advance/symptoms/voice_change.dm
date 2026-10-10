@@ -18,7 +18,7 @@ Bonus
 /datum/symptom/voice_change
 
 	name = "Voice Change"
-	desc = "The virus alters the pitch and tone of the host's vocal cords, changing how their voice sounds."
+	desc = "Wirus zmienia wysokość i barwę strun głosowych nosiciela, zmieniając brzmienie jego głosu."
 	stealth = -1
 	resistance = -2
 	stage_speed = -2

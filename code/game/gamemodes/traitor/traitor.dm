@@ -22,9 +22,7 @@
 	reroll_friendly = 1
 
 	announce_span = "danger"
-	announce_text = "Agenci Syndykatu na Stacji!\n\
-	<span class='danger'>Traitors</span>: Accomplish your objectives.\n\
-	<span class='notice'>Crew</span>: Do not let the traitors succeed!"
+	announce_text = "Agenci Syndykatu na Stacji!\n<span class='danger'>Zdrajcy</span>: wykonajcie swoje cele.\n<span class='notice'>Załoga</span>: nie pozwólcie zdrajcom odnieść sukcesu!"
 
 	title_icon = "traitor"
 

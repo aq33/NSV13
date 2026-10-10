@@ -7,7 +7,7 @@
 	cures = list(/datum/reagent/medicine/spaceacillin)
 	agent = "ICE9-rhinovirus"
 	viable_mobtypes = list(/mob/living/carbon/human)
-	desc = "If left untreated the subject will slow, as if partly frozen."
+	desc = "Nieleczony chory zwolni, jakby był częściowo zamrożony."
 	danger = DISEASE_HARMFUL
 
 /datum/disease/cold9/stage_act()

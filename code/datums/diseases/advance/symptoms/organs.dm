@@ -1,6 +1,6 @@
 /datum/symptom/mind_restoration //heals damage to the brain
 	name = "Mind Restoration"
-	desc = "The virus strengthens the bonds between neurons, reducing the duration of any ailments of the mind."
+	desc = "Wirus wzmacnia połączenia między neuronami, skracając czas trwania wszelkich dolegliwości umysłu."
 	stealth = -1
 	resistance = -2
 	stage_speed = 1
@@ -64,7 +64,7 @@
 
 /datum/symptom/sensory_restoration //heals damage to the eyes and ears
 	name = "Sensory Restoration"
-	desc = "The virus stimulates the production and replacement of sensory tissues, causing the host to regenerate eyes and ears when damaged."
+	desc = "Wirus stymuluje wytwarzanie i wymianę tkanek zmysłowych, przez co nosiciel odtwarza uszkodzone oczy i uszy."
 	stealth = 0
 	resistance = 1
 	stage_speed = -2
@@ -108,7 +108,7 @@
 
 /datum/symptom/organ_restoration //heals damage to other internal organs that get damaged far less often
 	name = "Organ Restoration"
-	desc = "The virus stimulates rapid cell growth in organ tissues, slowly repairing the host's organs over time."
+	desc = "Wirus pobudza szybki wzrost komórek w tkankach narządów, z czasem powoli je naprawiając."
 	stealth = 2
 	resistance = 3
 	stage_speed = -2

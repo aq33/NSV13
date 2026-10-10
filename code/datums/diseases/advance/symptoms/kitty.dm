@@ -1,6 +1,6 @@
 /datum/symptom/toxoplasmosis //my take on the adminbus disease added a year ago. I wanted to make it an actual symptom instead of a simple idea, and i dont want it to call set_species()
 	name = "Toxoplasmosis Sapiens" 
-	desc = "A parasitic symptom that causes a humanoid host to feel slightly happier around cats and cat people."
+	desc = "Pasożytniczy objaw, przez który humanoidalny nosiciel czuje się nieco szczęśliwszy przy kotach i kotoludziach."
 	stealth = 1
 	resistance = -2
 	stage_speed = -3

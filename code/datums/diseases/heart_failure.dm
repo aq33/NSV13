@@ -7,7 +7,7 @@
 	agent = "Shitty Heart"
 	viable_mobtypes = list(/mob/living/carbon/human)
 	permeability_mod = 1
-	desc = "If left untreated the subject will die!"
+	desc = "Nieleczony chory umrze!"
 	danger = DISEASE_DANGEROUS
 	disease_flags = CAN_CARRY|CAN_RESIST
 	spread_flags = DISEASE_SPREAD_NON_CONTAGIOUS

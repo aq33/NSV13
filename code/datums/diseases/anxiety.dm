@@ -8,7 +8,7 @@
 	cures = list(/datum/reagent/consumable/ethanol)
 	agent = "Nadmiar lepidoptycydów"
 	viable_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
-	desc = "If left untreated subject will regurgitate butterflies."
+	desc = "Nieleczony chory zacznie zwracać motyle."
 	danger = DISEASE_MINOR
 
 /datum/disease/anxiety/stage_act()

@@ -1,6 +1,6 @@
 /datum/symptom/braindamage
 	name = "Neural Decay"
-	desc = "Causes the host's brain cells to naturally die off, causing severe brain damage."
+	desc = "Powoduje naturalne obumieranie komórek mózgowych nosiciela, prowadząc do poważnych uszkodzeń mózgu."
 	stealth = 1
 	resistance = -2
 	stage_speed = -3

@@ -17,7 +17,7 @@ Bonus
 
 /datum/symptom/hallucigen
 	name = "Hallucigen"
-	desc = "The virus stimulates the brain, causing occasional hallucinations."
+	desc = "Wirus stymuluje mózg, powodując okazjonalne halucynacje."
 	stealth = 1
 	resistance = -1
 	stage_speed = 1

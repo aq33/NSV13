@@ -1,6 +1,6 @@
 /datum/symptom/radiation
 	name = "Iraddiant Cells"
-	desc = "Causes the cells in the host's body to give off harmful radiation."
+	desc = "Sprawia, że komórki w ciele nosiciela emitują szkodliwe promieniowanie."
 	stealth = -1
 	resistance = 2
 	stage_speed = -1
@@ -45,7 +45,7 @@
 
 /datum/symptom/radconversion
 	name = "Aptotic Culling"
-	desc = "The virus causes infected cells to die off when exposed to radiation, causing open wounds to appear on the host's flesh. The end result of this process is the removal of radioactive contamination from the host."
+	desc = "Wirus sprawia, że zarażone komórki obumierają po wystawieniu na promieniowanie, przez co na ciele nosiciela pojawiają się otwarte rany. Efektem końcowym jest usunięcie skażenia radioaktywnego z nosiciela."
 	stealth = 1
 	resistance = 1
 	stage_speed = 1

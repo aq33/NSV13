@@ -1,6 +1,6 @@
 /datum/symptom/necroseed
 	name = "Necropolis Seed"
-	desc = "An infantile form of the root of Lavaland's tendrils. Forms a symbiotic bond with the host, making them stronger and hardier, at the cost of speed. Should the disease be cured, the host will be severely weakened"
+	desc = "Niedojrzała forma korzenia macek Lavalandu. Tworzy z nosicielem więź symbiotyczną, czyniąc go silniejszym i wytrzymalszym kosztem szybkości. Jeśli choroba zostanie wyleczona, nosiciel bardzo osłabnie"
 	stealth = 0
 	resistance = 3
 	stage_speed = -10

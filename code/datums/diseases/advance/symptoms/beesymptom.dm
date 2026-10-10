@@ -1,6 +1,6 @@
 /datum/symptom/beesease
 	name = "Bee Infestation"
-	desc = "Causes the host to cough toxin bees and occasionally synthesize toxin."
+	desc = "Sprawia, że nosiciel kaszle toksycznymi pszczołami i czasem syntetyzuje toksynę."
 	stealth = -2
 	resistance = 2
 	stage_speed = 1

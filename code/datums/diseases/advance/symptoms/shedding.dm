@@ -16,7 +16,7 @@ BONUS
 
 /datum/symptom/shedding
 	name = "Alopecia"
-	desc = "The virus causes rapid shedding of head and body hair."
+	desc = "Wirus powoduje szybką utratę włosów na głowie i ciele."
 	stealth = 0
 	resistance = 3
 	stage_speed = 2

@@ -18,7 +18,7 @@ Bonus
 /datum/symptom/confusion
 
 	name = "Confusion"
-	desc = "The virus interferes with the proper function of the neural system, leading to bouts of confusion and erratic movement."
+	desc = "Wirus zakłóca prawidłową pracę układu nerwowego, prowadząc do napadów dezorientacji i chaotycznych ruchów."
 	stealth = 1
 	resistance = -1
 	stage_speed = -3

@@ -1,7 +1,7 @@
 /datum/symptom/cockroach
 
 	name = "SBG Syndrome"
-	desc = "Causes bluespace synchronicity with nearby air channels, making the roaches infesting the station's scrubbers crawl from the host's face"
+	desc = "Wywołuje synchroniczność bluespace z pobliskimi kanałami powietrza, przez co karaluchy zasiedlające filtry stacji wypełzają z twarzy nosiciela"
 	stealth = 1
 	resistance = 2
 	stage_speed = 3

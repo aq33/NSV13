@@ -18,7 +18,7 @@ Bonus
 /datum/symptom/fire
 
 	name = "Spontaneous Combustion"
-	desc = "The virus turns fat into an extremely flammable compound, and raises the body's temperature, making the host burst into flames spontaneously."
+	desc = "Wirus zamienia tłuszcz w niezwykle łatwopalny związek i podnosi temperaturę ciała, przez co nosiciel samoistnie staje w płomieniach."
 	stealth = 1
 	resistance = -1
 	stage_speed = -2
@@ -106,7 +106,7 @@ Bonus
 /datum/symptom/alkali
 
 	name = "Alkali Perspiration"
-	desc = "The virus attaches to sudoriparous glands, synthesizing a chemical that bursts into flames when reacting with water, leading to self-immolation."
+	desc = "Wirus przyczepia się do gruczołów potowych, syntetyzując substancję, która zapala się w reakcji z wodą, prowadząc do samospalenia."
 	stealth = 2
 	resistance = -2
 	stage_speed = -2

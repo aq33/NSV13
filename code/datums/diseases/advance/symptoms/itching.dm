@@ -19,7 +19,7 @@ BONUS
 /datum/symptom/itching
 
 	name = "Itching"
-	desc = "The virus irritates the skin, causing itching."
+	desc = "Wirus podrażnia skórę, powodując swędzenie."
 	stealth = 0
 	resistance = 3
 	stage_speed = 3

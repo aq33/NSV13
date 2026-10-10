@@ -9,7 +9,7 @@
 	viable_mobtypes = list(/mob/living/carbon/human)
 	disease_flags = CAN_CARRY|CAN_RESIST|CURABLE
 	permeability_mod = 0.75
-	desc = "Some speculate that this virus is the cause of the Space Wizard Federation's existence. Subjects affected show the signs of intellectual disability, yelling obscure sentences or total gibberish. On late stages subjects sometime express the feelings of inner power, and, cite, 'the ability to control the forces of cosmos themselves!' A gulp of strong, manly spirits usually reverts them to normal, humanlike, condition."
+	desc = "Niektórzy spekulują, że ten wirus jest przyczyną istnienia Kosmicznej Federacji Czarodziejów. Chorzy wykazują objawy niepełnosprawności intelektualnej, wykrzykując niezrozumiałe zdania lub zupełny bełkot. W późnych stadiach chorzy czasem wyrażają poczucie wewnętrznej mocy i, cytuję, „zdolność sterowania samymi siłami kosmosu!”. Łyk mocnego, męskiego trunku zwykle przywraca ich do normalnego, ludzkiego stanu."
 	danger = DISEASE_HARMFUL
 	required_organs = list(/obj/item/bodypart/head)
 

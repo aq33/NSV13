@@ -15,7 +15,7 @@
 
 /obj/item/antag_spawner/contract
 	name = "contract"
-	desc = "A magic contract previously signed by an apprentice. In exchange for instruction in the magical arts, they are bound to answer your call for aid."
+	desc = "Magiczny kontrakt podpisany wcześniej przez ucznia. W zamian za naukę sztuk magicznych jest zobowiązany odpowiedzieć na twoje wezwanie o pomoc."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state ="scroll2"
 
@@ -100,7 +100,7 @@
 
 /obj/item/antag_spawner/nuke_ops
 	name = "syndicate operative teleporter"
-	desc = "A single-use teleporter designed to quickly reinforce operatives in the field."
+	desc = "Jednorazowy teleporter do szybkiego wzmacniania agentów w terenie."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "locator"
 	var/borg_to_spawn
@@ -152,7 +152,7 @@
 //////CLOWN OP
 /obj/item/antag_spawner/nuke_ops/clown
 	name = "clown operative teleporter"
-	desc = "A single-use teleporter designed to quickly reinforce clown operatives in the field."
+	desc = "Jednorazowy teleporter do szybkiego wzmacniania agentów-klaunów w terenie."
 
 /obj/item/antag_spawner/nuke_ops/clown/spawn_antag(client/C, turf/T, kind, datum/mind/user)
 	var/mob/living/carbon/human/M = new/mob/living/carbon/human(T)
@@ -172,7 +172,7 @@
 //////SYNDICATE BORG
 /obj/item/antag_spawner/nuke_ops/borg_tele
 	name = "syndicate cyborg teleporter"
-	desc = "A single-use teleporter designed to quickly reinforce operatives in the field."
+	desc = "Jednorazowy teleporter do szybkiego wzmacniania agentów w terenie."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "locator"
 
@@ -227,7 +227,7 @@
 
 /obj/item/antag_spawner/slaughter_demon //Warning edgiest item in the game
 	name = "vial of blood"
-	desc = "A magically infused bottle of blood, distilled from countless murder victims. Used in unholy rituals to attract horrifying creatures."
+	desc = "Magicznie nasycona butelka krwi, destylowana z niezliczonych ofiar morderstw. Używana w bezbożnych rytuałach do przywabiania przerażających stworzeń."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "vial"
 
@@ -272,7 +272,7 @@
 
 /obj/item/antag_spawner/slaughter_demon/laughter
 	name = "vial of tickles"
-	desc = "A magically infused bottle of clown love, distilled from countless hugging attacks. Used in funny rituals to attract adorable creatures."
+	desc = "Magicznie nasycona butelka klauniej miłości, destylowana z niezliczonych ataków przytulania. Używana w zabawnych rytuałach do przywabiania uroczych stworzeń."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "vial"
 	color = "#FF69B4" // HOT PINK
@@ -285,7 +285,7 @@
 
 /obj/item/antag_spawner/gangster
 	name = "crook spawner"
-	desc = "Have headquarters deliver you a crook that just dropped out of high-school and is ready for the front-line. He comes dressed with your gang's outfit and a spray can in hand."
+	desc = "Niech kwatera główna przyśle ci oprycha, który właśnie rzucił liceum i jest gotów na pierwszą linię. Przychodzi w stroju twojej bandy i z farbą w sprayu w ręce."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "locator"
 

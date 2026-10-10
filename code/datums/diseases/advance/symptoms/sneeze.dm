@@ -17,7 +17,7 @@ Bonus
 */
 /datum/symptom/sneeze
 	name = "Sneezing"
-	desc = "The virus causes irritation of the nasal cavity, making the host sneeze occasionally."
+	desc = "Wirus podrażnia jamę nosową, przez co nosiciel czasem kicha."
 	stealth = -2
 	resistance = 3
 	stage_speed = 0

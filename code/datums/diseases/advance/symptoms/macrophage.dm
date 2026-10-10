@@ -1,6 +1,6 @@
 /datum/symptom/macrophage
 	name = "Macrophage"
-	desc = "The virus grows within the host, ceasing to be microscopic and causing severe bodily harm. These Phages will seek out, attack, and infect more viable hosts"
+	desc = "Wirus rośnie w nosicielu, przestając być mikroskopijny i wyrządzając poważne szkody w ciele. Te fagi szukają, atakują i zarażają kolejnych odpowiednich nosicieli"
 	stealth = -4
 	resistance = 1
 	stage_speed = -2

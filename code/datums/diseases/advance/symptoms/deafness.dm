@@ -18,7 +18,7 @@ Bonus
 /datum/symptom/deafness
 
 	name = "Deafness"
-	desc = "The virus causes inflammation of the eardrums, causing intermittent deafness."
+	desc = "Wirus powoduje zapalenie błon bębenkowych, prowadząc do okresowej głuchoty."
 	stealth = -1
 	resistance = -1
 	stage_speed = 1

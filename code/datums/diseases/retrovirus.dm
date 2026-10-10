@@ -7,7 +7,7 @@
 	cure_chance = 6
 	agent = ""
 	viable_mobtypes = list(/mob/living/carbon/human)
-	desc = "A DNA-altering retrovirus that scrambles the structural and unique enzymes of a host constantly."
+	desc = "Retrowirus zmieniający DNA, który nieustannie miesza strukturalne i unikalne enzymy nosiciela."
 	danger = DISEASE_HARMFUL
 	permeability_mod = 0.4
 	stage_prob = 2

@@ -18,7 +18,7 @@ Bonus
 /datum/symptom/visionloss
 
 	name = "Hyphema"
-	desc = "The virus causes inflammation of the retina, leading to eye damage and eventually blindness."
+	desc = "Wirus wywołuje zapalenie siatkówki, prowadząc do uszkodzenia oczu, a w końcu do ślepoty."
 	stealth = -1
 	resistance = -3
 	stage_speed = -4

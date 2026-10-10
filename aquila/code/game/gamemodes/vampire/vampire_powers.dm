@@ -89,7 +89,7 @@
 
 /obj/effect/proc_holder/spell/self/rejuvenate
 	name = "Rejuvenate (20)"
-	desc= "Flush your system with some spare blood to restore stamina over time."
+	desc= "Przepłucz organizm odrobiną zapasowej krwi, by z czasem odzyskać wytrzymałość."
 	action_icon_state = "rejuv"
 	charge_max = 200
 	stat_allowed = 1
@@ -119,7 +119,7 @@
 
 /obj/effect/proc_holder/spell/pointed/gaze
 	name = "Vampiric Gaze"
-	desc = "Paralyze your target with fear."
+	desc = "Sparaliżuj cel strachem."
 	charge_max = 300
 	action_icon_state = "gaze"
 	active_msg = "Przygotowujesz wampirze spojrzenie."
@@ -165,7 +165,7 @@
 
 /obj/effect/proc_holder/spell/pointed/hypno
 	name = "Hypnotize (20)"
-	desc = "Knock out your target."
+	desc = "Ogłusz cel."
 	charge_max = 300
 	blood_used = 20
 	action_icon_state = "hypnotize"
@@ -218,7 +218,7 @@
 
 /obj/effect/proc_holder/spell/self/cloak
 	name = "Cloak of Darkness"
-	desc = "Toggles whether you are currently cloaking yourself in darkness."
+	desc = "Przełącza, czy otulasz się ciemnością."
 	gain_desc = "Zyskujesz zdolność Płaszcz Ciemności, która po włączeniu czyni cię niemal niewidzialnym w mroku."
 	action_icon_state = "cloak"
 	charge_max = 10
@@ -249,7 +249,7 @@
 
 /obj/effect/proc_holder/spell/self/screech
 	name = "Chiropteran Screech (20)"
-	desc = "An extremely loud shriek that stuns nearby humans and breaks windows as well."
+	desc = "Niezwykle głośny wrzask, który ogłusza pobliskich ludzi i wybija szyby."
 	gain_desc = "Zyskujesz zdolność Nietoperzy Wrzask, która ogłusza wszystko, co ma uszy, w dużym promieniu i przy okazji tłucze szkło."
 	action_icon_state = "reeee"
 	action_icon = 'aquila/icons/mob/vampire.dmi'
@@ -277,7 +277,7 @@
 
 /obj/effect/proc_holder/spell/self/bats
 	name = "Summon Bats (30)"
-	desc = "You summon a pair of space bats who attack nearby targets until they or their target is dead."
+	desc = "Przywołujesz parę kosmicznych nietoperzy, które atakują pobliskie cele, dopóki one albo cel nie zginą."
 	gain_desc = "Zyskujesz zdolność Przywołanie Nietoperzy."
 	action_icon_state = "bats"
 	action_icon = 'aquila/icons/mob/vampire.dmi'
@@ -312,7 +312,7 @@
 
 /obj/effect/proc_holder/spell/targeted/vampirize
 	name = "Lilith's Pact (300)"
-	desc = "You drain a victim's blood, and fill them with new blood, blessed by Lilith, turning them into a new vampire."
+	desc = "Wysysasz krew ofiary i napełniasz ją nową krwią, pobłogosławioną przez Lilith, zmieniając ją w nowego wampira."
 	gain_desc = "Zyskujesz zdolność, by z czasem zmusić kogoś do stania się wampirem."
 	action_icon = 'aquila/icons/mob/vampire.dmi'
 	action_background_icon_state = "bg_demon"
@@ -367,7 +367,7 @@
 /obj/effect/proc_holder/spell/self/revive
 	name = "Revive"
 	gain_desc = "Zyskujesz zdolność odradzania się po śmierci... Wciąż możesz jednak zostać spopielony lub rozerwany, a w kaplicy, dopóki nie jesteś dość silny, rozpadniesz się w proch!"
-	desc = "Revives you, provided you are not in the chapel! Use again to cancel the reanimation."
+	desc = "Wskrzesza cię, o ile nie jesteś w kaplicy! Użyj ponownie, by anulować reanimację."
 	blood_used = 0
 	stat_allowed = TRUE
 	charge_max = 600 //cooldown is only applied once we actually revive
@@ -425,7 +425,7 @@
 
 /obj/effect/proc_holder/spell/self/summon_coat
 	name = "Summon Dracula Coat (100)"
-	desc = "Allows you to summon a Vampire Coat providing passive usable blood restoration."
+	desc = "Pozwala przywołać Płaszcz Wampira, który biernie pozwala odzyskiwać krew."
 	gain_desc = "Teraz, gdy osiągasz pełnię mocy, możesz wyciągnąć wampirzy płaszcz z powietrza!"
 	blood_used = 100
 	action_icon = 'aquila/icons/mob/vampire.dmi'
@@ -451,7 +451,7 @@
 /obj/effect/proc_holder/spell/self/batform
 	name = "Bat Form (15)"
 	gain_desc = "Masz teraz zdolność Postać Nietoperza, która pozwala zmienić się w nietoperza (i z powrotem!)"
-	desc = "Transform into a bat!"
+	desc = "Zmień się w nietoperza!"
 	action_icon_state = "bat"
 	charge_max = 200
 	blood_used = 0 //this is only 0 so we can do our own custom checks

@@ -8,7 +8,7 @@
 	agent = "H13N1 flu virion"
 	viable_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
 	permeability_mod = 0.75
-	desc = "If left untreated the subject will feel quite unwell."
+	desc = "Nieleczony chory będzie się czuł dość kiepsko."
 	danger = DISEASE_MINOR
 
 /datum/disease/flu/stage_act()

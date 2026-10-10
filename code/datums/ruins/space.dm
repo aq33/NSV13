@@ -446,5 +446,5 @@
 	id = "refference"
 	suffix = "refference.dmm"
 	name = "Lost Cyborg"
-	description = "500 years too soon!"
+	description = "500 lat za wcześnie!"
 	cost = 2

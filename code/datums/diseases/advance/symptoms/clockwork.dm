@@ -1,6 +1,6 @@
 /datum/symptom/robotic_adaptation
 	name = "Biometallic Replication"
-	desc = "The virus can manipulate metal and silicate compounds, becoming able to infect robotic beings. The virus also provides a suitable substrate for nanites in otherwise inhospitable hosts"
+	desc = "Wirus potrafi manipulować metalem i związkami krzemianowymi, zyskując zdolność zarażania istot robotycznych. Zapewnia też odpowiednie podłoże dla nanitów w nosicielach, którzy w innym razie byliby dla nich nieprzyjaźni"
 	stealth = 0
 	resistance = 1
 	stage_speed = 4 //while the reference material has low speed, this virus will take a good while to completely convert someone
@@ -231,24 +231,24 @@
 //below this point lies all clockwork bits that make this symptom tick. no pun intended.
 /obj/item/organ/ears/robot/clockwork
 	name = "biometallic recorder"
-	desc = "An odd sort of microphone that looks grown, rather than built."
+	desc = "Dziwny mikrofon, który wygląda raczej na wyhodowany niż zbudowany."
 	icon_state = "ears-clock"
 
 /obj/item/organ/eyes/robotic/clockwork
 	name = "biometallic receptors"
-	desc = "A fragile set of small, mechanical cameras."
+	desc = "Delikatny zestaw małych, mechanicznych kamer."
 	icon_state = "clockwork_eyeballs"
 
 /obj/item/organ/heart/clockwork //this heart doesnt have the fancy bits normal cyberhearts do. However, it also doesnt fucking kill you when EMPd
 	name = "biomechanical pump"
-	desc = "A complex, multi-valved hydraulic pump, which fits perfectly where a heart normally would."
+	desc = "Złożona, wielozaworowa pompa hydrauliczna, która idealnie pasuje tam, gdzie normalnie jest serce."
 	icon_state = "heart-clock"
 	organ_flags = ORGAN_SYNTHETIC
 	status = ORGAN_ROBOTIC
 
 /obj/item/organ/stomach/clockwork
 	name = "nutriment refinery"
-	desc = "A biomechanical furnace, which turns calories into mechanical energy."
+	desc = "Biomechaniczny piec, który zamienia kalorie w energię mechaniczną."
 	icon_state = "stomach-clock"
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
@@ -258,7 +258,7 @@
 
 /obj/item/organ/stomach/battery/clockwork
 	name = "biometallic flywheel"
-	desc = "A biomechanical battery which stores mechanical energy."
+	desc = "Biomechaniczna bateria, która magazynuje energię mechaniczną."
 	icon_state = "stomach-clock"
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
@@ -267,7 +267,7 @@
 
 /obj/item/organ/tongue/robot/clockwork
 	name = "dynamic micro-phonograph"
-	desc = "An old-timey looking device connected to an odd, shifting cylinder."
+	desc = "Staroświecko wyglądające urządzenie połączone z dziwnym, zmieniającym się cylindrem."
 	icon_state = "tongueclock"
 
 /obj/item/organ/tongue/robot/clockwork/better
@@ -279,7 +279,7 @@
 
 /obj/item/organ/brain/clockwork
 	name = "enigmatic gearbox"
-	desc ="An engineer would call this inconcievable wonder of gears and metal a 'black box'"
+	desc ="Inżynier nazwałby ten niewyobrażalny cud z trybików i metalu „czarną skrzynką”"
 	icon_state = "brain-clock"
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
@@ -299,7 +299,7 @@
 
 /obj/item/organ/liver/clockwork
 	name = "biometallic alembic"
-	desc = "A series of small pumps and boilers, designed to facilitate proper metabolism."
+	desc = "Zestaw małych pomp i kotłów, zaprojektowany do wspierania prawidłowego metabolizmu."
 	icon_state = "liver-clock"
 	organ_flags = ORGAN_SYNTHETIC
 	status = ORGAN_ROBOTIC
@@ -309,7 +309,7 @@
 
 /obj/item/organ/lungs/clockwork
 	name = "clockwork diaphragm"
-	desc = "A utilitarian bellows which serves to pump oxygen into an automaton's body."
+	desc = "Użytkowy miech, który pompuje tlen do ciała automatonu."
 	icon_state = "lungs-clock"
 	organ_flags = ORGAN_SYNTHETIC
 	status = ORGAN_ROBOTIC
@@ -317,7 +317,7 @@
 
 /obj/item/organ/wings/cybernetic/clockwork
 	name = "biometallic wings"
-	desc = "A pair of thin metallic membranes."
+	desc = "Para cienkich metalowych membran."
 	flight_level = WINGS_FLIGHTLESS
 	wing_type = "Clockwork"
 	icon_state = "clockwork"
@@ -326,7 +326,7 @@
 
 /obj/item/organ/tail/clockwork
 	name = "biomechanical tail"
-	desc = "A stiff tail composed of a strange alloy."
+	desc = "Sztywny ogon z dziwnego stopu."
 	color = null
 	tail_type = "Clockwork"
 	icon_state = "clocktail"
@@ -349,42 +349,42 @@
 
 /obj/item/bodypart/l_arm/robot/clockwork
 	name = "clockwork left arm"
-	desc = "An odd metal arm with fingers driven by blood-based hydraulics."
+	desc = "Dziwne metalowe ramię z palcami napędzanymi hydrauliką na krew."
 	static_icon = 'icons/mob/augmentation/augments_clockwork.dmi'
 	brute_reduction = 0
 	burn_reduction = 0
 
 /obj/item/bodypart/r_arm/robot/clockwork
 	name = "clockwork right arm"
-	desc = "An odd metal arm with fingers driven by blood-based hydraulics."
+	desc = "Dziwne metalowe ramię z palcami napędzanymi hydrauliką na krew."
 	static_icon = 'icons/mob/augmentation/augments_clockwork.dmi'
 	brute_reduction = 0
 	burn_reduction = 0
 
 /obj/item/bodypart/l_leg/robot/clockwork
 	name = "clockwork left leg"
-	desc = "An odd metal leg full of intricate mechanisms."
+	desc = "Dziwna metalowa noga pełna misternych mechanizmów."
 	static_icon = 'icons/mob/augmentation/augments_clockwork.dmi'
 	brute_reduction = 0
 	burn_reduction = 0
 
 /obj/item/bodypart/r_leg/robot/clockwork
 	name = "clockwork right leg"
-	desc = "An odd metal leg full of intricate mechanisms."
+	desc = "Dziwna metalowa noga pełna misternych mechanizmów."
 	static_icon = 'icons/mob/augmentation/augments_clockwork.dmi'
 	brute_reduction = 0
 	burn_reduction = 0
 
 /obj/item/bodypart/head/robot/clockwork
 	name = "clockwork head"
-	desc = "An odd metal head that still feels warm to the touch."
+	desc = "Dziwna metalowa głowa, wciąż ciepła w dotyku."
 	static_icon = 'icons/mob/augmentation/augments_clockwork.dmi'
 	brute_reduction = 0
 	burn_reduction = 0
 
 /obj/item/bodypart/chest/robot/clockwork
 	name = "clockwork torso"
-	desc = "An odd metal body full of gears and pipes. It still seems alive."
+	desc = "Dziwny metalowy tułów pełen trybików i rur. Wciąż wydaje się żywy."
 	static_icon = 'icons/mob/augmentation/augments_clockwork.dmi'
 	brute_reduction = 0
 	burn_reduction = 0

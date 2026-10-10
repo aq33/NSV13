@@ -8,7 +8,7 @@
 	cures = list(/datum/reagent/consumable/sugar)
 	agent = "Apidae Infection"
 	viable_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
-	desc = "If left untreated subject will regurgitate bees."
+	desc = "Nieleczony chory zacznie zwracać pszczoły."
 	danger = DISEASE_MEDIUM
 	infectable_biotypes = list(MOB_ORGANIC, MOB_UNDEAD) //bees nesting in corpses
 

@@ -18,7 +18,7 @@ BONUS
 /datum/symptom/cough
 
 	name = "Cough"
-	desc = "The virus irritates the throat of the host, causing occasional coughing."
+	desc = "Wirus podrażnia gardło nosiciela, powodując okazjonalny kaszel."
 	stealth = -1
 	resistance = 3
 	stage_speed = 1
