@@ -14,9 +14,7 @@
 	recommended_enemies = 1
 	round_ends_with_antag_death = 1
 	announce_span = "danger"
-	announce_text = "There is a space wizard attacking the station!\n\
-	<span class='danger'>Wizard</span>: Accomplish your objectives and cause mayhem on the station.\n\
-	<span class='notice'>Crew</span>: Eliminate the wizard before they can succeed!"
+	announce_text = "Stację atakuje kosmiczny czarodziej!\n<span class='danger'>Czarodziej</span>: wykonaj swoje cele i siej chaos na stacji.\n<span class='notice'>Załoga</span>: wyeliminujcie czarodzieja, zanim mu się uda!"
 	var/finished = 0
 
 	title_icon = "wizard"

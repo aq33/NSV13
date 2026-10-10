@@ -154,11 +154,11 @@
 
 	var/obj/item/clothing/suit/suit = new gang.suit(armor_box)
 	suit.armor = suit.armor.setRating(melee = 20, bullet = 35, laser = 10, energy = 10, bomb = 30, bio = 0, rad = 0, fire = 30, acid = 30)
-	suit.desc += " Tailored for the [gang.name] Gang to offer the wearer moderate protection against ballistics and physical trauma."
+	suit.desc += " Uszyty dla bandy [gang.name], by zapewnić noszącemu umiarkowaną ochronę przed pociskami i urazami fizycznymi."
 
 	var/obj/item/clothing/head/hat = new gang.hat(armor_box)
 	hat.armor = hat.armor.setRating(melee = 20, bullet = 35, laser = 10, energy = 10, bomb = 30, bio = 0, rad = 0, fire = 30, acid = 30)
-	hat.desc += " Tailored for the [gang.name] Gang to offer the wearer moderate protection against ballistics and physical trauma."
+	hat.desc += " Uszyty dla bandy [gang.name], by zapewnić noszącemu umiarkowaną ochronę przed pociskami i urazami fizycznymi."
 
 	user.put_in_hands(armor_box)
 	to_chat(user, "<span class='notice'> To oficjalny mundur twojego gangu, noszenie go zwiększa twoje wpływy")
@@ -178,7 +178,7 @@
 	suit.heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	suit.min_cold_protection_temperature = SPACE_HELM_MIN_TEMP_PROTECT
 	suit.max_heat_protection_temperature = SPACE_HELM_MAX_TEMP_PROTECT
-	suit.desc += " Tailored for the [gang.name] Gang to offer the wearer moderate protection against ballistics and physical trauma."
+	suit.desc += " Uszyty dla bandy [gang.name], by zapewnić noszącemu umiarkowaną ochronę przed pociskami i urazami fizycznymi."
 
 	var/obj/item/clothing/head/hat = new gang.hat(armor_box)
 	hat.clothing_flags |= STOPSPRESSUREDAMAGE | THICKMATERIAL
@@ -186,7 +186,7 @@
 	hat.heat_protection = HEAD
 	hat.min_cold_protection_temperature = SPACE_HELM_MIN_TEMP_PROTECT
 	hat.max_heat_protection_temperature = SPACE_HELM_MAX_TEMP_PROTECT
-	hat.desc += " Tailored for the [gang.name] Gang to offer the wearer moderate protection against ballistics and physical trauma."
+	hat.desc += " Uszyty dla bandy [gang.name], by zapewnić noszącemu umiarkowaną ochronę przed pociskami i urazami fizycznymi."
 
 	user.put_in_hands(armor_box)
 	to_chat(user, "<span class='notice'> To oficjalny mundur twojego gangu, noszenie go zwiększa twoje wpływy")

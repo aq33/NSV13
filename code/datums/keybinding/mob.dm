@@ -116,7 +116,7 @@
 	if(!user.mob) return
 	var/mob/M = user.mob
 	if (!M.pulling)
-		to_chat(user, "<span class='notice'>You are not pulling anything.</span>")
+		to_chat(user, "<span class='notice'>Niczego nie ciągniesz.</span>")
 	else
 		M.stop_pulling()
 	return TRUE
@@ -171,8 +171,8 @@
 /datum/keybinding/mob/activate_inhand
 	key = "Z"
 	name = "activate_inhand"
-	full_name = "Activate in-hand"
-	description = "Uses whatever item you have inhand"
+	full_name = "Aktywuj w dłoni"
+	description = "Używa przedmiotu, który trzymasz w dłoni"
 	keybind_signal = COMSIG_KB_MOB_ACTIVATEINHAND_DOWN
 
 /datum/keybinding/mob/activate_inhand/down(client/user)
@@ -199,7 +199,7 @@
 	var/mob/M = user.mob
 	var/obj/item/I = M.get_active_held_item()
 	if(!I)
-		to_chat(user, "<span class='warning'>You have nothing to drop in your hand!</span>")
+		to_chat(user, "<span class='warning'>Nie masz w dłoni niczego do upuszczenia!</span>")
 	else
 		user.mob.dropItemToGround(I)
 	return TRUE
@@ -207,8 +207,8 @@
 /datum/keybinding/mob/toggle_move_intent
 	key = "Alt"
 	name = "toggle_move_intent"
-	full_name = "Hold to toggle move intent"
-	description = "Held down to cycle to the other move intent, release to cycle back"
+	full_name = "Przytrzymaj, by przełączyć tryb ruchu"
+	description = "Przytrzymaj, by przełączyć na drugi tryb ruchu; puść, by wrócić"
 	keybind_signal = COMSIG_KB_MOB_TOGGLEMOVEINTENT_DOWN
 
 /datum/keybinding/mob/toggle_move_intent/down(client/user)
@@ -229,8 +229,8 @@
 /datum/keybinding/mob/toggle_move_intent_alternative
 	key = "Unbound"
 	name = "toggle_move_intent_alt"
-	full_name = "press to cycle move intent"
-	description = "Pressing this cycle to the opposite move intent, does not cycle back"
+	full_name = "naciśnij, by przełączyć tryb ruchu"
+	description = "Naciśnięcie przełącza na przeciwny tryb ruchu i nie przełącza z powrotem"
 	keybind_signal = COMSIG_KB_MOB_TOGGLEMOVEINTENTALT_DOWN
 
 /datum/keybinding/mob/toggle_move_intent_alternative/down(client/user)
@@ -349,8 +349,8 @@
 /datum/keybinding/mob/prevent_movement
 	key = "Ctrl"
 	name = "block_movement"
-	full_name = "Hold to change facing"
-	description = "While pressed, prevents movement when pressing directional keys; instead just changes your facing direction"
+	full_name = "Przytrzymaj, by zmieniać kierunek patrzenia"
+	description = "Gdy przytrzymane, klawisze kierunków nie poruszają postacią, tylko zmieniają kierunek patrzenia"
 	keybind_signal = COMSIG_KB_MOB_PREVENTMOVEMENT_DOWN
 
 /datum/keybinding/mob/prevent_movement/down(client/user)
@@ -369,7 +369,7 @@
 	key = "C"
 	name = "pixel_shift"
 	full_name = "Pixel shift"
-	description = "Displace your sprite within your current tile"
+	description = "Przesuń swój sprite w obrębie obecnego pola"
 	keybind_signal = COMSIG_KB_MOB_PIXELSHIFT_DOWN
 
 /datum/keybinding/mob/pixel_shift/down(client/user)

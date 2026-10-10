@@ -7,7 +7,7 @@
 	faction = "Station"
 	total_positions = 5 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
 	spawn_positions = 5 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
-	supervisors = "the head of security, and the head of your assigned department (if applicable)"
+	supervisors = "szef ochrony oraz szef przydzielonego ci działu (jeśli dotyczy)"
 	selection_color = "#ffeeee"
 	chat_color = "#E6A3A3"
 	minimal_player_age = 7

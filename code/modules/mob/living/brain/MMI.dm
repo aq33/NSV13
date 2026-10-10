@@ -51,7 +51,7 @@
 		var/mob/living/brain/B = newbrain.brainmob
 		if(!B.key)
 			B.notify_ghost_cloning("Ktoś umieścił twój mózg w MMI!", source = src)
-		user.visible_message("[user] sticks \a [newbrain] into [src].", "<span class='notice'>Gdy wkładasz [newbrain], zapala się kontrolka [src].</span>")
+		user.visible_message("[user] wkłada [newbrain] do [src].", "<span class='notice'>Gdy wkładasz [newbrain], zapala się kontrolka [src].</span>")
 		log_attack("[key_name(user)] inserted [newbrain] into \the [src] at [AREACOORD(src)].")
 
 		SEND_SIGNAL(src, COMSIG_MMI_SET_BRAINMOB, newbrain.brainmob)

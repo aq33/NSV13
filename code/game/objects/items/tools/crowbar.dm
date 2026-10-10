@@ -21,7 +21,7 @@
 	pickup_sound =  'sound/items/handling/crowbar_pickup.ogg'
 
 /obj/item/crowbar/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is beating [user.p_them()]self to death with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zatłukuje się na śmierć [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	playsound(loc, 'sound/weapons/genhit.ogg', 50, 1, -1)
 	return (BRUTELOSS)
 

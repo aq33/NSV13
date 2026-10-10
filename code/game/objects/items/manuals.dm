@@ -199,7 +199,7 @@
 	var/wikiurl = CONFIG_GET(string/wikiurl)
 	if(!wikiurl)
 		return
-	if(alert(user, "This will open the wiki page in your browser. Are you sure?", null, "Yes", "No") != "Yes")
+	if(alert(user, "To otworzy stronę wiki w twojej przeglądarce. Na pewno?", null, "Yes", "No") != "Yes")
 		return
 	DIRECT_OUTPUT(user, link("[wikiurl]/[page_link]"))
 
@@ -240,7 +240,7 @@
 	page_link = "Space_Law"
 
 /obj/item/book/manual/wiki/security_space_law/suicide_act(mob/living/user)
-	user.visible_message("<span class='suicide'>[user] pretends to read \the [src] intently... then promptly dies of laughter!</span>")
+	user.visible_message("<span class='suicide'>[user] udaje, że uważnie czyta [src]... po czym natychmiast umiera ze śmiechu!</span>")
 	return OXYLOSS
 
 /obj/item/book/manual/wiki/infections
@@ -430,7 +430,7 @@
 
 /obj/item/book/manual/wiki/toxins/suicide_act(mob/user)
 	var/mob/living/carbon/human/H = user
-	user.visible_message("<span class='suicide'>[user] starts dancing to the Rhumba Beat! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaczyna tańczyć w rytm Rumby! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	playsound(loc, 'sound/effects/spray.ogg', 10, 1, -3)
 	if (!QDELETED(H))
 		H.emote("spin")

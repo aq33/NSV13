@@ -21,7 +21,7 @@
 
 /obj/item/circuit_component/compact_remote
 	display_name = "Compact Remote"
-	display_desc = "Used to receive inputs from the compact remote shell. Use the shell in hand to trigger the output signal."
+	display_desc = "Służy do odbierania wejść z obudowy kompaktowego pilota. Użyj obudowy w dłoni, by wyzwolić sygnał wyjściowy."
 
 	/// Called when attack_self is called on the shell.
 	var/datum/port/output/signal

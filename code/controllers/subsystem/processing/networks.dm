@@ -257,7 +257,7 @@ SUBSYSTEM_DEF(networks)
  */
 /datum/controller/subsystem/networks/proc/purge_logs()
 	logs = list()
-	add_log("-!- LOGS DELETED BY SYSTEM OPERATOR -!-")
+	add_log("-!- LOGI USUNIĘTE PRZEZ OPERATORA SYSTEMU -!-")
 
 
 
@@ -274,7 +274,7 @@ SUBSYSTEM_DEF(networks)
 	// Trim the value if necessary
 	lognumber = max(MIN_NTNET_LOGS, min(lognumber, MAX_NTNET_LOGS))
 	setting_maxlogcount = lognumber
-	add_log("Configuration Updated. Now keeping [setting_maxlogcount] logs in system memory.")
+	add_log("Konfiguracja zaktualizowana. Pamięć systemu przechowuje teraz [setting_maxlogcount] logów.")
 
 
 

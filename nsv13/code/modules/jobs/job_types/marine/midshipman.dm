@@ -9,7 +9,7 @@ Marine & all their unique stuff!
 	faction = "Station"
 	total_positions = 100
 	spawn_positions = 100
-	supervisors = "your squad leader and all other military crew during peacetime"
+	supervisors = "dowódca twojego oddziału oraz cała pozostała załoga wojskowa w czasie pokoju"
 	selection_color = "#c2d5ee"
 	chat_color = "#c2d5ee"
 	access = list()			//See /datum/job/assistant/get_access()

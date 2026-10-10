@@ -51,19 +51,19 @@
 
 /obj/item/wirecutters/attack(mob/living/carbon/C, mob/user)
 	if(istype(C) && C.handcuffed && istype(C.handcuffed, /obj/item/restraints/handcuffs/cable))
-		user.visible_message("<span class='notice'>[user] cuts [C]'s restraints with [src]!</span>")
+		user.visible_message("<span class='notice'>[user] przecina więzy [C] za pomocą [src]!</span>")
 		qdel(C.handcuffed)
 		return
 	else if(istype(C) && C.has_status_effect(STATUS_EFFECT_CHOKINGSTRAND))
-		to_chat(C, "<span class='notice'>You attempt to remove the durathread strand from around your neck.</span>")
+		to_chat(C, "<span class='notice'>Próbujesz zdjąć z szyi pasmo durathreadu.</span>")
 		if(do_after(user, 15, null, C))
-			to_chat(C, "<span class='notice'>You succesfuly remove the durathread strand.</span>")
+			to_chat(C, "<span class='notice'>Udaje ci się zdjąć pasmo durathreadu.</span>")
 			C.remove_status_effect(STATUS_EFFECT_CHOKINGSTRAND)
 	else
 		..()
 
 /obj/item/wirecutters/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is cutting at [user.p_their()] arteries with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] przecina sobie tętnice [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	playsound(loc, usesound, 50, 1, -1)
 	return (BRUTELOSS)
 

@@ -5,7 +5,7 @@
  */
 /obj/item/circuit_component/mmi
 	display_name = "Man-Machine Interface"
-	display_desc = "A component that allows MMI to enter shells to send output signals."
+	display_desc = "Komponent, który pozwala MMI wejść do obudowy, by wysyłać sygnały wyjściowe."
 
 	/// The message to send to the MMI in the shell.
 	var/datum/port/input/message
@@ -85,7 +85,7 @@
 		if(!target)
 			return
 
-		to_chat(target, "<span class='bold'>You hear a message in your ear: </span>[msg_str]")
+		to_chat(target, "<span class='bold'>Słyszysz w uchu wiadomość: </span>[msg_str]")
 
 
 /obj/item/circuit_component/mmi/register_shell(atom/movable/shell)

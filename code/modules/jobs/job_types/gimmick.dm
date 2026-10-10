@@ -5,7 +5,7 @@
 	faction = "Station"
 	total_positions = 0
 	spawn_positions = 0
-	supervisors = "no one"
+	supervisors = "nikt"
 	selection_color = "#dddddd"
 
 	exp_type_department = EXP_TYPE_GIMMICK
@@ -28,7 +28,7 @@
 /datum/job/gimmick/barber
 	title = JOB_NAME_BARBER
 	flag = BARBER
-	supervisors = "the head of personnel"
+	supervisors = "szef personelu"
 	department_head = list(JOB_NAME_HEADOFPERSONNEL)
 	department_flag = CIVILIAN
 	gimmick = TRUE
@@ -63,7 +63,7 @@
 /datum/job/gimmick/stage_magician
 	title = JOB_NAME_STAGEMAGICIAN
 	flag = MAGICIAN
-	supervisors = "the head of personnel"
+	supervisors = "szef personelu"
 	department_head = list(JOB_NAME_HEADOFPERSONNEL)
 	department_flag = CIVILIAN
 	gimmick = TRUE
@@ -101,7 +101,7 @@
 /datum/job/gimmick/psychiatrist
 	title = JOB_NAME_PSYCHIATRIST
 	flag = PSYCHIATRIST
-	supervisors = "the chief medical officer"
+	supervisors = "główny lekarz"
 	department_head = list(JOB_NAME_CHIEFMEDICALOFFICER)
 	department_flag = MEDSCI
 	gimmick = TRUE

@@ -8,7 +8,7 @@
 	button_icon_state = "Replicant"
 	power_cost = 50
 	invokation_time = 30
-	invokation_text = list("oh shit, I forgot that...")
+	invokation_text = list("o kurde, zapomniałem o tym...")
 	category = SPELLTYPE_SERVITUDE
 	cogs_required = 0
 

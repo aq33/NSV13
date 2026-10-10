@@ -649,10 +649,10 @@
 /mob/living/carbon/human/Animalize()
 
 	var/list/mobtypes = typesof(/mob/living/simple_animal)
-	var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in sortList(mobtypes, GLOBAL_PROC_REF(cmp_typepaths_asc))
+	var/mobpath = input("W jaki typ moba ma się zmienić [src]?", "Choose a type") in sortList(mobtypes, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 	if(!safe_animal(mobpath))
-		to_chat(usr, "<span class='danger'>Sorry but this mob type is currently unavailable.</span>")
+		to_chat(usr, "<span class='danger'>Przepraszamy, ten typ moba jest obecnie niedostępny.</span>")
 		return
 
 	if(pre_transform())
@@ -671,10 +671,10 @@
 /mob/proc/Animalize()
 
 	var/list/mobtypes = typesof(/mob/living/simple_animal)
-	var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in sortList(mobtypes, GLOBAL_PROC_REF(cmp_typepaths_asc))
+	var/mobpath = input("W jaki typ moba ma się zmienić [src]?", "Choose a type") in sortList(mobtypes, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 	if(!safe_animal(mobpath))
-		to_chat(usr, "<span class='danger'>Sorry but this mob type is currently unavailable.</span>")
+		to_chat(usr, "<span class='danger'>Przepraszamy, ten typ moba jest obecnie niedostępny.</span>")
 		return
 
 	var/mob/new_mob = new mobpath(src.loc)

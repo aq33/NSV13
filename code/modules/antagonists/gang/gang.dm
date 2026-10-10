@@ -104,11 +104,11 @@
 	.["Set Influence"] = CALLBACK(src, PROC_REF(admin_adjust_influence))
 
 /datum/antagonist/gang/admin_add(datum/mind/new_owner,mob/admin)
-	var/new_or_existing = input(admin, "Which gang do you want to be assigned to the user?", "Gangs") as null|anything in list("New","Existing")
+	var/new_or_existing = input(admin, "Którą bandę chcesz przypisać użytkownikowi?", "Gangs") as null|anything in list("New","Existing")
 	if(isnull(new_or_existing))
 		return
 	else if(new_or_existing == "New")
-		var/newgang = input(admin, "Select a gang, or select random to pick a random one.", "New gang") as null|anything in GLOB.possible_gangs + "Random"
+		var/newgang = input(admin, "Wybierz bandę albo wybierz losową.", "New gang") as null|anything in GLOB.possible_gangs + "Random"
 		if(isnull(newgang))
 			return
 		else if(newgang == "Random")
@@ -119,9 +119,9 @@
 			gang = new newgang
 	else
 		if(!GLOB.gangs.len) // no gangs exist
-			to_chat(admin, "<span class='danger'>No gangs exist, please create a new one instead.</span>")
+			to_chat(admin, "<span class='danger'>Nie istnieją żadne bandy, stwórz nową.</span>")
 			return
-		var/existinggang = input(admin, "Select a gang, or select random to pick a random one.", "Existing gang") as null|anything in GLOB.gangs + "Random"
+		var/existinggang = input(admin, "Wybierz bandę albo wybierz losową.", "Existing gang") as null|anything in GLOB.gangs + "Random"
 		if(isnull(existinggang))
 			return
 		else if(existinggang == "Random")
@@ -137,7 +137,7 @@
 	promote()
 
 /datum/antagonist/gang/proc/admin_adjust_influence()
-	var/inf = input("Influence for [gang.name]","Gang influence", gang.influence) as null | num
+	var/inf = input("Wpływy bandy [gang.name]","Gang influence", gang.influence) as null | num
 	if(!isnull(inf))
 		gang.influence = inf
 		message_admins("[key_name_admin(usr)] changed [gang.name]'s influence to [inf].")

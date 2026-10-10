@@ -595,35 +595,35 @@ SUBSYSTEM_DEF(ticker)
 	var/news_source = "Nanotrasen Admiralty"
 	switch(news_report)
 		if(NUKE_SYNDICATE_BASE)
-			news_message = "In a daring raid, the heroic crew of [station_name()] detonated a nuclear device in the heart of a terrorist base."
+			news_message = "W śmiałym nalocie bohaterska załoga [station_name()] zdetonowała ładunek jądrowy w sercu bazy terrorystów."
 		if(STATION_DESTROYED_NUKE)
-			news_message = "We would like to reassure all employees that the reports of a Syndicate backed nuclear attack on [station_name()] are, in fact, a hoax. Have a secure day!"
+			news_message = "Pragniemy zapewnić wszystkich pracowników, że doniesienia o wspieranym przez Syndykat ataku jądrowym na [station_name()] są w rzeczywistości mistyfikacją. Bezpiecznego dnia!"
 		if(STATION_EVACUATED)
-			news_message = "The crew of [station_name()] has been evacuated amid unconfirmed reports of enemy activity."
+			news_message = "Załoga [station_name()] została ewakuowana w związku z niepotwierdzonymi doniesieniami o aktywności wroga."
 		if(BLOB_WIN)
-			news_message = "[station_name()] was overcome by an unknown biological outbreak, killing all crew on board. Don't let it happen to you! Remember, a clean work station is a safe work station."
+			news_message = "[station_name()] padła ofiarą nieznanej epidemii biologicznej, która zabiła całą załogę na pokładzie. Nie pozwól, by to spotkało ciebie! Pamiętaj: czyste stanowisko pracy to bezpieczne stanowisko pracy."
 		if(BLOB_NUKE)
-			news_message = "[station_name()] is currently undergoing decontanimation after a controlled burst of radiation was used to remove a biological ooze. All employees were safely evacuated prior, and are enjoying a relaxing vacation."
+			news_message = "[station_name()] przechodzi obecnie dekontaminację po tym, jak kontrolowany impuls promieniowania posłużył do usunięcia biologicznego szlamu. Wszyscy pracownicy zostali wcześniej bezpiecznie ewakuowani i cieszą się relaksującymi wakacjami."
 		if(BLOB_DESTROYED)
-			news_message = "[station_name()] is currently undergoing decontamination procedures after the destruction of a biological hazard. As a reminder, any crew members experiencing cramps or bloating should report immediately to security for incineration."
+			news_message = "[station_name()] przechodzi obecnie procedury dekontaminacji po zniszczeniu zagrożenia biologicznego. Przypominamy, że członkowie załogi odczuwający skurcze lub wzdęcia powinni natychmiast zgłosić się do ochrony w celu spalenia."
 		if(CULT_ESCAPE)
-			news_message = "Security Alert: A group of religious fanatics have escaped from [station_name()]."
+			news_message = "Alarm ochrony: grupa religijnych fanatyków uciekła z [station_name()]."
 		if(CULT_FAILURE)
-			news_message = "Following the dismantling of a restricted cult aboard [station_name()], we would like to remind all employees that worship outside of the Chapel is strictly prohibited, and cause for termination."
+			news_message = "Po rozbiciu zakazanego kultu na pokładzie [station_name()] przypominamy wszystkim pracownikom, że oddawanie czci poza kaplicą jest surowo zabronione i stanowi podstawę do zwolnienia."
 		if(CULT_SUMMON)
-			news_message = "Company officials would like to clarify that [station_name()] was scheduled to be decommissioned following meteor damage earlier this year. Earlier reports of an unknowable eldritch horror were made in error."
+			news_message = "Przedstawiciele firmy pragną wyjaśnić, że [station_name()] miała zostać wycofana z eksploatacji po zeszłorocznych uszkodzeniach od meteorów. Wcześniejsze doniesienia o niepojętym, przedwiecznym horrorze były błędne."
 		if(NUKE_MISS)
-			news_message = "The Syndicate have bungled a terrorist attack [station_name()], detonating a nuclear weapon in empty space nearby."
+			news_message = "Syndykat spartaczył atak terrorystyczny na [station_name()], detonując broń jądrową w pustej przestrzeni w pobliżu."
 		if(OPERATIVES_KILLED)
-			news_message = "Repairs to [station_name()] are underway after an elite Syndicate death squad was wiped out by the crew."
+			news_message = "Trwają naprawy [station_name()] po tym, jak załoga zniszczyła elitarny szwadron śmierci Syndykatu."
 		if(OPERATIVE_SKIRMISH)
-			news_message = "A skirmish between security forces and Syndicate agents aboard [station_name()] ended with both sides bloodied but intact."
+			news_message = "Potyczka między siłami ochrony a agentami Syndykatu na pokładzie [station_name()] zakończyła się krwawo dla obu stron, ale bez strat."
 		if(REVS_WIN)
-			news_message = "Company officials have reassured investors that despite a union led revolt aboard [station_name()] there will be no wage increases for workers."
+			news_message = "Przedstawiciele firmy zapewnili inwestorów, że mimo prowadzonej przez związki zawodowe rewolty na pokładzie [station_name()] nie będzie podwyżek dla pracowników."
 		if(REVS_LOSE)
-			news_message = "[station_name()] quickly put down a misguided attempt at mutiny. Remember, unionizing is illegal!"
+			news_message = "[station_name()] szybko stłumiła nieprzemyślaną próbę buntu. Pamiętaj, zakładanie związków zawodowych jest nielegalne!"
 		if(WIZARD_KILLED)
-			news_message = "Tensions have flared with the Space Wizard Federation following the death of one of their members aboard [station_name()]."
+			news_message = "Napięcia z Kosmiczną Federacją Czarodziejów wzrosły po śmierci jednego z jej członków na pokładzie [station_name()]."
 		if(STATION_NUKED)
 			news_message = "[station_name()] activated its self-destruct device for unknown reasons. Attempts to clone the Captain so he can be arrested and executed are underway."
 		if(CLOCK_SUMMON)

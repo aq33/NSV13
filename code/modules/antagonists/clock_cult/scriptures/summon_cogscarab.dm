@@ -9,7 +9,7 @@
 	power_cost = 500
 	vitality_cost = 20
 	invokation_time = 120
-	invokation_text = list("My fallen brothers,", "Now is the time we rise", "Protect our lord", "Achieve greatness!")
+	invokation_text = list("My fallen brothers,", "Nadszedł czas, byśmy powstali", "Protect our lord", "Achieve greatness!")
 	category = SPELLTYPE_PRESERVATION
 	cogs_required = 5
 	invokers_required = 2

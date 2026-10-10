@@ -14,7 +14,7 @@ GLOBAL_LIST_INIT(abstraction_crystals, list())
 	button_icon_state = "Clockwork Obelisk"
 	power_cost = 750
 	invokation_time = 50
-	invokation_text = list("Through the boundaries and planes..", "..we break with ease")
+	invokation_text = list("Przez granice i plany...", "...przebijamy się z łatwością")
 	summoned_structure = /obj/structure/destructible/clockwork/abstraction_crystal
 	cogs_required = 5
 	category = SPELLTYPE_STRUCTURES

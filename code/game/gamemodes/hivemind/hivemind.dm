@@ -80,9 +80,7 @@ GLOBAL_LIST_EMPTY(hivehosts)
 	return ..()
 
 /datum/game_mode/hivemind/generate_report()
-	return "Reports of psychic activity have been showing up in this sector, and we believe this may have to do with a containment breach on \[REDACTED\] last month \
-		when a sapient hive intelligence displaying paranormal powers escaped into the unknown. They present a very large risk as they can assimilate people into \
-		the hivemind with ease, although they appear unable to affect mindshielded personnel."
+	return "W tym sektorze pojawiają się doniesienia o aktywności psychicznej i uważamy, że może to mieć związek z naruszeniem zabezpieczeń na \[UTAJNIONE\] w zeszłym miesiącu, gdy rozumna inteligencja roju o paranormalnych mocach uciekła w nieznane. Stanowi ona bardzo duże zagrożenie, bo z łatwością potrafi wcielać ludzi do roju, choć wydaje się nie wpływać na personel z mindshieldem."
 
 /datum/game_mode/hivemind/generate_credit_text()
 	var/list/round_credits = list()

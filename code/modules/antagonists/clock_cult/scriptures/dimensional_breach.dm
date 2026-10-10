@@ -8,7 +8,7 @@
 	button_icon_state = "Spatial Gateway"
 	power_cost = 5000
 	invokation_time = 140
-	invokation_text = list("Oh great Engine, take my soul...", "it is time for you to rise...", "through rifts you shall come...", "to rise among the stars again!")
+	invokation_text = list("Oh great Engine, take my soul...", "nadszedł czas, byś powstał...", "przez szczeliny przybędziesz...", "by znów powstać wśród gwiazd!")
 	invokers_required = 6
 	category = SPELLTYPE_SERVITUDE
 	recital_sound = 'sound/magic/clockwork/narsie_attack.ogg'

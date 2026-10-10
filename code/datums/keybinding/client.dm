@@ -7,7 +7,7 @@
 	key = "F1"
 	name = "get_help"
 	full_name = "Get Help"
-	description = "Ask an admin or mentor for help."
+	description = "Poproś admina lub mentora o pomoc."
 	keybind_signal = COMSIG_KB_CLIENT_GETHELP_DOWN
 
 /datum/keybinding/client/get_help/down(client/user)
@@ -37,7 +37,7 @@
 	key = "F12"
 	name = "toggleminimalhud"
 	full_name = "Toggle Minimal HUD"
-	description = "Toggle the minimalized state of your hud."
+	description = "Przełącz zminimalizowany stan HUD."
 	keybind_signal = COMSIG_KB_CLIENT_MINIMALHUD_DOWN
 
 /datum/keybinding/client/toggleminimalhud/down(client/user)
@@ -51,8 +51,8 @@
 /datum/keybinding/client/zoomin
 	key = "\]"
 	name = "zoomin"
-	full_name = "Zoom In"
-	description = "Temporary switch icon scaling mode to 4x until unpressed"
+	full_name = "Przybliż"
+	description = "Tymczasowo przełącz skalowanie ikon na 4x, dopóki nie puścisz"
 	keybind_signal = COMSIG_KB_CLIENT_ZOOMIN_DOWN
 
 /datum/keybinding/client/zoomin/down(client/user)
@@ -69,7 +69,7 @@
 	key = "F11"
 	name = "fullscreen"
 	full_name = "Toggle Fullscreen"
-	description = "Switch between windowed and fullscreen mode."
+	description = "Przełączaj między trybem okienkowym a pełnoekranowym."
 	keybind_signal = COMSIG_KB_CLIENT_FULLSCREEN_DOWN
 
 /datum/keybinding/client/fullscreen/down(client/user)

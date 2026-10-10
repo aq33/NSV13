@@ -678,7 +678,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	if(density)
 		spread_density()
 	var/carbon_user = iscarbon(user)
-	user.visible_message("<span class='warning'>[user] [carbon_user ? "places [user.p_their()] hands on":"stares intently at"] [src], and [density ? "the air above it begins to shimmer" : "the shimmer above it fades"].</span>", \
+	user.visible_message("<span class='warning'>[user] [carbon_user ? "kładzie dłonie na":"wpatruje się uważnie w"] [src], a [density ? "powietrze nad nim zaczyna migotać" : "migotanie nad nim zanika"].</span>", \
 						 "<span class='cult italic'>Przekazujesz [carbon_user ? "swoją życiową ":""]energię do [src], [density ? "chwilowo blokując" : "otwierając"] przejście.</span>")
 	if(carbon_user)
 		var/mob/living/carbon/C = user
@@ -873,7 +873,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	. = ..()
 	var/mob/living/user = invokers[1]
 	var/turf/T = get_turf(src)
-	var/choice = alert(user,"You tear open a connection to the spirit realm...",,"Summon a Cult Ghost","Ascend as a Dark Spirit","Cancel")
+	var/choice = alert(user,"Otwierasz połączenie ze światem duchów...",,"Summon a Cult Ghost","Ascend as a Dark Spirit","Cancel")
 	if(choice == "Summon a Cult Ghost")
 		var/area/A = get_area(T)
 		if(initial(A.name) == "Space" || is_mining_level(T.z))

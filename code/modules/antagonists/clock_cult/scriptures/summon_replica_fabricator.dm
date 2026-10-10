@@ -10,7 +10,7 @@
 	power_cost = 400
 	cogs_required = 2
 	invokation_time = 50
-	invokation_text = list("Their technology is no match for the power of Eng'ine.")
+	invokation_text = list("Ich technologia nie ma szans z mocą Eng'ine'a.")
 	category = SPELLTYPE_STRUCTURES
 
 /datum/clockcult/scripture/replica_fabricator/invoke_success()

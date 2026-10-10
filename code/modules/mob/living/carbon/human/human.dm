@@ -826,7 +826,7 @@
 			var/qname = initial(T.name)
 			options[has_quirk(T) ? "[qname] (Remove)" : "[qname] (Add)"] = T
 
-		var/result = input(usr, "Choose quirk to add/remove","Quirk Mod") as null|anything in options
+		var/result = input(usr, "Wybierz cechę do dodania/usunięcia","Quirk Mod") as null|anything in options
 		if(result)
 			if(result == "Clear")
 				for(var/datum/quirk/q in roundstart_quirks)
@@ -864,7 +864,7 @@
 	if(href_list[VV_HK_SET_SPECIES])
 		if(!check_rights(R_SPAWN))
 			return
-		var/result = input(usr, "Please choose a new species","Species") as null|anything in GLOB.species_list
+		var/result = input(usr, "Wybierz nowy gatunek","Species") as null|anything in GLOB.species_list
 		if(result)
 			var/newtype = GLOB.species_list[result]
 			admin_ticket_log("[key_name_admin(usr)] has modified the bodyparts of [src] to [result]")
@@ -873,7 +873,7 @@
 		if(!check_rights(R_SPAWN))
 			return
 		if(!ishumanbasic(src))
-			to_chat(usr, "This can only be done to the basic human species at the moment.")
+			to_chat(usr, "Na razie można to zrobić tylko z podstawowym gatunkiem ludzkim.")
 			return
 		var/success = purrbation_toggle(src)
 		if(success)

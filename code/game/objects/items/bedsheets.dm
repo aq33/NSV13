@@ -120,28 +120,28 @@
 	desc = "A very soothing striped blanket.  All the noise just seems to fade out when you're under the covers in this."
 	icon_state = "sheetmime"
 	item_state = "sheetmime"
-	dream_messages = list("silence", "gestures", "a pale face", "a gaping mouth", "the mime")
+	dream_messages = list("silence", "gestures", "blada twarz", "rozdziawione usta", "mim")
 
 /obj/item/bedsheet/clown
 	name = "clown's blanket"
 	desc = "A rainbow blanket with a clown mask woven in. It smells faintly of bananas."
 	icon_state = "sheetclown"
 	item_state = "sheetrainbow"
-	dream_messages = list("honk", "laughter", "a prank", "a joke", "a smiling face", "the clown")
+	dream_messages = list("honk", "laughter", "a prank", "a joke", "uśmiechnięta twarz", "klaun")
 
 /obj/item/bedsheet/captain
 	name = "captain's bedsheet"
 	desc = "It has a Nanotrasen symbol on it, and was woven with a revolutionary new kind of thread guaranteed to have 0.01% permeability for most non-chemical substances, popular among most modern captains."
 	icon_state = "sheetcaptain"
 	item_state = "sheetcaptain"
-	dream_messages = list("authority", "a golden ID", "sunglasses", "a green disc", "an antique gun", "the captain")
+	dream_messages = list("authority", "złoty identyfikator", "sunglasses", "zielony dysk", "zabytkowa broń", "kapitan")
 
 /obj/item/bedsheet/rd
 	name = "research director's bedsheet"
 	desc = "It appears to have a beaker emblem, and is made out of fire-resistant material, although it probably won't protect you in the event of fires you're familiar with every day."
 	icon_state = "sheetrd"
 	item_state = "sheetrd"
-	dream_messages = list("authority", "a silvery ID", "a bomb", "a mech", "a facehugger", "maniacal laughter", "the research director")
+	dream_messages = list("authority", "srebrny identyfikator", "a bomb", "a mech", "a facehugger", "maniacal laughter", "dyrektor badań")
 
 // for Free Golems.
 /obj/item/bedsheet/rd/royal_cape
@@ -161,77 +161,77 @@
 	desc = "It's a sterilized blanket that has a cross emblem. There's some cat fur on it, likely from Runtime."
 	icon_state = "sheetcmo"
 	item_state = "sheetcmo"
-	dream_messages = list("authority", "a silvery ID", "healing", "life", "surgery", "a cat", "the chief medical officer")
+	dream_messages = list("authority", "srebrny identyfikator", "healing", "life", "surgery", "a cat", "główny lekarz")
 
 /obj/item/bedsheet/hos
 	name = "head of security's bedsheet"
 	desc = "It is decorated with a shield emblem. While crime doesn't sleep, you do, but you are still THE LAW!"
 	icon_state = "sheethos"
 	item_state = "sheethos"
-	dream_messages = list("authority", "a silvery ID", "handcuffs", "a baton", "a flashbang", "sunglasses", "the head of security")
+	dream_messages = list("authority", "srebrny identyfikator", "handcuffs", "a baton", "a flashbang", "sunglasses", "szef ochrony")
 
 /obj/item/bedsheet/hop
 	name = "head of personnel's bedsheet"
 	desc = "It is decorated with a key emblem. For those rare moments when you can rest and cuddle with Ian without someone screaming for you over the radio."
 	icon_state = "sheethop"
 	item_state = "sheethop"
-	dream_messages = list("authority", "a silvery ID", "obligation", "a computer", "an ID", "a corgi", "the head of personnel")
+	dream_messages = list("authority", "srebrny identyfikator", "obligation", "a computer", "identyfikator", "a corgi", "szef personelu")
 
 /obj/item/bedsheet/ce
 	name = "chief engineer's bedsheet"
 	desc = "It is decorated with a wrench emblem. It's highly reflective and stain resistant, so you don't need to worry about ruining it with oil."
 	icon_state = "sheetce"
 	item_state = "sheetce"
-	dream_messages = list("authority", "a silvery ID", "the engine", "power tools", "an APC", "a parrot", "the chief engineer")
+	dream_messages = list("authority", "srebrny identyfikator", "silnik", "power tools", "APC", "a parrot", "główny inżynier")
 
 /obj/item/bedsheet/qm
 	name = "quartermaster's bedsheet"
 	desc = "It is decorated with a crate emblem in silver lining.  It's rather tough, and just the thing to lie on after a hard day of pushing paper."
 	icon_state = "sheetqm"
 	item_state = "sheetqm"
-	dream_messages = list("a grey ID", "a shuttle", "a crate", "a sloth", "the quartermaster")
+	dream_messages = list("szary identyfikator", "a shuttle", "a crate", "a sloth", "kwatermistrz")
 
 /obj/item/bedsheet/magician
 	name = "magician's cape"
 	desc = "A magician never reveals his secrets."
 	icon_state = "sheetmagician"
 	item_state = "sheetmagician"
-	dream_messages = list("trickery", "crime", "a gullible mark", "an angry wizard", "pixie dust")
+	dream_messages = list("trickery", "crime", "łatwowierna ofiara", "rozgniewany czarodziej", "pixie dust")
 
 /obj/item/bedsheet/centcom
 	name = "\improper CentCom bedsheet"
 	desc = "Woven with advanced nanothread for warmth as well as being very decorated, essential for all officials."
 	icon_state = "sheetcentcom"
 	item_state = "sheetcentcom"
-	dream_messages = list("a unique ID", "authority", "artillery", "an ending")
+	dream_messages = list("wyjątkowy identyfikator", "authority", "artillery", "koniec")
 
 /obj/item/bedsheet/syndie
 	name = "syndicate bedsheet"
 	desc = "It has a syndicate emblem and it has an aura of evil."
 	icon_state = "sheetsyndie"
 	item_state = "sheetsyndie"
-	dream_messages = list("a green disc", "a red crystal", "a glowing blade", "a wire-covered ID")
+	dream_messages = list("zielony dysk", "czerwony kryształ", "świecące ostrze", "identyfikator oplątany przewodami")
 
 /obj/item/bedsheet/cult
 	name = "cultist's bedsheet"
 	desc = "You might dream of Nar'Sie if you sleep with this. It seems rather tattered and glows of an eldritch presence."
 	icon_state = "sheetcult"
 	item_state = "sheetcult"
-	dream_messages = list("a tome", "a floating red crystal", "a glowing sword", "a bloody symbol", "a massive humanoid figure")
+	dream_messages = list("a tome", "unoszący się czerwony kryształ", "świecący miecz", "krwawy symbol", "ogromna humanoidalna postać")
 
 /obj/item/bedsheet/wiz
 	name = "wizard's bedsheet"
 	desc = "A special fabric enchanted with magic so you can have an enchanted night. It even glows!"
 	icon_state = "sheetwiz"
 	item_state = "sheetwiz"
-	dream_messages = list("a book", "an explosion", "lightning", "a staff", "a skeleton", "a robe", "magic")
+	dream_messages = list("a book", "eksplozja", "lightning", "a staff", "a skeleton", "a robe", "magic")
 
 /obj/item/bedsheet/nanotrasen
 	name = "\improper Nanotrasen bedsheet"
 	desc = "It has the Nanotrasen logo on it and has an aura of duty."
 	icon_state = "sheetNT"
 	item_state = "sheetNT"
-	dream_messages = list("authority", "an ending")
+	dream_messages = list("authority", "koniec")
 
 /obj/item/bedsheet/ian
 	name = "Ian's bedsheet"
@@ -245,7 +245,7 @@
 	desc = "Made from the dreams of those who wonder at the stars."
 	icon_state = "sheetcosmos"
 	item_state = "sheetcosmos"
-	dream_messages = list("the infinite cosmos", "Hans Zimmer music", "a flight through space", "the galaxy", "being fabulous", "shooting stars")
+	dream_messages = list("nieskończony kosmos", "Hans Zimmer music", "lot przez kosmos", "galaktyka", "being fabulous", "shooting stars")
 	light_power = 2
 	light_range = 1.4
 
@@ -360,28 +360,28 @@
 	name = "double mime's blanket"
 	icon_state = "double_sheetmime"
 	item_state = "sheetmime"
-	dream_messages = list("silence", "gestures", "a pale face", "a gaping mouth", "the mime")
+	dream_messages = list("silence", "gestures", "blada twarz", "rozdziawione usta", "mim")
 	desc = "A very soothing striped blanket.  All the noise just seems to fade out when you're under the covers in this."
 
 /obj/item/bedsheet/double/clown
 	name = "double clown's blanket"
 	icon_state = "double_sheetclown"
 	item_state = "sheetrainbow"
-	dream_messages = list("honk", "laughter", "a prank", "a joke", "a smiling face", "the clown")
+	dream_messages = list("honk", "laughter", "a prank", "a joke", "uśmiechnięta twarz", "klaun")
 	desc = "A rainbow blanket with a clown mask woven in. It smells faintly of bananas."
 
 /obj/item/bedsheet/double/captain
 	name = "double captain's bedsheet"
 	icon_state = "double_sheetcaptain"
 	item_state = "sheetcaptain"
-	dream_messages = list("authority", "a golden ID", "sunglasses", "a green disc", "an antique gun", "the captain")
+	dream_messages = list("authority", "złoty identyfikator", "sunglasses", "zielony dysk", "zabytkowa broń", "kapitan")
 	desc = "It has a Nanotrasen symbol on it, and was woven with a revolutionary new kind of thread guaranteed to have 0.01% permeability for most non-chemical substances, popular among most modern captains."
 
 /obj/item/bedsheet/double/rd
 	name = "double research director's bedsheet"
 	icon_state = "double_sheetrd"
 	item_state = "sheetrd"
-	dream_messages = list("authority", "a silvery ID", "a bomb", "a mech", "a facehugger", "maniacal laughter", "the research director")
+	dream_messages = list("authority", "srebrny identyfikator", "a bomb", "a mech", "a facehugger", "maniacal laughter", "dyrektor badań")
 	desc = "It appears to have a beaker emblem, and is made out of fire-resistant material, although it probably won't protect you in the event of fires you're familiar with every day."
 
 // for double Free Golems.
@@ -401,70 +401,70 @@
 	name = "double chief medical officer's bedsheet"
 	icon_state = "double_sheetcmo"
 	item_state = "sheetcmo"
-	dream_messages = list("authority", "a silvery ID", "healing", "life", "surgery", "a cat", "the chief medical officer")
+	dream_messages = list("authority", "srebrny identyfikator", "healing", "life", "surgery", "a cat", "główny lekarz")
 	desc = "It's a sterilized blanket that has a cross emblem. There's some cat fur on it, likely from Runtime."
 
 /obj/item/bedsheet/double/hos
 	name = "double head of security's bedsheet"
 	icon_state = "double_sheethos"
 	item_state = "sheethos"
-	dream_messages = list("authority", "a silvery ID", "handcuffs", "a baton", "a flashbang", "sunglasses", "the head of security")
+	dream_messages = list("authority", "srebrny identyfikator", "handcuffs", "a baton", "a flashbang", "sunglasses", "szef ochrony")
 	desc = "It is decorated with a shield emblem. While crime doesn't sleep, you do, but you are still THE LAW!"
 
 /obj/item/bedsheet/double/hop
 	name = "double head of personnel's bedsheet"
 	icon_state = "double_sheethop"
 	item_state = "sheethop"
-	dream_messages = list("authority", "a silvery ID", "obligation", "a computer", "an ID", "a corgi", "the head of personnel")
+	dream_messages = list("authority", "srebrny identyfikator", "obligation", "a computer", "identyfikator", "a corgi", "szef personelu")
 	desc = "It is decorated with a key emblem. For those rare moments when you can rest and cuddle with Ian without someone screaming for you over the radio."
 
 /obj/item/bedsheet/double/ce
 	name = "double chief engineer's bedsheet"
 	icon_state = "double_sheetce"
 	item_state = "sheetce"
-	dream_messages = list("authority", "a silvery ID", "the engine", "power tools", "an APC", "a parrot", "the chief engineer")
+	dream_messages = list("authority", "srebrny identyfikator", "silnik", "power tools", "APC", "a parrot", "główny inżynier")
 	desc = "It is decorated with a wrench emblem. It's highly reflective and stain resistant, so you don't need to worry about ruining it with oil."
 
 /obj/item/bedsheet/double/qm
 	name = "double quartermaster's bedsheet"
 	icon_state = "double_sheetqm"
 	item_state = "sheetqm"
-	dream_messages = list("a grey ID", "a shuttle", "a crate", "a sloth", "the quartermaster")
+	dream_messages = list("szary identyfikator", "a shuttle", "a crate", "a sloth", "kwatermistrz")
 	desc = "It is decorated with a crate emblem in silver lining.  It's rather tough, and just the thing to lie on after a hard day of pushing paper."
 
 /obj/item/bedsheet/double/centcom
 	name = "\improper double CentCom bedsheet"
 	icon_state = "double_sheetcentcom"
 	item_state = "sheetcentcom"
-	dream_messages = list("a unique ID", "authority", "artillery", "an ending")
+	dream_messages = list("wyjątkowy identyfikator", "authority", "artillery", "koniec")
 	desc = "Woven with advanced nanothread for warmth as well as being very decorated, essential for all officials."
 
 /obj/item/bedsheet/double/syndie
 	name = "double syndicate bedsheet"
 	icon_state = "double_sheetsyndie"
 	item_state = "sheetsyndie"
-	dream_messages = list("a green disc", "a red crystal", "a glowing blade", "a wire-covered ID")
+	dream_messages = list("zielony dysk", "czerwony kryształ", "świecące ostrze", "identyfikator oplątany przewodami")
 	desc = "It has a syndicate emblem and it has an aura of evil."
 
 /obj/item/bedsheet/double/cult
 	name = "double cultist's bedsheet"
 	icon_state = "double_sheetcult"
 	item_state = "sheetcult"
-	dream_messages = list("a tome", "a floating red crystal", "a glowing sword", "a bloody symbol", "a massive humanoid figure")
+	dream_messages = list("a tome", "unoszący się czerwony kryształ", "świecący miecz", "krwawy symbol", "ogromna humanoidalna postać")
 	desc = "You might dream of Nar'Sie if you sleep with this. It seems rather tattered and glows of an eldritch presence."
 
 /obj/item/bedsheet/double/wiz
 	name = "double wizard's bedsheet"
 	icon_state = "double_sheetwiz"
 	item_state = "sheetwiz"
-	dream_messages = list("a book", "an explosion", "lightning", "a staff", "a skeleton", "a robe", "magic")
+	dream_messages = list("a book", "eksplozja", "lightning", "a staff", "a skeleton", "a robe", "magic")
 	desc = "A special fabric enchanted with magic so you can have an enchanted night. It even glows!"
 
 /obj/item/bedsheet/double/nanotrasen
 	name = "\improper double Nanotrasen bedsheet"
 	icon_state = "double_sheetNT"
 	item_state = "sheetNT"
-	dream_messages = list("authority", "an ending")
+	dream_messages = list("authority", "koniec")
 	desc = "It has the Nanotrasen logo on it and has an aura of duty."
 
 /obj/item/bedsheet/double/ian
@@ -479,7 +479,7 @@
 	name = "double cosmic space bedsheet"
 	icon_state = "double_sheetcosmos"
 	item_state = "sheetcosmos"
-	dream_messages = list("the infinite cosmos", "Hans Zimmer music", "a flight through space", "the galaxy", "being fabulous", "shooting stars")
+	dream_messages = list("nieskończony kosmos", "Hans Zimmer music", "lot przez kosmos", "galaktyka", "being fabulous", "shooting stars")
 	desc = "Made from the dreams of those who wonder at the stars."
 	light_power = 2.1
 	light_range = 1.8

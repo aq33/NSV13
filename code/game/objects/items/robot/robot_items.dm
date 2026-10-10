@@ -949,7 +949,7 @@
 				. += "[R.volume] j. [R.name]"
 		else
 			. += "Nic."
-		. += "<span class='notice'<i>Alt-click</i> will drop the currently stored [stored].</span>"
+		. += "<span class='notice'<i>Alt-klik</i> upuści obecnie przechowywany [stored].</span>"
 
 /obj/item/borg/apparatus/beaker/update_icon()
 	cut_overlays()
@@ -1019,7 +1019,7 @@
 	. = ..()
 	if(stored)
 		. += "Urządzenie trzyma obecnie [stored]."
-		. += "<span class='notice'<i>Alt-click</i> will drop the currently stored [stored].</span>"
+		. += "<span class='notice'<i>Alt-klik</i> upuści obecnie przechowywany [stored].</span>"
 
 /obj/item/borg/apparatus/circuit/pre_attack(atom/A, mob/living/user, params)
 	. = ..()
@@ -1048,4 +1048,4 @@
 	. = ..()
 	if(stored)
 		. += "Obecnie trzymasz [stored]."
-		. += "<span class='notice'<i>Alt-click</i> will drop the currently stored [stored].</span>"
+		. += "<span class='notice'<i>Alt-klik</i> upuści obecnie przechowywany [stored].</span>"

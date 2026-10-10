@@ -153,7 +153,7 @@
 
 	var/obj/item/melee/arm_blade/false/blade = new(target,1)
 	target.put_in_hands(blade)
-	target.visible_message("<span class='warning'>A grotesque blade forms around [target.name]\'s arm!</span>", "<span class='userdanger'>Twoja ręka wykręca się i mutuje, zmieniając się w potworną monstrualność!</span>", "<span class='italics'>Słyszysz rozrywanie i darcie tkanki organicznej!</span>")
+	target.visible_message("<span class='warning'>Wokół ręki [target.name] formuje się groteskowe ostrze!</span>", "<span class='userdanger'>Twoja ręka wykręca się i mutuje, zmieniając się w potworną monstrualność!</span>", "<span class='italics'>Słyszysz rozrywanie i darcie tkanki organicznej!</span>")
 	playsound(target, 'sound/effects/blobattack.ogg', 30, 1)
 
 	addtimer(CALLBACK(src, PROC_REF(remove_fake), target, blade), 600)

@@ -10,7 +10,7 @@
 	key = "B"
 	name = "resist"
 	full_name = "Resist"
-	description = "Break free of your current state. Handcuffs, on fire, being trapped in an alien nest? Resist!"
+	description = "Uwolnij się z obecnego stanu. Kajdanki, płomienie, uwięzienie w gnieździe obcych? Stawiaj opór!"
 	keybind_signal = COMSIG_KB_LIVING_RESIST_DOWN
 
 /datum/keybinding/living/resist/down(client/user)

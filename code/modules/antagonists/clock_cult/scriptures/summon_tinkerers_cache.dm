@@ -8,7 +8,7 @@
 	button_icon_state = "Tinkerer's Cache"
 	power_cost = 700
 	invokation_time = 50
-	invokation_text = list("Guide my hand and we shall create greatness.")
+	invokation_text = list("Prowadź mą dłoń, a stworzymy wielkość.")
 	summoned_structure = /obj/structure/destructible/clockwork/gear_base/tinkerers_cache
 	cogs_required = 4
 	category = SPELLTYPE_STRUCTURES

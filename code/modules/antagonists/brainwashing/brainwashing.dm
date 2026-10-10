@@ -82,13 +82,13 @@
 		return
 	var/list/objectives = list()
 	do
-		var/objective = stripped_input(admin, "Add an objective, or leave empty to finish.", "Brainwashing", null, MAX_MESSAGE_LEN)
+		var/objective = stripped_input(admin, "Dodaj cel albo zostaw puste, by zakończyć.", "Brainwashing", null, MAX_MESSAGE_LEN)
 		if(objective)
 			objectives += objective
 			log_objective(C, objective, admin)
 	while(alert(admin,"Add another objective?","More Brainwashing","Yes","No") == "Yes")
 
-	if(alert(admin,"Confirm Brainwashing?","Are you sure?","Yes","No") != "Yes")
+	if(alert(admin,"Confirm Brainwashing?","Na pewno?","Yes","No") != "Yes")
 		return
 
 	if(!LAZYLEN(objectives))

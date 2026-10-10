@@ -15,7 +15,7 @@
 
 	// Can be used to delete drained heretic influences
 	AddComponent(/datum/component/effect_remover, \
-		success_feedback = "You close %THEEFFECT with %THEWEAPON, frying its circuitry in the process.", \
+		success_feedback = "Zamykasz %THEEFFECT za pomocą %THEWEAPON, przepalając przy tym jego obwody.", \
 		on_clear_callback = CALLBACK(src, PROC_REF(on_use)), \
 		effects_we_clear = list(/obj/effect/visible_heretic_influence))
 

@@ -9,7 +9,7 @@
 	key = "R"
 	name = "toggle_throw_mode"
 	full_name = "Toggle throw mode"
-	description = "Toggle throwing the current item or not."
+	description = "Przełącz rzucanie trzymanego przedmiotu."
 	category = CATEGORY_CARBON
 	keybind_signal = COMSIG_KB_CARBON_TOGGLETHROWMODE_DOWN
 
@@ -93,7 +93,7 @@
 	key = "Space"
 	name = "hold_throw_mode"
 	full_name = "Hold throw mode"
-	description = "Hold this to turn on throw mode, and release it to turn off throw mode"
+	description = "Przytrzymaj, by włączyć tryb rzucania, i puść, by go wyłączyć"
 	category = CATEGORY_CARBON
 	keybind_signal = COMSIG_KB_CARBON_HOLDTHROWMODE_DOWN
 
@@ -114,7 +114,7 @@
 	key = "G"
 	name = "Give_Item"
 	full_name = "Give item"
-	description = "Give the item you're currently holding"
+	description = "Daj przedmiot, który trzymasz"
 	category = CATEGORY_CARBON
 	keybind_signal = COMSIG_KB_CARBON_GIVEITEM_DOWN
 

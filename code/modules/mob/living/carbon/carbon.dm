@@ -908,7 +908,7 @@
 	if(href_list[VV_HK_MODIFY_BODYPART])
 		if(!check_rights(R_SPAWN))
 			return
-		var/edit_action = input(usr, "What would you like to do?","Modify Body Part") as null|anything in list("add","remove", "augment")
+		var/edit_action = input(usr, "Co chcesz zrobić?","Modify Body Part") as null|anything in list("add","remove", "augment")
 		if(!edit_action)
 			return
 		var/list/limb_list = list()
@@ -921,7 +921,7 @@
 			limb_list = list(BODY_ZONE_HEAD, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 			for(var/obj/item/bodypart/B in bodyparts)
 				limb_list -= B.body_zone
-		var/result = input(usr, "Please choose which body part to [edit_action]","[capitalize(edit_action)] Body Part") as null|anything in limb_list
+		var/result = input(usr, "Wybierz część ciała do operacji: [edit_action]","[capitalize(edit_action)] Body Part") as null|anything in limb_list
 		if(result)
 			var/obj/item/bodypart/BP = get_bodypart(result)
 			switch(edit_action)
@@ -929,21 +929,21 @@
 					if(BP)
 						BP.drop_limb()
 					else
-						to_chat(usr, "[src] doesn't have such bodypart.")
+						to_chat(usr, "[src] nie ma takiej części ciała.")
 				if("add")
 					if(BP)
-						to_chat(usr, "[src] already has such bodypart.")
+						to_chat(usr, "[src] ma już taką część ciała.")
 					else
 						if(!regenerate_limb(result))
-							to_chat(usr, "[src] cannot have such bodypart.")
+							to_chat(usr, "[src] nie może mieć takiej części ciała.")
 				if("augment")
 					if(ishuman(src))
 						if(BP)
 							BP.change_bodypart_status(BODYTYPE_ROBOTIC, TRUE, TRUE)
 						else
-							to_chat(usr, "[src] doesn't have such bodypart.")
+							to_chat(usr, "[src] nie ma takiej części ciała.")
 					else
-						to_chat(usr, "Only humans can be augmented.")
+						to_chat(usr, "Tylko ludzi można augmentować.")
 		admin_ticket_log("[key_name_admin(usr)] has modified the bodyparts of [src]")
 
 	if(href_list[VV_HK_MAKE_AI])
@@ -962,7 +962,7 @@
 		for(var/i in artpaths)
 			var/datum/martial_art/M = i
 			artnames[initial(M.name)] = M
-		var/result = input(usr, "Choose the martial art to teach","JUDO CHOP") as null|anything in artnames
+		var/result = input(usr, "Wybierz sztukę walki do nauczenia","JUDO CHOP") as null|anything in artnames
 		if(!usr)
 			return
 		if(QDELETED(src))
@@ -977,7 +977,7 @@
 
 	if(href_list[VV_HK_GIVE_TRAUMA] && check_rights(R_FUN|R_DEBUG))
 		var/list/traumas = subtypesof(/datum/brain_trauma)
-		var/result = input(usr, "Choose the brain trauma to apply","Traumatize") as null|anything in traumas
+		var/result = input(usr, "Wybierz uraz mózgu do nałożenia","Traumatize") as null|anything in traumas
 		if(!usr)
 			return
 		if(QDELETED(src))
@@ -997,7 +997,7 @@
 
 	if(href_list[VV_HK_HALLUCINATION] && check_rights(R_FUN))
 		var/list/hallucinations = subtypesof(/datum/hallucination)
-		var/result = input(usr, "Choose the hallucination to apply","Send Hallucination") as null|anything in hallucinations
+		var/result = input(usr, "Wybierz halucynację do nałożenia","Send Hallucination") as null|anything in hallucinations
 		if(!usr)
 			return
 		if(QDELETED(src))

@@ -693,7 +693,7 @@
 			continue  // never had a client
 
 		if(L.ckey && !GLOB.directory[L.ckey])
-			msg += "<b>[L.name]</b> ([L.key]), the [L.job] (<font color='#ffcc00'><b>Disconnected</b></font>)\n"
+			msg += "<b>[L.name]</b> ([L.key]), [L.job] (<font color='#ffcc00'><b>rozłączony</b></font>)\n"
 			if(replacetext(L.ckey, "@", "") in mapvoters) //NSV13 - mapvote tracking
 				bad_mapvoters += L.ckey
 
@@ -701,17 +701,17 @@
 		if(L.ckey && L.client)
 			var/failed = FALSE
 			if(L.client.inactivity >= (ROUNDSTART_LOGOUT_REPORT_TIME / 2))	//Connected, but inactive (alt+tabbed or something)
-				msg += "<b>[L.name]</b> ([L.key]), the [L.job] (<font color='#ffcc00'><b>Connected, Inactive</b></font>)\n"
+				msg += "<b>[L.name]</b> ([L.key]), [L.job] (<font color='#ffcc00'><b>połączony, nieaktywny</b></font>)\n"
 				failed = TRUE //AFK client
 			if(!failed && L.stat)
 				if(L.suiciding)	//Suicider
-					msg += "<b>[L.name]</b> ([L.key]), the [L.job] (<span class='boldannounce'>Suicide</span>)\n"
+					msg += "<b>[L.name]</b> ([L.key]), [L.job] (<span class='boldannounce'>samobójstwo</span>)\n"
 					failed = TRUE //Disconnected client
 				if(!failed && L.stat == UNCONSCIOUS)
-					msg += "<b>[L.name]</b> ([L.key]), the [L.job] (Dying)\n"
+					msg += "<b>[L.name]</b> ([L.key]), [L.job] (umiera)\n"
 					failed = TRUE //Unconscious
 				if(!failed && L.stat == DEAD)
-					msg += "<b>[L.name]</b> ([L.key]), the [L.job] (Dead)\n"
+					msg += "<b>[L.name]</b> ([L.key]), [L.job] (martwy)\n"
 					failed = TRUE //Dead
 
 			var/p_ckey = L.client.ckey
@@ -730,16 +730,16 @@
 			if(D.mind && D.mind.current == L)
 				if(L.stat == DEAD)
 					if(L.suiciding)	//Suicider
-						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (<span class='boldannounce'>Suicide</span>)\n"
+						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), [L.job] (<span class='boldannounce'>samobójstwo</span>)\n"
 						continue //Disconnected client
 					else
-						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (Dead)\n"
+						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), [L.job] (martwy)\n"
 						continue //Dead mob, ghost abandoned
 				else
 					if(D.can_reenter_corpse)
 						continue //Adminghost, or cult/wizard ghost
 					else
-						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (<span class='boldannounce'>Ghosted</span>)\n"
+						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), [L.job] (<span class='boldannounce'>wyszedł jako duch</span>)\n"
 						continue //Ghosted while alive
 
 	msg += "\n<b>Absent mapvoters:</b> [english_list(bad_mapvoters)]\n"

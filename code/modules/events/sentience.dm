@@ -93,9 +93,7 @@ GLOBAL_LIST_INIT(high_priority_sentience, typecacheof(list(
 		spawned_mobs += SA
 
 		to_chat(SA, "<span class='userdanger'>Witaj, świecie!</span>")
-		to_chat(SA, "<span class='warning'>Due to freak radiation and/or chemicals \
-			and/or lucky chance, you have gained human level intelligence \
-			and the ability to speak and understand human language!</span>")
+		to_chat(SA, "<span class='warning'>Wskutek dziwnego promieniowania i/lub substancji chemicznych i/lub szczęśliwego trafu zyskałeś inteligencję na poziomie ludzkim oraz zdolność mówienia i rozumienia ludzkiego języka!</span>")
 
 	return SUCCESSFUL_SPAWN
 

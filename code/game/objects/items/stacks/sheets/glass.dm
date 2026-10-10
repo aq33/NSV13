@@ -32,7 +32,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	tableVariant = /obj/structure/table/glass
 
 /obj/item/stack/sheet/glass/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] begins to slice [user.p_their()] neck with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaczyna podcinać sobie gardło [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return BRUTELOSS
 
 /obj/item/stack/sheet/glass/cyborg
@@ -52,11 +52,11 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	if(istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/CC = W
 		if (get_amount() < 1 || CC.get_amount() < 5)
-			to_chat(user, "<span class='warning>You need five lengths of coil and one sheet of glass to make wired glass!</span>")
+			to_chat(user, "<span class='warning>Potrzebujesz pięciu odcinków kabla i jednego arkusza szkła, by zrobić szkło z przewodami!</span>")
 			return
 		CC.use(5)
 		use(1)
-		to_chat(user, "<span class='notice'>You attach wire to the [name].</span>")
+		to_chat(user, "<span class='notice'>Przymocowujesz przewód do [name].</span>")
 		new /obj/item/stack/light_w(user.loc, 5, TRUE, user)
 	else if(istype(W, /obj/item/stack/rods))
 		var/obj/item/stack/rods/V = W
@@ -68,7 +68,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 			if(QDELETED(src) && !QDELETED(RG) && replace)
 				user.put_in_hands(RG)
 		else
-			to_chat(user, "<span class='warning'>You need one rod and one sheet of glass to make reinforced glass!</span>")
+			to_chat(user, "<span class='warning'>Potrzebujesz jednego pręta i jednego arkusza szkła, by zrobić szkło zbrojone!</span>")
 			return
 	else
 		return ..()
@@ -114,7 +114,7 @@ GLOBAL_LIST_INIT(pglass_recipes, list ( \
 			if(QDELETED(src) && replace)
 				user.put_in_hands(RG)
 		else
-			to_chat(user, "<span class='warning'>You need one rod and one sheet of plasma glass to make reinforced plasma glass!</span>")
+			to_chat(user, "<span class='warning'>Potrzebujesz jednego pręta i jednego arkusza szkła plazmowego, by zrobić zbrojone szkło plazmowe!</span>")
 			return
 	else
 		return ..()
@@ -257,7 +257,7 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 
 
 /obj/item/shard/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is slitting [user.p_their()] [pick("wrists", "throat")] with the shard of glass! It looks like [user.p_theyre()] trying to commit suicide.</span>")
+	user.visible_message("<span class='suicide'>[user] podcina sobie [pick("nadgarstki", "gardło")] odłamkiem szkła! Wygląda na to, że próbuje popełnić samobójstwo.</span>")
 	return (BRUTELOSS)
 
 
@@ -296,12 +296,12 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(!H.gloves && !HAS_TRAIT(H, TRAIT_PIERCEIMMUNE)) // golems, etc
-			to_chat(H, "<span class='warning'>[src] cuts into your hand!</span>")
+			to_chat(H, "<span class='warning'>[src] wbija ci się w rękę!</span>")
 			H.apply_damage(force*0.5, BRUTE, hit_hand)
 	else if(ismonkey(user))
 		var/mob/living/carbon/monkey/M = user
 		if(!HAS_TRAIT(M, TRAIT_PIERCEIMMUNE))
-			to_chat(M, "<span class='warning'>[src] cuts into your hand!</span>")
+			to_chat(M, "<span class='warning'>[src] wbija ci się w rękę!</span>")
 			M.apply_damage(force*0.5, BRUTE, hit_hand)
 
 
@@ -320,7 +320,7 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 			if(G.amount >= G.max_amount)
 				continue
 			G.attackby(NG, user)
-		to_chat(user, "<span class='notice'>You add the newly-formed glass to the stack. It now contains [NG.amount] sheet\s.</span>")
+		to_chat(user, "<span class='notice'>Dodajesz świeżo uformowane szkło do stosu. Zawiera teraz arkuszy: [NG.amount].</span>")
 		qdel(src)
 	return TRUE
 

@@ -168,7 +168,7 @@
 		antag_memory += "<B>Kod bomby nuklearnej Syndykatu</B>: [code]<br>"
 		to_chat(owner.current, "Kod autoryzacji ładunku nuklearnego: <B>[code]</B>")
 	else
-		to_chat(admin, "<span class='danger'>No valid nuke found!</span>")
+		to_chat(admin, "<span class='danger'>Nie znaleziono prawidłowej bomby!</span>")
 
 /datum/antagonist/nukeop/leader
 	name = "Przywódca operatorów nuklearnych"
@@ -406,12 +406,12 @@
 		while(!isturf(disk_loc))
 			if(ismob(disk_loc))
 				var/mob/M = disk_loc
-				disk_report += "carried by <a href='byond://?_src_=holder;[HrefToken()];adminplayeropts=[REF(M)]'>[M.real_name]</a> "
+				disk_report += "niesiony przez <a href='byond://?_src_=holder;[HrefToken()];adminplayeropts=[REF(M)]'>[M.real_name]</a> "
 			if(isobj(disk_loc))
 				var/obj/O = disk_loc
 				disk_report += "in \a [O.name] "
 			disk_loc = disk_loc.loc
-		disk_report += "in [disk_loc.loc] at ([disk_loc.x], [disk_loc.y], [disk_loc.z])</td><td><a href='byond://?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(N)]'>FLW</a></td></tr>"
+		disk_report += "w [disk_loc.loc] na ([disk_loc.x], [disk_loc.y], [disk_loc.z])</td><td><a href='byond://?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(N)]'>OBSERWUJ</a></td></tr>"
 	disk_report += "</table>"
 	var/common_part = ..()
 	return common_part + disk_report

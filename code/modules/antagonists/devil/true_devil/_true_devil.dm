@@ -65,24 +65,24 @@
 
 
 /mob/living/carbon/true_devil/examine(mob/user)
-	. = list("<span class='info'>*---------*\nThis is [icon2html(src, user)] <b>[src]</b>!")
+	. = list("<span class='info'>*---------*\nTo jest [icon2html(src, user)] <b>[src]</b>!")
 
 	//Left hand items
 	for(var/obj/item/I in held_items)
 		if(!(I.item_flags & ABSTRACT))
-			. += "It is holding [I.get_examine_string(user)] in its [get_held_index_name(get_held_index_of_item(I))]."
+			. += "Trzyma [I.get_examine_string(user)] w [get_held_index_name(get_held_index_of_item(I))]."
 
 	//Braindead
 	if(!client && stat != DEAD)
-		. += "The devil seems to be in deep contemplation."
+		. += "Diabeł wydaje się pogrążony w głębokiej zadumie."
 
 	//Damaged
 	if(stat == DEAD)
-		. += "<span class='deadsay'>The hellfire seems to have been extinguished, for now at least.</span>"
+		. += "<span class='deadsay'>Ogień piekielny chyba zgasł, przynajmniej na razie.</span>"
 	else if(health < (maxHealth/10))
-		. += "<span class='warning'>You can see hellfire inside its gaping wounds.</span>"
+		. += "<span class='warning'>W jego ziejących ranach widać ogień piekielny.</span>"
 	else if(health < (maxHealth/2))
-		. += "<span class='warning'>You can see hellfire inside its wounds.</span>"
+		. += "<span class='warning'>W jego ranach widać ogień piekielny.</span>"
 	. += "*---------*</span>"
 
 /mob/living/carbon/true_devil/IsAdvancedToolUser()
@@ -91,15 +91,15 @@
 /mob/living/carbon/true_devil/resist_buckle()
 	if(buckled)
 		buckled.user_unbuckle_mob(src,src)
-		visible_message("<span class='warning'>[src] easily breaks out of [p_their()] handcuffs!</span>", \
-					"<span class='notice'>With just a thought your handcuffs fall off.</span>")
+		visible_message("<span class='warning'>[src] z łatwością zrywa kajdanki!</span>", \
+					"<span class='notice'>Jedną myślą sprawiasz, że kajdanki spadają.</span>")
 
 /mob/living/carbon/true_devil/canUseTopic(atom/movable/M, be_close=FALSE, no_dextery=FALSE, no_tk=FALSE)
 	if(incapacitated())
-		to_chat(src, "<span class='warning'>You can't do that right now!</span>")
+		to_chat(src, "<span class='warning'>Nie możesz tego teraz zrobić!</span>")
 		return FALSE
 	if(be_close && !in_range(M, src))
-		to_chat(src, "<span class='warning'>You are too far away!</span>")
+		to_chat(src, "<span class='warning'>Jesteś za daleko!</span>")
 		return FALSE
 	return TRUE
 
@@ -167,7 +167,7 @@
 				var/damage = rand(1, 5)
 				playsound(loc, "punch", 25, 1, -1)
 				visible_message("<span class='danger'>[M] punches [src]!</span>", \
-						"<span class='userdanger'>[M] punches you!</span>")
+						"<span class='userdanger'>[M] uderza cię pięścią!</span>")
 				adjustBruteLoss(damage)
 				log_combat(M, src, "attacked")
 				updatehealth()
@@ -178,17 +178,17 @@
 						playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 						log_combat(M, src, "pushed")
 						visible_message("<span class='danger'>[M] pushes [src] down!</span>", \
-							"<span class='userdanger'>[M] pushes you down!</span>")
+							"<span class='userdanger'>[M] powala cię na ziemię!</span>")
 					else
 						if (prob(25))
 							dropItemToGround(get_active_held_item())
 							playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 							visible_message("<span class='danger'>[M] disarms [src]!</span>", \
-							"<span class='userdanger'>[M] disarms you!</span>")
+							"<span class='userdanger'>[M] cię rozbraja!</span>")
 						else
 							playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-							visible_message("<span class='danger'>[M] fails to disarm [src]!</span>", \
-							"<span class='userdanger'>[M] fails to disarm you!</span>")
+							visible_message("<span class='danger'>[M] nie zdołał rozbroić [src]!</span>", \
+							"<span class='userdanger'>[M] nie zdołał cię rozbroić!</span>")
 
 /mob/living/carbon/true_devil/handle_breathing()
 	// devils do not need to breathe

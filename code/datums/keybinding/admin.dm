@@ -9,7 +9,7 @@
 	key = "F3"
 	name = "admin_say"
 	full_name = "Admin say"
-	description = "Talk with other admins."
+	description = "Rozmawiaj z innymi adminami."
 	keybind_signal = COMSIG_KB_ADMIN_ASAY_DOWN
 
 /datum/keybinding/admin/admin_say/down(client/user)
@@ -24,7 +24,7 @@
 	key = "F4"
 	name = "mentor_say"
 	full_name = "Mentor say"
-	description = "Speak with other mentors."
+	description = "Rozmawiaj z innymi mentorami."
 	keybind_signal = COMSIG_KB_ADMIN_MSAY_DOWN
 
 /datum/keybinding/admin/mentor_say/down(client/user)
@@ -43,7 +43,7 @@
 	key = "F5"
 	name = "admin_ghost"
 	full_name = "Admin Ghost"
-	description = "Toggle your admin ghost status."
+	description = "Przełącz swój status admin-ducha."
 	keybind_signal = COMSIG_KB_ADMIN_AGHOST_DOWN
 
 /datum/keybinding/admin/admin_ghost/down(client/user)
@@ -58,7 +58,7 @@
 	key = "F6"
 	name = "player_panel"
 	full_name = "Player Panel"
-	description = "View the player panel list."
+	description = "Pokaż listę panelu graczy."
 	keybind_signal = COMSIG_KB_ADMIN_PLAYERPANEL_DOWN
 
 /datum/keybinding/admin/player_panel/down(client/user)
@@ -73,7 +73,7 @@
 	key = "F7"
 	name = "toggle_build_mode"
 	full_name = "Toggle Build Mode"
-	description = "Toggle admin build mode on or off."
+	description = "Włącz lub wyłącz tryb budowania admina."
 	keybind_signal = COMSIG_KB_ADMIN_TOGGLEBUILDMODE_DOWN
 
 /datum/keybinding/admin/build_mode/down(client/user)
@@ -88,7 +88,7 @@
 	key = "F8"
 	name = "invismin"
 	full_name = "Toggle Invismin"
-	description = "Toggle your admin invisibility."
+	description = "Przełącz swoją niewidzialność admina."
 	keybind_signal = COMSIG_KB_ADMIN_INVISIMINTOGGLE_DOWN
 
 /datum/keybinding/admin/invismin/down(client/user)
@@ -102,7 +102,7 @@
 	key = "F9"
 	name = "view_tags"
 	full_name = "View Tags"
-	description = "Open the View-Tags menu"
+	description = "Otwórz menu View-Tags"
 	keybind_signal = COMSIG_KB_ADMIN_VIEWTAGS_DOWN
 
 /datum/keybinding/admin/view_tags/down(client/user)
@@ -116,7 +116,7 @@
 	key = "F10"
 	name = "dead_say"
 	full_name = "Dead Say"
-	description = "Speak in deadchat as an admin."
+	description = "Mów na czacie martwych jako admin."
 	keybind_signal = COMSIG_KB_ADMIN_DSAY_DOWN
 
 /datum/keybinding/admin/dead_say/down(client/user)

@@ -22,9 +22,7 @@
 	title_icon = "revolution"
 
 	announce_span = "danger"
-	announce_text = "Some crewmembers are attempting a coup!\n\
-	<span class='danger'>Revolutionaries</span>: Expand your cause and overthrow the heads of staff by execution or otherwise.\n\
-	<span class='notice'>Crew</span>: Prevent the revolutionaries from taking over the station."
+	announce_text = "Niektórzy członkowie załogi próbują przeprowadzić zamach stanu!\n<span class='danger'>Rewolucjoniści</span>: szerzcie swoją sprawę i obalcie szefów, egzekucją lub w inny sposób.\n<span class='notice'>Załoga</span>: nie pozwólcie rewolucjonistom przejąć stacji."
 
 	var/finished = 0
 	var/check_counter = 0

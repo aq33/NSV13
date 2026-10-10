@@ -107,8 +107,7 @@
 		output += {"<form action='byond://?src=[REF(src)]' method='get'>
 		<input type='hidden' name='src' value='[REF(src)]'>
 		<input type='hidden' name='votepollref' value='[REF(poll)]'>
-		<font size='2'>Please provide feedback below. You can use any letters of the English alphabet, numbers and the symbols: . , ! ? : ; -</font><br>
-		<textarea name='replytext' cols='50' rows='14'>[reply_text]</textarea>
+		<font size='2'>Przekaż poniżej swoją opinię. Możesz używać dowolnych liter alfabetu angielskiego, cyfr i symboli: . , ! ? : ; -</font><br><textarea name='replytext' cols='50' rows='14'>[reply_text]</textarea>
 		<p><input type='submit' value='Submit'></form>
 		"}
 	else

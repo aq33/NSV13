@@ -326,7 +326,7 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 /datum/DBQuery/proc/warn_execute(async = TRUE)
 	. = Execute(async)
 	if(!.)
-		to_chat(usr, "<span class='danger'>A SQL error occurred during this operation, check the server logs.</span>")
+		to_chat(usr, "<span class='danger'>Podczas tej operacji wystąpił błąd SQL, sprawdź logi serwera.</span>")
 
 /datum/DBQuery/proc/Execute(async = TRUE, log_error = TRUE)
 	Activity("Execute")
@@ -334,7 +334,7 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 		CRASH("Attempted to start a new query while waiting on the old one")
 
 	if(!SSdbcore.IsConnected())
-		last_error = "No connection!"
+		last_error = "Brak połączenia!"
 		return FALSE
 
 	var/start_time

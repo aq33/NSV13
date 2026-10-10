@@ -7,7 +7,7 @@
 	button_icon_state = "Interdiction Lens"
 	power_cost = 500
 	invokation_time = 80
-	invokation_text = list("Oh great lord...", "may your divinity block the outsiders.")
+	invokation_text = list("Oh great lord...", "niech twa boskość powstrzyma obcych.")
 	summoned_structure = /obj/structure/destructible/clockwork/gear_base/interdiction_lens
 	cogs_required = 4
 	category = SPELLTYPE_STRUCTURES

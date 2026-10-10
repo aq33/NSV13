@@ -59,16 +59,16 @@
 	if(!check_rights(R_SERVER))
 		return
 	var/path = SSmapping.config.starmap_path
-	if(alert(usr, "This hard restarts the server and RESETS the persistent starmap campaign ([path]) to the default map. No backup is kept, this cannot be undone. Continue?", "New Campaign", "Reset campaign", "Cancel") != "Reset campaign")
+	if(alert(usr, "To twardo zrestartuje serwer i ZRESETUJE trwałą kampanię mapy gwiezdnej ([path]) do mapy domyślnej. Nie zostanie zachowana żadna kopia zapasowa, tego nie da się cofnąć. Kontynuować?", "New Campaign", "Reset campaign", "Cancel") != "Reset campaign")
 		return
-	if(alert(usr, "Are you absolutely sure? Every system, owner and campaign change on the starmap goes back to the start.", "New Campaign - final warning", "Yes, reset and restart", "Cancel") != "Yes, reset and restart")
+	if(alert(usr, "Czy na pewno? Każdy układ, właściciel i zmiana kampanii na mapie gwiezdnej wróci do początku.", "New Campaign - final warning", "Yes, reset and restart", "Cancel") != "Yes, reset and restart")
 		return
 
 	var/list/result = reset_campaign_starmap(path)
 	if(!result["success"])
 		log_admin("[key_name(usr)] tried Hard Restart + New Campaign; the starmap reset FAILED ([result["error"]]). Starmap: [path]. Restart aborted, campaign kept.")
 		message_admins("[key_name_admin(usr)] tried Hard Restart + New Campaign; the starmap reset FAILED ([result["error"]]). Restart aborted, campaign kept.")
-		to_chat(usr, "<span class='warning'>Campaign reset failed: [result["error"]]. The server was not restarted and the campaign is unchanged.</span>")
+		to_chat(usr, "<span class='warning'>Reset kampanii nie powiódł się: [result["error"]]. Serwer nie został zrestartowany, a kampania pozostała bez zmian.</span>")
 		return
 	SSstar_system.campaign_reset_pending = TRUE
 	log_admin("[key_name(usr)] used Hard Restart + New Campaign. Starmap [path] reset to [CAMPAIGN_DEFAULT_STARMAP]. Restarting.")

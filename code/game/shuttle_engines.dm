@@ -27,7 +27,7 @@
 /obj/structure/shuttle/engine/can_be_unfasten_wrench(mob/user, silent)
 	if(state == ENGINE_WELDED)
 		if(!silent)
-			to_chat(user, "<span class='warning'>[src] is welded to the floor!</span>")
+			to_chat(user, "<span class='warning'>[src] jest przyspawany do podłogi!</span>")
 		return FAILED_UNFASTEN
 	return ..()
 
@@ -46,31 +46,31 @@
 /obj/structure/shuttle/engine/welder_act(mob/living/user, obj/item/I)
 	switch(state)
 		if(ENGINE_UNWRENCHED)
-			to_chat(user, "<span class='warning'>The [src.name] needs to be wrenched to the floor!</span>")
+			to_chat(user, "<span class='warning'>[src.name] trzeba przykręcić do podłogi!</span>")
 		if(ENGINE_WRENCHED)
 			if(!I.tool_start_check(user, amount=0))
 				return TRUE
 
-			user.visible_message("[user.name] starts to weld the [name] to the floor.", \
-				"<span class='notice'>You start to weld \the [src] to the floor...</span>", \
-				"<span class='italics'>You hear welding.</span>")
+			user.visible_message("[user.name] zaczyna przyspawywać [name] do podłogi.", \
+				"<span class='notice'>Zaczynasz przyspawywać [src] do podłogi...</span>", \
+				"<span class='italics'>Słyszysz spawanie.</span>")
 
 			if(I.use_tool(src, user, ENGINE_WELDTIME, volume=50))
 				state = ENGINE_WELDED
-				to_chat(user, "<span class='notice'>You weld \the [src] to the floor.</span>")
+				to_chat(user, "<span class='notice'>Przyspawujesz [src] do podłogi.</span>")
 				alter_engine_power(engine_power)
 
 		if(ENGINE_WELDED)
 			if(!I.tool_start_check(user, amount=0))
 				return TRUE
 
-			user.visible_message("[user.name] starts to cut the [name] free from the floor.", \
-				"<span class='notice'>You start to cut \the [src] free from the floor...</span>", \
-				"<span class='italics'>You hear welding.</span>")
+			user.visible_message("[user.name] zaczyna odcinać [name] od podłogi.", \
+				"<span class='notice'>Zaczynasz odcinać [src] od podłogi...</span>", \
+				"<span class='italics'>Słyszysz spawanie.</span>")
 
 			if(I.use_tool(src, user, ENGINE_WELDTIME, volume=50))
 				state = ENGINE_WRENCHED
-				to_chat(user, "<span class='notice'>You cut \the [src] free from the floor.</span>")
+				to_chat(user, "<span class='notice'>Odcinasz [src] od podłogi.</span>")
 				alter_engine_power(-engine_power)
 	return TRUE
 

@@ -112,7 +112,7 @@
 /obj/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force, quickstart = TRUE)
 	..()
 	if(obj_flags & FROZEN)
-		visible_message("<span class='danger'>[src] shatters into a million pieces!</span>")
+		visible_message("<span class='danger'>[src] roztrzaskuje się na milion kawałków!</span>")
 		qdel(src)
 
 
@@ -326,7 +326,7 @@
 			if(action_type == "Cancel" || !action_type)
 				return
 
-			if(alert("Are you really sure you want to delete all objects of type [type]?",,"Yes","No") != "Yes")
+			if(alert("Czy na pewno chcesz usunąć wszystkie obiekty typu [type]?",,"Yes","No") != "Yes")
 				return
 
 			if(alert("Second confirmation required. Delete?",,"Yes","No") != "Yes")
@@ -342,7 +342,7 @@
 							qdel(Obj)
 						CHECK_TICK
 					if(!i)
-						to_chat(usr, "No objects of this type exist")
+						to_chat(usr, "Nie istnieją obiekty tego typu")
 						return
 					log_admin("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) ")
 					message_admins("<span class='notice'>[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) </span>")
@@ -354,7 +354,7 @@
 							qdel(Obj)
 						CHECK_TICK
 					if(!i)
-						to_chat(usr, "No objects of this type exist")
+						to_chat(usr, "Nie istnieją obiekty tego typu")
 						return
 					log_admin("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) ")
 					message_admins("<span class='notice'>[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) </span>")
@@ -362,9 +362,9 @@
 /obj/examine(mob/user)
 	. = ..()
 	if(obj_flags & UNIQUE_RENAME)
-		. += "<span class='notice'>Use a pen on it to rename it or change its description.</span>"
+		. += "<span class='notice'>Użyj na tym długopisu, by zmienić nazwę lub opis.</span>"
 	if(unique_reskin && !current_skin)
-		. += "<span class='notice'>Alt-click it to reskin it.</span>"
+		. += "<span class='notice'>Alt-klik, by zmienić wygląd.</span>"
 
 /obj/AltClick(mob/user)
 	. = ..()
@@ -374,18 +374,18 @@
 /obj/proc/reskin_obj(mob/M)
 	if(!LAZYLEN(unique_reskin))
 		return
-	to_chat(M, "<b>Reskin options for [name]:</b>")
+	to_chat(M, "<b>Opcje wyglądu dla [name]:</b>")
 	for(var/V in unique_reskin)
 		var/output = icon2html(src, M, unique_reskin[V])
 		to_chat(M, "[V]: <span class='reallybig'>[output]</span>")
 
-	var/choice = input(M,"Warning, you can only reskin [src] once!","Reskin Object") as null|anything in sortList(unique_reskin)
+	var/choice = input(M,"Uwaga, wygląd [src] możesz zmienić tylko raz!","Reskin Object") as null|anything in sortList(unique_reskin)
 	if(!QDELETED(src) && choice && !current_skin && !M.incapacitated() && in_range(M,src))
 		if(!unique_reskin[choice])
 			return
 		current_skin = choice
 		icon_state = unique_reskin[choice]
-		to_chat(M, "[src] is now skinned as '[choice].'")
+		to_chat(M, "[src] ma teraz wygląd „[choice]”.")
 
 /obj/analyzer_act(mob/living/user, obj/item/I)
 	if(atmosanalyzer_scan(user, src))

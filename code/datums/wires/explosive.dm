@@ -91,8 +91,8 @@
 /datum/wires/explosive/pizza/get_status()
 	var/obj/item/pizzabox/P = holder
 	var/list/status = list()
-	status += "The red light is [P.bomb_active ? "on" : "off"]."
-	status += "The green light is [P.bomb_defused ? "on": "off"]."
+	status += "Czerwona lampka [P.bomb_active ? "świeci się" : "jest zgaszona"]."
+	status += "Zielona lampka [P.bomb_defused ? "świeci się": "jest zgaszona"]."
 	return status
 
 /datum/wires/explosive/pizza/on_pulse(wire)

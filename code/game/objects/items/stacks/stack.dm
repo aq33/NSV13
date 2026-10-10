@@ -39,7 +39,7 @@
 
 /obj/item/stack/grind_requirements()
 	if(is_cyborg)
-		to_chat(usr, "<span class='danger'>[src] is electronically synthesized in your chassis and can't be ground up!</span>")
+		to_chat(usr, "<span class='danger'>[src] jest syntetyzowany elektronicznie w twojej obudowie i nie da się go zmielić!</span>")
 		return
 	return TRUE
 
@@ -131,20 +131,20 @@
 	. = ..()
 	if(is_cyborg)
 		if(singular_name)
-			. += "There is enough energy for [get_amount()] [singular_name]\s."
+			. += "Energii wystarczy na: [get_amount()] [singular_name]."
 		else
-			. += "There is enough energy for [get_amount()]."
+			. += "Energii wystarczy na: [get_amount()]."
 		return
 	if(singular_name)
 		if(get_amount() > 1)
-			. += "There are [get_amount()] [singular_name]\s in the stack."
+			. += "Liczba w stosie: [get_amount()] ([singular_name])."
 		else
-			. += "There is [get_amount()] [singular_name] in the stack."
+			. += "Liczba w stosie: [get_amount()] ([singular_name])."
 	else if(get_amount() > 1)
-		. += "There are [get_amount()] in the stack."
+		. += "Liczba w stosie: [get_amount()]."
 	else
-		. += "There is [get_amount()] in the stack."
-	. += "<span class='notice'>Alt-click to take a custom amount.</span>"
+		. += "Liczba w stosie: [get_amount()]."
+	. += "<span class='notice'>Alt-klik, by wziąć wybraną ilość.</span>"
 
 /obj/item/stack/proc/get_amount()
 	if(is_cyborg)
@@ -246,7 +246,7 @@
 			if(!building_checks(R, multiplier))
 				return
 			if(R.time)
-				usr.visible_message("<span class='notice'>[usr] starts building \a [R.title].</span>", "<span class='notice'>You start building \a [R.title]...</span>")
+				usr.visible_message("<span class='notice'>[usr] zaczyna budować: [R.title].</span>", "<span class='notice'>Zaczynasz budować: [R.title]...</span>")
 				if(!do_after(usr, R.time, target = usr))
 					return
 				if(!building_checks(R, multiplier))
@@ -300,23 +300,23 @@
 /obj/item/stack/proc/building_checks(datum/stack_recipe/R, multiplier)
 	if(get_amount() < R.req_amount*multiplier)
 		if(R.req_amount*multiplier>1)
-			to_chat(usr, "<span class='warning'>You haven't got enough [src] to build \the [R.req_amount*multiplier] [R.title]\s!</span>")
+			to_chat(usr, "<span class='warning'>Masz za mało [src], by zbudować: [R.title] ([R.req_amount*multiplier])!</span>")
 		else
-			to_chat(usr, "<span class='warning'>You haven't got enough [src] to build \the [R.title]!</span>")
+			to_chat(usr, "<span class='warning'>Masz za mało [src], by zbudować: [R.title]!</span>")
 		return FALSE
 
 	var/turf/T = get_turf(usr)
 	var/obj/D = R.result_type
 
 	if(R.window_checks && !valid_window_location(T, initial(D.dir) == FULLTILE_WINDOW_DIR ? FULLTILE_WINDOW_DIR : usr.dir))
-		to_chat(usr, "<span class='warning'>The [R.title] won't fit here!</span>")
+		to_chat(usr, "<span class='warning'>[R.title] się tu nie zmieści!</span>")
 		return FALSE
 	if(R.one_per_turf && (locate(R.result_type) in T))
-		to_chat(usr, "<span class='warning'>There is another [R.title] here!</span>")
+		to_chat(usr, "<span class='warning'>Tu już jest inny [R.title]!</span>")
 		return FALSE
 	if(R.on_floor)
 		if(!isfloorturf(T))
-			to_chat(usr, "<span class='warning'>\The [R.title] must be constructed on the floor!</span>")
+			to_chat(usr, "<span class='warning'>[R.title] trzeba zbudować na podłodze!</span>")
 			return FALSE
 		for(var/obj/AM in T)
 			if(istype(AM,/obj/structure/grille))
@@ -328,7 +328,7 @@
 				if(!W.fulltile)
 					continue
 			if(AM.density)
-				to_chat(usr, "<span class='warning'>Theres a [AM.name] here. You cant make a [R.title] here!</span>")
+				to_chat(usr, "<span class='warning'>Tu jest [AM.name]. Nie możesz tu zrobić: [R.title]!</span>")
 				return FALSE
 	if(R.placement_checks)
 		switch(R.placement_checks)
@@ -337,11 +337,11 @@
 				for(var/direction in GLOB.cardinals)
 					step = get_step(T, direction)
 					if(locate(R.result_type) in step)
-						to_chat(usr, "<span class='warning'>\The [R.title] must not be built directly adjacent to another!</span>")
+						to_chat(usr, "<span class='warning'>[R.title] nie może być zbudowany tuż obok innego!</span>")
 						return FALSE
 			if(STACK_CHECK_ADJACENT)
 				if(locate(R.result_type) in range(1, T))
-					to_chat(usr, "<span class='warning'>\The [R.title] must be constructed at least one tile away from others of its type!</span>")
+					to_chat(usr, "<span class='warning'>[R.title] trzeba zbudować co najmniej jedno pole od innych tego typu!</span>")
 					return FALSE
 	return TRUE
 
@@ -364,11 +364,11 @@
 	if(get_amount() < amount)
 		if(singular_name)
 			if(amount > 1)
-				to_chat(user, "<span class='warning'>You need at least [amount] [singular_name]\s to do this!</span>")
+				to_chat(user, "<span class='warning'>Aby to zrobić, potrzebujesz co najmniej: [amount] [singular_name]!</span>")
 			else
-				to_chat(user, "<span class='warning'>You need at least [amount] [singular_name] to do this!</span>")
+				to_chat(user, "<span class='warning'>Aby to zrobić, potrzebujesz co najmniej: [amount] [singular_name]!</span>")
 		else
-			to_chat(user, "<span class='warning'>You need at least [amount] to do this!</span>")
+			to_chat(user, "<span class='warning'>Aby to zrobić, potrzebujesz co najmniej [amount]!</span>")
 		return FALSE
 	return TRUE
 
@@ -435,14 +435,14 @@
 			return
 		//get amount from user
 		var/max = get_amount()
-		var/stackmaterial = round(input(user,"How many sheets do you wish to take out of this stack? (Maximum  [max])") as null|num)
+		var/stackmaterial = round(input(user,"Ile arkuszy chcesz wziąć z tego stosu? (Maksymalnie [max])") as null|num)
 		max = get_amount()
 		stackmaterial = min(max, stackmaterial)
 		if(!stackmaterial || stackmaterial < 0 || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 			return
 		else
 			change_stack(user, stackmaterial)
-			to_chat(user, "<span class='notice'>You take [stackmaterial] sheets out of the stack.</span>")
+			to_chat(user, "<span class='notice'>Bierzesz arkusze ze stosu: [stackmaterial].</span>")
 
 /obj/item/stack/proc/change_stack(mob/user, amount)
 	if(!use(amount, TRUE, FALSE))
@@ -461,7 +461,7 @@
 	if(merge_check(W))
 		var/obj/item/stack/S = W
 		if(merge(S))
-			to_chat(user, "<span class='notice'>Your [S.name] stack now contains [S.get_amount()] [S.singular_name]\s.</span>")
+			to_chat(user, "<span class='notice'>Twój stos [S.name] zawiera teraz: [S.get_amount()] [S.singular_name].</span>")
 	else
 		return ..()
 

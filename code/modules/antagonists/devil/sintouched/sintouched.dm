@@ -50,7 +50,7 @@
 /datum/antagonist/sintouched/greet()
 	owner.announce_objectives()
 	owner.current.client?.tgui_panel?.give_antagonist_popup("Sintouched",
-		"You have been corrupted by devilish thought, complete your objectives no matter what.")
+		"Zostałeś zepsuty diabelską myślą; wykonaj swoje cele bez względu na wszystko.")
 
 /datum/antagonist/sintouched/roundend_report()
 	return printplayer(owner)

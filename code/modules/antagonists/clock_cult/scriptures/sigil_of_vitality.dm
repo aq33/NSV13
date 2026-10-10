@@ -8,7 +8,7 @@
 	button_icon_state = "Sigil of Vitality"
 	power_cost = 300
 	invokation_time = 50
-	invokation_text = list("My life in your hands.")
+	invokation_text = list("Me życie w twoich rękach.")
 	summoned_structure = /obj/structure/destructible/clockwork/sigil/vitality
 	cogs_required = 2
 	invokers_required = 2

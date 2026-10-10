@@ -8,7 +8,7 @@ Assistant
 	faction = "Station"
 	total_positions = 100
 	spawn_positions = 100
-	supervisors = "absolutely everyone"
+	supervisors = "absolutnie wszyscy"
 	selection_color = "#dddddd"
 	access = list()			//See /datum/job/assistant/get_access()
 	minimal_access = list()	//See /datum/job/assistant/get_access()

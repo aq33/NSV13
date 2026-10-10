@@ -8,7 +8,7 @@
 	button_icon_state = "Stargazer"
 	power_cost = 300
 	invokation_time = 80
-	invokation_text = list("A light of Eng'ine shall empower my armaments!")
+	invokation_text = list("Światło Eng'ine'a wzmocni mój oręż!")
 	summoned_structure = /obj/structure/destructible/clockwork/gear_base/stargazer
 	cogs_required = 2
 	category = SPELLTYPE_STRUCTURES

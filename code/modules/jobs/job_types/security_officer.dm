@@ -8,7 +8,7 @@
 	faction = "Station"
 	total_positions = 5 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
 	spawn_positions = 5 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
-	supervisors = "the head of security, and the head of your assigned department (if applicable)"
+	supervisors = "szef ochrony oraz szef przydzielonego ci działu (jeśli dotyczy)"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 840
@@ -114,9 +114,9 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 				else
 					break
 	if(department)
-		to_chat(M, "<b>You have been assigned to [department]!</b>")
+		to_chat(M, "<b>Zostałeś przydzielony do działu: [department]!</b>")
 	else
-		to_chat(M, "<b>You have not been assigned to any department. Patrol the halls and help where needed.</b>")
+		to_chat(M, "<b>Nie przydzielono cię do żadnego działu. Patroluj korytarze i pomagaj tam, gdzie trzeba.</b>")
 
 
 /datum/outfit/job/security_officer

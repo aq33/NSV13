@@ -334,13 +334,13 @@
 	min_val = 0
 
 /datum/config_entry/string/soft_popcap_message
-	config_entry_value = "Be warned that the server is currently serving a high number of users, consider using alternative game servers."
+	config_entry_value = "Uwaga: serwer obsługuje obecnie dużą liczbę graczy; rozważ skorzystanie z innych serwerów."
 
 /datum/config_entry/string/hard_popcap_message
-	config_entry_value = "The server is currently serving a high number of users, You cannot currently join. You may wait for the number of living crew to decline, observe, or find alternative servers."
+	config_entry_value = "Serwer obsługuje obecnie dużą liczbę graczy, nie możesz teraz dołączyć. Możesz poczekać, aż liczba żywej załogi spadnie, obserwować albo znaleźć inny serwer."
 
 /datum/config_entry/string/extreme_popcap_message
-	config_entry_value = "The server is currently serving a high number of users, find alternative servers."
+	config_entry_value = "Serwer obsługuje obecnie dużą liczbę graczy, znajdź inny serwer."
 
 /datum/config_entry/flag/byond_member_bypass_popcap
 
@@ -355,7 +355,7 @@
 /datum/config_entry/flag/panic_bunker_interview_retries
 
 /datum/config_entry/string/panic_bunker_message
-	config_entry_value = "Sorry but the server is currently not accepting connections from never before seen players."
+	config_entry_value = "Przepraszamy, ale serwer obecnie nie przyjmuje połączeń od nowych graczy."
 
 /datum/config_entry/number/notify_new_player_age	// how long do we notify admins of a new player
 	min_val = -1
@@ -421,7 +421,7 @@
 	min_val = 0
 
 /datum/config_entry/string/client_warn_message
-	config_entry_value = "Your version of byond may have issues or be blocked from accessing this server in the future."
+	config_entry_value = "Twoja wersja BYOND może sprawiać problemy lub w przyszłości zostać zablokowana na tym serwerze."
 
 /datum/config_entry/flag/client_warn_popup
 
@@ -430,7 +430,7 @@
 	min_val = 500
 
 /datum/config_entry/string/client_error_message
-	config_entry_value = "Your version of byond is too old, may have issues, and is blocked from accessing this server."
+	config_entry_value = "Twoja wersja BYOND jest za stara, może sprawiać problemy i jest zablokowana na tym serwerze."
 
 /datum/config_entry/number/client_error_build
 	config_entry_value = null

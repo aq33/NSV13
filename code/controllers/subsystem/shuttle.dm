@@ -176,7 +176,7 @@ SUBSYSTEM_DEF(shuttle)
 				// If they can, make sure the security level will get the shuttle here quickly and do a transfer vote.
 				if(CONFIG_GET(flag/no_dead_vote))
 					emergency.request(null, set_coefficient = 0.5)
-					msg = "Automatically dispatching emergency shuttle due to crew death."
+					msg = "Automatyczne wysyłanie promu ewakuacyjnego z powodu śmierci załogi."
 					priority_announce("Wykryto katastrofalne straty w załodze: uruchomiono kryzysowe procedury promu.", sound = SSstation.announcer.get_rand_alert_sound())
 					autoevac_status = AUTOEVAC_STATUS_EVAC_CALLED
 				else
@@ -184,7 +184,7 @@ SUBSYSTEM_DEF(shuttle)
 						set_security_level(SEC_LEVEL_RED)
 					if(!SSvote.mode)
 						SSvote.initiate_vote("transfer", "Crisis Protocols", forced=TRUE, popup=FALSE)
-						msg = "Automatically initiating transfer vote due to crew death."
+						msg = "Automatyczne rozpoczęcie głosowania o transfer z powodu śmierci załogi."
 						priority_announce("Wykryto katastrofalne straty w załodze: uruchomiono kryzysowe procedury promu.", sound = SSstation.announcer.get_rand_alert_sound())
 						autoevac_status = AUTOEVAC_STATUS_EVAC_CALLED
 				if(msg)
@@ -294,17 +294,7 @@ SUBSYSTEM_DEF(shuttle)
 
 	if(!admiral_message)
 		admiral_message = pick(GLOB.admiral_messages)
-	var/intercepttext = "<font size = 3><b>Nanotrasen Update</b>: Request For Shuttle.</font><hr>\
-						To whom it may concern:<br><br>\
-						We have taken note of the situation upon [station_name()] and have come to the \
-						conclusion that it does not warrant the abandonment of the station.<br>\
-						If you do not agree with our opinion we suggest that you open a direct \
-						line with us and explain the nature of your crisis.<br><br>\
-						<i>This message has been automatically generated based upon readings from long \
-						range diagnostic tools. To assure the quality of your request every finalized report \
-						is reviewed by an on-call rear admiral.<br>\
-						<b>Rear Admiral's Notes:</b> \
-						[admiral_message]"
+	var/intercepttext = "<font size = 3><b>Aktualizacja Nanotrasen</b>: prośba o prom.</font><hr>Do wszystkich zainteresowanych:<br><br>Zapoznaliśmy się z sytuacją na [station_name()] i doszliśmy do wniosku, że nie uzasadnia ona porzucenia stacji.<br>Jeśli nie zgadzacie się z naszą opinią, sugerujemy otwarcie z nami bezpośredniej linii i wyjaśnienie natury waszego kryzysu.<br><br><i>Ta wiadomość została wygenerowana automatycznie na podstawie odczytów z dalekosiężnych narzędzi diagnostycznych. Aby zapewnić jakość waszej prośby, każdy sfinalizowany raport jest sprawdzany przez dyżurnego kontradmirała.<br><b>Uwagi kontradmirała:</b> [admiral_message]"
 	print_command_report(intercepttext, announce = TRUE)
 
 // Called when an emergency shuttle mobile docking port is

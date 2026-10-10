@@ -9,7 +9,7 @@
 	button_icon_state = "Kindle"
 	power_cost = 125
 	invokation_time = 30
-	invokation_text = list("Divinity, show them your light!")
+	invokation_text = list("Boskości, ukaż im swoje światło!")
 	after_use_text = "Niech moc przez ciebie przepłynie!"
 	slab_overlay = "volt"
 	use_time = 150

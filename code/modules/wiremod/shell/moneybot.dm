@@ -37,7 +37,7 @@
 
 /obj/item/circuit_component/money_dispenser
 	display_name = "Money Dispenser"
-	display_desc = "Used to dispense money from the money bot. Money is taken from the internal storage of money."
+	display_desc = "Służy do wydawania pieniędzy z bota pieniężnego. Pieniądze są pobierane z jego wewnętrznego magazynu."
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 
 	/// The amount of money to dispense
@@ -84,7 +84,7 @@
 
 /obj/item/circuit_component/money_bot
 	display_name = "Money Bot"
-	display_desc = "Used to receive input signals when money is inserted into the money bot shell and also keep track of the total money in the shell."
+	display_desc = "Służy do odbierania sygnałów wejściowych, gdy do obudowy bota pieniężnego włożono pieniądze, oraz do śledzenia łącznej kwoty w obudowie."
 	var/obj/structure/money_bot/attached_bot
 
 	/// Total money in the shell
@@ -135,7 +135,7 @@
 
 	var/amount_to_insert = item.get_item_credit_value()
 	if(!amount_to_insert)
-		balloon_alert(attacker, "This has no value!")
+		balloon_alert(attacker, "To nie ma wartości!")
 		return
 
 	attached_bot.add_money(amount_to_insert)

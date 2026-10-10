@@ -30,7 +30,7 @@
 	. = ..()
 	var/mob/living/carbon/C = new_owner.current
 	if(!istype(C))
-		to_chat(admin, "You can only turn carbons into an ex-security agent.")
+		to_chat(admin, "W byłego agenta ochrony możesz zmienić tylko istoty węglowe.")
 		return
 	message_admins("[key_name_admin(admin)] made [key_name_admin(new_owner)] into an ex-security agent.")
 	log_admin("[key_name(admin)] made [key_name(new_owner)] into [name].")

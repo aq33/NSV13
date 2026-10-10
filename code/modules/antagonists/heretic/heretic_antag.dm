@@ -485,11 +485,11 @@
  */
 /datum/antagonist/heretic/proc/admin_give_living_heart(mob/admin)
 	if(!admin.client?.holder)
-		to_chat(admin, "<span class='warning'>You shouldn't be using this!</span>")
+		to_chat(admin, "<span class='warning'>Nie powinieneś tego używać!</span>")
 		return
 	var/datum/heretic_knowledge/living_heart/heart_knowledge = get_knowledge(/datum/heretic_knowledge/living_heart)
 	if(!heart_knowledge)
-		to_chat(admin, "<span class='warning'>The heretic doesn't have a living heart knowledge for some reason. What?</span>")
+		to_chat(admin, "<span class='warning'>Heretyk z jakiegoś powodu nie ma wiedzy o żywym sercu. Co?</span>")
 		return
 	heart_knowledge.on_research(owner.current)
 
@@ -498,15 +498,15 @@
  */
 /datum/antagonist/heretic/proc/admin_add_marked_target(mob/admin)
 	if(!admin.client?.holder)
-		to_chat(admin, "<span class='warning'>You shouldn't be using this!</span>")
+		to_chat(admin, "<span class='warning'>Nie powinieneś tego używać!</span>")
 		return
 	var/mob/living/carbon/human/new_target = admin.client?.holder.marked_datum
 	if(!istype(new_target))
-		to_chat(admin, "<span class='warning'>You need to mark a human to do this!</span>")
+		to_chat(admin, "<span class='warning'>Aby to zrobić, musisz oznaczyć człowieka!</span>")
 		return
 	if(tgui_alert(admin, "Let them know their targets have been updated?", "Whispers of the Mansus", list("Yes", "No")) == "Yes")
 		to_chat(owner.current, "<span class='danger'>Mansus zmienił twoje cele. Idź ich szukać!</span>")
-		to_chat(owner.current, "<span class='danger'>[new_target.real_name], the [new_target.mind?.assigned_role || "human"].</span>")
+		to_chat(owner.current, "<span class='danger'>[new_target.real_name], [new_target.mind?.assigned_role || "człowiek"].</span>")
 	add_sacrifice_target(new_target)
 
 /*
@@ -514,7 +514,7 @@
  */
 /datum/antagonist/heretic/proc/admin_remove_target(mob/admin)
 	if(!admin.client?.holder)
-		to_chat(admin, "<span class='warning'>You shouldn't be using this!</span>")
+		to_chat(admin, "<span class='warning'>Nie powinieneś tego używać!</span>")
 		return
 	var/list/removable = list()
 	for(var/datum/weakref/ref as anything in sac_targets)
@@ -536,7 +536,7 @@
  */
 /datum/antagonist/heretic/proc/admin_change_points(mob/admin)
 	if(!admin.client?.holder)
-		to_chat(admin, "<span class='warning'>You shouldn't be using this!</span>")
+		to_chat(admin, "<span class='warning'>Nie powinieneś tego używać!</span>")
 		return
 
 	var/change_num = tgui_input_number(admin, "Add or remove knowledge points", "Points", 0)
@@ -566,7 +566,7 @@
 			var/datum/mind/actual_target = ref.resolve()
 			if(istype(actual_target))
 				continue
-			. += " - <b>[actual_target.name]</b>, the [actual_target.assigned_role || "Unknown"].<br>"
+			. += " - <b>[actual_target.name]</b>, [actual_target.assigned_role || "nieznane stanowisko"].<br>"
 	else
 		. += "<i>Brak!</i><br>"
 	. += "<br>"

@@ -37,9 +37,7 @@ GLOBAL_VAR(clockcult_eminence)
 
 	title_icon = "clockcult"
 	announce_span = "danger"
-	announce_text = "A powerful group of fanatics is trying to summon their deity!\n\
-	<span class='danger'>Servants</span>: Convert more servants and defend the Ark of the Clockwork Justicar!\n\
-	<span class='notice'>Crew</span>: Prepare yourselfs and destroy the Ark of the Clockwork Justicar."
+	announce_text = "Potężna grupa fanatyków próbuje przywołać swoje bóstwo!\n<span class='danger'>Słudzy</span>: nawracajcie kolejnych sług i brońcie Arki Mechanicznego Justycjariusza!\n<span class='notice'>Załoga</span>: przygotujcie się i zniszczcie Arkę Mechanicznego Justycjariusza."
 
 
 	var/clock_cultists = CLOCKCULT_SERVANTS
@@ -92,12 +90,7 @@ GLOBAL_VAR(clockcult_eminence)
 	return ..()
 
 /datum/game_mode/clockcult/generate_report()
-	return "Central Command's higher dimensional affairs division has been recently investigating a huge, anomalous energy spike \
-	emanating from a neutron star close to your sector. It is currently theorised that an ancient group of fanatics praising an \
-	eldritch deity made from brass and other outdated materials are abusing the energy of the dying star to breach dimensional \
-	boundaries. The bluespace veil is faltering at your current location, making it a prime target for dangerous individuals to \
-	abuse dimensional interdiction. Any evidence of tampering with bluespace fields should be reported to your local chaplain and \
-	Central Command if a connection is still available at the time of discovery."
+	return "Wydział spraw wyższych wymiarów Centrali od niedawna bada ogromny, anomalny skok energii emanujący z gwiazdy neutronowej w pobliżu waszego sektora. Obecna teoria głosi, że starożytna grupa fanatyków czcząca przedwieczne bóstwo z mosiądzu i innych przestarzałych materiałów wykorzystuje energię umierającej gwiazdy, by przełamywać granice wymiarów. Zasłona bluespace słabnie w waszej obecnej lokalizacji, co czyni ją głównym celem dla niebezpiecznych osób nadużywających przechwytywania wymiarowego. Wszelkie dowody ingerencji w pola bluespace należy zgłaszać miejscowemu kapelanowi oraz Centrali, jeśli w chwili odkrycia połączenie jest jeszcze dostępne."
 
 /datum/game_mode/clockcult/set_round_result()
 	..()

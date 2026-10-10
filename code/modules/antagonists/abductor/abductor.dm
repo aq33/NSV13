@@ -107,7 +107,7 @@
 	var/list/current_teams = list()
 	for(var/datum/team/abductor_team/T in get_all_teams(/datum/team/abductor_team))
 		current_teams[T.name] = T
-	var/choice = input(admin,"Add to which team ?") as null|anything in (current_teams + "new team")
+	var/choice = input(admin,"Do której drużyny dodać?") as null|anything in (current_teams + "new team")
 	if (choice == "new team")
 		team = new
 	else if(choice in current_teams)
@@ -124,7 +124,7 @@
 
 /datum/antagonist/abductor/proc/admin_equip(mob/admin)
 	if(!ishuman(owner.current))
-		to_chat(admin, "<span class='warning'>This only works on humans!</span>")
+		to_chat(admin, "<span class='warning'>To działa tylko na ludzi!</span>")
 		return
 	var/mob/living/carbon/human/H = owner.current
 	var/gear = alert(admin,"Agent or Scientist Gear","Gear","Agent","Scientist")

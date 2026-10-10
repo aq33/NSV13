@@ -223,19 +223,19 @@
 /datum/config_entry/flag/arrivals_shuttle_require_safe_latejoin	//Require the arrivals shuttle to be operational in order for latejoiners to join
 
 /datum/config_entry/string/alert_green
-	config_entry_value = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
+	config_entry_value = "Wszystkie zagrożenia dla stacji minęły. Ochrona nie może mieć widocznej broni, przepisy o prywatności znów obowiązują w pełni."
 
 /datum/config_entry/string/alert_blue_upto
-	config_entry_value = "The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible, random searches are permitted."
+	config_entry_value = "Stacja otrzymała wiarygodne informacje o możliwej wrogiej aktywności na stacji. Ochrona może mieć widoczną broń, dozwolone są wyrywkowe przeszukania."
 
 /datum/config_entry/string/alert_blue_downto
-	config_entry_value = "The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed."
+	config_entry_value = "Bezpośrednie zagrożenie minęło. Ochrona nie musi już cały czas trzymać broni w pogotowiu, ale może nadal mieć ją na widoku. Wyrywkowe przeszukania są nadal dozwolone."
 
 /datum/config_entry/string/alert_red_upto
-	config_entry_value = "There is an immediate serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised."
+	config_entry_value = "Stacji grozi bezpośrednie, poważne zagrożenie. Ochrona może cały czas mieć broń wyjętą z kabury. Wyrywkowe przeszukania są dozwolone i zalecane."
 
 /datum/config_entry/string/alert_red_downto
-	config_entry_value = "The station's destruction has been averted. There is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised."
+	config_entry_value = "Zniszczenie stacji zostało zażegnane. Stacji wciąż jednak grozi bezpośrednie, poważne zagrożenie. Ochrona może cały czas mieć broń wyjętą z kabury, wyrywkowe przeszukania są dozwolone i zalecane."
 
 /datum/config_entry/string/alert_delta
 	config_entry_value = "Destruction of the station is imminent. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."

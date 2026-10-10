@@ -8,7 +8,7 @@
 	button_icon_state = "Ocular Warden"
 	power_cost = 400
 	invokation_time = 50
-	invokation_text = list("Summon thee to defend our temple")
+	invokation_text = list("Przyzywam cię, byś bronił naszej świątyni")
 	summoned_structure = /obj/structure/destructible/clockwork/ocular_warden
 	cogs_required = 3
 	invokers_required = 2
