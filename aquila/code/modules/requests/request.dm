@@ -204,6 +204,9 @@ GLOBAL_VAR_INIT(erts_requested_already, 0)
 			SSjob.SendToLateJoin(crewman)
 		crewman.key = candidate.key
 		SSjob.EquipRank(crewman, JOB_NAME_ASSISTANT, TRUE)
+		to_chat(crewman, "<span class='big bold'>Awaryjne wybudzenie z kriostazy</span>")
+		to_chat(crewman, "<span class='notice'>Budzisz się w komorze snu. To nie twoja zmiana: według harmonogramu miałeś spać jeszcze długo. Procedurę awaryjnego wybudzenia zlecił kapitan, a takiego rozkazu nie wydaje się bez powodu. Na pokładzie musiało wydarzyć się coś złego.</span>")
+		to_chat(crewman, "<span class='notice'>Nie wiesz, co się stało, ile trwa obecna zmiana ani kto z załogi jeszcze żyje. Twoja postać nie ma żadnej wiedzy o wydarzeniach tej rundy. Zgłoś się do dowództwa po rozkazy.</span>")
 		assistant_job?.current_positions++
 		GLOB.data_core.manifest_inject(crewman)
 		AnnounceArrival(crewman, JOB_NAME_ASSISTANT)
