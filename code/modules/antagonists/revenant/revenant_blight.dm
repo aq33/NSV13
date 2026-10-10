@@ -3,11 +3,11 @@
 	max_stages = 5
 	stage_prob = 10
 	spread_flags = DISEASE_SPREAD_NON_CONTAGIOUS
-	cure_text = "Holy water or extensive rest."
-	spread_text = "A burst of unholy energy"
+	cure_text = "Woda święcona lub długi odpoczynek."
+	spread_text = "Wybuch nieświętej energii"
 	cures = list(/datum/reagent/water/holywater)
 	cure_chance = 50 //higher chance to cure, because revenants are assholes
-	agent = "Unholy Forces"
+	agent = "Nieświęte siły"
 	viable_mobtypes = list(/mob/living/carbon/human)
 	disease_flags = CURABLE
 	permeability_mod = 1
@@ -21,7 +21,7 @@
 		if(affected_mob.dna && affected_mob.dna.species)
 			affected_mob.dna.species.handle_mutant_bodyparts(affected_mob)
 			affected_mob.dna.species.handle_hair(affected_mob)
-		to_chat(affected_mob, "<span class='notice'>You feel better.</span>")
+		to_chat(affected_mob, "<span class='notice'>Czujesz się lepiej.</span>")
 	..()
 
 /datum/disease/revblight/stage_act()
@@ -30,7 +30,7 @@
 			cure()
 			return
 		if(prob(stage*3))
-			to_chat(affected_mob, "<span class='revennotice'>You suddenly feel [pick("sick and tired", "disoriented", "tired and confused", "nauseated", "faint", "dizzy")]...</span>")
+			to_chat(affected_mob, "<span class='revennotice'>Nagle czujesz [pick("się chory i zmęczony", "dezorientację", "zmęczenie i zagubienie", "mdłości", "słabość", "zawroty głowy")]...</span>")
 			affected_mob.confused += 8
 			affected_mob.adjustStaminaLoss(20)
 			new /obj/effect/temp_visual/revenant(affected_mob.loc)
@@ -54,13 +54,13 @@
 		if(5)
 			if(!finalstage)
 				finalstage = TRUE
-				to_chat(affected_mob, "<span class='revenbignotice'>You feel like [pick("nothing's worth it anymore", "nobody ever needed your help", "nothing you did mattered", "everything you tried to do was worthless")].</span>")
+				to_chat(affected_mob, "<span class='revenbignotice'>Czujesz, że [pick("nic już nie jest warte zachodu", "nikt nigdy nie potrzebował twojej pomocy", "nic, co robisz, nie ma znaczenia", "wszystko, czego próbujesz, jest bezwartościowe")].</span>")
 				affected_mob.adjustStaminaLoss(45)
 				new /obj/effect/temp_visual/revenant(affected_mob.loc)
 				if(affected_mob.dna?.species)
 					affected_mob.dna.species.handle_mutant_bodyparts(affected_mob,"#1d2953")
 					affected_mob.dna.species.handle_hair(affected_mob,"#1d2953")
-				affected_mob.visible_message("<span class='warning'>[affected_mob] looks terrifyingly gaunt...</span>", "<span class='revennotice'>You suddenly feel like your skin is <i>wrong</i>...</span>")
+				affected_mob.visible_message("<span class='warning'>[affected_mob] wygląda przerażająco wychudzony...</span>", "<span class='revennotice'>Nagle czujesz, że twoja skóra jest <i>nie taka</i>...</span>")
 				affected_mob.add_atom_colour("#1d2953", TEMPORARY_COLOUR_PRIORITY)
 				addtimer(CALLBACK(src, PROC_REF(cure)), 100)
 		else

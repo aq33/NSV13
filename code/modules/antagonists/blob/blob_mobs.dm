@@ -73,7 +73,7 @@
 	if(!overmind)
 		return ..()
 	if(CHAT_FILTER_CHECK(message))
-		to_chat(usr, "<span class='warning'>Your message contains forbidden words.</span>")
+		to_chat(usr, "<span class='warning'>Twoja wiadomość zawiera zakazane słowa.</span>")
 		return
 	message = treat_message_min(message)
 	log_talk(message, LOG_SAY, tag="blob")
@@ -130,8 +130,8 @@
 	else
 		if(E.create_culture(disease, user))
 			dust()
-			user.visible_message("<span class='danger'>[user] stabs [src] with [E], sucking it up!</span>", \
-	 				 "<span class='danger'>You stab [src] with [E]'s probe, destroying it!</span>")
+			user.visible_message("<span class='danger'>[user] dźga [src] za pomocą [E], wysysając go!</span>", \
+	 				 "<span class='danger'>Dźgasz [src] sondą [E], niszcząc go!</span>")
 	return TRUE
 
 /mob/living/simple_animal/hostile/blob/blobspore/Life()
@@ -164,7 +164,7 @@
 	H.forceMove(src)
 	oldguy = H
 	update_icons()
-	visible_message("<span class='warning'>The corpse of [H.name] suddenly rises!</span>")
+	visible_message("<span class='warning'>Zwłoki [H.name] nagle powstają!</span>")
 	if(!key)
 		set_playable(ROLE_BLOB)
 

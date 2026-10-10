@@ -28,9 +28,9 @@
 
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-	response_help   = "passes through"
-	response_disarm = "swings through"
-	response_harm   = "punches through"
+	response_help   = "przenika przez"
+	response_disarm = "przeczesuje"
+	response_harm   = "uderza na wylot"
 	unsuitable_atmos_damage = 0
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0) //I don't know how you'd apply those, but revenants no-sell them anyway.
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
@@ -100,13 +100,13 @@
 
 /mob/living/simple_animal/revenant/Login()
 	..()
-	to_chat(src, "<span class='deadsay'><span class='big bold'>You are a revenant.</span></span>")
-	to_chat(src, "<b>Your formerly mundane spirit has been infused with alien energies and empowered into a revenant.</b>")
-	to_chat(src, "<b>You are not dead, not alive, but somewhere in between. You are capable of limited interaction with both worlds.</b>")
-	to_chat(src, "<b>You are invincible and invisible to everyone but other ghosts. Most abilities will reveal you, rendering you vulnerable.</b>")
-	to_chat(src, "<b>To function, you are to drain the life essence from humans. This essence is a resource, as well as your health, and will power all of your abilities.</b>")
-	to_chat(src, "<b><i>You do not remember anything of your past lives, nor will you remember anything about this one after your death.</i></b>")
-	to_chat(src, "<b>Be sure to read <a href=\"https://tgstation13.org/wiki/Revenant\">the wiki page</a> to learn more.</b>")
+	to_chat(src, "<span class='deadsay'><span class='big bold'>Jesteś upiorem.</span></span>")
+	to_chat(src, "<b>Twojego dawniej zwyczajnego ducha nasyciły obce energie, czyniąc z niego upiora.</b>")
+	to_chat(src, "<b>Nie jesteś martwy ani żywy, tylko gdzieś pomiędzy. Możesz w ograniczonym stopniu oddziaływać na oba światy.</b>")
+	to_chat(src, "<b>Jesteś niezniszczalny i niewidzialny dla wszystkich poza innymi duchami. Większość zdolności cię ujawnia, czyniąc cię podatnym na ataki.</b>")
+	to_chat(src, "<b>Aby istnieć, musisz wysysać esencję życiową z ludzi. Esencja to twój zasób i zdrowie zarazem - zasila wszystkie twoje zdolności.</b>")
+	to_chat(src, "<b><i>Nie pamiętasz niczego z poprzednich żyć i nie zapamiętasz niczego z tego po swojej śmierci.</i></b>")
+	to_chat(src, "<b>Więcej dowiesz się z <a href=\"https://tgstation13.org/wiki/Revenant\">artykułu na wiki</a>.</b>")
 	if(!generated_objectives_and_spells)
 		generated_objectives_and_spells = TRUE
 		mind.assigned_role = ROLE_REVENANT
@@ -125,11 +125,11 @@
 		revealed = FALSE
 		incorporeal_move = INCORPOREAL_MOVE_JAUNT
 		invisibility = INVISIBILITY_REVENANT
-		to_chat(src, "<span class='revenboldnotice'>You are once more concealed.</span>")
+		to_chat(src, "<span class='revenboldnotice'>Znów jesteś ukryty.</span>")
 	if(unstun_time && world.time >= unstun_time)
 		unstun_time = 0
 		notransform = FALSE
-		to_chat(src, "<span class='revenboldnotice'>You can move again!</span>")
+		to_chat(src, "<span class='revenboldnotice'>Znów możesz się ruszać!</span>")
 	if(essence_regenerating && !inhibited && essence < essence_regen_cap) //While inhibited, essence will not regenerate
 		essence = min(essence_regen_cap, essence+essence_regen_amount)
 		update_action_buttons_icon() //because we update something required by our spells in life, we need to update our buttons
@@ -164,7 +164,7 @@
 	if(!message)
 		return
 	if(CHAT_FILTER_CHECK(message))
-		to_chat(usr, "<span class='warning'>Your message contains forbidden words.</span>")
+		to_chat(usr, "<span class='warning'>Twoja wiadomość zawiera zakazane słowa.</span>")
 		return
 	message = treat_message_min(message)
 	src.log_talk(message, LOG_SAY)
@@ -204,8 +204,8 @@
 /mob/living/simple_animal/revenant/attackby(obj/item/W, mob/living/user, params)
 	. = ..()
 	if(istype(W, /obj/item/nullrod))
-		visible_message("<span class='warning'>[src] violently flinches!</span>", \
-						"<span class='revendanger'>As \the [W] passes through you, you feel your essence draining away!</span>")
+		visible_message("<span class='warning'>[src] gwałtownie się wzdryga!</span>", \
+						"<span class='revendanger'>Gdy [W] przechodzi przez ciebie, czujesz, jak uchodzi z ciebie esencja!</span>")
 		adjustBruteLoss(25) //hella effective
 		inhibited = TRUE
 		update_action_buttons_icon()
@@ -235,17 +235,17 @@
 	if(!revealed || stasis) //Revenants cannot die if they aren't revealed //or are already dead
 		return 0
 	stasis = TRUE
-	to_chat(src, "<span class='revendanger'>NO! No... it's too late, you can feel your essence [pick("breaking apart", "drifting away")]...</span>")
+	to_chat(src, "<span class='revendanger'>NIE! Nie... już za późno, czujesz, jak twoja esencja [pick("się rozpada", "odpływa")]...</span>")
 	notransform = TRUE
 	revealed = TRUE
 	invisibility = 0
 	playsound(src, 'sound/effects/screech.ogg', 100, 1)
-	visible_message("<span class='warning'>[src] lets out a waning screech as violet mist swirls around its dissolving body!</span>")
+	visible_message("<span class='warning'>[src] wydaje słabnący wrzask, a wokół rozpadającego się ciała wiruje fioletowa mgła!</span>")
 	icon_state = "revenant_draining"
 	for(var/i = alpha, i > 0, i -= 10)
 		stoplag()
 		alpha = i
-	visible_message("<span class='danger'>[src]'s body breaks apart into a fine pile of blue dust.</span>")
+	visible_message("<span class='danger'>Ciało [src] rozpada się w drobny stosik niebieskiego pyłu.</span>")
 	var/reforming_essence = essence_regen_cap //retain the gained essence capacity
 	var/obj/item/ectoplasm/revenant/R = new(get_turf(src))
 	R.essence = max(reforming_essence - 15 * perfectsouls, 75) //minus any perfect souls
@@ -259,7 +259,7 @@
 //reveal, stun, icon updates, cast checks, and essence changing
 /mob/living/simple_animal/revenant/proc/phase_shift()
 	if(unreveal_time) //An ability has forced the revenant to be vulnerable and this should not override that
-		to_chat(src, "<span class='revenwarning'>You cannot become incorporeal yet!</span>")
+		to_chat(src, "<span class='revenwarning'>Nie możesz jeszcze stać się bezcielesny!</span>")
 		return FALSE
 
 	else if(revealed) //Okay, the revenant wasn't forced to be revealed, are they currently vulnerable
@@ -284,10 +284,10 @@
 	invisibility = 0
 	incorporeal_move = FALSE
 	if(!unreveal_time)
-		to_chat(src, "<span class='revendanger'>You have been revealed!</span>")
+		to_chat(src, "<span class='revendanger'>Zostajesz ujawniony!</span>")
 		unreveal_time = world.time + time
 	else
-		to_chat(src, "<span class='revenwarning'>You have been revealed!</span>")
+		to_chat(src, "<span class='revenwarning'>Zostajesz ujawniony!</span>")
 		unreveal_time = unreveal_time + time
 	update_spooky_icon()
 
@@ -298,10 +298,10 @@
 		return
 	notransform = TRUE
 	if(!unstun_time)
-		to_chat(src, "<span class='revendanger'>You cannot move!</span>")
+		to_chat(src, "<span class='revendanger'>Nie możesz się ruszać!</span>")
 		unstun_time = world.time + time
 	else
-		to_chat(src, "<span class='revenwarning'>You cannot move!</span>")
+		to_chat(src, "<span class='revenwarning'>Nie możesz się ruszać!</span>")
 		unstun_time = unstun_time + time
 	update_spooky_icon()
 
@@ -322,17 +322,17 @@
 		return
 	var/turf/T = get_turf(src)
 	if(isclosedturf(T))
-		to_chat(src, "<span class='revenwarning'>You cannot use abilities from inside of a wall.</span>")
+		to_chat(src, "<span class='revenwarning'>Nie możesz używać zdolności z wnętrza ściany.</span>")
 		return FALSE
 	for(var/obj/O in T)
 		if(O.density && !O.CanPass(src, T))
-			to_chat(src, "<span class='revenwarning'>You cannot use abilities inside of a dense object.</span>")
+			to_chat(src, "<span class='revenwarning'>Nie możesz używać zdolności wewnątrz litego obiektu.</span>")
 			return FALSE
 	if(inhibited)
-		to_chat(src, "<span class='revenwarning'>Your powers have been suppressed by nulling energy!</span>")
+		to_chat(src, "<span class='revenwarning'>Energia zerująca tłumi twoje moce!</span>")
 		return FALSE
 	if(!change_essence_amount(essence_cost, TRUE))
-		to_chat(src, "<span class='revenwarning'>You lack the essence to use that ability.</span>")
+		to_chat(src, "<span class='revenwarning'>Brakuje ci esencji, by użyć tej zdolności.</span>")
 		return FALSE
 	return TRUE
 
@@ -400,13 +400,13 @@
 		reform()
 	else
 		inert = TRUE
-		visible_message("<span class='warning'>[src] settles down and seems lifeless.</span>")
+		visible_message("<span class='warning'>[src] uspokaja się i wydaje się martwy.</span>")
 
 /obj/item/ectoplasm/revenant/attack_self(mob/user)
 	if(!reforming || inert)
 		return ..()
-	user.visible_message("<span class='notice'>[user] scatters [src] in all directions.</span>", \
-						 "<span class='notice'>You scatter [src] across the area. The particles slowly fade away.</span>")
+	user.visible_message("<span class='notice'>[user] rozsypuje [src] na wszystkie strony.</span>", \
+						 "<span class='notice'>Rozsypujesz [src] po okolicy. Drobiny powoli znikają.</span>")
 	user.dropItemToGround(src)
 	scatter()
 
@@ -414,15 +414,15 @@
 	..()
 	if(inert)
 		return
-	visible_message("<span class='notice'>[src] breaks into particles upon impact, which fade away to nothingness.</span>")
+	visible_message("<span class='notice'>Po uderzeniu [src] rozpada się na drobiny, które rozpływają się w nicość.</span>")
 	scatter()
 
 /obj/item/ectoplasm/revenant/examine(mob/user)
 	. = ..()
 	if(inert)
-		. += "<span class='revennotice'>It seems inert.</span>"
+		. += "<span class='revennotice'>Wydaje się bezwładny.</span>"
 	else if(reforming)
-		. += "<span class='revenwarning'>It is shifting and distorted. It would be wise to destroy this.</span>"
+		. += "<span class='revenwarning'>Porusza się i zniekształca. Lepiej to zniszczyć.</span>"
 
 /obj/item/ectoplasm/revenant/proc/reform()
 	if(QDELETED(src) || QDELETED(revenant) || inert)
@@ -438,12 +438,12 @@
 				break
 	if(!key_of_revenant)
 		message_admins("The new revenant's old client either could not be found or is in a new, living mob - grabbing a random candidate instead...")
-		var/list/candidates = pollCandidatesForMob("Do you want to be [revenant.name] (reforming)?", ROLE_REVENANT, /datum/role_preference/midround_ghost/revenant, 7.5 SECONDS, revenant)
+		var/list/candidates = pollCandidatesForMob("Chcesz zostać [revenant.name] (odradzanie)?", ROLE_REVENANT, /datum/role_preference/midround_ghost/revenant, 7.5 SECONDS, revenant)
 		if(!LAZYLEN(candidates))
 			qdel(revenant)
 			message_admins("No candidates were found for the new revenant. Oh well!")
 			inert = TRUE
-			visible_message("<span class='revenwarning'>[src] settles down and seems lifeless.</span>")
+			visible_message("<span class='revenwarning'>[src] uspokaja się i wydaje się martwy.</span>")
 			return
 		var/mob/dead/observer/C = pick(candidates)
 		key_of_revenant = C.key
@@ -451,12 +451,12 @@
 			qdel(revenant)
 			message_admins("No ckey was found for the new revenant. Oh well!")
 			inert = TRUE
-			visible_message("<span class='revenwarning'>[src] settles down and seems lifeless.</span>")
+			visible_message("<span class='revenwarning'>[src] uspokaja się i wydaje się martwy.</span>")
 			return
 
 	message_admins("[key_of_revenant] has been [old_key == key_of_revenant ? "re":""]made into a revenant by reforming ectoplasm.")
 	log_game("[key_of_revenant] was [old_key == key_of_revenant ? "re":""]made as a revenant by reforming ectoplasm.")
-	visible_message("<span class='revenboldnotice'>[src] suddenly rises into the air before fading away.</span>")
+	visible_message("<span class='revenboldnotice'>[src] nagle unosi się w powietrze, po czym znika.</span>")
 
 	revenant.essence = essence
 	revenant.essence_regen_cap = essence
@@ -466,7 +466,7 @@
 	qdel(src)
 
 /obj/item/ectoplasm/revenant/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is inhaling [src]! It looks like [user.p_theyre()] trying to visit the shadow realm!</span>")
+	user.visible_message("<span class='suicide'>[user] wdycha [src]! Wygląda na to, że chce odwiedzić krainę cieni!</span>")
 	scatter()
 	return (OXYLOSS)
 
@@ -481,7 +481,7 @@
 
 /datum/objective/revenant/New()
 	targetAmount = rand(350,600)
-	explanation_text = "Absorb [targetAmount] points of essence from humans."
+	explanation_text = "Wchłoń od ludzi [targetAmount] punktów esencji."
 	..()
 
 /datum/objective/revenant/check_completion()
@@ -498,17 +498,17 @@
 /datum/objective/revenantFluff
 
 /datum/objective/revenantFluff/New()
-	var/list/explanationTexts = list("Assist and exacerbate existing threats at critical moments.", \
-									 "Avoid killing in plain sight.", \
-									 "Cause as much chaos and anger as you can without being killed.", \
-									 "Damage and render as much of the station rusted and unusable as possible.", \
-									 "Disable and cause malfunctions in as many machines as possible.", \
-									 "Ensure that any holy weapons are rendered unusable.", \
-									 "Hinder the crew while attempting to avoid being noticed.", \
-									 "Make the crew as miserable as possible.", \
-									 "Make the clown as miserable as possible.", \
-									 "Make the captain as miserable as possible.", \
-									 "Prevent the use of energy weapons where possible.")
+	var/list/explanationTexts = list("Wspieraj i zaostrzaj istniejące zagrożenia w krytycznych momentach.", \
+									 "Unikaj zabijania na oczach innych.", \
+									 "Wywołaj jak najwięcej chaosu i gniewu, nie dając się zabić.", \
+									 "Uszkodź statek i doprowadź jak największą jego część do rdzy i bezużyteczności.", \
+									 "Wyłącz i zepsuj jak najwięcej maszyn.", \
+									 "Dopilnuj, by wszelka święta broń stała się bezużyteczna.", \
+									 "Przeszkadzaj załodze, starając się nie dać zauważyć.", \
+									 "Uprzykrz życie załodze, jak tylko się da.", \
+									 "Uprzykrz życie klaunowi, jak tylko się da.", \
+									 "Uprzykrz życie kapitanowi, jak tylko się da.", \
+									 "W miarę możliwości uniemożliwiaj użycie broni energetycznej.")
 	explanation_text = pick(explanationTexts)
 	..()
 

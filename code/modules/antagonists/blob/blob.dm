@@ -21,12 +21,12 @@
 
 /datum/antagonist/blob/greet()
 	if(!isovermind(owner.current))
-		to_chat(owner,"<span class='userdanger'>You feel bloated.</span>")
+		to_chat(owner,"<span class='userdanger'>Czujesz się wzdęty.</span>")
 	else
 		owner.current.client?.tgui_panel?.give_antagonist_popup("Blob",
-			"Place your core by using the place core button.\n\
-			Expand and manage your resources carefully, the crew will know about your existence soon \
-			and will work together to destroy you.")
+			"Umieść rdzeń przyciskiem umieszczania rdzenia.\n\
+			Rozrastaj się i ostrożnie gospodaruj zasobami - załoga wkrótce dowie się o twoim istnieniu \
+			i wspólnie spróbuje cię zniszczyć.")
 
 /datum/antagonist/blob/on_gain()
 	create_objectives()
@@ -47,7 +47,7 @@
 		pop_action.Grant(owner.current)
 
 /datum/objective/blob_takeover
-	explanation_text = "Reach critical mass!"
+	explanation_text = "Osiągnij masę krytyczną!"
 
 //Non-overminds get this on blob antag assignment
 /datum/action/innate/blobpop

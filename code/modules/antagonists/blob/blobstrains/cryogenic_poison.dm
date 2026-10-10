@@ -14,7 +14,7 @@
 	name = "Cryogenic Poison"
 	description = "wstrzykuje zamrażającą truciznę, która zadaje duże obrażenia w czasie."
 	color = "#8BA6E9"
-	taste_description = "brain freeze"
+	taste_description = "lodowaty ból głowy"
 
 /datum/reagent/blob/cryogenic_poison/reaction_mob(mob/living/M, method=TOUCH, reac_volume, show_message, touch_protection, mob/camera/blob/O)
 	reac_volume = ..()
