@@ -871,7 +871,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/crew_quarters/bar/pvp)
 "bcF" = (
-/obj/item/trash/can/food/beans,
+/obj/item/trash/canned/beans,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -1904,7 +1904,7 @@
 /area/engine/engineering/pvp)
 "cfP" = (
 /obj/structure/table/wood,
-/obj/item/trash/plate,
+/obj/item/plate,
 /turf/open/floor/plasteel/dark,
 /area/bridge/meeting_room/pvp)
 "cfZ" = (
@@ -3543,7 +3543,7 @@
 /obj/item/clothing/head/hardhat/cakehat,
 /obj/item/book/manual/chef_recipes,
 /obj/item/storage/box/donkpockets,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 6
 	},
@@ -7271,7 +7271,7 @@
 "hsT" = (
 /obj/structure/table/wood,
 /obj/item/hand_labeler,
-/obj/item/reagent_containers/food/snacks/cakeslice/plain,
+/obj/item/food/cakeslice/plain,
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/hallway/pvp)
@@ -10736,7 +10736,7 @@
 /area/quartermaster/pvp)
 "kLS" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/cakeslice/plain{
+/obj/item/food/cakeslice/plain{
 	desc = "In memory of Kazaaak-Aerwhisp";
 	pixel_y = -3
 	},
@@ -12131,7 +12131,7 @@
 /area/quartermaster/pvp)
 "mla" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/cakeslice/plain,
+/obj/item/food/cakeslice/plain,
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "aether_kitchen";
 	name = "kitchen shutters"
@@ -13397,7 +13397,7 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/pvp)
 "nxw" = (
-/obj/item/reagent_containers/food/snacks/cakeslice/plain{
+/obj/item/food/cakeslice/plain{
 	desc = "In memory of Kazaaak-Aerwhisp";
 	pixel_y = -3
 	},
@@ -14992,7 +14992,7 @@
 	pixel_y = 3
 	},
 /obj/item/storage/box/lights,
-/obj/item/reagent_containers/food/snacks/cakeslice/plain,
+/obj/item/food/cakeslice/plain,
 /turf/open/floor/plasteel,
 /area/quartermaster/pvp)
 "oZP" = (
@@ -16007,7 +16007,7 @@
 /area/hallway/pvp)
 "qeh" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/cakeslice/plain{
+/obj/item/food/cakeslice/plain{
 	desc = "In memory of Kazaak-Aerwhisp";
 	pixel_x = 7;
 	pixel_y = 4
@@ -16414,7 +16414,7 @@
 "qCo" = (
 /obj/structure/table,
 /obj/item/modular_computer/laptop/preset/civillian,
-/obj/item/reagent_containers/food/snacks/cakeslice/plain{
+/obj/item/food/cakeslice/plain{
 	desc = "In memory of Kazaaak-Aerwhisp. Never forget his sweet tooth, and his sweet heart.";
 	pixel_x = -7;
 	pixel_y = -6
@@ -16963,7 +16963,7 @@
 /area/engine/engineering/pvp)
 "rhg" = (
 /obj/structure/table,
-/obj/item/trash/plate,
+/obj/item/plate,
 /obj/item/kitchen/fork,
 /turf/open/floor/plating,
 /area/maintenance/pvp)
@@ -19129,7 +19129,7 @@
 "thn" = (
 /obj/structure/table/wood,
 /obj/item/storage/secure/briefcase,
-/obj/item/reagent_containers/food/snacks/cakeslice/plain{
+/obj/item/food/cakeslice/plain{
 	desc = "In memory of Kazaak-Aerwhisp";
 	pixel_x = 7;
 	pixel_y = 4
@@ -19913,7 +19913,7 @@
 "udb" = (
 /obj/structure/table/reinforced,
 /obj/item/radio/intercom,
-/obj/item/reagent_containers/food/snacks/cakeslice/plain{
+/obj/item/food/cakeslice/plain{
 	desc = "In memory of Kazaaak-Aerwhisp";
 	pixel_y = -3
 	},
@@ -20230,7 +20230,7 @@
 /area/science/pvp)
 "urX" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/cakeslice/carrot,
+/obj/item/food/cakeslice/carrot,
 /turf/open/floor/plasteel/tech/grid,
 /area/hallway/pvp)
 "usn" = (
@@ -23843,7 +23843,7 @@
 /obj/structure/table,
 /obj/item/paper_bin,
 /obj/item/folder/blue,
-/obj/item/reagent_containers/food/snacks/cakeslice/plain,
+/obj/item/food/cakeslice/plain,
 /obj/structure/extinguisher_cabinet/west,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/captain/pvp)

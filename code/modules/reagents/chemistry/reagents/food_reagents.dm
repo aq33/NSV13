@@ -109,51 +109,85 @@
 		M.satiety += 30
 	. = ..()
 
-/datum/reagent/consumable/cooking_oil
-	name = "Cooking Oil"
-	description = "A variety of cooking oil derived from fat or plants. Used in food preparation and frying."
+/datum/reagent/consumable/nutriment/protein //this is from a tg pr that actually makes use of this reagent. At the moment that I am porting newfood, we are just using it as filler to have something other than vitamins and nutriments.
+	name = "Protein"
+	description = "A natural polyamide made up of amino acids. An essential constituent of mosts known forms of life."
+	brute_heal = 0.8 //Rewards the player for eating a balanced diet.
+	nutriment_factor = 9 * REAGENTS_METABOLISM //45% as calorie dense as corn oil.
+
+/datum/reagent/consumable/nutriment/fat
+	name = "Fat"
+	description = "Triglycerides found in vegetable oils and fatty animal tissue."
+	color = "#f0eed7"
+	taste_description = "lard"
+	brute_heal = 0
+	burn_heal = 1
+	nutriment_factor = 18 // Twice as nutritious compared to protein and carbohydrates
+	var/fry_temperature = 450 //Around ~350 F (117 C) which deep fryers operate around in the real world
+
+/datum/reagent/consumable/nutriment/fat/reaction_obj(obj/exposed_obj, reac_volume)
+	. = ..()
+	if(!holder || (holder.chem_temp <= fry_temperature))
+		return
+	if(!isitem(exposed_obj) || HAS_TRAIT(exposed_obj, TRAIT_FOOD_FRIED))
+		return
+	// if the fried obj is indestructible or under the fry blacklist (His Grace), we dont want it to be fried, for obvious reasons
+	if(is_type_in_typecache(exposed_obj, GLOB.oilfry_blacklisted_items) || (exposed_obj.resistance_flags & INDESTRUCTIBLE))
+		exposed_obj.visible_message("<span class='notice'>The hot oil has no effect on [exposed_obj]!</span>")
+		return
+	// if we are holding an item/atom inside, we dont want to arbitrarily fry this item
+	if(SEND_SIGNAL(exposed_obj, COMSIG_CONTAINS_STORAGE))
+		exposed_obj.visible_message("<span class='notice'>The hot oil splatters about as [exposed_obj] touches it. It seems too full to cook properly!</span>")
+		return
+
+	log_game("[exposed_obj.name] ([exposed_obj.type]) has been deep fried by a reaction with cooking oil reagent at [AREACOORD(exposed_obj)].")
+	exposed_obj.visible_message("<span class='warning'>[exposed_obj] rapidly fries as it's splashed with hot oil! Somehow.</span>")
+	exposed_obj.AddElement(/datum/element/fried_item, volume)
+	exposed_obj.reagents.add_reagent(src.type, reac_volume)
+
+/datum/reagent/consumable/nutriment/fat/reaction_mob(mob/living/exposed_mob, methods = TOUCH, reac_volume, show_message = TRUE, touch_protection = 0)
+	. = ..()
+	if(!(methods == VAPOR || methods == TOUCH) || isnull(holder) || (holder.chem_temp < fry_temperature)) //Directly coats the mob, and doesn't go into their bloodstream
+		return
+
+	var/burn_damage = min(1, (holder.chem_temp / fry_temperature) * 0.33) //Damage taken per unit //NSV13 - per unit damage also caps at 1 to counteract microdosing.
+	if(methods & TOUCH)
+		burn_damage *= max(1 - touch_protection, 0)
+	var/FryLoss = round(min(30, burn_damage * reac_volume)) //NSV13 - total damage caps at 30.
+	if(!HAS_TRAIT(exposed_mob, TRAIT_OIL_FRIED))
+		exposed_mob.visible_message("<span class='warning'>The boiling oil sizzles as it covers [exposed_mob]!</span>", \
+		"<span class='userdanger'>You're covered in boiling oil!</span>")
+		if(FryLoss)
+			exposed_mob.emote("scream")
+		playsound(exposed_mob, 'sound/machines/fryer/deep_fryer_emerge.ogg', 25, TRUE)
+		ADD_TRAIT(exposed_mob, TRAIT_OIL_FRIED, "cooking_oil_react")
+		addtimer(CALLBACK(exposed_mob, TYPE_PROC_REF(/mob/living, unfry_mob)), 3)
+	if(FryLoss)
+		exposed_mob.adjustFireLoss(FryLoss)
+
+/datum/reagent/consumable/nutriment/fat/reaction_turf(turf/open/exposed_turf, reac_volume)
+	. = ..()
+	if(!istype(exposed_turf) || isgroundlessturf(exposed_turf) || (reac_volume < 5))
+		return
+	exposed_turf.MakeSlippery(TURF_WET_LUBE, min_wet_time = 10 SECONDS, wet_time_to_add = reac_volume * 1.5 SECONDS)
+	exposed_turf.name = "deep-fried [initial(exposed_turf.name)]"
+	exposed_turf.add_atom_colour(color, TEMPORARY_COLOUR_PRIORITY)
+
+/datum/reagent/consumable/nutriment/fat/oil
+	name = "Vegetable Oil"
+	description = "A variety of cooking oil derived from plant fats. Used in food preparation and frying."
 	color = "#EADD6B" //RGB: 234, 221, 107 (based off of canola oil)
-	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN
 	taste_mult = 0.8
 	taste_description = "oil"
-	nutriment_factor = 7 * REAGENTS_METABOLISM //Not very healthy on its own
+	nutriment_factor = 7 //Not very healthy on its own
 	metabolization_rate = 10 * REAGENTS_METABOLISM
-	var/fry_temperature = 450 //Around ~350 F (117 C) which deep fryers operate around in the real world
-	var/boiling //Used in mob life to determine if the oil kills, and only on touch application
 
-/datum/reagent/consumable/cooking_oil/reaction_obj(obj/O, reac_volume)
-	if(holder && holder.chem_temp >= fry_temperature)
-		if(isitem(O) && !istype(O, /obj/item/reagent_containers/food/snacks/deepfryholder))
-			log_game("[O.name] ([O.type]) has been deep fried by a reaction with cooking oil reagent at [AREACOORD(O)].")
-			O.loc.visible_message("<span class='warning'>[O] rapidly fries as it's splashed with hot oil! Somehow.</span>")
-			var/obj/item/reagent_containers/food/snacks/deepfryholder/F = new(O.drop_location(), O)
-			F.fry(volume)
-			F.reagents.add_reagent(/datum/reagent/consumable/cooking_oil, reac_volume)
-
-/datum/reagent/consumable/cooking_oil/reaction_mob(mob/living/M, method = TOUCH, reac_volume, show_message = 1, touch_protection = 0)
-	if(!istype(M))
-		return
-	if(holder && holder.chem_temp >= fry_temperature)
-		boiling = TRUE
-	if(method == VAPOR || method == TOUCH) //Directly coats the mob, and doesn't go into their bloodstream
-		if(boiling)
-			M.visible_message("<span class='warning'>The boiling oil sizzles as it covers [M]!</span>", \
-			"<span class='userdanger'>You're covered in boiling oil!</span>")
-			M.emote("scream")
-			playsound(M, 'sound/machines/fryer/deep_fryer_emerge.ogg', 25, TRUE)
-			var/oil_damage = min(1, (holder.chem_temp / fry_temperature) * 0.33) //Damage taken per unit //NSV13 - per unit damage also caps at 1 to counteract microdosing.
-			M.adjustFireLoss(min(30, oil_damage * reac_volume)) //NSV13 - total damage caps at 30.
-	else
-		..()
-	return TRUE
-
-/datum/reagent/consumable/cooking_oil/reaction_turf(turf/open/T, reac_volume)
-	if(!istype(T) || isgroundlessturf(T))
-		return
-	if(reac_volume >= 5)
-		T.MakeSlippery(TURF_WET_LUBE, min_wet_time = 10 SECONDS, wet_time_to_add = reac_volume * 1.5 SECONDS)
-		T.name = "deep-fried [initial(T.name)]"
-		T.add_atom_colour(color, TEMPORARY_COLOUR_PRIORITY)
+/datum/reagent/consumable/nutriment/fat/oil/olive
+	name = "Olive Oil"
+	description = "A high quality oil, suitable for dishes where the oil is a key flavour."
+	taste_description = "olive oil"
+	color = "#DBCF5C"
+	nutriment_factor = 10
 
 /datum/reagent/consumable/sugar
 	name = "Sugar"
@@ -164,7 +198,7 @@
 	taste_mult = 1.5 // stop sugar drowning out other flavours
 	nutriment_factor = 10 * REAGENTS_METABOLISM
 	metabolization_rate = 2 * REAGENTS_METABOLISM
-	overdose_threshold = 200 // Hyperglycaemic shock
+	overdose_threshold = 100 // Hyperglycaemic shock
 	taste_description = "sweetness"
 
 /datum/reagent/consumable/sugar/overdose_start(mob/living/M)
@@ -448,25 +482,6 @@
 		. = 1
 	..()
 
-/datum/reagent/consumable/cornoil
-	name = "Corn Oil"
-	description = "An oil derived from various types of corn."
-	nutriment_factor = 20 * REAGENTS_METABOLISM
-	color = "#302000" // rgb: 48, 32, 0
-	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "slime"
-
-/datum/reagent/consumable/cornoil/reaction_turf(turf/open/T, reac_volume)
-	if (!istype(T))
-		return
-	T.MakeSlippery(TURF_WET_LUBE, min_wet_time = 10 SECONDS, wet_time_to_add = reac_volume*2 SECONDS)
-	var/obj/effect/hotspot/hotspot = (locate(/obj/effect/hotspot) in T)
-	if(hotspot)
-		var/datum/gas_mixture/lowertemp = T.return_air()
-		lowertemp.set_temperature(max( min(lowertemp.return_temperature()-2000,lowertemp.return_temperature() / 2) ,TCMB))
-		lowertemp.react(src)
-		qdel(hotspot)
-
 /datum/reagent/consumable/enzyme
 	name = "Universal Enzyme"
 	description = "A universal enzyme used in the preparation of certain chemicals and foods."
@@ -619,6 +634,20 @@
 	chem_flags = NONE
 	taste_description = "mayonnaise"
 
+/datum/reagent/consumable/mold // yeah, ok, togopal, I guess you could call that a condiment
+	name = "Mold"
+	description = "This condiment will make any food break the mold. Or your stomach."
+	color ="#708a88"
+	taste_description = "rancid fungus"
+	chem_flags = NONE
+
+/datum/reagent/consumable/eggrot
+	name = "Rotten Eggyolk"
+	description = "It smells absolutely dreadful."
+	color ="#708a88"
+	taste_description = "rotten eggs"
+	chem_flags = NONE
+
 /datum/reagent/consumable/tearjuice
 	name = "Tear Juice"
 	description = "A blinding substance extracted from certain onions."
@@ -668,6 +697,20 @@
 /datum/reagent/consumable/nutriment/stabilized/on_mob_life(mob/living/carbon/M)
 	if(M.nutrition > NUTRITION_LEVEL_FULL - 25)
 		M.adjust_nutrition(-3*nutriment_factor)
+	..()
+
+/datum/reagent/consumable/maltodextrin
+	name = "Maltodextrin"
+	description = "A common filler found in processed foods. Foods containing it will leave you feeling full for a much shorter time."
+	color = "#ffffff"
+	chem_flags = CHEMICAL_RNG_GENERAL
+	taste_mult = 0.1 // Taste the salt and sugar not the cheap carbs
+	taste_description = "processed goodness"
+	nutriment_factor = 0
+	metabolization_rate = 0.05 * REAGENTS_METABOLISM //Each unit will last 50 ticks
+
+/datum/reagent/consumable/maltodextrin/on_mob_life(mob/living/carbon/M)
+	M.adjust_nutrition(-0.3) //Each unit will match nutriment 1:1 when completely processed
 	..()
 
 ////Lavaland Flora Reagents////

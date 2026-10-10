@@ -99,7 +99,7 @@
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "afr" = (
-/obj/item/reagent_containers/food/snacks/spaghetti/butternoodles,
+/obj/item/food/spaghetti/butternoodles,
 /obj/item/paper/pamphlet/gateway,
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/pool_party)
@@ -3034,7 +3034,7 @@
 /turf/open/floor/carpet,
 /area/crew_quarters/dorms)
 "cny" = (
-/obj/item/reagent_containers/food/snacks/cheesiehonkers{
+/obj/item/food/cheesiehonkers{
 	layer = 2.89
 	},
 /obj/effect/landmark/start/ai,
@@ -4249,7 +4249,7 @@
 /turf/closed/wall/r_wall/ship,
 /area/maintenance/fore)
 "dkR" = (
-/obj/item/trash/can/food/peaches/maint,
+/obj/item/trash/canned/peaches/maint,
 /obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -8683,7 +8683,7 @@
 /area/crew_quarters/dorms)
 "gyp" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/cakeslice/plain,
+/obj/item/food/cakeslice/plain,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -10616,7 +10616,7 @@
 /area/crew_quarters/dorms)
 "iaw" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/honkdae{
+/obj/item/food/honkdae{
 	desc = "Honkdae, a cruel fate for a clown mask, considering you need one for this desert.";
 	pixel_x = -8;
 	pixel_y = 14
@@ -14891,7 +14891,7 @@
 /obj/item/extinguisher{
 	pixel_x = 13
 	},
-/obj/item/reagent_containers/food/snacks/sundae{
+/obj/item/food/sundae{
 	pixel_x = -8;
 	pixel_y = 8
 	},
@@ -18427,7 +18427,7 @@
 "ogk" = (
 /obj/item/healthanalyzer,
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /obj/item/bikehorn,
 /obj/item/soapstone/empty,
 /obj/item/gps,
@@ -19651,7 +19651,7 @@
 /area/engine/engineering/reactor_control)
 "pca" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/taco{
+/obj/item/food/taco{
 	name = "taigo"
 	},
 /obj/item/storage/box/matches,
@@ -22650,13 +22650,13 @@
 /area/bridge/meeting_room/council)
 "rje" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/cakeslice/birthday,
-/obj/item/reagent_containers/food/snacks/pie/cream{
+/obj/item/food/cakeslice/birthday,
+/obj/item/food/pie/cream{
 	desc = "BANANANANAAAAA SLAMMMAAAA";
 	pixel_x = 11;
 	pixel_y = 10
 	},
-/obj/item/reagent_containers/food/snacks/candyheart{
+/obj/item/food/candyheart{
 	desc = "This map was released on Valantine&#39;s Day, the day where love was shown with cream pies and physical abuse.";
 	pixel_x = -8;
 	pixel_y = 5
@@ -28411,20 +28411,20 @@
 /area/maintenance/fore)
 "vOM" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/cakeslice/plain{
+/obj/item/food/cakeslice/plain{
 	desc = "In memory of Kazaak-Aerwhisp";
 	pixel_x = 7;
 	pixel_y = 4
 	},
-/obj/item/reagent_containers/food/snacks/cakeslice/plain{
+/obj/item/food/cakeslice/plain{
 	desc = "In memory of Kazaaak-Aerwhisp";
 	pixel_x = -4;
 	pixel_y = 6
 	},
-/obj/item/reagent_containers/food/snacks/cakeslice/plain{
+/obj/item/food/cakeslice/plain{
 	desc = "In memory of Kazaaak-Aerwhisp"
 	},
-/obj/item/reagent_containers/food/snacks/cakeslice/plain{
+/obj/item/food/cakeslice/plain{
 	desc = "In memory of Kazaaak-Aerwhisp. Never forget his sweet tooth, and his sweet heart.";
 	pixel_x = -7;
 	pixel_y = -6
@@ -29927,7 +29927,7 @@
 /obj/structure/table/wood,
 /obj/item/toy/toy_dagger,
 /obj/item/flashlight,
-/obj/item/reagent_containers/food/snacks/grown/banana,
+/obj/item/food/grown/banana,
 /obj/item/trash/can{
 	icon = 'icons/obj/library.dmi';
 	icon_state = "book";
@@ -30631,7 +30631,7 @@
 /obj/item/tank/internals/oxygen/red{
 	desc = "Needed for living"
 	},
-/obj/item/reagent_containers/food/snacks/donkpocket/warm{
+/obj/item/food/donkpocket/warm{
 	desc = "Yummy Donk Pockets! (Paid for by Donk Co.)";
 	pixel_x = 5;
 	pixel_y = -2
@@ -30798,7 +30798,7 @@
 /turf/open/floor/engine,
 /area/nsv/weapons/starboard)
 "xEv" = (
-/obj/item/reagent_containers/food/snacks/cakeslice/plain,
+/obj/item/food/cakeslice/plain,
 /obj/structure/table/glass,
 /obj/machinery/light{
 	dir = 8
@@ -31349,7 +31349,7 @@
 	},
 /obj/item/aiModule/reset/purge,
 /obj/item/aiModule/supplied/oxygen,
-/obj/item/reagent_containers/food/snacks/candyheart,
+/obj/item/food/candyheart,
 /turf/open/floor/engine,
 /area/ai_monitored/nuke_storage)
 "xVt" = (

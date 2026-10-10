@@ -71,7 +71,7 @@
 	time = 40
 	reqs = list(/obj/item/stack/rods = 2,
 				/obj/item/stack/sheet/durathread = 10,
-				/obj/item/reagent_containers/food/snacks/grown/moonflower = 1)
+				/obj/item/food/grown/moonflower = 1)
 	category = CAT_MISC
 
 /obj/item/banner/dominion

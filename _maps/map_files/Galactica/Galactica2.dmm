@@ -635,7 +635,7 @@
 	})
 "att" = (
 /obj/structure/table/reinforced,
-/obj/item/trash/plate,
+/obj/item/plate,
 /obj/item/kitchen/fork,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
@@ -3650,7 +3650,7 @@
 	id = "kitchen";
 	name = "Serving Hatch"
 	},
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /obj/machinery/door/firedoor/border_only/directional/west,
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/effect/landmark/zebra_interlock_point,
@@ -4876,7 +4876,7 @@
 /area/engine/engineering/ftl_room)
 "cOd" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
 /obj/machinery/button/massdriver{
@@ -7325,7 +7325,7 @@
 /area/crew_quarters/theatre)
 "elQ" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /turf/open/floor/wood,
 /area/crew_quarters/theatre)
 "eme" = (
@@ -10588,11 +10588,11 @@
 /turf/open/floor/monotile/dark,
 /area/nsv/briefingroom)
 "gbZ" = (
-/obj/item/reagent_containers/food/snacks/rationpack,
-/obj/item/reagent_containers/food/snacks/rationpack{
+/obj/item/food/rationpack,
+/obj/item/food/rationpack{
 	pixel_y = 4
 	},
-/obj/item/reagent_containers/food/snacks/rationpack{
+/obj/item/food/rationpack{
 	pixel_x = 4
 	},
 /obj/structure/rack,
@@ -17681,7 +17681,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/item/reagent_containers/food/snacks/canned/peaches/maint,
+/obj/item/food/canned/peaches/maint,
 /turf/open/floor/plating,
 /area/maintenance/disposal)
 "kdz" = (
@@ -27214,9 +27214,9 @@
 /area/crew_quarters/theatre)
 "pCT" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
 /obj/item/storage/fancy/candle_box,
 /obj/item/storage/fancy/candle_box,
 /obj/machinery/button/door{
@@ -36129,7 +36129,7 @@
 /area/quartermaster/sorting)
 "uJg" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/burger/ghost,
+/obj/item/food/burger/ghost,
 /turf/open/floor/durasteel/padded,
 /area/maintenance/nsv/deck2/frame5/starboard)
 "uJi" = (
@@ -36856,7 +36856,7 @@
 /turf/open/floor/monotile/dark,
 /area/nsv/briefingroom)
 "vdq" = (
-/obj/item/reagent_containers/food/snacks/deadmouse,
+/obj/item/food/deadmouse,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/frame4/starboard)
 "vdv" = (
@@ -37105,9 +37105,9 @@
 /obj/item/seeds/grape{
 	pixel_x = -6
 	},
-/obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/grown/watermelon,
-/obj/item/reagent_containers/food/snacks/grown/banana,
+/obj/item/food/grown/wheat,
+/obj/item/food/grown/watermelon,
+/obj/item/food/grown/banana,
 /obj/structure/table/glass,
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/plant_analyzer,
@@ -38168,7 +38168,7 @@
 /area/quartermaster/lobby)
 "vRh" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /obj/machinery/newscaster/directional/west,
 /turf/open/floor/monotile/dark,
 /area/crew_quarters/kitchen)
@@ -38329,7 +38329,7 @@
 /turf/open/floor/plating,
 /area/engine/atmos)
 "vVx" = (
-/obj/structure/reagent_dispensers/cooking_oil,
+/obj/structure/reagent_dispensers/nutriment/fat/oil,
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/kitchen/coldroom)
 "vVO" = (
@@ -38672,7 +38672,7 @@
 	dir = 4;
 	pixel_y = 10
 	},
-/obj/item/reagent_containers/food/snacks/carrotfries,
+/obj/item/food/carrotfries,
 /turf/open/floor/durasteel/lino,
 /area/maintenance/nsv/deck2/frame5/starboard)
 "wgD" = (
@@ -40532,7 +40532,7 @@
 	},
 /obj/structure/closet/crate/coffin,
 /obj/item/gps,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
 /obj/machinery/door/window{
 	name = "Mass Driver";
 	req_access_txt = "22"
@@ -40612,14 +40612,14 @@
 /area/hallway/nsv/deck2/primary)
 "xqv" = (
 /obj/structure/table,
-/obj/item/trash/plate,
-/obj/item/trash/plate{
+/obj/item/plate,
+/obj/item/plate{
 	pixel_y = 2
 	},
-/obj/item/trash/plate{
+/obj/item/plate{
 	pixel_y = 4
 	},
-/obj/item/trash/can/food/beans{
+/obj/item/trash/canned/beans{
 	pixel_y = 14
 	},
 /turf/open/floor/plating,

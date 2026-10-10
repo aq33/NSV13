@@ -20159,7 +20159,7 @@
 /obj/structure/kitchenspike,
 /obj/effect/decal/cleanable/blood,
 /obj/item/stack/sheet/animalhide/goliath_hide,
-/obj/item/reagent_containers/food/snacks/meat/slab/goliath,
+/obj/item/food/meat/slab/goliath,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "cJj" = (
@@ -22854,7 +22854,7 @@
 /area/engine/atmos)
 "eJc" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "kitchen";
 	name = "Serving Hatch"
@@ -26959,7 +26959,7 @@
 /area/security/warden)
 "hEG" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/kitchen)
 "hEJ" = (
@@ -28378,16 +28378,16 @@
 	dir = 8
 	},
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/grown/poppy{
+/obj/item/food/grown/poppy{
 	pixel_y = 2
 	},
 /turf/open/floor/plasteel/chapel{
@@ -31283,10 +31283,10 @@
 /area/engine/atmos)
 "kNM" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
-/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/harebell,
 /obj/machinery/light_switch/west,
 /turf/open/floor/plasteel/chapel{
 	dir = 8
@@ -31985,7 +31985,7 @@
 /area/science/storage)
 "lnt" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/donut/jelly/plain,
+/obj/item/food/donut/jelly/plain,
 /turf/open/floor/plating,
 /area/nsv/hanger)
 "lny" = (
@@ -39877,7 +39877,7 @@
 /area/ai_monitored/turret_protected/ai)
 "qGq" = (
 /obj/structure/table,
-/obj/item/trash/plate,
+/obj/item/plate,
 /turf/open/floor/durasteel/padded,
 /area/hallway/primary/central)
 "qHo" = (
@@ -46887,7 +46887,7 @@
 /turf/open/floor/plasteel/dark,
 /area/security/execution/transfer)
 "vBI" = (
-/obj/structure/reagent_dispensers/cooking_oil,
+/obj/structure/reagent_dispensers/nutriment/fat/oil,
 /turf/open/floor/plasteel/dark,
 /area/hallway/secondary/service)
 "vCk" = (
@@ -49663,7 +49663,7 @@
 "xyy" = (
 /obj/structure/table/wood,
 /obj/item/clothing/mask/fakemoustache,
-/obj/item/reagent_containers/food/snacks/baguette,
+/obj/item/food/baguette,
 /obj/item/toy/crayon/spraycan/mimecan{
 	charges = 5
 	},

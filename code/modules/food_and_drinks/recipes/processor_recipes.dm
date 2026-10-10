@@ -2,51 +2,96 @@
 	var/input
 	var/output
 	var/time = 40
+	/// The machine required to do this recipe
 	var/required_machine = /obj/machinery/processor
+	/// Multiplied additional food made when processed
+	var/food_multiplier = 1
 
 /datum/food_processor_process/meat
-	input = /obj/item/reagent_containers/food/snacks/meat/slab
-	output = /obj/item/reagent_containers/food/snacks/meatball
+	input = /obj/item/food/meat/slab
+	output = /obj/item/food/raw_meatball
+	food_multiplier = 3
+
+/datum/food_processor_process/cutlet
+	input = /obj/item/food/meat/cutlet/plain
+	output = /obj/item/food/raw_meatball
+
+/datum/food_processor_process/meat/human
+	input = /obj/item/food/meat/slab/human
+	output = /obj/item/food/raw_meatball/human
+
+/datum/food_processor_process/cutlet/human
+	input = /obj/item/food/meat/cutlet/plain/human
+	output = /obj/item/food/raw_meatball/human
+
+/datum/food_processor_process/meat/corgi
+	input = /obj/item/food/meat/slab/corgi
+	output = /obj/item/food/raw_meatball/corgi
+
+/datum/food_processor_process/meat/xeno
+	input = /obj/item/food/meat/slab/xeno
+	output = /obj/item/food/raw_meatball/xeno
+
+/datum/food_processor_process/cutlet/xeno
+	input = /obj/item/food/meat/cutlet/xeno
+	output = /obj/item/food/raw_meatball/xeno
+
+/datum/food_processor_process/meat/bear
+	input = /obj/item/food/meat/slab/bear
+	output = /obj/item/food/raw_meatball/bear
+
+/datum/food_processor_process/cutlet/bear
+	input = /obj/item/food/meat/cutlet/bear
+	output = /obj/item/food/raw_meatball/bear
+
+/datum/food_processor_process/meat/chicken
+	input = /obj/item/food/meat/slab/chicken
+	output = /obj/item/food/raw_meatball/chicken
+	food_multiplier = 3
+
+/datum/food_processor_process/cutlet/chicken
+	input = /obj/item/food/meat/cutlet/chicken
+	output = /obj/item/food/raw_meatball/chicken
 
 /datum/food_processor_process/bacon
-	input = /obj/item/reagent_containers/food/snacks/meat/rawcutlet
-	output = /obj/item/reagent_containers/food/snacks/meat/rawbacon
+	input = /obj/item/food/meat/rawcutlet
+	output = /obj/item/food/meat/rawbacon
 
 /datum/food_processor_process/potatowedges
-	input = /obj/item/reagent_containers/food/snacks/grown/potato/wedges
-	output = /obj/item/reagent_containers/food/snacks/fries
+	input = /obj/item/food/grown/potato/wedges
+	output = /obj/item/food/fries
 
 /datum/food_processor_process/sweetpotato
-	input = /obj/item/reagent_containers/food/snacks/grown/potato/sweet
-	output = /obj/item/reagent_containers/food/snacks/yakiimo
+	input = /obj/item/food/grown/potato/sweet
+	output = /obj/item/food/yakiimo
 
 /datum/food_processor_process/potato
-	input = /obj/item/reagent_containers/food/snacks/grown/potato
-	output = /obj/item/reagent_containers/food/snacks/tatortot
+	input = /obj/item/food/grown/potato
+	output = /obj/item/food/tatortot
 
 /datum/food_processor_process/carrot
-	input = /obj/item/reagent_containers/food/snacks/grown/carrot
-	output = /obj/item/reagent_containers/food/snacks/carrotfries
+	input = /obj/item/food/grown/carrot
+	output = /obj/item/food/carrotfries
 
 /datum/food_processor_process/soybeans
-	input = /obj/item/reagent_containers/food/snacks/grown/soybeans
-	output = /obj/item/reagent_containers/food/snacks/soydope
+	input = /obj/item/food/grown/soybeans
+	output = /obj/item/food/soydope
 
 /datum/food_processor_process/spaghetti
-	input = /obj/item/reagent_containers/food/snacks/doughslice
-	output = /obj/item/reagent_containers/food/snacks/spaghetti
+	input = /obj/item/food/doughslice
+	output = /obj/item/food/spaghetti/raw
 
 /datum/food_processor_process/corn
-	input = /obj/item/reagent_containers/food/snacks/grown/corn
-	output = /obj/item/reagent_containers/food/snacks/tortilla
+	input = /obj/item/food/grown/corn
+	output = /obj/item/food/tortilla
 
 /datum/food_processor_process/tortilla
-	input = /obj/item/reagent_containers/food/snacks/tortilla
-	output = /obj/item/reagent_containers/food/snacks/cornchips
+	input = /obj/item/food/tortilla
+	output = /obj/item/food/cornchips
 
 /datum/food_processor_process/parsnip
-	input = /obj/item/reagent_containers/food/snacks/grown/parsnip
-	output = /obj/item/reagent_containers/food/snacks/roastparsnip
+	input = /obj/item/food/grown/parsnip
+	output = /obj/item/food/roastparsnip
 
 /datum/food_processor_process/mob/slime
 	input = /mob/living/simple_animal/slime
@@ -55,40 +100,40 @@
 
 /datum/food_processor_process/fish
 	input = /obj/item/fish
-	output = /obj/item/reagent_containers/food/snacks/carpmeat/icantbeliveitsnotcarp
+	output = /obj/item/food/fishmeat
 
 /datum/food_processor_process/bluemix
-	input = /obj/item/reagent_containers/food/snacks/cheesemix_heated/blue
-	output = /obj/item/reagent_containers/food/snacks/store/cheesewheel/blue
+	input = /obj/item/food/cheesemix_heated/blue
+	output = /obj/item/food/cheese/wheel/blue
 
 /datum/food_processor_process/briemix
-	input = /obj/item/reagent_containers/food/snacks/cheesemix_heated/brie
-	output = /obj/item/reagent_containers/food/snacks/store/cheesewheel/brie
+	input = /obj/item/food/cheesemix_heated/brie
+	output = /obj/item/food/cheese/wheel/brie
 
 /datum/food_processor_process/cheddarmix
-	input = /obj/item/reagent_containers/food/snacks/cheesemix_heated/cheddar
-	output = /obj/item/reagent_containers/food/snacks/store/cheesewheel/cheddar
+	input = /obj/item/food/cheesemix_heated/cheddar
+	output = /obj/item/food/cheese/wheel/cheddar
 
 /datum/food_processor_process/fetamix
-	input = /obj/item/reagent_containers/food/snacks/cheesemix_heated/feta
-	output = /obj/item/reagent_containers/food/snacks/store/cheesewheel/feta
+	input = /obj/item/food/cheesemix_heated/feta
+	output = /obj/item/food/cheese/wheel/feta
 
 /datum/food_processor_process/goatmix
-	input = /obj/item/reagent_containers/food/snacks/cheesemix_heated/goat
-	output = /obj/item/reagent_containers/food/snacks/store/cheesewheel/goat
+	input = /obj/item/food/cheesemix_heated/goat
+	output = /obj/item/food/cheese/wheel/goat
 
 /datum/food_processor_process/halloumimix
-	input = /obj/item/reagent_containers/food/snacks/cheesemix_heated/halloumi
-	output = /obj/item/reagent_containers/food/snacks/store/cheesewheel/halloumi
+	input = /obj/item/food/cheesemix_heated/halloumi
+	output = /obj/item/food/cheese/wheel/halloumi
 
 /datum/food_processor_process/mozzarellamix
-	input = /obj/item/reagent_containers/food/snacks/cheesemix_heated/mozzarella
-	output = /obj/item/reagent_containers/food/snacks/store/cheesewheel/mozzarella
+	input = /obj/item/food/cheesemix_heated/mozzarella
+	output = /obj/item/food/cheese/wheel/mozzarella
 
 /datum/food_processor_process/parmesanmix
-	input = /obj/item/reagent_containers/food/snacks/cheesemix_heated/parmesan
-	output = /obj/item/reagent_containers/food/snacks/cheesewheel/preparmesan
+	input = /obj/item/food/cheesemix_heated/parmesan
+	output = /obj/item/food/cheese/preparmesan
 
 /datum/food_processor_process/swissmix
-	input = /obj/item/reagent_containers/food/snacks/cheesemix_heated/swiss
-	output = /obj/item/reagent_containers/food/snacks/store/cheesewheel/swiss
+	input = /obj/item/food/cheesemix_heated/swiss
+	output = /obj/item/food/cheese/wheel/swiss

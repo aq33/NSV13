@@ -1551,7 +1551,7 @@
 /area/nostromo/medbay)
 "ex" = (
 /obj/structure/table/reinforced,
-/obj/item/trash/plate,
+/obj/item/plate,
 /obj/item/kitchen/fork{
 	pixel_x = 4
 	},

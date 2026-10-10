@@ -64,6 +64,7 @@
 #define ORGAN_EXTERNAL			(1<<3)	//Was this organ implanted/inserted/etc, if true will not be removed during species change.
 #define ORGAN_VITAL				(1<<4)	//Currently only the brain
 #define ORGAN_UNREMOVABLE 		(1<<5)	//Can't be removed using surgery
+#define ORGAN_EDIBLE			(1<<6)	//is a snack? :D
 
 /// Flags for the pod_flags var on /obj/structure/closet/supplypod
 
