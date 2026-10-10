@@ -827,7 +827,7 @@ Returns a faction datum by its name (case insensitive!)
 		if("hazardous") //TODO: Make better anomalies spawn in hazardous systems scaling with threat level.
 			possible_events = list(/datum/round_event_control/carp_migration, /datum/round_event_control/electrical_storm)
 		if("wormhole")
-			possible_events = list(/datum/round_event_control/wormholes, /datum/round_event_control/anomaly) //Wormhole systems are unstable in bluespace
+			possible_events = list(/datum/round_event_control/wormholes, /datum/round_event_control/anomaly/anomaly_bluespace) //Wormhole systems are unstable in bluespace //AQ EDIT - the base anomaly control is disabled (max_occurrences = 0)
 			event_chance = 70 //Highly unstable region of space.
 			create_wormhole()
 			return
@@ -837,7 +837,7 @@ Returns a faction datum by its name (case insensitive!)
 		*/
 		if("radioactive")
 			parallax_property = "radiation_cloud" //All credit goes to https://www.filterforge.com/filters/11427.html
-			possible_events = list(/datum/round_event_control/radiation_storm/deadly, /datum/round_event_control/radioactive_sludge = 5)
+			possible_events = list(/datum/round_event_control/radiation_storm/deadly = 5, /datum/round_event_control/radioactive_sludge = 5) //AQ EDIT - the deadly storm has weight 0, it needs one here to roll at all
 			event_chance = 100 //Radioactive systems are just that: Radioactive
 		if("nebula")
 			parallax_property = "nebula-thick" //All credit goes to https://www.filterforge.com/filters/11427.html

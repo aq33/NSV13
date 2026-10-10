@@ -8,8 +8,8 @@ SUBSYSTEM_DEF(events)
 	var/list/currentrun = list()
 
 	var/scheduled = 0			//The next world.time that a naturally occuring random event can be selected.
-	var/frequency_lower = 4200	//3 minutes lower bound.
-	var/frequency_upper = 6000	//10 minutes upper bound. Basically an event will happen every 3 to 10 minutes.
+	var/frequency_lower = 4200	//7 minutes lower bound.
+	var/frequency_upper = 6000	//10 minutes upper bound. Basically an event will happen every 7 to 10 minutes.
 
 	var/list/holidays			//List of all holidays occuring today or null if no holidays
 	var/wizardmode = FALSE
@@ -75,6 +75,14 @@ SUBSYSTEM_DEF(events)
 		for(var/datum/round_event_control/E in control)
 			if(E.type in system_events)
 				possible_events[E] = system_events[E.type] || E.weight
+		//AQ EDIT - once the system's events are used up (or none can run), pick from the full list instead of skipping this event
+		var/system_event_ready = FALSE
+		for(var/datum/round_event_control/E in possible_events)
+			if(possible_events[E] > 0 && E.canSpawnEvent(players_amt, gamemode))
+				system_event_ready = TRUE
+				break
+		if(!system_event_ready)
+			possible_events = control
 
 	for(var/datum/round_event_control/E in possible_events)
 		if(!E.canSpawnEvent(players_amt, gamemode))
@@ -85,14 +93,20 @@ SUBSYSTEM_DEF(events)
 				continue	//like it never happened
 			if(res == EVENT_CANT_RUN)
 				return
-		sum_of_weights += possible_events[E] || E.weight
+		sum_of_weights += max(possible_events[E] || E.weight, 0) //AQ EDIT - round-start events (negative weight) do not shift the pick
 
-	sum_of_weights = rand(0,sum_of_weights)	//reusing this variable. It now represents the 'weight' we want to select
+	//AQ EDIT - rand(0, sum) used to land on 0 now and then and pick the first runnable event in the list, even one with weight 0
+	if(sum_of_weights <= 0)
+		return
+	sum_of_weights = rand(1,sum_of_weights)	//reusing this variable. It now represents the 'weight' we want to select
 
 	for(var/datum/round_event_control/E in possible_events)
 		if(!E.canSpawnEvent(players_amt, gamemode))
 			continue
-		sum_of_weights -= possible_events[E] || E.weight
+		var/event_weight = possible_events[E] || E.weight
+		if(event_weight <= 0) //AQ EDIT - weight 0 and round-start events are never picked here
+			continue
+		sum_of_weights -= event_weight
 
 		if(sum_of_weights <= 0)				//we've hit our goal
 			if(TriggerEvent(E))

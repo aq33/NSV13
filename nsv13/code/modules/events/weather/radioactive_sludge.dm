@@ -2,7 +2,7 @@
 	name = "Random Sludge Event"
 	typepath = /datum/round_event/radioactive_sludge
 	weight = 0
-	max_occurrences = 1000
+	max_occurrences = 3 // AQ EDIT - was 1000, radioactive systems rolled it over and over
 
 /datum/round_event/radioactive_sludge
 	var/min_tiles = 6

@@ -40,14 +40,7 @@
 	. = ..()
 	if(. != SUCCESSFUL_UNFASTEN)
 		return
-	if(anchored) //just got anchored
-		target_turf = get_turf(get_step(src, src.dir))
-		if(target_turf)
-			RegisterSignal(target_turf, COMSIG_ATOM_ENTERED, PROC_REF(attempt_assembler_action))
-	else //just got unanchored
-		if(target_turf)
-			UnregisterSignal(target_turf, COMSIG_ATOM_ENTERED)
-			target_turf = null
+	update_target_turf() // AQ EDIT
 
 /obj/item/stack/conveyor/slow
 	name = "Slow conveyor assembly"
@@ -79,15 +72,20 @@
 
 /obj/machinery/missile_builder/AltClick(mob/user)
 	. = ..()
+	// AQ EDIT - check the distance before touching the tracked turf, an alt-click from afar used to leave the arm watching nothing
+	if(!user.TurfAdjacent(get_turf(src))) //Checks if mob is adjacent to the machine's turf before allowing rotation
+		return
+	setDir(turn(src.dir, -90))
+	update_target_turf()
+
+/// AQ EDIT - Watches the turf in front of the arm while anchored, and nothing while unanchored.
+/obj/machinery/missile_builder/proc/update_target_turf()
 	if(target_turf)
 		UnregisterSignal(target_turf, COMSIG_ATOM_ENTERED)
 		target_turf = null
-	var/turf/T = get_turf(src)
-	if(!user.TurfAdjacent(T)) //Checks if mob is adjacent to the machine's turf before allowing rotation
+	if(!anchored)
 		return
-	else
-		setDir(turn(src.dir, -90))
-	target_turf = get_turf(get_step(src, src.dir))
+	target_turf = get_step(src, dir)
 	if(target_turf)
 		RegisterSignal(target_turf, COMSIG_ATOM_ENTERED, PROC_REF(attempt_assembler_action))
 
@@ -98,9 +96,7 @@
 	arm.icon_state = arm_icon_state
 	vis_contents += arm
 	arm.mouse_opacity = FALSE
-	target_turf = get_turf(get_step(src, src.dir))
-	if(target_turf)
-		RegisterSignal(target_turf, COMSIG_ATOM_ENTERED, PROC_REF(attempt_assembler_action)) //aaa
+	update_target_turf() // AQ EDIT
 
 /obj/machinery/missile_builder/Destroy()
 	qdel(arm)
@@ -171,7 +167,7 @@
 		return
 	if(entering.loc != source)
 		return
-	if(tracked_component_type && tracked_component_type == entering.type) //Please do throw these hungry machines some components.
+	if(tracked_component_type && istype(entering, tracked_component_type)) //Please do throw these hungry machines some components. AQ EDIT - any part of the tracked kind
 		var/obj/item/entering_item = entering
 		visible_message("<span class='notice'>[src] happily adds [entering_item] to its component storage.</span>")
 		if(world.time >= next_success_sound)
@@ -188,60 +184,90 @@
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 0)
 			next_fail_sound = world.time + 0.2 SECONDS
 		return
-	switch(entering.type) //This is VERY BAD but they do not share a common type.
-		if(/obj/item/ship_weapon/ammunition/missile/missile_casing)
-			var/obj/item/ship_weapon/ammunition/missile/missile_casing/missile_target = entering
-			if(!length(held_components))
-				visible_message("<span class='notice'>[src] sighs.</span>")
-				if(world.time >= next_fail_sound)
-					playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 0)
-					next_fail_sound = world.time + 0.5 SECONDS
-				return
-			var/obj/item/ship_weapon/parts/missile/missile_part = held_components[1]
-			if((missile_part.fits_type && !istype(missile_target, missile_part.fits_type)) || missile_target.state != missile_part.target_state)
-				visible_message("<span class='notice'>[src] sighs.</span>")
-				if(world.time >= next_fail_sound)
-					playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 0)
-					next_fail_sound = world.time + 0.5 SECONDS
-				return
-			trigger_arm_animation()
-			do_item_attack_animation(missile_target, used_item = missile_part)
+	// AQ EDIT - missile and torpedo casings share the construction states and part vars, one path for both.
+	// The arm used to only ever try its first stored part, so one mismatched part stalled the whole line.
+	var/obj/item/ship_weapon/ammunition/casing = entering
+	var/obj/item/ship_weapon/ammunition/missile/missile_casing/missile_target = entering
+	var/obj/item/ship_weapon/ammunition/torpedo/torpedo_casing/torpedo_target = entering
+	var/is_missile = istype(entering, /obj/item/ship_weapon/ammunition/missile/missile_casing)
+	var/obj/item/ship_weapon/parts/missile/part = find_part_for(casing, is_missile ? missile_target.state : torpedo_target.state)
+	if(!part)
+		visible_message("<span class='notice'>[src] sighs.</span>")
+		if(world.time >= next_fail_sound)
+			playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 0)
+			next_fail_sound = world.time + 0.5 SECONDS
+		return
+	trigger_arm_animation()
+	do_item_attack_animation(casing, used_item = part)
 
-			missile_target.state++ //Next step!
-			missile_part.forceMove(missile_target)
-			held_components -= missile_part
-			missile_target.check_completion()
-			if(world.time >= next_success_sound)
-				do_sparks(4, TRUE, missile_target)
-				playsound(src, 'sound/machines/ping.ogg', 50, 0)
-				next_success_sound = world.time + 0.2 SECONDS
-		if(/obj/item/ship_weapon/ammunition/torpedo/torpedo_casing)
-			var/obj/item/ship_weapon/ammunition/torpedo/torpedo_casing/torpedo_target = entering
-			if(!length(held_components))
-				if(world.time >= next_fail_sound)
-					playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 0)
-					next_fail_sound = world.time + 0.5 SECONDS
-				return
-			var/obj/item/ship_weapon/parts/missile/torpedo_part = held_components[1]
-			if((torpedo_part.fits_type && !istype(torpedo_target, torpedo_part.fits_type)) || torpedo_target.state != torpedo_part.target_state)
-				if(world.time >= next_fail_sound)
-					playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 0)
-					next_fail_sound = world.time + 0.5 SECONDS
-				return
-			trigger_arm_animation()
-			do_item_attack_animation(torpedo_target, used_item = torpedo_part)
+	held_components -= part
+	part.forceMove(casing)
+	if(is_missile)
+		missile_target.register_part(part)
+		missile_target.state++ //Next step!
+		missile_target.check_completion()
+	else
+		torpedo_target.register_part(part)
+		torpedo_target.state++
+		torpedo_target.check_completion()
+	if(world.time >= next_success_sound)
+		do_sparks(4, TRUE, casing)
+		playsound(src, 'sound/machines/ping.ogg', 50, 0)
+		next_success_sound = world.time + 0.2 SECONDS
 
-			torpedo_target.state++ //Next step!
-			torpedo_part.forceMove(torpedo_target)
-			held_components -= torpedo_part
-			torpedo_target.check_completion()
-			if(world.time >= next_success_sound)
-				do_sparks(4, TRUE, torpedo_target)
-				playsound(src, 'sound/machines/ping.ogg', 50, 0)
-				next_success_sound = world.time + 0.2 SECONDS
-		else
-			CRASH("Please stop handing the missile assemblers invalid types as valid ammunition. Type: [entering.type]. ALL valid casings must be missile or torpedo types.")
+/// AQ EDIT - First stored part that fits the casing at its current construction state.
+/obj/machinery/missile_builder/assembler/proc/find_part_for(obj/item/ship_weapon/ammunition/casing, casing_state)
+	for(var/obj/item/ship_weapon/parts/missile/part as anything in held_components)
+		if(QDELETED(part) || part.loc != src)
+			held_components -= part
+			continue
+		if(part.target_state != casing_state)
+			continue
+		if(part.fits_type && !istype(casing, part.fits_type))
+			continue
+		return part
 
+/// AQ EDIT - Remembers a part put in by the assembler arm the same way installing it by hand does, so the casing can still be worked on (and examined) by hand.
+/obj/item/ship_weapon/ammunition/missile/missile_casing/proc/register_part(obj/item/ship_weapon/parts/missile/part)
+	if(istype(part, /obj/item/ship_weapon/parts/missile/warhead))
+		wh = part
+	else if(istype(part, /obj/item/ship_weapon/parts/missile/guidance_system))
+		gs = part
+	else if(istype(part, /obj/item/ship_weapon/parts/missile/propulsion_system))
+		ps = part
+	else if(istype(part, /obj/item/ship_weapon/parts/missile/iff_card))
+		iff = part
+
+/// AQ EDIT - See /obj/item/ship_weapon/ammunition/missile/missile_casing/proc/register_part()
+/obj/item/ship_weapon/ammunition/torpedo/torpedo_casing/proc/register_part(obj/item/ship_weapon/parts/missile/part)
+	if(istype(part, /obj/item/ship_weapon/parts/missile/warhead))
+		wh = part
+	else if(istype(part, /obj/item/ship_weapon/parts/missile/guidance_system))
+		gs = part
+	else if(istype(part, /obj/item/ship_weapon/parts/missile/propulsion_system))
+		ps = part
+	else if(istype(part, /obj/item/ship_weapon/parts/missile/iff_card))
+		iff = part
+
+/// AQ EDIT - The kind of part (warhead, guidance, propulsion, IFF) the arm picks up from its belt, so every warhead variant counts as a warhead.
+/obj/machinery/missile_builder/assembler/proc/part_kind(obj/item/ship_weapon/parts/missile/part)
+	var/static/list/kinds = list(
+		/obj/item/ship_weapon/parts/missile/warhead,
+		/obj/item/ship_weapon/parts/missile/guidance_system,
+		/obj/item/ship_weapon/parts/missile/propulsion_system,
+		/obj/item/ship_weapon/parts/missile/iff_card,
+	)
+	for(var/kind in kinds)
+		if(istype(part, kind))
+			return kind
+	return part.type
+
+/// AQ EDIT - Stores a part and starts picking up parts of its kind from the belt.
+/obj/machinery/missile_builder/assembler/proc/store_part(obj/item/ship_weapon/parts/missile/part)
+	part.forceMove(src)
+	held_components |= part
+	if(!tracked_component_type)
+		tracked_component_type = part_kind(part)
 
 ///Starts the machine's arm animation to reset after some time.
 /obj/machinery/missile_builder/proc/trigger_arm_animation()
@@ -283,35 +309,54 @@
 	for(var/i in listofitems)
 		. += "<span class='notice'>[listofitems[i]["name"]] x[listofitems[i]["amount"]]</span>"
 
-/obj/machinery/missile_builder/assembler/attackby(obj/item/I, mob/living/user, params)
+/obj/machinery/missile_builder/assembler/Initialize(mapload)
 	. = ..()
+	if(mapload)
+		return INITIALIZE_HINT_LATELOAD
+
+/// AQ EDIT - Mappers place a part on the arm's own tile, load it so the arm starts out knowing which parts to collect.
+/obj/machinery/missile_builder/assembler/LateInitialize()
+	. = ..()
+	for(var/obj/item/ship_weapon/parts/missile/part in loc)
+		store_part(part)
+
+/obj/machinery/missile_builder/assembler/Exited(atom/movable/gone, direction)
+	. = ..()
+	held_components -= gone // AQ EDIT - parts taken out any other way (deconstruction, explosions) do not stay in the list
+
+/obj/machinery/missile_builder/assembler/attackby(obj/item/I, mob/living/user, params)
+	// AQ EDIT - parts and IDs are handled before the parent proc, which used to also hit the machine with them
 	if(istype(I, /obj/item/ship_weapon/parts/missile))
 		if(!do_after(user, 0.5 SECONDS, target=src))
-			return FALSE
+			return TRUE
+		if(!user.transferItemToLoc(I, src))
+			return TRUE
 		to_chat(user, "<span class='notice'>You slot [I] into [src], ready for construction.</span>")
-		I.forceMove(src)
-		held_components += I
-		tracked_component_type = I.type
+		tracked_component_type = part_kind(I)
+		store_part(I)
+		return TRUE
 	if(istype(I, /obj/item/card/id) && allowed(user))
 		to_chat(user, "<span class='warning'>You dump [src]'s contents out.</span>")
 		for(var/obj/item/X in held_components)
 			X.forceMove(get_turf(src))
-			held_components -= X
+		held_components.Cut()
 		tracked_component_type = null
+		return TRUE
+	return ..()
 
 /obj/machinery/missile_builder/assembler/MouseDrop_T(obj/structure/A, mob/user)
 	. = ..()
-	if(!isliving(user))
+	if(!isliving(user) || !user.Adjacent(src) || !user.Adjacent(A))
 		return FALSE
 	if(istype(A, /obj/structure/closet))
-		if(!LAZYFIND(A.contents, /obj/item/ship_weapon/parts/missile))
+		// AQ EDIT - LAZYFIND looked for the type path itself in the contents, so loading from a crate never worked
+		if(!(locate(/obj/item/ship_weapon/parts/missile) in A))
 			to_chat(user, "<span class='warning'>There's nothing in [A] that can be loaded into [src]...</span>")
 			return FALSE
 		to_chat(user, "<span class='notice'>You start to load [src] with the contents of [A]...</span>")
 		if(do_after(user, 4 SECONDS , target = src))
 			for(var/obj/item/ship_weapon/parts/missile/P in A)
-				P.forceMove(src)
-				held_components += P
+				store_part(P)
 
 /datum/design/board/ammo_sorter_computer
 	name = "Ammo sorter console (circuitboard)"
