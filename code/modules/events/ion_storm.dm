@@ -3,6 +3,7 @@
 	typepath = /datum/round_event/ion_storm
 	weight = 10
 	min_players = 2
+	max_occurrences = 5 // AQ EDIT - quasar and accretion disk systems kept rolling it, the default is 20
 	can_malf_fake_alert = TRUE
 
 /datum/round_event/ion_storm

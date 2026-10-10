@@ -2,6 +2,7 @@
 	name = "Communications Blackout"
 	typepath = /datum/round_event/communications_blackout
 	weight = 10
+	max_occurrences = 5 // AQ EDIT - quasar and accretion disk systems kept rolling it, the default is 20
 
 /datum/round_event/communications_blackout
 	announceWhen	= 1

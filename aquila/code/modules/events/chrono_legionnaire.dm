@@ -14,6 +14,9 @@
 	/// Target an admin picked when forcing the event, used once by the next spawn
 	var/datum/weakref/forced_target
 
+/datum/round_event_control/aquila_chrono_legionnaire/get_random_weight()
+	return weight // only rolls while it has a target, then it is meant to be far more likely than the equal-chance events
+
 /datum/round_event_control/aquila_chrono_legionnaire/canSpawnEvent(players_amt, gamemode)
 	if(!length(aquila_chrono_find_targets()))
 		return FALSE
