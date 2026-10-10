@@ -35,14 +35,14 @@
 	//Already scanned our atom.
 	var/atom/A = parent
 	if(scanned)
-		to_chat(user, "<span class='warning'>[A] has already been analysed.</span>")
+		to_chat(user, "<span class='warning'>[A] został już przeanalizowany.</span>")
 		return
 	//Already scanned another of this type.
 	if(linked_techweb.scanned_atoms[A.type] && !unique)
-		to_chat(user, "<span class='warning'>Datapoints about [A] already in system.</span>")
+		to_chat(user, "<span class='warning'>Dane o [A] są już w systemie.</span>")
 		return
 	if(A.flags_1 & HOLOGRAM_1)
-		to_chat(user, "<span class='warning'>[A] is holographic, no datapoints can be extracted.</span>")
+		to_chat(user, "<span class='warning'>[A] jest holograficzny, nie można z niego pobrać danych.</span>")
 		return
 	scanned = TRUE
 	linked_techweb.add_point_type(TECHWEB_POINT_TYPE_DISCOVERY, point_reward)

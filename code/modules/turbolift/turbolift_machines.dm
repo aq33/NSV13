@@ -26,23 +26,23 @@ GLOBAL_LIST_EMPTY(turbolifts)
 
 /obj/machinery/turbolift_button/attack_hand(mob/user)
 	if (machine_stat & NOPOWER)
-		to_chat(user, "<span class='warning'>[src] does not respond.</span>")
+		to_chat(user, "<span class='warning'>[src] nie odpowiada.</span>")
 	if(!shuttle_id || !floor_id)
-		say("An unexpected error has occured. Please contact a Nanotrasen Turbolift Repair Technician.")
+		say("Wystąpił nieoczekiwany błąd. Skontaktuj się z technikiem napraw turbowind Nanotrasen.")
 		return
 
 	var/obj/docking_port/mobile/turbolift/M = SSshuttle.getShuttle(shuttle_id)
 	var/obj/machinery/computer/turbolift/T = M?.turbolift_computer?.resolve()
 	if(!M || !T)
-		say("An unexpected error has occured. Please contact a Nanotrasen Turbolift Repair Technician.")
+		say("Wystąpił nieoczekiwany błąd. Skontaktuj się z technikiem napraw turbowind Nanotrasen.")
 		return
 
 	if("[floor_id]" in T.destination_queue)
-		say("The current deck is already queued.")
+		say("Obecny pokład jest już w kolejce.")
 	else if(T.z == src.z)
-		say("The turbolift is already at this deck.")
+		say("Turbowinda jest już na tym pokładzie.")
 	else
-		say("The turbolift will arrive shortly. Thank you for using Nanotrasen Turbolift Services(TM).")
+		say("Turbowinda wkrótce przyjedzie. Dziękujemy za skorzystanie z usług turbowind Nanotrasen(TM).")
 		T.destination_queue += "[floor_id]"
 		START_PROCESSING(SSmachines, T)
 
@@ -200,7 +200,7 @@ GLOBAL_LIST_EMPTY(turbolifts)
 		in_use = FALSE
 		return
 
-	say("Departing for Deck [dock.deck]: [dock.name].")
+	say("Odjazd na pokład [dock.deck]: [dock.name].")
 	for(var/datum/weakref/T in airlocks)
 		var/obj/machinery/door/airlock/turbolift/A = T.resolve()
 		if(A)
@@ -213,7 +213,7 @@ GLOBAL_LIST_EMPTY(turbolifts)
 /obj/machinery/computer/turbolift/proc/move(var/destination_id)
 	var/obj/docking_port/mobile/turbolift/M = SSshuttle.getShuttle(shuttle_id)
 	if(!M)
-		say("An unexpected error has occured. The turbolift is now offline. Please contact a Nanotrasen Turbolift Repair Technician.")
+		say("Wystąpił nieoczekiwany błąd. Turbowinda jest teraz wyłączona. Skontaktuj się z technikiem napraw turbowind Nanotrasen.")
 		STOP_PROCESSING(SSmachines, src)
 		online = FALSE
 		log_mapping("TURBOLIFT: [src] could not find mobile dock: [shuttle_id] at [AREACOORD(src)]")
@@ -223,7 +223,7 @@ GLOBAL_LIST_EMPTY(turbolifts)
 
 	var/obj/docking_port/stationary/turbolift/dock = SSshuttle.getDock(destination_id)
 	if(!dock)
-		say("ERROR 404: Deck not found.")
+		say("BŁĄD 404: nie znaleziono pokładu.")
 		destination_queue.Cut(1,2)
 		in_use = FALSE
 		return

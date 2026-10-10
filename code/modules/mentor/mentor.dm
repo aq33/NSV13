@@ -74,7 +74,7 @@ GLOBAL_PROTECT(mentor_href_token)
 	else//Database
 		if(!SSdbcore.Connect())
 			log_world("Failed to connect to database in load_mentors(). Reverting to legacy system.")
-			WRITE_FILE(GLOB.world_game_log, "Failed to connect to database in load_mentors(). Reverting to legacy system.")
+			WRITE_FILE(GLOB.world_game_log, "Nie udało się połączyć z bazą danych w load_mentors(). Powrót do starego systemu.")
 			CONFIG_SET(flag/mentor_legacy_system, TRUE)
 			load_mentors()
 			return
