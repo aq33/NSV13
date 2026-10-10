@@ -3,6 +3,11 @@ set -euo pipefail
 
 source dependencies.sh
 
+if [ "${BYOND_USE_516:-}" = "1" ]; then
+  BYOND_MAJOR=$BYOND_516_MAJOR
+  BYOND_MINOR=$BYOND_516_MINOR
+fi
+
 if [ -d "$HOME/BYOND/byond/bin" ] && grep -Fxq "${BYOND_MAJOR}.${BYOND_MINOR}" $HOME/BYOND/version.txt;
 then
   echo "Using cached directory."

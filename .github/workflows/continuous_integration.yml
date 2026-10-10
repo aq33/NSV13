@@ -66,6 +66,26 @@ jobs:
           source $HOME/BYOND/byond/bin/byondsetup
           python3 tools/ci/template_dm_generator.py
           tools/build/build --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
+  compile_516:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup cache
+        id: cache-byond-516
+        uses: actions/cache@v3
+        with:
+          path: ~/BYOND
+          key: ${{ runner.os }}-byond-516-cache-${{ hashFiles('dependencies.sh') }}
+      - name: Install BYOND 516
+        if: steps.cache-byond-516.outputs.cache-hit != 'true'
+        run: bash tools/ci/install_byond.sh
+        env:
+          BYOND_USE_516: 1
+      - name: Compile All Maps on 516
+        run: |
+          source $HOME/BYOND/byond/bin/byondsetup
+          python3 tools/ci/template_dm_generator.py
+          tools/build/build --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
   run_all_tests:
     runs-on: ubuntu-22.04
     services:
