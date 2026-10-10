@@ -26,9 +26,6 @@
 		else
 			mob.control_object.forceMove(get_step(mob.control_object,direct))
 
-#define MOVEMENT_DELAY_BUFFER 0.75
-#define MOVEMENT_DELAY_BUFFER_DELTA 1.25
-
 /**
   * Move a client in a direction
   *
@@ -68,9 +65,9 @@
 /client/Move(n, direct)
 	if(world.time < move_delay) //do not move anything ahead of this check please
 		return FALSE
-	else
-		next_move_dir_add = 0
-		next_move_dir_sub = 0
+	next_move_dir_add = 0
+	next_move_dir_sub = 0
+
 	var/old_move_delay = move_delay
 	move_delay = world.time + world.tick_lag //this is here because Move() can now be called mutiple times per tick
 	if(!mob || !mob.loc)
@@ -127,10 +124,22 @@
 
 	//We are now going to move
 	var/add_delay = mob.movement_delay()
-	if(old_move_delay + (add_delay*MOVEMENT_DELAY_BUFFER_DELTA) + MOVEMENT_DELAY_BUFFER > world.time)
+	var/glide_delay = add_delay
+	if(NSCOMPONENT(direct) && EWCOMPONENT(direct))
+		glide_delay = FLOOR(glide_delay * sqrt(2), world.tick_lag)
+	mob.set_glide_size(DELAY_TO_GLIDE_SIZE(glide_delay)) // set it now in case of pulled objects
+	//If the move was recent, count using old_move_delay
+	//We want fractional behavior and all
+	if(old_move_delay + world.tick_lag > world.time)
+		//Yes this makes smooth movement stutter if add_delay is too fractional
+		//Yes this is better then the alternative
 		move_delay = old_move_delay
 	else
 		move_delay = world.time
+
+	//Basically an optional override for our glide size
+	//Sometimes you want to look like you're moving with a delay you don't actually have yet
+	visual_delay = 0
 
 	if(L.confused && L.m_intent == MOVE_INTENT_RUN && !HAS_TRAIT(L, TRAIT_CONFUSEIMMUNE))
 		var/newdir = 0
@@ -147,7 +156,11 @@
 	. = ..()
 
 	if((direct & (direct - 1)) && mob.loc == n) //moved diagonally successfully
-		add_delay *= 1.414214 // sqrt(2)
+		add_delay = FLOOR(add_delay * sqrt(2), world.tick_lag)
+	if(visual_delay)
+		mob.set_glide_size(visual_delay)
+	else
+		mob.set_glide_size(DELAY_TO_GLIDE_SIZE(add_delay))
 	move_delay += add_delay
 	if(.) // If mob is null here, we deserve the runtime
 		if(mob.throwing)
@@ -355,6 +368,7 @@
 		return
 	if(!client)
 		return
+	client.visual_delay = MOVEMENT_ADJUSTED_GLIDE_SIZE(inertia_move_delay, SSspacedrift.visual_delay) //Make sure moving into a space move looks like a space move
 
 /// Called when this mob slips over, override as needed
 /mob/proc/slip(knockdown, paralyze, forcedrop, w_amount, obj/O, lube)
