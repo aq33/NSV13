@@ -23,13 +23,13 @@
 	if(!T)
 		return FALSE
 	if(isspaceturf(T))
-		to_chat(owner, "<span class='warning'>You cannot scribe runes in space!</span>")
+		to_chat(owner, "<span class='warning'>Nie możesz kreślić run w kosmosie!</span>")
 		return FALSE
 	if(locate(/obj/effect/rune) in T)
-		to_chat(owner, "<span class='cult'>There is already a rune here.</span>")
+		to_chat(owner, "<span class='cult'>Tu już jest runa.</span>")
 		return FALSE
 	if(!is_station_level(T.z) && !is_mining_level(T.z))
-		to_chat(owner, "<span class='warning'>The veil is not weak enough here.</span>")
+		to_chat(owner, "<span class='warning'>Zasłona nie jest tu dość słaba.</span>")
 		return FALSE
 	return TRUE
 
@@ -39,7 +39,7 @@
 	if(turf_check(T))
 		var/chosen_keyword
 		if(initial(rune_type.req_keyword))
-			chosen_keyword = stripped_input(owner, "Enter a keyword for the new rune.", "Words of Power")
+			chosen_keyword = stripped_input(owner, "Wpisz słowo kluczowe nowej runy.", "Słowa Mocy")
 			if(!chosen_keyword)
 				return
 	//the outer ring is always the same across all runes
