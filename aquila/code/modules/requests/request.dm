@@ -28,6 +28,17 @@
 		message_admins("[key_name_admin(usr)] rejected the response team request from [ADMIN_FULLMONTY(owner)].")
 		log_admin_private("[key_name(usr)] rejected the response team request from [ADMIN_FULLMONTY(owner)].")
 		SSblackbox.record_feedback("tally", "nuke_code_autogeneration_admin_cancelled", 1, message)
+	if(href_list["cancel_wake"])
+		if(req_type != REQUEST_CREW_WAKE)
+			to_chat(usr, "<span class='admin'>You can't cancel this type of request.</span>")
+			return
+		if(!autoaccept)
+			to_chat(usr, "<span class='admin'>You are too late to cancel that!</span>")
+			return
+		autoaccept = FALSE
+		message_admins("[key_name_admin(usr)] rejected the crew wake request from [ADMIN_FULLMONTY(owner)].")
+		log_admin_private("[key_name(usr)] rejected the crew wake request from [ADMIN_FULLMONTY(owner)].")
+		SSblackbox.record_feedback("tally", "crew_wake_admin_cancelled", 1, message)
 
 /datum/request/proc/auto_generate_nuke_code()
 	autoaccept = TRUE
@@ -159,6 +170,58 @@ GLOBAL_VAR_INIT(erts_requested_already, 0)
 		message = "Prośba o przesłanie drużyny szybkiej reakcji została odrzucona. Nie marnujcie naszego czasu."
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(priority_announce), message, "Automatyczny System Awaryjny Centrali"), 2 SECONDS)
 		return FALSE
+
+/// Wakes up willing ghosts as assistants at the cryopods on the ship, unless an admin cancels in time
+/datum/request/proc/auto_wake_crew()
+	autoaccept = TRUE
+	message_admins("Automatically waking up crew from cryostasis requested by [ADMIN_FULLMONTY(owner)] in [REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME] seconds. (<a href='?src=[REF(src)];cancel_wake=1'>CANCEL</a>)")
+	sleep(REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME SECONDS)
+	if(!autoaccept)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(priority_announce), "Prośba o wybudzenie załogi z kriostazy została odrzucona.", "Automatyczny System Awaryjny Centrali"), 2 SECONDS)
+		return FALSE
+	autoaccept = FALSE // Too late to cancel from now on
+
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Czy chcesz wrócić do gry jako [JOB_NAME_ASSISTANT] wybudzony z kriostazy?", JOB_NAME_ASSISTANT, ignore_category = FALSE)
+	var/list/cryopods = list()
+	for(var/obj/machinery/cryopod/pod in GLOB.machines)
+		if(is_station_level(pod.z))
+			cryopods += pod
+
+	var/datum/job/assistant_job = SSjob.GetJob(JOB_NAME_ASSISTANT)
+	var/woken = 0
+	for(var/mob/dead/observer/candidate as anything in candidates)
+		if(!candidate.key || !candidate.client)
+			continue
+		var/mob/living/carbon/human/crewman = new
+		var/datum/character_save/random_character = new // No species yet, so copy_to() randomises name, gender, species and looks
+		random_character.copy_to(crewman)
+		crewman.dna.update_dna_identity()
+		crewman.name = crewman.real_name
+		if(length(cryopods))
+			var/obj/machinery/cryopod/pod = pick(cryopods)
+			crewman.forceMove(get_turf(pod))
+		else
+			SSjob.SendToLateJoin(crewman)
+		crewman.key = candidate.key
+		SSjob.EquipRank(crewman, JOB_NAME_ASSISTANT, TRUE)
+		to_chat(crewman, "<span class='big bold'>Awaryjne wybudzenie z kriostazy</span>")
+		to_chat(crewman, "<span class='notice'>Budzisz się w komorze snu. To nie twoja zmiana: według harmonogramu miałeś spać jeszcze długo. Procedurę awaryjnego wybudzenia zlecił kapitan, a takiego rozkazu nie wydaje się bez powodu. Na pokładzie musiało wydarzyć się coś złego.</span>")
+		to_chat(crewman, "<span class='notice'>Nie wiesz, co się stało, ile trwa obecna zmiana ani kto z załogi jeszcze żyje. Twoja postać nie ma żadnej wiedzy o wydarzeniach tej rundy. Zgłoś się do dowództwa po rozkazy.</span>")
+		assistant_job?.current_positions++
+		GLOB.data_core.manifest_inject(crewman)
+		AnnounceArrival(crewman, JOB_NAME_ASSISTANT)
+		GLOB.joined_player_list += crewman.ckey
+		log_manifest(crewman.mind.key, crewman.mind, crewman, latejoin = TRUE)
+		log_game("[key_name(crewman)] has been woken up from cryostasis as [JOB_NAME_ASSISTANT].")
+		woken++
+
+	if(!woken)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(priority_announce), "Procedura wybudzenia zakończona. Żaden członek załogi w kriostazie nie nadawał się do wybudzenia.", "Automatyczny System Awaryjny Centrali"), 2 SECONDS)
+		return FALSE
+
+	message_admins("[woken] ghost(s) have been woken up from cryostasis as [JOB_NAME_ASSISTANT], requested by [ADMIN_FULLMONTY(owner)].")
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(priority_announce), "Prośba o wybudzenie załogi została zaakceptowana. Z kriostazy wybudzono członków załogi: [woken].", "Automatyczny System Awaryjny Centrali"), 2 SECONDS)
+	return woken
 
 #undef REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME
 #undef ERT_REQUEST_REJECTED

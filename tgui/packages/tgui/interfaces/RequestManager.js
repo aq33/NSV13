@@ -84,6 +84,8 @@ const displayTypeMap = {
   'request_centcom': 'CENTCOM',
   'request_syndicate': 'SYNDICATE',
   'request_nuke': 'NUKE CODE',
+  'request_response_team': 'ERT',
+  'request_crew_wake': 'CREW WAKE',
 };
 
 const RequestType = (props) => {
