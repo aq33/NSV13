@@ -80,7 +80,7 @@
 
 /obj/item/paper/fluff/awaymissions/moonoutpost19/research/evacuation
 	name = "Evacuation Procedure"
-	default_raw_text = "<h3><font color=red>In The Event of Xenobiology Breach: Evacuate staff, Lock down Xenobiology, Notify on-site superiors and/or Central Command immediately.</h3></b><br><br><h3>Current Xenobiology Containment Level:<u><strike>Secure</strike><i><b> RUN                    </h3></b></i></u>"
+	default_raw_text = "<h3><font color=red>W razie wycieku z ksenobiologii: ewakuować personel, zablokować ksenobiologię, natychmiast powiadomić przełożonych na miejscu i/lub Centralę.</h3></b><br><br><h3>Obecny poziom zabezpieczenia ksenobiologii:<u><strike>Bezpieczny</strike><i><b> UCIEKAJ                    </h3></b></i></u>"
 
 /obj/item/paper/fluff/awaymissions/moonoutpost19/log/personal
 	name = "Personal Log"
@@ -92,7 +92,7 @@
 
 /obj/item/paper/fluff/awaymissions/moonoutpost19/engineering
 	name = "Engineering Instructions"
-	default_raw_text = "Alright, listen up. If you're reading this, I'm either taking a shit or I've been recalled back to Command. Either way, you'll need to know how to restore power. We've stolen this stuff from Nanotrasen, so all the equipment is jury-rigged. We have generators that work on both plasma and uranium, about 50 sheets should power the outpost for quite a while. If the generators aren't working, which is very likely, take the power cell on the desk and put it into the APC in the hallway. That should get the place running, at least for a little while."
+	default_raw_text = "Dobra, słuchajcie. Jeśli to czytacie, to albo siedzę w kiblu, albo odwołano mnie do Dowództwa. Tak czy siak, musicie wiedzieć, jak przywrócić zasilanie. Ukradliśmy to wszystko Nanotrasenowi, więc cały sprzęt jest sklecony na szybko. Mamy generatory działające zarówno na plazmę, jak i uran; około 50 arkuszy powinno zasilać posterunek przez dłuższy czas. Jeśli generatory nie działają, co jest bardzo prawdopodobne, weźcie ogniwo z biurka i włóżcie je do APC na korytarzu. To powinno uruchomić to miejsce, przynajmniej na jakiś czas."
 
 /obj/item/paper/fluff/awaymissions/moonoutpost19/log/kenneth
 	name = "Personal Log - Kenneth Cunningham"
@@ -108,14 +108,14 @@
 
 /obj/item/paper/fluff/awaymissions/moonoutpost19/food_specials
 	name = "Specials This Week"
-	default_raw_text = "<b><h2>I Can't Believe It's Not Pasta: Half off on Wednesdays</h2></b><br><br><b><h2><font color=blue>Burger night every Friday 6PM-10PM, free drinks with purchase of meal!</font></h2></b><br><br><b><h2><font color=red>Premiering Tonight: The comedy stylings of Shoe Snatching Willy! 11AM-7PM</font></h2></b>"
+	default_raw_text = "<b><h2>I Can't Believe It's Not Pasta: w środy połowa ceny</h2></b><br><br><b><h2><font color=blue>Wieczór burgerów w każdy piątek 18–22, darmowe napoje przy zakupie posiłku!</font></h2></b><br><br><b><h2><font color=red>Premiera dziś wieczorem: komediowy występ Shoe Snatching Willy'ego! 11–19</font></h2></b>"
 
 /obj/item/paper/fluff/awaymissions/moonoutpost19/welcome
 	name = "Welcome Notice"
-	default_raw_text = "<p><p align=center><h2>Welcome to Moon Outpost 19! Property of Nanotrasen Inc.</h2></p><hr><br><br>Staff Roster:<br>-Dr. Gerald Rosswell: Research Director & Acting Captain<br>-Dr. Sakuma Sano: Xenobiologist<br>-Dr. Mark Douglas: Xenobiologist<br>-Kenneth Cunningham: Security Officer-Ivan Volodin: Engineer<br>-Mathias Kuester: Bartender<br>-Sven Edling: Chef<br>-Steve: Assistant<br><br>Please enjoy your stay, and report any abnormalities to an officer."
+	default_raw_text = "<p><p align=center><h2>Witamy na Księżycowym Posterunku 19! Własność Nanotrasen Inc.</h2></p><hr><br><br>Lista personelu:<br>-Dr Gerald Rosswell: dyrektor badań i p.o. kapitana<br>-Dr Sakuma Sano: ksenobiolog<br>-Dr Mark Douglas: ksenobiolog<br>-Kenneth Cunningham: oficer ochrony-Ivan Volodin: inżynier<br>-Mathias Kuester: barman<br>-Sven Edling: kucharz<br>-Steve: asystent<br><br>Życzymy miłego pobytu; wszelkie nieprawidłowości zgłaszajcie oficerowi."
 
 /obj/item/paper/fluff/awaymissions/moonoutpost19/goodbye_note
 	name = "Note"
-	default_raw_text = "<i>Bugs break out. I run to here and lock door. I hear door next to me break open and screams. All nice people here dead now. I no want to be eaten, and bottle always said to be coward way out, but person who say that is stupid. Mira, there is no escape for me, tell Alexis and Elena that father will never come home, and that I love you all.</i>"
+	default_raw_text = "<i>Robale się wydostać. Ja biec tutaj i zamknąć drzwi. Słyszę, jak drzwi obok się wyłamać i krzyki. Wszyscy mili ludzie tu teraz martwi. Ja nie chcieć być zjedzony, a butelka zawsze mówić, że to wyjście tchórza, ale kto tak mówi, jest głupi. Mira, dla mnie nie ma ucieczki, powiedz Alexis i Elenie, że tata nigdy nie wróci do domu i że kocham was wszystkich.</i>"
 
 

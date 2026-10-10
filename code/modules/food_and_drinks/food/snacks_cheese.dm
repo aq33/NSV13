@@ -106,7 +106,7 @@
 /obj/item/food/cheese/wheel/cheddar/welder_act(mob/living/user, obj/item/W)
 	if(W.use_tool(src, user, 0, volume=40))
 		var/obj/item/stack/sheet/cheese/NR = new (user.loc, 5)
-		to_chat(user, "<span class='notice'>You shape [src] into a sturdier looking cheese with [W].")
+		to_chat(user, "<span class='notice'>Za pomocą [W] formujesz z [src] ser o solidniejszym wyglądzie.")
 		for(var/obj/item/stack/sheet/cheese/R in user.loc)
 			if(R == NR)
 				continue

@@ -7,7 +7,7 @@
 	default_raw_text = "Alert Levels:<BR>\nBlue- Emergency<BR>\n\t1. Caused by fire<BR>\n\t2. Caused by manual interaction<BR>\n\tAction:<BR>\n\t\tClose all fire doors. These can only be opened by resetting the alarm<BR>\nRed- Ejection/Self Destruct<BR>\n\t1. Caused by module operating computer.<BR>\n\tAction:<BR>\n\t\tAfter the specified time the module will eject completely.<BR>\n<BR>\nEngine Maintenance Instructions:<BR>\n\tShut off ignition systems:<BR>\n\tActivate internal power<BR>\n\tActivate orbital balance matrix<BR>\n\tRemove volatile liquids from area<BR>\n\tWear a fire suit<BR>\n<BR>\n\tAfter<BR>\n\t\tDecontaminate<BR>\n\t\tVisit medical examiner<BR>\n<BR>\nToxin Laboratory Procedure:<BR>\n\tWear a gas mask regardless<BR>\n\tGet an oxygen tank.<BR>\n\tActivate internal atmosphere<BR>\n<BR>\n\tAfter<BR>\n\t\tDecontaminate<BR>\n\t\tVisit medical examiner<BR>\n<BR>\nDisaster Procedure:<BR>\n\tFire:<BR>\n\t\tActivate sector fire alarm.<BR>\n\t\tMove to a safe area.<BR>\n\t\tGet a fire suit<BR>\n\t\tAfter:<BR>\n\t\t\tAssess Damage<BR>\n\t\t\tRepair damages<BR>\n\t\t\tIf needed, Evacuate<BR>\n\tMeteor Shower:<BR>\n\t\tActivate fire alarm<BR>\n\t\tMove to the back of ship<BR>\n\t\tAfter<BR>\n\t\t\tRepair damage<BR>\n\t\t\tIf needed, Evacuate<BR>\n\tAccidental Reentry:<BR>\n\t\tActivate fire alarms in front of ship.<BR>\n\t\tMove volatile matter to a fire proof area!<BR>\n\t\tGet a fire suit.<BR>\n\t\tStay secure until an emergency ship arrives.<BR>\n<BR>\n\t\tIf ship does not arrive-<BR>\n\t\t\tEvacuate to a nearby safe area!"
 
 /obj/item/paper/fluff/shuttles/daniel
-	default_raw_text = "i love daniel<br>daniel is my best friend<br><br>you are tearing me apart elise"
+	default_raw_text = "kocham daniela<br>daniel to mój najlepszy przyjaciel<br><br>rozdzierasz mnie, elise"
 
 
 ////////////	Job guides n' fluff
@@ -38,11 +38,11 @@
 
 /obj/item/paper/fluff/jobs/mining/smelter_notice
 	name = "paper- Smelting Operations Closed"
-	default_raw_text = "<B>**NOTICE**</B><BR><BR>Smelting operations moved on-station.<BR><BR>Take your unrefined ore to the Redemption Machine in the Delivery Office to redeem points.<BR><BR>--SS13 Command"
+	default_raw_text = "<B>**UWAGA**</B><BR><BR>Wytapianie przeniesiono na stację.<BR><BR>Zanieś nieprzetopioną rudę do maszyny wymiany rudy w biurze dostaw, by wymienić ją na punkty.<BR><BR>--Dowództwo SS13"
 
 /obj/item/paper/fluff/jobs/security/court_judgment
 	name = "paper- 'Judgment'"
-	default_raw_text = "For crimes against the station, the offender is sentenced to:<BR>\n<BR>\n"
+	default_raw_text = "Za przestępstwa przeciwko stacji sprawca zostaje skazany na:<BR>\n<BR>\n"
 
 /obj/item/paper/fluff/jobs/toxins/chemical_info
 	name = "paper- 'Chemical Information'"
@@ -89,18 +89,18 @@
 
 /obj/item/paper/fluff/stations/centcom/disk_memo
 	name = "memo"
-	default_raw_text = "GET DAT FUKKEN DISK"
+	default_raw_text = "DAWAJ TEN PIEPRZONY DYSK"
 
 /obj/item/paper/fluff/stations/centcom/broken_evac
-	default_raw_text = "Due to circumstances beyond our control, your Emergency Evacuation Shuttle is out of service.<br><br>We apologize for the inconvenience this may cause you.<br><br>Please enjoy the use of this complementary book.<br><br>Sincerely,<br>CentCom Operations Demolitions Examination Retribution Bugfixing Underlining Services"
+	default_raw_text = "Z przyczyn od nas niezależnych wasz prom ewakuacyjny jest nieczynny.<br><br>Przepraszamy za wszelkie niedogodności.<br><br>Prosimy cieszyć się tą darmową książką.<br><br>Z poważaniem,<br>CentCom Operations Demolitions Examination Retribution Bugfixing Underlining Services"
 
 /obj/item/paper/fluff/stations/centcom/bulletin
 	name = "paper- 'Official Bulletin'"
-	default_raw_text = "<BR>CentCom Security<BR>Port Division<BR>Official Bulletin<BR><BR>Inspector,<BR>There is an emergency shuttle arriving today.<BR><BR>Approval is restricted to Nanotrasen employees only. Deny all other entrants.<BR><BR>CentCom Port Commissioner"
+	default_raw_text = "<BR>Ochrona Centrali<BR>Wydział Portowy<BR>Biuletyn urzędowy<BR><BR>Inspektorze,<BR>Dziś przylatuje prom ewakuacyjny.<BR><BR>Zgoda na wejście przysługuje wyłącznie pracownikom Nanotrasen. Odmawiaj wszystkim pozostałym.<BR><BR>Komisarz Portu Centrali"
 
 
 ///////////	Lavaland
 
 /obj/item/paper/fluff/stations/lavaland/orm_notice
 	name = "URGENT!"
-	default_raw_text = "A hastily written note has been scribbled here... <br><br> Please use the ore redemption machine in the cargo office for smelting. PLEASE! <br><br>--The Research Staff"
+	default_raw_text = "Ktoś coś tu nabazgrał w pośpiechu... <br><br> Do wytapiania używajcie maszyny wymiany rudy w biurze zaopatrzenia. PROSZĘ! <br><br>--Personel badawczy"

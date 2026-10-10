@@ -21,7 +21,7 @@
 			return
 		qdel(stack)
 		air_contents.adjust_moles(GAS_PLASMA, moles_created)
-		say("[moles_created] moles of plasma refined.")
+		say("Rafinowano moli plazmy: [moles_created].")
 		return
 
 	if(default_deconstruction_screwdriver(user, "plasma_refinery_o", "plasma_refinery", W))

@@ -30,7 +30,7 @@
 	var/font = PEN_FONT
 
 /obj/item/pen/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is scribbling numbers all over [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit sudoku...</span>")
+	user.visible_message("<span class='suicide'>[user] gryzmoli sobie cyfry po całym ciele za pomocą [src]! Wygląda na to, że próbuje popełnić sudoku...</span>")
 	return(BRUTELOSS)
 
 /obj/item/pen/blue
@@ -66,7 +66,7 @@
 			colour = "blue"
 		else
 			colour = "black"
-	to_chat(user, "<span class='notice'>\The [src] will now write in [colour].</span>")
+	to_chat(user, "<span class='notice'>[src] będzie teraz pisać kolorem: [colour].</span>")
 	desc = "It's a fancy four-color ink pen, set to [colour]."
 
 /obj/item/pen/fountain
@@ -120,10 +120,10 @@
 		desc = "It's an expensive [current_skin] fountain pen. The nib is quite sharp."
 
 /obj/item/pen/attack_self(mob/living/carbon/user)
-	var/deg = input(user, "What angle would you like to rotate the pen head to? (1-360)", "Rotate Pen Head") as null|num
+	var/deg = input(user, "O jaki kąt chcesz obrócić główkę pióra? (1-360)", "Obróć główkę pióra") as null|num
 	if(deg && (deg > 0 && deg <= 360))
 		degrees = deg
-		to_chat(user, "<span class='notice'>You rotate the top of the pen to [degrees] degrees.</span>")
+		to_chat(user, "<span class='notice'>Obracasz górę pióra o [degrees] stopni.</span>")
 		SEND_SIGNAL(src, COMSIG_PEN_ROTATED, deg, user)
 
 /obj/item/pen/attack(mob/living/M, mob/user,stealth)
@@ -132,9 +132,9 @@
 
 	if(!force)
 		if(M.can_inject(user, 1))
-			to_chat(user, "<span class='warning'>You stab [M] with the pen.</span>")
+			to_chat(user, "<span class='warning'>Dźgasz [M] długopisem.</span>")
 			if(!stealth)
-				to_chat(M, "<span class='danger'>You feel a tiny prick!</span>")
+				to_chat(M, "<span class='danger'>Czujesz maleńkie ukłucie!</span>")
 			. = 1
 
 		log_combat(user, M, "stabbed", src)
@@ -146,27 +146,27 @@
 	. = ..()
 	//Changing Name/Description of items. Only works if they have the 'unique_rename' flag set
 	if(isobj(O) && proximity && (O.obj_flags & UNIQUE_RENAME))
-		var/penchoice = input(user, "What would you like to edit?", "Rename or change description?") as null|anything in list("Rename","Change description")
+		var/penchoice = input(user, "Co chcesz edytować?", "Zmienić nazwę czy opis?") as null|anything in list("Rename","Change description")
 		if(QDELETED(O) || !user.canUseTopic(O, BE_CLOSE))
 			return
 		if(penchoice == "Rename")
-			var/input = stripped_input(user,"What do you want to name \the [O.name]?", ,"", MAX_NAME_LEN)
+			var/input = stripped_input(user,"Jak chcesz nazwać [O.name]?", ,"", MAX_NAME_LEN)
 			var/oldname = O.name
 			if(QDELETED(O) || !user.canUseTopic(O, BE_CLOSE))
 				return
 			if(oldname == input)
-				to_chat(user, "You changed \the [O.name] to... well... \the [O.name].")
+				to_chat(user, "Zmieniasz [O.name] na... cóż... [O.name].")
 			else
 				O.name = input
-				to_chat(user, "\The [oldname] has been successfully been renamed to \the [input].")
+				to_chat(user, "Zmieniono nazwę [oldname] na [input].")
 				O.renamedByPlayer = TRUE
 
 		if(penchoice == "Change description")
-			var/input = stripped_input(user,"Describe \the [O.name] here", ,"", 100)
+			var/input = stripped_input(user,"Opisz tutaj [O.name]", ,"", 100)
 			if(QDELETED(O) || !user.canUseTopic(O, BE_CLOSE))
 				return
 			O.desc = input
-			to_chat(user, "You have successfully changed \the [O.name]'s description.")
+			to_chat(user, "Zmieniono opis [O.name].")
 
 /obj/item/pen/get_writing_implement_details()
 	return list(
@@ -219,7 +219,7 @@
 		embedding = list(embed_chance = EMBED_CHANCE, armour_block = 30)
 		throwforce = initial(throwforce)
 		playsound(user, 'sound/weapons/saberoff.ogg', 5, 1)
-		to_chat(user, "<span class='warning'>[src] can now be concealed.</span>")
+		to_chat(user, "<span class='warning'>[src] można teraz ukryć.</span>")
 	else
 		on = TRUE
 		force = 18
@@ -230,7 +230,7 @@
 		embedding = list(embed_chance = 200, max_damage_mult = 15, armour_block = 40) //rule of cool
 		throwforce = 35
 		playsound(user, 'sound/weapons/saberon.ogg', 5, 1)
-		to_chat(user, "<span class='warning'>[src] is now active.</span>")
+		to_chat(user, "<span class='warning'>[src] jest teraz aktywny.</span>")
 	updateEmbedding()
 	var/datum/component/butchering/butchering = src.GetComponent(/datum/component/butchering)
 	butchering.butchering_enabled = on
@@ -268,7 +268,7 @@
 		throwforce = initial(throwforce)
 		throw_speed = initial(throw_speed)
 		throw_range = initial(throw_range)
-		to_chat(user, "You retract the screwdriver.")
+		to_chat(user, "Chowasz śrubokręt.")
 
 	else
 		extended = TRUE
@@ -278,7 +278,7 @@
 		throwforce = 5
 		throw_speed = 3
 		throw_range = 5
-		to_chat(user, "You extend the screwdriver.")
+		to_chat(user, "Wysuwasz śrubokręt.")
 	playsound(src, 'sound/machines/pda_button2.ogg', 50, TRUE) // click
 	update_icon()
 
@@ -290,7 +290,7 @@
 	if(user.zone_selected != BODY_ZONE_PRECISE_EYES && user.zone_selected != BODY_ZONE_HEAD)
 		return ..()
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, "<span class='warning'>You don't want to harm [M]!</span>")
+		to_chat(user, "<span class='warning'>Nie chcesz zrobić krzywdy [M]!</span>")
 		return
 	if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
 		M = user

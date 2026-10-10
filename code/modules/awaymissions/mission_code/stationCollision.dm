@@ -86,25 +86,24 @@ GLOBAL_VAR_INIT(sc_safecode5, "[rand(0,9)]")
 	name = "smudged paper"
 
 /obj/item/paper/fluff/awaymissions/stationcollision/safehint_paper_prison/Initialize(mapload)
-	default_raw_text = "<i>The ink is smudged, you can only make out a couple numbers:</i> '[GLOB.sc_safecode1]**[GLOB.sc_safecode4]*'"
+	default_raw_text = "<i>Atrament jest rozmazany, da się odczytać tylko kilka cyfr:</i> '[GLOB.sc_safecode1]**[GLOB.sc_safecode4]*'"
 	return ..()
 
 /obj/item/paper/fluff/awaymissions/stationcollision/safehint_paper_hydro
 	name = "shredded paper"
 /obj/item/paper/fluff/awaymissions/stationcollision/safehint_paper_hydro/Initialize(mapload)
-	default_raw_text = "<i>Although the paper is shredded, you can clearly see the number:</i> '[GLOB.sc_safecode2]'"
+	default_raw_text = "<i>Choć kartka jest podarta, wyraźnie widać liczbę:</i> '[GLOB.sc_safecode2]'"
 	return ..()
 
 /obj/item/paper/fluff/awaymissions/stationcollision/safehint_paper_caf
 	name = "blood-soaked paper"
 	//This does not have to be in New() because it is a constant. There are no variables in it i.e. [sc_safcode]
-	default_raw_text = "<font color=red><i>This paper is soaked in blood, it is impossible to read any text.</i></font>"
+	default_raw_text = "<font color=red><i>Ta kartka jest przesiąknięta krwią, nie da się odczytać żadnego tekstu.</i></font>"
 
 /obj/item/paper/fluff/awaymissions/stationcollision/safehint_paper_bible
 	name = "hidden paper"
 /obj/item/paper/fluff/awaymissions/stationcollision/safehint_paper_bible/Initialize(mapload)
-	default_raw_text = {"<i>It would appear that the pen hidden with the paper had leaked ink over the paper.
-			However you can make out the last three digits:</i>'[GLOB.sc_safecode3][GLOB.sc_safecode4][GLOB.sc_safecode5]'
+	default_raw_text = {"<i>Wygląda na to, że długopis schowany razem z kartką wylał na nią atrament. Da się jednak odczytać trzy ostatnie cyfry:</i>'[GLOB.sc_safecode3][GLOB.sc_safecode4][GLOB.sc_safecode5]'
 			"}
 	return ..()
 

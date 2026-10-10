@@ -31,7 +31,7 @@
 //caves papers
 
 /obj/item/paper/crumpled/awaymissions/caves/unsafe_area
-	default_raw_text = "<center><b>WARNING</center></b><br><br><center>Majority of this area is considered 'unsafe' past this point. Theres an outpost directly south of here where you can get your bearing and travel further down if needed. Traveling in groups is HIGHLY advised, the shit out there can be extremely deadly if you're alone.</center>"
+	default_raw_text = "<center><b>OSTRZEŻENIE</center></b><br><br><center>Większość tego obszaru za tym punktem uznaje się za „niebezpieczną”. Na południe stąd jest posterunek, gdzie możesz się zorientować i w razie potrzeby zejść niżej. Podróżowanie w grupach jest MOCNO zalecane, to cholerstwo tam na dole może być śmiertelnie niebezpieczne, jeśli jesteś sam.</center>"
 
 /obj/item/paper/fluff/awaymissions/caves/omega
 	name = "Subject Omega Notes"
@@ -42,7 +42,7 @@
 
 /obj/item/paper/fluff/awaymissions/caves/work_notice
 	name = "work notice"
-	default_raw_text = "<center><b>Survival Info For Miners</b></center><br><br><center>The caves are an unforgiving place, the only thing you'll have to traverse is the supplies in your locker and your own wit. Travel in packs when mining and try to shut down the monster dens before they overwhelm you. The job is dangerous but the haul is good, so remember this information and hopefully we'll all go home alive.</center>"
+	default_raw_text = "<center><b>Informacje o przetrwaniu dla górników</b></center><br><br><center>Jaskinie to bezlitosne miejsce, jedyne, czym możesz się w nich posłużyć, to zapasy z twojej szafki i własny spryt. Podczas wydobycia trzymaj się w grupach i staraj się niszczyć legowiska potworów, zanim cię przytłoczą. Praca jest niebezpieczna, ale urobek jest dobry, więc zapamiętaj te informacje, a może wszyscy wrócimy do domu żywi.</center>"
 
 /obj/item/paper/fluff/awaymissions/caves/shipment_notice
 	name = "shipment notice"
@@ -58,4 +58,4 @@
 
 /obj/item/paper/fluff/awaymissions/caves/mech_notice
 	name = "NOTICE!! paper"
-	default_raw_text = "<center><b>NOTICE!!</center></b><br><br><center>Although you may seem indestructible in a mech, remember, THIS SHIT ISN'T LAVA PROOF!! The boys have already had to deal with loosing the last two to salvage because the dumbass thought he could just wade through the lower lakes like it was nothing. The fact he even managed to get back without being fused with what was left of the mech is a miracle in itself. They're built to be resistant against extreme heat, not heat PROOF!</center><br><br><i>Robotics Team</i>"
+	default_raw_text = "<center><b>UWAGA!!</center></b><br><br><center>Choć w mechu możesz wydawać się niezniszczalny, pamiętaj: TO GÓWNO NIE JEST ODPORNE NA LAWĘ!! Chłopaki już stracili dwa ostatnie na złom, bo jakiś debil myślał, że może sobie przejść przez dolne jeziora, jakby nigdy nic. To, że w ogóle wrócił, nie stopiwszy się z resztkami mecha, to istny cud. Są zbudowane, by wytrzymywać ekstremalne gorąco, a nie by być na nie ODPORNE!</center><br><br><i>Zespół robotyki</i>"

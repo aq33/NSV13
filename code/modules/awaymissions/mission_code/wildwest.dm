@@ -71,45 +71,45 @@
 
 /obj/machinery/wish_granter_dark/interact(mob/living/carbon/human/user)
 	if(chargesa <= 0)
-		to_chat(user, "The Wish Granter lies silent.")
+		to_chat(user, "Spełniacz Życzeń milczy.")
 		return
 
 	else if(!ishuman(user))
-		to_chat(user, "You feel a dark stirring inside of the Wish Granter, something you want nothing of. Your instincts are better than any man's.")
+		to_chat(user, "Czujesz w Spełniaczu Życzeń mroczne poruszenie, coś, czego nie chcesz. Twoje instynkty są lepsze niż u jakiegokolwiek człowieka.")
 		return
 
 	else if(is_special_character(user))
-		to_chat(user, "Even to a heart as dark as yours, you know nothing good will come of this.  Something instinctual makes you pull away.")
+		to_chat(user, "Nawet przy sercu tak mrocznym jak twoje wiesz, że nic dobrego z tego nie wyniknie. Coś instynktownego każe ci się odsunąć.")
 
 	else if (!insistinga)
-		to_chat(user, "Your first touch makes the Wish Granter stir, listening to you.  Are you really sure you want to do this?")
+		to_chat(user, "Twój pierwszy dotyk budzi Spełniacza Życzeń, który zaczyna cię słuchać. Czy na pewno chcesz to zrobić?")
 		insistinga++
 
 	else
 		chargesa--
 		insistinga = 0
-		var/wish = input("You want...","Wish") as null|anything in sortList(list("Power","Wealth","Immortality","Peace"))
+		var/wish = input("Pragniesz...","Wish") as null|anything in sortList(list("Power","Wealth","Immortality","Peace"))
 		switch(wish)
 			if("Power")
-				to_chat(user, "<B>Your wish is granted, but at a terrible cost...</B>")
-				to_chat(user, "The Wish Granter punishes you for your selfishness, claiming your soul and warping your body to match the darkness in your heart.")
+				to_chat(user, "<B>Twoje życzenie zostaje spełnione, ale za straszliwą cenę...</B>")
+				to_chat(user, "Spełniacz Życzeń karze cię za twoje samolubstwo, zabierając twoją duszę i wykrzywiając ciało, by pasowało do ciemności w twoim sercu.")
 				user.dna.add_mutation(LASEREYES)
 				user.dna.add_mutation(SPACEMUT)
 				user.dna.add_mutation(XRAY)
 				user.set_species(/datum/species/shadow)
 			if("Wealth")
-				to_chat(user, "<B>Your wish is granted, but at a terrible cost...</B>")
-				to_chat(user, "The Wish Granter punishes you for your selfishness, claiming your soul and warping your body to match the darkness in your heart.")
+				to_chat(user, "<B>Twoje życzenie zostaje spełnione, ale za straszliwą cenę...</B>")
+				to_chat(user, "Spełniacz Życzeń karze cię za twoje samolubstwo, zabierając twoją duszę i wykrzywiając ciało, by pasowało do ciemności w twoim sercu.")
 				new /obj/structure/closet/syndicate/resources/everything(loc)
 				user.set_species(/datum/species/shadow)
 			if("Immortality")
-				to_chat(user, "<B>Your wish is granted, but at a terrible cost...</B>")
-				to_chat(user, "The Wish Granter punishes you for your selfishness, claiming your soul and warping your body to match the darkness in your heart.")
+				to_chat(user, "<B>Twoje życzenie zostaje spełnione, ale za straszliwą cenę...</B>")
+				to_chat(user, "Spełniacz Życzeń karze cię za twoje samolubstwo, zabierając twoją duszę i wykrzywiając ciało, by pasowało do ciemności w twoim sercu.")
 				user.add_verb(/mob/living/carbon/proc/immortality)
 				user.set_species(/datum/species/shadow)
 			if("Peace")
-				to_chat(user, "<B>Whatever alien sentience that the Wish Granter possesses is satisfied with your wish. There is a distant wailing as the last of the Faithless begin to die, then silence.</B>")
-				to_chat(user, "You feel as if you just narrowly avoided a terrible fate...")
+				to_chat(user, "<B>Jakakolwiek obca świadomość zamieszkuje Spełniacza Życzeń, jest usatysfakcjonowana twoim życzeniem. Słychać odległe zawodzenie, gdy ostatni z Niewiernych zaczynają umierać, a potem cisza.</B>")
+				to_chat(user, "Czujesz, że właśnie ledwo uniknąłeś straszliwego losu...")
 				for(var/mob/living/simple_animal/hostile/faithless/F in GLOB.mob_living_list)
 					F.death()
 
@@ -165,10 +165,10 @@
 
 	var/mob/living/carbon/C = usr
 	if(!C.stat)
-		to_chat(C, "<span class='notice'>You're not dead yet!</span>")
+		to_chat(C, "<span class='notice'>Jeszcze nie jesteś martwy!</span>")
 		return
 	if(C.has_status_effect(STATUS_EFFECT_WISH_GRANTERS_GIFT))
-		to_chat(C, "<span class='warning'>You're already resurrecting!</span>")
+		to_chat(C, "<span class='warning'>Już się wskrzeszasz!</span>")
 		return
 	C.apply_status_effect(STATUS_EFFECT_WISH_GRANTERS_GIFT)
 	return 1

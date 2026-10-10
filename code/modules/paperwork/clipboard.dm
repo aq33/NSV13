@@ -24,7 +24,7 @@
 	resistance_flags = FLAMMABLE
 
 /obj/item/clipboard/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] begins putting [user.p_their()] head into the clip of \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaczyna wkładać głowę w klips [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return BRUTELOSS//the clipboard's clip is very strong. industrial duty. can kill a man easily.
 
 /obj/item/clipboard/Initialize(mapload)
@@ -38,10 +38,10 @@
 /obj/item/clipboard/examine()
 	. = ..()
 	if(!integrated_pen && pen)
-		. += "<span class='notice'>Alt-click to remove [pen].</span>"
+		. += "<span class='notice'>Alt-klik, by wyjąć [pen].</span>"
 	var/obj/item/paper/toppaper = toppaper_ref?.resolve()
 	if(toppaper)
-		. += "<span class='notice'>Right-click to remove [toppaper].</span>"
+		. += "<span class='notice'>Prawy klik, by wyjąć [toppaper].</span>"
 
 /// Take out the topmost paper
 /obj/item/clipboard/proc/remove_paper(obj/item/paper/paper, mob/user)
@@ -49,7 +49,7 @@
 		return
 	paper.forceMove(user.loc)
 	user.put_in_hands(paper)
-	to_chat(user, "<span class='notice'>You remove [paper] from [src].</span>")
+	to_chat(user, "<span class='notice'>Wyjmujesz [paper] z [src].</span>")
 	var/obj/item/paper/toppaper = toppaper_ref?.resolve()
 	if(paper == toppaper)
 		toppaper_ref = null
@@ -63,7 +63,7 @@
 /obj/item/clipboard/proc/remove_pen(mob/user)
 	pen.forceMove(user.loc)
 	user.put_in_hands(pen)
-	to_chat(user, "<span class='notice'>You remove [pen] from [src].</span>")
+	to_chat(user, "<span class='notice'>Wyjmujesz [pen] z [src].</span>")
 	pen = null
 	update_icon()
 
@@ -91,13 +91,13 @@
 		if(!user.transferItemToLoc(weapon, src))
 			return
 		toppaper_ref = WEAKREF(weapon)
-		to_chat(user, "<span class='notice'>You clip [weapon] onto [src].</span>")
+		to_chat(user, "<span class='notice'>Przypinasz [weapon] do [src].</span>")
 	else if(istype(weapon, /obj/item/pen) && !pen)
 		//Add a pen into the clipboard, attack (write) if there is already one
 		if(!usr.transferItemToLoc(weapon, src))
 			return
 		pen = weapon
-		to_chat(usr, "<span class='notice'>You slot [weapon] into [src].</span>")
+		to_chat(usr, "<span class='notice'>Wsuwasz [weapon] do [src].</span>")
 	else if(toppaper)
 		toppaper.attackby(user.get_active_held_item(), user)
 	update_icon()
@@ -163,7 +163,7 @@
 			var/obj/item/paper/paper = locate(params["ref"]) in src
 			if(istype(paper))
 				toppaper_ref = WEAKREF(paper)
-				to_chat(usr, "<span class='notice'>You move [paper] to the top.</span>")
+				to_chat(usr, "<span class='notice'>Przenosisz [paper] na wierzch.</span>")
 				update_icon()
 				. = TRUE
 		// Rename the paper (it's a verb)

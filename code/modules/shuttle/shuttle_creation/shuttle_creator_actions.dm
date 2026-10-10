@@ -13,7 +13,7 @@
 	var/obj/machinery/computer/camera_advanced/shuttle_creator/internal_console = target
 	shuttle_creator = internal_console.owner_rsd
 	if(shuttle_creator.update_origin())
-		to_chat(usr, "<span class='warning'>Warning, the shuttle has moved during designation. Please wait for the shuttle to dock and try again.</warning>")
+		to_chat(usr, "<span class='warning'>Ostrzeżenie: prom poruszył się podczas wyznaczania. Poczekaj, aż prom zadokuje, i spróbuj ponownie.</warning>")
 		shuttle_creator.reset_saved_area(FALSE)
 		internal_console.remove_eye_control(owner)
 		return TRUE
@@ -43,7 +43,7 @@
 			connectors_exist = TRUE
 			break
 		if(!connectors_exist)
-			to_chat(usr, "<span class='warning'>This turf requires support, build some catwalks or lattices.</span>")
+			to_chat(usr, "<span class='warning'>To pole wymaga podparcia, zbuduj pomosty lub kratownice.</span>")
 			return
 	if(!shuttle_creator.check_area(list(T)))
 		return
@@ -82,21 +82,21 @@
 	var/turf/T = get_turf(remote_eye)
 	for(var/obj/machinery/door/airlock/A in T)
 		if(get_area(A) != shuttle_creator.loggedOldArea)
-			to_chat(C, "<span class='warning'>Caution, airlock must be on the shuttle to function as a dock.</span>")
+			to_chat(C, "<span class='warning'>Uwaga: aby działać jako dok, śluza musi być na promie.</span>")
 			return
 		if(shuttle_creator.linkedShuttleId)
 			return
 		if(GLOB.custom_shuttle_count > CUSTOM_SHUTTLE_LIMIT)
-			to_chat(C, "<span class='warning'>Shuttle limit reached, sorry.</span>")
+			to_chat(C, "<span class='warning'>Osiągnięto limit promów, przepraszamy.</span>")
 			return
 		if(shuttle_creator.loggedTurfs.len > SHUTTLE_CREATOR_MAX_SIZE)
-			to_chat(C, "<span class='warning'>This shuttle is too large!</span>")
+			to_chat(C, "<span class='warning'>Ten prom jest za duży!</span>")
 			return
 		if(!shuttle_creator.getNonShuttleDirection(T))
-			to_chat(C, "<span class='warning'>Docking port must be on an external wall, with only 1 side exposed to space.</span>")
+			to_chat(C, "<span class='warning'>Port dokowania musi być na ścianie zewnętrznej, z tylko 1 stroną wystawioną na kosmos.</span>")
 			return
 		if(shuttle_creator.shuttle_create_docking_port(A, C))
-			to_chat(C, "<span class='notice'>Shuttle created!</span>")
+			to_chat(C, "<span class='notice'>Prom utworzony!</span>")
 	//Remove eye control
 	var/obj/machinery/computer/camera_advanced/shuttle_creator/internal_console = target
 	internal_console.remove_eye_control(owner)
@@ -109,10 +109,10 @@
 	if(..())
 		return
 	if(shuttle_creator.loggedTurfs.len > SHUTTLE_CREATOR_MAX_SIZE)
-		to_chat(C, "<span class='warning'>This shuttle is too large!</span>")
+		to_chat(C, "<span class='warning'>Ten prom jest za duży!</span>")
 		return
 	if(shuttle_creator.modify_shuttle_area(C))
-		to_chat(C, "<span class='notice'>Shuttle modifications have been finalized.</span>")
+		to_chat(C, "<span class='notice'>Modyfikacje promu zostały sfinalizowane.</span>")
 		//Remove eye control
 	var/obj/machinery/computer/camera_advanced/shuttle_creator/internal_console = target
 	internal_console.remove_eye_control(owner)

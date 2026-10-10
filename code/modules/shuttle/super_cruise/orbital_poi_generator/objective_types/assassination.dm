@@ -10,9 +10,7 @@
 	max_payout = 30000
 
 /datum/orbital_objective/assassination/get_text()
-	return "We have located a hostile agent currently stranded at [station_name]. We need you to send in a team and eliminate the \
-		target. Our intelligence suggests that the target will be armed and dangerous, thus a security team is recommended in this mission. \
-		Please keep in mind that the Nanotrasen approved exploration handheld laser gun is not adept at handling human based targets."
+	return "Zlokalizowaliśmy wrogiego agenta, który utknął na [station_name]. Musicie wysłać zespół i wyeliminować cel. Nasz wywiad sugeruje, że cel będzie uzbrojony i niebezpieczny, dlatego w tej misji zalecany jest zespół ochrony. Pamiętajcie, że zatwierdzony przez Nanotrasen ręczny laser eksploracyjny nie radzi sobie z celami ludzkimi."
 
 //If nobody takes up the ghost role, then we dont care if they died.
 //I know, its a bit sad.
@@ -42,29 +40,23 @@
 		qdel(SA)
 	switch(pickweight(list("secretagentman" = 1, "dictator" = 1, "operative" = 1, "greytide" = 3, "funnyman" = 2)))
 		if("secretagentman")
-			created_human.flavor_text = "On behalf of your Benefactors, you lead a life of danger - To everyone you meet, you stay a stranger. but you moved too much, took too many chances - \
-			Considering Nanotrasen's onto you, odds are you won't live to see tomorrow."
+			created_human.flavor_text = "W imieniu swoich Dobroczyńców wiedziesz niebezpieczne życie – dla każdego, kogo spotkasz, pozostajesz obcym. Ale ruszałeś się za dużo, ryzykowałeś za często – skoro Nanotrasen cię namierzył, pewnie nie dożyjesz jutra."
 			created_human.equipOutfit(/datum/outfit/vip_target/super_spy)
 		if("dictator")
-			created_human.flavor_text = "It has been months since your regime fell. Once a hero, you're now just someone wishing that they will see the next sunrise. You know those \
-				Nanotrasen pigs are after you, and will stop at nothing to capture you. All you want at this point is to get out and survive, however it is likely you will never leave \
-				without being captured, or worse..."
+			created_human.flavor_text = "Minęły miesiące od upadku twojego reżimu. Niegdyś bohater, teraz jesteś tylko kimś, kto ma nadzieję zobaczyć kolejny wschód słońca. Wiesz, że te świnie z Nanotrasen cię ścigają i nie cofną się przed niczym, by cię schwytać. Chcesz już tylko uciec i przeżyć, ale najpewniej nigdy się stąd nie wydostaniesz, nie dając się schwytać, albo gorzej..."
 			created_human.equipOutfit(/datum/outfit/vip_target/vip_dictator)
 		if("greytide")
-			created_human.flavor_text = "You are just an assistant on a lonely derelict station. You dream of going home, but you broke the wrong airlock - \
-			Now your former employer, Nanotrasen, is after you..."
+			created_human.flavor_text = "Jesteś tylko asystentem na samotnej, opuszczonej stacji. Marzysz o powrocie do domu, ale rozwaliłeś niewłaściwą śluzę – teraz twój były pracodawca, Nanotrasen, cię ściga..."
 			created_human.equipOutfit(/datum/outfit/vip_target/greytide)
 		if("operative")
-			created_human.flavor_text = "You are a Syndicate operative employed by Cybersun Industries, currently scavenging for valuable resources in the wrecks of Nanotrasen Derelicts. \
-			However, upon being dropped off for your shift, the shuttle that flew you onboard was shot down by Nanotrasen's forces. You know it's only a matter of time before they find you..."
+			created_human.flavor_text = "Jesteś agentem Syndykatu zatrudnionym przez Cybersun Industries, obecnie przeszukującym wraki opuszczonych placówek Nanotrasen w poszukiwaniu cennych zasobów. Jednak po wysadzeniu cię na zmianę prom, który cię przywiózł, został zestrzelony przez siły Nanotrasen. Wiesz, że to tylko kwestia czasu, zanim cię znajdą..."
 			created_human.equipOutfit(/datum/outfit/vip_target/vip_operative)
 			suit_type = /obj/item/clothing/head/helmet/space/hardsuit/cybersun //On par with the explorer suit, nothing too wacky.
 			mask_type = /obj/item/clothing/mask/gas/syndicate
 		if("funnyman")
-			created_human.flavor_text = "Slip, slip, slip! Your PDA's brought a lot of laughs to this crew, but now that they're - and it's - gone, the Head Of Security's threats are \
-			echoing in your mind..."
+			created_human.flavor_text = "Poślizg, poślizg, poślizg! Twoje PDA przyniosło tej załodze wiele śmiechu, ale teraz, gdy jej – i jego – już nie ma, w twojej głowie odbijają się echem groźby szefa ochrony..."
 			created_human.equipOutfit(/datum/outfit/vip_target/clown)
-	created_human.mind.store_memory("[created_human.flavor_text] - Someone is out to assassinate you... Stay alive.")
+	created_human.mind.store_memory("[created_human.flavor_text] – Ktoś chce cię zabić... Przeżyj.")
 	created_human.mind.add_antag_datum(/datum/antagonist/survivalist)
 	mob_to_kill = created_human
 	//Give them space-worthy suit and other equipment

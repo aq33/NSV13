@@ -157,10 +157,10 @@
 /turf/open/lava/plasma/attackby(obj/item/I, mob/user, params)
 	var/obj/item/reagent_containers/glass/C = I
 	if(C.reagents.total_volume >= C.volume)
-		to_chat(user, "<span class='danger'>[C] is full.</span>")
+		to_chat(user, "<span class='danger'>[C] jest pełny.</span>")
 		return
 	C.reagents.add_reagent(/datum/reagent/toxin/plasma, rand(5, 10))
-	user.visible_message("[user] scoops some plasma from the [src] with \the [C].", "<span class='notice'>You scoop out some plasma from the [src] using \the [C].</span>")
+	user.visible_message("[user] nabiera trochę plazmy z [src] za pomocą [C].", "<span class='notice'>Nabierasz trochę plazmy z [src] za pomocą [C].</span>")
 
 /turf/open/lava/plasma/burn_stuff(AM)
 	. = 0
@@ -226,13 +226,13 @@
 							NB.limb_id = "plasmaman"//change the species_id of the limb to that of a plasmaman
 							NB.no_update = TRUE
 							NB.change_bodypart_status()
-							PP.visible_message("<span class='warning'>[L] screams in pain as [L.p_their()] [NB] melts down to the bone!</span>", \
-											  "<span class='userdanger'>You scream out in pain as your [NB] melts down to the bone, leaving an eerie plasma-like glow where flesh used to be!</span>")
+							PP.visible_message("<span class='warning'>[L] krzyczy z bólu, gdy [NB] topi mu się aż do kości!</span>", \
+											  "<span class='userdanger'>Krzyczysz z bólu, gdy [NB] topi ci się aż do kości, zostawiając niesamowitą, plazmową poświatę tam, gdzie było ciało!</span>")
 						if(!plasma_parts.len && !robo_parts.len) //a person with no potential organic limbs left AND no robotic limbs, time to turn them into a plasmaman
 							PP.IgniteMob()
 							PP.set_species(/datum/species/plasmaman)
-							PP.visible_message("<span class='warning'>[L] bursts into a brilliant purple flame as [L.p_their()] entire body is that of a skeleton!</span>", \
-											  "<span class='userdanger'>Your senses numb as all of your remaining flesh is turned into a purple slurry, sloshing off your body and leaving only your bones to show in a vibrant purple!</span>")
+							PP.visible_message("<span class='warning'>[L] wybucha jaskrawym fioletowym płomieniem, a z całego jego ciała zostaje szkielet!</span>", \
+											  "<span class='userdanger'>Twoje zmysły drętwieją, gdy całe pozostałe ciało zmienia się w fioletową breję, spływa z ciebie i odsłania jedynie twoje kości, jaskrawo fioletowe!</span>")
 
 
 /obj/vehicle/ridden/lavaboat/plasma
@@ -263,11 +263,11 @@
 
 /obj/item/paper/fluff/awaymissions/snowdin/saw_usage
 	name = "SAW Usage"
-	default_raw_text = "YOU SEEN IVAN, WHEN YOU HOLD SAAW LIKE PEESTOL, YOU STRONGER THAN RECOIL FOR FEAR OF HITTING FACE!"
+	default_raw_text = "WIDZIAŁEŚ IVAN, JAK TRZYMASZ PIŁA JAK PISTOLET, JESTEŚ SILNIEJSZY OD ODRZUTU ZE STRACHU, ŻE DOSTANIESZ W TWARZ!"
 
 /obj/item/paper/fluff/awaymissions/snowdin/research_feed
 	name = "Research Feed"
-	default_raw_text = {"<i>A page full of graphs and other detailed information on the seismic activity of the surrounding area.</i>"}
+	default_raw_text = {"<i>Kartka pełna wykresów i innych szczegółowych informacji o aktywności sejsmicznej okolicy.</i>"}
 
 //profile of each of the old crewmembers for the outpost
 
@@ -572,16 +572,15 @@
 
 /obj/effect/mob_spawn/human/syndicatesoldier/coldres/alive
 	name = "sleeper"
-	mob_name = "Syndicate Snow Operative"
+	mob_name = "Operator Syndykatu ze śniegów"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	roundstart = FALSE
 	death = FALSE
 	faction = FACTION_SYNDICATE
 	outfit = /datum/outfit/snowsyndie
-	short_desc = "You are a syndicate operative recently awoken from cryostasis in an underground outpost."
-	flavour_text = "You are a syndicate operative recently awoken from cryostasis in an underground outpost. Monitor Nanotrasen communications and record information. All intruders should be \
-	disposed of swiftly to assure no gathered information is stolen or lost. Try not to wander too far from the outpost as the caves can be a deadly place even for a trained operative such as yourself."
+	short_desc = "Jesteś operatorem Syndykatu, niedawno wybudzonym z kriostazy w podziemnym posterunku."
+	flavour_text = "Jesteś operatorem Syndykatu, niedawno wybudzonym z kriostazy w podziemnym posterunku. Monitoruj łączność Nanotrasen i zapisuj informacje. Wszystkich intruzów należy szybko zlikwidować, by żadne zebrane informacje nie zostały skradzione ani utracone. Staraj się nie oddalać zbytnio od posterunku, bo jaskinie mogą być śmiertelnie niebezpieczne nawet dla wyszkolonego operatora takiego jak ty."
 	use_cooldown = TRUE
 
 /datum/outfit/snowsyndie

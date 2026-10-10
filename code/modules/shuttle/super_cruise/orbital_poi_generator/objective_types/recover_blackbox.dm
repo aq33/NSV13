@@ -13,10 +13,9 @@
 	linked_blackbox.setup_recover(src)
 
 /datum/orbital_objective/recover_blackbox/get_text()
-	. = "Outpost [station_name] recently went dark and is no longer responding to our attempts \
-		to contact them. Send in a team and recover the station's blackbox for a payout of [payout] credits."
+	. = "Posterunek [station_name] niedawno zamilkł i nie odpowiada już na nasze próby kontaktu. Wyślijcie zespół i odzyskajcie czarną skrzynkę stacji, by otrzymać [payout] kr."
 	if(linked_beacon)
-		. += " The station is located at the beacon marked [linked_beacon.name]. Good luck."
+		. += " Stacja znajduje się przy nadajniku oznaczonym [linked_beacon.name]. Powodzenia."
 
 /datum/orbital_objective/recover_blackbox/check_failed()
 	if(!QDELETED(linked_blackbox) || !generated)
@@ -42,7 +41,7 @@
 
 /obj/item/blackbox/objective/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Use in hand on the <b>bridge</b> of the station to send it to Nanotrasen and complete the objective.</span>"
+	. += "<span class='notice'>Użyj w dłoni na <b>mostku</b> stacji, by wysłać ją do Nanotrasen i ukończyć cel.</span>"
 
 /datum/component/recoverable
 	var/recovered = FALSE
@@ -61,7 +60,7 @@
 	if(istype(A, /area/bridge) && is_station_level(T.z))
 		initiate_recovery()
 	else
-		pA.say("Blackbox must be recovered at the station's bridge.")
+		pA.say("Czarną skrzynkę trzeba odzyskać na mostku stacji.")
 
 /datum/component/recoverable/proc/initiate_recovery()
 	var/atom/movable/parentobj = parent
@@ -76,7 +75,7 @@
 	if(linked_obj)
 		linked_obj.complete_objective()
 	else
-		parentobj.say("Non-priority item recovered, dispensing 2000 credit reward.")
+		parentobj.say("Odzyskano przedmiot niepriorytetowy, wypłacanie nagrody w wysokości 2000 kr.")
 		new /obj/item/stack/spacecash/c1000(get_turf(parent), 2)
 	//Fly away
 	var/mutable_appearance/balloon

@@ -25,7 +25,7 @@
 /obj/machinery/processor/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Outputting <b>[rating_amount]</b> item(s) at <b>[rating_speed*100]%</b> speed.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: wydawanie <b>[rating_amount]</b> przedmiotów z prędkością <b>[rating_speed*100]%</b>.</span>"
 
 /obj/machinery/processor/proc/process_food(datum/food_processor_process/recipe, atom/movable/what)
 	if (recipe.output && loc && !QDELETED(src))
@@ -52,7 +52,7 @@
 
 /obj/machinery/processor/attackby(obj/item/O, mob/user, params)
 	if(processing)
-		to_chat(user, "<span class='warning'>[src] is in the process of processing!</span>")
+		to_chat(user, "<span class='warning'>[src] jest w trakcie przetwarzania!</span>")
 		return TRUE
 	if(default_deconstruction_screwdriver(user, "processor", "processor1", O))
 		return
@@ -78,43 +78,43 @@
 					loaded++
 
 		if(loaded)
-			to_chat(user, "<span class='notice'>You insert [loaded] items into [src].</span>")
+			to_chat(user, "<span class='notice'>Wkładasz przedmioty do [src] (liczba: [loaded]).</span>")
 		return
 
 	var/datum/food_processor_process/P = select_recipe(O)
 	if(P)
-		user.visible_message("[user] put [O] into [src].", \
-			"You put [O] into [src].")
+		user.visible_message("[user] wkłada [O] do [src].", \
+			"Wkładasz [O] do [src].")
 		user.transferItemToLoc(O, src, TRUE)
 		return 1
 	else
 		if(user.a_intent != INTENT_HARM)
-			to_chat(user, "<span class='warning'>That probably won't blend!</span>")
+			to_chat(user, "<span class='warning'>Tego raczej nie da się zmiksować!</span>")
 			return 1
 		else
 			return ..()
 
 /obj/machinery/processor/interact(mob/user)
 	if(processing)
-		to_chat(user, "<span class='warning'>[src] is in the process of processing!</span>")
+		to_chat(user, "<span class='warning'>[src] jest w trakcie przetwarzania!</span>")
 		return TRUE
 	if(user.a_intent == INTENT_GRAB && ismob(user.pulling) && select_recipe(user.pulling))
 		if(user.grab_state < GRAB_AGGRESSIVE)
-			to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
+			to_chat(user, "<span class='warning'>Potrzebujesz lepszego chwytu, żeby to zrobić!</span>")
 			return
 		var/mob/living/pushed_mob = user.pulling
-		visible_message("<span class='warner'>[user] stuffs [pushed_mob] into [src]!</span>")
+		visible_message("<span class='warner'>[user] wpycha [pushed_mob] do [src]!</span>")
 		pushed_mob.forceMove(src)
 		user.stop_pulling()
 		return
 	if(contents.len == 0)
-		to_chat(user, "<span class='warning'>[src] is empty!</span>")
+		to_chat(user, "<span class='warning'>[src] jest pusty!</span>")
 		return TRUE
 	processing = TRUE
 	update_icon() //NSV13
-	user.visible_message("[user] turns on [src].", \
-		"<span class='notice'>You turn on [src].</span>", \
-		"<span class='italics'>You hear a food processor.</span>")
+	user.visible_message("[user] włącza [src].", \
+		"<span class='notice'>Włączasz [src].</span>", \
+		"<span class='italics'>Słyszysz robota kuchennego.</span>")
 	playsound(src.loc, 'sound/machines/blender.ogg', 50, 1)
 	use_power(500)
 	var/total_time = 0
@@ -136,7 +136,7 @@
 	pixel_x = base_pixel_x //return to its spot after shaking
 	processing = FALSE
 	update_icon() //NSV13
-	visible_message("\The [src] finishes processing.")
+	visible_message("[src] kończy przetwarzanie.")
 
 /obj/machinery/processor/update_icon() //NSV13
 	if(processing)
@@ -159,7 +159,7 @@
 
 /obj/machinery/processor/container_resist(mob/living/user)
 	user.forceMove(drop_location())
-	user.visible_message("<span class='notice'>[user] crawls free of the processor!</span>")
+	user.visible_message("<span class='notice'>[user] wyczołguje się z robota kuchennego!</span>")
 
 /obj/machinery/processor/proc/empty()
 	for (var/obj/O in src)
@@ -197,7 +197,7 @@
 	if(sbacklogged)
 		for(var/mob/living/simple_animal/slime/AM in ohearers(1,src)) //fallback in case slimes got placed while processor was active triggers only after processing!!!!
 			if(AM.stat == DEAD)
-				visible_message("[AM] is sucked into [src].")
+				visible_message("[AM] zostaje wciągnięty do [src].")
 				AM.forceMove(src)
 		sbacklogged = FALSE
 
@@ -206,7 +206,7 @@
 		if(processing)
 			sbacklogged = TRUE
 		else
-			visible_message("[AM] is sucked into [src].")
+			visible_message("[AM] zostaje wciągnięty do [src].")
 			playsound(loc, 'sound/effects/footstep/crawl1.ogg', 50, 1) //AQUILA EDIT
 			AM.forceMove(src)
 

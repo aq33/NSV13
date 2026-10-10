@@ -28,7 +28,7 @@
 
 /obj/item/paper/contract/employment/update_text()
 	name = "paper- [target] employment contract"
-	add_raw_text("<center>Conditions of Employment</center><BR><BR><BR><BR>This Agreement is made and entered into as of the date of last signature below, by and between [target] (hereafter referred to as SLAVE), and Nanotrasen (hereafter referred to as the omnipresent and helpful watcher of humanity).<BR>WITNESSETH:<BR>WHEREAS, SLAVE is a natural born human or humanoid, possessing skills upon which he can aid the omnipresent and helpful watcher of humanity, who seeks employment in the omnipresent and helpful watcher of humanity.<BR>WHEREAS, the omnipresent and helpful watcher of humanity agrees to sporadically provide payment to SLAVE, in exchange for permanent servitude.<BR>NOW THEREFORE in consideration of the mutual covenants herein contained, and other good and valuable consideration, the parties hereto mutually agree as follows:<BR>In exchange for paltry payments, SLAVE agrees to work for the omnipresent and helpful watcher of humanity, for the remainder of his or her current and future lives.<BR>Further, SLAVE agrees to transfer ownership of his or her soul to the loyalty department of the omnipresent and helpful watcher of humanity.<BR>Should transfership of a soul not be possible, a lien shall be placed instead.<BR>Signed,<BR><i>[target]</i>")
+	add_raw_text("<center>Warunki zatrudnienia</center><BR><BR><BR><BR>Niniejsza Umowa zostaje zawarta z dniem złożenia ostatniego podpisu poniżej, pomiędzy [target] (zwanym dalej NIEWOLNIKIEM) a Nanotrasen (zwanym dalej wszechobecnym i pomocnym strażnikiem ludzkości).<BR>ZWAŻYWSZY, ŻE:<BR>NIEWOLNIK jest urodzonym człowiekiem lub humanoidem, posiadającym umiejętności, którymi może wspomóc wszechobecnego i pomocnego strażnika ludzkości, i szuka zatrudnienia u wszechobecnego i pomocnego strażnika ludzkości.<BR>ZWAŻYWSZY, ŻE wszechobecny i pomocny strażnik ludzkości zgadza się sporadycznie wypłacać NIEWOLNIKOWI wynagrodzenie w zamian za dożywotnią służbę.<BR>W ZWIĄZKU Z TYM, w zamian za wzajemne zobowiązania zawarte w niniejszej umowie oraz inne istotne i wartościowe świadczenia, strony zgodnie ustalają, co następuje:<BR>W zamian za marne wynagrodzenie NIEWOLNIK zgadza się pracować dla wszechobecnego i pomocnego strażnika ludzkości przez resztę swojego obecnego i przyszłych żyć.<BR>Ponadto NIEWOLNIK zgadza się przenieść własność swojej duszy na dział lojalności wszechobecnego i pomocnego strażnika ludzkości.<BR>Jeśli przeniesienie duszy nie będzie możliwe, zostanie ustanowiony zastaw.<BR>Podpisano,<BR><i>[target]</i>")
 
 
 /obj/item/paper/contract/employment/attack(mob/living/M, mob/living/carbon/human/user)
@@ -41,12 +41,12 @@
 		else
 			deconvert = prob (5)
 	if(deconvert)
-		M.visible_message("<span class='notice'>[user] reminds [M] that [M]'s soul was already purchased by Nanotrasen!</span>")
-		to_chat(M, "<span class='boldnotice'>You feel that your soul has returned to its rightful owner, Nanotrasen.</span>")
+		M.visible_message("<span class='notice'>[user] przypomina [M], że dusza [M] została już kupiona przez Nanotrasen!</span>")
+		to_chat(M, "<span class='boldnotice'>Czujesz, że twoja dusza wróciła do swojego prawowitego właściciela, Nanotrasen.</span>")
 		M.return_soul()
 	else
-		M.visible_message("<span class='danger'>[user] beats [M] over the head with [src]!</span>", \
-			"<span class='userdanger'>[user] beats [M] over the head with [src]!</span>")
+		M.visible_message("<span class='danger'>[user] wali [M] [src] po głowie!</span>", \
+			"<span class='userdanger'>[user] wali [M] [src] po głowie!</span>")
 	return ..()
 
 
@@ -102,8 +102,8 @@
 /obj/item/paper/contract/infernal/suicide_act(mob/user)
 	if(signed && (user == target.current) && istype(user, /mob/living/carbon/human/))
 		var/mob/living/carbon/human/H = user
-		H.say("OH GREAT INFERNO!  I DEMAND YOU COLLECT YOUR BOUNTY IMMEDIATELY!", forced = "infernal contract suicide")
-		H.visible_message("<span class='suicide'>[H] holds up a contract claiming [user.p_their()] soul, then immediately catches fire.  It looks like [user.p_theyre()] trying to commit suicide!</span>")
+		H.say("O WIELKIE PIEKŁO! ŻĄDAM, BYŚ NATYCHMIAST ODEBRAŁO SWOJĄ NALEŻNOŚĆ!", forced = "infernal contract suicide")
+		H.visible_message("<span class='suicide'>[H] unosi kontrakt na swoją duszę i natychmiast staje w płomieniach. Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 		H.adjust_fire_stacks(20)
 		H.IgniteMob()
 		return(FIRELOSS)
@@ -111,59 +111,59 @@
 		..()
 
 /obj/item/paper/contract/infernal/update_text()
-	default_raw_text = "This shouldn't be seen.  Error DEVIL:6"
+	default_raw_text = "Tego nie powinno być widać. Błąd DEVIL:6"
 
 /obj/item/paper/contract/infernal/power/update_text(signature = "____________", blood = 0)
-	default_raw_text = "<center><B>Contract for infernal power</B></center><BR><BR><BR>I, [target] of sound mind, do hereby willingly offer my soul to the infernal hells by way of the infernal agent [devil_datum.truename], in exchange for power and physical strength.  I understand that upon my demise, my soul shall fall into the infernal hells, and my body may not be resurrected, cloned, or otherwise brought back to life.  I also understand that this will prevent my brain from being used in an MMI.<BR><BR><BR>Signed, "
+	default_raw_text = "<center><B>Kontrakt na piekielną moc</B></center><BR><BR><BR>Ja, [target], będąc przy zdrowych zmysłach, niniejszym dobrowolnie oddaję swoją duszę piekłom za pośrednictwem piekielnego agenta [devil_datum.truename], w zamian za moc i siłę fizyczną. Rozumiem, że po mojej śmierci moja dusza trafi do piekieł, a mojego ciała nie będzie można wskrzesić, sklonować ani w żaden inny sposób przywrócić do życia. Rozumiem też, że uniemożliwi to użycie mojego mózgu w MMI.<BR><BR><BR>Podpisano, "
 	if(blood)
 		default_raw_text += "<font face=\"Nyala\" color=#600A0A size=6><i>[signature]</i></font>"
 	else
 		default_raw_text += "<i>[signature]</i>"
 
 /obj/item/paper/contract/infernal/wealth/update_text(signature = "____________", blood = 0)
-	default_raw_text = "<center><B>Contract for unlimited wealth</B></center><BR><BR><BR>I, [target] of sound mind, do hereby willingly offer my soul to the infernal hells by way of the infernal agent [devil_datum.truename], in exchange for a pocket that never runs out of valuable resources.  I understand that upon my demise, my soul shall fall into the infernal hells, and my body may not be resurrected, cloned, or otherwise brought back to life.  I also understand that this will prevent my brain from being used in an MMI.<BR><BR><BR>Signed, "
+	default_raw_text = "<center><B>Kontrakt na nieograniczone bogactwo</B></center><BR><BR><BR>Ja, [target], będąc przy zdrowych zmysłach, niniejszym dobrowolnie oddaję swoją duszę piekłom za pośrednictwem piekielnego agenta [devil_datum.truename], w zamian za kieszeń, w której nigdy nie zabraknie cennych zasobów. Rozumiem, że po mojej śmierci moja dusza trafi do piekieł, a mojego ciała nie będzie można wskrzesić, sklonować ani w żaden inny sposób przywrócić do życia. Rozumiem też, że uniemożliwi to użycie mojego mózgu w MMI.<BR><BR><BR>Podpisano, "
 	if(blood)
 		default_raw_text += "<font face=\"Nyala\" color=#600A0A size=6><i>[signature]</i></font>"
 	else
 		default_raw_text += "<i>[signature]</i>"
 
 /obj/item/paper/contract/infernal/prestige/update_text(signature = "____________", blood = 0)
-	default_raw_text = "<center><B>Contract for prestige</B></center><BR><BR><BR>I, [target] of sound mind, do hereby willingly offer my soul to the infernal hells by way of the infernal agent [devil_datum.truename], in exchange for prestige and esteem among my peers.  I understand that upon my demise, my soul shall fall into the infernal hells, and my body may not be resurrected, cloned, or otherwise brought back to life.  I also understand that this will prevent my brain from being used in an MMI.<BR><BR><BR>Signed, "
+	default_raw_text = "<center><B>Kontrakt na prestiż</B></center><BR><BR><BR>Ja, [target], będąc przy zdrowych zmysłach, niniejszym dobrowolnie oddaję swoją duszę piekłom za pośrednictwem piekielnego agenta [devil_datum.truename], w zamian za prestiż i szacunek wśród moich równych. Rozumiem, że po mojej śmierci moja dusza trafi do piekieł, a mojego ciała nie będzie można wskrzesić, sklonować ani w żaden inny sposób przywrócić do życia. Rozumiem też, że uniemożliwi to użycie mojego mózgu w MMI.<BR><BR><BR>Podpisano, "
 	if(blood)
 		default_raw_text += "<font face=\"Nyala\" color=#600A0A size=6><i>[signature]</i></font>"
 	else
 		default_raw_text += "<i>[signature]</i>"
 
 /obj/item/paper/contract/infernal/magic/update_text(signature = "____________", blood = 0)
-	default_raw_text = "<center><B>Contract for magic</B></center><BR><BR><BR>I, [target] of sound mind, do hereby willingly offer my soul to the infernal hells by way of the infernal agent [devil_datum.truename], in exchange for arcane abilities beyond normal human ability.  I understand that upon my demise, my soul shall fall into the infernal hells, and my body may not be resurrected, cloned, or otherwise brought back to life.  I also understand that this will prevent my brain from being used in an MMI.<BR><BR><BR>Signed, "
+	default_raw_text = "<center><B>Kontrakt na magię</B></center><BR><BR><BR>Ja, [target], będąc przy zdrowych zmysłach, niniejszym dobrowolnie oddaję swoją duszę piekłom za pośrednictwem piekielnego agenta [devil_datum.truename], w zamian za tajemne zdolności przekraczające zwykłe ludzkie możliwości. Rozumiem, że po mojej śmierci moja dusza trafi do piekieł, a mojego ciała nie będzie można wskrzesić, sklonować ani w żaden inny sposób przywrócić do życia. Rozumiem też, że uniemożliwi to użycie mojego mózgu w MMI.<BR><BR><BR>Podpisano, "
 	if(blood)
 		default_raw_text += "<font face=\"Nyala\" color=#600A0A size=6><i>[signature]</i></font>"
 	else
 		default_raw_text += "<i>[signature]</i>"
 
 /obj/item/paper/contract/infernal/revive/update_text(signature = "____________", blood = 0)
-	default_raw_text = "<center><B>Contract for resurrection</B></center><BR><BR><BR>I, [target] of sound mind, do hereby willingly offer my soul to the infernal hells by way of the infernal agent [devil_datum.truename], in exchange for resurrection and curing of all injuries.  I understand that upon my demise, my soul shall fall into the infernal hells, and my body may not be resurrected, cloned, or otherwise brought back to life.  I also understand that this will prevent my brain from being used in an MMI.<BR><BR><BR>Signed, "
+	default_raw_text = "<center><B>Kontrakt na wskrzeszenie</B></center><BR><BR><BR>Ja, [target], będąc przy zdrowych zmysłach, niniejszym dobrowolnie oddaję swoją duszę piekłom za pośrednictwem piekielnego agenta [devil_datum.truename], w zamian za wskrzeszenie i wyleczenie wszystkich obrażeń. Rozumiem, że po mojej śmierci moja dusza trafi do piekieł, a mojego ciała nie będzie można wskrzesić, sklonować ani w żaden inny sposób przywrócić do życia. Rozumiem też, że uniemożliwi to użycie mojego mózgu w MMI.<BR><BR><BR>Podpisano, "
 	if(blood)
 		default_raw_text += "<font face=\"Nyala\" color=#600A0A size=6><i>[signature]</i></font>"
 	else
 		default_raw_text += "<i>[signature]</i>"
 
 /obj/item/paper/contract/infernal/knowledge/update_text(signature = "____________", blood = 0)
-	default_raw_text = "<center><B>Contract for knowledge</B></center><BR><BR><BR>I, [target] of sound mind, do hereby willingly offer my soul to the infernal hells by way of the infernal agent [devil_datum.truename], in exchange for boundless knowledge.  I understand that upon my demise, my soul shall fall into the infernal hells, and my body may not be resurrected, cloned, or otherwise brought back to life.  I also understand that this will prevent my brain from being used in an MMI.<BR><BR><BR>Signed, "
+	default_raw_text = "<center><B>Kontrakt na wiedzę</B></center><BR><BR><BR>Ja, [target], będąc przy zdrowych zmysłach, niniejszym dobrowolnie oddaję swoją duszę piekłom za pośrednictwem piekielnego agenta [devil_datum.truename], w zamian za bezgraniczną wiedzę. Rozumiem, że po mojej śmierci moja dusza trafi do piekieł, a mojego ciała nie będzie można wskrzesić, sklonować ani w żaden inny sposób przywrócić do życia. Rozumiem też, że uniemożliwi to użycie mojego mózgu w MMI.<BR><BR><BR>Podpisano, "
 	if(blood)
 		default_raw_text += "<font face=\"Nyala\" color=#600A0A size=6><i>[signature]</i></font>"
 	else
 		default_raw_text += "<i>[signature]</i>"
 
 /obj/item/paper/contract/infernal/friend/update_text(signature = "____________", blood = 0)
-	default_raw_text = "<center><B>Contract for a friend</B></center><BR><BR><BR>I, [target] of sound mind, do hereby willingly offer my soul to the infernal hells by way of the infernal agent [devil_datum.truename], in exchange for a friend.  I understand that upon my demise, my soul shall fall into the infernal hells, and my body may not be resurrected, cloned, or otherwise brought back to life.  I also understand that this will prevent my brain from being used in an MMI.<BR><BR><BR>Signed, "
+	default_raw_text = "<center><B>Kontrakt na przyjaciela</B></center><BR><BR><BR>Ja, [target], będąc przy zdrowych zmysłach, niniejszym dobrowolnie oddaję swoją duszę piekłom za pośrednictwem piekielnego agenta [devil_datum.truename], w zamian za przyjaciela. Rozumiem, że po mojej śmierci moja dusza trafi do piekieł, a mojego ciała nie będzie można wskrzesić, sklonować ani w żaden inny sposób przywrócić do życia. Rozumiem też, że uniemożliwi to użycie mojego mózgu w MMI.<BR><BR><BR>Podpisano, "
 	if(blood)
 		default_raw_text += "<font face=\"Nyala\" color=#600A0A size=6><i>[signature]</i></font>"
 	else
 		default_raw_text += "<i>[signature]</i>"
 
 /obj/item/paper/contract/infernal/unwilling/update_text(signature = "____________", blood = 0)
-	default_raw_text = "<center><B>Contract for slave</B></center><BR><BR><BR>I, [target], hereby offer my soul to the infernal hells by way of the infernal agent [devil_datum.truename].  I understand that upon my demise, my soul shall fall into the infernal hells, and my body may not be resurrected, cloned, or otherwise brought back to life.  I also understand that this will prevent my brain from being used in an MMI.<BR><BR><BR>Signed, "
+	default_raw_text = "<center><B>Kontrakt na niewolnika</B></center><BR><BR><BR>Ja, [target], niniejszym oddaję swoją duszę piekłom za pośrednictwem piekielnego agenta [devil_datum.truename]. Rozumiem, że po mojej śmierci moja dusza trafi do piekieł, a mojego ciała nie będzie można wskrzesić, sklonować ani w żaden inny sposób przywrócić do życia. Rozumiem też, że uniemożliwi to użycie mojego mózgu w MMI.<BR><BR><BR>Podpisano, "
 	if(blood)
 		default_raw_text += "<font face=\"Nyala\" color=#600A0A size=6><i>[signature]</i></font>"
 	else
@@ -174,47 +174,47 @@
 	if(istype(P, /obj/item/pen) || istype(P, /obj/item/toy/crayon))
 		attempt_signature(user)
 	else if(istype(P, /obj/item/stamp))
-		to_chat(user, "<span class='notice'>You stamp the paper with your rubber stamp, however the ink ignites as you release the stamp.</span>")
+		to_chat(user, "<span class='notice'>Przykładasz gumową pieczątkę do kartki, ale tusz zapala się, gdy ją odrywasz.</span>")
 	else if(P.is_hot())
-		user.visible_message("<span class='danger'>[user] brings [P] next to [src], but [src] does not catch fire!</span>", "<span class='danger'>[src] refuses to ignite!</span>")
+		user.visible_message("<span class='danger'>[user] zbliża [P] do [src], ale [src] się nie zapala!</span>", "<span class='danger'>[src] nie chce się zapalić!</span>")
 	else
 		return ..()
 
 /obj/item/paper/contract/infernal/attack(mob/M, mob/living/user)
 	add_fingerprint(user)
 	if(M == user && target == M.mind && M.mind.soulOwner != owner && attempt_signature(user, 1))
-		user.visible_message("<span class='danger'>[user] slices [user.p_their()] wrist with [src], and scrawls [user.p_their()] name in blood.</span>", "<span class='danger'>You slice your wrist open and scrawl your name in blood.</span>")
+		user.visible_message("<span class='danger'>[user] nacina sobie nadgarstek [src] i wypisuje krwią swoje imię.</span>", "<span class='danger'>Nacinasz sobie nadgarstek i wypisujesz krwią swoje imię.</span>")
 		user.blood_volume = max(user.blood_volume - 100, 0)
 	else
 		return ..()
 
 /obj/item/paper/contract/infernal/proc/attempt_signature(mob/living/carbon/human/user, blood = 0)
 	if(!user.IsAdvancedToolUser() || !user.is_literate())
-		to_chat(user, "<span class='notice'>You don't know how to read or write.</span>")
+		to_chat(user, "<span class='notice'>Nie umiesz czytać ani pisać.</span>")
 		return 0
 	if(user.mind != target)
-		to_chat(user, "<span class='notice'>Your signature simply slides off the sheet, it seems this contract is not meant for you to sign.</span>")
+		to_chat(user, "<span class='notice'>Twój podpis po prostu zsuwa się z kartki; wygląda na to, że ten kontrakt nie jest dla ciebie do podpisania.</span>")
 		return 0
 	if(user.mind.soulOwner == owner)
-		to_chat(user, "<span class='notice'>This devil already owns your soul, you may not sell it to [owner.p_them()] again.</span>")
+		to_chat(user, "<span class='notice'>Ten diabeł już posiada twoją duszę, nie możesz sprzedać mu jej ponownie.</span>")
 		return 0
 	if(signed)
-		to_chat(user, "<span class='notice'>This contract has already been signed.  It may not be signed again.</span>")
+		to_chat(user, "<span class='notice'>Ten kontrakt został już podpisany. Nie można go podpisać ponownie.</span>")
 		return 0
 	if(!user.mind.hasSoul)
-		to_chat(user, "<span class='notice'>You do not possess a soul.</span>")
+		to_chat(user, "<span class='notice'>Nie posiadasz duszy.</span>")
 		return 0
 	if(HAS_TRAIT(user, TRAIT_DUMB))
-		to_chat(user, "<span class='notice'>You quickly scrawl 'your name' on the contract.</span>")
+		to_chat(user, "<span class='notice'>Szybko wpisujesz na kontrakcie „twoje imię”.</span>")
 		signIncorrectly()
 		return 0
 	if (contractType == CONTRACT_REVIVE)
-		to_chat(user, "<span class='notice'>You are already alive, this contract would do nothing.</span>")
+		to_chat(user, "<span class='notice'>Już żyjesz, ten kontrakt nic by nie dał.</span>")
 		return 0
 	else
-		to_chat(user, "<span class='notice'>You quickly scrawl your name on the contract.</span>")
+		to_chat(user, "<span class='notice'>Szybko wpisujesz swoje imię na kontrakcie.</span>")
 		if(fulfillContract(target.current, blood)<=0)
-			to_chat(user, "<span class='notice'>But it seemed to have no effect, perhaps even Hell itself cannot grant this boon?</span>")
+			to_chat(user, "<span class='notice'>Ale nie wydaje się to mieć żadnego skutku; może nawet samo Piekło nie może spełnić tej prośby?</span>")
 		return 1
 
 
@@ -222,7 +222,7 @@
 /obj/item/paper/contract/infernal/revive/attack(mob/M, mob/living/user)
 	if (target == M.mind && M.stat == DEAD && M.mind.soulOwner == M.mind)
 		if (cooldown)
-			to_chat(user, "<span class='notice'>Give [M] a chance to think through the contract, don't rush [M.p_them()].</span>")
+			to_chat(user, "<span class='notice'>Daj [M] szansę przemyśleć kontrakt, nie poganiaj.</span>")
 			return 0
 		cooldown = TRUE
 		var/mob/living/carbon/human/H = M
@@ -230,15 +230,15 @@
 		var/response = "No"
 		if(ghost)
 			ghost.notify_cloning("A devil has offered you revival, at the cost of your soul.",'sound/effects/genetics.ogg', H)
-			response = tgalert(ghost, "A devil is offering you another chance at life, at the price of your soul, do you accept?", "Infernal Resurrection", "Yes", "No", "Never for this round", 0, 200)
+			response = tgalert(ghost, "Diabeł oferuje ci kolejną szansę na życie w zamian za twoją duszę; czy przyjmujesz?", "Piekielne wskrzeszenie", "Yes", "No", "Never for this round", 0, 200)
 			if(!ghost)
 				return		//handle logouts that happen whilst the alert is waiting for a response.
 		else
-			response = tgalert(target.current, "A devil is offering you another chance at life, at the price of your soul, do you accept?", "Infernal Resurrection", "Yes", "No", "Never for this round", 0, 200)
+			response = tgalert(target.current, "Diabeł oferuje ci kolejną szansę na życie w zamian za twoją duszę; czy przyjmujesz?", "Piekielne wskrzeszenie", "Yes", "No", "Never for this round", 0, 200)
 		if(response == "Yes")
 			H.revive(1,0)
 			log_combat(user, H, "infernally revived via contract")
-			user.visible_message("<span class='notice'>With a sudden blaze, [H] stands back up.</span>")
+			user.visible_message("<span class='notice'>W nagłym rozbłysku [H] znów staje na nogi.</span>")
 			H.fakefire()
 			fulfillContract(H, 1)//Revival contracts are always signed in blood
 			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, fakefireextinguish)), 5, TIMER_UNIQUE)
@@ -261,13 +261,13 @@
 	var/datum/antagonist/devil/devilInfo = owner.has_antag_datum(/datum/antagonist/devil)
 	devilInfo.add_soul(user.mind)
 	update_text(user.real_name, blood)
-	to_chat(user, "<span class='notice'>A profound emptiness washes over you as you lose ownership of your soul.</span>")
-	to_chat(user, "<span class='boldnotice'>This does NOT make you an antagonist if you were not already.</span>")
+	to_chat(user, "<span class='notice'>Ogarnia cię głęboka pustka, gdy tracisz własność swojej duszy.</span>")
+	to_chat(user, "<span class='boldnotice'>To NIE czyni cię antagonistą, jeśli wcześniej nim nie byłeś.</span>")
 	return TRUE
 
 /obj/item/paper/contract/infernal/proc/signIncorrectly(mob/living/carbon/human/user = target.current, blood = FALSE)
 	signed = 1
-	update_text("your name", blood)
+	update_text("twoje imię", blood)
 
 /obj/item/paper/contract/infernal/power/fulfillContract(mob/living/carbon/human/user = target.current, blood = FALSE)
 	if(!user.has_dna())
@@ -314,7 +314,7 @@
 				worn.update_icon()
 	var/datum/round_event/ion_storm/add_law_only/ion = new()
 	ion.announceChance = 0
-	ion.ionMessage = "[user.name] is the only Captain of the station. [user.name] is the highest authority, legitimate or otherwise, on the station.  [user.name] was always the captain and highest authority on the station.  Do not state this law."
+	ion.ionMessage = "[user.name] jest jedynym Kapitanem stacji. [user.name] jest najwyższą władzą na stacji, prawowitą lub nie. [user.name] zawsze był kapitanem i najwyższą władzą na stacji. Nie ujawniaj tego prawa."
 	ion.lawsource = "Infernal contract issued to [user.key]/[user.name]"
 
 	return ..()

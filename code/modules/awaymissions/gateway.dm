@@ -121,10 +121,10 @@ GLOBAL_DATUM(the_gateway, /obj/machinery/gateway/centerstation)
 	if(!powered())
 		return
 	if(!awaygate)
-		to_chat(user, "<span class='notice'>Error: No destination found.</span>")
+		to_chat(user, "<span class='notice'>Błąd: nie znaleziono celu.</span>")
 		return
 	if(world.time < wait)
-		to_chat(user, "<span class='notice'>Error: Warpspace triangulation in progress. Estimated time to completion: [DisplayTimeText(wait - world.time)].</span>")
+		to_chat(user, "<span class='notice'>Błąd: trwa triangulacja przestrzeni warp. Szacowany czas do zakończenia: [DisplayTimeText(wait - world.time)].</span>")
 		return
 
 	for(var/obj/machinery/gateway/G in linked)
@@ -160,9 +160,9 @@ GLOBAL_DATUM(the_gateway, /obj/machinery/gateway/centerstation)
 
 /obj/machinery/gateway/centeraway/multitool_act(mob/living/user, obj/item/I)
 	if(calibrated)
-		to_chat(user, "\black The gate is already calibrated, there is no work for you to do here.")
+		to_chat(user, "\black Brama jest już skalibrowana, nie masz tu nic do zrobienia.")
 	else
-		to_chat(user, "<span class='boldnotice'>Recalibration successful!</span>: \black This gate's systems have been fine tuned.  Travel to this gate will now be on target.")
+		to_chat(user, "<span class='boldnotice'>Rekalibracja udana!</span>: \black Systemy tej bramy zostały precyzyjnie dostrojone. Podróże do tej bramy będą teraz trafiać w cel.")
 		calibrated = TRUE
 	return TRUE
 
@@ -193,7 +193,7 @@ GLOBAL_DATUM(the_gateway, /obj/machinery/gateway/centerstation)
 	if(!detect())
 		return
 	if(!stationgate)
-		to_chat(user, "<span class='notice'>Error: No destination found.</span>")
+		to_chat(user, "<span class='notice'>Błąd: nie znaleziono celu.</span>")
 		return
 
 	for(var/obj/machinery/gateway/G in linked)
@@ -204,7 +204,7 @@ GLOBAL_DATUM(the_gateway, /obj/machinery/gateway/centerstation)
 
 /obj/machinery/gateway/centeraway/proc/check_exile_implant(mob/living/L)
 	for(var/obj/item/implant/exile/E in L.implants)//Checking that there is an exile implant
-		to_chat(L, "\black The station gate has detected your exile implant and is blocking your entry.")
+		to_chat(L, "\black Brama stacji wykryła twój implant wygnania i blokuje ci wejście.")
 		return TRUE
 	return FALSE
 
@@ -221,12 +221,12 @@ GLOBAL_DATUM(the_gateway, /obj/machinery/gateway/centerstation)
 	else
 		for(var/mob/living/L in AM.contents)
 			if(check_exile_implant(L))
-				say("Rejecting [AM]: Exile implant detected in contained lifeform.")
+				say("Odrzucanie [AM]: wykryto implant wygnania w przewożonej formie życia.")
 				return
 	if(AM.has_buckled_mobs())
 		for(var/mob/living/L in AM.buckled_mobs)
 			if(check_exile_implant(L))
-				say("Rejecting [AM]: Exile implant detected in close proximity lifeform.")
+				say("Odrzucanie [AM]: wykryto implant wygnania w pobliskiej formie życia.")
 				return
 	AM.forceMove(get_step(stationgate.loc, SOUTH))
 	AM.setDir(SOUTH)
@@ -249,17 +249,17 @@ GLOBAL_DATUM(the_gateway, /obj/machinery/gateway/centerstation)
 
 
 /obj/item/paper/fluff/gateway
-	default_raw_text = "Congratulations,<br><br>Your station has been selected to carry out the Gateway Project.<br><br>The equipment will be shipped to you at the start of the next quarter.<br> You are to prepare a secure location to house the equipment as outlined in the attached documents.<br><br>--Nanotrasen Bluespace Research"
+	default_raw_text = "Gratulacje,<br><br>Wasza stacja została wybrana do realizacji Projektu Brama.<br><br>Sprzęt zostanie do was wysłany na początku następnego kwartału.<br> Macie przygotować bezpieczne miejsce na sprzęt, zgodnie z załączonymi dokumentami.<br><br>--Badania Bluespace Nanotrasen"
 	name = "Confidential Correspondence, Pg 1"
 
 /obj/item/paper/fluff/itemnotice
-	default_raw_text = "Notice: Over the last few weeks there have been increased reports of surplus, trash items such as wrappers being found in Bluespace Capsule Products. In the event this encampment has any such item, please dispose of them within a wastebin or the provided bonfire, especially if such items include frivolous, frankly embarassing things. We apologise for the inconvienence. Thank you. -- Nanotrasen BS Productions"
+	default_raw_text = "Uwaga: w ostatnich tygodniach coraz częściej zgłaszano znajdowanie w produktach Kapsuł Bluespace zbędnych śmieci, takich jak opakowania. Jeśli w tym obozie znajdują się takie przedmioty, wyrzućcie je do kosza lub dostarczonego ogniska, zwłaszcza jeśli są to rzeczy frywolne, szczerze mówiąc żenujące. Przepraszamy za niedogodności. Dziękujemy. -- Nanotrasen BS Productions"
 	name = "Surplus Item Removal Notice"
 
 /obj/item/paper/fluff/encampmentwelcome
-	default_raw_text = "Welcome! If you are reading this, then you have bought and deployed the new line of bluespace capsule shelters, the mining encampment! This capsule provides standard shelter equipment and more, such as an expanded food vendor, floor safe, restroom, suit storage, spare equipment, and a personal requisitions vendor! The outside has even been lined with basalt tiles, just so no rocks get in the way of the cozy courtyard! We hope you stay safe, and enjoy the amenities! - Nanotrasen BS Productions"
+	default_raw_text = "Witaj! Jeśli to czytasz, kupiłeś i rozłożyłeś nową linię schronień z kapsuł bluespace – obóz górniczy! Ta kapsuła zapewnia standardowe wyposażenie schronienia i więcej, w tym rozszerzony automat z jedzeniem, sejf w podłodze, toaletę, schowek na skafandry, zapasowy sprzęt i osobisty automat z zamówieniami! Na zewnątrz wyłożyliśmy nawet płytki z bazaltu, by żadne kamienie nie przeszkadzały na przytulnym dziedzińcu! Mamy nadzieję, że będziesz bezpieczny i docenisz udogodnienia! - Nanotrasen BS Productions"
 	name = "Welcome!"
 
 /obj/item/paper/fluff/shuttlenotice
-	default_raw_text = "To the acting captain of Nanotrasen Research Station SS13, Due to the nature of your emergency, we sadly had to expedite the process of constructing this shuttle, and as such it does not follow standard sanitary regulations. We appreciate your purchase, and apologise for the inconvienence. Thank you, and have a safe flight! -- Nanotrasen BS Productions Engineering Team"
+	default_raw_text = "Do pełniącego obowiązki kapitana Stacji Badawczej Nanotrasen SS13. Ze względu na charakter waszej sytuacji awaryjnej musieliśmy niestety przyspieszyć budowę tego promu, przez co nie spełnia on standardowych przepisów sanitarnych. Dziękujemy za zakup i przepraszamy za niedogodności. Dziękujemy i bezpiecznego lotu! -- Zespół Inżynieryjny Nanotrasen BS Productions"
 	name = "Shuttle Notice"
