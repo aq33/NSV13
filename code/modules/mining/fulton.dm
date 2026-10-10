@@ -15,7 +15,7 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 
 /obj/item/extraction_pack/examine()
 	. = ..()
-	. += "It has [uses_left] use\s remaining."
+	. += "Pozostałe użycia: [uses_left]."
 
 /obj/item/extraction_pack/attack_self(mob/user)
 	var/list/possible_beacons = list()
@@ -25,28 +25,28 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 			possible_beacons += EP
 
 	if(!possible_beacons.len)
-		to_chat(user, "There are no extraction beacons in existence!")
+		to_chat(user, "Nie istnieją żadne nadajniki ewakuacyjne!")
 		return
 
 	else
 		var/A
 
-		A = input("Select a beacon to connect to", "Balloon Extraction Pack", A) as null|anything in sortNames(possible_beacons)
+		A = input("Wybierz nadajnik do połączenia", "Balonowy pakiet ewakuacyjny", A) as null|anything in sortNames(possible_beacons)
 
 		if(!A)
 			return
 		beacon = A
-		to_chat(user, "You link the extraction pack to the beacon system.")
+		to_chat(user, "Łączysz pakiet ewakuacyjny z systemem nadajników.")
 
 /obj/item/extraction_pack/afterattack(atom/movable/A, mob/living/carbon/human/user, flag, params)
 	. = ..()
 	if(!beacon)
-		to_chat(user, "[src] is not linked to a beacon, and cannot be used.")
+		to_chat(user, "[src] nie jest połączony z nadajnikiem i nie da się go użyć.")
 		return
 	if(!can_use_indoors)
 		var/area/area = get_area(A)
 		if(!area.outdoors)
-			to_chat(user, "[src] can only be used on things that are outdoors!")
+			to_chat(user, "[src] można używać tylko na rzeczach znajdujących się na zewnątrz!")
 			return
 	if(!flag)
 		return
@@ -54,15 +54,15 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 		return
 	else
 		if(!safe_for_living_creatures && check_for_living_mobs(A))
-			to_chat(user, "[src] is not safe for use with living creatures, they wouldn't survive the trip back!")
+			to_chat(user, "[src] nie jest bezpieczny dla żywych stworzeń, nie przeżyłyby podróży!")
 			return
 		if(!isturf(A.loc)) // no extracting stuff inside other stuff
 			return
 		if(A.anchored || (A.move_resist > max_force_fulton))
 			return
-		to_chat(user, "<span class='notice'>You start attaching the pack to [A]...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz mocować pakiet do [A]...</span>")
 		if(do_after(user,50,target=A))
-			to_chat(user, "<span class='notice'>You attach the pack to [A] and activate it.</span>")
+			to_chat(user, "<span class='notice'>Mocujesz pakiet do [A] i go aktywujesz.</span>")
 			if(loc == user && istype(user.back, /obj/item/storage/backpack))
 				var/obj/item/storage/backpack/B = user.back
 				SEND_SIGNAL(B, COMSIG_TRY_STORAGE_INSERT, src, user, FALSE, FALSE)

@@ -16,10 +16,10 @@ Charged extracts:
 
 /obj/item/slimecross/charged/attack_self(mob/user)
 	if(!reagents.has_reagent(/datum/reagent/toxin/plasma,10))
-		to_chat(user, "<span class='warning'>This extract needs to be full of plasma to activate!</span>")
+		to_chat(user, "<span class='warning'>Aby się aktywować, ten ekstrakt musi być pełen plazmy!</span>")
 		return
 	reagents.remove_reagent(/datum/reagent/toxin/plasma,10)
-	to_chat(user, "<span class='notice'>You squeeze the extract, and it absorbs the plasma!</span>")
+	to_chat(user, "<span class='notice'>Ściskasz ekstrakt, a on wchłania plazmę!</span>")
 	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
 	playsound(src, 'sound/effects/light_flicker.ogg', 50, 1)
 	do_effect(user)
@@ -30,16 +30,16 @@ Charged extracts:
 
 /obj/item/slimecross/charged/grey
 	colour = "grey"
-	effect_desc = "Produces a slime reviver potion, which revives dead slimes."
+	effect_desc = "Wytwarza miksturę ożywiającą szlamy, która wskrzesza martwe szlamy."
 
 /obj/item/slimecross/charged/grey/do_effect(mob/user)
 	new /obj/item/slimepotion/slime_reviver(get_turf(user))
-	user.visible_message("<span class='notice'>[src] distills into a potion!</span>")
+	user.visible_message("<span class='notice'>[src] destyluje się w miksturę!</span>")
 	..()
 
 /obj/item/slimecross/charged/orange
 	colour = "orange"
-	effect_desc = "Instantly makes a large burst of flame for a moment."
+	effect_desc = "Natychmiast wywołuje na chwilę duży wybuch płomieni."
 
 /obj/item/slimecross/charged/orange/do_effect(mob/user)
 	for(var/turf/open/turf in RANGE_TURFS(5, user))
@@ -49,165 +49,165 @@ Charged extracts:
 
 /obj/item/slimecross/charged/purple
 	colour = "purple"
-	effect_desc = "Creates a packet of omnizine."
+	effect_desc = "Tworzy paczkę omnizyny."
 
 /obj/item/slimecross/charged/purple/do_effect(mob/user)
 	new /obj/item/slimecrossbeaker/omnizine(get_turf(user))
-	user.visible_message("<span class='notice'>[src] sparks, and floods with a regenerative solution!</span>")
+	user.visible_message("<span class='notice'>[src] iskrzy i zalewa się regenerującym roztworem!</span>")
 	..()
 
 /obj/item/slimecross/charged/blue
 	colour = "blue"
-	effect_desc = "Creates a potion that neuters the mutation chance of a slime, which passes on to new generations."
+	effect_desc = "Tworzy miksturę, która neutralizuje szansę mutacji szlama i przechodzi na nowe pokolenia."
 
 /obj/item/slimecross/charged/blue/do_effect(mob/user)
 	new /obj/item/slimepotion/slime/chargedstabilizer(get_turf(user))
-	user.visible_message("<span class='notice'>[src] distills into a potion!</span>")
+	user.visible_message("<span class='notice'>[src] destyluje się w miksturę!</span>")
 	..()
 
 /obj/item/slimecross/charged/metal
 	colour = "metal"
-	effect_desc = "Produces a bunch of metal and plasteel."
+	effect_desc = "Wytwarza sporo metalu i plastali."
 
 /obj/item/slimecross/charged/metal/do_effect(mob/user)
 	new /obj/item/stack/sheet/iron(get_turf(user), 25)
 	new /obj/item/stack/sheet/plasteel(get_turf(user), 10)
-	user.visible_message("<span class='notice'>[src] grows into a plethora of metals!</span>")
+	user.visible_message("<span class='notice'>[src] rozrasta się w mnóstwo metali!</span>")
 	..()
 
 /obj/item/slimecross/charged/yellow
 	colour = "yellow"
-	effect_desc = "Creates a hypercharged slime cell battery, which has high capacity and recharges constantly at a very fast rate."
+	effect_desc = "Tworzy przeładowaną baterię szlamową o dużej pojemności, która nieustannie i bardzo szybko się ładuje."
 
 /obj/item/slimecross/charged/yellow/do_effect(mob/user)
 	new /obj/item/stock_parts/cell/high/slime/hypercharged(get_turf(user))
-	user.visible_message("<span class='notice'>[src] sparks violently, and swells with electric power!</span>")
+	user.visible_message("<span class='notice'>[src] gwałtownie iskrzy i nabrzmiewa energią elektryczną!</span>")
 	..()
 
 /obj/item/slimecross/charged/darkpurple
 	colour = "dark purple"
-	effect_desc = "Creates several sheets of plasma."
+	effect_desc = "Tworzy kilka arkuszy plazmy."
 
 /obj/item/slimecross/charged/darkpurple/do_effect(mob/user)
 	new /obj/item/stack/sheet/mineral/plasma(get_turf(user), 10)
-	user.visible_message("<span class='notice'>[src] produces a large amount of plasma!</span>")
+	user.visible_message("<span class='notice'>[src] wytwarza dużą ilość plazmy!</span>")
 	..()
 
 /obj/item/slimecross/charged/darkblue
 	colour = "dark blue"
-	effect_desc = "Produces a pressure proofing potion."
+	effect_desc = "Wytwarza miksturę chroniącą przed ciśnieniem."
 
 /obj/item/slimecross/charged/darkblue/do_effect(mob/user)
 	new /obj/item/slimepotion/spaceproof(get_turf(user))
-	user.visible_message("<span class='notice'>[src] distills into a potion!</span>")
+	user.visible_message("<span class='notice'>[src] destyluje się w miksturę!</span>")
 	..()
 
 /obj/item/slimecross/charged/silver
 	colour = "silver"
-	effect_desc = "Creates a slime cake and some drinks."
+	effect_desc = "Tworzy ciasto ze szlamu i trochę napojów."
 
 /obj/item/slimecross/charged/silver/do_effect(mob/user)
 	new /obj/item/food/cake/slimecake(get_turf(user))
 	for(var/i in 1 to 10)
 		var/drink_type = get_random_drink()
 		new drink_type(get_turf(user))
-	user.visible_message("<span class='notice'>[src] produces a party's worth of cake and drinks!</span>")
+	user.visible_message("<span class='notice'>[src] wytwarza tyle ciasta i napojów, że starczy na imprezę!</span>")
 	..()
 
 /obj/item/slimecross/charged/bluespace
 	colour = "bluespace"
-	effect_desc = "Makes a bluespace polycrystal."
+	effect_desc = "Tworzy polikryształ bluespace."
 
 /obj/item/slimecross/charged/bluespace/do_effect(mob/user)
 	new /obj/item/stack/ore/bluespace_crystal/refined(get_turf(user), 10)
-	user.visible_message("<span class='notice'>[src] produces several sheets of polycrystal!</span>")
+	user.visible_message("<span class='notice'>[src] wytwarza kilka arkuszy polikryształu!</span>")
 	..()
 
 /obj/item/slimecross/charged/sepia
 	colour = "sepia"
-	effect_desc = "Creates a camera obscura."
+	effect_desc = "Tworzy camera obscura."
 
 /obj/item/slimecross/charged/sepia/do_effect(mob/user)
 	new /obj/item/camera/spooky(get_turf(user))
-	user.visible_message("<span class='notice'>[src] flickers in a strange, ethereal manner, and produces a camera!</span>")
+	user.visible_message("<span class='notice'>[src] migocze w dziwny, eteryczny sposób i wytwarza aparat!</span>")
 	..()
 
 /obj/item/slimecross/charged/cerulean
 	colour = "cerulean"
-	effect_desc = "Creates an extract enhancer, giving whatever it's used on five more uses."
+	effect_desc = "Tworzy wzmacniacz ekstraktów, dający pięć dodatkowych użyć temu, na czym go użyjesz."
 
 /obj/item/slimecross/charged/cerulean/do_effect(mob/user)
 	new /obj/item/slimepotion/enhancer/max(get_turf(user))
-	user.visible_message("<span class='notice'>[src] distills into a potion!</span>")
+	user.visible_message("<span class='notice'>[src] destyluje się w miksturę!</span>")
 	..()
 
 /obj/item/slimecross/charged/pyrite
 	colour = "pyrite"
-	effect_desc = "Creates bananium. Oh no."
+	effect_desc = "Tworzy bananium. O nie."
 
 /obj/item/slimecross/charged/pyrite/do_effect(mob/user)
 	new /obj/item/stack/sheet/mineral/bananium(get_turf(user), 10)
-	user.visible_message("<span class='warning'>[src] solidifies with a horrifying banana stench!</span>")
+	user.visible_message("<span class='warning'>[src] zestala się z przerażającym bananowym smrodem!</span>")
 	..()
 
 /obj/item/slimecross/charged/red
 	colour = "red"
-	effect_desc = "Produces a lavaproofing potion"
+	effect_desc = "Wytwarza miksturę chroniącą przed lawą"
 
 /obj/item/slimecross/charged/red/do_effect(mob/user)
 	new /obj/item/slimepotion/lavaproof(get_turf(user))
-	user.visible_message("<span class='notice'>[src] distills into a potion!</span>")
+	user.visible_message("<span class='notice'>[src] destyluje się w miksturę!</span>")
 	..()
 
 /obj/item/slimecross/charged/green
 	colour = "green"
-	effect_desc = "Lets you choose what slime species you want to be."
+	effect_desc = "Pozwala wybrać, jakim gatunkiem szlama chcesz być."
 
 /obj/item/slimecross/charged/green/do_effect(mob/user)
 	var/mob/living/carbon/human/H = user
 	if(!istype(H))
-		to_chat(user, "<span class='warning'>You must be a humanoid to use this!</span>")
+		to_chat(user, "<span class='warning'>Musisz być humanoidem, by tego użyć!</span>")
 		return
 	var/racechoice = input(H, "Choose your slime subspecies.", "Slime Selection") as null|anything in sortList(subtypesof(/datum/species/jelly), GLOBAL_PROC_REF(cmp_typepaths_asc))
 	if(!racechoice)
-		to_chat(user, "<span class='notice'>You decide not to become a slime for now.</span>")
+		to_chat(user, "<span class='notice'>Postanawiasz na razie nie zostawać szlamem.</span>")
 		return
 	if(!user.canUseTopic(src, BE_CLOSE))
 		return
 	H.set_species(racechoice, icon_update=1)
-	H.visible_message("<span class='warning'>[H] suddenly shifts form as [src] dissolves into [H.p_their()] skin!</span>")
+	H.visible_message("<span class='warning'>[H] nagle zmienia postać, gdy [src] wchłania się w jego skórę!</span>")
 	..()
 
 /obj/item/slimecross/charged/pink
 	colour = "pink"
-	effect_desc = "Produces a... lovepotion... no ERP."
+	effect_desc = "Wytwarza... eliksir miłosny... bez ERP."
 
 /obj/item/slimecross/charged/pink/do_effect(mob/user)
 	new /obj/item/slimepotion/lovepotion(get_turf(user))
-	user.visible_message("<span class='notice'>[src] distills into a potion!</span>")
+	user.visible_message("<span class='notice'>[src] destyluje się w miksturę!</span>")
 	..()
 
 /obj/item/slimecross/charged/gold
 	colour = "gold"
-	effect_desc = "Slowly spawns 10 hostile monsters."
+	effect_desc = "Powoli przywołuje 10 wrogich potworów."
 	var/max_spawn = 10
 	var/spawned = 0
 
 /obj/item/slimecross/charged/gold/do_effect(mob/user)
-	user.visible_message("<span class='warning'>[src] starts shuddering violently!</span>")
+	user.visible_message("<span class='warning'>[src] zaczyna się gwałtownie trząść!</span>")
 	addtimer(CALLBACK(src, PROC_REF(startTimer)), 50)
 
 /obj/item/slimecross/charged/gold/proc/startTimer()
 	START_PROCESSING(SSobj, src)
 
 /obj/item/slimecross/charged/gold/process()
-	visible_message("<span class='warning'>[src] lets off a spark, and produces a living creature!</span>")
+	visible_message("<span class='warning'>[src] wypuszcza iskrę i wytwarza żywe stworzenie!</span>")
 	new /obj/effect/particle_effect/sparks(get_turf(src))
 	playsound(get_turf(src), "sparks", 50, 1)
 	create_random_mob(get_turf(src), HOSTILE_SPAWN)
 	spawned++
 	if(spawned >= max_spawn)
-		visible_message("<span class='warning'>[src] collapses into a puddle of goo.</span>")
+		visible_message("<span class='warning'>[src] zapada się w kałużę mazi.</span>")
 		qdel(src)
 
 /obj/item/slimecross/charged/gold/Destroy()
@@ -216,10 +216,10 @@ Charged extracts:
 
 /obj/item/slimecross/charged/oil
 	colour = "oil"
-	effect_desc = "Creates an explosion after a few seconds."
+	effect_desc = "Po kilku sekundach wywołuje eksplozję."
 
 /obj/item/slimecross/charged/oil/do_effect(mob/user)
-	user.visible_message("<span class='danger'>[src] begins to shake with rapidly increasing force!</span>")
+	user.visible_message("<span class='danger'>[src] zaczyna trząść się z szybko narastającą siłą!</span>")
 	addtimer(CALLBACK(src, PROC_REF(boom)), 50)
 
 /obj/item/slimecross/charged/oil/proc/boom()
@@ -228,12 +228,12 @@ Charged extracts:
 
 /obj/item/slimecross/charged/black
 	colour = "black"
-	effect_desc = "Randomizes the user's species."
+	effect_desc = "Losuje gatunek użytkownika."
 
 /obj/item/slimecross/charged/black/do_effect(mob/user)
 	var/mob/living/carbon/human/H = user
 	if(!istype(H))
-		to_chat(user, "<span class='warning'>You have to be able to have a species to get your species changed.</span>")
+		to_chat(user, "<span class='warning'>Musisz móc mieć gatunek, by go zmienić.</span>")
 		return
 	var/list/allowed_species = list()
 	for(var/stype in subtypesof(/datum/species))
@@ -244,33 +244,33 @@ Charged extracts:
 	var/datum/species/changed = pick(allowed_species)
 	if(changed)
 		H.set_species(changed, icon_update = 1)
-		to_chat(H, "<span class='danger'>You feel very different!</span>")
+		to_chat(H, "<span class='danger'>Czujesz się zupełnie inaczej!</span>")
 	..()
 
 /obj/item/slimecross/charged/lightpink
 	colour = "light pink"
-	effect_desc = "Produces a pacification potion, which works on monsters and humanoids."
+	effect_desc = "Wytwarza miksturę uspokajającą, która działa na potwory i humanoidy."
 
 /obj/item/slimecross/charged/lightpink/do_effect(mob/user)
 	new /obj/item/slimepotion/peacepotion(get_turf(user))
-	user.visible_message("<span class='notice'>[src] distills into a potion!</span>")
+	user.visible_message("<span class='notice'>[src] destyluje się w miksturę!</span>")
 	..()
 
 /obj/item/slimecross/charged/adamantine
 	colour = "adamantine"
-	effect_desc = "Creates a completed golem shell."
+	effect_desc = "Tworzy gotową skorupę golema."
 
 /obj/item/slimecross/charged/adamantine/do_effect(mob/user)
-	user.visible_message("<span class='notice'>[src] produces a fully formed golem shell!</span>")
+	user.visible_message("<span class='notice'>[src] wytwarza w pełni ukształtowaną skorupę golema!</span>")
 	new /obj/effect/mob_spawn/human/golem/servant(get_turf(src), /datum/species/golem/adamantine, user)
 	..()
 
 /obj/item/slimecross/charged/rainbow
 	colour = "rainbow"
-	effect_desc = "Produces three living slimes of random colors."
+	effect_desc = "Wytwarza trzy żywe szlamy losowych kolorów."
 
 /obj/item/slimecross/charged/rainbow/do_effect(mob/user)
-	user.visible_message("<span class='warning'>[src] swells and splits into three new slimes!</span>")
+	user.visible_message("<span class='warning'>[src] pęcznieje i dzieli się na trzy nowe szlamy!</span>")
 	for(var/i in 1 to 3)
 		var/mob/living/simple_animal/slime/S = new(get_turf(user))
 		S.random_colour()

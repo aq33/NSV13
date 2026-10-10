@@ -1,13 +1,13 @@
 /datum/bounty/item/alien_organs
 	name = "Alien Organs"
-	description = "Nanotrasen is interested in studying Xenomorph biology. Ship a set of organs to be thoroughly compensated."
+	description = "Nanotrasen chce badać biologię ksenomorfów. Wyślijcie zestaw narządów, a otrzymacie sowitą rekompensatę."
 	reward = 25000
 	required_count = 3
 	wanted_types = list(/obj/item/organ/brain/alien, /obj/item/organ/alien, /obj/item/organ/body_egg/alien_embryo, /obj/item/organ/liver/alien, /obj/item/organ/tongue/alien, /obj/item/organ/eyes/night_vision/alien)
 
 /datum/bounty/item/syndicate_documents
 	name = "Syndicate Documents"
-	description = "Intel regarding the syndicate is highly prized at CentCom. If you find syndicate documents, ship them. You could save lives."
+	description = "Informacje wywiadowcze o Syndykacie są w Centrali wysoko cenione. Jeśli znajdziecie dokumenty Syndykatu, wyślijcie je. Możecie ocalić życia."
 	reward = 15000
 	wanted_types = list(/obj/item/documents/syndicate, /obj/item/documents/photocopy)
 
@@ -21,21 +21,21 @@
 
 /datum/bounty/item/adamantine
 	name = "Adamantine"
-	description = "Nanotrasen's anomalous materials division is in desparate need for Adamantine. Send them a large shipment and we'll make it worth your while."
+	description = "Dział materiałów anomalnych Nanotrasen desperacko potrzebuje adamantu. Wyślijcie im dużą przesyłkę, a opłaci się wam to."
 	reward = 35000
 	required_count = 10
 	wanted_types = list(/obj/item/stack/sheet/mineral/adamantine)
 
 /datum/bounty/item/trash
 	name = "Trash"
-	description = "Recently a group of janitors have run out of trash to clean up, without any trash CentCom wants to fire them to cut costs. Send a shipment of trash to keep them employed, and they'll give you a small compensation."
+	description = "Grupie woźnych skończyły się niedawno śmieci do sprzątania, a bez śmieci Centrala chce ich zwolnić, by obciąć koszty. Wyślijcie przesyłkę śmieci, by utrzymali pracę, a dadzą wam niewielką rekompensatę."
 	reward = 1000
 	required_count = 10
 	wanted_types = list(/obj/item/trash)
 
 /datum/bounty/more_bounties
 	name = "More Bounties"
-	description = "Complete enough bounties and CentCom will issue new ones!"
+	description = "Wykonajcie dość zleceń, a Centrala wystawi nowe!"
 	reward = 5 // number of bounties
 	var/required_bounties = 5
 
@@ -46,7 +46,7 @@
 	return "[min(required_bounties, completed_bounty_count())]/[required_bounties] Bounties"
 
 /datum/bounty/more_bounties/reward_string()
-	return "Up to [reward] new bounties"
+	return "Do [reward] nowych zleceń"
 
 /datum/bounty/more_bounties/claim()
 	if(can_claim())

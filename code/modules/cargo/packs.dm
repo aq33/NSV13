@@ -2324,10 +2324,7 @@
 			P.update_icon()
 
 /datum/supply_pack/organic/pizza/proc/anomalous_pizza_report()
-	print_command_report("[station_name()], our anomalous materials divison has reported a missing object that is highly likely to have been sent to your station during a routine cargo \
-	delivery. Please search all crates and manifests provided with the delivery and return the object if is located. The object resembles a standard <b>\[DATA EXPUNGED\]</b> and is to be \
-	considered <b>\[REDACTED\]</b> and returned at your leisure. Note that objects the anomaly produces are specifically attuned exactly to the individual opening the anomaly; regardless \
-	of species, the individual will find the object edible and it will taste great according to their personal definitions, which vary significantly based on person and species.")
+	print_command_report("[station_name()], nasz dział materiałów anomalnych zgłosił zaginięcie obiektu, który najprawdopodobniej trafił na waszą stację podczas rutynowej dostawy zaopatrzenia. Przeszukajcie wszystkie skrzynie i manifesty dostarczone z dostawą i zwróćcie obiekt, jeśli go znajdziecie. Obiekt przypomina standardowy <b>\[DANE USUNIĘTE\]</b>, należy go uznać za <b>\[UTAJNIONE\]</b> i zwrócić w dogodnym czasie. Uwaga: obiekty wytwarzane przez anomalię są dostrojone dokładnie do osoby, która ją otwiera; niezależnie od gatunku osoba ta uzna obiekt za jadalny i będzie on smakował wybornie według jej osobistych upodobań, które znacznie się różnią w zależności od osoby i gatunku.")
 
 /datum/supply_pack/organic/potted_plants
 	name = "Potted Plants Crate"

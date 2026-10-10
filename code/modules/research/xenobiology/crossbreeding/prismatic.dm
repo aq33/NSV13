@@ -6,7 +6,7 @@ Prismatic extracts:
 	name = "prismatic extract"
 	desc = "It's constantly wet with a semi-transparent, colored goo."
 	effect = "prismatic"
-	effect_desc = "When used it paints whatever it hits."
+	effect_desc = "Po użyciu maluje wszystko, w co trafi."
 	icon_state = "prismatic"
 	var/paintcolor = "#FFFFFF"
 
@@ -115,7 +115,7 @@ Prismatic extracts:
 	colour = "rainbow"
 
 /obj/item/slimecross/prismatic/rainbow/attack_self(mob/user)
-	var/newcolor = input(user, "Choose the slime color:", "Color change",paintcolor) as color|null
+	var/newcolor = input(user, "Wybierz kolor szlamu:", "Zmiana koloru",paintcolor) as color|null
 	if ((user.get_active_held_item() != src || user.stat || user.restrained()))
 		return
 	if(!newcolor)

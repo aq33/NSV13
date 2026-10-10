@@ -100,26 +100,26 @@ GLOBAL_LIST(labor_sheet_values)
 				var/obj/item/card/id/gulag/P = I
 				P.points += stacking_machine.points
 				stacking_machine.points = 0
-				to_chat(M, "<span class='notice'>Points transferred.</span>")
+				to_chat(M, "<span class='notice'>Punkty przekazane.</span>")
 				return TRUE
 			else
-				to_chat(M, "<span class='alert'>No valid id for point transfer detected.</span>")
+				to_chat(M, "<span class='alert'>Nie wykryto prawidłowego identyfikatora do przekazania punktów.</span>")
 		if("move_shuttle")
 			if(!alone_in_area(get_area(src), M))
-				to_chat(M, "<span class='alert'>Prisoners are only allowed to be released while alone.</span>")
+				to_chat(M, "<span class='alert'>Więźniów można zwalniać tylko pojedynczo.</span>")
 				return
 			switch(SSshuttle.moveShuttle("laborcamp", "laborcamp_home", TRUE))
 				if(1)
-					to_chat(M, "<span class='alert'>Shuttle not found.</span>")
+					to_chat(M, "<span class='alert'>Nie znaleziono promu.</span>")
 				if(2)
-					to_chat(M, "<span class='alert'>Shuttle already at station.</span>")
+					to_chat(M, "<span class='alert'>Prom jest już na stacji.</span>")
 				if(3)
-					to_chat(M, "<span class='alert'>No permission to dock could be granted.</span>")
+					to_chat(M, "<span class='alert'>Nie można uzyskać pozwolenia na dokowanie.</span>")
 				else
 					if(!(obj_flags & EMAGGED))
 						integrated_radio.set_frequency(FREQ_SECURITY)
-						integrated_radio.talk_into(src, "A prisoner has returned to the station. Minerals and Prisoner ID card ready for retrieval.", FREQ_SECURITY)
-					to_chat(M, "<span class='notice'>Shuttle received message and will be sent shortly.</span>")
+						integrated_radio.talk_into(src, "Więzień wrócił na stację. Minerały i karta identyfikacyjna więźnia są gotowe do odbioru.", FREQ_SECURITY)
+					to_chat(M, "<span class='notice'>Prom otrzymał wiadomość i wkrótce zostanie wysłany.</span>")
 					return TRUE
 
 /obj/machinery/mineral/labor_claim_console/proc/locate_stacking_machine()
@@ -167,10 +167,10 @@ GLOBAL_LIST(labor_sheet_values)
 		if(istype(I, /obj/item/card/id/gulag))
 			var/obj/item/card/id/gulag/prisoner_id = I
 			to_chat(user, "<span class='notice'><B>ID: [prisoner_id.registered_name]</B></span>")
-			to_chat(user, "<span class='notice'>Points Collected:[prisoner_id.points]</span>")
-			to_chat(user, "<span class='notice'>Point Quota: [prisoner_id.goal]</span>")
-			to_chat(user, "<span class='notice'>Collect points by bringing smelted minerals to the Labor Shuttle stacking machine. Reach your quota to earn your release.</span>")
+			to_chat(user, "<span class='notice'>Zebrane punkty: [prisoner_id.points]</span>")
+			to_chat(user, "<span class='notice'>Limit punktów: [prisoner_id.goal]</span>")
+			to_chat(user, "<span class='notice'>Zbieraj punkty, przynosząc przetopione minerały do maszyny układającej na promie obozu pracy. Osiągnij limit, by zostać zwolnionym.</span>")
 		else
-			to_chat(user, "<span class='warning'>Error: Invalid ID</span>")
+			to_chat(user, "<span class='warning'>Błąd: nieprawidłowy identyfikator</span>")
 	else
 		return ..()

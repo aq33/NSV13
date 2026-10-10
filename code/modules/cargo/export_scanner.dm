@@ -14,7 +14,7 @@
 /obj/item/export_scanner/examine(user)
 	. = ..()
 	if(!cargo_console)
-		. += "<span class='notice'>[src] is not currently linked to a cargo console.</span>"
+		. += "<span class='notice'>[src] nie jest obecnie połączony z konsolą zaopatrzenia.</span>"
 
 /obj/item/export_scanner/afterattack(obj/O, mob/user, proximity)
 	. = ..()
@@ -25,9 +25,9 @@
 		var/obj/machinery/computer/cargo/C = O
 		if(!C.requestonly)
 			cargo_console = C
-			to_chat(user, "<span class='notice'>Scanner linked to [C].</span>")
+			to_chat(user, "<span class='notice'>Skaner połączony z [C].</span>")
 	else if(!istype(cargo_console))
-		to_chat(user, "<span class='warning'>You must link [src] to a cargo console first!</span>")
+		to_chat(user, "<span class='warning'>Najpierw musisz połączyć [src] z konsolą zaopatrzenia!</span>")
 	else
 		// Before you fix it:
 		// yes, checking manifests is a part of intended functionality.
@@ -38,8 +38,8 @@
 			price += ex.total_value[x]
 
 		if(price)
-			to_chat(user, "<span class='notice'>Scanned [O], value: <b>[price]</b> credits[O.contents.len ? " (contents included)" : ""].</span>")
+			to_chat(user, "<span class='notice'>Zeskanowano [O], wartość: <b>[price]</b> kr[O.contents.len ? " (z zawartością)" : ""].</span>")
 		else
-			to_chat(user, "<span class='warning'>Scanned [O], no export value.</span>")
+			to_chat(user, "<span class='warning'>Zeskanowano [O], brak wartości eksportowej.</span>")
 		if(bounty_ship_item_and_contents(O, dry_run=TRUE))
-			to_chat(user, "<span class='notice'>Scanned item is eligible for one or more bounties.</span>")
+			to_chat(user, "<span class='notice'>Zeskanowany przedmiot kwalifikuje się do co najmniej jednego zlecenia.</span>")

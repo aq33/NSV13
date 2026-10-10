@@ -52,7 +52,7 @@
 	. = ..()
 	var/num_research = length(pending_research)
 	if(num_research)
-		. += "\nPENDING RESEARCH:"
+		. += "\nOCZEKUJĄCE BADANIA:"
 		var/list/displayed = reverseList(pending_research)  // newest first
 		if(num_research >= MAX_SENT)
 			displayed.Cut(MAX_SENT)
@@ -210,7 +210,7 @@
 		return
 	if(action == "build")
 		if(busy)
-			say("Warning: Fabricators busy!")
+			say("Ostrzeżenie: fabrykatory zajęte!")
 		else
 			user_try_print_id(params["design_id"], params["amount"])
 			. = TRUE
@@ -315,16 +315,16 @@
 	if(!istype(D))
 		return FALSE
 	if(!(isnull(allowed_department_flags) || (D.departmental_flags & allowed_department_flags)))
-		say("Warning: Printing failed: This fabricator does not have the necessary keys to decrypt design schematics. Please update the research data with the on-screen button and contact Nanotrasen Support!")
+		say("Ostrzeżenie: drukowanie nieudane: ten fabrykator nie ma kluczy potrzebnych do odszyfrowania schematów projektu. Zaktualizuj dane badań przyciskiem na ekranie i skontaktuj się z pomocą techniczną Nanotrasen!")
 		return FALSE
 	if(D.build_type && !(D.build_type & allowed_buildtypes))
-		say("This machine does not have the necessary manipulation systems for this design. Please contact Nanotrasen Support!")
+		say("Ta maszyna nie ma systemów manipulacji potrzebnych do tego projektu. Skontaktuj się z pomocą techniczną Nanotrasen!")
 		return FALSE
 	if(!materials.mat_container)
-		say("No connection to material storage, please contact the quartermaster.")
+		say("Brak połączenia z magazynem materiałów, skontaktuj się z kwatermistrzem.")
 		return FALSE
 	if(materials.on_hold())
-		say("Mineral access is on hold, please contact the quartermaster.")
+		say("Dostęp do minerałów jest wstrzymany, skontaktuj się z kwatermistrzem.")
 		return FALSE
 	var/power = 1000
 	amount = CLAMP(amount, 1, 10)
@@ -337,11 +337,11 @@
 	for(var/MAT in D.materials)
 		efficient_mats[MAT] = D.materials[MAT]/coeff
 	if(!materials.mat_container.has_materials(efficient_mats, amount))
-		say("Not enough materials to complete prototype[amount > 1? "s" : ""].")
+		say("Za mało materiałów, by ukończyć [amount > 1? "prototypy" : "prototyp"].")
 		return FALSE
 	for(var/R in D.reagents_list)
 		if(!reagents.has_reagent(R, D.reagents_list[R]*amount))
-			say("Not enough reagents to complete prototype[amount > 1? "s" : ""].")
+			say("Za mało odczynników, by ukończyć [amount > 1? "prototypy" : "prototyp"].")
 			return FALSE
 	materials.mat_container.use_materials(efficient_mats, amount)
 	materials.silo_log(src, "built", -amount, "[D.name]", efficient_mats)
@@ -360,10 +360,10 @@
 /obj/machinery/rnd/production/proc/eject_sheets(eject_sheet, eject_amt)
 	var/datum/component/material_container/mat_container = materials.mat_container
 	if (!mat_container)
-		say("No access to material storage, please contact the quartermaster.")
+		say("Brak dostępu do magazynu materiałów, skontaktuj się z kwatermistrzem.")
 		return 0
 	if (materials.on_hold())
-		say("Mineral access is on hold, please contact the quartermaster.")
+		say("Dostęp do minerałów jest wstrzymany, skontaktuj się z kwatermistrzem.")
 		return 0
 	var/count = mat_container.retrieve_sheets(text2num(eject_amt), eject_sheet, drop_location())
 	var/list/matlist = list()

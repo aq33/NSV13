@@ -7,7 +7,7 @@
 	circuit = /obj/item/circuitboard/computer/cargo/express
 
 
-	blockade_warning = "Bluespace instability detected. Delivery impossible."
+	blockade_warning = "Wykryto niestabilność bluespace. Dostawa niemożliwa."
 	req_access = list(ACCESS_QM)
 
 	var/message
@@ -34,16 +34,16 @@
 /obj/machinery/computer/cargo/express/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/card/id/departmental_budget) && allowed(user))
 		var/obj/item/card/id/departmental_budget/DB = W
-		to_chat(user, "<span class='sciradio'>You set [src] to use the [DB.department_name].")
+		to_chat(user, "<span class='sciradio'>Ustawiasz [src] na korzystanie z: [DB.department_name].")
 		account_type = DB.department_ID
 		return
 	if((istype(W, /obj/item/card/id) || istype(W, /obj/item/modular_computer/tablet/pda)) && allowed(user))
 		locked = !locked
-		to_chat(user, "<span class='notice'>You [locked ? "lock" : "unlock"] the interface.</span>")
+		to_chat(user, "<span class='notice'>[locked ? "Blokujesz" : "Odblokowujesz"] interfejs.</span>")
 		return
 	else if(istype(W, /obj/item/disk/cargo/bluespace_pod))
 		podType = /obj/structure/closet/supplypod/bluespacepod//doesnt effect circuit board, making reversal possible
-		to_chat(user, "<span class='notice'>You insert the disk into [src], allowing for advanced supply delivery vehicles.</span>")
+		to_chat(user, "<span class='notice'>Wkładasz dysk do [src], umożliwiając korzystanie z zaawansowanych pojazdów dostawczych.</span>")
 		qdel(W)
 		return TRUE
 	else if(istype(W, /obj/item/supplypod_beacon))
@@ -52,15 +52,15 @@
 			sb.link_console(src, user)
 			return TRUE
 		else
-			to_chat(user, "<span class='notice'>[src] is already linked to [sb].</span>")
+			to_chat(user, "<span class='notice'>[src] jest już połączony z [sb].</span>")
 	..()
 
 /obj/machinery/computer/cargo/express/emag_act(mob/living/user)
 	if(obj_flags & EMAGGED)
 		return
 	if(user)
-		user.visible_message("<span class='warning'>[user] swipes a suspicious card through [src]!</span>",
-		"<span class='notice'>You change the routing protocols, allowing the Supply Pod to land anywhere on the station.</span>")
+		user.visible_message("<span class='warning'>[user] przeciąga podejrzaną kartę przez [src]!</span>",
+		"<span class='notice'>Zmieniasz protokoły trasowania, pozwalając kapsule zaopatrzenia lądować w dowolnym miejscu stacji.</span>")
 	obj_flags |= EMAGGED
 	// This also sets this on the circuit board
 	var/obj/item/circuitboard/computer/cargo/board = circuit
@@ -115,15 +115,15 @@
 	data["beaconName"] = beacon ? beacon.name : "No Beacon Found"
 	data["printMsg"] = cooldown > 0 ? "Print Beacon for [BEACON_COST] credits ([cooldown])" : "Print Beacon for [BEACON_COST] credits"//buttontext for printing beacons
 	data["supplies"] = list()
-	message = "Sales are near-instantaneous - please choose carefully."
+	message = "Sprzedaż jest niemal natychmiastowa – wybieraj ostrożnie."
 	if(SSshuttle.supplyBlocked)
 		message = blockade_warning
 	if(usingBeacon && !beacon)
-		message = "BEACON ERROR: BEACON MISSING"//beacon was destroyed
+		message = "BŁĄD NADAJNIKA: BRAK NADAJNIKA"//beacon was destroyed
 	else if (usingBeacon && !canBeacon)
-		message = "BEACON ERROR: MUST BE EXPOSED"//beacon's loc/user's loc must be a turf
+		message = "BŁĄD NADAJNIKA: MUSI BYĆ ODSŁONIĘTY"//beacon's loc/user's loc must be a turf
 	if(obj_flags & EMAGGED)
-		message = "(&!#@ERROR: ROUTING_#PROTOCOL MALF(*CT#ON. $UG%ESTE@ ACT#0N: !^/PULS3-%E)ET CIR*)ITB%ARD."
+		message = "(&!#@BŁĄD: PROTOKÓŁ_#TRASOWANIA AWA(*IA#. $UG%EROWANE@ DZIAŁ#NIE: !^/PULS3-%U)J PŁY*)ĘB%ZWODÓW."
 	data["message"] = message
 	if(!meme_pack_data)
 		packin_up()
@@ -172,7 +172,7 @@
 			if(!istype(pack))
 				return
 			var/name = "*None Provided*"
-			var/rank = "*None Provided*"
+			var/rank = "*Nie podano*"
 			var/ckey = usr.ckey
 			if(ishuman(usr))
 				var/mob/living/carbon/human/H = usr

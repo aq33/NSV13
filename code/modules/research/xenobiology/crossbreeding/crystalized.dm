@@ -3,7 +3,7 @@
 	desc = "It's crystalline,"
 	effect = "crystalline"
 	icon_state = "crystalline"
-	effect_desc = "Use to place a pylon."
+	effect_desc = "Użyj, by postawić pylon."
 	var/obj/structure/slime_crystal/crystal_type
 
 /obj/item/slimecross/crystalline/attack_self(mob/user)
@@ -12,7 +12,7 @@
 	var/obj/structure/slime_crystal/C = locate(/obj/structure/slime_crystal) in range(6,get_turf(user))
 
 	if(C)
-		to_chat(user,"<span class='notice'>You can't build crystals that close to each other!</span>")
+		to_chat(user,"<span class='notice'>Nie możesz budować kryształów tak blisko siebie!</span>")
 		return
 
 	var/user_turf = get_turf(user)
