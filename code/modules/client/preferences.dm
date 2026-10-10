@@ -895,7 +895,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					continue
 				dat += "<tr style='vertical-align:top;'><td width=15%>[G.preview_icon(user.client)][G.display_name]\n" // AQ EDIT - ikonka
 				if(G.can_preview()) // AQ EDIT - podgląd na postaci
-					dat += "<a style='white-space:normal;' [preview_gear == G.id ? "class='linkOn' " : ""]href='?_src_=prefs;preference=gear;preview_gear=[G.id]'>Podgląd</a>"
+					dat += "<a style='white-space:normal;' [preview_gear == G.id ? "class='linkOn' " : ""]href='byond://?_src_=prefs;preference=gear;preview_gear=[G.id]'>Podgląd</a>"
 				var/donator = G.sort_category == "Donator" // purchase box and cost coloumns doesn't appear on donator items
 				if(G.id in purchased_gear)
 					if(!G.path) // AQ EDIT - was G.sort_category == "OOC", polska bielizna też nie ma przedmiotu

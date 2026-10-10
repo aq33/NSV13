@@ -174,7 +174,7 @@ GLOBAL_VAR_INIT(erts_requested_already, 0)
 /// Wakes up willing ghosts as assistants at the cryopods on the ship, unless an admin cancels in time
 /datum/request/proc/auto_wake_crew()
 	autoaccept = TRUE
-	message_admins("Automatically waking up crew from cryostasis requested by [ADMIN_FULLMONTY(owner)] in [REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME] seconds. (<a href='?src=[REF(src)];cancel_wake=1'>CANCEL</a>)")
+	message_admins("Automatically waking up crew from cryostasis requested by [ADMIN_FULLMONTY(owner)] in [REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME] seconds. (<a href='byond://?src=[REF(src)];cancel_wake=1'>CANCEL</a>)")
 	sleep(REQUEST_AUTOACCEPT_ADMIN_INTERVENTION_TIME SECONDS)
 	if(!autoaccept)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(priority_announce), "Prośba o wybudzenie załogi z kriostazy została odrzucona.", "Automatyczny System Awaryjny Centrali"), 2 SECONDS)
