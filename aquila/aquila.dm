@@ -283,6 +283,7 @@
 #include "code\modules\miasma\miasma_sources.dm"
 #include "code\modules\mining\equipment\mineral_scanner.dm"
 #include "code\modules\mining\machine_bluespaceminer.dm"
+#include "code\modules\mob\dead\crew_manifest.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories.dm"
 #include "code\modules\mob\dead\observer\observer.dm"
 #include "code\modules\mob\dead\observer\orbit.dm"
