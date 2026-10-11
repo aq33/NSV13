@@ -124,6 +124,8 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	new/datum/stack_recipe("floodlight frame",							/obj/structure/floodlight_frame, 5, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("shower frame",								/obj/structure/showerframe, 2, time = 2 SECONDS), \
 	new/datum/stack_recipe("sink frame",								/obj/structure/sinkframe, 2, time = 2 SECONDS), \
+	//AQ EDIT - hygienebot, see aquila/code/modules/hygiene/
+	new/datum/stack_recipe("hygienebot assembly",						/obj/item/bot_assembly/hygienebot, 2, time = 5 SECONDS), \
 	//NSV13 start
 	null, \
 	new/datum/stack_recipe("torpedo casing", /obj/item/ship_weapon/ammunition/torpedo/torpedo_casing, 15, one_per_turf = TRUE, on_floor = TRUE), \

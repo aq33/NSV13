@@ -56,6 +56,17 @@ const TARGET_SPECIES_LIST = [
   },
 ];
 
+const TARGET_HYGIENE_LIST = [
+  {
+    name: 'Clean',
+    value: 250,
+  },
+  {
+    name: 'Dirty',
+    value: 75,
+  },
+];
+
 const TARGET_NUTRITION_LIST = [
   {
     name: 'Starving',
@@ -113,6 +124,10 @@ const SCANNER_GATE_ROUTES = {
     title: 'Scanner Mode: Nutrition',
     component: () => ScannerGateNutrition,
   },
+  Hygiene: {
+    title: 'Scanner Mode: Hygiene',
+    component: () => ScannerGateHygiene,
+  },
   Nanites: {
     title: 'Scanner Mode: Nanites',
     component: () => ScannerGateNanites,
@@ -165,6 +180,9 @@ const ScannerGateOff = (props, context) => {
         <Button
           content="Nutrition"
           onClick={() => act('set_mode', { new_mode: 'Nutrition' })} />
+        <Button
+          content="Hygiene"
+          onClick={() => act('set_mode', { new_mode: 'Hygiene' })} />
         <Button
           content="Nanites"
           onClick={() => act('set_mode', { new_mode: 'Nanites' })} />
@@ -291,6 +309,34 @@ const ScannerGateNutrition = (props, context) => {
             content={nutrition.name}
             onClick={() => act('set_target_nutrition', {
               new_nutrition: nutrition.name,
+            })} />
+        ))}
+      </Box>
+      <ScannerGateMode />
+    </>
+  );
+};
+
+const ScannerGateHygiene = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { reverse, target_hygiene } = data;
+  const hygiene = TARGET_HYGIENE_LIST.find(hygiene => {
+    return hygiene.value === target_hygiene;
+  });
+  return (
+    <>
+      <Box mb={2}>
+        Trigger if the person scanned {reverse ? 'is not' : 'is'}
+        {' '}{hygiene.name.toLowerCase()}.
+      </Box>
+      <Box mb={2}>
+        {TARGET_HYGIENE_LIST.map(hygiene => (
+          <Button.Checkbox
+            key={hygiene.name}
+            checked={hygiene.value === target_hygiene}
+            content={hygiene.name}
+            onClick={() => act('set_target_hygiene', {
+              new_hygiene: hygiene.name,
             })} />
         ))}
       </Box>
