@@ -6,17 +6,18 @@
 /// Stores the cursor hint icons for screentip context.
 GLOBAL_LIST_INIT_TYPED(screentip_context_icons, /image, prepare_screentip_context_icons())
 
-// These invisible tokens are added to fix a byond rendering bug where icons don't properly position themselves if they are the first thing on a new line
-GLOBAL_VAR_INIT(lmb_icon, "<span style='font-size: 1px'>.</span>\icon[GLOB.screentip_context_icons["LMB"]]")
-GLOBAL_VAR_INIT(rmb_icon, "<span style='font-size: 1px'>.</span>\icon[GLOB.screentip_context_icons["RMB"]]")
-GLOBAL_VAR_INIT(hint_screwdriver, "<span style='font-size: 1px'>.</span>\icon[GLOB.screentip_context_icons["screwdriver"]]")
-GLOBAL_VAR_INIT(hint_wrench, "<span style='font-size: 1px'>.</span>\icon[GLOB.screentip_context_icons["wrench"]]")
-GLOBAL_VAR_INIT(hint_crowbar, "<span style='font-size: 1px'>.</span>\icon[GLOB.screentip_context_icons["crowbar"]]")
-GLOBAL_VAR_INIT(hint_wirecutters, "<span style='font-size: 1px'>.</span>\icon[GLOB.screentip_context_icons["wirecutters"]]")
-GLOBAL_VAR_INIT(hint_welder, "<span style='font-size: 1px'>.</span>\icon[GLOB.screentip_context_icons["welder"]]")
-GLOBAL_VAR_INIT(hint_multitool, "<span style='font-size: 1px'>.</span>\icon[GLOB.screentip_context_icons["multitool"]]")
-GLOBAL_VAR_INIT(hint_knife, "<span style='font-size: 1px'>.</span>\icon[GLOB.screentip_context_icons["knife"]]")
-GLOBAL_VAR_INIT(hint_rolling_pin, "<span style='font-size: 1px'>.</span>\icon[GLOB.screentip_context_icons["rolling_pin"]]")
+// AQUILA: tekst zamiast ikonek myszy i narzędzi. Ikonki w maptexcie rosły z powiększeniem mapy szybciej niż tekst
+// i wychodziły za duże; napisy skalują się jak reszta podpowiedzi.
+GLOBAL_VAR_INIT(lmb_icon, "<b>LPM:</b>")
+GLOBAL_VAR_INIT(rmb_icon, "<b>PPM:</b>")
+GLOBAL_VAR_INIT(hint_screwdriver, "(śrubokręt)")
+GLOBAL_VAR_INIT(hint_wrench, "(klucz)")
+GLOBAL_VAR_INIT(hint_crowbar, "(łom)")
+GLOBAL_VAR_INIT(hint_wirecutters, "(przecinak)")
+GLOBAL_VAR_INIT(hint_welder, "(spawarka)")
+GLOBAL_VAR_INIT(hint_multitool, "(multitool)")
+GLOBAL_VAR_INIT(hint_knife, "(nóż)")
+GLOBAL_VAR_INIT(hint_rolling_pin, "(wałek)")
 
 /proc/prepare_screentip_context_icons()
 	var/list/output = list()
