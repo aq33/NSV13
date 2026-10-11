@@ -36,6 +36,7 @@
 	minbodytemp = 0
 	maxbodytemp = 1500
 	faction = list("neutral")
+	deathsound = 'aquila/sound/creatures/wojtusiu.ogg'
 	gold_core_spawnable = NO_SPAWN
 	do_footstep = TRUE
 	/// Kto ostatnio zadał Wojtkowi obrażenia. Załoga ma tę samą frakcję, więc bazowe Retaliate() by jej nie dopisało do wrogów.
