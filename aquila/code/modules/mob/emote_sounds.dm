@@ -47,3 +47,10 @@
 	emote_type = EMOTE_AUDIBLE
 	mob_type_allowed_typecache = list(/mob/living/simple_animal/cow)
 	sound = 'aquila/sound/creatures/cow.ogg'
+
+/datum/emote/silicon/dwoop
+	key = "dwoop"
+	key_third_person = "dwoops"
+	message = "wydaje dźwięk \"dwoop\""
+	sound = 'aquila/sound/emotes/dwoop.ogg'
+	emote_type = EMOTE_AUDIBLE

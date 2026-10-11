@@ -21,17 +21,19 @@
 	if(user.gender == FEMALE)
 		return pick_emote_sound(user, list('aquila/sound/voice/human/femalecough1.ogg', 'aquila/sound/voice/human/femalecough2.ogg', 'aquila/sound/voice/human/cough.ogg',
 			'aquila/sound/voice/human/cough/female_cough1.ogg', 'aquila/sound/voice/human/cough/female_cough2.ogg', 'aquila/sound/voice/human/cough/female_cough3.ogg',
-			'aquila/sound/voice/human/cough/female_cough4.ogg', 'aquila/sound/voice/human/cough/female_cough5.ogg', 'aquila/sound/voice/human/cough/female_cough6.ogg'))
+			'aquila/sound/voice/human/cough/female_cough4.ogg', 'aquila/sound/voice/human/cough/female_cough5.ogg', 'aquila/sound/voice/human/cough/female_cough6.ogg',
+			'aquila/sound/emotes/female/female_cough_1.ogg', 'aquila/sound/emotes/female/female_cough_2.ogg', 'aquila/sound/emotes/female/female_cough_3.ogg', 'aquila/sound/emotes/female/female_cough_4.ogg', 'aquila/sound/emotes/female/female_cough_5.ogg', 'aquila/sound/emotes/female/female_cough_6.ogg', 'aquila/sound/emotes/female/female_cough_7.ogg'))
 	return pick_emote_sound(user, list('aquila/sound/voice/human/malecough1.ogg', 'aquila/sound/voice/human/cough.ogg',
 		'aquila/sound/voice/human/cough/male_cough1.ogg', 'aquila/sound/voice/human/cough/male_cough2.ogg', 'aquila/sound/voice/human/cough/male_cough3.ogg',
-		'aquila/sound/voice/human/cough/male_cough4.ogg', 'aquila/sound/voice/human/cough/male_cough5.ogg', 'aquila/sound/voice/human/cough/male_cough6.ogg'))
+		'aquila/sound/voice/human/cough/male_cough4.ogg', 'aquila/sound/voice/human/cough/male_cough5.ogg', 'aquila/sound/voice/human/cough/male_cough6.ogg',
+			'aquila/sound/emotes/male/male_cough_1.ogg', 'aquila/sound/emotes/male/male_cough_2.ogg', 'aquila/sound/emotes/male/male_cough_3.ogg'))
 
 /datum/emote/living/deathgasp
 	voice_emote = TRUE
 
 /datum/emote/living/deathgasp/get_sound(mob/living/user)
 	if(ismoth(user))
-		return 'aquila/sound/voice/moth/moth_death.ogg'
+		return pick_emote_sound(user, list('aquila/sound/voice/moth/moth_death.ogg', 'aquila/sound/emotes/moth/moth_deathgasp.ogg'))
 	if(!has_human_emote_voice(user))
 		return
 	if(user.gender == FEMALE)
@@ -80,8 +82,10 @@
 		return
 	if(user.gender == FEMALE)
 		return pick_emote_sound(user, list('aquila/sound/voice/human/femalesigh1.ogg', 'aquila/sound/voice/human/femalesigh2.ogg', 'aquila/sound/voice/human/femalesigh3.ogg', 'aquila/sound/voice/human/femalesigh4.ogg',
-			'aquila/sound/voice/human/sigh/female_sigh1.ogg', 'aquila/sound/voice/human/sigh/female_sigh2.ogg', 'aquila/sound/voice/human/sigh/female_sigh3.ogg'))
-	return pick_emote_sound(user, list('aquila/sound/voice/human/sigh.ogg', 'aquila/sound/voice/human/sigh/male_sigh1.ogg', 'aquila/sound/voice/human/sigh/male_sigh2.ogg', 'aquila/sound/voice/human/sigh/male_sigh3.ogg'))
+			'aquila/sound/voice/human/sigh/female_sigh1.ogg', 'aquila/sound/voice/human/sigh/female_sigh2.ogg', 'aquila/sound/voice/human/sigh/female_sigh3.ogg',
+			'aquila/sound/emotes/female/female_sigh.ogg'))
+	return pick_emote_sound(user, list('aquila/sound/voice/human/sigh.ogg', 'aquila/sound/voice/human/sigh/male_sigh1.ogg', 'aquila/sound/voice/human/sigh/male_sigh2.ogg', 'aquila/sound/voice/human/sigh/male_sigh3.ogg',
+			'aquila/sound/emotes/male/male_sigh.ogg'))
 
 /datum/emote/living/sneeze
 	voice_emote = TRUE
@@ -90,8 +94,10 @@
 	if(!has_human_emote_voice(user))
 		return
 	if(user.gender == FEMALE)
-		return pick_emote_sound(user, list('aquila/sound/voice/human/femalesneeze1.ogg', 'aquila/sound/voice/human/femalesneeze2.ogg', 'aquila/sound/voice/human/sneeze/female_sneeze1.ogg'))
-	return pick_emote_sound(user, list('aquila/sound/voice/human/malesneeze1.ogg', 'aquila/sound/voice/human/sneeze.ogg', 'aquila/sound/voice/human/sneeze/male_sneeze1.ogg'))
+		return pick_emote_sound(user, list('aquila/sound/voice/human/femalesneeze1.ogg', 'aquila/sound/voice/human/femalesneeze2.ogg', 'aquila/sound/voice/human/sneeze/female_sneeze1.ogg',
+			'aquila/sound/emotes/female/female_sneeze1.ogg', 'aquila/sound/emotes/female/female_sneeze2.ogg'))
+	return pick_emote_sound(user, list('aquila/sound/voice/human/malesneeze1.ogg', 'aquila/sound/voice/human/sneeze.ogg', 'aquila/sound/voice/human/sneeze/male_sneeze1.ogg',
+			'aquila/sound/emotes/male/male_sneeze1.ogg', 'aquila/sound/emotes/male/male_sneeze2.ogg'))
 
 /datum/emote/living/burp
 	voice_emote = TRUE
@@ -122,8 +128,10 @@
 	if(!has_human_emote_voice(user))
 		return
 	if(user.gender == FEMALE)
-		return pick_emote_sound(user, list('aquila/sound/voice/sniff.ogg', 'aquila/sound/voice/human/sniff/female_sniff.ogg'))
-	return pick_emote_sound(user, list('aquila/sound/voice/sniff.ogg', 'aquila/sound/voice/human/sniff/male_sniff.ogg'))
+		return pick_emote_sound(user, list('aquila/sound/voice/sniff.ogg', 'aquila/sound/voice/human/sniff/female_sniff.ogg',
+			'aquila/sound/emotes/female/female_sniff.ogg'))
+	return pick_emote_sound(user, list('aquila/sound/voice/sniff.ogg', 'aquila/sound/voice/human/sniff/male_sniff.ogg',
+			'aquila/sound/emotes/male/male_sniff.ogg'))
 
 /datum/emote/living/snore
 	voice_emote = TRUE
@@ -153,7 +161,7 @@
 		if(islizard(user))
 			return 'aquila/sound/voice/lizard/lizard_laugh1.ogg'
 		if(ismoth(user))
-			return 'aquila/sound/voice/moth/moth_laugh1.ogg'
+			return pick_emote_sound(user, list('aquila/sound/voice/moth/moth_laugh1.ogg', 'aquila/sound/emotes/moth/mothlaugh.ogg'))
 	return ..()
 
 /datum/emote/living/giggle
@@ -318,3 +326,22 @@
 	if(user.gender == FEMALE)
 		return pick('aquila/sound/emotes/female_giggle_1.ogg', 'aquila/sound/emotes/female_giggle_2.ogg')
 	return pick('aquila/sound/emotes/male_giggle_1.ogg', 'aquila/sound/emotes/male_giggle_2.ogg', 'aquila/sound/emotes/male_giggle_3.ogg')
+
+/// Snapping the fingers twice and thrice (BeeStation #7804)
+/datum/emote/living/snap/two
+	key = "snap2"
+	key_third_person = "snaps2"
+	message = "pstryka palcami dwa razy"
+	message_param = "pstryka palcami na %t dwa razy"
+
+/datum/emote/living/snap/two/get_sound(mob/living/user)
+	return 'aquila/sound/emotes/snap2.ogg'
+
+/datum/emote/living/snap/three
+	key = "snap3"
+	key_third_person = "snaps3"
+	message = "pstryka palcami trzy razy"
+	message_param = "pstryka palcami na %t trzy razy"
+
+/datum/emote/living/snap/three/get_sound(mob/living/user)
+	return 'aquila/sound/emotes/snap3.ogg'

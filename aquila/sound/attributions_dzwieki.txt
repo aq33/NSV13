@@ -54,3 +54,15 @@ Generated (low-pass filtered copies, same license as their sources):
   voice/speech_muffled/*            aquila/sound/voice/speech/* through a 700 Hz low-pass (voice behind a mask or helmet)
   weapons/distant/*                 the gun sounds listed in aquila/code/game/distant_gun_sounds.dm through a 450 Hz low-pass
   vehicles/pussywagon_loop.ogg, secway_loop.ogg  raised by 6 dB
+
+From BeeStation/BeeStation-Hornet, license CC-BY-SA 3.0 unless noted:
+  emotes/annoyed.ogg, dwoop.ogg, snap2.ogg, snap3.ogg, sweatdrop.ogg, emotes/female/*, emotes/male/*, emotes/moth/*
+                                    BeeStation #7804 and #11617 (sound/emotes, sound/voice/moth/moth_deathgasp.ogg)
+  machines/computer/keyboard_clicks_1-7.ogg  BeeStation #14383, made by sadboysuss, CC-BY-SA
+  machines/computer/paper_insert.ogg         BeeStation #14383, from dersuperanton, https://freesound.org/people/dersuperanton/sounds/166690/ (CC-BY 4.0)
+  machines/tcomms/tcomms_mid1-7.ogg          BeeStation #14383
+  machines/grav_gen/*                        BeeStation #14318, made by sadboysuss from a sound by kayozz, CC-BY-SA;
+                                             grav_gen_mid2.ogg also uses "Explosion 7b" by LiamG_SFX, https://freesound.org/s/322492/ (CC BY-NC 4.0, non-commercial)
+  machines/cryo/cryo_1-10.ogg                BeeStation #14436, DudeAwesome, https://freesound.org/people/DudeAwesome/sounds/386023/ (CC BY 4.0)
+  items/knell/knell1-4.ogg                   BeeStation #14755, gsb1039, https://freesound.org/people/gsb1039/sounds/415061/
+  sound/items/drill_hit.ogg, drill_use.ogg, jaws_cut.ogg, jaws_pry.ogg  replaced with the normalized versions from BeeStation #12229

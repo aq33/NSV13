@@ -369,6 +369,8 @@ distance_multiplier - Can be used to multiply the distance at which the sound is
 				soundin = pick('aquila/sound/items/equip/glasses_equip1.ogg', 'aquila/sound/items/equip/glasses_equip2.ogg')
 			if("robot_step")
 				soundin = pick('aquila/sound/effects/footstep/robot_servo1.ogg', 'aquila/sound/effects/footstep/robot_servo2.ogg', 'aquila/sound/effects/footstep/robot_servo3.ogg')
+			if("keyboard_clicks")
+				soundin = pick('aquila/sound/machines/computer/keyboard_clicks_1.ogg', 'aquila/sound/machines/computer/keyboard_clicks_2.ogg', 'aquila/sound/machines/computer/keyboard_clicks_3.ogg', 'aquila/sound/machines/computer/keyboard_clicks_4.ogg', 'aquila/sound/machines/computer/keyboard_clicks_5.ogg', 'aquila/sound/machines/computer/keyboard_clicks_6.ogg', 'aquila/sound/machines/computer/keyboard_clicks_7.ogg')
 			//AQ EDIT END
 	return soundin
 

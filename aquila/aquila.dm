@@ -104,6 +104,7 @@
 #include "code\game\machinery\spaceheater.dm"
 #include "code\game\machinery\status_display.dm"
 #include "code\game\machinery\suit_storage_unit.dm"
+#include "code\game\machinery\telecomms\machines\hub.dm"
 #include "code\game\mecha\equipment\weapons\weapons.dm"
 #include "code\game\mecha\working\lockermech.dm"
 #include "code\game\objects\RCD.dm"
@@ -137,6 +138,7 @@
 #include "code\game\objects\items\flamethrower.dm"
 #include "code\game\objects\items\implants\implant_dusting.dm"
 #include "code\game\objects\items\holy_weapons.dm"
+#include "code\game\objects\items\implants\implant_deathrattle.dm"
 #include "code\game\objects\items\implants\implant_explosive.dm"
 #include "code\game\objects\items\implants\implant_infiltrator.dm"
 #include "code\game\objects\items\implants\implant_security.dm"
@@ -225,6 +227,8 @@
 #include "code\modules\antagonists\vampire\vampire.dm"
 #include "code\modules\asset_cache\asset_list_items.dm"
 #include "code\modules\atmospherics\environmental\LINDA_fire.dm"
+#include "code\modules\atmospherics\environmental\fire_sounds.dm"
+#include "code\modules\atmospherics\machinery\components\unary_devices\cryo.dm"
 #include "code\modules\atmospherics\machinery\pipes\bluespace.dm"
 #include "code\modules\atmospherics\machinery\portable\canister.dm"
 #include "code\modules\bluespace_locker\bluespace_locker.dm"
@@ -440,6 +444,7 @@
 #include "code\modules\mob\living\simple_animal\friendly\farm_animals.dm"
 #include "code\modules\mob\voice.dm"
 #include "code\modules\mob\voice_muffled_sounds.dm"
+#include "code\modules\modular_computers\hardware\printer.dm"
 #include "code\modules\reagents\chemistry\machinery\chem_heater.dm"
 
 #ifdef UNIT_TESTS

@@ -221,7 +221,7 @@
 	return ismoth(user) && ..()
 
 /datum/emote/living/carbon/human/squeak/get_sound(mob/living/user)
-	return 'aquila/sound/voice/moth/moth_squeak.ogg'
+	return pick_emote_sound(user, list('aquila/sound/voice/moth/moth_squeak.ogg', 'aquila/sound/emotes/moth/mothsqueak.ogg'))
 
 /datum/emote/living/carbon/human/chitter
 	key = "chitter"
@@ -234,4 +234,33 @@
 	return ismoth(user) && ..()
 
 /datum/emote/living/carbon/human/chitter/get_sound(mob/living/user)
-	return 'aquila/sound/voice/moth/moth_chitter.ogg'
+	return pick_emote_sound(user, list('aquila/sound/voice/moth/moth_chitter.ogg', 'aquila/sound/emotes/moth/mothchitter.ogg'))
+
+/datum/emote/living/carbon/human/sweatdrop
+	key = "sweatdrop"
+	key_third_person = "sweatdrops"
+	message = "poci się"
+	emote_type = EMOTE_VISIBLE
+	sound_volume = 25
+	vary = TRUE
+	sound = 'aquila/sound/emotes/sweatdrop.ogg'
+
+/// Same as *sweatdrop, people use either
+/datum/emote/living/carbon/human/sweatdrop/sweat
+	key = "sweat"
+	key_third_person = "sweats"
+
+/datum/emote/living/carbon/human/annoyed
+	key = "annoyed"
+	message = "okazuje irytację"
+	emote_type = EMOTE_VISIBLE
+	sound_volume = 25
+	vary = TRUE
+	sound = 'aquila/sound/emotes/annoyed.ogg'
+
+/datum/emote/living/carbon/human/robot_tongue/dwoop
+	key = "dwoop"
+	key_third_person = "dwoops"
+	message = "wydaje dźwięk \"dwoop\""
+	emote_type = EMOTE_AUDIBLE
+	sound = 'aquila/sound/emotes/dwoop.ogg'

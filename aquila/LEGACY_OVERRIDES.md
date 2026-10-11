@@ -107,7 +107,7 @@ One-line hooks; everything else is in `aquila/code/modules/mob/voice.dm`, the Aq
 
 - `code/game/sound.dm`: `playsound()` accepts a prepared `/sound` (muffled voices) and rolls `vary` once for all listeners; `get_rand_frequency()` returns a playback multiplier instead of Hz (sample-rate independent); extra `get_sfx()` keys in the AQ EDIT block.
 - `code/datums/emotes.dm`: `run_emote()` calls `play_emote_sound()` (voice pitch of vocal emotes).
-- `code/datums/looping_sounds/_looping_sound.dm`: `play()` passed `extra_range` as `vary`.
+- `code/datums/looping_sounds/_looping_sound.dm`: `play()` passed `extra_range` as `vary`; it also passes `vary`, falloff and `ignore_walls` (vars added in `aquila/code/datums/looping_sounds/machinery_sounds.dm`).
 - `code/game/objects/items.dm`: `equip_sound` only when worn (`slot_flags & slot`), not when picked up.
 - `code/game/turfs/turf.dm`: `handle_fall()` also thuds, more quietly, when lying down on purpose.
 - `code/modules/client/preferences.dm`, `preferences2/character_save.dm`: voice pitch row, its input/random handlers, sanitizing and randomising `features["voice_pitch"]`.

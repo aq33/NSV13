@@ -83,7 +83,7 @@
 		S.volume = volume
 		SEND_SOUND(parent, S)
 	else
-		playsound(parent, S, volume, FALSE, extra_range) // AQ EDIT - extra_range was passed as vary
+		playsound(parent, S, volume, vary, extra_range, falloff_exponent = falloff_exponent, falloff_distance = falloff_distance, ignore_walls = ignore_walls) // AQ EDIT - extra_range was passed as vary; falloff vars in aquila/code/datums/looping_sounds/machinery_sounds.dm
 
 /datum/looping_sound/proc/get_sound(starttime, _mid_sounds)
 	. = _mid_sounds || mid_sounds
