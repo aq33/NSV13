@@ -52,4 +52,18 @@
 	TEST_ASSERT(found_common, "A human cannot speak Galactic Common according to the language menu")
 	qdel(language_menu)
 
+	// Newscaster (BeeStation #7779): channels, articles and the window data
+	GLOB.news_network.create_feed_channel("Aquila Test Channel", "Unit Test", "A test channel")
+	GLOB.news_network.submit_article("Hello station", "Unit Test", "Aquila Test Channel", null)
+	var/datum/feed_channel/test_channel
+	for(var/datum/feed_channel/channel as anything in GLOB.news_network.network_channels)
+		if(channel.channel_name == "Aquila Test Channel")
+			test_channel = channel
+	TEST_ASSERT(test_channel, "The feed channel was not created")
+	TEST_ASSERT(length(test_channel.messages) == 1, "The article was not posted")
+	var/obj/machinery/newscaster/newscaster = allocate(/obj/machinery/newscaster)
+	var/list/news_data = newscaster.ui_data(traitor_mob)
+	TEST_ASSERT(islist(news_data["channels"]) && length(news_data["channels"]), "The newscaster window has no channels")
+	TEST_ASSERT(ispath(/obj/machinery/newscaster/security_unit/north), "Map path /obj/machinery/newscaster/security_unit/north is gone")
+
 #undef TEST_ASSERT
