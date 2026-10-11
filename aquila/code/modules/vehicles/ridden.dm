@@ -60,5 +60,5 @@
 
 /obj/vehicle/ridden/secway
 	drive_sound = 'aquila/sound/vehicles/secway_loop.ogg'
-	drive_sound_length = 3 SECONDS
+	drive_sound_length = 1.5 SECONDS
 	drive_sound_volume = 50

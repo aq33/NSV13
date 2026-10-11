@@ -53,7 +53,8 @@ Radio (tgstation sound/items/radio, see its attribution.txt):
 Generated (low-pass filtered copies, same license as their sources):
   voice/speech_muffled/*            aquila/sound/voice/speech/* through a 700 Hz low-pass (voice behind a mask or helmet)
   weapons/distant/*                 the gun sounds listed in aquila/code/game/distant_gun_sounds.dm through a 450 Hz low-pass
-  vehicles/pussywagon_loop.ogg, secway_loop.ogg  raised by 6 dB
+  vehicles/pussywagon_loop.ogg     raised by 6 dB
+  vehicles/secway_loop.ogg         an octave up, 250 Hz high-pass (the original was mostly an inaudible 60-150 Hz hum)
 
 From BeeStation/BeeStation-Hornet, license CC-BY-SA 3.0 unless noted:
   emotes/annoyed.ogg, dwoop.ogg, snap2.ogg, snap3.ogg, sweatdrop.ogg, emotes/female/*, emotes/male/*, emotes/moth/*
