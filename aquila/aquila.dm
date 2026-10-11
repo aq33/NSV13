@@ -435,6 +435,7 @@
 #include "code\modules\surgery\ear_surgery.dm"
 #include "code\modules\surgery\gender_reassignment.dm"
 #include "code\modules\surgery\implant_removal.dm"
+#include "code\modules\tgui_input\say_modal.dm"
 #include "code\modules\tgui_panel\audio.dm"
 #include "code\modules\uplink\uplink_devices.dm"
 #include "code\modules\uplink\uplink_items.dm"

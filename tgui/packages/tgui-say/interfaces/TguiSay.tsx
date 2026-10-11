@@ -17,6 +17,7 @@ export class TguiSay extends Component<{}, State> {
     lightMode: false,
     showRadioPrefix: false,
     maxLength: 1024,
+    radioChannels: [],
     radioPrefix: '',
     tempHistory: '',
     value: '',

@@ -22,6 +22,7 @@ type Events = {
   onInput: (event: InputEvent, value: string) => void;
   onComponentMount: () => void;
   onComponentUpdate: () => void;
+  onCycleRadio: (direction: number) => void;
   onRadioPrefix: () => void;
   onReset: (channel?: number) => void;
   onSetSize: (size: number) => void;
@@ -35,6 +36,7 @@ type Fields = {
   lightMode: boolean;
   showRadioPrefix: boolean;
   maxLength: number;
+  radioChannels: string[];
   radioPrefix: string;
   tempHistory: string;
   value: string;

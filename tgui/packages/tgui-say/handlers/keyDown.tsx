@@ -10,7 +10,7 @@ import { Modal } from '../types';
 
 /**
  * Handles other key events.
- * TAB - Changes channels.
+ * TAB - Cycles IC and radio channels (AQUILA).
  * UP/DOWN - Sets history counter and input value.
  * BKSP/DEL - Resets history counter and checks window size.
  * TYPING - When users key, it tells byond that it's typing.
@@ -34,11 +34,7 @@ export const handleKeyDown = function (
   }
   if (event.keyCode === KEY_TAB) {
     event.preventDefault();
-    if (event.shiftKey) {
-      this.events.onDecrementChannel();
-    } else {
-      this.events.onIncrementChannel();
-    }
+    this.events.onCycleRadio(event.shiftKey ? -1 : 1);
     return;
   }
   if (event.keyCode === KEY_DELETE || event.keyCode === KEY_BACKSPACE) {
