@@ -4,8 +4,8 @@
 /obj/machinery/smartfridge
 	name = "smartfridge"
 	desc = "Keeps cold things cold and hot things cold."
-	icon = 'icons/obj/vending.dmi'
-	icon_state = "smartfridge"
+	icon = 'aquila/icons/obj/smartfridge.dmi' // AQ EDIT - port BeeStation #13072: new sprites
+	icon_state = "smartfridge-icon"
 	layer = BELOW_OBJ_LAYER
 	density = TRUE
 	use_power = IDLE_POWER_USE
@@ -19,6 +19,15 @@
 	var/allow_ai_retrieve = FALSE
 	var/list/initial_contents
 	var/visible_contents = TRUE
+	// AQ EDIT START - port BeeStation #13072
+	layout_prefs_used = "tgui_layout_smartfridge"
+	/// Sprite base, icon states are built from it
+	var/base_icon_state = "smartfridge"
+	/// Which contents overlay is shown when the fridge is filled: [base_icon_state]-[contents_overlay_icon]-1/2/3
+	var/contents_overlay_icon = "plant"
+	/// Whether the fridge glows when powered
+	var/has_emissive = TRUE
+	// AQ EDIT END
 
 /obj/machinery/smartfridge/Initialize(mapload)
 	. = ..()
@@ -45,22 +54,38 @@
 	..()
 	update_icon()
 
-/obj/machinery/smartfridge/update_icon()
-	if(!machine_stat)
-		if (visible_contents)
-			switch(contents.len)
-				if(0)
-					icon_state = "[initial(icon_state)]"
-				if(1 to 25)
-					icon_state = "[initial(icon_state)]1"
-				if(26 to 75)
-					icon_state = "[initial(icon_state)]2"
-				if(76 to INFINITY)
-					icon_state = "[initial(icon_state)]3"
-		else
-			icon_state = "[initial(icon_state)]"
-	else
-		icon_state = "[initial(icon_state)]-off"
+// AQ EDIT START - port BeeStation #13072: sprites with contents levels, glass, light and broken states
+/obj/machinery/smartfridge/update_icon_state()
+	icon_state = "[base_icon_state]"
+	if(machine_stat & BROKEN)
+		icon_state += "-broken"
+	return ..()
+
+/// Returns the number of items visible in the fridge
+/obj/machinery/smartfridge/proc/visible_items()
+	return length(contents) - length(component_parts)
+
+/obj/machinery/smartfridge/update_overlays()
+	. = ..()
+	var/shown_contents_length = visible_items()
+	if(visible_contents && shown_contents_length > 0)
+		var/content_level = "[base_icon_state]-[contents_overlay_icon]"
+		switch(shown_contents_length)
+			if(1 to 25)
+				content_level += "-1"
+			if(26 to 75)
+				content_level += "-2"
+			else
+				content_level += "-3"
+		. += mutable_appearance(icon, content_level)
+	if(visible_contents)
+		. += mutable_appearance(icon, "[base_icon_state]-glass[(machine_stat & BROKEN) ? "-broken" : ""]")
+	if(has_emissive && powered() && !(machine_stat & BROKEN))
+		. += mutable_appearance(icon, "[base_icon_state]-powered")
+		. += emissive_appearance(icon, "[base_icon_state]-light-mask", layer, alpha = src.alpha)
+	if(panel_open)
+		. += mutable_appearance(icon, "[base_icon_state]-panel")
+// AQ EDIT END
 
 
 
@@ -70,9 +95,7 @@
 
 /obj/machinery/smartfridge/attackby(obj/item/O, mob/user, params)
 	if(default_deconstruction_screwdriver(user, icon_state, icon_state, O))
-		cut_overlays()
-		if(panel_open)
-			add_overlay("[initial(icon_state)]-panel")
+		update_appearance() // AQ EDIT - the panel overlay is in update_overlays()
 		ui_update()
 		return
 
@@ -206,23 +229,35 @@
 		ui.set_autoupdate(FALSE)
 		ui.open()
 
+// AQ EDIT START - port BeeStation #13072: data for the SmartVend window from Bee (grid with item icons)
 /obj/machinery/smartfridge/ui_data(mob/user)
 	. = list()
-
-	var/listofitems = list()
-	for (var/I in src)
-		var/atom/movable/O = I
-		if (!QDELETED(O))
-			var/md5name = rustg_hash_string(RUSTG_HASH_MD5, O.name)				// This needs to happen because of a bug in a TGUI component, https://github.com/ractivejs/ractive/issues/744
-			if (listofitems[md5name])				// which is fixed in a version we cannot use due to ie8 incompatibility
-				listofitems[md5name]["amount"]++	// The good news is, #30519 made smartfridge UIs non-auto-updating
-			else
-				listofitems[md5name] = list("name" = O.name, "type" = O.type, "amount" = 1)
-	sortList(listofitems)
-
-	.["contents"] = listofitems
+	var/list/listofitems = list()
+	for(var/atom/movable/stored in src)
+		// We do not vend our own components
+		if(stored in component_parts)
+			continue
+		if(QDELETED(stored))
+			continue
+		var/key = smartfridge_item_key(stored)
+		if(listofitems[key])
+			listofitems[key]["amount"]++
+		else
+			listofitems[key] = list(
+				"path" = key,
+				"name" = capitalize(stored.name),
+				"icon" = stored.icon,
+				"icon_state" = stored.icon_state,
+				"amount" = 1,
+			)
+	.["contents"] = sortList(listofitems)
 	.["name"] = name
 	.["isdryer"] = FALSE
+
+/// Groups the same items in the window: type and name, without the \proper and \improper markers
+/obj/machinery/smartfridge/proc/smartfridge_item_key(atom/movable/stored)
+	return "[stored.type]-[replacetext(replacetext(stored.name, "\proper", ""), "\improper", "")]"
+// AQ EDIT END
 
 
 /obj/machinery/smartfridge/handle_atom_del(atom/A) // Update the UIs in case something inside gets deleted
@@ -252,7 +287,9 @@
 				return
 
 			for(var/obj/item/O in src)
-				if(O.name == params["name"])
+				if(O in component_parts) // AQ EDIT - never hand out our own parts
+					continue
+				if(params["path"] ? (smartfridge_item_key(O) == params["path"]) : (O.name == params["name"])) // AQ EDIT - port BeeStation #13072: the window sends a type-name key
 					dispense(O, usr)
 					desired--
 					. = TRUE
@@ -268,10 +305,11 @@
 /obj/machinery/smartfridge/drying_rack
 	name = "drying rack"
 	desc = "A wooden contraption, used to dry plant products, food and leather."
-	icon = 'icons/obj/hydroponics/equipment.dmi'
-	icon_state = "drying_rack"
+	icon_state = "drying-rack" // AQ EDIT - port BeeStation #13072: new sprite
+	base_icon_state = "drying-rack"
 	use_power = NO_POWER_USE
 	visible_contents = FALSE
+	has_emissive = FALSE
 	var/drying = FALSE
 	/// The reference to the last user's mind. Needed for the chef made trait to be properly applied correctly to dried food.
 	var/datum/weakref/current_user
@@ -334,13 +372,18 @@
 	if(drying && user?.mind)
 		current_user = WEAKREF(user.mind)
 
-/obj/machinery/smartfridge/drying_rack/update_icon()
-	..()
-	cut_overlays()
+// AQ EDIT START - port BeeStation #13072
+/obj/machinery/smartfridge/drying_rack/update_icon_state()
+	. = ..()
+	icon_state = base_icon_state // no broken sprite for the rack
+
+/obj/machinery/smartfridge/drying_rack/update_overlays()
+	. = ..()
 	if(drying)
-		add_overlay("drying_rack_drying")
+		. += "[base_icon_state]-drying"
 	if(contents.len)
-		add_overlay("drying_rack_filled")
+		. += "[base_icon_state]-filled"
+// AQ EDIT END
 
 /obj/machinery/smartfridge/drying_rack/process()
 	..()
@@ -383,6 +426,7 @@
 // ----------------------------
 /obj/machinery/smartfridge/drinks
 	name = "drink showcase"
+	contents_overlay_icon = "drink" // AQ EDIT - port BeeStation #13072
 	desc = "A refrigerated storage unit for tasty tasty alcohol."
 
 /obj/machinery/smartfridge/drinks/accept_check(obj/item/O)
@@ -396,6 +440,7 @@
 // ----------------------------
 /obj/machinery/smartfridge/food
 	desc = "A refrigerated storage unit for food."
+	contents_overlay_icon = "food" // AQ EDIT - port BeeStation #13072
 
 /obj/machinery/smartfridge/food/accept_check(obj/item/O)
 	if(IS_EDIBLE(O))
@@ -407,6 +452,7 @@
 // -------------------------------------
 /obj/machinery/smartfridge/extract
 	name = "smart slime extract storage"
+	contents_overlay_icon = "slime" // AQ EDIT - port BeeStation #13072
 	desc = "A refrigerated storage unit for slime extracts."
 
 /obj/machinery/smartfridge/extract/accept_check(obj/item/O)
@@ -424,6 +470,7 @@
 // -------------------------
 /obj/machinery/smartfridge/organ
 	name = "smart organ storage"
+	contents_overlay_icon = "organ" // AQ EDIT - port BeeStation #13072
 	desc = "A refrigerated storage unit for organ storage."
 	max_n_of_items = 20	//vastly lower to prevent processing too long
 	var/repair_rate = 0
@@ -468,6 +515,7 @@
 // -----------------------------
 /obj/machinery/smartfridge/chemistry
 	name = "smart chemical storage"
+	contents_overlay_icon = "chem" // AQ EDIT - port BeeStation #13072
 	desc = "A refrigerated storage unit for medicine storage."
 
 /obj/machinery/smartfridge/chemistry/accept_check(obj/item/O)
@@ -500,6 +548,7 @@
 // ----------------------------
 /obj/machinery/smartfridge/chemistry/virology
 	name = "smart virus storage"
+	contents_overlay_icon = "viro" // AQ EDIT - port BeeStation #13072
 	desc = "A refrigerated storage unit for volatile sample storage."
 
 /obj/machinery/smartfridge/chemistry/virology/preloaded
@@ -551,6 +600,7 @@
 	name = "disk compartmentalizer"
 	desc = "A machine capable of storing a variety of disks. Denoted by most as the DSU (disk storage unit)."
 	icon_state = "disktoaster"
+	base_icon_state = "disktoaster" // AQ EDIT - port BeeStation #13072
 	pass_flags = PASSTABLE
 	visible_contents = FALSE
 
