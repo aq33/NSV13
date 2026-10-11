@@ -36,6 +36,8 @@
 	var/shipwide = FALSE
 	/// Podłączone multitoolem amp stacki
 	var/list/obj/machinery/jukebox_speaker/speakers = list()
+	/// Gra tylko przykręcony; FALSE = gra też odkręcony, np. ciągnięty za sobą (głośnik Syndykatu)
+	var/needs_anchoring = TRUE
 
 /obj/machinery/jukebox/disco
 	name = "Disco Jukebox"
@@ -108,7 +110,7 @@
 /obj/machinery/jukebox/default_unfasten_wrench(mob/user, obj/item/I, time = 20)
 	. = ..()
 	if(. == SUCCESSFUL_UNFASTEN)
-		if(!anchored)
+		if(!is_secured())
 			yt_stop()
 		update_icon()
 
@@ -135,7 +137,7 @@
 	icon_state = "[state_base]"
 	if((machine_stat & MAINT) || panel_open)
 		overlays += image(icon = icon, icon_state = "[state_base]-panel")
-	if(!(machine_stat & NOPOWER) && anchored && mains)
+	if(!(machine_stat & NOPOWER) && is_secured() && mains)
 		if(machine_stat & BROKEN)
 			overlays += image(icon = icon, icon_state = "[state_base]-broken")
 		else
@@ -151,7 +153,7 @@
 		return
 	if(!user.canUseTopic(src, !issilicon(user)))
 		return
-	if (!anchored)
+	if (!is_secured())
 		to_chat(user,"<span class='warning'>To urządzenie musi wpierw był przykręcone do podłoża!</span>")
 		return
 	var/datum/browser/popup = new(user, "vending", "[name]", 500, 680)
@@ -163,7 +165,7 @@
 		return
 	if(machine_stat & (BROKEN|NOPOWER) || !mains)
 		return
-	if(!anchored)
+	if(!is_secured())
 		to_chat(usr, "<span class='warning'>To urządzenie musi najpierw być przykręcone do podłoża!</span>")
 		return
 	if(!allowed(usr) && verify)
@@ -194,6 +196,10 @@
 		seconds_electrified--
 	if(yt_active)
 		yt_process()
+
+/// Czy może grać pod względem przykręcenia
+/obj/machinery/jukebox/proc/is_secured()
+	return anchored || !needs_anchoring
 
 /// Tempo odtwarzania ustawiane kablami (vaporwave / nightcore)
 /obj/machinery/jukebox/proc/get_speed_factor()

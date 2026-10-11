@@ -55,6 +55,14 @@
 	qdel(ceiling)
 	TEST_ASSERT(!(ceiling in SSjukeboxes.ceiling_speakers), "Destroyed ceiling speaker is still registered")
 
+	// Głośnik Syndykatu gra też odkręcony (ciągnięty za sobą), zwykły jukebox nie
+	var/obj/machinery/jukebox/nukie/nukie = allocate(/obj/machinery/jukebox/nukie, corner)
+	nukie.anchored = FALSE
+	TEST_ASSERT(nukie.is_secured(), "Syndicate speaker should play while unanchored")
+	jukebox.anchored = FALSE
+	TEST_ASSERT(!jukebox.is_secured(), "A normal jukebox should not play while unanchored")
+	jukebox.anchored = TRUE
+
 	// Zniszczony jukebox odłącza amp stacki
 	qdel(jukebox)
 	TEST_ASSERT(isnull(speaker.jukebox), "Amp stack still points at a destroyed jukebox")

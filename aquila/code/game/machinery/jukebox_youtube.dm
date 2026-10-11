@@ -346,7 +346,7 @@
 /obj/machinery/jukebox/proc/yt_next(index)
 	if(!yt_tracks.len || yt_busy || QDELETED(src))
 		return
-	if(machine_stat & (BROKEN|NOPOWER) || !mains || !anchored)
+	if(machine_stat & (BROKEN|NOPOWER) || !mains || !is_secured())
 		yt_stop()
 		return
 	// następny utwór już czeka - bez przerwy
@@ -467,7 +467,7 @@
 	return JUKEBOX_YT_MAX_GAIN * volume / 100 * source_gain
 
 /obj/machinery/jukebox/proc/yt_process()
-	if(machine_stat & (BROKEN|NOPOWER) || !mains || !anchored)
+	if(machine_stat & (BROKEN|NOPOWER) || !mains || !is_secured())
 		yt_stop()
 		return
 	yt_check_stuck()
