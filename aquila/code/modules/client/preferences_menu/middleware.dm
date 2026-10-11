@@ -277,7 +277,19 @@
 
 /// Ikona antagonisty dla okna: list(plik, stan). Potwory mają swój sprite, reszta znaczek z HUD-u.
 /datum/role_preference/proc/get_preview_source()
+	// Podtypy przed rodzicami: wygrywa pierwsze dopasowanie
 	var/static/list/sources = list(
+		/datum/antagonist/traitor/internal_affairs = list('icons/obj/storage.dmi', "briefcase"),
+		/datum/antagonist/traitor/excommunicate = list('icons/obj/card.dmi', "emag"),
+		/datum/antagonist/traitor/boarder = list('icons/obj/clothing/hats.dmi', "hardsuit0-syndi"),
+		/datum/antagonist/nukeop/syndi_crew = list('icons/obj/clothing/hats.dmi', "syndicate-helm-black-red"),
+		/datum/antagonist/nukeop = list('icons/obj/machines/nuke.dmi', "nuclearbomb_base"),
+		/datum/antagonist/infiltrator = list('icons/obj/clothing/masks.dmi', "balaclava"),
+		/datum/antagonist/vampire = list('icons/mob/animal.dmi', "bat"),
+		/datum/antagonist/pirate = list('icons/obj/clothing/hats.dmi', "pirate"),
+		/datum/antagonist/chrono_legionnaire = list('icons/obj/clothing/hats.dmi', "chronohelmet"),
+		/datum/antagonist/sinfuldemon = list('aquila/icons/mob/mob.dmi', "lesserdaemon"),
+		/datum/antagonist/ghost_ship = list('icons/mob/mob.dmi', "ghost"),
 		/datum/antagonist/blob = list('icons/mob/blob.dmi', "blob_core"),
 		/datum/antagonist/xeno = list('icons/mob/alien.dmi', "alienh"),
 		/datum/antagonist/revenant = list('icons/mob/mob.dmi', "revenant_idle"),
@@ -371,7 +383,7 @@
 		if(initial(quirk.mood_quirk) && CONFIG_GET(flag/disable_human_mood))
 			continue
 		quirk_info[sanitize_css_class_name(quirk_name)] = list(
-			"description" = initial(quirk.desc),
+			"description" = html_decode(strip_html_simple(initial(quirk.desc))),
 			"icon" = initial(quirk.value) > 0 ? "plus" : (initial(quirk.value) < 0 ? "minus" : "circle"),
 			"name" = quirk_name,
 			"value" = initial(quirk.value),

@@ -36,6 +36,7 @@
 		ui = new(user, src, "PreferencesMenu")
 		ui.set_autoupdate(FALSE)
 		ui.open()
+		show_character_preview(ui.window)
 
 /datum/preferences/ui_state(mob/user)
 	return GLOB.always_state
@@ -195,19 +196,33 @@
 		active_character.save(parent)
 	save_preferences()
 	if(character_preview_view)
-		parent?.clear_map(character_preview_view.assigned_map)
+		clear_character_preview_map()
 		QDEL_NULL(character_preview_view)
 	preview_gear = null
 
 /datum/preferences/proc/create_character_preview(mob/user)
 	if(character_preview_view)
-		parent?.clear_map(character_preview_view.assigned_map)
+		clear_character_preview_map()
 		QDEL_NULL(character_preview_view)
 	character_preview_view = new
 	character_preview_view.assigned_map = "character_preview_[REF(character_preview_view)]_map"
 	character_preview_view.screen_loc = "[character_preview_view.assigned_map]:1,1"
-	parent.register_map_obj(character_preview_view)
 	update_character_preview()
+
+/// Obiekt podglądu trafia na ekran dopiero, gdy okno TGUI jest widoczne (jak w Bee).
+/// Zarejestrowany wcześniej, zanim powstanie kontrolka mapy, był pokazywany w domyślnym widoku 15x15 jako malutka postać.
+/datum/preferences/proc/show_character_preview(datum/tgui_window/window)
+	if(window && !window.visible)
+		RegisterSignal(window, COMSIG_TGUI_WINDOW_VISIBLE, PROC_REF(on_preview_window_visible), override = TRUE)
+		return
+	if(character_preview_view)
+		parent?.register_map_obj(character_preview_view)
+
+/datum/preferences/proc/on_preview_window_visible(datum/tgui_window/window, client/viewer)
+	SIGNAL_HANDLER
+	UnregisterSignal(window, COMSIG_TGUI_WINDOW_VISIBLE)
+	if(character_preview_view)
+		parent?.register_map_obj(character_preview_view)
 
 /datum/preferences/proc/update_character_preview()
 	if(!character_preview_view || !active_character)
@@ -271,3 +286,10 @@
 	set category = "Preferences"
 	set desc = "Ustaw skróty klawiszowe"
 	prefs.open_menu(usr, PREFERENCE_TAB_KEYBINDINGS)
+
+/// Zdejmuje podgląd z ekranu. Przy wylogowaniu klient może już nie mieć listy map.
+/datum/preferences/proc/clear_character_preview_map()
+	if(!parent || !islist(parent.screen_maps) || !character_preview_view)
+		return
+	if(character_preview_view.assigned_map in parent.screen_maps)
+		parent.clear_map(character_preview_view.assigned_map)

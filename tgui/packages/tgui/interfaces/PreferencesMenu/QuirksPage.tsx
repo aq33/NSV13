@@ -68,6 +68,8 @@ function QuirkDisplay(props: QuirkDisplayProps) {
       className={className}
       role="button"
       tabIndex="1"
+      // AQUILA: niedostępne cechy są wyszarzone, powód jest w dymku
+      style={failTooltip ? { opacity: 0.5, cursor: 'not-allowed' } : undefined}
       onClick={(event) => {
         event.stopPropagation();
         if (selected) {
@@ -313,6 +315,17 @@ export function QuirksPage(props) {
 
               <Stack.Item>
                 <StatDisplay>{balance}</StatDisplay>
+              </Stack.Item>
+
+              <Stack.Item>
+                <Box
+                  width="110px"
+                  textAlign="center"
+                  color="label"
+                  fontSize="0.9em"
+                >
+                  Negative quirks give points, positive quirks cost them.
+                </Box>
               </Stack.Item>
 
               <Stack.Item>
