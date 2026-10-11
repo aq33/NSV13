@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { logger } from 'tgui/logging';
 
 import { useBackend } from '../../backend';
@@ -173,6 +173,11 @@ export function QuirksPage(props) {
 
   const [selectedQuirks, setSelectedQuirks] = useState(data.selected_quirks);
 
+  // AQUILA: serwer może odrzucić wybór (bilans punktów), więc wracamy do jego stanu
+  useEffect(() => {
+    setSelectedQuirks(data.selected_quirks);
+  }, [data.selected_quirks]);
+
   return (
     <ServerPreferencesFetcher
       render={(data) => {
@@ -196,6 +201,8 @@ export function QuirksPage(props) {
         });
 
         let positiveQuirks = 0;
+        // AQUILA: bilans jak w starym menu, dobre cechy trzeba opłacić złymi
+        let balance = 0;
 
         for (const selectedQuirkName of selectedQuirks) {
           const selectedQuirk = quirkInfo[selectedQuirkName];
@@ -203,10 +210,19 @@ export function QuirksPage(props) {
             continue;
           }
 
+          balance -= selectedQuirk.value;
           if (selectedQuirk.value > 0) {
             positiveQuirks += 1;
           }
         }
+
+        const getReasonToNotRemove = (quirkName: string) => {
+          const quirk = quirkInfo[quirkName];
+          if (quirk.value < 0 && balance + quirk.value < 0) {
+            return 'Remove a positive quirk first, your balance would go below zero!';
+          }
+          return undefined;
+        };
 
         const getReasonToNotAdd = (quirkName: string) => {
           const quirk = quirkInfo[quirkName];
@@ -214,6 +230,9 @@ export function QuirksPage(props) {
           if (quirk.value > 0) {
             if (positiveQuirks >= maxPositiveQuirks) {
               return "You can't have any more positive quirks!";
+            }
+            if (balance - quirk.value < 0) {
+              return `You need ${quirk.value - balance} more points, take a negative quirk first!`;
             }
           }
 
@@ -289,6 +308,14 @@ export function QuirksPage(props) {
               </Stack.Item>
 
               <Stack.Item>
+                <Box fontSize="1.3em">Balance</Box>
+              </Stack.Item>
+
+              <Stack.Item>
+                <StatDisplay>{balance}</StatDisplay>
+              </Stack.Item>
+
+              <Stack.Item>
                 <Icon name="exchange-alt" size={1.5} ml={2} mr={2} />
               </Stack.Item>
             </Stack>
@@ -304,6 +331,10 @@ export function QuirksPage(props) {
                 <Stack.Item grow width="100%">
                   <QuirkList
                     onClick={(quirkName, quirk) => {
+                      if (getReasonToNotRemove(quirkName) !== undefined) {
+                        return;
+                      }
+
                       setSelectedQuirks(
                         selectedQuirks.filter(
                           (otherQuirk) => quirkName !== otherQuirk,
@@ -321,7 +352,7 @@ export function QuirksPage(props) {
                           quirkName,
                           {
                             ...quirk,
-                            failTooltip: getReasonToNotAdd(quirkName),
+                            failTooltip: getReasonToNotRemove(quirkName),
                           },
                         ];
                       })}

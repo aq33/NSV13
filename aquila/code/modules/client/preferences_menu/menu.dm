@@ -238,33 +238,26 @@
 	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
 	return appearance
 
-/// Ekran z podglądem postaci w oknie preferencji
+/// Ekran z podglądem postaci w oknie preferencji.
+/// Wygląd postaci nakładamy na sam obiekt ekranu, jak stare menu: mapa boczna dopasowuje
+/// powiększenie do obiektów, które sama rysuje, a obiekt bez ikony (np. z postacią w vis_contents)
+/// się nie liczy i mapa pokazywała cały widok gracza z malutką postacią w rogu.
 /atom/movable/screen/map_view/character_preview
 	name = "character_preview"
 	del_on_map_removal = FALSE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	/// Obiekt, któremu podmieniamy wygląd
-	var/atom/movable/screen/body
-
-/atom/movable/screen/map_view/character_preview/Initialize(mapload)
-	. = ..()
-	body = new
-	body.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	vis_contents += body
-
-/atom/movable/screen/map_view/character_preview/Destroy()
-	vis_contents.Cut()
-	QDEL_NULL(body)
-	return ..()
+	var/facing = SOUTH
 
 /atom/movable/screen/map_view/character_preview/proc/set_body(appearance)
-	var/old_dir = body.dir
-	body.appearance = appearance
-	body.dir = old_dir || SOUTH
-	body.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	var/old_screen_loc = screen_loc
+	src.appearance = appearance
+	screen_loc = old_screen_loc
+	dir = facing
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/map_view/character_preview/proc/rotate(angle)
-	body.dir = turn(body.dir, angle)
+	facing = turn(facing, angle)
+	dir = facing
 
 /// Wejścia z kodu core (lobby, verb ustawień), który nie widzi definicji PREFERENCE_TAB_*
 /datum/preferences/proc/open_character_menu(mob/user)
