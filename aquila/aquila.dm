@@ -406,6 +406,7 @@
 #include "code\modules\research\designs\nanite_designs.dm"
 #include "code\modules\research\designs\weapon_designs.dm"
 #include "code\modules\research\designs\power_designs.dm"
+#include "code\modules\research\fabricator_ui.dm"
 #include "code\modules\research\machinery\plortmachine.dm"
 #include "code\modules\research\machinery\_production.dm"
 #include "code\modules\research\designs\mecha_designs.dm"

@@ -105,7 +105,7 @@
 /obj/machinery/rnd/production/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "TechFab")
+		ui = new(user, src, "Fabricator") // AQ EDIT - port BeeStation #14723
 		ui.open()
 		viewing_mobs += user
 
@@ -119,19 +119,33 @@
 			continue
 		update_static_data(M)
 
+// AQ EDIT START - port BeeStation #14723: data for the Fabricator window from Bee
+/obj/machinery/rnd/production/ui_assets(mob/user)
+	return list(
+		get_asset_datum(/datum/asset/spritesheet/sheetmaterials),
+		get_asset_datum(/datum/asset/spritesheet/research_designs),
+	)
+
 /obj/machinery/rnd/production/ui_data(mob/user)
 	var/list/data = list()
-
+	data["materials"] = fabricator_ui_materials(materials?.mat_container)
+	data["onHold"] = materials?.on_hold()
 	data["busy"] = busy
-	data["efficiency"] = efficiency_coeff
-
-	data["category"] = selected_category
-	data["search"] = search
-
-	data += build_materials()
-	data += build_reagents()
-
+	var/list/loaded_reagents = list()
+	for(var/datum/reagent/reagent as anything in reagents?.reagent_list)
+		loaded_reagents += list(list(
+			"name" = reagent.name,
+			"volume" = reagent.volume,
+			"id" = "[reagent.type]",
+		))
+	data["reagents"] = loaded_reagents
+	data["reagentCapacity"] = reagents?.maximum_volume
 	return data
+
+/// The real material cost multiplier for a design, see user_try_print_id()
+/obj/machinery/rnd/production/proc/design_cost_coefficient(datum/design/design)
+	return efficient_with(design.build_path) ? 1 / efficiency_coeff : 1
+// AQ EDIT END
 
 /obj/machinery/rnd/production/proc/build_materials()
 	if(!materials || !materials.mat_container)
@@ -168,12 +182,10 @@
 	)
 
 /obj/machinery/rnd/production/ui_static_data(mob/user)
+	// AQ EDIT - port BeeStation #14723
 	var/list/data = list()
-
-	data["recipes"] = build_recipes()
-	data["categories"] = categories
-	data["stack_to_mineral"] = MINERAL_MATERIAL_AMOUNT
-
+	data["designs"] = fabricator_ui_designs(cached_designs, coefficient_override = CALLBACK(src, PROC_REF(design_cost_coefficient)))
+	data["fabName"] = name
 	return data
 
 /obj/machinery/rnd/production/proc/build_recipes()
@@ -212,9 +224,17 @@
 		if(busy)
 			say("Warning: Fabricators busy!")
 		else
-			user_try_print_id(params["design_id"], params["amount"])
+			user_try_print_id(params["ref"] || params["design_id"], params["amount"]) // AQ EDIT - the Bee window sends "ref"
 			. = TRUE
-	if(action == "sync_research")
+	// AQ EDIT START - port BeeStation #14723
+	if(action == "remove_mat" && materials?.mat_container)
+		for(var/datum/material/potential_material as anything in materials.mat_container.materials)
+			if(REF(potential_material) == params["ref"])
+				eject_sheets(potential_material, params["amount"])
+				. = TRUE
+				break
+	// AQ EDIT END
+	if(action == "sync_research" || action == "sync_rnd") // AQ EDIT
 		update_research()
 		say("Baza danych programu naukowego została zaktualizowana.")
 		. = TRUE
@@ -327,7 +347,7 @@
 		say("Mineral access is on hold, please contact the quartermaster.")
 		return FALSE
 	var/power = 1000
-	amount = CLAMP(amount, 1, 10)
+	amount = CLAMP(amount, 1, 50) // AQ EDIT - port BeeStation #14723: the Fabricator window offers x50 (MAX_LATHE_PRINT_AMOUNT)
 	for(var/M in D.materials)
 		power += round(D.materials[M] * amount / 35)
 	power = min(3000, power)
