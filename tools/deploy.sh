@@ -14,6 +14,7 @@ mkdir -p \
 	$1/auxtools \
 	$1/code/datums/greyscale/json_configs \
 	$1/data/spritesheets \
+	$1/html/changelogs/archive \
 	$1/icons \
     $1/sound/runtime \
     $1/strings \
@@ -32,6 +33,8 @@ cp -r code/datums/greyscale/json_configs/* $1/code/datums/greyscale/json_configs
 cp -r icons/* $1/icons/
 cp -r sound/runtime/* $1/sound/runtime/
 cp -r strings/* $1/strings/
+# AQUILA - miesiace changelogu dla okna TGUI (port Bee #12236)
+cp -r html/changelogs/archive/* $1/html/changelogs/archive/
 cp -r tgui/public/* $1/tgui/public/
 cp -r tgui/packages/tgfont/dist/* $1/tgui/packages/tgfont/dist/
 
