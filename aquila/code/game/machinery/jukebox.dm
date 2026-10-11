@@ -240,10 +240,10 @@
 		return 1
 	return min(1, obstacle_dampening(T))
 
-/// Suma sound_dampening ścian, okien i zamkniętych drzwi na linii jukebox -> turf (wynik trzymany 3 s na turf).
+/// Suma sound_dampening ścian, okien i zamkniętych drzwi na linii jukebox -> turf (wynik trzymany 1 s na turf, żeby otwarcie drzwi było słychać od razu).
 /obj/machinery/jukebox/proc/obstacle_dampening(turf/T)
 	var/turf/our_turf = get_turf(src)
-	if(dampening_cache_time + 3 SECONDS < world.time || dampening_cache_from != our_turf)
+	if(dampening_cache_time + 1 SECONDS < world.time || dampening_cache_from != our_turf)
 		dampening_cache = list()
 		dampening_cache_time = world.time
 		dampening_cache_from = our_turf

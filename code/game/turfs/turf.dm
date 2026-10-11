@@ -618,10 +618,8 @@ GLOBAL_LIST_EMPTY(created_baseturf_lists)
 	return TRUE
 
 /turf/handle_fall(mob/faller, forced)
-	if(!forced)
-		return
 	if(has_gravity(src))
-		playsound(src, "bodyfall", 50, 1)
+		playsound(src, "bodyfall", forced ? 50 : 20, 1) // AQ EDIT - lying down on purpose is a quieter thud
 
 /turf/proc/photograph(limit=20)
 	var/image/I = new()

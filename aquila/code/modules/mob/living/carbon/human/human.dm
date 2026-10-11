@@ -34,12 +34,13 @@
 	. = ..()
 	update_walk_animation()
 
-/// Włącza lub wyłącza animację chodu według preferencji gracza. Postacie bez gracza ją mają, chyba że mają kaczy chód.
+/// Włącza lub wyłącza animację chodu według preferencji gracza. Postacie bez gracza ją mają,
+/// chyba że mają kaczy chód albo są przebrane obrazem z override (np. trzymają kwiatek w doniczce).
 /mob/living/carbon/human/proc/update_walk_animation()
 	if(istype(src, /mob/living/carbon/human/dummy)) // podgląd postaci kopiuje appearance manekina, a z nim ukryty render_target
 		return
 	var/datum/component/walk_animation/walk_animation = GetComponent(/datum/component/walk_animation)
-	if(GetComponent(/datum/component/waddling) || (client?.prefs && (client.prefs.toggles2 & PREFTOGGLE_2_DISABLE_WALK_ANIMATION)))
+	if(GetComponent(/datum/component/waddling) || has_override_alt_appearance() || (client?.prefs && (client.prefs.toggles2 & PREFTOGGLE_2_DISABLE_WALK_ANIMATION)))
 		qdel(walk_animation)
 	else if(!walk_animation)
 		AddComponent(/datum/component/walk_animation)

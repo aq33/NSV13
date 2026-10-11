@@ -33,7 +33,7 @@ const GLIDE = 0.35;
 const GAIN_RAMP_STEP = 0.01;
 const GAIN_RAMP_INTERVAL = 25;
 // Plain element: muffled music is this much quieter
-const PLAIN_MUFFLE_VOLUME = 0.4;
+const PLAIN_MUFFLE_VOLUME = 0.3;
 // Plain element echo copies ("taps"), like reflections in a big room: an
 // early, louder one and a later, quieter one. Delays are in seconds at
 // echo 0 and grow up to (1 + TAP_DELAY_GROWTH) times with distance, so far

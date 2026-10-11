@@ -70,7 +70,7 @@
 
 	var/tmp_sound = get_sound(user)
 	if(tmp_sound && (!only_forced_audio || !intentional))
-		playsound(user, tmp_sound, 50, vary)
+		play_emote_sound(user, tmp_sound) // AQ EDIT - voice pitch, see aquila/code/datums/emotes.dm
 
 	var/is_important = emote_type & EMOTE_IMPORTANT
 	var/is_visual = emote_type & EMOTE_VISIBLE

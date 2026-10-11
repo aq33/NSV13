@@ -188,6 +188,10 @@
 /obj/machinery/holopad,
 /turf/open/floor/plating,
 /area/crew_quarters/fitness/recreation)
+"aA" = (
+/mob/living/simple_animal/hostile/retaliate/wojtek,
+/turf/open/floor/carpet/orange,
+/area/nsv/crew_quarters/heads/maa)
 "aB" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
@@ -53138,7 +53142,7 @@ XO
 ZO
 pM
 gG
-gG
+aA
 gG
 pz
 zQ

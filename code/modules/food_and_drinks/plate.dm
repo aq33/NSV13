@@ -41,13 +41,11 @@
 		return ..()
 
 /obj/item/plate/pre_attack(atom/A, mob/living/user, params)
-	if(!iscarbon(A))
-		return
-	if(!contents.len)
-		return
+	if(!iscarbon(A) || !contents.len)
+		return ..()
 	var/obj/item/object_to_eat = contents[1]
 	A.attackby(object_to_eat, user)
-	return TRUE //No normal attack
+	return FALSE //No normal attack
 
 ///This proc adds the food to viscontents and makes sure it can deregister if this changes.
 /obj/item/plate/proc/AddToPlate(obj/item/item_to_plate)
