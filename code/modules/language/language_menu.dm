@@ -20,7 +20,6 @@
 
 // AQ EDIT START - port BeeStation #13895: data for the LanguageMenu window from Bee.
 // Every language is sent, the window hides the unknown ones unless in admin mode.
-// Bee also sends language icons, those need the icon_ref_map we do not have.
 /datum/language_menu/ui_data(mob/user)
 	var/list/data = list()
 	var/atom/movable/speaker = language_holder.get_atom()
@@ -32,6 +31,8 @@
 		lang_data["desc"] = initial(language.desc)
 		lang_data["key"] = initial(language.key)
 		lang_data["is_default"] = (language == language_holder.selected_language)
+		lang_data["icon"] = initial(language.icon)
+		lang_data["icon_state"] = initial(language.icon_state)
 		if(speaker)
 			lang_data["can_speak"] = !!speaker.has_language(language, TRUE)
 			lang_data["could_speak"] = !!(language_holder.omnitongue || speaker.could_speak_language(language))
