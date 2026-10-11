@@ -18,11 +18,6 @@ map tycoon
 #	votable
 endmap
 
-map atlas
-	minplayers 20
-#	votable
-endmap
-
 map aquila_atlas
 	minplayers 15
 	default
@@ -64,20 +59,9 @@ map hammerhead
 #	votable
 endmap
 
-map serendipity
-	maxplayers 30
-	votable
-endmap
-
 map shrike
 	maxplayers 24
 #	votable
-endmap
-
-map snake
-	minplayers 20
-#	maxplayers 30
-	votable
 endmap
 
 map atlantis
