@@ -19,3 +19,5 @@
 #define SPEECH_PHRASE_DELAY (0.6 SECONDS)
 /// Distant gunshots: heard beyond normal sound range up to this many tiles
 #define DISTANT_GUNSHOT_RANGE 45
+// Jukebox: do tylu kratek w głąb mainta słychać nadawanie na cały statek (przytłumione, z echem)
+#define JUKEBOX_MAINT_HEARING_RANGE 8

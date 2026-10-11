@@ -455,15 +455,24 @@
 	var/source_gain = istype(speaker) ? speaker.max_gain : 1
 	return JUKEBOX_YT_MAX_GAIN * volume / 100 * source_gain
 
-/// Czy gracz słyszy nadawanie tego jukeboxa na cały statek (ten sam statek, nie w maintach i nie w kosmosie)
-/obj/machinery/jukebox/proc/can_broadcast_to(mob/M)
+/// Jak gracz słyszy nadawanie tego jukeboxa na cały statek:
+/// 0 - normalnie (pomieszczenie lub korytarz statku); 0-1 - w maincie, im dalej od korytarza, tym bliżej 1;
+/// null - nie słyszy (inny statek, kosmos, za daleko w głąb mainta, wyłączone instrumenty, głuchy).
+/obj/machinery/jukebox/proc/broadcast_depth(mob/M)
 	if(!shipwide || !M?.client || !(M.client.prefs.toggles & PREFTOGGLE_SOUND_INSTRUMENTS) || !M.can_hear())
-		return FALSE
+		return null
 	var/obj/structure/overmap/our_ship = get_overmap()
 	if(!our_ship || M.get_overmap() != our_ship)
-		return FALSE
-	var/area/A = get_area(M)
-	return A && !istype(A, /area/maintenance) && !istype(A, /area/space)
+		return null
+	var/turf/T = get_turf(M)
+	if(!T || istype(T.loc, /area/space))
+		return null
+	if(SSjukeboxes.is_broadcast_area(T.loc))
+		return 0
+	if(!istype(T.loc, /area/maintenance))
+		return null
+	var/distance = SSjukeboxes.broadcast_area_distance(T)
+	return distance ? distance / (JUKEBOX_MAINT_HEARING_RANGE + 1) : null
 
 /obj/machinery/jukebox/proc/yt_process()
 	if(machine_stat & (BROKEN|NOPOWER) || !mains || !anchored)

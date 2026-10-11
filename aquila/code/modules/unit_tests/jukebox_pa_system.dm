@@ -43,6 +43,18 @@
 	var/expected_gain = jukebox.emitter_max_gain(jukebox.emitter) * speaker.max_gain
 	TEST_ASSERT(abs(jukebox.emitter_max_gain(speaker.emitter) - expected_gain) < 0.001, "Amp stack should be quieter than the jukebox")
 
+	// Nadawanie w maincie: odległość do najbliższego pomieszczenia (kratka obok to pokój testowy)
+	var/area/room = get_area(listener_turf)
+	var/area/maintenance/maint = new
+	maint.contents += listener_turf
+	SSjukeboxes.maint_distance_cache_time = 0
+	var/maint_distance = SSjukeboxes.broadcast_area_distance(listener_turf)
+	room.contents += listener_turf // pokój testowy musi zostać nietknięty dla kolejnych testów
+	TEST_ASSERT(!SSjukeboxes.is_broadcast_area(maint), "Maintenance should not hear the broadcast normally")
+	TEST_ASSERT(SSjukeboxes.is_broadcast_area(room), "A normal room should hear the broadcast")
+	TEST_ASSERT_EQUAL(maint_distance, 1, "Maintenance next to a room should be 1 tile from it")
+	SSjukeboxes.maint_distance_cache_time = 0
+
 	// Zniszczony jukebox odłącza amp stacki
 	qdel(jukebox)
 	TEST_ASSERT(isnull(speaker.jukebox), "Amp stack still points at a destroyed jukebox")
