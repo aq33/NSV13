@@ -15,7 +15,7 @@
 /datum/emote
 	/// The emote comes from the throat, so it plays at the user's voice pitch (see aquila/code/modules/mob/voice.dm)
 	var/voice_emote = FALSE
-	var/sound_volume = 50
+	var/sound_volume = 40
 
 /// Plays the emote sound. Vocal emotes follow the user's voice, the rest only vary if the emote says so.
 /datum/emote/proc/play_emote_sound(mob/user, sound_file)

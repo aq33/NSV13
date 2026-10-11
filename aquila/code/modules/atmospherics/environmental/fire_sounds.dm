@@ -20,12 +20,12 @@ GLOBAL_LIST_EMPTY(fire_sound_cooldowns)
 /obj/effect/hotspot/Initialize(mapload, starting_volume, starting_temperature)
 	. = ..()
 	if(!mapload)
-		play_fire_crackle(get_turf(src), 25) // the fire catching
+		play_fire_crackle(get_turf(src), 40) // the fire catching
 
 /obj/effect/hotspot/process()
 	. = ..()
 	if(!QDELETED(src))
-		play_fire_crackle(get_turf(src), 45)
+		play_fire_crackle(get_turf(src), 65)
 
 #undef FIRE_SOUND_CHUNK
 #undef FIRE_SOUND_INTERVAL
