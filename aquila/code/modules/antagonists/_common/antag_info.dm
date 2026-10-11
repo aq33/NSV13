@@ -54,3 +54,17 @@
 	if(!owner.mind || !(target in owner.mind.antag_datums))
 		return FALSE
 	return TRUE
+
+/// Wprowadzenie do roli w oknie ogólnym (AntagInfoGeneric). Domyślnie opis potwora z playstyle_string
+/// (pradawny horror, morph, demon, imp...), role mogą to nadpisać.
+/datum/antagonist/proc/get_antag_intro()
+	var/mob/current = owner?.current
+	if(current && ("playstyle_string" in current.vars))
+		return current.vars["playstyle_string"]
+	return null
+
+/datum/antagonist/ui_static_data(mob/user)
+	. = ..()
+	var/intro = get_antag_intro()
+	if(intro)
+		.["intro"] = intro

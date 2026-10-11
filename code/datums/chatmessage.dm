@@ -219,8 +219,12 @@
 		tgt_color = COLOR_CHAT_EMOTE
 	// AQ EDIT START - port BeeStation #12918: LOOC nad głową
 	else if (extra_classes.Find("looc"))
-		var/image/r_icon = image('aquila/icons/ui_icons/chat/chat_icons.dmi', icon_state = "looc")
-		LAZYADD(prefixes, "\icon[r_icon]")
+		// Mniejsza ikona niż radio, żeby nie górowała nad tekstem LOOC
+		var/static/icon/looc_icon
+		if(!looc_icon)
+			looc_icon = icon('aquila/icons/ui_icons/chat/chat_icons.dmi', "looc")
+			looc_icon.Scale(6, 6)
+		LAZYADD(prefixes, "\icon[looc_icon]")
 		tgt_color = COLOR_CHAT_LOOC
 	// AQ EDIT END
 

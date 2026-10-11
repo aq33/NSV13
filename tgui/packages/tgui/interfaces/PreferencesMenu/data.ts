@@ -128,6 +128,8 @@ export type AntagonistData = {
   per_character: BooleanLike;
   path: string;
   icon_path: string;
+  // AQUILA: ikony ról są w kilku arkuszach
+  icon_sheet?: string;
   ban_key?: string;
 };
 
@@ -210,6 +212,7 @@ export type PreferencesMenuData = {
   metacurrency_balance: number;
   is_donator: BooleanLike;
   // AQUILA
+  locked_choices?: Record<string, string[]>;
   user_ckey?: string;
   preview_gear?: string | null;
 

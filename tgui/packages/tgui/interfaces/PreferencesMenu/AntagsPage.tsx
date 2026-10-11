@@ -216,7 +216,7 @@ const AntagSelection = (props: {
                     >
                       <Box
                         className={classes([
-                          'antagonists96x96',
+                          `${antagonist.icon_sheet || 'antagonists'}96x96`,
                           antagonist.icon_path,
                           'antagonist-icon',
                         ])}

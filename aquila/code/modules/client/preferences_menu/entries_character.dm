@@ -739,21 +739,17 @@
 			enabled_features += preference.db_key
 		data[species_id] = list(
 			"name" = capitalize(replacetext(species.name, "\improper ", "")),
-			"desc" = species.aq_species_desc(),
-			"lore" = null,
+			"desc" = species.get_species_description(),
+			"lore" = species.get_species_lore(),
 			"icon" = sanitize_css_class_name(species_id),
 			"use_skintones" = species.use_skintones,
 			"sexes" = species.sexes && !(AGENDER in species.species_traits),
 			"enabled_features" = enabled_features,
-			"perks" = list("positive" = list(), "negative" = list(), "neutral" = list()),
+			"perks" = species.get_species_perks(),
 			"selectable" = TRUE,
 		)
 		qdel(species)
 	return data
-
-/// Krótki opis gatunku do okna wyboru
-/datum/species/proc/aq_species_desc()
-	return ""
 
 /datum/preference/numeric/age
 	db_key = "age"

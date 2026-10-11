@@ -33,8 +33,18 @@
 	TEST_ASSERT(length(huge_sheet.sprites) >= length(GLOB.hair_styles_list) / 2, "Missing hairstyle icons")
 	var/datum/asset/spritesheet/antagonists/antag_sheet = get_asset_datum(/datum/asset/spritesheet/antagonists)
 	TEST_ASSERT(antag_sheet.sprites[serialize_antag_name("[/datum/role_preference/antagonist/traitor]")], "No traitor icon")
+	// Every role has an icon in its sheet (one BYOND icon cannot hold all of them)
+	for(var/pref_type in GLOB.role_preference_entries)
+		var/sheet_name = antag_icon_sheet(pref_type)
+		var/datum/asset/spritesheet/role_sheet
+		for(var/sheet_type in typesof(/datum/asset/spritesheet/antagonists))
+			var/datum/asset/spritesheet/candidate = get_asset_datum(sheet_type)
+			if(candidate.name == sheet_name)
+				role_sheet = candidate
+		TEST_ASSERT(role_sheet?.sprites[serialize_antag_name("[pref_type]")], "No icon for [pref_type] in [sheet_name]")
 	var/datum/asset/spritesheet/species/species_sheet = get_asset_datum(/datum/asset/spritesheet/species)
-	TEST_ASSERT(species_sheet.sprites[SPECIES_HUMAN], "No human species icon")
+	for(var/species_id in GLOB.roundstart_races)
+		TEST_ASSERT(species_sheet.sprites[sanitize_css_class_name(species_id)], "No species icon for [species_id]")
 
 	// A preferences datum without a client (no database in tests)
 	var/datum/preferences/prefs = new(null)

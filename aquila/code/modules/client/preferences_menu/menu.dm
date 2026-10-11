@@ -141,6 +141,13 @@
 			update_static_data(usr, ui)
 			update_character_preview()
 			return TRUE
+		if("refresh_character_preview")
+			// Nowa kontrolka mapy (np. po przejściu na stronę gatunków) pokazuje domyślny widok,
+			// dopóki obiekt nie zostanie podpięty na nowo
+			if(parent && character_preview_view && (character_preview_view in parent.screen))
+				parent.screen -= character_preview_view
+				addtimer(CALLBACK(src, PROC_REF(readd_character_preview)), 1)
+			return FALSE
 		if("rotate")
 			character_preview_view?.rotate(params["direction"] ? -90 : 90)
 			return FALSE
@@ -293,3 +300,7 @@
 		return
 	if(character_preview_view.assigned_map in parent.screen_maps)
 		parent.clear_map(character_preview_view.assigned_map)
+
+/datum/preferences/proc/readd_character_preview()
+	if(parent && character_preview_view)
+		parent.register_map_obj(character_preview_view)

@@ -228,6 +228,7 @@
 			"ban_key" = ispath(antag_datum, /datum/antagonist) ? initial(antag_datum.banning_key) : null,
 			"path" = "[pref_type]",
 			"icon_path" = serialize_antag_name("[pref_type]"),
+			"icon_sheet" = antag_icon_sheet(pref_type),
 		))
 	return list(
 		"antagonists" = antags,
@@ -235,7 +236,11 @@
 	)
 
 /datum/preference_middleware/antags/get_ui_assets()
-	return list(get_asset_datum(/datum/asset/spritesheet/antagonists))
+	return list(
+		get_asset_datum(/datum/asset/spritesheet/antagonists),
+		get_asset_datum(/datum/asset/spritesheet/antagonists/second),
+		get_asset_datum(/datum/asset/spritesheet/antagonists/third),
+	)
 
 /datum/preference_middleware/antags/proc/set_antags(list/params, mob/user)
 	var/list/sent_antags = params["antags"]
@@ -326,7 +331,13 @@
 	return list('icons/mob/hud.dmi', "synd")
 
 /// Ikona 96x96 przycięta do niepustych pikseli
-/datum/role_preference/proc/get_preview_icon()
+/datum/role_preference/proc/get_preview_icon(icon_size = 96)
+	// Role ludzkie: postać w stroju roli (preview_icons.dm)
+	var/icon/outfit_icon = get_outfit_preview_icon()
+	if(outfit_icon)
+		if(icon_size != 96)
+			outfit_icon.Scale(icon_size, icon_size)
+		return aq_normalized_icon(outfit_icon)
 	var/list/preview_source = get_preview_source()
 	var/icon/source = icon(preview_source[1], preview_source[2], SOUTH, 1)
 	var/width = source.Width()
@@ -344,21 +355,60 @@
 			max_x = max(max_x, x)
 			max_y = max(max_y, y)
 	if(max_x)
-		var/size = max(max_x - min_x, max_y - min_y)
-		source.Crop(min_x, min_y, min_x + size, min_y + size)
-	source.Scale(96, 96)
-	return source
+		// Kwadrat wokół narysowanych pikseli, wyśrodkowany, z małym marginesem
+		var/box_w = max_x - min_x + 1
+		var/box_h = max_y - min_y + 1
+		var/size = max(box_w, box_h)
+		var/margin = max(1, round(size * 0.12))
+		var/offset_x = margin + round((size - box_w) / 2)
+		var/offset_y = margin + round((size - box_h) / 2)
+		size += margin * 2
+		// Crop poza krawędzią psuje ikonę (bad icon operation przy wstawianiu), więc wklejamy wycinek na pusty kwadrat
+		source.Crop(min_x, min_y, max_x, max_y)
+		var/icon/canvas = icon('icons/effects/effects.dmi', "nothing", SOUTH, 1)
+		canvas.Scale(size, size)
+		canvas.Blend(source, ICON_OVERLAY, offset_x + 1, offset_y + 1)
+		source = canvas
+	source.Scale(icon_size, icon_size)
+	return aq_normalized_icon(source)
+
+/// Ikona roli w powiadomieniu o ankiecie dla duchów (32x32), liczona raz
+/datum/role_preference/proc/get_poll_icon()
+	var/static/list/cache = list()
+	if(!cache[type])
+		cache[type] = get_preview_icon(32)
+	return cache[type]
+
+/// Jedna ikona BYOND ma ograniczony rozmiar: po około 40 ikonach 96x96 kolejne nie wchodzą (bad icon operation),
+/// więc ikony ról dzielimy na kilka arkuszy po ANTAG_ICONS_PER_SHEET
+#define ANTAG_ICONS_PER_SHEET 30
+
+/// Nazwa arkusza z ikoną danej roli
+/proc/antag_icon_sheet(pref_type)
+	var/index = GLOB.role_preference_entries.Find(pref_type)
+	var/sheet_number = round((index - 1) / ANTAG_ICONS_PER_SHEET)
+	return sheet_number ? "antagonists[sheet_number + 1]" : "antagonists"
 
 /datum/asset/spritesheet/antagonists
 	name = "antagonists"
 
 /datum/asset/spritesheet/antagonists/register()
 	for(var/pref_type in GLOB.role_preference_entries)
+		if(antag_icon_sheet(pref_type) != name)
+			continue
 		var/datum/role_preference/pref = GLOB.role_preference_entries[pref_type]
 		var/icon/preview_icon = pref.get_preview_icon()
 		if(preview_icon)
 			Insert(serialize_antag_name("[pref_type]"), preview_icon)
 	return ..()
+
+/datum/asset/spritesheet/antagonists/second
+	name = "antagonists2"
+
+/datum/asset/spritesheet/antagonists/third
+	name = "antagonists3"
+
+#undef ANTAG_ICONS_PER_SHEET
 
 // Cechy (quirks)
 
@@ -574,7 +624,7 @@
 		var/item_state = initial(item_path.icon_state)
 		if(!item_icon || !(item_state in aq_pref_icon_states(item_icon)))
 			continue
-		var/icon/gear_icon = icon(item_icon, item_state, SOUTH, 1)
+		var/icon/gear_icon = aq_colored_icon(icon(item_icon, item_state, SOUTH, 1), initial(item_path.color))
 		if(gear_icon.Width() != 32 || gear_icon.Height() != 32)
 			gear_icon.Scale(32, 32)
 		Insert("loadout_gear___[gear_id]", gear_icon)
@@ -660,11 +710,29 @@
 		var/species_type = GLOB.species_list[species_id]
 		var/mob/living/carbon/human/dummy/dummy = new
 		dummy.set_species(species_type)
+		// Strój asystenta jak w Bee, ale bez nakrycia głowy. Tworzenie nowego kombinezonu w trakcie
+		// inicjalizacji zasobów psuło wstawianie ikon kilku gatunków (bad icon operation)
 		dummy.equipOutfit(/datum/outfit/job/assistant, TRUE)
+		var/obj/item/hat = dummy.head
+		if(hat)
+			qdel(hat)
 		COMPILE_OVERLAYS(dummy)
 		var/icon/dummy_icon = getFlatIcon(dummy)
-		dummy_icon.Scale(64, 64)
-		dummy_icon.Crop(15, 64 - 31, 15 + 31, 64)
+		// Głowa i tułów: kwadrat 16x16 przy górnej krawędzi postaci, wyśrodkowany na obrysie widocznych pikseli.
+		// Skrzydła i ogony poszerzają płaską ikonę (apid ma 96x34), więc stały wycinek trafiał w pustkę.
+		var/min_x = dummy_icon.Width() + 1
+		var/max_x = 0
+		var/max_y = 0
+		for(var/x in 1 to dummy_icon.Width())
+			for(var/y in 1 to dummy_icon.Height())
+				if(!dummy_icon.GetPixel(x, y))
+					continue
+				min_x = min(min_x, x)
+				max_x = max(max_x, x)
+				max_y = max(max_y, y)
+		if(max_x)
+			var/center_x = round((min_x + max_x) / 2)
+			dummy_icon.Crop(center_x - 7, max_y - 15, center_x + 8, max_y)
 		dummy_icon.Scale(64, 64)
 		Insert(sanitize_css_class_name(species_id), dummy_icon)
 		qdel(dummy)
@@ -766,3 +834,30 @@
 			"description" = keybinding.description,
 		)
 	return keybindings
+
+// Opcje, których gracz jeszcze nie odblokował (polska bielizna, rozmiar "Polak"), okno ukrywa
+
+/datum/preference_middleware/locked_choices
+
+/datum/preference_middleware/locked_choices/get_ui_data(mob/user)
+	if(preferences.current_window != PREFERENCE_TAB_CHARACTER_PREFERENCES)
+		return list()
+	var/list/locked = list()
+	for(var/key in list("underwear", "undershirt", "socks"))
+		var/datum/preference/choiced/preference = GLOB.preference_entries_by_key[key]
+		var/list/locked_values = list()
+		for(var/value in preference.get_choices())
+			if(!is_accessory_unlocked(value, preferences.parent))
+				locked_values += value
+		if(length(locked_values))
+			locked[key] = locked_values
+	var/datum/preference/choiced/body_size = GLOB.preference_entries_by_key["body_size"]
+	// GLOB.body_sizes to nazwa -> skala, oknu wysyłamy same nazwy
+	var/list/allowed_sizes = preferences.get_body_size_choices()
+	var/list/locked_sizes = list()
+	for(var/size in body_size.get_choices())
+		if(!(size in allowed_sizes))
+			locked_sizes += size
+	if(length(locked_sizes))
+		locked["body_size"] = locked_sizes
+	return list("locked_choices" = locked)

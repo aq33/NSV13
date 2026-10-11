@@ -16,8 +16,8 @@ import {
 } from 'tgui-core/components';
 import type { BooleanLike } from 'tgui-core/react';
 
-import { sendAct } from '../../../../backend';
-import { createSetPreference } from '../../data';
+import { sendAct, useBackend } from '../../../../backend';
+import { createSetPreference, PreferencesMenuData } from '../../data';
 import { ServerPreferencesFetcher } from '../../ServerPreferencesFetcher';
 import features from '.';
 
@@ -232,6 +232,23 @@ export function FeatureSliderInput(
   );
 }
 
+/** AQUILA: chowa wartości, których gracz nie odblokował (locked_choices z serwera) */
+export function filterLockedChoices<T>(serverData: T, locked?: string[]): T {
+  const choiced = serverData as unknown as FeatureChoicedServerData | undefined;
+  if (!Array.isArray(locked) || !locked.length || !choiced?.choices) {
+    return serverData;
+  }
+  return {
+    ...choiced,
+    choices: choiced.choices.filter((choice) => !locked.includes(choice)),
+    icons:
+      choiced.icons &&
+      Object.fromEntries(
+        Object.entries(choiced.icons).filter(([key]) => !locked.includes(key)),
+      ),
+  } as unknown as T;
+}
+
 export function FeatureValueInput(props: {
   feature: Feature<unknown>;
   featureId: string;
@@ -241,6 +258,8 @@ export function FeatureValueInput(props: {
   act: typeof sendAct;
 }) {
   const feature = props.feature;
+  const { data } = useBackend<PreferencesMenuData>();
+  const lockedChoices = data.locked_choices;
 
   const [predictedValue, setPredictedValue] =
     feature.predictable === undefined || feature.predictable
@@ -258,7 +277,10 @@ export function FeatureValueInput(props: {
         return createElement(feature.component, {
           act: props.act,
           featureId: props.featureId,
-          serverData: serverData?.[props.featureId] as any,
+          serverData: filterLockedChoices(
+            serverData?.[props.featureId] as any,
+            lockedChoices?.[props.featureId],
+          ),
           shrink: props.shrink,
 
           handleSetValue: changeValue,

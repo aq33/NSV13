@@ -34,3 +34,12 @@
 #define RANDOM_ANTAG_ONLY 1
 #define RANDOM_DISABLED 2
 #define RANDOM_ENABLED 3
+
+/// Cechy gatunków w oknie wyboru gatunku
+#define SPECIES_PERK_TYPE "type"
+#define SPECIES_PERK_ICON "icon"
+#define SPECIES_PERK_NAME "name"
+#define SPECIES_PERK_DESC "description"
+#define SPECIES_POSITIVE_PERK "positive"
+#define SPECIES_NEGATIVE_PERK "negative"
+#define SPECIES_NEUTRAL_PERK "neutral"

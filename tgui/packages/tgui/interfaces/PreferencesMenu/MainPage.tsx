@@ -27,6 +27,7 @@ import features from './preferences/features';
 import {
   FeatureChoicedServerData,
   FeatureValueInput,
+  filterLockedChoices,
 } from './preferences/features/base';
 import { Gender, GENDERS } from './preferences/gender';
 import { RandomizationButton } from './RandomizationButton';
@@ -694,9 +695,12 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                   {mainFeatures.map(([clothingKey, clothing]) => {
                     const catalog =
                       serverData &&
-                      (serverData[clothingKey] as FeatureChoicedServerData & {
-                        name: string;
-                      });
+                      filterLockedChoices(
+                        serverData[clothingKey] as FeatureChoicedServerData & {
+                          name: string;
+                        },
+                        data.locked_choices?.[clothingKey],
+                      );
 
                     return (
                       catalog && (

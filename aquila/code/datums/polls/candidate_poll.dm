@@ -207,7 +207,13 @@
 	else if(!isnull(config.alert_pic))
 		poll_image = config.alert_pic
 	else
-		poll_image = image('icons/effects/effects.dmi', icon_state = "static")
+		// Bez obrazka z ankiety: ikona roli z okna antagonistów, a gdy jej nie ma, szum
+		var/datum/role_preference/role_pref = ispath(config.role, /datum/role_preference) ? GLOB.role_preference_entries[config.role] : null
+		var/icon/role_icon = role_pref?.get_poll_icon()
+		if(role_icon)
+			poll_image = image(role_icon)
+		else
+			poll_image = image('icons/effects/effects.dmi', icon_state = "static")
 		poll_image.layer = FLOAT_LAYER
 		poll_image.plane = poll_alert_button.plane
 
