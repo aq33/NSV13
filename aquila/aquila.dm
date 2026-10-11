@@ -31,6 +31,7 @@
 #include "code\__HELPERS\pronouns.dm"
 #include "code\__HELPERS\roundend.dm"
 #include "code\__HELPERS\shell.dm"
+#include "code\_onclick\hud\action_palette.dm"
 #include "code\_onclick\hud\alert.dm"
 #include "code\_onclick\hud\ghost.dm"
 #include "code\_onclick\hud\horror.dm"
