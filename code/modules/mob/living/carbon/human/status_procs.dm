@@ -54,9 +54,12 @@
 
  //NSV13 - kept hygiene
 /mob/living/carbon/human/proc/adjust_hygiene(amount)
-	hygiene = CLAMP(hygiene+amount, 0, HYGIENE_LEVEL_CLEAN)
-	update_smell()
+	set_hygiene(hygiene + amount) // AQ EDIT - one path for both, see on_hygiene_changed()
 
 /mob/living/carbon/human/proc/set_hygiene(amount)
-	hygiene	 = CLAMP(amount, 0, HYGIENE_LEVEL_CLEAN)
-	update_smell()
+	// AQ EDIT START - only react to actual changes instead of rebuilding the smell overlay every Life() tick
+	var/old_hygiene = hygiene
+	hygiene = CLAMP(amount, 0, HYGIENE_LEVEL_CLEAN)
+	if(hygiene != old_hygiene)
+		on_hygiene_changed(old_hygiene)
+	// AQ EDIT END
