@@ -60,6 +60,7 @@
 	..()
 
 /mob/living/simple_animal/bot/hygienebot/update_icon_state()
+	. = ..() // Sets "hygienebot[on]", which this sprite sheet doesn't have
 	icon_state = on ? "hygienebot-on" : "hygienebot"
 
 /mob/living/simple_animal/bot/hygienebot/update_overlays()
