@@ -53,7 +53,11 @@
 	var/datum/component/material_container/materials = AddComponent(/datum/component/material_container, list(/datum/material/iron, /datum/material/glass), MINERAL_MATERIAL_AMOUNT * MAX_STACK_SIZE * 2, TRUE, /obj/item/stack)
 	materials.insert_amount_mat(starting_amount)
 	materials.precise_insertion = TRUE
-	using_materials = list(/datum/material/iron = iron_cost, /datum/material/glass = glass_cost)
+	using_materials = list()
+	if(iron_cost)
+		using_materials[/datum/material/iron] = iron_cost
+	if(glass_cost)
+		using_materials[/datum/material/glass] = glass_cost
 
 /obj/machinery/droneDispenser/preloaded
 	starting_amount = 5000
@@ -142,7 +146,7 @@
 		return
 
 	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
-	if(!materials.has_materials(using_materials))
+	if(length(using_materials) && !materials.has_materials(using_materials)) // No-cost dispensers (swarmer, hivebot) skip the check, has_materials() fails on an empty list
 		return // We require more minerals
 
 	// We are currently in the middle of something
@@ -163,7 +167,8 @@
 			update_icon()
 
 		if(DRONE_PRODUCTION)
-			materials.use_materials(using_materials)
+			if(length(using_materials))
+				materials.use_materials(using_materials)
 			if(power_used)
 				use_power(power_used)
 
