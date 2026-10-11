@@ -1,10 +1,10 @@
 {
     "map_name": "NSV Aquilas",
-    "map_link": "Aquila_Atlas",
-    "map_path": "map_files/Aquila_Atlas",
+    "map_link": "atlas",
+    "map_path": "map_files/Atlas",
     "map_file": [
-        "Aquila_Atlas.dmm",
-        "Aquila_Atlas2.dmm"
+        "atlas.dmm",
+        "atlas2.dmm"
     ],
     "traits": [
         {

@@ -5,7 +5,7 @@
 
 /datum/map_config //NSV EDITED START
 	// Metadata
-	var/config_filename = "_maps/atlas.json"
+	var/config_filename = "_maps/aquila_atlas.json"
 	var/defaulted = TRUE  // set to FALSE by LoadConfig() succeeding
 	// Config from maps.txt
 	var/config_max_users = 0
