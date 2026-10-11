@@ -1,8 +1,8 @@
 // Distant sounds: past the normal sound range a sound can still be heard as a dull, quieter echo from its direction.
-// Walls, windows and closed doors in the way (sound_dampening) make it quieter still.
+// The dullness is baked into the files (distant_gun_sounds.dm); walls, windows and closed doors in the way (sound_dampening) make it quieter still.
 
 /**
- * Plays a muffled copy of the sound to everyone between SOUND_RANGE and max_range tiles away.
+ * Plays an already muffled sound to everyone between SOUND_RANGE and max_range tiles away.
  * Listeners closer than that already hear the normal sound from playsound().
  */
 /proc/play_distant_sound(atom/source, soundin, volume, max_range = DISTANT_GUNSHOT_RANGE)
@@ -37,7 +37,6 @@
 		echo.volume = listener_volume
 		echo.channel = SSsounds.random_available_channel()
 		echo.frequency = rand(88, 96) / 100 // a little deeper, as from far away
-		echo.echo = get_distant_sound_echo()
 		// Only the direction matters here, the volume is already set
 		var/dx = source_turf.x - listener_turf.x
 		var/dy = source_turf.y - listener_turf.y
@@ -63,29 +62,6 @@
 		if(. >= 1)
 			return 1
 
-/proc/get_distant_sound_echo()
-	var/static/list/distant_echo = list(
-		0, // Direct
-		DISTANT_SOUND_DIRECT_HF, // DirectHF
-		0, // Room
-		0, // RoomHF
-		0, // Obstruction
-		0, // ObstructionLFRatio
-		0, // Occlusion
-		0.25, // OcclusionLFRatio
-		1.5, // OcclusionRoomRatio
-		1.0, // OcclusionDirectRatio
-		0, // Exclusion
-		1.0, // ExclusionLFRatio
-		0, // OutsideVolumeHF
-		0, // DopplerFactor
-		0, // RolloffFactor
-		0, // RoomRolloffFactor
-		1.0, // AirAbsorptionFactor
-		0, // Flags
-	)
-	return distant_echo.Copy()
-
 /obj/item/gun
 	/// Last time this gun sent a distant echo, so automatic fire does not flood far listeners
 	var/last_distant_shot = 0
@@ -94,5 +70,13 @@
 	. = ..()
 	if(suppressed || !fire_sound || world.time < last_distant_shot + 0.3 SECONDS)
 		return
+	var/distant_sound = GLOB.distant_gun_sounds["[fire_sound]"]
+	if(!distant_sound)
+		if(istype(src, /obj/item/gun/ballistic))
+			distant_sound = 'aquila/sound/weapons/distant/gunshot.ogg'
+		else if(istype(src, /obj/item/gun/energy))
+			distant_sound = 'aquila/sound/weapons/distant/laser.ogg'
+		else
+			return
 	last_distant_shot = world.time
-	play_distant_sound(src, fire_sound, fire_sound_volume)
+	play_distant_sound(src, distant_sound, fire_sound_volume)

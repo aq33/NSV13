@@ -70,6 +70,7 @@
 #include "code\game\area\sound_environments.dm"
 #include "code\game\atoms_movable.dm"
 #include "code\game\distant_sound.dm"
+#include "code\game\distant_gun_sounds.dm"
 #include "code\game\atoms.dm"
 #include "code\game\dynamic\dynamic_rulesets_midround_paradox_clone.dm"
 #include "code\game\dynamic\dynamic_rulesets_roundstart.dm"
@@ -438,6 +439,7 @@
 #include "code\modules\mob\living\silicon\robot\robot_movement.dm"
 #include "code\modules\mob\living\simple_animal\friendly\farm_animals.dm"
 #include "code\modules\mob\voice.dm"
+#include "code\modules\mob\voice_muffled_sounds.dm"
 #include "code\modules\reagents\chemistry\machinery\chem_heater.dm"
 
 #ifdef UNIT_TESTS

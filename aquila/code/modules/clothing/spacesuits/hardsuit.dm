@@ -142,3 +142,21 @@
 
 /obj/item/clothing/suit/space/hardsuit/clown
 	move_sound = list('sound/effects/clownstep1.ogg', 'sound/effects/clownstep2.ogg')
+
+/// No suit steps while riding, lying, being thrown or floating; on_mob_move() only checked that the suit is worn
+/obj/item/clothing/suit/proc/can_play_move_sound(mob/living/carbon/human/wearer)
+	if(!istype(wearer) || wearer.wear_suit != src)
+		return FALSE
+	if(wearer.buckled || wearer.lying || wearer.throwing || (wearer.movement_type & (FLYING | FLOATING | VENTCRAWLING)))
+		return FALSE
+	return isturf(wearer.loc) && wearer.has_gravity()
+
+/obj/item/clothing/suit/on_mob_move()
+	if(!can_play_move_sound(loc))
+		return
+	return ..()
+
+/obj/item/clothing/suit/space/hardsuit/syndi/peacekeeper/on_mob_move()
+	if(!can_play_move_sound(loc))
+		return
+	return ..()

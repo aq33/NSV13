@@ -49,3 +49,8 @@ Radio (tgstation sound/items/radio, see its attribution.txt):
   items/radio/radio_talk.ogg        cs2975871, https://freesound.org/people/cs2975871/sounds/514185/ (shortened)
   items/radio/radio_important.ogg   morganpurkis, https://freesound.org/people/morganpurkis/sounds/392972/
   items/radio/radio_receive.ogg     JovianSounds, https://freesound.org/people/JovianSounds/sounds/524205/ (shortened)
+
+Generated (low-pass filtered copies, same license as their sources):
+  voice/speech_muffled/*            aquila/sound/voice/speech/* through a 700 Hz low-pass (voice behind a mask or helmet)
+  weapons/distant/*                 the gun sounds listed in aquila/code/game/distant_gun_sounds.dm through a 450 Hz low-pass
+  vehicles/pussywagon_loop.ogg, secway_loop.ogg  raised by 6 dB

@@ -2,7 +2,7 @@
 // The pitch is a character preference (features["voice_pitch"], in semitones), so it travels with the DNA.
 
 #define VOICE_CLEAR 0
-/// Mask or helmet over the mouth: the voice loses its high end
+/// Mask or helmet over the mouth: the voice loses its high end (pre-filtered copies, voice_muffled_sounds.dm)
 #define VOICE_MUFFLED 1
 /// Gagged: only muffled grunts come out
 #define VOICE_GAGGED 2
@@ -108,35 +108,13 @@
 	if(QDELETED(src))
 		return
 	var/frequency = get_voice_frequency(extra_semitones)
-	var/sound/voice = sound(get_sfx(sound_key))
+	var/sound_file = get_sfx(sound_key)
 	if(muffling == VOICE_MUFFLED)
-		volume *= 0.75
-		voice.echo = get_muffled_voice_echo()
-	playsound(src, voice, volume, TRUE, (-7 + range), frequency = frequency, ignore_walls = FALSE)
-
-/// /sound/var/echo of a voice behind a mask: the direct sound loses its high frequencies
-/proc/get_muffled_voice_echo()
-	var/static/list/muffled_echo = list(
-		0, // Direct
-		VOICE_MUFFLE_DIRECT_HF, // DirectHF
-		-10000, // Room
-		-10000, // RoomHF
-		0, // Obstruction
-		0, // ObstructionLFRatio
-		0, // Occlusion
-		0.25, // OcclusionLFRatio
-		1.5, // OcclusionRoomRatio
-		1.0, // OcclusionDirectRatio
-		0, // Exclusion
-		1.0, // ExclusionLFRatio
-		0, // OutsideVolumeHF
-		0, // DopplerFactor
-		0, // RolloffFactor
-		0, // RoomRolloffFactor
-		1.0, // AirAbsorptionFactor
-		0, // Flags
-	)
-	return muffled_echo.Copy()
+		var/muffled_file = GLOB.muffled_speech_sounds[sound_file]
+		if(muffled_file)
+			sound_file = muffled_file
+		volume *= 0.8
+	playsound(src, sound_file, volume, TRUE, (-7 + range), frequency = frequency, ignore_walls = FALSE)
 
 #undef VOICE_CLEAR
 #undef VOICE_MUFFLED
