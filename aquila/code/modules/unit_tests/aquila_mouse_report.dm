@@ -20,7 +20,7 @@
 	var/report = SSticker.mouse_report()
 	GLOB.mouse_food_eaten = old_eaten
 	TEST_ASSERT_EQUAL(empty_report, "", "Mouse report shown although no mouse ate anything")
-	TEST_ASSERT(findtext(report, "Trash Eaten: 3"), "Mouse report is missing the eaten trash count")
+	TEST_ASSERT(findtext(report, "Zjedzone śmieci: 3"), "Mouse report is missing the eaten trash count")
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL
