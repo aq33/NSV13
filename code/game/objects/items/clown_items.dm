@@ -100,15 +100,11 @@
 			decreaseUses(user)
 
 	else if(ishuman(target) && user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
-		var/mob/living/carbon/human/H = user
+		var/mob/living/carbon/human/H = target // AQ EDIT - was user, so the soap washed the user's mouth instead of the target's
 		// NSV13 - kept hygiene effects
-		if(user.zone_selected == "mouth")
-			user.visible_message("<span class='warning'>\t[user] myje [target] usta [src.name]!</span>", "<span class='notice'>Myjesz [target] usta [src.name]!</span>") //washes mouth out with soap sounds better than 'the soap' here
-			H.lip_style = null //removes lipstick
-			H.adjust_hygiene(5) //it kinda works i guess
-		else
-			user.visible_message("<span class='warning'>\t[user] myje [target] za pomocą [src.name]!</span>", "<span class='notice'>Myjesz [target] za pomocą [src.name]!</span>")
-			H.adjust_hygiene(20)
+		user.visible_message("<span class='warning'>[user] myje [target] usta za pomocą [src.name]!</span>", "<span class='notice'>Myjesz [target] usta za pomocą [src.name]!</span>") //washes mouth out with soap sounds better than 'the soap' here
+		H.lip_style = null //removes lipstick
+		H.adjust_hygiene(5) //it kinda works i guess
 		H.update_body()
 		decreaseUses(user)
 		return
@@ -135,6 +131,10 @@
 			target.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 			SEND_SIGNAL(target, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_MEDIUM)
 			target.wash_cream()
+			// AQ EDIT - scrubbing someone with soap helps their hygiene (this sat in the mouth branch, where it could never run)
+			if(ishuman(target))
+				var/mob/living/carbon/human/scrubbed = target
+				scrubbed.adjust_hygiene(20)
 			decreaseUses(user)
 	return
 
