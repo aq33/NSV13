@@ -219,6 +219,28 @@
 	animate(limb, pixel_w = x, pixel_z = y, time = half_step, easing = SINE_EASING | EASE_OUT)
 	animate(pixel_w = 0, pixel_z = 0, time = half_step, easing = SINE_EASING | EASE_IN)
 
+/// Czy ktoś widzi zamiast tego atomu obraz z override (przebranie za kwiatek, mały sprite).
+/// Taki obraz podmienia appearance, ale nie vis_contents, więc fragmenty animacji chodu rysowałyby się na nim.
+/atom/proc/has_override_alt_appearance()
+	for(var/key in alternate_appearances)
+		var/datum/atom_hud/alternate_appearance/basic/appearance = alternate_appearances[key]
+		if(istype(appearance) && appearance.theImage?.override)
+			return TRUE
+	return FALSE
+
+/datum/atom_hud/alternate_appearance/basic/add_to_hud(atom/A)
+	. = ..()
+	if(. && theImage?.override && ishuman(A))
+		var/mob/living/carbon/human/H = A
+		H.update_walk_animation()
+
+/datum/atom_hud/alternate_appearance/basic/remove_from_hud(atom/A)
+	var/had_override = theImage?.override
+	. = ..()
+	if(. && had_override && ishuman(A) && !QDELETED(A))
+		var/mob/living/carbon/human/H = A
+		H.update_walk_animation()
+
 /// Fragment ciała: obraz moba z bufora przycięty maską.
 /// Bufor zawiera już kolor, przezroczystość i obrót moba, więc nie dziedziczymy ich drugi raz.
 /obj/effect/overlay/walk_limb
