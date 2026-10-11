@@ -56,6 +56,15 @@ div#rangeCircle {
   margin-left: -240px;
   transition: all 0.5s ease-out;
 }
+// AQUILA: the old tgui reset made everything border-box, so the 25px markers
+// were 25px with their border and padding; tgui-core does not
+#mapContainer,
+#mapContainer *,
+#planetMap,
+#planetMap * {
+  box-sizing: border-box;
+}
+
 // AQUILA: scoped under the map so theme .Button rules (two classes) do not override the markers
 #mapDraggable,
 #planetMap {

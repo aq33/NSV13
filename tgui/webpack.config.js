@@ -96,8 +96,22 @@ module.exports = (env = {}, argv) => {
         },
 
         {
-          test: /\.(cur|png|jpg)$/,
+          test: /\.cur$/,
           type: 'asset/resource',
+        },
+        // AQUILA: images from stylesheets (NSV starmap space.png) are inlined like in the old build,
+        // the server only sends the bundles, not extra files
+        {
+          test: /\.(png|jpg)$/,
+          oneOf: [
+            {
+              issuer: /\.(s)?css$/,
+              type: 'asset/inline',
+            },
+            {
+              type: 'asset/resource',
+            },
+          ],
         },
         {
           test: /.svg$/,

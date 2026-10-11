@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, useState } from 'react';
 import { Button, Knob, Section } from 'tgui-core/components';
 
 // NSV13
@@ -28,6 +28,8 @@ type Data = {
 
 export const DradisContent = (props) => {
   const { act, data } = useBackend<Data>();
+  // Bumping the key remounts the map, which centers it on the ship again
+  const [focusKey, setFocusKey] = useState(0);
 
   const drawShips = (ship) => {
     let borderType = '1px solid ' + ship.colour;
@@ -73,6 +75,7 @@ export const DradisContent = (props) => {
     let ShipMap = ships.map(drawShips);
     return (
       <Map
+        key={focusKey}
         initial_focus_x={focus_x}
         initial_focus_y={focus_y}
         initial_scale_factor={scale_factor}
@@ -135,7 +138,7 @@ export const DradisContent = (props) => {
           <Button
             content="Re-focus"
             icon="camera"
-            onClick={() => location.reload()}
+            onClick={() => setFocusKey(focusKey + 1)}
           />
           {!!data.can_target && (
             <Button
