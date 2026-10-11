@@ -32,8 +32,9 @@ SUBSYSTEM_DEF(jukeboxes)
 	place_ceiling_speakers()
 	return ..()
 
-/// Rozwiesza głośniki nagłośnienia na ścianach korytarzy statku, co najmniej JUKEBOX_CEILING_SPACING kratek od siebie,
-/// żeby ich zasięgi się nie nakładały (między nimi muzyka cichnie)
+/// Rozwiesza głośniki nagłośnienia na ścianach korytarzy statku (zasięg JUKEBOX_CEILING_RANGE), a potem mniejsze
+/// w kwaterach, przebieralniach i toaletach (JUKEBOX_CEILING_SMALL_RANGE). Głośniki tej samej wielkości mają rozłączne
+/// zasięgi (między nimi muzyka cichnie); mały wisi tylko tam, gdzie nie sięga żaden inny.
 /datum/controller/subsystem/jukeboxes/proc/place_ceiling_speakers()
 	var/static/list/blocking_types = typecacheof(list(
 		/obj/machinery/door, /obj/machinery/firealarm, /obj/machinery/airalarm, /obj/machinery/power/apc,
@@ -42,7 +43,14 @@ SUBSYSTEM_DEF(jukeboxes)
 		/obj/item/radio/intercom, /obj/structure/extinguisher_cabinet, /obj/structure/sign, /obj/structure/noticeboard,
 		/obj/machinery/ceiling_speaker))
 	var/list/placed = ceiling_speakers.Copy()
+	var/list/areas = list() // area -> zasięg głośników; najpierw korytarze, żeby to one dostały głośniki, a nie sąsiednie kwatery
 	for(var/area/hallway/A in world)
+		areas[A] = JUKEBOX_CEILING_RANGE
+	for(var/area/crew_quarters/A in world)
+		if(istype(A, /area/crew_quarters/dorms) || istype(A, /area/crew_quarters/toilet) || istype(A, /area/crew_quarters/locker))
+			areas[A] = JUKEBOX_CEILING_SMALL_RANGE
+	for(var/area/A as anything in areas)
+		var/range = areas[A]
 		for(var/turf/open/floor/T in A)
 			if(!is_station_level(T.z))
 				continue
@@ -51,23 +59,25 @@ SUBSYSTEM_DEF(jukeboxes)
 				continue
 			var/too_close = FALSE
 			for(var/obj/machinery/ceiling_speaker/other as anything in placed)
-				if(other.z == T.z && get_dist_euclidian(other, T) < JUKEBOX_CEILING_SPACING)
+				// korytarz z korytarzem: zasięgi rozłączne; mały głośnik tylko tam, gdzie nie sięga żaden inny (skraje mogą lekko zachodzić)
+				var/min_distance = (range == other.speaker_range) ? other.speaker_range + range : max(other.speaker_range, range)
+				if(other.z == T.z && get_dist_euclidian(other, T) <= min_distance)
 					too_close = TRUE
 					break
 			if(too_close)
 				continue
-			var/obj/machinery/ceiling_speaker/speaker = new(T)
+			var/obj/machinery/ceiling_speaker/speaker = new(T, range)
 			speaker.mount_on(wall_dir)
 			placed += speaker
 		CHECK_TICK
-	log_game("Jukebox: rozwieszono [length(placed)] głośników nagłośnienia na korytarzach")
+	log_game("Jukebox: rozwieszono [length(placed)] głośników nagłośnienia")
 
 /// Kierunek ściany, na której można powiesić głośnik nad tą kratką, albo 0
 /datum/controller/subsystem/jukeboxes/proc/ceiling_speaker_wall(turf/open/floor/T, list/blocking_types)
 	for(var/atom/movable/AM as anything in T)
 		if(AM.density || is_type_in_typecache(AM, blocking_types))
 			return 0
-	for(var/wall_dir in list(NORTH, WEST, EAST, SOUTH))
+	for(var/wall_dir in list(NORTH, WEST, EAST)) // ściana południowa jest widoczna od góry - głośnik wyglądałby jak wbity w nią
 		if(isclosedturf(get_step(T, wall_dir)))
 			return wall_dir
 	return 0
@@ -166,6 +176,8 @@ SUBSYSTEM_DEF(jukeboxes)
 
 /// Włącza jukebox jako nadający na cały statek; poprzedni nadający na tym samym statku przestaje
 /datum/controller/subsystem/jukeboxes/proc/set_shipwide(obj/machinery/jukebox/J, enabled)
+	if(enabled && !J.can_broadcast) // radio i głośnik Syndykatu nie nadają na cały statek
+		return
 	if(enabled)
 		var/obj/structure/overmap/ship = J.get_overmap()
 		for(var/obj/machinery/jukebox/other in GLOB.machines)

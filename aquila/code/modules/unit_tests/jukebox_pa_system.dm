@@ -63,6 +63,11 @@
 	TEST_ASSERT(!jukebox.is_secured(), "A normal jukebox should not play while unanchored")
 	jukebox.anchored = TRUE
 
+	// Na cały statek nadaje tylko jukebox - radio nie
+	var/obj/machinery/jukebox/radio/radio = allocate(/obj/machinery/jukebox/radio, corner)
+	SSjukeboxes.set_shipwide(radio, TRUE)
+	TEST_ASSERT(!radio.shipwide, "Radio should not be able to broadcast shipwide")
+
 	// Zniszczony jukebox odłącza amp stacki
 	qdel(jukebox)
 	TEST_ASSERT(isnull(speaker.jukebox), "Amp stack still points at a destroyed jukebox")

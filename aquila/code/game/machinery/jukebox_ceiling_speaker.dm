@@ -18,10 +18,15 @@
 	var/obj/structure/overmap/ship
 	/// Gra teraz muzykę z nadającego jukeboxa (tylko do ikony)
 	var/playing = FALSE
+	/// Zasięg w kratkach (na korytarzach większy, w kwaterach i toaletach mniejszy)
+	var/speaker_range = JUKEBOX_CEILING_RANGE
 
-/obj/machinery/ceiling_speaker/Initialize(mapload)
+/obj/machinery/ceiling_speaker/Initialize(mapload, range)
 	. = ..()
-	emitter = new(src, JUKEBOX_CEILING_RANGE, 1, 3)
+	if(range)
+		speaker_range = range
+	// ściany tłumią słabiej niż przy jukeboxie, żeby nagłośnienie było lekko słychać w działach obok korytarza
+	emitter = new(src, speaker_range, 1, 3, 0.6)
 	SSjukeboxes.ceiling_speakers += src
 
 /obj/machinery/ceiling_speaker/Destroy()
@@ -39,11 +44,12 @@
 /obj/machinery/ceiling_speaker/proc/can_play()
 	return !(machine_stat & (BROKEN|NOPOWER))
 
-/// Wiesza głośnik na ścianie w kierunku wall_dir od kratki, na której stoi
+/// Wiesza głośnik na ścianie w kierunku wall_dir od kratki, na której stoi.
+/// Tuba jest narysowana na środku ikony, więc przesunięcie jest mniejsze niż przy alarmach/APC - wisi przy krawędzi ściany, nie w niej.
 /obj/machinery/ceiling_speaker/proc/mount_on(wall_dir)
 	dir = turn(wall_dir, 180) // tuba w stronę korytarza
-	pixel_x = (wall_dir & EAST) ? 26 : ((wall_dir & WEST) ? -26 : 0)
-	pixel_y = (wall_dir & NORTH) ? 26 : ((wall_dir & SOUTH) ? -26 : 0)
+	pixel_x = (wall_dir & EAST) ? 12 : ((wall_dir & WEST) ? -12 : 0)
+	pixel_y = (wall_dir & NORTH) ? 14 : 0
 
 /obj/machinery/ceiling_speaker/power_change()
 	. = ..()

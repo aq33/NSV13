@@ -451,7 +451,7 @@
 	for(var/obj/machinery/jukebox_speaker/speaker as anything in speakers)
 		if(speaker.can_play())
 			. += speaker.emitter
-	if(shipwide)
+	if(shipwide && can_broadcast)
 		var/obj/structure/overmap/our_ship = get_overmap()
 		if(our_ship)
 			for(var/obj/machinery/ceiling_speaker/speaker as anything in SSjukeboxes.ceiling_speakers)

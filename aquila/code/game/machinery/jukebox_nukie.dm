@@ -10,6 +10,7 @@
 	req_access = list(ACCESS_SYNDICATE)
 	music_range = 14
 	needs_anchoring = FALSE
+	can_broadcast = FALSE
 	anchored = FALSE
 
 /obj/machinery/jukebox/nukie/update_icon()

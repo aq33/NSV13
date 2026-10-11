@@ -13,14 +13,14 @@
 	transfer_access = list(ACCESS_CAPTAIN)
 	tgui_id = "NtosJukeboxBroadcast"
 
-/// Jukeboxy na tym samym statku co komputer
+/// Jukeboxy na tym samym statku co komputer (tylko te, które mogą nadawać - bez radia i głośnika Syndykatu)
 /datum/computer_file/program/jukebox_broadcast/proc/ship_jukeboxes()
 	. = list()
 	var/obj/structure/overmap/ship = computer?.get_overmap()
 	if(!ship)
 		return
 	for(var/obj/machinery/jukebox/J in GLOB.machines)
-		if(J.get_overmap() == ship)
+		if(J.can_broadcast && J.get_overmap() == ship)
 			. += J
 
 /datum/computer_file/program/jukebox_broadcast/ui_data(mob/user)

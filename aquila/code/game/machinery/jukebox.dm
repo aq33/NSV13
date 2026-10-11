@@ -38,6 +38,8 @@
 	var/list/obj/machinery/jukebox_speaker/speakers = list()
 	/// Gra tylko przykręcony; FALSE = gra też odkręcony, np. ciągnięty za sobą (głośnik Syndykatu)
 	var/needs_anchoring = TRUE
+	/// Może nadawać na cały statek z programu nagłośnienia (radio i głośnik Syndykatu nie)
+	var/can_broadcast = TRUE
 
 /obj/machinery/jukebox/disco
 	name = "Disco Jukebox"
