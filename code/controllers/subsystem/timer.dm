@@ -113,10 +113,16 @@ SUBSYSTEM_DEF(timer)
 	if (next_clienttime_timer_index)
 		clienttime_timers.Cut(1, next_clienttime_timer_index + 1)
 		next_clienttime_timer_index = 0
+	var/list/ctime_loop_timers // AQ EDIT - looping client timers are requeued after the invoked ones are cut, see aquila/code/controllers/subsystem/timer.dm
 	for (next_clienttime_timer_index in 1 to length(clienttime_timers))
 		if (MC_TICK_CHECK)
 			next_clienttime_timer_index--
 			break
+		// AQ EDIT START - callbacks can remove timers that have not run yet, so the list may be shorter than when the loop started
+		if (next_clienttime_timer_index > length(clienttime_timers))
+			next_clienttime_timer_index--
+			break
+		// AQ EDIT END
 		var/datum/timedevent/ctime_timer = clienttime_timers[next_clienttime_timer_index]
 		if (ctime_timer.timeToRun > REALTIMEOFDAY)
 			next_clienttime_timer_index--
@@ -124,15 +130,16 @@ SUBSYSTEM_DEF(timer)
 
 		var/datum/callback/callBack = ctime_timer.callBack
 		if (!callBack)
-			CRASH("Invalid timer: [get_timer_debug_string(ctime_timer)] world.time: [world.time], head_offset: [head_offset], practical_offset: [practical_offset], REALTIMEOFDAY: [REALTIMEOFDAY]")
+			// AQ EDIT START - don't abort the whole pass (and lose the requeued loop timers), the entry is cut below
+			stack_trace("Invalid timer: [get_timer_debug_string(ctime_timer)] world.time: [world.time], head_offset: [head_offset], practical_offset: [practical_offset], REALTIMEOFDAY: [REALTIMEOFDAY]")
+			continue
+			// AQ EDIT END
 
 		ctime_timer.spent = REALTIMEOFDAY
 		callBack.InvokeAsync()
 
 		if(ctime_timer.flags & TIMER_LOOP)
-			ctime_timer.spent = 0
-			ctime_timer.timeToRun = REALTIMEOFDAY + ctime_timer.wait
-			BINARY_INSERT(ctime_timer, clienttime_timers, /datum/timedevent, ctime_timer, timeToRun, COMPARE_KEY)
+			LAZYADD(ctime_loop_timers, ctime_timer) // AQ EDIT - was reinserted here, which broke the list order under the loop
 		else
 			qdel(ctime_timer)
 
@@ -140,6 +147,8 @@ SUBSYSTEM_DEF(timer)
 	if (next_clienttime_timer_index)
 		clienttime_timers.Cut(1, next_clienttime_timer_index+1)
 		next_clienttime_timer_index = 0
+	if (ctime_loop_timers) // AQ EDIT
+		requeue_clienttime_loop_timers(ctime_loop_timers) // AQ EDIT
 
 	// Check for when we need to loop the buckets, this occurs when
 	// the head_offset is approaching BUCKET_LEN ticks in the past
@@ -174,7 +183,7 @@ SUBSYSTEM_DEF(timer)
 				callBack.InvokeAsync()
 				last_invoke_tick = world.time
 
-			if (timer.flags & TIMER_LOOP) // Prepare looping timers to re-enter the queue
+			if ((timer.flags & TIMER_LOOP) && !QDELETED(timer)) // Prepare looping timers to re-enter the queue // AQ EDIT - a loop timer can be deleted by its own callback
 				timer.spent = 0
 				timer.timeToRun = world.time + timer.wait
 				timer.bucketJoin()
@@ -630,7 +639,7 @@ SUBSYSTEM_DEF(timer)
 	timer_subsystem = timer_subsystem || SStimer
 	//id is string
 	var/datum/timedevent/timer = timer_subsystem.timer_id_dict[id]
-	if (timer && (!timer.spent || timer.flags & TIMER_DELETE_ME))
+	if (timer && (!timer.spent || timer.flags & (TIMER_DELETE_ME|TIMER_LOOP))) // AQ EDIT - TIMER_LOOP: a loop timer is only spent while its callback runs
 		qdel(timer)
 		return TRUE
 	return FALSE
