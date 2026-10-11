@@ -1,26 +1,10 @@
 import { createSearch } from 'common/string';
-import {
-  Box,
-  Button,
-  Flex,
-  Icon,
-  Image,
-  Input,
-  Section,
-} from 'tgui-core/components';
+import { Box, Button, Flex, Icon, Input, Section } from 'tgui-core/components';
 
 import { resolveAsset } from '../assets';
 import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
-
-type Data = {
-  alive: any;
-  antagonists: any;
-  dead: any;
-  ghosts: any;
-  misc: any;
-  npcs: any;
-};
+import { CollapsibleSection } from './common/CollapsibleSection';
 
 const PATTERN_DESCRIPTOR = / \[(?:ghost|dead)\]$/;
 const PATTERN_NUMBER = / \(([0-9]+)\)$/;
@@ -53,37 +37,54 @@ const compareNumberedText = (a, b) => {
   return compareString(aName, bName);
 };
 
-const BasicSection = (props) => {
-  const { act } = useBackend<Data>();
-  const { searchText, source, title } = props;
+const OrbitSection = (props) => {
+  const { act } = useBackend();
+  const { searchText, source, title, color, basic } = props;
   const things = source.filter(searchFor(searchText));
   things.sort(compareNumberedText);
   return (
     source.length > 0 && (
-      <Section title={`${title} - (${source.length})`}>
-        {things.map((thing) => (
-          <Button
-            key={thing.name}
-            content={thing.name.replace(PATTERN_DESCRIPTOR, '')}
-            onClick={() =>
-              act('orbit', {
-                ref: thing.ref,
-              })
-            }
-          />
-        ))}
-      </Section>
+      <CollapsibleSection
+        sectionKey={title}
+        title={`${title} - (${source.length})`}
+        forceOpen={things.length && searchText}
+        showButton={!searchText}
+      >
+        {things.map((thing) =>
+          basic ? (
+            <Button
+              key={thing.name}
+              color={color}
+              content={thing.name.replace(PATTERN_DESCRIPTOR, '')}
+              onClick={() =>
+                act('orbit', {
+                  ref: thing.ref,
+                })
+              }
+            />
+          ) : (
+            <OrbitedButton
+              key={thing.name}
+              color={color}
+              thing={thing}
+              job={thing.role_icon}
+              antag={thing.antag_icon}
+            />
+          ),
+        )}
+      </CollapsibleSection>
     )
   );
 };
 
 const OrbitedButton = (props) => {
-  const { act } = useBackend<Data>();
-  const { color, thing, job } = props;
+  const { act } = useBackend();
+  const { color, thing, job, antag } = props;
 
   return (
     <Button
       color={color}
+      style={{ lineHeight: '24px' }}
       onClick={() =>
         act('orbit', {
           ref: thing.ref,
@@ -93,9 +94,19 @@ const OrbitedButton = (props) => {
       {job && (
         <Box
           inline
-          ml={1}
-          style={{ transform: 'translateY(2.5px)' }}
+          mr={0.5}
+          ml={-0.5}
+          style={{ transform: 'translateY(18.75%)' }}
           className={`job-icon16x16 job-icon-${job}`}
+        />
+      )}
+      {antag && (
+        <Box
+          inline
+          mr={0.5}
+          ml={job ? -0.25 : -0.5}
+          style={{ transform: 'translateY(18.75%)' }}
+          className={`antag-hud16x16 antag-hud-${antag}`}
         />
       )}
       {thing.name}
@@ -103,7 +114,7 @@ const OrbitedButton = (props) => {
         <Box inline ml={1}>
           {'('}
           {thing.orbiters}{' '}
-          <Image src={resolveAsset('ghost.png')} opacity={0.7} />
+          <Box as="img" src={resolveAsset('ghost.png')} opacity={0.7} />
           {')'}
         </Box>
       )}
@@ -112,7 +123,7 @@ const OrbitedButton = (props) => {
 };
 
 export const Orbit = (props) => {
-  const { act, data } = useBackend<Data>();
+  const { act, data } = useBackend();
   const { alive, antagonists, dead, ghosts, misc, npcs } = data;
 
   const [searchText, setSearchText] = useLocalState('searchText', '');
@@ -150,7 +161,7 @@ export const Orbit = (props) => {
   };
 
   return (
-    <Window width={350} height={700}>
+    <Window theme="generic" width={350} height={700}>
       <Window.Content scrollable>
         <Section>
           <Flex>
@@ -169,46 +180,57 @@ export const Orbit = (props) => {
           </Flex>
         </Section>
         {antagonists.length > 0 && (
-          <Section title="Ghost-Visible Antagonists">
-            {sortedAntagonists.map(([name, antags]: [string, any]) => (
-              <Section key={name} title={name}>
-                {antags
-                  .filter(searchFor(searchText))
-                  .sort(compareNumberedText)
-                  .map((antag) => (
-                    <OrbitedButton
-                      key={antag.name}
-                      color="bad"
-                      thing={antag}
-                      job={antag.role_icon}
-                    />
-                  ))}
-              </Section>
-            ))}
-          </Section>
-        )}
-
-        <Section title="Alive">
-          {alive
-            .filter(searchFor(searchText))
-            .sort(compareNumberedText)
-            .map((thing) => (
-              <OrbitedButton
-                key={thing.name}
-                color="good"
-                thing={thing}
-                job={thing.role_icon}
+          <CollapsibleSection
+            title="Ghost-Visible Antagonists"
+            sectionKey="Ghost-Visible Antagonists"
+            forceOpen={searchText}
+          >
+            {sortedAntagonists.map(([name, antags]) => (
+              <OrbitSection
+                key={name}
+                title={name}
+                source={antags}
+                searchText={searchText}
+                color="bad"
               />
             ))}
-        </Section>
+          </CollapsibleSection>
+        )}
 
-        <BasicSection title="Ghosts" source={ghosts} searchText={searchText} />
+        <OrbitSection
+          title="Alive"
+          source={alive}
+          searchText={searchText}
+          color="good"
+        />
 
-        <BasicSection title="Dead" source={dead} searchText={searchText} />
+        <OrbitSection
+          title="Ghosts"
+          source={ghosts}
+          searchText={searchText}
+          basic
+        />
 
-        <BasicSection title="NPCs" source={npcs} searchText={searchText} />
+        <OrbitSection
+          title="Dead"
+          source={dead}
+          searchText={searchText}
+          basic
+        />
 
-        <BasicSection title="Misc" source={misc} searchText={searchText} />
+        <OrbitSection
+          title="NPCs"
+          source={npcs}
+          searchText={searchText}
+          basic
+        />
+
+        <OrbitSection
+          title="Misc"
+          source={misc}
+          searchText={searchText}
+          basic
+        />
       </Window.Content>
     </Window>
   );

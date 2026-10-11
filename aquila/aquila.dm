@@ -285,6 +285,7 @@
 #include "code\modules\mining\machine_bluespaceminer.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories.dm"
 #include "code\modules\mob\dead\observer\observer.dm"
+#include "code\modules\mob\dead\observer\orbit.dm"
 #include "code\modules\mob\emote_sounds.dm"
 #include "code\modules\mob\mob_stat.dm"
 #include "code\modules\mob\living\carbon\alien\alien.dm"
