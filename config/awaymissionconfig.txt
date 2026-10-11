@@ -11,7 +11,8 @@ _maps/RandomZLevels/caves.dmm
 _maps/RandomZLevels/moonoutpost19.dmm
 _maps/RandomZLevels/research.dmm
 _maps/RandomZLevels/SnowCabin.dmm
-_maps/RandomZLevels/snowdin.dmm
+#Snowdin: gas outlets dump onto planetary turfs and keep ~14k tiles active, constant time dilation
+#_maps/RandomZLevels/snowdin.dmm
 _maps/RandomZLevels/spacebattle.dmm
 _maps/RandomZLevels/TheBeach.dmm
 _maps/RandomZLevels/undergroundoutpost45.dmm
