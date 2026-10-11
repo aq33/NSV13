@@ -85,7 +85,7 @@
 	if(!length)
 		return
 	var/last_char = copytext_char(text, -1)
-	var/volume = 50
+	var/volume = 40
 	if(message_mods?[WHISPER_MODE])
 		volume = 15 // much quieter than normal speech, so a whisper stands out
 	else if(last_char == "!" || (length > 3 && uppertext(text) == text && lowertext(text) != text))
