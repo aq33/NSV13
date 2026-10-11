@@ -387,6 +387,7 @@
 		START_PROCESSING(SSobj, src)
 	SSjukeboxes.yt_jukeboxes |= src
 	update_icon()
+	SSjukeboxes.update_ceiling_speakers()
 	SSjukeboxes.update_listeners() // nowy utwór słychać od razu, bez czekania na tick podsystemu
 	updateUsrDialog()
 
@@ -421,6 +422,7 @@
 	yt_prefetched = null
 	SSjukeboxes.yt_jukeboxes -= src
 	SSjukeboxes.release_jukebox(src)
+	SSjukeboxes.update_ceiling_speakers()
 	if(was_active)
 		STOP_PROCESSING(SSobj, src)
 		playsound(src, 'sound/machines/terminal_off.ogg', 50, TRUE)
@@ -442,37 +444,27 @@
 	extra["start"] = round((world.time - yt_track_started) / 10 * yt_speed)
 	return extra
 
-/// Miejsca, z których słychać ten jukebox: on sam i włączone, zasilone amp stacki
+/// Miejsca, z których słychać ten jukebox: on sam, włączone i zasilone amp stacki,
+/// a przy nadawaniu na cały statek - sprawne głośniki nagłośnienia na jego statku
 /obj/machinery/jukebox/proc/active_emitters()
 	. = list(emitter)
 	for(var/obj/machinery/jukebox_speaker/speaker as anything in speakers)
 		if(speaker.can_play())
 			. += speaker.emitter
+	if(shipwide)
+		var/obj/structure/overmap/our_ship = get_overmap()
+		if(our_ship)
+			for(var/obj/machinery/ceiling_speaker/speaker as anything in SSjukeboxes.ceiling_speakers)
+				if(speaker.can_play() && speaker.get_ship() == our_ship)
+					. += speaker.emitter
 
 /// Maksymalna głośność (0-1) z danego miejsca przy obecnej gałce
 /obj/machinery/jukebox/proc/emitter_max_gain(datum/music_emitter/source)
+	if(istype(source.parent, /obj/machinery/ceiling_speaker))
+		return JUKEBOX_SHIPWIDE_GAIN * volume / 100
 	var/obj/machinery/jukebox_speaker/speaker = source.parent
 	var/source_gain = istype(speaker) ? speaker.max_gain : 1
 	return JUKEBOX_YT_MAX_GAIN * volume / 100 * source_gain
-
-/// Jak gracz słyszy nadawanie tego jukeboxa na cały statek:
-/// 0 - normalnie (pomieszczenie lub korytarz statku); 0-1 - w maincie, im dalej od korytarza, tym bliżej 1;
-/// null - nie słyszy (inny statek, kosmos, za daleko w głąb mainta, wyłączone instrumenty, głuchy).
-/obj/machinery/jukebox/proc/broadcast_depth(mob/M)
-	if(!shipwide || !M?.client || !(M.client.prefs.toggles & PREFTOGGLE_SOUND_INSTRUMENTS) || !M.can_hear())
-		return null
-	var/obj/structure/overmap/our_ship = get_overmap()
-	if(!our_ship || M.get_overmap() != our_ship)
-		return null
-	var/turf/T = get_turf(M)
-	if(!T || istype(T.loc, /area/space))
-		return null
-	if(SSjukeboxes.is_broadcast_area(T.loc))
-		return 0
-	if(!istype(T.loc, /area/maintenance))
-		return null
-	var/distance = SSjukeboxes.broadcast_area_distance(T)
-	return distance ? distance / (JUKEBOX_MAINT_HEARING_RANGE + 1) : null
 
 /obj/machinery/jukebox/proc/yt_process()
 	if(machine_stat & (BROKEN|NOPOWER) || !mains || !anchored)

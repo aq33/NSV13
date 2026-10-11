@@ -2,25 +2,19 @@
 #define JUKEBOX_GAIN_STEP 0.01
 /// Tyle po wyjściu z zasięgu muzyka gra jeszcze wyciszona, zanim ją zatrzymamy (powrót = bez restartu)
 #define JUKEBOX_OUT_GRACE (10 SECONDS)
-/// Głośność (0-1, przy gałce 100%) nadawania na cały statek - stała w każdym pomieszczeniu, jak z głośników sufitowych
-#define JUKEBOX_SHIPWIDE_GAIN 0.35
-/// Mnożnik głośności nadawania w maincie tuż przy korytarzu (dalej jeszcze ciszej)
-#define JUKEBOX_MAINT_GAIN 0.6
 
-/// Co 0,5 s wybiera każdemu graczowi jedno źródło muzyki (przeglądarka ma jeden odtwarzacz) i ustawia mu głośność, echo i przytłumienie.
-/// Pierwszeństwo: najgłośniejsze źródło w pobliżu (jukebox, włączony amp stack), a gdy nic nie słychać - jukebox nadający na cały statek
-/// (w maintach przytłumiony i z echem, głośniej bliżej korytarza).
+/// Co 0,5 s wybiera każdemu graczowi jedno źródło muzyki (przeglądarka ma jeden odtwarzacz) i ustawia mu głośność, echo i przytłumienie:
+/// najgłośniejsze z miejsc, z których słychać grające jukeboxy (sam jukebox, włączone amp stacki, a przy nadawaniu na cały statek
+/// głośniki nagłośnienia na korytarzach). Na starcie rundy rozwiesza głośniki nagłośnienia na korytarzach.
 SUBSYSTEM_DEF(jukeboxes)
 	name = "Jukeboxes"
 	wait = 5
-	flags = SS_NO_INIT
 	/// Jukeboxy grające teraz z YouTube / SoundCloud
 	var/list/obj/machinery/jukebox/yt_jukeboxes = list()
 	/// Co gra każdemu klientowi: client -> /datum/jukebox_listening
 	var/list/listening = list()
-	/// Odległość kratek mainta od najbliższego pomieszczenia/korytarza statku: turf -> kratki (0 = poza zasięgiem)
-	var/list/maint_distance_cache = list()
-	var/maint_distance_cache_time = 0
+	/// Wszystkie głośniki nagłośnienia
+	var/list/obj/machinery/ceiling_speaker/ceiling_speakers = list()
 
 /// Stan słuchania jednego klienta
 /datum/jukebox_listening
@@ -33,6 +27,62 @@ SUBSYSTEM_DEF(jukeboxes)
 	var/fx
 	/// Od kiedy klient jest poza zasięgiem (muzyka wyciszona, ale jeszcze gra)
 	var/out_since = 0
+
+/datum/controller/subsystem/jukeboxes/Initialize(start_timeofday)
+	place_ceiling_speakers()
+	return ..()
+
+/// Rozwiesza głośniki nagłośnienia na ścianach korytarzy statku, co najmniej JUKEBOX_CEILING_SPACING kratek od siebie,
+/// żeby ich zasięgi się nie nakładały (między nimi muzyka cichnie)
+/datum/controller/subsystem/jukeboxes/proc/place_ceiling_speakers()
+	var/static/list/blocking_types = typecacheof(list(
+		/obj/machinery/door, /obj/machinery/firealarm, /obj/machinery/airalarm, /obj/machinery/power/apc,
+		/obj/machinery/light, /obj/machinery/light_switch, /obj/machinery/button, /obj/machinery/newscaster,
+		/obj/machinery/status_display, /obj/machinery/requests_console, /obj/machinery/computer/security/telescreen,
+		/obj/item/radio/intercom, /obj/structure/extinguisher_cabinet, /obj/structure/sign, /obj/structure/noticeboard,
+		/obj/machinery/ceiling_speaker))
+	var/list/placed = ceiling_speakers.Copy()
+	for(var/area/hallway/A in world)
+		for(var/turf/open/floor/T in A)
+			if(!is_station_level(T.z))
+				continue
+			var/wall_dir = ceiling_speaker_wall(T, blocking_types)
+			if(!wall_dir)
+				continue
+			var/too_close = FALSE
+			for(var/obj/machinery/ceiling_speaker/other as anything in placed)
+				if(other.z == T.z && get_dist_euclidian(other, T) < JUKEBOX_CEILING_SPACING)
+					too_close = TRUE
+					break
+			if(too_close)
+				continue
+			var/obj/machinery/ceiling_speaker/speaker = new(T)
+			speaker.mount_on(wall_dir)
+			placed += speaker
+		CHECK_TICK
+	log_game("Jukebox: rozwieszono [length(placed)] głośników nagłośnienia na korytarzach")
+
+/// Kierunek ściany, na której można powiesić głośnik nad tą kratką, albo 0
+/datum/controller/subsystem/jukeboxes/proc/ceiling_speaker_wall(turf/open/floor/T, list/blocking_types)
+	for(var/atom/movable/AM as anything in T)
+		if(AM.density || is_type_in_typecache(AM, blocking_types))
+			return 0
+	for(var/wall_dir in list(NORTH, WEST, EAST, SOUTH))
+		if(isclosedturf(get_step(T, wall_dir)))
+			return wall_dir
+	return 0
+
+/// Ikony głośników nagłośnienia: grają, gdy na ich statku nadaje grający jukebox
+/datum/controller/subsystem/jukeboxes/proc/update_ceiling_speakers()
+	var/list/broadcasting_ships = list()
+	for(var/obj/machinery/jukebox/J as anything in yt_jukeboxes)
+		if(J.shipwide && J.yt_active)
+			broadcasting_ships |= J.get_overmap()
+	for(var/obj/machinery/ceiling_speaker/speaker as anything in ceiling_speakers)
+		var/playing = !!(speaker.get_ship() in broadcasting_ships)
+		if(speaker.playing != playing)
+			speaker.playing = playing
+			speaker.update_icon()
 
 /datum/controller/subsystem/jukeboxes/fire()
 	update_listeners()
@@ -66,20 +116,6 @@ SUBSYSTEM_DEF(jukeboxes)
 	if(best_emitter)
 		echo = round(best_emitter.echo_amount(M), 0.05)
 		muffle = round(best_emitter.muffle_amount(M), 0.05)
-	else
-		for(var/obj/machinery/jukebox/J as anything in yt_jukeboxes)
-			if(!J.yt_stream_url)
-				continue
-			var/depth = J.broadcast_depth(M)
-			if(isnull(depth))
-				continue
-			best_jukebox = J
-			best_gain = JUKEBOX_SHIPWIDE_GAIN * J.volume / 100
-			if(depth) // w maincie: przytłumione, z echem, ciszej im dalej od korytarza
-				best_gain *= JUKEBOX_MAINT_GAIN * (1 - depth)
-				echo = round(0.4 + 0.6 * depth, 0.05)
-				muffle = round(0.5 + 0.5 * depth, 0.05)
-			break
 	best_gain = round(best_gain, 0.01)
 
 	var/datum/jukebox_listening/state = listening[C]
@@ -119,28 +155,6 @@ SUBSYSTEM_DEF(jukeboxes)
 		listening -= C
 		C.tgui_panel?.stop_music()
 
-/// Czy w tym obszarze słychać nadawanie normalnie (nie maint, nie kosmos)
-/datum/controller/subsystem/jukeboxes/proc/is_broadcast_area(area/A)
-	return A && !istype(A, /area/maintenance) && !istype(A, /area/space)
-
-/// Ile kratek z mainta do najbliższego pomieszczenia lub korytarza statku (0 = dalej niż JUKEBOX_MAINT_HEARING_RANGE).
-/// Wynik trzymany kilka sekund, bo mainty się nie przesuwają.
-/datum/controller/subsystem/jukeboxes/proc/broadcast_area_distance(turf/T)
-	if(maint_distance_cache_time + 10 SECONDS < world.time)
-		maint_distance_cache = list()
-		maint_distance_cache_time = world.time
-	if(!isnull(maint_distance_cache[T]))
-		return maint_distance_cache[T]
-	var/best = 0
-	for(var/turf/near as anything in RANGE_TURFS(JUKEBOX_MAINT_HEARING_RANGE, T))
-		if(!is_broadcast_area(near.loc))
-			continue
-		var/distance = get_dist(T, near)
-		if(!best || distance < best)
-			best = distance
-	maint_distance_cache[T] = best
-	return best
-
 /// Zatrzymuje muzykę wszystkim, którym gra ten jukebox (wyłączony, zniszczony)
 /datum/controller/subsystem/jukeboxes/proc/release_jukebox(obj/machinery/jukebox/J)
 	for(var/client/C as anything in listening)
@@ -158,9 +172,8 @@ SUBSYSTEM_DEF(jukeboxes)
 			if(other != J && other.shipwide && other.get_overmap() == ship)
 				other.shipwide = FALSE
 	J.shipwide = enabled
+	update_ceiling_speakers()
 	update_listeners()
 
 #undef JUKEBOX_GAIN_STEP
 #undef JUKEBOX_OUT_GRACE
-#undef JUKEBOX_SHIPWIDE_GAIN
-#undef JUKEBOX_MAINT_GAIN

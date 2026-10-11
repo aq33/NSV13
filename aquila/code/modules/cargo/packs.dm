@@ -104,3 +104,13 @@
 	contains = list(/obj/vehicle/sealed/car/maluch,
 					/obj/item/key)
 	crate_name = "oryginalny Fiat 126p 'Maluch'"
+
+// AQUILA EDIT - amp stacki do jukeboxa
+/datum/supply_pack/service/amp_stacks
+	name = "Amp Stack Crate"
+	desc = "Dwa amp stacki - głośniki, które multitoolem podłącza się do jukeboxa albo radia. Do przykręcenia kluczem na miejscu."
+	cost = 1500
+	contains = list(/obj/machinery/jukebox_speaker/unanchored,
+					/obj/machinery/jukebox_speaker/unanchored)
+	crate_name = "amp stack crate"
+	crate_type = /obj/structure/closet/crate/large

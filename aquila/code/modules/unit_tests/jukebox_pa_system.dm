@@ -3,7 +3,7 @@
 #define TEST_ASSERT_EQUAL(a, b, message) if ((a) != (b)) { return Fail("Expected [isnull(a) ? "null" : a] to be equal to [isnull(b) ? "null" : b].[message ? " [message]" : ""]") }
 
 /// AQUILA - jukebox nagłośnienie: zamknięte drzwi tłumią, otwarte nie, amp stack tłumi przez ściany mocniej,
-/// podłączanie amp stacka i jego wyłączanie, sprzątanie połączeń po zniszczeniu jukeboxa
+/// podłączanie amp stacka i jego wyłączanie, wieszanie głośnika nagłośnienia, sprzątanie po zniszczeniu jukeboxa
 /datum/unit_test/jukebox_pa_system
 
 /datum/unit_test/jukebox_pa_system/Run()
@@ -43,17 +43,17 @@
 	var/expected_gain = jukebox.emitter_max_gain(jukebox.emitter) * speaker.max_gain
 	TEST_ASSERT(abs(jukebox.emitter_max_gain(speaker.emitter) - expected_gain) < 0.001, "Amp stack should be quieter than the jukebox")
 
-	// Nadawanie w maincie: odległość do najbliższego pomieszczenia (kratka obok to pokój testowy)
-	var/area/room = get_area(listener_turf)
-	var/area/maintenance/maint = new
-	maint.contents += listener_turf
-	SSjukeboxes.maint_distance_cache_time = 0
-	var/maint_distance = SSjukeboxes.broadcast_area_distance(listener_turf)
-	room.contents += listener_turf // pokój testowy musi zostać nietknięty dla kolejnych testów
-	TEST_ASSERT(!SSjukeboxes.is_broadcast_area(maint), "Maintenance should not hear the broadcast normally")
-	TEST_ASSERT(SSjukeboxes.is_broadcast_area(room), "A normal room should hear the broadcast")
-	TEST_ASSERT_EQUAL(maint_distance, 1, "Maintenance next to a room should be 1 tile from it")
-	SSjukeboxes.maint_distance_cache_time = 0
+	// Głośnik nagłośnienia: wisi tylko przy ścianie i nie nad zajętą kratką, gra głośnością nadawania
+	var/turf/corner = run_loc_floor_top_right // róg pokoju testowego, obok ściany
+	TEST_ASSERT(SSjukeboxes.ceiling_speaker_wall(corner, list()), "No wall found next to the test room corner")
+	TEST_ASSERT(!SSjukeboxes.ceiling_speaker_wall(source_turf, list()), "Speaker would hang over a dense jukebox")
+	var/obj/machinery/ceiling_speaker/ceiling = allocate(/obj/machinery/ceiling_speaker, corner)
+	TEST_ASSERT(ceiling in SSjukeboxes.ceiling_speakers, "Ceiling speaker did not register")
+	var/expected_ceiling_gain = JUKEBOX_SHIPWIDE_GAIN * jukebox.volume / 100
+	TEST_ASSERT(abs(jukebox.emitter_max_gain(ceiling.emitter) - expected_ceiling_gain) < 0.001, "Ceiling speaker should play at the broadcast volume")
+	TEST_ASSERT(!(ceiling.emitter in jukebox.active_emitters()), "Ceiling speaker plays without shipwide broadcast")
+	qdel(ceiling)
+	TEST_ASSERT(!(ceiling in SSjukeboxes.ceiling_speakers), "Destroyed ceiling speaker is still registered")
 
 	// Zniszczony jukebox odłącza amp stacki
 	qdel(jukebox)

@@ -19,5 +19,8 @@
 #define SPEECH_PHRASE_DELAY (0.6 SECONDS)
 /// Distant gunshots: heard beyond normal sound range up to this many tiles
 #define DISTANT_GUNSHOT_RANGE 45
-// Jukebox: do tylu kratek w głąb mainta słychać nadawanie na cały statek (przytłumione, z echem)
-#define JUKEBOX_MAINT_HEARING_RANGE 8
+// Jukebox: głośność (0-1, przy gałce 100%) głośników nagłośnienia przy nadawaniu na cały statek
+#define JUKEBOX_SHIPWIDE_GAIN 0.35
+// Jukebox: zasięg głośnika nagłośnienia i minimalny odstęp między nimi (zasięgi się nie nakładają, między nimi cichnie)
+#define JUKEBOX_CEILING_RANGE 7
+#define JUKEBOX_CEILING_SPACING 15

@@ -101,6 +101,10 @@
 	icon_state = (can_play() && jukebox?.yt_active) ? "amp_stack_actv" : "amp_stack"
 	return ..()
 
+/// Do skrzyni z cargo - luzem, do przykręcenia kluczem na miejscu
+/obj/machinery/jukebox_speaker/unanchored
+	anchored = FALSE
+
 /obj/item/circuitboard/machine/jukebox_speaker
 	name = "amp stack (Machine Board)"
 	icon_state = "service"
@@ -124,5 +128,5 @@
 	tech_tier = 0
 	starting_node = TRUE
 	display_name = "Nagłośnienie"
-	description = "Głośniki podłączane do jukeboxa."
-	design_ids = list("jukebox_speaker")
+	description = "Głośniki podłączane do jukeboxa i małe radio."
+	design_ids = list("jukebox_speaker", "jukebox_radio")

@@ -10,9 +10,10 @@ export const NtosJukeboxBroadcast = (props, context) => {
     <NtosWindow width={460} height={420}>
       <NtosWindow.Content scrollable>
         <NoticeBox info>
-          Jukebox nadający na cały statek słychać w każdym pomieszczeniu
-          poza maintami. Na raz może nadawać tylko jeden. Gracze przy innym
-          grającym jukeboxie słyszą ten bliższy.
+          Nadający jukebox gra przez głośniki nagłośnienia na korytarzach;
+          w pomieszczeniach i maintach słychać je przez ściany, ciszej.
+          Na raz może nadawać tylko jeden. Kto jest bliżej innego grającego
+          jukeboxa, słyszy ten głośniejszy.
         </NoticeBox>
         {!on_ship && (
           <NoticeBox danger>

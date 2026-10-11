@@ -1,4 +1,4 @@
-// AQUILA EDIT - program nagłośnienia: kapitan puszcza muzykę z wybranego jukeboxa na cały statek (poza maintami).
+// AQUILA EDIT - program nagłośnienia: kapitan puszcza muzykę z wybranego jukeboxa przez głośniki nagłośnienia na korytarzach.
 
 /datum/computer_file/program/jukebox_broadcast
 	filename = "pa_system"
@@ -6,7 +6,7 @@
 	category = PROGRAM_CATEGORY_CREW
 	program_icon_state = "generic"
 	program_icon = "volume-up"
-	extended_desc = "Puszcza muzykę z wybranego jukeboxa na cały statek, poza maintami. Wymaga dostępu kapitana."
+	extended_desc = "Puszcza muzykę z wybranego jukeboxa przez głośniki nagłośnienia na korytarzach statku. Wymaga dostępu kapitana."
 	requires_ntnet = TRUE
 	size = 4
 	required_access = list(ACCESS_CAPTAIN)
@@ -53,3 +53,9 @@
 			log_game("[key_name(usr)] [J.shipwide ? "enabled" : "disabled"] shipwide broadcast of [J] at [AREACOORD(J)]")
 			message_admins("[ADMIN_LOOKUPFLW(usr)] [J.shipwide ? "włączył(a)" : "wyłączył(a)"] nadawanie [J] na cały statek [ADMIN_JMP(J)]")
 			return TRUE
+
+/// Program nagłośnienia od razu na konsolach dowodzenia
+/obj/machinery/modular_computer/console/preset/command/install_programs()
+	. = ..()
+	var/obj/item/computer_hardware/hard_drive/hard_drive = cpu.all_components[MC_HDD]
+	hard_drive.store_file(new /datum/computer_file/program/jukebox_broadcast())
