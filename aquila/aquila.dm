@@ -37,6 +37,7 @@
 #include "code\controllers\subsystem\jukeboxes.dm"
 #include "code\controllers\subsystem\miasma.dm"
 #include "code\controllers\subsystem\processing\turf_fire.dm"
+#include "code\controllers\subsystem\timer.dm"
 #include "code\controllers\subsystem\vote.dm"
 #include "code\datum\wires\wires_jukebox.dm"
 #include "code\datums\components\nanites.dm"
