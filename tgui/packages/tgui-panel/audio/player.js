@@ -34,16 +34,30 @@ const GAIN_RAMP_STEP = 0.01;
 const GAIN_RAMP_INTERVAL = 25;
 // Plain element: muffled music is this much quieter
 const PLAIN_MUFFLE_VOLUME = 0.4;
-// Plain element echo copies: delay (s) and level relative to the music
-// (one copy - every copy is another download of the stream). The delay is
-// short so it blends in as room reverb instead of sounding like a second song.
+// Plain element echo copies ("taps"), like reflections in a big room: an
+// early, louder one and a later, quieter one. Delays are in seconds at
+// echo 0 and grow up to (1 + TAP_DELAY_GROWTH) times with distance, so far
+// away sounds like a bigger hall. Every copy is another download of the stream.
 const PLAIN_TAPS = [
-  { delay: 0.04, level: 0.5 },
+  { delay: 0.03, level: 0.45 },
+  { delay: 0.07, level: 0.25 },
 ];
+const TAP_DELAY_GROWTH = 1;
 // How much the direct sound is lowered at full echo
 const PLAIN_ECHO_DUCK = 0.2;
-// How far an echo copy may drift before it gets re-seeked (s)
-const TAP_MAX_DRIFT = 0.07;
+// Copies are kept in place by nudging their playback rate (no audible jumps);
+// only a drift above TAP_MAX_DRIFT (s) seeks. A copy out of place is silent
+// (see TAP_UNLOCK_DRIFT), so it catches up hard with TAP_CATCHUP_NUDGE; once
+// heard, it is corrected gently.
+const TAP_MAX_DRIFT = 0.5;
+const TAP_FAST_DRIFT = 0.02;
+const TAP_CATCHUP_NUDGE = 0.08;
+const TAP_RATE_GAIN = 0.5;
+const TAP_MAX_RATE_NUDGE = 0.02;
+const TAP_SYNC_INTERVAL = 100;
+// A copy is heard only once it is within TAP_FAST_DRIFT of its place, and goes
+// silent again if it drifts further than this
+const TAP_UNLOCK_DRIFT = 0.06;
 
 const AudioContextClass = window.AudioContext || window.webkitAudioContext;
 
@@ -95,7 +109,7 @@ export class AudioPlayer {
     this.fx = null;
     this.fxBroken = !AudioContextClass;
     this.taps = [];
-    this.tapInterval = setInterval(() => this.syncTaps(), 250);
+    this.tapInterval = setInterval(() => this.syncTaps(), TAP_SYNC_INTERVAL);
     // AQUILA EDIT END
     // Check every second to stop the playback at the right time
     this.playbackInterval = setInterval(() => {
@@ -290,7 +304,8 @@ export class AudioPlayer {
     this.node.volume = clamp01(volume * dry);
     const mix = this.tapMix();
     for (let tap of this.taps) {
-      tap.node.volume = clamp01(volume * mix * tap.level);
+      // a copy out of place sounds like a second song - keep it silent until it is
+      tap.node.volume = tap.locked ? clamp01(volume * mix * tap.level) : 0;
     }
   }
 
@@ -315,6 +330,9 @@ export class AudioPlayer {
     if (!this.taps.length) {
       for (let config of PLAIN_TAPS) {
         const tap = { ...config, node: createAudioElement(), url: null };
+        // rate nudges should not be time-stretched (that smears the sound)
+        tap.node.preservesPitch = false;
+        tap.node.webkitPreservesPitch = false;
         tap.node.addEventListener('canplaythrough', () => {
           tap.ready = true;
         });
@@ -326,20 +344,40 @@ export class AudioPlayer {
       if (tap.url !== this.url) {
         tap.url = this.url;
         tap.ready = false;
+        tap.locked = false;
         tap.node.src = this.url;
         continue;
       }
       if (!tap.ready) {
         continue;
       }
-      const target = this.node.currentTime - tap.delay * rate;
+      const delay = tap.delay * (1 + this.tapMix() * TAP_DELAY_GROWTH);
+      const target = this.node.currentTime - delay * rate;
       if (target < 0) {
         continue;
       }
-      tap.node.playbackRate = rate;
-      if (tap.node.paused
-        || Math.abs(tap.node.currentTime - target) > TAP_MAX_DRIFT) {
+      // > 0: the copy is ahead of where it should be
+      const drift = tap.node.currentTime - target;
+      if (Math.abs(drift) <= TAP_FAST_DRIFT) {
+        tap.locked = true;
+      }
+      else if (Math.abs(drift) > TAP_UNLOCK_DRIFT) {
+        tap.locked = false;
+      }
+      if (tap.node.paused || Math.abs(drift) > TAP_MAX_DRIFT) {
         tap.node.currentTime = target;
+        tap.node.playbackRate = rate;
+      }
+      else if (!tap.locked) {
+        // silent: catch up as fast as possible, slowing near the target
+        const nudge = Math.max(-TAP_CATCHUP_NUDGE,
+          Math.min(TAP_CATCHUP_NUDGE, -drift));
+        tap.node.playbackRate = rate * (1 + nudge);
+      }
+      else {
+        const nudge = Math.max(-TAP_MAX_RATE_NUDGE,
+          Math.min(TAP_MAX_RATE_NUDGE, -drift * TAP_RATE_GAIN));
+        tap.node.playbackRate = rate * (1 + nudge);
       }
       if (tap.node.paused) {
         tap.node.play();
