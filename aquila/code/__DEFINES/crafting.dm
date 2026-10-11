@@ -10,11 +10,7 @@
 ///If the structure is only "used" i.e. it checks to see if it's nearby and allows crafting, but doesn't delete it
 #define CRAFTING_STRUCTURE_USE 0
 
-//stack recipe placement check types
-/// Checks if there is an object of the result type in any of the cardinal directions
-#define STACK_CHECK_CARDINALS (1<<0)
-/// Checks if there is an object of the result type within one tile
-#define STACK_CHECK_ADJACENT (1<<1)
+// STACK_CHECK_CARDINALS i STACK_CHECK_ADJACENT są w code/__DEFINES/misc.dm (jako bity)
 
 //---- Defines for var/crafting_flags
 ///If this craft must be learned before it becomes available

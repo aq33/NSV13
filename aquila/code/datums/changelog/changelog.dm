@@ -84,7 +84,7 @@ GLOBAL_DATUM(changelog_tgui, /datum/changelog)
 	SSassets.transport.register_asset(item_filename, file("html/changelogs/archive/" + item_filename))
 
 /datum/asset/changelog_item/send(client)
-	if(!item_filename)
+	if(!..() || !item_filename)
 		return
 	. = SSassets.transport.send_assets(client, item_filename)
 

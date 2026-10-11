@@ -81,14 +81,16 @@
 		if(!machines[machinery_path])//We don't care for volume with machines, just if one is there or not
 			return FALSE
 
-	for(var/required_structure_path, needed_amount in R.structures)
+	for(var/required_structure_path in R.structures)
+		var/needed_amount = R.structures[required_structure_path]
 		// Check for the presence of the required structure. Allow for subtypes to be used if not blacklisted
-		for(var/structure_path, structure_amount in structures)
+		for(var/structure_path in structures)
 			if(!ispath(structure_path, required_structure_path) || R.blacklist.Find(structure_path))
 				continue
 
-			needed_amount -= structures[required_structure_path]
-			requirements_list[required_structure_path] = structure_amount // Store an instance of what we are using for check_requirements
+			var/list/found_structures = structures[structure_path]
+			needed_amount -= length(found_structures)
+			requirements_list[required_structure_path] = found_structures // Store an instance of what we are using for check_requirements
 			if(needed_amount <= 0)
 				break
 

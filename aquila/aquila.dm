@@ -64,7 +64,6 @@
 #include "code\datums\diseases\transformation.dm"
 #include "code\datums\action.dm"
 #include "code\datums\ai_laws.dm"
-#include "code\datums\components\crafting\crafting.dm"
 #include "code\datums\components\storage\concrete\pockets.dm"
 #include "code\datums\dna.dm"
 #include "code\datums\emote_names.dm"
