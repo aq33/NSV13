@@ -197,6 +197,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<b>Gender:</b> <a href='byond://?_src_=prefs;preference=gender'>[dispGender]</a><BR>"
 				dat += "<b>Body Model:</b><a href='byond://?_src_=prefs;preference=body_model'>[active_character.features["body_model"] == MALE ? "Masculine" : "Feminine"]</a><BR>"
 			dat += "<b>Age:</b> <a href='byond://?_src_=prefs;preference=age;task=input'>[active_character.age]</a><BR>"
+			dat += voice_pitch_pref_html() // AQ EDIT - voice pitch, aquila/code/modules/client/preferences.dm
 
 			dat += "<b>Special Names:</b><BR>"
 			var/old_group
@@ -1566,6 +1567,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					active_character.real_name = active_character.pref_species.random_name(active_character.gender, 1)
 				if("age")
 					active_character.age = rand(AGE_MIN, AGE_MAX)
+				if("voice_pitch") // AQ EDIT
+					active_character.features["voice_pitch"] = random_voice_pitch()
 				if("hair_color")
 					active_character.hair_color = random_short_color()
 				if("hair_style")
@@ -1645,6 +1648,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_age)
 						active_character.age = max(min( round(text2num(new_age)), AGE_MAX),AGE_MIN)
 
+				if("voice_pitch") // AQ EDIT
+					ask_voice_pitch(user)
+				if("voice_pitch_test") // AQ EDIT
+					play_voice_pitch_test(user)
 				if("hair_color")
 					var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference","#" + active_character.hair_color) as color|null
 					if(new_hair)

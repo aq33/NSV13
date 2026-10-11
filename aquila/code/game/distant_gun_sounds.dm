@@ -1,0 +1,27 @@
+/// Distant, low-passed copies of gun sounds (filtered offline, 450 Hz), keyed by the original path as text
+GLOBAL_LIST_INIT(distant_gun_sounds, list(
+	"sound/weapons/gunshot.ogg" = 'aquila/sound/weapons/distant/gunshot.ogg',
+	"sound/weapons/gunshot_smg.ogg" = 'aquila/sound/weapons/distant/gunshot_smg.ogg',
+	"sound/weapons/smgshot.ogg" = 'aquila/sound/weapons/distant/smgshot.ogg',
+	"sound/weapons/rifleshot.ogg" = 'aquila/sound/weapons/distant/rifleshot.ogg',
+	"sound/weapons/shotgunshot.ogg" = 'aquila/sound/weapons/distant/shotgunshot.ogg',
+	"sound/weapons/sniper_shot.ogg" = 'aquila/sound/weapons/distant/sniper_shot.ogg',
+	"sound/weapons/deagleshot.ogg" = 'aquila/sound/weapons/distant/deagleshot.ogg',
+	"sound/weapons/leveractionshot.ogg" = 'aquila/sound/weapons/distant/leveractionshot.ogg',
+	"sound/weapons/revolver38shot.ogg" = 'aquila/sound/weapons/distant/revolver38shot.ogg',
+	"sound/weapons/revolver357shot.ogg" = 'aquila/sound/weapons/distant/revolver357shot.ogg',
+	"nsv13/sound/weapons/glock.ogg" = 'aquila/sound/weapons/distant/glock.ogg',
+	"sound/weapons/laser.ogg" = 'aquila/sound/weapons/distant/laser.ogg',
+	"sound/weapons/laser3.ogg" = 'aquila/sound/weapons/distant/laser3.ogg',
+	"sound/weapons/lasercannonfire.ogg" = 'aquila/sound/weapons/distant/lasercannonfire.ogg',
+	"sound/weapons/pulse.ogg" = 'aquila/sound/weapons/distant/pulse.ogg',
+	"sound/weapons/pulse3.ogg" = 'aquila/sound/weapons/distant/pulse3.ogg',
+	"sound/weapons/taser.ogg" = 'aquila/sound/weapons/distant/taser.ogg',
+	"sound/weapons/taser2.ogg" = 'aquila/sound/weapons/distant/taser2.ogg',
+	"sound/weapons/beam_sniper.ogg" = 'aquila/sound/weapons/distant/beam_sniper.ogg',
+	"sound/weapons/ionrifle.ogg" = 'aquila/sound/weapons/distant/ionrifle.ogg',
+	"sound/weapons/marauder.ogg" = 'aquila/sound/weapons/distant/marauder.ogg',
+	"sound/weapons/grenadelaunch.ogg" = 'aquila/sound/weapons/distant/grenadelaunch.ogg',
+	"sound/weapons/rocketlaunch.ogg" = 'aquila/sound/weapons/distant/rocketlaunch.ogg',
+	"sound/weapons/kenetic_accel.ogg" = 'aquila/sound/weapons/distant/kenetic_accel.ogg'
+))

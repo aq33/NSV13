@@ -1,0 +1,6 @@
+/// Feeding paper into a computer's printer (BeeStation #14383)
+/obj/item/computer_hardware/printer/try_insert(obj/item/I, mob/living/user = null)
+	var/is_paper = istype(I, /obj/item/paper)
+	. = ..()
+	if(. && is_paper)
+		playsound(src, 'aquila/sound/machines/computer/paper_insert.ogg', 40, TRUE)
