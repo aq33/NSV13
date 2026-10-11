@@ -2,8 +2,7 @@
 	set name = "Preferencje Gry"
 	set category = "Preferences"
 	set desc = "Open Game Preferences Window"
-	prefs.current_tab = 1
-	prefs.ShowChoices(usr)
+	prefs.open_game_menu(usr) // AQ EDIT - port BeeStation #8776: okno PreferencesMenu zamiast ShowChoices
 
 /client/verb/toggle_ghost_ears()
 	set name = "Pokaż/Ukryj GhostEars"

@@ -120,7 +120,7 @@
 		relevant_cap = max(hpc, epc)
 
 	if(href_list["show_preferences"])
-		client.prefs.ShowChoices(src)
+		client.prefs.open_character_menu(src) // AQ EDIT - port BeeStation #8776: okno PreferencesMenu zamiast ShowChoices
 		return 1
 
 	if(href_list["ready"])

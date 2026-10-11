@@ -111,6 +111,9 @@ export type LoadoutGear = {
   allowed_roles: string[] | null;
   is_equippable: BooleanLike;
   multi_purchase: BooleanLike;
+  // AQUILA
+  donator_ckey?: string | null;
+  can_preview?: BooleanLike;
 };
 
 export type LoadoutCategory = {
@@ -206,6 +209,9 @@ export type PreferencesMenuData = {
   equipped_gear: string[];
   metacurrency_balance: number;
   is_donator: BooleanLike;
+  // AQUILA
+  user_ckey?: string;
+  preview_gear?: string | null;
 
   antag_bans?: string[];
   antag_living_playtime_hours_left?: Record<string, number>;
