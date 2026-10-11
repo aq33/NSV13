@@ -97,6 +97,12 @@
 					music_extra_data["end"] = data["end_time"]
 					music_extra_data["link"] = data["webpage_url"]
 					music_extra_data["title"] = data["title"]
+					// AQ EDIT START - port BeeStation #9249: more song info for the Now Playing widget
+					music_extra_data["duration"] = DisplayTimeText(data["duration"] * 1 SECONDS)
+					music_extra_data["artist"] = data["artist"]
+					music_extra_data["upload_date"] = data["upload_date"]
+					music_extra_data["album"] = data["album"]
+					// AQ EDIT END
 
 					var/res = alert(usr, "Show the title of and link to this song to the players?\n[title]",, "No", "Yes", "Cancel")
 					switch(res)
@@ -104,6 +110,15 @@
 							music_extra_data["title"] = data["title"]
 							music_extra_data["link"] = data["webpage_url"]
 							to_chat(world, "<span class='boldannounce'>An admin played: [webpage_url]</span>")
+						// AQ EDIT START - port BeeStation #9249: "No" used to still show the title and link.
+						// The widget hides fields by these exact strings, keep them as in Bee
+						if("No")
+							music_extra_data["link"] = "Song Link Hidden"
+							music_extra_data["title"] = "Song Title Hidden"
+							music_extra_data["artist"] = "Song Artist Hidden"
+							music_extra_data["upload_date"] = "Song Upload Date Hidden"
+							music_extra_data["album"] = "Song Album Hidden"
+						// AQ EDIT END
 						if("Cancel")
 							return
 

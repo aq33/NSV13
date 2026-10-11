@@ -78,32 +78,7 @@
 			// ===== NON CONSTANT TABS (Tab names which can change) =====
 			// ===== LISTEDS TURFS =====
 			if(listed_turf && sanitize(listed_turf.name) == selected_tab)
-				client.stat_update_mode = STAT_MEDIUM_UPDATE
-				var/list/overrides = list()
-				for(var/image/I in client.images)
-					if(I.loc && I.loc.loc == listed_turf && I.override)
-						overrides += I.loc
-				tab_data[REF(listed_turf)] = list(
-					text="[listed_turf.name]",
-					type=STAT_ATOM
-				)
-				var/sanity = MAX_ICONS_PER_TILE
-				for(var/atom/A in listed_turf)
-					if(!A.mouse_opacity)
-						continue
-					if(A.invisibility > see_invisible)
-						continue
-					if(overrides.len && (A in overrides))
-						continue
-					if(A.IsObscured())
-						continue
-					sanity --
-					tab_data[REF(A)] = list(
-						text="[A.name]",
-						type=STAT_ATOM
-					)
-					if(sanity < 0)
-						break
+				listed_turf.render_stat_information(client, tab_data) // AQ EDIT - port BeeStation #9655, aquila/code/modules/mob/mob_stat.dm
 			if(mind)
 				tab_data += get_spell_stat_data(mind.spell_list, selected_tab)
 			tab_data += get_spell_stat_data(mob_spell_list, selected_tab)
@@ -169,6 +144,7 @@
 		tab_data["Players Playing/Connected"] = GENERATE_STAT_TEXT("[get_active_player_count()]/[GLOB.clients.len]")
 	if(SSticker.round_start_time)
 		tab_data["Security Level"] = GENERATE_STAT_TEXT("[capitalize(get_security_level())]")
+	aquila_reboot_stat(tab_data) // AQ EDIT - port BeeStation #13727: reboot timer
 
 	tab_data["divider_3"] = GENERATE_STAT_DIVIDER
 
@@ -261,18 +237,34 @@
 		return
 	switch(button_pressed)
 		if("browsetickets")
+			if(!client.holder) // AQ EDIT - port BeeStation #9655: rights checks
+				return
 			GLOB.ahelp_tickets.BrowseTickets(src)
 		if("browseinterviews")
+			if(!check_rights(R_ADMIN)) // AQ EDIT
+				return
 			GLOB.interviews.BrowseInterviews(src)
 		if("open_interview")
+			if(!check_rights(R_ADMIN)) // AQ EDIT
+				return
 			var/datum/interview/I = GLOB.interviews.interview_by_id(text2num(params["id"]))
 			if (I && client.holder)
 				I.ui_interact(src)
 		if("open_ticket")
+			if(!client.holder) // AQ EDIT
+				return
 			var/ticket_id = text2num(params["id"])
 			var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 			if(AH && client.holder)
 				AH.ui_interact(src)
+		// AQ EDIT START - port BeeStation #9655: claim button next to tickets in the Tickets tab
+		if("claim_ticket")
+			if(!check_rights(R_ADMIN))
+				return
+			var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(text2num(params["id"]))
+			if(AH && client.holder)
+				AH.Claim()
+		// AQ EDIT END
 		if("atomClick")
 			var/atomRef = params["ref"]
 			var/atom/atom_actual = locate(atomRef)
@@ -312,13 +304,19 @@
 			var/verb_name = params["verb"]
 			winset(client, null, "command=[replacetext(verb_name, " ", "-")]")
 		if("sdql2debug")
+			if(!check_rights(R_DEBUG)) // AQ EDIT
+				return
 			client.debug_variables(GLOB.sdql2_queries)
 		if("sdql2delete")
+			if(!check_rights(R_DEBUG)) // AQ EDIT
+				return
 			var/query_id = params["qid"]
 			var/datum/SDQL2_query/query = sdqlQueryByID(text2num(query_id))
 			if(query)
 				query.delete_click()
 		if("sdql2toggle")
+			if(!check_rights(R_DEBUG)) // AQ EDIT
+				return
 			var/query_id = params["qid"]
 			var/datum/SDQL2_query/query = sdqlQueryByID(text2num(query_id))
 			if(query)

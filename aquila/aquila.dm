@@ -286,6 +286,7 @@
 #include "code\modules\mob\dead\new_player\sprite_accessories.dm"
 #include "code\modules\mob\dead\observer\observer.dm"
 #include "code\modules\mob\emote_sounds.dm"
+#include "code\modules\mob\mob_stat.dm"
 #include "code\modules\mob\living\carbon\alien\alien.dm"
 #include "code\modules\mob\living\carbon\carbon.dm"
 #include "code\modules\mob\living\carbon\emote.dm"

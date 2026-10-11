@@ -3,7 +3,7 @@
 	desc = "Use this to communicate with your fellow blood brother(s)."
 	icon = 'icons/obj/radio.dmi'
 	icon_state = "headset"
-	var/implant_colour = "#ff0000"
+	var/span_implant_colour = "cfc_redpurple" // AQ EDIT - port BeeStation #9908: chat class, not a hex color
 	var/list/linked_implants // All other implants that this communicates to
 
 /obj/item/implant/bloodbrother/Initialize(mapload)
@@ -21,8 +21,8 @@
 			return
 		input = imp_in.treat_message_min(input)
 
-		var/my_message = "<font color=\"[implant_colour]\"><b><i>[imp_in.mind.name]:</i></b></font> [input]" //add sender, color source with syndie color
-		var/ghost_message = "<font color=\"[implant_colour]\"><b><i>[imp_in.mind.name] -> Blood Brothers:</i></b></font> [input]"
+		var/my_message = "<span class='[span_implant_colour]'><b><i>[imp_in.mind.name]:</i></b></span> [input]" //add sender, color source with syndie color
+		var/ghost_message = "<span class='[span_implant_colour]'><b><i>[imp_in.mind.name] -> Blood Brothers:</i></b></span> [input]"
 
 		to_chat(imp_in, my_message) // Sends message to the user
 		for(var/obj/item/implant/bloodbrother/i in linked_implants) // Sends message to all linked implnats
