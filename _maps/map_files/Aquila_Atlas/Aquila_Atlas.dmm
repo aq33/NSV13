@@ -367,6 +367,10 @@
 /obj/item/kitchen/rollingpin,
 /turf/open/floor/durasteel,
 /area/crew_quarters/kitchen)
+"aK" = (
+/mob/living/simple_animal/hostile/retaliate/wojtek,
+/turf/open/floor/monotile/dark,
+/area/nsv/weapons)
 "aL" = (
 /obj/machinery/conveyor/slow{
 	dir = 1;
@@ -54893,7 +54897,7 @@ eY
 QU
 mz
 mP
-mP
+aK
 mP
 Te
 SE

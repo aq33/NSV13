@@ -16,6 +16,10 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plasteel,
 /area/science/mixing)
+"ac" = (
+/mob/living/simple_animal/hostile/retaliate/wojtek,
+/turf/open/floor/carpet/orange,
+/area/nsv/crew_quarters/heads/maa)
 "af" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -52180,7 +52184,7 @@ XO
 ZO
 pM
 gG
-gG
+ac
 gG
 pz
 zQ
