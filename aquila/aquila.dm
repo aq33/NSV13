@@ -47,6 +47,7 @@
 #include "code\controllers\subsystem\screentips.dm"
 #include "code\controllers\subsystem\vote.dm"
 #include "code\datum\wires\wires_jukebox.dm"
+#include "code\datums\changelog\changelog.dm"
 #include "code\datums\chat_payload.dm"
 #include "code\datums\components\nanites.dm"
 #include "code\datums\components\uplink.dm"

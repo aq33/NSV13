@@ -1,0 +1,254 @@
+2026-10-04:
+  Joker66613:
+    - rscadd: >-
+        Dodano pupę jako narząd (port z HippieStation13) z ukrytą kieszenią oraz
+        warianty xeno i bluespace.
+    - rscadd: >-
+        Dodano emotkę *superfart, a *fart wymaga teraz pupy i ma efekty zależne
+        od zawartości kieszeni.
+    - rscadd: >-
+        Dodano buttbota, replikę kwiatu-pupy, fartium oraz zszywacz (także do
+        zamykania trumien).
+    - imageadd: >-
+        Dodano sprite'y pupy, buttbota, kwiatu-pupy, zszywacza, nakładkę trumny
+        i efekt błyskawicy.
+    - soundadd: Dodano dźwięki pierdnięć, zszywacza i grzmotu.
+  sh4dow321:
+    - code_imp: >-
+        Naprawiono test campaign_reset na CI oraz brakujący znak nowej linii w
+        aquila.dm.
+    - bugfix: >-
+        Wrogie floty nie pojawiają się już w systemie startowym (Argo) zaraz po
+        każdym restarcie serwera. Zajęcie systemu przez flotę nie jest już
+        zapisywane na kolejną rundę.
+    - bugfix: >-
+        Naprawiono opcję „Hard Restart + New Campaign”, która nie restartowała
+        serwera.
+    - code_imp: Naprawiono niestabilny test jednostkowy aquila_powersink_apc_drain.
+    - rscadd: >-
+        Rewenanci widzą duchy, mogą krążyć wokół obiektów obok siebie i mają
+        zaklęcie powrotu na stację.
+    - rscadd: >-
+        Nowy cel zdrajcy: zniszczenie wszystkich maszyn danego typu w wybranych
+        obszarach.
+    - rscadd: Dodano operację naprawy uszu.
+    - rscadd: Dodano dakimakury (kontrabanda w automacie z zabawkami Donksoft).
+    - bugfix: >-
+        Naprawiono funkcje zależne od zawodu (składy, ograniczenia antagonistów,
+        skalowanie ochrony, przedmioty i konta przypisane do działów), które
+        przestały działać po przetłumaczeniu nazw zawodów.
+    - bugfix: >-
+        Ratownik Medyczny znowu dostaje właściwą rangę; uzupełniono brakujące
+        wpisy w plikach rang.
+    - server: >-
+        Naprawiono workflowy GitHuba do etykiet PR i generowania changelogów na
+        tym forku.
+2026-10-05:
+  EvilDragonfiend, HowToLoLu(sprite):
+    - rscadd: Konsola genetyczna może drukować DNA nullifiery.
+    - tweak: Ręczny skaner sekwencji pokazuje stabilność genetyczną.
+    - imageadd: Sprite DNA nullifiera.
+  Joker66613:
+    - bugfix: >-
+        Wampiry nie są już losowane wbrew preferencjom i banom, przycisk admina
+        "Make Vampire" działa
+    - bugfix: >-
+        Ciche ssanie krwi jest naprawdę ciche, a po 150 jednostkach krwi wampir
+        traci możliwość cichego ssania
+    - bugfix: >-
+        Holy water blokuje revive wampira, Bat Form pobiera krew, poprawki
+        Lilith's Pact i nietoperzy
+    - balance: Nowe progi odblokowań zdolności wampira, szybszy nietoperz
+    - balance: >-
+        Usunięto Diseased Touch i Shapeshift; płaszcz wampira daje unik i
+        regenerację krwi zamiast pancerza
+    - balance: >-
+        Rejuvenate kosztuje 20 krwi i leczy przez 5 sekund, pasywka regeneracji
+        leczy stale
+    - balance: Ochrona oczu osłabia Gaze i Hypnotize zamiast je blokować
+    - balance: Revive wampira można anulować, cooldown liczy się po wskrzeszeniu
+    - balance: Traitor+Vampire może wylosować się od 15 graczy
+    - rscdel: >-
+        Usunięto przycisk "How to suck blood 101", poradnik jest w wiadomości
+        powitalnej
+2026-10-06:
+  Joker66613:
+    - rscadd: >-
+        GR-3YT1.DE Locker Exosuit - nowy mech dostępny do wytworzenia z poziomu
+        menu craftingu
+    - rscadd: >-
+        wyposażenie dla nowego mecha, także dostępne do wytworzenia z poziomu
+        menu craftingu
+    - rscadd: Improvised Laser Rifle do wytworzenia w craftingu
+    - rscadd: port yogowych bluespace pipes, czyli teleportujące się rurki
+    - rscadd: 'Morph ma nowe cele: zjedz określoną liczbę rzeczy i/lub zwłok'
+    - rscadd: Morph widzi w status tabie, ile rzeczy i zwłok zjadł
+    - bugfix: Morph dostaje powitanie ze swoimi celami
+    - rscadd: Podłogi mogą się palić — pożary bez zamieniania stacji w piekło plazmy
+    - tweak: Miotacz ognia i mołotowy używają nowego systemu ognia
+    - tweak: Anomalia piroklastyczna podpala okolicę
+    - tweak: Heavy laser, pulse i amunicja zapalająca podpalają podłogi
+    - tweak: Kratki są odporniejsze na ogień
+    - soundadd: Nowe dźwięki miotacza ognia
+    - imageadd: Sprite'y ognia na podłodze
+    - rscadd: Ślady zależą teraz od butów i nóg (ślady stóp, łap, pazurów)
+    - bugfix: Naprawiono przeciekanie nakładki krwi z przedmiotów na inne obiekty
+2026-10-07:
+  Joker66613:
+    - rscadd: 'Wraca miazma: zwłoki i gibsy gniją, kwiat trupi wydziela smród'
+    - rscadd: Pierdy wypuszczają odrobinę miazmy
+    - balance: Miazma jest wyraźnie mniej opłacalna przy eksporcie i do badań
+    - code_imp: Nowy, dużo lżejszy system emisji miazmy (SSmiasma)
+    - code_imp: Dodano CLAUDE.md z wytycznymi dla Claude Code.
+  'Produkcja: Ewa, Port: sh4dow321':
+    - imageadd: >-
+        Security dostało spritework Polskiej Policji (Kosmobagiety): mundury,
+        kurtki, kamizelki, kaski, czapki, okulary, pasy, plecaki, ID, tablety,
+        radia, szafki i SecDrobe
+    - imageadd: Żandarm nosi mundur i pancerz w barwach policji
+    - rscadd: >-
+        Nowe nakrycia głowy security: alternatywna czapka, czapka Naczelnika,
+        bandana, furażerka i czapka oficerska
+    - tweak: >-
+        Komendant zaczyna w mundurze policyjnym i kurtce policyjnej (te same
+        statystyki)
+  Quartofel:
+    - rscadd: >-
+        Pistolety Donksoft strzelają teraz plastikowymi i metalowymi kulkami, a
+        granaty na kulki pokazują, ile zostało amunicji.
+    - rscadd: >-
+        Zabawkowy chaingun LCG-4-BB „Ratat” na kulki dla mechów w automacie
+        Donksoft.
+    - rscadd: Zabawkowe repliki strojów ERT w automacie Donksoft.
+    - tweak: >-
+        Zabawki Syndykatu przeniesione do kontrabandy automatu Donksoft, ceny
+        automatu podniesione.
+    - balance: Disabler dla mechów strzela szybciej.
+    - imageadd: Nowe sprite'y kulek, granatów na kulki i chaingunu dla mechów.
+    - soundadd: Dźwięk zabawkowego chaingunu.
+    - bugfix: Automat Donksoft zbudowany z płytki pokazuje już ikonki produktów.
+  Theos:
+    - rscadd: Emotka *cry pokazuje łzy na twarzy.
+    - rscadd: Krojenie cebuli bez osłony oczu wyciska łzy.
+    - imageadd: Dodano sprite łez.
+  ToGWtF:
+    - rscadd: >-
+        Dodano rower stacjonarny, który generuje prąd z wysiłku przypiętej osoby
+        (tylko spawn adminowski).
+  Wallem:
+    - rscadd: >-
+        Konsola ksenobiologii wciąga i wypluwa szlamy, małpy i mikstury rurą
+        zamiast je teleportować.
+    - rscadd: >-
+        Konsola ksenobiologii ma HUD z liczbą małp, szlamów i załadowaną
+        miksturą.
+    - imageadd: >-
+        Recykler małp dostał fioletowe paski, żeby nie mylił się z maszynką do
+        mięsa.
+    - soundadd: Dźwięki ssania i wystrzału rury.
+  '` ... `/:cl:` ze zmergowanego PR-a, zapisuje `html/changelogs/AutoChangeLog-pr-N.yml`, kompiluje `html/changelog.html` i pushuje jednym commitem `[ci skip]`. Dodatkowo zrobiłem backfill: wpisy ze wszystkich zmergowanych PR-ów #1–#353, które miały blok `:cl:`, są już skompilowane w tym PR (84 wpisy z ostatnich 9 tygodni widoczne w grze, starsze tylko w cache `.all_changelog.yml`). Stare pliki `AutoChangeLog-pr-9..20` pochodziły z PR-ów forka NSV13-revive, nie z tego repo, więc weszły do kompilacji pod własnymi datami, a numery aq33 dostały właściwe wpisy.':
+    - tweak: >-
+        Changelog w grze znów pokazuje zmiany z ostatnich tygodni i aktualizuje
+        się automatycznie po każdym merge'u.
+  mrmanlikesbt (BeeStation), Joker66613:
+    - rscadd: >-
+        Smartwires: kable same łączą się z sąsiednimi kablami tego samego
+        koloru, a węzły tworzą się automatycznie na końcówkach i pod maszynami.
+    - rscadd: >-
+        Zwój kabla ma menu kolorów i kabel omni, a kable między pokładami łączą
+        się same.
+    - rscdel: Usunięto RCL i warstwownik kabli dla mechów.
+    - tweak: Pętlę (noose) robi się teraz w menu craftingu.
+    - imageadd: Nowe ikony kabli i zwoju z BeeStation.
+    - soundadd: Dźwięk buczenia kabla między pokładami.
+    - code_imp: Mapy przerobione na nowe kable skryptem tools/smartwires/convert.py.
+  sh4dow321:
+    - rscadd: >-
+        Added a Tesla Volume slider under Volume Controls in the Game
+        Preferences tab.
+2026-10-09:
+  Joker66613:
+    - admin: >-
+        Admini dostają komunikat na czacie, gdy ktoś nie może dołączyć do
+        serwera (whitelista, ban, limit graczy itp.).
+    - rscadd: >-
+        Nowy typ budowy ciała „Polak” dla ludzi, do odblokowania za 5000
+        Aquilosów w loadoucie (OOC).
+    - imageadd: Sprite brzucha dla typu „Polak”.
+    - bugfix: >-
+        Pożary na podłogach nie palą się już w nieskończoność i
+        rozprzestrzeniają się wolniej
+    - bugfix: >-
+        Chrono Legionnaire rozpoznaje imiona z polskimi znakami już od startu
+        serwera.
+    - rscadd: Panel emotek w zakładce IC (wyszukiwarka i filtry)
+    - rscadd: >-
+        Nowe emotki *smirk i *tilt, animacje dla *jump, *shiver, *sway, *tremble
+        i *twitch
+    - tweak: >-
+        Emotki widoczne wymagają wzroku, słyszalne słuchu; głusi widzą emotki
+        słyszalne i widoczne
+    - tweak: /me pozwala wybrać emotkę słyszalną, widoczną lub obie
+    - soundadd: >-
+        Dźwięki dla *giggle, *collapse, *surrender, *inhale, *wing, *boop,
+        emotek MMI i slime'ów, nowy *whistle, dźwięk śmierci w masce SecHailer
+    - tweak: Wszystkie emotki mają polskie nazwy i komunikaty
+2026-10-10:
+  Joker66613:
+    - rscadd: >-
+        Port Newfood z BeeStation: setki nowych potraw na nowym systemie
+        jedzenia.
+    - rscadd: >-
+        Płyta grillowa i piec w kuchni. Mięso smaży się na płycie, pizze, ciasta
+        i chleb piecze się w piecu.
+    - rscadd: Jedzenie zostawione na podłodze gnije i przyciąga mrówki.
+    - rscadd: Jedzenie zrobione przez kucharza daje buffy.
+    - rscadd: Płyta i piec w kuchniach statków z rotacji.
+    - tweak: Krojenie, wałkowanie i suszenie jedzenia działa na nowych zasadach.
+    - imageadd: Nowe sprite'y jedzenia i maszyn kuchennych z BeeStation.
+    - bugfix: 'Poprawione błędy Bee: mrówki, gorący olej, ikona buffa, moździerz.'
+    - bugfix: Zniszczenie pagera oddziału nie powoduje już błędu.
+    - bugfix: Kapelusz spadający z wyższego pokładu nie powoduje już błędu.
+    - bugfix: Dywan niszczony eksplozją nie jest już usuwany dwukrotnie.
+    - bugfix: Masowe niszczenie rur nie psuje już sieci rur.
+    - bugfix: >-
+        Pragnienie na starcie rundy jest teraz losowe (jak głód) zamiast zawsze
+        na progu odwodnienia, więc krew od razu się regeneruje.
+    - bugfix: Popuszczenie w spodnie nie resetuje już pragnienia.
+    - rscadd: >-
+        Reklamówki z Biedronki i Lidla oraz sandały z białymi skarpetkami można
+        kupić w loadoucie za Aquilosy.
+    - rscadd: >-
+        Nowa kategoria loadoutu „Polska bielizna”: polskie koszulki,
+        zakolanówki, bokserki i mankini odblokowuje się za Aquilosy.
+    - tweak: >-
+        Polskiej bielizny nie można już wybrać za darmo i nie trafia się w
+        losowym wyglądzie.
+    - rscadd: >-
+        Loadout pokazuje ikonki przedmiotów i ma przycisk „Podgląd”, który
+        pokazuje przedmiot na postaci przed zakupem.
+    - rscadd: >-
+        Nowy reagent: olej rycynowy (olej spożywczy + siarka + woda). Silnie
+        przyspiesza potrzebę wypróżnienia, a wypróżnienie z nim w organizmie
+        usuwa inne substancje.
+    - tweak: >-
+        Kawa i ostre jedzenie (kapsaicyna, hell ramen) przyspieszają potrzebę
+        wypróżnienia.
+    - rscadd: >-
+        Kapitan, HoS i silikony mogą raz na 15 minut zlecić z konsoli
+        komunikacyjnej wybudzenie załogi z kriostazy. Chętne duchy wracają do
+        gry jako losowi Majtkowie przy komorach snu.
+    - bugfix: Prośby o ERT są widoczne w Request Managerze.
+    - config: >-
+        Automatyczne ERT ma własną flagę ALLOW_ERT_REQUEST_AUTO_ACCEPT, a
+        wybudzanie załogi flagę ALLOW_CREW_WAKE_REQUEST_AUTO_ACCEPT.
+    - rscadd: >-
+        Wsparcie dla BYOND 516: czat, panel statystyk, okno mówienia i stare
+        okna działają na nowym kliencie
+    - bugfix: Linki w starych oknach działają na kliencie 516
+    - bugfix: HUD antagonisty bloodlinga
+    - tweak: >-
+        Na kliencie 516 historia czatu zapisuje się rzadziej, co usuwa regularne
+        przycięcia
+    - code_imp: Linki w oknach browse() używają byond://, nowa reguła CI to sprawdza
+    - config: CLIENT_MAX_VERSION/BUILD podniesione do 516/1700
