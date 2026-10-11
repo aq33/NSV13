@@ -63,6 +63,7 @@
 #include "code\datums\weather\shitstorm.dm"
 #include "code\datums\saymode.dm"
 #include "code\datums\mind.dm"
+#include "code\game\alternate_appearance.dm"
 #include "code\game\area\areas\centcom.dm"
 #include "code\game\area\areas\shuttles.dm"
 #include "code\game\atoms_movable.dm"
