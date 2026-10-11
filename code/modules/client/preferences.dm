@@ -231,10 +231,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			dat += "<b>Gatunek:</b><BR><a href='byond://?_src_=prefs;preference=species;task=input'>[active_character.pref_species.name]</a><BR>"
 
-			dat += "<b>Bielizna:</b><BR><a href ='byond://?_src_=prefs;preference=underwear;task=input'>[active_character.underwear]</a><BR>"
+			dat += "<b>Bielizna:</b><BR><a href ='byond://?_src_=prefs;preference=underwear;task=input'>[accessory_name_pl(active_character.underwear)]</a><BR>"
 			dat += "<b>Kolor bielizny:</b><BR><span style='border: 1px solid #161616; background-color: #[active_character.underwear_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=underwear_color;task=input'>Zmień</a><BR>"
-			dat += "<b>Podkoszulek:</b><BR><a href ='byond://?_src_=prefs;preference=undershirt;task=input'>[active_character.undershirt]</a><BR>"
-			dat += "<b>Skarpetki:</b><BR><a href ='byond://?_src_=prefs;preference=socks;task=input'>[active_character.socks]</a><BR>"
+			dat += "<b>Podkoszulek:</b><BR><a href ='byond://?_src_=prefs;preference=undershirt;task=input'>[accessory_name_pl(active_character.undershirt)]</a><BR>"
+			dat += "<b>Skarpetki:</b><BR><a href ='byond://?_src_=prefs;preference=socks;task=input'>[accessory_name_pl(active_character.socks)]</a><BR>"
 			dat += "<b>Plecak:</b><BR><a href ='byond://?_src_=prefs;preference=bag;task=input'>[active_character.backbag]</a><BR>"
 			dat += "<b>Kombinezon:</b><BR><a href ='byond://?_src_=prefs;preference=suit;task=input'>[active_character.jumpsuit_style]</a><BR>"
 			dat += "<b>Miejsce uplinku:</b><BR><a href ='byond://?_src_=prefs;preference=uplink_loc;task=input'>[active_character.uplink_spawn_loc == UPLINK_IMPLANT ? UPLINK_IMPLANT_WITH_PRICE : active_character.uplink_spawn_loc]</a><BR>"
@@ -298,19 +298,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				dat += "<h3>Fryzura</h3>"
 
-				dat += "<a href='byond://?_src_=prefs;preference=hair_style;task=input'>[active_character.hair_style]</a><BR>"
+				dat += "<a href='byond://?_src_=prefs;preference=hair_style;task=input'>[accessory_name_pl(active_character.hair_style)]</a><BR>"
 				dat += "<a href='byond://?_src_=prefs;preference=previous_hair_style;task=input'>&lt;</a> <a href='byond://?_src_=prefs;preference=next_hair_style;task=input'>&gt;</a><BR>"
 				dat += "<span style='border:1px solid #161616; background-color: #[active_character.hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=hair_color;task=input'>Zmień</a><BR>"
 
 				dat += "<h3>Styl gradientu</h3>"
 
-				dat += "<a href='byond://?_src_=prefs;preference=gradient_style;task=input'>[active_character.gradient_style]</a><BR>"
+				dat += "<a href='byond://?_src_=prefs;preference=gradient_style;task=input'>[accessory_name_pl(active_character.gradient_style)]</a><BR>"
 				dat += "<a href='byond://?_src_=prefs;preference=previous_gradient_style;task=input'>&lt;</a> <a href='byond://?_src_=prefs;preference=next_gradient_style;task=input'>&gt;</a><BR>"
 				dat += "<span style='border:1px solid #161616; background-color: #[active_character.gradient_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=gradient_color;task=input'>Zmień</a><BR>"
 
 				dat += "<h3>Zarost</h3>"
 
-				dat += "<a href='byond://?_src_=prefs;preference=facial_hair_style;task=input'>[active_character.facial_hair_style]</a><BR>"
+				dat += "<a href='byond://?_src_=prefs;preference=facial_hair_style;task=input'>[accessory_name_pl(active_character.facial_hair_style)]</a><BR>"
 				dat += "<a href='byond://?_src_=prefs;preference=previous_facehair_style;task=input'>&lt;</a> <a href='byond://?_src_=prefs;preference=next_facehair_style;task=input'>&gt;</a><BR>"
 				dat += "<span style='border: 1px solid #161616; background-color: #[active_character.facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=facial;task=input'>Zmień</a><BR>"
 
@@ -1647,13 +1647,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_hair)
 						active_character.hair_color = sanitize_hexcolor(new_hair)
 				if("hair_style")
-					var/new_hair_style = input(user, "Wybierz fryzurę postaci:", "Preferencje postaci")  as null|anything in GLOB.hair_styles_list
+					var/new_hair_style = input(user, "Wybierz fryzurę postaci:", "Preferencje postaci")  as null|anything in accessory_choices_pl(GLOB.hair_styles_list)
+					new_hair_style = accessory_key_pl(new_hair_style, GLOB.hair_styles_list)
 					if(new_hair_style)
 						active_character.hair_style = new_hair_style
 
 				if("gradient_style")
 					var/new_gradient_style
-					new_gradient_style = input(user, "Wybierz styl gradientu włosów:", "Preferencje postaci")  as null|anything in GLOB.hair_gradients_list
+					new_gradient_style = input(user, "Wybierz styl gradientu włosów:", "Preferencje postaci")  as null|anything in accessory_choices_pl(GLOB.hair_gradients_list)
+					new_gradient_style = accessory_key_pl(new_gradient_style, GLOB.hair_gradients_list)
 					if(new_gradient_style)
 						active_character.gradient_style = new_gradient_style
 
@@ -1680,7 +1682,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						active_character.facial_hair_color = sanitize_hexcolor(new_facial)
 
 				if("facial_hair_style")
-					var/new_facial_hair_style = input(user, "Wybierz rodzaj zarostu:", "Preferencje postaci")  as null|anything in GLOB.facial_hair_styles_list
+					var/new_facial_hair_style = input(user, "Wybierz rodzaj zarostu:", "Preferencje postaci")  as null|anything in accessory_choices_pl(GLOB.facial_hair_styles_list)
+					new_facial_hair_style = accessory_key_pl(new_facial_hair_style, GLOB.facial_hair_styles_list)
 					if(new_facial_hair_style)
 						active_character.facial_hair_style = new_facial_hair_style
 
@@ -1691,7 +1694,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					active_character.facial_hair_style = previous_list_item(active_character.facial_hair_style, GLOB.facial_hair_styles_list)
 
 				if("underwear")
-					var/new_underwear = input(user, "Wybierz bieliznę postaci:", "Preferencje postaci")  as null|anything in unlocked_accessories(GLOB.underwear_list, user.client) // AQ EDIT
+					var/list/underwear_choices = unlocked_accessories(GLOB.underwear_list, user.client) // AQ EDIT
+					var/new_underwear = input(user, "Wybierz bieliznę postaci:", "Preferencje postaci")  as null|anything in accessory_choices_pl(underwear_choices)
+					new_underwear = accessory_key_pl(new_underwear, underwear_choices)
 					if(new_underwear)
 						active_character.underwear = new_underwear
 
@@ -1701,13 +1706,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						active_character.underwear_color = sanitize_hexcolor(new_underwear_color)
 
 				if("undershirt")
-					var/new_undershirt = input(user, "Wybierz podkoszulek postaci:", "Preferencje postaci") as null|anything in unlocked_accessories(GLOB.undershirt_list, user.client) // AQ EDIT
+					var/list/undershirt_choices = unlocked_accessories(GLOB.undershirt_list, user.client) // AQ EDIT
+					var/new_undershirt = input(user, "Wybierz podkoszulek postaci:", "Preferencje postaci") as null|anything in accessory_choices_pl(undershirt_choices)
+					new_undershirt = accessory_key_pl(new_undershirt, undershirt_choices)
 					if(new_undershirt)
 						active_character.undershirt = new_undershirt
 
 				if("socks")
 					var/new_socks
-					new_socks = input(user, "Wybierz skarpetki postaci:", "Preferencje postaci") as null|anything in unlocked_accessories(GLOB.socks_list, user.client) // AQ EDIT
+					var/list/socks_choices = unlocked_accessories(GLOB.socks_list, user.client) // AQ EDIT
+					new_socks = input(user, "Wybierz skarpetki postaci:", "Preferencje postaci") as null|anything in accessory_choices_pl(socks_choices)
+					new_socks = accessory_key_pl(new_socks, socks_choices)
 					if(new_socks)
 						active_character.socks = new_socks
 

@@ -193,6 +193,8 @@ export const StatTextVerb = (props, context) => {
       width="200px">
       <Button
         content={translateVerb(title)}
+        title={translateVerb(title)}
+        ellipsis
         onClick={() => Byond.sendMessage('stat/pressed',
           {
             action_id: action_id,

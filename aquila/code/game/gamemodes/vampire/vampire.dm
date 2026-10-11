@@ -152,5 +152,5 @@
 	Na razie nic więcej nie wiadomo."
 
 /datum/role_preference/antagonist/vampire
-	name = "Vampire"
+	name = "Wampir"
 	antag_datum = /datum/antagonist/vampire
