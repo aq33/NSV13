@@ -110,3 +110,128 @@
 
 #undef OFFSET_X
 #undef OFFSET_Y
+
+/datum/emote/living/carbon/human/scream
+	voice_emote = TRUE
+
+/// Species without their own scream used to be silent
+/datum/emote/living/carbon/human/scream/get_sound(mob/living/user)
+	if(!ishuman(user) || user.mind?.miming)
+		return
+	var/mob/living/carbon/human/screamer = user
+	if(isplasmaman(screamer))
+		return pick_emote_sound(user, list('aquila/sound/voice/plasmaman/plasmeme_scream_1.ogg', 'aquila/sound/voice/plasmaman/plasmeme_scream_2.ogg', 'aquila/sound/voice/plasmaman/plasmeme_scream_3.ogg'))
+	if(is_species(screamer, /datum/species/shadow))
+		return 'aquila/sound/voice/shadow/shadow_wail.ogg'
+	if(isipc(screamer) || isandroid(screamer))
+		return 'sound/machines/buzz-two.ogg'
+	. = ..()
+	if(. && (!ishumanbasic(screamer) || iscatperson(screamer)))
+		return
+	// Humans and every other humanoid without a species scream
+	if(screamer.gender == FEMALE)
+		return pick_emote_sound(user, list('sound/voice/human/femalescream_1.ogg', 'sound/voice/human/femalescream_2.ogg', 'sound/voice/human/femalescream_3.ogg',
+			'sound/voice/human/femalescream_4.ogg', 'aquila/sound/voice/human/femalescream_5.ogg'))
+	if(prob(1))
+		return 'sound/voice/human/wilhelm_scream.ogg'
+	return pick_emote_sound(user, list('sound/voice/human/malescream_1.ogg', 'sound/voice/human/malescream_2.ogg', 'sound/voice/human/malescream_3.ogg',
+		'sound/voice/human/malescream_4.ogg', 'sound/voice/human/malescream_5.ogg', 'aquila/sound/voice/human/malescream_6.ogg'))
+
+/datum/emote/living/carbon/human/cry
+	voice_emote = TRUE
+
+/datum/emote/living/carbon/human/cry/get_sound(mob/living/user)
+	if(!has_human_emote_voice(user))
+		return
+	if(user.gender == FEMALE)
+		return pick_emote_sound(user, list('aquila/sound/voice/human/cry.ogg', 'aquila/sound/voice/human/cry/female_cry1.ogg', 'aquila/sound/voice/human/cry/female_cry2.ogg'))
+	return pick_emote_sound(user, list('aquila/sound/voice/human/cry.ogg', 'aquila/sound/voice/human/cry/male_cry1.ogg', 'aquila/sound/voice/human/cry/male_cry2.ogg', 'aquila/sound/voice/human/cry/male_cry3.ogg'))
+
+/datum/emote/living/carbon/human/mumble
+	voice_emote = TRUE
+
+/datum/emote/living/carbon/human/mumble/get_sound(mob/living/user)
+	if(has_human_emote_voice(user))
+		return 'aquila/sound/voice/human/emotes/mumble_m.ogg'
+
+/// There is only a male recording, so women mumble it a few semitones higher
+/datum/emote/living/carbon/human/mumble/get_sound_semitones(mob/user)
+	return user.gender == FEMALE ? 4 : 0
+
+/datum/emote/living/carbon/human/grumble
+	voice_emote = TRUE
+	sound_volume = 40
+
+/datum/emote/living/carbon/human/grumble/get_sound(mob/living/user)
+	if(has_human_emote_voice(user))
+		return 'aquila/sound/voice/human/emotes/mumble_m.ogg'
+
+/datum/emote/living/carbon/human/grumble/get_sound_semitones(mob/user)
+	return user.gender == FEMALE ? 2 : -2
+
+/datum/emote/living/carbon/human/dap/get_sound(mob/living/user)
+	return 'aquila/sound/effects/emotes/dap.ogg'
+
+/datum/emote/living/carbon/human/salute
+	sound_volume = 40
+
+/datum/emote/living/carbon/human/salute/get_sound(mob/living/user)
+	return 'aquila/sound/voice/human/salute.ogg'
+
+/datum/emote/living/carbon/human/crack
+	key = "crack"
+	key_third_person = "cracks"
+	message = "strzela kostkami palców"
+	restraint_check = TRUE
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/crack/get_sound(mob/living/user)
+	return 'aquila/sound/voice/human/knuckles.ogg'
+
+/datum/emote/living/carbon/human/hiccup
+	key = "hiccup"
+	key_third_person = "hiccups"
+	message = "czka"
+	emote_type = EMOTE_AUDIBLE
+	voice_emote = TRUE
+
+/datum/emote/living/carbon/human/hiccup/get_sound(mob/living/user)
+	if(has_human_emote_voice(user))
+		return 'aquila/sound/voice/human/hiccup.ogg'
+
+/datum/emote/living/carbon/human/slowclap
+	key = "slowclap"
+	key_third_person = "slowclaps"
+	message = "powoli klaszcze"
+	restraint_check = TRUE
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/slowclap/get_sound(mob/living/user)
+	if(user.get_bodypart(BODY_ZONE_L_ARM) && user.get_bodypart(BODY_ZONE_R_ARM))
+		return 'sound/machines/slowclap.ogg'
+
+/datum/emote/living/carbon/human/squeak
+	key = "squeak"
+	key_third_person = "squeaks"
+	message = "piszczy"
+	emote_type = EMOTE_AUDIBLE
+	voice_emote = TRUE
+
+/datum/emote/living/carbon/human/squeak/can_run_emote(mob/user, status_check = TRUE, intentional)
+	return ismoth(user) && ..()
+
+/datum/emote/living/carbon/human/squeak/get_sound(mob/living/user)
+	return 'aquila/sound/voice/moth/moth_squeak.ogg'
+
+/datum/emote/living/carbon/human/chitter
+	key = "chitter"
+	key_third_person = "chitters"
+	message = "terkocze"
+	emote_type = EMOTE_AUDIBLE
+	voice_emote = TRUE
+
+/datum/emote/living/carbon/human/chitter/can_run_emote(mob/user, status_check = TRUE, intentional)
+	return ismoth(user) && ..()
+
+/datum/emote/living/carbon/human/chitter/get_sound(mob/living/user)
+	return 'aquila/sound/voice/moth/moth_chitter.ogg'

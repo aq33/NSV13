@@ -1,0 +1,46 @@
+Sounds added on the "dzwieki" branch (voices and missing sounds)
+
+From tgstation/tgstation (b32c9d2), license CC-BY-SA 3.0 unless the source folder says otherwise:
+  items/equip/*                     tgstation sound/items/equip, gas_mask, glasses, handling/helmet (see items/equip/attribution.txt)
+  items/modsuit/rigstep*.ogg        tgstation sound/items/modsuit
+  effects/valve_opening.ogg         tgstation sound/effects
+  machines/sink-faucet.ogg          tgstation sound/machines
+  creatures/cow.ogg                 tgstation sound/mobs/non-humanoids/cow
+  voice/human/salute.ogg, knuckles.ogg, hiccup.ogg (sf_hiccup_male_01), human_hiss.ogg,
+  femalescream_5.ogg, malescream_6.ogg
+  voice/human/cough, cry, gag, sigh, sneeze, sniff, snore, gasp/gasp_female*, gasp/gasp_male*
+                                    tgstation sound/mobs/humanoids/human
+  voice/lizard/lizard_laugh1.ogg    tgstation sound/mobs/humanoids/lizard
+  voice/moth/*                      tgstation sound/mobs/humanoids/moth
+  voice/ethereal/ethereal_hiss.ogg  tgstation sound/mobs/humanoids/ethereal
+  voice/plasmaman/*                 tgstation sound/mobs/humanoids/plasmaman
+  voice/shadow/shadow_wail.ogg      tgstation sound/mobs/humanoids/shadow
+  voice/muffspeech/*                tgstation sound/effects/muffspeech
+
+From BeeStation/BeeStation-Hornet (1343227), license CC-BY-SA 3.0:
+  voice/human/gasp/gasp_f1-6.ogg, gasp_m1-6.ogg   BeeStation sound/emotes/female, sound/emotes/male
+
+From Freesound, license CC0 1.0 (https://freesound.org/people/<author>/sounds/<id>/):
+  effects/emotes/scratch1-2.ogg     kbnevel/119855
+  effects/craft.ogg                 RishkaBee/579676
+  vehicles/pussywagon_loop.ogg      pkri/587511
+  vehicles/secway_loop.ogg          IENBA/697379
+  items/gun_unholster.ogg           qubodup/688765
+  items/gun_holster.ogg             nioczkus/388819
+  voice/human/emotes/chuckle_m(_alt).ogg  beautifuldaymonster1968/823548
+  voice/human/emotes/chuckle_f.ogg  BlueSiren/377742
+  voice/human/emotes/hum_m.ogg      tadiyan/693937
+  voice/human/emotes/hum_f.ogg      PSsoundproject/183565
+  voice/human/emotes/mumble_m.ogg   SilentStrikeZ/389644
+  voice/human/emotes/moan_m.ogg     deleted_user_2104797/171758
+  voice/human/emotes/moan_f.ogg     Vaporpup/570116
+  voice/human/emotes/whimper_m/f.ogg  Drkvixn91/318077, 318078
+  voice/human/emotes/exhale_f.ogg   monsterthing/663651
+  effects/emotes/dap.ogg            Vrymaa/734662
+  machines/chemheater_loop.ogg      mrspivey/805191
+
+Re-encoded (mono, 44.1 kHz) copies of sounds already in the repository:
+  effects/canister_drag.ogg         aquila/sound/effects/closetpull.ogg
+  effects/janicart_roll.ogg         sound/effects/roll.ogg
+  voice/human/emotes/exhale_m.ogg   sound/effects/inhale.ogg
+  effects/footstep/robot_servo1-3.ogg  nsv13/sound/effects/footstep/servo1-3.ogg

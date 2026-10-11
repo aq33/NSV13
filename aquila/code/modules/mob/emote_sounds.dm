@@ -26,3 +26,24 @@
 
 /datum/emote/slime/vibrate
 	sound = 'sound/effects/footstep/slime1.ogg'
+
+/datum/emote/inhale
+	voice_emote = TRUE
+
+/datum/emote/exhale
+	voice_emote = TRUE
+
+/datum/emote/exhale/get_sound(mob/living/user)
+	if(!isliving(user) || issilicon(user))
+		return
+	if(user.gender == FEMALE && has_human_emote_voice(user))
+		return 'aquila/sound/voice/human/emotes/exhale_f.ogg'
+	return 'aquila/sound/voice/human/emotes/exhale_m.ogg'
+
+/datum/emote/living/moo
+	key = "moo"
+	key_third_person = "moos"
+	message = "muczy"
+	emote_type = EMOTE_AUDIBLE
+	mob_type_allowed_typecache = list(/mob/living/simple_animal/cow)
+	sound = 'aquila/sound/creatures/cow.ogg'

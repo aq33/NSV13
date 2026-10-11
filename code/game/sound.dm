@@ -60,7 +60,10 @@ falloff_distance - Distance at which falloff begins. Sound is at peak volume (in
 	channel = channel || SSsounds.random_available_channel()
 
  	// Looping through the player list has the added bonus of working for mobs inside containers
-	var/sound/S = sound(get_sfx(soundin))
+	var/sound/S = istype(soundin, /sound) ? soundin : sound(get_sfx(soundin)) // AQ EDIT - a prepared /sound keeps its settings (e.g. muffled voices)
+	// AQ EDIT - roll the pitch once, so every listener hears the same sound
+	if(vary && !frequency)
+		frequency = get_rand_frequency()
 	var/list/listeners = list()
 	var/list/dead_listeners = list()
 	for(var/z in z_list)
@@ -236,7 +239,7 @@ distance_multiplier - Can be used to multiply the distance at which the sound is
 		SEND_SOUND(src, sound(SSticker.login_music, repeat = 0, wait = 0, volume = vol, channel = CHANNEL_LOBBYMUSIC)) // MAD JAMS
 
 /proc/get_rand_frequency()
-	return rand(32000, 55000) //Frequency stuff only works with 45kbps oggs.
+	return rand(73, 125) / 100 // AQ EDIT - a playback multiplier (-100..100 is a multiple in BYOND), so it no longer depends on the file's sample rate. Was rand(32000, 55000) Hz.
 
 /proc/get_sfx(soundin)
 	if(istext(soundin))
@@ -354,6 +357,18 @@ distance_multiplier - Can be used to multiply the distance at which the sound is
 				soundin = pick('aquila/sound/voice/speech/golem1.ogg')
 			if("felinid")	// Why awe we stiww hewe?!! Just t-to suffew?!?1 *sees buldge*
 				soundin = pick('aquila/sound/voice/speech/felinid1.ogg', 'aquila/sound/voice/speech/felinid2.ogg', 'aquila/sound/voice/speech/felinid3.ogg', 'aquila/sound/voice/speech/felinid4.ogg')
+			if("cow")
+				soundin = 'aquila/sound/creatures/cow.ogg'
+			if("muffspeech")
+				soundin = pick('aquila/sound/voice/muffspeech/muffspeech1.ogg', 'aquila/sound/voice/muffspeech/muffspeech2.ogg', 'aquila/sound/voice/muffspeech/muffspeech3.ogg', 'aquila/sound/voice/muffspeech/muffspeech4.ogg', 'aquila/sound/voice/muffspeech/muffspeech5.ogg', 'aquila/sound/voice/muffspeech/muffspeech6.ogg', 'aquila/sound/voice/muffspeech/muffspeech7.ogg', 'aquila/sound/voice/muffspeech/muffspeech8.ogg', 'aquila/sound/voice/muffspeech/muffspeech9.ogg')
+			if("headset_equip")
+				soundin = pick('aquila/sound/items/equip/headset_equip1.ogg', 'aquila/sound/items/equip/headset_equip2.ogg')
+			if("gas_mask_equip")
+				soundin = pick('aquila/sound/items/equip/gas_mask_equip1.ogg', 'aquila/sound/items/equip/gas_mask_equip2.ogg', 'aquila/sound/items/equip/gas_mask_equip3.ogg')
+			if("glasses_equip")
+				soundin = pick('aquila/sound/items/equip/glasses_equip1.ogg', 'aquila/sound/items/equip/glasses_equip2.ogg')
+			if("robot_step")
+				soundin = pick('aquila/sound/effects/footstep/robot_servo1.ogg', 'aquila/sound/effects/footstep/robot_servo2.ogg', 'aquila/sound/effects/footstep/robot_servo3.ogg')
 			//AQ EDIT END
 	return soundin
 

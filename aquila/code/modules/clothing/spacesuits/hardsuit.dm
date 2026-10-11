@@ -104,3 +104,41 @@
 	slowdown = 0.1 // Malutko bo to Kapitan bomba jest tępe chuje
 	armor = list("melee" = 40, "bullet" = 40, "laser" = 40,"energy" = 40, "bomb" = 40, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 70, "stamina" = 10)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+
+/*************************************\
+|****** kroki hardsuitów (tg MOD) *****|
+\*************************************/
+// Only the prototype RIG had a move sound, the rest walked silently
+
+/obj/item/clothing/suit/space/hardsuit
+	move_sound = list('aquila/sound/items/modsuit/rigstep.ogg')
+
+/obj/item/clothing/suit/space/hardsuit/mining
+	move_sound = list('aquila/sound/items/modsuit/rigstep_medium.ogg')
+
+/obj/item/clothing/suit/space/hardsuit/exploration
+	move_sound = list('aquila/sound/items/modsuit/rigstep_medium.ogg')
+
+/obj/item/clothing/suit/space/hardsuit/research_director
+	move_sound = list('aquila/sound/items/modsuit/rigstep_medium.ogg')
+
+/obj/item/clothing/suit/space/hardsuit/engine
+	move_sound = list('aquila/sound/items/modsuit/rigstep_heavy.ogg')
+
+/obj/item/clothing/suit/space/hardsuit/security
+	move_sound = list('aquila/sound/items/modsuit/rigstep_heavy.ogg')
+
+/obj/item/clothing/suit/space/hardsuit/swat
+	move_sound = list('aquila/sound/items/modsuit/rigstep_heavy.ogg')
+
+/obj/item/clothing/suit/space/hardsuit/syndi
+	move_sound = list('aquila/sound/items/modsuit/rigstep_heavy.ogg')
+
+/obj/item/clothing/suit/space/hardsuit/cybersun
+	move_sound = list('aquila/sound/items/modsuit/rigstep_heavy.ogg')
+
+/obj/item/clothing/suit/space/hardsuit/shielded
+	move_sound = list('aquila/sound/items/modsuit/rigstep_chonk.ogg')
+
+/obj/item/clothing/suit/space/hardsuit/clown
+	move_sound = list('sound/effects/clownstep1.ogg', 'sound/effects/clownstep2.ogg')

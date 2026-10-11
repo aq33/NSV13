@@ -101,6 +101,17 @@ These change lines *inside* upstream procs. Moving them would mean copying whole
 - **Emote update port, interleaved part** (BeeStation #11617): `EMOTE_*` bitflags and `ALWAYS_SHOW_SELF_MESSAGE` (`__DEFINES/say.dm`; `EMOTE_VISIBLE` stays 1 so `emote("me", 1, ...)` callers keep meaning "visible"), `run_emote()` rewrite (`datums/emotes.dm`), self-message runechat and `show_message()` return value (`mob.dm`), custom say emote (`mob/say.dm`, `living/say.dm`), `emote_type` on every emote (core emote files, plus `EMOTE_VISIBLE` on the Aquila/NSV13 emotes that relied on the old default), deathgasp mask sound, moth flutter and whistle sound (`living/emote.dm`). New emotes, animations, the mask var and the emote panel are in `aquila/`.
 - **Job datums** (`jobs/job_types/*.dm`, `military_police.dm`, `subsystem/job.dm`). Outfits, implants, slots and exp requirements are mixed with hardened job-title and radio-channel constants. Left alone to avoid touching the job/config parsing hardening.
 
+### Voices and sounds (`dzwieki` branch)
+
+One-line hooks; everything else is in `aquila/code/modules/mob/voice.dm`, the Aquila emote files and the mirrored machine files.
+
+- `code/game/sound.dm`: `playsound()` accepts a prepared `/sound` (muffled voices) and rolls `vary` once for all listeners; `get_rand_frequency()` returns a playback multiplier instead of Hz (sample-rate independent); extra `get_sfx()` keys in the AQ EDIT block.
+- `code/datums/emotes.dm`: `run_emote()` calls `play_emote_sound()` (voice pitch of vocal emotes).
+- `code/datums/looping_sounds/_looping_sound.dm`: `play()` passed `extra_range` as `vary`.
+- `code/game/objects/items.dm`: `equip_sound` only when worn (`slot_flags & slot`), not when picked up.
+- `code/game/turfs/turf.dm`: `handle_fall()` also thuds, more quietly, when lying down on purpose.
+- `code/modules/client/preferences.dm`, `preferences2/character_save.dm`: voice pitch row, its input/random handlers, sanitizing and randomising `features["voice_pitch"]`.
+
 ### Smartwires port (BeeStation/BeeStation-Hornet#14275, F)
 
 The power cable system is replaced in core, at the same paths as in BeeStation, so a later upstream sync of smartwires lands on the same files. Merging upstream power code needs care here.

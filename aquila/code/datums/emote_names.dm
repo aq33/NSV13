@@ -410,3 +410,21 @@
 
 /datum/emote/living/cheers
 	name = "wznieś toast"
+
+/datum/emote/living/carbon/human/crack
+	name = "strzel kostkami"
+
+/datum/emote/living/carbon/human/hiccup
+	name = "czknij"
+
+/datum/emote/living/carbon/human/slowclap
+	name = "klaszcz powoli"
+
+/datum/emote/living/carbon/human/squeak
+	name = "piśnij"
+
+/datum/emote/living/carbon/human/chitter
+	name = "terkocz"
+
+/datum/emote/living/moo
+	name = "zamucz"

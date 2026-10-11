@@ -26,3 +26,10 @@
 		oil?.purge(user)
 	else
 		to_chat(user, "<span class='notice'>Nie potrzebujesz skorzystać z ubikacji.</span>")
+
+/// Filling a container from the tap
+/obj/structure/sink/attackby(obj/item/O, mob/living/user, params)
+	var/filled_before = istype(O, /obj/item/reagent_containers) ? O.reagents?.total_volume : null
+	. = ..()
+	if(!isnull(filled_before) && O.reagents?.total_volume > filled_before)
+		playsound(src, 'aquila/sound/machines/sink-faucet.ogg', 50)
