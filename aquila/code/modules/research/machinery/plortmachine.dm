@@ -43,6 +43,20 @@
 		qdel(W)
 		return
 
+	if(istype(W, /obj/item/storage/bag/bio))
+		var/sold = 0
+		for(var/obj/item/slime_extract/extract in W)
+			if(!SEND_SIGNAL(W, COMSIG_TRY_STORAGE_TAKE, extract, src))
+				continue
+			refine_plort(extract)
+			qdel(extract)
+			sold++
+		if(sold)
+			to_chat(user, "<span class='notice'>You empty [sold] slime core\s from [W] into [src].</span>")
+		else
+			to_chat(user, "<span class='warning'>There are no slime cores in [W]!</span>")
+		return
+
 /obj/machinery/plortrefinery/proc/refine_plort(var/obj/item/slime_extract/W)
 	point_gain = W.plort_value * research_point_multiplier
 	linked_techweb.add_point_type(TECHWEB_POINT_TYPE_DEFAULT, point_gain)
