@@ -52,7 +52,6 @@ Radio (tgstation sound/items/radio, see its attribution.txt):
 Generated (low-pass filtered copies, same license as their sources):
   voice/speech_muffled/*            aquila/sound/voice/speech/* through a 700 Hz low-pass (voice behind a mask or helmet)
   weapons/distant/*                 the gun sounds listed in aquila/code/game/distant_gun_sounds.dm through a 450 Hz low-pass
-  vehicles/pussywagon_loop.ogg     nsv13/sound/vehicles/tug_engine.ogg through a 150 Hz high-pass (replaces pkri/587511, which was only 4-12 kHz hiss)
   vehicles/secway_loop.ogg         an octave up, 250 Hz high-pass (the original was mostly an inaudible 60-150 Hz hum)
 
 From BeeStation/BeeStation-Hornet, license CC-BY-SA 3.0 unless noted:
