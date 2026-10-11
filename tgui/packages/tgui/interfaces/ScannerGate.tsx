@@ -16,6 +16,7 @@ type Data = {
   nanite_cloud: any;
   reverse: any;
   scan_mode: any;
+  target_hygiene: any;
   target_nutrition: any;
   target_species: any;
 };
@@ -73,6 +74,17 @@ const TARGET_SPECIES_LIST = [
   },
 ];
 
+const TARGET_HYGIENE_LIST = [
+  {
+    name: 'Clean',
+    value: 250,
+  },
+  {
+    name: 'Dirty',
+    value: 75,
+  },
+];
+
 const TARGET_NUTRITION_LIST = [
   {
     name: 'Starving',
@@ -126,6 +138,10 @@ const SCANNER_GATE_ROUTES = {
   Nutrition: {
     title: 'Scanner Mode: Nutrition',
     component: () => ScannerGateNutrition,
+  },
+  Hygiene: {
+    title: 'Scanner Mode: Hygiene',
+    component: () => ScannerGateHygiene,
   },
   Nanites: {
     title: 'Scanner Mode: Nanites',
@@ -186,6 +202,9 @@ const ScannerGateOff = (props) => {
           content="Nutrition"
           onClick={() => act('set_mode', { new_mode: 'Nutrition' })}
         />
+        <Button
+          content="Hygiene"
+          onClick={() => act('set_mode', { new_mode: 'Hygiene' })} />
         <Button
           content="Nanites"
           onClick={() => act('set_mode', { new_mode: 'Nanites' })}
@@ -319,6 +338,37 @@ const ScannerGateNutrition = (props) => {
             onClick={() =>
               act('set_target_nutrition', {
                 new_nutrition: nutrition.name,
+              })
+            }
+          />
+        ))}
+      </Box>
+      <ScannerGateMode />
+    </>
+  );
+};
+
+const ScannerGateHygiene = (props) => {
+  const { act, data } = useBackend<Data>();
+  const { reverse, target_hygiene } = data;
+  const hygiene = TARGET_HYGIENE_LIST.find((hygiene) => {
+    return hygiene.value === target_hygiene;
+  });
+  return (
+    <>
+      <Box mb={2}>
+        Trigger if the person scanned {reverse ? 'is not' : 'is'}{' '}
+        {hygiene?.name.toLowerCase()}.
+      </Box>
+      <Box mb={2}>
+        {TARGET_HYGIENE_LIST.map((hygiene) => (
+          <Button.Checkbox
+            key={hygiene.name}
+            checked={hygiene.value === target_hygiene}
+            content={hygiene.name}
+            onClick={() =>
+              act('set_target_hygiene', {
+                new_hygiene: hygiene.name,
               })
             }
           />

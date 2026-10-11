@@ -17,14 +17,15 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 	if(!length(quirks))
 		SetupQuirks()
 
+	// AQ EDIT - names must match the translated quirk names, the English ones never matched anything
 	quirk_blacklist = list(
-		list("Blind","Nearsighted"),
-		list("Jolly","Depression","Apathetic","Hypersensitive"),
-		list("Ageusia","Vegetarian","Deviant Tastes"),
-		list("Ananas Affinity","Ananas Aversion"),
-		list("Alcohol Tolerance","Light Drinker"),
-		list("Social Anxiety","Mute"),
-		list("NEET", "Neat"), //NSV13 - retained hygiene
+		list("Ślepota","Krótkowzroczny"),
+		list("Wesoły","Depresja","Apatyczny","Nadczuły"),
+		list("Aguezja","Wegetarianin","Dziwne Preferencje Kulinarne"),
+		list("Uwielbienie Ananasa","Obrzydzenie Ananasa"),
+		list("Tolerancja Alkoholowa","Słaba Głowa"),
+		list("Fobia Społeczna","Niemy"),
+		list("Socjals", "Czyścioszek"), //NSV13 - retained hygiene
 	)
 	return ..()
 

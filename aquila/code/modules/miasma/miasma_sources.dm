@@ -6,6 +6,8 @@
 /mob/living/carbon/death(gibbed)
 	. = ..()
 	if(. && !gibbed && stat == DEAD)
+		// A stinking human is already registered with an unlimited budget, see aquila/code/modules/hygiene/
+		SSmiasma.remove_source(src)
 		SSmiasma.add_source(src, MIASMA_CORPSE_BUDGET)
 
 /mob/living/carbon/miasma_emission(seconds)

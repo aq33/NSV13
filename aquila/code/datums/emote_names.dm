@@ -410,3 +410,42 @@
 
 /datum/emote/living/cheers
 	name = "wznieś toast"
+
+/datum/emote/living/carbon/human/crack
+	name = "strzel kostkami"
+
+/datum/emote/living/carbon/human/hiccup
+	name = "czknij"
+
+/datum/emote/living/carbon/human/slowclap
+	name = "klaszcz powoli"
+
+/datum/emote/living/carbon/human/squeak
+	name = "piśnij"
+
+/datum/emote/living/carbon/human/chitter
+	name = "terkocz"
+
+/datum/emote/living/moo
+	name = "zamucz"
+
+/datum/emote/living/snap/two
+	name = "pstryknij dwa razy"
+
+/datum/emote/living/snap/three
+	name = "pstryknij trzy razy"
+
+/datum/emote/living/carbon/human/sweatdrop
+	name = "spoć się"
+
+/datum/emote/living/carbon/human/sweatdrop/sweat
+	name = "poć się"
+
+/datum/emote/living/carbon/human/annoyed
+	name = "zirytuj się"
+
+/datum/emote/living/carbon/human/robot_tongue/dwoop
+	name = "dwoop"
+
+/datum/emote/silicon/dwoop
+	name = "dwoop"

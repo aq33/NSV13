@@ -1,0 +1,11 @@
+/// Feedback beeps for orders: a confirmation when something goes into the cart, a buzz when the console refuses
+/obj/machinery/computer/cargo/ui_act(action, params, datum/tgui/ui)
+	. = ..()
+	switch(action)
+		if("add", "add_by_name", "approve")
+			playsound(src, . ? 'sound/machines/twobeep.ogg' : 'sound/machines/buzz-sigh.ogg', 30, TRUE)
+		if("send")
+			if(!.)
+				playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
+		if("deny", "denyall", "clear")
+			playsound(src, 'sound/machines/buzz-two.ogg', 20, TRUE)

@@ -232,6 +232,9 @@
 		if(locate(recipe.result) in range(1, dest_turf))
 			return ", can't be near another!"
 
+	// AQUILA (#394): dźwięk craftowania na czas do_after
+	if(ismob(crafter) && recipe.time)
+		playsound(crafter, 'aquila/sound/effects/craft.ogg', 40, TRUE, -3)
 	//If we're a mob we'll try a do_after; non mobs will instead instantly construct the item
 	if(ismob(crafter) && !do_after(crafter, recipe.time, target = crafter))
 		return "."

@@ -1,10 +1,10 @@
 {
     "map_name": "NSV Padalec",
-	"map_link": "Aquila_Snake",
-    "map_path": "map_files/Aquila_Snake",
+	"map_link": "snake",
+    "map_path": "map_files/Snake",
     "map_file": [
-		"Aquila_Snake_Lower.dmm",
-		"Aquila_Snake_Upper.dmm"
+		"snake_lower.dmm",
+		"snake_upper.dmm"
 	],
     "traits": [
 		{

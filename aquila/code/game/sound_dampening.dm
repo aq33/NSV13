@@ -9,31 +9,31 @@
 	return sound_dampening
 
 /turf/closed
-	sound_dampening = 0.35
+	sound_dampening = 0.45
 
 /turf/closed/wall/r_wall
-	sound_dampening = 0.5
+	sound_dampening = 0.6
 
 /obj/structure/window
-	sound_dampening = 0.1
-
-/obj/structure/window/fulltile
-	sound_dampening = 0.2
-
-/obj/structure/window/reinforced
 	sound_dampening = 0.15
 
-/obj/structure/window/reinforced/fulltile
+/obj/structure/window/fulltile
 	sound_dampening = 0.25
 
+/obj/structure/window/reinforced
+	sound_dampening = 0.2
+
+/obj/structure/window/reinforced/fulltile
+	sound_dampening = 0.3
+
 /obj/machinery/door
-	sound_dampening = 0.25
+	sound_dampening = 0.3
 
 /obj/machinery/door/get_sound_dampening()
 	return density ? sound_dampening : 0
 
 /obj/structure/falsewall
-	sound_dampening = 0.35
+	sound_dampening = 0.45
 
 /obj/structure/falsewall/get_sound_dampening()
 	return density ? sound_dampening : 0

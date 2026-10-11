@@ -52,7 +52,7 @@
 				if(head && HAS_BLOOD_DNA(head))
 					hygiene_loss -= 1 * HYGIENE_FACTOR
 
-				var/obj/item/mask = get_item_by_slot(ITEM_SLOT_HEAD)
+				var/obj/item/mask = get_item_by_slot(ITEM_SLOT_MASK) // AQ EDIT - was ITEM_SLOT_HEAD, which counted the hat twice and never the mask
 				if(mask && HAS_BLOOD_DNA(mask))
 					hygiene_loss -= 1 * HYGIENE_FACTOR
 
