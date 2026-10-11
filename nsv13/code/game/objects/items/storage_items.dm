@@ -60,7 +60,7 @@ This file contains various storage items in this order:
 
 /obj/item/storage/box/suitbox/maid
 	name = "compression box of maid uniforms"
-	desc = "Contains a state of the art maid uniform."
+	desc = "Zawiera najnowocześniejszy strój pokojówki."
 
 /obj/item/storage/box/suitbox/maid/PopulateContents()
 	new /obj/item/clothing/head/maidheadband(src)

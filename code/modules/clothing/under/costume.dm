@@ -9,7 +9,7 @@
 
 /obj/item/clothing/under/costume/jabroni
 	name = "jabroni outfit"
-	desc = "The leather club is two sectors down."
+	desc = "Klub skórzany jest dwa sektory dalej."
 	icon_state = "darkholme"
 	item_state = "darkholme"
 	can_adjust = FALSE
@@ -58,7 +58,7 @@
 
 /obj/item/clothing/under/costume/pirate
 	name = "pirate outfit"
-	desc = "Yarr."
+	desc = "Arr."
 	icon_state = "pirate"
 	item_state = "pirate"
 	random_sensor = FALSE //NSV13 disabled by default
@@ -66,7 +66,7 @@
 
 /obj/item/clothing/under/costume/soviet
 	name = "soviet uniform"
-	desc = "For the Motherland!"
+	desc = "Za Ojczyznę!"
 	icon_state = "soviet"
 	item_state = "soviet"
 	can_adjust = FALSE
@@ -124,7 +124,7 @@
 
 /obj/item/clothing/under/costume/geisha
 	name = "geisha suit"
-	desc = "Cute space ninja senpai not included."
+	desc = "Słodki kosmiczny ninja senpai nie wchodzi w zestaw."
 	icon_state = "geisha"
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
@@ -144,7 +144,7 @@
 
 /obj/item/clothing/under/costume/sailor
 	name = "sailor suit"
-	desc = "Skipper's in the wardroom drinkin gin'."
+	desc = "Szyper siedzi w mesie i pije dżin."
 	icon_state = "sailor"
 	item_state = "b_suit"
 	can_adjust = FALSE
@@ -265,7 +265,7 @@
 
 /obj/item/clothing/under/costume/swagoutfit
 	name = "swag outfit"
-	desc = "Why don't you go secure some bitches?"
+	desc = "Może pójdziesz zgarnąć jakieś laski?"
 	icon_state = "SwagOutfit"
 	item_state = "SwagOutfit"
 	can_adjust = FALSE

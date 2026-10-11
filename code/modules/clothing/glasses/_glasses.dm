@@ -161,13 +161,13 @@
 
 /obj/item/clothing/glasses/eyepatch
 	name = "eyepatch"
-	desc = "Yarr."
+	desc = "Arr."
 	icon_state = "eyepatch"
 	item_state = "eyepatch"
 
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
-	desc = "Such a dapper eyepiece!"
+	desc = "Cóż za szykowne szkiełko!"
 	icon_state = "monocle"
 	item_state = "headset" // lol
 
@@ -201,26 +201,26 @@
 
 /obj/item/clothing/glasses/regular
 	name = "prescription glasses"
-	desc = "Made by Nerd. Co."
+	desc = "Wyprodukowane przez Nerd. Co."
 	icon_state = "glasses"
 	item_state = "glasses"
 	vision_correction = 1 //corrects nearsightedness
 
 /obj/item/clothing/glasses/regular/jamjar
 	name = "jamjar glasses"
-	desc = "Also known as Virginity Protectors."
+	desc = "Znane też jako obrońcy dziewictwa."
 	icon_state = "jamjar_glasses"
 	item_state = "jamjar_glasses"
 
 /obj/item/clothing/glasses/regular/hipster
 	name = "prescription glasses"
-	desc = "Made by Uncool. Co."
+	desc = "Wyprodukowane przez Uncool. Co."
 	icon_state = "hipster_glasses"
 	item_state = "hipster_glasses"
 
 /obj/item/clothing/glasses/regular/circle
 	name = "circle glasses"
-	desc = "Why would you wear something so controversial yet so brave?"
+	desc = "Czemu nosisz coś tak kontrowersyjnego, a zarazem tak odważnego?"
 	icon_state = "circle_glasses"
 	item_state = "circle_glasses"
 
@@ -228,7 +228,7 @@
 
 /obj/item/clothing/glasses/sunglasses
 	name = "sunglasses"
-	desc = "Strangely ancient technology used to help provide rudimentary eye cover. They do not provide flash protection."
+	desc = "Dziwnie archaiczna technologia zapewniająca podstawową osłonę oczu. Nie chroni przed błyskami."
 	icon_state = "sun"
 	item_state = "sunglasses"
 	darkness_view = 1
@@ -465,26 +465,26 @@
 
 /obj/item/clothing/glasses/cold
 	name = "cold goggles"
-	desc = "A pair of goggles meant for low temperatures."
+	desc = "Gogle przeznaczone na niskie temperatury."
 	icon_state = "cold"
 	item_state = "cold"
 
 /obj/item/clothing/glasses/heat
 	name = "heat goggles"
-	desc = "A pair of goggles meant for high temperatures."
+	desc = "Gogle przeznaczone na wysokie temperatury."
 	icon_state = "heat"
 	item_state = "heat"
 
 /obj/item/clothing/glasses/orange
 	name = "orange glasses"
-	desc = "A sweet pair of orange shades."
+	desc = "Fajne pomarańczowe okulary przeciwsłoneczne."
 	icon_state = "orangeglasses"
 	item_state = "orangeglasses"
 	glass_colour_type = /datum/client_colour/glass_colour/lightorange
 
 /obj/item/clothing/glasses/red
 	name = "red glasses"
-	desc = "Hey, you're looking good, senpai!"
+	desc = "Hej, świetnie wyglądasz, senpai!"
 	icon_state = "redglasses"
 	item_state = "redglasses"
 	glass_colour_type = /datum/client_colour/glass_colour/red

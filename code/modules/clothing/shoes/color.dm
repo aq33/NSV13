@@ -6,7 +6,7 @@
 
 /obj/item/clothing/shoes/sneakers/black
 	name = "black shoes"
-	desc = "A pair of black shoes."
+	desc = "Para czarnych butów."
 	custom_price = 20
 	greyscale_colors = "#545454#ffffff"
 
@@ -17,7 +17,7 @@
 
 /obj/item/clothing/shoes/sneakers/brown
 	name = "brown shoes"
-	desc = "A pair of brown shoes."
+	desc = "Para brązowych butów."
 	greyscale_colors = "#814112#ffffff"
 
 /obj/item/clothing/shoes/sneakers/blue
@@ -38,7 +38,7 @@
 
 /obj/item/clothing/shoes/sneakers/red
 	name = "red shoes"
-	desc = "Stylish red shoes."
+	desc = "Stylowe czerwone buty."
 	greyscale_colors = "#ff2626#ffffff"
 
 /obj/item/clothing/shoes/sneakers/white

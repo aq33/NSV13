@@ -454,7 +454,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/cigar/cohiba
 	name = "\improper Cohiba Robusto cigar"
-	desc = "There's little more you could want from a cigar."
+	desc = "Od cygara nie można chcieć wiele więcej."
 	icon_state = "cigar2off"
 	icon_on = "cigar2on"
 	icon_off = "cigar2off"
@@ -464,7 +464,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/cigar/havana
 	name = "premium Havanian cigar"
-	desc = "A cigar fit for only the best of the best."
+	desc = "Cygaro tylko dla najlepszych z najlepszych."
 	icon_state = "cigar2off"
 	icon_on = "cigar2on"
 	icon_off = "cigar2off"
@@ -591,7 +591,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /////////
 /obj/item/lighter
 	name = "\improper Zippo lighter"
-	desc = "The zippo."
+	desc = "Zippo."
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "zippo"
 	item_state = "zippo"
@@ -747,7 +747,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/lighter/greyscale
 	name = "cheap lighter"
-	desc = "A cheap lighter."
+	desc = "Tania zapalniczka."
 	icon_state = "lighter"
 	fancy = FALSE
 	overlay_list = list(

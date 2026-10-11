@@ -61,7 +61,7 @@
 
 /obj/item/clothing/head/bishopmitre
 	name = "bishop mitre"
-	desc = "An opulent hat that functions as a radio to God. Or as a lightning rod, depending on who you ask."
+	desc = "Okazałe nakrycie głowy, które działa jak radio do Boga. Albo jak piorunochron, zależy, kogo zapytać."
 	icon_state = "bishopmitre"
 
 /obj/item/clothing/head/bishopmitre/black
@@ -99,7 +99,7 @@
 //Mime
 /obj/item/clothing/head/beret
 	name = "beret"
-	desc = "A beret, a mime's favorite headwear."
+	desc = "Beret, ulubione nakrycie głowy mimów."
 	icon_state = "beret"
 	dog_fashion = /datum/dog_fashion/head/beret
 	dynamic_hair_suffix = "+generic"

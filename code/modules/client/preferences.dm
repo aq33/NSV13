@@ -862,9 +862,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				else
 					dat += " |"
 				if(category == gear_tab)
-					dat += " <span class='linkOff'>[category]</span> "
+					dat += " <span class='linkOff'>[GLOB.gear_categories_pl[category] || category]</span> "
 				else
-					dat += " <a href='byond://?_src_=prefs;preference=gear;select_category=[category]'>[category]</a> "
+					dat += " <a href='byond://?_src_=prefs;preference=gear;select_category=[category]'>[GLOB.gear_categories_pl[category] || category]</a> "
 			dat += "</b></center></td></tr>"
 
 			var/datum/loadout_category/LC = GLOB.loadout_categories[gear_tab]
@@ -885,7 +885,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if((G.unlocktype == GEAR_DONATOR) && !(usr.ckey == G.ckey)) //NSV13 - donator items
 					continue
-				dat += "<tr style='vertical-align:top;'><td width=15%>[G.preview_icon(user.client)][G.display_name]\n" // AQ EDIT - ikonka
+				dat += "<tr style='vertical-align:top;'><td width=15%>[G.preview_icon(user.client)][gear_name_pl(G)]\n" // AQ EDIT - ikonka
 				if(G.can_preview()) // AQ EDIT - podgląd na postaci
 					dat += "<a style='white-space:normal;' [preview_gear == G.id ? "class='linkOn' " : ""]href='byond://?_src_=prefs;preference=gear;preview_gear=[G.id]'>Podgląd</a>"
 				var/donator = G.sort_category == "Donator" // purchase box and cost coloumns doesn't appear on donator items
@@ -1503,7 +1503,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						user.client.inc_metabalance((TG.cost * -1), TRUE, "Purchased [TG.display_name].")
 						save_preferences()
 					else
-						to_chat(user, "<span class='warning'>Masz za mało [CONFIG_GET(string/metacurrency_name)], żeby kupić [TG.display_name]!</span>")
+						to_chat(user, "<span class='warning'>Masz za mało [CONFIG_GET(string/metacurrency_name)], żeby kupić [gear_name_pl(TG)]!</span>")
 				if(GEAR_DONATOR)
 					if(usr.ckey != TG.ckey)
 						//The fuck are you playing at?
@@ -1534,7 +1534,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(!(TG.subtype_path in type_blacklist) || !(TG.slot in slot_blacklist))
 						active_character.equipped_gear += TG.id
 					else
-						to_chat(user, "<span class='warning'>Nie można założyć [TG.display_name]. Koliduje z już założonym przedmiotem.</span>")
+						to_chat(user, "<span class='warning'>Nie można założyć [gear_name_pl(TG)]. Koliduje z już założonym przedmiotem.</span>")
 				else
 					log_href_exploit(user)
 			active_character.save(user.client)

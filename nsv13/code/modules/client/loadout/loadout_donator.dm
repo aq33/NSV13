@@ -21,7 +21,7 @@ requisite_type should be the typepath of the "thing" that these reskin. If you n
 
 /obj/item/donator_reskin
 	name = "Donator reskin device"
-	desc = "Apply your donator skin to things!"
+	desc = "Nałóż swój wygląd donatora na przedmioty!"
 	icon = 'nsv13/icons/obj/donator.dmi'
 	icon_state = "painter"
 	var/requisite_type = null

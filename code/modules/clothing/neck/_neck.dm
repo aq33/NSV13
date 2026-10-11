@@ -17,7 +17,7 @@
 
 /obj/item/clothing/neck/tie
 	name = "tie"
-	desc = "A neosilk clip-on tie."
+	desc = "Krawat na klips z neojedwabiu."
 	icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "bluetie"
 	item_state = ""	//no inhands
@@ -38,7 +38,7 @@
 
 /obj/item/clothing/neck/tie/horrible
 	name = "horrible tie"
-	desc = "A neosilk clip-on tie. This one is disgusting."
+	desc = "Krawat na klips z neojedwabiu. Ten jest obrzydliwy."
 	icon_state = "horribletie"
 
 /obj/item/clothing/neck/tie/detective
@@ -190,7 +190,7 @@
 
 /obj/item/clothing/neck/necklace/dope
 	name = "gold necklace"
-	desc = "Damn, it feels good to be a gangster."
+	desc = "Kurczę, dobrze być gangsterem."
 	icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "bling"
 
@@ -228,10 +228,10 @@
 
 /obj/item/clothing/neck/bizzarescarf
 	name = "bizzare scarf"
-	desc = "Your next line is-"
+	desc = "Twoja następna kwestia brzmi:"
 	icon_state = "bizzare"
 
 /obj/item/clothing/neck/conductivescarf
 	name = "conductive scarf"
-	desc = "Made out of 30,000 scarabs. Use with caution."
+	desc = "Zrobiony z 30 000 skarabeuszy. Używać ostrożnie."
 	icon_state = "conductive"

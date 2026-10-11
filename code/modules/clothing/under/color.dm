@@ -1,5 +1,5 @@
 /obj/item/clothing/under/color
-	desc = "A standard issue colored jumpsuit. Variety is the spice of life!"
+	desc = "Standardowy kolorowy kombinezon. Różnorodność to przyprawa życia!"
 	greyscale_colors = "#3f3f3f"
 	greyscale_config = /datum/greyscale_config/jumpsuit
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit_inhand_left
@@ -62,7 +62,7 @@
 
 /obj/item/clothing/under/color/grey
 	name = "grey jumpsuit"
-	desc = "A tasteful grey jumpsuit that reminds you of the good old days."
+	desc = "Gustowny szary kombinezon, który przypomina ci stare dobre czasy."
 	greyscale_colors = "#b3b3b3"
 
 /obj/item/clothing/under/color/jumpskirt/grey
@@ -104,7 +104,7 @@
 
 /obj/item/clothing/under/color/orange
 	name = "orange jumpsuit"
-	desc = "Don't wear this near paranoid security officers."
+	desc = "Nie noś tego przy paranoicznych żandarmach."
 	greyscale_colors = "#ff8c19"
 
 /obj/item/clothing/under/color/jumpskirt/orange
@@ -113,7 +113,7 @@
 
 /obj/item/clothing/under/color/pink
 	name = "pink jumpsuit"
-	desc = "Just looking at this makes you feel <i>fabulous</i>."
+	desc = "Już samo patrzenie na to sprawia, że czujesz się <i>bajecznie</i>."
 	greyscale_colors = "#ffa69b"
 
 /obj/item/clothing/under/color/jumpskirt/pink

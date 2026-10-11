@@ -335,7 +335,7 @@
 /obj/item/clothing/head/ship/squad/colouronly/headband
 	name = "Headband"
 	icon_state = "squadheadband"
-	desc = "A headband which bears the colour of the wearer's squad."
+	desc = "Opaska w barwach oddziału noszącego."
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	dynamic_hair_suffix = "" //So it doesn't hide your hair
 
@@ -343,7 +343,7 @@
 /obj/item/clothing/head/ship/squad/colouronly/cap
 	name = "Cap"
 	icon_state = "squadsoft"
-	desc = "A stylish, coloured cap which bears the colour and insignia of the wearer's squad."
+	desc = "Stylowa kolorowa czapka w barwach i z insygniami oddziału noszącego."
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 //Credit goes to Eris for this sprite!
@@ -353,7 +353,7 @@
 	icon = 'nsv13/icons/obj/clothing/suits.dmi'
 	worn_icon = 'nsv13/icons/mob/suit.dmi'
 	icon_state = "squadbomber"
-	desc = "A stylish jacket bearing a squad's insignia and distinctive colours."
+	desc = "Stylowa kurtka z insygniami i charakterystycznymi barwami oddziału."
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	body_parts_covered = CHEST
 

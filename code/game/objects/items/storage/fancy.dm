@@ -124,7 +124,7 @@
 ////////////
 /obj/item/storage/fancy/cigarettes
 	name = "\improper Space Cigarettes packet"
-	desc = "The most popular brand of cigarettes, sponsors of the Space Olympics."
+	desc = "Najpopularniejsza marka papierosów, sponsor Kosmicznej Olimpiady."
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cig"
 	item_state = "cigpacket"
@@ -204,19 +204,19 @@
 
 /obj/item/storage/fancy/cigarettes/dromedaryco
 	name = "\improper DromedaryCo packet"
-	desc = "A packet of six imported DromedaryCo cancer sticks. A label on the packaging reads, \"Wouldn't a slow death make a change?\""
+	desc = "Paczka sześciu importowanych rakotwórczych pałeczek DromedaryCo. Napis na opakowaniu: \"Czy powolna śmierć nie byłaby miłą odmianą?\""
 	icon_state = "dromedary"
 	spawn_type = /obj/item/clothing/mask/cigarette/dromedary
 
 /obj/item/storage/fancy/cigarettes/cigpack_uplift
 	name = "\improper Uplift Smooth packet"
-	desc = "Your favorite brand, now menthol flavored."
+	desc = "Twoja ulubiona marka, teraz mentolowa."
 	icon_state = "uplift"
 	spawn_type = /obj/item/clothing/mask/cigarette/uplift
 
 /obj/item/storage/fancy/cigarettes/cigpack_robust
 	name = "\improper Robust packet"
-	desc = "Smoked by the robust."
+	desc = "Palone przez krzepkich."
 	icon_state = "robust"
 	spawn_type = /obj/item/clothing/mask/cigarette/robust
 
@@ -228,7 +228,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_carp
 	name = "\improper Carp Classic packet"
-	desc = "Since 2313."
+	desc = "Od 2313 roku."
 	icon_state = "carp"
 	spawn_type = /obj/item/clothing/mask/cigarette/carp
 
@@ -258,7 +258,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_cannabis
 	name = "\improper Freak Brothers' Special packet"
-	desc = "A label on the packaging reads, \"Endorsed by Phineas, Freddy and Franklin.\""
+	desc = "Napis na opakowaniu: \"Polecane przez Phineasa, Freddy'ego i Franklina.\""
 	icon_state = "midori"
 	spawn_type = /obj/item/clothing/mask/cigarette/rollie/cannabis
 

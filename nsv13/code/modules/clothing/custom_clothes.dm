@@ -19,7 +19,7 @@
 
 /obj/item/clothing/under/ship/peacekeeper
 	name = "Space cop uniform"
-	desc = "A smart shirt and pants combo with several badges stitched to it, 'To protect and serve'."
+	desc = "Elegancki zestaw koszuli i spodni z naszytymi odznakami: „Chronić i służyć”."
 	icon_state = "peacekeeper"
 	worn_icon_state = "peacekeeper"
 	item_state = "bl_suit"
@@ -46,7 +46,7 @@
 
 /obj/item/clothing/under/ship/assistant
 	name = "Utilitarian coveralls"
-	desc = "A slightly ragged but reliable jumpsuit fitted with padding and a few small pockets which has been designed with cost-effectiveness in mind."
+	desc = "Nieco sfatygowany, ale niezawodny kombinezon z wyściółką i kilkoma małymi kieszeniami, zaprojektowany z myślą o oszczędności."
 	icon_state = "assistant"
 	worn_icon_state = "assistant"
 	item_state = "bl_suit"
@@ -68,14 +68,14 @@
 	name = "Utility jacket"
 	icon_state = "assistant_jacket"
 	worn_icon_state = "assistant_jacket"
-	desc = "A stylish but heavy jacket designed to protect its wearer from common hazards when serving aboard a ship."
+	desc = "Stylowa, ale ciężka kurtka, chroniąca noszącego przed typowymi zagrożeniami podczas służby na statku."
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 0, "rad" = 10, "fire" = 10, "acid" = 10)
 
 /obj/item/clothing/suit/ship/peacekeeper
 	name = "Peacekeeper vest"
 	icon_state = "peacekeeper_vest"
 	item_state = "peacekeeper_vest"
-	desc = "A nanoweave vest capable of impeding most small arms fire as well as improvised weapons. It bears the logo of the North Star peacekeeper force"
+	desc = "Kamizelka z nanowłókna, zatrzymująca większość pocisków z broni ręcznej i broń improwizowaną. Nosi logo sił pokojowych Gwiazdy Północnej"
 	body_parts_covered = CHEST|GROIN
 	cold_protection = CHEST|GROIN
 	min_cold_protection_temperature = ARMOR_MIN_TEMP_PROTECT
@@ -248,7 +248,7 @@
 
 /obj/item/clothing/head/ship/rising_sun
 	name = "headband of the rising sun"
-	desc = "DEATH BEFORE DISHONOR! BANZAAAAAI!"
+	desc = "ŚMIERĆ PRZED HAŃBĄ! BANZAAAAAI!"
 	icon_state = "sun"
 	item_state = "sun"
 	dynamic_hair_suffix = ""

@@ -695,20 +695,20 @@
 
 /obj/item/toy/plush/ian
 	name = "ian plushie"
-	desc = "Keep him by your side."
+	desc = "Trzymaj go przy sobie."
 	icon_state = "ianplush"
 
 /obj/item/toy/plush/lisa
 	name = "lisa plushie"
-	desc = "Keep her by your side."
+	desc = "Trzymaj ją przy sobie."
 	icon_state = "lisaplush"
 
 /obj/item/toy/plush/renault
 	name = "renault plushie"
-	desc = "AWOOOO!"
+	desc = "AUUUUU!"
 	icon_state = "renaultplush"
 
 /obj/item/toy/plush/opa
 	name = "metal upa"
-	desc = "You feel like this could have prevented World War 3 in a parallel timeline."
+	desc = "Masz wrażenie, że w równoległej linii czasu to coś mogło zapobiec III wojnie światowej."
 	icon_state = "upaplush"

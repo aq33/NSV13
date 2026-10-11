@@ -22,7 +22,7 @@
 
 /obj/item/clothing/under/rank/security/officer/white
 	name = "white security jumpsuit"
-	desc = "A tactical relic of years past before Nanotrasen decided it was cheaper to dye the suits red instead of washing out the blood."
+	desc = "Taktyczny relikt z dawnych lat, zanim Nanotrasen uznało, że taniej jest farbować stroje na czerwono, niż spierać krew."
 	icon_state = "security"
 	item_state = "gy_suit"
 
@@ -35,7 +35,7 @@
 
 /obj/item/clothing/under/rank/security/officer/skirt
 	name = "security jumpskirt"
-	desc = "A \"tactical\" security jumpsuit with the legs replaced by a skirt."
+	desc = "„Taktyczny” kombinezon ochrony, w którym nogawki zastąpiono spódnicą."
 	icon_state = "secskirt"
 	item_state = "r_suit"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -44,7 +44,7 @@
 
 /obj/item/clothing/under/rank/security/officer/blueshirt
 	name = "blue shirt and tie"
-	desc = "I'm a little busy right now, Calhoun."
+	desc = "Jestem teraz trochę zajęty, Calhoun."
 	icon_state = "blueshift"
 	item_state = "blueshift"
 	can_adjust = FALSE
@@ -247,7 +247,7 @@
 
 /obj/item/clothing/under/rank/security/officer/mallcop
 	name = "NT mall cop uniform"
-	desc = "The radio and badge are sewn on, what a crappy knock off. Secway not included."
+	desc = "Radio i odznaka są przyszyte, co za tandetna podróbka. Segway nie wchodzi w zestaw."
 	icon_state = "mallcop"
 	item_state = "gy_suit"
 	can_adjust = FALSE

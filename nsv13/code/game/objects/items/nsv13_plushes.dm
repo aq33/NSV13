@@ -11,7 +11,7 @@
 */
 /obj/item/toy/plush/hfighter
 	name = "heavy fighter plush"
-	desc = "An adorable stuffed toy shaped like a Su-410 Scimitar heavy fighter."
+	desc = "Uroczy pluszak w kształcie ciężkiego myśliwca Su-410 Scimitar."
 	icon = 'nsv13/icons/obj/custom_plushes.dmi'
 	icon_state = "heavyfighter"
 	attack_verb = list("bombarduje", "trąca", "taranuje", "torpeduje")
@@ -19,7 +19,7 @@
 
 /obj/item/toy/plush/lfighter
 	name = "light fighter plush"
-	desc = "An adorable stuffed toy shaped like a Su-818 Rapier light fighter."
+	desc = "Uroczy pluszak w kształcie lekkiego myśliwca Su-818 Rapier."
 	icon = 'nsv13/icons/obj/custom_plushes.dmi'
 	icon_state = "lightfighter"
 	attack_verb = list("trąca", "taranuje", "ostrzeliwuje rakietą")
@@ -32,7 +32,7 @@
 
 /obj/item/toy/plush/transport
 	name = "utility craft plush"
-	desc = "An adorable stuffed toy shaped like a Su-437 Sabre utility vessel."
+	desc = "Uroczy pluszak w kształcie statku użytkowego Su-437 Sabre."
 	icon = 'nsv13/icons/obj/custom_plushes.dmi'
 	icon_state = "transport"
 	attack_verb = list("trąca", "taranuje")
@@ -40,5 +40,5 @@
 
 /obj/item/toy/plush/transport/mining
 	name = "mining craft plush"
-	desc = "An adorable stuffed toy shaped like a Su-437 Sabre mining vessel."
+	desc = "Uroczy pluszak w kształcie statku górniczego Su-437 Sabre."
 	icon_state = "mining"

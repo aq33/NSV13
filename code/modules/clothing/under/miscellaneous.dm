@@ -21,7 +21,7 @@
 
 /obj/item/clothing/under/misc/vice_officer
 	name = "vice officer's jumpsuit"
-	desc = "It's the standard issue pretty-boy outfit, as seen on Holo-Vision."
+	desc = "Standardowy strój przystojniaka, taki jak w Holo-Wizji."
 	icon_state = "vice"
 	item_state = "gy_suit"
 	can_adjust = FALSE
@@ -53,7 +53,7 @@
 
 /obj/item/clothing/under/misc/overalls
 	name = "laborer's overalls"
-	desc = "A set of durable overalls for getting the job done."
+	desc = "Wytrzymałe ogrodniczki do roboty."
 	icon_state = "overalls"
 	item_state = "lb_suit"
 	can_adjust = FALSE
@@ -61,7 +61,7 @@
 
 /obj/item/clothing/under/misc/assistantformal
 	name = "assistant's formal uniform"
-	desc = "An assistant's formal-wear. Why an assistant needs formal-wear is still unknown."
+	desc = "Strój wyjściowy majtka. Po co majtkowi strój wyjściowy, wciąż nie wiadomo."
 	icon_state = "assistant_formal"
 	item_state = "gy_suit"
 	can_adjust = FALSE
@@ -125,11 +125,11 @@
 
 /obj/item/clothing/under/gangster
 	name = "gangstar suit"
-	desc = "Those who carry on the will of those who passed must keep moving forward."
+	desc = "Ci, którzy niosą wolę tych, którzy odeszli, muszą iść naprzód."
 	icon_state = "gangster"
 	can_adjust = FALSE
 
 /obj/item/clothing/under/gangster/purple
-	desc = "I have a dream."
+	desc = "Mam marzenie."
 	icon_state = "gangster_p"
 	armor = list("melee" = 10, "laser" = 10, "fire" = 40, "acid" = 10, "bomb" = 5, "stamina" = 30)

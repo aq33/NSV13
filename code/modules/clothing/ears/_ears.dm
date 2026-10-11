@@ -24,7 +24,7 @@
 
 /obj/item/clothing/ears/headphones
 	name = "headphones"
-	desc = "Unce unce unce unce. Boop!"
+	desc = "Unce unce unce unce. Bup!"
 	icon = 'icons/obj/clothing/accessories.dmi'
 	icon_state = "headphones"
 	item_state = "headphones"

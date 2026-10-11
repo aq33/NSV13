@@ -18,7 +18,7 @@
 
 /obj/item/clothing/head/that
 	name = "top-hat"
-	desc = "It's an amish looking hat."
+	desc = "Kapelusz wyglądający jak u amiszów."
 	icon_state = "tophat"
 	item_state = "that"
 	dog_fashion = /datum/dog_fashion/head
@@ -64,7 +64,7 @@
 
 /obj/item/clothing/head/cueball
 	name = "cueball helmet"
-	desc = "A large, featureless white orb meant to be worn on your head. How do you even see out of this thing?"
+	desc = "Duża, gładka biała kula do noszenia na głowie. Jak ty w ogóle przez to coś widzisz?"
 	icon_state = "cueball"
 	item_state="cueball"
 	flags_cover = HEADCOVERSEYES|HEADCOVERSMOUTH
@@ -107,7 +107,7 @@
 
 /obj/item/clothing/head/flatcap
 	name = "flat cap"
-	desc = "A working man's cap."
+	desc = "Czapka człowieka pracy."
 	icon_state = "flat_cap"
 	item_state = "detective"
 
@@ -150,7 +150,7 @@
 
 /obj/item/clothing/head/bowler
 	name = "bowler-hat"
-	desc = "Gentleman, elite aboard!"
+	desc = "Dżentelmeni, elita na pokładzie!"
 	icon_state = "bowler"
 	item_state = "bowler"
 	dynamic_hair_suffix = ""
@@ -196,7 +196,7 @@
 	name = "fedora"
 	icon_state = "fedora"
 	item_state = "fedora"
-	desc = "A really cool hat if you're a mobster. A really lame hat if you're not."
+	desc = "Naprawdę fajny kapelusz, jeśli jesteś mafiozem. Naprawdę żałosny, jeśli nie jesteś."
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small
 
 /obj/item/clothing/head/fedora/suicide_act(mob/user)
@@ -213,7 +213,7 @@
 	name = "sombrero"
 	icon_state = "sombrero"
 	item_state = "sombrero"
-	desc = "You can practically taste the fiesta."
+	desc = "Niemal czujesz smak fiesty."
 	flags_inv = HIDEHAIR
 
 	dog_fashion = /datum/dog_fashion/head/sombrero
@@ -222,7 +222,7 @@
 	name = "green sombrero"
 	icon_state = "greensombrero"
 	item_state = "greensombrero"
-	desc = "As elegant as a dancing cactus."
+	desc = "Elegancki jak tańczący kaktus."
 	flags_inv = HIDEHAIR|HIDEFACE|HIDEEARS
 	dog_fashion = null
 
@@ -355,7 +355,7 @@
 
 /obj/item/clothing/head/delinquent
 	name = "delinquent hat"
-	desc = "Good grief."
+	desc = "Dobry Boże."
 	icon_state = "delinquent"
 
 /obj/item/clothing/head/frenchberet
@@ -479,23 +479,23 @@
 
 /obj/item/clothing/head/gangsterwig
 	name = "gangstar wig"
-	desc = "Like father like son."
+	desc = "Jaki ojciec, taki syn."
 	icon_state = "gangster_wig"
 	flags_inv = HIDEHAIR
 
 /obj/item/clothing/head/oldhat
 	name = "old man hat"
-	desc = "OH MY GOD."
+	desc = "O MÓJ BOŻE."
 	icon_state = "oldmanhat"
 
 /obj/item/clothing/head/marine
 	name = "mariner hat"
-	desc = "There's nothing quite like the ocean breeze in the morning."
+	desc = "Nie ma to jak poranna bryza od oceanu."
 	icon_state = "marine"
 
 /obj/item/clothing/head/chicken_head_retro
 	name = "chicken head"
-	desc = "Looks just like a real one."
+	desc = "Wygląda zupełnie jak prawdziwa."
 	icon_state = "chicken"
 	flags_inv = HIDEHAIR
 

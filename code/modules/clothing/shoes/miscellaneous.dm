@@ -26,7 +26,7 @@
 	armor = list("melee" = 40, "bullet" = 30, "laser" = 25, "energy" = 25, "bomb" = 50, "bio" = 30, "rad" = 30, "fire" = 90, "acid" = 50, "stamina" = 30)
 
 /obj/item/clothing/shoes/sandal
-	desc = "A pair of rather plain wooden sandals."
+	desc = "Para dość zwyczajnych drewnianych sandałów."
 	name = "sandals"
 	icon_state = "wizard"
 	strip_delay = 50
@@ -138,7 +138,7 @@
 
 /obj/item/clothing/shoes/winterboots
 	name = "winter boots"
-	desc = "Boots lined with 'synthetic' animal fur."
+	desc = "Buty podszyte „syntetycznym” zwierzęcym futrem."
 	icon_state = "winterboots"
 	item_state = "winterboots"
 	permeability_coefficient = 0.15
@@ -207,7 +207,7 @@
 
 /obj/item/clothing/shoes/laceup
 	name = "laceup shoes"
-	desc = "The height of fashion, and they're pre-polished!"
+	desc = "Szczyt mody, i to już wypastowane!"
 	icon_state = "laceups"
 	equip_delay_other = 50
 
@@ -363,6 +363,6 @@
 
 /obj/item/clothing/shoes/swagshoes
 	name = "swag shoes"
-	desc = "They got me for my foams!"
+	desc = "Zgarnęli mnie za moje piankowce!"
 	icon_state = "SwagShoes"
 	item_state = "SwagShoes"

@@ -130,7 +130,7 @@
 
 /obj/item/clothing/neck/cloak/chap/bishop
 	name = "bishop's cloak"
-	desc = "Become the space pope."
+	desc = "Zostań kosmicznym papieżem."
 	icon_state = "bishopcloak"
 
 /obj/item/clothing/neck/cloak/chap/bishop/black

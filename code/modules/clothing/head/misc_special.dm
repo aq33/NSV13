@@ -111,7 +111,7 @@
  */
 /obj/item/clothing/head/ushanka
 	name = "ushanka"
-	desc = "Perfect for winter in Siberia, da?"
+	desc = "Idealna na zimę na Syberii, da?"
 	icon_state = "ushankadown"
 	item_state = "ushankadown"
 	flags_inv = HIDEEARS|HIDEHAIR
@@ -389,7 +389,7 @@
 
 /obj/item/clothing/head/speedwagon
 	name = "hat of ultimate masculinity"
-	desc = "Even the mere act of wearing this makes you want to pose menacingly."
+	desc = "Samo noszenie tego sprawia, że masz ochotę groźnie pozować."
 	worn_icon = 'icons/mob/large-worn-icons/64x64/head.dmi'
 	icon_state = "speedwagon"
 	item_state = "speedwagon"
@@ -398,7 +398,7 @@
 
 /obj/item/clothing/head/speedwagon/cursed
 	name = "ULTIMATE HAT"
-	desc = "You feel weak and pathetic in comparison to this exceptionally beautiful hat."
+	desc = "Przy tym wyjątkowo pięknym kapeluszu czujesz się słaby i żałosny."
 	icon_state = "speedwagon_cursed"
 	item_state = "speedwagon_cursed"
 

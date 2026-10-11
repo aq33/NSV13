@@ -258,18 +258,18 @@
 
 /obj/item/clothing/accessory/armband
 	name = "red armband"
-	desc = "A fancy red armband!"
+	desc = "Elegancka czerwona opaska na ramię!"
 	icon_state = "redband"
 	attachment_slot = null
 
 /obj/item/clothing/accessory/armband/blue
 	name = "blue armband"
-	desc = "A fancy blue armband!"
+	desc = "Elegancka niebieska opaska na ramię!"
 	color = list(0,0,1, 0,1,0, 1,0,0)
 
 /obj/item/clothing/accessory/armband/green
 	name = "green armband"
-	desc = "A fancy green armband!"
+	desc = "Elegancka zielona opaska na ramię!"
 	color = list(0,1,0, 1,0,0, 0,0,1)
 
 /obj/item/clothing/accessory/armband/deputy

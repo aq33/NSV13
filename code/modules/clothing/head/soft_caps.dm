@@ -31,49 +31,49 @@
 
 /obj/item/clothing/head/soft/red
 	name = "red cap"
-	desc = "It's a baseball hat in a tasteless red colour."
+	desc = "Czapka bejsbolówka w bezgustownym czerwonym kolorze."
 	icon_state = "redsoft"
 	soft_color = "red"
 
 /obj/item/clothing/head/soft/blue
 	name = "blue cap"
-	desc = "It's a baseball hat in a tasteless blue colour."
+	desc = "Czapka bejsbolówka w bezgustownym niebieskim kolorze."
 	icon_state = "bluesoft"
 	soft_color = "blue"
 
 /obj/item/clothing/head/soft/green
 	name = "green cap"
-	desc = "It's a baseball hat in a tasteless green colour."
+	desc = "Czapka bejsbolówka w bezgustownym zielonym kolorze."
 	icon_state = "greensoft"
 	soft_color = "green"
 
 /obj/item/clothing/head/soft/yellow
 	name = "yellow cap"
-	desc = "It's a baseball hat in a tasteless yellow colour."
+	desc = "Czapka bejsbolówka w bezgustownym żółtym kolorze."
 	icon_state = "yellowsoft"
 	soft_color = "yellow"
 
 /obj/item/clothing/head/soft/grey
 	name = "grey cap"
-	desc = "It's a baseball hat in a tasteful grey colour."
+	desc = "Czapka bejsbolówka w gustownym szarym kolorze."
 	icon_state = "greysoft"
 	soft_color = "grey"
 
 /obj/item/clothing/head/soft/orange
 	name = "orange cap"
-	desc = "It's a baseball hat in a tasteless orange colour."
+	desc = "Czapka bejsbolówka w bezgustownym pomarańczowym kolorze."
 	icon_state = "orangesoft"
 	soft_color = "orange"
 
 /obj/item/clothing/head/soft/purple
 	name = "purple cap"
-	desc = "It's a baseball hat in a tasteless purple colour."
+	desc = "Czapka bejsbolówka w bezgustownym fioletowym kolorze."
 	icon_state = "purplesoft"
 	soft_color = "purple"
 
 /obj/item/clothing/head/soft/black
 	name = "black cap"
-	desc = "It's a baseball hat in a tasteless black colour."
+	desc = "Czapka bejsbolówka w bezgustownym czarnym kolorze."
 	icon_state = "blacksoft"
 	soft_color = "black"
 

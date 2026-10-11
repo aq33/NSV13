@@ -145,7 +145,7 @@
 
 /obj/item/dice/d20
 	name = "d20"
-	desc = "A die with twenty sides. The preferred die to throw at the GM."
+	desc = "Kość o dwudziestu ściankach. Ulubiona kość do rzucania w mistrza gry."
 	icon_state = "d20"
 	sides = 20
 

@@ -1,7 +1,7 @@
 /obj/item/lipstick
 	gender = PLURAL
 	name = "red lipstick"
-	desc = "A generic brand of lipstick."
+	desc = "Szminka zwykłej marki."
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "lipstick"
 	w_class = WEIGHT_CLASS_TINY
