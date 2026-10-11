@@ -245,7 +245,7 @@
 		"status" = status,
 		"interface" = list(
 			"name" = interface,
-			"layout" = null, // AQ EDIT - nie mamy preferencji układu okien z Bee
+			"layout" = get_tgui_layout(user, src_object), // AQ EDIT - per session, aquila/code/modules/tgui/layout.dm
 		),
 		"refreshing" = refreshing,
 		"window" = list(

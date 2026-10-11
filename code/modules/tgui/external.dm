@@ -99,6 +99,10 @@
 	// If UI is not interactive or usr calling Topic is not the UI user, bail.
 	if(!ui || ui.status != UI_INTERACTIVE)
 		return 1
+	// AQ EDIT START - port BeeStation #13072: grid/list toggle in vendors and fridges
+	if(action == "change_ui_state")
+		set_tgui_layout(ui.user, src, params["new_state"])
+	// AQ EDIT END
 
 /**
  * public
