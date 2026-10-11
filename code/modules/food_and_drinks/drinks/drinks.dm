@@ -136,6 +136,8 @@
 	I.SwapColor(rgb(255, 0, 220, 255), rgb(0, 0, 0, 0))
 	B.icon = I
 	B.name = "broken [name]"
+	if(ranged)
+		B.throw_scatter() // AQUILA EDIT - Yogstation#12789
 	if(prob(33))
 		var/obj/item/shard/S = new(drop_location())
 		target.Bumped(S)
@@ -354,6 +356,8 @@
 	B.force = 0
 	B.throwforce = 0
 	B.desc = "A carton with the bottom half burst open. Might give you a papercut."
+	if(ranged)
+		B.throw_scatter() // AQUILA EDIT - Yogstation#12789
 	transfer_fingerprints_to(B)
 	qdel(src)
 	target.Bumped(B)

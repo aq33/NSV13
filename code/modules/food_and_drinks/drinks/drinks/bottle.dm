@@ -23,6 +23,8 @@
 	var/obj/item/broken_bottle/B = new (loc)
 	if(!ranged && thrower)
 		thrower.put_in_hands(B)
+	else
+		B.throw_scatter() // AQUILA EDIT - Yogstation#12789
 	B.icon_state = icon_state
 
 	var/icon/I = new('icons/obj/drinks.dmi', src.icon_state)

@@ -64,7 +64,7 @@
 	if(!length(target_areas))
 		return FALSE
 
-	var/machine_name = format_text(initial(target_obj_type.name)) // strips the improper/proper text macros, which break findtext() on the name
+	var/machine_name = format_text(initial(target_obj_type.name))
 	name = "destroy [machine_name]"
 	var/list/area_names = list()
 	for(var/area/A as anything in target_areas)

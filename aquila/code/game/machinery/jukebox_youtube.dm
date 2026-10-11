@@ -1,4 +1,4 @@
-// AQUILA EDIT - Odtwarzanie playlist z YouTube przez jukebox (yt-dlp / youtube-dl z INVOKE_YOUTUBEDL).
+// AQUILA EDIT - Odtwarzanie playlist z YouTube i SoundCloud przez jukebox (yt-dlp / youtube-dl z INVOKE_YOUTUBEDL).
 // Dźwięk idzie przez przeglądarkę klienta (tgui_panel), tak jak "Play Internet Sound".
 // Słyszą go gracze w okręgu wokół jukeboxa na tym samym z-levelu, ciszej im dalej (hearing_gain()), a z daleka dochodzi echo (echo_amount()).
 
@@ -16,12 +16,17 @@
 /// Po takim czasie uznajemy, że yt-dlp się zawiesił, i odblokowujemy jukebox
 #define JUKEBOX_YT_BUSY_TIMEOUT (90 SECONDS)
 /// Wspólne argumenty yt-dlp: limit czasu połączenia i ponowień, żeby zapytanie nie wisiało w nieskończoność
-#define JUKEBOX_YT_ARGS "--socket-timeout 10 --retries 2 --extractor-retries 1 --no-warnings"
+/// (tylko opcje znane też staremu youtube-dl, gdyby nadal był używany)
+#define JUKEBOX_YT_ARGS "--socket-timeout 10 --retries 2 --no-warnings"
+/// Format audio: tylko zwykły plik przez HTTP(S) - przeglądarka nie zagra strumieni HLS (m3u8), które SoundCloud też oferuje
+#define JUKEBOX_YT_FORMAT "bestaudio\[protocol^=http]\[ext=m4a]/bestaudio\[protocol^=http]\[ext=mp3]/bestaudio\[protocol^=http]/best\[protocol^=http]\[ext=mp4]\[height<=360]"
+/// Linki SoundCloud wygasają po ok. 5 minutach - po tym czasie nowym słuchaczom dajemy świeży link
+#define JUKEBOX_YT_STREAM_REFRESH (4 MINUTES)
 
 /obj/machinery/jukebox
 	/// URL playlisty - domyślna playlista wczytuje się przy pierwszym "Graj"
 	var/yt_playlist_url = "https://www.youtube.com/playlist?list=PL3QLD4mbUqkmQytxtaEQY8ShmFBBzTreg"
-	/// Lista utworów: list(list("id", "title", "duration"))
+	/// Lista utworów: list(list("id", "url", "title", "duration")); url to strona utworu (YouTube/SoundCloud)
 	var/list/yt_tracks = list()
 	var/yt_index = 0
 	var/yt_active = FALSE
@@ -36,6 +41,10 @@
 	var/yt_track_started = 0
 	var/yt_track_end = 0
 	var/yt_stream_url = null
+	/// Po tym czasie link do strumienia może wygasnąć (SoundCloud), null = nie wygasa
+	var/yt_stream_expires = null
+	/// Trwa pobieranie świeżego linku do bieżącego utworu
+	var/yt_refreshing = FALSE
 	var/list/yt_extra = null
 	/// Tempo bieżącego utworu (kable vaporwave/nightcore), ustalane przy starcie utworu
 	var/yt_speed = 1
@@ -48,11 +57,12 @@
 	/// Od kiedy klient jest poza zasięgiem (muzyka wyciszona, ale jeszcze gra)
 	var/list/yt_listener_out = list()
 
-/// Polecenie yt-dlp: INVOKE_YOUTUBEDL z konfigu, a gdy go brak - yt-dlp.exe z katalogu gry (leży w repo).
+/// Polecenie yt-dlp: yt-dlp.exe z katalogu gry (leży w repo), a gdy go brak - INVOKE_YOUTUBEDL z konfigu.
+/// yt-dlp.exe ma pierwszeństwo - stary youtube-dl z konfigu nie radzi sobie z YouTube i nie zna części opcji.
 /proc/aquila_ytdl_command()
-	. = CONFIG_GET(string/invoke_youtubedl)
-	if(!. && world.system_type == MS_WINDOWS && fexists("yt-dlp.exe"))
+	if(world.system_type == MS_WINDOWS && fexists("yt-dlp.exe"))
 		return ".\\yt-dlp.exe --no-check-certificate"
+	return CONFIG_GET(string/invoke_youtubedl)
 
 /obj/machinery/jukebox/proc/yt_available()
 	return !!aquila_ytdl_command()
@@ -118,7 +128,7 @@
 	if(!yt_available())
 		dat += "<span class='jb-muted'>Niedostępne - brak yt-dlp na serwerze (INVOKE_YOUTUBEDL w konfigu ani yt-dlp.exe w katalogu gry).</span></div>"
 		return dat.Join()
-	dat += "<div class='jb-label'>Playlista YouTube[yt_tracks.len ? " &middot; [yt_tracks.len] utworów" : ""]</div>"
+	dat += "<div class='jb-label'>Playlista YouTube / SoundCloud[yt_tracks.len ? " &middot; [yt_tracks.len] utworów" : ""]</div>"
 	dat += "<div class='jb-row'>[yt_link("yt_load", "Wczytaj playlistę")]</div>"
 	if(!yt_tracks.len)
 		dat += "<div class='jb-row jb-muted'>Brak wczytanej playlisty - &quot;Graj&quot; wczyta domyślną.</div></div>"
@@ -183,7 +193,7 @@
 		if("yt_load")
 			if(yt_busy)
 				return
-			var/url = input(user, "Podaj link do playlisty YouTube", "Playlista", yt_playlist_url) as text|null
+			var/url = input(user, "Podaj link do playlisty lub utworu z YouTube albo SoundCloud", "Playlista", yt_playlist_url) as text|null
 			if(!url || QDELETED(src))
 				return
 			url = trim(url)
@@ -258,17 +268,24 @@
 	for(var/list/E in entries)
 		if(!E["id"])
 			continue
-		// prywatne i usunięte filmy przychodzą jako "[Private video]" / "[Deleted video]" bez długości,
-		// transmisje na żywo też nie mają długości - żadnego z nich nie da się zagrać
 		var/duration = text2num("[E["duration"]]")
 		var/title = "[E["title"]]"
-		if(!duration || title == "\[Private video]" || title == "\[Deleted video]" || (E["availability"] && !(E["availability"] in list("public", "unlisted"))))
+		var/extractor = "[E["ie_key"] || E["extractor_key"]]"
+		var/is_youtube = !extractor || findtext(extractor, "Youtube")
+		// YouTube: prywatne i usunięte filmy przychodzą jako "[Private video]" / "[Deleted video]" bez długości,
+		// transmisje na żywo też nie mają długości - żadnego z nich nie da się zagrać.
+		// SoundCloud na stronach profili nie podaje długości, więc tam jej brak nie oznacza niedostępnego utworu.
+		if((is_youtube && !duration) || title == "\[Private video]" || title == "\[Deleted video]" || (E["availability"] && !(E["availability"] in list("public", "unlisted"))))
 			skipped++
 			continue
-		if(duration * 10 > JUKEBOX_YT_MAX_TRACK_LENGTH)
+		if(duration && duration * 10 > JUKEBOX_YT_MAX_TRACK_LENGTH)
 			skipped++
 			continue
-		new_tracks += list(list("id" = "[E["id"]]", "title" = title || "[E["id"]]", "duration" = duration))
+		// webpage_url ma pierwszeństwo: przy pojedynczym utworze (nie playliście) "url" to bezpośredni, szybko wygasający link do pliku
+		var/track_url = "[E["webpage_url"] || E["url"]]"
+		if(!findtext(track_url, GLOB.is_http_protocol))
+			track_url = is_youtube ? "https://www.youtube.com/watch?v=[E["id"]]" : url
+		new_tracks += list(list("id" = "[E["id"]]", "url" = track_url, "title" = title || "[E["id"]]", "duration" = duration))
 		if(new_tracks.len >= JUKEBOX_YT_MAX_TRACKS)
 			break
 	if(!new_tracks.len)
@@ -282,8 +299,8 @@
 	yt_index = 0
 	yt_prefetched = null
 	say("Wczytano [yt_tracks.len] utworów[skipped ? " (pominięto [skipped] prywatnych, usuniętych lub zbyt długich)" : ""].")
-	log_game("[key_name(user)] loaded YouTube playlist [url] into [src] at [AREACOORD(src)]")
-	message_admins("[ADMIN_LOOKUPFLW(user)] wczytał(a) playlistę YT do jukeboxa: [url] [ADMIN_JMP(src)]")
+	log_game("[key_name(user)] loaded jukebox playlist [url] into [src] at [AREACOORD(src)]")
+	message_admins("[ADMIN_LOOKUPFLW(user)] wczytał(a) playlistę do jukeboxa: [url] [ADMIN_JMP(src)]")
 	updateUsrDialog()
 	if(autoplay)
 		yt_next()
@@ -303,7 +320,8 @@
 	if(!ytdl || index < 1 || index > yt_tracks.len)
 		return null
 	var/list/T = yt_tracks[index]
-	var/list/output = world.shelleo("[ytdl] [JUKEBOX_YT_ARGS] --geo-bypass --format \"bestaudio\[ext=m4a]/bestaudio\[ext=mp3]/bestaudio\[ext=aac]/best\[ext=mp4]\[height<=360]\" --dump-single-json --no-playlist -- \"https://www.youtube.com/watch?v=[shell_url_scrub(T["id"])]\"")
+	var/track_url = T["url"] || "https://www.youtube.com/watch?v=[T["id"]]"
+	var/list/output = world.shelleo("[ytdl] [JUKEBOX_YT_ARGS] --geo-bypass --format \"[JUKEBOX_YT_FORMAT]\" --dump-single-json --no-playlist -- \"[shell_url_scrub(track_url)]\"")
 	if(QDELETED(src) || output[SHELLEO_ERRORLEVEL])
 		return null
 	var/list/data
@@ -369,7 +387,7 @@
 
 /obj/machinery/jukebox/proc/yt_start_track(stream, list/data, duration)
 	yt_stop_listeners()
-	yt_stream_url = stream
+	yt_set_stream(stream)
 	yt_speed = get_speed_factor()
 	yt_extra = list("title" = data["title"], "link" = data["webpage_url"], "pitch" = yt_speed)
 	yt_track_started = world.time
@@ -383,10 +401,34 @@
 	yt_update_listeners()
 	updateUsrDialog()
 
+/// Ustawia link do strumienia bieżącego utworu i czas, po którym trzeba go odświeżyć
+/obj/machinery/jukebox/proc/yt_set_stream(stream)
+	yt_stream_url = stream
+	// linki YouTube są ważne godzinami; SoundCloud (sndcdn.com) ok. 5 minut
+	yt_stream_expires = findtext(stream, "sndcdn.com") ? world.time + JUKEBOX_YT_STREAM_REFRESH : null
+
+/// Pobiera świeży link do bieżącego utworu dla graczy, którzy dopiero wchodzą w zasięg.
+/// Gracze, którym już gra, mają utwór zbuforowany i grają dalej.
+/obj/machinery/jukebox/proc/yt_refresh_stream()
+	if(yt_refreshing || !yt_active || !yt_index)
+		return
+	yt_refreshing = TRUE
+	var/started = yt_track_started
+	var/list/result = yt_resolve(yt_index)
+	if(QDELETED(src))
+		return
+	yt_refreshing = FALSE
+	if(yt_active && yt_track_started == started) // w międzyczasie nie zmienił się utwór
+		if(result)
+			yt_set_stream(result["stream"])
+		else
+			yt_stream_expires = world.time + 30 SECONDS // spróbujemy ponownie za chwilę
+
 /obj/machinery/jukebox/proc/yt_stop()
 	var/was_active = yt_active
 	yt_active = FALSE
 	yt_stream_url = null
+	yt_stream_expires = null
 	yt_prefetched = null
 	SSjukeboxes.yt_jukeboxes -= src
 	yt_stop_listeners()
@@ -440,9 +482,12 @@
 			yt_listeners[C] = gain
 			yt_listener_fx[C] = fx
 			C.tgui_panel?.set_music_gain(gain, echo, muffle)
+	var/stream_stale = yt_stream_expires && world.time > yt_stream_expires
+	if(stream_stale)
+		INVOKE_ASYNC(src, .proc/yt_refresh_stream)
 	for(var/mob/M as anything in GLOB.player_list)
 		var/client/C = M.client
-		if(!C || (C in yt_listeners))
+		if(!C || (C in yt_listeners) || stream_stale) // z wygasłym linkiem nowi słuchacze poczekają na świeży
 			continue
 		var/gain = yt_gain_for(M)
 		if(gain <= 0)
@@ -482,3 +527,5 @@
 #undef JUKEBOX_YT_PREFETCH_TIME
 #undef JUKEBOX_YT_BUSY_TIMEOUT
 #undef JUKEBOX_YT_ARGS
+#undef JUKEBOX_YT_FORMAT
+#undef JUKEBOX_YT_STREAM_REFRESH

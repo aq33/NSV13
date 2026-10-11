@@ -135,6 +135,7 @@
 #include "code\game\objects\items\implants\implant_infiltrator.dm"
 #include "code\game\objects\items\implants\implant_security.dm"
 #include "code\game\objects\items\inducer.dm"
+#include "code\game\objects\items\item_scatter.dm"
 #include "code\game\objects\items\manuals.dm"
 #include "code\game\objects\items\melee\misc.dm"
 #include "code\game\objects\items\polskie_znaki.dm"
