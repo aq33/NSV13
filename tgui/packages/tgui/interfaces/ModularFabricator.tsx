@@ -1,695 +1,458 @@
 import { round } from 'common/math';
-import { capitalize, createSearch } from 'common/string';
-import { Fragment } from 'react';
+import { BooleanLike, classes } from 'common/react';
+
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
-  Divider,
-  Flex,
-  Input,
+  Icon,
   NoticeBox,
-  NumberInput,
   ProgressBar,
   Section,
-  Table,
-} from 'tgui-core/components';
-
-import { useBackend, useLocalState } from '../backend';
-import { Grid } from '../components';
+  Stack,
+  Tooltip,
+} from '../components';
 import { Window } from '../layouts';
+import { DesignBrowser } from './Fabrication/DesignBrowser';
+import { MaterialAccessBar } from './Fabrication/MaterialAccessBar';
+import { MaterialCostSequence } from './Fabrication/MaterialCostSequence';
+import { Design, Material, MaterialMap } from './Fabrication/Types';
+import { affordableAmount, availableFor } from './Fabricator';
 
-type Data = {
-  acceptsDisk: any;
-  allow_add_category: any;
-  being_build: any;
-  can_sync: any;
-  diskInserted: any;
-  hacked: any;
-  items: any;
-  materials: any;
-  outputDir: any;
-  queue: any;
-  sec_interface_unlock: any;
-  show_unlock_bar: any;
+type QueueEntry = {
+  name: string;
+  amount: number;
+  design_id: string;
 };
 
-const MAX_SEARCH_RESULTS = 25;
+type CurrentBuild = {
+  design_id: string;
+  name: string;
+  progress: number;
+};
 
-/*
- * Modular Fabricator Interface By PowerfulBacon
- * ---------------------------------------------
- * Examples of use: Autolathe, Exosuit fabricator
- * =============================================
- * Modular Fabricator Changelog:
- *  - Instead of using datums as IDs for ui_act,
-====the /datum/design ID is used instead
- *  - Made the comment look ugly because of TGUI max
-====line limit :(
-====I promise this was readable before
- * =============================================
- * Instructions on use:
- * Under ui_interact open the interface (pretty
- simple)
- * [R] - required.
- * [*] - recommended
- *
- * ui_data / ui_static_data things:
- *  - [R] can_sync - If TRUE the Sync R&D button will be displayed
- *  - [R] allow_add_category - If TRUE a button will be added that lets the
-====user queue all items in the category.
- *  - [R] show_unlock_bar - TRUE if the interface can be hacked / unlocked.
- *  - [*] sec_interface_unlock - TRUE if the security
-====interface is unlocked. You probably want to set it to
-====true when a sec ID is scanned, or the thing is hacked.
- *  - [*] hacked - TRUE if the interface is hacked
- *  - [R] outputDir ("center", "left", "right", "up", "down")
-====- Direction of output
- *  - [R] acceptsDisk - Does this interface accept data disks?
-====If false the data disk drive on the UI will display is 'inactive'
- *  - [*] diskInserted - Required if you accept disks. Will unlock
-====the install and eject buttons when set to TRUE.
- *  - [R] materials - List of all inserted materials (or linked
-====silo materials if you want that)
- *        list(list(
- *          name = "Iron",
-====Name of the material in the UI
- *          amount = 50000,
-====Amount of the material in the UI
-====(Divided by 2000 to calculate sheet amount)
- *          design_id = "iron",
-====The design ID required for ui_act
- *        ))
- *  - [R] queue - List of all items in the processing queue
- *        list(list(
- *          name = "Battery",           //The name of the thing to display
- *          amount = 8,                 //The amount left to display
- *          repeat = FALSE,             //Will the repeat icon on the
-====interface be green?
-====You will have to handle the repeating yourself.
- *          design_id = "a",            //The design ID of the object in queue
-====regular queue?
- *        ))
- *  - [R] items - List of all possible printable items
- *        list(list(
- *          category_name = "batteries",        //Category Name
- *          category_items = list(
- *            list(
- *              name = "Battery"                //Display name of the item
- *              design_id = "battery"           //Design ID of the object
- *              material_cost = list(
- *               list("name" = "iron", "amount" = "2000"),
- *               list("name" = "copper", "amount" = "5000"),
- *              )
- *            ),
- *            list(
- *              name = "Battery2"               //Display name of the item
- *              design_id = "battery2"          //Design ID of the object
- *              material_cost = list(
- *               list("name" = "iron", "amount" = "2000"),
- *               list("name" = "copper", "amount" = "5000"),
- *              )
- *            ),
- *          ),
- *        ))
- *  - [R] being_built - What is being built (can be null)
- *      list(list(
- *        design_id,
- *        name,
- *        progress,
- *      ))
- *
- * ui_act things:
- *  - [R] toggle_lock -
- *  - [R] toggle_safety - Toggles the safeties.
-    Button is only green when sec_interface_unlock = FALSE
- *  - [R] output_dir - Set the output direction when this is called.
-    Parameters: direction (string)
- *  - [*] upload_disk - When the install button is pressed on disk.
-    You should upload all tech in the inserted disk into the internal tech tree.
- *  - [*] eject_disk - Eject the inserted disk.
- *  - [R] eject_material - Ejects a material.
-    parameters: material_datum, amount (int)
- *  - [R] queue_repeat - When repeating mode on the queue is changed.
-    Parameters: repeating (bool)
- *  - [R] clear_queue - Clear the queue.
- *  - [R] item_repeat - When repeating mode an a specific item is toggled.
-    Parameters: repeating (bool), item_datum
- *  - [R] clear_item - Clear an item from the queue
-    Parameters: design_id
- *  - [R] queue_item - Add an item to the queue
-    Parameters: design_id, amount, item_name
- *  - [R] begin_process - Beings processing the queue
-    (Nothing to stop this being automatic)
- *  - [*] queue_category - Queues an entier category
-    Parameters: category_name (string)
- *  - [*] resync_rd - Resync with nearby R&D Servers
- *
-*/
-export const ModularFabricator = (props) => {
+type Data = {
+  fabName: string;
+  accepts_disk: BooleanLike;
+  show_unlock_bar: BooleanLike;
+  allow_add_category: BooleanLike;
+  uses_queue: BooleanLike;
+  processing: BooleanLike;
+  designs: Record<string, Design>;
+  queue_repeating: BooleanLike;
+  disk_inserted: BooleanLike;
+  can_upload_disk: BooleanLike;
+  sec_interface_unlock: BooleanLike;
+  hacked: BooleanLike;
+  design_queue: QueueEntry[];
+  materials: Material[];
+  being_built: CurrentBuild | null;
+};
+
+export const ModularFabricator = () => {
+  const { act, data } = useBackend<Data>();
+  const available: MaterialMap = {};
+  for (const material of data.materials || []) {
+    available[material.name] = material.amount;
+  }
+
   return (
-    <Window width={1000} height={714}>
+    <Window
+      title={data.fabName}
+      width={data.uses_queue ? 900 : 670}
+      height={600}
+    >
       <Window.Content>
-        <div className="ModularFabricator__top">
-          <ModFabData />
-        </div>
-        <div className="ModularFabricator__bottom">
-          <div className="ModularFabricator__main">
-            <ModFabMain />
-          </div>
-          <div className="ModularFabricator__sidebar">
-            <SidePanel />
-          </div>
-        </div>
+        <Stack vertical fill>
+          <Stack.Item grow style={{ minHeight: '0' }}>
+            <Stack fill>
+              <Stack.Item grow style={{ minHeight: '0' }}>
+                <DesignBrowser
+                  designs={Object.values(data.designs || {})}
+                  availableMaterials={available}
+                  // A queued machine keeps its progress in the side panel, so the browser stays usable while it works through the queue.
+                  busy={!data.uses_queue && !!data.being_built}
+                  categoryButtons={
+                    data.allow_add_category
+                      ? (category) => (
+                          <Button
+                            color="transparent"
+                            onClick={() =>
+                              act('build', {
+                                designs: category.children.map(
+                                  (design) => design.id,
+                                ),
+                              })
+                            }
+                          >
+                            Queue All
+                          </Button>
+                        )
+                      : undefined
+                  }
+                  buildRecipeElement={(design, materials) => (
+                    <Recipe design={design} available={materials} />
+                  )}
+                />
+              </Stack.Item>
+              {!!data.uses_queue && (
+                <Stack.Item width="260px">
+                  <SidePanel availableMaterials={available} />
+                </Stack.Item>
+              )}
+            </Stack>
+          </Stack.Item>
+          {!data.uses_queue && !!data.accepts_disk && (
+            <Stack.Item>
+              <Section>
+                <DiskControls />
+              </Section>
+            </Stack.Item>
+          )}
+          <Stack.Item>
+            <Section>
+              <MaterialAccessBar
+                availableMaterials={data.materials || []}
+                designs={Object.values(data.designs || {})}
+                onEjectRequested={(material, amount) =>
+                  act('remove_mat', { ref: material.ref, amount })
+                }
+              />
+            </Section>
+          </Stack.Item>
+        </Stack>
       </Window.Content>
     </Window>
   );
 };
 
-export const ModFabMain = (props) => {
+const Recipe = (props: { design: Design; available: MaterialMap }) => {
   const { act, data } = useBackend<Data>();
-  const [category, setCategory] = useLocalState('category', '');
-  const { items = [] } = data;
-  const [search, setSearch] = useLocalState('search', '');
-  const testSearch = createSearch(search, (item) => {
-    return item.name;
-  });
-  let selected_category_items;
-  if (search) {
-    selected_category_items = items
-      .flatMap((category) => category.category_items || [])
-      .filter(testSearch)
-      .filter((item, i) => i < MAX_SEARCH_RESULTS);
-  } else {
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].category_name === category) {
-        selected_category_items = items[i].category_items;
-      }
-    }
-  }
-  return (
-    <Section overflowY="scroll" height="100%" width="100%">
-      <ModFabCategoryList categories={items} />
-      <Divider />
-      {selected_category_items ? (
-        <ModFabCategoryItems items={selected_category_items} />
-      ) : (
-        ''
-      )}
-    </Section>
-  );
-};
+  const canQueue = (amount: number) =>
+    !Object.entries(props.design.cost).some(
+      ([material, cost]) =>
+        cost * amount > availableFor(material, props.available),
+    );
+  // Machines without a queue print as soon as a design is clicked, the way the protolathe does.
+  const queue = (amount: number) =>
+    data.uses_queue
+      ? act('queue_item', { design_id: props.design.id, amount })
+      : act('build', { design_id: props.design.id, amount });
 
-export const ModFabCategoryList = (props) => {
-  const { categories } = props;
-  const [category, setCategory] = useLocalState('category', '');
-  const [search, setSearch] = useLocalState('search', '');
   return (
-    <>
-      <Box bold>
-        <Grid>
-          <Grid.Column>Categories</Grid.Column>
-          <Grid.Column textAlign="right">
-            {'Search: '}
-            <Input
-              align="right"
-              value={search}
-              onInput={(e, value) => {
-                setSearch(value);
-              }}
-            />
-          </Grid.Column>
-        </Grid>
-      </Box>
-      <Divider />
-      {categories.map((category) => (
-        <Fragment key={category.category_name}>
-          <Button
-            width="200px"
-            content={category.category_name}
-            icon="angle-right"
-            onClick={() => {
-              setCategory(category.category_name);
-              setSearch('');
-            }}
-          />
-        </Fragment>
-      ))}
-    </>
-  );
-};
-
-export const ModFabCategoryItems = (props) => {
-  const { act, data } = useBackend<Data>();
-  const { allow_add_category = true } = data;
-  const { items } = props;
-  const [category, setCategory] = useLocalState('category', '');
-  const [amount, setAmount] = useLocalState('amount', 1);
-  const [search, setSearch] = useLocalState('search', '');
-  return (
-    <>
-      <Button
-        content="Return"
-        icon="backspace"
-        onClick={() => {
-          setCategory('');
-        }}
-      />
-      {!!(allow_add_category && !search) && (
-        <Button
-          content="Add Category"
-          icon="backspace"
-          onClick={() =>
-            act('queue_category', {
-              category_name: category,
-            })
-          }
-        />
-      )}
-      <Table height="100%">
-        {items.map((item) => (
-          <Table.Row height="100%" key={item.design_id}>
-            <Table.Cell>{item.name}</Table.Cell>
-            <Table.Cell>
-              {item.material_cost.map((mat) => (
-                <Box key={mat.name}>
-                  {mat.name} ({mat.amount})
-                </Box>
-              ))}
-              <Divider />
-            </Table.Cell>
-            <Table.Cell collapsing verticalAlign="middle">
-              <Button
-                icon="minus"
-                onClick={() => {
-                  amount !== 0 && setAmount(amount - 1);
-                }}
-              />
-            </Table.Cell>
-            <Table.Cell collapsing verticalAlign="middle">
-              <NumberInput
-                step={1}
-                value={amount}
-                minValue={0}
-                maxValue={50}
-                onChange={(value) => setAmount(value)}
-              />
-            </Table.Cell>
-            <Table.Cell collapsing verticalAlign="middle">
-              <Button
-                icon="plus"
-                onClick={() => {
-                  amount !== 50 && setAmount(amount + 1);
-                }}
-              />
-            </Table.Cell>
-            <Table.Cell collapsing verticalAlign="middle">
-              <Button
-                icon="plus-circle"
-                content="Queue"
-                onClick={() =>
-                  act('queue_item', {
-                    design_id: item.design_id,
-                    amount: amount,
-                    item_name: item.name,
-                  })
-                }
-              />
-            </Table.Cell>
-          </Table.Row>
-        ))}
-      </Table>
-    </>
-  );
-};
-
-export const ModFabData = (props) => {
-  const { act, data } = useBackend<Data>();
-  const {
-    hacked,
-    sec_interface_unlock,
-    show_unlock_bar,
-    can_sync = true,
-  } = data;
-  return (
-    <>
-      {show_unlock_bar ? (
-        <NoticeBox color={sec_interface_unlock ? 'green' : 'red'}>
-          <Flex align="center">
-            <Flex.Item grow={1}>
-              Security protocol {hacked ? 'disengaged' : 'engaged'}. Swipe a
-              valid ID to unlock safety controls.
-            </Flex.Item>
-            <Flex.Item>
-              <Button
-                m={0}
-                color={sec_interface_unlock ? 'green' : 'red'}
-                icon={sec_interface_unlock ? 'unlock' : 'lock'}
-                content={hacked ? 'Reactivate' : 'Deactivate'}
-                onClick={() => act('toggle_safety')}
-              />
-            </Flex.Item>
-            <Flex.Item mx={1}>
-              <Button
-                m={0}
-                color={sec_interface_unlock ? 'green' : 'red'}
-                icon={sec_interface_unlock ? 'unlock' : 'lock'}
-                content={sec_interface_unlock ? 'Unlocked' : 'Locked'}
-                onClick={() => act('toggle_lock')}
-              />
-            </Flex.Item>
-          </Flex>
-        </NoticeBox>
-      ) : (
-        <NoticeBox textAlign="center" color="orange">
-          Nanotrasen Fabrication Unit V1.0.4
-        </NoticeBox>
-      )}
-      <Section height="100px">
-        <ModFabDataDisk />
-        <Box width="150px" inline>
-          <Box bold align="center" height={1.5}>
-            Output Direction
-          </Box>
-          <OutputDir />
-        </Box>
-        {!!can_sync && <SyncWithServers />}
-      </Section>
-    </>
-  );
-};
-
-export const SyncWithServers = (props) => {
-  const { act } = useBackend<Data>();
-  return (
-    <Box inline>
-      <Box bold textAlign="center">
-        Research Database
-      </Box>
-      <Table>
-        <Table.Row>
-          <Table.Cell colSpan={2} textAlign="center" bold>
-            Actions:
-          </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell colSpan={2} textAlign="center" bold>
-            <Button
-              color={'green'}
-              content="Resync"
-              icon="upload"
-              onClick={() => act('resync_rd')}
-            />
-          </Table.Cell>
-        </Table.Row>
-      </Table>
-    </Box>
-  );
-};
-
-export const OutputDir = (props) => {
-  const { act, data } = useBackend<Data>();
-  const { outputDir = 0 } = data;
-  return (
-    <Table width="80px" align="center">
-      <Table.Row>
-        <Table.Cell />
-        <Table.Cell>
-          <Button
-            icon="arrow-up"
-            color={outputDir === 1 ? 'green' : 'red'}
-            onClick={() =>
-              act('output_dir', {
-                direction: 1,
-              })
-            }
-          />
-        </Table.Cell>
-        <Table.Cell />
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>
-          <Button
-            icon="arrow-left"
-            color={outputDir === 8 ? 'green' : 'red'}
-            onClick={() =>
-              act('output_dir', {
-                direction: 8,
-              })
-            }
-          />
-        </Table.Cell>
-        <Table.Cell>
-          <Button
-            icon="circle"
-            color={outputDir === 0 ? 'green' : 'red'}
-            onClick={() =>
-              act('output_dir', {
-                direction: 0,
-              })
-            }
-          />
-        </Table.Cell>
-        <Table.Cell>
-          <Button
-            icon="arrow-right"
-            color={outputDir === 4 ? 'green' : 'red'}
-            onClick={() =>
-              act('output_dir', {
-                direction: 4,
-              })
-            }
-          />
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell />
-        <Table.Cell>
-          <Button
-            icon="arrow-down"
-            color={outputDir === 2 ? 'green' : 'red'}
-            onClick={() =>
-              act('output_dir', {
-                direction: 2,
-              })
-            }
-          />
-        </Table.Cell>
-        <Table.Cell />
-      </Table.Row>
-    </Table>
-  );
-};
-
-export const MaterialData = (props) => {
-  const { act, data } = useBackend<Data>();
-  const { materials = [] } = data;
-  return (
-    <Table>
-      {materials.map((material) => (
-        <Fragment key={material.name}>
-          <Table.Row>
-            <Table.Cell>{capitalize(material.name)}</Table.Cell>
-            <Table.Cell>{material.amount} sheets</Table.Cell>
-            <Table.Cell>
-              <Button
-                color="green"
-                disabled={material.amount < 1}
-                content="x1"
-                onClick={() =>
-                  act('eject_material', {
-                    material_datum: material.datum,
-                    amount: 1,
-                  })
-                }
-              />
-            </Table.Cell>
-            <Table.Cell>
-              <Button
-                color="green"
-                disabled={material.amount < 10}
-                content="x10"
-                onClick={() =>
-                  act('eject_material', {
-                    material_datum: material.datum,
-                    amount: 10,
-                  })
-                }
-              />
-            </Table.Cell>
-            <Table.Cell>
-              <Button
-                color="green"
-                disabled={material.amount < 50}
-                content="x50"
-                onClick={() =>
-                  act('eject_material', {
-                    material_datum: material.datum,
-                    amount: 50,
-                  })
-                }
-              />
-            </Table.Cell>
-          </Table.Row>
-        </Fragment>
-      ))}
-    </Table>
-  );
-};
-
-export const SidePanel = (props) => {
-  const { act } = useBackend<Data>();
-  const [queueRepeat, setQueueRepeat] = useLocalState('queueRepeat', 0);
-  return (
-    <Section width="100%" height="100%">
-      <MaterialData />
-      <Divider />
-      <Flex align="center">
-        <Flex.Item bold grow={1}>
-          Queue
-        </Flex.Item>
-        <Flex.Item>
-          <Button
-            m={0}
-            color={queueRepeat ? 'green' : 'red'}
-            icon="redo-alt"
-            content={queueRepeat ? 'Continuous' : 'Linear'}
-            onClick={() => {
-              act('queue_repeat', {
-                repeating: 1 - queueRepeat,
-              });
-              setQueueRepeat(1 - queueRepeat);
-            }}
-          />
-        </Flex.Item>
-        <Flex.Item mx={1}>
-          <Button
-            m={0}
-            color="red"
-            icon="times"
-            content="Clear"
-            onClick={() => act('clear_queue')}
-          />
-        </Flex.Item>
-      </Flex>
-      <Divider />
-      <FabricationQueue />
-      <ProcessingBar />
-    </Section>
-  );
-};
-
-export const ProcessingBar = (props) => {
-  const { act, data } = useBackend<Data>();
-  const { being_build } = data;
-  return (
-    <div className="ModularFabricator__sidebar_bottom">
-      <Button
-        content="Process"
-        color="green"
-        icon="caret-right"
-        onClick={() => act('begin_process')}
-      />
-      {being_build ? (
-        <ProgressBar
-          value={being_build.progress}
-          minValue={0}
-          maxValue={100}
-          color="green"
-          width="75%"
+    <div className="FabricatorRecipe">
+      <Tooltip content={props.design.desc} position="right">
+        <div
+          className={classes([
+            'FabricatorRecipe__Button',
+            'FabricatorRecipe__Button--icon',
+            !canQueue(1) && 'FabricatorRecipe__Button--disabled',
+          ])}
         >
-          {being_build.name} - {Math.min(round(being_build.progress, 0), 100)}%
-        </ProgressBar>
-      ) : (
-        <NoticeBox bold width="75%" inline>
-          Not Processing.
-        </NoticeBox>
-      )}
+          <Icon name="question-circle" />
+        </div>
+      </Tooltip>
+      <Tooltip
+        content={
+          <MaterialCostSequence
+            design={props.design}
+            available={props.available}
+          />
+        }
+      >
+        <div
+          className={classes([
+            'FabricatorRecipe__Title',
+            !canQueue(1) && 'FabricatorRecipe__Title--disabled',
+          ])}
+          onClick={() => queue(1)}
+        >
+          <div className="FabricatorRecipe__Icon">
+            <Box
+              width="32px"
+              height="32px"
+              className={classes(['design32x32', props.design.icon])}
+            />
+          </div>
+          <div className="FabricatorRecipe__Label">{props.design.name}</div>
+        </div>
+      </Tooltip>
+      {[5, 10].map((amount) => (
+        <Tooltip
+          key={amount}
+          content={
+            <MaterialCostSequence
+              design={props.design}
+              amount={amount}
+              available={props.available}
+            />
+          }
+        >
+          <div
+            className={classes([
+              'FabricatorRecipe__Button',
+              !canQueue(amount) && 'FabricatorRecipe__Button--disabled',
+            ])}
+            onClick={() => queue(amount)}
+          >
+            &times;{amount}
+          </div>
+        </Tooltip>
+      ))}
+      <CustomQueue design={props.design} available={props.available} />
     </div>
   );
 };
 
-export const FabricationQueue = (props) => {
+const CustomQueue = (props: { design: Design; available: MaterialMap }) => {
   const { act, data } = useBackend<Data>();
-  const { queue = [] } = data;
+  const max = affordableAmount(props.design, props.available);
+
   return (
-    <Table>
-      {queue.map((item) => (
-        <Table.Row key={item}>
-          <Table.Cell bold>{item.name}</Table.Cell>
-          <Table.Cell>x{item.amount}</Table.Cell>
-          <Table.Cell collapsing>
-            <Button
-              icon="redo-alt"
-              color={item.repeat ? 'green' : 'red'}
-              onClick={() =>
-                act('item_repeat', {
-                  design_id: item.design_id,
-                  repeating: 1 - item.repeat,
-                })
-              }
-            />
-          </Table.Cell>
-          <Table.Cell collapsing>
-            <Button
-              icon="times"
-              color="red"
-              onClick={() =>
-                act('clear_item', {
-                  design_id: item.design_id,
-                })
-              }
-            />
-          </Table.Cell>
-        </Table.Row>
-      ))}
-    </Table>
+    <div
+      className={classes([
+        'FabricatorRecipe__Button',
+        max < 1 && 'FabricatorRecipe__Button--disabled',
+      ])}
+    >
+      <Button.Input
+        color="transparent"
+        content={`×${max}`}
+        onCommit={(_event, value: string) =>
+          act(data.uses_queue ? 'queue_item' : 'build', {
+            design_id: props.design.id,
+            amount: value,
+          })
+        }
+      />
+    </div>
   );
 };
 
-export const ModFabDataDisk = (props) => {
+const SidePanel = (props: { availableMaterials: MaterialMap }) => {
   const { act, data } = useBackend<Data>();
-  const { acceptsDisk, diskInserted } = data;
+  const queue = data.design_queue || [];
+
+  const materialCosts: MaterialMap = {};
+  for (const entry of queue) {
+    const design = data.designs[entry.design_id];
+    for (const [material, cost] of Object.entries(design?.cost || {})) {
+      materialCosts[material] =
+        (materialCosts[material] || 0) + cost * entry.amount;
+    }
+  }
+
   return (
-    <Box inline>
-      <Box bold textAlign="center">
-        Data Disk Drive
-      </Box>
-      <Table>
-        <Table.Row>
-          <Table.Cell>Status:</Table.Cell>
-          <Table.Cell
-            bold
-            color={acceptsDisk ? (diskInserted ? 'green' : 'yellow') : 'red'}
-          >
-            {acceptsDisk ? (diskInserted ? 'Ready' : 'Empty') : 'Inactive'}
-          </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell colSpan={2} textAlign="center" bold>
-            Actions
-          </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell colSpan={2} textAlign="center" bold>
-            <Button
-              color={acceptsDisk && diskInserted ? 'green' : 'grey'}
-              content="Install"
-              icon="upload"
-              onClick={() => act('upload_disk')}
-            />
-          </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell colSpan={2} textAlign="center" bold>
-            <Button
-              color={acceptsDisk && diskInserted ? 'green' : 'grey'}
-              content="Eject"
-              icon="folder-open"
-              onClick={() => act('eject_disk')}
-            />
-          </Table.Cell>
-        </Table.Row>
-      </Table>
-    </Box>
+    <Stack vertical fill>
+      {!!data.show_unlock_bar && (
+        <Stack.Item>
+          <SecurityControls />
+        </Stack.Item>
+      )}
+      <Stack.Item grow style={{ minHeight: '0' }}>
+        <Section
+          fill
+          className="Fabricator__QueuePanel"
+          title="Queue"
+          buttons={
+            <>
+              <Button
+                icon="redo-alt"
+                tooltip="Repeat the queue"
+                selected={data.queue_repeating}
+                onClick={() =>
+                  act('queue_repeat', {
+                    repeating: !data.queue_repeating,
+                  })
+                }
+              />
+              <Button
+                disabled={!queue.length}
+                color="bad"
+                icon="times"
+                content="Clear"
+                onClick={() => act('clear_queue')}
+              />
+              {data.processing ? (
+                <Button
+                  content="Stop"
+                  icon="stop"
+                  onClick={() => act('stop_queue')}
+                />
+              ) : (
+                <Button
+                  disabled={!queue.length}
+                  content="Build"
+                  icon="play"
+                  onClick={() => act('build_queue')}
+                />
+              )}
+            </>
+          }
+        >
+          <Stack fill vertical>
+            {!!queue.length && (
+              <Stack.Item mb={0.5}>
+                <MaterialCostSequence
+                  available={props.availableMaterials}
+                  costMap={materialCosts}
+                />
+              </Stack.Item>
+            )}
+            <Stack.Item grow>
+              <div className="Fabricator__Queue">
+                {queue.map((entry) => (
+                  <div key={entry.design_id} className="FabricatorRecipe">
+                    <Tooltip
+                      content={
+                        <MaterialCostSequence
+                          design={data.designs[entry.design_id]}
+                          amount={entry.amount}
+                          available={props.availableMaterials}
+                        />
+                      }
+                    >
+                      <div className="FabricatorRecipe__Title">
+                        <div className="FabricatorRecipe__Label">
+                          {entry.name}
+                        </div>
+                      </div>
+                    </Tooltip>
+                    <div className="FabricatorRecipe__Button">
+                      &times;{entry.amount}
+                    </div>
+                    <Tooltip content="Remove one from queue">
+                      <div
+                        className={classes([
+                          'FabricatorRecipe__Button',
+                          'FabricatorRecipe__Button--icon',
+                        ])}
+                        onClick={() =>
+                          act('queue_remove_one', {
+                            design_id: entry.design_id,
+                          })
+                        }
+                      >
+                        <Icon name="minus-circle" />
+                      </div>
+                    </Tooltip>
+                    <Tooltip content="Remove from queue">
+                      <div
+                        className="FabricatorRecipe__Button FabricatorRecipe__Button--icon"
+                        onClick={() =>
+                          act('clear_item', { design_id: entry.design_id })
+                        }
+                      >
+                        <Icon name="minus-circle" />
+                      </div>
+                    </Tooltip>
+                  </div>
+                ))}
+              </div>
+            </Stack.Item>
+          </Stack>
+        </Section>
+      </Stack.Item>
+      {!!data.being_built && (
+        <Stack.Item>
+          <Section>
+            <ProcessingBar />
+          </Section>
+        </Stack.Item>
+      )}
+      {!!data.accepts_disk && (
+        <Stack.Item>
+          <Section>
+            <DiskControls />
+          </Section>
+        </Stack.Item>
+      )}
+    </Stack>
+  );
+};
+
+const SecurityControls = () => {
+  const { act, data } = useBackend<Data>();
+
+  return (
+    <NoticeBox color={data.sec_interface_unlock ? 'green' : 'red'} m={0}>
+      <Stack vertical>
+        <Stack.Item>
+          Security protocol {data.hacked ? 'disengaged' : 'engaged'}.
+        </Stack.Item>
+        {/* The side panel is too narrow to hold the label and both buttons on
+            one row, so the buttons share a row of their own. */}
+        <Stack.Item>
+          <Stack>
+            <Stack.Item grow>
+              <Button
+                fluid
+                textAlign="center"
+                color={data.sec_interface_unlock ? 'green' : 'red'}
+                icon={data.sec_interface_unlock ? 'unlock' : 'lock'}
+                tooltip="Swipe a valid ID to unlock safety controls"
+                content={data.hacked ? 'Reactivate' : 'Deactivate'}
+                onClick={() => act('toggle_safety')}
+              />
+            </Stack.Item>
+            <Stack.Item grow>
+              <Button
+                fluid
+                textAlign="center"
+                color={data.sec_interface_unlock ? 'green' : 'red'}
+                icon={data.sec_interface_unlock ? 'unlock' : 'lock'}
+                content={data.sec_interface_unlock ? 'Unlocked' : 'Locked'}
+                onClick={() => act('toggle_lock')}
+              />
+            </Stack.Item>
+          </Stack>
+        </Stack.Item>
+      </Stack>
+    </NoticeBox>
+  );
+};
+
+/** Nothing to report while the machine is idle, so this renders only mid-build. */
+const ProcessingBar = () => {
+  const { data } = useBackend<Data>();
+
+  if (!data.being_built) {
+    return null;
+  }
+
+  return (
+    <ProgressBar
+      value={data.being_built.progress}
+      minValue={0}
+      maxValue={100}
+      color="good"
+    >
+      {data.being_built.name} &mdash;{' '}
+      {Math.min(round(data.being_built.progress, 1), 100)}%
+    </ProgressBar>
+  );
+};
+
+const DiskControls = () => {
+  const { act, data } = useBackend<Data>();
+
+  return (
+    <Stack align="center">
+      <Stack.Item bold>Data disk</Stack.Item>
+      <Stack.Item grow>
+        <Button
+          disabled={!data.disk_inserted || !data.can_upload_disk}
+          icon="upload"
+          content="Upload"
+          onClick={() => act('upload_disk')}
+        />
+        <Button
+          disabled={!data.disk_inserted}
+          icon="folder-open"
+          content="Eject"
+          onClick={() => act('eject_disk')}
+        />
+      </Stack.Item>
+    </Stack>
   );
 };

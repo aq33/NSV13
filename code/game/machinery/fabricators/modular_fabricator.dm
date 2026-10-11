@@ -58,6 +58,8 @@
 	var/list/item_queue = list()
 	//If true, once an item is processed it will be stuck right back on again
 	var/queue_repeating = FALSE
+	/// AQ EDIT - port BeeStation #14723: the queue was stopped from the window
+	var/queue_stopped = FALSE
 	//The amount to readd to the queue when processing is done
 	var/stored_item_amount
 	//Minimum construction time per component
@@ -125,94 +127,66 @@
 	. = ..()
 	viewing_mobs -= user
 
+// AQ EDIT START - port BeeStation #14723: data for the ModularFabricator window from Bee (design browser + queue)
+/obj/machinery/modular_fabricator/ui_assets(mob/user)
+	return list(
+		get_asset_datum(/datum/asset/spritesheet/sheetmaterials),
+		get_asset_datum(/datum/asset/spritesheet/research_designs),
+	)
+
+/// Designs this machine can print: researched and in one of its categories
+/obj/machinery/modular_fabricator/proc/printable_designs()
+	var/list/printable = list()
+	for(var/design_id in stored_research.researched_designs)
+		var/datum/design/design = SSresearch.techweb_design_by_id(design_id)
+		if(!design)
+			continue
+		for(var/category in design.category)
+			if(category in categories)
+				printable += design
+				break
+	return printable
+
+/// The real material cost multiplier for a design, see process_item()
+/obj/machinery/modular_fabricator/proc/design_cost_coefficient(datum/design/design)
+	return ispath(design.build_path, /obj/item/stack) ? 1 : creation_efficiency
+
 /obj/machinery/modular_fabricator/ui_static_data(mob/user)
 	var/list/data = list()
-	data["acceptsDisk"] = accepts_disks
+	data["fabName"] = name
+	data["accepts_disk"] = accepts_disks
 	data["show_unlock_bar"] = can_be_hacked_or_unlocked
 	data["allow_add_category"] = can_print_category
-	data["can_sync"] = can_sync
-
-	//Items
-	data["items"] = list()
-	var/list/categories_associative = list()
-	for(var/v in stored_research.researched_designs)
-		var/datum/design/D = SSresearch.techweb_design_by_id(v)
-		for(var/cat in D.category)
-			//Check if printable
-			if(!(cat in categories))
-				continue
-			if(!islist(categories_associative[cat]))
-				categories_associative[cat] = list()
-
-			//Calculate cost
-			var/list/material_cost = list()
-			for(var/material_id in D.materials)
-				material_cost += list(list(
-					"name" = material_id,
-					"amount" = D.materials[material_id] / MINERAL_MATERIAL_AMOUNT,
-				))
-
-			//Add
-			categories_associative[cat] += list(list(
-				"name" = D.name,
-				"design_id" = D.id,
-				"material_cost" = material_cost,
-			))
-
-	//Categories and their items
-	for(var/category in categories_associative)
-		data["items"] += list(list(
-			"category_name" = category,
-			"category_items" = categories_associative[category],
-		))
-
-	//Inserted data disk
-	data["diskInserted"] = inserted_disk
+	data["uses_queue"] = TRUE
+	data["designs"] = fabricator_ui_designs(printable_designs(), coefficient_override = CALLBACK(src, PROC_REF(design_cost_coefficient)))
 	return data
 
 /obj/machinery/modular_fabricator/ui_data(mob/user)
 	var/list/data = list()
-	//Output direction
-	data["outputDir"] = output_direction
-
-	//Queue
-	data["queue"] = list()
-
-	//Real queue at the bottom
+	data["disk_inserted"] = !!inserted_disk
+	data["can_upload_disk"] = !!inserted_disk
+	data["queue_repeating"] = queue_repeating
+	data["design_queue"] = list()
 	for(var/item_design_id in item_queue)
-		var/datum/design/D = SSresearch.techweb_design_by_id(item_design_id)
+		var/datum/design/design = SSresearch.techweb_design_by_id(item_design_id)
 		var/list/additional_data = item_queue[item_design_id]
-		data["queue"] += list(list(
-			"name" = D.name,
+		data["design_queue"] += list(list(
+			"name" = design?.name,
 			"amount" = additional_data["amount"],
-			"repeat" = additional_data["repeating"],
 			"design_id" = item_design_id,
 		))
-
-	//Materials
-	data["materials"] = list()
-	var/datum/component/material_container/materials = get_material_container()
-	for(var/material in materials.materials)
-		var/datum/material/M = material
-		var/mineral_amount = materials.materials[material] / MINERAL_MATERIAL_AMOUNT
-		data["materials"] += list(list(
-			"name" = M.name,
-			"amount" = mineral_amount,
-			"datum" = M.type
-		))
-
-	//Thing being made
+	data["materials"] = fabricator_ui_materials(get_material_container())
 	if(being_built && total_build_time && process_completion_world_tick)
-		data["being_build"] = list(
+		data["being_built"] = list(
 			"design_id" = being_built.id,
 			"name" = being_built.name,
-			"progress" = 100-(100*((process_completion_world_tick - world.time)/total_build_time)),
+			"progress" = 100 - (100 * ((process_completion_world_tick - world.time) / total_build_time)),
 		)
 	else
-		data["being_build"] = null
-
-	//Being Build
+		data["being_built"] = null
+	data["processing"] = operating && !queue_stopped
 	return data
+// AQ EDIT END
 
 /obj/machinery/modular_fabricator/ui_act(action, params)
 	. = ..()
@@ -220,6 +194,57 @@
 		return
 
 	switch(action)
+		// AQ EDIT START - port BeeStation #14723: actions of the Bee windows
+		if("remove_mat")
+			var/amount = round(text2num(params["amount"]))
+			if(!amount || amount <= 0 || amount > 50)
+				return
+			var/datum/component/material_container/material_container = get_material_container()
+			for(var/datum/material/material_to_eject as anything in material_container?.materials)
+				if(REF(material_to_eject) == params["ref"])
+					material_container.retrieve_sheets(amount, material_to_eject, get_release_turf())
+					return TRUE
+			return
+
+		if("build")
+			var/list/design_ids = params["designs"]
+			if(islist(design_ids))
+				for(var/build_design_id in design_ids)
+					add_to_queue(item_queue, build_design_id, 1)
+			else
+				add_to_queue(item_queue, params["ref"] || params["design_id"], clamp(text2num(params["amount"]) || 1, 1, 50))
+			queue_stopped = FALSE
+			begin_process()
+			return TRUE
+
+		if("build_queue")
+			queue_stopped = FALSE
+			begin_process()
+			return TRUE
+
+		if("stop_queue")
+			queue_stopped = TRUE
+			return TRUE
+
+		if("queue_remove_one")
+			add_to_queue(item_queue, params["design_id"], -1)
+			return TRUE
+
+		// The exosuit window lists one row per item to be built, resolve the row back to its design
+		if("del_queue_part")
+			var/queue_index = text2num(params["index"])
+			if(isnull(queue_index) || queue_index < 1)
+				return TRUE
+			var/items_passed = 0
+			for(var/design_id in item_queue)
+				var/amount = max(item_queue[design_id]["amount"], 1)
+				if(queue_index > items_passed + amount)
+					items_passed += amount
+					continue
+				add_to_queue(item_queue, design_id, -1)
+				break
+			return TRUE
+		// AQ EDIT END
 
 		if("resync_rd")
 			if(!can_sync)
@@ -328,6 +353,8 @@
 		return
 	//Check if the item uses custom materials
 	var/datum/design/requested_item = stored_research.isDesignResearchedID(design_id)
+	if(!requested_item) // AQ EDIT - the Bee windows can send any design id
+		return
 	var/datum/material/used_material = repeat
 	if(!istype(used_material))
 		for(var/MAT in requested_item.materials)
@@ -373,6 +400,8 @@
 
 /obj/machinery/modular_fabricator/proc/begin_process()
 	if(busy || operating || disabled)
+		return
+	if(queue_stopped) // AQ EDIT - port BeeStation #14723
 		return
 	var/requested_design_id = null
 	if(LAZYLEN(item_queue))
