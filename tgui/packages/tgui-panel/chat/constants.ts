@@ -64,7 +64,9 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_RADIO,
     name: 'Radio',
     description: 'All departments of radio messages',
-    selector: '.srt_radio, .alert, .newscaster, .shadowling, .changeling',
+    // AQUILA: our server does not add srt_* classes, so keep the old radio classes too
+    selector:
+      '.srt_radio, .alert, .syndradio, .centcomradio, .aiprivradio, .comradio, .secradio, .engradio, .medradio, .sciradio, .suppradio, .servradio, .explradio, .entradio, .radio, .deptradio, .newscaster, .redteamradio, .blueteamradio, .sinister, .cult, .shadowling, .changeling',
   },
   {
     type: MESSAGE_TYPE_INFO,
@@ -133,7 +135,7 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_ADMINLOG,
     name: 'Admin Log',
     description: 'ADMIN LOG: Urist McAdmin has jumped to coordinates X, Y, Z',
-    selector: '.adminlog',
+    selector: '.adminlog, .log_message',
     admin: true,
   },
   {

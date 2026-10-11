@@ -55,7 +55,6 @@ export const DradisContent = (props) => {
             </span>
           </Button>
         )}
-        ;
       </li>
     );
   };
