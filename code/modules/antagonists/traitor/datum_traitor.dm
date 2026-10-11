@@ -248,7 +248,7 @@
 			owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/malf.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 			owner.current.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MALF)
 		if(TRAITOR_HUMAN)
-			show_tips("traitor")
+			// show_tips("traitor") // AQ EDIT - port BeeStation #9205: the AntagInfoTraitor window replaces the HTML tips
 			if(should_equip)
 				equip(silent)
 			owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)

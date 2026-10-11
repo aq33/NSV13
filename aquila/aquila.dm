@@ -180,6 +180,8 @@
 #include "code\modules\admin\verbs\pray.dm"
 #include "code\modules\admin\verbs\one_click_antag.dm"
 #include "code\modules\admin\topic.dm"
+#include "code\modules\antagonists\_common\antag_info.dm"
+#include "code\modules\antagonists\_common\antag_info_windows.dm"
 #include "code\modules\antagonists\devil\sintouched\objectives.dm"
 #include "code\modules\antagonists\hijacked_ai\hijacked_ai.dm"
 #include "code\modules\antagonists\horror\horror.dm"
