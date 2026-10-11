@@ -4122,7 +4122,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/event_spawn,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/hos)
 "oP" = (
@@ -4422,7 +4422,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/event_spawn,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/captain/private)
 "pL" = (
@@ -4872,7 +4872,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/event_spawn,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/xo)
 "rG" = (
@@ -8414,7 +8414,7 @@
 /turf/open/floor/grass/fairy/yellow,
 /area/crew_quarters/dorms/nsv/nature_deck)
 "Ep" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/aisat_interior)
 "Er" = (
@@ -8987,7 +8987,7 @@
 /obj/structure/cable,
 /obj/effect/landmark/start/research_director,
 /obj/effect/landmark/event_spawn,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/structure/chair/fancy/corp,
 /turf/open/floor/carpet/purple,
 /area/crew_quarters/heads/hor)
@@ -10806,7 +10806,7 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 1
 	},
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},

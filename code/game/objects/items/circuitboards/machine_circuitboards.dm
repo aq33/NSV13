@@ -420,6 +420,25 @@
 	build_path = /obj/machinery/holopad
 	req_components = list(/obj/item/stock_parts/capacitor = 1)
 	needs_anchored = FALSE //wew lad
+	var/secure = FALSE // AQ EDIT - port BeeStation #14515
+
+// AQ EDIT START - port BeeStation #14515: a multitool switches the board to a secure holopad
+/obj/item/circuitboard/machine/holopad/multitool_act(mob/living/user, obj/item/tool)
+	secure = !secure
+	if(secure)
+		build_path = /obj/machinery/holopad/secure
+		to_chat(user, "<span class='notice'>You enable the security on [src].</span>")
+	else
+		build_path = /obj/machinery/holopad
+		to_chat(user, "<span class='notice'>You disable the security on [src].</span>")
+	return TRUE
+
+/obj/item/circuitboard/machine/holopad/examine(mob/user)
+	. = ..()
+	. += "There is a connection port on this board that could be <b>pulsed</b>."
+	if(secure)
+		. += "There is a red light flashing next to the word \"secure\"."
+// AQ EDIT END
 
 /obj/item/circuitboard/machine/launchpad
 	name = "bluespace launchpad (Machine Board)"

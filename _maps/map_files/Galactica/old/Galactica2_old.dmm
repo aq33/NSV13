@@ -16310,7 +16310,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/plasteel/ship,
 /area/crew_quarters/heads/chief)
 "aOh" = (
@@ -17251,7 +17251,7 @@
 /turf/open/floor/carpet/ship,
 /area/nsv/crew_quarters/heads/maa)
 "aQl" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet/ship,
 /area/nsv/crew_quarters/heads/maa)
 "aQm" = (
@@ -29643,7 +29643,7 @@
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/captain)
 "brR" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/carpet/blue,
@@ -30989,7 +30989,7 @@
 /area/crew_quarters/heads/hor)
 "buK" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet/ship,
 /area/crew_quarters/heads/hor)
 "buL" = (
@@ -31268,7 +31268,7 @@
 "bvs" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/durasteel/eris_techfloor_alt,
 /area/ai_monitored/turret_protected/ai)
 "bvt" = (
@@ -46641,7 +46641,7 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 4
 	},
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/monotile,
 /area/ai_monitored/turret_protected/ai_upload)
 "dud" = (
@@ -48293,7 +48293,7 @@
 /area/janitor)
 "krL" = (
 /obj/structure/cable,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/hop{
 	name = "Executive officer's Office"
@@ -48877,7 +48877,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "mqM" = (
@@ -49290,7 +49290,7 @@
 /area/crew_quarters/theatre)
 "nZl" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/durasteel/eris_techfloor_alt,
 /area/ai_monitored/turret_protected/ai)
 "oft" = (

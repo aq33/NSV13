@@ -30,23 +30,37 @@
 	var/mob/camera/ai_eye/remote/holo/eye	//user's eye, once connected
 	var/obj/effect/overlay/holo_pad_hologram/hologram	//user's hologram, once connected
 	var/datum/action/innate/end_holocall/hangup	//hangup action
+	/// AQ EDIT - port BeeStation #14515: calls from a head of staff auto-connect, if the receiving pad is not secure
+	var/head_call = FALSE
 
 	var/call_start_time
 
 //creates a holocall made by `caller` from `calling_pad` to `callees`
-/datum/holocall/New(mob/living/caller, obj/machinery/holopad/calling_pad, list/callees)
+/datum/holocall/New(mob/living/caller, obj/machinery/holopad/calling_pad, list/callees, elevated_access = FALSE) // AQ EDIT - elevated_access, port BeeStation #14515
 	call_start_time = world.time
 	user = caller
 	calling_pad.outgoing_call = src
 	calling_holopad = calling_pad
 	dialed_holopads = list()
+	head_call = elevated_access // AQ EDIT
 
+	var/auto_connect_failed = FALSE // AQ EDIT
 	for(var/I in callees)
 		var/obj/machinery/holopad/H = I
 		if(!QDELETED(H) && H.is_operational)
 			dialed_holopads += H
-			H.say("Incoming call.")
+			// AQ EDIT START - port BeeStation #14515
+			if(head_call && !H.secure)
+				H.say("Incoming connection.")
+			else
+				if(head_call)
+					auto_connect_failed = TRUE
+				H.say("Incoming call.")
+			// AQ EDIT END
 			LAZYADD(H.holo_calls, src)
+
+	if(auto_connect_failed) // AQ EDIT
+		calling_pad.say("Auto-connection refused, falling back to call mode.")
 
 	if(!dialed_holopads.len)
 		calling_pad.say("Connection failure.")

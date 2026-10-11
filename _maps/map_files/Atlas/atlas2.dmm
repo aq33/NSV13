@@ -294,7 +294,7 @@
 /turf/closed/wall/r_wall,
 /area/ai_monitored/turret_protected/ai)
 "bI" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "bJ" = (
@@ -305,7 +305,7 @@
 /area/hallway/nsv/deck1/hallway)
 "bK" = (
 /obj/structure/cable,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -1375,7 +1375,7 @@
 /turf/open/floor/monotile/dark,
 /area/bridge/cic)
 "hh" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/structure/cable,
 /turf/open/floor/durasteel/techfloor,
 /area/ai_monitored/turret_protected/aisat)

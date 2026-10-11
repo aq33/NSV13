@@ -2543,7 +2543,7 @@
 /turf/closed/wall/r_wall,
 /area/medical/morgue)
 "hr" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
@@ -9063,7 +9063,7 @@
 "zZ" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/durasteel/techfloor,
 /area/ai_monitored/turret_protected/ai)
 "Aa" = (
@@ -12745,7 +12745,7 @@
 /area/medical/medbay/zone2)
 "JX" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/durasteel/techfloor,
 /area/ai_monitored/turret_protected/ai)
 "JY" = (
@@ -18429,7 +18429,7 @@
 /turf/open/floor/carpet/green,
 /area/tcommsat/server)
 "ZR" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/item/beacon,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{

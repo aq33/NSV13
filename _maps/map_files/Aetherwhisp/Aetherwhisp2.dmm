@@ -2026,7 +2026,7 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/hangar)
 "bwC" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
@@ -2647,7 +2647,7 @@
 /turf/open/floor/plating,
 /area/maintenance/department/science/central)
 "bVn" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet/ship/purple_carpet,
 /area/crew_quarters/heads/hor)
 "bVG" = (
@@ -16600,7 +16600,7 @@
 "mRi" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/carpet/ship/orange_carpet,
@@ -23056,7 +23056,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -29135,7 +29135,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/structure/cable,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/captain/private)

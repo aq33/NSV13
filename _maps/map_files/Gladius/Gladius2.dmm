@@ -14613,7 +14613,7 @@
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering/ftl_room)
 "jlH" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/plasteel/techmaint,
 /area/crew_quarters/heads/chief)
 "jlI" = (

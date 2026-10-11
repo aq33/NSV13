@@ -3457,7 +3457,7 @@
 /area/crew_quarters/heads/hos/pvp)
 "jA" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/hos/pvp)
 "jB" = (

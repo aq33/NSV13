@@ -9825,7 +9825,7 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/aft)
 "fdH" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain)
 "fdN" = (
@@ -14247,7 +14247,7 @@
 /turf/open/floor/circuit/green,
 /area/ai_monitored/turret_protected/ai)
 "hty" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -16270,7 +16270,7 @@
 /turf/open/floor/monotile/dark,
 /area/bridge/meeting_room)
 "ium" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/structure/cable,
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/carpet/blue,
@@ -17630,7 +17630,7 @@
 /turf/open/floor/plating,
 /area/bridge)
 "jdZ" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/turret_protected/ai)
 "jei" = (
@@ -19187,7 +19187,7 @@
 /turf/open/floor/monotile/steel,
 /area/nsv/weapons/ordnance)
 "jVs" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/hor)
 "jVB" = (
@@ -19616,7 +19616,7 @@
 /turf/open/floor/monotile/light,
 /area/security/prison)
 "kkc" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 6
@@ -30099,7 +30099,7 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port/fore)
 "ptV" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/layer2,
@@ -30559,7 +30559,7 @@
 /turf/closed/wall/ship,
 /area/hallway/nsv/deck1/aft)
 "pJd" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
@@ -34386,7 +34386,7 @@
 /area/science/lab)
 "rUb" = (
 /obj/structure/cable,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "rUB" = (
@@ -36913,7 +36913,7 @@
 /turf/open/floor/monotile/steel,
 /area/medical/morgue)
 "teN" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
@@ -45141,7 +45141,7 @@
 /turf/open/floor/monotile/light,
 /area/medical/nsv/plumbing)
 "xAi" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/structure/cable,
 /turf/open/floor/carpet/ship,
 /area/nsv/crew_quarters/heads/maa)
