@@ -173,7 +173,7 @@ Każdy tryb: (tryb skrótów nie musi być włączony)\n\tCtrl+a = w lewo\n\tCtr
 	else if(SSmapping.config.map_link)
 		if(alert("To otworzy obecną mapę w twojej przeglądarce. Na pewno?",,"Yes","No")!="Yes")
 			return
-		src << link("https://webmap.affectedarc07.co.uk/maps/nsv/[SSmapping.config.map_link]")
+		src << link("https://webmap.affectedarc07.co.uk/maps/aquila/[SSmapping.config.map_link]")
 	else
 		to_chat(src, "<span class='danger'>Obecna mapa jest nieprawidłowa lub niedostępna. Zgłoś błąd na GitHubie. </span>")
 
