@@ -182,8 +182,8 @@ SUBSYSTEM_DEF(shuttle)
 				else
 					if(GLOB.security_level < SEC_LEVEL_RED)
 						set_security_level(SEC_LEVEL_RED)
-					if(!SSvote.mode)
-						SSvote.initiate_vote("transfer", "Crisis Protocols", forced=TRUE, popup=FALSE)
+					if(!SSvote.current_vote) // AQ EDIT - port BeeStation #13247: vote datums
+						SSvote.initiate_vote(/datum/vote/transfer, "Crisis Protocols", forced = TRUE)
 						msg = "Automatically initiating transfer vote due to crew death."
 						priority_announce("Catastrophic casualties detected: crisis shuttle protocols activated.", sound = SSstation.announcer.get_rand_alert_sound())
 						autoevac_status = AUTOEVAC_STATUS_EVAC_CALLED

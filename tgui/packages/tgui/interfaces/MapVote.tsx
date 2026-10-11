@@ -1,5 +1,6 @@
 import { classes } from 'common/react';
 import {
+  Box,
   Button,
   Flex,
   LabeledList,
@@ -10,9 +11,10 @@ import {
 
 import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
-import { AdminPanel, TimePanel } from './Vote';
 
 type Data = {
+  time_remaining: number;
+  upper_admin: any;
   choices: any;
   lower_admin: any;
   mapInfo: any;
@@ -57,7 +59,6 @@ export const MapVote = (props) => {
       height={600}
     >
       <Window.Content overflowY="scroll">
-        {!!lower_admin && <AdminPanel />}
         <TimePanel />
         <Flex>
           <Flex.Item mt={1} mr={1} mb={1}>
@@ -214,6 +215,29 @@ const MapData = (props) => {
             </Table>
           </>
         )}
+      </Section>
+    </Flex.Item>
+  );
+};
+
+// AQUILA: was imported from the old Vote window, which VotePanel (BeeStation #13247) replaced
+const TimePanel = (props) => {
+  const { act, data } = useBackend<Data>();
+  const { lower_admin, time_remaining } = data;
+
+  return (
+    <Flex.Item>
+      <Section>
+        <Flex justify="space-between">
+          {!!lower_admin && (
+            <Button onClick={() => act('cancel')} color="red">
+              Cancel Vote
+            </Button>
+          )}
+          <Box fontSize={1.5} textAlign="right">
+            Time Remaining: {time_remaining}s
+          </Box>
+        </Flex>
       </Section>
     </Flex.Item>
   );

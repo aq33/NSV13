@@ -511,14 +511,14 @@ SUBSYSTEM_DEF(overmap_mode)
 	if(SSovermap_mode.admin_override)
 		message_admins("[GLOB.station_name] has completed its objectives but round end has been overriden by admin intervention")
 		return
-	if(SSvote.mode == "Press On Or Return Home?") // We're still voting
+	if(istype(SSvote.current_vote, /datum/vote/round_extension)) // We're still voting // AQ EDIT - vote datums
 		return
 
 	var/datum/star_system/S = SSstar_system.return_system
 	S.hidden = FALSE
 	if(!SSovermap_mode.round_extended)	//If we haven't yet extended the round, let us vote!
 		priority_announce("Misja wykonana - głosowanie w toku") //TEMP get better words
-		SSvote.initiate_vote("Press On Or Return Home?", "Centcomm", forced=TRUE, popup=FALSE)
+		SSvote.initiate_vote(/datum/vote/round_extension, "Centcomm", forced = TRUE) // AQ EDIT - vote datums
 	else	//Begin FTL return jump
 		var/obj/structure/overmap/OM = SSstar_system.find_main_overmap()
 		if(!length(OM.current_system?.enemies_in_system))

@@ -1,409 +1,421 @@
+// AQ EDIT - port BeeStation #13247: votes are /datum/vote singletons (aquila/code/datums/votes) and the window is VotePanel.
+// The map vote keeps our NSV13 MapVote window, preferred maps and map vote bans.
 SUBSYSTEM_DEF(vote)
 	name = "Vote"
-	wait = 10
-
-	flags = SS_KEEP_TIMING|SS_NO_INIT
-
+	wait = 1 SECONDS
+	flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 
-	var/mode
-	var/question
-	var/initiator
-	var/started_time
-	var/time_remaining = 0
+	/// A list of all generated action buttons
+	var/list/datum/action/generated_actions = list()
+	/// All votes that we can possible vote for, by name
+	var/list/datum/vote/possible_votes = list()
+	/// The vote we're currently voting on
+	var/datum/vote/current_vote
+	/// A list of all ckeys who have voted for the current vote
 	var/list/voted = list()
+	/// A list of all ckeys currently voting for the current vote
 	var/list/voting = list()
-	var/list/choices = list()
-	var/list/choice_by_ckey = list()
-	var/list/generated_actions = list()
+	/// World.time we started our last vote
+	var/last_vote_time = -INFINITY
 
-/datum/controller/subsystem/vote/fire()	//called by master_controller
-	if(!mode)
+/datum/controller/subsystem/vote/Initialize(timeofday)
+	for(var/vote_type in subtypesof(/datum/vote))
+		var/datum/vote/vote = new vote_type()
+		if(!vote.is_accessible_vote())
+			qdel(vote)
+			continue
+		possible_votes[vote.name] = vote
+	return ..()
+
+/datum/controller/subsystem/vote/fire()
+	if(!current_vote)
 		return
-	time_remaining = round((started_time + CONFIG_GET(number/vote_period) - world.time)/10)
-	if(time_remaining < 0)
-		result()
-		SStgui.close_uis(src)
-		reset()
+	current_vote.time_remaining = round((current_vote.started_time + CONFIG_GET(number/vote_period) - world.time) / 10)
+	if(current_vote.time_remaining < 0)
+		end_vote()
 
+/// Ends the current vote
+/datum/controller/subsystem/vote/proc/end_vote()
+	ASSERT(current_vote)
+	process_vote_result()
+	SStgui.close_uis(src)
+	reset()
+
+/// Resets all of our vars after votes conclude / are cancelled
 /datum/controller/subsystem/vote/proc/reset()
-	mode = null
 	voted.Cut()
 	voting.Cut()
-	choices.Cut()
-	question = null
-	initiator = null
-	time_remaining = 0
-	choice_by_ckey.Cut()
-
+	current_vote?.reset()
+	current_vote = null
 	remove_action_buttons()
+	SStgui.update_uis(src)
 
-/datum/controller/subsystem/vote/proc/get_result()
-	//get the highest number of votes
-	var/greatest_votes = 0
-	var/total_votes = 0
-	for(var/option in choices)
-		var/votes = choices[option]
-		total_votes += votes
-		if(votes > greatest_votes)
-			greatest_votes = votes
-	//default-vote for everyone who didn't vote
-	if(!CONFIG_GET(flag/default_no_vote) && choices.len)
-		var/list/non_voters = GLOB.directory.Copy()
-		non_voters -= voted
-		for (var/non_voter_ckey in non_voters)
-			var/client/C = non_voters[non_voter_ckey]
-			if (!C || C.is_afk())
-				non_voters -= non_voter_ckey
-		if(non_voters.len > 0)
-			switch(mode)
-				if("restart")
-					choices["Continue Playing"] += non_voters.len
-					if(choices["Continue Playing"] >= greatest_votes)
-						greatest_votes = choices["Continue Playing"]
-				if("gamemode")
-					if(GLOB.master_mode in choices)
-						choices[GLOB.master_mode] += non_voters.len
-						if(choices[GLOB.master_mode] >= greatest_votes)
-							greatest_votes = choices[GLOB.master_mode]
-				if("map")
-					for (var/non_voter_ckey in non_voters)
-						var/client/C = non_voters[non_voter_ckey]
-						if(C.prefs.preferred_map)
-							var/preferred_map = C.prefs.preferred_map
-							choices[preferred_map] += 1
-							greatest_votes = max(greatest_votes, choices[preferred_map])
-						else if(global.config.defaultmap)
-							var/default_map = global.config.defaultmap.map_name
-							choices[default_map] += 1
-							greatest_votes = max(greatest_votes, choices[default_map])
-				if("transfer")
-					var/factor = 1 // factor defines how non-voters are weighted towards calling the shuttle
-					switch(world.time / (1 MINUTES))
-						if(0 to 60)
-							factor = 0.5
-						if(61 to 120)
-							factor = 0.8
-						if(121 to 240)
-							factor = 1
-						if(241 to 300)
-							factor = 1.2
-						else
-							factor = 1.4
-					choices["Initiate Crew Transfer"] += round(non_voters.len * factor)
-				if("Press On Or Return Home?") //NSV13 - Round extension vote
-					var/datum/star_system/target = SSstar_system.return_system
-					choices["Return to [target.name]]"] += non_voters.len
-					if(choices["Return to [target.name]]"] >= greatest_votes)
-						greatest_votes = choices["Return to [target.name]"]
-				if("hardmode") //NSV13 - Hardmode vote
-					choices["Play a normal round"] += non_voters.len
-					if(choices["Play a normal round"] >= greatest_votes) //You need an absolute majority
-						greatest_votes = choices["Play a normal round"]
-	//get all options with that many votes and return them in a list
-	. = list()
-	if(greatest_votes)
-		for(var/option in choices)
-			if(choices[option] == greatest_votes)
-				. += option
-	return .
+/// Collects the winners, breaks ties, prints the results and applies the effects of the vote
+/datum/controller/subsystem/vote/proc/process_vote_result()
+	// Non-voters who are here and not AFK
+	var/list/non_voters = GLOB.directory.Copy() - voted
+	for(var/non_voter_ckey in non_voters)
+		var/client/non_voter_client = non_voters[non_voter_ckey]
+		if(!istype(non_voter_client) || non_voter_client.is_afk())
+			non_voters -= non_voter_ckey
 
-/datum/controller/subsystem/vote/proc/announce_result()
-	var/total_votes = 0
-	for(var/option in choices)
-		var/votes = choices[option]
-		total_votes += votes
-	var/list/winners = get_result()
-	var/text
-	if(winners.len > 0)
-		if(question)
-			text += "<b>[question]</b>"
-		else
-			text += "<b>[capitalize(mode)] Vote</b>"
-		for(var/i=1,i<=choices.len,i++)
-			var/votes = choices[choices[i]]
-			if(!votes)
-				votes = 0
-			text += "\n<b>[choices[i]]:</b> [votes] ([total_votes ? (round((votes/total_votes), 0.01)*100) : "0"]%"
-			if(mode == "map")
-				text += " chance)"
-			else
-				text += ")"
-		if(mode != "custom")
-			if(winners.len > 1)
-				text = "\n<b>Vote Tied Between:</b>"
-				for(var/option in winners)
-					text += "\n\t[option]"
-			. = pick(winners)
-			text += "\n<b>Vote Result: [.]</b>"
-		else
-			text += "\n<b>Did not vote:</b> [GLOB.clients.len-voted.len]"
+	var/list/winners = current_vote.get_vote_result(non_voters)
+	var/final_winner
+	if(length(winners) == 1)
+		final_winner = winners[1]
+	else if(length(winners) > 1)
+		final_winner = current_vote.tiebreaker(winners)
+
+	var/to_display = current_vote.get_result_text(winners, final_winner, non_voters)
+	log_vote("[current_vote.name] vote finished, winner: [final_winner || "none"]. [json_encode(current_vote.choices)]")
+	if(to_display)
+		to_chat(world, "<span class='purple'>[to_display]</span>")
+
+	current_vote.finalize_vote(final_winner)
+
+/**
+ * One selection per person, and the selection with the most votes wins.
+ */
+/datum/controller/subsystem/vote/proc/submit_single_vote(mob/voter, their_vote)
+	if(!current_vote || !voter?.ckey)
+		return
+	if(!(their_vote in current_vote.choices))
+		return
+	if(!current_vote.can_mob_vote(voter))
+		return
+
+	// If user has already voted, remove their specific vote
+	if(voter.ckey in current_vote.choices_by_ckey)
+		var/their_old_vote = current_vote.choices_by_ckey[voter.ckey]
+		current_vote.choices[their_old_vote]--
 	else
-		text += "<b>Vote Result: Inconclusive - No Votes!</b>"
-	log_vote(text)
-	// NSV13 - record who voted for what during the map vote
-	if(mode == "map")
-		var/ckeys_by_choice = list()
-		for(var/ckey in choice_by_ckey)
-			var/choice_index = choice_by_ckey[ckey]
-			var/choice_name = choices[choice_index]
-			if(!(choice_name in ckeys_by_choice))
-				ckeys_by_choice[choice_name] = list()
-			ckeys_by_choice[choice_name] += ckey
-		for(var/choice in ckeys_by_choice)
-			log_vote("[choice]: [english_list(ckeys_by_choice[choice])]")
-		SSpersistence.SaveMapVoters(voted)
-	remove_action_buttons()
-	to_chat(world, "\n<font color='purple'>[text]</font>")
-	return .
+		voted += voter.ckey
 
-/datum/controller/subsystem/vote/proc/result()
-	. = announce_result()
-	var/restart = FALSE
-	if(.)
-		switch(mode)
-			if("restart")
-				if(. == "Restart Round")
-					restart = TRUE
-			if("gamemode")
-				if(GLOB.master_mode != .)
-					if(!SSticker.HasRoundStarted())
-						GLOB.master_mode = .
-			if("map")
-				SSmapping.changemap(global.config.maplist[.])
-				SSmapping.map_voted = TRUE
-				SStgui.close_uis(src) // NSV13 - close any current Vote UIs so the normal one comes back
-			if("transfer")
-				if(. == "Initiate Crew Transfer")
-					SSshuttle.requestEvac(null, "Crew Transfer Requested.")
-					SSshuttle.emergencyNoRecall = TRUE //Prevent Recall.
-					var/obj/machinery/computer/communications/C = locate() in GLOB.machines
-					if(C)
-						C.post_status("shuttle")
-			if("Press On Or Return Home?") //NSV13 - Round extension vote
-				if(. == "Request Additional Objectives")
-					priority_announce("Additional Objectives") //TEMP
-					SSovermap_mode.round_extended = TRUE
-					SSovermap_mode.request_additional_objectives()
-					SSovermap_mode.already_ended = FALSE
-					SSovermap_mode.objectives_completed = FALSE
-				else
-					priority_announce("Returning to [SSstar_system.return_system.name]") //TEMP
-					var/obj/structure/overmap/OM = SSstar_system.find_main_overmap()
-					OM.force_return_jump()
-			if("hardmode") //NSV13 - harder gamemode
-				if(. == "Let's GO FOR IT")
-					SSovermap_mode.toggle_hardmode()
-	if(restart)
-		var/active_admins = FALSE
-		for(var/client/C in GLOB.admins+GLOB.deadmins)
-			if(!C.is_afk() && check_rights_for(C, R_SERVER))
-				active_admins = TRUE
-				break
-		if(!active_admins)
-			SSticker.Reboot("Restart vote successful.", "restart vote")
-		else
-			to_chat(world, "<span style='boldannounce'>Notice:Restart vote will not restart the server automatically because there are active admins on.</span>")
-			message_admins("A restart vote has passed, but there are active admins on with +server, so it has been canceled. If you wish, you may restart the server.")
+	current_vote.choices_by_ckey[voter.ckey] = their_vote
+	current_vote.choices[their_vote]++
+	return TRUE
 
-	return .
+/**
+ * Any number of selections per person, and the selection with the most votes wins.
+ */
+/datum/controller/subsystem/vote/proc/submit_multi_vote(mob/voter, their_vote)
+	if(!current_vote || !voter?.ckey)
+		return
+	if(!(their_vote in current_vote.choices))
+		return
+	if(!current_vote.can_mob_vote(voter))
+		return
 
-/datum/controller/subsystem/vote/proc/submit_vote(vote)
-	if(!mode)
-		return FALSE
-	if(CONFIG_GET(flag/no_dead_vote) && (usr.stat == DEAD && !isnewplayer(usr)) && !usr.client.holder && mode != "map")
-		return FALSE
-	if(!(vote && 1<=vote && vote<=choices.len))
-		return FALSE
-	// If user has already voted
-	if(usr.ckey in voted)
-		choices[choices[choice_by_ckey[usr.ckey]]]--
+	voted |= voter.ckey
+	if(current_vote.choices_by_ckey[voter.ckey + their_vote] == 1)
+		current_vote.choices_by_ckey[voter.ckey + their_vote] = 0
+		current_vote.choices[their_vote]--
 	else
-		voted += usr.ckey
+		current_vote.choices_by_ckey[voter.ckey + their_vote] = 1
+		current_vote.choices[their_vote]++
+	return TRUE
 
-	choice_by_ckey[usr.ckey] = vote
-	choices[choices[vote]]++	//check this
-	return vote
+/**
+ * Initiates a vote, allowing all players to vote on something.
+ *
+ * * vote_type - A [/datum/vote] typepath, a [/datum/vote] instance, or the name of a vote datum.
+ * * vote_initiator_name - The ckey (if player initiated) or name that initiated a vote. Ex: "UristMcAdmin", "the server"
+ * * vote_initiator - If a person / mob initiated the vote, this is the mob that did it
+ * * forced - Whether we're forcing the vote to go through regardless of existing votes or other circumstances.
+ * * popup - Open the vote window for everyone
+ */
+/datum/controller/subsystem/vote/proc/initiate_vote(vote_type, vote_initiator_name, mob/vote_initiator, forced = FALSE, anonymous = FALSE, popup = FALSE)
+	if(!can_vote_start(vote_initiator, forced))
+		return FALSE
 
-/datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, forced=FALSE, popup=FALSE)
-	if(!mode)
-		if(started_time)
-			var/next_allowed_time = (started_time + CONFIG_GET(number/vote_delay))
-			if(mode)
-				to_chat(usr, "<span class='warning'>There is already a vote in progress! please wait for it to finish.</span>")
-				return 0
+	var/datum/vote/to_vote
+	if(ispath(vote_type, /datum/vote))
+		var/datum/vote/vote_path = vote_type
+		to_vote = possible_votes[initial(vote_path.name)]
+	else if(istype(vote_type, /datum/vote))
+		to_vote = vote_type
+	else
+		to_vote = possible_votes[vote_type]
+		if(!to_vote)
+			stack_trace("Voting initiate_vote was passed an invalid vote type. (Got: [vote_type || "null"])")
 
-			var/lower_admin = FALSE
-			var/ckey = ckey(initiator_key)
-			if(GLOB.admin_datums[ckey] || forced)
-				lower_admin = TRUE
+	if(!istype(to_vote))
+		if(vote_initiator)
+			to_chat(vote_initiator, "<span class='warning'>Invalid voting choice.</span>")
+		return FALSE
 
-			if(next_allowed_time > world.time && !lower_admin)
-				to_chat(usr, "<span class='warning'>A vote was initiated recently, you must wait [DisplayTimeText(next_allowed_time-world.time)] before a new vote can be started!</span>")
-				return 0
+	if(to_vote.can_be_initiated(forced) != VOTE_AVAILABLE)
+		return FALSE
 
-		reset()
-		switch(vote_type)
-			if("restart")
-				choices.Add("Restart Round","Continue Playing")
-			if("gamemode")
-				choices.Add(config.votable_modes)
-			if("map")
-				// Randomizes the list so it isn't always METASTATION
-				var/list/maps = list()
-				for(var/map in global.config.maplist)
-					var/datum/map_config/VM = config.maplist[map]
-					if(!VM.is_votable()) //NSV13 no forced map rotation
-						continue
-					maps += VM.map_name
-					shuffle_inplace(maps)
-				for(var/valid_map in maps)
-					choices.Add(valid_map)
-				SStgui.close_uis(src) // NSV13 - close any current Vote UIs so they have to reopen and get the alternate UI
-			if("transfer")
-				choices.Add("Initiate Crew Transfer", "Continue Playing")
-			if("Press On Or Return Home?") //NSV13 - Round extension vote
-				var/datum/star_system/target = SSstar_system.return_system
-				choices.Add("Return to [target.name]", "Request Additional Objectives")
-			if("hardmode") //NSV13 - Hardmode vote
-				choices.Add("Let's GO FOR IT", "Play a normal round")
-			if("custom")
-				question = stripped_input(usr,"What is the vote for?")
-				if(!question)
-					return 0
-				for(var/i=1,i<=10,i++)
-					var/option = capitalize(stripped_input(usr,"Please enter an option or hit cancel to finish"))
-					if(!option || mode || !usr.client)
-						break
-					choices.Add(option)
-			else
-				return 0
-		mode = vote_type
-		initiator = initiator_key
-		started_time = world.time
-		var/text = "[capitalize(mode)] vote started by [initiator ? initiator : "CentCom"]."
-		if(mode == "custom")
-			text += "\n[question]"
-		log_vote(text)
-		var/vp = CONFIG_GET(number/vote_period)
-		to_chat(world, "\n<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='byond://winset?command=vote'>here</a> to place your votes.\nYou have [DisplayTimeText(vp)] to vote.</font>")
-		time_remaining = round(vp/10)
-		for(var/c in GLOB.clients)
-			var/client/C = c
-			var/datum/action/vote/V = new
-			if(question)
-				V.name = "Vote: [question]"
-			C.player_details.player_actions += V
-			V.Grant(C.mob)
-			generated_actions += V
+	reset()
+	if(!to_vote.create_vote(vote_initiator))
+		return FALSE
 
-			if(popup)
-				C?.mob?.vote() // automatically popup the vote
+	if(!vote_initiator_name && vote_initiator)
+		vote_initiator_name = vote_initiator.key
 
-		return 1
-	return 0
+	current_vote = to_vote
+	last_vote_time = world.time
+
+	var/duration = CONFIG_GET(number/vote_period)
+	var/to_display = current_vote.initiate_vote(vote_initiator_name, duration, anonymous)
+
+	log_vote(to_display)
+	to_chat(world, EXAMINE_BLOCK("<span class='purple'><b>[to_display]</b>\n\n\
+		Type <b>vote</b> or click <a href='byond://winset?command=vote'>here</a> to place your votes.\n\
+		You have [DisplayTimeText(duration)] to vote.</span>"))
+
+	// Give everyone a voter action
+	for(var/client/new_voter as anything in GLOB.clients)
+		var/datum/action/vote/voting_action = new()
+		voting_action.name = "Vote: [current_vote.override_question || current_vote.name]"
+		voting_action.Grant(new_voter.mob)
+		new_voter.player_details.player_actions += voting_action
+		generated_actions += voting_action
+		if(current_vote.vote_sound)
+			SEND_SOUND(new_voter, sound(current_vote.vote_sound))
+		if(popup)
+			new_voter.mob?.vote()
+
+	return TRUE
+
+/**
+ * Checks if we can start a vote.
+ *
+ * Returns TRUE if we can start a vote, FALSE if we can't.
+ */
+/datum/controller/subsystem/vote/proc/can_vote_start(mob/vote_initiator, forced)
+	if(!initialized)
+		if(vote_initiator)
+			to_chat(vote_initiator, "<span class='warning'>You cannot start a vote now, the server is not done initializing.</span>")
+		return FALSE
+
+	if(forced)
+		return TRUE
+
+	var/next_allowed_time = last_vote_time + CONFIG_GET(number/vote_delay)
+	if(next_allowed_time > world.time)
+		if(vote_initiator)
+			to_chat(vote_initiator, "<span class='warning'>A vote was initiated recently. You must wait [DisplayTimeText(next_allowed_time - world.time)] before a new vote can be started!</span>")
+		return FALSE
+
+	if(current_vote)
+		if(vote_initiator)
+			to_chat(vote_initiator, "<span class='warning'>There is already a vote in progress! Please wait for it to finish.</span>")
+		return FALSE
+
+	return TRUE
+
+/datum/controller/subsystem/vote/proc/toggle_dead_voting(mob/toggle_initiator)
+	var/switch_deadvote_config = !CONFIG_GET(flag/no_dead_vote)
+	CONFIG_SET(flag/no_dead_vote, switch_deadvote_config)
+	var/text_verb = !switch_deadvote_config ? "enabled" : "disabled"
+	log_admin("[key_name(toggle_initiator)] [text_verb] Dead Vote.")
+	message_admins("[key_name_admin(toggle_initiator)] [text_verb] Dead Vote.")
 
 /datum/controller/subsystem/vote/proc/remove_action_buttons()
-	for(var/v in generated_actions)
-		var/datum/action/vote/V = v
-		if(!QDELETED(V))
-			V.remove_from_client()
-			V.Remove(V.owner)
+	for(var/datum/action/vote/voting_action as anything in generated_actions)
+		if(!QDELETED(voting_action))
+			voting_action.remove_from_client()
+			voting_action.Remove(voting_action.owner)
 	generated_actions = list()
-
-/mob/verb/vote()
-	set category = "OOC"
-	set name = "Vote"
-	SSvote.ui_interact(src)
 
 /datum/controller/subsystem/vote/ui_state()
 	return GLOB.always_state
 
 /datum/controller/subsystem/vote/ui_interact(mob/user, datum/tgui/ui)
-	// Tracks who is voting
-	if(!(user.client?.ckey in voting))
-		voting += user.client?.ckey
+	// Tracks who is currently voting
+	voting |= user.client?.ckey
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		if(mode == "map") // NSV13 - special mapvote UI
-			ui = new(user, src, "MapVote")
-		else
-			ui = new(user, src, "Vote")
+		// NSV13 - the map vote has its own window with the ship info
+		ui = new(user, src, istype(current_vote, /datum/vote/map) ? "MapVote" : "VotePanel")
+		ui.set_autoupdate(TRUE)
 		ui.open()
 
 /datum/controller/subsystem/vote/ui_data(mob/user)
-	var/list/data = list(
-		"mode" = mode,
-		"voted" = voted,
-		"voting" = voting,
-		"choices" = list(),
-		"question" = question,
-		"initiator" = initiator,
-		"started_time" = started_time,
-		"time_remaining" = time_remaining,
-		"lower_admin" = !!user.client?.holder,
-		"generated_actions" = generated_actions,
-		"avm" = CONFIG_GET(flag/allow_vote_mode),
-		"avmap" = CONFIG_GET(flag/allow_vote_map),
-		"avr" = CONFIG_GET(flag/allow_vote_restart),
-		"selectedChoice" = choice_by_ckey[user.client?.ckey],
-		"upper_admin" = check_rights_for(user.client, R_ADMIN),
-		"mapvote_banned" = is_banned_from(user.ckey, "Mapvote"), // NSV13 - added mapvote bans
+	var/list/data = list()
+
+	var/is_lower_admin = !!user.client?.holder
+	var/is_upper_admin = check_rights_for(user.client, R_ADMIN)
+
+	// NSV13 - data for the MapVote window
+	if(istype(current_vote, /datum/vote/map))
+		var/list/map_choices = list()
+		var/selected_index
+		var/i = 0
+		for(var/key in current_vote.choices)
+			i++
+			map_choices += list(list("name" = key, "votes" = current_vote.choices[key] || 0))
+			if(current_vote.choices_by_ckey[user.client?.ckey] == key)
+				selected_index = i
+		data["mode"] = "map"
+		data["question"] = current_vote.override_question
+		data["choices"] = map_choices
+		data["selectedChoice"] = selected_index
+		data["time_remaining"] = current_vote.time_remaining
+		data["lower_admin"] = is_lower_admin
+		data["upper_admin"] = is_upper_admin
+		data["mapvote_banned"] = is_banned_from(user.ckey, "Mapvote")
+		return data
+
+	data["user"] = list(
+		"ckey" = user.client?.ckey,
+		"isGhost" = CONFIG_GET(flag/no_dead_vote) && user.stat == DEAD && !user.client?.holder,
+		"isLowerAdmin" = is_lower_admin,
+		"isUpperAdmin" = is_upper_admin,
+		// What the current user has selected in any ongoing votes.
+		"singleSelection" = current_vote?.choices_by_ckey[user.client?.ckey],
+		"multiSelection" = current_vote?.choices_by_ckey,
 	)
 
-	for(var/key in choices)
-		data["choices"] += list(list(
-			"name" = key,
-			"votes" = choices[key] || 0,
-		))
+	data["voting"] = is_lower_admin ? voting : list()
 
+	var/list/all_vote_data = list()
+	for(var/vote_name in possible_votes)
+		var/datum/vote/vote = possible_votes[vote_name]
+		if(!istype(vote))
+			continue
+		var/can_vote = vote.can_be_initiated(is_lower_admin)
+		var/list/vote_data = list(
+			"name" = vote_name,
+			"canBeInitiated" = can_vote == VOTE_AVAILABLE,
+			"config" = vote.is_config_enabled(),
+			"message" = can_vote == VOTE_AVAILABLE ? vote.default_message : can_vote,
+		)
+
+		if(vote == current_vote)
+			var/list/choices = list()
+			for(var/key in current_vote.choices)
+				choices += list(list(
+					"name" = key,
+					"description" = current_vote.choice_descriptions[key],
+					"votes" = current_vote.choices[key],
+				))
+
+			data["currentVote"] = list(
+				"name" = current_vote.name,
+				"question" = current_vote.override_question,
+				"timeRemaining" = current_vote.time_remaining,
+				"countMethod" = current_vote.count_method,
+				"displayStatistics" = current_vote.display_statistics,
+				"choices" = choices,
+				"vote" = vote_data,
+			)
+
+		all_vote_data += list(vote_data)
+
+	data["possibleVotes"] = all_vote_data
+	data["LastVoteTime"] = last_vote_time - world.time
 	return data
 
-/datum/controller/subsystem/vote/ui_act(action, params)
+/datum/controller/subsystem/vote/ui_static_data(mob/user)
+	var/list/data = list()
+	data["VoteCD"] = CONFIG_GET(number/vote_delay)
+	return data
+
+/datum/controller/subsystem/vote/ui_act(action, list/params)
 	. = ..()
 	if(.)
 		return
 
-	var/upper_admin = 0
-	if(usr.client.holder)
-		if(check_rights_for(usr.client, R_ADMIN))
-			upper_admin = 1
+	var/mob/voter = usr
 
 	switch(action)
 		if("cancel")
-			if(usr.client.holder)
-				reset()
-		if("toggle_restart")
-			if(usr.client.holder && upper_admin)
-				CONFIG_SET(flag/allow_vote_restart, !CONFIG_GET(flag/allow_vote_restart))
-		if("toggle_gamemode")
-			if(usr.client.holder && upper_admin)
-				CONFIG_SET(flag/allow_vote_mode, !CONFIG_GET(flag/allow_vote_mode))
-		if("toggle_map")
-			if(usr.client.holder && upper_admin)
-				CONFIG_SET(flag/allow_vote_map, !CONFIG_GET(flag/allow_vote_map))
-		if("restart")
-			if(CONFIG_GET(flag/allow_vote_restart) || usr.client.holder)
-				initiate_vote("restart",usr.key)
-		if("gamemode")
-			if(CONFIG_GET(flag/allow_vote_mode) || usr.client.holder)
-				initiate_vote("gamemode",usr.key)
-		if("map")
-			if(CONFIG_GET(flag/allow_vote_map) || usr.client.holder)
-				initiate_vote("map",usr.key,popup=TRUE)
-		if("hardmode") //NSV13
-			if(usr.client.holder)
-				initiate_vote("hardmode",usr.key,popup=TRUE)
-		if("custom")
-			if(usr.client.holder)
-				initiate_vote("custom",usr.key)
+			if(!voter.client?.holder)
+				message_admins("[key_name(voter)] tried to cancel the current vote while having no admin holder, \
+					this is potentially a malicious exploit and worth noting.")
+				return
+			log_admin("[key_name(voter)] cancelled a vote.")
+			message_admins("[key_name_admin(voter)] has cancelled the current vote.")
+			SStgui.close_uis(src)
+			reset()
+			return TRUE
+
+		if("endNow")
+			if(!voter.client?.holder)
+				message_admins("[key_name(voter)] tried to end the current vote while having no admin holder, \
+					this is potentially a malicious exploit and worth noting.")
+				return
+			if(!current_vote)
+				return
+			log_admin("[key_name(voter)] ended the current vote early.")
+			message_admins("[key_name_admin(voter)] has ended the current vote.")
+			end_vote()
+			return TRUE
+
+		if("toggleDeadVote")
+			if(!check_rights_for(voter.client, R_ADMIN))
+				message_admins("[key_name(voter)] tried to toggle vote abillity for ghosts while having improper rights, \
+					this is potentially a malicious exploit and worth noting.")
+				return
+			toggle_dead_voting(voter)
+			return TRUE
+
+		if("toggleVote")
+			var/datum/vote/selected = possible_votes[params["voteName"]]
+			if(!istype(selected))
+				return
+			if(!check_rights_for(voter.client, R_ADMIN))
+				message_admins("[key_name(voter)] tried to toggle vote availability while having improper rights, \
+					this is potentially a malicious exploit and worth noting.")
+				return
+			selected.toggle_votable()
+			return TRUE
+
+		if("callVote")
+			var/datum/vote/selected = possible_votes[params["voteName"]]
+			if(!istype(selected))
+				return
+			// Whether the user actually can initiate this vote is checked in initiate_vote
+			return initiate_vote(
+				vote_type = selected,
+				vote_initiator_name = voter.key,
+				vote_initiator = voter,
+				forced = !!GLOB.admin_datums[voter.ckey],
+				anonymous = params["anonymous"],
+				popup = istype(selected, /datum/vote/map),
+			)
+
+		if("voteSingle")
+			return submit_single_vote(voter, params["voteOption"])
+
+		if("voteMulti")
+			return submit_multi_vote(voter, params["voteOption"])
+
+		// NSV13 - the MapVote window votes by index
 		if("vote")
-			submit_vote(round(text2num(params["index"])))
-	return TRUE
+			if(!istype(current_vote, /datum/vote/map))
+				return
+			var/index = round(text2num(params["index"]))
+			if(index < 1 || index > length(current_vote.choices))
+				return
+			return submit_single_vote(voter, current_vote.choices[index])
+
+		if("resetCooldown")
+			if(!voter.client?.holder)
+				message_admins("[key_name(voter)] tried to reset the vote cooldown while having no admin holder, \
+					this is potentially a malicious exploit and worth noting.")
+				return
+			last_vote_time = -INFINITY
+			return TRUE
 
 /datum/controller/subsystem/vote/ui_close(mob/user, datum/tgui/tgui)
 	voting -= user.client?.ckey
 
+/// Mob level verb that allows players to vote on the current vote
+/mob/verb/vote()
+	set category = "OOC"
+	set name = "Vote"
+
+	if(!SSvote.initialized)
+		to_chat(usr, "<span class='notice'><i>Voting is not set up yet!</i></span>")
+		return
+	SSvote.ui_interact(usr)
+
+/// Action given to mobs that allows players to vote on the current vote
 /datum/action/vote
 	name = "Vote!"
 	button_icon_state = "vote"
@@ -415,7 +427,7 @@ SUBSYSTEM_DEF(vote)
 		Remove(owner)
 
 /datum/action/vote/IsAvailable()
-	return 1
+	return TRUE
 
 /datum/action/vote/proc/remove_from_client()
 	if(!owner)
