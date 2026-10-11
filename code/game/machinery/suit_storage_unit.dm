@@ -67,6 +67,7 @@
 /obj/machinery/suit_storage_unit/engine
 	suit_type = /obj/item/clothing/suit/space/hardsuit/engine
 	mask_type = /obj/item/clothing/mask/breath
+	storage_type = /obj/item/clothing/shoes/magboots //AQUILA EDIT - port BeeStation/BeeStation-Hornet#9975
 
 /obj/machinery/suit_storage_unit/ce
 	suit_type = /obj/item/clothing/suit/space/hardsuit/engine/elite
@@ -153,6 +154,7 @@
 		mask = new mask_type(src)
 	if(storage_type)
 		storage = new storage_type(src)
+	interaction_flags_machine |= INTERACT_MACHINE_OFFLINE //AQUILA EDIT - radial zamiast TGUI (port BeeStation/BeeStation-Hornet#9975)
 	update_icon()
 
 /obj/machinery/suit_storage_unit/Destroy()
@@ -203,7 +205,6 @@
 	. = ..()
 	uv_super = !uv_super
 	wires.ui_update()
-	ui_update()
 
 /obj/machinery/suit_storage_unit/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
@@ -409,7 +410,6 @@
 
 		visible_message("<span class='notice'>[user] inserts [I] into [src]</span>", "<span class='notice'>You load [I] into [src].</span>")
 		update_icon()
-		ui_update()
 		return
 
 	if(panel_open && is_wire_tool(I))
@@ -417,7 +417,6 @@
 		return
 	if(!state_open)
 		if(default_deconstruction_screwdriver(user, "panel", "close", I))
-			ui_update() // Wires might've changed availability of decontaminate button
 			return
 	if(default_pry_open(I))
 		dump_contents()
@@ -444,84 +443,103 @@
 		open_machine()
 
 
-/obj/machinery/suit_storage_unit/ui_state(mob/user)
-	return GLOB.notcontained_state
+//AQUILA EDIT START - radial zamiast TGUI (port BeeStation/BeeStation-Hornet#9975)
+/obj/machinery/suit_storage_unit/interact(mob/living/user)
+	var/static/list/items
 
-/obj/machinery/suit_storage_unit/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "SuitStorageUnit")
-		ui.open()
+	if(!items)
+		items = list(
+			"suit" = create_silhouette_of(/obj/item/clothing/suit/space/eva),
+			"helmet" = create_silhouette_of(/obj/item/clothing/head/helmet/space/eva),
+			"mask" = create_silhouette_of(/obj/item/clothing/mask/breath),
+			"storage" = create_silhouette_of(/obj/item/tank/internals/oxygen),
+		)
 
-/obj/machinery/suit_storage_unit/ui_data()
-	var/list/data = list()
-	data["locked"] = locked
-	data["open"] = state_open
-	data["safeties"] = safeties
-	data["uv_active"] = uv
-	data["uv_super"] = uv_super
-	if(helmet)
-		data["helmet"] = helmet.name
-	else
-		data["helmet"] = null
-	if(suit)
-		data["suit"] = suit.name
-	else
-		data["suit"] = null
-	if(mask)
-		data["mask"] = mask.name
-	else
-		data["mask"] = null
-	if(storage)
-		data["storage"] = storage.name
-	else
-		data["storage"] = null
-	if(occupant)
-		data["occupied"] = TRUE
-	else
-		data["occupied"] = FALSE
-	return data
-
-/obj/machinery/suit_storage_unit/ui_act(action, params)
-	if(..() || uv)
+	. = ..()
+	if(.)
 		return
-	switch(action)
-		if("door")
+
+	if(!check_interactable(user))
+		return
+
+	var/list/choices = list()
+
+	if(locked)
+		choices["unlock"] = icon('aquila/icons/mob/radial.dmi', "radial_unlock")
+	else if(state_open)
+		choices["close"] = icon('aquila/icons/mob/radial.dmi', "radial_close")
+
+		for(var/item_key in items)
+			var/item = vars[item_key]
+			if(item)
+				choices[item_key] = item
+			else
+				// Pusty slot pokazuje półprzezroczystą sylwetkę
+				choices[item_key] = items[item_key]
+	else
+		choices["open"] = icon('aquila/icons/mob/radial.dmi', "radial_open")
+		choices["disinfect"] = icon('aquila/icons/mob/radial.dmi', "radial_disinfect")
+		choices["lock"] = icon('aquila/icons/mob/radial.dmi', "radial_lock")
+
+	var/choice = show_radial_menu(user, src, choices, custom_check = CALLBACK(src, PROC_REF(check_interactable), user), require_near = !issilicon(user))
+
+	if(!choice || !check_interactable(user))
+		return
+
+	switch(choice)
+		if("open")
+			if(!state_open && !locked)
+				open_machine(drop = FALSE)
+				if(occupant)
+					dump_contents()
+		if("close")
 			if(state_open)
 				close_machine()
-			else
-				open_machine(0)
-				if(occupant)
-					dump_contents() // Dump out contents if someone is in there.
-			. = TRUE
-		if("lock")
-			if(state_open)
+		if("disinfect")
+			if(state_open || locked)
 				return
-			locked = !locked
-			. = TRUE
-		if("uv")
 			if(occupant && safeties)
+				say("Wykryto organizm w komorze. Usuń go przed dezynfekcją.")
 				return
-			else if(!helmet && !mask && !suit && !storage && !occupant)
+			if(!helmet && !mask && !suit && !storage && !occupant)
 				return
-			else
-				if(occupant)
-					var/mob/living/mob_occupant = occupant
-					to_chat(mob_occupant, "<span class='userdanger'>[src]'s confines grow warm, then hot, then scorching. You're being burned [!mob_occupant.stat ? "alive" : "away"]!</span>")
-				cook()
-				. = TRUE
-		if("dispense")
+			if(occupant)
+				var/mob/living/mob_occupant = occupant
+				to_chat(mob_occupant, "<span class='userdanger'>[src]'s confines grow warm, then hot, then scorching. You're being burned [!mob_occupant.stat ? "alive" : "away"]!</span>")
+			cook()
+		if("lock", "unlock")
+			if(!state_open)
+				locked = !locked
+		if("suit", "helmet", "mask", "storage")
 			if(!state_open)
 				return
+			var/obj/item/item_to_dispense = vars[choice]
+			if(item_to_dispense)
+				vars[choice] = null
+				if(!user.put_in_hands(item_to_dispense))
+					item_to_dispense.forceMove(drop_location())
 
-			var/static/list/valid_items = list("helmet", "suit", "mask", "storage")
-			var/item_name = params["item"]
-			if(item_name in valid_items)
-				var/obj/item/I = vars[item_name]
-				vars[item_name] = null
-				if(I)
-					I.forceMove(loc)
-			. = TRUE
+	update_icon()
+	interact(user)
 
-	if(.)
-		update_icon()
+/obj/machinery/suit_storage_unit/proc/check_interactable(mob/user)
+	if(state_open && !powered())
+		return FALSE
+
+	if(!state_open && !can_interact(user))
+		return FALSE
+
+	if(panel_open)
+		return FALSE
+
+	if(uv)
+		return FALSE
+
+	return TRUE
+
+/obj/machinery/suit_storage_unit/proc/create_silhouette_of(atom/item)
+	var/image/image = image(initial(item.icon), initial(item.icon_state))
+	image.alpha = 128
+	image.color = COLOR_RED
+	return image
+//AQUILA EDIT END
