@@ -85,11 +85,11 @@
 	if(!length)
 		return
 	var/last_char = copytext_char(text, -1)
-	var/volume = 30
+	var/volume = 50
 	if(message_mods?[WHISPER_MODE])
-		volume = 15
+		volume = 15 // much quieter than normal speech, so a whisper stands out
 	else if(last_char == "!" || (length > 3 && uppertext(text) == text && lowertext(text) != text))
-		volume = 40
+		volume = 70
 
 	var/phrases = clamp(CEILING(length / SPEECH_PHRASE_CHARS, 1), 1, SPEECH_PHRASES_MAX)
 	speech_sound_cd = world.time + max(speech_sound_delay, phrases * SPEECH_PHRASE_DELAY)
