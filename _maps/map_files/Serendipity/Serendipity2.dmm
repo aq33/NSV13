@@ -13,6 +13,10 @@
 /obj/machinery/cell_charger,
 /turf/open/floor/carpet/ship/beige_carpet,
 /area/hallway/nsv/deck1/hallway)
+"ac" = (
+/mob/living/simple_animal/hostile/retaliate/wojtek,
+/turf/open/floor/plasteel/dark,
+/area/nsv/weapons)
 "ad" = (
 /obj/structure/rack,
 /obj/item/clothing/ears/earmuffs,
@@ -45631,7 +45635,7 @@ eM
 RM
 eS
 TR
-Nf
+ac
 co
 Ke
 MI
