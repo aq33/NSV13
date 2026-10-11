@@ -434,7 +434,7 @@
 			continue
 		quirk_info[sanitize_css_class_name(quirk_name)] = list(
 			"description" = html_decode(strip_html_simple(initial(quirk.desc))),
-			"icon" = initial(quirk.value) > 0 ? "plus" : (initial(quirk.value) < 0 ? "minus" : "circle"),
+			"icon" = initial(quirk.icon) || (initial(quirk.value) > 0 ? "plus" : (initial(quirk.value) < 0 ? "minus" : "circle")),
 			"name" = quirk_name,
 			"value" = initial(quirk.value),
 		)

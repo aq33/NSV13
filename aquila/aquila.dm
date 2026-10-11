@@ -88,6 +88,7 @@
 #include "code\datums\mind.dm"
 #include "code\datums\polls\candidate_poll.dm"
 #include "code\datums\polls\poll_config.dm"
+#include "code\datums\traits\quirk_icons.dm"
 #include "code\game\area\areas\centcom.dm"
 #include "code\game\area\areas\shuttles.dm"
 #include "code\game\area\sound_environments.dm"

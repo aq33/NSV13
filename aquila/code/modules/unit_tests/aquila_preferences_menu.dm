@@ -18,6 +18,10 @@
 	var/list/constant_data = json_asset.generate()
 	for(var/key in list("species", "jobs", "quirks", "loadout", "antags", "names", "random", "hair_style_name", "underwear", "skin_tone"))
 		TEST_ASSERT(constant_data[key], "preferences.json has no [key]")
+	// Every quirk has its own icon, like on BeeStation
+	for(var/quirk_name in SSquirks.quirks)
+		var/datum/quirk/quirk = SSquirks.quirks[quirk_name]
+		TEST_ASSERT(initial(quirk.icon), "Quirk [quirk_name] ([quirk]) has no icon")
 	var/list/jobs = constant_data["jobs"]
 	TEST_ASSERT(jobs["departments"]["Munitions"], "The Munitions department is missing")
 	TEST_ASSERT(jobs["jobs"][JOB_NAME_PILOT]["department"] == "Munitions", "Pilots are not in Munitions")
