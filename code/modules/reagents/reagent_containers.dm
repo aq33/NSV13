@@ -131,6 +131,7 @@
 
 	else if(bartender_check(target) && thrown)
 		visible_message("<span class='notice'>[src] lands onto the [target.name] without spilling a single drop.</span>")
+		skip_next_scatter = TRUE // AQUILA EDIT - Yogstation#12789: ląduje prosto
 		return
 
 	else
