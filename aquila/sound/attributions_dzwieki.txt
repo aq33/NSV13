@@ -44,3 +44,8 @@ Re-encoded (mono, 44.1 kHz) copies of sounds already in the repository:
   effects/janicart_roll.ogg         sound/effects/roll.ogg
   voice/human/emotes/exhale_m.ogg   sound/effects/inhale.ogg
   effects/footstep/robot_servo1-3.ogg  nsv13/sound/effects/footstep/servo1-3.ogg
+
+Radio (tgstation sound/items/radio, see its attribution.txt):
+  items/radio/radio_talk.ogg        cs2975871, https://freesound.org/people/cs2975871/sounds/514185/ (shortened)
+  items/radio/radio_important.ogg   morganpurkis, https://freesound.org/people/morganpurkis/sounds/392972/
+  items/radio/radio_receive.ogg     JovianSounds, https://freesound.org/people/JovianSounds/sounds/524205/ (shortened)

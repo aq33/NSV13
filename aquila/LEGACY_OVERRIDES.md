@@ -111,6 +111,8 @@ One-line hooks; everything else is in `aquila/code/modules/mob/voice.dm`, the Aq
 - `code/game/objects/items.dm`: `equip_sound` only when worn (`slot_flags & slot`), not when picked up.
 - `code/game/turfs/turf.dm`: `handle_fall()` also thuds, more quietly, when lying down on purpose.
 - `code/modules/client/preferences.dm`, `preferences2/character_save.dm`: voice pitch row, its input/random handlers, sanitizing and randomising `features["voice_pitch"]`.
+- `code/game/machinery/telecomms/broadcasting.dm`: the receive beep goes to the listener only (`play_radio_receive_sound()`), it used to be a positional sound everyone around heard.
+- `code/game/objects/items/devices/radio/radio.dm`: `talk_into_impl()` plays `play_radio_talk_sound()`, audible next to the speaker.
 
 ### Smartwires port (BeeStation/BeeStation-Hornet#14275, F)
 

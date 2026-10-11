@@ -19,3 +19,7 @@
 #define SPEECH_PHRASE_DELAY (0.6 SECONDS)
 /// How much a mask or helmet over the mouth cuts the high end of a voice, in millibels (/sound/var/echo DirectHF)
 #define VOICE_MUFFLE_DIRECT_HF -1500
+/// Distant gunshots: heard beyond normal sound range up to this many tiles
+#define DISTANT_GUNSHOT_RANGE 45
+/// How much a distant sound loses its high end, in millibels (/sound/var/echo DirectHF)
+#define DISTANT_SOUND_DIRECT_HF -2500
