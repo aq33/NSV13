@@ -160,6 +160,8 @@
 	icon = 'aquila/icons/obj/butt.dmi'
 	icon_state = "butt"
 	item_flags = ABSTRACT
+	// The pocket sits in its owner's contents, and view() lists those, so AI (monkeys) would click and grab it
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	w_class = WEIGHT_CLASS_BULKY
 	component_type = /datum/component/storage/concrete/pockets/butt
 	var/obj/item/organ/butt/butt

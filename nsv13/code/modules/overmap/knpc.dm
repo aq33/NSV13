@@ -34,6 +34,10 @@ GLOBAL_LIST_EMPTY(knpcs)
 	var/failsafe_trust = 3 SECONDS
 	///This determines the maximum variance freom the base value of a particular knpc. Modifies upwards only.
 	var/failsafe_trust_variance = 3 SECONDS
+	///Weakrefs to items we failed to path to, so we stop chasing a gun behind a window forever.
+	var/list/unreachable_items
+	///Are we in the middle of a resist do_after?
+	var/resisting = FALSE
 
 /mob/living/carbon/human/ai_boarder
 	faction = list("Neutral")
@@ -78,21 +82,32 @@ GLOBAL_LIST_EMPTY(knpcs)
 	RegisterSignal(parent, COMSIG_ATOM_BULLET_ACT, PROC_REF(register_bullet))
 
 //Swiper! no swiping
-/datum/component/knpc/proc/steal_id(obj/item/card/id/their_id)
+/datum/component/knpc/proc/steal_id(obj/item/card/id/their_id, mob/living/carbon/victim)
 	//Time to teach them about IDs :)))
 	stealing_id = FALSE
 	var/mob/living/carbon/human/H = parent
-	if(get_dist(H, their_id.loc) > 1)
+	if(QDELETED(their_id) || QDELETED(victim) || H.incapacitated())
+		return FALSE
+	//The ID may sit in a PDA or wallet, so take whatever the victim actually has equipped.
+	var/obj/item/stolen = their_id
+	while(isitem(stolen.loc) && stolen.loc != victim)
+		stolen = stolen.loc
+	if(stolen.loc != victim || get_dist(H, victim) > 1)
 		return FALSE
 	var/obj/item/card/id/ID = H.get_idcard()
 	if(ID)
 		if(istype(ID, /obj/item/card/id/syndicate) || istype(ID, /obj/item/card/id/syndicate_command) || istype(ID, /obj/item/card/id/syndi_crew))
-			their_id.forceMove(get_turf(H))
-			H.visible_message("<span class='warning'>[H] snatches [their_id]. </span>")
+			if(!victim.dropItemToGround(stolen))
+				return FALSE
+			H.visible_message("<span class='warning'>[H] wyrywa [stolen]. </span>")
 			ID.access |= their_id.access
 	else
-		H.put_in_inactive_hand(their_id)
-		if(H.equip_to_appropriate_slot(their_id))
+		if(!victim.temporarilyRemoveItemFromInventory(stolen))
+			return FALSE
+		if(!H.put_in_inactive_hand(stolen))
+			stolen.forceMove(get_turf(H))
+			return FALSE
+		if(H.equip_to_appropriate_slot(stolen))
 			H.update_inv_hands()
 			return TRUE
 
@@ -147,10 +162,11 @@ GLOBAL_LIST_EMPTY(knpcs)
 	if(tries >= max_tries)
 		tries = 0
 		if(length(last_node?.next_nodes)) //Skip this one.
-			pathfind_to(pick(last_node.next_nodes))
+			last_node = pick(last_node.next_nodes)
+			pathfind_to(last_node)
 		else
 			pathfind_to(null)
-		last_node = null //Reset pathfinding fully.
+			last_node = null //Reset pathfinding fully.
 		return FALSE
 	if(length(path) > 1)
 		var/turf/next_turf = get_step_towards(H, path[1])
@@ -255,6 +271,16 @@ GLOBAL_LIST_EMPTY(knpcs)
 	SIGNAL_HANDLER
 	START_PROCESSING(SSfastprocess, src)
 
+///Resisting out of cuffs or a locked closet sleeps on a do_after, so do it outside of process() and only once at a time.
+/datum/component/knpc/proc/try_resist()
+	set waitfor = FALSE
+	if(resisting)
+		return
+	resisting = TRUE
+	var/mob/living/H = parent
+	H.resist()
+	resisting = FALSE
+
 ///Pick a goal from the available goals!
 /datum/component/knpc/proc/pick_goal()
 	var/best_score = -1000
@@ -284,6 +310,7 @@ GLOBAL_LIST_EMPTY(knpcs)
 		next_action = world.time + H.action_delay
 		pick_goal()
 		current_goal?.action(src)
+	pathfind_timeout = max(0, pathfind_timeout - SSfastprocess.wait)
 	if(!H.can_resist())
 		if(H.incapacitated()) //In crit or something....
 			return
@@ -294,9 +321,9 @@ GLOBAL_LIST_EMPTY(knpcs)
 		dest = null
 		tries = 0
 		path = list()
-		last_node = null
-		current_goal?.get_next_patrol_node(src)
-	pathfind_timeout = max(0, pathfind_timeout - 1)
+		//Don't wander off to a patrol node in the middle of a fistfight.
+		if(current_goal && !istype(current_goal, /datum/ai_goal/human/engage_targets) && !pathfind_timeout)
+			current_goal.get_next_patrol_node(src)
 
 /datum/ai_goal/human
 	name = "Placeholder goal" //Please keep these human readable for debugging!
@@ -396,9 +423,48 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 	if((A && istype(A, /obj/item/gun)) || (B && istype(B, /obj/item/gun)))
 		return 0
 	for(var/obj/item/gun/G in view(HA.view_range, H))
-		if(gun_suitable(H, G))
+		if(gun_suitable(H, G) && !is_unreachable(HA, G))
 			return AI_SCORE_CRITICAL //There is a gun really obviously in the open....
-	return score
+	if(find_carried_gun(H) || find_nearby_gun(HA))
+		return score
+	return 0 //Nothing to grab, so go patrol (or punch people) instead.
+
+///Returns a usable gun we carry on our person or in our backpack, if any.
+/datum/ai_goal/human/acquire_weapon/proc/find_carried_gun(mob/living/carbon/human/H)
+	var/list/expanded_contents = H.contents.Copy()
+	var/obj/item/storage/S = H.back
+	if(S)
+		expanded_contents += S.contents
+	for(var/obj/item/gun/G in expanded_contents)
+		if(H.is_holding(G))
+			continue
+		if(gun_suitable(H, G))
+			return G
+
+///Returns the closest usable gun in view, lying around or stashed in a closet we can open.
+/datum/ai_goal/human/acquire_weapon/proc/find_nearby_gun(datum/component/knpc/HA)
+	var/mob/living/carbon/human/H = HA.parent
+	var/obj/item/gun/target_item = null
+	var/best_distance = world.maxx
+	for(var/obj/O in oview(HA.view_range, H))
+		var/dist = get_dist(O, H)
+		if(dist > best_distance)
+			continue
+		var/obj/item/gun/G = null
+		if(istype(O, /obj/structure/closet))
+			var/obj/structure/closet/C = O
+			if(!C.allowed(H))
+				continue
+			G = locate(/obj/item/gun) in C.contents
+		else if(istype(O, /obj/item/gun))
+			G = O
+		if(G && gun_suitable(H, G) && !is_unreachable(HA, G))
+			target_item = G
+			best_distance = dist
+	return target_item
+
+/datum/ai_goal/human/acquire_weapon/proc/is_unreachable(datum/component/knpc/HA, obj/item/I)
+	return (WEAKREF(I) in HA.unreachable_items)
 
 /datum/ai_goal/human/proc/CheckFriendlyFire(mob/living/us, mob/living/them)
 	for(var/turf/T as() in getline(us,them)) // Not 100% reliable but this is faster than simulating actual trajectory
@@ -424,34 +490,20 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 		if(target_item && H.put_in_hands(target_item))
 			return TRUE
 	//Otherwise, is there a gun already on our person?
-	if(S)
-		var/list/expanded_contents = S.contents + H.contents
-		target_item = locate(/obj/item/gun) in expanded_contents
-
-		if(target_item)
-			H.visible_message("<span class='notice'>[H] grzebie w plecaku...</span>")
-			target_item.forceMove(get_turf(H)) //Put it on the floor so they can grab it
-			if(H.put_in_hands(target_item))
-				return TRUE //We're done!
+	target_item = find_carried_gun(H)
+	if(target_item)
+		H.visible_message("<span class='notice'>[H] grzebie w plecaku...</span>")
+		if(target_item.loc == H) //Equipped in a slot, unequip it properly first
+			H.temporarilyRemoveItemFromInventory(target_item)
+		if(H.put_in_hands(target_item))
+			return TRUE //We're done!
 	//Now we run the more expensive check to find a gun farther away.
-	var/best_distance = world.maxx
-	for(var/obj/O in oview(HA.view_range, H))
-		var/dist = get_dist(O, H)
-		if(istype(O, /obj/structure/closet) && dist <= best_distance)
-			var/obj/structure/closet/C = O
-			var/obj/item/gun/G = locate(/obj/item/gun) in C.contents
-			if(G && C.allowed(H) && gun_suitable(H, G))
-				target_item = G
-				best_distance = dist
-		if(istype(O, /obj/item/gun) && dist <= best_distance)
-			var/obj/item/gun/G = O
-			if(G && gun_suitable(H, G))
-				target_item = O
-				best_distance = dist
+	target_item = find_nearby_gun(HA)
 	if(target_item)
 		var/dist = get_dist(H, target_item)
 		if(dist > 1)
-			HA.pathfind_to(target_item)
+			if(HA.pathfind_to(target_item) == KNPC_PATHFIND_FAIL)
+				LAZYADD(HA.unreachable_items, WEAKREF(target_item))
 		else
 			if(istype(target_item.loc, /obj/structure/closet))
 				var/obj/structure/closet/C = target_item.loc
@@ -461,8 +513,7 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 				var/obj/item/gun/ballistic/B = target_item
 				var/obj/item/ammo_box/magazine/M = locate(B.mag_type) in oview(3, target_item)
 				if(M && S) //If they have a backpack, put the ammo in the backpack.
-					H.put_in_hands(M)
-					M.forceMove(S)
+					SEND_SIGNAL(S, COMSIG_TRY_STORAGE_INSERT, M, H, TRUE)
 
 			if(H.put_in_hands(target_item))
 				H.visible_message("<span class='warning'>[H] grabs [target_item]!</span>")
@@ -498,7 +549,11 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 		return FALSE
 	if(istype(gun, /obj/item/gun/ballistic))
 		var/obj/item/gun/ballistic/B = gun
-		if(istype(B.mag_type, /obj/item/ammo_box/magazine/internal))
+		//Still got rounds, we just need to chamber one (pump shotguns, freshly inserted mags).
+		if(B.magazine?.ammo_count() && !istype(B, /obj/item/gun/ballistic/revolver))
+			B.attack_self(H)
+			return TRUE
+		if(ispath(B.mag_type, /obj/item/ammo_box/magazine/internal))
 			//Not dealing with this. They'll just ditch the revolver when they're done with it.
 			H.dropItemToGround(B)
 			return FALSE
@@ -507,20 +562,24 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 		var/list/expanded_contents = H.contents
 		if(backpack)
 			expanded_contents = backpack.contents + H.contents
-		var/obj/item/ammo_box/magazine/target_mag = locate(B.mag_type) in expanded_contents
+		var/obj/item/ammo_box/magazine/target_mag = null
+		for(var/obj/item/ammo_box/magazine/M in expanded_contents)
+			if(istype(M, B.mag_type) && M != B.magazine && M.ammo_count())
+				target_mag = M
+				break
 		if(target_mag)
-			//Dump that old mag
-			H.put_in_inactive_hand(target_mag)
-			B.eject_magazine(H, FALSE, target_mag) //Tacticool reloads
-			H.dropItemToGround(H.get_inactive_held_item()) //We don't need that magazine anymore
+			if(B.magazine)
+				B.eject_magazine(H, FALSE, target_mag) //Tacticool reloads
+			else
+				B.insert_magazine(H, target_mag, FALSE)
+			for(var/obj/item/ammo_box/magazine/old_mag in H.held_items)
+				H.dropItemToGround(old_mag) //We don't need that magazine anymore
 			B.attack_self(H) //Rack the bolt.
+			return TRUE
 		else
-			if(!backpack)
-				H.dropItemToGround(B)
-				return FALSE
-			backpack.melee_attack_chain(src, B)
-			if(H.is_holding(B)) //No space in the backpack, this is useless to us so drop it
-				H.dropItemToGround(B)
+			//Out of ammo, this is useless to us so drop it and go find another one.
+			H.dropItemToGround(B)
+			return FALSE
 
 /datum/ai_goal/human/engage_targets/action(datum/component/knpc/HA)
 	if(!can_action(HA))
@@ -549,11 +608,11 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 		B = A
 	H.a_intent = (prob(65)) ? INTENT_HARM : INTENT_DISARM
 	if(G && dist > 0)
-		if(!G.can_shoot())
-			//We need to reload first....
-			reload(HA, G)
+		//We need to reload first.... If that fails we've ditched the gun.
+		if(!G.can_shoot() && !reload(HA, G))
+			G = null
 		//Fire! If they're in a ship, we don't want to scrap them directly.
-		if(!CheckFriendlyFire(H, target))
+		if(G && !CheckFriendlyFire(H, target))
 			//Okay, we have a line of sight, shoot!
 			if(B && !(B.semi_auto) && !G.chambered)
 				//Pump the shotty
@@ -588,7 +647,7 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 					if(their_id && !HA.stealing_id)
 						H.visible_message("<span class='warning'>[H] zaczyna zabierać [their_id] z [target]!</span>")
 						HA.stealing_id = TRUE
-						addtimer(CALLBACK(HA, TYPE_PROC_REF(/datum/component/knpc, steal_id), their_id), 5 SECONDS)
+						addtimer(CALLBACK(HA, TYPE_PROC_REF(/datum/component/knpc, steal_id), their_id, target), 5 SECONDS)
 
 					if(istype(H) && CHECK_BITFIELD(H.knpc_traits, KNPC_IS_MARTIAL_ARTIST))
 						switch(rand(0, 2))
@@ -652,8 +711,10 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 		var/obj/item/radio/headset/other_radio = other.ears
 		if(other.z != H.z || !other.can_hear() || other.incapacitated())
 			continue //Yeah no. Radio is good, but not THAT good....yet
+		if(!H.faction_check_mob(other, TRUE))
+			continue //Don't call the enemy over.
 		//They both have radios and can hear each other!
-		if((radio?.on && other_radio?.on) || get_dist(other, H) <= HA.view_range || H.faction_check_mob(other, TRUE))
+		if((radio?.on && other_radio?.on) || get_dist(other, H) <= HA.view_range)
 			var/thetext = (other_radio) ? "; " : ""
 			thetext += pick(H.response_lines)
 			HH.pathfind_to(H)
@@ -662,7 +723,7 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 	for(var/mob/living/simple_animal/hostile/M in oview(HA.view_range, HA.parent))
 		if(H.faction_check_mob(M, TRUE))
 			if(M.AIStatus == AI_OFF)
-				return
+				continue
 			else
 				M.Goto(HA.parent,M.move_to_delay,M.minimum_distance)
 
@@ -726,11 +787,16 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 			if(dist < best_dist && node.z == H.z)
 				best_dist = dist
 				best = node
+		if(!best)
+			return
 		HA.last_node = best
-		//Start the patrol.
-		HA.pathfind_to(best)
-		return
+		//Start the patrol. If we're already standing on the node, move straight on to the next one.
+		if(best_dist > 1)
+			HA.pathfind_to(best)
+			return
 
+	if(!length(HA.last_node.next_nodes)) //Dead end, nowhere to go from here.
+		return
 	var/obj/effect/landmark/patrol_node/next_node = pick(HA.last_node.next_nodes)
 	if(HA.last_node.z != next_node.z)
 		var/obj/structure/ladder/L = locate(/obj/structure/ladder) in get_turf(HA.last_node)
@@ -847,9 +913,11 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 
 	if(istype(H.loc, /obj/structure/closet))
 		var/obj/structure/closet/C = H.loc
-		C.open() //Open that closet
+		if(!C.open(H)) //Open that closet
+			HA.try_resist() //Locked or welded, break out instead
+			return
 	if(H.handcuffed || H.buckled || H.legcuffed)
-		H.resist() //Trigger the universal escape button
+		HA.try_resist() //Trigger the universal escape button
 
 /datum/ai_goal/human/heal_self
 	name = "Heal Self"
@@ -861,28 +929,33 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 		return 0
 	var/mob/living/carbon/human/H = HA.parent
 	if(H.health <= (H.maxHealth / 2)) //If half health
-		if(locate(/obj/item/reagent_containers/hypospray/medipen/survival) in H.contents) //And has survival pen
+		if(find_pen(H)) //And has survival pen
 			return score
 	return 0
+
+///Returns a loaded survival medipen on our person or in our backpack, if any.
+/datum/ai_goal/human/heal_self/proc/find_pen(mob/living/carbon/human/H)
+	var/list/expanded_contents = H.contents.Copy() //Copy! Adding to the real contents list would move the items.
+	var/obj/item/storage/S = H.back
+	if(S)
+		expanded_contents += S.contents
+	for(var/obj/item/reagent_containers/hypospray/medipen/survival/P in expanded_contents)
+		if(P.reagents?.total_volume)
+			return P
 
 /datum/ai_goal/human/heal_self/action(datum/component/knpc/HA)
 	if(!can_action(HA))
 		return
 	var/mob/living/carbon/human/H = HA.parent
-	var/obj/item/storage/S = H.back
-	var/list/expanded_contents = H.contents
-	if(S) //Checking for a backpack
-		expanded_contents += S.contents
-		for(var/obj/item/I in H.held_items) //If we are holding anything
-			I.forceMove(S) //Put it in our pack
+	var/obj/item/reagent_containers/hypospray/medipen/survival/P = find_pen(H)
+	if(!P)
+		return
+	P.attack(H, H) //Roll Up Your Sleeve, Self Vax
+	//Litter because doing one good thing is enugh for today
+	if(P.loc == H)
+		H.dropItemToGround(P)
 	else
-		for(var/obj/item/I in H.held_items) //If we are holding anything
-			I.forceMove(get_turf(H)) //Drop it on the floor
-	var/obj/item/reagent_containers/hypospray/medipen/survival/P = locate(/obj/item/reagent_containers/hypospray/medipen/survival) in expanded_contents
-	if(P)
-		H.put_in_active_hand(P) //Roll Up Your Sleeve
-		P.attack(H, H) //Self Vax
-		P.forceMove(get_turf(H)) //Litter because doing one good thing is enugh for today
+		SEND_SIGNAL(P.loc, COMSIG_TRY_STORAGE_TAKE, P, H.drop_location(), TRUE)
 
 //Alternate capture reaction for those with microbombs.
 /datum/ai_goal/human/deny_capture
