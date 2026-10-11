@@ -56,7 +56,7 @@
 
 /obj/vehicle/ridden/janicart
 	drive_sound = 'aquila/sound/vehicles/pussywagon_loop.ogg'
-	drive_sound_length = 4.5 SECONDS
+	drive_sound_length = 2.6 SECONDS
 
 /obj/vehicle/ridden/secway
 	drive_sound = 'aquila/sound/vehicles/secway_loop.ogg'
