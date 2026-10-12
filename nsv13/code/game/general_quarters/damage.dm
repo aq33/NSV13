@@ -10,7 +10,7 @@
 		shake_with_inertia(karmics_victim, 4, 1)
 		karmics_victim.soundbang_act(1, 0, 10, 15)
 		karmics_victim.flash_act(affect_silicon = TRUE)
-		new /obj/effect/dummy/lighting_obj (get_turf(karmics_victim), LIGHT_COLOR_WHITE, (10), 4, 2)
+		new /obj/effect/dummy/lighting_obj (get_turf(karmics_victim), 10, 4, LIGHT_COLOR_WHITE, 2)
 
 	for(var/area/AR in linked_areas)
 		if(prob(10))

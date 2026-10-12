@@ -423,12 +423,12 @@
 		user.visible_message("<span class='warning'>[user] unosi dłoń, która eksploduje błyskiem czerwonego światła!</span>", \
 							"<span class='cultitalic'>Próbujesz ogłuszyć [L] zaklęciem!</span>")
 
-		user.mob_light(_range = 3, _color = LIGHT_COLOR_BLOOD_MAGIC, _duration = 0.2 SECONDS)
+		user.mob_light(range = 3, color = LIGHT_COLOR_BLOOD_MAGIC, duration = 0.2 SECONDS)
 
 		var/anti_magic_source = L.anti_magic_check(holy = TRUE)
 		if(anti_magic_source)
 
-			L.mob_light(_range = 2, _color = LIGHT_COLOR_HOLY_MAGIC, _duration = 10 SECONDS)
+			L.mob_light(range = 2, color = LIGHT_COLOR_HOLY_MAGIC, duration = 10 SECONDS)
 			var/mutable_appearance/forbearance = mutable_appearance('icons/effects/genetics.dmi', "servitude", -MUTATIONS_LAYER)
 			L.add_overlay(forbearance)
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/atom, cut_overlay)), 100)

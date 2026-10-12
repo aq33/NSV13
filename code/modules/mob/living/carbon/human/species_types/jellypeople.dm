@@ -416,7 +416,7 @@
 	name = "Luminescent"
 	id = SPECIES_LUMINESCENT
 	var/glow_intensity = LUMINESCENT_DEFAULT_GLOW
-	var/obj/effect/dummy/luminescent_glow/glow
+	var/obj/effect/dummy/lighting_obj/moblight/glow
 	var/obj/item/slime_extract/current_extract
 	var/datum/action/innate/integrate_extract/integrate_extract
 	var/datum/action/innate/use_extract/extract_minor
@@ -447,7 +447,7 @@
 
 /datum/species/jelly/luminescent/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
-	glow = new(C)
+	glow = C.mob_light(light_type = /obj/effect/dummy/lighting_obj/moblight/species)
 	update_glow(C)
 	integrate_extract = new(src)
 	integrate_extract.Grant(C)
@@ -466,21 +466,6 @@
 	if(intensity)
 		glow_intensity = intensity
 	glow.set_light_range_power_color(glow_intensity, glow_intensity, C.dna.features["mcolor"])
-
-/obj/effect/dummy/luminescent_glow
-	name = "luminescent glow"
-	desc = "Tell a coder if you're seeing this."
-	icon_state = "nothing"
-	light_color = "#FFFFFF"
-	light_range = LUMINESCENT_DEFAULT_GLOW
-	light_system = MOVABLE_LIGHT
-	light_power = 2.5
-
-/obj/effect/dummy/luminescent_glow/Initialize(mapload)
-	. = ..()
-	if(!isliving(loc))
-		return INITIALIZE_HINT_QDEL
-
 
 /datum/action/innate/integrate_extract
 	name = "Integrate Extract"
