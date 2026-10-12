@@ -112,6 +112,7 @@
 #include "code\game\machinery\spaceheater.dm"
 #include "code\game\machinery\status_display.dm"
 #include "code\game\machinery\suit_storage_unit.dm"
+#include "code\game\machinery\telecomms\computers\telecomms_consoles.dm"
 #include "code\game\machinery\telecomms\machines\hub.dm"
 #include "code\game\mecha\equipment\weapons\weapons.dm"
 #include "code\game\mecha\working\lockermech.dm"

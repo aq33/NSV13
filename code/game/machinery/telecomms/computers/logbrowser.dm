@@ -180,9 +180,10 @@
 			to_chat(usr, "<span class='danger'>ODMOWA DOSTĘPU.</span>")
 			return
 
-		if(SelectedServer)
+		var/delete_index = text2num(href_list["delete"]) // AQ EDIT - stale or forged index
+		if(SelectedServer && delete_index >= 1 && delete_index <= length(SelectedServer.log_entries)) // AQ EDIT
 
-			var/datum/comm_log_entry/D = SelectedServer.log_entries[text2num(href_list["delete"])]
+			var/datum/comm_log_entry/D = SelectedServer.log_entries[delete_index] // AQ EDIT
 
 			temp = "<font color = #336699>- DELETED ENTRY: [D.name] -</font color>"
 
