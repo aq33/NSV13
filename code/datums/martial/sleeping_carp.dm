@@ -15,11 +15,11 @@
 	display_combos = TRUE
 	var/old_grab_state = null
 
-	Move1 = "Wrist Wrench: Disarm Disarm. Forces opponent to drop item in hand."
-	Move2 = "Back Kick: Harm Grab. Opponent must be facing away. Knocks down."
-	Move3 = "Stomach Knee: Grab Harm. Knocks the wind out of opponent and stuns."
-	Move4 = "Head Kick: Disarm Harm Harm. Decent damage, forces opponent to drop item in hand."
-	Move5 = "Elbow Drop: Harm Disarm Harm Disarm Harm. Opponent must be on the ground. Deals huge damage, instantly kills anyone in critical condition."
+	Move1 = "Wykręcenie nadgarstka: pchnięcie, pchnięcie. Zmusza przeciwnika do upuszczenia przedmiotu z ręki."
+	Move2 = "Kopnięcie w plecy: cios, chwyt. Przeciwnik musi być odwrócony plecami. Przewraca."
+	Move3 = "Kolano w brzuch: chwyt, cios. Pozbawia przeciwnika tchu i ogłusza."
+	Move4 = "Kopnięcie w głowę: pchnięcie, cios, cios. Spore obrażenia, zmusza przeciwnika do upuszczenia przedmiotu z ręki."
+	Move5 = "Spadający łokieć: cios, pchnięcie, cios, pchnięcie, cios. Przeciwnik musi leżeć na ziemi. Zadaje ogromne obrażenia, natychmiast zabija każdego w stanie krytycznym."
 
 /datum/martial_art/the_sleeping_carp/proc/check_streak(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(findtext(streak,WRIST_WRENCH_COMBO))

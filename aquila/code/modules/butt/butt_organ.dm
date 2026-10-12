@@ -262,14 +262,14 @@
 /// Tries to hide I in H's butt. Returns TRUE if the attack was handled.
 /datum/species/proc/try_butt_hide(obj/item/I, mob/living/user, mob/living/carbon/human/H)
 	if(H.w_uniform)
-		H.visible_message("<span class='danger'>[user] szturcha [H == user ? "[user.p_their()] own" : "[H]'s"] za pomocą [I].</span>", "<span class='danger'>[user] szturcha cię w tyłek za pomocą [I].</span>")
+		H.visible_message("<span class='danger'>[user] szturcha [H == user ? "własny tyłek" : "tyłek [H]"] za pomocą [I].</span>", "<span class='danger'>[user] szturcha cię w tyłek za pomocą [I].</span>")
 		return TRUE
 	var/obj/item/organ/butt/B = H.getorganslot(ORGAN_SLOT_BUTT)
 	if(!B?.inv)
 		return FALSE
-	user.visible_message("<span class='warning'>[user] zaczyna chować [I] w [H == user ? "[user.p_their()] own" : "[H]'s"].</span>", "<span class='warning'>Zaczynasz chować [I] w [H == user ? "your" : "[H]'s"].</span>")
+	user.visible_message("<span class='warning'>[user] zaczyna chować [I] w [H == user ? "własnym tyłku" : "tyłku [H]"].</span>", "<span class='warning'>Zaczynasz chować [I] w [H == user ? "swoim tyłku" : "tyłku [H]"].</span>")
 	if(do_mob(user, H, 4 SECONDS) && SEND_SIGNAL(B.inv, COMSIG_TRY_STORAGE_INSERT, I, user, TRUE))
-		user.visible_message("<span class='warning'>[user] chowa [I] w [H == user ? "[user.p_their()] own" : "[H]'s"].</span>", "<span class='warning'>Chowasz [I] w [H == user ? "your" : "[H]'s"].</span>")
+		user.visible_message("<span class='warning'>[user] chowa [I] w [H == user ? "własnym tyłku" : "tyłku [H]"].</span>", "<span class='warning'>Chowasz [I] w [H == user ? "swoim tyłku" : "tyłku [H]"].</span>")
 	return TRUE
 
 /obj/item/clothing/equipped(mob/user, slot)

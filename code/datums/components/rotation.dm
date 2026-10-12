@@ -105,13 +105,13 @@
 		var/obj/item/tool = user.get_active_held_item()
 		if(!tool || tool.tool_behaviour != TOOL_WRENCH)
 			if(!silent)
-				rotated_obj.balloon_alert(user, "need a wrench!")
+				rotated_obj.balloon_alert(user, "potrzebny klucz!")
 			return FALSE
 	if(!(rotation_flags & ROTATION_IGNORE_ANCHORED) && rotated_obj.anchored)
 		if(istype(rotated_obj, /obj/structure/window) && !silent)
-			rotated_obj.balloon_alert(user, "need to unscrew!")
+			rotated_obj.balloon_alert(user, "najpierw odkręć!")
 		else if(!silent)
-			rotated_obj.balloon_alert(user, "need to unwrench!")
+			rotated_obj.balloon_alert(user, "najpierw odkręć kluczem!")
 		return FALSE
 
 	if(rotation_flags & ROTATION_NEEDS_ROOM)
@@ -120,7 +120,7 @@
 		var/fulltile = istype(rotated_window) ? rotated_window.fulltile : FALSE
 		if(!valid_window_location(rotated_obj.loc, target_dir, is_fulltile = fulltile))
 			if(!silent)
-				rotated_obj.balloon_alert(user, "can't rotate in that direction!")
+				rotated_obj.balloon_alert(user, "nie da się obrócić w tę stronę!")
 			return FALSE
 	return TRUE
 

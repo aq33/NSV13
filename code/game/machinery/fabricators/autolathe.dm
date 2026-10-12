@@ -115,7 +115,7 @@
 		return TRUE
 
 	if(panel_open)
-		balloon_alert(user, "close the panel first!")
+		balloon_alert(user, "najpierw zamknij panel!")
 		return FALSE
 
 	return ..()
@@ -123,7 +123,7 @@
 /obj/machinery/modular_fabricator/autolathe/attackby_secondary(obj/item/weapon, mob/living/user, params)
 	. = SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(busy)
-		balloon_alert(user, "it's busy!")
+		balloon_alert(user, "jest zajęty!")
 		return
 
 	if(default_deconstruction_screwdriver(user, "autolathe_t", "autolathe", weapon))
@@ -133,7 +133,7 @@
 		return SECONDARY_ATTACK_CALL_NORMAL
 
 	if(panel_open)
-		balloon_alert(user, "close the panel first!")
+		balloon_alert(user, "najpierw zamknij panel!")
 		return
 
 	return SECONDARY_ATTACK_CALL_NORMAL

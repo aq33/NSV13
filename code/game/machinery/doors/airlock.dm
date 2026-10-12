@@ -916,10 +916,10 @@
 
 /obj/machinery/door/airlock/screwdriver_act(mob/living/user, obj/item/tool)
 	if((panel_open && detonated) || protected_door)
-		to_chat(user, span_warning("[src] has no maintenance panel!"))
+		to_chat(user, span_warning("[src] nie ma panelu serwisowego!"))
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 	panel_open = !panel_open
-	to_chat(user, span_notice("You [panel_open ? "open":"close"] the maintenance panel of the airlock."))
+	to_chat(user, span_notice("[panel_open ? "Otwierasz":"Zamykasz"] panel serwisowy śluzy."))
 	tool.play_tool_sound(src)
 	update_icon()
 	return TOOL_ACT_TOOLTYPE_SUCCESS
@@ -929,20 +929,20 @@
 		. = TOOL_ACT_TOOLTYPE_SUCCESS  // everything after this shouldn't result in attackby
 		if(hasPower() && shock(user, 60)) // Protective grille of wiring is electrified
 			return .
-		to_chat(user, span_notice("You start cutting through the outer grille."))
+		to_chat(user, span_notice("Zaczynasz przecinać zewnętrzną kratę."))
 		if(!tool.use_tool(src, user, 10, volume=100))
 			return .
 		if(!panel_open)  // double check it wasn't closed while we were trying to snip
 			return .
-		user.visible_message(span_notice("[user] cut through [src]'s outer grille."),
-							span_notice("You cut through [src]'s outer grille."))
+		user.visible_message(span_notice("[user] przecina zewnętrzną kratę [src]."),
+							span_notice("Przecinasz zewnętrzną kratę [src]."))
 		security_level = AIRLOCK_SECURITY_PLASTEEL_O
 		return .
 	if(note)
 		if(user.CanReach(src))
-			user.visible_message(span_notice("[user] cuts down [note] from [src]."), span_notice("You remove [note] from [src]."))
+			user.visible_message(span_notice("[user] odcina [note] z [src]."), span_notice("Zdejmujesz [note] z [src]."))
 		else //telekinesis
-			visible_message(span_notice("[tool] cuts down [note] from [src]."))
+			visible_message(span_notice("[tool] odcina [note] z [src]."))
 		tool.play_tool_sound(src)
 		note.forceMove(tool.drop_location())
 		note = null
@@ -969,14 +969,14 @@
 		else
 			return TOOL_ACT_TOOLTYPE_SUCCESS
 
-	user.visible_message(span_notice("You start prying away [src]'s [layer_flavor]."))
+	user.visible_message(span_notice("Zaczynasz podważać osłonę [src] ([layer_flavor])."))
 	if(!tool.use_tool(src, user, 40, volume=100))
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 	if(!panel_open || security_level != starting_level)
 		// if the plating's already been broken, don't break it again
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 	user.visible_message(span_notice("[user] removes [src]'s shielding."),
-							span_notice("You remove [src]'s [layer_flavor]."))
+							span_notice("Usuwasz osłonę [src] ([layer_flavor])."))
 	security_level = next_level
 	spawn_atom_to_turf(/obj/item/stack/sheet/plasteel, user.loc, 1)
 	if(next_level == AIRLOCK_SECURITY_NONE)
@@ -1015,7 +1015,7 @@
 	if(!tool.tool_start_check(user, amount=2))
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
-	to_chat(user, span_notice("You begin cutting the [layer_flavor]..."))
+	to_chat(user, span_notice("Zaczynasz przecinać osłonę ([layer_flavor])..."))
 
 	if(!tool.use_tool(src, user, 4 SECONDS, volume=50, amount=2))
 		return TOOL_ACT_TOOLTYPE_SUCCESS
@@ -1025,9 +1025,9 @@
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
 	user.visible_message(
-		span_notice("[user] cuts through [src]'s shielding."),  // passers-by don't get the full picture
-		span_notice("You cut through [src]'s [layer_flavor]."),
-		span_hear("You hear welding.")
+		span_notice("[user] przecina osłonę [src]."),  // passers-by don't get the full picture
+		span_notice("Przecinasz osłonę [src] ([layer_flavor])."),
+		span_hear("Słyszysz spawanie.")
 	)
 
 	security_level = next_level
@@ -1042,15 +1042,15 @@
 
 /obj/machinery/door/airlock/proc/try_reinforce(mob/user, obj/item/stack/sheet/material, amt_required, new_security_level)
 	if(material.get_amount() < amt_required)
-		to_chat(user, span_warning("You need at least [amt_required] sheets of [material] to reinforce [src]."))
+		to_chat(user, span_warning("Do wzmocnienia [src] potrzebujesz przynajmniej [amt_required] arkuszy ([material])."))
 		return FALSE
-	to_chat(user, span_notice("You start reinforcing [src]."))
+	to_chat(user, span_notice("Zaczynasz wzmacniać [src]."))
 	if(!do_after(user, 2 SECONDS, TRUE, src))
 		return FALSE
 	if(!panel_open || !material.use(amt_required))
 		return FALSE
 	user.visible_message(span_notice("[user] reinforces [src] with [material]."),
-						span_notice("You reinforce [src] with [material]."))
+						span_notice("Wzmacniasz [src] ([material])."))
 	security_level = new_security_level
 	update_icon()
 	return TRUE
@@ -1120,31 +1120,31 @@
 		if(obj_integrity < max_integrity)
 			if(!W.tool_start_check(user, amount=0))
 				return
-			user.visible_message(span_notice("[user] begins welding the airlock."), \
-							span_notice("You begin repairing the airlock..."), \
+			user.visible_message(span_notice("[user] zaczyna spawać śluzę."), \
+							span_notice("Zaczynasz naprawiać śluzę..."), \
 							span_hear("Słyszysz spawanie."))
 			if(W.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, PROC_REF(weld_checks), W, user)))
 				obj_integrity = max_integrity
 				set_machine_stat(machine_stat & ~BROKEN)
-				user.visible_message(span_notice("[user] finishes welding [src]."), \
-									span_notice("You finish repairing the airlock."))
+				user.visible_message(span_notice("[user] kończy spawać [src]."), \
+									span_notice("Kończysz naprawiać śluzę."))
 				update_icon()
 		else
-			to_chat(user, span_notice("The airlock doesn't need repairing."))
+			to_chat(user, span_notice("Śluza nie wymaga naprawy."))
 
 /obj/machinery/door/airlock/try_to_weld_secondary(obj/item/weldingtool/tool, mob/user)
 	if(operating || !density)
 		return
 	if(protected_door || !tool.tool_start_check(user, amount=0))
 		return
-	user.visible_message(span_notice("[user] begins [welded ? "unwelding":"welding"] śluzę."), \
-		span_notice("You begin [welded ? "unwelding":"welding"] the airlock..."), \
+	user.visible_message(span_notice("[user] zaczyna [welded ? "rozspawywać":"zaspawywać"] śluzę."), \
+		span_notice("Zaczynasz [welded ? "rozspawywać":"zaspawywać"] śluzę..."), \
 		span_hear("Słyszysz spawanie."))
 	if(!tool.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, PROC_REF(weld_checks), tool, user)))
 		return
 	welded = !welded
-	user.visible_message(span_notice("[user] [welded? "welds shut":"unwelds"] [src]."), \
-		span_notice("You [welded ? "weld the airlock shut":"unweld the airlock"]."))
+	user.visible_message(span_notice("[user] [welded? "zaspawuje":"rozspawuje"] [src]."), \
+		span_notice("[welded ? "Zaspawujesz śluzę":"Rozspawujesz śluzę"]."))
 	log_combat(user, src, welded? "welded shut":"unwelded", tool)
 	update_icon()
 
@@ -1179,26 +1179,26 @@
 /obj/machinery/door/airlock/try_to_crowbar(obj/item/I, mob/living/user, forced = FALSE)
 	//Airlock Charges
 	if(panel_open && charge)
-		to_chat(user, span_notice("You carefully start removing [charge] from [src]..."))
+		to_chat(user, span_notice("Ostrożnie zaczynasz wyjmować [charge] z [src]..."))
 		if(!I.use_tool(src, user, 150, volume=50))
-			to_chat(user, span_warning("You slip and [charge] detonates!"))
+			to_chat(user, span_warning("Ręka ci się omsknęła i [charge] wybucha!"))
 			charge.ex_act(EXPLODE_DEVASTATE)
 			user.Paralyze(60)
 			return
 		user.visible_message(span_notice("[user] removes [charge] from [src]."), \
-							span_notice("You gently pry out [charge] from [src] and unhook its wires."))
+							span_notice("Delikatnie wyjmujesz [charge] z [src] i odłączasz przewody."))
 		charge.forceMove(get_turf(user))
 		charge = null
 		return
 	//End Airlock Charges
 	if(I?.tool_behaviour == TOOL_CROWBAR && should_try_removing_electronics() && !operating)
 		user.visible_message("[user] wyjmuje elektronikę z zespołu śluzy.", \
-			span_notice("You start to remove electronics from the airlock assembly..."))
+			span_notice("Zaczynasz wyjmować elektronikę z zespołu śluzy..."))
 		if(I.use_tool(src, user, 40, volume=100))
 			deconstruct(TRUE, user)
 			return TRUE
 	if(locked)
-		to_chat(user, span_warning("The airlock's bolts prevent it from being forced!"))
+		to_chat(user, span_warning("Rygle śluzy uniemożliwiają jej sforsowanie!"))
 		return
 	if(welded)
 		to_chat(user, span_warning("It's welded, it won't budge!"))
@@ -1216,21 +1216,21 @@
 				var/time_to_open = 50
 				playsound(src, 'sound/machines/airlock_alien_prying.ogg', 100, TRUE) //is it aliens or just the CE being a dick?
 				prying_so_hard = TRUE
-				to_chat(user, span_warning("You begin prying open the airlock..."))
+				to_chat(user, span_warning("Zaczynasz wyważać śluzę..."))
 				if(do_after(user, time_to_open, TRUE, src))
 					if(check_electrified && shock(user,100))
 						prying_so_hard = FALSE
 						return
 					if(density && !open(2))
-						to_chat(user, span_warning("Despite your attempts, [src] refuses to open."))
+						to_chat(user, span_warning("Mimo twoich prób [src] nie chce się otworzyć."))
 				prying_so_hard = FALSE
 				return
-		to_chat(user, span_warning("The airlock's motors resist your efforts to force it!"))
+		to_chat(user, span_warning("Silniki śluzy opierają się twoim próbom jej sforsowania!"))
 		return
 
 	if(!operating)
 		if(istype(I, /obj/item/fireaxe) && !ISWIELDED(I)) //being fireaxe'd
-			to_chat(user, span_warning("You need to be wielding the fire axe to do that!"))
+			to_chat(user, span_warning("Do tego musisz trzymać topór strażacki oburącz!"))
 			return
 		INVOKE_ASYNC(src, (density ? PROC_REF(open) : PROC_REF(close)), 2)
 
@@ -1473,7 +1473,7 @@
 		return
 	if(prob(severity*10 - 20) && (secondsElectrified < 30) && (secondsElectrified != MACHINE_ELECTRIFIED_PERMANENT))
 		set_electrified(30)
-		LAZYADD(shockedby, "\[[time_stamp()]\]EM Pulse")
+		LAZYADD(shockedby, "\[[time_stamp()]\]Impuls EM")
 
 /obj/machinery/door/airlock/proc/set_electrified(seconds, mob/user)
 	secondsElectrified = seconds

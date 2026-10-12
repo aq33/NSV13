@@ -851,7 +851,7 @@
 
 /obj/machinery/hydroponics/attackby_secondary(obj/item/weapon, mob/user, params)
 	if (istype(weapon, /obj/item/reagent_containers/syringe))
-		to_chat(user, "<span class='warning'>You can't get any extract out of this plant.</span>")
+		to_chat(user, "<span class='warning'>Nie możesz wydobyć żadnego ekstraktu z tej rośliny.</span>")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	return SECONDARY_ATTACK_CALL_NORMAL
 

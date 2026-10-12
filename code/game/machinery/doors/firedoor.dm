@@ -243,7 +243,7 @@
 	user.visible_message("<span class='notice'>[user] starts [welded ? "unwelding" : "welding"] [src].</span>", "<span class='notice'>Zaczynasz spawać [src].</span>")
 	if(W.use_tool(src, user, 40, volume=50))
 		welded = !welded
-		user.visible_message("<span class='danger'>[user] [welded?"welds":"unwelds"] [src].</span>", "<span class='notice'>You [welded ? "weld" : "unweld"] [src].</span>")
+		user.visible_message("<span class='danger'>[user] [welded?"zaspawuje":"rozspawuje"] [src].</span>", "<span class='notice'>[welded ? "Zaspawujesz" : "Rozspawujesz"] [src].</span>")
 		log_game("[key_name(user)] [welded ? "welded":"unwelded"] firedoor [src] with [W] at [AREACOORD(src)]")
 		update_icon()
 

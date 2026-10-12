@@ -12,13 +12,13 @@
 	smashes_tables = TRUE
 	display_combos = TRUE
 
-	Move1 = "Slam: Grab Punch. Slam opponent into the ground, knocking them down."
-	Move2 = "CQC Kick: Punch Punch. Knocks opponent away. Knocks out stunned or knocked down opponents."
-	Move3 = "Restrain: Grab Grab. Locks opponents into a restraining position, disarm to knock them out with a chokehold."
-	Move4 = "Pressure: Shove Grab. Decent stamina damage."
-	Move5 = "Consecutive CQC: Shove Shove Punch. Mainly offensive move, huge damage and decent stamina damage."
+	Move1 = "Rzut: chwyt, cios. Rzuca przeciwnika o ziemię, przewracając go."
+	Move2 = "Kopnięcie CQC: cios, cios. Odrzuca przeciwnika. Nokautuje ogłuszonych lub powalonych przeciwników."
+	Move3 = "Dźwignia: chwyt, chwyt. Unieruchamia przeciwnika w dźwigni; pchnięcie nokautuje go duszeniem."
+	Move4 = "Ucisk: pchnięcie, chwyt. Spore obrażenia wytrzymałości."
+	Move5 = "Seria CQC: pchnięcie, pchnięcie, cios. Głównie ofensywny ruch, ogromne obrażenia i spore obrażenia wytrzymałości."
 
-	AdditionText = "In addition, by having your throw mode on when being attacked, you enter an active defense mode where you have a chance to block and sometimes even counter attacks done to you."
+	AdditionText = "Ponadto, mając włączony tryb rzucania podczas ataku, wchodzisz w aktywną obronę, w której masz szansę zablokować, a czasem nawet skontrować wymierzone w ciebie ataki."
 
 	var/old_grab_state = null
 	var/mob/restraining_mob
@@ -193,8 +193,8 @@
 	log_combat(A, D, "disarmed (CQC)", "[I ? " grabbing \the [I]" : ""]")
 	if(restraining_mob && A.pulling == restraining_mob)
 		log_combat(A, D, "knocked out (Chokehold)(CQC)")
-		D.visible_message("<span class='danger'>[A] puts [D] into a chokehold!</span>", \
-							"<span class='userdanger'>[A] puts you into a chokehold!</span>")
+		D.visible_message("<span class='danger'>[A] zakłada [D] duszenie!</span>", \
+							"<span class='userdanger'>[A] zakłada ci duszenie!</span>")
 		D.SetSleeping(40 SECONDS)
 		restraining_mob = null
 		if(A.grab_state < GRAB_NECK && !HAS_TRAIT(A, TRAIT_PACIFISM))

@@ -345,17 +345,17 @@
 							on_hit(I) //grab the item as if you had hit it directly with the tentacle
 							return BULLET_ACT_HIT
 						else
-							to_chat(firer, "<span class='warning'>You can't seem to pry [I] off [C]'s hands!</span>")
+							to_chat(firer, "<span class='warning'>Nie możesz wyrwać [I] z rąk [C]!</span>")
 							return BULLET_ACT_BLOCK
 					else
 						to_chat(firer, "<span class='danger'>[C] nie ma nic w ręce do zabrania!</span>")
 						return BULLET_ACT_HIT
 				if(firer_combat_mode)
-					C.visible_message("<span class='danger'>[L] is thrown towards [H] by a tentacle!</span>","<span class='userdanger'>A tentacle grabs you and throws you towards [H]!</span>")
+					C.visible_message("<span class='danger'>Macka rzuca [L] w stronę [H]!</span>","<span class='userdanger'>Macka chwyta cię i rzuca w stronę [H]!</span>")
 					C.throw_at(get_step_towards(H,C), 8, 2, H, TRUE, TRUE, callback=CALLBACK(src, PROC_REF(tentacle_grab), H, C))
 					return BULLET_ACT_HIT
 				else
-					C.visible_message("<span class='danger'>[L] is grabbed by [H]'s tentacle!</span>","<span class='userdanger'>A tentacle grabs you and pulls you towards [H]!</span>")
+					C.visible_message("<span class='danger'>Macka [H] chwyta [L]!</span>","<span class='userdanger'>Macka chwyta cię i przyciąga do [H]!</span>")
 					C.throw_at(get_step_towards(H,C), 8, 2, H, TRUE, TRUE)
 					return BULLET_ACT_HIT
 

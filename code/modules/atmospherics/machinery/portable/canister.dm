@@ -284,12 +284,12 @@
 		return TRUE
 	var/pressure = air_contents.return_pressure()
 	if(pressure > 300)
-		to_chat(user, "<span class='alert'>The pressure gauge on [src] indicates a high pressure inside... maybe you want to reconsider?</span>")
+		to_chat(user, "<span class='alert'>Manometr [src] wskazuje wysokie ciśnienie w środku... może lepiej się zastanów?</span>")
 		message_admins("[src] deconstructed by [ADMIN_LOOKUPFLW(user)]")
 		log_game("[src] deconstructed by [key_name(user)]")
-	to_chat(user, "<span class='notice'>You begin cutting [src] apart...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz rozcinać [src]...</span>")
 	if(I.use_tool(src, user, 3 SECONDS, volume=50))
-		to_chat(user, "<span class='notice'>You cut [src] apart.</span>")
+		to_chat(user, "<span class='notice'>Rozcinasz [src].</span>")
 		deconstruct(TRUE)
 	return TRUE
 
@@ -303,13 +303,13 @@
 		return TRUE
 	if(!tool.tool_start_check(user, amount=1))
 		return TRUE
-	to_chat(user, "<span class='notice'>You begin repairing cracks in [src]...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz łatać pęknięcia w [src]...</span>")
 	while(tool.use_tool(src, user, 2.5 SECONDS, volume=40))
 		obj_integrity = min(obj_integrity + 25, max_integrity)
 		if(obj_integrity >= max_integrity)
-			to_chat(user, "<span class='notice'>You've finished repairing [src].</span>")
+			to_chat(user, "<span class='notice'>Kończysz naprawiać [src].</span>")
 			return TRUE
-		to_chat(user, "<span class='notice'>You repair some of the cracks in [src]...</span>")
+		to_chat(user, "<span class='notice'>Łatasz część pęknięć w [src]...</span>")
 	return TRUE
 
 /obj/machinery/portable_atmospherics/canister/obj_break(damage_flag)

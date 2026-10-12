@@ -129,8 +129,8 @@
 		return TRUE
 	var/datum/action/martial_info/info_button = make_info_button()
 	if(info_button)
-		to_chat(H, span_boldnotice("For more info, read the martial panel. \
-			You can always come back to it using the button in the top left."))
+		to_chat(H, span_boldnotice("Więcej informacji znajdziesz w poradniku sztuki walki. \
+			Zawsze możesz do niego wrócić przyciskiem w lewym górnym rogu."))
 		info_button.Trigger()
 	return TRUE
 
@@ -177,7 +177,7 @@
 
 //button to review martial arts
 /datum/action/martial_info
-	name = "Open Martial Art Guide"
+	name = "Poradnik sztuki walki"
 	button_icon_state = "round_end"
 
 /datum/action/martial_info/Trigger()

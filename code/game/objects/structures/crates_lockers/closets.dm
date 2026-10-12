@@ -323,14 +323,14 @@
 
 /obj/structure/closet/wrench_act_secondary(mob/living/user, obj/item/tool)
 	if(!anchorable)
-		balloon_alert(user, "no anchor bolts!")
+		balloon_alert(user, "brak śrub mocujących!")
 		return TRUE
 	if(isinspace() && !anchored) // We want to prevent anchoring a locker in space, but we should still be able to unanchor it there
-		balloon_alert(user, "nothing to anchor to!")
+		balloon_alert(user, "nie ma do czego przymocować!")
 		return TRUE
 	setAnchored(!anchored)
 	tool.play_tool_sound(src, 75)
-	user.balloon_alert_to_viewers("[anchored ? "anchored" : "unanchored"]")
+	user.balloon_alert_to_viewers("[anchored ? "przymocowano" : "odmocowano"]")
 	return TRUE
 
 /obj/structure/closet/proc/after_weld(weld_state)

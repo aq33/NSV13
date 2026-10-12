@@ -831,7 +831,7 @@
 
 /datum/component/storage/proc/open_storage(mob/user)
 	if(!user.CanReach(parent))
-		user.balloon_alert(user, "can't reach!")
+		user.balloon_alert(user, "za daleko!")
 		return FALSE
 	if(!isliving(user) || user.incapacitated())
 		return FALSE

@@ -70,7 +70,7 @@
 		else
 			CRASH("change_transfer_amount() called with invalid direction value")
 	amount_per_transfer_from_this = possible_transfer_amounts[index]
-	balloon_alert(user, "Transferring [amount_per_transfer_from_this]u.")
+	balloon_alert(user, "Porcja: [amount_per_transfer_from_this] j.")
 	mode_change_message(user)
 ///NSV13 - Borg Hypospray Update - Stop
 

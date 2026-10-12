@@ -11,13 +11,13 @@
 	var/plasma_cap = 12 //max size explosion level
 	display_combos = TRUE
 
-	Move1 = "Tornado Sweep: Harm Harm Disarm. Repulses target and everyone back."
-	Move2 = "Throwback: Disarm Harm Disarm. Throws the target and an item at them."
-	Move3 = "The Plasma Fist: Harm Disarm Disarm Disarm Harm. Knocks the brain out of the opponent and gibs their body."
+	Move1 = "Zamiatające tornado: cios, cios, pchnięcie. Odpycha cel i wszystkich wokół."
+	Move2 = "Odrzut: pchnięcie, cios, pchnięcie. Odrzuca cel i ciska w niego przedmiotem."
+	Move3 = "Plazmowa pięść: cios, pchnięcie, pchnięcie, pchnięcie, cios. Wybija przeciwnikowi mózg i rozrywa jego ciało."
 
 /datum/martial_art/plasma_fist/teach(mob/living/carbon/human/H, make_temporary = FALSE)
 	if(!nobomb)
-		Move4 = "Apotheosis: Use <span class='notice'>The Plasma Fist</span> on yourself. Sends you away in a glorious explosion."
+		Move4 = "Apoteoza: użyj <span class='notice'>Plazmowej pięści</span> na sobie. Odchodzisz w chwalebnej eksplozji."
 	. = ..()
 
 /datum/martial_art/plasma_fist/proc/check_streak(mob/living/carbon/human/A, mob/living/carbon/human/D)
@@ -83,15 +83,15 @@
 	if(nobomb)
 		return
 	if(!hasclient)
-		to_chat(A, "<span class='warning'>Taking this plasma energy for your </span><span class='notice'>Apotheosis</span><span class='warning'> would bring dishonor to the clan!</span>")
+		to_chat(A, "<span class='warning'>Wzięcie tej energii plazmy do twojej </span><span class='notice'>Apoteozy</span><span class='warning'> okryłoby klan hańbą!</span>")
 		new /obj/effect/temp_visual/plasma_soul(Dturf)//doesn't beam to you, so it just hangs around and poofs.
 		return
 	else if(plasma_power >= plasma_cap)
-		to_chat(A, "<span class='warning'>You cannot power up your </span><span class='notice'>Apotheosis</span><span class='warning'> any more!</span>")
+		to_chat(A, "<span class='warning'>Nie możesz już bardziej wzmocnić swojej </span><span class='notice'>Apoteozy</span><span class='warning'>!</span>")
 		new /obj/effect/temp_visual/plasma_soul(Dturf)//doesn't beam to you, so it just hangs around and poofs.
 	else
 		plasma_power += plasma_increment
-		to_chat(A, "<span class='nicegreen'>Power increasing! Your </span><span class='notice'>Apotheosis</span><span class='nicegreen'> is now at power level [plasma_power]!</span>")
+		to_chat(A, "<span class='nicegreen'>Moc rośnie! Twoja </span><span class='notice'>Apoteoza</span><span class='nicegreen'> ma teraz poziom mocy [plasma_power]!</span>")
 		new /obj/effect/temp_visual/plasma_soul(Dturf, A)
 		var/oldcolor = A.color
 		A.color = "#9C00FF"
@@ -99,7 +99,7 @@
 		animate(A, color = oldcolor, time = 3 SECONDS)
 
 /datum/martial_art/plasma_fist/proc/Apotheosis(mob/living/carbon/human/A, mob/living/carbon/human/D)
-	A.say("APOTHEOSIS!!", forced="plasma fist")
+	A.say("APOTEOZA!!", forced="plazmowa pięść")
 	if(ishuman(A))
 		A.set_species(/datum/species/plasmaman)
 		A.unequip_everything()
@@ -113,7 +113,7 @@
 	log_combat(A, A, "triggered final plasma explosion with size [plasma_power], [plasma_power*2], [plasma_power*4] (Plasma Fist)")
 	message_admins("[key_name_admin(A)] triggered final plasma explosion with size [plasma_power], [plasma_power*2], [plasma_power*4].")
 
-	to_chat(A, "<span class='userdanger'>The explosion knocks your soul out of your body!</span>")
+	to_chat(A, "<span class='userdanger'>Eksplozja wybija twoją duszę z ciała!</span>")
 	A.ghostize(FALSE) //prevents... horrible memes just believe me
 
 	A.apply_damage(rand(50,70), BRUTE)
@@ -139,7 +139,7 @@
 	if(check_streak(A,D))
 		return TRUE
 	if(A == D)//there is no disarming yourself, so we need to let plasma fist user know
-		to_chat(A, "<span class='notice'>You have added a disarm to your streak.</span>")
+		to_chat(A, "<span class='notice'>Dodajesz pchnięcie do serii.</span>")
 	return FALSE
 
 /datum/martial_art/plasma_fist/grab_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
@@ -149,8 +149,8 @@
 	return FALSE
 
 /obj/effect/temp_visual/plasma_soul
-	name = "plasma energy"
-	desc = "Leftover energy brought out from The Plasma Fist."
+	name = "energia plazmy"
+	desc = "Resztki energii wyzwolonej przez Plazmową pięść."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "explosion"
 	duration = 3 SECONDS
@@ -165,14 +165,14 @@
 
 /obj/effect/temp_visual/plasma_soul/Destroy()
 	if(!beam_target)
-		visible_message("<span class='notice'>[src] fades away...</span>")
+		visible_message("<span class='notice'>[src] rozwiewa się...</span>")
 	beam_target = null
 	. = ..()
 
 /obj/effect/ebeam/plasma_fist
 	name = "plazma"
 	mouse_opacity = MOUSE_OPACITY_ICON
-	desc = "Flowing energy."
+	desc = "Płynąca energia."
 
 /datum/martial_art/plasma_fist/nobomb
 	name = "Novice Plasma Fist"

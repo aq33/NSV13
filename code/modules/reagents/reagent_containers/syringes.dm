@@ -92,7 +92,7 @@
 	log_combat(user, target, "attempted to inject", src, addition="which had [contained]")
 
 	if(!reagents.total_volume)
-		balloon_alert(user, "[src] is empty! Right-click to draw.")
+		balloon_alert(user, "[src] jest pusta! Prawy przycisk, by pobrać.")
 		return
 
 	if(!L && !target.is_injectable(user)) //only checks on non-living mobs, due to how can_inject() handles
@@ -124,13 +124,13 @@
 				return
 			if(L.reagents.total_volume >= L.reagents.maximum_volume)
 				return
-			L.visible_message("<span class='danger'>[user] injects [L] with the syringe!", \
-							"<span class='userdanger'>[user] injects you with the syringe!</span>")
+			L.visible_message("<span class='danger'>[user] wstrzykuje coś [L] strzykawką!", \
+							"<span class='userdanger'>[user] wstrzykuje ci coś strzykawką!</span>")
 
 		if(L != user)
 			log_combat(user, L, "injected", src, addition="which had [contained]")
 		else
-			L.log_message("injected themselves ([contained]) with [src.name]", LOG_ATTACK, color="pomarańcza")
+			L.log_message("injected themselves ([contained]) with [src.name]", LOG_ATTACK, color="orange")
 		transfer_diseases(L)
 	var/fraction = min(amount_per_transfer_from_this/reagents.total_volume, 1)
 	reagents.reaction(L, INJECT, fraction)
@@ -170,7 +170,7 @@
 
 	else //if not mob
 		if(!target.reagents.total_volume)
-			balloon_alert(user, "[target] is empty.")
+			balloon_alert(user, "[target] jest pusty.")
 			return SECONDARY_ATTACK_CONTINUE_CHAIN
 
 		if(!target.is_drawable(user))
