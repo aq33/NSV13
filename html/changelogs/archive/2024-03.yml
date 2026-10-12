@@ -1,0 +1,101 @@
+2024-03-01:
+  Bokkiewokkie:
+    - rscadd: Added synthetic first-aid kit as a cargo purchase
+    - rscadd: Added synthetic first-aid kit as a traitor IPC item
+    - tweak: >-
+        Made overdosing on highjack leak oil on the ground if your head is
+        already gone
+    - imageadd: Added a medbot sprite for the synthetic first-aid kit
+    - imageadd: Added a lanyard illustration to the lanyard box
+    - spellcheck: Fixed a typo in the wavy stick name
+    - code_imp: Moved some code for storage items to the proper file
+    - rscdel: Removed the requirement for firing electronics from PDC
+    - rscdel: Removed the option to switch PDC to flak boards as they are not in use
+    - spellcheck: Fixed inconsistencies in NSV circuitboard names
+  UnibelUnibel:
+    - rscadd: '[Atlas] Dodano vendora ubrań w cargo wraz ze strojem listonosza'
+    - rscadd: Dodano odgłos zapalniczki i dym z papierosa
+    - tweak: >-
+        [Atlas] Zmieniono nazwę statku (literki na burcie) z [Atlas] na
+        [Aquilos]
+    - bugfix: '[Atlas] Naprawiono bug atmos w medbayu'
+    - bugfix: Uzupełniono brakujący energy harvester w szafkach inżynierii
+    - tweak: Stasis bed są obracalne (L/P)
+    - tweak: Sprity postaci zawsze leżą poprawnie na łóżkach
+    - imageadd: Lustrzane odbicie spritów stasis bed
+    - rscadd: >-
+        Przywrócono disabler, który znajduje się teraz w technologii "Electronic
+        weapons"
+2024-03-02:
+  MACIEKBAKI:
+    - tweak: Nukeopsy teraz muszą wypowiedzieć wojnę, inaczej nie polecą.
+2024-03-03:
+  MACIEKBAKI:
+    - rscadd: Załoga może teraz poprosić o wezwanie ERT przez centrale.
+    - bugfix: Ethereale, IPC i zombie nie muszą już pić.
+    - bugfix: fix internsów w ert
+2024-03-04:
+  Ciem1:
+    - tweak: troche tluamczen
+  Dejaku51:
+    - rscadd: Wampiry jako antag
+  patpol4:
+    - tweak: tlumaczy catmedbota
+2024-03-05:
+  Dejaku51:
+    - bugfix: naprawiono Summon Bats wampirów
+2024-03-08:
+  Joker66613:
+    - tweak: antimatter w cargo
+  Reprimann (sprite):
+    - rscadd: Dodano milicyjną tonfę
+    - rscadd: Dodano milicyjną tonfę do SecVendora
+    - tweak: Security zamiast zwykłej pałki dostaje na początku rundy milicyjną tonfę
+  d-sandmann:
+    - bugfix: Naprawiono by emitter strzelał wiązką widzialnego światła
+2024-03-09:
+  Szyszkrzyneczka:
+    - rscadd: Umiejejki dla wampirków
+    - bugfix: Naprawia komputer infiltratorów, oraz sprawia że działa na nieatlasach
+2024-03-17:
+  Kooperatywa Unibel i Smorgli Sp. z b.o.o.:
+    - rscadd: '[Atlas] Dodano system losowych silników'
+    - tweak: >-
+        [Atlas] Rework Inżynierii, Atmosferyki, Kuchni, Baru, Botaniki, Jadalni,
+        Biblioteki, Dormitoriów, Strefy rekreacyjnej
+  Szyszkrzyneczka:
+    - bugfix: Naprawia umiejętności
+2024-03-29:
+  Bobbanz1:
+    - bugfix: >-
+        The destruction of a gauss turret now leaves behind the machine frame
+        that had been used to construct it.
+    - code_imp: >-
+        Gave the machine board of the gauss turret a req_components list with
+        nothing inside it to prevent a runtime error from occurring.
+    - tweak: >-
+        Rerouted the piping network in the assault course a bit so it resolves
+        the issue raised about them missing when they were actually going
+        through the window instead.
+    - rscdel: Removed some wiring that didn't do anything.
+    - bugfix: >-
+        Engineering Lobby now has the wiring coming from maintenance actually
+        hooked up to the grid rather than ending a tile early.
+    - rscadd: >-
+        Gave the Aetherwhisp laser weaponry circuit boards so they don't get
+        completely round removed when destroyed,
+  Bokkiewokkie:
+    - bugfix: Fixed some bad initializations
+    - rscadd: Added the ability to research and print naval gun parts
+    - balance: >-
+        Moved the gauss gun upgrade board to level 2 munitions research "Macro
+        Ballistics"
+    - balance: Added science tiers to NSV researches
+    - balance: Made it so printable naval gun part circuits can be destroyed
+  DeltaFire15:
+    - bugfix: >-
+        Being recalled with an inactive thirring drive should no longer trap the
+        ship in the darkness between stars.
+    - bugfix: >-
+        Nucleium engine turfs now work. As may some other map cases of "nucleum"
+        being used as incorrect term.

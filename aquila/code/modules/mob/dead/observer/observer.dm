@@ -58,3 +58,20 @@
 	to_chat(M , "<span class='warning'>Opętujesz teraz mysz. Nie pamiętasz swojego poprzedniego życia. Możesz jeść śmieci i jedzenie z podłogi, by odzyskiwać zdrowie i pomagać tworzyć nowe myszy. Pułapki na myszy zranią twoje kruche ciało, podobnie jak każda broń. Ctrl-kliknij jedzenie i śmieci, by je zjeść. Zdobądź. Ten. Ser.")
 	return TRUE
 
+
+// Port BeeStation/BeeStation-Hornet#12449: wyjście z widoku obserwowanej postaci.
+// Komenda jest dostępna tylko w trakcie obserwacji, bo wtedy HUD ducha jest ukryty.
+/mob/dead/observer/Initialize(mapload)
+	. = ..()
+	remove_verb(/mob/dead/observer/verb/cancel_camera_ghosts)
+
+/mob/dead/observer/verb/cancel_camera_ghosts()
+	set name = "Cancel Camera View"
+	set category = "Ghost"
+	reset_perspective(null)
+	remove_verb(/mob/dead/observer/verb/cancel_camera_ghosts)
+
+/mob/dead/observer/observe()
+	..()
+	if(observetarget)
+		add_verb(/mob/dead/observer/verb/cancel_camera_ghosts)

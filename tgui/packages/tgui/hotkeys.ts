@@ -4,7 +4,8 @@
  * @license MIT
  */
 
-import * as keycodes from '../common/keycodes';
+import * as keycodes from 'common/keycodes';
+
 import { globalEvents, KeyEvent } from './events';
 import { createLogger } from './logging';
 
@@ -34,6 +35,9 @@ const keyState: Record<string, boolean> = {};
 // Custom listeners for key events
 const keyListeners: ((key: KeyEvent) => void)[] = [];
 
+// Is hotkey mode on?
+let hotkeyMode;
+
 /**
  * Converts a browser keycode to BYOND keycode.
  */
@@ -51,8 +55,7 @@ const keyCodeToByond = (keyCode: number) => {
   if (keyCode === 40) return 'South';
   if (keyCode === 45) return 'Insert';
   if (keyCode === 46) return 'Delete';
-  // prettier-ignore
-  if (keyCode >= 48 && keyCode <= 57 || keyCode >= 65 && keyCode <= 90) {
+  if ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90)) {
     return String.fromCharCode(keyCode);
   }
   if (keyCode >= 96 && keyCode <= 105) {
@@ -81,12 +84,15 @@ const handlePassthrough = (key: KeyEvent) => {
   if (keyString === 'Ctrl+F') {
     return;
   }
+  // Prevent passthrough on old non-hotkey mode
+  if (!hotkeyMode) {
+    return;
+  }
   // NOTE: Alt modifier is pretty bad and sticky in IE11.
-  // prettier-ignore
   if (
-    key.event.defaultPrevented
-    || key.isModifierKey()
-    || hotKeysAcquired.includes(key.code)
+    key.event.defaultPrevented ||
+    key.isModifierKey() ||
+    hotKeysAcquired.includes(key.code)
   ) {
     return;
   }
@@ -144,6 +150,11 @@ export const releaseHeldKeys = () => {
   }
 };
 
+export const updateHotkeyMode = () =>
+  Byond.winget('mainwindow', 'macro').then((macro) => {
+    hotkeyMode = macro !== 'old_default';
+  });
+
 type ByondSkinMacro = {
   command: string;
   name: string;
@@ -170,10 +181,8 @@ export const setupHotKeys = () => {
     }
     // Insert macros
     const escapedQuotRegex = /\\"/g;
-    // prettier-ignore
-    const unescape = (str: string) => str
-      .substring(1, str.length - 1)
-      .replace(escapedQuotRegex, '"');
+    const unescape = (str: string) =>
+      str.substring(1, str.length - 1).replace(escapedQuotRegex, '"');
     for (let ref of Object.keys(groupedByRef)) {
       const macro = groupedByRef[ref];
       const byondKeyName = unescape(macro.name);
@@ -181,8 +190,15 @@ export const setupHotKeys = () => {
     }
     logger.debug('loaded macros', byondMacros);
   });
+  updateHotkeyMode();
+  globalEvents.on('window-focus', () => {
+    updateHotkeyMode();
+  });
   // Setup event handlers
   globalEvents.on('window-blur', () => {
+    releaseHeldKeys();
+  });
+  globalEvents.on('input-focus', () => {
     releaseHeldKeys();
   });
   globalEvents.on('key', (key: KeyEvent) => {
@@ -204,7 +220,9 @@ export const setupHotKeys = () => {
  * @param callback The function to call whenever a key event occurs
  * @returns A callback to stop listening
  */
-export const listenForKeyEvents = (callback: (key: KeyEvent) => void) => {
+export const listenForKeyEvents = (
+  callback: (key: KeyEvent) => void,
+): (() => void) => {
   keyListeners.push(callback);
 
   let removed = false;

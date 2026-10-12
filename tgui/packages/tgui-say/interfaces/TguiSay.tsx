@@ -1,21 +1,22 @@
+import { isEscape } from 'common/keys';
+import { Component, createRef } from 'react';
 import { TextArea } from 'tgui/components';
-import { CHANNEL_LABELS, WINDOW_SIZES } from '../constants';
 import { dragStartHandler } from 'tgui/drag';
+
+import { CHANNEL_LABELS, WINDOW_SIZES } from '../constants';
 import { eventHandlerMap } from '../handlers';
 import { getCss, getTheme, timers } from '../helpers';
-import { Component, createRef } from 'inferno';
 import { Modal, State } from '../types';
-import { KEY_ESCAPE } from 'common/keycodes';
 
 /** Primary class for the TGUI say modal. */
 export class TguiSay extends Component<{}, State> {
   events: Modal['events'] = eventHandlerMap(this);
   fields: Modal['fields'] = {
-    dpi: 1,
     historyCounter: 0,
     innerRef: createRef(),
     lightMode: false,
     showRadioPrefix: false,
+    dpi: 1,
     maxLength: 1024,
     radioChannels: [],
     radioPrefix: '',
@@ -23,16 +24,12 @@ export class TguiSay extends Component<{}, State> {
     value: '',
   };
   timers: Modal['timers'] = timers;
-
-  constructor() {
-    super();
-    this.state = {
-      buttonContent: '',
-      channel: -1,
-      edited: false,
-      size: WINDOW_SIZES.small,
-    };
-  }
+  state: State = {
+    buttonContent: '',
+    channel: -1,
+    edited: false,
+    size: WINDOW_SIZES.small,
+  };
 
   componentDidMount() {
     this.events.onComponentMount();
@@ -45,7 +42,8 @@ export class TguiSay extends Component<{}, State> {
   }
 
   render() {
-    const { onClick, onContextMenu, onEnter, onEscape, onKeyDown, onInput } = this.events;
+    const { onClick, onContextMenu, onEnter, onEscape, onKeyDown, onInput } =
+      this.events;
     const { innerRef, lightMode, maxLength, radioPrefix, value } = this.fields;
     const { buttonContent, channel, edited, size } = this.state;
     const theme = getTheme(lightMode, radioPrefix, channel);
@@ -53,25 +51,26 @@ export class TguiSay extends Component<{}, State> {
     return (
       <div
         className={getCss('modal', theme, size)}
-        onmousedown={dragStartHandler}
+        onMouseDown={dragStartHandler}
         onKeyDown={(event) => {
-          if (event.keyCode === KEY_ESCAPE) {
+          if (isEscape(event.key)) {
             onEscape();
           }
         }}
-        $HasKeyedChildren>
+      >
         <div className="top-border" />
         <div className="left-border" />
         <div className="modal__content">
           {!!theme && (
             <button
               className={getCss('button', theme)}
-              onclick={onClick}
-              oncontextmenu={(e) => {
+              onClick={onClick}
+              onContextMenu={(e) => {
                 e.preventDefault();
                 onContextMenu();
               }}
-              type="submit">
+              type="submit"
+            >
               {CHANNEL_LABELS[String(buttonContent)] || buttonContent}
             </button>
           )}

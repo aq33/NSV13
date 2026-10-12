@@ -90,16 +90,17 @@
 #define COLOR_ASSEMBLY_PURPLE  "#6F6192"
 
 //Colours used by blood brothers
+// AQ EDIT - port BeeStation #9908: chat classes instead of hex colors, so they read well on both chat themes
 #define COLOR_LIST_BLOOD_BROTHERS list(\
-	"#FF5050",\
-	"#D977FD",\
-	"#422ED8",\
-	"#2D87A1",\
-	"#3ED8FD",\
-	"#0EF5CE",\
-	"#0DF447",\
-	"#D6B20C",\
-	"#FF902A",\
+	"cfc_red",\
+	"cfc_purple",\
+	"cfc_navy",\
+	"cfc_darkbluesky",\
+	"cfc_bluesky",\
+	"cfc_cyan",\
+	"cfc_lime",\
+	"cfc_orange",\
+	"cfc_redorange",\
 )
 
 // AQ EDIT START - Smartwires cable colours (port BeeStation/BeeStation-Hornet#14275)

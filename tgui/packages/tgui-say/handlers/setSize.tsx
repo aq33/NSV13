@@ -10,9 +10,9 @@ export const handleSetSize = function (this: Modal, value: number) {
     this.setState({ size: WINDOW_SIZES.large });
     windowSet(WINDOW_SIZES.large, dpi);
   } else if (
-    value <= LINE_LENGTHS.medium
-    && value > LINE_LENGTHS.small
-    && size !== WINDOW_SIZES.medium
+    value <= LINE_LENGTHS.medium &&
+    value > LINE_LENGTHS.small &&
+    size !== WINDOW_SIZES.medium
   ) {
     this.setState({ size: WINDOW_SIZES.medium });
     windowSet(WINDOW_SIZES.medium, dpi);

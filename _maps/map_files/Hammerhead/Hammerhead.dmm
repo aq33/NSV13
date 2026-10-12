@@ -4436,7 +4436,7 @@
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "apy" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/durasteel,
 /area/ai_monitored/turret_protected/aisat/hallway/support_ship/aft)
@@ -5578,7 +5578,7 @@
 /turf/closed/wall/r_wall/ship,
 /area/engine/engine_room)
 "atH" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet/black,
 /area/crew_quarters/heads/hor)
 "atI" = (
@@ -9043,7 +9043,7 @@
 /turf/open/floor/durasteel,
 /area/ai_monitored/turret_protected/aisat/hallway/support_ship/aft)
 "aFH" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -10249,7 +10249,7 @@
 /area/science/server)
 "aKd" = (
 /obj/effect/landmark/start/chief_medical_officer,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/cmo)
 "aKf" = (
@@ -16026,7 +16026,7 @@
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "bdP" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain)
 "bdQ" = (
@@ -16040,7 +16040,7 @@
 "bdR" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/effect/landmark/start/head_of_personnel{
 	name = "Executive Officer"
 	},
@@ -18467,7 +18467,7 @@
 /turf/open/floor/carpet/ship,
 /area/nsv/crew_quarters/heads/maa)
 "bAC" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/durasteel,
 /area/ai_monitored/turret_protected/ai)
 "bAU" = (
@@ -25345,7 +25345,7 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/central)
 "gwJ" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet/ship,
 /area/nsv/crew_quarters/heads/maa)
 "gxb" = (
@@ -35745,7 +35745,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/hos)
 "nQg" = (
@@ -40064,7 +40064,7 @@
 /turf/open/floor/plating,
 /area/nsv/weapons/fore)
 "qQu" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -45234,7 +45234,7 @@
 /turf/closed/wall/r_wall/ship,
 /area/maintenance/department/engine)
 "usR" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/effect/landmark/event_spawn,
 /obj/structure/cable,
 /turf/open/floor/durasteel,

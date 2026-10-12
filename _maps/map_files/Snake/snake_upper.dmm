@@ -160,7 +160,7 @@
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/hos)
 "aw" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "ax" = (

@@ -5237,7 +5237,7 @@
 /turf/open/floor/plating,
 /area/ai_monitored/turret_protected/ai_upload)
 "nR" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/machinery/flasher{
 	id = "AI";
 	pixel_y = 24

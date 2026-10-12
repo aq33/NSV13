@@ -7157,7 +7157,7 @@
 /obj/machinery/camera/autoname{
 	dir = 1
 	},
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain)
 "zC" = (
@@ -11067,7 +11067,7 @@
 /obj/machinery/camera/autoname{
 	dir = 1
 	},
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/hop{
 	name = "Executive officer's Office"

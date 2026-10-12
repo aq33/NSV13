@@ -11,6 +11,7 @@
 	return GLOB.observer_state
 
 /datum/orbit_menu/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui) // AQ EDIT - port BeeStation #9034
 	if (!ui)
 		ui = new(user, src, "Orbit", "Orbit")
 		ui.open()
@@ -25,6 +26,10 @@
 		var/atom/movable/poi = (locate(ref) in GLOB.mob_list) || (locate(ref) in GLOB.poi_list)
 		if (poi != null)
 			owner.ManualFollow(poi)
+		// AQ EDIT START - port BeeStation #9034: refresh the list when the target is gone
+		else
+			return TRUE
+		// AQ EDIT END
 
 /datum/orbit_menu/ui_data(mob/user)
 	var/list/data = list()
@@ -65,7 +70,7 @@
 				var/obj/item/card/id/identification_card = M.get_idcard()
 				if (identification_card)
 					serialized["role_icon"] = "hud[ckey(identification_card.GetJobIcon())]"
-				else
+				else if(SSjob.name_occupations[mind.assigned_role]) // AQ EDIT - port BeeStation #9034: no job icon for non-job roles
 					//If we have no ID, use the mind job
 					var/datum/job/located_job = SSjob.GetJob(mind.assigned_role)
 					if (located_job)
@@ -75,7 +80,15 @@
 					var/datum/antagonist/A = _A
 					if (A.show_to_ghosts)
 						was_antagonist = TRUE
-						serialized["antag"] = A.get_antag_name()
+						// AQ EDIT START - port BeeStation #9034: team name and HUD icon
+						var/datum/team/antag_team = A.get_team()
+						if(antag_team)
+							serialized["antag"] = antag_team.name
+						else
+							serialized["antag"] = A.get_antag_name()
+						if(mind.antag_hud_icon_state)
+							serialized["antag_icon"] = mind.antag_hud_icon_state
+						// AQ EDIT END
 						antagonists += list(serialized)
 						break
 
@@ -97,6 +110,7 @@
 	. = ..() || list()
 	. += get_asset_datum(/datum/asset/simple/orbit)
 	. += get_asset_datum(/datum/asset/spritesheet/job_icons)
+	. += get_asset_datum(/datum/asset/spritesheet/antag_hud) // AQ EDIT - port BeeStation #9034
 
 /datum/asset/spritesheet/job_icons
 	name = "job-icon"

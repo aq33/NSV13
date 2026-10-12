@@ -13,6 +13,8 @@
 #define COMSIG_ATOM_HULK_ATTACK "hulk_attack"
 /// from base of atom/examine(): (/mob, list/examine_text)
 #define COMSIG_PARENT_EXAMINE "atom_examine"
+///from screentips: (datum/screentip_context/context, mob/user) // AQ EDIT - port BeeStation #11938, w core bo używa go processable.dm
+#define COMSIG_ATOM_ADD_CONTEXT "add_screentip_context"
 /// from base of atom/get_examine_name(): (/mob, list/overrides)
 #define COMSIG_ATOM_GET_EXAMINE_NAME "atom_examine_name"
 	//Positions for overrides list

@@ -5484,7 +5484,7 @@
 /turf/open/floor/monotile/steel,
 /area/engine/gravity_generator)
 "aqx" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /mob/living/simple_animal/parrot/Poly,
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/chief)
@@ -14549,7 +14549,7 @@
 /area/engine/storage_shared)
 "aQM" = (
 /obj/effect/landmark/nuclear_waste_spawner,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/hos)
 "aQO" = (
@@ -28996,7 +28996,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/start/chief_medical_officer,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/cmo)
 "byZ" = (
@@ -29447,7 +29447,7 @@
 	})
 "bzT" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet/ship,
 /area/crew_quarters/heads/hor)
 "bzU" = (
@@ -35098,7 +35098,7 @@
 /turf/open/floor/monotile/dark,
 /area/nsv/weapons/fore)
 "cgt" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet/ship,
 /area/nsv/crew_quarters/heads/maa)
 "cha" = (

@@ -708,11 +708,13 @@ SUBSYSTEM_DEF(ticker)
 	to_chat(world, "<span class='boldannounce'>Restart świata za [DisplayTimeText(delay)]. [reason]</span>")
 
 	var/start_wait = world.time
+	reboot_at = start_wait + delay // AQ EDIT - port BeeStation #13727: shown in the stat panel
 	UNTIL(round_end_sound_sent || (world.time - start_wait) > (delay * 2))	//don't wait forever
 	sleep(delay - (world.time - start_wait))
 
 	if(delay_end && !skip_delay)
 		to_chat(world, "<span class='boldannounce'>Admin anulował restart.</span>")
+		reboot_at = null // AQ EDIT
 		return
 	if(end_string)
 		end_state = end_string

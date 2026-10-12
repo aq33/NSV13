@@ -17,6 +17,18 @@
 		var/mob/living/simple_animal/horror/H = owner.current
 		H.update_horror_hud()
 
+/// Admin panel: a horror has to live in its own body, so a human gets turned into one first
+/datum/antagonist/horror/admin_add(datum/mind/new_owner, mob/admin)
+	var/mob/living/old_body = new_owner.current
+	if(!ishorror(old_body))
+		var/mob/living/simple_animal/horror/H = new(get_turf(old_body))
+		new_owner.transfer_to(H, TRUE)
+		if(old_body)
+			qdel(old_body)
+	. = ..()
+	var/mob/living/simple_animal/horror/H = new_owner.current
+	to_chat(H, H.playstyle_string)
+
 /datum/antagonist/horror/antag_listing_name()
 	. = ..()
 	var/mob/living/simple_animal/horror/H = owner.current

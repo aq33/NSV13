@@ -1,10 +1,10 @@
-import { CHANNELS, RADIO_PREFIXES, WINDOW_SIZES } from '../constants';
+import { CHANNELS, RADIO_PREFIXES } from '../constants';
 import { windowClose, windowLoad, windowOpen, windowSet } from '../helpers';
 import { Modal } from '../types';
 
 /** Attach listeners, sets window size just in case */
 export const handleComponentMount = function (this: Modal) {
-  Byond.winget('tgui_say', 'dpi').then((dpi: number | null) => {
+  Byond.winget(Byond.windowId, 'dpi').then((dpi: number | null) => {
     this.fields.dpi = dpi || 1;
     windowSet(this.state.size, this.fields.dpi);
   });
@@ -32,6 +32,8 @@ export const handleComponentMount = function (this: Modal) {
       this.fields.innerRef.current?.focus();
     }, 1);
     windowOpen(CHANNELS[channel], this.fields.dpi);
+    const input = this.fields.innerRef.current;
+    input?.focus();
   });
   Byond.subscribeTo('close', () => {
     windowClose(this.fields.dpi);

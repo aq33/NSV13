@@ -405,9 +405,7 @@
 		return
 	client.crew_manifest_delay = world.time + (1 SECONDS)
 
-	var/datum/browser/popup = new(src, "airoster", "Crew Manifest", 387, 420)
-	popup.set_content(GLOB.data_core.get_manifest_html())
-	popup.open()
+	GLOB.crew_manifest_tgui.ui_interact(src) // AQ EDIT - port BeeStation #9836: TGUI manifest
 
 /mob/living/silicon/proc/set_autosay() //For allowing the AI and borgs to set the radio behavior of auto announcements (state laws, arrivals).
 	if(!radio)

@@ -6,7 +6,7 @@ import { Modal } from '../types';
 export const handleEnter = function (
   this: Modal,
   event: KeyboardEvent,
-  value: string
+  value: string,
 ) {
   const { channel } = this.state;
   const { maxLength, radioPrefix, showRadioPrefix } = this.fields;
@@ -16,8 +16,12 @@ export const handleEnter = function (
     Byond.sendMessage('entry', {
       channel: CHANNELS[channel],
       entry: showRadioPrefix
-        ? (radioPrefix === ';' && value.startsWith(';') ? value.slice(1) : value)
-        : (channel === 0 ? radioPrefix + value : value),
+        ? radioPrefix === ';' && value.startsWith(';')
+          ? value.slice(1)
+          : value
+        : channel === 0
+          ? radioPrefix + value
+          : value,
     });
   }
   this.events.onReset();

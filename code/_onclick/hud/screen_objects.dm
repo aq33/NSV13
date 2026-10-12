@@ -515,6 +515,7 @@
 	return set_selected_zone(choice, usr)
 
 /atom/movable/screen/zone_sel/MouseEntered(location, control, params)
+	..() // AQ EDIT - screentips potrzebują /atom/MouseEntered() (port BeeStation #11938)
 	MouseMove(location, control, params)
 
 /atom/movable/screen/zone_sel/MouseMove(location, control, params)

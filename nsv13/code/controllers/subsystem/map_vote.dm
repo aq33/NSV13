@@ -125,5 +125,6 @@
 
 		all_map_info[key] = map_info
 
-	var/list/data = list("mapInfo" = all_map_info)
+	var/list/data = ..() // AQ EDIT - port BeeStation #13247: VotePanel needs VoteCD from SSvote
+	data["mapInfo"] = all_map_info
 	return data

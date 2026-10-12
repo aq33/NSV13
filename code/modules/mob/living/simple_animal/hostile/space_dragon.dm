@@ -418,7 +418,7 @@
 	message = treat_message_min(message)
 	log_talk(message, LOG_SAY)
 	var/message_a = say_quote(message)
-	var/rendered = "<font color=\"#44aaff\">Karpiowa Mowa Fal <span class='name'>[shown_name]</span> <span class='message'>[message_a]</span></font>"
+	var/rendered = "<span class='carpspeak'>Karpiowa Mowa Fal <span class='name'>[shown_name]</span> <span class='message'>[message_a]</span></span>" // AQ EDIT - port BeeStation #9908
 	if(istype(src, /mob/living/simple_animal/hostile/space_dragon))
 		rendered = "<span class='big'>[rendered]</span>"
 	for(var/mob/S in GLOB.player_list)

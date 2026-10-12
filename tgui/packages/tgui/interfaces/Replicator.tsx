@@ -1,8 +1,29 @@
+import {
+  Box,
+  Button,
+  Dropdown,
+  LabeledList,
+  NoticeBox,
+  ProgressBar,
+  Section,
+  Stack,
+  Table,
+  Tabs,
+} from 'tgui-core/components';
+
 import { BooleanLike } from '../../common/react';
 import { classes } from '../../common/react';
 import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
-import { Box, Section, Dropdown, Table, Tabs, LabeledList, NoticeBox, Button, ProgressBar, Stack } from '../components';
+
+type Data = {
+  biomass: any;
+  categories: any;
+  max_visual_biomass: any;
+  replicating: any;
+  selected_temperature: any;
+  temperatures: any;
+};
 
 type ReplicatorData = {
   replicating: BooleanLike;
@@ -25,8 +46,8 @@ type Design = {
   cost: number;
 };
 
-export const Replicator = (props, context) => {
-  const { act, data } = useBackend<ReplicatorData>(context);
+export const Replicator = (props) => {
+  const { act, data } = useBackend<ReplicatorData>();
   const {
     replicating,
     biomass,
@@ -37,13 +58,12 @@ export const Replicator = (props, context) => {
   } = data;
 
   const [selectedCategory, setSelectedCategory] = useLocalState<string>(
-    context,
     'category',
-    data.categories[0]?.name
+    data.categories[0]?.name,
   );
-  const items
-    = categories.find((category) => category.name === selectedCategory)?.items
-    || [];
+  const items =
+    categories.find((category) => category.name === selectedCategory)?.items ||
+    [];
   return (
     <Window width={500} height={500}>
       <Window.Content>
@@ -53,7 +73,8 @@ export const Replicator = (props, context) => {
               <NoticeBox info>
                 This Machine is both Voice and Touch Activated.
                 <br />
-                Please announce your choice to the Food Replicator in one of the following formats:
+                Please announce your choice to the Food Replicator in one of the
+                following formats:
                 <br />
                 Computer/Alexa/Google/AI/Voice.
                 <br />
@@ -67,12 +88,14 @@ export const Replicator = (props, context) => {
                     value={biomass}
                     minValue={0}
                     maxValue={max_visual_biomass}
-                    color="good">
+                    color="good"
+                  >
                     <Box
                       lineHeight={1.9}
                       style={{
-                        'text-shadow': '1px 1px 0 black',
-                      }}>
+                        textShadow: '1px 1px 0 black',
+                      }}
+                    >
                       {`${parseFloat(biomass.toFixed(2))} units`}
                     </Box>
                   </ProgressBar>
@@ -85,7 +108,9 @@ export const Replicator = (props, context) => {
                     onSelected={(value) =>
                       act('change_temperature', {
                         updated_temperature: value,
-                      })} />
+                      })
+                    }
+                  />
                 </LabeledList.Item>
               </LabeledList>
             </Section>
@@ -97,7 +122,8 @@ export const Replicator = (props, context) => {
                   align="center"
                   key={category.name}
                   selected={category.name === selectedCategory}
-                  onClick={() => setSelectedCategory(category.name)}>
+                  onClick={() => setSelectedCategory(category.name)}
+                >
                   {category.name}
                 </Tabs.Tab>
               ))}
@@ -120,10 +146,10 @@ export const Replicator = (props, context) => {
   );
 };
 
-const ItemList = (props, context) => {
-  const { act } = useBackend(context);
+const ItemList = (props) => {
+  const { act } = useBackend<Data>();
   const items = props.items.map((item) => {
-    const disabled = (props.replicating || props.biomass < Math.ceil(item.cost));
+    const disabled = props.replicating || props.biomass < Math.ceil(item.cost);
     return {
       ...item,
       disabled,
@@ -135,7 +161,7 @@ const ItemList = (props, context) => {
         <span
           className={classes(['design32x32', item.id])}
           style={{
-            'vertical-align': 'middle',
+            verticalAlign: 'middle',
           }}
         />{' '}
         <b>{item.name}</b>
@@ -144,16 +170,13 @@ const ItemList = (props, context) => {
         <Button
           fluid
           align="right"
-          content={
-            parseFloat(
-              (item.cost).toFixed(2)
-            ) + ' BIO'
-          }
+          content={parseFloat(item.cost.toFixed(2)) + ' BIO'}
           disabled={!item.disabled}
           onClick={() =>
             act('replicate', {
               id: item.id,
-            })}
+            })
+          }
         />
       </Table.Cell>
     </Table.Row>

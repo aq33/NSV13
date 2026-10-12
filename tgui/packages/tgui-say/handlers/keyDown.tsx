@@ -5,7 +5,8 @@ import {
   KEY_TAB,
   KEY_UP,
 } from 'common/keycodes';
-import { isAlphanumeric, getHistoryLength } from '../helpers';
+
+import { getHistoryLength, isAlphanumeric } from '../helpers';
 import { Modal } from '../types';
 
 /**
@@ -18,7 +19,7 @@ import { Modal } from '../types';
 export const handleKeyDown = function (
   this: Modal,
   event: KeyboardEvent,
-  value: string
+  value: string,
 ) {
   const { channel } = this.state;
   const { radioPrefix } = this.fields;
@@ -42,7 +43,7 @@ export const handleKeyDown = function (
     return;
   }
   if (isAlphanumeric(event.keyCode)) {
-    if (channel !== 3 && radioPrefix !== ':b ') {
+    if (channel < 3 && radioPrefix !== ':b ') {
       this.timers.typingThrottle();
     }
   }

@@ -66,7 +66,7 @@
 /datum/antagonist/brother/proc/finalize_brother()
 	var/obj/item/implant/bloodbrother/I = new /obj/item/implant/bloodbrother()
 	I.implant(owner.current, null, TRUE, TRUE)
-	I.implant_colour = team.team_id <= 9 ? COLOR_LIST_BLOOD_BROTHERS[team.team_id] : "#ff0000"
+	I.span_implant_colour = team.team_id <= 9 ? COLOR_LIST_BLOOD_BROTHERS[team.team_id] : "cfc_redpurple" // AQ EDIT - port BeeStation #9908
 	for(var/datum/mind/M in team.members) // Link the implants of all team members
 		var/obj/item/implant/bloodbrother/T = locate() in M.current.implants
 		I.link_implant(T)

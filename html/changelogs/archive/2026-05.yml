@@ -1,0 +1,5 @@
+2026-05-15:
+  DeltaFire15:
+    - bugfix: >-
+        Dummy pilots no longer end up in space and are also properly destroyed
+        on ship destruction.

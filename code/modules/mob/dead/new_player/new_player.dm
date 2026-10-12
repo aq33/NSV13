@@ -120,7 +120,7 @@
 		relevant_cap = max(hpc, epc)
 
 	if(href_list["show_preferences"])
-		client.prefs.ShowChoices(src)
+		client.prefs.open_character_menu(src) // AQ EDIT - port BeeStation #8776: okno PreferencesMenu zamiast ShowChoices
 		return 1
 
 	if(href_list["ready"])
@@ -484,11 +484,7 @@
 		return
 	client.crew_manifest_delay = world.time + (1 SECONDS)
 
-	var/dat = "<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'></head><body>"
-	dat += "<h4>Manifest załogi</h4>"
-	dat += GLOB.data_core.get_manifest_html()
-
-	src << browse(dat, "window=manifest;size=387x420;can_close=1")
+	GLOB.crew_manifest_tgui.ui_interact(src) // AQ EDIT - port BeeStation #9836: TGUI manifest
 
 /mob/dead/new_player/Move()
 	return 0

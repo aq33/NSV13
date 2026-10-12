@@ -415,7 +415,7 @@
 /turf/open/floor/plasteel/dark,
 /area/quartermaster/miningoffice)
 "ch" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/item/banner/munitions,
 /turf/open/floor/carpet/orange,
 /area/nsv/crew_quarters/heads/maa)
@@ -6014,7 +6014,7 @@
 /area/maintenance/starboard)
 "GO" = (
 /obj/structure/cable,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet/ship/orange_carpet,
 /area/crew_quarters/heads/chief)
 "GT" = (

@@ -1,60 +1,63 @@
+import {
+  Button,
+  Flex,
+  NoticeBox,
+  ProgressBar,
+  Section,
+} from 'tgui-core/components';
+
 import { toFixed } from '../../common/math';
 import { useBackend } from '../backend';
-import { Button, Flex, NoticeBox, Section, ProgressBar } from '../components';
 import { Window } from '../layouts';
 
+type Data = {
+  maxVolume: any;
+  reagents: any;
+  selectedReagent: any;
+  theme: any;
+};
+
 type BorgHypoContext = {
-  maxVolume: number,
-  theme: string,
-  reagents: Reagent[],
+  maxVolume: number;
+  theme: string;
+  reagents: Reagent[];
   selectedReagent: string;
-}
+};
 
 type Reagent = {
   name: string;
   volume: number;
   description: string;
-}
+};
 
-export const BorgHypo = (props, context) => {
-  const { data } = useBackend<BorgHypoContext>(context);
-  const {
-    maxVolume,
-    theme,
-    reagents,
-    selectedReagent,
-  } = data;
+export const BorgHypo = (props) => {
+  const { data } = useBackend<BorgHypoContext>();
+  const { maxVolume, theme, reagents, selectedReagent } = data;
 
-  const dynamicHeight = (reagents.length * 25) + 60;
+  const dynamicHeight = reagents.length * 25 + 60;
 
   return (
-    <Window
-      width={400}
-      height={dynamicHeight}
-      theme={theme}>
+    <Window width={400} height={dynamicHeight} theme={theme}>
       <Window.Content>
         <Section>
           <ReagentDisplay
             reagents={reagents}
             selected={selectedReagent}
-            maxVolume={maxVolume} />
+            maxVolume={maxVolume}
+          />
         </Section>
       </Window.Content>
     </Window>
   );
 };
 
-const ReagentDisplay = (props, context) => {
-  const { act } = useBackend(context);
+const ReagentDisplay = (props) => {
+  const { act } = useBackend<Data>();
   const { reagents, selected, maxVolume } = props;
   if (reagents.length === 0) {
-    return (
-      <NoticeBox>
-        No reagents available!
-      </NoticeBox>
-    );
+    return <NoticeBox>No reagents available!</NoticeBox>;
   }
-  return reagents.map(reagent => (
+  return reagents.map((reagent) => (
     <Flex key={reagent.name} m={0.5}>
       <Flex.Item grow>
         <ProgressBar value={reagent.volume / maxVolume}>
@@ -62,9 +65,7 @@ const ReagentDisplay = (props, context) => {
             <Flex.Item grow textAlign={'left'}>
               {reagent.name}
             </Flex.Item>
-            <Flex.Item>
-              {toFixed(reagent.volume) + 'u'}
-            </Flex.Item>
+            <Flex.Item>{toFixed(reagent.volume) + 'u'}</Flex.Item>
           </Flex>
         </ProgressBar>
       </Flex.Item>

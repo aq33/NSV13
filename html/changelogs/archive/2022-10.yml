@@ -1,0 +1,504 @@
+2022-10-29:
+  '':
+    - rscadd: Added the ability for bots to go up and down bot elevators.
+    - rscadd: >-
+        Added the ability for bots to find a route to another Z-level if called
+        to it.
+    - rscadd: >-
+        Added the ability for bots to have a patrol route going downstairs or
+        upstairs using bot elevators.
+    - rscadd: >-
+        Added the ability for bots to be summoned using a PDA on another
+        z-level.
+    - rscadd: Added the ability for mulebots to travel between Z-levels.
+    - rscadd: >-
+        Gave Medibots Maintenance Access, this is an NSV13 only thing as some
+        maps have bot elevators in maintenance areas.
+    - rscadd: Added some Mulebots to various maps for multi-Z delivery testing.
+    - rscadd: >-
+        Added the ability to summon bots from other station Z-levels in the bot
+        control computer program
+  12Oreos:
+    - rscadd: Medieval Mutation that modifies speech when applied
+  13spacemen:
+    - rscadd: The BYOND hub entry shows time and alert now
+  Absolutely-Steph:
+    - rscadd: Adds rule reminders to revivals of various kinds.
+    - tweak: Changes felinid tails to TG sprites
+  BarteG44:
+    - rscadd: Added black and white decal colors
+    - rscadd: Added flat floor decals for monotiles
+  Bobbanz1:
+    - rscadd: >-
+        Added three lists and a name generator which picks from two of these
+        three lists and slaps them together into a single name.
+    - rscadd: >-
+        Added a line of code to the initialization of fighters to use the name
+        generator and give themselves a random name
+    - rscdel: Removed Uranus from the List, it ruins everything.
+  Bobbanz1, Bokkiewokkie:
+    - rscadd: added MAA stamp
+    - imageadd: added MAA stamp image
+    - refactor: copied bureaucracy.dmi to the nsv folder
+    - refactor: made some code use the new nsv variant of bureaucracy.dmi
+  Bokkiewokkie:
+    - bugfix: >-
+        Fixed not being able to chameleon copy NSV clothing, watch out for
+        impostor admirals!
+  BongaTheProto, quotefox:
+    - rscadd: Adds the MediKitty, an adorable robotic medibot that can be crafted!
+    - imageadd: Ports the MediKitty sprite
+  BrumalLake:
+    - bugfix: light eater now works on glowshrooms
+    - bugfix: light eater now longer disintegrates shadowshrooms
+  Crossedfall:
+    - server: Fail2Topic logging migrated from world logging to topic logging
+  Crossedfall and Powerfulbacon:
+    - config: protects fail2topic configs
+  CydiaLamiales:
+    - rscadd: Added the wig and the natural wig to the BeeCoin store
+  DarkwindLeaf:
+    - rscadd: Nostalgic winter coats added to BeeCoin shop.
+    - rscadd: Atmospherics winter coat added to BeeCoin shop.
+  DatBoiTim:
+    - tweak: Changed the flavor description of Cognac
+  Dejaku51:
+    - tweak: scrubbers and vents are numbered once again
+  Dejaku51, Kylerace, LemonInTheDark:
+    - refactor: Optimized icon2html code
+  Dejaku51, WarlockD:
+    - rscadd: >-
+        Turning off ntnet remote system control makes it so you can't use door
+        remotes
+    - code_imp: updated ntnet code
+  Dejaku51, jack-pie, Rohesie, PowerfulBacon, Sinestia, Froststahr, Archanial, Qustinnus, AnturK, Rukofamicom, Autisem,:
+    - rscadd: >-
+        Smooth movable lighting system implemented. Projectiles, sparks, thrown
+        flashlights or moving mobs with lights should be much smoother and less
+        laggy.
+    - balance: >-
+        Light sources no longer stack in range, though they still do in
+        intensity.
+    - bugfix: Fixed Security cameras not working properly with Overlay Lighting
+    - bugfix: Fixed Exosuits having really small light
+    - bugfix: Fixed kinetic Crusher Light not working
+    - bugfix: Fixed desword glowing even if not wielded
+    - bugfix: Fixed swarmer lights
+    - bugfix: Fixed pAI lights
+    - bugfix: Finally fixed hardsuit glowing
+    - code_imp: >-
+        Overlay light sources can be set to not count towards get_lumcount
+        calculations
+    - code_imp: Lasers and sparks no longer count towards get_lumcount calculations.
+    - balance: Nightmares will now dodge lasers
+    - rscadd: Lights have new overlay sprites for emergency and night modes
+    - bugfix: Light overlays are now functional
+    - bugfix: Fixes dual energy sword always being red
+    - bugfix: fixed null light runtime when changing species into ethereal
+    - bugfix: Attachments now appear on guns again
+    - bugfix: fixed flamethrower lighting runtime
+    - tweak: light eater works on wisps
+    - bugfix: Light eater works on mechs
+    - bugfix: >-
+        The lighteater will now break gunlights and flashlights attached to
+        things.
+    - bugfix: >-
+        The lighteater will no longer break PDAs that do not have their light
+        turned on.
+  Dejaku51, out-of-phaze, LemonInTheDark, MrStonedOne:
+    - code_imp: Fix client timers having invalid &lt;1ds waits
+  DeltaFire15:
+    - code_imp: Improved some knpc pathfinding stuff.. Probably.
+    - tweak: Things that pathfind can now pass firelocks.
+    - bugfix: Knpcs no longer call themselves for backup.
+    - bugfix: Fixed some random runtimes.
+    - code_imp: >-
+        Many places iterating through overmap objects should now use a smaller
+        list where applicable.
+    - bugfix: >-
+        Some sounds and messages being relayed by a ship towards nearby objects
+        should no longer work across systems.
+  DeltaFire15, Bokkiewokkie:
+    - rscadd: emotional support torp.
+  DeltaFire15, Pontenerd:
+    - bugfix: Volatility components should properly react to damage again.
+    - rscadd: >-
+        Reverse engineering of the feared disruption torpedo has almost reached
+        a breakthrough. Whiterapids is willing to transmit schematics of the
+        research progress to any military vessels equipped with onboard research
+        facilities.
+    - balance: >-
+        Hellfire torpedoes when used against AI vessels now inflict hullburn, a
+        damage over time effect melting away at a ship's hull. Player accessible
+        torp impact damage lowered to 300 from 400. Damage over time added with
+        360 total damage over 60 ship processing ticks, amounting to a total 660
+        raw damage.
+  DrDuckedGoose:
+    - rscadd: New monkey sprites
+    - tweak: Tweaks monkey inventory update - procs interface with ``monkey_icon``
+    - rscadd: Add ``i_clothing`` slot to monkey equipment slots
+    - tweak: Allow monkeys to equip ``i_clothing``
+    - rscadd: Add Experiment gimmick job
+    - rscadd: Add Experiment job-spawn to MetaStation
+  EvilDragonfiend:
+    - tweak: >-
+        Custom command job now has blue chat colour rather than assistant-like
+        white
+  EvilDragonfiend, JOYK1LLZ:
+    - rscadd: >-
+        Beer goggles (and some special goggles like eye of god, omni hud) now
+        can see Total Booze power of chemicals, but also expect the tastes of
+        the chemicals in a container.
+    - rscadd: >-
+        mob trait "sommelier" - tells different flavour texts when you examine
+        drinks. it's given to bar-related spawns including station bartender.
+    - rscadd: >-
+        mob trait "bar master" - tells the exact amount of reagent even if you
+        don't have beer googles. it's given to bar-related non-human without
+        beer goggles.
+  Froststahr:
+    - tweak: A cancel button has been added to the admin cinematic input dialog
+  Hardly:
+    - tweak: Abductees no longer get random deep rooted traumas
+  Hardly, Gandalf2k15, Hardly3D, Ryll/Shaps, Archanial:
+    - tweak: Vended items now go straight into your hand.
+    - rscadd: You can slam table with *slap emote
+    - bugfix: fixed out of range bugged message when giving an item
+    - refactor: refactored giving code
+  Ikalpo:
+    - bugfix: fixed the bio bag
+  Impish_Delights:
+    - rscadd: Added additional set of deny and approval stamps to QM's office
+    - rscadd: Added HoS stamp to HoS's quarters
+    - rscadd: Added Ecto-Sniffer to robotics, to bring in line with other maps
+    - rscadd: >-
+        Added chest drawers to store paperwork in both the HoP's office, and
+        cargo lobby
+    - rscdel: Removed redundant Captain's stamp from quarters
+    - tweak: >-
+        Shifted around RD &amp; CMO stamps so they are not hidden under items at
+        round start
+    - tweak: Modified cargo bay lobby to have a desk, consoles shifted to side
+  IndusRobot:
+    - rscadd: Added glass and reinforced glass floor tiles
+  Isy232:
+    - tweak: Engineering circuit imprinters are once again generic.
+  Ivniinvi:
+    - rscadd: >-
+        New species specific mutations that can only be discovered within each
+        roundstart species.
+    - tweak: Fireball can now only be applied to lizards.
+    - bugfix: Genetics will no longer be stuck with impossible to solve mutations.
+    - bugfix: Acid Ooze no longer has infinite range.
+    - balance: Cat Claws no longer deal 20 damage with punches.
+    - balance: Acid Ooze hands now have 2/3 of their previous power.
+  JohnFulpWillard:
+    - balance: Biosuits can now hold large internal tanks.
+  Karmic-Skink:
+    - tweak: >-
+        Updated the shield generator (overmap) to retain and drain integrity
+        when power is interrupted
+  Kenionatus:
+    - bugfix: fixed duplicate loading into payload gates and onto munitions trolleys
+  LemonInTheDark, Whoneedspace:
+    - code_imp: Weather now handled by ZTRAITS
+    - code_imp: Reduces sound loop overtime
+  LemonLimeSoda:
+    - rscadd: >-
+        added a new midround event with the same weight as xenos and blobs:
+        spontaneous zombie infection
+    - tweak: changed the wizard blob zombies event's name to avoid confusion
+  LodedDiper69:
+    - rscadd: Added a new type of food, Pingles
+  MNarath1:
+    - code_imp: converts ai tracking code towards using signals
+    - tweak: >-
+        the change camera network verb will not immidiatly stop ai
+        tracking(until you select a network)
+    - refactor: moves move_camera_by_click proc to the eyeobject
+  Mat05usz:
+    - balance: Refresh rate for crew monitor goes up from 10 seconds to 60 seconds
+  Miliviu:
+    - rscadd: added the Mothroach cargo crate
+  Naevii:
+    - tweak: Change most sprites in cult.dmi
+    - tweak: Change bloodspear sprites in polearms_(lefthand &amp; righthand).dmi
+    - tweak: Change cultblade sprites in swords_(lefthand &amp; righthand).dmi
+    - tweak: Change cultrobe sprites in suit.dmi
+    - tweak: Change cultrobe sprites in clothing_(lefthand &amp; righthand).dmi
+    - tweak: Change cultrobe sprites in suits.dmi
+    - tweak: Change mirror-shield in shields.dmi
+    - tweak: Change mirror shield in shields_(lefthand &amp; righthand).dmi
+  Penwin:
+    - rscadd: Adds Assimilation back into the gamemode rotation
+    - rscadd: Reworks a lot of the Assimilation gamemode
+    - rscadd: >-
+        The Gamemode features several alien Hiveminds competing for dominion
+        over the station crew
+    - rscadd: >-
+        Their abilities are mostly stealthy and revolve around manipulation of
+        the crew
+    - rscadd: >-
+        Whichever Host manages to rise above the rest may Assert Dominion and
+        gain powerful bonuses
+  Penwin0:
+    - bugfix: mesons protect you from SM hallucinations properly again
+  PestoVerde322:
+    - config: protects fail2topic configs
+  PestoVerde322, PacifistDalek:
+    - imageadd: updates the turbine sprites and overlays
+  Phil Smith:
+    - balance: Thermal vision (the mutation) is no longer obtainable
+  PigeonVerde322, PositiveEntropy:
+    - rscadd: >-
+        FORGOT to credit PositiveEntropy for the Wooden chairs icons and the
+        armchair/Sofa icons in the previous PR, apoligies!
+    - rscadd: Added time-to-build to all the chairs
+    - rscadd: Courtesy of para, now benches can be coloured
+    - bugfix: >-
+        fixed a bug that, if you moved while deconstructing any chair, it would
+        override the deconstruction time
+    - bugfix: >-
+        fixed Corporate benches being broken, now they use a different system
+        than GAGs, also courtesy of para, now benches padding can be coloured!
+  Pontenerd:
+    - bugfix: >-
+        fixed 10 count torp component crates only having 9 of the listed
+        component
+  PowerfulBacon:
+    - bugfix: Fixes fail2topic firewall banning not working.
+  PowerfulBacon (Porting), TiviPlus, spookydonut, MrStonedOne,:
+    - code_imp: Updates our master controller to the current one that TG is using
+    - bugfix: Fixes subsystem freezing hopefully.
+  QAI-07:
+    - tweak: tweaked the taunt the Alicorn says when it enters the system
+    - tweak: >-
+        tweaked the naming routine of the Alicorn's fighter squadron to be
+        shorter and have random numbers assigned.
+    - tweak: >-
+        the Alicorn will now use Battleship AI instead of destroyer, hopefully
+        meaning it'll peruse it's target a bit more ruthlessly.
+    - balance: >-
+        rebalanced the special weapon and round of the Alicorn to hopefully be a
+        bit easier to avoid.
+    - bugfix: >-
+        fixed the alicorn destroying smooth movement when it so much as dares to
+        exist.
+  SapphicOverload:
+    - tweak: atmospherics beret now obtainable from the AtmosDrobe vendor
+  Sarchutar:
+    - refactor: refactored the cyborg power connector code
+    - rscadd: changing modes of the power connector now uses a balloon alert
+    - rscadd: >-
+        limit when charging things to not accidentally completely drain ones
+        cell
+    - rscadd: when drawing power/charging it has a progress bar now
+    - bugfix: >-
+        fixed a bug which made the connector unusable when moving while drawing
+        power from a cell
+  Sarchutar, Mothblocks, Wayland-Smithy:
+    - bugfix: Chat highlighting now takes every entry into account
+    - rscadd: Hightlighting can now be case sensitive and/or matched by whole words
+    - tweak: Messages sent by yourself no longer highlight
+  Sarchutar, Ryll-Ryll:
+    - rscadd: Shields for hardsuits (Syndie, CTF, Wizard etc) are now a component
+    - rscdel: >-
+        Shielded Syndicate Hardsuits cannot have their shield color changed with
+        a multitool anymore
+  Seris02:
+    - bugfix: fixes a runtime in detective_work.dm
+  SharkeeByond:
+    - rscadd: Added departments to Midshipmen
+    - rscadd: >-
+        Added Munitions department to ''Preferred Security/Midshipman
+        Department''
+    - rscadd: New headsets and armbands (munsec)
+    - tweak: >-
+        Changed ''Preferred Security Department'' to ''Preferred
+        Security/Midshipman Department'' in the Preferences GUI
+  Spc-Dragonfruits, ported by Hardly3D, Penwin0:
+    - imageadd: Added Quartermaster's turtleneck, spawnable through QM locker.
+    - rscadd: Cargodrobe now has a beret
+    - rscadd: Quartermaster&rsquo;s locker now comes with a free beret!
+  The-Moon-Itself:
+    - bugfix: >-
+        Atmos machines initialize properly when maploaded. Traitor shuttle
+        capsules are functional again!
+  TheChaser212:
+    - bugfix: Fixed corgstation webmap link
+    - bugfix: AIs now lose syndicate channel when malf status removed
+  TheFakeElon:
+    - bugfix: fixed the PDSR graph
+    - bugfix: fixed ship weapon deafening not working for operators
+  TheScienceOfKSP:
+    - balance: Added a 3-round burstfire mode to the Sec-Glock
+    - imageadd: Added a grand total of 9 new icons for Glocks
+  Tyranicranger4:
+    - rscadd: Added gas ignitor setups to Box/Delta Xenobio
+    - spellcheck: fixed a single letter typo for heretics
+  Vasily2013:
+    - tweak: >-
+        Matches Atlas upper and lower deck turfs to prevent going up/down
+        through what should be hull plating.
+    - rscadd: Added gas pump to Atlas reactor feed line.
+    - bugfix: Replaced protolathe in Atlas sec with techfab.
+    - rscadd: Holopad in Atlas brig control.
+    - tweak: Re-jigger Atlas waste cooler to be more clearly piped.
+    - rscadd: Borg chargers in Atlas maint south and north of the PKA room.
+    - tweak: >-
+        Atlas: Moves one (1) hull repair juice tank to the hull armor on the
+        bow.
+    - tweak: >-
+        Moved one crate in Atlas sci maint to block an abandoned door. (This
+        will be the only OSHA compliance fix of this PR)
+  Zonespace27:
+    - code_imp: >-
+        Added a variety of new greps to the Github and corrected map issues that
+        failed the greps
+  benbot16:
+    - balance: >-
+        Tweaks xenomorph embryo bursting time. Embryos will now take 2.5-3.5
+        minutes to burst.
+    - balance: >-
+        Xenomorph embryo growth times now scale based on the amount of living
+        xenos.
+  bluezorua:
+    - rscadd: You can now tame and ride dolphins like space carp
+  covertcorvid:
+    - bugfix: >-
+        fixed Bee's radial menu Z movement having some weird type requirements
+        on the starting turf
+    - tweak: >-
+        made Move-Upwards and Move-Down use the animated travel_z proc for
+        living things
+    - bugfix: fixed sentient disease Z movement
+    - bugfix: >-
+        allowed most jaunt movement types to travel multi-Z regardless of
+        gravity (includes revenants but not ninjas)
+    - tweak: >-
+        added a passthrough for attack_hand on stairs so the radial menu for
+        multi-z travel would show up
+    - rscadd: Top row numbers 1-4 can be used to select weapons while gunning
+    - refactor: Moved overmap key handling into the keybind system
+  dwasint:
+    - server: Updates auxmos to 1.1.2
+  etherware-novice:
+    - tweak: intern no longer hides the shuttle call reason
+  ike709:
+    - server: Fixed atmos performance problems on linux servers
+  itsmeow:
+    - bugfix: Overmind and eminence can no longer see runechat
+    - bugfix: Imaginary friends can hear again
+    - bugfix: >-
+        Using staff of change on remote AI shells will first disconnect the AI
+        instead of locking them into the new body.
+    - bugfix: >-
+        Staff of change transformations on silicons no longer drops their
+        internal, unobtainable parts.
+    - rscadd: >-
+        Added a message when transformed into antagonistic forms with the staff
+        of change not to self-antag.
+    - rscadd: >-
+        The ability to change what type of titanium floor tiles you wish to
+        place via shift-clicking your stack of titanium floor tiles.
+    - rscadd: New smooth titanium floor sprite as an option
+    - code_imp: Added object path keys to radials
+    - code_imp: Added generic tile reskinning system
+  itsmeow, Mothblocks, Y0SH1M4S73R, IndieanaJones, Iamgoofball, wesoda25, Watermelon914, tf-4, Ghommie, JohnFulpWillard, Mooshimi, MrMelbert:
+    - balance: >-
+        Changed most dynamic weights, threats, and minimum player requirements.
+        They will all be different and hopefully more balanced now.
+    - bugfix: >-
+        dynamic will no longer spawn abductors if there aren't enough applicants
+        for a proper 2-person abductor team
+    - rscadd: Revenant, Space Pirates, and Obsessed have been added to dynamic mode.
+    - bugfix: >-
+        Fixes the lone operative event hardly ever rolling even if the disk is
+        left on the same place for hours on dynamic.
+    - server: >-
+        Dynamic now has an extra configuration value, max_threat_level. Defaults
+        to 100 threat.
+    - balance: Makes wizard a high impact ruleset.
+    - bugfix: A lack of candidates for certain antags will no longer runtime
+    - balance: >-
+        Midround rolls will now happen more frequently, with their power scaling
+        up over time.
+    - bugfix: Fixed midrounds not logging properly.
+    - balance: >-
+        Winning dynamic revs no longer adds midround threat. Instead, it'll
+        force a heavy ruleset to spawn, and barring that, will spawn a dangerous
+        random event.
+    - server: Added more dynamic logging
+  itsmeow, Timberpoes, cacogen, MTandi, Fhaxaris, vincentiusvin, ArcaneMusic, LemonInTheDark, GuillaumePrata, Cheshify, Jackraxxus, OneAsianTortoise, Profakos, tralezab, jlsnow301:
+    - tweak: >-
+        The title bar of Modular PC programs now contains the program's name
+        instead of the file name.
+    - bugfix: Fixed a bunch of modular PC runtimes with try_eject.
+    - tweak: >-
+        Anyone can now download BotKeeper (tablet app). Only bots your current
+        ID can unlock will be listed to control.
+    - bugfix: >-
+        Fixed NTOS File Manager renaming/deleting wrong programs when used with
+        external disk.
+    - code_imp: >-
+        Improved ID console name/job sanitization code, and added feedback for
+        when sanitization fails.
+    - bugfix: >-
+        Modular ID console will no longer insert/eject ID card for AI or to
+        telekinesis players.
+    - code_imp: >-
+        Supermatter's defines have been moved into it's own file in the
+        __DEFINES folder.
+    - rscadd: >-
+        Modular Computers equipped with the new integrated radio card chip can
+        now be used as a remote signaller.
+    - rscadd: >-
+        Scientists now start with tablets pre-equipped with a signaller chip and
+        the program downloaded.
+    - bugfix: >-
+        Fixed a bug preventing the Job Management app from de-prioritising jobs
+        when 5 or more jobs were prioritised.
+    - code_imp: Improved computer hardware code and delete management.
+    - bugfix: >-
+        Signaller code transmissions on the 145.7 frequency are no longer
+        received by all signallers, even if they are tuned to another frequency.
+    - bugfix: Fixes tablet not updating appearance immediately after it is repaired.
+    - refactor: Modernized NTChat, now with muting and pinging!
+    - admin: NTChat now has a filter check.
+    - bugfix: >-
+        Brig physician slots can no longer be increased through the Job
+        Management tablet app.
+    - tweak: >-
+        The Software Downloader will now say "Insert ID" instead of "No Access"
+        if no ID is inserted, and no longer responds to hovering the button.
+  ivanmixo:
+    - rscadd: The tank transfer valve now uses tgui for it's interface
+    - admin: Added more robust logging for tank transfer valves and signalers
+  mc_meiler:
+    - tweak: Coffins now sell for 140 instead of 250 credits.
+  red031000:
+    - balance: prevent the sol's revenge from spawning normally
+  ro5490:
+    - admin: Cigarettes and similar now have proper logs
+    - bugfix: fixed logging cigs
+  someone543:
+    - rscadd: Gives Galactica a security techfab
+    - rscadd: Galactica cargo lift now has buttons
+    - rscadd: Galactica hallway lift now has buttons
+    - rscadd: Galactica science desk windoors added
+    - tweak: Galactica munitions now starts with PDC instead of flak
+    - bugfix: Galactica deck 1 brig is now connected to the powernet
+    - bugfix: Most Galactica grilles are no longer invisible
+    - bugfix: Galactica gulag thermomachines use the correct pipe layer
+  spockye:
+    - rscadd: Added missing shutters to Delta chapel
+    - bugfix: Removes the duplicate door from Pubby's genetics department
+    - bugfix: replaces wrong zoning
+    - bugfix: unpowers the pond
+    - bugfix: Removes Table (randomly placed table at departures airlock)
+  zeskorion:
+    - rscdel: >-
+        random organ drops no longer create teratoma spawners. this means maint
+        and mail tomas no longer exist, either
+    - tweak: pituitary disruption no longer makes you grow nearly as large
+    - balance: pituitary disruption no longer drops random organs from monkeys

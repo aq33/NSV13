@@ -1,7 +1,21 @@
+import { Box, Button, LabeledList, Section, Table } from 'tgui-core/components';
+
 import { sortBy } from '../../common/collections';
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, Section, Table } from '../components';
 import { Window } from '../layouts';
+
+type Data = {
+  access_additional_faxes: any;
+  additional_faxes_list: any;
+  fax_history: any;
+  fax_id: any;
+  fax_name: any;
+  faxes: any;
+  has_paper: any;
+  syndicate_faxes_list: any;
+  syndicate_network: any;
+  visible: any;
+};
 
 type FaxData = {
   faxes: FaxInfo[];
@@ -36,18 +50,18 @@ type FaxHistory = {
   history_time: string;
 };
 
-export const Fax = (props, context) => {
-  const { act } = useBackend(context);
-  const { data } = useBackend<FaxData>(context);
+export const Fax = (props) => {
+  const { act } = useBackend<Data>();
+  const { data } = useBackend<FaxData>();
   const faxes = data.faxes
     ? sortBy((sortFax: FaxInfo) => sortFax.fax_name)(
-      data.syndicate_network
-        ? data.faxes.filter((filterFax: FaxInfo) => filterFax.visible)
-        : data.faxes.filter(
-          (filterFax: FaxInfo) =>
-            filterFax.visible && !filterFax.syndicate_network
-        )
-    )
+        data.syndicate_network
+          ? data.faxes.filter((filterFax: FaxInfo) => filterFax.visible)
+          : data.faxes.filter(
+              (filterFax: FaxInfo) =>
+                filterFax.visible && !filterFax.syndicate_network,
+            ),
+      )
     : [];
   return (
     <Window width={340} height={540}>
@@ -66,10 +80,12 @@ export const Fax = (props, context) => {
           buttons={
             <Button
               onClick={() => act('remove')}
-              disabled={data.has_paper ? false : true}>
+              disabled={data.has_paper ? false : true}
+            >
               Remove
             </Button>
-          }>
+          }
+        >
           <LabeledList.Item label="Paper">
             {data.has_paper ? (
               <Box color="green">Paper in tray</Box>
@@ -85,53 +101,61 @@ export const Fax = (props, context) => {
               color={data.access_additional_faxes ? 'bad' : 'good'}
               onClick={() => act('access_additional_faxes_toggle')}
               disabled={!data.сan_switch_access}
-              tooltip="Manage access to the expanded fax list.">
+              tooltip="Manage access to the expanded fax list."
+            >
               {data.access_additional_faxes ? 'Logout' : 'Login'}
             </Button>
-          }>
+          }
+        >
           {faxes.length !== 0 ? (
             <Box mt={0.4}>
-              {!!data.access_additional_faxes
-              && data.additional_faxes_list.map((fax: AdditionalFaxesList) => (
-                <Button
-                  key={fax.fax_name}
-                  title={fax.fax_name}
-                  disabled={!data.has_paper}
-                  backgroundColor={fax.button_color}
-                  onClick={() =>
-                    act('send_to_additional_fax', {
-                      name: fax.fax_name,
-                      color: fax.button_color,
-                    })}>
-                  {fax.fax_name}
-                </Button>
-              ))}
-              {!!data.syndicate_network
-              && data.syndicate_faxes_list.map((fax: AdditionalFaxesList) => (
-                <Button
-                  key={fax.fax_name}
-                  title={fax.fax_name}
-                  disabled={!data.has_paper}
-                  backgroundColor={fax.button_color}
-                  onClick={() =>
-                    act('send_to_additional_fax', {
-                      name: fax.fax_name,
-                      color: fax.button_color,
-                    })}>
-                  {fax.fax_name}
-                </Button>
-              ))}
+              {!!data.access_additional_faxes &&
+                data.additional_faxes_list.map((fax: AdditionalFaxesList) => (
+                  <Button
+                    key={fax.fax_name}
+                    tooltip={fax.fax_name}
+                    disabled={!data.has_paper}
+                    backgroundColor={fax.button_color}
+                    onClick={() =>
+                      act('send_to_additional_fax', {
+                        name: fax.fax_name,
+                        color: fax.button_color,
+                      })
+                    }
+                  >
+                    {fax.fax_name}
+                  </Button>
+                ))}
+              {!!data.syndicate_network &&
+                data.syndicate_faxes_list.map((fax: AdditionalFaxesList) => (
+                  <Button
+                    key={fax.fax_name}
+                    tooltip={fax.fax_name}
+                    disabled={!data.has_paper}
+                    backgroundColor={fax.button_color}
+                    onClick={() =>
+                      act('send_to_additional_fax', {
+                        name: fax.fax_name,
+                        color: fax.button_color,
+                      })
+                    }
+                  >
+                    {fax.fax_name}
+                  </Button>
+                ))}
               {faxes.map((fax: FaxInfo) => (
                 <Button
                   key={fax.fax_id}
-                  title={fax.fax_name}
+                  tooltip={fax.fax_name}
                   disabled={!data.has_paper}
                   color={fax.syndicate_network ? 'red' : 'blue'}
                   onClick={() =>
                     act('send', {
                       id: fax.fax_id,
                       name: fax.fax_name,
-                    })}>
+                    })
+                  }
+                >
                   {fax.fax_name}
                 </Button>
               ))}
@@ -145,26 +169,29 @@ export const Fax = (props, context) => {
           buttons={
             <Button
               onClick={() => act('history_clear')}
-              disabled={data.fax_history ? false : true}>
+              disabled={data.fax_history ? false : true}
+            >
               Clear
             </Button>
-          }>
+          }
+        >
           <Table>
             <Table.Cell>
               {data.fax_history !== null
                 ? data.fax_history.map((history: FaxHistory) => (
-                  <Table.Row key={history.history_type}>
-                    {
-                      <Box
-                        color={
-                          history.history_type === 'Send' ? 'Green' : 'Red'
-                        }>
-                        {history.history_type}
-                      </Box>
-                    }
-                    {history.history_fax_name} - {history.history_time}
-                  </Table.Row>
-                ))
+                    <Table.Row key={history.history_type}>
+                      {
+                        <Box
+                          color={
+                            history.history_type === 'Send' ? 'Green' : 'Red'
+                          }
+                        >
+                          {history.history_type}
+                        </Box>
+                      }
+                      {history.history_fax_name} - {history.history_time}
+                    </Table.Row>
+                  ))
                 : null}
             </Table.Cell>
           </Table>

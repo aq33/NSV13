@@ -1,53 +1,28 @@
-import { linkEvent } from 'inferno';
+import type { ReactNode } from 'react';
 import { Button } from 'tgui/components';
-import { createRenderer } from 'tgui/renderer';
-
-const render = createRenderer();
-
-const handleClick = () => undefined;
+import { render } from 'tgui/renderer';
 
 export const SingleButton = () => {
-  const node = (
-    <Button>
-      Hello world!
-    </Button>
-  );
+  const node = <Button>Hello world!</Button>;
   render(node);
 };
 
 export const SingleButtonWithCallback = () => {
-  const node = (
-    <Button onClick={() => undefined}>
-      Hello world!
-    </Button>
-  );
-  render(node);
-};
-
-export const SingleButtonWithLinkEvent = () => {
-  const node = (
-    <Button onClick={linkEvent(null, handleClick)}>
-      Hello world!
-    </Button>
-  );
+  const node = <Button onClick={() => undefined}>Hello world!</Button>;
   render(node);
 };
 
 export const ListOfButtons = () => {
-  const nodes: JSX.Element[] = [];
+  const nodes: ReactNode[] = [];
   for (let i = 0; i < 100; i++) {
-    const node = (
-      <Button key={i}>
-        Hello world! {i}
-      </Button>
-    );
+    const node = <Button key={i}>Hello world! {i}</Button>;
     nodes.push(node);
   }
   render(<div>{nodes}</div>);
 };
 
 export const ListOfButtonsWithCallback = () => {
-  const nodes: JSX.Element[] = [];
+  const nodes: ReactNode[] = [];
   for (let i = 0; i < 100; i++) {
     const node = (
       <Button key={i} onClick={() => undefined}>
@@ -59,21 +34,8 @@ export const ListOfButtonsWithCallback = () => {
   render(<div>{nodes}</div>);
 };
 
-export const ListOfButtonsWithLinkEvent = () => {
-  const nodes: JSX.Element[] = [];
-  for (let i = 0; i < 100; i++) {
-    const node = (
-      <Button key={i} onClick={linkEvent(null, handleClick)}>
-        Hello world! {i}
-      </Button>
-    );
-    nodes.push(node);
-  }
-  render(<div>{nodes}</div>);
-};
-
 export const ListOfButtonsWithIcons = () => {
-  const nodes: JSX.Element[] = [];
+  const nodes: ReactNode[] = [];
   for (let i = 0; i < 100; i++) {
     const node = (
       <Button key={i} icon={'arrow-left'}>
@@ -86,7 +48,7 @@ export const ListOfButtonsWithIcons = () => {
 };
 
 export const ListOfButtonsWithTooltips = () => {
-  const nodes: JSX.Element[] = [];
+  const nodes: ReactNode[] = [];
   for (let i = 0; i < 100; i++) {
     const node = (
       <Button key={i} tooltip={'Hello world!'}>

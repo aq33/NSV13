@@ -79,7 +79,7 @@
 		GLOB.keybinding_list_by_key[key] = sortList(GLOB.keybinding_list_by_key[key])
 
 
-	init_subtypes(/datum/crafting_recipe, GLOB.crafting_recipes)
+	aquila_init_crafting_recipes() // AQ EDIT - port BeeStation #12485: crafting and cooking recipes, stack recipes, atom ids
 
 //creates every subtype of prototype (excluding prototype) and adds it to list L.
 //if no list/L is provided, one is created.

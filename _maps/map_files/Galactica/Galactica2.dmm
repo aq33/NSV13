@@ -4589,7 +4589,7 @@
 /area/engine/atmos)
 "cFt" = (
 /obj/machinery/light,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/monotile/steel,
 /area/crew_quarters/heads/hop{
 	name = "Executive officer's Office"
@@ -12559,7 +12559,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/monotile/steel,
 /area/crew_quarters/heads/captain)
 "hcx" = (
