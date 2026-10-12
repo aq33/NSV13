@@ -4,6 +4,8 @@
 #define STATIC_LIGHT 1
 ///Light made by masking the lighting darkness plane.
 #define MOVABLE_LIGHT 2
+///Light made by masking the lighting darkness plane, and is directional.
+#define MOVABLE_LIGHT_DIRECTIONAL 3
 
 ///Is a movable light source attached to another movable (its loc), meaning that the lighting component should go one level deeper.
 #define LIGHT_ATTACHED (1<<0)
@@ -16,14 +18,21 @@
 
 #define MINIMUM_USEFUL_LIGHT_RANGE 1.4
 
+/// All four cardinal directions as a bitfield, used by directional lights.
+#define ALL_CARDINALS (NORTH|SOUTH|EAST|WEST)
+/// Whether a turf fully blocks light (itself or something opaque on it).
+#define IS_OPAQUE_TURF(turf) (turf.opacity || turf.has_opaque_atom)
+
 #define LIGHTING_FALLOFF        1 //! type of falloff to use for lighting; 1 for circular, 2 for square
 #define LIGHTING_LAMBERTIAN     0 //! use lambertian shading for light sources
 #define LIGHTING_HEIGHT         1 //! height off the ground of light sources on the pseudo-z-axis, you should probably leave this alone
 #define LIGHTING_ROUND_VALUE    (1 / 64) //! Value used to round lumcounts, values smaller than 1/129 don't matter (if they do, thanks sinking points), greater values will make lighting less precise, but in turn increase performance, VERY SLIGHTLY.
 
-#define LIGHTING_ICON 'icons/effects/lighting_object.dmi' //! icon used for lighting shading effects
+/// icon used for lighting shading effects
+#define LIGHTING_ICON 'icons/effects/lighting_object.dmi'
 
-/// If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting objects. Set to zero to disable soft lighting. Luminosity changes then work if it's lit at all.
+/// If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting objects.
+/// Set to zero to disable soft lighting. Luminosity changes then work if it's lit at all.
 #define LIGHTING_SOFT_THRESHOLD 0
 
 /// If I were you I'd leave this alone.
