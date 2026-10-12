@@ -1,7 +1,9 @@
 import { BooleanLike } from 'common/react';
-import { formatSiUnit } from '../format';
+import { Dropdown } from 'tgui-core/components';
+
 import { useBackend, useLocalState } from '../backend';
-import { Button, ColorBox, LabeledList, ProgressBar, Section, Collapsible, Box, Icon, Stack, Table, Dimmer, NumberInput, AnimatedNumber, Dropdown, NoticeBox } from '../components';
+import { AnimatedNumber, Box, Button, Collapsible, ColorBox, Dimmer, Icon, LabeledList, NoticeBox, NumberInput, ProgressBar, Section, Stack, Table } from '../components';
+import { formatSiUnit } from '../format';
 import { Window } from '../layouts';
 
 type MODsuitData = {
@@ -204,6 +206,7 @@ const ConfigureListEntry = (props) => {
   const { act } = useBackend();
   return (
     <Dropdown
+      selected={value}
       displayText={value}
       options={values}
       onSelected={(value) =>
