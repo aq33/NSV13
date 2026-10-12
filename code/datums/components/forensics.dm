@@ -182,4 +182,4 @@
 	if(!length(blood_DNA))
 		return
 	var/obj/item/I = parent
-	I.AddElement(/datum/element/decal/blood) //TODO: make decals actually work on all the items, it doesnt appear on a lot of them for some reason
+	I.AddElement(/datum/element/decal/blood, _color = get_blood_dna_color(blood_DNA)) //TODO: make decals actually work on all the items, it doesnt appear on a lot of them for some reason

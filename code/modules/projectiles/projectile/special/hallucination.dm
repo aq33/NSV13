@@ -72,6 +72,7 @@
 		splatter_icon_state = "splatter[pick(3, 4, 5)]"
 
 	var/image/blood = image('icons/effects/blood.dmi', M, splatter_icon_state, ABOVE_MOB_LAYER)
+	blood.color = COLOR_BLOOD
 	var/target_pixel_x = 0
 	var/target_pixel_y = 0
 	switch(set_dir)

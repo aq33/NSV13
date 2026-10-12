@@ -539,6 +539,7 @@
 #include "code\modules\unit_tests\antag_huds.dm"
 #include "code\modules\unit_tests\aquila_bee_windows.dm"
 #include "code\modules\unit_tests\aquila_bleeding.dm"
+#include "code\modules\unit_tests\aquila_blood_types.dm"
 #include "code\modules\unit_tests\aquila_budget_card.dm"
 #include "code\modules\unit_tests\aquila_chrono_legionnaire.dm"
 #include "code\modules\unit_tests\aquila_crafting.dm"

@@ -763,12 +763,22 @@
 
 						if(spec_color)
 							TH.color = spec_color
+						var/datum/blood_type/trail_blood = get_blood_type(dna_blood_type())
+						if(trail_blood?.glowy && !TH.light_range)
+							TH.set_light(1, 0.5, trail_blood.blood_color)
 
 /mob/living/carbon/human/makeTrail(turf/T, turf/start, direction, spec_color)
 	if((NOBLOOD in dna.species.species_traits) || !is_bleeding())
 		return
-	spec_color = dna.species.blood_color
+	spec_color = get_blood_color()
 	..()
+
+/// Name of this mob's blood type, if it has DNA
+/mob/living/proc/dna_blood_type()
+	return null
+
+/mob/living/carbon/dna_blood_type()
+	return dna?.blood_type
 
 /mob/living/proc/getTrail()
 	if(getBruteLoss() < 300)

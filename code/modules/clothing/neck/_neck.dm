@@ -13,7 +13,9 @@
 			if(damaged_clothes)
 				. += mutable_appearance('icons/effects/item_damage.dmi', "damagedmask")
 			if(HAS_BLOOD_DNA(src))
-				. += mutable_appearance('icons/effects/blood.dmi', "maskblood")
+				var/mutable_appearance/bloody_neck = mutable_appearance('icons/effects/blood.dmi', "maskblood")
+				bloody_neck.color = get_blood_dna_color(return_blood_DNA())
+				. += bloody_neck
 
 /obj/item/clothing/neck/tie
 	name = "tie"

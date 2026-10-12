@@ -170,6 +170,14 @@ Bleeding is a status effect (`/datum/status_effect/bleeding` in `mob/living/bloo
 - **Values:** `bleed_force` and the `"bleed"` armour were copied from Bee by type path (Bee paths mapped to ours, e.g. `/obj/projectile` to `/obj/item/projectile`). NSV13/Aquila clothing got the value of its nearest parent, or 50 for armoured clothes (melee or bullet 20+), same as `/obj/item/clothing/suit/armor`.
 - **Assets:** `aquila/icons/hud/screen_alert_bleeding.dmi` (bleeding alerts), `aquila/icons/obj/bleeding.dmi` (pressure offhand), `aquila/sound/surgery/blood_wound.ogg`, all from Bee #10372 (CC-BY-SA 3.0).
 
+### Blood types and species blood colours (BeeStation/BeeStation-Hornet#13410, F)
+
+`code/datums/blood_type.dm` (Bee path) defines `/datum/blood_type` with colour, compatibility and glow. Unlike Bee, `dna.blood_type` and blood DNA lists still hold the type **name** (`"A+"`, `"L"`, `"X*"`), looked up with `get_blood_type()`, so records, cloning, the DNA console, injectors and NSV13 blood freight are untouched. `get_safe_blood()` now reads the datums.
+
+- **Colour:** human blood sprites in `icons/effects/blood.dmi`, `footprints.dmi` and `icons/mob/dam_mob.dmi` were replaced with Bee's greyscale versions; our own states (`trails_*`, `ltrails_*`, Aquila `hitsplatter*`) were greyscaled the same way. Blood decals, drag trails, splatters, item stains, clothing overlays, bloody hands and brute overlays are tinted with `get_blood_dna_color()`/`get_blood_color()`. Non-blood footprints (oil, xeno, feces) clear the colour.
+- **Species:** IPCs bleed `Coolant` (light grey) instead of oil, ethereals bleed glowing `E` blood instead of liquid electricity, lizards stay `L` (teal). `species.blood_color` was removed. Blood packs: `E` and `Coolant` added, the old liquid electricity `LE` pack is now an `E` pack.
+- **Left out from Bee:** datum values in DNA lists, `blush_color`, the inventory slot guards, the `trail_holder` rename (ours was already a child of blood).
+
 ### Data tweaks left in core lists (D-like)
 
 Vending product lists (`wardrobes.dm`, `clothesmate.dm`, `autodrobe.dm`, `plasmaresearch.dm`, `munitions_machinery.dm`), loot lists (`lootdrop.dm`, `mailspawner.dm`, `uplink_kits.dm`, `boxes.dm`, `cargo/packs.dm`, `security.dm` closet), techweb `design_ids` (`all_nodes.dm`), `poll_ignore.dm`, ambience lists. Overriding a whole list in `aquila/` would silently hide upstream additions, which is worse than a visible merge conflict.

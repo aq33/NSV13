@@ -469,28 +469,31 @@ bleedsuppress has been replaced for is_bandaged(). Note that is_bleeding() retur
 		return
 	return /datum/reagent/blood
 
-// This is has more potential uses, and is probably faster than the old proc.
+/// Names of the blood types a mob with this blood type can safely receive
 /proc/get_safe_blood(bloodtype)
 	. = list()
-	if(!bloodtype)
+	var/datum/blood_type/blood_type = get_blood_type(bloodtype)
+	if(!blood_type)
 		return
+	for(var/datum/blood_type/compatible_type as anything in blood_type.compatible_types)
+		. += initial(compatible_type.name)
 
-	var/static/list/bloodtypes_safe = list(
-		"A-" = list("A-", "O-"),
-		"A+" = list("A-", "A+", "O-", "O+"),
-		"B-" = list("B-", "O-"),
-		"B+" = list("B-", "B+", "O-", "O+"),
-		"AB-" = list("A-", "B-", "O-", "AB-"),
-		"AB+" = list("A-", "A+", "B-", "B+", "O-", "O+", "AB-", "AB+"),
-		"O-" = list("O-"),
-		"O+" = list("O-", "O+"),
-		"L" = list("L"),
-		"U" = list("A-", "A+", "B-", "B+", "O-", "O+", "AB-", "AB+", "L", "U")
-	)
+/// Colour of the newest blood in a blood DNA list (DNA = blood type name)
+/proc/get_blood_dna_color(list/blood_dna)
+	if(!length(blood_dna))
+		return COLOR_BLOOD
+	var/datum/blood_type/blood_type = get_blood_type(blood_dna[blood_dna[length(blood_dna)]])
+	if(!blood_type?.blood_color)
+		return COLOR_BLOOD
+	return blood_type.blood_color
 
-	var/safe = bloodtypes_safe[bloodtype]
-	if(safe)
-		. = safe
+/// Colour of this mob's own blood
+/mob/living/proc/get_blood_color()
+	return COLOR_BLOOD
+
+/mob/living/carbon/get_blood_color()
+	var/datum/blood_type/blood_type = get_blood_type(dna?.blood_type)
+	return blood_type?.blood_color || COLOR_BLOOD
 
 //to add a splatter of blood or other mob liquid.
 /mob/living/proc/add_splatter_floor(turf/T, small_drip)

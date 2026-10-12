@@ -18,7 +18,7 @@
 	default_features = list("mcolor" = "#7D7D7D", "ipc_screen" = "Static", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)")
 	meat = /obj/item/stack/sheet/plasteel{amount = 5}
 	skinned_type = /obj/item/stack/sheet/iron{amount = 10}
-	exotic_blood = /datum/reagent/oil
+	exotic_bloodtype = "Coolant"
 	damage_overlay_type = "synth"
 	mutant_bodyparts = list("ipc_screen", "ipc_antenna", "ipc_chassis")
 	default_features = list("ipc_screen" = "BSOD", "ipc_antenna" = "None")
@@ -28,7 +28,6 @@
 	clonemod = 0
 	staminamod = 0.8
 	siemens_coeff = 1.5
-	blood_color = "#000000"
 	bleed_effect = /datum/status_effect/bleeding/robotic
 	reagent_tag = PROCESS_SYNTHETIC
 	species_gibs = GIB_TYPE_ROBOTIC
