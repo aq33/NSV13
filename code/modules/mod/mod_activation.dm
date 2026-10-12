@@ -273,7 +273,7 @@
 		part.heat_protection = NONE
 		part.cold_protection = NONE
 		part.alternate_worn_layer = part_datum.unsealed_layer
-	generate_suit_mask()
+	// the suit mask is built lazily by modules that need it, precaching it here broke later icon operations (spritesheets) on our BYOND setup
 	update_speed()
 	wearer.update_clothing(part.slot_flags | slot_flags)
 	wearer.update_obscured_slots(part.visor_flags_inv)
@@ -320,7 +320,6 @@
 			module.deactivate(display_message = FALSE)
 	update_charge_alert()
 	update_appearance(UPDATE_ICON_STATE)
-	generate_suit_mask()
 	wearer.update_clothing(slot_flags)
 
 /// Quickly deploys all the suit parts and if successful, seals them and turns on the suit. Intended mostly for outfits.
