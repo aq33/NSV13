@@ -5,6 +5,7 @@
 	desc = "A huge chunk of metal used to separate rooms."
 	icon = 'icons/turf/walls/wall.dmi'
 	icon_state = "wall"
+	rcd_memory = RCD_MEMORY_WALL
 	explosion_block = 1
 
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT

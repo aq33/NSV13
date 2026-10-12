@@ -35,6 +35,11 @@ GLOBAL_LIST_EMPTY(created_baseturf_lists)
 	/// For the station blueprints, images of objects eg: pipes
 	var/list/image/blueprint_data
 
+	/// If this turf contained an RCD'able object (or IS one, for walls)
+	/// but is now destroyed, this will preserve the value.
+	/// See __DEFINES/construction.dm for RCD_MEMORY_*.
+	var/rcd_memory
+
 	var/explosion_level = 0	//for preventing explosion dodging
 	var/explosion_id = 0
 	var/list/explosion_throw_details
