@@ -250,3 +250,9 @@
   - rscadd: Preferencja dźwięku przełączania trybu walki.
   - soundadd: Dźwięki przełączania trybu walki i walenia w szybę z BeeStation.
   - imageadd: Ikony trybu walki we wszystkich stylach HUD i licznik kombinacji.
+  - rscadd: Latarki, latarki na broni, kaski, hełmy, PDA i borgi świecą stożkiem w
+      kierunku patrzenia
+  - rscadd: Rzucona latarka świeci tam, gdzie wskazuje po wylądowaniu
+  - refactor: Świecenie eteryków, luminescentów i mutacji Glowy na nowym systemie
+      światła
+  - bugfix: Granaty flash/disco i błyski wybuchów dają poprawne światło
