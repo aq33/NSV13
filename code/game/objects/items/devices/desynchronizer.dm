@@ -32,7 +32,7 @@
 	. += "<span class='notice'>Można go użyć ponownie, by wcześniej przerwać efekt. Czas ładowania jest równy czasowi spędzonemu w desynchronizacji.</span>"
 
 /obj/item/desynchronizer/AltClick(mob/living/user)
-	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, !iscyborg(user)))
 		return
 	var/new_duration = input(user, "Ustaw czas trwania (5-300):", "Desynchronizer", duration / 10) as null|num
 	if(new_duration)

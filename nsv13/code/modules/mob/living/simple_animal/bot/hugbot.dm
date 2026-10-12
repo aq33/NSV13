@@ -157,8 +157,8 @@
 /mob/living/simple_animal/bot/medbot/attack_paw(mob/user)
 	return attack_hand(user)
 
-/mob/living/simple_animal/bot/hugbot/attack_hand(mob/living/carbon/human/H)
-	if(H.a_intent == INTENT_DISARM && !tipped)
+/mob/living/simple_animal/bot/hugbot/attack_hand(mob/living/carbon/human/H, list/modifiers)
+	if(LAZYACCESS(modifiers, RIGHT_CLICK) && !tipped) // AQ EDIT - port Bee #11899: przewracanie prawym przyciskiem
 		H.visible_message("<span class='danger'>[H] zaczyna przewracać [src].</span>", "<span class='warning'>Zaczynasz przewracać [src]...</span>")
 
 		if(world.time > last_tipping_action_voice + 15 SECONDS)
@@ -171,7 +171,7 @@
 		if(do_after(H, 3 SECONDS, target=src))
 			tip_over(H)
 
-	else if(H.a_intent == INTENT_HELP && tipped)
+	else if(!H.combat_mode && tipped)
 		H.visible_message("<span class='notice'>[H] zaczyna stawiać [src].</span>", "<span class='notice'>Zaczynasz stawiać [src]...</span>")
 		if(do_after(H, 3 SECONDS, target=src))
 			set_right(H)

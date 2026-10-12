@@ -178,16 +178,14 @@ have ways of interacting with a specific mob and control it.
 	if(I.force && I.damtype != STAMINA)
 		retaliate(user)
 
-/datum/ai_controller/monkey/proc/on_attack_hand(datum/source, mob/living/user)
+/datum/ai_controller/monkey/proc/on_attack_hand(datum/source, mob/living/user, list/modifiers)
 	SIGNAL_HANDLER
-	if(user.a_intent == INTENT_HARM && prob(MONKEY_RETALIATE_HARM_PROB))
-		retaliate(user)
-	else if(user.a_intent == INTENT_DISARM && prob(MONKEY_RETALIATE_DISARM_PROB))
+	if((user.combat_mode || LAZYACCESS(modifiers, RIGHT_CLICK)) && prob(MONKEY_RETALIATE_PROB))
 		retaliate(user)
 
-/datum/ai_controller/monkey/proc/on_attack_paw(datum/source, mob/living/user)
+/datum/ai_controller/monkey/proc/on_attack_paw(datum/source, mob/living/user, list/modifiers)
 	SIGNAL_HANDLER
-	if(prob(MONKEY_RETALIATE_PROB))
+	if((user.combat_mode || LAZYACCESS(modifiers, RIGHT_CLICK)) && prob(MONKEY_RETALIATE_PROB))
 		retaliate(user)
 
 /datum/ai_controller/monkey/proc/on_attack_animal(datum/source, mob/living/user)
@@ -195,9 +193,9 @@ have ways of interacting with a specific mob and control it.
 	if(user.melee_damage > 0 && prob(MONKEY_RETALIATE_PROB))
 		retaliate(user)
 
-/datum/ai_controller/monkey/proc/on_attack_alien(datum/source, mob/living/user)
+/datum/ai_controller/monkey/proc/on_attack_alien(datum/source, mob/living/user, list/modifiers)
 	SIGNAL_HANDLER
-	if(prob(MONKEY_RETALIATE_PROB))
+	if((user.combat_mode || LAZYACCESS(modifiers, RIGHT_CLICK)) && prob(MONKEY_RETALIATE_PROB))
 		retaliate(user)
 
 /datum/ai_controller/monkey/proc/on_bullet_act(datum/source, obj/item/projectile/Proj)
@@ -214,7 +212,7 @@ have ways of interacting with a specific mob and control it.
 		var/mob/living/living_pawn = pawn
 		var/obj/item/I = AM
 		var/mob/thrown_by = I.thrownby?.resolve()
-		if(I.throwforce < living_pawn.health && ishuman(thrown_by))
+		if(I.throwforce && I.throwforce < living_pawn.health && ishuman(thrown_by))
 			var/mob/living/carbon/human/H = thrown_by
 			retaliate(H)
 

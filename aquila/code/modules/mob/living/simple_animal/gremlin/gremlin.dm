@@ -237,7 +237,7 @@ GLOBAL_LIST(bad_gremlin_items)
 
 //Lets player-controlled gremlins tamper with machinery and eat food on harm intent
 /mob/living/simple_animal/hostile/gremlin/UnarmedAttack(atom/A, proximity)
-	if(a_intent == INTENT_HARM)
+	if(combat_mode)
 		if(istype(A, /obj/item/reagent_containers/food) || istype(A, /obj/item/food))
 			eat(A)
 			return

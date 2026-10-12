@@ -104,7 +104,7 @@
 
 	// Only a lit welder burns it away
 	var/mob/living/carbon/human/welder_user = allocate(/mob/living/carbon/human)
-	welder_user.a_intent = INTENT_HELP
+	welder_user.set_combat_mode(FALSE)
 	var/obj/item/weldingtool/welder = allocate(/obj/item/weldingtool)
 	var/obj/effect/mob_spawn/teratomamonkey/mass = new(spot)
 	mass.attackby(welder, welder_user)

@@ -14,7 +14,7 @@
 	if(target in user.contents) //can't shoot stuff inside us.
 		return FALSE
 
-	if(user.a_intent == INTENT_HARM) //melee attacks are handled by attackby, not autofire
+	if(user.combat_mode) //melee attacks are handled by attackby, not autofire
 		return FALSE
 
 	if(isliving(user))//Check if the user can use the gun, if the user isn't alive(turrets) assume it can.

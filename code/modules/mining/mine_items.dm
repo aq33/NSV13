@@ -81,7 +81,7 @@
 	var/static/list/dumb_rev_heads = list()
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/machinery/computer/shuttle_flight/mining/attack_hand(mob/user)
+/obj/machinery/computer/shuttle_flight/mining/attack_hand(mob/user, list/modifiers)
 	if(is_station_level(user.z) && user.mind && is_head_revolutionary(user) && !(user.mind in dumb_rev_heads))
 		to_chat(user, "<span class='warning'>Masz przeczucie, że opuszczenie stacji może być NAPRAWDĘ głupim pomysłem...</span>")
 		dumb_rev_heads += user.mind

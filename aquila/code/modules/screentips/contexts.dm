@@ -322,8 +322,8 @@ SCREENTIP_ATTACK_HAND(/obj/machinery/wish_granter, "Użyj")
 /obj/item/reagent_containers/syringe/add_context_interaction(datum/screentip_context/context, mob/user, atom/target)
 	if(!target.reagents && !isliving(target))
 		return
-	context.add_left_click_action(mode == SYRINGE_INJECT ? "Wstrzyknij" : "Pobierz")
-	context.add_attack_self_action("Przełącz na [mode == SYRINGE_INJECT ? "pobieranie" : "wstrzykiwanie"]")
+	context.add_left_click_action("Wstrzyknij")
+	context.add_right_click_action("Pobierz")
 
 /obj/item/healthanalyzer/add_context_interaction(datum/screentip_context/context, mob/user, atom/target)
 	if (!isliving(target))
@@ -334,40 +334,53 @@ SCREENTIP_ATTACK_HAND(/obj/machinery/wish_granter, "Użyj")
 // =====================================================
 // Mobki
 // =====================================================
-/// W Bee oparte na trybie walki i prawym przycisku; u nas na intencjach (species.dm, carbon_defense.dm)
+/// Jak w Bee: tryb walki i prawy przycisk; w starym trybie intencji podpowiedź zależy od wybranej intencji
 /mob/living/carbon/add_context_self(datum/screentip_context/context, mob/user)
 	if (!isnull(context.held_item) || !ishuman(user))
 		return
 
-	switch(user.a_intent)
-		if(INTENT_HARM)
-			context.add_left_click_action("Atakuj")
-		if(INTENT_GRAB)
-			context.add_left_click_action("Chwyć")
-		if(INTENT_DISARM)
-			if (user != src)
-				context.add_left_click_action("Popchnij lub rozbrój")
-		if(INTENT_HELP)
-			if (user == src)
-				context.add_left_click_action("Sprawdź obrażenia")
-			else if ((health < 0 || HAS_TRAIT(src, TRAIT_FAKEDEATH)) && !(mobility_flags & MOBILITY_STAND))
-				context.add_left_click_action("Reanimuj (CPR)")
-			else if (!(mobility_flags & MOBILITY_STAND))
-				context.add_left_click_action("Potrząśnij")
+	if(user.uses_legacy_intents())
+		switch(user.a_intent)
+			if(INTENT_HARM)
+				context.add_left_click_action("Atakuj")
+			if(INTENT_GRAB)
+				context.add_left_click_action("Chwyć")
+			if(INTENT_DISARM)
+				if (user != src)
+					context.add_left_click_action("Popchnij lub rozbrój")
+			if(INTENT_HELP)
+				add_help_context(context, user)
+		return
+
+	if(user.combat_mode)
+		context.add_left_click_action("Atakuj")
+	else
+		add_help_context(context, user)
+	if (user != src)
+		context.add_right_click_action("Popchnij lub rozbrój")
+		context.add_ctrl_click_action("Chwyć")
+
+/mob/living/carbon/proc/add_help_context(datum/screentip_context/context, mob/user)
+	if (user == src)
+		context.add_left_click_action("Sprawdź obrażenia")
+	else if ((health < 0 || HAS_TRAIT(src, TRAIT_FAKEDEATH)) && !(mobility_flags & MOBILITY_STAND))
+		context.add_left_click_action("Reanimuj (CPR)")
+	else if (!(mobility_flags & MOBILITY_STAND))
+		context.add_left_click_action("Potrząśnij")
+	else
+		switch(user.zone_selected)
+			if(BODY_ZONE_HEAD)
+				context.add_left_click_action("Pogłaszcz po głowie")
+			if(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
+				context.add_left_click_action("Uściśnij dłoń")
 			else
-				switch(user.zone_selected)
-					if(BODY_ZONE_HEAD)
-						context.add_left_click_action("Pogłaszcz po głowie")
-					if(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
-						context.add_left_click_action("Uściśnij dłoń")
-					else
-						context.add_left_click_action("Przytul")
+				context.add_left_click_action("Przytul")
 
 /// W Bee przez sygnał z kontrolera AI psa; u nas pies jest prostym mobem, więc bezpośrednio
 /mob/living/simple_animal/pet/dog/add_context_self(datum/screentip_context/context, mob/user)
 	if (!isnull(context.held_item) || !ishuman(user))
 		return
-	context.add_left_click_action(user.a_intent == INTENT_HARM ? "Uderz" : "Pogłaszcz")
+	context.add_left_click_action(user.combat_mode ? "Uderz" : "Pogłaszcz")
 
 // =====================================================
 // Elementy

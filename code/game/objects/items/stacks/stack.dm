@@ -426,23 +426,41 @@
 		return ..()
 
 /obj/item/stack/AltClick(mob/living/user)
-	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+	split_stack_prompt(user)
+
+//If we attack ourselves with the same hand
+/obj/item/stack/attack_self_secondary(mob/user, modifiers)
+	. = ..()
+	attack_hand_secondary(user, modifiers)
+
+//If we attack ourselves with a different hand
+/obj/item/stack/attack_hand_secondary(mob/user, modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
+	if(!split_stack_prompt(user))
+		return SECONDARY_ATTACK_CONTINUE_CHAIN
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/// Asks the user how many sheets to take out of the stack. Returns FALSE if the user can't split this stack at all.
+/obj/item/stack/proc/split_stack_prompt(mob/living/user)
+	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+		return FALSE
 	if(is_cyborg)
+		return FALSE
+	. = TRUE
+	if(zero_amount())
+		return
+	//get amount from user
+	var/max = get_amount()
+	var/stackmaterial = round(input(user,"How many sheets do you wish to take out of this stack? (Maximum  [max])") as null|num)
+	max = get_amount()
+	stackmaterial = min(max, stackmaterial)
+	if(!stackmaterial || stackmaterial < 0 || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
 	else
-		if(zero_amount())
-			return
-		//get amount from user
-		var/max = get_amount()
-		var/stackmaterial = round(input(user,"Ile arkuszy chcesz wziąć z tego stosu? (Maksymalnie [max])") as null|num)
-		max = get_amount()
-		stackmaterial = min(max, stackmaterial)
-		if(!stackmaterial || stackmaterial < 0 || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
-			return
-		else
-			change_stack(user, stackmaterial)
-			to_chat(user, "<span class='notice'>Bierzesz arkusze ze stosu: [stackmaterial].</span>")
+		change_stack(user, stackmaterial)
+		to_chat(user, "<span class='notice'>Bierzesz arkusze ze stosu: [stackmaterial].</span>")
 
 /obj/item/stack/proc/change_stack(mob/user, amount)
 	if(!use(amount, TRUE, FALSE))

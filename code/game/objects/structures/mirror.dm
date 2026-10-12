@@ -17,7 +17,7 @@
 	if(icon_state == "mirror_broke" && !broken)
 		obj_break(null, mapload)
 
-/obj/structure/mirror/attack_hand(mob/user)
+/obj/structure/mirror/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -70,7 +70,7 @@
 	qdel(src)
 
 /obj/structure/mirror/welder_act(mob/living/user, obj/item/I)
-	if(user.a_intent == INTENT_HARM)
+	if(user.combat_mode)
 		return FALSE
 
 	if(!broken)
@@ -122,7 +122,7 @@
 			choosable_races += initial(S.id)
 	return ..()
 
-/obj/structure/mirror/magic/attack_hand(mob/user)
+/obj/structure/mirror/magic/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return

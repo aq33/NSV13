@@ -76,7 +76,7 @@
 	radiate()
 	..()
 
-/obj/structure/statue/uranium/attack_hand(mob/user)
+/obj/structure/statue/uranium/attack_hand(mob/user, list/modifiers)
 	radiate()
 	. = ..()
 
@@ -237,7 +237,7 @@
 	honk()
 	return ..()
 
-/obj/structure/statue/bananium/attack_hand(mob/user)
+/obj/structure/statue/bananium/attack_hand(mob/user, list/modifiers)
 	honk()
 	. = ..()
 

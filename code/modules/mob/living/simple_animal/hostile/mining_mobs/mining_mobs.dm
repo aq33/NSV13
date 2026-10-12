@@ -12,7 +12,7 @@
 	response_disarm = "popycha"
 	response_harm = "uderza"
 	status_flags = 0
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	var/crusher_loot
 	var/throw_message = "odbija się od"
 	var/fromtendril = FALSE

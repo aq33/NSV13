@@ -435,7 +435,10 @@
 	togglelock(user)
 
 /mob/living/silicon/robot/attackby(obj/item/W, mob/user, params)
-	if(W.tool_behaviour == TOOL_WELDER && (user.a_intent != INTENT_HARM || user == src))
+	// Port Bee #13406: in combat mode you always hit the borg with whatever you hold
+	if(user.combat_mode && user != src)
+		return ..()
+	if(W.tool_behaviour == TOOL_WELDER)
 		user.changeNext_move(CLICK_CD_MELEE)
 		if (!getBruteLoss())
 			to_chat(user, "<span class='warning'>[src] jest już w dobrym stanie!</span>")
@@ -1237,7 +1240,7 @@
 	shell = TRUE
 
 /mob/living/silicon/robot/mouse_buckle_handling(mob/living/M, mob/living/user)
-	if(can_buckle && istype(M) && !(M in buckled_mobs) && ((user!=src)||(a_intent != INTENT_HARM)))
+	if(can_buckle && istype(M) && !(M in buckled_mobs) && ((user!=src)||(!combat_mode)))
 		if(buckle_mob(M))
 			return TRUE
 

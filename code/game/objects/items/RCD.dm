@@ -512,6 +512,20 @@ RLD
 		return
 	rcd_create(A, user)
 
+/// Port Bee #11899: prawy klik RCD zawsze demontuje, niezależnie od wybranego trybu
+/obj/item/construction/rcd/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
+	if(!prox_check(proximity_flag))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	rcd_deconstruct(target, user)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/item/construction/rcd/proc/rcd_deconstruct(atom/target, mob/user)
+	var/old_mode = mode
+	mode = RCD_DECONSTRUCT
+	. = rcd_create(target, user)
+	if(mode == RCD_DECONSTRUCT)
+		mode = old_mode
+
 /obj/item/construction/rcd/proc/detonate_pulse()
 	audible_message("<span class='danger'><b>[src] zaczyna wibrować i głośno brzęczeć!</b></span>","<span class='danger'><b>[src] zaczyna gwałtownie wibrować!</b></span>")
 	// 5 seconds to get rid of it
@@ -626,6 +640,13 @@ RLD
 	if(target_check(A,user))
 		user.Beam(A,icon_state="rped_upgrade",time=30)
 	rcd_create(A,user)
+
+/obj/item/construction/rcd/arcd/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
+	if(!range_check(target,user))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	user.Beam(target,icon_state="rped_upgrade",time=30)
+	rcd_deconstruct(target, user)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 
 

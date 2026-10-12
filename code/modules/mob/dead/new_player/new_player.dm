@@ -10,6 +10,7 @@
 
 	density = FALSE
 	stat = DEAD
+	shift_to_open_context_menu = FALSE
 
 	var/mob/living/new_character	//for instant transfer once the round is set up
 	///Used to make sure someone doesn't get spammed with messages if they're ineligible for roles.

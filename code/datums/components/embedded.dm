@@ -251,10 +251,10 @@
 	INVOKE_ASYNC(src, PROC_REF(pluckOut), user, 1, 2, "wyciągać")
 	return COMPONENT_NO_ATTACK_HAND
 
-/datum/component/embedded/proc/checkRemoval(mob/living/carbon/victim, obj/item/I, mob/user)
+/datum/component/embedded/proc/checkRemoval(mob/living/carbon/victim, obj/item/I, mob/living/user)
 	SIGNAL_HANDLER
 
-	if(!istype(victim) || user.zone_selected != limb.body_zone || user.a_intent != INTENT_HELP)
+	if(!istype(victim) || user.zone_selected != limb.body_zone || user.combat_mode)
 		return
 
 	var/damage_multiplier = 1

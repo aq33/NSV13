@@ -41,6 +41,7 @@
 	)
 
 	AddElement(/datum/element/connect_loc, loc_connections)
+	AddComponent(/datum/component/simple_rotation, ROTATION_NEEDS_ROOM, AfterRotation = CALLBACK(src, PROC_REF(after_rotation)))
 
 /obj/structure/windoor_assembly/Destroy()
 	density = FALSE
@@ -339,23 +340,7 @@
 
 
 
-/obj/structure/windoor_assembly/ComponentInitialize()
-	. = ..()
-	var/static/rotation_flags = ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS
-	AddComponent(/datum/component/simple_rotation, rotation_flags, can_be_rotated=CALLBACK(src, PROC_REF(can_be_rotated)), after_rotation=CALLBACK(src,PROC_REF(after_rotation)))
-
-/obj/structure/windoor_assembly/proc/can_be_rotated(mob/user,rotation_type)
-	if(anchored)
-		to_chat(user, "<span class='warning'>[src] nie da się obrócić, gdy jest przymocowany do podłogi!</span>")
-		return FALSE
-	var/target_dir = turn(dir, rotation_type == ROTATION_CLOCKWISE ? -90 : 90)
-
-	if(!valid_window_location(loc, target_dir))
-		to_chat(user, "<span class='warning'>[src] nie da się obrócić w tym kierunku!</span>")
-		return FALSE
-	return TRUE
-
-/obj/structure/windoor_assembly/proc/after_rotation(mob/user)
+/obj/structure/windoor_assembly/proc/after_rotation(mob/user, degrees)
 	ini_dir = dir
 	update_icon()
 

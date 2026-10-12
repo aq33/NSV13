@@ -144,7 +144,7 @@
 		return FALSE
 	return ..()
 
-/obj/item/xenoartifact/attack_hand(mob/user) //tweedle dum, density feature
+/obj/item/xenoartifact/attack_hand(mob/user, list/modifiers) //tweedle dum, density feature
 	var/obj/item/clothing/gloves/artifact_pinchers/P = locate(/obj/item/clothing/gloves/artifact_pinchers) in user.contents
 
 	if(isliving(loc) && touch_desc?.on_touch(src, user) && user.can_see_reagents())

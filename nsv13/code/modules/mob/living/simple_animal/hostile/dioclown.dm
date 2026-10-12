@@ -10,7 +10,7 @@
 	speak = list("JOJO!", "HJONK!", "Pozwól mi napić się twojej krwi!", "Tak bardzo chce mi się pić!", "Ucieczka jest niemożliwa!", "MWAHAHAHAH")
 	emote_see = list("trąbi", "piszczy")
 	speak_chance = 1
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	maxHealth = 200
 	health = 200
 	speed = 3

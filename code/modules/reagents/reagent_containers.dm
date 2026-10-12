@@ -50,22 +50,32 @@
 /obj/item/reagent_containers/attack_self(mob/user)
 	change_transfer_amount(user)
 
-/obj/item/reagent_containers/proc/change_transfer_amount(mob/user)
-	if(length(possible_transfer_amounts))
-		var/i = 0
-		for(var/A in possible_transfer_amounts)
-			i++
-			if(A == amount_per_transfer_from_this)
-				if(i < length(possible_transfer_amounts))
-					amount_per_transfer_from_this = possible_transfer_amounts[i + 1]
-				else
-					amount_per_transfer_from_this = possible_transfer_amounts[1]
-				balloon_alert(user, "Transferring [amount_per_transfer_from_this]u.")
-				return
+/// Port Bee #11899: right click in hand goes back through the transfer amounts
+/obj/item/reagent_containers/attack_self_secondary(mob/user)
+	change_transfer_amount(user, BACKWARD)
+
+/obj/item/reagent_containers/proc/mode_change_message(mob/user)
+	return
+
+/obj/item/reagent_containers/proc/change_transfer_amount(mob/user, direction = FORWARD)
+	var/list_len = length(possible_transfer_amounts)
+	if(!list_len)
+		return
+	var/index = possible_transfer_amounts.Find(amount_per_transfer_from_this) || 1
+	switch(direction)
+		if(FORWARD)
+			index = (index % list_len) + 1
+		if(BACKWARD)
+			index = (index - 1) || list_len
+		else
+			CRASH("change_transfer_amount() called with invalid direction value")
+	amount_per_transfer_from_this = possible_transfer_amounts[index]
+	balloon_alert(user, "Transferring [amount_per_transfer_from_this]u.")
+	mode_change_message(user)
 ///NSV13 - Borg Hypospray Update - Stop
 
 /obj/item/reagent_containers/attack(mob/M, mob/user, def_zone)
-	if(user.a_intent == INTENT_HARM)
+	if(user.combat_mode)
 		return ..()
 
 /obj/item/reagent_containers/proc/canconsume(mob/eater, mob/user)

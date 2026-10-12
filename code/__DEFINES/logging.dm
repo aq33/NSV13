@@ -8,6 +8,7 @@
 #define INVESTIGATE_ENGINES			"engines"
 #define INVESTIGATE_TELESCI			"telesci"
 #define INVESTIGATE_WIRES			"wires"
+#define INVESTIGATE_TOOLS			"tools"
 #define INVESTIGATE_PORTAL			"portals"
 #define INVESTIGATE_RESEARCH		"research"
 #define INVESTIGATE_HALLUCINATIONS	"hallucinations"

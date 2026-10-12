@@ -14,7 +14,7 @@
 	speak = list("HONK", "Honk!", "Witaj na planecie klaunów!")
 	emote_see = list("trąbi", "piszczy")
 	speak_chance = 1
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	maxHealth = 75
 	health = 75
 	speed = 1

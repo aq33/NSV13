@@ -157,7 +157,7 @@
 	if(!jammed && default_deconstruction_crowbar(I))
 		return
 	// Smacking
-	if(user.a_intent == INTENT_HARM)
+	if(user.combat_mode)
 		return ..()
 	if(busy)
 		to_chat(user, "<span class='warning'>Ktoś już pracuje przy [src]!</span>")

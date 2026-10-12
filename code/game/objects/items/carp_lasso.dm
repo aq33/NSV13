@@ -10,14 +10,14 @@
 	///Whitelist of allowed animals
 	var/list/whitelist_mobs = list(/mob/living/simple_animal/hostile/carp, /mob/living/simple_animal/cow, /mob/living/simple_animal/hostile/retaliate/dolphin)
 
-/obj/item/mob_lasso/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/mob_lasso/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
 	. = ..()
 	if(isliving(target) && check_allowed(target) && !iscarbon(target) && !issilicon(target) && locate(target) in oview(9, get_turf(src)))
 		var/mob/living/simple_animal/C = target
 		if(IS_DEAD_OR_INCAP(C))
 			to_chat(user, "<span class='warning'>[target] nie żyje.</span>")
 			return
-		if(user.a_intent == INTENT_HELP && C == mob_target) //if trying to tie up previous target
+		if(!user.combat_mode && C == mob_target) //if trying to tie up previous target
 			to_chat(user, "<span class='notice'>Zaczynasz rozwiązywać [C]</span>")
 			if(proximity_flag && do_after(user, 2 SECONDS, FALSE, target))
 				user.faction |= "carpboy_[user]"

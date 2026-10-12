@@ -120,7 +120,7 @@
 			else
 				to_chat(user, "<span class='warning'>Niepoprawne konto.</span>")
 				return
-	if(I.tool_behaviour == TOOL_WELDER && user.a_intent != INTENT_HARM)
+	if(I.tool_behaviour == TOOL_WELDER && !user.combat_mode)
 		if(obj_integrity < max_integrity)
 			if(I.use_tool(src, user, 0, volume = 50, amount = 1))
 				user.visible_message("<span class='notice'>[user] naprawia [name].</span>", "<span class='notice'>Naprawiasz [src].</span>")
