@@ -237,3 +237,16 @@
   - rscadd: 'Serendipity: nowe xenobio, biuro kapelana, generator tarcz w inżynierii'
   - tweak: 'Serendipity: nowy prom cargo'
   - rscdel: 'Serendipity: usunięta platforma górnicza z magnesem asteroid'
+  - rscadd: 'Combat mode z BeeStation: przełącznik trybu walki (F), prawy przycisk
+      myszy to akcja dodatkowa, Ctrl+klik to chwyt, menu kontekstowe pod Shift+prawy
+      przycisk.'
+  - rscadd: Preferencja „Stary tryb intencji” (menu preferencji i zakładka Preferences)
+      przywraca cztery intencje i menu kontekstowe pod prawym przyciskiem.
+  - rscadd: Sztuki walki mają licznik kombinacji i okno poradnika.
+  - rscadd: 'Akcje prawego przycisku: pobieranie strzykawką, klucz i śrubokręt, dzielenie
+      stosów, rozbiórka RCD, granatnik M-90, hak, zryw katany i inne.'
+  - tweak: 'Obracanie obiektów: Alt+lewy i Alt+prawy przycisk; preferencja odwraca
+      kierunki.'
+  - rscadd: Preferencja dźwięku przełączania trybu walki.
+  - soundadd: Dźwięki przełączania trybu walki i walenia w szybę z BeeStation.
+  - imageadd: Ikony trybu walki we wszystkich stylach HUD i licznik kombinacji.
