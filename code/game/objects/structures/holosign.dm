@@ -137,7 +137,7 @@
 
 /obj/structure/holosign/barrier/medical/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The biometric scanners are <b>[force_allaccess ? "off" : "on"]</b>.</span>"
+	. += "<span class='notice'>Skanery biometryczne są <b>[force_allaccess ? "wyłączone" : "włączone"]</b>.</span>"
 
 /obj/structure/holosign/barrier/medical/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
@@ -169,7 +169,7 @@
 /obj/structure/holosign/barrier/medical/attack_hand(mob/living/user)
 	if(CanPass(user) && user.a_intent == INTENT_HELP)
 		force_allaccess = !force_allaccess
-		to_chat(user, "<span class='warning'>You [force_allaccess ? "deactivate" : "activate"] the biometric scanners.</span>") //warning spans because you can make the station sick!
+		to_chat(user, "<span class='warning'>[force_allaccess ? "Wyłączasz" : "Włączasz"] skanery biometryczne.</span>") //warning spans because you can make the station sick!
 	else
 		return ..()
 
@@ -193,7 +193,7 @@
 	if(!shockcd)
 		if(ismob(user))
 			var/mob/living/M = user
-			M.electrocute_act(15,"Energy Barrier", safety=1)
+			M.electrocute_act(15,"Bariera energetyczna", safety=1)
 			shockcd = TRUE
 			addtimer(CALLBACK(src, PROC_REF(cooldown)), 5)
 
@@ -205,6 +205,6 @@
 		return
 
 	var/mob/living/M = AM
-	M.electrocute_act(15,"Energy Barrier", safety=1)
+	M.electrocute_act(15,"Bariera energetyczna", safety=1)
 	shockcd = TRUE
 	addtimer(CALLBACK(src, PROC_REF(cooldown)), 5)

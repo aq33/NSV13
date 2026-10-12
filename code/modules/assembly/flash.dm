@@ -24,7 +24,7 @@
 
 /obj/item/flashbulb/examine(mob/user)
 	. = ..()
-	. += "This one can probably just about handle [charges_left] more uses."
+	. += "Ten wytrzyma pewnie jeszcze jakieś [charges_left] użyć."
 
 /obj/item/flashbulb/proc/check_working()
 	return charges_left > 0
@@ -107,20 +107,20 @@
 
 /obj/item/assembly/flash/examine(mob/user)
 	. = ..()
-	. += "[bulb ? "The bulb looks like it can handle just about [bulb.charges_left] more uses.\nIt looks like you can cut out the flashbulb with a pair of wirecutters." : "The device has no bulb installed."]"
+	. += "[bulb ? "Żarówka wygląda, jakby wytrzymała jeszcze jakieś [bulb.charges_left] użyć.\nWygląda na to, że możesz wyciąć żarówkę kombinerkami." : "Urządzenie nie ma zamontowanej żarówki."]"
 
 
 /obj/item/assembly/flash/suicide_act(mob/living/user)
 	if(!bulb)
-		user.visible_message("<span class='suicide'>[user] raises \the [src] up to [user.p_their()] eyes and activates it ... but there is no bulb!</span>")
+		user.visible_message("<span class='suicide'>[user] unosi [src] do oczu i go aktywuje... ale nie ma żarówki!</span>")
 		return SHAME
 	if(bulb.charges_left <= 0)
-		user.visible_message("<span class='suicide'>[user] raises \the [src] up to [user.p_their()] eyes and activates it ... but it's burnt out!</span>")
+		user.visible_message("<span class='suicide'>[user] unosi [src] do oczu i go aktywuje... ale jest przepalony!</span>")
 		return SHAME
 	else if(user.eye_blind)
-		user.visible_message("<span class='suicide'>[user] raises \the [src] up to [user.p_their()] eyes and activates it ... but [user.p_theyre()] blind!</span>")
+		user.visible_message("<span class='suicide'>[user] unosi [src] do oczu i go aktywuje... ale jest ślepy!</span>")
 		return SHAME
-	user.visible_message("<span class='suicide'>[user] raises \the [src] up to [user.p_their()] eyes and activates it! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] unosi [src] do oczu i go aktywuje! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	attack(user,user)
 	return FIRELOSS
 
@@ -146,7 +146,7 @@
 	if(!istype(newflash))
 		return
 	if(bulb)
-		to_chat("<span class='warning'>You fail to put the bulb into \the [src] as it already has a bulb in it.</spawn>")
+		to_chat("<span class='warning'>Nie udaje ci się włożyć żarówki do [src], bo już jest w nim żarówka.</spawn>")
 		return
 	user.transferItemToLoc(newflash, src)
 	bulb = newflash
@@ -166,23 +166,23 @@
 		update_icon()
 	if(ismob(loc))
 		var/mob/M = loc
-		M.visible_message("<span class='danger'>[src] burns out!</span>","<span class='userdanger'>[src] burns out!</span>")
+		M.visible_message("<span class='danger'>[src] się przepala!</span>","<span class='userdanger'>[src] się przepala!</span>")
 	else
 		var/turf/T = get_turf(src)
-		T.visible_message("<span class='danger'>[src] burns out!</span>")
+		T.visible_message("<span class='danger'>[src] się przepala!</span>")
 
 /obj/item/assembly/flash/wirecutter_act(mob/living/user, obj/item/I)
 	if(!bulb)
-		to_chat(user, "<span class='notice'>There is no bulb in \the [src].</span>")
+		to_chat(user, "<span class='notice'>W [src] nie ma żarówki.</span>")
 		return FALSE
 	if(flags_1 & NODECONSTRUCT_1)
-		to_chat(user, "<span class='notice'>You cannot remove the bulb from \the [src].</span>")
+		to_chat(user, "<span class='notice'>Nie możesz wyjąć żarówki z [src].</span>")
 		return FALSE
 	bulb.forceMove(drop_location())
 	user.put_in_hands(bulb)
 	bulb.update_icon()
 	bulb = null
-	to_chat(user, "<span class='notice'>You remove the bulb from \the [src].</span>")
+	to_chat(user, "<span class='notice'>Wyjmujesz żarówkę z [src].</span>")
 	update_icon()
 	return TRUE
 
@@ -241,24 +241,24 @@
 	else //caused by emp/remote signal
 		M.log_message("was [targeted? "flashed(targeted)" : "flashed(AOE)"]",LOG_ATTACK)
 	if(generic_message && M != user)
-		to_chat(M, "<span class='disarm'>[src] emits a blinding light!</span>")
+		to_chat(M, "<span class='disarm'>[src] emituje oślepiające światło!</span>")
 	if(targeted)
 		if(M.flash_act(1, 1))
 			if(user)
 				terrible_conversion_proc(M, user)
-				visible_message("<span class='disarm'>[user] blinds [M] with the flash!</span>")
-				to_chat(user, "<span class='danger'>You blind [M] with the flash!</span>")
-				to_chat(M, "<span class='userdanger'>[user] blinds you with the flash!</span>")
+				visible_message("<span class='disarm'>[user] oślepia [M] fleszem!</span>")
+				to_chat(user, "<span class='danger'>Oślepiasz [M] fleszem!</span>")
+				to_chat(M, "<span class='userdanger'>[user] oślepia cię fleszem!</span>")
 			else
-				to_chat(M, "<span class='userdanger'>You are blinded by [src]!</span>")
+				to_chat(M, "<span class='userdanger'>[src] cię oślepia!</span>")
 			M.Paralyze(70)
 
 		else if(user)
-			visible_message("<span class='disarm'>[user] fails to blind [M] with the flash!</span>")
-			to_chat(user, "<span class='warning'>You fail to blind [M] with the flash!</span>")
-			to_chat(M, "<span class='danger'>[user] fails to blind you with the flash!</span>")
+			visible_message("<span class='disarm'>[user] nie zdołał oślepić [M] fleszem!</span>")
+			to_chat(user, "<span class='warning'>Nie udaje ci się oślepić [M] fleszem!</span>")
+			to_chat(M, "<span class='danger'>[user] nie zdołał oślepić cię fleszem!</span>")
 		else
-			to_chat(M, "<span class='danger'>[src] fails to blind you!</span>")
+			to_chat(M, "<span class='danger'>[src] nie zdołał cię oślepić!</span>")
 	else
 		M.flash_act()
 
@@ -274,17 +274,17 @@
 		update_icon(1)
 		R.Paralyze(70)
 		R.flash_act(affect_silicon = 1, type = /atom/movable/screen/fullscreen/flash/static)
-		user.visible_message("<span class='disarm'>[user] overloads [R]'s sensors with the flash!</span>", "<span class='danger'>You overload [R]'s sensors with the flash!</span>")
+		user.visible_message("<span class='disarm'>[user] przeciąża czujniki [R] fleszem!</span>", "<span class='danger'>Przeciążasz czujniki [R] fleszem!</span>")
 		return TRUE
 
-	user.visible_message("<span class='disarm'>[user] fails to blind [M] with the flash!</span>", "<span class='warning'>You fail to blind [M] with the flash!</span>")
+	user.visible_message("<span class='disarm'>[user] nie zdołał oślepić [M] fleszem!</span>", "<span class='warning'>Nie udaje ci się oślepić [M] fleszem!</span>")
 
 /obj/item/assembly/flash/attack_self(mob/living/carbon/user, flag = 0, emp = 0)
 	if(holder)
 		return FALSE
 	if(!AOE_flash(FALSE, 3, 5, FALSE, user))
 		return FALSE
-	to_chat(user, "<span class='danger'>[src] emits a blinding light!</span>")
+	to_chat(user, "<span class='danger'>[src] emituje oślepiające światło!</span>")
 
 /obj/item/assembly/flash/emp_act(severity)
 	. = ..()
@@ -307,13 +307,13 @@
 			if(!converter)
 				return
 			if(!H.client)
-				to_chat(user, "<span class='warning'>This mind is so vacant that it is not susceptible to influence!</span>")
+				to_chat(user, "<span class='warning'>Ten umysł jest tak pusty, że nie da się na niego wpłynąć!</span>")
 				return
 			if(H.stat != CONSCIOUS)
-				to_chat(user, "<span class='warning'>They must be conscious before you can convert [H.p_them()]!</span>")
+				to_chat(user, "<span class='warning'>Musi być przytomny, zanim go nawrócisz!</span>")
 				return
 			if(!converter.add_revolutionary(H.mind))
-				to_chat(user, "<span class='warning'>This mind seems resistant to the flash!</span>")
+				to_chat(user, "<span class='warning'>Ten umysł wydaje się odporny na flesz!</span>")
 
 
 /obj/item/assembly/flash/cyborg
@@ -356,7 +356,7 @@
 /obj/item/assembly/flash/armimplant/burn_out()
 	var/obj/item/organ/cyberimp/arm/flash/real_arm = arm.resolve()
 	if(real_arm?.owner)
-		to_chat(real_arm.owner, "<span class='warning'>Your photon projector implant overheats and deactivates!</span>")
+		to_chat(real_arm.owner, "<span class='warning'>Twój implant projektora fotonów przegrzewa się i wyłącza!</span>")
 		real_arm.Retract()
 	overheat = TRUE
 	addtimer(CALLBACK(src, PROC_REF(cooldown)), flashcd * 2)
@@ -365,7 +365,7 @@
 	if(overheat)
 		var/obj/item/organ/cyberimp/arm/flash/real_arm = arm.resolve()
 		if(real_arm?.owner)
-			to_chat(real_arm.owner, "<span class='warning'>Your photon projector is running too hot to be used again so quickly!</span>")
+			to_chat(real_arm.owner, "<span class='warning'>Twój projektor fotonów jest za gorący, by tak szybko użyć go ponownie!</span>")
 		return FALSE
 	overheat = TRUE
 	addtimer(CALLBACK(src, PROC_REF(cooldown)), flashcd)
@@ -401,16 +401,16 @@
 	else //caused by emp/remote signal
 		M.log_message("was [targeted? "hypno-flashed(targeted)" : "hypno-flashed(AOE)"]",LOG_ATTACK)
 	if(generic_message && M != user)
-		to_chat(M, "<span class='disarm'>[src] emits a soothing light...</span>")
+		to_chat(M, "<span class='disarm'>[src] emituje kojące światło...</span>")
 	if(targeted)
 		if(M.flash_act(1, 1))
 			if(user)
-				user.visible_message("<span class='disarm'>[user] blinds [M] with the flash!</span>", "<span class='danger'>You hypno-flash [M]!</span>")
+				user.visible_message("<span class='disarm'>[user] oślepia [M] fleszem!</span>", "<span class='danger'>Hipno-fleszujesz [M]!</span>")
 
 			if(M.hypnosis_vulnerable())
 				M.apply_status_effect(/datum/status_effect/trance, 200, TRUE)
 			else
-				to_chat(M, "<span class='notice'>The light makes you feel oddly relaxed...</span>")
+				to_chat(M, "<span class='notice'>Światło sprawia, że czujesz się dziwnie zrelaksowany...</span>")
 				M.confused += min(M.confused + 10, 20)
 				M.dizziness += min(M.dizziness + 10, 20)
 				M.drowsyness += min(M.drowsyness + 10, 20)
@@ -419,12 +419,12 @@
 
 
 		else if(user)
-			user.visible_message("<span class='disarm'>[user] fails to blind [M] with the flash!</span>", "<span class='warning'>You fail to hypno-flash [M]!</span>")
+			user.visible_message("<span class='disarm'>[user] nie zdołał oślepić [M] fleszem!</span>", "<span class='warning'>Nie udaje ci się hipno-fleszować [M]!</span>")
 		else
-			to_chat(M, "<span class='danger'>[src] fails to blind you!</span>")
+			to_chat(M, "<span class='danger'>[src] nie zdołał cię oślepić!</span>")
 
 	else if(M.flash_act())
-		to_chat(M, "<span class='notice'>Such a pretty light...</span>")
+		to_chat(M, "<span class='notice'>Takie ładne światełko...</span>")
 		M.confused += min(M.confused + 4, 20)
 		M.dizziness += min(M.dizziness + 4, 20)
 		M.drowsyness += min(M.drowsyness + 4, 20)

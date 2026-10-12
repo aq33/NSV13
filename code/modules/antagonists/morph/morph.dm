@@ -4,8 +4,8 @@
 	name = "morph"
 	real_name = "morph"
 	desc = "A revolting, pulsating pile of flesh."
-	speak_emote = list("gurgles")
-	emote_hear = list("gurgles")
+	speak_emote = list("bulgocze")
+	emote_hear = list("bulgocze")
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "morph"
 	icon_living = "morph"
@@ -27,7 +27,7 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	vision_range = 1 // Only attack when target is close
 	wander = FALSE
-	attacktext = "glomps"
+	attacktext = "rzuca się na"
 	attack_sound = 'sound/effects/blobattack.ogg'
 	butcher_results = list(/obj/item/food/meat/slab = 2)
 
@@ -46,12 +46,12 @@
 	))
 	var/atom/movable/throwatom = null
 
-	var/playstyle_string = "<span class='big bold'>You are a morph,</span></b> an abomination of science created primarily with changeling cells. \
-							You may take the form of anything nearby by shift-clicking it. This process will alert any nearby \
-							observers, and can only be performed once every five seconds. While morphed, you move faster, but do \
-							less damage. In addition, anyone within three tiles will note an uncanny wrongness if examining you. \
-							You can attack any item or dead creature to consume it - creatures will restore your health. \
-							Finally, you can restore yourself to your original form while morphed by shift-clicking yourself.</b>"
+	var/playstyle_string = "<span class='big bold'>Jesteś morfem,</span></b> naukową abominacją stworzoną głównie z komórek zmiennokształtnego. \
+							Możesz przybrać postać czegokolwiek w pobliżu, klikając to z Shiftem. Zauważą to pobliscy \
+							obserwatorzy, a zrobić to możesz raz na pięć sekund. W przybranej postaci poruszasz się szybciej, ale zadajesz \
+							mniej obrażeń. Do tego każdy w promieniu trzech pól, kto ci się przyjrzy, wyczuje niepokojącą nienaturalność. \
+							Możesz zaatakować dowolny przedmiot lub martwą istotę, by ją pożreć - istoty przywracają zdrowie. \
+							Wreszcie możesz wrócić do pierwotnej postaci, klikając siebie z Shiftem.</b>"
 
 	mobchatspan = "blob"
 	discovery_points = 2000
@@ -82,7 +82,7 @@
 	if(throwatom)
 		RemoveContents(throwatom, TRUE)
 		throwatom.safe_throw_at(A, throwatom.throw_range, throwatom.throw_speed, src, null, null, null, move_force)
-		visible_message("<span class='warning'>[src] spits [throwatom] at [A]!</span>")
+		visible_message("<span class='warning'>[src] pluje [throwatom] w [A]!</span>")
 		throwatom = null
 		playsound(src, 'sound/effects/splat.ogg', 50, 1)
 		morph_stomach.ui_update()
@@ -93,7 +93,7 @@
 	if(morphed)
 		. = form.examine(user)
 		if(get_dist(user,src)<=3)
-			. += "<span class='warning'>It doesn't look quite right...</span>"
+			. += "<span class='warning'>Coś tu nie wygląda tak, jak powinno...</span>"
 	else
 		. = ..()
 
@@ -116,10 +116,10 @@
 
 /mob/living/simple_animal/hostile/morph/proc/eat(atom/movable/A)
 	if(morphed && !eat_while_disguised)
-		to_chat(src, "<span class='warning'>You can not eat anything while you are disguised!</span>")
+		to_chat(src, "<span class='warning'>Nie możesz niczego jeść, będąc w przebraniu!</span>")
 		return FALSE
 	if(A && A.loc != src)
-		visible_message("<span class='warning'>[src] swallows [A] whole!</span>")
+		visible_message("<span class='warning'>[src] połyka [A] w całości!</span>")
 		AddContents(A)
 		morph_stomach.ui_update()
 		return TRUE
@@ -133,14 +133,14 @@
 		if(allowed(A))
 			assume(A)
 	else
-		to_chat(src, "<span class='warning'>Your chameleon skin is still repairing itself!</span>")
+		to_chat(src, "<span class='warning'>Twoja skóra kameleona wciąż się regeneruje!</span>")
 
 /mob/living/simple_animal/hostile/morph/proc/assume(atom/movable/target)
 	morphed = TRUE
 	form = target
 
-	visible_message("<span class='warning'>[src] suddenly twists and changes shape, becoming a copy of [target]!</span>", \
-					"<span class='notice'>You twist your body and assume the form of [target].</span>")
+	visible_message("<span class='warning'>[src] nagle się wykręca i zmienia kształt, stając się kopią [target]!</span>", \
+					"<span class='notice'>Wykręcasz ciało i przybierasz postać [target].</span>")
 	appearance = target.appearance
 	if(length(target.vis_contents))
 		add_overlay(target.vis_contents)
@@ -168,7 +168,7 @@
 /mob/living/simple_animal/hostile/morph/proc/restore(var/intentional = FALSE)
 	if(!morphed)
 		if(intentional)
-			to_chat(src, "<span class='warning'>You're already in your normal form!</span>")
+			to_chat(src, "<span class='warning'>Już masz swoją normalną postać!</span>")
 		return
 	morphed = FALSE
 	form = null
@@ -178,8 +178,8 @@
 	maptext = null
 	density = initial(density)
 
-	visible_message("<span class='warning'>[src] suddenly collapses in on itself, dissolving into a pile of green flesh!</span>", \
-					"<span class='notice'>You reform to your normal body.</span>")
+	visible_message("<span class='warning'>[src] nagle zapada się w sobie, rozpływając się w stertę zielonego mięsa!</span>", \
+					"<span class='notice'>Wracasz do swojego normalnego ciała.</span>")
 	name = initial(name)
 	icon = initial(icon)
 	icon_state = initial(icon_state)
@@ -195,8 +195,8 @@
 
 /mob/living/simple_animal/hostile/morph/death(gibbed)
 	if(morphed)
-		visible_message("<span class='warning'>[src] twists and dissolves into a pile of green flesh!</span>", \
-						"<span class='userdanger'>Your skin ruptures! Your flesh breaks apart! No disguise can ward off de--</span>")
+		visible_message("<span class='warning'>[src] wykręca się i rozpływa w stertę zielonego mięsa!</span>", \
+						"<span class='userdanger'>Twoja skóra pęka! Twoje ciało się rozpada! Żadne przebranie nie odwróci śmier--</span>")
 		restore()
 	barf_contents()
 	..()
@@ -236,7 +236,7 @@
 
 /mob/living/simple_animal/hostile/morph/AttackingTarget()
 	if(morphed && !melee_damage_disguised)
-		to_chat(src, "<span class='warning'>You can not attack while disguised!</span>")
+		to_chat(src, "<span class='warning'>Nie możesz atakować, będąc w przebraniu!</span>")
 		return
 	if(isliving(target)) //Eat living beings to store them for a snack, or other uses
 		var/mob/living/L = target
@@ -256,9 +256,9 @@
 	if(morphed)
 		M.Knockdown(40)
 		M.reagents.add_reagent(/datum/reagent/toxin/morphvenom, 7)
-		to_chat(M, "<span class='userdanger'>[src] bites you!</span>")
-		visible_message("<span class='danger'>[src] violently bites [M]!</span>",\
-				"<span class='userdanger'>You ambush [M]!</span>", null, COMBAT_MESSAGE_RANGE)
+		to_chat(M, "<span class='userdanger'>[src] cię gryzie!</span>")
+		visible_message("<span class='danger'>[src] brutalnie gryzie [M]!</span>",\
+				"<span class='userdanger'>Napadasz z zasadzki na [M]!</span>", null, COMBAT_MESSAGE_RANGE)
 		restore()
 	else
 		..()

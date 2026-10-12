@@ -40,6 +40,6 @@ Slimecrossing Mobs
 	icon_dead = "slime_puppy_dead"
 	nofur = TRUE
 	gold_core_spawnable = NO_SPAWN
-	speak_emote = list("blorbles", "bubbles", "borks")
-	emote_hear = list("bubbles!", "splorts.", "splops!")
-	emote_see = list("gets goop everywhere.", "flops.", "jiggles!")
+	speak_emote = list("bulgocze", "bąbelkuje", "szczeka")
+	emote_hear = list("bąbelkuje!", "chlupie.", "plaska!")
+	emote_see = list("rozchlapuje maź dookoła.", "pada płasko.", "trzęsie się!")

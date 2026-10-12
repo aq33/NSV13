@@ -21,7 +21,7 @@
 	name = "onion"
 	desc = "Nothing to cry over."
 	icon_state = "onion"
-	tastes = list("onions" = 1)
+	tastes = list("cebula" = 1)
 	wine_power = 30
 
 /obj/item/food/grown/onion/make_processable()

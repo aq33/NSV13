@@ -91,10 +91,10 @@
 
 /obj/machinery/atmospherics/components/unary/thermomachine/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The thermostat is set to [target_temperature]K ([(T0C-target_temperature)*-1]C).</span>"
+	. += "<span class='notice'>Termostat jest ustawiony na [target_temperature] K ([(T0C-target_temperature)*-1] °C).</span>"
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Efficiency <b>[(heat_capacity/5000)*100]%</b>.</span>"
-		. += "<span class='notice'>Temperature range <b>[min_temperature]K - [max_temperature]K ([(T0C-min_temperature)*-1]C - [(T0C-max_temperature)*-1]C)</b>.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: wydajność <b>[(heat_capacity/5000)*100]%</b>.</span>"
+		. += "<span class='notice'>Zakres temperatur <b>[min_temperature] K - [max_temperature] K ([(T0C-min_temperature)*-1] °C - [(T0C-max_temperature)*-1] °C)</b>.</span>"
 
 /obj/machinery/atmospherics/components/unary/thermomachine/AltClick(mob/living/user)
 	if(!can_interact(user))
@@ -105,7 +105,7 @@
 	else
 		target_temperature = max_temperature
 		investigate_log("was set to [target_temperature] K by [key_name(user)]", INVESTIGATE_ATMOS)
-	balloon_alert(user, "You set the target temperature to [target_temperature] K.")
+	balloon_alert(user, "Ustawiasz docelową temperaturę na [target_temperature] K.")
 
 /obj/machinery/atmospherics/components/unary/thermomachine/process_atmos()
 	if(!is_operational || !on || !nodes[1])  //if it has no power or its switched off, dont process atmos
@@ -200,7 +200,7 @@
 			var/target = params["target"]
 			var/adjust = text2num(params["adjust"])
 			if(target == "input")
-				target = input("Set new target ([min_temperature]-[max_temperature] K):", name, target_temperature) as num|null
+				target = input("Ustaw nową wartość docelową ([min_temperature]-[max_temperature] K):", name, target_temperature) as num|null
 				if(!isnull(target))
 					. = TRUE
 			else if(adjust)

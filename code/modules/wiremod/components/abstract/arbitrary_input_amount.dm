@@ -1,7 +1,7 @@
 //This component is to create common methods for components that can function with any specified amount of inputs
 /obj/item/circuit_component/arbitrary_input_amount
 	display_name = "Arbitrary Input Amount"
-	display_desc = "A modular component base that allows component designs to contain an arbitrary amount of inputs"
+	display_desc = "Modułowa baza komponentu, która pozwala projektom komponentów mieć dowolną liczbę wejść"
 
 	//The type of port to use
 	var/input_port_type = PORT_TYPE_ANY

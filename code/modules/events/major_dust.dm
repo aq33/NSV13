@@ -9,12 +9,12 @@
 
 /datum/round_event/meteor_wave/major_dust/announce(fake)
 	var/reason = pick(
-		"The station is passing through a debris cloud, expect minor damage \
-		to external fittings and fixtures.",
-		"Nanotrasen Superweapons Division is testing a new prototype \
+		"Statek przelatuje przez chmurę odłamków, możliwe drobne uszkodzenia \
+		zewnętrznych elementów i wyposażenia.",
+		"Wydział Superbroni Nanotrasen testuje nowy prototyp: \
 		[pick("field","projection","nova","super-colliding","reactive")] \
 		[pick("cannon","artillery","tank","cruiser","\[REDACTED\]")], \
-		some mild debris is expected.",
-		"A neighbouring station is throwing rocks at you. (Perhaps they've \
-		grown tired of your messages.)")
-	priority_announce(pick(reason), "Collision Alert", SSstation.announcer.get_rand_alert_sound())
+		możliwe niewielkie odłamki.",
+		"Sąsiednia stacja rzuca w was kamieniami. (Może mają \
+		dość waszych wiadomości.)")
+	priority_announce(pick(reason), "Alarm kolizyjny", SSstation.announcer.get_rand_alert_sound())

@@ -59,7 +59,7 @@
 		if("shipinf")
 			screen = SHIPINFO
 		if("sector")
-			var/sector = input(usr, "Swap to what sector?","Sector Selection", null) as null|anything in list(ALL_STARMAP_SECTORS)
+			var/sector = input(usr, "Na który sektor przełączyć?","Wybór sektora", null) as null|anything in list(ALL_STARMAP_SECTORS)
 			if(!sector)
 				return
 			current_sector = sector
@@ -72,11 +72,11 @@
 			. = TRUE
 		if("jump")
 			if(linked.ftl_drive.lockout)
-				to_chat(usr, "<span class='warning'>[icon2html(src, viewers(src))] Unable to comply. Invalid authkey to unlock remove override code.</span>")
+				to_chat(usr, "<span class='warning'>[icon2html(src, viewers(src))] Nie można wykonać. Nieprawidłowy klucz autoryzacji do odblokowania kodu nadpisania.</span>")
 				return
 			if(linked.ftl_safety_override)
 				if(linked.next_emergency_jump > world.time)
-					say("Drive Emergency Capacitor is still recharging. Emergency jump unavailable.")
+					say("Awaryjny kondensator napędu wciąż się ładuje. Skok awaryjny niedostępny.")
 					return TRUE
 				linked.ftl_drive.request_emergency_ftl_confirm()
 			else
@@ -84,7 +84,7 @@
 			. = TRUE
 		if("cancel_jump")
 			if(linked.ftl_drive.lockout)
-				to_chat(usr, "<span class='warning'>[icon2html(src, viewers(src))] Unable to comply. Invalid authkey to unlock remove override code.</span>")
+				to_chat(usr, "<span class='warning'>[icon2html(src, viewers(src))] Nie można wykonać. Nieprawidłowy klucz autoryzacji do odblokowania kodu nadpisania.</span>")
 				return
 			if(linked.ftl_drive.cancel_ftl())
 				linked.stop_relay(CHANNEL_IMPORTANT_SHIP_ALERT)

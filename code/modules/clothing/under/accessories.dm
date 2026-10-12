@@ -19,7 +19,7 @@
 	if(!attachment_slot || (U && U.body_parts_covered & attachment_slot))
 		return TRUE
 	if(user)
-		to_chat(user, "<span class='warning'>There doesn't seem to be anywhere to put [src]...</span>")
+		to_chat(user, "<span class='warning'>Wygląda na to, że nie ma gdzie przypiąć [src]...</span>")
 
 /obj/item/clothing/accessory/proc/attach(obj/item/clothing/under/U, user)
 	var/datum/component/storage/storage = GetComponent(/datum/component/storage)
@@ -91,13 +91,13 @@
 	if(istype(user) && user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		if(initial(above_suit))
 			above_suit = !above_suit
-			to_chat(user, "[src] will be worn [above_suit ? "above" : "below"] your suit.")
+			to_chat(user, "[src] będzie noszony [above_suit ? "na" : "pod"] okryciem wierzchnim.")
 
 /obj/item/clothing/accessory/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>\The [src] can be attached to a uniform. Alt-click to remove it once attached.</span>"
+	. += "<span class='notice'>[src] można przypiąć do munduru. Po przypięciu Alt-klik, by zdjąć.</span>"
 	if(initial(above_suit))
-		. += "<span class='notice'>\The [src] can be worn above or below your suit. Alt-click to toggle.</span>"
+		. += "<span class='notice'>[src] można nosić na lub pod okryciem wierzchnim. Alt-klik, by przełączyć.</span>"
 
 /obj/item/clothing/accessory/waistcoat
 	name = "waistcoat"
@@ -134,7 +134,7 @@
 
 		if(M.wear_suit)
 			if((M.wear_suit.flags_inv & HIDEJUMPSUIT)) //Check if the jumpsuit is covered
-				to_chat(user, "<span class='warning'>Medals can only be pinned on jumpsuits.</span>")
+				to_chat(user, "<span class='warning'>Medale można przypinać tylko do kombinezonów.</span>")
 				return
 
 		if(M.w_uniform)
@@ -143,28 +143,28 @@
 			if(user == M)
 				delay = 0
 			else
-				user.visible_message("[user] is trying to pin [src] on [M]'s chest.", \
-									 "<span class='notice'>You try to pin [src] on [M]'s chest.</span>")
+				user.visible_message("[user] próbuje przypiąć [src] do piersi [M].", \
+									 "<span class='notice'>Próbujesz przypiąć [src] do piersi [M].</span>")
 			var/input
 			if(!commended && user != M)
-				input = stripped_input(user,"Please input a reason for this commendation, it will be recorded by Nanotrasen.", ,"", 140)
+				input = stripped_input(user,"Podaj uzasadnienie tego wyróżnienia; zostanie zarejestrowane przez Nanotrasen.", ,"", 140)
 			if(do_after(user, delay, target = M))
 				if(U.attach_accessory(src, user, 0)) //Attach it, do not notify the user of the attachment
 					if(user == M)
-						to_chat(user, "<span class='notice'>You attach [src] to [U].</span>")
+						to_chat(user, "<span class='notice'>Przypinasz [src] do [U].</span>")
 					else
-						user.visible_message("[user] pins \the [src] on [M]'s chest.", \
-											 "<span class='notice'>You pin \the [src] on [M]'s chest.</span>")
+						user.visible_message("[user] przypina [src] do piersi [M].", \
+											 "<span class='notice'>Przypinasz [src] do piersi [M].</span>")
 						if(input)
 							SSblackbox.record_feedback("associative", "commendation", 1, list("commender" = "[user.real_name]", "commendee" = "[M.real_name]", "medal" = "[src]", "reason" = input))
-							GLOB.commendations += "[user.real_name] awarded <b>[M.real_name]</b> the <span class='medaltext'>[name]</span>! \n- [input]"
+							GLOB.commendations += "[user.real_name] przyznaje <b>[M.real_name]</b> odznaczenie <span class='medaltext'>[name]</span>! \n- [input]"
 							commended = TRUE
-							desc += "<br>The inscription reads: [input] - [user.real_name]"
+							desc += "<br>Napis głosi: [input] - [user.real_name]"
 							log_game("<b>[key_name(M)]</b> was given the following commendation by <b>[key_name(user)]</b>: [input]")
 							message_admins("<b>[key_name_admin(M)]</b> was given the following commendation by <b>[key_name_admin(user)]</b>: [input]")
 
 		else
-			to_chat(user, "<span class='warning'>Medals can only be pinned on jumpsuits!</span>")
+			to_chat(user, "<span class='warning'>Medale można przypinać tylko do kombinezonów!</span>")
 	else
 		..()
 
@@ -233,7 +233,7 @@
 /obj/item/clothing/accessory/medal/plasma/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature > 300)
 		atmos_spawn_air("plasma=20;TEMP=[exposed_temperature]")
-		visible_message("<span class='danger'> \The [src] bursts into flame!</span>","<span class='userdanger'>Your [src] bursts into flame!</span>")
+		visible_message("<span class='danger'> [src] staje w płomieniach!</span>","<span class='userdanger'>Twój [src] staje w płomieniach!</span>")
 		qdel(src)
 
 /obj/item/clothing/accessory/medal/plasma/nobel_science
@@ -258,18 +258,18 @@
 
 /obj/item/clothing/accessory/armband
 	name = "red armband"
-	desc = "A fancy red armband!"
+	desc = "Elegancka czerwona opaska na ramię!"
 	icon_state = "redband"
 	attachment_slot = null
 
 /obj/item/clothing/accessory/armband/blue
 	name = "blue armband"
-	desc = "A fancy blue armband!"
+	desc = "Elegancka niebieska opaska na ramię!"
 	color = list(0,0,1, 0,1,0, 1,0,0)
 
 /obj/item/clothing/accessory/armband/green
 	name = "green armband"
-	desc = "A fancy green armband!"
+	desc = "Elegancka zielona opaska na ramię!"
 	color = list(0,1,0, 1,0,0, 0,0,1)
 
 /obj/item/clothing/accessory/armband/deputy
@@ -317,8 +317,8 @@
 
 /obj/item/clothing/accessory/lawyers_badge/attack_self(mob/user)
 	if(prob(1))
-		user.say("The testimony contradicts the evidence!", forced = "attorney's badge")
-	user.visible_message("[user] shows [user.p_their()] attorney's badge.", "<span class='notice'>You show your attorney's badge.</span>")
+		user.say("Zeznanie przeczy dowodom!", forced = "attorney's badge")
+	user.visible_message("[user] pokazuje swoją odznakę adwokata.", "<span class='notice'>Pokazujesz swoją odznakę adwokata.</span>")
 
 /obj/item/clothing/accessory/lawyers_badge/on_uniform_equip(obj/item/clothing/under/U, user)
 	var/mob/living/L = user

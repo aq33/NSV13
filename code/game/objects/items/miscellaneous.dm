@@ -10,7 +10,7 @@
 	throw_speed = 2
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("warned", "cautioned", "smashed")
+	attack_verb = list("ostrzega", "upomina", "rozbija")
 
 /obj/item/choice_beacon
 	name = "choice beacon"
@@ -38,7 +38,7 @@
 	var/list/display_names = generate_display_names()
 	if(!display_names.len)
 		return
-	var/choice = input(M,"Which item would you like to order?","Select an Item") as null|anything in sortList(display_names)
+	var/choice = input(M,"Który przedmiot chcesz zamówić?","Wybierz przedmiot") as null|anything in sortList(display_names)
 	if(!choice || !M.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
 
@@ -47,18 +47,18 @@
 	if(!uses)
 		qdel(src)
 	else
-		to_chat(M, "<span class='notice'>[uses] use[uses > 1 ? "s" : ""] remaining on the [src].</span>")
+		to_chat(M, "<span class='notice'>Pozostało użyć [src]: [uses].</span>")
 
 /obj/item/choice_beacon/proc/spawn_option(obj/choice,mob/living/M)
 	var/obj/new_item = new choice()
 	var/obj/structure/closet/supplypod/bluespacepod/pod = new()
 	pod.explosionSize = list(0,0,0,0)
 	new_item.forceMove(pod)
-	var/msg = "<span class=danger>After making your selection, you notice a strange target on the ground. It might be best to step back!</span>"
+	var/msg = "<span class=danger>Po dokonaniu wyboru zauważasz na ziemi dziwny cel. Lepiej się odsuń!</span>"
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(istype(H.ears, /obj/item/radio/headset))
-			msg = "You hear something crackle in your ears for a moment before a voice speaks.  \"Please stand by for a message from Central Command.  Message as follows: <span class='bold'>Item request received. Your package is inbound, please stand back from the landing site.</span> Message ends.\""
+			msg = "Przez chwilę słyszysz trzaski w uszach, po czym odzywa się głos.  \"Proszę czekać na wiadomość od Centrali.  Treść wiadomości: <span class='bold'>Otrzymano zamówienie. Twoja paczka jest w drodze, odsuń się od miejsca lądowania.</span> Koniec wiadomości.\""
 	to_chat(M, msg)
 
 	new /obj/effect/pod_landingzone(get_turf(src), pod)
@@ -158,7 +158,7 @@
 
 /obj/item/choice_beacon/augments/spawn_option(obj/choice,mob/living/M)
 	new choice(get_turf(M))
-	to_chat(M, "You hear something crackle from the beacon for a moment before a voice speaks.  \"Please stand by for a message from S.E.L.F. Message as follows: <span class='bold'>Item request received. Your package has been transported, use the autosurgeon supplied to apply the upgrade.</span> Message ends.\"")
+	to_chat(M, "Przez chwilę słyszysz trzaski z nadajnika, po czym odzywa się głos.  \"Proszę czekać na wiadomość od S.E.L.F. Treść wiadomości: <span class='bold'>Otrzymano zamówienie. Twoja paczka została przesłana, użyj dołączonego autochirurga, by zainstalować ulepszenie.</span> Koniec wiadomości.\"")
 
 /obj/item/choice_beacon/magic
 	name = "beacon of summon magic"
@@ -207,7 +207,7 @@
 			kidnappingcoefficient = 0.5
 			capacity = 4
 			maximum_size = 4
-			to_chat(user, "<span_class='notice'>You upgrade the [src] with the [wand].</span>")
+			to_chat(user, "<span_class='notice'>Ulepszasz [src] za pomocą [wand].</span>")
 			playsound(user, 'sound/weapons/emitter2.ogg', 25, 1, -1)
 
 /obj/item/clothing/head/that/bluespace/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
@@ -221,7 +221,7 @@
 			kidnaptime += 10 SECONDS
 		if(target == user)
 			kidnaptime = 1 SECONDS
-		kidnapee.visible_message("<span class='warning'>[user] starts pulling [src] over [kidnapee]'s head!</span>", "<span class='userdanger'>[user] starts pulling [src] over your head!</span>")
+		kidnapee.visible_message("<span class='warning'>[user] zaczyna naciągać [src] na głowę [kidnapee]!</span>", "<span class='userdanger'>[user] zaczyna naciągać ci [src] na głowę!</span>")
 		if(do_mob(user, kidnapee, kidnaptime * kidnappingcoefficient))
 			if(kidnapee == user)
 				kidnapee.drop_all_held_items()
@@ -230,10 +230,10 @@
 			if(kidnapee.mob_size <= capacity)
 				src.contents += kidnapee
 				capacity -= kidnapee.mob_size
-				user.visible_message("<span class='warning'>[user] stuffs [kidnapee] into the [src]!</span>")
-				to_chat(kidnapee, "<span class='userdanger'>[user] stuffs you into the [src]!</span>")
+				user.visible_message("<span class='warning'>[user] wpycha [kidnapee] do [src]!</span>")
+				to_chat(kidnapee, "<span class='userdanger'>[user] wpycha cię do [src]!</span>")
 			else
-				to_chat(user, "[kidnapee] will not fit in the tophat!")
+				to_chat(user, "[kidnapee] nie zmieści się w cylindrze!")
 	else if (isitem(target))
 		var/obj/item/I = target
 		if(I in user.contents)
@@ -241,9 +241,9 @@
 		if(!itemheld)
 			src.contents += I
 			itemheld = TRUE
-			user.visible_message("<span class='warning'>[user] stuffs [I] into the [src]!</span>")
+			user.visible_message("<span class='warning'>[user] wpycha [I] do [src]!</span>")
 		else
-			to_chat(user, "[I] will not fit in the tophat!")
+			to_chat(user, "[I] nie zmieści się w cylindrze!")
 
 /obj/item/clothing/head/that/bluespace/attack_self(mob/user)
 	. = ..()
@@ -251,9 +251,9 @@
 	itemheld = FALSE
 	for(var/atom/movable/A in contents)
 		A.forceMove(get_turf(src))
-		user.visible_message("<span class='warning'>[user] pulls [A] out of the hat!</span>")
+		user.visible_message("<span class='warning'>[user] wyciąga [A] z kapelusza!</span>")
 		if(isliving(A))
-			to_chat(A, "<span class='notice'>You suddenly feel air around you! You're free!</span>")
+			to_chat(A, "<span class='notice'>Nagle czujesz wokół siebie powietrze! Jesteś wolny!</span>")
 		if(isitem(A))
 			var/obj/item/I = A
 			user.put_in_hands(I)
@@ -261,27 +261,27 @@
 /obj/item/clothing/head/that/bluespace/examine(mob/user)
 	. = ..()
 	if(contents.len)
-		. += "<span class='notice'>You can make out [contents.len] object\s in the hat.</span>"
+		. += "<span class='notice'>W kapeluszu widać przedmiotów: [contents.len].</span>"
 
 /obj/item/clothing/head/that/bluespace/Destroy()
 	for(var/atom/movable/A in contents)
 		A.forceMove(get_turf(src))
 		if(isliving(A))
-			to_chat(A, "<span class='notice'>You suddenly feel the space around you tear apart! You're free!</span>")
+			to_chat(A, "<span class='notice'>Nagle czujesz, jak przestrzeń wokół ciebie się rozdziera! Jesteś wolny!</span>")
 	return ..()
 
 /obj/item/clothing/head/that/bluespace/container_resist(mob/living/user)
 	if(user.incapacitated())
-		to_chat(user, "<span class='warning'>You can't get out while you're restrained like this!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz się wydostać, będąc tak skrępowanym!</span>")
 		return
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	to_chat(user, "<span class='notice'>You claw at the fabric of [src], trying to tear it open...</span>")
-	to_chat(loc, "<span class='warning'>Someone starts trying to break free of [src]!</span>")
+	to_chat(user, "<span class='notice'>Drapiesz materiał [src], próbując go rozedrzeć...</span>")
+	to_chat(loc, "<span class='warning'>Ktoś próbuje wydostać się z [src]!</span>")
 	if(!do_after(user, 100, target = src))
-		to_chat(loc, "<span class='warning'>The pressure subsides. It seems that they've stopped resisting...</span>")
+		to_chat(loc, "<span class='warning'>Nacisk słabnie. Wygląda na to, że przestał się opierać...</span>")
 		return
-	loc.visible_message("<span class='warning'>[user] suddenly appears in front of [loc]!</span>", "<span class='userdanger'>[user] breaks free of [src]!</span>")
+	loc.visible_message("<span class='warning'>[user] nagle pojawia się przed [loc]!</span>", "<span class='userdanger'>[user] wydostaje się z [src]!</span>")
 	user.forceMove(get_turf(src))
 	capacity += user.mob_size
 
@@ -291,10 +291,10 @@
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "skub"
 	w_class = WEIGHT_CLASS_BULKY
-	attack_verb = list("skubbed")
+	attack_verb = list("skubie")
 
 /obj/item/skub/suicide_act(mob/living/user)
-	user.visible_message("<span class='suicide'>[user] has declared themself as anti-skub! The skub tears them apart!</span>")
+	user.visible_message("<span class='suicide'>[user] ogłasza się przeciwnikiem skuba! Skub rozrywa go na strzępy!</span>")
 
 	user.gib()
 	playsound(src, 'sound/items/eatfood.ogg', 50, 1, -1)
@@ -330,7 +330,7 @@
 	var/mob_choice = /mob/living/simple_animal/pet/dog/corgi/exoticcorgi
 
 /obj/item/choice_beacon/pet/generate_options(mob/living/M)
-	var/input_name = stripped_input(M, "What would you like your new pet to be named?", "New Pet Name", default_name, MAX_NAME_LEN)
+	var/input_name = stripped_input(M, "Jak ma się nazywać twój nowy zwierzak?", "Imię nowego zwierzaka", default_name, MAX_NAME_LEN)
 	if(!input_name)
 		return
 	spawn_mob(M,input_name)
@@ -338,7 +338,7 @@
 	if(!uses)
 		qdel(src)
 	else
-		to_chat(M, "<span class='notice'>[uses] use[uses > 1 ? "s" : ""] remaining on the [src].</span>")
+		to_chat(M, "<span class='notice'>Pozostało użyć [src]: [uses].</span>")
 
 /obj/item/choice_beacon/pet/proc/spawn_mob(mob/living/M,name)
 	var/obj/structure/closet/supplypod/bluespacepod/pod = new()
@@ -346,11 +346,11 @@
 	pod.explosionSize = list(0,0,0,0)
 	your_pet.name = name
 	your_pet.real_name = name
-	var/msg = "<span class=danger>After making your selection, you notice a strange target on the ground. It might be best to step back!</span>"
+	var/msg = "<span class=danger>Po dokonaniu wyboru zauważasz na ziemi dziwny cel. Lepiej się odsuń!</span>"
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(istype(H.ears, /obj/item/radio/headset))
-			msg = "You hear something crackle in your ears for a moment before a voice speaks.  \"Please stand by for a message from Central Command.  Message as follows: <span class='bold'>One pet delivery straight from Central Command. Stand clear!</span> Message ends.\""
+			msg = "Przez chwilę słyszysz trzaski w uszach, po czym odzywa się głos.  \"Proszę czekać na wiadomość od Centrali.  Treść wiadomości: <span class='bold'>Dostawa zwierzaka prosto z Centrali. Odsuńcie się!</span> Koniec wiadomości.\""
 	to_chat(M, msg)
 	new /obj/effect/pod_landingzone(get_turf(src), pod)
 

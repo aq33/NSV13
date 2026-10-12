@@ -6,7 +6,7 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2
 	)
-	tastes = list("the jungle" = 1, "bananas" = 1)
+	tastes = list("dżungla" = 1, "banany" = 1)
 	foodtypes = MEAT | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -16,7 +16,7 @@
 
 /obj/item/food/monkeycube/proc/Expand()
 	if(GLOB.total_cube_monkeys >= CONFIG_GET(number/max_cube_monkeys))
-		visible_message("<span class='warning'>[src] refuses to expand!</span>")
+		visible_message("<span class='warning'>[src] nie chce się rozwinąć!</span>")
 		return
 	var/mob/spammer = get_mob_by_ckey(fingerprintslast)
 	var/mob/living/bananas = new spawned_mob(drop_location(), TRUE, spammer)
@@ -26,7 +26,7 @@
 		visible_message("<span class='notice'>[src] expands!</span>")
 		bananas.log_message("Spawned via [src] at [AREACOORD(src)], Last attached mob: [key_name(spammer)].", LOG_ATTACK)
 	else if (!spammer) // Visible message in case there are no fingerprints
-		visible_message("<span class='notice'>[src] fails to expand!</span>")
+		visible_message("<span class='notice'>[src] nie udaje się rozwinąć!</span>")
 	qdel(src)
 
 /obj/item/food/monkeycube/syndicate
@@ -40,7 +40,7 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 15
 	)
-	tastes = list("the jungle" = 1, "bananas" = 1, "jimmies" = 1)
+	tastes = list("dżungla" = 1, "banany" = 1, "posypka" = 1)
 	spawned_mob = /mob/living/simple_animal/hostile/gorilla
 
 /obj/item/food/monkeycube/sheep
@@ -48,7 +48,7 @@
 	desc = "A Farm Town brand sheep cube."
 	bite_consumption = 15
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
-	tastes = list("fluff" = 1, "the farm" = 1)
+	tastes = list("puch" = 1, "farma" = 1)
 	spawned_mob = /mob/living/simple_animal/sheep
 
 /obj/item/food/monkeycube/cow
@@ -56,7 +56,7 @@
 	desc = "A Farm Town brand cow cube."
 	bite_consumption = 18
 	food_reagents = list(/datum/reagent/consumable/nutriment = 10)
-	tastes = list("milk" = 1, "the farm" = 1)
+	tastes = list("mleko" = 1, "farma" = 1)
 	spawned_mob = /mob/living/simple_animal/cow
 
 /obj/item/food/monkeycube/goat
@@ -64,5 +64,5 @@
 	desc = "A Farm Town brand goat cube."
 	bite_consumption = 18
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
-	tastes = list("milk" = 1, "the farm" = 1)
+	tastes = list("mleko" = 1, "farma" = 1)
 	spawned_mob = /mob/living/simple_animal/hostile/retaliate/goat

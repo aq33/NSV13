@@ -1,10 +1,10 @@
 /datum/disease/gastrolosis
 	name = "Invasive Gastrolosis"
 	max_stages = 4
-	spread_text = "Degenerative Virus"
+	spread_text = "Wirus degeneracyjny"
 	spread_flags = DISEASE_SPREAD_SPECIAL
-	cure_text = "Salt and mutadone"
-	agent = "Agent S and DNA restructuring"
+	cure_text = "Sól i mutadon"
+	agent = "Środek S i restrukturyzacja DNA"
 	viable_mobtypes = list(/mob/living/carbon/human)
 	stage_prob = 1
 	disease_flags = CURABLE
@@ -34,8 +34,8 @@
 			if(!eyes && prob(5))
 				var/obj/item/organ/eyes/snail/new_eyes = new()
 				new_eyes.Insert(affected_mob, drop_if_replaced = TRUE)
-				affected_mob.visible_message("<span class='warning'>[affected_mob]'s eyes fall out, with snail eyes taking its place!</span>", \
-				"<span class='userdanger'>You scream in pain as your eyes are pushed out by your new snail eyes!</span>")
+				affected_mob.visible_message("<span class='warning'>Oczy [affected_mob] wypadają, a ich miejsce zajmują ślimacze oczy!</span>", \
+				"<span class='userdanger'>Krzyczysz z bólu, gdy nowe ślimacze oczy wypychają twoje!</span>")
 				affected_mob.emote("scream")
 				return
 			var/obj/item/shell = affected_mob.get_item_by_slot(ITEM_SLOT_BACK)
@@ -44,20 +44,20 @@
 			if(!shell && prob(5))
 				if(affected_mob.dropItemToGround(affected_mob.get_item_by_slot(ITEM_SLOT_BACK)))
 					affected_mob.equip_to_slot_or_del(new /obj/item/storage/backpack/snail(affected_mob), ITEM_SLOT_BACK)
-					affected_mob.visible_message("<span class='warning'>[affected_mob] grows a grotesque shell on their back!</span>", \
-					"<span class='userdanger'>You scream in pain as a shell pushes itself out from under your skin!</span>")
+					affected_mob.visible_message("<span class='warning'>Na plecach [affected_mob] wyrasta groteskowa skorupa!</span>", \
+					"<span class='userdanger'>Krzyczysz z bólu, gdy spod twojej skóry wypycha się skorupa!</span>")
 					affected_mob.emote("scream")
 					return
 			var/obj/item/organ/tongue/tongue = locate(/obj/item/organ/tongue/snail) in affected_mob.internal_organs
 			if(!tongue && prob(5))
 				var/obj/item/organ/tongue/snail/new_tongue = new()
 				new_tongue.Insert(affected_mob)
-				to_chat(affected_mob, "<span class='userdanger'>You feel your speech slow down.</span>")
+				to_chat(affected_mob, "<span class='userdanger'>Czujesz, jak twoja mowa zwalnia.</span>")
 				return
 			if(shell && eyes && tongue && prob(5))
 				affected_mob.set_species(/datum/species/snail)
-				affected_mob.visible_message("<span class='warning'>[affected_mob] turns into a snail!</span>", \
-				"<span class='boldnotice'>You turned into a snail person! You feel an urge to cccrrraaawwwlll...</span>")
+				affected_mob.visible_message("<span class='warning'>[affected_mob] zamienia się w ślimaka!</span>", \
+				"<span class='boldnotice'>Zamieniasz się w ślimakoczłowieka! Czujesz chęć, by pełłłzaaać...</span>")
 				cure()
 			if(prob(10))
 				affected_mob.emote("gag")

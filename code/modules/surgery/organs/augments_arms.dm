@@ -55,7 +55,7 @@
 
 /obj/item/organ/cyberimp/arm/examine(mob/user)
 	. = ..()
-	. += "<span class='info'>[src] is assembled in the [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm configuration. You can use a screwdriver to reassemble it.</span>"
+	. += "<span class='info'>[src] jest zmontowany w konfiguracji na [zone == BODY_ZONE_R_ARM ? "prawą" : "lewą"] rękę. Możesz go przemontować śrubokrętem.</span>"
 
 /obj/item/organ/cyberimp/arm/screwdriver_act(mob/living/user, obj/item/I)
 	. = ..()
@@ -67,7 +67,7 @@
 	else
 		zone = BODY_ZONE_R_ARM
 	SetSlotFromZone()
-	to_chat(user, "<span class='notice'>You modify [src] to be installed on the [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm.</span>")
+	to_chat(user, "<span class='notice'>Przerabiasz [src] do instalacji na [zone == BODY_ZONE_R_ARM ? "prawej" : "lewej"] ręce.</span>")
 	update_icon()
 
 /obj/item/organ/cyberimp/arm/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
@@ -109,7 +109,7 @@
 	if(. & EMP_PROTECT_SELF)
 		return
 	if(prob(15/severity) && owner)
-		to_chat(owner, "<span class='warning'>The electro magnetic pulse causes [src] to malfunction!</span>")
+		to_chat(owner, "<span class='warning'>Impuls elektromagnetyczny powoduje awarię [src]!</span>")
 		// give the owner an idea about why his implant is glitching
 		Retract()
 
@@ -117,9 +117,9 @@
 	if(!active_item || (active_item in src))
 		return
 
-	owner.visible_message("<span class='notice'>[owner] retracts [active_item] back into [owner.p_their()] [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm.</span>",
-		"<span class='notice'>[active_item] snaps back into your [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm.</span>",
-		"<span class='italics'>You hear a short mechanical noise.</span>")
+	owner.visible_message("<span class='notice'>[owner] chowa [active_item] z powrotem do [zone == BODY_ZONE_R_ARM ? "prawej" : "lewej"] ręki.</span>",
+		"<span class='notice'>[active_item] wskakuje z powrotem do twojej [zone == BODY_ZONE_R_ARM ? "prawej" : "lewej"] ręki.</span>",
+		"<span class='italics'>Słyszysz krótki mechaniczny dźwięk.</span>")
 
 	owner.transferItemToLoc(active_item, src, TRUE)
 	REMOVE_TRAIT(active_item, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
@@ -148,23 +148,23 @@
 		for(var/i in 1 to hand_items.len) //Can't just use *in* here.
 			var/I = hand_items[i]
 			if(!owner.dropItemToGround(I))
-				failure_message += "<span class='warning'>Your [I] interferes with [src]!</span>"
+				failure_message += "<span class='warning'>[I] zakłóca działanie [src]!</span>"
 				continue
-			to_chat(owner, "<span class='notice'>You drop [I] to activate [src]!</span>")
+			to_chat(owner, "<span class='notice'>Upuszczasz [I], by aktywować [src]!</span>")
 			success = owner.put_in_hand(active_item, owner.get_empty_held_index_for_side(side))
 			break
 		if(!success)
 			for(var/i in failure_message)
 				to_chat(owner, i)
 			return
-	owner.visible_message("<span class='notice'>[owner] extends [active_item] from [owner.p_their()] [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm.</span>",
-		"<span class='notice'>You extend [active_item] from your [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm.</span>",
-		"<span class='italics'>You hear a short mechanical noise.</span>")
+	owner.visible_message("<span class='notice'>[owner] wysuwa [active_item] z [zone == BODY_ZONE_R_ARM ? "prawej" : "lewej"] ręki.</span>",
+		"<span class='notice'>Wysuwasz [active_item] z [zone == BODY_ZONE_R_ARM ? "prawej" : "lewej"] ręki.</span>",
+		"<span class='italics'>Słyszysz krótki mechaniczny dźwięk.</span>")
 	playsound(get_turf(owner), 'sound/mecha/mechmove03.ogg', 50, TRUE)
 
 /obj/item/organ/cyberimp/arm/ui_action_click()
 	if((organ_flags & ORGAN_FAILING) || (!active_item && !contents.len))
-		to_chat(owner, "<span class='warning'>The implant doesn't respond. It seems to be broken...</span>")
+		to_chat(owner, "<span class='warning'>Implant nie reaguje. Wygląda na zepsuty...</span>")
 		return
 
 	if(!active_item || (active_item in src))
@@ -193,9 +193,9 @@
 		return
 	if(prob(30/severity) && owner && !(organ_flags & ORGAN_FAILING))
 		Retract()
-		owner.visible_message("<span class='danger'>A loud bang comes from [owner]\'s [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm!</span>")
+		owner.visible_message("<span class='danger'>Z [zone == BODY_ZONE_R_ARM ? "prawej" : "lewej"] ręki [owner] dobiega głośny huk!</span>")
 		playsound(get_turf(owner), 'sound/weapons/flashbang.ogg', 100, 1)
-		to_chat(owner, "<span class='userdanger'>You feel an explosion erupt inside your [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm as your implant breaks!</span>")
+		to_chat(owner, "<span class='userdanger'>Czujesz, jak w twojej [zone == BODY_ZONE_R_ARM ? "prawej" : "lewej"] ręce wybucha eksplozja, gdy twój implant się psuje!</span>")
 		owner.adjust_fire_stacks(20)
 		owner.IgniteMob()
 		owner.adjustFireLoss(25)
@@ -242,7 +242,7 @@
 		if(istype(/obj/item/melee/hydraulic_blade, potential_blade))
 			return FALSE
 
-	to_chat(user, "<span class='notice'>You unlock [src]'s integrated blade!</span>")
+	to_chat(user, "<span class='notice'>Odblokowujesz wbudowane ostrze [src]!</span>")
 	items_list += WEAKREF(new /obj/item/melee/hydraulic_blade(src))
 	return TRUE
 
@@ -339,7 +339,7 @@
 	items_to_create = list(/obj/item/lightreplacer/cyborg, /obj/item/holosign_creator/janibarrier, /obj/item/soap/nanotrasen, /obj/item/reagent_containers/spray/cyborg/drying_agent, /obj/item/mop/advanced/cyborg, /obj/item/paint/paint_remover, /obj/item/reagent_containers/spray/cleaner)
 
 /obj/item/organ/cyberimp/arm/janitor/emag_act(mob/user)
-	to_chat(usr, "<span class='notice'>You unlock [src]'s integrated deluxe cleaning supplies!</span>")
+	to_chat(usr, "<span class='notice'>Odblokowujesz wbudowane luksusowe środki czystości [src]!</span>")
 	items_list += WEAKREF(new /obj/item/soap/syndie(src)) //We add not replace.
 	items_list += WEAKREF(new /obj/item/reagent_containers/spray/cyborg/lube(src))
 	return TRUE

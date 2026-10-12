@@ -11,7 +11,7 @@
 /datum/techweb_node/rld
 	id = "rld"
 	display_name = "Advanced Lamp Construction"
-	description = "No more wasting time making lamps!"
+	description = "Koniec z marnowaniem czasu na robienie lamp!"
 	prereq_ids = list("janitor")
 	design_ids = list("rld")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)

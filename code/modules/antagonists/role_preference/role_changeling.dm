@@ -1,3 +1,3 @@
 /datum/role_preference/antagonist/changeling
-	name = "Changeling"
+	name = "Zmiennokształtny"
 	antag_datum = /datum/antagonist/changeling

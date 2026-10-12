@@ -199,7 +199,7 @@
 	var/frequency = FREQ_MAGNETS
 	var/code = 0
 	var/list/magnets = list()
-	var/title = "Magnetic Control Console"
+	var/title = "Konsola sterowania magnesami"
 	var/autolink = 0 // if set to 1, can't probe for other magnets!
 
 	var/pathpos = 1 // position in the path
@@ -238,7 +238,7 @@
 
 /obj/machinery/magnetic_controller/ui_interact(mob/user)
 	. = ..()
-	var/dat = "<B>Magnetic Control Console</B><BR><BR>"
+	var/dat = "<B>Konsola sterowania magnesami</B><BR><BR>"
 	if(!autolink)
 		dat += {"
 		Frequency: <a href='byond://?src=[REF(src)];operation=setfreq'>[frequency]</a><br>
@@ -248,7 +248,7 @@
 
 	if(magnets.len >= 1)
 
-		dat += "Magnets confirmed: <br>"
+		dat += "Potwierdzone magnesy: <br>"
 		var/i = 0
 		for(var/obj/machinery/magnetic_module/M in magnets)
 			i++
@@ -306,7 +306,7 @@
 				if(speed <= 0)
 					speed = 1
 			if("setpath")
-				var/newpath = stripped_input(usr, "Please define a new path!", "New Path", path)
+				var/newpath = stripped_input(usr, "Wyznacz nową ścieżkę!", "Nowa ścieżka", path)
 				if(newpath && newpath != "")
 					moving = 0 // stop moving
 					path = newpath

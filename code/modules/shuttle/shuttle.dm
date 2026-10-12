@@ -658,7 +658,7 @@ GLOBAL_LIST_INIT(shuttle_turf_blacklist, typecacheof(list(
 		return TRUE
 	else
 		if(status != SHUTTLE_ALREADY_DOCKED && !silent) // SHUTTLE_ALREADY_DOCKED is no cause for error
-			var/msg = "Shuttle [src] cannot dock at [S], error: [status]"
+			var/msg = "Prom [src] nie może zadokować w [S], błąd: [status]"
 			message_admins(msg)
 		// We're already docked there, don't need to do anything.
 		// Triggering shuttle movement code in place is weird
@@ -995,7 +995,7 @@ GLOBAL_LIST_INIT(shuttle_turf_blacklist, typecacheof(list(
 				dst = previous
 			else
 				dst = destination
-			. = "transit towards [dst?.name || "unknown location"] ([getTimerStr()])"
+			. = "tranzyt do [dst?.name || "nieznanej lokalizacji"] ([getTimerStr()])"
 	else if(mode == SHUTTLE_RECHARGING)
 		return "[docked_at], recharging [getTimerStr()]"
 	else
@@ -1012,9 +1012,9 @@ GLOBAL_LIST_INIT(shuttle_turf_blacklist, typecacheof(list(
 		else
 			dst = destination
 		if(dst)
-			. = "(transit to) [dst.name || dst.id]"
+			. = "(tranzyt do) [dst.name || dst.id]"
 		else
-			. = "(transit to) nowhere"
+			. = "(tranzyt do) donikąd"
 	else if(dockedAt)
 		. = dockedAt.name || dockedAt.id
 	else

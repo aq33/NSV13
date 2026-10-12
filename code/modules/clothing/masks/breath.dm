@@ -15,7 +15,7 @@
 	resistance_flags = NONE
 
 /obj/item/clothing/mask/breath/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] is wrapping \the [src]'s tube around [user.p_their()] neck! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] owija sobie rurkę [src] wokół szyi! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return OXYLOSS
 
 /obj/item/clothing/mask/breath/attack_self(mob/user)
@@ -29,7 +29,7 @@
 
 /obj/item/clothing/mask/breath/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click [src] to adjust it.</span>"
+	. += "<span class='notice'>Alt-klik na [src], by ją poprawić.</span>"
 
 /obj/item/clothing/mask/breath/medical
 	desc = "A close-fitting sterile mask that can be connected to an air supply."

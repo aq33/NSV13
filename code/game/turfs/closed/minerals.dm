@@ -58,7 +58,7 @@
 
 /turf/closed/mineral/attackby(obj/item/I, mob/user, params)
 	if (!user.IsAdvancedToolUser())
-		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(usr, "<span class='warning'>Nie masz dość zręczności, by to zrobić!</span>")
 		return
 
 	if(I.tool_behaviour == TOOL_MINING)
@@ -69,11 +69,11 @@
 		if(last_act + (40 * I.toolspeed) > world.time)//prevents message spam
 			return
 		last_act = world.time
-		to_chat(user, "<span class='notice'>You start picking...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz kuć...</span>")
 
 		if(I.use_tool(src, user, 40, volume=50))
 			if(ismineralturf(src))
-				to_chat(user, "<span class='notice'>You finish cutting into the rock.</span>")
+				to_chat(user, "<span class='notice'>Kończysz wcinać się w skałę.</span>")
 				gets_drilled(user)
 				SSblackbox.record_feedback("tally", "pick_used_mining", 1, I.type)
 	else
@@ -98,10 +98,10 @@
 	..()
 
 /turf/closed/mineral/attack_alien(mob/living/carbon/alien/M)
-	to_chat(M, "<span class='notice'>You start digging into the rock...</span>")
+	to_chat(M, "<span class='notice'>Zaczynasz wkopywać się w skałę...</span>")
 	playsound(src, 'sound/effects/break_stone.ogg', 50, 1)
 	if(do_after(M, 40, target = src))
-		to_chat(M, "<span class='notice'>You tunnel into the rock.</span>")
+		to_chat(M, "<span class='notice'>Drążysz tunel w skale.</span>")
 		gets_drilled(M)
 
 /turf/closed/mineral/Bumped(atom/movable/AM)
@@ -429,7 +429,7 @@
 
 /turf/closed/mineral/gibtonite/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/mining_scanner) || istype(I, /obj/item/t_scanner/adv_mining_scanner) && stage == 1)
-		user.visible_message("<span class='notice'>[user] holds [I] to [src]...</span>", "<span class='notice'>You use [I] to locate where to cut off the chain reaction and attempt to stop it...</span>")
+		user.visible_message("<span class='notice'>[user] przykłada [I] do [src]...</span>", "<span class='notice'>Za pomocą [I] ustalasz, gdzie przerwać reakcję łańcuchową, i próbujesz ją zatrzymać...</span>")
 		defuse()
 	..()
 
@@ -440,7 +440,7 @@
 		name = "gibtonite deposit"
 		desc = "An active gibtonite reserve. Run!"
 		stage = GIBTONITE_ACTIVE
-		visible_message("<span class='danger'>There was gibtonite inside! It's going to explode!</span>")
+		visible_message("<span class='danger'>W środku był gibtonit! Zaraz wybuchnie!</span>")
 
 		var/notify_admins = 0
 		if(z != 5)
@@ -474,7 +474,7 @@
 		stage = GIBTONITE_STABLE
 		if(det_time < 0)
 			det_time = 0
-		visible_message("<span class='notice'>The chain reaction was stopped! The gibtonite had [det_time] reactions left till the explosion!</span>")
+		visible_message("<span class='notice'>Reakcja łańcuchowa została zatrzymana! Gibtonitowi zostało [det_time] reakcji do wybuchu!</span>")
 
 /turf/closed/mineral/gibtonite/gets_drilled(mob/user, triggered_by_explosion = 0)
 	if(stage == GIBTONITE_UNSTRUCK && mineralAmt >= 1) //Gibtonite deposit is activated

@@ -8,11 +8,7 @@
 
 
 /obj/item/implant/spell/get_data()
-	var/dat = {"<b>Implant Specifications:</b><BR>
-				<b>Name:</b> Spell Implant<BR>
-				<b>Life:</b> 4 hours after death of host<BR>
-				<b>Implant Details:</b> <BR>
-				<b>Function:</b> [spell ? "Allows a non-wizard to cast [spell] as if they were a wizard." : "None"]"}
+	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Implant zaklęcia<BR><b>Żywotność:</b> 4 godziny po śmierci nosiciela<BR><b>Szczegóły implantu:</b> <BR><b>Działanie:</b> [spell ? "pozwala osobie niebędącej czarodziejem rzucać [spell], jakby była czarodziejem." : "brak"]"}
 	return dat
 
 /obj/item/implant/spell/implant(mob/living/target, mob/user, silent = FALSE, force = FALSE)
@@ -30,7 +26,7 @@
 	if (.)
 		target.RemoveSpell(spell)
 		if(target.stat != DEAD && !silent)
-			to_chat(target, "<span class='boldnotice'>The knowledge of how to cast [spell] slips out from your mind.</span>")
+			to_chat(target, "<span class='boldnotice'>Wiedza o tym, jak rzucać [spell], wymyka ci się z umysłu.</span>")
 
 /obj/item/implanter/spell
 	name = "implanter (spell)"

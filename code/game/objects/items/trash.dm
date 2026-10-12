@@ -91,7 +91,7 @@
 	grind_results = list(/datum/reagent/carbon = 20)
 
 /obj/item/trash/coal/burn()
-	visible_message("[src] fuses into a diamond! Someone wasn't so naughty after all...")
+	visible_message("[src] stapia się w diament! Jednak ktoś nie był aż taki niegrzeczny...")
 	new /obj/item/stack/ore/diamond(loc)
 	qdel(src)
 

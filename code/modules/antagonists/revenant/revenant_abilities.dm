@@ -17,7 +17,7 @@
 	
 	if(ishuman(A))
 		if(A in drained_mobs)
-			to_chat(src, "<span class='revenwarning'>[A]'s soul is dead and empty.</span>" )
+			to_chat(src, "<span class='revenwarning'>Dusza [A] jest martwa i pusta.</span>" )
 		else if(in_range(src, A))
 			Harvest(A)
 
@@ -32,54 +32,54 @@
 	if(!castcheck(0))
 		return
 	if(draining)
-		to_chat(src, "<span class='revenwarning'>You are already siphoning the essence of a soul!</span>")
+		to_chat(src, "<span class='revenwarning'>Już wysysasz esencję z duszy!</span>")
 		return
 	if(!target.stat)
-		to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] soul is too strong to harvest.</span>")
+		to_chat(src, "<span class='revennotice'>Ta dusza jest zbyt silna, by ją zebrać.</span>")
 		if(prob(10))
-			to_chat(target, "You feel as if you are being watched.")
+			to_chat(target, "Masz wrażenie, że ktoś cię obserwuje.")
 		return
 	draining = TRUE
 	essence_drained += rand(15, 20)
-	to_chat(src, "<span class='revennotice'>You search for the soul of [target].</span>")
+	to_chat(src, "<span class='revennotice'>Szukasz duszy [target].</span>")
 	if(do_after(src, rand(10, 20), 0, target)) //did they get deleted in that second?
 		if(target.ckey)
-			to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] soul burns with intelligence.</span>")
+			to_chat(src, "<span class='revennotice'>Ta dusza płonie inteligencją.</span>")
 			essence_drained += rand(20, 30)
 		if(target.stat != DEAD)
-			to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] soul blazes with life!</span>")
+			to_chat(src, "<span class='revennotice'>Ta dusza buzuje życiem!</span>")
 			essence_drained += rand(40, 50)
 		else
-			to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] soul is weak and faltering.</span>")
+			to_chat(src, "<span class='revennotice'>Ta dusza jest słaba i chwiejna.</span>")
 		if(do_after(src, rand(15, 20), 0, target)) //did they get deleted NOW?
 			switch(essence_drained)
 				if(1 to 30)
-					to_chat(src, "<span class='revennotice'>[target] will not yield much essence. Still, every bit counts.</span>")
+					to_chat(src, "<span class='revennotice'>Z [target] nie będzie dużo esencji. Ale liczy się każda kropla.</span>")
 				if(30 to 70)
-					to_chat(src, "<span class='revennotice'>[target] will yield an average amount of essence.</span>")
+					to_chat(src, "<span class='revennotice'>Z [target] będzie przeciętna ilość esencji.</span>")
 				if(70 to 90)
-					to_chat(src, "<span class='revenboldnotice'>Such a feast! [target] will yield much essence to you.</span>")
+					to_chat(src, "<span class='revenboldnotice'>Co za uczta! Z [target] będzie dużo esencji.</span>")
 				if(90 to INFINITY)
-					to_chat(src, "<span class='revenbignotice'>Ah, the perfect soul. [target] will yield massive amounts of essence to you.</span>")
+					to_chat(src, "<span class='revenbignotice'>Ach, doskonała dusza. Z [target] będą ogromne ilości esencji.</span>")
 			if(do_after(src, rand(15, 25), 0, target)) //how about now
 				if(!target.stat)
-					to_chat(src, "<span class='revenwarning'>[target.p_theyre(TRUE)] now powerful enough to fight off your draining.</span>")
-					to_chat(target, "<span class='boldannounce'>You feel something tugging across your body before subsiding.</span>")
+					to_chat(src, "<span class='revenwarning'>Cel jest teraz dość silny, by odeprzeć wysysanie.</span>")
+					to_chat(target, "<span class='boldannounce'>Czujesz, jak coś szarpie twoje ciało, po czym ustaje.</span>")
 					draining = 0
 					essence_drained = 0
 					return //hey, wait a minute...
-				to_chat(src, "<span class='revenminor'>You begin siphoning essence from [target]'s soul.</span>")
+				to_chat(src, "<span class='revenminor'>Zaczynasz wysysać esencję z duszy [target].</span>")
 				if(target.stat != DEAD)
-					to_chat(target, "<span class='warning'>You feel a horribly unpleasant draining sensation as your grip on life weakens...</span>")
+					to_chat(target, "<span class='warning'>Czujesz okropne wysysanie, a twój uchwyt życia słabnie...</span>")
 				if(target.stat == SOFT_CRIT)
 					target.Stun(46)
 				reveal(46)
 				stun(46)
-				target.visible_message("<span class='warning'>[target] suddenly rises slightly into the air, [target.p_their()] skin turning an ashy gray.</span>")
+				target.visible_message("<span class='warning'>[target] nagle unosi się lekko w powietrze, a skóra robi się popielatoszara.</span>")
 				if(target.anti_magic_check(FALSE, TRUE))
-					to_chat(src, "<span class='revenminor'>Something's wrong! [target] seems to be resisting the siphoning, leaving you vulnerable!</span>")
-					target.visible_message("<span class='warning'>[target] slumps onto the ground.</span>", \
-											   "<span class='revenwarning'>Violet lights, dancing in your vision, receding--</span>")
+					to_chat(src, "<span class='revenminor'>Coś jest nie tak! [target] stawia opór, a ty stajesz się podatny na ataki!</span>")
+					target.visible_message("<span class='warning'>[target] osuwa się na ziemię.</span>", \
+											   "<span class='revenwarning'>Fioletowe światła tańczą ci przed oczami, oddalają się--</span>")
 					draining = FALSE
 					return
 				var/datum/beam/B = Beam(target,icon_state="drain_life",time=INFINITY)
@@ -87,24 +87,24 @@
 					change_essence_amount(essence_drained, FALSE, target)
 					if(essence_drained <= 90 && target.stat != DEAD)
 						essence_regen_cap += 5
-						to_chat(src, "<span class='revenboldnotice'>The absorption of [target]'s living soul has increased your maximum essence level. Your new maximum essence is [essence_regen_cap].</span>")
+						to_chat(src, "<span class='revenboldnotice'>Wchłonięcie żywej duszy [target] zwiększyło twój maksymalny poziom esencji. Nowe maksimum: [essence_regen_cap].</span>")
 					if(essence_drained > 90)
 						essence_regen_cap += 15
 						perfectsouls++
-						to_chat(src, "<span class='revenboldnotice'>The perfection of [target]'s soul has increased your maximum essence level. Your new maximum essence is [essence_regen_cap].</span>")
-					to_chat(src, "<span class='revennotice'>[target]'s soul has been considerably weakened and will yield no more essence for the time being.</span>")
-					target.visible_message("<span class='warning'>[target] slumps onto the ground.</span>", \
-										   "<span class='revenwarning'>Violets lights, dancing in your vision, getting clo--</span>")
+						to_chat(src, "<span class='revenboldnotice'>Doskonałość duszy [target] zwiększyła twój maksymalny poziom esencji. Nowe maksimum: [essence_regen_cap].</span>")
+					to_chat(src, "<span class='revennotice'>Dusza [target] została znacznie osłabiona i na razie nie da więcej esencji.</span>")
+					target.visible_message("<span class='warning'>[target] osuwa się na ziemię.</span>", \
+										   "<span class='revenwarning'>Fioletowe światła tańczą ci przed oczami, przybliżają się--</span>")
 					drained_mobs.Add(target)
 					target.death(0)
 				else
-					to_chat(src, "<span class='revenwarning'>[target ? "[target] has":"[target.p_theyve(TRUE)]"] been drawn out of your grasp. The link has been broken.</span>")
+					to_chat(src, "<span class='revenwarning'>[target ? "[target]":"Cel"] wymyka ci się z uchwytu. Połączenie zostało zerwane.</span>")
 					if(target) //Wait, target is WHERE NOW?
-						target.visible_message("<span class='warning'>[target] slumps onto the ground.</span>", \
-											   "<span class='revenwarning'>Violets lights, dancing in your vision, receding--</span>")
+						target.visible_message("<span class='warning'>[target] osuwa się na ziemię.</span>", \
+											   "<span class='revenwarning'>Fioletowe światła tańczą ci przed oczami, oddalają się--</span>")
 				qdel(B)
 			else
-				to_chat(src, "<span class='revenwarning'>You are not close enough to siphon [target ? "[target]'s":"[target.p_their()]"] soul. The link has been broken.</span>")
+				to_chat(src, "<span class='revenwarning'>Jesteś za daleko, by wysysać duszę [target ? "[target]":"celu"]. Połączenie zostało zerwane.</span>")
 	draining = FALSE
 	essence_drained = 0
 
@@ -112,7 +112,7 @@
 /obj/effect/proc_holder/spell/targeted/night_vision/revenant
 	charge_max = 0
 	panel = "Revenant Abilities"
-	message = "<span class='revennotice'>You toggle your night vision.</span>"
+	message = "<span class='revennotice'>Przełączasz widzenie w ciemności.</span>"
 	action_icon = 'icons/mob/actions/actions_revenant.dmi'
 	action_icon_state = "r_nightvision"
 	action_background_icon_state = "bg_revenant"
@@ -189,7 +189,7 @@
 			charge_counter = charge_max
 			return FALSE
 		name = "[initial(name)] ([cast_amount]E)"
-		to_chat(user, "<span class='revennotice'>You have unlocked [initial(name)]!</span>")
+		to_chat(user, "<span class='revennotice'>Odblokowujesz: [initial(name)]!</span>")
 		panel = "Revenant Abilities"
 		locked = FALSE
 		charge_counter = charge_max
@@ -226,7 +226,7 @@
 	for(var/obj/machinery/light/L in T)
 		if(!L.on)
 			return
-		L.visible_message("<span class='warning'><b>\The [L] suddenly flares brightly and begins to spark!</span>")
+		L.visible_message("<span class='warning'><b>[L] nagle rozbłyska jasno i zaczyna iskrzyć!</span>")
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(4, 0, L)
 		s.start()
@@ -326,7 +326,7 @@
 			continue
 		if(human.anti_magic_check(FALSE, TRUE))
 			continue
-		to_chat(human, "<span class='revenwarning'>You feel [pick("your sense of direction flicker out", "a stabbing pain in your head", "your mind fill with static")].</span>")
+		to_chat(human, "<span class='revenwarning'>[pick("Czujesz, jak gaśnie twoje poczucie kierunku", "Czujesz kłujący ból w głowie", "Czujesz, jak twój umysł wypełnia szum")].</span>")
 		new /obj/effect/temp_visual/revenant(human.loc)
 		human.emp_act(EMP_HEAVY)
 	for(var/obj/thing in T)
@@ -379,7 +379,7 @@
 						blight.stage++
 				if(!blightfound)
 					H.ForceContractDisease(new /datum/disease/revblight(), FALSE, TRUE)
-					to_chat(H, "<span class='revenminor'>You feel [pick("suddenly sick", "a surge of nausea", "like your skin is <i>wrong</i>")].</span>")
+					to_chat(H, "<span class='revenminor'>[pick("Nagle robi ci się niedobrze", "Zalewa cię fala mdłości", "Czujesz, że twoja skóra jest <i>nie taka</i>")].</span>")
 			else
 				if(mob.reagents)
 					mob.reagents.add_reagent(/datum/reagent/toxin/plasma, 5)

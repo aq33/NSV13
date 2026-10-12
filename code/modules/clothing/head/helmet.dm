@@ -28,7 +28,7 @@
 	. = ..()
 	if(builtInCamera && ispath(builtInCamera)) //NSV13 - added helmet cams
 		builtInCamera = new builtInCamera(src)
-		builtInCamera.c_tag = "Helmet Cam #[rand(0,999)]"
+		builtInCamera.c_tag = "Kamera hełmowa nr [rand(0,999)]"
 		builtInCamera.network = list("headcam")
 		builtInCamera.internal_light = FALSE
 	if(attached_light)
@@ -48,14 +48,14 @@
 /obj/item/clothing/head/helmet/examine(mob/user)
 	. = ..()
 	if(attached_light)
-		. += "It has \a [attached_light] [can_flashlight ? "" : "permanently "]mounted on it."
+		. += "Ma zamontowane: [attached_light][can_flashlight ? "" : " (na stałe)"]."
 		if(can_flashlight)
-			. += "<span class='info'>[attached_light] looks like it can be <b>unscrewed</b> from [src].</span>"
+			. += "<span class='info'>Wygląda na to, że [attached_light] da się <b>odkręcić</b> od [src].</span>"
 	else if(can_flashlight)
-		. += "It has a mounting point for a <b>seclite</b>."
+		. += "Ma miejsce na montaż <b>latarki seclite</b>."
 
 	if(builtInCamera) //NSV13 - added helmet cams
-		. += "It has a camera mounted on it. The camera looks like it can be <b>cut</b> off [src].</span>"
+		. += "Ma zamontowaną kamerę. Wygląda na to, że da się ją <b>odciąć</b> od [src].</span>"
 
 /obj/item/clothing/head/helmet/handle_atom_del(atom/A)
 	if(A == attached_light)
@@ -91,12 +91,12 @@
 		var/obj/item/flashlight/seclite/S = I
 		if(can_flashlight && !attached_light)
 			if(up)
-				to_chat(user, "<span class='notice'>You need to pull the visor down before attaching \the [S].</span>")
+				to_chat(user, "<span class='notice'>Musisz opuścić przyłbicę, zanim zamocujesz [S].</span>")
 				return
 			if(!user.transferItemToLoc(S, src))
 				return
 
-			to_chat(user, "<span class='notice'>You click [S] into place on [src].</span>")
+			to_chat(user, "<span class='notice'>Wpinasz [S] na miejsce w [src].</span>")
 			set_attached_light(S)
 			update_icon()
 			alight = new(src)
@@ -110,7 +110,7 @@
 	..()
 	if(can_flashlight && attached_light) //if it has a light but can_flashlight is false, the light is permanently attached.
 		I.play_tool_sound(src)
-		to_chat(user, "<span class='notice'>You unscrew [attached_light] from [src].</span>")
+		to_chat(user, "<span class='notice'>Odkręcasz [attached_light] od [src].</span>")
 		attached_light.forceMove(drop_location())
 		if(Adjacent(user) && !issilicon(user))
 			user.put_in_hands(attached_light)
@@ -128,7 +128,7 @@
 
 	attached_light.on = !attached_light.on
 	attached_light.update_brightness()
-	to_chat(user, "<span class='notice'>You toggle the helmet light [attached_light.on ? "on":"off"].</span>")
+	to_chat(user, "<span class='notice'>[attached_light.on ? "Włączasz":"Wyłączasz"] światło hełmu.</span>")
 
 	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
 	update_icon()
@@ -159,14 +159,14 @@
 	if(issignaler(I))
 		var/obj/item/assembly/signaler/S = I
 		if(attached_light) //Has a flashlight. Player must remove it, else it will be lost forever.
-			to_chat(user, "<span class='warning'>The mounted flashlight is in the way, remove it first!</span>")
+			to_chat(user, "<span class='warning'>Zamontowana latarka przeszkadza, najpierw ją zdejmij!</span>")
 			return
 
 		if(S.secured)
 			qdel(S)
 			var/obj/item/bot_assembly/secbot/A = new
 			user.put_in_hands(A)
-			to_chat(user, "<span class='notice'>You add the signaler to the helmet.</span>")
+			to_chat(user, "<span class='notice'>Dodajesz sygnalizator do hełmu.</span>")
 			qdel(src)
 			return
 	return ..()
@@ -197,8 +197,8 @@
 	desc = "It's a helmet specifically designed to protect against close range attacks."
 	icon_state = "riot"
 	item_state = "helmet"
-	toggle_message = "You pull the visor down on"
-	alt_toggle_message = "You push the visor up on"
+	toggle_message = "Opuszczasz przyłbicę:"
+	alt_toggle_message = "Podnosisz przyłbicę:"
 	can_flashlight = TRUE
 	armor = list("melee" = 50, "bullet" = 10, "laser" = 10, "energy" = 15, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 80, "stamina" = 50)
 	flags_inv = HIDEEARS|HIDEFACE|HIDESNOUT
@@ -217,7 +217,7 @@
 		return
 
 	if(!up && attached_light)
-		to_chat(user, "<span class='notice'>You need to deattach the seclite before you can lift the visor up!</span>")
+		to_chat(user, "<span class='notice'>Musisz zdjąć latarkę seclite, zanim podniesiesz przyłbicę!</span>")
 		return
 
 	up = !up
@@ -226,7 +226,7 @@
 	flags_inv ^= visor_flags_inv
 	flags_cover ^= visor_flags_cover
 	update_icon()
-	to_chat(user, "<span class='notice'>[up ? alt_toggle_message : toggle_message] \the [src].</span>")
+	to_chat(user, "<span class='notice'>[up ? alt_toggle_message : toggle_message] [src].</span>")
 
 	user.update_inv_head()
 	if(iscarbon(user))
@@ -247,8 +247,8 @@
 	name = "helmet of justice"
 	desc = "WEEEEOOO. WEEEEEOOO. WEEEEOOOO."
 	icon_state = "justice"
-	toggle_message = "You turn off the lights on"
-	alt_toggle_message = "You turn on the lights on"
+	toggle_message = "Wyłączasz światła:"
+	alt_toggle_message = "Włączasz światła:"
 	actions_types = list(/datum/action/item_action/toggle_helmet_light)
 	active_sound = 'sound/items/weeoo1.ogg'
 
@@ -275,8 +275,8 @@
 	name = "alarm helmet"
 	desc = "WEEEEOOO. WEEEEEOOO. STOP THAT MONKEY. WEEEOOOO."
 	icon_state = "justice2"
-	toggle_message = "You turn off the light on"
-	alt_toggle_message = "You turn on the light on"
+	toggle_message = "Wyłączasz światło:"
+	alt_toggle_message = "Włączasz światło:"
 
 /obj/item/clothing/head/helmet/swat
 	name = "\improper SWAT helmet"

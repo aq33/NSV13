@@ -37,13 +37,13 @@
 /// Orbits A like a ghost would, if the revenant is allowed to
 /mob/living/simple_animal/revenant/proc/check_orbitable(atom/A)
 	if(revealed)
-		to_chat(src, "<span class='revenwarning'>You can't orbit while you're revealed!</span>")
+		to_chat(src, "<span class='revenwarning'>Nie możesz orbitować, gdy jesteś ujawniony!</span>")
 		return
 	if(!Adjacent(A))
-		to_chat(src, "<span class='revenwarning'>You can only orbit things that are next to you!</span>")
+		to_chat(src, "<span class='revenwarning'>Możesz orbitować tylko wokół rzeczy obok ciebie!</span>")
 		return
 	if(isobserver(A) || isrevenant(A)) // ghosts travel anywhere for free, and orbiting revenants would let them team up
-		to_chat(src, "<span class='revenwarning'>You can't orbit a ghost!</span>")
+		to_chat(src, "<span class='revenwarning'>Nie możesz orbitować wokół ducha!</span>")
 		return
 	if(notransform || inhibited || !incorporeal_move_check(A))
 		return
@@ -70,15 +70,15 @@
 		return TRUE
 	var/obj/effect/decal/cleanable/food/salt/salt = locate() in step_turf
 	if(salt)
-		to_chat(src, "<span class='warning'>[salt] bars your passage!</span>")
+		to_chat(src, "<span class='warning'>[salt] zagradza ci drogę!</span>")
 		reveal(20)
 		stun(20)
 		return FALSE
 	if(step_turf.flags_1 & NOJAUNT_1)
-		to_chat(src, "<span class='warning'>Some strange aura is blocking the way.</span>")
+		to_chat(src, "<span class='warning'>Jakaś dziwna aura blokuje przejście.</span>")
 		return FALSE
 	if(locate(/obj/effect/blessing) in step_turf)
-		to_chat(src, "<span class='warning'>Holy energies block your path!</span>")
+		to_chat(src, "<span class='warning'>Święte energie blokują ci drogę!</span>")
 		return FALSE
 	return TRUE
 
@@ -101,17 +101,17 @@
 	if(!isrevenant(user))
 		return
 	if(is_station_level(user.z))
-		to_chat(user, "<span class='revenwarning'>Recalling yourself to the station is only available when you're not in the station.</span>")
+		to_chat(user, "<span class='revenwarning'>Powrót na statek jest dostępny tylko wtedy, gdy nie jesteś na statku.</span>")
 		return
 	if(user.revealed)
-		to_chat(user, "<span class='revenwarning'>Recalling yourself to the station is only available when you're invisible.</span>")
+		to_chat(user, "<span class='revenwarning'>Powrót na statek jest dostępny tylko wtedy, gdy jesteś niewidzialny.</span>")
 		return
-	to_chat(user, "<span class='revennotice'>You start to concentrate recalling yourself to the station.</span>")
+	to_chat(user, "<span class='revennotice'>Zaczynasz skupiać się na powrocie na statek.</span>")
 	if(!do_after(user, 3 SECONDS) || user.revealed || QDELETED(src)) // QDELETED: the spell is removed if they reach the station meanwhile
 		return
 	var/turf/target_turf = get_random_station_turf()
 	if(!target_turf || !do_teleport(user, target_turf, channel = TELEPORT_CHANNEL_CULT, forced = TRUE))
-		to_chat(user, "<span class='revenwarning'>You have failed to recall yourself to the station... You should try again.</span>")
+		to_chat(user, "<span class='revenwarning'>Nie udało ci się wrócić na statek... Spróbuj jeszcze raz.</span>")
 		return
 	user.reveal(8 SECONDS)
 	user.stun(4 SECONDS)

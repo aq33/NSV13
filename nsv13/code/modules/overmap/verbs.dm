@@ -4,7 +4,7 @@
 	if(!user)
 		user = usr
 	if(user != pilot)
-		to_chat(user, "<span class='notice'>You can't reach the controls from here</span>")
+		to_chat(user, "<span class='notice'>Stąd nie sięgasz do sterów</span>")
 		return FALSE
 	return !user.incapacitated() && isliving(user)
 
@@ -17,7 +17,7 @@
 	if(!verb_check() || !can_brake())
 		return
 	brakes = !brakes
-	to_chat(usr, "<span class='notice'>You toggle the brakes [brakes ? "on" : "off"].</span>")
+	to_chat(usr, "<span class='notice'>[brakes ? "Włączasz" : "Zwalniasz"] hamulce.</span>")
 
 /obj/structure/overmap/verb/toggle_inertia()
 	set name = "Toggle IAS"
@@ -28,7 +28,7 @@
 		return
 	if(!toggle_dampeners(user = usr))
 		return
-	to_chat(usr, "<span class='notice'>Inertial assistance system [inertial_dampeners ? "ONLINE" : "OFFLINE"].</span>")
+	to_chat(usr, "<span class='notice'>System wspomagania bezwładnościowego [inertial_dampeners ? "WŁĄCZONY" : "WYŁĄCZONY"].</span>")
 
 /obj/structure/overmap/verb/toggle_move_mode()
 	set name = "Change movement mode"
@@ -38,7 +38,7 @@
 	if(!verb_check())
 		return
 	move_by_mouse = !move_by_mouse
-	to_chat(usr, "<span class='notice'>You [move_by_mouse ? "activate" : "deactivate"] [src]'s laser guided movement system.</span>")
+	to_chat(usr, "<span class='notice'>[move_by_mouse ? "Włączasz" : "Wyłączasz"] laserowy system sterowania ruchem [src].</span>")
 
 //General Overmap Verbs
 /obj/structure/overmap/verb/show_dradis()
@@ -76,9 +76,7 @@
 
 	if(!verb_check())
 		return
-	var/new_name = stripped_input(usr, message="What do you want to name \
-		your fighter? Keep in mind that particularly terrible names may be \
-		rejected by your employers.", max_length=MAX_CHARTER_LEN)
+	var/new_name = stripped_input(usr, message="Jak chcesz nazwać swój myśliwiec? Pamiętaj, że szczególnie okropne nazwy mogą zostać odrzucone przez pracodawców.", max_length=MAX_CHARTER_LEN)
 	if(!new_name || length(new_name) <= 0)
 		return
 	message_admins("[key_name_admin(usr)] renamed a fighter to [new_name] [ADMIN_LOOKUPFLW(src)].")
@@ -92,7 +90,7 @@
 	if(!verb_check() || !can_change_safeties())
 		return
 	weapon_safety = !weapon_safety
-	to_chat(usr, "<span class='notice'>You toggle [src]'s weapon safeties [weapon_safety ? "on" : "off"].</span>")
+	to_chat(usr, "<span class='notice'>[weapon_safety ? "Włączasz" : "Wyłączasz"] zabezpieczenia broni [src].</span>")
 
 /obj/structure/overmap/small_craft/verb/countermeasure()
 	set name = "Deploy Countermeasures"

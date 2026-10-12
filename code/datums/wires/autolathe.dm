@@ -18,8 +18,8 @@
 /datum/wires/autolathe/get_status()
 	var/obj/machinery/modular_fabricator/autolathe/A = holder
 	var/list/status = list()
-	status += "The red light is [A.disabled ? "on" : "off"]."
-	status += "The blue light is [A.hacked ? "on" : "off"]."
+	status += "Czerwona lampka [A.disabled ? "świeci się" : "jest zgaszona"]."
+	status += "Niebieska lampka [A.hacked ? "świeci się" : "jest zgaszona"]."
 	return status
 
 /datum/wires/autolathe/on_pulse(wire)

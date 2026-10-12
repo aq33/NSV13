@@ -145,7 +145,7 @@
 /obj/machinery/computer/camera_advanced/xenobio/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/food/monkeycube))
 		monkeys++
-		to_chat(user, "<span class='notice'>You feed [O] to [src]. It now has [monkeys] monkey cubes stored.</span>")
+		to_chat(user, "<span class='notice'>Karmisz [src] zawartością [O]. Przechowuje teraz kostek małpich: [monkeys].</span>")
 		qdel(O)
 		return
 	else if(istype(O, /obj/item/storage/bag))
@@ -157,7 +157,7 @@
 				monkeys++
 				qdel(G)
 		if(loaded)
-			to_chat(user, "<span class='notice'>You fill [src] with the monkey cubes stored in [O]. [src] now has [monkeys] monkey cubes stored.</span>")
+			to_chat(user, "<span class='notice'>Napełniasz [src] kostkami małpimi z [O]. [src] przechowuje teraz kostek małpich: [monkeys].</span>")
 		return
 	else if(istype(O, /obj/item/slimepotion/slime))
 		var/replaced = FALSE
@@ -167,13 +167,13 @@
 			current_potion.forceMove(drop_location())
 			replaced = TRUE
 		current_potion = O
-		to_chat(user, "<span class='notice'>You load [O] in the console's potion slot[replaced ? ", replacing the one that was there before" : ""].</span>")
+		to_chat(user, "<span class='notice'>Wkładasz [O] do gniazda mikstur konsoli[replaced ? ", zastępując poprzednią" : ""].</span>")
 		return
 	..()
 
 /obj/machinery/computer/camera_advanced/xenobio/multitool_act(mob/living/user, obj/item/multitool/I)
 	if (istype(I) && istype(I.buffer,/obj/machinery/monkey_recycler))
-		to_chat(user, "<span class='notice'>You link [src] with [I.buffer] in [I] buffer.</span>")
+		to_chat(user, "<span class='notice'>Łączysz [src] z [I.buffer] z bufora [I].</span>")
 		connected_recycler = I.buffer
 		connected_recycler.connected += src
 		return TRUE
@@ -196,7 +196,7 @@
 			remote_eye.loc.visible_message("[S] wylatuje z rury!") // AQ EDIT - tgstation#90775: niewidoczny w trakcie animacji, więc komunikat idzie z kafelka
 			X.stored_slimes -= S
 	else
-		to_chat(owner, "<span class='warning'>Target is not near a camera. Cannot proceed.</span>")
+		to_chat(owner, "<span class='warning'>Cel nie znajduje się w pobliżu kamery. Nie można kontynuować.</span>")
 
 /datum/action/innate/slime_pick_up
 	name = "Pick up Slime"
@@ -221,7 +221,7 @@
 				S.forceMove(X)
 				X.stored_slimes += S
 	else
-		to_chat(owner, "<span class='warning'>Target is not near a camera. Cannot proceed.</span>")
+		to_chat(owner, "<span class='warning'>Cel nie znajduje się w pobliżu kamery. Nie można kontynuować.</span>")
 
 
 /datum/action/innate/feed_slime
@@ -245,10 +245,10 @@
 				X.monkeys = round(X.monkeys, 0.1)		//Prevents rounding errors
 				X.aquila_monkey_spat(food) // AQ EDIT - tgstation#90775: rura i HUD zamiast komunikatu o liczbie małp
 		else
-			to_chat(owner, "[X] needs to have at least 1 monkey stored. Currently has [X.monkeys] monkeys stored.")
+			to_chat(owner, "[X] musi przechowywać co najmniej 1 małpę. Obecnie przechowuje: [X.monkeys].")
 			remote_eye.loc.balloon_alert(owner, "za mało małp") // AQ EDIT - tgstation#90775
 	else
-		to_chat(owner, "<span class='notice'>Target is not near a camera. Cannot proceed.</span>")
+		to_chat(owner, "<span class='notice'>Cel nie znajduje się w pobliżu kamery. Nie można kontynuować.</span>")
 
 
 /datum/action/innate/monkey_recycle
@@ -265,7 +265,7 @@
 	var/obj/machinery/monkey_recycler/recycler = X.connected_recycler
 
 	if(!recycler)
-		to_chat(owner, "<span class='notice'>There is no connected monkey recycler.  Use a multitool to link one.</span>")
+		to_chat(owner, "<span class='notice'>Brak połączonego recyklera małp. Połącz go za pomocą multitoola.</span>")
 		return
 	if(GLOB.cameranet.checkTurfVis(remote_eye.loc))
 		for(var/mob/living/carbon/monkey/M in remote_eye.loc)
@@ -277,7 +277,7 @@
 				X.aquila_monkey_sucked(M) // AQ EDIT - tgstation#90775: rura i HUD zamiast komunikatu o liczbie małp
 				qdel(M)
 	else
-		to_chat(owner, "<span class='warning'>Target is not near a camera. Cannot proceed.</span>")
+		to_chat(owner, "<span class='warning'>Cel nie znajduje się w pobliżu kamery. Nie można kontynuować.</span>")
 
 /datum/action/innate/slime_scan
 	name = "Scan Slime"
@@ -294,7 +294,7 @@
 		for(var/mob/living/simple_animal/slime/S in remote_eye.loc)
 			slime_scan(S, C)
 	else
-		to_chat(owner, "<span class='warning'>Target is not near a camera. Cannot proceed.</span>")
+		to_chat(owner, "<span class='warning'>Cel nie znajduje się w pobliżu kamery. Nie można kontynuować.</span>")
 
 /datum/action/innate/feed_potion
 	name = "Apply Potion"
@@ -310,7 +310,7 @@
 	var/obj/machinery/computer/camera_advanced/xenobio/X = target
 
 	if(QDELETED(X.current_potion))
-		to_chat(owner, "<span class='warning'>No potion loaded.</span>")
+		to_chat(owner, "<span class='warning'>Nie załadowano mikstury.</span>")
 		return
 
 	if(GLOB.cameranet.checkTurfVis(remote_eye.loc))
@@ -319,7 +319,7 @@
 			X.current_potion.attack(S, C)
 			break
 	else
-		to_chat(owner, "<span class='warning'>Target is not near a camera. Cannot proceed.</span>")
+		to_chat(owner, "<span class='warning'>Cel nie znajduje się w pobliżu kamery. Nie można kontynuować.</span>")
 
 /datum/action/innate/hotkey_help
 	name = "Hotkey Help"
@@ -329,11 +329,11 @@
 /datum/action/innate/hotkey_help/Activate()
 	if(!target || !isliving(owner))
 		return
-	to_chat(owner, "<b>Click shortcuts:</b>")
-	to_chat(owner, "Shift-click a slime to pick it up, or the floor to drop all held slimes.")
-	to_chat(owner, "Ctrl-click a slime to scan it.")
-	to_chat(owner, "Alt-click a slime to feed it a potion.")
-	to_chat(owner, "Ctrl-click or a dead monkey to recycle it, or the floor to place a new monkey.")
+	to_chat(owner, "<b>Skróty kliknięć:</b>")
+	to_chat(owner, "Shift-klik na szlama, by go podnieść, albo na podłogę, by upuścić wszystkie trzymane szlamy.")
+	to_chat(owner, "Ctrl-klik na szlama, by go zeskanować.")
+	to_chat(owner, "Alt-klik na szlama, by podać mu miksturę.")
+	to_chat(owner, "Ctrl-klik na martwą małpę, by ją przetworzyć, albo na podłogę, by postawić nową małpę.")
 
 //
 // Alternate clicks for slime, monkey and open turf if using a xenobio console
@@ -373,7 +373,7 @@
 	SIGNAL_HANDLER
 
 	if(!GLOB.cameranet.checkTurfVis(S.loc))
-		to_chat(user, "<span class='warning'>Target is not near a camera. Cannot proceed.</span>")
+		to_chat(user, "<span class='warning'>Cel nie znajduje się w pobliżu kamery. Nie można kontynuować.</span>")
 		return
 	var/mob/living/C = user
 	var/mob/camera/ai_eye/remote/xenobio/E = C.remote_control
@@ -386,14 +386,14 @@
 	SIGNAL_HANDLER
 
 	if(!GLOB.cameranet.checkTurfVis(S.loc))
-		to_chat(user, "<span class='warning'>Target is not near a camera. Cannot proceed.</span>")
+		to_chat(user, "<span class='warning'>Cel nie znajduje się w pobliżu kamery. Nie można kontynuować.</span>")
 		return
 	var/mob/living/C = user
 	var/mob/camera/ai_eye/remote/xenobio/E = C.remote_control
 	var/obj/machinery/computer/camera_advanced/xenobio/X = E.origin
 	var/area/mobarea = get_area(S.loc)
 	if(QDELETED(X.current_potion))
-		to_chat(C, "<span class='warning'>No potion loaded.</span>")
+		to_chat(C, "<span class='warning'>Nie załadowano mikstury.</span>")
 		return
 	if(mobarea.name == E.allowed_area || (mobarea.area_flags & XENOBIOLOGY_COMPATIBLE))
 		X.aquila_potion_spat(get_turf(S)) // AQ EDIT - tgstation#90775
@@ -404,7 +404,7 @@
 	SIGNAL_HANDLER
 
 	if(!GLOB.cameranet.checkTurfVis(S.loc))
-		to_chat(user, "<span class='warning'>Target is not near a camera. Cannot proceed.</span>")
+		to_chat(user, "<span class='warning'>Cel nie znajduje się w pobliżu kamery. Nie można kontynuować.</span>")
 		return
 	var/mob/living/C = user
 	var/mob/camera/ai_eye/remote/xenobio/E = C.remote_control
@@ -412,11 +412,11 @@
 	var/area/mobarea = get_area(S.loc)
 	if(mobarea.name == E.allowed_area || (mobarea.area_flags & XENOBIOLOGY_COMPATIBLE))
 		if(X.stored_slimes.len >= X.max_slimes)
-			to_chat(C, "<span class='warning'>Slime storage is full.</span>")
+			to_chat(C, "<span class='warning'>Magazyn szlamów jest pełny.</span>")
 			S.balloon_alert(C, "magazyn pełny") // AQ EDIT - tgstation#90775
 			return
 		if(S.ckey)
-			to_chat(C, "<span class='warning'>The slime wiggled free!</span>")
+			to_chat(C, "<span class='warning'>Szlam się wyswobodził!</span>")
 			return
 		if(S.buckled)
 			S.Feedstop(silent = TRUE)
@@ -429,7 +429,7 @@
 	SIGNAL_HANDLER
 
 	if(!GLOB.cameranet.checkTurfVis(T))
-		to_chat(user, "<span class='warning'>Target is not near a camera. Cannot proceed.</span>")
+		to_chat(user, "<span class='warning'>Cel nie znajduje się w pobliżu kamery. Nie można kontynuować.</span>")
 		return
 	var/mob/living/C = user
 	var/mob/camera/ai_eye/remote/xenobio/E = C.remote_control
@@ -446,7 +446,7 @@
 	SIGNAL_HANDLER
 
 	if(!GLOB.cameranet.checkTurfVis(T))
-		to_chat(user, "<span class='warning'>Target is not near a camera. Cannot proceed.</span>")
+		to_chat(user, "<span class='warning'>Cel nie znajduje się w pobliżu kamery. Nie można kontynuować.</span>")
 		return
 	var/mob/living/C = user
 	var/mob/camera/ai_eye/remote/xenobio/E = C.remote_control
@@ -461,7 +461,7 @@
 				X.monkeys = round(X.monkeys, 0.1)		//Prevents rounding errors
 				X.aquila_monkey_spat(food) // AQ EDIT - tgstation#90775: rura i HUD zamiast komunikatu o liczbie małp
 		else
-			to_chat(C, "[X] needs to have at least 1 monkey stored. Currently has [X.monkeys] monkeys stored.")
+			to_chat(C, "[X] musi przechowywać co najmniej 1 małpę. Obecnie przechowuje: [X.monkeys].")
 			T.balloon_alert(C, "za mało małp") // AQ EDIT - tgstation#90775
 
 //Pick up monkey
@@ -469,14 +469,14 @@
 	SIGNAL_HANDLER
 
 	if(!GLOB.cameranet.checkTurfVis(M.loc))
-		to_chat(user, "<span class='warning'>Target is not near a camera. Cannot proceed.</span>")
+		to_chat(user, "<span class='warning'>Cel nie znajduje się w pobliżu kamery. Nie można kontynuować.</span>")
 		return
 	var/mob/living/C = user
 	var/mob/camera/ai_eye/remote/xenobio/E = C.remote_control
 	var/obj/machinery/computer/camera_advanced/xenobio/X = E.origin
 	var/area/mobarea = get_area(M.loc)
 	if(!X.connected_recycler)
-		to_chat(C, "<span class='notice'>There is no connected monkey recycler.  Use a multitool to link one.</span>")
+		to_chat(C, "<span class='notice'>Brak połączonego recyklera małp. Połącz go za pomocą multitoola.</span>")
 		return
 	if(mobarea.name == E.allowed_area || (mobarea.area_flags & XENOBIOLOGY_COMPATIBLE))
 		if(!M.stat)

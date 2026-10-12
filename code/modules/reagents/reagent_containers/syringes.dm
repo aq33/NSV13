@@ -95,14 +95,14 @@
 		if(SYRINGE_DRAW)
 
 			if(reagents.total_volume >= reagents.maximum_volume)
-				balloon_alert(user, "The [src] is full!")
+				balloon_alert(user, "[src] jest pełna!")
 				return
 
 			if(L) //living mob
 				var/drawn_amount = reagents.maximum_volume - reagents.total_volume
 				if(target != user)
-					target.visible_message("<span class='danger'>[user] is trying to take a blood sample from [target]!</span>", \
-									"<span class='userdanger'>[user] is trying to take a blood sample from you!</span>")
+					target.visible_message("<span class='danger'>[user] próbuje pobrać próbkę krwi od [target]!</span>", \
+									"<span class='userdanger'>[user] próbuje pobrać od ciebie próbkę krwi!</span>")
 					busy = TRUE
 					if(!do_mob(user, target, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject), user, TRUE)))
 						busy = FALSE
@@ -111,25 +111,25 @@
 						return
 				busy = FALSE
 				if(L.transfer_blood_to(src, drawn_amount))
-					user.visible_message("[user] takes a blood sample from [L].")
+					user.visible_message("[user] pobiera próbkę krwi od [L].")
 				else
-					to_chat(user, "<span class='warning'>You are unable to draw any blood from [L]!</span>")
-					balloon_alert(user, "You are unable to draw any blood from [L]!")
+					to_chat(user, "<span class='warning'>Nie możesz pobrać krwi od [L]!</span>")
+					balloon_alert(user, "Nie możesz pobrać krwi od [L]!")
 				transfer_diseases(L)
 
 			else //if not mob
 				if(!target.reagents.total_volume)
-					balloon_alert(user, "[src] is empty.")
+					balloon_alert(user, "[src] jest pusta.")
 					return
 
 				if(!target.is_drawable(user))
-					balloon_alert(user, "You can't seem to draw reagents from this..")
+					balloon_alert(user, "Chyba nie da się z tego pobrać odczynników..")
 					return
 
 				var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user) // transfer from, transfer to - who cares?
 
-				to_chat(user, "<span class='notice'>You fill [src] with [trans] units of the solution. It now contains [reagents.total_volume] units.</span>")
-				balloon_alert(user, "You fill [src] with [trans]u.")
+				to_chat(user, "<span class='notice'>Napełniasz [src] [trans] j. roztworu. Zawiera teraz [reagents.total_volume] j.</span>")
+				balloon_alert(user, "Napełniasz [src] [trans] j.")
 			if (reagents.total_volume >= reagents.maximum_volume)
 				mode=!mode
 				update_icon()
@@ -140,15 +140,15 @@
 			log_combat(user, target, "attempted to inject", src, addition="which had [contained]")
 
 			if(!reagents.total_volume)
-				balloon_alert(user, "[src] is empty!")
+				balloon_alert(user, "[src] jest pusty!")
 				return
 
 			if(!L && !target.is_injectable(user)) //only checks on non-living mobs, due to how can_inject() handles
-				balloon_alert(user, "You cannot inject [target].")
+				balloon_alert(user, "Nie możesz wstrzyknąć [target].")
 				return
 
 			if(target.reagents.total_volume >= target.reagents.maximum_volume)
-				balloon_alert(user, "[target] is full.")
+				balloon_alert(user, "[target] jest pełny.")
 				return
 
 			if(L) //living mob
@@ -159,27 +159,27 @@
 				else if(!L.can_inject(user, TRUE))
 					return
 				if(user.a_intent == INTENT_HARM && iscarbon(L) && iscarbon(user))
-					L.visible_message("<span class='danger'>[user] lines a syringe up to [L]!", \
-							"<span class='userdanger'>[user] rears their arm back, ready to stab you with [src]</span>")
+					L.visible_message("<span class='danger'>[user] celuje strzykawką w [L]!", \
+							"<span class='userdanger'>[user] bierze zamach, gotów dźgnąć cię [src]</span>")
 					if(do_mob(user, L, 10))
 						var/mob/living/carbon/C = L
 						embed(C, 0.5)
 						log_combat(user, C, "injected (embedding)", src, addition="which had [contained]")
-						L.visible_message("<span class='danger'>[user] stabs [L] with the syringe!", \
-							"<span class='userdanger'>[user] shoves the syringe into your flesh, and it sticks!</span>")
+						L.visible_message("<span class='danger'>[user] dźga [L] strzykawką!", \
+							"<span class='userdanger'>[user] wbija ci strzykawkę w ciało, a ona tam tkwi!</span>")
 						return
 					return
 				if(L != user)
-					L.visible_message("<span class='danger'>[user] is trying to inject [L]!</span>", \
-											"<span class='userdanger'>[user] is trying to inject you!</span>")
+					L.visible_message("<span class='danger'>[user] próbuje wstrzyknąć coś [L]!</span>", \
+											"<span class='userdanger'>[user] próbuje ci coś wstrzyknąć!</span>")
 					if(!do_mob(user, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject), user, TRUE)))
 						return
 					if(!reagents.total_volume)
 						return
 					if(L.reagents.total_volume >= L.reagents.maximum_volume)
 						return
-					L.visible_message("<span class='danger'>[user] injects [L] with the syringe!", \
-									"<span class='userdanger'>[user] injects you with the syringe!</span>")
+					L.visible_message("<span class='danger'>[user] wstrzykuje coś [L] strzykawką!", \
+									"<span class='userdanger'>[user] wstrzykuje ci coś strzykawką!</span>")
 
 				if(L != user)
 					log_combat(user, L, "injected", src, addition="which had [contained]")
@@ -189,8 +189,8 @@
 			var/fraction = min(amount_per_transfer_from_this/reagents.total_volume, 1)
 			reagents.reaction(L, INJECT, fraction)
 			reagents.trans_to(target, amount_per_transfer_from_this, transfered_by = user)
-			balloon_alert(user, "You inject [amount_per_transfer_from_this]u.")
-			to_chat(user, "<span class='notice'>You inject [amount_per_transfer_from_this] units of the solution. The syringe now contains [reagents.total_volume] units.</span>")
+			balloon_alert(user, "Wstrzykujesz [amount_per_transfer_from_this] j.")
+			to_chat(user, "<span class='notice'>Wstrzykujesz [amount_per_transfer_from_this] j. roztworu. Strzykawka zawiera teraz [reagents.total_volume] j.</span>")
 			if (reagents.total_volume <= 0 && mode==SYRINGE_INJECT)
 				mode = SYRINGE_DRAW
 				update_icon()

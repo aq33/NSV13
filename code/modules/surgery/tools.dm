@@ -35,7 +35,7 @@
 	materials = list(/datum/material/iron=5000, /datum/material/glass=2500)
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY
-	attack_verb = list("attacked", "pinched")
+	attack_verb = list("atakuje", "szczypie")
 	tool_behaviour = TOOL_HEMOSTAT
 	toolspeed = 1
 
@@ -49,7 +49,7 @@
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY
 	toolspeed = 0.5
-	attack_verb = list("attacked", "pinched")
+	attack_verb = list("atakuje", "szczypie")
 
 
 /obj/item/cautery
@@ -63,7 +63,7 @@
 	materials = list(/datum/material/iron=2500, /datum/material/glass=750)
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY
-	attack_verb = list("burnt")
+	attack_verb = list("parzy")
 	tool_behaviour = TOOL_CAUTERY
 	toolspeed = 1
 
@@ -77,7 +77,7 @@
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY
 	toolspeed = 0.5
-	attack_verb = list("burnt")
+	attack_verb = list("parzy")
 
 
 /obj/item/blood_filter
@@ -90,7 +90,7 @@
 	materials = list(/datum/material/iron=2000, /datum/material/glass=1500, /datum/material/silver=500)
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("pumps", "siphons")
+	attack_verb = list("pompuje", "wysysa")
 	tool_behaviour = TOOL_BLOODFILTER
 	toolspeed = 1
 
@@ -107,12 +107,12 @@
 	flags_1 = CONDUCT_1
 	force = 15
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("drilled")
+	attack_verb = list("wierci w")
 	tool_behaviour = TOOL_DRILL
 	toolspeed = 1
 
 /obj/item/surgicaldrill/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] rams [src] into [user.p_their()] chest! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] wbija sobie [src] w klatkę piersiową! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon, gib), null, null, TRUE, TRUE), 25)
 	user.SpinAnimation(3, 10)
 	playsound(user, 'sound/machines/juicer.ogg', 20, TRUE)
@@ -129,7 +129,7 @@
 	force = 10
 	w_class = WEIGHT_CLASS_SMALL
 	toolspeed = 0.5
-	attack_verb = list("drilled")
+	attack_verb = list("wierci w")
 
 
 /obj/item/scalpel
@@ -147,7 +147,7 @@
 	throw_speed = 3
 	throw_range = 5
 	materials = list(/datum/material/iron=4000, /datum/material/glass=1000)
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP_ACCURATE
 	tool_behaviour = TOOL_SCALPEL
@@ -169,13 +169,13 @@
 	throw_speed = 3
 	throw_range = 5
 	materials = list(/datum/material/iron=4000, /datum/material/glass=1000)
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	toolspeed = 0.5
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP_ACCURATE
 
 /obj/item/scalpel/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is slitting [user.p_their()] [pick("wrists", "throat", "stomach")] with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] podcina sobie [pick("nadgarstki", "gardło", "brzuch")] [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return (BRUTELOSS)
 
 
@@ -195,7 +195,7 @@
 	throw_speed = 2
 	throw_range = 5
 	materials = list(/datum/material/iron=10000, /datum/material/glass=6000)
-	attack_verb = list("attacked", "slashed", "sawed", "cut")
+	attack_verb = list("atakuje", "ciacha", "piłuje", "tnie")
 	sharpness = IS_SHARP
 	tool_behaviour = TOOL_SAW
 	toolspeed = 1
@@ -219,7 +219,7 @@
 	throw_range = 5
 	materials = list(/datum/material/iron=10000, /datum/material/glass=6000)
 	toolspeed = 0.5
-	attack_verb = list("attacked", "slashed", "sawed", "cut")
+	attack_verb = list("atakuje", "ciacha", "piłuje", "tnie")
 	sharpness = IS_SHARP
 
 /obj/item/surgical_drapes
@@ -231,7 +231,7 @@
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	item_state = "drapes"
 	w_class = WEIGHT_CLASS_TINY
-	attack_verb = list("slapped")
+	attack_verb = list("policzkuje")
 
 //NSV13 - Surgery-Initiation Componentizes - Start
 /obj/item/surgical_drapes/Initialize(mapload)
@@ -250,13 +250,13 @@
 	if(!proximity)
 		return
 	if(contents.len)
-		to_chat(user, "<span class='notice'>[src] already has something inside it.</span>")
+		to_chat(user, "<span class='notice'>W [src] już coś jest.</span>")
 		return
 	if(!isorgan(I) && !isbodypart(I))
-		to_chat(user, "<span class='notice'>[src] can only hold body parts!</span>")
+		to_chat(user, "<span class='notice'>[src] może przechowywać tylko części ciała!</span>")
 		return
 
-	user.visible_message("[user] puts [I] into [src].", "<span class='notice'>You put [I] inside [src].</span>")
+	user.visible_message("[user] wkłada [I] do [src].", "<span class='notice'>Wkładasz [I] do [src].</span>")
 	icon_state = "evidence"
 	var/xx = I.pixel_x
 	var/yy = I.pixel_y
@@ -275,13 +275,13 @@
 /obj/item/organ_storage/attack_self(mob/user)
 	if(contents.len)
 		var/obj/item/I = contents[1]
-		user.visible_message("[user] dumps [I] from [src].", "<span class='notice'>You dump [I] from [src].</span>")
+		user.visible_message("[user] wysypuje [I] z [src].", "<span class='notice'>Wysypujesz [I] z [src].</span>")
 		cut_overlays()
 		I.forceMove(get_turf(src))
 		icon_state = "evidenceobj"
 		desc = "A container for holding body parts."
 	else
-		to_chat(user, "[src] is empty.")
+		to_chat(user, "[src] jest pusty.")
 	return
 
 /obj/item/surgical_processor //allows medical cyborgs to scan and initiate advanced surgeries
@@ -297,13 +297,13 @@
 	if(!proximity)
 		return
 	if(istype(O, /obj/item/disk/surgery))
-		to_chat(user, "<span class='notice'>You load the surgery protocol from [O] into [src].</span>")
+		to_chat(user, "<span class='notice'>Wczytujesz protokół operacji z [O] do [src].</span>")
 		var/obj/item/disk/surgery/D = O
 		if(do_after(user, 10, target = O))
 			advanced_surgeries |= D.surgeries
 		return TRUE
 	if(istype(O, /obj/machinery/computer/operating))
-		to_chat(user, "<span class='notice'>You copy surgery protocols from [O] into [src].</span>")
+		to_chat(user, "<span class='notice'>Kopiujesz protokoły operacji z [O] do [src].</span>")
 		var/obj/machinery/computer/operating/OC = O
 		if(do_after(user, 10, target = O))
 			advanced_surgeries |= OC.advanced_surgeries
@@ -329,20 +329,20 @@
 	playsound(get_turf(user), 'sound/machines/click.ogg', 50, TRUE)
 	if(tool_behaviour == TOOL_SCALPEL)
 		tool_behaviour = TOOL_SAW
-		to_chat(user, "<span class='notice'>You increase the power of [src], now it can cut bones.</span>")
+		to_chat(user, "<span class='notice'>Zwiększasz moc [src], teraz może ciąć kości.</span>")
 		set_light_range(2)
 		force += 1 //we don't want to ruin sharpened stuff
 		icon_state = "saw_a"
 	else
 		tool_behaviour = TOOL_SCALPEL
-		to_chat(user, "<span class='notice'>You lower the power of [src], it can no longer cut bones.</span>")
+		to_chat(user, "<span class='notice'>Zmniejszasz moc [src], nie może już ciąć kości.</span>")
 		set_light_range(1)
 		force -= 1
 		icon_state = "scalpel_a"
 
 /obj/item/scalpel/advanced/examine()
 	. = ..()
-	. += " It's set to [tool_behaviour == TOOL_SCALPEL ? "scalpel" : "saw"] mode."
+	. += " Jest ustawiony w tryb: [tool_behaviour == TOOL_SCALPEL ? "skalpel" : "piła"]."
 
 /obj/item/retractor/advanced
 	name = "mechanical pinches"
@@ -355,16 +355,16 @@
 	playsound(get_turf(user), 'sound/items/change_drill.ogg', 50, TRUE)
 	if(tool_behaviour == TOOL_RETRACTOR)
 		tool_behaviour = TOOL_HEMOSTAT
-		to_chat(user, "<span class='notice'>You configure the gears of [src], they are now in hemostat mode.</span>")
+		to_chat(user, "<span class='notice'>Ustawiasz zębatki [src], są teraz w trybie kleszczy hemostatycznych.</span>")
 		icon_state = "hemostat_a"
 	else
 		tool_behaviour = TOOL_RETRACTOR
-		to_chat(user, "<span class='notice'>You configure the gears of [src], they are now in retractor mode.</span>")
+		to_chat(user, "<span class='notice'>Ustawiasz zębatki [src], są teraz w trybie retraktora.</span>")
 		icon_state = "retractor_a"
 
 /obj/item/retractor/advanced/examine()
 	. = ..()
-	. += " It resembles a retractor[tool_behaviour == TOOL_RETRACTOR ? "retractor" : "hemostat"]."
+	. += " Przypomina [tool_behaviour == TOOL_RETRACTOR ? "retraktor" : "kleszcze hemostatyczne"]."
 
 /obj/item/surgicaldrill/advanced
 	name = "searing tool"
@@ -382,13 +382,13 @@
 	playsound(get_turf(user), 'sound/weapons/tap.ogg', 50, TRUE)
 	if(tool_behaviour == TOOL_DRILL)
 		tool_behaviour = TOOL_CAUTERY
-		to_chat(user, "<span class='notice'>You focus the lenses of [src], it is now in mending mode.</span>")
+		to_chat(user, "<span class='notice'>Ogniskujesz soczewki [src], jest teraz w trybie gojenia.</span>")
 		icon_state = "cautery_a"
 	else
 		tool_behaviour = TOOL_DRILL
-		to_chat(user, "<span class='notice'>You dilate the lenses of [src], it is now in drilling mode.</span>")
+		to_chat(user, "<span class='notice'>Rozszerzasz soczewki [src], jest teraz w trybie wiercenia.</span>")
 		icon_state = "surgicaldrill_a"
 
 /obj/item/surgicaldrill/advanced/examine()
 	. = ..()
-	. += " It's set to [tool_behaviour == TOOL_DRILL ? "drilling" : "mending"] mode."
+	. += " Jest ustawiony w tryb: [tool_behaviour == TOOL_DRILL ? "wiercenie" : "gojenie"]."

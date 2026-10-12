@@ -23,7 +23,7 @@
 /datum/fleet/boarding
 	name = "\improper Syndicate commando taskforce"
 	destroyer_types = list(/obj/structure/overmap/syndicate/ai/assault_cruiser/boarding_frigate)
-	taunts = list("Attention: This is an automated message. All non-Syndicate vessels prepare to be boarded for security clearance.")
+	taunts = list("Uwaga: to automatyczna wiadomość. Wszystkie okręty spoza Syndykatu mają przygotować się do abordażu w celu kontroli bezpieczeństwa.")
 	fleet_trait = FLEET_TRAIT_NEUTRAL_ZONE
 
 /datum/fleet/wolfpack
@@ -39,11 +39,11 @@
 	name = "\improper unidentified Syndicate taskforce"
 	destroyer_types = list(/obj/structure/overmap/syndicate/ai/submarine, /obj/structure/overmap/syndicate/ai/submarine/elite)
 	battleship_types = list(/obj/structure/overmap/syndicate/ai/submarine/elite, /obj/structure/overmap/syndicate/ai/cruiser/elite)
-	taunts = list(".....", "*loud microphone feedback*", "You've got nowhere to run, and nowhere to hide...")
+	taunts = list(".....", "*głośne sprzężenie mikrofonu*", "Nie macie dokąd uciec ani gdzie się ukryć...")
 
 /datum/fleet/conflagration
 	name = "\improper Syndicate conflagration deterrent"
-	taunts = list("Enemy ship, surrender now. This vessel is armed with hellfire weapons and eager to test them.")
+	taunts = list("Wrogi okręcie, poddajcie się natychmiast. Ta jednostka jest uzbrojona w pociski hellfire i chętnie je przetestuje.")
 	audio_cues = list()
 	destroyer_types = list(/obj/structure/overmap/syndicate/ai/conflagration, /obj/structure/overmap/syndicate/ai/conflagration/elite)
 	size = FLEET_DIFFICULTY_EASY
@@ -51,7 +51,7 @@
 
 /datum/fleet/elite
 	name = "\improper elite Syndicate taskforce"
-	taunts = list("Enemy ship, surrender immediately or face destruction.", "Excellent, a worthwhile target. Arm all batteries.")
+	taunts = list("Wrogi okręcie, poddajcie się natychmiast albo zostaniecie zniszczeni.", "Doskonale, wartościowy cel. Uzbroić wszystkie baterie.")
 	supply_types = list(/obj/structure/overmap/syndicate/ai/carrier/elite)
 	destroyer_types = list(/obj/structure/overmap/syndicate/ai/destroyer/elite, /obj/structure/overmap/syndicate/ai/submarine/elite)
 	battleship_types = list(/obj/structure/overmap/syndicate/ai/cruiser/elite)
@@ -71,7 +71,7 @@
 /datum/fleet/pirate/scout
 	name = "\improper Tortuga Raiders scout fleet"
 	audio_cues = list()
-	taunts = list("Yar har! Fresh meat", "Unfurl the mainsails! We've got company", "Die landlubbers!")
+	taunts = list("Jo-ho-ho! Świeże mięso", "Rozwinąć żagle! Mamy towarzystwo", "Giń, szczurze lądowy!")
 	size = FLEET_DIFFICULTY_MEDIUM
 	fleet_trait = FLEET_TRAIT_DEFENSE
 
@@ -79,14 +79,14 @@
 	name = "\improper Tortuga Raiders raiding fleet"
 	destroyer_types = list(/obj/structure/overmap/spacepirate/ai, /obj/structure/overmap/spacepirate/ai/boarding)
 	audio_cues = list()
-	taunts = list("Avast! A fine hold of loot sails our way", "Prepare the boarding crews, they've got enough loot for us all!")
+	taunts = list("Ahoj! Płynie ku nam ładowna pełna łupów", "Szykować ekipy abordażowe, mają łupów dla nas wszystkich!")
 	size = FLEET_DIFFICULTY_MEDIUM
 
 /datum/fleet/pirate/tortuga
 	name = "\improper Tortuga Raiders holding fleet"
 	supply_types = list(/obj/structure/overmap/spacepirate/ai/dreadnought)
 	audio_cues = list(/datum/soundtrack_song/bee/hierophant)
-	taunts = list("These are our waters you are sailing, prepare to surrender!", "Bold of you to fly Nanotrasen colours in this system, your last mistake.")
+	taunts = list("To nasze wody, po których płyniecie, szykujcie się do kapitulacji!", "Śmiało, latać w tym systemie pod barwami Nanotrasen. Wasz ostatni błąd.")
 	size = FLEET_DIFFICULTY_VERY_HARD
 	fleet_trait = FLEET_TRAIT_DEFENSE
 	reward = 200
@@ -112,7 +112,7 @@
 	allow_difficulty_scaling = FALSE
 	battleship_types = list(/obj/structure/overmap/syndicate/ai/kadesh)	//:)
 	audio_cues = list()
-	taunts = list("Better crews have tried to cross the Rubicon, you will die like they did.", "Defense force, stand ready!", "Nanotrasen filth. Munitions, ready the guns. We’ll scrub the galaxy clean of you vermin.", "This shift just gets better and better. I’ll have your Captain’s head on my wall.")
+	taunts = list("Lepsze załogi próbowały przekroczyć Rubikon, zginiecie tak jak one.", "Siły obronne, w gotowości!", "Nanotraseńskie ścierwo. Amunicja, przygotować działa. Oczyścimy galaktykę z was, robactwa.", "Ta zmiana robi się coraz lepsza. Powieszę głowę waszego kapitana na ścianie.")
 	fleet_trait = FLEET_TRAIT_DEFENSE
 
 /datum/fleet/earthbuster
@@ -121,7 +121,7 @@
 	battleship_types = list(/obj/structure/overmap/syndicate/ai/battleship) //The fist of sol is leading the charge
 	size = FLEET_DIFFICULTY_INSANE
 	allow_difficulty_scaling = FALSE
-	taunts = list("We're coming for Sol, and you can't stop us. All batteries fire at will.", "Lay down your arms now, you're outnumbered.", "All hands, assume assault formation. Begin bombardment.")
+	taunts = list("Idziemy po Sol i nie powstrzymacie nas. Wszystkie baterie, ogień według uznania.", "Złóżcie broń, macie przewagę liczebną przeciwko sobie.", "Wszyscy na stanowiska, formacja szturmowa. Rozpocząć bombardowanie.")
 	audio_cues = list(/datum/soundtrack_song/bee/countdown)
 
 /datum/fleet/interdiction	//Pretty strong fleet with unerring hunting senses, Adminspawn for now.
@@ -129,7 +129,7 @@
 	destroyer_types = list(/obj/structure/overmap/syndicate/ai/conflagration, /obj/structure/overmap/syndicate/ai/assault_cruiser, /obj/structure/overmap/syndicate/ai/assault_cruiser/boarding_frigate)
 	battleship_types = list(/obj/structure/overmap/syndicate/ai/kadesh)
 	size = FLEET_DIFFICULTY_HARD
-	taunts = list("We have come to end your meagre existance. Prepare to die.", "Hostile entering weapons range. Fire at will.", "You have been a thorn in our side for quite a while. Time to end this.", "That is a nice ship you have there. Nothing a few hellfire missiles cannot fix.")
+	taunts = list("Przybyliśmy, by zakończyć wasze marne istnienie. Szykujcie się na śmierć.", "Wróg wchodzi w zasięg broni. Ogień według uznania.", "Od dawna jesteście dla nas cierniem w boku. Czas z tym skończyć.", "Ładny okręt macie. Nic, czego kilka pocisków hellfire by nie naprawiło.")
 	audio_cues = list()
 	var/obj/structure/overmap/hunted_ship
 	initial_move_delay = 5 MINUTES
@@ -153,7 +153,7 @@
 	size = FLEET_DIFFICULTY_WHAT_ARE_YOU_DOING
 	allow_difficulty_scaling = FALSE
 	audio_cues = list(/datum/soundtrack_song/bee/future_perception)
-	taunts = list("Don't think we didn't learn from your last attempt.", "We shall not fail again", "Your outdated MAC weapons are no match for us. Prepare to be destroyed.")
+	taunts = list("Nie myślcie, że nie wyciągnęliśmy wniosków z waszej ostatniej próby.", "Nie zawiedziemy ponownie", "Wasza przestarzała broń MAC nie ma z nami szans. Szykujcie się na zniszczenie.")
 	fleet_trait = FLEET_TRAIT_DEFENSE
 	destroyer_types = list(/obj/structure/overmap/syndicate/ai, /obj/structure/overmap/syndicate/ai/destroyer/elite, /obj/structure/overmap/syndicate/ai/destroyer/flak, /obj/structure/overmap/syndicate/ai/cruiser/elite, /obj/structure/overmap/syndicate/ai/mako_flak, /obj/structure/overmap/syndicate/ai/mako_carrier)
 	battleship_types = list(/obj/structure/overmap/syndicate/ai/cruiser/elite, /obj/structure/overmap/syndicate/ai/conflagration/elite)
@@ -176,7 +176,7 @@
 	allow_difficulty_scaling = FALSE
 	battleship_types = list(/obj/structure/overmap/syndicate/ai/battleship)
 	audio_cues = list(/datum/soundtrack_song/bee/finale)
-	taunts = list("Your assault on Rubicon only served to distract you from the real threat. It's time to end this war in one swift blow.")
+	taunts = list("Wasz atak na Rubikon tylko odwrócił waszą uwagę od prawdziwego zagrożenia. Czas zakończyć tę wojnę jednym szybkim ciosem.")
 	fleet_trait = FLEET_TRAIT_DEFENSE
 
 /datum/fleet/syndicate/fistofsol_boss
@@ -187,7 +187,7 @@
 	audio_cues = list(/datum/soundtrack_song/bee/countdownext)
 	battleship_types = list(/obj/structure/overmap/syndicate/ai/fistofsol)
 	supply_types = list(/obj/structure/overmap/syndicate/ai/carrier/elite)
-	taunts = list("What a pleasure that we should meet again. I hope you won't disappoint!")
+	taunts = list("Co za przyjemność spotkać się znowu. Mam nadzieję, że nie zawiedziecie!")
 	fleet_trait = FLEET_TRAIT_DEFENSE
 
 /datum/fleet/hostile/alicorn_boss
@@ -198,7 +198,7 @@
 	audio_cues = list(/datum/soundtrack_song/bee/bubblegum)
 	fighter_types = list(/obj/structure/overmap/hostile/ai/fighter)
 	supply_types = list(/obj/structure/overmap/hostile/ai/alicorn)
-	taunts = list("A powerful ship, a powerful gun, powerful ammunition. The graceful slaughter of a billion lives to save billions more, you'll be the first of many.")
+	taunts = list("Potężny okręt, potężne działo, potężna amunicja. Wdzięczna rzeź miliarda istnień, by ocalić miliardy kolejnych, a wy będziecie pierwsi z wielu.")
 	fleet_trait = FLEET_TRAIT_DEFENSE
 
 
@@ -214,7 +214,7 @@
 	alignment = "nanotrasen"
 	hide_movements = TRUE //Friendly fleets just move around as you'd expect.
 	faction_id = FACTION_ID_NT
-	taunts = list("Syndicate vessel, stand down or be destroyed", "You are encroaching on our airspace, prepare to be destroyed", "Unidentified vessel, your existence will be forfeit in accordance with the peacekeeper act.")
+	taunts = list("Okręcie Syndykatu, wycofaj się albo zostaniesz zniszczony", "Naruszacie naszą przestrzeń, szykujcie się na zniszczenie", "Niezidentyfikowany okręcie, zgodnie z ustawą o siłach pokojowych wasze istnienie zostanie zakończone.")
 	can_reinforce = FALSE
 	threat_elevation_allowed = FALSE	//Sorry EDF, nothing personal.
 
@@ -224,13 +224,13 @@
 
 /datum/fleet/nanotrasen/border
 	name = "\proper Concord Border Enforcement Unit"
-	taunts = list("You have violated the law. Stand down your weapons and prepare to be boarded.", "Hostile vessel. Stand down immediately or be destroyed.")
+	taunts = list("Złamaliście prawo. Wyłączcie broń i przygotujcie się do abordażu.", "Wrogi okręcie. Natychmiast się wycofaj albo zostaniesz zniszczony.")
 	size = FLEET_DIFFICULTY_EASY
 	fleet_trait = FLEET_TRAIT_BORDER_PATROL
 
 /datum/fleet/nanotrasen/border/defense
 	name = "\proper 501st 'Crais' Fist' Expeditionary Force"
-	taunts = list("You have violated the law. Stand down your weapons and prepare to be boarded.", "Hostile vessel. Stand down immediately or be destroyed.")
+	taunts = list("Złamaliście prawo. Wyłączcie broń i przygotujcie się do abordażu.", "Wrogi okręcie. Natychmiast się wycofaj albo zostaniesz zniszczony.")
 	size = FLEET_DIFFICULTY_EASY
 	fleet_trait = FLEET_TRAIT_DEFENSE
 
@@ -245,15 +245,15 @@
 	alignment = "solgov"
 	hide_movements = TRUE //They're "friendly" alright....
 	faction_id = FACTION_ID_NT
-	taunts = list("You are encroaching on our airspace, prepare to be destroyed", "You have entered SolGov secure airspace. Prepare to be destroyed", "You are in violation of the SolGov non-aggression agreement. Leave this airspace immediately.")
+	taunts = list("Naruszacie naszą przestrzeń, szykujcie się na zniszczenie", "Wkroczyliście w strzeżoną przestrzeń SolGov. Szykujcie się na zniszczenie", "Naruszacie porozumienie o nieagresji SolGov. Natychmiast opuśćcie tę przestrzeń.")
 	size = FLEET_DIFFICULTY_EASY
-	greetings = list("Allied vessel. You will be scanned for compliance with the peacekeeper act in 30 seconds. We thank you for your compliance.")
+	greetings = list("Sojuszniczy okręcie. Za 30 sekund zostaniecie zeskanowani pod kątem zgodności z ustawą o siłach pokojowych. Dziękujemy za współpracę.")
 	var/scan_delay = 30 SECONDS
 	var/scanning = FALSE
 
 /datum/fleet/solgov/earth
 	name = "\proper Earth Defense Force"
-	taunts = list("You're foolish to venture this deep into Solgov space! Main batteries stand ready.", "All hands, set condition 1 throughout the fleet, enemy vessel approaching.", "Defense force, stand ready!", "We shall protect our homeland!")
+	taunts = list("Głupotą było zapuszczać się tak głęboko w przestrzeń Solgov! Główne baterie w gotowości.", "Wszyscy na stanowiska, stan 1 w całej flocie, zbliża się wrogi okręt.", "Siły obronne, w gotowości!", "Obronimy naszą ojczyznę!")
 	size = FLEET_DIFFICULTY_HARD
 	allow_difficulty_scaling = FALSE
 	audio_cues = list()
@@ -277,7 +277,7 @@
 			continue //We don't scan our own boys.
 		//Ruh roh.... (Persona non gratas do not need to be scanned again.)
 		if((shield_scan_target.faction != shield_scan_target.name) && shield_scan_target.shields && shield_scan_target.shields.active && length(shield_scan_target.occupying_levels))
-			shield_scan_target.hail("Scans have detected that you are in posession of prohibited technology. \n Your IFF signature has been marked as 'persona non grata'. \n In accordance with SGC-reg #10124, your ship and lives are now forfeit. Evacuate all civilian personnel immediately and surrender yourselves.", name)
+			shield_scan_target.hail("Skany wykazały, że posiadacie zakazaną technologię. \n Wasza sygnatura IFF została oznaczona jako 'persona non grata'. \n Zgodnie z przepisem SGC-reg #10124 wasz okręt i wasze życie przepadają. Natychmiast ewakuujcie cały personel cywilny i się poddajcie.", name)
 			shield_scan_target.relay_to_nearby('nsv13/sound/effects/ship/solgov_scan_alert.ogg', ignore_self=FALSE)
 			grant_oopsie_achievement(shield_scan_target)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(play_soundtrack_music), /datum/soundtrack_song/bee/mind_crawler, null, 120), 2 SECONDS)
@@ -292,7 +292,7 @@
 /datum/fleet/solgov/interdiction
 	name = "\improper Solgov hunter fleet"
 	destroyer_types = list(/obj/structure/overmap/nanotrasen/solgov/ai/interdictor)
-	var/list/traitor_taunts = list("Rogue vessel, reset your identification codes immediately or be destroyed.", "The penalty for defection is death.", "Your crew is charged with treason and breach of contract. Lethal force is authorized.")
+	var/list/traitor_taunts = list("Zbuntowany okręcie, natychmiast zresetuj kody identyfikacyjne albo zostaniesz zniszczony.", "Karą za dezercję jest śmierć.", "Wasza załoga zostaje oskarżona o zdradę i naruszenie umowy. Zezwala się na użycie śmiercionośnej siły.")
 	size = FLEET_DIFFICULTY_INSANE
 	var/players_fired_upon = FALSE
 	audio_cues = list(/datum/soundtrack_song/bee/mind_crawler)
@@ -348,9 +348,9 @@
 				hunted_ship = null
 				goal_system = SSstar_system.system_by_id("Sol")
 				if(current_system == source.current_system)
-					source.hail("Don't let it happen again.", name)
+					source.hail("Niech to się więcej nie powtórzy.", name)
 			else if(current_system == source.current_system)
-				source.hail("... That's not going to cut it anymore.", name)
+				source.hail("... To już nie wystarczy.", name)
 		if("syndicate")
 			// Anger
 			hunted_ship = source

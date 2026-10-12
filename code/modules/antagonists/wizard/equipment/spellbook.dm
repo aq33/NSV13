@@ -36,7 +36,7 @@
 	for(var/obj/effect/proc_holder/spell/aspell in user.mind.spell_list)
 		if(initial(S.name) == initial(aspell.name)) // Not using directly in case it was learned from one spellbook then upgraded in another
 			if(aspell.spell_level >= aspell.level_max)
-				to_chat(user,  "<span class='warning'>This spell cannot be improved further.</span>")
+				to_chat(user,  "<span class='warning'>Tego zaklęcia nie da się już ulepszyć.</span>")
 				return FALSE
 			else
 				aspell.name = initial(aspell.name)
@@ -46,25 +46,25 @@
 					aspell.charge_counter = aspell.charge_max
 				switch(aspell.spell_level)
 					if(1)
-						to_chat(user, "<span class='notice'>You have improved [aspell.name] into Efficient [aspell.name].</span>")
+						to_chat(user, "<span class='notice'>Ulepszasz [aspell.name] do wersji wydajnej.</span>")
 						aspell.name = "Efficient [aspell.name]"
 					if(2)
-						to_chat(user, "<span class='notice'>You have further improved [aspell.name] into Quickened [aspell.name].</span>")
+						to_chat(user, "<span class='notice'>Dalej ulepszasz [aspell.name] do wersji przyspieszonej.</span>")
 						aspell.name = "Quickened [aspell.name]"
 					if(3)
-						to_chat(user, "<span class='notice'>You have further improved [aspell.name] into Free [aspell.name].</span>")
+						to_chat(user, "<span class='notice'>Dalej ulepszasz [aspell.name] do wersji darmowej.</span>")
 						aspell.name = "Free [aspell.name]"
 					if(4)
-						to_chat(user, "<span class='notice'>You have further improved [aspell.name] into Instant [aspell.name].</span>")
+						to_chat(user, "<span class='notice'>Dalej ulepszasz [aspell.name] do wersji natychmiastowej.</span>")
 						aspell.name = "Instant [aspell.name]"
 				if(aspell.spell_level >= aspell.level_max)
-					to_chat(user, "<span class='notice'>This spell cannot be strengthened any further.</span>")
+					to_chat(user, "<span class='notice'>Tego zaklęcia nie da się już bardziej wzmocnić.</span>")
 				SSblackbox.record_feedback("nested tally", "wizard_spell_improved", 1, list("[name]", "[aspell.spell_level]"))
 				return TRUE
 	//No same spell found - just learn it
 	SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
 	user.mind.AddSpell(S)
-	to_chat(user, "<span class='notice'>You have learned [S.name].</span>")
+	to_chat(user, "<span class='notice'>Uczysz się zaklęcia [S.name].</span>")
 	return TRUE
 
 /datum/spellbook_entry/proc/CanRefund(mob/living/carbon/human/user,obj/item/spellbook/book)
@@ -80,7 +80,7 @@
 /datum/spellbook_entry/proc/Refund(mob/living/carbon/human/user,obj/item/spellbook/book) //return point value or -1 for failure
 	var/area/wizard_station/A = GLOB.areas_by_type[/area/wizard_station]
 	if(!(user in A.contents))
-		to_chat(user, "<span class='warning'>You can only refund spells at the wizard lair</span>")
+		to_chat(user, "<span class='warning'>Zaklęcia możesz zwracać tylko w kryjówce czarodzieja</span>")
 		return -1
 	if(!S)
 		S = new spell_type()
@@ -465,10 +465,10 @@
 	if(cost>0)
 		dat += " Cost:[cost]<br>"
 	else
-		dat += " No Cost<br>"
+		dat += " Za darmo<br>"
 	dat += "<i>[desc]</i><br>"
 	if(active)
-		dat += "<b>Already cast!</b><br>"
+		dat += "<b>Już rzucone!</b><br>"
 	return dat
 
 /datum/spellbook_entry/summon/proc/say_invocation(mob/living/carbon/human/user)
@@ -485,7 +485,7 @@
 	SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
 	new /datum/round_event/wizard/ghost()
 	active = TRUE
-	to_chat(user, "<span class='notice'>You have cast summon ghosts!</span>")
+	to_chat(user, "<span class='notice'>Rzucasz przywołanie duchów!</span>")
 	playsound(get_turf(user), 'sound/effects/ghost2.ogg', 50, 1)
 	say_invocation(user)
 	return TRUE
@@ -509,7 +509,7 @@
 	rightandwrong(SUMMON_GUNS, user, 10)
 	active = TRUE
 	playsound(get_turf(user), 'sound/magic/castsummon.ogg', 50, 1)
-	to_chat(user, "<span class='notice'>You have cast summon guns!</span>")
+	to_chat(user, "<span class='notice'>Rzucasz przywołanie broni!</span>")
 	say_invocation(user)
 	return TRUE
 
@@ -532,7 +532,7 @@
 	rightandwrong(SUMMON_MAGIC, user, 10)
 	active = TRUE
 	playsound(get_turf(user), 'sound/magic/castsummon.ogg', 50, 1)
-	to_chat(user, "<span class='notice'>You have cast summon magic!</span>")
+	to_chat(user, "<span class='notice'>Rzucasz przywołanie magii!</span>")
 	say_invocation(user)
 	return TRUE
 
@@ -556,14 +556,14 @@
 	summonevents()
 	times++
 	playsound(get_turf(user), 'sound/magic/castsummon.ogg', 50, 1)
-	to_chat(user, "<span class='notice'>You have cast summon events.</span>")
+	to_chat(user, "<span class='notice'>Rzucasz przywołanie wydarzeń.</span>")
 	say_invocation(user)
 	return TRUE
 
 /datum/spellbook_entry/summon/events/GetInfo()
 	. = ..()
 	if(times>0)
-		. += "You cast it [times] times.<br>"
+		. += "Rzucono [times] razy.<br>"
 	return .
 
 /datum/spellbook_entry/summon/curse_of_madness
@@ -577,9 +577,9 @@
 	active = TRUE
 	var/message
 	while(!message)
-		message = stripped_input(user, "Whisper a secret truth to drive your victims to madness.", "Whispers of Madness")
+		message = stripped_input(user, "Wyszepcz sekretną prawdę, która doprowadzi twoje ofiary do szaleństwa.", "Szepty szaleństwa")
 	curse_of_madness(user, message)
-	to_chat(user, "<span class='notice'>You have cast the curse of insanity!</span>")
+	to_chat(user, "<span class='notice'>Rzucasz klątwę obłędu!</span>")
 	playsound(user, 'sound/magic/mandswap.ogg', 50, 1)
 	return TRUE
 
@@ -592,7 +592,7 @@
 
 /datum/spellbook_entry/summon/wild_magic/Buy(mob/living/carbon/human/user, obj/item/spellbook/book)
 	if(!book.uses)
-		to_chat(user, "<span class='notice'>You have no spell points for this ritual.</span>") // You can cast it again as long as you get more spell points somehow
+		to_chat(user, "<span class='notice'>Nie masz punktów zaklęć na ten rytuał.</span>") // You can cast it again as long as you get more spell points somehow
 		return FALSE
 	SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
 	book.uses = round(book.uses*WIZARD_WILDMAGIC_SPELLPOINT_MULTIPLIER) // more spell points
@@ -631,9 +631,9 @@
 /obj/item/spellbook/examine(mob/user)
 	. = ..()
 	if(owner)
-		. += {"There is a small signature on the front cover: "[owner]"."}
+		. += {"Na przedniej okładce widnieje mały podpis: "[owner]"."}
 	else
-		. += "It appears to have no author."
+		. += "Wygląda na to, że nie ma autora."
 
 /obj/item/spellbook/Initialize(mapload)
 	. = ..()
@@ -652,21 +652,21 @@
 
 /obj/item/spellbook/attackby(obj/item/O, mob/user, params)
 	if(refuses_refund)
-		to_chat(user, "<span class='warning'>Your book is powerless because of Wild Magic Manipulation ritual. The book doesn't accept the item.</span>")
+		to_chat(user, "<span class='warning'>Twoja księga jest bezsilna przez rytuał Manipulacji Dziką Magią. Księga nie przyjmuje przedmiotu.</span>")
 		return
 	if(istype(O, /obj/item/antag_spawner/contract))
 		var/obj/item/antag_spawner/contract/contract = O
 		if(contract.used)
-			to_chat(user, "<span class='warning'>The contract has been used, you can't get your points back now!</span>")
+			to_chat(user, "<span class='warning'>Umowa została wykorzystana, nie odzyskasz już punktów!</span>")
 		else
-			to_chat(user, "<span class='notice'>You feed the contract back into the spellbook, refunding your points.</span>")
+			to_chat(user, "<span class='notice'>Oddajesz umowę księdze zaklęć i odzyskujesz punkty.</span>")
 			uses++
 			for(var/datum/spellbook_entry/item/contract/CT in entries)
 				if(!isnull(CT.limit))
 					CT.limit++
 			qdel(O)
 	else if(istype(O, /obj/item/antag_spawner/slaughter_demon))
-		to_chat(user, "<span class='notice'>On second thought, maybe summoning a demon is a bad idea. You refund your points.</span>")
+		to_chat(user, "<span class='notice'>Po namyśle przywołanie demona to może zły pomysł. Odzyskujesz punkty.</span>")
 		uses++
 		for(var/datum/spellbook_entry/item/bloodbottle/BB in entries)
 			if(!isnull(BB.limit))
@@ -677,30 +677,30 @@
 	var/dat = ""
 	switch(category)
 		if("Offensive")
-			dat += "Spells and items geared towards debilitating and destroying.<BR><BR>"
-			dat += "Items are not bound to you and can be stolen. Additionally they cannot typically be returned once purchased.<BR>"
-			dat += "For spells: the number after the spell name is the cooldown time.<BR>"
-			dat += "You can reduce this number by spending more points on the spell.<BR>"
+			dat += "Zaklęcia i przedmioty do osłabiania i niszczenia.<BR><BR>"
+			dat += "Przedmioty nie są z tobą związane i można je ukraść. Zwykle nie da się ich też zwrócić po zakupie.<BR>"
+			dat += "W przypadku zaklęć liczba po nazwie to czas odnowienia.<BR>"
+			dat += "Możesz go skrócić, wydając na zaklęcie więcej punktów.<BR>"
 		if("Defensive")
-			dat += "Spells and items geared towards improving your survivability or reducing foes' ability to attack.<BR><BR>"
-			dat += "Items are not bound to you and can be stolen. Additionally they cannot typically be returned once purchased.<BR>"
-			dat += "For spells: the number after the spell name is the cooldown time.<BR>"
-			dat += "You can reduce this number by spending more points on the spell.<BR>"
+			dat += "Zaklęcia i przedmioty zwiększające szanse na przetrwanie lub osłabiające ataki wrogów.<BR><BR>"
+			dat += "Przedmioty nie są z tobą związane i można je ukraść. Zwykle nie da się ich też zwrócić po zakupie.<BR>"
+			dat += "W przypadku zaklęć liczba po nazwie to czas odnowienia.<BR>"
+			dat += "Możesz go skrócić, wydając na zaklęcie więcej punktów.<BR>"
 		if("Mobility")
-			dat += "Spells and items geared towards improving your ability to move. It is a good idea to take at least one.<BR><BR>"
-			dat += "Items are not bound to you and can be stolen. Additionally they cannot typically be returned once purchased.<BR>"
-			dat += "For spells: the number after the spell name is the cooldown time.<BR>"
-			dat += "You can reduce this number by spending more points on the spell.<BR>"
+			dat += "Zaklęcia i przedmioty poprawiające twoją mobilność. Warto wziąć choć jedno.<BR><BR>"
+			dat += "Przedmioty nie są z tobą związane i można je ukraść. Zwykle nie da się ich też zwrócić po zakupie.<BR>"
+			dat += "W przypadku zaklęć liczba po nazwie to czas odnowienia.<BR>"
+			dat += "Możesz go skrócić, wydając na zaklęcie więcej punktów.<BR>"
 		if("Assistance")
-			dat += "Spells and items geared towards bringing in outside forces to aid you or improving upon your other items and abilities.<BR><BR>"
-			dat += "Items are not bound to you and can be stolen. Additionally they cannot typically be returned once purchased.<BR>"
-			dat += "For spells: the number after the spell name is the cooldown time.<BR>"
-			dat += "You can reduce this number by spending more points on the spell.<BR>"
+			dat += "Zaklęcia i przedmioty sprowadzające zewnętrzne siły do pomocy lub ulepszające inne przedmioty i zdolności.<BR><BR>"
+			dat += "Przedmioty nie są z tobą związane i można je ukraść. Zwykle nie da się ich też zwrócić po zakupie.<BR>"
+			dat += "W przypadku zaklęć liczba po nazwie to czas odnowienia.<BR>"
+			dat += "Możesz go skrócić, wydając na zaklęcie więcej punktów.<BR>"
 		if("Challenges")
-			dat += "The Wizard Federation typically has hard limits on the potency and number of spells brought to the station based on risk.<BR>"
-			dat += "Arming the station against you will increases the risk, but will grant you one more charge for your spellbook.<BR>"
+			dat += "Federacja Czarodziejów zwykle ściśle ogranicza moc i liczbę zaklęć zabieranych na statek, zależnie od ryzyka.<BR>"
+			dat += "Uzbrojenie statku przeciwko tobie zwiększa ryzyko, ale daje twojej księdze jeden dodatkowy ładunek.<BR>"
 		if("Rituals")
-			dat += "These powerful spells change the very fabric of reality. Not always in your favour.<BR>"
+			dat += "Te potężne zaklęcia zmieniają samą tkankę rzeczywistości. Nie zawsze na twoją korzyść.<BR>"
 	return dat
 
 /obj/item/spellbook/proc/wrap(content)
@@ -725,11 +725,11 @@
 
 /obj/item/spellbook/attack_self(mob/user)
 	if(!owner)
-		to_chat(user, "<span class='notice'>You bind the spellbook to yourself.</span>")
+		to_chat(user, "<span class='notice'>Wiążesz księgę zaklęć ze sobą.</span>")
 		owner = user
 		return
 	if(user != owner)
-		to_chat(user, "<span class='warning'>The [name] does not recognize you as its owner and refuses to open!</span>")
+		to_chat(user, "<span class='warning'>[name] nie rozpoznaje w tobie właściciela i nie chce się otworzyć!</span>")
 		return
 	user.set_machine(src)
 	var/dat = ""
@@ -740,7 +740,7 @@
 		cat_dat[category] = "<hr>"
 		dat += "<li><a [tab==category?"class=selected":""] href='byond://?src=[REF(src)];page=[category]'>[category]</a></li>"
 
-	dat += "<li><a><b>Points remaining : [uses]</b></a></li>"
+	dat += "<li><a><b>Pozostałe punkty: [uses]</b></a></li>"
 	dat += "</ul>"
 
 	var/datum/spellbook_entry/E
@@ -778,7 +778,7 @@
 		return TRUE
 
 	if(H.mind.special_role == "apprentice")
-		temp = "If you got caught sneaking a peek from your teacher's spellbook, you'd likely be expelled from the Wizard Academy. Better not."
+		temp = "Gdyby cię przyłapano na podglądaniu księgi nauczyciela, pewnie wyrzucono by cię z Akademii Czarodziejów. Lepiej nie."
 		return
 
 	var/datum/spellbook_entry/E = null

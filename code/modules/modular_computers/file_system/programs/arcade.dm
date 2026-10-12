@@ -1,11 +1,11 @@
 /datum/computer_file/program/arcade
 	filename = "arcade"
-	filedesc = "Nanotrasen Micro Arcade"
+	filedesc = "Mikroautomat Nanotrasen"
 	category = PROGRAM_CATEGORY_MISC
 	program_icon_state = "arcade"
-	extended_desc = "This port of the classic game 'Outbomb Cuban Pete', redesigned to run on tablets, with thrilling graphics and chilling storytelling."
+	extended_desc = "Port klasycznej gry „Outbomb Cuban Pete”, przerobiony na tablety, z ekscytującą grafiką i mrożącą krew w żyłach fabułą."
 	requires_ntnet = FALSE
-	network_destination = "arcade network"
+	network_destination = "sieć gier"
 	size = 6
 	tgui_id = "NtosArcade"
 	program_icon = "gamepad"
@@ -22,15 +22,15 @@
 	var/player_mp = 10
 	var/ticket_count = 0
 	///Shows what text is shown on the app, usually showing the log of combat actions taken by the player.
-	var/heads_up = "Nanotrasen says, winners make us money."
-	var/boss_name = "Cuban Pete's Minion"
+	var/heads_up = "Nanotrasen mówi: zwycięzcy przynoszą nam pieniądze."
+	var/boss_name = "Sługa Kubańskiego Pete'a"
 	///Determines which boss image to use on the UI.
 	var/boss_id = 1
 
 /datum/computer_file/program/arcade/proc/game_check(mob/user)
 	sleep(5)
 	if(boss_hp <= 0)
-		heads_up = "You have crushed [boss_name]! Rejoice!"
+		heads_up = "Zmiażdżyłeś [boss_name]! Raduj się!"
 		playsound(computer.loc, 'sound/arcade/win.ogg', 50, TRUE, extrarange = -3, falloff_exponent = 10)
 		game_active = FALSE
 		program_icon_state = "arcade_off"
@@ -39,7 +39,7 @@
 		ticket_count += 1
 		sleep(10)
 	else if(player_hp <= 0 || player_mp <= 0)
-		heads_up = "You have been defeated... how will the station survive?"
+		heads_up = "Zostałeś pokonany... jak stacja to przetrwa?"
 		playsound(computer.loc, 'sound/arcade/lose.ogg', 50, TRUE, extrarange = -3, falloff_exponent = 10)
 		game_active = FALSE
 		program_icon_state = "arcade_off"
@@ -58,17 +58,17 @@
 	if(game_active == FALSE)
 		return
 	if (boss_mp <= 5)
-		heads_up = "[boss_mpamt] magic power has been stolen from you!"
+		heads_up = "Skradziono ci many: [boss_mpamt]!"
 		playsound(computer.loc, 'sound/arcade/steal.ogg', 50, TRUE, extrarange = -3, falloff_exponent = 10)
 		player_mp -= boss_mpamt
 		boss_mp += boss_mpamt
 	else if(boss_mp > 5 && boss_hp <12)
-		heads_up = "[boss_name] heals for [bossheal] health!"
+		heads_up = "[boss_name] leczy się o [bossheal] pkt zdrowia!"
 		playsound(computer.loc, 'sound/arcade/heal.ogg', 50, TRUE, extrarange = -3, falloff_exponent = 10)
 		boss_hp += bossheal
 		boss_mp -= boss_mpamt
 	else
-		heads_up = "[boss_name] attacks you for [boss_attackamt] damage!"
+		heads_up = "[boss_name] atakuje cię, zadając [boss_attackamt] obrażeń!"
 		playsound(computer.loc, 'sound/arcade/hit.ogg', 50, TRUE, extrarange = -3, falloff_exponent = 10)
 		player_hp -= boss_attackamt
 
@@ -103,7 +103,7 @@
 			if(pause_state == FALSE)
 				attackamt = rand(2, 6)
 			pause_state = TRUE
-			heads_up = "You attack for [attackamt] damage."
+			heads_up = "Atakujesz, zadając [attackamt] obrażeń."
 			playsound(computer.loc, 'sound/arcade/hit.ogg', 50, TRUE, extrarange = -3, falloff_exponent = 10)
 			boss_hp -= attackamt
 			sleep(10)
@@ -117,7 +117,7 @@
 				healamt = rand(6, 8)
 				healcost = rand(1, 3)
 			pause_state = TRUE
-			heads_up = "You heal for [healamt] damage."
+			heads_up = "Leczysz się o [healamt] pkt."
 			playsound(computer.loc, 'sound/arcade/heal.ogg', 50, TRUE, extrarange = -3, falloff_exponent = 10)
 			player_hp += healamt
 			player_mp -= healcost
@@ -130,7 +130,7 @@
 			if(pause_state == FALSE)
 				rechargeamt = rand(4, 7)
 			pause_state = TRUE
-			heads_up = "You regain [rechargeamt] magic power."
+			heads_up = "Odzyskujesz many: [rechargeamt]."
 			playsound(computer.loc, 'sound/arcade/mana.ogg', 50, TRUE, extrarange = -3, falloff_exponent = 10)
 			player_mp += rechargeamt
 			sleep(10)
@@ -142,7 +142,7 @@
 			boss_hp = 45
 			player_hp = 30
 			player_mp = 10
-			heads_up = "You stand before [boss_name]! Prepare for battle!"
+			heads_up = "Stajesz przed [boss_name]! Przygotuj się do walki!"
 			program_icon_state = "arcade"
 			boss_id = rand(1,6)
 			pause_state = FALSE

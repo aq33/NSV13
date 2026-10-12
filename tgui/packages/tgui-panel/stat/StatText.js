@@ -11,6 +11,12 @@ import {
   STAT_TEXT,
 } from './constants';
 import { selectStatPanel } from './selectors';
+import { translateVerb } from './translations';
+
+const sortVerbs = (verbs) =>
+  Object.keys(verbs).sort((a, b) =>
+    translateVerb(a).localeCompare(translateVerb(b), 'pl'),
+  );
 
 export const StatText = (props) => {
   const stat = useSelector(selectStatPanel);
@@ -71,8 +77,8 @@ export const StatText = (props) => {
                       </Flex.Item>
                     ))),
               )
-          : 'No data'}
-        {Object.keys(verbs).map((verb) => (
+          : 'Brak danych'}
+        {sortVerbs(verbs).map((verb) => (
           <StatTextVerb
             key={verb}
             title={verb}
@@ -318,7 +324,9 @@ export const StatTextVerb = (props) => {
   return (
     <Box shrink={1} inline width="200px">
       <Button
-        content={title}
+        content={translateVerb(title)}
+        tooltip={translateVerb(title)}
+        ellipsis
         onClick={() =>
           Byond.sendMessage('stat/pressed', {
             action_id: action_id,

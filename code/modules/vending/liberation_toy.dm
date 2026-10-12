@@ -4,7 +4,7 @@
 	icon_state = "syndi"
 	product_slogans = "Zdobądź swoje super zabawki dziś!;Striggeruj swojego validhuntera już dziś!;Zabawkowe bronie najlepszej jakości w niskiej cenie!;Daj je HoPowi za AA!;Daj je Szefowi Ochrony za bilet do permy!"
 	product_ads = "Poczuj się robustny ze swoimi zabawkami!;Wyraź swoje wewnętrzne dziecko już dziś!;Zabawkowe bronie nie zabijają ludzi. Ale validhunterzy już tak!;Kto potrzebuje odpowiedzialności jeśli masz zabawkowe bronie?;Uczyń swoje następne morderstwo ZABAWNYM!"
-	vend_reply = "Come back for more!"
+	vend_reply = "Wracaj po więcej!"
 	light_color = LIGHT_COLOR_RED
 	circuit = /obj/item/circuitboard/machine/vending/syndicatedonksofttoyvendor
 	products = list(/obj/item/gun/ballistic/automatic/toy/unrestricted = 10,

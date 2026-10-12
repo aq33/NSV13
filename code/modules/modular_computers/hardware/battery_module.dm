@@ -33,30 +33,30 @@
 		return FALSE
 
 	if(battery)
-		to_chat(user, "<span class='warning'>You try to connect \the [I] to \the [src], but its connectors are occupied.</span>")
+		to_chat(user, "<span class='warning'>Próbujesz podłączyć [I] do [src], ale złącza są zajęte.</span>")
 		return FALSE
 
 	if(I.w_class > holder.max_hardware_size)
-		to_chat(user, "<span class='warning'>This power cell is too large for \the [holder]!</span>")
+		to_chat(user, "<span class='warning'>To ogniwo jest za duże dla [holder]!</span>")
 		return FALSE
 
 	if(user && !user.transferItemToLoc(I, src))
 		return FALSE
 
 	battery = I
-	to_chat(user, "<span class='notice'>You connect \the [I] to \the [src].</span>")
+	to_chat(user, "<span class='notice'>Podłączasz [I] do [src].</span>")
 
 	return TRUE
 
 
 /obj/item/computer_hardware/battery/try_eject(mob/living/user = null, forced = FALSE)
 	if(!battery)
-		to_chat(user, "<span class='warning'>There is no power cell connected to \the [src].</span>")
+		to_chat(user, "<span class='warning'>Do [src] nie podłączono żadnego ogniwa.</span>")
 		return FALSE
 	else
 		if(user && in_range(src, user))
 			user.put_in_hands(battery)
-			to_chat(user, "<span class='notice'>You detach \the [battery] from \the [src].</span>")
+			to_chat(user, "<span class='notice'>Odłączasz [battery] od [src].</span>")
 		else
 			battery.forceMove(drop_location())
 

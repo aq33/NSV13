@@ -36,13 +36,13 @@
 /obj/item/circuitboard/computer/card/minor/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		target_dept = (target_dept == dept_list.len) ? 1 : (target_dept + 1)
-		to_chat(user, "<span class='notice'>You set the board to \"[dept_list[target_dept]]\".</span>")
+		to_chat(user, "<span class='notice'>Ustawiasz płytkę na \"[dept_list[target_dept]]\".</span>")
 	else
 		return ..()
 
 /obj/item/circuitboard/computer/card/minor/examine(user)
 	. = ..()
-	. += "Currently set to \"[dept_list[target_dept]]\"."
+	. += "Obecnie ustawiona na \"[dept_list[target_dept]]\"."
 
 /obj/item/circuitboard/computer/communications
 	name = "communications console (Computer Board)"
@@ -56,10 +56,10 @@
 		insecure = !insecure
 		if(insecure)
 			desc = "Tampering has removed some safety features from this circuit board. A screwdriver can undo this."
-			to_chat(user, "<span class='notice'>You disable the shuttle safety features of the board.</span>")
+			to_chat(user, "<span class='notice'>Wyłączasz zabezpieczenia promu na płytce.</span>")
 		else
 			desc = "Can be modified using a screwdriver."
-			to_chat(user, "<span class='notice'>You re-enable the shuttle safety features of the board.</span>")
+			to_chat(user, "<span class='notice'>Ponownie włączasz zabezpieczenia promu na płytce.</span>")
 	else
 		return ..()
 
@@ -225,11 +225,11 @@
 		if(build_path == /obj/machinery/computer/libraryconsole/bookmanagement)
 			name = "Library Visitor Console (Computer Board)"
 			build_path = /obj/machinery/computer/libraryconsole
-			to_chat(user, "<span class='notice'>Defaulting access protocols.</span>")
+			to_chat(user, "<span class='notice'>Przywracanie domyślnych protokołów dostępu.</span>")
 		else
 			name = "Book Inventory Management Console (Computer Board)"
 			build_path = /obj/machinery/computer/libraryconsole/bookmanagement
-			to_chat(user, "<span class='notice'>Access protocols successfully updated.</span>")
+			to_chat(user, "<span class='notice'>Protokoły dostępu zaktualizowane pomyślnie.</span>")
 	else
 		return ..()
 
@@ -360,11 +360,11 @@
 		if(build_path == /obj/machinery/computer/rdconsole/core)
 			name = "R&D Console - Robotics (Computer Board)"
 			build_path = /obj/machinery/computer/rdconsole/robotics
-			to_chat(user, "<span class='notice'>Access protocols successfully updated.</span>")
+			to_chat(user, "<span class='notice'>Protokoły dostępu zaktualizowane pomyślnie.</span>")
 		else
 			name = "R&D Console (Computer Board)"
 			build_path = /obj/machinery/computer/rdconsole/core
-			to_chat(user, "<span class='notice'>Defaulting access protocols.</span>")
+			to_chat(user, "<span class='notice'>Przywracanie domyślnych protokołów dostępu.</span>")
 	else
 		return ..()
 
@@ -440,15 +440,15 @@
 /obj/item/circuitboard/computer/cargo/multitool_act(mob/living/user)
 	if(!(obj_flags & EMAGGED))
 		contraband = !contraband
-		to_chat(user, "<span class='notice'>Receiver spectrum set to [contraband ? "Broad" : "Standard"].</span>")
+		to_chat(user, "<span class='notice'>Spektrum odbiornika ustawione na: [contraband ? "szerokie" : "standardowe"].</span>")
 	else
-		to_chat(user, "<span class='notice'>The spectrum chip is unresponsive.</span>")
+		to_chat(user, "<span class='notice'>Chip spektrum nie reaguje.</span>")
 
 /obj/item/circuitboard/computer/cargo/emag_act(mob/living/user)
 	if(!(obj_flags & EMAGGED))
 		contraband = TRUE
 		obj_flags |= EMAGGED
-		to_chat(user, "<span class='notice'>You adjust [src]'s routing and receiver spectrum, unlocking special supplies and contraband.</span>")
+		to_chat(user, "<span class='notice'>Zmieniasz trasowanie i spektrum odbiornika [src], odblokowując specjalne dostawy i kontrabandę.</span>")
 
 /obj/item/circuitboard/computer/cargo/express
 	name = "express supply console (Computer Board)"
@@ -457,13 +457,13 @@
 
 /obj/item/circuitboard/computer/cargo/express/multitool_act(mob/living/user)
 	if (!(obj_flags & EMAGGED))
-		to_chat(user, "<span class='notice'>Routing protocols are already set to: \"factory defaults\".</span>")
+		to_chat(user, "<span class='notice'>Protokoły trasowania są już ustawione na: \"ustawienia fabryczne\".</span>")
 	else
-		to_chat(user, "<span class='notice'>You reset the routing protocols to: \"factory defaults\".</span>")
+		to_chat(user, "<span class='notice'>Przywracasz protokoły trasowania do: \"ustawienia fabryczne\".</span>")
 		obj_flags &= ~EMAGGED
 
 /obj/item/circuitboard/computer/cargo/express/emag_act(mob/living/user)
-		to_chat(user, "<span class='notice'>You change the routing protocols, allowing the Drop Pod to land anywhere on the station.</span>")
+		to_chat(user, "<span class='notice'>Zmieniasz protokoły trasowania, pozwalając kapsule zrzutowej lądować w dowolnym miejscu stacji.</span>")
 		obj_flags |= EMAGGED
 
 /obj/item/circuitboard/computer/cargo/request
@@ -485,9 +485,9 @@
 	if(I.tool_behaviour == TOOL_MULTITOOL)
 		hacked = !hacked
 		if(hacked)
-			to_chat(user, "<span class='notice'>You disable the circuitboard's ID scanning protocols.</span>")
+			to_chat(user, "<span class='notice'>Wyłączasz protokoły skanowania ID płytki.</span>")
 		else
-			to_chat(user, "<span class='notice'>You reset the circuitboard's ID scanning protocols.</span>")
+			to_chat(user, "<span class='notice'>Przywracasz protokoły skanowania ID płytki.</span>")
 		return
 	. = ..()
 

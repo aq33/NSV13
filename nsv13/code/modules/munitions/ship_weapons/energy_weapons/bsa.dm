@@ -81,12 +81,12 @@
 	if(!M.buffer || !istype(M.buffer, /obj/machinery/ship_weapon/energy/beam/bsa))
 		return
 	cannon = M.buffer
-	to_chat(user, "<span class='warning'>Successfully linked to [M.buffer]...</span>")
+	to_chat(user, "<span class='warning'>Pomyślnie połączono z [M.buffer]...</span>")
 
 /obj/machinery/computer/sts_bsa_control/attack_hand(mob/living/user)
 	. = ..()
 	if(!cannon)
-		to_chat(user, "<span class='warning'>Console not linked to any weaponry.</span>")
+		to_chat(user, "<span class='warning'>Konsola nie jest połączona z żadną bronią.</span>")
 		return FALSE
 	ui_interact(user)
 
@@ -188,11 +188,11 @@
 	if(blocker) //We hit something on the ship
 		var/turf/location = get_turf(blocker)
 		var/admin_message = "The ship BSA has hit [blocker] at [ADMIN_VERBOSEJMP(location)]!"
-		var/log_message = "The ship BSA has hit [blocker] at [AREACOORD(location)]!"
+		var/log_message = "Okrętowe BSA trafiło [blocker] w [AREACOORD(location)]!"
 		var/firer = linked.pilot //Fired by the pilot
 		if(!firer)
 			firer = src
-			admin_message += " BSA fired by [firer]!"
+			admin_message += " [firer] wystrzelił z BSA!"
 		else
 			admin_message += " BSA fired by [ADMIN_LOOKUPFLW(firer)]!"
 		if(istype(blocker, /obj/machinery/the_singularitygen)) //What did you do

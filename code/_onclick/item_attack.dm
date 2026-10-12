@@ -50,7 +50,7 @@
 	if(user.a_intent == INTENT_HARM && stat == DEAD && (butcher_results || guaranteed_butcher_results)) //can we butcher it?
 		var/datum/component/butchering/butchering = I.GetComponent(/datum/component/butchering)
 		if(butchering?.butchering_enabled)
-			to_chat(user, "<span class='notice'>You begin to butcher [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz ćwiartować [src]...</span>")
 			playsound(loc, butchering.butcher_sound, 50, TRUE, -1)
 			if(do_mob(user, src, butchering.speed) && Adjacent(I))
 				butchering.Butcher(user, src)
@@ -70,7 +70,7 @@
 		return
 
 	if(force && HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, "<span class='warning'>You don't want to harm other living beings!</span>")
+		to_chat(user, "<span class='warning'>Nie chcesz krzywdzić innych żywych istot!</span>")
 		return
 
 	if(!force)
@@ -103,8 +103,8 @@
 
 /obj/attacked_by(obj/item/I, mob/living/user)
 	if(I.force)
-		user.visible_message("<span class='danger'>[user] hits [src] with [I]!</span>", \
-					"<span class='danger'>You hit [src] with [I]!</span>", null, COMBAT_MESSAGE_RANGE)
+		user.visible_message("<span class='danger'>[user] uderza [src] za pomocą [I]!</span>", \
+					"<span class='danger'>Uderzasz [src] za pomocą [I]!</span>", null, COMBAT_MESSAGE_RANGE)
 		//only witnesses close by and the victim see a hit message.
 		log_combat(user, src, "attacked", I)
 	take_damage(I.force, I.damtype, "melee", 1)
@@ -146,21 +146,21 @@
 			return CLAMP(w_class * 6, 10, 100) // Multiply the item's weight class by 6, then clamp the value between 10 and 100
 
 /mob/living/proc/send_item_attack_message(obj/item/I, mob/living/user, hit_area)
-	var/message_verb = "attacked"
+	var/message_verb = "atakuje"
 	if(I.attack_verb && I.attack_verb.len)
 		message_verb = "[pick(I.attack_verb)]"
 	else if(!I.force)
 		return
 	var/message_hit_area = ""
 	if(hit_area)
-		message_hit_area = " in the [hit_area]"
-	var/attack_message = "[src] is [message_verb][message_hit_area] with [I]!"
-	var/attack_message_local = "You're [message_verb][message_hit_area] with [I]!"
+		message_hit_area = " w [strefa_pl(hit_area, TRUE)]"
+	var/attack_message = "[I] [message_verb] [src][message_hit_area]!"
+	var/attack_message_local = "[I] [message_verb] cię[message_hit_area]!"
 	if(user in viewers(src))
-		attack_message = "[user] [message_verb] [src][message_hit_area] with [I]!"
-		attack_message_local = "[user] [message_verb] you[message_hit_area] with [I]!"
+		attack_message = "[user] [message_verb] [src][message_hit_area], używając [I]!"
+		attack_message_local = "[user] [message_verb] cię[message_hit_area], używając [I]!"
 	if(user == src)
-		attack_message_local = "You [message_verb] yourself[message_hit_area] with [I]!"
+		attack_message_local = "Ranisz się[message_hit_area], używając [I]!"
 	visible_message("<span class='danger'>[attack_message]</span>",\
 		"<span class='userdanger'>[attack_message_local]</span>", null, COMBAT_MESSAGE_RANGE)
 	return 1

@@ -3,7 +3,7 @@ import { Component, createRef } from 'react';
 import { TextArea } from 'tgui/components';
 import { dragStartHandler } from 'tgui/drag';
 
-import { WINDOW_SIZES } from '../constants';
+import { CHANNEL_LABELS, WINDOW_SIZES } from '../constants';
 import { eventHandlerMap } from '../handlers';
 import { getCss, getTheme, timers } from '../helpers';
 import { Modal, State } from '../types';
@@ -18,6 +18,7 @@ export class TguiSay extends Component<{}, State> {
     showRadioPrefix: false,
     dpi: 1,
     maxLength: 1024,
+    radioChannels: [],
     radioPrefix: '',
     tempHistory: '',
     value: '',
@@ -70,7 +71,7 @@ export class TguiSay extends Component<{}, State> {
               }}
               type="submit"
             >
-              {buttonContent}
+              {CHANNEL_LABELS[String(buttonContent)] || buttonContent}
             </button>
           )}
           <TextArea

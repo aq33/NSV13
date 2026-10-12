@@ -23,24 +23,24 @@
 /obj/item/nanite_remote/examine(mob/user)
 	. = ..()
 	if(locked)
-		. += "<span class='notice'>Alt-click to unlock.</span>"
+		. += "<span class='notice'>Alt-klik, by odblokować.</span>"
 
 /obj/item/nanite_remote/AltClick(mob/user)
 	if(!user.canUseTopic(src, BE_CLOSE))
 		return
 	if(locked)
 		if(allowed(user))
-			to_chat(user, "<span class='notice'>You unlock [src].</span>")
+			to_chat(user, "<span class='notice'>Odblokowujesz [src].</span>")
 			locked = FALSE
 			update_icon()
 			ui_update()
 		else
-			to_chat(user, "<span class='warning'>Access denied.</span>")
+			to_chat(user, "<span class='warning'>Odmowa dostępu.</span>")
 
 /obj/item/nanite_remote/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
-	to_chat(user, "<span class='warning'>You override [src]'s ID lock.</span>")
+	to_chat(user, "<span class='warning'>Obchodzisz blokadę identyfikacyjną [src].</span>")
 	obj_flags |= EMAGGED
 	if(locked)
 		locked = FALSE
@@ -60,18 +60,18 @@
 		if(REMOTE_MODE_OFF)
 			return
 		if(REMOTE_MODE_SELF)
-			to_chat(user, "<span class='notice'>You activate [src], signaling the nanites in your bloodstream.</span>")
+			to_chat(user, "<span class='notice'>Aktywujesz [src], wysyłając sygnał do nanitów w twoim krwiobiegu.</span>")
 			signal_mob(user, code, key_name(user))
 		if(REMOTE_MODE_TARGET)
 			if(isliving(target) && (get_dist(target, get_turf(src)) <= 7))
-				to_chat(user, "<span class='notice'>You activate [src], signaling the nanites inside [target].</span>")
+				to_chat(user, "<span class='notice'>Aktywujesz [src], wysyłając sygnał do nanitów w [target].</span>")
 				signal_mob(target, code, key_name(user))
 		if(REMOTE_MODE_AOE)
-			to_chat(user, "<span class='notice'>You activate [src], signaling the nanites inside every host around you.</span>")
+			to_chat(user, "<span class='notice'>Aktywujesz [src], wysyłając sygnał do nanitów w każdym nosicielu wokół ciebie.</span>")
 			for(var/mob/living/L in hearers(7, user))
 				signal_mob(L, code, key_name(user))
 		if(REMOTE_MODE_RELAY)
-			to_chat(user, "<span class='notice'>You activate [src], signaling all connected relay nanites.</span>")
+			to_chat(user, "<span class='notice'>Aktywujesz [src], wysyłając sygnał do wszystkich połączonych nanitów przekaźnikowych.</span>")
 			signal_relay(code, relay_code, key_name(user))
 
 /obj/item/nanite_remote/proc/signal_mob(mob/living/M, code, source)
@@ -183,18 +183,18 @@
 		if(REMOTE_MODE_OFF)
 			return
 		if(REMOTE_MODE_SELF)
-			to_chat(user, "<span class='notice'>You activate [src], signaling the nanites in your bloodstream.</span>")
+			to_chat(user, "<span class='notice'>Aktywujesz [src], wysyłając sygnał do nanitów w twoim krwiobiegu.</span>")
 			signal_mob(user, code, comm_message)
 		if(REMOTE_MODE_TARGET)
 			if(isliving(target) && (get_dist(target, get_turf(src)) <= 7))
-				to_chat(user, "<span class='notice'>You activate [src], signaling the nanites inside [target].</span>")
+				to_chat(user, "<span class='notice'>Aktywujesz [src], wysyłając sygnał do nanitów w [target].</span>")
 				signal_mob(target, code, comm_message, key_name(user))
 		if(REMOTE_MODE_AOE)
-			to_chat(user, "<span class='notice'>You activate [src], signaling the nanites inside every host around you.</span>")
+			to_chat(user, "<span class='notice'>Aktywujesz [src], wysyłając sygnał do nanitów w każdym nosicielu wokół ciebie.</span>")
 			for(var/mob/living/L in hearers(7, user))
 				signal_mob(L, code, comm_message, key_name(user))
 		if(REMOTE_MODE_RELAY)
-			to_chat(user, "<span class='notice'>You activate [src], signaling all connected relay nanites.</span>")
+			to_chat(user, "<span class='notice'>Aktywujesz [src], wysyłając sygnał do wszystkich połączonych nanitów przekaźnikowych.</span>")
 			signal_relay(code, relay_code, comm_message, key_name(user))
 
 /obj/item/nanite_remote/comm/signal_mob(mob/living/M, code, source)
@@ -229,7 +229,7 @@
 			if(!new_message)
 				return
 			if(CHAT_FILTER_CHECK(new_message))
-				to_chat(usr, "<span class='warning'>Your message contains forbidden words.</span>")
+				to_chat(usr, "<span class='warning'>Twoja wiadomość zawiera zakazane słowa.</span>")
 				var/logmsg = "attempted to set a forbidden nanite cloud message with contents: \"[new_message]\". The message was filtered and blocked."
 				log_admin_private("[key_name(usr)] [logmsg]")
 				message_admins("[ADMIN_LOOKUPFLW(usr)] [logmsg]")

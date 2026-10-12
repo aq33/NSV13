@@ -45483,7 +45483,7 @@
 	name = "\improper Dossimiter"
 	},
 /obj/item/paper/crumpled{
-	default_raw_text = "<center><b>No. You do not deserve them</center></b><br><br><center></center>"
+	default_raw_text = "<center><b>Nie. Nie zasługujesz na nie</center></b><br><br><center></center>"
 	},
 /turf/open/floor/durasteel/lino,
 /area/engine/engineering/reactor_control)

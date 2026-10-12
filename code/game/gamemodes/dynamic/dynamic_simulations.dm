@@ -68,9 +68,9 @@
 	set name = "Run Dynamic Simulations"
 	set category = "Debug"
 
-	var/simulations = input(usr, "Enter number of simulations") as num
-	var/roundstart_players = input(usr, "Enter number of round start players") as num
-	var/forced_threat_level = input(usr, "Enter forced threat level, if you want one") as num | null
+	var/simulations = input(usr, "Podaj liczbę symulacji") as num
+	var/roundstart_players = input(usr, "Podaj liczbę graczy na start rundy") as num
+	var/forced_threat_level = input(usr, "Podaj wymuszony poziom zagrożenia, jeśli chcesz") as num | null
 
 	SSticker.mode = config.pick_mode("dynamic")
 	message_admins("Running dynamic simulations...")

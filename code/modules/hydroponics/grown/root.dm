@@ -27,7 +27,7 @@
 
 /obj/item/food/grown/carrot/attackby(obj/item/I, mob/user, params)
 	if(I.is_sharp())
-		to_chat(user, "<span class='notice'>You sharpen the carrot into a shiv with [I].</span>")
+		to_chat(user, "<span class='notice'>Za pomocą [I] ostrzysz marchewkę w prowizoryczny nóż.</span>")
 		var/obj/item/kitchen/knife/carrotshiv/Shiv = new /obj/item/kitchen/knife/carrotshiv
 		remove_item_from_storage(user)
 		qdel(src)

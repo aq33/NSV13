@@ -6,7 +6,7 @@
 
 /obj/item/clothing/shoes/sneakers/black
 	name = "black shoes"
-	desc = "A pair of black shoes."
+	desc = "Para czarnych butów."
 	custom_price = 20
 	greyscale_colors = "#545454#ffffff"
 
@@ -17,7 +17,7 @@
 
 /obj/item/clothing/shoes/sneakers/brown
 	name = "brown shoes"
-	desc = "A pair of brown shoes."
+	desc = "Para brązowych butów."
 	greyscale_colors = "#814112#ffffff"
 
 /obj/item/clothing/shoes/sneakers/blue
@@ -38,7 +38,7 @@
 
 /obj/item/clothing/shoes/sneakers/red
 	name = "red shoes"
-	desc = "Stylish red shoes."
+	desc = "Stylowe czerwone buty."
 	greyscale_colors = "#ff2626#ffffff"
 
 /obj/item/clothing/shoes/sneakers/white
@@ -84,7 +84,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/hummie = user
 		if(hummie.shoes == src && chained)
-			to_chat(hummie, "<span class='warning'>You start taking off your [src]!</span>")
+			to_chat(hummie, "<span class='warning'>Zaczynasz zdejmować [src]!</span>")
 			if(!do_after(hummie,15 SECONDS, src))
 				return FALSE
 	return ..()
@@ -94,7 +94,7 @@
 	if(ishuman(m))
 		var/mob/living/carbon/human/hummie = m
 		if(hummie.shoes == src && chained)
-			to_chat(hummie, "<span class='warning'>You start taking off your [src]!</span>")
+			to_chat(hummie, "<span class='warning'>Zaczynasz zdejmować [src]!</span>")
 			if(!do_after(hummie,15 SECONDS, src))
 				return FALSE
 	return ..()

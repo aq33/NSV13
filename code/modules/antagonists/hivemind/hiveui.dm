@@ -19,7 +19,7 @@
 /datum/psychic_plane/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "PsychicPlane", "Psychic Plane")
+		ui = new(user, src, "PsychicPlane", "Plan psychiczny")
 		ui.open()
 		ui.set_autoupdate(TRUE)
 
@@ -49,32 +49,32 @@
 		var/hivetarget = params["hiveref"]
 		var/mob/living/carbon/ourhive = hivehost.owner?.current
 		if(hivetarget == hivehost.hiveID)
-			to_chat(ourhive, "<span class='notice'>We cannot track ourselves!</span>")
+			to_chat(ourhive, "<span class='notice'>Nie możemy namierzać samych siebie!</span>")
 			return
 		if(hivehost.searchcharge <= 0)
-			to_chat(ourhive, "<span class='notice'>We don't have any tracking charges!</span>")
+			to_chat(ourhive, "<span class='notice'>Nie mamy ładunków namierzania!</span>")
 			return
 		hivehost.searchcharge -= 1
 		if(!do_after(ourhive,5,0,ourhive))
-			to_chat(ourhive, "<span class='notice'>Our concentration has been broken!</span>")
+			to_chat(ourhive, "<span class='notice'>Nasza koncentracja została przerwana!</span>")
 		else
 			for(var/datum/antagonist/hivemind/hivehosts in GLOB.hivehosts)
 				if(hivehosts.hiveID == hivetarget)
 					var/mob/living/carbon/enemy = hivehosts.owner?.current
 					if(hivehosts.owner.current.stat == DEAD) //ourhive.get_virtual_z_level() != enemy.get_virtual_z_level() ||
-						to_chat(ourhive, "<span class='notice'>We could not find [hivehosts.hiveID]</span>")
+						to_chat(ourhive, "<span class='notice'>Nie znaleźliśmy [hivehosts.hiveID]</span>")
 					else
 						var/dist = get_dist(ourhive.loc,enemy.loc)
 						var/dir = get_dir(ourhive.loc,enemy.loc)
 						switch(dist)
 							if(0 to 7)
-								to_chat(ourhive,"<span class='assimilator'>Their presence is immediatly to the [dir2text(dir)]!</span>")
+								to_chat(ourhive,"<span class='assimilator'>Ich obecność jest tuż obok, kierunek: [dir2text(dir)]!</span>")
 							if(8 to 15)
-								to_chat(ourhive,"<span class='notice'>We find their presence close, to the [dir2text(dir)]!</span>")
+								to_chat(ourhive,"<span class='notice'>Wyczuwamy ich obecność blisko, kierunek: [dir2text(dir)]!</span>")
 							if(16 to 31)
-								to_chat(ourhive,"<span class='notice'>We find traces in our vicinty. They are to the [dir2text(dir)] of us!</span>")
+								to_chat(ourhive,"<span class='notice'>Wyczuwamy ślady w pobliżu. Kierunek: [dir2text(dir)]!</span>")
 							else
-								to_chat(ourhive,"<span class='notice'>We find faint sparks far away. They are to the [dir2text(dir)] of us!</span>")
+								to_chat(ourhive,"<span class='notice'>Wyczuwamy słabe iskry daleko stąd. Kierunek: [dir2text(dir)]!</span>")
 
 
 /datum/action/innate/psychic_plane

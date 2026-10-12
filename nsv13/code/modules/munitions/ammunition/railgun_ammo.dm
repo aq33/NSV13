@@ -74,9 +74,9 @@
 /obj/item/ship_weapon/ammunition/railgun_ammo_canister/examine(mob/user)
 	. = ..()
 	if(canister_sealed == TRUE)
-		. += "<span class='notice'>The canister has been permamently sealed.</span>"
+		. += "<span class='notice'>Kanister został trwale zaplombowany.</span>"
 	else
-		. += "<span class='notice'>The canister isn't sealed.</span>"
+		. += "<span class='notice'>Kanister nie jest zaplombowany.</span>"
 
 /obj/item/ship_weapon/ammunition/railgun_ammo_canister/Destroy()
 	. = ..()
@@ -219,7 +219,7 @@
 			return
 		else
 			user.apply_damage(5, damagetype=CLONE)
-			to_chat(user,"<span class='notice'>Your hand tingles and feels warm when touching the [src].</span>")
+			to_chat(user,"<span class='notice'>Gdy dotykasz [src], twoja dłoń mrowi i robi się ciepła.</span>")
 
 /obj/item/ship_weapon/ammunition/railgun_ammo_canister/pre_gen_copper_iron //test round
 	name = "\improper Forged 800mm copper coated iron canister"

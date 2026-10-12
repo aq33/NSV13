@@ -9,14 +9,14 @@
 	var/required_crew = 10
 	var/list/gamemode_blacklist = list()
 	var/completed = FALSE
-	var/report_message = "Complete this goal."
+	var/report_message = "Ukończcie ten cel."
 
 /datum/station_goal/proc/prepare_report()
 	addtimer(CALLBACK(src, PROC_REF(send_report)), 1200) // 2 min, less than avg 4 for intercept report
 
 /datum/station_goal/proc/send_report()
-	priority_announce("Priority Nanotrasen directive received. Project \"[name]\" details inbound.", "Incoming Priority Message", SSstation.announcer.get_rand_report_sound())
-	print_command_report(get_report(),"Nanotrasen Directive [pick(GLOB.phonetic_alphabet)] \Roman[rand(1,50)]", announce=FALSE)
+	priority_announce("Otrzymano priorytetową dyrektywę Nanotrasen. Szczegóły projektu \"[name]\" w drodze.", "Przychodząca wiadomość priorytetowa", SSstation.announcer.get_rand_report_sound())
+	print_command_report(get_report(),"Dyrektywa Nanotrasen [pick(GLOB.phonetic_alphabet)] \Roman[rand(1,50)]", announce=FALSE)
 	on_report()
 
 /datum/station_goal/proc/on_report()

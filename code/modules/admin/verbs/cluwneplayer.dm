@@ -17,8 +17,8 @@
 	if(key)  // afk (no mind)
 		newmob.key = key
 
-	var/msg = "\n\n\n\n\nYour mind is ripped apart like threads in fabric, everything you've ever known is gone.\n"
-	msg += "There is only the <b><i>Honkmother</i></b> now.\n"
+	var/msg = "\n\n\n\n\nTwój umysł zostaje rozdarty jak nitki w tkaninie, wszystko, co kiedykolwiek znałeś, znika.\n"
+	msg += "Teraz jest już tylko <b><i>Honkmatka</i></b>.\n"
 	msg += "Honk!\n"
 	to_chat(M, msg)
 

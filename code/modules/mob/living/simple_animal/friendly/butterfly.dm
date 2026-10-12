@@ -5,13 +5,13 @@
 	icon_living = "butterfly"
 	icon_dead = "butterfly_dead"
 	turns_per_move = 1
-	response_help = "shoos"
-	response_disarm = "brushes aside"
-	response_harm = "squashes"
-	speak_emote = list("flutters")
+	response_help = "przegania"
+	response_disarm = "odsuwa na bok"
+	response_harm = "zgniata"
+	speak_emote = list("trzepocze")
 	maxHealth = 2
 	health = 2
-	friendly = "nudges"
+	friendly = "trąca"
 	density = FALSE
 	movement_type = FLYING
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
@@ -19,10 +19,10 @@
 	mob_size = MOB_SIZE_TINY
 	mob_biotypes = list(MOB_ORGANIC, MOB_BUG)
 	gold_core_spawnable = FRIENDLY_SPAWN
-	verb_say = "flutters"
-	verb_ask = "flutters inquisitively"
-	verb_exclaim = "flutters intensely"
-	verb_yell = "flutters intensely"
+	verb_say = "trzepocze"
+	verb_ask = "trzepocze pytająco"
+	verb_exclaim = "trzepocze zawzięcie"
+	verb_yell = "trzepocze zawzięcie"
 
 /mob/living/simple_animal/butterfly/Initialize(mapload)
 	. = ..()

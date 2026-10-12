@@ -3,10 +3,10 @@
 	name = "Apidite"
 	icon_state = "apidite"
 	desc = "The language of Apids, oh god, that's a lot of buzzing."
-	speech_verb = "buzzes"
-	ask_verb = "buzzes questioningly"
-	exclaim_verb = "buzzes loudly"
-	sing_verb = "groove"
+	speech_verb = "brzęczy"
+	ask_verb = "brzęczy pytająco"
+	exclaim_verb = "brzęczy głośno"
+	sing_verb = "nuci"
 	key = "*"
 	flags = TONGUELESS_SPEECH
 	space_chance = 40

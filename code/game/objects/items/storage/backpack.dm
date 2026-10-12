@@ -61,7 +61,7 @@
 	STR.max_combined_w_class = 35
 
 /obj/item/storage/backpack/holding/suicide_act(mob/living/user)
-	user.visible_message("<span class='suicide'>[user] is jumping into [src]! It looks like [user.p_theyre()] trying to commit suicide.</span>")
+	user.visible_message("<span class='suicide'>[user] wskakuje do [src]! Wygląda na to, że próbuje popełnić samobójstwo.</span>")
 	user.dropItemToGround(src, TRUE)
 	user.Stun(100, ignore_canstun = TRUE)
 	sleep(20)
@@ -111,7 +111,7 @@
 	STR.max_combined_w_class = 60
 
 /obj/item/storage/backpack/santabag/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] places [src] over [user.p_their()] head and pulls it tight! It looks like [user.p_they()] [user.p_are()]n't in the Christmas spirit...</span>")
+	user.visible_message("<span class='suicide'>[user] zakłada [src] na głowę i mocno zaciąga! Chyba nie czuje świątecznej atmosfery...</span>")
 	return (OXYLOSS)
 
 /obj/item/storage/backpack/santabag/proc/regenerate_presents()
@@ -237,31 +237,31 @@
 
 /obj/item/storage/backpack/cak
 	name = "cak backpack"
-	desc = "A cute backpack resembling Cak."
+	desc = "Słodki plecak przypominający Cak."
 	icon_state = "cakpack"
 	item_state = "cakpack"
 
 /obj/item/storage/backpack/ian
 	name = "ian backpack"
-	desc = "A cute backpack resembling Ian."
+	desc = "Słodki plecak przypominający Iana."
 	icon_state = "ianpack"
 	item_state = "ianpack"
 
 /obj/item/storage/backpack/lisa
 	name = "lisa backpack"
-	desc = "A cute backpack resembling Lisa."
+	desc = "Słodki plecak przypominający Lisę."
 	icon_state = "lisapack"
 	item_state = "lisapack"
 
 /obj/item/storage/backpack/renault
 	name = "renault backpack"
-	desc = "A cute backpack resembling Renault."
+	desc = "Słodki plecak przypominający Renault."
 	icon_state = "renaultpack"
 	item_state = "renaultpack"
 
 /obj/item/storage/backpack/runtime
 	name = "runtime backpack"
-	desc = "A cute backpack resembling Runtime."
+	desc = "Słodki plecak przypominający Runtime."
 	icon_state = "runtimepack"
 	item_state = "runtimepack"
 

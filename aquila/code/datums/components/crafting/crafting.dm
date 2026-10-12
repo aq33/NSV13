@@ -186,41 +186,41 @@
 
 /datum/component/personal_crafting/proc/construct_item(atom/crafter, datum/crafting_recipe/recipe)
 	if(!crafter)
-		return ", unknown error!" // This should never happen, but in the event that it does...
+		return ", nieznany błąd!" // This should never happen, but in the event that it does...
 
 	if(!recipe)
-		return ", invalid recipe!" // This can happen, I can't really explain why, but it can. Better safe than sorry.
+		return ", nieprawidłowy przepis!" // This can happen, I can't really explain why, but it can. Better safe than sorry.
 
 	var/list/contents = get_surroundings(crafter, recipe.blacklist)
 	var/send_feedback = 1
 	var/turf/dest_turf = get_turf(crafter)
 
 	if(!check_contents(crafter, recipe, contents))
-		return ", missing component."
+		return ", brakuje komponentu."
 
 	if(!check_tools(crafter, recipe, contents))
-		return ", missing tool."
+		return ", brakuje narzędzia."
 
 
 
 	if((recipe.crafting_flags & CRAFT_ONE_PER_TURF) && (locate(recipe.result) in dest_turf))
-		return ", already one here!"
+		return ", już tu jest jeden!"
 
 	if(recipe.crafting_flags & CRAFT_CHECK_DIRECTION)
 		if(!valid_window_location(dest_turf, crafter.dir, is_fulltile = (recipe.crafting_flags & CRAFT_IS_FULLTILE)))
-			return ", won't fit here!"
+			return ", tu się nie zmieści!"
 
 	if(recipe.crafting_flags & CRAFT_ON_SOLID_GROUND)
 		if(isclosedturf(dest_turf))
-			return ", cannot be made on a wall!"
+			return ", nie da się zrobić na ścianie!"
 
 		if(is_type_in_typecache(dest_turf, GLOB.turfs_without_ground))
-			return ", must be made on solid ground!"
+			return ", trzeba zrobić na twardym podłożu!"
 
 	if(recipe.crafting_flags & CRAFT_CHECK_DENSITY)
 		for(var/obj/object in dest_turf)
 			if(object.density)
-				return ", something is in the way!"
+				return ", coś przeszkadza!"
 
 	if(recipe.placement_checks & STACK_CHECK_CARDINALS)
 		var/turf/nearby_turf
@@ -228,11 +228,11 @@
 			nearby_turf = get_step(dest_turf, direction)
 			if(locate(recipe.result) in nearby_turf)
 				to_chat(crafter, span_warning("\The [recipe.name] must not be built directly adjacent to another!"))
-				return ", can't be adjacent to another!"
+				return ", nie może stać obok drugiego!"
 
 	if(recipe.placement_checks & STACK_CHECK_ADJACENT)
 		if(locate(recipe.result) in range(1, dest_turf))
-			return ", can't be near another!"
+			return ", nie może być blisko drugiego!"
 
 	// AQUILA (#394): dźwięk craftowania na czas do_after
 	if(ismob(crafter) && recipe.time)
@@ -242,9 +242,9 @@
 		return "."
 	contents = get_surroundings(crafter, recipe.blacklist)
 	if(!check_contents(crafter, recipe, contents))
-		return ", missing component."
+		return ", brakuje komponentu."
 	if(!check_tools(crafter, recipe, contents))
-		return ", missing tool."
+		return ", brakuje narzędzia."
 	var/list/parts = del_reqs(recipe, crafter)
 	var/atom/movable/result
 	if(ispath(recipe.result, /obj/item/stack))
@@ -515,7 +515,7 @@
 /datum/component/personal_crafting/proc/make_action(datum/crafting_recipe/recipe, mob/user)
 	var/atom/movable/result = construct_item(user, recipe)
 	if(istext(result)) //We failed to make an item and got a fail message
-		to_chat(user, span_warning("Construction failed[result]"))
+		to_chat(user, span_warning("Budowa nieudana[result]"))
 		return FALSE
 	if(ismob(user) && isitem(result)) //In case the user is actually possessing a non mob like a machine
 		user.put_in_hands(result)

@@ -74,13 +74,13 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 	var/obj/item/organ/our_living_heart = user.getorganslot(ORGAN_SLOT_HEART)
 	// Obviously you need a heart in your chest to do a ritual on your... heart
 	if(!our_living_heart)
-		loc.balloon_alert(user, "ritual failed, you have no [ORGAN_SLOT_HEART]!") // "you have no heart!"
+		loc.balloon_alert(user, "rytuał nieudany, nie masz serca!") // "you have no heart!"
 		return FALSE
 	// For sanity's sake, check if they've got a heart -
 	// even though it's not invokable if you already have one,
 	// they may have gained one unexpectantly in between now and then
 	if(HAS_TRAIT(our_living_heart, TRAIT_LIVING_HEART))
-		loc.balloon_alert(user, "ritual failed, already have a living heart!")
+		loc.balloon_alert(user, "rytuał nieudany, masz już żywe serce!")
 		return FALSE
 
 	// By this point they are making a new heart
@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 	// If their current heart is not organic / is synthetic, they need an organic replacement
 	// ...But if our organ-to-be-replaced is unremovable, we're screwed
 	if(our_living_heart.organ_flags & ORGAN_UNREMOVABLE)
-		loc.balloon_alert(user, "ritual failed, [ORGAN_SLOT_HEART] unremovable!") // "heart unremovable!"
+		loc.balloon_alert(user, "rytuał nieudany, serca nie da się usunąć!") // "heart unremovable!"
 		return FALSE
 
 	// Otherwise, seek out a replacement in our atoms
@@ -104,7 +104,7 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 		selected_atoms += nearby_organ
 		return TRUE
 
-	loc.balloon_alert(user, "ritual failed, need a replacement [ORGAN_SLOT_HEART]!") // "need a replacement heart!"
+	loc.balloon_alert(user, "rytuał nieudany, potrzebne zastępcze serce!") // "need a replacement heart!"
 	return FALSE
 
 
@@ -117,7 +117,7 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 		var/obj/item/organ/heart/our_replacement_heart = locate() in selected_atoms
 		if(our_replacement_heart)
 			// Throw our current heart out of our chest, violently
-			user.visible_message("<span class='boldwarning'>[user]'s [our_heart.name] bursts suddenly out of [user.p_their()] chest!</span>")
+			user.visible_message("<span class='boldwarning'>[our_heart.name] [user] nagle wyrywa się z klatki piersiowej!</span>")
 			INVOKE_ASYNC(user, /mob/proc/emote, "scream")
 			user.apply_damage(20, BRUTE, BODY_ZONE_CHEST)
 			// And put our organic heart in its place
@@ -134,7 +134,7 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 	if(our_heart in selected_atoms)
 		selected_atoms -= our_heart
 	our_heart.AddComponent(/datum/component/living_heart)
-	to_chat(user, "<span class='warning'>You feel your [our_heart.name] begin to pulse faster and faster as it awakens!</span>")
+	to_chat(user, "<span class='warning'>Czujesz, jak twoje [our_heart.name] budzi się i bije coraz szybciej!</span>")
 	playsound(user, 'sound/magic/demon_consume.ogg', 50, TRUE)
 	return TRUE
 

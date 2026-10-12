@@ -27,20 +27,20 @@
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/pacify/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to pacify [target]...</span>",
-		"[user] begins to fix [target]'s brain.",
-		"[user] begins to perform surgery on [target]'s brain.")
+	display_results(user, target, "<span class='notice'>Zaczynasz pacyfikować [target]...</span>",
+		"[user] zaczyna naprawiać mózg [target].",
+		"[user] zaczyna operację mózgu [target].")
 
 /datum/surgery_step/pacify/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You succeed in neurologically pacifying [target].</span>",
-		"[user] successfully fixes [target]'s brain!",
-		"[user] completes the surgery on [target]'s brain.")
+	display_results(user, target, "<span class='notice'>Udaje ci się neurologicznie spacyfikować [target].</span>",
+		"[user] naprawia mózg [target]!",
+		"[user] kończy operację mózgu [target].")
 	target.gain_trauma(/datum/brain_trauma/severe/pacifism, TRAUMA_RESILIENCE_LOBOTOMY)
 	return TRUE
 
 /datum/surgery_step/pacify/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You screw up, rewiring [target]'s brain the wrong way around...</span>",
-			"<span class='warning'>[user] screws up, causing brain damage!</span>",
-			"[user] completes the surgery on [target]'s brain.")
+	display_results(user, target, "<span class='notice'>Partaczysz, przeprogramowując mózg [target] na odwrót...</span>",
+			"<span class='warning'>[user] partaczy, uszkadzając mózg!</span>",
+			"[user] kończy operację mózgu [target].")
 	target.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_RESILIENCE_LOBOTOMY)
 	return FALSE

@@ -54,7 +54,7 @@
 
 /obj/item/clothing/under/rank/medical/paramedic
 	name = "paramedic's jumpsuit"
-	desc = "A standard jumpsuit used by paramedics onboard space stations. It's made of a special fiber that gives special protection against biohazards."
+	desc = "Standardowy kombinezon ratowników medycznych na stacjach kosmicznych. Ze specjalnego włókna, zapewniającego ochronę przed zagrożeniami biologicznymi."
 	icon_state = "emt"
 	permeability_coefficient = 0.5
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0)
@@ -71,7 +71,7 @@
 	supports_variations = DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/rank/medical/doctor/nurse
-	desc = "It's a jumpsuit commonly worn by nursing staff in the medical department."
+	desc = "Kombinezon często noszony przez personel pielęgniarski działu medycznego."
 	name = "nurse's suit"
 	icon_state = "nursesuit"
 	item_state = "w_suit"
@@ -101,19 +101,19 @@
 
 /obj/item/clothing/under/rank/medical/doctor/blue
 	name = "medical scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in baby blue."
+	desc = "Ze specjalnego włókna, zapewniającego niewielką ochronę przed zagrożeniami biologicznymi. Ten jest błękitny."
 	icon_state = "scrubsblue"
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/medical/doctor/green
 	name = "medical scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in dark green."
+	desc = "Ze specjalnego włókna, zapewniającego niewielką ochronę przed zagrożeniami biologicznymi. Ten jest ciemnozielony."
 	icon_state = "scrubsgreen"
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/medical/doctor/purple
 	name = "medical scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in deep purple."
+	desc = "Ze specjalnego włókna, zapewniającego niewielką ochronę przed zagrożeniami biologicznymi. Ten jest ciemnofioletowy."
 	icon_state = "scrubspurple"
 	can_adjust = FALSE
 

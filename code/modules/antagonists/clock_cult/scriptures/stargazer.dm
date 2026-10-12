@@ -4,11 +4,11 @@
 /datum/clockcult/scripture/create_structure/stargazer
 	name = "Stargazer"
 	desc = "Allows you to enchant your weapons and armor, however enchanting can have risky side effects."
-	tip = "Make your gear more powerful by enchanting them with stargazers."
+	tip = "Wzmacniaj swój sprzęt, zaklinając go gwiezdnymi obserwatorami."
 	button_icon_state = "Stargazer"
 	power_cost = 300
 	invokation_time = 80
-	invokation_text = list("A light of Eng'ine shall empower my armaments!")
+	invokation_text = list("Światło Eng'ine'a wzmocni mój oręż!")
 	summoned_structure = /obj/structure/destructible/clockwork/gear_base/stargazer
 	cogs_required = 2
 	category = SPELLTYPE_STRUCTURES
@@ -59,10 +59,10 @@
 /obj/structure/destructible/clockwork/gear_base/stargazer
 	name = "stargazer"
 	desc = "A small pedestal, glowing with a divine energy."
-	clockwork_desc = "A small pedestal, glowing with a divine energy. Used to provide special powers and abilities to items."
+	clockwork_desc = "Mały piedestał jarzący się boską energią. Nadaje przedmiotom specjalne moce i zdolności."
 	default_icon_state = "stargazer"
 	anchored = TRUE
-	break_message = "<span class='warning'>The stargazer collapses.</span>"
+	break_message = "<span class='warning'>Gwiezdny obserwator się zawala.</span>"
 	var/cooldowntime = 0
 	var/mobs_in_range = FALSE
 	var/fading = FALSE
@@ -99,27 +99,27 @@
 		. = ..()
 		return
 	if(!anchored)
-		to_chat(user, "<span class='brass'>You need to anchor [src] to the floor first.</span>")
+		to_chat(user, "<span class='brass'>Najpierw przymocuj [src] do podłogi.</span>")
 		return
 	if(cooldowntime > world.time)
-		to_chat(user, "<span class='brass'>[src] is still warming up, it will be ready in [DisplayTimeText(cooldowntime - world.time)].</span>")
+		to_chat(user, "<span class='brass'>[src] wciąż się rozgrzewa, będzie gotowy za [DisplayTimeText(cooldowntime - world.time)].</span>")
 		return
 	if(HAS_TRAIT(I, TRAIT_STARGAZED))
-		to_chat(user, "<span class='brass'>[I] has already been enhanced!</span>")
+		to_chat(user, "<span class='brass'>[I] został już ulepszony!</span>")
 		return
-	to_chat(user, "<span class='brass'>You begin placing [I] onto [src].</span>")
+	to_chat(user, "<span class='brass'>Zaczynasz kłaść [I] na [src].</span>")
 	if(do_after(user, 60, target=I))
 		if(cooldowntime > world.time)
-			to_chat(user, "<span class='brass'>[src] is still warming up, it will be ready in [DisplayTimeText(cooldowntime - world.time)].</span>")
+			to_chat(user, "<span class='brass'>[src] wciąż się rozgrzewa, będzie gotowy za [DisplayTimeText(cooldowntime - world.time)].</span>")
 			return
 		if(HAS_TRAIT(I, TRAIT_STARGAZED))
-			to_chat(user, "<span class='brass'>[I] has already been enhanced!</span>")
+			to_chat(user, "<span class='brass'>[I] został już ulepszony!</span>")
 			return
 		if(istype(I, /obj/item) && !istype(I, /obj/item/clothing) && I.force)
 			upgrade_weapon(I, user)
 			cooldowntime = world.time + STARGAZER_COOLDOWN
 			return
-		to_chat(user, "<span class='brass'>You cannot upgrade [I].</span>")
+		to_chat(user, "<span class='brass'>Nie możesz ulepszyć [I].</span>")
 
 /obj/structure/destructible/clockwork/gear_base/stargazer/proc/upgrade_weapon(obj/item/I, mob/living/user)
 	//Prevent re-enchanting
@@ -129,4 +129,4 @@
 	//Pick a random effect
 	var/static/list/possible_components = subtypesof(/datum/component/enchantment)
 	I.AddComponent(pick(possible_components))
-	to_chat(user, "<span class='notice'>[I] glows with a brilliant light!</span>")
+	to_chat(user, "<span class='notice'>[I] świeci olśniewającym światłem!</span>")

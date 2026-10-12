@@ -1,8 +1,8 @@
 /datum/disease/transformation/jungle_fever
 	name = "Jungle Fever"
-	cure_text = "Death."
+	cure_text = "Śmierć."
 	cures = list(/datum/reagent/medicine/adminordrazine)
-	spread_text = "Monkey Bites"
+	spread_text = "Ugryzienia małp"
 	spread_flags = DISEASE_SPREAD_SPECIAL
 	viable_mobtypes = list(/mob/living/carbon/monkey, /mob/living/carbon/human)
 	permeability_mod = 1
@@ -20,9 +20,9 @@
 	stage1	= list()
 	stage2	= list()
 	stage3	= list()
-	stage4	= list("<span class='warning'>Your back hurts.</span>", "<span class='warning'>You breathe through your mouth.</span>",
-					"<span class='warning'>You have a craving for bananas.</span>", "<span class='warning'>Your mind feels clouded.</span>")
-	stage5	= list("<span class='warning'>You feel like monkeying around.</span>")
+	stage4	= list("<span class='warning'>Bolą cię plecy.</span>", "<span class='warning'>Oddychasz przez usta.</span>",
+					"<span class='warning'>Masz ochotę na banany.</span>", "<span class='warning'>Twój umysł wydaje się zamglony.</span>")
+	stage5	= list("<span class='warning'>Masz ochotę pomałpować.</span>")
 
 /datum/disease/transformation/jungle_fever/proc/init_monkey(var/mob/living/carbon/monkey/M)
 	M.ai_controller = new /datum/ai_controller/monkey/angry(M)
@@ -60,14 +60,14 @@
 	switch(stage)
 		if(2)
 			if(prob(2))
-				to_chat(affected_mob, "<span class='notice'>Your [pick("back", "arm", "leg", "elbow", "head")] itches.</span>")
+				to_chat(affected_mob, "<span class='notice'>Swędzi cię [pick("plecy", "ręka", "noga", "łokieć", "głowa")].</span>")
 		if(3)
 			if(prob(4))
-				to_chat(affected_mob, "<span class='danger'>You feel a stabbing pain in your head.</span>")
+				to_chat(affected_mob, "<span class='danger'>Czujesz kłujący ból w głowie.</span>")
 				affected_mob.confused += 10
 		if(4)
 			if(prob(3))
-				affected_mob.say(pick("Eeek, ook ook!", "Eee-eeek!", "Eeee!", "Ungh, ungh."), forced = "jungle fever")
+				affected_mob.say(pick("Iiik, uk uk!", "Iii-iiik!", "Iiii!", "Ungh, ungh."), forced = "gorączka dżungli")
 
 /datum/disease/transformation/jungle_fever/cure()
 	remove_monkey(affected_mob.mind)

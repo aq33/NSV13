@@ -25,25 +25,25 @@
 			if(isturf(T) && !T.intact)
 				attached = locate() in T
 				if(!attached)
-					to_chat(user, "<span class='warning'>This device must be placed over an exposed, powered cable node!</span>")
+					to_chat(user, "<span class='warning'>To urządzenie musi zostać umieszczone nad odsłoniętym, zasilanym węzłem kabla!</span>")
 				else
 					START_PROCESSING(SSobj, src)
 					anchored = 1
 					density = 1
 					user.visible_message( \
-						"[user] attaches \the [src] to the cable.", \
-						"<span class='notice'>You attach \the [src] to the cable.</span>",
-						"<span class='italics'>You hear some wires being connected to something.</span>")
+						"[user] podłącza [src] do kabla.", \
+						"<span class='notice'>Podłączasz [src] do kabla.</span>",
+						"<span class='italics'>Słyszysz, jak jakieś przewody zostają do czegoś podłączone.</span>")
 			else
-				to_chat(user, "<span class='warning'>This device must be placed over an exposed, powered cable node!</span>")
+				to_chat(user, "<span class='warning'>To urządzenie musi zostać umieszczone nad odsłoniętym, zasilanym węzłem kabla!</span>")
 		else
 			STOP_PROCESSING(SSobj, src)
 			anchored = 0
 			density = 0
 			user.visible_message( \
-				"[user] detaches \the [src] from the cable.", \
-				"<span class='notice'>You detach \the [src] from the cable.</span>",
-				"<span class='italics'>You hear some wires being disconnected from something.</span>")
+				"[user] odłącza [src] od kabla.", \
+				"<span class='notice'>Odłączasz [src] od kabla.</span>",
+				"<span class='italics'>Słyszysz, jak jakieś przewody zostają od czegoś odłączone.</span>")
 
 /obj/item/energy_harvester/process()
 	if(!attached || !anchored)

@@ -10,9 +10,9 @@
 	//antag_flag = ROLE_INFILTRATOR
 
 	announce_span = "danger"
-	announce_text = "Syndicate infiltrators are attempting to board the station!\n\
-	<span class='danger'>Infiltrators</span>: Board the station stealthfully and complete your objectives!\n\
-	<span class='notice'>Crew</span>: Prevent the infiltrators from completing their objectives!"
+	announce_text = "Infiltratorzy Syndykatu próbują dostać się na statek!\n\
+	<span class='danger'>Infiltratorzy</span>: dostańcie się po cichu na statek i wykonajcie cele!\n\
+	<span class='notice'>Załoga</span>: nie pozwólcie infiltratorom wykonać celów!"
 
 	var/agents_possible = 5
 	var/agents_left = 1
@@ -44,7 +44,7 @@
 	return ..()
 
 /datum/game_mode/infiltration/generate_report() //make this less shit
-	return "Reports show that the Syndicate is rounding up it's elite agents, possibly for a raid on a NanoTrasen-controlled station. Keep an eye out for unusual people."
+	return "Raporty wskazują, że Syndykat zbiera elitarnych agentów, być może do napadu na stację kontrolowaną przez Nanotrasen. Miejcie oko na nietypowe osoby."
 
 /datum/game_mode/infiltration/set_round_result()
 	..()

@@ -34,7 +34,7 @@
 //This needs to be fixed
 /mob/living/carbon/alien/larva/get_stat_tab_status()
 	var/list/tab_data = ..()
-	tab_data["Progress"] = GENERATE_STAT_TEXT("[amount_grown]/[max_grown]")
+	tab_data["Postęp"] = GENERATE_STAT_TEXT("[amount_grown]/[max_grown]")
 	return tab_data
 
 /mob/living/carbon/alien/larva/adjustPlasma(amount)
@@ -59,9 +59,9 @@
 	return
 
 /mob/living/carbon/alien/larva/stripPanelUnequip(obj/item/what, mob/who)
-	to_chat(src, "<span class='warning'>You don't have the dexterity to do this!</span>")
+	to_chat(src, "<span class='warning'>Nie masz do tego dość zręczności!</span>")
 	return
 
 /mob/living/carbon/alien/larva/stripPanelEquip(obj/item/what, mob/who)
-	to_chat(src, "<span class='warning'>You don't have the dexterity to do this!</span>")
+	to_chat(src, "<span class='warning'>Nie masz do tego dość zręczności!</span>")
 	return

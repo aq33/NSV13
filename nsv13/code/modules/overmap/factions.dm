@@ -106,7 +106,7 @@ Set up relationships.
 	F.assemble(starsys)
 	if(!F.hide_movements && !starsys.hidden)
 		if((F.alignment == "nanotrasen") || (F.alignment == "solgov"))
-			mini_announce("Flota White Rapids została przydzielona do [starsys]", "White Rapids Fleet Command")
+			mini_announce("Flota White Rapids została przydzielona do [starsys]", "Dowództwo Floty White Rapids")
 		else
 			mini_announce("Sygnatury napędu Typhoon wykryte w [starsys]", "White Rapids EAS")
 	F.faction = src
@@ -144,9 +144,7 @@ Set up relationships.
 		if(!C.mob || !SSmapping.level_trait(C.mob.z, ZTRAIT_BOARDABLE))
 			continue
 		C.give_award(/datum/award/achievement/misc/crew_competent)
-	priority_announce("Attention [station_name()]. You have completed your assigned patrol and are now eligible for a crew transfer. \
-	Your navigational computers have been programmed with the coordinates of the nearest starbase where you may claim your allotted shore leave. \
-	You are under no obligation to remain in this sector, and you have been taken off of active patrol status. If you wish to continue with exploratory missions or other activities you are free to do so.", "Naval Command")
+	priority_announce("Uwaga, [station_name()]. Zakończyliście przydzielony patrol i możecie skorzystać z wymiany załogi. Wasze komputery nawigacyjne zaprogramowano współrzędnymi najbliższej bazy gwiezdnej, w której możecie odebrać przysługującą przepustkę na ląd. Nie macie obowiązku pozostawać w tym sektorze i zdjęto was z aktywnego patrolu. Jeśli chcecie kontynuować misje zwiadowcze lub inne działania, możecie to robić.", "Dowództwo Marynarki")
 	tickets = 0
 
 /datum/faction/syndicate
@@ -162,7 +160,7 @@ Set up relationships.
 
 /datum/faction/syndicate/victory()
 	. = ..()
-	priority_announce("Attention [station_name()]. Our presence in this sector has been severely diminished due to your incompetence. Return to base immediately for disciplinary action.", "Naval Command")
+	priority_announce("Uwaga, [station_name()]. Przez waszą niekompetencję nasza obecność w tym sektorze poważnie osłabła. Natychmiast wracajcie do bazy celem postępowania dyscyplinarnego.", "Dowództwo Marynarki")
 	for(var/datum/star_system/SS in SSstar_system.systems) //This is trash but I don't wanna fix it right now.
 		if(SS.name == "Outpost 45")
 			SS.hidden = FALSE

@@ -40,4 +40,4 @@
 	return "[item_name ? item_name : reagent_type] ([target] unit\s)"
 
 /datum/freight_type/single/reagent/get_supply_request_form_segment()
-	return "<span>Permissible reagent containers: most reagent containers</span><br>"
+	return "<span>Dopuszczalne pojemniki na odczynniki: większość pojemników na odczynniki</span><br>"

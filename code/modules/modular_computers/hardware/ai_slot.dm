@@ -18,7 +18,7 @@
 /obj/item/computer_hardware/ai_slot/examine(mob/user)
 	. = ..()
 	if(stored_card)
-		. += "There appears to be an intelliCard loaded. There appears to be a pinhole protecting a manual eject button. A screwdriver could probably press it."
+		. += "Wygląda na to, że załadowano intelliCard. Przycisk ręcznego wysuwania chroni mały otwór. Śrubokręt prawdopodobnie by go wcisnął."
 
 /obj/item/computer_hardware/ai_slot/try_insert(obj/item/I, mob/living/user = null)
 	if(!holder)
@@ -28,28 +28,28 @@
 		return FALSE
 
 	if(stored_card)
-		to_chat(user, "<span class='warning'>You try to insert \the [I] into \the [src], but the slot is occupied.</span>")
+		to_chat(user, "<span class='warning'>Próbujesz włożyć [I] do [src], ale gniazdo jest zajęte.</span>")
 		return FALSE
 	if(user && !user.transferItemToLoc(I, src))
 		return FALSE
 
 	stored_card = I
-	to_chat(user, "<span class='notice'>You insert \the [I] into \the [src].</span>")
+	to_chat(user, "<span class='notice'>Wkładasz [I] do [src].</span>")
 
 	return TRUE
 
 
 /obj/item/computer_hardware/ai_slot/try_eject(mob/living/user = null, forced = FALSE)
 	if(!stored_card)
-		to_chat(user, "<span class='warning'>There is no card in \the [src].</span>")
+		to_chat(user, "<span class='warning'>W [src] nie ma karty.</span>")
 		return FALSE
 
 	if(locked && !forced)
-		to_chat(user, "<span class='warning'>Safeties prevent you from removing the card until reconstruction is complete...</span>")
+		to_chat(user, "<span class='warning'>Zabezpieczenia nie pozwalają wyjąć karty, dopóki rekonstrukcja się nie zakończy...</span>")
 		return FALSE
 
 	if(stored_card)
-		to_chat(user, "<span class='notice'>You eject [stored_card] from [src].</span>")
+		to_chat(user, "<span class='notice'>Wysuwasz [stored_card] z [src].</span>")
 		locked = FALSE
 		if(user && in_range(src, user))
 			user.put_in_hands(stored_card)
@@ -63,6 +63,6 @@
 	if(..())
 		return
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
-		to_chat(user, "<span class='notice'>You press down on the manual eject button with \the [I].</span>")
+		to_chat(user, "<span class='notice'>Wciskasz przycisk ręcznego wysuwania za pomocą [I].</span>")
 		try_eject(user, TRUE)
 		return

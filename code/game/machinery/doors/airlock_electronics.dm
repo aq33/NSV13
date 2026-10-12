@@ -13,7 +13,7 @@
 
 /obj/item/electronics/airlock/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Has a neat <i>selection menu</i> for modifying airlock access levels.</span>"
+	. += "<span class='notice'>Ma zgrabne <i>menu wyboru</i> do zmiany poziomów dostępu śluzy.</span>"
 
 
 /obj/item/electronics/airlock/ui_state(mob/user)

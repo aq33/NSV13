@@ -79,7 +79,7 @@
 				SW.unload()
 		if("chamber")
 			if(SW.state == STATE_CHAMBERING)
-				to_chat(usr, "<span class='warning'>\The [SW] is already [SW.chambered ? "unchambering" : "chambering"].</span>")
+				to_chat(usr, "<span class='warning'>[SW] jest już [SW.chambered ? "wyładowywany z komory" : "ładowany do komory"].</span>")
 			else
 				SW.chamber()
 		if("toggle_safety")

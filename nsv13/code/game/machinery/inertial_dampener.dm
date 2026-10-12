@@ -73,15 +73,15 @@ GLOBAL_LIST_EMPTY(inertia_dampeners)
 	var/turf/T = get_turf(src)
 	C = T.get_cable_node()
 	if ( C?.surplus() > power_input )
-		. += "<span class='notice'>Its LED display states: [display_power(power_input)]</span>"
+		. += "<span class='notice'>Wyświetlacz LED pokazuje: [display_power(power_input)]</span>"
 	else
-		. += "<span class='warning'>Its LED display flashes: [display_power(power_input)]</span>"
+		. += "<span class='warning'>Wyświetlacz LED miga: [display_power(power_input)]</span>"
 
 /obj/machinery/inertial_dampener/emag_act(mob/user)
 	if ( !emagged )
 		log_game("[key_name(user)] emagged [src].")
 		// Emagging amplifies vibrations instead of reducing them!
-		to_chat(user, "<span class='warning'>[src] inverts its manipulators, producing sparks!</span>")
+		to_chat(user, "<span class='warning'>[src] odwraca swoje manipulatory, sypiąc iskrami!</span>")
 		playsound(src.loc, "sparks", 50, 1)
 		do_sparks(4, FALSE, src)
 		emagged = TRUE
@@ -141,11 +141,11 @@ GLOBAL_LIST_EMPTY(inertia_dampeners)
 	if(..())
 		return TRUE
 	if( on )
-		to_chat(user, "<span class='notice'>You must turn off [src] before opening the panel.</span>")
+		to_chat(user, "<span class='notice'>Przed otwarciem panelu musisz wyłączyć [src].</span>")
 		return FALSE
 	panel_open = !panel_open
 	tool.play_tool_sound(src)
-	to_chat(user, "<span class='notice'>You [panel_open?"open":"close"] the panel on [src].</span>")
+	to_chat(user, "<span class='notice'>[panel_open?"Otwierasz":"Zamykasz"] panel [src].</span>")
 	update_visuals()
 	return TRUE
 
@@ -232,7 +232,7 @@ GLOBAL_LIST_EMPTY(inertia_dampeners)
 /datum/techweb_node/inertial_dampener
 	id = "area_inerts"
 	display_name = "Inertial Dampeners"
-	description = "Anti-shake technology for hull vibrations."
+	description = "Technologia antywstrząsowa przeciw drganiom kadłuba."
 	prereq_ids = list("practical_bluespace","high_efficiency", "adv_power")
 	design_ids = list("area_inerts")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)

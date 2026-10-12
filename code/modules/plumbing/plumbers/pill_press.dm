@@ -27,7 +27,7 @@
 
 /obj/machinery/plumbing/pill_press/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The [name] currently has [stored_pills.len] stored. There needs to be less than [max_floor_pills] on the floor to continue dispensing.</span>"
+	. += "<span class='notice'>[name] ma obecnie zmagazynowane: [stored_pills.len]. Aby kontynuować wydawanie, na podłodze musi być mniej niż [max_floor_pills].</span>"
 
 /obj/machinery/plumbing/pill_press/Initialize(mapload, bolt)
 	. = ..()
@@ -100,7 +100,7 @@
 			pill_size = CLAMP(text2num(params["volume"]), minimum_pill, maximum_pill)
 			. = TRUE
 		if("change_pill_name")
-			var/new_name = stripped_input(usr, "Enter a pill name.", name, pill_name)
+			var/new_name = stripped_input(usr, "Podaj nazwę pigułki.", name, pill_name)
 			if(findtext(new_name, "pill")) //names like pillatron and Pilliam are thus valid
 				pill_name = new_name
 			else

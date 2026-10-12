@@ -19,13 +19,13 @@
 
 /obj/structure/destructible/eldritch_crucible/Initialize(mapload)
 	. = ..()
-	break_message = "<span class='warning'>[src] falls apart with a thud!</span>"
+	break_message = "<span class='warning'>[src] rozpada się z łoskotem!</span>"
 
 /obj/structure/destructible/eldritch_crucible/deconstruct(disassembled = TRUE)
 
 	// Create a spillage if we were destroyed with leftover mass
 	if(current_mass)
-		break_message = "<span class='warning'>[src] falls apart with a thud, spilling shining extract everywhere!</span>"
+		break_message = "<span class='warning'>[src] rozpada się z łoskotem, rozlewając wszędzie lśniący ekstrakt!</span>"
 		var/turf/our_turf = get_turf(src)
 
 		new /obj/effect/decal/cleanable/greenglow(our_turf)
@@ -43,19 +43,19 @@
 
 	if(current_mass < max_mass)
 		var/to_fill = max_mass - current_mass
-		. += "<span class='notice'>[src] requires <b>[to_fill]</b> more organ[to_fill == 1 ? "":"s"] or bodypart[to_fill == 1 ? "":"s"].</span>"
+		. += "<span class='notice'>[src] potrzebuje jeszcze <b>[to_fill]</b> organów lub części ciała.</span>"
 	else
-		. += "<span class='boldnotice'>[src] is bubbling to the brim with viscous liquid, and is ready to use.</span>"
+		. += "<span class='boldnotice'>[src] bulgocze po brzegi lepkim płynem i jest gotowy do użycia.</span>"
 
-	. += "<span class='notice'>It can be <b>[anchored ? "unanchored and moved":"anchored in place"]</b> [src] with a <b>Codex Cicatrix</b> or <b>Mansus Grasp</b>.</span>"
-	. += "<span class='info'>The following potions can be brewed:</span>"
+	. += "<span class='notice'>[src] można <b>[anchored ? "odczepić i przenieść":"przytwierdzić na miejscu"]</b> za pomocą <b>Codex Cicatrix</b> albo <b>Uchwytu Mansusa</b>.</span>"
+	. += "<span class='info'>Można uwarzyć następujące mikstury:</span>"
 	for(var/obj/item/eldritch_potion/potion as anything in subtypesof(/obj/item/eldritch_potion))
 		var/potion_string = "<span class='info'>\tThe " + initial(potion.name) + " - " + initial(potion.crucible_tip) + "</span>"
 		. += potion_string
 
 /obj/structure/destructible/eldritch_crucible/examine_status(mob/user)
 	if(IS_HERETIC_OR_MONSTER(user) || isobserver(user))
-		return "<span class='notice'>It's at <b>[round(obj_integrity * 100 / max_integrity)]%</b> stability.</span>"
+		return "<span class='notice'>Stabilność: <b>[round(obj_integrity * 100 / max_integrity)]%</b>.</span>"
 	return ..()
 
 /obj/structure/destructible/eldritch_crucible/attacked_by(obj/item/weapon, mob/living/user)
@@ -79,10 +79,10 @@
 	if(istype(weapon, /obj/item/organ))
 		var/obj/item/organ/consumed = weapon
 		if(consumed.status != ORGAN_ORGANIC || (consumed.organ_flags & ORGAN_SYNTHETIC))
-			balloon_alert(user, "Not organic")
+			balloon_alert(user, "To nie jest organiczne")
 			return
 		if(consumed.organ_flags & ORGAN_VITAL) // Basically, don't eat organs like brains
-			balloon_alert(user, "Invalid organ")
+			balloon_alert(user, "Nieprawidłowy organ")
 			return
 
 		consume_fuel(user, consumed)
@@ -104,11 +104,11 @@
 		return TRUE
 
 	if(in_use)
-		balloon_alert(user, "In use")
+		balloon_alert(user, "W użyciu")
 		return TRUE
 
 	if(current_mass < max_mass)
-		balloon_alert(user, "Not full enough")
+		balloon_alert(user, "Za mało wypełniony")
 		return TRUE
 
 	INVOKE_ASYNC(src, PROC_REF(show_radial), user)
@@ -155,8 +155,8 @@
 	var/obj/item/spawned_pot = new spawned_type(drop_location())
 
 	playsound(src, 'sound/misc/desecration-02.ogg', 75, TRUE)
-	visible_message("<span class='notice'>[src]'s shining liquid drains into a flask, creating a [spawned_pot.name]!</span>")
-	balloon_alert(user, "Potion created")
+	visible_message("<span class='notice'>Lśniący płyn z [src] spływa do fiolki, tworząc: [spawned_pot.name]!</span>")
+	balloon_alert(user, "Mikstura gotowa")
 
 	current_mass = 0
 	update_icon_state()
@@ -174,7 +174,7 @@
 	if(QDELETED(arm))
 		return
 
-	to_chat(user, "<span class='userdanger'>[src] grabs your [arm.name]!</span>")
+	to_chat(user, "<span class='userdanger'>[src] chwyta cię za [arm.name]!</span>")
 	arm.dismember()
 	consume_fuel(consumed = arm)
 
@@ -185,15 +185,15 @@
 /obj/structure/destructible/eldritch_crucible/proc/consume_fuel(mob/living/feeder, obj/item/consumed)
 	if(current_mass >= max_mass)
 		if(feeder)
-			balloon_alert(feeder, "Crucible full")
+			balloon_alert(feeder, "Tygiel pełny")
 		return
 
 	current_mass++
 	playsound(src, 'sound/items/eatfood.ogg', 100, TRUE)
-	visible_message("<span class='notice'>[src] devours [consumed] and fills itself with a little bit of liquid!</span>")
+	visible_message("<span class='notice'>[src] pożera [consumed] i napełnia się odrobiną płynu!</span>")
 
 	if(feeder)
-		balloon_alert(feeder, "Crucible fed ([current_mass] / [max_mass])")
+		balloon_alert(feeder, "Tygiel nakarmiony ([current_mass] / [max_mass])")
 
 	update_icon_state()
 	qdel(consumed)
@@ -209,7 +209,7 @@
 	icon = 'icons/obj/heretic.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	/// When a heretic examines a mawed crucible, shows a list of possible potions by name + includes this tip to explain what it does.
-	var/crucible_tip = "Doesn't do anything."
+	var/crucible_tip = "Nic nie robi."
 	/// Typepath to the status effect this applies
 	var/status_effect
 
@@ -231,13 +231,13 @@
 	playsound(src, 'sound/effects/bubbles.ogg', 50, TRUE)
 
 	if(!IS_HERETIC_OR_MONSTER(user))
-		to_chat(user, "<span class='danger'>You down some of the liquid from [src]. The taste causes you to retch, and the glass vanishes.</span>")
+		to_chat(user, "<span class='danger'>Wypijasz trochę płynu z [src]. Od smaku zbiera ci się na wymioty, a szkło znika.</span>")
 		user.reagents?.add_reagent(/datum/reagent/eldritch, 10)
 		user.adjust_disgust(50)
 		qdel(src)
 		return TRUE
 
-	to_chat(user, "<span class='notice'>You drink the viscous liquid from [src], causing the glass to dematerialize.</span>")
+	to_chat(user, "<span class='notice'>Wypijasz lepki płyn z [src], a szkło się dematerializuje.</span>")
 	potion_effect(user)
 	qdel(src)
 	return TRUE
@@ -256,11 +256,11 @@
 	desc = "A glass bottle containing a bright orange, translucent liquid."
 	icon_state = "crucible_soul"
 	status_effect = /datum/status_effect/crucible_soul
-	crucible_tip = "Allows you to walk through walls. After expiring, you are teleported to your original location. Lasts 15 seconds."
+	crucible_tip = "Pozwala przechodzić przez ściany. Po zakończeniu teleportuje cię do miejsca startu. Trwa 15 sekund."
 
 /obj/item/eldritch_potion/duskndawn
 	name = "brew of dusk and dawn"
 	desc = "A glass bottle containing a dull yellow liquid. It seems to fade in and out with regularity."
 	icon_state = "clarity"
 	status_effect = /datum/status_effect/duskndawn
-	crucible_tip = "Allows you to see through walls and objects. Lasts 60 seconds."
+	crucible_tip = "Pozwala widzieć przez ściany i przedmioty. Trwa 60 sekund."

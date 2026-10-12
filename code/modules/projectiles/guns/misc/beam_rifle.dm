@@ -104,13 +104,13 @@
 			zoom_lock = 0
 		switch(zoom_lock)
 			if(ZOOM_LOCK_AUTOZOOM_FREEMOVE)
-				to_chat(user, "<span class='boldnotice'>You switch [src]'s zooming processor to free directional.</span>")
+				to_chat(user, "<span class='boldnotice'>Przełączasz procesor przybliżenia [src] na swobodny kierunkowy.</span>")
 			if(ZOOM_LOCK_AUTOZOOM_ANGLELOCK)
-				to_chat(user, "<span class='boldnotice'>You switch [src]'s zooming processor to locked directional.</span>")
+				to_chat(user, "<span class='boldnotice'>Przełączasz procesor przybliżenia [src] na zablokowany kierunkowy.</span>")
 			if(ZOOM_LOCK_CENTER_VIEW)
-				to_chat(user, "<span class='boldnotice'>You switch [src]'s zooming processor to center mode.</span>")
+				to_chat(user, "<span class='boldnotice'>Przełączasz procesor przybliżenia [src] na tryb środkowy.</span>")
 			if(ZOOM_LOCK_OFF)
-				to_chat(user, "<span class='boldnotice'>You disable [src]'s zooming system.</span>")
+				to_chat(user, "<span class='boldnotice'>Wyłączasz system przybliżenia [src].</span>")
 		reset_zooming()
 	else
 		..()
@@ -151,7 +151,7 @@
 
 /obj/item/gun/energy/beam_rifle/attack_self(mob/user)
 	projectile_setting_pierce = !projectile_setting_pierce
-	to_chat(user, "<span class='boldnotice'>You set \the [src] to [projectile_setting_pierce? "pierce":"impact"] mode.</span>")
+	to_chat(user, "<span class='boldnotice'>Ustawiasz [src] na tryb [projectile_setting_pierce? "przebijający":"uderzeniowy"].</span>")
 	aiming_beam()
 
 /obj/item/gun/energy/beam_rifle/proc/update_slowdown()
@@ -438,7 +438,7 @@
 	new /obj/effect/temp_visual/explosion/fast(epicenter)
 	for(var/mob/living/L in hearers(aoe_mob_range, epicenter))		//handle aoe mob damage
 		L.adjustFireLoss(aoe_mob_damage)
-		to_chat(L, "<span class='userdanger'>\The [src] sears you!</span>")
+		to_chat(L, "<span class='userdanger'>[src] cię parzy!</span>")
 	for(var/turf/T in RANGE_TURFS(aoe_fire_range, epicenter))		//handle aoe fire
 		if(prob(aoe_fire_chance))
 			new /obj/effect/hotspot(T)

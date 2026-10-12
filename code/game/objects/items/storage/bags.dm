@@ -52,7 +52,7 @@
 	STR.cant_hold = typecacheof(list(/obj/item/disk/nuclear))
 
 /obj/item/storage/bag/trash/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] puts [src] over [user.p_their()] head and starts chomping at the insides! Disgusting!</span>")
+	user.visible_message("<span class='suicide'>[user] zakłada [src] na głowę i zaczyna przeżuwać jego wnętrze! Obrzydliwe!</span>")
 	playsound(loc, 'sound/items/eatfood.ogg', 50, 1, -1)
 	return (TOXLOSS)
 
@@ -74,7 +74,7 @@
 		J.mybag=src
 		J.update_icon()
 	else
-		to_chat(user, "<span class='warning'>You are unable to fit your [name] into the [J.name].</span>")
+		to_chat(user, "<span class='warning'>Nie możesz zmieścić [name] w [J.name].</span>")
 		return
 
 /obj/item/storage/bag/trash/bluespace
@@ -174,18 +174,18 @@
 				show_message = TRUE
 			else
 				if(!spam_protection)
-					to_chat(user, "<span class='warning'>Your [name] is full and can't hold any more!</span>")
+					to_chat(user, "<span class='warning'>[name] jest pełna i nic więcej nie pomieści!</span>")
 					spam_protection = TRUE
 					continue
 	if(show_message)
 		playsound(user, "rustle", 50, TRUE)
 		STR.animate_parent()
 		if (box)
-			user.visible_message("<span class='notice'>[user] offloads the ores beneath [user.p_them()] into [box].</span>", \
-			"<span class='notice'>You offload the ores beneath you into your [box].</span>")
+			user.visible_message("<span class='notice'>[user] wysypuje rudę spod siebie do [box].</span>", \
+			"<span class='notice'>Wysypujesz rudę spod siebie do [box].</span>")
 		else
-			user.visible_message("<span class='notice'>[user] scoops up the ores beneath [user.p_them()].</span>", \
-				"<span class='notice'>You scoop up the ores beneath you with your [name].</span>")
+			user.visible_message("<span class='notice'>[user] zgarnia rudę spod siebie.</span>", \
+				"<span class='notice'>Zgarniasz rudę spod siebie za pomocą [name].</span>")
 	spam_protection = FALSE
 
 /obj/item/storage/bag/ore/cyborg

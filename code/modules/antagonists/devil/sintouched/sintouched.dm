@@ -8,8 +8,8 @@
 #define SIN_LUST "lust" // AQ EDIT
 
 /datum/antagonist/sintouched
-	name = "sintouched"
-	roundend_category = "sintouched"
+	name = "naznaczony grzechem"
+	roundend_category = "naznaczeni grzechem"
 	antagpanel_category = "Devil"
 	banning_key = UNBANNABLE_ANTAGONIST
 	var/sin
@@ -50,7 +50,7 @@
 /datum/antagonist/sintouched/greet()
 	owner.announce_objectives()
 	owner.current.client?.tgui_panel?.give_antagonist_popup("Sintouched",
-		"You have been corrupted by devilish thought, complete your objectives no matter what.")
+		"Zostałeś zepsuty diabelską myślą; wykonaj swoje cele bez względu na wszystko.")
 
 /datum/antagonist/sintouched/roundend_report()
 	return printplayer(owner)

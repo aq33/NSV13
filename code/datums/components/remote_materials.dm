@@ -108,7 +108,7 @@ handles linking back and forth.
 	old_silo.connected -= src
 	old_silo.updateUsrDialog()
 	var/atom/P = parent
-	P.visible_message("<span class='warning'>[parent]'s material manager blinks orange: Disconnected.</span>")
+	P.visible_message("<span class='warning'>Zarządca materiałów [parent] miga na pomarańczowo: rozłączono.</span>")
 
 /datum/component/remote_materials/proc/OnAttackBy(datum/source, obj/item/I, mob/user)
 	SIGNAL_HANDLER
@@ -120,10 +120,10 @@ handles linking back and forth.
 		if (!QDELETED(M.buffer) && istype(M.buffer, /obj/machinery/ore_silo))
 			var/atom/P = parent
 			if (!is_valid_link(P, M.buffer))
-				to_chat(usr, "<span class='warning'>[parent]'s material manager blinks red: Out of Range.</span>")
+				to_chat(usr, "<span class='warning'>Zarządca materiałów [parent] miga na czerwono: poza zasięgiem.</span>")
 				return COMPONENT_NO_AFTERATTACK
 			if (silo == M.buffer)
-				to_chat(user, "<span class='notice'>[parent] is already connected to [silo].</span>")
+				to_chat(user, "<span class='notice'>[parent] jest już połączony z [silo].</span>")
 				return COMPONENT_NO_AFTERATTACK
 			if (silo)
 				silo.connected -= src
@@ -135,7 +135,7 @@ handles linking back and forth.
 			silo.connected += src
 			silo.updateUsrDialog()
 			mat_container = silo.GetComponent(/datum/component/material_container)
-			to_chat(user, "<span class='notice'>You connect [parent] to [silo] from the multitool's buffer.</span>")
+			to_chat(user, "<span class='notice'>Łączysz [parent] z [silo] z bufora multitoola.</span>")
 			SEND_SIGNAL(parent, COMSIG_REMOTE_MATERIALS_CHANGED)
 			return COMPONENT_NO_AFTERATTACK
 
@@ -163,10 +163,10 @@ handles linking back and forth.
 		return 0
 
 	if (!mat_container)
-		movable_parent.say("No access to material storage, please contact the quartermaster.")
+		movable_parent.say("Brak dostępu do magazynu materiałów, skontaktuj się z kwatermistrzem.")
 		return 0
 	if (on_hold())
-		movable_parent.say("Mineral access is on hold, please contact the quartermaster.")
+		movable_parent.say("Dostęp do minerałów jest wstrzymany, skontaktuj się z kwatermistrzem.")
 		return 0
 	var/count = mat_container.retrieve_sheets(eject_amount, material_ref, movable_parent.drop_location())
 	var/list/matlist = list()

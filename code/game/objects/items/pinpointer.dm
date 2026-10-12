@@ -36,7 +36,7 @@
 	if(!process_scan) //since it's not scanning on process, it scans here.
 		scan_for_target()
 	toggle_on()
-	user.visible_message("<span class='notice'>[user] [active ? "" : "de"]activates [user.p_their()] pinpointer.</span>", "<span class='notice'>You [active ? "" : "de"]activate your pinpointer.</span>")
+	user.visible_message("<span class='notice'>[user] [active ? "włącza" : "wyłącza"] swój pinpointer.</span>", "<span class='notice'>[active ? "Włączasz" : "Wyłączasz"] swój pinpointer.</span>")
 
 /obj/item/pinpointer/proc/toggle_on()
 	active = !active
@@ -98,7 +98,7 @@
 	. = ..()
 	if(!active || !target)
 		return
-	. += "It is currently tracking <b>[target]</b>."
+	. += "Obecnie śledzi: <b>[target]</b>."
 
 /obj/item/pinpointer/crew/proc/trackable(mob/living/carbon/human/H)
 	var/turf/here = get_turf(src)
@@ -121,14 +121,14 @@
 /obj/item/pinpointer/crew/attack_self(mob/living/user)
 	if(active)
 		toggle_on()
-		user.visible_message("<span class='notice'>[user] deactivates [user.p_their()] pinpointer.</span>", "<span class='notice'>You deactivate your pinpointer.</span>")
+		user.visible_message("<span class='notice'>[user] wyłącza swój pinpointer.</span>", "<span class='notice'>Wyłączasz swój pinpointer.</span>")
 		return
 
 	if (has_owner && !pinpointer_owner)
 		pinpointer_owner = user
 
 	if (pinpointer_owner && pinpointer_owner != user)
-		to_chat(user, "<span class='notice'>The pinpointer doesn't respond. It seems to only recognise its owner.</span>")
+		to_chat(user, "<span class='notice'>Pinpointer nie reaguje. Wygląda na to, że rozpoznaje tylko swojego właściciela.</span>")
 		return
 
 	var/list/name_counts = list()
@@ -151,16 +151,16 @@
 		name_counts[crewmember_name] = 1
 
 	if(!names.len)
-		user.visible_message("<span class='notice'>[user]'s pinpointer fails to detect a signal.</span>", "<span class='notice'>Your pinpointer fails to detect a signal.</span>")
+		user.visible_message("<span class='notice'>Pinpointer [user] nie wykrywa sygnału.</span>", "<span class='notice'>Twój pinpointer nie wykrywa sygnału.</span>")
 		return
 
-	var/A = input(user, "Person to track", "Pinpoint") in sortList(names)
+	var/A = input(user, "Osoba do śledzenia", "Pinpoint") in sortList(names)
 	if(!A || QDELETED(src) || !user || !user.is_holding(src) || user.incapacitated())
 		return
 
 	target = names[A]
 	toggle_on()
-	user.visible_message("<span class='notice'>[user] activates [user.p_their()] pinpointer.</span>", "<span class='notice'>You activate your pinpointer.</span>")
+	user.visible_message("<span class='notice'>[user] włącza swój pinpointer.</span>", "<span class='notice'>Włączasz swój pinpointer.</span>")
 
 /obj/item/pinpointer/crew/scan_for_target()
 	if(target)
@@ -190,7 +190,7 @@
 		return
 	var/mob/mob_holder = get(target, /mob)
 	if(istype(mob_holder))
-		. += "Its pair is being held by [mob_holder]."
+		. += "Jego para jest w rękach [mob_holder]."
 		return
 
 /obj/item/storage/box/pinpointer_pairs

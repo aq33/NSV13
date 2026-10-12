@@ -1,7 +1,7 @@
 /datum/brain_trauma/hypnosis
 	name = "Hypnosis"
 	desc = "Patient's unconscious is completely enthralled by a word or sentence, focusing their thoughts and actions on it."
-	scan_desc = "looping thought pattern"
+	scan_desc = "zapętlony wzorzec myślowy"
 	gain_text = ""
 	lose_text = ""
 	resilience = TRAUMA_RESILIENCE_SURGERY
@@ -30,8 +30,7 @@
 												"You feel a part of your mind repeating this over and over. You need to follow these words.",\
 												"Something about this sounds... right, for some reason. You feel like you should follow these words.",\
 												"These words keep echoing in your mind. You find yourself completely fascinated by them.")]</span>")
-	to_chat(owner, "<span class='boldwarning'>You've been hypnotized by this sentence. You must follow these words. If it isn't a clear order, you can freely interpret how to do so,\
-										as long as you act like the words are your highest priority.</span>")
+	to_chat(owner, "<span class='boldwarning'>Zahipnotyzowało cię to zdanie. Musisz wykonywać te słowa. Jeśli nie jest to jasny rozkaz, możesz dowolnie interpretować, jak go wykonać, o ile zachowujesz się tak, jakby te słowa były twoim najwyższym priorytetem.</span>")
 	var/atom/movable/screen/alert/hypnosis/hypno_alert = owner.throw_alert("hypnosis", /atom/movable/screen/alert/hypnosis)
 	hypno_alert.desc = "\"[hypnotic_phrase]\"... your mind seems to be fixated on this concept."
 	var/datum/atom_hud/antag/traitorhud = GLOB.huds[ANTAG_HUD_BRAINWASHED]
@@ -44,7 +43,7 @@
 	message_admins("[ADMIN_LOOKUPFLW(owner)] is no longer hypnotized with the phrase '[hypnotic_phrase]'.")
 	log_game("[key_name(owner)] is no longer hypnotized with the phrase '[hypnotic_phrase]'.")
 	owner.log_message("is no longer hypnotized with the phrase '[hypnotic_phrase]'.", LOG_ATTACK, color="#960000")
-	to_chat(owner, "<span class='userdanger'>You suddenly snap out of your hypnosis. The phrase '[hypnotic_phrase]' no longer feels important to you.</span>")
+	to_chat(owner, "<span class='userdanger'>Nagle wyrywasz się z hipnozy. Wyrażenie '[hypnotic_phrase]' nie wydaje ci się już ważne.</span>")
 	owner.clear_alert("hypnosis")
 	var/datum/atom_hud/antag/traitorhud = GLOB.huds[ANTAG_HUD_BRAINWASHED]
 	traitorhud.leave_hud(owner.mind.current)

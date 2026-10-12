@@ -59,7 +59,7 @@ If someone hacks it, you can always rebuild it.
 		return
 	if(faction != OM.faction)
 		faction = OM.faction
-	. += "<span class='sciradio'>-----------------\n Ship information: \n Currently registered to: [OM.name]. \n IFF Signature: [OM.faction] \n -----------------</span>"
+	. += "<span class='sciradio'>-----------------\n Informacje o okręcie: \n Obecnie zarejestrowany na: [OM.name]. \n Sygnatura IFF: [OM.faction] \n -----------------</span>"
 
 //Subtype for boarding. Starts emagged so the marines can get straight underway.
 /obj/machinery/computer/iff_console/boarding
@@ -70,7 +70,7 @@ If someone hacks it, you can always rebuild it.
 	. = ..()
 	if(hacking && COOLDOWN_FINISHED(src, next_warning) && prob(15))
 		var/area/A = get_area(loc)
-		var/message = "Unauthorized IFF transponder access detected in [A]!!"
+		var/message = "Wykryto nieautoryzowany dostęp do transpondera IFF w [A]!!"
 		radio.talk_into(src, message, radio_channel)
 		COOLDOWN_START(src, next_warning, minimum_time_between_warnings)
 	if(!hacking && next_warning)
@@ -80,7 +80,7 @@ If someone hacks it, you can always rebuild it.
 	if(!(obj_flags & EMAGGED))
 		return TRUE
 	if(hacking)
-		to_chat(user, "<span class='warning'>Someone is already hacking [src]!</span>")
+		to_chat(user, "<span class='warning'>Ktoś już hakuje [src]!</span>")
 		return TRUE
 	hacking = TRUE
 	var/hack_start_time = world.time
@@ -100,8 +100,8 @@ If someone hacks it, you can always rebuild it.
 		return
 	obj_flags |= EMAGGED
 	playsound(loc, 'nsv13/sound/effects/computer/alarm_3.ogg', 80)
-	say("ERR@$#@$. Rebooting...")
-	say("System reboot complete. iff_bustr.exe uploaded successfully.")
+	say("BŁ@$#@$. Ponowne uruchamianie...")
+	say("Ponowne uruchomienie zakończone. Pomyślnie wgrano iff_bustr.exe.")
 
 /obj/machinery/computer/iff_console/ui_state(mob/user)
 	return GLOB.default_state
@@ -152,7 +152,7 @@ If someone hacks it, you can always rebuild it.
 					if(length(ship.mobs_in_ship) && ship.reserved_z)
 						F.encounter(ship)
 				message_admins("Solgov interdictor fleet created at [starting_point].")
-				priority_announce("Contact with [GLOB.station_name] lost. Code Charlie Foxtrot One Niner Eight Four.", "White Rapids Fleet Command")
+				priority_announce("Utracono kontakt z [GLOB.station_name]. Kod Charlie Foxtrot Jeden Dziewięć Osiem Cztery.", "Dowództwo Floty White Rapids")
 			return
 		if("pirate")
 			OM.faction = "nanotrasen"

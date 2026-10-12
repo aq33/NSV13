@@ -28,7 +28,7 @@ export const StatTicketChat = (props) => {
   const stat = useSelector(selectStatPanel);
   let statPanelData = stat.statInfomation;
   if (!statPanelData.messages) {
-    return <Box>No data.</Box>;
+    return <Box>Brak danych.</Box>;
   }
   let invertedArray = statPanelData.messages.slice(0).reverse();
   return (

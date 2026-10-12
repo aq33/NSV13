@@ -6,7 +6,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the chief medical officer and research director"
+	supervisors = JOB_NAME_CHIEFMEDICALOFFICER + " i " + JOB_NAME_RESEARCHDIRECTOR
 	selection_color = "#d4ebf2" //NSV13
 	exp_requirements = 0
 	exp_type = EXP_TYPE_CREW

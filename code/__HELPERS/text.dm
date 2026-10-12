@@ -43,7 +43,7 @@
 ///returns nothing with an alert instead of the message if it contains something in the ic filter, and sanitizes normally if the name is fine. It returns nothing so it backs out of the input the same way as if you had entered nothing.
 /proc/sanitize_name(t,list/repl_chars = null)
 	if(CHAT_FILTER_CHECK(t))
-		alert("You cannot set a name that contains a word prohibited in IC chat!")
+		alert("Nie możesz ustawić imienia zawierającego słowo zakazane na czacie IC!")
 		return ""
 	if(t == "space" || t == "floor" || t == "wall" || t == "r-wall" || t == "monkey" || t == "unknown" || t == "inactive ai")	//prevents these common metagamey names
 		alert("Invalid name.")
@@ -911,27 +911,27 @@ GLOBAL_LIST_INIT(alphabet, list("a","b","c","d","e","f","g","h","i","j","k","l",
 		// because of float values, you need to write like `0 to 10`, `10 to 20`
 		switch(booze_power)
 			if(-INFINITY to 1)
-				. = "For children"
+				. = "Dla dzieci"
 			if(300 to INFINITY)
 				. = pick("Shift wrecking hammering",
 						"Get new liver after consumption",
 						"Post-consumption support groups exist",
-						"Place in Molotov instead",
-						"To stumble and slur, the will of Bacchus")
+						"Lepiej wlej do koktajlu Mołotowa",
+						"Potykać się i bełkotać – oto wola Bachusa")
 			if(100 to 100)
-				. = "For a real man"
+				. = "Dla prawdziwego mężczyzny"
 			// these values must be detected first.
 
 			if(100 to 300)
-				. = "Cheated the blessing"
+				. = "Oszukałeś błogosławieństwo"
 			if(90 to 100)
-				. = "Get to drunk tank"
+				. = "Prosto do izby wytrzeźwień"
 			if(80 to 90)
 				. = "Liver pickler"
 			if(70 to 80)
 				. = "Drunkard's Challenge"
 			if(60 to 70)
-				. = "Have Shotgun ready"
+				. = "Miej strzelbę w pogotowiu"
 			if(50 to 60)
 				. = "3 rounds till down"
 			if(40 to 50)
@@ -947,7 +947,7 @@ GLOBAL_LIST_INIT(alphabet, list("a","b","c","d","e","f","g","h","i","j","k","l",
 	else
 		switch(booze_power)
 			if(-INFINITY to 1)
-				. = "Safe for work"
+				. = "Bezpieczne w pracy"
 			if(300 to INFINITY)
 				. = "Lethal"
 			if(100 to 300)
@@ -974,5 +974,5 @@ GLOBAL_LIST_INIT(alphabet, list("a","b","c","d","e","f","g","h","i","j","k","l",
 				. = "Delightfully mild"
 
 	if(!.)
-		. = "not measurable. Ask the space god for what's wrong with this drink."
+		. = "niemierzalna. Zapytaj kosmicznego boga, co jest nie tak z tym drinkiem."
 		CRASH("not valid booze power value is detected: [booze_power]")

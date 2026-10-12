@@ -24,13 +24,13 @@ export const StatStatus = (props) => {
                       })
                     }
                   />
-                  You are <b>dead</b>!
+                  <b>Nie żyjesz</b>!
                 </Box>
               </Flex.Item>
               <Flex.Item mt={2}>
                 <Box className="deadsay">
-                  Don&#39;t worry, you can still get back into the game if your
-                  body is revived or through ghost roles.
+                  Spokojnie, możesz jeszcze wrócić do gry, jeśli ktoś ożywi twoje
+                  ciało albo przez role dla duchów.
                 </Box>
               </Flex.Item>
             </div>
@@ -103,7 +103,7 @@ export const StatStatus = (props) => {
                 <Flex.Item mt={2}>{stat.alert_br.text}</Flex.Item>
                 <Flex.Item>
                   <Button
-                    content="Start"
+                    content="Rozpocznij"
                     color="transparent"
                     onClick={(e) =>
                       Byond.sendMessage('stat/pressed', {
@@ -113,7 +113,7 @@ export const StatStatus = (props) => {
                   />
                   <Box inline>
                     <Button
-                      content="Dismiss"
+                      content="Odrzuć"
                       color="transparent"
                       onClick={() =>
                         dispatch({

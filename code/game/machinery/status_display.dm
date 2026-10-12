@@ -118,7 +118,7 @@
 /obj/machinery/status_display/examine(mob/user)
 	. = ..()
 	if (message1 || message2)
-		. += "The display says:"
+		. += "Wyświetlacz pokazuje:"
 		if (message1)
 			. += "<br>\t<tt>[html_encode(message1)]</tt>"
 		if (message2)
@@ -149,9 +149,9 @@
 				modestr = "<br>\t<tt>[modestr]: [shuttle.getTimerStr()]</tt>"
 			else
 				modestr = "<br>\t<tt>[modestr]</tt>"
-		return "The display says:<br>\t<tt>[shuttle.name]</tt>[modestr]"
+		return "Wyświetlacz pokazuje:<br>\t<tt>[shuttle.name]</tt>[modestr]"
 	else
-		return "The display says:<br>\t<tt>Shuttle missing!</tt>"
+		return "Wyświetlacz pokazuje:<br>\t<tt>Brak promu!</tt>"
 
 
 /// Evac display which shows shuttle timer or message set by Command.
@@ -200,7 +200,7 @@
 	if(mode == SD_EMERGENCY)
 		. += examine_shuttle(user, SSshuttle.emergency)
 	else if(!message1 && !message2)
-		. += "The display is blank."
+		. += "Wyświetlacz jest pusty."
 
 /obj/machinery/status_display/evac/receive_signal(datum/signal/signal)
 	switch(signal.data["command"])
@@ -260,9 +260,9 @@
 	else
 		shuttleMsg = "[shuttle.getModeStr()]: [shuttle.getTimerStr()]"
 	if (shuttleMsg)
-		. += "The display says:<br>\t<tt>[shuttleMsg]</tt>"
+		. += "Wyświetlacz pokazuje:<br>\t<tt>[shuttleMsg]</tt>"
 	else
-		. += "The display is blank."
+		. += "Wyświetlacz jest pusty."
 
 
 /// General-purpose shuttle status display.
@@ -283,7 +283,7 @@
 	if(shuttle_id)
 		. += examine_shuttle(user, SSshuttle.getShuttle(shuttle_id))
 	else
-		. += "The display is blank."
+		. += "Wyświetlacz jest pusty."
 
 /obj/machinery/status_display/shuttle/vv_edit_var(var_name, var_value)
 	. = ..()

@@ -17,8 +17,8 @@
 /datum/wires/dna_scanner/get_status()
 	var/obj/machinery/dna_scannernew/S = holder
 	var/list/status = list()
-	status += "A [S.ignore_id ? "yellow" : "purple"] light is on."
-	status += "The bolt lights are [S.locked ? "on" : "off"]."
+	status += "Świeci się [S.ignore_id ? "żółta" : "fioletowa"] lampka."
+	status += "Lampki rygli [S.locked ? "świecą się" : "są zgaszone"]."
 	return status
 
 /datum/wires/dna_scanner/on_pulse(wire, user)

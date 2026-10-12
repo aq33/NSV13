@@ -35,17 +35,17 @@
 		return
 	if(action == "stopfuel" && fuel_target)
 		soundloop?.stop()
-		visible_message("<span class='warning'>[icon2html(src)] refuelling cancelled.</span>")
+		visible_message("<span class='warning'>[icon2html(src)] anulowano tankowanie.</span>")
 		playsound(src, 'sound/machines/buzz-two.ogg', 100)
 		fuel_target = null
 		defuelling = FALSE //AQ EDIT
 		STOP_PROCESSING(SSobj, src)
 	if(action == "transfer_mode")
 		if(!allow_refuel)
-			to_chat(usr, "<span class='notice'>You open [src]'s fuel inlet valve, it will now intake reagents from containers that it's hit with and drain fighters its hose is connected to.</span>") //AQ EDIT
+			to_chat(usr, "<span class='notice'>Otwierasz zawór wlotowy paliwa [src], będzie teraz pobierać odczynniki z pojemników, którymi zostanie uderzony, i opróżniać myśliwce, do których podłączono wąż.</span>") //AQ EDIT
 			allow_refuel = TRUE
 		else
-			to_chat(usr, "<span class='notice'>You close [src]'s fuel inlet valve, it will now transfer its reagents to containers that it's hit with.</span>")
+			to_chat(usr, "<span class='notice'>Zamykasz zawór wlotowy paliwa [src], będzie teraz przekazywać odczynniki do pojemników, którymi zostanie uderzony.</span>")
 			allow_refuel = FALSE
 
 /**
@@ -66,7 +66,7 @@
 	if(!user.can_interact_with(src)) //Theyre too far away and not flying the ship
 		return FALSE
 	if((interaction_flags_atom & INTERACT_ATOM_REQUIRES_DEXTERITY) && !user.IsAdvancedToolUser())
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>Brakuje ci zręczności, by to zrobić!</span>")
 		return FALSE
 	if(!(interaction_flags_atom & INTERACT_ATOM_IGNORE_INCAPACITATED) && user.incapacitated((interaction_flags_atom & INTERACT_ATOM_IGNORE_RESTRAINED), !(interaction_flags_atom & INTERACT_ATOM_CHECK_GRAB)))
 		return FALSE
@@ -105,9 +105,9 @@
 /obj/structure/reagent_dispensers/fueltank/cryogenic_fuel/attack_hand(mob/user)
 	if(nozzle.loc == src)
 		if(!user.put_in_hands(nozzle))
-			to_chat(user, "<span class='warning'>You need a free hand to hold the fuel hose!</span>")
+			to_chat(user, "<span class='warning'>Potrzebujesz wolnej ręki, by trzymać wąż paliwowy!</span>")
 			return
-		to_chat(user, "<span class='warning'>You grab [src]'s refuelling hose.</span>")
+		to_chat(user, "<span class='warning'>Chwytasz wąż do tankowania [src].</span>")
 		RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(check_distance))
 		set_nozzle(TRUE)
 		ui_interact(user)
@@ -125,7 +125,7 @@
 		if(user)
 			UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 		add_overlay("cryofuel_nozzle")
-		visible_message("<span class='warning'>[nozzle] snaps back into [src]!</span>")
+		visible_message("<span class='warning'>[nozzle] wskakuje z powrotem do [src]!</span>")
 		soundloop?.stop()
 		qdel(current_beam)
 		nozzle.forceMove(src)
@@ -138,13 +138,13 @@
 
 /obj/structure/reagent_dispensers/fueltank/cryogenic_fuel/attackby(obj/item/I, mob/user, params)
 	if(I == nozzle)
-		to_chat(user, "<span class='warning'>You slot the fuel hose back into [src]</span>")
+		to_chat(user, "<span class='warning'>Wsuwasz wąż paliwowy z powrotem do [src]</span>")
 		UnregisterSignal(user, COMSIG_MOVABLE_MOVED) //Otherwise unregister the signal here because they put it back cleanly
 		nozzle.forceMove(src)
 		set_nozzle(FALSE)
 	if(allow_refuel)
 		if(istype(I, /obj/item/reagent_containers))
-			to_chat(user, "<span class='warning'>You transfer some of [I]'s contents to [src].</span>") //Put anything other than cryogenic fuel in here at your own risk of having to flush out the tank and possibly wreck your fighter :)
+			to_chat(user, "<span class='warning'>Przelewasz część zawartości [I] do [src].</span>") //Put anything other than cryogenic fuel in here at your own risk of having to flush out the tank and possibly wreck your fighter :)
 			var/obj/item/reagent_containers/X = I
 			X.reagents.trans_to(src, X.amount_per_transfer_from_this, transfered_by = user) //AQ EDIT - was transferring the container into itself
 			return TRUE //AQ EDIT - don't let the container's afterattack draw it straight back out
@@ -172,28 +172,28 @@
 		return PROCESS_KILL
 	if(get_dist(nozzle, fuel_target) > max_range) // make sure we're actually next to the target
 		soundloop?.stop()
-		visible_message("<span class='warning'>[icon2html(src)] [fuel_target] is out of range!</span>")
+		visible_message("<span class='warning'>[icon2html(src)] [fuel_target] jest poza zasięgiem!</span>")
 		playsound(src, 'sound/machines/buzz-two.ogg', 100)
 		fuel_target = null
 		return PROCESS_KILL
 	var/obj/item/fighter_component/fuel_tank/sft = fuel_target.loadout.get_slot(HARDPOINT_SLOT_FUEL)
 	if(!sft)
 		soundloop?.stop()
-		visible_message("<span class='warning'>[icon2html(src)] [fuel_target] does not have a fuel tank installed!</span>")
+		visible_message("<span class='warning'>[icon2html(src)] [fuel_target] nie ma zainstalowanego zbiornika paliwa!</span>")
 		return PROCESS_KILL
 	// AQ EDIT START - pumping fuel out of a fighter
 	if(defuelling)
 		var/drain_amount = min(units_per_second * delta_time, sft.reagents.total_volume, reagents.maximum_volume - reagents.total_volume)
 		if(sft.reagents.total_volume <= 0)
 			soundloop?.stop()
-			visible_message("<span class='warning'>[icon2html(src)] fuel draining complete.</span>")
+			visible_message("<span class='warning'>[icon2html(src)] opróżnianie paliwa zakończone.</span>")
 			playsound(src, 'sound/machines/ping.ogg', 100)
 			fuel_target = null
 			defuelling = FALSE
 			return PROCESS_KILL
 		else if(drain_amount <= 0)
 			soundloop?.stop()
-			visible_message("<span class='warning'>[icon2html(src)] storage tank full.</span>")
+			visible_message("<span class='warning'>[icon2html(src)] zbiornik pełny.</span>")
 			playsound(src, 'sound/machines/buzz-two.ogg', 100)
 			fuel_target = null
 			defuelling = FALSE
@@ -204,13 +204,13 @@
 	var/transfer_amount = min(min(units_per_second * delta_time, reagents.total_volume), fuel_target.get_max_fuel()-fuel_target.get_fuel()) //Transfer as much as we can
 	if(fuel_target.get_max_fuel() <= fuel_target.get_fuel())
 		soundloop?.stop()
-		visible_message("<span class='warning'>[icon2html(src)] refuelling complete.</span>")
+		visible_message("<span class='warning'>[icon2html(src)] tankowanie zakończone.</span>")
 		playsound(src, 'sound/machines/ping.ogg', 100)
 		fuel_target = null
 		return PROCESS_KILL
 	else if (transfer_amount <= 0)
 		soundloop?.stop()
-		visible_message("<span class='warning'>[icon2html(src)] insufficient fuel.</span>")
+		visible_message("<span class='warning'>[icon2html(src)] za mało paliwa.</span>")
 		playsound(src, 'sound/machines/buzz-two.ogg', 100)
 		fuel_target = null
 		return PROCESS_KILL
@@ -237,29 +237,29 @@
 		var/obj/structure/overmap/small_craft/f16 = target
 		var/obj/item/fighter_component/fuel_tank/sft = f16.loadout.get_slot(HARDPOINT_SLOT_FUEL)
 		if(!sft)
-			visible_message("<span class='warning'>[icon2html(src)] [f16] does not have a fuel tank installed!</span>")
+			visible_message("<span class='warning'>[icon2html(src)] [f16] nie ma zainstalowanego zbiornika paliwa!</span>")
 			return
 		if(f16.engines_active())
-			to_chat(user, "<span class='notice'>[f16]'s engine is still running! Refuelling it now would be dangerous.</span>")
+			to_chat(user, "<span class='notice'>Silnik [f16] wciąż pracuje! Tankowanie teraz byłoby niebezpieczne.</span>")
 			playsound(src, 'sound/machines/buzz-two.ogg', 100)
 			return
 		// AQ EDIT START - with the inlet valve open the hose drains the fighter instead
 		if(parent.allow_refuel)
 			if(sft.reagents.total_volume <= 0)
-				to_chat(user, "<span class='notice'>[f16]'s fuel tank is already empty.</span>")
+				to_chat(user, "<span class='notice'>Zbiornik paliwa [f16] jest już pusty.</span>")
 				return
 			if(parent.reagents.total_volume >= parent.reagents.maximum_volume)
-				to_chat(user, "<span class='notice'>[parent] is already full.</span>")
+				to_chat(user, "<span class='notice'>[parent] jest już pełny.</span>")
 				return
 			parent.start_fuelling(f16, TRUE)
-			to_chat(user, "<span class='notice'>You slot [src] into [f16]'s refuelling hatch and start draining its fuel.</span>")
+			to_chat(user, "<span class='notice'>Wsuwasz [src] do włazu tankowania [f16] i zaczynasz spuszczać paliwo.</span>")
 			playsound(user, 'sound/machines/click.ogg', 60, 1)
 			return
 		// AQ EDIT END
 		if(f16.get_fuel() < f16.get_max_fuel())
 			parent.start_fuelling(f16)
-			to_chat(user, "<span class='notice'>You slot [src] into [f16]'s refuelling hatch.</span>")
+			to_chat(user, "<span class='notice'>Wsuwasz [src] do włazu tankowania [f16].</span>")
 			playsound(user, 'sound/machines/click.ogg', 60, 1)
 			return
 		else
-			to_chat(user, "<span class='notice'>[f16]'s fuel tank is already full.</span>")
+			to_chat(user, "<span class='notice'>Zbiornik paliwa [f16] jest już pełny.</span>")

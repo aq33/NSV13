@@ -28,7 +28,7 @@
 	var/smartguy
 	if(user.can_see_reagents())
 		smartguy = TRUE
-	. += "It contains:\n100 units of [smartguy ? initial(rand_cont.name) : "various reagents"]" //Luckily science goggles say nothing if there's no reagents
+	. += "Zawiera:\n100 jednostek [smartguy ? initial(rand_cont.name) : "różnych odczynników"]" //Luckily science goggles say nothing if there's no reagents
 
 /obj/item/reagent_containers/glass/chem_heirloom/update_name() //This has to be done after init, since the heirloom component is added after.
 	. = ..()
@@ -42,7 +42,7 @@
 		return
 	if(isliving(loc))
 		var/mob/living/M = loc
-		to_chat(M, "<span class='notice'>The [src] unlocks!</span>")
+		to_chat(M, "<span class='notice'>[src] się odblokowuje!</span>")
 	desc = "An opened bottle of [initial(rand_cont.name)]."
 	name = "bottle of [initial(rand_cont.name)]"
 	volume = CHEM_H_VOL

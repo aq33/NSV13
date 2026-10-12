@@ -167,7 +167,7 @@ Possible to do for anyone motivated enough:
 /obj/machinery/holopad/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Current projection range: <b>[holo_range]</b> units.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: obecny zasięg projekcji: <b>[holo_range]</b> jednostek.</span>"
 
 /obj/machinery/holopad/attackby(obj/item/P, mob/user, params)
 	if(default_deconstruction_screwdriver(user, "holopad_open", "holopad0", P))
@@ -184,11 +184,11 @@ Possible to do for anyone motivated enough:
 
 	if(istype(P,/obj/item/disk/holodisk))
 		if(disk)
-			to_chat(user,"<span class='notice'>There's already a disk inside [src]</span>")
+			to_chat(user,"<span class='notice'>W [src] już jest dysk</span>")
 			return
 		if (!user.transferItemToLoc(P,src))
 			return
-		to_chat(user,"<span class='notice'>You insert [P] into [src]</span>")
+		to_chat(user,"<span class='notice'>Wkładasz [P] do [src]</span>")
 		disk = P
 		ui_update() // AQ EDIT - TGUI window
 		return
@@ -246,19 +246,19 @@ Possible to do for anyone motivated enough:
 				to_chat(usr, "<span class='info'>A request for AI presence was already sent recently.</span>")
 				return
 			last_request = world.time
-			to_chat(usr, "<span class='info'>You requested an AI's presence.</span>")
+			to_chat(usr, "<span class='info'>Wzywasz SI.</span>")
 			var/area/area = get_area(src)
 			for(var/mob/living/silicon/ai/AI in GLOB.silicon_mobs)
 				if(!AI.client)
 					continue
-				to_chat(AI, "<span class='info'>Your presence is requested at <a href='byond://?src=[REF(AI)];jumptoholopad=[REF(src)]'>\the [area]</a>.</span>")
+				to_chat(AI, "<span class='info'>Wzywają cię do <a href='byond://?src=[REF(AI)];jumptoholopad=[REF(src)]'>[area]</a>.</span>")
 			return TRUE
 
 		if("holocall")
 			if(outgoing_call)
 				return
 			if(usr.loc != loc)
-				to_chat(usr, "<span class='warning'>You must stand on the holopad to make a call!</span>")
+				to_chat(usr, "<span class='warning'>Aby zadzwonić, musisz stać na holopadzie!</span>")
 				return
 			var/list/callnames = list()
 			for(var/I in holopads)
@@ -266,7 +266,7 @@ Possible to do for anyone motivated enough:
 				if(A)
 					LAZYADD(callnames[A], I)
 			callnames -= get_area(src)
-			var/result = tgui_input_list(usr, "Choose an area to call", "Holocall", sortNames(callnames))
+			var/result = tgui_input_list(usr, "Wybierz obszar, do którego chcesz zadzwonić", "Holocall", sortNames(callnames))
 			if(isnull(result) || QDELETED(usr) || outgoing_call || usr.loc != loc)
 				return
 			// Heads of staff connect straight to pads that are not secure
@@ -410,7 +410,7 @@ Possible to do for anyone motivated enough:
 
 	if(is_operational && (!AI || AI.eyeobj.loc == loc))//If the projector has power and client eye is on it
 		if (AI && istype(AI.current, /obj/machinery/holopad))
-			to_chat(user, "<span class='danger'>ERROR:</span> \black Image feed in progress.")
+			to_chat(user, "<span class='danger'>BŁĄD:</span> \black trwa przesyłanie obrazu.")
 			return
 
 		var/obj/effect/overlay/holo_pad_hologram/Hologram = new(loc)//Spawn a blank effect at the location.
@@ -434,11 +434,11 @@ Possible to do for anyone motivated enough:
 		move_hologram()
 
 		set_holo(user, Hologram)
-		visible_message("<span class='notice'>A holographic image of [user] flickers to life before your eyes!</span>")
+		visible_message("<span class='notice'>Przed twoimi oczami migocząc pojawia się holograficzny obraz [user]!</span>")
 
 		return Hologram
 	else
-		to_chat(user, "<span class='danger'>ERROR:</span> Unable to project hologram.")
+		to_chat(user, "<span class='danger'>BŁĄD:</span> nie można wyświetlić hologramu.")
 
 /*This is the proc for special two-way communication between AI and holopad/people talking near holopad.
 For the other part of the code, check silicon say.dm. Particularly robot talk.*/
@@ -595,16 +595,16 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	Hologram.setAnchored(TRUE)//So space wind cannot drag it.
 	Hologram.name = "[record.caller_name] (Hologram)"//If someone decides to right click.
 	Hologram.set_light(2)	//hologram lighting
-	visible_message("<span class='notice'>A holographic image of [record.caller_name] flickers to life before your eyes!</span>")
+	visible_message("<span class='notice'>Przed twoimi oczami migocząc pojawia się holograficzny obraz [record.caller_name]!</span>")
 	return Hologram
 
 /obj/machinery/holopad/proc/replay_start()
 	if(!replay_mode)
 		replay_mode = TRUE
 		replay_holo = setup_replay_holo(disk.record)
-		temp = "Replaying...<br>"
-		temp += "<A href='byond://?src=[REF(src)];offset=1'>Change offset</A><br>"
-		temp += "<A href='byond://?src=[REF(src)];replay_stop=1'>End replay</A>"
+		temp = "Odtwarzanie...<br>"
+		temp += "<A href='byond://?src=[REF(src)];offset=1'>Zmień przesunięcie</A><br>"
+		temp += "<A href='byond://?src=[REF(src)];replay_stop=1'>Zakończ odtwarzanie</A>"
 		SetLightsAndPower()
 		replay_entry(1)
 	return
@@ -627,8 +627,8 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	record_start = world.time
 	record_user = user
 	disk.record.set_caller_image(user)
-	temp = "Recording...<br>"
-	temp += "<A href='byond://?src=[REF(src)];record_stop=1'>End recording.</A>"
+	temp = "Nagrywanie...<br>"
+	temp += "<A href='byond://?src=[REF(src)];record_stop=1'>Zakończ nagrywanie.</A>"
 
 /obj/machinery/holopad/proc/record_message(mob/living/speaker,message,language)
 	if(!record_mode)

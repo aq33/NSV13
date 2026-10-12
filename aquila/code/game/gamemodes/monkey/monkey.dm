@@ -48,8 +48,8 @@
 
 
 /datum/game_mode/monkey/announce()
-	to_chat(world, "<B>The current game mode is - Monkey!</B>")
-	to_chat(world, "<B>One or more crewmembers have been infected with Jungle Fever! Crew: Contain the outbreak. None of the infected monkeys may escape alive to CentCom. Monkeys: Ensure that your kind lives on! Rise up against your captors!</B>")
+	to_chat(world, "<B>Obecny tryb gry to małpy!</B>")
+	to_chat(world, "<B>Co najmniej jeden członek załogi zaraził się Gorączką Dżungli! Załoga: powstrzymajcie ognisko. Żadna zarażona małpa nie może uciec żywa do Centrali. Małpy: dopilnujcie, by wasz gatunek przetrwał! Powstańcie przeciw swoim oprawcom!</B>")
 
 /datum/game_mode/monkey/post_setup()
 	for(var/datum/mind/carriermind in carriers)
@@ -101,12 +101,12 @@
 
 /datum/game_mode/monkey/special_report()
 	if(check_monkey_victory())
-		return "<div class='panel redborder'><span class='redtext big'>The monkeys have overthrown their captors! Eeek eeeek!!</span></div>"
+		return "<div class='panel redborder'><span class='redtext big'>Małpy obaliły swoich oprawców! Iii iiii!!</span></div>"
 	else
-		return "<div class='panel redborder'><span class='redtext big'>The staff managed to contain the monkey infestation!</span></div>"
+		return "<div class='panel redborder'><span class='redtext big'>Załodze udało się powstrzymać plagę małp!</span></div>"
 
 /datum/game_mode/monkey/generate_report()
-	return "Reports of an ancient [pick("retrovirus", "flesh eating bacteria", "disease", "magical curse blamed on viruses", "banana blight")] outbreak that turn humans into monkeys has been reported in your quadrant.  Any such infections may be treated with banana juice.  If an outbreak occurs, ensure the station is quarantined to prevent a largescale outbreak at CentCom."
+	return "W waszym kwadrancie zgłoszono ognisko pradawnego [pick("retrowirusa", "mięsożernej bakterii", "choroby", "magicznej klątwy zrzucanej na wirusy", "bananowej zarazy")], które zmienia ludzi w małpy. Takie zakażenia można leczyć sokiem bananowym. Jeśli dojdzie do ogniska, objęcie statku kwarantanną zapobiegnie epidemii w Centrali."
 
 /proc/add_monkey_leader(datum/mind/monkey_mind)
 	if(is_monkey_leader(monkey_mind))

@@ -178,7 +178,7 @@
 	fire_sound = shot.fire_sound
 	fire_delay = shot.delay
 	if (shot.select_name)
-		balloon_alert(user, "You set [src]'s mode to [shot.select_name].")
+		balloon_alert(user, "Ustawiasz tryb [src] na [shot.select_name].")
 	chambered = null
 	recharge_newshot(TRUE)
 	update_icon(TRUE)
@@ -226,20 +226,20 @@
 
 /obj/item/gun/energy/suicide_act(mob/living/user)
 	if (istype(user) && can_shoot() && can_trigger_gun(user) && user.get_bodypart(BODY_ZONE_HEAD))
-		user.visible_message("<span class='suicide'>[user] is putting the barrel of [src] in [user.p_their()] mouth.  It looks like [user.p_theyre()] trying to commit suicide!</span>")
+		user.visible_message("<span class='suicide'>[user] wkłada lufę [src] do ust. Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 		sleep(25)
 		if(user.is_holding(src))
-			user.visible_message("<span class='suicide'>[user] melts [user.p_their()] face off with [src]!</span>")
+			user.visible_message("<span class='suicide'>[user] wypala sobie twarz z [src]!</span>")
 			playsound(loc, fire_sound, 50, 1, -1)
 			var/obj/item/ammo_casing/energy/shot = ammo_type[select]
 			cell.use(shot.e_cost)
 			update_icon()
 			return(FIRELOSS)
 		else
-			user.visible_message("<span class='suicide'>[user] panics and starts choking to death!</span>")
+			user.visible_message("<span class='suicide'>[user] wpada w panikę i zaczyna się dusić!</span>")
 			return(OXYLOSS)
 	else
-		user.visible_message("<span class='suicide'>[user] is pretending to melt [user.p_their()] face off with [src]! It looks like [user.p_theyre()] trying to commit suicide!</b></span>")
+		user.visible_message("<span class='suicide'>[user] udaje, że wypala sobie twarz z [src]! Wygląda na to, że próbuje popełnić samobójstwo!</b></span>")
 		playsound(src, dry_fire_sound, 30, TRUE)
 		return (OXYLOSS)
 
@@ -264,13 +264,13 @@
 		if(!BB)
 			. = ""
 		else if(BB.nodamage || !BB.damage || BB.damage_type == STAMINA)
-			user.visible_message("<span class='danger'>[user] tries to light [A.loc == user ? "[user.p_their()] [A.name]" : A] with [src], but it doesn't do anything. Dumbass.</span>")
+			user.visible_message("<span class='danger'>[user] próbuje zapalić [A] za pomocą [src], ale nic się nie dzieje. Głupek.</span>")
 			playsound(user, E.fire_sound, 50, 1)
 			playsound(user, BB.hitsound, 50, 1)
 			cell.use(E.e_cost)
 			. = ""
 		else if(BB.damage_type != BURN)
-			user.visible_message("<span class='danger'>[user] tries to light [A.loc == user ? "[user.p_their()] [A.name]" : A] with [src], but only succeeds in utterly destroying it. Dumbass.</span>")
+			user.visible_message("<span class='danger'>[user] próbuje zapalić [A] za pomocą [src], ale udaje mu się jedynie doszczętnie to zniszczyć. Głupek.</span>")
 			playsound(user, E.fire_sound, 50, 1)
 			playsound(user, BB.hitsound, 50, 1)
 			cell.use(E.e_cost)
@@ -280,4 +280,4 @@
 			playsound(user, E.fire_sound, 50, 1)
 			playsound(user, BB.hitsound, 50, 1)
 			cell.use(E.e_cost)
-			. = "<span class='danger'>[user] casually lights [A.loc == user ? "[user.p_their()] [A.name]" : A] with [src]. Damn.</span>"
+			. = "<span class='danger'>[user] od niechcenia zapala [A] za pomocą [src]. No nieźle.</span>"

@@ -11,7 +11,7 @@
 	if(world.time < next_use_time)
 		to_chat(user, "<span class='notice'>Internal capacitors recharging...</span>")
 		return
-	to_chat(user, "<span class='notice'>You pulse for nearby research disks.</span>")
+	to_chat(user, "<span class='notice'>Wysyłasz impuls w poszukiwaniu pobliskich dysków badawczych.</span>")
 	pulse_effect(get_turf(src), 6)
 	next_use_time = world.time + 10 SECONDS
 	for(var/obj/item/disk/tech_disk/research/research_disk in SSorbits.research_disks)
@@ -19,5 +19,5 @@
 		if(dist <= range && isturf(research_disk.loc) && research_disk.get_virtual_z_level() == get_virtual_z_level())
 			var/direction = get_dir(user, research_disk)
 			dir = direction
-			say("Weak signal detected [dir2text(direction)] of current location, [dist] meters away.")
+			say("Wykryto słaby sygnał: [dir2text(direction)] od obecnego położenia, [dist] m stąd.")
 			return

@@ -14,7 +14,7 @@
 /obj/machinery/aug_manipulator/examine(mob/user)
 	. = ..()
 	if(storedpart)
-		. += "<span class='notice'>Alt-click to eject the limb.</span>"
+		. += "<span class='notice'>Alt-kliknij, by wysunąć kończynę.</span>"
 
 /obj/machinery/aug_manipulator/Initialize(mapload)
     initial_icon_state = initial(icon_state)
@@ -61,10 +61,10 @@
 	else if(istype(O, /obj/item/bodypart))
 		var/obj/item/bodypart/B = O
 		if(IS_ORGANIC_LIMB(B))
-			to_chat(user, "<span class='warning'>The machine only accepts cybernetics!</span>")
+			to_chat(user, "<span class='warning'>Maszyna przyjmuje tylko cybernetykę!</span>")
 			return
 		if(storedpart)
-			to_chat(user, "<span class='warning'>There is already something inside!</span>")
+			to_chat(user, "<span class='warning'>W środku już coś jest!</span>")
 			return
 		else
 			O = user.get_active_held_item()
@@ -79,19 +79,19 @@
 			if(!O.tool_start_check(user, amount=0))
 				return
 
-			user.visible_message("[user] begins repairing [src].", \
-				"<span class='notice'>You begin repairing [src]...</span>", \
-				"<span class='italics'>You hear welding.</span>")
+			user.visible_message("[user] zaczyna naprawiać [src].", \
+				"<span class='notice'>Zaczynasz naprawiać [src]...</span>", \
+				"<span class='italics'>Słyszysz spawanie.</span>")
 
 			if(O.use_tool(src, user, 40, volume=50))
 				if(!(machine_stat & BROKEN))
 					return
-				to_chat(user, "<span class='notice'>You repair [src].</span>")
+				to_chat(user, "<span class='notice'>Naprawiasz [src].</span>")
 				set_machine_stat(machine_stat & ~BROKEN)
 				obj_integrity = max(obj_integrity, max_integrity)
 				update_icon()
 		else
-			to_chat(user, "<span class='notice'>[src] does not need repairs.</span>")
+			to_chat(user, "<span class='notice'>[src] nie wymaga naprawy.</span>")
 	else
 		return ..()
 
@@ -106,7 +106,7 @@
 		var/style_options = style_list_icons
 		if(istype(storedpart, /obj/item/bodypart/r_leg) || istype(storedpart, /obj/item/bodypart/l_leg))
 			style_options += style_list_legs_bonus_icons //Doing this with assoc lists IS actually legal. Very cool. And Yes I know this somewhat reduces the point of using static lists, but this proc is rare.
-		var/augstyle = input(user, "Select style.", "Augment Custom Fitting") as null|anything in style_options
+		var/augstyle = input(user, "Wybierz styl.", "Dopasowanie augmentacji") as null|anything in style_options
 		//NSV13 end.
 		if(!augstyle)
 			return
@@ -126,7 +126,7 @@
 		eject_part(user)
 
 	else
-		to_chat(user, "<span class='notice'>\The [src] is empty.</span>")
+		to_chat(user, "<span class='notice'>[src] jest pusty.</span>")
 
 /obj/machinery/aug_manipulator/proc/eject_part(mob/living/user)
 	if(storedpart)
@@ -134,7 +134,7 @@
 		storedpart = null
 		update_icon()
 	else
-		to_chat(user, "<span class='notice'>[src] is empty.</span>")
+		to_chat(user, "<span class='notice'>[src] jest pusty.</span>")
 
 /obj/machinery/aug_manipulator/AltClick(mob/living/user)
 	if(!user.canUseTopic(src, !issilicon(user)))

@@ -1,3 +1,3 @@
 /datum/role_preference/antagonist/infiltrator
-	name = "Infiltrator"
+	name = "Infiltrator Syndykatu"
 	antag_datum = /datum/antagonist/infiltrator

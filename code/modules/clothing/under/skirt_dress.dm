@@ -37,33 +37,33 @@
 
 /obj/item/clothing/under/dress/skirt
 	name = "black skirt"
-	desc = "A black skirt, very fancy!"
+	desc = "Czarna spódnica, bardzo elegancka!"
 	icon_state = "blackskirt"
 
 /obj/item/clothing/under/dress/skirt/blue
 	name = "blue skirt"
-	desc = "A blue, casual skirt."
+	desc = "Niebieska codzienna spódnica."
 	icon_state = "blueskirt"
 	item_state = "b_suit"
 	custom_price = 25
 
 /obj/item/clothing/under/dress/skirt/red
 	name = "red skirt"
-	desc = "A red, casual skirt."
+	desc = "Czerwona codzienna spódnica."
 	icon_state = "redskirt"
 	item_state = "r_suit"
 	custom_price = 25
 
 /obj/item/clothing/under/dress/skirt/purple
 	name = "purple skirt"
-	desc = "A purple, casual skirt."
+	desc = "Fioletowa codzienna spódnica."
 	icon_state = "purpleskirt"
 	item_state = "p_suit"
 	custom_price = 25
 
 /obj/item/clothing/under/dress/skirt/plaid
 	name = "red plaid skirt"
-	desc = "A preppy red skirt with a white blouse."
+	desc = "Szkolna czerwona spódnica z białą bluzką."
 	icon_state = "plaid_red"
 	item_state = "plaid_red"
 	can_adjust = TRUE
@@ -72,19 +72,19 @@
 
 /obj/item/clothing/under/dress/skirt/plaid/blue
 	name = "blue plaid skirt"
-	desc = "A preppy blue skirt with a white blouse."
+	desc = "Szkolna niebieska spódnica z białą bluzką."
 	icon_state = "plaid_blue"
 	item_state = "plaid_blue"
 
 /obj/item/clothing/under/dress/skirt/plaid/purple
 	name = "purple plaid skirt"
-	desc = "A preppy purple skirt with a white blouse."
+	desc = "Szkolna fioletowa spódnica z białą bluzką."
 	icon_state = "plaid_purple"
 	item_state = "plaid_purple"
 
 /obj/item/clothing/under/dress/skirt/plaid/green
 	name = "green plaid skirt"
-	desc = "A preppy green skirt with a white blouse."
+	desc = "Szkolna zielona spódnica z białą bluzką."
 	icon_state = "plaid_green"
 	item_state = "plaid_green"
 
@@ -94,15 +94,15 @@
 
 /obj/item/clothing/under/dress/gown
 	name = "wine gown"
-	desc = "A classic and stylish wine red dress."
+	desc = "Klasyczna i stylowa sukienka w kolorze czerwonego wina."
 	icon_state = "wine_gown"
 
 /obj/item/clothing/under/dress/gown/teal
 	name = "teal gown"
-	desc = "A classic and stylish teal dress."
+	desc = "Klasyczna i stylowa sukienka w kolorze morskim."
 	icon_state = "teal_gown"
 
 /obj/item/clothing/under/dress/gown/midnight
 	name = "midnight gown"
-	desc = "A classic and stylish velvet dress."
+	desc = "Klasyczna i stylowa aksamitna sukienka."
 	icon_state = "midnight_gown"

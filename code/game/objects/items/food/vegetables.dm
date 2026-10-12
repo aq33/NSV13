@@ -8,7 +8,7 @@
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("eggplant" = 3, "cheese" = 1)
+	tastes = list("bakłażan" = 3, "ser" = 1)
 	foodtypes = VEGETABLES | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -21,7 +21,7 @@
 		/datum/reagent/consumable/nutriment = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("sweet potato" = 1)
+	tastes = list("batat" = 1)
 	foodtypes = VEGETABLES | SUGAR
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -34,7 +34,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("parsnip" = 1)
+	tastes = list("pasternak" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -45,7 +45,7 @@
 	desc = "A large fried potato nugget that may or may not try to valid you."
 	icon_state = "tatortot"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4)
-	tastes = list("potato" = 3, "valids" = 1)
+	tastes = list("ziemniak" = 3, "validy" = 1)
 	foodtypes = FRIED | VEGETABLES
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -64,7 +64,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/nutriment/protein = 4
 	)
-	tastes = list("baked potato" = 1, "bacon" = 1, "cheese" = 1, "cabbage" = 1)
+	tastes = list("pieczony ziemniak" = 1, "bekon" = 1, "ser" = 1, "kapusta" = 1)
 	foodtypes = VEGETABLES | DAIRY | MEAT
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -75,7 +75,7 @@
 	desc = "AKA: French Fries, Freedom Fries, etc."
 	icon_state = "fries"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4)
-	tastes = list("fries" = 3, "salt" = 1)
+	tastes = list("frytki" = 3, "sól" = 1)
 	foodtypes = VEGETABLES | FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -92,7 +92,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("fries" = 3, "cheese" = 1)
+	tastes = list("frytki" = 3, "ser" = 1)
 	foodtypes = VEGETABLES | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -110,7 +110,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 2
 		)
-	tastes = list("carrots" = 3, "salt" = 1)
+	tastes = list("marchewki" = 3, "sól" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1

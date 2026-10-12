@@ -13,7 +13,7 @@
 	var/ignition_temp = 10 // The amount of heat added to the reagents when this grenade goes off.
 	var/threatscale = 1 // Used by advanced grenades to make them slightly more worthy.
 	var/no_splash = FALSE //If the grenade deletes even if it has no reagents to splash with. Used for slime core reactions.
-	var/casedesc = "This basic model accepts both beakers and bottles. It heats contents by 10°K upon ignition." // Appears when examining empty casings.
+	var/casedesc = "Ten podstawowy model przyjmuje zarówno zlewki, jak i butelki. Przy zapłonie podgrzewa zawartość o 10°K." // Appears when examining empty casings.
 	var/obj/item/assembly/prox_sensor/landminemode = null
 
 /obj/item/grenade/chem_grenade/ComponentInitialize()
@@ -36,20 +36,20 @@
 	. = ..()
 	if(user.can_see_reagents())
 		if(beakers.len)
-			. += "<span class='notice'>You scan the grenade and detect the following reagents:</span>"
+			. += "<span class='notice'>Skanujesz granat i wykrywasz następujące odczynniki:</span>"
 			for(var/obj/item/reagent_containers/glass/G in beakers)
 				for(var/datum/reagent/R in G.reagents.reagent_list)
-					. += "<span class='notice'>[R.volume] units of [R.name] in the [G.name].</span>"
+					. += "<span class='notice'>[R.volume] j. [R.name] w [G.name].</span>"
 			if(beakers.len == 1)
-				. += "<span class='notice'>You detect no second beaker in the grenade.</span>"
+				. += "<span class='notice'>Nie wykrywasz drugiej zlewki w granacie.</span>"
 		else
-			. += "<span class='notice'>You scan the grenade, but detect nothing.</span>"
+			. += "<span class='notice'>Skanujesz granat, ale nic nie wykrywasz.</span>"
 	else if(stage != GRENADE_READY && beakers.len)
 		if(beakers.len == 2 && beakers[1].name == beakers[2].name)
-			. += "<span class='notice'>You see two [beakers[1].name]s inside the grenade.</span>"
+			. += "<span class='notice'>Widzisz w granacie dwie zlewki: [beakers[1].name].</span>"
 		else
 			for(var/obj/item/reagent_containers/glass/G in beakers)
-				. += "<span class='notice'>You see a [G.name] inside the grenade.</span>"
+				. += "<span class='notice'>Widzisz w granacie: [G.name].</span>"
 
 /obj/item/grenade/chem_grenade/attack_self(mob/user)
 	if(stage == GRENADE_READY && !active)
@@ -62,59 +62,59 @@
 		wires.interact(user)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		if(dud_flags & GRENADE_USED)
-			to_chat(user, "<span class='notice'>You started to reset the trigger.</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz resetować spust.</span>")
 			if (do_after(user, 2 SECONDS, src))
-				to_chat(user, "<span class='notice'>You reset the trigger.</span>")
+				to_chat(user, "<span class='notice'>Resetujesz spust.</span>")
 				dud_flags &= ~GRENADE_USED
 			return
 		if(stage == GRENADE_WIRED)
 			if(beakers.len)
 				stage_change(GRENADE_READY)
-				to_chat(user, "<span class='notice'>You lock the [initial(name)] assembly.</span>")
+				to_chat(user, "<span class='notice'>Blokujesz zespół [initial(name)].</span>")
 				I.play_tool_sound(src, 25)
 			else
-				to_chat(user, "<span class='warning'>You need to add at least one beaker before locking the [initial(name)] assembly!</span>")
+				to_chat(user, "<span class='warning'>Przed zablokowaniem zespołu [initial(name)] musisz dodać przynajmniej jedną zlewkę!</span>")
 		else if(stage == GRENADE_READY)
 			det_time = det_time == 50 ? 30 : 50 //toggle between 30 and 50
 			if(landminemode)
 				landminemode.time = det_time * 0.1	//overwrites the proxy sensor activation timer
 
-			to_chat(user, "<span class='notice'>You modify the time delay. It's set for [DisplayTimeText(det_time)].</span>")
+			to_chat(user, "<span class='notice'>Zmieniasz opóźnienie. Ustawione na [DisplayTimeText(det_time)].</span>")
 		else
-			to_chat(user, "<span class='warning'>You need to add a wire!</span>")
+			to_chat(user, "<span class='warning'>Musisz dodać przewód!</span>")
 		return
 	else if(stage == GRENADE_WIRED && is_type_in_list(I, allowed_containers))
 		. = TRUE //no afterattack
 		if(is_type_in_list(I, banned_containers))
-			to_chat(user, "<span class='warning'>[src] is too small to fit [I]!</span>") // this one hits home huh anon?
+			to_chat(user, "<span class='warning'>[src] jest za mały, by zmieścić [I]!</span>") // this one hits home huh anon?
 			return
 		if(beakers.len == 2)
-			to_chat(user, "<span class='warning'>[src] can not hold more containers!</span>")
+			to_chat(user, "<span class='warning'>[src] nie pomieści więcej pojemników!</span>")
 			return
 		else
 			if(I.reagents.total_volume)
 				if(!user.transferItemToLoc(I, src))
 					return
-				to_chat(user, "<span class='notice'>You add [I] to the [initial(name)] assembly.</span>")
+				to_chat(user, "<span class='notice'>Dodajesz [I] do zespołu [initial(name)].</span>")
 				beakers += I
 				var/reagent_list = pretty_string_from_reagent_list(I.reagents)
 				user.log_message("inserted [I] ([reagent_list]) into [src]",LOG_GAME)
 			else
-				to_chat(user, "<span class='warning'>[I] is empty!</span>")
+				to_chat(user, "<span class='warning'>[I] jest pusty!</span>")
 
 	else if(stage == GRENADE_EMPTY && istype(I, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/C = I
 		if (C.use(1))
 			det_time = 50 // In case the cable_coil was removed and readded.
 			stage_change(GRENADE_WIRED)
-			to_chat(user, "<span class='notice'>You rig the [initial(name)] assembly.</span>")
+			to_chat(user, "<span class='notice'>Okablowujesz zespół [initial(name)].</span>")
 		else
-			to_chat(user, "<span class='warning'>You need one length of coil to wire the assembly!</span>")
+			to_chat(user, "<span class='warning'>Do okablowania zespołu potrzebujesz odcinka kabla!</span>")
 			return
 
 	else if(stage == GRENADE_READY && I.tool_behaviour == TOOL_WIRECUTTER && !active)
 		stage_change(GRENADE_WIRED)
-		to_chat(user, "<span class='notice'>You unlock the [initial(name)] assembly.</span>")
+		to_chat(user, "<span class='notice'>Odblokowujesz zespół [initial(name)].</span>")
 
 	else if(stage == GRENADE_WIRED && I.tool_behaviour == TOOL_WRENCH)
 		if(beakers.len)
@@ -125,12 +125,12 @@
 				var/reagent_list = pretty_string_from_reagent_list(O.reagents)
 				user.log_message("removed [O] ([reagent_list]) from [src]", LOG_GAME)
 			beakers = list()
-			to_chat(user, "<span class='notice'>You open the [initial(name)] assembly and remove the payload.</span>")
+			to_chat(user, "<span class='notice'>Otwierasz zespół [initial(name)] i wyjmujesz ładunek.</span>")
 			wires.detach_assembly(wires.get_wire(1))
 			return
 		new /obj/item/stack/cable_coil(get_turf(src),1)
 		stage_change(GRENADE_EMPTY)
-		to_chat(user, "<span class='notice'>You remove the activation mechanism from the [initial(name)] assembly.</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz mechanizm aktywujący z zespołu [initial(name)].</span>")
 	else
 		return ..()
 
@@ -174,9 +174,9 @@
 		add_fingerprint(user)
 		if(msg)
 			if(landminemode)
-				to_chat(user, "<span class='warning'>You prime [src], activating its proximity sensor.</span>")
+				to_chat(user, "<span class='warning'>Odbezpieczasz [src], aktywując jego czujnik zbliżeniowy.</span>")
 			else
-				to_chat(user, "<span class='warning'>You prime [src]! [DisplayTimeText(det_time)]!</span>")
+				to_chat(user, "<span class='warning'>Odbezpieczasz [src]! [DisplayTimeText(det_time)]!</span>")
 	playsound(src, 'sound/weapons/armbomb.ogg', volume, 1)
 	icon_state = initial(icon_state) + "_active"
 	if(landminemode)
@@ -219,7 +219,7 @@
 /obj/item/grenade/chem_grenade/large
 	name = "large grenade"
 	desc = "A custom made large grenade. Larger splash range and increased ignition temperature compared to basic grenades. Fits exotic and bluespace based containers."
-	casedesc = "This casing affects a larger area than the basic model and can fit exotic containers, including slime cores and bluespace beakers. Heats contents by 25°K upon ignition."
+	casedesc = "Ta obudowa działa na większym obszarze niż model podstawowy i mieści egzotyczne pojemniki, w tym rdzenie szlamów i zlewki bluespace. Przy zapłonie podgrzewa zawartość o 25°K."
 	icon_state = "large_grenade"
 	allowed_containers = list(/obj/item/reagent_containers/glass, /obj/item/reagent_containers/food/condiment, /obj/item/reagent_containers/food/drinks)
 	banned_containers = list()
@@ -258,7 +258,7 @@
 	if(istype(I, /obj/item/slime_extract) && stage == GRENADE_WIRED)
 		if(!user.transferItemToLoc(I, src))
 			return
-		to_chat(user, "<span class='notice'>You add [I] to the [initial(name)] assembly.</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [I] do zespołu [initial(name)].</span>")
 		beakers += I
 	else
 		return ..()
@@ -266,7 +266,7 @@
 /obj/item/grenade/chem_grenade/cryo // Intended for rare cryogenic mixes. Cools the area moderately upon detonation.
 	name = "cryo grenade"
 	desc = "A custom made cryogenic grenade. Rapidly cools contents upon ignition."
-	casedesc = "Upon ignition, it rapidly cools contents by 100°K. Smaller splash range than regular casings."
+	casedesc = "Przy zapłonie gwałtownie schładza zawartość o 100°K. Mniejszy zasięg rozprysku niż zwykłe obudowy."
 	icon_state = "cryog"
 	affected_area = 2
 	ignition_temp = -100
@@ -274,14 +274,14 @@
 /obj/item/grenade/chem_grenade/pyro // Intended for pyrotechnical mixes. Produces a small fire upon detonation, igniting potentially flammable mixtures.
 	name = "pyro grenade"
 	desc = "A custom made pyrotechnical grenade. Heats up contents upon ignition."
-	casedesc = "Upon ignition, it rapidly heats contents by 500°K."
+	casedesc = "Przy zapłonie gwałtownie podgrzewa zawartość o 500°K."
 	icon_state = "pyrog"
 	ignition_temp = 500 // This is enough to expose a hotspot.
 
 /obj/item/grenade/chem_grenade/adv_release // Intended for weaker, but longer lasting effects. Could have some interesting uses.
 	name = "advanced release grenade"
 	desc = "A custom made advanced release grenade. It is able to be detonated more than once. Can be configured using a multitool."
-	casedesc = "This casing is able to detonate more than once. Can be configured using a multitool."
+	casedesc = "Ta obudowa może wybuchać więcej niż raz. Można ją skonfigurować multitoolem."
 	icon_state = "timeg"
 	var/unit_spread = 10 // Amount of units per repeat. Can be altered with a multitool.
 
@@ -294,7 +294,7 @@
 				unit_spread += 25
 			else
 				unit_spread = 5
-		to_chat(user, "<span class='notice'> You set the time release to [unit_spread] units per detonation.</span>")
+		to_chat(user, "<span class='notice'> Ustawiasz uwalnianie na [unit_spread] j. na detonację.</span>")
 		return
 	..()
 

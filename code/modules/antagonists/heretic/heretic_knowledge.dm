@@ -194,7 +194,7 @@
 			LAZYREMOVE(created_items, ref)
 
 	if(LAZYLEN(created_items) >= limit)
-		loc.balloon_alert(user, "ritual failed, at limit!")
+		loc.balloon_alert(user, "rytuał nieudany, osiągnięto limit!")
 		return FALSE
 
 	return TRUE
@@ -222,7 +222,7 @@
 
 	// No fingerprints? No ritual
 	if(!length(fingerprints))
-		loc.balloon_alert(user, "ritual failed, no fingerprints!")
+		loc.balloon_alert(user, "rytuał nieudany, brak odcisków palców!")
 		return FALSE
 
 	return TRUE
@@ -240,16 +240,16 @@
 			compiled_list[human_to_check.real_name] = human_to_check
 
 	if(!length(compiled_list))
-		loc.balloon_alert(user, "Ritual failed, no fingerprints found")
+		loc.balloon_alert(user, "Rytuał nieudany, nie znaleziono odcisków palców")
 		return FALSE
 
-	var/chosen_mob = input(user, "Select the person you wish to curse", "Eldritch Curse") as null|anything in sort_list(compiled_list, GLOBAL_PROC_REF(cmp_mob_realname_dsc))
+	var/chosen_mob = input(user, "Wybierz osobę, którą chcesz przekląć", "Pradawna klątwa") as null|anything in sort_list(compiled_list, GLOBAL_PROC_REF(cmp_mob_realname_dsc))
 	if(isnull(chosen_mob))
 		return FALSE
 
 	var/mob/living/carbon/human/to_curse = compiled_list[chosen_mob]
 	if(QDELETED(to_curse))
-		loc.balloon_alert(user, "Ritual failed, invalid choice")
+		loc.balloon_alert(user, "Rytuał nieudany, nieprawidłowy wybór")
 		return FALSE
 
 	log_combat(user, to_curse, "cursed via heretic ritual", addition = "([name])")
@@ -285,9 +285,9 @@
 	animate(summoned, 10 SECONDS, alpha = 155)
 
 	message_admins("A [summoned.name] is being summoned by [ADMIN_LOOKUPFLW(user)] in [ADMIN_COORDJMP(summoned)].")
-	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Do you want to play as a [summoned.real_name]?", ROLE_HERETIC, null, FALSE, 10 SECONDS, summoned)
+	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Chcesz zagrać jako [summoned.real_name]?", ROLE_HERETIC, null, FALSE, 10 SECONDS, summoned)
 	if(!LAZYLEN(candidates))
-		loc.balloon_alert(user, "Ritual failed, no ghosts")
+		loc.balloon_alert(user, "Rytuał nieudany, brak duchów")
 		animate(summoned, 0.5 SECONDS, alpha = 0)
 		QDEL_IN(summoned, 0.6 SECONDS)
 		return FALSE
@@ -318,7 +318,7 @@
 /datum/heretic_knowledge/knowledge_ritual
 	name = "Ritual of Knowledge"
 	desc = "A randomly generated transmutation ritual that rewards knowledge points and can only be completed once."
-	gain_text = "Everything can be a key to unlocking the secrets behind the Gates. I must be wary and wise."
+	gain_text = "Wszystko może być kluczem do sekretów za Bramami. Muszę być czujny i mądry."
 	cost = 1
 	priority = MAX_KNOWLEDGE_PRIORITY - 10 // A pretty important midgame ritual.
 	/// Whether we've done the ritual. Only doable once.
@@ -374,13 +374,13 @@
 
 	var/list/requirements_string = list()
 
-	to_chat(user, "<span class='hierophant'>The [name] requires the following:</span>")
+	to_chat(user, "<span class='hierophant'>[name] wymaga:</span>")
 	for(var/obj/item/path as anything in required_atoms)
 		var/amount_needed = required_atoms[path]
 		to_chat(user, "<span class='hypnophrase'>[amount_needed] [initial(path.name)]\s...</span>")
 		requirements_string += "[amount_needed == 1 ? "":"[amount_needed] "][initial(path.name)]\s"
 
-	to_chat(user, "<span class='hierophant'>Completing it will reward you [KNOWLEDGE_RITUAL_POINTS] knowledge points. You can check the knowledge in your Researched Knowledge to be reminded.</span>")
+	to_chat(user, "<span class='hierophant'>Ukończenie go da ci [KNOWLEDGE_RITUAL_POINTS] pkt wiedzy. Wymagania możesz sprawdzić w Zbadanej Wiedzy.</span>")
 
 	desc = "Allows you to transmute [english_list(requirements_string)] for [KNOWLEDGE_RITUAL_POINTS] bonus knowledge points. This can only be completed once."
 

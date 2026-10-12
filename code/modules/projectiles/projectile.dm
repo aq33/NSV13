@@ -257,18 +257,18 @@
 		var/organ_hit_text = ""
 		var/limb_hit = L.check_limb_hit(def_zone)//to get the correct message info.
 		if(limb_hit)
-			organ_hit_text = " in \the [parse_zone(limb_hit)]"
+			organ_hit_text = " w [strefa_pl(limb_hit, TRUE)]"
 		if(suppressed==SUPPRESSED_VERY)
 			playsound(loc, hitsound, 5, TRUE, -1)
 		else if(suppressed)
 			playsound(loc, hitsound, 5, 1, -1)
-			to_chat(L, "<span class='userdanger'>You're shot by \a [src][organ_hit_text]!</span>")
+			to_chat(L, "<span class='userdanger'>Trafia cię [src][organ_hit_text]!</span>")
 		else
 			if(hitsound)
 				var/volume = vol_by_damage()
 				playsound(src, hitsound, volume, TRUE, -1)
-			L.visible_message("<span class='danger'>[L] is hit by \a [src][organ_hit_text]!</span>", \
-					"<span class='userdanger'>You're hit by \a [src][organ_hit_text]!</span>", null, COMBAT_MESSAGE_RANGE)
+			L.visible_message("<span class='danger'>[src] trafia [L][organ_hit_text]!</span>", \
+					"<span class='userdanger'>Trafia cię [src][organ_hit_text]!</span>", null, COMBAT_MESSAGE_RANGE)
 		L.on_hit(src)
 
 	var/reagent_note

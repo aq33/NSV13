@@ -26,8 +26,8 @@
 	selection_type = "view"
 	projectile_type = null
 
-	active_msg = "You focus, your mind reaching to the clown dimension, ready to make a peel matrialize wherever you want!"
-	deactive_msg = "You relax, the peel remaining right in the \"thin air\" it would appear out of."
+	active_msg = "Skupiasz się, a twój umysł sięga do wymiaru klaunów, gotów zmaterializować skórkę banana, gdzie tylko zechcesz!"
+	deactive_msg = "Rozluźniasz się, a skórka pozostaje w „rozrzedzonym powietrzu”, z którego miała się wyłonić."
 	action_icon = 'icons/obj/hydroponics/harvest.dmi'
 	base_icon_state = "banana_peel"
 	action_icon_state = "banana"
@@ -37,7 +37,7 @@
 	var/target = get_turf(targets[1])
 
 	if(get_dist(user,target)>range)
-		to_chat(user, "<span class='notice'>\The [target] is too far away!</span>")
+		to_chat(user, "<span class='notice'>[target] jest za daleko!</span>")
 		return
 
 	. = ..()

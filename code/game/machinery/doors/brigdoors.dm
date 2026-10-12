@@ -126,7 +126,7 @@
 
 	if(!forced)
 		Radio.set_frequency(FREQ_SECURITY)
-		Radio.talk_into(src, "Timer has expired. Releasing prisoner.", FREQ_SECURITY)
+		Radio.talk_into(src, "Czas minął. Zwalnianie więźnia.", FREQ_SECURITY)
 
 	timing = FALSE
 	activation_time = null
@@ -252,7 +252,7 @@
 	var/mob/user = usr
 
 	if(!allowed(usr))
-		to_chat(usr, "<span class='warning'>Access denied.</span>")
+		to_chat(usr, "<span class='warning'>Odmowa dostępu.</span>")
 		return FALSE
 
 	switch(action)

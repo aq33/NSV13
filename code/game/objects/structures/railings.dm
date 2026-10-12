@@ -29,18 +29,18 @@
 			if(!I.tool_start_check(user, amount=0))
 				return
 
-			to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz naprawiać [src]...</span>")
 			if(I.use_tool(src, user, 40, volume=50))
 				obj_integrity = max_integrity
-				to_chat(user, "<span class='notice'>You repair [src].</span>")
+				to_chat(user, "<span class='notice'>Naprawiasz [src].</span>")
 		else
-			to_chat(user, "<span class='warning'>[src] is already in good condition!</span>")
+			to_chat(user, "<span class='warning'>[src] jest już w dobrym stanie!</span>")
 		return
 
 /obj/structure/railing/wirecutter_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(!anchored)
-		to_chat(user, "<span class='warning'>You cut apart the railing.</span>")
+		to_chat(user, "<span class='warning'>Rozcinasz barierkę.</span>")
 		I.play_tool_sound(src, 100)
 		deconstruct()
 		return TRUE
@@ -58,10 +58,10 @@
 	. = ..()
 	if(flags_1&NODECONSTRUCT_1)
 		return
-	to_chat(user, "<span class='notice'>You begin to [anchored ? "unfasten the railing from":"fasten the railing to"] the floor...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz [anchored ? "odczepiać barierkę od":"mocować barierkę do"] podłogi...</span>")
 	if(I.use_tool(src, user, 1 SECONDS, volume = 75, extra_checks = CALLBACK(src, PROC_REF(check_anchored), anchored)))
 		setAnchored(!anchored)
-		to_chat(user, "<span class='notice'>You [anchored ? "fasten the railing to":"unfasten the railing from"] the floor.</span>")
+		to_chat(user, "<span class='notice'>[anchored ? "Mocujesz barierkę do":"Odczepiasz barierkę od"] podłogi.</span>")
 	return TRUE
 
 /obj/structure/railing/CanPass(atom/movable/mover, turf/target)
@@ -109,13 +109,13 @@
 
 /obj/structure/railing/proc/can_be_rotated(mob/user,rotation_type)
 	if(anchored)
-		to_chat(user, "<span class='warning'>[src] cannot be rotated while it is fastened to the floor!</span>")
+		to_chat(user, "<span class='warning'>[src] nie da się obrócić, gdy jest przymocowany do podłogi!</span>")
 		return FALSE
 
 	var/target_dir = turn(dir, rotation_type == ROTATION_CLOCKWISE ? -90 : 90)
 
 	if(!valid_window_location(loc, target_dir)) //Expanded to include rails, as well!
-		to_chat(user, "<span class='warning'>[src] cannot be rotated in that direction!</span>")
+		to_chat(user, "<span class='warning'>[src] nie da się obrócić w tym kierunku!</span>")
 		return FALSE
 	return TRUE
 

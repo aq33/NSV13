@@ -10,7 +10,7 @@
 /datum/emote/living/carbon/human/dap
 	key = "dap"
 	key_third_person = "daps"
-	message = "Niestety nie ma z kim przybić żółwika i przybija żółwika sam ze sobą. Szkoda"
+	message = "nie ma z kim przybić żółwika, więc przybija go sam sobie. Smutne."
 	message_param = "przybija żółwika z %t"
 	restraint_check = TRUE
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
@@ -28,7 +28,7 @@
 
 /datum/emote/living/carbon/human/handshake
 	key = "handshake"
-	message = "uściska własną dłoń"
+	message = "ściska własną dłoń"
 	message_param = "ściska dłonie z %t"
 	restraint_check = TRUE
 	emote_type = EMOTE_VISIBLE
@@ -36,7 +36,7 @@
 /datum/emote/living/carbon/human/hug
 	key = "hug"
 	key_third_person = "hugs"
-	message = "przytula siebie"
+	message = "obejmuje się ramionami"
 	message_param = "przytula %t"
 	restraint_check = TRUE
 	emote_type = EMOTE_VISIBLE
@@ -90,7 +90,7 @@
 	key = "salute"
 	key_third_person = "salutes"
 	message = "salutuje"
-	message_param = "salutuje do %t"
+	message_param = "salutuje, patrząc na %t"
 	restraint_check = TRUE
 	emote_type = EMOTE_VISIBLE
 

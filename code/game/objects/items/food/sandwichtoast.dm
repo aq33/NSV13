@@ -8,7 +8,7 @@
 		/datum/reagent/consumable/nutriment/protein = 7,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("meat" = 2, "cheese" = 1, "bread" = 2, "lettuce" = 1)
+	tastes = list("mięso" = 2, "ser" = 1, "chleb" = 2, "sałata" = 1)
 	foodtypes = GRAIN | VEGETABLES
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -25,7 +25,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 		/datum/reagent/carbon = 4
 	)
-	tastes = list("toast" = 2, "cheese" = 3, "butter" = 1)
+	tastes = list("tost" = 2, "ser" = 3, "masło" = 1)
 	foodtypes = GRAIN
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -41,7 +41,7 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("bread" = 1, "cheese" = 1)
+	tastes = list("chleb" = 1, "ser" = 1)
 	foodtypes = GRAIN | DAIRY
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -56,7 +56,7 @@
 	icon = 'icons/obj/food/burgerbread.dmi'
 	icon_state = "jellysandwich"
 	bite_consumption = 3
-	tastes = list("bread" = 1, "jelly" = 1)
+	tastes = list("chleb" = 1, "galaretka" = 1)
 	foodtypes = GRAIN
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -87,7 +87,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 10
 	)
-	tastes = list("nothing suspicious" = 1)
+	tastes = list("nic podejrzanego" = 1)
 	foodtypes = GRAIN | GROSS
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -103,7 +103,7 @@
 		/datum/reagent/consumable/nutriment = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("butter" = 1, "toast" = 1)
+	tastes = list("masło" = 1, "tost" = 1)
 	foodtypes = GRAIN | BREAKFAST
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -115,7 +115,7 @@
 	icon = 'icons/obj/food/burgerbread.dmi'
 	icon_state = "jellytoast"
 	bite_consumption = 3
-	tastes = list("toast" = 1, "jelly" = 1)
+	tastes = list("tost" = 1, "galaretka" = 1)
 	foodtypes = GRAIN | BREAKFAST
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -146,7 +146,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 4
 	)
-	tastes = list("bread" = 2)
+	tastes = list("chleb" = 2)
 	foodtypes = GRAIN
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -164,7 +164,7 @@
 		/datum/reagent/consumable/ketchup = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("bun" = 3, "meat" = 2)
+	tastes = list("bułka" = 3, "mięso" = 2)
 	foodtypes = GRAIN | MEAT //Ketchup is not a vegetable
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3

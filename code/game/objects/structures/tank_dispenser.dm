@@ -54,12 +54,12 @@
 		default_unfasten_wrench(user, I, time = 20)
 		return
 	else if(user.a_intent != INTENT_HARM)
-		to_chat(user, "<span class='notice'>[I] does not fit into [src].</span>")
+		to_chat(user, "<span class='notice'>[I] nie mieści się do [src].</span>")
 		return
 	else
 		return ..()
 	if(full)
-		to_chat(user, "<span class='notice'>[src] can't hold any more of [I].</span>")
+		to_chat(user, "<span class='notice'>[src] nie pomieści więcej [I].</span>")
 		return
 
 	if(!user.transferItemToLoc(I, src))
@@ -68,7 +68,7 @@
 		else if(istype(I, /obj/item/tank/internals/oxygen))
 			oxygentanks--
 		return
-	to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
+	to_chat(user, "<span class='notice'>Wkładasz [I] do [src].</span>")
 	update_icon()
 	ui_update()
 

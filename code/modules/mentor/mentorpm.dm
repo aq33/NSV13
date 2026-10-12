@@ -5,14 +5,14 @@
 	set category = "Mentor"
 	set name = "Mentor PM"
 	if(!is_mentor())
-		to_chat(src, "<font color='red'>Error: Mentor-PM-Panel: Only Mentors and Admins may use this command.</span>")
+		to_chat(src, "<font color='red'>Błąd: Mentor-PM-Panel: tej komendy mogą używać tylko mentorzy i admini.</span>")
 		return
 	var/list/client/targets[0]
 	for(var/client/T)
 		targets["[T]"] = T
 
 	var/list/sorted = sortList(targets)
-	var/target = input(src,"To whom shall we send a message?","Mentor PM",null) in sorted|null
+	var/target = input(src,"Do kogo wysłać wiadomość?","Mentor PM",null) in sorted|null
 	cmd_mentor_pm(targets[target],null)
 	SSblackbox.record_feedback("tally", "Mentor_verb", 1, "APM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -30,7 +30,7 @@
 		C = whom
 	if(!C)
 		if(is_mentor())
-			to_chat(src, "<font color='red'>Error: Mentor-PM: Client not found.</span>")
+			to_chat(src, "<font color='red'>Błąd: Mentor-PM: nie znaleziono klienta.</span>")
 		else
 			mentorhelp(msg)	//Mentor we are replying to left. Mentorhelp instead(check below)
 		return
@@ -44,7 +44,7 @@
 
 		if(!C)
 			if(is_mentor())
-				to_chat(src, "<font color='red'>Error: Mentor-PM: Client not found.</span>")
+				to_chat(src, "<font color='red'>Błąd: Mentor-PM: nie znaleziono klienta.</span>")
 			else
 				mentorhelp(msg)	//Mentor we are replying to has vanished, Mentorhelp instead (how the fuck does this work?let's hope it works,shrug)
 			return
@@ -63,17 +63,17 @@
 	var/show_char = CONFIG_GET(flag/mentors_mobname_only)
 	if(C.is_mentor())
 		if(is_mentor())//both are mentors
-			to_chat(C, "<span class='mentorfrom'>Mentor PM from-<b>[key_name_mentor(src, C, 1, 0)]</b>: [msg]</span>")
-			to_chat(src, "<span class='mentorto''>Mentor PM to-<b>[key_name_mentor(C, C, 1, 0)]</b>: [msg]</span>")
+			to_chat(C, "<span class='mentorfrom'>PW od mentora <b>[key_name_mentor(src, C, 1, 0)]</b>: [msg]</span>")
+			to_chat(src, "<span class='mentorto''>PW do mentora <b>[key_name_mentor(C, C, 1, 0)]</b>: [msg]</span>")
 
 		else		//recipient is an mentor but sender is not
-			to_chat(C, "<span class='mentorfrom'>Reply PM from-<b>[key_name_mentor(src, C, 1, show_char)]</b>: [msg]</span>")
-			to_chat(src, "<span class='mentorto''>Mentor PM to-<b>[key_name_mentor(C, C, 1, 0)]</b>: [msg]</span>")
+			to_chat(C, "<span class='mentorfrom'>Odpowiedź PW od <b>[key_name_mentor(src, C, 1, show_char)]</b>: [msg]</span>")
+			to_chat(src, "<span class='mentorto''>PW do mentora <b>[key_name_mentor(C, C, 1, 0)]</b>: [msg]</span>")
 
 	else
 		if(is_mentor())	//sender is an mentor but recipient is not.
-			to_chat(C, "<span class='mentorfrom'>Mentor PM from-<b>[key_name_mentor(src, C, 1, 0)]</b>: [msg]</span>")
-			to_chat(src, "<span class='mentorto''>Mentor PM to-<b>[key_name_mentor(C, C, 1, show_char)]</b>: [msg]</span>")
+			to_chat(C, "<span class='mentorfrom'>PW od mentora <b>[key_name_mentor(src, C, 1, 0)]</b>: [msg]</span>")
+			to_chat(src, "<span class='mentorto''>PW do mentora <b>[key_name_mentor(C, C, 1, show_char)]</b>: [msg]</span>")
 
 	//we don't use message_Mentors here because the sender/receiver might get it too
 	var/show_char_sender = !is_mentor() && CONFIG_GET(flag/mentors_mobname_only)

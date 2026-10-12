@@ -21,15 +21,15 @@
 
 	var/mob/living/target = targets[1]
 
-	to_chat(originator, "<span class='notice'>You begin linking [target]'s mind to yours...</span>")
-	to_chat(target, "<span class='warning'>You feel your mind being pulled... connected... intertwined with the very fabric of reality...</span>")
+	to_chat(originator, "<span class='notice'>Zaczynasz łączyć umysł [target] ze swoim...</span>")
+	to_chat(target, "<span class='warning'>Czujesz, jak twój umysł jest ciągnięty... łączony... splatany z samą tkanką rzeczywistości...</span>")
 	if(!do_after(originator, 6 SECONDS, target = target))
 		return
 	if(!originator.link_mob(target))
-		to_chat(originator, "<span class='warning'>You can't seem to link [target]'s mind...</span>")
-		to_chat(target, "<span class='warning'>The foreign presence leaves your mind.</span>")
+		to_chat(originator, "<span class='warning'>Nie możesz połączyć się z umysłem [target]...</span>")
+		to_chat(target, "<span class='warning'>Obca obecność opuszcza twój umysł.</span>")
 		return
-	to_chat(originator, "<span class='notice'>You connect [target]'s mind to your mansus link!</span>")
+	to_chat(originator, "<span class='notice'>Łączysz umysł [target] ze swoim łączem Mansusa!</span>")
 
 
 /datum/action/innate/mansus_speech
@@ -50,7 +50,7 @@
 	if(!originator?.linked_mobs[living_owner])
 		CRASH("Uh oh, a Mansus Link ([type]) got somehow called Activate() [isnull(originator) ? "without an originator Raw Prophet" : "without being in the originator's linked_mobs list"].")
 
-	var/message = sanitize(input(living_owner, "Enter your message", "Telepathy from the Mansus"))
+	var/message = sanitize(input(living_owner, "Wpisz wiadomość", "Telepatia z Mansusa"))
 	if(!message)
 		return
 
@@ -58,7 +58,7 @@
 		return
 
 	if(!originator?.linked_mobs[living_owner])
-		to_chat(living_owner, "<span class='warning'>The link seems to have been severed...</span>")
+		to_chat(living_owner, "<span class='warning'>Łącze chyba zostało zerwane...</span>")
 		Remove(living_owner)
 		return
 

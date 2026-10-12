@@ -20,17 +20,17 @@
 		if(0 to 15)
 			this_food.add_atom_colour(fried_colors[1], FIXED_COLOUR_PRIORITY)
 			this_food.name = "lightly-fried [this_food.name]"
-			this_food.desc += " It's been lightly fried in a deep fryer."
+			this_food.desc += " Zostało lekko usmażone we frytownicy."
 
 		if(15 to 50)
 			this_food.add_atom_colour(fried_colors[2], FIXED_COLOUR_PRIORITY)
 			this_food.name = "fried [this_food.name]"
-			this_food.desc += " It's been fried, increasing its tastiness value by [rand(1, 75)]%."
+			this_food.desc += " Zostało usmażone, co zwiększa jego smakowitość o [rand(1, 75)]%."
 
 		if(50 to 85)
 			this_food.add_atom_colour(fried_colors[3], FIXED_COLOUR_PRIORITY)
 			this_food.name = "deep-fried [this_food.name]"
-			this_food.desc += " Deep-fried to perfection."
+			this_food.desc += " Usmażone w głębokim tłuszczu do perfekcji."
 
 		if(85 to INFINITY)
 			this_food.add_atom_colour(fried_colors[4], FIXED_COLOUR_PRIORITY)

@@ -26,11 +26,11 @@
 			if(O == src)
 				continue
 			if(!O.anchored)
-				to_chat(user, "<span class='warning'>[O] refuses to budge! You'll have to un-anchor it before you can open [src]...</span>")
+				to_chat(user, "<span class='warning'>[O] ani drgnie! Musisz go odkotwiczyć, zanim otworzysz [src]...</span>")
 				break
 	if(I.use_tool(src, user, 0.5 SECONDS, volume=50))
-		user.visible_message("[user] flips [hatch_open ? "closed" : "open"] [src]'s maintenance hatch.",
-			"<span class='notice'>You flip [hatch_open ? "closed" : "open"] [src]'s maintenance hatch.</span>")
+		user.visible_message("[user] [hatch_open ? "zamyka" : "otwiera"] właz serwisowy [src].",
+			"<span class='notice'>[hatch_open ? "Zamykasz" : "Otwierasz"] właz serwisowy [src].</span>")
 		hatch_open = !hatch_open
 		update_icon()
 	return TRUE
@@ -60,5 +60,5 @@
 	if(resistance_flags & INDESTRUCTIBLE)
 		return
 	if(C.tool_behaviour == TOOL_WIRECUTTER)
-		to_chat(user, "<span class='notice'>Slicing [name] joints ...</span>")
+		to_chat(user, "<span class='notice'>Przecinanie łączeń [name]...</span>")
 		deconstruct()

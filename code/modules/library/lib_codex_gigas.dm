@@ -24,19 +24,19 @@
 	if(!user.can_read(src))
 		return FALSE
 	if(inUse)
-		to_chat(user, "<span class='notice'>Someone else is reading it.</span>")
+		to_chat(user, "<span class='notice'>Ktoś inny ją czyta.</span>")
 	if(ishuman(user))
 		var/mob/living/carbon/human/U = user
 		if(U.check_acedia())
-			to_chat(user, "<span class='notice'>None of this matters, why are you reading this? You put [title] down.</span>")
+			to_chat(user, "<span class='notice'>Nic z tego nie ma znaczenia, czemu to czytasz? Odkładasz [title].</span>")
 			return
-	user.visible_message("[user] opens [title] and begins reading intently.")
+	user.visible_message("[user] otwiera [title] i zaczyna uważnie czytać.")
 	ask_name(user)
 
 
 /obj/item/book/codex_gigas/proc/perform_research(mob/user, devilName)
 	if(!devilName)
-		user.visible_message("[user] closes [title] without looking anything up.")
+		user.visible_message("[user] zamyka [title], niczego nie sprawdziwszy.")
 		return
 	inUse = TRUE
 	var/speed = 300
@@ -59,7 +59,7 @@
 	inUse = FALSE
 
 /obj/item/book/codex_gigas/proc/display_devil(datum/antagonist/devil/devil, mob/reader, devilName)
-	reader << browse("Information on [devilName]<br><br><br>[GLOB.lawlorify[LORE][devil.ban]]<br>[GLOB.lawlorify[LORE][devil.bane]]<br>[GLOB.lawlorify[LORE][devil.obligation]]<br>[GLOB.lawlorify[LORE][devil.banish]]<br>[devil.ascendable?"This devil may ascend given enough souls.":""]", "window=book[window_size != null ? ";size=[window_size]" : ""]")
+	reader << browse("Informacje o [devilName]<br><br><br>[GLOB.lawlorify[LORE][devil.ban]]<br>[GLOB.lawlorify[LORE][devil.bane]]<br>[GLOB.lawlorify[LORE][devil.obligation]]<br>[GLOB.lawlorify[LORE][devil.banish]]<br>[devil.ascendable?"Ten diabeł może wstąpić na wyższy poziom, jeśli zdobędzie dość dusz.":""]", "window=book[window_size != null ? ";size=[window_size]" : ""]")
 
 /obj/item/book/codex_gigas/proc/ask_name(mob/reader)
 	ui_interact(reader)

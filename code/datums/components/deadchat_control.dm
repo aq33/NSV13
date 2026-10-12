@@ -21,7 +21,7 @@
 	input_cooldown = _input_cooldown
 	if(deadchat_mode == DEMOCRACY_MODE)
 		timerid = addtimer(CALLBACK(src, PROC_REF(democracy_loop)), input_cooldown, TIMER_STOPPABLE | TIMER_LOOP)
-	notify_ghosts("[parent] is now deadchat controllable!", source = parent, action = NOTIFY_ORBIT, header="Something Interesting!")
+	notify_ghosts("[parent] jest teraz sterowany przez czat umarłych!", source = parent, action = NOTIFY_ORBIT, header="Coś ciekawego!")
 
 
 /datum/component/deadchat_control/Destroy(force, silent)
@@ -55,11 +55,11 @@
 	var/result = count_democracy_votes()
 	if(!isnull(result))
 		inputs[result].Invoke()
-		var/message = "<span class='deadsay italics bold'>[parent] has done action [result]!<br>New vote started. It will end in [input_cooldown/10] seconds.</span>"
+		var/message = "<span class='deadsay italics bold'>[parent] wykonuje akcję: [result]!<br>Rozpoczęto nowe głosowanie. Zakończy się za [input_cooldown/10] s.</span>"
 		for(var/M in orbiters)
 			to_chat(M, message)
 	else
-		var/message = "<span class='deadsay italics bold'>No votes were cast this cycle.</span>"
+		var/message = "<span class='deadsay italics bold'>W tym cyklu nie oddano żadnych głosów.</span>"
 		for(var/M in orbiters)
 			to_chat(M, message)
 

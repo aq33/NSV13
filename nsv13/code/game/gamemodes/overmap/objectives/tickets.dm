@@ -11,7 +11,7 @@
 		assigned_faction = FACTION_ID_NT
 	var/datum/faction/F = SSstar_system.faction_by_id(assigned_faction)
 	target = F.tickets + ticket_amount
-	brief = "Accumulate [target] faction points for [F.name] by defeating hostile fleets and completing station missions"
+	brief = "Zdobądźcie [target] punktów frakcji dla [F.name], pokonując wrogie floty i wykonując misje stacji"
 
 /datum/overmap_objective/tickets/check_completion()
 	. = ..()

@@ -7,7 +7,7 @@
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 1
 	show_in_report = TRUE
-	report_message = "Your station has won the grand prize of the annual station charity event. Free snacks will be delivered to the bar every now and then."
+	report_message = "Wasza stacja wygrała główną nagrodę w corocznej akcji charytatywnej stacji. Do baru co jakiś czas będą dostarczane darmowe przekąski."
 	trait_processes = TRUE
 	COOLDOWN_DECLARE(party_cooldown)
 
@@ -36,7 +36,7 @@
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 5
 	show_in_report = TRUE
-	report_message = "Your station has been selected for a special grant. Some extra funds has been made available to your cargo department."
+	report_message = "Wasza stacja została wybrana do specjalnego grantu. Dział zaopatrzenia otrzymał dodatkowe fundusze."
 
 /datum/station_trait/galactic_grant/on_round_start()
 	var/datum/bank_account/cargo_bank = SSeconomy.get_dep_account(ACCOUNT_CAR)
@@ -47,7 +47,7 @@
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 10
 	show_in_report = TRUE
-	report_message = "The internals boxes for your crew have been filled with bonus equipment."
+	report_message = "Pudełka z wyposażeniem oddechowym dla waszej załogi zostały wypełnione dodatkowym sprzętem."
 	trait_to_give = STATION_TRAIT_PREMIUM_INTERNALS
 
 /datum/station_trait/bountiful_bounties
@@ -55,7 +55,7 @@
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 5
 	show_in_report = TRUE
-	report_message = "It seems collectors in this system are extra keen to on bounties, and will pay more to see their completion."
+	report_message = "Wygląda na to, że kolekcjonerzy w tym układzie szczególnie interesują się zleceniami i zapłacą więcej za ich wykonanie."
 
 /datum/station_trait/bountiful_bounties/on_round_start()
 	SSeconomy.bounty_modifier *= 1.2
@@ -65,7 +65,7 @@
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 5
 	show_in_report = TRUE
-	report_message = "Prices are low in this system, BUY BUY BUY!"
+	report_message = "Ceny w tym układzie są niskie, KUPUJCIE, KUPUJCIE, KUPUJCIE!"
 	blacklist = list(/datum/station_trait/distant_supply_lines)
 	trait_to_give = STATION_TRAIT_STRONG_SUPPLY_LINES
 
@@ -79,12 +79,12 @@
 /datum/station_trait/scarves/New()
 	. = ..()
 	report_message = pick(
-		"Nanotrasen is experimenting with seeing if neck warmth improves employee morale.",
-		"After Space Fashion Week, scarves are the hot new accessory.",
-		"Everyone was simultaneously a little bit cold when they packed to go to the station.",
-		"The station is definitely not under attack by neck grappling aliens masquerading as wool. Definitely not.",
-		"You all get free scarves. Don't ask why.",
-		"A shipment of scarves was delivered to the station.",
+		"Nanotrasen sprawdza w ramach eksperymentu, czy ciepła szyja poprawia morale pracowników.",
+		"Po Kosmicznym Tygodniu Mody szaliki to najmodniejszy dodatek.",
+		"Wszystkim było trochę zimno, gdy pakowali się na stację.",
+		"Stacja na pewno nie jest atakowana przez duszących obcych udających wełnę. Na pewno nie.",
+		"Wszyscy dostajecie darmowe szaliki. Nie pytajcie dlaczego.",
+		"Na stację dostarczono dostawę szalików.",
 	)
 	scarves = typesof(/obj/item/clothing/neck/scarf) + list(
 		/obj/item/clothing/neck/stripedredscarf,
@@ -106,7 +106,7 @@
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 5
 	show_in_report = TRUE
-	report_message = "Our workers accidentally forgot more of their personal belongings in the maintenance areas."
+	report_message = "Nasi pracownicy przez przypadek zostawili więcej swoich rzeczy osobistych w tunelach technicznych."
 	blacklist = list(/datum/station_trait/empty_maint)
 	trait_to_give = STATION_TRAIT_FILLED_MAINT
 
@@ -115,7 +115,7 @@
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 5
 	show_in_report = TRUE
-	report_message = "Due to proximity to our supply station, the cargo shuttle will have a quicker flight time to your cargo department."
+	report_message = "Ze względu na bliskość naszej stacji zaopatrzeniowej prom zaopatrzenia będzie szybciej docierał do waszego działu zaopatrzenia."
 	blacklist = list(/datum/station_trait/slow_shuttle)
 
 /datum/station_trait/quick_shuttle/on_round_start()

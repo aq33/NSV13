@@ -15,19 +15,19 @@
 		deltimer(vote_timer)
 		vote_timer = null
 		vote_active = FALSE
-		hierophant_message("[user] has cancelled the Eminence vote.")
+		hierophant_message("[user] anuluje głosowanie w sprawie Eminencji.")
 		return
 	if(used)
-		to_chat(user, "<span class='brass'>The Eminence has already been released.</span>")
+		to_chat(user, "<span class='brass'>Eminencja została już uwolniona.</span>")
 		return
-	var/option = alert(user,"Who shall control the Eminence?",,"Yourself","A ghost", "Cancel")
+	var/option = alert(user,"Kto ma kierować Eminencją?",,"Yourself","A ghost", "Cancel")
 	if(option != "A ghost" && option != "Yourself") //NSV13
 		return
 	else if(option == "Yourself")
-		hierophant_message("[user] has elected themselves to become the Eminence. Interact with [src] to object.", span="<span=large_brass>")
+		hierophant_message("[user] zgłasza siebie na Eminencję. Użyj [src], żeby zaprotestować.", span="<span class='large_brass'>")
 		vote_timer = addtimer(CALLBACK(src, PROC_REF(vote_succeed), user), 600, TIMER_STOPPABLE)
 	else if(option == "A ghost")
-		hierophant_message("[user] has elected for a ghost to become the Eminence. Interact with [src] to object.")
+		hierophant_message("[user] chce, by Eminencją został duch. Użyj [src], żeby zaprotestować.")
 		vote_timer = addtimer(CALLBACK(src, PROC_REF(vote_succeed)), 600, TIMER_STOPPABLE)
 	vote_active = TRUE
 
@@ -35,15 +35,15 @@
 	vote_active = FALSE
 	used = TRUE
 	if(!eminence)
-		var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as the eminence?", ROLE_SERVANT_OF_RATVAR, /datum/role_preference/antagonist/clock_cultist, 10 SECONDS)
+		var/list/mob/dead/observer/candidates = pollGhostCandidates("Chcesz zagrać jako Eminencja?", ROLE_SERVANT_OF_RATVAR, /datum/role_preference/antagonist/clock_cultist, 10 SECONDS)
 		if(LAZYLEN(candidates))
 			eminence = pick(candidates)
 	else
 		eminence.dust()
 	if(!(eminence?.client))
-		hierophant_message("The Eminence remains in slumber, for now, try waking it again soon.")
+		hierophant_message("Eminencja na razie śpi, spróbujcie ją obudzić wkrótce.")
 		used = FALSE
 		return
 	var/mob/new_mob = new /mob/living/simple_animal/eminence(get_turf(src))
 	new_mob.key = eminence.key
-	hierophant_message("The Eminence has risen!")
+	hierophant_message("Eminencja powstała!")

@@ -17,7 +17,7 @@
 	if(stat == DEAD)
 		return
 	if(!gibbed)
-		logevent("FATAL -- SYSTEM HALT")
+		logevent("BŁĄD KRYTYCZNY -- ZATRZYMANIE SYSTEMU")
 		modularInterface.shutdown_computer()
 	. = ..()
 

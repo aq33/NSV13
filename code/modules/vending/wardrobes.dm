@@ -175,7 +175,7 @@
 	name = "RoboDrobe"
 	desc = "A vending machine designed to dispense clothing known only to roboticists."
 	icon_state = "robodrobe"
-	product_ads = "You turn me TRUE, use defines!;0110001101101100011011110111010001101000011001010111001101101000011001010111001001100101"
+	product_ads = "Ustaw mnie na TRUE, używaj definicji!;0110001101101100011011110111010001101000011001010111001101101000011001010111001001100101"
 	vend_reply = "Dziękujemy za użycie RoboDrobe!"
 	light_color = LIGHT_COLOR_WHITE
 	products = list(/obj/item/clothing/glasses/hud/diagnostic = 2,
@@ -208,7 +208,7 @@
 	name = "SciDrobe"
 	desc = "Tęsknisz za zapachem palonego plazmą mięsa? Kup swoje ubranie naukowca już dziś!;W 10% auksetyczny, więc nie musisz przejmować się utratą ręki!"
 	icon_state = "scidrobe"
-	product_ads = "Longing for the smell of plasma burnt flesh? Buy your science clothing now!;Made with 10% Auxetics, so you don't have to worry about losing your arm!"
+	product_ads = "Tęsknisz za zapachem ciała spalonego plazmą? Kup ubrania naukowe już teraz!;Zrobione w 10% z auksetyków, więc nie musisz się martwić o utratę ręki!"
 	vend_reply = "Dziękujemy za użycie SciDrobe!"
 	light_color = LIGHT_COLOR_WHITE
 	products = list(/obj/item/clothing/accessory/pocketprotector = 3,
@@ -531,7 +531,7 @@
 	name = "\improper DetDrobe"
 	desc = "A machine for all your detective needs, as long as you need clothes."
 	icon_state = "detdrobe"
-	product_ads = "Apply your brilliant deductive methods in style!"
+	product_ads = "Stosuj swoje genialne metody dedukcji w dobrym stylu!"
 	vend_reply = "Dziękujemy za użycie DetDrobe!"
 	products = list(/obj/item/clothing/under/rank/security/detective = 2,
 					//obj/item/clothing/under/rank/security/detective/skirt = 2, //NSV13 no skirts

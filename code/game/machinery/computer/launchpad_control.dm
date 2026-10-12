@@ -16,7 +16,7 @@
 	. = ..()
 
 /obj/machinery/computer/launchpad/attack_paw(mob/user)
-	to_chat(user, "<span class='warning'>You are too primitive to use this computer!</span>")
+	to_chat(user, "<span class='warning'>Jesteś zbyt prymitywny, by używać tego komputera!</span>")
 	return
 
 /obj/machinery/computer/launchpad/attackby(obj/item/W, mob/user, params)
@@ -30,9 +30,9 @@
 				RegisterSignal(M.buffer, COMSIG_PARENT_QDELETING, PROC_REF(launchpad_deleted))
 				M.buffer = null
 				ui_update()
-				to_chat(user, "<span class='notice'>You upload the data from the [W.name]'s buffer.</span>")
+				to_chat(user, "<span class='notice'>Wgrywasz dane z bufora [W.name].</span>")
 			else
-				to_chat(user, "<span class='warning'>[src] cannot handle any more connections!</span>")
+				to_chat(user, "<span class='warning'>[src] nie obsłuży więcej połączeń!</span>")
 	else
 		return ..()
 
@@ -55,10 +55,10 @@
 
 /obj/machinery/computer/launchpad/proc/teleport(mob/user, obj/machinery/launchpad/pad, sending)
 	if(QDELETED(pad))
-		to_chat(user, "<span class='warning'>ERROR: Launchpad not responding. Check launchpad integrity.</span>")
+		to_chat(user, "<span class='warning'>BŁĄD: wyrzutnia nie odpowiada. Sprawdź jej integralność.</span>")
 		return
 	if(!pad.isAvailable())
-		to_chat(user, "<span class='warning'>ERROR: Launchpad not operative. Make sure the launchpad is ready and powered.</span>")
+		to_chat(user, "<span class='warning'>BŁĄD: wyrzutnia nie działa. Upewnij się, że jest gotowa i zasilana.</span>")
 		return
 	pad.doteleport(user, sending)
 
@@ -134,7 +134,7 @@
 			current_pad.display_name = new_name
 			. = TRUE
 		if("remove")
-			if(usr && alert(usr, "Are you sure?", "Unlink Launchpad", "I'm Sure", "Abort") == "I'm Sure")
+			if(usr && alert(usr, "Na pewno?", "Odłącz wyrzutnię", "I'm Sure", "Abort") == "I'm Sure")
 				launchpads -= current_pad
 				selected_id = null
 			. = TRUE

@@ -7,8 +7,8 @@
 	analyzerdesceffect = "Zaatakowany blob rozłoży obrażenia na wszystkie bloby stykające się z tym zaatakowanym."
 	color = "#65ADA2"
 	complementary_color = "#AD6570"
-	blobbernaut_message = "synchronously strikes"
-	message = "The blobs strike you"
+	blobbernaut_message = "synchronicznie uderza"
+	message = "Grzyby cię uderzają"
 	reagent = /datum/reagent/blob/synchronous_mesh
 
 /datum/blobstrain/reagent/synchronous_mesh/damage_reaction(obj/structure/blob/B, damage, damage_type, damage_flag)
@@ -26,7 +26,7 @@
 
 /datum/reagent/blob/synchronous_mesh
 	name = "Synchronous Mesh"
-	taste_description = "toxic mold"
+	taste_description = "toksyczna pleśń"
 	color = "#65ADA2"
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
 

@@ -36,7 +36,7 @@
 /obj/machinery/atmospherics/components/unary/outlet_injector/AltClick(mob/user)
 	if(can_interact(user))
 		volume_rate = MAX_TRANSFER_RATE
-		balloon_alert(user, "You set the volume rate to [volume_rate] L/s.")
+		balloon_alert(user, "Ustawiasz przepływ na [volume_rate] L/s.")
 		update_icon()
 		ui_update()
 	return
@@ -187,7 +187,7 @@
 /obj/machinery/atmospherics/components/unary/outlet_injector/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz odkręcić [src], najpierw go wyłącz!</span>")
 		return FALSE
 
 // mapping

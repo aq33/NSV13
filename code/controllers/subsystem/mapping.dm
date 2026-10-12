@@ -412,7 +412,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	message_admins("Randomly rotating map to [VM.map_name]")
 	. = changemap(VM)
 	if (. && VM.map_name != config.map_name)
-		to_chat(world, "<span class='boldannounce'>Map rotation has chosen [VM.map_name] for next round!</span>")
+		to_chat(world, "<span class='boldannounce'>Rotacja map wybrała [VM.map_name] na następną rundę!</span>")
 
 /datum/controller/subsystem/mapping/proc/changemap(datum/map_config/VM)
 	if(!VM.MakeNextMap())
@@ -528,7 +528,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 
 	if(!GLOB.the_gateway)
-		if(alert("There's no home gateway on the station. You sure you want to continue ?", "Uh oh", "Yes", "No") != "Yes")
+		if(alert("Na stacji nie ma bramy macierzystej. Na pewno chcesz kontynuować?", "Uh oh", "Yes", "No") != "Yes")
 			return
 
 	var/list/possible_options = GLOB.potentialRandomZlevels + "Custom"

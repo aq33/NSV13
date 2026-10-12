@@ -19,7 +19,7 @@ BONUS
 /datum/symptom/itching
 
 	name = "Itching"
-	desc = "The virus irritates the skin, causing itching."
+	desc = "Wirus podrażnia skórę, powodując swędzenie."
 	stealth = 0
 	resistance = 3
 	stage_speed = 3
@@ -51,6 +51,6 @@ BONUS
 	var/obj/item/bodypart/bodypart = M.get_bodypart(picked_bodypart)
 	if(bodypart && (IS_ORGANIC_LIMB(bodypart)) && !bodypart.is_pseudopart)	 //robotic limbs will mean less scratching overall
 		var/can_scratch = scratch && !M.incapacitated() && get_location_accessible(M, picked_bodypart)
-		M.visible_message("[can_scratch ? "<span class='warning'>[M] scratches [M.p_their()] [bodypart.name].</span>" : ""]", "<span class='notice'>Your [bodypart.name] itches. [can_scratch ? " You scratch it." : ""]</span>")
+		M.visible_message("[can_scratch ? "<span class='warning'>[M] drapie się.</span>" : ""]", "<span class='notice'>Swędzi cię [strefa_pl(bodypart.body_zone)].[can_scratch ? " Drapiesz się." : ""]</span>")
 		if(can_scratch)
 			bodypart.receive_damage(0.5)

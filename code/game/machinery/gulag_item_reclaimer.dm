@@ -53,7 +53,7 @@
 	for(var/i in stored_items)
 		var/mob/thismob = i
 		if(QDELETED(thismob))
-			say("Alert! Unable to locate vital signals of a previously processed prisoner. Ejecting equipment!")
+			say("Alarm! Nie można zlokalizować sygnałów życiowych wcześniej przetworzonego więźnia. Wysuwanie wyposażenia!")
 			drop_items(thismob)
 			continue
 		var/list/mob_info = list()
@@ -74,7 +74,7 @@
 		if("release_items")
 			var/mob/living/carbon/human/H = locate(params["mobref"]) in stored_items
 			if(H != usr && !allowed(usr))
-				to_chat(usr, "<span class='warning'>Access denied.</span>")
+				to_chat(usr, "<span class='warning'>Odmowa dostępu.</span>")
 				return
 			drop_items(H)
 			. = TRUE

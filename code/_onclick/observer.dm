@@ -14,7 +14,7 @@
 		if(istype(A, /obj/structure/overmap))
 			var/obj/structure/overmap/OM = A
 			if(length(OM.linked_areas))
-				if(alert("View interior map?", "Enter ship", "Yes", "No") == "Yes")
+				if(alert("Wyświetlić mapę wnętrza?", "Wejdź na statek", "Yes", "No") == "Yes")
 					var/atom/newtarget = OM.get_interior_center()
 					forceMove(newtarget)
 					update_parallax_contents()
@@ -80,14 +80,14 @@
 	if(awaygate)
 		user.abstract_move(awaygate.loc)
 	else
-		to_chat(user, "[src] has no destination.")
+		to_chat(user, "[src] nie ma celu podróży.")
 	return ..()
 
 /obj/machinery/gateway/centeraway/attack_ghost(mob/user)
 	if(stationgate)
 		user.abstract_move(stationgate.loc)
 	else
-		to_chat(user, "[src] has no destination.")
+		to_chat(user, "[src] nie ma celu podróży.")
 	return ..()
 
 /obj/machinery/teleport/hub/attack_ghost(mob/user)

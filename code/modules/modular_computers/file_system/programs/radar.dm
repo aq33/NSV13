@@ -9,7 +9,7 @@
 	requires_ntnet = TRUE
 	available_on_ntnet = FALSE
 	usage_flags = PROGRAM_LAPTOP | PROGRAM_TABLET
-	network_destination = "tracking program"
+	network_destination = "program śledzący"
 	size = 5
 	tgui_id = "NtosRadar"
 	///List of trackable entities. Updated by the scan() proc.
@@ -220,7 +220,7 @@
 /datum/computer_file/program/radar/lifeline
 	filename = "lifeline"
 	filedesc = "Lifeline"
-	extended_desc = "This program allows for tracking of crew members via their suit sensors."
+	extended_desc = "Ten program pozwala śledzić członków załogi przez czujniki ich kombinezonów."
 	requires_ntnet = TRUE
 	transfer_access = list(ACCESS_MEDICAL)
 	available_on_ntnet = TRUE
@@ -268,8 +268,8 @@
 ///Tracks all janitor equipment
 /datum/computer_file/program/radar/custodial_locator
 	filename = "custodiallocator"
-	filedesc = "Custodial Locator"
-	extended_desc = "This program allows for tracking of custodial equipment."
+	filedesc = "Lokalizator sprzętu sprzątającego"
+	extended_desc = "Ten program pozwala śledzić sprzęt sprzątający."
 	requires_ntnet = TRUE
 	transfer_access = list(ACCESS_JANITOR)
 	available_on_ntnet = TRUE
@@ -295,7 +295,7 @@
 
 		if(istype(custodial_tools, /obj/structure/janitorialcart))
 			var/obj/structure/janitorialcart/janicart = custodial_tools
-			tool_name = "[janicart.name] - Water level: [janicart.reagents.total_volume] / [janicart.reagents.maximum_volume]"
+			tool_name = "[janicart.name] – poziom wody: [janicart.reagents.total_volume] / [janicart.reagents.maximum_volume]"
 
 		if(istype(custodial_tools, /mob/living/simple_animal/bot/cleanbot))
 			var/mob/living/simple_animal/bot/cleanbot/cleanbots = custodial_tools
@@ -317,7 +317,7 @@
 	filedesc = "Fission360"
 	category = PROGRAM_CATEGORY_MISC
 	program_icon_state = "radarsyndicate"
-	extended_desc = "This program allows for tracking of nuclear authorization disks and warheads."
+	extended_desc = "Ten program pozwala śledzić dyski autoryzacji jądrowej i głowice."
 	requires_ntnet = FALSE
 	available_on_ntnet = FALSE
 	available_on_syndinet = TRUE

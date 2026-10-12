@@ -37,7 +37,7 @@
 
 /obj/item/wirebrush/advanced/examine(mob/user)
 	. = ..()
-	. += "<span class='danger'>There is a warning label that indicates extended use of [src] may result in loss of hair, yellowing skin, and death.</span>"
+	. += "<span class='danger'>Jest naklejka ostrzegająca, że długotrwałe używanie [src] może spowodować utratę włosów, żółknięcie skóry i śmierć.</span>"
 
 /obj/item/wirebrush/advanced/pre_attack(atom/A, mob/living/user)
 	. = ..()
@@ -46,7 +46,7 @@
 		return
 
 	if(prob(crit_fail_prob))
-		to_chat(user, "<span class='danger'>You feel a sharp pain as your entire body grows oddly warm.</span>")
+		to_chat(user, "<span class='danger'>Czujesz ostry ból, a całe twoje ciało robi się dziwnie ciepłe.</span>")
 		user.radiation += crit_fail_rads
 		if(user.radiation > crit_fail_rads_threshold) // If you ignore the warning signs you get punished
 			user.emote("vomit")

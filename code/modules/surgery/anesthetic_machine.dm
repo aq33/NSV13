@@ -28,14 +28,14 @@
 /obj/machinery/anesthetic_machine/attack_hand(mob/living/user)
 	. = ..()
 	if(retract_mask())
-		visible_message("<span class='notice'>[user] retracts the mask back into the [src].</span>")
+		visible_message("<span class='notice'>[user] wciąga maskę z powrotem do [src].</span>")
 
 /obj/machinery/anesthetic_machine/attacked_by(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/tank))
 		if(attached_tank) // If there is an attached tank, remove it and drop it on the floor
 			attached_tank.forceMove(loc)
 		I.forceMove(src) // Put new tank in, set it as attached tank
-		visible_message("<span class='warning'>[user] inserts [I] into [src].</span>")
+		visible_message("<span class='warning'>[user] wkłada [I] do [src].</span>")
 		attached_tank = I
 		update_icon()
 		return
@@ -45,7 +45,7 @@
 	. = ..()
 	if(attached_tank)// If attached tank, remove it.
 		attached_tank.forceMove(loc)
-		to_chat(user, "<span class='notice'>You remove the [attached_tank].</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz [attached_tank].</span>")
 		attached_tank = null
 		update_icon()
 		if(mask_out)
@@ -70,14 +70,14 @@
 		return
 	if(Adjacent(target) && usr.Adjacent(target))
 		if(attached_tank && !mask_out)
-			usr.visible_message("<span class='warning'>[usr] attemps to attach the [src] to [target].</span>", "<span class='notice'>You attempt to attach the [src] to [target].</span>")
+			usr.visible_message("<span class='warning'>[usr] próbuje podłączyć [src] do [target].</span>", "<span class='notice'>Próbujesz podłączyć [src] do [target].</span>")
 			if(!do_after(usr, 70, TRUE, target))
 				return
 			if(!target.equip_to_appropriate_slot(attached_mask))
-				to_chat(usr, "<span class='warning'>You are unable to attach the [src] to [target]!</span>")
+				to_chat(usr, "<span class='warning'>Nie udaje ci się podłączyć [src] do [target]!</span>")
 				return
 			else
-				usr.visible_message("<span class='warning'>[usr] attaches the [src] to [target].</span>", "<span class='notice'>You attach the [src] to [target].</span>")
+				usr.visible_message("<span class='warning'>[usr] podłącza [src] do [target].</span>", "<span class='notice'>Podłączasz [src] do [target].</span>")
 				target.internal = attached_tank
 				mask_out = TRUE
 				START_PROCESSING(SSmachines, src)
@@ -91,7 +91,7 @@
 		return PROCESS_KILL
 
 	if(get_dist(src, get_turf(attached_mask)) > 1) // If too far away, detach
-		to_chat(attached_mask.loc, "<span class='warning'>The [attached_mask] is ripped off of your face!</span>")
+		to_chat(attached_mask.loc, "<span class='warning'>[attached_mask] zostaje zerwana z twojej twarzy!</span>")
 		retract_mask()
 		return PROCESS_KILL
 
@@ -117,5 +117,5 @@
 /obj/item/clothing/mask/breath/machine/dropped(mob/user)
 	..()
 	if(loc != machine_attached) // If not already in machine, go back in when dropped (dropped is called on unequip)
-		to_chat(user, "<span class='notice'>The mask snaps back into the [machine_attached].</span>")
+		to_chat(user, "<span class='notice'>Maska wskakuje z powrotem do [machine_attached].</span>")
 		machine_attached.retract_mask()

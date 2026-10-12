@@ -1,12 +1,12 @@
 
 /datum/computer_file/program/robocontrol
 	filename = "robocontrol"
-	filedesc = "Bot Remote Controller"
+	filedesc = "Zdalny kontroler botów"
 	category = PROGRAM_CATEGORY_ROBO
 	program_icon_state = "robot"
-	extended_desc = "A remote controller used for giving basic commands to non-sentient robots."
+	extended_desc = "Zdalny kontroler do wydawania podstawowych poleceń nieświadomym robotom."
 	requires_ntnet = TRUE
-	network_destination = "robotics control network"
+	network_destination = "sieć sterowania robotyką"
 	size = 12
 	tgui_id = "NtosRoboControl"
 	program_icon = "robot"

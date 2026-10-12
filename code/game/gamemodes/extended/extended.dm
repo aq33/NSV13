@@ -6,7 +6,7 @@
 	required_players = 0
 
 	announce_span = "notice"
-	announce_text = "Just have fun and enjoy the game!"
+	announce_text = "Po prostu baw się dobrze i ciesz grą!"
 
 	title_icon = "extended_white"
 
@@ -22,7 +22,7 @@
 	return 1
 
 /datum/game_mode/extended/generate_report()
-	return "The transmission mostly failed to mention your sector. It is possible that there is nothing in the Syndicate that could threaten your station during this shift."
+	return "Transmisja w zasadzie nie wspominała o waszym sektorze. Możliwe, że podczas tej zmiany Syndykat nie ma niczego, co mogłoby zagrozić waszemu statkowi."
 
 /datum/game_mode/extended/generate_station_goals()
 	if(secret)
@@ -33,9 +33,9 @@
 		G.on_report()
 
 /datum/game_mode/extended/announced/send_intercept()
-	var/greenshift_message = "Thanks to the tireless efforts of our security and intelligence divisions, there are currently no credible threats to [station_name()]. All station construction projects have been authorized. Have a secure shift!"
-	. += "<b><i>Central Command Status Summary</i></b><hr>"
+	var/greenshift_message = "Dzięki niestrudzonej pracy naszych działów ochrony i wywiadu nie ma obecnie żadnych wiarygodnych zagrożeń dla [station_name()]. Wszystkie projekty budowlane na statku zostały zatwierdzone. Bezpiecznej zmiany!"
+	. += "<b><i>Podsumowanie sytuacji od Centrali</i></b><hr>"
 	. += greenshift_message
 
-	print_command_report(., "Central Command Status Summary", announce = FALSE)
-	priority_announce(greenshift_message, "Security Report", SSstation.announcer.get_rand_report_sound())
+	print_command_report(., "Podsumowanie sytuacji od Centrali", announce = FALSE)
+	priority_announce(greenshift_message, "Raport ochrony", SSstation.announcer.get_rand_report_sound())

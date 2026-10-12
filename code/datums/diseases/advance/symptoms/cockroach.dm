@@ -1,7 +1,7 @@
 /datum/symptom/cockroach
 
 	name = "SBG Syndrome"
-	desc = "Causes bluespace synchronicity with nearby air channels, making the roaches infesting the station's scrubbers crawl from the host's face"
+	desc = "Wywołuje synchroniczność bluespace z pobliskimi kanałami powietrza, przez co karaluchy zasiedlające filtry stacji wypełzają z twarzy nosiciela"
 	stealth = 1
 	resistance = 2
 	stage_speed = 3
@@ -13,8 +13,7 @@
 	prefixes = list("Blatto")
 	bodies = list("Roach")
 	var/death_roaches = FALSE
-	threshold_desc = "<b>Stage Speed 8:</b>Increases roach speed<br>\
-	<b>Transmission 8:</b>When the host dies, more roaches spawn<br>"
+	threshold_desc = "<b>Szybkość stadiów 8:</b> zwiększa szybkość karaluchów<br><b>Transmisja 8:</b> gdy nosiciel umiera, pojawia się więcej karaluchów<br>"
 
 /datum/symptom/cockroach/Start(datum/disease/advance/A)
 	if(!..())
@@ -32,29 +31,29 @@
 	switch(A.stage)
 		if(2)
 			if(prob(50))
-				to_chat(M, "<span class='notice'>You feel a tingle under your skin.</span>")
+				to_chat(M, "<span class='notice'>Czujesz mrowienie pod skórą.</span>")
 		if(3)
 			if(prob(50))
-				to_chat(M, "<span class='notice'>Your pores feel drafty.</span>")
+				to_chat(M, "<span class='notice'>Czujesz przeciąg w porach.</span>")
 			if(prob(5))
-				to_chat(M, "<span class='notice'>You feel attuned to the atmosphere.</span>")
+				to_chat(M, "<span class='notice'>Czujesz się zestrojony z atmosferą.</span>")
 		if(4)
 			if(prob(50))
-				to_chat(M, "<span class='notice'>You feel in tune with the station.</span>")
+				to_chat(M, "<span class='notice'>Czujesz się zestrojony ze stacją.</span>")
 		if(5)
 			if(prob(30))
-				M.visible_message("<span class='danger'>[M] squirms as a cockroach crawls from their pores!</span>", \
-								  "<span class='userdanger'>A cockroach crawls out of your face!!</span>")
+				M.visible_message("<span class='danger'>[M] wije się, gdy z jego porów wypełza karaluch!</span>", \
+								  "<span class='userdanger'>Z twojej twarzy wypełza karaluch!!</span>")
 				new /mob/living/simple_animal/cockroach(M.loc)
 			if(prob(50))
-				to_chat(M, "<span class='notice'>You feel something crawling in your pipes!</span>")
+				to_chat(M, "<span class='notice'>Czujesz, jak coś pełza ci w rurach!</span>")
 
 /datum/symptom/cockroach/OnDeath(datum/disease/advance/A)
 	if(!..())
 		return
 	if(death_roaches)
 		var/mob/living/M = A.affected_mob
-		to_chat(M, "<span class='warning'>Your pores explode into a colony of roaches!</span>")
+		to_chat(M, "<span class='warning'>Twoje pory eksplodują kolonią karaluchów!</span>")
 		for(var/i in 1 to rand(1,5))
 			new /mob/living/simple_animal/cockroach(M.loc)
 

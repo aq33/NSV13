@@ -27,7 +27,7 @@
 /obj/machinery/atmospherics/components/trinary/filter/AltClick(mob/user)
 	if(can_interact(user))
 		transfer_rate = MAX_TRANSFER_RATE
-		balloon_alert(user, "You set the transfer rate to [transfer_rate] L/s.")
+		balloon_alert(user, "Ustawiasz przepływ na [transfer_rate] L/s.")
 		update_icon()
 		ui_update()
 	return
@@ -143,7 +143,7 @@
 				rate = MAX_TRANSFER_RATE
 				. = TRUE
 			else if(rate == "input")
-				rate = input("New transfer rate (0-[MAX_TRANSFER_RATE] L/s):", name, transfer_rate) as num|null
+				rate = input("Nowy przepływ (0-[MAX_TRANSFER_RATE] L/s):", name, transfer_rate) as num|null
 				if(!isnull(rate) && !..())
 					. = TRUE
 			else if(text2num(rate) != null)
@@ -167,7 +167,7 @@
 /obj/machinery/atmospherics/components/trinary/filter/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz odkręcić [src], najpierw go wyłącz!</span>")
 		return FALSE
 
 // mapping

@@ -397,7 +397,7 @@
 
 /datum/newspanel/proc/start_edit_channel()
 	// bad
-	if(current_channel.channel_name == "Station Announcements")
+	if(current_channel.channel_name == "Ogłoszenia stacji")
 		return TRUE
 	channel_name = current_channel.channel_name
 	channel_desc = current_channel.channel_desc

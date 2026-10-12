@@ -170,7 +170,7 @@ GLOBAL_LIST_EMPTY(created_baseturf_lists)
 			check_z_travel(user)
 			return
 		else if(allow_z_travel)
-			to_chat(user, "<span class='warning'>You can't float up and down when there is gravity!</span>")
+			to_chat(user, "<span class='warning'>Nie możesz unosić się w górę ani w dół, gdy jest grawitacja!</span>")
 	. = ..()
 	if(SEND_SIGNAL(user, COMSIG_MOB_ATTACK_HAND_TURF, src) & COMPONENT_NO_ATTACK_HAND)
 		. = TRUE
@@ -211,16 +211,16 @@ GLOBAL_LIST_EMPTY(created_baseturf_lists)
 
 /turf/proc/travel_z(mob/user, turf/target, upwards = TRUE)
 	if(!target)
-		to_chat(user, "<span class='warning'>There is nothing in that direction!</span>")
+		to_chat(user, "<span class='warning'>W tym kierunku nic nie ma!</span>")
 		return
 	//Check if we can travel in that direction
 	var/mob/living/L = user
 	var/jaunting = isliving(user) && L.incorporeal_move
 
 	if(!jaunting && ((upwards && !target.allow_z_travel) || (!upwards && !allow_z_travel)))
-		to_chat(user, "<span class='warning'>Something is blocking you!</span>")
+		to_chat(user, "<span class='warning'>Coś cię blokuje!</span>")
 		return
-	user.visible_message("<span class='notice'>[user] begins floating [upwards ? "upwards" : "downwards"]!</span>", "<span class='notice'>You begin floating [upwards ? "upwards" : "downwards"].")
+	user.visible_message("<span class='notice'>[user] zaczyna unosić się [upwards ? "w górę" : "w dół"]!</span>", "<span class='notice'>Zaczynasz unosić się [upwards ? "w górę" : "w dół"].")
 	var/matrix/M = user.transform
 	//Animation is inverted due to immediately resetting user vars.
 	animate(user, 30, pixel_y = upwards ? 32 : -32, transform = matrix() * (upwards ? 1.3 : 0.7))
@@ -290,12 +290,12 @@ GLOBAL_LIST_EMPTY(created_baseturf_lists)
 		if(flags & FALL_STOP_INTERCEPTING)
 			break
 	if(prev_turf && !(flags & FALL_NO_MESSAGE))
-		prev_turf.visible_message("<span class='danger'>[mov_name] falls through [prev_turf]!</span>")
+		prev_turf.visible_message("<span class='danger'>[mov_name] spada przez [prev_turf]!</span>")
 	if(flags & FALL_INTERCEPTED)
 		return
 	if(zFall(A, ++levels))
 		return FALSE
-	A.visible_message("<span class='danger'>[A] crashes into [src]!</span>")
+	A.visible_message("<span class='danger'>[A] wbija się w [src]!</span>")
 	A.onZImpact(src, levels)
 	return TRUE
 
@@ -466,7 +466,7 @@ GLOBAL_LIST_EMPTY(created_baseturf_lists)
 	if(.)
 		return
 	if(length(src_object.contents()))
-		balloon_alert(usr, "You dump out the contents.")
+		balloon_alert(usr, "Wysypujesz zawartość.")
 		if(!do_after(usr,20,target=src_object.parent))
 			return FALSE
 

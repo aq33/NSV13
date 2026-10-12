@@ -10,27 +10,25 @@
 /datum/map_template/ruin/lavaland/biodome/beach
 	name = "Biodome Beach"
 	id = "biodome-beach"
-	description = "Seemingly plucked from a tropical destination, this beach is calm and cool, with the salty waves roaring softly in the background. \
-	Comes with a rustic wooden bar and suicidal bartender."
+	description = "Ta plaża, jakby wyjęta z tropikalnego kurortu, jest spokojna i chłodna, a w tle cicho szumią słone fale. W zestawie rustykalny drewniany bar i barman o skłonnościach samobójczych."
 	suffix = "lavaland_biodome_beach.dmm"
 
 /datum/map_template/ruin/lavaland/biodome/winter
 	name = "Biodome Winter"
 	id = "biodome-winter"
-	description = "For those getaways where you want to get back to nature, but you don't want to leave the fortified military compound where you spend your days. \
-	Includes a unique(*) laser pistol display case, and the recently introduced I.C.E(tm)."
+	description = "Na wypady, gdy chcesz wrócić do natury, ale nie chcesz opuszczać ufortyfikowanego kompleksu wojskowego, w którym spędzasz dni. W zestawie unikalna(*) gablota z pistoletem laserowym i niedawno wprowadzony I.C.E(tm)."
 	suffix = "lavaland_surface_biodome_winter.dmm"
 
 /datum/map_template/ruin/lavaland/biodome/clown
 	name = "Biodome Clown Planet"
 	id = "biodome-clown"
-	description = "WELCOME TO CLOWN PLANET! HONK HONK HONK etc.!"
+	description = "WITAMY NA PLANECIE KLAUNÓW! HONK HONK HONK itd.!"
 	suffix = "lavaland_biodome_clown_planet.dmm"
 
 /datum/map_template/ruin/lavaland/cube
 	name = "The Wishgranter Cube"
 	id = "wishgranter-cube"
-	description = "Nothing good can come from this. Learn from their mistakes and turn around."
+	description = "Nic dobrego z tego nie wyniknie. Ucz się na ich błędach i zawróć."
 	suffix = "lavaland_surface_cube.dmm"
 	cost = 10
 	allow_duplicates = FALSE
@@ -38,8 +36,7 @@
 /datum/map_template/ruin/lavaland/seed_vault
 	name = "Seed Vault"
 	id = "seed-vault"
-	description = "The creators of these vaults were a highly advanced and benevolent race, and launched many into the stars, hoping to aid fledgling civilizations. \
-	However, all the inhabitants seem to do is grow drugs and guns."
+	description = "Twórcy tych krypt byli wysoko rozwiniętą i życzliwą rasą i wysłali wiele z nich w gwiazdy, chcąc pomóc raczkującym cywilizacjom. Mieszkańcy jednak zajmują się tylko uprawą narkotyków i broni."
 	suffix = "lavaland_surface_seed_vault.dmm"
 	cost = 10
 	allow_duplicates = FALSE
@@ -47,8 +44,7 @@
 /datum/map_template/ruin/lavaland/ash_walker
 	name = "Ash Walker Nest"
 	id = "ash-walker"
-	description = "A race of unbreathing lizards live here, that run faster than a human can, worship a broken dead city, and are capable of reproducing by something involving tentacles? \
-	Probably best to stay clear."
+	description = "Mieszka tu rasa nieoddychających jaszczurów, które biegają szybciej od ludzi, czczą zrujnowane, martwe miasto i potrafią się rozmnażać czymś z udziałem macek? Lepiej się trzymać z daleka."
 	suffix = "lavaland_surface_ash_walker1.dmm"
 	cost = 20
 	allow_duplicates = FALSE
@@ -56,7 +52,7 @@
 /datum/map_template/ruin/lavaland/syndicate_base
 	name = "Syndicate Lava Base"
 	id = "lava-base"
-	description = "A secret base researching illegal bioweapons, it is closely guarded by an elite team of syndicate agents."
+	description = "Tajna baza badająca nielegalną broń biologiczną, pilnie strzeżona przez elitarny zespół agentów Syndykatu."
 	suffix = "lavaland_surface_syndicate_base1.dmm"
 	cost = 20
 	allow_duplicates = FALSE
@@ -73,7 +69,7 @@
 /datum/map_template/ruin/lavaland/animal_hospital
 	name = "Animal Hospital"
 	id = "animal-hospital"
-	description = "An ancient animal hospital, its true purpose long forgotten. The doctors awaken with a singular purpose: heal the dying, sick, and injured habitants of the wasteland around them."
+	description = "Starożytny szpital dla zwierząt, którego prawdziwy cel dawno zapomniano. Lekarze budzą się z jednym celem: leczyć umierających, chorych i rannych mieszkańców otaczających ich pustkowi."
 	cost = 5
 	suffix = "lavaland_surface_animal_hospital.dmm"
 	allow_duplicates = FALSE
@@ -85,26 +81,25 @@
 /datum/map_template/ruin/lavaland/sin/envy
 	name = "Ruin of Envy"
 	id = "envy"
-	description = "When you get what they have, then you'll finally be happy."
+	description = "Gdy zdobędziesz to, co oni mają, w końcu będziesz szczęśliwy."
 	suffix = "lavaland_surface_envy.dmm"
 
 /datum/map_template/ruin/lavaland/sin/gluttony
 	name = "Ruin of Gluttony"
 	id = "gluttony"
-	description = "If you eat enough, then eating will be all that you do."
+	description = "Jeśli zjesz dość, jedzenie będzie wszystkim, co robisz."
 	suffix = "lavaland_surface_gluttony.dmm"
 
 /datum/map_template/ruin/lavaland/sin/greed
 	name = "Ruin of Greed"
 	id = "greed"
-	description = "Sure you don't need magical powers, but you WANT them, and \
-		that's what's important."
+	description = "Jasne, nie potrzebujesz magicznych mocy, ale ich CHCESZ, i to się liczy."
 	suffix = "lavaland_surface_greed.dmm"
 
 /datum/map_template/ruin/lavaland/sin/pride
 	name = "Ruin of Pride"
 	id = "pride"
-	description = "Wormhole lifebelts are for LOSERS, who you are better than."
+	description = "Pasy ratunkowe z tunelami są dla FRAJERÓW, a ty jesteś od nich lepszy."
 	suffix = "lavaland_surface_pride.dmm"
 
 /datum/map_template/ruin/lavaland/sin/sloth
@@ -118,7 +113,7 @@
 /datum/map_template/ruin/lavaland/ratvar
 	name = "Dead God"
 	id = "ratvar"
-	description = "Ratvars final resting place."
+	description = "Miejsce ostatniego spoczynku Ratvara."
 	suffix = "lavaland_surface_dead_ratvar.dmm"
 	cost = 0
 	allow_duplicates = FALSE
@@ -126,7 +121,7 @@
 /datum/map_template/ruin/lavaland/hierophant
 	name = "Hierophant's Arena"
 	id = "hierophant"
-	description = "A strange, square chunk of metal of massive size. Inside awaits only death and many, many squares."
+	description = "Dziwny, kwadratowy kawał metalu ogromnych rozmiarów. W środku czeka tylko śmierć i mnóstwo, mnóstwo kwadratów."
 	suffix = "lavaland_surface_hierophant.dmm"
 	always_place = TRUE
 	allow_duplicates = FALSE
@@ -134,7 +129,7 @@
 /datum/map_template/ruin/lavaland/blood_drunk_miner
 	name = "Blood-Drunk Miner"
 	id = "blooddrunk"
-	description = "A strange arrangement of stone tiles and an insane, beastly miner contemplating them."
+	description = "Dziwny układ kamiennych płytek i obłąkany, zwierzęcy górnik, który się nad nimi zastanawia."
 	suffix = "lavaland_surface_blooddrunk1.dmm"
 	cost = 0
 	allow_duplicates = FALSE //will only spawn one variant of the ruin
@@ -150,36 +145,35 @@
 /datum/map_template/ruin/lavaland/ufo_crash
 	name = "UFO Crash"
 	id = "ufo-crash"
-	description = "Turns out that keeping your abductees unconscious is really important. Who knew?"
+	description = "Okazuje się, że utrzymywanie ofiar porwań w nieprzytomności jest naprawdę ważne. Kto by pomyślał?"
 	suffix = "lavaland_surface_ufo_crash.dmm"
 	cost = 5
 
 /datum/map_template/ruin/lavaland/xeno_nest
 	name = "Xenomorph Nest"
 	id = "xeno-nest"
-	description = "These xenomorphs got bored of horrifically slaughtering people on space stations, and have settled down on a nice lava filled hellscape to focus on what's really important in life. \
-	Quality memes."
+	description = "Te ksenomorfy znudziły się makabrycznym mordowaniem ludzi na stacjach kosmicznych i osiadły w przyjemnym, pełnym lawy piekle, by skupić się na tym, co w życiu naprawdę ważne. Na jakościowych memach."
 	suffix = "lavaland_surface_xeno_nest.dmm"
 	cost = 20
 
 /datum/map_template/ruin/lavaland/fountain
 	name = "Fountain Hall"
 	id = "fountain"
-	description = "The fountain has a warning on the side. DANGER: May have undeclared side effects that only become obvious when implemented."
+	description = "Na boku fontanny jest ostrzeżenie. NIEBEZPIECZEŃSTWO: może mieć niezgłoszone skutki uboczne, które ujawniają się dopiero po użyciu."
 	suffix = "lavaland_surface_fountain_hall.dmm"
 	cost = 5
 
 /datum/map_template/ruin/lavaland/survivalcapsule
 	name = "Survival Capsule Ruins"
 	id = "survivalcapsule"
-	description = "What was once sanctuary to the common miner, is now their tomb."
+	description = "To, co kiedyś było schronieniem zwykłego górnika, jest teraz jego grobowcem."
 	suffix = "lavaland_surface_survivalpod.dmm"
 	cost = 5
 
 /datum/map_template/ruin/lavaland/pizza
 	name = "Ruined Pizza Party"
 	id = "pizza"
-	description = "Little Timmy's birthday pizza-bash took a turn for the worse when a bluespace anomaly passed by."
+	description = "Urodzinowa impreza z pizzą małego Timmy'ego przybrała zły obrót, gdy przeszła obok anomalia bluespace."
 	suffix = "lavaland_surface_pizzaparty.dmm"
 	allow_duplicates = FALSE
 	cost = 5
@@ -187,7 +181,7 @@
 /datum/map_template/ruin/lavaland/cultaltar
 	name = "Summoning Ritual"
 	id = "cultaltar"
-	description = "A place of vile worship, the scrawling of blood in the middle glowing eerily. A demonic laugh echoes throughout the caverns"
+	description = "Miejsce plugawego kultu; krwawe bazgroły na środku niesamowicie świecą. W jaskiniach rozbrzmiewa demoniczny śmiech"
 	suffix = "lavaland_surface_cultaltar.dmm"
 	allow_duplicates = FALSE
 	cost = 10
@@ -195,7 +189,7 @@
 /datum/map_template/ruin/lavaland/hermit
 	name = "Makeshift Shelter"
 	id = "hermitcave"
-	description = "A place of shelter for a lone hermit, scraping by to live another day."
+	description = "Schronienie samotnego pustelnika, który z trudem dożywa kolejnego dnia."
 	suffix = "lavaland_surface_hermit.dmm"
 	allow_duplicates = FALSE
 	cost = 10
@@ -203,7 +197,7 @@
 /datum/map_template/ruin/lavaland/swarmer_boss
 	name = "Crashed Shuttle"
 	id = "swarmerboss"
-	description = "A Syndicate shuttle had an unfortunate stowaway..."
+	description = "Na promie Syndykatu był niefortunny pasażer na gapę..."
 	suffix = "lavaland_surface_swarmer_crash.dmm"
 	allow_duplicates = FALSE
 	cost = 20
@@ -211,7 +205,7 @@
 /datum/map_template/ruin/lavaland/miningripley
 	name = "Ripley"
 	id = "ripley"
-	description = "A heavily-damaged mining ripley, property of a very unfortunate miner. You might have to do a bit of work to fix this thing up."
+	description = "Mocno uszkodzony górniczy Ripley, własność bardzo nieszczęśliwego górnika. Trochę pracy i może da się go naprawić."
 	suffix = "lavaland_surface_random_ripley.dmm"
 	allow_duplicates = FALSE
 	cost = 5
@@ -219,14 +213,14 @@
 /datum/map_template/ruin/lavaland/puzzle
 	name = "Ancient Puzzle"
 	id = "puzzle"
-	description = "Mystery to be solved."
+	description = "Zagadka do rozwiązania."
 	suffix = "lavaland_surface_puzzle.dmm"
 	cost = 5
   
 /datum/map_template/ruin/lavaland/elite_tumor
 	name = "Pulsating Tumor"
 	id = "tumor"
-	description = "A strange tumor which houses a powerful beast..."
+	description = "Dziwny guz, w którym mieszka potężna bestia..."
 	suffix = "lavaland_surface_elite_tumor.dmm"
 	cost = 5
 	always_place = TRUE

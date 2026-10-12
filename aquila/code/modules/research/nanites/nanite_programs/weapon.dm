@@ -9,13 +9,13 @@
 /datum/nanite_program/kunai/on_trigger(comm_message)
 	var/obj/item/throwing_star/nanite/N = new(get_turf(host_mob))
 	if(!iscarbon(host_mob))
-		to_chat(host_mob, "<span class='notice'>A kunai suddenly appears below you!</span>")
+		to_chat(host_mob, "<span class='notice'>Pod tobą nagle pojawia się kunai!</span>")
 		return
 	var/mob/living/carbon/C = host_mob
 	if(!C.put_in_hands(N))
-		to_chat(C, "<span class='notice'>A kunai suddenly appears below you!</span>")
+		to_chat(C, "<span class='notice'>Pod tobą nagle pojawia się kunai!</span>")
 		return
-	to_chat(C, "<span class='notice'>A kunai suddenly appears in your hand!</span>")
+	to_chat(C, "<span class='notice'>W twojej dłoni nagle pojawia się kunai!</span>")
 
 /datum/nanite_program/nanophage
 	name = "Nano Swarm"
@@ -30,8 +30,8 @@
 	extra_settings[NES_HOST_AGGRESSION] = new /datum/nanite_extra_setting/boolean(TRUE, "True", "False")
 
 /datum/nanite_program/nanophage/on_trigger(comm_message)
-	host_mob.visible_message("<span class='danger'>[host_mob] throws up a swarm of nanophages!</span>", \
-					"<span class='userdanger'>You throw up a swarm of nanophages!</span>")
+	host_mob.visible_message("<span class='danger'>[host_mob] wymiotuje rojem nanofagów!</span>", \
+					"<span class='userdanger'>Wymiotujesz rojem nanofagów!</span>")
 	playsound(host_mob, 'aquila/sound/misc/nanobirth.ogg', 50)
 
 	var/list/factions = list()

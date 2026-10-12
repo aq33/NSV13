@@ -19,14 +19,14 @@
 	icon_living = ""
 	icon = 'icons/mob/bees.dmi'
 	gender = FEMALE
-	speak_emote = list("buzzes")
-	emote_hear = list("buzzes")
+	speak_emote = list("brzęczy")
+	emote_hear = list("brzęczy")
 	turns_per_move = 0
 	melee_damage = 1
-	attacktext = "stings"
-	response_help  = "shoos"
-	response_disarm = "swats away"
-	response_harm   = "squashes"
+	attacktext = "żądli"
+	response_help  = "przegania"
+	response_disarm = "odgania"
+	response_harm   = "zgniata"
 	maxHealth = 6
 	health = 6
 	spacewalk = TRUE
@@ -83,7 +83,7 @@
 	. = ..()
 
 	if(!beehome)
-		. += "<span class='warning'>This bee is homeless!</span>"
+		. += "<span class='warning'>Ta pszczoła jest bezdomna!</span>"
 
 /mob/living/simple_animal/hostile/poison/bees/ListTargets() // Bee processing is expessive, so we override them finding targets here.
 	if(!search_objects) //In case we want to have purely hostile bees
@@ -278,18 +278,18 @@
 				if(queen && queen.beegent)
 					qb.queen.assign_reagent(queen.beegent) //Bees use the global singleton instances of reagents, so we don't need to worry about one bee being deleted and her copies losing their reagents.
 				user.put_in_active_hand(qb)
-				user.visible_message("<span class='notice'>[user] injects [src] with royal bee jelly, causing it to split into two bees, MORE BEES!</span>","<span class ='warning'>You inject [src] with royal bee jelly, causing it to split into two bees, MORE BEES!</span>")
+				user.visible_message("<span class='notice'>[user] wstrzykuje [src] królewskie mleczko, przez co pszczoła dzieli się na dwie. WIĘCEJ PSZCZÓŁ!</span>","<span class ='warning'>Wstrzykujesz [src] królewskie mleczko, przez co pszczoła dzieli się na dwie. WIĘCEJ PSZCZÓŁ!</span>")
 			else
-				to_chat(user, "<span class='warning'>You don't have enough royal bee jelly to split a bee in two!</span>")
+				to_chat(user, "<span class='warning'>Masz za mało królewskiego mleczka, by podzielić pszczołę na dwie!</span>")
 		else
 			var/datum/reagent/R = GLOB.chemical_reagents_list[S.reagents.get_master_reagent_id()]
 			if(R && S.reagents.has_reagent(R.type, 5))
 				S.reagents.remove_reagent(R.type,5)
 				queen.assign_reagent(R)
-				user.visible_message("<span class='warning'>[user] injects [src]'s genome with [R.name], mutating its DNA!</span>","<span class='warning'>You inject [src]'s genome with [R.name], mutating its DNA!</span>")
+				user.visible_message("<span class='warning'>[user] wstrzykuje do genomu [src] [R.name], mutując jej DNA!</span>","<span class='warning'>Wstrzykujesz do genomu [src] [R.name], mutując jej DNA!</span>")
 				name = queen.name
 			else
-				to_chat(user, "<span class='warning'>You don't have enough units of that chemical to modify the bee's DNA!</span>")
+				to_chat(user, "<span class='warning'>Masz za mało tej substancji, by zmodyfikować DNA pszczoły!</span>")
 	..()
 
 

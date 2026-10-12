@@ -21,16 +21,16 @@
 	if(!carbon_members.len)
 		return
 	if(!user.getBruteLoss() && !user.getFireLoss() && !user.getCloneLoss() && !user.getOrganLoss(ORGAN_SLOT_BRAIN))
-		to_chat(user, "<span class='notice'>We cannot heal ourselves any more with this power!</span>")
+		to_chat(user, "<span class='notice'>Ta moc nie może już bardziej nas uleczyć!</span>")
 		revert_cast()
-	to_chat(user, "<span class='notice'>We begin siphoning power from our many vessels!</span>")
+	to_chat(user, "<span class='notice'>Zaczynamy czerpać moc z naszych licznych naczyń!</span>")
 	while(iterations < 7)
 		var/mob/living/carbon/target = pick(carbon_members)
 		if(!do_after(user,15,0,user))
-			to_chat(user, "<span class='warning'>Our concentration has been broken!</span>")
+			to_chat(user, "<span class='warning'>Nasza koncentracja została przerwana!</span>")
 			break
 		if(!target)
-			to_chat(user, "<span class='warning'>We have run out of vessels to drain.</span>")
+			to_chat(user, "<span class='warning'>Skończyły nam się naczynia do wysysania.</span>")
 			break
 		if(target.getOrganLoss(ORGAN_SLOT_BRAIN) < 50)
 			target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
@@ -39,7 +39,7 @@
 		else
 			user.heal_ordered_damage(5, list(CLONE, BURN, BRUTE))
 		if(!user.getBruteLoss() && !user.getFireLoss() && !user.getCloneLoss()) //If we don't have any of these, stop looping
-			to_chat(user, "<span class='warning'>We finish our healing.</span>")
+			to_chat(user, "<span class='warning'>Kończymy leczenie.</span>")
 			break
 		iterations++
 	user.setOrganLoss(ORGAN_SLOT_BRAIN, 0)

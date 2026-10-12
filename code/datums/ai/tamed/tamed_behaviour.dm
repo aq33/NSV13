@@ -13,7 +13,7 @@
 
 /datum/ai_behavior/tamed_follow/finish_action(datum/ai_controller/controller, succeeded, ...)
 	var/mob/living/simple_animal/pawn = controller.pawn
-	pawn.visible_message("[pawn] stops following [controller.blackboard[BB_FOLLOW_TARGET]]!")
+	pawn.visible_message("[pawn] przestaje podążać za [controller.blackboard[BB_FOLLOW_TARGET]]!")
 	..()
 
 //Agressive >:)

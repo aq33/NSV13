@@ -107,7 +107,7 @@
 /obj/item/food/grown/attackby(obj/item/O, mob/user, params)
 	..()
 	if (istype(O, /obj/item/plant_analyzer))
-		var/msg = "<span class='info'>This is \a <span class='name'>[src]</span>.\n"
+		var/msg = "<span class='info'>To jest <span class='name'>[src]</span>.\n"
 		if(seed)
 			msg += seed.get_analyzer_text()
 			msg += "\n*---------*"
@@ -154,7 +154,7 @@
 	else if(splat_type)
 		new splat_type(T)
 
-	visible_message("<span class='warning'>[src] has been squashed.</span>","<span class='italics'>You hear a smack.</span>")
+	visible_message("<span class='warning'>[src] zostaje zgnieciony.</span>","<span class='italics'>Słyszysz plaśnięcie.</span>")
 	if(seed)
 		for(var/datum/plant_gene/trait/trait in seed.genes)
 			trait.on_squash(src, target)
@@ -194,7 +194,7 @@
 
 /obj/item/food/grown/grind_requirements()
 	if(dry_grind && !HAS_TRAIT(src, TRAIT_DRIED))
-		to_chat(usr, "<span class='warning'>[src] needs to be dry before it can be ground up!</span>")
+		to_chat(usr, "<span class='warning'>[src] musi wyschnąć, zanim da się go zmielić!</span>")
 		return
 	return TRUE
 

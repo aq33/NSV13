@@ -34,12 +34,12 @@
 /obj/machinery/ship_weapon/hybrid_rail/examine(mob/user)
 	.=..()
 	if(functional_crit)
-		. += "<span class='danger'>The railgun is in a critical state and requires repairing to function!</span>"
-		. += "<span class='notice'>Repair Status: [obj_integrity] / [max_integrity]</span>"
+		. += "<span class='danger'>Działo szynowe jest w stanie krytycznym i wymaga naprawy, by działać!</span>"
+		. += "<span class='notice'>Stan naprawy: [obj_integrity] / [max_integrity]</span>"
 	if(slug_shell == 0)
-		. += "<span class='notice'>Selected Munition: Slug type</span>"
+		. += "<span class='notice'>Wybrana amunicja: pocisk lity</span>"
 	if(slug_shell == 1)
-		. += "<span class='notice'>Selected Munition: Canister type</span>"
+		. += "<span class='notice'>Wybrana amunicja: kanister</span>"
 
 /obj/machinery/ship_weapon/hybrid_rail/process()
 	if(!functional_crit)
@@ -85,14 +85,14 @@
 		ammo_type = /obj/item/ship_weapon/ammunition/railgun_ammo_canister
 		max_ammo = 1
 		capacitor_max_charge = 1000000 //1MW
-		say("Cycling complete: Configuration - 800mm Shell Selected")
+		say("Cykl zakończony: konfiguracja - wybrano pocisk 800 mm")
 
 	else if(slug_shell == 1)	//change to using Slugs
 		slug_shell = 0
 		ammo_type = /obj/item/ship_weapon/ammunition/railgun_ammo
 		max_ammo = 5
 		capacitor_max_charge = 400000 //400kW
-		say("Cycling complete: Configuration - 400mm Slug Selected")
+		say("Cykl zakończony: konfiguracja - wybrano pocisk lity 400 mm")
 
 /obj/machinery/ship_weapon/hybrid_rail/fire(atom/target, shots = linked_overmap_ship_weapon.burst_size, manual = TRUE)
 	if(functional_crit)
@@ -259,7 +259,7 @@
 		for(var/mob/living/carbon/C in orange(4, src))
 			C.flash_act()
 		for(var/mob/living/carbon/C in orange(12, src))
-			to_chat(C, "<span class='danger'>Electricity arcs from the exposed firing mechanism.</span>")
+			to_chat(C, "<span class='danger'>Z odsłoniętego mechanizmu spustowego strzelają wyładowania elektryczne.</span>")
 
 	if(alignment <= 75)
 		if(prob(50))
@@ -274,7 +274,7 @@
 		if(alignment < 0)
 			alignment = 0
 		if(!ammo.len)
-			say("Autoloader has depleted all ammunition sources. Reload required.")
+			say("Autoładowacz wyczerpał wszystkie źródła amunicji. Wymagane przeładowanie.")
 			return
 	..()
 
@@ -286,7 +286,7 @@
 
 	capacitor_charge = 0
 	capacitor_current_charge_rate = 0
-	say("Error in coil charging, dumping capacitor")
+	say("Błąd ładowania cewki, zrzucanie kondensatora")
 	for(var/mob/living/M in orange(1, src))
 		if(iscarbon(M))
 			if(ishuman(M))
@@ -296,9 +296,9 @@
 			return
 		else
 			M.adjustFireLoss(20)
-			M.visible_message("<span class='danger'>[M] was shocked by \the [name]!</span>", \
-		"<span class='userdanger'>You feel a powerful shock coursing through your body!</span>", \
-		"<span class='italics'>You hear a heavy electrical crack.</span>")
+			M.visible_message("<span class='danger'>[name] razi prądem [M]!</span>", \
+		"<span class='userdanger'>Czujesz, jak przez twoje ciało przepływa potężny wstrząs!</span>", \
+		"<span class='italics'>Słyszysz głośny trzask elektryczny.</span>")
 
 /obj/machinery/ship_weapon/hybrid_rail/proc/bluespace(target) //Mirror the proc in railgun_forge.dm
 	var/obj/item/ship_weapon/ammunition/A = chambered
@@ -327,9 +327,9 @@
 /obj/machinery/ship_weapon/hybrid_rail/multitool_act(mob/living/user, obj/item/I)
 	. = TRUE
 	if(maint_state < 2)
-		to_chat(user, "<span class='notice'>You must first open the maintenance panel before realigning the magnetic coils.</span>")
+		to_chat(user, "<span class='notice'>Zanim ustawisz ponownie cewki magnetyczne, musisz otworzyć panel serwisowy.</span>")
 	else
-		to_chat(user, "<span class='notice'>You being realigning the magnetic coils.</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz ponownie ustawiać cewki magnetyczne.</span>")
 		while(alignment < 100)
 			if(!do_after(user, 5, target = src) || !Adjacent(user))
 				return
@@ -342,9 +342,9 @@
 	. = FALSE
 	if(functional_crit)
 		if(repairing)
-			to_chat(user, "<span class='warning'>Someone's already repairing [src]!</span>")
+			to_chat(user, "<span class='warning'>Ktoś już naprawia [src]!</span>")
 			return TRUE
-		to_chat(user, "<span class='notice'>You start repairing the railgun...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz naprawiać działo szynowe...</span>")
 		repairing = TRUE
 		while(obj_integrity < max_integrity)
 			if(!tool.use_tool(src, user, 5 SECONDS, volume=100))
@@ -356,7 +356,7 @@
 				functional_crit = FALSE
 				icon_state = "OBC"
 				break
-		to_chat(user, "<span class='notice'>You finishing repairing the railgun.</span>")
+		to_chat(user, "<span class='notice'>Kończysz naprawiać działo szynowe.</span>")
 		repairing = FALSE
 
 /obj/machinery/ship_weapon/hybrid_rail/crowbar_act(mob/user, obj/item/tool)
@@ -375,10 +375,10 @@
 	if(!linked)
 		get_ship()
 	if(functional_crit)
-		to_chat(usr, "<span class='notice'>Error: Unable to load ordnance while railgun is in a critical state.</span>")
+		to_chat(usr, "<span class='notice'>Błąd: nie można załadować amunicji, gdy działo szynowe jest w stanie krytycznym.</span>")
 		return FALSE
 	if(switching && istype(I, /obj/item/ship_weapon/ammunition))
-		to_chat(usr, "<span class='notice'>Error: Unable to load ordnance while cycling chamber configuration.</span>")
+		to_chat(usr, "<span class='notice'>Błąd: nie można załadować amunicji podczas zmiany konfiguracji komory.</span>")
 		return FALSE
 	if(islist(ammo_type))
 		for(var/at in ammo_type)
@@ -442,15 +442,15 @@
 			toggle_safety()
 		if("switch_type")
 			if(switching)
-				to_chat(usr, "<span class='notice'>Error: Unable to comply, action already in process.</span>")
+				to_chat(usr, "<span class='notice'>Błąd: nie można wykonać, akcja już trwa.</span>")
 				return
 			if(state == STATE_NOTLOADED && !loading)
-				to_chat(usr, "<span class='notice'>Action queued: Cycling ordnance chamber configuration.</span>")
+				to_chat(usr, "<span class='notice'>Akcja w kolejce: zmiana konfiguracji komory amunicyjnej.</span>")
 				switching = TRUE
 				playsound(src, 'nsv13/sound/effects/ship/mac_hold.ogg', 100)
 				addtimer(CALLBACK(src, PROC_REF(switch_munition)), 10 SECONDS)
 			else
-				to_chat(usr, "<span class='notice'>Error: Unable to alter selected ordnance type, eject loaded munitions.</span>")
+				to_chat(usr, "<span class='notice'>Błąd: nie można zmienić wybranego typu amunicji, wyładuj załadowaną amunicję.</span>")
 	return
 
 /obj/machinery/ship_weapon/hybrid_rail/ui_data(mob/user)

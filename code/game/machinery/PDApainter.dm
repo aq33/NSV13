@@ -92,7 +92,7 @@
 		"Syndicate",
 		"Clown Operative"
 	)
-	to_chat(user, "<span class='warning'>You short out the design locking circuitry, allowing contraband and special designs.</span>")
+	to_chat(user, "<span class='warning'>Zwierasz obwody blokady wzorów, odblokowując kontrabandę i specjalne wzory.</span>")
 	obj_flags |= EMAGGED
 /obj/machinery/pdapainter/update_icon()
 	cut_overlays()
@@ -165,7 +165,7 @@
 
 	else if(istype(O, /obj/item/modular_computer/tablet/pda))
 		if(storedpda)
-			to_chat(user, "<span class='warning'>There is already a PDA inside!</span>")
+			to_chat(user, "<span class='warning'>W środku już jest PDA!</span>")
 			return
 		else if(!user.transferItemToLoc(O, src))
 			return
@@ -175,7 +175,7 @@
 
 	else if(istype(O, /obj/item/card/id))
 		if(storedid)
-			to_chat(user, "<span class='warning'>There is already an ID card inside!</span>")
+			to_chat(user, "<span class='warning'>W środku już jest karta ID!</span>")
 			return
 		else if(!user.transferItemToLoc(O, src))
 			return
@@ -187,18 +187,18 @@
 		if(machine_stat & BROKEN)
 			if(!O.tool_start_check(user, amount=0))
 				return
-			user.visible_message("[user] is repairing [src].", \
-							"<span class='notice'>You begin repairing [src]...</span>", \
-							"<span class='italics'>You hear welding.</span>")
+			user.visible_message("[user] naprawia [src].", \
+							"<span class='notice'>Zaczynasz naprawiać [src]...</span>", \
+							"<span class='italics'>Słyszysz spawanie.</span>")
 			if(O.use_tool(src, user, 40, volume=50))
 				if(!(machine_stat & BROKEN))
 					return
-				to_chat(user, "<span class='notice'>You repair [src].</span>")
+				to_chat(user, "<span class='notice'>Naprawiasz [src].</span>")
 				set_machine_stat(machine_stat & ~BROKEN)
 				obj_integrity = max_integrity
 				update_icon()
 		else
-			to_chat(user, "<span class='notice'>[src] does not need repairs.</span>")
+			to_chat(user, "<span class='notice'>[src] nie wymaga naprawy.</span>")
 	else
 		return ..()
 
@@ -211,7 +211,7 @@
 		if(storedpda || storedid)
 			if(storedpda)
 				var/newpdaskin
-				newpdaskin = input(user, "Select a PDA skin!", "PDA Painting") as null|anything in pda_icons
+				newpdaskin = input(user, "Wybierz wygląd PDA!", "Malowanie PDA") as null|anything in pda_icons
 				if(!newpdaskin)
 					return
 				if(!in_range(src, user))
@@ -222,7 +222,7 @@
 				ejectpda()
 			if(storedid)
 				var/newidskin
-				newidskin = input(user, "Select an ID skin!", "ID  Painting") as null|anything in valid_jobs
+				newidskin = input(user, "Wybierz wygląd karty ID!", "Malowanie karty ID") as null|anything in valid_jobs
 				if(!newidskin)
 					return
 				if(newidskin[1] == "-")
@@ -242,7 +242,7 @@
 				// There are the same code lines in `card.dm`
 				ejectid()
 		else
-			to_chat(user, "<span class='notice'>[src] is empty.</span>")
+			to_chat(user, "<span class='notice'>[src] jest pusty.</span>")
 
 /obj/machinery/pdapainter/AltClick(mob/user)
 	if(usr.stat || usr.restrained())
@@ -250,9 +250,9 @@
 	if(storedpda || storedid)
 		ejectid()
 		ejectpda()
-		to_chat(usr, "<span class='notice'>You eject the contents.</span>")
+		to_chat(usr, "<span class='notice'>Wysuwasz zawartość.</span>")
 	else
-		to_chat(usr, "<span class='notice'>[src] is empty.")
+		to_chat(usr, "<span class='notice'>[src] jest pusty.")
 
 
 /obj/machinery/pdapainter/proc/ejectpda()
@@ -261,7 +261,7 @@
 		storedpda = null
 		update_icon()
 	else
-		to_chat(usr, "<span class='notice'>[src] is empty.</span>")
+		to_chat(usr, "<span class='notice'>[src] jest pusty.</span>")
 
 /obj/machinery/pdapainter/proc/ejectid()
 	if(storedid)

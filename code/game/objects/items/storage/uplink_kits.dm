@@ -218,45 +218,7 @@
 	name = "Contractor Guide"
 
 /obj/item/paper/contractor_guide/Initialize(mapload)
-	default_raw_text = {"<p>Welcome agent, congratulations on your new position as contractor. On top of your already assigned objectives,
-			this kit will provide you contracts to take on for TC payments.</p>
-
-			<p>Provided within, we give your specialist contractor space suit. It's even more compact, being able to fit into a pocket, and faster than the
-			Syndicate space suit available to you on the uplink. We also provide your chameleon jumpsuit and mask, both of which can be changed
-			to any form you need for the moment. The cigarettes are a special blend - it'll heal your injuries slowly overtime.</p>
-
-			<p>Your standard issue contractor baton hits harder than the ones you might be used to, and likely be your go to weapon for kidnapping your
-			targets. The three additional items have been randomly selected from what we had available. We hope they're useful to you for your mission.</p>
-
-			<p>The contractor hub, available at the top right of the uplink, will provide you unique items and abilities. These are bought using Contractor Rep,
-			with two Rep being provided each time you complete a contract.</p>
-
-			<h3>Using the tablet</h3>
-			<ol>
-				<li>Open the Syndicate Contract Uplink program.</li>
-				<li>Here, you can accept a contract, and redeem your TC payments from completed contracts.</li>
-				<li>The payment number shown in brackets is the bonus you'll receive when bringing your target <b>alive</b>. You receive the
-				other number regardless of if they were alive or dead.</li>
-				<li>Contracts are completed by bringing the target to designated dropoff, calling for extraction, and putting them
-				inside the pod.</li>
-			</ol>
-
-			<p>Be careful when accepting a contract. While you'll be able to see the location of the dropoff point, cancelling will make it
-			unavailable to take on again.</p>
-			<p>The tablet can also be recharged at any cell charger.</p>
-			<h3>Extracting</h3>
-			<ol>
-				<li>Make sure both yourself and your target are at the dropoff.</li>
-				<li>Call the extraction, and stand back from the drop point.</li>
-				<li>If it fails, make sure your target is inside, and there's a free space for the pod to land.</li>
-				<li>Grab your target, and drag them into the pod.</li>
-			</ol>
-			<h3>Ransoms</h3>
-			<p>We need your target for our own reasons, but we ransom them back to your mission area once their use is served. They will return back
-			from where you sent them off from in several minutes time. Don't worry, we give you a cut of what we get paid. We pay this into whatever
-			ID card you have equipped, on top of the TC payment we give.</p>
-
-			<p>Good luck agent. You can burn this document with the supplied lighter.</p>"}
+	default_raw_text = {"<p>Witaj, agencie, gratulujemy nowej funkcji kontraktora. Oprócz przydzielonych ci już celów ten zestaw zapewni ci kontrakty do realizacji za wypłaty w TC.</p><p>W środku znajdziesz specjalistyczny skafander kosmiczny kontraktora. Jest jeszcze bardziej kompaktowy - mieści się w kieszeni - i szybszy niż skafander Syndykatu dostępny w uplinku. Dołączamy też kameleonowy kombinezon i maskę, które można w każdej chwili zmienić w dowolną potrzebną formę. Papierosy to specjalna mieszanka - z czasem powoli leczą twoje rany.</p><p>Twoja standardowa pałka kontraktora uderza mocniej niż te, do których możesz być przyzwyczajony, i zapewne będzie twoją główną bronią do porywania celów. Trzy dodatkowe przedmioty zostały wylosowane spośród tego, co mieliśmy na stanie. Mamy nadzieję, że przydadzą ci się w misji.</p><p>Centrum kontraktora, dostępne w prawym górnym rogu uplinku, zapewni ci unikalne przedmioty i zdolności. Kupuje się je za Reputację Kontraktora - za każdy wykonany kontrakt otrzymujesz dwa punkty.</p><h3>Korzystanie z tabletu</h3><ol><li>Otwórz program Syndicate Contract Uplink.</li><li>Tu możesz przyjąć kontrakt i odebrać wypłaty w TC za wykonane kontrakty.</li><li>Kwota w nawiasie to premia, którą otrzymasz, dostarczając cel <b>żywy</b>. Drugą kwotę otrzymujesz niezależnie od tego, czy cel żyje.</li><li>Kontrakt wykonujesz, dostarczając cel do wyznaczonego punktu zrzutu, wzywając ewakuację i umieszczając go w kapsule.</li></ol><p>Uważaj przy przyjmowaniu kontraktu. Zobaczysz lokalizację punktu zrzutu, ale anulowanie sprawi, że nie będzie można go przyjąć ponownie.</p><p>Tablet można też ładować w dowolnej ładowarce ogniw.</p><h3>Ewakuacja</h3><ol><li>Upewnij się, że ty i twój cel jesteście w punkcie zrzutu.</li><li>Wezwij ewakuację i odsuń się od punktu zrzutu.</li><li>Jeśli się nie uda, upewnij się, że cel jest w środku i że jest wolne miejsce na lądowanie kapsuły.</li><li>Chwyć cel i wciągnij go do kapsuły.</li></ol><h3>Okupy</h3><p>Potrzebujemy twojego celu do własnych celów, ale gdy przestanie być przydatny, odsyłamy go za okupem w rejon twojej misji. Wróci po kilku minutach w miejsce, z którego go wysłałeś. Nie martw się, dostaniesz działkę z tego, co nam zapłacą. Wpłacimy ją na kartę ID, którą masz przy sobie, oprócz wypłaty w TC.</p><p>Powodzenia, agencie. Ten dokument możesz spalić dołączoną zapalniczką.</p>"}
 
 	return ..()
 
@@ -583,7 +545,7 @@
 
 	for(var/i in implants)
 		group.register(i)
-	desc += " The implants are registered to the \"[group.name]\" group."
+	desc += " Implanty są zarejestrowane w grupie \"[group.name]\"."
 
 
 /obj/item/storage/box/syndie_kit/toy_box

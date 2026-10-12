@@ -9,29 +9,29 @@
 )
 
 #define COGWALL_START_DECON_MESSAGES list(\
-	"You begin welding off the outer plating.",\
-	"You begin screwing out the maintenance hatch.",\
-	"You begin prying open the maintenance hatch.",\
-	"You begin deconstructing the wall."\
+	"Zaczynasz odspawać zewnętrzne poszycie.",\
+	"Zaczynasz odkręcać właz serwisowy.",\
+	"Zaczynasz podważać właz serwisowy.",\
+	"Zaczynasz rozbierać ścianę."\
 )
 
 #define COGWALL_END_DECON_MESSAGES list(\
-	"You weld off the outer plating.",\
-	"You remove the screws from the maintenance hatch.",\
-	"You pry open the maintenance hatch.",\
-	"You deconstruct the wall."\
+	"Odspawujesz zewnętrzne poszycie.",\
+	"Wykręcasz śruby z włazu serwisowego.",\
+	"Podważasz i otwierasz właz serwisowy.",\
+	"Rozbierasz ścianę."\
 )
 
 #define COGWALL_START_RECON_MESSAGES list(\
-	"You begin welding the outer plating back together.",\
-	"You begin screwing in the maintenance hatch.",\
-	"You begin to pry the maintenance hatch back into place."\
+	"Zaczynasz spawać z powrotem zewnętrzne poszycie.",\
+	"Zaczynasz przykręcać właz serwisowy.",\
+	"Zaczynasz wciskać właz serwisowy na miejsce."\
 )
 
 #define COGWALL_END_RECON_MESSAGES list(\
-	"You weld the out plating back together.",\
-	"You insert the screws into the maintenance hatch.",\
-	"You pry the maintenance hatch back into place."\
+	"Spawasz z powrotem zewnętrzne poszycie.",\
+	"Wkręcasz śruby we właz serwisowy.",\
+	"Wciskasz właz serwisowy na miejsce."\
 )
 
 /turf/closed/wall/clockwork
@@ -110,18 +110,18 @@
 /turf/closed/wall/clockwork/attack_hulk(mob/user, does_attack_animation)
 	if(prob(10))
 		return ..()
-	to_chat(user, "<span class='warning'>Your slightly dent [src].</span>")
+	to_chat(user, "<span class='warning'>Lekko wgniatasz [src].</span>")
 	return
 
 //========Deconstruction Handled Here=======
 /turf/closed/wall/clockwork/deconstruction_hints(mob/user)
 	switch(d_state)
 		if(INTACT)
-			return "<span class='notice'>The wall looks weak enough to <b>weld</b> the brass plates off.</span>"
+			return "<span class='notice'>Ściana wygląda na tyle słabo, że można <b>odspawać</b> mosiężne płyty.</span>"
 		if(COG_COVER)
-			return "<span class='notice'>The outer cover has been <i>welded</i> open, and an inner plate secured by <b>screws</b> is visable.</span>"
+			return "<span class='notice'>Zewnętrzna osłona jest <i>odspawana</i>, widać wewnętrzną płytę przykręconą <b>śrubami</b>.</span>"
 		if(COG_EXPOSED)
-			return "<span class='notice'>The inner plating has been <i>screwed</i> open. The exterior plating could be easily <b>pried</b> out.</span>"
+			return "<span class='notice'>Wewnętrzne poszycie jest <i>odkręcone</i>. Zewnętrzne poszycie łatwo <b>podważyć</b>.</span>"
 
 /turf/closed/wall/clockwork/try_destroy(obj/item/I, mob/user, turf/T)
 	return FALSE
@@ -131,11 +131,11 @@
 		return 0
 	if(!I.tool_start_check(user, amount=0))
 		return 0
-	to_chat(user, "<span class='warning'>You begin to weld apart the [src].</span>")
+	to_chat(user, "<span class='warning'>Zaczynasz rozspawywać [src].</span>")
 	if(I.use_tool(src, user, 40, volume=100))
 		if(!istype(src, /turf/closed/wall/clockwork) || d_state != INTACT)
 			return 0
-		to_chat(user, "<span class='warning'>You weld the [src] apart!</span>")
+		to_chat(user, "<span class='warning'>Rozspawujesz [src]!</span>")
 		dismantle_wall()
 		return 1
 	return
@@ -206,9 +206,9 @@
 			return TRUE
 	else if(baseturfs == type)
 		return TRUE
-	user.visible_message("<span class='notice'>[user] begins slowly prying up [src]...</span>", "<span class='notice'>You begin painstakingly prying up [src]...</span>")
+	user.visible_message("<span class='notice'>[user] zaczyna powoli podważać [src]...</span>", "<span class='notice'>Zaczynasz mozolnie podważać [src]...</span>")
 	if(I.use_tool(src, user, 70, volume=80))
-		user.visible_message("<span class='notice'>[user] pries up [src]!</span>", "<span class='notice'>You pry up [src]!</span>")
+		user.visible_message("<span class='notice'>[user] podważa [src]!</span>", "<span class='notice'>Podważasz [src]!</span>")
 		make_plating()
 	return TRUE
 
@@ -363,12 +363,12 @@
 
 /obj/machinery/door/airlock/clockwork/examine(mob/user)
 	. = ..()
-	var/gear_text = "The cogwheel is flickering and twisting wildly. Report this to a coder."
+	var/gear_text = "Zębatka migocze i dziko się wykręca. Zgłoś to koderom."
 	switch(construction_state)
 		if(GEAR_SECURE)
-			gear_text = "<span class='brass'>The cogwheel is solidly <b>wrenched</b> to the brass around it.</span>"
+			gear_text = "<span class='brass'>Zębatka jest mocno <b>przykręcona</b> do otaczającego ją mosiądzu.</span>"
 		if(GEAR_LOOSE)
-			gear_text = "<span class='alloy'>The cogwheel has been <i>loosened</i>, but remains <b>connected loosely</b> to the door!</span>"
+			gear_text = "<span class='alloy'>Zębatka jest <i>poluzowana</i>, ale wciąż <b>luźno połączona</b> z drzwiami!</span>"
 	. += gear_text
 
 /obj/machinery/door/airlock/clockwork/emp_act(severity)
@@ -418,30 +418,30 @@
 		return 0
 	else if(I.tool_behaviour == TOOL_WRENCH)
 		if(construction_state == GEAR_SECURE)
-			user.visible_message("<span class='notice'>[user] begins loosening [src]'s cogwheel...</span>", "<span class='notice'>You begin loosening [src]'s cogwheel...</span>")
+			user.visible_message("<span class='notice'>[user] zaczyna luzować zębatkę [src]...</span>", "<span class='notice'>Zaczynasz luzować zębatkę [src]...</span>")
 			if(!I.use_tool(src, user, 75, volume=50) || construction_state != GEAR_SECURE)
 				return 1
-			user.visible_message("<span class='notice'>[user] loosens [src]'s cogwheel!</span>", "<span class='notice'>[src]'s cogwheel pops off and dangles loosely.</span>")
+			user.visible_message("<span class='notice'>[user] luzuje zębatkę [src]!</span>", "<span class='notice'>Zębatka [src] wyskakuje i luźno zwisa.</span>")
 			playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
 			construction_state = GEAR_LOOSE
 		else if(construction_state == GEAR_LOOSE)
-			user.visible_message("<span class='notice'>[user] begins tightening [src]'s cogwheel...</span>", "<span class='notice'>You begin tightening [src]'s cogwheel into place...</span>")
+			user.visible_message("<span class='notice'>[user] zaczyna dokręcać zębatkę [src]...</span>", "<span class='notice'>Zaczynasz dokręcać zębatkę [src] na miejsce...</span>")
 			if(!I.use_tool(src, user, 75, volume=50) || construction_state != GEAR_LOOSE)
 				return 1
-			user.visible_message("<span class='notice'>[user] tightens [src]'s cogwheel!</span>", "<span class='notice'>You firmly tighten [src]'s cogwheel into place.</span>")
+			user.visible_message("<span class='notice'>[user] dokręca zębatkę [src]!</span>", "<span class='notice'>Mocno dokręcasz zębatkę [src] na miejscu.</span>")
 			playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
 			construction_state = GEAR_SECURE
 		return 1
 	else if(I.tool_behaviour == TOOL_CROWBAR)
 		if(construction_state == GEAR_SECURE)
-			to_chat(user, "<span class='warning'>[src]'s cogwheel is too tightly secured! Your [I.name] can't reach under it!</span>")
+			to_chat(user, "<span class='warning'>Zębatka [src] jest zbyt mocno przykręcona! [I.name] nie sięga pod nią!</span>")
 			return 1
 		else if(construction_state == GEAR_LOOSE)
-			user.visible_message("<span class='notice'>[user] begins slowly lifting off [src]'s cogwheel...</span>", "<span class='notice'>You slowly begin lifting off [src]'s cogwheel...</span>")
+			user.visible_message("<span class='notice'>[user] zaczyna powoli zdejmować zębatkę [src]...</span>", "<span class='notice'>Powoli zaczynasz zdejmować zębatkę [src]...</span>")
 			if(!I.use_tool(src, user, 75, volume=50) || construction_state != GEAR_LOOSE)
 				return 1
-			user.visible_message("<span class='notice'>[user] lifts off [src]'s cogwheel, causing it to fall apart!</span>", \
-			"<span class='notice'>You lift off [src]'s cogwheel, causing it to fall apart!</span>")
+			user.visible_message("<span class='notice'>[user] zdejmuje zębatkę [src], która się rozpada!</span>", \
+			"<span class='notice'>Zdejmujesz zębatkę [src], która się rozpada!</span>")
 			deconstruct(TRUE)
 		return 1
 	return 0

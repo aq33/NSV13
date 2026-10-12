@@ -47,10 +47,10 @@
 	if(!istype(M))
 		return FALSE
 	if(!M.IsAdvancedToolUser()) //NSV13 - simple mobs cant get in car anymore
-		to_chat(M, "<span class='warning'>You don't have the dexterity to climb in [src]!</span>")
+		to_chat(M, "<span class='warning'>Nie masz dość zręczności, by wejść do [src]!</span>")
 		return
 	if(!silent)
-		M.visible_message("<span class='notice'>[M] climbs into \the [src]!</span>")
+		M.visible_message("<span class='notice'>[M] wchodzi do [src]!</span>")
 	M.forceMove(src)
 	add_occupant(M)
 	return TRUE
@@ -68,7 +68,7 @@
 		M.throw_at(target_turf, 5, 10)
 
 	if(!silent)
-		M.visible_message("<span class='notice'>[M] drops out of \the [src]!</span>")
+		M.visible_message("<span class='notice'>[M] wypada z [src]!</span>")
 	return TRUE
 
 /obj/vehicle/sealed/proc/exit_location(M)
@@ -77,23 +77,23 @@
 /obj/vehicle/sealed/attackby(obj/item/I, mob/user, params)
 	if(key_type && !is_key(inserted_key) && is_key(I))
 		if(user.transferItemToLoc(I, src))
-			to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
+			to_chat(user, "<span class='notice'>Wkładasz [I] do [src].</span>")
 			if(inserted_key)	//just in case there's an invalid key
 				inserted_key.forceMove(drop_location())
 			inserted_key = I
 		else
-			to_chat(user, "<span class='notice'>[I] seems to be stuck to your hand!</span>")
+			to_chat(user, "<span class='notice'>Wygląda na to, że [I] przykleił ci się do ręki!</span>")
 		return
 	return ..()
 
 /obj/vehicle/sealed/proc/remove_key(mob/user)
 	if(!inserted_key)
-		to_chat(user, "<span class='notice'>There is no key in [src]!</span>")
+		to_chat(user, "<span class='notice'>W [src] nie ma kluczyka!</span>")
 		return
 	if(!is_occupant(user) || !(occupants[user] & VEHICLE_CONTROL_DRIVE))
-		to_chat(user, "<span class='notice'>You must be driving [src] to remove [src]'s key!</span>")
+		to_chat(user, "<span class='notice'>Musisz kierować [src], by wyjąć z niego kluczyk!</span>")
 		return
-	to_chat(user, "<span class='notice'>You remove [inserted_key] from [src].</span>")
+	to_chat(user, "<span class='notice'>Wyjmujesz [inserted_key] z [src].</span>")
 	inserted_key.forceMove(drop_location())
 	user.put_in_hands(inserted_key)
 	inserted_key = null

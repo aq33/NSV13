@@ -32,7 +32,7 @@
 			dat += "<br>[temp]<br><br>"
 			dat += "<br>Current Network: <a href='byond://?src=[REF(src)];network=1'>[network]</a><br>"
 			if(machinelist.len)
-				dat += "<br>Detected Network Entities:<ul>"
+				dat += "<br>Wykryte jednostki sieciowe:<ul>"
 				for(var/obj/machinery/telecomms/T in machinelist)
 					dat += "<li><a href='byond://?src=[REF(src)];viewmachine=[T.id]'>[REF(T)] [T.name]</a> ([T.id])</li>"
 				dat += "</ul>"
@@ -46,12 +46,12 @@
 		if(1)
 			dat += "<br>[temp]<br>"
 			dat += "<center><a href='byond://?src=[REF(src)];operation=mainmenu'>\[Main Menu\]</a></center>"
-			dat += "<br>Current Network: [network]<br>"
-			dat += "Selected Network Entity: [SelectedMachine.name] ([SelectedMachine.id])<br>"
-			dat += "Linked Entities: <ol>"
+			dat += "<br>Obecna sieć: [network]<br>"
+			dat += "Wybrana jednostka sieciowa: [SelectedMachine.name] ([SelectedMachine.id])<br>"
+			dat += "Połączone jednostki: <ol>"
 			for(var/obj/machinery/telecomms/T in SelectedMachine.links)
 				if(!T.hide)
-					dat += "<li><a href='byond://?src=[REF(src)];viewmachine=[T.id]'>[REF(T.id)] [T.name]</a> ([T.id])</li>"
+					dat += "<li><a href='byond://?src=[REF(src)];viewmachine=[T.id]'>[REF(T)] [T.name]</a> ([T.id])</li>"
 			dat += "</ol>"
 
 
@@ -107,7 +107,7 @@
 
 	if(href_list["network"])
 
-		var/newnet = stripped_input(usr, "Which network do you want to view?", "Comm Monitor", network)
+		var/newnet = stripped_input(usr, "Którą sieć chcesz oglądać?", "Monitor komunikacji", network)
 		if(newnet && (get_dist(usr, src) <= 1 || issilicon(usr)))
 			if(length(newnet) > 15)
 				temp = "<font color = #D70B00>- FAILED: NETWORK TAG STRING TOO LENGHTLY -</font color>"

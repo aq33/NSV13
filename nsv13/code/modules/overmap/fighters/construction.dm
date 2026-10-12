@@ -84,167 +84,167 @@
 	. = ..()
 	switch(build_state)
 		if(LBS_CHASSIS)
-			. += "<span class='notice'>Secure the chassis with bolts.</span>"
+			. += "<span class='notice'>Przykręć podwozie śrubami.</span>"
 		if(LBS_CHASSIS_BOLT)
-			. += "<span class='notice'>Reinforce the chassis joints with a welder.</span>"
+			. += "<span class='notice'>Wzmocnij połączenia podwozia spawarką.</span>"
 		if(LBS_CHASSIS_WELD)
-			. += "<span class='notice'>Install the engine into slot B.</span>"
+			. += "<span class='notice'>Zainstaluj silnik w gnieździe B.</span>"
 		if(LBS_ENGINE)
-			. += "<span class='notice'>Secure the engine to the chassis with bolts.</span>"
+			. += "<span class='notice'>Przykręć silnik do podwozia śrubami.</span>"
 		if(LBS_ENGINE_BOLT)
-			. += "<span class='notice'>Install the auxiliary power unit into slot S.</span>"
+			. += "<span class='notice'>Zainstaluj pomocniczą jednostkę zasilania w gnieździe S.</span>"
 		if(LBS_APU)
-			. += "<span class='notice'>Follow the wiring diagram to connect the auxiliary power unit to the engine.</span>"
+			. += "<span class='notice'>Zgodnie ze schematem okablowania połącz pomocniczą jednostkę zasilania z silnikiem.</span>"
 		if(LBS_APU_WIRE)
-			. += "<span class='notice'>Secure the auxiliary power unit connections with screws.</span>"
+			. += "<span class='notice'>Przykręć połączenia pomocniczej jednostki zasilania wkrętami.</span>"
 		if(LBS_APU_SCREW)
-			. += "<span class='notice'>Install the fuel tank into slot G.</span>"
+			. += "<span class='notice'>Zainstaluj zbiornik paliwa w gnieździe G.</span>"
 		if(LBS_FUEL_TANK)
-			. += "<span class='notice'>Secure the fuel tank to the chassis with bolts.</span>"
+			. += "<span class='notice'>Przykręć zbiornik paliwa do podwozia śrubami.</span>"
 		if(LBS_FUEL_TANK_BOLT)
-			. += "<span class='notice'>Install the avionics into slot _S</span>"
+			. += "<span class='notice'>Zainstaluj awionikę w gnieździe _S</span>"
 		if(LBS_AVIONICS)
-			. += "<span class='notice'>Follow the wiring diagram to connect the avionics to the flight controls and thrusters.</span>"
+			. += "<span class='notice'>Zgodnie ze schematem okablowania połącz awionikę ze sterami lotu i silnikami manewrowymi.</span>"
 		if(LBS_AVIONICS_WIRE)
-			. += "<span class='notice'>Secure the avionics connections with screws.</span>"
+			. += "<span class='notice'>Przykręć połączenia awioniki wkrętami.</span>"
 		if(LBS_AVIONICS_SCREW)
-			. += "<span class='notice'>Install the targeting sensor into slot U.</span>"
+			. += "<span class='notice'>Zainstaluj czujnik celowniczy w gnieździe U.</span>"
 		if(LBS_TARGETING_SENSOR)
-			. += "<span class='notice'>Secure the targeting sensor to the chassis with screws.</span>"
+			. += "<span class='notice'>Przykręć czujnik celowniczy do podwozia wkrętami.</span>"
 		if(LBS_TARGETING_SENSOR_SCREW)
-			. += "<span class='notice'>Install the countermeasure dispenser into slot X</span>"
+			. += "<span class='notice'>Zainstaluj dozownik środków przeciwdziałania w gnieździe X</span>"
 		if(LBS_COUNTERMEASURE_DISPENSER)
-			. += "<span class='notice'>Secure the countermeasure dispenser to the chassis with bolts.</span>"
+			. += "<span class='notice'>Przykręć dozownik środków przeciwdziałania do podwozia śrubami.</span>"
 		if(LBS_COUNTERMEASURE_DISPENSER_BOLT)
-			. += "<span class='notice'>Install the armour plating in all indicated places on the diagram.</span>"
+			. += "<span class='notice'>Zainstaluj płyty pancerza we wszystkich wskazanych na schemacie miejscach.</span>"
 		if(LBS_ARMOUR_PLATING)
-			. += "<span class='notice'>Secure the armour plating to chassis with bolts.</span>"
+			. += "<span class='notice'>Przykręć płyty pancerza do podwozia śrubami.</span>"
 		if(LBS_ARMOUR_PLATING_BOLT)
-			. += "<span class='notice'>Reinforce the armour plating bonds with the chassis with a welder.</span>"
+			. += "<span class='notice'>Wzmocnij połączenia płyt pancerza z podwoziem spawarką.</span>"
 		if(LBS_ARMOUR_PLATING_WELD)
-			. += "<span class='notice'>Install the primary weapon module into the forward hardpoint mount.</span>"
+			. += "<span class='notice'>Zainstaluj moduł broni głównej w przednim punkcie mocowania.</span>"
 		if(LBS_PRIMARY)
-			. += "<span class='notice'>Secure the primary weapon module to the forward hardpoint mount with bolts.</span>"
+			. += "<span class='notice'>Przykręć moduł broni głównej do przedniego punktu mocowania śrubami.</span>"
 		if(LBS_PRIMARY_BOLT)
-			. += "<span class='notice'>Install the secondary weapon module into the secondary hardpoint mount.</span>"
+			. += "<span class='notice'>Zainstaluj moduł broni dodatkowej w dodatkowym punkcie mocowania.</span>"
 		if(LBS_SECONDARY)
-			. += "<span class='notice'>Secure the secondary weapon module to the secondary hardpoint mount with bolts.</span>"
+			. += "<span class='notice'>Przykręć moduł broni dodatkowej do dodatkowego punktu mocowania śrubami.</span>"
 		if(LBS_SECONDARY_BOLT)
-			. += "<span class='notice'>Paint the surface of the [src] with primer.</span>"
+			. += "<span class='notice'>Pomaluj powierzchnię [src] podkładem.</span>"
 		if(LBS_PAINT_PRIMER)
-			. += "<span class='notice'>Paint the surface of [src] and apply approved detailing as per the diagrams.</span>"
+			. += "<span class='notice'>Pomaluj powierzchnię [src] i nanieś zatwierdzone zdobienia zgodnie ze schematami.</span>"
 		if(LBS_PAINT_DETAILING)
-			. += "<span class='notice'>Finalize the fighter by clicking it with an open hand, and add any missing components to the newly prepared fighter.</span>"
+			. += "<span class='notice'>Dokończ myśliwiec, klikając go pustą ręką, i dodaj brakujące komponenty do świeżo przygotowanego myśliwca.</span>"
 
 /obj/structure/fighter_frame/attackby(obj/item/W, mob/user, params)
 	add_fingerprint(user)
 	if(building)
-		to_chat(user, "<span class='notice'>You're already installing something into [src]!.</span>")
+		to_chat(user, "<span class='notice'>Już coś instalujesz w [src]!</span>")
 		return
 	if(istype(W, /obj/item/fighter_component/fuel_tank))
 		if(build_state == LBS_APU_SCREW)
-			to_chat(user, "<span class='notice'>You start adding [W] to [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz dodawać [W] do [src]...</span>")
 			building = TRUE
 			if(!do_after(user, 5 SECONDS, target=src) || !Adjacent(user))
 				building = FALSE
 				return
-			to_chat(user, "<spawn class='notice'>You add [W] to [src].</span>")
+			to_chat(user, "<spawn class='notice'>Dodajesz [W] do [src].</span>")
 			build_state = LBS_FUEL_TANK
 			update_icon()
 			W.forceMove(src)
 			building = FALSE
 	else if(istype(W, /obj/item/fighter_component/avionics))
 		if(build_state == LBS_FUEL_TANK_BOLT)
-			to_chat(user, "<span class='notice'>You start adding [W] to [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz dodawać [W] do [src]...</span>")
 			building = TRUE
 			if(!do_after(user, 5 SECONDS, target=src) || !Adjacent(user))
 				building = FALSE
 				return
-			to_chat(user, "<spawn class='notice'>You add [W] to [src].</span>")
+			to_chat(user, "<spawn class='notice'>Dodajesz [W] do [src].</span>")
 			build_state = LBS_AVIONICS
 			update_icon()
 			W.forceMove(src)
 			building = FALSE
 	else if(istype(W, /obj/item/fighter_component/apu))
 		if(build_state == LBS_ENGINE_BOLT)
-			to_chat(user, "<span class='notice'>You start adding [W] to [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz dodawać [W] do [src]...</span>")
 			building = TRUE
 			if(!do_after(user, 5 SECONDS, target=src) || !Adjacent(user))
 				building = FALSE
 				return
-			to_chat(user, "<spawn class='notice'>You add [W] to [src].</span>")
+			to_chat(user, "<spawn class='notice'>Dodajesz [W] do [src].</span>")
 			build_state = LBS_APU
 			update_icon()
 			W.forceMove(src)
 			building = FALSE
 	else if(istype(W, /obj/item/fighter_component/armour_plating))
 		if(build_state == LBS_COUNTERMEASURE_DISPENSER_BOLT)
-			to_chat(user, "<span class='notice'>You start adding [W] to [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz dodawać [W] do [src]...</span>")
 			building = TRUE
 			if(!do_after(user, 5 SECONDS, target=src) || !Adjacent(user))
 				building = FALSE
 				return
-			to_chat(user, "<spawn class='notice'>You add [W] to [src].</span>")
+			to_chat(user, "<spawn class='notice'>Dodajesz [W] do [src].</span>")
 			build_state = LBS_ARMOUR_PLATING
 			update_icon()
 			W.forceMove(src)
 			building = FALSE
 	else if(istype(W, /obj/item/fighter_component/targeting_sensor))
 		if(build_state == LBS_AVIONICS_SCREW)
-			to_chat(user, "<span class='notice'>You start adding [W] to [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz dodawać [W] do [src]...</span>")
 			building = TRUE
 			if(!do_after(user, 5 SECONDS, target=src) || !Adjacent(user))
 				building = FALSE
 				return
-			to_chat(user, "<spawn class='notice'>You add [W] to [src].</span>")
+			to_chat(user, "<spawn class='notice'>Dodajesz [W] do [src].</span>")
 			build_state = LBS_TARGETING_SENSOR
 			update_icon()
 			W.forceMove(src)
 			building = FALSE
 	else if(istype(W, /obj/item/fighter_component/engine))
 		if(build_state == LBS_CHASSIS_WELD)
-			to_chat(user, "<span class='notice'>You start adding [W] to [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz dodawać [W] do [src]...</span>")
 			building = TRUE
 			if(!do_after(user, 5 SECONDS, target=src) || !Adjacent(user))
 				building = FALSE
 				return
-			to_chat(user, "<spawn class='notice'>You add [W] to [src].</span>")
+			to_chat(user, "<spawn class='notice'>Dodajesz [W] do [src].</span>")
 			build_state = LBS_ENGINE
 			update_icon()
 			W.forceMove(src)
 			building = FALSE
 	else if(istype(W, /obj/item/fighter_component/countermeasure_dispenser))
 		if(build_state == LBS_TARGETING_SENSOR_SCREW)
-			to_chat(user, "<span class='notice'>You start adding [W] to [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz dodawać [W] do [src]...</span>")
 			building = TRUE
 			if(!do_after(user, 5 SECONDS, target=src) || !Adjacent(user))
 				building = FALSE
 				return
-			to_chat(user, "<spawn class='notice'>You add [W] to [src].</span>")
+			to_chat(user, "<spawn class='notice'>Dodajesz [W] do [src].</span>")
 			build_state = LBS_COUNTERMEASURE_DISPENSER
 			update_icon()
 			W.forceMove(src)
 			building = FALSE
 	else if(istype(W, /obj/item/fighter_component/secondary))
 		if(build_state == LBS_PRIMARY_BOLT)
-			to_chat(user, "<span class='notice'>You start adding [W] to [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz dodawać [W] do [src]...</span>")
 			building = TRUE
 			if(!do_after(user, 5 SECONDS, target=src) || !Adjacent(user))
 				building = FALSE
 				return
-			to_chat(user, "<spawn class='notice'>You add [W] to [src].</span>")
+			to_chat(user, "<spawn class='notice'>Dodajesz [W] do [src].</span>")
 			build_state = LBS_SECONDARY
 			update_icon()
 			W.forceMove(src)
 			building = FALSE
 	else if(istype(W, /obj/item/fighter_component/primary))
 		if(build_state == LBS_ARMOUR_PLATING_WELD)
-			to_chat(user, "<span class='notice'>You start adding [W] to [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz dodawać [W] do [src]...</span>")
 			building = TRUE
 			if(!do_after(user, 5 SECONDS, target=src) || !Adjacent(user))
 				building = FALSE
 				return
-			to_chat(user, "<spawn class='notice'>You add [W] to [src].</span>")
+			to_chat(user, "<spawn class='notice'>Dodajesz [W] do [src].</span>")
 			build_state = LBS_PRIMARY
 			update_icon()
 			W.forceMove(src)
@@ -253,51 +253,51 @@
 		var/obj/item/stack/cable_coil/C = W
 		if(build_state == LBS_AVIONICS)
 			if(C.get_amount() <5)
-				to_chat(user, "<span class='notice'>You need at least five cable pieces to wire [src]!</span>")
+				to_chat(user, "<span class='notice'>Do okablowania [src] potrzebujesz przynajmniej pięciu kawałków kabla!</span>")
 				return
-			to_chat(user, "<span class='notice'>You start wiring [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz okablowywać [src]...</span>")
 			building = TRUE
 			if(!do_after(user, 5 SECONDS, target=src) || !Adjacent(user))
 				building = FALSE
 				return
 			W.use(5)
-			to_chat(user, "<spawn class='notice'>You wire [src].</span>")
+			to_chat(user, "<spawn class='notice'>Okablowujesz [src].</span>")
 			build_state = LBS_AVIONICS_WIRE
 			update_icon()
 			building = FALSE
 		if(build_state == LBS_APU)
 			if(C.get_amount() <5)
-				to_chat(user, "<span class='notice'>You need at least five cable pieces to wire [src]!</span>")
+				to_chat(user, "<span class='notice'>Do okablowania [src] potrzebujesz przynajmniej pięciu kawałków kabla!</span>")
 				return
-			to_chat(user, "<span class='notice'>You start wiring [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz okablowywać [src]...</span>")
 			building = TRUE
 			if(!do_after(user, 5 SECONDS, target=src) || !Adjacent(user))
 				building = FALSE
 				return
 			W.use(5)
-			to_chat(user, "<spawn class='notice'>You wire [src].</span>")
+			to_chat(user, "<spawn class='notice'>Okablowujesz [src].</span>")
 			build_state = LBS_APU_WIRE
 			update_icon()
 			building = FALSE
 	else if(istype(W, /obj/item/airlock_painter)) //replace with an aircraft painter
 		if(build_state == LBS_SECONDARY_BOLT) //check mode later
-			to_chat(user, "<span class='notice'>You start painting primer on [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz nakładać podkład na [src]...</span>")
 			building = TRUE
 			if(!do_after(user, 5 SECONDS, target=src) || !Adjacent(user))
 				building = FALSE
 				return
-			to_chat(user, "<spawn class='notice'>You prime [src].</span>")
+			to_chat(user, "<spawn class='notice'>Nakładasz podkład na [src].</span>")
 			playsound(src, 'sound/effects/spray.ogg', 100, 1)
 			build_state = LBS_PAINT_PRIMER
 			update_icon()
 			building = FALSE
 		else if(build_state == LBS_PAINT_PRIMER) //check mode later
-			to_chat(user, "<span class='notice'>You start painting details on [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz malować zdobienia na [src]...</span>")
 			building = TRUE
 			if(!do_after(user, 5 SECONDS, target=src) || !Adjacent(user))
 				building = FALSE
 				return
-			to_chat(user, "<spawn class='notice'>You finish painting [src].</span>")
+			to_chat(user, "<spawn class='notice'>Kończysz malować [src].</span>")
 			playsound(src, 'sound/effects/spray.ogg', 100, 1)
 			build_state = LBS_PAINT_DETAILING
 			update_icon()
@@ -307,100 +307,100 @@
 	. = FALSE
 	switch(build_state)
 		if(LBS_CHASSIS)
-			to_chat(user, "<span class='notice'>You start to bolt the chassis together...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz skręcać podwozie...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You bolt the chassis together.</span>")
+				to_chat(user, "<span class='notice'>Skręcasz podwozie.</span>")
 				build_state = LBS_CHASSIS_BOLT
 				update_icon()
 				return TRUE
 		if(LBS_CHASSIS_BOLT)
-			to_chat(user, "<span class='notice'>You start to unbolt the chassis.</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz rozkręcać podwozie.</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You unbolt the chassis.</span>")
+				to_chat(user, "<span class='notice'>Rozkręcasz podwozie.</span>")
 				build_state = LBS_CHASSIS
 				update_icon()
 				return TRUE
 		if(LBS_ENGINE)
-			to_chat(user, "<span class='notice'>You start to bolt the engine to the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przykręcać silnik do podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You bolt the engine to the chassis.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz silnik do podwozia.</span>")
 				build_state = LBS_ENGINE_BOLT
 				update_icon()
 				return TRUE
 		if(LBS_ENGINE_BOLT)
-			to_chat(user, "<span class='notice'>You start to unbolt the engine from the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz odkręcać silnik od podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You unbolt the engine from the chassis.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz silnik od podwozia.</span>")
 				build_state = LBS_ENGINE
 				update_icon()
 				return TRUE
 		if(LBS_FUEL_TANK)
-			to_chat(user, "<span class='notice'>You start to bolt the fuel tank to the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przykręcać zbiornik paliwa do podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You bolt the fuel tank to the chassis.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz zbiornik paliwa do podwozia.</span>")
 				build_state = LBS_FUEL_TANK_BOLT
 				update_icon()
 				return TRUE
 		if(LBS_FUEL_TANK_BOLT)
-			to_chat(user, "<span class='notice'>You start to unbolt the fuel tank from the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz odkręcać zbiornik paliwa od podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You unbolt the fuel tank from the chassis.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz zbiornik paliwa od podwozia.</span>")
 				build_state = LBS_FUEL_TANK
 				update_icon()
 				return TRUE
 		if(LBS_COUNTERMEASURE_DISPENSER)
-			to_chat(user, "<span class='notice'>You start to bolt the countermeasure dispenser to the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przykręcać dozownik środków przeciwdziałania do podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You bolt the countermeasure dispenser to the chassis.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz dozownik środków przeciwdziałania do podwozia.</span>")
 				build_state = LBS_COUNTERMEASURE_DISPENSER_BOLT
 				update_icon()
 				return TRUE
 		if(LBS_COUNTERMEASURE_DISPENSER_BOLT)
-			to_chat(user, "<span class='notice'>You start to unbolt the countermeasure dispenser from the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz odkręcać dozownik środków przeciwdziałania od podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You unbolt the countermeasure dispenser from the chassis.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz dozownik środków przeciwdziałania od podwozia.</span>")
 				build_state = LBS_COUNTERMEASURE_DISPENSER
 				update_icon()
 				return TRUE
 		if(LBS_ARMOUR_PLATING)
-			to_chat(user, "<span class='notice'>You start to bolt the armour plating to the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przykręcać płyty pancerza do podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You bolt the armour plating to the chassis.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz płyty pancerza do podwozia.</span>")
 				build_state = LBS_ARMOUR_PLATING_BOLT
 				update_icon()
 				return TRUE
 		if(LBS_ARMOUR_PLATING_BOLT)
-			to_chat(user, "<span class='notice'>You start to bolt the armour plating to the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przykręcać płyty pancerza do podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You bolt the armour plating to the chassis.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz płyty pancerza do podwozia.</span>")
 				build_state = LBS_ARMOUR_PLATING_BOLT
 				update_icon()
 				return TRUE
 		if(LBS_PRIMARY)
-			to_chat(user, "<span class='notice'>You start to bolt the light cannon to the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przykręcać lekkie działko do podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You bolt the light cannon to the chassis.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz lekkie działko do podwozia.</span>")
 				build_state = LBS_PRIMARY_BOLT
 				update_icon()
 				return TRUE
 		if(LBS_PRIMARY_BOLT)
-			to_chat(user, "<span class='notice'>You start to unbolt the light cannon from the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz odkręcać lekkie działko od podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You unbolt the light cannon from the chassis.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz lekkie działko od podwozia.</span>")
 				build_state = LBS_PRIMARY
 				update_icon()
 				return TRUE
 		if(LBS_SECONDARY)
-			to_chat(user, "<span class='notice'>You start to bolt the missle rack to the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przykręcać wyrzutnię rakiet do podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You bolt the missile rack to the chassis.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz wyrzutnię rakiet do podwozia.</span>")
 				build_state = LBS_SECONDARY_BOLT
 				update_icon()
 				return TRUE
 		if(LBS_SECONDARY_BOLT)
-			to_chat(user, "<span class='notice'>You start to unbolt the missle rack from the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz odkręcać wyrzutnię rakiet od podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You unbolt the missile rack from the chassis.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz wyrzutnię rakiet od podwozia.</span>")
 				build_state = LBS_SECONDARY
 				update_icon()
 				return TRUE
@@ -409,44 +409,44 @@
 	. = FALSE
 	switch(build_state)
 		if(LBS_APU_WIRE)
-			to_chat(user, "<span class='notice'>You start to screw the APU to the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przykręcać APU do podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You screw the APU to the chassis.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz APU do podwozia.</span>")
 				build_state = LBS_APU_SCREW
 				update_icon()
 				return TRUE
 		if(LBS_APU_SCREW)
-			to_chat(user, "<span class='notice'>You start to unscrew the APU from the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz odkręcać APU od podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You unscrew the APU from the chassis.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz APU od podwozia.</span>")
 				build_state = LBS_APU_WIRE
 				update_icon()
 				return TRUE
 		if(LBS_AVIONICS_WIRE)
-			to_chat(user, "<span class='notice'>You start to screw the avionics to the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przykręcać awionikę do podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You screw the avionics to the chassis.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz awionikę do podwozia.</span>")
 				build_state = LBS_AVIONICS_SCREW
 				update_icon()
 				return TRUE
 		if(LBS_AVIONICS_SCREW)
-			to_chat(user, "<span class='notice'>You start to unscrew the avionics from the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz odkręcać awionikę od podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You unscrew the avionics from the chassis.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz awionikę od podwozia.</span>")
 				build_state = LBS_AVIONICS_WIRE
 				update_icon()
 				return TRUE
 		if(LBS_TARGETING_SENSOR)
-			to_chat(user, "<span class='notice'>You start to screw the targeting sensor to the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przykręcać czujnik celowniczy do podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You screw the targeting to the chassis.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz czujnik celowniczy do podwozia.</span>")
 				build_state = LBS_TARGETING_SENSOR_SCREW
 				update_icon()
 				return TRUE
 		if(LBS_TARGETING_SENSOR_SCREW)
-			to_chat(user, "<span class='notice'>You start to unscrew the targeting sensor to the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz odkręcać czujnik celowniczy od podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You unscrew the targeting sensor to the chassis.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz czujnik celowniczy od podwozia.</span>")
 				build_state = LBS_TARGETING_SENSOR
 				update_icon()
 				return TRUE
@@ -455,30 +455,30 @@
 	. = FALSE
 	switch(build_state)
 		if(LBS_CHASSIS_BOLT)
-			to_chat(user, "<span class='notice'>You start to weld the chassis together...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz zespawywać podwozie...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You weld the chassis together.</span>")
+				to_chat(user, "<span class='notice'>Zespawujesz podwozie.</span>")
 				build_state = LBS_CHASSIS_WELD
 				update_icon()
 				return TRUE
 		if(LBS_CHASSIS_WELD)
-			to_chat(user, "<span class='notice'>You start to cut the chassis apart.</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz rozcinać podwozie.</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You cut the chassis apart.</span>")
+				to_chat(user, "<span class='notice'>Rozcinasz podwozie.</span>")
 				build_state = LBS_CHASSIS_BOLT
 				update_icon()
 				return TRUE
 		if(LBS_ARMOUR_PLATING_BOLT)
-			to_chat(user, "<span class='notice'>You start to weld the armour plating to the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przyspawywać płyty pancerza do podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You weld the armour plating to the chassis.</span>")
+				to_chat(user, "<span class='notice'>Przyspawujesz płyty pancerza do podwozia.</span>")
 				build_state = LBS_ARMOUR_PLATING_WELD
 				update_icon()
 				return TRUE
 		if(LBS_ARMOUR_PLATING_WELD)
-			to_chat(user, "<span class='notice'>You start to cut the armour plating from the chassis...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz odcinać płyty pancerza od podwozia...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You cut the armour plating from the chassis.</span>")
+				to_chat(user, "<span class='notice'>Odcinasz płyty pancerza od podwozia.</span>")
 				build_state = LBS_ARMOUR_PLATING_BOLT
 				update_icon()
 				return TRUE
@@ -487,18 +487,18 @@
 	. = FALSE
 	switch(build_state)
 		if(LBS_APU_WIRE)
-			to_chat(user, "<span class='notice'>You start cutting the wiring in [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przecinać okablowanie w [src]...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You cut the wiring in [src].</span>")
+				to_chat(user, "<span class='notice'>Przecinasz okablowanie w [src].</span>")
 				var/obj/item/stack/cable_coil/C = new (loc, 5)
 				C.add_fingerprint(user)
 				build_state = LBS_APU
 				update_icon()
 				return TRUE
 		if(LBS_AVIONICS_WIRE)
-			to_chat(user, "<span class='notice'>You start cutting the wiring in [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przecinać okablowanie w [src]...</span>")
 			if(tool.use_tool(src, user, 40, volume=100))
-				to_chat(user, "<span class='notice'>You cut the wiring in [src].</span>")
+				to_chat(user, "<span class='notice'>Przecinasz okablowanie w [src].</span>")
 				var/obj/item/stack/cable_coil/C = new (loc, 5)
 				C.add_fingerprint(user)
 				build_state = LBS_AVIONICS

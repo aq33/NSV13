@@ -24,18 +24,18 @@
 
 /obj/item/clipboard/cyborg/examine()
 	. = ..()
-	. += "Alt-click to synthetize a piece of paper."
+	. += "Alt-kliknij, by wytworzyć kartkę papieru."
 	if(!COOLDOWN_FINISHED(src, printer_cooldown))
-		. += "Its integrated paper synthetizer seems to still be on cooldown."
+		. += "Wbudowany syntetyzator papieru wciąż się odnawia."
 
 /obj/item/clipboard/cyborg/AltClick(mob/user)
 	if(!iscyborg(user))
-		to_chat(user, "<span class='warning'>You do not seem to understand how to use [src].</span>")
+		to_chat(user, "<span class='warning'>Nie rozumiesz, jak używać [src].</span>")
 		return
 	var/mob/living/silicon/robot/cyborg_user = user
 	// Not enough charge? Tough luck.
 	if(cyborg_user?.cell.charge < paper_charge_cost)
-		to_chat(user, "<span class='warning'>Your internal cell doesn't have enough charge left to use [src]'s integrated printer.</span>")
+		to_chat(user, "<span class='warning'>Twoje wewnętrzne ogniwo ma za mało ładunku, by użyć wbudowanej drukarki [src].</span>")
 		return
 	// Check for cooldown to avoid paper spamming
 	if(COOLDOWN_FINISHED(src, printer_cooldown))
@@ -51,11 +51,11 @@
 			RegisterSignal(new_paper, COMSIG_ATOM_UPDATED_ICON, PROC_REF(on_top_paper_change))
 			toppaper_ref = WEAKREF(new_paper)
 			update_appearance()
-			to_chat(user, "<span class='notice'>[src]'s integrated printer whirs to life, spitting out a fresh piece of paper and clipping it into place.</span>")
+			to_chat(user, "<span class='notice'>Wbudowana drukarka [src] budzi się do życia, wypluwając świeżą kartkę i wpinając ją na miejsce.</span>")
 		else
-			to_chat(user, "<span class='warning'>[src]'s integrated printer refuses to print more paper, as [src] already contains enough paper.</span>")
+			to_chat(user, "<span class='warning'>Wbudowana drukarka [src] odmawia drukowania kolejnych kartek, bo [src] ma już dość papieru.</span>")
 	else
-		to_chat(user, "<span class='warning'>[src]'s integrated printer refuses to print more paper, its bluespace paper synthetizer not having finished recovering from its last synthesis.</span>")
+		to_chat(user, "<span class='warning'>Wbudowana drukarka [src] odmawia drukowania kolejnych kartek, bo bluespace'owy syntetyzator papieru nie odnowił się jeszcze po ostatniej syntezie.</span>")
 
 /obj/item/hand_labeler/cyborg
 	name = "integrated hand labeler"
@@ -76,7 +76,7 @@
 	/// What kind of wrapped item can it hold, if `whitelisted_contents` is set to true?
 	var/list/whitelisted_item_types = list(/obj/item/small_delivery)
 	/// A short description used when the check to pick up something has failed.
-	var/whitelisted_item_description = "small wrapped packages"
+	var/whitelisted_item_description = "małe owinięte paczki"
 	/// Weight limit on the items it can hold. Leave as NONE if there isn't.
 	var/item_weight_limit = WEIGHT_CLASS_NORMAL
 	/// Can it hold mobs? (Dangerous, it is recommended to leave this to FALSE)
@@ -118,9 +118,9 @@
 
 /obj/item/borg/hydraulic_clamp/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It's cargo hold has a capacity of [storage_capacity] and is currently holding <b>[contents.len ? contents.len : 0]</b> items in it!</span>"
+	. += "<span class='notice'>Jego ładownia ma pojemność [storage_capacity] i obecnie zawiera przedmiotów: <b>[contents.len ? contents.len : 0]</b>!</span>"
 	if(storage_capacity > 1)
-		. += "<span class='notice'>Use in hand to select an item you want to prioritize taking out of the storage.</span>"
+		. += "<span class='notice'>Użyj w ręce, by wybrać przedmiot, który ma być wyjmowany z magazynu w pierwszej kolejności.</span>"
 
 /// A simple proc to empty the contents of the hydraulic clamp, forcing them on the turf it's on. Also forces `selected_item_index` to 0, to avoid any possible issues resulting from it.
 /obj/item/borg/hydraulic_clamp/proc/empty_contents()
@@ -136,7 +136,7 @@
 	if(spilled_amount)
 		var/holder = cyborg_holding_me?.resolve()
 		if(holder)
-			visible_message("<span class='warning'>[cyborg_holding_me?.resolve()] spills the content of [src]'s cargo hold all over the floor!</span>")
+			visible_message("<span class='warning'>[cyborg_holding_me?.resolve()] wysypuje zawartość ładowni [src] na podłogę!</span>")
 
 /obj/item/borg/hydraulic_clamp/attack_self(mob/user)
 	if(storage_capacity <= 1) // No need for selection if there's one or less item at maximum in the clamp.
@@ -145,7 +145,7 @@
 	selected_item_index = 0
 
 	if(contents.len <= 1)
-		to_chat(user, "<span class='warning'>There's currently [contents.len ? "only one item" : "nothing"] to take out of [src]'s cargo hold, no need to pick!</span>")
+		to_chat(user, "<span class='warning'>W ładowni [src] jest obecnie [contents.len ? "tylko jeden przedmiot" : "nic"] do wyjęcia, nie trzeba wybierać!</span>")
 		return
 
 	. = ..()
@@ -165,7 +165,7 @@
 		return
 
 	selected_item_index = new_index
-	to_chat(user, "<span class='notice'>[src] will now prioritize unloading [selection].</span>")
+	to_chat(user, "<span class='notice'>[src] będzie teraz w pierwszej kolejności wyładowywać: [selection].</span>")
 
 /obj/item/borg/hydraulic_clamp/emp_act(severity)
 	. = ..()
@@ -189,7 +189,7 @@
 		selected_item_index = 0
 
 		if(unloading_time > 0.5 SECONDS) // We don't want too much chat spam if the clamp works fast.
-			to_chat(user, "<span class='notice'>You start unloading something from [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz coś wyładowywać z [src]...</span>")
 		playsound(src, clamp_sound, clamp_sound_volume, FALSE, -5)
 		COOLDOWN_START(src, clamp_cooldown, cooldown_duration)
 
@@ -199,33 +199,33 @@
 
 		var/turf/extraction_turf = get_turf(attacked_atom)
 		extracted_item.forceMove(extraction_turf)
-		visible_message("<span class='notice'>[src.loc] unloads [extracted_item] from [src].</span>")
+		visible_message("<span class='notice'>[src.loc] wyładowuje [extracted_item] z [src].</span>")
 		in_use = FALSE
 		return
 
 	// We're trying to load something in the clamp
 	else
 		if(whitelisted_contents && !is_type_in_list(attacked_atom, whitelisted_item_types))
-			to_chat(user, "<span class='warning'>[src] can only pick up [whitelisted_item_description]!</span>")
+			to_chat(user, "<span class='warning'>[src] może podnosić tylko: [whitelisted_item_description]!</span>")
 			in_use = FALSE
 			return
 
 		if(contents.len >= storage_capacity)
-			to_chat(user, "<span class='warning'>[src] is already at full capacity!</span>")
+			to_chat(user, "<span class='warning'>[src] jest już w pełni zapełniony!</span>")
 			in_use = FALSE
 			return
 
 		if(item_weight_limit)
 			var/obj/item/to_lift = attacked_atom
 			if(!to_lift || to_lift.w_class > item_weight_limit)
-				to_chat(user, "<span class='warning'>[to_lift] is too big for [src]!</span>")
+				to_chat(user, "<span class='warning'>[to_lift] jest za duży dla [src]!</span>")
 				in_use = FALSE
 				return
 
 		var/atom/movable/lifting_up = attacked_atom
 
 		if(lifting_up.anchored)
-			to_chat(user, "<span class='warning'>[lifting_up] is firmly secured, it's not currently possible to move it into [src]!</span>")
+			to_chat(user, "<span class='warning'>[lifting_up] jest solidnie zamocowany, obecnie nie da się go przenieść do [src]!</span>")
 			in_use = FALSE
 			return
 
@@ -236,7 +236,7 @@
 		lifting_up.add_fingerprint(user)
 
 		if(loading_time > 0.5 SECONDS) // We don't want too much chat spam if the clamp works fast.
-			to_chat(user, "<span class='notice'>You start loading [lifting_up] into [src]'s cargo hold...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz ładować [lifting_up] do ładowni [src]...</span>")
 		playsound(src, clamp_sound, clamp_sound_volume, FALSE, -5)
 
 		if(!do_after(user, loading_time, target = lifting_up)) // It takes two seconds to put stuff into the clamp's cargo hold
@@ -246,7 +246,7 @@
 
 		lifting_up.anchored = FALSE
 		lifting_up.forceMove(src)
-		visible_message("<span class='notice'>[src.loc] loads [lifting_up] into [src]'s cargo hold.</span>")
+		visible_message("<span class='notice'>[src.loc] ładuje [lifting_up] do ładowni [src].</span>")
 		in_use = FALSE
 
 /obj/item/borg/hydraulic_clamp/better
@@ -254,14 +254,14 @@
 	desc = "A neat way to lift and move around wrapped crates for quick and painless deliveries!"
 	storage_capacity = 2
 	whitelisted_item_types = list(/obj/item/small_delivery, /obj/structure/big_delivery) // If they want to carry a small package instead, so be it, honestly.
-	whitelisted_item_description = "wrapped packages"
+	whitelisted_item_description = "owinięte paczki"
 	item_weight_limit = NONE
 	clamp_sound_volume = 50
 
 /obj/item/borg/hydraulic_clamp/better/examine(mob/user)
 	. = ..()
 	var/crate_count = contents.len
-	. += "There is currently <b>[crate_count > 0 ? crate_count : "no"]</b> crate[crate_count > 1 ? "s" : ""] stored in the clamp's internal storage."
+	. += "W wewnętrznym schowku zacisku przechowywanych jest skrzyń: <b>[crate_count > 0 ? crate_count : "żadnych"]</b>."
 
 /obj/item/borg/hydraulic_clamp/mail
 	name = "integrated rapid mail delivery device"
@@ -301,7 +301,7 @@
 		return
 	var/obj/item/borg/hydraulic_clamp/better/big_clamp = locate() in cyborg.module.modules
 	if(big_clamp)
-		to_chat(user, "<span class='warning'>This cyborg is already equipped with an improved integrated hydraulic clamp!</span>")
+		to_chat(user, "<span class='warning'>Ten cyborg ma już ulepszony wbudowany zacisk hydrauliczny!</span>")
 		return FALSE
 
 	big_clamp = new(cyborg.module)

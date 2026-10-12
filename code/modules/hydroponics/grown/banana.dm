@@ -36,7 +36,7 @@
 */
 
 /obj/item/food/grown/banana/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is aiming [src] at [user.p_them()]self! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] celuje [src] w siebie! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	playsound(loc, 'sound/items/bikehorn.ogg', 50, 1, -1)
 	sleep(25)
 	if(!user)
@@ -45,7 +45,7 @@
 	sleep(25)
 	if(!user)
 		return (OXYLOSS)
-	user.visible_message("<B>[user]</B> laughs so hard they begin to suffocate!")
+	user.visible_message("<B>[user]</B> śmieje się tak mocno, że zaczyna się dusić!")
 	return (OXYLOSS)
 
 //Banana Peel
@@ -63,7 +63,7 @@
 	throw_range = 7
 
 /obj/item/grown/bananapeel/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is deliberately slipping on [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] celowo poślizguje się na [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	playsound(loc, 'sound/misc/slip.ogg', 50, 1, -1)
 	return (BRUTELOSS)
 
@@ -117,7 +117,7 @@
 	icon_state = "banana_blue"
 	item_state = "bluespace_peel"
 	trash_type = /obj/item/grown/bananapeel/bluespace
-	tastes = list("banana" = 1)
+	tastes = list("banan" = 1)
 	wine_power = 60
 	wine_flavor = "slippery hypercubes"
 	discovery_points = 300

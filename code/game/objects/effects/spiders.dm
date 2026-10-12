@@ -43,7 +43,7 @@
 		if(istype(mover.pulledby, /mob/living/simple_animal/hostile/poison/giant_spider))
 			return TRUE
 		if(prob(50))
-			to_chat(mover, "<span class='danger'>You get stuck in \the [src] for a moment.</span>")
+			to_chat(mover, "<span class='danger'>Na chwilę grzęźniesz w [src].</span>")
 			return FALSE
 	else if(istype(mover, /obj/item/projectile))
 		return prob(30)
@@ -140,8 +140,8 @@
 				return
 			var/obj/machinery/atmospherics/components/unary/vent_pump/exit_vent = pick(vents)
 			if(prob(50))
-				visible_message("<B>[src] scrambles into the ventilation ducts!</B>", \
-								"<span class='italics'>You hear something scampering through the ventilation ducts.</span>")
+				visible_message("<B>[src] wpełza do kanałów wentylacyjnych!</B>", \
+								"<span class='italics'>Słyszysz, jak coś przebiega przez kanały wentylacyjne.</span>")
 
 			spawn(rand(20,60))
 				forceMove(exit_vent)
@@ -154,7 +154,7 @@
 						return
 
 					if(prob(50))
-						audible_message("<span class='italics'>You hear something scampering through the ventilation ducts.</span>")
+						audible_message("<span class='italics'>Słyszysz, jak coś przebiega przez kanały wentylacyjne.</span>")
 					sleep(travel_time)
 
 					if(!exit_vent || exit_vent.welded)
@@ -173,7 +173,7 @@
 		if(target_atom)
 			SSmove_manager.move_to(src, target_atom)
 			if(prob(40))
-				src.visible_message("<span class='notice'>\The [src] skitters[pick(" away"," around","")].</span>")
+				src.visible_message("<span class='notice'>[src] [pick("odbiega","biega dookoła","przebiera nóżkami")].</span>")
 	else if(prob(10))
 		//ventcrawl!
 		for(var/obj/machinery/atmospherics/components/unary/vent_pump/v in view(7,src))
@@ -213,8 +213,8 @@
 	var/breakout_time = 600
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	to_chat(user, "<span class='notice'>You struggle against the tight bonds... (This will take about [DisplayTimeText(breakout_time)].)</span>")
-	visible_message("You see something struggling and writhing in \the [src]!")
+	to_chat(user, "<span class='notice'>Szarpiesz się z ciasnymi więzami... (zajmie to około [DisplayTimeText(breakout_time)].)</span>")
+	visible_message("Widzisz, jak coś szarpie się i wije w [src]!")
 	if(do_after(user,(breakout_time), target = src))
 		if(!user || user.stat != CONSCIOUS || user.loc != src)
 			return
@@ -224,7 +224,7 @@
 
 /obj/structure/spider/cocoon/Destroy()
 	var/turf/T = get_turf(src)
-	src.visible_message("<span class='warning'>\The [src] splits open.</span>")
+	src.visible_message("<span class='warning'>[src] pęka.</span>")
 	for(var/atom/movable/A in contents)
 		A.forceMove(T)
 	return ..()

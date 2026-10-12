@@ -12,7 +12,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	force = 10
 	on_stun_sound = 'nsv13/sound/effects/saberhit.ogg'
-	attack_verb = list("immolated", "slashed")
+	attack_verb = list("podpala", "ciacha")
 	hitsound = 'sound/weapons/rapierhit.ogg'
 	materials = list(/datum/material/iron = 1000)
 	var/stuntime_on = (4 SECONDS)
@@ -32,40 +32,40 @@
 
 /obj/item/melee/classic_baton/telescopic/stunsword/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>This blade has a serial number: [serial_number] of [max_serial_number]</span>"
+	. += "<span class='notice'>Na tym ostrzu jest numer seryjny: [serial_number] z [max_serial_number]</span>"
 
 /obj/item/melee/classic_baton/telescopic/stunsword/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] raises [src] and drives it into their heart! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] unosi [src] i wbija go sobie w serce! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return BRUTELOSS
 
 /obj/item/melee/classic_baton/telescopic/stunsword/attack_self(mob/user)
 	SEND_SIGNAL(src, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 	if(on)
 		flick("stunsword_ignite",src)
-		visible_message("<span class='warning'>[user] swings [src] around, igniting it in the process.</span>")
+		visible_message("<span class='warning'>[user] zamachuje się [src], zapalając go.</span>")
 		playsound(user.loc, 'nsv13/sound/effects/saberon.ogg', 100, 1)
-		to_chat(user, "<span class='notice'>You ignite [src]. Your attacks with it will now stun targets nonlethally.</span>")
+		to_chat(user, "<span class='notice'>Zapalasz [src]. Twoje ataki będą teraz ogłuszać cele bez zabijania.</span>")
 		icon_state = on_icon_state
 		item_state = on_item_state
 		force = force_on
 		stuntime = stuntime_on
-		attack_verb = list("sliced", "cut", "striken", "immobilized")
+		attack_verb = list("kroi", "tnie", "uderza", "unieruchamia")
 		hitsound = 'nsv13/sound/effects/saberhit.ogg'
 		set_light(3)
 		on = FALSE
 		sharpness = IS_BLUNT
 	else
 		flick("stunsword_extinguish",src)
-		visible_message("<span class='warning'>[user] swings [src] around, extinguishing it in the process.</span>")
+		visible_message("<span class='warning'>[user] zamachuje się [src], gasząc go.</span>")
 		playsound(user.loc, 'nsv13/sound/effects/saberoff.ogg', 100, 1)
-		to_chat(user, "<span class='notice'>You extinguish [src]. It will now physically wound targets on impact.</span>")
+		to_chat(user, "<span class='notice'>Gasisz [src]. Będzie teraz fizycznie ranić trafione cele.</span>")
 		item_state = "stunsword_extinguish"
 		icon_state = off_icon_state
 		item_state = off_icon_state
 		slot_flags = ITEM_SLOT_BELT
 		stuntime = stuntime_off
 		force = force_off
-		attack_verb = list("immolated", "slashed")
+		attack_verb = list("podpala", "ciacha")
 		hitsound = 'sound/weapons/rapierhit.ogg'
 		set_light(0)
 		on = TRUE
@@ -82,8 +82,8 @@
 		playsound(user.loc, hitsound, 100, 1)
 		target.lastattacker = user.real_name
 		target.lastattackerckey = user.ckey
-		target.visible_message("<span class='danger'>[user] has [pick(attack_verb)] [target] with [src]!</span>", \
-								"<span class='userdanger'>[user] has [pick(attack_verb)] you with [src]!</span>")
+		target.visible_message("<span class='danger'>[user] [pick(attack_verb)] [target], używając [src]!</span>", \
+								"<span class='userdanger'>[user] [pick(attack_verb)] cię, używając [src]!</span>")
 		log_combat(user, target, "stunned")
 		return
 	else
@@ -99,7 +99,7 @@
 
 /obj/item/paper/fab_error //For disabled designs
 	name = "Fabrication Error Report"
-	default_raw_text = "<p>Divide by cucumber error. Please reinstall universe and reboot.</p>"
+	default_raw_text = "<p>Błąd dzielenia przez ogórek. Zainstaluj ponownie wszechświat i uruchom go ponownie.</p>"
 
 /obj/item/kirbyplants/random/plush
 	name = "plush potted plant"

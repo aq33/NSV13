@@ -4,7 +4,7 @@
 	icon_state = "tonguenormal"
 	zone = BODY_ZONE_PRECISE_MOUTH
 	slot = ORGAN_SLOT_TONGUE
-	attack_verb = list("licked", "slobbered", "slapped", "frenched", "tongued")
+	attack_verb = list("liże", "śliniąc się, liże", "policzkuje", "całuje z języczkiem", "liże")
 	var/list/languages_possible
 	var/say_mod = "mówi"
 	var/ask_mod = "pyta"
@@ -122,20 +122,20 @@
 		return
 
 	if(T.mothership == mothership)
-		to_chat(H, "<span class='notice'>[src] is already attuned to the same channel as your own.</span>")
+		to_chat(H, "<span class='notice'>[src] jest już dostrojony do tego samego kanału co twój.</span>")
 
-	H.visible_message("<span class='notice'>[H] holds [src] in their hands, and concentrates for a moment.</span>", "<span class='notice'>You attempt to modify the attenuation of [src].</span>")
+	H.visible_message("<span class='notice'>[H] trzyma [src] w dłoniach i przez chwilę się koncentruje.</span>", "<span class='notice'>Próbujesz zmienić dostrojenie [src].</span>")
 	if(do_after(H, delay=15, target=src))
-		to_chat(H, "<span class='notice'>You attune [src] to your own channel.</span>")
+		to_chat(H, "<span class='notice'>Dostrajasz [src] do swojego kanału.</span>")
 		mothership = T.mothership
 
 /obj/item/organ/tongue/abductor/examine(mob/M)
 	. = ..()
 	if(HAS_TRAIT(M, TRAIT_ABDUCTOR_TRAINING) || HAS_TRAIT(M.mind, TRAIT_ABDUCTOR_TRAINING) || isobserver(M))
 		if(!mothership)
-			. += "<span class='notice'>It is not attuned to a specific mothership.</span>"
+			. += "<span class='notice'>Nie jest dostrojony do żadnego konkretnego statku-matki.</span>"
 		else
-			. += "<span class='notice'>It is attuned to [mothership].</span>"
+			. += "<span class='notice'>Jest dostrojony do: [mothership].</span>"
 
 /obj/item/organ/tongue/abductor/handle_speech(datum/source, list/speech_args)
 	//Hacks
@@ -219,7 +219,7 @@
 	desc = "Apparently skeletons alter the sounds they produce through oscillation of their teeth, hence their characteristic rattling."
 	icon_state = "tonguebone"
 	say_mod = "grzechocze"
-	attack_verb = list("bitten", "chattered", "chomped", "enamelled", "boned")
+	attack_verb = list("gryzie", "szczęka na", "chrupie", "emaliuje", "kościeje")
 	taste_sensitivity = 101 // skeletons cannot taste anything
 	modifies_speech = TRUE
 	liked_food = GROSS | MEAT | RAW | GORE
@@ -257,7 +257,7 @@
 	organ_flags = NONE
 	icon_state = "tonguerobot"
 	say_mod = "stwierdza"
-	attack_verb = list("beeped", "booped")
+	attack_verb = list("pika na", "pstryka w nos")
 	modifies_speech = TRUE
 	taste_sensitivity = 25 // not as good as an organic tongue
 
@@ -276,7 +276,7 @@
 /obj/item/organ/tongue/snail
 	name = "snail tongue"
 	modifies_speech = TRUE
-	say_mod = "slurs"
+	say_mod = "bełkocze"
 
 /obj/item/organ/tongue/snail/handle_speech(datum/source, list/speech_args)
 	var/new_message
@@ -293,7 +293,7 @@
 	desc = "A sophisticated ethereal organ, capable of synthesising speech via electrical discharge."
 	icon_state = "electrotongue"
 	say_mod = "trzeszczy"
-	attack_verb = list("shocked", "jolted", "zapped")
+	attack_verb = list("razi prądem", "wstrząsa", "razi")
 	taste_sensitivity = 101 // Not a tongue, they can't taste shit
 	toxic_food = NONE
 
@@ -320,7 +320,7 @@
 /obj/item/organ/tongue/golem/clockwork
 	name = "clockwork tongue"
 	desc = "It's a tongue made out of many tiny cogs. You can hear a very subtle clicking noise emanating from it."
-	say_mod = "clicks"
+	say_mod = "klika"
 
 /obj/item/organ/tongue/cat
 	name = "cat tongue"
@@ -332,10 +332,10 @@
 /obj/item/organ/tongue/slime
 	name = "slimey tongue"
 	desc = "It's a piece of slime, shaped like a tongue."
-	say_mod = list("blorbles", "bubbles")
-	ask_mod = "inquisitively blorbles"
-	yell_mod = "shrilly blorbles"
-	exclaim_mod = "loudly blorbles"
+	say_mod = list("bulgocze", "bąbelkuje")
+	ask_mod = "bulgocze pytająco"
+	yell_mod = "bulgocze piskliwie"
+	exclaim_mod = "bulgocze głośno"
 	liked_food = MEAT | BUGS //cause slimes are mostly carnivores, however the ability to consume RAW or GORE was lost when spliced with humans
 	toxic_food = NONE
 	disliked_food = NONE

@@ -10,7 +10,7 @@
 /obj/item/implant/abductor/activate()
 	. = ..()
 	if(!COOLDOWN_FINISHED(src, abductor_implant_cooldown))
-		to_chat(imp_in, "<span class='warning'>You must wait [COOLDOWN_TIMELEFT(src, abductor_implant_cooldown)*0.1] seconds to use [src] again!</span>")
+		to_chat(imp_in, "<span class='warning'>Musisz odczekać [COOLDOWN_TIMELEFT(src, abductor_implant_cooldown)*0.1] s, zanim znów użyjesz [src]!</span>")
 		return
 
 	home.Retrieve(imp_in,1)

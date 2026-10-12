@@ -18,7 +18,7 @@
 
 /obj/machinery/ship_weapon/anti_air/examine(mob/user)
 	. = ..()
-	. += "<span class ='notice'>It has [get_ammo()]/[get_max_ammo()] rounds loaded.</span>"
+	. += "<span class ='notice'>Załadowano naboi: [get_ammo()]/[get_max_ammo()].</span>"
 
 
 /obj/machinery/ship_weapon/anti_air/heavy
@@ -127,7 +127,7 @@
 
 /obj/machinery/computer/anti_air/examine(mob/user)
 	. = ..()
-	. += "<span class ='notice'>Its ammo counter reads [turret.get_ammo()]/[turret.get_max_ammo()]. </span>"
+	. += "<span class ='notice'>Licznik amunicji pokazuje [turret.get_ammo()]/[turret.get_max_ammo()]. </span>"
 
 /obj/machinery/computer/anti_air/Initialize(mapload)
 	. = ..()
@@ -146,13 +146,13 @@
 	. = TRUE
 	turret = locate(/obj/machinery/ship_weapon/anti_air) in SSmapping.get_turf_above(src)
 	if ( turret )
-		to_chat(user, "<span class='warning'>Successfully linked [src] to [turret].")
+		to_chat(user, "<span class='warning'>Pomyślnie połączono [src] z [turret].")
 	else
-		to_chat(user, "<span class='warning'>Unable to locate a compatible turret above this deck! Try relocating the turret construction.")
+		to_chat(user, "<span class='warning'>Nie można znaleźć kompatybilnej wieżyczki nad tym pokładem! Spróbuj przenieść konstrukcję wieżyczki.")
 
 /obj/machinery/computer/anti_air/attack_hand(mob/user)
 	. = ..()
 	if(!turret)
-		to_chat(user, "<span class='warning'>This computer is not linked to a gun turret! You can link it with a multitool.</span>")
+		to_chat(user, "<span class='warning'>Ten komputer nie jest połączony z wieżyczką! Możesz go połączyć multitoolem.</span>")
 		return
 	turret.start_gunning(user)

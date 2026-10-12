@@ -23,7 +23,7 @@
 					L.ForceContractDisease(new /datum/disease/transformation/jungle_fever())
 		else
 			L.Unconscious(20)
-			visible_message("<span class='danger'>[src] knocks [L] out!</span>")
+			visible_message("<span class='danger'>[src] nokautuje [L]!</span>")
 
 /mob/living/simple_animal/hostile/gorilla/rabid
 	diseased = TRUE

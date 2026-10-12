@@ -21,13 +21,13 @@
 		return FALSE
 	if(position & OVERMAP_USER_ROLE_PILOT)
 		if(pilot)
-			to_chat(pilot, "<span class='warning'>[user] has kicked you off the ship controls!</span>")
+			to_chat(pilot, "<span class='warning'>[user] wyrzuca cię od sterów okrętu!</span>")
 			stop_piloting(pilot)
 		pilot = user
 		LAZYOR(user.mousemove_intercept_objects, src)
 	if(position & OVERMAP_USER_ROLE_GUNNER)
 		if(gunner)
-			to_chat(gunner, "<span class='warning'>[user] has kicked you off the ship controls!</span>")
+			to_chat(gunner, "<span class='warning'>[user] wyrzuca cię od sterów okrętu!</span>")
 			stop_piloting(gunner)
 		gunner = user
 	observe_ship(user)
@@ -173,7 +173,7 @@
 		track_target(override)
 	else
 		var/obj/structure/overmap/ship = origin
-		to_chat(eye_user, "<span class='notice'>Target lock relinquished.</span>")
+		to_chat(eye_user, "<span class='notice'>Porzucono namiar na cel.</span>")
 		ship.CreateEye(eye_user)
 		QDEL_NULL(off_action)
 		QDEL_NULL(src)

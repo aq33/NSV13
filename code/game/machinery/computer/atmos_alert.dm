@@ -50,11 +50,11 @@
 		if("clear")
 			var/zone = params["zone"]
 			if(zone in priority_alarms)
-				to_chat(usr, "<span class='notice'>Priority alarm for [zone] cleared.</span>")
+				to_chat(usr, "<span class='notice'>Odwołano alarm priorytetowy dla [zone].</span>")
 				priority_alarms -= zone
 				. = TRUE
 			if(zone in minor_alarms)
-				to_chat(usr, "<span class='notice'>Minor alarm for [zone] cleared.</span>")
+				to_chat(usr, "<span class='notice'>Odwołano drobny alarm dla [zone].</span>")
 				minor_alarms -= zone
 				. = TRUE
 	if(.)

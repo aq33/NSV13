@@ -49,7 +49,7 @@ put up a rune with bluespace effects, lots of those runes are fluff or act as a 
 
 /obj/item/slimecross/warping/examine()
 	. = ..()
-	. += "It has [warp_charge] charge left"
+	. += "Pozostały ładunek: [warp_charge]"
 
 ///runes can also be deleted by bluespace crystals relatively fast as an alternative to cleaning them.
 /obj/effect/warped_rune/attackby(obj/item/used_item, mob/user)
@@ -59,14 +59,14 @@ put up a rune with bluespace effects, lots of those runes are fluff or act as a 
 
 	var/obj/item/stack/space_crystal = used_item
 	if(do_after(user, storing_time,target = src)) //the time it takes to nullify it depends on the rune too
-		to_chat(user, "<span class='notice'>You nullify the effects of the rune with the bluespace crystal!</span>")
+		to_chat(user, "<span class='notice'>Niwelujesz działanie runy kryształem bluespace!</span>")
 		space_crystal.use(1)
 		playsound(src, 'sound/effects/phasein.ogg', 20, TRUE)
 		qdel(src)
 
 /obj/effect/warped_rune/acid_act()
 	. = ..()
-	visible_message("<span class='warning'>[src] has been dissolved by the acid</span>")
+	visible_message("<span class='warning'>[src] został rozpuszczony przez kwas</span>")
 	playsound(src, 'sound/items/welder.ogg', 150, TRUE)
 	qdel(src)
 
@@ -95,15 +95,15 @@ put up a rune with bluespace effects, lots of those runes are fluff or act as a 
 		return
 
 	if(isturf(target) && locate(/obj/effect/warped_rune) in target) //check if the target is a floor and if there's a rune on said floor
-		to_chat(user, "<span class='warning'>There is already a bluespace rune here!</span>")
+		to_chat(user, "<span class='warning'>Tu już jest runa bluespace!</span>")
 		return
 
 	if(!isfloorturf(target))
-		to_chat(user, "<span class='warning'>you cannot draw a rune here!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz tu narysować runy!</span>")
 		return
 
 	if(warp_charge < 1) //check if we have at least 1 charge left.
-		to_chat(user, "<span class='warning'>[src] is empty!</span>")
+		to_chat(user, "<span class='warning'>[src] jest pusty!</span>")
 		return
 
 	if(!check_cd(user))
@@ -120,7 +120,7 @@ put up a rune with bluespace effects, lots of those runes are fluff or act as a 
 	playsound(target, 'sound/effects/slosh.ogg', 20, TRUE)
 	warp_charge--
 	new runepath(target)
-	to_chat(user, "<span class='notice'>You carefully draw the rune with [src].</span>")
+	to_chat(user, "<span class='notice'>Ostrożnie rysujesz runę za pomocą [src].</span>")
 
 
 ///absorb the rune into the crossbreed adding one more charge to the crossbreed.
@@ -132,7 +132,7 @@ put up a rune with bluespace effects, lots of those runes are fluff or act as a 
 /obj/item/slimecross/warping/proc/check_cd(user)
 	if(world.time < cooldown)
 		if(user)
-			to_chat(user, "<span class='warning'>[src] is recharging energy.</span>")
+			to_chat(user, "<span class='warning'>[src] uzupełnia energię.</span>")
 		return FALSE
 	return TRUE
 
@@ -161,7 +161,7 @@ put up a rune with bluespace effects, lots of those runes are fluff or act as a 
 /obj/item/slimecross/warping/grey
 	name = "greyspace crossbreed"
 	colour = "grey"
-	effect_desc = "Draws a rune. Extracts that are on the rune are absorbed, 8 extracts produces an adult slime of that color."
+	effect_desc = "Rysuje runę. Ekstrakty leżące na runie zostają wchłonięte; 8 ekstraktów daje dorosłego szlama w tym kolorze."
 	runepath = /obj/effect/warped_rune/greyspace
 
 /obj/effect/warped_rune/greyspace
@@ -174,7 +174,7 @@ put up a rune with bluespace effects, lots of those runes are fluff or act as a 
 
 /obj/effect/warped_rune/greyspace/examine(mob/user)
 	. = ..()
-	to_chat(user, "<span class='notice'>Requires absorbing [req_extracts] [extracttype ? "[extracttype] extracts" : "slime extracts"].</span>")
+	to_chat(user, "<span class='notice'>Wymaga wchłonięcia [req_extracts] [extracttype ? "ekstraktów ([extracttype])" : "ekstraktów szlamu"].</span>")
 
 /obj/effect/warped_rune/greyspace/do_effect(mob/user)
 	for(var/obj/item/slime_extract/extract in rune_turf)
@@ -197,13 +197,13 @@ put up a rune with bluespace effects, lots of those runes are fluff or act as a 
 				break
 			playsound(rune_turf, 'sound/effects/splat.ogg', 20, TRUE)
 		else
-			to_chat(user, "<span class='warning'>Requires a [extracttype ? "[extracttype] extracts" : "slime extract"].</span>")
+			to_chat(user, "<span class='warning'>Wymaga [extracttype ? "ekstraktu ([extracttype])" : "ekstraktu szlamu"].</span>")
 
 
 /obj/item/slimecross/warping/orange
 	colour = "orange"
 	runepath = /obj/effect/warped_rune/orangespace
-	effect_desc = "Draws a rune that can summon a bonfire."
+	effect_desc = "Rysuje runę, która może przywołać ognisko."
 
 /obj/effect/warped_rune/orangespace
 	desc = "This can be activated to summon a bonfire."
@@ -217,7 +217,7 @@ put up a rune with bluespace effects, lots of those runes are fluff or act as a 
 /obj/item/slimecross/warping/purple
 	colour = "purple"
 	runepath = /obj/effect/warped_rune/purplespace
-	effect_desc = "Draws a rune that may be activated to summon two random medical items."
+	effect_desc = "Rysuje runę, którą można aktywować, by przywołać dwa losowe przedmioty medyczne."
 
 /obj/effect/warped_rune/purplespace
 	desc = "This can be activated to summon two random medical."
@@ -254,7 +254,7 @@ put up a rune with bluespace effects, lots of those runes are fluff or act as a 
 /obj/item/slimecross/warping/blue
 	colour = "blue"
 	runepath = /obj/effect/warped_rune/cyanspace //we'll call the blue rune cyanspace to not mix it up with actual bluespace rune
-	effect_desc = "Draw a rune that is slippery like water and may be activated to cover all adjacent tiles in ice."
+	effect_desc = "Rysuje runę śliską jak woda, którą można aktywować, by pokryć lodem wszystkie sąsiednie pola."
 
 /obj/effect/warped_rune/cyanspace
 	icon_state = "rune_blue"
@@ -277,7 +277,7 @@ put up a rune with bluespace effects, lots of those runes are fluff or act as a 
 /obj/item/slimecross/warping/dark_blue
 	colour = "dark blue"
 	runepath = /obj/effect/warped_rune/darkcyanspace //we'll call the blue rune cyanspace to not mix it up with actual bluespace rune
-	effect_desc = "Draw a rune that can lower the temperature of whoever steps on it."
+	effect_desc = "Rysuje runę, która może obniżyć temperaturę każdego, kto na nią wejdzie."
 
 /obj/effect/warped_rune/darkcyanspace
 	icon_state = "rune_dark_blue"
@@ -294,7 +294,7 @@ put up a rune with bluespace effects, lots of those runes are fluff or act as a 
 /obj/item/slimecross/warping/metal
 	colour = "metal"
 	runepath = /obj/effect/warped_rune/metalspace
-	effect_desc = "Draws a rune that may be activated to create a 3x3 block of invisible walls."
+	effect_desc = "Rysuje runę, którą można aktywować, by stworzyć blok niewidzialnych ścian 3x3."
 
 //It's a wall what do you want from me
 /obj/effect/warped_rune/metalspace
@@ -309,7 +309,7 @@ put up a rune with bluespace effects, lots of those runes are fluff or act as a 
 /obj/item/slimecross/warping/yellow
 	colour = "yellow"
 	runepath = /obj/effect/warped_rune/yellowspace
-	effect_desc = "Draw a rune that causes electrical interference."
+	effect_desc = "Rysuje runę, która powoduje zakłócenia elektryczne."
 
 /obj/effect/warped_rune/yellowspace
 	desc = "Be careful with taking power cells with you!"
@@ -334,7 +334,7 @@ put up a rune with bluespace effects, lots of those runes are fluff or act as a 
 /obj/item/slimecross/warping/darkpurple
 	colour = "dark purple"
 	runepath = /obj/effect/warped_rune/darkpurplespace
-	effect_desc = "Draw a rune that can transmute plasma into any other material."
+	effect_desc = "Rysuje runę, która może przemienić plazmę w dowolny inny materiał."
 
 /obj/effect/warped_rune/darkpurplespace
 	icon = 'icons/obj/slimecrossing.dmi'
@@ -355,11 +355,11 @@ put up a rune with bluespace effects, lots of those runes are fluff or act as a 
 		new path_material(rune_turf, amt)
 		return ..()
 	else
-		to_chat(user, "<span class='warning'>Requires plasma!</span>")
+		to_chat(user, "<span class='warning'>Wymaga plazmy!</span>")
 
 /obj/item/slimecross/warping/silver
 	colour = "silver"
-	effect_desc = "Draw a rune that can feed whoever steps on it.."
+	effect_desc = "Rysuje runę, która może nakarmić każdego, kto na nią wejdzie.."
 	runepath = /obj/effect/warped_rune/silverspace
 
 /obj/effect/warped_rune/silverspace
@@ -386,7 +386,7 @@ GLOBAL_DATUM(blue_storage, /obj/item/storage/backpack/holding/bluespace)
 /obj/item/slimecross/warping/bluespace
 	colour = "bluespace"
 	runepath = /obj/effect/warped_rune/bluespace
-	effect_desc = "Draw a rune that serves as a bluespace container."
+	effect_desc = "Rysuje runę, która służy jako pojemnik bluespace."
 
 /obj/effect/warped_rune/bluespace
 	desc = "When activated, it gives access to a bluespace container."
@@ -405,7 +405,7 @@ GLOBAL_DATUM(blue_storage, /obj/item/storage/backpack/holding/bluespace)
 /obj/item/slimecross/warping/sepia
 	colour = "sepia"
 	runepath = /obj/effect/warped_rune/sepiaspace
-	effect_desc = "Rune activates automatically when stepped on, triggering a timestop around it."
+	effect_desc = "Runa aktywuje się automatycznie po nadepnięciu, zatrzymując czas wokół siebie."
 
 /obj/effect/warped_rune/sepiaspace
 	desc = "stepping on it stops time around it."
@@ -420,7 +420,7 @@ GLOBAL_DATUM(blue_storage, /obj/item/storage/backpack/holding/bluespace)
 /obj/item/slimecross/warping/cerulean
 	colour = "cerulean"
 	runepath = /obj/effect/warped_rune/ceruleanspace
-	effect_desc = "Draws a rune that creates a hologram of the first living thing that stepped on the tile."
+	effect_desc = "Rysuje runę, która tworzy hologram pierwszej żywej istoty, która weszła na to pole."
 
 /obj/effect/warped_rune/ceruleanspace
 	desc = "A shadow of what once passed these halls, a memory perhaps?"
@@ -500,7 +500,7 @@ GLOBAL_DATUM(blue_storage, /obj/item/storage/backpack/holding/bluespace)
 /obj/item/slimecross/warping/pyrite
 	colour = "pyrite"
 	runepath = /obj/effect/warped_rune/pyritespace
-	effect_desc = "draws a rune that will randomly color whatever steps on it."
+	effect_desc = "Rysuje runę, która losowo barwi wszystko, co na nią wejdzie."
 
 /obj/effect/warped_rune/pyritespace
 	desc = "Who shall we be today? they asked, but not even the canvas would answer."
@@ -522,7 +522,7 @@ GLOBAL_DATUM(blue_storage, /obj/item/storage/backpack/holding/bluespace)
 /obj/item/slimecross/warping/red
 	colour = "red"
 	runepath = /obj/effect/warped_rune/redspace
-	effect_desc = "Draw a rune that covers with blood whoever steps on it."
+	effect_desc = "Rysuje runę, która oblewa krwią każdego, kto na nią wejdzie."
 
 /obj/effect/warped_rune/redspace
 	desc = "Watch out for blood!"
@@ -545,7 +545,7 @@ GLOBAL_DATUM(blue_storage, /obj/item/storage/backpack/holding/bluespace)
 
 /obj/item/slimecross/warping/green
 	colour = "green"
-	effect_desc = "Draw a rune that alters the DNA of those who step on it."
+	effect_desc = "Rysuje runę, która zmienia DNA tych, którzy na nią wejdą."
 	runepath = /obj/effect/warped_rune/greenspace
 
 /obj/effect/warped_rune/greenspace
@@ -562,7 +562,7 @@ GLOBAL_DATUM(blue_storage, /obj/item/storage/backpack/holding/bluespace)
 /* pink rune, makes people slightly happier after walking on it*/
 /obj/item/slimecross/warping/pink
 	colour = "pink"
-	effect_desc = "Draws a rune that makes people happier!"
+	effect_desc = "Rysuje runę, która uszczęśliwia ludzi!"
 	runepath = /obj/effect/warped_rune/pinkspace
 
 /obj/effect/warped_rune/pinkspace
@@ -575,14 +575,14 @@ GLOBAL_DATUM(blue_storage, /obj/item/storage/backpack/holding/bluespace)
 	if(istype(AM, /mob/living/carbon/human))
 		playsound(rune_turf, "sound/weapons/thudswoosh.ogg", 50, TRUE)
 		SEND_SIGNAL(AM, COMSIG_ADD_MOOD_EVENT,"jolly", /datum/mood_event/jolly)
-		to_chat(AM, "<span class='notice'>You feel happier.</span>")
+		to_chat(AM, "<span class='notice'>Czujesz się szczęśliwszy.</span>")
 		activated_on_step = TRUE
 	. = ..()
 
 /obj/item/slimecross/warping/gold
 	colour = "gold"
 	runepath = /obj/effect/warped_rune/goldspace
-	effect_desc = "Draw a rune that exchanges objects of this dimension for objects of a parallel dimension."
+	effect_desc = "Rysuje runę, która wymienia przedmioty z tego wymiaru na przedmioty z równoległego wymiaru."
 
 /obj/effect/warped_rune/goldspace
 	icon_state = "rune_gold"
@@ -672,16 +672,16 @@ GLOBAL_DATUM(blue_storage, /obj/item/storage/backpack/holding/bluespace)
 
 		var/atom/movable/A = new path(rune_turf)
 		QDEL_LIST(valuable_items)
-		to_chat(user, "<spawn class='notice'>[src] shines and [A] appears before you.</span>")
+		to_chat(user, "<spawn class='notice'>[src] rozbłyska, a przed tobą pojawia się [A].</span>")
 	else
-		to_chat(user, "<span class='warning'>The sacrifice is insufficient.</span>")
+		to_chat(user, "<span class='warning'>Ofiara jest niewystarczająca.</span>")
 	. = ..()
 
 //oil
 /obj/item/slimecross/warping/oil
 	colour = "oil"
 	runepath = /obj/effect/warped_rune/oilspace
-	effect_desc = "Draw a rune that can explode whoever steps on it."
+	effect_desc = "Rysuje runę, która może wysadzić każdego, kto na nią wejdzie."
 
 /obj/effect/warped_rune/oilspace
 	icon_state = "rune_oil"
@@ -700,7 +700,7 @@ GLOBAL_DATUM(blue_storage, /obj/item/storage/backpack/holding/bluespace)
 /obj/item/slimecross/warping/black
 	colour = "black"
 	runepath = /obj/effect/warped_rune/blackspace
-	effect_desc = "Draw a rune that can transmute a corpse into a shade."
+	effect_desc = "Rysuje runę, która może przemienić zwłoki w cień."
 
 /obj/effect/warped_rune/blackspace
 	icon_state = "rune_black"
@@ -709,11 +709,11 @@ GLOBAL_DATUM(blue_storage, /obj/item/storage/backpack/holding/bluespace)
 /obj/effect/warped_rune/blackspace/do_effect(mob/user)
 	for(var/mob/living/carbon/human/host in rune_turf)
 		if(host.key) //checks if the ghost and brain's there
-			to_chat(user, "<span class='warning'>This body can't be transmuted by the rune in this state!</span>")
+			to_chat(user, "<span class='warning'>Tego ciała w tym stanie nie da się przemienić runą!</span>")
 			return
 
-		to_chat(user, "<span class='warning'>The rune is trying to repair [host.name]'s soul!</span>")
-		var/list/candidates = pollCandidatesForMob("Do you want to replace the soul of [host.name]?", ROLE_SENTIENCE, null, 5 SECONDS, host, POLL_IGNORE_SHADE)
+		to_chat(user, "<span class='warning'>Runa próbuje naprawić duszę [host.name]!</span>")
+		var/list/candidates = pollCandidatesForMob("Czy chcesz zastąpić duszę [host.name]?", ROLE_SENTIENCE, null, 5 SECONDS, host, POLL_IGNORE_SHADE)
 
 		if(length(candidates) && !host.key) //check if anyone wanted to play as the dead person and check if no one's in control of the body one last time.
 			var/mob/dead/observer/ghost = pick(candidates)
@@ -730,13 +730,13 @@ GLOBAL_DATUM(blue_storage, /obj/item/storage/backpack/holding/bluespace)
 			activated_on_step = TRUE
 			return ..()
 
-		to_chat(user, "<span class='warning'>The rune failed! Maybe you should try again later.</span>")
+		to_chat(user, "<span class='warning'>Runa zawiodła! Może spróbuj później.</span>")
 
 
 /obj/item/slimecross/warping/lightpink
 	colour = "light pink"
 	runepath = /obj/effect/warped_rune/lightpinkspace
-	effect_desc = "Draw a frog that makes whoever steps on it peaceful."
+	effect_desc = "Rysuje żabę, która uspokaja każdego, kto na nią wejdzie."
 
 /obj/effect/warped_rune/lightpinkspace
 	desc = "Peace and love."
@@ -753,7 +753,7 @@ GLOBAL_DATUM(blue_storage, /obj/item/storage/backpack/holding/bluespace)
 /obj/item/slimecross/warping/adamantine
 	colour = "adamantine"
 	runepath = /obj/effect/warped_rune/adamantinespace
-	effect_desc = "Draw a rune that can summon reflective fields."
+	effect_desc = "Rysuje runę, która może przywołać pola odbijające."
 
 /obj/effect/warped_rune/adamantinespace
 	desc = "This can be activated to summon reflective fields."
@@ -781,7 +781,7 @@ GLOBAL_DATUM(warped_room, /datum/map_template/warped_room)
 
 /obj/item/slimecross/warping/rainbow
 	colour = "rainbow"
-	effect_desc = "Draws a rune that can be activated to teleport whoever is standing on it."
+	effect_desc = "Rysuje runę, którą można aktywować, by teleportować każdego, kto na niej stoi."
 	runepath = /obj/effect/warped_rune/rainbowspace
 
 /obj/effect/warped_rune/rainbowspace

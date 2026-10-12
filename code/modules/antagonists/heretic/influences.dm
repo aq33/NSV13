@@ -149,17 +149,17 @@
 		return
 
 	if(IS_HERETIC(user))
-		to_chat(user, "<span class='boldwarning'>You know better than to tempt forces out of your control!</span>")
+		to_chat(user, "<span class='boldwarning'>Wiesz, że nie należy kusić sił, nad którymi nie panujesz!</span>")
 		return TRUE
 
 	var/mob/living/carbon/human/human_user = user
 	var/obj/item/bodypart/their_poor_arm = human_user.get_active_hand()
 	if(prob(25))
-		to_chat(human_user, "<span class='userdanger'>An otherwordly presence tears and atomizes your [their_poor_arm.name] as you try to touch the hole in the very fabric of reality!</span>")
+		to_chat(human_user, "<span class='userdanger'>Gdy próbujesz dotknąć dziury w samej tkance rzeczywistości, nieziemska obecność rozrywa i atomizuje twoją kończynę ([their_poor_arm.name])!</span>")
 		their_poor_arm.dismember()
 		qdel(their_poor_arm)
 	else
-		to_chat(human_user,"<span class='danger'>You pull your hand away from the hole as the eldritch energy flails, trying to latch onto existance itself!</span>")
+		to_chat(human_user,"<span class='danger'>Odsuwasz dłoń od dziury, a pradawna energia miota się, próbując uczepić się samego istnienia!</span>")
 	return TRUE
 
 /obj/effect/visible_heretic_influence/attack_tk(mob/user)
@@ -169,13 +169,13 @@
 	. = COMPONENT_CANCEL_ATTACK_CHAIN
 
 	if(IS_HERETIC(user))
-		to_chat(user, "<span class='boldwarning'>You know better than to tempt forces out of your control!</span>")
+		to_chat(user, "<span class='boldwarning'>Wiesz, że nie należy kusić sił, nad którymi nie panujesz!</span>")
 		return
 
 	var/mob/living/carbon/human/human_user = user
 
 	// A very elaborate way to suicide
-	to_chat(human_user, "<span class='userdanger'>Eldritch energy lashes out, piercing your fragile mind, tearing it to pieces!</span>")
+	to_chat(human_user, "<span class='userdanger'>Pradawna energia uderza, przeszywając twój kruchy umysł i rozrywając go na strzępy!</span>")
 	human_user.ghostize()
 	var/obj/item/bodypart/head/head = locate() in human_user.get_bodypart(BODY_ZONE_HEAD)
 	if(head)
@@ -194,7 +194,7 @@
 		return
 
 	var/mob/living/carbon/human/human_user = user
-	to_chat(human_user, "<span class='userdanger'>Your mind burns as you stare at the tear!</span>")
+	to_chat(human_user, "<span class='userdanger'>Twój umysł płonie, gdy wpatrujesz się w rozdarcie!</span>")
 	human_user.adjustOrganLoss(ORGAN_SLOT_BRAIN, 10, 190)
 	SEND_SIGNAL(human_user, COMSIG_ADD_MOOD_EVENT, "gates_of_mansus", /datum/mood_event/gates_of_mansus)
 
@@ -233,7 +233,7 @@
 		return
 
 	if(being_drained)
-		balloon_alert(user, "Already being drained")
+		balloon_alert(user, "Już jest wysysane")
 	else
 		INVOKE_ASYNC(src, PROC_REF(drain_influence), user, 1)
 
@@ -261,7 +261,7 @@
 /obj/effect/heretic_influence/proc/drain_influence(mob/living/user, knowledge_to_gain)
 
 	being_drained = TRUE
-	balloon_alert(user, "You begin draining the influence")
+	balloon_alert(user, "Zaczynasz wysysać wpływ")
 	RegisterSignal(user, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 
 	if(!do_after(user, 10 SECONDS, target = src))
@@ -272,7 +272,7 @@
 
 	// We don't need to set being_drained back since we delete after anyways
 	UnregisterSignal(user, COMSIG_PARENT_EXAMINE)
-	balloon_alert(user, "Influence drained")
+	balloon_alert(user, "Wpływ wyssany")
 
 	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
 	heretic_datum.adjust_knowledge_points(knowledge_to_gain)
@@ -286,7 +286,7 @@
 /obj/effect/heretic_influence/proc/after_drain(mob/living/user)
 	if(user)
 		to_chat(user, "<span class='hypnophrase'>[pick(strings(HERETIC_INFLUENCE_FILE, "drain_message"))]</span>")
-		to_chat(user, "<span class='warning'>[src] begins to fade into reality!</span>")
+		to_chat(user, "<span class='warning'>[src] zaczyna przenikać do rzeczywistości!</span>")
 
 	var/obj/effect/visible_heretic_influence/illusion = new /obj/effect/visible_heretic_influence(drop_location())
 	illusion.name = "\improper" + pick(strings(HERETIC_INFLUENCE_FILE, "drained")) + " " + format_text(name)
@@ -305,7 +305,7 @@
 	if(prob(50))
 		return
 
-	examine_list += "<span class='warning'>[source]'s hand seems to be glowing a ["<span class='hypnophrase'>strange purple</span>"]...</span>"
+	examine_list += "<span class='warning'>Dłoń [source] zdaje się jarzyć ["<span class='hypnophrase'>dziwnym fioletem</span>"]...</span>"
 
 /*
  * Add a mind to the list of tracked minds,

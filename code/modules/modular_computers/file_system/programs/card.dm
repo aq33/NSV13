@@ -9,10 +9,10 @@
 
 /datum/computer_file/program/card_mod
 	filename = "cardmod"
-	filedesc = "ID Card Modification"
+	filedesc = "Modyfikacja kart identyfikacyjnych"
 	category = PROGRAM_CATEGORY_CREW
 	program_icon_state = "id"
-	extended_desc = "Program for programming employee ID cards to access parts of the station."
+	extended_desc = "Program do programowania kart identyfikacyjnych pracowników, nadających dostęp do części stacji."
 	transfer_access = list(ACCESS_HEADS)
 	requires_ntnet = 0
 	size = 8
@@ -137,12 +137,7 @@
 				return
 			if(!authenticated)
 				return
-			var/contents = {"<h4>Access Report</h4>
-						<u>Prepared By:</u> [user_id_card && user_id_card.registered_name ? user_id_card.registered_name : "Unknown"]<br>
-						<u>For:</u> [target_id_card.registered_name ? target_id_card.registered_name : "Unregistered"]<br>
-						<hr>
-						<u>Assignment:</u> [target_id_card.assignment]<br>
-						<u>Access:</u><br>
+			var/contents = {"<h4>Raport dostępu</h4><u>Przygotował:</u> [user_id_card && user_id_card.registered_name ? user_id_card.registered_name : "Nieznany"]<br><u>Dla:</u> [target_id_card.registered_name ? target_id_card.registered_name : "Niezarejestrowany"]<br><hr><u>Stanowisko:</u> [target_id_card.assignment]<br><u>Dostęp:</u><br>
 						"}
 
 			var/known_access_rights = get_all_accesses()
@@ -150,12 +145,12 @@
 				if(A in known_access_rights)
 					contents += "  [get_access_desc(A)]"
 
-			if(!printer.print_text(contents,"access report"))
-				to_chat(usr, "<span class='notice'>Hardware error: Printer was unable to print the file. It may be out of paper.</span>")
+			if(!printer.print_text(contents,"raport dostępu"))
+				to_chat(usr, "<span class='notice'>Błąd sprzętu: drukarka nie mogła wydrukować pliku. Może brakuje papieru.</span>")
 				return
 			else
 				playsound(computer, 'sound/machines/terminal_on.ogg', 50, FALSE)
-				computer.visible_message("<span class='notice'>\The [computer] prints out a paper.</span>")
+				computer.visible_message("<span class='notice'>[computer] drukuje kartkę.</span>")
 			return TRUE
 		if("PRG_eject")
 			if(!card_slot2)
@@ -192,7 +187,7 @@
 			new_name = reject_bad_name(new_name, allow_numbers = TRUE)
 
 			if(!new_name)
-				to_chat(usr, "<span class='notice'>Software error: The ID card rejected the new name as it contains prohibited characters.</span>")
+				to_chat(usr, "<span class='notice'>Błąd oprogramowania: karta ID odrzuciła nowe imię, bo zawiera zakazane znaki.</span>")
 				return
 			log_id("[key_name(usr)] changed [target_id_card] name to '[new_name]', using [user_id_card] via a portable ID console at [AREACOORD(usr)].")
 			target_id_card.registered_name = new_name
@@ -212,7 +207,7 @@
 				// However, we are going to assignments containing bad text overall.
 				custom_name = reject_bad_text(custom_name)
 				if(!custom_name)
-					to_chat(usr, "<span class='notice'>Software error: The ID card rejected the new custom assignment as it contains prohibited characters.</span>")
+					to_chat(usr, "<span class='notice'>Błąd oprogramowania: karta ID odrzuciła nowe stanowisko, bo zawiera zakazane znaki.</span>")
 				else
 					log_id("[key_name(usr)] assigned a custom assignment '[custom_name]' to [target_id_card] using [user_id_card] via a portable ID console at [AREACOORD(usr)].")
 					target_id_card.assignment = custom_name
@@ -231,7 +226,7 @@
 							job = J
 							break
 					if(!job)
-						to_chat(user, "<span class='warning'>No class exists for this job: [target].</span>")
+						to_chat(user, "<span class='warning'>Nie istnieje klasa dla tego stanowiska: [target].</span>")
 						return
 					new_access = job.get_access()
 				log_id("[key_name(usr)] changed [target_id_card] assignment to '[target]', overriding all previous access using [user_id_card] via a portable ID console at [AREACOORD(usr)].")

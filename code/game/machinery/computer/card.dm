@@ -64,7 +64,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 /obj/machinery/computer/card/examine(mob/user)
 	. = ..()
 	if(inserted_scan_id || inserted_modify_id)
-		. += "<span class='notice'>Alt-click to eject the ID card.</span>"
+		. += "<span class='notice'>Alt-kliknij, by wysunąć kartę ID.</span>"
 
 /obj/machinery/computer/card/attackby(obj/I, mob/user, params)
 	if(isidcard(I))
@@ -152,15 +152,15 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		else
 			id_eject(user, target)
 
-	user.visible_message("<span class='notice'>[user] inserts \the [card_to_insert] into \the [src].</span>",
-						"<span class='notice'>You insert \the [card_to_insert] into \the [src].</span>")
+	user.visible_message("<span class='notice'>[user] wkłada [card_to_insert] do [src].</span>",
+						"<span class='notice'>Wkładasz [card_to_insert] do [src].</span>")
 	playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
 	updateUsrDialog()
 	return TRUE
 
 /obj/machinery/computer/card/proc/id_eject(mob/user, obj/target)
 	if(!target)
-		to_chat(user, "<span class='warning'>That slot is empty!</span>")
+		to_chat(user, "<span class='warning'>To gniazdo jest puste!</span>")
 		return FALSE
 	else
 		if(target == inserted_modify_id)
@@ -168,8 +168,8 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		target.forceMove(drop_location())
 		if(!issilicon(user) && Adjacent(user))
 			user.put_in_hands(target)
-		user.visible_message("<span class='notice'>[user] gets \the [target] from \the [src].</span>", \
-							"<span class='notice'>You get \the [target] from \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] wyjmuje [target] z [src].</span>", \
+							"<span class='notice'>Wyjmujesz [target] z [src].</span>")
 		playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
 		updateUsrDialog()
 		return TRUE
@@ -204,12 +204,12 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		var/crew = ""
 		for(var/datum/data/record/t in sortRecord(GLOB.data_core.general))
 			crew += t.fields["name"] + " - " + t.fields["rank"] + "<br>"
-		dat = "<tt><b>Crew Manifest:</b><br>Please use security record computer to modify entries.<br><br>[crew]<a href='byond://?src=[REF(src)];choice=print'>Print</a><br><br><a href='byond://?src=[REF(src)];choice=mode;mode_target=0'>Access ID modification console.</a><br></tt>"
+		dat = "<tt><b>Manifest załogi:</b><br>Do zmiany wpisów użyj komputera akt ochrony.<br><br>[crew]<a href='byond://?src=[REF(src)];choice=print'>Drukuj</a><br><br><a href='byond://?src=[REF(src)];choice=mode;mode_target=0'>Przejdź do konsoli modyfikacji ID.</a><br></tt>"
 
 	else if(mode == 2)
 		// JOB MANAGEMENT
 		dat = "<a href='byond://?src=[REF(src)];choice=return'>Return</a>"
-		dat += " || Confirm Identity: "
+		dat += " || Potwierdź tożsamość: "
 		var/S
 		if(inserted_scan_id)
 			S = html_encode(inserted_scan_id.name)
@@ -217,7 +217,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 			S = "--------"
 		dat += "<a href='byond://?src=[REF(src)];choice=inserted_scan_id'>[S]</a>"
 		dat += "<table>"
-		dat += "<tr><td style='width:25%'><b>Job</b></td><td style='width:25%'><b>Slots</b></td><td style='width:25%'><b>Open job</b></td><td style='width:25%'><b>Close job</b><td style='width:25%'><b>Prioritize</b></td></td></tr>"
+		dat += "<tr><td style='width:25%'><b>Stanowisko</b></td><td style='width:25%'><b>Miejsca</b></td><td style='width:25%'><b>Otwórz</b></td><td style='width:25%'><b>Zamknij</b><td style='width:25%'><b>Priorytet</b></td></td></tr>"
 		var/ID
 		if(inserted_scan_id && (ACCESS_CHANGE_IDS in inserted_scan_id.access) && !target_dept)
 			ID = 1
@@ -235,14 +235,14 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 					if(ID)
 						dat += "<a href='byond://?src=[REF(src)];choice=make_job_available;job=[job.title]'>Open Position</a><br>"
 					else
-						dat += "Open Position"
+						dat += "Otwórz stanowisko"
 				if(-1)
 					dat += "Denied"
 				if(-2)
 					var/time_to_wait = round(change_position_cooldown - ((world.time / 10) - GLOB.time_last_changed_position), 1)
 					var/mins = round(time_to_wait / 60)
 					var/seconds = time_to_wait - (60*mins)
-					dat += "Cooldown ongoing: [mins]:[(seconds < 10) ? "0[seconds]" : "[seconds]"]"
+					dat += "Trwa odliczanie: [mins]:[(seconds < 10) ? "0[seconds]" : "[seconds]"]"
 				if(0)
 					dat += "Denied"
 			dat += "</td><td>"
@@ -251,14 +251,14 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 					if(ID)
 						dat += "<a href='byond://?src=[REF(src)];choice=make_job_unavailable;job=[job.title]'>Close Position</a>"
 					else
-						dat += "Close Position"
+						dat += "Zamknij stanowisko"
 				if(-1)
 					dat += "Denied"
 				if(-2)
 					var/time_to_wait = round(change_position_cooldown - ((world.time / 10) - GLOB.time_last_changed_position), 1)
 					var/mins = round(time_to_wait / 60)
 					var/seconds = time_to_wait - (60*mins)
-					dat += "Cooldown ongoing: [mins]:[(seconds < 10) ? "0[seconds]" : "[seconds]"]"
+					dat += "Trwa odliczanie: [mins]:[(seconds < 10) ? "0[seconds]" : "[seconds]"]"
 				if(0)
 					dat += "Denied"
 			dat += "</td><td>"
@@ -282,7 +282,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 	else if(mode == 3)
 		//PAYCHECK MANAGEMENT
 		dat = "<a href='byond://?src=[REF(src)];choice=return'>Return</a>"
-		dat += " || Confirm Identity: "
+		dat += " || Potwierdź tożsamość: "
 		var/S
 		var/list/paycheck_departments = list()
 		if(inserted_scan_id)
@@ -304,7 +304,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 			S = "--------"
 		dat += "<a href='byond://?src=[REF(src)];choice=inserted_scan_id'>[S]</a>"
 		dat += "<table>"
-		dat += "<tr><td style='width:25%'><b>Name</b></td><td style='width:25%'><b>Job</b></td><td style='width:25%'><b>Paycheck</b></td><td style='width:25%'><b>Pay Bonus</b></td></tr>"
+		dat += "<tr><td style='width:25%'><b>Imię</b></td><td style='width:25%'><b>Stanowisko</b></td><td style='width:25%'><b>Pensja</b></td><td style='width:25%'><b>Premia</b></td></tr>"
 
 		for(var/A in SSeconomy.bank_accounts)
 			var/datum/bank_account/B = A
@@ -324,15 +324,15 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		var/target_rank = (inserted_modify_id && inserted_modify_id.assignment) ? html_encode(inserted_modify_id.assignment) : "Unassigned"
 
 		if(!authenticated)
-			header += "<br><i>Please insert the cards into the slots</i><br>"
+			header += "<br><i>Włóż karty do gniazd</i><br>"
 			header += "Target: <a href='byond://?src=[REF(src)];choice=inserted_modify_id'>[target_name]</a><br>"
-			header += "Confirm Identity: <a href='byond://?src=[REF(src)];choice=inserted_scan_id'>[scan_name]</a><br>"
+			header += "Potwierdź tożsamość: <a href='byond://?src=[REF(src)];choice=inserted_scan_id'>[scan_name]</a><br>"
 		else
 			header += "<div align='center'><br>"
 			header += "<a href='byond://?src=[REF(src)];choice=inserted_modify_id'>Remove [target_name]</a> || "
 			header += "<a href='byond://?src=[REF(src)];choice=inserted_scan_id'>Remove [scan_name]</a> <br> "
-			header += "<a href='byond://?src=[REF(src)];choice=mode;mode_target=1'>Access Crew Manifest</a> <br> "
-			header += "<a href='byond://?src=[REF(src)];choice=logout'>Log Out</a></div>"
+			header += "<a href='byond://?src=[REF(src)];choice=mode;mode_target=1'>Manifest załogi</a> <br> "
+			header += "<a href='byond://?src=[REF(src)];choice=logout'>Wyloguj</a></div>"
 
 		header += "<hr>"
 
@@ -397,11 +397,11 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 
 			else
 				carddesc += "<b>registered_name:</b> [target_owner]</span>"
-				jobs += "<b>Assignment:</b> [target_rank] (<a href='byond://?src=[REF(src)];choice=demote'>Demote</a>)</span>"
+				jobs += "<b>Przydział:</b> [target_rank] (<a href='byond://?src=[REF(src)];choice=demote'>Zdegraduj</a>)</span>"
 
 			var/accesses = ""
 			if(istype(src, /obj/machinery/computer/card/centcom))
-				accesses += "<h5>Central Command:</h5>"
+				accesses += "<h5>Centrala:</h5>"
 				for(var/A in get_all_centcom_access())
 					if(A in inserted_modify_id.access)
 						accesses += "<a href='byond://?src=[REF(src)];choice=access;access_target=[A];allowed=0'><font color=\"6bc473\">[replacetext(get_centcom_access_desc(A), " ", "&nbsp")]</font></a> "
@@ -431,11 +431,11 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 			body = "[carddesc]<br>[jobs]<br><br>[accesses]" //CHECK THIS
 
 		else
-			body = "<a href='byond://?src=[REF(src)];choice=auth'>{Log in}</a> <br><hr>"
-			body += "<a href='byond://?src=[REF(src)];choice=mode;mode_target=1'>Access Crew Manifest</a>"
+			body = "<a href='byond://?src=[REF(src)];choice=auth'>{Zaloguj}</a> <br><hr>"
+			body += "<a href='byond://?src=[REF(src)];choice=mode;mode_target=1'>Manifest załogi</a>"
 			if(!target_dept)
-				body += "<br><hr><a href = 'byond://?src=[REF(src)];choice=mode;mode_target=2'>Job Management</a>"
-			body += "<a href='byond://?src=[REF(src)];choice=mode;mode_target=3'>Paycheck Management</a>"
+				body += "<br><hr><a href = 'byond://?src=[REF(src)];choice=mode;mode_target=2'>Zarządzanie stanowiskami</a>"
+			body += "<a href='byond://?src=[REF(src)];choice=mode;mode_target=3'>Zarządzanie pensjami</a>"
 
 		dat = "<tt>[header][body]<hr><br></tt>"
 	var/datum/browser/popup = new(user, "id_com", src.name, 900, 620)
@@ -514,7 +514,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 						if(region_access)
 							authenticated = 1
 			else if ((!( authenticated ) && issilicon(usr)) && (!inserted_modify_id))
-				to_chat(usr, "<span class='warning'>You can't modify an ID without an ID inserted to modify! Once one is in the modify slot on the computer, you can log in.</span>")
+				to_chat(usr, "<span class='warning'>Nie możesz zmodyfikować ID bez włożonej karty do modyfikacji! Gdy będzie w gnieździe modyfikacji komputera, możesz się zalogować.</span>")
 		if ("logout")
 			region_access = null
 			head_subordinates = null
@@ -537,7 +537,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 			if (authenticated == 2)
 				var/t1 = href_list["assign_target"]
 				if(t1 == "Custom")
-					var/newJob = reject_bad_text(stripped_input("Enter a custom job assignment.", "Assignment", inserted_modify_id ? inserted_modify_id.assignment : "Unassigned"), MAX_NAME_LEN)
+					var/newJob = reject_bad_text(stripped_input("Podaj własny przydział stanowiska.", "Assignment", inserted_modify_id ? inserted_modify_id.assignment : "Unassigned"), MAX_NAME_LEN)
 					if(newJob)
 						t1 = newJob
 						log_id("[key_name(usr)] changed [inserted_modify_id] assignment to [newJob] using [inserted_scan_id] at [AREACOORD(usr)].")
@@ -556,7 +556,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 							break
 
 					if(!jobdatum)
-						to_chat(usr, "<span class='error'>No log exists for this job.</span>")
+						to_chat(usr, "<span class='error'>Brak logu dla tego stanowiska.</span>")
 						updateUsrDialog()
 						return
 
@@ -572,7 +572,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 				log_id("[key_name(usr)] demoted [inserted_modify_id], unassigning the card without affecting access, using [inserted_scan_id] at [AREACOORD(usr)].")
 				playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 			else
-				to_chat(usr, "<span class='error'>You are not authorized to demote this position.</span>")
+				to_chat(usr, "<span class='error'>Nie masz uprawnień do degradowania tego stanowiska.</span>")
 		if ("reg")
 			if (authenticated)
 				var/t2 = inserted_modify_id
@@ -588,7 +588,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 						inserted_modify_id.registered_name = new_name
 						playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 					else
-						to_chat(usr, "<span class='error'>Invalid name entered.</span>")
+						to_chat(usr, "<span class='error'>Podano nieprawidłowe imię.</span>")
 						updateUsrDialog()
 						return
 		if ("mode")
@@ -647,12 +647,12 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 					SSjob.prioritized_jobs -= j
 					priority = FALSE
 				else if(j.total_positions <= j.current_positions)
-					to_chat(usr, "<span class='notice'>[j.title] has had all positions filled. Open up more slots before prioritizing it.</span>")
+					to_chat(usr, "<span class='notice'>Wszystkie miejsca na stanowisku [j.title] są obsadzone. Otwórz więcej miejsc, zanim nadasz mu priorytet.</span>")
 					updateUsrDialog()
 					return
 				else
 					SSjob.prioritized_jobs += j
-				to_chat(usr, "<span class='notice'>[j.title] has been successfully [priority ?  "prioritized" : "unprioritized"]. Potential employees will notice your request.</span>")
+				to_chat(usr, "<span class='notice'>Stanowisku [j.title] pomyślnie [priority ?  "nadano priorytet" : "odebrano priorytet"]. Potencjalni pracownicy zauważą twoją prośbę.</span>")
 				playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 
 		if ("adjust_pay")
@@ -690,12 +690,12 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 					if(!(ACCESS_CE in inserted_scan_id.access))
 						updateUsrDialog()
 						return
-			var/new_pay = FLOOR(input(usr, "Input the new paycheck amount.", "Set new paycheck amount.", account.paycheck_amount) as num|null, 1)
+			var/new_pay = FLOOR(input(usr, "Podaj nową kwotę pensji.", "Ustaw nową kwotę pensji.", account.paycheck_amount) as num|null, 1)
 			if(isnull(new_pay))
 				updateUsrDialog()
 				return
 			if(new_pay < 0)
-				to_chat(usr, "<span class='warning'>Paychecks cannot be negative.</span>")
+				to_chat(usr, "<span class='warning'>Pensje nie mogą być ujemne.</span>")
 				updateUsrDialog()
 				return
 			account.paycheck_amount = new_pay
@@ -735,7 +735,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 					if(!(ACCESS_CE in inserted_scan_id.access))
 						updateUsrDialog()
 						return
-			var/new_bonus = FLOOR(input(usr, "Input the bonus amount. Negative values will dock paychecks.", "Set paycheck bonus", account.paycheck_bonus) as num|null, 1)
+			var/new_bonus = FLOOR(input(usr, "Podaj kwotę premii. Wartości ujemne obniżą pensje.", "Ustaw premię", account.paycheck_bonus) as num|null, 1)
 			if(isnull(new_bonus))
 				updateUsrDialog()
 				return
@@ -746,7 +746,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 				printing = 1
 				sleep(50)
 				var/obj/item/paper/P = new /obj/item/paper( loc )
-				var/t1 = "<B>Crew Manifest:</B><BR>"
+				var/t1 = "<B>Manifest załogi:</B><BR>"
 				for(var/datum/data/record/t in sortRecord(GLOB.data_core.general))
 					t1 += t.fields["name"] + " - " + t.fields["rank"] + "<br>"
 				P.default_raw_text = t1

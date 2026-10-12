@@ -47,7 +47,7 @@
 	return ..()
 
 /mob/living/simple_animal/bot/hygienebot/set_custom_texts()
-	text_hack = "You corrupt [name]'s water pump."
+	text_hack = "Psujesz pompę wody [name]."
 	text_dehack = "[name]'s software has been reset!"
 	text_dehack_fail = "[name] does not seem to respond to your repair code!"
 

@@ -4118,7 +4118,7 @@
 	dir = 4
 	},
 /obj/item/paper{
-	default_raw_text = "<p>Munitions notice: Reminder that the laser anti missile systems provided must have power allocated, must be enabled, and must have Anti-missile countermeasures enabled in the AMS control console!</p>"
+	default_raw_text = "<p>Komunikat amunicji: przypominamy, że dostarczone laserowe systemy przeciwrakietowe muszą mieć przydzieloną moc, muszą być włączone i muszą mieć włączone przeciwdziałanie rakietom w konsoli sterowania AMS!</p>"
 	},
 /turf/open/floor/engine,
 /area/nsv/weapons/fore)
@@ -4981,7 +4981,7 @@
 	dir = 4
 	},
 /obj/item/paper{
-	default_raw_text = "<p>Engineering notice: There are three wire colors used on the Aetherwhisp 6 ship model. White cable is wired to the Stormdrive MK-4 and the supermatter crystal near atmospherics. These lead to their own SMES located nearby. Yellow wires are department distribution wires, which deliver power from the engines SMES to deparment SMES. Red wires deliver power from department SMES to department APCs.</p>"
+	default_raw_text = "<p>Komunikat inżynierii: na statku modelu Aetherwhisp 6 używa się trzech kolorów kabli. Biały kabel jest podłączony do Stormdrive MK-4 i kryształu supermaterii przy atmosferyce. Prowadzą one do własnych SMES-ów w pobliżu. Żółte kable to kable dystrybucji działowej, które dostarczają moc z SMES-ów silników do SMES-ów działów. Czerwone kable dostarczają moc z SMES-ów działów do APC działów.</p>"
 	},
 /obj/machinery/newscaster/directional/west,
 /obj/structure/cable/yellow,
@@ -6955,7 +6955,7 @@
 	name = "stormdrive power monitoring console"
 	},
 /obj/item/paper{
-	default_raw_text = "<p>Engineering notice: There are three wire colors used on the Aetherwhisp 6 ship model. White cable is wired to the Stormdrive MK-4 and the supermatter crystal near atmospherics. These lead to their own SMES located nearby. Yellow wires are department distribution wires, which deliver power from the engines SMES to deparment SMES. Red wires deliver power from department SMES to department APCs.</p>"
+	default_raw_text = "<p>Komunikat inżynierii: na statku modelu Aetherwhisp 6 używa się trzech kolorów kabli. Biały kabel jest podłączony do Stormdrive MK-4 i kryształu supermaterii przy atmosferyce. Prowadzą one do własnych SMES-ów w pobliżu. Żółte kable to kable dystrybucji działowej, które dostarczają moc z SMES-ów silników do SMES-ów działów. Czerwone kable dostarczają moc z SMES-ów działów do APC działów.</p>"
 	},
 /turf/open/floor/carpet/ship/orange_carpet,
 /area/nsv/weapons/fore)
@@ -7902,7 +7902,7 @@
 	},
 /obj/structure/cable,
 /obj/item/paper{
-	default_raw_text = "<p>Executive Officer notice: Modular computers are currently experiencing technical difficulties regarding their ID modification hardware. The 'identification card authentication module' supports 2 ID slots, and was previously paired with the 'ID Card Modification' program that also supported 2 IDs. There was recently a software update that removed the need to insert your own ID to authenticate and log in. However, it did not update the hardware, nor does it allow you to remove an ID from the authentication slot anymore.<br><br>To edit IDs with a modular computer without losing your ID, insert the target's ID but NEVER insert your own ID. You will still be able to log in if you are wearing it. Make sure you never put more than 1 ID in the modular computer.<br><br>If you do accidentally lose your own ID and getting a new one without your XO access is borderline impossible, contact Central Command. Politely ask them to remote into the console, then run subroutine '/proc/eject_id'<br><br>Have a secure shift</p>";
+	default_raw_text = "<p>Komunikat Starszego Oficera: komputery modułowe mają obecnie problemy techniczne ze sprzętem do modyfikacji ID. Moduł uwierzytelniania kart identyfikacyjnych obsługuje 2 gniazda ID i wcześniej współpracował z programem do modyfikacji kart ID, który też obsługiwał 2 ID. Niedawna aktualizacja oprogramowania usunęła konieczność wkładania własnego ID w celu uwierzytelnienia i zalogowania. Nie zaktualizowała jednak sprzętu i nie pozwala już wyjąć ID z gniazda uwierzytelniania.<br><br>Żeby edytować ID na komputerze modułowym bez utraty własnego ID, włóż ID osoby docelowej, ale NIGDY nie wkładaj własnego. Nadal będziesz mógł się zalogować, jeśli masz je na sobie. Nigdy nie wkładaj do komputera modułowego więcej niż 1 ID.<br><br>Jeśli przypadkiem stracisz własne ID, a zdobycie nowego bez dostępu Starszego Oficera jest praktycznie niemożliwe, skontaktuj się z Dowództwem Centralnym. Grzecznie poproś, by połączyli się zdalnie z konsolą i uruchomili podprogram '/proc/eject_id'<br><br>Bezpiecznej zmiany</p>";
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -11940,7 +11940,7 @@
 	},
 /obj/machinery/door/window/eastright,
 /obj/item/paper{
-	default_raw_text = "<p>Reminder that squad equipment vendors are located in the council chamber, tool storage, and that 4-way junction at the primary hallway, Deck 1</p>"
+	default_raw_text = "<p>Przypominamy, że automaty ze sprzętem oddziałów znajdują się w sali narad, magazynie narzędzi i na czterokierunkowym skrzyżowaniu głównego korytarza, pokład 1</p>"
 	},
 /obj/machinery/door/poddoor/shutters/ship/preopen{
 	dir = 4;
@@ -13504,7 +13504,7 @@
 /obj/machinery/ship_weapon/energy/ams,
 /obj/structure/cable/pink,
 /obj/item/paper{
-	default_raw_text = "<p>Munitions notice: Reminder that the laser anti missile systems provided must have power allocated, must be enabled, and must have Anti-missile countermeasures enabled in the AMS control console!</p>"
+	default_raw_text = "<p>Komunikat amunicji: przypominamy, że dostarczone laserowe systemy przeciwrakietowe muszą mieć przydzieloną moc, muszą być włączone i muszą mieć włączone przeciwdziałanie rakietom w konsoli sterowania AMS!</p>"
 	},
 /turf/open/floor/carpet/ship/orange_carpet,
 /area/nsv/weapons/fore)
@@ -16182,7 +16182,7 @@
 	dir = 8
 	},
 /obj/item/paper{
-	default_raw_text = "<p>Executive Officer notice: Modular computers are currently experiencing technical difficulties regarding their ID modification hardware. The 'identification card authentication module' supports 2 ID slots, and was previously paired with the 'ID Card Modification' program that also supported 2 IDs. There was recently a software update that removed the need to insert your own ID to authenticate and log in. However, it did not update the hardware, nor does it allow you to remove an ID from the authentication slot anymore.<br><br>To edit IDs with a modular computer without losing your ID, insert the target's ID but NEVER insert your own ID. You will still be able to log in if you are wearing it. Make sure you never put more than 1 ID in the modular computer.<br><br>If you do accidentally lose your own ID and getting a new one without your XO access is borderline impossible, contact Central Command. Politely ask them to remote into the console, then run subroutine '/proc/eject_id'<br><br>Have a secure shift</p>";
+	default_raw_text = "<p>Komunikat Starszego Oficera: komputery modułowe mają obecnie problemy techniczne ze sprzętem do modyfikacji ID. Moduł uwierzytelniania kart identyfikacyjnych obsługuje 2 gniazda ID i wcześniej współpracował z programem do modyfikacji kart ID, który też obsługiwał 2 ID. Niedawna aktualizacja oprogramowania usunęła konieczność wkładania własnego ID w celu uwierzytelnienia i zalogowania. Nie zaktualizowała jednak sprzętu i nie pozwala już wyjąć ID z gniazda uwierzytelniania.<br><br>Żeby edytować ID na komputerze modułowym bez utraty własnego ID, włóż ID osoby docelowej, ale NIGDY nie wkładaj własnego. Nadal będziesz mógł się zalogować, jeśli masz je na sobie. Nigdy nie wkładaj do komputera modułowego więcej niż 1 ID.<br><br>Jeśli przypadkiem stracisz własne ID, a zdobycie nowego bez dostępu Starszego Oficera jest praktycznie niemożliwe, skontaktuj się z Dowództwem Centralnym. Grzecznie poproś, by połączyli się zdalnie z konsolą i uruchomili podprogram '/proc/eject_id'<br><br>Bezpiecznej zmiany</p>";
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -18675,7 +18675,7 @@
 	dir = 8
 	},
 /obj/item/paper{
-	default_raw_text = "<p>Executive Officer notice: Modular computers are currently experiencing technical difficulties regarding their ID modification hardware. The 'identification card authentication module' supports 2 ID slots, and was previously paired with the 'ID Card Modification' program that also supported 2 IDs. There was recently a software update that removed the need to insert your own ID to authenticate and log in. However, it did not update the hardware, nor does it allow you to remove an ID from the authentication slot anymore.<br><br>To edit IDs with a modular computer without losing your ID, insert the target's ID but NEVER insert your own ID. You will still be able to log in if you are wearing it. Make sure you never put more than 1 ID in the modular computer.<br><br>If you do accidentally lose your own ID and getting a new one without your XO access is borderline impossible, contact Central Command. Politely ask them to remote into the console, then run subroutine '/proc/eject_id'<br><br>Have a secure shift</p>";
+	default_raw_text = "<p>Komunikat Starszego Oficera: komputery modułowe mają obecnie problemy techniczne ze sprzętem do modyfikacji ID. Moduł uwierzytelniania kart identyfikacyjnych obsługuje 2 gniazda ID i wcześniej współpracował z programem do modyfikacji kart ID, który też obsługiwał 2 ID. Niedawna aktualizacja oprogramowania usunęła konieczność wkładania własnego ID w celu uwierzytelnienia i zalogowania. Nie zaktualizowała jednak sprzętu i nie pozwala już wyjąć ID z gniazda uwierzytelniania.<br><br>Żeby edytować ID na komputerze modułowym bez utraty własnego ID, włóż ID osoby docelowej, ale NIGDY nie wkładaj własnego. Nadal będziesz mógł się zalogować, jeśli masz je na sobie. Nigdy nie wkładaj do komputera modułowego więcej niż 1 ID.<br><br>Jeśli przypadkiem stracisz własne ID, a zdobycie nowego bez dostępu Starszego Oficera jest praktycznie niemożliwe, skontaktuj się z Dowództwem Centralnym. Grzecznie poproś, by połączyli się zdalnie z konsolą i uruchomili podprogram '/proc/eject_id'<br><br>Bezpiecznej zmiany</p>";
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -19795,7 +19795,7 @@
 	dir = 4
 	},
 /obj/item/paper{
-	default_raw_text = "<p>Reminder that squad equipment vendors are located in the council chamber, tool storage, and that 4-way junction at the primary hallway, Deck 1</p>"
+	default_raw_text = "<p>Przypominamy, że automaty ze sprzętem oddziałów znajdują się w sali narad, magazynie narzędzi i na czterokierunkowym skrzyżowaniu głównego korytarza, pokład 1</p>"
 	},
 /turf/open/floor/carpet/ship/blue{
 	color = "#9999DD";
@@ -22169,7 +22169,7 @@
 	pixel_y = 4
 	},
 /obj/item/paper{
-	default_raw_text = "<p>Reminder that squad equipment vendors are located in the council chamber, tool storage, and that 4-way junction at the primary hallway, Deck 1</p>"
+	default_raw_text = "<p>Przypominamy, że automaty ze sprzętem oddziałów znajdują się w sali narad, magazynie narzędzi i na czterokierunkowym skrzyżowaniu głównego korytarza, pokład 1</p>"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
@@ -24155,7 +24155,7 @@
 /obj/structure/cable,
 /obj/machinery/modular_computer/console/preset/research,
 /obj/item/paper{
-	default_raw_text = "<p>Executive Officer notice: Modular computers are currently experiencing technical difficulties regarding their ID modification hardware. The 'identification card authentication module' supports 2 ID slots, and was previously paired with the 'ID Card Modification' program that also supported 2 IDs. There was recently a software update that removed the need to insert your own ID to authenticate and log in. However, it did not update the hardware, nor does it allow you to remove an ID from the authentication slot anymore.<br><br>To edit IDs with a modular computer without losing your ID, insert the target's ID but NEVER insert your own ID. You will still be able to log in if you are wearing it. Make sure you never put more than 1 ID in the modular computer.<br><br>If you do accidentally lose your own ID and getting a new one without your XO access is borderline impossible, contact Central Command. Politely ask them to remote into the console, then run subroutine '/proc/eject_id'<br><br>Have a secure shift</p>";
+	default_raw_text = "<p>Komunikat Starszego Oficera: komputery modułowe mają obecnie problemy techniczne ze sprzętem do modyfikacji ID. Moduł uwierzytelniania kart identyfikacyjnych obsługuje 2 gniazda ID i wcześniej współpracował z programem do modyfikacji kart ID, który też obsługiwał 2 ID. Niedawna aktualizacja oprogramowania usunęła konieczność wkładania własnego ID w celu uwierzytelnienia i zalogowania. Nie zaktualizowała jednak sprzętu i nie pozwala już wyjąć ID z gniazda uwierzytelniania.<br><br>Żeby edytować ID na komputerze modułowym bez utraty własnego ID, włóż ID osoby docelowej, ale NIGDY nie wkładaj własnego. Nadal będziesz mógł się zalogować, jeśli masz je na sobie. Nigdy nie wkładaj do komputera modułowego więcej niż 1 ID.<br><br>Jeśli przypadkiem stracisz własne ID, a zdobycie nowego bez dostępu Starszego Oficera jest praktycznie niemożliwe, skontaktuj się z Dowództwem Centralnym. Grzecznie poproś, by połączyli się zdalnie z konsolą i uruchomili podprogram '/proc/eject_id'<br><br>Bezpiecznej zmiany</p>";
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -24450,7 +24450,7 @@
 /obj/structure/cable,
 /obj/machinery/door/firedoor/border_only/directional/east,
 /obj/item/paper{
-	default_raw_text = "<p>Executive Officer notice: Modular computers are currently experiencing technical difficulties regarding their ID modification hardware. The 'identification card authentication module' supports 2 ID slots, and was previously paired with the 'ID Card Modification' program that also supported 2 IDs. There was recently a software update that removed the need to insert your own ID to authenticate and log in. However, it did not update the hardware, nor does it allow you to remove an ID from the authentication slot anymore.<br><br>To edit IDs with a modular computer without losing your ID, insert the target's ID but NEVER insert your own ID. You will still be able to log in if you are wearing it. Make sure you never put more than 1 ID in the modular computer.<br><br>If you do accidentally lose your own ID and getting a new one without your XO access is borderline impossible, contact Central Command. Politely ask them to remote into the console, then run subroutine '/proc/eject_id'<br><br>Have a secure shift</p>";
+	default_raw_text = "<p>Komunikat Starszego Oficera: komputery modułowe mają obecnie problemy techniczne ze sprzętem do modyfikacji ID. Moduł uwierzytelniania kart identyfikacyjnych obsługuje 2 gniazda ID i wcześniej współpracował z programem do modyfikacji kart ID, który też obsługiwał 2 ID. Niedawna aktualizacja oprogramowania usunęła konieczność wkładania własnego ID w celu uwierzytelnienia i zalogowania. Nie zaktualizowała jednak sprzętu i nie pozwala już wyjąć ID z gniazda uwierzytelniania.<br><br>Żeby edytować ID na komputerze modułowym bez utraty własnego ID, włóż ID osoby docelowej, ale NIGDY nie wkładaj własnego. Nadal będziesz mógł się zalogować, jeśli masz je na sobie. Nigdy nie wkładaj do komputera modułowego więcej niż 1 ID.<br><br>Jeśli przypadkiem stracisz własne ID, a zdobycie nowego bez dostępu Starszego Oficera jest praktycznie niemożliwe, skontaktuj się z Dowództwem Centralnym. Grzecznie poproś, by połączyli się zdalnie z konsolą i uruchomili podprogram '/proc/eject_id'<br><br>Bezpiecznej zmiany</p>";
 	pixel_x = 4;
 	pixel_y = 4
 	},

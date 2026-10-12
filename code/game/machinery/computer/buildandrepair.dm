@@ -8,9 +8,9 @@
 	switch(state)
 		if(0)
 			if(P.tool_behaviour == TOOL_WRENCH)
-				to_chat(user, "<span class='notice'>You start wrenching the frame into place...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz przykręcać ramę...</span>")
 				if(P.use_tool(src, user, 20, volume=50))
-					to_chat(user, "<span class='notice'>You wrench the frame into place.</span>")
+					to_chat(user, "<span class='notice'>Przykręcasz ramę.</span>")
 					setAnchored(TRUE)
 					state = 1
 				return
@@ -18,17 +18,17 @@
 				if(!P.tool_start_check(user, amount=0))
 					return
 
-				to_chat(user, "<span class='notice'>You start deconstructing the frame...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz rozbierać ramę...</span>")
 				if(P.use_tool(src, user, 20, volume=50))
-					to_chat(user, "<span class='notice'>You deconstruct the frame.</span>")
+					to_chat(user, "<span class='notice'>Rozbierasz ramę.</span>")
 					new /obj/item/stack/sheet/iron(drop_location(), 5, TRUE, user)
 					qdel(src)
 				return
 		if(1)
 			if(P.tool_behaviour == TOOL_WRENCH)
-				to_chat(user, "<span class='notice'>You start to unfasten the frame...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz odkręcać ramę...</span>")
 				if(P.use_tool(src, user, 20, volume=50))
-					to_chat(user, "<span class='notice'>You unfasten the frame.</span>")
+					to_chat(user, "<span class='notice'>Odkręcasz ramę.</span>")
 					setAnchored(FALSE)
 					state = 0
 				return
@@ -36,24 +36,24 @@
 				if(!user.transferItemToLoc(P, src))
 					return
 				playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
-				to_chat(user, "<span class='notice'>You place [P] inside the frame.</span>")
+				to_chat(user, "<span class='notice'>Umieszczasz [P] w ramie.</span>")
 				icon_state = "1"
 				circuit = P
 				circuit.add_fingerprint(user)
 				return
 
 			else if(istype(P, /obj/item/circuitboard) && !circuit)
-				to_chat(user, "<span class='warning'>This frame does not accept circuit boards of this type!</span>")
+				to_chat(user, "<span class='warning'>Ta rama nie przyjmuje płytek tego typu!</span>")
 				return
 			if(P.tool_behaviour == TOOL_SCREWDRIVER && circuit)
 				P.play_tool_sound(src)
-				to_chat(user, "<span class='notice'>You screw [circuit] into place.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz [circuit].</span>")
 				state = 2
 				icon_state = "2"
 				return
 			if(P.tool_behaviour == TOOL_CROWBAR && circuit)
 				P.play_tool_sound(src)
-				to_chat(user, "<span class='notice'>You remove [circuit].</span>")
+				to_chat(user, "<span class='notice'>Wyjmujesz [circuit].</span>")
 				state = 1
 				icon_state = "0"
 				circuit.forceMove(drop_location())
@@ -63,25 +63,25 @@
 		if(2)
 			if(P.tool_behaviour == TOOL_SCREWDRIVER && circuit)
 				P.play_tool_sound(src)
-				to_chat(user, "<span class='notice'>You unfasten the circuit board.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz płytkę drukowaną.</span>")
 				state = 1
 				icon_state = "1"
 				return
 			if(istype(P, /obj/item/stack/cable_coil))
 				if(!P.tool_start_check(user, amount=5))
 					return
-				to_chat(user, "<span class='notice'>You start adding cables to the frame...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz podłączać kable do ramy...</span>")
 				if(P.use_tool(src, user, 20, volume=50, amount=5))
 					if(state != 2)
 						return
-					to_chat(user, "<span class='notice'>You add cables to the frame.</span>")
+					to_chat(user, "<span class='notice'>Podłączasz kable do ramy.</span>")
 					state = 3
 					icon_state = "3"
 				return
 		if(3)
 			if(P.tool_behaviour == TOOL_WIRECUTTER)
 				P.play_tool_sound(src)
-				to_chat(user, "<span class='notice'>You remove the cables.</span>")
+				to_chat(user, "<span class='notice'>Wyjmujesz kable.</span>")
 				state = 2
 				icon_state = "2"
 				new /obj/item/stack/cable_coil(drop_location(), 5, TRUE, user)
@@ -90,25 +90,25 @@
 				if(!P.tool_start_check(user, amount=2))
 					return
 				playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
-				to_chat(user, "<span class='notice'>You start to put in the glass panel...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz wkładać szklany panel...</span>")
 				if(P.use_tool(src, user, 20, amount=2))
 					if(state != 3)
 						return
-					to_chat(user, "<span class='notice'>You put in the glass panel.</span>")
+					to_chat(user, "<span class='notice'>Wkładasz szklany panel.</span>")
 					state = 4
 					src.icon_state = "4"
 				return
 		if(4)
 			if(P.tool_behaviour == TOOL_CROWBAR)
 				P.play_tool_sound(src)
-				to_chat(user, "<span class='notice'>You remove the glass panel.</span>")
+				to_chat(user, "<span class='notice'>Wyjmujesz szklany panel.</span>")
 				state = 3
 				icon_state = "3"
 				new /obj/item/stack/sheet/glass(drop_location(), 2, TRUE, user)
 				return
 			if(P.tool_behaviour == TOOL_SCREWDRIVER)
 				P.play_tool_sound(src)
-				to_chat(user, "<span class='notice'>You connect the monitor.</span>")
+				to_chat(user, "<span class='notice'>Podłączasz monitor.</span>")
 				var/obj/B = new circuit.build_path (loc, circuit)
 				B.setDir(dir)
 				transfer_fingerprints_to(B)
@@ -132,7 +132,7 @@
 		return
 
 	if(anchored)
-		to_chat(usr, "<span class='warning'>You must unwrench [src] before rotating it!</span>")
+		to_chat(usr, "<span class='warning'>Musisz odkręcić [src], zanim go obrócisz!</span>")
 		return
 
 	setDir(turn(dir, -90))

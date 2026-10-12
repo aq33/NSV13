@@ -1,48 +1,48 @@
 /mob/living/silicon/robot/examine(mob/user)
-	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!")
+	. = list("<span class='info'>To [icon2html(src, user)] <EM>[src]</EM>!")
 	if(desc)
 		. += "[desc]"
 
 	var/obj/act_module = get_active_held_item()
 	if(act_module)
-		. += "It is holding [icon2html(act_module, user)] \a [act_module]."
+		. += "Trzyma [icon2html(act_module, user)] [act_module]."
 	. += status_effect_examines()
 	if (getBruteLoss())
 		if (getBruteLoss() < maxHealth*0.5)
-			. += "<span class='warning'>It looks slightly dented.</span>"
+			. += "<span class='warning'>Jest lekko wgniecione.</span>"
 		else
-			. += "<span class='warning'><B>It looks severely dented!</B></span>"
+			. += "<span class='warning'><B>Jest mocno powgniatane!</B></span>"
 	if (getFireLoss() || getToxLoss())
 		var/overall_fireloss = getFireLoss() + getToxLoss()
 		if (overall_fireloss < maxHealth * 0.5)
-			. += "<span class='warning'>It looks slightly charred.</span>"
+			. += "<span class='warning'>Jest lekko osmalone.</span>"
 		else
-			. += "<span class='warning'><B>It looks severely burnt and heat-warped!</B></span>"
+			. += "<span class='warning'><B>Jest mocno spalony i powyginany od gorąca!</B></span>"
 	if (health < -maxHealth*0.5)
-		. += "<span class='warning'>It looks barely operational.</span>"
+		. += "<span class='warning'>Ledwo działa.</span>"
 	if (fire_stacks < 0)
-		. += "<span class='warning'>It's covered in water.</span>"
+		. += "<span class='warning'>Jest pokryty wodą.</span>"
 	else if (fire_stacks > 0)
-		. += "<span class='warning'>It's coated in something flammable.</span>"
+		. += "<span class='warning'>Jest pokryty czymś łatwopalnym.</span>"
 
 	if(opened)
-		. += "<span class='warning'>Its cover is open and the power cell is [cell ? "installed" : "missing"].</span>"
+		. += "<span class='warning'>Pokrywa jest otwarta, a ogniwo zasilające [cell ? "jest zainstalowane" : "jest nieobecne"].</span>"
 	else
-		. += "Its cover is closed[locked ? "" : ", and looks unlocked"]."
+		. += "Pokrywa jest zamknięta[locked ? "" : " i wygląda na odblokowaną"]."
 
 	if(cell && cell.charge <= 0)
-		. += "<span class='warning'>Its battery indicator is blinking red!</span>"
+		. += "<span class='warning'>Wskaźnik baterii miga na czerwono!</span>"
 
 	switch(stat)
 		if(CONSCIOUS)
 			if(shell)
-				. += "It appears to be an [deployed ? "active" : "empty"] AI shell."
+				. += "Wygląda na [deployed ? "aktywną" : "pustą"] powłokę SI."
 			else if(!client)
-				. += "It appears to be in stand-by mode." //afk
+				. += "Wygląda na to, że jest w trybie czuwania." //afk
 		if(UNCONSCIOUS)
-			. += "<span class='warning'>It doesn't seem to be responding.</span>"
+			. += "<span class='warning'>Wygląda na to, że nie reaguje.</span>"
 		if(DEAD)
-			. += "<span class='deadsay'>It looks like its system is corrupted and requires a reset.</span>"
+			. += "<span class='deadsay'>Wygląda na to, że jego system jest uszkodzony i wymaga resetu.</span>"
 	. += "</span>"
 
 	. += ..()

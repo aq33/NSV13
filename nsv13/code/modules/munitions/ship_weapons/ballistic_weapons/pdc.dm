@@ -121,7 +121,7 @@
 /obj/machinery/ship_weapon/pdc_mount/examine()
 	. = ..()
 	if(panel_open)
-		. += "The maintenance panel is <b>unscrewed</b> and the machinery could be <i>pried out</i>."
+		. += "Panel serwisowy jest <b>odkręcony</b>, a maszynerię można <i>wyważyć</i>."
 
 /obj/machinery/ship_weapon/pdc_mount/spawn_frame(disassembled)
 	var/obj/structure/frame/machine/ship_weapon/pdc_mount/M = new /obj/structure/frame/machine/ship_weapon/pdc_mount(loc)

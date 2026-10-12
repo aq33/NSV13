@@ -17,7 +17,7 @@
 	base_pixel_x = -16
 	move_to_delay = 10
 	aggro_vision_range = 9
-	speak_emote = list("chitters")
+	speak_emote = list("terkocze")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	ranged_cooldown_time = 60
 	projectiletype = /obj/item/projectile/mega_arachnid

@@ -49,20 +49,20 @@
 	//shorthands for if barrels are plural or not
 	switch(state)
 		if(BS_MOUNT_UNBOLTED)
-			. += "It is <i>unbolted</i> from the floor and could be <b>cut apart</b>."
+			. += "Jest <i>odkręcony</i> od podłogi i można go <b>rozciąć</b>."
 		if(BS_MOUNT_BOLTED)
-			. += "It is <b>bolted</b> down and can be <i>welded</i> to the floor."
+			. += "Jest <b>przykręcony</b> i można go <i>przyspawać</i> do podłogi."
 		if(BS_MOUNT_WELDED)
-			. += "It is <b>welded</b> to the floor and the <i>firing electronics</i> are missing."
+			. += "Jest <b>przyspawany</b> do podłogi, a brakuje <i>elektroniki strzelniczej</i>."
 		if(BS_ELECTRONICS_LOOSE)
-			. += "The firing electronics sit loose in the frame. They could be <b>pried out</b> or <i>screwed</i> into place."
+			. += "Elektronika strzelnicza leży luźno w ramie. Można ją <b>wyważyć</b> albo <i>przykręcić</i>."
 		if(BS_ELECTRONICS_SECURE)
-			. += "The firing electronics are <b>screwed</b> into place. There is a slot for a <i>multibarrel upgrade</i>, or an <i>igniter</i>."
+			. += "Elektronika strzelnicza jest <b>przykręcona</b>. Jest gniazdo na <i>ulepszenie wielolufowe</i> albo <i>zapalnik</i>."
 		if(BS_UPGRADE_LOOSE)
-			. += "The multibarrel upgrade is loose in the frame. The <i>screws</i> are loose, and it can be <b>pried out</b> of the frame."
+			. += "Ulepszenie wielolufowe leży luźno w ramie. <i>Wkręty</i> są luźne, a ulepszenie można <b>wyważyć</b> z ramy."
 		if(BS_UPGRADE_SECURED)
 			var/igniters_left = max_barrels - igniters_added
-			. += "The multibarrel upgrade is <b>screwed</b> into place. There [(igniters_left != 1) ? "are [igniters_left] slots for <i>igniters</i>." : "is 1 slot for an <i>igniter</i>."]"
+			. += "Ulepszenie wielolufowe jest <b>przykręcone</b>. Wolne gniazda na <i>zapalniki</i>: [igniters_left]."
 		if(BS_IGNITERS_PLACED)
 			. += "The igniter[sare] unsecured, and [thit] can either be <b>removed</b> by hand, or <i>screwed</i> into place."
 		if(BS_IGNITERS_SECURED)
@@ -73,7 +73,7 @@
 			. += "The wiring has been <b>soldered</b>, and can be covered with a <i>plasteel casing</i>."
 		if(BS_CASING_ADDED)
 			var/barrels_left = max_barrels - barrels_added
-			. += "The plasteel casing can be <b>cut away</b>, and there [(barrels_left != 1) ? "are [barrels_left] slots for <i>barrels</i>." : "is 1 slot for a <i>barrel</i>."]"
+			. += "Plastalową obudowę można <b>odciąć</b>, a wolne gniazda na <i>lufy</i>: [barrels_left]."
 		if(BS_BARRELS_PLACED)
 			. += "The barrel[sare] loose in the frame, and [thit] can either be <i>welded<i> to the frame or <b>pried out</b>."
 		if(BS_BARRELS_SECURED)
@@ -89,7 +89,7 @@
 				if(!do_after(user, 2 SECONDS, target=src))
 					return
 				W.forceMove(src)
-				to_chat(user, "<span class='notice'>You add the electronic firing mechanism.</span>")
+				to_chat(user, "<span class='notice'>Dodajesz elektroniczny mechanizm spustowy.</span>")
 				state = BS_ELECTRONICS_LOOSE
 				return TRUE
 
@@ -102,13 +102,13 @@
 					return
 				W.forceMove(src)
 				max_barrels = S.barrels
-				to_chat(user, "<span class='notice'>You install the [S].</span>")
+				to_chat(user, "<span class='notice'>Instalujesz [S].</span>")
 				state = BS_UPGRADE_LOOSE
 				return TRUE
 			if(istype(W, /obj/item/assembly/igniter))
 				W.forceMove(src)
 				igniters_added++
-				to_chat(user, "<span class='notice'>You add the [W] to the [src].</span>")
+				to_chat(user, "<span class='notice'>Dodajesz [W] do [src].</span>")
 				if(igniters_added >= max_barrels)
 					state = BS_IGNITERS_PLACED
 				return TRUE
@@ -117,15 +117,15 @@
 			if(istype(W, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/S = W
 				if(S.get_amount() < num_cables)
-					to_chat(user, "<span class='warning'>You need four pieces of [S] to wire the NAC!</span>")
+					to_chat(user, "<span class='warning'>Do okablowania NAC potrzebujesz czterech kawałków [S]!</span>")
 					return
 				if(!do_after(user, 2 SECONDS, target=src))
 					return
 				if(S.get_amount() < num_cables)
-					to_chat(user, "<span class='warning'>You need four pieces of [S] to wire the NAC!</span>")
+					to_chat(user, "<span class='warning'>Do okablowania NAC potrzebujesz czterech kawałków [S]!</span>")
 					return
 				S.use(num_cables)
-				to_chat(user, "<span class='notice'>You wire up the electronics.</span>")
+				to_chat(user, "<span class='notice'>Okablowujesz elektronikę.</span>")
 				state = BS_WIRED
 				return TRUE
 
@@ -133,15 +133,15 @@
 			if(istype(W, /obj/item/stack/sheet/plasteel))
 				var/obj/item/stack/sheet/plasteel/S = W
 				if(S.get_amount() < num_sheets_casing)
-					to_chat(user, "<span class='warning'>You need four sheets of [S] to finish the [src]!</span>")
+					to_chat(user, "<span class='warning'>Do dokończenia [src] potrzebujesz czterech arkuszy [S]!</span>")
 					return
 				if(!do_after(user, 2 SECONDS, target=src))
 					return
 				if(S.get_amount() < num_sheets_casing)
-					to_chat(user, "<span class='warning'>You need four sheets of [S] to finish the [src]!</span>")
+					to_chat(user, "<span class='warning'>Do dokończenia [src] potrzebujesz czterech arkuszy [S]!</span>")
 					return
 				S.use(num_sheets_casing)
-				to_chat(user, "<span class='notice'>You add the outer casing to the assembly.</span>")
+				to_chat(user, "<span class='notice'>Dodajesz zewnętrzną obudowę do zespołu.</span>")
 				state = BS_CASING_ADDED
 				return TRUE
 
@@ -149,7 +149,7 @@
 			if(istype(W, /obj/item/ship_weapon/parts/mac_barrel))
 				W.forceMove(src)
 				barrels_added++
-				to_chat(user, "<span class='notice'>You add the [W] to the [src].</span>")
+				to_chat(user, "<span class='notice'>Dodajesz [W] do [src].</span>")
 				if(barrels_added >= max_barrels)
 					state = BS_BARRELS_PLACED
 				return TRUE
@@ -159,7 +159,7 @@
 				if(!do_after(user, 2 SECONDS, target=src))
 					return
 				W.forceMove(src)
-				to_chat(user, "<span class='notice'>You slide the loading tray into place.</span>")
+				to_chat(user, "<span class='notice'>Wsuwasz tacę ładowniczą na miejsce.</span>")
 				if(ispath(text2path("/obj/machinery/ship_weapon/deck_turret/_[max_barrels]")))
 					output_path = text2path("/obj/machinery/ship_weapon/deck_turret/_[max_barrels]")
 				var/obj/machinery/ship_weapon/built = new output_path(loc)
@@ -190,7 +190,7 @@
 	if(state == BS_IGNITERS_PLACED)
 		if(!do_after(user, 2 SECONDS, target=src))
 			return
-		to_chat(user, "<span class='notice'>You remove the igniter[(max_barrels != 1) ? "s" : ""].</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz zapalnik(i).</span>")
 		for(var/obj/item/assembly/igniter/C in src)
 			C.forceMove(user.loc)
 		igniters_added = 0
@@ -202,14 +202,14 @@
 	switch(state)
 		if(BS_MOUNT_UNBOLTED)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
-				to_chat(user, "<span class='notice'>You bolt the [src] to the floor.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz [src] do podłogi.</span>")
 				anchored = TRUE
 				state = BS_MOUNT_BOLTED
 				return TRUE
 
 		if(BS_MOUNT_BOLTED)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
-				to_chat(user, "<span class='notice'>You unbolt the [src] from the floor.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz [src] od podłogi.</span>")
 				state = BS_MOUNT_UNBOLTED
 				return TRUE
 
@@ -218,34 +218,34 @@
 	switch(state)
 		if(BS_MOUNT_BOLTED)
 			if(anchored && tool.use_tool(src, user, 2 SECONDS, amount=2, volume=100))
-				to_chat(user, "<span class='notice'>You weld the [src] to the floor.</span>")
+				to_chat(user, "<span class='notice'>Przyspawujesz [src] do podłogi.</span>")
 				state = BS_MOUNT_WELDED
 				return TRUE
 
 		if(BS_BARRELS_PLACED)
 			if(tool.use_tool(src, user, 2 SECONDS, amount=2, volume=100))
-				to_chat(user, "<span class='notice'>You weld the barrel[(max_barrels != 1) ? "s" : ""] to the frame.</span>")
+				to_chat(user, "<span class='notice'>Przyspawujesz lufę (lufy) do ramy.</span>")
 				state = BS_BARRELS_SECURED
 				return TRUE
 
 		if(BS_BARRELS_SECURED)
 			if(tool.use_tool(src, user, 2 SECONDS, amount=2, volume=100))
-				to_chat(user, "<span class='notice'>You cut the barrel[(max_barrels != 1) ? "s" : ""] free from the frame.</span>")
+				to_chat(user, "<span class='notice'>Odcinasz lufę (lufy) od ramy.</span>")
 				state = BS_BARRELS_PLACED
 				return TRUE
 
 		if(BS_WIRED)
 			if(tool.use_tool(src, user, 2 SECONDS, amount=2, volume=100))
-				to_chat(user, "<span class='notice'>You solder the wiring into place.</span>")
+				to_chat(user, "<span class='notice'>Lutujesz okablowanie.</span>")
 				state = BS_WIRES_SOLDERED
 				return TRUE
 
 		if(BS_CASING_ADDED)
 			if(tool.use_tool(src, user, 2 SECONDS, amount=2, volume=100))
-				to_chat(user, "<span class='notice'>You slice away the outer casing.</span>")
+				to_chat(user, "<span class='notice'>Odcinasz zewnętrzną obudowę.</span>")
 				new/obj/item/stack/sheet/plasteel(user.loc, num_sheets_casing)
 				if(barrels_added)
-					to_chat(user, "<span class='notice'>The barrel[(barrels_added != 1) ? "s fall" : " falls"] out of the frame!</span>")
+					to_chat(user, "<span class='notice'>Lufy wypadają z ramy!</span>")
 					for(var/obj/item/ship_weapon/parts/mac_barrel/R in src)
 						R.forceMove(user.loc)
 				barrels_added = 0
@@ -254,19 +254,19 @@
 
 		if(BS_WIRES_SOLDERED)
 			if(tool.use_tool(src, user, 2 SECONDS, amount=2, volume=100))
-				to_chat(user, "<span class='notice'>You desolder the wires.</span>")
+				to_chat(user, "<span class='notice'>Wylutowujesz przewody.</span>")
 				state = BS_WIRED
 				return TRUE
 
 		if(BS_MOUNT_WELDED)
 			if(tool.use_tool(src, user, 2 SECONDS, amount=2, volume=100))
-				to_chat(user, "<span class='notice'>You unweld the [src] from the floor.</span>")
+				to_chat(user, "<span class='notice'>Odspawujesz [src] od podłogi.</span>")
 				state = BS_MOUNT_BOLTED
 				return TRUE
 
 		if(BS_MOUNT_UNBOLTED)
 			if(tool.use_tool(src, user, 2 SECONDS, amount=2, volume=100))
-				to_chat(user, "<span class='notice'>You cut apart the frame.</span>")
+				to_chat(user, "<span class='notice'>Rozcinasz ramę.</span>")
 				new/obj/item/stack/sheet/plasteel(user.loc, num_sheets_frame)
 				qdel(src)
 				return TRUE
@@ -279,7 +279,7 @@
 				var/obj/item/ship_weapon/parts/firing_electronics/F = (locate(/obj/item/ship_weapon/parts/firing_electronics) in src)
 				if(F)
 					F.forceMove(user.loc)
-				to_chat(user, "<span class='notice'>You pry the firing electronics loose.</span>")
+				to_chat(user, "<span class='notice'>Wyważasz elektronikę strzelniczą.</span>")
 				state = BS_MOUNT_WELDED
 				return TRUE
 
@@ -287,7 +287,7 @@
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
 				for(var/obj/item/ship_weapon/parts/mac_barrel/R in src)
 					R.forceMove(user.loc)
-				to_chat(user, "<span class='notice'>You pry the barrel[(max_barrels != 1) ? "s" : ""] loose.</span>")
+				to_chat(user, "<span class='notice'>Wyważasz lufę (lufy).</span>")
 				barrels_added = 0
 				state = BS_CASING_ADDED
 				return TRUE
@@ -297,7 +297,7 @@
 				var/obj/item/circuitboard/multibarrel_upgrade/C = (locate(/obj/item/circuitboard/multibarrel_upgrade) in src)
 				if(C)
 					C.forceMove(user.loc)
-				to_chat(user, "<span class='notice'>You pry the [C] loose.</span>")
+				to_chat(user, "<span class='notice'>Wyważasz [C].</span>")
 				max_barrels = 1
 				lazy_icon()
 				state = BS_ELECTRONICS_SECURE
@@ -308,7 +308,7 @@
 	if(state == BS_WIRED)
 		if(tool.use_tool(src, user, 2 SECONDS, volume=100))
 			new/obj/item/stack/cable_coil(user.loc, num_cables)
-			to_chat(user, "<span class='notice'>You cut the wires from the frame.</span>")
+			to_chat(user, "<span class='notice'>Wycinasz przewody z ramy.</span>")
 			state = BS_IGNITERS_SECURED
 			return TRUE
 
@@ -318,20 +318,20 @@
 
 		if(BS_ELECTRONICS_LOOSE)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
-				to_chat(user, "<span class='notice'>You secure the firing electronics.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz elektronikę strzelniczą.</span>")
 				state = BS_ELECTRONICS_SECURE
 				return TRUE
 
 		if(BS_IGNITERS_PLACED)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
-				to_chat(user, "<span class='notice'>You screw the igniter[(max_barrels != 1) ? "s" : ""] into place.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz zapalnik(i).</span>")
 				state = BS_IGNITERS_SECURED
 				return TRUE
 
 		if(BS_UPGRADE_LOOSE)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
 				var/obj/item/circuitboard/multibarrel_upgrade/C = locate(/obj/item/circuitboard/multibarrel_upgrade)
-				to_chat(user, "<span class='notice'>You secure the [(C) ? "[C]" : "upgrade"].</span>")
+				to_chat(user, "<span class='notice'>Mocujesz [(C) ? "[C]" : "ulepszenie"].</span>")
 				lazy_icon()
 				state = BS_UPGRADE_SECURED
 				return TRUE
@@ -339,9 +339,9 @@
 		if(BS_UPGRADE_SECURED)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
 				var/obj/item/circuitboard/multibarrel_upgrade/C = locate(/obj/item/circuitboard/multibarrel_upgrade)
-				to_chat(user, "<span class='notice'>You unsecure the [(C) ? "[C]" : "upgrade"].</span>")
+				to_chat(user, "<span class='notice'>Odczepiasz [(C) ? "[C]" : "ulepszenie"].</span>")
 				if(igniters_added)
-					to_chat(user, "<span class='notice'>The igniter[(igniters_added != 1) ? "s fall" : " falls"] out of the frame!</span>")
+					to_chat(user, "<span class='notice'>Zapalniki wypadają z ramy!</span>")
 					for(var/obj/item/assembly/igniter/D in src)
 						D.forceMove(user.loc)
 					igniters_added = 0
@@ -351,13 +351,13 @@
 
 		if(BS_IGNITERS_SECURED)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
-				to_chat(user, "<span class='notice'>You unscrew the igniter[(max_barrels != 1) ? "s" : ""].</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz zapalnik(i).</span>")
 				state = BS_IGNITERS_PLACED
 				return TRUE
 
 		if(BS_ELECTRONICS_SECURE)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
-				to_chat(user, "<span class='notice'>You unsecure the firing electronics.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz elektronikę strzelniczą.</span>")
 				state = BS_ELECTRONICS_LOOSE
 				return TRUE
 

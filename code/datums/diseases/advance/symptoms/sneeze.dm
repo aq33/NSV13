@@ -17,7 +17,7 @@ Bonus
 */
 /datum/symptom/sneeze
 	name = "Sneezing"
-	desc = "The virus causes irritation of the nasal cavity, making the host sneeze occasionally."
+	desc = "Wirus podrażnia jamę nosową, przez co nosiciel czasem kicha."
 	stealth = -2
 	resistance = 3
 	stage_speed = 0
@@ -29,8 +29,7 @@ Bonus
 	prefixes = list("Nasal ")
 	bodies = list("Cold")
 	var/infective = FALSE
-	threshold_desc = "<b>Stealth 4:</b> The symptom remains hidden until active.<br>\
-					  <b>Transmission 12:</b> The host may spread the disease through sneezing."
+	threshold_desc = "<b>Ukrycie 4:</b> objaw pozostaje ukryty, dopóki nie jest aktywny.<br><b>Transmisja 12:</b> nosiciel może roznosić chorobę przez kichanie."
 
 /datum/symptom/sneeze/Start(datum/disease/advance/A)
 	if(!..())

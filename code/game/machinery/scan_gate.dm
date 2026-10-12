@@ -52,9 +52,9 @@
 /obj/machinery/scanner_gate/examine(mob/user)
 	. = ..()
 	if(locked)
-		. += "<span class='notice'>The control panel is ID-locked. Swipe a valid ID to unlock it.</span>"
+		. += "<span class='notice'>Panel sterowania jest zablokowany kartą ID. Przeciągnij ważną kartę, by go odblokować.</span>"
 	else
-		. += "<span class='notice'>The control panel is unlocked. Swipe an ID to lock it.</span>"
+		. += "<span class='notice'>Panel sterowania jest odblokowany. Przeciągnij kartę ID, by go zablokować.</span>"
 
 /obj/machinery/scanner_gate/proc/on_entered(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
@@ -79,18 +79,18 @@
 			if(allowed(user))
 				locked = FALSE
 				req_access = list()
-				to_chat(user, "<span class='notice'>You unlock [src].</span>")
+				to_chat(user, "<span class='notice'>Odblokowujesz [src].</span>")
 				//Update to viewers
 				ui_update()
 		else if(!(obj_flags & EMAGGED))
-			to_chat(user, "<span class='notice'>You lock [src] with [W].</span>")
+			to_chat(user, "<span class='notice'>Blokujesz [src] za pomocą [W].</span>")
 			var/list/access = W.GetAccess()
 			req_access = access
 			locked = TRUE
 			//Update to viewers
 			ui_update()
 		else
-			to_chat(user, "<span class='warning'>You try to lock [src] with [W], but nothing happens.</span>")
+			to_chat(user, "<span class='warning'>Próbujesz zablokować [src] za pomocą [W], ale nic się nie dzieje.</span>")
 	else
 		return ..()
 
@@ -100,7 +100,7 @@
 	locked = FALSE
 	req_access = list()
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class='notice'>You fry the ID checking system.</span>")
+	to_chat(user, "<span class='notice'>Przepalasz system sprawdzania ID.</span>")
 	//Update to viewers
 	ui_update()
 

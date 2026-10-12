@@ -447,7 +447,7 @@
 	// Message language override, if no language was spoken emote 'makes a strange noise'
 	if(!message_language && !message_mods[CHATMESSAGE_EMOTE])
 		message_mods[CHATMESSAGE_EMOTE] = TRUE
-		handled_message = "makes a strange sound."
+		handled_message = "wydaje dziwny dźwięk."
 
 	// Check for virtual speakers (aka hearing a message through a radio)
 	if (istype(speaker, /atom/movable/virtualspeaker))

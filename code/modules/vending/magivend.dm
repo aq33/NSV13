@@ -5,7 +5,7 @@
 	product_slogans = "Ciskaj zaklęciami prawidłowo z MagiVend!;Bądź swoim własnym Houdinim! Użyj MagiVend!"
 	vend_reply = "Czarującego wieczoru!"
 	light_color = LIGHT_COLOR_PURPLE
-	product_ads = "FJKLFJSD;AJKFLBJAKL;1234 LOONIES LOL!;>MFW;Kill them fuckers!;GET DAT FUKKEN DISK;HONK!;EI NATH;Destroy the station!;Admin conspiracies since forever!;Space-time bending hardware!"
+	product_ads = "FJKLFJSD;AJKFLBJAKL;1234 LOONIES LOL!;>MFW;Pozabijać skurwieli!;DAWAJ TEN PIEPRZONY DYSK;HONK!;EI NATH;Zniszczcie stację!;Spiski adminów od zawsze!;Sprzęt zakrzywiający czasoprzestrzeń!"
 	products = list(/obj/item/clothing/head/wizard = 1,
 		            /obj/item/clothing/suit/wizrobe = 1,
 		            /obj/item/clothing/head/wizard/red = 1,

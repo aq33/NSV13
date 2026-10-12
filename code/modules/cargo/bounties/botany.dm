@@ -9,7 +9,7 @@
 	..()
 
 	if (format_exception == FALSE)
-		description = "Central Command's head chef is looking to prepare a fine [foodtype] with [name]. [bonus_desc]"
+		description = "Szef kuchni Centrali chce przygotować wyborne danie ([foodtype]) z: [name]. [bonus_desc]"
 		reward += multiplier * 1000
 		required_count = rand(5, 10)
 
@@ -51,7 +51,7 @@
 	name = "Death Berries"
 	wanted_types = list(/obj/item/food/grown/berries/death)
 	multiplier = 2
-	bonus_desc = "He insists that \"he knows what he's doing\"."
+	bonus_desc = "Upiera się, że „wie, co robi”."
 	foodtype = "sorbet"
 
 /datum/bounty/item/botany/berries_glow
@@ -65,29 +65,29 @@
 	wanted_types = list(/obj/item/food/grown/cannabis)
 	exclude_types = list(/obj/item/food/grown/cannabis/white, /obj/item/food/grown/cannabis/death, /obj/item/food/grown/cannabis/ultimate)
 	multiplier = 4 //hush money
-	bonus_desc = "Do not mention this shipment to security."
-	foodtype = "batch of \"muffins\""
+	bonus_desc = "Nie wspominajcie o tej przesyłce ochronie."
+	foodtype = "porcja „muffinek”"
 	
 /datum/bounty/item/botany/cannabis_white
 	name = "Lifeweed Leaves"
 	wanted_types = list(/obj/item/food/grown/cannabis/white)
 	multiplier = 6
-	bonus_desc = "Do not mention this shipment to security."
+	bonus_desc = "Nie wspominajcie o tej przesyłce ochronie."
 	foodtype = "\"meal\""
 
 /datum/bounty/item/botany/cannabis_death
 	name = "Deathweed Leaves"
 	wanted_types = list(/obj/item/food/grown/cannabis/death)
 	multiplier = 6
-	bonus_desc = "Do not mention this shipment to security."
+	bonus_desc = "Nie wspominajcie o tej przesyłce ochronie."
 	foodtype = "\"meal\""
 
 /datum/bounty/item/botany/cannabis_ultimate
 	name = "Omega Weed Leaves"
 	wanted_types = list(/obj/item/food/grown/cannabis/ultimate)
 	multiplier = 6
-	bonus_desc = "Under no circumstances mention this shipment to security."
-	foodtype = "batch of \"brownies\""
+	bonus_desc = "Pod żadnym pozorem nie wspominajcie o tej przesyłce ochronie."
+	foodtype = "porcja „brownies”"
 
 /datum/bounty/item/botany/wheat
 	name = "Wheat Grains"
@@ -124,24 +124,24 @@
 /datum/bounty/item/botany/citrus_oranges
 	name = "Oranges"
 	wanted_types = list(/obj/item/food/grown/citrus/orange)
-	bonus_desc = "Do not ship lemons or limes." //I vanted orahnge!
+	bonus_desc = "Nie wysyłajcie cytryn ani limonek." //I vanted orahnge!
 	foodtype = "sorbet"
 
 /datum/bounty/item/botany/eggplant
 	name = "Eggplants"
 	wanted_types = list(/obj/item/food/grown/eggplant)
-	bonus_desc = "Not to be confused with egg-plants."
+	bonus_desc = "Nie mylić z bakłażanami."
 
 /datum/bounty/item/botany/eggplant_eggy
 	name = "Egg-plants"
 	wanted_types = list(/obj/item/food/grown/shell/eggy)
-	bonus_desc = "Not to be confused with eggplants."
+	bonus_desc = "Nie mylić z jajkami."
 	multiplier = 2
 
 /datum/bounty/item/botany/kudzu
 	name = "Kudzu Pods"
 	wanted_types = list(/obj/item/food/grown/kudzupod)
-	bonus_desc = "Store in a dry, dark place."
+	bonus_desc = "Przechowywać w suchym, ciemnym miejscu."
 	multiplier = 4
 
 /datum/bounty/item/botany/watermelon
@@ -177,13 +177,13 @@
 	name = "Death Nettles"
 	wanted_types = list(/obj/item/food/grown/nettle/death)
 	multiplier = 2
-	bonus_desc = "Wear protection when handling them."
+	bonus_desc = "Przy obchodzeniu się z nimi noście ochronę."
 	foodtype = "cheese"
 
 /datum/bounty/item/botany/pineapples
 	name = "Pineapples"
 	wanted_types = list(/obj/item/food/grown/pineapple)
-	bonus_desc = "Not for human consumption."
+	bonus_desc = "Nie do spożycia przez ludzi."
 	foodtype = "ashtray"
 
 /datum/bounty/item/botany/tomato
@@ -200,12 +200,12 @@
 	name = "Oats"
 	wanted_types = list(/obj/item/food/grown/oat)
 	multiplier = 2
-	foodtype = "batch of oatmeal"
-	bonus_desc = "Squats and oats. We're all out of oats."
+	foodtype = "porcja owsianki"
+	bonus_desc = "Przysiady i owies. Skończył nam się owies."
 
 /datum/bounty/item/botany/forgetmenot
 	name = "Forget-Me-Nots"
-	description = "Commander Zot has his eyes on Quartermaster Maya. Send a shipment of forget-me-nots - her favorite flower - and he'll happily reward you."
+	description = "Komandor Zot ma oko na kwatermistrzynię Mayę. Wyślijcie niezapominajki – jej ulubione kwiaty – a chętnie was wynagrodzi."
 	reward = 7000
 	required_count = 3
 	wanted_types = list(/obj/item/food/grown/poppy/geranium/forgetmenot)
@@ -213,7 +213,7 @@
 
 /datum/bounty/item/botany/geranium
 	name = "Geraniums"
-	description = "Commander Zot has the hots for Commander Zena. Send a shipment of geraniums - her favorite flower - and he'll happily reward you."
+	description = "Komandor Zot ma chrapkę na komandor Zenę. Wyślijcie pelargonie – jej ulubione kwiaty – a chętnie was wynagrodzi."
 	reward = 6000
 	required_count = 3
 	wanted_types = list(/obj/item/food/grown/poppy/geranium)
@@ -221,7 +221,7 @@
 
 /datum/bounty/item/botany/rainbowflowercrown
 	name = "Rainbow Flower Crowns"
-	description = "Central Command is concerned about their intern suicide rate. A shipment of rainbow flower crowns should do nicely to improve morale."
+	description = "Centrala martwi się wskaźnikiem samobójstw wśród stażystów. Przesyłka tęczowych wianków powinna poprawić morale."
 	reward = 10000
 	required_count = 3
 	wanted_types = list(/obj/item/clothing/head/rainbowbunchcrown)

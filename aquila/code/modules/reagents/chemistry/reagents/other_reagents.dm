@@ -8,15 +8,15 @@
 		var/datum/species/species_type = pick(random_races)
 		H.set_species(species_type)
 		H.reagents.del_reagent(type)
-		to_chat(H, "<span class='warning'>You've become \a [initial(species_type.name)]!</span>")
+		to_chat(H, "<span class='warning'>Stajesz się: [initial(species_type.name)]!</span>")
 		return TRUE
 	return ..()
 
 /datum/reagent/concentrated_bz
 	name = "Concentrated BZ"
-	description = "A hyperconcentrated liquid form of BZ gas, known to cause an extremely adverse reaction to changelings. Also causes minor brain damage."
+	description = "Hiperskoncentrowana ciekła postać gazu BZ, znana z wywoływania wyjątkowo silnej reakcji u zmiennokształtnych. Powoduje też lekkie uszkodzenia mózgu."
 	color = "#FAFF00"
-	taste_description = "acrid cinnamon"
+	taste_description = "cierpki cynamon"
 
 
 /datum/reagent/concentrated_bz/on_mob_life(mob/living/L)
@@ -28,38 +28,38 @@
 				L.losebreath += 1
 				L.adjustOxyLoss(3,5)
 				L.emote("gasp")
-				to_chat(L, "<font size=3 color=red><b>You can't breathe!</b></font>")
+				to_chat(L, "<font size=3 color=red><b>Nie możesz oddychać!</b></font>")
 
 		L.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2, 50)
 	return ..()
 
 /datum/reagent/fake_cbz
 	name = "Concentrated BZ"
-	description = "A hyperconcentrated liquid form of BZ gas, known to cause an extremely adverse reaction to changelings. Also causes minor brain damage."
+	description = "Hiperskoncentrowana ciekła postać gazu BZ, znana z wywoływania wyjątkowo silnej reakcji u zmiennokształtnych. Powoduje też lekkie uszkodzenia mózgu."
 	color = "#FAFF00"
-	taste_description = "acrid cinnamon"
+	taste_description = "cierpki cynamon"
 
 
 /datum/reagent/fake_cbz/on_mob_life(mob/living/L)
 	L.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2, 50)
 	if(prob(15))
-		to_chat(L, "You don't feel much of anything")
+		to_chat(L, "Prawie nic nie czujesz")
 
 /datum/reagent/water/holywater/on_mob_life(mob/living/carbon/M)
 	if(ishuman(M) && is_sinfuldemon(M) && prob(80) && islist(data))
 		switch(data["misc"])
 			if(1 to 4)
-				to_chat(M, span_warning("Your unholy blood begins to burn as holy power creeps through you."))
+				to_chat(M, span_warning("Twoja nieświęta krew zaczyna płonąć, gdy przenika cię święta moc."))
 				M.adjustFireLoss(1)
 			if(5 to 10)
-				to_chat(M, span_danger("The burning deepens and strengthens!"))
+				to_chat(M, span_danger("Pieczenie się pogłębia i wzmaga!"))
 				M.adjustFireLoss(2)
 			if(11 to 12)
-				to_chat(M, span_danger("Your flesh itself begins to melt apart in agony!"))
+				to_chat(M, span_danger("Twoje ciało zaczyna rozpadać się w agonii!"))
 				M.adjustFireLoss(3)
 				M.emote("scream")
 			if(13 to INFINITY)
-				M.visible_message(span_danger("[M] suddenly ignites in a brilliant flash of white!"), span_userdanger("You suddenly ignite in a holy fire!"))
+				M.visible_message(span_danger("[M] nagle staje w płomieniach w olśniewającym białym blasku!"), span_userdanger("Nagle stajesz w świętym ogniu!"))
 				M.adjust_fire_stacks(3)
 				M.IgniteMob()
 				M.adjustFireLoss(4)

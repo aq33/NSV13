@@ -20,7 +20,7 @@
 	if(slot != ITEM_SLOT_HEAD)
 		return
 	if(!ismonkey(user) || user.key)
-		to_chat(user, "<span class='boldnotice'>You feel a stabbing pain in the back of your head for a moment.</span>")
+		to_chat(user, "<span class='boldnotice'>Przez chwilę czujesz kłujący ból z tyłu głowy.</span>")
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
 		if(isliving(user)) //I don't know what normally would force us to check this, but it's worth checking
 			var/mob/living/M = user
@@ -33,10 +33,10 @@
 	if (user.stat) //Checks if the monkey is dead.
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE) //If so, buzz and do not poll ghosts
 		return
-	user.visible_message("<span class='warning'>[src] powers up!</span>")
+	user.visible_message("<span class='warning'>[src] się uruchamia!</span>")
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	var/list/candidates = pollCandidatesForMob(
-		Question = "Do you want to play as a mind magnified monkey?",
+		Question = "Chcesz zagrać jako małpa o wzmocnionym umyśle?",
 		jobbanType = ROLE_MONKEY_HELMET,
 		role_preference_key = null,
 		poll_time = 100,
@@ -47,11 +47,11 @@
 	if(QDELETED(src) || !user || magnification || user.stat)
 		return
 	if(user.key || (src != user.head)) //Something important about the monkey changed, abort
-		user.visible_message("<span class='notice'>[src] powers down!</span>")
+		user.visible_message("<span class='notice'>[src] się wyłącza!</span>")
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
 		return
 	if(!candidates.len)
-		user.visible_message("<span class='notice'>[src] falls silent. Maybe you should try again later?</span>")
+		user.visible_message("<span class='notice'>[src] milknie. Może spróbuj później?</span>")
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
 		return
 	var/mob/picked = pick(candidates)
@@ -63,7 +63,7 @@
 	update_icon()
 	compile_monkey_icon() //Have to do this in order to make it appear active
 	user.update_inv_head()
-	to_chat(user, "<span class='notice'>You're a mind magnified monkey! Protect your helmet with your life; if you lose it, your sentience goes with it! Your helmet also strongly compels you to assist Nanotrasen and you should always act with the best interests of the station in mind.</span>")
+	to_chat(user, "<span class='notice'>Jesteś małpą o wzmocnionym umyśle! Chroń swój hełm za cenę życia; jeśli go stracisz, stracisz też świadomość! Hełm silnie zmusza cię też do pomagania Nanotrasen i zawsze powinieneś działać w najlepszym interesie stacji.</span>")
 
 
 /obj/item/clothing/head/monkey_sentience_helmet/Destroy()
@@ -79,7 +79,7 @@
 	if (!current) //Something has gone *really* wrong if this happens
 		CRASH("A mind registered to a monkey sentience helmet doesn't have a current mob while disconnecting!")
 	magnification = null
-	to_chat(current, "<span class='userdanger'>You feel your flicker of sentience ripped away from you, as everything becomes dim...</span>")
+	to_chat(current, "<span class='userdanger'>Czujesz, jak twój przebłysk świadomości zostaje ci wydarty, a wszystko przygasa...</span>")
 	current.ghostize(FALSE)
 
 	if(QDELING(src)) //The rest of this is stuff that would be pointless if we're being destroyed
@@ -87,14 +87,14 @@
 	if(old) //If the helmet was put through an attempted mind transfer, this is retribution
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
 		playsound(src, "sparks", 100, TRUE)
-		current.visible_message("<span class='warning'>[src] fizzles and breaks apart!</span>")
+		current.visible_message("<span class='warning'>[src] syczy i się rozpada!</span>")
 		new /obj/effect/decal/cleanable/ash/crematorium(drop_location()) //just in case they're in a locker or other containers it needs to use crematorium ash, see the path itself for an explanation
 		qdel(src)
 		return
 	playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
 	update_icon()
 	compile_monkey_icon() //Have to do this in order to make it appear inactive
-	current.visible_message("<span class='warning'>[src] powers down!</span>")
+	current.visible_message("<span class='warning'>[src] się wyłącza!</span>")
 
 /obj/item/clothing/head/monkey_sentience_helmet/attack_paw(mob/user)
 	//Typecasting to monkey just to see if we're on the user's head
@@ -109,8 +109,8 @@
 	//Spam? No thanks, we're good.
 	if(COOLDOWN_FINISHED(src, message_cooldown))
 		user.visible_message( \
-		"<span class='warning'>[user.name] [user.p_are()] trying to take [src] off [user.p_their()] head!</span>", \
-		"<span class='userdanger'>You feel a sharp pain as you take [src] off!</span>")
+		"<span class='warning'>[user.name] próbuje zdjąć [src] z głowy!</span>", \
+		"<span class='userdanger'>Czujesz ostry ból, zdejmując [src]!</span>")
 		COOLDOWN_START(src, message_cooldown, 5 SECONDS)
 
 	//Give them a fair chance to realize they're about to commit mind death

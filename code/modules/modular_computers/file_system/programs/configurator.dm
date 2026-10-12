@@ -5,7 +5,7 @@
 /datum/computer_file/program/computerconfig
 	filename = "compconfig"
 	filedesc = "Settings"
-	extended_desc = "This program allows configuration of computer's hardware and operating system"
+	extended_desc = "Ten program pozwala konfigurować sprzęt i system operacyjny komputera"
 	program_icon_state = "generic"
 	unsendable = 1
 	undeletable = 1
@@ -73,7 +73,7 @@
 		if("PC_set_classic_color")
 			if(computer.device_theme != THEME_THINKTRONIC)
 				return
-			var/new_color = input(usr, "Choose a new color for the device's system theme.", "System Color",computer.classic_color) as color|null
+			var/new_color = input(usr, "Wybierz nowy kolor motywu systemowego urządzenia.", "Kolor systemu",computer.classic_color) as color|null
 			if(!new_color)
 				return
 			computer.classic_color = new_color

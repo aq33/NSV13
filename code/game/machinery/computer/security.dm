@@ -213,7 +213,7 @@
 	if(isliving(user))
 		playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 	if(src.z > 6)
-		to_chat(user, "<span class='boldannounce'>Unable to establish a connection</span>: \black You're too far away from the station!")
+		to_chat(user, "<span class='boldannounce'>Nie można nawiązać połączenia</span>: \black jesteś za daleko od stacji!")
 		return
 	var/dat
 
@@ -266,7 +266,7 @@
 	"}
 					dat += {"
 <p style='text-align:center;'>"}
-					dat += "<A href='byond://?src=[REF(src)];choice=New Record (General)'>New Record</A><BR>"
+					dat += "<A href='byond://?src=[REF(src)];choice=New Record (General)'>Nowy rekord</A><BR>"
 					//search bar
 					dat += {"
 						<table width='560' align='center' cellspacing='0' cellpadding='5' id='maintable'>
@@ -318,7 +318,7 @@
 									background = "'background-color:#4F7529;'"
 								if("")
 									background = "''" //"'background-color:#FFFFFF;'"
-									crimstat = "No Record."
+									crimstat = "Brak rekordu."
 							dat += "<tr style=[background]>"
 							dat += text("<td><input type='hidden' value='[] [] [] []'></input><A href='byond://?src=[REF(src)];choice=Browse Record;d_rec=[REF(R)]'>[]</a></td>", R.fields["name"], R.fields["id"], R.fields["rank"], R.fields["fingerprint"], R.fields["name"])
 							dat += text("<td>[]</td>", R.fields["id"])
@@ -332,13 +332,13 @@
 							var complete_list = maintable.innerHTML;
 						</script>
 						<hr width='75%' />"}
-					dat += "<A href='byond://?src=[REF(src)];choice=Record Maintenance'>Record Maintenance</A><br><br>"
-					dat += "<A href='byond://?src=[REF(src)];choice=Log Out'>{Log Out}</A>"
+					dat += "<A href='byond://?src=[REF(src)];choice=Record Maintenance'>Konserwacja rekordów</A><br><br>"
+					dat += "<A href='byond://?src=[REF(src)];choice=Log Out'>{Wyloguj}</A>"
 				if(2)
-					dat += "<B>Records Maintenance</B><HR>"
+					dat += "<B>Konserwacja rekordów</B><HR>"
 					dat += "<BR><A href='byond://?src=[REF(src)];choice=Delete All Records'>Delete All Records</A><BR><BR><A href='byond://?src=[REF(src)];choice=Return'>Back</A>"
 				if(3)
-					dat += "<font size='4'><b>Security Record</b></font><br>"
+					dat += "<font size='4'><b>Akta ochrony</b></font><br>"
 					if(istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1))
 						if(istype(active1.fields["photo_front"], /obj/item/photo))
 							var/obj/item/photo/P1 = active1.fields["photo_front"]
@@ -366,9 +366,9 @@
 						<a href='byond://?src=[REF(src)];choice=Edit Field;field=upd_photo_side'>Update side photo</a></td></table>
 						</td></tr></table></td></tr></table>"} //NSV13 - TEXT AMENDED, "GENERAL RECORDS" - Roleplaying Records
 					else
-						dat += "<br>General Record Lost!<br>"
+						dat += "<br>Utracono akta ogólne!<br>"
 					if((istype(active2, /datum/data/record) && GLOB.data_core.security.Find(active2)))
-						dat += "<font size='4'><b>Security Data</b></font>"
+						dat += "<font size='4'><b>Dane ochrony</b></font>"
 						dat += "<br>Security Records: <A href='byond://?src=[REF(src)];choice=View Past Security'>View</A>" //NSV13 - Roleplaying Records
 						dat += "<br>Criminal Status: <A href='byond://?src=[REF(src)];choice=Edit Field;field=criminal'>[active2.fields["criminal"]]</A>"
 						dat += "<br><br>Citations: <A href='byond://?src=[REF(src)];choice=Edit Field;field=citation_add'>Add New</A>"
@@ -390,7 +390,7 @@
 							if(owed > 0)
 								dat += "<td>[owed] cr <A href='byond://?src=[REF(src)];choice=Pay;field=citation_pay;cdataid=[c.dataId]'>\[Pay\]</A></td></td>"
 							else
-								dat += "<td>All Paid Off</td>"
+								dat += "<td>Wszystko spłacone</td>"
 							dat += {"<td>
 							<A href='byond://?src=[REF(src)];choice=Edit Field;field=citation_delete;cdataid=[c.dataId]'>\[X\]</A>
 							</td>
@@ -421,24 +421,24 @@
 						dat += "</table>"
 
 						dat += "<br>\nImportant Notes:<br>\n\t<A href='byond://?src=[REF(src)];choice=Edit Field;field=notes'>&nbsp;[active2.fields["notes"]]&nbsp;</A>"
-						dat += "<br><br><font size='4'><b>Comments/Log</b></font><br>"
+						dat += "<br><br><font size='4'><b>Komentarze/log</b></font><br>"
 						var/counter = 1
 						while(active2.fields[text("com_[]", counter)])
 							dat += (active2.fields[text("com_[]", counter)] + "<BR>")
 							if(active2.fields[text("com_[]", counter)] != "<B>Deleted</B>")
-								dat += text("<A href='byond://?src=[REF(src)];choice=Delete Entry;del_c=[]'>Delete Entry</A><BR><BR>", counter)
+								dat += text("<A href='byond://?src=[REF(src)];choice=Delete Entry;del_c=[]'>Usuń wpis</A><BR><BR>", counter)
 							counter++
-						dat += "<A href='byond://?src=[REF(src)];choice=Add Entry'>Add Entry</A><br><br>"
-						dat += "<A href='byond://?src=[REF(src)];choice=Delete Record (Security)'>Delete Record (Security Only)</A><br>"
+						dat += "<A href='byond://?src=[REF(src)];choice=Add Entry'>Dodaj wpis</A><br><br>"
+						dat += "<A href='byond://?src=[REF(src)];choice=Delete Record (Security)'>Usuń rekord (tylko ochrona)</A><br>"
 					else
-						dat += "Security Record Lost!<br>"
-						dat += "<A href='byond://?src=[REF(src)];choice=New Record (Security)'>New Security Record</A><br><br>"
+						dat += "Utracono akta ochrony!<br>"
+						dat += "<A href='byond://?src=[REF(src)];choice=New Record (Security)'>Nowy rekord ochrony</A><br><br>"
 					dat += "<A href='byond://?src=[REF(src)];choice=Delete Record (ALL)'>Delete Record (ALL)</A><br><A href='byond://?src=[REF(src)];choice=Print Record'>Print Record</A><BR><A href='byond://?src=[REF(src)];choice=Print Poster'>Print Wanted Poster</A><BR><A href='byond://?src=[REF(src)];choice=Print Missing'>Print Missing Persons Poster</A><BR><A href='byond://?src=[REF(src)];choice=Return'>Back</A><BR><BR>"
-					dat += "<A href='byond://?src=[REF(src)];choice=Log Out'>{Log Out}</A>"
+					dat += "<A href='byond://?src=[REF(src)];choice=Log Out'>{Wyloguj}</A>"
 				else
 		else
-			dat += "<A href='byond://?src=[REF(src)];choice=Log In'>{Log In}</A>"
-	var/datum/browser/popup = new(user, "secure_rec", "Security Records Console", 600, 400)
+			dat += "<A href='byond://?src=[REF(src)];choice=Log In'>{Zaloguj}</A>"
+	var/datum/browser/popup = new(user, "secure_rec", "Konsola akt ochrony", 600, 400)
 	popup.set_content(dat)
 	popup.open()
 	return
@@ -460,14 +460,14 @@ What a mess.*/
 			//NSV13 - Roleplaying Records - Start
 			if("View Past Security")
 				if(istype(active2, /datum/data/record))
-					temp = "<h5>Security Records:</h5>"
+					temp = "<h5>Akta ochrony:</h5>"
 					temp += "<ul>"
 					temp += "<li>[active2.fields["past_records"]]</li>"
 					temp += "</ul>"
 
 			if("View Past General")
 				if(istype(active1, /datum/data/record))
-					temp = "<h5>General Records:</h5>"
+					temp = "<h5>Akta ogólne:</h5>"
 					temp += "<ul>"
 					temp += "<li>[active1.fields["past_records"]]</li>"
 					temp += "</ul>"
@@ -522,7 +522,7 @@ What a mess.*/
 					rank = I.assignment
 					screen = 1
 				else
-					to_chat(usr, "<span class='danger'>Unauthorized Access.</span>")
+					to_chat(usr, "<span class='danger'>Brak autoryzacji.</span>")
 				playsound(src, 'sound/machines/terminal_on.ogg', 50, FALSE)
 
 //RECORD FUNCTIONS
@@ -534,7 +534,7 @@ What a mess.*/
 			if("Browse Record")
 				var/datum/data/record/R = locate(href_list["d_rec"]) in GLOB.data_core.general
 				if(!R)
-					temp = "Record Not Found!"
+					temp = "Nie znaleziono rekordu!"
 				else
 					active1 = active2 = R
 					for(var/datum/data/record/E in GLOB.data_core.security)
@@ -549,18 +549,18 @@ What a mess.*/
 						if(C && istype(C))
 							var/pay = C.get_item_credit_value()
 							if(!pay)
-								to_chat(usr, "<span class='warning'>[C] doesn't seem to be worth anything!</span>")
+								to_chat(usr, "<span class='warning'>[C] wydaje się nic nie być wart!</span>")
 							else
 								var/diff = p.fine - p.paid
 								GLOB.data_core.payCitation(active2.fields["id"], text2num(href_list["cdataid"]), pay)
-								to_chat(usr, "<span class='notice'>You have paid [pay] credit\s towards your fine.</span>")
+								to_chat(usr, "<span class='notice'>Wpłacasz [pay] kredytów na poczet grzywny.</span>")
 								if (pay == diff || pay > diff || pay >= diff)
 									investigate_log("Citation Paid off: <strong>[p.crimeName]</strong> Fine: [p.fine] | Paid off by [key_name(usr)]", INVESTIGATE_RECORDS)
-									to_chat(usr, "<span class='notice'>The fine has been paid in full.</span>")
+									to_chat(usr, "<span class='notice'>Grzywna została spłacona w całości.</span>")
 								qdel(C)
 								playsound(src, "terminal_type", 25, FALSE)
 						else
-							to_chat(usr, "<span class='warning'>Fines can only be paid with holochips!</span>")
+							to_chat(usr, "<span class='warning'>Grzywny można płacić tylko holożetonami!</span>")
 
 			if("Print Record")
 				if(!( printing ))
@@ -569,23 +569,23 @@ What a mess.*/
 					playsound(loc, 'sound/items/poster_being_created.ogg', 100, 1)
 					sleep(30)
 					var/obj/item/paper/printed_paper = new /obj/item/paper( loc )
-					var/final_paper_text = "<CENTER><B>Security Record - (SR-[GLOB.data_core.securityPrintCount])</B></CENTER><BR>"
+					var/final_paper_text = "<CENTER><B>Akta ochrony - (SR-[GLOB.data_core.securityPrintCount])</B></CENTER><BR>"
 					if((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
-						final_paper_text += text("Name: [] ID: []<BR>\nGender: []<BR>\nAge: []<BR>", active1.fields["name"], active1.fields["id"], active1.fields["gender"], active1.fields["age"])
+						final_paper_text += text("Imię: [] ID: []<BR>\nPłeć: []<BR>\nWiek: []<BR>", active1.fields["name"], active1.fields["id"], active1.fields["gender"], active1.fields["age"])
 						final_paper_text += "\nSpecies: [active1.fields["species"]]<BR>"
-						final_paper_text += text("\nFingerprint: []<BR>\nPhysical Status: []<BR>\nMental Status: []<BR>", active1.fields["fingerprint"], active1.fields["p_stat"], active1.fields["m_stat"])
+						final_paper_text += text("\nOdcisk palca: []<BR>\nStan fizyczny: []<BR>\nStan psychiczny: []<BR>", active1.fields["fingerprint"], active1.fields["p_stat"], active1.fields["m_stat"])
 						//NSV13 - Roleplaying Records - Start
 						if(!(active1.fields["past_records"] == ""))
-							final_paper_text += "\nGeneral Records:\n[active1.fields["past_records"]]\n"
+							final_paper_text += "\nAkta ogólne:\n[active1.fields["past_records"]]\n"
 						//NSV13 - Roleplaying Records - End
 					else
-						final_paper_text += "<B>General Record Lost!</B><BR>"
+						final_paper_text += "<B>Utracono akta ogólne!</B><BR>"
 					if((istype(active2, /datum/data/record) && GLOB.data_core.security.Find(active2)))
 						//NSV13 - Roleplaying Records - Start
-						final_paper_text += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\n")
+						final_paper_text += text("<BR>\n<CENTER><B>Dane ochrony</B></CENTER><BR>\n")
 						if(!(active2.fields["past_records"] == ""))
-							final_paper_text += "\nSecurity Records:\n[active2.fields["past_records"]]\n"
-						final_paper_text += text("Criminal Status: []", active2.fields["criminal"])
+							final_paper_text += "\nAkta ochrony:\n[active2.fields["past_records"]]\n"
+						final_paper_text += text("Status kryminalny: []", active2.fields["criminal"])
 						//NSV13 - Roleplaying Records - End
 						final_paper_text += "<BR>\n<BR>\nCrimes:<BR>\n"
 						final_paper_text +={"<table style="text-align:center;" border="1" cellspacing="0" width="100%">
@@ -610,7 +610,7 @@ What a mess.*/
 							counter++
 						printed_paper.name = text("SR-[] '[]'", GLOB.data_core.securityPrintCount, active1.fields["name"])
 					else
-						final_paper_text += "<B>Security Record Lost!</B><BR>"
+						final_paper_text += "<B>Utracono akta ochrony!</B><BR>"
 						printed_paper.name = text("SR-[] '[]'", GLOB.data_core.securityPrintCount, "Record Lost")
 					final_paper_text += "</TT>"
 					printed_paper.add_raw_text(final_paper_text)
@@ -618,9 +618,9 @@ What a mess.*/
 					printing = null
 			if("Print Poster")
 				if(!( printing ))
-					var/wanted_name = stripped_input(usr, "Please enter an alias for the criminal:", "Print Wanted Poster", active1.fields["name"])
+					var/wanted_name = stripped_input(usr, "Podaj pseudonim przestępcy:", "Drukuj list gończy", active1.fields["name"])
 					if(wanted_name)
-						var/default_description = "A poster declaring [wanted_name] to be a dangerous individual, wanted by Nanotrasen. Report any sightings to security immediately."
+						var/default_description = "Plakat ogłaszający, że [wanted_name] jest niebezpieczną osobą poszukiwaną przez Nanotrasen. Każde spotkanie natychmiast zgłaszaj ochronie."
 						var/list/crimes = active2.fields["crim"]
 						if(crimes.len)
 							default_description += "\nCrimes:"
@@ -628,9 +628,9 @@ What a mess.*/
 								default_description += "\n[c.crimeName]\n"
 								default_description += "[c.crimeDetails]\n"
 
-						var/headerText = stripped_input(usr, "Please enter Poster Heading (Max 7 Chars):", "Print Wanted Poster", "WANTED", 8)
-						var/posternum = CLAMP((input("Number of posters to print (Max 5):","Number:",1) as num|null), 1, 5)
-						var/info = stripped_multiline_input(usr, "Please input a description for the poster:", "Print Wanted Poster", default_description, null)
+						var/headerText = stripped_input(usr, "Podaj nagłówek plakatu (maks. 7 znaków):", "Drukuj list gończy", "WANTED", 8)
+						var/posternum = CLAMP((input("Liczba plakatów do wydrukowania (maks. 5):","Number:",1) as num|null), 1, 5)
+						var/info = stripped_multiline_input(usr, "Podaj opis plakatu:", "Drukuj list gończy", default_description, null)
 						if(info)
 							printing = 1
 							for(var/i in 1 to posternum)
@@ -643,13 +643,13 @@ What a mess.*/
 							printing = 0
 			if("Print Missing")
 				if(!( printing ))
-					var/missing_name = stripped_input(usr, "Please enter an alias for the missing person:", "Print Missing Persons Poster", active1.fields["name"])
+					var/missing_name = stripped_input(usr, "Podaj pseudonim zaginionej osoby:", "Drukuj plakat o zaginięciu", active1.fields["name"])
 					if(missing_name)
-						var/default_description = "A poster declaring [missing_name] to be a missing individual, missed by Nanotrasen. Report any sightings to security immediately."
+						var/default_description = "Plakat ogłaszający, że [missing_name] jest osobą zaginioną, za którą tęskni Nanotrasen. Każde spotkanie natychmiast zgłaszaj ochronie."
 
-						var/headerText = stripped_input(usr, "Please enter Poster Heading (Max 7 Chars):", "Print Missing Persons Poster", "MISSING", 8)
-						var/posternum = CLAMP((input("Number of posters to print (Max 5):","Number:",1) as num|null), 1, 5)
-						var/info = stripped_multiline_input(usr, "Please input a description for the poster:", "Print Missing Persons Poster", default_description, null)
+						var/headerText = stripped_input(usr, "Podaj nagłówek plakatu (maks. 7 znaków):", "Drukuj plakat o zaginięciu", "MISSING", 8)
+						var/posternum = CLAMP((input("Liczba plakatów do wydrukowania (maks. 5):","Number:",1) as num|null), 1, 5)
+						var/info = stripped_multiline_input(usr, "Podaj opis plakatu:", "Drukuj plakat o zaginięciu", default_description, null)
 						if(info)
 							printing = 1
 							for(var/i in 1 to posternum)
@@ -663,7 +663,7 @@ What a mess.*/
 //RECORD DELETE
 			if("Delete All Records")
 				temp = ""
-				temp += "Are you sure you wish to delete all Security records?<br>"
+				temp += "Na pewno chcesz usunąć wszystkie akta ochrony?<br>"
 				temp += "<a href='byond://?src=[REF(src)];choice=Purge All Records'>Yes</a><br>"
 				temp += "<a href='byond://?src=[REF(src)];choice=Clear Screen'>No</a>"
 
@@ -672,29 +672,29 @@ What a mess.*/
 				for(var/datum/data/record/R in GLOB.data_core.security)
 					qdel(R)
 				GLOB.data_core.security.Cut()
-				temp = "All Security records deleted."
+				temp = "Usunięto wszystkie akta ochrony."
 
 			if("Add Entry")
 				if(!( istype(active2, /datum/data/record) ))
 					return
 				var/a2 = active2
-				var/t1 = stripped_multiline_input(usr, "Add Comment:", "Secure. records")
+				var/t1 = stripped_multiline_input(usr, "Dodaj komentarz:", "Akta ochr.")
 				if(!canUseSecurityRecordsConsole(usr, t1, null, a2))
 					return
 				var/counter = 1
 				while(active2.fields[text("com_[]", counter)])
 					counter++
-				active2.fields[text("com_[]", counter)] = text("Made by [] ([]) on [] [], []<BR>[]", src.authenticated, src.rank, station_time_timestamp(), time2text(world.realtime, "MMM DD"), GLOB.year_integer+YEAR_OFFSET, t1) //NSV13 edit: year offset change
+				active2.fields[text("com_[]", counter)] = text("Autor: [] ([]), [] [], []<BR>[]", src.authenticated, src.rank, station_time_timestamp(), time2text(world.realtime, "MMM DD"), GLOB.year_integer+YEAR_OFFSET, t1) //NSV13 edit: year offset change
 
 			if("Delete Record (ALL)")
 				if(active1)
-					temp = "<h5>Are you sure you wish to delete the record (ALL)?</h5>"
+					temp = "<h5>Na pewno chcesz usunąć rekord (CAŁY)?</h5>"
 					temp += "<a href='byond://?src=[REF(src)];choice=Delete Record (ALL) Execute'>Yes</a><br>"
 					temp += "<a href='byond://?src=[REF(src)];choice=Clear Screen'>No</a>"
 
 			if("Delete Record (Security)")
 				if(active2)
-					temp = "<h5>Are you sure you wish to delete the record (Security Portion Only)?</h5>"
+					temp = "<h5>Na pewno chcesz usunąć rekord (tylko część ochrony)?</h5>"
 					temp += "<a href='byond://?src=[REF(src)];choice=Delete Record (Security) Execute'>Yes</a><br>"
 					temp += "<a href='byond://?src=[REF(src)];choice=Clear Screen'>No</a>"
 
@@ -770,7 +770,7 @@ What a mess.*/
 				switch(href_list["field"])
 					if("name")
 						if(istype(active1, /datum/data/record) || istype(active2, /datum/data/record))
-							var/t1 = stripped_input(usr, "Please input name:", "Secure. records", active1.fields["name"])
+							var/t1 = stripped_input(usr, "Podaj imię:", "Akta ochr.", active1.fields["name"])
 							if(!canUseSecurityRecordsConsole(usr, t1, a1))
 								return
 							if(istype(active1, /datum/data/record))
@@ -779,7 +779,7 @@ What a mess.*/
 								active2.fields["name"] = t1
 					if("id")
 						if(istype(active2, /datum/data/record) || istype(active1, /datum/data/record))
-							var/t1 = stripped_input(usr, "Please input id:", "Secure. records", active1.fields["id"])
+							var/t1 = stripped_input(usr, "Podaj ID:", "Akta ochr.", active1.fields["id"])
 							if(!canUseSecurityRecordsConsole(usr, t1, a1))
 								return
 							if(istype(active1, /datum/data/record))
@@ -788,7 +788,7 @@ What a mess.*/
 								active2.fields["id"] = t1
 					if("fingerprint")
 						if(istype(active1, /datum/data/record))
-							var/t1 = stripped_input(usr, "Please input fingerprint hash:", "Secure. records", active1.fields["fingerprint"], null)
+							var/t1 = stripped_input(usr, "Podaj skrót odcisku palca:", "Akta ochr.", active1.fields["fingerprint"], null)
 							if(!canUseSecurityRecordsConsole(usr, t1, a1))
 								return
 							active1.fields["fingerprint"] = t1
@@ -802,13 +802,13 @@ What a mess.*/
 								active1.fields["gender"] = "Male"
 					if("age")
 						if(istype(active1, /datum/data/record))
-							var/t1 = input("Please input age:", "Secure. records", active1.fields["age"], null) as num
+							var/t1 = input("Podaj wiek:", "Akta ochr.", active1.fields["age"], null) as num
 							if(!isnum_safe(t1) || !canUseSecurityRecordsConsole(usr, "age", a1))
 								return
 							active1.fields["age"] = t1
 					if("species")
 						if(istype(active1, /datum/data/record))
-							var/t1 = input("Select a species", "Species Selection") as null|anything in GLOB.roundstart_races
+							var/t1 = input("Select a species", "Wybór gatunku") as null|anything in GLOB.roundstart_races
 							if(!canUseSecurityRecordsConsole(usr, t1, a1))
 								return
 							active1.fields["species"] = t1
@@ -858,8 +858,8 @@ What a mess.*/
 								print_photo(P.picture.picture_image, active1.fields["name"])
 					if("crim_add")
 						if(istype(active1, /datum/data/record))
-							var/t1 = stripped_input(usr, "Please input crime name:", "Secure. records", "", null)
-							var/t2 = stripped_input(usr, "Please input crime details:", "Secure. records", "", null)
+							var/t1 = stripped_input(usr, "Podaj nazwę przestępstwa:", "Akta ochr.", "", null)
+							var/t2 = stripped_input(usr, "Podaj szczegóły przestępstwa:", "Akta ochr.", "", null)
 							if(!canUseSecurityRecordsConsole(usr, t1, null, a2))
 								return
 							var/crime = GLOB.data_core.createCrimeEntry(t1, t2, authenticated, station_time_timestamp())
@@ -874,7 +874,7 @@ What a mess.*/
 					if("add_details")
 						if(istype(active1, /datum/data/record))
 							if(href_list["cdataid"])
-								var/t1 = stripped_input(usr, "Please input crime details:", "Secure. records", "", null)
+								var/t1 = stripped_input(usr, "Podaj szczegóły przestępstwa:", "Akta ochr.", "", null)
 								if(!canUseSecurityRecordsConsole(usr, t1, null, a2))
 									return
 								GLOB.data_core.addCrimeDetails(active1.fields["id"], href_list["cdataid"], t1)
@@ -883,15 +883,15 @@ What a mess.*/
 						if(istype(active1, /datum/data/record))
 							var/maxFine = CONFIG_GET(number/maxfine)
 
-							var/t1 = stripped_input(usr, "Please input citation crime:", "Secure. records", "", null)
-							var/fine = FLOOR(input(usr, "Please input citation fine, up to [maxFine]:", "Secure. records", 50) as num|null, 1)
+							var/t1 = stripped_input(usr, "Podaj przestępstwo do mandatu:", "Akta ochr.", "", null)
+							var/fine = FLOOR(input(usr, "Podaj kwotę mandatu, maksymalnie [maxFine]:", "Akta ochr.", 50) as num|null, 1)
 
 							if (isnull(fine))
 								return
 							fine = min(fine, maxFine)
 
 							if(fine < 0)
-								to_chat(usr, "<span class='warning'>You're pretty sure that's not how money works.</span>")
+								to_chat(usr, "<span class='warning'>Jesteś prawie pewien, że pieniądze tak nie działają.</span>")
 								return
 
 							if(!canUseSecurityRecordsConsole(usr, t1, null, a2))
@@ -900,7 +900,7 @@ What a mess.*/
 							var/datum/data/crime/crime = GLOB.data_core.createCrimeEntry(t1, "", authenticated, station_time_timestamp(), fine)
 							for (var/obj/item/modular_computer/tablet in GLOB.TabletMessengers)
 								if(tablet.saved_identification == active1.fields["name"])
-									var/message = "You have been fined [fine] credits for '[t1]'. Fines may be paid at security."
+									var/message = "Otrzymujesz mandat w wysokości [fine] kredytów za „[t1]”. Grzywny można opłacić w ochronie."
 									var/datum/signal/subspace/messaging/tablet_msg/signal = new(src, list(
 										"name" = "Security Citation",
 										"job" = "Citation Server",
@@ -920,13 +920,13 @@ What a mess.*/
 								GLOB.data_core.removeCitation(active1.fields["id"], href_list["cdataid"])
 					if("notes")
 						if(istype(active2, /datum/data/record))
-							var/t1 = stripped_input(usr, "Please summarize notes:", "Secure. records", active2.fields["notes"], null)
+							var/t1 = stripped_input(usr, "Podsumuj uwagi:", "Akta ochr.", active2.fields["notes"], null)
 							if(!canUseSecurityRecordsConsole(usr, t1, null, a2))
 								return
 							active2.fields["notes"] = t1
 					if("criminal")
 						if(istype(active2, /datum/data/record))
-							temp = "<h5>Criminal Status:</h5>"
+							temp = "<h5>Status kryminalny:</h5>"
 							temp += "<ul>"
 							temp += "<li><a href='byond://?src=[REF(src)];choice=Change Criminal Status;criminal2=none'>None</a></li>"
 							temp += "<li><a href='byond://?src=[REF(src)];choice=Change Criminal Status;criminal2=arrest'>Arrest</a></li>"
@@ -946,7 +946,7 @@ What a mess.*/
 								temp += "<li><a href='byond://?src=[REF(src)];choice=Change Rank;rank=[rank]'>[rank]</a></li>"
 							temp += "</ul>"
 						else
-							alert(usr, "You do not have the required rank to do this!")
+							alert(usr, "Nie masz wymaganego stopnia, by to zrobić!")
 //TEMPORARY MENU FUNCTIONS
 			else//To properly clear as per clear screen.
 				temp=null
@@ -1000,7 +1000,7 @@ What a mess.*/
 							qdel(active2)
 							active2 = null
 					else
-						temp = "This function does not appear to be working at the moment. Our apologies."
+						temp = "Ta funkcja chwilowo nie działa. Przepraszamy."
 
 	add_fingerprint(usr)
 	updateUsrDialog()

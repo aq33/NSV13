@@ -23,7 +23,7 @@
 	var/res = alert(usr, "Show the title of this song to the players?",, "Yes","No", "Cancel")
 	switch(res)
 		if("Yes")
-			to_chat(world, "<span class='boldannounce'>An admin played: [S]</span>")
+			to_chat(world, "<span class='boldannounce'>Admin odtworzył: [S]</span>")
 		if("Cancel")
 			return
 
@@ -109,7 +109,7 @@
 						if("Yes")
 							music_extra_data["title"] = data["title"]
 							music_extra_data["link"] = data["webpage_url"]
-							to_chat(world, "<span class='boldannounce'>An admin played: [webpage_url]</span>")
+							to_chat(world, "<span class='boldannounce'>Admin odtworzył: [webpage_url]</span>")
 						// AQ EDIT START - port BeeStation #9249: "No" used to still show the title and link.
 						// The widget hides fields by these exact strings, keep them as in Bee
 						if("No")

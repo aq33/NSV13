@@ -20,4 +20,4 @@
 		if("EAST") D=EAST
 		if("WEST") D=WEST
 	if(step(host_mob, D))
-		to_chat(host_mob, "<span class='warning'>You feel compelled to walk...</span>")
+		to_chat(host_mob, "<span class='warning'>Czujesz przymus, by iść...</span>")

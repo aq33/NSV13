@@ -137,15 +137,15 @@
 
 /obj/item/food/grown/tomato/killer/attack(mob/M, mob/user, def_zone)
 	if(awakening)
-		to_chat(user, "<span class='warning'>The tomato is twitching and shaking, preventing you from eating it.</span>")
+		to_chat(user, "<span class='warning'>Pomidor drga i się trzęsie, nie pozwalając ci go zjeść.</span>")
 		return
 	..()
 
 /obj/item/food/grown/tomato/killer/attack_self(mob/user)
 	if(awakening || isspaceturf(user.loc))
 		return
-	user.visible_message("<span class='notice'>[user] beings to awaken the [src].</span>", \
-	"<span class='notice'>You begin to awaken the [src]...</span>")
+	user.visible_message("<span class='notice'>[user] zaczyna budzić [src].</span>", \
+	"<span class='notice'>Zaczynasz budzić [src]...</span>")
 	awakening = TRUE
 	log_game("[key_name(user)] awakened a killer tomato at [AREACOORD(user)].")
 	addtimer(CALLBACK(src, PROC_REF(make_killer_tomato)), 30)
@@ -158,5 +158,5 @@
 		K.move_to_delay -= round(seed.production / 50)
 		K.frenzythreshold -= round(seed.potency / 25)// max potency tomatoes will enter a frenzy more easily
 		K.health = K.maxHealth
-		K.visible_message("<span class='notice'>The Killer Tomato growls as it suddenly awakens.</span>")
+		K.visible_message("<span class='notice'>Pomidor-zabójca warczy, nagle się budząc.</span>")
 		qdel(src)

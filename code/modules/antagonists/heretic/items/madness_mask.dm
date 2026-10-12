@@ -18,10 +18,10 @@
 /obj/item/clothing/mask/madness_mask/examine(mob/user)
 	. = ..()
 	if(IS_HERETIC_OR_MONSTER(user))
-		. += "<span class='notice'>Actively drains the sanity and stamina of nearby non-heretics when worn.</span>"
-		. += "<span class='notice'>If forced onto the face of a non-heretic, they will be unable to remove it willingly.</span>"
+		. += "<span class='notice'>Noszona wysysa zdrowie psychiczne i wytrzymałość pobliskich nieheretyków.</span>"
+		. += "<span class='notice'>Założona siłą nieheretykowi nie da się zdjąć z własnej woli.</span>"
 	else
-		. += "<span class='danger'>The eyes fill you with dread... You'd best avoid it.</span>"
+		. += "<span class='danger'>Te oczy napawają cię grozą... Lepiej jej unikać.</span>"
 
 /obj/item/clothing/mask/madness_mask/equipped(mob/user, slot)
 	. = ..()
@@ -37,7 +37,7 @@
 		return
 
 	ADD_TRAIT(src, TRAIT_NODROP, CLOTHING_TRAIT)
-	to_chat(user, "<span class='userdanger'>[src] clamps tightly to your face as you feel your soul draining away!</span>")
+	to_chat(user, "<span class='userdanger'>[src] ciasno przywiera ci do twarzy, a ty czujesz, jak uchodzi z ciebie dusza!</span>")
 
 /obj/item/clothing/mask/madness_mask/dropped(mob/M)
 	local_user = null

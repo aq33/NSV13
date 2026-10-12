@@ -351,42 +351,42 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	. += "[gender == PLURAL ? "They are" : "It is"] a [weight_class_to_text(w_class)] item."
 
 	if(resistance_flags & INDESTRUCTIBLE)
-		. += "[src] seems extremely robust! It'll probably withstand anything that could happen to it!"
+		. += "[src] wydaje się niezwykle wytrzymały! Pewnie wytrzyma wszystko, co mogłoby go spotkać!"
 	else
 		if(resistance_flags & LAVA_PROOF)
-			. += "[src] is made of an extremely heat-resistant material, it'd probably be able to withstand lava!"
+			. += "[src] jest wykonany z niezwykle żaroodpornego materiału, pewnie wytrzymałby nawet lawę!"
 		if(resistance_flags & (ACID_PROOF | UNACIDABLE))
-			. += "[src] looks pretty robust! It'd probably be able to withstand acid!"
+			. += "[src] wygląda na całkiem wytrzymały! Pewnie wytrzymałby kwas!"
 		if(resistance_flags & FREEZE_PROOF)
-			. += "[src] is made of cold-resistant materials."
+			. += "[src] jest wykonany z materiałów odpornych na zimno."
 		if(resistance_flags & FIRE_PROOF)
-			. += "[src] is made of fire-retardant materials."
+			. += "[src] jest wykonany z materiałów ognioodpornych."
 	if(block_level || block_upgrade_walk)
 		if(block_upgrade_walk == 1 && !block_level)
-			. += "While walking, [src] can block attacks in a <b>narrow</b> arc."
+			. += "Podczas chodzenia [src] może blokować ataki w <b>wąskim</b> łuku."
 		else
 			switch(block_upgrade_walk + block_level)
 				if(1)
-					. += "[src] can block attacks in a <b>narrow</b> arc."
+					. += "[src] może blokować ataki w <b>wąskim</b> łuku."
 				if(2)
-					. += "[src] can block attacks in a <b>wide</b> arc."
+					. += "[src] może blokować ataki w <b>szerokim</b> łuku."
 				if(3)
-					. += "[src] can block attacks in a <b>very wide</b> arc."
+					. += "[src] może blokować ataki w <b>bardzo szerokim</b> łuku."
 				if(4 to INFINITY)
-					. += "[src] can block attacks in a <b>nearly complete</b> arc."
+					. += "[src] może blokować ataki w <b>niemal pełnym</b> łuku."
 			if(block_upgrade_walk)
-				. += "[src] is <b>less</b> effective at blocking while the user is <b>running</b>."
+				. += "[src] blokuje <b>gorzej</b>, gdy użytkownik <b>biegnie</b>."
 		switch(block_power)
 			if(-INFINITY to -1)
-				. += "[src] is weighted extremely poorly for blocking"
+				. += "[src] jest bardzo źle wyważony do blokowania"
 			if(0 to 10)
-				. += "[src] is average at blocking"
+				. += "[src] jest przeciętny w blokowaniu"
 			if(10 to 30)
-				. += "[src] is well-weighted for blocking"
+				. += "[src] jest dobrze wyważony do blokowania"
 			if(31 to 50)
-				. += "[src] is extremely well-weighted for blocking"
+				. += "[src] jest wyjątkowo dobrze wyważony do blokowania"
 			if(51 to INFINITY)
-				. += "[src] is as well weighted as possible for blocking"
+				. += "[src] jest najlepiej wyważony do blokowania, jak to tylko możliwe"
 	if(force)
 		if(!force_string)
 			set_force_string()
@@ -459,9 +459,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 		if(can_handle_hot)
 			extinguish()
-			to_chat(user, "<span class='notice'>You put out the fire on [src].</span>")
+			to_chat(user, "<span class='notice'>Gasisz ogień na [src].</span>")
 		else
-			to_chat(user, "<span class='warning'>You burn your hand on [src]!</span>")
+			to_chat(user, "<span class='warning'>Parzysz sobie rękę o [src]!</span>")
 			var/obj/item/bodypart/affecting = C.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
 			if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 				C.update_damage_overlays()
@@ -471,7 +471,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		var/mob/living/carbon/C = user
 		if(istype(C))
 			if(!C.gloves || (!(C.gloves.resistance_flags & (UNACIDABLE|ACID_PROOF))))
-				to_chat(user, "<span class='warning'>The acid on [src] burns your hand!</span>")
+				to_chat(user, "<span class='warning'>Kwas na [src] parzy ci rękę!</span>")
 				var/obj/item/bodypart/affecting = C.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
 				if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 					C.update_damage_overlays()
@@ -483,7 +483,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/grav = user.has_gravity()
 	if(grav > STANDARD_GRAVITY)
 		var/grav_power = min(3,grav - STANDARD_GRAVITY)
-		to_chat(user,"<span class='notice'>You start picking up [src]...</span>")
+		to_chat(user,"<span class='notice'>Zaczynasz podnosić [src]...</span>")
 		if(!do_mob(user,src,30*grav_power))
 			return
 
@@ -531,7 +531,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(!A.has_fine_manipulation)
 		if(src in A.contents) // To stop Aliens having items stuck in their pockets
 			A.dropItemToGround(src)
-		to_chat(user, "<span class='warning'>Your claws aren't capable of such fine manipulation!</span>")
+		to_chat(user, "<span class='warning'>Twoje szpony nie nadają się do tak precyzyjnych czynności!</span>")
 		return
 	attack_paw(A)
 
@@ -573,10 +573,10 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(!blockhand)
 		return 0
 	if(blockhand.is_disabled())
-		to_chat(owner, "<span_class='danger'>You're too exausted to block the attack!</span>")
+		to_chat(owner, "<span_class='danger'>Jesteś zbyt wyczerpany, by zablokować atak!</span>")
 		return 0
 	else if(HAS_TRAIT(owner, TRAIT_NOLIMBDISABLE) && owner.getStaminaLoss() >= 30)
-		to_chat(owner, "<span_class='danger'>You're too exausted to block the attack!</span>")
+		to_chat(owner, "<span_class='danger'>Jesteś zbyt wyczerpany, by zablokować atak!</span>")
 		return 0
 	if(owner.a_intent == INTENT_HELP) //you can choose not to block an attack
 		return 0
@@ -595,22 +595,22 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(180, -180)
 			if(final_block_level >= 1)
 				playsound(src, block_sound, 50, 1)
-				owner.visible_message("<span class='danger'>[owner] blocks [attack_text] with [src]!</span>")
+				owner.visible_message("<span class='danger'>[owner] blokuje [attack_text] za pomocą [src]!</span>")
 				return 1
 		if(135, 225, -135, -225)
 			if(final_block_level >= 2)
 				playsound(src, block_sound, 50, 1)
-				owner.visible_message("<span class='danger'>[owner] blocks [attack_text] with [src]!</span>")
+				owner.visible_message("<span class='danger'>[owner] blokuje [attack_text] za pomocą [src]!</span>")
 				return 1
 		if(90, 270, -90, -270)
 			if(final_block_level >= 3)
-				owner.visible_message("<span class='danger'>[owner] blocks [attack_text] with [src]!</span>")
+				owner.visible_message("<span class='danger'>[owner] blokuje [attack_text] za pomocą [src]!</span>")
 				playsound(src, block_sound, 50, 1)
 				return 1
 		if(45, 315, -45, -315)
 			if(final_block_level >= 4)
 				playsound(src, block_sound, 50, 1)
-				owner.visible_message("<span class='danger'>[owner] blocks [attack_text] with [src]!</span>")
+				owner.visible_message("<span class='danger'>[owner] blokuje [attack_text] za pomocą [src]!</span>")
 				return 1
 	return 0
 
@@ -645,7 +645,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		var/mob/living/L = hitby
 		if(block_flags & BLOCKING_NASTY && !HAS_TRAIT(L, TRAIT_PIERCEIMMUNE))
 			L.attackby(src, owner)
-			owner.visible_message("<span class='danger'>[L] injures themselves on [owner]'s [src]!</span>")
+			owner.visible_message("<span class='danger'>[L] rani się o [src] należący do [owner]!</span>")
 	else if(isliving(hitby))
 		var/mob/living/L = hitby
 		attackforce = (damage * 2)//simplemobs have an advantage here because of how much these blocking mechanics put them at a disadvantage
@@ -654,10 +654,10 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 				var/mob/living/simple_animal/S = L
 				if(!S.hardattacks)
 					S.attackby(src, owner)
-					owner.visible_message("<span class='danger'>[S] injures themselves on [owner]'s [src]!</span>")
+					owner.visible_message("<span class='danger'>[S] rani się o [src] należący do [owner]!</span>")
 			else
 				L.attackby(src, owner)
-				owner.visible_message("<span class='danger'>[L] injures themselves on [owner]'s [src]!</span>")
+				owner.visible_message("<span class='danger'>[L] rani się o [src] należący do [owner]!</span>")
 	owner.apply_damage(attackforce, STAMINA, blockhand, block_power)
 	if((owner.getStaminaLoss() >= 35 && HAS_TRAIT(src, TRAIT_NODROP)) || (HAS_TRAIT(owner, TRAIT_NOLIMBDISABLE) && owner.getStaminaLoss() >= 30))//if you don't drop the item, you can't block for a few seconds
 		owner.blockbreak()
@@ -778,15 +778,15 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	if(M.is_eyes_covered())
 		// you can't stab someone in the eyes wearing a mask!
-		to_chat(user, "<span class='danger'>You're going to need to remove [M.p_their()] eye protection first!</span>")
+		to_chat(user, "<span class='danger'>Najpierw musisz zdjąć mu ochronę oczu!</span>")
 		return
 
 	if(isalien(M))//Aliens don't have eyes./N     slimes also don't have eyes!
-		to_chat(user, "<span class='warning'>You cannot locate any eyes on this creature!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz znaleźć oczu u tego stworzenia!</span>")
 		return
 
 	if(isbrain(M))
-		to_chat(user, "<span class='danger'>You cannot locate any organic eyes on this brain!</span>")
+		to_chat(user, "<span class='danger'>Nie możesz znaleźć żadnych organicznych oczu w tym mózgu!</span>")
 		return
 
 	add_fingerprint(user)
@@ -796,12 +796,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	user.do_attack_animation(M)
 
 	if(M != user)
-		M.visible_message("<span class='danger'>[user] has stabbed [M] in the eye with [src]!</span>", \
-							"<span class='userdanger'>[user] stabs you in the eye with [src]!</span>")
+		M.visible_message("<span class='danger'>[user] dźga [M] w oko za pomocą [src]!</span>", \
+							"<span class='userdanger'>[user] dźga cię w oko za pomocą [src]!</span>")
 	else
 		user.visible_message( \
-			"<span class='danger'>[user] has stabbed [user.p_them()]self in the eyes with [src]!</span>", \
-			"<span class='userdanger'>You stab yourself in the eyes with [src]!</span>" \
+			"<span class='danger'>[user] dźga się w oczy za pomocą [src]!</span>", \
+			"<span class='userdanger'>Dźgasz się w oczy za pomocą [src]!</span>" \
 		)
 	if(is_human_victim)
 		var/mob/living/carbon/human/U = M
@@ -822,13 +822,13 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(eyes.damage >= 10)
 		M.adjust_blurriness(15)
 		if(M.stat != DEAD)
-			to_chat(M, "<span class='danger'>Your eyes start to bleed profusely!</span>")
+			to_chat(M, "<span class='danger'>Twoje oczy zaczynają obficie krwawić!</span>")
 		if(!(HAS_TRAIT(M, TRAIT_BLIND) || HAS_TRAIT(M, TRAIT_NEARSIGHT)))
-			to_chat(M, "<span class='danger'>You become nearsighted!</span>")
+			to_chat(M, "<span class='danger'>Stajesz się krótkowzroczny!</span>")
 		M.become_nearsighted(EYE_DAMAGE)
 		if (eyes.damage >= 60)
 			M.become_blind(EYE_DAMAGE)
-			to_chat(M, "<span class='danger'>You go blind!</span>")
+			to_chat(M, "<span class='danger'>Ślepniesz!</span>")
 
 /obj/item/singularity_pull(S, current_size)
 	..()
@@ -950,7 +950,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 /obj/item/proc/ignition_effect(atom/A, mob/user)
 	if(is_hot())
-		. = "<span class='notice'>[user] lights [A] with [src].</span>"
+		. = "<span class='notice'>[user] zapala [A] za pomocą [src].</span>"
 	else
 		. = ""
 
@@ -975,7 +975,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(w_class == WEIGHT_CLASS_HUGE || w_class == WEIGHT_CLASS_GIGANTIC)
 			ash_type = /obj/effect/decal/cleanable/ash/large
 		var/obj/effect/decal/cleanable/ash/A = new ash_type(T)
-		A.desc += "\nLooks like this used to be \an [name] some time ago."
+		A.desc += "\nWygląda na to, że kiedyś był to [name]."
 		..()
 
 /obj/item/acid_melt()
@@ -1291,8 +1291,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/proc/on_accidental_consumption(mob/living/carbon/victim, mob/living/carbon/user, obj/item/source_item, discover_after = TRUE)
 	if(is_sharp() && force >= 5) //if we've got something sharp with a decent force (ie, not plastic)
 		INVOKE_ASYNC(victim, TYPE_PROC_REF(/mob, emote), "scream")
-		victim.visible_message("<span class='warning'>[victim] looks like [victim.p_theyve()] just bit something they shouldn't have!</span>", \
-							"<span class='boldwarning'>OH GOD! Was that a crunch? That didn't feel good at all!!</span>")
+		victim.visible_message("<span class='warning'>[victim] wygląda, jakby właśnie ugryzł coś, czego nie powinien!</span>", \
+							"<span class='boldwarning'>O BOŻE! Czy to było chrupnięcie? To wcale nie było przyjemne!!</span>")
 
 		victim.apply_damage(max(15, force), BRUTE, BODY_ZONE_HEAD)
 		victim.losebreath += 2
@@ -1336,8 +1336,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 		victim.adjust_disgust(33)
 		victim.visible_message(
-			"<span class='warning'>[victim] looks like [victim.p_theyve()] just bitten into something hard.</span>", \
-			"<span class='warning'>Eugh! Did I just bite into something?</span>")
+			"<span class='warning'>[victim] wygląda, jakby właśnie ugryzł coś twardego.</span>", \
+			"<span class='warning'>Fuj! Czy ja właśnie w coś wgryzłem?</span>")
 
 	else if(w_class == WEIGHT_CLASS_TINY) //small items like soap or toys that don't have mat datums
 		/// victim's chest (for cavity implanting the item)
@@ -1345,12 +1345,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(victim_cavity.cavity_item)
 			victim.vomit(5, FALSE, FALSE, distance = 0)
 			forceMove(drop_location())
-			to_chat(victim, "<span class='warning'>You vomit up a [name]! [source_item? "Was that in \the [source_item]?" : ""]</span>")
+			to_chat(victim, "<span class='warning'>Wymiotujesz [name]! [source_item? "Czy to było w [source_item]?" : ""]</span>")
 		else
 			victim.transferItemToLoc(src, victim, TRUE)
 			victim.losebreath += 2
 			victim_cavity.cavity_item = src
-			to_chat(victim, "<span class='warning'>You swallow hard. [source_item? "Something small was in \the [source_item]..." : ""]</span>")
+			to_chat(victim, "<span class='warning'>Z trudem przełykasz. [source_item? "W [source_item] było coś małego..." : ""]</span>")
 		discover_after = FALSE
 
 	else

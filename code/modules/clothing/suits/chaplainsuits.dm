@@ -25,7 +25,7 @@
 
 /obj/item/clothing/suit/chaplainsuit/bishoprobe
 	name = "bishop's robes"
-	desc = "Glad to see the tithes you collected were well spent."
+	desc = "Miło widzieć, że zebrana dziesięcina została dobrze wydana."
 	icon_state = "bishoprobe"
 	item_state = "bishoprobe"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS

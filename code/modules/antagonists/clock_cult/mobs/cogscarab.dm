@@ -17,11 +17,11 @@ GLOBAL_LIST_INIT(cogscarabs, list())
 	visualAppearence = CLOCKDRONE
 	bubble_icon = "clock"
 	picked = TRUE
-	flavortext = "<span class=brass>You are a cogscarab, an intricate machine that has been granted sentient by Rat'var.<br>\
-		After a long and destructive conflict, Reebe has been left mostly empty; you and the other cogscarabs like you were bought into existence to construct Reebe into the image of Rat'var.<br>\
-		Construct defences, traps and forgeries, for opening the Ark requires an unimaginable amount of power which is bound to get the attention of selfish lifeforms interested only in their own self-preservation.</span>"
-	laws = "You are have been granted the gift of sentience from Rat'var.<br>\
-		You are not bound by any laws, do whatever you must to serve Rat'var!"
+	flavortext = "<span class='brass'>Jesteś zębatkoskarabeuszem, misterną maszyną, której Rat'var dał świadomość.<br>\
+		Po długim i niszczycielskim konflikcie Reebe opustoszało; ty i inne zębatkoskarabeusze powołano do istnienia, by odbudować Reebe na obraz Rat'vara.<br>\
+		Buduj umocnienia, pułapki i kuźnie, bo otwarcie Arki wymaga niewyobrażalnej ilości energii, która z pewnością przyciągnie uwagę samolubnych form życia dbających tylko o własne przetrwanie.</span>"
+	laws = "Rat'var obdarzył cię darem świadomości.<br>\
+		Nie wiążą cię żadne prawa, rób wszystko, co trzeba, by służyć Rat'varowi!"
 	chat_color = LIGHT_COLOR_CLOCKWORK
 	mobchatspan = "brassmobsay"
 	initial_language_holder = /datum/language_holder/clockmob
@@ -57,18 +57,18 @@ GLOBAL_LIST_INIT(cogscarabs, list())
 	icon_state = "drone_clock_hat"
 	mob_name = "cogscarab"
 	mob_type = /mob/living/simple_animal/drone/cogscarab
-	short_desc = "You are a cogscarab!"
-	flavour_text = "You are a cogscarab, a tiny building construct of Ratvar. While you're weak and can't leave Reebe, \
-	you have a set of quick tools, as well as a replica fabricator that can create brass for construction. Work with the servants of Ratvar \
-	to construct and maintain defenses at the City of Cogs."
+	short_desc = "Jesteś zębatkoskarabeuszem!"
+	flavour_text = "Jesteś zębatkoskarabeuszem, małym budowniczym konstruktem Ratvara. Jesteś słaby i nie możesz opuścić Reebe, \
+	ale masz zestaw szybkich narzędzi i fabrykator replik, który wytwarza mosiądz do budowy. Współpracuj ze sługami Ratvara, \
+	by budować i utrzymywać umocnienia w Mieście Zębatek."
 
 /obj/effect/mob_spawn/drone/cogscarab/attack_ghost(mob/user)
 	if(is_banned_from(user.ckey, ROLE_SERVANT_OF_RATVAR) || QDELETED(src) || QDELETED(user))
 		return
 	if(!SSticker.mode)
-		to_chat(user, "Can't become a cogscarab before the game has started.")
+		to_chat(user, "Nie możesz zostać zębatkoskarabeuszem przed rozpoczęciem gry.")
 		return
-	var/be_drone = alert("Become a cogscarab? (Warning, You can no longer be cloned!)",,"Yes","No")
+	var/be_drone = alert("Zostać zębatkoskarabeuszem? (Uwaga: nie będzie można cię już sklonować!)",,"Yes","No")
 	if(be_drone != "Yes" || QDELETED(src) || !isobserver(user))
 		return
 	var/mob/living/simple_animal/drone/D = new mob_type(get_turf(loc))

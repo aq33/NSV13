@@ -1,14 +1,14 @@
 
 /datum/computer_file/program/chatclient
 	filename = "ntnrc_client"
-	filedesc = "Chat Client"
+	filedesc = "Klient czatu"
 	category = PROGRAM_CATEGORY_MISC
 	program_icon_state = "command"
-	extended_desc = "This program allows communication over NTNRC network"
+	extended_desc = "Ten program pozwala na komunikację przez sieć NTNRC"
 	size = 8
 	requires_ntnet = TRUE
 	requires_ntnet_feature = NTNET_COMMUNICATION
-	network_destination = "NTNRC server"
+	network_destination = "serwer NTNRC"
 	ui_header = "ntnrc_idle.gif"
 	available_on_ntnet = TRUE
 	tgui_id = "NtosNetChat"
@@ -49,10 +49,10 @@
 			if(!message)
 				return
 			if(src in channel.muted_clients)
-				to_chat(usr, "<span class='warning'>ERROR: You are muted from this channel.</span>")
+				to_chat(usr, "<span class='warning'>BŁĄD: jesteś wyciszony na tym kanale.</span>")
 				return
 			if(CHAT_FILTER_CHECK(message))
-				to_chat(usr, "<span class='warning'>ERROR: Prohibited word(s) detected in message.</span>")
+				to_chat(usr, "<span class='warning'>BŁĄD: w wiadomości wykryto zakazane słowa.</span>")
 				return
 			if(channel.password && (!(src in channel.active_clients) && !(src in channel.offline_clients)))
 				if(channel.password == message)
@@ -61,7 +61,7 @@
 
 			channel.add_message(message, username)
 			var/mob/living/user = usr
-			var/ghost_message = "<span class='name'>[user] (as [username])</span> <span class='game say'>NTRC Message to </span> <span class='name'>[channel.title]</span>: <span class='message'>[message]</span>"
+			var/ghost_message = "<span class='name'>[user] (jako [username])</span> <span class='game say'>Wiadomość NTRC na kanale</span> <span class='name'>[channel.title]</span>: <span class='message'>[message]</span>"
 			for(var/mob/M in GLOB.player_list)
 				if(isobserver(M) && (M.client?.prefs.chat_toggles & CHAT_GHOSTPDA)) // TODO tablet-pda add a preference for this (currently frozen)
 					to_chat(M, "[FOLLOW_LINK(M, user)] [ghost_message]")
@@ -115,7 +115,7 @@
 				return
 			for(var/datum/ntnet_conversation/anychannel as anything in SSnetworks.station_network.chat_channels)
 				if(src in anychannel.active_clients)
-					anychannel.add_status_message("[username] is now known as [newname].")
+					anychannel.add_status_message("[username] jest teraz znany jako [newname].")
 			username = newname
 			return TRUE
 		if("PRG_savelog")
@@ -127,16 +127,16 @@
 			var/datum/computer_file/data/log_file/logfile = new()
 			// Now we will generate HTML-compliant file that can actually be viewed/printed.
 			logfile.filename = logname
-			var/log_data = "Logfile dump from NTNRC channel [channel.title]\n"
+			var/log_data = "Zrzut dziennika z kanału NTNRC [channel.title]\n"
 			for(var/logstring in channel.messages)
 				log_data += "[logstring]\n"
-			log_data += "\nLogfile dump completed.\n"
+			log_data += "\nZrzut dziennika zakończony.\n"
 			logfile.set_stored_data(log_data)
 			var/obj/item/computer_hardware/hard_drive/hard_drive = computer.all_components[MC_HDD]
 			if(!hard_drive)
-				computer.visible_message("<span class='warning'>\The [computer] shows an \"I/O Error - Hard drive connection error\" warning.</span>")
+				computer.visible_message("<span class='warning'>[computer] wyświetla ostrzeżenie „Błąd WE/WY – błąd połączenia z dyskiem twardym”.</span>")
 			else if(!hard_drive.store_file(logfile))
-				computer.visible_message("<span class='warning'>\The [computer] shows an \"I/O Error - Hard drive may be full. Please free some space and try again. Required space: [logfile.size]GQ\" warning.</span>")
+				computer.visible_message("<span class='warning'>[computer] wyświetla ostrzeżenie „Błąd WE/WY – dysk twardy może być pełny. Zwolnij trochę miejsca i spróbuj ponownie. Wymagane miejsce: [logfile.size] GQ”.</span>")
 			computer.send_sound()
 			return TRUE
 		if("PRG_renamechannel")
@@ -145,7 +145,7 @@
 			var/newname = reject_bad_text(params["new_name"])
 			if(!newname || !channel)
 				return
-			channel.add_status_message("Channel renamed from [channel.title] to [newname] by operator.")
+			channel.add_status_message("Operator zmienił nazwę kanału z [channel.title] na [newname].")
 			channel.title = newname
 			return TRUE
 		if("PRG_deletechannel")

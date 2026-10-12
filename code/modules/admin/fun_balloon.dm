@@ -45,20 +45,20 @@
 	name = "sentience fun balloon"
 	desc = "When this pops, things are gonna get more aware around here."
 	var/effect_range = 3
-	var/group_name = "a bunch of giant spiders"
+	var/group_name = "banda wielkich pająków"
 
 /obj/effect/fun_balloon/sentience/effect()
 	var/list/bodies = list()
 	for(var/mob/living/M in viewers(effect_range, get_turf(src)))
 		bodies += M
 
-	var/question = "Would you like to be [group_name]?"
+	var/question = "Czy chcesz być: [group_name]?"
 	var/list/candidates = pollCandidatesForMobs(question, ROLE_SENTIENCE, null, 10 SECONDS, bodies)
 	while(LAZYLEN(candidates) && LAZYLEN(bodies))
 		var/mob/dead/observer/C = pick_n_take(candidates)
 		var/mob/living/body = pick_n_take(bodies)
 
-		to_chat(body, "Your mob has been taken over by a ghost!")
+		to_chat(body, "Twój mob został przejęty przez ducha!")
 		message_admins("[key_name_admin(C)] has taken control of ([key_name_admin(body)])")
 		body.ghostize(0)
 		body.key = C.key
@@ -121,16 +121,16 @@
 
 	var/mob/living/L = AM
 	if(L.pulling && istype(L.pulling, /obj/item/bodypart/head))
-		to_chat(L, "Your offering is accepted. You may pass.")
+		to_chat(L, "Twoja ofiara została przyjęta. Możesz przejść.")
 		qdel(L.pulling)
 		var/turf/LA = get_turf(pick(warp_points))
 		L.forceMove(LA)
 		L.hallucination = 0
-		to_chat(L, "<span class='reallybig redtext'>The battle is won. Your bloodlust subsides.</span>")
+		to_chat(L, "<span class='reallybig redtext'>Bitwa wygrana. Twoja żądza krwi słabnie.</span>")
 		for(var/obj/item/chainsaw/doomslayer/chainsaw in L)
 			qdel(chainsaw)
 	else
-		to_chat(L, "You are not yet worthy of passing. Drag a severed head to the barrier to be allowed entry to the hall of champions.")
+		to_chat(L, "Nie jesteś jeszcze godzien przejścia. Przyciągnij odciętą głowę do bariery, by zostać wpuszczonym do sali czempionów.")
 
 /obj/effect/landmark/shuttle_arena_safe
 	name = "hall of champions"
@@ -157,7 +157,7 @@
 	var/obj/effect/landmark/LA = pick(warp_points)
 	var/mob/living/M = AM
 	M.forceMove(get_turf(LA))
-	to_chat(M, "<span class='reallybig redtext'>You're trapped in a deadly arena! To escape, you'll need to drag a severed head to the escape portals.</span>")
+	to_chat(M, "<span class='reallybig redtext'>Jesteś uwięziony na śmiertelnej arenie! Aby uciec, musisz przyciągnąć odciętą głowę do portali ucieczki.</span>")
 	spawn()
 		var/obj/effect/mine/pickup/bloodbath/B = new (M)
 		B.mineEffect(M)

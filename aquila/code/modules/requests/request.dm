@@ -8,10 +8,10 @@
 	. = ..()
 	if(href_list["cancel_nuke"])
 		if(req_type != REQUEST_NUKE) // what are you trying to cancel???
-			to_chat(usr, "<span class='admin'>You can't cancel this type of request.</span>")
+			to_chat(usr, "<span class='admin'>Nie możesz anulować tego rodzaju prośby.</span>")
 			return
 		if(!autoaccept)
-			to_chat(usr, "<span class='admin'>You are too late to cancel that!</span>")
+			to_chat(usr, "<span class='admin'>Za późno, by to anulować!</span>")
 			return
 		autoaccept = FALSE
 		message_admins("[key_name_admin(usr)] cancelled nuke code autogeneration requested by [ADMIN_FULLMONTY(owner)].")
@@ -19,10 +19,10 @@
 		SSblackbox.record_feedback("tally", "nuke_code_autogeneration_admin_cancelled", 1, message)
 	if(href_list["cancel_ert"])
 		if(req_type != REQUEST_ERT) // what are you trying to cancel???
-			to_chat(usr, "<span class='admin'>You can't cancel this type of request.</span>")
+			to_chat(usr, "<span class='admin'>Nie możesz anulować tego rodzaju prośby.</span>")
 			return
 		if(!autoaccept)
-			to_chat(usr, "<span class='admin'>You are too late to cancel that!</span>")
+			to_chat(usr, "<span class='admin'>Za późno, by to anulować!</span>")
 			return
 		autoaccept = FALSE
 		message_admins("[key_name_admin(usr)] rejected the response team request from [ADMIN_FULLMONTY(owner)].")
@@ -30,10 +30,10 @@
 		SSblackbox.record_feedback("tally", "nuke_code_autogeneration_admin_cancelled", 1, message)
 	if(href_list["cancel_wake"])
 		if(req_type != REQUEST_CREW_WAKE)
-			to_chat(usr, "<span class='admin'>You can't cancel this type of request.</span>")
+			to_chat(usr, "<span class='admin'>Nie możesz anulować tego rodzaju prośby.</span>")
 			return
 		if(!autoaccept)
-			to_chat(usr, "<span class='admin'>You are too late to cancel that!</span>")
+			to_chat(usr, "<span class='admin'>Za późno, by to anulować!</span>")
 			return
 		autoaccept = FALSE
 		message_admins("[key_name_admin(usr)] rejected the crew wake request from [ADMIN_FULLMONTY(owner)].")
@@ -99,7 +99,7 @@ GLOBAL_VAR_INIT(erts_requested_already, 0)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(priority_announce), message, "Automatyczny System Awaryjny Centrali"), 2 SECONDS)
 			return FALSE
 		ertemplate = new ert_type
-		var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for [ertemplate.polldesc] ?", ROLE_ERT, req_hours = 0)
+		var/list/mob/dead/observer/candidates = pollGhostCandidates("Czy chcesz być brany pod uwagę do: [ertemplate.polldesc]?", ROLE_ERT, req_hours = 0)
 		var/teamSpawned = FALSE
 		if(candidates.len <= 0)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(priority_announce), message, "Automatyczny System Awaryjny Centrali"), 2 SECONDS)

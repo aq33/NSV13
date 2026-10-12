@@ -17,7 +17,7 @@ Bonus
 
 /datum/symptom/fever
 	name = "Fever"
-	desc = "The virus causes a febrile response from the host, raising its body temperature."
+	desc = "Wirus wywołuje u nosiciela reakcję gorączkową, podnosząc temperaturę jego ciała."
 	stealth = -1
 	resistance = 3
 	stage_speed = 3
@@ -30,8 +30,7 @@ Bonus
 	bodies = list("Fever")
 	suffixes = list(" Fever")
 	var/unsafe = FALSE //over the heat threshold
-	threshold_desc = "<b>Resistance 5:</b> Increases fever intensity, fever can overheat and harm the host.<br>\
-					  <b>Resistance 10:</b> Further increases fever intensity."
+	threshold_desc = "<b>Odporność 5:</b> zwiększa intensywność gorączki, która może przegrzać i zranić nosiciela.<br><b>Odporność 10:</b> jeszcze bardziej zwiększa intensywność gorączki."
 
 /datum/symptom/fever/severityset(datum/disease/advance/A)
 	. = ..()

@@ -103,25 +103,25 @@
 		return FALSE //No message for cooldown.
 	if(target && QDELETED(target))
 		if(inplace_report)
-			inplace_report[1] = "Error - invalid target. ([src])"
+			inplace_report[1] = "Błąd - nieprawidłowy cel. ([src])"
 		return FALSE
 	if(!get_ammo())
 		if(inplace_report)
-			inplace_report[1] = "Error - ammunition or charge depleted. ([src])"
+			inplace_report[1] = "Błąd - wyczerpana amunicja lub ładunek. ([src])"
 		return FALSE
 	if(target && isovermap(target))
 		var/obj/structure/overmap/overmap_target = target
 		if(overmap_target.faction == linked_overmap.faction)
 			if(inplace_report)
-				inplace_report[1] = "Error - Target IFF friendly. ([src])"
+				inplace_report[1] = "Błąd - IFF celu przyjazne. ([src])"
 			return FALSE
 	if(target && !check_valid_fire_angle(target))
 		if(inplace_report)
-			inplace_report[1] = "Error - invalid angle. ([src])"
+			inplace_report[1] = "Błąd - nieprawidłowy kąt. ([src])"
 		return FALSE
 	if(linked_overmap.ai_controlled && target && isovermap(target) && !is_valid_ai_target(target))
 		if(inplace_report)
-			inplace_report[1] = "Error - target did not pass analysis. ([src])"
+			inplace_report[1] = "Błąd - cel nie przeszedł analizy. ([src])"
 		return FALSE
 	if(needs_real_weapons())
 		if(!can_fire_physical(target, inplace_report))
@@ -148,7 +148,7 @@
 /datum/overmap_ship_weapon/proc/can_fire_physical(atom/target, list/inplace_report)
 	if(!length(weapons["loaded"]))
 		if(inplace_report)
-			inplace_report[1] = "Error - No ready weapons in control group. ([src])"
+			inplace_report[1] = "Błąd - brak gotowej broni w grupie sterowania. ([src])"
 		return FALSE
 	for(var/obj/machinery/ship_weapon/physical_weapon in weapons["loaded"])
 		if(ammo_filter && !check_valid_physical_ammo(physical_weapon))
@@ -157,7 +157,7 @@
 			continue
 		return TRUE //We have at least one weapon that can fire.
 	if(inplace_report)
-		inplace_report[1] = "Error - no weapon in control group ready to fire. ([src])"
+		inplace_report[1] = "Błąd - żadna broń w grupie sterowania nie jest gotowa do strzału. ([src])"
 	return FALSE
 
 /**

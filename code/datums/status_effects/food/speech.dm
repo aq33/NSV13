@@ -27,7 +27,7 @@
 			message = replacetextEx(message, " [key]", " [value]")
 
 		if(prob(3))
-			message += pick(" Ravioli, ravioli, give me the formuoli!"," Mamma-mia!"," Mamma-mia! That's a spicy meat-ball!", " La la la la la funiculi funicula!")
+			message += pick(" Ravioli, ravioli, daj mi formuoli!"," Mamma mia!"," Mamma mia! Ale pikantny klopsik!", " La la la la la funiculi funicula!")
 	speech_args[SPEECH_MESSAGE] = trim(message)
 
 /atom/movable/screen/alert/status_effect/italian_speech
@@ -64,7 +64,7 @@
 			message = replacetextEx(message, " [key]", " [value]")
 
 		if(prob(3))
-			message += pick(" Honh honh honh!"," Honh!"," Zut Alors!")
+			message += pick(" Hą, hą, hą!"," Hą!"," Sacrebleu!")
 	speech_args[SPEECH_MESSAGE] = trim(message)
 
 /atom/movable/screen/alert/status_effect/french_speech

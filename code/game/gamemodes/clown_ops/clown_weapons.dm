@@ -71,7 +71,7 @@
 	force_on = 0
 	throwforce_on = 0
 	hitsound = null
-	attack_verb_on = list("slipped")
+	attack_verb_on = list("podcina")
 	clumsy_check = FALSE
 	sharpness = IS_BLUNT
 	sword_color = "yellow"
@@ -107,7 +107,7 @@
 /obj/item/melee/transforming/energy/sword/bananium/attackby(obj/item/I, mob/living/user, params)
 	if((world.time > next_trombone_allowed) && istype(I, /obj/item/melee/transforming/energy/sword/bananium))
 		next_trombone_allowed = world.time + 50
-		to_chat(user, "You slap the two swords together. Sadly, they do not seem to fit.")
+		to_chat(user, "Uderzasz o siebie oba miecze. Niestety chyba do siebie nie pasują.")
 		playsound(src, 'sound/misc/sadtrombone.ogg', 50)
 		return TRUE
 	return ..()
@@ -122,7 +122,7 @@
 /obj/item/melee/transforming/energy/sword/bananium/suicide_act(mob/user)
 	if(!active)
 		transform_weapon(user, TRUE)
-	user.visible_message("<span class='suicide'>[user] is [pick("slitting [user.p_their()] stomach open with", "falling on")] [src]! It looks like [user.p_theyre()] trying to commit seppuku, but the blade slips off of [user.p_them()] harmlessly!</span>")
+	user.visible_message("<span class='suicide'>[user] [pick("rozcina sobie brzuch za pomocą", "rzuca się na")] [src]! Wygląda na to, że próbuje popełnić seppuku, ale ostrze nieszkodliwie się ześlizguje!</span>")
 	var/datum/component/slippery/slipper = GetComponent(/datum/component/slippery)
 	slipper.Slip(src, user)
 	return SHAME
@@ -190,7 +190,7 @@
 /obj/item/food/grown/banana/bombanana
 	trash_type = /obj/item/grown/bananapeel/bombanana
 	seed = /obj/item/seeds/banana/bombanana
-	tastes = list("explosives" = 10)
+	tastes = list("materiały wybuchowe" = 10)
 	food_reagents = list(/datum/reagent/consumable/nutriment/vitamin = 1)
 
 /obj/item/grown/bananapeel/bombanana
@@ -204,7 +204,7 @@
 	bomb = new /obj/item/grenade/syndieminibomb(src)
 	bomb.det_time = det_time
 	if(iscarbon(loc))
-		to_chat(loc, "[src] begins to beep.")
+		to_chat(loc, "[src] zaczyna pikać.")
 		var/mob/living/carbon/C = loc
 		C.throw_mode_on(THROW_MODE_TOGGLE)
 	bomb.preprime(loc, null, FALSE)
@@ -218,7 +218,7 @@
 	QDEL_NULL(bomb)
 
 /obj/item/grown/bananapeel/bombanana/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is deliberately slipping on the [src.name]! It looks like \he's trying to commit suicide.</span>")
+	user.visible_message("<span class='suicide'>[user] celowo poślizguje się na [src.name]! Wygląda na to, że próbuje popełnić samobójstwo.</span>")
 	playsound(loc, 'sound/misc/slip.ogg', 50, 1, -1)
 	bomb.preprime(user, 0, FALSE)
 	return (BRUTELOSS)

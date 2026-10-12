@@ -20,7 +20,7 @@
 	var/hearing_range = 1
 
 /obj/item/assembly/signaler/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] eats \the [src]! If it is signaled, [user.p_they()] will die!</span>")
+	user.visible_message("<span class='suicide'>[user] zjada [src]! Jeśli dostanie sygnał, umrze!</span>")
 	playsound(src, 'sound/items/eatfood.ogg', 50, TRUE)
 	moveToNullspace()
 	suicider = user.mind
@@ -32,9 +32,9 @@
 	if(!istype(user))
 		return
 	if(suicide_mob == REF(user))
-		user.visible_message("<span class='suicide'>[user]'s [src] receives a signal, killing [user.p_them()] instantly!</span>")
+		user.visible_message("<span class='suicide'>[src] w [user] odbiera sygnał, natychmiast go zabijając!</span>")
 	else
-		user.visible_message("<span class='suicide'>[user]'s [src] receives a signal and [user.p_they()] die[user.p_s()] like a gamer!</span>")
+		user.visible_message("<span class='suicide'>[src] w [user] odbiera sygnał, a on umiera jak prawdziwy gamer!</span>")
 	user.adjustOxyLoss(200)//it sends an electrical pulse to their heart, killing them. or something.
 	user.death(0)
 	user.set_suicide(TRUE)
@@ -148,7 +148,7 @@
 		manual_suicide(suicider)
 		return
 	pulse(TRUE)
-	audible_message("[icon2html(src, hearers(src))] *beep* *beep* *beep*", null, hearing_range)
+	audible_message("[icon2html(src, hearers(src))] *bip* *bip* *bip*", null, hearing_range)
 	playsound(get_turf(src), 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 	return TRUE
 
@@ -172,7 +172,7 @@
 
 /obj/item/assembly/signaler/receiver/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The radio receiver is [on?"on":"off"].</span>"
+	. += "<span class='notice'>Odbiornik radiowy jest [on?"włączony":"wyłączony"].</span>"
 
 /obj/item/assembly/signaler/receiver/receive_signal(datum/signal/signal)
 	if(!on)
@@ -202,7 +202,7 @@
 	return TRUE
 
 /obj/item/assembly/signaler/anomaly/manual_suicide(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user]'s [src] is reacting to the radio signal, warping [user.p_their()] body!</span>")
+	user.visible_message("<span class='suicide'>[src] w [user] reaguje na sygnał radiowy, wykrzywiając jego ciało!</span>")
 	user.set_suicide(TRUE)
 	user.suicide_log()
 	user.gib()

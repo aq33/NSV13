@@ -8,10 +8,7 @@
 	restricted_jobs = list(JOB_NAME_AI, JOB_NAME_CYBORG)
 
 	announce_span = "danger"
-	announce_text = "There are Syndicate agents and Blood Brothers on the station!\n\
-	<span class='danger'>Traitors</span>: Accomplish your objectives.\n\
-	<span class='danger'>Blood Brothers</span>: Accomplish your objectives.\n\
-	<span class='notice'>Crew</span>: Do not let the traitors or brothers succeed!"
+	announce_text = "Na stacji są agenci Syndykatu i Bracia Krwi!\n<span class='danger'>Zdrajcy</span>: wykonajcie swoje cele.\n<span class='danger'>Bracia Krwi</span>: wykonajcie swoje cele.\n<span class='notice'>Załoga</span>: nie pozwólcie zdrajcom ani braciom odnieść sukcesu!"
 
 	var/list/datum/team/brother_team/pre_brother_teams = list()
 	var/const/team_amount = 2 //hard limit on brother teams if scaling is turned off

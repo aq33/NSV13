@@ -2,7 +2,7 @@
 	name = "Bananium Shipment"
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 5
-	report_message = "Rumors has it that the clown planet has been sending support packages to clowns in this system"
+	report_message = "Plotka głosi, że planeta klaunów wysyła paczki pomocowe klaunom w tym układzie"
 	trait_to_give = STATION_TRAIT_BANANIUM_SHIPMENTS
 
 /datum/station_trait/ian_adventure
@@ -10,7 +10,7 @@
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 5
 	show_in_report = FALSE
-	report_message = "Ian has gone exploring somewhere in the station."
+	report_message = "Ian wyruszył na wyprawę gdzieś po stacji."
 
 /datum/station_trait/ian_adventure/on_round_start()
 	for(var/mob/living/simple_animal/pet/dog/corgi/dog in GLOB.mob_list)
@@ -33,7 +33,7 @@
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 8
 	show_in_report = TRUE
-	report_message = "Something seems to be wrong with the PDAs issued to you all this shift. Nothing too bad though."
+	report_message = "Coś jest nie tak z wydanymi wam na tę zmianę PDA. Ale nic strasznego."
 	trait_to_give = STATION_TRAIT_PDA_GLITCHED
 
 /datum/station_trait/announcement_medbot
@@ -41,7 +41,7 @@
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 5
 	show_in_report = TRUE
-	report_message = "Our announcement system is under scheduled maintanance at the moment. Thankfully, we have a backup."
+	report_message = "Nasz system ogłoszeń przechodzi obecnie planową konserwację. Na szczęście mamy zapasowy."
 	blacklist = list(
 		/datum/station_trait/announcement_intern,
 		/datum/station_trait/announcement_baystation
@@ -56,7 +56,7 @@
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 5
 	show_in_report = TRUE
-	report_message = "We lost the primary datatape that holds the announcement system's voice responses. We did however find an older backup."
+	report_message = "Zgubiliśmy główną taśmę z nagraniami głosowymi systemu ogłoszeń. Znaleźliśmy jednak starszą kopię zapasową."
 	blacklist = list(/datum/station_trait/announcement_intern,
 	/datum/station_trait/announcement_medbot
 	)

@@ -21,7 +21,7 @@
 
 	if(owner.nutrition <= hunger_threshold)
 		synthesizing = TRUE
-		to_chat(owner, "<span class='notice'>You feel less hungry...</span>")
+		to_chat(owner, "<span class='notice'>Czujesz się mniej głodny...</span>")
 		owner.adjust_nutrition(50)
 		addtimer(CALLBACK(src, PROC_REF(synth_cool)), 50)
 
@@ -33,7 +33,7 @@
 	if(!owner || . & EMP_PROTECT_SELF)
 		return
 	owner.reagents.add_reagent(/datum/reagent/toxin/bad_food, poison_amount / severity)
-	to_chat(owner, "<span class='warning'>You feel like your insides are burning.</span>")
+	to_chat(owner, "<span class='warning'>Czujesz, jakby twoje wnętrzności płonęły.</span>")
 
 
 /obj/item/organ/cyberimp/chest/nutriment/plus
@@ -61,7 +61,7 @@
 		else
 			cooldown = revive_cost + world.time
 			reviving = FALSE
-			to_chat(owner, "<span class='notice'>Your reviver implant shuts down and starts recharging. It will be ready again in [DisplayTimeText(revive_cost)].</span>")
+			to_chat(owner, "<span class='notice'>Twój implant reanimacyjny się wyłącza i zaczyna ładować. Będzie znów gotowy za [DisplayTimeText(revive_cost)].</span>")
 		return
 
 	if(cooldown > world.time)
@@ -73,7 +73,7 @@
 
 	revive_cost = 0
 	reviving = TRUE
-	to_chat(owner, "<span class='notice'>You feel a faint buzzing as your reviver implant starts patching your wounds...</span>")
+	to_chat(owner, "<span class='notice'>Czujesz ciche brzęczenie, gdy twój implant reanimacyjny zaczyna łatać twoje rany...</span>")
 
 /obj/item/organ/cyberimp/chest/reviver/proc/heal()
 	if(owner.getOxyLoss())
@@ -103,7 +103,7 @@
 		var/mob/living/carbon/human/H = owner
 		if(H.stat != DEAD && prob(50 / severity) && H.can_heartattack())
 			H.set_heartattack(TRUE)
-			to_chat(H, "<span class='userdanger'>You feel a horrible agony in your chest!</span>")
+			to_chat(H, "<span class='userdanger'>Czujesz straszliwy ból w klatce piersiowej!</span>")
 			addtimer(CALLBACK(src, PROC_REF(undo_heart_attack)), 600 / severity)
 
 /obj/item/organ/cyberimp/chest/reviver/proc/undo_heart_attack()
@@ -112,7 +112,7 @@
 		return
 	H.set_heartattack(FALSE)
 	if(H.stat == CONSCIOUS)
-		to_chat(H, "<span class='notice'>You feel your heart beating again!</span>")
+		to_chat(H, "<span class='notice'>Czujesz, że twoje serce znów bije!</span>")
 
 /obj/item/organ/cyberimp/chest/reviver/syndicate
 	syndicate_implant = TRUE
@@ -148,7 +148,7 @@
 	if(!on)
 		if((organ_flags & ORGAN_FAILING))
 			if(!silent)
-				to_chat(owner, "<span class='warning'>Your thrusters set seems to be broken!</span>")
+				to_chat(owner, "<span class='warning'>Twój zestaw silników manewrowych chyba jest zepsuty!</span>")
 			return 0
 		on = TRUE
 		if(allow_thrust(0.01))
@@ -156,13 +156,13 @@
 			RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(move_react))
 			owner.add_movespeed_modifier(MOVESPEED_ID_CYBER_THRUSTER, priority=100, multiplicative_slowdown=-2, movetypes=FLOATING, conflict=MOVE_CONFLICT_JETPACK)
 			if(!silent)
-				to_chat(owner, "<span class='notice'>You turn your thrusters set on.</span>")
+				to_chat(owner, "<span class='notice'>Włączasz zestaw silników manewrowych.</span>")
 	else
 		ion_trail.stop()
 		UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
 		owner.remove_movespeed_modifier(MOVESPEED_ID_CYBER_THRUSTER)
 		if(!silent)
-			to_chat(owner, "<span class='notice'>You turn your thrusters set off.</span>")
+			to_chat(owner, "<span class='notice'>Wyłączasz zestaw silników manewrowych.</span>")
 		on = FALSE
 	update_icon()
 

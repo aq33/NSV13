@@ -18,17 +18,17 @@
 	var/charges = 1
 	var/spawn_type = /obj/tear_in_reality
 	var/spawn_amt = 1
-	var/activate_descriptor = "reality"
-	var/rend_desc = "You should run now."
+	var/activate_descriptor = "samej rzeczywistości"
+	var/rend_desc = "Lepiej już uciekaj."
 	var/spawn_fast = 0 //if 1, ignores checking for mobs on loc before spawning
 
 /obj/item/veilrender/attack_self(mob/user)
 	if(charges > 0)
 		new /obj/effect/rend(get_turf(user), spawn_type, spawn_amt, rend_desc, spawn_fast)
 		charges--
-		user.visible_message("<span class='boldannounce'>[src] hums with power as [user] deals a blow to [activate_descriptor] itself!</span>")
+		user.visible_message("<span class='boldannounce'>[src] brzęczy mocą, gdy [user] zadaje cios [activate_descriptor]!</span>")
 	else
-		to_chat(user, "<span class='danger'>The unearthly energies that powered the blade are now dormant.</span>")
+		to_chat(user, "<span class='danger'>Nieziemskie energie zasilające ostrze teraz uśpiły się.</span>")
 
 /obj/effect/rend
 	name = "tear in the fabric of reality"
@@ -60,7 +60,7 @@
 
 /obj/effect/rend/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/nullrod))
-		user.visible_message("<span class='danger'>[user] seals \the [src] with \the [I].</span>")
+		user.visible_message("<span class='danger'>[user] zamyka [src] za pomocą [I].</span>")
 		qdel(src)
 		return
 	else
@@ -77,16 +77,16 @@
 	desc = "A wicked curved blade of alien origin, recovered from the ruins of a vast farm."
 	spawn_type = /mob/living/simple_animal/cow
 	spawn_amt = 20
-	activate_descriptor = "hunger"
-	rend_desc = "Reverberates with the sound of ten thousand moos."
+	activate_descriptor = "samemu głodowi"
+	rend_desc = "Rozbrzmiewa odgłosem dziesięciu tysięcy muczeń."
 
 /obj/item/veilrender/honkrender
 	name = "honk render"
 	desc = "A wicked curved blade of alien origin, recovered from the ruins of a vast circus."
 	spawn_type = /mob/living/simple_animal/hostile/retaliate/clown
 	spawn_amt = 10
-	activate_descriptor = "depression"
-	rend_desc = "Gently wafting with the sounds of endless laughter."
+	activate_descriptor = "samej depresji"
+	rend_desc = "Łagodnie niesie się z niego nieskończony śmiech."
 	icon_state = "clownrender"
 
 /obj/item/veilrender/honkrender/honkhulkrender
@@ -94,8 +94,8 @@
 	desc = "A wicked curved blade of alien origin, recovered from the ruins of a vast circus. This one gleams with a special light."
 	spawn_type = /mob/living/simple_animal/hostile/retaliate/clown/clownhulk
 	spawn_amt = 5
-	activate_descriptor = "depression"
-	rend_desc = "Gently wafting with the sounds of mirthful grunting."
+	activate_descriptor = "samej depresji"
+	rend_desc = "Łagodnie niesie się z niego radosne chrząkanie."
 	icon_state = "clownrender"
 
 #define TEAR_IN_REALITY_CONSUME_RANGE 3
@@ -135,7 +135,7 @@
 		var/datum/component/mood/insaneinthemembrane = C.GetComponent(/datum/component/mood)
 		if(insaneinthemembrane.sanity < 15)
 			return //they've already seen it and are about to die, or are just too insane to care
-		to_chat(C, "<span class='userdanger'>OH GOD! NONE OF IT IS REAL! NONE OF IT IS REEEEEEEEEEEEEEEEEEEEEEEEAL!</span>")
+		to_chat(C, "<span class='userdanger'>O BOŻE! NIC Z TEGO NIE JEST PRAWDZIWE! NIC Z TEGO NIE JEST PRAWDZIWEEEEEEEEEEEEEEEEEEEEEE!</span>")
 		insaneinthemembrane.sanity = 0
 		for(var/lore in typesof(/datum/brain_trauma/severe))
 			C.gain_trauma(lore)
@@ -162,7 +162,7 @@
 /obj/tear_in_reality/proc/free(atom/movable/A)
 	if(!LAZYLEN(GLOB.destabliization_exits))
 		if(ismob(A))
-			to_chat(A, "<span class='warning'>There is no way out of this place...</span>")
+			to_chat(A, "<span class='warning'>Nie ma stąd wyjścia...</span>")
 		return
 	var/atom/return_thing = pick(GLOB.destabliization_exits)
 	var/turf/T = get_turf(return_thing)
@@ -201,7 +201,7 @@
 	var/mob/holder = get(loc, /mob)
 	if(current_owner && current_owner != holder)
 
-		to_chat(current_owner, "<span class='notice'>Your otherworldly vision fades...</span>")
+		to_chat(current_owner, "<span class='notice'>Twoja nieziemska wizja słabnie...</span>")
 
 		REMOVE_TRAIT(current_owner, TRAIT_SIXTHSENSE, SCRYING_ORB)
 		REMOVE_TRAIT(current_owner, TRAIT_XRAY_VISION, SCRYING_ORB)
@@ -212,14 +212,14 @@
 	if(!current_owner && holder)
 		current_owner = holder
 
-		to_chat(current_owner, "<span class='notice'>You can see...everything!</span>")
+		to_chat(current_owner, "<span class='notice'>Widzisz... wszystko!</span>")
 
 		ADD_TRAIT(current_owner, TRAIT_SIXTHSENSE, SCRYING_ORB)
 		ADD_TRAIT(current_owner, TRAIT_XRAY_VISION, SCRYING_ORB)
 		current_owner.update_sight()
 
 /obj/item/scrying/attack_self(mob/user)
-	visible_message("<span class='danger'>[user] stares into [src], their eyes glazing over.</span>")
+	visible_message("<span class='danger'>[user] wpatruje się w [src] szklistym wzrokiem.</span>")
 	user.ghostize(TRUE)
 
 /////////////////////////////////////////Necromantic Stone///////////////////
@@ -247,7 +247,7 @@
 		return
 
 	if(M.stat != DEAD)
-		to_chat(user, "<span class='warning'>This artifact can only affect the dead!</span>")
+		to_chat(user, "<span class='warning'>Ten artefakt działa tylko na zmarłych!</span>")
 		return
 
 	for(var/mob/dead/observer/ghost in GLOB.dead_mob_list) //excludes new players
@@ -256,19 +256,19 @@
 			break
 
 	if(!M.mind || !M.client)
-		to_chat(user, "<span class='warning'>There is no soul connected to this body...</span>")
+		to_chat(user, "<span class='warning'>Z tym ciałem nie jest związana żadna dusza...</span>")
 		return
 
 	check_spooky()//clean out/refresh the list
 	if(spooky_scaries.len >= 3 && !unlimited)
-		to_chat(user, "<span class='warning'>This artifact can only affect three undead at a time!</span>")
+		to_chat(user, "<span class='warning'>Ten artefakt może kontrolować naraz tylko troje nieumarłych!</span>")
 		return
 
 	M.set_species(/datum/species/skeleton, icon_update=0)
 	M.revive(full_heal = 1, admin_revive = 1)
 	spooky_scaries |= M
-	to_chat(M, "<span class='userdanger'>You have been revived by </span><B>[user.real_name]!</B>")
-	to_chat(M, "<span class='userdanger'>[user.p_theyre(TRUE)] your master now, assist [user.p_them()] even if it costs you your new life!</span>")
+	to_chat(M, "<span class='userdanger'>Ożywia cię </span><B>[user.real_name]!</B>")
+	to_chat(M, "<span class='userdanger'>To teraz twój pan - pomagaj mu, nawet jeśli będzie cię to kosztować nowe życie!</span>")
 
 	equip_roman_skeleton(M)
 	
@@ -324,11 +324,11 @@
 /obj/item/voodoo/attackby(obj/item/I, mob/user, params)
 	if(target && cooldown < world.time)
 		if(I.is_hot())
-			to_chat(target, "<span class='userdanger'>You suddenly feel very hot</span>")
+			to_chat(target, "<span class='userdanger'>Nagle robi ci się bardzo gorąco</span>")
 			target.adjust_bodytemperature(50)
 			GiveHint(target)
 		else if(is_pointed(I))
-			to_chat(target, "<span class='userdanger'>You feel a stabbing pain in [parse_zone(user.zone_selected)]!</span>")
+			to_chat(target, "<span class='userdanger'>Czujesz kłujący ból: [strefa_pl(user.zone_selected)]!</span>")
 			target.Paralyze(40)
 			GiveHint(target)
 		else if(istype(I, /obj/item/bikehorn))
@@ -343,7 +343,7 @@
 		if(I.loc == user && istype(I) && I.w_class <= WEIGHT_CLASS_SMALL)
 			if (user.transferItemToLoc(I,src))
 				voodoo_link = I
-				to_chat(user, "You attach [I] to the doll.")
+				to_chat(user, "Przyczepiasz [I] do lalki.")
 				update_targets()
 
 /obj/item/voodoo/check_eye(mob/user)
@@ -353,14 +353,14 @@
 
 /obj/item/voodoo/attack_self(mob/user)
 	if(!target && possible.len)
-		target = input(user, "Select your victim!", "Voodoo") as null|anything in sortNames(possible)
+		target = input(user, "Wybierz swoją ofiarę!", "Voodoo") as null|anything in sortNames(possible)
 		return
 
 	if(user.zone_selected == BODY_ZONE_CHEST)
 		if(voodoo_link)
 			target = null
 			voodoo_link.forceMove(drop_location())
-			to_chat(user, "<span class='notice'>You remove the [voodoo_link] from the doll.</span>")
+			to_chat(user, "<span class='notice'>Odczepiasz [voodoo_link] od lalki.</span>")
 			voodoo_link = null
 			update_targets()
 			return
@@ -368,7 +368,7 @@
 	if(target && cooldown < world.time)
 		switch(user.zone_selected)
 			if(BODY_ZONE_PRECISE_MOUTH)
-				var/wgw =  stripped_input(user, "What would you like the victim to say", "Voodoo")
+				var/wgw =  stripped_input(user, "Co ma powiedzieć ofiara?", "Voodoo")
 				target.say(wgw, forced = "voodoo doll")
 				log_game("[key_name(user)] made [key_name(target)] say [wgw] with a voodoo doll.")
 			if(BODY_ZONE_PRECISE_EYES)
@@ -378,16 +378,16 @@
 					user.reset_perspective(null)
 					user.unset_machine()
 			if(BODY_ZONE_R_LEG,BODY_ZONE_L_LEG)
-				to_chat(user, "<span class='notice'>You move the doll's legs around.</span>")
+				to_chat(user, "<span class='notice'>Poruszasz nogami lalki.</span>")
 				var/turf/T = get_step(target,pick(GLOB.cardinals))
 				target.Move(T)
 			if(BODY_ZONE_R_ARM,BODY_ZONE_L_ARM)
 				target.click_random_mob()
 				GiveHint(target)
 			if(BODY_ZONE_HEAD)
-				to_chat(user, "<span class='notice'>You smack the doll's head with your hand.</span>")
+				to_chat(user, "<span class='notice'>Uderzasz lalkę ręką w głowę.</span>")
 				target.Dizzy(10)
-				to_chat(target, "<span class='warning'>You suddenly feel as if your head was hit with a hammer!</span>")
+				to_chat(target, "<span class='warning'>Nagle czujesz, jakby ktoś uderzył cię młotkiem w głowę!</span>")
 				GiveHint(target,user)
 		cooldown = world.time + cooldown_time
 
@@ -405,13 +405,13 @@
 /obj/item/voodoo/proc/GiveHint(mob/victim,force=0)
 	if(prob(50) || force)
 		var/way = dir2text(get_dir(victim,get_turf(src)))
-		to_chat(victim, "<span class='notice'>You feel a dark presence from [way]</span>")
+		to_chat(victim, "<span class='notice'>Wyczuwasz mroczną obecność z kierunku: [way]</span>")
 	if(prob(20) || force)
 		var/area/A = get_area(src)
-		to_chat(victim, "<span class='notice'>You feel a dark presence from [A.name]</span>")
+		to_chat(victim, "<span class='notice'>Wyczuwasz mroczną obecność od strony: [A.name]</span>")
 
 /obj/item/voodoo/suicide_act(mob/living/carbon/user)
-    user.visible_message("<span class='suicide'>[user] links the voodoo doll to [user.p_them()]self and sits on it, infinitely crushing [user.p_them()]self! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+    user.visible_message("<span class='suicide'>[user] łączy lalkę voodoo z samym sobą i na niej siada, nieskończenie się miażdżąc! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
     user.gib()
     return(BRUTELOSS)
 

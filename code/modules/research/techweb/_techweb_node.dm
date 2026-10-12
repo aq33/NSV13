@@ -5,8 +5,8 @@
 /datum/techweb_node
 	var/id
 	var/tech_tier = 0
-	var/display_name = "Errored Node"
-	var/description = "Why are you seeing this?"
+	var/display_name = "Błędny węzeł"
+	var/description = "Czemu to widzisz?"
 	var/hidden = FALSE			//Whether it starts off hidden.
 	var/starting_node = FALSE	//Whether it's available without any research.
 	var/list/prereq_ids = list()
@@ -21,7 +21,7 @@
 /datum/techweb_node/error_node
 	id = "ERROR"
 	display_name = "ERROR"
-	description = "This usually means something in the database has corrupted. If it doesn't go away automatically, inform Central Command for their techs to fix it ASAP(tm)"
+	description = "Zwykle oznacza to, że coś w bazie danych uległo uszkodzeniu. Jeśli nie zniknie samo, poinformuj Centralę, by jej technicy jak najszybciej(tm) to naprawili"
 
 /datum/techweb_node/proc/Initialize()
 	//Make lists associative for lookup

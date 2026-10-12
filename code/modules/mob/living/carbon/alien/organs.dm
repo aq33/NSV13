@@ -122,13 +122,13 @@
 	if(!owner|| owner.stat == DEAD)
 		return
 	if(isalien(owner)) //Different effects for aliens than humans
-		to_chat(owner, "<span class='userdanger'>Your Queen has been struck down!</span>")
-		to_chat(owner, "<span class='danger'>You are struck with overwhelming agony! You feel confused, and your connection to the hivemind is severed.</span>")
+		to_chat(owner, "<span class='userdanger'>Twoja królowa została powalona!</span>")
+		to_chat(owner, "<span class='danger'>Uderza cię przytłaczająca agonia! Czujesz dezorientację, a twoja więź z umysłem roju zostaje zerwana.</span>")
 		owner.emote("roar")
 		owner.Stun(200) //Actually just slows them down a bit.
 
 	else if(ishuman(owner)) //Humans, being more fragile, are more overwhelmed by the mental backlash.
-		to_chat(owner, "<span class='danger'>You feel a splitting pain in your head, and are struck with a wave of nausea. You cannot hear the hivemind anymore!</span>")
+		to_chat(owner, "<span class='danger'>Czujesz rozsadzający ból głowy i falę mdłości. Nie słyszysz już umysłu roju!</span>")
 		owner.emote("scream")
 		owner.Paralyze(100)
 
@@ -147,7 +147,7 @@
 	recent_queen_death = FALSE
 	if(!owner) //In case the xeno is butchered or subjected to surgery after death.
 		return
-	to_chat(owner, "<span class='noticealien'>The pain of the queen's death is easing. You begin to hear the hivemind again.</span>")
+	to_chat(owner, "<span class='noticealien'>Ból po śmierci królowej słabnie. Znów zaczynasz słyszeć umysł roju.</span>")
 	owner.clear_alert("alien_noqueen")
 
 #undef QUEEN_DEATH_DEBUFF_DURATION

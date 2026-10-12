@@ -11,15 +11,15 @@
 
 /datum/component/storage/concrete/bluespace/bag_of_holding/proc/recursive_insertion(obj/item/W, mob/living/user)
 	var/atom/A = parent
-	var/safety = alert(user, "Doing this will have extremely dire consequences for the station and its crew. Be sure you know what you're doing.", "Put in [A.name]?", "Abort", "Proceed")
+	var/safety = alert(user, "Zrobienie tego będzie miało wyjątkowo poważne konsekwencje dla stacji i jej załogi. Upewnij się, że wiesz, co robisz.", "Włożyć [A.name]?", "Abort", "Proceed")
 	if(safety != "Proceed" || QDELETED(A) || QDELETED(W) || QDELETED(user) || !user.canUseTopic(A, BE_CLOSE, iscarbon(user)) || !(W in user.contents)) // need to be holding the bag you're "inserting"
 		return
 	var/turf/loccheck = get_turf(A)
 	if(is_reebe(loccheck.z))
-		user.visible_message("<span class='warning'>An unseen force knocks [user] to the ground!</span>", "<span class='big_brass'>\"I think not!\"</span>")
+		user.visible_message("<span class='warning'>Niewidzialna siła powala [user] na ziemię!</span>", "<span class='big_brass'>\"Chyba nie!\"</span>")
 		user.Paralyze(60)
 		return
-	to_chat(user, "<span class='danger'>The Bluespace interfaces of the two devices catastrophically malfunction!</span>")
+	to_chat(user, "<span class='danger'>Interfejsy bluespace obu urządzeń katastrofalnie zawodzą!</span>")
 	qdel(W)
 	playsound(loccheck,'sound/effects/supermatter.ogg', 200, 1)
 

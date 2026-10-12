@@ -15,8 +15,8 @@
 					return BULLET_ACT_HIT
 			else
 				blocked = 100
-				target.visible_message("<span class='danger'>\The [src] was deflected!</span>", \
-									   "<span class='userdanger'>You were protected against \the [src]!</span>")
+				target.visible_message("<span class='danger'>[src] zostaje odbity!</span>", \
+									   "<span class='userdanger'>Ochroniono cię przed [src]!</span>")
 	return ..()
 
 /obj/item/projectile/bullet/dnainjector/Destroy()

@@ -54,7 +54,7 @@
     var/thesoundthatwewant = input("Pick a sound:", null) as null|anything in sound_list
     if(!thesoundthatwewant)
         return
-    to_chat(usr, "Sound playback set to: [thesoundthatwewant]!")
+    to_chat(usr, "Odtwarzany dźwięk ustawiony na: [thesoundthatwewant]!")
     var/list/assblast = params2list(sound_list[thesoundthatwewant])
     selected_sound = assblast["selected_sound"]
     shiftpitch = text2num(assblast["shiftpitch"])

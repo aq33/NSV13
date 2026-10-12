@@ -11,9 +11,8 @@
 	icon = 'nsv13/icons/obj/library.dmi'
 	icon_state = "edgedweapons"
 	desc = "An instructional manual produced in the 2180s which instructs police officers in how to survive attacks by edged weapons and more. (Comes with a FREE Martian war commemorative knife!)"
-	greet = "<span class='sciradio'> You suddenly feel a lot less vulnerable to knife attacks...\
-	You're now able to perform grappling moves to incapacitate suspects. You can learn more about your newfound art by using the Recall police training verb in the ju-jitsu tab.</span>"
-	remarks = list("A suspect with a knife can close 7 paces and deliver deadly force in less than 1 and 1/2 seconds...", "In case of satanic rituals, apply a full magazine to the perp...", "Remove his hat and visually inspect his hair without touching it during a search...", "Have your partner search the target while you restrain them...", "What's this about knife culture?...", "A minimum reactionary gap of 21 feet is required to react and deliver at least 2 rounds and to have enough time to move out of the attacker's path...")
+	greet = "<span class='sciradio'> Nagle czujesz się o wiele mniej bezbronny wobec ataków nożem... Potrafisz teraz wykonywać chwyty obezwładniające podejrzanych. Więcej o swojej nowej sztuce dowiesz się z czasownika Recall police training w zakładce ju-jitsu.</span>"
+	remarks = list("Podejrzany z nożem może pokonać 7 kroków i zadać śmiertelny cios w mniej niż półtorej sekundy...", "W razie satanistycznych rytuałów zaaplikuj sprawcy pełny magazynek...", "Podczas przeszukania zdejmij mu czapkę i obejrzyj włosy, nie dotykając ich...", "Niech partner przeszukuje cel, podczas gdy ty go obezwładniasz...", "O co chodzi z tą kulturą noża?...", "Aby zareagować, oddać co najmniej 2 strzały i mieć czas zejść z linii ataku, potrzebny jest minimalny dystans reakcji 21 stóp...")
 
 /obj/item/book/granter/martial/jujitsu/onlearned(mob/living/carbon/user)
 	..()
@@ -37,11 +36,11 @@
 	set desc = "Remember your police academy martial arts training."
 	set category = "Jujitsu"
 	to_chat(usr, "<span class='notice'>Combos:</span>")
-	to_chat(usr, "<span class='warning'><b>Disarm, Grab</b> will perform a takedown on the target, if they have been slowed / weakened first</span>")
-	to_chat(usr, "<span class='warning'><b>Harm, Harm, Grab</b> will execute a judo throw on the target,landing you on top of them in a pinning position. Provided that you have a grab on them on the final step...</span>")
-	to_chat(usr, "<span class='warning'><b>Disarm, Harm, Grab, Grab</b> will execute an armlock on the target, throwing you both to the ground. You however have more maneuverability than the perp from this position.</span>")
+	to_chat(usr, "<span class='warning'><b>Rozbrojenie, chwyt</b> powala cel, jeśli wcześniej został spowolniony / osłabiony</span>")
+	to_chat(usr, "<span class='warning'><b>Krzywda, krzywda, chwyt</b> wykonuje rzut judo na cel, po którym lądujesz na nim w pozycji przygważdżającej. Pod warunkiem że w ostatnim kroku trzymasz go w chwycie...</span>")
+	to_chat(usr, "<span class='warning'><b>Rozbrojenie, krzywda, chwyt, chwyt</b> zakłada celowi dźwignię na rękę, rzucając was oboje na ziemię. Z tej pozycji masz jednak większą swobodę ruchu niż sprawca.</span>")
 
-	to_chat(usr, "<b><i>In addition, you also have a small window of opportunity to forcefully grab the perp during armlock.</i></b>")
+	to_chat(usr, "<b><i>Ponadto masz krótką chwilę na brutalne chwycenie sprawcy podczas dźwigni.</i></b>")
 
 /datum/martial_art/jujitsu/proc/check_streak(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(findtext(streak,TAKEDOWN_COMBO))
@@ -60,13 +59,13 @@
 
 /datum/martial_art/jujitsu/proc/takedown(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(world.time < last_move+cooldown)
-		to_chat(A, "<span class='sciradio'>You're too fatigued to perform this move right now...</span>")
+		to_chat(A, "<span class='sciradio'>Jesteś zbyt zmęczony, by teraz wykonać ten ruch...</span>")
 		return FALSE
 	if(D.total_multiplicative_slowdown() < 2) //They have to be slowed by something
-		A.visible_message("<span class='warning'>[A] tries to trip [D] up, but they sidestep the attack!</span>","<span class='warning'>[D] sidesteps your attack! Slow them down first.</span>")
+		A.visible_message("<span class='warning'>[A] próbuje podciąć [D], ale ten robi unik!</span>","<span class='warning'>[D] unika twojego ataku! Najpierw go spowolnij.</span>")
 		return FALSE
 	A.do_attack_animation(D, ATTACK_EFFECT_KICK)
-	D.visible_message("<span class='userdanger'>[A] trips [D] up and pins them to the ground!</span>", "<span class='userdanger'>[A] is pinning you to the ground!</span>")
+	D.visible_message("<span class='userdanger'>[A] podcina [D] i przygważdża go do ziemi!</span>", "<span class='userdanger'>[A] przygważdża cię do ziemi!</span>")
 	playsound(get_turf(D), 'nsv13/sound/effects/judo_throw.ogg', 100, TRUE)
 	D.Paralyze(2 SECONDS)
 	D.Knockdown(7 SECONDS)
@@ -81,7 +80,7 @@
 
 /datum/martial_art/jujitsu/proc/judo_throw(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(world.time < last_move+cooldown)
-		to_chat(A, "<span class='sciradio'>You're too fatigued to perform this move right now...</span>")
+		to_chat(A, "<span class='sciradio'>Jesteś zbyt zmęczony, by teraz wykonać ten ruch...</span>")
 		return FALSE
 	if(!A.pulling || A.pulling != D) //You have to have an active grab on them for this to work!
 		A.shake_animation(10)
@@ -97,7 +96,7 @@
 			A.setGrabState(GRAB_AGGRESSIVE)
 		D.adjustOxyLoss(40) // YOU THREW HIM, THREW HIM!!
 		D.Paralyze(7 SECONDS) //Equivalent to a clown PDA
-		D.visible_message("<span class='userdanger'>[A] throws [D] over their shoulder and pins them down!</span>", "<span class='userdanger'>[A] throws you over their shoulder and pins you to the ground!</span>")
+		D.visible_message("<span class='userdanger'>[A] przerzuca [D] przez ramię i go przygważdża!</span>", "<span class='userdanger'>[A] przerzuca cię przez ramię i przygważdża do ziemi!</span>")
 		playsound(get_turf(D), 'nsv13/sound/effects/judo_throw.ogg', 100, TRUE)
 		last_move = world.time
 
@@ -110,11 +109,11 @@
 	if(!can_use(A))
 		return FALSE
 	if(world.time < last_move+cooldown)
-		to_chat(A, "<span class='sciradio'>You're too fatigued to perform this move right now...</span>")
+		to_chat(A, "<span class='sciradio'>Jesteś zbyt zmęczony, by teraz wykonać ten ruch...</span>")
 		return FALSE
 	if(!D.stat)
-		D.visible_message("<span class='warning'>[A] locks [D] into a armlock position!</span>", \
-							"<span class='userdanger'>[A] locks you into a armlock position!</span>")
+		D.visible_message("<span class='warning'>[A] zakłada [D] dźwignię na rękę!</span>", \
+							"<span class='userdanger'>[A] zakłada ci dźwignię na rękę!</span>")
 		A.Knockdown(20) // knockdown officer with the perp
 		A.adjustStaminaLoss(15)
 		D.adjustStaminaLoss(30)
@@ -136,8 +135,8 @@
 	if(A.a_intent == INTENT_GRAB && A.mobility_flags & MOBILITY_STAND) //Fixes permanent slowdown and missfire
 		if(armlockstate == TRUE) // neck grabs if armlocked
 			A.setGrabState(GRAB_NECK)
-			D.visible_message("<span class='warning'>[A] grabs [D] from the armlock position by the neck!</span>", \
-							"<span class='userdanger'>[A] grabs you from the armlock position by the neck!</span>")
+			D.visible_message("<span class='warning'>[A] z pozycji dźwigni chwyta [D] za szyję!</span>", \
+							"<span class='userdanger'>[A] z pozycji dźwigni chwyta cię za szyję!</span>")
 			armlockstate = FALSE
 		add_to_streak("G",D)
 		if(check_streak(A,D)) //doing combos is prioritized over upgrading grabs
@@ -151,11 +150,11 @@
 	if((armlockstate == TRUE)) // disable chosen arm temporarily when armlocked
 		if(A.zone_selected == BODY_ZONE_L_ARM)
 			D.apply_damage(100, STAMINA, BODY_ZONE_L_ARM, def_check)
-			D.visible_message("<span class ='danger'>[A] has cracked [D]'s arm!</span>", "<span class ='danger'>[A] cracks your arm, causing a coursing pain!</span>")
+			D.visible_message("<span class ='danger'>[A] łamie [D] rękę!</span>", "<span class ='danger'>[A] łamie ci rękę, wywołując przeszywający ból!</span>")
 			armlockstate = FALSE
 		if(A.zone_selected == BODY_ZONE_R_ARM)
 			D.apply_damage(100, STAMINA, BODY_ZONE_R_ARM, def_check)
-			D.visible_message("<span class ='danger'>[A] has cracked [D]'s arm!</span>", "<span class ='danger'>[A] cracks your arm, causing a coursing pain!</span>")
+			D.visible_message("<span class ='danger'>[A] łamie [D] rękę!</span>", "<span class ='danger'>[A] łamie ci rękę, wywołując przeszywający ból!</span>")
 			armlockstate = FALSE
 		return FALSE
 	if((A.grab_state >= GRAB_AGGRESSIVE))
@@ -179,8 +178,8 @@
 	D.adjustStaminaLoss(10 + bonus_stam) // deals minor stam damage with scaling dependant on grab and perp standing
 	A.do_attack_animation(D, ATTACK_EFFECT_DISARM)
 	if(A.pulling == D && A.grab_state >= GRAB_NECK) // LV3 hold minimum
-		D.visible_message("<span class='danger'>[A] puts [D] into a chokehold!</span>", \
-							"<span class='userdanger'>[A] puts you into a chokehold!</span>")
+		D.visible_message("<span class='danger'>[A] zakłada [D] duszenie!</span>", \
+							"<span class='userdanger'>[A] zakłada ci duszenie!</span>")
 		playsound(get_turf(D), 'nsv13/sound/weapons/chokehold.ogg', 50, 1, 1)
 		D.SetSleeping(200)
 		return FALSE

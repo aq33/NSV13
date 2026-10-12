@@ -18,20 +18,20 @@
 /obj/item/ship_weapon/ammunition/missile/examine(mob/user)
 	. = ..()
 	if(claimable_gulag_points)
-		. += "<span class='notice'>It has [claimable_gulag_points] unclaimed gulag reward points!</span>"
+		. += "<span class='notice'>Ma nieodebrane punkty nagrody gułagu: [claimable_gulag_points]!</span>"
 
 /obj/item/ship_weapon/ammunition/missile/attackby(obj/item/I, mob/living/user, params)
 	. = ..()
 	if(istype(I, /obj/item/card/id/gulag))
 		var/obj/item/card/id/gulag/P = I
 		P.points += claimable_gulag_points
-		to_chat(user, "<span class='boldnotice'>You claim [claimable_gulag_points] from [src]... Your balance is now: [P.points]</span>")
+		to_chat(user, "<span class='boldnotice'>Odbierasz [claimable_gulag_points] punktów z [src]... Twoje saldo wynosi teraz: [P.points]</span>")
 		//This one's been claimed!
 		claimable_gulag_points = 0
 
 /obj/item/ship_weapon/ammunition/missile/examine(mob/user)
 	. = ..()
-	. += "<span class='warning'>It's far too cumbersome to carry, and dragging it around might set it off!</span>"
+	. += "<span class='warning'>Jest zdecydowanie zbyt nieporęczny, by go nosić, a ciągnięcie go mogłoby go odpalić!</span>"
 
 /obj/item/ship_weapon/ammunition/missile/attack_hand(mob/user)
 	return FALSE
@@ -50,4 +50,4 @@
 
 /obj/item/ship_weapon/ammunition/missile/georgio/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>This is Georgio, Antonio's little brother.</span>"
+	. += "<span class='notice'>To Georgio, młodszy brat Antonia.</span>"

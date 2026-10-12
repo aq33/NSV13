@@ -28,20 +28,20 @@
 	if(!M.client)
 		return
 	if(!iscarbon(M) && !isguardian(M))
-		to_chat("<span class='italics warning'>You can't stab [M], it won't work!</span>")
+		to_chat("<span class='italics warning'>Nie możesz dźgnąć [M], to nie zadziała!</span>")
 		return
 	if(M.stat == DEAD)
-		to_chat("<span class='italics warning'>You can't stab [M], they're already dead!</span>")
+		to_chat("<span class='italics warning'>Nie możesz dźgnąć [M], on już nie żyje!</span>")
 		return
 	var/mob/living/carbon/H = M
 	var/mob/living/simple_animal/hostile/guardian/G = M
-	user.visible_message("<span class='warning'>[user] prepares to stab [H] with \the [src]!</span>", "<span class='notice'>You raise \the [src] into the air.</span>")
+	user.visible_message("<span class='warning'>[user] szykuje się, by dźgnąć [H] za pomocą [src]!</span>", "<span class='notice'>Unosisz [src] w powietrze.</span>")
 	if(do_mob(user, H, 5 SECONDS, uninterruptible=FALSE))
 		if(LAZYLEN(H.hasparasites()) || (H.mind && H.mind.has_antag_datum(/datum/antagonist/changeling)) || (isguardian(M) && (users[G] || G.requiem || G.transforming)))
-			H.visible_message("<span class='holoparasite'>\The [src] rejects [H]!</span>")
+			H.visible_message("<span class='holoparasite'>[src] odrzuca [H]!</span>")
 			return
 		in_use = TRUE
-		H.visible_message("<span class='holoparasite'>\The [src] embeds itself into [H], and begins to glow!</span>")
+		H.visible_message("<span class='holoparasite'>[src] wbija się w [H] i zaczyna świecić!</span>")
 		user.dropItemToGround(src, TRUE)
 		forceMove(H)
 		if(iscarbon(M))
@@ -52,12 +52,12 @@
 			INVOKE_ASYNC(src, PROC_REF(requiem), M)
 
 	if(!uses)
-		visible_message("<span class='warning'>[src] falls apart!</span>")
+		visible_message("<span class='warning'>[src] się rozpada!</span>")
 		qdel(src)
 
 /obj/item/stand_arrow/proc/after_arrow_attack(mob/living/carbon/H, var/kill_chance)
 	if(prob(kill_chance))
-		H.visible_message("<span class='danger bold'>[H] stares ahead, eyes full of fear, before collapsing lifelessly into ash, \the [src] falling out...</span>")
+		H.visible_message("<span class='danger bold'>[H] patrzy przed siebie oczami pełnymi strachu, po czym bezwładnie rozsypuje się w popiół, a [src] wypada...</span>")
 		log_game("[key_name(H)] was killed by a stand arrow.")
 		forceMove(H.drop_location())
 		H.mind.no_cloning_at_all = TRUE
@@ -69,8 +69,8 @@
 /obj/item/stand_arrow/proc/requiem(mob/living/simple_animal/hostile/guardian/G)
 	G.range = 255
 	G.transforming = TRUE
-	G.visible_message("<span class='holoparasite'>[G] begins to melt!</span>")
-	to_chat(G, "<span class='holoparasite'>This power... You can't handle it! RUN AWAY!</span>")
+	G.visible_message("<span class='holoparasite'>[G] zaczyna się topić!</span>")
+	to_chat(G, "<span class='holoparasite'>Ta moc... Nie dasz rady jej znieść! UCIEKAJ!</span>")
 	log_game("[key_name(G)] was stabbed by a stand arrow, it is now becoming requiem.")
 	var/i = 0
 	var/flicker = TRUE
@@ -105,7 +105,7 @@
 			S.name = "Requiem Guardian"
 	G.transforming = FALSE
 	G.Recall(TRUE)
-	G.visible_message("<span class='holoparasite'>\The [src] is absorbed into [G]!</span>")
+	G.visible_message("<span class='holoparasite'>[G] wchłania [src]!</span>")
 	qdel(src)
 
 
@@ -153,7 +153,7 @@
 
 /obj/item/stand_arrow/proc/pick_name(mob/living/simple_animal/hostile/guardian/G)
 	set waitfor = FALSE
-	var/new_name = capped_input(usr, "Set your name!", "Guardian Name", max_length=MAX_NAME_LEN)
+	var/new_name = capped_input(usr, "Ustaw swoje imię!", "Imię strażnika", max_length=MAX_NAME_LEN)
 	if(new_name)
 		if(G.mind)
 			G.mind.name = new_name
@@ -161,7 +161,7 @@
 		G.name = new_name
 
 /obj/item/stand_arrow/proc/get_stand(mob/living/carbon/H, datum/guardian_stats/stats)
-	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as the Guardian Spirit of [H.real_name]?", ROLE_HOLOPARASITE, null, 10 SECONDS)
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Chcesz zagrać jako duch strażnika [H.real_name]?", ROLE_HOLOPARASITE, null, 10 SECONDS)
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
 		var/mob/living/simple_animal/hostile/guardian/G = new(H, GUARDIAN_MAGIC, rgb(rand(1, 255), rand(1, 255), rand(1, 255)))
@@ -180,17 +180,17 @@
 		G.show_detail()
 		users[G] = TRUE
 		log_game("[key_name(H)] has summoned [key_name(G)], a holoparasite, via the stand arrow.")
-		to_chat(H, "<span class='holoparasite'><font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> has been summoned!</span>")
+		to_chat(H, "<span class='holoparasite'><font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> został przywołany!</span>")
 		H.add_verb(/mob/living/proc/guardian_comm)
 		H.add_verb(/mob/living/proc/guardian_recall)
 		H.add_verb(/mob/living/proc/guardian_reset)
 		uses--
 		in_use = FALSE
-		H.visible_message("<span class='danger bold'>\The [src] falls out of [H]!</span>")
+		H.visible_message("<span class='danger bold'>[src] wypada z [H]!</span>")
 		forceMove(H.drop_location())
 		pick_name(G)
 		if(!uses)
-			visible_message("<span class='warning'>\The [src] falls apart!</span>")
+			visible_message("<span class='warning'>[src] się rozpada!</span>")
 			qdel(src)
 	else
 		addtimer(CALLBACK(src, PROC_REF(get_stand), H, stats), 90 SECONDS) // lmao
@@ -198,4 +198,4 @@
 /obj/item/stand_arrow/examine(mob/user)
 	. = ..()
 	if(isobserver(user))
-		. += "The arrow has a [kill_chance]% chance of killing the user."
+		. += "Strzała ma [kill_chance]% szans na zabicie użytkownika."

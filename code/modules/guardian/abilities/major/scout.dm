@@ -5,8 +5,8 @@
 	cost = 1
 	has_mode = TRUE
 	recall_mode = TRUE
-	mode_on_msg = "<span class='danger'><B>You switch to scout mode.</span></B>"
-	mode_off_msg = "<span class='danger'><B>You switch to combat mode.</span></B>"
+	mode_on_msg = "<span class='danger'><B>Przełączasz się w tryb zwiadu.</span></B>"
+	mode_off_msg = "<span class='danger'><B>Przełączasz się w tryb walki.</span></B>"
 
 /datum/guardian_ability/major/scout/Mode()
 	if(mode)

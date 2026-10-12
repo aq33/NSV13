@@ -309,32 +309,32 @@
 /obj/item/seeds/proc/get_analyzer_text()  //in case seeds have something special to tell to the analyzer
 	var/text = ""
 	if(!get_gene(/datum/plant_gene/trait/plant_type/weed_hardy) && !get_gene(/datum/plant_gene/trait/plant_type/fungal_metabolism) && !get_gene(/datum/plant_gene/trait/plant_type/alien_properties))
-		text += "- Plant type: Normal plant\n"
+		text += "- Typ rośliny: zwykła roślina\n"
 	if(get_gene(/datum/plant_gene/trait/plant_type/weed_hardy))
-		text += "- Plant type: Weed. Can grow in nutrient-poor soil.\n"
+		text += "- Typ rośliny: chwast. Może rosnąć w ubogiej glebie.\n"
 	if(get_gene(/datum/plant_gene/trait/plant_type/fungal_metabolism))
-		text += "- Plant type: Mushroom. Can grow in dry soil.\n"
+		text += "- Typ rośliny: grzyb. Może rosnąć w suchej glebie.\n"
 	if(get_gene(/datum/plant_gene/trait/plant_type/alien_properties))
-		text += "- Plant type: <span class='warning'>UNKNOWN</span> \n"
+		text += "- Typ rośliny: <span class='warning'>NIEZNANY</span> \n"
 	if(potency != -1)
 		text += "- Potency: [potency]\n"
 	if(yield != -1)
 		text += "- Yield: [yield]\n"
-	text += "- Maturation speed: [maturation]\n"
+	text += "- Szybkość dojrzewania: [maturation]\n"
 	if(yield != -1)
-		text += "- Production speed: [production]\n"
+		text += "- Szybkość produkcji: [production]\n"
 	text += "- Endurance: [endurance]\n"
 	text += "- Lifespan: [lifespan]\n"
-	text += "- Weed Growth Rate: [weed_rate]\n"
-	text += "- Weed Vulnerability: [weed_chance]\n"
+	text += "- Tempo wzrostu chwastów: [weed_rate]\n"
+	text += "- Podatność na chwasty: [weed_chance]\n"
 	if(rarity)
-		text += "- Species Discovery Value: [rarity]\n"
+		text += "- Wartość odkrycia gatunku: [rarity]\n"
 	var/all_traits = ""
 	for(var/datum/plant_gene/trait/traits in genes)
 		if(istype(traits, /datum/plant_gene/trait/plant_type))
 			continue
 		all_traits += " [traits.get_name()]"
-	text += "- Plant Traits:[all_traits]"
+	text += "- Cechy rośliny:[all_traits]"
 
 	return text
 
@@ -345,17 +345,17 @@
 	if (istype(O, /obj/item/plant_analyzer))
 		var/text = get_analyzer_text()
 		if(text)
-			to_chat(user, EXAMINE_BLOCK("<span class='info'>This is \a <b>[src]</span></b>. \n<span class='notice'>[text]</span>"))
+			to_chat(user, EXAMINE_BLOCK("<span class='info'>To jest <b>[src]</span></b>. \n<span class='notice'>[text]</span>"))
 
 		return
 
 	if (istype(O, /obj/item/pen))
-		var/penchoice = input(user, "What would you like to edit?") as null|anything in list("Plant Name","Plant Description","Seed Description")
+		var/penchoice = input(user, "Co chcesz edytować?") as null|anything in list("Plant Name","Plant Description","Seed Description")
 		if(QDELETED(src) || !user.canUseTopic(src, BE_CLOSE))
 			return
 
 		if(penchoice == "Plant Name")
-			var/input = stripped_input(user,"What do you want to name the plant?", default=plantname, max_length=MAX_NAME_LEN)
+			var/input = stripped_input(user,"Jak chcesz nazwać roślinę?", default=plantname, max_length=MAX_NAME_LEN)
 			if(QDELETED(src) || !user.canUseTopic(src, BE_CLOSE))
 				return
 			name = "pack of [input] seeds"
@@ -363,13 +363,13 @@
 			renamedByPlayer = TRUE
 
 		if(penchoice == "Plant Description")
-			var/input = stripped_input(user,"What do you want to change the description of the plant to?", default=plantdesc, max_length=MAX_NAME_LEN)
+			var/input = stripped_input(user,"Na jaki opis chcesz zmienić opis rośliny?", default=plantdesc, max_length=MAX_NAME_LEN)
 			if(QDELETED(src) || !user.canUseTopic(src, BE_CLOSE))
 				return
 			plantdesc = input
 
 		if(penchoice == "Seed Description")
-			var/input = stripped_input(user,"What do you want to change the description of the seeds to?", default=desc, max_length=MAX_NAME_LEN)
+			var/input = stripped_input(user,"Na jaki opis chcesz zmienić opis nasion?", default=desc, max_length=MAX_NAME_LEN)
 			if(QDELETED(src) || !user.canUseTopic(src, BE_CLOSE))
 				return
 			desc = input

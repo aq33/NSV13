@@ -38,7 +38,7 @@
 				beaker = null
 				. = TRUE
 		if("input")
-			var/input_reagent = replacetext(lowertext(capped_input(usr, "Enter the name of any reagent", "Input")), " ", "") //95% of the time, the reagent id is a lowercase/no spaces version of the name
+			var/input_reagent = replacetext(lowertext(capped_input(usr, "Podaj nazwę dowolnego odczynnika", "Input")), " ", "") //95% of the time, the reagent id is a lowercase/no spaces version of the name
 
 			if (isnull(input_reagent))
 				return
@@ -48,7 +48,7 @@
 			else
 				input_reagent = find_reagent(input_reagent)
 			if(!input_reagent)
-				say("REAGENT NOT FOUND")
+				say("NIE ZNALEZIONO ODCZYNNIKA")
 				return
 			else
 				if(!beaker)
@@ -61,7 +61,7 @@
 			if(beaker)
 				return
 			beaker = new /obj/item/reagent_containers/glass/beaker/bluespace(src)
-			visible_message("<span class='notice'>[src] dispenses a bluespace beaker.</span>")
+			visible_message("<span class='notice'>[src] wydaje zlewkę bluespace.</span>")
 			. = TRUE
 		if("amount")
 			var/input = text2num(params["amount"])

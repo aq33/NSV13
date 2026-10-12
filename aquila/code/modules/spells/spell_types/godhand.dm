@@ -31,17 +31,17 @@
 
 	var/mob/living/carbon/M = target
 	if (!M.key)
-		to_chat(user, "<span class='notice'>Your partner needs to have a soul in order to procreate.</span>")
+		to_chat(user, "<span class='notice'>Twój partner musi mieć duszę, by się rozmnażać.</span>")
 		return
 
-	to_chat(user,"<span class='notice'>You ask [M] to have sex with you.</span>")
-	if(alert(M, "[user] wants to have sex with you. Do you accept?", "Sex on button","Yes", "No") == "No")
-		to_chat(user, "[M] didn't want to have sex.")
+	to_chat(user,"<span class='notice'>Prosisz [M] o seks.</span>")
+	if(alert(M, "[user] chce uprawiać z tobą seks. Zgadzasz się?", "Sex on button","Yes", "No") == "No")
+		to_chat(user, "[M] nie chce uprawiać seksu.")
 		return
 
 	if(!in_range(M,user))
-		to_chat(user, "<span class='notice'>You are too far away!</span>")
-		to_chat(M, "<span class='notice'>You are too far away!</span>")
+		to_chat(user, "<span class='notice'>Jesteś za daleko!</span>")
+		to_chat(M, "<span class='notice'>Jesteś za daleko!</span>")
 		return
 
 	M.set_resting(TRUE)
@@ -49,8 +49,8 @@
 	user.Jitter(15)
 	M.Jitter(15)
 
-	to_chat(user, "<span class='notice'>You have sex with [M].</span>")
-	to_chat(M, "<span class='notice'>You have sex with [user].</span>")
+	to_chat(user, "<span class='notice'>Uprawiasz seks z [M].</span>")
+	to_chat(M, "<span class='notice'>Uprawiasz seks z [user].</span>")
 
 	addtimer(CALLBACK(src, PROC_REF(erpSay), user, FALSE), 1 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(erpSay), M, FALSE), 2 SECONDS)

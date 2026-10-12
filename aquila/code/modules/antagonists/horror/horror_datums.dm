@@ -109,7 +109,7 @@
 	used = TRUE
 	to_chat(user, "Próbujesz obudzić stworzenie w środku...")
 	sleep(5 SECONDS)
-	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as the eldritch horror in service of [user.real_name]?", ROLE_HORROR, null, 100)
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Chcesz zagrać jako pradawny horror na usługach [user.real_name]?", ROLE_HORROR, null, 100)
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
 		var/mob/living/simple_animal/horror/H = new /mob/living/simple_animal/horror(get_turf(src))

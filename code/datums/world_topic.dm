@@ -154,13 +154,13 @@
 /datum/world_topic/comms_console/Run(list/input)
 	. = ..()
 	if(CHAT_FILTER_CHECK(input["message"])) // prevents any.. diplomatic incidents
-		minor_announce("In the interest of station productivity and mental hygiene, a message from [input["message_sender"]] was intercepted by the CCC and determined to be unfit for crew-level access.", "CentCom Communications Commission")
+		minor_announce("W trosce o produktywność stacji i higienę psychiczną wiadomość od [input["message_sender"]] została przechwycona przez KKC i uznana za nieodpowiednią dla załogi.", "Komisja Komunikacji Centrali")
 		message_admins("Incomming cross-comms message from [input["message_sender"]] blocked: [input["message"]]")
 		statuscode = 451 // "Unavailable for legal reasons" ahaha; i.e. censored
-		response = "Censored - Message blocked by chat filter"
+		response = "Ocenzurowano – wiadomość zablokowana przez filtr czatu"
 		return
 
-	minor_announce(input["message"], "Incoming message from [input["message_sender"]]")
+	minor_announce(input["message"], "Wiadomość przychodząca od [input["message_sender"]]")
 	for(var/obj/machinery/computer/communications/CM in GLOB.machines)
 		CM.override_cooldown()
 	statuscode = 200
@@ -172,7 +172,7 @@
 
 /datum/world_topic/news_report/Run(list/input)
 	. = ..()
-	minor_announce(input["message"], "Breaking Update From [input["message_sender"]]")
+	minor_announce(input["message"], "Pilna aktualizacja od [input["message_sender"]]")
 	statuscode = 200
 	response = "Message received"
 
@@ -240,7 +240,7 @@
 	data["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
 	data["gamestate"] = SSticker.current_state
 
-	data["map_name"] = SSmapping.config?.map_name || "Loading..."
+	data["map_name"] = SSmapping.config?.map_name || "Ładowanie..."
 
 	data["security_level"] = get_security_level()
 	data["round_duration"] = SSticker?.round_start_timeofday ? round((world.timeofday - SSticker.round_start_timeofday)/10) : 0
@@ -327,7 +327,7 @@
 			if(!("discord-[unm]" in C.prefs.ignoring))
 				to_chat(C, "<span class='dooc'><b><span class='prefix'>OOC: </span> <EM>[unm]:</EM> <span class='message linkify'>[msg]</span></b></span>")
 	statuscode = 200
-	response = "Message forwarded to OOC"
+	response = "Wiadomość przekazana do OOC"
 
 /datum/world_topic/get_metacoins
 	key = "get_metacoins"

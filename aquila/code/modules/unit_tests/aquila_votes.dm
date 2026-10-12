@@ -18,13 +18,13 @@
 	TEST_ASSERT(istype(SSvote.current_vote, /datum/vote/hardmode), "The current vote is not the hardmode vote")
 	var/datum/vote/hardmode/hardmode = SSvote.current_vote
 	TEST_ASSERT(length(hardmode.choices) == 2, "The hardmode vote has [length(hardmode.choices)] choices")
-	hardmode.choices["Let's GO FOR IT"] = 3
+	hardmode.choices["DAWAJ, IDZIEMY NA TO"] = 3
 	// Non-voters count for a normal round: 3 votes against 5 non-voters
 	var/old_default_no_vote = CONFIG_GET(flag/default_no_vote)
 	CONFIG_SET(flag/default_no_vote, FALSE)
 	var/list/winners = hardmode.get_vote_result(list("a" = null, "b" = null, "c" = null, "d" = null, "e" = null))
 	CONFIG_SET(flag/default_no_vote, old_default_no_vote)
-	TEST_ASSERT(length(winners) == 1 && winners[1] == "Play a normal round", "Non-voters did not count for a normal round: [json_encode(winners)]")
+	TEST_ASSERT(length(winners) == 1 && winners[1] == "Zwykła runda", "Non-voters did not count for a normal round: [json_encode(winners)]")
 	SSvote.reset()
 	TEST_ASSERT(!SSvote.current_vote, "The vote did not reset")
 

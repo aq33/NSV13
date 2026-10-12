@@ -4,7 +4,7 @@
 ///============
 /datum/xenoartifact_trait/major/capture
 	desc = "Hollow"
-	label_desc = "Hollow: The shape is hollow, however the inside is deceptively large."
+	label_desc = "Pusty: kształt jest pusty w środku, ale wnętrze jest zwodniczo duże."
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 	var/spawn_russian = FALSE
 
@@ -44,11 +44,11 @@
 ///============
 /datum/xenoartifact_trait/major/shock
 	desc = "Conductive"
-	label_desc = "Conductive: The shape resembles two lighting forks. Subtle arcs seem to leaps across them."
+	label_desc = "Przewodzący: kształt przypomina dwa widły piorunów. Między nimi zdają się przeskakiwać subtelne łuki."
 	flags = PLASMA_TRAIT | URANIUM_TRAIT
 
 /datum/xenoartifact_trait/major/shock/on_touch(obj/item/xenoartifact/X, mob/user)
-	to_chat(user, "<span class='notice'>You feel a slight static after touching the [X.name].</span>")
+	to_chat(user, "<span class='notice'>Po dotknięciu [X.name] czujesz lekkie wyładowanie.</span>")
 	return TRUE
 
 /datum/xenoartifact_trait/major/shock/activate(obj/item/xenoartifact/X, atom/target, mob/user)
@@ -69,10 +69,10 @@
 ///============
 /datum/xenoartifact_trait/major/timestop
 	desc = "Temporal"
-	label_desc = "Temporal: The shape is drooling and sluggish. Additionally, light around it seems to invert."
+	label_desc = "Czasoprzestrzenny: kształt ślini się i jest ospały. Do tego światło wokół niego wydaje się odwracać."
 
 /datum/xenoartifact_trait/major/timestop/on_touch(obj/item/xenoartifact/X, mob/user)
-	to_chat(user, "<span class='notice'>Your hand feels slow while stroking the [X.name].</span>")
+	to_chat(user, "<span class='notice'>Głaszcząc [X.name], czujesz, że twoja dłoń zwalnia.</span>")
 	return TRUE
 
 /datum/xenoartifact_trait/major/timestop/activate(obj/item/xenoartifact/X, atom/target)
@@ -87,7 +87,7 @@
 ///============
 /datum/xenoartifact_trait/major/laser
 	desc = "Barreled"
-	label_desc = "Barreled: The shape resembles the barrel of a gun. It's possible that it might dispense candy."
+	label_desc = "Lufowy: kształt przypomina lufę broni. Możliwe, że wydaje cukierki."
 	flags = PLASMA_TRAIT | URANIUM_TRAIT
 
 /datum/xenoartifact_trait/major/laser/activate(obj/item/xenoartifact/X, atom/target, mob/living/user)
@@ -119,7 +119,7 @@
 ///============
 /datum/xenoartifact_trait/major/corginator ///All of this is stolen from corgium.
 	desc = "Fuzzy" //Weirdchamp
-	label_desc = "Fuzzy: The shape is hard to discern under all the hair sprouting out from the surface. You swear you've heard it bark before."
+	label_desc = "Puchaty: kształt trudno rozpoznać pod wszystkimi włosami wyrastającymi z powierzchni. Mógłbyś przysiąc, że słyszałeś, jak szczeka."
 	flags = BLUESPACE_TRAIT
 	///List of all affected targets, used for early qdel
 	var/list/victims = list()
@@ -185,7 +185,7 @@
 ///============
 /datum/xenoartifact_trait/major/emp
 	label_name = "EMP"
-	label_desc = "EMP: The shape of the Artifact doesn't resemble anything particularly interesting. Technology around the Artifact seems to malfunction."
+	label_desc = "EMP: kształt artefaktu nie przypomina niczego szczególnie ciekawego. Technologia wokół artefaktu zdaje się zawodzić."
 	flags = URANIUM_TRAIT
 	weight = 25 //annoying trait
 
@@ -198,13 +198,13 @@
 ///============
 /datum/xenoartifact_trait/major/invisible //One step closer to the one ring
 	label_name = "Transparent"
-	label_desc = "Transparent: The shape of the Artifact is difficult to percieve. You feel the need to call it, precious..."
+	label_desc = "Przezroczysty: kształt artefaktu trudno dostrzec. Czujesz potrzebę, by nazwać go swoim skarbem..."
 	weight = 25
 	var/list/victims = list()
 
 /datum/xenoartifact_trait/major/invisible/on_item(obj/item/xenoartifact/X, atom/user, obj/item/I)
 	if(istype(I) && I.light_power > 0)
-		to_chat(user, "<span class='info'>The [I.name]'s light passes through the structure.</span>")
+		to_chat(user, "<span class='info'>Światło [I.name] przechodzi przez strukturę.</span>")
 		return TRUE
 	..()
 
@@ -236,7 +236,7 @@
 ///============
 /datum/xenoartifact_trait/major/teleporting
 	desc = "Displaced"
-	label_desc = "Displaced: The shape's state is unstable, causing it to shift through planes at a localized axis. Just ask someone from science..."
+	label_desc = "Przesunięty: stan kształtu jest niestabilny, przez co przesuwa się między planami wzdłuż lokalnej osi. Zapytaj kogoś z działu naukowego..."
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 
 /datum/xenoartifact_trait/major/teleporting/activate(obj/item/xenoartifact/X, atom/target, atom/user)
@@ -250,7 +250,7 @@
 ///============
 /datum/xenoartifact_trait/major/lamp
 	label_name = "Lamp"
-	label_desc = "Lamp: The Artifact emits light. Nothing in its shape suggests this."
+	label_desc = "Lampa: artefakt emituje światło. Nic w jego kształcie tego nie sugeruje."
 	flags = BLUESPACE_TRAIT | URANIUM_TRAIT
 	var/light_mod
 
@@ -258,7 +258,7 @@
 	X.light_color = pick(LIGHT_COLOR_FIRE, LIGHT_COLOR_BLUE, LIGHT_COLOR_GREEN, LIGHT_COLOR_RED, LIGHT_COLOR_ORANGE, LIGHT_COLOR_PINK)
 
 /datum/xenoartifact_trait/major/lamp/activate(obj/item/xenoartifact/X, atom/target, atom/user)
-	X.visible_message("<span class='notice'>The [X] lights up!</span>")
+	X.visible_message("<span class='notice'>[X] się rozświetla!</span>")
 	X.set_light(X.charge*0.08, max(X.charge*0.05, 5), X.light_color)
 	addtimer(CALLBACK(src, PROC_REF(unlight), X), (X.charge*0.6) SECONDS)
 	X.cooldownmod = (X.charge*0.6) SECONDS
@@ -271,7 +271,7 @@
 ///============
 /datum/xenoartifact_trait/major/forcefield
 	label_name = "Wall"
-	label_desc = "Wall: The Artifact produces a resonance that forms impenetrable walls. Here's one you'll never crawl!"
+	label_desc = "Ściana: artefakt wytwarza rezonans, który tworzy nieprzenikalne ściany. Takiej się nie przeczołgasz!"
 	flags = BLUESPACE_TRAIT | URANIUM_TRAIT
 	var/size
 
@@ -303,7 +303,7 @@
 ///============
 /datum/xenoartifact_trait/major/heal
 	label_name = "Healing"
-	label_desc = "Healing: The Artifact repeairs any damaged organic tissue the targat may contain. Widely considered the Holy Grail of Artifact traits."
+	label_desc = "Leczący: artefakt naprawia wszelkie uszkodzone tkanki organiczne celu. Powszechnie uważany za Świętego Graala cech artefaktów."
 	flags = BLUESPACE_TRAIT
 	weight = 25
 	var/healing_type
@@ -313,7 +313,7 @@
 
 /datum/xenoartifact_trait/major/heal/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
 	if(istype(item, /obj/item/healthanalyzer))
-		to_chat(user, "<span class='info'>The [item] recognizes foreign [healing_type] healing proteins.\n</span>")
+		to_chat(user, "<span class='info'>[item] rozpoznaje obce białka lecznicze typu [healing_type].\n</span>")
 		return TRUE
 	..()
 
@@ -334,7 +334,7 @@
 ///============
 /datum/xenoartifact_trait/major/chem
 	desc = "Hypodermic"
-	label_desc = "Hypodermic: The Artifact's shape is comprised of many twisting tubes and vials, it seems a liquid may be inside."
+	label_desc = "Podskórny: kształt artefaktu składa się z wielu skręconych rurek i fiolek; wygląda na to, że w środku może być płyn."
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 	blacklist_traits = list(/datum/xenoartifact_trait/minor/long)
 	var/datum/reagent/formula
@@ -356,7 +356,7 @@
 ///============
 /datum/xenoartifact_trait/major/push
 	label_name = "Push"
-	label_desc = "Push: The Artifact pushes anything not bolted down. The shape doesn't suggest this."
+	label_desc = "Pchający: artefakt odpycha wszystko, co nie jest przykręcone. Kształt tego nie sugeruje."
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 
 /datum/xenoartifact_trait/major/push/activate(obj/item/xenoartifact/X, atom/target)
@@ -372,7 +372,7 @@
 ///============
 /datum/xenoartifact_trait/major/pull
 	label_name = "Pull"
-	label_desc = "Pull: The Artifact pulls anything not bolted down. The shape doesn't suggest this."
+	label_desc = "Ciągnący: artefakt przyciąga wszystko, co nie jest przykręcone. Kształt tego nie sugeruje."
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 
 /datum/xenoartifact_trait/major/pull/on_init(obj/item/xenoartifact/X)
@@ -394,7 +394,7 @@
 /datum/xenoartifact_trait/major/horn
 	desc = "Horned"
 	label_name = "Horn"
-	label_desc = "Horn: The Artifact's shape resembles a horn. These Artifacts are widely deployed by the most clever clowns."
+	label_desc = "Róg: kształt artefaktu przypomina róg. Takich artefaktów powszechnie używają najsprytniejsi klauni."
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
 	var/sound
 
@@ -413,7 +413,7 @@
 ///============
 /datum/xenoartifact_trait/major/gas
 	desc = "Porous"
-	label_desc = "Porous: The Artifact absorbs a specific nearby gas and replaces it with an undeterminable one."
+	label_desc = "Porowaty: artefakt pochłania określony pobliski gaz i zastępuje go nieokreślonym."
 	flags = BLUESPACE_TRAIT | URANIUM_TRAIT
 	var/static/list/valid_inputs = list(
 		/datum/gas/oxygen = 6,
@@ -439,7 +439,7 @@
 
 /datum/xenoartifact_trait/major/gas/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
 	if(istype(item, /obj/item/analyzer))
-		to_chat(user, "<span class='info'>The [item] detects trace amounts of [initial(output.name)] exchanging with [initial(input.name)].\n</span>")
+		to_chat(user, "<span class='info'>[item] wykrywa śladowe ilości [initial(output.name)] wymieniane z [initial(input.name)].\n</span>")
 		return TRUE
 	..()
 
@@ -458,7 +458,7 @@
 ///============
 /datum/xenoartifact_trait/major/distablizer
 	desc = "Destabilizing"
-	label_desc = "Destabilizing: The Artifact collapses an improper bluespace matrix on the target, sending them to an unknown location."
+	label_desc = "Destabilizujący: artefakt zapada na celu niewłaściwą matrycę bluespace, wysyłając go w nieznane miejsce."
 	weight = 25
 	flags = URANIUM_TRAIT
 	blacklist_traits = list(/datum/xenoartifact_trait/minor/aura)
@@ -473,7 +473,7 @@
 	if(istype(user))
 		P = user.get_item_by_slot(ITEM_SLOT_GLOVES)
 	if(!P?.safety && do_banish(item))
-		to_chat(user, "<span class='warning'>The [item] dissapears!</span>")
+		to_chat(user, "<span class='warning'>[item] znika!</span>")
 		return TRUE
 	..()
 
@@ -504,7 +504,7 @@
 ///============
 /datum/xenoartifact_trait/major/smokey
 	desc = "Dissipating"
-	label_desc = "Dissipating: The Artifact is dissipating as if it was made of smoke."
+	label_desc = "Rozpraszający się: artefakt rozprasza się, jakby był zrobiony z dymu."
 	flags = URANIUM_TRAIT | PLASMA_TRAIT | BLUESPACE_TRAIT
 
 /datum/xenoartifact_trait/major/smokey/activate(obj/item/xenoartifact/X, atom/target, atom/user, setup)
@@ -517,7 +517,7 @@
 ///============
 /datum/xenoartifact_trait/major/marker
 	label_name = "Marker"
-	label_desc = "Marker: The Artifact causes the target to refract a unique color index."
+	label_desc = "Znaczący: artefakt sprawia, że cel załamuje światło w unikalnym indeksie koloru."
 	flags = PLASMA_TRAIT | BLUESPACE_TRAIT
 	///The color this artifact dispenses
 	var/color
@@ -536,7 +536,7 @@
 ///============
 /datum/xenoartifact_trait/major/emote
 	label_name = "Emotional"
-	label_desc = "Emotional: The Artifact causes the target to experience, or preform, a random emotion."
+	label_desc = "Emocjonalny: artefakt sprawia, że cel doświadcza lub wyraża losową emocję."
 	flags = PLASMA_TRAIT | BLUESPACE_TRAIT | URANIUM_TRAIT
 	///Emote to preform
 	var/datum/emote/emote

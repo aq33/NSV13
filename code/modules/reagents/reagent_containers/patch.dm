@@ -15,10 +15,10 @@
 		return ..()
 	affecting = L.get_bodypart(check_zone(user.zone_selected))
 	if(!affecting)
-		balloon_alert(user, "The limb is missing.")
+		balloon_alert(user, "Brakuje tej kończyny.")
 		return
 	if(!IS_ORGANIC_LIMB(affecting))
-		balloon_alert(user, "[src] doesn't work on robotic limbs.")
+		balloon_alert(user, "[src] nie działa na robotyczne kończyny.")
 		return
 	return ..()
 

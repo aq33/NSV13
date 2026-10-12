@@ -2,7 +2,7 @@
 	name = "Organic Mindshield"
 	desc = "We emit a constant frequency matching that of a mindshield, fooling security HUDs into thinking we are mindshielded."
 	button_icon_state = "mindshield"
-	helptext = "Will cause you to appear to have a mindshield on security HUDs. Maintaining uses 1 chemical every 3 seconds. Does not work while on fire."
+	helptext = "Sprawia, że na HUD-ach ochrony widać u ciebie implant ochrony umysłu. Utrzymanie zużywa 1 jedn. chemikaliów co 3 sekundy. Nie działa, gdy płoniesz."
 	chemical_cost = 0
 	dna_cost = 1
 	req_human = 1

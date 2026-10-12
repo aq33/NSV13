@@ -16,7 +16,7 @@
 
 /obj/machinery/plumbing/bottle_dispenser/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The [name] currently has [stored_bottles.len] stored. There needs to be less than [max_floor_bottles] on the floor to continue dispensing.</span>"
+	. += "<span class='notice'>[name] ma obecnie zmagazynowane: [stored_bottles.len]. Aby kontynuować wydawanie, na podłodze musi być mniej niż [max_floor_bottles].</span>"
 
 /obj/machinery/plumbing/bottle_dispenser/Initialize(mapload, bolt)
 	. = ..()
@@ -65,6 +65,6 @@
 			bottle_size = CLAMP(text2num(params["volume"]), 0, 30)
 			. = TRUE
 		if("change_bottle_name")
-			var/new_name = stripped_input(usr, "Enter a bottle name.", name, bottle_name)
+			var/new_name = stripped_input(usr, "Podaj nazwę butelki.", name, bottle_name)
 			bottle_name = new_name + " bottle"
 			. = TRUE

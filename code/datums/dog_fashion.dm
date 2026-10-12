@@ -60,27 +60,27 @@
 
 /datum/dog_fashion/head/kitty
 	name = "Runtime"
-	emote_see = list("coughs up a furball", "stretches")
-	emote_hear = list("purrs")
-	speak = list("Purrr", "Meow!", "MAOOOOOW!", "HISSSSS", "MEEEEEEW")
+	emote_see = list("wykasłuje kłębek sierści", "przeciąga się")
+	emote_hear = list("mruczy")
+	speak = list("Mrrr", "Miau!", "MIAUUUUU!", "SSSSSS", "MIAUUUUUU")
 	desc = "It's a cute little kitty-cat! ... wait ... what the hell?"
 
 /datum/dog_fashion/head/rabbit
 	name = "Hoppy"
-	emote_see = list("twitches its nose", "hops around a bit")
+	emote_see = list("porusza noskiem", "trochę skacze dookoła")
 	desc = "This is Hoppy. It's a corgi-...urmm... bunny rabbit."
 
 /datum/dog_fashion/head/beret
 	name = "Yann"
 	desc = "Mon dieu! C'est un chien!"
-	speak = list("le woof!", "le bark!", "JAPPE!!")
-	emote_see = list("cowers in fear.", "surrenders.", "plays dead.","looks as though there is a wall in front of him.")
+	speak = list("le hau!", "le hau hau!", "JAPPE!!")
+	emote_see = list("kuli się ze strachu.", "poddaje się.", "udaje martwego.","wygląda, jakby przed nim była ściana.")
 
 
 /datum/dog_fashion/head/detective
 	name = "Detective REAL_NAME"
 	desc = "NAME sees through your lies..."
-	emote_see = list("investigates the area.","sniffs around for clues.","searches for scooby snacks.","takes a candycorn from the hat.")
+	emote_see = list("bada okolicę.","węszy w poszukiwaniu wskazówek.","szuka chrupek Scooby.","wyjmuje cukierka z kapelusza.")
 
 
 /datum/dog_fashion/head/nurse
@@ -90,8 +90,8 @@
 /datum/dog_fashion/head/pirate
 	name = "Pirate-title Pirate-name"
 	desc = "Yaarghh!! Thar' be a scurvy dog!"
-	emote_see = list("hunts for treasure.","stares coldly...","gnashes his tiny corgi teeth!")
-	emote_hear = list("growls ferociously!", "snarls.")
+	emote_see = list("poluje na skarby.","patrzy chłodno...","zgrzyta swoimi malutkimi ząbkami!")
+	emote_hear = list("warczy zajadle!", "warczy.")
 	speak = list("Arrrrgh!!","Grrrrrr!")
 
 /datum/dog_fashion/head/pirate/New(mob/M)
@@ -101,7 +101,7 @@
 /datum/dog_fashion/head/ushanka
 	name = "Communist-title Realname"
 	desc = "A follower of Karl Barx."
-	emote_see = list("contemplates the failings of the capitalist economic model.", "ponders the pros and cons of vanguardism.")
+	emote_see = list("rozważa wady kapitalistycznego modelu gospodarczego.", "rozmyśla nad zaletami i wadami awangardyzmu.")
 
 /datum/dog_fashion/head/ushanka/New(mob/M)
 	..()
@@ -109,35 +109,35 @@
 
 /datum/dog_fashion/head/warden
 	name = "Officer REAL_NAME"
-	emote_see = list("drools.","looks for donuts.")
+	emote_see = list("ślini się.","szuka pączków.")
 	desc = "Stop right there criminal scum!"
 
 /datum/dog_fashion/head/blue_wizard
 	name = "Grandwizard REAL_NAME"
-	speak = list("YAP", "Woof!", "Bark!", "AUUUUUU", "EI  NATH!")
+	speak = list("YAP", "Hau!", "Hau hau!", "AUUUUUU", "EI  NATH!")
 
 /datum/dog_fashion/head/red_wizard
 	name = "Pyromancer REAL_NAME"
-	speak = list("YAP", "Woof!", "Bark!", "AUUUUUU", "ONI SOMA!")
+	speak = list("YAP", "Hau!", "Hau hau!", "AUUUUUU", "ONI SOMA!")
 
 /datum/dog_fashion/head/cardborg
 	name = "Borgi"
-	speak = list("Ping!","Beep!","Woof!")
-	emote_see = list("goes rogue.", "sniffs out non-humans.")
+	speak = list("Ping!","Bip!","Hau!")
+	emote_see = list("wymyka się spod kontroli.", "wywęszy nieludzi.")
 	desc = "Result of robotics budget cuts."
 
 /datum/dog_fashion/head/ghost
 	name = "\improper Ghost"
 	speak = list("WoooOOOooo~","AUUUUUUUUUUUUUUUUUU")
-	emote_see = list("stumbles around.", "shivers.")
-	emote_hear = list("howls!","groans.")
+	emote_see = list("zatacza się.", "drży.")
+	emote_hear = list("wyje!","jęczy.")
 	desc = "Spooky!"
 	obj_icon_state = "sheet"
 
 /datum/dog_fashion/head/santa
 	name = "Santa's Corgi Helper"
-	emote_hear = list("barks Christmas songs.", "yaps merrily!")
-	emote_see = list("looks for presents.", "checks his list.")
+	emote_hear = list("szczeka kolędy.", "radośnie ujada!")
+	emote_see = list("szuka prezentów.", "sprawdza swoją listę.")
 	desc = "He's very fond of milk and cookies."
 
 /datum/dog_fashion/head/cargo_tech
@@ -146,7 +146,7 @@
 
 /datum/dog_fashion/head/reindeer
 	name = "REAL_NAME the red-nosed Corgi"
-	emote_hear = list("lights the way!", "illuminates.", "yaps!")
+	emote_hear = list("oświetla drogę!", "świeci.", "ujada!")
 	desc = "He has a very shiny nose."
 
 /datum/dog_fashion/head/sombrero
@@ -169,7 +169,7 @@
 	name = "REAL_NAME the Clown"
 	desc = "Honkman's best friend."
 	speak = list("HONK!", "Honk!")
-	emote_see = list("plays tricks.", "slips.")
+	emote_see = list("płata figle.", "poślizguje się.")
 
 /datum/dog_fashion/back/deathsquad
 	name = "Trooper REAL_NAME"

@@ -14,10 +14,10 @@
 	if(!ishuman(user))
 		return
 	if(syndicate && !is_syndicate(user))
-		to_chat(user, span_warning("You have no idea how to use [src]..."))
+		to_chat(user, span_warning("Nie masz pojęcia, jak użyć [src]..."))
 		return
 	if(job)
-		to_chat(user, span_warning("[src] has already been set up! Apply it to an ID card to use it."))
+		to_chat(user, span_warning("[src] jest już skonfigurowany! Przyłóż go do karty identyfikacyjnej, żeby go użyć."))
 		return
 	var/list/radial_menu = list()
 	var/list/jobs_by_title = list()
@@ -32,7 +32,7 @@
 		return
 	job = jobs_by_title[result]
 	name = "access kit ([job.title])"
-	to_chat(user, span_notice("You set up [src] to spoof and grant access to [job.title]."))
+	to_chat(user, span_notice("Ustawiasz [src], by podrabiał i nadawał dostęp stanowiska: [job.title]."))
 
 /obj/item/access_kit/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -43,15 +43,15 @@
 	if(!istype(target, /obj/item/card/id))
 		return
 	if(!job)
-		to_chat(user, span_warning("[src] has not been set to a specific job yet! Use it in-hand to set up the access kit."))
+		to_chat(user, span_warning("[src] nie jest jeszcze ustawiony na konkretne stanowisko! Użyj go w dłoni, żeby skonfigurować zestaw."))
 		return
 	var/obj/item/card/id/id = target
 	id.assignment = job.title
 	id.access |= job.minimal_access
 	id.update_label()
-	to_chat(user, span_notice("You apply [src] to [id], granting it the access of a [job.title]!"))
+	to_chat(user, span_notice("Przykładasz [src] do [id], nadając jej dostęp stanowiska: [job.title]!"))
 	if(is_infiltrator(user))
-		to_chat(user, span_boldnotice("Make sure to properly update your chameleon clothes to reflect that of a [job.title]!"))
+		to_chat(user, span_boldnotice("Pamiętaj, żeby zmienić ubranie kameleona tak, by pasowało do stanowiska: [job.title]!"))
 	do_sparks(5, FALSE, user)
 	qdel(src)
 

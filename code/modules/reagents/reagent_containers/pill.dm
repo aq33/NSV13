@@ -35,19 +35,19 @@
 		if(/datum/surgery/dental_implant in C.surgeries)
 			return
 	if(M == user)
-		M.visible_message("<span class='notice'>[user] attempts to [apply_method] [src].</span>")
+		M.visible_message("<span class='notice'>[user] próbuje [apply_method == "apply" ? "nakleić sobie" : "połknąć"] [src].</span>")
 		if(self_delay)
 			if(!do_mob(user, M, self_delay))
 				return FALSE
-		to_chat(M, "<span class='notice'>You [apply_method] [src].</span>")
+		to_chat(M, "<span class='notice'>[apply_method == "apply" ? "Naklejasz sobie" : "Połykasz"] [src].</span>")
 
 	else
-		M.visible_message("<span class='danger'>[user] attempts to force [M] to [apply_method] [src].</span>", \
-							"<span class='userdanger'>[user] attempts to force you to [apply_method] [src].</span>")
+		M.visible_message("<span class='danger'>[user] próbuje [apply_method == "apply" ? "nakleić [M]" : "zmusić [M] do połknięcia"] [src]!</span>", \
+							"<span class='userdanger'>[user] próbuje [apply_method == "apply" ? "nakleić ci" : "zmusić cię do połknięcia"] [src]!</span>")
 		if(!do_mob(user, M))
 			return FALSE
-		M.visible_message("<span class='danger'>[user] forces [M] to [apply_method] [src].</span>", \
-							"<span class='userdanger'>[user] forces you to [apply_method] [src].</span>")
+		M.visible_message("<span class='danger'>[user] [apply_method == "apply" ? "nakleja [M]" : "zmusza [M] do połknięcia"] [src]!</span>", \
+							"<span class='userdanger'>[user] [apply_method == "apply" ? "nakleja ci" : "zmusza cię do połknięcia"] [src]!</span>")
 
 	var/makes_me_think = pick(strings(REDPILL_FILE, "redpill_questions"))
 	if(icon_state == "pill_shape_capsule_bloodred" && prob(5)) //you take the red pill - you stay in Wonderland, and I show you how deep the rabbit hole goes
@@ -67,14 +67,14 @@
 	if(!dissolvable || !target.is_refillable())
 		return
 	if(target.is_drainable() && !target.reagents.total_volume)
-		balloon_alert(user, "[target] is empty!")
+		balloon_alert(user, "[target] jest pusty!")
 		return
 
 	if(target.reagents.holder_full())
-		balloon_alert(user, "[target] is full!")
+		balloon_alert(user, "[target] jest pełny!")
 		return
 
-	user.visible_message("<span class='warning'>[user] slips something into [target]!</span>", "<span class='notice'>You dissolve [src] in [target].</span>", null, 2)
+	user.visible_message("<span class='warning'>[user] wrzuca coś do [target]!</span>", "<span class='notice'>Rozpuszczasz [src] w [target].</span>", null, 2)
 	reagents.trans_to(target, reagents.total_volume, transfered_by = user)
 	qdel(src)
 
@@ -271,8 +271,8 @@
 	desc = "A strange pill found in the depths of maintenance."// Somehow, it can't be dissolved or used in a grinder."
 	icon_state = "pill_shape_capsule_black_white"
 	var/static/list/names = list("maintenance pill","floorpill","mystery pill","suspicious pill","strange pill")
-	var/static/list/descs = list("Your feeling is telling you no, but...","Drugs are expensive, you can't afford not to eat any pills that you find."\
-	, "Surely, there's no way this could go bad.")
+	var/static/list/descs = list("Przeczucie mówi ci, że nie, ale...","Leki są drogie, nie stać cię na to, by nie zjadać znalezionych pigułek."\
+	, "Na pewno nic złego się nie stanie.")
 	//prevent_grinding = TRUE // AQ EDIT - floor pills now grindable
 	//dissolvable = FALSE // AQ EDIT - and dissolvable!
 

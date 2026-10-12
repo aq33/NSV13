@@ -5,12 +5,12 @@
 	analyzerdescdamage = "Wstrzykuje on ofiarom toksyny, które dodatkowo okłamują system nerwowy, że nic im nie dolega."
 	color = "#A88FB7"
 	complementary_color = "#AF7B8D"
-	message_living = ", and you feel <i>alive</i>"
+	message_living = ", a ty czujesz, że <i>żyjesz</i>"
 	reagent = /datum/reagent/blob/regenerative_materia
 
 /datum/reagent/blob/regenerative_materia
 	name = "Regenerative Materia"
-	taste_description = "heaven"
+	taste_description = "niebo"
 	color = "#A88FB7"
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
 

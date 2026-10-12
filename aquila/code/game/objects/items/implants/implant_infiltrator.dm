@@ -29,14 +29,14 @@
 	. = ..()
 	if (.)
 		target.remove_status_effect(/datum/status_effect/infiltrator_pinpointer)
-		T.visible_message(span_notice("[src] explodes into a bunch of sparks!"))
+		T.visible_message(span_notice("[src] wybucha deszczem iskier!"))
 		do_sparks(8, FALSE, T)
 		qdel(src)
 
 /obj/item/implant/infiltrator/activate()
 	var/obj/item/stack/telecrystal/TC = imp_in.is_holding_item_of_type(/obj/item/stack/telecrystal)
 	if (TC)
-		to_chat(imp_in, span_notice("You put [TC.amount] TC into your hidden uplink."))
+		to_chat(imp_in, span_notice("Wkładasz [TC.amount] TC do swojego ukrytego uplinku."))
 		uplink.telecrystals += TC.amount
 		TC.use(TC.amount)
 		return
@@ -76,20 +76,20 @@
 			if (pinpointer_chosen)
 				if (pinpointer_chosen == "Infiltration Cruiser")
 					pinpointer.scan_target = SSshuttle.getShuttle("syndicatecutter")
-					to_chat(imp_in, span_notice("Pinpointer target set to the infiltration cruiser."))
+					to_chat(imp_in, span_notice("Cel pinpointera ustawiony na krążownik infiltracyjny."))
 				else
 					pinpointer.scan_target = targets[pinpointer_chosen]
-					to_chat(imp_in, span_notice("Pinpointer target set to [pinpointer.scan_target]"))
+					to_chat(imp_in, span_notice("Cel pinpointera ustawiony na [pinpointer.scan_target]"))
 				pinpointer.point_to_target()
 		if ("Send Ship Away")
 			if (QDELETED(cutter) || QDELETED(homePort))
 				return
-			alert_radio.talk_into(alert_radio, "The infiltration cruiser has been remotely sent to the base by [imp_in.real_name]")
+			alert_radio.talk_into(alert_radio, "[imp_in.real_name] zdalnie wysłał krążownik infiltracyjny do bazy")
 			cutter.request(homePort)
 		if ("Call Ship")
 			if (QDELETED(cutter) || QDELETED(targetPort))
 				return
-			alert_radio.talk_into(alert_radio, "The infiltration cruiser has been remotely sent to [station_name()] by [imp_in.real_name]")
+			alert_radio.talk_into(alert_radio, "[imp_in.real_name] zdalnie wysłał krążownik infiltracyjny do [station_name()]")
 			cutter.request(targetPort)
 
 /obj/item/implant/infiltrator/proc/get_targets()
@@ -120,7 +120,7 @@
 	. = ..()
 	var/datum/status_effect/infiltrator_pinpointer/effect = attached_effect
 	if (effect?.scan_target)
-		. += span_notice("Currently tracking [effect.scan_target]")
+		. += span_notice("Obecnie śledzi: [effect.scan_target]")
 
 /atom/movable/screen/alert/status_effect/infiltrator_pinpointer/Click()
 	if (isliving(usr))

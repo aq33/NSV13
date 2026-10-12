@@ -14,7 +14,7 @@ Bonus
 */
 /datum/symptom/narcolepsy
 	name = "Narcolepsy"
-	desc = "The virus causes a hormone imbalance, making the host sleepy and narcoleptic."
+	desc = "Wirus powoduje zaburzenia hormonalne, przez co nosiciel jest senny i ma napady narkolepsji."
 	stealth = 1
 	resistance = -1
 	stage_speed = -2
@@ -28,8 +28,7 @@ Bonus
 	var/sleep_level = 0
 	var/sleepy_ticks = 0
 	var/stamina = FALSE
-	threshold_desc = "<b>Transmission 7:</b> Also relaxes the muscles, weakening and slowing the host.<br>\
-					  <b>Resistance 10:</b> Causes narcolepsy more often, increasing the chance of the host falling asleep."
+	threshold_desc = "<b>Transmisja 7:</b> rozluźnia też mięśnie, osłabiając i spowalniając nosiciela.<br><b>Odporność 10:</b> częściej wywołuje narkolepsję, zwiększając szansę, że nosiciel zaśnie."
 
 /datum/symptom/narcolepsy/severityset(datum/disease/advance/A)
 	. = ..()
@@ -68,22 +67,22 @@ Bonus
 	switch(A.stage)
 		if(1)
 			if(prob(10))
-				to_chat(M, "<span class='warning'>You feel tired.</span>")
+				to_chat(M, "<span class='warning'>Czujesz się zmęczony.</span>")
 		if(2)
 			if(prob(10))
-				to_chat(M, "<span class='warning'>You feel very tired.</span>")
+				to_chat(M, "<span class='warning'>Czujesz się bardzo zmęczony.</span>")
 				sleepy_ticks += rand(10,14)
 				if(stamina)
 					M.adjustStaminaLoss(10)
 		if(3)
 			if(prob(15))
-				to_chat(M, "<span class='warning'>You try to focus on staying awake.</span>")
+				to_chat(M, "<span class='warning'>Próbujesz skupić się na tym, by nie zasnąć.</span>")
 				sleepy_ticks += rand(10,14)
 				if(stamina)
 					M.adjustStaminaLoss(15)
 		if(4)
 			if(prob(20))
-				to_chat(M, "<span class='warning'>You nod off for a moment.</span>")
+				to_chat(M, "<span class='warning'>Na chwilę przysypiasz.</span>")
 				sleepy_ticks += rand(10,14)
 				if(stamina)
 					M.adjustStaminaLoss(20)

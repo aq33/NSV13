@@ -5,11 +5,7 @@
 	var/obj/machinery/camera/camera
 
 /obj/item/implant/camera/get_data()
-	var/dat = {"<b>Implant Specifications:</b><BR>
-				<b>Name:</b> Camera Implant<BR>
-				<b>Life:</b> 24 hours after death of host<BR>
-				<b>Implant Details:</b> <BR>
-				<b>Function:</b> Remote surveillance of implanted subject."}
+	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Implant kamery<BR><b>Żywotność:</b> 24 godziny po śmierci nosiciela<BR><b>Szczegóły implantu:</b> <BR><b>Działanie:</b> zdalna obserwacja nosiciela."}
 	return dat
 
 /obj/item/implant/camera/on_implanted(mob/user)

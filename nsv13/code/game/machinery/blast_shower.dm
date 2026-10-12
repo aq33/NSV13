@@ -2,7 +2,7 @@
 	var/deconstruct_drops = list(/obj/item/stack/sheet/plastic = 2)
 
 /obj/machinery/shower/crowbar_act(mob/living/user, obj/item/I)
-	balloon_alert(user, "You start deconstructing the shower...")
+	balloon_alert(user, "Zaczynasz rozbierać prysznic...")
 	if(do_after(user, 4 SECONDS, target = src))
 		for(var/comp_path in deconstruct_drops)
 			var/comp_amt = deconstruct_drops[comp_path]
@@ -22,7 +22,7 @@
 	return ..()
 
 /obj/structure/showerframe/screwdriver_act(mob/living/user, obj/item/I)
-	balloon_alert(user, "You start disassembling the shower frame...")
+	balloon_alert(user, "Zaczynasz rozbierać ramę prysznica...")
 	if(do_after(user, 2 SECONDS, target = src))
 		new /obj/item/stack/sheet/iron(loc, 2)
 		qdel(src)
@@ -47,10 +47,10 @@
 	L.damage_clothes(8, BRUTE)
 	if(!(obj_flags & EMAGGED))
 		L.adjustBruteLoss(0.5)
-		to_chat(L, "The water peels your outer layers of skin away!")
+		to_chat(L, "Woda zdziera ci zewnętrzne warstwy skóry!")
 	else
 		L.adjustBruteLoss(5)
-		to_chat(L, "<span class='warning'>The water peels your skin away!</span>")
+		to_chat(L, "<span class='warning'>Woda zdziera ci skórę!</span>")
 	if(iscarbon(L))
 		var/mob/living/carbon/M = L
 		. = TRUE
@@ -88,7 +88,7 @@
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(check_clothes(L))
-				to_chat(H, "<span class='warning'>Your clothes will get damaged if you wear them in this shower.</span>")
+				to_chat(H, "<span class='warning'>Jeśli weźmiesz ten prysznic w ubraniu, ubranie się zniszczy.</span>")
 			else
 				H.set_hygiene(HYGIENE_LEVEL_CLEAN)
 			if(H.wear_suit && wash_obj(H.wear_suit))
@@ -107,16 +107,16 @@
 				H.update_inv_belt()
 
 /datum/mood_event/blast_shower
-	description = "<span class='warning'>My skin feels raw!</span>\n"
+	description = "<span class='warning'>Moja skóra jest obdarta do żywego!</span>\n"
 	mood_change = -4
 	timeout = 5 MINUTES
 
 /obj/structure/showerframe/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/stack/sheet/mineral/titanium))
-		balloon_alert(user, "You start constructing the blast shower")
+		balloon_alert(user, "Zaczynasz budować prysznic odkażający")
 		if(do_after(user, 4 SECONDS, target = src))
 			I.use(1)
-			balloon_alert(user, "Blast shower created")
+			balloon_alert(user, "Zbudowano prysznic odkażający")
 			var/obj/machinery/shower/blast_shower/new_shower = new /obj/machinery/shower/blast_shower(loc)
 			new_shower.setDir(dir)
 			qdel(src)

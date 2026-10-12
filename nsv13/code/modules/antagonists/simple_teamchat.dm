@@ -28,7 +28,7 @@ GLOBAL_LIST_EMPTY(simple_teamchats)
 		return FALSE
 	if(isliving(user))
 		if(!can_use(user))
-			to_chat(user, "<span class='warning'>You can't do that right now...</span>")
+			to_chat(user, "<span class='warning'>Nie możesz teraz tego zrobić...</span>")
 			return FALSE
 	else
 		user = holder.loc //Alright, seems like they clicked the item's action instead.
@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY(simple_teamchats)
 	var/list/sound_on_failure = null /// Play a sound when a message cannot be received
 	var/telepathic = TRUE /// Should the user speak their message when they enter it? Or if youre mimicking radio, can it be heard "in your head" or over a comm.
 	var/text_span_style = "boldnotice"
-	var/last_message = "<span class='notice'>No new messages.</span>"
+	var/last_message = "<span class='notice'>Brak nowych wiadomości.</span>"
 
 /datum/component/simple_teamchat/proc/get_user()
 	RETURN_TYPE(/mob/living)
@@ -124,11 +124,11 @@ GLOBAL_LIST_EMPTY(simple_teamchats)
 /datum/component/simple_teamchat/proc/enter_message(datum/user)
 	if(!can_message(user))
 		return FALSE
-	var/str = input(user, "Enter a message:", "[key]", null) as text|null
+	var/str = input(user, "Wpisz wiadomość:", "[key]", null) as text|null
 	if(!str)
 		return FALSE
 	if(length(str) > max_message_length)
-		to_chat(user, "<span class='warning'>Your message \"[str]\" of [length(str)] characters exceeded maximum length of [max_message_length].</span>")
+		to_chat(user, "<span class='warning'>Twoja wiadomość \"[str]\" ma [length(str)] znaków i przekracza limit [max_message_length].</span>")
 		return FALSE
 	str = copytext(html_encode(str), 1, max_message_length)
 	log_say("[key]: [user] transmitted: [str]")

@@ -2,7 +2,7 @@
 	name = "mass driver launch control"
 	desc = "A combined blastdoor and mass driver control unit."
 	var/obj/machinery/mass_driver/connected = null
-	var/title = "Mass Driver Controls"
+	var/title = "Sterowanie katapultą masową"
 	var/id = 1
 	var/timing = 0
 	var/time = 30
@@ -21,7 +21,7 @@
 		return
 
 	if(!connected)
-		say("Cannot locate mass driver connector. Cancelling firing sequence!")
+		say("Nie można zlokalizować złącza katapulty masowej. Anulowanie sekwencji odpalenia!")
 		return
 
 	for(var/obj/machinery/door/poddoor/M in range(range, src))
@@ -42,16 +42,16 @@
 /obj/machinery/computer/pod/ui_interact(mob/user)
 	. = ..()
 	if(!allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		to_chat(user, "<span class='warning'>Odmowa dostępu.</span>")
 		return
 
 	var/dat = ""
 	if(connected)
 		var/d2
 		if(timing)	//door controls do not need timers.
-			d2 = "<A href='byond://?src=[REF(src)];time=0'>Stop Time Launch</A>"
+			d2 = "<A href='byond://?src=[REF(src)];time=0'>Zatrzymaj odliczanie startu</A>"
 		else
-			d2 = "<A href='byond://?src=[REF(src)];time=1'>Initiate Time Launch</A>"
+			d2 = "<A href='byond://?src=[REF(src)];time=1'>Rozpocznij odliczanie startu</A>"
 		dat += "<HR>\nTimer System: [d2]\nTime Left: [DisplayTimeText((time SECONDS))] <A href='byond://?src=[REF(src)];tp=-30'>-</A> <A href='byond://?src=[REF(src)];tp=-1'>-</A> <A href='byond://?src=[REF(src)];tp=1'>+</A> <A href='byond://?src=[REF(src)];tp=30'>+</A>"
 		var/temp = ""
 		var/list/L = list( 0.25, 0.5, 1, 2, 4, 8, 16 )
@@ -62,7 +62,7 @@
 				temp += "<A href = 'byond://?src=[REF(src)];power=[t]'>[t]</A> "
 		dat += "<HR>\nPower Level: [temp]<BR>\n<A href = 'byond://?src=[REF(src)];alarm=1'>Firing Sequence</A><BR>\n<A href = 'byond://?src=[REF(src)];drive=1'>Test Fire Driver</A><BR>\n<A href = 'byond://?src=[REF(src)];door=1'>Toggle Outer Door</A><BR>"
 	else
-		dat += "<BR>\n<A href = 'byond://?src=[REF(src)];door=1'>Toggle Outer Door</A><BR>"
+		dat += "<BR>\n<A href = 'byond://?src=[REF(src)];door=1'>Przełącz drzwi zewnętrzne</A><BR>"
 	dat += "<BR><BR><A href='byond://?src=[REF(user)];mach_close=computer'>Close</A>"
 	add_fingerprint(usr)
 	var/datum/browser/popup = new(user, "computer", title, 400, 500)
@@ -116,7 +116,7 @@
 
 /obj/machinery/computer/pod/old
 	name = "\improper DoorMex control console"
-	title = "Door Controls"
+	title = "Sterowanie drzwiami"
 	icon_state = "oldcomp"
 	icon_screen = "library"
 	icon_keyboard = "no_keyboard"
@@ -124,7 +124,7 @@
 /obj/machinery/computer/pod/old/syndicate
 	name = "\improper ProComp Executive IIc"
 	desc = "The Syndicate operate on a tight budget. Operates external airlocks."
-	title = "External Airlock Controls"
+	title = "Sterowanie zewnętrzną śluzą"
 	req_access = list(ACCESS_SYNDICATE)
 
 /obj/machinery/computer/pod/old/swf

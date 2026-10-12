@@ -19,11 +19,11 @@
 	switch(state)
 		if(1)
 			if(anchored)
-				. += "It is <b>bolted</b> to the wall, but lacks <i>wires</i>."
+				. += "Jest <b>przykręcony</b> do ściany, ale brakuje mu <i>przewodów</i>."
 			else
-				. += "The <i>bolts</i> are loose. You could probably <b>lift</b> it off."
+				. += "<i>Śruby</i> są luźne. Pewnie da się go <b>zdjąć</b>."
 		if(2)
-			. += "The frame is <b>wired</b> but missing its <i>circuitboard</i>."
+			. += "Rama jest <b>okablowana</b>, ale brakuje <i>płytki drukowanej</i>."
 
 /obj/structure/frame/machine/ship_weapon/pdc_mount/New(loc, ndir=dir)
 	. = ..()
@@ -40,17 +40,17 @@
 
 /obj/structure/frame/machine/ship_weapon/pdc_mount/attackby(obj/item/P, mob/user, params)
 	if(istype(P, /obj/item/circuitboard/machine) && !istype(P, /obj/item/circuitboard/machine/pdc_mount))// Only accept our specific circuitboard
-		to_chat(user, "<span class='warning'>This frame does not accept circuit boards of this type!</span>")
+		to_chat(user, "<span class='warning'>Ta rama nie przyjmuje płytek tego typu!</span>")
 		return TRUE
 	if((state == 1) && (P.tool_behaviour == TOOL_SCREWDRIVER) && !anchored)
-		to_chat(user, "<span class='warning'>Remove it from the wall first!</span>")
+		to_chat(user, "<span class='warning'>Najpierw zdejmij to ze ściany!</span>")
 		return TRUE
 	. = ..()
 	icon_state = initial(icon_state)
 
 /obj/structure/frame/machine/ship_weapon/pdc_mount/wrench_act(mob/user, obj/item/tool)
 	if(circuit)
-		to_chat(user, "<span class='warning'>Remove the circuitboard first!</span>")
+		to_chat(user, "<span class='warning'>Najpierw wyjmij płytkę drukowaną!</span>")
 		return TRUE
 	return ..()
 
@@ -64,13 +64,13 @@
 		if(1)
 			if(!do_after(user, 2 SECONDS, target=src))
 				return TRUE
-			to_chat(user, "<span class='notice'>You remove the frame from the wall.</span>")
+			to_chat(user, "<span class='notice'>Zdejmujesz ramę ze ściany.</span>")
 			new /obj/item/wallframe/pdc_frame(loc)
 			qdel(src)
 			return TRUE
 		if(2)
 			if(anchored)
-				to_chat(user, "<span class='warning'>You need to unbolt the frame to do that!</span>")
+				to_chat(user, "<span class='warning'>Do tego musisz odkręcić ramę!</span>")
 			else
-				to_chat(user, "<span class='warning'>Remove the wires first!</span>")
+				to_chat(user, "<span class='warning'>Najpierw wyjmij przewody!</span>")
 			return TRUE

@@ -38,49 +38,49 @@
 	if(istype(tool, /obj/item/shockpaddles))
 		var/obj/item/shockpaddles/S = tool
 		if((S.req_defib && !S.defib.powered) || !ISWIELDED(S) || S.cooldown || S.busy)
-			to_chat(user, "<span class='warning'>You need to wield both paddles, and [S.defib] must be powered!</span>")
+			to_chat(user, "<span class='warning'>Musisz trzymać obie łopatki, a [S.defib] musi mieć zasilanie!</span>")
 			return FALSE
 	if(istype(tool, /obj/item/melee/baton))
 		var/obj/item/melee/baton/B = tool
 		if(!B.turned_on)
-			to_chat(user, "<span class='warning'>[B] needs to be active!</span>")
+			to_chat(user, "<span class='warning'>[B] musi być aktywny!</span>")
 			return FALSE
 	if(istype(tool, /obj/item/gun/energy))
 		var/obj/item/gun/energy/E = tool
 		if(E.chambered && istype(E.chambered, /obj/item/ammo_casing/energy/electrode))
 			return TRUE
 		else
-			to_chat(user, "<span class='warning'>You need an electrode for this!</span>")
+			to_chat(user, "<span class='warning'>Do tego potrzebujesz elektrody!</span>")
 			return FALSE
 
 /datum/surgery_step/revive/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You prepare to give [target]'s brain the spark of life with [tool].</span>",
-		"[user] prepares to shock [target]'s brain with [tool].",
-		"[user] prepares to shock [target]'s brain with [tool].")
-	target.notify_ghost_cloning("Someone is trying to zap your brain!", source = target)
+	display_results(user, target, "<span class='notice'>Przygotowujesz się, by dać mózgowi [target] iskrę życia za pomocą [tool].</span>",
+		"[user] przygotowuje się, by porazić mózg [target] za pomocą [tool].",
+		"[user] przygotowuje się, by porazić mózg [target] za pomocą [tool].")
+	target.notify_ghost_cloning("Ktoś próbuje porazić twój mózg!", source = target)
 
 /datum/surgery_step/revive/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You successfully shock [target]'s brain with [tool]...</span>",
-		"[user] send a powerful shock to [target]'s brain with [tool]...",
-		"[user] send a powerful shock to [target]'s brain with [tool]...")
+	display_results(user, target, "<span class='notice'>Pomyślnie porażasz mózg [target] za pomocą [tool]...</span>",
+		"[user] wysyła potężny wstrząs do mózgu [target] za pomocą [tool]...",
+		"[user] wysyła potężny wstrząs do mózgu [target] za pomocą [tool]...")
 	playsound(get_turf(target), 'sound/magic/lightningbolt.ogg', 50, 1)
 	target.grab_ghost()
 	target.adjustOxyLoss(-50, 0)
 	target.updatehealth()
 	if(target.revive())
-		target.visible_message("...[target] wakes up, alive and aware!")
+		target.visible_message("...[target] budzi się, żywy i przytomny!")
 		target.emote("gasp")
-		to_chat(target, "<span class='warning'><b>You have been revived via Revival Surgery. You cannot remember how exactly you died (or who killed you), but you may remember certain details such as the weapon used or the place of death.</b></span>") //NSV13
+		to_chat(target, "<span class='warning'><b>Zostajesz przywrócony do życia operacją ożywienia. Nie pamiętasz dokładnie, jak zginąłeś (ani kto cię zabił), ale możesz pamiętać pewne szczegóły, takie jak użyta broń czy miejsce śmierci.</b></span>") //NSV13
 		target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 50, 199) //MAD SCIENCE
 		return TRUE
 	else
-		target.visible_message("...[target.p_they()] convulses, then lies still.")
+		target.visible_message("...dostaje drgawek, po czym nieruchomieje.")
 		return FALSE
 
 /datum/surgery_step/revive/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You shock [target]'s brain with [tool], but [target.p_they()] doesn't react.</span>",
-		"[user] send a powerful shock to [target]'s brain with [tool], but [target.p_they()] doesn't react.",
-		"[user] send a powerful shock to [target]'s brain with [tool], but [target.p_they()] doesn't react.")
+	display_results(user, target, "<span class='notice'>Porażasz mózg [target] za pomocą [tool], ale nie ma reakcji.</span>",
+		"[user] wysyła potężny wstrząs do mózgu [target] za pomocą [tool], ale nie ma reakcji.",
+		"[user] wysyła potężny wstrząs do mózgu [target] za pomocą [tool], ale nie ma reakcji.")
 	playsound(get_turf(target), 'sound/magic/lightningbolt.ogg', 50, 1)
 	target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 15, 180)
 	return FALSE

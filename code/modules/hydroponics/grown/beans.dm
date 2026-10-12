@@ -25,7 +25,7 @@
 	icon_state = "soybeans"
 	foodtypes = VEGETABLES
 	grind_results = list(/datum/reagent/consumable/soymilk = 0)
-	tastes = list("soy" = 1)
+	tastes = list("soja" = 1)
 	wine_power = 20
 
 // Koibean

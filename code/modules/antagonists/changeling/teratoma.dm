@@ -1,6 +1,6 @@
 /datum/antagonist/teratoma
 	name = "Teratoma"
-	roundend_category = "other"
+	roundend_category = "pozostali"
 	antagpanel_category = "Changeling"
 	banning_key = ROLE_TERATOMA
 
@@ -11,8 +11,8 @@
 	..()
 
 /datum/antagonist/teratoma/greet()
-	to_chat(owner, "<b>You are a living tumor. By all accounts, you should not exist.</b>")
-	to_chat(owner, "<b>Spread misery and chaos upon the station.</b>")
+	to_chat(owner, "<b>Jesteś żywym guzem. Według wszelkich zasad nie powinno cię być.</b>")
+	to_chat(owner, "<b>Szerz nędzę i chaos na statku.</b>")
 
 /datum/antagonist/teratoma/on_removal()
 	owner.special_role = null
@@ -42,10 +42,10 @@
 //Mainttoma
 
 /datum/antagonist/teratoma/hugbox
-	name = "Maintenance Teratoma"
-	roundend_category = "other"
+	name = "Teratoma z tuneli"
+	roundend_category = "pozostali"
 	antagpanel_category = "Changeling"
 
 /datum/antagonist/teratoma/hugbox/greet()
 	..()
-	to_chat(owner, "<span class='userdanger'>Avoid killing unprovoked, kill only in self defense!</span>")
+	to_chat(owner, "<span class='userdanger'>Nie zabijaj bez prowokacji, zabijaj tylko w samoobronie!</span>")

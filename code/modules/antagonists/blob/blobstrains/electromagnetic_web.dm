@@ -26,7 +26,7 @@
 
 /datum/reagent/blob/electromagnetic_web
 	name = "Electromagnetic Web"
-	taste_description = "pop rocks"
+	taste_description = "strzelające cukierki"
 	color = "#83ECEC"
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
 

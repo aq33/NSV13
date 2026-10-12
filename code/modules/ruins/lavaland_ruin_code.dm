@@ -88,13 +88,13 @@
 		var/species = golem_shell_species_types[O.merge_type]
 		if(species)
 			if(O.use(10))
-				to_chat(user, "You finish up the golem shell with ten sheets of [O].")
+				to_chat(user, "Kończysz skorupę golema dziesięcioma arkuszami [O].")
 				new shell_type(get_turf(src), species, user)
 				qdel(src)
 			else
-				to_chat(user, "You need at least ten sheets to finish a golem.")
+				to_chat(user, "Potrzebujesz co najmniej dziesięciu arkuszy, by ukończyć golema.")
 		else
-			to_chat(user, "You can't build a golem out of this kind of material.")
+			to_chat(user, "Nie możesz zbudować golema z tego rodzaju materiału.")
 
 //made with xenobiology, the golem obeys its creator
 /obj/item/golem_shell/servant
@@ -110,11 +110,11 @@
 	random = TRUE
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
-	short_desc = "You are a syndicate science technician, employed in a top secret research facility developing biological weapons."
-	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue your research as best you can, and try to keep a low profile."
-	important_info = "The base is rigged with explosives, DO NOT abandon it or let it fall into enemy hands!"
+	short_desc = "Jesteś technikiem naukowym Syndykatu, zatrudnionym w ściśle tajnej placówce badawczej rozwijającej broń biologiczną."
+	flavour_text = "Niestety twój znienawidzony wróg, Nanotrasen, rozpoczął wydobycie w tym sektorze. Kontynuuj badania najlepiej, jak potrafisz, i staraj się nie rzucać w oczy."
+	important_info = "Baza jest zaminowana ładunkami wybuchowymi; NIE porzucaj jej ani nie pozwól, by wpadła w ręce wroga!"
 	outfit = /datum/outfit/lavaland_syndicate
-	assignedrole = "Lavaland Syndicate"
+	assignedrole = "Syndykat z Lavalandu"
 	use_cooldown = TRUE
 	banType = ROLE_LAVALAND_SYNDICATE
 
@@ -139,15 +139,15 @@
 
 /obj/effect/mob_spawn/human/lavaland_syndicate/comms
 	name = "Syndicate Comms Agent"
-	short_desc = "You are a syndicate comms agent, employed in a top secret research facility developing biological weapons."
-	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Monitor enemy activity as best you can, and try to keep a low profile. Use the communication equipment to provide support to any field agents, and sow disinformation to throw Nanotrasen off your trail. Do not let the base fall into enemy hands!"
-	important_info = "DO NOT abandon the base."
+	short_desc = "Jesteś agentem łączności Syndykatu, zatrudnionym w ściśle tajnej placówce badawczej rozwijającej broń biologiczną."
+	flavour_text = "Niestety twój znienawidzony wróg, Nanotrasen, rozpoczął wydobycie w tym sektorze. Monitoruj działania wroga najlepiej, jak potrafisz, i staraj się nie rzucać w oczy. Używaj sprzętu łączności, by wspierać agentów w terenie, i siej dezinformację, by zmylić trop Nanotrasen. Nie pozwól, by baza wpadła w ręce wroga!"
+	important_info = "NIE porzucaj bazy."
 	outfit = /datum/outfit/lavaland_syndicate/comms
 
 /obj/effect/mob_spawn/human/lavaland_syndicate/comms/space
-	short_desc = "You are a syndicate agent, assigned to a small listening post station situated near your hated enemy's top secret research facility: Space Station 13."
-	flavour_text = "Monitor enemy activity as best you can, and try to keep a low profile. Monitor enemy activity as best you can, and try to keep a low profile. Use the communication equipment to provide support to any field agents, and sow disinformation to throw Nanotrasen off your trail. Do not let the base fall into enemy hands!"
-	important_info = "DO NOT abandon the base."
+	short_desc = "Jesteś agentem Syndykatu przydzielonym do małego posterunku nasłuchowego położonego w pobliżu ściśle tajnej placówki badawczej twojego znienawidzonego wroga: Stacji Kosmicznej 13."
+	flavour_text = "Monitoruj działania wroga najlepiej, jak potrafisz, i staraj się nie rzucać w oczy. Używaj sprzętu łączności, by wspierać agentów w terenie, i siej dezinformację, by zmylić trop Nanotrasen. Nie pozwól, by baza wpadła w ręce wroga!"
+	important_info = "NIE porzucaj bazy."
 
 /obj/effect/mob_spawn/human/lavaland_syndicate/comms/space/Initialize(mapload)
 	. = ..()
@@ -163,4 +163,4 @@
 
 /obj/item/clothing/mask/chameleon/gps/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/gps, "Encrypted Signal")
+	AddComponent(/datum/component/gps, "Zaszyfrowany sygnał")

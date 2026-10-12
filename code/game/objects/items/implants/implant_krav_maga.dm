@@ -7,11 +7,7 @@
 	var/datum/martial_art/krav_maga/style = new
 
 /obj/item/implant/krav_maga/get_data()
-	var/dat = {"<b>Implant Specifications:</b><BR>
-				<b>Name:</b> Krav Maga Implant<BR>
-				<b>Life:</b> 4 hours after death of host<BR>
-				<b>Implant Details:</b> <BR>
-				<b>Function:</b> Teaches even the clumsiest host the arts of Krav Maga."}
+	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Implant Krav Maga<BR><b>Żywotność:</b> 4 godziny po śmierci nosiciela<BR><b>Szczegóły implantu:</b> <BR><b>Działanie:</b> uczy nawet najbardziej niezdarnego nosiciela sztuki Krav Maga."}
 	return dat
 
 /obj/item/implant/krav_maga/activate()

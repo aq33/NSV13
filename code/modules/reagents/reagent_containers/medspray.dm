@@ -30,43 +30,43 @@
 		amount_per_transfer_from_this = squirt_amount
 	else
 		amount_per_transfer_from_this = initial(amount_per_transfer_from_this)
-	to_chat(user, "<span class='notice'>You will now apply the medspray's contents in [squirt_mode ? "short bursts":"extended sprays"]. You'll now use [amount_per_transfer_from_this] units per use.</span>")
+	to_chat(user, "<span class='notice'>Będziesz teraz podawać zawartość medsprayu [squirt_mode ? "krótkimi strzałami":"długim rozpylaniem"]. Na jedno użycie zużyjesz [amount_per_transfer_from_this] j.</span>")
 
 /obj/item/reagent_containers/medspray/attack(mob/living/carbon/M, mob/user, def_zone)
 	if(!iscarbon(M))
 		return
 
 	if(!reagents || !reagents.total_volume)
-		to_chat(user, "<span class='warning'>[src] is empty!</span>")
+		to_chat(user, "<span class='warning'>[src] jest pusty!</span>")
 		return
 
 	var/obj/item/bodypart/affecting = M.get_bodypart(check_zone(user.zone_selected))
 	if(!affecting)
-		balloon_alert(user, "The limb is missing.")
+		balloon_alert(user, "Brakuje tej kończyny.")
 		return
 	if(!IS_ORGANIC_LIMB(affecting))
-		balloon_alert(user, "[src] doesn't work on robotic limbs.")
+		balloon_alert(user, "[src] nie działa na robotyczne kończyny.")
 		return
 
 	if(M == user)
-		M.visible_message("<span class='notice'>[user] attempts to [apply_method] [src] on [user.p_them()]self.</span>")
+		M.visible_message("<span class='notice'>[user] próbuje spryskać się za pomocą [src].</span>")
 		if(self_delay)
 			if(!do_mob(user, M, self_delay))
 				return
 			if(!reagents || !reagents.total_volume)
 				return
-		to_chat(M, "<span class='notice'>You [apply_method] yourself with [src].</span>")
+		to_chat(M, "<span class='notice'>Spryskujesz się za pomocą [src].</span>")
 
 	else
 		log_combat(user, M, "attempted to apply", src, reagents.log_list())
-		M.visible_message("<span class='danger'>[user] attempts to [apply_method] [src] on [M].</span>", \
-							"<span class='userdanger'>[user] attempts to [apply_method] [src] on [M].</span>")
+		M.visible_message("<span class='danger'>[user] próbuje spryskać [M] za pomocą [src].</span>", \
+							"<span class='userdanger'>[user] próbuje spryskać cię za pomocą [src].</span>")
 		if(!do_mob(user, M))
 			return
 		if(!reagents || !reagents.total_volume)
 			return
-		M.visible_message("<span class='danger'>[user] [apply_method]s [M] down with [src].</span>", \
-							"<span class='userdanger'>[user] [apply_method]s [M] down with [src].</span>")
+		M.visible_message("<span class='danger'>[user] spryskuje [M] za pomocą [src].</span>", \
+							"<span class='userdanger'>[user] spryskuje cię za pomocą [src].</span>")
 
 	if(!reagents || !reagents.total_volume)
 		return

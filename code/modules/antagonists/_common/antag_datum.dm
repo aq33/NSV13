@@ -139,10 +139,10 @@ GLOBAL_LIST(admin_antag_list)
 /datum/antagonist/proc/replace_banned_player()
 	set waitfor = FALSE
 
-	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Do you want to play as a [name]?", banning_key, null, 7.5 SECONDS, owner.current, ignore_category = FALSE)
+	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Chcesz zagrać jako [name]?", banning_key, null, 7.5 SECONDS, owner.current, ignore_category = FALSE)
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
-		to_chat(owner, "Your mob has been taken over by a ghost! Appeal your job ban if you want to avoid this in the future!")
+		to_chat(owner, "Twoją postać przejął duch! Odwołaj się od bana na rolę, jeśli chcesz tego w przyszłości uniknąć!")
 		message_admins("[key_name_admin(C)] has taken control of ([key_name_admin(owner)]) to replace a jobbanned player.")
 		owner.current.ghostize(FALSE)
 		owner.current.key = C.key
@@ -210,15 +210,15 @@ GLOBAL_LIST(admin_antag_list)
 				break
 
 	if(objectives.len == 0 || objectives_complete)
-		report += "<span class='greentext big'>The [name] was successful!</span>"
+		report += "<span class='greentext big'>[name]: sukces!</span>"
 	else
-		report += "<span class='redtext big'>The [name] has failed!</span>"
+		report += "<span class='redtext big'>[name]: porażka!</span>"
 
 	return report.Join("<br>")
 
 //Displayed at the start of roundend_category section, default to roundend_category header
 /datum/antagonist/proc/roundend_report_header()
-	return 	"<span class='header'>The [roundend_category] were:</span><br>"
+	return 	"<span class='header'>[capitalize(roundend_category)]:</span><br>"
 
 //Displayed at the end of roundend_category section
 /datum/antagonist/proc/roundend_report_footer()
@@ -305,7 +305,7 @@ GLOBAL_LIST(admin_antag_list)
 			return
 
 /datum/antagonist/proc/edit_memory(mob/user)
-	var/new_memo = stripped_multiline_input(user, "Write new memory", "Memory", antag_memory, MAX_MESSAGE_LEN)
+	var/new_memo = stripped_multiline_input(user, "Zapisz nowe wspomnienie", "Pamięć", antag_memory, MAX_MESSAGE_LEN)
 	if (isnull(new_memo))
 		return
 	antag_memory = new_memo

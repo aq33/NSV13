@@ -7,7 +7,7 @@
 
 /mob/living/silicon/ai/attack_alien(mob/living/carbon/alien/humanoid/M)
 	if(!SSticker.HasRoundStarted())
-		to_chat(M, "You cannot attack people before the game has started.")
+		to_chat(M, "Nie możesz atakować ludzi przed rozpoczęciem gry.")
 		return
 	..()
 
@@ -31,7 +31,7 @@
 			if(1)
 				view_core()
 			if(2)
-				SSshuttle.requestEvac(src,"ALERT: Energy surge detected in AI core! Station integrity may be compromised! Initiati--%m091#ar-BZZT")
+				SSshuttle.requestEvac(src,"ALARM: wykryto skok energii w rdzeniu SI! Integralność stacji może być zagrożona! Rozpoczyna--%m091#ar-BZZT")
 
 /mob/living/silicon/ai/ex_act(severity, target)
 	switch(severity)

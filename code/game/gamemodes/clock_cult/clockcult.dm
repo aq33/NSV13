@@ -37,9 +37,7 @@ GLOBAL_VAR(clockcult_eminence)
 
 	title_icon = "clockcult"
 	announce_span = "danger"
-	announce_text = "A powerful group of fanatics is trying to summon their deity!\n\
-	<span class='danger'>Servants</span>: Convert more servants and defend the Ark of the Clockwork Justicar!\n\
-	<span class='notice'>Crew</span>: Prepare yourselfs and destroy the Ark of the Clockwork Justicar."
+	announce_text = "Potężna grupa fanatyków próbuje przywołać swoje bóstwo!\n<span class='danger'>Słudzy</span>: nawracajcie kolejnych sług i brońcie Arki Mechanicznego Justycjariusza!\n<span class='notice'>Załoga</span>: przygotujcie się i zniszczcie Arkę Mechanicznego Justycjariusza."
 
 
 	var/clock_cultists = CLOCKCULT_SERVANTS
@@ -92,12 +90,7 @@ GLOBAL_VAR(clockcult_eminence)
 	return ..()
 
 /datum/game_mode/clockcult/generate_report()
-	return "Central Command's higher dimensional affairs division has been recently investigating a huge, anomalous energy spike \
-	emanating from a neutron star close to your sector. It is currently theorised that an ancient group of fanatics praising an \
-	eldritch deity made from brass and other outdated materials are abusing the energy of the dying star to breach dimensional \
-	boundaries. The bluespace veil is faltering at your current location, making it a prime target for dangerous individuals to \
-	abuse dimensional interdiction. Any evidence of tampering with bluespace fields should be reported to your local chaplain and \
-	Central Command if a connection is still available at the time of discovery."
+	return "Wydział spraw wyższych wymiarów Centrali od niedawna bada ogromny, anomalny skok energii emanujący z gwiazdy neutronowej w pobliżu waszego sektora. Obecna teoria głosi, że starożytna grupa fanatyków czcząca przedwieczne bóstwo z mosiądzu i innych przestarzałych materiałów wykorzystuje energię umierającej gwiazdy, by przełamywać granice wymiarów. Zasłona bluespace słabnie w waszej obecnej lokalizacji, co czyni ją głównym celem dla niebezpiecznych osób nadużywających przechwytywania wymiarowego. Wszelkie dowody ingerencji w pola bluespace należy zgłaszać miejscowemu kapelanowi oraz Centrali, jeśli w chwili odkrycia połączenie jest jeszcze dostępne."
 
 /datum/game_mode/clockcult/set_round_result()
 	..()
@@ -122,15 +115,15 @@ GLOBAL_VAR(clockcult_eminence)
 	var/len_before_addition
 
 	if(GLOB.ratvar_risen)
-		round_credits += "<center><h1>Ratvar has been released from his prison!</h1>"
+		round_credits += "<center><h1>Ratvar został uwolniony ze swojego więzienia!</h1>"
 	else
-		round_credits += "<center><h1>The clock cultists failed to summon Ratvar, he will remain trapped forever to rust!</h1>"
-	round_credits += "<center><h1>The Servants of Ratvar:</h1>"
+		round_credits += "<center><h1>Kultystom zegara nie udało się przywołać Ratvara, na zawsze pozostanie uwięziony i zardzewieje!</h1>"
+	round_credits += "<center><h1>Słudzy Ratvara:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/operative in GLOB.servants_of_ratvar)
-		round_credits += "<center><h2>[operative.name] as a servant of Ratvar!</h2>"
+		round_credits += "<center><h2>[operative.name] jako sługa Ratvara!</h2>"
 	if(len_before_addition == round_credits.len)
-		round_credits += list("<center><h2>The servants were annihilated!</h2>", "<center><h2>Their remains could not be identified!</h2>")
+		round_credits += list("<center><h2>Słudzy zostali unicestwieni!</h2>", "<center><h2>Nie dało się zidentyfikować ich szczątków!</h2>")
 	round_credits += "<br>"
 
 	round_credits += ..()
@@ -195,7 +188,7 @@ GLOBAL_VAR(clockcult_eminence)
 /proc/hierophant_message(msg, mob/living/sender, span = "<span class='brass'>", use_sanitisation=TRUE, say=TRUE)
 	if(CHAT_FILTER_CHECK(msg))
 		if(sender)
-			to_chat(sender, "<span class='warning'>You message contains forbidden words, please review the server rules and do not attempt to bypass this filter.</span>")
+			to_chat(sender, "<span class='warning'>Twoja wiadomość zawiera zakazane słowa. Zapoznaj się z zasadami serwera i nie próbuj obchodzić tego filtra.</span>")
 		return
 	var/hierophant_message = "[span]"
 	if(sender?.reagents)
@@ -204,7 +197,7 @@ GLOBAL_VAR(clockcult_eminence)
 			return FALSE
 	if(!msg)
 		if(sender)
-			to_chat(sender, "<span class='brass'>You cannot transmit nothing!</span>")
+			to_chat(sender, "<span class='brass'>Nie możesz przesłać pustej wiadomości!</span>")
 		return FALSE
 	if(use_sanitisation)
 		msg = sanitize(msg)
@@ -270,6 +263,6 @@ GLOBAL_VAR(clockcult_eminence)
 	if(M.reagents)
 		if(M.reagents.has_reagent(/datum/reagent/water/holywater, 1))
 			if(pick(20))
-				to_chat(M, "<span class='nezbere'>You hear the cogs whispering to you, but cannot understand their words.</span>")
+				to_chat(M, "<span class='nezbere'>Słyszysz szept zębatek, ale nie rozumiesz ich słów.</span>")
 			return
 	to_chat(M, hierophant_message)

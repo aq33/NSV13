@@ -513,8 +513,7 @@
 		return
 	var/area/A = get_area(character)
 	var/message = "<span class='game deadsay'><span class='name'>\
-		[character.real_name]</span> ([rank]) has arrived at the station at \
-		<span class='name'>[A.name]</span>.</span>"
+		[character.real_name]</span> ([rank]) przybywa na pokład, do: <span class='name'>[A.name]</span>.</span>"
 	deadchat_broadcast(message, follow_target = character, message_type=DEADCHAT_ARRIVALRATTLE)
 	if((!GLOB.announcement_systems.len) || (!character.mind))
 		return

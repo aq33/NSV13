@@ -70,7 +70,7 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 	if(isanimal(user))
 		var/mob/living/simple_animal/A = user
 		if(!A.dextrous)
-			to_chat(user, "<span class='warning'>You are too primitive to use this device!</span>")
+			to_chat(user, "<span class='warning'>Jesteś zbyt prymitywny, żeby użyć tego urządzenia!</span>")
 			return UI_CLOSE
 	return ..()
 
@@ -79,14 +79,14 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 		return
 	var/obj/item/card/swipe_id = usr.get_idcard()
 	if(!swipe_id || !istype(swipe_id))
-		to_chat(usr, "<span class='warning'>No ID card detected.</span>")
+		to_chat(usr, "<span class='warning'>Nie wykryto karty identyfikacyjnej.</span>")
 		return
 	switch(action)
 		if("red_alert")
 			if(!event_source)
 				//NSV13 - delta alert level override.
 				if(GLOB.security_level == SEC_LEVEL_DELTA)
-					to_chat(usr, "<span class='warning'>Security level override active.</span>")
+					to_chat(usr, "<span class='warning'>Aktywne nadpisanie poziomu alarmu.</span>")
 					return
 				//NSV13 end.
 				sendEvent(KEYCARD_RED_ALERT, swipe_id)
@@ -104,7 +104,7 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 					return TRUE
 				//NSV13 end.
 				if(swipe_id == event_source.triggering_card)
-					to_chat(usr, "<span class='warning'>Invalid ID. Confirmation ID must not equal trigger ID.</span>")
+					to_chat(usr, "<span class='warning'>Nieprawidłowy identyfikator. Karta potwierdzająca musi być inna niż karta inicjująca.</span>")
 					return
 				event_source.trigger_event(usr)
 				event_source = null
@@ -145,17 +145,17 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 /obj/machinery/keycard_auth/proc/trigger_event(confirmer)
 	//NSV13 - delta alert overrides security level change sources.
 	if(event == KEYCARD_RED_ALERT && GLOB.security_level == SEC_LEVEL_DELTA)
-		to_chat(confirmer, "<span class='warning'>Security level override active.</span>")
+		to_chat(confirmer, "<span class='warning'>Aktywne nadpisanie poziomu alarmu.</span>")
 		return
 	//NSV13 end.
 	log_game("[key_name(triggerer)] triggered and [key_name(confirmer)] confirmed event [event]")
 	message_admins("[ADMIN_LOOKUPFLW(triggerer)] triggered and [ADMIN_LOOKUPFLW(confirmer)] confirmed event [event]")
 
 	var/area/A1 = get_area(triggerer)
-	deadchat_broadcast("<span class='deadsay'><span class='name'>[triggerer]</span> triggered [event] at <span class='name'>[A1.name]</span>.</span>", triggerer)
+	deadchat_broadcast("<span class='deadsay'><span class='name'>[triggerer]</span> uruchamia [event] w <span class='name'>[A1.name]</span>.</span>", triggerer)
 
 	var/area/A2 = get_area(confirmer)
-	deadchat_broadcast("<span class='deadsay'><span class='name'>[confirmer]</span> confirmed [event] at <span class='name'>[A2.name]</span>.</span>", confirmer)
+	deadchat_broadcast("<span class='deadsay'><span class='name'>[confirmer]</span> potwierdza [event] w <span class='name'>[A2.name]</span>.</span>", confirmer)
 	switch(event)
 		if(KEYCARD_RED_ALERT)
 			set_security_level(SEC_LEVEL_RED)
@@ -173,7 +173,7 @@ GLOBAL_VAR_INIT(emergency_access, FALSE)
 			A.emergency = TRUE
 			A.update_icon()
 			A.wires.ui_update()
-	minor_announce("Access restrictions on maintenance and external airlocks have been lifted.", "Attention! Station-wide emergency declared!",1)
+	minor_announce("Zniesiono ograniczenia dostępu do tuneli technicznych i zewnętrznych śluz.", "Uwaga! Ogłoszono stan wyjątkowy na całym statku!",1)
 	GLOB.emergency_access = TRUE
 	SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("emergency maintenance access", "enabled"))
 
@@ -183,13 +183,13 @@ GLOBAL_VAR_INIT(emergency_access, FALSE)
 			A.emergency = FALSE
 			A.update_icon()
 			A.wires.ui_update()
-	minor_announce("Access restrictions in maintenance areas have been restored.", "Attention! Station-wide emergency rescinded:")
+	minor_announce("Przywrócono ograniczenia dostępu do tuneli technicznych.", "Uwaga! Odwołano stan wyjątkowy:")
 	GLOB.emergency_access = FALSE
 	SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("emergency maintenance access", "disabled"))
 
 /proc/toggle_bluespace_artillery()
 	GLOB.bsa_unlock = !GLOB.bsa_unlock
-	minor_announce("Bluespace Artillery firing protocols have been [GLOB.bsa_unlock? "unlocked" : "locked"]", "Weapons Systems Update:")
+	minor_announce("Protokoły ostrzału artylerii bluespace zostały [GLOB.bsa_unlock? "odblokowane" : "zablokowane"].", "Aktualizacja systemów uzbrojenia:")
 	SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("bluespace artillery", GLOB.bsa_unlock? "unlocked" : "locked"))
 
 ///NSV13 - toggles FTL safety mode of a passed vessel.
@@ -198,9 +198,9 @@ GLOBAL_VAR_INIT(emergency_access, FALSE)
 		return
 	target.ftl_safety_override = !target.ftl_safety_override
 	if(target.ftl_safety_override) //Safety disengaged.
-		target.relay('nsv13/sound/misc/triple_boop_alert.ogg',"<h1 class='alert'>FTL Drive System Notice</h1><span class='alert'>FTL Drive Safeties disengaged. Drive reverting to manual control.</span><br>")
+		target.relay('nsv13/sound/misc/triple_boop_alert.ogg',"<h1 class='alert'>Komunikat napędu FTL</h1><span class='alert'>Zabezpieczenia napędu FTL wyłączone. Napęd przechodzi na sterowanie ręczne.</span><br>")
 	else //Safety reengaged.
-		target.relay('sound/misc/notice2.ogg', "<h1 class='alert'>FTL Drive System Notice</h1><span class='alert'>FTL Drive Safeties restored.</span><br>")
+		target.relay('sound/misc/notice2.ogg', "<h1 class='alert'>Komunikat napędu FTL</h1><span class='alert'>Zabezpieczenia napędu FTL przywrócone.</span><br>")
 //NSV13 end.
 
 #undef KEYCARD_RED_ALERT

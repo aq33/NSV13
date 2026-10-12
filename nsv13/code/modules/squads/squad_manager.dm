@@ -15,24 +15,12 @@ GLOBAL_DATUM_INIT(squad_manager, /datum/squad_manager, new)
 		CIC_OPS = list(ACCESS_HEADS, ACCESS_RC_ANNOUNCE),
 	)//
 	var/static/list/role_objective_map = list(
-		DC_SQUAD = "<span class='warning'><br/>During <b>General Quarters</b> report to the <i>squad vendors</i> to obtain your equipment.<br/>\
-			Your primary duties are to repair the ship, seal breaches, and bring injured to medbay.<br/>\
-			Listen to your squad leader, who may issue further orders.</span>",
-		MEDICAL_SQUAD = "<span class='warning'><br/>During <b>General Quarters</b> report to the <i>squad vendors</i> to obtain your equipment.<br/>\
-			Your primary duties are to provide first-aid to injured crewmen and bring stabilized patients to medbay.<br/>\
-			Listen to your squad leader, who may issue further orders.</span>",
-		SECURITY_SQUAD = "<span class='warning'><br/>During <b>General Quarters</b> report to the <i>squad vendors</i> to obtain your equipment.<br/>\
-			Your primary duties are to assist security in repelling boarders and participate in boarding actions.<br/>\
-			Listen to your squad leader, who may issue further orders.</span>",
-		COMBAT_AIR_PATROL = "<span class='warning'><br/>During <b>General Quarters</b> report to the <i>squad vendors</i> to obtain your equipment.<br/>\
-			Your primary duty is to man any available fighters. If all fighters are manned by pilots, report to the XO for re-assignment.<br/>\
-			Listen to your squad leader, who may issue further orders.</span>",
-		MUNITIONS_SUPPORT = "<span class='warning'><br/>During <b>General Quarters</b> report to the <i>squad vendors</i> to obtain your equipment.<br/>\
-			Your primary duty is to assist munitions with loading and firing the guns. If there are no munitions techs, you are acting munitions techs.<br/>\
-			Listen to your squad leader, who may issue further orders.</span>",
-		CIC_OPS = "<span class='warning'><br/>During <b>General Quarters</b> report to the <i>squad vendors</i> to obtain your equipment.<br/>\
-			Your primary duty is to ensure the navigation and tactical consoles are manned. If all stations are manned by bridge crew, report to the XO for re-assignment.<br/>\
-			Listen to your squad leader, who may issue further orders.</span>",
+		DC_SQUAD = "<span class='warning'><br/>Podczas <b>alarmu bojowego</b> zgłoś się do <i>automatów drużynowych</i> po wyposażenie.<br/>Twoim głównym zadaniem jest naprawa okrętu, uszczelnianie wyłomów i przenoszenie rannych do ambulatorium.<br/>Słuchaj dowódcy drużyny, który może wydawać dalsze rozkazy.</span>",
+		MEDICAL_SQUAD = "<span class='warning'><br/>Podczas <b>alarmu bojowego</b> zgłoś się do <i>automatów drużynowych</i> po wyposażenie.<br/>Twoim głównym zadaniem jest udzielanie pierwszej pomocy rannym członkom załogi i przenoszenie ustabilizowanych pacjentów do ambulatorium.<br/>Słuchaj dowódcy drużyny, który może wydawać dalsze rozkazy.</span>",
+		SECURITY_SQUAD = "<span class='warning'><br/>Podczas <b>alarmu bojowego</b> zgłoś się do <i>automatów drużynowych</i> po wyposażenie.<br/>Twoim głównym zadaniem jest pomaganie ochronie w odpieraniu abordażu i udział w akcjach abordażowych.<br/>Słuchaj dowódcy drużyny, który może wydawać dalsze rozkazy.</span>",
+		COMBAT_AIR_PATROL = "<span class='warning'><br/>Podczas <b>alarmu bojowego</b> zgłoś się do <i>automatów drużynowych</i> po wyposażenie.<br/>Twoim głównym zadaniem jest obsadzanie dostępnych myśliwców. Jeśli wszystkie myśliwce są obsadzone przez pilotów, zgłoś się do XO po nowy przydział.<br/>Słuchaj dowódcy drużyny, który może wydawać dalsze rozkazy.</span>",
+		MUNITIONS_SUPPORT = "<span class='warning'><br/>Podczas <b>alarmu bojowego</b> zgłoś się do <i>automatów drużynowych</i> po wyposażenie.<br/>Twoim głównym zadaniem jest pomaganie działowi uzbrojenia w ładowaniu dział i strzelaniu. Jeśli nie ma techników uzbrojenia, to ty pełnisz ich obowiązki.<br/>Słuchaj dowódcy drużyny, który może wydawać dalsze rozkazy.</span>",
+		CIC_OPS = "<span class='warning'><br/>Podczas <b>alarmu bojowego</b> zgłoś się do <i>automatów drużynowych</i> po wyposażenie.<br/>Twoim głównym zadaniem jest dopilnowanie, by konsole nawigacyjne i taktyczne były obsadzone. Jeśli wszystkie stanowiska obsadza załoga mostka, zgłoś się do XO po nowy przydział.<br/>Słuchaj dowódcy drużyny, który może wydawać dalsze rozkazy.</span>",
 	)
 
 /datum/squad_manager/New()
@@ -77,7 +65,7 @@ GLOBAL_DATUM_INIT(squad_manager, /datum/squad_manager, new)
 	stuckee.retask(role)
 	stuckee.lowpop_retasked = TRUE
 	stuckee.access_enabled = TRUE // They won't be much help without this
-	minor_announce("[stuckee] has been retasked as a [role] due to staffing issues", "WhiteRapids Bureaucratic Corps")
+	minor_announce("[stuckee] zostaje przeniesiony do roli: [role] z powodu braków kadrowych", "WhiteRapids Bureaucratic Corps")
 
 // Method which runs just slightly after roundstart, and ensures that the ship has at least its BASIC roles filled
 /datum/squad_manager/proc/check_squad_assignments()

@@ -31,10 +31,10 @@
 /obj/item/detective_scanner/attack_self(mob/user)
 	if(log.len && !scanning)
 		scanning = 1
-		to_chat(user, "<span class='notice'>Printing report, please wait...</span>")
+		to_chat(user, "<span class='notice'>Drukowanie raportu, proszę czekać...</span>")
 		addtimer(CALLBACK(src, PROC_REF(PrintReport)), 100)
 	else
-		to_chat(user, "<span class='notice'>The scanner has no logs or is in use.</span>")
+		to_chat(user, "<span class='notice'>Skaner nie ma dzienników lub jest w użyciu.</span>")
 
 /obj/item/detective_scanner/attack(mob/living/M, mob/user)
 	return
@@ -43,7 +43,7 @@
 	// Create our paper
 	var/obj/item/paper/report_paper = new(get_turf(src))
 	report_paper.name = "paper- 'Scanner Report'"
-	var/report_text = "<center><font size='6'><B>Scanner Report</B></font></center><HR><BR>"
+	var/report_text = "<center><font size='6'><B>Raport skanera</B></font></center><HR><BR>"
 	report_text += jointext(log, "<BR>")
 	report_text += "<HR><B>Notes:</B><BR>"
 
@@ -53,7 +53,7 @@
 	if(ismob(loc))
 		var/mob/M = loc
 		M.put_in_hands(report_paper)
-		to_chat(M, "<span class='notice'>Report printed. Log cleared.</span>")
+		to_chat(M, "<span class='notice'>Raport wydrukowany. Dziennik wyczyszczony.</span>")
 
 	// Clear the logs
 	log = list()
@@ -71,12 +71,12 @@
 		if((get_dist(A, user) > range) || (loc != user))
 			return
 		if(!can_see(A, user, range))
-			to_chat(user, "<span class='notice'>You can't scan \the [A] through solid material.</span>")
+			to_chat(user, "<span class='notice'>Nie możesz zeskanować [A] przez lity materiał.</span>")
 			return
 		scanning = 1
 
-		user.visible_message("\The [user] points the [src.name] at \the [A] and performs a forensic scan.")
-		to_chat(user, "<span class='notice'>You scan \the [A]. The scanner is now analysing the results...</span>")
+		user.visible_message("[user] celuje [src.name] w [A] i wykonuje skan kryminalistyczny.")
+		to_chat(user, "<span class='notice'>Skanujesz [A]. Skaner analizuje teraz wyniki...</span>")
 
 
 		// GATHER INFORMATION
@@ -105,7 +105,7 @@
 				for(var/i in 1 to 2)
 					LAZYADD(fingerprints,pick("#$^@&#*$H3LP&$(@US^$&#^@#","&$(T@&#C@ME5@##$^@&","^@(#&$ET@US&FR^E#^$&#","#$^@&M*N$US^$(@&#^$&#^@#","&$(@&#^$&#^@##$^@&","^@R(#E$(D@(R&$U&#M^&#","$TH@Y#*$KN@W(@&#^$&#^@#","#$M^DN*S$^@(#&$(@&#^$&#^@##","#","#$^@&#*$^@(#&$(@","#","#$^@&#&#^@","#","@(#&$(@&#^$&#^@"))
 				blood = list("#$^@&LO0K&#@#" = "&$(@AW@Y#$^&")
-				to_chat(user, "<span class='warning'>Your [src] glitched out!</span>")
+				to_chat(user, "<span class='warning'>Twój [src] się zawiesił!</span>")
 
 			else
 				fingerprints = A.return_fingerprints()
@@ -144,7 +144,7 @@
 			add_log("<span class='info'><B>Blood:</B></span>")
 			found_something = 1
 			for(var/B in blood)
-				add_log("Type: <font color='red'>[blood[B]]</font> DNA: <font color='red'>[B]</font>")
+				add_log("Typ: <font color='red'>[blood[B]]</font> DNA: <font color='red'>[B]</font>")
 
 		//Fibers
 		if(length(fibers))
@@ -159,7 +159,7 @@
 			sleep(30)
 			add_log("<span class='info'><B>Reagents:</B></span>")
 			for(var/R in reagents)
-				add_log("Reagent: <font color='red'>[R]</font> Volume: <font color='red'>[reagents[R]]</font>")
+				add_log("Odczynnik: <font color='red'>[R]</font> Objętość: <font color='red'>[reagents[R]]</font>")
 			found_something = 1
 
 		// Get a new user
@@ -168,12 +168,12 @@
 			holder = src.loc
 
 		if(!found_something)
-			add_log("<I># No forensic traces found #</I>", 0) // Don't display this to the holder user
+			add_log("<I># Nie znaleziono śladów kryminalistycznych #</I>", 0) // Don't display this to the holder user
 			if(holder)
-				to_chat(holder, "<span class='warning'>Unable to locate any fingerprints, materials, fibers, or blood on \the [target_name]!</span>")
+				to_chat(holder, "<span class='warning'>Nie udało się znaleźć żadnych odcisków palców, materiałów, włókien ani krwi na [target_name]!</span>")
 		else
 			if(holder)
-				to_chat(holder, "<span class='notice'>You finish scanning \the [target_name].</span>")
+				to_chat(holder, "<span class='notice'>Kończysz skanować [target_name].</span>")
 
 		add_log("---------------------------------------------------------", 0)
 		scanning = 0
@@ -196,27 +196,27 @@
 	if(!user.canUseTopic(src, be_close=TRUE))
 		return
 	if(!LAZYLEN(log))
-		to_chat(user, "<span class='notice'>Cannot clear logs, the scanner has no logs.</span>")
+		to_chat(user, "<span class='notice'>Nie można wyczyścić dzienników, skaner nie ma dzienników.</span>")
 		return
 	if(scanning)
-		to_chat(user, "<span class='notice'>Cannot clear logs, the scanner is in use.</span>")
+		to_chat(user, "<span class='notice'>Nie można wyczyścić dzienników, skaner jest w użyciu.</span>")
 		return
-	to_chat(user, "<span class='notice'>The scanner logs are cleared.</span>")
+	to_chat(user, "<span class='notice'>Dzienniki skanera zostały wyczyszczone.</span>")
 	log = list()
 
 /obj/item/detective_scanner/examine(mob/user)
 	. = ..()
 	if(LAZYLEN(log) && !scanning)
-		. += "<span class='notice'>Alt-click to clear scanner logs.</span>"
+		. += "<span class='notice'>Alt-klik, by wyczyścić dzienniki skanera.</span>"
 
 /obj/item/detective_scanner/proc/displayDetectiveScanResults(mob/living/user)
 	// No need for can-use checks since the action button should do proper checks
 	if(!LAZYLEN(log))
-		to_chat(user, "<span class='notice'>Cannot display logs, the scanner has no logs.</span>")
+		to_chat(user, "<span class='notice'>Nie można wyświetlić dzienników, skaner nie ma dzienników.</span>")
 		return
 	if(scanning)
-		to_chat(user, "<span class='notice'>Cannot display logs, the scanner is in use.</span>")
+		to_chat(user, "<span class='notice'>Nie można wyświetlić dzienników, skaner jest w użyciu.</span>")
 		return
-	to_chat(user, "<span class='notice'><B>Scanner Report</B></span>")
+	to_chat(user, "<span class='notice'><B>Raport skanera</B></span>")
 	for(var/iterLog in log)
 		to_chat(user, iterLog)

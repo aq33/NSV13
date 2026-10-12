@@ -3,7 +3,7 @@
 	name = "Armada"
 	config_tag = "armada"
 	desc = "Complete objectives to gain reinforcements, defend allocated system when the Syndicate Armada arrives."
-	brief = "White Rapids Fleet Intelligence indicates that the Syndicate are preparing an invasion fleet to capture selected_system, rally defences to repel the Armada by freeing up fleet assets and prepare to defend the system."
+	brief = "Wywiad Floty White Rapids donosi, że Syndykat szykuje flotę inwazyjną, by zdobyć selected_system. Zbierzcie siły obronne, by odeprzeć Armadę, zwalniając jednostki floty, i przygotujcie się do obrony systemu."
 	starting_system = "Argo"
 	starting_faction = "nanotrasen"
 
@@ -33,13 +33,13 @@
 	candidate -= SSmapping.config.return_system
 	selected_system = pick(candidate)
 
-	brief = "Fleet Intelligence indicates that the Syndicate are preparing an invasion fleet to capture [selected_system], rally defences to repel the Armada by freeing up fleet assets and prepare to defend the system."
+	brief = "Wywiad floty donosi, że Syndykat szykuje flotę inwazyjną, by zdobyć [selected_system]. Zbierzcie siły obronne, by odeprzeć Armadę, zwalniając jednostki floty, i przygotujcie się do obrony systemu."
 
-	reminder_one = "White Rapids predicts the Syndicate Armada will launch their assault on [selected_system] in [(objective_reminder_interval * 3) / 600] Minutes"
-	reminder_two = "White Rapids predicts the Syndicate Armada will launch their assault on [selected_system] in [(objective_reminder_interval * 2) / 600] Minutes"
-	reminder_three = "White Rapids predicts the Syndicate Armada will launch their assault on [selected_system] in [(objective_reminder_interval * 1) / 600] Minutes"
-	reminder_four = "Bluespace Signatures detected on the fringes of [selected_system], prepare to defend the system!"
-	reminder_five = "Additional Bluespace Signatures detected, brace for Syndicate reinforcements!"
+	reminder_one = "White Rapids przewiduje, że Armada Syndykatu zaatakuje [selected_system] za [(objective_reminder_interval * 3) / 600] min"
+	reminder_two = "White Rapids przewiduje, że Armada Syndykatu zaatakuje [selected_system] za [(objective_reminder_interval * 2) / 600] min"
+	reminder_three = "White Rapids przewiduje, że Armada Syndykatu zaatakuje [selected_system] za [(objective_reminder_interval * 1) / 600] min"
+	reminder_four = "Wykryto sygnatury bluespace na obrzeżach [selected_system], przygotujcie się do obrony systemu!"
+	reminder_five = "Wykryto kolejne sygnatury bluespace, szykujcie się na posiłki Syndykatu!"
 
 /datum/overmap_gamemode/armada/consequence_one() //Purely a reminder
 	return

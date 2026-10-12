@@ -36,7 +36,7 @@
 
 /obj/structure/glowshroom/examine(mob/user)
 	. = ..()
-	. += "This is a [generation]\th generation [name]!"
+	. += "To [name] [generation]. pokolenia!"
 
 /obj/structure/glowshroom/Destroy()
 	if(myseed)
@@ -173,7 +173,7 @@
 
 /obj/structure/glowshroom/acid_act(acidpwr, acid_volume)
 	. = 1
-	visible_message("<span class='danger'>[src] melts away!</span>")
+	visible_message("<span class='danger'>[src] się roztapia!</span>")
 	var/obj/effect/decal/cleanable/molten_object/I = new (get_turf(src))
 	I.desc = "Looks like this was \an [src] some time ago."
 	qdel(src)

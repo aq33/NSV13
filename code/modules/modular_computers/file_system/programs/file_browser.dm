@@ -1,7 +1,7 @@
 /datum/computer_file/program/filemanager
 	filename = "filemanager"
-	filedesc = "File Manager"
-	extended_desc = "This program allows management of files."
+	filedesc = "Menedżer plików"
+	extended_desc = "Ten program pozwala zarządzać plikami."
 	program_icon_state = "generic"
 	size = 8
 	requires_ntnet = FALSE
@@ -130,9 +130,9 @@
 
 /datum/computer_file/program/proc/check_filename(name)
 	if(CHAT_FILTER_CHECK(name))
-		alert(usr, "Filename contains prohibited words.")
+		alert(usr, "Nazwa pliku zawiera zakazane słowa.")
 		return
 	if(!reject_bad_text(name, 32, ascii_only = TRUE, alphanumeric_only = TRUE, underscore_allowed = TRUE) || lowertext(name) != name)
-		alert(usr, "All filenames must be 32 characters or less, lowercase, and cannot contain: < > / and \\")
+		alert(usr, "Wszystkie nazwy plików muszą mieć najwyżej 32 znaki, być pisane małymi literami i nie mogą zawierać: < > / i \\")
 		return
 	return name

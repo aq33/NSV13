@@ -1,12 +1,12 @@
 /obj/item/clothing/under/suit/white_on_white
 	name = "white suit"
-	desc = "A white suit, suitable for an excellent host."
+	desc = "Biały garnitur, odpowiedni dla wspaniałego gospodarza."
 	icon_state = "scratch"
 	item_state = "scratch"
 	can_adjust = FALSE
 
 /obj/item/clothing/under/suit/sl
-	desc = "It's a very amish looking suit."
+	desc = "Garnitur wyglądający jak u amiszów."
 	name = "amish suit"
 	icon_state = "sl_suit"
 	can_adjust = FALSE
@@ -20,7 +20,7 @@
 
 /obj/item/clothing/under/suit/black
 	name = "black slacks"
-	desc = "A professional set of black slacks and a white dress shirt. Nanotrasen Investigation Bureau approved! Tie and suit coat not included."
+	desc = "Profesjonalny komplet: czarne spodnie i biała koszula. Zatwierdzone przez Biuro Śledcze Nanotrasen! Krawat i marynarka nie wchodzą w zestaw."
 	icon_state = "blackslacks"
 	item_state = "blackslacks"
 
@@ -35,7 +35,7 @@
 
 /obj/item/clothing/under/suit/black_really
 	name = "executive suit"
-	desc = "A formal black suit and red tie, intended for the station's finest."
+	desc = "Elegancki czarny garnitur z czerwonym krawatem dla najlepszych na stacji."
 	icon_state = "really_black_suit"
 	item_state = "bl_suit"
 	can_adjust = FALSE
@@ -51,7 +51,7 @@
 
 /obj/item/clothing/under/suit/black/female
 	name = "executive suit"
-	desc = "A formal trouser suit for women, intended for the station's finest."
+	desc = "Elegancki damski garnitur ze spodniami dla najlepszych na stacji."
 	icon_state = "black_suit_fem"
 	item_state = "black_suit_fem"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -60,56 +60,56 @@
 
 /obj/item/clothing/under/suit/green
 	name = "green suit"
-	desc = "A green suit and yellow necktie. Baller."
+	desc = "Zielony garnitur z żółtym krawatem. Szpanersko."
 	icon_state = "green_suit"
 	item_state = "dg_suit"
 	can_adjust = FALSE
 
 /obj/item/clothing/under/suit/red
 	name = "red suit"
-	desc = "A red suit and blue tie. Somewhat formal."
+	desc = "Czerwony garnitur z niebieskim krawatem. Dość elegancki."
 	icon_state = "red_suit"
 	item_state = "r_suit"
 	can_adjust = FALSE
 
 /obj/item/clothing/under/suit/charcoal
 	name = "charcoal suit"
-	desc = "A charcoal suit and red tie. Very professional."
+	desc = "Grafitowy garnitur z czerwonym krawatem. Bardzo profesjonalny."
 	icon_state = "charcoal_suit"
 	item_state = "charcoal_suit"
 	can_adjust = FALSE
 
 /obj/item/clothing/under/suit/navy
 	name = "navy suit"
-	desc = "A navy suit and red tie, intended for the station's finest."
+	desc = "Granatowy garnitur z czerwonym krawatem dla najlepszych na stacji."
 	icon_state = "navy_suit"
 	item_state = "navy_suit"
 	can_adjust = FALSE
 
 /obj/item/clothing/under/suit/burgundy
 	name = "burgundy suit"
-	desc = "A burgundy suit and black tie. Somewhat formal."
+	desc = "Bordowy garnitur z czarnym krawatem. Dość elegancki."
 	icon_state = "burgundy_suit"
 	item_state = "burgundy_suit"
 	can_adjust = FALSE
 
 /obj/item/clothing/under/suit/checkered
 	name = "checkered suit"
-	desc = "That's a very nice suit you have there. Shame if something were to happen to it, eh?"
+	desc = "Bardzo ładny garnitur. Szkoda by było, gdyby coś mu się stało, co?"
 	icon_state = "checkered_suit"
 	item_state = "checkered_suit"
 	can_adjust = FALSE
 
 /obj/item/clothing/under/suit/tan
 	name = "tan suit"
-	desc = "A tan suit with a yellow tie. Smart, but casual."
+	desc = "Beżowy garnitur z żółtym krawatem. Elegancko, ale na luzie."
 	icon_state = "tan_suit"
 	item_state = "tan_suit"
 	can_adjust = FALSE
 
 /obj/item/clothing/under/suit/white
 	name = "white suit"
-	desc = "A white suit and jacket with a blue shirt. You wanna play rough? OKAY!"
+	desc = "Biały garnitur i marynarka z niebieską koszulą. Chcesz się bawić ostro? DOBRA!"
 	icon_state = "white_suit"
 	item_state = "white_suit"
 	can_adjust = FALSE

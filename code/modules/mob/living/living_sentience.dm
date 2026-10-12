@@ -32,11 +32,11 @@
 /mob/living/proc/give_mind(mob/user)
 	if(key || !playable || stat)
 		return 0
-	var/question = alert("Do you want to become [name]?", "[name]", "Yes", "No")
+	var/question = alert("Chcesz zostać [name]?", "[name]", "Yes", "No")
 	if(question != "Yes" || !src || QDELETED(src))
 		return TRUE
 	if(key)
-		to_chat(user, "<span class='notice'>Someone else already took [name].</span>")
+		to_chat(user, "<span class='notice'>Ktoś inny już wziął [name].</span>")
 		return TRUE
 	if(!SSticker.HasRoundStarted())
 		return
@@ -53,7 +53,7 @@
 	playable = TRUE
 	playable_bantype = ban_type
 	if (!key)	//check if there is nobody already inhibiting this mob
-		notify_ghosts("[name] can be controlled", null, enter_link="<a href=byond://?src=[REF(src)];activate=1>(Click to play)</a>", source=src, action=NOTIFY_ATTACK, ignore_key = poll_ignore_key)
+		notify_ghosts("Można sterować: [name]", null, enter_link="<a href=byond://?src=[REF(src)];activate=1>(Kliknij, żeby zagrać)</a>", source=src, action=NOTIFY_ATTACK, ignore_key = poll_ignore_key)
 		LAZYADD(GLOB.mob_spawners["[name]"], src)
 		GLOB.poi_list |= src
 		SSmobs.update_spawners()
@@ -64,11 +64,11 @@
 /mob/living/get_spawner_flavour_text()
 	switch (flavor_text)
 		if (FLAVOR_TEXT_EVIL)
-			return "You are a untamed creature with no reason to hold back. Kill anyone you see as a threat to you or your cause."
+			return "Jesteś nieokiełznaną istotą i nic cię nie powstrzymuje. Zabij każdego, kogo uznasz za zagrożenie dla siebie lub swojej sprawy."
 		if (FLAVOR_TEXT_GOOD)
-			return "Remember, you have no hate towards the inhabitants of the station. There is no reason for you to attack them unless you are attacked."
+			return "Pamiętaj, nie żywisz nienawiści do mieszkańców statku. Nie masz powodu ich atakować, chyba że ciebie zaatakują."
 		if (FLAVOR_TEXT_GOAL_ANTAG)
-			return "You have a disdain for the inhabitants of this station, but your goals are more important. Make sure you work towards your objectives with your kin, instead of attacking everything on sight."
+			return "Gardzisz mieszkańcami tego statku, ale twoje cele są ważniejsze. Realizuj je razem ze swoimi pobratymcami, zamiast atakować wszystko, co widzisz."
 	return flavor_text
 
 /mob/living/proc/remove_from_spawner_menu()

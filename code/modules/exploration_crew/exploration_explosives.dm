@@ -30,7 +30,7 @@
 		var/obj/item/exploration_detonator/detonator = W
 		detonator.linked_explosives |= src
 		attached_detonators |= detonator
-		to_chat(user, "<span class='notice'>You link [src] to [W].</span>")
+		to_chat(user, "<span class='notice'>Łączysz [src] z [W].</span>")
 		return
 	. = ..()
 
@@ -38,7 +38,7 @@
 	. = ..()
 
 	if(!length(attached_detonators))
-		to_chat(user, "<span class='notice'>[src] needs to be linked to a detonator first!</span>")
+		to_chat(user, "<span class='notice'>Najpierw trzeba połączyć [src] z detonatorem!</span>")
 		return
 
 	if(!flag)
@@ -46,7 +46,7 @@
 	if(ismob(AM))
 		return
 
-	to_chat(user, "<span class='notice'>You start planting [src].</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz podkładać [src].</span>")
 
 	if(do_after(user, 30, target = AM))
 		if(!user.temporarilyRemoveItemFromInventory(src))
@@ -56,7 +56,7 @@
 		message_admins("[ADMIN_LOOKUPFLW(user)] planted [name] on [target.name] at [ADMIN_VERBOSEJMP(target)]")
 		log_game("[key_name(user)] planted [name] on [target.name] at [AREACOORD(user)]")
 
-		notify_ghosts("[user] has planted \a [src] on [target]!", source = target, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Explosive Planted")
+		notify_ghosts("[user] podkłada [src] na [target]!", source = target, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Explosive Planted")
 
 		moveToNullspace()	//Yep
 
@@ -71,7 +71,7 @@
 			plastic_overlay.layer = FLOAT_LAYER
 
 		target.add_overlay(plastic_overlay, TRUE)
-		to_chat(user, "<span class='notice'>You plant the bomb.</span>")
+		to_chat(user, "<span class='notice'>Podkładasz bombę.</span>")
 
 /obj/item/grenade/exploration/prime(mob/living/lanced_by)
 	. = ..()
@@ -128,4 +128,4 @@
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class'warning'>You override the safety controls of [src]. You can now trigger explosives on the station.</span>")
+	to_chat(user, "<span class'warning'>Obchodzisz zabezpieczenia [src]. Możesz teraz odpalać ładunki na stacji.</span>")

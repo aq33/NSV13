@@ -53,7 +53,7 @@
 
 		var/obj/structure/overmap/typedef = map_data.ship_type
 
-		var/stability = "No data"
+		var/stability = "Brak danych"
 		while(stability_query.NextRow())
 			if((stability_query.item[1] == map_data.map_name) && (stability_query.item[2]))
 				// (starts - failures) * 100 / starts
@@ -63,9 +63,9 @@
 		var/successes = 0
 		var/evacs = 0
 		var/losses = 0
-		var/successes_text = "No data"
-		var/evacs_text = "No data"
-		var/losses_text = "No data"
+		var/successes_text = "Brak danych"
+		var/evacs_text = "Brak danych"
+		var/losses_text = "Brak danych"
 		while(endings_query.NextRow())
 			if(endings_query.item[1] == map_data.map_name)
 				if(endings_query.item[2] == "\"succeeded\"")
@@ -81,23 +81,23 @@
 			losses_text = "[losses] ([losses*100/total_results] %)"
 		endings_query.next_row_to_take = 1
 
-		var/mass = "Maneuvering data not found"
+		var/mass = "Nie znaleziono danych manewrowych"
 		var/mass_number = initial(typedef.mass)
 		switch(mass_number)
 			if(MASS_TINY)
-				mass = "Tiny and maneuverable"
+				mass = "Malutki i zwrotny"
 			if(MASS_SMALL)
-				mass = "Small and agile"
+				mass = "Mały i zwinny"
 			if(MASS_MEDIUM)
-				mass = "Average armour and manueverability"
+				mass = "Przeciętny pancerz i zwrotność"
 			if(MASS_MEDIUM_LARGE)
-				mass = "Medium-sized, clunky"
+				mass = "Średniej wielkości, toporny"
 			if(MASS_LARGE)
-				mass = "Larger, clunky"
+				mass = "Większy, toporny"
 			if(MASS_TITAN)
-				mass = "Heavily armored, slow"
+				mass = "Ciężko opancerzony, powolny"
 			if(MASS_IMMOBILE)
-				mass = "An immobile fortess"
+				mass = "Nieruchoma forteca"
 		var/base64
 		if(!base64)
 			if(base64_cache[map_data.ship_type])

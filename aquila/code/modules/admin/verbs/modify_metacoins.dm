@@ -14,10 +14,10 @@
 		log_text = "Set to 0"
 		C.set_metacoin_count(METACOINS_MINIMUM)
 	else
-		var/prompt = "Please enter the amount of metacoins to [operation]:"
+		var/prompt = "Podaj liczbę metamonet do operacji ([operation]):"
 
 		if(operation == "set")
-			prompt = "Please enter the new metacoins amount:"
+			prompt = "Podaj nową liczbę metamonet:"
 
 		msg = input("Message:", prompt) as num|null
 

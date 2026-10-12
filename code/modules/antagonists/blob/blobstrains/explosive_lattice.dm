@@ -7,8 +7,8 @@
 	analyzerdesceffect = "Jest wysoce odporny na wybuchy, ale otrzymuje większe obrażenia od ognia oraz innych typów energii."
 	color = "#8B2500"
 	complementary_color = "#00668B"
-	blobbernaut_message = "blasts"
-	message = "The blob blasts you"
+	blobbernaut_message = "wysadza"
+	message = "Grzyb cię wysadza"
 	reagent = /datum/reagent/blob/explosive_lattice
 
 /datum/blobstrain/reagent/explosive_lattice/damage_reaction(obj/structure/blob/B, damage, damage_type, damage_flag)
@@ -20,7 +20,7 @@
 
 /datum/reagent/blob/explosive_lattice
 	name = "Explosive Lattice"
-	taste_description = "the bomb"
+	taste_description = "bomba"
 	color = "#8B2500"
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
 

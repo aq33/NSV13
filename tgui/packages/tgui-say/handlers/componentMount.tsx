@@ -14,6 +14,10 @@ export const handleComponentMount = function (this: Modal) {
     this.fields.lightMode = !!data.lightMode;
     this.fields.showRadioPrefix = !!data.showRadioPrefix;
   });
+  // AQUILA: radio channels the mob can talk on, sent by the server on every open
+  Byond.subscribeTo('radio', (data) => {
+    this.fields.radioChannels = data.prefixes || [];
+  });
   Byond.subscribeTo('force', () => {
     this.events.onForce();
   });

@@ -42,7 +42,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set name = "Make Robot"
 
 	if(!SSticker.HasRoundStarted())
-		alert("Wait until the game starts")
+		alert("Poczekaj, aż gra się zacznie")
 		return
 	if(ishuman(M))
 		log_admin("[key_name(src)] has robotized [M.key].")
@@ -58,7 +58,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set name = "Make Blob"
 
 	if(!SSticker.HasRoundStarted())
-		alert("Wait until the game starts")
+		alert("Poczekaj, aż gra się zacznie")
 		return
 	if(ishuman(M))
 		log_admin("[key_name(src)] has blobized [M.key].")
@@ -73,7 +73,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set name = "Make Simple Animal"
 
 	if(!SSticker.HasRoundStarted())
-		alert("Wait until the game starts")
+		alert("Poczekaj, aż gra się zacznie")
 		return
 
 	if(!M)
@@ -121,7 +121,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set name = "Make Alien"
 
 	if(!SSticker.HasRoundStarted())
-		alert("Wait until the game starts")
+		alert("Poczekaj, aż gra się zacznie")
 		return
 	if(ishuman(M))
 		INVOKE_ASYNC(M, /mob/living/carbon/human/proc/Alienize)
@@ -136,7 +136,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set name = "Make slime"
 
 	if(!SSticker.HasRoundStarted())
-		alert("Wait until the game starts")
+		alert("Poczekaj, aż gra się zacznie")
 		return
 	if(ishuman(M))
 		INVOKE_ASYNC(M, /mob/living/carbon/human/proc/slimeize)
@@ -185,7 +185,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set name = "Grant Full Access"
 
 	if(!SSticker.HasRoundStarted())
-		alert("Wait until the game starts")
+		alert("Poczekaj, aż gra się zacznie")
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M

@@ -170,7 +170,7 @@
 		name = initial(new_type.name)
 		build_path = initial(new_type.build_path)
 		I.play_tool_sound(src)
-		to_chat(user, "<span class='notice'>You change the circuitboard setting to \"[new_setting]\".</span>")
+		to_chat(user, "<span class='notice'>Zmieniasz ustawienie płytki na \"[new_setting]\".</span>")
 	else
 		return ..()
 
@@ -392,11 +392,11 @@
 	. = ..()
 	if(istype(I))
 		pipe_layer = (pipe_layer >= PIPING_LAYER_MAX) ? PIPING_LAYER_MIN : (pipe_layer + 1)
-		to_chat(user, "<span class='notice'>You change the circuitboard to layer [pipe_layer].</span>")
+		to_chat(user, "<span class='notice'>Zmieniasz warstwę płytki na [pipe_layer].</span>")
 
 /obj/item/circuitboard/machine/thermomachine/examine()
 	. = ..()
-	. += "<span class='notice'>It is set to layer [pipe_layer].</span>"
+	. += "<span class='notice'>Ustawiona na warstwę [pipe_layer].</span>"
 
 //Generic
 
@@ -501,13 +501,13 @@
 		var/position = fridges_name_paths.Find(build_path, fridges_name_paths)
 		position = (position == fridges_name_paths.len) ? 1 : (position + 1)
 		build_path = fridges_name_paths[position]
-		to_chat(user, "<span class='notice'>You set the board to [fridges_name_paths[build_path]].</span>")
+		to_chat(user, "<span class='notice'>Ustawiasz płytkę na [fridges_name_paths[build_path]].</span>")
 	else
 		return ..()
 
 /obj/item/circuitboard/machine/smartfridge/examine(mob/user)
 	. = ..()
-	. += "<span class='info'>[src] is set to [fridges_name_paths[build_path]]. You can use a screwdriver to reconfigure it.</span>"
+	. += "<span class='info'>[src] jest ustawiona na [fridges_name_paths[build_path]]. Możesz ją przekonfigurować śrubokrętem.</span>"
 
 
 /obj/item/circuitboard/machine/space_heater
@@ -592,7 +592,7 @@
 			display_vending_names_paths = list()
 			for(var/path in vending_names_paths)
 				display_vending_names_paths[vending_names_paths[path]] = path
-		var/choice =  input(user,"Choose a new brand","Select an Item") as null|anything in display_vending_names_paths
+		var/choice =  input(user,"Wybierz nową markę","Wybierz przedmiot") as null|anything in display_vending_names_paths
 		set_type(display_vending_names_paths[choice])
 	else
 		return ..()
@@ -727,7 +727,7 @@
 
 		build_path = new_path
 		name = "[new_name] 3000 (Machine Board)"
-		to_chat(user, "<span class='notice'>You change the circuit board setting to \"[new_name]\".</span>")
+		to_chat(user, "<span class='notice'>Zmieniasz ustawienie płytki na \"[new_name]\".</span>")
 	else
 		return ..()
 
@@ -950,14 +950,14 @@
 		/obj/item/stock_parts/manipulator = 1)
 
 /obj/item/circuitboard/machine/public_nanite_chamber/multitool_act(mob/living/user)
-	var/new_cloud = input("Set the public nanite chamber's Cloud ID (1-100).", "Cloud ID", cloud_id) as num|null
+	var/new_cloud = input("Ustaw ID chmury publicznej komory nanitów (1-100).", "ID chmury", cloud_id) as num|null
 	if(new_cloud == null)
 		return
 	cloud_id = CLAMP(round(new_cloud, 1), 1, 100)
 
 /obj/item/circuitboard/machine/public_nanite_chamber/examine(mob/user)
 	. = ..()
-	. += "Cloud ID is currently set to [cloud_id]."
+	. += "ID chmury jest obecnie ustawione na [cloud_id]."
 
 
 /obj/item/circuitboard/machine/quantumpad
@@ -1093,18 +1093,18 @@
 
 /obj/item/circuitboard/machine/dish_drive/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Its suction function is [suction ? "enabled" : "disabled"]. Use it in-hand to switch.</span>\n"+\
-	"<span class='notice'>Its disposal auto-transmit function is [transmit ? "enabled" : "disabled"]. Alt-click it to switch.</span>"
+	. += "<span class='notice'>Funkcja ssania jest [suction ? "włączona" : "wyłączona"]. Użyj w ręce, by przełączyć.</span>\n"+\
+	"<span class='notice'>Funkcja automatycznego przesyłania do zsypu jest [transmit ? "włączona" : "wyłączona"]. Alt-kliknij, by przełączyć.</span>"
 
 /obj/item/circuitboard/machine/dish_drive/attack_self(mob/living/user)
 	suction = !suction
-	to_chat(user, "<span class='notice'>You [suction ? "enable" : "disable"] the board's suction function.</span>")
+	to_chat(user, "<span class='notice'>[suction ? "Włączasz" : "Wyłączasz"] funkcję ssania płytki.</span>")
 
 /obj/item/circuitboard/machine/dish_drive/AltClick(mob/living/user)
 	if(!user.Adjacent(src))
 		return
 	transmit = !transmit
-	to_chat(user, "<span class='notice'>You [transmit ? "enable" : "disable"] the board's automatic disposal transmission.</span>")
+	to_chat(user, "<span class='notice'>[transmit ? "Włączasz" : "Wyłączasz"] automatyczne przesyłanie do zsypu na płytce.</span>")
 
 
 /obj/item/circuitboard/machine/gibber
@@ -1169,11 +1169,11 @@
 		if(build_path == /obj/machinery/processor)
 			name = "Slime Processor (Machine Board)"
 			build_path = /obj/machinery/processor/slime
-			to_chat(user, "<span class='notice'>Name protocols successfully updated.</span>")
+			to_chat(user, "<span class='notice'>Protokoły nazewnictwa zaktualizowane pomyślnie.</span>")
 		else
 			name = "Food Processor (Machine Board)"
 			build_path = /obj/machinery/processor
-			to_chat(user, "<span class='notice'>Defaulting name protocols.</span>")
+			to_chat(user, "<span class='notice'>Przywracanie domyślnych protokołów nazewnictwa.</span>")
 	else
 		return ..()
 

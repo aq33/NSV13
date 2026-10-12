@@ -61,7 +61,7 @@
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 30, 1)
 
 /obj/machinery/door/password/proc/ask_for_pass(mob/user)
-	var/guess = stripped_input(user,"Enter the password:", "Password", "")
+	var/guess = stripped_input(user,"Podaj hasło:", "Password", "")
 	if(guess == password)
 		return TRUE
 	return FALSE

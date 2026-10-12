@@ -50,28 +50,28 @@
 			if(fanCount >= 2)
 				return FALSE
 
-			to_chat(user, "<span class='notice'>You add [I] to [src].</span>")
+			to_chat(user, "<span class='notice'>Dodajesz [I] do [src].</span>")
 			I.forceMove(src)
 			fanCount ++
 		if(/obj/item/shield_component/capacitor)
 			if(capacitorCount >= 4)
 				return FALSE
 
-			to_chat(user, "<span class='notice'>You add [I] to [src].</span>");
+			to_chat(user, "<span class='notice'>Dodajesz [I] do [src].</span>");
 			I.forceMove(src)
 			capacitorCount ++
 		if(/obj/item/shield_component/modulator)
 			if(modulatorCount >= 4)
 				return FALSE
 
-			to_chat(user, "<span class='notice'>You add [I] to [src].</span>");
+			to_chat(user, "<span class='notice'>Dodajesz [I] do [src].</span>");
 			I.forceMove(src)
 			modulatorCount ++
 		if(/obj/item/shield_component/interface)
 			if(hasInterface)
 				return FALSE
 
-			to_chat(user, "<span class='notice'>You add [I] to [src].</span>")
+			to_chat(user, "<span class='notice'>Dodajesz [I] do [src].</span>")
 			I.forceMove(src)
 			hasInterface = TRUE
 	componentsDone = check_finished()
@@ -95,31 +95,31 @@
 /obj/structure/shieldgen_frame/wrench_act(mob/living/user, obj/item/I)
 	switch(state)
 		if(2)
-			to_chat(user, "<span class='notice'>You start to bolt together [src].</span>");
+			to_chat(user, "<span class='notice'>Zaczynasz skręcać [src].</span>");
 			if(do_after(user, 5 SECONDS, target=src))
 				state = 3
 				update_icon()
 				return FALSE
 		if(4)
-			to_chat(user, "<span class='notice'>You start to bolt [src]'s housings together...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz skręcać obudowy [src]...</span>")
 			if(do_after(user, 5 SECONDS, target=src))
 				state = 5
 				update_icon()
 				return FALSE
 		if(6)
-			to_chat(user, "<span class='notice'>You start to bolt [src]'s connecting struts into its frame.</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przykręcać rozpórki łączące [src] do ramy.</span>")
 			if(do_after(user, 5 SECONDS, target=src))
 				state = 7
 				update_icon()
 				return FALSE
 		if(8)
-			to_chat(user, "<span class='notice'>You start to bolt [src]'s primary generator coverings...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przykręcać osłony głównego generatora [src]...</span>")
 			if(do_after(user, 5 SECONDS, target=src))
 				state = 9
 				update_icon()
 				return FALSE
 		if(10)
-			to_chat(user, "<span class='notice'>You start to secure [src]'s flux generator housing...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz mocować obudowę generatora strumienia [src]...</span>")
 			if(do_after(user, 5 SECONDS, target=src))
 				state = 11
 				update_icon()
@@ -133,7 +133,7 @@
 	. = FALSE
 	switch(state)
 		if(7)
-			to_chat(user, "<span class='notice'>You start to screw in [src]'s primary generator coverings...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz wkręcać osłony głównego generatora [src]...</span>")
 			if(do_after(user, 5 SECONDS, target=src))
 				state = 8
 				update_icon()
@@ -141,10 +141,10 @@
 			return FALSE
 		if(12)
 			if(!anchored)
-				to_chat(user, "<span class='notice'>[src] must be anchored with a wrench before you can complete it!</span>")
+				to_chat(user, "<span class='notice'>[src] musi zostać zakotwiczony kluczem, zanim go dokończysz!</span>")
 				return FALSE
 
-			to_chat(user, "<span class='notice'>You start to screw in [src]'s components...</span>");
+			to_chat(user, "<span class='notice'>Zaczynasz wkręcać komponenty [src]...</span>");
 			if(do_after(user, 5 SECONDS, target=src))
 				finish()
 
@@ -154,25 +154,25 @@
 	. = FALSE
 	switch(state)
 		if(1)
-			to_chat(user, "<span class='notice'>You start to weld the chassis together...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz zespawywać podwozie...</span>")
 			if(do_after(user, 5 SECONDS, target=src))
 				state = 2
 				update_icon()
 
 		if(3)
-			to_chat(user, "<span class='notice'>You start to weld [src]'s connecting struts into its frame.</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przyspawywać rozpórki łączące [src] do ramy.</span>")
 			if(do_after(user, 5 SECONDS, target=src))
 				state = 4
 				update_icon()
 
 		if(5)
-			to_chat(user, "<span class='notice'>You start to weld [src]'s housings to the frame.</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przyspawywać obudowy [src] do ramy.</span>")
 			if(do_after(user, 5 SECONDS, target=src))
 				state = 6
 				update_icon()
 
 		if(9)
-			to_chat(user, "<span class='notice'>You start to weld [src]'s primary generator coverings...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przyspawywać osłony głównego generatora [src]...</span>")
 			if(do_after(user, 5 SECONDS, target=src))
 				state = 10
 				update_icon()

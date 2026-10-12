@@ -176,10 +176,10 @@
 	if(!isliving(usr))
 		return
 	if(!robe_charge)
-		to_chat(usr, "<span class='warning'>The robe's internal magic supply is still recharging!</span>")
+		to_chat(usr, "<span class='warning'>Wewnętrzny zapas magii szaty wciąż się odnawia!</span>")
 		return
 
-	usr.say("Rise, my creation! Off your page into this realm!", forced = "stickman summoning")
+	usr.say("Powstań, moje dzieło! Zejdź ze swej stronicy do tego świata!", forced = "stickman summoning")
 	playsound(src.loc, 'sound/magic/summon_magic.ogg', 50, 1, 1)
 	var/mob/living/M = new /mob/living/simple_animal/hostile/stickman(get_turf(usr))
 	var/list/factions = usr.faction
@@ -187,7 +187,7 @@
 	src.robe_charge = FALSE
 	sleep(30)
 	src.robe_charge = TRUE
-	to_chat(usr, "<span class='notice'>The robe hums, its internal magic supply restored.</span>")
+	to_chat(usr, "<span class='notice'>Szata szumi, a jej wewnętrzny zapas magii zostaje przywrócony.</span>")
 
 
 //Shielded Armour

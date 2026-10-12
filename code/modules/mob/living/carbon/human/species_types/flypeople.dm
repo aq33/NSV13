@@ -34,8 +34,8 @@
 			var/turf/pos = get_turf(H)
 			H.vomit(0, FALSE, FALSE, 2, TRUE)
 			playsound(pos, 'sound/effects/splat.ogg', 50, 1)
-			H.visible_message("<span class='danger'>[H] vomits on the floor!</span>", \
-						"<span class='userdanger'>You throw up on the floor!</span>")
+			H.visible_message("<span class='danger'>[H] wymiotuje na podłogę!</span>", \
+						"<span class='userdanger'>Wymiotujesz na podłogę!</span>")
 		return TRUE
 	return ..()
 

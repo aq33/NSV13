@@ -1,6 +1,6 @@
 /datum/computer_file/program/signaller
 	filename = "signaller"
-	filedesc = "Remote Signaller"
+	filedesc = "Zdalny sygnalizator"
 	category = PROGRAM_CATEGORY_MISC
 	program_icon_state = "signal"
 	extended_desc = "A small built-in frequency app that sends out signaller signals with the appropriate hardware."
@@ -21,7 +21,7 @@
 		return
 	set_frequency(signal_frequency)
 	if(!computer?.get_modular_computer_part(MC_SIGNALLER)) //Giving a clue to users why the program is spitting out zeros.
-		to_chat(user, "<span class='warning'>\The [computer] flashes an error: \"hardware\\signal_hardware\\startup.bin -- file not found\".</span>")
+		to_chat(user, "<span class='warning'>[computer] wyświetla błąd: „hardware\\signal_hardware\\startup.bin – nie znaleziono pliku”.</span>")
 
 /datum/computer_file/program/signaller/kill_program(forced)
 	. = ..()
@@ -88,7 +88,7 @@
 	var/obj/item/computer_hardware/radio_card/sensor = computer?.get_modular_computer_part(MC_SIGNALLER)
 	if(!(sensor?.check_functionality()))
 		return
-	computer.audible_message("[icon2html(computer, hearers(computer))] *beep* *beep* *beep*", null, 1)
+	computer.audible_message("[icon2html(computer, hearers(computer))] *bip* *bip* *bip*", null, 1)
 	playsound(get_turf(computer), 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 	return TRUE
 

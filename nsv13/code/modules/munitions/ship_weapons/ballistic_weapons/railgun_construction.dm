@@ -46,35 +46,35 @@
 	. = ..()
 	switch(state)
 		if(BS_MOUNT_UNBOLTED)
-			. += "It is <i>unbolted</i> from the floor and could be <b>cut apart</b>."
+			. += "Jest <i>odkręcony</i> od podłogi i można go <b>rozciąć</b>."
 		if(BS_MOUNT_BOLTED)
-			. += "It is <b>bolted</b> down and can be <i>welded</i> to the floor."
+			. += "Jest <b>przykręcony</b> i można go <i>przyspawać</i> do podłogi."
 		if(BS_MOUNT_WELDED)
-			. += "It is <b>welded</b> to the floor and has empty slots for <i>nanocarbon insulation</i> along the barrel."
+			. += "Jest <b>przyspawany</b> do podłogi i ma puste gniazda na <i>izolację nanowęglową</i> wzdłuż lufy."
 		if(BS_BARREL_PLACED)
-			. += "The <i>bolts</i> on the nanocarbon insulation are loose. It could be <b>pried out</b>."
+			. += "<i>Śruby</i> izolacji nanowęglowej są luźne. Można ją <b>wyważyć</b>."
 		if(BS_BARREL_BOLTED)
 			var/rails_left = num_rails - rails_added
-			. += "The nanocarbon insulation is <b>bolted</b> to the barrel and there is room for <i>[rails_left] rail[(rails_left != 1) ? "s" : ""]</i>."
+			. += "Izolacja nanowęglowa jest <b>przykręcona</b> do lufy, a jest miejsce na szyny: <i>[rails_left]</i>."
 		if(BS_RAILS_PLACED)
-			. += "The condductive rails are loose in the frame. They could be <b>pried out</b> or <i>bolted</i> down."
+			. += "Szyny przewodzące leżą luźno w ramie. Można je <b>wyważyć</b> albo <i>przykręcić</i>."
 		if(BS_RAILS_BOLTED)
 			var/capacitors_left = num_capacitors - capacitors_added
-			. += "The rails are <b>bolted</b> in place. There is space for <i>[capacitors_left] capacitor\s</i>."
+			. += "Szyny są <b>przykręcone</b>. Jest miejsce na kondensatory: <i>[capacitors_left]</i>."
 		if(BS_CAPACITORS_PLACED)
-			. += "The capacitors are in place. The <i>screws</i> are loose, and they could be <b>removed</b> by hand."
+			. += "Kondensatory są na miejscu. <i>Wkręty</i> są luźne, a kondensatory można <b>wyjąć</b> ręką."
 		if(BS_CAPACITORS_SECURED)
-			. += "The capacitors are <b>screwed</b> in place, but lack <i>wiring</i>."
+			. += "Kondensatory są <b>przykręcone</b>, ale brakuje im <i>okablowania</i>."
 		if(BS_WIRED)
-			. += "The capacitors are <b>wired</b> to the rails and can be <i>soldered<i/> in place."
+			. += "Kondensatory są <b>połączone przewodami</b> z szynami i można je <i>przylutować</i>."
 		if(BS_WIRES_SOLDERED)
-			. += "The capacitors are <b>soldered</b> to the rails, and the <i>firing electronics</i> are missing."
+			. += "Kondensatory są <b>przylutowane</b> do szyn, a brakuje <i>elektroniki strzelniczej</i>."
 		if(BS_ELECTRONICS_LOOSE)
-			. += "The firing electronics sit loose in the frame. They could be <b>pried out</b> or <i>screwed</i> into place."
+			. += "Elektronika strzelnicza leży luźno w ramie. Można ją <b>wyważyć</b> albo <i>przykręcić</i>."
 		if(BS_ELECTRONICS_SECURE)
-			. += "The firing electronics are <b>screwed</b> into place. The railgun is missing a <i>metal casing</i>."
+			. += "Elektronika strzelnicza jest <b>przykręcona</b>. Działu szynowemu brakuje <i>metalowej obudowy</i>."
 		if(BS_CASING_ADDED)
-			. += "The metal casing can be <b>cut away</b>. The <i>loading tray</i> is missing."
+			. += "Metalową obudowę można <b>odciąć</b>. Brakuje <i>tacy ładowniczej</i>."
 
 // We just took apart a railgun, put us at the end of the construction sequence
 /obj/structure/ship_weapon/railgun_assembly/proc/set_final_state()
@@ -85,15 +85,15 @@
 	if(istype(W, /obj/item/stack/sheet/nanocarbon_glass) && state == BS_MOUNT_WELDED)
 		var/obj/item/stack/sheet/nanocarbon_glass/S = W
 		if(S.get_amount() < num_sheets_insulation)
-			to_chat(user, "<span class='warning'>You need four sheets of [S] to insulate the railgun!</span>")
+			to_chat(user, "<span class='warning'>Do zaizolowania działa szynowego potrzebujesz czterech arkuszy [S]!</span>")
 			return
 		if(!do_after(user, 2 SECONDS, target=src))
 			return
 		if(S.get_amount() < num_sheets_insulation) // Check whether they used too much while standing here...
-			to_chat(user, "<span class='warning'>You need four sheets of [S] to insulate the railgun!</span>")
+			to_chat(user, "<span class='warning'>Do zaizolowania działa szynowego potrzebujesz czterech arkuszy [S]!</span>")
 			return
 		S.use(num_sheets_insulation)
-		to_chat(user, "<span class='notice'>You line the frame with insulating nanocarbon glass.</span>")
+		to_chat(user, "<span class='notice'>Wykładasz ramę izolującym szkłem nanowęglowym.</span>")
 		state = BS_BARREL_PLACED
 		return TRUE
 
@@ -103,7 +103,7 @@
 				return
 			W.forceMove(src)
 			rails_added++
-			to_chat(user, "<span class='notice'>You add the [W] to the [src].</span>")
+			to_chat(user, "<span class='notice'>Dodajesz [W] do [src].</span>")
 			if(rails_added >= num_rails)
 				state = BS_RAILS_PLACED
 			return TRUE
@@ -111,7 +111,7 @@
 	else if((istype(W, /obj/item/stock_parts/capacitor)) && (state == BS_RAILS_BOLTED))
 		W.forceMove(src)
 		capacitors_added++
-		to_chat(user, "<span class='notice'>You add the [W] to the [src].</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [W] do [src].</span>")
 		if(capacitors_added >= num_capacitors)
 			state = BS_CAPACITORS_PLACED
 		return TRUE
@@ -119,15 +119,15 @@
 	else if(istype(W, /obj/item/stack/cable_coil) && (state == BS_CAPACITORS_SECURED))
 		var/obj/item/stack/cable_coil/S = W
 		if(S.get_amount() < num_cables)
-			to_chat(user, "<span class='warning'>You need four pieces of [S] to wire the railgun!</span>")
+			to_chat(user, "<span class='warning'>Do okablowania działa szynowego potrzebujesz czterech kawałków [S]!</span>")
 			return
 		if(!do_after(user, 2 SECONDS, target=src))
 			return
 		if(S.get_amount() < num_cables)
-			to_chat(user, "<span class='warning'>You need four pieces of [S] to wire the railgun!</span>")
+			to_chat(user, "<span class='warning'>Do okablowania działa szynowego potrzebujesz czterech kawałków [S]!</span>")
 			return
 		S.use(num_cables)
-		to_chat(user, "<span class='notice'>You wire the power supply to the rails.</span>")
+		to_chat(user, "<span class='notice'>Podłączasz zasilanie do szyn.</span>")
 		state = BS_WIRED
 		return TRUE
 
@@ -135,22 +135,22 @@
 		if(!do_after(user, 2 SECONDS, target=src))
 			return
 		W.forceMove(src)
-		to_chat(user, "<span class='notice'>Add the electronic firing mechanism.</span>")
+		to_chat(user, "<span class='notice'>Dodaj elektroniczny mechanizm spustowy.</span>")
 		state = BS_ELECTRONICS_LOOSE
 		return TRUE
 
 	else if((istype(W, /obj/item/stack/sheet/plasteel)) && (state == BS_ELECTRONICS_SECURE))
 		var/obj/item/stack/sheet/plasteel/S = W
 		if(S.get_amount() < num_sheets_casing)
-			to_chat(user, "<span class='warning'>You need four sheets of [S] to finish the [src]!</span>")
+			to_chat(user, "<span class='warning'>Do dokończenia [src] potrzebujesz czterech arkuszy [S]!</span>")
 			return
 		if(!do_after(user, 2 SECONDS, target=src))
 			return
 		if(S.get_amount() < num_sheets_casing)
-			to_chat(user, "<span class='warning'>You need four sheets of [S] to finish the [src]!</span>")
+			to_chat(user, "<span class='warning'>Do dokończenia [src] potrzebujesz czterech arkuszy [S]!</span>")
 			return
 		S.use(num_sheets_casing)
-		to_chat(user, "<span class='notice'>You add the outer casing to the assembly.</span>")
+		to_chat(user, "<span class='notice'>Dodajesz zewnętrzną obudowę do zespołu.</span>")
 		state = BS_CASING_ADDED
 		return TRUE
 
@@ -158,7 +158,7 @@
 		if(!do_after(user, 2 SECONDS, target=src))
 			return
 		W.forceMove(src)
-		to_chat(user, "<span class='notice'>You slide the loading tray into place.</span>")
+		to_chat(user, "<span class='notice'>Wsuwasz tacę ładowniczą na miejsce.</span>")
 		var/obj/machinery/ship_weapon/railgun/RG = new(loc)
 		RG.dir = dir
 		RG.setAnchored(anchored)
@@ -186,7 +186,7 @@
 	if(state == BS_CAPACITORS_PLACED)
 		if(!do_after(user, 2 SECONDS, target=src))
 			return
-		to_chat(user, "<span class='notice'>You remove the capacitors.</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz kondensatory.</span>")
 		var/obj/item/stock_parts/capacitor/C = (locate(/obj/item/stock_parts/capacitor) in src)
 		while(C)
 			C.forceMove(loc)
@@ -200,38 +200,38 @@
 	switch(state)
 		if(BS_MOUNT_UNBOLTED)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
-				to_chat(user, "<span class='notice'>You bolt the [src] to the floor.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz [src] do podłogi.</span>")
 				anchored = TRUE
 				state = BS_MOUNT_BOLTED
 				return TRUE
 
 		if(BS_BARREL_PLACED)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
-				to_chat(user, "<span class='notice'>You secure the insulated barrel.</span>")
+				to_chat(user, "<span class='notice'>Mocujesz zaizolowaną lufę.</span>")
 				state = BS_BARREL_BOLTED
 				return TRUE
 
 		if(BS_RAILS_PLACED)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
-				to_chat(user, "<span class='notice'>You bolt the conductive rails to the frame.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz szyny przewodzące do ramy.</span>")
 				state = BS_RAILS_BOLTED
 				return TRUE
 
 		if(BS_RAILS_BOLTED)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
-				to_chat(user, "<span class='notice'>You unbolt the rails from the frame.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz szyny od ramy.</span>")
 				state = BS_RAILS_PLACED
 				return TRUE
 
 		if(BS_BARREL_BOLTED)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
-				to_chat(user, "<span class='notice'>You unbolt the nanocarbon insulation from the barrel.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz izolację nanowęglową od lufy.</span>")
 				state = BS_BARREL_PLACED
 				return TRUE
 
 		if(BS_MOUNT_BOLTED)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
-				to_chat(user, "<span class='notice'>You unbolt the [src] from the floor.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz [src] od podłogi.</span>")
 				state = BS_MOUNT_UNBOLTED
 				return TRUE
 
@@ -240,38 +240,38 @@
 	switch(state)
 		if(BS_MOUNT_BOLTED)
 			if(anchored && tool.use_tool(src, user, 2 SECONDS, amount=2, volume=100))
-				to_chat(user, "<span class='notice'>You weld the [src] to the floor.</span>")
+				to_chat(user, "<span class='notice'>Przyspawujesz [src] do podłogi.</span>")
 				state = BS_MOUNT_WELDED
 				return TRUE
 
 		if(BS_WIRED)
 			if(tool.use_tool(src, user, 2 SECONDS, amount=2, volume=100))
-				to_chat(user, "<span class='notice'>You solder the wiring into place.</span>")
+				to_chat(user, "<span class='notice'>Lutujesz okablowanie.</span>")
 				state = BS_WIRES_SOLDERED
 				return TRUE
 
 		if(BS_CASING_ADDED)
 			if(tool.use_tool(src, user, 2 SECONDS, amount=2, volume=100))
-				to_chat(user, "<span class='notice'>You slice away the outer casing.</span>")
+				to_chat(user, "<span class='notice'>Odcinasz zewnętrzną obudowę.</span>")
 				new/obj/item/stack/sheet/plasteel(loc, num_sheets_casing)
 				state = BS_ELECTRONICS_SECURE
 				return TRUE
 
 		if(BS_WIRES_SOLDERED)
 			if(tool.use_tool(src, user, 2 SECONDS, amount=2, volume=100))
-				to_chat(user, "<span class='notice'>You desolder the wires.</span>")
+				to_chat(user, "<span class='notice'>Wylutowujesz przewody.</span>")
 				state = BS_WIRED
 				return TRUE
 
 		if(BS_MOUNT_WELDED)
 			if(tool.use_tool(src, user, 2 SECONDS, amount=2, volume=100))
-				to_chat(user, "<span class='notice'>You unweld the [src] from the floor.</span>")
+				to_chat(user, "<span class='notice'>Odspawujesz [src] od podłogi.</span>")
 				state = BS_MOUNT_BOLTED
 				return TRUE
 
 		if(BS_MOUNT_UNBOLTED)
 			if(tool.use_tool(src, user, 2 SECONDS, amount=2, volume=100))
-				to_chat(user, "<span class='notice'>You cut apart the frame.</span>")
+				to_chat(user, "<span class='notice'>Rozcinasz ramę.</span>")
 				new/obj/item/stack/sheet/plasteel(loc, num_sheets_frame)
 				qdel(src)
 				return TRUE
@@ -284,7 +284,7 @@
 				var/obj/item/ship_weapon/parts/firing_electronics/F = (locate(/obj/item/ship_weapon/parts/firing_electronics) in src)
 				if(F)
 					F.forceMove(loc)
-				to_chat(user, "<span class='notice'>You pry the firing electronics loose.</span>")
+				to_chat(user, "<span class='notice'>Wyważasz elektronikę strzelniczą.</span>")
 				state = BS_WIRES_SOLDERED
 				return TRUE
 
@@ -295,14 +295,14 @@
 					R.forceMove(loc)
 					R = (locate(/obj/item/ship_weapon/parts/railgun_rail) in src)
 					stoplag()
-				to_chat(user, "<span class='notice'>You pry the rails loose.</span>")
+				to_chat(user, "<span class='notice'>Wyważasz szyny.</span>")
 				state = BS_BARREL_BOLTED
 				return TRUE
 
 		if(BS_BARREL_PLACED)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
 				new/obj/item/stack/sheet/nanocarbon_glass(loc, num_sheets_insulation)
-				to_chat(user, "<span class='notice'>You pry the nanocargon glass free.</span>")
+				to_chat(user, "<span class='notice'>Wyważasz szkło nanowęglowe.</span>")
 				state = BS_MOUNT_WELDED
 				return TRUE
 
@@ -311,7 +311,7 @@
 	if(state == BS_WIRED)
 		if(tool.use_tool(src, user, 2 SECONDS, volume=100))
 			new/obj/item/stack/cable_coil(loc, num_cables)
-			to_chat(user, "<span class='notice'>You cut the wires from the frame.</span>")
+			to_chat(user, "<span class='notice'>Wycinasz przewody z ramy.</span>")
 			state = BS_CAPACITORS_SECURED
 			return TRUE
 
@@ -320,25 +320,25 @@
 	switch(state)
 		if(BS_CAPACITORS_PLACED)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
-				to_chat(user, "<span class='notice'>You screw the capacitors into place.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz kondensatory.</span>")
 				state = BS_CAPACITORS_SECURED
 				return TRUE
 
 		if(BS_ELECTRONICS_LOOSE)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
-				to_chat(user, "<span class='notice'>You secure the firing electronics.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz elektronikę strzelniczą.</span>")
 				state = BS_ELECTRONICS_SECURE
 				return TRUE
 
 		if(BS_ELECTRONICS_SECURE)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
-				to_chat(user, "<span class='notice'>You unsecure the firing electronics.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz elektronikę strzelniczą.</span>")
 				state = BS_ELECTRONICS_LOOSE
 				return TRUE
 
 		if(BS_CAPACITORS_SECURED)
 			if(tool.use_tool(src, user, 2 SECONDS, volume=100))
-				to_chat(user, "<span class='notice'>You unscrew the capacitors.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz kondensatory.</span>")
 				state = BS_CAPACITORS_PLACED
 				return TRUE
 

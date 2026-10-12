@@ -67,29 +67,29 @@
 	. = ..()
 	if(IS_ORGANIC_LIMB(src))
 		if(!brain)
-			. += "<span class='info'>The brain has been removed from [src].</span>"
+			. += "<span class='info'>Z [src] usunięto mózg.</span>"
 		else if(brain.suicided || brainmob?.suiciding)
-			. += "<span class='info'>There's a pretty dumb expression on [real_name]'s face; they must have really hated life. There is no hope of recovery.</span>"
+			. += "<span class='info'>Na twarzy [real_name] maluje się bardzo głupi wyraz; musiał naprawdę nienawidzić życia. Nie ma nadziei na powrót.</span>"
 		else if(brain.brain_death || brainmob?.health <= HEALTH_THRESHOLD_DEAD)
-			. += "<span class='info'>It seems to be leaking some kind of... clear fluid? The brain inside must be in pretty bad shape... There is no coming back from that.</span>"
+			. += "<span class='info'>Wygląda na to, że coś wycieka... przezroczysty płyn? Mózg w środku musi być w kiepskim stanie... Z tego nie ma powrotu.</span>"
 		else if(brainmob)
 			if(brainmob.get_ghost(FALSE, TRUE))
-				. += "<span class='info'>Its muscles are still twitching slightly... It still seems to have a bit of life left to it.</span>"
+				. += "<span class='info'>Mięśnie wciąż lekko drgają... Wygląda na to, że zostało w nim jeszcze trochę życia.</span>"
 			else
-				. += "<span class='info'>It seems seems particularly lifeless. Perhaps there'll be a chance for them later.</span>"
+				. += "<span class='info'>Wydaje się szczególnie pozbawiony życia. Może później będzie dla niego szansa.</span>"
 		else if(brain?.decoy_override)
-			. += "<span class='info'>It seems particularly lifeless. Perhaps there'll be a chance for them later.</span>"
+			. += "<span class='info'>Wydaje się szczególnie pozbawiony życia. Może później będzie dla niego szansa.</span>"
 		else
-			. += "<span class='info'>It seems completely devoid of life.</span>"
+			. += "<span class='info'>Wydaje się całkowicie pozbawiony życia.</span>"
 
 		if(!eyes)
-			. += "<span class='info'>[real_name]'s eyes appear to have been removed.</span>"
+			. += "<span class='info'>Wygląda na to, że [real_name] usunięto oczy.</span>"
 
 		if(!ears)
-			. += "<span class='info'>[real_name]'s ears appear to have been removed.</span>"
+			. += "<span class='info'>Wygląda na to, że [real_name] usunięto uszy.</span>"
 
 		if(!tongue)
-			. += "<span class='info'>[real_name]'s tongue appears to have been removed.</span>"
+			. += "<span class='info'>Wygląda na to, że [real_name] usunięto język.</span>"
 
 
 /obj/item/bodypart/head/can_dismember(obj/item/I)
@@ -104,14 +104,14 @@
 	for(var/obj/item/I in src)
 		if(I == brain)
 			if(user)
-				user.visible_message("<span class='warning'>[user] saws [src] open and pulls out a brain!</span>", "<span class='notice'>You saw [src] open and pull out a brain.</span>")
+				user.visible_message("<span class='warning'>[user] otwiera piłą [src] i wyciąga mózg!</span>", "<span class='notice'>Otwierasz piłą [src] i wyciągasz mózg.</span>")
 			if(brainmob)
 				brainmob.container = null
 				brainmob.forceMove(brain)
 				brain.brainmob = brainmob
 				brainmob = null
 			if(violent_removal && prob(rand(80, 100))) //ghetto surgery can damage the brain.
-				to_chat(user, "<span class='warning'>[brain] was damaged in the process!</span>")
+				to_chat(user, "<span class='warning'>[brain] uległ przy tym uszkodzeniu!</span>")
 				brain.setOrganDamage(brain.maxHealth)
 			brain.forceMove(T)
 			brain = null

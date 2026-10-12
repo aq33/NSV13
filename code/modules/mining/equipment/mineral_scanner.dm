@@ -16,7 +16,7 @@
 
 /obj/item/mining_scanner/AltClick(mob/user)
 	speaker = !speaker
-	to_chat(user, "<span class='notice'>You toggle [src]'s speaker to [speaker ? "<b>ON</b>" : "<b>OFF</b>"].</span>")
+	to_chat(user, "<span class='notice'>Przełączasz głośnik [src] na [speaker ? "<b>WŁ.</b>" : "<b>WYŁ.</b>"].</span>")
 
 /obj/item/mining_scanner/attack_self(mob/user)
 	if(!user.client)
@@ -55,7 +55,7 @@
 
 /obj/item/t_scanner/adv_mining_scanner/AltClick(mob/user)
 	speaker = !speaker
-	to_chat(user, "<span class='notice'>You toggle [src]'s speaker to [speaker ? "<b>ON</b>" : "<b>OFF</b>"].</span>")
+	to_chat(user, "<span class='notice'>Przełączasz głośnik [src] na [speaker ? "<b>WŁ.</b>" : "<b>WYŁ.</b>"].</span>")
 
 /obj/item/t_scanner/adv_mining_scanner/cyborg/Initialize(mapload)
 	. = ..()

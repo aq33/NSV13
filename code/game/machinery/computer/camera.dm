@@ -306,10 +306,10 @@
 /obj/machinery/computer/security/telescreen/entertainment/proc/notify(on)
 	if(on && icon_state == icon_state_off)
 		say(pick(
-			"Feats of bravery live now at the thunderdome!",
-			"Two enter, one leaves! Tune in now!",
-			"Violence like you've never seen it before!",
-			"Spears! Camera! Action! LIVE NOW!"))
+			"Pokazy odwagi na żywo w Thunderdome!",
+			"Dwóch wchodzi, jeden wychodzi! Oglądajcie teraz!",
+			"Przemoc, jakiej jeszcze nie widzieliście!",
+			"Włócznie! Kamera! Akcja! NA ŻYWO!"))
 		icon_state = icon_state_on
 	else
 		icon_state = icon_state_off

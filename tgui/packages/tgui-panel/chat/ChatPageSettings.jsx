@@ -73,7 +73,7 @@ export const ChatPageSettings = (props) => {
                 )
               }
             >
-              Remove
+              Usuń
             </Button>
           </Stack.Item>
         ) : (
@@ -115,7 +115,7 @@ export const ChatPageSettings = (props) => {
         )}
       </Stack>
       <Divider />
-      <Section title="Messages to display" level={2}>
+      <Section title="Wyświetlane wiadomości" level={2}>
         {MESSAGE_TYPES.filter(
           (typeDef) => !typeDef.important && !typeDef.admin,
         ).map((typeDef) => (
@@ -134,7 +134,7 @@ export const ChatPageSettings = (props) => {
             {typeDef.name}
           </Button.Checkbox>
         ))}
-        <Collapsible mt={1} color="transparent" title="Admin stuff">
+        <Collapsible mt={1} color="transparent" title="Dla adminów">
           {MESSAGE_TYPES.filter(
             (typeDef) => !typeDef.important && typeDef.admin,
           ).map((typeDef) => (

@@ -8,7 +8,7 @@
 	var/list/transfer_access = list()
 	var/program_state = PROGRAM_STATE_KILLED// PROGRAM_STATE_KILLED or PROGRAM_STATE_BACKGROUND or PROGRAM_STATE_ACTIVE - specifies whether this program is running.
 	var/obj/item/modular_computer/computer	// Device that runs this program.
-	var/filedesc = "Unknown Program"		// User-friendly name of this program.
+	var/filedesc = "Nieznany program"		// User-friendly name of this program.
 	/// Category in the NTDownloader.
 	var/category = PROGRAM_CATEGORY_MISC
 	var/extended_desc = "N/A"				// Short description of this program's function.
@@ -71,7 +71,7 @@
 /datum/computer_file/program/proc/is_supported_by_hardware(hardware_flag = 0, loud = 0, mob/user = null)
 	if(!(hardware_flag & usage_flags))
 		if(loud && computer && user)
-			to_chat(user, "<span class='danger'>\The [computer] flashes an \"Hardware Error - Incompatible software\" warning.</span>")
+			to_chat(user, "<span class='danger'>[computer] wyświetla ostrzeżenie „Błąd sprzętu – niezgodne oprogramowanie”.</span>")
 		return 0
 	return 1
 
@@ -123,7 +123,7 @@
 
 		if(!access_card)
 			if(loud)
-				to_chat(user, "<span class='danger'>\The [computer] flashes an \"RFID Error - Unable to scan ID\" warning.</span>")
+				to_chat(user, "<span class='danger'>[computer] wyświetla ostrzeżenie „Błąd RFID – nie można zeskanować identyfikatora”.</span>")
 			return FALSE
 		access = access_card.GetAccess()
 
@@ -131,7 +131,7 @@
 		if(singular_access in access) //For loop checks every individual access entry in the access list. If the user's ID has access to any entry, then we're good.
 			return TRUE
 	if(loud)
-		to_chat(user, "<span class='danger'>\The [computer] flashes an \"Access Denied\" warning.</span>")
+		to_chat(user, "<span class='danger'>[computer] wyświetla ostrzeżenie „Odmowa dostępu”.</span>")
 	return FALSE
 
 /**
@@ -146,7 +146,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(can_run(user, 1))
 		if(requires_ntnet && network_destination)
-			generate_network_log("Connection opened to [network_destination].")
+			generate_network_log("Otwarto połączenie z: [network_destination].")
 		program_state = PROGRAM_STATE_ACTIVE
 		return TRUE
 	return FALSE
@@ -176,7 +176,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	program_state = PROGRAM_STATE_KILLED
 	if(network_destination)
-		generate_network_log("Connection to [network_destination] closed.")
+		generate_network_log("Zamknięto połączenie z: [network_destination].")
 	return 1
 
 /// Return TRUE if nothing was processed. Return FALSE to prevent further actions running.

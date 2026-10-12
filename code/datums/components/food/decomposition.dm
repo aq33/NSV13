@@ -116,7 +116,7 @@
 		new /obj/effect/decal/cleanable/ants(decomp.loc)
 	if(decomp_result)
 		new decomp_result(decomp.loc)
-	decomp.visible_message("<span class='notice'>[decomp] gets overtaken by mold[produce_ants ? " and ants":""]! Gross!</span>")
+	decomp.visible_message("<span class='notice'>[decomp] pokrywa się pleśnią[produce_ants ? " i mrówkami":""]! Obrzydlistwo!</span>")
 	qdel(decomp)
 	return
 
@@ -125,11 +125,11 @@
 	var/time_d = get_time()
 	switch(time_d / original_time)
 		if(0.5 to 0.75) // 25% rotten
-			examine_list += "<span class='notice'>[parent] looks kinda stale.</span>"
+			examine_list += "<span class='notice'>[parent] wygląda na trochę czerstwy.</span>"
 		if(0.25 to 0.5) // 50% rotten
-			examine_list += "<span class='notice'>[parent] is starting to look pretty gross.</span>"
+			examine_list += "<span class='notice'>[parent] zaczyna wyglądać naprawdę obrzydliwie.</span>"
 		if(0 to 0.25) // 75% rotten
-			examine_list +="<span class='danger'>[parent] barely looks edible.</span>"
+			examine_list +="<span class='danger'>[parent] ledwo nadaje się do jedzenia.</span>"
 
 #undef DECOMPOSITION_TIME
 #undef DECOMPOSITION_TIME_GROSS

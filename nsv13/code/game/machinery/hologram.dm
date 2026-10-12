@@ -18,12 +18,12 @@ GLOBAL_LIST_EMPTY(hologram_impersonators)
 	var/icon/final = icon()
 	var/mob/living/carbon/human/dummy/D = new(locate(1,1,1)) //spawn on 1,1,1 so we don't have runtimes when items are deleted
 	var/new_name = null //Name for the hologram. Can be defaulted to your char name otherwise.
-	if(alert("Do you want to use your character slot ([C.prefs.active_character.real_name]) or choose a new name and have a random appearance?",src,"Yes","No") == "Yes")
+	if(alert("Chcesz użyć swojej postaci ([C.prefs.active_character.real_name]) czy wybrać nowe imię i losowy wygląd?",src,"Yes","No") == "Yes")
 		C.prefs.active_character.copy_to(D)
 		new_name = C.prefs.active_character.real_name
 	else
 		randomize_human(D)
-		new_name = input(C, "Select a name for your communications hologram (leave blank to just be called hologram)", "Robust hologram creator") as text
+		new_name = input(C, "Wybierz imię dla swojego hologramu komunikacyjnego (zostaw puste, by nazywać się po prostu hologram)", "Kreator hologramu") as text
 	C.cmd_admin_dress(D)
 	for(var/dir in list(2, 1, 4, 8)) //A little bit hacky, but does the trick. BYOND's icon format starts with a south facing dir, while cardinals starts with NORTH.
 		CHECK_TICK
@@ -32,7 +32,7 @@ GLOBAL_LIST_EMPTY(hologram_impersonators)
 		var/icon/I = icon(getFlatIcon(D), frame = 1) //And finally clone the appearance of our new dummy character.
 		final.Insert(I, "hologram", frame=1, dir=dir) //Then, we add this new icon_state and direction to the icon we're generating. This is then cleanly applied to the dummy mob to give it its appearance.
 	qdel(D)
-	say("Incoming priority one transmission from Central Command.")
+	say("Nadchodzi transmisja priorytetu pierwszego z Centrali.")
 	playsound(src, 'nsv13/sound/effects/computer/admin_holopad_activate.ogg', 100, FALSE)
 	var/mob/Hologram = new /mob/living/simple_animal/admin_holopad(get_turf(src))
 	. = Hologram // Our calling proc won't wait for us when we sleep so we set the return value now
@@ -67,14 +67,14 @@ GLOBAL_LIST_EMPTY(hologram_impersonators)
 /mob/living/simple_animal/admin_holopad/proc/check_distance()
 	var/dist = get_dist(src, source)
 	if(dist > (source.holo_range)/2)
-		to_chat(src, "<span class='warning'>You're moving too far from [source] ([dist] / [source.holo_range] m)</span>")
+		to_chat(src, "<span class='warning'>Oddalasz się za bardzo od [source] ([dist] / [source.holo_range] m)</span>")
 	if(dist > source.holo_range)
-		to_chat(src, "<span class='warning'>Range exceeded. Transmission terminated.</span>")
+		to_chat(src, "<span class='warning'>Przekroczono zasięg. Transmisja zakończona.</span>")
 		qdel(src)
 
 /mob/living/simple_animal/admin_holopad/ClickOn(target)
 	. = ..()
-	if(alert("End communications?",src,"Yes","No") == "Yes")
+	if(alert("Zakończyć komunikację?",src,"Yes","No") == "Yes")
 		qdel(src)
 
 /mob/living/simple_animal/admin_holopad/Destroy()
@@ -86,6 +86,6 @@ GLOBAL_LIST_EMPTY(hologram_impersonators)
 /obj/machinery/holopad/attack_ghost(mob/user)
 	if(!check_rights_for(user.client, R_ADMIN))
 		return
-	if(alert("Appear as a hologram?",src,"Yes","No") == "No")
+	if(alert("Pojawić się jako hologram?",src,"Yes","No") == "No")
 		return
 	create_admin_hologram(user.client)

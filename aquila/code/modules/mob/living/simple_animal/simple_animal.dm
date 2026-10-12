@@ -9,16 +9,16 @@
 
 /mob/living/simple_animal/proc/find_candidates()
 	if(!mind && level == 2)
-		notify_ghosts("\a [src] can be controlled", null, enter_link="<a href=byond://?src=[REF(src)];activate=1>(Click to play)</a>", source=src, action=NOTIFY_ATTACK, ignore_key = POLL_IGNORE_SPIDER)
+		notify_ghosts("Można sterować: [src]", null, enter_link="<a href=byond://?src=[REF(src)];activate=1>(Kliknij, by zagrać)</a>", source=src, action=NOTIFY_ATTACK, ignore_key = POLL_IGNORE_SPIDER)
 
 /mob/living/simple_animal/proc/give_to_ghost(mob/dead/observer/user, bypass_level = FALSE)
 	if(QDELETED(src) || QDELETED(user) || !src.playable || level != 2)
 		if(!bypass_level)
 			return
 	if(!SSticker.mode)
-		to_chat(user, "Can't become \a [src] before the game has started.")
+		to_chat(user, "Nie możesz zostać [src] przed rozpoczęciem gry.")
 		return
-	var/be_mob = alert("Become \a [src]? (Warning, You can no longer be cloned!)",,"Yes","No")
+	var/be_mob = alert("Zostać [src]? (Uwaga: nie będzie można cię sklonować!)",,"Yes","No")
 	if(be_mob == "No" || QDELETED(src) || !isobserver(user) || src.mind)
 		return
 

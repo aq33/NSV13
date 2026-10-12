@@ -29,7 +29,7 @@
 		return
 
 	message_admins("[key_name_admin(src)] has started answering [ADMIN_LOOKUPFLW(M)]'s prayer.")
-	var/msg = capped_input(usr, "Message:", "Subtle PM to [M.key]")
+	var/msg = capped_input(usr, "Message:", "Subtelna PW do [M.key]")
 
 	if(!msg)
 		message_admins("[key_name_admin(src)] decided not to answer [ADMIN_LOOKUPFLW(M)]'s prayer")
@@ -37,7 +37,7 @@
 	if(usr)
 		if (usr.client)
 			if(usr.client.holder)
-				to_chat(M, "<i>You hear a voice in your head... <b>[msg]</i></b>")
+				to_chat(M, "<i>Słyszysz w głowie głos... <b>[msg]</i></b>")
 
 	log_admin("SubtlePM: [key_name(usr)] -> [key_name(M)] : [msg]")
 	msg = "<span class='adminnotice'><b> SubtleMessage: [key_name_admin(usr)] -> [key_name_admin(M)] :</b> [msg]</span>"
@@ -61,11 +61,11 @@
 		to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 		return
 	if(!istype(H.ears, /obj/item/radio/headset))
-		to_chat(usr, "The person you are trying to contact is not wearing a headset.")
+		to_chat(usr, "Osoba, z którą próbujesz się skontaktować, nie ma zestawu słuchawkowego.")
 		return
 
 	if (!sender)
-		sender = input("Who is the message from?", "Sender") as null|anything in list(RADIO_CHANNEL_CENTCOM,RADIO_CHANNEL_SYNDICATE)
+		sender = input("Od kogo jest wiadomość?", "Sender") as null|anything in list(RADIO_CHANNEL_CENTCOM,RADIO_CHANNEL_SYNDICATE)
 		if(!sender)
 			return
 
@@ -77,7 +77,7 @@
 
 	log_directed_talk(mob, H, input, LOG_ADMIN, "reply")
 	message_admins("[key_name_admin(src)] replied to [key_name_admin(H)]'s [sender] message with: \"[input]\"")
-	to_chat(H, "You hear something crackle in your ears for a moment before a voice speaks.  \"Please stand by for a message from [sender == "Syndicate" ? "your benefactor" : JOB_CENTCOM_CENTRAL_COMMAND].  Message as follows[sender == "Syndicate" ? ", agent." : ":"] <span class='bold'>[input].</span> Message ends.\"")
+	to_chat(H, "Przez chwilę słyszysz w uszach trzaski, po czym odzywa się głos. \"Proszę czekać na wiadomość od [sender == "Syndicate" ? "twojego dobroczyńcy" : JOB_CENTCOM_CENTRAL_COMMAND]. Treść wiadomości[sender == "Syndicate" ? ", agencie" : ""]: <span class='bold'>[input].</span> Koniec wiadomości.\"")
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Headset Message") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -134,7 +134,7 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/msg = capped_input(usr, "Message:", "Enter the text you wish to appear to everyone:")
+	var/msg = capped_input(usr, "Message:", "Podaj tekst, który ma się pokazać wszystkim:")
 
 	if (!msg)
 		return
@@ -151,12 +151,12 @@
 		return
 
 	if(!M)
-		M = input("Direct narrate to whom?", "Active Players") as null|anything in GLOB.player_list
+		M = input("Bezpośrednia narracja do kogo?", "Active Players") as null|anything in GLOB.player_list
 
 	if(!M)
 		return
 
-	var/msg = capped_input(usr, "Message:", "Enter the text you wish to appear to your target:")
+	var/msg = capped_input(usr, "Message:", "Podaj tekst, który ma się pokazać twojemu celowi:")
 
 	if( !msg )
 		return
@@ -176,10 +176,10 @@
 		return
 	if(!A)
 		return
-	var/range = input("Range:", "Narrate to mobs within how many tiles:", 7) as num|null
+	var/range = input("Range:", "Narracja do mobów w promieniu ilu pól:", 7) as num|null
 	if(!range)
 		return
-	var/msg = capped_input(usr, "Message:", "Enter the text you wish to appear to everyone within view:")
+	var/msg = capped_input(usr, "Message:", "Podaj tekst, który ma się pokazać wszystkim w zasięgu wzroku:")
 	if (!msg)
 		return
 	for(var/mob/M as() in hearers(range,A))
@@ -214,7 +214,7 @@
 	var/feedback_string
 	switch(mute_type)
 		if(MUTE_IC)
-			mute_string = "IC (say and emote)"
+			mute_string = "IC (mowa i emotki)"
 			feedback_string = "IC"
 		if(MUTE_OOC)
 			mute_string = "OOC"
@@ -223,19 +223,19 @@
 			mute_string = "LOOC"
 			feedback_string = "LOOC"
 		if(MUTE_PRAY)
-			mute_string = "pray"
+			mute_string = "modlitwy"
 			feedback_string = "Pray"
 		if(MUTE_ADMINHELP)
-			mute_string = "adminhelp, admin PM and ASAY"
+			mute_string = "adminhelp, PW do adminów i ASAY"
 			feedback_string = "Adminhelp"
 		if(MUTE_MHELP)
 			mute_string = "mhelp"
 			feedback_string = "Mentorhelp"
 		if(MUTE_DEADCHAT)
-			mute_string = "deadchat and DSAY"
+			mute_string = "czat martwych i DSAY"
 			feedback_string = "Deadchat"
 		if(MUTE_ALL)
-			mute_string = "everything"
+			mute_string = "wszystko"
 			feedback_string = "Everything"
 		else
 			CRASH("mute_type in cmd_admin_mute was invalid: [mute_type]")
@@ -272,7 +272,7 @@
 		message_admins("SPAM AUTOMUTE: [muteunmute] [key_name_admin(whom)] from [mute_string].")
 
 		if(C)
-			to_chat(C, "You have been [muteunmute] from [mute_string] by the SPAM AUTOMUTE system. Contact an admin.")
+			to_chat(C, "System AUTOWYCISZANIA SPAMU wyciszył cię: [mute_string]. Skontaktuj się z adminem.")
 
 		SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Auto Mute [feedback_string]", "1")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		return
@@ -288,7 +288,7 @@
 	log_admin("[key_name(usr)] has [muteunmute] [key_name(whom)] from [mute_string]")
 	message_admins("[key_name_admin(usr)] has [muteunmute] [key_name_admin(whom)] from [mute_string].")
 	if(C)
-		to_chat(C, "You have been [muteunmute] from [mute_string] by [key_name(usr, include_name = FALSE)].")
+		to_chat(C, "[muteunmute == "muted" ? "Wyciszono cię" : "Cofnięto ci wyciszenie"]: [mute_string] (przez [key_name(usr, include_name = FALSE)]).")
 
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Mute [feedback_string]", "[P.muted & mute_type]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -397,7 +397,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				//Now to give them their mind back.
 				G_found.mind.transfer_to(new_xeno)	//be careful when doing stuff like this! I've already checked the mind isn't in use
 				new_xeno.key = G_found.key
-				to_chat(new_xeno, "You have been fully respawned. Enjoy the game.")
+				to_chat(new_xeno, "Zostałeś w pełni odrodzony. Miłej gry.")
 				var/msg = "<span class='adminnotice'>[key_name_admin(usr)] has respawned [new_xeno.key] as a filthy xeno.</span>"
 				message_admins(msg)
 				admin_ticket_log(new_xeno, msg)
@@ -410,7 +410,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				SSjob.SendToLateJoin(new_monkey)
 				G_found.mind.transfer_to(new_monkey)	//be careful when doing stuff like this! I've already checked the mind isn't in use
 				new_monkey.key = G_found.key
-				to_chat(new_monkey, "You have been fully respawned. Enjoy the game.")
+				to_chat(new_monkey, "Zostałeś w pełni odrodzony. Miłej gry.")
 				var/msg = "<span class='adminnotice'>[key_name_admin(usr)] has respawned [new_monkey.key] as a filthy xeno.</span>"
 				message_admins(msg)
 				admin_ticket_log(new_monkey, msg)
@@ -510,7 +510,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	message_admins(msg)
 	admin_ticket_log(new_character, msg)
 
-	to_chat(new_character, "You have been fully respawned. Enjoy the game.")
+	to_chat(new_character, "Zostałeś w pełni odrodzony. Miłej gry.")
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Respawn Character") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return new_character
@@ -522,7 +522,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/input = capped_input(usr, "Please enter anything you want the AI to do. Anything. Serious.", "What?")
+	var/input = capped_input(usr, "Wpisz cokolwiek, co ma zrobić SI. Cokolwiek. Na serio.", "What?")
 	if(!input)
 		return
 
@@ -566,11 +566,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/input = capped_multiline_input(usr, "Enter a Command Report. Ensure it makes sense IC.", "What?")
+	var/input = capped_multiline_input(usr, "Wpisz raport Dowództwa. Upewnij się, że ma sens IC.", "What?")
 	if(!input)
 		return
 
-	var/confirm = alert(src, "Do you want to announce the contents of the report to the crew?", "Announce", "Yes", "No", "Cancel")
+	var/confirm = alert(src, "Czy chcesz ogłosić treść raportu załodze?", "Announce", "Yes", "No", "Cancel")
 	var/announce_command_report = TRUE
 	switch(confirm)
 		if("Yes")
@@ -592,7 +592,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/input = capped_input(usr, "Please input a new name for Central Command.", "What?")
+	var/input = capped_input(usr, "Podaj nową nazwę Centrali.", "What?")
 	if(!input)
 		return
 	change_command_name(input)
@@ -708,7 +708,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set name = "Gibself"
 	set category = "Fun"
 
-	var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
+	var/confirm = alert(src, "Na pewno?", "Confirm", "Yes", "No")
 	if(confirm == "Yes")
 		log_admin("[key_name(usr)] used gibself.")
 		message_admins("<span class='adminnotice'>[key_name_admin(usr)] used gibself.</span>")
@@ -750,7 +750,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/confirm = alert(src, "You sure?", "Confirm", "Yes", "Yes (No Recall)", "No")
+	var/confirm = alert(src, "Na pewno?", "Confirm", "Yes", "Yes (No Recall)", "No")
 	switch(confirm)
 		if(null, "No")
 			return
@@ -769,7 +769,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set name = "Cancel Shuttle"
 	if(!check_rights(0))
 		return
-	if(alert(src, "You sure?", "Confirm", "Yes", "No") != "Yes")
+	if(alert(src, "Na pewno?", "Confirm", "Yes", "No") != "Yes")
 		return
 
 	if(EMERGENCY_AT_LEAST_DOCKED)
@@ -802,7 +802,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 
 
-	var/notifyplayers = alert(src, "Do you want to notify the players?", "Options", "Yes", "No", "Cancel")
+	var/notifyplayers = alert(src, "Czy chcesz powiadomić graczy?", "Options", "Yes", "No", "Cancel")
 	if(notifyplayers == "Cancel" || !notifyplayers)
 		return
 
@@ -814,7 +814,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	message_admins("Admin [key_name_admin(usr)] has forced the players to have random appearances.")
 
 	if(notifyplayers == "Yes")
-		to_chat(world, "<span class='adminnotice'>Admin [usr.key] has forced the players to have completely random identities!</span>")
+		to_chat(world, "<span class='adminnotice'>Admin [usr.key] wymusił całkowicie losowe tożsamości wszystkich graczy!</span>")
 
 	to_chat(usr, "<i>Remember: you can always disable the randomness by using the verb again, assuming the round hasn't started yet.</i>.")
 
@@ -845,7 +845,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/level = input("Select security level to change to","Set Security Level") as null|anything in list("green","blue","red","delta")
+	var/level = input("Wybierz poziom bezpieczeństwa","Set Security Level") as null|anything in list("green","blue","red","delta")
 	if(level)
 		set_security_level(level)
 
@@ -1017,7 +1017,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/input = capped_multiline_input(usr, "Please specify your tip that you want to send to the players.", "Tip")
+	var/input = capped_multiline_input(usr, "Podaj wskazówkę, którą chcesz wysłać graczom.", "Tip")
 	if(!input)
 		return
 
@@ -1122,11 +1122,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				return
 			if(!(card.registered_account.has_money(new_cost)))
 				to_chat(usr, "<span class='warning'>ID Card lacked funds. Emptying account.</span>")
-				card.registered_account.bank_card_talk("[new_cost] credits deducted from your account based on performance review.")
+				card.registered_account.bank_card_talk("Na podstawie oceny wyników z twojego konta pobrano [new_cost] kr.")
 				card.registered_account.account_balance = 0
 			else
 				card.registered_account.account_balance = card.registered_account.account_balance - new_cost
-				card.registered_account.bank_card_talk("[new_cost] credits deducted from your account based on performance review.")
+				card.registered_account.bank_card_talk("Na podstawie oceny wyników z twojego konta pobrano [new_cost] kr.")
 			SEND_SOUND(target, 'sound/machines/buzz-sigh.ogg') //NSV13 end
 		if(ADMIN_PUNISHMENT_LIGHTNING)
 			var/turf/T = get_step(get_step(target, NORTH), NORTH)
@@ -1135,7 +1135,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			if(ishuman(target))
 				var/mob/living/carbon/human/H = target
 				H.electrocution_animation(40)
-			to_chat(target, "<span class='userdanger'>The gods have punished you for your sins!</span>")
+			to_chat(target, "<span class='userdanger'>Bogowie ukarali cię za twoje grzechy!</span>")
 		if(ADMIN_PUNISHMENT_BRAINDAMAGE)
 			target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 199, 199)
 		if(ADMIN_PUNISHMENT_GIB)
@@ -1222,7 +1222,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				to_chat(usr, "<span class='warning'>Only humanoids can stub their toes!</span>")
 				return
 			var/mob/living/carbon/human/H = target
-			to_chat(H, "<span class='warning'>You stub your toe on an invisible table!</span>")
+			to_chat(H, "<span class='warning'>Uderzasz palcem u nogi w niewidzialny stół!</span>")
 			H.stub_toe(5)
 		if(ADMIN_PUNISHMENT_TOEPLUS)
 			if(!ishuman(target))
@@ -1289,7 +1289,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN))
 		return
 	if(!client_to_check)
-		to_chat(usr, "<span class='danger'>ERROR: Client not found.</span>")
+		to_chat(usr, "<span class='danger'>BŁĄD: nie znaleziono klienta.</span>")
 		return
 	if(!CONFIG_GET(flag/use_exp_tracking))
 		to_chat(usr, "<span class='warning'>Tracking is disabled in the server configuration file.</span>")
@@ -1301,7 +1301,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN))
 		return
 	if(!C)
-		to_chat(usr, "<span class='danger'>ERROR: Client not found.</span>")
+		to_chat(usr, "<span class='danger'>BŁĄD: nie znaleziono klienta.</span>")
 		return
 
 	if(!C.set_db_player_flags())

@@ -71,7 +71,17 @@ const STATE_OBJECTIVES = 'objectives'; // NSV13 - objectives
 const SWIPE_NEEDED = 'SWIPE_NEEDED';
 
 const ILLEGAL_SHUTTLE_NOTICE =
-  'Warning: Safety features disabled. This shuttle is uncertified. Order at your own peril.';
+  'Uwaga: zabezpieczenia wyłączone. Ten prom nie ma certyfikatu. Zamawiasz na własne ryzyko.';
+// Nazwy poziomów alarmu do wyświetlania (klucze to wartości z DM, nie zmieniać)
+const ALERT_LEVEL_NAMES = {
+  'condition 3': 'Stan 3',
+  'condition 2': 'Stan 2',
+  'general quarters': 'Alarm bojowy',
+  'condition zebra': 'Stan Zebra',
+};
+const alertLevelName = (level: string) =>
+  ALERT_LEVEL_NAMES[level] || capitalize(level);
+
 const sortShuttles = sortBy(
   (shuttle) => !shuttle.illegal,
   (shuttle) => shuttle.creditCost,
@@ -88,7 +98,7 @@ const AlertButton = (props) => {
     <Button
       icon="exclamation-triangle"
       color={thisIsCurrent && 'good'}
-      content={capitalize(alertLevel)}
+      content={alertLevelName(alertLevel)}
       onClick={() => {
         if (thisIsCurrent) {
           return;
@@ -141,7 +151,7 @@ const MessageModal = (props) => {
             content={props.buttonText}
             color="good"
             disabled={!longEnough}
-            tooltip={!longEnough ? 'You need a longer reason.' : ''}
+            tooltip={!longEnough ? 'Potrzebujesz dłuższego uzasadnienia.' : ''}
             tooltipPosition="right"
             onClick={() => {
               if (longEnough) {
@@ -153,7 +163,7 @@ const MessageModal = (props) => {
 
           <Button
             icon="times"
-            content="Cancel"
+            content="Anuluj"
             color="bad"
             onClick={props.onBack}
           />
@@ -190,7 +200,7 @@ const NoConnectionModal = () => {
         </Flex.Item>
 
         <Flex.Item fontSize="16px">
-          A connection to the station cannot be established.
+          Nie można nawiązać połączenia ze statkiem.
         </Flex.Item>
       </Flex>
     </Dimmer>
@@ -212,7 +222,7 @@ const PageBuyingShuttle = (props) => {
       <Stack vertical fill>
         <Stack.Item>
           <Section>
-            Budget: <b>{data.budget.toLocaleString()}</b> credits
+            Budżet: <b>{data.budget.toLocaleString()}</b> kredytów
           </Section>
         </Stack.Item>
 
@@ -234,7 +244,7 @@ const PageBuyingShuttle = (props) => {
                     }
                     buttons={
                       <Button
-                        content={`${shuttle.creditCost.toLocaleString()} credits`}
+                        content={`${shuttle.creditCost.toLocaleString()} kredytów`}
                         color={shuttle.illegal ? 'red' : 'default'}
                         disabled={
                           !canBuyShuttles || data.budget < shuttle.creditCost
@@ -246,9 +256,9 @@ const PageBuyingShuttle = (props) => {
                         }
                         tooltip={
                           data.budget < shuttle.creditCost
-                            ? `You need ${
+                            ? `Brakuje ci ${
                                 shuttle.creditCost - data.budget
-                              } more credits.`
+                              } kredytów.`
                             : shuttle.illegal
                               ? ILLEGAL_SHUTTLE_NOTICE
                               : undefined
@@ -259,7 +269,7 @@ const PageBuyingShuttle = (props) => {
                   >
                     <Box textAlign="justify">{shuttle.description}</Box>
                     {shuttle.prerequisites ? (
-                      <b>Prerequisites: {shuttle.prerequisites}</b>
+                      <b>Wymagania: {shuttle.prerequisites}</b>
                     ) : null}
                   </Section>
                 </Stack.Item>
@@ -286,7 +296,7 @@ const PageChangingStatus = (props) => {
           <Flex.Item>
             <Button
               icon="times"
-              content="Clear Alert"
+              content="Wyczyść alarm"
               color="bad"
               onClick={() => act('setStatusPicture', { picture: 'blank' })}
             />
@@ -295,38 +305,38 @@ const PageChangingStatus = (props) => {
           <Flex.Item mt={1}>
             <Button
               icon="check-square-o"
-              content="Default"
+              content="Domyślny"
               onClick={() => act('setStatusPicture', { picture: 'default' })}
             />
 
             <Button
               icon="bell-o"
-              content="Red Alert"
+              content="Alarm bojowy"
               onClick={() => act('setStatusPicture', { picture: 'redalert' })}
             />
 
             <Button
               icon="exclamation-triangle"
-              content="Lockdown"
+              content="Blokada"
               onClick={() => act('setStatusPicture', { picture: 'lockdown' })}
             />
 
             <Button
               icon="exclamation-circle"
-              content="Biohazard"
+              content="Zagrożenie biologiczne"
               onClick={() => act('setStatusPicture', { picture: 'biohazard' })}
             />
 
             <Button
               icon="space-shuttle"
-              content="Shuttle ETA"
+              content="Przylot promu"
               onClick={() => act('setStatusPicture', { picture: 'shuttle' })}
             />
           </Flex.Item>
         </Flex>
       </Section>
 
-      <Section title="Message">
+      <Section title="Wiadomość">
         <Flex direction="column">
           <Flex.Item mb={1}>
             <Input
@@ -349,7 +359,7 @@ const PageChangingStatus = (props) => {
           <Flex.Item>
             <Button
               icon="comment-o"
-              content="Message"
+              content="Wyświetl"
               onClick={() =>
                 act('setStatusMessage', {
                   lineOne,
@@ -424,18 +434,18 @@ const PageMain = (props) => {
 
   return (
     <Box>
-      <Section title="Emergency Shuttle">
+      <Section title="Prom ewakuacyjny">
         {shuttleCalled ? (
           <Button.Confirm
             icon="space-shuttle"
-            content="Recall Emergency Shuttle"
+            content="Odwołaj prom ewakuacyjny"
             color="bad"
             disabled={!canRecallShuttles || !shuttleRecallable}
             tooltip={
               canRecallShuttles
                 ? !shuttleRecallable &&
-                  "It's too late for the emergency shuttle to be recalled."
-                : 'You do not have permission to recall the emergency shuttle.'
+                  "Na odwołanie promu ewakuacyjnego jest już za późno."
+                : 'Nie masz uprawnień do odwołania promu ewakuacyjnego.'
             }
             tooltipPosition="bottom-end"
             onClick={() => act('recallShuttle')}
@@ -443,7 +453,7 @@ const PageMain = (props) => {
         ) : (
           <Button
             icon="space-shuttle"
-            content="Call Emergency Shuttle"
+            content="Wezwij prom ewakuacyjny"
             disabled={shuttleCanEvacOrFailReason !== 1}
             tooltip={
               shuttleCanEvacOrFailReason !== 1
@@ -458,18 +468,18 @@ const PageMain = (props) => {
         {!!shuttleCalledPreviously &&
           ((shuttleLastCalled && (
             <Box>
-              Most recent shuttle call/recall traced to:{' '}
+              Ostatnie wezwanie/odwołanie promu namierzono do:{' '}
               <b>{shuttleLastCalled}</b>
             </Box>
-          )) || <Box>Unable to trace most recent shuttle/recall signal.</Box>)}
+          )) || <Box>Nie udało się namierzyć ostatniego sygnału wezwania/odwołania promu.</Box>)}
       </Section>
 
       {!!canSetAlertLevel && (
-        <Section title="Alert Level">
+        <Section title="Poziom alarmu">
           <Flex justify="space-between">
             <Flex.Item>
               <Box>
-                Currently on <b>{capitalize(alertLevel)}</b> Alert
+                Obecnie: <b>{alertLevelName(alertLevel)}</b>
               </Box>
             </Flex.Item>
 
@@ -502,14 +512,14 @@ const PageMain = (props) => {
         </Section>
       )}
 
-      <Section title="Functions">
+      <Section title="Funkcje">
         <Flex direction="column">
           {!!canMakeAnnouncement && (
             <Flex.Item mt={0.3}>
               <Button
                 fluid
                 icon="bullhorn"
-                content="Make Priority Announcement"
+                content="Nadaj ogłoszenie priorytetowe"
                 onClick={() => act('makePriorityAnnouncement')}
               />
             </Flex.Item>
@@ -520,7 +530,7 @@ const PageMain = (props) => {
               <Button.Confirm
                 fluid
                 icon="id-card-o"
-                content={`${emergencyAccess ? 'Disable' : 'Enable'} Emergency Maintenance Access`}
+                content={`${emergencyAccess ? 'Wyłącz' : 'Włącz'} awaryjny dostęp do technicznych`}
                 color={emergencyAccess ? 'bad' : undefined}
                 onClick={() => act('toggleEmergencyAccess')}
               />
@@ -532,7 +542,7 @@ const PageMain = (props) => {
               <Button
                 fluid
                 icon="comment-o"
-                content={`Send message to ${emagged ? '[UNKNOWN]' : 'CentCom'}`}
+                content={`Wyślij wiadomość do ${emagged ? '[NIEZNANE]' : 'CentComu'}`}
                 disabled={!importantActionReady}
                 onClick={() => setMessagingAssociates(true)}
               />
@@ -544,7 +554,7 @@ const PageMain = (props) => {
               <Button
                 fluid
                 icon="radiation"
-                content="Request Nuclear Authentication Codes"
+                content="Poproś o kody uwierzytelniania ładunku jądrowego"
                 disabled={!importantActionReady}
                 onClick={() => setRequestingNukeCodes(true)}
               />
@@ -556,7 +566,7 @@ const PageMain = (props) => {
               <Button
                 fluid
                 icon="dumpster-fire"
-                content="Request Emergency Response Team"
+                content="Wezwij zespół reagowania kryzysowego"
                 disabled={!reinforcementActionReady}
                 onClick={() => setRequestingResponseTeam(true)}
               />
@@ -580,7 +590,7 @@ const PageMain = (props) => {
               <Button
                 fluid
                 icon="undo"
-                content="Restore Backup Routing Data"
+                content="Przywróć zapasowe dane routingu"
                 onClick={() => act('restoreBackupRoutingData')}
               />
             </Flex.Item>
@@ -591,16 +601,16 @@ const PageMain = (props) => {
             !canMessageAssociates &&
             !canRequestNuke &&
             !canRequestERT &&
-            !emagged && <Flex.Item>No functions available</Flex.Item>}
+            !emagged && <Flex.Item>Brak dostępnych funkcji</Flex.Item>}
         </Flex>
       </Section>
 
       {!!canMessageAssociates && messagingAssociates && (
         <MessageModal
-          label={`Message to transmit to ${emagged ? '[ABNORMAL ROUTING COORDINATES]' : 'CentCom'} via quantum entanglement`}
-          notice="Please be aware that this process is very expensive, and abuse will lead to...termination. Transmission does not guarantee a response. Use by heads of staff is only authorized during an emergency situation."
+          label={`Wiadomość do przesłania ${emagged ? 'pod [NIEPRAWIDŁOWE WSPÓŁRZĘDNE ROUTINGU]' : 'do CentComu'} przez splątanie kwantowe`}
+          notice="Pamiętaj, że ten proces jest bardzo kosztowny, a nadużycia skończą się... zwolnieniem. Przesłanie nie gwarantuje odpowiedzi. Szefowie działów mogą z tego korzystać tylko w sytuacji awaryjnej."
           icon="bullhorn"
-          buttonText="Send"
+          buttonText="Wyślij"
           onBack={() => setMessagingAssociates(false)}
           onSubmit={(message) => {
             setMessagingAssociates(false);
@@ -613,10 +623,10 @@ const PageMain = (props) => {
 
       {!!canRequestNuke && requestingNukeCodes && (
         <MessageModal
-          label="Reason for requesting nuclear self-destruct codes"
-          notice="Misuse of the nuclear request system will not be tolerated under any circumstances. Transmission does not guarantee a response."
+          label="Powód prośby o kody autodestrukcji jądrowej"
+          notice="Nadużycia systemu próśb o kody jądrowe nie będą tolerowane w żadnych okolicznościach. Przesłanie nie gwarantuje odpowiedzi."
           icon="bomb"
-          buttonText="Request Codes"
+          buttonText="Poproś o kody"
           onBack={() => setRequestingNukeCodes(false)}
           onSubmit={(reason) => {
             setRequestingNukeCodes(false);
@@ -629,10 +639,10 @@ const PageMain = (props) => {
 
       {!!canRequestERT && requestingResponseTeam && (
         <MessageModal
-          label="Reason for requesting emergency response team"
-          notice="Misuse of the response team requesting system will not be tolerated under any circumstances. Transmission does not guarantee a response."
+          label="Powód wezwania zespołu reagowania kryzysowego"
+          notice="Nadużycia systemu wzywania zespołu reagowania nie będą tolerowane w żadnych okolicznościach. Przesłanie nie gwarantuje odpowiedzi."
           icon="bomb"
-          buttonText="Request ERT"
+          buttonText="Wezwij ERT"
           onBack={() => setRequestingResponseTeam(false)}
           onSubmit={(reason) => {
             setRequestingResponseTeam(false);
@@ -661,9 +671,9 @@ const PageMain = (props) => {
 
       {!!callingShuttle && (
         <MessageModal
-          label="Nature of emergency"
+          label="Rodzaj zagrożenia"
           icon="space-shuttle"
-          buttonText="Call Shuttle"
+          buttonText="Wezwij prom"
           minLength={callShuttleReasonMinLength}
           onBack={() => setCallingShuttle(false)}
           onSubmit={(reason) => {
@@ -681,13 +691,13 @@ const PageMain = (props) => {
           <Modal>
             <Flex direction="column" textAlign="center" width="300px">
               <Flex.Item fontSize="16px" mb={2}>
-                Swipe ID to confirm change
+                Przeciągnij ID, by potwierdzić zmianę
               </Flex.Item>
 
               <Flex.Item mr={2} mb={1}>
                 <Button
                   icon="id-card-o"
-                  content="Swipe ID"
+                  content="Przeciągnij ID"
                   color="good"
                   fontSize="16px"
                   onClick={() =>
@@ -699,7 +709,7 @@ const PageMain = (props) => {
 
                 <Button
                   icon="times"
-                  content="Cancel"
+                  content="Anuluj"
                   color="bad"
                   fontSize="16px"
                   onClick={() => setShowAlertLevelConfirm(false)}
@@ -710,9 +720,9 @@ const PageMain = (props) => {
         )}
 
       {!!canSendToSectors && (
-        <Section title="Allied Sectors">
+        <Section title="Sektory sojusznicze">
           <Button
-            content="Send a message to allied stations"
+            content="Wyślij wiadomość do sojuszniczych stacji"
             disabled={!importantActionReady}
             onClick={() => setMessagingSector(true)}
           />
@@ -721,10 +731,10 @@ const PageMain = (props) => {
 
       {!!canSendToSectors && messagingSector && (
         <MessageModal
-          label="Message to send to allied station"
-          notice="Please be aware that this process is very expensive, and abuse will lead to...termination."
+          label="Wiadomość do sojuszniczej stacji"
+          notice="Pamiętaj, że ten proces jest bardzo kosztowny, a nadużycia skończą się... zwolnieniem."
           icon="bullhorn"
-          buttonText="Send"
+          buttonText="Wyślij"
           onBack={() => setMessagingSector(null)}
           onSubmit={(message) => {
             act('sendToOtherSector', {
@@ -744,7 +754,7 @@ const PageMessages = (props) => {
   const messages = data.messages || [];
 
   return (
-    <Section fill scrollable title="Messages">
+    <Section fill scrollable title="Wiadomości">
       {messages
         .map((message, messageIndex) => {
           let answers: any = null;
@@ -783,7 +793,7 @@ const PageMessages = (props) => {
               buttons={
                 <Button.Confirm
                   icon="trash"
-                  content="Delete"
+                  content="Usuń"
                   color="red"
                   onClick={() =>
                     act('deleteMessage', {
@@ -811,34 +821,34 @@ const PageObjectives = (props) => {
     0: {
       color: 'average',
       icon: 'square-o',
-      statusText: 'IN PROGRESS',
+      statusText: 'W TOKU',
     },
     1: {
       color: 'good',
       icon: 'check-square-o',
-      statusText: 'COMPLETED',
+      statusText: 'WYKONANE',
     },
     2: {
       color: 'bad',
       icon: 'window-close-o',
-      statusText: 'FAILED',
+      statusText: 'NIEUDANE',
     },
     3: {
       color: 'good',
       icon: 'check-square-o',
-      statusText: 'COMPLETED',
+      statusText: 'WYKONANE',
     },
   };
 
   return (
-    <Section fill scrollable title="Mission Status">
-      {(!data.announced_objectives && <>Standby for mission tasking.</>) || (
+    <Section fill scrollable title="Status misji">
+      {(!data.announced_objectives && <>Oczekuj na przydział zadań misji.</>) || (
         <>
           {data.mission_briefing}
           <br />
           <br />
-          <Section title="Notoriety">{data.notoriety}</Section>
-          <Section title="Objectives">
+          <Section title="Rozgłos">{data.notoriety}</Section>
+          <Section title="Cele">
             {Object.keys(data.objectives).map((key, newCurrent) => {
               let value = data.objectives[key];
               let status = statusMap[value.status] || statusMap[0];
@@ -892,13 +902,13 @@ export const CommunicationsConsole = (props) => {
           <Stack fill>
             <Stack.Item width="40%">
               {canLogOut || !authenticated ? (
-                <Section title="Authentication">
+                <Section title="Uwierzytelnianie">
                   <Button
                     icon={authenticated ? 'sign-out-alt' : 'sign-in-alt'}
                     content={
                       authenticated
-                        ? `Log Out${authorizeName ? ` (${authorizeName})` : ''}`
-                        : 'Log In'
+                        ? `Wyloguj${authorizeName ? ` (${authorizeName})` : ''}`
+                        : 'Zaloguj'
                     }
                     color={authenticated ? 'bad' : 'good'}
                     onClick={() => act('toggleAuthentication')}
@@ -911,7 +921,7 @@ export const CommunicationsConsole = (props) => {
             <Stack.Item width="60%">
               <Stack vertical fill>
                 <Stack.Item>
-                  <Section title="Menus" fitted>
+                  <Section title="Menu" fitted>
                     <Tabs>
                       <Tabs.Tab
                         fluid
@@ -921,7 +931,7 @@ export const CommunicationsConsole = (props) => {
                           act('setState', { state: STATE_CHANGING_STATUS })
                         }
                       >
-                        Set Status Display
+                        Wyświetlacze
                       </Tabs.Tab>
 
                       <Tabs.Tab
@@ -932,7 +942,7 @@ export const CommunicationsConsole = (props) => {
                           act('setState', { state: STATE_MESSAGES })
                         }
                       >
-                        Message List
+                        Wiadomości
                       </Tabs.Tab>
 
                       {canBuyShuttles !== 0 && (
@@ -948,7 +958,7 @@ export const CommunicationsConsole = (props) => {
                               act('setState', { state: STATE_BUYING_SHUTTLE })
                             }
                           >
-                            Purchase Shuttle
+                            Kup prom
                           </Tabs.Tab>
                         </ConditionalTooltip>
                       )}
@@ -961,7 +971,7 @@ export const CommunicationsConsole = (props) => {
                           act('setState', { state: STATE_OBJECTIVES })
                         }
                       >
-                        Objectives
+                        Cele
                       </Tabs.Tab>
                     </Tabs>
                   </Section>
@@ -974,7 +984,7 @@ export const CommunicationsConsole = (props) => {
                       )) ||
                       (page === STATE_MESSAGES && <PageMessages />) ||
                       (page === STATE_OBJECTIVES && <PageObjectives />) || (
-                        <Box>Page not implemented: {page}</Box>
+                        <Box>Strona niezaimplementowana: {page}</Box>
                       ))}
                 </Stack.Item>
               </Stack>
@@ -982,10 +992,10 @@ export const CommunicationsConsole = (props) => {
           </Stack>
         ) : (
           <Flex height="100%" width="100%" justify="center" align="center">
-            <Section title="Authentication">
+            <Section title="Uwierzytelnianie">
               <Button
                 icon="sign-in-alt"
-                content="Log In"
+                content="Zaloguj"
                 color="good"
                 onClick={() => act('toggleAuthentication')}
                 fluid

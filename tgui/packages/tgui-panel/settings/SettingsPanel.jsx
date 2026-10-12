@@ -83,7 +83,7 @@ export const SettingsGeneral = (props) => {
   return (
     <Section>
       <LabeledList>
-        <LabeledList.Item label="Theme">
+        <LabeledList.Item label="Motyw">
           {THEMES.map((THEME) => (
             <Button
               key={THEME}
@@ -100,7 +100,7 @@ export const SettingsGeneral = (props) => {
             />
           ))}
         </LabeledList.Item>
-        <LabeledList.Item label="Font style">
+        <LabeledList.Item label="Czcionka">
           <Stack.Item>
             {(!freeFont && (
               <Collapsible
@@ -108,7 +108,7 @@ export const SettingsGeneral = (props) => {
                 width={'100%'}
                 buttons={
                   <Button
-                    content="Custom font"
+                    content="Własna czcionka"
                     icon={freeFont ? 'lock-open' : 'lock'}
                     color={freeFont ? 'good' : 'bad'}
                     onClick={() => {
@@ -149,7 +149,7 @@ export const SettingsGeneral = (props) => {
                 />
                 <Button
                   ml={0.5}
-                  content="Custom font"
+                  content="Własna czcionka"
                   icon={freeFont ? 'lock-open' : 'lock'}
                   color={freeFont ? 'good' : 'bad'}
                   onClick={() => {
@@ -160,7 +160,7 @@ export const SettingsGeneral = (props) => {
             )}
           </Stack.Item>
         </LabeledList.Item>
-        <LabeledList.Item label="High Contrast">
+        <LabeledList.Item label="Wysoki kontrast">
           <Button.Checkbox
             checked={!highContrast}
             onClick={() =>
@@ -171,10 +171,10 @@ export const SettingsGeneral = (props) => {
               )
             }
           >
-            Colored names
+            Kolorowe nazwy
           </Button.Checkbox>
         </LabeledList.Item>
-        <LabeledList.Item label="Font size">
+        <LabeledList.Item label="Rozmiar czcionki">
           <NumberInput
             width="4.2em"
             step={1}
@@ -193,7 +193,7 @@ export const SettingsGeneral = (props) => {
             }
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Line height">
+        <LabeledList.Item label="Wysokość linii">
           <NumberInput
             width="4.2em"
             step={0.01}
@@ -211,7 +211,7 @@ export const SettingsGeneral = (props) => {
             }
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Stat Tab Mode">
+        <LabeledList.Item label="Tryb kart">
           <Button
             content={'Scroll'}
             selected={statTabMode === 'Scroll'}
@@ -242,17 +242,17 @@ export const SettingsGeneral = (props) => {
       <Stack fill>
         <Stack.Item grow mt={0.15}>
           <Button
-            content="Save chat log"
+            content="Zapisz log czatu"
             icon="save"
-            tooltip="Export current tab history into HTML file"
+            tooltip="Zapisz historię bieżącej karty do pliku HTML"
             onClick={() => dispatch(saveChatToDisk())}
           />
         </Stack.Item>
         <Stack.Item mt={0.15}>
           <Button.Confirm
-            content="Clear chat"
+            content="Wyczyść czat"
             icon="trash"
-            tooltip="Erase current tab history"
+            tooltip="Usuń historię bieżącej karty"
             onClick={() => dispatch(clearChat())}
           />
         </Stack.Item>
@@ -279,7 +279,7 @@ const TextHighlightSettings = (props) => {
             <Button
               color="transparent"
               icon="plus"
-              content="Add Highlight Setting"
+              content="Dodaj podświetlanie"
               onClick={() => {
                 dispatch(addHighlightSetting());
               }}
@@ -290,10 +290,10 @@ const TextHighlightSettings = (props) => {
       <Divider />
       <Box>
         <Button icon="check" onClick={() => dispatch(rebuildChat())}>
-          Apply now
+          Zastosuj teraz
         </Button>
         <Box inline fontSize="0.9em" ml={1} color="label">
-          Can freeze the chat for a while.
+          Może na chwilę zamrozić czat.
         </Box>
       </Box>
     </Section>
@@ -319,7 +319,7 @@ const TextHighlightSetting = (props) => {
         <Stack.Item grow>
           <Button.Checkbox
             checked={!!enabled}
-            content="Enabled"
+            content="Włączone"
             mr="5px"
             onClick={() =>
               dispatch(
@@ -331,7 +331,7 @@ const TextHighlightSetting = (props) => {
             }
           />
           <Button
-            content="Delete"
+            content="Usuń"
             color="transparent"
             icon="times"
             onClick={() =>
@@ -346,8 +346,8 @@ const TextHighlightSetting = (props) => {
         <Stack.Item>
           <Button.Checkbox
             checked={highlightWholeMessage}
-            content="Whole Message"
-            tooltip="If this option is selected, the entire message will be highlighted in yellow."
+            content="Cała wiadomość"
+            tooltip="Podświetla na żółto całą wiadomość."
             mr="5px"
             onClick={() =>
               dispatch(
@@ -361,10 +361,10 @@ const TextHighlightSetting = (props) => {
         </Stack.Item>
         <Stack.Item>
           <Button.Checkbox
-            content="Exact"
+            content="Całe słowa"
             checked={matchWord}
             tooltipPosition="bottom-start"
-            tooltip="If this option is selected, only exact matches (no extra letters before or after) will trigger. Not compatible with punctuation. Overriden if regex is used."
+            tooltip="Reaguje tylko na całe słowa, bez dodatkowych liter przed i po. Nie działa ze znakami interpunkcyjnymi ani z regexem."
             onClick={() =>
               dispatch(
                 updateHighlightSetting({
@@ -377,8 +377,8 @@ const TextHighlightSetting = (props) => {
         </Stack.Item>
         <Stack.Item>
           <Button.Checkbox
-            content="Case"
-            tooltip="If this option is selected, the highlight will be case-sensitive."
+            content="Wielkość liter"
+            tooltip="Podświetlanie rozróżnia wielkość liter."
             checked={matchCase}
             onClick={() =>
               dispatch(
@@ -392,8 +392,8 @@ const TextHighlightSetting = (props) => {
         </Stack.Item>
         <Stack.Item>
           <Button.Checkbox
-            content="Self"
-            tooltip="If this option is selected, your own messages will be highlighted too."
+            content="Własne"
+            tooltip="Podświetla też twoje własne wiadomości."
             checked={highlightSelf}
             onClick={() =>
               dispatch(
@@ -426,7 +426,7 @@ const TextHighlightSetting = (props) => {
       <TextArea
         height="3em"
         value={highlightText}
-        placeholder="Put words to highlight here. Separate terms with commas, i.e. (term1, term2, term3)"
+        placeholder="Wpisz słowa do podświetlenia, oddzielone przecinkami, np. (słowo1, słowo2, słowo3)"
         onChange={(e, value) =>
           dispatch(
             updateHighlightSetting({

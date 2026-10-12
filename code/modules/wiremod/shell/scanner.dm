@@ -20,7 +20,7 @@
 
 /obj/item/circuit_component/scanner
 	display_name = "Scanner"
-	display_desc = "Used to receive inputs from the scanner shell. Use the shell on something to scan it."
+	display_desc = "Służy do odbierania wejść z obudowy skanera. Użyj obudowy na czymś, by to zeskanować."
 
 	/// Atom that was scanned.
 	var/datum/port/output/scanned

@@ -4,7 +4,7 @@
 	desc = "It's blank."
 	force = 5
 	w_class = WEIGHT_CLASS_BULKY
-	attack_verb = list("bashed","smacked")
+	attack_verb = list("grzmoci","trzepie")
 	resistance_flags = FLAMMABLE
 	
 
@@ -20,9 +20,9 @@
 
 /obj/item/picket_sign/proc/retext(mob/user)
 	if(!user.is_literate())
-		to_chat(user, "<span class='notice'>You scribble illegibly on [src]!</span>")
+		to_chat(user, "<span class='notice'>Bazgrzesz nieczytelnie na [src]!</span>")
 		return
-	var/txt = stripped_input(user, "What would you like to write on the sign?", "Sign Label", null , 30)
+	var/txt = stripped_input(user, "Co chcesz napisać na tabliczce?", "Napis na tabliczce", null , 30)
 	if(txt && user.canUseTopic(src, BE_CLOSE))
 		label = txt
 		name = "[label] sign"
@@ -38,9 +38,9 @@
 	if( last_wave + 20 < world.time )
 		last_wave = world.time
 		if(label)
-			user.visible_message("<span class='warning'>[user] waves around \the \"[label]\" sign.</span>")
+			user.visible_message("<span class='warning'>[user] wymachuje tabliczką z napisem \"[label]\".</span>")
 		else
-			user.visible_message("<span class='warning'>[user] waves around blank sign.</span>")
+			user.visible_message("<span class='warning'>[user] wymachuje pustą tabliczką.</span>")
 		user.changeNext_move(CLICK_CD_MELEE)
 
 /datum/crafting_recipe/picket_sign

@@ -8,7 +8,7 @@
  //Generic class for other trig components
 /obj/item/circuit_component/trig
 	display_name = "Generic Trigonometry"
-	display_desc = "A useless component that all trigonometric based components are built off of."
+	display_desc = "Bezużyteczny komponent, na którym opierają się wszystkie komponenty trygonometryczne."
 
 	/// The input port
 	var/datum/port/input/input
@@ -47,7 +47,7 @@
 //Does your typical Sine, Cosine, and Tangent, as well as their inverses
 /obj/item/circuit_component/trig/trig
 	display_name = "Trigonometry"
-	display_desc = "A component capable of trigonometric functions."
+	display_desc = "Komponent obsługujący funkcje trygonometryczne."
 
 /obj/item/circuit_component/trig/trig/populate_options()
 	options = list(
@@ -81,7 +81,7 @@
 //Performs Secant, Cosecant, and Cotangent
 /obj/item/circuit_component/trig/adv_trig
 	display_name = "Advanced Trigonometry"
-	display_desc = "Following outstanding advancements in the field of Mathematics, NanoTrasen scientist have discovered how to take the reciprical of trignometric functions"
+	display_desc = "Po wybitnych postępach w dziedzinie matematyki naukowcy NanoTrasen odkryli, jak obliczać odwrotności funkcji trygonometrycznych"
 
 
 /obj/item/circuit_component/trig/adv_trig/populate_options()
@@ -105,7 +105,7 @@
 //Hyperbolic Sine and Cosine
 /obj/item/circuit_component/trig/hyper_trig
 	display_name = "Hyperbolic Trigonometry"
-	display_desc = "This component makes all your trig calculations be based on hyperbolas and natural exponentials instead of circles"
+	display_desc = "Ten komponent sprawia, że wszystkie obliczenia trygonometryczne opierają się na hiperbolach i funkcji wykładniczej zamiast na okręgach"
 
 /obj/item/circuit_component/trig/hyper_trig/populate_options()
 	options = list(

@@ -1621,7 +1621,7 @@
 	},
 /obj/effect/turf_decal/tile/green,
 /obj/item/paper{
-	default_raw_text = "Place patient into stasis bed and attempt to apply first aid. Seek immediate professional medical help and ensure that the stasis unit remains active. Remain calm, do not attempt complex procedures by yourselves.";
+	default_raw_text = "Umieść pacjenta w łóżku stazy i spróbuj udzielić pierwszej pomocy. Natychmiast poszukaj profesjonalnej pomocy medycznej i dopilnuj, by jednostka stazy pozostała aktywna. Zachowaj spokój, nie próbuj samodzielnie skomplikowanych zabiegów.";
 	name = "Dublanc Mining Corporation Medical  Procedures"
 	},
 /turf/open/floor/plasteel/techmaint,

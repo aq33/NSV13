@@ -35,7 +35,7 @@
 /obj/structure/bed/examine(mob/user)
 	. = ..()
 	if(bolts)
-		. += "<span class='notice'>It's held together by a couple of <b>bolts</b>.</span>"
+		. += "<span class='notice'>Trzyma się na kilku <b>śrubach</b>.</span>"
 
 /obj/structure/bed/deconstruct(disassembled = TRUE)
 	if(!(flags_1 & NODECONSTRUCT_1))
@@ -76,19 +76,19 @@
 	if(istype(W, /obj/item/roller/robo))
 		var/obj/item/roller/robo/R = W
 		if(R.loaded)
-			to_chat(user, "<span class='warning'>You already have a roller bed docked!</span>")
+			to_chat(user, "<span class='warning'>Już masz zadokowane łóżko na kółkach!</span>")
 			return
 
 		if(has_buckled_mobs())
 			if(buckled_mobs.len > 1)
 				unbuckle_all_mobs()
-				user.visible_message("<span class='notice'>[user] unbuckles all creatures from [src].</span>")
+				user.visible_message("<span class='notice'>[user] odpina wszystkie istoty z [src].</span>")
 			else
 				user_unbuckle_mob(buckled_mobs[1],user)
 		else
 			R.loaded = src
 			forceMove(R)
-			user.visible_message("[user] collects [src].", "<span class='notice'>You collect [src].</span>")
+			user.visible_message("[user] collects [src].", "<span class='notice'>Zbierasz [src].</span>")
 		return 1
 	else
 		return ..()
@@ -100,7 +100,7 @@
 			return 0
 		if(has_buckled_mobs())
 			return 0
-		usr.visible_message("[usr] collapses \the [src.name].", "<span class='notice'>You collapse \the [src.name].</span>")
+		usr.visible_message("[usr] składa [src.name].", "<span class='notice'>Składasz [src.name].</span>")
 		var/obj/structure/bed/roller/B = new foldabletype(get_turf(src))
 		usr.put_in_hands(B)
 		qdel(src)
@@ -132,9 +132,9 @@
 	if(istype(I, /obj/item/roller/robo))
 		var/obj/item/roller/robo/R = I
 		if(R.loaded)
-			to_chat(user, "<span class='warning'>[R] already has a roller bed loaded!</span>")
+			to_chat(user, "<span class='warning'>[R] ma już załadowane łóżko na kółkach!</span>")
 			return
-		user.visible_message("<span class='notice'>[user] loads [src].</span>", "<span class='notice'>You load [src] into [R].</span>")
+		user.visible_message("<span class='notice'>[user] loads [src].</span>", "<span class='notice'>Ładujesz [src] do [R].</span>")
 		R.loaded = new/obj/structure/bed/roller(R)
 		qdel(src) //"Load"
 		return
@@ -167,15 +167,15 @@
 
 /obj/item/roller/robo/examine(mob/user)
 	. = ..()
-	. += "The dock is [loaded ? "loaded" : "empty"]."
+	. += "Dok jest [loaded ? "załadowany" : "pusty"]."
 
 /obj/item/roller/robo/deploy_roller(mob/user, atom/location)
 	if(loaded)
 		loaded.forceMove(location)
-		user.visible_message("[user] deploys [loaded].", "<span class='notice'>You deploy [loaded].</span>")
+		user.visible_message("[user] deploys [loaded].", "<span class='notice'>Rozkładasz [loaded].</span>")
 		loaded = null
 	else
-		to_chat(user, "<span class='warning'>The dock is empty!</span>")
+		to_chat(user, "<span class='warning'>Dok jest pusty!</span>")
 
 //Dog bed
 
@@ -239,7 +239,7 @@
 /obj/structure/bed/alien/examine(mob/user)
 	. = ..()
 	if(isabductor(user))
-		. += "<span class='abductor'>Fairly sure we absolutely stole that technology.</span>"
+		. += "<span class='abductor'>Jesteśmy prawie pewni, że tę technologię zwyczajnie ukradliśmy.</span>"
 
 //unfortunateley no sickness mechanics on them... yet
 /obj/structure/bed/maint
@@ -288,4 +288,4 @@
 /obj/structure/bed/double/alien/examine(mob/user)
 	. = ..()
 	if(isabductor(user))
-		. += "<span class='abductor'>Fairly sure we absolutely stole that technology... Why did we steal this again?</span>"
+		. += "<span class='abductor'>Jesteśmy prawie pewni, że tę technologię zwyczajnie ukradliśmy... Po co my to w ogóle kradliśmy?</span>"

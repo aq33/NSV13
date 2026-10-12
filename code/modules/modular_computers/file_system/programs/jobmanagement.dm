@@ -1,9 +1,9 @@
 /datum/computer_file/program/job_management
 	filename = "job_manage"
-	filedesc = "Job Manager"
+	filedesc = "Menedżer stanowisk"
 	category = PROGRAM_CATEGORY_CREW
 	program_icon_state = "id"
-	extended_desc = "Program for viewing and changing job slot avalibility."
+	extended_desc = "Program do przeglądania i zmiany dostępności stanowisk."
 	transfer_access = list(ACCESS_HEADS)
 	requires_ntnet = 0
 	size = 4
@@ -102,7 +102,7 @@
 				if(length(SSjob.prioritized_jobs) < 5)
 					SSjob.prioritized_jobs += j
 				else
-					computer.say("Error: CentCom employment protocols restrict prioritising more than 5 jobs.")
+					computer.say("Błąd: protokoły zatrudnienia Centrali nie pozwalają na priorytetyzowanie więcej niż 5 stanowisk.")
 			playsound(computer, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 			return TRUE
 

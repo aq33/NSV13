@@ -17,7 +17,7 @@ Bonus
 
 /datum/symptom/shivering
 	name = "Shivering"
-	desc = "The virus inhibits the body's thermoregulation, cooling the body down."
+	desc = "Wirus hamuje termoregulację, schładzając ciało."
 	stealth = 0
 	resistance = 2
 	stage_speed = 2
@@ -29,8 +29,7 @@ Bonus
 	bodies = list("Shiver")
 	suffixes = list(" Shivers")
 	var/unsafe = FALSE //over the cold threshold
-	threshold_desc = "<b>Stage Speed 5:</b> Increases cooling speed; the host can fall below safe temperature levels.<br>\
-					  <b>Stage Speed 10:</b> Further increases cooling speed."
+	threshold_desc = "<b>Szybkość stadiów 5:</b> zwiększa szybkość chłodzenia; temperatura nosiciela może spaść poniżej bezpiecznego poziomu.<br><b>Szybkość stadiów 10:</b> jeszcze bardziej zwiększa szybkość chłodzenia."
 
 /datum/symptom/shivering/severityset(datum/disease/advance/A)
 	. = ..()

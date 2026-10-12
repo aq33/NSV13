@@ -84,10 +84,10 @@
 		return
 
 	if(!check_hub_connection())
-		say("Error: Unable to detect hub.")
+		say("Błąd: nie wykryto huba.")
 		return
 	if(calibrating)
-		say("Error: Calibration in progress. Stand by.")
+		say("Błąd: trwa kalibracja. Proszę czekać.")
 		return
 
 	switch(action)
@@ -105,13 +105,13 @@
 			. = TRUE
 		if("calibrate")
 			if(!target_ref)
-				say("Error: No target set to calibrate to.")
+				say("Błąd: nie ustawiono celu kalibracji.")
 				return
 			if(power_station.teleporter_hub.calibrated || power_station.teleporter_hub.accuracy >= 4)
-				say("Hub is already calibrated!")
+				say("Hub jest już skalibrowany!")
 				return
 
-			say("Processing hub calibration to target...")
+			say("Kalibrowanie huba względem celu...")
 			calibrating = TRUE
 			power_station.update_icon()
 			var/calibrationtime = 50 * (3 - power_station.teleporter_hub.accuracy)
@@ -122,9 +122,9 @@
 	calibrating = FALSE
 	if(check_hub_connection())
 		power_station.teleporter_hub.calibrated = TRUE
-		say("Calibration complete.")
+		say("Kalibracja zakończona.")
 	else
-		say("Error: Unable to detect hub.")
+		say("Błąd: nie wykryto huba.")
 	power_station.update_icon()
 
 /obj/machinery/computer/teleporter/proc/check_hub_connection()
@@ -176,7 +176,7 @@
 				var/area/A = get_area(R)
 				L[avoid_assoc_duplicate_keys(A.name, areaindex)] = R
 		if(!L.len)
-			to_chat(user, "<span class='alert'>No active connected stations located.</span>")
+			to_chat(user, "<span class='alert'>Nie znaleziono aktywnych połączonych stacji.</span>")
 			return
 		var/desc = input("Please select a station to lock in.", "Locking Computer") as null|anything in sortList(L)
 		var/obj/machinery/teleport/station/target_station = L[desc]

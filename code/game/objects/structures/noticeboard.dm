@@ -30,16 +30,16 @@
 /obj/structure/noticeboard/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/paper) || istype(O, /obj/item/photo))
 		if(!allowed(user))
-			to_chat(user, "<span class='info'>You are not authorized to add notices</span>")
+			to_chat(user, "<span class='info'>Nie masz uprawnień do przypinania ogłoszeń</span>")
 			return
 		if(notices < MAX_NOTICES)
 			if(!user.transferItemToLoc(O, src))
 				return
 			notices++
 			icon_state = "nboard0[notices]"
-			to_chat(user, "<span class='notice'>You pin the [O] to the noticeboard.</span>")
+			to_chat(user, "<span class='notice'>Przypinasz [O] do tablicy ogłoszeń.</span>")
 		else
-			to_chat(user, "<span class='notice'>The notice board is full</span>")
+			to_chat(user, "<span class='notice'>Tablica ogłoszeń jest pełna</span>")
 	else
 		return ..()
 
@@ -99,7 +99,7 @@
 	item.forceMove(drop_location())
 	if(user)
 		user.put_in_hands(item)
-		balloon_alert(user, "You remove [item] from the board.")
+		balloon_alert(user, "Zdejmujesz [item] z tablicy.")
 	notices--
 	icon_state = "nboard0[notices]"
 

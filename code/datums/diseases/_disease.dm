@@ -8,7 +8,7 @@
 	var/form = "Virus"
 	var/name = "No disease"
 	var/desc = ""
-	var/agent = "some microbes"
+	var/agent = "jakieś mikroby"
 	var/spread_text = ""
 	var/cure_text = ""
 

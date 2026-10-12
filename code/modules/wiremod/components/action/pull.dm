@@ -5,7 +5,7 @@
  */
 /obj/item/circuit_component/pull
 	display_name = "Start Pulling"
-	display_desc = "A component that can force the shell to pull entities. Only works for drone shells."
+	display_desc = "Komponent, który może zmusić obudowę do ciągnięcia obiektów. Działa tylko w obudowach dronów."
 
 	/// Frequency input
 	var/datum/port/input/target

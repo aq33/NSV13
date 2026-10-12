@@ -48,7 +48,7 @@
 
 			var/mob/M = locate(href_list["rename"]) in GLOB.mob_list
 			if(!istype(M))
-				to_chat(usr, "This can only be used on instances of type /mob")
+				to_chat(usr, "Można tego użyć tylko na instancjach typu /mob")
 				return
 
 			var/new_name = stripped_input(usr,"What would you like to name this mob?","Input a name",M.real_name,MAX_NAME_LEN)

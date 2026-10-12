@@ -19,11 +19,11 @@
 
 /obj/machinery/plumbing/grinder_chemical/attackby(obj/item/weapon, mob/user, params)
 	if(istype(weapon, /obj/item/storage/bag))
-		to_chat(user, "<span class='notice'>You dump items from [weapon] into the grinder.</span>")
+		to_chat(user, "<span class='notice'>Wysypujesz przedmioty z [weapon] do młynka.</span>")
 		for(var/obj/item/obj_item in weapon.contents)
 			grind(obj_item)
 	else
-		to_chat(user, "<span class='notice'>You attempt to grind [weapon].</span>")
+		to_chat(user, "<span class='notice'>Próbujesz zmielić [weapon].</span>")
 		grind(weapon)
 
 	return TRUE

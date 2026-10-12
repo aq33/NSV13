@@ -27,7 +27,7 @@
 	icon = 'nsv13/icons/obj/custom_vendors.dmi'
 	icon_state = "munidrobe"
 	product_ads = "High-vis, while retaining stylish black!;Orange is the new Puce!" //cringe, someone send help from marketing
-	vend_reply = "Thank you for using the MuniDrobe!"
+	vend_reply = "Dziękujemy za skorzystanie z MuniDrobe!"
 	light_color = LIGHT_COLOR_ORANGE
 	products = list(/obj/item/storage/backpack/duffelbag/munitions = 3,
 					/obj/item/storage/backpack/munitions = 3,

@@ -7,7 +7,7 @@
  */
 /obj/item/circuit_component/ram
 	display_name = "RAM"
-	display_desc = "A component that retains a variable."
+	display_desc = "Komponent, który przechowuje zmienną."
 
 	/// The input to store
 	var/datum/port/input/input_port

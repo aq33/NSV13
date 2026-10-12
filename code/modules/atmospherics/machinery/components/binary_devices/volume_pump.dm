@@ -41,7 +41,7 @@
 /obj/machinery/atmospherics/components/binary/volume_pump/AltClick(mob/user)
 	if(can_interact(user))
 		transfer_rate = MAX_TRANSFER_RATE
-		balloon_alert(user, "You set the transfer rate to [transfer_rate] L/s.")
+		balloon_alert(user, "Ustawiasz przepływ na [transfer_rate] L/s.")
 		update_icon()
 		ui_update()
 	return
@@ -85,7 +85,7 @@
 /obj/machinery/atmospherics/components/binary/volume_pump/examine(mob/user)
 	. = ..()
 	if(overclocked)
-		. += "Its warning light is on[on ? " and it's spewing gas!" : "."]"
+		. += "Świeci się jego lampka ostrzegawcza[on ? " i tryska z niego gaz!" : "."]"
 
 /obj/machinery/atmospherics/components/binary/volume_pump/proc/set_frequency(new_frequency)
 	SSradio.remove_object(src, frequency)
@@ -184,16 +184,16 @@
 /obj/machinery/atmospherics/components/binary/volume_pump/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz odkręcić [src], najpierw go wyłącz!</span>")
 		return FALSE
 
 /obj/machinery/atmospherics/components/binary/volume_pump/multitool_act(mob/living/user, obj/item/I)
 	if(!overclocked)
 		overclocked = TRUE
-		to_chat(user, "The pump makes a grinding noise and air starts to hiss out as you disable its pressure limits.")
+		to_chat(user, "Pompa zaczyna zgrzytać, a powietrze zaczyna syczeć, gdy wyłączasz jej limity ciśnienia.")
 	else
 		overclocked = FALSE
-		to_chat(user, "The pump quiets down as you turn its limiters back on.")
+		to_chat(user, "Pompa cichnie, gdy z powrotem włączasz jej ograniczniki.")
 	return TRUE
 
 // mapping

@@ -253,22 +253,22 @@
 	if(user.getorgan(/obj/item/organ/alien/plasmavessel))
 		switch(status)
 			if(BURSTING)
-				to_chat(user, "<span class='notice'>The egg is in process of hatching.</span>")
+				to_chat(user, "<span class='notice'>Jajo jest w trakcie wylęgania.</span>")
 				return
 			if(BURST)
-				to_chat(user, "<span class='notice'>You clear the hatched egg.</span>")
+				to_chat(user, "<span class='notice'>Usuwasz wyklute jajo.</span>")
 				playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 				qdel(src)
 				return
 			if(GROWING)
-				to_chat(user, "<span class='notice'>The child is not developed yet.</span>")
+				to_chat(user, "<span class='notice'>Młode nie jest jeszcze rozwinięte.</span>")
 				return
 			if(GROWN)
-				to_chat(user, "<span class='notice'>You retrieve the child.</span>")
+				to_chat(user, "<span class='notice'>Wyjmujesz młode.</span>")
 				Burst(kill=FALSE)
 				return
 	else
-		to_chat(user, "<span class='notice'>It feels slimy.</span>")
+		to_chat(user, "<span class='notice'>Jest oślizgłe.</span>")
 		user.changeNext_move(CLICK_CD_MELEE)
 
 

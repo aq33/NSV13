@@ -89,9 +89,7 @@
 	for(var/obj/item/ingredient as anything in ingredients)
 		ingredients_listed += "\a [ingredient.name]"
 
-	examine_list += "It [LAZYLEN(ingredients) \
-	? "contains [english_list(ingredients_listed)] making a [custom_adjective()]-sized [initial(atom_parent.name)]" \
-	: "does not contain any ingredients"]."
+	examine_list += "[LAZYLEN(ingredients) ? "Zawiera [english_list(ingredients_listed)], tworząc [initial(atom_parent.name)] rozmiaru: [custom_adjective()]" : "Nie zawiera żadnych składników"]."
 
 //// Proc that checks if an ingredient is valid or not, returning false if it isnt and true if it is.
 /datum/component/customizable_reagent_holder/proc/valid_ingredient(obj/ingredient)
@@ -110,11 +108,11 @@
 		if (ingredient.is_drainable()) // For stuff like adding flour from a flour sack into a bowl, we handle the transfer of the reagent elsewhere, but we shouldn't regard it beyond some user feedback.
 			attacker.balloon_alert(attacker, "transferring...")
 			return
-		attacker.balloon_alert(attacker, "doesn't go on that!")
+		attacker.balloon_alert(attacker, "tam to nie pasuje!")
 		return
 
 	if (LAZYLEN(ingredients) >= max_ingredients)
-		attacker.balloon_alert(attacker, "too full!")
+		attacker.balloon_alert(attacker, "za pełne!")
 		return COMPONENT_NO_AFTERATTACK
 
 	var/atom/atom_parent = parent

@@ -18,13 +18,13 @@
 
 /datum/disease/advance/feline_hysteria
 	name = "Feline Hysteria"
-	desc = "A very dangerous disease supposedly engineered by the Animal Rights Coalition. Causes mass feline hysteria."
+	desc = "Bardzo niebezpieczna choroba, podobno stworzona przez Koalicję Praw Zwierząt. Wywołuje masową kocią histerię."
 	copy_type = /datum/disease/advance
 	mutable = FALSE
 
 /datum/disease/advance/feline_hysteria/New()
 	name = "Feline Hysteria"
-	desc = "A very dangerous disease supposedly engineered by the Animal Rights Coalition. Causes mass feline hysteria."
+	desc = "Bardzo niebezpieczna choroba, podobno stworzona przez Koalicję Praw Zwierząt. Wywołuje masową kocią histerię."
 	mutable = FALSE
 	symptoms = list(new/datum/symptom/toxoplasmosis, new/datum/symptom/viralincubate, new/datum/symptom/sneeze, new/datum/symptom/revitiligo, new/datum/symptom/inorganic_adaptation, new/datum/symptom/organ_restoration)
 	for(var/datum/symptom/S as() in (symptoms))

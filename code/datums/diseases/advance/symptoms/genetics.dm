@@ -17,7 +17,7 @@ Bonus
 
 /datum/symptom/genetic_mutation
 	name = "Deoxyribonucleic Acid Saboteur"
-	desc = "The virus bonds with the DNA of the host, causing damaging mutations until removed."
+	desc = "Wirus łączy się z DNA nosiciela, powodując szkodliwe mutacje, dopóki nie zostanie usunięty."
 	stealth = -2
 	resistance = -3
 	stage_speed = 0
@@ -32,9 +32,7 @@ Bonus
 	prefixes = list("Genetic ", "Chromosomal ", "Mutagenic ", "Muta-")
 	bodies = list("Mutant")
 	var/no_reset = FALSE
-	threshold_desc = "<b>Resistance 8:</b> Causes two harmful mutations at once.<br>\
-					  <b>Stage Speed 10:</b> Increases mutation frequency.<br>\
-					  <b>Stealth 5:</b> The mutations persist even if the virus is cured."
+	threshold_desc = "<b>Odporność 8:</b> wywołuje naraz dwie szkodliwe mutacje.<br><b>Szybkość stadiów 10:</b> zwiększa częstotliwość mutacji.<br><b>Ukrycie 5:</b> mutacje pozostają nawet po wyleczeniu wirusa."
 
 /datum/symptom/genetic_mutation/severityset(datum/disease/advance/A)
 	. = ..()

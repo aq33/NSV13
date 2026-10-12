@@ -1,26 +1,26 @@
 /obj/item/clothing/head/helmet/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/wallframe/camera))
 		if(builtInCamera)
-			to_chat(user, "<span class='warning'>[src] already has a camera.</span>")
+			to_chat(user, "<span class='warning'>[src] ma już kamerę.</span>")
 			return FALSE
 		if(src == user.get_item_by_slot(ITEM_SLOT_HEAD)) //Make sure the player is not wearing the suit before applying the upgrade.
-			to_chat(user, "<span class='warning'>You cannot install the upgrade to [src] while wearing it.</span>")
+			to_chat(user, "<span class='warning'>Nie możesz zainstalować ulepszenia w [src], gdy masz go na sobie.</span>")
 			return FALSE
 		if(do_after(user, 5, target = src))
 			install_camera(I, user)
-			to_chat(user, "<span class='notice'>You successfully attach the camera to [src].</span>")
+			to_chat(user, "<span class='notice'>Pomyślnie montujesz kamerę na [src].</span>")
 			return TRUE
 	else if(I.tool_behaviour == TOOL_WIRECUTTER)
 		if(!builtInCamera)
-			to_chat(user, "<span class='warning'>[src] has no camera installed.</span>")
+			to_chat(user, "<span class='warning'>[src] nie ma zainstalowanej kamery.</span>")
 			return FALSE
 		if(src == user.get_item_by_slot(ITEM_SLOT_HEAD))
-			to_chat(user, "<span class='warning'>You cannot remove the camera from [src] while wearing it.</span>")
+			to_chat(user, "<span class='warning'>Nie możesz zdjąć kamery z [src], gdy masz go na sobie.</span>")
 			return FALSE
 
 		new /obj/item/wallframe/camera(drop_location())
 		QDEL_NULL(builtInCamera)
-		to_chat(user, "<span class='notice'>You successfully remove the camera from [src].</span>")
+		to_chat(user, "<span class='notice'>Pomyślnie zdejmujesz kamerę z [src].</span>")
 		return TRUE
 	else
 		return ..()

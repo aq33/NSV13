@@ -5,7 +5,7 @@
  */
 /obj/item/circuit_component/health
 	display_name = "Get Health"
-	display_desc = "A component that returns the health of an organism."
+	display_desc = "Komponent, który zwraca zdrowie organizmu."
 
 	/// The input port
 	var/datum/port/input/input_port

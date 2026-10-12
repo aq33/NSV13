@@ -42,7 +42,7 @@ export const NowPlayingWidget = (props) => {
           }}
         >
           {
-            <Collapsible title={title || 'Unknown Track'} color={'blue'}>
+            <Collapsible title={title || 'Nieznany utwór'} color={'blue'}>
               <Section>
                 {url !== 'Song Link Hidden' && (
                   <Flex.Item grow={1} color="label">
@@ -75,13 +75,13 @@ export const NowPlayingWidget = (props) => {
         </Flex.Item>
       )) || (
         <Flex.Item grow={1} color="label">
-          Nothing to play.
+          Nic nie gra.
         </Flex.Item>
       )}
       {audio.playing && (
         <Flex.Item mx={0.5} fontSize="0.9em">
           <Button
-            tooltip="Stop"
+            tooltip="Zatrzymaj"
             icon="stop"
             onClick={() =>
               dispatch({

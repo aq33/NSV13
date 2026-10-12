@@ -11,7 +11,7 @@
 /obj/structure/overmap/proc/fire(atom/target, mob/user, datum/overmap_ship_weapon/firing_weapon)
 	if(weapon_safety)
 		if(user)
-			to_chat(user, "<span class='warning'>Weapon safety interlocks are active! Use the ship verbs tab to disable them!</span>")
+			to_chat(user, "<span class='warning'>Blokady zabezpieczające broni są aktywne! Wyłącz je w zakładce czasowników okrętu!</span>")
 		return
 	if(!firing_weapon && !ai_controlled)
 		if(!user)

@@ -23,44 +23,44 @@
 /obj/item/reagent_containers/food/drinks/attack(mob/living/M, mob/user, def_zone)
 
 	if(!reagents || !reagents.total_volume)
-		to_chat(user, "<span class='warning'>[src] is empty!</span>")
+		to_chat(user, "<span class='warning'>[src] jest pusty!</span>")
 		return 0
 
 	if(!canconsume(M, user))
 		return 0
 
 	if (!is_drainable())
-		to_chat(user, "<span class='warning'>[src]'s lid hasn't been opened!</span>")
+		to_chat(user, "<span class='warning'>[src] nie został otwarty!</span>")
 		return 0
 	var/gulp_amount = gulp_size
 	if(M == user)
 		if(user.zone_selected == BODY_ZONE_PRECISE_MOUTH && !beingChugged)
 			beingChugged = TRUE
-			user.visible_message("<span class='notice'>[user] starts chugging [src].</span>", \
-				"<span class='notice'>You start chugging [src].</span>")
+			user.visible_message("<span class='notice'>[user] zaczyna duszkiem pić [src].</span>", \
+				"<span class='notice'>Zaczynasz duszkiem pić [src].</span>")
 			if(!do_mob(user, M))
 				return
 			if(!reagents || !reagents.total_volume)
 				return
 			gulp_amount = 50
 			user.visible_message("<span class='notice'>[user] chugs [src].</span>", \
-				"<span class='notice'>You chug [src].</span>")
+				"<span class='notice'>Wypijasz [src] duszkiem.</span>")
 			beingChugged = FALSE
 		else
-			user.visible_message("<span class='notice'>[user] swallows a gulp of [src].</span>", \
-				"<span class='notice'>You swallow a gulp of [src].</span>")
+			user.visible_message("<span class='notice'>[user] bierze łyk [src].</span>", \
+				"<span class='notice'>Bierzesz łyk [src].</span>")
 		if(HAS_TRAIT(M, TRAIT_VORACIOUS))
 			M.changeNext_move(CLICK_CD_MELEE * 0.5) //chug! chug! chug!
 
 	else
-		M.visible_message("<span class='danger'>[user] attempts to feed [M] the contents of [src].</span>", \
-			"<span class='userdanger'>[user] attempts to feed you the contents of [src].</span>")
+		M.visible_message("<span class='danger'>[user] próbuje napoić [M] zawartością [src].</span>", \
+			"<span class='userdanger'>[user] próbuje napoić cię zawartością [src].</span>")
 		if(!do_mob(user, M))
 			return
 		if(!reagents || !reagents.total_volume)
 			return // The drink might be empty after the delay, such as by spam-feeding
-		M.visible_message("<span class='danger'>[user] fed [M] the contents of [src].</span>", \
-			"<span class='userdanger'>[user] fed you the contents of [src].</span>")
+		M.visible_message("<span class='danger'>[user] poi [M] zawartością [src].</span>", \
+			"<span class='userdanger'>[user] poi cię zawartością [src].</span>")
 		log_combat(user, M, "fed", reagents.log_list())
 
 	var/fraction = min(gulp_amount/reagents.total_volume, 1)
@@ -77,16 +77,16 @@
 
 	if(target.is_refillable() && is_drainable()) //Something like a glass. Player probably wants to transfer TO it.
 		if(!reagents.total_volume)
-			to_chat(user, "<span class='warning'>[src] is empty.</span>")
+			to_chat(user, "<span class='warning'>[src] jest pusty.</span>")
 			return
 
 		if(target.reagents.holder_full())
-			to_chat(user, "<span class='warning'>[target] is full.</span>")
+			to_chat(user, "<span class='warning'>[target] jest pełny.</span>")
 			return
 
 		var/refill = reagents.get_master_reagent_id()
 		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this, transfered_by = user)
-		to_chat(user, "<span class='notice'>You transfer [trans] units of the solution to [target].</span>")
+		to_chat(user, "<span class='notice'>Przelewasz [trans] j. roztworu do [target].</span>")
 		playsound(src, "aquila/sound/items/pour.ogg", 15, TRUE) // AQUILA EDIT
 
 		if(iscyborg(user)) //Cyborg modules that include drinks automatically refill themselves, but drain the borg's cell
@@ -96,25 +96,25 @@
 
 	else if(target.is_drainable()) //A dispenser. Transfer FROM it TO us.
 		if (!is_refillable())
-			to_chat(user, "<span class='warning'>[src]'s tab isn't open!</span>")
+			to_chat(user, "<span class='warning'>Zawleczka [src] nie jest otwarta!</span>")
 			return
 
 		if(!target.reagents.total_volume)
-			to_chat(user, "<span class='warning'>[target] is empty.</span>")
+			to_chat(user, "<span class='warning'>[target] jest pusty.</span>")
 			return
 
 		if(reagents.holder_full())
-			to_chat(user, "<span class='warning'>[src] is full.</span>")
+			to_chat(user, "<span class='warning'>[src] jest pełny.</span>")
 			return
 
 		var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user)
-		to_chat(user, "<span class='notice'>You fill [src] with [trans] units of the contents of [target].</span>")
+		to_chat(user, "<span class='notice'>Napełniasz [src] zawartością [target] ([trans] j.).</span>")
 
 /obj/item/reagent_containers/food/drinks/attackby(obj/item/I, mob/user, params)
 	var/hotness = I.is_hot()
 	if(hotness && reagents)
 		reagents.expose_temperature(hotness)
-		to_chat(user, "<span class='notice'>You heat [name] with [I]!</span>")
+		to_chat(user, "<span class='notice'>Podgrzewasz [name] za pomocą [I]!</span>")
 	..()
 
 /obj/item/reagent_containers/food/drinks/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
@@ -413,8 +413,8 @@
 
 /obj/item/reagent_containers/food/drinks/honeycomb/attack_self(mob/user)
 	if(!reagents.total_volume)
-		user.visible_message("<span class='warning'>[user] snaps the [src] into 2 pieces!</span>",
-		"<span class='notice'>You snap [src] in half.</span>")
+		user.visible_message("<span class='warning'>[user] łamie [src] na 2 kawałki!</span>",
+		"<span class='notice'>Łamiesz [src] na pół.</span>")
 		new /obj/item/stack/sheet/mineral/wax(user.loc, 2)
 		qdel(src)
 		return
@@ -477,28 +477,28 @@
 
 /obj/item/reagent_containers/food/drinks/soda_cans/suicide_act(mob/living/carbon/human/H)
 	if(!reagents.total_volume)
-		H.visible_message("<span class='warning'>[H] is trying to take a big sip from [src]... The can is empty!</span>")
+		H.visible_message("<span class='warning'>[H] próbuje pociągnąć duży łyk z [src]... Puszka jest pusta!</span>")
 		return SHAME
 	if(!is_drainable())
 		open_soda()
 		sleep(10)
-	H.visible_message("<span class='suicide'>[H] takes a big sip from [src]! It looks like [H.p_theyre()] trying to commit suicide!</span>")
+	H.visible_message("<span class='suicide'>[H] pociąga duży łyk z [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	playsound(H,'sound/items/drink.ogg', 80, 1)
 	reagents.trans_to(H, src.reagents.total_volume, transfered_by = H) //a big sip
 	sleep(5)
-	H.say(pick("Now, Outbomb Cuban Pete, THAT was a game.", "All these new fangled arcade games are too slow. I prefer the classics.", "They don't make 'em like Orion Trail anymore.", "You know what they say. Worst day of spess carp fishing is better than the best day at work.", "They don't make 'em like good old-fashioned singularity engines anymore."))
+	H.say(pick("O, Outbomb Cuban Pete, TO dopiero była gra.", "Te wszystkie nowomodne automaty są za wolne. Wolę klasyki.", "Już nie robią takich gier jak Orion Trail.", "Wiesz, jak to mówią. Najgorszy dzień łowienia kosmicznych karpi jest lepszy od najlepszego dnia w pracy.", "Już nie robią takich porządnych, staroświeckich silników osobliwości."))
 	if(H.age >= 30)
 		H.Stun(50)
 		sleep(50)
 		playsound(H,'sound/items/drink.ogg', 80, 1)
-		H.say(pick("Another day, another dollar.", "I wonder if I should hold?", "Diversifying is for young'ns.", "Yeap, times were good back then."))
+		H.say(pick("Kolejny dzień, kolejny dolar.", "Ciekawe, czy powinienem trzymać?", "Dywersyfikacja jest dla młokosów.", "Ano, to były dobre czasy."))
 		return MANUAL_SUICIDE_NONLETHAL
 	sleep(20) //dramatic pause
 	return TOXLOSS
 
 /obj/item/reagent_containers/food/drinks/soda_cans/attack(mob/M, mob/user)
 	if(M == user && !src.reagents.total_volume && user.a_intent == INTENT_HARM && user.zone_selected == BODY_ZONE_HEAD)
-		user.visible_message("<span class='warning'>[user] crushes the can of [src] on [user.p_their()] forehead!</span>", "<span class='notice'>You crush the can of [src] on your forehead.</span>")
+		user.visible_message("<span class='warning'>[user] zgniata puszkę [src] na swoim czole!</span>", "<span class='notice'>Zgniatasz puszkę [src] na swoim czole.</span>")
 		playsound(user.loc,'sound/weapons/pierce.ogg', rand(10,50), 1)
 		var/obj/item/trash/can/crushed_can = new /obj/item/trash/can(user.loc)
 		crushed_can.icon_state = icon_state
@@ -516,7 +516,7 @@
 		return
 
 /obj/item/reagent_containers/food/drinks/soda_cans/proc/open_soda(mob/user)
-	to_chat(user, "You pull back the tab of \the [src] with a satisfying pop.") //Ahhhhhhhh
+	to_chat(user, "Odciągasz zawleczkę [src] z satysfakcjonującym pyknięciem.") //Ahhhhhhhh
 	ENABLE_BITFIELD(reagents.flags, OPENCONTAINER)
 	playsound(src, "can_open", 50, 1)
 	spillable = TRUE

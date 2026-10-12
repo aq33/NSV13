@@ -10,11 +10,11 @@
 	if(rand(3) == 1)
 		stat_value *= -1
 	name = "Virus ([stat_name] of [stat_value])"
-	description = "Nanotrasen is interested in a virus with a [stat_name] stat of exactly [stat_value]. Central Command will pay handsomely for such a virus."
+	description = "Nanotrasen interesuje się wirusem o parametrze „[stat_name]” równym dokładnie [stat_value]. Centrala sowicie zapłaci za taki wirus."
 	reward += rand(0, 4) * 500
 
 /datum/bounty/virus/completion_string()
-	return shipped ? "Shipped" : "Not Shipped"
+	return shipped ? "Wysłane" : "Niewysłane"
 
 /datum/bounty/virus/can_claim()
 	return ..() && shipped

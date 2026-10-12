@@ -5146,7 +5146,7 @@
 /area/maintenance/nsv/deck2/frame1/starboard)
 "aof" = (
 /obj/item/paper{
-	default_raw_text = "We've run out of blue paint for the briefing room so we'll just have to ship it out with the SolGov logos untouched. If you find this note, please forward it to your nearest Titanworks shipyard for processing.";
+	default_raw_text = "Skończyła nam się niebieska farba do sali odpraw, więc wyślemy go z nietkniętymi logo SolGovu. Jeśli znajdziesz tę notatkę, przekaż ją do najbliższej stoczni Titanworks do rozpatrzenia.";
 	name = "SGC Solaria retrofit notes"
 	},
 /obj/structure/rack,

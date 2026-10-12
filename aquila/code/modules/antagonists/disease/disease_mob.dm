@@ -65,7 +65,7 @@ the new instance inside the host to be updated to the template's stats.
 	var/datum/atom_hud/my_hud = GLOB.huds[DATA_HUD_SENTIENT_DISEASE]
 	my_hud.add_hud_to(src)
 
-	browser = new /datum/browser(src, "disease_menu", "Adaptation Menu", 1000, 770, src)
+	browser = new /datum/browser(src, "disease_menu", "Menu adaptacji", 1000, 770, src)
 
 	freemove_end = world.time + FREEMOVE_TIME
 	freemove_end_timerid = addtimer(CALLBACK(src, .proc/infect_random_patient_zero), FREEMOVE_TIME, TIMER_STOPPABLE)
@@ -83,26 +83,26 @@ the new instance inside the host to be updated to the template's stats.
 /mob/camera/disease/Login()
 	..()
 	if(freemove)
-		to_chat(src, "<span class='warning'>You have [DisplayTimeText(freemove_end - world.time)] to select your first host. Click on a human to select your host.</span>")
+		to_chat(src, "<span class='warning'>Masz [DisplayTimeText(freemove_end - world.time)] na wybór pierwszego nosiciela. Kliknij człowieka, żeby go wybrać.</span>")
 
 
 /mob/camera/disease/get_stat_tab_status()
 	var/list/tab_data = ..()
 	if(freemove)
-		tab_data["Host Selection Time"] = GENERATE_STAT_TEXT("[round((freemove_end - world.time)/10)]s")
+		tab_data["Czas na wybór nosiciela"] = GENERATE_STAT_TEXT("[round((freemove_end - world.time)/10)]s")
 	else
-		tab_data["Adaptation Points"] = GENERATE_STAT_TEXT("[points]/[total_points]")
-		tab_data["Hosts"] = GENERATE_STAT_TEXT("[disease_instances.len]")
+		tab_data["Punkty adaptacji"] = GENERATE_STAT_TEXT("[points]/[total_points]")
+		tab_data["Nosiciele"] = GENERATE_STAT_TEXT("[disease_instances.len]")
 		var/adapt_ready = next_adaptation_time - world.time
 		if(adapt_ready > 0)
-			tab_data["Adaptation Ready"] = GENERATE_STAT_TEXT("[round(adapt_ready/10, 0.1)]s")
+			tab_data["Adaptacja gotowa za"] = GENERATE_STAT_TEXT("[round(adapt_ready/10, 0.1)]s")
 	return tab_data
 
 /mob/camera/disease/examine(mob/user)
 	. = ..()
 	if(isobserver(user))
-		. += "<span class='notice'>[src] has [points]/[total_points] adaptation points.</span>\n"+\
-		"<span class='notice'>[src] has the following unlocked:</span>"
+		. += "<span class='notice'>[src] ma [points]/[total_points] punktów adaptacji.</span>\n"+\
+		"<span class='notice'>[src] ma odblokowane:</span>"
 		for(var/datum/disease_ability/ability in purchased_abilities)
 			. += "<span class='notice'>[ability.name]</span>"
 
@@ -149,12 +149,12 @@ the new instance inside the host to be updated to the template's stats.
 			taken_names[initial(D.name)] = TRUE
 	var/set_name
 	while(!set_name)
-		var/input = sanitize_name(stripped_input(src, "Select a name for your disease", "Select Name", "", MAX_NAME_LEN))
+		var/input = sanitize_name(stripped_input(src, "Wybierz nazwę swojej choroby", "Wybór nazwy", "", MAX_NAME_LEN))
 		if(!input)
 			set_name = "Sentient Virus"
 			break
 		if(taken_names[input])
-			to_chat(src, "<span class='notice'>You cannot use the name of such a well-known disease!</span>")
+			to_chat(src, "<span class='notice'>Nie możesz użyć nazwy tak znanej choroby!</span>")
 		else
 			set_name = input
 	real_name = "[set_name] (Sentient Disease)"
@@ -188,7 +188,7 @@ the new instance inside the host to be updated to the template's stats.
 		possible_hosts.Cut(1, 2)
 
 	if(del_on_fail)
-		to_chat(src, "<span class=userdanger'>No hosts were available for your disease to infect.</span>")
+		to_chat(src, "<span class='userdanger'>Nie było nosicieli, których twoja choroba mogłaby zarazić.</span>")
 		qdel(src)
 	return FALSE
 
@@ -231,7 +231,7 @@ the new instance inside the host to be updated to the template's stats.
 	var/datum/atom_hud/my_hud = GLOB.huds[DATA_HUD_SENTIENT_DISEASE]
 	my_hud.add_to_hud(V.affected_mob)
 
-	to_chat(src, "<span class='notice'>A new host, <b>[V.affected_mob.real_name]</b>, has been infected.</span>")
+	to_chat(src, "<span class='notice'>Zarażono nowego nosiciela: <b>[V.affected_mob.real_name]</b>.</span>")
 
 	if(!following_host)
 		set_following(V.affected_mob)
@@ -242,7 +242,7 @@ the new instance inside the host to be updated to the template's stats.
 		disease_instances -= V
 		hosts -= V.affected_mob
 	else
-		to_chat(src, "<span class='notice'>One of your hosts, <b>[V.affected_mob.real_name]</b>, has been purged of your infection.</span>")
+		to_chat(src, "<span class='notice'>Jeden z twoich nosicieli, <b>[V.affected_mob.real_name]</b>, pozbył się twojej infekcji.</span>")
 
 		var/datum/atom_hud/my_hud = GLOB.huds[DATA_HUD_SENTIENT_DISEASE]
 		my_hud.remove_from_hud(V.affected_mob)
@@ -254,7 +254,7 @@ the new instance inside the host to be updated to the template's stats.
 		hosts -= V.affected_mob
 
 		if(!disease_instances.len)
-			to_chat(src, "<span class='userdanger'>The last of your infection has disappeared.</span>")
+			to_chat(src, "<span class='userdanger'>Ostatnia cząstka twojej infekcji zniknęła.</span>")
 			set_following(null)
 			qdel(src)
 		refresh_adaptation_menu()
@@ -291,22 +291,22 @@ the new instance inside the host to be updated to the template's stats.
 /mob/camera/disease/ClickOn(var/atom/A, params)
 	if(freemove && ishuman(A))
 		var/mob/living/carbon/human/H = A
-		if(alert(src, "Select [H.name] as your initial host?", "Select Host", "Yes", "No") != "Yes")
+		if(alert(src, "Wybrać [H.name] jako pierwszego nosiciela?", "Wybór nosiciela", "Yes", "No") != "Yes")
 			return
 		if(!freemove)
 			return
 		if(QDELETED(H) || !force_infect(H))
-			to_chat(src, "<span class='warning'>[H ? H.name : "Host"] cannot be infected.</span>")
+			to_chat(src, "<span class='warning'>[H ? H.name : "Nosiciela"] nie da się zarazić.</span>")
 	else
 		..()
 
 /mob/camera/disease/proc/adapt_cooldown()
-	to_chat(src, "<span class='notice'>You have altered your genetic structure. You will be unable to adapt again for [DisplayTimeText(adaptation_cooldown)].</span>")
+	to_chat(src, "<span class='notice'>Zmieniasz swoją strukturę genetyczną. Kolejna adaptacja będzie możliwa za [DisplayTimeText(adaptation_cooldown)].</span>")
 	next_adaptation_time = world.time + adaptation_cooldown
 	addtimer(CALLBACK(src, .proc/notify_adapt_ready), adaptation_cooldown)
 
 /mob/camera/disease/proc/notify_adapt_ready()
-	to_chat(src, "<span class='notice'>You are now ready to adapt again.</span>")
+	to_chat(src, "<span class='notice'>Możesz znów się adaptować.</span>")
 	refresh_adaptation_menu()
 
 /mob/camera/disease/proc/refresh_adaptation_menu()
@@ -322,10 +322,10 @@ the new instance inside the host to be updated to the template's stats.
 	if(examining_ability)
 		dat += "<a href='byond://?src=[REF(src)];main_menu=1'>Back</a><br><h1>[examining_ability.name]</h1>[examining_ability.stat_block][examining_ability.long_desc][examining_ability.threshold_block]"
 	else
-		dat += "<h1>Disease Statistics</h1><br>\
+		dat += "<h1>Statystyki choroby</h1><br>\
 			Resistance: [DT.resistance]<br>\
 			Stealth: [DT.stealth]<br>\
-			Stage Speed: [DT.stage_rate]<br>\
+			Szybkość postępu: [DT.stage_rate]<br>\
 			Transmissibility: [DT.transmission]<hr>\
 			Cure: [DT.cure_text]"
 		dat += "<hr><h1>Adaptations</h1>\
@@ -347,7 +347,7 @@ the new instance inside the host to be updated to the template's stats.
 					purchase_text = "<span class='linkOff'>Refund</span>"
 			dat += "<tr><td>[A.cost]</td><td>[purchase_text]</td><td>[A.required_total_points]</td><td><a href='byond://?src=[REF(src)];examine_ability=[REF(A)]'>[A.name]</a></td><td>[A.category]</td><td>[A.short_desc]</td></tr>"
 
-		dat += "</table><br>Infect many hosts at once to gain adaptation points.<hr><h1>Infected Hosts</h1>"
+		dat += "</table><br>Zarażaj wielu nosicieli naraz, by zdobywać punkty adaptacji.<hr><h1>Zarażeni nosiciele</h1>"
 		for(var/V in hosts)
 			var/mob/living/L = V
 			dat += "<br><a href='byond://?src=[REF(src)];follow_instance=[REF(L)]'>[L.real_name]</a>"

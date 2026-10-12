@@ -190,7 +190,7 @@
 /obj/structure/blob/bullet_act(obj/item/projectile/energy/accelerated_particle/P, def_zone, piercing_hit = FALSE)
 	if(istype(P))
 		playsound(src, 'sound/weapons/pierce.ogg', 50, 1) //we don't have a hitsound so lets just overwrite it here
-		visible_message("<span class='danger'>[src] is hit by \a [P]!</span>", null, null, COMBAT_MESSAGE_RANGE)
+		visible_message("<span class='danger'>[P] trafia w [src]!</span>", null, null, COMBAT_MESSAGE_RANGE)
 		take_damage((P.energy)*0.6)
 	else
 		. = ..()
@@ -243,7 +243,7 @@
 		"<b>Efekt:</b> <span class='notice'>[overmind.blobstrain.analyzerdescdamage]</span>",
 		"<b>Właściwości:</b> <span class='notice'>[overmind.blobstrain.analyzerdesceffect || "N/A"]</span>")
 	else
-		. += "<b>No Material Detected!</b>"
+		. += "<b>Nie wykryto materiału!</b>"
 
 /obj/structure/blob/proc/typereport(mob/user)
 	RETURN_TYPE(/list)
@@ -321,12 +321,12 @@
 		. += "Wydaje się że jego rodzaj to: [get_chem_name()]."
 
 /obj/structure/blob/proc/scannerreport()
-	return "A generic blob. Looks like someone forgot to override this proc, adminhelp this."
+	return "Zwykły grzyb. Wygląda na to, że ktoś zapomniał nadpisać ten proc - napisz ahelp."
 
 /obj/structure/blob/proc/get_chem_name()
 	if(overmind)
 		return overmind.blobstrain.name
-	return "some kind of organic tissue"
+	return "jakiś rodzaj tkanki organicznej"
 
 /obj/structure/blob/normal
 	name = "zwyczajny grzyb"

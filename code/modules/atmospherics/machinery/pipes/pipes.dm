@@ -25,7 +25,7 @@
 
 /obj/machinery/atmospherics/pipe/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>[src] is on layer [piping_layer].</span>"
+	. += "<span class='notice'>[src] jest na warstwie [piping_layer].</span>"
 
 /obj/machinery/atmospherics/pipe/nullify_node(i)
 	var/obj/machinery/atmospherics/old_node = nodes[i]

@@ -32,7 +32,7 @@
 			continue
 		if(buckle_mob(M, TRUE))
 			target_stabbed = TRUE
-			to_chat(M, "<span class='userdanger'>You are impaled by [src]!</span>")
+			to_chat(M, "<span class='userdanger'>[src] nadziewa cię!</span>")
 			M.emote("scream")
 			M.apply_damage(5, BRUTE, BODY_ZONE_CHEST)
 			if(ishuman(M))
@@ -49,11 +49,11 @@
 		return ..()
 	if(!buckled_mob.break_do_after_checks())
 		return
-	to_chat(buckled_mob, "<span class='warning'>You begin climbing out of [src].</span>")
+	to_chat(buckled_mob, "<span class='warning'>Zaczynasz wydostawać się z [src].</span>")
 	if(do_after(buckled_mob, 50, target=src))
 		. = ..()
 	else
-		to_chat(buckled_mob, "<span class='userdanger'>You fail to detach yourself from [src].</span>")
+		to_chat(buckled_mob, "<span class='userdanger'>Nie udaje ci się uwolnić z [src].</span>")
 
 /obj/structure/destructible/clockwork/trap/skewer/post_unbuckle_mob(mob/living/M)
 	if(!has_buckled_mobs())

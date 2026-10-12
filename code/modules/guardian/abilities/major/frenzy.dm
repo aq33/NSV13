@@ -32,7 +32,7 @@
 	if(isliving(target) && world.time >= next_rush && guardian.is_deployed())
 		var/mob/living/L = target
 		if(target == guardian.summoner?.current)
-			to_chat(guardian, "<span class='danger italics'>You can't attack your summoner!</span>")
+			to_chat(guardian, "<span class='danger italics'>Nie możesz zaatakować swojego przywoływacza!</span>")
 			return
 		playsound(guardian, 'sound/magic/blind.ogg', 60, FALSE)
 		guardian.forceMove(get_step(get_turf(L), get_dir(guardian, L)))
@@ -43,5 +43,5 @@
 /datum/guardian_ability/major/frenzy/Stat()
 	var/list/tab_data = list()
 	if(next_rush > world.time)
-		tab_data["Frenzy Charge Cooldown Remaining"] = GENERATE_STAT_TEXT("[DisplayTimeText(next_rush - world.time)]")
+		tab_data["Odnowienie szarży"] = GENERATE_STAT_TEXT("[DisplayTimeText(next_rush - world.time)]")
 	return tab_data

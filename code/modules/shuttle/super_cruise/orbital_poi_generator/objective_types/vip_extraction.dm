@@ -10,10 +10,7 @@
 	max_payout = 20000
 
 /datum/orbital_objective/vip_recovery/get_text()
-	return "Someone of particular interest to us is located at [station_name]. We require them to be extracted immediately. \
-		We have good intel to suggest that the VIP is still alive, however if not their personal diary-disk should have enough infomation \
-		about what we are looking for. An additional point to note is that it is recommended a security team assists in this mission due \
-		to the potentially hostile nature of the individual. Return the individual to the station alive to complete the objective."
+	return "Na [station_name] znajduje się ktoś szczególnie dla nas interesujący. Musimy go natychmiast ewakuować. Mamy dobre informacje, że VIP wciąż żyje, ale jeśli nie, jego osobisty dysk-pamiętnik powinien zawierać dość informacji o tym, czego szukamy. Dodatkowo w tej misji zalecana jest pomoc zespołu ochrony, ze względu na potencjalnie wrogie nastawienie tej osoby. Aby ukończyć cel, dostarcz tę osobę żywą na stację."
 
 //If nobody takes up the ghost role, then we dont care if they died.
 //I know, its a bit sad.
@@ -44,26 +41,22 @@
 	var/antag_elligable = FALSE
 	switch(pickweight(list("centcom_official" = 4, "greytide" = 3)))
 		if("centcom_official")
-			created_human.flavor_text = "You are a CentCom official onboard a badly damaged station. Making your way back to Space Station 13 to uncover the secrets you hold is \
-				your top priority as far as Nanotrasen is concerned, but surviving just one more day is all you can ask for."
+			created_human.flavor_text = "Jesteś urzędnikiem Centrali na pokładzie mocno uszkodzonej stacji. Dla Nanotrasen twoim najwyższym priorytetem jest powrót na Stację Kosmiczną 13, by ujawnić skrywane przez ciebie sekrety, ale ty możesz prosić tylko o przetrwanie jeszcze jednego dnia."
 			created_human.equipOutfit(/datum/outfit/vip_target/centcom_official_vip)
 			suit_type = /obj/item/clothing/suit/space/fragile //Riches To Rags
 			antag_elligable = TRUE
 		if("greytide")
-			created_human.flavor_text = "You are just an assistant on a lonely derelict station. You dream of going home, \
-				but it would take another one of the miracles that kept you alive to get you home."
+			created_human.flavor_text = "Jesteś tylko asystentem na samotnej, opuszczonej stacji. Marzysz o powrocie do domu, ale potrzeba by kolejnego z cudów, które utrzymały cię przy życiu, żebyś wrócił."
 			created_human.equipOutfit(/datum/outfit/vip_target/greytide)
 			antag_elligable = TRUE
 	created_human.mind.store_memory(created_human.flavor_text)
 	if(antag_elligable)
 		if(prob(7))
 			created_human.mind.make_Traitor()
-			created_human.flavor_text += " - That was, until you made a deal with your newfound Benefactors. You know Nanotrasen is sending a recovery team - \
-			And, hopefully, how to exploit your newfound position..." //Makes their special status a little more obvious upon entering the mob
+			created_human.flavor_text += " – Tak było, dopóki nie zawarłeś umowy ze swoimi nowymi Dobroczyńcami. Wiesz, że Nanotrasen wysyła zespół ratunkowy – i, miejmy nadzieję, wiesz, jak wykorzystać swoją nową pozycję..." //Makes their special status a little more obvious upon entering the mob
 		else if(prob(8))
 			created_human.mind.make_Changeling()
-			created_human.flavor_text += " - Or so's the cover story we've curated to sway the hearts of the hapless souls who, one day, may stumble upon \
-			our miserable, eeked out existence here... And inadvertently begin the hunt anew." //Ditto
+			created_human.flavor_text += " – A przynajmniej taka jest przykrywka, którą przygotowaliśmy, by poruszyć serca nieszczęsnych dusz, które pewnego dnia natkną się na naszą nędzną, wyrwaną losowi egzystencję... I nieświadomie rozpoczną polowanie na nowo." //Ditto
 	mob_to_recover = created_human
 	//Give them space-worthy suit and other equipment
 	var/turf/open/T = locate() in shuffle(view(1, created_human))

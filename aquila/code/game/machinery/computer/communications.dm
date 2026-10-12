@@ -22,9 +22,9 @@
 				return
 			var/reason = trim(html_encode(params["reason"]), MAX_MESSAGE_LEN)
 			ert_request(reason, usr)
-			to_chat(usr, "<span class='notice'>Request sent.</span>")
+			to_chat(usr, "<span class='notice'>Wysłano prośbę.</span>")
 			usr.log_message("has requested an emergency response team from Centcom with reason \"[reason]\"", LOG_SAY)
-			priority_announce("An Emergency Response Team has been requested by [usr]. Confirmation or denial of this request will be sent shortly.", "Emergency Response Team Requested", SSstation.announcer.get_rand_report_sound())
+			priority_announce("[usr] prosi o oddział szybkiego reagowania. Zgoda lub odmowa zostanie wkrótce przesłana.", "Prośba o oddział szybkiego reagowania", SSstation.announcer.get_rand_report_sound())
 			playsound(src, 'sound/machines/terminal_prompt.ogg', 50, FALSE)
 			COOLDOWN_START(src, reinforcement_action_cooldown, 15 MINUTES)
 			. = TRUE

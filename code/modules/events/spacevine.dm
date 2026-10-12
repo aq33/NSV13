@@ -90,7 +90,7 @@
 	if(issilicon(crosser))
 		return
 	if(prob(severity) && istype(crosser) && !isvineimmune(crosser))
-		to_chat(crosser, "<span class='alert'>You accidentally touch the vine and feel a strange sensation.</span>")
+		to_chat(crosser, "<span class='alert'>Przypadkiem dotykasz pnącza i czujesz dziwne mrowienie.</span>")
 		crosser.adjustToxLoss(5)
 
 /datum/spacevine_mutation/toxicity/on_eat(obj/structure/spacevine/holder, mob/living/eater)
@@ -165,16 +165,16 @@
 			C.apply_damage(50, BRUTE, def_zone = limb) //This one gets a bit lower damage because it ignores armor.
 			C.Stun(1 SECONDS) //Stopped in place for a moment.
 			playsound(M, 'sound/weapons/pierce.ogg', 50, TRUE, -1)
-			M.visible_message("<span class='danger'>[M] is nailed by a sharp thorn!</span>", \
-			"<span class='userdanger'>You are nailed by a sharp thorn!</span>")
+			M.visible_message("<span class='danger'>[M] zostaje ukłuty ostrym cierniem!</span>", \
+			"<span class='userdanger'>Kłuje cię ostry cierń!</span>")
 			log_combat(S, M, "aggressively pierced") //"Aggressively" for easy ctrl+F'ing in the attack logs.
 		else
 			if(prob(80))
 				C.apply_damage(60, BRUTE, def_zone = limb, blocked = armor)
 				C.Knockdown(2 SECONDS)
 				playsound(M, 'sound/weapons/whip.ogg', 50, TRUE, -1)
-				M.visible_message("<span class='danger'>[M] is lacerated by an outburst of vines!</span>", \
-				"<span class='userdanger'>You are lacerated by an outburst of vines!</span>")
+				M.visible_message("<span class='danger'>Wybuch pnączy rozszarpuje [M]!</span>", \
+				"<span class='userdanger'>Wybuch pnączy cię rozszarpuje!</span>")
 				log_combat(S, M, "aggressively lacerated")
 			else
 				C.apply_damage(60, BRUTE, def_zone = limb, blocked = armor)
@@ -182,14 +182,14 @@
 				var/atom/throw_target = get_edge_target_turf(C, get_dir(S, get_step_away(C, S)))
 				C.throw_at(throw_target, 3, 6)
 				playsound(M, 'sound/effects/hit_kick.ogg', 50, TRUE, -1)
-				M.visible_message("<span class='danger'>[M] is smashed by a large vine!</span>", \
-				"<span class='userdanger'>You are smashed by a large vine!</span>")
+				M.visible_message("<span class='danger'>Wielkie pnącze miażdży [M]!</span>", \
+				"<span class='userdanger'>Wielkie pnącze cię miażdży!</span>")
 				log_combat(S, M, "aggressively smashed")
 	else //Living but not a carbon? Maybe a silicon? Can't be wounded so have a big chunk of simple bruteloss with no special effects. They can be entangled.
 		M.adjustBruteLoss(75)
 		playsound(M, 'sound/weapons/whip.ogg', 50, TRUE, -1)
-		M.visible_message("<span class='danger'>[M] is brutally threshed by [S]!</span>", \
-		"<span class='userdanger'>You are brutally threshed by [S]!</span>")
+		M.visible_message("<span class='danger'>[S] brutalnie młóci [M]!</span>", \
+		"<span class='userdanger'>[S] brutalnie cię młóci!</span>")
 		log_combat(S, M, "aggressively spread into") //You aren't being attacked by the vines. You just happen to stand in their way.
 
 /datum/spacevine_mutation/transparency
@@ -260,13 +260,13 @@
 	if(prob(severity) && istype(crosser) && !isvineimmune(crosser))
 		var/mob/living/M = crosser
 		M.adjustBruteLoss(5)
-		to_chat(M, "<span class='alert'>You cut yourself on the thorny vines.</span>")
+		to_chat(M, "<span class='alert'>Kaleczysz się o ciernie pnączy.</span>")
 
 /datum/spacevine_mutation/thorns/on_hit(obj/structure/spacevine/holder, mob/living/hitter, obj/item/I, expected_damage)
 	if(prob(severity) && istype(hitter) && !isvineimmune(hitter))
 		var/mob/living/M = hitter
 		M.adjustBruteLoss(5)
-		to_chat(M, "<span class='alert'>You cut yourself on the thorny vines.</span>")
+		to_chat(M, "<span class='alert'>Kaleczysz się o ciernie pnączy.</span>")
 	. =	expected_damage
 
 /datum/spacevine_mutation/woodening
@@ -436,7 +436,7 @@
 /datum/spacevine_controller/vv_do_topic(href_list)
 	. = ..()
 	if(href_list[VV_HK_SPACEVINE_PURGE])
-		if(alert(usr, "Are you sure you want to delete this spacevine cluster?", "Delete Vines", "Yes", "No") == "Yes")
+		if(alert(usr, "Czy na pewno chcesz usunąć to skupisko kosmicznych pnączy?", "Delete Vines", "Yes", "No") == "Yes")
 			DeleteVines()
 
 /datum/spacevine_controller/proc/DeleteVines()	//this is kill
@@ -537,7 +537,7 @@
 	for(var/datum/spacevine_mutation/SM in mutations)
 		SM.on_buckle(src, V)
 	if((V.stat != DEAD) && (V.buckled != src)) //not dead or captured
-		to_chat(V, "<span class='danger'>The vines [pick("wind", "tangle", "tighten")] around you!</span>")
+		to_chat(V, "<span class='danger'>Pnącza [pick("oplatają się", "plączą się", "zaciskają się")] wokół ciebie!</span>")
 		buckle_mob(V, 1)
 
 /obj/structure/spacevine/proc/spread()

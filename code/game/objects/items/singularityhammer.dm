@@ -14,7 +14,7 @@
 	w_class = WEIGHT_CLASS_HUGE
 	armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 0, "bomb" = 50, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100, "stamina" = 0)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	force_string = "LORD SINGULOTH HIMSELF"
+	force_string = "SAM LORD SINGULOTH"
 	var/charged = 5
 
 /obj/item/singularityhammer/Initialize(mapload)
@@ -109,9 +109,9 @@
 	var/datum/effect_system/lightning_spread/s = new /datum/effect_system/lightning_spread
 	s.set_up(5, 1, target.loc)
 	s.start()
-	target.visible_message("<span class='danger'>[target.name] was shocked by [src]!</span>", \
-		"<span class='userdanger'>You feel a powerful shock course through your body sending you flying!</span>", \
-		"<span class='italics'>You hear a heavy electrical crack!</span>")
+	target.visible_message("<span class='danger'>[src] razi prądem [target.name]!</span>", \
+		"<span class='userdanger'>Czujesz, jak przez twoje ciało przechodzi potężny wstrząs, który posyła cię w powietrze!</span>", \
+		"<span class='italics'>Słyszysz głośny trzask elektryczny!</span>")
 	var/atom/throw_target = get_edge_target_turf(target, get_dir(src, get_step_away(target, src)))
 	target.throw_at(throw_target, 200, 4)
 	return

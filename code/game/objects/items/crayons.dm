@@ -28,7 +28,7 @@
 
 	var/crayon_color = "red"
 	w_class = WEIGHT_CLASS_TINY
-	attack_verb = list("attacked", "coloured")
+	attack_verb = list("atakuje", "koloruje")
 	grind_results = list()
 	var/paint_color = "#FF0000" //RGB
 
@@ -75,7 +75,7 @@
 	return istype(surface, /turf/open/floor)
 
 /obj/item/toy/crayon/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is jamming [src] up [user.p_their()] nose and into [user.p_their()] brain. It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] wpycha sobie [src] przez nos do mózgu. Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return (BRUTELOSS|OXYLOSS)
 
 /obj/item/toy/crayon/Initialize(mapload)
@@ -131,12 +131,12 @@
 	if(charges == -1)
 		. = FALSE
 	else if(!charges_left)
-		to_chat(user, "<span class='warning'>There is no more of [src] left!</span>")
+		to_chat(user, "<span class='warning'>Nic nie zostało z [src]!</span>")
 		if(self_contained)
 			qdel(src)
 		. = TRUE
 	else if(charges_left < amount && requires_full)
-		to_chat(user, "<span class='warning'>There is not enough of [src] left!</span>")
+		to_chat(user, "<span class='warning'>Zostało za mało [src]!</span>")
 		. = TRUE
 
 
@@ -155,7 +155,7 @@
 	if(user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		if(has_cap)
 			is_capped = !is_capped
-			to_chat(user, "<span class='notice'>The cap on [src] is now [is_capped ? "on" : "off"].</span>")
+			to_chat(user, "<span class='notice'>Nakrętka [src] jest teraz [is_capped ? "założona" : "zdjęta"].</span>")
 			update_icon()
 			ui_update()
 
@@ -237,7 +237,7 @@
 				paint_mode = PAINT_NORMAL
 		if("select_colour")
 			if(can_change_colour)
-				var/chosen_colour = input(usr,"","Choose Color",paint_color) as color|null
+				var/chosen_colour = input(usr,"","Wybierz kolor",paint_color) as color|null
 
 				if (!isnull(chosen_colour))
 					paint_color = chosen_colour
@@ -245,7 +245,7 @@
 				else
 					. = FALSE
 		if("enter_text")
-			var/txt = stripped_input(usr,"Choose what to write.",
+			var/txt = stripped_input(usr,"Wybierz, co napisać.",
 				"Scribbles",default = text_buffer)
 			text_buffer = crayon_text_strip(txt)
 			. = TRUE
@@ -341,7 +341,7 @@
 		clicky = CLAMP(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
 
 	if(pre_noise)
-		audible_message("<span class='notice'>You hear spraying.</span>")
+		audible_message("<span class='notice'>Słyszysz psikanie.</span>")
 		playsound(user.loc, 'sound/effects/spray.ogg', 5, 1, 5)
 
 	var/wait_time = 50
@@ -352,7 +352,7 @@
 		if (territory_claimed(get_area(target), user))
 			wait_time = 20 SECONDS
 	if(!instant || paint_mode == PAINT_LARGE_HORIZONTAL)
-		to_chat(user, "<span class='notice'>You start drawing a [temp] on the [target.name]...</span>") // hippie -- removed a weird tab that had no reason to be here
+		to_chat(user, "<span class='notice'>Zaczynasz rysować [temp] na [target.name]...</span>") // hippie -- removed a weird tab that had no reason to be here
 		if(!do_after(user, wait_time, target = target))
 			return
 
@@ -385,20 +385,20 @@
 					affected_turfs += right
 					affected_turfs += target
 				else
-					to_chat(user, "<span class='warning'>There isn't enough space to paint!</span>")
+					to_chat(user, "<span class='warning'>Za mało miejsca do malowania!</span>")
 					return
 
 	if(!instant)
-		to_chat(user, "<span class='notice'>You finish drawing \the [temp].</span>")
+		to_chat(user, "<span class='notice'>Kończysz rysować [temp].</span>")
 	else
-		to_chat(user, "<span class='notice'>You spray a [temp] on \the [target.name]</span>")
+		to_chat(user, "<span class='notice'>Malujesz sprayem [temp] na [target.name]</span>")
 
 	if(length(text_buffer) > 1)
 		text_buffer = copytext(text_buffer, length(text_buffer[1]) + 1)
 		SStgui.update_uis(src)
 
 	if(post_noise)
-		audible_message("<span class='notice'>You hear spraying.</span>")
+		audible_message("<span class='notice'>Słyszysz psikanie.</span>")
 		playsound(user.loc, 'sound/effects/spray.ogg', 5, 1, 5)
 	// hippie start -- using changes moved to the end of the proc, so it won't use charges if the spraying fails for any reason.
 	var/charges_used = use_charges(user, cost)
@@ -416,7 +416,7 @@
 
 /obj/item/toy/crayon/attack(mob/M, mob/user)
 	if(edible && (M == user))
-		to_chat(user, "You take a bite of the [src.name]. Delicious!")
+		to_chat(user, "Odgryzasz kawałek [src.name]. Pyszne!")
 		var/eaten = use_charges(user, 5, FALSE)
 		if(check_empty(user)) //Prevents divsion by zero
 			return
@@ -556,26 +556,26 @@
 		var/obj/item/toy/crayon/C = W
 		switch(C.crayon_color)
 			if("mime")
-				to_chat(usr, "This crayon is too sad to be contained in this box.")
+				to_chat(usr, "Ta kredka jest zbyt smutna, by zmieścić się w tym pudełku.")
 				return
 			if("rainbow")
-				to_chat(usr, "This crayon is too powerful to be contained in this box.")
+				to_chat(usr, "Ta kredka jest zbyt potężna, by zmieścić się w tym pudełku.")
 				return
 		if(istype(W, /obj/item/toy/crayon/spraycan))
-			to_chat(user, "Spraycans are not crayons.")
+			to_chat(user, "Puszki ze sprayem to nie kredki.")
 			return
 	return ..()
 
 /obj/item/storage/crayons/attack_self(mob/user)
 	. = ..()
 	if(contents.len > 0)
-		to_chat(user, "<span class='warning'>You can't fold down [src] with crayons inside!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz złożyć [src], gdy są w nim kredki!</span>")
 		return
 	if(flags_1 & HOLOGRAM_1)
 		return
 
 	var/obj/item/stack/sheet/cardboard/cardboard = new /obj/item/stack/sheet/cardboard(user.drop_location())
-	to_chat(user, "<span class='notice'>You fold the [src] into cardboard.</span>")
+	to_chat(user, "<span class='notice'>Składasz [src] w karton.</span>")
 	user.put_in_active_hand(cardboard)
 	qdel(src)
 
@@ -615,12 +615,12 @@
 /obj/item/toy/crayon/spraycan/suicide_act(mob/user)
 	var/mob/living/carbon/human/H = user
 	if(is_capped || !actually_paints)
-		user.visible_message("<span class='suicide'>[user] shakes up [src] with a rattle and lifts it to [user.p_their()] mouth, but nothing happens!</span>")
+		user.visible_message("<span class='suicide'>[user] potrząsa grzechoczącym [src] i podnosi go do ust, ale nic się nie dzieje!</span>")
 		user.say("MEDIOCRE!!", forced="spraycan suicide")
 		return SHAME
 	else
-		user.visible_message("<span class='suicide'>[user] shakes up [src] with a rattle and lifts it to [user.p_their()] mouth, spraying paint across [user.p_their()] teeth!</span>")
-		user.say("WITNESS ME!!", forced="spraycan suicide")
+		user.visible_message("<span class='suicide'>[user] potrząsa grzechoczącym [src] i podnosi go do ust, pryskając farbą na zęby!</span>")
+		user.say("ZOBACZCIE MNIE!!", forced="spraycan suicide")
 		if(pre_noise || post_noise)
 			playsound(src, 'sound/effects/spray.ogg', 5, TRUE, 5)
 		if(can_change_colour)
@@ -650,10 +650,10 @@
 /obj/item/toy/crayon/spraycan/examine(mob/user)
 	. = ..()
 	if(charges_left)
-		. += "It has [charges_left] use\s left."
+		. += "Pozostało użyć: [charges_left]."
 	else
-		. += "It is empty."
-	. += "<span class='notice'>Alt-click [src] to [ is_capped ? "take the cap off" : "put the cap on"].</span>"
+		. += "Jest pusty."
+	. += "<span class='notice'>Alt-kliknij [src], by [ is_capped ? "zdjąć nakrętkę" : "założyć nakrętkę"].</span>"
 
 /obj/item/toy/crayon/spraycan/pre_attack(atom/target, mob/user, proximity, params)
 	if(!proximity)
@@ -663,7 +663,7 @@
 		if(istype(target, /obj/machinery/modular_fabricator/autolathe))
 			return ..()
 		else
-			to_chat(user, "<span class='warning'>Take the cap off first!</span>")
+			to_chat(user, "<span class='warning'>Najpierw zdejmij zatyczkę!</span>")
 			return
 
 	if(check_empty(user))
@@ -674,8 +674,8 @@
 			playsound(user.loc, 'sound/effects/spray.ogg', 25, 1, 5)
 
 		var/mob/living/carbon/C = target
-		user.visible_message("<span class='danger'>[user] sprays [src] into the face of [target]!</span>")
-		to_chat(target, "<span class='userdanger'>[user] sprays [src] into your face!</span>")
+		user.visible_message("<span class='danger'>[user] psika [src] w twarz [target]!</span>")
+		to_chat(target, "<span class='userdanger'>[user] psika ci [src] w twarz!</span>")
 
 		if(C.client)
 			C.blur_eyes(3)
@@ -703,16 +703,16 @@
 					if(((C.flags_cover & HEADCOVERSEYES) || (C.flags_cover & MASKCOVERSEYES) || (C.flags_cover & GLASSESCOVERSEYES)) && !HAS_TRAIT(C, TRAIT_SPRAYPAINTED))
 						C.flash_protect += 1
 						C.tint += 2
-						to_chat(usr, "<span class='warning'>You spray the [C] down, making it harder to see through!</span>")
+						to_chat(usr, "<span class='warning'>Spryskujesz [C], przez co trudniej przez to patrzeć!</span>")
 						ADD_TRAIT(C, TRAIT_SPRAYPAINTED, CRAYON_TRAIT)
 						if(ishuman(usr))
 							var/mob/living/carbon/human/H = usr
 							H.update_tint()
 					else
-						to_chat(usr, "<span class='warning'>A colour that dark on an object like this? Surely not...</span>")
+						to_chat(usr, "<span class='warning'>Taki ciemny kolor na czymś takim? Chyba nie...</span>")
 						return FALSE
 				else
-					to_chat(usr, "<span class='warning'>A colour that dark on an object like this? Surely not...</span>")
+					to_chat(usr, "<span class='warning'>Taki ciemny kolor na czymś takim? Chyba nie...</span>")
 					return FALSE
 
 			target.add_atom_colour(paint_color, WASHABLE_COLOUR_PRIORITY)
@@ -731,7 +731,7 @@
 
 		if(pre_noise || post_noise)
 			playsound(user.loc, 'sound/effects/spray.ogg', 5, 1, 5)
-		user.visible_message("[user] coats [target] with spray paint!", "<span class='notice'>You coat [target] with spray paint.</span>")
+		user.visible_message("[user] pokrywa [target] farbą w sprayu!", "<span class='notice'>Pokrywasz [target] farbą w sprayu.</span>")
 		return FALSE
 
 	. = ..()
@@ -752,7 +752,7 @@
 /obj/item/toy/crayon/spraycan/borg/afterattack(atom/target,mob/user,proximity, params)
 	var/diff = ..()
 	if(!iscyborg(user))
-		to_chat(user, "<span class='notice'>How did you get this?</span>")
+		to_chat(user, "<span class='notice'>Skąd to masz?</span>")
 		qdel(src)
 		return FALSE
 
@@ -820,7 +820,7 @@
 		var/datum/antagonist/gang/G = user.mind.has_antag_datum(/datum/antagonist/gang)
 		if(G)
 			if(G.gang != gang)
-				to_chat(user, "<span class='danger'>This spraycan's color isn't your gang's one! You cannot use it.</span>")
+				to_chat(user, "<span class='danger'>Kolor tej puszki to nie kolor twojego gangu! Nie możesz jej użyć.</span>")
 				return FALSE
 			gang_mode = TRUE
 			. = "graffiti"
@@ -841,7 +841,7 @@
 	// Reject space, player-created areas, and non-station z-levels.
 	var/area/A = get_area(target)
 	if(!A || (!is_station_level(A.z)) || !(A.area_flags & VALID_TERRITORY))
-		to_chat(user, "<span class='warning'>[A] is unsuitable for tagging.</span>")
+		to_chat(user, "<span class='warning'>[A] nie nadaje się do tagowania.</span>")
 		return FALSE
 
 	var/spraying_over = FALSE
@@ -850,18 +850,18 @@
 			var/datum/antagonist/gang/GA = user.mind.has_antag_datum(/datum/antagonist/gang)
 			if(gangtag.gang != GA.gang)
 				if (alert)
-					to_chat(user, "<span class='notice'>[gangtag.gang] has been alerted of this takeover!</span>")
-					gangtag.gang.message_gangtools("[get_area(target)] is under attack by an enemy gang!")
+					to_chat(user, "<span class='notice'>Gang [gangtag.gang] został powiadomiony o tym przejęciu!</span>")
+					gangtag.gang.message_gangtools("[get_area(target)] jest atakowany przez wrogi gang!")
 				spraying_over = TRUE
 				break
 
 	for(var/obj/machinery/power/apc in target)
-		to_chat(user, "<span class='warning'>You can't tag an APC.</span>")
+		to_chat(user, "<span class='warning'>Nie możesz otagować APC.</span>")
 		return FALSE
 
 	var/occupying_gang = territory_claimed(A, user)
 	if(occupying_gang && !spraying_over)
-		to_chat(user, "<span class='danger'>[A] has already been tagged by the [occupying_gang] gang! You must get rid of or spray over the old tag first!</span>")
+		to_chat(user, "<span class='danger'>[A] jest już otagowany przez gang [occupying_gang]! Najpierw musisz usunąć lub zamalować stary tag!</span>")
 		return FALSE
 
 	// If you pass the gaunlet of checks, you're good to proceed
@@ -883,7 +883,7 @@
 	var/datum/antagonist/gang/G = user.mind.has_antag_datum(/datum/antagonist/gang)
 	var/area/territory = get_area(target)
 	new /obj/effect/decal/gang(target,G.gang,"graffiti",0,user)
-	to_chat(user, "<span class='notice'>You tagged [territory] for your gang!</span>")
+	to_chat(user, "<span class='notice'>Oznaczasz teren [territory] dla swojego gangu!</span>")
 
 /obj/item/toy/crayon/spraycan/gang
 	//desc = "A modified container containing suspicious paint."
@@ -903,7 +903,7 @@
 /obj/item/toy/crayon/spraycan/gang/examine(mob/user)
 	. = ..()
 	if(user.mind && user.mind.has_antag_datum(/datum/antagonist/gang) || isobserver(user))
-		to_chat(user, "This spraycan has been specially modified for tagging territory.")
+		to_chat(user, "Ta puszka ze sprayem została specjalnie zmodyfikowana do oznaczania terenu.")
 
 
 

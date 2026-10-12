@@ -67,6 +67,7 @@
 /obj/machinery/suit_storage_unit/engine
 	suit_type = /obj/item/clothing/suit/space/hardsuit/engine
 	mask_type = /obj/item/clothing/mask/breath
+	storage_type = /obj/item/clothing/shoes/magboots //AQUILA EDIT - port BeeStation/BeeStation-Hornet#9975
 
 /obj/machinery/suit_storage_unit/ce
 	suit_type = /obj/item/clothing/suit/space/hardsuit/engine/elite
@@ -153,6 +154,7 @@
 		mask = new mask_type(src)
 	if(storage_type)
 		storage = new storage_type(src)
+	interaction_flags_machine |= INTERACT_MACHINE_OFFLINE //AQUILA EDIT - radial zamiast TGUI (port BeeStation/BeeStation-Hornet#9975)
 	update_icon()
 
 /obj/machinery/suit_storage_unit/Destroy()
@@ -203,13 +205,12 @@
 	. = ..()
 	uv_super = !uv_super
 	wires.ui_update()
-	ui_update()
 
 /obj/machinery/suit_storage_unit/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class='warning'>You reprogram [src]'s decontamination subroutines.</span>")
+	to_chat(user, "<span class='warning'>Przeprogramowujesz procedury odkażania [src].</span>")
 
 /obj/machinery/suit_storage_unit/deconstruct(disassembled = TRUE)
 	if(!(flags_1 & NODECONSTRUCT_1))
@@ -227,26 +228,26 @@
 			return
 	var/mob/living/target = A
 	if(!state_open)
-		to_chat(user, "<span class='warning'>The unit's doors are shut!</span>")
+		to_chat(user, "<span class='warning'>Drzwi urządzenia są zamknięte!</span>")
 		return
 	if(!is_operational)
-		to_chat(user, "<span class='warning'>The unit is not operational!</span>")
+		to_chat(user, "<span class='warning'>Urządzenie nie działa!</span>")
 		return
 	if(occupant || helmet || suit || storage)
-		to_chat(user, "<span class='warning'>It's too cluttered inside to fit in!</span>")
+		to_chat(user, "<span class='warning'>W środku jest za ciasno, by się zmieścić!</span>")
 		return
 	if(target == user)
-		user.visible_message("<span class='warning'>[user] starts squeezing into [src]!</span>", "<span class='notice'>You start working your way into [src]...</span>")
+		user.visible_message("<span class='warning'>[user] zaczyna wciskać się do [src]!</span>", "<span class='notice'>Zaczynasz przeciskać się do [src]...</span>")
 	else
-		target.visible_message("<span class='warning'>[user] starts shoving [target] into [src]!</span>", "<span class='userdanger'>[user] starts shoving you into [src]!</span>")
+		target.visible_message("<span class='warning'>[user] zaczyna wpychać [target] do [src]!</span>", "<span class='userdanger'>[user] zaczyna wpychać cię do [src]!</span>")
 
 	if(do_mob(user, target, 30))
 		if(occupant || helmet || suit || storage)
 			return
 		if(target == user)
-			user.visible_message("<span class='warning'>[user] slips into [src] and closes the door behind [user.p_them()]!</span>", "<span class=notice'>You slip into [src]'s cramped space and shut its door.</span>")
+			user.visible_message("<span class='warning'>[user] wślizguje się do [src] i zamyka za sobą drzwi!</span>", "<span class=notice'>Wślizgujesz się do ciasnego wnętrza [src] i zamykasz drzwi.</span>")
 		else
-			target.visible_message("<span class='warning'>[user] pushes [target] into [src] and shuts its door!</span>", "<span class='userdanger'>[user] shoves you into [src] and shuts the door!</span>")
+			target.visible_message("<span class='warning'>[user] wpycha [target] do [src] i zamyka drzwi!</span>", "<span class='userdanger'>[user] wpycha cię do [src] i zamyka drzwi!</span>")
 		close_machine(target)
 		add_fingerprint(user)
 
@@ -279,9 +280,9 @@
 		if(uv_super || (obj_flags & EMAGGED))
 			toasted = TRUE
 			if(occupant)
-				visible_message("<span class='warning'>[src]'s door creaks open with a loud whining noise. A foul stench and a cloud of smoke exit the chamber.</span>")
+				visible_message("<span class='warning'>Drzwi [src] otwierają się ze skrzypieniem i głośnym jękiem. Z komory wydobywa się smród i chmura dymu.</span>")
 			else
-				visible_message("<span class='warning'>[src]'s door creaks open with a loud whining noise. A cloud of foul black smoke escapes from its chamber.</span>")
+				visible_message("<span class='warning'>Drzwi [src] otwierają się ze skrzypieniem i głośnym jękiem. Z komory ucieka chmura cuchnącego czarnego dymu.</span>")
 			playsound(src, 'sound/machines/airlock_alien_prying.ogg', 50, TRUE)
 			if(helmet)
 				helmet.take_damage(100,BURN,"fire")
@@ -295,10 +296,10 @@
 			wires.cut_all()
 		if(!toasted) //Special toast check to prevent a double finishing message.
 			if(occupant)
-				visible_message("<span class='warning'>[src]'s door slides open, barraging you with the nauseating smell of charred flesh.</span>")
+				visible_message("<span class='warning'>Drzwi [src] się rozsuwają, zalewając cię mdlącym zapachem zwęglonego ciała.</span>")
 				mob_occupant.radiation = 0
 			else
-				visible_message("<span class='notice'>[src]'s door slides open. The glowing yellow lights dim to a gentle green.</span>")
+				visible_message("<span class='notice'>Drzwi [src] się rozsuwają. Świecące żółte światła przygasają do łagodnej zieleni.</span>")
 		toasted = FALSE
 		playsound(src, 'sound/machines/airlockclose.ogg', 25, TRUE)
 		var/list/things_to_clear = list() //Done this way since using GetAllContents on the SSU itself would include circuitry and such.
@@ -338,7 +339,7 @@
 	if(locked)
 		if(message_cooldown <= world.time)
 			message_cooldown = world.time + 50
-			to_chat(user, "<span class='warning'>[src]'s door won't budge!</span>")
+			to_chat(user, "<span class='warning'>Drzwi [src] ani drgną!</span>")
 		return
 	open_machine()
 	dump_contents()
@@ -350,21 +351,21 @@
 		return
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message("<span class='notice'>You see [user] kicking against the doors of [src]!</span>", \
-		"<span class='notice'>You start kicking against the doors... (this will take about [DisplayTimeText(breakout_time)].)</span>", \
-		"<span class='hear'>You hear a thump from [src].</span>")
+	user.visible_message("<span class='notice'>Widzisz, jak [user] kopie w drzwi [src]!</span>", \
+		"<span class='notice'>Zaczynasz kopać w drzwi... (zajmie to około [DisplayTimeText(breakout_time)].)</span>", \
+		"<span class='hear'>Słyszysz łupnięcie z [src].</span>")
 	if(do_after(user,(breakout_time), target = src))
 		if(!user || user.stat != CONSCIOUS || user.loc != src )
 			return
-		user.visible_message("<span class='warning'>[user] successfully broke out of [src]!</span>", \
-			"<span class='notice'>You successfully break out of [src]!</span>")
+		user.visible_message("<span class='warning'>[user] wydostaje się z [src]!</span>", \
+			"<span class='notice'>Wydostajesz się z [src]!</span>")
 		open_machine()
 		dump_contents()
 
 	add_fingerprint(user)
 	if(locked)
-		visible_message("<span class='notice'>You see [user] kicking against the doors of [src]!</span>", \
-			"<span class='notice'>You start kicking against the doors...</span>")
+		visible_message("<span class='notice'>Widzisz, jak [user] kopie w drzwi [src]!</span>", \
+			"<span class='notice'>Zaczynasz kopać w drzwi...</span>")
 		addtimer(CALLBACK(src, PROC_REF(resist_open), user), 300)
 	else
 		open_machine()
@@ -372,44 +373,43 @@
 
 /obj/machinery/suit_storage_unit/proc/resist_open(mob/user)
 	if(!state_open && occupant && (user in src) && user.stat == 0) // Check they're still here.
-		visible_message("<span class='notice'>You see [user] burst out of [src]!</span>", \
-			"<span class='notice'>You escape the cramped confines of [src]!</span>")
+		visible_message("<span class='notice'>Widzisz, jak [user] wyrywa się z [src]!</span>", \
+			"<span class='notice'>Uciekasz z ciasnego wnętrza [src]!</span>")
 		open_machine()
 
 /obj/machinery/suit_storage_unit/attackby(obj/item/I, mob/user, params)
 	if(state_open && is_operational)
 		if(istype(I, /obj/item/clothing/suit))
 			if(suit)
-				to_chat(user, "<span class='warning'>The unit already contains a suit!.</span>")
+				to_chat(user, "<span class='warning'>Urządzenie już zawiera skafander!</span>")
 				return
 			if(!user.transferItemToLoc(I, src))
 				return
 			suit = I
 		else if(istype(I, /obj/item/clothing/head))
 			if(helmet)
-				to_chat(user, "<span class='warning'>The unit already contains a helmet!</span>")
+				to_chat(user, "<span class='warning'>Urządzenie już zawiera hełm!</span>")
 				return
 			if(!user.transferItemToLoc(I, src))
 				return
 			helmet = I
 		else if(istype(I, /obj/item/clothing/mask))
 			if(mask)
-				to_chat(user, "<span class='warning'>The unit already contains a mask!</span>")
+				to_chat(user, "<span class='warning'>Urządzenie już zawiera maskę!</span>")
 				return
 			if(!user.transferItemToLoc(I, src))
 				return
 			mask = I
 		else
 			if(storage)
-				to_chat(user, "<span class='warning'>The auxiliary storage compartment is full!</span>")
+				to_chat(user, "<span class='warning'>Dodatkowy schowek jest pełny!</span>")
 				return
 			if(!user.transferItemToLoc(I, src))
 				return
 			storage = I
 
-		visible_message("<span class='notice'>[user] inserts [I] into [src]</span>", "<span class='notice'>You load [I] into [src].</span>")
+		visible_message("<span class='notice'>[user] wkłada [I] do [src]</span>", "<span class='notice'>Ładujesz [I] do [src].</span>")
 		update_icon()
-		ui_update()
 		return
 
 	if(panel_open && is_wire_tool(I))
@@ -417,7 +417,6 @@
 		return
 	if(!state_open)
 		if(default_deconstruction_screwdriver(user, "panel", "close", I))
-			ui_update() // Wires might've changed availability of decontaminate button
 			return
 	if(default_pry_open(I))
 		dump_contents()
@@ -431,7 +430,7 @@
 */
 /obj/machinery/suit_storage_unit/default_deconstruction_screwdriver(mob/user, icon_state_open, icon_state_closed, obj/item/I)
 	if(!(flags_1 & NODECONSTRUCT_1) && I.tool_behaviour == TOOL_SCREWDRIVER && uv)
-		to_chat(user, "<span class='warning'>It might not be wise to fiddle with [src] while it's running...</span>")
+		to_chat(user, "<span class='warning'>Chyba nie jest rozsądne majstrowanie przy [src], gdy pracuje...</span>")
 		return TRUE
 	return ..()
 
@@ -440,88 +439,107 @@
 	. = !(state_open || panel_open || is_operational || locked || (flags_1 & NODECONSTRUCT_1)) && I.tool_behaviour == TOOL_CROWBAR
 	if(.)
 		I.play_tool_sound(src, 50)
-		visible_message("<span class='notice'>[usr] pries open \the [src].</span>", "<span class='notice'>You pry open \the [src].</span>")
+		visible_message("<span class='notice'>[usr] wyważa [src].</span>", "<span class='notice'>Wyważasz [src].</span>")
 		open_machine()
 
 
-/obj/machinery/suit_storage_unit/ui_state(mob/user)
-	return GLOB.notcontained_state
+//AQUILA EDIT START - radial zamiast TGUI (port BeeStation/BeeStation-Hornet#9975)
+/obj/machinery/suit_storage_unit/interact(mob/living/user)
+	var/static/list/items
 
-/obj/machinery/suit_storage_unit/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "SuitStorageUnit")
-		ui.open()
+	if(!items)
+		items = list(
+			"suit" = create_silhouette_of(/obj/item/clothing/suit/space/eva),
+			"helmet" = create_silhouette_of(/obj/item/clothing/head/helmet/space/eva),
+			"mask" = create_silhouette_of(/obj/item/clothing/mask/breath),
+			"storage" = create_silhouette_of(/obj/item/tank/internals/oxygen),
+		)
 
-/obj/machinery/suit_storage_unit/ui_data()
-	var/list/data = list()
-	data["locked"] = locked
-	data["open"] = state_open
-	data["safeties"] = safeties
-	data["uv_active"] = uv
-	data["uv_super"] = uv_super
-	if(helmet)
-		data["helmet"] = helmet.name
-	else
-		data["helmet"] = null
-	if(suit)
-		data["suit"] = suit.name
-	else
-		data["suit"] = null
-	if(mask)
-		data["mask"] = mask.name
-	else
-		data["mask"] = null
-	if(storage)
-		data["storage"] = storage.name
-	else
-		data["storage"] = null
-	if(occupant)
-		data["occupied"] = TRUE
-	else
-		data["occupied"] = FALSE
-	return data
-
-/obj/machinery/suit_storage_unit/ui_act(action, params)
-	if(..() || uv)
+	. = ..()
+	if(.)
 		return
-	switch(action)
-		if("door")
+
+	if(!check_interactable(user))
+		return
+
+	var/list/choices = list()
+
+	if(locked)
+		choices["unlock"] = icon('aquila/icons/mob/radial.dmi', "radial_unlock")
+	else if(state_open)
+		choices["close"] = icon('aquila/icons/mob/radial.dmi', "radial_close")
+
+		for(var/item_key in items)
+			var/item = vars[item_key]
+			if(item)
+				choices[item_key] = item
+			else
+				// Pusty slot pokazuje półprzezroczystą sylwetkę
+				choices[item_key] = items[item_key]
+	else
+		choices["open"] = icon('aquila/icons/mob/radial.dmi', "radial_open")
+		choices["disinfect"] = icon('aquila/icons/mob/radial.dmi', "radial_disinfect")
+		choices["lock"] = icon('aquila/icons/mob/radial.dmi', "radial_lock")
+
+	var/choice = show_radial_menu(user, src, choices, custom_check = CALLBACK(src, PROC_REF(check_interactable), user), require_near = !issilicon(user))
+
+	if(!choice || !check_interactable(user))
+		return
+
+	switch(choice)
+		if("open")
+			if(!state_open && !locked)
+				open_machine(drop = FALSE)
+				if(occupant)
+					dump_contents()
+		if("close")
 			if(state_open)
 				close_machine()
-			else
-				open_machine(0)
-				if(occupant)
-					dump_contents() // Dump out contents if someone is in there.
-			. = TRUE
-		if("lock")
-			if(state_open)
+		if("disinfect")
+			if(state_open || locked)
 				return
-			locked = !locked
-			. = TRUE
-		if("uv")
 			if(occupant && safeties)
+				say("Wykryto organizm w komorze. Usuń go przed dezynfekcją.")
 				return
-			else if(!helmet && !mask && !suit && !storage && !occupant)
+			if(!helmet && !mask && !suit && !storage && !occupant)
 				return
-			else
-				if(occupant)
-					var/mob/living/mob_occupant = occupant
-					to_chat(mob_occupant, "<span class='userdanger'>[src]'s confines grow warm, then hot, then scorching. You're being burned [!mob_occupant.stat ? "alive" : "away"]!</span>")
-				cook()
-				. = TRUE
-		if("dispense")
+			if(occupant)
+				var/mob/living/mob_occupant = occupant
+				to_chat(mob_occupant, "<span class='userdanger'>Wnętrze [src] robi się ciepłe, potem gorące, potem palące. [!mob_occupant.stat ? "Palisz się żywcem" : "Spalasz się na popiół"]!</span>")
+			cook()
+		if("lock", "unlock")
+			if(!state_open)
+				locked = !locked
+		if("suit", "helmet", "mask", "storage")
 			if(!state_open)
 				return
+			var/obj/item/item_to_dispense = vars[choice]
+			if(item_to_dispense)
+				vars[choice] = null
+				if(!user.put_in_hands(item_to_dispense))
+					item_to_dispense.forceMove(drop_location())
 
-			var/static/list/valid_items = list("helmet", "suit", "mask", "storage")
-			var/item_name = params["item"]
-			if(item_name in valid_items)
-				var/obj/item/I = vars[item_name]
-				vars[item_name] = null
-				if(I)
-					I.forceMove(loc)
-			. = TRUE
+	update_icon()
+	interact(user)
 
-	if(.)
-		update_icon()
+/obj/machinery/suit_storage_unit/proc/check_interactable(mob/user)
+	if(state_open && !powered())
+		return FALSE
+
+	if(!state_open && !can_interact(user))
+		return FALSE
+
+	if(panel_open)
+		return FALSE
+
+	if(uv)
+		return FALSE
+
+	return TRUE
+
+/obj/machinery/suit_storage_unit/proc/create_silhouette_of(atom/item)
+	var/image/image = image(initial(item.icon), initial(item.icon_state))
+	image.alpha = 128
+	image.color = COLOR_RED
+	return image
+//AQUILA EDIT END

@@ -221,7 +221,7 @@
 		playsound(src, "sparks", 75, 1)
 		sleep(6)
 		operating = FALSE
-		desc += "<BR><span class='warning'>Its access panel is smoking slightly.</span>"
+		desc += "<BR><span class='warning'>Panel dostępu lekko dymi.</span>"
 		open(2)
 
 /obj/machinery/door/window/attackby(obj/item/I, mob/living/user, params)
@@ -233,17 +233,17 @@
 	if(!(flags_1&NODECONSTRUCT_1))
 		if(I.tool_behaviour == TOOL_SCREWDRIVER)
 			if(density || operating)
-				to_chat(user, "<span class='warning'>You need to open the door to access the maintenance panel!</span>")
+				to_chat(user, "<span class='warning'>Musisz otworzyć drzwi, by dostać się do panelu serwisowego!</span>")
 				return
 			I.play_tool_sound(src)
 			panel_open = !panel_open
-			to_chat(user, "<span class='notice'>You [panel_open ? "open":"close"] the maintenance panel of the [name].</span>")
+			to_chat(user, "<span class='notice'>[panel_open ? "Otwierasz":"Zamykasz"] panel serwisowy [name].</span>")
 			return
 
 		if(I.tool_behaviour == TOOL_CROWBAR)
 			if(panel_open && !density && !operating)
-				user.visible_message("[user] removes the electronics from the [name].", \
-									 "<span class='notice'>You start to remove electronics from the [name]...</span>")
+				user.visible_message("[user] wyjmuje elektronikę z [name].", \
+									 "<span class='notice'>Zaczynasz wyjmować elektronikę z [name]...</span>")
 				if(I.use_tool(src, user, 40, volume=50))
 					if(panel_open && !density && !operating && loc)
 						var/obj/structure/windoor_assembly/WA = new /obj/structure/windoor_assembly(loc)
@@ -266,11 +266,11 @@
 						WA.created_name = name
 
 						if(obj_flags & EMAGGED)
-							to_chat(user, "<span class='warning'>You discard the damaged electronics.</span>")
+							to_chat(user, "<span class='warning'>Wyrzucasz uszkodzoną elektronikę.</span>")
 							qdel(src)
 							return
 
-						to_chat(user, "<span class='notice'>You remove the airlock electronics.</span>")
+						to_chat(user, "<span class='notice'>Wyjmujesz elektronikę śluzy.</span>")
 
 						var/obj/item/electronics/airlock/ae
 						if(!electronics)
@@ -303,7 +303,7 @@
 		else
 			close(2)
 	else
-		to_chat(user, "<span class='warning'>The door's motors resist your efforts to force it!</span>")
+		to_chat(user, "<span class='warning'>Silniki drzwi opierają się twoim próbom ich sforsowania!</span>")
 
 /obj/machinery/door/window/do_animate(animation)
 	switch(animation)
@@ -424,13 +424,13 @@
 		if(I.tool_behaviour == TOOL_SCREWDRIVER)
 			I.play_tool_sound(src)
 			panel_open = !panel_open
-			to_chat(user, "<span class='notice'>You [panel_open ? "open":"close"] the maintenance panel of the [name].</span>")
+			to_chat(user, "<span class='notice'>[panel_open ? "Otwierasz":"Zamykasz"] panel serwisowy [name].</span>")
 			return
 
 		if(I.tool_behaviour == TOOL_CROWBAR)
 			if(panel_open && !density && !operating)
-				user.visible_message("[user] begins to deconstruct [name].", \
-									 "<span class='notice'>You start to deconstruct from the [name]...</span>")
+				user.visible_message("[user] zaczyna rozbierać [name].", \
+									 "<span class='notice'>Zaczynasz rozbierać [name]...</span>")
 				if(I.use_tool(src, user, 40, volume=50))
 					if(panel_open && !density && !operating && loc)
 						qdel(src)

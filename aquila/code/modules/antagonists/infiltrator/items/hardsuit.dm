@@ -30,7 +30,7 @@
 /obj/item/clothing/suit/space/hardsuit/infiltration/examine(mob/user)
 	. = ..()
 	if(is_syndicate(user))
-		. += span_notice("There appears to be a hidden panel on it, showing various customization options.")
+		. += span_notice("Wygląda na to, że ma ukryty panel z różnymi opcjami dostosowania.")
 
 /obj/item/clothing/suit/space/hardsuit/infiltration/Initialize()
 	. = ..()

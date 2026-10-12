@@ -12,7 +12,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(src == C.wear_mask)
-			to_chat(user, "<span class='warning'>You need help taking this off!</span>")
+			to_chat(user, "<span class='warning'>Potrzebujesz pomocy, żeby to zdjąć!</span>")
 			return
 	..()
 
@@ -86,7 +86,7 @@
 	options["Angry"] = "angry"
 	options["Pleading"] ="pleading"
 
-	var/choice = input(user,"To what form do you wish to Morph this mask?","Morph Mask") in sortList(options)
+	var/choice = input(user,"W jaką formę chcesz przemienić tę maskę?","Przemiana maski") in sortList(options)
 
 	if(src && choice && !user.incapacitated() && in_range(user,src))
 		icon_state = options[choice]
@@ -94,7 +94,7 @@
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.UpdateButtonIcon()
-		to_chat(user, "<span class='notice'>Your emotion mask has now morphed into [choice]!</span>")
+		to_chat(user, "<span class='notice'>Twoja maska emocji przemieniła się w [choice]!</span>")
 		return 1
 
 
@@ -110,7 +110,7 @@
 
 /obj/item/clothing/mask/pig/handle_speech(datum/source, list/speech_args)
 	if(!CHECK_BITFIELD(clothing_flags, VOICEBOX_DISABLED))
-		speech_args[SPEECH_MESSAGE] = pick("Oink!","Squeeeeeeee!","Oink Oink!")
+		speech_args[SPEECH_MESSAGE] = pick("Chrum!","Kwiiiiiiiii!","Chrum chrum!")
 
 /obj/item/clothing/mask/pig/cursed
 	name = "pig face"
@@ -137,7 +137,7 @@
 /obj/item/clothing/mask/frog/handle_speech(datum/source, list/speech_args) //whenever you speak
 	if(!CHECK_BITFIELD(clothing_flags, VOICEBOX_DISABLED))
 		if(prob(5)) //sometimes, the angry spirit finds others words to speak.
-			speech_args[SPEECH_MESSAGE] = pick("HUUUUU!!","SMOOOOOKIN'!!","Hello my baby, hello my honey, hello my rag-time gal.", "Feels bad, man.", "GIT DIS GUY OFF ME!!" ,"SOMEBODY STOP ME!!", "NORMIES, GET OUT!!")
+			speech_args[SPEECH_MESSAGE] = pick("HUUUUU!!","SMOOOOOKIN'!!","Hello my baby, hello my honey, hello my rag-time gal.", "Smutno mi, stary.", "ZDEJMIJCIE ZE MNIE TEGO GOŚCIA!!" ,"NIECH KTOŚ MNIE POWSTRZYMA!!", "NORMIKI, WYNOCHA!!")
 		else
 			speech_args[SPEECH_MESSAGE] = pick("Ree!!", "Reee!!","REEE!!","REEEEE!!") //but its usually just angry gibberish,
 
@@ -151,7 +151,7 @@
 /obj/item/clothing/mask/frog/cursed/equipped(mob/user, slot)
 	var/mob/living/carbon/C = user
 	if(C.wear_mask == src && HAS_TRAIT_FROM(src, TRAIT_NODROP, CURSED_MASK_TRAIT))
-		to_chat(user, "<span class='userdanger'>[src] was cursed! Ree!!</span>")
+		to_chat(user, "<span class='userdanger'>[src] jest przeklęta! Ree!!</span>")
 	return ..()
 
 /obj/item/clothing/mask/cowmask
@@ -165,7 +165,7 @@
 
 /obj/item/clothing/mask/cowmask/handle_speech(datum/source, list/speech_args)
 	if(!CHECK_BITFIELD(clothing_flags, VOICEBOX_DISABLED))
-		speech_args[SPEECH_MESSAGE] = pick("Moooooooo!","Moo!","Moooo!")
+		speech_args[SPEECH_MESSAGE] = pick("Muuuuuuu!","Muu!","Muuuu!")
 
 /obj/item/clothing/mask/cowmask/cursed
 	name = "cow face"
@@ -272,10 +272,10 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if((C.get_item_by_slot(ITEM_SLOT_HEAD == src)) || (C.get_item_by_slot(ITEM_SLOT_MASK) == src))
-			to_chat(user, "<span class='warning'>You can't tie [src] while wearing it!</span>")
+			to_chat(user, "<span class='warning'>Nie możesz zawiązać [src], gdy ją nosisz!</span>")
 			return
 	if(slot_flags & ITEM_SLOT_HEAD)
-		to_chat(user, "<span class='warning'>You must undo [src] before you can tie it into a neckerchief!</span>")
+		to_chat(user, "<span class='warning'>Musisz rozwiązać [src], zanim zawiążesz ją w apaszkę!</span>")
 	else
 		if(user.is_holding(src))
 			var/obj/item/clothing/neck/neckerchief/nk = new(src)
@@ -286,10 +286,10 @@
 			var/currentHandIndex = user.get_held_index_of_item(src)
 			user.transferItemToLoc(src, null)
 			user.put_in_hand(nk, currentHandIndex)
-			user.visible_message("<span class='notice'>[user] ties [src] up like a neckerchief.</span>", "<span class='notice'>You tie [src] up like a neckerchief.</span>")
+			user.visible_message("<span class='notice'>[user] zawiązuje [src] w apaszkę.</span>", "<span class='notice'>Zawiązujesz [src] w apaszkę.</span>")
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You must be holding [src] in order to tie it!")
+			to_chat(user, "<span class='warning'>Musisz trzymać [src], by ją zawiązać!")
 
 /obj/item/clothing/mask/bandana/red
 	name = "red bandana"

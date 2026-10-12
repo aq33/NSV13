@@ -1,7 +1,7 @@
 /datum/computer_file/program/borg_self_monitor
 	filename = "borg_self_monitor"
-	filedesc = "Cyborg Self-Monitoring"
-	extended_desc = "A built-in app for cyborg self-management and diagnostics."
+	filedesc = "Samomonitoring cyborga"
+	extended_desc = "Wbudowana aplikacja do samozarządzania i diagnostyki cyborga."
 	ui_header = "borg_self_monitor.gif" //DEBUG -- new icon before PR
 	program_icon_state = "command"
 	requires_ntnet = FALSE
@@ -20,7 +20,7 @@
 
 /datum/computer_file/program/borg_self_monitor/on_start(mob/living/user)
 	if(!istype(computer, /obj/item/modular_computer/tablet/integrated))
-		to_chat(user, "<span class='warning'>A warning flashes across \the [computer]: Device Incompatible.</span>")
+		to_chat(user, "<span class='warning'>Na [computer] miga ostrzeżenie: urządzenie niezgodne.</span>")
 		return FALSE
 	. = ..()
 	if(.)
@@ -96,9 +96,9 @@
 				borgo.locked = FALSE
 				borgo.update_icons()
 				if(borgo.emagged)
-					borgo.logevent("ChÃ¥vÃis cover lock has been [borgo.locked ? "engaged" : "released"]") //"The cover interface glitches out for a split second"
+					borgo.logevent("BlÃ¥kÃada pokrywy obudowy została [borgo.locked ? "włączona" : "zwolniona"]") //"The cover interface glitches out for a split second"
 				else
-					borgo.logevent("Chassis cover lock has been [borgo.locked ? "engaged" : "released"]")
+					borgo.logevent("Blokada pokrywy obudowy została [borgo.locked ? "włączona" : "zwolniona"]")
 
 		if("lawchannel")
 			borgo.set_autosay()
@@ -109,8 +109,8 @@
 		if("alertPower")
 			if(borgo.stat == CONSCIOUS)
 				if(!borgo.cell || !borgo.cell.charge)
-					borgo.visible_message("<span class='notice'>The power warning light on <span class='name'>[borgo]</span> flashes urgently.</span>", \
-						"You announce you are operating in low power mode.")
+					borgo.visible_message("<span class='notice'>Lampka ostrzegawcza zasilania na <span class='name'>[borgo]</span> pilnie miga.</span>", \
+						"Ogłaszasz, że działasz w trybie niskiego zasilania.")
 					playsound(borgo, 'sound/machines/buzz-two.ogg', 50, FALSE)
 
 		if("toggleSensors")

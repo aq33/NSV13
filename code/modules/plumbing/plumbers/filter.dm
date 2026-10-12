@@ -56,7 +56,7 @@
 							right += chem_id
 							. = TRUE
 			else
-				to_chat(usr, "<span class='warning'>No such known reagent exists!</span>")
+				to_chat(usr, "<span class='warning'>Taki odczynnik nie istnieje!</span>")
 
 		if("remove")
 			var/chem_name = params["reagent"]

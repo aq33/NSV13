@@ -82,10 +82,10 @@
 //because you're expecting user input.
 /obj/item/airlock_painter/proc/can_use(mob/user)
 	if(!ink)
-		to_chat(user, "<span class='notice'>There is no toner cartridge installed in [src]!</span>")
+		to_chat(user, "<span class='notice'>W [src] nie ma kartridża z tonerem!</span>")
 		return FALSE
 	else if(ink.charges < 1)
-		to_chat(user, "<span class='notice'>[src] is out of ink!</span>")
+		to_chat(user, "<span class='notice'>W [src] skończył się tusz!</span>")
 		return FALSE
 	else
 		return TRUE
@@ -94,7 +94,7 @@
 	var/obj/item/organ/lungs/L = user.getorganslot(ORGAN_SLOT_LUNGS)
 
 	if(can_use(user) && L)
-		user.visible_message("<span class='suicide'>[user] is inhaling toner from [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+		user.visible_message("<span class='suicide'>[user] wdycha toner z [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 		use(user)
 
 		// Once you've inhaled the toner, you throw up your lungs
@@ -120,52 +120,52 @@
 
 		// TODO maybe add some colorful vomit?
 
-		user.visible_message("<span class='suicide'>[user] vomits out [user.p_their()] [L]!</span>")
+		user.visible_message("<span class='suicide'>[user] wymiotuje własnym narządem: [L]!</span>")
 		playsound(user.loc, 'sound/effects/splat.ogg', 50, 1)
 
 		L.forceMove(T)
 
 		return (TOXLOSS|OXYLOSS)
 	else if(can_use(user) && !L)
-		user.visible_message("<span class='suicide'>[user] is spraying toner on [user.p_them()]self from [src]! It looks like [user.p_theyre()] trying to commit suicide.</span>")
+		user.visible_message("<span class='suicide'>[user] pryska się tonerem z [src]! Wygląda na to, że próbuje popełnić samobójstwo.</span>")
 		user.reagents.add_reagent(/datum/reagent/colorful_reagent, 1)
 		user.reagents.reaction(user, TOUCH, 1)
 		return TOXLOSS
 
 	else
-		user.visible_message("<span class='suicide'>[user] is trying to inhale toner from [src]! It might be a suicide attempt if [src] had any toner.</span>")
+		user.visible_message("<span class='suicide'>[user] próbuje wdychać toner z [src]! Byłaby to próba samobójcza, gdyby w [src] był jakiś toner.</span>")
 		return SHAME
 
 
 /obj/item/airlock_painter/examine(mob/user)
 	. = ..()
 	if(!ink)
-		. += "<span class='notice'>The ink compartment hangs open.</span>"
+		. += "<span class='notice'>Komora tuszu jest otwarta.</span>"
 		return
 	var/ink_level = "high"
 	switch(ink.charges/ink.max_charges)
 		if(0.001 to PAINTER_LOW)
-			ink_level = "extremely low"
+			ink_level = "skrajnie niski"
 		if(PAINTER_LOW to PAINTER_MID)
 			ink_level = "low"
 		if(PAINTER_MID to 1)
 			ink_level = "high"
 		if(1 to INFINITY) //Over 100% (admin var edit)
-			ink_level = "dangerously high"
+			ink_level = "niebezpiecznie wysoki"
 	if(ink.charges <= 0)
 		ink_level = "empty"
 
-	. += "<span class='notice'>Its ink levels look [ink_level].</span>"
+	. += "<span class='notice'>Poziom tuszu wygląda na: [ink_level].</span>"
 
 
 /obj/item/airlock_painter/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/toner))
 		if(ink)
-			to_chat(user, "<span class='notice'>[src] already contains \a [ink].</span>")
+			to_chat(user, "<span class='notice'>[src] zawiera już [ink].</span>")
 			return
 		if(!user.transferItemToLoc(W, src))
 			return
-		to_chat(user, "<span class='notice'>You install [W] into [src].</span>")
+		to_chat(user, "<span class='notice'>Instalujesz [W] w [src].</span>")
 		ink = W
 		update_icon()
 		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
@@ -178,7 +178,7 @@
 		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
 		ink.forceMove(user.drop_location())
 		user.put_in_hands(ink)
-		to_chat(user, "<span class='notice'>You remove [ink] from [src].</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz [ink] z [src].</span>")
 		ink = null
 		update_icon()
 
@@ -245,7 +245,7 @@
 /obj/item/airlock_painter/decal/afterattack(atom/target, mob/user, proximity)
 	. = ..()
 	if(!proximity)
-		to_chat(user, "<span class='notice'>You need to get closer!</span>")
+		to_chat(user, "<span class='notice'>Musisz podejść bliżej!</span>")
 		return
 
 	if(isfloorturf(target) && use_paint(user))
@@ -341,7 +341,7 @@
 			stored_color = selected_color
 		if("pick custom color")
 			if(supports_custom_color)
-				var/chosen_color = input(usr, "Pick new color", "[src]", "yellow") as color|null
+				var/chosen_color = input(usr, "Wybierz nowy kolor", "[src]", "yellow") as color|null
 				if(!chosen_color || QDELETED(src) || usr.incapacitated() || !usr.is_holding(src))
 					return
 				stored_custom_color = chosen_color

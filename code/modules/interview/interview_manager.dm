@@ -168,12 +168,12 @@ GLOBAL_DATUM_INIT(interviews, /datum/interview_manager, new)
 	log_admin_private("Interview for [ckey] has been enqueued for review. Current position in queue: [to_queue.pos_in_queue]")
 	var/admins_present = send2tgs_adminless_only("panic-bunker-interview", "Interview for [ckey] enqueued for review. Current position in queue: [to_queue.pos_in_queue]")
 	if (admins_present <= 0 && to_queue.owner)
-		to_chat(to_queue.owner, "<span class='notice'>No active admins are online, your interview's submission was sent through TGS to admins who are available. This may use IRC or Discord.</span>")
+		to_chat(to_queue.owner, "<span class='notice'>Żaden admin nie jest online; twoja rozmowa została wysłana przez TGS do dostępnych adminów. Może to iść przez IRC lub Discorda.</span>")
 	for(var/client/X as() in GLOB.admins)
 		if(X.prefs.toggles & PREFTOGGLE_SOUND_ADMINHELP)
 			SEND_SOUND(X, sound('sound/effects/adminhelp.ogg'))
 		window_flash(X, ignorepref = TRUE)
-		to_chat(X, "<span class='adminhelp'>Interview for [ckey] enqueued for review. Current position in queue: [to_queue.pos_in_queue]</span>")
+		to_chat(X, "<span class='adminhelp'>Rozmowa dla [ckey] czeka w kolejce na sprawdzenie. Obecne miejsce w kolejce: [to_queue.pos_in_queue]</span>")
 
 /**
   * Removes a ckey from the cooldown list, used for enforcing cooldown after an interview is denied.

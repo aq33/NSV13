@@ -21,7 +21,7 @@ export const ReconnectButtons = (props) => {
             Byond.command('.reconnect');
           }}
         >
-          Reconnect
+          Połącz ponownie
         </Button>
 
         <Button

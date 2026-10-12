@@ -66,9 +66,9 @@
 /obj/item/integrated_circuit/examine(mob/user)
 	. = ..()
 	if(cell)
-		. += "<span class='notice'>The charge meter reads [cell ? round(cell.percent(), 1) : 0]%.</span>"
+		. += "<span class='notice'>Wskaźnik ładunku pokazuje [cell ? round(cell.percent(), 1) : 0]%.</span>"
 	else
-		. += "<span class='notice'>There is no power cell installed.</span>"
+		. += "<span class='notice'>Nie zamontowano ogniwa zasilania.</span>"
 
 /obj/item/integrated_circuit/attackby(obj/item/I, mob/living/user, params)
 	. = ..()
@@ -78,17 +78,17 @@
 
 	if(istype(I, /obj/item/stock_parts/cell))
 		if(cell)
-			balloon_alert(user, "<span class='warning'>There already is a cell inside!</span>")
+			balloon_alert(user, "<span class='warning'>W środku jest już ogniwo!</span>")
 			return
 		if(!user.transferItemToLoc(I, src))
 			return
 		cell = I
 		I.add_fingerprint(user)
-		user.visible_message("<span class='notice'>[user] inserts a power cell into [src].</span>", "<span class='notice'>You insert the power cell into [src].</span>")
+		user.visible_message("<span class='notice'>[user] wkłada ogniwo zasilania do [src].</span>", "<span class='notice'>Wkładasz ogniwo zasilania do [src].</span>")
 		return
 
 	if(istype(I, /obj/item/card/id))
-		balloon_alert(user, "Owner ID has been set for [I].")
+		balloon_alert(user, "Ustawiono identyfikator właściciela dla [I].")
 		owner_id = WEAKREF(I)
 		return
 
@@ -96,7 +96,7 @@
 		if(!cell)
 			return
 		I.play_tool_sound(src)
-		user.visible_message("<span class='notice'>[user] unscrews the power cell from [src].</span>", "<span class='notice'>You unscrew the power cell from [src].</span>")
+		user.visible_message("<span class='notice'>[user] wykręca ogniwo zasilania z [src].</span>", "<span class='notice'>Wykręcasz ogniwo zasilania z [src].</span>")
 		cell.forceMove(drop_location())
 		cell = null
 		return
@@ -380,7 +380,7 @@
 					port.set_input(null)
 					marker.say("Cleared port ('[port.name]')'s value.")
 					return TRUE
-				marker.say("Updated port ('[port.name]')'s value to the marked entity.")
+				marker.say("Zaktualizowano wartość portu („[port.name]”) na oznaczony obiekt.")
 				port.set_input(marker.marked_atom)
 				return TRUE
 
@@ -442,7 +442,7 @@
 			. = TRUE
 
 /obj/item/integrated_circuit/proc/on_atom_usb_cable_try_attach(datum/source, obj/item/usb_cable/usb_cable, mob/user)
-	usb_cable.balloon_alert(user, "The circuit needs to be in a compatible shell.")
+	usb_cable.balloon_alert(user, "Obwód musi znajdować się w zgodnej obudowie.")
 	return COMSIG_CANCEL_USB_CABLE_ATTACK
 
 #undef WITHIN_RANGE

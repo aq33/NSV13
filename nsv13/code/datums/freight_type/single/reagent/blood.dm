@@ -32,7 +32,7 @@
 	return index.get_amount( blood_type, target, TRUE )
 
 /datum/freight_type/single/reagent/blood/get_brief_segment()
-	return "blood type [blood_type] ([target] unit\s)"
+	return "krew grupy [blood_type] ([target] j.)"
 
 /datum/freight_type/single/reagent/blood/get_supply_request_form_segment()
-	return "<span>Permissible reagent containers: blood bag</span><br>"
+	return "<span>Dopuszczalne pojemniki na odczynniki: worek na krew</span><br>"

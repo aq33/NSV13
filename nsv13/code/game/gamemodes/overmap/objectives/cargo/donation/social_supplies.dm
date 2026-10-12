@@ -30,17 +30,17 @@
 	// Setup presents
 	var/datum/freight_type/single/object/individually_wrapped_presents = new /datum/freight_type/single/object( /obj )
 	individually_wrapped_presents.target = 3
-	individually_wrapped_presents.item_name = "any item"
+	individually_wrapped_presents.item_name = "dowolny przedmiot"
 	individually_wrapped_presents.approve_inner_contents = TRUE
 	individually_wrapped_presents.require_loc = /obj/item/small_delivery
-	individually_wrapped_presents.require_loc_name = "a wrapped parcel"
+	individually_wrapped_presents.require_loc_name = "owinięta paczka"
 
 	var/datum/freight_type/single/object/crate_with_presents = new /datum/freight_type/single/object( /obj )
 	crate_with_presents.target = 3
-	crate_with_presents.item_name = "any item"
+	crate_with_presents.item_name = "dowolny przedmiot"
 	crate_with_presents.approve_inner_contents = TRUE
 	crate_with_presents.require_loc = /obj/structure/big_delivery
-	crate_with_presents.require_loc_name = "a wrapped crate"
+	crate_with_presents.require_loc_name = "owinięta skrzynia"
 	// I hate social supplies i HATE SOCIAL SUPPLIES
 
 	freight_type_group = new( list(

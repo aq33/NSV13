@@ -86,41 +86,39 @@ GLOBAL_VAR_INIT(sc_safecode5, "[rand(0,9)]")
 	name = "smudged paper"
 
 /obj/item/paper/fluff/awaymissions/stationcollision/safehint_paper_prison/Initialize(mapload)
-	default_raw_text = "<i>The ink is smudged, you can only make out a couple numbers:</i> '[GLOB.sc_safecode1]**[GLOB.sc_safecode4]*'"
+	default_raw_text = "<i>Atrament jest rozmazany, da się odczytać tylko kilka cyfr:</i> '[GLOB.sc_safecode1]**[GLOB.sc_safecode4]*'"
 	return ..()
 
 /obj/item/paper/fluff/awaymissions/stationcollision/safehint_paper_hydro
 	name = "shredded paper"
 /obj/item/paper/fluff/awaymissions/stationcollision/safehint_paper_hydro/Initialize(mapload)
-	default_raw_text = "<i>Although the paper is shredded, you can clearly see the number:</i> '[GLOB.sc_safecode2]'"
+	default_raw_text = "<i>Choć kartka jest podarta, wyraźnie widać liczbę:</i> '[GLOB.sc_safecode2]'"
 	return ..()
 
 /obj/item/paper/fluff/awaymissions/stationcollision/safehint_paper_caf
 	name = "blood-soaked paper"
 	//This does not have to be in New() because it is a constant. There are no variables in it i.e. [sc_safcode]
-	default_raw_text = "<font color=red><i>This paper is soaked in blood, it is impossible to read any text.</i></font>"
+	default_raw_text = "<font color=red><i>Ta kartka jest przesiąknięta krwią, nie da się odczytać żadnego tekstu.</i></font>"
 
 /obj/item/paper/fluff/awaymissions/stationcollision/safehint_paper_bible
 	name = "hidden paper"
 /obj/item/paper/fluff/awaymissions/stationcollision/safehint_paper_bible/Initialize(mapload)
-	default_raw_text = {"<i>It would appear that the pen hidden with the paper had leaked ink over the paper.
-			However you can make out the last three digits:</i>'[GLOB.sc_safecode3][GLOB.sc_safecode4][GLOB.sc_safecode5]'
+	default_raw_text = {"<i>Wygląda na to, że długopis schowany razem z kartką wylał na nią atrament. Da się jednak odczytać trzy ostatnie cyfry:</i>'[GLOB.sc_safecode3][GLOB.sc_safecode4][GLOB.sc_safecode5]'
 			"}
 	return ..()
 
 /obj/item/paper/fluff/awaymissions/stationcollision/safehint_paper_shuttle
-	default_raw_text = {"<b>Target:</b> Research-station Epsilon<br>
-			<b>Objective:</b> Prototype weaponry. The captain likely keeps them locked in her safe.<br>
+	default_raw_text = {"<b>Cel:</b> stacja badawcza Epsilon<br>
+			<b>Zadanie:</b> prototypowa broń. Kapitan zapewne trzyma ją zamkniętą w swoim sejfie.<br>
 			<br>
-			Our on-board spy has learned the code and has hidden away a few copies of the code around the station. Unfortunately he has been captured by security
-			Your objective is to split up, locate any of the papers containing the captain's safe code, open the safe and
-			secure anything found inside. If possible, recover the imprisioned syndicate operative and receive the code from him.<br>
+			Nasz szpieg na pokładzie poznał szyfr i ukrył kilka jego kopii na stacji. Niestety został schwytany przez ochronę.
+			Waszym zadaniem jest rozdzielić się, odnaleźć którąkolwiek z kartek z szyfrem do sejfu kapitan, otworzyć sejf i
+			zabezpieczyć wszystko, co znajdziecie w środku. Jeśli to możliwe, odbijcie uwięzionego agenta Syndykatu i zdobądźcie od niego szyfr.<br>
 			<br>
-			<u>As always, eliminate anyone who gets in the way.</u><br>
+			<u>Jak zawsze eliminujcie każdego, kto stanie wam na drodze.</u><br>
 			<br>
-			Your assigned ship is designed specifically for penetrating the hull of another station or ship with minimal damage to operatives.
-			It is completely fly-by-wire meaning you have just have to enjoy the ride and when the red light comes on... find something to hold onto!
-			"}
+			Przydzielony wam statek zaprojektowano specjalnie do przebijania kadłuba innej stacji lub statku przy minimalnych obrażeniach agentów.
+			Jest w pełni sterowany automatycznie, więc musicie tylko cieszyć się lotem, a gdy zapali się czerwona lampka... złapcie się czegoś!"}
 /*
  * Captain's safe
  */

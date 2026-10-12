@@ -55,7 +55,7 @@
 		return
 	chassis.use_internal_tank = !chassis.use_internal_tank
 	button_icon_state = "mech_internals_[chassis.use_internal_tank ? "on" : "off"]"
-	chassis.balloon_alert(owner, "Now taking air from the [chassis.use_internal_tank ? "internal airtank" : "environment"].")
+	chassis.balloon_alert(owner, "Pobieranie powietrza z: [chassis.use_internal_tank ? "wewnętrzny zbiornik powietrza" : "otoczenie"].")
 	chassis.log_message("Now taking air from the [chassis.use_internal_tank ? "internal airtank" : "environment"].", LOG_MECHA)
 	UpdateButtonIcon()
 
@@ -73,7 +73,7 @@
 			available_equipment += M
 
 	if(available_equipment.len == 0)
-		chassis.balloon_alert(owner, "No equipment available.")
+		chassis.balloon_alert(owner, "Brak dostępnego wyposażenia.")
 		return
 	if(!chassis.selected)
 		chassis.selected = available_equipment[1]
@@ -88,11 +88,11 @@
 		if(A == chassis.selected)
 			if(available_equipment.len == number)
 				chassis.selected = null
-				chassis.balloon_alert(owner, "Switched to no equipment.")
+				chassis.balloon_alert(owner, "Przełączono na brak wyposażenia.")
 				button_icon_state = "mech_cycle_equip_off"
 			else
 				chassis.selected = available_equipment[number+1]
-				chassis.balloon_alert(owner, "Switched to [chassis.selected].")
+				chassis.balloon_alert(owner, "Przełączono na: [chassis.selected].")
 				button_icon_state = "mech_cycle_equip_on"
 			send_byjax(chassis.occupant,"exosuit.browser","eq_list",chassis.get_equipment_list())
 			UpdateButtonIcon()
@@ -114,7 +114,7 @@
 	else
 		button_icon_state = "mech_lights_off"
 	chassis.set_light_on(chassis.lights)
-	chassis.balloon_alert(owner, "Toggled lights [chassis.lights ? "on" : "off"].")
+	chassis.balloon_alert(owner, "[chassis.lights ? "Włączono" : "Wyłączono"] światła.")
 	chassis.log_message("Toggled lights [chassis.lights ? "on" : "off"].", LOG_MECHA)
 	UpdateButtonIcon()
 
@@ -145,7 +145,7 @@
 /obj/mecha/proc/toggle_strafe()
 	strafe = !strafe
 
-	occupant_message("Toggled strafing mode [strafe?"on":"off"].")
+	occupant_message("[strafe?"Włączono":"Wyłączono"] tryb strafe.")
 	log_message("Toggled strafing mode [strafe?"on":"off"].", LOG_MECHA)
 	strafing_action.UpdateButtonIcon()
 
@@ -177,12 +177,12 @@
 		chassis.leg_overload_mode = 1
 		chassis.step_in = min(1, round(chassis.step_in/2))
 		chassis.step_energy_drain = max(chassis.overload_step_energy_drain_min,chassis.step_energy_drain*chassis.leg_overload_coeff)
-		chassis.balloon_alert(owner,"Toggled leg actuators overload.")
+		chassis.balloon_alert(owner,"Włączono przeciążenie siłowników nóg.")
 	else
 		chassis.leg_overload_mode = 0
 		chassis.step_in = initial(chassis.step_in)
 		chassis.step_energy_drain = chassis.normal_step_energy_drain
-		chassis.balloon_alert(owner, "Disabled leg actuators overload.")
+		chassis.balloon_alert(owner, "Wyłączono przeciążenie siłowników nóg.")
 	UpdateButtonIcon()
 
 /datum/action/innate/mecha/mech_smoke
@@ -210,7 +210,7 @@
 		chassis.zoom_mode = !chassis.zoom_mode
 		button_icon_state = "mech_zoom_[chassis.zoom_mode ? "on" : "off"]"
 		chassis.log_message("Toggled zoom mode.", LOG_MECHA)
-		chassis.balloon_alert(owner, "Zoom mode has been [chassis.zoom_mode ? "enabled" : "disabled"].")
+		chassis.balloon_alert(owner, "Tryb przybliżenia został [chassis.zoom_mode ? "włączony" : "wyłączony"].")
 		if(chassis.zoom_mode)
 			owner.client.view_size.setTo(4.5)
 			SEND_SOUND(owner, sound('sound/mecha/imag_enh.ogg',volume=50))
@@ -229,13 +229,13 @@
 	switch(chassis.damtype)
 		if("tox")
 			new_damtype = "brute"
-			chassis.balloon_alert(owner, "Your exosuit's hands form into fists.")
+			chassis.balloon_alert(owner, "Dłonie twojego egzoszkieletu zaciskają się w pięści.")
 		if("brute")
 			new_damtype = "fire"
-			chassis.balloon_alert(owner, "A torch tip extends from your exosuit's hand, glowing red.")
+			chassis.balloon_alert(owner, "Z dłoni twojego egzoszkieletu wysuwa się końcówka palnika, rozżarzona do czerwoności.")
 		if("fire")
 			new_damtype = "tox"
-			chassis.balloon_alert(owner,"A bone-chillingly thick plasteel needle protracts from the exosuit's palm.")
+			chassis.balloon_alert(owner,"Z dłoni egzoszkieletu wysuwa się mrożąco gruba igła z plastali.")
 	chassis.damtype = new_damtype
 	button_icon_state = "mech_damtype_[new_damtype]"
 	playsound(src, 'sound/mecha/mechmove01.ogg', 50, 1)

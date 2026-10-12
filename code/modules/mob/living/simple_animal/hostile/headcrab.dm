@@ -10,14 +10,14 @@
 	health = 50
 	maxHealth = 50
 	melee_damage = 10
-	attacktext = "chomps"
+	attacktext = "chrupie"
 	attack_sound = 'sound/weapons/bite.ogg'
 	faction = list("creature")
 	robust_searching = 1
 	stat_attack = DEAD
 	obj_damage = 0
 	environment_smash = ENVIRONMENT_SMASH_NONE
-	speak_emote = list("squeaks")
+	speak_emote = list("piszczy")
 	ventcrawler = VENTCRAWLER_ALWAYS
 	var/datum/mind/origin
 	var/egg_lain = 0
@@ -32,8 +32,8 @@
 		egg.origin = mind
 	for(var/obj/item/organ/I in src)
 		I.forceMove(egg)
-	visible_message("<span class='warning'>[src] plants something in [victim]'s flesh!</span>", \
-					"<span class='danger'>We inject our egg into [victim]'s body!</span>")
+	visible_message("<span class='warning'>[src] zasadza coś w ciele [victim]!</span>", \
+					"<span class='danger'>Wstrzykujemy nasze jajo do ciała [victim]!</span>")
 	egg_lain = 1
 
 /mob/living/simple_animal/hostile/headcrab/AttackingTarget()
@@ -43,10 +43,10 @@
 		var/mob/living/carbon/C = target
 		if(C.stat >= UNCONSCIOUS)
 			if(HAS_TRAIT(C, TRAIT_XENO_HOST))
-				to_chat(src, "<span class='userdanger'>A foreign presence repels us from this body. Perhaps we should try to infest another?</span>")
+				to_chat(src, "<span class='userdanger'>Obca obecność odpycha nas od tego ciała. Może powinniśmy spróbować zainfekować inne?</span>")
 				return
 			Infect(target)
-			to_chat(src, "<span class='userdanger'>With our egg laid, our death approaches rapidly...</span>")
+			to_chat(src, "<span class='userdanger'>Złożyliśmy jajo, nasza śmierć szybko się zbliża...</span>")
 			addtimer(CALLBACK(src, PROC_REF(death)), 100)
 
 /obj/item/organ/body_egg/changeling_egg

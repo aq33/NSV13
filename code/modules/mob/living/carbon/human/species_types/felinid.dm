@@ -86,7 +86,7 @@
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>")
 		if(prob(10))
-			var/sick_message = pick("You feel nauseous.", "You're not feeling so good.","You feel like your insides are melting.","You feel ill.") //NSV13
+			var/sick_message = pick("Robi ci się niedobrze.", "Nie czujesz się najlepiej.","Masz wrażenie, że twoje wnętrzności się topią.","Czujesz się chory.") //NSV13
 			to_chat(M, "<span class='notice'>[sick_message]</span>")
 		if(prob(15))
 			var/obj/item/organ/guts = pick(M.internal_organs)
@@ -123,7 +123,7 @@
 	H.set_species(/datum/species/human/felinid)
 
 	if(!silent)
-		to_chat(H, "Something is nya~t right.")
+		to_chat(H, "Coś tu jest nie tak, miau~.")
 		playsound(get_turf(H), 'sound/effects/meow1.ogg', 50, 1, -1)
 
 /proc/purrbation_remove(mob/living/carbon/human/H, silent = FALSE)
@@ -133,4 +133,4 @@
 	H.set_species(/datum/species/human)
 
 	if(!silent)
-		to_chat(H, "You are no longer a cat.")
+		to_chat(H, "Nie jesteś już kotem.")

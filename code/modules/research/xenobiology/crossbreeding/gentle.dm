@@ -2,7 +2,7 @@
 	name = "gentle extract"
 	desc = "It pulses slowly, as if breathing."
 	effect = "gentle"
-	effect_desc = "Use to activate minor effect, Alt-click to activate major effect."
+	effect_desc = "Użyj, by aktywować słabszy efekt; Alt-klik, by aktywować silniejszy efekt."
 	icon_state = "gentle"
 	var/extract_type
 	var/obj/item/slime_extract/extract
@@ -12,7 +12,7 @@
 /obj/item/slimecross/gentle/Initialize(mapload)
 	..()
 	extract = new extract_type(src.loc)
-	visible_message("<span class='notice'>[src] glows and pulsates softly.</span>")
+	visible_message("<span class='notice'>[src] świeci i delikatnie pulsuje.</span>")
 	extract.name = name
 	extract.desc = desc
 	extract.icon = icon

@@ -92,7 +92,7 @@
 
 		//Target has enough armour to block the embed.
 		if(target_armour >= armour_block)
-			victim.visible_message("<span class='danger'>[weapon] bounces off [victim]'s armor!</span>", "<span class='notice'>[weapon] bounces off your armor!</span>", vision_distance = COMBAT_MESSAGE_RANGE)
+			victim.visible_message("<span class='danger'>[weapon] odbija się od pancerza [victim]!</span>", "<span class='notice'>[weapon] odbija się od twojego pancerza!</span>", vision_distance = COMBAT_MESSAGE_RANGE)
 			return
 
 	var/percentage_unblocked = 1 - (target_armour / armour_block)
@@ -136,9 +136,9 @@
 	SIGNAL_HANDLER
 
 	if(I.isEmbedHarmless())
-		examine_list += "[I] feels sticky, and could probably get stuck to someone if thrown properly!"
+		examine_list += "[I] wydaje się lepki i pewnie przykleiłby się do kogoś, gdyby dobrze go rzucić!"
 	else
-		examine_list += "[I] has a fine point, and could probably embed in someone if thrown properly!"
+		examine_list += "[I] ma ostry czubek i pewnie wbiłby się w kogoś, gdyby dobrze go rzucić!"
 
 /**
   * checkEmbedProjectile() is what we get when a projectile with a defined shrapnel_type impacts a target.

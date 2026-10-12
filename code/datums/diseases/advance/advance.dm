@@ -18,7 +18,7 @@
 
 /datum/disease/advance
 	name = "Unknown" // We will always let our Virologist name our disease.
-	desc = "An engineered disease which can contain a multitude of symptoms."
+	desc = "Zaprojektowana choroba, która może zawierać wiele objawów."
 	form = "Advance Disease" // Will let med-scanners know that this disease was engineered.
 	agent = "advance microbes"
 	max_stages = 5
@@ -308,7 +308,7 @@
 				spread_text = "Fluids"
 			if(11 to INFINITY)
 				spread_flags = DISEASE_SPREAD_BLOOD | DISEASE_SPREAD_CONTACT_FLUIDS | DISEASE_SPREAD_CONTACT_SKIN
-				spread_text = "On contact"
+				spread_text = "Przez kontakt"
 
 /datum/disease/advance/proc/SetDanger(level_sev)
 	switch(level_sev)
@@ -508,7 +508,7 @@
 	symptoms += SSdisease.list_symptoms.Copy()
 	do
 		if(user)
-			var/symptom = input(user, "Choose a symptom to add ([i] remaining)", "Choose a Symptom") in sortList(symptoms, GLOBAL_PROC_REF(cmp_typepaths_asc))
+			var/symptom = input(user, "Wybierz objaw do dodania (pozostało: [i])", "Choose a Symptom") in sortList(symptoms, GLOBAL_PROC_REF(cmp_typepaths_asc))
 			if(isnull(symptom))
 				return
 			else if(istext(symptom))
@@ -522,7 +522,7 @@
 
 	if(D.symptoms.len > 0)
 
-		var/new_name = stripped_input(user, "Name your new disease.", "New Name")
+		var/new_name = stripped_input(user, "Nazwij swoją nową chorobę.", "Nowa nazwa")
 		if(!new_name)
 			return
 		D.AssignName(new_name)

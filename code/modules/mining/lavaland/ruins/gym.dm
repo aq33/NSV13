@@ -34,10 +34,10 @@
 	if(.)
 		return
 	if(!Adjacent(user))
-		to_chat(user, "You're too far away to get swole!")
+		to_chat(user, "Jesteś za daleko, żeby się napakować!")
 		return
 	if(obj_flags & IN_USE)
-		to_chat(user, "It's already in use - wait a bit.")
+		to_chat(user, "Jest już zajęte – poczekaj chwilę.")
 		return
 	else
 		obj_flags |= IN_USE
@@ -45,14 +45,14 @@
 		user.setDir(SOUTH)
 		user.Stun(80)
 		user.forceMove(src.loc)
-		var/bragmessage = pick("pushing it to the limit","going into overdrive","burning with determination","rising up to the challenge", "getting strong now","getting ripped")
-		user.visible_message("<B>[user] is [bragmessage]!</B>")
+		var/bragmessage = pick("wyciska z siebie wszystko","wchodzi na najwyższe obroty","płonie determinacją","podejmuje wyzwanie", "nabiera siły","rzeźbi mięśnie")
+		user.visible_message("<B>[user] [bragmessage]!</B>")
 		AnimateMachine(user)
 
 		playsound(user, 'sound/machines/click.ogg', 60, 1)
 		obj_flags &= ~IN_USE
 		user.pixel_y = user.base_pixel_y
-		var/finishmessage = pick("You feel stronger!","You feel like you can take on the world!","You feel robust!","You feel indestructible!")
+		var/finishmessage = pick("Czujesz się silniejszy!","Czujesz, że mógłbyś stawić czoła całemu światu!","Czujesz się krzepki!","Czujesz się niezniszczalny!")
 
 
 		if (user.client)

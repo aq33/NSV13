@@ -7,7 +7,7 @@
 			qdel(B)
 			return
 		qdel(target)
-		to_chat(user, "<span class='notice'>You dispel [target] with \the [src]!</span>")
+		to_chat(user, "<span class='notice'>Rozpraszasz [target] za pomocą [src]!</span>")
 		qdel(B)
 		return
 	qdel(B)

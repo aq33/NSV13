@@ -1,8 +1,8 @@
 // Port BeeStation #13247: nasze głosowania jako datumy. Zasady dla niegłosujących i efekty są takie jak w starym SSvote.
 
 // ===== Restart =====
-#define CHOICE_RESTART "Restart Round"
-#define CHOICE_CONTINUE "Continue Playing"
+#define CHOICE_RESTART "Zrestartuj rundę"
+#define CHOICE_CONTINUE "Gramy dalej"
 
 /datum/vote/restart_vote
 	name = "Restart"
@@ -10,7 +10,7 @@
 		CHOICE_RESTART,
 		CHOICE_CONTINUE,
 	)
-	default_message = "Vote to restart the ongoing round. Only works if there are no non-AFK admins online."
+	default_message = "Głosowanie o restart trwającej rundy. Działa tylko, gdy nie ma aktywnych adminów."
 
 /// Whether an admin with +SERVER is online and not AFK, then the restart does not happen on its own
 /datum/vote/restart_vote/proc/admins_present()
@@ -28,7 +28,7 @@
 
 /datum/vote/restart_vote/get_vote_result(list/non_voters)
 	if(!CONFIG_GET(flag/default_no_vote))
-		// Default no votes will add non-voters to "Continue Playing"
+		// Default no votes will add non-voters to "Gramy dalej"
 		choices[CHOICE_CONTINUE] += length(non_voters)
 	return ..()
 
@@ -36,7 +36,7 @@
 	if(winning_option != CHOICE_RESTART)
 		return
 	if(admins_present())
-		to_chat(world, "<span class='boldannounce'>Notice: Restart vote will not restart the server automatically because there are active admins on.</span>")
+		to_chat(world, "<span class='boldannounce'>Uwaga: głosowanie nie zrestartuje serwera automatycznie, bo są aktywni admini.</span>")
 		message_admins("A restart vote has passed, but there are active admins on with +server, so it has been canceled. If you wish, you may restart the server.")
 		return
 	SSticker.Reboot("Restart vote successful.", "restart vote")
@@ -45,8 +45,8 @@
 #undef CHOICE_CONTINUE
 
 // ===== Crew transfer =====
-#define CHOICE_TRANSFER "Initiate Crew Transfer"
-#define CHOICE_CONTINUE "Continue Playing"
+#define CHOICE_TRANSFER "Rozpocznij transfer załogi"
+#define CHOICE_CONTINUE "Gramy dalej"
 
 /datum/vote/transfer
 	name = "Transfer"
@@ -54,14 +54,14 @@
 		CHOICE_TRANSFER,
 		CHOICE_CONTINUE,
 	)
-	default_message = "Vote to end the round with a crew transfer."
+	default_message = "Głosowanie o zakończenie rundy transferem załogi."
 
 /datum/vote/transfer/can_be_initiated(forced)
 	. = ..()
 	if(. != VOTE_AVAILABLE)
 		return
 	if(!forced)
-		return "Only admins and the server can start a transfer vote."
+		return "Głosowanie o transfer mogą rozpocząć tylko admini i serwer."
 
 /datum/vote/transfer/get_vote_result(list/non_voters)
 	if(!CONFIG_GET(flag/default_no_vote))
@@ -84,7 +84,7 @@
 /datum/vote/transfer/finalize_vote(winning_option)
 	if(winning_option != CHOICE_TRANSFER)
 		return
-	SSshuttle.requestEvac(null, "Crew Transfer Requested.")
+	SSshuttle.requestEvac(null, "Zażądano transferu załogi.")
 	SSshuttle.emergencyNoRecall = TRUE //Prevent Recall.
 	var/obj/machinery/computer/communications/C = locate() in GLOB.machines
 	if(C)
@@ -96,7 +96,7 @@
 // ===== Game mode =====
 /datum/vote/gamemode
 	name = "Gamemode"
-	default_message = "Vote for the game mode of the next round."
+	default_message = "Głosowanie o tryb gry następnej rundy."
 
 /datum/vote/gamemode/is_accessible_vote()
 	return TRUE
@@ -112,7 +112,7 @@
 	if(. != VOTE_AVAILABLE)
 		return
 	if(SSticker.HasRoundStarted())
-		return "The round has already started."
+		return "Runda już się zaczęła."
 
 /datum/vote/gamemode/create_vote(mob/vote_creator)
 	default_choices = config.votable_modes.Copy()
@@ -130,7 +130,7 @@
 // ===== Map (NSV13) =====
 /datum/vote/map
 	name = "Map"
-	default_message = "Vote for next round's map!"
+	default_message = "Głosowanie o mapę następnej rundy!"
 
 /datum/vote/map/is_accessible_vote()
 	return TRUE
@@ -156,7 +156,7 @@
 	shuffle_inplace(maps)
 	default_choices = maps
 	if(!length(default_choices))
-		to_chat(vote_creator, "<span class='warning'>There are no maps to vote for.</span>")
+		to_chat(vote_creator, "<span class='warning'>Nie ma map, na które można głosować.</span>")
 		return FALSE
 	return ..()
 
@@ -186,12 +186,12 @@
 	SSmapping.map_voted = TRUE
 
 // ===== Round extension (NSV13) =====
-#define CHOICE_OBJECTIVES "Request Additional Objectives"
+#define CHOICE_OBJECTIVES "Poproś o dodatkowe cele"
 
 /datum/vote/round_extension
 	name = "Press On Or Return Home?"
 	contains_vote_in_name = TRUE
-	default_message = "Vote to request more objectives or to return home."
+	default_message = "Głosowanie: prośba o dodatkowe cele albo powrót do domu."
 
 /datum/vote/round_extension/is_accessible_vote()
 	return TRUE
@@ -201,12 +201,12 @@
 	if(. != VOTE_AVAILABLE)
 		return
 	if(!forced)
-		return "Only Central Command can start this vote."
+		return "To głosowanie może rozpocząć tylko Centrala."
 	if(!SSstar_system.return_system)
-		return "There is no system to return to."
+		return "Nie ma układu, do którego można wrócić."
 
 /datum/vote/round_extension/proc/return_choice()
-	return "Return to [SSstar_system.return_system.name]"
+	return "Powrót do [SSstar_system.return_system.name]"
 
 /datum/vote/round_extension/create_vote(mob/vote_creator)
 	default_choices = list(return_choice(), CHOICE_OBJECTIVES)
@@ -221,21 +221,21 @@
 	if(!winning_option)
 		return
 	if(winning_option == CHOICE_OBJECTIVES)
-		priority_announce("Additional Objectives") //TEMP
+		priority_announce("Dodatkowe cele") //TEMP
 		SSovermap_mode.round_extended = TRUE
 		SSovermap_mode.request_additional_objectives()
 		SSovermap_mode.already_ended = FALSE
 		SSovermap_mode.objectives_completed = FALSE
 		return
-	priority_announce("Returning to [SSstar_system.return_system.name]") //TEMP
+	priority_announce("Powrót do [SSstar_system.return_system.name]") //TEMP
 	var/obj/structure/overmap/OM = SSstar_system.find_main_overmap()
 	OM.force_return_jump()
 
 #undef CHOICE_OBJECTIVES
 
 // ===== Hardmode (NSV13) =====
-#define CHOICE_HARDMODE "Let's GO FOR IT"
-#define CHOICE_NORMAL "Play a normal round"
+#define CHOICE_HARDMODE "DAWAJ, IDZIEMY NA TO"
+#define CHOICE_NORMAL "Zwykła runda"
 
 /datum/vote/hardmode
 	name = "Hardmode"
@@ -243,14 +243,14 @@
 		CHOICE_HARDMODE,
 		CHOICE_NORMAL,
 	)
-	default_message = "Vote for a harder round."
+	default_message = "Głosowanie o trudniejszą rundę."
 
 /datum/vote/hardmode/can_be_initiated(forced)
 	. = ..()
 	if(. != VOTE_AVAILABLE)
 		return
 	if(!forced)
-		return "Only admins can start a hardmode vote."
+		return "Głosowanie o tryb trudny mogą rozpocząć tylko admini."
 
 /datum/vote/hardmode/get_vote_result(list/non_voters)
 	if(!CONFIG_GET(flag/default_no_vote))

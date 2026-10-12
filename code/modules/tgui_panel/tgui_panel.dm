@@ -83,9 +83,9 @@
 		log_tgui("[client.ckey] fancy chat did not finish loading, reloading it (attempt [auto_reloads]).")
 		Initialize()
 		return
-	SEND_TEXT(client, "<span class=\"userdanger\">Failed to load fancy chat, click <a href='byond://?src=[REF(src)];reload_tguipanel=1'>HERE</a> to attempt to reload it.</span>")
+	SEND_TEXT(client, "<span class=\"userdanger\">Nie udało się wczytać ładnego czatu, kliknij <a href='byond://?src=[REF(src)];reload_tguipanel=1'>TUTAJ</a>, by spróbować go przeładować.</span>")
 	log_tgui("ERROR: [client?.ckey] failed to load their fancy chat after a 5 second timeout when loading.")
-	SEND_TEXT(client, "<span class=\"warning\">If the problem persists after fix-chat, try restarting your game as Byond can get confused if the stylesheet it was expecting has changed. (If you have recently played on a server not using TGchat).</span>")
+	SEND_TEXT(client, "<span class=\"warning\">Jeśli problem nie zniknie po fix-chat, spróbuj zrestartować grę, bo BYOND może się pogubić, jeśli zmienił się oczekiwany arkusz stylów. (Jeśli niedawno grałeś na serwerze bez TGchat).</span>")
 
 /**
  * private

@@ -15,10 +15,10 @@
 	if(isliving(target) && check_allowed(target) && !iscarbon(target) && !issilicon(target) && locate(target) in oview(9, get_turf(src)))
 		var/mob/living/simple_animal/C = target
 		if(IS_DEAD_OR_INCAP(C))
-			to_chat(user, "<span class='warning'>[target] is dead.</span>")
+			to_chat(user, "<span class='warning'>[target] nie żyje.</span>")
 			return
 		if(user.a_intent == INTENT_HELP && C == mob_target) //if trying to tie up previous target
-			to_chat(user, "<span class='notice'>You begin to untie [C]</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz rozwiązywać [C]</span>")
 			if(proximity_flag && do_after(user, 2 SECONDS, FALSE, target))
 				user.faction |= "carpboy_[user]"
 				C.faction |= "carpboy_[user]"
@@ -27,7 +27,7 @@
 				C.toggle_ai(AI_ON)
 				var/datum/component/tamed_command/T = C.AddComponent(/datum/component/tamed_command)
 				T.add_ally(user)
-				to_chat(user, "<span class='notice'>[C] nuzzles you.</span>")
+				to_chat(user, "<span class='notice'>[C] łasi się do ciebie.</span>")
 				UnregisterSignal(mob_target, COMSIG_PARENT_QDELETING)
 				mob_target = null
 				if(timer)
@@ -35,7 +35,7 @@
 					timer = null
 				return
 		else if(timer) //if trying to add new target while old target is still flipped
-			to_chat(user, "<span class='warning'>You can't do that right now!</span>")
+			to_chat(user, "<span class='warning'>Nie możesz teraz tego zrobić!</span>")
 			return
 		//Do lasso/beam for style points
 		var/datum/beam/B = new(loc, C, time=1 SECONDS, beam_icon='icons/effects/beam.dmi', beam_icon_state="carp_lasso", btype=/obj/effect/ebeam)
@@ -46,17 +46,17 @@
 		C.transform = transform.Turn(180)
 		C.toggle_ai(AI_OFF)
 		RegisterSignal(C, COMSIG_PARENT_QDELETING, PROC_REF(handle_hard_del))
-		to_chat(user, "<span class='notice'>You lasso [C]!</span>")
+		to_chat(user, "<span class='notice'>Łapiesz [C] na lasso!</span>")
 		timer = addtimer(CALLBACK(src, PROC_REF(fail_ally)), 6 SECONDS, TIMER_STOPPABLE) //after 6 seconds set the carp back
 	else
-		to_chat(user, "<span class='notice'>[target] seems a bit big for this...</span>")
+		to_chat(user, "<span class='notice'>[target] wydaje się trochę za duży...</span>")
 
 /obj/item/mob_lasso/proc/check_allowed(atom/target)
 	return (locate(target) in whitelist_mobs)
 
 
 /obj/item/mob_lasso/proc/fail_ally()
-	visible_message("<span class='warning'>[mob_target] breaks free!</span>")
+	visible_message("<span class='warning'>[mob_target] się uwalnia!</span>")
 	mob_target?.transform = transform.Turn(0)
 	mob_target.toggle_ai(AI_ON)
 	UnregisterSignal(mob_target, COMSIG_PARENT_QDELETING)

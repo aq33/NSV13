@@ -44,7 +44,7 @@
 /datum/techweb_node/reactor_control_rods
 	id = "reactor_control_rods"
 	display_name = "Stormdrive Reactor Control Rod Fabrication"
-	description = "Onboard fabrication of reactor control rods for the stormdrive. They'll do in a pinch."
+	description = "Pokładowa produkcja prętów sterujących reaktora napędu burzowego. W potrzebie się sprawdzą."
 	prereq_ids = list("engineering")
 	design_ids = list("reactor_control_rods")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)

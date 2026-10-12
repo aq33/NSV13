@@ -8,7 +8,7 @@
 
 /mob/living/simple_animal/hostile/guardian/ranged
 	a_intent = INTENT_HELP
-	friendly = "quietly assesses"
+	friendly = "po cichu ocenia"
 	melee_damage = 10
 	damage_coeff = list(BRUTE = 0.9, BURN = 0.9, TOX = 0.9, CLONE = 0.9, STAMINA = 0, OXY = 0.9)
 	projectiletype = /obj/item/projectile/guardian
@@ -16,11 +16,11 @@
 	projectilesound = 'sound/effects/hit_on_shattered_glass.ogg'
 	ranged = 1
 	range = 13
-	playstyle_string = "<span class='holoparasite'>As a <b>ranged</b> type, you have only light damage resistance, but are capable of spraying shards of crystal at incredibly high speed. You can also deploy surveillance snares to monitor enemy movement. Finally, you can switch to scout mode, in which you can't attack, but can move without limit.</span>"
-	magic_fluff_string = "<span class='holoparasite'>..And draw the Sentinel, an alien master of ranged combat.</span>"
-	tech_fluff_string = "<span class='holoparasite'>Boot sequence complete. Ranged combat modules active. Holoparasite swarm online.</span>"
-	carp_fluff_string = "<span class='holoparasite'>CARP CARP CARP! Caught one, it's a ranged carp. This fishy can watch people pee in the ocean.</span>"
-	hive_fluff_string = "<span class='holoparasite'>The mass seems to be able to create more mass and also hide at will.</span>"
+	playstyle_string = "<span class='holoparasite'>Jako typ <b>ranged</b> masz tylko niewielką odporność na obrażenia, ale potrafisz z ogromną prędkością wystrzeliwać odłamki kryształu. Możesz też rozstawiać sidła obserwacyjne, by śledzić ruchy wrogów. Wreszcie możesz przejść w tryb zwiadowczy, w którym nie możesz atakować, ale poruszasz się bez ograniczeń.</span>"
+	magic_fluff_string = "<span class='holoparasite'>...I wyciągasz Wartownika, obcego mistrza walki dystansowej.</span>"
+	tech_fluff_string = "<span class='holoparasite'>Sekwencja startowa zakończona. Moduły walki dystansowej aktywne. Rój holoparazytów aktywny.</span>"
+	carp_fluff_string = "<span class='holoparasite'>KARP KARP KARP! Złowiony! To karp dystansowy. Ta rybka widzi, jak ludzie sikają do oceanu.</span>"
+	hive_fluff_string = "<span class='holoparasite'>Masa wydaje się zdolna tworzyć więcej masy i ukrywać się do woli.</span>"
 	see_invisible = SEE_INVISIBLE_LIVING
 	see_in_dark = 8
 	toggle_button_type = /atom/movable/screen/guardian/ToggleMode
@@ -36,7 +36,7 @@
 			environment_smash = initial(environment_smash)
 			alpha = 255
 			range = initial(range)
-			to_chat(src, "<span class='danger'><B>You switch to combat mode.</span></B>")
+			to_chat(src, "<span class='danger'><B>Przełączasz się w tryb bojowy.</span></B>")
 			toggle = FALSE
 		else
 			ranged = 0
@@ -45,10 +45,10 @@
 			environment_smash = ENVIRONMENT_SMASH_NONE
 			alpha = 45
 			range = 255
-			to_chat(src, "<span class='danger'><B>You switch to scout mode.</span></B>")
+			to_chat(src, "<span class='danger'><B>Przełączasz się w tryb zwiadowczy.</span></B>")
 			toggle = TRUE
 	else
-		to_chat(src, "<span class='danger'><B>You have to be recalled to toggle modes!</span></B>")
+		to_chat(src, "<span class='danger'><B>Musisz wrócić do użytkownika, by zmienić tryb!</span></B>")
 
 /mob/living/simple_animal/hostile/guardian/ranged/Shoot(atom/targeted_atom)
 	. = ..()
@@ -62,16 +62,16 @@
 	switch(lighting_alpha)
 		if (LIGHTING_PLANE_ALPHA_VISIBLE)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
-			msg = "You activate your night vision."
+			msg = "Włączasz noktowizję."
 		if (LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-			msg = "You increase your night vision."
+			msg = "Zwiększasz noktowizję."
 		if (LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
-			msg = "You maximize your night vision."
+			msg = "Maksymalizujesz noktowizję."
 		else
 			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
-			msg = "You deactivate your night vision."
+			msg = "Wyłączasz noktowizję."
 
 	to_chat(src, "<span class='notice'>[msg]</span>")
 
@@ -86,19 +86,19 @@
 		S.spawner = src
 		S.name = "[get_area(snare_loc)] snare ([rand(1, 1000)])"
 		src.snares |= S
-		to_chat(src, "<span class='danger'><B>Surveillance snare deployed!</span></B>")
+		to_chat(src, "<span class='danger'><B>Sidła obserwacyjne rozstawione!</span></B>")
 	else
-		to_chat(src, "<span class='danger'><B>You have too many snares deployed. Remove some first.</span></B>")
+		to_chat(src, "<span class='danger'><B>Masz rozstawionych za dużo sideł. Najpierw usuń niektóre.</span></B>")
 
 /mob/living/simple_animal/hostile/guardian/ranged/verb/DisarmSnare()
 	set name = "Remove Surveillance Snare"
 	set category = "Guardian"
 	set desc = "Disarm unwanted surveillance snares."
-	var/picked_snare = input(src, "Pick which snare to remove", "Remove Snare") as null|anything in sortNames(src.snares)
+	var/picked_snare = input(src, "Wybierz sidła do usunięcia", "Usuń sidła") as null|anything in sortNames(src.snares)
 	if(picked_snare)
 		src.snares -= picked_snare
 		qdel(picked_snare)
-		to_chat(src, "<span class='danger'><B>Snare disarmed.</span></B>")
+		to_chat(src, "<span class='danger'><B>Sidła rozbrojone.</span></B>")
 
 /obj/effect/snare
 	name = "snare"
@@ -117,10 +117,10 @@
 	SIGNAL_HANDLER
 
 	if(isliving(AM) && spawner && spawner.summoner && AM != spawner && !spawner.hasmatchingsummoner(AM))
-		to_chat(spawner.summoner, "<span class='danger'><B>[AM] has crossed surveillance snare, [name].</span></B>")
+		to_chat(spawner.summoner, "<span class='danger'><B>[AM] przechodzi przez sidła obserwacyjne [name].</span></B>")
 		var/list/guardians = spawner.summoner.hasparasites()
 		for(var/para in guardians)
-			to_chat(para, "<span class='danger'><B>[AM] has crossed surveillance snare, [name].</span></B>")
+			to_chat(para, "<span class='danger'><B>[AM] przechodzi przez sidła obserwacyjne [name].</span></B>")
 
 /obj/effect/snare/singularity_act()
 	return

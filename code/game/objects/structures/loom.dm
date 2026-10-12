@@ -25,17 +25,17 @@
 	if(!istype(W))
 		return FALSE
 	if(!anchored)
-		user.show_message("<span class='notice'>The loom needs to be wrenched down.</span>", MSG_VISUAL)
+		user.show_message("<span class='notice'>Krosno musi zostać przykręcone.</span>", MSG_VISUAL)
 		return FALSE
 	if(W.amount < FABRIC_PER_SHEET)
-		user.show_message("<span class='notice'>You need at least [FABRIC_PER_SHEET] units of fabric before using this.</span>", MSG_VISUAL)
+		user.show_message("<span class='notice'>Zanim tego użyjesz, potrzebujesz przynajmniej [FABRIC_PER_SHEET] jednostek tkaniny.</span>", MSG_VISUAL)
 		return FALSE
-	user.show_message("<span class='notice'>You start weaving \the [W.name] through the loom..</span>", MSG_VISUAL)
+	user.show_message("<span class='notice'>Zaczynasz przeplatać [W.name] przez krosno..</span>", MSG_VISUAL)
 	if(W.use_tool(src, user, W.pull_effort))
 		if(W.amount >= FABRIC_PER_SHEET)
 			new W.loom_result(drop_location())
 			W.use(FABRIC_PER_SHEET)
-			user.show_message("<span class='notice'>You weave \the [W.name] into a workable fabric.</span>", MSG_VISUAL)
+			user.show_message("<span class='notice'>Przerabiasz [W.name] na tkaninę nadającą się do obróbki.</span>", MSG_VISUAL)
 	return TRUE
 
 #undef FABRIC_PER_SHEET
