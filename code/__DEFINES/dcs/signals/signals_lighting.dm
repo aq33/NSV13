@@ -38,3 +38,7 @@
 ///Called when the movable tries to toggle its dynamic light LIGHTING_ON status, from base atom/movable/lighting_overlay_toggle_on(): (new_state)
 #define COMSIG_MOVABLE_LIGHT_OVERLAY_TOGGLE_ON "movable_light_overlay_toggle_on"
 
+
+// AQUILA EDIT - z aquila/code/game/objects/items/item_scatter.dm
+///Przedmiot zmienił obrót z rozrzutu (throw_scatter_rotate / throw_unscatter): ()
+#define COMSIG_ITEM_SCATTER_ROTATED "item_scatter_rotated"

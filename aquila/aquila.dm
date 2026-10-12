@@ -59,6 +59,7 @@
 #include "code\datums\components\crafting\recipes_bee.dm"
 #include "code\datums\components\crafting\recipes_guide.dm"
 #include "code\datums\components\nanites.dm"
+#include "code\datums\components\overlay_lighting_scatter.dm"
 #include "code\datums\components\uplink.dm"
 #include "code\datums\components\walk_animation.dm"
 #include "code\datums\diseases\advance\symptoms\fleshgrowth.dm"

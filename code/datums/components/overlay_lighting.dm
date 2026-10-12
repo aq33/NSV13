@@ -241,6 +241,8 @@
 				UnregisterSignal(current_holder, COMSIG_ATOM_DIR_CHANGE)
 		if(overlay_lighting_flags & LIGHTING_ON)
 			remove_dynamic_lumi()
+	if(directional && current_holder) // AQUILA EDIT
+		UnregisterSignal(current_holder, COMSIG_ITEM_SCATTER_ROTATED)
 	current_holder = new_holder
 	if(new_holder == null)
 		clean_old_turfs()
@@ -252,8 +254,14 @@
 			RegisterSignal(new_holder, COMSIG_MOVABLE_MOVED, PROC_REF(on_holder_moved))
 		if(directional)
 			RegisterSignal(new_holder, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_holder_dir_change))
-	if(directional && current_direction != new_holder.dir)
-		current_direction = new_holder.dir
+	// AQUILA EDIT START - kierunek z obrotu leżącego przedmiotu, stożek z własnym kierunkiem
+	if(directional)
+		RegisterSignal(new_holder, COMSIG_ITEM_SCATTER_ROTATED, PROC_REF(on_holder_scatter_rotated))
+		var/new_direction = get_cast_dir(new_holder.dir)
+		if(new_direction)
+			current_direction = new_direction
+			cone.icon = get_cone_icon(current_direction)
+	// AQUILA EDIT END
 	if(overlay_lighting_flags & LIGHTING_ON)
 		add_dynamic_lumi()
 		make_luminosity_update()
@@ -497,12 +505,16 @@
 ///Called when current_holder changes loc.
 /datum/component/overlay_lighting/proc/on_holder_dir_change(atom/movable/source, olddir, newdir)
 	SIGNAL_HANDLER
-	set_direction(newdir)
+	set_direction(get_cast_dir(newdir)) // AQUILA EDIT
 
 ///Called when parent changes loc.
 /datum/component/overlay_lighting/proc/on_parent_dir_change(atom/movable/source, olddir, newdir)
 	SIGNAL_HANDLER
-	set_direction(newdir)
+	// AQUILA EDIT START - obrót trzymanego przedmiotu nie zmienia kierunku, liczy się trzymający
+	if(current_holder && source != current_holder)
+		return
+	set_direction(get_cast_dir(newdir))
+	// AQUILA EDIT END
 
 ///Sets a new direction for the directional cast, then updates luminosity
 /datum/component/overlay_lighting/proc/set_direction(newdir)
@@ -511,8 +523,21 @@
 	if(current_direction == newdir)
 		return
 	current_direction = newdir
+	update_cone_dir() // AQUILA EDIT
 	if(overlay_lighting_flags & LIGHTING_ON)
 		make_luminosity_update()
+
+// AQUILA EDIT - stożek ma własny kierunek, patrz aquila/code/datums/components/overlay_lighting_scatter.dm
+/datum/component/overlay_lighting/proc/update_cone_dir()
+	var/new_icon = get_cone_icon(current_direction)
+	if(!new_icon || cone.icon == new_icon)
+		return
+	var/shown = current_holder && (overlay_lighting_flags & LIGHTING_ON)
+	if(shown)
+		current_holder.underlays -= cone
+	cone.icon = new_icon
+	if(shown)
+		current_holder.underlays += cone
 
 /datum/component/overlay_lighting/proc/on_parent_crafted(datum/source, atom/movable/new_craft)
 	SIGNAL_HANDLER
