@@ -89,7 +89,7 @@
 /datum/mod_theme/New()
 	var/list/skin_parts = list()
 	for(var/variant in variants)
-		skin_parts += list(assoc_to_keys(variants[variant]))
+		skin_parts += list(assoc_list_strip_value(variants[variant]))
 	for(var/skin in skin_parts)
 		for(var/compared_skin in skin_parts)
 			if(skin ~! compared_skin)
