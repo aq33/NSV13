@@ -141,6 +141,7 @@
 #include "code\game\mecha\working\lockermech.dm"
 #include "code\game\objects\RCD.dm"
 #include "code\game\objects\effects\contraband.dm"
+#include "code\game\turfs\splashscreen.dm"
 #include "code\game\objects\effects\landmarks.dm"
 #include "code\game\objects\effects\decals\cleanable.dm"
 #include "code\game\objects\effects\decals\cleanable\feces.dm"
