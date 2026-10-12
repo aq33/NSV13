@@ -46,6 +46,7 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 		num_changelings = max(1, min(round(num_players() / (csc * 2)) + 2, round(num_players() / csc)))
 	else
 		num_changelings = max(1, min(num_players(), changeling_amount))
+	num_changelings = weighted_cap(num_changelings) // AQUILA EDIT - weighted rotation antagonist limit
 
 	if(antag_candidates.len>0)
 		for(var/i = 0, i < num_changelings, i++)

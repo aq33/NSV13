@@ -48,3 +48,20 @@
 /datum/config_entry/number/paradox_clone_earliest_start
 	config_entry_value = 20
 	min_val = 0
+
+// Weighted rotation (master mode "weighted"): which threat pool a game mode belongs to - low, medium or high
+// Modes without an entry are never picked by the weighted rotation
+/datum/config_entry/keyed_list/weighted_pool
+	key_mode = KEY_MODE_TEXT
+	value_mode = VALUE_MODE_TEXT
+
+/datum/config_entry/keyed_list/weighted_pool/ValidateListEntry(key_name, key_value)
+	return (key_name in config.modes) && (lowertext(key_value) in list(WEIGHTED_POOL_LOW, WEIGHTED_POOL_MEDIUM, WEIGHTED_POOL_HIGH))
+
+// Weighted rotation: the most roundstart antagonists a mode may get, no matter the population (a random amount from 1 to this)
+/datum/config_entry/keyed_list/weighted_max_antags
+	key_mode = KEY_MODE_TEXT
+	value_mode = VALUE_MODE_NUM
+
+/datum/config_entry/keyed_list/weighted_max_antags/ValidateListEntry(key_name, key_value)
+	return (key_name in config.modes) && key_value >= 1

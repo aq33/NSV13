@@ -69,6 +69,9 @@ GLOBAL_LIST_EMPTY(round_surveys)
 	entry += "Błędy: [clean_text(href_list["bugs"]) || "-"]"
 	entry += "Uwagi: [clean_text(href_list["comments"]) || "-"]"
 	text2file("[entry.Join("\n")]\n", ROUND_SURVEY_FILE)
+	// Only players who had a character this round tilt the weighted rotation
+	if(owner_ckey in GLOB.joined_player_list)
+		GLOB.weighted_rotation.add_pace_vote(pace)
 	usr << browse(null, "window=round_survey")
 	to_chat(usr, "<span class='notice'>Dziękujemy za wypełnienie ankiety!</span>")
 	GLOB.round_surveys -= owner_ckey

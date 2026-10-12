@@ -45,6 +45,7 @@
 		num_vamp = max(1, min( round(num_players()/(CONFIG_GET(number/traitor_scaling_coeff)*4))+2, round(num_players()/(CONFIG_GET(number/traitor_scaling_coeff)*2)) ))
 	else
 		num_vamp = max(1, min(num_players(), vampire_amt/2))
+	num_vamp = weighted_cap(num_vamp) // weighted rotation antagonist limit
 
 	var/list/old_antag_candidates = antag_candidates.Copy()
 	if(possible_vamps.len>0)
@@ -57,6 +58,9 @@
 			vamp.special_role = "Vampire"
 			vamp.restricted_roles = vampire_restricted_jobs
 		antag_candidates = old_antag_candidates // So we still have a chance for a traitor vampire.
+		// The weighted rotation limit counts vampires and traitors together
+		if(!isnull(weighted_antag_cap))
+			weighted_antag_cap = max(0, weighted_antag_cap - length(pre_vamps))
 		return ..()
 	else
 		return FALSE

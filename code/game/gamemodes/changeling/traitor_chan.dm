@@ -46,6 +46,7 @@
 		num_changelings = max(1, min(round(num_players() / (csc * 4)) + 2, round(num_players() / (csc * 2))))
 	else
 		num_changelings = max(1, min(num_players(), changeling_amount/2))
+	num_changelings = weighted_cap(num_changelings) // AQUILA EDIT - weighted rotation antagonist limit
 
 	if(possible_changelings.len>0)
 		for(var/j = 0, j < num_changelings, j++)
@@ -57,6 +58,9 @@
 			changeling.special_role = ROLE_CHANGELING
 			changelings += changeling
 			changeling.restricted_roles = restricted_jobs
+		// AQUILA EDIT - the weighted rotation limit counts changelings and traitors together
+		if(!isnull(weighted_antag_cap))
+			weighted_antag_cap = max(0, weighted_antag_cap - length(changelings))
 		return ..()
 	else
 		return 0

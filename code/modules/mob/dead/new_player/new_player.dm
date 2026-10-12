@@ -353,7 +353,7 @@
 
 	GLOB.joined_player_list += character.ckey
 
-	if(CONFIG_GET(flag/allow_latejoin_antagonists) && humanc)	//Borgs aren't allowed to be antags. Will need to be tweaked if we get true latejoin ais.
+	if(CONFIG_GET(flag/allow_latejoin_antagonists) && humanc && isnull(SSticker.mode.weighted_antag_cap))	//Borgs aren't allowed to be antags. Will need to be tweaked if we get true latejoin ais. // AQUILA EDIT - no latejoin antagonists over the weighted rotation limit
 		if(SSshuttle.emergency)
 			switch(SSshuttle.emergency.mode)
 				if(SHUTTLE_RECALL, SHUTTLE_IDLE)

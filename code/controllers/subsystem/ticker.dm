@@ -254,7 +254,15 @@ SUBSYSTEM_DEF(ticker)
 
 //Select gamemode and load any maps associated with it
 /datum/controller/subsystem/ticker/proc/pre_setup()
-	if(GLOB.master_mode == "random" || GLOB.master_mode == "secret")
+	// AQUILA EDIT START - weighted rotation, see aquila/code/modules/weighted
+	if(GLOB.master_mode == "weighted")
+		hide_mode = TRUE
+		mode = GLOB.weighted_rotation.pick_mode()
+		if(!mode)
+			to_chat(world, "<B>Nie udało się wybrać grywalnego trybu gry.</B> Powrót do lobby.")
+			return FALSE
+	else if(GLOB.master_mode == "random" || GLOB.master_mode == "secret")
+	// AQUILA EDIT END
 		runnable_modes = config.get_runnable_modes()
 
 		if(GLOB.master_mode == "secret" || GLOB.master_mode == "secret_extended")
