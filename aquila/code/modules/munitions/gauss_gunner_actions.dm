@@ -57,6 +57,7 @@
 
 /// Działo, jeśli właściciel przycisku nadal w nim siedzi
 /datum/action/gauss_gunner/proc/get_gun()
+	RETURN_TYPE(/obj/machinery/ship_weapon/gauss_gun)
 	var/obj/machinery/ship_weapon/gauss_gun/gun = gun_ref?.resolve()
 	if(!gun || gun.gunner != owner)
 		return null
