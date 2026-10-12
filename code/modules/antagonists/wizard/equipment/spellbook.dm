@@ -426,10 +426,25 @@
 
 /datum/spellbook_entry/item/battlemage
 	name = "Battlemage Armour"
-	desc = "An ensorceled suit of armour, protected by a powerful shield. The shield can completely negate sixteen attacks before being permanently depleted."
-	item_path = /obj/item/clothing/suit/space/hardsuit/shielded/wizard
+	desc = "An enchanted MODsuit that lets you cast spells, protected by a powerful rechargeable shield and sealed against the void of space."
+	item_path = /obj/item/mod/control/pre_equipped/enchanted
 	limit = 1
 	category = "Defensive"
+
+/datum/spellbook_entry/item/battlemage/Buy(mob/living/carbon/human/user, obj/item/spellbook/book)
+	var/obj/item/mod/control/mod = new item_path(get_turf(user))
+	SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
+	var/obj/item/mod/module/storage/storage = locate() in mod.modules
+	var/obj/item/back = user.back
+	if(back && user.dropItemToGround(back) && storage)
+		for(var/obj/item/item as anything in back.contents)
+			item.forceMove(storage)
+	if(!user.equip_to_slot_if_possible(mod, mod.slot_flags, qdel_on_fail = FALSE, disable_warning = TRUE))
+		return TRUE
+	user.dropItemToGround(user.wear_suit)
+	user.dropItemToGround(user.head)
+	mod.quick_activation()
+	return TRUE
 
 /datum/spellbook_entry/item/battlemage_charge
 	name = "Battlemage Armour Charges"

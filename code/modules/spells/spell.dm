@@ -217,10 +217,12 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			return FALSE
 
 		if(clothes_req) //clothes check
-			if(!is_type_in_typecache(H.wear_suit, casting_clothes))
+			var/obj/item/clothing/worn_suit = H.wear_suit
+			var/obj/item/clothing/worn_hat = H.head
+			if(!is_type_in_typecache(worn_suit, casting_clothes) && !(istype(worn_suit) && (worn_suit.clothing_flags & CASTING_CLOTHES)))
 				to_chat(H, "<span class='notice'>Nie czuję się dość silny bez szaty.</span>")
 				return FALSE
-			if(!is_type_in_typecache(H.head, casting_clothes))
+			if(!is_type_in_typecache(worn_hat, casting_clothes) && !(istype(worn_hat) && (worn_hat.clothing_flags & CASTING_CLOTHES)))
 				to_chat(H, "<span class='notice'>Nie czuję się dość silny bez kapelusza.</span>")
 				return FALSE
 		if(cult_req) //CULT_REQ CLOTHES CHECK

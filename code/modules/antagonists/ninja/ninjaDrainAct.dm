@@ -125,7 +125,7 @@
 		to_chat(ninja, span_notice("Research objective progress updated."))
 
 //SECURITY CONSOLE//
-/obj/machinery/computer/records/security/ninjadrain_act(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
+/obj/machinery/computer/secure_data/ninjadrain_act(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
 	if(!ninja || !hacking_module)
 		return NONE
 	if(!can_hack(ninja, feedback = TRUE))
@@ -135,14 +135,15 @@
 	INVOKE_ASYNC(src, PROC_REF(ninjadrain_charge), ninja, hacking_module)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
-/obj/machinery/computer/records/security/proc/ninjadrain_charge(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
+/obj/machinery/computer/secure_data/proc/ninjadrain_charge(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
 	if(!do_after(ninja, 20 SECONDS, src, extra_checks = CALLBACK(src, PROC_REF(can_hack), ninja), hidden = TRUE))
 		return
-	for(var/datum/record/crew/target in GLOB.manifest.general)
-		target.wanted_status = WANTED_ARREST
-	update_all_security_huds()
+	for(var/datum/data/record/target in GLOB.data_core.security)
+		target.fields["criminal"] = "*Arrest*"
+	for(var/mob/living/carbon/human/crewmember in GLOB.carbon_list)
+		crewmember.sec_hud_set_security_status()
 
-/obj/machinery/computer/records/security/proc/can_hack(mob/living/hacker, feedback = FALSE)
+/obj/machinery/computer/secure_data/proc/can_hack(mob/living/hacker, feedback = FALSE)
 	if(machine_stat & (NOPOWER|BROKEN))
 		if(feedback && hacker)
 			balloon_alert(hacker, "can't hack!")
@@ -160,7 +161,7 @@
 		return NONE
 	if(hacking_module.communication_console_hack_success)
 		return NONE
-	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, use_emag), ninja)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, emag_act), ninja)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 //AIRLOCK//
@@ -168,7 +169,7 @@
 	if(!ninja || !hacking_module)
 		return NONE
 	if(!operating && density && hasPower() && !(obj_flags & EMAGGED) && hacking_module.mod.subtract_charge(DEFAULT_CHARGE_DRAIN * 5))
-		INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, use_emag), ninja)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, emag_act), ninja)
 		hacking_module.door_hack_counter++
 		var/datum/antagonist/ninja/ninja_antag = ninja.mind.has_antag_datum(/datum/antagonist/ninja)
 		if(!ninja_antag)
@@ -211,18 +212,19 @@
 	hacking_module.charge_message(src, drain_total)
 
 //MECH//
-/obj/vehicle/sealed/mecha/ninjadrain_act(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
+/obj/mecha/ninjadrain_act(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
 	if(!ninja || !hacking_module)
 		return NONE
-	to_chat(occupants, "[icon2html(src, occupants)][span_danger("Warning: Unauthorized access through sub-route 4, block H, detected.")]")
+	if(occupant)
+		to_chat(occupant, "[icon2html(src, occupant)][span_danger("Warning: Unauthorized access through sub-route 4, block H, detected.")]")
 	INVOKE_ASYNC(src, PROC_REF(ninjadrain_charge), ninja, hacking_module)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
-/obj/vehicle/sealed/mecha/proc/ninjadrain_charge(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
+/obj/mecha/proc/ninjadrain_charge(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
 	var/maxcapacity = FALSE //Safety check
 	var/drain = 0 //Drain amount
 	var/drain_total = 0
-	if(get_charge())
+	if(cell?.charge)
 		while(cell.charge > 0 && !maxcapacity)
 			drain = rand(hacking_module.mindrain, hacking_module.maxdrain)
 			if(cell.charge < drain)
@@ -260,7 +262,7 @@
 	UnlinkSelf()
 	ionpulse = TRUE
 	laws = new /datum/ai_laws/ninja_override()
-	model.transform_to(pick(/obj/item/robot_model/syndicate, /obj/item/robot_model/syndicate_medical, /obj/item/robot_model/saboteur))
+	module.transform_to(pick(/obj/item/robot_module/syndicate, /obj/item/robot_module/syndicate_medical, /obj/item/robot_module/saboteur))
 
 //CARBON MOBS//
 /mob/living/carbon/ninjadrain_act(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
@@ -352,36 +354,29 @@
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	do_sparks(3, cardinal_only = FALSE, source = src)
-	use_emag(ninja)
-
-	return COMPONENT_CANCEL_ATTACK_CHAIN
-
-//ELEVATOR CONTROLS//
-/obj/machinery/elevator_control_panel/ninjadrain_act(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
-	if(obj_flags & EMAGGED)
-		balloon_alert(ninja, "already hacked!")
-		return COMPONENT_CANCEL_ATTACK_CHAIN
-
-	if(!do_after(ninja, 2 SECONDS, target = src, hidden = TRUE))
-		return COMPONENT_CANCEL_ATTACK_CHAIN
-
-	do_sparks(3, cardinal_only = FALSE, source = src)
-	use_emag(ninja)
+	emag_act(ninja)
 
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 //WINDOOR//
 /obj/machinery/door/window/ninjadrain_act(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
 	if(!operating && density && hasPower() && !(obj_flags & EMAGGED) && hacking_module.mod.subtract_charge(DEFAULT_CHARGE_DRAIN * 5))
-		INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, use_emag), ninja)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, emag_act), ninja)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 //BUTTONS//
 /obj/machinery/button/ninjadrain_act(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
 	if(is_operational && !(obj_flags & EMAGGED))
-		use_emag(ninja)
+		emag_act(ninja)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 //FIRELOCKS//
 /obj/machinery/door/firedoor/ninjadrain_act(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
-	crack_open()
+	INVOKE_ASYNC(src, PROC_REF(open))
+
+/// Lets the AIs know someone is hacking this machine
+/obj/machinery/proc/AI_notify_hack()
+	var/turf/location = get_turf(src)
+	var/alertstr = span_userdanger("Network Alert: Hacking attempt detected[location ? " in [location]" : ". Unable to pinpoint location"].")
+	for(var/mob/living/silicon/ai/AI in GLOB.player_list)
+		to_chat(AI, alertstr)

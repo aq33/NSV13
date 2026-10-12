@@ -119,7 +119,7 @@
 	name = "ninja throwing star"
 	throwforce = 10
 
-///Hacker - This module hooks onto your right-clicks with empty hands and causes ninja actions.
+///Hacker - This module hooks onto your empty-handed grab intent clicks and causes ninja actions.
 /obj/item/mod/module/hacker
 	name = "MOD hacker module"
 	desc = "Built for one purpose, electronic warfare, this module is built into the hands. \
@@ -145,10 +145,11 @@
 /obj/item/mod/module/hacker/on_part_deactivation(deleting = FALSE)
 	UnregisterSignal(mod.wearer, COMSIG_HUMAN_EARLY_UNARMED_ATTACK)
 
-/obj/item/mod/module/hacker/proc/hack(mob/living/carbon/human/source, atom/target, proximity, modifiers)
+// We have no right click attacks, so the hacker works on empty-handed clicks with the grab intent
+/obj/item/mod/module/hacker/proc/hack(mob/living/carbon/human/source, atom/target, proximity)
 	SIGNAL_HANDLER
 
-	if(!LAZYACCESS(modifiers, RIGHT_CLICK) || !proximity)
+	if(source.a_intent != INTENT_GRAB || !proximity)
 		return NONE
 	target.add_fingerprint(mod.wearer)
 	return target.ninjadrain_act(mod.wearer, src)

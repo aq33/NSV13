@@ -62,11 +62,9 @@
 /obj/item/energy_katana/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(ishuman(hit_atom))
 		var/mob/living/carbon/human/H = hit_atom
-		if(istype(H.wear_suit, /obj/item/clothing/suit/space/space_ninja))
-			var/obj/item/clothing/suit/space/space_ninja/SN = H.wear_suit
-			if(SN.energyKatana == src)
-				returnToOwner(H, 0, 1)
-				return
+		if(IS_SPACE_NINJA(H))
+			returnToOwner(H, 0, 1)
+			return
 
 	..()
 
@@ -100,6 +98,7 @@
 
 /obj/item/energy_katana/Destroy()
 	QDEL_NULL(spark_system)
+	QDEL_NULL(jaunt)
 	return ..()
 
 /datum/action/innate/dash/ninja
