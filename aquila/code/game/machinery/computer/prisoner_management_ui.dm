@@ -7,6 +7,7 @@
 		if(isliving(user))
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 		ui = new(user, src, "PrisonerManagement", name)
+		ui.set_autoupdate(TRUE)
 		ui.open()
 
 /obj/machinery/computer/prisoner/management/ui_data(mob/user)

@@ -4,6 +4,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Safe", name)
+		ui.set_autoupdate(TRUE)
 		ui.open()
 
 /obj/structure/safe/ui_state(mob/user)

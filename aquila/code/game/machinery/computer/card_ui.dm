@@ -6,6 +6,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "IdentificationConsole", name)
+		ui.set_autoupdate(TRUE)
 		ui.open()
 
 /obj/machinery/computer/card/ui_data(mob/user)

@@ -19,6 +19,7 @@
 	if(!..())
 		return
 	ui = new(user, src, "AsteroidMagnet", name)
+	ui.set_autoupdate(TRUE)
 	ui.open()
 
 /obj/machinery/computer/ship/mineral_magnet/ui_data(mob/user)

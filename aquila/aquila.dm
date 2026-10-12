@@ -121,6 +121,7 @@
 #include "code\game\machinery\computer\communications.dm"
 #include "code\game\machinery\computer\orion_trail_ui.dm"
 #include "code\game\machinery\computer\prisoner_management_ui.dm"
+#include "code\game\machinery\computer\security_records_ui.dm"
 #include "code\game\machinery\doors\airlock_types.dm"
 #include "code\game\machinery\doors\firedoor.dm"
 #include "code\game\machinery\fabricators\modular_fabricator.dm"

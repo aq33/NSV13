@@ -5,6 +5,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "TelecommsLogBrowser", name)
+		ui.set_autoupdate(TRUE)
 		ui.open()
 
 /obj/machinery/computer/telecomms/server/ui_data(mob/user)
@@ -125,6 +126,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "TelecommsMonitor", name)
+		ui.set_autoupdate(TRUE)
 		ui.open()
 
 /obj/machinery/computer/telecomms/monitor/ui_data(mob/user)

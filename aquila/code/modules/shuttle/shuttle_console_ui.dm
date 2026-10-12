@@ -10,6 +10,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "ShuttleConsole", name)
+		ui.set_autoupdate(TRUE)
 		ui.open()
 
 /obj/machinery/computer/shuttle_flight/ui_static_data(mob/user)
@@ -34,7 +35,10 @@
 	data["destinations"] = destinations
 	return data
 
-/obj/machinery/computer/shuttle_flight/ui_act(action, list/params)
+/obj/machinery/computer/shuttle_flight/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	// Bez ..() (core blokuje wszystko przy admin_controlled), więc stan okna sprawdzamy tu
+	if(!ui || ui.status != UI_INTERACTIVE)
+		return TRUE
 	switch(action)
 		if("move")
 			Topic(null, list("move" = params["id"]))

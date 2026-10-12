@@ -9,6 +9,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "RequestsConsole", name)
+		ui.set_autoupdate(TRUE)
 		ui.open()
 
 /obj/machinery/requests_console/ui_data(mob/user)
