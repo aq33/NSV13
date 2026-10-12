@@ -117,6 +117,7 @@
 #include "code\game\gamemodes\vampire\vampire_powers.dm"
 #include "code\game\machinery\battery.dm"
 #include "code\game\machinery\computer\_computer.dm"
+#include "code\game\machinery\computer\card_ui.dm"
 #include "code\game\machinery\computer\communications.dm"
 #include "code\game\machinery\computer\orion_trail_ui.dm"
 #include "code\game\machinery\computer\prisoner_management_ui.dm"
