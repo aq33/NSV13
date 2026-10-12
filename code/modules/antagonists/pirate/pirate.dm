@@ -1,17 +1,17 @@
 /datum/antagonist/pirate
-	name = "Space Pirate"
+	name = "Kosmiczny pirat"
 	banning_key = ROLE_SPACE_PIRATE
-	roundend_category = "space pirates"
+	roundend_category = "kosmiczni piraci"
 	antagpanel_category = "Pirate"
 	show_to_ghosts = TRUE
 	var/datum/team/pirate/crew
 
 /datum/antagonist/pirate/greet()
-	to_chat(owner, "<span class='boldannounce'>You are a Space Pirate!</span>")
-	to_chat(owner, "<B>The station refused to pay for your protection, protect the ship, siphon the credits from the station and raid it for even more loot.</B>")
+	to_chat(owner, "<span class='boldannounce'>Jesteś kosmicznym piratem!</span>")
+	to_chat(owner, "<B>Stacja odmówiła zapłaty za ochronę - broń swojego statku, wysysaj kredyty ze stacji i napadnij ją po jeszcze więcej łupów.</B>")
 	owner.announce_objectives()
-	owner.current.client?.tgui_panel?.give_antagonist_popup("Space Pirate",
-		"The station refused to pay for your protection, protect the ship, siphon the credits from the station and raid it for even more loot.")
+	owner.current.client?.tgui_panel?.give_antagonist_popup("Kosmiczny pirat",
+		"Stacja odmówiła zapłaty za ochronę - broń swojego statku, wysysaj kredyty ze stacji i napadnij ją po jeszcze więcej łupów.")
 
 /datum/antagonist/pirate/get_team()
 	return crew
@@ -58,14 +58,14 @@
 
 /datum/objective/loot
 	var/obj/machinery/computer/piratepad_control/cargo_hold
-	explanation_text = "Acquire valuable loot and store it in designated area."
+	explanation_text = "Zdobądź cenne łupy i złóż je w wyznaczonym miejscu."
 	var/target_value = 50000
 
 
 /datum/objective/loot/update_explanation_text()
 	if(cargo_hold)
 		var/area/storage_area = get_area(cargo_hold)
-		explanation_text = "Acquire loot and store [target_value] of credits worth in [storage_area.name] cargo hold."
+		explanation_text = "Zdobądź łupy warte [target_value] kredytów i złóż je w ładowni [storage_area.name]."
 
 /datum/objective/loot/proc/loot_listing()
 	//Lists notable loot.
@@ -89,7 +89,7 @@
 /datum/team/pirate/roundend_report()
 	var/list/parts = list()
 
-	parts += "<span class='header'>Space Pirates were:</span>"
+	parts += "<span class='header'>Kosmiczni piraci:</span>"
 
 	var/all_dead = TRUE
 	for(var/datum/mind/M in members)
@@ -97,14 +97,14 @@
 			all_dead = FALSE
 	parts += printplayerlist(members)
 
-	parts += "Loot stolen: "
+	parts += "Skradzione łupy: "
 	var/datum/objective/loot/L = locate() in objectives
 	parts += L.loot_listing()
-	parts += "Total loot value : [L.get_loot_value()]/[L.target_value] credits"
+	parts += "Łączna wartość łupów: [L.get_loot_value()]/[L.target_value] kredytów"
 
 	if(L.check_completion() && !all_dead)
-		parts += "<span class='greentext big'>The pirate crew was successful!</span>"
+		parts += "<span class='greentext big'>Załoga piratów odniosła sukces!</span>"
 	else
-		parts += "<span class='redtext big'>The pirate crew has failed.</span>"
+		parts += "<span class='redtext big'>Załoga piratów poniosła porażkę.</span>"
 
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"

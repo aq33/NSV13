@@ -21,9 +21,7 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	reroll_friendly = 1
 
 	announce_span = "green"
-	announce_text = "Alien changelings have infiltrated the crew!\n\
-	<span class='green'>Changelings</span>: Accomplish the objectives assigned to you.\n\
-	<span class='notice'>Crew</span>: Root out and eliminate the changeling menace."
+	announce_text = "Obcy zmiennokształtni przeniknęli do załogi!\n<span class='green'>Zmiennokształtni</span>: wykonajcie przydzielone wam cele.\n<span class='notice'>Załoga</span>: wykorzeńcie i zlikwidujcie zagrożenie ze strony zmiennokształtnych."
 
 	title_icon = "changeling"
 

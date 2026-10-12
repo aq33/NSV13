@@ -18,18 +18,18 @@
 		var/obj/item/stack/rods/R = I
 		if(R.get_amount() >= 4)
 			R.use(4)
-			to_chat(user, "<span class='notice'>You add spikes to the frame.</span>")
+			to_chat(user, "<span class='notice'>Dodajesz kolce do ramy.</span>")
 			var/obj/F = new /obj/structure/kitchenspike(src.loc)
 			transfer_fingerprints_to(F)
 			qdel(src)
 	else if(I.tool_behaviour == TOOL_WELDER)
 		if(!I.tool_start_check(user, amount=0))
 			return
-		to_chat(user, "<span class='notice'>You begin cutting \the [src] apart...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz rozcinać [src]...</span>")
 		if(I.use_tool(src, user, 50, volume=50))
-			visible_message("<span class='notice'>[user] slices apart \the [src].</span>",
-				"<span class='notice'>You cut \the [src] apart with \the [I].</span>",
-				"<span class='italics'>You hear welding.</span>")
+			visible_message("<span class='notice'>[user] rozcina [src].</span>",
+				"<span class='notice'>Rozcinasz [src] za pomocą [I].</span>",
+				"<span class='italics'>Słyszysz spawanie.</span>")
 			new /obj/item/stack/sheet/iron(src.loc, 4)
 			qdel(src)
 		return
@@ -52,11 +52,11 @@
 
 /obj/structure/kitchenspike/crowbar_act(mob/living/user, obj/item/I)
 	if(has_buckled_mobs())
-		to_chat(user, "<span class='notice'>You can't do that while something's on the spike!</span>")
+		to_chat(user, "<span class='notice'>Nie możesz tego zrobić, gdy coś wisi na haku!</span>")
 		return TRUE
 
 	if(I.use_tool(src, user, 20, volume=100))
-		to_chat(user, "<span class='notice'>You pry the spikes out of the frame.</span>")
+		to_chat(user, "<span class='notice'>Wyważasz kolce z ramy.</span>")
 		deconstruct(TRUE)
 	return TRUE
 
@@ -72,7 +72,7 @@
 			if(user.pulling != L)
 				return
 			playsound(src.loc, 'sound/effects/splat.ogg', 25, 1)
-			L.visible_message("<span class='danger'>[user] slams [L] onto the meat spike!</span>", "<span class='userdanger'>[user] slams you onto the meat spike!</span>", "<span class='italics'>You hear a squishy wet noise.</span>")
+			L.visible_message("<span class='danger'>[user] nabija [L] na hak rzeźnicki!</span>", "<span class='userdanger'>[user] nabija cię na hak rzeźnicki!</span>", "<span class='italics'>Słyszysz mokre mlaśnięcie.</span>")
 			L.forceMove(drop_location())
 			L.emote("scream")
 			L.add_splatter_floor()
@@ -99,25 +99,25 @@
 		var/mob/living/M = buckled_mob
 		if(M != user)
 			M.visible_message(\
-				"[user] tries to pull [M] free of [src]!",\
-				"<span class='notice'>[user] is trying to pull you off [src], opening up fresh wounds!</span>",\
-				"<span class='italics'>You hear a squishy wet noise.</span>")
+				"[user] próbuje zdjąć [M] z [src]!",\
+				"<span class='notice'>[user] próbuje zdjąć cię z [src], otwierając świeże rany!</span>",\
+				"<span class='italics'>Słyszysz mokre mlaśnięcie.</span>")
 			if(!do_after(user, 300, target = src))
 				if(M?.buckled)
 					M.visible_message(\
-					"[user] fails to free [M]!",\
-					"<span class='notice'>[user] fails to pull you off of [src].</span>")
+					"[user] nie udaje się uwolnić [M]!",\
+					"<span class='notice'>[user] nie udaje się zdjąć cię z [src].</span>")
 				return
 
 		else
 			M.visible_message(\
-			"<span class='warning'>[M] struggles to break free from [src]!</span>",\
-			"<span class='notice'>You struggle to break free from [src], exacerbating your wounds! (Stay still for two minutes.)</span>",\
-			"<span class='italics'>You hear a wet squishing noise..</span>")
+			"<span class='warning'>[M] próbuje uwolnić się z [src]!</span>",\
+			"<span class='notice'>Próbujesz uwolnić się z [src], pogarszając swoje rany! (Nie ruszaj się przez dwie minuty.)</span>",\
+			"<span class='italics'>Słyszysz mokre mlaskanie..</span>")
 			M.adjustBruteLoss(30)
 			if(!do_after(M, 1200, target = src))
 				if(M && M.buckled)
-					to_chat(M, "<span class='warning'>You fail to free yourself!</span>")
+					to_chat(M, "<span class='warning'>Nie udaje ci się uwolnić!</span>")
 				return
 		if(!M.buckled)
 			return
@@ -129,7 +129,7 @@
 	animate(M, transform = m180, time = 3)
 	M.pixel_y = M.base_pixel_y + M.get_standard_pixel_y_offset(TRUE)
 	M.adjustBruteLoss(30)
-	src.visible_message(text("<span class='danger'>[M] falls free of [src]!</span>"))
+	src.visible_message(text("<span class='danger'>[M] spada z [src]!</span>"))
 	unbuckle_mob(M,force=1)
 	M.emote("scream")
 	M.AdjustParalyzed(20)

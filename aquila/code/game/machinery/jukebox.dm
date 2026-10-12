@@ -5,7 +5,7 @@
 	desc = "Tradycyjny odtwarzacz muzyczny."
 	icon = 'aquila/icons/obj/jukebox.dmi'
 	icon_state = "jukebox"
-	verb_say = "states"
+	verb_say = "stwierdza"
 	density = TRUE
 	req_access = list(ACCESS_BAR)
 	interaction_flags_machine = INTERACT_MACHINE_SET_MACHINE | INTERACT_MACHINE_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON
@@ -30,10 +30,16 @@
 	var/music_full_range = 3
 	/// O ile kratek "dalej" jest pokład nad/pod jukeboxem
 	var/music_deck_penalty = 4
-	/// Pamięć wygłuszenia przeszkód: turf słuchacza -> suma (odświeżana co kilka sekund)
-	var/list/dampening_cache = list()
-	var/dampening_cache_time = 0
-	var/turf/dampening_cache_from = null
+	/// Liczy, jak głośno i jak przytłumioną muzykę słyszy gracz (jukebox_emitter.dm)
+	var/datum/music_emitter/emitter
+	/// Nadaje na cały statek (włączane programem nagłośnienia u kapitana)
+	var/shipwide = FALSE
+	/// Podłączone multitoolem amp stacki
+	var/list/obj/machinery/jukebox_speaker/speakers = list()
+	/// Gra tylko przykręcony; FALSE = gra też odkręcony, np. ciągnięty za sobą (głośnik Syndykatu)
+	var/needs_anchoring = TRUE
+	/// Może nadawać na cały statek z programu nagłośnienia (radio i głośnik Syndykatu nie)
+	var/can_broadcast = TRUE
 
 /obj/machinery/jukebox/disco
 	name = "Disco Jukebox"
@@ -49,12 +55,25 @@
 /obj/machinery/jukebox/Initialize()
 	. = ..()
 	wires = new /datum/wires/jukebox(src)
+	emitter = new(src, music_range, music_full_range, music_deck_penalty)
 	update_icon()
 
 /obj/machinery/jukebox/Destroy()
 	yt_stop()
+	for(var/obj/machinery/jukebox_speaker/speaker as anything in speakers)
+		speaker.unlink()
+	QDEL_NULL(emitter)
 	QDEL_NULL(wires)
 	return ..()
+
+/// Zapisuje jukebox w multitoolu, żeby podłączyć do niego amp stack. Przy otwartym panelu multitool służy do kabli.
+/obj/machinery/jukebox/multitool_act(mob/living/user, obj/item/I)
+	if(panel_open || !multitool_check_buffer(user, I))
+		return FALSE
+	var/obj/item/multitool/M = I
+	M.buffer = src
+	to_chat(user, "<span class='notice'>Zapisujesz [src] w pamięci [I]. Kliknij nim amp stack, aby go podłączyć.</span>")
+	return TRUE
 
 /obj/machinery/jukebox/power_change()
 	..()
@@ -81,19 +100,19 @@
 		if(obj_integrity < max_integrity)
 			if(!I.tool_start_check(user, amount=5))
 				return
-			to_chat(user, "<span class='notice'>You begin repairing [src].</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz naprawiać [src].</span>")
 			if(I.use_tool(src, user, 40, amount=5, volume=50))
 				obj_integrity = max_integrity
 				machine_stat &= ~BROKEN
 				update_icon()
-				to_chat(user, "<span class='notice'>You repair [src].</span>")
+				to_chat(user, "<span class='notice'>Naprawiasz [src].</span>")
 				return
 	return ..()
 
 /obj/machinery/jukebox/default_unfasten_wrench(mob/user, obj/item/I, time = 20)
 	. = ..()
 	if(. == SUCCESSFUL_UNFASTEN)
-		if(!anchored)
+		if(!is_secured())
 			yt_stop()
 		update_icon()
 
@@ -120,13 +139,15 @@
 	icon_state = "[state_base]"
 	if((machine_stat & MAINT) || panel_open)
 		overlays += image(icon = icon, icon_state = "[state_base]-panel")
-	if(!(machine_stat & NOPOWER) && anchored && mains)
+	if(!(machine_stat & NOPOWER) && is_secured() && mains)
 		if(machine_stat & BROKEN)
 			overlays += image(icon = icon, icon_state = "[state_base]-broken")
 		else
 			overlays += image(icon = icon, icon_state = "[state_base]-powered")
 			if(yt_active)
 				overlays += image(icon = icon, icon_state = "[state_base]-playing")
+	for(var/obj/machinery/jukebox_speaker/speaker as anything in speakers) // grają razem z jukeboxem
+		speaker.update_icon()
 
 /obj/machinery/jukebox/ui_interact(mob/user)
 	. = ..()
@@ -134,7 +155,7 @@
 		return
 	if(!user.canUseTopic(src, !issilicon(user)))
 		return
-	if (!anchored)
+	if (!is_secured())
 		to_chat(user,"<span class='warning'>To urządzenie musi wpierw był przykręcone do podłoża!</span>")
 		return
 	var/datum/browser/popup = new(user, "vending", "[name]", 500, 680)
@@ -146,7 +167,7 @@
 		return
 	if(machine_stat & (BROKEN|NOPOWER) || !mains)
 		return
-	if(!anchored)
+	if(!is_secured())
 		to_chat(usr, "<span class='warning'>To urządzenie musi najpierw być przykręcone do podłoża!</span>")
 		return
 	if(!allowed(usr) && verify)
@@ -169,7 +190,7 @@
 		if("volume")
 			volume = clamp(volume + text2num(href_list["delta"]), 10, 100)
 			if(yt_active)
-				yt_update_listeners()
+				SSjukeboxes.update_listeners()
 	updateUsrDialog()
 
 /obj/machinery/jukebox/process()
@@ -177,6 +198,10 @@
 		seconds_electrified--
 	if(yt_active)
 		yt_process()
+
+/// Czy może grać pod względem przykręcenia
+/obj/machinery/jukebox/proc/is_secured()
+	return anchored || !needs_anchoring
 
 /// Tempo odtwarzania ustawiane kablami (vaporwave / nightcore)
 /obj/machinery/jukebox/proc/get_speed_factor()
@@ -187,77 +212,3 @@
 		speed_factor *= 1.25
 	speed_factor *= speed_potentiometer
 	return speed_factor
-
-/// Jak daleko gracz jest w strefie wyciszania: 0 = przy jukeboxie (pełna głośność), 1 = na krawędzi okręgu.
-/// null gdy gracz nic nie słyszy (poza okręgiem, niepołączony z-level, wyłączone instrumenty, głuchy).
-/// Pokład tuż nad/pod jukeboxem też słyszy, ale jakby był dalej o music_deck_penalty kratek.
-/obj/machinery/jukebox/proc/hearing_fraction(mob/M)
-	if(!M?.client || !(M.client.prefs.toggles & PREFTOGGLE_SOUND_INSTRUMENTS) || !M.can_hear())
-		return null
-	var/turf/T = get_turf(M)
-	var/turf/our_turf = get_turf(src)
-	if(!T || !our_turf)
-		return null
-	var/distance = sqrt((T.x - our_turf.x) ** 2 + (T.y - our_turf.y) ** 2)
-	if(T.z != our_turf.z)
-		if(!is_adjacent_deck(T))
-			return null
-		distance += music_deck_penalty
-	if(distance > music_range)
-		return null
-	return clamp((distance - music_full_range) / (music_range - music_full_range), 0, 1)
-
-/// Czy turf leży na pokładzie bezpośrednio nad albo pod jukeboxem (połączone z-levele)
-/obj/machinery/jukebox/proc/is_adjacent_deck(turf/T)
-	var/turf/our_turf = get_turf(src)
-	var/turf/other = our_turf?.above()
-	if(other && other.z == T.z)
-		return TRUE
-	other = our_turf?.below()
-	return other && other.z == T.z
-
-/// Mnożnik głośności 0-1: okrąg o promieniu music_range, cichnie płynnie (krzywa cosinusowa, bez skoków na początku i końcu).
-/obj/machinery/jukebox/proc/hearing_gain(mob/M)
-	var/fraction = hearing_fraction(M)
-	if(isnull(fraction))
-		return 0
-	return (1 + cos(180 * fraction)) / 2
-
-/// Ilość echa 0-1: brak przy jukeboxie, rośnie z odległością.
-/obj/machinery/jukebox/proc/echo_amount(mob/M)
-	var/fraction = hearing_fraction(M)
-	if(isnull(fraction))
-		return 0
-	return clamp((fraction - 0.1) / 0.6, 0, 1)
-
-/// Przytłumienie 0-1 (jak zza ściany): pełne na innym pokładzie, na tym samym - suma wygłuszenia przeszkód po drodze.
-/obj/machinery/jukebox/proc/muffle_amount(mob/M)
-	var/turf/T = get_turf(M)
-	var/turf/our_turf = get_turf(src)
-	if(!T || !our_turf)
-		return 0
-	if(T.z != our_turf.z)
-		return 1
-	return min(1, obstacle_dampening(T))
-
-/// Suma sound_dampening ścian, okien i zamkniętych drzwi na linii jukebox -> turf (wynik trzymany 1 s na turf, żeby otwarcie drzwi było słychać od razu).
-/obj/machinery/jukebox/proc/obstacle_dampening(turf/T)
-	var/turf/our_turf = get_turf(src)
-	if(dampening_cache_time + 1 SECONDS < world.time || dampening_cache_from != our_turf)
-		dampening_cache = list()
-		dampening_cache_time = world.time
-		dampening_cache_from = our_turf
-	if(!isnull(dampening_cache[T]))
-		return dampening_cache[T]
-	var/total = 0
-	for(var/turf/line_turf as anything in getline(our_turf, T))
-		if(line_turf == our_turf)
-			continue
-		total += line_turf.get_sound_dampening()
-		for(var/obj/O in line_turf)
-			if(O.sound_dampening)
-				total += O.get_sound_dampening()
-		if(total >= 1)
-			break
-	dampening_cache[T] = total
-	return total

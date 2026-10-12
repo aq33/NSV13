@@ -1,7 +1,7 @@
 /datum/role_preference/midround_ghost/ghost_ship
-	name = "Ghost Ship"
+	name = "Statek widmo"
 	antag_datum = /datum/antagonist/ghost_ship
 
 /datum/role_preference/midround_ghost/boarder
-	name = "Boarder"
+	name = "Abordażysta"
 	antag_datum = /datum/antagonist/traitor/boarder

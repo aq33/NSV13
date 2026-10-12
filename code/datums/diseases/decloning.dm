@@ -3,8 +3,8 @@
 	name = "Cellular Degeneration"
 	max_stages = 5
 	stage_prob = 1
-	cure_text = "Rezadone or death."
-	agent = "Severe Genetic Damage"
+	cure_text = "Rezadon albo śmierć."
+	agent = "Poważne uszkodzenia genetyczne"
 	viable_mobtypes = list(/mob/living/carbon/human)
 	desc = @"If left untreated the subject will [REDACTED]!"
 	danger = DISEASE_DANGEROUS
@@ -32,7 +32,7 @@
 			if(prob(3))
 				affected_mob.adjustCloneLoss(1)
 			if(prob(2))
-				to_chat(affected_mob, "<span class='danger'>Your skin feels strange.</span>")
+				to_chat(affected_mob, "<span class='danger'>Twoja skóra wydaje się dziwna.</span>")
 
 		if(4)
 			if(prob(2))
@@ -50,10 +50,10 @@
 			if(prob(2))
 				affected_mob.emote("drool")
 			if(prob(5))
-				to_chat(affected_mob, "<span class='danger'>Your skin starts degrading!</span>")
+				to_chat(affected_mob, "<span class='danger'>Twoja skóra zaczyna się rozpadać!</span>")
 			if(prob(10))
 				affected_mob.adjustCloneLoss(5)
 				affected_mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2, 170)
 			if(affected_mob.cloneloss >= 100)
-				affected_mob.visible_message("<span class='danger'>[affected_mob] skin turns to dust!</span>", "<span class='boldwarning'>Your skin turns to dust!</span>")
+				affected_mob.visible_message("<span class='danger'>Skóra [affected_mob] obraca się w proch!</span>", "<span class='boldwarning'>Twoja skóra obraca się w proch!</span>")
 				affected_mob.dust()

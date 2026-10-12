@@ -120,10 +120,10 @@
 		message_admins("[ADMIN_LOOKUPFLW(usr)] has tried to spawn an item when selecting a sect.")
 		return
 	if(user.mind.holy_role != HOLY_ROLE_HIGHPRIEST)
-		to_chat(user, "<span class='warning'>You are not the high priest, and therefore cannot select a religious sect.")
+		to_chat(user, "<span class='warning'>Nie jesteś arcykapłanem, więc nie możesz wybrać odłamu religijnego.")
 		return
 	if(!user.canUseTopic(parent, BE_CLOSE, FALSE, NO_TK))
-		to_chat(user, "<span class='warning'>You cannot select a sect at this time.</span>")
+		to_chat(user, "<span class='warning'>Nie możesz teraz wybrać odłamu.</span>")
 		return
 	if(GLOB.religious_sect)
 		return
@@ -145,15 +145,15 @@
 		return
 	if(user.mind.holy_role < HOLY_ROLE_PRIEST)
 		if(user.mind.holy_role == HOLY_ROLE_DEACON)
-			to_chat(user, "<span class='warning'>You are merely a deacon of [GLOB.deity], and therefore cannot perform rites.</span>")
+			to_chat(user, "<span class='warning'>Jesteś tylko diakonem [GLOB.deity], więc nie możesz odprawiać obrzędów.</span>")
 		else
-			to_chat(user, "<span class='warning'>You are not holy, and therefore cannot perform rites.</span>")
+			to_chat(user, "<span class='warning'>Nie jesteś osobą duchowną, więc nie możesz odprawiać obrzędów.</span>")
 		return
 	if(performing_rite)
-		to_chat(user, "<span class='notice'>There is a rite currently being performed here already.</span>")
+		to_chat(user, "<span class='notice'>Tu już odprawiany jest obrzęd.</span>")
 		return
 	if(!user.canUseTopic(parent, BE_CLOSE, FALSE, NO_TK))
-		to_chat(user, "<span class='warning'>You are not close enough to perform the rite.</span>")
+		to_chat(user, "<span class='warning'>Jesteś za daleko, by odprawić obrzęd.</span>")
 		return
 	performing_rite = new path(parent)
 	if(!performing_rite.perform_rite(user, parent))
@@ -236,12 +236,12 @@
 
 	if(!can_i_see)
 		return
-	examine_list += ("<span class='notice'>Use a bible to interact with this.</span>")
+	examine_list += ("<span class='notice'>Użyj Biblii, by wejść z tym w interakcję.</span>")
 	if(!easy_access_sect)
 		if(operation_flags & RELIGION_TOOL_SECTSELECT)
-			examine_list += ("<span class='notice'>This looks like it can be used to select a sect.</span>")
+			examine_list += ("<span class='notice'>Wygląda na to, że można tu wybrać odłam.</span>")
 			return
 	if(operation_flags & RELIGION_TOOL_SACRIFICE)//this can be moved around if things change but usually no rites == no sacrifice
-		examine_list += ("<span class='notice'>Desired items can be used on this to increase favor.</span>")
+		examine_list += ("<span class='notice'>Można tu składać pożądane przedmioty, by zwiększyć łaskę.</span>")
 	if(easy_access_sect.rites_list && operation_flags & RELIGION_TOOL_INVOKE)
-		examine_list += ("<span class='notice'>You can invoke rites from this.</span>")
+		examine_list += ("<span class='notice'>Można tu odprawiać obrzędy.</span>")

@@ -6,7 +6,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the " + JOB_NAME_HEADOFPERSONNEL
+	supervisors = JOB_NAME_HEADOFPERSONNEL
 	selection_color = "#dddddd"
 
 	outfit = /datum/outfit/job/mime
@@ -64,8 +64,8 @@
 /obj/item/book/mimery/attack_self(mob/user,)
 	user.set_machine(src)
 	var/dat = "<B>Guide to Dank Mimery</B><BR>"
-	dat += "Teaches one of three classic pantomime routines, allowing a practiced mime to conjure invisible objects into corporeal existence.<BR>"
-	dat += "Once you have mastered your routine, this book will have no more to say to you.<BR>"
+	dat += "Uczy jednego z trzech klasycznych układów pantomimy, pozwalając wprawnemu mimowi przywoływać niewidzialne przedmioty do cielesnego istnienia.<BR>"
+	dat += "Gdy opanujesz swój układ, ta książka nie będzie miała ci już nic do powiedzenia.<BR>"
 	dat += "<HR>"
 	dat += "<A href='byond://?src=[REF(src)];invisible_wall=1'>Invisible Wall</A><BR>"
 	dat += "<A href='byond://?src=[REF(src)];invisible_chair=1'>Invisible Chair</A><BR>"
@@ -87,5 +87,5 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/conjure/mime_chair(null))
 		if (href_list["invisible_box"])
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/conjure/mime_box(null))
-	to_chat(usr, "<span class='notice'>The book disappears into thin air.</span>")
+	to_chat(usr, "<span class='notice'>Książka znika w powietrzu.</span>")
 	qdel(src)

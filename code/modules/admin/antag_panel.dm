@@ -79,7 +79,7 @@ GLOBAL_VAR(antag_prototypes)
 /datum/mind/proc/get_special_statuses()
 	var/list/result = LAZYCOPY(special_statuses)
 	if(!current)
-		result += "<span class='bad'>No body!</span>"
+		result += "<span class='bad'>Brak ciała!</span>"
 	if(current && HAS_TRAIT(current, TRAIT_MINDSHIELD))
 		result += "<span class='good'>Mindshielded</span>"
 	//Move these to mob
@@ -91,16 +91,16 @@ GLOBAL_VAR(antag_prototypes)
 
 /datum/mind/proc/traitor_panel()
 	if(!SSticker.HasRoundStarted())
-		alert("Not before round-start!", "Alert")
+		alert("Nie przed startem rundy!", "Alert")
 		return
 	if(QDELETED(src))
-		alert("This mind doesn't have a mob, or is deleted! For some reason!", "Edit Memory")
+		alert("Ten umysł nie ma moba albo został usunięty! Z jakiegoś powodu!", "Edit Memory")
 		return
 
 	var/out = "<B>[name]</B>[(current && (current.real_name!=name))?" (as [current.real_name])":""]<br>"
-	out += "Mind currently owned by key: [key] [active?"(synced)":"(not synced)"]<br>"
+	out += "Umysł należy obecnie do klucza: [key] [active?"(zsynchronizowany)":"(niezsynchronizowany)"]<br>"
 	out += "Assigned role: [assigned_role]. <a href='byond://?src=[REF(src)];role_edit=1'>Edit</a><br>"
-	out += "Faction and special role: <b><font color='red'>[special_role]</font></b><br>"
+	out += "Frakcja i rola specjalna: <b><font color='red'>[special_role]</font></b><br>"
 
 	var/special_statuses = get_special_statuses()
 	if(length(special_statuses))

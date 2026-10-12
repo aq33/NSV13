@@ -90,13 +90,13 @@
 			if(user.get_item_by_slot(ITEM_SLOT_BACK) == src)
 				ui_action_click()
 			else
-				to_chat(user, "<span class='warning'>Put the defibrillator on your back first!</span>")
+				to_chat(user, "<span class='warning'>Najpierw załóż defibrylator na plecy!</span>")
 
 		else if(slot_flags == ITEM_SLOT_BELT)
 			if(user.get_item_by_slot(ITEM_SLOT_BELT) == src)
 				ui_action_click()
 			else
-				to_chat(user, "<span class='warning'>Strap the defibrillator's belt on first!</span>")
+				to_chat(user, "<span class='warning'>Najpierw zapnij pas defibrylatora!</span>")
 		return
 	else if(istype(loc, /obj/machinery/defibrillator_mount))
 		ui_action_click() //checks for this are handled in defibrillator.mount.dm
@@ -116,15 +116,15 @@
 	else if(istype(W, /obj/item/stock_parts/cell))
 		var/obj/item/stock_parts/cell/C = W
 		if(cell)
-			to_chat(user, "<span class='notice'>[src] already has a cell.</span>")
+			to_chat(user, "<span class='notice'>[src] ma już ogniwo.</span>")
 		else
 			if(C.maxcharge < paddles.revivecost)
-				to_chat(user, "<span class='notice'>[src] requires a higher capacity cell.</span>")
+				to_chat(user, "<span class='notice'>[src] wymaga ogniwa o większej pojemności.</span>")
 				return
 			if(!user.transferItemToLoc(W, src))
 				return
 			cell = W
-			to_chat(user, "<span class='notice'>You install a cell in [src].</span>")
+			to_chat(user, "<span class='notice'>Instalujesz ogniwo w [src].</span>")
 			update_icon()
 
 	else if(W.tool_behaviour == TOOL_SCREWDRIVER)
@@ -132,7 +132,7 @@
 			cell.update_icon()
 			cell.forceMove(get_turf(src))
 			cell = null
-			to_chat(user, "<span class='notice'>You remove the cell from [src].</span>")
+			to_chat(user, "<span class='notice'>Wyjmujesz ogniwo z [src].</span>")
 			update_icon()
 	else
 		return ..()
@@ -140,10 +140,10 @@
 /obj/item/defibrillator/emag_act(mob/user)
 	if(safety)
 		safety = FALSE
-		to_chat(user, "<span class='warning'>You silently disable [src]'s safety protocols with the cryptographic sequencer.</span>")
+		to_chat(user, "<span class='warning'>Po cichu wyłączasz protokoły bezpieczeństwa [src] sekwencerem kryptograficznym.</span>")
 	else
 		safety = TRUE
-		to_chat(user, "<span class='notice'>You silently enable [src]'s safety protocols with the cryptographic sequencer.</span>")
+		to_chat(user, "<span class='notice'>Po cichu włączasz protokoły bezpieczeństwa [src] sekwencerem kryptograficznym.</span>")
 
 /obj/item/defibrillator/emp_act(severity)
 	. = ..()
@@ -153,11 +153,11 @@
 		return
 	if(safety)
 		safety = FALSE
-		visible_message("<span class='notice'>[src] beeps: Safety protocols disabled!</span>")
+		visible_message("<span class='notice'>[src] pika: protokoły bezpieczeństwa wyłączone!</span>")
 		playsound(src, 'sound/machines/defib_saftyOff.ogg', 50, 0)
 	else
 		safety = TRUE
-		visible_message("<span class='notice'>[src] beeps: Safety protocols enabled!</span>")
+		visible_message("<span class='notice'>[src] pika: protokoły bezpieczeństwa włączone!</span>")
 		playsound(src, 'sound/machines/defib_saftyOn.ogg', 50, 0)
 	update_icon()
 
@@ -171,7 +171,7 @@
 		//Detach the paddles into the user's hands
 		if(!usr.put_in_hands(paddles))
 			on = FALSE
-			to_chat(user, "<span class='warning'>You need a free hand to hold the paddles!</span>")
+			to_chat(user, "<span class='warning'>Potrzebujesz wolnej ręki, by trzymać łopatki!</span>")
 			update_icon()
 			return
 	else
@@ -229,10 +229,10 @@
 /obj/item/defibrillator/proc/finish_charging()
 	if(cell)
 		if(cell.charge >= paddles.revivecost)
-			visible_message("<span class='notice'>[src] beeps: Unit ready.</span>")
+			visible_message("<span class='notice'>[src] pika: urządzenie gotowe.</span>")
 			playsound(src, 'sound/machines/defib_ready.ogg', 50, 0)
 		else
-			visible_message("<span class='notice'>[src] beeps: Charge depleted.</span>")
+			visible_message("<span class='notice'>[src] pika: ładunek wyczerpany.</span>")
 			playsound(src, 'sound/machines/defib_failed.ogg', 50, 0)
 	paddles.cooldown = FALSE
 	paddles.update_icon()
@@ -359,7 +359,7 @@
 	update_icon()
 	sleep(time)
 	var/turf/T = get_turf(src)
-	T.audible_message("<span class='notice'>[src] beeps: Unit is recharged.</span>")
+	T.audible_message("<span class='notice'>[src] pika: urządzenie naładowane.</span>")
 	playsound(src, 'sound/machines/defib_ready.ogg', 50, 0)
 	cooldown = FALSE
 	update_icon()
@@ -386,7 +386,7 @@
 		C.update_inv_hands()
 
 /obj/item/shockpaddles/suicide_act(mob/user)
-	user.visible_message("<span class='danger'>[user] is putting the live paddles on [user.p_their()] chest! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='danger'>[user] przykłada naładowane łopatki do klatki piersiowej! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	if(req_defib)
 		defib.deductcharge(revivecost)
 	playsound(src, 'sound/machines/defib_zap.ogg', 50, 1, -1)
@@ -413,14 +413,14 @@
 		if(!silent)
 			switch(cause)
 				if(SNAP_DROP)
-					to_chat(M, "<span class='notice'>The paddles snap back into the main unit.</span>")
+					to_chat(M, "<span class='notice'>Łopatki wskakują z powrotem do urządzenia.</span>")
 				if(SNAP_OVEREXTEND)
-					to_chat(M, "<span class='warning'>[defib]'s paddles overextend and come out of your hands!</span>")
+					to_chat(M, "<span class='warning'>Łopatki [defib] za bardzo się naciągają i wypadają ci z rąk!</span>")
 				if(SNAP_INTERACT)
-					to_chat(M, "<span class='notice'>You put back [src] into [defib]</span>")
+					to_chat(M, "<span class='notice'>Odkładasz [src] z powrotem do [defib]</span>")
 	else
 		if(!silent)
-			visible_message("<span class='notice'>[src] snaps back into [defib].</span>")
+			visible_message("<span class='notice'>[src] wskakuje z powrotem do [defib].</span>")
 		forceMove(defib)
 
 	defib.on = FALSE
@@ -431,20 +431,20 @@
 	if(busy)
 		return
 	if(req_defib && !defib.powered)
-		user.visible_message("<span class='notice'>[defib] beeps: Unit is unpowered.</span>")
+		user.visible_message("<span class='notice'>[defib] pika: urządzenie nie ma zasilania.</span>")
 		playsound(src, 'sound/machines/defib_failed.ogg', 50, 0)
 		return
 	if(!ISWIELDED(src))
 		if(iscyborg(user))
-			to_chat(user, "<span class='warning'>You must activate the paddles in your active module before you can use them on someone!</span>")
+			to_chat(user, "<span class='warning'>Musisz aktywować łopatki w aktywnym module, zanim użyjesz ich na kimś!</span>")
 		else
-			to_chat(user, "<span class='warning'>You need to wield the paddles in both hands before you can use them on someone!</span>")
+			to_chat(user, "<span class='warning'>Musisz trzymać łopatki oburącz, zanim użyjesz ich na kimś!</span>")
 		return
 	if(cooldown)
 		if(req_defib)
-			to_chat(user, "<span class='warning'>[defib] is recharging!</span>")
+			to_chat(user, "<span class='warning'>[defib] się ładuje!</span>")
 		else
-			to_chat(user, "<span class='warning'>[src] are recharging!</span>")
+			to_chat(user, "<span class='warning'>[src] się ładują!</span>")
 		return
 
 	if(user.a_intent == INTENT_DISARM)
@@ -453,15 +453,15 @@
 
 	if(!iscarbon(M))
 		if(req_defib)
-			to_chat(user, "<span class='warning'>The instructions on [defib] don't mention how to revive that...</span>")
+			to_chat(user, "<span class='warning'>Instrukcja [defib] nie mówi, jak to ożywić...</span>")
 		else
-			to_chat(user, "<span class='warning'>You aren't sure how to revive that...</span>")
+			to_chat(user, "<span class='warning'>Nie wiesz, jak to ożywić...</span>")
 		return
 	var/mob/living/carbon/H = M
 
 
 	if(user.zone_selected != BODY_ZONE_CHEST)
-		to_chat(user, "<span class='warning'>You need to target your patient's chest with [src]!</span>")
+		to_chat(user, "<span class='warning'>Musisz wycelować [src] w klatkę piersiową pacjenta!</span>")
 		return
 
 	if(user.a_intent == INTENT_HARM)
@@ -469,10 +469,10 @@
 		return
 
 	if((!req_defib && grab_ghost) || (req_defib && defib.grab_ghost))
-		H.notify_ghost_cloning("Your heart is being defibrillated!")
+		H.notify_ghost_cloning("Twoje serce jest defibrylowane!")
 		H.grab_ghost() // Shove them back in their body.
 	else if(can_defib(H))
-		H.notify_ghost_cloning("Your heart is being defibrillated. Re-enter your corpse if you want to be revived!", source = src)
+		H.notify_ghost_cloning("Twoje serce jest defibrylowane. Wróć do swojego ciała, jeśli chcesz zostać ożywiony!", source = src)
 
 	do_help(H, user)
 
@@ -495,7 +495,7 @@
 	if(isliving(H.pulledby))		//CLEAR!
 		var/mob/living/M = H.pulledby
 		if(M.electrocute_act(30, H))
-			M.visible_message("<span class='danger'>[M] is electrocuted by [M.p_their()] contact with [H]!</span>")
+			M.visible_message("<span class='danger'>[M] zostaje porażony prądem przez kontakt z [H]!</span>")
 			M.emote("scream")
 
 /obj/item/shockpaddles/proc/do_disarm(mob/living/M, mob/living/user)
@@ -504,8 +504,8 @@
 	if(!req_defib && !combat)
 		return
 	busy = TRUE
-	M.visible_message("<span class='danger'>[user] has touched [M] with [src]!</span>", \
-			"<span class='userdanger'>[user] has touched [M] with [src]!</span>")
+	M.visible_message("<span class='danger'>[user] dotyka [M] za pomocą [src]!</span>", \
+			"<span class='userdanger'>[user] dotyka [M] za pomocą [src]!</span>")
 	M.adjustStaminaLoss(80)
 	M.Knockdown(75)
 	M.Jitter(50)
@@ -529,39 +529,39 @@
 		return
 	if(!req_defib && !combat)
 		return
-	user.visible_message("<span class='warning'>[user] begins to place [src] on [H]'s chest.</span>",
-		"<span class='warning'>You overcharge the paddles and begin to place them onto [H]'s chest...</span>")
+	user.visible_message("<span class='warning'>[user] zaczyna przykładać [src] do klatki piersiowej [H].</span>",
+		"<span class='warning'>Przeładowujesz łopatki i zaczynasz przykładać je do klatki piersiowej [H]...</span>")
 	busy = TRUE
 	update_icon()
 	if(do_after(user, 15, target = H))
-		user.visible_message("<span class='notice'>[user] places [src] on [H]'s chest.</span>",
-			"<span class='warning'>You place [src] on [H]'s chest and begin to charge them.</span>")
+		user.visible_message("<span class='notice'>[user] przykłada [src] do klatki piersiowej [H].</span>",
+			"<span class='warning'>Przykładasz [src] do klatki piersiowej [H] i zaczynasz je ładować.</span>")
 		var/turf/T = get_turf(defib)
 		playsound(src, 'sound/machines/defib_charge.ogg', 50, 0)
 		if(req_defib)
-			T.audible_message("<span class='warning'>\The [defib] lets out an urgent beep and lets out a steadily rising hum...</span>")
+			T.audible_message("<span class='warning'>[defib] wydaje ponaglające piknięcie i coraz głośniej buczy...</span>")
 		else
-			user.audible_message("<span class='warning'>[src] let out an urgent beep.</span>")
+			user.audible_message("<span class='warning'>[src] wydają ponaglające piknięcie.</span>")
 		if(do_after(user, 15, target = H)) //Takes longer due to overcharging
 			if(!H)
 				busy = FALSE
 				update_icon()
 				return
 			if(H && H.stat == DEAD)
-				to_chat(user, "<span class='warning'>[H] is dead.</span>")
+				to_chat(user, "<span class='warning'>[H] nie żyje.</span>")
 				playsound(src, 'sound/machines/defib_failed.ogg', 50, 0)
 				busy = FALSE
 				update_icon()
 				return
-			user.visible_message("<span class='boldannounce'><i>[user] shocks [H] with \the [src]!</span>", "<span class='warning'>You shock [H] with \the [src]!</span>")
+			user.visible_message("<span class='boldannounce'><i>[user] razi [H] prądem za pomocą [src]!</span>", "<span class='warning'>Razisz [H] prądem za pomocą [src]!</span>")
 			playsound(src, 'sound/machines/defib_zap.ogg', 100, 1, -1)
 			playsound(src, 'sound/weapons/egloves.ogg', 100, 1, -1)
 			H.emote("scream")
 			shock_touching(45, H)
 			if(H.can_heartattack() && !H.undergoing_cardiac_arrest())
 				if(!H.stat)
-					H.visible_message("<span class='warning'>[H] thrashes wildly, clutching at [H.p_their()] chest!</span>",
-						"<span class='userdanger'>You feel a horrible agony in your chest!</span>")
+					H.visible_message("<span class='warning'>[H] rzuca się dziko, chwytając się za klatkę piersiową!</span>",
+						"<span class='userdanger'>Czujesz straszliwy ból w klatce piersiowej!</span>")
 				H.set_heartattack(TRUE)
 			H.apply_damage(50, BURN, BODY_ZONE_CHEST)
 			log_combat(user, H, "overloaded the heart of", defib)
@@ -580,11 +580,11 @@
 	update_icon()
 
 /obj/item/shockpaddles/proc/do_help(mob/living/carbon/H, mob/living/user)
-	user.visible_message("<span class='warning'>[user] begins to place [src] on [H]'s chest.</span>", "<span class='warning'>You begin to place [src] on [H]'s chest...</span>")
+	user.visible_message("<span class='warning'>[user] zaczyna przykładać [src] do klatki piersiowej [H].</span>", "<span class='warning'>Zaczynasz przykładać [src] do klatki piersiowej [H]...</span>")
 	busy = TRUE
 	update_icon()
 	if(do_after(user, 30, target = H)) //beginning to place the paddles on patient's chest to allow some time for people to move away to stop the process
-		user.visible_message("<span class='notice'>[user] places [src] on [H]'s chest.</span>", "<span class='warning'>You place [src] on [H]'s chest.</span>")
+		user.visible_message("<span class='notice'>[user] przykłada [src] do klatki piersiowej [H].</span>", "<span class='warning'>Przykładasz [src] do klatki piersiowej [H].</span>")
 		playsound(src, 'sound/machines/defib_charge.ogg', 75, 0)
 		var/total_burn	= 0
 		var/total_brute	= 0
@@ -594,13 +594,13 @@
 			for(var/obj/item/carried_item in H.contents)
 				if(istype(carried_item, /obj/item/clothing/suit/space))
 					if((!combat && !req_defib) || (req_defib && !defib.combat))
-						user.audible_message("<span class='warning'>[req_defib ? "[defib]" : "[src]"] buzzes: Patient's chest is obscured. Operation aborted.</span>")
+						user.audible_message("<span class='warning'>[req_defib ? "[defib]" : "[src]"] brzęczy: klatka piersiowa pacjenta jest zasłonięta. Operacja przerwana.</span>")
 						playsound(src, 'sound/machines/defib_failed.ogg', 50, 0)
 						busy = FALSE
 						update_icon()
 						return
 			if(H.stat == DEAD)
-				H.visible_message("<span class='warning'>[H]'s body convulses a bit.</span>")
+				H.visible_message("<span class='warning'>Ciałem [H] lekko wstrząsają drgawki.</span>")
 				playsound(src, "bodyfall", 50, 1)
 				playsound(src, 'sound/machines/defib_zap.ogg', 75, 1, -1)
 				total_brute	= H.getBruteLoss()
@@ -609,30 +609,30 @@
 				var/failed
 
 				if (H.suiciding)
-					failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] buzzes: Resuscitation failed - Recovery of patient impossible. Further attempts futile.</span>"
+					failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] brzęczy: reanimacja nieudana - przywrócenie pacjenta jest niemożliwe. Dalsze próby są bezcelowe.</span>"
 				else if (H.ishellbound())
-					failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] buzzes: Resuscitation failed - Patient's soul appears to be on another plane of existence.  Further attempts futile.</span>"
+					failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] brzęczy: reanimacja nieudana - dusza pacjenta wydaje się być na innym planie istnienia. Dalsze próby są bezcelowe.</span>"
 				else if (tplus > tlimit)
-					failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] buzzes: Resuscitation failed - Body has decayed for too long. Further attempts futile.</span>"
+					failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] brzęczy: reanimacja nieudana - ciało rozkłada się zbyt długo. Dalsze próby są bezcelowe.</span>"
 				else if (!heart)
-					failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] buzzes: Resuscitation failed - Patient's heart is missing.</span>"
+					failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] brzęczy: reanimacja nieudana - brak serca pacjenta.</span>"
 				else if (heart.organ_flags & ORGAN_FAILING)
-					failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] buzzes: Resuscitation failed - Patient's heart too damaged.</span>"
+					failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] brzęczy: reanimacja nieudana - serce pacjenta jest zbyt uszkodzone.</span>"
 				else if(total_burn >= MAX_REVIVE_FIRE_DAMAGE || total_brute >= MAX_REVIVE_BRUTE_DAMAGE || HAS_TRAIT(H, TRAIT_HUSK))
-					failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] buzzes: Resuscitation failed - Severe tissue damage makes recovery of patient impossible via defibrillator. Further attempts futile.</span>"
+					failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] brzęczy: reanimacja nieudana - poważne uszkodzenia tkanek uniemożliwiają przywrócenie pacjenta defibrylatorem. Dalsze próby są bezcelowe.</span>"
 				else if(H.get_ghost())
-					failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] buzzes: Resuscitation failed - No activity in patient's brain. Further attempts may be successful.</span>"
+					failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] brzęczy: reanimacja nieudana - brak aktywności w mózgu pacjenta. Kolejne próby mogą się udać.</span>"
 				else
 					var/obj/item/organ/brain/BR = H.getorgan(/obj/item/organ/brain)
 					if(BR)
 						if(BR.organ_flags & ORGAN_FAILING)
-							failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] buzzes: Resuscitation failed - Patient's brain tissue is damaged making recovery of patient impossible via defibrillator. Further attempts futile.</span>"
+							failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] brzęczy: reanimacja nieudana - uszkodzenie tkanki mózgowej uniemożliwia przywrócenie pacjenta defibrylatorem. Dalsze próby są bezcelowe.</span>"
 						if(BR.brain_death)
-							failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] buzzes: Resuscitation failed - Patient's brain damaged beyond point of no return. Further attempts futile.</span>"
+							failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] brzęczy: reanimacja nieudana - mózg pacjenta jest nieodwracalnie uszkodzony. Dalsze próby są bezcelowe.</span>"
 						if(BR.suicided || BR.brainmob?.suiciding)
-							failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] buzzes: Resuscitation failed - No intelligence pattern can be detected in patient's brain. Further attempts futile.</span>"
+							failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] brzęczy: reanimacja nieudana - w mózgu pacjenta nie wykryto wzorca inteligencji. Dalsze próby są bezcelowe.</span>"
 					else
-						failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] buzzes: Resuscitation failed - Patient's brain is missing. Further attempts futile.</span>"
+						failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] brzęczy: reanimacja nieudana - brak mózgu pacjenta. Dalsze próby są bezcelowe.</span>"
 
 				if(failed)
 					user.visible_message(failed)
@@ -649,13 +649,13 @@
 						H.adjustFireLoss((mobhealth - HALFWAYCRITDEATH) * (total_burn / overall_damage), 0)
 						H.adjustBruteLoss((mobhealth - HALFWAYCRITDEATH) * (total_brute / overall_damage), 0)
 					H.updatehealth() // Previous "adjust" procs don't update health, so we do it manually.
-					user.visible_message("<span class='notice'>[req_defib ? "[defib]" : "[src]"] pings: Resuscitation successful.</span>")
+					user.visible_message("<span class='notice'>[req_defib ? "[defib]" : "[src]"] pinguje: reanimacja zakończona sukcesem.</span>")
 					playsound(src, 'sound/machines/defib_success.ogg', 50, 0)
 					H.set_heartattack(FALSE)
 					H.revive()
 					H.emote("gasp")
 					H.Jitter(100)
-					to_chat(H, "<span class='warning'><b>You have been revived via defibrillation. You cannot remember how exactly you died (or who killed you), but you may remember certain details such as the weapon used or the place of death.</b></span>") //NSV13
+					to_chat(H, "<span class='warning'><b>Zostajesz przywrócony do życia defibrylacją. Nie pamiętasz dokładnie, jak zginąłeś (ani kto cię zabił), ale możesz pamiętać pewne szczegóły, takie jak użyta broń czy miejsce śmierci.</b></span>") //NSV13
 					SEND_SIGNAL(H, COMSIG_LIVING_MINOR_SHOCK)
 					log_combat(user, H, "revived", defib)
 				if(req_defib)
@@ -667,18 +667,18 @@
 				else
 					recharge(60)
 			else if (!H.getorgan(/obj/item/organ/heart))
-				user.visible_message("<span class='warning'>[req_defib ? "[defib]" : "[src]"] buzzes: Patient's heart is missing. Operation aborted.</span>")
+				user.visible_message("<span class='warning'>[req_defib ? "[defib]" : "[src]"] brzęczy: brak serca pacjenta. Operacja przerwana.</span>")
 				playsound(src, 'sound/machines/defib_failed.ogg', 50, 0)
 			else if(H.undergoing_cardiac_arrest())
 				playsound(src, 'sound/machines/defib_zap.ogg', 50, 1, -1)
 				if(!(heart.organ_flags & ORGAN_FAILING))
 					H.set_heartattack(FALSE)
-					user.visible_message("<span class='notice'>[req_defib ? "[defib]" : "[src]"] pings: Patient's heart is now beating again.</span>")
+					user.visible_message("<span class='notice'>[req_defib ? "[defib]" : "[src]"] pinguje: serce pacjenta znów bije.</span>")
 				else
-					user.visible_message("<span class='warning'>[req_defib ? "[defib]" : "[src]"] buzzes: Resuscitation failed, heart damage detected.</span>")
+					user.visible_message("<span class='warning'>[req_defib ? "[defib]" : "[src]"] brzęczy: reanimacja nieudana, wykryto uszkodzenie serca.</span>")
 
 			else
-				user.visible_message("<span class='warning'>[req_defib ? "[defib]" : "[src]"] buzzes: Patient is not in a valid state. Operation aborted.</span>")
+				user.visible_message("<span class='warning'>[req_defib ? "[defib]" : "[src]"] brzęczy: pacjent nie jest w odpowiednim stanie. Operacja przerwana.</span>")
 				playsound(src, 'sound/machines/defib_failed.ogg', 50, 0)
 	busy = FALSE
 	update_icon()

@@ -16,7 +16,7 @@
 /obj/item/soapstone/examine(mob/user)
 	. = ..()
 	if(remaining_uses != -1)
-		. += "It has [remaining_uses] uses left."
+		. += "Pozostałe użycia: [remaining_uses]."
 
 /obj/item/soapstone/afterattack(atom/target, mob/user, proximity)
 	. = ..()
@@ -27,18 +27,18 @@
 	var/obj/structure/chisel_message/existing_message = locate() in T
 
 	if(!remaining_uses && !existing_message)
-		to_chat(user, "<span class='warning'>[src] is too worn out to use.</span>")
+		to_chat(user, "<span class='warning'>[src] jest zbyt zużyty, by go używać.</span>")
 		return
 
 	if(!good_chisel_message_location(T))
-		to_chat(user, "<span class='warning'>It's not appropriate to engrave on [T].</span>")
+		to_chat(user, "<span class='warning'>Wyrytowanie czegoś na [T] nie byłoby stosowne.</span>")
 		return
 
 	if(existing_message)
-		user.visible_message("<span class='notice'>[user] starts erasing [existing_message].</span>", "<span class='notice'>You start erasing [existing_message].</span>", "<span class='italics'>You hear a chipping sound.</span>")
+		user.visible_message("<span class='notice'>[user] zaczyna ścierać [existing_message].</span>", "<span class='notice'>Zaczynasz ścierać [existing_message].</span>", "<span class='italics'>Słyszysz odłupywanie.</span>")
 		playsound(loc, 'sound/items/gavel.ogg', 50, 1, -1)
 		if(do_after(user, tool_speed, target = existing_message))
-			user.visible_message("<span class='notice'>[user] erases [existing_message].</span>", "<span class='notice'>You erase [existing_message][existing_message.creator_key == user.ckey ? ", refunding a use" : ""].</span>")
+			user.visible_message("<span class='notice'>[user] erases [existing_message].</span>", "<span class='notice'>Ścierasz [existing_message][existing_message.creator_key == user.ckey ? ", odzyskując użycie" : ""].</span>")
 			existing_message.persists = FALSE
 			qdel(existing_message)
 			playsound(loc, 'sound/items/gavel.ogg', 50, 1, -1)
@@ -46,22 +46,22 @@
 				refund_use()
 		return
 
-	var/message = stripped_input(user, "What would you like to engrave?", "Leave a message")
+	var/message = stripped_input(user, "Co chcesz wyryć?", "Leave a message")
 	if(!message)
-		to_chat(user, "<span class='notice'>You decide not to engrave anything.</span>")
+		to_chat(user, "<span class='notice'>Postanawiasz niczego nie ryć.</span>")
 		return
 
 	if(!target.Adjacent(user) && locate(/obj/structure/chisel_message) in T)
-		to_chat(user, "<span class='warning'>Someone wrote here before you chose! Find another spot.</span>")
+		to_chat(user, "<span class='warning'>Ktoś coś tu napisał, zanim się zdecydowałeś! Znajdź inne miejsce.</span>")
 		return
 	if(CHAT_FILTER_CHECK(message))
-		to_chat(user, "<span class='warning'>That message contains prohibited word(s)! Try again.</span>")
+		to_chat(user, "<span class='warning'>Ta wiadomość zawiera zakazane słowa! Spróbuj ponownie.</span>")
 		return
 	playsound(loc, 'sound/items/gavel.ogg', 50, 1, -1)
-	user.visible_message("<span class='notice'>[user] starts engraving a message into [T]...</span>", "<span class='notice'>You start engraving a message into [T]...</span>", "<span class='italics'>You hear a chipping sound.</span>")
+	user.visible_message("<span class='notice'>[user] zaczyna ryć wiadomość w [T]...</span>", "<span class='notice'>Zaczynasz ryć wiadomość w [T]...</span>", "<span class='italics'>Słyszysz odłupywanie.</span>")
 	if(can_use() && do_after(user, tool_speed, target = T) && can_use()) //This looks messy but it's actually really clever!
 		if(!locate(/obj/structure/chisel_message) in T)
-			user.visible_message("<span class='notice'>[user] leaves a message for future spacemen!</span>", "<span class='notice'>You engrave a message into [T]!</span>", "<span class='italics'>You hear a chipping sound.</span>")
+			user.visible_message("<span class='notice'>[user] zostawia wiadomość dla przyszłych kosmonautów!</span>", "<span class='notice'>Ryjesz wiadomość w [T]!</span>", "<span class='italics'>Słyszysz odłupywanie.</span>")
 			playsound(loc, 'sound/items/gavel.ogg', 50, 1, -1)
 			var/obj/structure/chisel_message/M = new(T)
 			M.register(user, message)
@@ -265,7 +265,7 @@
 		if("delete")
 			if(!is_admin)
 				return
-			var/confirm = alert(user, "Confirm deletion of engraved message?", "Confirm Deletion", "Yes", "No")
+			var/confirm = alert(user, "Potwierdzić usunięcie wyrytej wiadomości?", "Potwierdź usunięcie", "Yes", "No")
 			if(confirm == "Yes")
 				persists = FALSE
 				qdel(src)

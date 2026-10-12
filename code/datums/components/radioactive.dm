@@ -73,14 +73,14 @@
 	var/atom/master = parent
 	var/list/out = list()
 	if(get_dist(master, user) <= 1)
-		out += "The air around [master] feels warm"
+		out += "Powietrze wokół [master] wydaje się ciepłe"
 	switch(strength)
 		if(RAD_AMOUNT_LOW to RAD_AMOUNT_MEDIUM)
-			out += "[length(out) ? " and it " : "[master] "]feels weird to look at."
+			out += "[length(out) ? ", a samo " : "[master] "]dziwnie się na to patrzy."
 		if(RAD_AMOUNT_MEDIUM to RAD_AMOUNT_HIGH)
-			out += "[length(out) ? " and it " : "[master] "]seems to be glowing a bit."
+			out += "[length(out) ? ", a samo " : "[master] "]wydaje się lekko świecić."
 		if(RAD_AMOUNT_HIGH to INFINITY) //At this level the object can contaminate other objects
-			out += "[length(out) ? " and it " : "[master] "]hurts to look at."
+			out += "[length(out) ? ", a samo " : "[master] "]aż boli od patrzenia."
 		else
 			out += "."
 	to_chat(user, out.Join())

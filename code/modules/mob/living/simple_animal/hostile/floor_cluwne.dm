@@ -17,7 +17,7 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 	maxHealth = 250
 	health = 250
 	speed = -1
-	attacktext = "attacks"
+	attacktext = "atakuje"
 	attack_sound = 'sound/items/bikehorn.ogg'
 	del_on_death = TRUE
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB | LETPASSTHROW | PASSGLASS | PASSBLOB//it's practically a ghost when unmanifested (under the floor)
@@ -234,14 +234,14 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 				var/obj/item/I = locate() in orange(8, H)
 				if(I && !I.anchored)
 					I.throw_at(H, 4, 3)
-					to_chat(H, "<span class='warning'>What threw that?</span>")
+					to_chat(H, "<span class='warning'>Co to rzuciło?</span>")
 
 		if(STAGE_SPOOK)
 
 			if(prob(4))
 				var/turf/T = get_turf(H)
 				T.handle_slip(H, 20)
-				to_chat(H, "<span class='warning'>The floor shifts underneath you!</span>")
+				to_chat(H, "<span class='warning'>Podłoga przesuwa się pod tobą!</span>")
 
 			if(prob(5))
 				H.playsound_local(src,'sound/voice/cluwnelaugh2.ogg', 2)
@@ -257,7 +257,7 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 				var/obj/item/I = locate() in orange(8, H)
 				if(I && !I.anchored)
 					I.throw_at(H, 4, 3)
-					to_chat(H, "<span class='warning'>What threw that?</span>")
+					to_chat(H, "<span class='warning'>Co to rzuciło?</span>")
 
 			if(prob(2))
 				to_chat(H, "<i>yalp ot tnaw I</i>")
@@ -270,7 +270,7 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 			if(prob(5))
 				var/turf/T = get_turf(H)
 				T.handle_slip(H, 20)
-				to_chat(H, "<span class='warning'>The floor shifts underneath you!</span>")
+				to_chat(H, "<span class='warning'>Podłoga przesuwa się pod tobą!</span>")
 
 			if(prob(3))
 				playsound(src,pick('sound/spookoween/scary_horn.ogg', 'sound/spookoween/scary_horn2.ogg', 'sound/spookoween/scary_horn3.ogg'), 30, 1)
@@ -288,16 +288,16 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 				for(var/obj/item/I in orange(8, H))
 					if(!I.anchored)
 						I.throw_at(H, 4, 3)
-				to_chat(H, "<span class='warning'>What the hell?!</span>")
+				to_chat(H, "<span class='warning'>Co do diabła?!</span>")
 
 			if(prob(2))
-				to_chat(H, "<span class='warning'>Something feels very wrong...</span>")
+				to_chat(H, "<span class='warning'>Coś jest bardzo nie tak...</span>")
 				H.playsound_local(src,'sound/hallucinations/behind_you1.ogg', 25)
 				H.flash_act()
 
 			if(prob(2))
 				to_chat(H, "<i>!?REHTOMKNOH eht esiarp uoy oD</i>")
-				to_chat(H, "<span class='warning'>Something grabs your foot!</span>")
+				to_chat(H, "<span class='warning'>Coś chwyta cię za stopę!</span>")
 				H.playsound_local(src,'sound/hallucinations/i_see_you1.ogg', 25)
 				H.Stun(20)
 
@@ -308,7 +308,7 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 					playsound(src, 'sound/effects/meteorimpact.ogg', 30, 1)
 
 			if(prob(1))
-				to_chat(H, "<span class='userdanger'>WHAT THE FUCK IS THAT?!</span>")
+				to_chat(H, "<span class='userdanger'>CO TO, KURWA, JEST?!</span>")
 				to_chat(H, "<i>.KNOH !nuf hcum os si uoy htiw gniyalP .KNOH KNOH KNOH</i>")
 				H.playsound_local(src,'sound/hallucinations/im_here1.ogg', 25)
 				H.reagents.add_reagent("mindbreaker", 3)
@@ -333,7 +333,7 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 					for(var/obj/structure/O in T)
 						if(O.density || istype(O, /obj/machinery/door/airlock))
 							forceMove(H.loc)
-				to_chat(H, "<span class='userdanger'>You feel the floor closing in on your feet!</span>")
+				to_chat(H, "<span class='userdanger'>Czujesz, jak podłoga zaciska się wokół twoich stóp!</span>")
 				H.Paralyze(300)
 				INVOKE_ASYNC(H, TYPE_PROC_REF(/mob, emote), "scream")
 				H.adjustBruteLoss(10)
@@ -348,7 +348,7 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 
 
 /mob/living/simple_animal/hostile/floor_cluwne/proc/Grab(mob/living/carbon/human/H)
-	to_chat(H, "<span class='userdanger'>You feel a cold, gloved hand clamp down on your ankle!</span>")
+	to_chat(H, "<span class='userdanger'>Czujesz, jak zimna dłoń w rękawiczce zaciska się na twojej kostce!</span>")
 	for(var/I in 1 to get_dist(src, H))
 		if(do_after(src, 5, target = H))
 			step_towards(H, src)
@@ -356,11 +356,11 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 			if(prob(40))
 				H.emote("scream")
 			else if(prob(25))
-				H.say(pick("HELP ME!!","IT'S GOT ME!!","DON'T LET IT TAKE ME!!",";SOMETHING'S KILLING ME!!","HOLY FUCK!!"))
+				H.say(pick("POMOCY!!","MA MNIE!!","NIE POZWÓLCIE MU MNIE ZABRAĆ!!",";COŚ MNIE ZABIJA!!","O KURWA!!"))
 				playsound(src, pick('sound/voice/cluwnelaugh1.ogg', 'sound/voice/cluwnelaugh2.ogg', 'sound/voice/cluwnelaugh3.ogg'), 50, 1)
 
 	if(get_dist(src,H) <= 1)
-		visible_message("<span class='danger'>[src] begins dragging [H] under the floor!</span>")
+		visible_message("<span class='danger'>[src] zaczyna wciągać [H] pod podłogę!</span>")
 		if(do_after(src, 50, target = H) && eating)
 			H.become_blind()
 			H.layer = GAME_PLANE
@@ -368,8 +368,8 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 			H.density = FALSE
 			H.anchored = TRUE
 			addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/simple_animal/hostile/floor_cluwne, Kill), H), 100, TIMER_OVERRIDE|TIMER_UNIQUE)
-			visible_message("<span class='danger'>[src] pulls [H] under!</span>")
-			to_chat(H, "<span class='userdanger'>[src] drags you underneath the floor!</span>")
+			visible_message("<span class='danger'>[src] wciąga [H] pod spód!</span>")
+			to_chat(H, "<span class='userdanger'>[src] wciąga cię pod podłogę!</span>")
 		else
 			eating = FALSE
 	else

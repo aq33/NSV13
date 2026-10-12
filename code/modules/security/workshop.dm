@@ -45,7 +45,7 @@
 
 /obj/machinery/computer/holodeck/prison/ui_act(action, params)
 	if(!allowed(usr))
-		to_chat(usr, "<span class='warning'>Access denied.</span>")
+		to_chat(usr, "<span class='warning'>Odmowa dostępu.</span>")
 		return
 	if(..())
 		return
@@ -63,7 +63,7 @@
 			if(!valid)
 				return
 			if(offline)
-				say("Workshop shutdown underway! Standby for reboot...")
+				say("Trwa wyłączanie warsztatu! Poczekaj na restart...")
 				return
 			else //load the map_template that program_to_load represents
 				load_program(program_to_load)
@@ -75,14 +75,14 @@
 
 /obj/machinery/computer/holodeck/prison/proc/temporary_down()
 	if(!offline)
-		say("Emergency shutdown engaged. Restarting in 2 minutes...")
+		say("Włączono awaryjne wyłączenie. Restart za 2 minuty...")
 		offline_program = "workshop-offline"
 		emergency_shutdown()
 		offline = TRUE
 		offline_program = pick("donut", "plush")
 		addtimer(CALLBACK(src, PROC_REF(load_program), offline_program), 1200)
 	else
-		say("Workshop shutdown underway! Standby for reboot...")
+		say("Trwa wyłączanie warsztatu! Poczekaj na restart...")
 
 /obj/machinery/computer/holodeck/prison/nerf(nerf_this, is_loading) //We want items to behave as normal and to do damage
 	return
@@ -98,7 +98,7 @@
 	for(var/atom/movable/atom_contents as anything in holo_atom) //make sure that things inside of a holoitem are moved outside before destroying it
 		atom_contents.forceMove(target_turf)
 	if(!silent)
-		visible_message("<span class='notice'>[holo_atom] fades away!</span>")
+		visible_message("<span class='notice'>[holo_atom] znika!</span>")
 
 	qdel(holo_atom)
 

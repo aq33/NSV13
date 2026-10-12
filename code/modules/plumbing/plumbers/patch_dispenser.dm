@@ -18,7 +18,7 @@
 
 /obj/machinery/plumbing/patch_dispenser/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The [name] currently has [stored_patches.len] stored. There needs to be less than [max_floor_patches] on the floor to continue dispensing.</span>"
+	. += "<span class='notice'>[name] ma obecnie zmagazynowane: [stored_patches.len]. Aby kontynuować wydawanie, na podłodze musi być mniej niż [max_floor_patches].</span>"
 
 /obj/machinery/plumbing/patch_dispenser/Initialize(mapload, bolt)
 	. = ..()
@@ -67,6 +67,6 @@
 			patch_size = CLAMP(text2num(params["volume"]), 0, 40)
 			. = TRUE
 		if("change_patch_name")
-			var/new_name = stripped_input(usr, "Enter a patch name.", name, patch_name)
+			var/new_name = stripped_input(usr, "Podaj nazwę plastra.", name, patch_name)
 			patch_name = new_name + " patch"
 			. = TRUE

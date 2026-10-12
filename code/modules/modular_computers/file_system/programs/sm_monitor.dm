@@ -1,13 +1,13 @@
 /datum/computer_file/program/supermatter_monitor
 	filename = "smmonitor"
-	filedesc = "Supermatter Monitoring"
+	filedesc = "Monitoring supermaterii"
 	category = PROGRAM_CATEGORY_ENGI
 	ui_header = "smmon_0.gif"
 	program_icon_state = "smmon_0"
-	extended_desc = "This program connects to specially calibrated supermatter sensors to provide information on the status of supermatter-based engines."
+	extended_desc = "Ten program łączy się ze specjalnie skalibrowanymi czujnikami supermaterii, dostarczając informacji o stanie silników opartych na supermaterii."
 	requires_ntnet = TRUE
 	transfer_access = list(ACCESS_CONSTRUCTION)
-	network_destination = "supermatter monitoring system"
+	network_destination = "system monitorowania supermaterii"
 	size = 5
 	tgui_id = "NtosSupermatterMonitor"
 	program_icon = "radiation"
@@ -99,7 +99,7 @@
 	if(!computer.get_ntnet_status())
 		return
 	if(computer.active_program != src)
-		computer.alert_call(src, "Crystal delamination in progress!")
+		computer.alert_call(src, "Trwa delaminacja kryształu!")
 		alert_pending = TRUE
 
 /**
@@ -115,7 +115,7 @@
 	if(!computer.get_ntnet_status())
 		return
 	if(computer.active_program == src)
-		computer.alert_call(src, "Crystal delamination in progress!")
+		computer.alert_call(src, "Trwa delaminacja kryształu!")
 
 /datum/computer_file/program/supermatter_monitor/ui_data(mob/user)
 	var/list/data = list()

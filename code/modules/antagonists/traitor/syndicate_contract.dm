@@ -135,8 +135,8 @@
 			else
 				D.adjust_money(-points_to_check)
 
-			priority_announce("One of your crew was captured by a rival organisation - we've needed to pay their ransom to bring them back. \
-							As is policy we've taken a portion of the station's funds to offset the overall cost.", null, null, null, "Nanotrasen Asset Protection")
+			priority_announce("Jeden z członków waszej załogi został porwany przez konkurencyjną organizację - musieliśmy zapłacić okup, by go odzyskać. \
+							Zgodnie z procedurami pobraliśmy część funduszy statku na pokrycie kosztów.", null, null, null, "Ochrona Mienia Nanotrasen")
 
 			INVOKE_ASYNC(src, PROC_REF(finish_enter))
 
@@ -154,7 +154,7 @@
 		if(C && C.registered_account)
 			C.registered_account.adjust_money(ransom * 0.35)
 
-			C.registered_account.bank_card_talk("We've processed the ransom, agent. Here's your cut - your balance is now \
+			C.registered_account.bank_card_talk("Okup przetworzony, agencie. Oto twoja działka - twoje saldo wynosi teraz \
 			[C.registered_account.account_balance] cr.", TRUE)
 
 // They're off to holding - handle the return timer and give some text about what's going on.
@@ -169,23 +169,23 @@
 		M.flash_act()
 		M.confused += 10
 		M.blur_eyes(5)
-		to_chat(M, "<span class='warning'>You feel strange...</span>")
+		to_chat(M, "<span class='warning'>Czujesz się dziwnie...</span>")
 		sleep(60)
-		to_chat(M, "<span class='warning'>That pod did something to you...</span>")
+		to_chat(M, "<span class='warning'>Ta kapsuła coś ci zrobiła...</span>")
 		M.Dizzy(35)
 		sleep(65)
-		to_chat(M, "<span class='warning'>Your head pounds... It feels like it's going to burst out your skull!</span>")
+		to_chat(M, "<span class='warning'>Głowa ci pęka... Masz wrażenie, że zaraz rozsadzi ci czaszkę!</span>")
 		M.flash_act()
 		M.confused += 20
 		M.blur_eyes(3)
 		sleep(30)
-		to_chat(M, "<span class='warning'>Your head pounds...</span>")
+		to_chat(M, "<span class='warning'>Głowa ci pęka...</span>")
 		sleep(100)
 		M.flash_act()
 		M.Unconscious(200)
-		to_chat(M, "<span class='reallybig hypnophrase'>A million voices echo in your head... <i>\"Your mind held many valuable secrets - \
-					we thank you for providing them. Your value is expended, and you will be ransomed back to your station. We always get paid, \
-					so it's only a matter of time before we ship you back...\"</i></span>")
+		to_chat(M, "<span class='reallybig hypnophrase'>W twojej głowie rozbrzmiewa milion głosów... <i>\"Twój umysł skrywał wiele cennych sekretów - \
+					dziękujemy za ich udostępnienie. Twoja wartość się wyczerpała, więc odeślemy cię na twój statek za okupem. Zawsze dostajemy zapłatę, \
+					więc to tylko kwestia czasu, zanim cię odeślemy...\"</i></span>")
 		M.blur_eyes(10)
 		M.Dizzy(15)
 		M.confused += 20
@@ -231,8 +231,8 @@
 
 		new /obj/effect/pod_landingzone(possible_drop_loc[pod_rand_loc], return_pod)
 	else
-		to_chat(M, "<span class='reallybig hypnophrase'>A million voices echo in your head... <i>\"Seems where you got sent here from won't \
-					be able to handle our pod... You will die here instead.\"</i></span>")
+		to_chat(M, "<span class='reallybig hypnophrase'>W twojej głowie rozbrzmiewa milion głosów... <i>\"Wygląda na to, że miejsce, z którego cię przysłano, nie \
+					przyjmie naszej kapsuły... Zamiast tego zginiesz tutaj.\"</i></span>")
 		if (iscarbon(M))
 			var/mob/living/carbon/C = M
 			if (C.can_heartattack())

@@ -5,8 +5,8 @@
 	cost = 2
 	spell_type = /obj/effect/proc_holder/spell/self/predator
 	has_mode = TRUE
-	mode_on_msg = "<span class='danger'><B>You switch to analysis mode.</span></B>"
-	mode_off_msg = "<span class='danger'><B>You switch to combat mode.</span></B>"
+	mode_on_msg = "<span class='danger'><B>Przełączasz się w tryb analizy.</span></B>"
+	mode_off_msg = "<span class='danger'><B>Przełączasz się w tryb walki.</span></B>"
 	var/list/can_track = list()
 
 /datum/guardian_ability/major/predator/Apply()
@@ -22,32 +22,32 @@
 		if(!guardian.Adjacent(target))
 			return ..()
 		if(istype(target, /obj/effect/decal/cleanable/blood))
-			guardian.visible_message("<span class='notice'>[guardian] swirls it's finger around in [target] for a bit, before shaking it off.</span>")
+			guardian.visible_message("<span class='notice'>[guardian] przez chwilę wierci palcem w [target], po czym go strzepuje.</span>")
 			var/obj/effect/decal/D = target
 			var/list/blood = D.return_blood_DNA()
 			if(LAZYLEN(blood))
 				for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
 					if(H.dna && blood[H.dna.unique_enzymes])
 						if(!(H in can_track))
-							to_chat(guardian, "<span class='notice italics'>We learn the identity of [H.real_name].</span>")
+							to_chat(guardian, "<span class='notice italics'>Poznajemy tożsamość [H.real_name].</span>")
 							can_track += H
 			return TRUE
 		if(isobj(target))
-			guardian.visible_message("<span class='notice'>[guardian] picks up [target], and looks at it for a second, before setting it down.</span>")
+			guardian.visible_message("<span class='notice'>[guardian] podnosi [target], przygląda mu się przez sekundę, po czym odkłada.</span>")
 			var/obj/O = target
 			var/list/prints = O.return_fingerprints()
 			if(LAZYLEN(prints))
 				for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
 					if(H.dna && prints[rustg_hash_string(RUSTG_HASH_MD5, H.dna.uni_identity)])
 						if(!(H in can_track))
-							to_chat(guardian, "<span class='notice italics'>We learn the identity of [H.real_name].</span>")
+							to_chat(guardian, "<span class='notice italics'>Poznajemy tożsamość [H.real_name].</span>")
 							can_track += H
 			var/list/blood = O.return_blood_DNA()
 			if(LAZYLEN(blood))
 				for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
 					if(H.dna && blood[H.dna.unique_enzymes])
 						if(!(H in can_track))
-							to_chat(guardian, "<span class='notice italics'>We learn the identity of [H.real_name].</span>")
+							to_chat(guardian, "<span class='notice italics'>Poznajemy tożsamość [H.real_name].</span>")
 							can_track += H
 			return TRUE
 
@@ -70,14 +70,14 @@
 	var/datum/guardian_ability/major/predator/P = G.stats.ability
 	if(!LAZYLEN(P.can_track))
 		revert_cast()
-		to_chat(G, "<span class='notice'>You don't have anyone to track!</span>")
+		to_chat(G, "<span class='notice'>Nie masz kogo śledzić!</span>")
 		return
-	var/mob/living/carbon/human/prey = input(G, "Select your prey!", "All-Seeing Eyes") as null|anything in P.can_track
+	var/mob/living/carbon/human/prey = input(G, "Wybierz swoją ofiarę!", "Wszystkowidzące oczy") as null|anything in P.can_track
 	if(!prey)
 		revert_cast()
-		to_chat(G, "<span class='notice'>You didn't select anyone to track!</span>")
+		to_chat(G, "<span class='notice'>Nie wybrałeś nikogo do śledzenia!</span>")
 		return
-	to_chat(G, "<span class='notice'>We begin to track <B>[prey.real_name]</B>.[get_final_z(prey) == get_final_z(G) ? "" : " They are far away from here[G.stats.potential >= 4 ? ", on z-level [get_final_z(prey)]." : "."]"]</span>")
+	to_chat(G, "<span class='notice'>Zaczynamy śledzić <B>[prey.real_name]</B>.[get_final_z(prey) == get_final_z(G) ? "" : " Jest daleko stąd[G.stats.potential >= 4 ? ", na poziomie z [get_final_z(prey)]." : "."]"]</span>")
 	log_game("[key_name(G)] began to track [key_name(prey)] using Predator.") // why log this? Simple. Some idiot will eventually cry metacomms because someone used this ability to track them to their autistic maint base or random-ass locker.
 	for(var/datum/status_effect/agent_pinpointer/predator/status in G.status_effects)
 		status.scan_target = prey

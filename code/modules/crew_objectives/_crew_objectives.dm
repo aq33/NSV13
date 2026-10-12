@@ -22,7 +22,7 @@
 	newObjective.owner = crewMind
 	crewMind.crew_objectives += newObjective
 	to_chat(crewMind, "<B>W ramach nanotrasenowskiego systemu przeciwfalowego, zostało ci przydzielone dodatkowe zadanie. Wykonanie zostanie sprawdzone pod koniec zmiany. <span class='warning'>Dopuszczenie się aktów zdrady w celu wykonania zadania może skutkować zerwaniem kontraktu.</span></B>")
-	to_chat(crewMind, "<B>Your objective:</B> [newObjective.explanation_text]")
+	to_chat(crewMind, "<B>Twój cel:</B> [newObjective.explanation_text]")
 
 /datum/objective/crew
 	var/jobs = ""

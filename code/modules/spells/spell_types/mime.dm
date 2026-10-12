@@ -5,7 +5,7 @@
 	panel = JOB_NAME_MIME
 	summon_type = list(/obj/effect/forcefield/mime)
 	invocation_type = "emote"
-	invocation_emote_self = "<span class='notice'>You form a wall in front of yourself.</span>"
+	invocation_emote_self = "<span class='notice'>Tworzysz przed sobą ścianę.</span>"
 	summon_lifespan = 100
 	charge_max = 300
 	clothes_req = FALSE
@@ -21,9 +21,9 @@
 /obj/effect/proc_holder/spell/aoe_turf/conjure/mime_wall/Click()
 	if(usr && usr.mind)
 		if(!usr.mind.miming)
-			to_chat(usr, "<span class='notice'>You must dedicate yourself to silence first.</span>")
+			to_chat(usr, "<span class='notice'>Najpierw musisz poświęcić się milczeniu.</span>")
 			return
-		invocation = "<B>[usr.real_name]</B> looks as if a wall is in front of [usr.p_them()]."
+		invocation = "<B>[usr.real_name]</B> wygląda, jakby stała przed nim ściana."
 	else
 		invocation_type ="none"
 	..()
@@ -35,7 +35,7 @@
 	panel = JOB_NAME_MIME
 	summon_type = list(/obj/structure/chair/mime)
 	invocation_type = "emote"
-	invocation_emote_self = "<span class='notice'>You conjure an invisible chair and sit down.</span>"
+	invocation_emote_self = "<span class='notice'>Wyczarowujesz niewidzialne krzesło i siadasz.</span>"
 	summon_lifespan = 250
 	charge_max = 300
 	clothes_req = FALSE
@@ -51,9 +51,9 @@
 /obj/effect/proc_holder/spell/aoe_turf/conjure/mime_chair/Click()
 	if(usr && usr.mind)
 		if(!usr.mind.miming)
-			to_chat(usr, "<span class='notice'>You must dedicate yourself to silence first.</span>")
+			to_chat(usr, "<span class='notice'>Najpierw musisz poświęcić się milczeniu.</span>")
 			return
-		invocation = "<B>[usr.real_name]</B> pulls out an invisible chair and sits down."
+		invocation = "<B>[usr.real_name]</B> wyciąga niewidzialne krzesło i siada."
 	else
 		invocation_type ="none"
 	..()
@@ -73,7 +73,7 @@
 	panel = JOB_NAME_MIME
 	summon_type = list(/obj/item/storage/box/mime)
 	invocation_type = "emote"
-	invocation_emote_self = "<span class='notice'>You conjure up an invisible box, large enough to store a few things.</span>"
+	invocation_emote_self = "<span class='notice'>Wyczarowujesz niewidzialne pudło, na tyle duże, by zmieścić kilka rzeczy.</span>"
 	summon_lifespan = 500
 	charge_max = 300
 	clothes_req = FALSE
@@ -97,9 +97,9 @@
 /obj/effect/proc_holder/spell/aoe_turf/conjure/mime_box/Click()
 	if(usr && usr.mind)
 		if(!usr.mind.miming)
-			to_chat(usr, "<span class='notice'>You must dedicate yourself to silence first.</span>")
+			to_chat(usr, "<span class='notice'>Najpierw musisz poświęcić się milczeniu.</span>")
 			return
-		invocation = "<B>[usr.real_name]</B> moves [usr.p_their()] hands in the shape of a cube, pressing a box out of the air."
+		invocation = "<B>[usr.real_name]</B> układa dłonie w kształt sześcianu, wyciskając pudło z powietrza."
 	else
 		invocation_type ="none"
 	..()
@@ -128,20 +128,20 @@
 		return
 	var/mob/living/carbon/human/H = usr
 	if(H.mind.miming)
-		still_recharging_msg = "<span class='warning'>You can't break your vow of silence that fast!</span>"
+		still_recharging_msg = "<span class='warning'>Nie możesz tak szybko złamać ślubu milczenia!</span>"
 	else
-		still_recharging_msg = "<span class='warning'>You'll have to wait before you can give your vow of silence again!</span>"
+		still_recharging_msg = "<span class='warning'>Musisz poczekać, zanim znów złożysz ślub milczenia!</span>"
 	..()
 
 /obj/effect/proc_holder/spell/targeted/mime/speak/cast(list/targets,mob/user = usr)
 	for(var/mob/living/carbon/human/H in targets)
 		H.mind.miming=!H.mind.miming
 		if(H.mind.miming)
-			to_chat(H, "<span class='notice'>You make a vow of silence.</span>")
+			to_chat(H, "<span class='notice'>Składasz ślub milczenia.</span>")
 			SEND_SIGNAL(H, COMSIG_CLEAR_MOOD_EVENT, "vow")
 		else
 			SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "vow", /datum/mood_event/broken_vow)
-			to_chat(H, "<span class='notice'>You break your vow of silence.</span>")
+			to_chat(H, "<span class='notice'>Łamiesz ślub milczenia.</span>")
 
 // These spells can only be gotten from the "Guide for Advanced Mimery series" for Mime Traitors.
 
@@ -152,7 +152,7 @@
 	panel = JOB_NAME_MIME
 	wall_type = /obj/effect/forcefield/mime/advanced
 	invocation_type = "emote"
-	invocation_emote_self = "<span class='notice'>You form a blockade in front of yourself.</span>"
+	invocation_emote_self = "<span class='notice'>Tworzysz przed sobą blokadę.</span>"
 	charge_max = 600
 	sound =  null
 	clothes_req = FALSE
@@ -167,9 +167,9 @@
 /obj/effect/proc_holder/spell/targeted/forcewall/mime/Click()
 	if(usr && usr.mind)
 		if(!usr.mind.miming)
-			to_chat(usr, "<span class='notice'>You must dedicate yourself to silence first.</span>")
+			to_chat(usr, "<span class='notice'>Najpierw musisz poświęcić się milczeniu.</span>")
 			return
-		invocation = "<B>[usr.real_name]</B> looks as if a blockade is in front of [usr.p_them()]."
+		invocation = "<B>[usr.real_name]</B> wygląda, jakby stała przed nim blokada."
 	else
 		invocation_type ="none"
 	..()
@@ -185,7 +185,7 @@
 	antimagic_allowed = TRUE
 	include_user = TRUE
 	invocation_type = "emote"
-	invocation_emote_self = "<span class='dangers'>You fire your finger gun!</span>"
+	invocation_emote_self = "<span class='dangers'>Strzelasz z palca-pistoletu!</span>"
 	sound = null
 
 	action_icon = 'icons/mob/actions/actions_mime.dmi'
@@ -199,14 +199,14 @@
 		return
 	if(usr?.mind)
 		if(!usr.mind.miming)
-			to_chat(usr, "<span class='notice'>You must dedicate yourself to silence first.</span>")
+			to_chat(usr, "<span class='notice'>Najpierw musisz poświęcić się milczeniu.</span>")
 			return
 	var/obj/item/gun/ballistic/revolver/mime/magic/N = new(usr)
 	if(usr.put_in_hands(N))
-		to_chat(usr, "<span class='notice'>You form your fingers into a gun.</span>")
+		to_chat(usr, "<span class='notice'>Układasz palce w pistolet.</span>")
 	else
 		qdel(N)
-		to_chat(usr, "<span class='warning'>You don't have any free hands to make fingerguns with.</span>")
+		to_chat(usr, "<span class='warning'>Nie masz wolnych rąk, by zrobić palce-pistolety.</span>")
 	..()
 
 /obj/item/book/granter/spell/mimery_blockade

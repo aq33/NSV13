@@ -231,7 +231,7 @@
 	id = "virusfood_admin"
 	results = list(/datum/reagent/consumable/virus_food/advvirusfood = 1)
 	required_reagents = list(/datum/reagent/consumable/virus_food/viralbase = 1, /datum/reagent/uranium = 20)
-	mix_message = "The mixture turns every colour of the rainbow, soon settling on a bright white. There's no way this isn't a good idea."
+	mix_message = "Mieszanina przybiera wszystkie kolory tęczy, by w końcu ustalić się na jaskrawej bieli. To na pewno dobry pomysł."
 
 //Adds a virus symptom from the level_min to level_max range
 /datum/chemical_reaction/mix_virus
@@ -428,7 +428,7 @@
 /datum/chemical_reaction/foam/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/mob/M as() in viewers(5, location))
-		to_chat(M, "<span class='danger'>The solution spews out foam!</span>")
+		to_chat(M, "<span class='danger'>Roztwór wyrzuca pianę!</span>")
 	var/datum/effect_system/foam_spread/s = new()
 	s.set_up(created_volume*2, location, holder)
 	s.start()
@@ -446,7 +446,7 @@
 	var/location = get_turf(holder.my_atom)
 
 	for(var/mob/M as() in viewers(5, location))
-		to_chat(M, "<span class='danger'>The solution spews out a metallic foam!</span>")
+		to_chat(M, "<span class='danger'>Roztwór wyrzuca metaliczną pianę!</span>")
 
 	var/datum/effect_system/foam_spread/metal/s = new()
 	s.set_up(created_volume*5, location, holder, 1)
@@ -461,7 +461,7 @@
 
 /datum/chemical_reaction/smart_foam/on_reaction(datum/reagents/holder, created_volume)
 	var/turf/location = get_turf(holder.my_atom)
-	location.visible_message("<span class='danger'>The solution spews out metallic foam!</span>")
+	location.visible_message("<span class='danger'>Roztwór wyrzuca metaliczną pianę!</span>")
 	var/datum/effect_system/foam_spread/metal/smart/s = new()
 	s.set_up(created_volume * 5, location, holder, TRUE)
 	s.start()
@@ -476,7 +476,7 @@
 /datum/chemical_reaction/ironfoam/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/mob/M as() in viewers(5, location))
-		to_chat(M, "<span class='danger'>The solution spews out a metallic foam!</span>")
+		to_chat(M, "<span class='danger'>Roztwór wyrzuca metaliczną pianę!</span>")
 	var/datum/effect_system/foam_spread/metal/s = new()
 	s.set_up(created_volume*5, location, holder, 2)
 	s.start()
@@ -493,7 +493,7 @@
 	id = /datum/reagent/smart_foaming_agent
 	results = list(/datum/reagent/smart_foaming_agent = 3)
 	required_reagents = list(/datum/reagent/foaming_agent = 3, /datum/reagent/acetone = 1, /datum/reagent/iron = 1)
-	mix_message = "The solution mixes into a frothy metal foam and conforms to the walls of its container."
+	mix_message = "Roztwór miesza się w pienisty metal, który dopasowuje się do ścianek pojemnika."
 
 
 /////////////////////////////// Cleaning and hydroponics /////////////////////////////////////////////////

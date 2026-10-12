@@ -6,11 +6,11 @@
 	ranged_cooldown_time = 40
 	speed = -1
 	damage_coeff = list(BRUTE = 0.6, BURN = 0.6, TOX = 0.6, CLONE = 0.6, STAMINA = 0, OXY = 0.6)
-	playstyle_string = "<span class='holoparasite'>As a <b>charger</b> type you do medium damage, have medium damage resistance, move very fast, and can charge at a location, damaging any target hit and forcing them to drop any items they are holding.</span>"
-	magic_fluff_string = "<span class='holoparasite'>..And draw the Hunter, an alien master of rapid assault.</span>"
-	tech_fluff_string = "<span class='holoparasite'>Boot sequence complete. Charge modules loaded. Holoparasite swarm online.</span>"
-	carp_fluff_string = "<span class='holoparasite'>CARP CARP CARP! Caught one! It's a charger carp, that likes running at people. But it doesn't have any legs...</span>"
-	hive_fluff_string = "<span class='holoparasite'>The mass seems to have primal senses, rapidly assaulting its' enemies.</span>"
+	playstyle_string = "<span class='holoparasite'>Jako typ <b>charger</b> zadajesz średnie obrażenia, masz średnią odporność na obrażenia, poruszasz się bardzo szybko i możesz szarżować na wskazane miejsce, raniąc każdy trafiony cel i zmuszając go do upuszczenia trzymanych przedmiotów.</span>"
+	magic_fluff_string = "<span class='holoparasite'>...I wyciągasz Łowcę, obcego mistrza błyskawicznego szturmu.</span>"
+	tech_fluff_string = "<span class='holoparasite'>Sekwencja startowa zakończona. Wczytano moduły szarży. Rój holoparazytów aktywny.</span>"
+	carp_fluff_string = "<span class='holoparasite'>KARP KARP KARP! Złowiony! To karp-szarżownik, który lubi wbiegać w ludzi. Tylko że nie ma nóg...</span>"
+	hive_fluff_string = "<span class='holoparasite'>Masa wydaje się mieć pierwotne zmysły i błyskawicznie atakuje wrogów.</span>"
 	var/charging = 0
 	var/atom/movable/screen/alert/chargealert
 
@@ -63,7 +63,7 @@
 					blocked = TRUE
 			if(!blocked)
 				L.drop_all_held_items()
-				L.visible_message("<span class='danger'>[src] slams into [L]!</span>", "<span class='userdanger'>[src] slams into you!</span>")
+				L.visible_message("<span class='danger'>[src] wpada z impetem na [L]!</span>", "<span class='userdanger'>[src] wpada na ciebie z impetem!</span>")
 				L.apply_damage(20, BRUTE)
 				playsound(get_turf(L), 'sound/effects/meteorimpact.ogg', 100, 1)
 				shake_camera(L, 4, 3)

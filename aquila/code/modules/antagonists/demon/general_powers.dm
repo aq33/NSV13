@@ -3,7 +3,7 @@
 	desc = "Take on your true demon form. This form is strong but very obvious. It's full demonic nature in this realm is taxing on you \
 	and you will slowly lose life while in this form, while also being especially weak to holy influences. \
 	Be aware low health transfers between forms. If gravely wounded, attack live mortals to siphon life energy from them!"
-	invocation = "COWER, MORTALS!!"
+	invocation = "DRŻYJCIE, ŚMIERTELNICY!!"
 	shapeshift_type = /mob/living/simple_animal/lesserdemon
 	action_icon = 'aquila/icons/mob/actions/actions_minor_antag.dmi'
 	action_icon_state = "daemontransform"
@@ -13,11 +13,11 @@
 	name = "demon"
 	real_name = "demon"
 	desc = "A large, menacing creature covered in armored red scales."
-	speak_emote = list("cackles")
-	emote_hear = list("cackles","screeches")
-	response_help  = "thinks better of touching"
-	response_disarm = "flails at"
-	response_harm   = "punches"
+	speak_emote = list("rechocze")
+	emote_hear = list("rechocze","skrzeczy")
+	response_help  = "rozmyśla się i nie dotyka"
+	response_disarm = "macha rękami na"
+	response_harm   = "uderza"
 	icon = 'aquila/icons/mob/mob.dmi'
 	icon_state = "lesserdaemon"
 	icon_living = "lesserdaemon"
@@ -28,12 +28,12 @@
 	status_flags = CANPUSH
 	attack_sound = 'sound/magic/demon_attack1.ogg'
 	deathsound = 'sound/magic/demon_dies.ogg'
-	deathmessage = "wails in anger and fear as it collapses in defeat!"
+	deathmessage = "wyje z gniewu i strachu, padając pokonany!"
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 250 //Weak to cold
 	maxbodytemp = INFINITY
 	faction = list("hell")
-	attacktext = "wildly tears into"
+	attacktext = "dziko rozszarpuje"
 	maxHealth = 200
 	health = 200
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
@@ -47,8 +47,8 @@
 /mob/living/simple_animal/lesserdemon/attackby(obj/item/W, mob/living/user, params)
 	. = ..()
 	if(istype(W, /obj/item/nullrod))
-		visible_message(span_warning("[src] screams in unholy pain from the blow!"), \
-						span_cult("As \the [W] hits you, you feel holy power blast through your form, tearing it apart!"))
+		visible_message(span_warning("[src] wrzeszczy z nieświętego bólu po ciosie!"), \
+						span_cult("Gdy trafia cię [W], czujesz, jak święta moc przeszywa twoją postać, rozrywając ją!"))
 		adjustBruteLoss(22) //22 extra damage from the nullrod while in your true form. On average this means 40 damage is taken now.
 
 /mob/living/simple_animal/lesserdemon/UnarmedAttack(mob/living/L, proximity)//10 hp healed from landing a hit.
@@ -62,7 +62,7 @@
 	if(!.)
 		return
 	if(istype(get_area(src), /area/chapel)) //being a non-carbon will not save you!
-		visible_message(span_warning("[src] begins to melt apart!"), span_danger("Your very soul melts from the holy room!"), "You hear sizzling.")
+		visible_message(span_warning("[src] zaczyna się topić!"), span_danger("Twoja dusza topi się w świętym pomieszczeniu!"), "Słyszysz skwierczenie.")
 		adjustHealth(20) //20 damage every ~2 seconds. About 20 seconds for a full HP demon to melt apart in the chapel.
 	else //You passively lose 2 health every 2 seconds, don't stay in demon form for too long.
 		adjustHealth(2)
@@ -92,8 +92,8 @@
 		return
 	var/mob/living/victim = target
 	if(victim.anti_magic_check())
-		to_chat(user, span_warning("[victim] resists your torment!"))
-		to_chat(victim, span_warning("A hideous feeling of agony dances around your mind before being suddenly dispelled."))
+		to_chat(user, span_warning("[victim] opiera się twojej udręce!"))
+		to_chat(victim, span_warning("Wokół twojego umysłu tańczy ohydne uczucie agonii, po czym nagle się rozwiewa."))
 		return ..()
 	playsound(user, 'sound/magic/demon_attack1.ogg', 75, TRUE)
 	victim.blur_eyes(15) //huge array of relatively minor effects.
@@ -104,9 +104,9 @@
 	victim.Immobilize(3 SECONDS)
 	victim.Stun(1 SECONDS)
 	victim.adjustOrganLoss(ORGAN_SLOT_BRAIN, 25)
-	victim.visible_message(span_danger("[victim] cringes in pain as [victim.p_they()] hold[victim.p_s()] [victim.p_their()] head for a second!"))
+	victim.visible_message(span_danger("[victim] krzywi się z bólu, łapiąc się na chwilę za głowę!"))
 	victim.emote("scream")
-	to_chat(victim, span_warning("You feel an explosion of pain erupt in your mind!"))
+	to_chat(victim, span_warning("Czujesz wybuch bólu w swoim umyśle!"))
 	return ..()
 
 /obj/effect/proc_holder/spell/targeted/ethereal_jaunt/sin

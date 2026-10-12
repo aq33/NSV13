@@ -58,9 +58,9 @@
 
 	if(!length(available_surgeries))
 		if (!(target.mobility_flags & MOBILITY_STAND))
-			target.balloon_alert(user, "no surgeries available!")
+			target.balloon_alert(user, "brak dostępnych operacji!")
 		else
-			target.balloon_alert(user, "make them lie down!")
+			target.balloon_alert(user, "połóż pacjenta!")
 
 		return
 
@@ -113,11 +113,11 @@
 	if(the_surgery.status == 1)
 		patient.surgeries -= the_surgery
 		user.visible_message(
-			"<span class='notice'>[user] removes [parent] from [patient]'s [parse_zone(selected_zone)].</span>",
-			"<span class='notice'>You remove [parent] from [patient]'s [parse_zone(selected_zone)].</span>",
+			"<span class='notice'>[user] zdejmuje [parent] z [strefa_pl(selected_zone)] [patient].</span>",
+			"<span class='notice'>Zdejmujesz [parent] z [strefa_pl(selected_zone)] [patient].</span>",
 		)
 
-		patient.balloon_alert(user, "stopped work on [parse_zone(selected_zone)]")
+		patient.balloon_alert(user, "przerwano pracę nad: [strefa_pl(selected_zone)]")
 
 		qdel(the_surgery)
 		return
@@ -135,20 +135,20 @@
 	if(iscyborg(user))
 		close_tool = locate(/obj/item/cautery) in user.held_items
 		if(!close_tool)
-			patient.balloon_alert(user, "need a cautery in an inactive slot to stop the surgery!")
+			patient.balloon_alert(user, "by przerwać operację, potrzebujesz kauteru w nieaktywnej ręce!")
 			return
 	else if(!close_tool || close_tool.tool_behaviour != required_tool_type)
-		patient.balloon_alert(user, "need a [is_robotic ? "screwdriver": "cautery"] in your inactive hand to stop the surgery!")
+		patient.balloon_alert(user, "by przerwać operację, potrzebujesz [is_robotic ? "śrubokręta": "kauteru"] w nieaktywnej ręce!")
 		return
 
 	patient.surgeries -= the_surgery
 
 	user.visible_message(
-		"<span class='notice'>[user] closes [patient]'s [parse_zone(selected_zone)] with [close_tool] and removes [parent].</span>",
-		"<span class='notice'>You close [patient]'s [parse_zone(selected_zone)] with [close_tool] and remove [parent].</span>",
+		"<span class='notice'>[user] zamyka [strefa_pl(selected_zone, TRUE)] [patient] za pomocą [close_tool] i zdejmuje [parent].</span>",
+		"<span class='notice'>Zamykasz [strefa_pl(selected_zone, TRUE)] [patient] za pomocą [close_tool] i zdejmujesz [parent].</span>",
 	)
 
-	patient.balloon_alert(user, "closed up [parse_zone(selected_zone)]")
+	patient.balloon_alert(user, "zamknięto: [strefa_pl(selected_zone)]")
 
 	qdel(the_surgery)
 
@@ -161,7 +161,7 @@
 		return
 
 	if (!isnull(last_user))
-		source.balloon_alert(last_user, "someone else started a surgery!")
+		source.balloon_alert(last_user, "ktoś inny rozpoczął operację!")
 
 	ui_close()
 
@@ -276,7 +276,7 @@
 	if (!can_start_surgery(user, target))
 		// This could have a more detailed message, but the UI closes when this is true anyway, so
 		// if it ever comes up, it'll be because of lag.
-		target.balloon_alert(user, "can't start the surgery!")
+		target.balloon_alert(user, "nie można rozpocząć operacji!")
 		return
 
 	var/obj/item/bodypart/affecting_limb
@@ -289,22 +289,22 @@
 
 	if (surgery.requires_bodypart == isnull(affecting_limb))
 		if (surgery.requires_bodypart)
-			target.balloon_alert(user, "patient has no [parse_zone(selected_zone)]!")
+			target.balloon_alert(user, "pacjent nie ma części ciała: [strefa_pl(selected_zone)]!")
 		else
-			target.balloon_alert(user, "patient has \a [parse_zone(selected_zone)]!")
+			target.balloon_alert(user, "pacjent ma część ciała: [strefa_pl(selected_zone)]!")
 
 		return
 
 	if (!isnull(affecting_limb) && surgery.requires_bodypart_type && !(affecting_limb.bodytype & surgery.requires_bodypart_type))
-		target.balloon_alert(user, "not the right type of limb!")
+		target.balloon_alert(user, "to nie ten rodzaj kończyny!")
 		return
 
 	if (surgery.lying_required && (target.mobility_flags & MOBILITY_STAND))
-		target.balloon_alert(user, "patient is not lying down!")
+		target.balloon_alert(user, "pacjent nie leży!")
 		return
 
 	if (!surgery.can_start(user, target))
-		target.balloon_alert(user, "can't start the surgery!")
+		target.balloon_alert(user, "nie można rozpocząć operacji!")
 		return
 
 	if (surgery_needs_exposure(surgery, target))
@@ -318,8 +318,8 @@
 	target.balloon_alert(user, "starting \"[lowertext(procedure.name)]\"")
 
 	user.visible_message(
-		"<span class='notice'>[user] drapes [parent] over [target]'s [parse_zone(selected_zone)] to prepare for surgery.</span>",
-		"<span class='notice'>You drape [parent] over [target]'s [parse_zone(selected_zone)] to prepare for \an [procedure.name].</span>",
+		"<span class='notice'>[user] nakrywa [parent] część ciała [target] ([strefa_pl(selected_zone)]), przygotowując do operacji.</span>",
+		"<span class='notice'>Nakrywasz [parent] część ciała [target] ([strefa_pl(selected_zone)]), przygotowując do: [procedure.name].</span>",
 	)
 
 	log_combat(user, target, "operated on", null, "(OPERATION TYPE: [procedure.name]) (TARGET AREA: [selected_zone])")

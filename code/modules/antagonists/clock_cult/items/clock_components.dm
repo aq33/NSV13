@@ -4,7 +4,7 @@
 	desc = "A piece of a famous meme."
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	var/component_id //What the component is identified as
-	var/cultist_message = "You are not worthy of this meme." //Showed to Nar'Sian cultists if they pick up the component in addition to chaplains
+	var/cultist_message = "Nie jesteś godny tego mema." //Showed to Nar'Sian cultists if they pick up the component in addition to chaplains
 	var/list/servant_of_ratvar_messages = list("ayy" = FALSE, "lmao" = TRUE) //Fluff, shown to servants of Ratvar on a low chance, if associated value is TRUE, will automatically apply ratvarian
 	var/message_span = "heavy_brass"
 
@@ -13,7 +13,7 @@
 	if(iscultist(user) || (user.mind?.holy_role))
 		to_chat(user, "<span class='[message_span]'>[cultist_message]</span>")
 		if(user.mind?.holy_role)
-			to_chat(user, "<span class='boldannounce'>The power of your faith melts away [src]!</span>")
+			to_chat(user, "<span class='boldannounce'>Moc twojej wiary roztapia [src]!</span>")
 			var/obj/item/stack/ore/slag/wrath = new /obj/item/stack/ore/slag
 			qdel(src)
 			user.put_in_active_hand(wrath)
@@ -22,24 +22,24 @@
 	name = "belligerent eye"
 	desc = "A brass construct with a rotating red center. It's as though it's looking for something to hurt."
 	icon_state = "belligerent_eye"
-	cultist_message = "The eye gives you an intensely hateful glare."
-	servant_of_ratvar_messages = list("\"...\"" = FALSE, "For a moment, your mind is flooded with extremely violent thoughts." = FALSE, "\"...Die.\"" = TRUE)
+	cultist_message = "Oko obrzuca cię intensywnie nienawistnym spojrzeniem."
+	servant_of_ratvar_messages = list("\"...\"" = FALSE, "Na chwilę twój umysł zalewają skrajnie brutalne myśli." = FALSE, "\"...Zgiń.\"" = TRUE)
 	message_span = "neovgre"
 
 /obj/item/clockwork/component/belligerent_eye/blind_eye
 	name = "blind eye"
 	desc = "A heavy brass eye, its red iris fallen dark."
 	icon_state = "blind_eye"
-	cultist_message = "The eye flickers at you with intense hate before falling dark."
-	servant_of_ratvar_messages = list("The eye flickers before falling dark." = FALSE, "You feel watched." = FALSE, "\"...\"" = FALSE)
+	cultist_message = "Oko łypie na ciebie z intensywną nienawiścią, po czym gaśnie."
+	servant_of_ratvar_messages = list("Oko migocze, po czym gaśnie." = FALSE, "Czujesz się obserwowany." = FALSE, "\"...\"" = FALSE)
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/clockwork/component/belligerent_eye/lens_gem
 	name = "lens gem"
 	desc = "A tiny pinkish gem. It catches the light oddly, almost glowing."
 	icon_state = "lens_gem"
-	cultist_message = "The gem turns black and cold for a moment before its normal glow returns."
-	servant_of_ratvar_messages = list("\"Disgusting failure.\"" = TRUE, "You feel scrutinized." = FALSE, "\"Weaklings.\"" = TRUE, "\"Pathetic defenses.\"" = TRUE)
+	cultist_message = "Klejnot na chwilę czernieje i zimnieje, po czym wraca jego zwykły blask."
+	servant_of_ratvar_messages = list("\"Obrzydliwa porażka.\"" = TRUE, "Czujesz się badany wzrokiem." = FALSE, "\"Słabeusze.\"" = TRUE, "\"Żałosna obrona.\"" = TRUE)
 	w_class = WEIGHT_CLASS_TINY
 	light_range = 1.4
 	light_power = 0.4
@@ -49,68 +49,68 @@
 	name = "vanguard cogwheel"
 	desc = "A sturdy brass cog with a faintly glowing blue gem in its center."
 	icon_state = "vanguard_cogwheel"
-	cultist_message = "\"Pray to your god that we never meet.\""
-	servant_of_ratvar_messages = list("\"Be safe, child.\"" = FALSE, "You feel unexplainably comforted." = FALSE, "\"Never forget: Pain is temporary. What you do for the Justiciar is eternal.\"" = FALSE)
+	cultist_message = "\"Módl się do swojego boga, byśmy nigdy się nie spotkali.\""
+	servant_of_ratvar_messages = list("\"Uważaj na siebie, dziecko.\"" = FALSE, "Czujesz niewytłumaczalną otuchę." = FALSE, "\"Nigdy nie zapominaj: ból jest chwilowy. To, co robisz dla Sędziego, jest wieczne.\"" = FALSE)
 	message_span = "inathneq"
 
 /obj/item/clockwork/component/vanguard_cogwheel/onyx_prism
 	name = "onyx prism"
 	desc = "An onyx prism with a small aperture. It's very heavy."
 	icon_state = "onyx_prism"
-	cultist_message = "The prism grows painfully hot in your hands."
-	servant_of_ratvar_messages = list("The prism isn't getting any lighter." = FALSE, "\"So... you haven't failed yet. Have hope, child.\"" = TRUE, \
-	"\"Better these machines break than you do.\"" = TRUE)
+	cultist_message = "Pryzmat robi się w twoich dłoniach boleśnie gorący."
+	servant_of_ratvar_messages = list("Pryzmat wcale nie robi się lżejszy." = FALSE, "\"A więc... jeszcze nie zawiodłeś. Miej nadzieję, dziecko.\"" = TRUE, \
+	"\"Lepiej, żeby zepsuły się te maszyny niż ty.\"" = TRUE)
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/clockwork/component/geis_capacitor
 	name = "geis capacitor"
 	desc = "A curiously cold brass doodad. It seems as though it really doesn't appreciate being held."
 	icon_state = "geis_capacitor"
-	cultist_message = "\"Try not to lose your mind - I'll need it. Heh heh...\""
-	servant_of_ratvar_messages = list("\"Disgusting.\"" = FALSE, "\"Well, aren't you an inquisitive fellow?\"" = FALSE, "A foul presence pervades your mind, then vanishes." = FALSE, \
-	"\"The fact that Ratvar has to depend on simpletons like you is appalling.\"" = FALSE)
+	cultist_message = "\"Postaraj się nie postradać zmysłów - będą mi potrzebne. He he...\""
+	servant_of_ratvar_messages = list("\"Obrzydliwe.\"" = FALSE, "\"No proszę, ale z ciebie ciekawski.\"" = FALSE, "Plugawa obecność przenika twój umysł, po czym znika." = FALSE, \
+	"\"To przerażające, że Ratvar musi polegać na takich prostaczkach jak ty.\"" = FALSE)
 	message_span = "sevtug"
 
 /obj/item/clockwork/component/geis_capacitor/fallen_armor
 	name = "fallen armor"
 	desc = "Lifeless chunks of armor. They're designed in a strange way and won't fit on you."
 	icon_state = "fallen_armor"
-	cultist_message = "Red flame sputters from the mask's eye before winking out."
-	servant_of_ratvar_messages = list("A piece of armor hovers away from the others for a moment." = FALSE, "Red flame appears in the cuirass before sputtering out." = FALSE)
+	cultist_message = "Z oka maski bucha czerwony płomień, po czym gaśnie."
+	servant_of_ratvar_messages = list("Część zbroi na chwilę odpływa od reszty." = FALSE, "W napierśniku pojawia się czerwony płomień, po czym gaśnie." = FALSE)
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/clockwork/component/geis_capacitor/antennae
 	name = "mania motor antennae"
 	desc = "A pair of dented and bent antennae. They constantly emit a static hiss."
 	icon_state = "mania_motor_antennae"
-	cultist_message = "Your head is filled with a burst of static."
-	servant_of_ratvar_messages = list("\"Who broke this.\"" = TRUE, "\"Did you break these off YOURSELF?\"" = TRUE, "\"Why did we give this to such simpletons, anyway?\"" = TRUE, \
-	"\"At least we can use these for something - unlike you.\"" = TRUE)
+	cultist_message = "Twoją głowę wypełnia wybuch szumu."
+	servant_of_ratvar_messages = list("\"Kto to zepsuł.\"" = TRUE, "\"SAM to poodłamywałeś?\"" = TRUE, "\"Właściwie po co daliśmy to takim prostaczkom?\"" = TRUE, \
+	"\"Przynajmniej do czegoś się to przyda - w przeciwieństwie do ciebie.\"" = TRUE)
 
 /obj/item/clockwork/component/replicant_alloy
 	name = "replicant alloy"
 	desc = "A seemingly strong but very malleable chunk of metal. It seems as though it wants to be molded into something greater."
 	icon_state = "replicant_alloy"
-	cultist_message = "The alloy takes on the appearance of a screaming face for a moment."
-	servant_of_ratvar_messages = list("\"There's always something to be done. Get to it.\"" = FALSE, "\"Idle hands are worse than broken ones. Get to work.\"" = FALSE, \
-	"A detailed image of Ratvar appears in the alloy for a moment." = FALSE)
+	cultist_message = "Stop na chwilę przybiera wygląd krzyczącej twarzy."
+	servant_of_ratvar_messages = list("\"Zawsze jest coś do zrobienia. Do roboty.\"" = FALSE, "\"Bezczynne ręce są gorsze od połamanych. Do pracy.\"" = FALSE, \
+	"W stopie na chwilę pojawia się szczegółowy wizerunek Ratvara." = FALSE)
 	message_span = "nezbere"
 
 /obj/item/clockwork/component/replicant_alloy/smashed_anima_fragment
 	name = "smashed anima fragment"
 	desc = "Shattered chunks of metal. Damaged beyond repair and completely unusable."
 	icon_state = "smashed_anime_fragment"
-	cultist_message = "The shards vibrate in your hands for a moment."
-	servant_of_ratvar_messages = list("\"...still fight...\"" = FALSE, "\"...where am I...?\"" = FALSE, "\"...bring me... back...\"" = FALSE)
+	cultist_message = "Odłamki na chwilę wibrują w twoich dłoniach."
+	servant_of_ratvar_messages = list("\"...wciąż walczę...\"" = FALSE, "\"...gdzie ja jestem...?\"" = FALSE, "\"...sprowadź mnie... z powrotem...\"" = FALSE)
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/clockwork/component/replicant_alloy/replication_plate
 	name = "replication plate"
 	desc = "A flat, heavy disc of metal with a triangular formation on its surface."
 	icon_state = "replication_plate"
-	cultist_message = "The plate shudders in your hands, as though trying to get away."
-	servant_of_ratvar_messages = list("\"Put this in a slab and get back to work.\"" = FALSE, "\"Worse servants than you have held these.\"" = TRUE, \
-	"\"It would be wise to protect these better, friend.\"" = TRUE)
+	cultist_message = "Płyta drży w twoich dłoniach, jakby próbowała uciec."
+	servant_of_ratvar_messages = list("\"Włóż to do płyty i wracaj do pracy.\"" = FALSE, "\"Gorsi słudzy od ciebie to trzymali.\"" = TRUE, \
+	"\"Mądrze byłoby lepiej tego pilnować, przyjacielu.\"" = TRUE)
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/clockwork/component/hierophant_ansible
@@ -118,16 +118,16 @@
 	desc = "Some sort of transmitter? It seems as though it's trying to say something."
 	icon_state = "hierophant_ansible"
 	cultist_message = "\"Gur obff fnlf vg'f abg ntnvafg gur ehyrf gb-xvyy lbh.\""
-	servant_of_ratvar_messages = list("\"Exile is such a bore. There's nothing I can hunt in here.\"" = TRUE, "\"What's keeping you? I want to go kill something.\"" = TRUE, \
-	"\"HEHEHEHEHEHEH!\"" = FALSE, "\"If I killed you fast enough, do you think the boss would notice?\"" = TRUE)
+	servant_of_ratvar_messages = list("\"Wygnanie jest takie nudne. Nie ma tu na co polować.\"" = TRUE, "\"Na co czekasz? Chcę iść coś zabić.\"" = TRUE, \
+	"\"HEHEHEHEHEHEH!\"" = FALSE, "\"Gdybym cię zabił dość szybko, myślisz, że szef by zauważył?\"" = TRUE)
 	message_span = "nzcrentr"
 
 /obj/item/clockwork/component/hierophant_ansible/obelisk
 	name = "obelisk prism"
 	desc = "A prism that occasionally glows brightly. It seems not-quite there."
-	cultist_message = "The prism flickers wildly in your hands before resuming its normal glow."
-	servant_of_ratvar_messages = list("You hear the distinctive sound of the Hierophant Network for a moment." = FALSE, "\"Hieroph'ant Br'o'adcas't fail'ure.\"" = TRUE, \
-	"The obelisk flickers wildly, as if trying to open a gateway." = FALSE, "\"Spa'tial Ga'tewa'y fai'lure.\"" = TRUE)
+	cultist_message = "Pryzmat dziko migocze w twoich dłoniach, po czym wraca do zwykłego blasku."
+	servant_of_ratvar_messages = list("Przez chwilę słyszysz charakterystyczny dźwięk Sieci Hierofanta." = FALSE, "\"Awa'ria prze'ka'zu Hiero'fan'ta.\"" = TRUE, \
+	"Obelisk dziko migocze, jakby próbował otworzyć bramę." = FALSE, "\"Awa'ria bra'my prze'strzen'nej.\"" = TRUE)
 	icon_state = "obelisk_prism"
 	w_class = WEIGHT_CLASS_NORMAL
 

@@ -56,8 +56,8 @@
 		return
 	if(!patient_insertion_check(target))
 		return
-	occupant_message("<span class='notice'>You start putting [target] into [src]...</span>")
-	chassis.visible_message("<span class='warning'>[chassis] starts putting [target] into \the [src].</span>")
+	occupant_message("<span class='notice'>Zaczynasz wkładać [target] do [src]...</span>")
+	chassis.visible_message("<span class='warning'>[chassis] zaczyna wkładać [target] do [src].</span>")
 	if(do_after_cooldown(target))
 		if(!patient_insertion_check(target))
 			return
@@ -65,19 +65,19 @@
 		patient = target
 		START_PROCESSING(SSobj, src)
 		update_equip_info()
-		occupant_message("<span class='notice'>[target] successfully loaded into [src]. Life support functions engaged.</span>")
-		chassis.visible_message("<span class='warning'>[chassis] loads [target] into [src].</span>")
+		occupant_message("<span class='notice'>[target] umieszczony w [src]. Funkcje podtrzymywania życia aktywne.</span>")
+		chassis.visible_message("<span class='warning'>[chassis] wkłada [target] do [src].</span>")
 		log_message("[target] loaded. Life support functions engaged.", LOG_MECHA)
 
 /obj/item/mecha_parts/mecha_equipment/medical/sleeper/proc/patient_insertion_check(mob/living/carbon/target)
 	if(target.buckled)
-		occupant_message("<span class='warning'>[target] will not fit into the sleeper because [target.p_theyre()] buckled to [target.buckled]!</span>")
+		occupant_message("<span class='warning'>[target] nie zmieści się w kapsule, bo jest przypięty do [target.buckled]!</span>")
 		return
 	if(target.has_buckled_mobs())
-		occupant_message("<span class='warning'>[target] will not fit into the sleeper because of the creatures attached to it!</span>")
+		occupant_message("<span class='warning'>[target] nie zmieści się w kapsule z powodu przyczepionych do niego stworzeń!</span>")
 		return
 	if(patient)
-		occupant_message("<span class='warning'>The sleeper is already occupied!</span>")
+		occupant_message("<span class='warning'>Kapsuła jest już zajęta!</span>")
 		return
 	return 1
 
@@ -85,7 +85,7 @@
 	if(!patient)
 		return
 	patient.forceMove(get_turf(src))
-	occupant_message("[patient] ejected. Life support functions disabled.")
+	occupant_message("[patient] wyrzucony. Funkcje podtrzymywania życia wyłączone.")
 	log_message("[patient] ejected. Life support functions disabled.", LOG_MECHA)
 	STOP_PROCESSING(SSobj, src)
 	patient = null
@@ -93,7 +93,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/medical/sleeper/detach()
 	if(patient)
-		occupant_message("<span class='warning'>Unable to detach [src] - equipment occupied!</span>")
+		occupant_message("<span class='warning'>Nie można odłączyć [src] – wyposażenie jest zajęte!</span>")
 		return
 	STOP_PROCESSING(SSobj, src)
 	return ..()
@@ -103,7 +103,7 @@
 	if(output)
 		var/temp = ""
 		if(patient)
-			temp = "<br />\[Occupant: [patient] ([patient.stat > 1 ? "*DECEASED*" : "Health: [patient.health]%"])\]<br /><a href='byond://?src=[REF(src)];view_stats=1'>View stats</a>|<a href='byond://?src=[REF(src)];eject=1'>Eject</a>"
+			temp = "<br />\[Pacjent: [patient] ([patient.stat > 1 ? "*ZMARŁY*" : "Zdrowie: [patient.health]%"])\]<br /><a href='byond://?src=[REF(src)];view_stats=1'>Pokaż statystyki</a>|<a href='byond://?src=[REF(src)];eject=1'>Wyrzuć</a>"
 		return "[output] [temp]"
 	return
 
@@ -196,7 +196,7 @@
 		return 0
 	var/to_inject = min(R.volume, inject_amount)
 	if(to_inject && patient.reagents.get_reagent_amount(R.type) + to_inject <= inject_amount*2)
-		occupant_message("Injecting [patient] with [to_inject] units of [R.name].")
+		occupant_message("Wstrzykiwanie [patient] [to_inject] j. [R.name].")
 		log_message("Injecting [patient] with [to_inject] units of [R.name].", LOG_MECHA)
 		log_combat(chassis.occupant, patient, "injected", "[name] ([R] - [to_inject] units)")
 		SG.reagents.trans_id_to(patient,R.type,to_inject)
@@ -221,7 +221,7 @@
 	if(!chassis.has_charge(energy_drain))
 		set_ready_state(1)
 		log_message("Deactivated.", LOG_MECHA)
-		occupant_message("[src] deactivated - no power.")
+		occupant_message("[src] dezaktywowany – brak zasilania.")
 		STOP_PROCESSING(SSobj, src)
 		return
 	var/mob/living/carbon/M = patient
@@ -285,7 +285,7 @@
 /obj/item/mecha_parts/mecha_equipment/medical/syringe_gun/get_equip_info()
 	var/output = ..()
 	if(output)
-		return "[output] \[<a href=\"byond://?src=[REF(src)];toggle_mode=1\">[mode? "Analyze" : "Launch"]</a>\]<br />\[Syringes: [syringes.len]/[max_syringes] | Reagents: [reagents.total_volume]/[reagents.maximum_volume]\]<br /><a href='byond://?src=[REF(src)];show_reagents=1'>Reagents list</a>"
+		return "[output] \[<a href=\"byond://?src=[REF(src)];toggle_mode=1\">[mode? "Analizuj" : "Wystrzel"]</a>\]<br />\[Strzykawki: [syringes.len]/[max_syringes] | Odczynniki: [reagents.total_volume]/[reagents.maximum_volume]\]<br /><a href='byond://?src=[REF(src)];show_reagents=1'>Lista odczynników</a>"
 	return
 
 /obj/item/mecha_parts/mecha_equipment/medical/syringe_gun/action(atom/movable/target)
@@ -300,10 +300,10 @@
 	if(mode)
 		return analyze_reagents(target)
 	if(!syringes.len)
-		occupant_message("<span class=\"alert\">No syringes loaded.</span>")
+		occupant_message("<span class=\"alert\">Nie załadowano strzykawek.</span>")
 		return
 	if(reagents.total_volume<=0)
-		occupant_message("<span class=\"alert\">No available reagents to load syringe with.</span>")
+		occupant_message("<span class=\"alert\">Brak dostępnych odczynników do załadowania strzykawki.</span>")
 		return
 	var/turf/trg = get_turf(target)
 	var/obj/item/reagent_containers/syringe/mechsyringe = syringes[1]
@@ -327,7 +327,7 @@
 				var/mob/living/carbon/M = safepick(mobs)
 				if(M)
 					var/R
-					mechsyringe.visible_message("<span class=\"attack\"> [M] was hit by the syringe!</span>")
+					mechsyringe.visible_message("<span class=\"attack\"> Strzykawka trafia [M]!</span>")
 					if(M.can_inject(null, 1))
 						if(mechsyringe.reagents)
 							for(var/datum/reagent/A in mechsyringe.reagents.reagent_list)
@@ -372,10 +372,10 @@
 				processed_reagents += reagent
 				m++
 		if(processed_reagents.len)
-			message += " added to production"
+			message += " dodano do produkcji"
 			START_PROCESSING(SSobj, src)
 			occupant_message(message)
-			occupant_message("Reagent processing started.")
+			occupant_message("Rozpoczęto przetwarzanie odczynników.")
 			log_message("Reagent processing started.", LOG_MECHA)
 		return
 	if (href_list["show_reagents"])
@@ -445,46 +445,46 @@
 	var/output
 	for(var/datum/reagent/R in reagents.reagent_list)
 		if(R.volume > 0)
-			output += "[R]: [round(R.volume,0.001)] - <a href=\"byond://?src=[REF(src)];purge_reagent=[R]\">Purge Reagent</a><br />"
+			output += "[R]: [round(R.volume,0.001)] - <a href=\"byond://?src=[REF(src)];purge_reagent=[R]\">Usuń odczynnik</a><br />"
 	if(output)
-		output += "Total: [round(reagents.total_volume,0.001)]/[reagents.maximum_volume] - <a href=\"byond://?src=[REF(src)];purge_all=1\">Purge All</a>"
+		output += "Razem: [round(reagents.total_volume,0.001)]/[reagents.maximum_volume] - <a href=\"byond://?src=[REF(src)];purge_all=1\">Usuń wszystko</a>"
 	return output || "None"
 
 /obj/item/mecha_parts/mecha_equipment/medical/syringe_gun/proc/load_syringe(obj/item/reagent_containers/syringe/S)
 	if(syringes.len<max_syringes)
 		if(get_dist(src,S) >= 2)
-			occupant_message("The syringe is too far away.")
+			occupant_message("Strzykawka jest za daleko.")
 			return 0
 		for(var/obj/structure/D in S.loc)//Basic level check for structures in the way (Like grilles and windows)
 			if(!(D.CanPass(S,src.loc)))
-				occupant_message("Unable to load syringe.")
+				occupant_message("Nie można załadować strzykawki.")
 				return 0
 		for(var/obj/machinery/door/D in S.loc)//Checks for doors
 			if(!(D.CanPass(S,src.loc)))
-				occupant_message("Unable to load syringe.")
+				occupant_message("Nie można załadować strzykawki.")
 				return 0
 		S.reagents.trans_to(src, S.reagents.total_volume, transfered_by = chassis.occupant)
 		S.forceMove(src)
 		syringes += S
-		occupant_message("Syringe loaded.")
+		occupant_message("Strzykawka załadowana.")
 		update_equip_info()
 		return 1
-	occupant_message("[src]'s syringe chamber is full.")
+	occupant_message("Komora strzykawek [src] jest pełna.")
 	return 0
 
 /obj/item/mecha_parts/mecha_equipment/medical/syringe_gun/proc/analyze_reagents(atom/A)
 	if(get_dist(src,A) >= 4)
-		occupant_message("The object is too far away.")
+		occupant_message("Obiekt jest za daleko.")
 		return 0
 	if(!A.reagents || ismob(A))
-		occupant_message("<span class=\"alert\">No reagent info gained from [A].</span>")
+		occupant_message("<span class=\"alert\">Nie uzyskano informacji o odczynnikach z [A].</span>")
 		return 0
-	occupant_message("Analyzing reagents...")
+	occupant_message("Analiza odczynników...")
 	for(var/datum/reagent/R in A.reagents.reagent_list)
 		if(!(R.chem_flags & CHEMICAL_NOT_SYNTH) && add_known_reagent(R.type,R.name))
-			occupant_message("Reagent analyzed, identified as [R.name] and added to database.")
+			occupant_message("Odczynnik przeanalizowany, zidentyfikowany jako [R.name] i dodany do bazy danych.")
 			send_byjax(chassis.occupant,"msyringegun.browser","reagents_form",get_reagents_form())
-	occupant_message("Analyzis complete.")
+	occupant_message("Analiza zakończona.")
 	return 1
 
 /obj/item/mecha_parts/mecha_equipment/medical/syringe_gun/proc/add_known_reagent(r_id,r_name)
@@ -511,7 +511,7 @@
 	if(..())
 		return
 	if(!processed_reagents.len || reagents.total_volume >= reagents.maximum_volume || !chassis.has_charge(energy_drain))
-		occupant_message("<span class=\"alert\">Reagent processing stopped.</a>")
+		occupant_message("<span class=\"alert\">Zatrzymano przetwarzanie odczynników.</a>")
 		log_message("Reagent processing stopped.", LOG_MECHA)
 		STOP_PROCESSING(SSobj, src)
 		return

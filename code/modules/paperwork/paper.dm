@@ -287,29 +287,29 @@
 	if(ishuman(usr))
 		var/mob/living/carbon/human/H = usr
 		if(HAS_TRAIT(H, TRAIT_CLUMSY) && prob(25))
-			to_chat(H, "<span class='warning'>You cut yourself on the paper! Ahhhh! Ahhhhh!</span>")
+			to_chat(H, "<span class='warning'>Rozcinasz się o kartkę! Aaaa! Aaaaa!</span>")
 			H.damageoverlaytemp = 9001
 			H.update_damage_hud()
 			return
-	var/n_name = stripped_input(usr, "What would you like to label the paper?", "Paper Labelling", null, MAX_NAME_LEN)
+	var/n_name = stripped_input(usr, "Jak chcesz podpisać kartkę?", "Podpisywanie kartki", null, MAX_NAME_LEN)
 	if(((loc == usr || istype(loc, /obj/item/clipboard)) && usr.stat == CONSCIOUS))
 		name = "paper[(n_name ? text("- '[n_name]'") : null)]"
 	add_fingerprint(usr)
 	update_static_data()
 
 /obj/item/paper/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] scratches a grid on [user.p_their()] wrist with the paper! It looks like [user.p_theyre()] trying to commit sudoku...</span>")
+	user.visible_message("<span class='suicide'>[user] rysuje kartką kratkę na swoim nadgarstku! Wygląda na to, że próbuje popełnić sudoku...</span>")
 	return (BRUTELOSS)
 
 /obj/item/paper/examine(mob/user)
 	. = ..()
 	if(!in_range(user, src) && !isobserver(user))
-		. += "<span class='warning'>You're too far away to read it!</span>"
+		. += "<span class='warning'>Jesteś za daleko, by to przeczytać!</span>"
 		return
 	if(user.can_read(src))
 		ui_interact(user)
 		return
-	. += "<span class='warning'>You cannot read it!</span>"
+	. += "<span class='warning'>Nie potrafisz tego przeczytać!</span>"
 
 /obj/item/paper/ui_status(mob/user,/datum/ui_state/state)
 		// Are we on fire?  Hard ot read if so
@@ -346,8 +346,8 @@
 		return
 	. = TRUE
 	if(!bypass_clumsy && HAS_TRAIT(user, TRAIT_CLUMSY) && prob(10) && Adjacent(user))
-		user.visible_message("<span class='warning'>[user] accidentally ignites [user.p_them()]self!</span>", \
-							"<span class='userdanger'>You miss [src] and accidentally light yourself on fire!</span>")
+		user.visible_message("<span class='warning'>[user] przypadkowo się podpala!</span>", \
+							"<span class='userdanger'>Chybiasz [src] i przypadkowo się podpalasz!</span>")
 		if(user.is_holding(I)) //checking if they're holding it in case TK is involved
 			user.dropItemToGround(I)
 		user.adjust_fire_stacks(1)
@@ -379,7 +379,7 @@
 
 	if(writing_stats["interaction_mode"] == MODE_WRITING)
 		if(get_total_length() >= MAX_PAPER_LENGTH)
-			to_chat(user, "<span class='warning'>This sheet of paper is full!</span>")
+			to_chat(user, "<span class='warning'>Ta kartka jest zapełniona!</span>")
 			return
 
 		ui_interact(user)
@@ -387,7 +387,7 @@
 
 	// Handle stamping items.
 	if(writing_stats["interaction_mode"] == MODE_STAMPING)
-		to_chat(user, "<span class='notice'>You ready your stamp over the paper! </span>")
+		to_chat(user, "<span class='notice'>Szykujesz pieczątkę nad kartką! </span>")
 		ui_interact(user)
 		return
 
@@ -500,7 +500,7 @@
 			var/obj/item/holding = user.get_active_held_item()
 			var/stamp_info = holding?.get_writing_implement_details()
 			if(!stamp_info || (stamp_info["interaction_mode"] != MODE_STAMPING))
-				to_chat(src, "<span class='warning'>You can't stamp with the [holding]!</span>")
+				to_chat(src, "<span class='warning'>Nie możesz stemplować za pomocą [holding]!</span>")
 				return TRUE
 
 			var/stamp_class = stamp_info["stamp_class"];
@@ -520,11 +520,11 @@
 			var/stamp_icon_state = stamp_info["stamp_icon_state"]
 
 			if (LAZYLEN(raw_stamp_data) >= MAX_PAPER_STAMPS)
-				to_chat(usr, pick("You try to stamp but you miss!", "There is no where else you can stamp!"))
+				to_chat(usr, pick("Próbujesz przybić pieczątkę, ale chybiasz!", "Nie ma już miejsca na pieczątkę!"))
 				return TRUE
 
 			add_stamp(stamp_class, stamp_x, stamp_y, stamp_rotation, stamp_icon_state)
-			user.visible_message("<span class='notice'>[user] stamps [src] with \the [holding.name]!</span>", "<span class='notice'>You stamp [src] with \the [holding.name]!</span>")
+			user.visible_message("<span class='notice'>[user] stempluje [src] za pomocą [holding.name]!</span>", "<span class='notice'>Stemplujesz [src] za pomocą [holding.name]!</span>")
 
 			update_appearance()
 			update_static_data(user, ui)
@@ -535,7 +535,7 @@
 			var/this_input_length = length(paper_input)
 
 			if(this_input_length == 0)
-				to_chat(user, pick("Writing block strikes again!", "You forgot to write anthing!"))
+				to_chat(user, pick("Blokada pisarska znowu atakuje!", "Zapomniałeś cokolwiek napisać!"))
 				return TRUE
 
 			// If the paper is on an unwritable noticeboard, this usually shouldn't be possible.
@@ -568,7 +568,7 @@
 			add_raw_text(paper_input, writing_implement_data["font"], writing_implement_data["color"], writing_implement_data["use_bold"])
 
 			log_paper("[key_name(user)] wrote to [name]: \"[paper_input]\"")
-			to_chat(user, "You have added to your paper masterpiece!");
+			to_chat(user, "Dopisujesz coś do swojego papierowego arcydzieła!");
 
 			update_static_data(user, ui)
 			update_appearance()
@@ -751,7 +751,7 @@
 		if(beernuke.r_code == "ADMIN")
 			beernuke.r_code = random_code(5)
 		code = beernuke.r_code
-	default_raw_text = "important party info, DONT FORGET: <b>[code]</b>"
+	default_raw_text = "ważne info o imprezie, NIE ZAPOMNIEĆ: <b>[code]</b>"
 
 /obj/item/paper/troll
 	name = "very special note"

@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/space/space_ninja/proc/toggle_on_off()
 	if(s_busy)
-		to_chat(loc, "<span class='userdanger'>ERROR</span>: You cannot use this function at this time.")
+		to_chat(loc, "<span class='userdanger'>BŁĄD</span>: nie możesz teraz użyć tej funkcji.")
 		return FALSE
 	if(s_initialized)
 		deinitialize()
@@ -12,18 +12,18 @@
 	if(!U.mind)
 		return //Not sure how this could happen.
 	s_busy = TRUE
-	to_chat(U, "<span class='notice'>Now initializing...</span>")
+	to_chat(U, "<span class='notice'>Inicjalizacja...</span>")
 	addtimer(CALLBACK(src, PROC_REF(ninitialize_two), delay, U), delay)
 
 /obj/item/clothing/suit/space/space_ninja/proc/ninitialize_two(delay, mob/living/carbon/human/U)
 	if(!lock_suit(U))//To lock the suit onto wearer.
 		s_busy = FALSE
 		return
-	to_chat(U, "<span class='notice'>Securing external locking mechanism...\nNeural-net established.</span>")
+	to_chat(U, "<span class='notice'>Zabezpieczanie zewnętrznego mechanizmu blokującego...\nSieć neuronowa nawiązana.</span>")
 	addtimer(CALLBACK(src, PROC_REF(ninitialize_three), delay, U), delay)
 
 /obj/item/clothing/suit/space/space_ninja/proc/ninitialize_three(delay, mob/living/carbon/human/U)
-	to_chat(U, "<span class='notice'>Extending neural-net interface...\nNow monitoring brain wave pattern...</span>")
+	to_chat(U, "<span class='notice'>Rozszerzanie interfejsu sieci neuronowej...\nMonitorowanie wzorca fal mózgowych...</span>")
 	addtimer(CALLBACK(src, PROC_REF(ninitialize_four), delay, U), delay)
 
 /obj/item/clothing/suit/space/space_ninja/proc/ninitialize_four(delay, mob/living/carbon/human/U)
@@ -34,19 +34,19 @@
 		return
 	lockIcons(U)//Check for icons.
 	U.regenerate_icons()
-	to_chat(U, "<span class='notice'>Linking neural-net interface...\nPattern</span>\green <B>GREEN</B><span class='notice'>, continuing operation.</span>")
+	to_chat(U, "<span class='notice'>Łączenie interfejsu sieci neuronowej...\nWzorzec</span>\green <B>ZIELONY</B><span class='notice'>, kontynuowanie operacji.</span>")
 	addtimer(CALLBACK(src, PROC_REF(ninitialize_five), delay, U), delay)
 
 /obj/item/clothing/suit/space/space_ninja/proc/ninitialize_five(delay, mob/living/carbon/human/U)
-	to_chat(U, "<span class='notice'>VOID-shift device status: <B>ONLINE</B>.\nCLOAK-tech device status: <B>ONLINE</B>.</span>")
+	to_chat(U, "<span class='notice'>Stan urządzenia VOID-shift: <B>ONLINE</B>.\nStan urządzenia CLOAK-tech: <B>ONLINE</B>.</span>")
 	addtimer(CALLBACK(src, PROC_REF(ninitialize_six), delay, U), delay)
 
 /obj/item/clothing/suit/space/space_ninja/proc/ninitialize_six(delay, mob/living/carbon/human/U)
-	to_chat(U, "<span class='notice'>Primary system status: <B>ONLINE</B>.\nBackup system status: <B>ONLINE</B>.\nCurrent energy capacity: <B>[display_energy(cell.charge)]</B>.</span>")
+	to_chat(U, "<span class='notice'>Stan systemu głównego: <B>ONLINE</B>.\nStan systemu zapasowego: <B>ONLINE</B>.\nObecny zapas energii: <B>[display_energy(cell.charge)]</B>.</span>")
 	addtimer(CALLBACK(src, PROC_REF(ninitialize_seven), delay, U), delay)
 
 /obj/item/clothing/suit/space/space_ninja/proc/ninitialize_seven(delay, mob/living/carbon/human/U)
-	to_chat(U, "<span class='notice'>All systems operational. Welcome to <B>SpiderOS</B>, [U.real_name].</span>")
+	to_chat(U, "<span class='notice'>Wszystkie systemy sprawne. Witaj w <B>SpiderOS</B>, [U.real_name].</span>")
 	s_initialized = TRUE
 	ntick()
 	s_busy = FALSE
@@ -56,38 +56,38 @@
 /obj/item/clothing/suit/space/space_ninja/proc/deinitialize(delay = s_delay)
 	if(affecting==loc)
 		var/mob/living/carbon/human/U = affecting
-		if(alert("Are you certain you wish to remove the suit? This will take time and remove all abilities.",,"Yes","No")=="No")
+		if(alert("Czy na pewno chcesz zdjąć kombinezon? Zajmie to trochę czasu i odbierze wszystkie zdolności.",,"Yes","No")=="No")
 			return
 		s_busy = TRUE
 		addtimer(CALLBACK(src, PROC_REF(deinitialize_two), delay, U), delay)
 
 /obj/item/clothing/suit/space/space_ninja/proc/deinitialize_two(delay, mob/living/carbon/human/U)
-	to_chat(U, "<span class='notice'>Now de-initializing...</span>")
+	to_chat(U, "<span class='notice'>Deinicjalizacja...</span>")
 	addtimer(CALLBACK(src, PROC_REF(deinitialize_three), delay, U), delay)
 
 /obj/item/clothing/suit/space/space_ninja/proc/deinitialize_three(delay, mob/living/carbon/human/U)
-	to_chat(U, "<span class='notice'>Logging off, [U.real_name]. Shutting down <B>SpiderOS</B>.</span>")
+	to_chat(U, "<span class='notice'>Wylogowywanie, [U.real_name]. Wyłączanie <B>SpiderOS</B>.</span>")
 	addtimer(CALLBACK(src, PROC_REF(deinitialize_four), delay, U), delay)
 
 /obj/item/clothing/suit/space/space_ninja/proc/deinitialize_four(delay, mob/living/carbon/human/U)
-	to_chat(U, "<span class='notice'>Primary system status: <B>OFFLINE</B>.\nBackup system status: <B>OFFLINE</B>.</span>")
+	to_chat(U, "<span class='notice'>Stan systemu głównego: <B>OFFLINE</B>.\nStan systemu zapasowego: <B>OFFLINE</B>.</span>")
 	addtimer(CALLBACK(src, PROC_REF(deinitialize_five), delay, U), delay)
 
 /obj/item/clothing/suit/space/space_ninja/proc/deinitialize_five(delay, mob/living/carbon/human/U)
-	to_chat(U, "<span class='notice'>VOID-shift device status: <B>OFFLINE</B>.\nCLOAK-tech device status: <B>OFFLINE</B>.</span>")
+	to_chat(U, "<span class='notice'>Stan urządzenia VOID-shift: <B>OFFLINE</B>.\nStan urządzenia CLOAK-tech: <B>OFFLINE</B>.</span>")
 	cancel_stealth()//Shutdowns stealth.
 	addtimer(CALLBACK(src, PROC_REF(deinitialize_six), delay, U), delay)
 
 /obj/item/clothing/suit/space/space_ninja/proc/deinitialize_six(delay, mob/living/carbon/human/U)
-	to_chat(U, "<span class='notice'>Disconnecting neural-net interface...</span>\green<B>Success</B><span class='notice'>.</span>")
+	to_chat(U, "<span class='notice'>Odłączanie interfejsu sieci neuronowej...</span>\green<B>Sukces</B><span class='notice'>.</span>")
 	addtimer(CALLBACK(src, PROC_REF(deinitialize_seven), delay, U), delay)
 
 /obj/item/clothing/suit/space/space_ninja/proc/deinitialize_seven(delay, mob/living/carbon/human/U)
-	to_chat(U, "<span class='notice'>Disengaging neural-net interface...</span>\green<B>Success</B><span class='notice'>.</span>")
+	to_chat(U, "<span class='notice'>Rozłączanie interfejsu sieci neuronowej...</span>\green<B>Sukces</B><span class='notice'>.</span>")
 	addtimer(CALLBACK(src, PROC_REF(deinitialize_eight), delay, U), delay)
 
 /obj/item/clothing/suit/space/space_ninja/proc/deinitialize_eight(delay, mob/living/carbon/human/U)
-	to_chat(U, "<span class='notice'>Unsecuring external locking mechanism...\nNeural-net abolished.\nOperation status: <B>FINISHED</B>.</span>")
+	to_chat(U, "<span class='notice'>Odbezpieczanie zewnętrznego mechanizmu blokującego...\nSieć neuronowa zlikwidowana.\nStan operacji: <B>ZAKOŃCZONO</B>.</span>")
 	unlock_suit()
 	U.regenerate_icons()
 	s_initialized = FALSE

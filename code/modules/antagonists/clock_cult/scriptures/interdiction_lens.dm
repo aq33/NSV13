@@ -3,11 +3,11 @@
 /datum/clockcult/scripture/create_structure/interdiction
 	name = "Interdiction Lens"
 	desc = "Creates a device that will slow non servants in the area and damage mechanised exosuits. Requires power from a sigil of transmission."
-	tip = "Construct interdiction lens to slow down a hostile assault."
+	tip = "Buduje soczewkę zaporową, która spowalnia wrogi szturm."
 	button_icon_state = "Interdiction Lens"
 	power_cost = 500
 	invokation_time = 80
-	invokation_text = list("Oh great lord...", "may your divinity block the outsiders.")
+	invokation_text = list("Oh great lord...", "niech twa boskość powstrzyma obcych.")
 	summoned_structure = /obj/structure/destructible/clockwork/gear_base/interdiction_lens
 	cogs_required = 4
 	category = SPELLTYPE_STRUCTURES
@@ -15,10 +15,10 @@
 /obj/structure/destructible/clockwork/gear_base/interdiction_lens
 	name = "interdiction lens"
 	desc = "A mesmerizing light that flashes to a rhythm that you just can't stop tapping to."
-	clockwork_desc = "A small device which will slow down nearby attackers at a small power cost."
+	clockwork_desc = "Niewielkie urządzenie spowalniające pobliskich napastników niewielkim kosztem energii."
 	default_icon_state = "interdiction_lens"
 	anchored = TRUE
-	break_message = "<span class='warning'>The interdiction lens breaks into multiple fragments, which gently float to the ground.</span>"
+	break_message = "<span class='warning'>Soczewka zaporowa rozpada się na wiele fragmentów, które łagodnie opadają na ziemię.</span>"
 	max_integrity = 150
 	obj_integrity = 150
 	minimum_power = 5
@@ -41,16 +41,16 @@
 /obj/structure/destructible/clockwork/gear_base/interdiction_lens/attack_hand(mob/user)
 	if(is_servant_of_ratvar(user))
 		if(!anchored)
-			to_chat(user, "<span class='warning'>[src] needs to be fastened to the floor!</span>")
+			to_chat(user, "<span class='warning'>[src] trzeba przymocować do podłogi!</span>")
 			return
 		enabled = !enabled
-		to_chat(user, "<span class='brass'>You flick the switch on [src], turning it [enabled?"on":"off"]!</span>")
+		to_chat(user, "<span class='brass'>Przestawiasz przełącznik [src], [enabled?"włączając":"wyłączając"] go!</span>")
 		if(enabled)
 			if(update_power())
 				repowered()
 			else
 				enabled = FALSE
-				to_chat(user, "<span class='warning'>[src] does not have enough power!</span>")
+				to_chat(user, "<span class='warning'>[src] nie ma dość energii!</span>")
 		else
 			depowered()
 	else

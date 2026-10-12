@@ -76,7 +76,7 @@
 //Brig Phys
 /obj/item/clothing/suit/hazardvest/brig_physician
 	name = "brig physician's vest"
-	desc = "A lightweight vest worn by the Brig Physician."
+	desc = "Lekka kamizelka noszona przez lekarza aresztu."
 	icon_state = "brig_phys_vest"
 	item_state = "sec_helm"//looks kinda similar, I guess
 	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/flashlight, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/beaker, /obj/item/reagent_containers/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/melee/classic_baton/police/telescopic, /obj/item/soap, /obj/item/sensor_device, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
@@ -96,7 +96,7 @@
 //Lawyer
 /obj/item/clothing/suit/toggle/lawyer
 	name = "blue suit jacket"
-	desc = "A snappy dress jacket."
+	desc = "Elegancka marynarka."
 	icon_state = "suitjacket_blue"
 	item_state = "suitjacket_blue"
 	blood_overlay_type = "coat"
@@ -105,13 +105,13 @@
 
 /obj/item/clothing/suit/toggle/lawyer/purple
 	name = "purple suit jacket"
-	desc = "A foppish dress jacket."
+	desc = "Fircykowata marynarka."
 	icon_state = "suitjacket_purp"
 	item_state = "suitjacket_purp"
 
 /obj/item/clothing/suit/toggle/lawyer/black
 	name = "black suit jacket"
-	desc = "A professional suit jacket."
+	desc = "Profesjonalna marynarka."
 	icon_state = "suitjacket_black"
 	item_state = "ro_suit"
 

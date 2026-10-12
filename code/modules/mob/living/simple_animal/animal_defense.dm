@@ -6,7 +6,7 @@
 		if("help")
 			if (health > 0)
 				visible_message("<span class='notice'>[M] [response_help] [src].</span>", \
-					"<span class='notice'>[M] [response_help] you.</span>")
+					"<span class='notice'>[M] [response_help] cię.</span>")
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 
 		if("grab")
@@ -14,11 +14,11 @@
 
 		if("harm", "disarm")
 			if(HAS_TRAIT(M, TRAIT_PACIFISM))
-				to_chat(M, "<span class='notice'>You don't want to hurt [src]!</span>")
+				to_chat(M, "<span class='notice'>Nie chcesz zrobić krzywdy [src]!</span>")
 				return
 			M.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
 			visible_message("<span class='danger'>[M] [response_harm] [src]!</span>",\
-				"<span class='userdanger'>[M] [response_harm] you!</span>", null, COMBAT_MESSAGE_RANGE)
+				"<span class='userdanger'>[M] [response_harm] cię!</span>", null, COMBAT_MESSAGE_RANGE)
 			playsound(loc, attacked_sound, 25, 1, -1)
 			attack_threshold_check(M.dna.species.punchdamage)
 			log_combat(M, src, "attacked")
@@ -28,12 +28,12 @@
 /mob/living/simple_animal/attack_hulk(mob/living/carbon/human/user, does_attack_animation = 0)
 	if(user.a_intent == INTENT_HARM)
 		if(HAS_TRAIT(user, TRAIT_PACIFISM))
-			to_chat(user, "<span class='notice'>You don't want to hurt [src]!</span>")
+			to_chat(user, "<span class='notice'>Nie chcesz zrobić krzywdy [src]!</span>")
 			return FALSE
 		..(user, 1)
 		playsound(loc, "punch", 25, 1, -1)
 		visible_message("<span class='danger'>[user] punches [src]!</span>", \
-			"<span class='userdanger'>[user] punches you!</span>", null, COMBAT_MESSAGE_RANGE)
+			"<span class='userdanger'>[user] uderza cię!</span>", null, COMBAT_MESSAGE_RANGE)
 		adjustBruteLoss(15)
 		return TRUE
 
@@ -46,7 +46,7 @@
 	if (M.a_intent == INTENT_HELP)
 		if (health > 0)
 			visible_message("<span class='notice'>[M.name] [response_help] [src].</span>", \
-				"<span class='notice'>[M.name] [response_help] you.</span>")
+				"<span class='notice'>[M.name] [response_help] cię.</span>")
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 
 
@@ -55,12 +55,12 @@
 		if(M.a_intent == INTENT_DISARM)
 			playsound(loc, 'sound/weapons/pierce.ogg', 25, 1, -1)
 			visible_message("<span class='danger'>[M] [response_disarm] [name]!</span>", \
-					"<span class='userdanger'>[M] [response_disarm] you!</span>", null, COMBAT_MESSAGE_RANGE)
+					"<span class='userdanger'>[M] [response_disarm] cię!</span>", null, COMBAT_MESSAGE_RANGE)
 			log_combat(M, src, "disarmed")
 		else
 			var/damage = rand(15, 30)
-			visible_message("<span class='danger'>[M] slashes at [src]!</span>", \
-					"<span class='userdanger'>[M] slashes at you!</span>", null, COMBAT_MESSAGE_RANGE)
+			visible_message("<span class='danger'>[M] tnie [src]!</span>", \
+					"<span class='userdanger'>[M] tnie cię!</span>", null, COMBAT_MESSAGE_RANGE)
 			playsound(loc, 'sound/weapons/slice.ogg', 25, 1, -1)
 			attack_threshold_check(damage)
 			log_combat(M, src, "attacked")
@@ -102,7 +102,7 @@
 		temp_damage *= damage_coeff[damagetype]
 
 	if(temp_damage >= 0 && temp_damage <= force_threshold)
-		visible_message("<span class='warning'>[src] looks unharmed.</span>")
+		visible_message("<span class='warning'>[src] wygląda na nietkniętego.</span>")
 		return FALSE
 	else
 		apply_damage(damage, damagetype, null, getarmor(null, armorcheck))

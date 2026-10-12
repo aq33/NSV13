@@ -858,7 +858,7 @@
 
 /datum/crafting_recipe/noose/check_requirements(mob/user, list/collected_requirements)
 	if(!(locate(/obj/structure/chair) in get_turf(user)))
-		to_chat(user, "<span class='warning'>You have to be standing on top of a chair to make a noose!</span>")
+		to_chat(user, "<span class='warning'>Aby zrobić pętlę, musisz stać na krześle!</span>")
 		return FALSE
 	return ..()
 

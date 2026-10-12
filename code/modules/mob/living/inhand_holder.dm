@@ -61,7 +61,7 @@
 		return FALSE
 	if(isliving(loc))
 		var/mob/living/L = loc
-		to_chat(L, "<span class='warning'>[held_mob] wriggles free!</span>")
+		to_chat(L, "<span class='warning'>[held_mob] wyrywa się!</span>")
 		L.dropItemToGround(src)
 	held_mob.forceMove(get_turf(held_mob))
 	held_mob.reset_perspective()

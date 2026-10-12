@@ -49,21 +49,21 @@
 	icon_state = "red_cola"
 	name = "\improper Space Cola Vendor"
 	desc = "It vends cola, in space."
-	product_slogans = "Cola in space!"
+	product_slogans = "Cola w kosmosie!"
 	light_color = LIGHT_COLOR_RED
 
 /obj/machinery/vending/cola/space_up
 	icon_state = "space_up"
 	name = "\improper Space-up! Vendor"
 	desc = "Indulge in an explosion of flavor."
-	product_slogans = "Space-up! Like a hull breach in your mouth."
+	product_slogans = "Space-up! Jak rozszczelnienie kadłuba w twoich ustach."
 	light_color = LIGHT_COLOR_GREEN
 
 /obj/machinery/vending/cola/starkist
 	icon_state = "starkist"
 	name = "\improper Star-kist Vendor"
 	desc = "The taste of a star in liquid form."
-	product_slogans = "Drink the stars! Star-kist!"
+	product_slogans = "Pij gwiazdy! Star-kist!"
 	light_color = LIGHT_COLOR_ORANGE
 
 /obj/machinery/vending/cola/sodie
@@ -74,7 +74,7 @@
 	icon_state = "pwr_game"
 	name = "\improper Pwr Game Vendor"
 	desc = "You want it, we got it. Brought to you in partnership with Vlad's Salads."
-	product_slogans = "The POWER that gamers crave! PWR GAME!"
+	product_slogans = "MOC, której pragną gracze! PWR GAME!"
 	light_color = LIGHT_COLOR_PURPLE
 
 /obj/machinery/vending/cola/shamblers
@@ -90,5 +90,5 @@
 					/obj/item/reagent_containers/food/drinks/soda_cans/pwr_game = 10,
 					/obj/item/reagent_containers/food/drinks/soda_cans/lemon_lime = 10,
 					/obj/item/reagent_containers/food/drinks/soda_cans/shamblers = 10)
-	product_slogans = "~Shake me up some of that Shambler's Juice!~"
-	product_ads = "Refreshing!;Jyrbv dv lg jfdv fw kyrk Jyrdscvi'j Alztv!;Over 1 trillion souls drank!;Thirsty? Nyp efk uizeb kyv uribevjj?;Kyv Jyrdscvi uizebj kyv ezxyk!;Drink up!;Krjkp."
+	product_slogans = "~Wstrząśnij mi trochę tego Shambler's Juice!~"
+	product_ads = "Orzeźwiające!;Jyrbv dv lg jfdv fw kyrk Jyrdscvi'j Alztv!;Wypiło go ponad bilion dusz!;Spragniony? Nyp efk uizeb kyv uribevjj?;Kyv Jyrdscvi uizebj kyv ezxyk!;Pij!;Krjkp."

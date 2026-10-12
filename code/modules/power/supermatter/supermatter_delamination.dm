@@ -53,7 +53,7 @@
 	for(var/mob/M in GLOB.player_list)
 		if(M.get_virtual_z_level() == supermatter_z)
 			SEND_SOUND(M, 'sound/magic/charge.ogg')
-			to_chat(M, "<span class='boldannounce'>You feel reality distort for a moment...</span>")
+			to_chat(M, "<span class='boldannounce'>Przez chwilę czujesz, jak rzeczywistość się wypacza...</span>")
 			SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "delam", /datum/mood_event/delam)
 
 

@@ -6,6 +6,7 @@ import { selectStatPanel } from './selectors';
 import { StatStatus, HoboStatStatus } from './StatStatus';
 import { StatText, HoboStatText } from './StatText';
 import { StatTicket } from './StatTicket';
+import { translateTab } from './translations';
 
 // =======================
 // Flex Supported
@@ -79,7 +80,7 @@ export const StatTabScroll = (props, context) => {
                   type: 'stat/setTab',
                   payload: tab,
                 })}>
-                {tab}
+                {translateTab(tab)}
               </Tabs.Tab>
             ))}
           </Tabs>
@@ -108,7 +109,7 @@ export const StatTabWrap = (props, context) => {
             type: 'stat/setTab',
             payload: tab,
           })}>
-          {tab}
+          {translateTab(tab)}
         </Button>
       ))}
     </Section>

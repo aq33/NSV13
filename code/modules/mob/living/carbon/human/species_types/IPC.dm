@@ -106,8 +106,8 @@
 	button_icon_state = "drone_vision"
 
 /datum/action/innate/change_screen/Activate()
-	var/screen_choice = input(usr, "Which screen do you want to use?", "Screen Change") as null | anything in GLOB.ipc_screens_list
-	var/color_choice = input(usr, "Which color do you want your screen to be?", "Color Change") as null | color
+	var/screen_choice = input(usr, "Którego ekranu chcesz używać?", "Zmiana ekranu") as null | anything in GLOB.ipc_screens_list
+	var/color_choice = input(usr, "Jaki kolor ma mieć twój ekran?", "Zmiana koloru") as null | color
 	if(!screen_choice)
 		return
 	if(!color_choice)
@@ -132,11 +132,11 @@
 	var/mob/living/carbon/human/H = user
 	var/obj/item/organ/stomach/battery/battery = H.getorganslot(ORGAN_SLOT_STOMACH)
 	if(!battery)
-		to_chat(H, "<span class='warning'>You try to siphon energy from \the [target], but your power cell is gone!</span>")
+		to_chat(H, "<span class='warning'>Próbujesz pobrać energię z [target], ale nie masz ogniwa zasilającego!</span>")
 		return
 
 	if(istype(H) && H.nutrition >= NUTRITION_LEVEL_ALMOST_FULL)
-		to_chat(user, "<span class='warning'>You are already fully charged!</span>")
+		to_chat(user, "<span class='warning'>Jesteś już w pełni naładowany!</span>")
 		return
 
 	if(istype(target, /obj/machinery/power/apc))
@@ -145,7 +145,7 @@
 			powerdraw_loop(A, H, TRUE)
 			return
 		else
-			to_chat(user, "<span class='warning'>There is not enough charge to draw from that APC.</span>")
+			to_chat(user, "<span class='warning'>W tym APC jest za mało ładunku do pobrania.</span>")
 			return
 
 	if(isethereal(target))
@@ -155,11 +155,11 @@
 			powerdraw_loop(target_battery, H, FALSE)
 			return
 		else
-			to_chat(user, "<span class='warning'>There is not enough charge to draw from that being!</span>")
+			to_chat(user, "<span class='warning'>W tej istocie jest za mało ładunku do pobrania!</span>")
 			return
 
 /obj/item/apc_powercord/proc/powerdraw_loop(atom/target, mob/living/carbon/human/H, apc_target)
-	H.visible_message("<span class='notice'>[H] inserts a power connector into [target].</span>", "<span class='notice'>You begin to draw power from the [target].</span>")
+	H.visible_message("<span class='notice'>[H] wkłada złącze zasilania do [target].</span>", "<span class='notice'>Zaczynasz pobierać energię z [target].</span>")
 	var/obj/item/organ/stomach/battery/battery = H.getorganslot(ORGAN_SLOT_STOMACH)
 	if(apc_target)
 		var/obj/machinery/power/apc/A = target
@@ -167,26 +167,26 @@
 			return
 		while(do_after(H, 10, target = A))
 			if(!battery)
-				to_chat(H, "<span class='warning'>You need a battery to recharge!</span>")
+				to_chat(H, "<span class='warning'>Do ładowania potrzebujesz baterii!</span>")
 				break
 			if(loc != H)
-				to_chat(H, "<span class='warning'>You must keep your connector out while charging!</span>")
+				to_chat(H, "<span class='warning'>Podczas ładowania musisz trzymać złącze na zewnątrz!</span>")
 				break
 			if(A.cell.charge <= A.cell.maxcharge/4)
-				to_chat(H, "<span class='warning'>The [A] doesn't have enough charge to spare.</span>")
+				to_chat(H, "<span class='warning'>[A] nie ma ładunku do oddania.</span>")
 				break
 			A.charging = 1
 			if(A.cell.charge > A.cell.maxcharge/4 + 250)
 				battery.adjust_charge(250)
 				A.cell.charge -= 250
-				to_chat(H, "<span class='notice'>You siphon off some of the stored charge for your own use.</span>")
+				to_chat(H, "<span class='notice'>Pobierasz część zgromadzonego ładunku dla siebie.</span>")
 			else
 				battery.adjust_charge(A.cell.charge - A.cell.maxcharge/4)
 				A.cell.charge = A.cell.maxcharge/4
-				to_chat(H, "<span class='notice'>You siphon off as much as the [A] can spare.</span>")
+				to_chat(H, "<span class='notice'>Pobierasz tyle, ile [A] może oddać.</span>")
 				break
 			if(battery.charge >= battery.max_charge)
-				to_chat(H, "<span class='notice'>You are now fully charged.</span>")
+				to_chat(H, "<span class='notice'>Jesteś teraz w pełni naładowany.</span>")
 				break
 	else
 		var/obj/item/organ/stomach/battery/A = target
@@ -195,26 +195,26 @@
 		var/charge_amt
 		while(do_after(H, 10, target = A.owner))
 			if(!battery)
-				to_chat(H, "<span class='warning'>You need a battery to recharge!</span>")
+				to_chat(H, "<span class='warning'>Do ładowania potrzebujesz baterii!</span>")
 				break
 			if(loc != H)
-				to_chat(H, "<span class='warning'>You must keep your connector out while charging!</span>")
+				to_chat(H, "<span class='warning'>Podczas ładowania musisz trzymać złącze na zewnątrz!</span>")
 				break
 			if(A.charge == 0)
-				to_chat(H, "<span class='warning'>[A] is completely drained!</span>")
+				to_chat(H, "<span class='warning'>[A] jest całkowicie wyczerpany!</span>")
 				break
 			charge_amt = A.charge <= 50 ? A.charge : 50
 			A.adjust_charge(-1 * charge_amt)
 			battery.adjust_charge(charge_amt)
 			if(battery.charge >= battery.max_charge)
-				to_chat(H, "<span class='notice'>You are now fully charged.</span>")
+				to_chat(H, "<span class='notice'>Jesteś teraz w pełni naładowany.</span>")
 				break
 
-	H.visible_message("<span class='notice'>[H] unplugs from the [target].</span>", "<span class='notice'>You unplug from the [target].</span>")
+	H.visible_message("<span class='notice'>[H] odłącza się od [target].</span>", "<span class='notice'>Odłączasz się od [target].</span>")
 	return
 
 /datum/species/ipc/spec_revival(mob/living/carbon/human/H)
-	H.notify_ghost_cloning("You have been repaired!")
+	H.notify_ghost_cloning("Zostajesz naprawiony!")
 	H.grab_ghost()
 	H.dna.features["ipc_screen"] = "BSOD"
 	INVOKE_ASYNC(src, PROC_REF(declare_revival), H)
@@ -231,11 +231,11 @@
 	sleep(3 SECONDS)
 	if(H.stat == DEAD)
 		return
-	H.say("Finalizing setup...")
+	H.say("Kończenie konfiguracji...")
 	sleep(3 SECONDS)
 	if(H.stat == DEAD)
 		return
-	H.say("Unit [H.real_name] is fully functional. Have a nice day.")
+	H.say("Jednostka [H.real_name] jest w pełni sprawna. Miłego dnia.")
 	H.dna.features["ipc_screen"] = saved_screen
 
 /datum/species/ipc/get_harm_descriptors()

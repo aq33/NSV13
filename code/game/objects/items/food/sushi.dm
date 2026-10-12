@@ -37,7 +37,7 @@
 		/datum/reagent/consumable/nutriment = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("seaweed" = 1)
+	tastes = list("wodorosty" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -64,7 +64,7 @@
 	name = "vegetarian sushi roll"
 	desc = "A roll of simple vegetarian sushi with rice, carrots, and cabbage. Sliceable into pieces!"
 	icon_state = "vegetariansushiroll"
-	tastes = list("boiled rice" = 4, "carrots" = 2, "cabbage" = 2)
+	tastes = list("gotowany ryż" = 4, "marchewki" = 2, "kapusta" = 2)
 	foodtypes = VEGETABLES
 	slice_type = /obj/item/food/sushi_slice/vegetarian
 
@@ -73,7 +73,7 @@
 	desc = "A roll of simple vegetarian sushi with rice, carrots, and cabbage."
 	icon_state = "vegetariansushislice"
 	foodtypes = VEGETABLES
-	tastes = list("boiled rice" = 4, "carrots" = 2, "cabbage" = 2)
+	tastes = list("gotowany ryż" = 4, "marchewki" = 2, "kapusta" = 2)
 
 /obj/item/food/sushi_roll/spicyfilet
 	name = "spicy filet sushi roll"
@@ -85,7 +85,7 @@
 		/datum/reagent/consumable/capsaicin = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		)
-	tastes = list("boiled rice" = 4, "fish" = 2, "spicyness" = 2)
+	tastes = list("gotowany ryż" = 4, "ryba" = 2, "ostrość" = 2)
 	foodtypes = MEAT
 	slice_type = /obj/item/food/sushi_slice/spicyfilet
 
@@ -99,7 +99,7 @@
 		/datum/reagent/consumable/capsaicin = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 		)
-	tastes = list("boiled rice" = 4, "fish" = 2, "spicyness" = 2)
+	tastes = list("gotowany ryż" = 4, "ryba" = 2, "ostrość" = 2)
 	foodtypes = MEAT
 
 /obj/item/food/sushi_roll/futomaki
@@ -111,7 +111,7 @@
 		/datum/reagent/consumable/nutriment/protein = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("boiled rice" = 4, "fish" = 5, "egg" = 3, "dried seaweed" = 2)
+	tastes = list("gotowany ryż" = 4, "ryba" = 5, "jajko" = 3, "suszone wodorosty" = 2)
 	foodtypes = MEAT
 	slice_type = /obj/item/food/sushi_slice/futomaki
 
@@ -124,7 +124,7 @@
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("boiled rice" = 4, "fish" = 5, "egg" = 3, "dried seaweed" = 2, "cabbage" = 2)
+	tastes = list("gotowany ryż" = 4, "ryba" = 5, "jajko" = 3, "suszone wodorosty" = 2, "kapusta" = 2)
 	foodtypes = MEAT
 
 /obj/item/food/sushi_roll/philadelphia
@@ -136,7 +136,7 @@
 		/datum/reagent/consumable/nutriment/protein = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 8,
 	)
-	tastes = list("boiled rice" = 4, "fish" = 5, "creamy cheese" = 3, "dried seaweed" = 2, "cabbage" = 2)
+	tastes = list("gotowany ryż" = 4, "ryba" = 5, "kremowy ser" = 3, "suszone wodorosty" = 2, "kapusta" = 2)
 	foodtypes = MEAT | DAIRY
 	slice_type = /obj/item/food/sushi_slice/philadelphia
 
@@ -149,7 +149,7 @@
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("boiled rice" = 4, "fish" = 5, "creamy cheese" = 3, "dried seaweed" = 2, "cabbage" = 2)
+	tastes = list("gotowany ryż" = 4, "ryba" = 5, "kremowy ser" = 3, "suszone wodorosty" = 2, "kapusta" = 2)
 	foodtypes = MEAT | DAIRY
 
 /obj/item/food/nigiri_sushi
@@ -162,7 +162,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 		/datum/reagent/consumable/nutriment/protein = 2,
 		)
-	tastes = list("boiled rice" = 4, "fish filet" = 2, "soy sauce" = 2)
+	tastes = list("gotowany ryż" = 4, "filet rybny" = 2, "sos sojowy" = 2)
 	foodtypes = MEAT | RAW
 	w_class = WEIGHT_CLASS_SMALL
 

@@ -57,7 +57,7 @@
 		var/difference = GLOB.installed_integration_cogs - calculated_cogs
 		calculated_cogs += difference
 		cogs += difference
-		to_chat(src, "<span class='brass'>You have gained [difference] cogs!</span>")
+		to_chat(src, "<span class='brass'>Zyskujesz [difference] zębatek!</span>")
 
 //Cannot gib the eminence.
 /mob/living/simple_animal/eminence/gib()
@@ -103,15 +103,15 @@
 	. = ..()
 	var/datum/antagonist/servant_of_ratvar/S = add_servant_of_ratvar(src, silent=TRUE)
 	S.prefix = CLOCKCULT_PREFIX_EMINENCE
-	to_chat(src, "<span class='large_brass'>You are the Eminence!</span>")
-	to_chat(src, "<span class='brass'>Click on objects to perform actions, different objects have different actions, try them out!</span>")
-	to_chat(src, "<span class='brass'>Many of your spells require a target first. Click on a servant to select them!</span>")
+	to_chat(src, "<span class='large_brass'>Jesteś Eminencją!</span>")
+	to_chat(src, "<span class='brass'>Klikaj obiekty, żeby wykonywać akcje - różne obiekty mają różne akcje, wypróbuj je!</span>")
+	to_chat(src, "<span class='brass'>Wiele twoich zaklęć wymaga najpierw celu. Kliknij sługę, żeby go wybrać!</span>")
 
 /mob/living/simple_animal/eminence/say_verb(message as text)
 	set name = "Say"
 	set category = "IC"
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, "<span class='danger'>Mowa jest obecnie wyłączona przez administrację.</span>")
 		return
 	if(message)
 		hierophant_message(message, src, span="<span class='large_brass'>", say=FALSE)
@@ -121,7 +121,7 @@
 
 /mob/living/simple_animal/eminence/Move(atom/newloc, direct)
 	if(istype(get_area(newloc), /area/chapel))
-		to_chat(usr, "<span class='warning'>You cannot move on to holy grounds!</span>")
+		to_chat(usr, "<span class='warning'>Nie możesz wejść na uświęconą ziemię!</span>")
 		return
 	. = ..()
 
@@ -135,7 +135,7 @@
 
 /mob/living/simple_animal/eminence/get_stat_tab_status()
 	var/list/tab_data = ..()
-	tab_data["Cogs Available"] = GENERATE_STAT_TEXT("[cogs] Cogs")
+	tab_data["Dostępne zębatki"] = GENERATE_STAT_TEXT("[cogs] zębatek")
 	return tab_data
 
 /mob/living/simple_animal/eminence/update_health_hud()
@@ -183,7 +183,7 @@
 		SEND_SOUND(user, sound('sound/magic/magic_missile.ogg'))
 		flash_color(user, flash_color = "#AF0AAF", flash_time = 25)
 	else
-		to_chat(user, "<span class='warning'>There is no Ark!</span>")
+		to_chat(user, "<span class='warning'>Nie ma Arki!</span>")
 
 //=====Warp to station=====
 /obj/effect/proc_holder/spell/targeted/eminence/station
@@ -197,7 +197,7 @@
 		SEND_SOUND(user, sound('sound/magic/magic_missile.ogg'))
 		flash_color(user, flash_color = "#AF0AAF", flash_time = 25)
 	else
-		to_chat(user, "<span class='warning'>You're already on the station!</span>")
+		to_chat(user, "<span class='warning'>Już jesteś na statku!</span>")
 
 //=====Teleport to servant=====
 /obj/effect/proc_holder/spell/targeted/eminence/servant_warp
@@ -207,20 +207,20 @@
 
 /obj/effect/proc_holder/spell/targeted/eminence/servant_warp/cast(list/targets, mob/user)
 	//Get a list of all servants
-	var/datum/mind/choice = input(user, "Select servant", "Warp to...", null) in GLOB.all_servants_of_ratvar
+	var/datum/mind/choice = input(user, "Wybierz sługę", "Przenieś do...", null) in GLOB.all_servants_of_ratvar
 	var/mob/living/M
 	if(!choice)
 		return
 	M = choice.current
 	if(!isliving(M))
-		to_chat(user, "<span class='warning'>You cannot jump to them!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz do niego skoczyć!</span>")
 		return
 	if(!is_servant_of_ratvar(M))
-		to_chat(user, "<span class='warning'>They are no longer a servant of Rat'var!</span>")
+		to_chat(user, "<span class='warning'>To już nie jest sługa Rat'vara!</span>")
 		return
 	var/turf/T = get_turf(M)
 	if(SSmapping.level_trait(T.z, ZTRAIT_CENTCOM))
-		to_chat(user, "<span class='warning'>They are out of your reach!</span>")
+		to_chat(user, "<span class='warning'>Jest poza twoim zasięgiem!</span>")
 		return
 	user.forceMove(get_turf(T))
 	SEND_SOUND(user, sound('sound/magic/magic_missile.ogg'))
@@ -260,30 +260,30 @@
 /obj/effect/proc_holder/spell/targeted/eminence/linked_abscond/cast(list/targets, mob/living/user)
 	var/mob/living/simple_animal/eminence/E = user
 	if(!istype(E))
-		to_chat(E, "<span class='brass'>You are not the Eminence! (This is a bug)</span>")
+		to_chat(E, "<span class='brass'>Nie jesteś Eminencją! (To błąd)</span>")
 		revert_cast(user)
 		return FALSE
 	if(!E.selected_mob || !is_servant_of_ratvar(E.selected_mob))
 		E.selected_mob = null
-		to_chat(user, "<span class='neovgre'>You need to select a valid target by clicking on them.</span>")
+		to_chat(user, "<span class='neovgre'>Musisz wybrać prawidłowy cel, klikając go.</span>")
 		revert_cast(user)
 		return FALSE
 	var/mob/living/L = E.selected_mob
 	if(!istype(L))
-		to_chat(E, "<span class='brass'>You cannot do that on this mob!</span>")
+		to_chat(E, "<span class='brass'>Nie możesz tego zrobić z tą istotą!</span>")
 		revert_cast(user)
 		return FALSE
-	to_chat(E, "<span class='brass'>You begin recalling [L]...</span>")
-	to_chat(L, "<span class='brass'>The Eminence is summoning you...</span>")
-	L.visible_message("<span class='warning'>[L] flares briefly.</span>")
+	to_chat(E, "<span class='brass'>Zaczynasz przywoływać [L]...</span>")
+	to_chat(L, "<span class='brass'>Eminencja cię przywołuje...</span>")
+	L.visible_message("<span class='warning'>[L] na chwilę rozbłyska.</span>")
 	if(do_after(E, 70, target=L))
-		L.visible_message("<span class='warning'>[L] phases out of existance!</span>")
+		L.visible_message("<span class='warning'>[L] znika z istnienia!</span>")
 		var/turf/T = get_turf(pick(GLOB.servant_spawns))
 		try_warp_servant(L, T, FALSE)
 		consume_cogs(E)
 		return TRUE
 	else
-		to_chat(E, "<span class='brass'>You fail to recall [L].</span>")
+		to_chat(E, "<span class='brass'>Nie udaje ci się przywołać [L].</span>")
 		revert_cast(user)
 		return FALSE
 
@@ -296,7 +296,7 @@
 	cog_cost = 5
 
 /obj/effect/proc_holder/spell/targeted/eminence/trigger_event/cast(list/targets, mob/user)
-	var/picked_event = input(user, "Pick an event to run", "Manipulate Reality", null) in list(
+	var/picked_event = input(user, "Wybierz wydarzenie do uruchomienia", "Manipulacja rzeczywistością", null) in list(
 		"Anomaly",
 		"Brand Intelligence",
 		"Camera Failure",

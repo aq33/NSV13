@@ -74,7 +74,7 @@
 	obj_flags |= EMAGGED
 	if (authenticated)
 		authorize_access = get_all_accesses()
-	to_chat(user, "<span class='danger'>You scramble the communication routing circuits!</span>")
+	to_chat(user, "<span class='danger'>Mieszasz obwody trasowania komunikacji!</span>")
 	playsound(src, 'sound/machines/terminal_alert.ogg', 50, 0)
 
 /obj/machinery/computer/communications/ui_act(action, list/params)
@@ -122,11 +122,11 @@
 				var/obj/item/held_item = usr.get_active_held_item()
 				var/obj/item/card/id/id_card = held_item?.GetID()
 				if (!istype(id_card))
-					to_chat(usr, "<span class='warning'>You need to swipe your ID!</span>")
+					to_chat(usr, "<span class='warning'>Musisz przeciągnąć kartę identyfikacyjną!</span>")
 					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 					return
 				if (!(ACCESS_CAPTAIN in id_card.access))
-					to_chat(usr, "<span class='warning'>You are not authorized to do this!</span>")
+					to_chat(usr, "<span class='warning'>Nie masz do tego uprawnień!</span>")
 					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 					return
 
@@ -135,7 +135,7 @@
 				return
 			//NSV13 - No, you cannot revoke delta level alerts.
 			if(GLOB.security_level == SEC_LEVEL_DELTA)
-				to_chat(usr, "<span class='warning'>Security level override active.</span>")
+				to_chat(usr, "<span class='warning'>Aktywne nadpisanie poziomu alarmu.</span>")
 				playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 				return
 			//NSV13 end.
@@ -144,13 +144,13 @@
 
 			set_security_level(new_sec_level)
 
-			to_chat(usr, "<span class='notice'>Authorization confirmed. Modifying security level.</span>")
+			to_chat(usr, "<span class='notice'>Autoryzacja potwierdzona. Zmiana poziomu alarmu.</span>")
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 
 			// Only notify people if an actual change happened
 			log_game("[key_name(usr)] has changed the security level to [params["newSecurityLevel"]] with [src] at [AREACOORD(usr)].")
 			message_admins("[ADMIN_LOOKUPFLW(usr)] has changed the security level to [params["newSecurityLevel"]] with [src] at [AREACOORD(usr)].")
-			deadchat_broadcast("<span class='deadsay'><span class='name'>[usr.real_name]</span> has changed the security level to [params["newSecurityLevel"]] with [src] at <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", usr)
+			deadchat_broadcast("<span class='deadsay'><span class='name'>[usr.real_name]</span> zmienia poziom alarmu na [params["newSecurityLevel"]] przy użyciu [src] w <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", usr)
 
 			alert_level_tick += 1
 			ui_update()
@@ -180,14 +180,14 @@
 			var/emagged = obj_flags & EMAGGED
 			if (emagged)
 				message_syndicate(message, usr)
-				to_chat(usr, "<span class='danger'>SYSERR @l(19833)of(transmit.dm): !@$ MESSAGE TRANSMITTED TO SYNDICATE COMMAND.</span>")
+				to_chat(usr, "<span class='danger'>SYSERR @l(19833)of(transmit.dm): !@$ WIADOMOŚĆ PRZESŁANA DO DOWÓDZTWA SYNDYKATU.</span>")
 			else
 				message_centcom(message, usr)
-				to_chat(usr, "<span class='notice'>Message transmitted to Central Command.</span>")
+				to_chat(usr, "<span class='notice'>Wiadomość przesłana do Centrali.</span>")
 
-			var/associates = emagged ? "the Syndicate": "CentCom"
+			var/associates = emagged ? "Syndykatu": "Centrali"
 			usr.log_talk(message, LOG_SAY, tag = "message to [associates]")
-			deadchat_broadcast("<span class='deadsay'><span class='name'>[usr.real_name]</span> has messaged [associates], \"[message]\" at <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", usr)
+			deadchat_broadcast("<span class='deadsay'><span class='name'>[usr.real_name]</span> wysyła wiadomość do [associates]: \"[message]\" z <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", usr)
 			COOLDOWN_START(src, important_action_cooldown, IMPORTANT_ACTION_COOLDOWN)
 			. = TRUE
 		if ("purchaseShuttle")
@@ -203,7 +203,7 @@
 			if (!can_purchase_this_shuttle(shuttle))
 				return
 			if (!shuttle.prerequisites_met())
-				to_chat(usr, "<span class='alert'>You have not met the requirements for purchasing this shuttle.</span>")
+				to_chat(usr, "<span class='alert'>Nie spełniasz wymagań, żeby kupić ten prom.</span>")
 				return
 			var/datum/bank_account/bank_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
 			if (bank_account.account_balance < shuttle.credit_cost)
@@ -213,7 +213,7 @@
 			SSshuttle.existing_shuttle = SSshuttle.emergency
 			SSshuttle.action_load(shuttle)
 			bank_account.adjust_money(-shuttle.credit_cost)
-			minor_announce("[shuttle.name] has been purchased for [shuttle.credit_cost] credits! Purchase authorized by [authorize_name] [shuttle.extra_desc ? " [shuttle.extra_desc]" : ""]" , "Shuttle Purchase")
+			minor_announce("[shuttle.name] został kupiony za [shuttle.credit_cost] kredytów! Zakup zatwierdził(a): [authorize_name] [shuttle.extra_desc ? " [shuttle.extra_desc]" : ""]" , "Zakup promu")
 			message_admins("[ADMIN_LOOKUPFLW(usr)] purchased [shuttle.name].")
 			log_game("[key_name(usr)] has purchased [shuttle.name].")
 			SSblackbox.record_feedback("text", "shuttle_purchase", 1, shuttle.name)
@@ -231,9 +231,9 @@
 				return
 			var/reason = trim(html_encode(params["reason"]), MAX_MESSAGE_LEN)
 			nuke_request(reason, usr)
-			to_chat(usr, "<span class='notice'>Request sent.</span>")
+			to_chat(usr, "<span class='notice'>Wysłano prośbę.</span>")
 			usr.log_message("has requested the nuclear codes from CentCom with reason \"[reason]\"", LOG_SAY)
-			priority_announce("The codes for the on-station nuclear self-destruct have been requested by [usr]. Confirmation or denial of this request will be sent shortly.", "Nuclear Self-Destruct Codes Requested", SSstation.announcer.get_rand_report_sound())
+			priority_announce("[usr] prosi o kody do pokładowego ładunku samozniszczenia. Zgoda lub odmowa zostanie wkrótce przesłana.", "Prośba o kody samozniszczenia", SSstation.announcer.get_rand_report_sound())
 			playsound(src, 'sound/machines/terminal_prompt.ogg', 50, FALSE)
 			COOLDOWN_START(src, important_action_cooldown, IMPORTANT_ACTION_COOLDOWN)
 			. = TRUE
@@ -242,7 +242,7 @@
 				return
 			if (!(obj_flags & EMAGGED))
 				return
-			to_chat(usr, "<span class='notice'>Backup routing data restored.</span>")
+			to_chat(usr, "<span class='notice'>Przywrócono zapasowe dane trasowania.</span>")
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 			obj_flags &= ~EMAGGED
 			. = TRUE
@@ -252,23 +252,23 @@
 			if (!can_send_messages_to_other_sectors(usr))
 				return
 			if (!COOLDOWN_FINISHED(src, important_action_cooldown))
-				to_chat(usr, "<span class='alert'>Please stand by, transmitter in cooldown cycle</span>")
+				to_chat(usr, "<span class='alert'>Proszę czekać, nadajnik w cyklu chłodzenia</span>")
 				return
 
 			var/message = trim(html_encode(params["message"]), MAX_MESSAGE_LEN)
 			if (!message)
 				return
 			if(CHAT_FILTER_CHECK(message))
-				to_chat(usr, "<span class='warning'>Your message contains forbidden words.</span>")
+				to_chat(usr, "<span class='warning'>Twoja wiadomość zawiera zakazane słowa.</span>")
 				return
 
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 
 			SStopic.crosscomms_send_async("comms_console", message, station_name())
-			minor_announce(message, title = "Outgoing message to allied station", html_encode = FALSE)
+			minor_announce(message, title = "Wiadomość wychodząca do sojuszniczej stacji", html_encode = FALSE)
 			usr.log_talk(message, LOG_SAY, tag="message to the other server")
 			message_admins("[ADMIN_LOOKUPFLW(usr)] has sent a message to the other server.")
-			deadchat_broadcast("<span class='deadsay bold'>[usr.real_name] has sent an outgoing message to the other station(s).</span>", usr)
+			deadchat_broadcast("<span class='deadsay bold'>[usr.real_name] wysyła wiadomość do innych stacji.</span>", usr)
 
 			COOLDOWN_START(src, important_action_cooldown, IMPORTANT_ACTION_COOLDOWN)
 			. = TRUE
@@ -319,7 +319,7 @@
 				authenticated = TRUE
 				authorize_access = get_all_accesses()
 				authorize_name = "Unknown"
-				to_chat(usr, "<span class='warning'>[src] lets out a quiet alarm as its login is overridden.</span>")
+				to_chat(usr, "<span class='warning'>[src] cicho alarmuje, gdy ktoś nadpisuje logowanie.</span>")
 				playsound(src, 'sound/machines/terminal_alert.ogg', 25, FALSE)
 			else
 				var/obj/item/card/id/id_card = usr.get_idcard(hand_first = TRUE)
@@ -339,12 +339,12 @@
 				revoke_maint_all_access()
 				log_game("[key_name(usr)] disabled emergency maintenance access.")
 				message_admins("[ADMIN_LOOKUPFLW(usr)] disabled emergency maintenance access.")
-				deadchat_broadcast("<span class='deadsay'><span class='name'>[usr.real_name]</span> disabled emergency maintenance access at <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", usr)
+				deadchat_broadcast("<span class='deadsay'><span class='name'>[usr.real_name]</span> wyłącza awaryjny dostęp do tuneli technicznych w <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", usr)
 			else
 				make_maint_all_access()
 				log_game("[key_name(usr)] enabled emergency maintenance access.")
 				message_admins("[ADMIN_LOOKUPFLW(usr)] enabled emergency maintenance access.")
-				deadchat_broadcast("<span class='deadsay'><span class='name'>[usr.real_name]</span> enabled emergency maintenance access at <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", usr)
+				deadchat_broadcast("<span class='deadsay'><span class='name'>[usr.real_name]</span> włącza awaryjny dostęp do tuneli technicznych w <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", usr)
 		if("checkObjectives") //NSV13 overmap objectives
 			if (!authenticated(usr))
 				return
@@ -354,7 +354,7 @@
 				return
 			SSovermap_mode.mode.check_completion()
 			if(SSovermap_mode.objectives_completed && SSovermap_mode.round_extended)
-				priority_announce("Auto-recall to Outpost 45 will occur once you are out of combat.", "[SSovermap_mode.mode.reminder_origin]")
+				priority_announce("Automatyczny powrót na Posterunek 45 nastąpi po zakończeniu walki.", "[SSovermap_mode.mode.reminder_origin]")
 
 /obj/machinery/computer/communications/ui_data(mob/user)
 	var/list/data = list(
@@ -520,9 +520,9 @@
 	if (!authenticated_as_non_silicon_captain(user))
 		return FALSE
 	if (SSshuttle.emergency.mode != SHUTTLE_RECALL && SSshuttle.emergency.mode != SHUTTLE_IDLE)
-		return "The shuttle is already in transit."
+		return "Prom jest już w drodze."
 	if (SSshuttle.shuttle_purchased)
-		return "A replacement shuttle has already been purchased."
+		return "Zastępczy prom został już kupiony."
 	return TRUE
 
 /// Returns whether we are authorized to buy this specific shuttle.
@@ -547,16 +547,16 @@
 /obj/machinery/computer/communications/proc/make_announcement(mob/living/user)
 	var/is_ai = issilicon(user)
 	if(!SScommunications.can_announce(user, is_ai))
-		to_chat(user, "<span class='alert'>Intercomms recharging. Please stand by.</span>")
+		to_chat(user, "<span class='alert'>Interkom się ładuje. Proszę czekać.</span>")
 		return
-	var/input = stripped_input(user, "Please choose a message to announce to the station crew.", "What?")
+	var/input = stripped_input(user, "Wpisz wiadomość, którą chcesz ogłosić załodze.", "Co?")
 	if(!input || !user.canUseTopic(src, !issilicon(usr)))
 		return
 	if(CHAT_FILTER_CHECK(input))
-		to_chat(user, "<span class='warning'>You cannot send an announcement that contains prohibited words.</span>")
+		to_chat(user, "<span class='warning'>Nie możesz wysłać ogłoszenia z zakazanymi słowami.</span>")
 		return
 	SScommunications.make_announcement(user, is_ai, input)
-	deadchat_broadcast("<span class='deadsay'><span class='name'>[user.real_name]</span> made a priority announcement from <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", user)
+	deadchat_broadcast("<span class='deadsay'><span class='name'>[user.real_name]</span> nadaje ogłoszenie priorytetowe z <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", user)
 
 /obj/machinery/computer/communications/proc/post_status(command, data1, data2)
 

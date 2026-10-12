@@ -21,7 +21,7 @@
 		endWhen = startWhen
 
 /datum/round_event/plasma_decon/announce()
-	priority_announce("We are deploying an experimental plasma decontamination system. Please stand away from the vents and do not breathe the smoke that comes out.", "Central Command Update", SSstation.announcer.get_rand_alert_sound())
+	priority_announce("Uruchamiamy eksperymentalny system odkażania z plazmy. Prosimy odsunąć się od wywietrzników i nie wdychać wydobywającego się dymu.", "Komunikat Centrali", SSstation.announcer.get_rand_alert_sound())
 
 /datum/round_event/plasma_decon/start()
 	for(var/obj/machinery/atmospherics/components/unary/vent in vents)

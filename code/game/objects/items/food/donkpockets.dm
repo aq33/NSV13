@@ -31,7 +31,7 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4
 	)
-	tastes = list("meat" = 2, "dough" = 2, "laziness" = 1)
+	tastes = list("mięso" = 2, "surowe ciasto" = 2, "lenistwo" = 1)
 	foodtypes = GRAIN
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -53,7 +53,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/medicine/omnizine = 3
 	)
-	tastes = list("meat" = 2, "dough" = 2, "laziness" = 1)
+	tastes = list("mięso" = 2, "surowe ciasto" = 2, "lenistwo" = 1)
 	foodtypes = GRAIN
 
 	microwaved_type = /obj/item/food/badrecipe
@@ -74,7 +74,7 @@
 		/datum/reagent/toxin/lipolicide = 3,
 		/datum/reagent/consumable/nutriment = 4
 	)
-	tastes = list("meat" = 2, "dough" = 2)
+	tastes = list("mięso" = 2, "surowe ciasto" = 2)
 	foodtypes = GRAIN | VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -88,7 +88,7 @@
 		/datum/reagent/toxin/lipolicide = 3,
 		/datum/reagent/consumable/nutriment = 4
 	)
-	tastes = list("meat" = 2, "dough" = 2)
+	tastes = list("mięso" = 2, "surowe ciasto" = 2)
 	foodtypes = GRAIN | VEGETABLES
 
 /obj/item/food/donkpocket/spicy
@@ -99,7 +99,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/capsaicin = 2
 	)
-	tastes = list("meat" = 2, "dough" = 2, "spice" = 1)
+	tastes = list("mięso" = 2, "surowe ciasto" = 2, "przyprawy" = 1)
 	foodtypes = GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -114,7 +114,7 @@
 		/datum/reagent/medicine/omnizine = 1,
 		/datum/reagent/consumable/capsaicin = 5
 	)
-	tastes = list("meat" = 2, "dough" = 2, "weird spices" = 2)
+	tastes = list("mięso" = 2, "surowe ciasto" = 2, "dziwne przyprawy" = 2)
 	foodtypes = GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -126,7 +126,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/soysauce = 2
 	)
-	tastes = list("meat" = 2, "dough" = 2, "soy sauce" = 2)
+	tastes = list("mięso" = 2, "surowe ciasto" = 2, "sos sojowy" = 2)
 	foodtypes = GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -141,7 +141,7 @@
 		/datum/reagent/medicine/omnizine = 1,
 		/datum/reagent/consumable/soysauce = 2
 	)
-	tastes = list("meat" = 2, "dough" = 2, "soy sauce" = 2)
+	tastes = list("mięso" = 2, "surowe ciasto" = 2, "sos sojowy" = 2)
 	foodtypes = GRAIN
 
 /obj/item/food/donkpocket/pizza
@@ -152,7 +152,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/tomatojuice = 2
 	)
-	tastes = list("meat" = 2, "dough" = 2, "cheese"= 2)
+	tastes = list("mięso" = 2, "surowe ciasto" = 2, "ser"= 2)
 	foodtypes = GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -167,7 +167,7 @@
 		/datum/reagent/medicine/omnizine = 1,
 		/datum/reagent/consumable/tomatojuice = 2
 	)
-	tastes = list("meat" = 2, "dough" = 2, "melty cheese"= 2)
+	tastes = list("mięso" = 2, "surowe ciasto" = 2, "roztopiony ser"= 2)
 	foodtypes = GRAIN
 
 /obj/item/food/donkpocket/honk
@@ -178,7 +178,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/banana = 4
 	)
-	tastes = list("banana" = 2, "dough" = 2, "children's antibiotics" = 1)
+	tastes = list("banan" = 2, "surowe ciasto" = 2, "antybiotyk dla dzieci" = 1)
 	foodtypes = GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -194,7 +194,7 @@
 		/datum/reagent/consumable/banana = 4,
 		/datum/reagent/consumable/laughter = 6
 	)
-	tastes = list("banana" = 2, "dough" = 2, "children's antibiotics" = 1)
+	tastes = list("banan" = 2, "surowe ciasto" = 2, "antybiotyk dla dzieci" = 1)
 	foodtypes = GRAIN
 
 /obj/item/food/donkpocket/berry
@@ -205,7 +205,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/berryjuice = 3
 	)
-	tastes = list("dough" = 2, "jam" = 2)
+	tastes = list("surowe ciasto" = 2, "dżem" = 2)
 	foodtypes = GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -220,7 +220,7 @@
 		/datum/reagent/medicine/omnizine = 1,
 		/datum/reagent/consumable/berryjuice = 3
 	)
-	tastes = list("dough" = 2, "warm jam" = 2)
+	tastes = list("surowe ciasto" = 2, "ciepły dżem" = 2)
 	foodtypes = GRAIN
 
 /obj/item/food/donkpocket/gondola
@@ -231,7 +231,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/tranquility = 5
 	)
-	tastes = list("meat" = 2, "dough" = 2, "inner peace" = 1)
+	tastes = list("mięso" = 2, "surowe ciasto" = 2, "wewnętrzny spokój" = 1)
 	foodtypes = GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -246,5 +246,5 @@
 		/datum/reagent/medicine/omnizine = 1,
 		/datum/reagent/tranquility = 10
 	)
-	tastes = list("meat" = 2, "dough" = 2, "inner peace" = 1)
+	tastes = list("mięso" = 2, "surowe ciasto" = 2, "wewnętrzny spokój" = 1)
 	foodtypes = GRAIN

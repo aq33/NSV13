@@ -15,9 +15,7 @@
 	allowed_special = list(/datum/special_role/traitor/higher_chance)
 
 	announce_span = "danger"
-	announce_text = "Heretics have been spotted on the station!\n\
-	<span class='danger'>Heretics</span>: Accomplish your objectives.\n\
-	<span class='notice'>Crew</span>: Do not let the madman succeed!"
+	announce_text = "Na stacji zauważono heretyków!\n<span class='danger'>Heretycy</span>: wykonajcie swoje cele.\n<span class='notice'>Załoga</span>: nie pozwólcie szaleńcowi odnieść sukcesu!"
 
 	var/ecult_possible = 4 //hard limit on culties if scaling is turned off
 	var/num_ecult = 1

@@ -4,13 +4,13 @@
 //Simply lists them.
 /datum/team/xeno/roundend_report()
 	var/list/parts = list()
-	parts += "<span class='header'>The [name] [SSshuttle.emergency.is_hijacked_by_xenos() ? "were <span class='greentext'>successful</span>" : "have <span class='redtext'>failed</span>"] in hijacking the shuttle!</span>\n"
-	parts += "The [name] were:"
+	parts += "<span class='header'>[name]: porwanie promu [SSshuttle.emergency.is_hijacked_by_xenos() ? "<span class='greentext'>udane</span>" : "<span class='redtext'>nieudane</span>"]!</span>\n"
+	parts += "[name]:"
 	parts += printplayerlist(members)
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"
 
 /datum/antagonist/xeno
-	name = "Xenomorph"
+	name = "Ksenomorf"
 	banning_key = ROLE_ALIEN
 	show_in_antagpanel = FALSE
 	prevent_roundtype_conversion = FALSE

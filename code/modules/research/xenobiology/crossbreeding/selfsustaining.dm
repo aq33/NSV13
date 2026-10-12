@@ -12,12 +12,12 @@ Self-sustaining extracts:
 	name = "autoslime"
 	desc = "It resembles a normal slime extract, but seems filled with a strange, multi-colored fluid."
 	var/obj/item/slime_extract/extract
-	var/effect_desc = "A self-sustaining slime extract. When used, lets you choose which reaction you want."
+	var/effect_desc = "Samopodtrzymujący się ekstrakt szlamu. Po użyciu pozwala wybrać, jaką reakcję chcesz."
 
 //Just divides into the actual item.
 /obj/item/slimecross/selfsustaining/Initialize(mapload)
 	..()
-	visible_message("<span class='warning'>The [src] shudders, and splits into four smaller extracts.</span>")
+	visible_message("<span class='warning'>[src] drży i dzieli się na cztery mniejsze ekstrakty.</span>")
 	for(var/i = 0, i < 4, i++)
 		var/obj/item/autoslime/A = new /obj/item/autoslime(src.loc)
 		var/obj/item/slime_extract/X = new extract_type(A)
@@ -32,7 +32,7 @@ Self-sustaining extracts:
 	return ..()
 
 /obj/item/autoslime/attack_self(mob/user)
-	var/reagentselect = input(user, "Choose the reagent the extract will produce.", "Self-sustaining Reaction") as null|anything in sortList(extract.activate_reagents, GLOBAL_PROC_REF(cmp_typepaths_asc))
+	var/reagentselect = input(user, "Wybierz odczynnik, który ekstrakt będzie wytwarzał.", "Reakcja samopodtrzymująca") as null|anything in sortList(extract.activate_reagents, GLOBAL_PROC_REF(cmp_typepaths_asc))
 	var/amount = 5
 	var/secondary
 

@@ -1,6 +1,6 @@
 /// Support unit gets it's own very basic antag datum for admin logging.
 /datum/antagonist/traitor/contractor_support
-	name = "Contractor Support Unit"
+	name = "Jednostka wsparcia kontraktora"
 	antag_moodlet = /datum/mood_event/focused
 
 	show_in_roundend = FALSE /// We're already adding them in to the contractor's roundend.
@@ -18,7 +18,7 @@
 	var/datum/objective/generic_objective = new
 
 	generic_objective.name = "Follow Contractor's Orders"
-	generic_objective.explanation_text = "Follow your orders. Assist agents in this mission area."
+	generic_objective.explanation_text = "Wykonuj rozkazy. Wspieraj agentów w obszarze misji."
 
 	generic_objective.completed = TRUE
 
@@ -163,15 +163,15 @@
 	. = ..()
 
 	if (.)
-		to_chat(user, "<span class='notice'>The uplink vibrates quietly, connecting to nearby agents...</span>")
+		to_chat(user, "<span class='notice'>Uplink cicho wibruje, łącząc się z pobliskimi agentami...</span>")
 
-		var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as the Contractor Support Unit for [user.real_name]?", ROLE_CONTRACTOR_SUPPORT_UNIT, null, 10 SECONDS)
+		var/list/mob/dead/observer/candidates = pollGhostCandidates("Chcesz zagrać jako jednostka wsparcia kontraktora dla [user.real_name]?", ROLE_CONTRACTOR_SUPPORT_UNIT, null, 10 SECONDS)
 
 		if(LAZYLEN(candidates))
 			var/mob/dead/observer/C = pick(candidates)
 			spawn_contractor_partner(user, C.key)
 		else
-			to_chat(user, "<span class='notice'>No available agents at this time, please try again later.</span>")
+			to_chat(user, "<span class='notice'>Obecnie brak dostępnych agentów, spróbuj ponownie później.</span>")
 
 			// refund and add the limit back.
 			limited += 1
@@ -226,8 +226,8 @@
 	partner_mind = partner.mind
 	partner_mind.make_Contractor_Support()
 
-	to_chat(partner_mind.current, "\n<span class='alertwarning'>[user.real_name] is your superior. Follow any, and all orders given by them. You're here to support their mission only.</span>")
-	to_chat(partner_mind.current, "<span class='alertwarning'>Should they perish, or be otherwise unavailable, you're to assist other active agents in this mission area to the best of your ability.</span>\n\n")
+	to_chat(partner_mind.current, "\n<span class='alertwarning'>[user.real_name] jest twoim przełożonym. Wykonuj wszystkie wydane rozkazy. Jesteś tu wyłącznie po to, by wspierać tę misję.</span>")
+	to_chat(partner_mind.current, "<span class='alertwarning'>Jeśli przełożony zginie lub będzie niedostępny, masz jak najlepiej wspierać innych aktywnych agentów w obszarze misji.</span>\n\n")
 
 	new /obj/effect/pod_landingzone(free_location, arrival_pod)
 
@@ -243,7 +243,7 @@
 
 	if (.)
 		power_fail(35, 50)
-		priority_announce("Abnormal activity detected in [station_name()]'s powernet. As a precautionary measure, the station's power will be shut off for an indeterminate duration.", "Critical Power Failure", ANNOUNCER_POWEROFF)
+		priority_announce("Wykryto nieprawidłową aktywność w sieci energetycznej [station_name()]. Zapobiegawczo zasilanie statku zostanie odcięte na nieokreślony czas.", "Krytyczna awaria zasilania", ANNOUNCER_POWEROFF)
 
 // Subtract cost, and spawn if it's an item.
 /datum/contractor_item/proc/handle_purchase(var/datum/contractor_hub/hub, mob/living/user)
@@ -266,9 +266,9 @@
 		var/atom/item_to_create = new item(get_turf(user))
 
 		if(user.put_in_hands(item_to_create))
-			to_chat(user, "<span class='notice'>Your purchase materializes into your hands!</span>")
+			to_chat(user, "<span class='notice'>Twój zakup materializuje się w twoich dłoniach!</span>")
 		else
-			to_chat(user, "<span class='notice'>Your purchase materializes onto the floor.</span>")
+			to_chat(user, "<span class='notice'>Twój zakup materializuje się na podłodze.</span>")
 
 		return item_to_create
 	return TRUE

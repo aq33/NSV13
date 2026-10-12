@@ -18,8 +18,8 @@
 /datum/wires/rnd/get_status()
 	var/obj/machinery/rnd/R = holder
 	var/list/status = list()
-	status += "The red light is [R.disabled ? "off" : "on"]."
-	status += "The blue light is [R.hacked ? "off" : "on"]."
+	status += "Czerwona lampka [R.disabled ? "jest zgaszona" : "świeci się"]."
+	status += "Niebieska lampka [R.hacked ? "jest zgaszona" : "świeci się"]."
 	return status
 
 /datum/wires/rnd/on_pulse(wire)

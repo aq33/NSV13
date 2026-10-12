@@ -116,23 +116,23 @@
 				return FALSE
 			var/list/must_return = loans_info[H]
 			var/total = length(must_return) * 300
-			if(alert(usr, "You will be charged [total] credits.", "Lost Item Fine", "OK", "Cancel") == "OK")
+			if(alert(usr, "Zostaniesz obciążony kwotą [total] kredytów.", "Grzywna za zgubiony przedmiot", "OK", "Cancel") == "OK")
 				// Why the fuck is there no proc for this
 				var/obj/item/card/id/C = H.get_idcard(TRUE)
 				if(!C)
-					say("No ID card found.")
+					say("Nie znaleziono karty ID.")
 					return
 				else if (!C.registered_account)
-					say("No bank account found.")
+					say("Nie znaleziono konta bankowego.")
 					return
 				var/datum/bank_account/account = C.registered_account
 				if(!account.adjust_money(-total))
-					say("You do not possess the funds for this.")
+					say("Nie masz na to środków.")
 					return
 				// Success!
 				loans_info -= H
 				playsound(src, 'sound/machines/terminal_insert_disc.ogg', 100, 0)
-				say("Fee processed. Have a secure day.")
+				say("Opłata przetworzona. Bezpiecznego dnia.")
 				ui_update()
 				return TRUE
 
@@ -158,9 +158,9 @@
 			I.forceMove(src)
 			qdel(I)
 			if(!quiet)
-				say("Thank you for recycling.")
+				say("Dziękujemy za recykling.")
 		else if(!quiet)
-			to_chat(user, "<span class='warning'>The box must be empty to be returned.</span>")
+			to_chat(user, "<span class='warning'>Pudełko musi być puste, by je zwrócić.</span>")
 		ui_update()
 		return TRUE
 
@@ -168,10 +168,10 @@
 	var/list/must_return = loans_info[user]
 	if(length(must_return))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 0)
-		to_chat(user, "<span class='warning'>You still have [length(must_return)] more item(s) to return.</span>")
+		to_chat(user, "<span class='warning'>Musisz zwrócić jeszcze przedmiotów: [length(must_return)].</span>")
 	else
 		playsound(src, 'sound/machines/terminal_insert_disc.ogg', 100, 0)
-		say("Items returned. Have a secure day.")
+		say("Przedmioty zwrócone. Bezpiecznego dnia.")
 
 /datum/squad_loadout
 	var/name = "Parent"

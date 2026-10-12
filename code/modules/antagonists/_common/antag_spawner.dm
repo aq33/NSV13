@@ -15,7 +15,7 @@
 
 /obj/item/antag_spawner/contract
 	name = "contract"
-	desc = "A magic contract previously signed by an apprentice. In exchange for instruction in the magical arts, they are bound to answer your call for aid."
+	desc = "Magiczny kontrakt podpisany wcześniej przez ucznia. W zamian za naukę sztuk magicznych jest zobowiązany odpowiedzieć na twoje wezwanie o pomoc."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state ="scroll2"
 
@@ -23,22 +23,22 @@
 	user.set_machine(src)
 	var/dat
 	if(used)
-		dat = "<B>You have already summoned your apprentice.</B><BR>"
+		dat = "<B>Już przywołano twojego ucznia.</B><BR>"
 	else
-		dat = "<B>Contract of Apprenticeship:</B><BR>"
-		dat += "<I>Using this contract, you may summon an apprentice to aid you on your mission.</I><BR>"
-		dat += "<I>If you are unable to establish contact with your apprentice, you can feed the contract back to the spellbook to refund your points.</I><BR>"
-		dat += "<B>Which school of magic is your apprentice studying?:</B><BR>"
+		dat = "<B>Umowa terminatorska:</B><BR>"
+		dat += "<I>Dzięki tej umowie możesz przywołać ucznia, który pomoże ci w misji.</I><BR>"
+		dat += "<I>Jeśli nie uda ci się nawiązać kontaktu z uczniem, możesz oddać umowę księdze zaklęć, by odzyskać punkty.</I><BR>"
+		dat += "<B>Jakiej szkoły magii uczy się twój uczeń?</B><BR>"
 		dat += "<A href='byond://?src=[REF(src)];school=[APPRENTICE_DESTRUCTION]'>Destruction</A><BR>"
-		dat += "<I>Your apprentice is skilled in offensive magic. They know Magic Missile and Fireball.</I><BR><BR>"
-		dat += "<A href='byond://?src=[REF(src)];school=[APPRENTICE_BLUESPACE]'>Bluespace Manipulation</A><BR>"
-		dat += "<I>Your apprentice is able to defy physics, melting through solid objects and travelling great distances in the blink of an eye. They know Teleport and Ethereal Jaunt.</I><BR><BR>"
+		dat += "<I>Twój uczeń specjalizuje się w magii ofensywnej. Zna Magiczny Pocisk i Kulę Ognia.</I><BR><BR>"
+		dat += "<A href='byond://?src=[REF(src)];school=[APPRENTICE_BLUESPACE]'>Manipulacja bluespace</A><BR>"
+		dat += "<I>Twój uczeń potrafi przeczyć fizyce, przenikając przez ciała stałe i pokonując wielkie odległości w mgnieniu oka. Zna Teleportację i Eteryczny Spacer.</I><BR><BR>"
 		dat += "<A href='byond://?src=[REF(src)];school=[APPRENTICE_HEALING]'>Healing</A><BR>"
-		dat += "<I>Your apprentice is training to cast spells that will aid your survival. They know Forcewall and Charge and come with a Staff of Healing.</I><BR><BR>"
+		dat += "<I>Twój uczeń szkoli się w zaklęciach pomagających przetrwać. Zna Ścianę Mocy i Ładowanie, a do tego ma Kostur Uzdrawiania.</I><BR><BR>"
 		dat += "<A href='byond://?src=[REF(src)];school=[APPRENTICE_ROBELESS]'>Robeless</A><BR>"
-		dat += "<I>Your apprentice is training to cast spells without their robes. They know Knock and Mindswap.</I><BR><BR>"
-		dat += "<A href='byond://?src=[REF(src)];school=[APPRENTICE_WILDMAGIC]'>Wild Magic</A><BR>"
-		dat += "<I>Your apprentice is training wild magic. You don't know which spells they got from the wild magic, but it's how the school of wild magic is.</I><BR><BR>"
+		dat += "<I>Twój uczeń szkoli się w rzucaniu zaklęć bez szat. Zna Pukanie i Zamianę Umysłów.</I><BR><BR>"
+		dat += "<A href='byond://?src=[REF(src)];school=[APPRENTICE_WILDMAGIC]'>Dzika magia</A><BR>"
+		dat += "<I>Twój uczeń ćwiczy dziką magię. Nie wiesz, jakie zaklęcia mu przypadły, ale taka już jest szkoła dzikiej magii.</I><BR><BR>"
 	user << browse(HTML_SKELETON(dat), "window=radio")
 	onclose(user, "radio")
 	return
@@ -56,20 +56,20 @@
 		H.set_machine(src)
 		if(href_list["school"])
 			if(used)
-				to_chat(H, "You already used this contract!")
+				to_chat(H, "Ta umowa została już wykorzystana!")
 				return
-			var/list/candidates = pollGhostCandidates("Do you want to play as a wizard's [href_list["school"]] apprentice?", ROLE_WIZARD, /datum/role_preference/midround_ghost/wizard, 15 SECONDS, ignore_category = POLL_IGNORE_WIZARD_HELPER)
+			var/list/candidates = pollGhostCandidates("Chcesz zagrać jako uczeń czarodzieja (szkoła: [href_list["school"]])?", ROLE_WIZARD, /datum/role_preference/midround_ghost/wizard, 15 SECONDS, ignore_category = POLL_IGNORE_WIZARD_HELPER)
 			if(LAZYLEN(candidates))
 				if(QDELETED(src))
 					return
 				if(used)
-					to_chat(H, "You already used this contract!")
+					to_chat(H, "Ta umowa została już wykorzystana!")
 					return
 				used = TRUE
 				var/mob/dead/observer/C = pick(candidates)
 				spawn_antag(C.client, get_turf(src), href_list["school"],H.mind)
 			else
-				to_chat(H, "Unable to reach your apprentice! You can either attack the spellbook with the contract to refund your points, or wait and try again later.")
+				to_chat(H, "Nie udało się skontaktować z uczniem! Możesz uderzyć umową w księgę zaklęć, żeby odzyskać punkty, albo spróbować ponownie później.")
 
 /obj/item/antag_spawner/contract/spawn_antag(client/C, turf/T, kind ,datum/mind/user)
 	new /obj/effect/particle_effect/smoke(T)
@@ -100,20 +100,20 @@
 
 /obj/item/antag_spawner/nuke_ops
 	name = "syndicate operative teleporter"
-	desc = "A single-use teleporter designed to quickly reinforce operatives in the field."
+	desc = "Jednorazowy teleporter do szybkiego wzmacniania agentów w terenie."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "locator"
 	var/borg_to_spawn
 
 /obj/item/antag_spawner/nuke_ops/proc/check_usability(mob/user)
 	if(used)
-		to_chat(user, "<span class='warning'>[src] is out of power!</span>")
+		to_chat(user, "<span class='warning'>[src] nie ma energii!</span>")
 		return FALSE
 	if(!user.mind.has_antag_datum(/datum/antagonist/nukeop,TRUE))
-		to_chat(user, "<span class='danger'>AUTHENTICATION FAILURE. ACCESS DENIED.</span>")
+		to_chat(user, "<span class='danger'>BŁĄD UWIERZYTELNIANIA. ODMOWA DOSTĘPU.</span>")
 		return FALSE
 	if(is_station_level(user.z)) //Nsv13 - Changed to allow spawning on syndie pvp ships
-		to_chat(user, "<span class='warning'>[src] is out of range! It can only be used at your base!</span>")
+		to_chat(user, "<span class='warning'>[src] jest poza zasięgiem! Można go użyć tylko w twojej bazie!</span>")
 		return FALSE
 	return TRUE
 
@@ -122,8 +122,8 @@
 	if(!(check_usability(user)))
 		return
 
-	to_chat(user, "<span class='notice'>You activate [src] and wait for confirmation.</span>")
-	var/list/nuke_candidates = pollGhostCandidates("Do you want to play as a syndicate [borg_to_spawn ? "[lowertext(borg_to_spawn)] cyborg":"operative"]?", ROLE_OPERATIVE, /datum/role_preference/midround_ghost/nuclear_operative, 15 SECONDS)
+	to_chat(user, "<span class='notice'>Aktywujesz [src] i czekasz na potwierdzenie.</span>")
+	var/list/nuke_candidates = pollGhostCandidates("Chcesz zagrać jako [borg_to_spawn ? "cyborg Syndykatu ([lowertext(borg_to_spawn)])":"operator Syndykatu"]?", ROLE_OPERATIVE, /datum/role_preference/midround_ghost/nuclear_operative, 15 SECONDS)
 	if(LAZYLEN(nuke_candidates))
 		if(QDELETED(src) || !check_usability(user))
 			return
@@ -133,7 +133,7 @@
 		do_sparks(4, TRUE, src)
 		qdel(src)
 	else
-		to_chat(user, "<span class='warning'>Unable to connect to Syndicate command. Please wait and try again later or use the teleporter on your uplink to get your points refunded.</span>")
+		to_chat(user, "<span class='warning'>Nie można połączyć się z dowództwem Syndykatu. Spróbuj ponownie później albo użyj teleportera na uplinku, żeby odzyskać punkty.</span>")
 
 /obj/item/antag_spawner/nuke_ops/spawn_antag(client/C, turf/T, kind, datum/mind/user)
 	var/mob/living/carbon/human/M = new/mob/living/carbon/human(T)
@@ -152,7 +152,7 @@
 //////CLOWN OP
 /obj/item/antag_spawner/nuke_ops/clown
 	name = "clown operative teleporter"
-	desc = "A single-use teleporter designed to quickly reinforce clown operatives in the field."
+	desc = "Jednorazowy teleporter do szybkiego wzmacniania agentów-klaunów w terenie."
 
 /obj/item/antag_spawner/nuke_ops/clown/spawn_antag(client/C, turf/T, kind, datum/mind/user)
 	var/mob/living/carbon/human/M = new/mob/living/carbon/human(T)
@@ -172,7 +172,7 @@
 //////SYNDICATE BORG
 /obj/item/antag_spawner/nuke_ops/borg_tele
 	name = "syndicate cyborg teleporter"
-	desc = "A single-use teleporter designed to quickly reinforce operatives in the field."
+	desc = "Jednorazowy teleporter do szybkiego wzmacniania agentów w terenie."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "locator"
 
@@ -227,23 +227,23 @@
 
 /obj/item/antag_spawner/slaughter_demon //Warning edgiest item in the game
 	name = "vial of blood"
-	desc = "A magically infused bottle of blood, distilled from countless murder victims. Used in unholy rituals to attract horrifying creatures."
+	desc = "Magicznie nasycona butelka krwi, destylowana z niezliczonych ofiar morderstw. Używana w bezbożnych rytuałach do przywabiania przerażających stworzeń."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "vial"
 
-	var/shatter_msg = "<span class='notice'>You shatter the bottle, no turning back now!</span>"
-	var/veil_msg = "<span class='warning'>You sense a dark presence lurking just beyond the veil...</span>"
+	var/shatter_msg = "<span class='notice'>Rozbijasz butelkę, nie ma już odwrotu!</span>"
+	var/veil_msg = "<span class='warning'>Wyczuwasz mroczną obecność czającą się tuż za zasłoną...</span>"
 	var/mob/living/demon_type = /mob/living/simple_animal/slaughter
 	var/antag_type = /datum/antagonist/slaughter
 
 
 /obj/item/antag_spawner/slaughter_demon/attack_self(mob/user)
 	if(!is_station_level(user.z))
-		to_chat(user, "<span class='notice'>You should probably wait until you reach the station.</span>")
+		to_chat(user, "<span class='notice'>Lepiej zaczekaj, aż dotrzesz na statek.</span>")
 		return
 	if(used)
 		return
-	var/list/candidates = pollGhostCandidates("Do you want to play as a [initial(demon_type.name)]?", ROLE_SLAUGHTER_DEMON, null, 10 SECONDS, ignore_category = FALSE)
+	var/list/candidates = pollGhostCandidates("Chcesz zagrać jako [initial(demon_type.name)]?", ROLE_SLAUGHTER_DEMON, null, 10 SECONDS, ignore_category = FALSE)
 	if(LAZYLEN(candidates))
 		if(used || QDELETED(src))
 			return
@@ -255,7 +255,7 @@
 		playsound(user.loc, 'sound/effects/glassbr1.ogg', 100, 1)
 		qdel(src)
 	else
-		to_chat(user, "<span class='notice'>You can't seem to work up the nerve to shatter the bottle. Perhaps you should try again later.</span>")
+		to_chat(user, "<span class='notice'>Nie możesz się zebrać na odwagę, żeby rozbić butelkę. Może spróbuj później.</span>")
 
 
 /obj/item/antag_spawner/slaughter_demon/spawn_antag(client/C, turf/T, kind = "", datum/mind/user)
@@ -267,17 +267,17 @@
 	S.mind.special_role = S.name
 	S.mind.add_antag_datum(antag_type)
 	to_chat(S, S.playstyle_string)
-	to_chat(S, "<B>You are currently not currently in the same plane of existence as the station. \
-	Ctrl+Click a blood pool to manifest.</B>")
+	to_chat(S, "<B>Obecnie nie przebywasz na tym samym planie egzystencji co statek. \
+	Kliknij z Ctrl kałużę krwi, żeby się zmaterializować.</B>")
 
 /obj/item/antag_spawner/slaughter_demon/laughter
 	name = "vial of tickles"
-	desc = "A magically infused bottle of clown love, distilled from countless hugging attacks. Used in funny rituals to attract adorable creatures."
+	desc = "Magicznie nasycona butelka klauniej miłości, destylowana z niezliczonych ataków przytulania. Używana w zabawnych rytuałach do przywabiania uroczych stworzeń."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "vial"
 	color = "#FF69B4" // HOT PINK
 
-	veil_msg = "<span class='warning'>You sense an adorable presence lurking just beyond the veil...</span>"
+	veil_msg = "<span class='warning'>Wyczuwasz uroczą obecność czającą się tuż za zasłoną...</span>"
 	demon_type = /mob/living/simple_animal/slaughter/laughter
 	antag_type = /datum/antagonist/slaughter/laughter
 
@@ -285,7 +285,7 @@
 
 /obj/item/antag_spawner/gangster
 	name = "crook spawner"
-	desc = "Have headquarters deliver you a crook that just dropped out of high-school and is ready for the front-line. He comes dressed with your gang's outfit and a spray can in hand."
+	desc = "Niech kwatera główna przyśle ci oprycha, który właśnie rzucił liceum i jest gotów na pierwszą linię. Przychodzi w stroju twojej bandy i z farbą w sprayu w ręce."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "locator"
 
@@ -294,8 +294,8 @@
 	if(!(check_usability(user)))
 		return
 
-	to_chat(user, "<span class='notice'>You activate [src] and wait for confirmation.</span>")
-	var/list/candidates = pollGhostCandidates("Do you want to play as a gangster reinforcements?", ROLE_GANG, /datum/role_preference/antagonist/gangster, 15 SECONDS)
+	to_chat(user, "<span class='notice'>Aktywujesz [src] i czekasz na potwierdzenie.</span>")
+	var/list/candidates = pollGhostCandidates("Chcesz zagrać jako posiłki gangu?", ROLE_GANG, /datum/role_preference/antagonist/gangster, 15 SECONDS)
 	if(LAZYLEN(candidates))
 		if(QDELETED(src) || !check_usability(user))
 			return
@@ -304,14 +304,14 @@
 		spawn_antag(G.client, get_turf(src), user.mind)
 		qdel(src)
 	else
-		to_chat(user, "<span class='warning'>No response from headquarters. Please wait and try again later.</span>")
+		to_chat(user, "<span class='warning'>Brak odpowiedzi z kwatery głównej. Spróbuj ponownie później.</span>")
 
 /obj/item/antag_spawner/gangster/proc/check_usability(mob/user)
 	if(used)
-		to_chat(user, "<span class='warning'>[src] is out of power!</span>")
+		to_chat(user, "<span class='warning'>[src] nie ma energii!</span>")
 		return FALSE
 	if(!user.mind.has_antag_datum(/datum/antagonist/gang,TRUE))
-		to_chat(user, "<span class='danger'>AUTHENTICATION FAILURE. ACCESS DENIED.</span>")
+		to_chat(user, "<span class='danger'>BŁĄD UWIERZYTELNIANIA. ODMOWA DOSTĘPU.</span>")
 		return FALSE
 	return TRUE
 

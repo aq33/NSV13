@@ -1,6 +1,6 @@
 /datum/symptom/macrophage
 	name = "Macrophage"
-	desc = "The virus grows within the host, ceasing to be microscopic and causing severe bodily harm. These Phages will seek out, attack, and infect more viable hosts"
+	desc = "Wirus rośnie w nosicielu, przestając być mikroskopijny i wyrządzając poważne szkody w ciele. Te fagi szukają, atakują i zarażają kolejnych odpowiednich nosicieli"
 	stealth = -4
 	resistance = 1
 	stage_speed = -2
@@ -39,10 +39,10 @@
 	var/mob/living/M = A.affected_mob
 	switch(A.stage)
 		if(1-3)
-			to_chat(M, "<span class='notice'>Your skin crawls.</span>")
+			to_chat(M, "<span class='notice'>Ciarki przechodzą ci po skórze.</span>")
 		if(4)
-			M.visible_message("<span class='danger'>Lumps form on [M]'s skin!</span>", \
-								  "<span class='userdanger'>You cringe in pain as lumps form and move around on your skin!</span>")
+			M.visible_message("<span class='danger'>Na skórze [M] pojawiają się guzy!</span>", \
+								  "<span class='userdanger'>Krzywisz się z bólu, gdy na twojej skórze pojawiają się i przesuwają guzy!</span>")
 		if(5)
 			phagecounter -= max(2, A.stage_rate)
 			if(gigagerms && phagecounter <= 0) //only ever spawn one big germ
@@ -75,6 +75,6 @@
 				continue
 			phage.infections += D
 	phage.InitializeSkin()//AQ EDIT
-	M.visible_message("<span class='danger'>A strange creature bursts out of [M]!</span>", \
-	  "<span class='userdanger'>A slimy creature bursts forth from your flesh!</span>")
+	M.visible_message("<span class='danger'>Z [M] wyrywa się dziwne stworzenie!</span>", \
+	  "<span class='userdanger'>Z twojego ciała wyrywa się oślizgłe stworzenie!</span>")
 	addtimer(CALLBACK(phage, TYPE_PROC_REF(/mob/living/simple_animal/hostile/macrophage, shrivel)), 3000)

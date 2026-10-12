@@ -1,7 +1,7 @@
 /datum/action/changeling/panacea
 	name = "Total Purge"
 	desc = "Expels impurities in our form, causing us to heal toxin damage, expel all chemicals, curing most diseases, brain damage, and traumas and resetting our genetic code completely. Costs 20 chemicals."
-	helptext = "Obvious when used, as it sprays all reagents out in a violent manner. Can be used while unconscious."
+	helptext = "Łatwo to zauważyć, bo gwałtownie wyrzuca wszystkie substancje z organizmu. Można użyć w stanie nieprzytomności."
 	button_icon_state = "panacea"
 	chemical_cost = 20
 	dna_cost = 1
@@ -9,7 +9,7 @@
 
 //Heals the things that the other regenerative abilities don't.
 /datum/action/changeling/panacea/sting_action(mob/user)
-	to_chat(user, "<span class='notice'>We cleanse impurities from our form.</span>")
+	to_chat(user, "<span class='notice'>Oczyszczamy naszą formę z zanieczyszczeń.</span>")
 	var/mob/living/simple_animal/horror/H = user.has_horror_inside() // AQ EDIT - Yogstation#13033
 	if(H)
 		H.leave_victim()

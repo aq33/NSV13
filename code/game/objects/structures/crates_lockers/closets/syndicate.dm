@@ -44,7 +44,7 @@
 	if(pickednum == 1)
 		var/obj/item/paper/paper = new /obj/item/paper(src)
 		paper.name = "\improper IOU"
-		paper.add_raw_text("Sorry man, we needed the money so we sold your stash. It's ok, we'll double our money for sure this time!")
+		paper.add_raw_text("Sorki, stary, potrzebowaliśmy kasy, więc sprzedaliśmy twój zapas. Spoko, tym razem na pewno podwoimy kasę!")
 		paper.update_appearance()
 
 	//Iron (common ore)

@@ -22,13 +22,13 @@
 		return //logically mulebots can't flash and beep if they don't have power.
 	switch(wire)
 		if(WIRE_POWER1, WIRE_POWER2)
-			holder.visible_message("<span class='notice'>[icon2html(M, viewers(holder))] The charge light flickers.</span>")
+			holder.visible_message("<span class='notice'>[icon2html(M, viewers(holder))] Lampka ładowania migocze.</span>")
 		if(WIRE_AVOIDANCE)
-			holder.visible_message("<span class='notice'>[icon2html(M, viewers(holder))] The external warning lights flash briefly.</span>")
+			holder.visible_message("<span class='notice'>[icon2html(M, viewers(holder))] Zewnętrzne światła ostrzegawcze na chwilę błyskają.</span>")
 			flick("[M.base_icon]1", M)
 		if(WIRE_LOADCHECK)
-			holder.visible_message("<span class='notice'>[icon2html(M, viewers(holder))] The load platform clunks.</span>")
+			holder.visible_message("<span class='notice'>[icon2html(M, viewers(holder))] Platforma załadunkowa stuka.</span>")
 		if(WIRE_MOTOR1, WIRE_MOTOR2)
-			holder.visible_message("<span class='notice'>[icon2html(M, viewers(holder))] The drive motor whines briefly.</span>")
+			holder.visible_message("<span class='notice'>[icon2html(M, viewers(holder))] Silnik napędu na chwilę wyje.</span>")
 		else
-			holder.visible_message("<span class='notice'>[icon2html(M, viewers(holder))] You hear a radio crackle.</span>")
+			holder.visible_message("<span class='notice'>[icon2html(M, viewers(holder))] Słyszysz trzask radia.</span>")

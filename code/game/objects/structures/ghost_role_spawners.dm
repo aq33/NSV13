@@ -11,11 +11,8 @@
 	roundstart = FALSE
 	death = FALSE
 	mob_species = /datum/species/pod
-	short_desc = "You are a sentient ecosystem, an example of the mastery over life that your creators possessed."
-	flavour_text = "Your masters, benevolent as they were, created uncounted seed vaults and spread them across \
-	the universe to every planet they could chart. You are in one such seed vault. \
-	Your goal is to cultivate and spread life wherever it will go while waiting for contact from your creators. \
-	Estimated time of last contact: Deployment, 5000 millennia ago."
+	short_desc = "Jesteś świadomym ekosystemem, przykładem mistrzostwa nad życiem, jakie posiadali twoi twórcy."
+	flavour_text = "Twoi panowie, życzliwi, jakimi byli, stworzyli niezliczone skarbce nasion i rozesłali je po całym wszechświecie na każdą planetę, jaką zdołali zbadać. Jesteś w jednym z takich skarbców. Twoim celem jest uprawiać i szerzyć życie wszędzie, gdzie się da, czekając na kontakt ze strony twórców. Szacowany czas ostatniego kontaktu: rozmieszczenie, 5000 tysiącleci temu."
 	assignedrole = "Lifebringer"
 	use_cooldown = TRUE
 	banType = ROLE_LIFEBRINGER
@@ -48,17 +45,15 @@
 	anchored = FALSE
 	move_resist = MOVE_FORCE_NORMAL
 	density = FALSE
-	short_desc = "You are an ash walker. Your tribe worships the Necropolis."
-	flavour_text = "The wastes are sacred ground, its monsters a blessed bounty. \
-	You have seen lights in the distance... they foreshadow the arrival of outsiders that seek to tear apart the Necropolis and its domain. \
-	Fresh sacrifices for your nest."
+	short_desc = "Jesteś popielnym wędrowcem. Twoje plemię czci Nekropolię."
+	flavour_text = "Pustkowia to święta ziemia, a jej potwory to błogosławiona zdobycz. Widziałeś w oddali światła... zwiastują one przybycie obcych, którzy chcą rozerwać Nekropolię i jej domenę. Świeże ofiary dla twojego gniazda."
 	assignedrole = "Ash Walker"
 	var/datum/team/ashwalkers/team
 	use_cooldown = TRUE
 	banType = ROLE_ASHWALKER
 
 /obj/effect/mob_spawn/human/ash_walker/special(mob/living/new_spawn)
-	to_chat(new_spawn, "<b>Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind. Don't leave your nest undefended, protect it with your life. Glory to the Necropolis!</b>")
+	to_chat(new_spawn, "<b>Zaciągaj zwłoki ludzi i bestii do swojego gniazda. Pochłonie je, tworząc więcej twoich pobratymców. Nie zostawiaj gniazda bez ochrony, broń go za cenę życia. Chwała Nekropolii!</b>")
 
 	new_spawn.mind.add_antag_datum(/datum/antagonist/ashwalker, team)
 
@@ -73,7 +68,7 @@
 	var/area/A = get_area(src)
 	team = ashteam
 	if(A)
-		notify_ghosts("An ash walker egg is ready to hatch in \the [A.name].", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE, ignore_key = POLL_IGNORE_ASHWALKER)
+		notify_ghosts("W [A.name] jajo popielnego wędrowcy jest gotowe do wyklucia.", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE, ignore_key = POLL_IGNORE_ASHWALKER)
 
 /datum/outfit/ashwalker
 	name ="Ashwalker"
@@ -96,10 +91,8 @@
 	var/has_owner = FALSE
 	var/can_transfer = TRUE //if golems can switch bodies to this new shell
 	var/mob/living/owner = null //golem's owner if it has one
-	short_desc = "You are a Free Golem. Your family worships The Liberator."
-	flavour_text = "In his infinite and divine wisdom, he set your clan free to \
-	travel the stars with a single declaration: \"Yeah go do whatever.\" Though you are bound to the one who created you, it is customary in your society to repeat those same words to newborn \
-	golems, so that no golem may ever be forced to serve again."
+	short_desc = "Jesteś Wolnym Golemem. Twoja rodzina czci Wyzwoliciela."
+	flavour_text = "W swej nieskończonej i boskiej mądrości uwolnił twój klan, by przemierzał gwiazdy, jednym oświadczeniem: \"No idźcie, róbcie, co chcecie.\" Choć jesteś związany z tym, kto cię stworzył, w twojej społeczności zwyczajowo powtarza się te same słowa nowo narodzonym golemom, by żaden golem nigdy więcej nie był zmuszany do służby."
 	banType = ROLE_FREE_GOLEM
 
 /obj/effect/mob_spawn/human/golem/Initialize(mapload, datum/species/golem/species = null, mob/creator = null)
@@ -109,20 +102,20 @@
 	. = ..()
 	var/area/A = get_area(src)
 	if(!mapload && A)
-		notify_ghosts("\A [initial(species.prefix)] golem shell has been completed in \the [A.name].", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE, ignore_key = POLL_IGNORE_GOLEM)
+		notify_ghosts("W [A.name] ukończono powłokę golema ([initial(species.prefix)]).", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE, ignore_key = POLL_IGNORE_GOLEM)
 	if(has_owner && creator)
-		short_desc = "You are a golem."
-		flavour_text = "You move slowly, but are highly resistant to heat and cold as well as blunt trauma. You are unable to wear clothes, but can still use most tools."
-		important_info = "Serve [creator], and assist [creator.p_them()] in completing [creator.p_their()] goals at any cost."
+		short_desc = "Jesteś golemem."
+		flavour_text = "Poruszasz się powoli, ale jesteś wysoce odporny na ciepło i zimno oraz na tępe urazy. Nie możesz nosić ubrań, ale wciąż możesz używać większości narzędzi."
+		important_info = "Służ [creator] i pomagaj mu w osiągnięciu jego celów za wszelką cenę."
 		owner = creator
 
 /obj/effect/mob_spawn/human/golem/special(mob/living/new_spawn, name)
 	var/datum/species/golem/X = mob_species
 	to_chat(new_spawn, "[initial(X.info_text)]")
 	if(!owner)
-		to_chat(new_spawn, "Build golem shells in the autolathe, and feed refined mineral sheets to the shells to bring them to life! You are generally a peaceful group unless provoked.")
+		to_chat(new_spawn, "Buduj powłoki golemów w autolatarce i karm je oczyszczonymi arkuszami minerałów, by ożywić! Zasadniczo jesteście pokojową grupą, chyba że ktoś was sprowokuje.")
 	else
-		new_spawn.mind.store_memory("<b>Serve [owner.real_name], your creator.</b>")
+		new_spawn.mind.store_memory("<b>Służ [owner.real_name], swojemu twórcy.</b>")
 		new_spawn.mind.enslave_mind_to_creator(owner)
 		log_game("[key_name(new_spawn)] possessed a golem shell enslaved to [key_name(owner)].")
 		log_admin("[key_name(new_spawn)] possessed a golem shell enslaved to [key_name(owner)].")
@@ -149,13 +142,13 @@
 	if(.)
 		return
 	if(isgolem(user) && can_transfer)
-		var/transfer_choice = alert("Transfer your soul to [src]? (Warning, your old body will die!)",,"Yes","No")
+		var/transfer_choice = alert("Przenieść swoją duszę do [src]? (Uwaga: twoje stare ciało umrze!)",,"Yes","No")
 		if(transfer_choice != "Yes")
 			return
 		if(QDELETED(src) || uses <= 0)
 			return
 		log_game("[key_name(user)] golem-swapped into [src]")
-		user.visible_message("<span class='notice'>A faint light leaves [user], moving to [src] and animating it!</span>","<span class='notice'>You leave your old body behind, and transfer into [src]!</span>")
+		user.visible_message("<span class='notice'>Słabe światło opuszcza [user], przenika do [src] i go ożywia!</span>","<span class='notice'>Zostawiasz swoje stare ciało i przenosisz się do [src]!</span>")
 		show_flavour = FALSE
 		create(ckey = user.ckey,name = user.real_name)
 		user.death()
@@ -188,10 +181,8 @@
 	death = FALSE
 	random = TRUE
 	mob_species = /datum/species/human
-	short_desc = "You've been stranded in this godless prison of a planet for longer than you can remember."
-	flavour_text = "Each day you barely scrape by, and between the terrible conditions of your makeshift shelter, \
-	the hostile creatures, and the ash drakes swooping down from the cloudless skies, all you can wish for is the feel of soft grass between your toes and \
-	the fresh air of Earth. These thoughts are dispelled by yet another recollection of how you got here... "
+	short_desc = "Utknąłeś na tej bezbożnej planecie-więzieniu dłużej, niż sięgasz pamięcią."
+	flavour_text = "Każdego dnia ledwo wiążesz koniec z końcem, a między okropnymi warunkami w prowizorycznym schronieniu, wrogimi stworzeniami i popielnymi smokami nurkującymi z bezchmurnego nieba marzysz tylko o miękkiej trawie pod stopami i świeżym powietrzu Ziemi. Te myśli rozwiewa kolejne wspomnienie tego, jak się tu znalazłeś... "
 	assignedrole = "Hermit"
 	use_cooldown = TRUE
 	banType = ROLE_HERMIT
@@ -201,28 +192,21 @@
 	var/arrpee = rand(1,4)
 	switch(arrpee)
 		if(1)
-			flavour_text += "you were a [pick("arms dealer", "shipwright", "docking manager")]'s assistant on a small trading station several sectors from here. Raiders attacked, and there was \
-			only one pod left when you got to the escape bay. You took it and launched it alone, and the crowd of terrified faces crowding at the airlock door as your pod's engines burst to \
-			life and sent you to this hell are forever branded into your memory.</b>"
+			flavour_text += "byłeś asystentem [pick("handlarza bronią", "szkutnika", "kierownika doków")] na małej stacji handlowej kilka sektorów stąd. Zaatakowali najeźdźcy, a gdy dotarłeś do zatoki ewakuacyjnej, została tylko jedna kapsuła. Wziąłeś ją i odleciałeś sam, a tłum przerażonych twarzy przy drzwiach śluzy, gdy silniki twojej kapsuły ożyły i posłały cię do tego piekła, na zawsze wrył ci się w pamięć.</b>"
 			outfit.uniform = /obj/item/clothing/under/misc/assistantformal
 		if(2)
-			flavour_text += "you're an exile from the Tiger Cooperative. Their technological fanaticism drove you to question the power and beliefs of the Exolitics, and they saw you as a \
-			heretic and subjected you to hours of horrible torture. You were hours away from execution when a high-ranking friend of yours in the Cooperative managed to secure you a pod, \
-			scrambled its destination's coordinates, and launched it. You awoke from stasis when you landed and have been surviving - barely - ever since."
+			flavour_text += "jesteś wygnańcem z Tiger Cooperative. Ich technologiczny fanatyzm sprawił, że zacząłeś kwestionować moc i wierzenia Egzolitów, a oni uznali cię za heretyka i poddali godzinom straszliwych tortur. Byłeś kilka godzin od egzekucji, gdy wysoko postawiony przyjaciel z Kooperatywy zdołał załatwić ci kapsułę, zakodował jej współrzędne docelowe i ją wystrzelił. Obudziłeś się ze stazy po wylądowaniu i od tamtej pory przeżywasz - ledwo."
 			outfit.uniform = /obj/item/clothing/under/rank/prisoner
 			outfit.shoes = /obj/item/clothing/shoes/sneakers/orange
 			outfit.back = /obj/item/storage/backpack
 		if(3)
-			flavour_text += "you were a doctor on one of Nanotrasen's space stations, but you left behind that damn corporation's tyranny and everything it stood for. From a metaphorical hell \
-			to a literal one, you find yourself nonetheless missing the recycled air and warm floors of what you left behind... but you'd still rather be here than there."
+			flavour_text += "byłeś lekarzem na jednej ze stacji kosmicznych Nanotrasen, ale porzuciłeś tyranię tej przeklętej korporacji i wszystko, co sobą reprezentowała. Z metaforycznego piekła trafiłeś do dosłownego, a mimo to tęsknisz za recyklingowanym powietrzem i ciepłymi podłogami tego, co zostawiłeś... ale i tak wolisz być tu niż tam."
 			outfit.uniform = /obj/item/clothing/under/rank/medical/doctor
 			outfit.suit = /obj/item/clothing/suit/toggle/labcoat
 			outfit.back = /obj/item/storage/backpack/medic
 			outfit.shoes = /obj/item/clothing/shoes/sneakers/black
 		if(4)
-			flavour_text += "you were always joked about by your friends for \"not playing with a full deck\", as they so <i>kindly</i> put it. It seems that they were right when you, on a tour \
-			at one of Nanotrasen's state-of-the-art research facilities, were in one of the escape pods alone and saw the red button. It was big and shiny, and it caught your eye. You pressed \
-			it, and after a terrifying and fast ride for days, you landed here. You've had time to wisen up since then, and you think that your old friends wouldn't be laughing now."
+			flavour_text += "przyjaciele zawsze żartowali, że \"brakuje ci piątej klepki\", jak to <i>uprzejmie</i> ujmowali. Wygląda na to, że mieli rację, gdy podczas wycieczki po jednym z najnowocześniejszych ośrodków badawczych Nanotrasen siedziałeś sam w kapsule ratunkowej i zobaczyłeś czerwony przycisk. Był duży i błyszczący, i przyciągnął twój wzrok. Nacisnąłeś go i po przerażająco szybkiej, wielodniowej podróży wylądowałeś tutaj. Od tamtej pory zdążyłeś zmądrzeć i myślisz, że twoim dawnym przyjaciołom nie byłoby teraz do śmiechu."
 
 /obj/effect/mob_spawn/human/hermit/Destroy()
 	new/obj/structure/fluff/empty_cryostasis_sleeper(get_turf(src))
@@ -233,9 +217,7 @@
 	name = "broken rejuvenation pod"
 	desc = "A small sleeper typically used to instantly restore minor wounds. This one seems broken, and its occupant is comatose."
 	mob_name = "a translocated vet"
-	flavour_text = "What...? Where are you? What's the purpose of this place? This is still the animal hospital - you should know, you've been an intern here for weeks - but \
-	all you did was apply bruise packs. Why is this place full of advanced medical equipment? And what are those screams you hear? The world outside is desolate - tormented with fire and brimstone. But you took an oath. \
-	You have to save these people! You might not have a fancy cloning machine like a real hospital, but surely there must be some way to save these people with the tools you have. Right?"
+	flavour_text = "Co...? Gdzie jesteś? Czemu służy to miejsce? To wciąż szpital dla zwierząt - powinieneś wiedzieć, jesteś tu stażystą od tygodni - ale ty tylko przykładałeś opatrunki na stłuczenia. Czemu to miejsce jest pełne zaawansowanego sprzętu medycznego? I co to za krzyki? Świat na zewnątrz jest wyludniony - dręczony ogniem i siarką. Ale złożyłeś przysięgę. Musisz ratować tych ludzi! Może nie masz fikuśnej maszyny do klonowania jak prawdziwy szpital, ale na pewno da się jakoś uratować tych ludzi narzędziami, które masz. Prawda?"
 	assignedrole = "Translocated Vet"
 	banType = ROLE_TRANSLOCATED_VET
 
@@ -254,9 +236,8 @@
 	outfit = /datum/outfit/lavalandprisoner
 	roundstart = FALSE
 	death = FALSE
-	short_desc = "You're a prisoner, sentenced to hard work in one of Nanotrasen's labor camps, but it seems as \
-	though fate has other plans for you."
-	flavour_text = "Good. It seems as though your ship crashed. You remember that you were convicted of "
+	short_desc = "Jesteś więźniem skazanym na ciężkie roboty w jednym z obozów pracy Nanotrasen, ale wygląda na to, że los ma wobec ciebie inne plany."
+	flavour_text = "Dobrze. Wygląda na to, że twój statek się rozbił. Pamiętasz, że skazano cię za "
 	assignedrole = "Escaped Prisoner"
 	use_cooldown = TRUE
 	banType = ROLE_LAVALAND_ESCAPED_PRISONER
@@ -266,10 +247,9 @@
 
 /obj/effect/mob_spawn/human/prisoner_transport/Initialize(mapload)
 	. = ..()
-	var/list/crimes = list("murder", "larceny", "embezzlement", "unionization", "dereliction of duty", "kidnapping", "gross incompetence", "grand theft", "collaboration with the Syndicate", \
-	"worship of a forbidden deity", "interspecies relations", "mutiny")
-	flavour_text += "[pick(crimes)]. but regardless of that, it seems like your crime doesn't matter now. You don't know where you are, but you know that it's out to kill you, and you're not going \
-	to lose this opportunity. Find a way to get out of this mess and back to where you rightfully belong - your [pick("house", "apartment", "spaceship", "station")]."
+	var/list/crimes = list("murder", "larceny", "embezzlement", "unionization", "zaniedbanie obowiązków", "kidnapping", "rażącą niekompetencję", "wielką kradzież", "współpracę z Syndykatem", \
+	"kult zakazanego bóstwa", "relacje międzygatunkowe", "mutiny")
+	flavour_text += "[pick(crimes)]. Ale niezależnie od tego, wygląda na to, że twoja zbrodnia nie ma teraz znaczenia. Nie wiesz, gdzie jesteś, ale wiesz, że to miejsce chce cię zabić, a ty nie zamierzasz zmarnować tej okazji. Znajdź sposób, by wydostać się z tego bałaganu i wrócić tam, gdzie twoje miejsce - do [pick("domu", "mieszkania", "statku", "stacji")]."
 
 /datum/outfit/lavalandprisoner
 	name = "Lavaland Prisoner"
@@ -290,14 +270,14 @@
 	mob_name = "hotel staff member"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
-	objectives = "Cater to visiting guests with your fellow staff. Do not leave your assigned hotel and always remember: The customer is always right!"
+	objectives = "Obsługuj odwiedzających gości razem z resztą personelu. Nie opuszczaj przydzielonego hotelu i zawsze pamiętaj: klient ma zawsze rację!"
 	death = FALSE
 	roundstart = FALSE
 	random = TRUE
 	outfit = /datum/outfit/hotelstaff
-	short_desc = "You are a staff member of a top-of-the-line space hotel!"
-	flavour_text = "You are a staff member of a top-of-the-line space hotel! Cater to guests and make sure the manager doesn't fire you."
-	important_info = "DON'T leave the hotel"
+	short_desc = "Jesteś członkiem personelu najwyższej klasy hotelu kosmicznego!"
+	flavour_text = "Jesteś członkiem personelu najwyższej klasy hotelu kosmicznego! Obsługuj gości i uważaj, żeby kierownik cię nie zwolnił."
+	important_info = "NIE opuszczaj hotelu"
 	assignedrole = "Hotel Staff"
 	use_cooldown = TRUE
 	banType = ROLE_HOTEL_STAFF
@@ -314,11 +294,10 @@
 	name = "hotel security sleeper"
 	mob_name = "hotel security member"
 	outfit = /datum/outfit/hotelstaff/security
-	short_desc = "You are a peacekeeper."
-	flavour_text = "You have been assigned to this hotel to protect the interests of the company while keeping the peace between \
-		guests and the staff."
-	important_info = "Do NOT leave the hotel, as that is grounds for contract termination."
-	objectives = "Do not leave your assigned hotel. Try and keep the peace between staff and guests, non-lethal force heavily advised if possible."
+	short_desc = "Jesteś strażnikiem pokoju."
+	flavour_text = "Przydzielono cię do tego hotelu, byś chronił interesy firmy i utrzymywał spokój między gośćmi a personelem."
+	important_info = "NIE opuszczaj hotelu, bo to podstawa do rozwiązania umowy."
+	objectives = "Nie opuszczaj przydzielonego hotelu. Staraj się utrzymać spokój między personelem a gośćmi; jeśli to możliwe, zdecydowanie zaleca się nieśmiercionośne środki."
 
 /datum/outfit/hotelstaff/security
 	name = "Hotel Security"
@@ -355,12 +334,12 @@
 	owner = owner_mind
 	if(!owner)
 		return INITIALIZE_HINT_QDEL
-	flavour_text = "You have been given a reprieve from your eternity of torment, to be [owner.name]'s friend for [owner.p_their()] short mortal coil."
-	important_info = "Be aware that if you do not live up to [owner.name]'s expectations, they can send you back to hell with a single thought. [owner.name]'s death will also return you to hell."
+	flavour_text = "Dostajesz wytchnienie od wieczności męki, by być przyjacielem [owner.name] przez jego krótkie śmiertelne życie."
+	important_info = "Pamiętaj, że jeśli nie spełnisz oczekiwań [owner.name], może jedną myślą odesłać cię z powrotem do piekła. Śmierć [owner.name] również odeśle cię do piekła."
 	var/area/A = get_area(src)
 	if(!mapload && A)
-		notify_ghosts("\A friendship shell has been completed in \the [A.name].", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE)
-	objectives = "Be [owner.name]'s friend, and keep [owner.name] alive, so you don't get sent back to hell."
+		notify_ghosts("W [A.name] ukończono powłokę przyjaźni.", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE)
+	objectives = "Bądź przyjacielem [owner.name] i utrzymuj go przy życiu, żeby nie odesłano cię z powrotem do piekła."
 	spell = summoning_spell
 
 
@@ -377,7 +356,7 @@
 		id.registered_name = L.real_name
 		id.update_label()
 	else
-		to_chat(L, "<span class='userdanger'>Your owner is already dead!  You will soon perish.</span>")
+		to_chat(L, "<span class='userdanger'>Twój właściciel już nie żyje! Wkrótce zginiesz.</span>")
 		addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, dust), 150)) //Give em a few seconds as a mercy.
 
 /datum/outfit/demonic_friend
@@ -401,11 +380,8 @@
 	death = FALSE
 	random = TRUE
 	mob_species = /datum/species/human
-	short_desc = "You are a security officer working for Nanotrasen, stationed onboard a state of the art research station."
-	flavour_text = "You vaguely recall rushing into a cryogenics pod due to an oncoming radiation storm. \
-	The last thing you remember is the station's Artificial Program telling you that you would only be asleep for eight hours. \
-	As you open your eyes, everything seems rusted and broken, a dark feeling swells in your gut as you climb out of your pod. \
-	Work as a team with your fellow survivors and do not abandon them."
+	short_desc = "Jesteś funkcjonariuszem ochrony pracującym dla Nanotrasen, stacjonującym na najnowocześniejszej stacji badawczej."
+	flavour_text = "Mgliście pamiętasz, jak wbiegłeś do kapsuły kriogenicznej przed nadciągającą burzą radiacyjną. Ostatnie, co pamiętasz, to jak Sztuczny Program stacji mówi ci, że będziesz spał tylko osiem godzin. Gdy otwierasz oczy, wszystko wydaje się zardzewiałe i zniszczone, a wychodząc z kapsuły, czujesz narastający niepokój w żołądku. Działaj zespołowo z innymi ocalałymi i nie porzucaj ich."
 	uniform = /obj/item/clothing/under/rank/security/officer
 	shoes = /obj/item/clothing/shoes/jackboots
 	id = /obj/item/card/id/away/old/sec
@@ -429,11 +405,8 @@
 	death = FALSE
 	random = TRUE
 	mob_species = /datum/species/human
-	short_desc = "You are an engineer working for Nanotrasen, stationed onboard a state of the art research station."
-	flavour_text = "You vaguely recall rushing into a cryogenics pod due to an oncoming radiation storm. \
-	The last thing you remember is the station's Artificial Program telling you that you would only be asleep for eight hours. \
-	As you open your eyes, everything seems rusted and broken, a dark feeling swells in your gut as you climb out of your pod. \
-	Work as a team with your fellow survivors and do not abandon them."
+	short_desc = "Jesteś inżynierem pracującym dla Nanotrasen, stacjonującym na najnowocześniejszej stacji badawczej."
+	flavour_text = "Mgliście pamiętasz, jak wbiegłeś do kapsuły kriogenicznej przed nadciągającą burzą radiacyjną. Ostatnie, co pamiętasz, to jak Sztuczny Program stacji mówi ci, że będziesz spał tylko osiem godzin. Gdy otwierasz oczy, wszystko wydaje się zardzewiałe i zniszczone, a wychodząc z kapsuły, czujesz narastający niepokój w żołądku. Działaj zespołowo z innymi ocalałymi i nie porzucaj ich."
 	uniform = /obj/item/clothing/under/rank/engineering/engineer
 	shoes = /obj/item/clothing/shoes/workboots
 	id = /obj/item/card/id/away/old/eng
@@ -457,11 +430,8 @@
 	death = FALSE
 	random = TRUE
 	mob_species = /datum/species/human
-	short_desc = "You are a scientist working for Nanotrasen, stationed onboard a state of the art research station."
-	flavour_text = "<span class='big bold'> You vaguely recall rushing into a cryogenics pod due to an oncoming radiation storm. \
-	The last thing you remember is the station's Artificial Program telling you that you would only be asleep for eight hours. \
-	As you open your eyes, everything seems rusted and broken, a dark feeling swells in your gut as you climb out of your pod. \
-	Work as a team with your fellow survivors and do not abandon them."
+	short_desc = "Jesteś naukowcem pracującym dla Nanotrasen, stacjonującym na najnowocześniejszej stacji badawczej."
+	flavour_text = "<span class='big bold'> Mgliście pamiętasz, jak wbiegłeś do kapsuły kriogenicznej przed nadciągającą burzą radiacyjną. Ostatnie, co pamiętasz, to jak Sztuczny Program stacji mówi ci, że będziesz spał tylko osiem godzin. Gdy otwierasz oczy, wszystko wydaje się zardzewiałe i zniszczone, a wychodząc z kapsuły, czujesz narastający niepokój w żołądku. Działaj zespołowo z innymi ocalałymi i nie porzucaj ich."
 	uniform = /obj/item/clothing/under/rank/rnd/scientist
 	shoes = /obj/item/clothing/shoes/laceup
 	id = /obj/item/card/id/away/old/sci
@@ -488,8 +458,8 @@
 	anchored = TRUE
 	density = FALSE
 	show_flavour = FALSE //Flavour only exists for spawners menu
-	short_desc = "You are a space pirate."
-	flavour_text = "The station refused to pay for your protection, protect the ship, siphon the credits from the station and raid it for even more loot."
+	short_desc = "Jesteś kosmicznym piratem."
+	flavour_text = "Stacja odmówiła zapłaty za waszą ochronę. Chroń statek, wysysaj kredyty ze stacji i napadnij na nią po jeszcze więcej łupów."
 	assignedrole = "Space Pirate"
 	is_antagonist = TRUE
 	var/rank = "Mate"
@@ -525,12 +495,9 @@
 	death = FALSE
 	random = TRUE
 	mob_species = /datum/species/human
-	short_desc = "You are a person who just wants to have fun with their friends."
-	flavour_text = "How did I get here? What is this place? \
-	My last memory is looking around for a place I could rent to play games with my friends. \
-	Trying to leave just pulls me back here, better stay and defend the Snack Vault, if we lose the pizza box, we will probably starve to death. \
-	Seeing as the food supply is limitless and I'm having a great time, I might as well stay and enjoy myself."
-	important_info = "Do not abandon your friends and defend the Snack Vault, you are free to invite guests to play with you."
+	short_desc = "Jesteś osobą, która po prostu chce się dobrze bawić z przyjaciółmi."
+	flavour_text = "Jak się tu znalazłem? Co to za miejsce? Ostatnie, co pamiętam, to szukanie miejsca do wynajęcia, żeby pograć ze znajomymi. Próba wyjścia po prostu ściąga mnie tu z powrotem, lepiej zostać i bronić Skarbca Przekąsek - jeśli stracimy pudełko z pizzą, pewnie umrzemy z głodu. Skoro zapasy jedzenia są nieograniczone, a ja świetnie się bawię, równie dobrze mogę zostać i się bawić."
+	important_info = "Nie porzucaj przyjaciół i broń Skarbca Przekąsek, możesz zapraszać gości do wspólnej gry."
 	outfit = /datum/outfit/hotelstaff
 	assignedrole = "Gamer"
 

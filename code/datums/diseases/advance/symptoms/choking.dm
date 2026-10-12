@@ -19,7 +19,7 @@ Bonus
 /datum/symptom/asphyxiation
 
 	name = "Acute respiratory distress syndrome"
-	desc = "The virus causes shrinking of the host's lungs, causing severe asphyxiation. May also lead to heart attacks."
+	desc = "Wirus powoduje kurczenie się płuc nosiciela, prowadząc do ciężkiego niedotlenienia. Może też prowadzić do zawałów serca."
 	stealth = -2
 	resistance = -0
 	stage_speed = -1
@@ -32,8 +32,7 @@ Bonus
 	bodies = list("Lung")
 	suffixes = list(" Tuberculosis")
 	var/paralysis = FALSE
-	threshold_desc = "<b>Stage Speed 8:</b> Additionally synthesizes pancuronium and sodium thiopental inside the host.<br>\
-					  <b>Transmission 8:</b> Doubles the damage caused by the symptom."
+	threshold_desc = "<b>Szybkość stadiów 8:</b> dodatkowo syntetyzuje w nosicielu pankuronium i tiopental sodu.<br><b>Transmisja 8:</b> podwaja obrażenia zadawane przez objaw."
 
 /datum/symptom/asphyxiation/severityset(datum/disease/advance/A)
 	. = ..()
@@ -64,7 +63,7 @@ Bonus
 			Asphyxiate(M, A)
 			M.emote("gasp")
 			if(M.getOxyLoss() >= 120)
-				M.visible_message("<span class='warning'>[M] stops breathing, as if their lungs have totally collapsed!</span>")
+				M.visible_message("<span class='warning'>[M] przestaje oddychać, jakby jego płuca całkowicie się zapadły!</span>")
 				Asphyxiate_death(M, A)
 	return
 

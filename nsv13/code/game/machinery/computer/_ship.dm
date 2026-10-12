@@ -48,12 +48,12 @@ GLOBAL_LIST_INIT(computer_beeps, list('nsv13/sound/effects/computer/beep.ogg','n
 	if(!has_overmap())
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='warning'>A warning flashes across [src]'s screen: Unable to locate thrust parameters, no registered ship stored in microprocessor.</span>")
+		to_chat(user, "<span class='warning'>Na ekranie [src] miga ostrzeżenie: nie można znaleźć parametrów ciągu, w mikroprocesorze nie zapisano zarejestrowanego okrętu.</span>")
 		return FALSE
 	if((position & (OVERMAP_USER_ROLE_PILOT | OVERMAP_USER_ROLE_GUNNER)) && linked.ai_controlled)
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='warning'>A warning flashes across [src]'s screen: Automated flight protocols are still active. Unable to comply.</span>")
+		to_chat(user, "<span class='warning'>Na ekranie [src] miga ostrzeżenie: automatyczne protokoły lotu wciąż są aktywne. Nie można wykonać.</span>")
 		return FALSE
 	playsound(src, 'nsv13/sound/effects/computer/startup.ogg', 75, 1)
 	if(!position)
@@ -67,26 +67,16 @@ GLOBAL_LIST_INIT(computer_beeps, list('nsv13/sound/effects/computer/beep.ogg','n
 	RegisterSignal(user, COMSIG_STOPPED_PILOTING, PROC_REF(on_user_stopped_piloting))
 
 	if(linked.mass < MASS_SMALL)
-		to_chat(user, "<span class='notice'>Small craft use directional keys (WASD in hotkey mode) to accelerate/decelerate in a given direction and the mouse to change the direction of craft.\
-					Mouse 1 will fire the selected weapon (if applicable).</span>")
+		to_chat(user, "<span class='notice'>Małymi jednostkami steruje się klawiszami kierunkowymi (WASD w trybie skrótów), przyspieszając lub zwalniając w danym kierunku, a myszą zmienia się kierunek lotu. Lewy przycisk myszy strzela z wybranej broni (jeśli dotyczy).</span>")
 		to_chat(user, "<span class='warning'>=Hotkeys=</span>")
-		to_chat(user, "<span class='notice'> Use <b>tab</b> to activate hotkey mode, then:</span>")
-		to_chat(user, "<span class='notice'>Use the <b> Ctrl + Scroll Wheel</b> to zoom in / out. \
-					Press <b>Space</b> to cycle fire modes. \
-					Press <b>X</b> to cycle inertial dampners. \
-					Press <b>Alt</b> to cycle the handbrake.</span>")
+		to_chat(user, "<span class='notice'> Naciśnij <b>tab</b>, by włączyć tryb skrótów, a następnie:</span>")
+		to_chat(user, "<span class='notice'>Użyj <b>Ctrl + kółka myszy</b>, by przybliżyć/oddalić. Naciśnij <b>spację</b>, by przełączać tryby ognia. Naciśnij <b>X</b>, by przełączać tłumiki bezwładności. Naciśnij <b>Alt</b>, by przełączać hamulec ręczny.</span>")
 
 	else
-		to_chat(user, "<span class='notice'>Large craft use the up and down arrow keys (W & S in hotkey mode) to accelerate/decelerate craft. Use the left and right arrow keys (A & D) to rotate the craft. \
-					Mouse 1 will fire the selected weapon (if applicable).</span>")
+		to_chat(user, "<span class='notice'>Dużymi jednostkami steruje się strzałkami w górę i w dół (W i S w trybie skrótów), przyspieszając lub zwalniając. Strzałkami w lewo i w prawo (A i D) obraca się jednostkę. Lewy przycisk myszy strzela z wybranej broni (jeśli dotyczy).</span>")
 		to_chat(user, "<span class='warning'>=Hotkeys=</span>")
-		to_chat(user, "<span class='notice'> Use <b>tab</b> to activate hotkey mode, then:</span>")
-		to_chat(user, "<span class='notice'> Use the <b> Ctrl + Scroll Wheel</b> to zoom in / out. \
-						Press <b>C</b> to cycle between mouse and keyboard steering. \
-						Press <b>X</b> to cycle inertial dampners. \
-						Press <b>Alt</b> to cycle the handbrake. \
-						Presa <b>Space</b> to cycle available weapons. \
-						Press <b>F</b> for the current weapon's special action (if available).</span>")
+		to_chat(user, "<span class='notice'> Naciśnij <b>tab</b>, by włączyć tryb skrótów, a następnie:</span>")
+		to_chat(user, "<span class='notice'> Użyj <b>Ctrl + kółka myszy</b>, by przybliżyć/oddalić. Naciśnij <b>C</b>, by przełączać między sterowaniem myszą a klawiaturą. Naciśnij <b>X</b>, by przełączać tłumiki bezwładności. Naciśnij <b>Alt</b>, by przełączać hamulec ręczny. Naciśnij <b>spację</b>, by przełączać dostępną broń. Naciśnij <b>F</b>, by wykonać akcję specjalną obecnej broni (jeśli jest dostępna).</span>")
 
 /obj/machinery/computer/ship/proc/on_user_stopped_piloting(mob/previous_user)
 	SIGNAL_HANDLER

@@ -4,7 +4,7 @@
 //============
 /datum/xenoartifact_trait/malfunction/bear
 	label_name = "P.B.R."
-	label_desc = "Parallel Bearspace Retrieval: A strange malfunction causes the Artifact to open a gateway to deep bearspace."
+	label_desc = "Odzysk z równoległej niedźwiedziej przestrzeni: dziwna usterka sprawia, że artefakt otwiera przejście do głębokiej niedźwiedziej przestrzeni."
 	weight = 15
 	flags = URANIUM_TRAIT
 	var/list/bears = list() //bear per bears
@@ -29,7 +29,7 @@
 //============
 /datum/xenoartifact_trait/malfunction/badtarget
 	label_name = "Maltargeting"
-	label_desc = "Maltargeting: A strange malfunction that causes the Artifact to always target the original user."
+	label_desc = "Błędne celowanie: dziwna usterka, przez którą artefakt zawsze celuje w pierwotnego użytkownika."
 	flags = BLUESPACE_TRAIT | URANIUM_TRAIT | PLASMA_TRAIT
 
 /datum/xenoartifact_trait/malfunction/badtarget/activate(obj/item/xenoartifact/X, atom/target, atom/user)
@@ -48,7 +48,7 @@
 //============
 /datum/xenoartifact_trait/malfunction/strip
 	label_name = "B.A.D."
-	label_desc = "Bluespace Axis Desync: A strange malfunction inside the Artifact causes it to shift the target's realspace position with its bluespace mass in an offset manner. This results in the target dropping all they're wearing. This is probably the plot to a very educational movie."
+	label_desc = "Rozsynchronizowanie osi bluespace: dziwna usterka wewnątrz artefaktu sprawia, że przesuwa on położenie celu w realnej przestrzeni względem jego masy bluespace z przesunięciem. W efekcie cel upuszcza wszystko, co ma na sobie. To pewnie fabuła bardzo edukacyjnego filmu."
 
 /datum/xenoartifact_trait/malfunction/strip/activate(obj/item/xenoartifact/X, atom/target)
 	if(isliving(target))
@@ -68,7 +68,7 @@
 //============
 /datum/xenoartifact_trait/malfunction/trauma
 	label_name = "C.D.E."
-	label_desc = "Cerebral Dysfunction Emergence: A strange malfunction that causes the Artifact to force brain traumas to develop in a given target."
+	label_desc = "Powstawanie dysfunkcji mózgowej: dziwna usterka, przez którą artefakt wymusza rozwój urazów mózgu u celu."
 	weight = 25
 	flags = BLUESPACE_TRAIT | URANIUM_TRAIT
 	var/datum/brain_trauma/trauma
@@ -92,7 +92,7 @@
 //============
 /datum/xenoartifact_trait/malfunction/heated
 	label_name = "Combustible"
-	label_desc = "Combustible: A strange malfunction that causes the Artifact to violently combust."
+	label_desc = "Wybuchowy: dziwna usterka, przez którą artefakt gwałtownie wybucha."
 	weight = 15
 	flags = URANIUM_TRAIT
 
@@ -131,7 +131,7 @@
 //============
 /datum/xenoartifact_trait/malfunction/radioactive
 	label_name = "Radioactive"
-	label_desc = "Radioactive: The Artifact Emmits harmful particles when a reaction takes place."
+	label_desc = "Radioaktywny: artefakt emituje szkodliwe cząstki, gdy zachodzi reakcja."
 	flags = BLUESPACE_TRAIT | URANIUM_TRAIT | PLASMA_TRAIT
 
 /datum/xenoartifact_trait/malfunction/radioactive/on_init(obj/item/xenoartifact/X)
@@ -139,12 +139,12 @@
 
 /datum/xenoartifact_trait/malfunction/radioactive/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
 	if(istype(item, /obj/item/geiger_counter))
-		to_chat(user, "<span class='notice'>The [X.name] has residual radioactive decay features.</span>")
+		to_chat(user, "<span class='notice'>[X.name] ma ślady szczątkowego rozpadu radioaktywnego.</span>")
 		return TRUE
 	..()
 
 /datum/xenoartifact_trait/malfunction/radioactive/on_touch(obj/item/xenoartifact/X, mob/user)
-	to_chat(user, "<span class='notice'>You feel pins and needles after touching the [X.name].</span>")
+	to_chat(user, "<span class='notice'>Po dotknięciu [X.name] czujesz mrowienie.</span>")
 	return TRUE
 
 /datum/xenoartifact_trait/malfunction/radioactive/activate(obj/item/xenoartifact/X)
@@ -155,7 +155,7 @@
 //============
 /datum/xenoartifact_trait/malfunction/twin
 	label_name = "Anti-Cloning"
-	label_desc = "Anti-Cloning: The Artifact produces an arguably maleviolent clone of target."
+	label_desc = "Antyklonujący: artefakt tworzy prawdopodobnie złośliwego klona celu."
 	flags = BLUESPACE_TRAIT | URANIUM_TRAIT | PLASMA_TRAIT
 	var/list/clones = list()
 
@@ -188,14 +188,14 @@
 	mob_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
 	speak_chance = 0
 	turns_per_move = 5
-	response_help = "pokes"
-	response_disarm = "shoves"
-	response_harm = "hits"
+	response_help = "szturcha"
+	response_disarm = "popycha"
+	response_harm = "uderza"
 	speed = 0
 	maxHealth = 10
 	health = 10
 	melee_damage = 5
-	attacktext = "punches"
+	attacktext = "uderza"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	a_intent = INTENT_HARM
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
@@ -211,12 +211,12 @@
 //============
 /datum/xenoartifact_trait/malfunction/explode
 	label_name = "Delaminating"
-	label_desc = "Delaminating: The Artifact violently collapses, exploding."
+	label_desc = "Delaminujący: artefakt gwałtownie się zapada i wybucha."
 	flags = URANIUM_TRAIT
 
 /datum/xenoartifact_trait/malfunction/explode/activate(obj/item/xenoartifact/X, atom/target, atom/user, setup)
 	. = ..()
-	X.visible_message("<span class='warning'>The [X] begins to heat up, it's delaminating!</span>")
+	X.visible_message("<span class='warning'>[X] zaczyna się nagrzewać, delaminuje się!</span>")
 	apply_wibbly_filters(X, 3)
 	addtimer(CALLBACK(src, PROC_REF(explode), X), 10 SECONDS)
 
@@ -229,7 +229,7 @@
 //============
 /datum/xenoartifact_trait/malfunction/absorbant
 	label_name = "Absorbing"
-	label_desc = "Absorbing: The Artifact absorbs large volumes of nearby gasses."
+	label_desc = "Pochłaniający: artefakt pochłania duże ilości pobliskich gazów."
 	flags = BLUESPACE_TRAIT | URANIUM_TRAIT | PLASMA_TRAIT
 	///What gasses we've S U C K E D
 	var/datum/gas_mixture/air_contents
@@ -247,7 +247,7 @@
 	parent = X
 
 /datum/xenoartifact_trait/malfunction/absorbant/activate(obj/item/xenoartifact/X, atom/target, atom/user, setup)
-	X.visible_message("<space class='warning'>[X] begins to vacuum nearby gasses!</span>")
+	X.visible_message("<space class='warning'>[X] zaczyna wsysać pobliskie gazy!</span>")
 	var/turf/T = get_turf(X)
 	var/datum/gas_mixture/mixture = T.return_air()
 	mixture.scrub_into(air_contents, volume_rate / mixture.return_volume(), scrubbing)
@@ -265,7 +265,7 @@
 //============
 /datum/xenoartifact_trait/malfunction/hallucination
 	label_name = "Hallucinogenic"
-	label_desc = "Hallucinogenic: The Artifact causes the target to hallucinate."
+	label_desc = "Halucynogenny: artefakt wywołuje u celu halucynacje."
 	flags = BLUESPACE_TRAIT | URANIUM_TRAIT | PLASMA_TRAIT
 
 /datum/xenoartifact_trait/malfunction/hallucination/activate(obj/item/xenoartifact/X, atom/target, atom/user, setup)

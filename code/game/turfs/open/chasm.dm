@@ -40,7 +40,7 @@
 /turf/open/chasm/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_FLOORWALL)
-			to_chat(user, "<span class='notice'>You build a floor.</span>")
+			to_chat(user, "<span class='notice'>Budujesz podłogę.</span>")
 			PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 			return TRUE
 	return FALSE
@@ -57,12 +57,12 @@
 		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
 		if(!L)
 			if(R.use(1))
-				to_chat(user, "<span class='notice'>You construct a lattice.</span>")
+				to_chat(user, "<span class='notice'>Budujesz kratownicę.</span>")
 				playsound(src, 'sound/weapons/genhit.ogg', 50, 1)
 				// Create a lattice, without reverting to our baseturf
 				new /obj/structure/lattice(src)
 			else
-				to_chat(user, "<span class='warning'>You need one rod to build a lattice.</span>")
+				to_chat(user, "<span class='warning'>Potrzebujesz jednego pręta, by zbudować kratownicę.</span>")
 			return
 	if(istype(C, /obj/item/stack/tile/plasteel))
 		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
@@ -71,13 +71,13 @@
 			if(S.use(1))
 				qdel(L)
 				playsound(src, 'sound/weapons/genhit.ogg', 50, 1)
-				to_chat(user, "<span class='notice'>You build a floor.</span>")
+				to_chat(user, "<span class='notice'>Budujesz podłogę.</span>")
 				// Create a floor, which has this chasm underneath it
 				PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 			else
-				to_chat(user, "<span class='warning'>You need one floor tile to build a floor!</span>")
+				to_chat(user, "<span class='warning'>Potrzebujesz jednej płytki podłogowej, by zbudować podłogę!</span>")
 		else
-			to_chat(user, "<span class='warning'>The plating is going to need some support! Place iron rods first.</span>")
+			to_chat(user, "<span class='warning'>Poszycie będzie potrzebować podparcia! Najpierw połóż żelazne pręty.</span>")
 
 /// Lets people walk into chasms.
 /turf/open/chasm/CanAllowThrough(atom/movable/mover, border_dir)

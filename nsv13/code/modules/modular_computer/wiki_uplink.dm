@@ -1,7 +1,7 @@
 /datum/computer_file/program/databank_uplink
 	filename = "databank"
-	filedesc = "Vessel Databank Uplink"
-	extended_desc = "An application used to connect to the Vessels Databanks in order to access all the guides you could ever need!"
+	filedesc = "Łącze z bankiem danych okrętu"
+	extended_desc = "Aplikacja do łączenia się z bankami danych okrętu, by mieć dostęp do wszystkich poradników, jakich kiedykolwiek będziesz potrzebować!"
 	category = PROGRAM_CATEGORY_CREW
 	program_icon_state = "generic"
 	size = 2

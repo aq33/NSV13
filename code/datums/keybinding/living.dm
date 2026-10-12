@@ -9,8 +9,8 @@
 /datum/keybinding/living/resist
 	key = "B"
 	name = "resist"
-	full_name = "Resist"
-	description = "Break free of your current state. Handcuffs, on fire, being trapped in an alien nest? Resist!"
+	full_name = "Opieraj się"
+	description = "Uwolnij się z obecnego stanu. Kajdanki, płomienie, uwięzienie w gnieździe obcych? Stawiaj opór!"
 	keybind_signal = COMSIG_KB_LIVING_RESIST_DOWN
 
 /datum/keybinding/living/resist/down(client/user)
@@ -26,8 +26,8 @@
 /datum/keybinding/living/rest
 	key = "V"
 	name = "rest"
-	full_name = "Rest"
-	description = "Lay down, or get up."
+	full_name = "Połóż się/wstań"
+	description = "Połóż się albo wstań."
 	keybind_signal = COMSIG_KB_LIVING_REST_DOWN
 
 /datum/keybinding/living/rest/down(client/user)

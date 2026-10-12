@@ -46,7 +46,7 @@
 		nadeassembly = A
 		A.master = src
 		assemblyattacher = user.ckey
-		to_chat(user, "<span class='notice'>You add [A] to the [name].</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [A] do [name].</span>")
 		playsound(src, 'sound/weapons/tap.ogg', 20, 1)
 		update_icon()
 		return
@@ -103,11 +103,11 @@
 	if(nadeassembly)
 		nadeassembly.attack_self(user)
 		return
-	var/newtime = input(usr, "Please set the timer.", "Timer", 10) as num
+	var/newtime = input(usr, "Ustaw zapalnik.", "Timer", 10) as num
 	if(user.get_active_held_item() == src)
 		newtime = CLAMP(newtime, 10, 60000)
 		det_time = newtime
-		to_chat(user, "Timer set for [det_time] seconds.")
+		to_chat(user, "Zapalnik ustawiony na [det_time] s.")
 
 /obj/item/grenade/plastic/afterattack(atom/movable/AM, mob/user, flag)
 	. = ..()
@@ -117,7 +117,7 @@
 	if(ismob(AM) && !can_attach_mob)
 		return
 
-	to_chat(user, "<span class='notice'>You start planting [src]. The timer is set to [det_time]...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz podkładać [src]. Zapalnik ustawiony na [det_time]...</span>")
 
 	if(do_after(user, 30, target = AM))
 		if(!user.temporarilyRemoveItemFromInventory(src))
@@ -127,7 +127,7 @@
 		message_admins("[ADMIN_LOOKUPFLW(user)] planted [name] on [target.name] at [ADMIN_VERBOSEJMP(target)] with [det_time] second fuse")
 		log_game("[key_name(user)] planted [name] on [target.name] at [AREACOORD(user)] with a [det_time] second fuse")
 
-		notify_ghosts("[user] has planted \a [src] on [target] with a [det_time] second fuse!", source = target, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Explosive Planted")
+		notify_ghosts("[user] podkłada [src] na [target] z zapalnikiem [det_time] s!", source = target, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Podłożono ładunek")
 
 		moveToNullspace()	//Yep
 
@@ -143,7 +143,7 @@
 
 		target.add_overlay(plastic_overlay, TRUE)
 		if(!nadeassembly)
-			to_chat(user, "<span class='notice'>You plant the bomb. Timer counting down from [det_time].</span>")
+			to_chat(user, "<span class='notice'>Podkładasz bombę. Zapalnik odlicza od [det_time].</span>")
 			addtimer(CALLBACK(src, PROC_REF(prime)), det_time*10)
 		else
 			qdel(src)	//How?
@@ -151,23 +151,23 @@
 /obj/item/grenade/plastic/proc/shout_syndicate_crap(mob/M)
 	if(!M)
 		return
-	var/message_say = "FOR NO RAISIN!"
+	var/message_say = "BEZ POWODU!"
 	if(M.mind)
 		var/datum/mind/UM = M.mind
 		if(UM.has_antag_datum(/datum/antagonist/nukeop) || UM.has_antag_datum(/datum/antagonist/traitor))
-			message_say = "FOR THE SYNDICATE!"
+			message_say = "ZA SYNDYKAT!"
 		else if(UM.has_antag_datum(/datum/antagonist/changeling))
-			message_say = "FOR THE HIVE!"
+			message_say = "ZA RÓJ!"
 		else if(UM.has_antag_datum(/datum/antagonist/cult))
-			message_say = "FOR NAR'SIE!"
+			message_say = "ZA NAR'SIE!"
 		else if(UM.has_antag_datum(/datum/antagonist/rev))
-			message_say = "VIVA LA REVOLUTION!"
+			message_say = "NIECH ŻYJE REWOLUCJA!"
 	M.say(message_say, forced="C4 suicide")
 
 /obj/item/grenade/plastic/suicide_act(mob/user)
 	message_admins("[ADMIN_LOOKUPFLW(user)] suicided with [src] at [ADMIN_VERBOSEJMP(user)]")
 	log_game("[key_name(user)] suicided with [src] at [AREACOORD(user)]")
-	user.visible_message("<span class='suicide'>[user] activates [src] and holds it above [user.p_their()] head! It looks like [user.p_theyre()] going out with a bang!</span>")
+	user.visible_message("<span class='suicide'>[user] aktywuje [src] i unosi go nad głowę! Wygląda na to, że chce odejść z hukiem!</span>")
 	shout_syndicate_crap(user)
 	explosion(user,0,2,0) //Cheap explosion imitation because putting prime() here causes runtimes
 	user.gib(1, 1)
@@ -201,7 +201,7 @@
 	return ..()
 
 /obj/item/grenade/plastic/c4/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] activates the [src.name] and holds it above [user.p_their()] head! It looks like [user.p_theyre()] going out with a bang!</span>")
+	user.visible_message("<span class='suicide'>[user] aktywuje [src.name] i unosi go nad głowę! Wygląda na to, że chce odejść z hukiem!</span>")
 	shout_syndicate_crap(user)
 	target = user
 	message_admins("[ADMIN_LOOKUPFLW(user)] suicided with [name] at [ADMIN_VERBOSEJMP(src)]")
@@ -213,7 +213,7 @@
 /obj/item/grenade/plastic/c4/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		open_panel = !open_panel
-		to_chat(user, "<span class='notice'>You [open_panel ? "open" : "close"] the wire panel.</span>")
+		to_chat(user, "<span class='notice'>[open_panel ? "Otwierasz" : "Zamykasz"] panel przewodów.</span>")
 	else if(is_wire_tool(I))
 		wires.interact(user)
 	else

@@ -6,7 +6,7 @@
 	icon_state = "sleeper_s"
 	roundstart = FALSE
 	death = FALSE
-	flavour_text = "<b>You are a </b><span class='big bold'>Syndicate Soldier</span><b>, part of the crew of a Syndicate Space Vessel. Your objective is to protect your ship and its valuable assets such as prisoners or navigational data at all costs. Failure will not be accepted.</b>"
+	flavour_text = "<b>Jesteś </b><span class='big bold'>żołnierzem Syndykatu</span><b>, członkiem załogi okrętu kosmicznego Syndykatu. Twoim celem jest za wszelką cenę chronić okręt i jego cenne zasoby, takie jak więźniowie czy dane nawigacyjne. Porażka nie zostanie zaakceptowana.</b>"
 	assignedrole = "Syndicate Soldier"
 	outfit = /datum/outfit/syndicate/sleeper/soldier
 
@@ -14,7 +14,7 @@
 	name = "a syndicate pilot class stasis pod"
 	desc = "Although this stasis pod looks medicinal, it seems as though it's meant to preserve something for a very long time. It has as Officer's name and Syndicate insignia on it."
 	mob_name = "Syndicate Pilot"
-	flavour_text = "<b>You are a </b><span class='big bold'>Syndicate Pilot</span><b>, part of the crew of a Syndicate Space Vessel. Your objective is to fly and protect the bridge of the ship that you have been stationed on. Keep the navigational data from falling into enemy hands.</b>"
+	flavour_text = "<b>Jesteś </b><span class='big bold'>pilotem Syndykatu</span><b>, członkiem załogi okrętu kosmicznego Syndykatu. Twoim celem jest latać i chronić mostek okrętu, na którym stacjonujesz. Nie pozwól, by dane nawigacyjne wpadły w ręce wroga.</b>"
 	assignedrole = "Syndicate Pilot"
 	outfit = /datum/outfit/syndicate/sleeper/pilot
 
@@ -29,7 +29,7 @@
 	. = ..()
 	var/area/A = get_area(src)
 	if(A)
-		notify_ghosts("A Syndicate Crewmember is about to thaw from cryo on \the [A.name].", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE)
+		notify_ghosts("Członek załogi Syndykatu zaraz rozmrozi się z kriokomory w [A.name].", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE)
 
 /obj/effect/mob_spawn/human/nsv13/nt_prisoner/
 	name = "a prisoner stasis pod"
@@ -39,7 +39,7 @@
 	icon_state = "sleeper"
 	roundstart = FALSE
 	death = FALSE
-	flavour_text = "<b>You are a </b><span class='big bold'>prisoner of the Syndicate</span><b>. You are a Nanotrasen employee captured by the syndicate. Your objective is to escape the ship you are on alive. Hopefully your extensive training will help you!</b><span class='big bold'><span class='danger'>THIS IS NOT AN ANTAGONIST ROLE!</span></span>"
+	flavour_text = "<b>Jesteś </b><span class='big bold'>więźniem Syndykatu</span><b>. Jesteś pracownikiem Nanotrasen schwytanym przez Syndykat. Twoim celem jest uciec żywym z okrętu, na którym się znajdujesz. Miejmy nadzieję, że twoje intensywne szkolenie pomoże!</b><span class='big bold'><span class='danger'>TO NIE JEST ROLA ANTAGONISTY!</span></span>"
 	assignedrole = "NT Prisoner"
 	outfit = /datum/outfit/sleeper/prisoner
 
@@ -54,4 +54,4 @@
 	. = ..()
 	var/area/A = get_area(src)
 	if(A)
-		notify_ghosts("An NT Prisoner is about to thaw from cryo on \the [A.name].", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE, ignore_key = POLL_IGNORE_POSIBRAIN) //I don't know which POLL_IGNORE to use here
+		notify_ghosts("Więzień NT zaraz rozmrozi się z kriokomory w [A.name].", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE, ignore_key = POLL_IGNORE_POSIBRAIN) //I don't know which POLL_IGNORE to use here

@@ -507,7 +507,7 @@
 	))
 
 	if(!insert_query.warn_execute())
-		to_chat(usr, "<span class='boldannounce'>Failed to save your character. Please inform the server operator.</span>")
+		to_chat(usr, "<span class='boldannounce'>Nie udało się zapisać postaci. Powiadom operatora serwera.</span>")
 		qdel(insert_query)
 		return
 

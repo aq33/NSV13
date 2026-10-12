@@ -24,10 +24,10 @@
 
 /obj/structure/showerframe/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/stack/sheet/plastic))
-		balloon_alert(user, "You start constructing a shower...")
+		balloon_alert(user, "Zaczynasz budować prysznic...")
 		if(do_after(user, 4 SECONDS, target = src))
 			I.use(1)
-			balloon_alert(user, "You create a shower.")
+			balloon_alert(user, "Tworzysz prysznic.")
 			var/obj/machinery/shower/new_shower = new /obj/machinery/shower(loc)
 			new_shower.setDir(dir)
 			qdel(src)
@@ -40,7 +40,7 @@
 
 /obj/structure/showerframe/proc/can_be_rotated(mob/user, rotation_type)
 	if(anchored)
-		to_chat(user, "<span class='warning'>It is fastened to the floor!</span>")
+		to_chat(user, "<span class='warning'>Jest przymocowany do podłogi!</span>")
 	return !anchored
 
 /obj/machinery/shower/Initialize(mapload)
@@ -78,12 +78,12 @@
 
 /obj/machinery/shower/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_ANALYZER)
-		to_chat(user, "<span class='notice'>The water temperature seems to be [current_temperature].</span>")
+		to_chat(user, "<span class='notice'>Temperatura wody wydaje się: [current_temperature].</span>")
 	else
 		return ..()
 
 /obj/machinery/shower/wrench_act(mob/living/user, obj/item/I)
-	to_chat(user, "<span class='notice'>You begin to adjust the temperature valve with \the [I]...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz regulować zawór temperatury za pomocą [I]...</span>")
 	if(I.use_tool(src, user, 50))
 		switch(current_temperature)
 			if(SHOWER_NORMAL)
@@ -92,7 +92,7 @@
 				current_temperature = SHOWER_BOILING
 			if(SHOWER_BOILING)
 				current_temperature = SHOWER_NORMAL
-		user.visible_message("<span class='notice'>[user] adjusts the shower with \the [I].</span>", "<span class='notice'>You adjust the shower with \the [I] to [current_temperature] temperature.</span>")
+		user.visible_message("<span class='notice'>[user] reguluje prysznic za pomocą [I].</span>", "<span class='notice'>Ustawiasz temperaturę prysznica za pomocą [I] na: [current_temperature].</span>")
 		user.log_message("has wrenched a shower at [AREACOORD(src)] to [current_temperature].", LOG_ATTACK)
 		add_hiddenprint(user)
 	handle_mist()
@@ -204,7 +204,7 @@
 			// NSV13 - kept hygiene
 			if(check_clothes(L))
 				if(H.hygiene <= 75)
-					to_chat(H, "<span class='warning'>You have to remove your clothes to get clean!</span>")
+					to_chat(H, "<span class='warning'>Musisz zdjąć ubranie, żeby się umyć!</span>")
 			else
 				H.set_hygiene(HYGIENE_LEVEL_CLEAN)
 				if (iscatperson(H)) //NSV felinids hate showers (all this really does is turn the +3 from neat into a +1, and doesn't give the +4 from a nice shower)
@@ -260,12 +260,12 @@
 	if(current_temperature == SHOWER_FREEZING)
 		if(iscarbon(L))
 			C.adjust_bodytemperature(-80, 80)
-		to_chat(L, "<span class='warning'>[src] is freezing!</span>")
+		to_chat(L, "<span class='warning'>[src] jest lodowaty!</span>")
 	else if(current_temperature == SHOWER_BOILING)
 		if(iscarbon(L))
 			C.adjust_bodytemperature(35, 0, 500)
 		L.adjustFireLoss(5)
-		to_chat(L, "<span class='danger'>[src] is searing!</span>")
+		to_chat(L, "<span class='danger'>[src] parzy!</span>")
 
 // NSV13 - kept hygiene
 /obj/machinery/shower/proc/check_clothes(mob/living/carbon/human/H)

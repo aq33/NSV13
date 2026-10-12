@@ -1,11 +1,11 @@
 /mob/living/carbon/human/ai_boarder/ert
 	faction = list("neutral", "Nanotrasen", "nanotrasenprivate")
 	taunts = list(
-		"Code 401 in progress, requesting immediate assistance",
-		"Stay down, scum",
-		"You can't outrun the law",
-		"For the corp!",
-		"Anti-corporate activities will NOT be tolerated!"
+		"Trwa kod 401, prośba o natychmiastowe wsparcie",
+		"Leż, szumowino",
+		"Przed prawem nie uciekniesz",
+		"Za korporację!",
+		"Działalność antykorporacyjna NIE będzie tolerowana!"
 	)
 	outfit = /datum/outfit/ert/security
 	knpc_traits = KNPC_IS_MARTIAL_ARTIST | KNPC_IS_DODGER | KNPC_IS_MERCIFUL | KNPC_IS_AREA_SPECIFIC

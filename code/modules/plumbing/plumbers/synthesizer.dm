@@ -82,24 +82,24 @@
 		return ..()
 	var/obj/item/rcd_ammo/R = O
 	if(!R.ammoamt)
-		to_chat(user, "<span class='warning'>The [R.name] doesn't have any reagent left!</span>")
+		to_chat(user, "<span class='warning'>W [R.name] nie został żaden odczynnik!</span>")
 		return ..()
 	var/added_volume = -volume_left //For the difference calculation
 	volume_left = min(volume_left+R.ammoamt*20, src.max_volume) //400 per cartridge - x2 NSV13
 	added_volume = added_volume+volume_left
 	R.ammoamt -= added_volume/10
 	if(R.ammoamt <= 0) //Emptied
-		to_chat(user, "<span class='notice'>You refill the chemical synthesizer with the [R.name], emptying it completely!</span>")
+		to_chat(user, "<span class='notice'>Uzupełniasz syntezator chemiczny zawartością [R.name], całkowicie go opróżniając!</span>")
 		qdel(R)
 		return
 	if(added_volume == 0) //No change
-		to_chat(user, "<span class='notice'>The chemical synthesizer is full!</span>")
+		to_chat(user, "<span class='notice'>Syntezator chemiczny jest pełny!</span>")
 		return
-	to_chat(user, "<span class='notice'>You refill the chemical synthesizer with the [R.name], leaving [R.ammoamt*10] units in it.</span>")
+	to_chat(user, "<span class='notice'>Uzupełniasz syntezator chemiczny zawartością [R.name], zostawiając w nim [R.ammoamt*10] j.</span>")
 
 /obj/machinery/plumbing/synthesizer/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>A display says it currently holds [volume_left] units of precursor before requiring a refill.</span>"
+	. += "<span class='notice'>Wyświetlacz pokazuje, że obecnie zawiera [volume_left] j. prekursora, zanim trzeba będzie go uzupełnić.</span>"
 
 /obj/machinery/plumbing/synthesizer/ui_state(mob/user)
 	return GLOB.default_state

@@ -76,9 +76,9 @@
 
 /obj/item/stack/tile/durasteel/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Ctrl-click to change the tile type.</span>"
+	. += "<span class='notice'>Ctrl-kliknij, by zmienić rodzaj płytki.</span>"
 	if(catwalk_type)
-		. += "<span class='notice'>There are attachment points for <i>rods</i>.</span>"
+		. += "<span class='notice'>Są punkty mocowania na <i>pręty</i>.</span>"
 
 /obj/item/stack/tile/durasteel/CtrlClick(mob/user)
 	if((istype(user) && user.canUseTopic(src, BE_CLOSE, ismonkey(user))) && !is_cyborg && user.is_holding(src)) //Only activate when in your hand
@@ -93,14 +93,14 @@
 	add_fingerprint(user)
 	if(istype(W, /obj/item/stack/rods))
 		if(!catwalk_type)
-			to_chat(user, "<span class='warning'>You can't make a plated catwalk with this variant of tile!</span>")
+			to_chat(user, "<span class='warning'>Z tym wariantem płytki nie zrobisz pokrytego pomostu!</span>")
 			return
 		var/turf/T = get_turf(usr)
 		if(locate(/obj/structure/lattice/catwalk) in T)
-			to_chat(user, "<span class='warning'>There is already a catwalk here!</span>")
+			to_chat(user, "<span class='warning'>Tu już jest pomost!</span>")
 			return
 		if(!isfloorturf(T))
-			to_chat(user, "<span class='warning'>You can only build a plated catwalk on a floor!</span>")
+			to_chat(user, "<span class='warning'>Pokryty pomost możesz zbudować tylko na podłodze!</span>")
 			return
 		var/obj/item/stack/rods/V = W
 		if (V.get_amount() >= 2 && get_amount() >= 1)
@@ -108,7 +108,7 @@
 			V.use(2)
 			use(1)
 		else
-			to_chat(user, "<span class='warning'>You need two rods and one tile to make a plated catwalk!</span>")
+			to_chat(user, "<span class='warning'>Do zrobienia pokrytego pomostu potrzebujesz dwóch prętów i jednej płytki!</span>")
 			return
 	else
 		return ..()

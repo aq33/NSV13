@@ -25,7 +25,7 @@
 	icon_state = "cocoapod"
 	bite_consumption_mod = 2
 	foodtypes = FRUIT
-	tastes = list("cocoa" = 1)
+	tastes = list("kakao" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/creme_de_cacao
 
 // Vanilla Pod
@@ -47,7 +47,7 @@
 	icon_state = "vanillapod"
 	bite_consumption_mod = 2
 	foodtypes = FRUIT
-	tastes = list("vanilla" = 1)
+	tastes = list("wanilia" = 1)
 	distill_reagent = /datum/reagent/consumable/vanilla //Takes longer, but you can get even more vanilla from it.
 	discovery_points = 300
 
@@ -80,7 +80,7 @@
 	trash_type = /obj/item/food/grown/bungopit
 	foodtypes = FRUIT
 	juice_typepath = /datum/reagent/consumable/bungojuice
-	tastes = list("bungo" = 2, "tropical fruitiness" = 1)
+	tastes = list("bungo" = 2, "tropikalna owocowość" = 1)
 	distill_reagent = null
 	discovery_points = 300
 
@@ -95,7 +95,7 @@
 	throw_speed = 3
 	throw_range = 7
 	foodtypes = TOXIC
-	tastes = list("acrid bitterness" = 1)
+	tastes = list("gryząca gorycz" = 1)
 
 /obj/item/food/grown/bungopit/Initialize(mapload)
 	. =..()

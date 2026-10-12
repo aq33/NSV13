@@ -34,32 +34,32 @@
 /obj/item/storage/secure/examine(mob/user)
 	. = ..()
 	if(can_hack_open)
-		. += "The service panel is currently <b>[open ? "unscrewed" : "screwed shut"]</b>."
+		. += "Panel serwisowy jest obecnie <b>[open ? "odkręcony" : "przykręcony"]</b>."
 
 /obj/item/storage/secure/attackby(obj/item/W, mob/user, params)
 	if(can_hack_open && SEND_SIGNAL(src, COMSIG_IS_STORAGE_LOCKED))
 		if (W.tool_behaviour == TOOL_SCREWDRIVER)
 			if (W.use_tool(src, user, 20))
 				open = !open
-				to_chat(user, "<span class='notice'>You [open ? "open" : "close"] the service panel.</span>")
+				to_chat(user, "<span class='notice'>[open ? "Otwierasz" : "Zamykasz"] panel serwisowy.</span>")
 			return
 		if (W.tool_behaviour == TOOL_WIRECUTTER)
-			to_chat(user, "<span class='danger'>[src] is protected from this sort of tampering, yet it appears the internal memory wires can still be <b>pulsed</b>.</span>")
+			to_chat(user, "<span class='danger'>[src] jest chroniony przed takim majstrowaniem, ale przewody pamięci wewnętrznej wciąż można <b>pobudzić impulsem</b>.</span>")
 			return
 		if ((W.tool_behaviour == TOOL_MULTITOOL))
 			if(l_hacking)
-				to_chat(user, "<span class='danger'>This safe is already being hacked.</span>")
+				to_chat(user, "<span class='danger'>Ten sejf jest już hakowany.</span>")
 				return
 			if(open)
-				to_chat(user, "<span class='danger'>Now attempting to reset internal memory, please hold.</span>")
+				to_chat(user, "<span class='danger'>Próba resetu pamięci wewnętrznej, proszę czekać.</span>")
 				l_hacking = TRUE
 				if (W.use_tool(src, user, 400))
-					to_chat(user, "<span class='danger'>Internal memory reset - lock has been disengaged.</span>")
+					to_chat(user, "<span class='danger'>Zresetowano pamięć wewnętrzną - zamek został zwolniony.</span>")
 					l_set = FALSE
 
 				l_hacking = FALSE
 				return
-			to_chat(user, "<span class='notice'>You must <b>unscrew</b> the service panel before you can pulse the wiring.</span>")
+			to_chat(user, "<span class='notice'>Zanim pobudzisz przewody impulsem, musisz <b>odkręcić</b> panel serwisowy.</span>")
 			return
 
 	// -> storage/attackby() what with handle insertion, etc
@@ -68,12 +68,12 @@
 /obj/item/storage/secure/attack_self(mob/user)
 	var/locked = SEND_SIGNAL(src, COMSIG_IS_STORAGE_LOCKED)
 	user.set_machine(src)
-	var/dat = text("<TT><B>[]</B><BR>\n\nLock Status: []",src, (locked ? "LOCKED" : "UNLOCKED"))
+	var/dat = text("<TT><B>[]</B><BR>\n\nStan zamka: []",src, (locked ? "LOCKED" : "UNLOCKED"))
 	var/message = "Code"
 	if ((l_set == 0) && (!l_setshort))
-		dat += text("<p>\n<b>5-DIGIT PASSCODE NOT SET.<br>ENTER NEW PASSCODE.</b>")
+		dat += text("<p>\n<b>NIE USTAWIONO 5-CYFROWEGO KODU.<br>WPROWADŹ NOWY KOD.</b>")
 	if (l_setshort)
-		dat += text("<p>\n<font color=red><b>ALERT: MEMORY SYSTEM ERROR - 6040 201</b></font>")
+		dat += text("<p>\n<font color=red><b>ALARM: BŁĄD SYSTEMU PAMIĘCI - 6040 201</b></font>")
 	message = text("[]", code)
 	if (!locked)
 		message = "*****"
@@ -130,7 +130,7 @@
 	throw_speed = 2
 	throw_range = 4
 	w_class = WEIGHT_CLASS_BULKY
-	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
+	attack_verb = list("grzmoci", "okłada", "tłucze", "młóci", "wali")
 
 /obj/item/storage/secure/briefcase/PopulateContents()
 	new /obj/item/paper(src)

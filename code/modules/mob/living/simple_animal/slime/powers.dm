@@ -28,7 +28,7 @@
 		if(Adjacent(C))
 			choices += C
 
-	var/mob/living/M = input(src,"Who do you wish to feed on?") in null|sortNames(choices)
+	var/mob/living/M = input(src,"Kim chcesz się pożywić?") in null|sortNames(choices)
 	if(!M)
 		return 0
 	if(CanFeedon(M))
@@ -69,37 +69,37 @@
 	if(isslime(M))
 		if(silent)
 			return FALSE
-		to_chat(src, "<span class='warning'><i>I can't latch onto another slime...</i></span>")
+		to_chat(src, "<span class='warning'><i>Nie mogę przyczepić się do innego szlamu...</i></span>")
 		return FALSE
 
 	if(isipc(M))
 		if(silent)
 			return FALSE
-		to_chat(src, "<span class='warning'><i>This subject does not have life energy...</i></span>")
+		to_chat(src, "<span class='warning'><i>Ten obiekt nie ma energii życiowej...</i></span>")
 		return FALSE
 
 	if(docile)
 		if(silent)
 			return FALSE
-		to_chat(src, "<span class='notice'><i>I'm not hungry anymore...</i></span>")
+		to_chat(src, "<span class='notice'><i>Już nie jestem głodny...</i></span>")
 		return FALSE
 
 	if(stat)
 		if(silent)
 			return FALSE
-		to_chat(src, "<span class='warning'><i>I must be conscious to do this...</i></span>")
+		to_chat(src, "<span class='warning'><i>Muszę być przytomny, by to zrobić...</i></span>")
 		return FALSE
 
 	if(M.stat == DEAD)
 		if(silent)
 			return FALSE
-		to_chat(src, "<span class='warning'><i>This subject does not have a strong enough life energy...</i></span>")
+		to_chat(src, "<span class='warning'><i>Ten obiekt nie ma wystarczająco silnej energii życiowej...</i></span>")
 		return FALSE
 
 	if(locate(/mob/living/simple_animal/slime) in M.buckled_mobs)
 		if(silent)
 			return FALSE
-		to_chat(src, "<span class='warning'><i>Another slime is already feeding on this subject...</i></span>")
+		to_chat(src, "<span class='warning'><i>Inny szlam już się żywi tym obiektem...</i></span>")
 		return FALSE
 	if(transformeffects & SLIME_EFFECT_SILVER)
 		return FALSE
@@ -109,10 +109,10 @@
 	M.unbuckle_all_mobs(force=1) //Slimes rip other mobs (eg: shoulder parrots) off (Slimes Vs Slimes is already handled in CanFeedon())
 	if(M.buckle_mob(src, force=TRUE))
 		layer = M.layer+0.01 //appear above the target mob
-		M.visible_message("<span class='danger'>[name] has latched onto [M]!</span>", \
-						"<span class='userdanger'>[name] has latched onto [M]!</span>")
+		M.visible_message("<span class='danger'>[name] przyczepia się do [M]!</span>", \
+						"<span class='userdanger'>[name] przyczepia się do [M]!</span>")
 	else
-		to_chat(src, "<span class='warning'><i>I have failed to latch onto the subject!</i></span>")
+		to_chat(src, "<span class='warning'><i>Nie udało mi się przyczepić do obiektu!</i></span>")
 
 /mob/living/simple_animal/slime/proc/Feedstop(silent = FALSE, living=1)
 	if(buckled)
@@ -122,8 +122,8 @@
 			"I am not satisified", "I can not feed from this subject", \
 			"I do not feel nourished", "This subject is not food")]!</span>")
 		if(!silent)
-			visible_message("<span class='warning'>[src] has let go of [buckled]!</span>", \
-							"<span class='notice'><i>I stopped feeding.</i></span>")
+			visible_message("<span class='warning'>[src] puszcza [buckled]!</span>", \
+							"<span class='notice'><i>Przestaję się żywić.</i></span>")
 		layer = initial(layer)
 		buckled.unbuckle_mob(src,force=TRUE)
 
@@ -132,7 +132,7 @@
 	set desc = "This will let you evolve from baby to adult slime."
 
 	if(stat)
-		to_chat(src, "<i>I must be conscious to do this...</i>")
+		to_chat(src, "<i>Muszę być przytomny, by to zrobić...</i>")
 		return
 	if(!is_adult)
 		if(amount_grown >= SLIME_EVOLUTION_THRESHOLD)
@@ -146,9 +146,9 @@
 			regenerate_icons()
 			update_name()
 		else
-			to_chat(src, "<i>I am not ready to evolve yet...</i>")
+			to_chat(src, "<i>Nie jestem jeszcze gotowy do ewolucji...</i>")
 	else
-		to_chat(src, "<i>I have already evolved...</i>")
+		to_chat(src, "<i>Już wyewoluowałem...</i>")
 
 /datum/action/innate/slime/evolve
 	name = "Evolve"
@@ -167,16 +167,16 @@
 	set desc = "This will make you split into four Slimes."
 
 	if(stat)
-		to_chat(src, "<i>I must be conscious to do this...</i>")
+		to_chat(src, "<i>Muszę być przytomny, by to zrobić...</i>")
 		return
 
 	if(is_adult)
 		if(amount_grown >= SLIME_EVOLUTION_THRESHOLD)
 			if(stat)
-				to_chat(src, "<i>I must be conscious to do this...</i>")
+				to_chat(src, "<i>Muszę być przytomny, by to zrobić...</i>")
 				return
 			if(GLOB.total_slimes >= CONFIG_GET(number/max_slimes))
-				to_chat(src, "<i>There are too many of us...</i>")
+				to_chat(src, "<i>Jest nas za dużo...</i>")
 				return
 			var/list/babies = list()
 			var/new_nutrition = SLIME_DEFAULT_NUTRITION
@@ -212,9 +212,9 @@
 				new_slime.key = src.key
 			qdel(src)
 		else
-			to_chat(src, "<i>I am not ready to reproduce yet...</i>")
+			to_chat(src, "<i>Nie jestem jeszcze gotowy do rozmnażania...</i>")
 	else
-		to_chat(src, "<i>I am not old enough to reproduce yet...</i>")
+		to_chat(src, "<i>Nie jestem jeszcze dość dorosły, by się rozmnażać...</i>")
 
 /datum/action/innate/slime/reproduce
 	name = "Reproduce"
@@ -269,7 +269,7 @@
 	set name = "teleport"
 	set desc = "teleport to random location"
 	if(powerlevel <= 0)
-		to_chat(src, "<span class='warning'>No enough power.</span>")
+		to_chat(src, "<span class='warning'>Za mało mocy.</span>")
 	else
 		random_tp()
 

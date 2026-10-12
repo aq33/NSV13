@@ -18,7 +18,7 @@
 	if(!isliving(owner))
 		return
 	if(GLOB.gateway_opening)
-		to_chat(owner, "<span class='sevtug_small'>You cannot warp while the gateway is opening!</span>")
+		to_chat(owner, "<span class='sevtug_small'>Nie możesz się przenosić, gdy brama się otwiera!</span>")
 		return
 	if(warping)
 		button_icon_state = "warp_down"
@@ -30,7 +30,7 @@
 	var/target_loc = get_turf(cam)
 	var/area/AR = get_area(target_loc)
 	if(isclosedturf(target_loc))
-		to_chat(owner, "<span class='sevtug_small'>You cannot warp into dense objects.</span>")
+		to_chat(owner, "<span class='sevtug_small'>Nie możesz przenieść się do litych obiektów.</span>")
 		return
 	if(!AR.clockwork_warp_allowed)
 		to_chat(owner, "<span class='sevtug_small'>[AR.clockwork_warp_fail]</span>")

@@ -66,7 +66,7 @@
 	set desc = "Death"
 	prefs.toggles ^= PREFTOGGLE_DISABLE_DEATHRATTLE
 	prefs.save_preferences()
-	to_chat(usr, "You will [(prefs.toggles & PREFTOGGLE_DISABLE_DEATHRATTLE) ? "no longer" : "now"] get messages when a sentient mob dies.")
+	to_chat(usr, "[(prefs.toggles & PREFTOGGLE_DISABLE_DEATHRATTLE) ? "Nie będziesz już dostawać" : "Będziesz teraz dostawać"] powiadomień o śmierci świadomych istot.")
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Deathrattle", "[!(prefs.toggles & PREFTOGGLE_DISABLE_DEATHRATTLE) ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, maybe you should spend some time reading the comments.
 
 /client/verb/toggle_arrivalrattle()
@@ -74,7 +74,7 @@
 	set category = "Preferences"
 	set desc = "New Player Arrival"
 	prefs.toggles ^= PREFTOGGLE_DISABLE_ARRIVALRATTLE
-	to_chat(usr, "You will [(prefs.toggles & PREFTOGGLE_DISABLE_ARRIVALRATTLE) ? "no longer" : "now"] get messages when someone joins the station.")
+	to_chat(usr, "[(prefs.toggles & PREFTOGGLE_DISABLE_ARRIVALRATTLE) ? "Nie będziesz już dostawać" : "Będziesz teraz dostawać"] powiadomień o dołączeniu kogoś do statku.")
 	prefs.save_preferences()
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Arrivalrattle", "[!(prefs.toggles & PREFTOGGLE_DISABLE_ARRIVALRATTLE) ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, maybe you should rethink where your life went so wrong.
 
@@ -127,9 +127,9 @@
 	prefs.toggles ^= PREFTOGGLE_SOUND_AMBIENCE
 	prefs.save_preferences()
 	if(prefs.toggles & PREFTOGGLE_SOUND_AMBIENCE)
-		to_chat(usr, "You will now hear ambient sounds.")
+		to_chat(usr, "Będziesz teraz słyszeć dźwięki otoczenia.")
 	else
-		to_chat(usr, "You will no longer hear ambient sounds.")
+		to_chat(usr, "Nie będziesz już słyszeć dźwięków otoczenia.")
 		usr.stop_sound_channel(CHANNEL_AMBIENT_EFFECTS)
 		usr.stop_sound_channel(CHANNEL_AMBIENT_MUSIC)
 		usr.stop_sound_channel(CHANNEL_BUZZ)
@@ -144,9 +144,9 @@
 	prefs.toggles ^= PREFTOGGLE_SOUND_SHIP_AMBIENCE
 	prefs.save_preferences()
 	if(prefs.toggles & PREFTOGGLE_SOUND_SHIP_AMBIENCE)
-		to_chat(usr, "You will now hear ship ambience.")
+		to_chat(usr, "Będziesz teraz słyszeć odgłosy statku.")
 	else
-		to_chat(usr, "You will no longer hear ship ambience.")
+		to_chat(usr, "Nie będziesz już słyszeć odgłosów statku.")
 		usr.stop_sound_channel(CHANNEL_BUZZ)
 		usr.client.buzz_playing = FALSE
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ship Ambience", "[usr.client.prefs.toggles & PREFTOGGLE_SOUND_SHIP_AMBIENCE ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, I bet you read this comment expecting to see the same thing :^)
@@ -203,9 +203,9 @@ GLOBAL_LIST_INIT(ghost_forms, sortList(list("ghost","ghostking","ghostian2","ske
 
 /client/proc/pick_form()
 	if(!is_content_unlocked())
-		alert("This setting is for accounts with BYOND premium only.")
+		alert("To ustawienie jest dostępne tylko dla kont BYOND premium.")
 		return
-	var/new_form = input(src, "Thanks for supporting BYOND - Choose your ghostly form:","Thanks for supporting BYOND",null) as null|anything in GLOB.ghost_forms
+	var/new_form = input(src, "Dzięki za wspieranie BYOND - wybierz wygląd ducha:","Dzięki za wspieranie BYOND",null) as null|anything in GLOB.ghost_forms
 	if(new_form)
 		prefs.ghost_form = new_form
 		prefs.save_preferences()
@@ -217,9 +217,9 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 
 /client/proc/pick_ghost_orbit()
 	if(!is_content_unlocked())
-		alert("This setting is for accounts with BYOND premium only.")
+		alert("To ustawienie jest dostępne tylko dla kont BYOND premium.")
 		return
-	var/new_orbit = input(src, "Thanks for supporting BYOND - Choose your ghostly orbit:","Thanks for supporting BYOND",null) as null|anything in GLOB.ghost_orbits
+	var/new_orbit = input(src, "Dzięki za wspieranie BYOND - wybierz orbitę ducha:","Dzięki za wspieranie BYOND",null) as null|anything in GLOB.ghost_orbits
 	if(new_orbit)
 		prefs.ghost_orbit = new_orbit
 		prefs.save_preferences()
@@ -228,7 +228,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 			O.ghost_orbit = new_orbit
 
 /client/proc/pick_ghost_accs()
-	var/new_ghost_accs = alert("Do you want your ghost to show full accessories where possible, hide accessories but still use the directional sprites where possible, or also ignore the directions and stick to the default sprites?",,"full accessories", "only directional sprites", "default sprites")
+	var/new_ghost_accs = alert("Czy twój duch ma pokazywać wszystkie dodatki, gdy to możliwe, ukrywać dodatki, ale nadal używać sprite'ów kierunkowych, czy ignorować kierunki i używać domyślnych sprite'ów?",,"full accessories", "only directional sprites", "default sprites")
 	if(new_ghost_accs)
 		switch(new_ghost_accs)
 			if("full accessories")
@@ -247,7 +247,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	set category = "Preferences"
 	set desc = "Customize your ghastly appearance."
 	if(is_content_unlocked())
-		switch(alert("Which setting do you want to change?",,"Ghost Form","Ghost Orbit","Ghost Accessories"))
+		switch(alert("Które ustawienie chcesz zmienić?",,"Ghost Form","Ghost Orbit","Ghost Accessories"))
 			if("Ghost Form")
 				pick_form()
 			if("Ghost Orbit")
@@ -261,7 +261,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	set name = "Ghosts of Others"
 	set category = "Preferences"
 	set desc = "Change display settings for the ghosts of other players."
-	var/new_ghost_others = alert("Do you want the ghosts of others to show up as their own setting, as their default sprites or always as the default white ghost?",,"Their Setting", "Default Sprites", "White Ghost")
+	var/new_ghost_others = alert("Czy duchy innych mają wyglądać tak, jak sobie ustawili, jako ich domyślne sprite'y, czy zawsze jako domyślny biały duch?",,"Their Setting", "Default Sprites", "White Ghost")
 	if(new_ghost_others)
 		switch(new_ghost_others)
 			if("Their Setting")
@@ -290,7 +290,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	set desc = "Hide/Show Ghost HUD"
 
 	prefs.toggles2 ^= PREFTOGGLE_2_GHOST_HUD
-	to_chat(src, "Ghost HUD will now be [(prefs.toggles2 & PREFTOGGLE_2_GHOST_HUD) ? "visible" : "hidden"].")
+	to_chat(src, "HUD ducha będzie teraz [(prefs.toggles2 & PREFTOGGLE_2_GHOST_HUD) ? "widoczny" : "ukryty"].")
 	prefs.save_preferences()
 	if(isobserver(mob))
 		mob.hud_used.show_hud()
@@ -302,7 +302,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	set desc = "Hide/Show Credits"
 
 	prefs.toggles2 ^= PREFTOGGLE_2_SHOW_CREDITS
-	to_chat(src, "Credits will now be [prefs.toggles2 & PREFTOGGLE_2_SHOW_CREDITS ? "visible" : "hidden"].")
+	to_chat(src, "Napisy końcowe będą teraz [prefs.toggles2 & PREFTOGGLE_2_SHOW_CREDITS ? "widoczne" : "ukryte"].")
 	prefs.save_preferences()
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Credits", "[prefs.toggles2 & PREFTOGGLE_2_SHOW_CREDITS ? "Enabled" : "Disabled"]"))
 
@@ -314,9 +314,9 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	prefs.toggles2 ^= PREFTOGGLE_2_GHOST_INQUISITIVENESS
 	prefs.save_preferences()
 	if(prefs.toggles2 & PREFTOGGLE_2_GHOST_INQUISITIVENESS)
-		to_chat(src, "<span class='notice'>You will now examine everything you click on.</span>")
+		to_chat(src, "<span class='notice'>Teraz będziesz oglądać wszystko, co klikniesz.</span>")
 	else
-		to_chat(src, "<span class='notice'>You will no longer examine things you click on.</span>")
+		to_chat(src, "<span class='notice'>Już nie będziesz oglądać rzeczy, które klikasz.</span>")
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost Inquisitiveness", "[(prefs.toggles2 & PREFTOGGLE_2_GHOST_INQUISITIVENESS) ? "Enabled" : "Disabled"]"))
 
 //Admin Preferences
@@ -328,7 +328,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 		return
 	prefs.toggles ^= PREFTOGGLE_SOUND_ADMINHELP
 	prefs.save_preferences()
-	to_chat(usr, "You will [(prefs.toggles & PREFTOGGLE_SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive.")
+	to_chat(usr, "[(prefs.toggles & PREFTOGGLE_SOUND_ADMINHELP) ? "Będziesz teraz słyszeć" : "Nie będziesz już słyszeć"] dźwięku przy nowych adminhelpach.")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Adminhelp Sound", "[prefs.toggles & PREFTOGGLE_SOUND_ADMINHELP ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/toggleannouncelogin()
@@ -339,7 +339,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 		return
 	prefs.toggles ^= PREFTOGGLE_ANNOUNCE_LOGIN
 	prefs.save_preferences()
-	to_chat(usr, "You will [(prefs.toggles & PREFTOGGLE_ANNOUNCE_LOGIN) ? "now" : "no longer"] have an announcement to other admins when you login.")
+	to_chat(usr, "[(prefs.toggles & PREFTOGGLE_ANNOUNCE_LOGIN) ? "Inni admini będą teraz" : "Inni admini nie będą już"] powiadamiani o twoim zalogowaniu.")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Login Announcement", "[prefs.toggles & PREFTOGGLE_ANNOUNCE_LOGIN ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/toggle_hear_radio()
@@ -350,7 +350,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 		return
 	prefs.chat_toggles ^= CHAT_RADIO
 	prefs.save_preferences()
-	to_chat(usr, "You will [(prefs.chat_toggles & CHAT_RADIO) ? "now" : "no longer"] see radio chatter from nearby radios or speakers")
+	to_chat(usr, "[(prefs.chat_toggles & CHAT_RADIO) ? "Będziesz teraz widzieć" : "Nie będziesz już widzieć"] rozmów z pobliskich radioodbiorników i głośników")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Radio Chatter", "[prefs.chat_toggles & CHAT_RADIO ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/deadchat()
@@ -361,7 +361,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 		return
 	prefs.chat_toggles ^= CHAT_DEAD
 	prefs.save_preferences()
-	to_chat(src, "You will [(prefs.chat_toggles & CHAT_DEAD) ? "now" : "no longer"] see deadchat.")
+	to_chat(src, "[(prefs.chat_toggles & CHAT_DEAD) ? "Będziesz teraz widzieć" : "Nie będziesz już widzieć"] deadchatu.")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Deadchat Visibility", "[prefs.chat_toggles & CHAT_DEAD ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/toggleprayers()
@@ -372,7 +372,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 		return
 	prefs.chat_toggles ^= CHAT_PRAYER
 	prefs.save_preferences()
-	to_chat(src, "You will [(prefs.chat_toggles & CHAT_PRAYER) ? "now" : "no longer"] see prayerchat.")
+	to_chat(src, "[(prefs.chat_toggles & CHAT_PRAYER) ? "Będziesz teraz widzieć" : "Nie będziesz już widzieć"] modlitw.")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Prayer Visibility", "[prefs.chat_toggles & CHAT_PRAYER ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/toggle_prayer_sound()
@@ -383,7 +383,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 		return
 	prefs.toggles ^= PREFTOGGLE_SOUND_PRAYERS
 	prefs.save_preferences()
-	to_chat(usr, "You will [(prefs.toggles & PREFTOGGLE_SOUND_PRAYERS) ? "now" : "no longer"] hear a sound when prayers arrive.")
+	to_chat(usr, "[(prefs.toggles & PREFTOGGLE_SOUND_PRAYERS) ? "Będziesz teraz słyszeć" : "Nie będziesz już słyszeć"] dźwięku przy nowych modlitwach.")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Prayer Sounds", "[prefs.toggles & PREFTOGGLE_SOUND_PRAYERS ? "Enabled" : "Disabled"]"))
 
 /client/proc/colorasay()
@@ -393,9 +393,9 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	if(!holder)
 		return
 	if(!CONFIG_GET(flag/allow_admin_asaycolor))
-		to_chat(src, "Custom Asay color is currently disabled by the server.")
+		to_chat(src, "Własny kolor ASAY jest obecnie wyłączony przez serwer.")
 		return
-	var/new_asaycolor = input(src, "Please select your ASAY color.", "ASAY color", prefs.asaycolor) as color|null
+	var/new_asaycolor = input(src, "Wybierz kolor ASAY.", "Kolor ASAY", prefs.asaycolor) as color|null
 	if(new_asaycolor)
 		prefs.asaycolor = sanitize_ooccolor(new_asaycolor)
 		prefs.save_preferences()
@@ -409,7 +409,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	if(!holder)
 		return
 	if(!CONFIG_GET(flag/allow_admin_asaycolor))
-		to_chat(src, "Custom Asay color is currently disabled by the server.")
+		to_chat(src, "Własny kolor ASAY jest obecnie wyłączony przez serwer.")
 		return
 	prefs.asaycolor = initial(prefs.asaycolor)
 	prefs.save_preferences()

@@ -6,8 +6,8 @@
 // to a storage implant they came with when the Syndicate sent them aboard, with one random low-cost traitor item. The initial agent also has this. The only difference between
 // initial agents and converted ones is that the initial agent has the items required to convert people and the AI.
 /datum/antagonist/overthrow
-	name = "Syndicate mutineer"
-	roundend_category = "syndicate mutineers"
+	name = "Buntownik Syndykatu"
+	roundend_category = "buntownicy Syndykatu"
 	antagpanel_category = "Syndicate Mutineers"
 	banning_key = ROLE_OVERTHROW
 	var/datum/team/overthrow/team
@@ -50,7 +50,7 @@
 
 // Used to name the team at round start. If no name is passed, a syndicate themed one is given randomly.
 /datum/antagonist/overthrow/proc/name_team()
-	var/team_name = stripped_input(owner.current, "Name your team:", "Team name", , MAX_NAME_LEN)
+	var/team_name = stripped_input(owner.current, "Nazwij swoją drużynę:", "Nazwa drużyny", , MAX_NAME_LEN)
 	var/already_taken = FALSE
 	for(var/datum/antagonist/overthrow/O in GLOB.antagonists)
 		if(team_name == O.name)
@@ -58,14 +58,14 @@
 			break
 	if(!team_name || already_taken) // basic protection against two teams with the same name. This could still happen with extreme unluck due to syndicate_name() but it shouldn't break anything.
 		team.name = syndicate_name()
-		to_chat(owner, "<span class='danger'>Since you gave [already_taken ? "an already used" : "no"] name, your team's name has been randomly generated: [team.name]!</span>")
+		to_chat(owner, "<span class='danger'>Ponieważ podano [already_taken ? "już zajętą" : "pustą"] nazwę, wylosowano nazwę drużyny: [team.name]!</span>")
 		return
 	team.name = team_name
 
 // CLOWNMUT removal and HUD creation/being given
 /datum/antagonist/overthrow/apply_innate_effects()
 	..()
-	handle_clown_mutation(owner.current, "Your training has allowed you to overcome your clownish nature, allowing you to wield weapons without harming yourself.")
+	handle_clown_mutation(owner.current, "Dzięki szkoleniu przezwyciężasz swoją klaunią naturę i możesz używać broni, nie raniąc samego siebie.")
 	update_overthrow_icons_added()
 
 // The opposite
@@ -126,24 +126,24 @@
 	)
 	var/where = H.equip_in_one_of_slots(O, slots)
 	if (!where)
-		to_chat(H, "The Syndicate were unfortunately unable to get you the AI module.")
+		to_chat(H, "Syndykat niestety nie zdołał zdobyć dla ciebie modułu SI.")
 	else
-		to_chat(H, "Use the AI board in your [where] to take control of the AI, as requested by the Syndicate.")
+		to_chat(H, "Użyj płytki SI (miejsce: [where]), by przejąć kontrolę nad SI, zgodnie z życzeniem Syndykatu.")
 	// Give the implant converter
 	var/obj/item/overthrow_converter/I = new(H)
 	where = H.equip_in_one_of_slots(I, slots)
 	if (!where)
-		to_chat(H, "The Syndicate were unfortunately unable to get you a converter implant.")
+		to_chat(H, "Syndykat niestety nie zdołał zdobyć dla ciebie implantu przekształcającego.")
 	else
-		to_chat(H, "Use the implanter in your [where] to wake up sleeping syndicate agents, so that they can aid you.")
+		to_chat(H, "Użyj implantatora (miejsce: [where]), by obudzić uśpionych agentów Syndykatu, którzy ci pomogą.")
 
 /datum/antagonist/overthrow/get_team()
 	return team
 
 /datum/antagonist/overthrow/greet()
-	to_chat(owner.current, "<B><font size=3 color=red>You are a syndicate sleeping agent!</font> <font size=2 color=red>Your job is to stage a swift, fairly bloodless coup. Your team has a two-use converter that can be used to convert \
-			anyone you want, although mind shield implants need to be removed firstly for it to work. Your team also has a special version of the Syndicate module to be used to convert the AI, too. You \
-			will be able to use the special storage implant you came aboard with, which contains a random, cheap item from our special selection which will aid in your mission. \
-			Your team objective is to deal with the heads, the AI and a special target who angered us for several reasons which you're not entitled to know. Converting to your team will let us \
-			take control of the station faster, so it should be prioritized, especially over killing, which should be avoided where possible. The other Syndicate teams are NOT friends and should not \
-			be trusted.</font></B>")
+	to_chat(owner.current, "<B><font size=3 color=red>Jesteś uśpionym agentem Syndykatu!</font> <font size=2 color=red>Twoim zadaniem jest przeprowadzić szybki, w miarę bezkrwawy zamach stanu. Twoja drużyna ma dwukrotnego użytku przekształcacz, którym możesz nawrócić \
+			kogo chcesz, choć najpierw trzeba usunąć implanty ochrony umysłu. Drużyna ma też specjalną wersję modułu Syndykatu do przejęcia SI. \
+			Możesz użyć specjalnego implantu schowka, z którym tu przybyłeś - zawiera losowy, tani przedmiot z naszej specjalnej oferty, który pomoże w misji. \
+			Celem drużyny jest rozprawić się z szefami, SI i specjalnym celem, który rozgniewał nas z kilku powodów, których nie musisz znać. Nawracanie na stronę drużyny pozwoli nam \
+			szybciej przejąć stację, więc ma pierwszeństwo, zwłaszcza przed zabijaniem, którego w miarę możliwości należy unikać. Pozostałe drużyny Syndykatu NIE są przyjaciółmi i nie należy \
+			im ufać.</font></B>")

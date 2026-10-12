@@ -55,10 +55,10 @@
 	if(istype(I, /obj/item/stack/cable_coil))
 		var/obj/item/stack/S = I
 		if(obj_integrity == max_integrity)
-			to_chat(user, "<span class='warning'>\The [src] doesn't seem to require repairs.</span>")
+			to_chat(user, "<span class='warning'>Wygląda na to, że [src] nie wymaga naprawy.</span>")
 			return 1
 		if(S.use(1))
-			to_chat(user, "<span class='notice'>You patch up \the [src] with a bit of \the [I].</span>")
+			to_chat(user, "<span class='notice'>Łatasz [src] odrobiną [I].</span>")
 			obj_integrity = min(obj_integrity + 10, max_integrity)
 		return 1
 
@@ -68,14 +68,14 @@
 	return ..()
 
 /obj/item/computer_hardware/multitool_act(mob/living/user, obj/item/I)
-	to_chat(user, "***** DIAGNOSTICS REPORT *****")
+	to_chat(user, "***** RAPORT DIAGNOSTYCZNY *****")
 	diagnostics(user)
 	to_chat(user, "******************************")
 	return TRUE
 
 /// Called on multitool click, prints diagnostic information to the user.
 /obj/item/computer_hardware/proc/diagnostics(mob/user)
-	to_chat(user, "Hardware Integrity Test... (Corruption: [damage]/[max_damage]) [damage > damage_failure ? "FAIL" : damage > damage_malfunction ? "WARN" : "PASS"]")
+	to_chat(user, "Test integralności sprzętu... (uszkodzenie: [damage]/[max_damage]) [damage > damage_failure ? "BŁĄD" : damage > damage_malfunction ? "OSTRZ." : "OK"]")
 
 /// Handles damage checks
 /obj/item/computer_hardware/proc/check_functionality()
@@ -94,11 +94,11 @@
 /obj/item/computer_hardware/examine(var/mob/user)
 	. = ..()
 	if(damage > damage_failure)
-		. += "<span class='danger'>It seems to be severely damaged!</span>"
+		. += "<span class='danger'>Wygląda na poważnie uszkodzony!</span>"
 	else if(damage > damage_malfunction)
-		. += "<span class='warning'>It seems to be damaged!</span>"
+		. += "<span class='warning'>Wygląda na uszkodzony!</span>"
 	else if(damage)
-		. += "<span class='notice'>It seems to be slightly damaged.</span>"
+		. += "<span class='notice'>Wygląda na lekko uszkodzony.</span>"
 
 /// Component-side compatibility check.
 /obj/item/computer_hardware/proc/can_install(obj/item/modular_computer/install_into, mob/living/user = null)

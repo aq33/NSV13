@@ -15,18 +15,17 @@
 	if(obj_flags & IN_USE)
 		return
 	if(isipc(user))
-		user.visible_message("<span class='warning'> As [user] tries to pull \the [src]'s lever, the machine seems to hesitate a bit.</span>", "<span class='warning'>You feel as if you are trying to put at stake something you don't even have...\ You suddenly feel your mind... Suboptimal?</span>")
+		user.visible_message("<span class='warning'> Gdy [user] próbuje pociągnąć dźwignię [src], maszyna zdaje się nieco wahać.</span>", "<span class='warning'>Czujesz się, jakbyś próbował postawić na szali coś, czego nawet nie masz...\ Nagle czujesz, że twój umysł jest... nieoptymalny?</span>")
 		user.adjustOrganLoss(ORGAN_SLOT_BRAIN, 10)
 	else
 		user.adjustCloneLoss(20)
 	obj_flags |= IN_USE
 
 	if(user.stat)
-		to_chat(user, "<span class='userdanger'>No... just one more try...</span>")
+		to_chat(user, "<span class='userdanger'>Nie... jeszcze tylko jedna próba...</span>")
 		user.gib()
 	else
-		user.visible_message("<span class='warning'>[user] pulls [src]'s lever with a glint in [user.p_their()] eyes!</span>", "<span class='warning'>You feel a draining as you pull the lever, but you \
-		know it'll be worth it.</span>")
+		user.visible_message("<span class='warning'>[user] pociąga dźwignię [src] z błyskiem w oczach!</span>", "<span class='warning'>Pociągając dźwignię, czujesz, jak coś z ciebie uchodzi, ale wiesz, że będzie warto.</span>")
 	icon_state = "slots2"
 	playsound(src, 'sound/lavaland/cursed_slot_machine.ogg', 50, 0)
 	addtimer(CALLBACK(src, PROC_REF(determine_victor), user), 50)
@@ -38,11 +37,11 @@
 		playsound(src, 'sound/lavaland/cursed_slot_machine_jackpot.ogg', 50, 0)
 		new/obj/structure/cursed_money(get_turf(src))
 		if(user)
-			to_chat(user, "<span class='boldwarning'>You've hit jackpot. Laughter echoes around you as your reward appears in the machine's place.</span>")
+			to_chat(user, "<span class='boldwarning'>Trafiłeś główną wygraną. Wokół rozbrzmiewa śmiech, a w miejscu maszyny pojawia się twoja nagroda.</span>")
 		qdel(src)
 	else
 		if(user)
-			to_chat(user, "<span class='boldwarning'>Fucking machine! Must be rigged. Still... one more try couldn't hurt, right?</span>")
+			to_chat(user, "<span class='boldwarning'>Pieprzona maszyna! Musi być ustawiona. Ale... jedna próba więcej nie zaszkodzi, prawda?</span>")
 
 
 /obj/structure/cursed_money
@@ -58,19 +57,15 @@
 	addtimer(CALLBACK(src, PROC_REF(collapse)), 600)
 
 /obj/structure/cursed_money/proc/collapse()
-	visible_message("<span class='warning'>[src] falls in on itself, \
-		canvas rotting away and contents vanishing.</span>")
+	visible_message("<span class='warning'>[src] zapada się w sobie, płótno gnije, a zawartość znika.</span>")
 	qdel(src)
 
 /obj/structure/cursed_money/attack_hand(mob/living/user)
 	. = ..()
 	if(.)
 		return
-	user.visible_message("<span class='warning'>[user] opens the bag and \
-		and removes a die. The bag then vanishes.</span>",
-		"<span class='boldwarning'>You open the bag...!</span>\n\
-		<span class='danger'>And see a bag full of dice. Confused, \
-		you take one... and the bag vanishes.</span>")
+	user.visible_message("<span class='warning'>[user] otwiera worek i wyjmuje z niego kość. Worek znika.</span>",
+		"<span class='boldwarning'>Otwierasz worek...!</span>\n<span class='danger'>I widzisz worek pełen kości. Zdezorientowany bierzesz jedną... a worek znika.</span>")
 	var/turf/T = get_turf(user)
 	var/obj/item/dice/d20/fate/one_use/critical_fail = new(T)
 	user.put_in_hands(critical_fail)
@@ -90,10 +85,10 @@
 	if(ishuman(mover))
 		var/mob/living/carbon/human/H = mover
 		if(H.nutrition >= NUTRITION_LEVEL_FAT)
-			H.visible_message("<span class='warning'>[H] pushes through [src]!</span>", "<span class='notice'>You've seen and eaten worse than this.</span>")
+			H.visible_message("<span class='warning'>[H] przepycha się przez [src]!</span>", "<span class='notice'>Widziałeś i jadłeś gorsze rzeczy.</span>")
 			return TRUE
 		else
-			to_chat(H, "<span class='warning'>You're repulsed by even looking at [src]. Only a pig could force themselves to go through it.</span>")
+			to_chat(H, "<span class='warning'>Brzydzi cię sam widok [src]. Tylko świnia zmusiłaby się, żeby przez to przejść.</span>")
 	if(istype(mover, /mob/living/simple_animal/hostile/morph))
 		return TRUE
 
@@ -110,8 +105,8 @@
 	..()
 
 /obj/structure/mirror/magic/pride/curse(mob/user)
-	user.visible_message("<span class='danger'><B>The ground splits beneath [user] as [user.p_their()] hand leaves the mirror!</B></span>", \
-	"<span class='notice'>Perfect. Much better! Now <i>nobody</i> will be able to resist yo-</span>")
+	user.visible_message("<span class='danger'><B>Ziemia rozstępuje się pod [user], gdy jego dłoń odrywa się od lustra!</B></span>", \
+	"<span class='notice'>Idealnie. O wiele lepiej! Teraz <i>nikt</i> nie będzie w stanie ci się opr-</span>")
 
 	var/turf/T = get_turf(user)
 	var/list/levels = SSmapping.levels_by_trait(ZTRAIT_DYNAMIC_LEVEL)
@@ -152,5 +147,5 @@
 			H.dna.transfer_identity(user, transfer_SE=1)
 			user.updateappearance(mutcolor_update=1)
 			user.domutcheck()
-			user.visible_message("<span class='warning'>[user]'s appearance shifts into [H]'s!</span>", \
-			"<span class='boldannounce'>[H.p_they(TRUE)] think[H.p_s()] [H.p_theyre()] <i>sooo</i> much better than you. Not anymore, [H.p_they()] won't.</span>")
+			user.visible_message("<span class='warning'>Wygląd [user] zmienia się w wygląd [H]!</span>", \
+			"<span class='boldannounce'>Myśli, że jest <i>dużo</i> lepszy od ciebie. Już nie będzie.</span>")

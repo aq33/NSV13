@@ -688,7 +688,7 @@ GLOBAL_LIST_EMPTY(possible_items)
 		return
 
 	if (new_target == "custom") //Can set custom items.
-		var/custom_path = input(admin,"Search for target item type:","Type") as null|text
+		var/custom_path = input(admin,"Wyszukaj typ przedmiotu docelowego:","Type") as null|text
 		if (!custom_path)
 			return
 		var/obj/item/custom_target = pick_closest_path(custom_path, make_types_fancy(subtypesof(/obj/item)))
@@ -847,7 +847,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	return (captured_amount >= target_amount) || ..()
 
 /datum/objective/capture/admin_edit(mob/admin)
-	var/count = input(admin,"How many mobs to capture ?","capture",target_amount) as num|null
+	var/count = input(admin,"Ile mobów schwytać?","capture",target_amount) as num|null
 	if(count)
 		target_amount = count
 	update_explanation_text()
@@ -897,7 +897,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	explanation_text = "Pochłoń [target_amount] kompatybilnych genów."
 
 /datum/objective/absorb/admin_edit(mob/admin)
-	var/count = input(admin,"How many people to absorb?","absorb",target_amount) as num|null
+	var/count = input(admin,"Ile osób wchłonąć?","absorb",target_amount) as num|null
 	if(count)
 		target_amount = count
 	update_explanation_text()
@@ -979,7 +979,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		var/mob/new_target = input(admin,"Select target:", "Objective target") as null|anything in sortNames(possible_targets)
 		set_target(new_target.mind)
 	else
-		to_chat(admin, "No active AIs with minds")
+		to_chat(admin, "Brak aktywnych SI z umysłami")
 	update_explanation_text()
 
 /datum/objective/destroy/internal

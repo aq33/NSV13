@@ -15,20 +15,20 @@
 	if(!hive.hivemembers)
 		return
 	if(target.mind?.assigned_role in GLOB.security_positions || CAPTAIN)
-		to_chat(user, "<span class='warning'>A subconsciously trained response barely protects [target.name]'s mind.</span>")
-		to_chat(target, "<span class='assimilator'>Powerful mental attacks strike out against us, our training allows us to barely overcome it.</span>")
+		to_chat(user, "<span class='warning'>Podświadomie wyćwiczona reakcja ledwo chroni umysł [target.name].</span>")
+		to_chat(target, "<span class='assimilator'>Uderzają w nas potężne ataki umysłowe, a nasze szkolenie ledwo pozwala je odeprzeć.</span>")
 		return
 	if(HAS_TRAIT(target, TRAIT_MINDSHIELD))
 		if(!do_after(user,200,0))
 			for(var/obj/item/implant/mindshield/M in target.implants)
-				to_chat(user, "<span class='notice'>We shatter their mental protections!</span>")
-				to_chat(target, "<span class='assimilator'>You feel a pang of pain course through your head!</span>")
+				to_chat(user, "<span class='notice'>Roztrzaskujemy ochronę tego umysłu!</span>")
+				to_chat(target, "<span class='assimilator'>Czujesz ukłucie bólu przeszywające głowę!</span>")
 				flash_color(target, flash_color="#800080", flash_time=10)
 				qdel(M)
 
 		else
-			to_chat(user, "<span class='notice'>Our concentration has been broken!</span>")
+			to_chat(user, "<span class='notice'>Nasza koncentracja została przerwana!</span>")
 	else
-		to_chat(user, "<span class='warning'>No protections are present in [target]'s mind.</span>")
+		to_chat(user, "<span class='warning'>Umysł [target] nie ma żadnej ochrony.</span>")
 	if(!success)
 		revert_cast()

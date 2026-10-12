@@ -61,12 +61,12 @@
 	check_gods_battle()
 
 /obj/eldritch/narsie/proc/greeting_message()
-	send_to_playing_players("<span class='narsie'>NAR'SIE HAS RISEN</span>")
+	send_to_playing_players("<span class='narsie'>NAR'SIE POWSTAŁA</span>")
 	sound_to_playing_players('sound/creatures/narsie_rises.ogg')
 	var/area/area = get_area(src)
 	if(area)
 		var/mutable_appearance/alert_overlay = mutable_appearance('icons/effects/cult_effects.dmi', "ghostalertsie")
-		notify_ghosts("Nar'Sie has risen in [area]. Reach out to the Geometer to be given a new shell for your soul.", source = src, alert_overlay = alert_overlay, action = NOTIFY_ATTACK)
+		notify_ghosts("Nar'Sie powstała w [area]. Zwróć się do Geometry, by otrzymać nową powłokę dla duszy.", source = src, alert_overlay = alert_overlay, action = NOTIFY_ATTACK)
 	narsie_spawn_animation()
 
 /obj/eldritch/narsie/Destroy()
@@ -115,10 +115,10 @@
 				if(DT_PROB(max(SSticker.mode?.cult.len/2, 15), delta_time))
 					SEND_SOUND(world, 'sound/magic/clockwork/anima_fragment_death.ogg')
 					SEND_SOUND(world, 'sound/effects/explosionfar.ogg')
-					to_chat(world, "<span class='narsie'>You really thought you could best me twice?</span>")
+					to_chat(world, "<span class='narsie'>Naprawdę myśleliście, że pokonacie mnie dwa razy?</span>")
 					QDEL_NULL(clashing)
 					for(var/datum/mind/M as() in GLOB.servants_of_ratvar)
-						to_chat(M, "<span class='userdanger'>You feel a stabbing pain in your chest... This can't be happening!</span>")
+						to_chat(M, "<span class='userdanger'>Czujesz kłujący ból w piersi... To nie może się dziać!</span>")
 						M.current?.dust()
 
 /obj/eldritch/narsie/Bump(atom/target)
@@ -132,7 +132,7 @@
 	for (var/mob/living/carbon/victim in viewers(NARSIE_CONSUME_RANGE, src))
 		if (victim.stat == CONSCIOUS)
 			if (!iscultist(victim))
-				to_chat(victim, "<span class='cultsmall'>You feel conscious thought crumble away in an instant as you gaze upon [src]...</span>")
+				to_chat(victim, "<span class='cultsmall'>Gdy spoglądasz na [src], świadoma myśl rozpada się w jednej chwili...</span>")
 				victim.apply_effect(NARSIE_MESMERIZE_EFFECT, EFFECT_STUN)
 
 /// Narsie rewards her cultists with being devoured first, then picks a ghost to follow.
@@ -179,12 +179,12 @@
 	if (food == old_target)
 		return
 
-	to_chat(old_target, "<span class='cultsmall'>NAR'SIE HAS LOST INTEREST IN YOU.</span>")
+	to_chat(old_target, "<span class='cultsmall'>NAR'SIE STRACIŁA TOBĄ ZAINTERESOWANIE.</span>")
 	singularity_component.target = food
 	if(ishuman(food))
-		to_chat(food, "<span class='cult'>NAR'SIE HUNGERS FOR YOUR SOUL.</span>")
+		to_chat(food, "<span class='cult'>NAR'SIE PRAGNIE TWOJEJ DUSZY.</span>")
 	else
-		to_chat(food, "<span class='cult'>NAR'SIE HAS CHOSEN YOU TO LEAD HER TO HER NEXT MEAL.</span>")
+		to_chat(food, "<span class='cult'>NAR'SIE WYBRAŁA CIEBIE, BYŚ ZAPROWADZIŁ JĄ DO JEJ NASTĘPNEGO POSIŁKU.</span>")
 
 /// Called to make Nar'Sie convert objects to cult stuff, or to eat
 /obj/eldritch/narsie/consume(atom/target)
@@ -202,9 +202,9 @@
 
 /obj/eldritch/narsie/proc/begin_the_end()
 	sleep(50)
-	priority_announce("An acausal dimensional event has been detected in your sector. Event has been flagged EXTINCTION-CLASS. Directing all available assets toward simulating solutions. SOLUTION ETA: 60 SECONDS.","Central Command Higher Dimensional Affairs", 'sound/misc/airraid.ogg')
+	priority_announce("W waszym sektorze wykryto akauzalne zdarzenie wymiarowe. Zdarzenie oznaczono jako KLASA WYMARCIA. Kierujemy wszystkie dostępne zasoby do symulowania rozwiązań. ROZWIĄZANIE ZA: 60 SEKUND.","Wydział Spraw Wyższych Wymiarów Centrali", 'sound/misc/airraid.ogg')
 	sleep(500)
-	priority_announce("Simulations on acausal dimensional event complete. Deploying solution package now. Deployment ETA: ONE MINUTE. ", "Central Command Higher Dimensional Affairs", SSstation.announcer.get_rand_alert_sound())
+	priority_announce("Symulacje akauzalnego zdarzenia wymiarowego zakończone. Wdrażamy pakiet rozwiązania. Wdrożenie za: JEDNĄ MINUTĘ. ", "Wydział Spraw Wyższych Wymiarów Centrali", SSstation.announcer.get_rand_alert_sound())
 	sleep(50)
 	set_security_level("delta")
 	SSshuttle.registerHostileEnvironment(src)

@@ -9,9 +9,9 @@
 		/datum/reagent/water = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 4
 	)
-	tastes = list("tasteless soup" = 1)
+	tastes = list("bezsmakowa zupa" = 1)
 	foodtypes = VEGETABLES
-	eatverbs = list("slurp", "sip", "inhale", "drink")
+	eatverbs = list("siorbie", "popija", "wciąga", "pije")
 
 /obj/item/food/soup/wish
 	name = "wish soup"
@@ -20,7 +20,7 @@
 	food_reagents = list(
 		/datum/reagent/water = 10
 	)
-	tastes = list("wishes" = 1)
+	tastes = list("życzenia" = 1)
 
 /obj/item/food/soup/wish/Initialize(mapload)
 	. = ..()
@@ -40,7 +40,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 8,
 		/datum/reagent/water = 5
 	)
-	tastes = list("meat" = 1)
+	tastes = list("mięso" = 1)
 	foodtypes = MEAT
 
 /obj/item/food/soup/slime
@@ -53,7 +53,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 9,
 		/datum/reagent/water = 5
 	)
-	tastes = list("slime" = 1)
+	tastes = list("szlam" = 1)
 	foodtypes = TOXIC | SUGAR
 
 /obj/item/food/soup/blood
@@ -66,7 +66,7 @@
 		/datum/reagent/water = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 10
 	)
-	tastes = list("iron" = 1)
+	tastes = list("żelazo" = 1)
 	foodtypes = GORE //its literally blood
 
 /obj/item/food/soup/wingfangchu
@@ -79,7 +79,7 @@
 		/datum/reagent/consumable/soysauce = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 7
 	)
-	tastes = list("soy" = 1)
+	tastes = list("soja" = 1)
 	foodtypes = MEAT
 
 /obj/item/food/soup/clownstears
@@ -93,7 +93,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 16,
 		/datum/reagent/consumable/clownstears = 10
 	)
-	tastes = list("a bad joke" = 1)
+	tastes = list("kiepski żart" = 1)
 	foodtypes = FRUIT | SUGAR
 
 /obj/item/food/soup/vegetable
@@ -105,7 +105,7 @@
 		/datum/reagent/water = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 8
 	)
-	tastes = list("vegetables" = 1)
+	tastes = list("warzywa" = 1)
 	foodtypes = VEGETABLES
 
 /obj/item/food/soup/nettle
@@ -119,7 +119,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 9,
 		/datum/reagent/medicine/omnizine = 5
 	)
-	tastes = list("nettles" = 1)
+	tastes = list("pokrzywy" = 1)
 	foodtypes = VEGETABLES
 
 /obj/item/food/soup/mystery
@@ -160,7 +160,7 @@
 		/datum/reagent/consumable/tomatojuice = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 4
 	)
-	tastes = list("hot peppers" = 1)
+	tastes = list("ostre papryki" = 1)
 	foodtypes = VEGETABLES | MEAT
 
 /obj/item/food/soup/coldchili
@@ -174,7 +174,7 @@
 		/datum/reagent/consumable/tomatojuice = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 4
 	)
-	tastes = list("tomato" = 1, "mint" = 1)
+	tastes = list("pomidor" = 1, "mięta" = 1)
 	foodtypes = VEGETABLES | MEAT
 
 /obj/item/food/soup/monkeysdelight
@@ -187,7 +187,7 @@
 		/datum/reagent/consumable/banana = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 10
 	)
-	tastes = list("the jungle" = 1, "banana" = 1)
+	tastes = list("dżungla" = 1, "banan" = 1)
 	foodtypes = FRUIT
 
 /obj/item/food/soup/tomato
@@ -199,7 +199,7 @@
 		/datum/reagent/consumable/tomatojuice = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 3
 	)
-	tastes = list("tomato" = 1)
+	tastes = list("pomidor" = 1)
 	foodtypes = VEGETABLES
 
 /obj/item/food/soup/tomato/eyeball
@@ -213,7 +213,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/liquidgibs = 3
 	)
-	tastes = list("tomato" = 1, "squirming" = 1)
+	tastes = list("pomidor" = 1, "wicie się" = 1)
 	foodtypes = MEAT | GORE
 
 /obj/item/food/soup/miso
@@ -237,7 +237,7 @@
 		/datum/reagent/consumable/nutriment = 9,
 		/datum/reagent/consumable/nutriment/vitamin = 6
 	)
-	tastes = list("mushroom" = 1)
+	tastes = list("grzyb" = 1)
 	foodtypes = VEGETABLES | DAIRY
 
 /obj/item/food/soup/beet
@@ -267,7 +267,7 @@
 		/datum/reagent/drug/mushroomhallucinogen = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5
 	)
-	tastes = list("jelly" = 1, "mushroom" = 1)
+	tastes = list("galaretka" = 1, "grzyb" = 1)
 	foodtypes = VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -282,7 +282,7 @@
 		/datum/reagent/toxin/amatoxin = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5
 	)
-	tastes = list("jelly" = 1, "mushroom" = 1)
+	tastes = list("galaretka" = 1, "grzyb" = 1)
 	foodtypes = VEGETABLES | TOXIC
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -297,7 +297,7 @@
 	)
 	bite_consumption = 7
 	max_volume = 100
-	tastes = list("tomato" = 1, "carrot" = 1)
+	tastes = list("pomidor" = 1, "marchewka" = 1)
 	foodtypes = VEGETABLES | MEAT
 
 /obj/item/food/soup/sweetpotato
@@ -309,7 +309,7 @@
 		/datum/reagent/water = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 6
 	)
-	tastes = list("sweet potato" = 1)
+	tastes = list("batat" = 1)
 	foodtypes = VEGETABLES | SUGAR
 
 /obj/item/food/soup/beet/red
@@ -321,7 +321,7 @@
 		/datum/reagent/water = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 3
 	)
-	tastes = list("beet" = 1)
+	tastes = list("burak" = 1)
 	foodtypes = VEGETABLES
 
 /obj/item/food/soup/bisque
@@ -334,7 +334,7 @@
 		/datum/reagent/water = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 6
 	)
-	tastes = list("creamy texture" = 1, "crab" = 4)
+	tastes = list("kremowa konsystencja" = 1, "krab" = 4)
 	foodtypes = MEAT
 
 /obj/item/food/soup/electron
@@ -345,7 +345,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/liquidelectricity = 12
 	)
-	tastes = list("mushroom" = 1, "electrons" = 4)
+	tastes = list("grzyb" = 1, "elektrony" = 4)
 	foodtypes = VEGETABLES | TOXIC
 
 /obj/item/food/soup/bungocurry
@@ -358,7 +358,7 @@
 		/datum/reagent/consumable/capsaicin = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 5
 	)
-	tastes = list("bungo" = 2, "hot curry" = 4, "tropical sweetness" = 1)
+	tastes = list("bungo" = 2, "ostre curry" = 4, "tropikalna słodycz" = 1)
 	foodtypes = VEGETABLES | FRUIT | DAIRY
 
 /obj/item/food/soup/mammi
@@ -380,5 +380,5 @@
 		/datum/reagent/consumable/milk = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 6
 	)
-	tastes = list("oats" = 1, "milk" = 1)
+	tastes = list("owies" = 1, "mleko" = 1)
 	foodtypes = DAIRY | GRAIN | BREAKFAST

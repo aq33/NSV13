@@ -61,7 +61,7 @@ Slimecrossing Armor
 	set_light(5)
 
 /obj/structure/light_prism/attack_hand(mob/user)
-	to_chat(user, "<span class='notice'>You dispel [src].</span>")
+	to_chat(user, "<span class='notice'>Rozpraszasz [src].</span>")
 	qdel(src)
 
 /datum/action/item_action/change_prism_colour
@@ -73,7 +73,7 @@ Slimecrossing Armor
 	if(!IsAvailable())
 		return
 	var/obj/item/clothing/glasses/prism_glasses/glasses = target
-	var/new_color = input(owner, "Choose the lens color:", "Color change",glasses.glasses_color) as color|null
+	var/new_color = input(owner, "Wybierz kolor soczewek:", "Zmiana koloru",glasses.glasses_color) as color|null
 	if(!new_color)
 		return
 	glasses.glasses_color = new_color
@@ -88,13 +88,13 @@ Slimecrossing Armor
 		return
 	var/obj/item/clothing/glasses/prism_glasses/glasses = target
 	if(locate(/obj/structure/light_prism) in get_turf(owner))
-		to_chat(owner, "<span class='warning'>There isn't enough ambient energy to fabricate another light prism here.</span>")
+		to_chat(owner, "<span class='warning'>Nie ma tu dość energii otoczenia, by wytworzyć kolejny pryzmat światła.</span>")
 		return
 	if(istype(glasses))
 		if(!glasses.glasses_color)
-			to_chat(owner, "<span class='warning'>The lens is oddly opaque...</span>")
+			to_chat(owner, "<span class='warning'>Soczewka jest dziwnie nieprzejrzysta...</span>")
 			return
-		to_chat(owner, "<span class='notice'>You channel nearby light into a glowing, ethereal prism.</span>")
+		to_chat(owner, "<span class='notice'>Skupiasz pobliskie światło w świecący, eteryczny pryzmat.</span>")
 		new /obj/structure/light_prism(get_turf(owner), glasses.glasses_color)
 
 /obj/item/clothing/head/peaceflower
@@ -129,7 +129,7 @@ Slimecrossing Armor
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(src == C.head)
-			to_chat(user, "<span class='warning'>You feel at peace. <b style='color:pink'>Why would you want anything else?</b></span>")
+			to_chat(user, "<span class='warning'>Czujesz spokój. <b style='color:pink'>Czego jeszcze mógłbyś chcieć?</b></span>")
 			return
 	return ..()
 

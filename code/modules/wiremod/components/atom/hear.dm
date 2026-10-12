@@ -5,7 +5,7 @@
  */
 /obj/item/circuit_component/hear
 	display_name = "Voice Activator"
-	display_desc = "A component that listens for messages. Requires a shell."
+	display_desc = "Komponent, który nasłuchuje wiadomości. Wymaga obudowy."
 
 	/// The message heard
 	var/datum/port/output/message_port

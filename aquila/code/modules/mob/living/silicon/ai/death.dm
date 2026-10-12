@@ -2,10 +2,10 @@
 	. = ..()
 	if (hijacking)
 		hijacking.forceMove(get_turf(src))
-		visible_message("<span class='notice'>A small circuit board breaks off of [src], falling to the ground.</span>")
+		visible_message("<span class='notice'>Od [src] odłamuje się mała płytka drukowana i spada na ziemię.</span>")
 		to_chat(src, "<span class='binarysay' style='font-size: 125%'>dd: input/output error</span>")
 		hijacking = null
 	if (mind?.has_antag_datum(/datum/antagonist/hijacked_ai))
-		visible_message("<span class='notice'>A small circuit board breaks off of [src], breaking into a thousand tiny pieces upon hitting the ground.</span>")
+		visible_message("<span class='notice'>Od [src] odłamuje się mała płytka drukowana i rozpada się na tysiąc kawałeczków po uderzeniu o ziemię.</span>")
 		to_chat(src, "<span class='binarysay' style='font-size: 125%'>/tmp/ai-hijack: input/output error</span>")
 		mind.remove_antag_datum(/datum/antagonist/hijacked_ai)

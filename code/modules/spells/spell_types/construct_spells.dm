@@ -218,22 +218,22 @@
 
 /obj/effect/proc_holder/spell/targeted/abyssal_gaze/cast(list/targets, mob/user = usr)
 	if(!LAZYLEN(targets))
-		to_chat(user, "<span class='notice'>No target found in range.</span>")
+		to_chat(user, "<span class='notice'>W zasięgu nie znaleziono celu.</span>")
 		revert_cast()
 		return
 
 	var/mob/living/carbon/target = targets[1]
 
 	if(!(target in oview(range)))
-		to_chat(user, "<span class='notice'>[target] is too far away!</span>")
+		to_chat(user, "<span class='notice'>[target] jest za daleko!</span>")
 		revert_cast()
 		return
 
 	if(target.anti_magic_check(TRUE, TRUE))
-		to_chat(target, "<span class='warning'>You feel a freezing darkness closing in on you, but it rapidly dissipates.</span>")
+		to_chat(target, "<span class='warning'>Czujesz, jak otacza cię lodowata ciemność, ale szybko się rozprasza.</span>")
 		return
 
-	to_chat(target, "<span class='userdanger'>A freezing darkness surrounds you...</span>")
+	to_chat(target, "<span class='userdanger'>Otacza cię lodowata ciemność...</span>")
 	target.playsound_local(get_turf(target), 'sound/hallucinations/i_see_you1.ogg', 50, 1)
 	user.playsound_local(get_turf(user), 'sound/effects/ghost2.ogg', 50, 1)
 	target.become_blind(MAGIC_BLIND)
@@ -263,29 +263,29 @@
 
 /obj/effect/proc_holder/spell/targeted/dominate/cast(list/targets, mob/user = usr)
 	if(!LAZYLEN(targets))
-		to_chat(user, "<span class='notice'>No target found in range.</span>")
+		to_chat(user, "<span class='notice'>W zasięgu nie znaleziono celu.</span>")
 		revert_cast()
 		return
 
 	var/mob/living/simple_animal/S = targets[1]
 
 	if(S.ckey)
-		to_chat(user, "<span class='warning'>[S] is too intelligent to dominate!</span>")
+		to_chat(user, "<span class='warning'>[S] jest zbyt inteligentny, by go zdominować!</span>")
 		revert_cast()
 		return
 
 	if(S.stat)
-		to_chat(user, "<span class='warning'>[S] is dead!</span>")
+		to_chat(user, "<span class='warning'>[S] nie żyje!</span>")
 		revert_cast()
 		return
 
 	if(!istype(S) || S.sentience_type != SENTIENCE_ORGANIC)
-		to_chat(user, "<span class='warning'>[S] cannot be dominated!</span>")
+		to_chat(user, "<span class='warning'>Nie można zdominować [S]!</span>")
 		revert_cast()
 		return
 
 	if(!(S in oview(range)))
-		to_chat(user, "<span class='notice'>[S] is too far away!</span>")
+		to_chat(user, "<span class='notice'>[S] jest za daleko!</span>")
 		revert_cast()
 		return
 

@@ -146,29 +146,29 @@
  */
 /mob/proc/get_stat_tab_status()
 	var/list/tab_data = list()
-	tab_data["Map"] = GENERATE_STAT_TEXT("[SSmapping.config?.map_name || "Loading..."]")
+	tab_data["Mapa"] = GENERATE_STAT_TEXT("[SSmapping.config?.map_name || "Ładowanie..."]")
 	var/datum/map_config/cached = SSmapping.next_map_config
 	if(cached)
-		tab_data["Next Map"] = GENERATE_STAT_TEXT(cached.map_name)
-	tab_data["Round ID"] = GENERATE_STAT_TEXT("[GLOB.round_id ? GLOB.round_id : "Null"]")
-	tab_data["Server Time"] = GENERATE_STAT_TEXT(time2text(world.timeofday,"YYYY-MM-DD hh:mm:ss"))
-	tab_data["Station Time"] = GENERATE_STAT_TEXT(station_time_timestamp())
+		tab_data["Następna mapa"] = GENERATE_STAT_TEXT(cached.map_name)
+	tab_data["ID rundy"] = GENERATE_STAT_TEXT("[GLOB.round_id ? GLOB.round_id : "Null"]")
+	tab_data["Czas serwera"] = GENERATE_STAT_TEXT(time2text(world.timeofday,"YYYY-MM-DD hh:mm:ss"))
+	tab_data["Czas na statku"] = GENERATE_STAT_TEXT(station_time_timestamp())
 	tab_data["divider_1"] = GENERATE_STAT_BLANK
 
-	tab_data["Time Dilation"] = GENERATE_STAT_TEXT("[round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)")
+	tab_data["Spowolnienie czasu"] = GENERATE_STAT_TEXT("[round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)")
 	if (SSticker.round_start_time)
-		tab_data["Internal Round Timer"] = GENERATE_STAT_TEXT(time2text(world.time - SSticker.round_start_time, "hh:mm:ss", 0))
-		tab_data["Actual Round Timer"] = GENERATE_STAT_TEXT(time2text(world.timeofday - SSticker.round_start_timeofday, "hh:mm:ss", 0))
+		tab_data["Wewnętrzny czas rundy"] = GENERATE_STAT_TEXT(time2text(world.time - SSticker.round_start_time, "hh:mm:ss", 0))
+		tab_data["Rzeczywisty czas rundy"] = GENERATE_STAT_TEXT(time2text(world.timeofday - SSticker.round_start_timeofday, "hh:mm:ss", 0))
 	else
-		tab_data["Lobby Timer"] = GENERATE_STAT_TEXT(worldtime2text())
+		tab_data["Czas w lobby"] = GENERATE_STAT_TEXT(worldtime2text())
 	tab_data["divider_2"] = GENERATE_STAT_BLANK
 
 	if(!SSticker.HasRoundStarted())
-		tab_data["Players Ready/Connected"] = GENERATE_STAT_TEXT("[SSticker.totalPlayersReady]/[GLOB.clients.len]")
+		tab_data["Gotowi/połączeni"] = GENERATE_STAT_TEXT("[SSticker.totalPlayersReady]/[GLOB.clients.len]")
 	else
-		tab_data["Players Playing/Connected"] = GENERATE_STAT_TEXT("[get_active_player_count()]/[GLOB.clients.len]")
+		tab_data["Grający/połączeni"] = GENERATE_STAT_TEXT("[get_active_player_count()]/[GLOB.clients.len]")
 	if(SSticker.round_start_time)
-		tab_data["Security Level"] = GENERATE_STAT_TEXT("[capitalize(get_security_level())]")
+		tab_data["Poziom alarmu"] = GENERATE_STAT_TEXT("[capitalize(get_security_level_pl())]")
 
 	tab_data["divider_3"] = GENERATE_STAT_DIVIDER
 
@@ -303,7 +303,7 @@
 				message_admins("[usr.client] attempted to interact with the MC without sufficient perms.")
 				return
 			if(!target)
-				to_chat(usr, "<span class='warning'>Could not locate target, report this!</span>")
+				to_chat(usr, "<span class='warning'>Nie można znaleźć celu, zgłoś to!</span>")
 				log_runtime("[usr] attempted to interact with a statClickDebug, but was unsuccessful due to the target not existing.")
 				return
 			usr.client.debug_variables(target)
@@ -331,9 +331,9 @@
 					if(client.current_ticket)
 						client.current_ticket.MessageNoRecipient(message)
 					else
-						to_chat(src, "<span class='warning'>Your issue has already been resolved!</span>")
+						to_chat(src, "<span class='warning'>Twoje zgłoszenie zostało już rozwiązane!</span>")
 				else
-					to_chat(src, "<span class='warning'>You are sending messages too fast!</span>")
+					to_chat(src, "<span class='warning'>Wysyłasz wiadomości za szybko!</span>")
 		if("start_br")
 			if(client.holder && check_rights(R_FUN))
 				client.battle_royale()

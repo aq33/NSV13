@@ -18,7 +18,7 @@ BONUS
 /datum/symptom/cough
 
 	name = "Cough"
-	desc = "The virus irritates the throat of the host, causing occasional coughing."
+	desc = "Wirus podrażnia gardło nosiciela, powodując okazjonalny kaszel."
 	stealth = -1
 	resistance = 3
 	stage_speed = 1
@@ -30,11 +30,7 @@ BONUS
 	symptom_delay_max = 15
 	bodies = list("Cough")
 	var/infective = FALSE
-	threshold_desc = "<b>Resistance 3:</b> Host will drop small items when coughing.<br>\
-					  <b>Resistance 10:</b> Occasionally causes coughing fits that stun the host.<br>\
-					  <b>Stage Speed 6:</b> Increases cough frequency.<br>\
-					  <b>Stealth 4:</b> The symptom remains hidden until active.<br>\
-					  <b>Transmission 11:</b> The host's coughing will occasionally spread the virus."
+	threshold_desc = "<b>Odporność 3:</b> nosiciel podczas kaszlu upuszcza małe przedmioty.<br><b>Odporność 10:</b> czasem wywołuje ataki kaszlu, które ogłuszają nosiciela.<br><b>Szybkość stadiów 6:</b> zwiększa częstotliwość kaszlu.<br><b>Ukrycie 4:</b> objaw pozostaje ukryty, dopóki nie jest aktywny.<br><b>Transmisja 11:</b> kaszel nosiciela czasem roznosi wirusa."
 
 /datum/symptom/cough/severityset(datum/disease/advance/A)
 	. = ..()

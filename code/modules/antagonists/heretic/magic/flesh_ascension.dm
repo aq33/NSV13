@@ -3,7 +3,7 @@
 	desc = "Shed your fragile form, become one with the arms, become one with the emperor."
 	action_icon = 'icons/mob/actions/actions_ecult.dmi'
 	action_icon_state = "worm_ascend"
-	invocation = "REALITY UNCOIL!"
+	invocation = "RZECZYWISTOŚCI, ROZWIŃ SIĘ!"
 	invocation_type = INVOCATION_SHOUT
 	requires_heretic_focus = TRUE
 	clothes_req = FALSE
@@ -59,7 +59,7 @@
 /obj/effect/proc_holder/spell/targeted/worm_contract/cast(list/targets, mob/user)
 	. = ..()
 	if(!istype(user, /mob/living/simple_animal/hostile/heretic_summon/armsy))
-		to_chat(user, "<span class='userdanger'>You try to contract your muscles, but nothing happens...</span>")
+		to_chat(user, "<span class='userdanger'>Próbujesz napiąć mięśnie, ale nic się nie dzieje...</span>")
 		return
 
 	var/mob/living/simple_animal/hostile/heretic_summon/armsy/lord_of_night = user

@@ -27,7 +27,7 @@
 
 /datum/reagent/blob/replicating_foam
 	name = "Replicating Foam"
-	taste_description = "duplication"
+	taste_description = "duplikacja"
 	color = "#7B5A57"
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
 

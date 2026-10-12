@@ -4,19 +4,19 @@
 	icon_state = "mouse_gray"
 	icon_living = "mouse_gray"
 	icon_dead = "mouse_gray_dead"
-	speak = list("Squeak!","SQUEAK!","Squeak?")
-	speak_emote = list("squeaks")
-	emote_hear = list("squeaks.")
-	emote_see = list("runs in a circle.", "shakes.")
+	speak = list("Pi!","PIII!","Pi?")
+	speak_emote = list("piszczy")
+	emote_hear = list("piszczy.")
+	emote_see = list("biega w kółko.", "trzęsie się.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 8 //AQ EDIT szczury 6->8
 	maxHealth = 5
 	health = 5
 	butcher_results = list(/obj/item/food/meat/slab/mouse = 1)
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm   = "splats"
+	response_help  = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm   = "rozpłaszcza"
 	density = FALSE
 	ventcrawler = VENTCRAWLER_ALWAYS
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
@@ -108,13 +108,13 @@
 			var/obj/structure/cable/C = locate() in F
 			if(C && prob(15))
 				if(C.avail())
-					visible_message("<span class='warning'>[src] chews through the [C]. It's toast!</span>")
+					visible_message("<span class='warning'>[src] przegryza [C]. Po nim!</span>")
 					playsound(src, 'sound/effects/sparks2.ogg', 100, 1)
 					C.deconstruct()
 					death(toast=1)
 				else
 					C.deconstruct()
-					visible_message("<span class='warning'>[src] chews through the [C].</span>")
+					visible_message("<span class='warning'>[src] przegryza [C].</span>")
 
 /*
  * Mouse types
@@ -138,9 +138,9 @@
 /mob/living/simple_animal/mouse/brown/Tom
 	name = "Tom"
 	desc = "Jerry the cat is not amused."
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm   = "splats"
+	response_help  = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm   = "rozpłaszcza"
 	gold_core_spawnable = NO_SPAWN
 
 /obj/item/food/deadmouse
@@ -149,7 +149,7 @@
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "mouse_gray_dead"
 	bite_consumption = 3
-	eatverbs = list("devour")
+	eatverbs = list("pożera")
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 2
@@ -184,10 +184,10 @@
 	if(I.is_sharp() && user.a_intent == INTENT_HARM)
 		if(isturf(loc))
 			new /obj/item/food/meat/slab/mouse(loc)
-			to_chat(user, "<span class='notice'>You butcher [src].</span>")
+			to_chat(user, "<span class='notice'>Ćwiartujesz [src].</span>")
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You need to put [src] on a surface to butcher it!</span>")
+			to_chat(user, "<span class='warning'>Musisz położyć [src] na jakiejś powierzchni, by go oprawić!</span>")
 	else
 		return ..()
 

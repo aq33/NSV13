@@ -47,15 +47,15 @@
 
 /obj/item/inducer/proc/cantbeused(mob/user)
 	if(!user.IsAdvancedToolUser())
-		to_chat(user, "<span class='warning'>You don't have the dexterity to use [src]!</span>")
+		to_chat(user, "<span class='warning'>Brakuje ci zręczności, by użyć [src]!</span>")
 		return TRUE
 
 	if(!cell)
-		to_chat(user, "<span class='warning'>[src] doesn't have a power cell installed!</span>")
+		to_chat(user, "<span class='warning'>W [src] nie ma zainstalowanego ogniwa zasilającego!</span>")
 		return TRUE
 
 	if(!cell.charge)
-		to_chat(user, "<span class='warning'>[src]'s battery is dead!</span>")
+		to_chat(user, "<span class='warning'>Bateria [src] jest wyczerpana!</span>")
 		return TRUE
 	return FALSE
 
@@ -64,12 +64,12 @@
 	if(W.tool_behaviour == TOOL_SCREWDRIVER)
 		W.play_tool_sound(src)
 		if(!opened)
-			to_chat(user, "<span class='notice'>You unscrew the battery compartment.</span>")
+			to_chat(user, "<span class='notice'>Odkręcasz komorę baterii.</span>")
 			opened = TRUE
 			update_icon()
 			return
 		else
-			to_chat(user, "<span class='notice'>You close the battery compartment.</span>")
+			to_chat(user, "<span class='notice'>Zamykasz komorę baterii.</span>")
 			opened = FALSE
 			update_icon()
 			return
@@ -78,12 +78,12 @@
 			if(!cell)
 				if(!user.transferItemToLoc(W, src))
 					return
-				to_chat(user, "<span class='notice'>You insert [W] into [src].</span>")
+				to_chat(user, "<span class='notice'>Wkładasz [W] do [src].</span>")
 				cell = W
 				update_icon()
 				return
 			else
-				to_chat(user, "<span class='notice'>[src] already has \a [cell] installed!</span>")
+				to_chat(user, "<span class='notice'>W [src] jest już zainstalowane [cell]!</span>")
 				return
 
 	if(cantbeused(user))
@@ -106,7 +106,7 @@
 	var/coefficient = 1
 	var/obj/item/organ/stomach/battery/battery
 	if(istype(A, /obj/item/gun/energy))
-		to_chat(user,"Error unable to interface with device")
+		to_chat(user,"Błąd: nie można połączyć się z urządzeniem")
 		return FALSE
 	if(istype(A, /obj))
 		O = A
@@ -121,10 +121,10 @@
 	if(C || battery)
 		var/done_any = FALSE
 		if((battery?.charge || C.charge) >= maxcharge)
-			to_chat(user, "<span class='notice'>[A] is fully charged!</span>")
+			to_chat(user, "<span class='notice'>[A] jest w pełni naładowany!</span>")
 			recharging = FALSE
 			return TRUE
-		user.visible_message("[user] starts recharging [A] with [src].","<span class='notice'>You start recharging [A] with [src].</span>")
+		user.visible_message("[user] zaczyna ładować [A] za pomocą [src].","<span class='notice'>Zaczynasz ładować [A] za pomocą [src].</span>")
 		while((battery?.charge || C.charge) < maxcharge)
 			if(do_after(user, 10, target = user) && cell.charge)
 				done_any = TRUE
@@ -138,7 +138,7 @@
 			else
 				break
 		if(done_any) // Only show a message if we succeeded at least once
-			user.visible_message("[user] recharged [A]!","<span class='notice'>You recharged [A]!</span>")
+			user.visible_message("[user] recharged [A]!","<span class='notice'>Ładujesz [A]!</span>")
 		recharging = FALSE
 		return TRUE
 	recharging = FALSE
@@ -158,7 +158,7 @@
 
 /obj/item/inducer/attack_self(mob/user)
 	if(opened && cell)
-		user.visible_message("[user] removes [cell] from [src]!","<span class='notice'>You remove [cell].</span>")
+		user.visible_message("[user] wyjmuje [cell] z [src]!","<span class='notice'>Wyjmujesz [cell].</span>")
 		cell.update_icon()
 		user.put_in_hands(cell)
 		cell = null
@@ -170,11 +170,11 @@
 /obj/item/inducer/examine(mob/living/M)
 	. = ..()
 	if(cell)
-		. += "<span class='notice'>Its display shows: [display_energy(cell.charge)].</span>"
+		. += "<span class='notice'>Wyświetlacz pokazuje: [display_energy(cell.charge)].</span>"
 	else
-		. += "<span class='notice'>Its display is dark.</span>"
+		. += "<span class='notice'>Wyświetlacz jest ciemny.</span>"
 	if(opened)
-		. += "<span class='notice'>Its battery compartment is open.</span>"
+		. += "<span class='notice'>Komora baterii jest otwarta.</span>"
 
 /obj/item/inducer/update_icon()
 	cut_overlays()

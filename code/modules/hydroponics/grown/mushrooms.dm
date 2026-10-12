@@ -165,7 +165,7 @@
 	M.move_to_delay -= round(seed.production / 50)
 	M.health = M.maxHealth
 	qdel(src)
-	to_chat(user, "<span class='notice'>You plant the walking mushroom.</span>")
+	to_chat(user, "<span class='notice'>Sadzisz chodzącego grzyba.</span>")
 
 
 // Chanterelle
@@ -258,7 +258,7 @@
 	if(isspaceturf(user.loc))
 		return FALSE
 	if(!isturf(user.loc))
-		to_chat(user, "<span class='warning'>You need more space to plant [src].</span>")
+		to_chat(user, "<span class='warning'>Potrzebujesz więcej miejsca, by posadzić [src].</span>")
 		return FALSE
 	var/count = 0
 	var/maxcount = 1
@@ -269,10 +269,10 @@
 	for(var/obj/structure/glowshroom/G in user.loc)
 		count++
 	if(count >= maxcount)
-		to_chat(user, "<span class='warning'>There are too many shrooms here to plant [src].</span>")
+		to_chat(user, "<span class='warning'>Jest tu za dużo grzybów, by posadzić [src].</span>")
 		return FALSE
 	new effect_path(user.loc, seed)
-	to_chat(user, "<span class='notice'>You plant [src].</span>")
+	to_chat(user, "<span class='notice'>Sadzisz [src].</span>")
 	qdel(src)
 	return TRUE
 
@@ -296,7 +296,7 @@
 	desc = "<I>Mycena Ruthenia</I>: This species of mushroom glows in the dark, but isn't actually bioluminescent. They're warm to the touch..."
 	icon_state = "glowcap"
 	effect_path = /obj/structure/glowshroom/glowcap
-	tastes = list("glowcap" = 1)
+	tastes = list("świecący kapelusz" = 1)
 	discovery_points = 300
 
 //Shadowshroom
@@ -318,7 +318,7 @@
 	desc = "<I>Mycena Umbra</I>: This species of mushroom emits shadow instead of light."
 	icon_state = "shadowshroom"
 	effect_path = /obj/structure/glowshroom/shadowshroom
-	tastes = list("shadow" = 1, "mushroom" = 1)
+	tastes = list("cień" = 1, "grzyb" = 1)
 	wine_power = 60
 	discovery_points = 300
 

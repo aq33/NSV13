@@ -31,7 +31,7 @@
 		typecache_to_take = typecacheof(/obj/item/food/grown)
 	holdingitems = list()
 	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
-	beaker.desc += " May contain blended dust. Don't breathe this in!"
+	beaker.desc += " Może zawierać zmielony pył. Nie wdychaj tego!"
 
 /obj/machinery/reagentgrinder/constructed/Initialize(mapload)
 	. = ..()
@@ -67,15 +67,15 @@
 /obj/machinery/reagentgrinder/examine(mob/user)
 	. = ..()
 	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
-		. += "<span class='warning'>You're too far away to examine [src]'s contents and display!</span>"
+		. += "<span class='warning'>Jesteś za daleko, by obejrzeć zawartość i wyświetlacz [src]!</span>"
 		return
 
 	if(operating)
-		. += "<span class='warning'>\The [src] is operating.</span>"
+		. += "<span class='warning'>[src] pracuje.</span>"
 		return
 
 	if(beaker || length(holdingitems))
-		. += "<span class='notice'>\The [src] contains:</span>"
+		. += "<span class='notice'>[src] zawiera:</span>"
 		if(beaker)
 			. += "<span class='notice'>- \A [beaker].</span>"
 		for(var/i in holdingitems)
@@ -83,11 +83,11 @@
 			. += "<span class='notice'>- \A [O.name].</span>"
 
 	if(!(machine_stat & (NOPOWER|BROKEN)))
-		. += "<span class='notice'>The status display reads:</span>\n"+\
-		"<span class='notice'>- Grinding reagents at <b>[speed*100]%</b>.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje:</span>\n"+\
+		"<span class='notice'>- Mielenie odczynników z szybkością <b>[speed*100]%</b>.</span>"
 		if(beaker)
 			for(var/datum/reagent/R in beaker.reagents.reagent_list)
-				. += "<span class='notice'>- [R.volume] units of [R.name].</span>"
+				. += "<span class='notice'>- [R.volume] j. [R.name].</span>"
 
 /obj/machinery/reagentgrinder/handle_atom_del(atom/A)
 	. = ..()
@@ -150,12 +150,12 @@
 		if(!user.transferItemToLoc(container, src))
 			return
 		replace_beaker(user, container)
-		to_chat(user, "<span class='notice'>You add [weapon] to [src].</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [weapon] do [src].</span>")
 		update_icon()
 		return TRUE //no afterattack
 
 	if(holdingitems.len >= limit)
-		to_chat(user, "<span class='warning'>[src] is filled to capacity!</span>")
+		to_chat(user, "<span class='warning'>[src] jest wypełniony po brzegi!</span>")
 		return TRUE
 
 	//Fill machine with a bag!
@@ -165,20 +165,20 @@
 			for(var/i in inserted)
 				holdingitems[i] = TRUE
 			if(!weapon.contents.len)
-				to_chat(user, "<span class='notice'>You empty [weapon] into [src].</span>")
+				to_chat(user, "<span class='notice'>Opróżniasz [weapon] do [src].</span>")
 			else
-				to_chat(user, "<span class='notice'>You fill [src] to the brim.</span>")
+				to_chat(user, "<span class='notice'>Napełniasz [src] po brzegi.</span>")
 		return TRUE
 
 	if(!weapon.grind_results && !weapon.juice_typepath && !weapon.is_grindable())
 		if(user.a_intent == INTENT_HARM)
 			return ..()
 		else
-			to_chat(user, "<span class='warning'>You cannot grind [weapon] into reagents!</span>")
+			to_chat(user, "<span class='warning'>Nie możesz zmielić [weapon] na odczynniki!</span>")
 			return TRUE
 
 	if(user.transferItemToLoc(weapon, src))
-		to_chat(user, "<span class='notice'>You add [weapon] to [src].</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [weapon] do [src].</span>")
 		holdingitems[weapon] = TRUE
 		return FALSE
 
@@ -281,7 +281,7 @@
 
 /obj/machinery/reagentgrinder/proc/juice_item(obj/item/juiced_item, mob/user) //Juicing results can be found in respective object definitions
 	if(!juiced_item.juice(beaker.reagents, user))
-		to_chat(usr, "<span class='danger'>[src] shorts out as it tries to juice up [juiced_item], and transfers it back to storage.</span>")
+		to_chat(usr, "<span class='danger'>[src] ulega zwarciu, próbując wycisnąć sok z [juiced_item], i przenosi go z powrotem do magazynu.</span>")
 		return
 	remove_object(juiced_item)
 
@@ -304,9 +304,9 @@
 /obj/machinery/reagentgrinder/proc/grind_item(obj/item/grinded_item, mob/user) //Grind results can be found in respective object definitions
 	if(!grinded_item.grind(beaker.reagents, user))
 		if(isstack(grinded_item))
-			to_chat(usr, "<span class='notice'>[src] attempts to grind as many pieces of [grinded_item] as possible.</span>")
+			to_chat(usr, "<span class='notice'>[src] próbuje zmielić jak najwięcej kawałków [grinded_item].</span>")
 		else
-			to_chat(usr, "<span class='danger'>[src] shorts out as it tries to grind up [grinded_item], and transfers it back to storage.</span>")
+			to_chat(usr, "<span class='danger'>[src] ulega zwarciu, próbując zmielić [grinded_item], i przenosi go z powrotem do magazynu.</span>")
 		return
 	remove_object(grinded_item)
 

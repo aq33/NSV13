@@ -78,7 +78,7 @@
 		if(1)
 			if(activated && user && ishuman(user) && (user.wear_suit == src))
 				to_chat(user, "<span class='danger'>E:FATAL:RAM_READ_FAIL\nE:FATAL:STACK_EMPTY\nE:FATAL:READ_NULL_POINT\nE:FATAL:PWR_BUS_OVERLOAD</span>")
-				to_chat(user, "<span class='userdanger'>An electromagnetic pulse disrupts your [name] and violently tears you out of time-bluespace!</span>")
+				to_chat(user, "<span class='userdanger'>Impuls elektromagnetyczny zakłóca działanie twojego [name] i gwałtownie wyrywa cię z czasoprzestrzeni bluespace!</span>")
 				user.emote("scream")
 			deactivate(1, 1)
 
@@ -130,7 +130,7 @@
 		for(var/exposed_item in exposed)
 			var/obj/item/exposed_I = exposed_item
 			if(exposed_I && !(exposed_I.type in chronosafe_items) && user.dropItemToGround(exposed_I))
-				to_chat(user, "<span class='notice'>Your [exposed_I.name] got left behind.</span>")
+				to_chat(user, "<span class='notice'>Twój [exposed_I.name] został w tyle.</span>")
 
 		user.ExtinguishMob()
 
@@ -205,7 +205,7 @@
 				activated = 1
 			else
 				to_chat(user, "\[ <span style='color: #ff0000;'>fail</span> \] Mounting /dev/helm")
-				to_chat(user, "<span style='color: #ff0000;'><b>FATAL: </b>Unable to locate /dev/helm. <b>Aborting...</b></span>")
+				to_chat(user, "<span style='color: #ff0000;'><b>FATAL: </b>Nie można znaleźć /dev/helm. <b>Przerywanie...</b></span>")
 			teleport_now.Grant(user)
 		cooldown = world.time + cooldowntime
 		activating = 0

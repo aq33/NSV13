@@ -84,7 +84,7 @@
 	var/reagent_type = pick(possible_reagents)
 	wanted_reagent = new reagent_type
 	name = wanted_reagent.name
-	description = "CentCom is thirsty! Send a shipment of [name] to CentCom to quench the company's thirst."
+	description = "Centrala jest spragniona! Wyślijcie do Centrali przesyłkę [name], by ugasić pragnienie firmy."
 	reward += rand(0, 2) * 500
 
 /datum/bounty/reagent/complex_drink
@@ -117,7 +117,7 @@
 	var/reagent_type = pick(possible_reagents)
 	wanted_reagent = new reagent_type
 	name = wanted_reagent.name
-	description = "CentCom is offering a reward for talented mixologists. Ship a container of [name] to claim the prize."
+	description = "Centrala oferuje nagrodę dla utalentowanych miksologów. Wyślijcie pojemnik z [name], by odebrać nagrodę."
 	reward += rand(0, 4) * 500
 
 /datum/bounty/reagent/chemical_simple
@@ -155,7 +155,7 @@
 	var/reagent_type = pick(possible_reagents)
 	wanted_reagent = new reagent_type
 	name = wanted_reagent.name
-	description = "CentCom is in desperate need of the chemical [name]. Ship a container of it to be rewarded."
+	description = "Centrala desperacko potrzebuje substancji [name]. Wyślijcie jej pojemnik, by otrzymać nagrodę."
 	reward += rand(0, 4) * 500 //4000 to 6000 credits
 
 /datum/bounty/reagent/chemical_complex
@@ -186,5 +186,5 @@
 	var/reagent_type = pick(possible_reagents)
 	wanted_reagent = new reagent_type
 	name = wanted_reagent.name
-	description = "CentCom is paying premium for the chemical [name]. Ship a container of it to be rewarded."
+	description = "Centrala płaci premię za substancję [name]. Wyślijcie jej pojemnik, by otrzymać nagrodę."
 	reward += rand(0, 5) * 750 //6000 to 9750 credits

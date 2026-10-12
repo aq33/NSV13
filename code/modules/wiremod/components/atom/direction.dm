@@ -5,7 +5,7 @@
  */
 /obj/item/circuit_component/direction
 	display_name = "Get Direction"
-	display_desc = "A component that returns the direction of itself and an entity."
+	display_desc = "Komponent, który zwraca kierunek między sobą a obiektem."
 
 	/// The input port
 	var/datum/port/input/input_port

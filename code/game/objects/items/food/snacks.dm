@@ -12,7 +12,7 @@
 		/datum/reagent/consumable/sugar = 3
 	)
 	junkiness = 25
-	tastes = list("candy" = 1)
+	tastes = list("cukierki" = 1)
 	foodtypes = JUNKFOOD | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -29,7 +29,7 @@
 		/datum/reagent/consumable/sodiumchloride = 2
 	)
 	junkiness = 25
-	tastes = list("dried meat" = 1)
+	tastes = list("suszone mięso" = 1)
 	w_class = WEIGHT_CLASS_SMALL
 	foodtypes = JUNKFOOD | MEAT | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -49,19 +49,19 @@
 	name = "lean beef jerky"
 	desc = "Homemade beef jerky made from the finest space cows. Special lean cuts edition!"
 	icon_state = "sosjerky_lowfat"
-	tastes = list("dried meat" = 3, "chicken" = 1)	//is it really chicken, or something else?....
+	tastes = list("suszone mięso" = 3, "kurczak" = 1)	//is it really chicken, or something else?....
 
 /obj/item/food/sosjerky/healthy/lizard
 	name = "dinosaur jerky"
 	desc = "Homemade jerky made from the finest dinosaurs of Sauria. Natural dinosaur flavour!"
 	icon_state = "sosjerky_dinosaur"
-	tastes = list("dried meat" = 1, "scales" = 1)
+	tastes = list("suszone mięso" = 1, "łuski" = 1)
 
 /obj/item/food/sosjerky/healthy/pig
 	name = "pork jerky"
 	desc = "Homemade jerky made from the cleanliest pigs in the sector."
 	icon_state = "sosjerky_pig"
-	tastes = list("dried meat" = 1, "acorns" = 1)
+	tastes = list("suszone mięso" = 1, "żołędzie" = 1)
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/fat = 2,
@@ -72,14 +72,14 @@
 	name = "lizard treats"
 	desc = "Homemade jerky made from the locally-sourced space mice. \n20% of all proceeds go to pest control efforts of underfunded space stations. \n100% of meat goes to your pet lizard's happiness!"
 	icon_state = "sosjerky_lizard_treats"
-	tastes = list("dried meat" = 1, "pests" = 1)
+	tastes = list("suszone mięso" = 1, "szkodniki" = 1)
 	foodtypes = JUNKFOOD | MEAT | GORE
 
 /obj/item/food/sosjerky/pemmican
 	name = "\improper Space Pemmican(tm) ration pack"
 	desc = "Meat product processed chemically, dehydrated, preserved.\nMay contain Azodicarbonamide, Propylparaben, Erythrosine.\nConsists of more than 35% connective tissue. \nSpace Pemmican(tm) is deemed unfit for human consumption in Jupiter II Europan Outer Solar System Economic Zone."
 	icon_state = "sosjerky_synth_pemmican"
-	tastes = list("meat flavoring" = 2, "bloodmeal" = 2, "natural & artificial dyes" = 1, "gastronomical anxiety" = 1)
+	tastes = list("aromat mięsny" = 2, "mączka z krwi" = 2, "naturalne i sztuczne barwniki" = 1, "gastronomiczny niepokój" = 1)
 	foodtypes = JUNKFOOD | MEAT | GROSS
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -91,31 +91,31 @@
 	name = "bug snacks"
 	desc = "Homemade high-protein snacks made from an assortment of insects. Thank you for supporting the path towards sustainable foods!"
 	icon_state = "sosjerky_bugs"
-	tastes = list("crispy tissue" = 4, "progressiveness" = 1)
+	tastes = list("chrupiąca tkanka" = 4, "postępowość" = 1)
 
 /obj/item/food/sosjerky/healthy/bees
 	name = "bee snacks"
 	desc = "Homemade high-protein snacks made from 100% bees."
 	icon_state = "sosjerky_bees"
-	tastes = list("crispy tenderness" = 4, "pollen" = 1)
+	tastes = list("chrupiąca delikatność" = 4, "pyłek" = 1)
 
 /obj/item/food/sosjerky/healthy/synthmeat
 	name = "cruelty-free jerky"
 	desc = "Homemade jerky made from synthetic meat. Not a single animal suffered during the creation of this product."
 	icon_state = "sosjerky_synth"
-	tastes = list("dried meat" = 3, "blue" = 1)
+	tastes = list("suszone mięso" = 3, "kolor niebieski" = 1)
 
 /obj/item/food/sosjerky/healthy/monkey
 	name = "ape jerky"
 	desc = "Homemade jerky made from ape meat. \nNaturally contains banana flavour. \nHIV vaccine-free."
 	icon_state = "sosjerky_monkey"
-	tastes = list("dried meat" = 1, "bananas" = 1)
+	tastes = list("suszone mięso" = 1, "banany" = 1)
 
 /obj/item/food/sosjerky/healthy/diona
 	name = "vegetable jerky"
 	desc = "Homemade meat-imitating vegetable jerky. \nThis product has NOT been approved by the ethics commitee. \nMay be offensive to some plant-based crewmembers."
 	icon_state = "sosjerky_vegan"
-	tastes = list("dried beets" = 3, "fermented tomatoes" = 2, "lettuce" = 2, "vegetarian guilt" = 1)
+	tastes = list("suszone buraki" = 3, "sfermentowane pomidory" = 2, "sałata" = 2, "wegetariańskie wyrzuty sumienia" = 1)
 	foodtypes = JUNKFOOD | VEGETABLES
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/vitamin = 6	//very healthy! go butcher your diona coworker!
@@ -125,7 +125,7 @@
 	name = "dried mushrooms"
 	desc = "An assortment of dried mushroom slices. Should not be poisonous."
 	icon_state = "sosjerky_mushroom"
-	tastes = list("dried mushrooms" = 3, "earth" = 1)
+	tastes = list("suszone grzyby" = 3, "ziemia" = 1)
 	foodtypes = JUNKFOOD | VEGETABLES
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 3,	//fungi are heterotrophs
@@ -146,7 +146,7 @@
 	name = "dried jelly strips"
 	desc = "Homemade dried jelly strips. \nMay be toxic to most lifeforms."
 	icon_state = "sosjerky_jelly"
-	tastes = list("jelly" = 2, "jello" = 2, "sourness" = 1)
+	tastes = list("galaretka" = 2, "galaretka" = 2, "kwaśność" = 1)
 	foodtypes = JUNKFOOD | TOXIC | SUGAR
 	food_reagents = list(
 		/datum/reagent/toxin/slimejelly = 3,
@@ -158,7 +158,7 @@
 	name = "dried static charge"
 	desc = "This is what's left when you dry out electricity itself. \nMay cause static shocks."
 	icon_state = "sosjerky_electric"
-	tastes = list("static charge" = 2, "electrodynamics" = 2, "surging regret" = 1)
+	tastes = list("ładunek elektrostatyczny" = 2, "elektrodynamika" = 2, "narastający żal" = 1)
 	foodtypes = JUNKFOOD
 	food_reagents = list(
 		/datum/reagent/consumable/liquidelectricity = 6
@@ -176,7 +176,7 @@
 		/datum/reagent/consumable/sodiumchloride = 1
 	)
 	junkiness = 20
-	tastes = list("salt" = 1, "crisps" = 1)
+	tastes = list("sól" = 1, "chrupki" = 1)
 	foodtypes = JUNKFOOD | FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -191,7 +191,7 @@
 		/datum/reagent/consumable/sugar = 4
 	)
 	junkiness = 25
-	tastes = list("dried raisins" = 1)
+	tastes = list("suszone rodzynki" = 1)
 	foodtypes = JUNKFOOD | FRUIT | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	custom_price = PAYCHECK_MEDIUM * 0.7
@@ -233,7 +233,7 @@
 		/datum/reagent/consumable/sugar = 3
 	)
 	junkiness = 25
-	tastes = list("cheese" = 5, "crisps" = 2)
+	tastes = list("ser" = 5, "chrupki" = 2)
 	foodtypes = JUNKFOOD | DAIRY | SUGAR
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -247,7 +247,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/doctor_delight = 5
 	)
-	tastes = list("sweetness" = 3, "cake" = 1)
+	tastes = list("słodycz" = 3, "ciasto" = 1)
 	foodtypes = GRAIN | FRUIT | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -261,7 +261,7 @@
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/liquidelectricity = 10
 	)
-	tastes = list("pure electricity" = 3, "fitness" = 2)
+	tastes = list("czysty prąd" = 3, "fitness" = 2)
 	foodtypes = TOXIC
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL

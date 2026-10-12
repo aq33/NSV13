@@ -37,7 +37,7 @@
 		return
 
 	// Our hood gains the heretic_focus element.
-	. += "<span class='notice'>Allows you to cast heretic spells while the hood is up.</span>"
+	. += "<span class='notice'>Z założonym kapturem możesz rzucać zaklęcia heretyka.</span>"
 
 // Void cloak. Turns invisible with the hood up, lets you hide stuff.
 /obj/item/clothing/head/hooded/cult_hoodie/void
@@ -80,7 +80,7 @@
 
 	var/mob/living/wearer = loc
 	if(!IS_HERETIC_OR_MONSTER(wearer))
-		loc.balloon_alert(loc, "you can't get the hood up!")
+		loc.balloon_alert(loc, "nie możesz założyć kaptura!")
 		return
 
 	// When we make the hood, that means we're going invisible
@@ -94,8 +94,8 @@
 	RemoveElement(/datum/element/heretic_focus)
 
 	if(isliving(loc))
-		loc.balloon_alert(loc, "cloak hidden")
-		loc.visible_message("<span class='notice'>Light shifts around [loc], making the cloak around them invisible!</span>")
+		loc.balloon_alert(loc, "płaszcz ukryty")
+		loc.visible_message("<span class='notice'>Światło wokół [loc] się zakrzywia i płaszcz staje się niewidzialny!</span>")
 
 /// Makes our cloak "visible" again.
 /obj/item/clothing/suit/hooded/cultrobes/void/proc/make_visible()
@@ -104,5 +104,5 @@
 	AddElement(/datum/element/heretic_focus)
 
 	if(isliving(loc))
-		loc.balloon_alert(loc, "cloak revealed")
-		loc.visible_message("<span class=notice>A kaleidoscope of colours collapses around [loc], a cloak appearing suddenly around their person!</span>")
+		loc.balloon_alert(loc, "płaszcz odsłonięty")
+		loc.visible_message("<span class='notice'>Wokół [loc] zapada się kalejdoskop barw i nagle pojawia się płaszcz!</span>")

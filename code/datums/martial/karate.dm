@@ -35,8 +35,8 @@
 		return FALSE
 	if(!(D.mobility_flags & MOBILITY_STAND))
 		log_combat(A, D, "floor stomped (Karate)")
-		D.visible_message("<span class='warning'>[A] stomped [D] in the head!</span>", \
-							"<span class='userdanger'>[A] stomped you in the head!</span>", null, COMBAT_MESSAGE_RANGE)
+		D.visible_message("<span class='warning'>[A] depcze [D] po głowie!</span>", \
+							"<span class='userdanger'>[A] depcze cię po głowie!</span>", null, COMBAT_MESSAGE_RANGE)
 		playsound(get_turf(D), 'sound/weapons/punch1.ogg', 75, 1, -1)
 		A.do_attack_animation(D, ATTACK_EFFECT_KICK)
 		D.apply_damage(20, A.dna.species.attack_type, BODY_ZONE_HEAD, def_check)
@@ -51,8 +51,8 @@
 		return FALSE
 	if(!D.stat)
 		log_combat(A, D, "calf kicked (Karate)")
-		D.visible_message("<span class='warning'>[A] roundhouse kicked [D] in the calf!</span>", \
-							"<span class='userdanger'>[A] roundhouse kicked you in the calf!</span>", null, COMBAT_MESSAGE_RANGE)
+		D.visible_message("<span class='warning'>[A] kopie [D] z półobrotu w łydkę!</span>", \
+							"<span class='userdanger'>[A] kopie cię z półobrotu w łydkę!</span>", null, COMBAT_MESSAGE_RANGE)
 		playsound(get_turf(D), 'sound/weapons/punch1.ogg', 75, 1, -1)
 		A.do_attack_animation(D, ATTACK_EFFECT_KICK)
 		D.apply_damage(50, STAMINA, pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG), def_check)
@@ -66,8 +66,8 @@
 		return FALSE
 	if(!D.stat)
 		log_combat(A, D, "jumped kneed (Karate)")
-		D.visible_message("<span class='warning'>[A] jumping kneed [D] in the stomach!</span>", \
-							"<span class='userdanger'>[A] jumping kneed you in the stomach!</span>", null, COMBAT_MESSAGE_RANGE)
+		D.visible_message("<span class='warning'>[A] wbija [D] kolano w brzuch z wyskoku!</span>", \
+							"<span class='userdanger'>[A] wbija ci kolano w brzuch z wyskoku!</span>", null, COMBAT_MESSAGE_RANGE)
 		playsound(get_turf(D), 'sound/weapons/punch1.ogg', 75, 1, -1)
 		D.emote("gasp")
 		A.do_attack_animation(D, ATTACK_EFFECT_KICK)
@@ -82,8 +82,8 @@
 		return FALSE
 	if(!D.stat)
 		log_combat(A, D, "karate chopped (Karate)")
-		D.visible_message("<span class='warning'>[A] karate chopped [D] in the neck!</span>", \
-							"<span class='userdanger'>[A] karate chopped you in the neck!</span>", null, COMBAT_MESSAGE_RANGE)
+		D.visible_message("<span class='warning'>[A] uderza [D] kantem dłoni w szyję!</span>", \
+							"<span class='userdanger'>[A] uderza cię kantem dłoni w szyję!</span>", null, COMBAT_MESSAGE_RANGE)
 		playsound(get_turf(A), 'sound/weapons/thudswoosh.ogg', 75, 1, -1)
 		A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
 		D.blur_eyes(10)
@@ -115,9 +115,9 @@
 	set desc = "Remember the martial techniques of Karate."
 	set category = "Karate"
 
-	to_chat(usr, "<b><i>You try to remember the fundamentals of Karate...</i></b>")
+	to_chat(usr, "<b><i>Próbujesz przypomnieć sobie podstawy Karate...</i></b>")
 
-	to_chat(usr, "<span class='notice'>Calf Kick</span>: Harm Grab Disarm. Paralyses one of your opponent's legs.")
-	to_chat(usr, "<span class='notice'>Jumping Knee</span>: Harm Disarm Harm. Deals significant stamina damage and knocks your opponent down briefly.")
-	to_chat(usr, "<span class='notice'>Karate Chop</span>: Grab Harm Disarm. Very briefly confuses your opponent and blurs their vision.")
-	to_chat(usr, "<span class='notice'>Floor Stomp</span>: Harm Grab Harm. Deals brute and stamina damage if your opponent isn't standing up.")
+	to_chat(usr, "<span class='notice'>Kopnięcie w łydkę</span>: krzywda, chwyt, rozbrojenie. Paraliżuje jedną z nóg przeciwnika.")
+	to_chat(usr, "<span class='notice'>Kolano z wyskoku</span>: krzywda, rozbrojenie, krzywda. Zadaje znaczne obrażenia wytrzymałości i na chwilę przewraca przeciwnika.")
+	to_chat(usr, "<span class='notice'>Cios karate</span>: chwyt, krzywda, rozbrojenie. Na bardzo krótko dezorientuje przeciwnika i rozmywa mu wzrok.")
+	to_chat(usr, "<span class='notice'>Nadepnięcie</span>: krzywda, chwyt, krzywda. Zadaje urazy i obrażenia wytrzymałości, jeśli przeciwnik nie stoi.")

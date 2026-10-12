@@ -1,39 +1,39 @@
 /datum/bounty/item/medical/heart
 	name = "Heart"
-	description = "Commander Johnson is in critical condition after suffering yet another heart attack. Doctors say he needs a new heart fast. Ship one, pronto!"
+	description = "Komandor Johnson jest w stanie krytycznym po kolejnym zawale. Lekarze mówią, że szybko potrzebuje nowego serca. Wyślijcie jedno, migiem!"
 	reward = 3000
 	wanted_types = list(/obj/item/organ/heart)
 
 /datum/bounty/item/medical/lung
 	name = "Lungs"
-	description = "A recent explosion at Central Command has left multiple staff with punctured lungs. Ship spare lungs to be rewarded."
+	description = "Niedawny wybuch w Centrali zostawił wielu pracowników z przebitymi płucami. Wyślijcie zapasowe płuca, by otrzymać nagrodę."
 	reward = 10000
 	required_count = 3
 	wanted_types = list(/obj/item/organ/lungs)
 
 /datum/bounty/item/medical/appendix
 	name = "Appendix"
-	description = "Chef Gibb of Central Command wants to prepare a meal using a very special delicacy: an appendix. If you ship one, he'll pay."
+	description = "Szef kuchni Gibb z Centrali chce przygotować posiłek z bardzo wyjątkowego przysmaku: wyrostka robaczkowego. Jeśli go wyślecie, zapłaci."
 	reward = 5000 //there are no synthetic appendixes
 	wanted_types = list(/obj/item/organ/appendix)
 
 /datum/bounty/item/medical/ears
 	name = "Ears"
-	description = "Multiple staff at Station 12 have been left deaf due to unauthorized clowning. Ship them new ears."
+	description = "Wielu pracowników Stacji 12 ogłuchło przez nieautoryzowane klaunowanie. Wyślijcie im nowe uszy."
 	reward = 10000
 	required_count = 3
 	wanted_types = list(/obj/item/organ/ears)
 
 /datum/bounty/item/medical/liver
 	name = "Livers"
-	description = "Multiple high-ranking CentCom diplomats have been hospitalized with liver failure after a recent meeting with Third Soviet Union ambassadors. Help us out, will you?"
+	description = "Wielu wysoko postawionych dyplomatów Centrali trafiło do szpitala z niewydolnością wątroby po niedawnym spotkaniu z ambasadorami Trzeciego Związku Radzieckiego. Pomożecie?"
 	reward = 10000
 	required_count = 3
 	wanted_types = list(/obj/item/organ/liver)
 
 /datum/bounty/item/medical/eye
 	name = "Organic Eyes"
-	description = "Station 5's Research Director Willem is requesting a few pairs of non-robotic eyes. Don't ask questions, just ship them."
+	description = "Dyrektor badań Stacji 5, Willem, prosi o kilka par nierobotycznych oczu. Nie zadawajcie pytań, po prostu je wyślijcie."
 	reward = 10000
 	required_count = 3
 	wanted_types = list(/obj/item/organ/eyes)
@@ -41,25 +41,25 @@
 
 /datum/bounty/item/medical/tongue
 	name = "Tongues"
-	description = "A recent attack by Mime extremists has left staff at Station 23 speechless. Ship some spare tongues."
+	description = "Niedawny atak ekstremistów-mimów odebrał mowę personelowi Stacji 23. Wyślijcie zapasowe języki."
 	reward = 10000
 	required_count = 3
 	wanted_types = list(/obj/item/organ/tongue)
 
 /datum/bounty/item/medical/lizard_tail
 	name = "Lizard Tail"
-	description = "The Wizard Federation has made off with Nanotrasen's supply of lizard tails. While CentCom is dealing with the wizards, can the station spare a tail of their own?"
+	description = "Federacja Czarodziejów zwinęła zapas jaszczurzych ogonów Nanotrasen. Czy, gdy Centrala rozprawia się z czarodziejami, stacja mogłaby odstąpić własny ogon?"
 	reward = 3000
 	wanted_types = list(/obj/item/organ/tail/lizard)
 
 /datum/bounty/item/medical/cat_tail
 	name = "Cat Tail"
-	description = "Central Command has run out of heavy duty pipe cleaners. Can you ship over a cat tail to help us out?"
+	description = "W Centrali skończyły się wytrzymałe wyciory do rur. Możecie wysłać koci ogon, by nam pomóc?"
 	reward = 3000
 	wanted_types = list(/obj/item/organ/tail/cat)
 
 /datum/bounty/item/medical/moth_wings
 	name = "Pair of Moth Wings"
-	description = "Central Command's moth janitor has had its wings burnt off. Care to ship a replacement pair?"
+	description = "Woźnemu-ćmie z Centrali spłonęły skrzydła. Wyślecie zastępczą parę?"
 	reward = 3000
 	wanted_types = list(/obj/item/organ/wings/moth)

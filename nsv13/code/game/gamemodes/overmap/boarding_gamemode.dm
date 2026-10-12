@@ -4,7 +4,7 @@
 	name = "Boarding"
 	config_tag = "boarding"
 	desc = "Boarding gamemode - board a specific ship and hack the IFF"
-	brief = "You have been assigned to capture a syndicate vessel. Locate the target, eliminate any Syndicate forces with extreme prejudice, then change its transponder codes and bring it home."
+	brief = "Waszym zadaniem jest przejęcie jednostki Syndykatu. Zlokalizujcie cel, bezwzględnie wyeliminujcie siły Syndykatu, a następnie zmieńcie kody transpondera i sprowadźcie ją do domu."
 	starting_system = "Argo"
 	starting_faction = "nanotrasen"
 	objective_reminder_setting = 2 // Combat can postpone, but it's not the goal

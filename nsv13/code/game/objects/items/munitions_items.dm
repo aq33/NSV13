@@ -180,7 +180,7 @@
 /obj/item/flashlight/atc_wavy_sticks/afterattack(atom/target, mob/user, proximity)
 	if(!start_turf)
 		start_turf = get_turf(target)
-		to_chat(user, "<span class='warning'>You point [src] at [target]. Point it at another turf to form a path or alt-click [src] to cancel.</span>")
+		to_chat(user, "<span class='warning'>Celujesz [src] w [target]. Wskaż inne pole, by utworzyć ścieżkę, albo alt-kliknij [src], by anulować.</span>")
 		new /obj/effect/temp_visual/impact_effect/green_laser(start_turf)
 		return
 	if(!end_turf)
@@ -189,7 +189,7 @@
 			end_turf = get_turf(target)
 			addtimer(VARSET_CALLBACK(src, start_turf, null), 5 SECONDS) //Clear the path after a while
 			addtimer(VARSET_CALLBACK(src, end_turf, null), 5 SECONDS) //Clear the path after a while
-			visible_message("<span class='warning'>[user] waves [src] around in a controlled motion.</span>")
+			visible_message("<span class='warning'>[user] wymachuje [src] kontrolowanym ruchem.</span>")
 			var/turf/last_turf = start_turf
 			for(var/turf/T in getline(start_turf,end_turf))
 				var/pdir = SOUTH
@@ -201,7 +201,7 @@
 				last_turf = T
 			return
 		else
-			to_chat(user, "<span class='warning'>You can only indicate in straight lines, not diagonally.</span>")
+			to_chat(user, "<span class='warning'>Możesz wskazywać tylko w liniach prostych, nie po przekątnej.</span>")
 			return
 	. = ..()
 
@@ -209,5 +209,5 @@
 	. = ..()
 	if(start_turf)
 		start_turf = null
-		to_chat(user, "<span class='warning'>Cleared target selection</span>")
+		to_chat(user, "<span class='warning'>Wyczyszczono wybór celu</span>")
 		add_fingerprint(user)

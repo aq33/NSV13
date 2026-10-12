@@ -44,27 +44,27 @@
 	var/datum/antagonist/gang/boss/L = user.mind.has_antag_datum(/datum/antagonist/gang/boss)
 	var/dat
 	if(!gang)
-		dat += "This device is not registered.<br><br>"
+		dat += "To urządzenie nie jest zarejestrowane.<br><br>"
 		if(L)
 			if(promotable && L.gang.leaders.len < L.gang.max_leaders)
-				dat += "Give this device to another member of your organization to use to promote them to Lieutenant.<br><br>"
-				dat += "If this is meant as a spare device for yourself:<br>"
-			dat += "<a href='byond://?src=[REF(src)];register=1'>Register Device as Spare</a><br>"
+				dat += "Daj to urządzenie innemu członkowi organizacji, by awansować go na porucznika.<br><br>"
+				dat += "Jeśli to ma być twoje zapasowe urządzenie:<br>"
+			dat += "<a href='byond://?src=[REF(src)];register=1'>Zarejestruj jako zapasowe</a><br>"
 		else if(promotable)
 			var/datum/antagonist/gang/sweet = user.mind.has_antag_datum(/datum/antagonist/gang)
 			if(sweet.gang.leaders.len < sweet.gang.max_leaders)
-				dat += "You have been selected for a promotion!<br>"
-				dat += "<a href='byond://?src=[REF(src)];register=1'>Accept Promotion</a><br>"
+				dat += "Zostajesz wybrany do awansu!<br>"
+				dat += "<a href='byond://?src=[REF(src)];register=1'>Przyjmij awans</a><br>"
 			else
-				dat += "No promotions available: All positions filled.<br>"
+				dat += "Brak dostępnych awansów: wszystkie stanowiska obsadzone.<br>"
 		else
-			dat += "This device is not authorized to promote.<br>"
+			dat += "To urządzenie nie ma uprawnień do awansowania.<br>"
 	else
-		dat += "Registration: <B>[gang.name] Gang Boss</B><br>"
-		dat += "Organization Size: <B>[gang.members.len]</B> | Station Control: <B>[gang.territories.len] territories under control.</B> | Influence: <B>[gang.influence]</B><br>"
-		dat += "Time until Influence grows: <B>[time2text(gang.next_point_time - world.time, "mm:ss")]</B><br>"
-		dat += "<a href='byond://?src=[REF(src)];commute=1'>Send message to Gang</a><br>"
-		dat += "<a href='byond://?src=[REF(src)];recall=1'>Recall shuttle</a><br>"
+		dat += "Rejestracja: <B>szef gangu [gang.name]</B><br>"
+		dat += "Wielkość organizacji: <B>[gang.members.len]</B> | Kontrola stacji: <B>terenów pod kontrolą: [gang.territories.len].</B> | Wpływy: <B>[gang.influence]</B><br>"
+		dat += "Czas do wzrostu wpływów: <B>[time2text(gang.next_point_time - world.time, "mm:ss")]</B><br>"
+		dat += "<a href='byond://?src=[REF(src)];commute=1'>Wyślij wiadomość do gangu</a><br>"
+		dat += "<a href='byond://?src=[REF(src)];recall=1'>Odwołaj prom</a><br>"
 		dat += "<hr>"
 		for(var/cat in buyable_items)
 			dat += "<b>[cat]</b><br>"
@@ -89,7 +89,7 @@
 
 	dat += "<a href='byond://?src=[REF(src)];choice=refresh'>Refresh</a><br>"
 
-	var/datum/browser/popup = new(user, "gangtool", "Welcome to GangTool v4.0", 340, 625)
+	var/datum/browser/popup = new(user, "gangtool", "Witaj w GangTool v4.0", 340, 625)
 	popup.set_content(dat)
 	popup.open()
 
@@ -128,11 +128,11 @@
 /obj/item/device/gangtool/proc/ping_gang(mob/user)
 	if(!can_use(user))
 		return
-	var/message = stripped_input(user,"Discreetly send a gang-wide message.","Send Message")
+	var/message = stripped_input(user,"Dyskretnie wyślij wiadomość do całego gangu.","Wyślij wiadomość")
 	if(!message || !can_use(user))
 		return
 	if(!is_station_level(user.z))
-		to_chat(user, "<span class='info'>[icon2html(src, user)]Error: Station out of range.</span>")
+		to_chat(user, "<span class='info'>[icon2html(src, user)]Błąd: stacja poza zasięgiem.</span>")
 		return
 	if(gang.members.len)
 		var/datum/antagonist/gang/G = user.mind.has_antag_datum(/datum/antagonist/gang)
@@ -158,27 +158,27 @@
 		if(!(user.mind in gang.leaders) && promotable)
 			G.promote()
 			free_pen = TRUE
-			gang.message_gangtools("[user] has been promoted to Lieutenant.")
-			to_chat(user, "The <b>Gangtool</b> you registered will allow you to purchase weapons and equipment, and send messages to your gang.")
-			to_chat(user, "Unlike regular gangsters, you may use <b>recruitment pens</b> to add recruits to your gang. Use them on unsuspecting crew members to recruit them. Don't forget to get your one free pen from the gangtool.")
+			gang.message_gangtools("[user] awansuje na porucznika.")
+			to_chat(user, "Zarejestrowany <b>Gangtool</b> pozwoli ci kupować broń i sprzęt oraz wysyłać wiadomości do gangu.")
+			to_chat(user, "W przeciwieństwie do zwykłych gangsterów możesz używać <b>długopisów werbunkowych</b>, by werbować nowych członków. Użyj ich na niczego niepodejrzewającej załodze. Nie zapomnij odebrać darmowego długopisu z gangtoola.")
 	else
-		to_chat(user, "<span class='warning'>ACCESS DENIED: Unauthorized user.</span>")
+		to_chat(user, "<span class='warning'>ODMOWA DOSTĘPU: nieuprawniony użytkownik.</span>")
 
 /obj/item/device/gangtool/proc/recall(mob/user)
 	if(!recallchecks(user))
 		return
 	if(recalling)
-		to_chat(user, "<span class='warning'>Error: Recall already in progress.</span>")
+		to_chat(user, "<span class='warning'>Błąd: odwołanie już trwa.</span>")
 		return
-	gang.message_gangtools("[user] is attempting to recall the emergency shuttle.")
+	gang.message_gangtools("[user] próbuje odwołać prom ewakuacyjny.")
 	recalling = TRUE
-	to_chat(user, "<span class='info'>[icon2html(src, loc)]Generating shuttle recall order with codes retrieved from last call signal...</span>")
+	to_chat(user, "<span class='info'>[icon2html(src, loc)]Generowanie rozkazu odwołania promu z kodami z ostatniego sygnału wezwania...</span>")
 	addtimer(CALLBACK(src, PROC_REF(recall2), user), rand(100,300))
 
 /obj/item/device/gangtool/proc/recall2(mob/user)
 	if(!recallchecks(user))
 		return
-	to_chat(user, "<span class='info'>[icon2html(src, loc)]Shuttle recall order generated. Accessing station long-range communication arrays...</span>")
+	to_chat(user, "<span class='info'>[icon2html(src, loc)]Wygenerowano rozkaz odwołania promu. Łączenie z dalekosiężnymi antenami stacji...</span>")
 	addtimer(CALLBACK(src, PROC_REF(recall3), user), rand(100,300))
 
 /obj/item/device/gangtool/proc/recall3(mob/user)
@@ -188,10 +188,10 @@
 	living_crew = get_living_station_crew()
 	var/malc = CONFIG_GET(number/midround_antag_life_check)
 	if(living_crew.len / GLOB.joined_player_list.len <= malc) //Shuttle cannot be recalled if too many people died
-		to_chat(user, "<span class='warning'>[icon2html(src, user)]Error: Station communication systems compromised. Unable to establish connection.</span>")
+		to_chat(user, "<span class='warning'>[icon2html(src, user)]Błąd: systemy komunikacyjne stacji są uszkodzone. Nie można nawiązać połączenia.</span>")
 		recalling = FALSE
 		return
-	to_chat(user, "<span class='info'>[icon2html(src, loc)]Comm arrays accessed. Broadcasting recall signal...</span>")
+	to_chat(user, "<span class='info'>[icon2html(src, loc)]Połączono z antenami. Nadawanie sygnału odwołania...</span>")
 	addtimer(CALLBACK(src, PROC_REF(recallfinal), user), rand(100,300))
 
 /obj/item/device/gangtool/proc/recallfinal(mob/user)
@@ -204,7 +204,7 @@
 		gang.recalls--
 		return TRUE
 
-	to_chat(user, "<span class='info'>[icon2html(src, loc)]No response received. Emergency shuttle cannot be recalled at this time.</span>")
+	to_chat(user, "<span class='info'>[icon2html(src, loc)]Brak odpowiedzi. Obecnie nie można odwołać promu ewakuacyjnego.</span>")
 	return
 
 /obj/item/device/gangtool/proc/recallchecks(mob/user)
@@ -213,14 +213,14 @@
 	if(SSshuttle.emergencyNoRecall)
 		return
 	if(!gang.recalls)
-		to_chat(user, "<span class='warning'>Error: Unable to access communication arrays. Firewall has logged our signature and is blocking all further attempts.</span>")
+		to_chat(user, "<span class='warning'>Błąd: brak dostępu do anten. Zapora zarejestrowała naszą sygnaturę i blokuje kolejne próby.</span>")
 		return
 	if(SSshuttle.emergency.mode != SHUTTLE_CALL) //Shuttle can only be recalled when it's moving to the station
-		to_chat(user, "<span class='warning'>[icon2html(src, user)]Emergency shuttle cannot be recalled at this time.</span>")
+		to_chat(user, "<span class='warning'>[icon2html(src, user)]Obecnie nie można odwołać promu ewakuacyjnego.</span>")
 		recalling = FALSE
 		return
 	if(!is_station_level(user.z)) //Shuttle can only be recalled while on station
-		to_chat(user, "<span class='warning'>[icon2html(src, user)]Error: Device out of range of station communication arrays.</span>")
+		to_chat(user, "<span class='warning'>[icon2html(src, user)]Błąd: urządzenie poza zasięgiem anten stacji.</span>")
 		recalling = FALSE
 		return
 	return TRUE
@@ -236,13 +236,13 @@
 		return
 	var/datum/antagonist/gang/G = user.mind.has_antag_datum(/datum/antagonist/gang)
 	if(!G)
-		to_chat(user, "<span class='notice'>Huh, what's this?</span>")
+		to_chat(user, "<span class='notice'>Hę, co to?</span>")
 		return
 	if(!isnull(gang) && G.gang != gang)
-		to_chat(user, "<span class='danger'>You cannot use gang tools owned by enemy gangs!</span>")
+		to_chat(user, "<span class='danger'>Nie możesz używać narzędzi wrogich gangów!</span>")
 		return
 	else if(!G.gang.check_gangster_swag(user)>1)
-		to_chat(user, "<span class='danger'>You cannot use gang tools while undercover!</span>")
+		to_chat(user, "<span class='danger'>Nie możesz używać narzędzi gangu pod przykrywką!</span>")
 		return
 	return TRUE
 

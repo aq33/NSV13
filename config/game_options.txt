@@ -84,8 +84,8 @@ ALERT_BLUE_DOWNTO Uwaga załogo, zakończyć alarm bojowy. Wprowadzono stan 2. n
 ALERT_RED_UPTO Alarm bojowy, alarm bojowy. Wszyscy do swoich stanowisk bojowych!
 ALERT_RED_DOWNTO Uwaga załogo, zakończyć stan obronny "Zebra". Blokady przedziałów zostały teraz zdjęte. Nadal obowiązuje alarm bojowy.
 ALERT_ZEBRA_UPTO Uwaga załogo, przyjąć stan obronny "Zebra". Blokady przedziałów zostały aktywowane. Przygotować się na nadchodzący ogień.
-ALERT_ZEBRA_DOWNTO ATTENTION: Sekwencja aautodestrukcji została dezaktywowana. Obowiązuje teraz stan obronny "Zebra".
-ALERT_DELTA DANGER: DANGER: Sekwencja autodestrukcji została aktywowana. Statek zostanie wkrótce wysadzony. Wszyscy natychmiast opuścić pokład.
+ALERT_ZEBRA_DOWNTO UWAGA: Sekwencja autodestrukcji została dezaktywowana. Obowiązuje teraz stan obronny "Zebra".
+ALERT_DELTA NIEBEZPIECZEŃSTWO: Sekwencja autodestrukcji została aktywowana. Statek zostanie wkrótce wysadzony. Wszyscy natychmiast opuścić pokład.
 
 
 ## GAME MODES ###

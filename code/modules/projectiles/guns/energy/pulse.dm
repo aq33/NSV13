@@ -24,7 +24,7 @@
 	message_admins("A pulse rifle prize has been created at [ADMIN_VERBOSEJMP(T)]")
 	log_game("A pulse rifle prize has been created at [AREACOORD(T)]")
 
-	notify_ghosts("Someone won a pulse rifle as a prize!", source = src, action = NOTIFY_ORBIT, header = "Pulse rifle prize")
+	notify_ghosts("Ktoś wygrał karabin pulsacyjny w nagrodę!", source = src, action = NOTIFY_ORBIT, header = "Nagroda: karabin pulsacyjny")
 
 /obj/item/gun/energy/pulse/prize/Destroy()
 	GLOB.poi_list -= src
@@ -83,7 +83,7 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/pulse)
 
 /obj/item/gun/energy/pulse/destroyer/attack_self(mob/living/user)
-	to_chat(user, "<span class='danger'>[src.name] has three settings, and they are all DESTROY.</span>")
+	to_chat(user, "<span class='danger'>[src.name] ma trzy tryby i wszystkie to ZNISZCZ.</span>")
 
 /obj/item/gun/energy/pulse/pistol/m1911
 	name = "\improper M1911-P"

@@ -141,9 +141,9 @@
 /// Default on_hit proc, since cult robes are stupid and have different descriptions/sparks
 /datum/component/shielded/proc/default_run_hit_callback(mob/living/owner, attack_text, current_charges)
 	do_sparks(2, TRUE, owner)
-	owner.visible_message("<span class='danger'>[owner]'s shields deflect [attack_text] in a shower of sparks!<span>")
+	owner.visible_message("<span class='danger'>Tarcze [owner] odbijają [attack_text] w deszczu iskier!<span>")
 	if(current_charges <= 0)
-		owner.visible_message("<span class='warning'>[owner]'s shield overloads!</span>")
+		owner.visible_message("<span class='warning'>Tarcza [owner] się przeciąża!</span>")
 
 /datum/component/shielded/proc/check_recharge_item(datum/source, obj/item/item, mob/living/user)
 	SIGNAL_HANDLER
@@ -152,9 +152,9 @@
 		. = COMPONENT_NO_AFTERATTACK
 		var/obj/item/wizard_armour_charge/recharge_rune = item
 		if(!istype(parent, /obj/item/clothing/suit/space/hardsuit/shielded/wizard))
-			to_chat(user, "<span class='warning'>The rune can only be used on battlemage armour!</span>")
+			to_chat(user, "<span class='warning'>Runy można użyć tylko na pancerzu bitewnego maga!</span>")
 			return
 
 		current_charges += recharge_rune.restored_charges
-		to_chat(user, "<span class='notice'>You charge \the [parent]. It can now absorb [current_charges] hits.</span>")
+		to_chat(user, "<span class='notice'>Ładujesz [parent]. Może teraz pochłonąć [current_charges] trafień.</span>")
 		qdel(recharge_rune)

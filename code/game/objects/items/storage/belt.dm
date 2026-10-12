@@ -8,12 +8,12 @@
 	lefthand_file = 'icons/mob/inhands/equipment/belt_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/belt_righthand.dmi'
 	slot_flags = ITEM_SLOT_BELT
-	attack_verb = list("whipped", "lashed", "disciplined")
+	attack_verb = list("chłoszcze", "smaga", "dyscyplinuje")
 	max_integrity = 300
 	var/content_overlays = FALSE //If this is true, the belt will gain overlays based on what it's holding
 
 /obj/item/storage/belt/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] begins belting [user.p_them()]self with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaczyna okładać się pasem [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return BRUTELOSS
 
 /obj/item/storage/belt/update_icon()
@@ -781,18 +781,18 @@
 /obj/item/storage/belt/sabre/examine(mob/user)
 	. = ..()
 	if(length(contents))
-		. += "<span class='notice'>Alt-click it to quickly draw the blade.</span>"
+		. += "<span class='notice'>Alt-kliknij, by szybko dobyć ostrza.</span>"
 
 /obj/item/storage/belt/sabre/AltClick(mob/user)
 	if(!iscarbon(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
 	if(length(contents))
 		var/obj/item/I = contents[1]
-		user.visible_message("[user] takes [I] out of [src].", "<span class='notice'>You take [I] out of [src].</span>")
+		user.visible_message("[user] wyjmuje [I] z [src].", "<span class='notice'>Wyjmujesz [I] z [src].</span>")
 		user.put_in_hands(I)
 		update_icon()
 	else
-		to_chat(user, "[src] is empty.")
+		to_chat(user, "[src] jest pusty.")
 
 /obj/item/storage/belt/sabre/update_icon()
 	icon_state = initial(icon_state)

@@ -3,7 +3,7 @@
 	name = "Near Sightness"
 	desc = "The holder of this mutation has poor eyesight."
 	quality = MINOR_NEGATIVE
-	text_gain_indication = "<span class='danger'>You can't see very well.</span>"
+	text_gain_indication = "<span class='danger'>Słabo widzisz.</span>"
 
 /datum/mutation/nearsight/on_acquiring(mob/living/carbon/owner)
 	if(..())
@@ -21,7 +21,7 @@
 	name = "Blindness"
 	desc = "Renders the subject completely blind."
 	quality = NEGATIVE
-	text_gain_indication = "<span class='danger'>You can't seem to see anything.</span>"
+	text_gain_indication = "<span class='danger'>Nic nie widzisz.</span>"
 
 /datum/mutation/blind/on_acquiring(mob/living/carbon/owner)
 	if(..())
@@ -39,7 +39,7 @@
 	desc = "The user of this genome can visually percieve the unique human thermal signature."
 	quality = POSITIVE
 	difficulty = 18
-	text_gain_indication = "<span class='notice'>You can see the heat rising off of your skin...</span>"
+	text_gain_indication = "<span class='notice'>Widzisz, jak z twojej skóry unosi się ciepło...</span>"
 	instability = 25
 	locked = TRUE
 	var/visionflag = TRAIT_THERMAL_VISION
@@ -61,7 +61,7 @@
 /datum/mutation/thermal/x_ray
 	name = "X Ray Vision"
 	desc = "A strange genome that allows the user to see between the spaces of walls." //actual x-ray would mean you'd constantly be blasting rads, wich might be fun for later //hmb
-	text_gain_indication = "<span class='notice'>The walls suddenly disappear!</span>"
+	text_gain_indication = "<span class='notice'>Ściany nagle znikają!</span>"
 	instability = 35
 	locked = TRUE
 	visionflag = TRAIT_XRAY_VISION
@@ -73,7 +73,7 @@
 	quality = POSITIVE
 	locked = TRUE
 	difficulty = 16
-	text_gain_indication = "<span class='notice'>You feel pressure building up behind your eyes.</span>"
+	text_gain_indication = "<span class='notice'>Czujesz narastający ucisk za oczami.</span>"
 	layer_used = FRONT_MUTATIONS_LAYER
 	limb_req = BODY_ZONE_HEAD
 

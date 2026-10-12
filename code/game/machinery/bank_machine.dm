@@ -33,7 +33,7 @@
 		var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
 		if(D)
 			D.adjust_money(value)
-			to_chat(user, "<span class='notice'>You deposit [I]. The Cargo Budget is now $[D.account_balance].</span>")
+			to_chat(user, "<span class='notice'>Wpłacasz [I]. Budżet zaopatrzenia wynosi teraz $[D.account_balance].</span>")
 		qdel(I)
 		return
 	return ..()
@@ -42,14 +42,14 @@
 	..()
 	if(siphoning)
 		if (machine_stat & (BROKEN|NOPOWER))
-			say("Insufficient power. Halting siphon.")
+			say("Za mało zasilania. Zatrzymywanie wysysania.")
 			end_syphon()
 			ui_update()
 			return
 		var/siphon_am = 100 * delta_time
 		var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
 		if(!D.has_money(siphon_am))
-			say("Cargo budget depleted. Halting siphon.")
+			say("Budżet zaopatrzenia wyczerpany. Zatrzymywanie wysysania.")
 			end_syphon()
 			ui_update()
 			return
@@ -59,7 +59,7 @@
 		D.adjust_money(-siphon_am)
 		if(next_warning < world.time && prob(15))
 			var/area/A = get_area(loc)
-			var/message = "Unauthorized credit withdrawal underway in [initial(A.name)]!!"
+			var/message = "Trwa nieautoryzowana wypłata kredytów w [initial(A.name)]!!"
 			radio.talk_into(src, message, radio_channel)
 			next_warning = world.time + minimum_time_between_warnings
 
@@ -92,11 +92,11 @@
 
 	switch(action)
 		if("siphon")
-			say("Siphon of station credits has begun!")
+			say("Rozpoczęło się wysysanie kredytów stacji!")
 			siphoning = TRUE
 			. = TRUE
 		if("halt")
-			say("Station credit withdrawal halted.")
+			say("Zatrzymano wypłatę kredytów stacji.")
 			end_syphon()
 			. = TRUE
 

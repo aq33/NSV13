@@ -24,7 +24,7 @@
 /datum/component/magnetic_catch/proc/examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += "It has been installed with inertia dampening to prevent coffee spills."
+	examine_list += "Ma zainstalowane tłumienie bezwładności, by kawa się nie rozlewała."
 
 /datum/component/magnetic_catch/proc/on_entered(datum/source, atom/movable/thing, atom/oldloc)
 	SIGNAL_HANDLER

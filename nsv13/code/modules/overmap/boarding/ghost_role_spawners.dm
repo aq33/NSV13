@@ -43,9 +43,9 @@
 
 /obj/effect/mob_spawn/human/syndicate/boarding
 	name = "Syndicate Crewman"
-	short_desc = "You are a Syndicate Crewman."
-	flavour_text = "Your job is to follow the orders of your captain. You must decide on a role for yourself amongst your crew, then fulfill it. Defend your ship at all costs."
-	important_info = "If you're stuck for what to do, ahelp!. The ship will need engineers, munitions techs, sometimes even pilots. You can even conduct counter boarding..."
+	short_desc = "Jesteś członkiem załogi Syndykatu."
+	flavour_text = "Twoim zadaniem jest wykonywać rozkazy kapitana. Musisz wybrać dla siebie rolę w załodze, a potem ją wypełniać. Broń okrętu za wszelką cenę."
+	important_info = "Jeśli nie wiesz, co robić, napisz ahelp! Okręt będzie potrzebował inżynierów, techników uzbrojenia, czasem nawet pilotów. Możesz też przeprowadzić kontrabordaż..."
 	outfit = /datum/outfit/syndicate_empty/boarding
 	id_access_list = list(ACCESS_SYNDICATE, ACCESS_SYNDICATE_ENGINEERING, ACCESS_SYNDICATE_MARINE_ARMOURY)
 	assignedrole = "Syndicate Crew"
@@ -61,8 +61,8 @@
 
 /obj/effect/mob_spawn/human/syndicate/boarding_captain
 	name = "Syndicate Navy Captain"
-	short_desc = "You are the captain of a Syndicate naval vessel."
-	flavour_text = "Your job is to oversee your crew, defend your ship with your life. Destroy as many Nanotrasen ships as you can."
-	important_info = "As the captain, you should not abandon your ship. If you desert, your bloodline may be terminated."
+	short_desc = "Jesteś kapitanem okrętu marynarki Syndykatu."
+	flavour_text = "Twoim zadaniem jest nadzorować załogę i bronić okrętu za cenę życia. Zniszcz jak najwięcej okrętów Nanotrasen."
+	important_info = "Jako kapitan nie powinieneś porzucać okrętu. Jeśli zdezerterujesz, twój ród może zostać wybity."
 	outfit = /datum/outfit/syndicate_empty/boarding/captain
 	id_access_list = list(ACCESS_SYNDICATE,ACCESS_SYNDICATE_LEADER)

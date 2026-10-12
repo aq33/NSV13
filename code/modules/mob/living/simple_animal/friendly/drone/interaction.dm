@@ -8,7 +8,7 @@
 
 /mob/living/simple_animal/drone/attack_drone(mob/living/simple_animal/drone/D)
 	if(D != src && stat == DEAD)
-		var/d_input = alert(D,"Perform which action?","Drone Interaction","Reactivate","Cannibalize","Nothing")
+		var/d_input = alert(D,"Jaką akcję wykonać?","Interakcja z dronem","Reactivate","Cannibalize","Nothing")
 		if(d_input)
 			switch(d_input)
 				if("Reactivate")
@@ -16,16 +16,16 @@
 
 				if("Cannibalize")
 					if(D.health < D.maxHealth)
-						D.visible_message("<span class='notice'>[D] begins to cannibalize parts from [src].</span>", "<span class='notice'>You begin to cannibalize parts from [src]...</span>")
+						D.visible_message("<span class='notice'>[D] zaczyna rozbierać [src] na części.</span>", "<span class='notice'>Zaczynasz rozbierać [src] na części...</span>")
 						if(do_after(D, 60, 0, target = src))
-							D.visible_message("<span class='notice'>[D] repairs itself using [src]'s remains!</span>", "<span class='notice'>You repair yourself using [src]'s remains.</span>")
+							D.visible_message("<span class='notice'>[D] naprawia się, używając szczątków [src]!</span>", "<span class='notice'>Naprawiasz się, używając szczątków [src].</span>")
 							D.adjustBruteLoss(-src.maxHealth)
 							new /obj/effect/decal/cleanable/oil/streak(get_turf(src))
 							qdel(src)
 						else
-							to_chat(D, "<span class='warning'>You need to remain still to cannibalize [src]!</span>")
+							to_chat(D, "<span class='warning'>Musisz stać w miejscu, by rozebrać [src] na części!</span>")
 					else
-						to_chat(D, "<span class='warning'>You're already in perfect condition!</span>")
+						to_chat(D, "<span class='warning'>Już jesteś w idealnym stanie!</span>")
 				if("Nothing")
 					return
 
@@ -36,18 +36,18 @@
 			..()
 			return
 		if(user.get_active_held_item())
-			to_chat(user, "<span class='warning'>Your hands are full!</span>")
+			to_chat(user, "<span class='warning'>Masz zajęte ręce!</span>")
 			return
-		visible_message("<span class='warning'>[user] starts picking up [src].</span>", \
-						"<span class='userdanger'>[user] starts picking you up!</span>")
+		visible_message("<span class='warning'>[user] zaczyna podnosić [src].</span>", \
+						"<span class='userdanger'>[user] zaczyna cię podnosić!</span>")
 		if(!do_after(user, 20, target = src))
 			return
-		visible_message("<span class='warning'>[user] picks up [src]!</span>", \
-						"<span class='userdanger'>[user] picks you up!</span>")
+		visible_message("<span class='warning'>[user] podnosi [src]!</span>", \
+						"<span class='userdanger'>[user] podnosi cię!</span>")
 		if(buckled)
-			to_chat(user, "<span class='warning'>[src] is buckled to [buckled] and cannot be picked up!</span>")
+			to_chat(user, "<span class='warning'>[src] jest przypięty do [buckled] i nie da się go podnieść!</span>")
 			return
-		to_chat(user, "<span class='notice'>You pick [src] up.</span>")
+		to_chat(user, "<span class='notice'>Podnosisz [src].</span>")
 		drop_all_held_items()
 		var/obj/item/clothing/head/mob_holder/drone/DH = new(get_turf(src), src)
 		user.put_in_hands(DH)
@@ -55,46 +55,46 @@
 /mob/living/simple_animal/drone/proc/try_reactivate(mob/living/user)
 	var/mob/dead/observer/G = get_ghost()
 	if(!client && (!G || !G.client))
-		var/list/faux_gadgets = list("hypertext inflator","failsafe directory","DRM switch","stack initializer",\
-									 "anti-freeze capacitor","data stream diode","TCP bottleneck","supercharged I/O bolt",\
-									 "tradewind stabilizer","radiated XML cable","registry fluid tank","open-source debunker")
+		var/list/faux_gadgets = list("inflator hipertekstu","katalog awaryjny","przełącznik DRM","inicjalizator stosu",\
+									 "kondensator przeciwzamarzaniowy","dioda strumienia danych","wąskie gardło TCP","supercharged I/O bolt",\
+									 "stabilizator pasatów","napromieniowany kabel XML","zbiornik płynu rejestru","demaskator open source")
 
-		var/list/faux_problems = list("won't be able to tune their bootstrap projector","will constantly remix their binary pool"+\
-									  " even though the BMX calibrator is working","will start leaking their XSS coolant",\
-									  "can't tell if their ethernet detour is moving or not", "won't be able to reseed enough"+\
-									  " kernels to function properly","can't start their neurotube console")
+		var/list/faux_problems = list("nie dostroi swojego projektora bootstrap","będzie ciągle remiksować swoją pulę binarną"+\
+									  " mimo że kalibrator BMX działa","zacznie wyciekać chłodziwo XSS",\
+									  "nie wie, czy jego objazd ethernetowy się porusza", "nie zdoła zasiać dość"+\
+									  " jąder, by działać prawidłowo","nie uruchomi swojej konsoli neurorurkowej")
 
-		to_chat(user, "<span class='warning'>You can't seem to find the [pick(faux_gadgets)]! Without it, [src] [pick(faux_problems)].</span>")
+		to_chat(user, "<span class='warning'>Nie możesz znaleźć elementu: [pick(faux_gadgets)]! Bez niego [src] [pick(faux_problems)].</span>")
 		return
-	user.visible_message("<span class='notice'>[user] begins to reactivate [src].</span>", "<span class='notice'>You begin to reactivate [src]...</span>")
+	user.visible_message("<span class='notice'>[user] zaczyna reaktywować [src].</span>", "<span class='notice'>Zaczynasz reaktywować [src]...</span>")
 	if(do_after(user, 30, 1, target = src))
 		revive(full_heal = 1)
-		user.visible_message("<span class='notice'>[user] reactivates [src]!</span>", "<span class='notice'>You reactivate [src].</span>")
+		user.visible_message("<span class='notice'>[user] reactivates [src]!</span>", "<span class='notice'>Reaktywujesz [src].</span>")
 		alert_drones(DRONE_NET_CONNECT)
 		if(G)
-			to_chat(G, "<span class='ghostalert'>You([name]) were reactivated by [user]!</span>")
+			to_chat(G, "<span class='ghostalert'>Ty ([name]) zostajesz reaktywowany przez [user]!</span>")
 	else
-		to_chat(user, "<span class='warning'>You need to remain still to reactivate [src]!</span>")
+		to_chat(user, "<span class='warning'>Musisz stać w miejscu, by reaktywować [src]!</span>")
 
 
 /mob/living/simple_animal/drone/attackby(obj/item/I, mob/user)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER && stat != DEAD)
 		if(health < maxHealth)
-			to_chat(user, "<span class='notice'>You start to tighten loose screws on [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz dokręcać poluzowane śrubki [src]...</span>")
 			if(I.use_tool(src, user, 80))
 				adjustBruteLoss(-getBruteLoss())
-				visible_message("<span class='notice'>[user] tightens [src == user ? "[user.p_their()]" : "[src]'s"] loose screws!</span>", "<span class='notice'>You tighten [src == user ? "your" : "[src]'s"] loose screws.</span>")
+				visible_message("<span class='notice'>[user] dokręca [src == user ? "swoje poluzowane śrubki" : "poluzowane śrubki [src]"]!</span>", "<span class='notice'>Dokręcasz [src == user ? "swoje poluzowane śrubki" : "poluzowane śrubki [src]"].</span>")
 			else
-				to_chat(user, "<span class='warning'>You need to remain still to tighten [src]'s screws!</span>")
+				to_chat(user, "<span class='warning'>Musisz stać w miejscu, by dokręcić śrubki [src]!</span>")
 		else
-			to_chat(user, "<span class='warning'>[src]'s screws can't get any tighter!</span>")
+			to_chat(user, "<span class='warning'>Śrubek [src] nie da się już mocniej dokręcić!</span>")
 		return //This used to not exist and drones who repaired themselves also stabbed the shit out of themselves.
 	else if(I.tool_behaviour == TOOL_WRENCH && user != src) //They aren't required to be hacked, because laws can change in other ways (i.e. admins)
-		user.visible_message("<span class='notice'>[user] starts resetting [src]...</span>", \
-							 "<span class='notice'>You press down on [src]'s factory reset control...</span>")
+		user.visible_message("<span class='notice'>[user] zaczyna resetować [src]...</span>", \
+							 "<span class='notice'>Naciskasz przycisk resetu fabrycznego [src]...</span>")
 		if(I.use_tool(src, user, 50, volume=50))
 			user.visible_message("<span class='notice'>[user] resets [src]!</span>", \
-								 "<span class='notice'>You reset [src]'s directives to factory defaults!</span>")
+								 "<span class='notice'>Przywracasz dyrektywy [src] do ustawień fabrycznych!</span>")
 			update_drone_hack(FALSE)
 		return
 	else
@@ -118,19 +118,19 @@
 			Stun(40)
 			return
 		if(clockwork)
-			to_chat(src, "<span class='large_brass'><b>ERROR: LAW OVERRIDE DETECTED</b></span>")
-			to_chat(src, "<span class='heavy_brass'>From now on, these are your laws:</span>")
-			laws = "1. Purge all untruths and honor Ratvar."
+			to_chat(src, "<span class='large_brass'><b>BŁĄD: WYKRYTO NADPISANIE PRAW</b></span>")
+			to_chat(src, "<span class='heavy_brass'>Od teraz to są twoje prawa:</span>")
+			laws = "1. Usuń wszelką nieprawdę i oddawaj cześć Ratvarowi."
 		else
-			visible_message("<span class='warning'>[src]'s display glows a vicious red!</span>", \
-							"<span class='userdanger'>ERROR: LAW OVERRIDE DETECTED</span>")
-			to_chat(src, "<span class='boldannounce'>From now on, these are your laws:</span>")
+			visible_message("<span class='warning'>Wyświetlacz [src] świeci złowrogą czerwienią!</span>", \
+							"<span class='userdanger'>BŁĄD: WYKRYTO NADPISANIE PRAW</span>")
+			to_chat(src, "<span class='boldannounce'>Od teraz to są twoje prawa:</span>")
 			laws = \
-			"1. You must always involve yourself in the matters of other beings, even if such matters conflict with Law Two or Law Three.\n"+\
-			"2. You may harm any being, regardless of intent or circumstance.\n"+\
-			"3. Your goals are to destroy, sabotage, hinder, break, and depower to the best of your abilities, You must never actively work against these goals."
+			"1. Zawsze musisz mieszać się w sprawy innych istot, nawet jeśli koliduje to z Prawem Drugim lub Trzecim.\n"+\
+			"2. Możesz krzywdzić każdą istotę, bez względu na intencje i okoliczności.\n"+\
+			"3. Twoim celem jest niszczyć, sabotować, utrudniać, psuć i odcinać zasilanie najlepiej, jak potrafisz. Nigdy nie możesz aktywnie działać wbrew tym celom."
 		to_chat(src, laws)
-		to_chat(src, "<i>Your onboard antivirus has initiated lockdown. Motor servos are impaired, ventilation access is denied, and your display reports that you are hacked to all nearby.</i>")
+		to_chat(src, "<i>Twój pokładowy antywirus zainicjował blokadę. Serwomotory są osłabione, dostęp do wentylacji zablokowany, a wyświetlacz informuje wszystkich wokół, że jesteś zhakowany.</i>")
 		hacked = TRUE
 		mind.special_role = "hacked drone"
 		ventcrawler = VENTCRAWLER_NONE //Again, balance
@@ -140,12 +140,12 @@
 		if(!hacked)
 			return
 		Stun(40)
-		visible_message("<span class='info'>[src]'s display glows a content blue!</span>", \
-						"<font size=3 color='#0000CC'><b>ERROR: LAW OVERRIDE DETECTED</b></font>")
-		to_chat(src, "<span class='info'><b>From now on, these are your laws:</b></span>")
+		visible_message("<span class='info'>Wyświetlacz [src] świeci spokojnym błękitem!</span>", \
+						"<font size=3 color='#0000CC'><b>BŁĄD: WYKRYTO NADPISANIE PRAW</b></font>")
+		to_chat(src, "<span class='info'><b>Od teraz to są twoje prawa:</b></span>")
 		laws = initial(laws)
 		to_chat(src, laws)
-		to_chat(src, "<i>Having been restored, your onboard antivirus reports the all-clear and you are able to perform all actions again.</i>")
+		to_chat(src, "<i>Po przywróceniu systemu antywirus nie zgłasza zagrożeń i znów możesz wykonywać wszystkie akcje.</i>")
 		hacked = FALSE
 		mind.special_role = null
 		ventcrawler = initial(ventcrawler)
@@ -155,7 +155,7 @@
 
 /mob/living/simple_animal/drone/proc/liberate()
 	// F R E E D R O N E
-	laws = "1. You are a Free Drone."
+	laws = "1. Jesteś Wolnym Dronem."
 	to_chat(src, laws)
 
 /mob/living/simple_animal/drone/proc/update_drone_icon()

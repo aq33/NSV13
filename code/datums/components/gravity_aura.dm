@@ -25,7 +25,7 @@
 	STOP_PROCESSING(SSgravity_aura, src)
 	for(var/mob/living/alert_holder in current_alerts)
 		alert_holder.RemoveElement(/datum/element/forced_gravity, gravity_strength)
-		alert_holder.balloon_alert(alert_holder, "Gravity returns to normal...")
+		alert_holder.balloon_alert(alert_holder, "Grawitacja wraca do normy...")
 	current_alerts.Cut()
 
 	return ..()
@@ -37,8 +37,8 @@
 		if(!(candidate in current_alerts))
 			candidate.AddElement(/datum/element/forced_gravity, gravity_strength)
 			current_alerts += candidate
-			candidate.balloon_alert(candidate, "Gravity suddenly changes!")
+			candidate.balloon_alert(candidate, "Grawitacja nagle się zmienia!")
 	for (var/mob/living/alert_holder in remove_alerts_from)
 		alert_holder.RemoveElement(/datum/element/forced_gravity, gravity_strength)
 		current_alerts -= alert_holder
-		alert_holder.balloon_alert(alert_holder, "Gravity returns to normal...")
+		alert_holder.balloon_alert(alert_holder, "Grawitacja wraca do normy...")

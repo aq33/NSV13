@@ -18,7 +18,7 @@ Bonus
 /datum/symptom/visionloss
 
 	name = "Hyphema"
-	desc = "The virus causes inflammation of the retina, leading to eye damage and eventually blindness."
+	desc = "Wirus wywołuje zapalenie siatkówki, prowadząc do uszkodzenia oczu, a w końcu do ślepoty."
 	stealth = -1
 	resistance = -3
 	stage_speed = -4
@@ -32,8 +32,7 @@ Bonus
 	bodies = list("Blind")
 	suffixes = list(" Blindness")
 	var/remove_eyes = FALSE
-	threshold_desc = "<b>Resistance 12:</b> Weakens extraocular muscles, eventually leading to complete detachment of the eyes.<br>\
-					  <b>Stealth 4:</b> The symptom remains hidden until active."
+	threshold_desc = "<b>Odporność 12:</b> osłabia mięśnie zewnątrzgałkowe, co ostatecznie prowadzi do całkowitego odpadnięcia oczu.<br><b>Ukrycie 4:</b> objaw pozostaje ukryty, dopóki nie jest aktywny."
 
 /datum/symptom/visionloss/severityset(datum/disease/advance/A)
 	. = ..()
@@ -57,9 +56,9 @@ Bonus
 		switch(A.stage)
 			if(1, 2)
 				if(prob(base_message_chance) && !suppress_warning)
-					to_chat(M, "<span class='warning'>Your eyes itch.</span>")
+					to_chat(M, "<span class='warning'>Swędzą cię oczy.</span>")
 			if(3, 4)
-				to_chat(M, "<span class='warning'><b>Your eyes burn!</b></span>")
+				to_chat(M, "<span class='warning'><b>Pieką cię oczy!</b></span>")
 				M.blur_eyes(10)
 				eyes.applyOrganDamage(1)
 			else
@@ -70,11 +69,11 @@ Bonus
 				if(prob(eyes.damage - 10 + 1))
 					if(!remove_eyes)
 						if(!HAS_TRAIT(M, TRAIT_BLIND))
-							to_chat(M, "<span class='userdanger'>You go blind!</span>")
+							to_chat(M, "<span class='userdanger'>Ślepniesz!</span>")
 							eyes.applyOrganDamage(eyes.maxHealth)
 					else
-						M.visible_message("<span class='warning'>[M]'s eyes fall out of their sockets!</span>", "<span class='userdanger'>Your eyes fall out of their sockets!</span>")
+						M.visible_message("<span class='warning'>Oczy [M] wypadają z oczodołów!</span>", "<span class='userdanger'>Twoje oczy wypadają z oczodołów!</span>")
 						eyes.Remove(M)
 						eyes.forceMove(get_turf(M))
 				else
-					to_chat(M, "<span class='userdanger'>Your eyes burn horrifically!</span>")
+					to_chat(M, "<span class='userdanger'>Oczy okropnie cię pieką!</span>")

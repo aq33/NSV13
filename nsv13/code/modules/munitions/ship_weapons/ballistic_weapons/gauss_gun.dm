@@ -39,11 +39,11 @@
 		return FALSE
 	if(istype(A, /obj/structure/closet))
 		if(!locate(/obj/item/ship_weapon/ammunition/gauss) in A.contents)
-			to_chat(user, "<span class='warning'>There's nothing in [A] that can be loaded into [src]...</span>")
+			to_chat(user, "<span class='warning'>W [A] nie ma niczego, co można by załadować do [src]...</span>")
 			return FALSE
 		if(length(ammo) >= max_ammo)
 			return FALSE
-		to_chat(user, "<span class='notice'>You start to load [src] with the contents of [A]...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz ładować do [src] zawartość [A]...</span>")
 		if(do_after(user, 4 SECONDS , target = src))
 			for(var/obj/item/ship_weapon/ammunition/gauss/G in A)
 				if(length(ammo) < max_ammo)
@@ -94,7 +94,7 @@
 	if(gunner.incapacitated() || !isliving(gunner))
 		return
 	ui_interact(gunner)
-	to_chat(gunner, "<span class='notice'>You reach for [src]'s control panel.</span>")
+	to_chat(gunner, "<span class='notice'>Sięgasz do panelu sterowania [src].</span>")
 
 /obj/machinery/ship_weapon/gauss_gun/verb/show_view()
 	set name = "Access gun camera"
@@ -104,7 +104,7 @@
 	if(usr.incapacitated())
 		return
 	set_gunner(usr)
-	to_chat(gunner, "<span class='notice'>You reach for [src]'s gun camera controls.</span>")
+	to_chat(gunner, "<span class='notice'>Sięgasz do sterowania kamerą działa [src].</span>")
 
 /* TEMP DISABLE BECAUSE REASONS
 /obj/machinery/ship_weapon/gauss_gun/verb/exit()
@@ -157,17 +157,17 @@
 		return FALSE
 	if(gunner)
 		if(gunner != user)
-			to_chat(user, "<span class='notice'>Someone is already in this turret!</span>")
+			to_chat(user, "<span class='notice'>Ktoś już jest w tej wieżyczce!</span>")
 			return FALSE
 		else
-			to_chat(user, "<span class='notice'>You start to climb out of [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz wychodzić z [src]...</span>")
 			remove_gunner()
 			return FALSE
 	if(gunner_chair)
-		to_chat(user, "<span class='notice'>[src]'s hatch is locked. Try using its gunner chair on the deck below?</span>")
+		to_chat(user, "<span class='notice'>Właz [src] jest zablokowany. Spróbuj użyć fotela strzelca na pokładzie poniżej?</span>")
 		return FALSE
 	climbing_in = TRUE //Stop it. Just stop.
-	to_chat(user, "<span class='notice'>You start to climb into [src]...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz wchodzić do [src]...</span>")
 	if(do_after(user, 3 SECONDS, target=src))
 		set_gunner(user)
 	climbing_in = FALSE //Stop it. Just stop.
@@ -275,7 +275,7 @@
 /obj/machinery/ship_weapon/gauss_gun/after_fire()
 	. = ..()
 	if(!ammo || ammo.len <= 0)
-		to_chat(gunner, "<span class='warning'>Ammunition expended. Reload required. </span>")
+		to_chat(gunner, "<span class='warning'>Amunicja wyczerpana. Wymagane przeładowanie. </span>")
 
 /obj/machinery/ship_weapon/gauss_gun/overmap_fire(atom/target)
 	if(world.time >= next_sound) //Prevents ear destruction from soundspam
@@ -383,7 +383,7 @@
 
 /obj/structure/gauss_rack/examine(mob/user)
 	. = ..()
-	. += "You can use a screwdriver on the gunner chair to adjust the rack's position."
+	. += "Śrubokrętem na fotelu strzelca możesz zmienić położenie stojaka."
 
 /obj/item/circuitboard/gauss_rack_upgrade
 	name = "Gauss Rack Autoload Module (Circuit)"
@@ -424,30 +424,30 @@
 /obj/structure/gauss_rack/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/circuitboard/gauss_rack_upgrade))
 		if(autoload)
-			to_chat(user, "<span class='warning'>This gauss rack is already upgraded.</span>")
+			to_chat(user, "<span class='warning'>Ten stojak Gaussa jest już ulepszony.</span>")
 			return FALSE
 		playsound(src, 'sound/machines/terminal_insert_disc.ogg', 100, 0)
-		to_chat(user, "<span class='notice'>You slot [I] into [src], allowing it to be loaded from conveyors.</span>")
+		to_chat(user, "<span class='notice'>Wkładasz [I] do [src], dzięki czemu można go ładować z przenośników.</span>")
 		I.forceMove(src)
 		autoload = TRUE
 		update_icon()
 	if(istype(I, gun?.ammo_type))
 		if(loading)
-			to_chat(user, "<span class='notice'>You're already loading something onto [src]!.</span>")
+			to_chat(user, "<span class='notice'>Już coś ładujesz na [src]!</span>")
 			return FALSE
 		if(capacity < max_capacity)
-			to_chat(user, "<span class='notice'>You start to load [I] onto [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz ładować [I] na [src]...</span>")
 			loading = TRUE
 			if(do_after(user,0.5 SECONDS, target = src))
 				load(I, src)
-				to_chat(user, "<span class='notice'>You load [I] onto [src].</span>")
+				to_chat(user, "<span class='notice'>Ładujesz [I] na [src].</span>")
 				loading = FALSE
 			loading = FALSE
 			return FALSE
 		else
-			to_chat(user, "<span class='warning'>[src] is fully loaded!</span>")
+			to_chat(user, "<span class='warning'>[src] jest w pełni załadowany!</span>")
 	else if(!gun)
-		to_chat(user, "<span class='warning'>[src] is is not connected to a gun!</span>")
+		to_chat(user, "<span class='warning'>[src] nie jest połączony z działem!</span>")
 	. = ..()
 
 /obj/structure/gauss_rack/MouseDrop_T(obj/structure/A, mob/user)
@@ -456,9 +456,9 @@
 		return
 	if(istype(A, /obj/structure/closet))
 		if(!locate(/obj/item/ship_weapon/ammunition/gauss) in A.contents)
-			to_chat(user, "<span class='warning'>There's nothing in [A] that can be loaded into [src]...</span>")
+			to_chat(user, "<span class='warning'>W [A] nie ma niczego, co można by załadować do [src]...</span>")
 			return FALSE
-		to_chat(user, "<span class='notice'>You start to load [src] with the contents of [A]...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz ładować do [src] zawartość [A]...</span>")
 		if(do_after(user, 4 SECONDS , target = src))
 			for(var/obj/item/ship_weapon/ammunition/gauss/G in A)
 				if(load(G, user, update_visuals = FALSE))
@@ -478,7 +478,7 @@
 /obj/structure/gauss_rack/proc/load(atom/movable/A, mob/user, update_visuals = TRUE)
 	if(capacity >= max_capacity)
 		if(user)
-			to_chat(user, "<span class='warning'>[src] is full!</span>")
+			to_chat(user, "<span class='warning'>[src] jest pełny!</span>")
 		loading = FALSE
 		return FALSE
 	playsound(src, 'nsv13/sound/effects/ship/mac_load.ogg', 100, 1)
@@ -606,7 +606,7 @@ Chair + rack handling
 /obj/structure/chair/fancy/gauss/screwdriver_act(mob/living/user, obj/item/I)
 	. = ..()
 	feed_direction = turn(feed_direction,-90)
-	to_chat(user, "<span class='notice'>You adjust the loading rack feed direction to the [dir2text(feed_direction)].</span>")
+	to_chat(user, "<span class='notice'>Ustawiasz kierunek podawania stojaka ładowniczego: [dir2text(feed_direction)].</span>")
 	return TRUE
 
 /obj/structure/chair/fancy/gauss/north
@@ -620,13 +620,13 @@ Chair + rack handling
 
 /obj/structure/chair/fancy/gauss/examine(mob/user)
 	. = ..()
-	. += "Use a screwdriver to adjust where the loading rack drops down from."
-	. += "Currently feeding from the [dir2text(feed_direction)]."
+	. += "Śrubokrętem ustawisz, skąd opada stojak ładowniczy."
+	. += "Obecnie podaje z kierunku: [dir2text(feed_direction)]."
 
 /obj/structure/chair/fancy/gauss/unbuckle_mob(mob/buckled_mob, force=FALSE)
 	if(!force && locked && gun)
 		if(buckled_mob.loc == src.loc)
-			to_chat(buckled_mob, "<span class='warning'>[src]'s restraints are clamped down onto you!</span>")
+			to_chat(buckled_mob, "<span class='warning'>Pasy [src] zaciskają się na tobie!</span>")
 			return FALSE
 	. = ..()
 	if(.)
@@ -635,7 +635,7 @@ Chair + rack handling
 /obj/structure/chair/fancy/gauss/user_unbuckle_mob(mob/buckled_mob, mob/user)
 	if(!force && locked && gun)
 		if(buckled_mob.loc == src.loc)
-			to_chat(buckled_mob, "<span class='warning'>[src]'s restraints are clamped down onto you!</span>")
+			to_chat(buckled_mob, "<span class='warning'>Pasy [src] zaciskają się na tobie!</span>")
 			return FALSE
 	. = ..()
 	if(.)
@@ -645,7 +645,7 @@ Chair + rack handling
 	if((gun && !gun.allowed(M)) || !M.client)
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='warning'>Access denied</span>")
+		to_chat(user, "<span class='warning'>Odmowa dostępu</span>")
 		return
 
 	if(M.loc != loc)
@@ -653,20 +653,20 @@ Chair + rack handling
 
 	if(!iscyborg(M) && !iscarbon(M)) //Only carbons and cyborgs get to use the gauss gun. (That means monkeys too, but only player-controlled ones will be able to use it)
 		if(M == user)
-			to_chat(user, "<span class='warning'>You can't seem fit in the [src].!</span>")
+			to_chat(user, "<span class='warning'>Nie mieścisz się w [src]!</span>")
 		else
-			to_chat(user, "<span class='warning'>[M] won't fit in the [src].!</span>")
+			to_chat(user, "<span class='warning'>[M] nie mieści się w [src]!</span>")
 		return
 
 	var/mob/living/carbon/C = M
 	if(istype(C) && ((!C.get_bodypart(BODY_ZONE_L_ARM) && !C.get_bodypart(BODY_ZONE_R_ARM)) || C.restrained(TRUE))) //Can't shoot the gun if you have no hands, borgs get a pass on this
 		if(M == user)
-			to_chat(user, "<span class='warning'>You can't operate the gauss gun without hands!!</span>")
+			to_chat(user, "<span class='warning'>Nie możesz obsługiwać działa Gaussa bez rąk!!</span>")
 		else
-			to_chat(user,"<span class='warning'>[M] can't operate the gauss gun without hands!!</span>")
+			to_chat(user,"<span class='warning'>[M] nie może obsługiwać działa Gaussa bez rąk!!</span>")
 		return
 
-	to_chat(C, "<span class='warning'>[src]'s restraints clamp down onto you!</span>")
+	to_chat(C, "<span class='warning'>Pasy [src] zaciskają się na tobie!</span>")
 	occupant = C
 	. = ..()
 	if(.)
@@ -697,11 +697,11 @@ Chair + rack handling
 		return FALSE
 	var/mob/M = gunner_chair.occupant //Arrays start at 1 in byond. Grr.
 	if(gunner)
-		to_chat(M, "<span class='warning'>Someone else is already manning this turret!</span>")
+		to_chat(M, "<span class='warning'>Ktoś inny już obsługuje tę wieżyczkę!</span>")
 		return FALSE
 	gunner_chair.locked = TRUE //No escape.
 	playsound(gunner_chair.loc, 'nsv13/sound/effects/ship/freespace2/crane_2.wav', 100, FALSE)
-	gunner_chair.visible_message("<span class='notice'>[gunner_chair] starts to raise into the ceiling!</span>")
+	gunner_chair.visible_message("<span class='notice'>[gunner_chair] zaczyna unosić się w sufit!</span>")
 	animate(gunner_chair, pixel_y = 60, time = 2.5 SECONDS)
 	animate(M, pixel_y = 60, time = 2.5 SECONDS)
 	sleep(1.25 SECONDS)
@@ -726,7 +726,7 @@ Chair + rack handling
 	M.forceMove(below)
 	gunner_chair.buckle_mob(M)
 	playsound(below, 'nsv13/sound/effects/ship/freespace2/crane_2.wav', 100, FALSE)
-	below.visible_message("<span class='notice'>[gunner_chair] starts to descend!</span>")
+	below.visible_message("<span class='notice'>[gunner_chair] zaczyna opadać!</span>")
 	M.pixel_y = 60
 	gunner_chair.pixel_y = 60
 	M.alpha = 0
@@ -739,7 +739,7 @@ Chair + rack handling
 	gunner_chair.animate_swivel(SOUTH)
 	sleep(1.25 SECONDS)
 	gunner_chair.locked = FALSE //Ok. Feel free to move again.
-	gunner_chair.visible_message("<span class='notice'>[gunner_chair] clunks into place!</span>")
+	gunner_chair.visible_message("<span class='notice'>[gunner_chair] wskakuje na miejsce!</span>")
 	playsound(gunner_chair, 'nsv13/sound/effects/ship/mac_load.ogg', 100, 1)
 
 /obj/machinery/ship_weapon/gauss_gun/proc/raise_rack()
@@ -784,7 +784,7 @@ Chair + rack handling
 	ammo_rack.pixel_y = 60
 	animate(ammo_rack, pixel_y = 0, time = 4 SECONDS)
 	sleep(4 SECONDS)
-	ammo_rack.visible_message("<span class='notice'>[ammo_rack] clunks into place!</span>")
+	ammo_rack.visible_message("<span class='notice'>[ammo_rack] wskakuje na miejsce!</span>")
 	playsound(ammo_rack, 'nsv13/sound/effects/ship/mac_load.ogg', 100, 1)
 
 ///Makes the gunner chair swivel forwards/backwards slowly, just like in {{redacted movie name}}

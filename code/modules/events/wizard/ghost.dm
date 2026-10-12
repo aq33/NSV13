@@ -6,7 +6,7 @@
 	earliest_start = 0 MINUTES
 
 /datum/round_event/wizard/ghost/start()
-	var/msg = "<span class='warning'>You suddenly feel extremely obvious...</span>"
+	var/msg = "<span class='warning'>Nagle czujesz się niezwykle widoczny...</span>"
 	set_observer_default_invisibility(0, msg)
 
 
@@ -23,4 +23,4 @@
 	for(var/mob/dead/observer/G in GLOB.player_list)
 		G.add_verb(/mob/dead/observer/verb/boo)
 		G.add_verb(/mob/dead/observer/verb/possess)
-		to_chat(G, "You suddenly feel a welling of new spooky powers...")
+		to_chat(G, "Nagle czujesz przypływ nowych upiornych mocy...")

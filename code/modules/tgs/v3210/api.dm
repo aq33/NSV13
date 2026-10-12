@@ -151,10 +151,10 @@
 /datum/tgs_api/v3210/OnReboot()
 	switch(reboot_mode)
 		if(REBOOT_MODE_HARD)
-			TGS_WORLD_ANNOUNCE("Hard reboot triggered, you will automatically reconnect...")
+			TGS_WORLD_ANNOUNCE("Uruchomiono twardy restart, połączysz się automatycznie...")
 			EndProcess()
 		if(REBOOT_MODE_SHUTDOWN)
-			TGS_WORLD_ANNOUNCE("The server is shutting down...")
+			TGS_WORLD_ANNOUNCE("Serwer się wyłącza...")
 			EndProcess()
 		else
 			ExportService(SERVICE_REQUEST_WORLD_REBOOT) //just let em know

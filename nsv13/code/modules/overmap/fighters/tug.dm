@@ -67,7 +67,7 @@
 		return FALSE
 	var/list/drivers = return_drivers()
 	if(!LAZYFIND(drivers, ui.user))
-		to_chat(ui.user, "<span class='warning'>You can't reach the controls from back here...</span>")
+		to_chat(ui.user, "<span class='warning'>Stąd z tyłu nie sięgasz do sterów...</span>")
 		return
 	var/target_name = params["target"]
 	switch(action)
@@ -97,7 +97,7 @@
 		if(craft.mag_lock)
 			continue
 		possible_crafts[craft.name] = craft
-	var/load = input(usr, "Choose a fighter to load","[src]") as null|anything in possible_crafts
+	var/load = input(usr, "Wybierz myśliwiec do załadowania","[src]") as null|anything in possible_crafts
 	if(!possible_crafts[load] || get_dist(possible_crafts[load], src) > 3) // 3 tiles to account for the offset and the size of the vehicles
 		return
 	hitch(possible_crafts[load])
@@ -114,7 +114,7 @@
 	target.forceMove(src)
 	vis_contents += target
 	playsound(src, 'nsv13/sound/effects/ship/freespace2/crane_1.wav', 100, FALSE)
-	visible_message("<span class='warning'>[target] is loaded onto [src].</span>")
+	visible_message("<span class='warning'>[target] zostaje załadowany na [src].</span>")
 	target.forceMove(src)
 	target.mag_lock = src
 	target.shake_animation()
@@ -125,15 +125,15 @@
 	if(LAZYLEN(loaded) || !istype(craft) || craft.mag_lock)
 		return ..()
 	if(get_dist(dropping, src) > 3)
-		to_chat(M, "<span class='warning'>[craft] is too far away!")
+		to_chat(M, "<span class='warning'>[craft] jest za daleko!")
 		return
 
-	visible_message("<span class='notice'>[M] starts loading [craft] onto [src]...</span>")
+	visible_message("<span class='notice'>[M] zaczyna ładować [craft] na [src]...</span>")
 	if(!do_after(M, 5 SECONDS, target = src))
 		return
 
 	if(get_dist(craft, src) > 3)
-		to_chat(M, "<span class='warning'>[craft] is too far away!")
+		to_chat(M, "<span class='warning'>[craft] jest za daleko!")
 		return
 
 	hitch(craft)
@@ -204,7 +204,7 @@
 /obj/vehicle/sealed/car/realistic/fighter_tug/proc/abort_launch(silent=FALSE)
 	for(var/obj/structure/overmap/small_craft/target in loaded)
 		if(!silent)
-			visible_message("<span class='warning'>[target] drops down off of [src]!</span>")
+			visible_message("<span class='warning'>[target] zsuwa się z [src]!</span>")
 			playsound(src, 'nsv13/sound/effects/ship/mac_load.ogg', 100, 1)
 			target.shake_animation()
 		vis_contents -= target

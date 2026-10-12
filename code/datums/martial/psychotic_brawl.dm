@@ -20,11 +20,11 @@
 	switch(rand(1,8))
 		if(1)
 			D.help_shake_act(A)
-			atk_verb = "helped"
+			atk_verb = "pomaga"
 		if(2)
 			A.emote("cry")
 			A.Stun(20)
-			atk_verb = "cried looking at"
+			atk_verb = "płacze, patrząc na"
 		if(3)
 			if(A.grab_state >= GRAB_AGGRESSIVE)
 				D.grabbedby(A, 1)
@@ -35,18 +35,18 @@
 					D.stop_pulling()
 					if(A.a_intent == INTENT_GRAB)
 						log_combat(A, D, "grabbed", addition="aggressively")
-						D.visible_message("<span class='warning'>[A] violently grabs [D]!</span>", \
-										"<span class='userdanger'>You're violently grabbed by [A]!</span>", "<span class='hear'>You hear sounds of aggressive fondling!</span>", null, A)
-						to_chat(A, "<span class='danger'>You violently grab [D]!</span>")
+						D.visible_message("<span class='warning'>[A] brutalnie chwyta [D]!</span>", \
+										"<span class='userdanger'>[A] brutalnie cię chwyta!</span>", "<span class='hear'>Słyszysz odgłosy agresywnego obmacywania!</span>", null, A)
+						to_chat(A, "<span class='danger'>Brutalnie chwytasz [D]!</span>")
 						A.setGrabState(GRAB_AGGRESSIVE) //Instant aggressive grab
 					else
 						log_combat(A, D, "grabbed", addition="passively")
 						A.setGrabState(GRAB_PASSIVE)
 		if(4)
 			A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
-			atk_verb = "headbutts"
+			atk_verb = "uderza głową"
 			D.visible_message("<span class='danger'>[A] [atk_verb] [D]!</span>", \
-					  "<span class='userdanger'>[A] [atk_verb] you!</span>")
+					  "<span class='userdanger'>[A] [atk_verb] cię!</span>")
 			playsound(get_turf(D), 'sound/weapons/punch1.ogg', 40, 1, -1)
 			D.apply_damage(rand(5,10), A.dna.species.attack_type, BODY_ZONE_HEAD)
 			A.apply_damage(rand(5,10), A.dna.species.attack_type, BODY_ZONE_HEAD)
@@ -56,9 +56,9 @@
 			D.Stun(rand(5,30))
 		if(5,6)
 			A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
-			atk_verb = pick("punches", "kicks", "hits", "slams into")
-			D.visible_message("<span class='danger'>[A] [atk_verb] [D] with inhuman strength, sending [D.p_them()] flying backwards!</span>", \
-							  "<span class='userdanger'>[A] [atk_verb] you with inhuman strength, sending you flying backwards!</span>")
+			atk_verb = pick("uderza", "kopie", "wali", "wbija się w")
+			D.visible_message("<span class='danger'>[A] [atk_verb] [D] z nieludzką siłą, posyłając go w powietrze!</span>", \
+							  "<span class='userdanger'>[A] [atk_verb] cię z nieludzką siłą, posyłając cię w powietrze!</span>")
 			D.apply_damage(rand(15,30), A.dna.species.attack_type)
 			playsound(get_turf(D), 'sound/effects/meteorimpact.ogg', 25, 1, -1)
 			var/throwtarget = get_edge_target_turf(A, get_dir(A, get_step_away(D, A)))

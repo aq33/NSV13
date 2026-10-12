@@ -19,11 +19,11 @@
 /obj/structure/bedsheetbin/examine(mob/user)
 	. = ..()
 	if(amount < 1)
-		. += "There are no bed sheets in the bin."
+		. += "W koszu nie ma pościeli."
 	else if(amount == 1)
-		. += "There is one bed sheet in the bin."
+		. += "W koszu jest jedna pościel."
 	else
-		. += "There are [amount] bed sheets in the bin."
+		. += "W koszu jest pościeli: [amount]."
 
 
 /obj/structure/bedsheetbin/update_icon()
@@ -47,7 +47,7 @@
 			return
 		sheets.Add(I)
 		amount++
-		to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
+		to_chat(user, "<span class='notice'>Wkładasz [I] do [src].</span>")
 		update_icon()
 
 	else if(default_unfasten_wrench(user, I, 5))
@@ -57,19 +57,19 @@
 		if(flags_1 & NODECONSTRUCT_1)
 			return
 		if(amount)
-			to_chat(user, "<span clas='warn'>The [src] must be empty first!</span>")
+			to_chat(user, "<span clas='warn'>[src] musi być najpierw pusty!</span>")
 			return
 		if(I.use_tool(src, user, 5, volume=50))
-			to_chat(user, "<span clas='notice'>You disassemble the [src].</span>")
+			to_chat(user, "<span clas='notice'>Rozbierasz [src].</span>")
 			new /obj/item/stack/rods(loc, 2)
 			qdel(src)
 
 	else if(amount && !hidden && I.w_class < WEIGHT_CLASS_BULKY)	//make sure there's sheets to hide it among, make sure nothing else is hidden in there.
 		if(!user.transferItemToLoc(I, src))
-			to_chat(user, "<span class='warning'>\The [I] is stuck to your hand, you cannot hide it among the sheets!</span>")
+			to_chat(user, "<span class='warning'>[I] przykleił się do twojej ręki, nie możesz go ukryć w pościeli!</span>")
 			return
 		hidden = I
-		to_chat(user, "<span class='notice'>You hide [I] among the sheets.</span>")
+		to_chat(user, "<span class='notice'>Ukrywasz [I] w pościeli.</span>")
 
 
 /obj/structure/bedsheetbin/attack_paw(mob/user)
@@ -96,12 +96,12 @@
 
 		B.forceMove(drop_location())
 		user.put_in_hands(B)
-		to_chat(user, "<span class='notice'>You take [B] out of [src].</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz [B] z [src].</span>")
 		update_icon()
 
 		if(hidden)
 			hidden.forceMove(drop_location())
-			to_chat(user, "<span class='notice'>[hidden] falls out of [B]!</span>")
+			to_chat(user, "<span class='notice'>Z [B] wypada [hidden]!</span>")
 			hidden = null
 
 	add_fingerprint(user)
@@ -119,7 +119,7 @@
 			B = new /obj/item/bedsheet(loc)
 
 		B.forceMove(drop_location())
-		to_chat(user, "<span class='notice'>You telekinetically remove [B] from [src].</span>")
+		to_chat(user, "<span class='notice'>Telekinetycznie wyjmujesz [B] z [src].</span>")
 		update_icon()
 
 		if(hidden)

@@ -49,7 +49,7 @@
 /datum/ai_behavior/simple_equip/proc/pickup_item(datum/ai_controller/controller, obj/item/target)
 	var/atom/pawn = controller.pawn
 	drop_item(controller)
-	pawn.visible_message("<span class='notice'>[pawn] picks up [target] in [pawn.p_their()] mouth.</span>")
+	pawn.visible_message("<span class='notice'>[pawn] podnosi [target] w pysku.</span>")
 	target.forceMove(pawn)
 	controller.blackboard[BB_SIMPLE_CARRY_ITEM] = target
 	return TRUE
@@ -93,9 +93,9 @@
 		return
 
 	if(ismob(return_target))
-		controller.pawn.visible_message("<span class='notice'>[controller.pawn] delivers [carried_item] at [return_target]'s feet.</span>")
+		controller.pawn.visible_message("<span class='notice'>[controller.pawn] dostarcza [carried_item] pod nogi [return_target].</span>")
 	else // not sure how to best phrase this
-		controller.pawn.visible_message("<span class='notice'>[controller.pawn] delivers [carried_item] to [return_target].</span>")
+		controller.pawn.visible_message("<span class='notice'>[controller.pawn] dostarcza [carried_item] do [return_target].</span>")
 
 	carried_item.forceMove(get_turf(return_target))
 	controller.blackboard -= BB_SIMPLE_CARRY_ITEM
@@ -118,7 +118,7 @@
 	if(isturf(snack.loc))
 		snack.attack_animal(living_pawn) // snack attack!
 	else if(iscarbon(snack.loc) && DT_PROB(10, delta_time))
-		living_pawn.manual_emote("stares at [snack.loc]'s [snack.name] with a sad puppy-face.")
+		living_pawn.manual_emote("wpatruje się w [snack.name] [snack.loc] ze smutną psią minką.")
 
 	if(QDELETED(snack)) // we ate it!
 		finish_action(controller, TRUE)
@@ -151,7 +151,7 @@
 	if(!istype(simple_pawn) || simple_pawn.stat) // imagine actually dying while playing dead. hell, imagine being the kid waiting for your pup to get back up :(
 		return
 	controller.blackboard[BB_DOG_PLAYING_DEAD] = FALSE
-	simple_pawn.visible_message("<span class='notice'>[simple_pawn] springs to [simple_pawn.p_their()] feet, panting excitedly!</span>")
+	simple_pawn.visible_message("<span class='notice'>[simple_pawn] zrywa się na nogi, podekscytowany dysząc!</span>")
 	simple_pawn.icon_state = simple_pawn.icon_living
 	if(simple_pawn.flip_on_death)
 		simple_pawn.transform = simple_pawn.transform.Turn(180)
@@ -175,7 +175,7 @@
 		return
 
 	if(controller.blackboard[BB_DOG_FRIENDS][harass_ref])
-		living_pawn.visible_message("<span class='danger'>[living_pawn] looks sideways at [harass_target] for a moment, then shakes [living_pawn.p_their()] head and ceases aggression.</span>")
+		living_pawn.visible_message("<span class='danger'>[living_pawn] przez chwilę patrzy z ukosa na [harass_target], po czym kręci głową i przestaje być agresywny.</span>")
 		finish_action(controller, FALSE)
 		return
 
@@ -188,7 +188,7 @@
 	if(in_range(living_pawn, living_target))
 		attack(controller, living_target)
 	else if(DT_PROB(50, delta_time))
-		living_pawn.manual_emote("[pick("barks", "growls", "stares")] menacingly at [harass_target]!")
+		living_pawn.manual_emote("[pick("szczeka", "warczy", "patrzy")] groźnie na [harass_target]!")
 
 /datum/ai_behavior/harass/finish_action(datum/ai_controller/controller, succeeded)
 	. = ..()

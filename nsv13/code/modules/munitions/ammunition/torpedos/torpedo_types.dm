@@ -19,20 +19,20 @@
 /obj/item/ship_weapon/ammunition/torpedo/examine(mob/user)
 	. = ..()
 	if(claimable_gulag_points)
-		. += "<span class='notice'>It has [claimable_gulag_points] unclaimed gulag reward points!</span>"
+		. += "<span class='notice'>Ma nieodebrane punkty nagrody gułagu: [claimable_gulag_points]!</span>"
 
 /obj/item/ship_weapon/ammunition/torpedo/attackby(obj/item/I, mob/living/user, params)
 	. = ..()
 	if(istype(I, /obj/item/card/id/gulag))
 		var/obj/item/card/id/gulag/P = I
 		P.points += claimable_gulag_points
-		to_chat(user, "<span class='boldnotice'>You claim [claimable_gulag_points] from [src]... Your balance is now: [P.points]</span>")
+		to_chat(user, "<span class='boldnotice'>Odbierasz [claimable_gulag_points] punktów z [src]... Twoje saldo wynosi teraz: [P.points]</span>")
 		//This one's been claimed!
 		claimable_gulag_points = 0
 
 /obj/item/ship_weapon/ammunition/torpedo/examine(mob/user)
 	. = ..()
-	. += "<span class='warning'>It's far too cumbersome to carry, and dragging it around might set it off!</span>"
+	. += "<span class='warning'>Jest zdecydowanie zbyt nieporęczny, by go nosić, a ciągnięcie go mogłoby go odpalić!</span>"
 
 /obj/item/ship_weapon/ammunition/torpedo/attack_hand(mob/user)
 	return FALSE
@@ -75,7 +75,7 @@
 	var/mob/living/living_user = user
 	if(living_user.a_intent != INTENT_HELP)
 		return
-	living_user.visible_message("<span class='notice'>[living_user] hugs [src].</span>","<span class='notice'>You hug [src].</span>")
+	living_user.visible_message("<span class='notice'>[living_user] hugs [src].</span>","<span class='notice'>Przytulasz [src].</span>")
 	playsound(src, pick('sound/items/toysqueak1.ogg', 'sound/items/toysqueak2.ogg', 'sound/items/toysqueak3.ogg'), 30, 1, -1)
 	SEND_SIGNAL(living_user, COMSIG_ADD_MOOD_EVENT, "torphug", /datum/mood_event/torphug)
 
@@ -103,14 +103,14 @@
 
 /obj/item/ship_weapon/ammunition/torpedo/hellfire/antonio/examine(mob/user)
 	.=..()
-	. += "<span class='notice'> This is Antonio, the MAA's loyal companion.</span>"
+	. += "<span class='notice'> To Antonio, wierny towarzysz MAA.</span>"
 
 /obj/item/ship_weapon/ammunition/torpedo/hellfire/fabio
 	name = "Fabio"
 
 /obj/item/ship_weapon/ammunition/torpedo/hellfire/fabio/examine(mob/user)
 	.=..()
-	. += "<span class='notice'> This is Fabio, Antonio's Evil Brother.</span>"
+	. += "<span class='notice'> To Fabio, zły brat Antonia.</span>"
 
 /obj/item/ship_weapon/ammunition/torpedo/freight
 	name = "\improper NTP-F 530mm freight torpedo"
@@ -123,10 +123,10 @@
 
 /obj/item/ship_weapon/ammunition/torpedo/freight/crowbar_act(mob/living/user, obj/item/I)
 	if(!contents?.len)
-		to_chat(user, "<span class='warning'>[src] has nothing loaded in it!</span>")
+		to_chat(user, "<span class='warning'>W [src] nic nie załadowano!</span>")
 		return FALSE
 	if(do_after(user, 5 SECONDS, target = src))
-		to_chat(user, "<span class='warning'>You pry [src] open!</span>")
+		to_chat(user, "<span class='warning'>Wyważasz [src]!</span>")
 		for(var/atom/X in contents)
 			unload(X)
 	return FALSE
@@ -139,16 +139,16 @@
 
 /obj/item/ship_weapon/ammunition/torpedo/freight/proc/try_load(atom/movable/what, mob/user)
 	if(length(contents) >= max_stuff)
-		to_chat(user, "<span class='warning'>[src] is already full!</span>")
+		to_chat(user, "<span class='warning'>[src] jest już pełny!</span>")
 		return
 	if(isturf(what) || what.anchored || what.move_resist > user.move_force)
-		to_chat(user, "<span class='warning'>[what] is too heavy for you to lift into [src]!</span>")
+		to_chat(user, "<span class='warning'>[what] jest dla ciebie za ciężki, by włożyć go do [src]!</span>")
 		return
-	visible_message("<span class='danger'>[user] starts to stuff [what] into [src]!</span>",\
-		"<span class='italics'>You start to stuff [user] into [src]...</span>")
+	visible_message("<span class='danger'>[user] zaczyna wpychać [what] do [src]!</span>",\
+		"<span class='italics'>Zaczynasz wpychać [user] do [src]...</span>")
 	if(do_after(user, 5 SECONDS, target = src))
 		if(length(contents) >= max_stuff)
-			to_chat(user, "<span class='warning'>[src] is already full!</span>")
+			to_chat(user, "<span class='warning'>[src] jest już pełny!</span>")
 			return
 		if(isitem(what))
 			if(!user.transferItemToLoc(what, src))
@@ -163,14 +163,14 @@
 
 /obj/item/ship_weapon/ammunition/torpedo/freight/relaymove(mob/living/user, direction)
 	if(!breaking_out)
-		to_chat(user, "<span class='warning'>You start frantically shaking to try and escape [src]!</span>")
+		to_chat(user, "<span class='warning'>Zaczynasz gorączkowo się trząść, próbując wydostać się z [src]!</span>")
 		var/offset = prob(50) ? -2 : 2
 		animate(src, pixel_x = pixel_x + offset, time = 4 SECONDS) //start shaking
 		addtimer(VARSET_CALLBACK(src, pixel_x, initial(pixel_x)))
 		breaking_out = TRUE
 		if (do_after(user, 8 SECONDS , target = src))
 			user.forceMove(get_turf(src))
-			visible_message("<span class='notice'>[user] breaks open [src]!</span>")
+			visible_message("<span class='notice'>[user] wyłamuje [src]!</span>")
 			unload(user)
 			shake_animation()
 		breaking_out = FALSE

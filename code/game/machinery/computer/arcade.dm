@@ -104,17 +104,17 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 	else
 		the_prize = new prizeselect(drop_location())
 
-	visible_message("<span class='notice'>[src] dispenses [the_prize]!</span>", "<span class='notice'>You hear a chime and a clunk.</span>")
+	visible_message("<span class='notice'>[src] dispenses [the_prize]!</span>", "<span class='notice'>Słyszysz dzwonek i łupnięcie.</span>")
 
 /obj/machinery/computer/arcade/proc/redeem(mob/user)
 	var/redeemselect = pickweight(length(prize_override) ? prize_override : GLOB.arcade_prize_pool)
 
 	var/atom/movable/the_prize = new redeemselect(drop_location())
-	visible_message("<span class='notice'>[src] dispenses [the_prize]!</span>", "<span class='notice'>You hear a chime and a clunk.</span>")
+	visible_message("<span class='notice'>[src] dispenses [the_prize]!</span>", "<span class='notice'>Słyszysz dzwonek i łupnięcie.</span>")
 
 /obj/machinery/computer/arcade/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/coin/arcade_token) || istype(W, /obj/item/coin/bananium))
-		to_chat(user, "<span class='notice'>You insert the [W] into the [src].")
+		to_chat(user, "<span class='notice'>Wkładasz [W] do [src].")
 		redeem(user)
 		qdel(W)
 		return
@@ -153,7 +153,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 	icon_state = "arcade"
 	circuit = /obj/item/circuitboard/computer/arcade/battle
 	var/enemy_name = "Space Villain"
-	var/temp = "Winners don't use space drugs" //Temporary message, for attack messages, etc
+	var/temp = "Zwycięzcy nie biorą kosmicznych narkotyków" //Temporary message, for attack messages, etc
 	var/player_hp = 30 //Player health/attack points
 	var/player_mp = 10
 	var/enemy_hp = 45 //Enemy health/attack points
@@ -181,14 +181,14 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 	dat += "<center><h4>[enemy_name]</h4></center>"
 
 	dat += "<br><center><h3>[temp]</h3></center>"
-	dat += "<br><center>Health: [player_hp] | Magic: [player_mp] | Enemy Health: [enemy_hp]</center>"
+	dat += "<br><center>Zdrowie: [player_hp] | Magia: [player_mp] | Zdrowie wroga: [enemy_hp]</center>"
 
 	if (gameover)
-		dat += "<center><b><a href='byond://?src=[REF(src)];newgame=1'>New Game</a>"
+		dat += "<center><b><a href='byond://?src=[REF(src)];newgame=1'>Nowa gra</a>"
 	else
 		dat += "<center><b><a href='byond://?src=[REF(src)];attack=1'>Attack</a> | "
 		dat += "<a href='byond://?src=[REF(src)];heal=1'>Heal</a> | "
-		dat += "<a href='byond://?src=[REF(src)];charge=1'>Recharge Power</a>"
+		dat += "<a href='byond://?src=[REF(src)];charge=1'>Odnów moc</a>"
 
 	dat += "</b></center>"
 	var/datum/browser/popup = new(user, "arcade", "Space Villain 2000")
@@ -203,7 +203,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		if (href_list["attack"])
 			blocked = TRUE
 			var/attackamt = rand(2,6)
-			temp = "You attack for [attackamt] damage!"
+			temp = "Atakujesz, zadając [attackamt] obrażeń!"
 			playsound(loc, 'sound/arcade/hit.ogg', 50, 1, extrarange = -3, falloff_exponent = 10)
 			updateUsrDialog()
 			if(turtle > 0)
@@ -217,7 +217,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 			blocked = TRUE
 			var/pointamt = rand(1,3)
 			var/healamt = rand(6,8)
-			temp = "You use [pointamt] magic to heal for [healamt] damage!"
+			temp = "Używasz [pointamt] magii, by wyleczyć [healamt] obrażeń!"
 			playsound(loc, 'sound/arcade/heal.ogg', 50, 1, extrarange = -3, falloff_exponent = 10)
 			updateUsrDialog()
 			turtle++
@@ -232,7 +232,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		else if (href_list["charge"])
 			blocked = TRUE
 			var/chargeamt = rand(4,7)
-			temp = "You regain [chargeamt] points"
+			temp = "Odzyskujesz [chargeamt] punktów"
 			playsound(loc, 'sound/arcade/mana.ogg', 50, 1, extrarange = -3, falloff_exponent = 10)
 			player_mp += chargeamt
 			if(turtle > 0)
@@ -247,7 +247,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		usr << browse(null, "window=arcade")
 
 	else if (href_list["newgame"]) //Reset everything
-		temp = "New Round"
+		temp = "Nowa runda"
 		player_hp = 30
 		player_mp = 10
 		enemy_hp = 45
@@ -267,7 +267,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 	if ((enemy_mp <= 0) || (enemy_hp <= 0))
 		if(!gameover)
 			gameover = TRUE
-			temp = "[enemy_name] has fallen! Rejoice!"
+			temp = "[enemy_name] pada! Radujcie się!"
 			playsound(loc, 'sound/arcade/win.ogg', 50, 1, extrarange = -3, falloff_exponent = 10)
 
 			if(obj_flags & EMAGGED)
@@ -284,13 +284,13 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 
 	else if ((obj_flags & EMAGGED) && (turtle >= 4))
 		var/boomamt = rand(5,10)
-		temp = "[enemy_name] throws a bomb, exploding you for [boomamt] damage!"
+		temp = "[enemy_name] rzuca bombę, która zadaje ci [boomamt] obrażeń!"
 		playsound(loc, 'sound/arcade/boom.ogg', 50, 1, extrarange = -3, falloff_exponent = 10)
 		player_hp -= boomamt
 
 	else if ((enemy_mp <= 5) && (prob(70)))
 		var/stealamt = rand(2,3)
-		temp = "[enemy_name] steals [stealamt] of your power!"
+		temp = "[enemy_name] kradnie ci [stealamt] mocy!"
 		playsound(loc, 'sound/arcade/steal.ogg', 50, 1, extrarange = -3, falloff_exponent = 10)
 		player_mp -= stealamt
 		updateUsrDialog()
@@ -298,27 +298,27 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		if (player_mp <= 0)
 			gameover = TRUE
 			sleep(10)
-			temp = "You have been drained! GAME OVER"
+			temp = "Zostajesz wyssany! KONIEC GRY"
 			playsound(loc, 'sound/arcade/lose.ogg', 50, 1, extrarange = -3, falloff_exponent = 10)
 			if(obj_flags & EMAGGED)
 				usr.gib()
 			SSblackbox.record_feedback("nested tally", "arcade_results", 1, list("loss", "mana", (obj_flags & EMAGGED ? "emagged":"normal")))
 
 	else if ((enemy_hp <= 10) && (enemy_mp > 4))
-		temp = "[enemy_name] heals for 4 health!"
+		temp = "[enemy_name] leczy się o 4 punkty zdrowia!"
 		playsound(loc, 'sound/arcade/heal.ogg', 50, 1, extrarange = -3, falloff_exponent = 10)
 		enemy_hp += 4
 		enemy_mp -= 4
 
 	else
 		var/attackamt = rand(3,6)
-		temp = "[enemy_name] attacks for [attackamt] damage!"
+		temp = "[enemy_name] atakuje, zadając [attackamt] obrażeń!"
 		playsound(loc, 'sound/arcade/hit.ogg', 50, 1, extrarange = -3, falloff_exponent = 10)
 		player_hp -= attackamt
 
 	if ((player_mp <= 0) || (player_hp <= 0))
 		gameover = TRUE
-		temp = "You have been crushed! GAME OVER"
+		temp = "Zostajesz zmiażdżony! KONIEC GRY"
 		playsound(loc, 'sound/arcade/lose.ogg', 50, 1, extrarange = -3, falloff_exponent = 10)
 		if(obj_flags & EMAGGED)
 			usr.gib()
@@ -331,8 +331,8 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 /obj/machinery/computer/arcade/battle/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
-	to_chat(user, "<span class='warning'>A mesmerizing Rhumba beat starts playing from the arcade machine's speakers!</span>")
-	temp = "If you die in the game, you die for real!"
+	to_chat(user, "<span class='warning'>Z głośników automatu zaczyna płynąć hipnotyzujący rytm rumby!</span>")
+	temp = "Jeśli zginiesz w grze, zginiesz naprawdę!"
 	player_hp = 30
 	player_mp = 10
 	enemy_hp = 45
@@ -440,15 +440,15 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 	// Sets up the main trail
 	stops = list("Pluto","Asteroid Belt","Proxima Centauri","Dead Space","Rigel Prime","Tau Ceti Beta","Black Hole","Space Outpost Beta-9","Orion Prime")
 	stopblurbs = list(
-		"Pluto, long since occupied with long-range sensors and scanners, stands ready to, and indeed continues to probe the far reaches of the galaxy.",
-		"At the edge of the Sol system lies a treacherous asteroid belt. Many have been crushed by stray asteroids and misguided judgment.",
-		"The nearest star system to Sol, in ages past it stood as a reminder of the boundaries of sub-light travel, now a low-population sanctuary for adventurers and traders.",
-		"This region of space is particularly devoid of matter. Such low-density pockets are known to exist, but the vastness of it is astounding.",
-		"Rigel Prime, the center of the Rigel system, burns hot, basking its planetary bodies in warmth and radiation.",
-		"Tau Ceti Beta has recently become a waypoint for colonists headed towards Orion. There are many ships and makeshift stations in the vicinity.",
-		"Sensors indicate that a black hole's gravitational field is affecting the region of space we were headed through. We could stay of course, but risk of being overcome by its gravity, or we could change course to go around, which will take longer.",
-		"You have come into range of the first man-made structure in this region of space. It has been constructed not by travellers from Sol, but by colonists from Orion. It stands as a monument to the colonists' success.",
-		"You have made it to Orion! Congratulations! Your crew is one of the few to start a new foothold for mankind!"
+		"Pluton, od dawna zajęty przez czujniki i skanery dalekiego zasięgu, stoi gotów, by badać - i wciąż bada - najdalsze zakątki galaktyki.",
+		"Na skraju Układu Słonecznego leży zdradliwy pas asteroid. Wielu zostało zmiażdżonych przez zabłąkane asteroidy i błędne decyzje.",
+		"Najbliższy Słońcu układ gwiezdny dawno temu przypominał o granicach podróży podświetlnych, a dziś jest słabo zaludnioną przystanią dla poszukiwaczy przygód i handlarzy.",
+		"Ten obszar kosmosu jest wyjątkowo ubogi w materię. Wiadomo, że takie rozrzedzone kieszenie istnieją, ale jego ogrom zdumiewa.",
+		"Rigel Prime, centrum układu Rigel, płonie gorąco, skąpiąc swoje planety w cieple i promieniowaniu.",
+		"Tau Ceti Beta stało się niedawno punktem przystankowym dla kolonistów zmierzających na Oriona. W pobliżu jest wiele statków i prowizorycznych stacji.",
+		"Czujniki wskazują, że pole grawitacyjne czarnej dziury wpływa na obszar, przez który mieliśmy lecieć. Możemy oczywiście lecieć dalej, ryzykując, że pochłonie nas jej grawitacja, albo zmienić kurs i ją ominąć, co potrwa dłużej.",
+		"Docierasz w zasięg pierwszej konstrukcji zbudowanej przez człowieka w tym obszarze kosmosu. Nie zbudowali jej podróżnicy z Układu Słonecznego, lecz koloniści z Oriona. Stoi jako pomnik ich sukcesu.",
+		"Dotarłeś na Oriona! Gratulacje! Twoja załoga jest jedną z niewielu, które założyły nowy przyczółek ludzkości!"
 		)
 
 /obj/machinery/computer/arcade/orion_trail/proc/newgame()
@@ -480,7 +480,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		return // enough harassing them
 
 	if(gamers[gamer] == -1)
-		say("WARNING: Continued antisocial behavior detected: Dispensing self-help literature.")
+		say("OSTRZEŻENIE: wykryto dalsze zachowania aspołeczne. Wydawanie literatury samopomocowej.")
 		new /obj/item/gamer_pamphlet(get_turf(src))
 		gamers[gamer]--
 		return
@@ -493,10 +493,10 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 	if(gamers[gamer] > 2 && prob(20 * gamers[gamer]))
 
 		Radio.set_frequency(FREQ_SECURITY)
-		Radio.talk_into(src, "SECURITY ALERT: Crewmember [gamer] recorded displaying antisocial tendencies in [get_area(src)]. Please watch for violent behavior.", FREQ_SECURITY)
+		Radio.talk_into(src, "ALARM OCHRONY: członek załogi [gamer] wykazuje skłonności aspołeczne w [get_area(src)]. Proszę uważać na agresywne zachowania.", FREQ_SECURITY)
 
 		Radio.set_frequency(FREQ_MEDICAL)
-		Radio.talk_into(src, "PSYCH ALERT: Crewmember [gamer] recorded displaying antisocial tendencies in [get_area(src)]. Please schedule psych evaluation.", FREQ_MEDICAL)
+		Radio.talk_into(src, "ALARM PSYCHOLOGICZNY: członek załogi [gamer] wykazuje skłonności aspołeczne w [get_area(src)]. Prosimy o umówienie oceny psychologicznej.", FREQ_MEDICAL)
 
 		gamers[gamer] = -1
 
@@ -514,33 +514,33 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		event = null
 	var/dat = ""
 	if(gameStatus == ORION_STATUS_GAMEOVER)
-		dat = "<center><h1>Game Over</h1></center>"
-		dat += "Like many before you, your crew never made it to Orion, lost to space. <br><b>Forever</b>."
+		dat = "<center><h1>Koniec gry</h1></center>"
+		dat += "Jak wielu przed tobą, twoja załoga nigdy nie dotarła na Oriona, zagubiona w kosmosie. <br><b>Na zawsze</b>."
 		if(!settlers.len)
-			dat += "<br>Your entire crew died, and your ship joins the fleet of ghost-ships littering the galaxy."
+			dat += "<br>Cała twoja załoga zginęła, a twój statek dołącza do floty statków widm zaśmiecających galaktykę."
 		else
 			if(food <= 0)
-				dat += "<br>You ran out of food and starved."
+				dat += "<br>Skończyło ci się jedzenie i umarłeś z głodu."
 				if(obj_flags & EMAGGED)
 					user.set_nutrition(0) //yeah you pretty hongry
-					to_chat(user, "<span class='userdanger'>Your body instantly contracts to that of one who has not eaten in months. Agonizing cramps seize you as you fall to the floor.</span>")
+					to_chat(user, "<span class='userdanger'>Twoje ciało natychmiast kurczy się jak u kogoś, kto nie jadł od miesięcy. Rozdzierające skurcze powalają cię na podłogę.</span>")
 			if(fuel <= 0)
-				dat += "<br>You ran out of fuel, and drift, slowly, into a star."
+				dat += "<br>Skończyło ci się paliwo i powoli dryfujesz w stronę gwiazdy."
 				if(obj_flags & EMAGGED)
 					var/mob/living/M = user
 					M.adjust_fire_stacks(5)
 					M.IgniteMob() //flew into a star, so you're on fire
-					to_chat(user, "<span class='userdanger'>You feel an immense wave of heat emanate from the arcade machine. Your skin bursts into flames.</span>")
+					to_chat(user, "<span class='userdanger'>Czujesz, jak z automatu bije ogromna fala gorąca. Twoja skóra staje w płomieniach.</span>")
 
 		if(obj_flags & EMAGGED)
-			to_chat(user, "<span class='userdanger'>You're never going to make it to Orion...</span>")
+			to_chat(user, "<span class='userdanger'>Nigdy nie dotrzesz na Oriona...</span>")
 			user.death()
 			obj_flags &= ~EMAGGED //removes the emagged status after you lose
 			gameStatus = ORION_STATUS_START
 			name = "The Orion Trail"
 			desc = "Learn how our ancestors got to Orion, and have fun in the process!"
 
-		dat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];menu=1'>May They Rest In Peace</a></P>"
+		dat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];menu=1'>Niech spoczywają w pokoju</a></P>"
 	else if(event)
 		dat = eventdat
 	else if(gameStatus == ORION_STATUS_NORMAL)
@@ -550,18 +550,18 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		dat += "[subtext]"
 		dat += "<h3><b>Crew:</b></h3>"
 		dat += english_list(settlers)
-		dat += "<br><b>Food: </b>[food] | <b>Fuel: </b>[fuel]"
-		dat += "<br><b>Engine Parts: </b>[engine] | <b>Hull Panels: </b>[hull] | <b>Electronics: </b>[electronics]"
+		dat += "<br><b>Jedzenie: </b>[food] | <b>Paliwo: </b>[fuel]"
+		dat += "<br><b>Części silnika: </b>[engine] | <b>Płyty kadłuba: </b>[hull] | <b>Elektronika: </b>[electronics]"
 		if(turns == 7)
-			dat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];pastblack=1'>Go Around</a> <a href='byond://?src=[REF(src)];blackhole=1'>Continue</a></P>"
+			dat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];pastblack=1'>Omiń</a> <a href='byond://?src=[REF(src)];blackhole=1'>Leć dalej</a></P>"
 		else
 			dat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];continue=1'>Continue</a></P>"
 		dat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];killcrew=1'>Kill a Crewmember</a></P>"
 		dat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];close=1'>Close</a></P>"
 	else
 		dat = "<center><h2>The Orion Trail</h2></center>"
-		dat += "<br><center><h3>Experience the journey of your ancestors!</h3></center><br><br>"
-		dat += "<center><b><a href='byond://?src=[REF(src)];newgame=1'>New Game</a></b></center>"
+		dat += "<br><center><h3>Przeżyj podróż swoich przodków!</h3></center><br><br>"
+		dat += "<center><b><a href='byond://?src=[REF(src)];newgame=1'>Nowa gra</a></b></center>"
 		dat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];close=1'>Close</a></P>"
 	var/datum/browser/popup = new(user, "arcade", "The Orion Trail",400,700)
 	popup.set_content(dat)
@@ -601,50 +601,50 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 				switch(event)
 					if(ORION_TRAIL_RAIDERS)
 						if(prob(50))
-							to_chat(usr, "<span class='userdanger'>You hear battle shouts. The tramping of boots on cold metal. Screams of agony. The rush of venting air. Are you going insane?</span>")
+							to_chat(usr, "<span class='userdanger'>Słyszysz okrzyki bojowe. Tupot butów na zimnym metalu. Krzyki agonii. Świst uchodzącego powietrza. Czy ty wariujesz?</span>")
 							M.hallucination += 30
 						else
-							to_chat(usr, "<span class='userdanger'>Something strikes you from behind! It hurts like hell and feel like a blunt weapon, but nothing is there...</span>")
+							to_chat(usr, "<span class='userdanger'>Coś uderza cię od tyłu! Boli jak diabli i przypomina tępą broń, ale nic tam nie ma...</span>")
 							M.take_bodypart_damage(30)
 							playsound(loc, 'sound/weapons/genhit2.ogg', 100, 1)
 					if(ORION_TRAIL_ILLNESS)
 						var/severity = rand(1,3) //pray to RNGesus. PRAY, PIGS
 						if(severity == 1)
-							to_chat(M, "<span class='userdanger'>You suddenly feel slightly nauseated.</span>" )
+							to_chat(M, "<span class='userdanger'>Nagle robi ci się lekko niedobrze.</span>" )
 						if(severity == 2)
-							to_chat(usr, "<span class='userdanger'>You suddenly feel extremely nauseated and hunch over until it passes.</span>")
+							to_chat(usr, "<span class='userdanger'>Nagle robi ci się bardzo niedobrze i zginasz się wpół, dopóki nie przejdzie.</span>")
 							M.Stun(60)
 						if(severity >= 3) //you didn't pray hard enough
-							to_chat(M, "<span class='warning'>An overpowering wave of nausea consumes over you. You hunch over, your stomach's contents preparing for a spectacular exit.</span>")
+							to_chat(M, "<span class='warning'>Ogarnia cię przytłaczająca fala mdłości. Zginasz się wpół, a zawartość żołądka szykuje się do spektakularnego wyjścia.</span>")
 							M.Stun(100)
 							sleep(30)
 							M.vomit(10, distance = 5)
 					if(ORION_TRAIL_FLUX)
 						if(prob(75))
 							M.Paralyze(60)
-							say("A sudden gust of powerful wind slams [M] into the floor!")
+							say("Nagły, potężny podmuch wiatru rzuca [M] na podłogę!")
 							M.take_bodypart_damage(25)
 							playsound(loc, 'sound/weapons/genhit.ogg', 100, 1)
 						else
-							to_chat(M, "<span class='userdanger'>A violent gale blows past you, and you barely manage to stay standing!</span>")
+							to_chat(M, "<span class='userdanger'>Obok ciebie przechodzi gwałtowna wichura, a ty ledwo utrzymujesz się na nogach!</span>")
 					if(ORION_TRAIL_COLLISION) //by far the most damaging event
 						if(prob(90))
 							playsound(loc, 'sound/effects/bang.ogg', 100, 1)
 							for(var/turf/open/floor/F in RANGE_TURFS(1, src))
 								F.ScrapeAway()
-							say("Something slams into the floor around [src], exposing it to space!")
+							say("Coś uderza w podłogę wokół [src], odsłaniając ją na kosmos!")
 							if(hull)
 								sleep(10)
-								say("A new floor suddenly appears around [src]. What the hell?")
+								say("Wokół [src] nagle pojawia się nowa podłoga. Co do diabła?")
 								playsound(loc, 'sound/weapons/genhit.ogg', 100, 1)
 								for(var/turf/open/space/T in RANGE_TURFS(1, src))
 									T.PlaceOnTop(/turf/open/floor/plating)
 						else
-							say("Something slams into the floor around [src] - luckily, it didn't get through!")
+							say("Coś uderza w podłogę wokół [src] - na szczęście nie przebija się!")
 							playsound(loc, 'sound/effects/bang.ogg', 50, 1)
 					if(ORION_TRAIL_MALFUNCTION)
 						playsound(loc, 'sound/effects/empulse.ogg', 50, 1)
-						visible_message("<span class='danger'>[src] malfunctions, randomizing in-game stats!</span>")
+						visible_message("<span class='danger'>[src] działa wadliwie, losując statystyki w grze!</span>")
 						var/oldfood = food
 						var/oldfuel = fuel
 						food = rand(10,80) / rand(1,2)
@@ -652,9 +652,9 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 						if(electronics)
 							sleep(10)
 							if(oldfuel > fuel && oldfood > food)
-								audible_message("<span class='danger'>[src] lets out a somehow reassuring chime.</span>")
+								audible_message("<span class='danger'>[src] wydaje w jakiś sposób uspokajający dzwonek.</span>")
 							else if(oldfuel < fuel || oldfood < food)
-								audible_message("<span class='danger'>[src] lets out a somehow ominous chime.</span>")
+								audible_message("<span class='danger'>[src] wydaje w jakiś sposób złowieszczy dzwonek.</span>")
 							food = oldfood
 							fuel = oldfuel
 							playsound(loc, 'sound/machines/chime.ogg', 50, 1)
@@ -714,12 +714,12 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 				event()
 				if(obj_flags & EMAGGED)
 					playsound(loc, 'sound/effects/supermatter.ogg', 100, 1)
-					say("A miniature black hole suddenly appears in front of [src], devouring [usr] alive!")
+					say("Przed [src] nagle pojawia się miniaturowa czarna dziura, pożerając [usr] żywcem!")
 					if(isliving(usr))
 						var/mob/living/L = usr
 						L.Stun(200, ignore_canstun = TRUE) //you can't run :^)
 					var/S = new /obj/anomaly/singularity/academy(usr.loc)
-					addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "[S] winks out, just as suddenly as it appeared."), 50)
+					addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "[S] znika równie nagle, jak się pojawiła."), 50)
 					QDEL_IN(S, 50)
 			else
 				event = null
@@ -739,7 +739,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 			killed_crew++
 
 			if(settlers.len == 0 || alive == 0)
-				say("The last crewmember [sheriff], shot themselves, GAME OVER!")
+				say("Ostatni członek załogi, [sheriff], zastrzelił się. KONIEC GRY!")
 				if(obj_flags & EMAGGED)
 					usr.death(0)
 					obj_flags &= EMAGGED
@@ -752,7 +752,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 
 			else if(obj_flags & EMAGGED)
 				if(usr.name == sheriff)
-					say("The crew of the ship chose to kill [usr.name]!")
+					say("Załoga statku postanowiła zabić [usr.name]!")
 					usr.death(0)
 
 			if(event == ORION_TRAIL_LING) //only ends the ORION_TRAIL_LING event, since you can do this action in multiple places
@@ -766,7 +766,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		if(gameStatus == ORION_STATUS_MARKET)
 			if(!spaceport_raided && food >= 10 && fuel >= 10)
 				var/bought = add_crewmember()
-				last_spaceport_action = "You hired [bought] as a new crewmember."
+				last_spaceport_action = "Zatrudniasz nowego członka załogi: [bought]."
 				fuel -= 10
 				food -= 10
 				event()
@@ -776,7 +776,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		if(gameStatus == ORION_STATUS_MARKET)
 			if(!spaceport_raided && settlers.len > 1)
 				var/sold = remove_crewmember()
-				last_spaceport_action = "You sold your crewmember, [sold]!"
+				last_spaceport_action = "Sprzedajesz członka załogi: [sold]!"
 				fuel += 7
 				food += 7
 				event()
@@ -800,19 +800,19 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 				if(prob(success))
 					FU = rand(5,15)
 					FO = rand(5,15)
-					last_spaceport_action = "You successfully raided the spaceport! You gained [FU] Fuel and [FO] Food! (+[FU]FU,+[FO]FO)"
+					last_spaceport_action = "Udaje ci się złupić port kosmiczny! Zyskujesz [FU] paliwa i [FO] jedzenia! (+[FU]FU,+[FO]FO)"
 				else
 					FU = rand(-5,-15)
 					FO = rand(-5,-15)
-					last_spaceport_action = "You failed to raid the spaceport! You lost [FU*-1] Fuel and [FO*-1] Food in your scramble to escape! ([FU]FU,[FO]FO)"
+					last_spaceport_action = "Nie udaje ci się złupić portu kosmicznego! W ucieczce tracisz [FU*-1] paliwa i [FO*-1] jedzenia! ([FU]FU,[FO]FO)"
 
 					//your chance of lose a crewmember is 1/2 your chance of success
 					//this makes higher % failures hurt more, don't get cocky space cowboy!
 					if(prob(success*5))
 						var/lost_crew = remove_crewmember()
-						last_spaceport_action = "You failed to raid the spaceport! You lost [FU*-1] Fuel and [FO*-1] Food, AND [lost_crew] in your scramble to escape! ([FU]FI,[FO]FO,-Crew)"
+						last_spaceport_action = "Nie udaje ci się złupić portu kosmicznego! W ucieczce tracisz [FU*-1] paliwa i [FO*-1] jedzenia, ORAZ [lost_crew]! ([FU]FI,[FO]FO,-Załoga)"
 						if(obj_flags & EMAGGED)
-							say("WEEWOO! WEEWOO! Spaceport security en route!")
+							say("IJOIJO! IJOIJO! Ochrona portu kosmicznego w drodze!")
 							playsound(src, 'sound/items/weeoo1.ogg', 100, FALSE)
 							for(var/i, i<=3, i++)
 								var/mob/living/simple_animal/hostile/syndicate/ranged/smg/orion/O = new/mob/living/simple_animal/hostile/syndicate/ranged/smg/orion(get_turf(src))
@@ -829,13 +829,13 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 				switch(text2num(href_list["buyparts"]))
 					if(1) //Engine Parts
 						engine++
-						last_spaceport_action = "Bought Engine Parts"
+						last_spaceport_action = "Kupiono części silnika"
 					if(2) //Hull Plates
 						hull++
-						last_spaceport_action = "Bought Hull Plates"
+						last_spaceport_action = "Kupiono płyty kadłuba"
 					if(3) //Spare Electronics
 						electronics++
-						last_spaceport_action = "Bought Spare Electronics"
+						last_spaceport_action = "Kupiono zapasową elektronikę"
 				fuel -= 5 //they all cost 5
 				event()
 
@@ -847,13 +847,13 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 						if(fuel > 5)
 							fuel -= 5
 							food += 5
-							last_spaceport_action = "Traded Fuel for Food"
+							last_spaceport_action = "Wymieniono paliwo na jedzenie"
 							event()
 					if(2) //Food
 						if(food > 5)
 							fuel += 5
 							food -= 5
-							last_spaceport_action = "Traded Food for Fuel"
+							last_spaceport_action = "Wymieniono jedzenie na paliwo"
 							event()
 
 	add_fingerprint(usr)
@@ -867,31 +867,31 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 	canContinueEvent = 0
 	switch(event)
 		if(ORION_TRAIL_RAIDERS)
-			eventdat += "Raiders have come aboard your ship!"
+			eventdat += "Najeźdźcy weszli na pokład twojego statku!"
 			if(prob(50))
 				var/sfood = rand(1,10)
 				var/sfuel = rand(1,10)
 				food -= sfood
 				fuel -= sfuel
-				eventdat += "<br>They have stolen [sfood] <b>Food</b> and [sfuel] <b>Fuel</b>."
+				eventdat += "<br>Ukradli [sfood] <b>jedzenia</b> i [sfuel] <b>paliwa</b>."
 			else if(prob(10))
 				var/deadname = remove_crewmember()
-				eventdat += "<br>[deadname] tried to fight back, but was killed."
+				eventdat += "<br>[deadname] próbował się bronić, ale zginął."
 			else
-				eventdat += "<br>Fortunately, you fended them off without any trouble."
+				eventdat += "<br>Na szczęście bez trudu ich odparliście."
 			eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];eventclose=1'>Continue</a></P>"
 			eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];close=1'>Close</a></P>"
 			canContinueEvent = 1
 
 		if(ORION_TRAIL_FLUX)
-			eventdat += "This region of space is highly turbulent. <br>If we go slowly we may avoid more damage, but if we keep our speed we won't waste supplies."
-			eventdat += "<br>What will you do?"
-			eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];slow=1'>Slow Down</a> <a href='byond://?src=[REF(src)];keepspeed=1'>Continue</a></P>"
+			eventdat += "Ten obszar kosmosu jest bardzo turbulentny. <br>Jeśli zwolnimy, możemy uniknąć dalszych uszkodzeń, ale jeśli utrzymamy prędkość, nie zmarnujemy zapasów."
+			eventdat += "<br>Co robisz?"
+			eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];slow=1'>Zwolnij</a> <a href='byond://?src=[REF(src)];keepspeed=1'>Leć dalej</a></P>"
 			eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];close=1'>Close</a></P>"
 
 		if(ORION_TRAIL_OLDSHIP)
-			eventdat += "<br>Your crew spots an old ship floating through space. It might have some supplies, but then again it looks rather unsafe."
-			eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];search=1'>Search it</a><a href='byond://?src=[REF(src)];eventclose=1'>Leave it</a></P><P ALIGN=Right><a href='byond://?src=[REF(src)];close=1'>Close</a></P>"
+			eventdat += "<br>Twoja załoga zauważa stary statek dryfujący w kosmosie. Mogą tam być zapasy, ale wygląda na dość niebezpieczny."
+			eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];search=1'>Przeszukaj go</a><a href='byond://?src=[REF(src)];eventclose=1'>Zostaw go</a></P><P ALIGN=Right><a href='byond://?src=[REF(src)];close=1'>Zamknij</a></P>"
 			canContinueEvent = 1
 
 		if(ORION_TRAIL_SEARCH)
@@ -902,79 +902,79 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 					var/oldfuel = rand(4,10)
 					food += oldfood
 					fuel += oldfuel
-					eventdat += "<br>As you look through it you find some supplies and a living person!"
-					eventdat += "<br>[rescued] was rescued from the abandoned ship!"
-					eventdat += "<br>You found [oldfood] <b>Food</b> and [oldfuel] <b>Fuel</b>."
+					eventdat += "<br>Przeszukując go, znajdujesz trochę zapasów i żywą osobę!"
+					eventdat += "<br>Z porzuconego statku uratowano: [rescued]!"
+					eventdat += "<br>Znajdujesz [oldfood] <b>jedzenia</b> i [oldfuel] <b>paliwa</b>."
 				if(15 to 35)
 					var/lfuel = rand(4,7)
 					var/deadname = remove_crewmember()
 					fuel -= lfuel
-					eventdat += "<br>[deadname] was lost deep in the wreckage, and your own vessel lost [lfuel] <b>Fuel</b> maneuvering to the the abandoned ship."
+					eventdat += "<br>[deadname] zaginął głęboko we wraku, a twój statek stracił [lfuel] <b>paliwa</b> na manewrowanie do porzuconego statku."
 				if(35 to 65)
 					var/oldfood = rand(5,11)
 					food += oldfood
 					engine++
-					eventdat += "<br>You found [oldfood] <b>Food</b> and some parts amongst the wreck."
+					eventdat += "<br>Znajdujesz we wraku [oldfood] <b>jedzenia</b> i trochę części."
 				else
-					eventdat += "<br>As you look through the wreck you cannot find much of use."
+					eventdat += "<br>Przeszukując wrak, nie znajdujesz niczego przydatnego."
 			eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];eventclose=1'>Continue</a></P>"
 			eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];close=1'>Close</a></P>"
 			canContinueEvent = 1
 
 		if(ORION_TRAIL_ILLNESS)
-			eventdat += "A deadly illness has been contracted!"
+			eventdat += "Ktoś zaraził się śmiertelną chorobą!"
 			var/deadname = remove_crewmember()
-			eventdat += "<br>[deadname] was killed by the disease."
+			eventdat += "<br>[deadname] umiera na chorobę."
 			eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];eventclose=1'>Continue</a></P>"
 			eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];close=1'>Close</a></P>"
 			canContinueEvent = 1
 
 		if(ORION_TRAIL_BREAKDOWN)
-			eventdat += "Oh no! The engine has broken down!"
-			eventdat += "<br>You can repair it with an engine part, or you can make repairs for 3 days."
+			eventdat += "O nie! Silnik się zepsuł!"
+			eventdat += "<br>Możesz go naprawić częścią silnika albo naprawiać go przez 3 dni."
 			if(engine >= 1)
-				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];useengine=1'>Use Part</a><a href='byond://?src=[REF(src)];wait=1'>Wait</a></P>"
+				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];useengine=1'>Użyj części</a><a href='byond://?src=[REF(src)];wait=1'>Czekaj</a></P>"
 			else
 				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];wait=1'>Wait</a></P>"
 			eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];close=1'>Close</a></P>"
 
 		if(ORION_TRAIL_MALFUNCTION)
-			eventdat += "The ship's systems are malfunctioning!"
-			eventdat += "<br>You can replace the broken electronics with spares, or you can spend 3 days troubleshooting the AI."
+			eventdat += "Systemy statku działają wadliwie!"
+			eventdat += "<br>Możesz wymienić zepsutą elektronikę na zapasową albo przez 3 dni szukać usterki w SI."
 			if(electronics >= 1)
-				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];useelec=1'>Use Part</a><a href='byond://?src=[REF(src)];wait=1'>Wait</a></P>"
+				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];useelec=1'>Użyj części</a><a href='byond://?src=[REF(src)];wait=1'>Czekaj</a></P>"
 			else
 				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];wait=1'>Wait</a></P>"
 			eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];close=1'>Close</a></P>"
 
 		if(ORION_TRAIL_COLLISION)
-			eventdat += "Something hit us! Looks like there's some hull damage."
+			eventdat += "Coś nas uderzyło! Wygląda na to, że kadłub jest uszkodzony."
 			if(prob(25))
 				var/sfood = rand(5,15)
 				var/sfuel = rand(5,15)
 				food -= sfood
 				fuel -= sfuel
-				eventdat += "<br>[sfood] <b>Food</b> and [sfuel] <b>Fuel</b> was vented out into space."
+				eventdat += "<br>[sfood] <b>jedzenia</b> i [sfuel] <b>paliwa</b> wyleciało w kosmos."
 			if(prob(10))
 				var/deadname = remove_crewmember()
-				eventdat += "<br>[deadname] was killed by rapid depressurization."
-			eventdat += "<br>You can repair the damage with hull plates, or you can spend the next 3 days welding scrap together."
+				eventdat += "<br>[deadname] ginie w wyniku gwałtownej dekompresji."
+			eventdat += "<br>Możesz naprawić uszkodzenia płytami kadłuba albo przez następne 3 dni spawać złom."
 			if(hull >= 1)
-				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];usehull=1'>Use Part</a><a href='byond://?src=[REF(src)];wait=1'>Wait</a></P>"
+				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];usehull=1'>Użyj części</a><a href='byond://?src=[REF(src)];wait=1'>Czekaj</a></P>"
 			else
 				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];wait=1'>Wait</a></P>"
 			eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];close=1'>Close</a></P>"
 
 		if(ORION_TRAIL_BLACKHOLE)
-			eventdat += "You were swept away into the black hole."
+			eventdat += "Zostajesz wciągnięty w czarną dziurę."
 			eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];holedeath=1'>Oh...</a></P>"
 			eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];close=1'>Close</a></P>"
 			settlers = list()
 
 		if(ORION_TRAIL_LING)
-			eventdat += "Strange reports warn of changelings infiltrating crews on trips to Orion..."
+			eventdat += "Dziwne doniesienia ostrzegają przed zmiennokształtnymi infiltrującymi załogi w drodze na Oriona..."
 			if(settlers.len <= 2)
-				eventdat += "<br>Your crew's chance of reaching Orion is so slim the changelings likely avoided your ship..."
+				eventdat += "<br>Szanse twojej załogi na dotarcie na Oriona są tak marne, że zmiennokształtni pewnie omijają twój statek..."
 				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];eventclose=1'>Continue</a></P>"
 				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];close=1'>Close</a></P>"
 				if(prob(10)) // "likely", I didn't say it was guaranteed!
@@ -987,48 +987,46 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 					lings_aboard = min(++lings_aboard,2)
 
 				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];killcrew=1'>Kill a Crewmember</a></P>"
-				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];eventclose=1'>Risk it</a></P>"
+				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];eventclose=1'>Zaryzykuj</a></P>"
 				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];close=1'>Close</a></P>"
 			canContinueEvent = 1
 
 		if(ORION_TRAIL_LING_ATTACK)
 			if(lings_aboard <= 0) //shouldn't trigger, but hey.
-				eventdat += "Haha, fooled you, there are no changelings on board!"
-				eventdat += "<br>(You should report this to a coder :S)"
+				eventdat += "Haha, nabrałem cię, na pokładzie nie ma zmiennokształtnych!"
+				eventdat += "<br>(Zgłoś to koderowi :S)"
 			else
 				var/ling1 = remove_crewmember()
 				var/ling2 = ""
 				if(lings_aboard >= 2)
 					ling2 = remove_crewmember()
 
-				eventdat += "Changelings among your crew suddenly burst from hiding and attack!"
+				eventdat += "Zmiennokształtni wśród twojej załogi nagle wyskakują z ukrycia i atakują!"
 				if(ling2)
-					eventdat += "<br>[ling1] and [ling2]'s arms twist and contort into grotesque blades!"
+					eventdat += "<br>Ramiona [ling1] i [ling2] wykręcają się i wykrzywiają w groteskowe ostrza!"
 				else
-					eventdat += "<br>[ling1]'s arm twists and contorts into a grotesque blade!"
+					eventdat += "<br>Ramię [ling1] wykręca się i wykrzywia w groteskowe ostrze!"
 
 				var/chance2attack = alive*20
 				if(prob(chance2attack))
 					var/chancetokill = 30*lings_aboard-(5*alive) //eg: 30*2-(10) = 50%, 2 lings, 2 crew is 50% chance
 					if(prob(chancetokill))
 						var/deadguy = remove_crewmember()
-						var/murder_text = pick("The changeling[ling2 ? "s" : ""] bring[ling2 ? "" : "s"] down [deadguy] and disembowel[ling2 ? "" : "s"] them in a spray of gore!", \
-						"[ling2 ? pick(ling1, ling2) : ling1] corners [deadguy] and impales them through the stomach!", \
-						"[ling2 ? pick(ling1, ling2) : ling1] decapitates [deadguy] in a single cleaving arc!")
+						var/murder_text = pick("[ling2 ? "Zmiennokształtni powalają" : "Zmiennokształtny powala"] [deadguy] i [ling2 ? "wypruwają" : "wypruwa"] mu wnętrzności w fontannie krwi!", \
+						"[ling2 ? pick(ling1, ling2) : ling1] osacza [deadguy] i przebija go na wylot przez brzuch!", \
+						"[ling2 ? pick(ling1, ling2) : ling1] ścina [deadguy] głowę jednym zamachem!")
 						eventdat += "<br>[murder_text]"
 					else
-						eventdat += "<br><br><b>You valiantly fight off the changeling[ling2 ? "s":""]!</b>"
+						eventdat += "<br><br><b>Dzielnie odpierasz [ling2 ? "zmiennokształtnych":"zmiennokształtnego"]!</b>"
 						if(ling2)
 							food += 30
 							lings_aboard = max(0,lings_aboard-2)
 						else
 							food += 15
 							lings_aboard = max(0,--lings_aboard)
-						eventdat += "<br><i>Well, it's perfectly good food...</i>\
-						<br>You cut the changeling[ling2 ? "s" : ""] into meat, gaining <b>[ling2 ? "30" : "15"]</b> Food!"
+						eventdat += "<br><i>Cóż, to całkiem dobre jedzenie...</i><br>Kroisz [ling2 ? "zmiennokształtnych" : "zmiennokształtnego"] na mięso, zyskując <b>[ling2 ? "30" : "15"]</b> jedzenia!"
 				else
-					eventdat += "<br><br>[pick("Sensing unfavorable odds", "After a failed attack", "Suddenly breaking nerve")], \
-					the changeling[ling2 ? "s":""] vanish[ling2 ? "" : "es"] into space through the airlocks! You're safe... for now."
+					eventdat += "<br><br>[pick("Wyczuwając niekorzystne szanse", "Po nieudanym ataku", "Nagle tracąc odwagę")], [ling2 ? "zmiennokształtni znikają":"zmiennokształtny znika"] w kosmosie przez śluzy! Jesteś bezpieczny... na razie."
 					if(ling2)
 						lings_aboard = max(0,lings_aboard-2)
 					else
@@ -1042,21 +1040,21 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		if(ORION_TRAIL_SPACEPORT)
 			gameStatus = ORION_STATUS_MARKET
 			if(spaceport_raided)
-				eventdat += "The spaceport is on high alert! You've been barred from docking by the local authorities after your failed raid."
+				eventdat += "Port kosmiczny jest w stanie najwyższej gotowości! Po nieudanym napadzie lokalne władze zakazały ci dokowania."
 				if(last_spaceport_action)
-					eventdat += "<br><b>Last Spaceport Action:</b> [last_spaceport_action]"
-				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];leave_spaceport=1'>Depart Spaceport</a></P>"
+					eventdat += "<br><b>Ostatnia akcja w porcie:</b> [last_spaceport_action]"
+				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];leave_spaceport=1'>Opuść port kosmiczny</a></P>"
 				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];close=1'>Close</a></P>"
 			else
-				eventdat += "Your jump into the sector yields a spaceport - a lucky find!"
-				eventdat += "<br>This spaceport is home to travellers who failed to reach Orion, but managed to find a different home..."
-				eventdat += "<br>Trading terms: FU = Fuel, FO = Food"
+				eventdat += "Twój skok do sektora trafia na port kosmiczny - co za szczęście!"
+				eventdat += "<br>Ten port kosmiczny to dom podróżników, którzy nie dotarli na Oriona, ale znaleźli inny dom..."
+				eventdat += "<br>Warunki handlu: FU = paliwo, FO = jedzenie"
 				if(last_spaceport_action)
-					eventdat += "<br><b>Last action:</b> [last_spaceport_action]"
+					eventdat += "<br><b>Ostatnia akcja:</b> [last_spaceport_action]"
 				eventdat += "<h3><b>Crew:</b></h3>"
 				eventdat += english_list(settlers)
-				eventdat += "<br><b>Food: </b>[food] | <b>Fuel: </b>[fuel]"
-				eventdat += "<br><b>Engine Parts: </b>[engine] | <b>Hull Panels: </b>[hull] | <b>Electronics: </b>[electronics]"
+				eventdat += "<br><b>Jedzenie: </b>[food] | <b>Paliwo: </b>[fuel]"
+				eventdat += "<br><b>Części silnika: </b>[engine] | <b>Płyty kadłuba: </b>[hull] | <b>Elektronika: </b>[electronics]"
 
 
 				//If your crew is pathetic you can get freebies (provided you haven't already gotten one from this port)
@@ -1073,64 +1071,64 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 						add_crewmember()
 						freecrew++
 
-					eventdat += "<br>The traders of the spaceport take pity on you, and generously give you some free supplies! (+[FU]FU, +[FO]FO)"
+					eventdat += "<br>Handlarze z portu litują się nad tobą i hojnie dają ci trochę darmowych zapasów! (+[FU]FU, +[FO]FO)"
 					if(freecrew)
-						eventdat += "<br>You also gain a new crewmember!"
+						eventdat += "<br>Zyskujesz też nowego członka załogi!"
 
 					fuel += FU
 					food += FO
 
 				//CREW INTERACTIONS
-				eventdat += "<P ALIGN=Right>Crew Management:</P>"
+				eventdat += "<P ALIGN=Right>Zarządzanie załogą:</P>"
 
 				//Buy crew
 				if(food >= 10 && fuel >= 10)
-					eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];buycrew=1'>Hire a New Crewmember (-10FU, -10FO)</a></P>"
+					eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];buycrew=1'>Zatrudnij nowego członka załogi (-10FU, -10FO)</a></P>"
 				else
-					eventdat += "<P ALIGN=Right>You cannot afford a new crewmember.</P>"
+					eventdat += "<P ALIGN=Right>Nie stać cię na nowego członka załogi.</P>"
 
 				//Sell crew
 				if(settlers.len > 1)
-					eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];sellcrew=1'>Sell Crew for Fuel and Food (+7FU, +7FO)</a></P>"
+					eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];sellcrew=1'>Sprzedaj członka załogi za paliwo i jedzenie (+7FU, +7FO)</a></P>"
 				else
-					eventdat += "<P ALIGN=Right>You have no other crew to sell.</P>"
+					eventdat += "<P ALIGN=Right>Nie masz innej załogi do sprzedania.</P>"
 
 				//BUY/SELL STUFF
-				eventdat += "<P ALIGN=Right>Spare Parts:</P>"
+				eventdat += "<P ALIGN=Right>Części zapasowe:</P>"
 
 				//Engine parts
 				if(fuel > 5)
-					eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];buyparts=1'>Buy Engine Parts (-5FU)</a></P>"
+					eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];buyparts=1'>Kup części silnika (-5FU)</a></P>"
 				else
-					eventdat += "<P ALIGN=Right>You cannot afford engine parts.</a>"
+					eventdat += "<P ALIGN=Right>Nie stać cię na części silnika.</a>"
 
 				//Hull plates
 				if(fuel > 5)
-					eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];buyparts=2'>Buy Hull Plates (-5FU)</a></P>"
+					eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];buyparts=2'>Kup płyty kadłuba (-5FU)</a></P>"
 				else
-					eventdat += "<P ALIGN=Right>You cannot afford hull plates.</a>"
+					eventdat += "<P ALIGN=Right>Nie stać cię na płyty kadłuba.</a>"
 
 				//Electronics
 				if(fuel > 5)
-					eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];buyparts=3'>Buy Spare Electronics (-5FU)</a></P>"
+					eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];buyparts=3'>Kup zapasową elektronikę (-5FU)</a></P>"
 				else
-					eventdat += "<P ALIGN=Right>You cannot afford spare electronics.</a>"
+					eventdat += "<P ALIGN=Right>Nie stać cię na zapasową elektronikę.</a>"
 
 				//Trade
 				if(fuel > 5)
-					eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];trade=1'>Trade Fuel for Food (-5FU,+5FO)</a></P>"
+					eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];trade=1'>Wymień paliwo na jedzenie (-5FU,+5FO)</a></P>"
 				else
-					eventdat += "<P ALIGN=Right>You don't have 5FU to trade.</P"
+					eventdat += "<P ALIGN=Right>Nie masz 5FU na wymianę.</P"
 
 				if(food > 5)
-					eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];trade=2'>Trade Food for Fuel (+5FU,-5FO)</a></P>"
+					eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];trade=2'>Wymień jedzenie na paliwo (+5FU,-5FO)</a></P>"
 				else
-					eventdat += "<P ALIGN=Right>You don't have 5FO to trade.</P"
+					eventdat += "<P ALIGN=Right>Nie masz 5FO na wymianę.</P"
 
 				//Raid the spaceport
-				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];raid_spaceport=1'>!! Raid Spaceport !!</a></P>"
+				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];raid_spaceport=1'>!! Złup port kosmiczny !!</a></P>"
 
-				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];leave_spaceport=1'>Depart Spaceport</a></P>"
+				eventdat += "<P ALIGN=Right><a href='byond://?src=[REF(src)];leave_spaceport=1'>Opuść port kosmiczny</a></P>"
 
 
 //Add Random/Specific crewmember
@@ -1170,7 +1168,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 
 /obj/machinery/computer/arcade/orion_trail/proc/win(mob/user)
 	gameStatus = ORION_STATUS_START
-	say("Congratulations, you made it to Orion!")
+	say("Gratulacje, dotarłeś na Oriona!")
 	if(obj_flags & EMAGGED)
 		prizeselect = /obj/item/orion_ship
 		prizevend(user)
@@ -1186,7 +1184,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 /obj/machinery/computer/arcade/orion_trail/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
-	to_chat(user, "<span class='notice'>You override the cheat code menu and skip to Cheat #[rand(1, 50)]: Realism Mode.</span>")
+	to_chat(user, "<span class='notice'>Nadpisujesz menu kodów i przechodzisz do kodu #[rand(1, 50)]: tryb realizmu.</span>")
 	name = "The Orion Trail: Realism Edition"
 	desc = "Learn how our ancestors got to Orion, and try not to die in the process!"
 	newgame()
@@ -1216,9 +1214,9 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 	if(!(in_range(user, src)))
 		return
 	if(!active)
-		. += "<span class='notice'>There's a little switch on the bottom. It's flipped down.</span>"
+		. += "<span class='notice'>Na spodzie jest mały przełącznik. Jest przestawiony w dół.</span>"
 	else
-		. += "<span class='notice'>There's a little switch on the bottom. It's flipped up.</span>"
+		. += "<span class='notice'>Na spodzie jest mały przełącznik. Jest przestawiony w górę.</span>"
 
 /obj/item/orion_ship/attack_self(mob/user) //Minibomb-level explosion. Should probably be more because of how hard it is to survive the machine! Also, just over a 5-second fuse
 	if(active)
@@ -1226,16 +1224,16 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 
 	log_bomber(usr, "primed an explosive", src, "for detonation")
 
-	to_chat(user, "<span class='warning'>You flip the switch on the underside of [src].</span>")
+	to_chat(user, "<span class='warning'>Przestawiasz przełącznik na spodzie [src].</span>")
 	active = 1
-	visible_message("<span class='notice'>[src] softly beeps and whirs to life!</span>")
+	visible_message("<span class='notice'>[src] cicho pika i budzi się do życia!</span>")
 	playsound(loc, 'sound/machines/defib_SaftyOn.ogg', 25, 1)
-	say("This is ship ID #[rand(1,1000)] to Orion Port Authority. We're coming in for landing, over.")
+	say("Tu statek o ID #[rand(1,1000)] do Zarządu Portu Orion. Podchodzimy do lądowania, odbiór.")
 	sleep(20)
-	visible_message("<span class='warning'>[src] begins to vibrate...</span>")
-	say("Uh, Port? Having some issues with our reactor, could you check it out? Over.")
+	visible_message("<span class='warning'>[src] zaczyna wibrować...</span>")
+	say("Eee, Port? Mamy jakieś problemy z reaktorem, możecie rzucić okiem? Odbiór.")
 	sleep(30)
-	say("Oh, God! Code Eight! CODE EIGHT! IT'S GONNA BL-")
+	say("O Boże! Kod Osiem! KOD OSIEM! ZARAZ WYB-")
 	playsound(loc, 'sound/machines/buzz-sigh.ogg', 25, 1)
 	sleep(3.6)
 	visible_message("<span class='userdanger'>[src] explodes!</span>")
@@ -1257,9 +1255,9 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 	if(obj_flags & EMAGGED)
 		if(!c_user.get_bodypart(BODY_ZONE_L_ARM) && !c_user.get_bodypart(BODY_ZONE_R_ARM))
 			return
-		to_chat(c_user, "<span class='warning'>You move your hand towards the machine, and begin to hesitate as an extra-bloodied guillotine emerges from inside of it...</span>")
+		to_chat(c_user, "<span class='warning'>Przysuwasz rękę do maszyny i zaczynasz się wahać, gdy ze środka wysuwa się mocno zakrwawiona gilotyna...</span>")
 		if(do_after(c_user, 50, target = src))
-			to_chat(c_user, "<span class='userdanger'>Robotic arms shoot out of the machine, remove all your limbs, and suck them in!</span>")
+			to_chat(c_user, "<span class='userdanger'>Z maszyny wystrzeliwują robotyczne ramiona, odcinają ci wszystkie kończyny i je wciągają!</span>")
 			playsound(loc, 'sound/weapons/slice.ogg', 25, 1, -1)
 			for(var/X in c_user.bodyparts)
 				var/obj/item/bodypart/BP = X
@@ -1271,13 +1269,13 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 			for(var/i=1 to rand(20, 30))
 				prizevend(user)
 		else
-			to_chat(c_user, "<span class='notice'>You (wisely) decide against putting your hand in the machine.</span>")
+			to_chat(c_user, "<span class='notice'>(Rozsądnie) postanawiasz nie wkładać ręki do maszyny.</span>")
 	else
 		if(!c_user.get_bodypart(BODY_ZONE_L_ARM) && !c_user.get_bodypart(BODY_ZONE_R_ARM))
 			return
-		to_chat(c_user, "<span class='warning'>You move your hand towards the machine, and begin to hesitate as a bloodied guillotine emerges from inside of it...</span>")
+		to_chat(c_user, "<span class='warning'>Przysuwasz rękę do maszyny i zaczynasz się wahać, gdy ze środka wysuwa się zakrwawiona gilotyna...</span>")
 		if(do_after(c_user, 50, target = src))
-			to_chat(c_user, "<span class='userdanger'>The guillotine drops on your arm, and the machine sucks it in!</span>")
+			to_chat(c_user, "<span class='userdanger'>Gilotyna spada na twoją rękę, a maszyna ją wciąga!</span>")
 			playsound(loc, 'sound/weapons/slice.ogg', 25, 1, -1)
 			var/which_hand = BODY_ZONE_L_ARM
 			if(!(c_user.active_hand_index % 2))
@@ -1289,13 +1287,13 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 			for(var/i=1 to rand(3, 5))
 				prizevend(user)
 		else
-			to_chat(c_user, "<span class='notice'>You (wisely) decide against putting your hand in the machine.</span>")
+			to_chat(c_user, "<span class='notice'>(Rozsądnie) postanawiasz nie wkładać ręki do maszyny.</span>")
 
 
 /obj/machinery/computer/arcade/amputation/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
-	to_chat(user, "<span class='notice'>You override the safety systems on the arcade machine.</span>")
+	to_chat(user, "<span class='notice'>Nadpisujesz systemy bezpieczeństwa automatu.</span>")
 	name = "Mediborg's Amputation Adventure: Deluxe Edition"
 	desc = "A picture of a blood-soaked medical cyborg flashes on the screen. The mediborg has glowing red eyes, and a speech bubble that says, \"Put your hand in the machine if you aren't a <b>coward!</b>\""
 	obj_flags |= EMAGGED

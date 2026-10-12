@@ -22,7 +22,7 @@
 
 /obj/item/paper/bounty_printout/Initialize(mapload)
 	. = ..()
-	var/final_paper_text = "<h2>Nanotrasen Cargo Bounties</h2></br>"
+	var/final_paper_text = "<h2>Zlecenia zaopatrzenia Nanotrasen</h2></br>"
 
 	for(var/datum/bounty/B in GLOB.bounties_list)
 		if(B.claimed)

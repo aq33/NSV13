@@ -34,7 +34,7 @@
 	if (isturf(user.loc) || istype(user.loc, /obj/structure) || active_dummy)
 		toggle(user)
 	else
-		to_chat(user, "<span class='warning'>You can't use [src] while inside something!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz używać [src], będąc wewnątrz czegoś!</span>")
 
 /obj/item/chameleon/afterattack(atom/target, mob/user , proximity)
 	. = ..()
@@ -82,7 +82,7 @@
 		playsound(get_turf(src), 'sound/effects/pop.ogg', 100, 1, -6)
 		qdel(active_dummy)
 		active_dummy = null
-		to_chat(user, "<span class='notice'>You deactivate \the [src].</span>")
+		to_chat(user, "<span class='notice'>Wyłączasz [src].</span>")
 		new /obj/effect/temp_visual/emp/pulse(get_turf(src))
 	else
 		playsound(get_turf(src), 'sound/effects/pop.ogg', 100, 1, -6)
@@ -91,14 +91,14 @@
 			var/list/overlay_data = vis_overlay_data[overlay_index]
 			SSvis_overlays.add_vis_overlay(C, overlay_data["icon"], overlay_data["icon_state"], overlay_data["layer"], overlay_data["plane"], C.dir, alpha = overlay_data["alpha"], add_appearance_flags = overlay_data["appearance_flags"])
 		C.activate(user, saved_appearance, src)
-		to_chat(user, "<span class='notice'>You activate \the [src].</span>")
+		to_chat(user, "<span class='notice'>Włączasz [src].</span>")
 		new /obj/effect/temp_visual/emp/pulse(get_turf(src))
 	user.cancel_camera()
 
 /obj/item/chameleon/proc/disrupt(delete_dummy = 1)
 	if(active_dummy)
 		for(var/mob/M in active_dummy)
-			to_chat(M, "<span class='danger'>Your chameleon-projector deactivates.</span>")
+			to_chat(M, "<span class='danger'>Twój projektor kameleona się wyłącza.</span>")
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
 		spark_system.set_up(5, 0, src)
 		spark_system.attach(src)

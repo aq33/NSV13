@@ -17,14 +17,14 @@
 	time = 155
 
 /datum/surgery_step/ground_nerves/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You start rerouting [target]'s nerves.</span>",
-		"[user] starts rerouting [target]'s nerves.",
-		"[user] starts manipulating [target]'s nervous system.")
+	display_results(user, target, "<span class='notice'>Zaczynasz przekierowywać nerwy [target].</span>",
+		"[user] zaczyna przekierowywać nerwy [target].",
+		"[user] zaczyna manipulować układem nerwowym [target].")
 
 /datum/surgery_step/ground_nerves/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You successfully reroute [target]'s nervous system!</span>",
-		"[user] successfully reroutes [target]'s nervous system!",
-		"[user] finishes manipulating [target]'s nervous system.")
+	display_results(user, target, "<span class='notice'>Pomyślnie przekierowujesz układ nerwowy [target]!</span>",
+		"[user] pomyślnie przekierowuje układ nerwowy [target]!",
+		"[user] kończy manipulować układem nerwowym [target].")
 	new /datum/bioware/grounded_nerves(target)
 	return TRUE
 

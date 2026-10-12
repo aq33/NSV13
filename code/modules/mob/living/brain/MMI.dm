@@ -40,18 +40,18 @@
 	if(istype(O, /obj/item/organ/brain)) //Time to stick a brain in it --NEO
 		var/obj/item/organ/brain/newbrain = O
 		if(brain)
-			to_chat(user, "<span class='warning'>There's already a brain in the MMI!</span>")
+			to_chat(user, "<span class='warning'>W MMI już jest mózg!</span>")
 			return
 		if(!newbrain.brainmob)
-			to_chat(user, "<span class='warning'>You aren't sure where this brain came from, but you're pretty sure it's a useless brain!</span>")
+			to_chat(user, "<span class='warning'>Nie wiesz, skąd ten mózg pochodzi, ale jesteś pewien, że jest bezużyteczny!</span>")
 			return
 
 		if(!user.transferItemToLoc(O, src))
 			return
 		var/mob/living/brain/B = newbrain.brainmob
 		if(!B.key)
-			B.notify_ghost_cloning("Someone has put your brain in a MMI!", source = src)
-		user.visible_message("[user] sticks \a [newbrain] into [src].", "<span class='notice'>[src]'s indicator light turn on as you insert [newbrain].</span>")
+			B.notify_ghost_cloning("Ktoś umieścił twój mózg w MMI!", source = src)
+		user.visible_message("[user] wkłada [newbrain] do [src].", "<span class='notice'>Gdy wkładasz [newbrain], zapala się kontrolka [src].</span>")
 		log_attack("[key_name(user)] inserted [newbrain] into \the [src] at [AREACOORD(src)].")
 
 		SEND_SIGNAL(src, COMSIG_MMI_SET_BRAINMOB, newbrain.brainmob)
@@ -65,10 +65,10 @@
 			brainmob.remove_from_dead_mob_list()
 			brainmob.add_to_alive_mob_list()
 		else if(!fubar_brain && newbrain.organ_flags & ORGAN_FAILING) // the brain is damaged, but not from a suicider
-			to_chat(user, "<span class='warning'>[src]'s indicator light turns yellow and its brain integrity alarm beeps softly. Perhaps you should check [newbrain] for damage.</span>")
+			to_chat(user, "<span class='warning'>Kontrolka [src] zmienia kolor na żółty, a alarm integralności mózgu cicho pika. Może warto sprawdzić, czy [newbrain] nie jest uszkodzony.</span>")
 			playsound(src, "sound/machines/synth_no.ogg", 5, TRUE)
 		else
-			to_chat(user, "<span class='warning'>[src]'s indicator light turns red and its brainwave activity alarm beeps softly. Perhaps you should check [newbrain] again.</span>")
+			to_chat(user, "<span class='warning'>Kontrolka [src] zmienia kolor na czerwony, a alarm aktywności fal mózgowych cicho pika. Może warto ponownie sprawdzić [newbrain].</span>")
 			playsound(src, "sound/weapons/smg_empty_alarm.ogg", 5, TRUE)
 
 		brainmob.reset_perspective()
@@ -89,13 +89,13 @@
 /obj/item/mmi/attack_self(mob/user)
 	if(!brain)
 		radio.on = !radio.on
-		to_chat(user, "<span class='notice'>You toggle [src]'s radio system [radio.on==1 ? "on" : "off"].</span>")
+		to_chat(user, "<span class='notice'>[radio.on==1 ? "Włączasz" : "Wyłączasz"] system radiowy [src].</span>")
 	else
 		log_attack("[key_name(user)] ejected \the [brainmob] from \the [src] at [AREACOORD(src)].")
 		eject_brain(user)
 		update_icon()
 		name = initial(name)
-		to_chat(user, "<span class='notice'>You unlock and upend [src], spilling the brain onto the floor.</span>")
+		to_chat(user, "<span class='notice'>Odblokowujesz i przewracasz [src], wylewając mózg na podłogę.</span>")
 
 /obj/item/mmi/proc/eject_brain(mob/user)
 	brainmob.container = null //Reset brainmob mmi var.
@@ -152,13 +152,13 @@
 	set popup_menu = FALSE
 
 	if(brainmob.stat)
-		to_chat(brainmob, "<span class='warning'>Can't do that while incapacitated or dead!</span>")
+		to_chat(brainmob, "<span class='warning'>Nie możesz tego zrobić, będąc obezwładnionym lub martwym!</span>")
 	if(!radio.on)
-		to_chat(brainmob, "<span class='warning'>Your radio is disabled!</span>")
+		to_chat(brainmob, "<span class='warning'>Twoje radio jest wyłączone!</span>")
 		return
 
 	radio.listening = !radio.listening
-	to_chat(brainmob, "<span class='notice'>Radio is [radio.listening ? "now" : "no longer"] receiving broadcast.</span>")
+	to_chat(brainmob, "<span class='notice'>Radio [radio.listening ? "odbiera teraz" : "nie odbiera już"] transmisji.</span>")
 
 /obj/item/mmi/emp_act(severity)
 	. = ..()
@@ -200,17 +200,17 @@
 
 /obj/item/mmi/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>There is a switch to toggle the radio system [radio.on ? "off" : "on"].[brain ? " It is currently being covered by [brain]." : null]</span>"
+	. += "<span class='notice'>Jest tu przełącznik do [radio.on ? "wyłączenia" : "włączenia"] systemu radiowego.[brain ? " Obecnie zasłania go [brain]." : null]</span>"
 	if(brainmob)
 		var/mob/living/brain/B = brainmob
 		if(!B.key || !B.mind || B.stat == DEAD)
-			. += "<span class='warning'>The MMI indicates the brain is completely unresponsive.</span>"
+			. += "<span class='warning'>MMI wskazuje, że mózg w ogóle nie reaguje.</span>"
 
 		else if(!B.client)
-			. += "<span class='warning'>The MMI indicates the brain is currently inactive; it might change.</span>"
+			. += "<span class='warning'>MMI wskazuje, że mózg jest obecnie nieaktywny; to może się zmienić.</span>"
 
 		else
-			. += "<span class='notice'>The MMI indicates the brain is active.</span>"
+			. += "<span class='notice'>MMI wskazuje, że mózg jest aktywny.</span>"
 
 /obj/item/mmi/relaymove(mob/user)
 	return //so that the MMI won't get a warning about not being able to move if it tries to move

@@ -46,7 +46,7 @@
 /proc/generate_custom_holoform_from_prefs_safe(datum/preferences/prefs, mob/user)
 	if(user)
 		if(user.client.prefs.last_custom_holoform > world.time - CUSTOM_HOLOFORM_DELAY)
-			to_chat(user, "<span class='boldwarning'>You are attempting to set your custom holoform too fast!</span>")
+			to_chat(user, "<span class='boldwarning'>Zbyt szybko próbujesz ustawić własną holoformę!</span>")
 			return
 	return generate_custom_holoform_from_prefs(prefs, null, null, TRUE, TRUE)
 

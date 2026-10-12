@@ -404,11 +404,11 @@
 	. = ..()
 	if(istype(I))
 		pipe_layer = (pipe_layer >= PIPING_LAYER_MAX) ? PIPING_LAYER_MIN : (pipe_layer + 1)
-		to_chat(user, "<span class='notice'>You change the circuitboard to layer [pipe_layer].</span>")
+		to_chat(user, "<span class='notice'>Zmieniasz warstwę płytki na [pipe_layer].</span>")
 
 /obj/item/circuitboard/machine/plasma_loader/examine()
 	. = ..()
-	. += "<span class='notice'>It is set to layer [pipe_layer].</span>"
+	. += "<span class='notice'>Ustawiona na warstwę [pipe_layer].</span>"
 
 /obj/item/circuitboard/machine/plasma_caster
 	name = "plasma caster (Machine Board)"

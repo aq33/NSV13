@@ -45,8 +45,8 @@
 
 /obj/item/ship_weapon/ammunition/proc/climb_torp(mob/living/user)
 	src.add_fingerprint(user)
-	user.visible_message("<span class='warning'>[user] starts climbing onto [src].</span>", \
-								"<span class='notice'>You start climbing onto [src]...</span>")
+	user.visible_message("<span class='warning'>[user] zaczyna wspinać się na [src].</span>", \
+								"<span class='notice'>Zaczynasz wspinać się na [src]...</span>")
 	var/adjusted_climb_time = climb_time
 	if(user.restrained()) //climbing takes twice as long when restrained.
 		adjusted_climb_time *= 2
@@ -58,19 +58,19 @@
 	if(do_mob(user, user, adjusted_climb_time))
 		if(src.loc) //Checking if torp has been destroyed
 			if(do_climb(user))
-				user.visible_message("<span class='warning'>[user] climbs onto [src].</span>", \
-									"<span class='notice'>You climb onto [src].</span>")
+				user.visible_message("<span class='warning'>[user] wspina się na [src].</span>", \
+									"<span class='notice'>Wspinasz się na [src].</span>")
 				log_combat(user, src, "climbed onto")
 				if(climb_stun)
 					user.Stun(climb_stun)
 				. = 1
 			else
-				to_chat(user, "<span class='warning'>You fail to climb onto [src].</span>")
+				to_chat(user, "<span class='warning'>Nie udaje ci się wspiąć na [src].</span>")
 	climber = null
 
 /obj/item/ship_weapon/ammunition/can_be_pulled(mob/user)
 	if(has_gravity())
-		to_chat(user,"<span class='warning'>[src] is far too cumbersome to carry, and dragging it around might set it off! Load it onto a munitions trolley.</span>")
+		to_chat(user,"<span class='warning'>[src] jest zdecydowanie zbyt nieporęczny, by go nosić, a ciągnięcie go mogłoby go odpalić! Załaduj go na wózek amunicyjny.</span>")
 		return FALSE
 	else
 		return TRUE

@@ -46,4 +46,4 @@
 		return
 	src.prefs.toggles2 ^= PREFTOGGLE_2_FULLSCREEN
 	src.toggle_fullscreen(src.prefs.toggles2 & PREFTOGGLE_2_FULLSCREEN)
-	to_chat(usr, "<span class ='info'>Switched [src.prefs.toggles2 & PREFTOGGLE_2_FULLSCREEN ? "to fullscreen" : "off fullscreen"], press F11 to toggle.</span>")
+	to_chat(usr, "<span class ='info'>[src.prefs.toggles2 & PREFTOGGLE_2_FULLSCREEN ? "Przełączono na pełny ekran" : "Wyłączono pełny ekran"], naciśnij F11, by przełączyć.</span>")

@@ -49,7 +49,7 @@
 	air_contents.set_temperature(T20C)
 
 /obj/machinery/atmospherics/components/binary/drive_pylon/swarmer_act(mob/living/simple_animal/hostile/swarmer/S)
-	to_chat(S, "<span class='warning'>This equipment should be preserved, it will be a useful resource to our masters in the future. Aborting.</span>")
+	to_chat(S, "<span class='warning'>Ten sprzęt należy zachować, w przyszłości będzie cennym zasobem dla naszych panów. Przerywanie.</span>")
 	S.LoseTarget()
 	return FALSE
 
@@ -79,7 +79,7 @@
 				power_draw = round(power_draw * PYLON_ACTIVE_EXPONENT + 300, 1) // Active pylons slowly but exponentially require more charge to stay stable. Don't leave them on when you don't need to
 			var/rounded_mol_use = round(active_mol_use, 0.1)
 			if(input.get_moles(GAS_NUCLEIUM) < rounded_mol_use)
-				say("Insufficient FTL fuel, spooling down.")
+				say("Za mało paliwa FTL, wygaszanie.")
 				set_state(PYLON_STATE_SHUTDOWN)
 				return
 			input.adjust_moles(GAS_NUCLEIUM, -rounded_mol_use)
@@ -94,14 +94,14 @@
 				if(input.get_moles(GAS_NUCLEIUM))
 					set_state(PYLON_STATE_WARMUP)
 				else
-					say("Insufficient FTL fuel, spooling down.")
+					say("Za mało paliwa FTL, wygaszanie.")
 					set_state(PYLON_STATE_SHUTDOWN)
 
 		if(PYLON_STATE_WARMUP) //start the spin
 			var/ftl_fuel = input.get_moles(GAS_NUCLEIUM)
 
 			if(ftl_fuel < 0.25)
-				say("Insufficient FTL fuel, spooling down.")
+				say("Za mało paliwa FTL, wygaszanie.")
 				set_state(PYLON_STATE_SHUTDOWN)
 				return
 
@@ -120,7 +120,7 @@
 				if(capacitor > 0)
 					capacitor -= min(rand(0.25, 0.5), capacitor)
 				else
-					say("Insufficient FTL fuel, spooling down.")
+					say("Za mało paliwa FTL, wygaszanie.")
 					set_state(PYLON_STATE_SHUTDOWN)
 				return
 			power_draw = 50000 // 50KW
@@ -142,9 +142,9 @@
 	if(actual_power_draw > cable.surplus())
 		power_failure_counter++
 		if(power_failure_counter > POWER_FAIL_TOLERANCE)
-			visible_message("<span class='warning'>\The [src] lets out a metallic groan as its power indicator flickers.</span>")
+			visible_message("<span class='warning'>[src] wydaje metaliczny jęk, a jego wskaźnik zasilania migocze.</span>")
 			return FALSE
-		visible_message("<span class='warning'>The power warning diode on [src] flashes [power_failure_counter > 1 ? "bright red" : "yellow"]!</span>")
+		visible_message("<span class='warning'>Dioda ostrzegawcza zasilania na [src] miga na [power_failure_counter > 1 ? "jaskrawoczerwono" : "żółto"]!</span>")
 	else
 		power_failure_counter = max(0, power_failure_counter - 1)
 	cable.add_load(clamp(actual_power_draw, 0, cable.surplus()))
@@ -159,9 +159,9 @@
 				if(1)
 					playsound(src, 'nsv13/sound/effects/metal_clang.ogg', 100, TRUE)
 				if(2)
-					audible_message("<span class='warning'>\The [src] hisses quitely.</span>")
+					audible_message("<span class='warning'>[src] cicho syczy.</span>")
 				if(3)
-					audible_message("<span class='warning'>\The [src] lets out a metallic groan.</span>")
+					audible_message("<span class='warning'>[src] wydaje metaliczny jęk.</span>")
 				else
 		if(MAX_WASTE_STORAGE_PRESSURE/2 to MAX_WASTE_STORAGE_PRESSURE)
 			switch(rand(1, 20))
@@ -172,9 +172,9 @@
 				if(4)
 					playsound(src, 'sound/effects/bang.ogg', 100, TRUE)
 				if(5)
-					visible_message(src, "<span class='danger'>\The [src]'s chassis begins to bulge!</span>")
+					visible_message(src, "<span class='danger'>Obudowa [src] zaczyna się wybrzuszać!</span>")
 				if(6)
-					audible_message(src, "<span class='alert'>You hear a high pitch hiss!</span>")
+					audible_message(src, "<span class='alert'>Słyszysz wysoki syk!</span>")
 				if(7)
 					playsound(src, 'sound/magic/clockwork/fellowship_armory.ogg', 100, TRUE)
 				else
@@ -381,9 +381,9 @@
 	if(.)
 		return
 	if(pylon.pylon_state == PYLON_STATE_OFFLINE)
-		to_chat(user, "<span class='info'>You poke the metallic [pylon.shielded ? "shield" : "gyros"].</span>")
+		to_chat(user, "<span class='info'>Szturchasz metalowe [pylon.shielded ? "osłony" : "żyroskopy"].</span>")
 	else
-		to_chat(user, "<span class='info'>You don't think it would be wise to touch this right now.</span>")
+		to_chat(user, "<span class='info'>Chyba nie byłoby rozsądnie dotykać tego teraz.</span>")
 
 #undef MAX_WASTE_OUTPUT_PRESSURE
 #undef MAX_WASTE_STORAGE_PRESSURE

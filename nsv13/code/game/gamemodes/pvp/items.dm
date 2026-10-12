@@ -20,7 +20,7 @@
 	cargo_landingzone = /area/quartermaster/pvp //Without this, any crates that are sent to cargo bay LZ will land in NT cargo instead.
 
 /obj/machinery/computer/cargo/express/syndicate/emag_act(mob/living/user)
-	to_chat(user, "<span class='warning'>The Syndicate would probably have you killed if you tried to interfere with this console...</span>")
+	to_chat(user, "<span class='warning'>Syndykat pewnie kazałby cię zabić, gdybyś majstrował przy tej konsoli...</span>")
 	return FALSE
 
 /obj/item/circuitboard/computer/cargo/express/syndicate
@@ -48,15 +48,15 @@
 	if(!allowed(user))
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='warning'>Access denied</span>")
+		to_chat(user, "<span class='warning'>Odmowa dostępu</span>")
 		return
 	if(!is_station_level(user.z))
-		to_chat(user, "<span class='notice'>A message crackles in your ear: Operative. You have not yet reached [station_name()], ensure you are on the enemy ship before you attempt to summon a nuke.</span>")
+		to_chat(user, "<span class='notice'>W słuchawce trzeszczy wiadomość: Operatorze. Nie dotarłeś jeszcze na [station_name()] - upewnij się, że jesteś na wrogim statku, zanim przywołasz bombę.</span>")
 		return
-	if(alert("Are you sure you want to summon a nuke to your location?",name,"Yes","No") == "Yes")
-		to_chat(user, "<span class='notice'>You press a button on [src] and a nuke appears.</span>")
+	if(alert("Na pewno chcesz przywołać bombę atomową do siebie?",name,"Yes","No") == "Yes")
+		to_chat(user, "<span class='notice'>Naciskasz przycisk na [src] i pojawia się bomba atomowa.</span>")
 		var/obj/machinery/nuclearbomb/syndicate/nuke = locate() in GLOB.nuke_list
-		nuke.visible_message("<span class='warning'>[src] fizzles out of existence!</span>")
+		nuke.visible_message("<span class='warning'>[src] znika z sykiem!</span>")
 		nuke?.forceMove(get_turf(user))
 		do_sparks(1, TRUE, src)
 		qdel(src)
@@ -107,7 +107,7 @@
 
 /obj/machinery/conquest_beacon/examine(mob/user)
 	. = ..()
-	. += "<span class='sciradio'>Its timer reads: [time_left] seconds remaining.</span>"
+	. += "<span class='sciradio'>Licznik pokazuje: pozostało [time_left] s.</span>"
 
 /obj/machinery/conquest_beacon/process()
 	if(!powered())
@@ -152,25 +152,25 @@
 /obj/machinery/conquest_beacon/proc/set_active(state, voluntarily=FALSE, mob/user=usr)
 	if(user)
 		if(!allowed(user))
-			to_chat(user, "<span class='notice'>Access denied.</span>")
+			to_chat(user, "<span class='notice'>Odmowa dostępu.</span>")
 			return
 		if(world.time < next_activation)
-			to_chat(user, "<span class='sciradio'>[src] is on cooldown.</span>")
+			to_chat(user, "<span class='sciradio'>[src] się odnawia.</span>")
 			return
 		if(!powered())
 			return
-		if(alert(user, "Begin calling for reinforcements with [src]? This is a loud process and will alert enemies to your location!","Confirm","Yes","No")=="No")
+		if(alert(user, "Zacząć wzywać posiłki przez [src]? To głośny proces, który zdradzi twoją pozycję wrogom!","Confirm","Yes","No")=="No")
 			return
 		var/datum/star_system/SS = get_overmap().current_system
 		if(SS.alignment == alignment) //Todo: add federation check here.
-			to_chat(user, "<span class='sciradio'>You can't claim systems that your faction already owns...</span>")
+			to_chat(user, "<span class='sciradio'>Nie możesz przejmować systemów, które już należą do twojej frakcji...</span>")
 			return
 		next_activation = world.time + activation_delay
 		capturing = get_overmap().current_system
-		priority_announce("DANGER: [get_overmap()] is attempting to establish a jump bridge in [get_overmap().current_system]. Incursion underway", "WhiteRapids EAS", 'nsv13/sound/effects/ship/lighthouse_alarm.ogg')
+		priority_announce("NIEBEZPIECZEŃSTWO: [get_overmap()] próbuje zbudować most skokowy w [get_overmap().current_system]. Trwa inwazja", "WhiteRapids EAS", 'nsv13/sound/effects/ship/lighthouse_alarm.ogg')
 	if(active && !state && !voluntarily) //Great, they ran away! Good job stopping that capture crew. Now let's alert everyone.
-		visible_message("[src] spontaneously turns off!")
-		priority_announce("Jump bridge collapsing. Incursion halted.", "WhiteRapids EAS", 'nsv13/sound/effects/ship/lighthouse_alarm.ogg')
+		visible_message("[src] samoistnie się wyłącza!")
+		priority_announce("Most skokowy się zapada. Inwazja powstrzymana.", "WhiteRapids EAS", 'nsv13/sound/effects/ship/lighthouse_alarm.ogg')
 	active = state
 	icon_state = "[initial(icon_state)][active ? "_on" : ""]"
 	time_left = initial(time_left)
@@ -202,7 +202,7 @@
 /obj/machinery/conquest_beacon/nanotrasen/capture_system()
 	set_active(FALSE, TRUE)
 	var/datum/faction/ours = SSstar_system.faction_by_id(faction_type)
-	priority_announce("\proper [capturing] has been succesfully captured by [get_overmap()]!", "WhiteRapids EAS", )
+	priority_announce("\proper [get_overmap()] przejmuje [capturing]!", "WhiteRapids EAS", )
 	capturing.owner = alignment
 	capturing.alignment = alignment
 	ours.gain_influence(points_per_capture)
@@ -210,22 +210,22 @@
 /obj/machinery/conquest_beacon/nanotrasen/set_active(state, voluntarily=FALSE, mob/user)
 	if(user)
 		if(!allowed(user))
-			to_chat(user, "<span class='notice'>Access denied.</span>")
+			to_chat(user, "<span class='notice'>Odmowa dostępu.</span>")
 			return
 		if(world.time < next_activation)
-			to_chat(user, "<span class='sciradio'>[src] is on cooldown.</span>")
+			to_chat(user, "<span class='sciradio'>[src] się odnawia.</span>")
 			return
 		if(!powered())
 			return
-		if(alert(user, "Activate the [src]? Sending the transmission will take two minutes and permanently mark the system as captured!","Confirm","Yes","No")=="No")
+		if(alert(user, "Aktywować [src]? Wysłanie transmisji zajmie dwie minuty i na stałe oznaczy system jako przejęty!","Confirm","Yes","No")=="No")
 			return
 		capturing = get_overmap().current_system
 		if(capturing.alignment == alignment || capturing.alignment == "solgov") //Todo: add federation check here.
-			to_chat(user, "<span class='sciradio'>You can't claim systems that your faction already owns...</span>")
+			to_chat(user, "<span class='sciradio'>Nie możesz przejmować systemów, które już należą do twojej frakcji...</span>")
 			return
 		next_activation = world.time + activation_delay
 	if(active && !state && !voluntarily)
-		visible_message("[src] spontaneously turns off!")
+		visible_message("[src] samoistnie się wyłącza!")
 	active = state
 	icon_state = "[initial(icon_state)][active ? "_on" : ""]"
 	time_left = initial(time_left)
@@ -298,7 +298,7 @@
 	if(!allowed(user))
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='warning'>Access denied</span>")
+		to_chat(user, "<span class='warning'>Odmowa dostępu</span>")
 		return
 	ui_interact(user)
 
@@ -331,7 +331,7 @@
 	var/datum/ship_loadout/target = locate(params["target_id"])
 	if(!target)
 		return FALSE
-	if(alert("Are you sure you want to select [target]?",name,"Yes","No") == "Yes")
+	if(alert("Na pewno chcesz wybrać [target]?",name,"Yes","No") == "Yes")
 		if(target.apply(loc.get_overmap()))
 			qdel(src)
 

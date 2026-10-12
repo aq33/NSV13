@@ -205,11 +205,11 @@
 	if(playing)
 		return
 	if(!using_instrument?.ready())
-		to_chat(user, "<span class='warning'>An error has occured with [src]. Please reset the instrument.</span>")
+		to_chat(user, "<span class='warning'>Wystąpił błąd z [src]. Zresetuj instrument.</span>")
 		return
 	compile_chords()
 	if(!length(compiled_chords))
-		to_chat(user, "<span class='warning'>Song is empty.</span>")
+		to_chat(user, "<span class='warning'>Utwór jest pusty.</span>")
 		return
 	playing = TRUE
 	updateDialog(user_playing)

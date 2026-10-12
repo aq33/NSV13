@@ -58,9 +58,9 @@
 	add_fingerprint(user)
 	if (W.tool_behaviour == TOOL_WIRECUTTER)
 		if (bulb)
-			user.visible_message("[user] begins to disconnect [src]'s flashbulb.", "<span class='notice'>You begin to disconnect [src]'s flashbulb...</span>")
+			user.visible_message("[user] zaczyna odłączać żarówkę flasha [src].", "<span class='notice'>Zaczynasz odłączać żarówkę flasha [src]...</span>")
 			if(W.use_tool(src, user, 30, volume=50) && bulb)
-				user.visible_message("[user] has disconnected [src]'s flashbulb!", "<span class='notice'>You disconnect [src]'s flashbulb.</span>")
+				user.visible_message("[user] odłącza żarówkę flasha [src]!", "<span class='notice'>Odłączasz żarówkę flasha [src].</span>")
 				bulb.forceMove(loc)
 				bulb = null
 				power_change()
@@ -69,20 +69,20 @@
 		if (!bulb)
 			if(!user.transferItemToLoc(W, src))
 				return
-			user.visible_message("[user] installs [W] into [src].", "<span class='notice'>You install [W] into [src].</span>")
+			user.visible_message("[user] instaluje [W] w [src].", "<span class='notice'>Instalujesz [W] w [src].</span>")
 			bulb = W
 			power_change()
 		else
-			to_chat(user, "<span class='warning'>A flashbulb is already installed in [src]!</span>")
+			to_chat(user, "<span class='warning'>W [src] jest już zainstalowana żarówka flasha!</span>")
 
 	else if (W.tool_behaviour == TOOL_WRENCH)
 		if(!bulb)
-			to_chat(user, "<span class='notice'>You start unsecuring the flasher frame...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz odczepiać ramę flashera...</span>")
 			if(W.use_tool(src, user, 40, volume=50))
-				to_chat(user, "<span class='notice'>You unsecure the flasher frame.</span>")
+				to_chat(user, "<span class='notice'>Odczepiasz ramę flashera.</span>")
 				deconstruct(TRUE)
 		else
-			to_chat(user, "<span class='warning'>Remove a flashbulb from [src] first!</span>")
+			to_chat(user, "<span class='warning'>Najpierw wyjmij żarówkę flasha z [src]!</span>")
 	else
 		return ..()
 
@@ -93,7 +93,7 @@
 
 /obj/machinery/flasher/eminence_act(mob/living/simple_animal/eminence/eminence)
 	. = ..()
-	to_chat(usr, "<span class='brass'>You begin manipulating [src]!</span>")
+	to_chat(usr, "<span class='brass'>Zaczynasz majstrować przy [src]!</span>")
 	if(do_after(eminence, 20, target=get_turf(eminence)))
 		if(anchored)
 			flash()
@@ -178,13 +178,13 @@
 		W.play_tool_sound(src, 100)
 
 		if (!anchored && !isinspace())
-			to_chat(user, "<span class='notice'>[src] is now secured.</span>")
+			to_chat(user, "<span class='notice'>[src] jest teraz zamocowany.</span>")
 			add_overlay("[base_state]-s")
 			setAnchored(TRUE)
 			power_change()
 			proximity_monitor.SetRange(range)
 		else
-			to_chat(user, "<span class='notice'>[src] can now be moved.</span>")
+			to_chat(user, "<span class='notice'>[src] można teraz przesuwać.</span>")
 			cut_overlays()
 			setAnchored(FALSE)
 			power_change()
@@ -203,7 +203,7 @@
 
 /obj/item/wallframe/flasher/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Its channel ID is '[id]'.</span>"
+	. += "<span class='notice'>Jego ID kanału to '[id]'.</span>"
 
 /obj/item/wallframe/flasher/after_attach(var/obj/O)
 	..()

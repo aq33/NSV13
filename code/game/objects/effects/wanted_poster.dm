@@ -13,11 +13,11 @@
 	var/postHeaderColor = "#FF0000"
 	var/background = "wanted_background"
 	var/postName = "wanted poster"
-	var/postDesc = "A wanted poster for"
+	var/postDesc = "List gończy za"
 
 /obj/item/poster/wanted/missing
 	postName = "missing poster"
-	postDesc = "A missing poster for"
+	postDesc = "Plakat poszukiwanego zaginionego:"
 	postHeaderText = "MISSING" // MAX 7 Characters
 	postHeaderColor = "#0000FF"
 

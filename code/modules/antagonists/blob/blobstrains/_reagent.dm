@@ -21,10 +21,10 @@
 // These can only be applied by blobs. They are what (reagent) blobs are made out of.
 /datum/reagent/blob
 	name = "Unknown"
-	description = "shouldn't exist and you should adminhelp immediately."
+	description = "nie powinno istnieć, natychmiast napisz ahelp."
 	color = "#FFFFFF"
 	chem_flags = CHEMICAL_NOT_DEFINED
-	taste_description = "bad code and slime"
+	taste_description = "zły kod i szlam"
 
 
 /datum/reagent/blob/reaction_mob(mob/living/M, method=TOUCH, reac_volume, show_message, touch_protection, mob/camera/blob/O)

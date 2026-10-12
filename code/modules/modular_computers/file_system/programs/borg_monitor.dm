@@ -1,13 +1,13 @@
 /datum/computer_file/program/borg_monitor
 	filename = "cyborgmonitor"
-	filedesc = "Cyborg Remote Monitoring"
+	filedesc = "Zdalny monitoring cyborgów"
 	category = PROGRAM_CATEGORY_ROBO
 	ui_header = "borg_mon.gif"
 	program_icon_state = "generic"
-	extended_desc = "This program allows for remote monitoring of station cyborgs."
+	extended_desc = "Ten program pozwala zdalnie monitorować cyborgi stacji."
 	requires_ntnet = TRUE
 	transfer_access = list(ACCESS_ROBOTICS)
-	network_destination = "cyborg remote monitoring"
+	network_destination = "zdalny monitoring cyborgów"
 	size = 5
 	tgui_id = "NtosCyborgRemoteMonitor"
 	program_icon = "project-diagram"
@@ -47,7 +47,7 @@
 			status = R.stat,
 			shell_discon = shell,
 			charge = R.cell ? round(R.cell.percent()) : null,
-			module = R.module ? "[R.module.name] Module" : "No Module Detected",
+			module = R.module ? "[R.module.name] Module" : "Nie wykryto modułu",
 			upgrades = upgrade,
 			ref = REF(R)
 		)
@@ -66,25 +66,25 @@
 			var/sender_name = get_id_name()
 			if(!sender_name)
 				// This can only happen if the action somehow gets called as UI blocks this action with no ID
-				computer.visible_message("<span class='notice'>Insert an ID to send messages.</span>")
+				computer.visible_message("<span class='notice'>Włóż identyfikator, by wysyłać wiadomości.</span>")
 				playsound(usr, 'sound/machines/terminal_error.ogg', 15, TRUE)
 				return TRUE
 			if(R.stat == DEAD) //Dead borgs will listen to you no longer
-				to_chat(usr, "<span class='warn'>Error -- Could not open a connection to unit:[R]</span>")
-			var/message = stripped_input(usr, message = "Enter message to be sent to remote cyborg.", title = "Send Message")
+				to_chat(usr, "<span class='warn'>Błąd – nie udało się nawiązać połączenia z jednostką: [R]</span>")
+			var/message = stripped_input(usr, message = "Wpisz wiadomość do wysłania do zdalnego cyborga.", title = "Wyślij wiadomość")
 			if(!message)
 				return
 			if(CHAT_FILTER_CHECK(message))
-				to_chat(usr, "<span class='warning'>ERROR: Prohibited word(s) detected in message.</span>")
+				to_chat(usr, "<span class='warning'>BŁĄD: w wiadomości wykryto zakazane słowa.</span>")
 				return
-			to_chat(usr, "<br><br><span class='notice'>Message to [R] (as [sender_name]) -- \"[message]\"</span><br>")
+			to_chat(usr, "<br><br><span class='notice'>Wiadomość do [R] (jako [sender_name]) – \"[message]\"</span><br>")
 			computer.send_sound()
-			to_chat(R, "<br><br><span class='notice'>Message from [sender_name] -- \"[message]\"</span><br>")
+			to_chat(R, "<br><br><span class='notice'>Wiadomość od [sender_name] – \"[message]\"</span><br>")
 			SEND_SOUND(R, 'sound/machines/twobeep_high.ogg')
 			if(R.connected_ai)
-				to_chat(R.connected_ai, "<br><br><span class='notice'>Message from [sender_name] to [R] -- \"[message]\"</span><br>")
+				to_chat(R.connected_ai, "<br><br><span class='notice'>Wiadomość od [sender_name] do [R] – \"[message]\"</span><br>")
 				SEND_SOUND(R.connected_ai, 'sound/machines/twobeep_high.ogg')
-			R.logevent("Message from [sender_name] -- \"[message]\"")
+			R.logevent("Wiadomość od [sender_name] – \"[message]\"")
 			usr.log_talk(message, LOG_PDA, tag="Cyborg Monitor Program: ID name \"[sender_name]\" to [R]")
 			return TRUE
 
@@ -107,8 +107,8 @@
 
 /datum/computer_file/program/borg_monitor/syndicate
 	filename = "scyborgmonitor"
-	filedesc = "Mission-Specific Cyborg Remote Monitoring"
-	extended_desc = "This program allows for remote monitoring of mission-assigned cyborgs."
+	filedesc = "Zdalny monitoring cyborgów misji"
+	extended_desc = "Ten program pozwala zdalnie monitorować cyborgi przydzielone do misji."
 	requires_ntnet = FALSE
 	available_on_ntnet = FALSE
 	available_on_syndinet = TRUE

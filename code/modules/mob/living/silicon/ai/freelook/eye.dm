@@ -106,11 +106,11 @@
 	var/turf/target = get_step_multiz(src, dir)
 	if(!target)
 		if(feedback)
-			to_chat(ai, "<span class='warning'>There's nowhere to go in that direction!</span>")
+			to_chat(ai, "<span class='warning'>W tym kierunku nie ma dokąd iść!</span>")
 		return FALSE
 	if(!canZMove(dir, target))
 		if(feedback)
-			to_chat(ai, "<span class='warning'>You couldn't move there!</span>")
+			to_chat(ai, "<span class='warning'>Nie możesz się tam ruszyć!</span>")
 		return FALSE
 	setLoc(target, TRUE)
 	return TRUE
@@ -188,7 +188,7 @@
 	unset_machine()
 
 	if(isturf(loc) && (QDELETED(eyeobj) || !eyeobj.loc))
-		to_chat(src, "ERROR: Eyeobj not found. Creating new eye...")
+		to_chat(src, "BŁĄD: nie znaleziono Eyeobj. Tworzenie nowego oka...")
 		create_eye()
 
 	eyeobj?.setLoc(loc)
@@ -217,7 +217,7 @@
 	if(incapacitated())
 		return
 	acceleration = !acceleration
-	to_chat(usr, "Camera acceleration has been toggled [acceleration ? "on" : "off"].")
+	to_chat(usr, "Przyspieszenie kamery [acceleration ? "włączone" : "wyłączone"].")
 
 /mob/camera/ai_eye/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, list/message_mods = list())
 	. = ..()

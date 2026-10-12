@@ -31,7 +31,7 @@
 
 /obj/machinery/computer/monitor/secret/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It's operating system seems quite outdated... It doesn't seem like it'd be compatible with the latest remote NTOS monitoring systems.</span>"
+	. += "<span class='notice'>Jego system operacyjny wydaje się dość przestarzały... Raczej nie będzie zgodny z najnowszymi zdalnymi systemami monitorowania NTOS.</span>"
 
 /obj/machinery/computer/monitor/Initialize(mapload)
 	. = ..()

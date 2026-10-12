@@ -30,7 +30,7 @@
 
 /obj/effect/proc_holder/spell/target_hive/hive_see/process()
 	if(active && (!vessel || !is_hivemember(vessel) || QDELETED(vessel)))
-		to_chat(host, "<span class='warning'>Our vessel is one of us no more!</span>")
+		to_chat(host, "<span class='warning'>Nasze naczynie nie jest już jednym z nas!</span>")
 		host.reset_perspective()
 		host.clear_fullscreen("hive_eyes")
 		active = FALSE

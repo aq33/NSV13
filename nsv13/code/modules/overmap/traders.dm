@@ -8,11 +8,11 @@
 	var/faction_type = null //What faction does the dude belong to.
 	var/system_type = "unaligned" //In what systems do they spawn?
 	//Fluff / voice stuff
-	var/greeting = "What do you want?"
-	var/list/greetings = list("Welcome to our store!", "How can I help you?", "We've got everything you need...for a price.")
-	var/list/on_purchase = list("Thanks for your business!", "Thank you, come again", "Thank you for your purchase!")
-	var/list/on_fail = list("Did you intend to pay for that?", "I'm afraid the cheque bounced.", "Purchase not authorised.")
-	var/list/on_mission_give = list("Actually, we could use a favour...", "Mission details sent.", "Thanks, we owe you one!")
+	var/greeting = "Czego chcecie?"
+	var/list/greetings = list("Witamy w naszym sklepie!", "W czym mogę pomóc?", "Mamy wszystko, czego potrzebujecie... za odpowiednią cenę.")
+	var/list/on_purchase = list("Dzięki za interes!", "Dziękujemy, zapraszamy ponownie", "Dziękujemy za zakup!")
+	var/list/on_fail = list("Zamierzaliście za to zapłacić?", "Obawiam się, że czek się odbił.", "Zakup nieautoryzowany.")
+	var/list/on_mission_give = list("Właściwie przydałaby nam się przysługa...", "Wysłano szczegóły misji.", "Dzięki, mamy u was dług!")
 	var/station_type = /obj/structure/overmap/trader //Fluff, really. Just sets what kinda station they spawn on!
 	var/next_restock = 0
 	var/stock_delay = 0
@@ -46,7 +46,7 @@
 	stonks = list() //Reset our stores of supplies
 	var/datum/faction/F = SSstar_system.faction_by_id(faction_type)
 	yellow_pages_dat = ""
-	yellow_pages_dat += "<h3>[F ? F.name : "neutral"]-aligned station [name] at [system.name]</h3>"
+	yellow_pages_dat += "<h3>Stacja [name] ([F ? F.name : "neutralna"]) w [system.name]</h3>"
 	yellow_pages_dat += "<font size = \"2\">"
 	for(var/itemPath in sold_items)
 		var/datum/trader_item/TI = new itemPath()
@@ -63,7 +63,7 @@
 			TI.stock = round(rand(TI.stock/2, TI.stock*2))
 			stonks += TI
 			TI.owner = src
-			yellow_pages_dat += "SPECIAL OFFER! [TI.stock]x [TI.name] ([TI.price] ea.) - <i>[TI.desc]</i><br /><br />"
+			yellow_pages_dat += "SPECJALNA OFERTA! [TI.stock]× [TI.name] ([TI.price] za szt.) - <i>[TI.desc]</i><br /><br />"
 	yellow_pages_dat += "</font>"
 
 /datum/trader_item
@@ -192,7 +192,7 @@
 	/datum/trader_item/vls_circuit)
 	station_type = /obj/structure/overmap/trader/syndicate
 	image = "https://cdn.discordapp.com/attachments/728055734159540244/764570187357093928/unknown.png"
-	greetings = list("You've made it pretty far in, huh? We won't tell if you're buying...", "Freedom isn't free, buy a gun to secure yours.", "Excercise your right to bear arms now!")
+	greetings = list("Zaszliście dość daleko, co? Nie powiemy nikomu, jeśli coś kupicie...", "Wolność nie jest za darmo, kup broń, by ją zabezpieczyć.", "Skorzystaj teraz z prawa do posiadania broni!")
 	// possible_mission_types = list(
 	// 	/datum/nsv_mission/cargo/nuke/syndicate=1,
 	// 	/datum/nsv_mission/kill_ships/waves/syndicate=1,
@@ -217,10 +217,10 @@
 	desc = "Ship construction deeds done cheap (for a price)"
 	shortname = "CZC"
 	faction_type = FACTION_ID_NT
-	greetings = list("Welcome to CzanekCorp, we take cash, credit, and charge. What'cha need?",\
-	"CzanekCorp here. We got a new shipment in, you down for talking turkey?",\
-	"CzanekCorp, we got repairs and goods on a budget, you in?")
-	on_purchase = list("Yes, we know the tazers aren't the safest, but if you don't like 'em, stop buying 'em, eh?", "Good doing business with you. Good luck out there, killer.", "About time we got somebody who knows what they're doing. Here, free shipping!", "No refunds, no returns!")
+	greetings = list("Witamy w CzanekCorp, przyjmujemy gotówkę, kredyt i obciążenie. Czego potrzebujecie?",\
+	"Tu CzanekCorp. Przyszła nowa dostawa, pogadamy o interesach?",\
+	"CzanekCorp, naprawy i towary w niskiej cenie, wchodzicie w to?")
+	on_purchase = list("Tak, wiemy, że paralizatory nie są najbezpieczniejsze, ale jak wam się nie podobają, to przestańcie je kupować, co?", "Dobrze się z wami robi interesy. Powodzenia tam, zabójco.", "Najwyższy czas, że trafił się ktoś, kto wie, co robi. Proszę, darmowa wysyłka!", "Żadnych zwrotów, żadnych reklamacji!")
 	sold_items = list(/datum/trader_item/ship_repair, \
 	/datum/trader_item/fighter/light, \
 	/datum/trader_item/fighter/heavy, \
@@ -236,10 +236,10 @@
 	desc = "Rock and ore coming right to your door!"
 	shortname = "SSS"
 	faction_type = FACTION_ID_NT
-	greetings = list("Need something water drinkers?",\
-	"Have you come to dig or pay?",\
-	"We got minerals for you, so long as you've got a deposit for us.")
-	on_purchase = list("Maybe next time, dig it up yourself lazy gits!", "Credits have been withdrawn, Supplies inbound.", "Czanek would approve of this.", "If you're too afraid to get these yourself, I'm almost scared to give them to you. But money is money.")
+	greetings = list("Potrzebujecie czegoś, wodopijcy?",\
+	"Przyszliście kopać czy płacić?",\
+	"Mamy dla was minerały, o ile macie dla nas wpłatę.")
+	on_purchase = list("Może następnym razem wykopiecie to sami, leniwe łajzy!", "Kredyty pobrane, zaopatrzenie w drodze.", "Czanek by to zaaprobował.", "Jeśli boicie się sami je zdobyć, to ja prawie boję się wam je dać. Ale pieniądz to pieniądz.")
 	sold_items = list(/datum/trader_item/mining_point_card, \
 	/datum/trader_item/gold, \
 	/datum/trader_item/diamond, \
@@ -256,8 +256,8 @@
 	desc = "Ready to supply everyone with the finest stones and gems!"
 	shortname = "MME"
 	faction_type = FACTION_ID_UNALIGNED
-	greetings = list("Take a look around, our stores are open to anyone!",\
-	"How goes it fellow space dwellers? Care for some of the best ore in the Rosetta Cluster?")
+	greetings = list("Rozejrzyjcie się, nasze sklepy są otwarte dla każdego!",\
+	"Jak leci, koledzy z kosmosu? Macie ochotę na najlepszą rudę w Gromadzie Rosetty?")
 
 /datum/trader/minsky
 	name = "Minsky Heavy Engineering"
@@ -371,7 +371,7 @@
 	var/mob/living/user = usr
 	var/dist = get_dist(user.get_overmap(), current_location)
 	if(!current_location.z || dist >= 30)
-		to_chat(user, "<span class='warning'>Out of bi-directional comms range.</span>")
+		to_chat(user, "<span class='warning'>Poza zasięgiem łączności dwukierunkowej.</span>")
 		return FALSE
 	switch(action)
 		if("purchase")
@@ -437,7 +437,7 @@
 		return FALSE
 	var/obj/structure/overmap/OM = user.get_overmap()
 	if(!length(OM.linked_areas) || istype(OM, /obj/structure/overmap/small_craft) || isasteroid(OM))
-		to_chat(user, "<span class='warning'>You cannot make purchases from [OM]!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz robić zakupów u [OM]!</span>")
 		return FALSE
 	//Syndies use syndie budget, NT use NT cargo budget
 	var/account = ACCOUNT_CAR

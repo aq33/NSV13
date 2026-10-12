@@ -137,11 +137,11 @@
 		return
 
 	if(focus.buckled_mobs)
-		to_chat(user, "<span class='notice'>This object is too heavy to move with something buckled to it!</span>")
+		to_chat(user, "<span class='notice'>Ten obiekt jest za ciężki, by go przesunąć, gdy coś jest do niego przypięte!</span>")
 		return
 
 	if(length(focus.client_mobs_in_contents))
-		to_chat(user, "<span class='notice'>This object is too heavy to move with something inside of it!</span>")
+		to_chat(user, "<span class='notice'>Ten obiekt jest za ciężki, by go przesunąć, gdy coś jest w środku!</span>")
 		return
 
 	if(!isturf(target) && isitem(focus) && target.Adjacent(focus))
@@ -160,7 +160,7 @@
 /proc/tkMaxRangeCheck(mob/user, atom/target)
 	var/d = get_dist(user, target)
 	if(d > TK_MAXRANGE)
-		to_chat(user, "<span class ='warning'>Your mind won't reach that far.</span>")
+		to_chat(user, "<span class ='warning'>Twój umysł nie sięga tak daleko.</span>")
 		return
 	return TRUE
 
@@ -201,7 +201,7 @@
 		focus.plane = old_plane
 
 /obj/item/tk_grab/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is using [user.p_their()] telekinesis to choke [user.p_them()]self! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] dusi się telekinezą! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return (OXYLOSS)
 
 

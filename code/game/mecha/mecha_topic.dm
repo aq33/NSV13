@@ -154,7 +154,7 @@
 		for(var/X in equipment)
 			var/obj/item/mecha_parts/mecha_equipment/W = X
 			. += "[W.name] [W.detachable?"<a href='byond://?src=[REF(W)];detach=1'>Detach</a><br>":"\[Non-removable\]<br>"]"
-	. += {"<b>Available equipment slots:</b> [max_equip-equipment.len]
+	. += {"<b>Dostępne gniazda wyposażenia:</b> [max_equip-equipment.len]
 	</div>
 	</div>"}
 
@@ -174,7 +174,7 @@
 				<h1>Keycodes present in this system:</h1>"}
 	for(var/a in operation_req_access)
 		. += "[get_access_desc(a)] - <a href='byond://?src=[REF(src)];del_req_access=[a];user=[REF(user)];id_card=[REF(id_card)]'>Delete</a><br>"
-	. += "<hr><h1>Following keycodes were detected on portable device:</h1>"
+	. += "<hr><h1>Na urządzeniu przenośnym wykryto następujące kody:</h1>"
 	for(var/a in id_card.access)
 		if(a in operation_req_access)
 			continue
@@ -182,8 +182,7 @@
 		if(!a_name)
 			continue //there's some strange access without a name
 		. += "[a_name] - <a href='byond://?src=[REF(src)];add_req_access=[a];user=[REF(user)];id_card=[REF(id_card)]'>Add</a><br>"
-	. +={"<hr><a href='byond://?src=[REF(src)];finish_req_access=1;user=[REF(user)]'>Lock ID panel</a><br>
-		<span class='danger'>(Warning! The ID upload panel can be unlocked only through Exosuit Interface.)</span>
+	. +={"<hr><a href='byond://?src=[REF(src)];finish_req_access=1;user=[REF(user)]'>Zablokuj panel wgrywania ID</a><br><span class='danger'>(Uwaga! Panel wgrywania ID można odblokować tylko przez interfejs egzoszkieletu.)</span>
 		</body>
 		</html>"}
 	user << browse(., "window=exosuit_add_access")
@@ -253,10 +252,10 @@
 					return
 				if(construction_state == MECHA_LOCKED)
 					construction_state = MECHA_SECURE_BOLTS
-					to_chat(usr, "The securing bolts are now exposed.")
+					to_chat(usr, "Śruby mocujące są teraz odsłonięte.")
 				else if(construction_state == MECHA_SECURE_BOLTS)
 					construction_state = MECHA_LOCKED
-					to_chat(usr, "The securing bolts are now hidden.")
+					to_chat(usr, "Śruby mocujące są teraz schowane.")
 				output_maintenance_dialog(id_card,usr)
 				return
 			if(href_list["drop_cell"])
@@ -301,11 +300,11 @@
 
 		//Set pressure.
 		if(href_list["set_internal_tank_valve"] && construction_state)
-			var/new_pressure = input(usr,"Input new output pressure","Pressure setting",internal_tank_valve) as num|null
+			var/new_pressure = input(usr,"Podaj nowe ciśnienie wyjściowe","Ustawienie ciśnienia",internal_tank_valve) as num|null
 			if(isnull(new_pressure) || usr.incapacitated() || !construction_state)
 				return
 			internal_tank_valve = new_pressure
-			to_chat(usr, "<span class='notice'>The internal pressure valve has been set to [internal_tank_valve]kPa.</span>")
+			to_chat(usr, "<span class='notice'>Wewnętrzny zawór ciśnienia ustawiono na [internal_tank_valve] kPa.</span>")
 			return
 
 	//Start of all internal topic stuff.
@@ -322,7 +321,7 @@
 		if(!equip || !equip.selectable)
 			return
 		selected = equip
-		occupant_message("You switch to [equip].")
+		occupant_message("Przełączasz na [equip].")
 		visible_message("[src] raises [equip].")
 		send_byjax(usr, "exosuit.browser", "eq_list", get_equipment_list())
 		return
@@ -348,7 +347,7 @@
 
 	//Changes the exosuit name.
 	if(href_list["change_name"])
-		var/userinput = stripped_input(usr, "Choose a new exosuit name.", "Rename exosuit", "", MAX_NAME_LEN)
+		var/userinput = stripped_input(usr, "Wybierz nową nazwę egzoszkieletu.", "Zmień nazwę egzoszkieletu", "", MAX_NAME_LEN)
 		if(!userinput || usr != occupant || usr.incapacitated())
 			return
 		name = userinput
@@ -357,48 +356,48 @@
 	//Toggles ID upload.
 	if (href_list["toggle_id_upload"])
 		add_req_access = !add_req_access
-		send_byjax(usr,"exosuit.browser","t_id_upload","[add_req_access?"L":"Unl"]ock ID upload panel")
+		send_byjax(usr,"exosuit.browser","t_id_upload","[add_req_access?"Zablokuj":"Odblokuj"] panel wgrywania ID")
 		return
 
 	//Toggles main access.
 	if(href_list["toggle_maint_access"])
 		if(construction_state)
-			occupant_message("<span class='danger'>Maintenance protocols in effect</span>")
+			occupant_message("<span class='danger'>Działają protokoły serwisowe</span>")
 			return
 		maint_access = !maint_access
-		send_byjax(usr,"exosuit.browser","t_maint_access","[maint_access?"Forbid":"Permit"] maintenance protocols")
+		send_byjax(usr,"exosuit.browser","t_maint_access","[maint_access?"Zabroń":"Zezwól na"] protokoły serwisowe")
 		return
 
 	//Toggles connection port.
 	if (href_list["toggle_port_connection"])
 		if(internal_tank.connected_port)
 			if(internal_tank.disconnect())
-				occupant_message("Disconnected from the air system port.")
+				occupant_message("Odłączono od portu systemu powietrza.")
 				log_message("Disconnected from gas port.", LOG_MECHA)
 			else
-				occupant_message("<span class='warning'>Unable to disconnect from the air system port!</span>")
+				occupant_message("<span class='warning'>Nie można odłączyć od portu systemu powietrza!</span>")
 				return
 		else
 			var/obj/machinery/atmospherics/components/unary/portables_connector/possible_port = locate() in loc
 			if(internal_tank.connect(possible_port))
-				occupant_message("Connected to the air system port.")
+				occupant_message("Podłączono do portu systemu powietrza.")
 				log_message("Connected to gas port.", LOG_MECHA)
 			else
-				occupant_message("<span class='warning'>Unable to connect with air system port!</span>")
+				occupant_message("<span class='warning'>Nie można podłączyć do portu systemu powietrza!</span>")
 				return
-		send_byjax(occupant,"exosuit.browser","t_port_connection","[internal_tank.connected_port?"Disconnect from":"Connect to"] gas port")
+		send_byjax(occupant,"exosuit.browser","t_port_connection","[internal_tank.connected_port?"Odłącz od":"Podłącz do"] portu gazowego")
 		return
 
 	//Turns on the DNA lock
 	if(href_list["dna_lock"])
 		if(obj_flags & EMAGGED)
-			occupant_message("The control console lights up red, failing to bind to your DNA.")
+			occupant_message("Konsola sterowania świeci na czerwono, nie zdoławszy powiązać się z twoim DNA.")
 			return
 		if(!iscarbon(occupant) || !occupant.dna)
-			occupant_message("The controls console flashes brightly, binding to your DNA.")
+			occupant_message("Konsola sterowania jasno błyska, wiążąc się z twoim DNA.")
 			return
 		dna_lock = occupant.dna.unique_enzymes
-		occupant_message("The controls console flashes brightly, binding to your DNA.")
+		occupant_message("Konsola sterowania jasno błyska, wiążąc się z twoim DNA.")
 		return
 
 	//Resets the DNA lock
@@ -408,7 +407,7 @@
 
 	//Repairs internal damage
 	if(href_list["repair_int_control_lost"])
-		occupant_message("Recalibrating coordination system.")
+		occupant_message("Ponowna kalibracja układu koordynacji.")
 		log_message("Recalibration of coordination system started.", LOG_MECHA)
 		addtimer(CALLBACK(src, PROC_REF(stationary_repair), loc), 100, TIMER_UNIQUE)
 
@@ -416,8 +415,8 @@
 /obj/mecha/proc/stationary_repair(location)
 	if(location == loc)
 		clearInternalDamage(MECHA_INT_CONTROL_LOST)
-		occupant_message("<span class='notice'>Recalibration successful.</span>")
+		occupant_message("<span class='notice'>Kalibracja udana.</span>")
 		log_message("Recalibration of coordination system finished with 0 errors.", LOG_MECHA)
 	else
-		occupant_message("<span class='warning'>Recalibration failed!</span>")
+		occupant_message("<span class='warning'>Kalibracja nieudana!</span>")
 		log_message("Recalibration of coordination system failed with 1 error.", LOG_MECHA, color="red")

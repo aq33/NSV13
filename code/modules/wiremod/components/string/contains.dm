@@ -5,7 +5,7 @@
  */
 /obj/item/circuit_component/compare/contains
 	display_name = "String Contains"
-	display_desc = "Checks if a string contains a word/letter"
+	display_desc = "Sprawdza, czy ciąg znaków zawiera słowo/literę"
 
 	input_port_amount = 0
 

@@ -13,7 +13,7 @@
 
 /obj/item/multitool/circuit/on_examine(datum/source, mob/user, list/examine_list)
 	. = ..()
-	examine_list += "<span class='notice'>It has [marked_atom? "a" : "no"] marked entity registered.</span>"
+	examine_list += "<span class='notice'>[marked_atom? "Ma zarejestrowany oznaczony obiekt" : "Nie ma zarejestrowanego oznaczonego obiektu"].</span>"
 
 /obj/item/multitool/circuit/attack_self(mob/user, modifiers)
 	. = ..()

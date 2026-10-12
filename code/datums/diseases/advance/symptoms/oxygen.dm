@@ -18,7 +18,7 @@ Bonus
 /datum/symptom/oxygen
 
 	name = "Self-Respiration"
-	desc = "The virus rapidly synthesizes oxygen, effectively removing the need for breathing."
+	desc = "Wirus szybko syntetyzuje tlen, praktycznie usuwając potrzebę oddychania."
 	stealth = 1
 	resistance = -3
 	stage_speed = -3
@@ -30,7 +30,7 @@ Bonus
 	symptom_delay_max = 1
 	prefixes = list("Breathless ", "Anaerobic ")
 	var/regenerate_blood = FALSE
-	threshold_desc = "<b>Resistance 8:</b> Additionally regenerates lost blood.<br>"
+	threshold_desc = "<b>Odporność 8:</b> dodatkowo odtwarza utraconą krew.<br>"
 
 /datum/symptom/oxygen/Start(datum/disease/advance/A)
 	if(!..())

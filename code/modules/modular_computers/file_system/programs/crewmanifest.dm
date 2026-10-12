@@ -1,9 +1,9 @@
 /datum/computer_file/program/crew_manifest
 	filename = "crewmani"
-	filedesc = "Crew Manifest"
+	filedesc = "Manifest załogi"
 	category = PROGRAM_CATEGORY_CREW
 	program_icon_state = "id"
-	extended_desc = "Program for viewing and printing the current crew manifest"
+	extended_desc = "Program do przeglądania i drukowania aktualnego manifestu załogi"
 	transfer_access = list(ACCESS_HEADS)
 	requires_ntnet = FALSE
 	size = 4
@@ -41,12 +41,10 @@
 	switch(action)
 		if("PRG_print")
 			if(computer && printer) //This option should never be called if there is no printer
-				var/contents = {"<h4>Crew Manifest</h4>
-								<br>
-								[GLOB.data_core ? GLOB.data_core.get_manifest_html(0) : ""]
+				var/contents = {"<h4>Manifest załogi</h4><br>[GLOB.data_core ? GLOB.data_core.get_manifest_html(0) : ""]
 								"}
-				if(!printer.print_text(contents,text("crew manifest ([])", station_time_timestamp())))
-					to_chat(usr, "<span class='notice'>Hardware error: Printer was unable to print the file. It may be out of paper.</span>")
+				if(!printer.print_text(contents,text("manifest załogi ([])", station_time_timestamp())))
+					to_chat(usr, "<span class='notice'>Błąd sprzętu: drukarka nie mogła wydrukować pliku. Może brakuje papieru.</span>")
 					return
 				else
-					computer.visible_message("<span class='notice'>\The [computer] prints out a paper.</span>")
+					computer.visible_message("<span class='notice'>[computer] drukuje kartkę.</span>")

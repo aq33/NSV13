@@ -55,7 +55,7 @@
 		if(!geyser) //we didnt find one, abort
 			anchored = FALSE
 			geyserless = TRUE
-			visible_message("<span class='warning'>The [name] makes a sad beep!</span>")
+			visible_message("<span class='warning'>[name] wydaje smutny pisk!</span>")
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 50)
 			return
 

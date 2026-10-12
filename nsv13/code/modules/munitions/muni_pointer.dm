@@ -13,12 +13,12 @@ GLOBAL_LIST_EMPTY(critical_muni_items)
 	. = ..()
 	if(!active || !target)
 		return
-	. += "It is currently tracking <b>[target]</b>."
+	. += "Obecnie śledzi: <b>[target]</b>."
 
 /obj/item/pinpointer/munitions/attack_self(mob/living/user)
 	if(active)
 		toggle_on()
-		user.visible_message("<span class='notice'>[user] deactivates [user.p_their()] pinpointer.</span>", "<span class='notice'>You deactivate your pinpointer.</span>")
+		user.visible_message("<span class='notice'>[user] wyłącza swój pinpointer.</span>", "<span class='notice'>Wyłączasz swój pinpointer.</span>")
 		return
 
 	var/list/found_items = list()
@@ -49,16 +49,16 @@ GLOBAL_LIST_EMPTY(critical_muni_items)
 				number_bonus++
 
 	if(!length(found_items))
-		user.visible_message("<span class='notice'>[user]'s pinpointer fails to detect a signal.</span>", "<span class='notice'>Your pinpointer fails to detect a signal.</span>")
+		user.visible_message("<span class='notice'>Pinpointer [user] nie wykrywa sygnału.</span>", "<span class='notice'>Twój pinpointer nie wykrywa sygnału.</span>")
 		return
 
-	var/A = input(user, "Item Beacon to Track", "Pinpoint") in sortList(found_items)
+	var/A = input(user, "Nadajnik do śledzenia", "Pinpoint") in sortList(found_items)
 	if(!A || QDELETED(src) || !user || !user.is_holding(src) || user.incapacitated())
 		return
 
 	target = found_items[A]
 	toggle_on()
-	user.visible_message("<span class='notice'>[user] activates [user.p_their()] pinpointer.</span>", "<span class='notice'>You activate your pinpointer.</span>")
+	user.visible_message("<span class='notice'>[user] włącza swój pinpointer.</span>", "<span class='notice'>Włączasz swój pinpointer.</span>")
 
 /obj/item/pinpointer/munitions/scan_for_target()
 	if(target)

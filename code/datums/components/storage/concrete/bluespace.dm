@@ -28,6 +28,6 @@
 					playsound(src, dumping_sound, 40, 1)
 				M.Beam(dumping_location, icon_state="rped_upgrade", time=5)
 				return TRUE
-		to_chat(M, "The [A.name] buzzes.")
+		to_chat(M, "[A.name] brzęczy.")
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 0)
 	return FALSE

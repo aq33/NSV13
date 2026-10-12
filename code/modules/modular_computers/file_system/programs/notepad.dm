@@ -3,7 +3,7 @@
 	filedesc = "Notepad"
 	category = PROGRAM_CATEGORY_MISC
 	program_icon_state = "generic"
-	extended_desc = "Jot down your work-safe thoughts and what not."
+	extended_desc = "Zapisuj swoje bezpieczne dla pracy myśli i tym podobne."
 	size = 0
 	undeletable = TRUE // It comes by default in PDAs, can't be downloaded, takes no space and should obviously not be able to be deleted.
 	available_on_ntnet = FALSE

@@ -17,13 +17,13 @@
 	see_in_dark     = 5
 	speak_chance    = 1
 	turns_per_move  = 3
-	response_help   = "pets"
-	response_disarm = "shoos"
-	response_harm   = "stomps"
-	speak = list("Hissssss!", "Squeak!")
-	speak_emote = list("hisses", "squeaks")
-	emote_hear = list("hisses", "squeaks")
-	emote_see = list("pounces")
+	response_help   = "głaszcze"
+	response_disarm = "przegania"
+	response_harm   = "depcze"
+	speak = list("Sssssss!", "Pi!")
+	speak_emote = list("syczy", "piszczy")
+	emote_hear = list("syczy", "piszczy")
+	emote_see = list("rzuca się")
 	faction = list("Lizard")
 	health = 15
 	maxHealth = 15
@@ -68,7 +68,7 @@
 
 					if(isturf(movement_target.loc) )
 						if(movement_target.bite_consumption == 0 || prob(50))
-							INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "me", 1, "nibbles on \the [movement_target]")
+							INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "me", 1, "skubie [movement_target]")
 						movement_target.bite_consumption++
 						taste(movement_target.reagents)
 						turns_since_scan = 2
@@ -98,13 +98,13 @@
 						sleep(30) //take your time
 						if(B && Adjacent(B)) //make sure it's still there and we're still there
 							if(prob(60))
-								INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "me", 1, "licks up \the [B]")
+								INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "me", 1, "zlizuje [B]")
 							qdel(B)
 							adjustBruteLoss(-5)
 							stop_automated_movement = 0
 
 		if(prob(1))
-			INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "me", 1, "pounces around!")
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "me", 1, "skacze dookoła!")
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2)) //ian dance but longer
 					setDir(i)

@@ -111,17 +111,17 @@
 /obj/structure/showcase/attackby(obj/item/W, mob/user)
 	if(W.tool_behaviour == TOOL_SCREWDRIVER && !anchored)
 		if(deconstruction_state == SHOWCASE_SCREWDRIVERED)
-			to_chat(user, "<span class='notice'>You screw the screws back into the showcase.</span>")
+			to_chat(user, "<span class='notice'>Wkręcasz z powrotem wkręty w gablotę.</span>")
 			W.play_tool_sound(src, 100)
 			deconstruction_state = SHOWCASE_CONSTRUCTED
 		else if (deconstruction_state == SHOWCASE_CONSTRUCTED)
-			to_chat(user, "<span class='notice'>You unscrew the screws.</span>")
+			to_chat(user, "<span class='notice'>Wykręcasz wkręty.</span>")
 			W.play_tool_sound(src, 100)
 			deconstruction_state = SHOWCASE_SCREWDRIVERED
 
 	if(W.tool_behaviour == TOOL_CROWBAR && deconstruction_state == SHOWCASE_SCREWDRIVERED)
 		if(W.use_tool(src, user, 20, volume=100))
-			to_chat(user, "<span class='notice'>You start to crowbar the showcase apart...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz rozbierać gablotę łomem...</span>")
 			new /obj/item/stack/sheet/iron(drop_location(), 4)
 			qdel(src)
 
@@ -135,8 +135,8 @@
 
 	switch(deconstruction_state)
 		if(SHOWCASE_CONSTRUCTED)
-			. += "The showcase is fully constructed."
+			. += "Gablota jest w pełni złożona."
 		if(SHOWCASE_SCREWDRIVERED)
-			. += "The showcase has its screws loosened."
+			. += "Gablota ma poluzowane wkręty."
 		else
-			. += "If you see this, something is wrong."
+			. += "Jeśli to widzisz, coś jest nie tak."

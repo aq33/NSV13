@@ -48,9 +48,9 @@ GLOBAL_LIST_EMPTY(knpcs)
 	var/list/outfit = list (
 		/datum/outfit/job/assistant
 	)
-	var/list/taunts = list("Engaging the enemy!")
-	var/list/call_lines = list("Enemy spotted!")
-	var/list/response_lines = list("On my way!")
+	var/list/taunts = list("Atakuję wroga!")
+	var/list/call_lines = list("Wróg w zasięgu wzroku!")
+	var/list/response_lines = list("Już idę!")
 
 /mob/living/carbon/human/ai_boarder/Initialize(mapload)
 	. = ..()
@@ -99,7 +99,7 @@ GLOBAL_LIST_EMPTY(knpcs)
 		if(istype(ID, /obj/item/card/id/syndicate) || istype(ID, /obj/item/card/id/syndicate_command) || istype(ID, /obj/item/card/id/syndi_crew))
 			if(!victim.dropItemToGround(stolen))
 				return FALSE
-			H.visible_message("<span class='warning'>[H] snatches [stolen]. </span>")
+			H.visible_message("<span class='warning'>[H] wyrywa [stolen]. </span>")
 			ID.access |= their_id.access
 	else
 		if(!victim.temporarilyRemoveItemFromInventory(stolen))
@@ -492,7 +492,7 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 	//Otherwise, is there a gun already on our person?
 	target_item = find_carried_gun(H)
 	if(target_item)
-		H.visible_message("<span class='notice'>[H] rummages around in their backpack...</span>")
+		H.visible_message("<span class='notice'>[H] grzebie w plecaku...</span>")
 		if(target_item.loc == H) //Equipped in a slot, unequip it properly first
 			H.temporarilyRemoveItemFromInventory(target_item)
 		if(H.put_in_hands(target_item))
@@ -508,7 +508,7 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 			if(istype(target_item.loc, /obj/structure/closet))
 				var/obj/structure/closet/C = target_item.loc
 				if(C.open(H))
-					H.visible_message("<span class='notice'>[H] pops open [C]...</span>")
+					H.visible_message("<span class='notice'>[H] otwiera [C]...</span>")
 			if(istype(target_item, /obj/item/gun/ballistic))
 				var/obj/item/gun/ballistic/B = target_item
 				var/obj/item/ammo_box/magazine/M = locate(B.mag_type) in oview(3, target_item)
@@ -645,7 +645,7 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 
 					var/obj/item/card/id/their_id = target.get_idcard()
 					if(their_id && !HA.stealing_id)
-						H.visible_message("<span class='warning'>[H] starts to take [their_id] from [target]!</span>")
+						H.visible_message("<span class='warning'>[H] zaczyna zabierać [their_id] z [target]!</span>")
 						HA.stealing_id = TRUE
 						addtimer(CALLBACK(HA, TYPE_PROC_REF(/datum/component/knpc, steal_id), their_id, target), 5 SECONDS)
 
@@ -655,22 +655,22 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 							if(0)
 								H.start_pulling(target, supress_message = FALSE)
 								H.setGrabState(GRAB_AGGRESSIVE)
-								H.visible_message("<span class='warning'>[H] judo throws [target]!</span>")
+								H.visible_message("<span class='warning'>[H] rzuca [target] judo!</span>")
 								playsound(get_turf(target), 'nsv13/sound/effects/judo_throw.ogg', 100, TRUE)
 								target.shake_animation(10)
 								target.throw_at(get_turf(get_step(H, pick(GLOB.cardinals))), 5, 5)
 							if(1)
 								H.do_attack_animation(target, ATTACK_EFFECT_PUNCH)
-								target.visible_message("<span class='warning'>[H] grabs [target]'s wrist and wrenches it sideways!</span>", \
-												"<span class='userdanger'>[H] grabs your wrist and violently wrenches it to the side!</span>")
+								target.visible_message("<span class='warning'>[H] chwyta [target] za nadgarstek i wykręca go w bok!</span>", \
+												"<span class='userdanger'>[H] chwyta cię za nadgarstek i gwałtownie wykręca go w bok!</span>")
 								playsound(get_turf(H), 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 								target.emote("scream")
 								target.dropItemToGround(target.get_active_held_item())
 								target.apply_damage(5, BRUTE, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
 							if(2)
 								H.do_attack_animation(target, ATTACK_EFFECT_KICK)
-								target.visible_message("<span class='warning'>[H] knees [target] in the stomach!</span>", \
-												"<span class='userdanger'>[H] winds you with a knee in the stomach!</span>")
+								target.visible_message("<span class='warning'>[H] wbija [target] kolano w brzuch!</span>", \
+												"<span class='userdanger'>[H] pozbawia cię tchu kolanem w brzuch!</span>")
 								target.audible_message("<b>[target]</b> gags!")
 								target.losebreath += 3
 
@@ -988,7 +988,7 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 	if(!boom_action) //Guh?
 		return
 	if(knpc_mob.stat == CONSCIOUS)
-		knpc_mob.say(pick("No retreat, no surrender!", "YOU WILL NEVER TAKE ME ALIVE!!", "TAKE THAT!!"), forced = "knpc AI")
+		knpc_mob.say(pick("Żadnego odwrotu, żadnej kapitulacji!", "NIGDY NIE WEŹMIECIE MNIE ŻYWCEM!!", "MASZ!!"), forced = "knpc AI")
 	boom_action.Trigger()
 
 

@@ -211,10 +211,10 @@
 
 /obj/machinery/computer/bank_machine/npc_tamper_act(mob/living/L)
 	if(siphoning)
-		say("Station credit withdrawal halted.")
+		say("Zatrzymano wypłatę kredytów stacji.")
 		end_syphon()
 	else
-		say("Siphon of station credits has begun!")
+		say("Rozpoczęło się wysysanie kredytów stacji!")
 		siphoning = TRUE
 
 /obj/machinery/computer/communications/npc_tamper_act(mob/living/L)

@@ -22,7 +22,7 @@
 	bite_consumption_mod = 0.5 // Chewing on wheat grains?
 	foodtypes = GRAIN
 	grind_results = list(/datum/reagent/consumable/flour = 0)
-	tastes = list("wheat" = 1)
+	tastes = list("pszenica" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/beer
 
 // Oat
@@ -44,7 +44,7 @@
 	bite_consumption_mod = 0.5
 	foodtypes = GRAIN
 	grind_results = list(/datum/reagent/consumable/flour = 0)
-	tastes = list("oat" = 1)
+	tastes = list("owies" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/ale
 	discovery_points = 300
 
@@ -68,7 +68,7 @@
 	bite_consumption_mod = 0.5
 	foodtypes = GRAIN
 	grind_results = list(/datum/reagent/consumable/rice = 0)
-	tastes = list("rice" = 1)
+	tastes = list("ryż" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/sake
 
 //Meatwheat - grows into synthetic meat
@@ -90,12 +90,12 @@
 	seed = /obj/item/seeds/wheat/meat
 	foodtypes = MEAT | GRAIN
 	grind_results = list(/datum/reagent/consumable/flour = 0, /datum/reagent/blood = 0)
-	tastes = list("meatwheat" = 1)
+	tastes = list("mięsopszenica" = 1)
 	can_distill = FALSE
 	discovery_points = 300
 
 /obj/item/food/grown/meatwheat/attack_self(mob/living/user)
-	user.visible_message("<span class='notice'>[user] crushes [src] into meat.</span>", "<span class='notice'>You crush [src] into something that resembles meat.</span>")
+	user.visible_message("<span class='notice'>[user] rozgniata [src] w mięso.</span>", "<span class='notice'>Rozgniatasz [src] w coś, co przypomina mięso.</span>")
 	playsound(user, 'sound/effects/blobattack.ogg', 50, 1)
 	var/obj/item/food/meat/slab/meatwheat/M = new
 	qdel(src)

@@ -117,13 +117,13 @@ GLOBAL_DATUM(battle_royale, /datum/battle_royale_controller)
 	set name = "Battle Royale"
 	set category = "Adminbus"
 	if(!(check_rights(R_FUN) || (check_rights(R_ADMIN) && SSticker.current_state == GAME_STATE_FINISHED)))
-		to_chat(src, "<span class='warning'>You do not have permission to do that! (If you don't have +FUN, wait until the round is over then you can trigger it.)</span>")
+		to_chat(src, "<span class='warning'>Nie masz do tego uprawnień! (Jeśli nie masz +FUN, poczekaj do końca rundy, wtedy możesz to uruchomić.)</span>")
 		return
 	if(GLOB.battle_royale)
-		to_chat(src, "<span class='warning'>A game is already in progress!</span>")
+		to_chat(src, "<span class='warning'>Gra już trwa!</span>")
 		return
-	if(alert(src, "ARE YOU SURE YOU ARE SURE YOU WANT TO START BATTLE ROYALE?",,"Yes","No") != "Yes")
-		to_chat(src, "<span class='notice'>oh.. ok then.. I see how it is.. :(</span>")
+	if(alert(src, "CZY NA PEWNO, ALE TO NA PEWNO, CHCESZ ROZPOCZĄĆ BATTLE ROYALE?",,"Yes","No") != "Yes")
+		to_chat(src, "<span class='notice'>aha... no dobra... już wiem, jak jest... :(</span>")
 		return
 	log_admin("[key_name(usr)] HAS TRIGGERED BATTLE ROYALE")
 	message_admins("[key_name(usr)] HAS TRIGGERED BATTLE ROYALE")
@@ -139,10 +139,10 @@ GLOBAL_DATUM(battle_royale, /datum/battle_royale_controller)
 	set name = "Battle Royale - Change wall speed"
 	set category = "Event"
 	if(!check_rights(R_ADMIN))
-		to_chat(src, "<span class='warning'>You do not have permission to do that!</span>")
+		to_chat(src, "<span class='warning'>Nie masz do tego uprawnień!</span>")
 		return
 	if(!GLOB.battle_royale)
-		to_chat(src, "<span class='warning'>No game is in progress.</span>")
+		to_chat(src, "<span class='warning'>Żadna gra nie trwa.</span>")
 		return
 	var/new_speed = input(src, "New wall delay (seconds)") as num
 	if(new_speed > 0)
@@ -154,10 +154,10 @@ GLOBAL_DATUM(battle_royale, /datum/battle_royale_controller)
 	set name = "Battle Royale - Variable Edit"
 	set category = "Event"
 	if(!check_rights(R_FUN))
-		to_chat(src, "<span class='warning'>You do not have permission to do that!</span>")
+		to_chat(src, "<span class='warning'>Nie masz do tego uprawnień!</span>")
 		return
 	if(!GLOB.battle_royale)
-		to_chat(src, "<span class='warning'>No game is in progress.</span>")
+		to_chat(src, "<span class='warning'>Żadna gra nie trwa.</span>")
 		return
 	debug_variables(GLOB.battle_royale)
 
@@ -165,10 +165,10 @@ GLOBAL_DATUM(battle_royale, /datum/battle_royale_controller)
 	set name = "Battle Royale - Spawn Loot Drop (Minor)"
 	set category = "Event"
 	if(!check_rights(R_FUN))
-		to_chat(src, "<span class='warning'>You do not have permission to do that!</span>")
+		to_chat(src, "<span class='warning'>Nie masz do tego uprawnień!</span>")
 		return
 	if(!GLOB.battle_royale)
-		to_chat(src, "<span class='warning'>No game is in progress.</span>")
+		to_chat(src, "<span class='warning'>Żadna gra nie trwa.</span>")
 		return
 	GLOB.battle_royale.generate_good_drop()
 	log_admin("[key_name(usr)] generated a battle royale drop.")
@@ -178,10 +178,10 @@ GLOBAL_DATUM(battle_royale, /datum/battle_royale_controller)
 	set name = "Battle Royale - Spawn Loot Drop (Major)"
 	set category = "Event"
 	if(!check_rights(R_FUN))
-		to_chat(src, "<span class='warning'>You do not have permission to do that!</span>")
+		to_chat(src, "<span class='warning'>Nie masz do tego uprawnień!</span>")
 		return
 	if(!GLOB.battle_royale)
-		to_chat(src, "<span class='warning'>No game is in progress.</span>")
+		to_chat(src, "<span class='warning'>Żadna gra nie trwa.</span>")
 		return
 	GLOB.battle_royale.generate_endgame_drop()
 	log_admin("[key_name(usr)] generated a good battle royale drop.")
@@ -228,10 +228,10 @@ GLOBAL_DATUM(battle_royale, /datum/battle_royale_controller)
 			continue
 		var/turf/T = get_turf(M)
 		if(T.x > 128 + radius || T.x < 128 - radius || T.y > 128 + radius || T.y < 128 - radius)
-			to_chat(M, "<span class='warning'>You have left the zone!</span>")
+			to_chat(M, "<span class='warning'>Opuściłeś strefę!</span>")
 			M.gib()
 		if(!SSmapping.level_trait(T.z, ZTRAIT_STATION) && !SSmapping.level_trait(T.z, ZTRAIT_RESERVED))
-			to_chat(M, "<span class='warning'>You have left the z-level!</span>")
+			to_chat(M, "<span class='warning'>Opuściłeś poziom z!</span>")
 			M.gib()
 		living_victims++
 		winner = M
@@ -266,7 +266,7 @@ GLOBAL_DATUM(battle_royale, /datum/battle_royale_controller)
 		if(check_rights_for(C, R_ADMIN))
 			C.add_verb(BATTLE_ROYALE_AVERBS)
 	toggle_ooc(FALSE)
-	to_chat(world, "<span class='ratvar'><font size=24>Battle Royale will begin soon...</span></span>")
+	to_chat(world, "<span class='ratvar'><font size=24>Battle Royale wkrótce się zacznie...</span></span>")
 	//Stop new player joining
 	GLOB.enter_allowed = FALSE
 
@@ -275,7 +275,7 @@ GLOBAL_DATUM(battle_royale, /datum/battle_royale_controller)
 
 	world.update_status()
 	if(SSticker.current_state < GAME_STATE_PREGAME)
-		to_chat(world, "<span class=boldannounce>Battle Royale: Waiting for server to be ready...</span>")
+		to_chat(world, "<span class=boldannounce>Battle Royale: czekanie, aż serwer będzie gotowy...</span>")
 		SSticker.start_immediately = FALSE
 		UNTIL(SSticker.current_state >= GAME_STATE_PREGAME)
 		to_chat(world, "<span class=boldannounce>Battle Royale: Done!</span>")
@@ -283,7 +283,7 @@ GLOBAL_DATUM(battle_royale, /datum/battle_royale_controller)
 	if(SSticker.current_state == GAME_STATE_PREGAME)
 		//Force people to be not ready and start the game
 		for(var/mob/dead/new_player/player in GLOB.player_list)
-			to_chat(player, "<span class=greenannounce>You have been forced as an observer. When the prompt to join battle royale comes up, press yes. This is normal and you are still in queue to play.</span>")
+			to_chat(player, "<span class=greenannounce>Zostałeś przymusowo zmieniony w obserwatora. Gdy pojawi się pytanie o dołączenie do Battle Royale, naciśnij Tak. To normalne i nadal jesteś w kolejce do gry.</span>")
 			player.ready = FALSE
 			player.make_me_an_observer(TRUE)
 		to_chat(world, "<span class='boldannounce'>Battle Royale: Force-starting game.</span>")
@@ -296,13 +296,13 @@ GLOBAL_DATUM(battle_royale, /datum/battle_royale_controller)
 		qdel(M)
 		CHECK_TICK
 	sleep(50)
-	to_chat(world, "<span class='greenannounce'>Battle Royale: STARTING IN 30 SECONDS.</span>")
-	to_chat(world, "<span class='greenannounce'><i>If you are on the main menu, observe immediately to sign up. (You will be prompted in 30 seconds.)</i></span>")
+	to_chat(world, "<span class='greenannounce'>Battle Royale: START ZA 30 SEKUND.</span>")
+	to_chat(world, "<span class='greenannounce'><i>Jeśli jesteś w menu głównym, natychmiast zacznij obserwować, by się zapisać. (Pytanie pojawi się za 30 sekund.)</i></span>")
 	toggle_ooc(TRUE)
 	sleep(300)
 	toggle_ooc(FALSE)
-	to_chat(world, "<span class='boldannounce'>Battle Royale: STARTING IN 5 SECONDS.</span>")
-	to_chat(world, "<span class='greenannounce'>Make sure to hit yes to the sign up message given to all observing players.</span>")
+	to_chat(world, "<span class='boldannounce'>Battle Royale: START ZA 5 SEKUND.</span>")
+	to_chat(world, "<span class='greenannounce'>Pamiętaj, by kliknąć Tak w wiadomości o zapisach wysłanej do wszystkich obserwatorów.</span>")
 	sleep(50)
 	to_chat(world, "<span class='boldannounce'>Battle Royale: Starting game.</span>")
 	titanfall()
@@ -322,7 +322,7 @@ GLOBAL_DATUM(battle_royale, /datum/battle_royale_controller)
 	START_PROCESSING(SSprocessing, src)
 
 /datum/battle_royale_controller/proc/titanfall()
-	var/list/participants = pollGhostCandidates("Would you like to partake in BATTLE ROYALE?")
+	var/list/participants = pollGhostCandidates("Czy chcesz wziąć udział w BATTLE ROYALE?")
 	var/turf/spawn_turf = get_safe_random_station_turfs()
 	var/obj/structure/closet/supplypod/centcompod/pod = new()
 	pod.setStyle()
@@ -344,11 +344,11 @@ GLOBAL_DATUM(battle_royale, /datum/battle_royale_controller)
 		var/obj/item/implant/weapons_auth/W = new
 		W.implant(H)
 		players += H
-		to_chat(M, "<span class='notice'>You have been given knock and pacifism for 30 seconds.</span>")
+		to_chat(M, "<span class='notice'>Na 30 sekund otrzymujesz knock i pacyfizm.</span>")
 	new /obj/effect/pod_landingzone(spawn_turf, pod)
 	SEND_SOUND(world, sound('sound/misc/airraid.ogg'))
-	to_chat(world, "<span class='boldannounce'>A 30 second grace period has been established. Good luck.</span>")
-	to_chat(world, "<span class='boldannounce'>WARNING: YOU WILL BE GIBBED IF YOU LEAVE THE STATION Z-LEVEL!</span>")
+	to_chat(world, "<span class='boldannounce'>Ustanowiono 30-sekundowy okres ochronny. Powodzenia.</span>")
+	to_chat(world, "<span class='boldannounce'>OSTRZEŻENIE: JEŚLI OPUŚCISZ POZIOM Z STACJI, ZOSTANIESZ ROZERWANY NA STRZĘPY!</span>")
 	to_chat(world, "<span class='boldannounce'>[players.len] people remain...</span>")
 
 	//Start processing our world events
@@ -379,7 +379,7 @@ GLOBAL_DATUM(battle_royale, /datum/battle_royale_controller)
 
 /datum/battle_royale_controller/proc/generate_endgame_drop()
 	var/obj/item = pick(GLOB.battle_royale_insane_loot)
-	send_item(item, announce = "We found a weird looking package in the back of our warehouse. We have no idea what is in it, but it is marked as incredibily dangerous and could be a superweapon.", force_time = 600)
+	send_item(item, announce = "Z tyłu magazynu znaleźliśmy dziwnie wyglądającą paczkę. Nie mamy pojęcia, co jest w środku, ale jest oznaczona jako niezwykle niebezpieczna i może to być superbroń.", force_time = 600)
 
 /datum/battle_royale_controller/proc/send_item(item_path, style = STYLE_BOX, announce=FALSE, force_time = 0)
 	if(!item_path)
@@ -420,13 +420,13 @@ GLOBAL_DATUM(battle_royale, /datum/battle_royale_controller)
 	if(isliving(AM))
 		var/mob/living/M = AM
 		INVOKE_ASYNC(M, TYPE_PROC_REF(/mob/living/carbon, gib))
-		to_chat(M, "<span class='warning'>You left the zone!</span>")
+		to_chat(M, "<span class='warning'>Opuściłeś strefę!</span>")
 
 /obj/effect/death_wall/Moved(atom/OldLoc, Dir)
 	. = ..()
 	for(var/mob/living/M in get_turf(src))
 		M.gib()
-		to_chat(M, "<span class='warning'>You left the zone!</span>")
+		to_chat(M, "<span class='warning'>Opuściłeś strefę!</span>")
 
 /obj/effect/death_wall/proc/set_center(turf/center)
 	center_turf = center

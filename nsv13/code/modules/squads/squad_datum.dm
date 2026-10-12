@@ -57,7 +57,7 @@
 
 /datum/squad/proc/broadcast(mob/living/carbon/human/sender, message, list/sounds)
 	if(length(message) > squad_channel.max_message_length)
-		to_chat(usr, "<span class='warning'>Your message \"[message]\" of [length(message)] characters exceeded maximum length of [squad_channel.max_message_length].</span>")
+		to_chat(usr, "<span class='warning'>Twoja wiadomość \"[message]\" ma [length(message)] znaków i przekracza maksymalną długość [squad_channel.max_message_length].</span>")
 		return FALSE
 	squad_channel.send_message(sender, message, sounds)
 
@@ -97,7 +97,7 @@
 	equip(H, give_items)
 	handle_hud(H, TRUE)
 
-	to_chat(H, "<span class='sciradio'>You are a member of [name] squad! \n[desc] \n[primary_objective]</span>")
+	to_chat(H, "<span class='sciradio'>Jesteś członkiem drużyny [name]! \n[desc] \n[primary_objective]</span>")
 	to_chat(H, "<span class='sciradio'>[primary_objective]</span>")
 	if(secondary_objective)
 		to_chat(H, "<span class='sciradio'>[secondary_objective]</span>")
@@ -144,7 +144,7 @@
 	leader = H
 	if(!(LAZYFIND(members, H)))
 		add_member(H)
-	to_chat(H, "<span class='sciradio'>You are the squad leader of [name] Squad!. You have authority over the members of this squadron, and may direct them as you see fit. In general, you should use your squad members to help you repair damaged areas during general quarters</span>")
+	to_chat(H, "<span class='sciradio'>Jesteś dowódcą drużyny [name]! Masz władzę nad członkami tej drużyny i możesz nimi kierować według uznania. Zasadniczo podczas alarmu bojowego powinieneś wykorzystywać członków drużyny do pomocy w naprawie uszkodzonych obszarów</span>")
 	broadcast(src,"[leader.name] assigned as squad leader.", list('nsv13/sound/effects/notice2.ogg'))
 
 /datum/squad/proc/unset_leader(mob/living/carbon/human/H)
@@ -152,7 +152,7 @@
 		return
 	if(!H && leader) //No leader passed in but we need to demote the current one
 		H = leader
-	to_chat(H, "<span class='warning'>You have been demoted from your position as [name] Squad Lead.</span>")
+	to_chat(H, "<span class='warning'>Zostajesz zdegradowany ze stanowiska dowódcy drużyny [name].</span>")
 	broadcast(src,"[H] demoted from squad lead.", list('nsv13/sound/effects/notice2.ogg'))
 	leader = null
 

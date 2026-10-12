@@ -25,8 +25,8 @@
 	user.do_attack_animation(M)
 	M.apply_effect(EFFECT_STUTTER, 5)
 
-	M.visible_message("<span class='danger'>[user] has prodded [M] with [src]!</span>", \
-					"<span class='userdanger'>[user] has prodded you with [src]!</span>")
+	M.visible_message("<span class='danger'>[user] szturcha [M] za pomocą [src]!</span>", \
+					"<span class='userdanger'>[user] szturcha cię [src]!</span>")
 
 	playsound(loc, 'sound/weapons/egloves.ogg', 50, 1, -1)
 
@@ -56,13 +56,13 @@
 			mode = 0
 	switch(mode)
 		if(0)
-			to_chat(user, "Power reset. Hugs!")
+			to_chat(user, "Reset mocy. Przytulasy!")
 		if(1)
-			to_chat(user, "Power increased!")
+			to_chat(user, "Moc zwiększona!")
 		if(2)
-			to_chat(user, "BZZT. Electrifying arms...")
+			to_chat(user, "BZZT. Elektryzowanie ramion...")
 		if(3)
-			to_chat(user, "ERROR: ARM ACTUATORS OVERLOADED.")
+			to_chat(user, "BŁĄD: PRZECIĄŻENIE SIŁOWNIKÓW RAMION.")
 
 /obj/item/borg/cyborghug/attack(mob/living/M, mob/living/silicon/robot/user)
 	if(M == user)
@@ -71,58 +71,58 @@
 		if(0)
 			if(M.health >= 0)
 				if(user.zone_selected == BODY_ZONE_HEAD)
-					user.visible_message("<span class='notice'>[user] playfully boops [M] on the head!</span>", \
-									"<span class='notice'>You playfully boop [M] on the head!</span>")
+					user.visible_message("<span class='notice'>[user] żartobliwie pstryka [M] w głowę!</span>", \
+									"<span class='notice'>Żartobliwie pstrykasz [M] w głowę!</span>")
 					user.do_attack_animation(M, ATTACK_EFFECT_BOOP)
 					playsound(loc, 'sound/weapons/tap.ogg', 50, 1, -1)
 				else if(ishuman(M))
 					if(!(user.mobility_flags & MOBILITY_STAND))
-						user.visible_message("<span class='notice'>[user] shakes [M] trying to get [M.p_them()] up!</span>", \
-										"<span class='notice'>You shake [M] trying to get [M.p_them()] up!</span>")
+						user.visible_message("<span class='notice'>[user] potrząsa [M], próbując go podnieść!</span>", \
+										"<span class='notice'>Potrząsasz [M], próbując go podnieść!</span>")
 					else
-						user.visible_message("<span class='notice'>[user] hugs [M] to make [M.p_them()] feel better!</span>", \
-								"<span class='notice'>You hug [M] to make [M.p_them()] feel better!</span>")
+						user.visible_message("<span class='notice'>[user] przytula [M], żeby poczuł się lepiej!</span>", \
+								"<span class='notice'>Przytulasz [M], żeby poczuł się lepiej!</span>")
 					if(M.resting)
 						M.set_resting(FALSE, TRUE)
 				else
 					user.visible_message("<span class='notice'>[user] pets [M]!</span>", \
-							"<span class='notice'>You pet [M]!</span>")
+							"<span class='notice'>Głaszczesz [M]!</span>")
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 		if(1)
 			if(M.health >= 0)
 				if(ishuman(M))
 					if(!(M.mobility_flags & MOBILITY_STAND))
-						user.visible_message("<span class='notice'>[user] shakes [M] trying to get [M.p_them()] up!</span>", \
-										"<span class='notice'>You shake [M] trying to get [M.p_them()] up!</span>")
+						user.visible_message("<span class='notice'>[user] potrząsa [M], próbując go podnieść!</span>", \
+										"<span class='notice'>Potrząsasz [M], próbując go podnieść!</span>")
 					else if(user.zone_selected == BODY_ZONE_HEAD)
-						user.visible_message("<span class='warning'>[user] bops [M] on the head!</span>", \
-										"<span class='warning'>You bop [M] on the head!</span>")
+						user.visible_message("<span class='warning'>[user] pstryka [M] w głowę!</span>", \
+										"<span class='warning'>Pstrykasz [M] w głowę!</span>")
 						user.do_attack_animation(M, ATTACK_EFFECT_PUNCH)
 					else
-						user.visible_message("<span class='warning'>[user] hugs [M] in a firm bear-hug! [M] looks uncomfortable...</span>", \
-								"<span class='warning'>You hug [M] firmly to make [M.p_them()] feel better! [M] looks uncomfortable...</span>")
+						user.visible_message("<span class='warning'>[user] mocno przytula [M] w niedźwiedzim uścisku! [M] wygląda na skrępowanego...</span>", \
+								"<span class='warning'>Mocno przytulasz [M], żeby poczuł się lepiej! [M] wygląda na skrępowanego...</span>")
 					if(M.resting)
 						M.set_resting(FALSE, TRUE)
 				else
-					user.visible_message("<span class='warning'>[user] bops [M] on the head!</span>", \
-							"<span class='warning'>You bop [M] on the head!</span>")
+					user.visible_message("<span class='warning'>[user] pstryka [M] w głowę!</span>", \
+							"<span class='warning'>Pstrykasz [M] w głowę!</span>")
 				playsound(loc, 'sound/weapons/tap.ogg', 50, 1, -1)
 		if(2)
 			if(scooldown < world.time)
 				if(M.health >= 0)
 					if(ishuman(M)||ismonkey(M))
 						M.electrocute_act(5, "[user]", safety = 1)
-						user.visible_message("<span class='userdanger'>[user] electrocutes [M] with [user.p_their()] touch!</span>", \
-							"<span class='danger'>You electrocute [M] with your touch!</span>")
+						user.visible_message("<span class='userdanger'>[user] razi [M] prądem dotykiem!</span>", \
+							"<span class='danger'>Razisz [M] prądem dotykiem!</span>")
 						M.update_mobility()
 					else
 						if(!iscyborg(M))
 							M.adjustFireLoss(10)
 							user.visible_message("<span class='userdanger'>[user] shocks [M]!</span>", \
-								"<span class='danger'>You shock [M]!</span>")
+								"<span class='danger'>Razisz [M] prądem!</span>")
 						else
-							user.visible_message("<span class='userdanger'>[user] shocks [M]. It does not seem to have an effect</span>", \
-								"<span class='danger'>You shock [M] to no effect.</span>")
+							user.visible_message("<span class='userdanger'>[user] razi [M] prądem. Nie wydaje się to mieć efektu</span>", \
+								"<span class='danger'>Razisz [M] prądem, bez efektu.</span>")
 					playsound(loc, 'sound/effects/sparks2.ogg', 50, 1, -1)
 					user.cell.charge -= 500
 					scooldown = world.time + 20
@@ -130,11 +130,11 @@
 			if(ccooldown < world.time)
 				if(M.health >= 0)
 					if(ishuman(M))
-						user.visible_message("<span class='userdanger'>[user] crushes [M] in [user.p_their()] grip!</span>", \
-							"<span class='danger'>You crush [M] in your grip!</span>")
+						user.visible_message("<span class='userdanger'>[user] miażdży [M] w uścisku!</span>", \
+							"<span class='danger'>Miażdżysz [M] w uścisku!</span>")
 					else
 						user.visible_message("<span class='userdanger'>[user] crushes [M]!</span>", \
-								"<span class='danger'>You crush [M]!</span>")
+								"<span class='danger'>Miażdżysz [M]!</span>")
 					playsound(loc, 'sound/weapons/smash.ogg', 50, 1, -1)
 					M.adjustBruteLoss(15)
 					user.cell.charge -= 300
@@ -169,7 +169,7 @@
 		mode = MODE_CHARGE
 	else
 		mode = MODE_DRAW
-	balloon_alert(user, "You toggle [src] to [mode] mode")
+	balloon_alert(user, "Przełączasz [src] w tryb: [mode]")
 	update_icon()
 
 /obj/item/borg/charger/afterattack(obj/item/target, mob/living/silicon/robot/user, proximity_flag)
@@ -178,9 +178,9 @@
 		return
 	if(active)
 		if(mode == MODE_DRAW)
-			to_chat(user, "<span class='warning'>You're already drawing power from something!</span>")
+			to_chat(user, "<span class='warning'>Już pobierasz energię z czegoś!</span>")
 		else
-			to_chat(user, "<span class='warning'>You're already charging something!</span>")
+			to_chat(user, "<span class='warning'>Już coś ładujesz!</span>")
 		return
 
 	if(mode == MODE_DRAW)
@@ -188,10 +188,10 @@
 			var/obj/machinery/M = target
 
 			if((M.machine_stat & (NOPOWER|BROKEN)) || !M.anchored)
-				to_chat(user, "<span class='warning'>[M] is unpowered!</span>")
+				to_chat(user, "<span class='warning'>[M] nie ma zasilania!</span>")
 				return
 
-			to_chat(user, "<span class='notice'>You connect to [M]'s power line...</span>")
+			to_chat(user, "<span class='notice'>Podłączasz się do linii zasilania [M]...</span>")
 			active = TRUE
 
 			powerdraw_loop(user, M)
@@ -201,20 +201,20 @@
 			if(!istype(cell))
 				cell = locate(/obj/item/stock_parts/cell) in target
 			if(!cell)
-				to_chat(user, "<span class='warning'>[target] has no power cell!</span>")
+				to_chat(user, "<span class='warning'>[target] nie ma ogniwa zasilającego!</span>")
 				return
 
 			if(istype(target, /obj/item/gun/energy))
 				var/obj/item/gun/energy/E = target
 				if(!E.can_charge)
-					to_chat(user, "<span class='warning'>[target] has no power port!</span>")
+					to_chat(user, "<span class='warning'>[target] nie ma portu zasilania!</span>")
 					return
 
 			if(!cell.charge)
-				to_chat(user, "<span class='warning'>[target] has no power!</span>")
+				to_chat(user, "<span class='warning'>[target] nie ma zasilania!</span>")
 				return
 
-			to_chat(user, "<span class='notice'>You connect to [target]'s power port...</span>")
+			to_chat(user, "<span class='notice'>Podłączasz się do portu zasilania [target]...</span>")
 			active = TRUE
 
 			powerdraw_loop(user, target, cell)
@@ -222,27 +222,27 @@
 	else
 		if(is_type_in_list(target, charge_items))
 			if(user.cell.charge <= cyborg_minimum_charge) //leave them a bit
-				to_chat(user, "<span class='warning'>You don't have enough power to charge [target]!</span>")
+				to_chat(user, "<span class='warning'>Masz za mało energii, by naładować [target]!</span>")
 				return
 
 			var/obj/item/stock_parts/cell/cell = target
 			if(!istype(cell))
 				cell = locate(/obj/item/stock_parts/cell) in target
 			if(!cell)
-				to_chat(user, "<span class='warning'>[target] has no power cell!</span>")
+				to_chat(user, "<span class='warning'>[target] nie ma ogniwa zasilającego!</span>")
 				return
 
 			if(istype(target, /obj/item/gun/energy))
 				var/obj/item/gun/energy/E = target
 				if(!E.can_charge)
-					to_chat(user, "<span class='warning'>[target] has no power port!</span>")
+					to_chat(user, "<span class='warning'>[target] nie ma portu zasilania!</span>")
 					return
 
 			if(cell.charge >= cell.maxcharge)
-				to_chat(user, "<span class='warning'>[target] is already fully charged!</span>")
+				to_chat(user, "<span class='warning'>[target] jest już w pełni naładowany!</span>")
 				return
 
-			to_chat(user, "<span class='notice'>You connect to [target]'s power port...</span>")
+			to_chat(user, "<span class='notice'>Podłączasz się do portu zasilania [target]...</span>")
 			active = TRUE
 
 			charging_loop(user, target, cell)
@@ -274,16 +274,16 @@
 			target.update_icon()
 
 			if(!cell.charge)
-				to_chat(user, "<span class='warning'>[target] has no power!</span>")
+				to_chat(user, "<span class='warning'>[target] nie ma zasilania!</span>")
 				active = FALSE
 				return
 
 			if(user.cell.charge == user.cell.maxcharge)
-				to_chat(user, "<span class='notice'>You finish charging from [target].</span>")
+				to_chat(user, "<span class='notice'>Kończysz ładowanie z [target].</span>")
 				active = FALSE
 				return
 
-		to_chat(user, "<span class='notice'>You stop drawing power from [target].</span>")
+		to_chat(user, "<span class='notice'>Przestajesz pobierać energię z [target].</span>")
 		active = FALSE
 	else
 		var/obj/machinery/M = target
@@ -305,11 +305,11 @@
 			M.use_power(200)
 
 			if(user.cell.charge == user.cell.maxcharge)
-				to_chat(user, "<span class='notice'>You finish charging from [target].</span>")
+				to_chat(user, "<span class='notice'>Kończysz ładowanie z [target].</span>")
 				active = FALSE
 				return
 
-		to_chat(user, "<span class='notice'>You stop charging yourself.</span>")
+		to_chat(user, "<span class='notice'>Przestajesz się ładować.</span>")
 		active = FALSE
 
 /obj/item/borg/charger/proc/charging_loop(mob/living/silicon/robot/user, atom/target, obj/item/stock_parts/cell/cell)
@@ -330,7 +330,7 @@
 
 		var/draw = min(max(user.cell.charge - cyborg_minimum_charge, 0), cell.chargerate*0.5, cell.maxcharge-cell.charge)
 		if(!draw)
-			to_chat(user, "<span class='warning'>Safeties prevent you from going under [cyborg_minimum_charge] charge!</span>")
+			to_chat(user, "<span class='warning'>Zabezpieczenia nie pozwalają ci zejść poniżej [cyborg_minimum_charge] ładunku!</span>")
 			active = FALSE
 			return
 
@@ -343,16 +343,16 @@
 		target.update_icon()
 
 		if(cell.charge == cell.maxcharge)
-			to_chat(user, "<span class='notice'>You finish charging [target].</span>")
+			to_chat(user, "<span class='notice'>Kończysz ładować [target].</span>")
 			active = FALSE
 			return
 
 		if(user.cell.charge <= cyborg_minimum_charge) //leave them a bit
-			to_chat(user, "<span class='warning'>You don't have enough power to continue charging [target]!</span>")
+			to_chat(user, "<span class='warning'>Masz za mało energii, by dalej ładować [target]!</span>")
 			active = FALSE
 			return
 
-	to_chat(user, "<span class='notice'>You stop charging [target].</span>")
+	to_chat(user, "<span class='notice'>Przestajesz ładować [target].</span>")
 	active = FALSE
 
 /obj/item/borg/charger/proc/mode_check()
@@ -371,39 +371,39 @@
 /obj/item/harmalarm/emag_act(mob/user)
 	obj_flags ^= EMAGGED
 	if(obj_flags & EMAGGED)
-		to_chat(user, "<font color='red'>You short out the safeties on [src]!</font>")
+		to_chat(user, "<font color='red'>Zwierasz zabezpieczenia [src]!</font>")
 	else
-		to_chat(user, "<font color='red'>You reset the safeties on [src]!</font>")
+		to_chat(user, "<font color='red'>Resetujesz zabezpieczenia [src]!</font>")
 
 /obj/item/harmalarm/attack_self(mob/user)
 	var/safety = !(obj_flags & EMAGGED)
 	if(cooldown > world.time)
-		to_chat(user, "<font color='red'>The device is still recharging!</font>")
+		to_chat(user, "<font color='red'>Urządzenie wciąż się ładuje!</font>")
 		return
 
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/R = user
 		if(!R.cell || R.cell.charge < 1200)
-			to_chat(user, "<font color='red'>You don't have enough charge to do this!</font>")
+			to_chat(user, "<font color='red'>Masz za mało ładunku, by to zrobić!</font>")
 			return
 		R.cell.charge -= 1000
 		if(R.emagged)
 			safety = FALSE
 
 	if(safety == TRUE)
-		user.visible_message("<font color='red' size='2'>[user] blares out a near-deafening siren from its speakers!</font>", \
-			"<span class='userdanger'>The siren pierces your hearing and confuses you!</span>", \
-			"<span class='danger'>The siren pierces your hearing!</span>")
+		user.visible_message("<font color='red' size='2'>[user] wydaje z głośników niemal ogłuszającą syrenę!</font>", \
+			"<span class='userdanger'>Syrena przeszywa ci uszy i dezorientuje cię!</span>", \
+			"<span class='danger'>Syrena przeszywa ci uszy!</span>")
 		for(var/mob/living/carbon/M in hearers(9, user))
 			if(M.get_ear_protection() == FALSE)
 				M.confused += 6
-		audible_message("<font color='red' size='7'>HUMAN HARM</font>")
+		audible_message("<font color='red' size='7'>KRZYWDA LUDZI</font>")
 		playsound(get_turf(src), 'sound/ai/harmalarm.ogg', 70, 3)
 		cooldown = world.time + 200
 		log_game("[key_name(user)] used a Cyborg Harm Alarm in [AREACOORD(user)]")
 		if(iscyborg(user))
 			var/mob/living/silicon/robot/R = user
-			to_chat(R.connected_ai, "<br><span class='notice'>NOTICE - Peacekeeping 'HARM ALARM' used by: [user]</span><br>")
+			to_chat(R.connected_ai, "<br><span class='notice'>UWAGA - [user] użył „ALARMU KRZYWDY” modułu pokojowego</span><br>")
 
 		return
 
@@ -469,7 +469,7 @@
 
 /obj/item/borg/lollipop/proc/dispense(atom/A, mob/user)
 	if(candy <= 0)
-		to_chat(user, "<span class='warning'>No treats left in storage!</span>")
+		to_chat(user, "<span class='warning'>W schowku nie ma już smakołyków!</span>")
 		return FALSE
 	var/turf/T = get_turf(A)
 	if(!T || !istype(T) || !isopenturf(T))
@@ -498,16 +498,16 @@
 	check_amount()
 
 	if(into_hands)
-		user.visible_message("<span class='notice'>[user] dispenses a treat into the hands of [A].</span>", "<span class='notice'>You dispense a treat into the hands of [A].</span>", "<span class='italics'>You hear a click.</span>")
+		user.visible_message("<span class='notice'>[user] wydaje smakołyk do rąk [A].</span>", "<span class='notice'>Wydajesz smakołyk do rąk [A].</span>", "<span class='italics'>Słyszysz kliknięcie.</span>")
 	else
-		user.visible_message("<span class='notice'>[user] dispenses a treat.</span>", "<span class='notice'>You dispense a treat.</span>", "<span class='italics'>You hear a click.</span>")
+		user.visible_message("<span class='notice'>[user] dispenses a treat.</span>", "<span class='notice'>Wydajesz smakołyk.</span>", "<span class='italics'>Słyszysz kliknięcie.</span>")
 
 	playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
 	return TRUE
 
 /obj/item/borg/lollipop/proc/shootL(atom/target, mob/living/user, params)
 	if(candy <= 0)
-		to_chat(user, "<span class='warning'>Not enough lollipops left!</span>")
+		to_chat(user, "<span class='warning'>Za mało lizaków!</span>")
 		return FALSE
 	candy--
 	var/obj/item/ammo_casing/caseless/lollipop/A = new /obj/item/ammo_casing/caseless/lollipop(src)
@@ -517,12 +517,12 @@
 	A.BB.speed = 0.5
 	playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
 	A.fire_casing(target, user, params, 0, 0, null, 0, 1, src)
-	user.visible_message("<span class='warning'>[user] blasts a flying lollipop at [target]!</span>")
+	user.visible_message("<span class='warning'>[user] wystrzeliwuje latającego lizaka w [target]!</span>")
 	check_amount()
 
 /obj/item/borg/lollipop/proc/shootG(atom/target, mob/living/user, params)	//Most certainly a good idea.
 	if(candy <= 0)
-		to_chat(user, "<span class='warning'>Not enough gumballs left!</span>")
+		to_chat(user, "<span class='warning'>Za mało gum do żucia!</span>")
 		return FALSE
 	candy--
 	var/obj/item/ammo_casing/caseless/gumball/A = new /obj/item/ammo_casing/caseless/gumball(src)
@@ -533,7 +533,7 @@
 	A.BB.color = rgb(rand(0, 255), rand(0, 255), rand(0, 255))
 	playsound(src.loc, 'sound/weapons/bulletflyby3.ogg', 50, 1)
 	A.fire_casing(target, user, params, 0, 0, null, 0, 1, src)
-	user.visible_message("<span class='warning'>[user] shoots a high-velocity gumball at [target]!</span>")
+	user.visible_message("<span class='warning'>[user] wystrzeliwuje szybką gumę do żucia w [target]!</span>")
 	check_amount()
 
 /obj/item/borg/lollipop/afterattack(atom/target, mob/living/user, proximity, click_params)
@@ -542,7 +542,7 @@
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/R = user
 		if(!R.cell.use(12))
-			to_chat(user, "<span class='warning'>Not enough power.</span>")
+			to_chat(user, "<span class='warning'>Za mało energii.</span>")
 			return FALSE
 		if(R.emagged)
 			hitdamage = emaggedhitdamage
@@ -561,16 +561,16 @@
 	switch(mode)
 		if(DISPENSE_LOLLIPOP_MODE)
 			mode = THROW_LOLLIPOP_MODE
-			to_chat(user, "<span class='notice'>Module is now throwing lollipops.</span>")
+			to_chat(user, "<span class='notice'>Moduł rzuca teraz lizakami.</span>")
 		if(THROW_LOLLIPOP_MODE)
 			mode = THROW_GUMBALL_MODE
-			to_chat(user, "<span class='notice'>Module is now blasting gumballs.</span>")
+			to_chat(user, "<span class='notice'>Moduł strzela teraz gumami do żucia.</span>")
 		if(THROW_GUMBALL_MODE)
 			mode = DISPENSE_ICECREAM_MODE
-			to_chat(user, "<span class='notice'>Module is now dispensing ice cream.</span>")
+			to_chat(user, "<span class='notice'>Moduł wydaje teraz lody.</span>")
 		if(DISPENSE_ICECREAM_MODE)
 			mode = DISPENSE_LOLLIPOP_MODE
-			to_chat(user, "<span class='notice'>Module is now dispensing lollipops.</span>")
+			to_chat(user, "<span class='notice'>Moduł wydaje teraz lizaki.</span>")
 	..()
 
 #undef DISPENSE_LOLLIPOP_MODE
@@ -672,14 +672,14 @@
 
 /obj/item/borg/projectile_dampen/attack_self(mob/user)
 	if(cycle_delay > world.time)
-		to_chat(user, "<span class='boldwarning'>[src] is still recycling its projectors!</span>")
+		to_chat(user, "<span class='boldwarning'>[src] wciąż odnawia swoje projektory!</span>")
 		return
 	cycle_delay = world.time + PKBORG_DAMPEN_CYCLE_DELAY
 	if(!active)
 		if(!user.has_buckled_mobs())
 			activate_field()
 		else
-			to_chat(user, "<span class='warning'>[src]'s safety cutoff prevents you from activating it due to living beings being ontop of you!</span>")
+			to_chat(user, "<span class='warning'>Odcięcie bezpieczeństwa [src] nie pozwala go aktywować, bo na tobie są żywe istoty!</span>")
 	else
 		deactivate_field()
 	update_icon()
@@ -699,7 +699,7 @@
 
 /obj/item/borg/projectile_dampen/proc/deactivate_field()
 	QDEL_NULL(dampening_field)
-	visible_message("<span class='warning'>\The [src] shuts off!</span>")
+	visible_message("<span class='warning'>[src] się wyłącza!</span>")
 	for(var/P in tracked)
 		restore_projectile(P)
 	active = FALSE
@@ -748,7 +748,7 @@
 	energy = CLAMP(energy - usage, 0, maxenergy)
 	if(energy <= 0)
 		deactivate_field()
-		visible_message("<span class='warning'>[src] blinks \"ENERGY DEPLETED\".</span>")
+		visible_message("<span class='warning'>[src] wyświetla \"ENERGIA WYCZERPANA\".</span>")
 
 /obj/item/borg/projectile_dampen/proc/process_recharge(delta_time)
 	if(!istype(host))
@@ -943,13 +943,13 @@
 	. = ..()
 	if(stored)
 		var/obj/item/reagent_containers/C = stored
-		. += "The apparatus currently has [C] secured, which contains:"
+		. += "Urządzenie trzyma obecnie [C], zawierającą:"
 		if(length(C.reagents.reagent_list))
 			for(var/datum/reagent/R in C.reagents.reagent_list)
-				. += "[R.volume] units of [R.name]"
+				. += "[R.volume] j. [R.name]"
 		else
-			. += "Nothing."
-		. += "<span class='notice'<i>Alt-click</i> will drop the currently stored [stored].</span>"
+			. += "Nic."
+		. += "<span class='notice'<i>Alt-klik</i> upuści obecnie przechowywany [stored].</span>"
 
 /obj/item/borg/apparatus/beaker/update_icon()
 	cut_overlays()
@@ -973,7 +973,7 @@
 	if(stored && !user.client?.keys_held["Alt"] && user.a_intent != "help")
 		var/obj/item/reagent_containers/C = stored
 		C.SplashReagents(get_turf(user))
-		loc.visible_message("<span class='notice'>[user] spills the contents of the [C] all over the floor.</span>")
+		loc.visible_message("<span class='notice'>[user] wylewa zawartość [C] na podłogę.</span>")
 		return
 	. = ..()
 
@@ -1018,13 +1018,13 @@
 /obj/item/borg/apparatus/circuit/examine()
 	. = ..()
 	if(stored)
-		. += "The apparatus currently has [stored] secured."
-		. += "<span class='notice'<i>Alt-click</i> will drop the currently stored [stored].</span>"
+		. += "Urządzenie trzyma obecnie [stored]."
+		. += "<span class='notice'<i>Alt-klik</i> upuści obecnie przechowywany [stored].</span>"
 
 /obj/item/borg/apparatus/circuit/pre_attack(atom/A, mob/living/user, params)
 	. = ..()
 	if(istype(A, /obj/item/aiModule) && !stored) //If an admin wants a borg to upload laws, who am I to stop them? Otherwise, we can hint that it fails
-		to_chat(user, "<span class='warning'>This circuit board doesn't seem to have standard robot apparatus pin holes. You're unable to pick it up.</span>")
+		to_chat(user, "<span class='warning'>Ta płytka nie ma standardowych otworów na piny urządzenia robota. Nie możesz jej podnieść.</span>")
 
 ////////////////////
 //versatile service holder//
@@ -1047,5 +1047,5 @@
 /obj/item/borg/apparatus/beaker/service/examine()
 	. = ..()
 	if(stored)
-		. += "You are currently holding [stored]."
-		. += "<span class='notice'<i>Alt-click</i> will drop the currently stored [stored].</span>"
+		. += "Obecnie trzymasz [stored]."
+		. += "<span class='notice'<i>Alt-klik</i> upuści obecnie przechowywany [stored].</span>"

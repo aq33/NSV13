@@ -30,13 +30,13 @@
 
 /obj/machinery/plumbing/proc/can_be_rotated(mob/user, rotation_type)
 	if(anchored)
-		to_chat(user, "<span class='warning'>[src] is fastened to the floor!</span>")
+		to_chat(user, "<span class='warning'>[src] jest przymocowany do podłogi!</span>")
 		return FALSE
 	return TRUE
 
 /obj/machinery/plumbing/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The maximum volume display reads: <b>[reagents.maximum_volume] units</b>.</span>"
+	. += "<span class='notice'>Wyświetlacz maksymalnej objętości pokazuje: <b>[reagents.maximum_volume] j.</b></span>"
 
 /obj/machinery/plumbing/wrench_act(mob/living/user, obj/item/I)
 	..()
@@ -44,21 +44,21 @@
 	return TRUE
 
 /obj/machinery/plumbing/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
-	to_chat(user, "<span class='notice'>You start furiously plunging [name].")
+	to_chat(user, "<span class='notice'>Zaczynasz zajadle przepychać [name].")
 	if(do_after(user, 30, target = src))
-		to_chat(user, "<span class='notice'>You finish plunging the [name].")
+		to_chat(user, "<span class='notice'>Kończysz przepychać [name].")
 		reagents.reaction(get_turf(src), TOUCH) //splash on the floor
 		reagents.clear_reagents()
 
 /obj/machinery/plumbing/welder_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(anchored)
-		to_chat(user, "<span class='warning'>The [name] needs to be unbolted to do that!</span")
+		to_chat(user, "<span class='warning'>Aby to zrobić, trzeba odkręcić [name]!</span")
 	if(I.tool_start_check(user, amount=0))
-		to_chat(user, "<span class='notice'>You start slicing the [name] apart.</span")
+		to_chat(user, "<span class='notice'>Zaczynasz rozcinać [name].</span")
 		if(I.use_tool(src, user, rcd_delay * 2, volume=50))
 			deconstruct(TRUE)
-			to_chat(user, "<span class='notice'>You slice the [name] apart.</span")
+			to_chat(user, "<span class='notice'>Rozcinasz [name].</span")
 			return TRUE
 
 ///We can empty beakers in here and everything

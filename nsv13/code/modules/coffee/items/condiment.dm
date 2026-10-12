@@ -55,7 +55,7 @@
 
 /obj/item/reagent_containers/glass/bottle/syrup_bottle/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click to toggle the pump cap.</span>"
+	. += "<span class='notice'>Alt-kliknij, by przełączyć nakrętkę z pompką.</span>"
 	return
 
 //when you attack the syrup bottle with a container it refills it
@@ -69,14 +69,14 @@
 
 	if(attacking_item.is_refillable())
 		if(!reagents.total_volume)
-			to_chat(user, "<span class='warning'>[src] is empty!</span>")
+			to_chat(user, "<span class='warning'>[src] jest pusty!</span>")
 			return
 
 		if(attacking_item.reagents.holder_full())
-			to_chat(user, "<span class='warning'>[attacking_item] is full.</span>")
+			to_chat(user, "<span class='warning'>[attacking_item] jest pełny.</span>")
 
 		var/trans = reagents.trans_to(attacking_item, amount_per_transfer_from_this, transfered_by = user)
-		to_chat(user, "<span class='notice>You transfer [trans] unit\s of the solution to [attacking_item].</span>")
+		to_chat(user, "<span class='notice>Przelewasz [trans] j. roztworu do [attacking_item].</span>")
 		flick("syrup_anim", src)
 	attacking_item.update_icon()
 	return TRUE
@@ -89,10 +89,10 @@
 	cap_on = !cap_on
 	if(!cap_on)
 		icon_state = "syrup_open"
-		to_chat(user, "<span class='notice'>You remove the pump cap.</span>")
+		to_chat(user, "<span class='notice'>Zdejmujesz nakrętkę z pompką.</span>")
 	else
 		icon_state = "syrup"
-		to_chat(user, "<span class='notice'>You put the pump cap on.</span>")
+		to_chat(user, "<span class='notice'>Zakładasz nakrętkę z pompką.</span>")
 	update_icon_state()
 	return ..()
 

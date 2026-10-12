@@ -48,7 +48,7 @@
 				if(environment.get_moles(GAS_O2) >= 1) //Same threshhold that extinguishes fire
 					H.adjust_fire_stacks(0.5)
 					if(!H.on_fire && H.fire_stacks > 0)
-						H.visible_message("<span class='danger'>[H]'s body reacts with the atmosphere and bursts into flames!</span>","<span class='userdanger'>Your body reacts with the atmosphere and bursts into flame!</span>")
+						H.visible_message("<span class='danger'>Ciało [H] reaguje z atmosferą i staje w płomieniach!</span>","<span class='userdanger'>Twoje ciało reaguje z atmosferą i staje w płomieniach!</span>")
 					H.IgniteMob()
 					internal_fire = TRUE
 	else if(H.fire_stacks)
@@ -98,7 +98,7 @@
 	if(chem.type == /datum/reagent/consumable/milk)
 		if(chem.volume > 10)
 			H.reagents.remove_reagent(chem.type, chem.volume - 10)
-			to_chat(H, "<span class='warning'>The excess milk is dripping off your bones!</span>")
+			to_chat(H, "<span class='warning'>Nadmiar mleka spływa po twoich kościach!</span>")
 		H.heal_bodypart_damage(1.5,0, 0)
 		H.reagents.remove_reagent(chem.type, chem.metabolization_rate)
 		return TRUE
@@ -108,22 +108,22 @@
 		if(prob(20))
 			switch(rand(1, 3))
 				if(1)
-					H.say(pick("oof.", "ouch.", "my bones.", "oof ouch.", "oof ouch my bones."), forced = /datum/reagent/toxin/bonehurtingjuice)
+					H.say(pick("oof.", "ouch.", "moje kości.", "auć, boli.", "auć, moje kości."), forced = /datum/reagent/toxin/bonehurtingjuice)
 				if(2)
-					H.emote("me", 1, pick("oofs silently.", "looks like their bones hurt.", "grimaces, as though their bones hurt."))
+					H.emote("me", 1, pick("cicho jęczy.", "wygląda, jakby bolały go kości.", "krzywi się, jakby bolały go kości."))
 				if(3)
-					to_chat(H, "<span class='warning'>Your bones hurt!</span>")
+					to_chat(H, "<span class='warning'>Bolą cię kości!</span>")
 		if(chem.overdosed)
 			if(prob(4) && iscarbon(H)) //big oof
 				var/selected_part = pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG) //God help you if the same limb gets picked twice quickly.
 				var/obj/item/bodypart/bp = H.get_bodypart(selected_part) //We're so sorry skeletons, you're so misunderstood
 				if(bp)
 					playsound(H, get_sfx("desecration"), 50, TRUE, -1) //You just want to socialize
-					H.visible_message("<span class='warning'>[H] rattles loudly and flails around!!</span>", "<span class='danger'>Your bones hurt so much that your missing muscles spasm!!</span>")
+					H.visible_message("<span class='warning'>[H] głośno grzechocze i się miota!!</span>", "<span class='danger'>Kości bolą cię tak bardzo, że twoje brakujące mięśnie dostają skurczów!!</span>")
 					H.say("OOF!!", forced=/datum/reagent/toxin/bonehurtingjuice)
 					bp.receive_damage(200, 0, 0) //But I don't think we should
 				else
-					to_chat(H, "<span class='warning'>Your missing arm aches from wherever you left it.</span>")
+					to_chat(H, "<span class='warning'>Twoja brakująca ręka boli, gdziekolwiek ją zostawiłeś.</span>")
 					H.emote("sigh")
 		H.reagents.remove_reagent(chem.type, chem.metabolization_rate)
 		return TRUE

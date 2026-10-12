@@ -29,7 +29,7 @@
 	desc = "Opens up the Path of Ash to you. \
 		Allows you to transmute a match and a knife into an Ashen Blade. \
 		You can only create two at a time."
-	gain_text = "The City Guard know their watch. If you ask them at night, they may tell you about the ashy lantern."
+	gain_text = "Straż Miejska zna swoją wartę. Jeśli zapytasz ich nocą, może opowiedzą ci o popielnej latarni."
 	next_knowledge = list(/datum/heretic_knowledge/ashen_grasp)
 	banned_knowledge = list(
 		/datum/heretic_knowledge/limited_amount/base_rust,
@@ -57,8 +57,8 @@
 /datum/heretic_knowledge/ashen_grasp
 	name = "Grasp of Ash"
 	desc = "Your Mansus Grasp will burn the eyes of the victim, causing damage and blindness."
-	gain_text = "The Nightwatcher was the first of them, his treason started it all. \
-		Their lantern, expired to ash - their watch, absent."
+	gain_text = "Nocny Strażnik był pierwszy, a jego zdrada wszystko zapoczątkowała. \
+		Ich latarnia wypalona na popiół - ich warty brak."
 	next_knowledge = list(/datum/heretic_knowledge/spell/ash_passage)
 	cost = 1
 	route = HERETIC_PATH_ASH
@@ -78,14 +78,14 @@
 	if(!target.getorganslot(ORGAN_SLOT_EYES))
 		return
 
-	to_chat(target, "<span class='danger'>A bright green light burns your eyes horrifically!</span>")
+	to_chat(target, "<span class='danger'>Jasne zielone światło straszliwie pali ci oczy!</span>")
 	target.adjustOrganLoss(ORGAN_SLOT_EYES, 15)
 	target.blur_eyes(10)
 
 /datum/heretic_knowledge/spell/ash_passage
 	name = "Ashen Passage"
 	desc = "Grants you Ashen Passage, a silent but short range jaunt."
-	gain_text = "He knew how to walk between the planes."
+	gain_text = "Wiedział, jak kroczyć między planami."
 	next_knowledge = list(
 		/datum/heretic_knowledge/ash_mark,
 		/datum/heretic_knowledge/codex_cicatrix,
@@ -101,9 +101,9 @@
 	desc = "Your Mansus Grasp now applies the Mark of Ash. The mark is triggered from an attack with your Ashen Blade. \
 		When triggered, the victim takes additional stamina and burn damage, and the mark is transferred to any nearby heathens. \
 		Damage dealt is decreased with each transfer."
-	gain_text = "He was a very particular man, always watching in the dead of night. \
-		But in spite of his duty, he regularly passed through the Mansus with his blazing lantern held high. \
-		He shone brightly in the darkness, until the blaze begin to die."
+	gain_text = "Był człowiekiem szczególnym, zawsze czuwającym w środku nocy. \
+		Mimo swojej służby regularnie przemierzał Mansus z płonącą latarnią uniesioną wysoko. \
+		Jasno świecił w ciemności, dopóki płomień nie zaczął gasnąć."
 	next_knowledge = list(/datum/heretic_knowledge/knowledge_ritual/ash)
 	banned_knowledge = list(
 		/datum/heretic_knowledge/rust_mark,
@@ -152,7 +152,7 @@
 	desc = "Allows you to transmute any mask, four candles, a stun baton, and a liver to create a Mask of Madness. \
 		The mask instills fear into heathens who witness it, causing stamina damage, hallucinations, and insanity. \
 		It can also be forced onto a heathen, to make them unable to take it off..."
-	gain_text = "The Nightwatcher was lost. That's what the Watch believed. Yet he walked the world, unnoticed by the masses."
+	gain_text = "Nocny Strażnik zaginął. Tak wierzyła Straż. A jednak kroczył po świecie, niezauważony przez tłumy."
 	next_knowledge = list(
 		/datum/heretic_knowledge/ash_blade_upgrade,
 		/datum/heretic_knowledge/reroll_targets,
@@ -172,8 +172,8 @@
 /datum/heretic_knowledge/ash_blade_upgrade
 	name = "Fiery Blade"
 	desc = "Your blade now lights enemies ablaze on attack."
-	gain_text = "He returned, blade in hand, he swung and swung as the ash fell from the skies. \
-		His city, the people he swore to watch... and watch he did, as they all burnt to cinders."
+	gain_text = "Wrócił z ostrzem w dłoni i ciął, i ciął, a z nieba padał popiół. \
+		Jego miasto, ludzie, których przysięgał strzec... i strzegł ich wzrokiem, gdy wszyscy spłonęli na popiół."
 	next_knowledge = list(/datum/heretic_knowledge/spell/flame_birth)
 	banned_knowledge = list(
 		/datum/heretic_knowledge/rust_blade_upgrade,
@@ -205,8 +205,8 @@
 	desc = "Grants you Nightwatcher's Rebirth, a spell that extinguishes you and \
 		burns all nearby heathens who are currently on fire, healing you for every victim afflicted. \
 		If any victims afflicted are in critical condition, they will also instantly die."
-	gain_text = "The fire was inescapable, and yet, life remained in his charred body. \
-		The Nightwatcher was a particular man, always watching."
+	gain_text = "Przed ogniem nie było ucieczki, a jednak w jego zwęglonym ciele tliło się życie. \
+		Nocny Strażnik był człowiekiem szczególnym, zawsze czuwającym."
 	next_knowledge = list(
 		/datum/heretic_knowledge/final/ash_final,
 		/datum/heretic_knowledge/summon/ashy,
@@ -224,9 +224,9 @@
 		Cascade, which causes a massive, growing ring of fire around you, \
 		and Oath of Flame, causing you to passively create a ring of flames as you walk. \
 		You will also become immune to flames, space, and similar environmental hazards."
-	gain_text = "The Watch is dead, the Nightwatcher burned with it. Yet his fire burns evermore, \
-		for the Nightwatcher brought forth the rite to mankind! His gaze continues, as now I am one with the flames, \
-		WITNESS MY ASCENSION, THE ASHY LANTERN BLAZES ONCE MORE!"
+	gain_text = "Straż jest martwa, Nocny Strażnik spłonął razem z nią. Lecz jego ogień płonie wiecznie, \
+		bo Nocny Strażnik dał ludzkości ten rytuał! Jego spojrzenie trwa, bo teraz jestem jednym z płomieniami, \
+		UJRZYJCIE MOJE WNIEBOWSTĄPIENIE, POPIELNA LATARNIA ZNÓW PŁONIE!"
 	route = HERETIC_PATH_ASH
 	/// A static list of all traits we apply on ascension.
 	var/static/list/traits_to_apply = list(
@@ -251,7 +251,7 @@
 
 /datum/heretic_knowledge/final/ash_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
-	priority_announce("[generate_heretic_text()] Fear the blaze, for the Ashlord, [user.real_name] has ascended! The flames shall consume all! [generate_heretic_text()]","[generate_heretic_text()]", ANNOUNCER_SPANOMALIES)
+	priority_announce("[generate_heretic_text()] Lękajcie się pożogi, bo Pan Popiołów, [user.real_name], dostąpił wniebowstąpienia! Płomienie pochłoną wszystko! [generate_heretic_text()]","[generate_heretic_text()]", ANNOUNCER_SPANOMALIES)
 	user.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/fire_cascade/big)
 	user.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/fire_sworn)
 	for(var/trait in traits_to_apply)

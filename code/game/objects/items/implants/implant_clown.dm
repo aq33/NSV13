@@ -3,9 +3,7 @@
 	activated = 0
 
 /obj/item/implant/sad_trombone/get_data()
-	var/dat = {"<b>Implant Specifications:</b><BR>
-				<b>Name:</b> Honk Co. Sad Trombone Implant<BR>
-				<b>Life:</b> Activates upon death.<BR>
+	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Implant smutnego puzonu Honk Co.<BR><b>Żywotność:</b> aktywuje się po śmierci.<BR>
 				"}
 	return dat
 

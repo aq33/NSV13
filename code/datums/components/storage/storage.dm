@@ -174,7 +174,7 @@
 
 	if(locked)
 		var/atom/host = parent
-		host.balloon_alert(M, "[host] is locked.")
+		host.balloon_alert(M, "[host] jest zablokowany.")
 		return FALSE
 	if((M.get_active_held_item() == parent) && allow_quick_empty)
 		INVOKE_ASYNC(src, PROC_REF(quick_empty), M)
@@ -187,7 +187,7 @@
 	. = COMPONENT_NO_ATTACK
 	if(locked)
 		var/atom/host = parent
-		host.balloon_alert(M, "[host] is locked.")
+		host.balloon_alert(M, "[host] jest zablokowany.")
 		return FALSE
 	var/obj/item/I = O
 	if(collection_mode == COLLECT_ONE)
@@ -207,14 +207,14 @@
 				things -= A
 	var/len = length(things)
 	if(!len)
-		to_chat(pre_attack_mob, "<span class='warning'>You failed to pick up anything with [parent]!</span>")
+		to_chat(pre_attack_mob, "<span class='warning'>Nie udało ci się niczego podnieść za pomocą [parent]!</span>")
 		return
 	var/datum/progressbar/progress = new(pre_attack_mob, len, attack_item.loc)
 	var/list/rejections = list()
 	while(do_after(pre_attack_mob, 1 SECONDS, parent, NONE, FALSE, CALLBACK(src, PROC_REF(handle_mass_pickup), things, attack_item.loc, rejections, progress)))
 		stoplag(1)
 	qdel(progress)
-	to_chat(pre_attack_mob, "<span class='notice'>You put everything you could [insert_preposition] [parent].</span>")
+	to_chat(pre_attack_mob, "<span class='notice'>Wkładasz do [parent] wszystko, co się dało.</span>")
 	animate_parent()
 
 /datum/component/storage/proc/handle_mass_item_insertion(list/things, datum/component/storage/src_object, mob/user, datum/progressbar/progress)
@@ -264,11 +264,11 @@
 		return
 	if(locked)
 		var/atom/host = parent
-		host.balloon_alert(M, "[host] is locked.")
+		host.balloon_alert(M, "[host] jest zablokowany.")
 		return FALSE
 	A.add_fingerprint(M)
 	var/atom/host = parent
-	host.balloon_alert(M, "You start dumping out the contents...")
+	host.balloon_alert(M, "Zaczynasz wysypywać zawartość...")
 	var/turf/T = get_turf(A)
 	var/list/things = contents()
 	var/datum/progressbar/progress = new(M, length(things), T)
@@ -501,7 +501,7 @@
 	if(A.Adjacent(M) && dump_destination && M.Adjacent(dump_destination))
 		if(locked)
 			var/atom/host = parent
-			host.balloon_alert(M, "[host] is locked.")
+			host.balloon_alert(M, "[host] jest zablokowany.")
 			return FALSE
 		if(dump_destination.storage_contents_dump_act(src, M))
 			playsound(A, "rustle", 50, 1, -5)
@@ -588,7 +588,7 @@
 	A.add_fingerprint(M)
 	if(locked && !force)
 		var/atom/host = parent
-		host.balloon_alert(M, "[host] is locked.")
+		host.balloon_alert(M, "[host] jest zablokowany.")
 		return FALSE
 	if(force || M.CanReach(parent, view_only = TRUE))
 		show_to(M)
@@ -620,42 +620,42 @@
 	if(locked)
 		if(M && !stop_messages)
 			host.add_fingerprint(M)
-			host.balloon_alert(M, "[host] is locked.")
+			host.balloon_alert(M, "[host] jest zablokowany.")
 		return FALSE
 	if(real_location.contents.len >= max_items)
 		if(!stop_messages)
-			host.balloon_alert(M, "[host] is full")
+			host.balloon_alert(M, "[host] jest pełny")
 		return FALSE //Storage item is full
 	if(length(can_hold))
 		if(!is_type_in_typecache(I, can_hold))
 			if(!stop_messages)
-				host.balloon_alert(M, "It doesn't fit")
+				host.balloon_alert(M, "Nie mieści się")
 			return FALSE
 	if(is_type_in_typecache(I, cant_hold) || HAS_TRAIT(I, TRAIT_NO_STORAGE_INSERT) || (can_hold_trait && !HAS_TRAIT(I, can_hold_trait))) //Items which this container can't hold.
 		if(!stop_messages)
-			host.balloon_alert(M, "It doesn't fit")
+			host.balloon_alert(M, "Nie mieści się")
 		return FALSE
 	if(I.w_class > max_w_class)
 		if(!stop_messages)
-			host.balloon_alert(M, "[I] is too big")
+			host.balloon_alert(M, "[I] jest za duży")
 		return FALSE
 	var/sum_w_class = I.w_class
 	for(var/obj/item/_I in real_location)
 		sum_w_class += _I.w_class //Adds up the combined w_classes which will be in the storage item if the item is added to it.
 	if(sum_w_class > max_combined_w_class)
 		if(!stop_messages)
-			host.balloon_alert(M, "[host] is full")
+			host.balloon_alert(M, "[host] jest pełny")
 		return FALSE
 	if(isitem(host))
 		var/obj/item/IP = host
 		var/datum/component/storage/STR_I = I.GetComponent(/datum/component/storage)
 		if((I.w_class >= IP.w_class) && STR_I && !allow_big_nesting)
 			if(!stop_messages)
-				host.balloon_alert(M, "It's too big")
+				host.balloon_alert(M, "To jest za duże")
 			return FALSE //To prevent the stacking of same sized storage items.
 	if(HAS_TRAIT(I, TRAIT_NODROP)) //SHOULD be handled in unEquip, but better safe than sorry.
 		if(!stop_messages)
-			host.balloon_alert(M, "[I] is stuck to your hand")
+			host.balloon_alert(M, "[I] przykleił się do twojej ręki")
 		return FALSE
 	var/datum/component/storage/concrete/master = master()
 	if(!istype(master))
@@ -687,11 +687,11 @@
 	animate_parent()
 	for(var/mob/viewing as() in viewers(user))
 		if(M == viewing)
-			to_chat(usr, "<span class='notice'>You put [I] [insert_preposition]to [parent].</span>")
+			to_chat(usr, "<span class='notice'>Wkładasz [I] do [parent].</span>")
 		else if(in_range(M, viewing)) //If someone is standing close enough, they can tell what it is...
-			viewing.show_message("<span class='notice'>[M] puts [I] [insert_preposition]to [parent].</span>", MSG_VISUAL)
+			viewing.show_message("<span class='notice'>[M] wkłada [I] do [parent].</span>", MSG_VISUAL)
 		else if(I && I.w_class >= 3) //Otherwise they can only see large or normal items from a distance...
-			viewing.show_message("<span class='notice'>[M] puts [I] [insert_preposition]to [parent].</span>", MSG_VISUAL)
+			viewing.show_message("<span class='notice'>[M] wkłada [I] do [parent].</span>", MSG_VISUAL)
 
 /datum/component/storage/proc/update_icon()
 	if(isobj(parent))
@@ -797,7 +797,7 @@
 		. = COMPONENT_NO_ATTACK_HAND
 		if(locked)
 			var/atom/host = parent
-			host.balloon_alert(user, "[host] is locked.")
+			host.balloon_alert(user, "[host] jest zablokowany.")
 		else
 			show_to(user)
 
@@ -834,7 +834,7 @@
 		return
 	if(locked)
 		var/atom/host = parent
-		host.balloon_alert(user, "[host] is locked.")
+		host.balloon_alert(user, "[host] jest zablokowany.")
 		return COMPONENT_INTERCEPT_ALT
 
 	var/atom/A = parent
@@ -860,9 +860,9 @@
 	parent_as_atom.add_fingerprint(user)
 	remove_from_storage(to_remove, get_turf(user))
 	if(!user.put_in_hands(to_remove))
-		to_chat(user, "<span class='notice'>You fumble for [to_remove] and it falls on the floor.</span>")
+		to_chat(user, "<span class='notice'>Grzebiesz w poszukiwaniu [to_remove], a to spada na podłogę.</span>")
 		return
-	user.visible_message("<span class='warning'>[user] draws [to_remove] from [parent]!</span>", "<span class='notice'>You draw [to_remove] from [parent].</span>")
+	user.visible_message("<span class='warning'>[user] wyciąga [to_remove] z [parent]!</span>", "<span class='notice'>Wyciągasz [to_remove] z [parent].</span>")
 	return
 
 /datum/component/storage/proc/action_trigger(datum/signal_source, datum/action/source)
@@ -875,11 +875,11 @@
 	collection_mode = (collection_mode+1)%3
 	switch(collection_mode)
 		if(COLLECT_SAME)
-			user.balloon_alert(user, "[parent] now picks up all items of single type")
+			user.balloon_alert(user, "[parent] podnosi teraz wszystkie przedmioty jednego typu")
 		if(COLLECT_EVERYTHING)
-			user.balloon_alert(user, "[parent] now picks up all items")
+			user.balloon_alert(user, "[parent] podnosi teraz wszystkie przedmioty")
 		if(COLLECT_ONE)
-			user.balloon_alert(user, "[parent] now picks up single item")
+			user.balloon_alert(user, "[parent] podnosi teraz pojedynczy przedmiot")
 
 /datum/component/storage/proc/animate_parent()
 	if(!animated)

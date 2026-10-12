@@ -15,15 +15,15 @@
 	health = 220
 	loot = list(/obj/effect/gibspawner/generic/animal)
 	butcher_results = list(/obj/item/food/meat/slab/gorilla = 4)
-	response_help  = "prods"
-	response_disarm = "challenges"
-	response_harm   = "thumps"
+	response_help  = "dźga"
+	response_disarm = "wyzywa"
+	response_harm   = "grzmoci"
 	speed = 1
 	melee_damage = 16
 	damage_coeff = list(BRUTE = 1, BURN = 1.5, TOX = 1.5, CLONE = 0, STAMINA = 0, OXY = 1.5)
 	obj_damage = 20
 	environment_smash = ENVIRONMENT_SMASH_WALLS
-	attacktext = "pummels"
+	attacktext = "okłada pięściami"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	dextrous = TRUE
 	held_items = list(null, null)
@@ -72,7 +72,7 @@
 			L.throw_at(throw_target, rand(1,2), 7, src)
 		else
 			L.Unconscious(20)
-			visible_message("<span class='danger'>[src] knocks [L] out!</span>")
+			visible_message("<span class='danger'>[src] nokautuje [L]!</span>")
 
 /mob/living/simple_animal/hostile/gorilla/CanAttack(atom/the_target)
 	var/list/parts = target_bodyparts(target)
@@ -98,7 +98,7 @@
 	..()
 
 /mob/living/simple_animal/hostile/gorilla/can_use_guns(obj/item/G)
-	to_chat(src, "<span class='warning'>Your meaty finger is much too large for the trigger guard!</span>")
+	to_chat(src, "<span class='warning'>Twój mięsisty palec jest o wiele za duży na kabłąk spustu!</span>")
 	return FALSE
 
 

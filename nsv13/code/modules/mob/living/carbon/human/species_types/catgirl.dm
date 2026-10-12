@@ -16,7 +16,7 @@
 /mob/living/carbon/human/ai_boarder/assistant/felinid
 	outfit = list(/datum/outfit/maid, /datum/outfit/maid/knpc_pistol, /datum/outfit/maid/knpc_smg)
 	taunts = list(
-		"tii hii!~ UwU",
+		"hi hi!~ UwU",
 		"Nja, Jestem tłoim abołdarzystłom. Przygotuj się na zastłałw!",
 		"Mrrr!"
 	)

@@ -191,7 +191,7 @@
 		AI.overlay_fullscreen("flash", /atom/movable/screen/fullscreen/flash/static)
 		AI.clear_fullscreen("flash", 5)
 	else
-		to_chat(AI, "<span class='warning'>There is nothing in that direction!</span>")
+		to_chat(AI, "<span class='warning'>W tym kierunku nic nie ma!</span>")
 
 /atom/movable/screen/ai/move_z/down
 	name = "View Below"

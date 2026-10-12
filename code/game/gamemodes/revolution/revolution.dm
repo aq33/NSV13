@@ -22,9 +22,7 @@
 	title_icon = "revolution"
 
 	announce_span = "danger"
-	announce_text = "Some crewmembers are attempting a coup!\n\
-	<span class='danger'>Revolutionaries</span>: Expand your cause and overthrow the heads of staff by execution or otherwise.\n\
-	<span class='notice'>Crew</span>: Prevent the revolutionaries from taking over the station."
+	announce_text = "Niektórzy członkowie załogi próbują przeprowadzić zamach stanu!\n<span class='danger'>Rewolucjoniści</span>: szerzcie swoją sprawę i obalcie szefów, egzekucją lub w inny sposób.\n<span class='notice'>Załoga</span>: nie pozwólcie rewolucjonistom przejąć stacji."
 
 	var/finished = 0
 	var/check_counter = 0
@@ -37,8 +35,8 @@
 //Announces the game type//
 ///////////////////////////
 /datum/game_mode/revolution/announce()
-	to_chat(world, "<B>The current game mode is - Revolution!</B>")
-	to_chat(world, "<B>Some crewmembers are attempting to start a revolution!<BR>\nRevolutionaries - Kill the Captain, HoP, HoS, CE, RD, CMO and MAA. Convert other crewmembers (excluding the heads of staff, and security officers) to your cause by flashing them. Protect your leaders.<BR>\nPersonnel - Protect the heads of staff. Kill the leaders of the revolution, and brainwash the other revolutionaries (by beating them in the head).</B>")
+	to_chat(world, "<B>Obecny tryb gry to rewolucja!</B>")
+	to_chat(world, "<B>Część załogi próbuje wzniecić rewolucję!<BR>\nRewolucjoniści - zabijcie Kapitana, HoP-a, HoS-a, CE, RD, CMO i MAA. Przeciągajcie innych członków załogi (poza szefami działów i ochroną) na swoją stronę, oślepiając ich fleszem. Chrońcie swoich przywódców.<BR>\nZałoga - chrońcie szefów działów. Zabijcie przywódców rewolucji, a pozostałym rewolucjonistom wybijcie to z głowy (dosłownie, uderzając ich w głowę).</B>")
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -185,9 +183,9 @@
 //TODO What should be displayed for revs in non-rev rounds
 /datum/game_mode/revolution/special_report()
 	if(finished == 1)
-		return "<div class='panel redborder'><span class='redtext big'>The heads of staff were killed or exiled! The revolutionaries win!</span></div>"
+		return "<div class='panel redborder'><span class='redtext big'>Szefowie działów zostali zabici albo wygnani! Rewolucjoniści wygrywają!</span></div>"
 	else if(finished == 2)
-		return "<div class='panel redborder'><span class='redtext big'>The heads of staff managed to stop the revolution!</span></div>"
+		return "<div class='panel redborder'><span class='redtext big'>Szefom działów udało się powstrzymać rewolucję!</span></div>"
 
 /datum/game_mode/revolution/generate_report()
 	return "W ostatnich czasach dostaliśmy raporty o zamieszkach ze strony naszych ukochanych pracowników, z kilkoma próbami buntu oraz zamachów na głowy departamentów. Z obserwacji wynika że kilkoro załogantów używa urządzeń typu 'flash' na swoich kolegach, którzy później wykonują ich rozkazy bez pytań. Ogranizują bunt i zamieszki by wyeliminować głowy departamentów. Zwracajcie szczególną uwagę na dziwne zachowania oraz losowe oślepianie załogantów. Jeżeli załoga spróbuje zorganizować rewoltę, macie pełne prawo do ekzegucji oraz użycia ostrej amunicji - zostaną później sklonowani w Centrali w celu przesłuchania."

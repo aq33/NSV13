@@ -15,10 +15,10 @@ Burning extracts:
 
 /obj/item/slimecross/burning/attack_self(mob/user)
 	if(!reagents.has_reagent(/datum/reagent/toxin/plasma,10))
-		to_chat(user, "<span class='warning'>This extract needs to be full of plasma to activate!</span>")
+		to_chat(user, "<span class='warning'>Aby się aktywować, ten ekstrakt musi być pełen plazmy!</span>")
 		return
 	reagents.remove_reagent(/datum/reagent/toxin/plasma,10)
-	to_chat(user, "<span class='notice'>You squeeze the extract, and it absorbs the plasma!</span>")
+	to_chat(user, "<span class='notice'>Ściskasz ekstrakt, a on wchłania plazmę!</span>")
 	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
 	playsound(src, 'sound/magic/fireball.ogg', 50, 1)
 	do_effect(user)
@@ -29,11 +29,11 @@ Burning extracts:
 
 /obj/item/slimecross/burning/grey
 	colour = "grey"
-	effect_desc = "Creates a hungry and speedy slime that will love you forever."
+	effect_desc = "Tworzy głodnego i szybkiego szlama, który będzie cię kochał na zawsze."
 
 /obj/item/slimecross/burning/grey/do_effect(mob/user)
 	var/mob/living/simple_animal/slime/S = new(get_turf(user),"grey")
-	S.visible_message("<span class='danger'>A baby slime emerges from [src], and it nuzzles [user] before burbling hungrily!</span>")
+	S.visible_message("<span class='danger'>Z [src] wyłania się młody szlam, łasi się do [user], po czym głodno bulgocze!</span>")
 	S.set_friendship(user, 20) //Gas, gas, gas
 	S.bodytemperature = T0C + 400 //We gonna step on the gas.
 	S.set_nutrition(S.get_hunger_nutrition()) //Tonight, we fight!
@@ -41,10 +41,10 @@ Burning extracts:
 
 /obj/item/slimecross/burning/orange
 	colour = "orange"
-	effect_desc = "Expels pepperspray in a radius when activated."
+	effect_desc = "Po aktywacji rozpyla wokół gaz pieprzowy."
 
 /obj/item/slimecross/burning/orange/do_effect(mob/user)
-	user.visible_message("<span class='danger'>[src] boils over with a caustic gas!</span>")
+	user.visible_message("<span class='danger'>[src] kipi żrącym gazem!</span>")
 	var/datum/reagents/R = new/datum/reagents(100)
 	R.add_reagent(/datum/reagent/consumable/condensedcapsaicin, 100)
 
@@ -55,43 +55,43 @@ Burning extracts:
 
 /obj/item/slimecross/burning/purple
 	colour = "purple"
-	effect_desc = "Creates a clump of invigorating gel, it has healing properties and makes you feel good."
+	effect_desc = "Tworzy grudkę ożywczego żelu, który ma właściwości lecznicze i poprawia samopoczucie."
 
 /obj/item/slimecross/burning/purple/do_effect(mob/user)
-	user.visible_message("<span class='notice'>[src] fills with a bubbling liquid!</span>")
+	user.visible_message("<span class='notice'>[src] wypełnia się bulgoczącym płynem!</span>")
 	new /obj/item/slimecrossbeaker/autoinjector/slimestimulant(get_turf(user))
 	..()
 
 /obj/item/slimecross/burning/blue
 	colour = "blue"
-	effect_desc = "Freezes the floor around you and chills nearby people."
+	effect_desc = "Zamraża podłogę wokół ciebie i schładza pobliskich ludzi."
 
 /obj/item/slimecross/burning/blue/do_effect(mob/user)
-	user.visible_message("<span class='danger'>[src] flash-freezes the area!</span>")
+	user.visible_message("<span class='danger'>[src] błyskawicznie zamraża okolicę!</span>")
 	for(var/turf/open/T in view(3, get_turf(user)))
 		T.MakeSlippery(TURF_WET_PERMAFROST, min_wet_time = 10, wet_time_to_add = 5)
 	for(var/mob/living/carbon/M in ohearers(5, user))
 		M.bodytemperature = BODYTEMP_COLD_DAMAGE_LIMIT + 10 //Not quite cold enough to hurt.
-		to_chat(M, "<span class='danger'>You feel a chill run down your spine, and the floor feels a bit slippery with frost...</span>")
+		to_chat(M, "<span class='danger'>Czujesz dreszcz na plecach, a podłoga wydaje się nieco śliska od szronu...</span>")
 	..()
 
 /obj/item/slimecross/burning/metal
 	colour = "metal"
-	effect_desc = "Instantly destroys walls around you."
+	effect_desc = "Natychmiast niszczy ściany wokół ciebie."
 
 /obj/item/slimecross/burning/metal/do_effect(mob/user)
 	for(var/turf/closed/wall/W in RANGE_TURFS(1,user))
 		W.dismantle_wall(1)
 		playsound(W, 'sound/effects/break_stone.ogg', 50, 1)
-	user.visible_message("<span class='danger'>[src] pulses violently, and shatters the walls around it!</span>")
+	user.visible_message("<span class='danger'>[src] gwałtownie pulsuje i roztrzaskuje otaczające go ściany!</span>")
 	..()
 
 /obj/item/slimecross/burning/yellow
 	colour = "yellow"
-	effect_desc = "Electrocutes people near you."
+	effect_desc = "Razi prądem ludzi w pobliżu."
 
 /obj/item/slimecross/burning/yellow/do_effect(mob/user)
-	user.visible_message("<span class='danger'>[src] explodes into an electrical field!</span>")
+	user.visible_message("<span class='danger'>[src] eksploduje polem elektrycznym!</span>")
 	playsound(get_turf(src), 'sound/weapons/zapbang.ogg', 50, 1)
 	for(var/mob/living/M in ohearers(4,user))
 		var/mob/living/carbon/C = M
@@ -99,25 +99,25 @@ Burning extracts:
 			C.electrocute_act(25,src)
 		else
 			M.adjustFireLoss(25)
-		to_chat(M, "<span class='danger'>You feel a sharp electrical pulse!</span>")
+		to_chat(M, "<span class='danger'>Czujesz ostry impuls elektryczny!</span>")
 	..()
 
 /obj/item/slimecross/burning/darkpurple
 	colour = "dark purple"
-	effect_desc = "Creates a cloud of plasma."
+	effect_desc = "Tworzy chmurę plazmy."
 
 /obj/item/slimecross/burning/darkpurple/do_effect(mob/user)
-	user.visible_message("<span class='danger'>[src] sublimates into a cloud of plasma!</span>")
+	user.visible_message("<span class='danger'>[src] sublimuje w chmurę plazmy!</span>")
 	var/turf/T = get_turf(user)
 	T.atmos_spawn_air("plasma=60")
 	..()
 
 /obj/item/slimecross/burning/darkblue
 	colour = "dark blue"
-	effect_desc = "Expels a burst of chilling smoke while also filling you with cryoxadone."
+	effect_desc = "Wypuszcza podmuch chłodzącego dymu, jednocześnie wypełniając cię kriooksadonem."
 
 /obj/item/slimecross/burning/darkblue/do_effect(mob/user)
-	user.visible_message("<span class='danger'>[src] releases a burst of chilling smoke!</span>")
+	user.visible_message("<span class='danger'>[src] wypuszcza podmuch chłodzącego dymu!</span>")
 	var/datum/reagents/R = new/datum/reagents(100)
 	R.add_reagent(/datum/reagent/consumable/frostoil, 40)
 	user.reagents.add_reagent(/datum/reagent/medicine/cryoxadone,10)
@@ -128,7 +128,7 @@ Burning extracts:
 
 /obj/item/slimecross/burning/silver
 	colour = "silver"
-	effect_desc = "Creates a few pieces of slime jelly laced food."
+	effect_desc = "Tworzy kilka kawałków jedzenia z dodatkiem galarety szlamu."
 
 /obj/item/slimecross/burning/silver/do_effect(mob/user)
 	var/amount = rand(3,6)
@@ -140,16 +140,16 @@ Burning extracts:
 		var/obj/item/O = new path(pick(turfs))
 		O.reagents.add_reagent(/datum/reagent/toxin/slimejelly,5) //Oh god it burns
 		if(prob(50))
-			O.desc += " It smells strange..."
-	user.visible_message("<span class='danger'>[src] produces a few pieces of food!</span>")
+			O.desc += " Dziwnie pachnie..."
+	user.visible_message("<span class='danger'>[src] wytwarza kilka kawałków jedzenia!</span>")
 	..()
 
 /obj/item/slimecross/burning/bluespace
 	colour = "bluespace"
-	effect_desc = "Teleports anyone directly next to you."
+	effect_desc = "Teleportuje każdego, kto stoi tuż obok ciebie."
 
 /obj/item/slimecross/burning/bluespace/do_effect(mob/user)
-	user.visible_message("<span class='danger'>[src] sparks, and lets off a shockwave of bluespace energy!</span>")
+	user.visible_message("<span class='danger'>[src] iskrzy i wypuszcza falę uderzeniową energii bluespace!</span>")
 	for(var/mob/living/L in range(1, get_turf(user)))
 		if(L != user)
 			do_teleport(L, get_turf(L), 6, asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE) //Somewhere between the effectiveness of fake and real BS crystal
@@ -159,16 +159,16 @@ Burning extracts:
 
 /obj/item/slimecross/burning/sepia
 	colour = "sepia"
-	effect_desc = "Turns into a special camera that rewinds time when used."
+	effect_desc = "Zmienia się w specjalny aparat, który po użyciu cofa czas."
 
 /obj/item/slimecross/burning/sepia/do_effect(mob/user)
-	user.visible_message("<span class='notice'>[src] shapes itself into a camera!</span>")
+	user.visible_message("<span class='notice'>[src] przybiera kształt aparatu!</span>")
 	new /obj/item/camera/rewind(get_turf(user))
 	..()
 
 /obj/item/slimecross/burning/cerulean
 	colour = "cerulean"
-	effect_desc = "Produces an extract cloning potion, which copies an extract, as well as its extra uses."
+	effect_desc = "Wytwarza miksturę klonującą ekstrakty, która kopiuje ekstrakt wraz z jego dodatkowymi użyciami."
 
 /obj/item/slimecross/burning/cerulean/do_effect(mob/user)
 	user.visible_message("<span class='notice'>[src] produces a potion!</span>")
@@ -177,10 +177,10 @@ Burning extracts:
 
 /obj/item/slimecross/burning/pyrite
 	colour = "pyrite"
-	effect_desc = "Shatters all lights in the current room."
+	effect_desc = "Roztrzaskuje wszystkie światła w bieżącym pomieszczeniu."
 
 /obj/item/slimecross/burning/pyrite/do_effect(mob/user)
-	user.visible_message("<span class='danger'>[src] releases a colorful wave of energy, which shatters the lights!</span>")
+	user.visible_message("<span class='danger'>[src] wypuszcza kolorową falę energii, która roztrzaskuje światła!</span>")
 	var/area/A = get_area(user.loc)
 	for(var/obj/machinery/light/L in A) //Shamelessly copied from the APC effect.
 		L.on = TRUE
@@ -191,10 +191,10 @@ Burning extracts:
 
 /obj/item/slimecross/burning/red
 	colour = "red"
-	effect_desc = "Makes nearby slimes rabid, and they'll also attack their friends."
+	effect_desc = "Wprowadza pobliskie szlamy w szał; będą atakować nawet swoich przyjaciół."
 
 /obj/item/slimecross/burning/red/do_effect(mob/user)
-	user.visible_message("<span class='danger'>[src] pulses a hazy red aura for a moment, which wraps around [user]!</span>")
+	user.visible_message("<span class='danger'>[src] na chwilę pulsuje mglistą czerwoną aurą, która owija się wokół [user]!</span>")
 	for(var/mob/living/simple_animal/slime/S in hearers(7, get_turf(user)))
 		if(user in S.Friends)
 			var/friendliness = S.Friends[user]
@@ -203,12 +203,12 @@ Burning extracts:
 		else
 			S.clear_friends()
 		S.rabid = 1
-		S.visible_message("<span class='danger'>The [S] is driven into a dangerous frenzy!</span>")
+		S.visible_message("<span class='danger'>[S] wpada w niebezpieczny szał!</span>")
 	..()
 
 /obj/item/slimecross/burning/green
 	colour = "green"
-	effect_desc = "The user gets a dull arm blade in the hand it is used in."
+	effect_desc = "Użytkownik dostaje tępe ostrze ramienne w ręce, w której go użyto."
 
 /obj/item/slimecross/burning/green/do_effect(mob/user)
 	var/which_hand = "l_hand"
@@ -222,28 +222,28 @@ Burning extracts:
 	var/obj/item/melee/arm_blade/slime/blade = new(user)
 	if(!L.put_in_hands(blade))
 		qdel(blade)
-		user.visible_message("<span class='warning'>[src] melts onto [user]'s arm, boiling the flesh horribly!</span>")
+		user.visible_message("<span class='warning'>[src] roztapia się na ręce [user], okropnie gotując ciało!</span>")
 	else
-		user.visible_message("<span class='danger'>[src] sublimates the flesh around [user]'s arm, transforming the bone into a gruesome blade!</span>")
+		user.visible_message("<span class='danger'>[src] sublimuje ciało wokół ręki [user], przemieniając kość w makabryczne ostrze!</span>")
 	user.emote("scream")
 	L.apply_damage(30,BURN,which_hand)
 	..()
 
 /obj/item/slimecross/burning/pink
 	colour = "pink"
-	effect_desc = "Creates a beaker of synthpax."
+	effect_desc = "Tworzy zlewkę syntpaksu."
 
 /obj/item/slimecross/burning/pink/do_effect(mob/user)
-	user.visible_message("<span class='notice'>[src] shrinks into a small, gel-filled pellet!</span>")
+	user.visible_message("<span class='notice'>[src] kurczy się w małą, wypełnioną żelem kulkę!</span>")
 	new /obj/item/slimecrossbeaker/pax(get_turf(user))
 	..()
 
 /obj/item/slimecross/burning/gold
 	colour = "gold"
-	effect_desc = "Creates a gank squad of monsters that are friendly to the user."
+	effect_desc = "Tworzy bandę potworów przyjaznych użytkownikowi."
 
 /obj/item/slimecross/burning/gold/do_effect(mob/user)
-	user.visible_message("<span class='danger'>[src] shudders violently, and summons an army for [user]!</span>")
+	user.visible_message("<span class='danger'>[src] gwałtownie się trzęsie i przywołuje armię dla [user]!</span>")
 	for(var/i in 1 to 3) //Less than gold normally does, since it's safer and faster.
 		var/mob/living/simple_animal/S = create_random_mob(get_turf(user), HOSTILE_SPAWN)
 		S.faction |= "[REF(user)]"
@@ -254,10 +254,10 @@ Burning extracts:
 
 /obj/item/slimecross/burning/oil
 	colour = "oil"
-	effect_desc = "Creates an explosion after a few seconds."
+	effect_desc = "Po kilku sekundach wywołuje eksplozję."
 
 /obj/item/slimecross/burning/oil/do_effect(mob/user)
-	user.visible_message("<span class='danger'>[src] begins to shake with rapidly increasing force!</span>")
+	user.visible_message("<span class='danger'>[src] zaczyna trząść się z szybko narastającą siłą!</span>")
 	addtimer(CALLBACK(src, PROC_REF(boom)), 50)
 
 /obj/item/slimecross/burning/oil/proc/boom()
@@ -266,13 +266,13 @@ Burning extracts:
 
 /obj/item/slimecross/burning/black
 	colour = "black"
-	effect_desc = "Transforms the user into a slime. They can transform back at will and do not lose any items."
+	effect_desc = "Przemienia użytkownika w szlama. Może wrócić do swojej postaci, kiedy zechce, i nie traci żadnych przedmiotów."
 
 /obj/item/slimecross/burning/black/do_effect(mob/user)
 	var/mob/living/L = user
 	if(!istype(L))
 		return
-	user.visible_message("<span class='danger'>[src] absorbs [user], transforming [user.p_them()] into a slime!</span>")
+	user.visible_message("<span class='danger'>[src] wchłania [user], przemieniając go w szlama!</span>")
 	var/obj/effect/proc_holder/spell/targeted/shapeshift/slimeform/S = new()
 	S.remove_on_restore = TRUE
 	user.mind.AddSpell(S)
@@ -281,28 +281,28 @@ Burning extracts:
 
 /obj/item/slimecross/burning/lightpink
 	colour = "light pink"
-	effect_desc = "Paxes everyone in sight."
+	effect_desc = "Pacyfikuje wszystkich w zasięgu wzroku."
 
 /obj/item/slimecross/burning/lightpink/do_effect(mob/user)
-	user.visible_message("<span class='danger'>[src] lets off a hypnotizing pink glow!</span>")
+	user.visible_message("<span class='danger'>[src] wydziela hipnotyzującą różową poświatę!</span>")
 	for(var/mob/living/carbon/C in hearers(7, get_turf(user)))
 		C.reagents.add_reagent(/datum/reagent/pax,5)
 	..()
 
 /obj/item/slimecross/burning/adamantine
 	colour = "adamantine"
-	effect_desc = "Creates a mighty adamantine shield."
+	effect_desc = "Tworzy potężną adamantową tarczę."
 
 /obj/item/slimecross/burning/adamantine/do_effect(mob/user)
-	user.visible_message("<span class='notice'>[src] crystallizes into a large shield!</span>")
+	user.visible_message("<span class='notice'>[src] krystalizuje się w dużą tarczę!</span>")
 	new /obj/item/shield/adamantineshield(get_turf(user))
 	..()
 
 /obj/item/slimecross/burning/rainbow
 	colour = "rainbow"
-	effect_desc = "Creates the Rainbow Knife, a kitchen knife that deals random types of damage."
+	effect_desc = "Tworzy Tęczowy Nóż – nóż kuchenny zadający losowe rodzaje obrażeń."
 
 /obj/item/slimecross/burning/rainbow/do_effect(mob/user)
-	user.visible_message("<span class='notice'>[src] flattens into a glowing rainbow blade.</span>")
+	user.visible_message("<span class='notice'>[src] spłaszcza się w świecące tęczowe ostrze.</span>")
 	new /obj/item/kitchen/knife/rainbowknife(get_turf(user))
 	..()

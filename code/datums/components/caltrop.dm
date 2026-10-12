@@ -105,8 +105,8 @@
 	if(!(flags & CALTROP_SILENT) && !H.has_status_effect(/datum/status_effect/caltropped))
 		H.apply_status_effect(/datum/status_effect/caltropped)
 		H.visible_message(
-			"<span class='danger'>[H] steps on [source].</span>",
-			"<span class='userdanger'>You step on [source]!</span>"
+			"<span class='danger'>[H] nadeptuje na [source].</span>",
+			"<span class='userdanger'>Nadeptujesz na [source]!</span>"
 		)
 
 

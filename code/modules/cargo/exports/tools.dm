@@ -124,7 +124,7 @@
 /datum/export/singulo/total_printout(datum/export_report/ex, notes = TRUE)
 	. = ..()
 	if(. && notes)
-		. += " ERROR: Invalid object detected."
+		. += " BŁĄD: wykryto nieprawidłowy obiekt."
 
 /datum/export/singulo/tesla //see above
 	unit_name = "energy ball"
@@ -133,4 +133,4 @@
 /datum/export/singulo/tesla/total_printout(datum/export_report/ex, notes = TRUE)
 	. = ..()
 	if(. && notes)
-		. += " ERROR: Unscheduled energy ball delivery detected."
+		. += " BŁĄD: wykryto nieplanowaną dostawę kuli energii."

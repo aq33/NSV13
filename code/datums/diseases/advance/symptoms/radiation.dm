@@ -1,6 +1,6 @@
 /datum/symptom/radiation
 	name = "Iraddiant Cells"
-	desc = "Causes the cells in the host's body to give off harmful radiation."
+	desc = "Sprawia, że komórki w ciele nosiciela emitują szkodliwe promieniowanie."
 	stealth = -1
 	resistance = 2
 	stage_speed = -1
@@ -11,7 +11,7 @@
 	symptom_delay_max = 40
 	prefixes = list("Gamma ")
 	bodies = list("Radiation")
-	threshold_desc = "<b>Speed 8:</b> Host takes radiation damage faster."
+	threshold_desc = "<b>Szybkość 8:</b> nosiciel szybciej otrzymuje obrażenia od promieniowania."
 
 /datum/symptom/radiation/severityset(datum/disease/advance/A)
 	. = ..()
@@ -31,21 +31,21 @@
 	switch(A.stage)
 		if(1)
 			if(prob(10))
-				to_chat(M, "<span class='notice'>You feel off...</span>")
+				to_chat(M, "<span class='notice'>Czujesz się nieswojo...</span>")
 		if(2, 3)
 			if(prob(50))
-				to_chat(M, "<span class='danger'>You feel like the atoms inside you are beginning to split...</span>")
+				to_chat(M, "<span class='danger'>Masz wrażenie, że atomy w tobie zaczynają się rozszczepiać...</span>")
 		if(4, 5)
 			radiate(M)
 
 /datum/symptom/radiation/proc/radiate(mob/living/carbon/M)
-	to_chat(M, "<span class='danger'>You feel a wave of pain throughout your body!</span>")
+	to_chat(M, "<span class='danger'>Przez twoje ciało przechodzi fala bólu!</span>")
 	M.radiation += 75 * power
 	return 1
 
 /datum/symptom/radconversion
 	name = "Aptotic Culling"
-	desc = "The virus causes infected cells to die off when exposed to radiation, causing open wounds to appear on the host's flesh. The end result of this process is the removal of radioactive contamination from the host."
+	desc = "Wirus sprawia, że zarażone komórki obumierają po wystawieniu na promieniowanie, przez co na ciele nosiciela pojawiają się otwarte rany. Efektem końcowym jest usunięcie skażenia radioaktywnego z nosiciela."
 	stealth = 1
 	resistance = 1
 	stage_speed = 1
@@ -57,8 +57,7 @@
 	var/toxheal = FALSE 
 	var/cellheal = FALSE
 	suffixes = list(" Aptosis")
-	threshold_desc = "<b>Stage Speed 6:</b> The disease also kills off contaminated cells, converting Toxin damage to Brute damage, at an efficient rate.<br>\
-					<b>Resistance 12 :</b> The disease also kills off genetically damaged cells and their neighbors, converting Cellular damage into Burn damage, at an inefficient rate."
+	threshold_desc = "<b>Szybkość stadiów 6:</b> choroba zabija też skażone komórki, wydajnie przekształcając obrażenia od toksyn w obrażenia fizyczne.<br><b>Odporność 12:</b> choroba zabija też komórki uszkodzone genetycznie i ich sąsiadów, niewydajnie przekształcając obrażenia komórkowe w oparzenia."
 
 /datum/symptom/radconversion/severityset(datum/disease/advance/A)
 	. = ..()
@@ -85,18 +84,18 @@
 			M.radiation -= max(M.radiation * 0.05, min(10, M.radiation))
 			M.take_overall_damage(2)
 			if(prob(5))
-				to_chat(M, "<span class='userdanger'>A tear opens in your flesh!</span>")
+				to_chat(M, "<span class='userdanger'>W twoim ciele otwiera się rana!</span>")
 				M.add_splatter_floor()
 		if(M.getToxLoss() && toxheal)
 			M.adjustToxLoss(-2, forced = TRUE) //this is removing foreign contaminants, it's not a toxinheal drug. of course its safe for slimes
 			M.take_overall_damage(1)
 			if(prob(5))
-				to_chat(M, "<span class='userdanger'>A tear opens in your flesh!</span>")
+				to_chat(M, "<span class='userdanger'>W twoim ciele otwiera się rana!</span>")
 				M.add_splatter_floor()
 		if(M.getCloneLoss() && cellheal)
 			M.adjustCloneLoss(-1)
 			M.take_overall_damage(burn = 2) //this uses burn, so as not to make it so you can heal brute to heal all the damage types this deals, and it isn't a no-brainer to use with Pituitary
 			if(prob(5))
-				to_chat(M, "<span class='userdanger'>A nasty rash appears on your skin!</span>")
+				to_chat(M, "<span class='userdanger'>Na twojej skórze pojawia się paskudna wysypka!</span>")
 	else if(prob(2) && ((M.getCloneLoss() && cellheal) || (M.getToxLoss() && toxheal) || M.radiation))
-		to_chat(M, "<span class='notice'>You feel a tingling sensation</span>")
+		to_chat(M, "<span class='notice'>Czujesz mrowienie</span>")

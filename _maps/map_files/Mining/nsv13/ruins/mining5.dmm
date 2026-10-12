@@ -214,7 +214,7 @@
 /area/ruin/unpowered)
 "aW" = (
 /obj/item/paper/fluff/ruins/asteroid4/extraction{
-	default_raw_text = "It's been days since they evacuated and I have at this point. Blatantly nobody will miss me, so I have no request to a loved one. <br> I have but one request to you who are reading this: Do.<br> Not <br> Open <br> The <br> Sarcophagus";
+	default_raw_text = "Minęły dni, odkąd ewakuowali się, a ja zostałem. Ewidentnie nikt nie będzie za mną tęsknić, więc nie mam prośby do bliskich. <br> Mam tylko jedną prośbę do ciebie, który to czytasz: Nie.<br> Otwieraj <br> Tego <br> Sarkofagu";
 	name = "last will"
 	},
 /turf/open/floor/carpet/ship/red_carpet,
@@ -785,7 +785,7 @@
 "cI" = (
 /obj/structure/table/wood,
 /obj/item/paper/fluff/ruins/asteroid4/extraction{
-	default_raw_text = "Captain's orders: <br><br> Evacuate, and relocate the armoury to the exit point. We've lost a few heads already. <br><br> Burn the infected to hamper the disease.";
+	default_raw_text = "Rozkaz kapitana: <br><br> Ewakuować się i przenieść zbrojownię do punktu wyjścia. Straciliśmy już kilku szefów. <br><br> Palić zarażonych, by spowolnić chorobę.";
 	name = "captain's orders"
 	},
 /turf/open/floor/durasteel,
@@ -1391,7 +1391,7 @@
 	dir = 8
 	},
 /obj/item/paper/fluff/ruins/asteroid4/extraction{
-	default_raw_text = "Captain's orders: <br><br> Evacuate, and relocate the armoury to the exit point. We've lost a few heads already. <br><br> Burn the infected to hamper the disease.";
+	default_raw_text = "Rozkaz kapitana: <br><br> Ewakuować się i przenieść zbrojownię do punktu wyjścia. Straciliśmy już kilku szefów. <br><br> Palić zarażonych, by spowolnić chorobę.";
 	name = "captain's orders"
 	},
 /turf/open/floor/durasteel/padded,
@@ -1487,7 +1487,7 @@
 /area/ruin/unpowered)
 "eO" = (
 /obj/item/paper/fluff/ruins/asteroid4/extraction{
-	default_raw_text = "Captain's orders: <br><br> Evacuate, and relocate the armoury to the exit point. We've lost a few heads already. <br><br> Burn the infected to hamper the disease.";
+	default_raw_text = "Rozkaz kapitana: <br><br> Ewakuować się i przenieść zbrojownię do punktu wyjścia. Straciliśmy już kilku szefów. <br><br> Palić zarażonych, by spowolnić chorobę.";
 	name = "captain's orders"
 	},
 /obj/structure/table,
@@ -1533,7 +1533,7 @@
 "eV" = (
 /obj/structure/table/glass,
 /obj/item/paper/fluff/ruins/asteroid4/extraction{
-	default_raw_text = "Captain's orders: <br><br> Evacuate, and relocate the armoury to the exit point. We've lost a few heads already. <br><br> Burn the infected to hamper the disease.";
+	default_raw_text = "Rozkaz kapitana: <br><br> Ewakuować się i przenieść zbrojownię do punktu wyjścia. Straciliśmy już kilku szefów. <br><br> Palić zarażonych, by spowolnić chorobę.";
 	name = "captain's orders"
 	},
 /turf/open/floor/durasteel/padded,

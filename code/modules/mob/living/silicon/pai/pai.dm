@@ -145,7 +145,7 @@
 	if(cable && cable.machine && istype(cable.machine, /obj/machinery/door) && cable.machine == hackdoor && get_dist(src, hackdoor) <= 1)
 		hackprogress = CLAMP(hackprogress + 4, 0, 100)
 	else
-		temp = "Door Jack: Connection to airlock has been lost. Hack aborted."
+		temp = "Door Jack: utracono połączenie ze śluzą. Hakowanie przerwane."
 		hackprogress = 0
 		hacking = FALSE
 		hackdoor = null
@@ -182,9 +182,9 @@
 /mob/living/silicon/pai/get_stat_tab_status()
 	var/list/tab_data = ..()
 	if(!stat)
-		tab_data["Emitter Integrity"] = GENERATE_STAT_TEXT("[emitterhealth * (100/emittermaxhealth)]")
+		tab_data["Stan emitera"] = GENERATE_STAT_TEXT("[emitterhealth * (100/emittermaxhealth)]")
 	else
-		tab_data["Systems"] = GENERATE_STAT_TEXT("nonfunctional")
+		tab_data["Systemy"] = GENERATE_STAT_TEXT("niesprawne")
 	return tab_data
 
 /mob/living/silicon/pai/restrained(ignore_grab)
@@ -194,7 +194,7 @@
 
 /mob/living/silicon/pai/canUseTopic(atom/movable/M, be_close=FALSE, no_dextery=FALSE, no_tk=FALSE)
 	if(be_close && !in_range(M, src))
-		to_chat(src, "<span class='warning'>You are too far away!</span>")
+		to_chat(src, "<span class='warning'>Jesteś za daleko!</span>")
 		return FALSE
 	return TRUE
 
@@ -276,7 +276,7 @@
 
 /mob/living/silicon/pai/examine(mob/user)
 	. = ..()
-	. += "A personal AI in holochassis mode. Its master ID string seems to be [master]."
+	. += "Osobista SI w trybie holoobudowy. Jej identyfikator właściciela to [master]."
 
 /mob/living/silicon/pai/Life()
 	if(stat == DEAD)
@@ -284,7 +284,7 @@
 	if(cable)
 		if(get_dist(src, cable) > 1)
 			var/turf/T = get_turf(src.loc)
-			T.visible_message("<span class='warning'>[src.cable] rapidly retracts back into its spool.</span>", "<span class='italics'>You hear a click and the sound of wire spooling rapidly.</span>")
+			T.visible_message("<span class='warning'>[src.cable] błyskawicznie zwija się z powrotem na szpulę.</span>", "<span class='italics'>Słyszysz kliknięcie i odgłos szybko zwijanego kabla.</span>")
 			qdel(src.cable)
 			cable = null
 	silent = max(silent - 1, 0)
@@ -309,7 +309,7 @@
 		else if(istype(W, /obj/item/encryptionkey))
 			pai.radio.attackby(W, user, params)
 	else
-		to_chat(user, "Encryption Key ports not configured.")
+		to_chat(user, "Porty kluczy szyfrujących nie są skonfigurowane.")
 
 /mob/living/silicon/pai/can_interact_with(atom/A)
 	if(A == modularInterface)
@@ -319,8 +319,8 @@
 /obj/item/paicard/emag_act(mob/user) // Emag to wipe the master DNA and supplemental directive
 	if(!pai)
 		return
-	to_chat(user, "<span class='notice'>You override [pai]'s directive system, clearing its master string and supplied directive.</span>")
-	to_chat(pai, "<span class='danger'>Warning: System override detected, check directive sub-system for any changes.'</span>")
+	to_chat(user, "<span class='notice'>Nadpisujesz system dyrektyw [pai], czyszcząc identyfikator właściciela i nadaną dyrektywę.</span>")
+	to_chat(pai, "<span class='danger'>Ostrzeżenie: wykryto nadpisanie systemu, sprawdź podsystem dyrektyw pod kątem zmian.'</span>")
 	log_game("[key_name(user)] emagged [key_name(pai)], wiping their master DNA and supplemental directive.")
 	pai.master = null
 	pai.master_dna = null

@@ -39,7 +39,7 @@
 /obj/machinery/smartfridge/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: This unit can hold a maximum of <b>[max_n_of_items]</b> items.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: to urządzenie mieści maksymalnie <b>[max_n_of_items]</b> przedmiotów.</span>"
 
 /obj/machinery/smartfridge/power_change()
 	..()
@@ -89,12 +89,12 @@
 	if(!machine_stat)
 
 		if(contents.len >= max_n_of_items)
-			to_chat(user, "<span class='warning'>\The [src] is full!</span>")
+			to_chat(user, "<span class='warning'>[src] jest pełna!</span>")
 			return FALSE
 
 		if(accept_check(O))
 			load(O, user)
-			user.visible_message("[user] has added \the [O] to \the [src].", "<span class='notice'>You add \the [O] to \the [src].</span>")
+			user.visible_message("[user] dodaje [O] do [src].", "<span class='notice'>Dodajesz [O] do [src].</span>")
 			if (visible_contents)
 				update_icon()
 			return TRUE
@@ -111,18 +111,18 @@
 
 			if(loaded)
 				if(contents.len >= max_n_of_items)
-					user.visible_message("[user] loads \the [src] with \the [O].", \
-									 "<span class='notice'>You fill \the [src] with \the [O].</span>")
+					user.visible_message("[user] ładuje [O] do [src].", \
+									 "<span class='notice'>Napełniasz [src] zawartością [O].</span>")
 				else
-					user.visible_message("[user] loads \the [src] with \the [O].", \
-										 "<span class='notice'>You load \the [src] with \the [O].</span>")
+					user.visible_message("[user] ładuje [O] do [src].", \
+										 "<span class='notice'>Ładujesz [O] do [src].</span>")
 				if(O.contents.len > 0)
-					to_chat(user, "<span class='warning'>Some items are refused.</span>")
+					to_chat(user, "<span class='warning'>Niektóre przedmioty zostały odrzucone.</span>")
 				if (visible_contents)
 					update_icon()
 				return TRUE
 			else
-				to_chat(user, "<span class='warning'>There is nothing in [O] to put in [src]!</span>")
+				to_chat(user, "<span class='warning'>W [O] nie ma niczego, co można włożyć do [src]!</span>")
 				return FALSE
 
 		if(istype(O, /obj/item/organ_storage))
@@ -131,8 +131,8 @@
 				var/obj/item/I = S.contents[1]
 				if(accept_check(I))
 					load(I)
-					user.visible_message("[user] inserts \the [I] into \the [src].", \
-									 "<span class='notice'>You insert \the [I] into \the [src].</span>")
+					user.visible_message("[user] wkłada [I] do [src].", \
+									 "<span class='notice'>Wkładasz [I] do [src].</span>")
 					O.cut_overlays()
 					O.icon_state = "evidenceobj"
 					O.desc = "A container for holding body parts."
@@ -140,14 +140,14 @@
 						update_icon()
 					return TRUE
 				else
-					to_chat(user, "<span class='warning'>[src] does not accept [I]!</span>")
+					to_chat(user, "<span class='warning'>[src] nie przyjmuje [I]!</span>")
 					return FALSE
 			else
-				to_chat(user, "<span class='warning'>There is nothing in [O] to put into [src]!</span>")
+				to_chat(user, "<span class='warning'>W [O] nie ma niczego, co można włożyć do [src]!</span>")
 				return FALSE
 
 	if(user.a_intent != INTENT_HARM)
-		to_chat(user, "<span class='warning'>\The [src] smartly refuses [O].</span>")
+		to_chat(user, "<span class='warning'>[src] sprytnie odrzuca [O].</span>")
 		return FALSE
 	else
 		return ..()
@@ -237,13 +237,13 @@
 			var/desired = 0
 
 			if(!allow_ai_retrieve && isAI(usr))
-				to_chat(usr, "<span class='warning'>[src] does not seem to be configured to respect your authority!</span>")
+				to_chat(usr, "<span class='warning'>Wygląda na to, że [src] nie jest skonfigurowana, by respektować twój autorytet!</span>")
 				return
 
 			if (params["amount"])
 				desired = text2num(params["amount"])
 			else
-				desired = input("How many items?", "How many items would you like to take out?", 1) as null|num
+				desired = input("Ile przedmiotów?", "Ile przedmiotów chcesz wyjąć?", 1) as null|num
 
 			if(!isnum_safe(desired) || desired <= 0)
 				return

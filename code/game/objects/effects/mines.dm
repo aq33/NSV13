@@ -71,17 +71,17 @@
 		return
 
 	if(isspaceturf(plantspot))
-		to_chat(user, "<span class='warning'>you cannot plant a mine in space!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz podłożyć miny w kosmosie!</span>")
 		return
 
 	if((istype(plantspot,/turf/open/lava)) || (istype(plantspot,/turf/open/chasm)))
-		to_chat(user, "<span class='warning'>You can't plant the mine here!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz tu podłożyć miny!</span>")
 		return
 
-	to_chat(user, "<span class='notice'>You start arming the [src]...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz uzbrajać [src]...</span>")
 	if(do_after(user, arming_time, target = src))
 		new mine_type(plantspot)
-		to_chat(user, "<span class='notice'>You plant and arm the [src].</span>")
+		to_chat(user, "<span class='notice'>Podkładasz i uzbrajasz [src].</span>")
 		log_combat(user, src, "planted and armed")
 		qdel(src)
 
@@ -108,9 +108,9 @@
 
 /obj/effect/mine/attackby(obj/I, mob/user, params)
 	if(istype(I, /obj/item/multitool))
-		to_chat(user, "<span class='notice'>You begin to disarm the [src]...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz rozbrajać [src]...</span>")
 		if(do_after(user, disarm_time, target = src))
-			to_chat(user, "<span class='notice'>You disarm the [src].</span>")
+			to_chat(user, "<span class='notice'>Rozbrajasz [src].</span>")
 			new disarm_product(src.loc)
 			qdel(src)
 
@@ -144,7 +144,7 @@
 					
 
 /obj/effect/mine/proc/triggermine(mob/living/victim)
-	visible_message("<span class='danger'>[victim] sets off [icon2html(src, viewers(src))] [src]!</span>")
+	visible_message("<span class='danger'>[victim] uruchamia [icon2html(src, viewers(src))] [src]!</span>")
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
@@ -235,7 +235,7 @@
 
 /obj/effect/mine/kickmine/mineEffect(mob/victim)
 	if(isliving(victim) && victim.client)
-		to_chat(victim, "<span class='userdanger'>You have been kicked FOR NO REISIN!</span>")
+		to_chat(victim, "<span class='userdanger'>Zostajesz wyrzucony BEZ POWODU!</span>")
 		qdel(victim.client)
 
 
@@ -272,7 +272,7 @@
 
 /obj/effect/mine/sound/attackby(obj/item/soundsynth/J, mob/user, params)
 	if(istype(J, /obj/item/soundsynth))
-		to_chat(user, "<span class='notice'>You change the sound settings of the [src].</span>")
+		to_chat(user, "<span class='notice'>Zmieniasz ustawienia dźwięku [src].</span>")
 		sound = J.selected_sound
 
 
@@ -312,7 +312,7 @@
 /obj/effect/mine/pickup/bloodbath/mineEffect(mob/living/carbon/victim)
 	if(!victim.client || !istype(victim))
 		return
-	to_chat(victim, "<span class='reallybig redtext'>RIP AND TEAR</span>")
+	to_chat(victim, "<span class='reallybig redtext'>ROZRYWAJ I ROZDZIERAJ</span>")
 
 	spawn(0)
 		new /datum/hallucination/delusion(victim, TRUE, "demon",duration,0)
@@ -325,7 +325,7 @@
 	victim.put_in_hands(chainsaw, forced = TRUE)
 	chainsaw.attack_self(victim)
 	victim.reagents.add_reagent(/datum/reagent/medicine/adminordrazine,25)
-	to_chat(victim, "<span class='warning'>KILL, KILL, KILL! YOU HAVE NO ALLIES ANYMORE, KILL THEM ALL!</span>")
+	to_chat(victim, "<span class='warning'>ZABIJ, ZABIJ, ZABIJ! NIE MASZ JUŻ SOJUSZNIKÓW, ZABIJ ICH WSZYSTKICH!</span>")
 
 	var/datum/client_colour/colour = victim.add_client_colour(/datum/client_colour/bloodlust)
 	QDEL_IN(colour, 11)
@@ -337,7 +337,7 @@
 	SIGNAL_HANDLER
 
 	if(doomslayer)
-		to_chat(doomslayer, "<span class='notice'>Your bloodlust seeps back into the bog of your subconscious and you regain self control.</span>")
+		to_chat(doomslayer, "<span class='notice'>Twoja żądza krwi wsiąka z powrotem w bagno podświadomości, a ty odzyskujesz panowanie nad sobą.</span>")
 		doomslayer.log_message("exited a blood frenzy", LOG_ATTACK)
 	if(chainsaw)
 		qdel(chainsaw)
@@ -350,7 +350,7 @@
 /obj/effect/mine/pickup/healing/mineEffect(mob/living/carbon/victim)
 	if(!victim.client || !istype(victim))
 		return
-	to_chat(victim, "<span class='notice'>You feel great!</span>")
+	to_chat(victim, "<span class='notice'>Czujesz się świetnie!</span>")
 	victim.revive(full_heal = 1, admin_revive = 1)
 
 /obj/effect/mine/pickup/speed
@@ -362,10 +362,10 @@
 /obj/effect/mine/pickup/speed/mineEffect(mob/living/carbon/victim)
 	if(!victim.client || !istype(victim))
 		return
-	to_chat(victim, "<span class='notice'>You feel fast!</span>")
+	to_chat(victim, "<span class='notice'>Czujesz się szybki!</span>")
 	victim.add_movespeed_modifier(MOVESPEED_ID_YELLOW_ORB, update=TRUE, priority=100, multiplicative_slowdown=-2, blacklisted_movetypes=(FLYING|FLOATING))
 	addtimer(CALLBACK(src, PROC_REF(finish_effect), victim), duration)
 
 /obj/effect/mine/pickup/speed/proc/finish_effect(mob/living/carbon/victim)
 	victim.remove_movespeed_modifier(MOVESPEED_ID_YELLOW_ORB)
-	to_chat(victim, "<span class='notice'>You slow down.</span>")
+	to_chat(victim, "<span class='notice'>Zwalniasz.</span>")

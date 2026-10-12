@@ -82,10 +82,10 @@
 	used_tray.AddToPlate(baked_result)
 
 	if(positive_result)
-		used_oven.visible_message("<span class='notice'>You smell something great coming from [used_oven].</span>",
-		blind_message = "<span class='notice'>You smell something great...</span>")
+		used_oven.visible_message("<span class='notice'>Czujesz wspaniały zapach dochodzący z [used_oven].</span>",
+		blind_message = "<span class='notice'>Czujesz wspaniały zapach...</span>")
 	else
-		used_oven.visible_message("<span class='warning'>You smell a burnt smell coming from [used_oven].</span>", blind_message = "<span class='warning'>You smell a burnt smell...</span>")
+		used_oven.visible_message("<span class='warning'>Czujesz swąd spalenizny dochodzący z [used_oven].</span>", blind_message = "<span class='warning'>Czujesz swąd spalenizny...</span>")
 	SEND_SIGNAL(parent, COMSIG_BAKE_COMPLETED, baked_result)
 	qdel(parent)
 
@@ -96,15 +96,15 @@
 	if(!current_bake_time) //Not baked yet
 		if(positive_result)
 			if(initial(bake_result.gender) == PLURAL)
-				examine_list += "<span class='notice'>[parent] can be ["<span class='bold'>baked</span>"] into some [initial(bake_result.name)].</span>"
+				examine_list += "<span class='notice'>[parent] można ["<span class='bold'>upiec</span>"], by powstało: [initial(bake_result.name)].</span>"
 			else
-				examine_list += "<span class='notice'>[parent] can be ["<span class='bold'>baked</span>"] into \a [initial(bake_result.name)].</span>"
+				examine_list += "<span class='notice'>[parent] można ["<span class='bold'>upiec</span>"], by powstało: [initial(bake_result.name)].</span>"
 		return
 
 	if(positive_result)
 		if(current_bake_time <= required_bake_time * 0.75)
-			examine_list += "<span class='notice'>[parent] probably needs to be baked a bit longer!</span>"
+			examine_list += "<span class='notice'>[parent] chyba trzeba jeszcze trochę piec!</span>"
 		else if(current_bake_time <= required_bake_time)
-			examine_list += "<span class='notice'>[parent] seems to be almost finished baking!</span>"
+			examine_list += "<span class='notice'>[parent] wydaje się prawie upieczony!</span>"
 	else
-		examine_list += "<span class='danger'>[parent] should probably not be baked for much longer!</span>"
+		examine_list += "<span class='danger'>[parent] raczej nie powinien się już długo piec!</span>"

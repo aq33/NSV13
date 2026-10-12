@@ -7,8 +7,8 @@
 	icon_dead = "clown_dead"
 	icon_gib = "clown_gib"
 	turns_per_move = 5
-	speak = list("JOJO!", "HJONK!", "Let me feast on your blood!", "So thirsty!", "Escape is impossible!", "MWAHAHAHAH")
-	emote_see = list("honks", "squeaks")
+	speak = list("JOJO!", "HJONK!", "Pozwól mi napić się twojej krwi!", "Tak bardzo chce mi się pić!", "Ucieczka jest niemożliwa!", "MWAHAHAHAH")
+	emote_see = list("trąbi", "piszczy")
 	speak_chance = 1
 	a_intent = INTENT_HARM
 	maxHealth = 200
@@ -45,7 +45,7 @@
 	if(isspaceturf(get_turf(src)))
 		emote("scream")
 		playsound(src.loc, 'sound/hallucinations/far_noise.ogg', 100, TRUE)
-		visible_message("<span class='warning'>[src] turns to dust in a flash!</span>")
+		visible_message("<span class='warning'>[src] w mgnieniu oka obraca się w proch!</span>")
 		dust()
 
 /mob/living/simple_animal/hostile/dio_clown/attack_hand(mob/living/carbon/human/M)

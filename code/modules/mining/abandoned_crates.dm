@@ -23,8 +23,8 @@
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/structure/closet/crate/secure/loot/attack_hand(mob/user)
 	if(locked)
-		to_chat(user, "<span class='notice'>The crate is locked with a Deca-code lock.</span>")
-		var/input = capped_input(usr, "Enter [codelen] digits. All digits must be unique.", "Deca-Code Lock")
+		to_chat(user, "<span class='notice'>Skrzynia jest zamknięta zamkiem Deca-code.</span>")
+		var/input = capped_input(usr, "Wpisz [codelen] cyfr. Wszystkie cyfry muszą być różne.", "Zamek Deca-code")
 		if(user.canUseTopic(src, BE_CLOSE))
 			var/list/sanitised = list()
 			var/sanitycheck = TRUE
@@ -38,7 +38,7 @@
 					if(sanitised[i] == sanitised[j])
 						sanitycheck = FALSE //if a digit is repeated, reject the input
 			if(input == code)
-				to_chat(user, "<span class='notice'>The crate unlocks!</span>")
+				to_chat(user, "<span class='notice'>Skrzynia się otwiera!</span>")
 				locked = FALSE
 				cut_overlays()
 				add_overlay("securecrateg")
@@ -47,9 +47,9 @@
 				if(!spawned_loot)
 					spawn_loot()
 			else if(!input || !sanitycheck || length(sanitised) != codelen)
-				to_chat(user, "<span class='notice'>You leave the crate alone.</span>")
+				to_chat(user, "<span class='notice'>Zostawiasz skrzynię w spokoju.</span>")
 			else
-				to_chat(user, "<span class='warning'>A red light flashes.</span>")
+				to_chat(user, "<span class='warning'>Miga czerwona lampka.</span>")
 				lastattempt = input
 				attempts--
 				if(attempts == 0)
@@ -65,11 +65,11 @@
 /obj/structure/closet/crate/secure/loot/attackby(obj/item/W, mob/user)
 	if(locked)
 		if(W.tool_behaviour == TOOL_MULTITOOL)
-			to_chat(user, "<span class='notice'>DECA-CODE LOCK REPORT:</span>")
+			to_chat(user, "<span class='notice'>RAPORT ZAMKA DECA-CODE:</span>")
 			if(attempts == 1)
-				to_chat(user, "<span class='warning'>* Anti-Tamper Bomb will activate on next failed access attempt.</span>")
+				to_chat(user, "<span class='warning'>* Bomba przeciwwłamaniowa uruchomi się przy następnej nieudanej próbie.</span>")
 			else
-				to_chat(user, "<span class='notice'>* Anti-Tamper Bomb will activate after [attempts] failed access attempts.</span>")
+				to_chat(user, "<span class='notice'>* Bomba przeciwwłamaniowa uruchomi się po [attempts] nieudanych próbach.</span>")
 			if(lastattempt != null)
 				var/bulls = 0 //right position, right number
 				var/cows = 0 //wrong position but in the puzzle
@@ -93,14 +93,14 @@
 					lastattempt_it += length(lastattempt_char)
 					code_it += length(code_char)
 
-				to_chat(user, "<span class='notice'>Last code attempt, [lastattempt], had [bulls] correct digits at correct positions and [cows] correct digits at incorrect positions.</span>")
+				to_chat(user, "<span class='notice'>Ostatnia próba, [lastattempt], miała [bulls] poprawnych cyfr na poprawnych pozycjach i [cows] poprawnych cyfr na niepoprawnych pozycjach.</span>")
 			return
 	return ..()
 
 /obj/structure/closet/secure/loot/dive_into(mob/living/user)
 	if(!locked)
 		return ..()
-	to_chat(user, "<span class='notice'>That seems like a stupid idea.</span>")
+	to_chat(user, "<span class='notice'>To wygląda na głupi pomysł.</span>")
 	return FALSE
 
 /obj/structure/closet/crate/secure/loot/emag_act(mob/user)

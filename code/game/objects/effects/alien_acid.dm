@@ -71,7 +71,7 @@
 			if(L.acid_act(10, acid_used, "feet"))
 				acid_level = max(0, acid_level - acid_used*10)
 				playsound(L, 'sound/weapons/sear.ogg', 50, 1)
-				to_chat(L, "<span class='userdanger'>[src] burns you!</span>")
+				to_chat(L, "<span class='userdanger'>[src] cię parzy!</span>")
 
 //xenomorph corrosive acid
 /obj/effect/acid/alien
@@ -85,17 +85,17 @@
 			playsound(loc, 'sound/items/welder.ogg', 100, 1)
 		target_strength--
 		if(target_strength <= 0)
-			target.visible_message("<span class='warning'>[target] collapses under its own weight into a puddle of goop and undigested debris!</span>")
+			target.visible_message("<span class='warning'>[target] zapada się pod własnym ciężarem w kałużę mazi i niestrawionych szczątków!</span>")
 			target.acid_melt()
 			qdel(src)
 		else
 
 			switch(target_strength)
 				if(24)
-					visible_message("<span class='warning'>[target] is holding up against the acid!</span>")
+					visible_message("<span class='warning'>[target] opiera się kwasowi!</span>")
 				if(16)
-					visible_message("<span class='warning'>[target] is being melted by the acid!</span>")
+					visible_message("<span class='warning'>[target] topi się od kwasu!</span>")
 				if(8)
-					visible_message("<span class='warning'>[target] is struggling to withstand the acid!</span>")
+					visible_message("<span class='warning'>[target] z trudem wytrzymuje działanie kwasu!</span>")
 				if(4)
-					visible_message("<span class='warning'>[target] begins to crumble under the acid!</span>")
+					visible_message("<span class='warning'>[target] zaczyna kruszyć się pod wpływem kwasu!</span>")

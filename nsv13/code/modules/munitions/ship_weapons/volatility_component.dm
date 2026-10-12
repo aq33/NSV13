@@ -42,7 +42,7 @@ Add this component to an atom to mark it as volatile, if it takes fire damage, i
 	if(desc)
 		examine_list += desc
 		if(volatile_when_hit) //Don't play with the torpedo warheads
-			examine_list += "<span class='warning'>It may explode if hit with enough force!</span>"
+			examine_list += "<span class='warning'>Może wybuchnąć, jeśli zostanie uderzony z wystarczającą siłą!</span>"
 
 /datum/component/volatile/Initialize(volatility = 1, volatile_when_hit = FALSE, explosion_scale = 1)
 	if(volatility <= 0)

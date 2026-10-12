@@ -5,7 +5,7 @@
  */
 /obj/item/circuit_component/compare/logic
 	display_name = "Logic"
-	display_desc = "A component with 'and' and 'or' capabilities."
+	display_desc = "Komponent z funkcjami „i” oraz „lub”."
 
 /obj/item/circuit_component/compare/logic/populate_options()
 	var/static/component_options = list(

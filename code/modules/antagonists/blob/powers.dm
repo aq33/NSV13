@@ -74,8 +74,8 @@
 		var/list/nodes = list()
 		for(var/i in 1 to GLOB.blob_nodes.len)
 			var/obj/structure/blob/node/B = GLOB.blob_nodes[i]
-			nodes["Blob Node #[i] ([B.overmind ? "[B.overmind.blobstrain.name]":"No Strain"])"] = B
-		var/node_name = input(src, "Choose a node to jump to.", "Node Jump") in nodes
+			nodes["Węzeł nr [i] ([B.overmind ? "[B.overmind.blobstrain.name]":"brak odmiany"])"] = B
+		var/node_name = input(src, "Wybierz węzeł, do którego chcesz skoczyć.", "Skok do węzła") in nodes
 		var/obj/structure/blob/node/chosen_node = nodes[node_name]
 		if(chosen_node)
 			forceMove(chosen_node.loc)
@@ -110,9 +110,9 @@
 	set desc = "Toggle requiring nodes to place resource and factory blobs."
 	nodes_required = !nodes_required
 	if(nodes_required)
-		to_chat(src, "<span class='warning'>You now require a nearby node or core to place factory and resource blobs.</span>")
+		to_chat(src, "<span class='warning'>Do stawiania fabryk i grzybów zasobów potrzebujesz teraz pobliskiego węzła lub rdzenia.</span>")
 	else
-		to_chat(src, "<span class='warning'>You no longer require a nearby node or core to place factory and resource blobs.</span>")
+		to_chat(src, "<span class='warning'>Do stawiania fabryk i grzybów zasobów nie potrzebujesz już pobliskiego węzła ani rdzenia.</span>")
 
 /mob/camera/blob/verb/create_shield_power()
 	set category = "Blob"
@@ -171,7 +171,7 @@
 		return
 
 	B.naut = TRUE	//temporary placeholder to prevent creation of more than one per factory.
-	to_chat(src, "<span class='notice'>You attempt to produce a blobbernaut.</span>")
+	to_chat(src, "<span class='notice'>Próbujesz stworzyć grzybonautę.</span>")
 	var/list/mob/dead/observer/candidates = pollGhostCandidates("Czy chesz zagrać jako Grzybonauta odmiany [blobstrain.name]?", ROLE_BLOB, /datum/role_preference/midround_ghost/blob, 7.5 SECONDS, ignore_category = POLL_IGNORE_BLOB_HELPER) //players must answer rapidly
 	if(LAZYLEN(candidates)) //if we got at least one candidate, they're a blobbernaut now.
 		B.max_integrity = initial(B.max_integrity) * 0.25 //factories that produced a blobbernaut have much lower health
@@ -345,7 +345,7 @@
 	set desc = "Zmienia twoją odmianę na inną, wybraną losowo."
 
 	if (!free_strain_rerolls && blob_points < BLOB_REROLL_COST)
-		to_chat(src, "<span class='warning'>You need at least [BLOB_REROLL_COST] resources to reroll your strain again!</span>")
+		to_chat(src, "<span class='warning'>Potrzebujesz co najmniej [BLOB_REROLL_COST] zasobów, żeby znów przelosować odmianę!</span>")
 		return
 
 	open_reroll_menu()

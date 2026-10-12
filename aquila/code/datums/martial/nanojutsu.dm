@@ -35,8 +35,8 @@
 	if(!D.stat)
 		log_combat(A, D, "used a wrist lock (Nanojutsu) on")
 		A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
-		D.visible_message("<span class='warning'>[A] grabs [D]'s wrist and wrenches it sideways!</span>", \
-						  "<span class='userdanger'>[A] grabs your wrist and wrenches it to the side!</span>")
+		D.visible_message("<span class='warning'>[A] chwyta [D] za nadgarstek i wykręca go w bok!</span>", \
+						  "<span class='userdanger'>[A] chwyta cię za nadgarstek i wykręca go w bok!</span>")
 		playsound(get_turf(A), 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 		D.emote("scream")
 		D.dropItemToGround(D.get_active_held_item())
@@ -52,8 +52,8 @@
 		return FALSE
 	if(!D.stat)
 		log_combat(A, D, "used an entering throw (Nanojutsu) on")
-		D.visible_message("<span class='warning'>[A] tripped [D] and pinned them to the floor!</span>", \
-							"<span class='userdanger'>[A] tripped you and pinned you to the floor!</span>", null, COMBAT_MESSAGE_RANGE)
+		D.visible_message("<span class='warning'>[A] podcina [D] i przygważdża go do podłogi!</span>", \
+							"<span class='userdanger'>[A] podcina cię i przygważdża do podłogi!</span>", null, COMBAT_MESSAGE_RANGE)
 		playsound(get_turf(D), 'sound/weapons/punch1.ogg', 75, 1, -1)
 		D.emote("gasp")
 		A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
@@ -70,8 +70,8 @@
 		if(D.is_eyes_covered())
 			return basic_hit(A,D)
 		log_combat(A, D, "used an eye strike (Nanojutsu) on")
-		D.visible_message("<span class='warning'>[A] struck [D] in the eyes!</span>", \
-							"<span class='userdanger'>[A] struck you in the eyes!</span>", null, COMBAT_MESSAGE_RANGE)
+		D.visible_message("<span class='warning'>[A] uderza [D] w oczy!</span>", \
+							"<span class='userdanger'>[A] uderza cię w oczy!</span>", null, COMBAT_MESSAGE_RANGE)
 		playsound(get_turf(A), 'sound/weapons/thudswoosh.ogg', 75, 1, -1)
 		A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
 		D.blur_eyes(10)
@@ -87,8 +87,8 @@
 		return FALSE
 	if(!(D.mobility_flags & MOBILITY_STAND))
 		log_combat(A, D, "used the finisher (Nanojutsu) on")
-		D.visible_message("<span class='warning'>[A] kicked [D] in the abdomen!</span>", \
-							"<span class='userdanger'>[A] kicked you in the abdomen!</span>", null, COMBAT_MESSAGE_RANGE)
+		D.visible_message("<span class='warning'>[A] kopie [D] w brzuch!</span>", \
+							"<span class='userdanger'>[A] kopie cię w brzuch!</span>", null, COMBAT_MESSAGE_RANGE)
 		playsound(get_turf(D), 'sound/weapons/punch1.ogg', 75, 1, -1)
 		A.do_attack_animation(D, ATTACK_EFFECT_KICK)
 		D.apply_damage(10, A.dna.species.attack_type, BODY_ZONE_CHEST, def_check)
@@ -119,9 +119,9 @@
 	set desc = "Remember the martial techniques of Nanojutsu."
 	set category = "Nanojutsu"
 
-	to_chat(usr, "<span class='danger'>LOADING README.TXT...</span>")
+	to_chat(usr, "<span class='danger'>WCZYTYWANIE README.TXT...</span>")
 
-	to_chat(usr, "<span class='warning'>WRISTLOCK.EXE</span>: Disarm Disarm Grab. Forces opponent to drop item in hand.")
-	to_chat(usr, "<span class='warning'>ENTERINGTHROW.EXE</span>: Disarm Harm Grab. Knocks your opponent down briefly and deals stamina damage.")
-	to_chat(usr, "<span class='warning'>EYESTRIKE.EXE</span>: Harm Disarm Disarm. Very briefly confuses your opponent and blurs their vision.")
-	to_chat(usr, "<span class='warning'>FINISHER.EXE</span>: Harm Disarm Harm. Deals bonus stamina damage if your opponent isn't standing up.")
+	to_chat(usr, "<span class='warning'>WRISTLOCK.EXE</span>: rozbrojenie, rozbrojenie, chwyt. Zmusza przeciwnika do upuszczenia przedmiotu z ręki.")
+	to_chat(usr, "<span class='warning'>ENTERINGTHROW.EXE</span>: rozbrojenie, krzywda, chwyt. Na chwilę przewraca przeciwnika i zadaje obrażenia wytrzymałości.")
+	to_chat(usr, "<span class='warning'>EYESTRIKE.EXE</span>: krzywda, rozbrojenie, rozbrojenie. Na bardzo krótko dezorientuje przeciwnika i rozmywa mu wzrok.")
+	to_chat(usr, "<span class='warning'>FINISHER.EXE</span>: krzywda, rozbrojenie, krzywda. Zadaje dodatkowe obrażenia wytrzymałości, jeśli przeciwnik nie stoi.")

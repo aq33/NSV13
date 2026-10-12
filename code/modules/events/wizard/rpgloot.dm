@@ -57,21 +57,21 @@
 		var/effect_description
 		if(target.rpg_loot.quality >= 0)
 			span = "<span class='notice'>"
-			effect_description = "<span class='heavy_brass'>shimmering golden shield</span>"
+			effect_description = "<span class='heavy_brass'>lśniącą złotą tarczą</span>"
 		else
 			span = "<span class='danger'>"
-			effect_description = "<span class='umbra_emphasis'>mottled black glow</span>"
+			effect_description = "<span class='umbra_emphasis'>plamistą czarną poświatą</span>"
 
-		T.visible_message("[span][original_name] is covered by a [effect_description] and then transforms into [target]!</span>")
+		T.visible_message("[span][original_name] pokrywa się [effect_description], po czym zmienia się w [target]!</span>")
 
 	else
 		var/quality = rpg_loot_datum.quality
 
 		if(can_backfire && quality > 9 && prob((quality - 9)*10))
-			T.visible_message("<span class='danger'>[target] <span class='inathneq_large'>violently glows blue</span> for a while, then evaporates.</span>")
+			T.visible_message("<span class='danger'>[target] <span class='inathneq_large'>gwałtownie świeci na niebiesko</span> przez chwilę, po czym wyparowuje.</span>")
 			target.burn()
 		else
-			T.visible_message("<span class='notice'>[target] <span class='inathneq_small'>glows blue</span> and seems vaguely \"better\"!</span>")
+			T.visible_message("<span class='notice'>[target] <span class='inathneq_small'>świeci na niebiesko</span> i wydaje się jakby \"lepszy\"!</span>")
 			rpg_loot_datum.modify(upgrade_amount)
 
 	if(--uses <= 0)

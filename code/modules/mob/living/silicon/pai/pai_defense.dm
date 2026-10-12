@@ -29,34 +29,34 @@
 /mob/living/silicon/pai/attack_hand(mob/living/carbon/human/user)
 	switch(user.a_intent)
 		if("help")
-			visible_message("<span class='notice'>[user] gently pats [src] on the head, eliciting an off-putting buzzing from its holographic field.</span>")
+			visible_message("<span class='notice'>[user] delikatnie klepie [src] po głowie, wywołując nieprzyjemne brzęczenie jej pola holograficznego.</span>")
 		if("disarm")
-			visible_message("<span class='notice'>[user] boops [src] on the head!</span>")
+			visible_message("<span class='notice'>[user] pstryka [src] w nosek!</span>")
 		if("harm")
 			user.do_attack_animation(src)
 			if (user.name == master)
-				visible_message("<span class='notice'>Responding to its master's touch, [src] disengages its holochassis emitter, rapidly losing coherence.</span>")
+				visible_message("<span class='notice'>Reagując na dotyk właściciela, [src] wyłącza emiter holoobudowy, szybko tracąc spójność.</span>")
 				addtimer(CALLBACK(src, PROC_REF(fold_into_hand), user), 10)
 			else
-				visible_message("<span class='danger'>[user] stomps on [src]!.</span>")
+				visible_message("<span class='danger'>[user] depcze [src]!</span>")
 				take_holo_damage(2)
 
 /mob/living/silicon/pai/proc/fold_into_hand(mob/user)
 	fold_in()
 	if(user.put_in_hands(card))
-		user.visible_message("<span class='notice'>[user] promptly scoops up [user.p_their()] pAI's card.</span>")
+		user.visible_message("<span class='notice'>[user] szybko podnosi kartę swojego pAI.</span>")
 
 /mob/living/silicon/pai/bullet_act(obj/item/projectile/Proj)
 	if(Proj.stun)
 		fold_in(force = TRUE)
-		src.visible_message("<span class='warning'>The electrically-charged projectile disrupts [src]'s holomatrix, forcing [src] to fold in!</span>")
+		src.visible_message("<span class='warning'>Naładowany elektrycznie pocisk zakłóca holomatrycę [src], zmuszając ją do złożenia się!</span>")
 	. = ..(Proj)
 
 /mob/living/silicon/pai/stripPanelUnequip(obj/item/what, mob/who, where) //prevents stripping
-	to_chat(src, "<span class='warning'>Your holochassis stutters and warps intensely as you attempt to interact with the object, forcing you to cease lest the field fail.</span>")
+	to_chat(src, "<span class='warning'>Twoja holoobudowa drga i mocno się zniekształca, gdy próbujesz wejść w interakcję z obiektem, więc przestajesz, zanim pole zawiedzie.</span>")
 
 /mob/living/silicon/pai/stripPanelEquip(obj/item/what, mob/who, where) //prevents stripping
-	to_chat(src, "<span class='warning'>Your holochassis stutters and warps intensely as you attempt to interact with the object, forcing you to cease lest the field fail.</span>")
+	to_chat(src, "<span class='warning'>Twoja holoobudowa drga i mocno się zniekształca, gdy próbujesz wejść w interakcję z obiektem, więc przestajesz, zanim pole zawiedzie.</span>")
 
 /mob/living/silicon/pai/IgniteMob(var/mob/living/silicon/pai/P)
 	return FALSE //No we're not flammable
@@ -65,7 +65,7 @@
 	emitterhealth = CLAMP((emitterhealth - amount), -50, emittermaxhealth)
 	if(emitterhealth < 0)
 		fold_in(force = TRUE)
-	to_chat(src, "<span class='userdanger'>The impact degrades your holochassis!</span>")
+	to_chat(src, "<span class='userdanger'>Uderzenie osłabia twoją holoobudowę!</span>")
 	return amount
 
 /mob/living/silicon/pai/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE)

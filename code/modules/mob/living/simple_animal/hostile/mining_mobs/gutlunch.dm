@@ -7,9 +7,9 @@
 	icon_living = "gutlunch"
 	icon_dead = "gutlunch"
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
-	speak_emote = list("warbles", "quavers")
-	emote_hear = list("trills.")
-	emote_see = list("sniffs.", "burps.")
+	speak_emote = list("gulgocze", "drży")
+	emote_hear = list("trylikuje.")
+	emote_see = list("węszy.", "beka.")
 	weather_immunities = list("lava","ash")
 	faction = list("mining", "ashwalker")
 	density = FALSE
@@ -18,10 +18,10 @@
 	obj_damage = 0
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	move_to_delay = 15
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm   = "squishes"
-	friendly = "pinches"
+	response_help  = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm   = "rozgniata"
+	friendly = "szczypie"
 	a_intent = INTENT_HELP
 	ventcrawler = VENTCRAWLER_ALWAYS
 	gold_core_spawnable = FRIENDLY_SPAWN
@@ -34,7 +34,7 @@
 	search_objects = 3 //Ancient simplemob AI shitcode. This makes them ignore all other mobs.
 	del_on_death = TRUE
 	loot = list(/obj/effect/decal/cleanable/blood/gibs)
-	deathmessage = "is pulped into bugmash."
+	deathmessage = "zostaje rozgnieciony na robaczą papkę."
 
 	animal_species = /mob/living/simple_animal/hostile/asteroid/gutlunch
 	childtype = list(/mob/living/simple_animal/hostile/asteroid/gutlunch/grublunch = 100)
@@ -90,7 +90,7 @@
 	if(is_type_in_typecache(target,wanted_objects)) //we eats
 		udder.generateMilk()
 		regenerate_icons()
-		visible_message("<span class='notice'>[src] slurps up [target].</span>")
+		visible_message("<span class='notice'>[src] wsysa [target].</span>")
 		qdel(target)
 	return ..()
 
@@ -150,7 +150,7 @@
 	L.faction = faction
 	L.setDir(dir)
 	L.Stun(20, ignore_canstun = TRUE)
-	visible_message("<span class='notice'>[src] grows up into [L].</span>")
+	visible_message("<span class='notice'>[src] dorasta, stając się [L].</span>")
 	Destroy()
 
 //Gutlunch udder

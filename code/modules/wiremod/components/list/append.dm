@@ -5,7 +5,7 @@
 ***/
 /obj/item/circuit_component/append
 	display_name = "Append Component"
-	display_desc = "A component that appends a value to a list."
+	display_desc = "Komponent, który dopisuje wartość do listy."
 
 	//Input ports
 	var/datum/port/input/list_port

@@ -35,7 +35,7 @@
 
 /obj/item/taperecorder/examine(mob/user)
 	. = ..()
-	. += "The wire panel is [open_panel ? "opened" : "closed"]."
+	. += "Panel przewodów jest [open_panel ? "otwarty" : "zamknięty"]."
 
 
 /obj/item/taperecorder/attackby(obj/item/I, mob/user, params)
@@ -43,13 +43,13 @@
 		if(!user.transferItemToLoc(I,src))
 			return
 		mytape = I
-		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
+		to_chat(user, "<span class='notice'>Wkładasz [I] do [src].</span>")
 		update_icon()
 
 
 /obj/item/taperecorder/proc/eject(mob/user)
 	if(mytape)
-		to_chat(user, "<span class='notice'>You remove [mytape] from [src].</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz [mytape] z [src].</span>")
 		stop()
 		user.put_in_hands(mytape)
 		mytape = null
@@ -119,11 +119,11 @@
 		return
 
 	if(mytape.used_capacity < mytape.max_capacity)
-		to_chat(usr, "<span class='notice'>Recording started.</span>")
+		to_chat(usr, "<span class='notice'>Rozpoczęto nagrywanie.</span>")
 		recording = 1
 		update_icon()
 		mytape.timestamp += mytape.used_capacity
-		mytape.storedinfo += "\[[time2text(mytape.used_capacity * 10,"mm:ss")]\] Recording started."
+		mytape.storedinfo += "\[[time2text(mytape.used_capacity * 10,"mm:ss")]\] Rozpoczęto nagrywanie."
 		var/used = mytape.used_capacity	//to stop runtimes when you eject the tape
 		var/max = mytape.max_capacity
 		while(recording && used < max)
@@ -133,7 +133,7 @@
 		recording = 0
 		update_icon()
 	else
-		to_chat(usr, "<span class='notice'>The tape is full.</span>")
+		to_chat(usr, "<span class='notice'>Taśma jest pełna.</span>")
 
 
 /obj/item/taperecorder/verb/stop()
@@ -146,13 +146,13 @@
 	if(recording)
 		recording = 0
 		mytape.timestamp += mytape.used_capacity
-		mytape.storedinfo += "\[[time2text(mytape.used_capacity * 10,"mm:ss")]\] Recording stopped."
-		to_chat(usr, "<span class='notice'>Recording stopped.</span>")
+		mytape.storedinfo += "\[[time2text(mytape.used_capacity * 10,"mm:ss")]\] Zatrzymano nagrywanie."
+		to_chat(usr, "<span class='notice'>Zatrzymano nagrywanie.</span>")
 		return
 	else if(playing)
 		playing = 0
 		var/turf/T = get_turf(src)
-		T.visible_message("<font color=Maroon><B>Tape Recorder</B>: Playback stopped.</font>")
+		T.visible_message("<font color=Maroon><B>Dyktafon</B>: zatrzymano odtwarzanie.</font>")
 	update_icon()
 
 
@@ -171,7 +171,7 @@
 
 	playing = 1
 	update_icon()
-	to_chat(usr, "<span class='notice'>Playing started.</span>")
+	to_chat(usr, "<span class='notice'>Rozpoczęto odtwarzanie.</span>")
 	var/used = mytape.used_capacity	//to stop runtimes when you eject the tape
 	var/max = mytape.max_capacity
 	for(var/i = 1, used < max, sleep(10 * playsleepseconds))
@@ -185,12 +185,12 @@
 		if(mytape.storedinfo.len < i + 1)
 			playsleepseconds = 1
 			sleep(10)
-			say("End of recording.")
+			say("Koniec nagrania.")
 		else
 			playsleepseconds = mytape.timestamp[i + 1] - mytape.timestamp[i]
 		if(playsleepseconds > 14)
 			sleep(10)
-			say("Skipping [playsleepseconds] seconds of silence")
+			say("Pomijanie [playsleepseconds] s ciszy")
 			playsleepseconds = 1
 		i++
 
@@ -216,12 +216,12 @@
 	if(!mytape)
 		return
 	if(!canprint)
-		to_chat(usr, "<span class='notice'>The recorder can't print that fast!</span>")
+		to_chat(usr, "<span class='notice'>Dyktafon nie drukuje tak szybko!</span>")
 		return
 	if(recording || playing)
 		return
 
-	to_chat(usr, "<span class='notice'>Transcript printed.</span>")
+	to_chat(usr, "<span class='notice'>Wydrukowano transkrypcję.</span>")
 	var/obj/item/paper/transcript_paper = new /obj/item/paper(get_turf(src))
 	var/t1 = "<B>Transcript:</B><BR><BR>"
 	for(var/i = 1, mytape.storedinfo.len >= i, i++)
@@ -263,7 +263,7 @@
 
 /obj/item/tape/attack_self(mob/user)
 	if(!ruined)
-		to_chat(user, "<span class='notice'>You pull out all the tape!</span>")
+		to_chat(user, "<span class='notice'>Wyciągasz całą taśmę!</span>")
 		ruin()
 
 
@@ -282,9 +282,9 @@
 
 /obj/item/tape/attackby(obj/item/I, mob/user, params)
 	if(ruined && I.tool_behaviour == TOOL_SCREWDRIVER || istype(I, /obj/item/pen))
-		to_chat(user, "<span class='notice'>You start winding the tape back in...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz nawijać taśmę z powrotem...</span>")
 		if(I.use_tool(src, user, 120))
-			to_chat(user, "<span class='notice'>You wound the tape back in.</span>")
+			to_chat(user, "<span class='notice'>Nawijasz taśmę z powrotem.</span>")
 			fix()
 
 //Random colour tapes

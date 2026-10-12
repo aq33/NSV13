@@ -70,11 +70,11 @@
 
 /datum/objective/overthrow/heads/update_explanation_text()
 	if(targets.len)
-		explanation_text = "Work with your team to convert, exile or kill "
+		explanation_text = "Razem z drużyną przeciągnij na swoją stronę, wygnaj lub zabij "
 		explanation_text += english_list(targets)
-		explanation_text += ". Converting to your team will give you more points, whereas killing will give you the least. Syndicates don't want to stir up too many troubles."
+		explanation_text += ". Przeciągnięcie na swoją stronę daje najwięcej punktów, a zabójstwo najmniej. Syndykat nie chce wywoływać zbyt wielu kłopotów."
 	else
-		explanation_text = "Wait until any heads arrive. Once that happens, check your objectives again to see the updated objective. It may require around [OBJECTIVE_UPDATING_TIME] seconds to update."
+		explanation_text = "Zaczekaj, aż pojawi się któryś z szefów. Gdy to nastąpi, sprawdź ponownie swoje cele. Aktualizacja może potrwać około [OBJECTIVE_UPDATING_TIME] s."
 
 /datum/objective/overthrow/heads/check_completion()
 	if(!targets.len)
@@ -109,7 +109,7 @@
 
 // AI converting objective. The team who managed to convert the AI with the overthrow module gets the normal 1.5x boost.
 /datum/objective/overthrow/AI
-	explanation_text = "Enslave the AIs to your team using the special AI module board in your storage implant. It is required you use said module."
+	explanation_text = "Zniewól SI dla swojej drużyny za pomocą specjalnej płytki modułu SI z twojego implantu schowka. Musisz użyć właśnie tego modułu."
 
 /datum/objective/overthrow/AI/get_points() // If you simply kill the Ai you get nothing, you need it to overthrow the heads.
 	. = 0 // Support for multiple AIs. More AIs means more control over the station.
@@ -123,9 +123,9 @@
 
 /datum/objective/overthrow/AI/update_explanation_text()
 	if(!GLOB.ai_list.len)
-		explanation_text = "Nothing."
+		explanation_text = "Nic."
 	else
-		explanation_text = "Enslave the AIs to your team using the special AI module board in your storage implant. It is required you use said module."
+		explanation_text = "Zniewól SI dla swojej drużyny za pomocą specjalnej płytki modułu SI z twojego implantu schowka. Musisz użyć właśnie tego modułu."
 
 /datum/objective/overthrow/AI/check_completion()
 	if(!GLOB.ai_list.len)
@@ -137,9 +137,9 @@
 
 /datum/objective/overthrow/target/update_explanation_text()
 	if(target)
-		explanation_text = "Work with your team to convert, exile or kill [target.name], the [target.assigned_role]. Converting to your team will give you more points, whereas killing will give you the least. Syndicates don't want to stir up too many troubles."
+		explanation_text = "Razem z drużyną przeciągnij na swoją stronę, wygnaj lub zabij [target.name] ([target.assigned_role]). Przeciągnięcie na swoją stronę daje najwięcej punktów, a zabójstwo najmniej. Syndykat nie chce wywoływać zbyt wielu kłopotów."
 	else
-		explanation_text = "Nothing."
+		explanation_text = "Nic."
 
 /datum/objective/overthrow/target/is_unique_objective(datum/mind/possible_target, list/dupe_search_range)
 	if(possible_target.assigned_role in GLOB.command_positions)

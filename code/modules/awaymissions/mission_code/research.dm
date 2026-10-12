@@ -65,5 +65,5 @@
 //research papers
 
 /obj/item/paper/crumpled/awaymissions/research/sensitive_info
-	default_raw_text = "Theres a lot of sensitive info on these disks, try and keep them secure! If these backup copies get into the wrong hands, god knows what they could do with the genetic research on these disk.."
+	default_raw_text = "Na tych dyskach jest mnóstwo wrażliwych informacji, starajcie się je zabezpieczyć! Jeśli te kopie zapasowe wpadną w niepowołane ręce, bóg jeden wie, co mogliby zrobić z badaniami genetycznymi na tych dyskach.."
 

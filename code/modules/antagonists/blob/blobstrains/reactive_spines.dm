@@ -7,21 +7,21 @@
 	analyzerdesceffect = "Po zaatakowaniu go fizycznie samoistnie zaatakuje agresora oraz wszystko w jego pobliżu."
 	color = "#9ACD32"
 	complementary_color = "#FFA500"
-	blobbernaut_message = "stabs"
-	message = "The blob stabs you"
+	blobbernaut_message = "dźga"
+	message = "Grzyb cię dźga"
 	reagent = /datum/reagent/blob/reactive_spines
 
 /datum/blobstrain/reagent/reactive_spines/damage_reaction(obj/structure/blob/B, damage, damage_type, damage_flag)
 	if(damage && damage_type == BRUTE && B.obj_integrity - damage > 0) //is there any damage, is it brute, and will we be alive
 		if(damage_flag == "melee")
-			B.visible_message("<span class='boldwarning'>The blob retaliates, lashing out!</span>")
+			B.visible_message("<span class='boldwarning'>Grzyb kontratakuje, wymierzając ciosy!</span>")
 		for(var/atom/A as() in range(1, B))
 			A.blob_act(B)
 	return ..()
 
 /datum/reagent/blob/reactive_spines
 	name = "Reactive Spines"
-	taste_description = "rock"
+	taste_description = "skała"
 	color = "#9ACD32"
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
 

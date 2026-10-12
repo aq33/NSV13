@@ -17,7 +17,7 @@
 				if(hidden_uplink)
 					hidden_uplink.telecrystals += amount
 					use(amount)
-					to_chat(user, "<span class='notice'>You press [src] onto yourself and charge your hidden uplink.</span>")
+					to_chat(user, "<span class='notice'>Przyciskasz [src] do siebie i ładujesz swój ukryty uplink.</span>")
 	else
 		return ..()
 
@@ -26,11 +26,11 @@
 	if(istype(I, /obj/item/computer_hardware/hard_drive/role/virus/frame))
 		var/obj/item/computer_hardware/hard_drive/role/virus/frame/cart = I
 		if(!cart.charges)
-			to_chat(user, "<span class='notice'>[cart] is out of charges, it's refusing to accept [src].</span>")
+			to_chat(user, "<span class='notice'>[cart] nie ma ładunków i odrzuca [src].</span>")
 			return
 		cart.telecrystals += amount
 		use(amount)
-		to_chat(user, "<span class='notice'>You slot [src] into [cart].  The next time it's used, it will also give telecrystals.</span>")
+		to_chat(user, "<span class='notice'>Wsuwasz [src] do [cart]. Przy następnym użyciu da też telekryształy.</span>")
 
 /obj/item/stack/telecrystal/five
 	amount = 5

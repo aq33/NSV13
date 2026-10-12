@@ -2,15 +2,15 @@
 
 /datum/computer_file/program/power_monitor
 	filename = "powermonitor"
-	filedesc = "Power Monitor"
+	filedesc = "Monitor zasilania"
 	category = PROGRAM_CATEGORY_ENGI
 	program_icon_state = "power_monitor"
-	extended_desc = "This program connects to sensors around the station to provide information about electrical systems"
+	extended_desc = "Ten program łączy się z czujnikami na stacji, dostarczając informacji o systemach elektrycznych"
 	ui_header = "power_norm.gif"
 	transfer_access = list(ACCESS_ENGINE)
 	usage_flags = PROGRAM_CONSOLE
 	requires_ntnet = 0
-	network_destination = "power monitoring system"
+	network_destination = "system monitorowania zasilania"
 	size = 9
 	tgui_id = "NtosPowerMonitor"
 	program_icon = "plug"

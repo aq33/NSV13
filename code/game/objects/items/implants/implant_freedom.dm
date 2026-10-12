@@ -9,7 +9,7 @@
 /obj/item/implant/freedom/activate()
 	. = ..()
 	uses--
-	to_chat(imp_in, "You feel a faint click.")
+	to_chat(imp_in, "Czujesz ciche kliknięcie.")
 	if(iscarbon(imp_in))
 		var/mob/living/carbon/C_imp_in = imp_in
 		C_imp_in.uncuff()
@@ -19,18 +19,7 @@
 
 /obj/item/implant/freedom/get_data()
 	var/dat = {"
-<b>Implant Specifications:</b><BR>
-<b>Name:</b> Freedom Beacon<BR>
-<b>Life:</b> optimum 5 uses<BR>
-<b>Important Notes:</b> <font color='red'>Illegal</font><BR>
-<HR>
-<b>Implant Details:</b> <BR>
-<b>Function:</b> Transmits a specialized cluster of signals to override handcuff locking
-mechanisms<BR>
-<b>Special Features:</b><BR>
-<i>Neuro-Scan</i>- Analyzes certain shadow signals in the nervous system<BR>
-<HR>
-No Implant Specifics"}
+<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Nadajnik wolności<BR><b>Żywotność:</b> optymalnie 5 użyć<BR><b>Ważne uwagi:</b> <font color='red'>Nielegalny</font><BR><HR><b>Szczegóły implantu:</b> <BR><b>Działanie:</b> wysyła specjalny zestaw sygnałów nadpisujących mechanizmy blokujące kajdanki<BR><b>Cechy specjalne:</b><BR><i>Neuroskan</i> - analizuje określone sygnały cienia w układzie nerwowym<BR><HR>Brak szczegółów implantu"}
 	return dat
 
 

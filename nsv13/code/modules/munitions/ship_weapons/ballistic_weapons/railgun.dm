@@ -58,7 +58,7 @@
 /obj/machinery/ship_weapon/railgun/examine()
 	. = ..()
 	if(maint_state == MSTATE_PRIEDOUT)
-		. += "The loading tray could be removed by hand."
+		. += "Tacę ładowniczą można wyjąć ręką."
 
 /obj/machinery/ship_weapon/railgun/attack_robot(mob/user)
 	. = ..()
@@ -69,13 +69,13 @@
 	if(maint_state != MSTATE_PRIEDOUT)
 		return
 
-	to_chat(user, "<span class='notice'>You start removing the loading tray from the [src].</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz wyjmować tacę ładowniczą z [src].</span>")
 	if(do_after(user, 2 SECONDS, target=src))
 		var/obj/W = (locate(/obj/item/ship_weapon/parts/loading_tray) in component_parts)
 		if(W)
 			W.forceMove(user.loc)
 			component_parts -= W
-		to_chat(user, "<span class='notice'>You remove the loading tray from the [src].</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz tacę ładowniczą z [src].</span>")
 		spawn_frame(TRUE)
 
 /obj/machinery/ship_weapon/railgun/spawn_frame(disassembled)
@@ -97,7 +97,7 @@
 
 /obj/machinery/ship_weapon/railgun/after_fire()
 	if(!length(ammo))
-		say("Autoloader has depleted all ammunition sources. Reload required.")
+		say("Autoładowacz wyczerpał wszystkie źródła amunicji. Wymagane przeładowanie.")
 		return
 	..()
 

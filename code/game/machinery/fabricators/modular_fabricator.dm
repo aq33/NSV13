@@ -105,7 +105,7 @@
 	. += ..()
 	var/datum/component/material_container/materials = get_material_container()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Storing up to <b>[materials.max_amount]</b> material units.<br>Material consumption at <b>[creation_efficiency*100]%</b>.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: pojemność: do <b>[materials.max_amount]</b> jednostek materiałów.<br>Zużycie materiałów: <b>[creation_efficiency*100]%</b>.</span>"
 
 /obj/machinery/modular_fabricator/ui_state()
 	return GLOB.default_state
@@ -309,7 +309,7 @@
 	for(var/obj/machinery/computer/rdconsole/RDC in orange(7, src))
 		RDC.stored_research.copy_research_to(stored_research)
 		update_viewer_statics()
-		say("Successfully synchronized with R&D server.")
+		say("Pomyślnie zsynchronizowano z serwerem B+R.")
 		return
 
 /obj/machinery/modular_fabricator/proc/update_viewer_statics()
@@ -379,7 +379,7 @@
 		requested_design_id = item_queue[1]
 	//Queue processing done
 	if(!requested_design_id)
-		say("Queue processing completed.")
+		say("Przetwarzanie kolejki zakończone.")
 		operating = FALSE
 		return
 	operating = TRUE
@@ -387,7 +387,7 @@
 	being_built = stored_research.isDesignResearchedID(requested_design_id)
 	if(!being_built)
 		playsound(src, 'sound/machines/buzz-two.ogg', 50)
-		say("Unknown design requested, removing from queue.")
+		say("Zażądano nieznanego wzoru, usuwanie z kolejki.")
 		item_queue -= requested_design_id
 		addtimer(CALLBACK(src, PROC_REF(restart_process)), 50)
 		return
@@ -455,7 +455,7 @@
 		addtimer(CALLBACK(src, PROC_REF(make_item), power, materials_used, custom_materials, multiplier, coeff, is_stack, requested_design_id, queue_data), time)
 		addtimer(CALLBACK(src, PROC_REF(restart_process)), time + 5)
 	else
-		say("Insufficient materials, operation will proceed when sufficient materials are available.")
+		say("Za mało materiałów, operacja zostanie wznowiona, gdy będzie ich dość.")
 		operating = FALSE
 		wants_operate = TRUE
 

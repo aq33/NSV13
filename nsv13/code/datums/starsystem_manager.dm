@@ -144,11 +144,11 @@
 			var/datum/fleet/target = locate(params["id"])
 			if(!istype(target))
 				return FALSE
-			var/command = tgui_alert(usr, "What do you want to do with [target]?", "Starsystem Management", list("Jump", "Variables", "Delete"))
+			var/command = tgui_alert(usr, "Co chcesz zrobić z [target]?", "Starsystem Management", list("Jump", "Variables", "Delete"))
 			if(!command)
 				return FALSE
 			if(command == "Jump")
-				var/datum/star_system/sys = input(usr, "Select a jump target for [target]...","Fleet Management", null) as null|anything in SSstar_system.systems
+				var/datum/star_system/sys = input(usr, "Wybierz cel skoku dla [target]...","Fleet Management", null) as null|anything in SSstar_system.systems
 				if(!sys || !istype(sys))
 					return FALSE
 				message_admins("[key_name(usr)] forced [target] to jump to [sys].")
@@ -193,16 +193,16 @@
 			var/obj/structure/overmap/target = locate(params["id"])
 			if(!istype(target))
 				return
-			var/command = tgui_alert(usr, "What do you want to do with [target]?", "Starsystem Management", list("Jump", "Hail", "Delete", "Variables"))
+			var/command = tgui_alert(usr, "Co chcesz zrobić z [target]?", "Starsystem Management", list("Jump", "Hail", "Delete", "Variables"))
 			if(!command)
 				return FALSE
 			if(command == "Jump")
-				var/datum/star_system/sys = input(usr, "Select a jump target for [target]...","Fleet Management", null) as null|anything in SSstar_system.systems
+				var/datum/star_system/sys = input(usr, "Wybierz cel skoku dla [target]...","Fleet Management", null) as null|anything in SSstar_system.systems
 				if(!sys || !istype(sys))
 					return FALSE
 				// Handle player ships
 				if(length(target.linked_areas))
-					var/when = alert(usr, "When should they arrive?", "Jump to [sys]", "Now", "After FTL", "Cancel")
+					var/when = alert(usr, "Kiedy mają przybyć?", "Skok do [sys]", "Now", "After FTL", "Cancel")
 					if(!when || when == "Cancel")
 						return FALSE
 					message_admins("[key_name(usr)] forced [target] to jump to [sys].")
@@ -217,8 +217,8 @@
 				SSstar_system.move_existing_object(target, sys)
 				return TRUE
 			if(command == "Hail")
-				var/message = capped_input(usr, "Enter message", "Hail")
-				var/from = capped_input(usr, "Who is it from?", "Hail")
+				var/message = capped_input(usr, "Wpisz wiadomość", "Hail")
+				var/from = capped_input(usr, "Od kogo jest?", "Hail")
 				if(!message || !from)
 					return FALSE
 				target.hail(message, from)
@@ -241,7 +241,7 @@
 				return
 			usr.client.debug_variables(target)
 		if("sector")
-			var/sector = input(usr, "Swap to what sector?","Sector Selection", null) as null|anything in list(ALL_STARMAP_SECTORS)
+			var/sector = input(usr, "Na który sektor przełączyć?","Wybór sektora", null) as null|anything in list(ALL_STARMAP_SECTORS)
 			if(!sector)
 				return
 			current_sector = sector

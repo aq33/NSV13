@@ -212,7 +212,7 @@
 		log_combat(src, M, "grabbed", addition="passive grab")
 		if(!supress_message)
 			M.visible_message("<span class='warning'>[src] grabs [M] passively.</span>", \
-				"<span class='danger'>[src] grabs you passively.</span>")
+				"<span class='danger'>[src] chwyta cię biernie.</span>")
 	return TRUE
 
 /atom/movable/proc/stop_pulling()
@@ -779,12 +779,12 @@
 /atom/movable/proc/force_push(atom/movable/AM, force = move_force, direction, silent = FALSE)
 	. = AM.force_pushed(src, force, direction)
 	if(!silent && .)
-		visible_message("<span class='warning'>[src] forcefully pushes against [AM]!</span>", "<span class='warning'>You forcefully push against [AM]!</span>")
+		visible_message("<span class='warning'>[src] forcefully pushes against [AM]!</span>", "<span class='warning'>Z całej siły napierasz na [AM]!</span>")
 
 /atom/movable/proc/move_crush(atom/movable/AM, force = move_force, direction, silent = FALSE)
 	. = AM.move_crushed(src, force, direction)
 	if(!silent && .)
-		visible_message("<span class='danger'>[src] crushes past [AM]!</span>", "<span class='danger'>You crush [AM]!</span>")
+		visible_message("<span class='danger'>[src] crushes past [AM]!</span>", "<span class='danger'>Miażdżysz [AM]!</span>")
 
 /atom/movable/proc/move_crushed(atom/movable/pusher, force = MOVE_FORCE_DEFAULT, direction)
 	return FALSE

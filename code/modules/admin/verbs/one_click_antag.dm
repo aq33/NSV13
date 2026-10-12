@@ -368,7 +368,7 @@
 		if(ertemplate.spawn_admin && length(spawnpoints))
 			spawn_briefing_officer(usr, spawnpoints[1])
 
-		var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for [ertemplate.polldesc] ?", ROLE_ERT, req_hours = 0)
+		var/list/mob/dead/observer/candidates = pollGhostCandidates("Czy chcesz zostać wybrany do: [ertemplate.polldesc]?", ROLE_ERT, req_hours = 0)
 		var/teamSpawned = FALSE
 
 		if(!length(candidates) || !length(spawnpoints))

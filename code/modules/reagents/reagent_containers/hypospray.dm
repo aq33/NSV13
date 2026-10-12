@@ -25,7 +25,7 @@
 ///Handles all injection checks, injection and logging.
 /obj/item/reagent_containers/hypospray/proc/inject(mob/living/M, mob/user)
 	if(!reagents.total_volume)
-		to_chat(user, "<span class='warning'>[src] is empty!</span>")
+		to_chat(user, "<span class='warning'>[src] jest pusty!</span>")
 		return FALSE
 	if(!iscarbon(M))
 		return FALSE
@@ -38,8 +38,8 @@
 	log_combat(user, M, "attempted to inject", src, "([contained])")
 
 	if(reagents.total_volume && (ignore_flags || M.can_inject(user, 1))) // Ignore flag should be checked first or there will be an error message.
-		to_chat(M, "<span class='warning'>You feel a tiny prick!</span>")
-		to_chat(user, "<span class='notice'>You inject [M] with [src].</span>")
+		to_chat(M, "<span class='warning'>Czujesz maleńkie ukłucie!</span>")
+		to_chat(user, "<span class='notice'>Wstrzykujesz [M] zawartość [src].</span>")
 		playsound(loc, pick('sound/items/hypospray.ogg','sound/items/hypospray2.ogg'), 50, TRUE)
 
 		var/fraction = min(amount_per_transfer_from_this/reagents.total_volume, 1)
@@ -51,7 +51,7 @@
 			else
 				trans = reagents.copy_to(M, amount_per_transfer_from_this)
 
-			to_chat(user, "<span class='notice'>[trans] unit\s injected.  [reagents.total_volume] unit\s remaining in [src].</span>")
+			to_chat(user, "<span class='notice'>Wstrzyknięto [trans] j. W [src] pozostało [reagents.total_volume] j.</span>")
 			log_combat(user, M, "injected", src, "([contained])")
 		return TRUE
 	return FALSE
@@ -62,10 +62,10 @@
 	set src in usr
 	if(usr.incapacitated())
 		return
-	if (alert(usr, "Are you sure you want to empty that?", "Empty Bottle:", "Yes", "No") != "Yes")
+	if (alert(usr, "Na pewno chcesz to opróżnić?", "Opróżnij butelkę:", "Yes", "No") != "Yes")
 		return
 	if(isturf(usr.loc) && src.loc == usr)
-		to_chat(usr, "<span class='notice'>You empty \the [src] onto the floor.</span>")
+		to_chat(usr, "<span class='notice'>Opróżniasz [src] na podłogę.</span>")
 		reagents.reaction(usr.loc)
 		src.reagents.clear_reagents()
 
@@ -129,7 +129,7 @@
 	custom_price = 40
 
 /obj/item/reagent_containers/hypospray/medipen/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] begins to choke on \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaczyna się dławić [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return OXYLOSS//ironic. he could save others from oxyloss, but not himself.
 
 /obj/item/reagent_containers/hypospray/medipen/inject(mob/living/M, mob/user)
@@ -152,9 +152,9 @@
 /obj/item/reagent_containers/hypospray/medipen/examine()
 	. = ..()
 	if(reagents && reagents.reagent_list.len)
-		. += "<span class='notice'>It is currently loaded.</span>"
+		. += "<span class='notice'>Jest obecnie załadowany.</span>"
 	else
-		. += "<span class='notice'>It is spent.</span>"
+		. += "<span class='notice'>Jest zużyty.</span>"
 
 /obj/item/reagent_containers/hypospray/medipen/stimpack //goliath kiting
 	name = "stimpack medipen"

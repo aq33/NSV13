@@ -6,7 +6,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	set category = "OOC"
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, "<span class='danger'>Mowa jest obecnie wyłączona przez administrację.</span>")
 		return
 
 	if(!mob)
@@ -14,19 +14,19 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 	if(!holder)
 		if(!GLOB.ooc_allowed)
-			to_chat(src, "<span class='danger'>OOC is globally muted.</span>")
+			to_chat(src, "<span class='danger'>OOC jest wyciszone globalnie.</span>")
 			return
 		if(SSticker.current_state < GAME_STATE_PLAYING && !istype(mob, /mob/dead/new_player))
-			to_chat(src, "<span class='danger'>Observers cannot use OOC pre-game.</span>")
+			to_chat(src, "<span class='danger'>Obserwatorzy nie mogą używać OOC przed startem gry.</span>")
 			return
 		if(mob.stat == DEAD && !GLOB.dooc_allowed)
-			to_chat(usr, "<span class='danger'>OOC for dead mobs has been turned off.</span>")
+			to_chat(usr, "<span class='danger'>OOC dla martwych istot jest wyłączone.</span>")
 			return
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")
+			to_chat(src, "<span class='danger'>Nie możesz używać OOC (wyciszenie).</span>")
 			return
 	if(is_banned_from(ckey, BAN_OOC))
-		to_chat(src, "<span class='danger'>You have been banned from OOC.</span>")
+		to_chat(src, "<span class='danger'>Masz bana na OOC.</span>")
 		return
 	if(QDELETED(src))
 		return
@@ -40,28 +40,28 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	msg = emoji_parse(msg)
 
 	if((msg[1] in list(".",";",":","#")) || findtext_char(msg, "say", 1, 5))
-		if(alert("Your message \"[raw_msg]\" looks like it was meant for in game communication, say it in OOC?", "Meant for OOC?", "No", "Yes") != "Yes")
+		if(alert("Twoja wiadomość \"[raw_msg]\" wygląda na przeznaczoną do komunikacji w grze. Napisać ją na OOC?", "Na pewno na OOC?", "No", "Yes") != "Yes")
 			return
 
 	if(!holder)
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
+			to_chat(src, "<B>Reklamowanie innych serwerów jest zabronione.</B>")
 			log_admin("[key_name(src)] has attempted to advertise in OOC: [msg]")
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
 		if(findtext(msg, "://") || findtext(msg, "www."))
-			to_chat(src, "<B>Posting clickable links in OOC is not allowed.</B>")
+			to_chat(src, "<B>Wysyłanie klikalnych linków na OOC jest zabronione.</B>")
 			log_admin("[key_name(src)] has attempted to post a clickable link in OOC: [msg]")
 			message_admins("[key_name_admin(src)] has attempted to post a clickable link in OOC: [msg]")
 			return
 
 	if(!(prefs.chat_toggles & CHAT_OOC))
-		to_chat(src, "<span class='danger'>You have OOC muted.</span>")
+		to_chat(src, "<span class='danger'>Masz wyciszone OOC.</span>")
 		return
 	if(OOC_FILTER_CHECK(raw_msg))
-		to_chat(src, "<span class='warning'>That message contained a word prohibited in OOC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ooc_chat'>\"[raw_msg]\"</span></span>")
+		to_chat(src, "<span class='warning'>Ta wiadomość zawiera słowo zakazane na czacie OOC! Zapoznaj się ponownie z zasadami serwera.\n<span replaceRegex='show_filtered_ooc_chat'>\"[raw_msg]\"</span></span>")
 		return
 
 	mob.log_talk(raw_msg, LOG_OOC)
@@ -106,7 +106,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 			return
 	else //otherwise just toggle it
 		GLOB.ooc_allowed = !GLOB.ooc_allowed
-	to_chat(world, "<B>The OOC channel has been globally [GLOB.ooc_allowed ? "enabled" : "disabled"].</B>")
+	to_chat(world, "<B>Kanał OOC został globalnie [GLOB.ooc_allowed ? "włączony" : "wyłączony"].</B>")
 
 /proc/toggle_dooc(toggle = null)
 	if(toggle != null)
@@ -137,7 +137,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		if(!is_content_unlocked())
 			return
 
-	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color", prefs.ooccolor) as color|null
+	var/new_ooccolor = input(src, "Wybierz kolor OOC.", "Kolor OOC", prefs.ooccolor) as color|null
 	if(new_ooccolor)
 		prefs.ooccolor = sanitize_ooccolor(new_ooccolor)
 		prefs.save_preferences()
@@ -163,9 +163,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	set desc ="Check the admin notice if it has been set"
 
 	if(GLOB.admin_notice)
-		to_chat(src, "<span class='boldnotice'>Admin Notice:</span>\n \t [GLOB.admin_notice]")
+		to_chat(src, "<span class='boldnotice'>Komunikat administracji:</span>\n \t [GLOB.admin_notice]")
 	else
-		to_chat(src, "<span class='notice'>There are no admin notices at the moment.</span>")
+		to_chat(src, "<span class='notice'>Obecnie nie ma komunikatów administracji.</span>")
 
 /client/verb/motd()
 	set name = "MOTD"
@@ -176,7 +176,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	if(motd)
 		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE, allow_linkify = TRUE)
 	else
-		to_chat(src, "<span class='notice'>The Message of the Day has not been set.</span>")
+		to_chat(src, "<span class='notice'>Wiadomość dnia nie została ustawiona.</span>")
 
 /client/proc/self_notes()
 	set name = "View Admin Remarks"
@@ -184,7 +184,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	set desc = "View the notes that admins have written about you"
 
 	if(!CONFIG_GET(flag/see_own_notes))
-		to_chat(usr, "<span class='notice'>Sorry, that function is not enabled on this server.</span>")
+		to_chat(usr, "<span class='notice'>Niestety ta funkcja nie jest włączona na tym serwerze.</span>")
 		return
 
 	browse_messages(null, usr.ckey, null, TRUE)
@@ -195,7 +195,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	set desc = "View the amount of playtime for roles the server has tracked."
 
 	if(!CONFIG_GET(flag/use_exp_tracking))
-		to_chat(usr, "<span class='notice'>Sorry, tracking is currently disabled.</span>")
+		to_chat(usr, "<span class='notice'>Niestety śledzenie jest obecnie wyłączone.</span>")
 		return
 
 	new /datum/job_report_menu(src, usr)
@@ -206,7 +206,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		prefs.ignoring -= C.key
 	else
 		prefs.ignoring |= C.key
-	to_chat(src, "You are [(C.key in prefs.ignoring) ? "now" : "no longer"] ignoring [displayed_key] on the OOC channel.")
+	to_chat(src, "[(C.key in prefs.ignoring) ? "Ignorujesz teraz" : "Już nie ignorujesz"] gracza [displayed_key] na kanale OOC.")
 	prefs.save_preferences()
 
 /client/verb/select_ignore()
@@ -228,13 +228,13 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		else
 			choices[displayed_choicename] = C
 	choices = sortList(choices)
-	var/selection = input("Please, select a player!", "Ignore", null, null) as null|anything in choices
+	var/selection = input("Wybierz gracza!", "Ignore", null, null) as null|anything in choices
 	if(!selection || !(selection in choices))
 		return
 	displayed_choicename = selection // ckey string
 	selection = choices[selection] // client
 	if(selection == src)
-		to_chat(src, "You can't ignore yourself.")
+		to_chat(src, "Nie możesz ignorować samego siebie.")
 		return
 	ignore_key(selection, displayed_choicename)
 
@@ -297,7 +297,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	set desc = "Open the runtime error viewer, with reduced information"
 
 	if(!isobserver(mob) && SSticker.current_state != GAME_STATE_FINISHED)
-		to_chat(src, "<span class='warning'>You cannot currently do that at this time, please wait until the round end or while you are observing.</span>")
+		to_chat(src, "<span class='warning'>Nie możesz teraz tego zrobić, zaczekaj do końca rundy albo obserwuj.</span>")
 		return
 
 	GLOB.error_cache.show_to_minimal(src)
@@ -308,10 +308,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	set category = "OOC"
 	set desc = "Chat formatting help"
 
-	var/message = "<span class='big'>You can add emphasis to your text by surrounding words or sentences in certain characters.</span>\n \
-		+bold+, _underline_, and |italics| are supported.\n\n \
-		<span class='big'>You can made custom saymods by doing <i>say 'screams* HELP IM DYING!'</i>. This works over the radio, and can be used to emote over the radio.</span>\n \
-		Example: say ';laughs maniacally!*' >> \[Common] Joe Schmoe laughs maniacally!"
+	var/message = "<span class='big'>Możesz wyróżniać tekst, otaczając słowa lub zdania określonymi znakami.</span>\n +pogrubienie+, _podkreślenie_ i |kursywa| są obsługiwane.\n\n <span class='big'>Możesz tworzyć własne czasowniki mowy, pisząc np. <i>say 'krzyczy* POMOCY, UMIERAM!'</i>. Działa to też przez radio i można tak robić emotki przez radio.</span>\n Przykład: say ';śmieje się szaleńczo!*' >> \[Common] Jan Kowalski śmieje się szaleńczo!"
 
 
 	to_chat(usr, "<span class='notice'>[message]</span>")

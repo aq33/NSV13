@@ -246,7 +246,7 @@
 		if("teleportBack") //After teleporting to centcom/dropoff, this button allows the user to teleport to the last spot they were at.
 			var/mob/M = holder.mob
 			if (!oldTurf) //If theres no turf to go back to, error and cancel
-				to_chat(M, "Nowhere to jump to!")
+				to_chat(M, "Nie ma dokąd skoczyć!")
 				return
 			M.forceMove(oldTurf) //Perform the actual teleport
 			if (holder.holder)
@@ -283,14 +283,14 @@
 				explosionChoice = 0
 				temp_pod.explosionSize = list(0,0,0,0)
 			else
-				var/list/expNames = list("Devastation", "Heavy Damage", "Light Damage", "Flame") //Explosions have a range of different types of damage
+				var/list/expNames = list("Devastation", "Ciężkie obrażenia", "Lekkie obrażenia", "Flame") //Explosions have a range of different types of damage
 				var/list/boomInput = list()
 				for (var/i=1 to expNames.len) //Gather input from the user for the value of each type of damage
 					boomInput.Add(input("Enter the [expNames[i]] range of the explosion. WARNING: This ignores the bomb cap!", "[expNames[i]] Range",  0) as null|num)
 					if (isnull(boomInput[i]))
 						return
 					if (!isnum_safe(boomInput[i])) //If the user doesn't input a number, set that specific explosion value to zero
-						alert(usr, "That wasn't a number! Value set to default (zero) instead.")
+						alert(usr, "To nie była liczba! Ustawiono wartość domyślną (zero).")
 						boomInput = 0
 				explosionChoice = 1
 				temp_pod.explosionSize = boomInput
@@ -308,11 +308,11 @@
 				damageChoice = 0
 				temp_pod.damage = 0
 			else
-				var/damageInput = input("Enter the amount of brute damage dealt by getting hit","How much damage to deal",  0) as null|num
+				var/damageInput = input("Podaj ilość obrażeń fizycznych zadawanych przy trafieniu","Ile obrażeń zadać",  0) as null|num
 				if (isnull(damageInput))
 					return
 				if (!isnum_safe(damageInput)) //Sanitize the input for damage to deal.s
-					alert(usr, "That wasn't a number! Value set to default (zero) instead.")
+					alert(usr, "To nie była liczba! Ustawiono wartość domyślną (zero).")
 					damageInput = 0
 				damageChoice = 1
 				temp_pod.damage = damageInput
@@ -332,10 +332,10 @@
 				temp_pod.adminNamed = FALSE
 				temp_pod.setStyle(temp_pod.style) //This resets the name of the pod based on it's current style (see supplypod/setStyle() proc)
 			else
-				var/nameInput= input("Custom name", "Enter a custom name", GLOB.podstyles[temp_pod.style][POD_NAME]) as null|text //Gather input for name and desc
+				var/nameInput= input("Własna nazwa", "Podaj własną nazwę", GLOB.podstyles[temp_pod.style][POD_NAME]) as null|text //Gather input for name and desc
 				if (isnull(nameInput))
 					return
-				var/descInput = input("Custom description", "Enter a custom desc", GLOB.podstyles[temp_pod.style][POD_DESC]) as null|text //The GLOB.podstyles is used to get the name, desc, or icon state based on the pod's style
+				var/descInput = input("Własny opis", "Podaj własny opis", GLOB.podstyles[temp_pod.style][POD_DESC]) as null|text //The GLOB.podstyles is used to get the name, desc, or icon state based on the pod's style
 				if (isnull(descInput))
 					return
 				temp_pod.name = nameInput
@@ -349,11 +349,11 @@
 				var/shrapnelInput = input("Please enter the type of pellet cloud you'd like to create on landing (Can be any projectile!)", "Projectile Typepath",  0) in sortList(subtypesof(/obj/item/projectile), GLOBAL_PROC_REF(cmp_typepaths_asc))
 				if (isnull(shrapnelInput))
 					return
-				var/shrapnelMagnitude = input("Enter the magnitude of the pellet cloud. This is usually a value around 1-5. Please note that Ryll-Ryll has asked me to tell you that if you go too crazy with the projectiles you might crash the server. So uh, be gentle!", "Shrapnel Magnitude", 0) as null|num
+				var/shrapnelMagnitude = input("Podaj siłę chmury odłamków. Zwykle jest to wartość około 1-5. Ryll-Ryll prosi, by ci przekazać, że jeśli przesadzisz z pociskami, możesz wywalić serwer. Więc, ee, delikatnie!", "Siła odłamków", 0) as null|num
 				if (isnull(shrapnelMagnitude))
 					return
 				if (!isnum(shrapnelMagnitude))
-					alert(usr, "That wasn't a number! Value set to 3 instead.")
+					alert(usr, "To nie była liczba! Ustawiono wartość 3.")
 					shrapnelMagnitude = 3
 				temp_pod.shrapnel_type = shrapnelInput
 				temp_pod.shrapnel_magnitude = shrapnelMagnitude
@@ -405,7 +405,7 @@
 				specificTarget = null
 			else
 				var/list/mobs = getpois()//code stolen from observer.dm
-				var/inputTarget = input("Select a mob! (Smiting does this automatically)", "Target", null, null) as null|anything in mobs
+				var/inputTarget = input("Wybierz moba! (Smiting robi to automatycznie)", "Target", null, null) as null|anything in mobs
 				if (isnull(inputTarget))
 					return
 				var/mob/target = mobs[inputTarget]
@@ -435,7 +435,7 @@
 				temp_pod.fallingSound = initial(temp_pod.fallingSound)
 				temp_pod.fallingSoundLength = initial(temp_pod.fallingSoundLength)
 			else
-				var/soundInput = input(holder, "Please pick a sound file to play when the pod lands! Sound will start playing and try to end when the pod lands", "Pick a Sound File") as null|sound
+				var/soundInput = input(holder, "Wybierz plik dźwiękowy odtwarzany przy lądowaniu kapsuły! Dźwięk zacznie grać i spróbuje skończyć się w momencie lądowania", "Wybierz plik dźwiękowy") as null|sound
 				if (isnull(soundInput))
 					return
 				var/sound/tempSound = sound(soundInput)
@@ -450,11 +450,11 @@
 					if (found.file == tempSound.file)
 						soundLen = found.len
 				if (!soundLen)
-					soundLen =  input(holder, "Couldn't auto-determine sound file length. What is the exact length of the sound file, in seconds. This number will be used to line the sound up so that it finishes right as the pod lands!", "Pick a Sound File", 0.3) as null|num
+					soundLen =  input(holder, "Nie udało się automatycznie ustalić długości pliku dźwiękowego. Jaka jest dokładna długość pliku w sekundach? Ta liczba posłuży do zsynchronizowania dźwięku, by skończył się dokładnie w momencie lądowania kapsuły!", "Wybierz plik dźwiękowy", 0.3) as null|num
 					if (isnull(soundLen))
 						return
 					if (!isnum(soundLen))
-						alert(usr, "That wasn't a number! Value set to default ([initial(temp_pod.fallingSoundLength)*0.1]) instead.")
+						alert(usr, "To nie była liczba! Ustawiono wartość domyślną ([initial(temp_pod.fallingSoundLength)*0.1]).")
 				temp_pod.fallingSound = soundInput
 				temp_pod.fallingSoundLength = 10 * soundLen
 			. = TRUE
@@ -462,7 +462,7 @@
 			if (!isnull(temp_pod.landingSound))
 				temp_pod.landingSound = null
 			else
-				var/soundInput = input(holder, "Please pick a sound file to play when the pod lands! I reccomend a nice \"oh shit, i'm sorry\", incase you hit someone with the pod.", "Pick a Sound File") as null|sound
+				var/soundInput = input(holder, "Wybierz plik dźwiękowy odtwarzany przy lądowaniu kapsuły! Polecam miłe „o cholera, przepraszam”, na wypadek gdybyś kogoś trafił kapsułą.", "Wybierz plik dźwiękowy") as null|sound
 				if (isnull(soundInput))
 					return
 				temp_pod.landingSound = soundInput
@@ -471,7 +471,7 @@
 			if (!isnull(temp_pod.openingSound))
 				temp_pod.openingSound = null
 			else
-				var/soundInput = input(holder, "Please pick a sound file to play when the pod opens! I reccomend a stock sound effect of kids cheering at a party, incase your pod is full of fun exciting stuff!", "Pick a Sound File") as null|sound
+				var/soundInput = input(holder, "Wybierz plik dźwiękowy odtwarzany przy otwarciu kapsuły! Polecam efekt dźwiękowy wiwatujących dzieci na imprezie, na wypadek gdyby kapsuła była pełna fajnych rzeczy!", "Wybierz plik dźwiękowy") as null|sound
 				if (isnull(soundInput))
 					return
 				temp_pod.openingSound = soundInput
@@ -480,7 +480,7 @@
 			if (!isnull(temp_pod.leavingSound))
 				temp_pod.leavingSound = null
 			else
-				var/soundInput = input(holder, "Please pick a sound file to play when the pod leaves! I reccomend a nice slide whistle sound, especially if you're using the reverse pod effect.", "Pick a Sound File") as null|sound
+				var/soundInput = input(holder, "Wybierz plik dźwiękowy odtwarzany przy odlocie kapsuły! Polecam przyjemny dźwięk gwizdka suwakowego, zwłaszcza jeśli używasz efektu odwróconej kapsuły.", "Wybierz plik dźwiękowy") as null|sound
 				if (isnull(soundInput))
 					return
 				temp_pod.leavingSound = soundInput
@@ -489,7 +489,7 @@
 			if (temp_pod.soundVolume != initial(temp_pod.soundVolume))
 				temp_pod.soundVolume = initial(temp_pod.soundVolume)
 			else
-				var/soundInput = input(holder, "Please pick a volume. Default is between 1 and 100 with 50 being average, but pick whatever. I'm a notification, not a cop. If you still cant hear your sound, consider turning on the Quiet effect. It will silence all pod sounds except for the custom admin ones set by the previous three buttons.", "Pick Admin Sound Volume") as null|num
+				var/soundInput = input(holder, "Wybierz głośność. Domyślnie od 1 do 100, gdzie 50 to średnia, ale wybierz, co chcesz. Jestem powiadomieniem, nie policjantem. Jeśli nadal nie słyszysz dźwięku, rozważ włączenie efektu Quiet. Wycisza on wszystkie dźwięki kapsuły z wyjątkiem własnych dźwięków admina ustawionych trzema poprzednimi przyciskami.", "Wybierz głośność dźwięku admina") as null|num
 				if (isnull(soundInput))
 					return
 				temp_pod.soundVolume = soundInput
@@ -523,7 +523,7 @@
 			updateSelector()
 			. = TRUE
 		if("clearBay") //Delete all mobs and objs in the selected bay
-			if(alert(usr, "This will delete all objs and mobs in [bay]. Are you sure?", "Confirmation", "Delete that shit", "No") == "Delete that shit")
+			if(alert(usr, "To usunie wszystkie obiekty i moby w [bay]. Na pewno?", "Confirmation", "Delete that shit", "No") == "Delete that shit")
 				clearBay()
 				refreshBay()
 			. = TRUE
@@ -597,7 +597,7 @@
 			else
 				return //if target is null and we don't have a specific target, cancel
 			if (effectAnnounce)
-				deadchat_broadcast("<span class='deadsay'>A special package is being launched at the station!</span>", turf_target = target)
+				deadchat_broadcast("<span class='deadsay'>W stronę stacji wystrzeliwana jest specjalna paczka!</span>", turf_target = target)
 			var/list/bouttaDie = list()
 			for (var/mob/living/target_mob in target)
 				bouttaDie.Add(target_mob)
@@ -626,7 +626,7 @@
 			var/turf/target_turf = get_turf(target)
 			setDropoff(target_turf)
 			customDropoff = TRUE
-			to_chat(user, "<span class = 'notice'> You've selected [target_turf] at [COORD(target_turf)] as your dropoff location.</span>")
+			to_chat(user, "<span class = 'notice'> Jako miejsce zrzutu wybrano [target_turf] na [COORD(target_turf)].</span>")
 			ui_update()
 
 /datum/centcom_podlauncher/proc/refreshView()
@@ -651,7 +651,7 @@
 
 /datum/centcom_podlauncher/proc/createOrderedArea(area/area_to_order) //This assumes the area passed in is a continuous square
 	if (isnull(area_to_order)) //If theres no supplypod bay mapped into centcom, throw an error
-		to_chat(holder.mob, "No /area/centcom/supplypod/loading/one (or /two or /three or /four) in the world! You can make one yourself (then refresh) for now, but yell at a mapper to fix this, today!")
+		to_chat(holder.mob, "Na świecie nie ma /area/centcom/supplypod/loading/one (ani /two, /three, /four)! Na razie możesz stworzyć ją sam (potem odśwież), ale nawrzeszcz na mapera, żeby to naprawił, jeszcze dziś!")
 		CRASH("No /area/centcom/supplypod/loading/one (or /two or /three or /four) has been mapped into the centcom z-level!")
 	orderedArea = list()
 	if (length(area_to_order.contents)) //Go through the area passed into the proc, and figure out the top left and bottom right corners by calculating max and min values

@@ -63,19 +63,19 @@
 
 	if(isnum_safe(.)) //Numerical values of drained handle their feedback here, Alpha values handle it themselves (Research hacking)
 		if(.)
-			to_chat(H, "<span class='notice'>Gained <B>[display_energy(.)]</B> of energy from [A].</span>")
+			to_chat(H, "<span class='notice'>Pobrano <B>[display_energy(.)]</B> energii z [A].</span>")
 		else
-			to_chat(H, "<span class='danger'>\The [A] has run dry of energy, you must find another source!</span>")
+			to_chat(H, "<span class='danger'>[A] nie ma już energii, musisz znaleźć inne źródło!</span>")
 	else
 		. = FALSE	//as to not cancel attack_hand()
 
 
 /obj/item/clothing/gloves/space_ninja/proc/toggledrain()
 	var/mob/living/carbon/human/U = loc
-	to_chat(U, "You <b>[candrain?"disable":"enable"]</b> special interaction.")
+	to_chat(U, "<b>[candrain?"Wyłączasz":"Włączasz"]</b> specjalną interakcję.")
 	candrain=!candrain
 
 /obj/item/clothing/gloves/space_ninja/examine(mob/user)
 	. = ..()
 	if(HAS_TRAIT_FROM(src, TRAIT_NODROP, NINJA_SUIT_TRAIT))
-		. += "The energy drain mechanism is <B>[candrain?"active":"inactive"]</B>."
+		. += "Mechanizm wysysania energii jest <B>[candrain?"aktywny":"nieaktywny"]</B>."

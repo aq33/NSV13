@@ -19,7 +19,7 @@
 		message_admins("Swimming component erroneously added to a non-living mob ([parent]).")
 		return INITIALIZE_HINT_QDEL //Only mobs can swim, like Ian...
 	var/mob/M = parent
-	M.visible_message("<span class='notice'>[parent] starts splashing around in the water!</span>")
+	M.visible_message("<span class='notice'>[parent] zaczyna chlapać się w wodzie!</span>")
 	M.add_movespeed_modifier(MOVESPEED_ID_SWIMMING, update=TRUE, priority=50, multiplicative_slowdown=slowdown, movetypes=GROUND)
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(onMove))
 	RegisterSignal(parent, COMSIG_CARBON_SPECIESCHANGE, PROC_REF(onChangeSpecies))
@@ -67,17 +67,17 @@
 
 /datum/component/swimming/proc/climb_out(var/mob/living/L, turf/clicked_turf)
 	L.forceMove(clicked_turf)
-	L.visible_message("<span class='notice'>[parent] climbs out of the pool.</span>")
+	L.visible_message("<span class='notice'>[parent] wychodzi z basenu.</span>")
 	RemoveComponent()
 
 /datum/component/swimming/proc/pull_out(var/mob/living/L, turf/clicked_turf)
-	to_chat(parent, "<span class='notice'>You start to climb out of the pool...</span>")
+	to_chat(parent, "<span class='notice'>Zaczynasz wychodzić z basenu...</span>")
 	if(do_after(parent, 1 SECONDS, target=clicked_turf))
-		to_chat(parent, "<span class='notice'>You start to lift [L.pulling] out of the pool...</span>")
+		to_chat(parent, "<span class='notice'>Zaczynasz wyciągać [L.pulling] z basenu...</span>")
 		var/atom/movable/pulled_object = L.pulling
 		if(do_after(parent, 1 SECONDS, target=pulled_object))
 			pulled_object.forceMove(clicked_turf)
-			L.visible_message("<span class='notice'>[parent] pulls [pulled_object] out of the pool.</span>")
+			L.visible_message("<span class='notice'>[parent] wyciąga [pulled_object] z basenu.</span>")
 			var/datum/component/swimming/swimming_comp = pulled_object.GetComponent(/datum/component/swimming)
 			if(swimming_comp)
 				swimming_comp.RemoveComponent()
@@ -134,16 +134,16 @@
 		victim.emote("gasp")
 	if(ticks_drowned > 20)
 		if(prob(10))
-			victim.visible_message("<span class='warning'>[victim] falls unconcious for a moment!</span>")
+			victim.visible_message("<span class='warning'>[victim] na chwilę traci przytomność!</span>")
 			victim.Unconscious(10)
 
 /datum/component/swimming/proc/start_drowning(mob/living/victim)
-	to_chat(victim, "<span class='userdanger'>Water fills your lungs and mouth, you can't breathe!</span>")
+	to_chat(victim, "<span class='userdanger'>Woda wypełnia ci płuca i usta, nie możesz oddychać!</span>")
 	ADD_TRAIT(victim, TRAIT_MUTE, "pool")
 
 /datum/component/swimming/proc/stop_drowning(mob/living/victim)
 	victim.emote("cough")
-	to_chat(victim, "<span class='notice'>You cough up the last of the water, regaining your ability to speak and breathe clearly!</span>")
+	to_chat(victim, "<span class='notice'>Wykasłujesz resztki wody, odzyskując zdolność swobodnego mówienia i oddychania!</span>")
 	REMOVE_TRAIT(victim, TRAIT_MUTE, "pool")
 	ticks_drowned = 0
 

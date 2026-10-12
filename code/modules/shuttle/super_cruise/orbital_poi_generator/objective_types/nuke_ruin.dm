@@ -14,11 +14,9 @@
 	nuclear_bomb.linked_objective = src
 
 /datum/orbital_objective/nuclear_bomb/get_text()
-	. = "Outpost [station_name] requires immediate decomissioning to prevent infomation from being \
-		leaked to the space press. Retrieve the nuclear authentication disk from the outpost and detonate it \
-		with the provided nuclear bomb which will be delivered to the bridge."
+	. = "Posterunek [station_name] wymaga natychmiastowej likwidacji, by zapobiec wyciekowi informacji do kosmicznej prasy. Odzyskajcie z posterunku dysk uwierzytelniania jądrowego i zdetonujcie go za pomocą dostarczonej bomby atomowej, która zostanie dostarczona na mostek."
 	if(linked_beacon)
-		. += " The station is located at the beacon marked [linked_beacon.name]. Good luck."
+		. += " Stacja znajduje się przy nadajniku oznaczonym [linked_beacon.name]. Powodzenia."
 
 /datum/orbital_objective/nuclear_bomb/on_assign(obj/machinery/computer/objective/objective_computer)
 	var/area/A = GLOB.areas_by_type[/area/bridge]
@@ -62,7 +60,7 @@ GLOBAL_LIST_EMPTY(decomission_bombs)
 	. = ..()
 	GLOB.decomission_bombs += src
 	r_code = "[rand(10000, 99999)]"
-	print_command_report("Nuclear decomission explosive code: [r_code]")
+	print_command_report("Kod ładunku jądrowego do likwidacji: [r_code]")
 	var/obj/structure/closet/supplypod/bluespacepod/pod = new()
 	pod.explosionSize = list(0,0,0,4)
 	new /obj/effect/pod_landingzone(get_turf(src), pod)
@@ -96,14 +94,13 @@ GLOBAL_LIST_EMPTY(decomission_bombs)
 
 /obj/machinery/nuclearbomb/decomission/set_active()
 	if(safety)
-		to_chat(usr, "<span class='danger'>The safety is still on.</span>")
+		to_chat(usr, "<span class='danger'>Zabezpieczenie jest wciąż włączone.</span>")
 		return
 	timing = !timing
 	if(timing)
 		detonation_timer = world.time + (timer_set * 10)
 		countdown.start()
-		priority_announce("Nuclear fission explosive armed at abandoned outpost, vacate \
-			outpost immediately.",
+		priority_announce("Uzbrojono ładunek rozszczepienia jądrowego na opuszczonym posterunku, natychmiast opuśćcie posterunek.",
 			null, 'sound/misc/notice1.ogg', "Priority")
 	else
 		detonation_timer = null

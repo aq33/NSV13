@@ -31,14 +31,14 @@
 	AddComponent(/datum/component/empprotection, EMP_PROTECT_SELF | EMP_PROTECT_CONTENTS | EMP_PROTECT_WIRES)
 
 /mob/living/simple_animal/bot/secbot/grievous/bullet_act(obj/item/projectile/P)
-	visible_message("[src] deflects [P] with its energy swords!")
+	visible_message("[src] odbija [P] energetycznymi mieczami!")
 	playsound(src, 'sound/weapons/blade1.ogg', 50, TRUE)
 	return BULLET_ACT_BLOCK
 
 /mob/living/simple_animal/bot/secbot/grievous/on_entered(datum/source, atom/movable/AM)
 	. = ..()
 	if(ismob(AM) && AM == target)
-		visible_message("[src] flails his swords and cuts [AM]!")
+		visible_message("[src] wymachuje mieczami i tnie [AM]!")
 		playsound(src,'sound/effects/beepskyspinsabre.ogg',100,TRUE,-1)
 		INVOKE_ASYNC(src, PROC_REF(stun_attack), AM)
 
@@ -55,7 +55,7 @@
 	if(mode != BOT_HUNT)
 		return
 	if(prob(block_chance))
-		visible_message("[src] deflects [user]'s attack with his energy swords!")
+		visible_message("[src] odbija atak [user] energetycznymi mieczami!")
 		playsound(src, 'sound/weapons/blade1.ogg', 50, TRUE, -1)
 		return TRUE
 
@@ -127,12 +127,12 @@
 		else if(threatlevel >= 4)
 			target = C
 			oldtarget_name = C.name
-			speak("Level [threatlevel] infraction alert!")
+			speak("Alarm: wykroczenie poziomu [threatlevel]!")
 			playsound(src, pick('aquila/sound/voice/beepsky/criminal.ogg', 'aquila/sound/voice/beepsky/justice.ogg', 'aquila/sound/voice/beepsky/freeze.ogg'), 50, FALSE) //AQUILA EDIT original was ('aquila/sound/voice/beepsky/criminal.ogg', 'aquila/sound/voice/beepsky/justice.ogg', 'aquila/sound/voice/beepsky/freeze.ogg')
 			playsound(src,'sound/weapons/saberon.ogg',50,TRUE,-1)
-			visible_message("[src] ignites his energy swords!")
+			visible_message("[src] włącza energetyczne miecze!")
 			icon_state = "grievous-c"
-			visible_message("<b>[src]</b> points at [C.name]!")
+			visible_message("<b>[src]</b> wskazuje na [C.name]!")
 			mode = BOT_HUNT
 			INVOKE_ASYNC(src, PROC_REF(handle_automated_action))
 			break
@@ -142,7 +142,7 @@
 
 /mob/living/simple_animal/bot/secbot/grievous/explode()
 
-	visible_message("<span class='boldannounce'>[src] lets out a huge cough as it blows apart!</span>")
+	visible_message("<span class='boldannounce'>[src] wydaje potężne kaszlnięcie i rozpada się na kawałki!</span>")
 	var/atom/Tsec = drop_location()
 
 	var/obj/item/bot_assembly/secbot/Sa = new (Tsec)

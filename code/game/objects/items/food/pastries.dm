@@ -10,7 +10,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("muffin" = 1)
+	tastes = list("muffinka" = 1)
 	foodtypes = GRAIN | SUGAR | BREAKFAST
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -20,7 +20,7 @@
 	name = "berry muffin"
 	icon_state = "berrymuffin"
 	desc = "A delicious and spongy little cake, with berries."
-	tastes = list("muffin" = 3, "berry" = 1)
+	tastes = list("muffinka" = 3, "jagoda" = 1)
 	foodtypes = GRAIN | FRUIT | SUGAR | BREAKFAST
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -29,7 +29,7 @@
 	icon_state = "berrymuffin"
 	alpha = 125
 	desc = "My stomach is a graveyard! No living being can quench my bloodthirst!"
-	tastes = list("muffin" = 3, "spookiness" = 1)
+	tastes = list("muffinka" = 3, "upiorność" = 1)
 	foodtypes = GRAIN | FRUIT | SUGAR | BREAKFAST
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -37,7 +37,7 @@
 	name = "moffin"
 	icon_state = "moffin_1"
 	desc = "A delicious and spongy little cake."
-	tastes = list("muffin" = 3, "dust" = 1, "lint" = 1)
+	tastes = list("muffinka" = 3, "kurz" = 1, "kłaczki" = 1)
 	foodtypes = CLOTH | GRAIN | SUGAR | BREAKFAST
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -57,9 +57,9 @@
 		return
 
 	if(tongue.liked_food & CLOTH)
-		to_chat(moffin_observer,"<span class='nicegreen'>Ooh! It's even got bits of clothes on it! Yummy!</span>")
+		to_chat(moffin_observer,"<span class='nicegreen'>Oo! Są w nim nawet kawałki ubrań! Mniam!</span>")
 	else
-		to_chat(moffin_observer,"<span class='warning'>You're not too sure what's on top though...</span>")
+		to_chat(moffin_observer,"<span class='warning'>Nie jesteś jednak pewien, co jest na wierzchu...</span>")
 
 ////////////////////////////////////////////WAFFLES////////////////////////////////////////////
 
@@ -72,7 +72,7 @@
 		/datum/reagent/consumable/nutriment = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("waffles" = 1)
+	tastes = list("gofry" = 1)
 	foodtypes = GRAIN | SUGAR | BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -87,7 +87,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 		/datum/reagent/consumable/nutriment/protein = 4,
 	)
-	tastes = list("waffles" = 7, "people" = 1)
+	tastes = list("gofry" = 7, "ludzie" = 1)
 	// The wafers are supposed to be flavorful and nutritious in the movie. They shouldn't be gross in a dystopian future where the chef regularly feeds people from the morgue to you.
 	foodtypes = GRAIN | MEAT
 	w_class = WEIGHT_CLASS_SMALL
@@ -103,7 +103,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 		/datum/reagent/consumable/nutriment/protein = 2,
 	)
-	tastes = list("waffles" = 7, "the colour green" = 1)
+	tastes = list("gofry" = 7, "kolor zielony" = 1)
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -119,7 +119,7 @@
 		/datum/reagent/drug/mushroomhallucinogen = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("waffles" = 1, "mushrooms" = 1)
+	tastes = list("gofry" = 1, "grzyby" = 1)
 	foodtypes = GRAIN | VEGETABLES | SUGAR | BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -132,7 +132,7 @@
 	icon_state = "COOKIE!!!"
 	bite_consumption = 1
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2)
-	tastes = list("cookie" = 1)
+	tastes = list("ciasteczko" = 1)
 	foodtypes = GRAIN | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -147,7 +147,7 @@
 	desc = "A true prophecy in each cookie!"
 	icon_state = "fortune_cookie"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
-	tastes = list("cookie" = 1)
+	tastes = list("ciasteczko" = 1)
 	foodtypes = GRAIN | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -182,7 +182,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/sugar = 6,
 	)
-	tastes = list("sweetness" = 1)
+	tastes = list("słodycz" = 1)
 	foodtypes = GRAIN | JUNKFOOD | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -194,7 +194,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("cookie" = 2, "oat" = 1)
+	tastes = list("ciasteczko" = 2, "owies" = 1)
 	foodtypes = GRAIN | BREAKFAST //these & raisin cookies were always served at breakfast at my university. Its basically breakfast in cookie
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -206,7 +206,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("cookie" = 1, "raisins" = 1)
+	tastes = list("ciasteczko" = 1, "rodzynki" = 1)
 	foodtypes = GRAIN | FRUIT | BREAKFAST //these & oatmeal cookies were always served at breakfast at my university. Its basically breakfast in cookie
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -218,7 +218,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("biscuit" = 3, "chocolate" = 1)
+	tastes = list("herbatnik" = 3, "czekolada" = 1)
 	foodtypes = GRAIN | JUNKFOOD
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -231,7 +231,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("pretzel" = 1)
+	tastes = list("precel" = 1)
 	foodtypes = GRAIN | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -244,7 +244,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("mushroom" = 1, "biscuit" = 1)
+	tastes = list("grzyb" = 1, "herbatnik" = 1)
 	foodtypes = GRAIN | VEGETABLES
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -270,7 +270,7 @@
 	icon_state = "cracker"
 	bite_consumption = 1
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2)
-	tastes = list("cracker" = 1)
+	tastes = list("krakers" = 1)
 	foodtypes = GRAIN
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -285,7 +285,7 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("bread" = 1, "egg" = 1, "cheese" = 1)
+	tastes = list("chleb" = 1, "jajko" = 1, "ser" = 1)
 	foodtypes = GRAIN | MEAT | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -298,7 +298,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("cake" = 3, "cherry" = 1)
+	tastes = list("ciasto" = 3, "wiśnia" = 1)
 	foodtypes = GRAIN | FRUIT | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -308,7 +308,7 @@
 	name = "blue cherry cupcake"
 	desc = "Blue cherries inside a delicious cupcake."
 	icon_state = "bluecherrycupcake"
-	tastes = list("cake" = 3, "blue cherry" = 1)
+	tastes = list("ciasto" = 3, "niebieska wiśnia" = 1)
 	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/jupitercupcake
@@ -321,7 +321,7 @@
 		/datum/reagent/consumable/caramel = 3,
 		/datum/reagent/consumable/liquidelectricity = 3,
 	)
-	tastes = list("cake" = 3, "caramel" = 2, "zap" = 1)
+	tastes = list("ciasto" = 3, "karmel" = 2, "porażenie" = 1)
 	crafting_complexity = FOOD_COMPLEXITY_3
 	crafted_food_buff = /datum/status_effect/food/trait/shockimmune
 
@@ -333,7 +333,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/honey = 6,
 	)
-	tastes = list("pastry" = 1, "sweetness" = 1)
+	tastes = list("ciastko" = 1, "słodycz" = 1)
 	foodtypes = GRAIN | SUGAR
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -347,7 +347,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 		/datum/reagent/consumable/ratlight = 8
 	)
-	tastes = list("pastry" = 1, "sweetness" = 1)
+	tastes = list("ciastko" = 1, "słodycz" = 1)
 	foodtypes = GRAIN | FRUIT
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3

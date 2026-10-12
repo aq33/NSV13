@@ -110,7 +110,7 @@
 	discovery_points = 300
 
 /obj/item/food/grown/firelemon/attack_self(mob/living/user)
-	user.visible_message("<span class='warning'>[user] primes [src]!</span>", "<span class='userdanger'>You prime [src]!</span>")
+	user.visible_message("<span class='warning'>[user] primes [src]!</span>", "<span class='userdanger'>Uzbrajasz [src]!</span>")
 	log_bomber(user, "primed a", src, "for detonation")
 	icon_state = "firelemon_active"
 	playsound(loc, 'sound/weapons/armbomb.ogg', 75, 1, -3)
@@ -177,7 +177,7 @@
 	bite_consumption_mod = 2
 	juice_typepath = /datum/reagent/consumable/orangejuice
 	distill_reagent = /datum/reagent/consumable/ethanol/triple_sec
-	tastes = list("polygons" = 1, "oranges" = 1)
+	tastes = list("wielokąty" = 1, "pomarańcze" = 1)
 	discovery_points = 300
 
 /obj/item/food/grown/citrus/orange_3d/pickup(mob/user)

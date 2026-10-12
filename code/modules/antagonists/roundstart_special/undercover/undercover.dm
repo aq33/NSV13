@@ -15,22 +15,22 @@
 ////////////////////////////////
 
 /datum/antagonist/special/undercover
-	name = "Ex-security agent"
-	roundend_category = "Special Roles"
+	name = "Były agent ochrony"
+	roundend_category = "role specjalne"
 	antag_moodlet = /datum/mood_event/determined
 
 /datum/antagonist/special/undercover/greet()
-	to_chat(owner, "<span class='userdanger'>You are an ex-security agent.</span>")
-	to_chat(owner, "<b>Due to your loyality to nanotrasen in the past, you have been granted with a weapon permit.</b>")
-	to_chat(owner, "<b>Additionally nanotrasen has authorised you to have a disabler for personal defense.</b>")
-	to_chat(owner, "<b>You are not a member of security, and shouldn't hunt criminals, but may use your weapon for self defense.</b>")
-	to_chat(owner, "<span class='boldannounce'>Do NOT commit traitorous acts in persuit of your objectives.</span>")
+	to_chat(owner, "<span class='userdanger'>Jesteś byłym agentem ochrony.</span>")
+	to_chat(owner, "<b>Ze względu na dawną lojalność wobec Nanotrasen otrzymujesz pozwolenie na broń.</b>")
+	to_chat(owner, "<b>Dodatkowo Nanotrasen pozwala ci mieć disabler do samoobrony.</b>")
+	to_chat(owner, "<b>Nie należysz do ochrony i nie powinieneś ścigać przestępców, ale możesz użyć broni w samoobronie.</b>")
+	to_chat(owner, "<span class='boldannounce'>NIE dopuszczaj się zdrady, realizując swoje cele.</span>")
 
 /datum/antagonist/special/undercover/admin_add(datum/mind/new_owner, mob/admin)
 	. = ..()
 	var/mob/living/carbon/C = new_owner.current
 	if(!istype(C))
-		to_chat(admin, "You can only turn carbons into an ex-security agent.")
+		to_chat(admin, "W byłego agenta ochrony możesz zmienić tylko istoty węglowe.")
 		return
 	message_admins("[key_name_admin(admin)] made [key_name_admin(new_owner)] into an ex-security agent.")
 	log_admin("[key_name(admin)] made [key_name(new_owner)] into [name].")
@@ -69,7 +69,7 @@
 	H.equip_in_one_of_slots(T2, slots)
 	if (!where)
 		if(!H.put_in_hands(T))
-			to_chat(owner, "<span class='warning'>Your weapon has been placed on the floor.</span>")
+			to_chat(owner, "<span class='warning'>Twoja broń leży na podłodze.</span>")
 
 	//Update ID
 	var/obj/item/card/id/ID = H.get_idcard()
@@ -94,7 +94,7 @@
 
 /datum/objective/saveshuttle/update_explanation_text()
 	. = ..()
-	explanation_text = "Protect the emergency shuttle from harm, ensuring that at least [target_amount] people make it on the shuttle alive."
+	explanation_text = "Chroń prom ewakuacyjny, tak by co najmniej [target_amount] osób dotarło nim żywych."
 
 /datum/objective/saveshuttle/proc/generate_people_goal()
 	var/potential_escapees = 0
@@ -102,7 +102,7 @@
 		if(M.mind)
 			potential_escapees++
 	if(potential_escapees == 0)
-		explanation_text = "Free Objective"
+		explanation_text = "Cel dowolny"
 		return 0
 	target_amount = rand(1, round(potential_escapees * 0.2))			//This should really be made to scale with the population
 	update_explanation_text()
@@ -122,7 +122,7 @@
 
 /datum/objective/protect_sm/update_explanation_text()
 	var/obj/machinery/power/supermatter_crystal/S = target_sm.resolve()
-	explanation_text = "Ensure the Supermatter crystal in [get_area(S)] remains stable and has above [target_integrity]% integrity at the end of the shift."
+	explanation_text = "Dopilnuj, by kryształ supermaterii w [get_area(S)] pozostał stabilny i na koniec zmiany miał ponad [target_integrity]% integralności."
 
 /datum/objective/protect_sm/check_completion()
 	var/obj/machinery/power/supermatter_crystal/S = target_sm.resolve()

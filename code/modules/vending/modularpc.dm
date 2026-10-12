@@ -4,7 +4,7 @@
 	icon_state = "modularpc"
 	icon_deny = "modularpc-deny"
 	product_ads = "Spraw sobie sprzęt prawdziwego gracza!;Najlepsze karty graficzne na wszystkie twoje krypto-kosmiczne potrzeby!;Robustne chłodzenie!;Najznakomitsze RGB w kosmosie!"
-	vend_reply = "Game on!"
+	vend_reply = "Do gry!"
 	light_color = LIGHT_COLOR_WHITE
 	products = list(/obj/item/modular_computer/laptop = 4,
 					/obj/item/modular_computer/tablet = 4,

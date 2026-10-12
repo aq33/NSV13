@@ -37,8 +37,8 @@
 
 /obj/machinery/stasis/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click to [stasis_enabled ? "turn off" : "turn on"] the machine.</span>"
-	. += "<span class='notice'>[src] is [op_computer ? "linked" : "<b>NOT</b> linked"] to an operating computer.</span>"
+	. += "<span class='notice'>Alt-kliknij, by [stasis_enabled ? "wyłączyć" : "włączyć"] maszynę.</span>"
+	. += "<span class='notice'>[src] [op_computer ? "jest połączony" : "<b>NIE</b> jest połączony"] z komputerem operacyjnym.</span>"
 
 /obj/machinery/stasis/proc/play_power_sound()
 	var/_running = stasis_running()
@@ -156,16 +156,16 @@
 		return ..()
 	. = TOOL_ACT_TOOLTYPE_SUCCESS
 	if(!panel_open)
-		to_chat(user, "<span class='warning'>\The [src]'s panel must be open in order to add it to \the [multitool]'s buffer.</span>")
+		to_chat(user, "<span class='warning'>Aby dodać [src] do bufora [multitool], jego panel musi być otwarty.</span>")
 		return
 	multitool.buffer = src
-	to_chat(user, "<span class='notice'>You store the linking data of \the [src] in \the [multitool]'s buffer. Use it on an operating computer to complete linking.</span>")
-	balloon_alert(user, "saved in buffer")
+	to_chat(user, "<span class='notice'>Zapisujesz dane łączenia [src] w buforze [multitool]. Użyj go na komputerze operacyjnym, by dokończyć łączenie.</span>")
+	balloon_alert(user, "zapisano w buforze")
 	
 	
 /obj/machinery/stasis/wrench_act(mob/living/user, obj/item/I) //We want to rotate, but we need to do it in 180 degree rotations.
 	if(panel_open && has_buckled_mobs())
-		to_chat(user, "<span class='notice'>\The [src] is too heavy to rotate while someone is buckled to it!</span>")
+		to_chat(user, "<span class='notice'>[src] jest za ciężki, by go obrócić, gdy ktoś jest do niego przypięty!</span>")
 		return TRUE
 	. = default_change_direction_wrench(user, I, 2)
 

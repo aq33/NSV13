@@ -1,10 +1,10 @@
 /mob/living/silicon
 	gender = NEUTER
 	has_unlimited_silicon_privilege = 1
-	verb_say = "states"
-	verb_ask = "queries"
-	verb_exclaim = "declares"
-	verb_yell = "alarms"
+	verb_say = "stwierdza"
+	verb_ask = "pyta"
+	verb_exclaim = "oznajmia"
+	verb_yell = "alarmuje"
 	initial_language_holder = /datum/language_holder/synthetic
 	see_in_dark = 8
 	bubble_icon = "machine"
@@ -148,22 +148,22 @@
 		var/msg = "--- "
 
 		if(alarm_types_show["Burglar"])
-			msg += "BURGLAR: [alarm_types_show["Burglar"]] alarms detected. - "
+			msg += "WŁAMANIE: wykryte alarmy: [alarm_types_show["Burglar"]]. - "
 
 		if(alarm_types_show["Motion"])
-			msg += "MOTION: [alarm_types_show["Motion"]] alarms detected. - "
+			msg += "RUCH: wykryte alarmy: [alarm_types_show["Motion"]]. - "
 
 		if(alarm_types_show["Fire"])
-			msg += "FIRE: [alarm_types_show["Fire"]] alarms detected. - "
+			msg += "POŻAR: wykryte alarmy: [alarm_types_show["Fire"]]. - "
 
 		if(alarm_types_show["Atmosphere"])
-			msg += "ATMOSPHERE: [alarm_types_show["Atmosphere"]] alarms detected. - "
+			msg += "ATMOSFERA: wykryte alarmy: [alarm_types_show["Atmosphere"]]. - "
 
 		if(alarm_types_show["Power"])
-			msg += "POWER: [alarm_types_show["Power"]] alarms detected. - "
+			msg += "ZASILANIE: wykryte alarmy: [alarm_types_show["Power"]]. - "
 
 		if(alarm_types_show["Camera"])
-			msg += "CAMERA: [alarm_types_show["Camera"]] alarms detected. - "
+			msg += "KAMERY: wykryte alarmy: [alarm_types_show["Camera"]]. - "
 
 		msg += "<A href=byond://?src=[REF(src)];showalerts=1'>\[Show Alerts\]</a>"
 		to_chat(src, msg)
@@ -176,19 +176,19 @@
 		var/msg = "--- "
 
 		if(alarm_types_clear["Motion"])
-			msg += "MOTION: [alarm_types_clear["Motion"]] alarms cleared. - "
+			msg += "RUCH: odwołane alarmy: [alarm_types_clear["Motion"]]. - "
 
 		if(alarm_types_clear["Fire"])
-			msg += "FIRE: [alarm_types_clear["Fire"]] alarms cleared. - "
+			msg += "POŻAR: odwołane alarmy: [alarm_types_clear["Fire"]]. - "
 
 		if(alarm_types_clear["Atmosphere"])
-			msg += "ATMOSPHERE: [alarm_types_clear["Atmosphere"]] alarms cleared. - "
+			msg += "ATMOSFERA: odwołane alarmy: [alarm_types_clear["Atmosphere"]]. - "
 
 		if(alarm_types_clear["Power"])
-			msg += "POWER: [alarm_types_clear["Power"]] alarms cleared. - "
+			msg += "ZASILANIE: odwołane alarmy: [alarm_types_clear["Power"]]. - "
 
 		if(alarm_types_show["Camera"])
-			msg += "CAMERA: [alarm_types_clear["Camera"]] alarms cleared. - "
+			msg += "KAMERY: odwołane alarmy: [alarm_types_clear["Camera"]]. - "
 
 		msg += "<A href=byond://?src=[REF(src)];showalerts=1'>\[Show Alerts\]</a>"
 		to_chat(src, msg)
@@ -202,7 +202,7 @@
 
 /mob/living/silicon/can_inject(mob/user, error_msg)
 	if(error_msg)
-		to_chat(user, "<span class='alert'>[p_their(TRUE)] outer shell is too tough.</span>")
+		to_chat(user, "<span class='alert'>Zewnętrzna powłoka jest zbyt wytrzymała.</span>")
 	return FALSE
 
 /mob/living/silicon/IsAdvancedToolUser()
@@ -273,7 +273,7 @@
 	currently_stating_laws = TRUE
 
 	//"radiomod" is inserted before a hardcoded message to change if and how it is handled by an internal radio.
-	say("[radiomod] Current Active Laws:")
+	say("[radiomod] Obecnie obowiązujące prawa:")
 	S.client.silicon_spam_grace()
 	//laws_sanity_check()
 	//laws.show_laws(world)
@@ -344,7 +344,7 @@
 
 /mob/living/silicon/proc/checklaws() //Gives you a link-driven interface for deciding what laws the statelaws() proc will share with the crew. --NeoFite
 
-	var/list = "<b>Which laws do you want to include when stating them for the crew?</b><br><br>"
+	var/list = "<b>Które prawa chcesz uwzględnić, ogłaszając je załodze?</b><br><br>"
 
 	if (laws.devillaws && laws.devillaws.len)
 		for(var/index = 1, index <= laws.devillaws.len, index++)
@@ -394,7 +394,7 @@
 				lawcheck[number+1] = "Yes"
 			list += {"<A href='byond://?src=[REF(src)];lawc=[number]'>[lawcheck[number+1]] [number]:</A> <font color='#990099'>[law]</font><BR>"}
 			number++
-	list += {"<br><br><A href='byond://?src=[REF(src)];laws=1'>State Laws</A>"}
+	list += {"<br><br><A href='byond://?src=[REF(src)];laws=1'>Ogłoś prawa</A>"}
 
 	usr << browse(HTML_SKELETON(list), "window=laws")
 
@@ -411,7 +411,7 @@
 
 /mob/living/silicon/proc/set_autosay() //For allowing the AI and borgs to set the radio behavior of auto announcements (state laws, arrivals).
 	if(!radio)
-		to_chat(src, "Radio not detected.")
+		to_chat(src, "Nie wykryto radia.")
 		return
 
 	//Ask the user to pick a channel from what it has available.
@@ -430,7 +430,7 @@
 				radiomod = ":" + key
 				break
 
-	to_chat(src, "<span class='notice'>Automatic announcements [Autochan == "None" ? "will not use the radio." : "set to [Autochan]."]</span>")
+	to_chat(src, "<span class='notice'>Automatyczne ogłoszenia [Autochan == "None" ? "nie będą używać radia." : "ustawione na kanał [Autochan]."]</span>")
 
 /mob/living/silicon/put_in_hand_check() // This check is for borgs being able to receive items, not put them in others' hands.
 	return 0
@@ -465,11 +465,11 @@
 		return
 	sensors_on = !sensors_on
 	if (!sensors_on)
-		to_chat(src, "Sensor overlay deactivated.")
+		to_chat(src, "Nakładka czujników wyłączona.")
 		remove_sensors()
 		return
 	add_sensors()
-	to_chat(src, "Sensor overlay activated.")
+	to_chat(src, "Nakładka czujników włączona.")
 
 /mob/living/silicon/proc/crew_manifest(mob/living/silicon) //nsv add manifest to borg computer
 	var/mob/living/silicon/borgo = usr

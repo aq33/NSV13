@@ -226,7 +226,7 @@
 /obj/structure/table,
 /obj/item/clipboard,
 /obj/item/paper/crumpled{
-	default_raw_text = "The safes have been locked and scrambled. Three thousand space dollars, a bandolier, a custom shotgun, and a lazarus injector have been safely deposited.";
+	default_raw_text = "Sejfy zostały zamknięte, a ich szyfry pomieszane. Bezpiecznie zdeponowano trzy tysiące kosmicznych dolarów, bandolier, niestandardową strzelbę i iniektor Łazarza.";
 	name = "bank statement"
 	},
 /obj/effect/decal/cleanable/dirt,

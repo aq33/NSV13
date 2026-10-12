@@ -28,10 +28,10 @@
 		if(10)
 			adjustOrganLoss(ORGAN_SLOT_BRAIN, gravity * 2)
 		if(11 to 12)
-			to_chat(src, "<span class='danger'>Your whole body aches.</span>")
+			to_chat(src, "<span class='danger'>Boli cię całe ciało.</span>")
 			adjustOrganLoss(ORGAN_SLOT_HEART, gravity * 2)
 		if(13)
-			to_chat(src,  "<span class='danger'>You feel your diaphragm getting crushed under your own weight!</span>")
+			to_chat(src,  "<span class='danger'>Czujesz, jak twoja przepona jest miażdżona pod własnym ciężarem!</span>")
 			adjustOrganLoss(ORGAN_SLOT_LUNGS, gravity * 2)
 			losebreath++
 		if(14 to 100)
@@ -39,11 +39,11 @@
 			adjustOrganLoss(pslot, Oloss) // damage a random organ
 			switch(range)
 				if(15)
-					to_chat(src, "<span class='warning'>You struggle to stay conscious!</span>")
+					to_chat(src, "<span class='warning'>Z trudem utrzymujesz przytomność!</span>")
 				if(14)
-					to_chat(src, "<span class='warning'>Your sight caves into a dark blur.</span>")
+					to_chat(src, "<span class='warning'>Twój wzrok zapada się w ciemną mgłę.</span>")
 				if(16)
-					to_chat(src, "<span class='danger'>You struggle to catch a breath.</span>")
+					to_chat(src, "<span class='danger'>Z trudem łapiesz oddech.</span>")
 
 /mob/living/carbon/handle_high_gravity(gravity)
 	if(HAS_TRAIT(src, TRAIT_GFORCE_WEAKNESS) || gravity > GRAVITY_DAMAGE_TRESHOLD)

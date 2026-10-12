@@ -29,7 +29,7 @@
 	a_intent = INTENT_HARM
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0.5, OXY = 1)
 	speed = 0
-	attacktext = "chomps"
+	attacktext = "chrupie"
 	attack_sound = 'sound/magic/demon_attack1.ogg'
 	deathsound = 'sound/creatures/space_dragon_roar.ogg'
 	icon = 'icons/mob/spacedragon.dmi'
@@ -48,7 +48,7 @@
 	ranged = TRUE
 	mouse_opacity = MOUSE_OPACITY_ICON
 	butcher_results = list(/obj/item/stack/ore/diamond = 5, /obj/item/stack/sheet/sinew = 5, /obj/item/stack/sheet/bone = 30)
-	deathmessage = "screeches as its wings turn to dust and it collapses on the floor, its life estinguished."
+	deathmessage = "skrzeczy, gdy jego skrzydła obracają się w pył, i pada martwy na podłogę."
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 1500
@@ -93,7 +93,7 @@
 	var/mob/living/mob = source
 	if(mob in src)
 		playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
-		visible_message("<span class='danger'>[src] vomits up [mob]!</span>")
+		visible_message("<span class='danger'>[src] zwraca [mob]!</span>")
 		mob.forceMove(loc)
 		mob.Paralyze(50)
 		UnregisterSignal(mob, COMSIG_LIVING_REVIVE)
@@ -113,13 +113,13 @@
 	if(using_special)
 		return
 	if(target == src)
-		to_chat(src, "<span class='warning'>You almost bite yourself, but then decide against it.</span>")
+		to_chat(src, "<span class='warning'>Prawie gryziesz samego siebie, ale w ostatniej chwili się rozmyślasz.</span>")
 		return
 	if(istype(target, /turf/closed/wall))
 		if(tearing_wall)
 			return
 		var/turf/closed/wall/thewall = target
-		to_chat(src, "<span class='warning'>You begin tearing through the wall...</span>")
+		to_chat(src, "<span class='warning'>Zaczynasz przebijać się przez ścianę...</span>")
 		playsound(src, 'sound/machines/airlock_alien_prying.ogg', 100, TRUE)
 		var/timetotear = 4 SECONDS
 		if(istype(target, /turf/closed/wall/r_wall))
@@ -137,7 +137,7 @@
 		if(L.stat == DEAD)
 			if(is_swallowing)
 				return
-			to_chat(src, "<span class='warning'>You begin to swallow [L] whole...</span>")
+			to_chat(src, "<span class='warning'>Zaczynasz połykać [L] w całości...</span>")
 			is_swallowing = TRUE
 			if(do_after(src, 3 SECONDS, target = L))
 				RegisterSignal(L, COMSIG_LIVING_REVIVE, PROC_REF(living_revive))
@@ -180,12 +180,12 @@
   * If the name is invalid, will re-prompt the dragon until a proper name is chosen.
   */
 /mob/living/simple_animal/hostile/space_dragon/proc/dragon_name()
-	var/chosen_name = sanitize_name(reject_bad_text(stripped_input(src, "What would you like your name to be?", "Choose Your Name", real_name, MAX_NAME_LEN)))
+	var/chosen_name = sanitize_name(reject_bad_text(stripped_input(src, "Jak chcesz się nazywać?", "Wybierz imię", real_name, MAX_NAME_LEN)))
 	if(!chosen_name)
-		to_chat(src, "<span class='warning'>Not a valid name, please try again.</span>")
+		to_chat(src, "<span class='warning'>Nieprawidłowe imię, spróbuj ponownie.</span>")
 		dragon_name()
 		return
-	to_chat(src, "<span class='notice'>Your name is now <span class='name'>[chosen_name]</span>, the feared Space Dragon.</span>")
+	to_chat(src, "<span class='notice'>Nazywasz się teraz <span class='name'>[chosen_name]</span>, budzący grozę Kosmiczny Smok.</span>")
 	fully_replace_character_name(null, chosen_name)
 
 /**
@@ -195,14 +195,14 @@
   * If an invalid color is given, will re-prompt the dragon until a proper color is chosen.
   */
 /mob/living/simple_animal/hostile/space_dragon/proc/color_selection()
-	chosen_color = input(src,"What would you like your color to be?","Choose Your Color", COLOR_WHITE) as color|null
+	chosen_color = input(src,"Jaki chcesz mieć kolor?","Wybierz kolor", COLOR_WHITE) as color|null
 	if(!chosen_color) //redo proc until we get a color
-		to_chat(src, "<span class='warning'>Not a valid color, please try again.</span>")
+		to_chat(src, "<span class='warning'>Nieprawidłowy kolor, spróbuj ponownie.</span>")
 		color_selection()
 		return
 	var/temp_hsv = RGBtoHSV(chosen_color)
 	if(ReadHSV(temp_hsv)[3] < DARKNESS_THRESHOLD)
-		to_chat(src, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+		to_chat(src, "<span class='danger'>Nieprawidłowy kolor. Twój kolor nie jest wystarczająco jasny.</span>")
 		color_selection()
 		return
 	add_atom_colour(chosen_color, FIXED_COLOUR_PRIORITY)
@@ -301,7 +301,7 @@
 			continue
 		hit_list += L
 		L.adjustFireLoss(30)
-		to_chat(L, "<span class='userdanger'>You're hit by [src]'s fire breath!</span>")
+		to_chat(L, "<span class='userdanger'>Trafia cię ogniste tchnienie [src]!</span>")
 	// deals damage to mechs
 	for(var/obj/mecha/M in T.contents)
 		if(M in hit_list)
@@ -320,7 +320,7 @@
 /mob/living/simple_animal/hostile/space_dragon/proc/eat(atom/movable/A)
 	if(A?.loc != src)
 		playsound(src, 'sound/magic/demon_attack1.ogg', 100, TRUE)
-		visible_message("<span class='warning'>[src] swallows [A] whole!</span>")
+		visible_message("<span class='warning'>[src] połyka [A] w całości!</span>")
 		A.forceMove(src)
 		return TRUE
 	return FALSE
@@ -399,8 +399,8 @@
 	for (var/mob/living/candidate in view(gust_distance, src))
 		if(candidate == src || candidate.faction_check_mob(src))
 			continue
-		visible_message("<span class='boldwarning'>[candidate] is knocked back by the gust!</span>")
-		to_chat(candidate, "<span class='userdanger'>You're knocked back by the gust!</span>")
+		visible_message("<span class='boldwarning'>Podmuch odrzuca [candidate]!</span>")
+		to_chat(candidate, "<span class='userdanger'>Podmuch cię odrzuca!</span>")
 		var/dir_to_target = get_dir(get_turf(src), get_turf(candidate))
 		var/throwtarget = get_edge_target_turf(target, dir_to_target)
 		candidate.safe_throw_at(throwtarget, 10, 1, src)
@@ -413,12 +413,12 @@
 	if(!message)
 		return
 	if(CHAT_FILTER_CHECK(message))
-		to_chat(usr, "<span class='warning'>Your message contains forbidden words.</span>")
+		to_chat(usr, "<span class='warning'>Twoja wiadomość zawiera zakazane słowa.</span>")
 		return
 	message = treat_message_min(message)
 	log_talk(message, LOG_SAY)
 	var/message_a = say_quote(message)
-	var/rendered = "<font color=\"#44aaff\">Carp Wavespeak <span class='name'>[shown_name]</span> <span class='message'>[message_a]</span></font>"
+	var/rendered = "<font color=\"#44aaff\">Karpiowa Mowa Fal <span class='name'>[shown_name]</span> <span class='message'>[message_a]</span></font>"
 	if(istype(src, /mob/living/simple_animal/hostile/space_dragon))
 		rendered = "<span class='big'>[rendered]</span>"
 	for(var/mob/S in GLOB.player_list)

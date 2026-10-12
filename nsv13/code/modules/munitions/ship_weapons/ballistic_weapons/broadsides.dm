@@ -80,25 +80,25 @@
 		if(MSTATE_UNBOLTED)
 			pop(.)
 	if(panel_open)
-		. += "The maintenance panel is <b>unscrewed</b> and the machinery could be <i>pried out</i>. You could flip the cannon by rotating the <u>bolts</u>. You can disengage the shell locks <b>electronically</b>."
+		. += "Panel serwisowy jest <b>odkręcony</b>, a maszynerię można <i>wyważyć</i>. Możesz obrócić działo, kręcąc <u>śrubami</u>. Blokady pocisków możesz zwolnić <b>elektronicznie</b>."
 	else
-		. += "The maintenance panel is <b>closed</b> and could be <i>screwed open</i>."
-	. += "<span class ='notice'>It has [get_ammo()]/[max_ammo] shells loaded.</span>"
+		. += "Panel serwisowy jest <b>zamknięty</b> i można go <i>odkręcić</i>."
+	. += "<span class ='notice'>Załadowano pocisków: [get_ammo()]/[max_ammo].</span>"
 	if(stovepipe)
-		. += "<span class ='warning'>It's stovepiped! You need to <i>pry</i> the jammed shell out!</span>"
+		. += "<span class ='warning'>Pocisk się zaciął! Musisz <i>wyważyć</i> zablokowany pocisk!</span>"
 	switch(soot)
 		if(0)
-			. += "<span class ='notice'>It's as clean as the day it was haphazardly welded together.</span>"
+			. += "<span class ='notice'>Jest czysty jak w dniu, gdy go byle jak zespawano.</span>"
 		if(1 to 20)
-			. += "<span class ='notice'>It's got some soot caked on, could use a clean soon.</span>"
+			. += "<span class ='notice'>Jest na nim trochę zaschniętej sadzy, przydałoby się go wkrótce wyczyścić.</span>"
 		if(21 to 40)
-			. += "<span class ='notice'>It's getting dirty, definitely needs a good cleaning.</span>"
+			. += "<span class ='notice'>Robi się brudny, zdecydowanie wymaga porządnego czyszczenia.</span>"
 		if(41 to 60)
-			. += "<span class ='notice'>It's got soot caked on good, it needs to cleaned.</span>"
+			. += "<span class ='notice'>Jest porządnie oblepiony sadzą, trzeba go wyczyścić.</span>"
 		if(61 to 80)
-			. += "<span class ='warning'>It's hard to see any metal under all that black, it's dangerous to operate like this.</span>"
+			. += "<span class ='warning'>Pod całą tą czernią trudno dostrzec metal, używanie go w takim stanie jest niebezpieczne.</span>"
 		if(81 to 100)
-			. += "<span class ='warning'>It's completely coated, the gun's practically useless like this until it gets cleaned.</span>"
+			. += "<span class ='warning'>Jest całkowicie pokryty sadzą, w takim stanie działo jest praktycznie bezużyteczne, dopóki się go nie wyczyści.</span>"
 
 /obj/machinery/ship_weapon/broadside/screwdriver_act(mob/user, obj/item/tool)
 	return default_deconstruction_screwdriver(user, "broadside_open", "broadside", tool)
@@ -109,10 +109,10 @@
 		switch(dir)
 			if(NORTH)
 				setDir(SOUTH)
-				to_chat(user, "<span class='notice'>You rotate the bolts, swiveling the cannon to Port</span>")
+				to_chat(user, "<span class='notice'>Kręcisz śrubami, obracając działo na lewą burtę</span>")
 			if(SOUTH)
 				setDir(NORTH)
-				to_chat(user, "<span class='notice'>You rotate the bolts, swiveling the cannon to Starboard</span>")
+				to_chat(user, "<span class='notice'>Kręcisz śrubami, obracając działo na prawą burtę</span>")
 		return TRUE
 
 /obj/machinery/ship_weapon/broadside/crowbar_act(mob/user, obj/item/tool)
@@ -127,7 +127,7 @@
 		busy = TRUE
 		if(do_after(user, 5 SECONDS, target = src))
 			stovepipe = FALSE
-			to_chat(user, "<span class='notice'>You free the jammed shell, the [src] is safe to use again!</span>")
+			to_chat(user, "<span class='notice'>Uwalniasz zablokowany pocisk, [src] znów jest bezpieczny w użyciu!</span>")
 			cut_overlay("[dir]_broadside_stovepipe")
 			if(dir == SOUTH)
 				var/obj/R = new /obj/item/ship_weapon/parts/broadside_casing(get_ranged_target_turf(src, NORTH, 4)) //Right
@@ -147,11 +147,11 @@
 		return TRUE
 	else
 		if(length(ammo) == 0)
-			to_chat(user, "<span class='warning'>There are no shells to unload!</span>")
+			to_chat(user, "<span class='warning'>Nie ma pocisków do wyładowania!</span>")
 			return TRUE
 		else
 			playsound(src, 'sound/machines/locktoggle.ogg', 100, TRUE)
-			to_chat(user, "<span class='notice'>You release the magnetic locks, the shells come loose!</span>")
+			to_chat(user, "<span class='notice'>Zwalniasz blokady magnetyczne, pociski się uwalniają!</span>")
 			unload()
 			update_overlay()
 			playsound(src, 'sound/effects/bang.ogg', 100, TRUE)
@@ -198,13 +198,13 @@
 				M.apply_damage(10, BURN)
 				M.Stun(5)
 				M.Knockdown(50)
-				to_chat(M, "<span class='userdanger'>The burning backblast sends you to the floor!</span>")
+				to_chat(M, "<span class='userdanger'>Palący podmuch wsteczny powala cię na podłogę!</span>")
 		for (var/mob/living/M in B)
 			if(isliving(M) && !M.incapacitated())
 				M.apply_damage(10, BURN)
 				M.Stun(5)
 				M.Knockdown(50)
-				to_chat(M, "<span class='userdanger'>The burning backblast sends you to the floor!</span>")
+				to_chat(M, "<span class='userdanger'>Palący podmuch wsteczny powala cię na podłogę!</span>")
 	else
 		var/obj/L = new /obj/item/ship_weapon/parts/broadside_casing(get_ranged_target_turf(src, SOUTH, 1)) //Left
 		var/turf/P = get_offset_target_turf(src, rand(5)-rand(5), 0-rand(5)) //Port
@@ -215,13 +215,13 @@
 				M.apply_damage(10, BURN)
 				M.Stun(5)
 				M.Knockdown(50)
-				to_chat(M, "<span class='userdanger'>The burning backblast sends you to the floor!</span>")
+				to_chat(M, "<span class='userdanger'>Palący podmuch wsteczny powala cię na podłogę!</span>")
 		for (var/mob/living/M in D)
 			if(isliving(M) && !M.incapacitated())
 				M.apply_damage(10, BURN)
 				M.Stun(5)
 				M.Knockdown(50)
-				to_chat(M, "<span class='userdanger'>The burning backblast sends you to the floor!</span>")
+				to_chat(M, "<span class='userdanger'>Palący podmuch wsteczny powala cię na podłogę!</span>")
 		L.throw_at(P, 12, 20)
 	soot = min(soot + rand(1,5), 100)
 	if(stovepipe)
@@ -275,20 +275,20 @@
 	if(busy)
 		return FALSE
 	if(stovepipe)
-		to_chat(user, "<span class='warning'>The [src] is completely locked up, you have to <i>pry</i> out the stovepiped shell!</span>")
+		to_chat(user, "<span class='warning'>[src] jest całkowicie zablokowany, musisz <i>wyważyć</i> zacięty pocisk!</span>")
 		return FALSE
 	..()
 	if(istype(A, /obj/structure/closet))
 		if(!(locate(/obj/item/ship_weapon/ammunition/broadside_shell) in A.contents))
-			to_chat(user, "<span class='warning'>There's nothing in [A] that can be loaded into [src]...</span>")
+			to_chat(user, "<span class='warning'>W [A] nie ma niczego, co można by załadować do [src]...</span>")
 			return FALSE
 		if(length(ammo) >= max_ammo)
 			return FALSE
-		to_chat(user, "<span class='notice'>You start to load [src] with the contents of [A]...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz ładować do [src] zawartość [A]...</span>")
 		busy = TRUE
 		if(do_after(user, 8 SECONDS , target = src))
 			if(!(locate(/obj/item/ship_weapon/ammunition/broadside_shell) in A.contents))
-				to_chat(user, "<span class='warning'>There's nothing in [A] that can be loaded into [src]...</span>")
+				to_chat(user, "<span class='warning'>W [A] nie ma niczego, co można by załadować do [src]...</span>")
 				busy = FALSE
 				return FALSE
 			if(prob(soot)) //likelihood of stovepipe is a lot higher if you crateload the gun
@@ -296,7 +296,7 @@
 				add_overlay("[dir]_broadside_stovepipe")
 				flick("[initial(icon_state)]_chambering",src)
 				playsound(src, 'sound/machines/airlock_alien_prying.ogg', 100, TRUE)
-				to_chat(user, "<span class='warning'>The [src] groans horrendously, a shell has stovepiped!</span>")
+				to_chat(user, "<span class='warning'>[src] okropnie jęczy, pocisk się zaciął!</span>")
 				busy = FALSE
 				return FALSE
 			for(var/obj/item/ship_weapon/ammunition/broadside_shell/G in A)
@@ -320,21 +320,21 @@
 
 /obj/machinery/ship_weapon/broadside/proc/mothclean(mob/moth, mob/user) //This is an easter egg, let's you clean the gun with moth/roach
 	if(!panel_open)
-		to_chat(user, "<span class='notice'>You can't reach the barrels unless you <i>unscrew</i> the maintenance panel.</span>")
+		to_chat(user, "<span class='notice'>Nie sięgniesz do luf, dopóki nie <i>odkręcisz</i> panelu serwisowego.</span>")
 		return
 	if(soot == 0)
-		to_chat(user, "<span class='notice'>The [src] is clean as can be, no need for further swabbing.</span>")
+		to_chat(user, "<span class='notice'>[src] jest czysty jak łza, nie trzeba go już przecierać.</span>")
 		return
 	if(busy)
 		return
 	if(state == STATE_CHAMBERED)
-		to_chat(user, "<span class='warning'>You can't clean the [src] while it's loaded!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz czyścić [src], gdy jest załadowany!</span>")
 		return
 	if(stovepipe)
-		to_chat(user, "<span class='warning'>The [src] is all jammed up, you can't clean it like this!</span>")
+		to_chat(user, "<span class='warning'>[src] jest cały zablokowany, nie wyczyścisz go w takim stanie!</span>")
 		return
-	visible_message("<span class='warning'>[user] is stuffing [moth] into the [src]!</span>", ignored_mobs = list(moth))
-	to_chat(moth, "<span class='userdanger'>[user] is shoving you into the [src]!</span>")
+	visible_message("<span class='warning'>[user] wpycha [moth] do [src]!</span>", ignored_mobs = list(moth))
+	to_chat(moth, "<span class='userdanger'>[user] wpycha cię do [src]!</span>")
 	if(do_after(user, 5 SECONDS, target = src, extra_checks = CALLBACK(src, PROC_REF(proximity_check), user, moth)))
 		moth.forceMove(src)
 		moth.emote("scream")
@@ -350,7 +350,7 @@
 			if(soot <= 0)
 				soot = 0
 				cut_overlays()
-				to_chat(user, "<span class='notice'>The [src] is spic and span!</span>")
+				to_chat(user, "<span class='notice'>[src] lśni czystością!</span>")
 				if(moth.reagents)
 					moth.reagents.add_reagent(/datum/reagent/colorful_reagent/powder/black, 5)
 				else
@@ -372,14 +372,14 @@
 
 /obj/machinery/ship_weapon/broadside/load(obj/A, mob/user)
 	if(stovepipe)
-		to_chat(user, "<span class='warning'>The [src] is completely locked up, you have to <i>pry</i> out the stovepiped shell!</span>")
+		to_chat(user, "<span class='warning'>[src] jest całkowicie zablokowany, musisz <i>wyważyć</i> zacięty pocisk!</span>")
 		return
 	if(prob(soot / 10)) //Divides soot by 10 so maximum chance to stovepipe is 10%
 		stovepipe = TRUE //find way to send message to TAC that the cannons are stovepiped
 		add_overlay("[dir]_broadside_stovepipe")
 		flick("[initial(icon_state)]_chambering",src)
 		playsound(src, 'sound/machines/airlock_alien_prying.ogg', 100, TRUE)
-		visible_message("<span class='warning'>The [src] groans horrendously, a shell has stovepiped!</span>")
+		visible_message("<span class='warning'>[src] okropnie jęczy, pocisk się zaciął!</span>")
 		qdel(A)
 		return
 	busy = TRUE
@@ -398,7 +398,7 @@
 	throw_speed = 3
 	throw_range = 7
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("swabbed", "scrubbed", "plunged", "maintained")
+	attack_verb = list("przeciera", "szoruje", "przepycha", "konserwuje")
 	resistance_flags = FLAMMABLE
 
 /obj/machinery/ship_weapon/broadside/attackby(obj/item/I, user) //why can they queue up a thousand cleaning bars at once?
@@ -406,20 +406,20 @@
 		if(busy)
 			return
 		if(state == STATE_CHAMBERED)
-			to_chat(user, "<span class='warning'>You can't clean the [src] while it's loaded!</span>")
+			to_chat(user, "<span class='warning'>Nie możesz czyścić [src], gdy jest załadowany!</span>")
 			return
 		if(stovepipe)
-			to_chat(user, "<span class='warning'>The [src] is all jammed up, you can't clean it like this!</span>")
+			to_chat(user, "<span class='warning'>[src] jest cały zablokowany, nie wyczyścisz go w takim stanie!</span>")
 			return
 		if(soot == 0)
-			to_chat(user, "<span class='notice'>The [src] is clean as a two ton whistle that blows hot steel.</span>")
+			to_chat(user, "<span class='notice'>[src] jest czysty jak dwutonowy gwizdek, który dmucha rozgrzaną stalą.</span>")
 			return
 		if(!panel_open)
-			to_chat(user, "<span class='notice'>You can't reach the barrels unless you <i>unscrew</i> the maintenance panel.</span>")
+			to_chat(user, "<span class='notice'>Nie sięgniesz do luf, dopóki nie <i>odkręcisz</i> panelu serwisowego.</span>")
 			return
 		else
 			busy = TRUE
-			to_chat(user, "<span class='notice'>You shove the mop deep into gun's barrels to give them a good swab.</span>")
+			to_chat(user, "<span class='notice'>Wpychasz mopa głęboko w lufy działa, by porządnie je przetrzeć.</span>")
 			playsound(src, 'nsv13/sound/effects/swab.ogg', 100, TRUE)
 			while(soot > 0)
 				if(!do_after(user, 2 SECONDS, target = src))
@@ -430,6 +430,6 @@
 					busy = FALSE
 					soot = 0
 					cut_overlays()
-					to_chat(user, "<span class='notice'>The [src] is spic and span!</span>")
+					to_chat(user, "<span class='notice'>[src] lśni czystością!</span>")
 					break
 	. = ..()

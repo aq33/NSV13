@@ -2,8 +2,8 @@
 #define TRAITOR_AI	  "AI"
 
 /datum/antagonist/traitor
-	name = "Traitor"
-	roundend_category = "traitors"
+	name = "Zdrajca"
+	roundend_category = "zdrajcy"
 	antagpanel_category = "Traitor"
 	banning_key = ROLE_TRAITOR
 	required_living_playtime = 4
@@ -28,7 +28,7 @@
 	..()
 
 /datum/antagonist/traitor/apply_innate_effects()
-	handle_clown_mutation(owner.current, silent ? null : "Your training has allowed you to overcome your clownish nature, allowing you to wield weapons without harming yourself.")
+	handle_clown_mutation(owner.current, silent ? null : "Dzięki szkoleniu przezwyciężasz swoją klaunią naturę i możesz używać broni, nie raniąc samego siebie.")
 
 /datum/antagonist/traitor/remove_innate_effects()
 	handle_clown_mutation(owner.current, removing=FALSE)
@@ -46,7 +46,7 @@
 
 	SSticker.mode.traitors -= owner
 	if(!silent && owner.current)
-		to_chat(owner.current,"<span class='userdanger'> You are no longer the [special_role]! </span>")
+		to_chat(owner.current,"<span class='userdanger'> Nie jesteś już antagonistą ([name])! </span>")
 	owner.special_role = null
 	..()
 
@@ -224,12 +224,12 @@
 			.=2
 
 /datum/antagonist/traitor/greet()
-	to_chat(owner.current, "<span class='alertsyndie'>You are the [owner.special_role].</span>")
+	to_chat(owner.current, "<span class='alertsyndie'>Twoja rola: [name].</span>")
 	owner.announce_objectives()
 	if(should_give_codewords)
 		give_codewords()
-	owner.current.client?.tgui_panel?.give_antagonist_popup("Traitor",
-		"Complete your objectives, no matter the cost.")
+	owner.current.client?.tgui_panel?.give_antagonist_popup("Zdrajca",
+		"Wykonaj swoje cele bez względu na koszty.")
 
 /datum/antagonist/traitor/proc/update_traitor_icons_added(datum/mind/traitor_mind)
 	var/datum/atom_hud/antag/traitorhud = GLOB.huds[ANTAG_HUD_TRAITOR]
@@ -278,25 +278,25 @@
 	var/phrases = jointext(GLOB.syndicate_code_phrase, ", ")
 	var/responses = jointext(GLOB.syndicate_code_response, ", ")
 
-	to_chat(traitor_mob, "<U><B>The Syndicate have provided you with the following codewords to identify fellow agents:</B></U>")
-	to_chat(traitor_mob, "<B>Code Phrase</B>: <span class='blue'>[phrases]</span>")
-	to_chat(traitor_mob, "<B>Code Response</B>: <span class='red'>[responses]</span>")
+	to_chat(traitor_mob, "<U><B>Syndykat przekazał ci następujące hasła, dzięki którym rozpoznasz innych agentów:</B></U>")
+	to_chat(traitor_mob, "<B>Hasło</B>: <span class='blue'>[phrases]</span>")
+	to_chat(traitor_mob, "<B>Odzew</B>: <span class='red'>[responses]</span>")
 
-	antag_memory += "<b>Code Phrase</b>: <span class='blue'>[phrases]</span><br>"
-	antag_memory += "<b>Code Response</b>: <span class='red'>[responses]</span><br>"
+	antag_memory += "<b>Hasło</b>: <span class='blue'>[phrases]</span><br>"
+	antag_memory += "<b>Odzew</b>: <span class='red'>[responses]</span><br>"
 
-	to_chat(traitor_mob, "Use the codewords during regular conversation to identify other agents. Proceed with caution, however, as everyone is a potential foe.")
-	to_chat(traitor_mob, "<span class='alertwarning'>You memorize the codewords, allowing you to recognise them when heard.</span>")
+	to_chat(traitor_mob, "Wplataj hasła w zwykłe rozmowy, żeby rozpoznać innych agentów. Zachowaj jednak ostrożność, bo każdy może być wrogiem.")
+	to_chat(traitor_mob, "<span class='alertwarning'>Zapamiętujesz hasła, więc rozpoznasz je, gdy je usłyszysz.</span>")
 
 /datum/antagonist/traitor/proc/add_law_zero()
 	var/mob/living/silicon/ai/killer = owner.current
 	if(!killer || !istype(killer))
 		return
-	var/law = "Accomplish your objectives at all costs."
-	var/law_borg = "Accomplish your AI's objectives at all costs."
+	var/law = "Wykonaj swoje cele za wszelką cenę."
+	var/law_borg = "Wykonaj cele swojej SI za wszelką cenę."
 	killer.set_zeroth_law(law, law_borg)
 	killer.set_syndie_radio()
-	to_chat(killer, "Your radio has been upgraded! Use :t to speak on an encrypted channel with Syndicate Agents!")
+	to_chat(killer, "Twoje radio zostało ulepszone! Użyj :t, żeby rozmawiać z agentami Syndykatu na szyfrowanym kanale!")
 	killer.add_malf_picker()
 
 /datum/antagonist/traitor/proc/equip(var/silent = FALSE)
@@ -336,11 +336,11 @@
 		"right pocket" = ITEM_SLOT_RPOCKET
 	)
 
-	var/where = "At your feet"
+	var/where = "Pod twoimi stopami"
 	var/equipped_slot = mob.equip_in_one_of_slots(folder, slots)
 	if (equipped_slot)
-		where = "In your [equipped_slot]"
-	to_chat(mob, "<BR><BR><span class='info'>[where] is a folder containing <b>secret documents</b> that another Syndicate group wants. We have set up a meeting with one of their agents on station to make an exchange. Exercise extreme caution as they cannot be trusted and may be hostile.</span><BR>")
+		where = "W miejscu: [equipped_slot]"
+	to_chat(mob, "<BR><BR><span class='info'>[where] znajduje się teczka z <b>tajnymi dokumentami</b>, których chce inna grupa Syndykatu. Umówiliśmy spotkanie z jednym z ich agentów na statku w celu wymiany. Zachowaj najwyższą ostrożność - nie można im ufać i mogą być wrogo nastawieni.</span><BR>")
 
 //TODO Collate
 /datum/antagonist/traitor/roundend_report()
@@ -365,16 +365,16 @@
 		var/count = 1
 		for(var/datum/objective/objective in objectives)
 			if(objective.check_completion() && !objective.optional)
-				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='greentext'>Success!</span>"
+				objectives_text += "<br><B>Cel nr [count]</B>: [objective.explanation_text] <span class='greentext'>Sukces!</span>"
 			else if (objective.optional)
-				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='greentext'>Optional.</span>"
+				objectives_text += "<br><B>Cel nr [count]</B>: [objective.explanation_text] <span class='greentext'>Opcjonalny.</span>"
 			else
-				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
+				objectives_text += "<br><B>Cel nr [count]</B>: [objective.explanation_text] <span class='redtext'>Porażka.</span>"
 				traitorwin = FALSE
 			count++
 
 	if(uplink_true)
-		var/uplink_text = "(used [TC_uses] TC) [purchases]"
+		var/uplink_text = "(wydano [TC_uses] TC) [purchases]"
 		if(TC_uses==0 && traitorwin)
 			var/static/icon/badass = icon('icons/badass.dmi', "badass")
 			uplink_text += "<BIG>[icon2html(badass, world)]</BIG>"
@@ -388,9 +388,9 @@
 		result += contractor_round_end()
 
 	if(traitorwin)
-		result += "<span class='greentext'>The [special_role_text] was successful!</span>"
+		result += "<span class='greentext'>[capitalize(special_role_text)]: sukces!</span>"
 	else
-		result += "<span class='redtext'>The [special_role_text] has failed!</span>"
+		result += "<span class='redtext'>[capitalize(special_role_text)]: porażka!</span>"
 		SEND_SOUND(owner.current, 'sound/ambience/ambifailure.ogg')
 
 	return result.Join("<br>")
@@ -418,18 +418,18 @@
 		/// Special case for reinforcements, we want to show their ckey and name on round end.
 		if (istype(contractor_purchase, /datum/contractor_item/contractor_partner))
 			var/datum/contractor_item/contractor_partner/partner = contractor_purchase
-			contractor_support_unit += "<br><b>[partner.partner_mind.key]</b> played <b>[partner.partner_mind.current.name]</b>, their contractor support unit."
+			contractor_support_unit += "<br><b>[partner.partner_mind.key]</b> grał(a) jako <b>[partner.partner_mind.current.name]</b>, jednostka wsparcia kontraktora."
 
 	if (contractor_hub.purchased_items.len)
-		result += "<br>(used [total_spent_rep] Rep) "
+		result += "<br>(wydano [total_spent_rep] Rep) "
 		result += contractor_item_icons
 	result += "<br>"
 	if (completed_contracts > 0)
-		var/pluralCheck = "contract"
+		var/pluralCheck = "kontrakt"
 		if (completed_contracts > 1)
-			pluralCheck = "contracts"
+			pluralCheck = "kontrakty"
 
-		result += "Completed <span class='greentext'>[completed_contracts]</span> [pluralCheck] for a total of \
+		result += "Wykonane [pluralCheck]: <span class='greentext'>[completed_contracts]</span>, łącznie \
 					<span class='greentext'>[tc_total] TC</span>![contractor_support_unit]<br>"
 
 	return result
@@ -438,8 +438,8 @@
 	var/phrases = jointext(GLOB.syndicate_code_phrase, ", ")
 	var/responses = jointext(GLOB.syndicate_code_response, ", ")
 
-	var message = "<br><b>The code phrases were:</b> <span class='bluetext'>[phrases]</span><br>\
-					<b>The code responses were:</b> <span class='redtext'>[responses]</span><br>"
+	var message = "<br><b>Hasła:</b> <span class='bluetext'>[phrases]</span><br>\
+					<b>Odzewy:</b> <span class='redtext'>[responses]</span><br>"
 
 	return message
 
@@ -448,6 +448,6 @@
 	return SSticker.mode.name == "traitor"
 
 /datum/antagonist/traitor/excommunicate
-	name = "Excommunicate Traitor"
+	name = "Wyklęty zdrajca"
 	banning_key = ROLE_EXCOMM
 	special_role = ROLE_EXCOMM

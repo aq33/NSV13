@@ -3,8 +3,8 @@
 	desc = "A horrific mutation that gives the user the abilitiy to turn their arm into tentacle made out of muscle and tendons."
 	quality = POSITIVE
 	difficulty = 12
-	text_gain_indication = "<span class='notice'>Your arms feel stretchy.</span>"
-	text_lose_indication = "<span class='warning'>Your arms feel solid again.</span>"
+	text_gain_indication = "<span class='notice'>Twoje ramiona wydają się rozciągliwe.</span>"
+	text_lose_indication = "<span class='warning'>Twoje ramiona znów wydają się twarde.</span>"
 	instability = 30
 	power = /obj/effect/proc_holder/spell/targeted/conjure_item/tentacle
 
@@ -45,12 +45,12 @@
 	ADD_TRAIT(src, TRAIT_NODROP, "genetics")
 	if(ismob(loc))
 		if(!silent)
-			loc.visible_message("<span class='warning'>[loc.name]\'s arm starts stretching inhumanly!</span>", "<span class='warning'>Your arm twists and mutates, transforming it into a tentacle.</span>", "<span class='italics'>You hear organic matter ripping and tearing!</span>")
+			loc.visible_message("<span class='warning'>Ramię [loc.name] zaczyna się nieludzko rozciągać!</span>", "<span class='warning'>Twoje ramię wykręca się i mutuje, zamieniając się w mackę.</span>", "<span class='italics'>Słyszysz odgłos rozrywanej i rozdzieranej materii organicznej!</span>")
 		else
-			to_chat(loc, "<span class='notice'>You prepare to extend a tentacle.</span>")
+			to_chat(loc, "<span class='notice'>Przygotowujesz się do wysunięcia macki.</span>")
 
 /obj/item/gun/magic/tentacle_mutation/shoot_with_empty_chamber(mob/living/user as mob|obj)
-	to_chat(user, "<span class='warning'>The [name] is not ready yet.</span>")
+	to_chat(user, "<span class='warning'>[name] nie jest jeszcze gotowa.</span>")
 
 /obj/item/gun/magic/tentacle_mutation/process_chamber()
 	. = ..()
@@ -58,7 +58,7 @@
 		qdel(src)
 
 /obj/item/gun/magic/tentacle_mutation/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] coils [src] tightly around [user.p_their()] neck! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] mocno owija [src] wokół szyi! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return (OXYLOSS)
 
 /***************************************\
@@ -68,8 +68,8 @@
 	name = "Arm Blade"
 	desc = "A horrific mutation that gives user the ability to turn their arm into a grotesque blade made of bone and flesh."
 	locked = TRUE
-	text_gain_indication = "<span class='warning'>You feel bones in your arm painfully reforming!</span>"
-	text_lose_indication = "<span class='warning'>Your arms painfully reform back to normal.</span>"
+	text_gain_indication = "<span class='warning'>Czujesz, jak kości w twoim ramieniu boleśnie się przekształcają!</span>"
+	text_lose_indication = "<span class='warning'>Twoje ramiona boleśnie wracają do normy.</span>"
 	instability = 35
 	power = /obj/effect/proc_holder/spell/targeted/conjure_item/armblade
 
@@ -102,7 +102,7 @@
 	block_upgrade_walk = 1
 	block_flags = BLOCKING_ACTIVE | BLOCKING_NASTY
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	sharpness = IS_SHARP
 
 /obj/item/melee/arm_blade_mut/Initialize()
@@ -112,12 +112,12 @@
 
 /obj/item/melee/arm_blade_mut/equipped(mob/user, slot)
 	. = ..()
-	user.visible_message("<span class='warning'>A grotesque blade forms around [user.name]\'s arm!</span>", "<span class='warning'>Your arm twists and mutates, transforming it into a deadly blade.</span>", "<span class='italics'>You hear organic matter ripping and tearing!</span>")
+	user.visible_message("<span class='warning'>Wokół ramienia [user.name] formuje się groteskowe ostrze!</span>", "<span class='warning'>Twoje ramię wykręca się i mutuje, zamieniając się w śmiercionośne ostrze.</span>", "<span class='italics'>Słyszysz odgłos rozrywanej i rozdzieranej materii organicznej!</span>")
 	playsound(user, 'sound/effects/blobattack.ogg', 30, 1)
 
 /obj/item/melee/arm_blade_mut/dropped(mob/user, slot)
 	. = ..()
-	user.visible_message("<span class='warning'>With a sickening crunch, [user] reforms [user.p_their()] blade into an arm!</span>", "<span class='notice'>You assimilate the blade back into your body.</span>", "<span class='italics>You hear organic matter ripping and tearing!</span>")
+	user.visible_message("<span class='warning'>Z obrzydliwym chrupnięciem [user] przekształca ostrze z powrotem w ramię!</span>", "<span class='notice'>Wchłaniasz ostrze z powrotem do ciała.</span>", "<span class='italics>Słyszysz odgłos rozrywanej i rozdzieranej materii organicznej!</span>")
 	playsound(user, 'sound/effects/blobattack.ogg', 30, 1)
 
 /*************************************\
@@ -127,8 +127,8 @@
 	name = "Matter Eater"
 	desc = "A mutation that gives a subject the ability to eat anything around them whole."
 	quality = POSITIVE
-	text_gain_indication = "<span class='warning'>You feel extremely hungry!</span>"
-	text_lose_indication = "<span class='notice'>You feel satied once again.</span>"
+	text_gain_indication = "<span class='warning'>Czujesz ogromny głód!</span>"
+	text_lose_indication = "<span class='notice'>Znów czujesz się syty.</span>"
 	difficulty = 14
 	instability = 35
 	power = /obj/effect/proc_holder/spell/targeted/vore
@@ -149,25 +149,25 @@
 	var/obj/item/helditem = user.get_active_held_item()
 	if(eaten_item && eaten_item.loc == src)
 		eaten_item.forceMove(user.loc)
-		user.visible_message("<span class='notice'>[user] spits [eaten_item] out!</span>", "<span class='notice'>You spit [eaten_item] out!</span>")
+		user.visible_message("<span class='notice'>[user] wypluwa [eaten_item]!</span>", "<span class='notice'>Wypluwasz [eaten_item]!</span>")
 		playsound(user, 'sound/effects/splat.ogg', 50, 1)
 		eaten_item = null
 		return
 	if(helditem && helditem.w_class > WEIGHT_CLASS_NORMAL)
-		user.visible_message("<span class='notice'>[user] tries to put [helditem] into their mouth, but fails miserably!</span>", "<span class='warning'>[helditem] is too big for you to eat!</span>")
+		user.visible_message("<span class='notice'>[user] próbuje włożyć sobie [helditem] do ust, ale sromotnie mu się nie udaje!</span>", "<span class='warning'>[helditem] jest dla ciebie za duży, by go zjeść!</span>")
 		return
 	if(helditem)
 		eaten_item = helditem
 		helditem.forceMove(src)
-		user.visible_message("<span class='notice'>[user] swallows [eaten_item] whole!</span>", "<span class='notice'>You swallow [eaten_item] whole!</span>")
+		user.visible_message("<span class='notice'>[user] połyka [eaten_item] w całości!</span>", "<span class='notice'>Połykasz [eaten_item] w całości!</span>")
 		playsound(user, 'sound/effects/attackblob.ogg', 50, 1)
 		return
-	to_chat(user,"<span class='warning'>You're not holding anything.</span>")
+	to_chat(user,"<span class='warning'>Niczego nie trzymasz.</span>")
 
 /obj/effect/proc_holder/spell/targeted/vore/Destroy()
 	if(eaten_item)
 		eaten_item.forceMove(usr.loc)
-		usr.visible_message("<span class='notice'>[usr] spits [eaten_item] out!</span>", "<span class='notice'>You spit [eaten_item] out!</span>")
+		usr.visible_message("<span class='notice'>[usr] wypluwa [eaten_item]!</span>", "<span class='notice'>Wypluwasz [eaten_item]!</span>")
 		playsound(usr, 'sound/effects/splat.ogg', 50, 1)
 	return ..()
 

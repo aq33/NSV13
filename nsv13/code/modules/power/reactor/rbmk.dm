@@ -148,31 +148,31 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	if(Adjacent(src, user))
 		if(do_after(user, 1 SECONDS, target=src))
 			var/percent = vessel_integrity / initial(vessel_integrity) * 100
-			var/msg = "<span class='warning'>The reactor looks operational.</span>"
+			var/msg = "<span class='warning'>Reaktor wygląda na sprawny.</span>"
 			switch(percent)
 				if(0 to 10)
-					msg = "<span class='boldwarning'>[src]'s seals are dangerously warped and you can see cracks all over the reactor vessel! </span>"
+					msg = "<span class='boldwarning'>Uszczelki [src] są niebezpiecznie wypaczone, a na całym zbiorniku reaktora widać pęknięcia! </span>"
 				if(10 to 40)
-					msg = "<span class='boldwarning'>[src]'s seals are heavily warped and cracked! </span>"
+					msg = "<span class='boldwarning'>Uszczelki [src] są mocno wypaczone i popękane! </span>"
 				if(40 to 60)
-					msg = "<span class='warning'>[src]'s seals are holding, but barely. You can see some micro-fractures forming in the reactor vessel.</span>"
+					msg = "<span class='warning'>Uszczelki [src] trzymają, ale ledwo. W zbiorniku reaktora tworzą się mikropęknięcia.</span>"
 				if(60 to 80)
-					msg = "<span class='warning'>[src]'s seals are in-tact, but slightly worn. There are no visible cracks in the reactor vessel.</span>"
+					msg = "<span class='warning'>Uszczelki [src] są nienaruszone, ale lekko zużyte. W zbiorniku reaktora nie widać pęknięć.</span>"
 				if(80 to 90)
-					msg = "<span class='notice'>[src]'s seals are in good shape, and there are no visible cracks in the reactor vessel.</span>"
+					msg = "<span class='notice'>Uszczelki [src] są w dobrym stanie, a w zbiorniku reaktora nie widać pęknięć.</span>"
 				if(95 to 100)
-					msg = "<span class='notice'>[src]'s seals look factory new, and the reactor's in excellent shape.</span>"
+					msg = "<span class='notice'>Uszczelki [src] wyglądają jak nowe prosto z fabryki, a reaktor jest w doskonałym stanie.</span>"
 			. += msg
 
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/fuel_rod))
 		if(power >= 20)
-			to_chat(user, "<span class='notice'>You cannot insert fuel into [src] when it has been raised above 20% power.</span>")
+			to_chat(user, "<span class='notice'>Nie możesz dodać paliwa do [src], gdy pracuje z mocą powyżej 20%.</span>")
 			return FALSE
 		if(fuel_rods.len >= 5)
-			to_chat(user, "<span class='warning'>[src] is already at maximum fuel load.</span>")
+			to_chat(user, "<span class='warning'>[src] ma już maksymalny załadunek paliwa.</span>")
 			return FALSE
-		to_chat(user, "<span class='notice'>You start to insert [W] into [src]...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz wkładać [W] do [src]...</span>")
 		radiation_pulse(src, temperature)
 		if(do_after(user, 5 SECONDS, target=src))
 			if(!length(fuel_rods))
@@ -183,20 +183,20 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 		return TRUE
 	if(!slagged && istype(W, /obj/item/sealant))
 		if(power >= 20)
-			to_chat(user, "<span class='notice'>You cannot repair [src] while it is running at above 20% power.</span>")
+			to_chat(user, "<span class='notice'>Nie możesz naprawiać [src], gdy pracuje z mocą powyżej 20%.</span>")
 			return FALSE
 		if(vessel_integrity >= 350)
-			to_chat(user, "<span class='notice'>[src]'s seals are already in-tact, repairing them further would require a new set of seals.</span>")
+			to_chat(user, "<span class='notice'>Uszczelki [src] są już nienaruszone, dalsza naprawa wymagałaby nowego zestawu uszczelek.</span>")
 			return FALSE
 		if(vessel_integrity <= 0.5 * initial(vessel_integrity)) //Heavily damaged.
-			to_chat(user, "<span class='notice'>[src]'s reactor vessel is cracked and worn, you need to repair the cracks with a welder before you can repair the seals.</span>")
+			to_chat(user, "<span class='notice'>Zbiornik reaktora [src] jest popękany i zużyty, zanim naprawisz uszczelki, musisz zespawać pęknięcia.</span>")
 			return FALSE
 		if(do_after(user, 5 SECONDS, target=src))
 			if(vessel_integrity >= 350)	//They might've stacked doafters
-				to_chat(user, "<span class='notice'>[src]'s seals are already in-tact, repairing them further would require a new set of seals.</span>")
+				to_chat(user, "<span class='notice'>Uszczelki [src] są już nienaruszone, dalsza naprawa wymagałaby nowego zestawu uszczelek.</span>")
 				return FALSE
 			playsound(src, 'sound/effects/spray2.ogg', 50, 1, -6)
-			user.visible_message("<span class='warning'>[user] applies sealant to some of [src]'s worn out seals.</span>", "<span class='notice'>You apply sealant to some of [src]'s worn out seals.</span>")
+			user.visible_message("<span class='warning'>[user] nakłada uszczelniacz na część zużytych uszczelek [src].</span>", "<span class='notice'>Nakładasz uszczelniacz na część zużytych uszczelek [src].</span>")
 			vessel_integrity += 10
 			vessel_integrity = CLAMP(vessel_integrity, 0, initial(vessel_integrity))
 		return TRUE
@@ -204,20 +204,20 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/welder_act(mob/living/user, obj/item/I)
 	if(slagged)
-		to_chat(user, "<span class='notice'>You can't repair [src], it's completely slagged!</span>")
+		to_chat(user, "<span class='notice'>Nie możesz naprawić [src], jest całkowicie przetopiony!</span>")
 		return FALSE
 	if(power >= 20)
-		to_chat(user, "<span class='notice'>You can't repair [src] while it is running at above 20% power.</span>")
+		to_chat(user, "<span class='notice'>Nie możesz naprawiać [src], gdy pracuje z mocą powyżej 20%.</span>")
 		return FALSE
 	if(vessel_integrity > 0.5 * initial(vessel_integrity))
-		to_chat(user, "<span class='notice'>[src] is free from cracks. Further repairs must be carried out with flexi-seal sealant.</span>")
+		to_chat(user, "<span class='notice'>[src] nie ma pęknięć. Dalsze naprawy trzeba przeprowadzić uszczelniaczem flexi-seal.</span>")
 		return FALSE
 	if(I.use_tool(src, user, 0, volume=40))
 		if(vessel_integrity > 0.5 * initial(vessel_integrity))
-			to_chat(user, "<span class='notice'>[src] is free from cracks. Further repairs must be carried out with flexi-seal sealant.</span>")
+			to_chat(user, "<span class='notice'>[src] nie ma pęknięć. Dalsze naprawy trzeba przeprowadzić uszczelniaczem flexi-seal.</span>")
 			return FALSE
 		vessel_integrity += 20
-		to_chat(user, "<span class='notice'>You weld together some of [src]'s cracks. This'll do for now.</span>")
+		to_chat(user, "<span class='notice'>Zespawujesz część pęknięć [src]. Na razie wystarczy.</span>")
 	return TRUE
 
 //Admin procs to mess with the reaction environment.
@@ -680,12 +680,12 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	if(!reactor)
 		return FALSE
 	if(reactor.power > 20)
-		to_chat(user, "<span class='warning'>You cannot remove fuel from [reactor] when it is above 20% power.</span>")
+		to_chat(user, "<span class='warning'>Nie możesz wyjąć paliwa z [reactor], gdy pracuje z mocą powyżej 20%.</span>")
 		return FALSE
 	if(!reactor.fuel_rods.len)
-		to_chat(user, "<span class='warning'>[reactor] does not have any fuel rods loaded.</span>")
+		to_chat(user, "<span class='warning'>W [reactor] nie załadowano żadnych prętów paliwowych.</span>")
 		return FALSE
-	var/atom/movable/fuel_rod = input(usr, "Select a fuel rod to remove", "[src]", null) as null|anything in reactor.fuel_rods
+	var/atom/movable/fuel_rod = input(usr, "Wybierz pręt paliwowy do wyjęcia", "[src]", null) as null|anything in reactor.fuel_rods
 	if(!fuel_rod)
 		return
 	playsound(src, pick('nsv13/sound/effects/rbmk/switch.ogg','nsv13/sound/effects/rbmk/switch2.ogg','nsv13/sound/effects/rbmk/switch3.ogg'), 100, FALSE)
@@ -716,7 +716,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 
 /obj/machinery/computer/reactor/pump/interact(mob/living/user)
 	. = ..()
-	var/newPressure = input(user, "Set new output pressure (kPa)", "Remote pump control", null) as null|num
+	var/newPressure = input(user, "Ustaw nowe ciśnienie wyjściowe (kPa)", "Zdalne sterowanie pompą", null) as null|num
 	if(!newPressure)
 		return
 	newPressure = clamp(newPressure, 0, MAX_OUTPUT_PRESSURE) //Number sanitization is not handled in the pumps themselves, only during their ui_act which this doesn't use.
@@ -727,7 +727,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	if(!is_operational)
 		return FALSE
 	playsound(loc, pick('nsv13/sound/effects/rbmk/switch.ogg','nsv13/sound/effects/rbmk/switch2.ogg','nsv13/sound/effects/rbmk/switch3.ogg'), 100, FALSE)
-	visible_message("<span class='notice'>[src]'s switch flips [on ? "off" : "on"].</span>")
+	visible_message("<span class='notice'>Przełącznik [src] przestawia się na [on ? "wył." : "wł."].</span>")
 	on = !on
 	signal(on)
 
@@ -787,10 +787,10 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 //Monitoring program.
 /datum/computer_file/program/nuclear_monitor
 	filename = "rbmkmonitor"
-	filedesc = "Nuclear Reactor Monitoring"
+	filedesc = "Monitoring reaktora jądrowego"
 	ui_header = "smmon_0.gif"
 	program_icon_state = "smmon_0"
-	extended_desc = "This program connects to specially calibrated sensors to provide information on the status of nuclear reactors."
+	extended_desc = "Ten program łączy się ze specjalnie skalibrowanymi czujnikami, by podawać informacje o stanie reaktorów jądrowych."
 	requires_ntnet = TRUE
 	transfer_access = ACCESS_CONSTRUCTION
 	category = PROGRAM_CATEGORY_ENGI
@@ -880,7 +880,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 				if(!shares_overmap(usr, R))
 					continue
 				choices += R
-			reactor = input(usr, "What reactor do you wish to monitor?", "[src]", null) as null|anything in choices
+			reactor = input(usr, "Który reaktor chcesz monitorować?", "[src]", null) as null|anything in choices
 			powerData = list()
 			psiData = list()
 			tempInputData = list()

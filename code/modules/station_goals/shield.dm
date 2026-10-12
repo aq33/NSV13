@@ -7,10 +7,10 @@
 
 /datum/station_goal/station_shield/get_report()
 	return list(
-		"<blockquote>The ship is located in a zone full of space debris.",
-		"We have a prototype shielding system you must deploy to reduce collision-related accidents.",
+		"<blockquote>Statek znajduje się w strefie pełnej kosmicznych szczątków.",
+		"Mamy prototypowy system osłon, który musicie rozmieścić, by ograniczyć wypadki związane z kolizjami.",
 		"",
-		"You can order the satellites and control systems at cargo.</blockquote>",
+		"Satelity i systemy sterowania możecie zamówić w zaopatrzeniu.</blockquote>",
 	).Join("\n") //NSV13 - The Shippening
 
 /datum/station_goal/station_shield/check_completion()
@@ -105,7 +105,7 @@
 /obj/machinery/satellite/proc/toggle(mob/user)
 	if(!active && !isinspace())
 		if(user)
-			to_chat(user, "<span class='warning'>You can only activate [src] in space.</span>")
+			to_chat(user, "<span class='warning'>[src] można aktywować tylko w kosmosie.</span>")
 		return FALSE
 	if(user)
 		to_chat(user, "<span class='notice'>You [active ? "deactivate": "activate"] [src].</span>")
@@ -124,7 +124,7 @@
 	icon_state = active ? "sat_active" : "sat_inactive"
 
 /obj/machinery/satellite/multitool_act(mob/living/user, obj/item/I)
-	to_chat(user, "<span class='notice'>// NTSAT-[id] // Mode : [active ? "PRIMARY" : "STANDBY"] //[(obj_flags & EMAGGED) ? "DEBUG_MODE //" : ""]</span>")
+	to_chat(user, "<span class='notice'>// NTSAT-[id] // Tryb : [active ? "GŁÓWNY" : "CZUWANIE"] //[(obj_flags & EMAGGED) ? "TRYB_DEBUG //" : ""]</span>")
 	return TRUE
 
 /obj/machinery/satellite/meteor_shield
@@ -176,6 +176,6 @@
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class='notice'>You access the satellite's debug mode, increasing the chance of meteor strikes.</span>")
+	to_chat(user, "<span class='notice'>Uzyskujesz dostęp do trybu debugowania satelity, zwiększając szansę uderzeń meteorów.</span>")
 	if(active)
 		change_meteor_chance(2)

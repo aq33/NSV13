@@ -20,7 +20,7 @@
 	var/dispatched = 0
 	var/dispatch_type = 0
 	var/bonus_points = 10000
-	var/thanks_msg = "The cargo shuttle should return in five minutes. Have some supply points for your trouble."
+	var/thanks_msg = "Prom zaopatrzeniowy powinien wrócić za pięć minut. W ramach rekompensaty otrzymujecie trochę punktów zaopatrzenia."
 
 /datum/round_event/shuttle_loan/setup()
 	dispatch_type = pick(HIJACK_SYNDIE, RUSKY_PARTY, SPIDER_GIFT, DEPARTMENT_RESUPPLY, ANTIDOTE_NEEDED, PIZZA_DELIVERY, ITS_HIP_TO, MY_GOD_JC)
@@ -245,7 +245,7 @@
 
 /obj/item/paper/fluff/bee_objectives
 	name = "Objectives of a Bee Liberation Front Operative"
-	default_raw_text = "<b>Objective #1</b>. Liberate all bees on the NT transport vessel 2416/B. <b>Success!</b>  <br><b>Objective #2</b>. Escape alive. <b>Failed.</b>"
+	default_raw_text = "<b>Cel nr 1</b>. Uwolnić wszystkie pszczoły z transportowca NT 2416/B. <b>Sukces!</b>  <br><b>Cel nr 2</b>. Uciec żywym. <b>Porażka.</b>"
 
 /obj/machinery/syndicatebomb/shuttle_loan/Initialize(mapload)
 	. = ..()
@@ -256,10 +256,10 @@
 
 /obj/item/paper/fluff/cargo/bomb
 	name = "hastly scribbled note"
-	default_raw_text = "GOOD LUCK!"
+	default_raw_text = "POWODZENIA!"
 
 /obj/item/paper/fluff/cargo/bomb/allyourbase
-	default_raw_text = "Somebody set us up the bomb!"
+	default_raw_text = "Ktoś podłożył nam bombę!"
 
 #undef HIJACK_SYNDIE
 #undef RUSKY_PARTY

@@ -46,12 +46,12 @@
 
 		if(!parent_turret.anchored)
 			parent_turret.setAnchored(TRUE)
-			to_chat(user, "<span class='notice'>You secure the exterior bolts on the turret.</span>")
+			to_chat(user, "<span class='notice'>Dokręcasz zewnętrzne śruby wieżyczki.</span>")
 			parent_turret.invisibility = 0
 			parent_turret.update_icon()
 		else
 			parent_turret.setAnchored(FALSE)
-			to_chat(user, "<span class='notice'>You unsecure the exterior bolts on the turret.</span>")
+			to_chat(user, "<span class='notice'>Odkręcasz zewnętrzne śruby wieżyczki.</span>")
 			parent_turret.invisibility = INVISIBILITY_MAXIMUM
 			parent_turret.update_icon()
 			qdel(src)
@@ -59,16 +59,16 @@
 	else if(I.GetID())
 		if(parent_turret.allowed(user))
 			parent_turret.locked = !parent_turret.locked
-			to_chat(user, "<span class='notice'>Controls are now [parent_turret.locked ? "locked" : "unlocked"].</span>")
+			to_chat(user, "<span class='notice'>Sterowanie jest teraz [parent_turret.locked ? "zablokowane" : "odblokowane"].</span>")
 			updateUsrDialog()
 		else
-			to_chat(user, "<span class='notice'>Access denied.</span>")
+			to_chat(user, "<span class='notice'>Odmowa dostępu.</span>")
 	else if(I.tool_behaviour == TOOL_MULTITOOL && !parent_turret.locked)
 		if(!multitool_check_buffer(user, I))
 			return
 		var/obj/item/multitool/M = I
 		M.buffer = parent_turret
-		to_chat(user, "<span class='notice'>You add [parent_turret] to multitool buffer.</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [parent_turret] do bufora multitoola.</span>")
 	else
 		return ..()
 
@@ -89,8 +89,8 @@
 
 /obj/machinery/porta_turret_cover/emag_act(mob/user)
 	if(!(parent_turret.obj_flags & EMAGGED))
-		to_chat(user, "<span class='notice'>You short out [parent_turret]'s threat assessment circuits.</span>")
-		visible_message("[parent_turret] hums oddly...")
+		to_chat(user, "<span class='notice'>Zwierasz obwody oceny zagrożenia [parent_turret].</span>")
+		visible_message("[parent_turret] dziwnie buczy...")
 		parent_turret.obj_flags |= EMAGGED
 		parent_turret.on = FALSE
 		addtimer(VARSET_CALLBACK(parent_turret, on, TRUE), 40)

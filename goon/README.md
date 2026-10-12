@@ -6,3 +6,7 @@ It is very likely that there are modifications to be compatible or on par with o
 ## License
 
 See LICENSE.md
+
+## Files from the current goonstation repository
+
+- `icons/obj/loudspeakers.dmi` - from [goonstation/goonstation](https://github.com/goonstation/goonstation) (`icons/obj/loudspeakers.dmi`), same CC BY-NC-SA 3.0 license. Used by the Aquila jukebox amp stack and the Syndicate speaker.

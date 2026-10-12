@@ -7,9 +7,7 @@
 	activated = 0
 
 /obj/item/implant/exile/get_data()
-	var/dat = {"<b>Implant Specifications:</b><BR>
-				<b>Name:</b> Nanotrasen Employee Exile Implant<BR>
-				<b>Implant Details:</b> The onboard gateway system has been modified to reject entry by individuals containing this implant<BR>"}
+	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Implant wygnania pracownika Nanotrasen<BR><b>Szczegóły implantu:</b> pokładowy system bramy został zmodyfikowany tak, by nie wpuszczać osób z tym implantem<BR>"}
 	return dat
 
 /obj/item/implanter/exile
@@ -32,7 +30,7 @@
 	user.AddComponent(/datum/component/stationloving/hotelloving)
 
 /obj/item/implant/exile/hotel/removed(mob/unimplanted) // Incase they try self surgery
-	visible_message("<span class='danger'>The implant's anti-removal mechanisms activate!</span>")
+	visible_message("<span class='danger'>Aktywują się mechanizmy implantu zapobiegające usunięciu!</span>")
 	unimplanted.dust()
 	message_admins("[ADMIN_LOOKUPFLW(unimplanted)] tried to remove their hotel staff implant to enter the station and was dusted.")
 	if(!QDELETED(src)) //If you try to qdel when the implant is removed without an implant case it causes a loop of qdels and gibbing
@@ -55,7 +53,7 @@
 	if(ismob(hotelstaff))
 		if(!QDELETED(src)) // if you don't do this the body gets continuously dusted forever. While this is funny, an infinitely large pile of remains that crashes clients on right click isn't.
 			qdel(src)
-		to_chat(hotelstaff,"<span class='danger'>The implant's anti-escape mechanisms activate!</span>")
+		to_chat(hotelstaff,"<span class='danger'>Aktywują się mechanizmy implantu zapobiegające ucieczce!</span>")
 		hotelstaff.dust() // Nice try hotel staff
 		message_admins("[ADMIN_LOOKUPFLW(hotelstaff)] tried to enter the station as hotel staff and was dusted.")
 	else

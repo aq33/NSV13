@@ -43,7 +43,7 @@
 	for(var/mob/C in targets)
 		if(!C.client)
 			continue
-		C.client.view_size.setTo((input("Select view range:", "Range", 4) in ranges) - 7)
+		C.client.view_size.setTo((input("Wybierz zasięg widzenia:", "Range", 4) in ranges) - 7)
 
 /obj/effect/proc_holder/spell/targeted/summon_friend
 	name = "Summon Friend"
@@ -61,7 +61,7 @@
 
 /obj/effect/proc_holder/spell/targeted/summon_friend/cast(list/targets, mob/user = usr)
 	if(!QDELETED(friend))
-		to_chat(friend, "<span class='userdanger'>Your master has deemed you a poor friend.  Your durance in hell will now resume.</span>")
+		to_chat(friend, "<span class='userdanger'>Twój pan uznał cię za kiepskiego przyjaciela. Twoja niewola w piekle zostaje wznowiona.</span>")
 		friend.dust(TRUE)
 		qdel(friendShell)
 		return

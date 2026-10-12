@@ -15,7 +15,7 @@
 	reagents_add = list(/datum/reagent/water = 0.2, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.2)
 
 /obj/item/seeds/watermelon/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is swallowing [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] połyka [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	user.gib()
 	new product(drop_location())
 	qdel(src)
@@ -88,7 +88,7 @@
 	var/mob/living/carbon/human/holy_person = mob_eating
 	if(!holy_person.mind?.holy_role || HAS_TRAIT(holy_person, TRAIT_AGEUSIA))
 		return
-	to_chat(holy_person, "<span class='notice'>Truly, a piece of heaven!</span>")
+	to_chat(holy_person, "<span class='notice'>Zaprawdę, kawałek nieba!</span>")
 	SEND_SIGNAL(holy_person, COMSIG_ADD_MOOD_EVENT, "Divine_chew", /datum/mood_event/holy_consumption)
 	return FOOD_LIKED
 
@@ -101,9 +101,9 @@
 
 /obj/item/food/grown/holymelon/proc/block_magic(mob/user, major)
 	if(major)
-		to_chat(user, "<span class='warning'>[src] hums slightly, and seems to decay a bit.</span>")
+		to_chat(user, "<span class='warning'>[src] cicho szumi i zdaje się nieco rozkładać.</span>")
 
 /obj/item/food/grown/holymelon/proc/expire(mob/user)
-	to_chat(user, "<span class='warning'>[src] rapidly turns into ash!</span>")
+	to_chat(user, "<span class='warning'>[src] gwałtownie obraca się w popiół!</span>")
 	qdel(src)
 	new /obj/effect/decal/cleanable/ash(drop_location())

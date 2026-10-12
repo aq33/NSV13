@@ -67,26 +67,26 @@
 			if(isturf(T) && !T.intact)
 				attached = locate() in T
 				if(!attached)
-					to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
+					to_chat(user, "<span class='warning'>[src] musi zostać umieszczony nad odsłoniętym, zasilanym węzłem kabla!</span>")
 				else
 					set_mode(CLAMPED_OFF)
 					user.visible_message( \
-						"[user] attaches \the [src] to the cable.", \
-						"<span class='notice'>You bolt \the [src] into the floor and connect it to the cable.</span>",
-						"<span class='italics'>You hear some wires being connected to something.</span>")
+						"[user] podłącza [src] do kabla.", \
+						"<span class='notice'>Przykręcasz [src] do podłogi i podłączasz go do kabla.</span>",
+						"<span class='italics'>Słyszysz, jak jakieś przewody zostają do czegoś podłączone.</span>")
 			else
-				to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
+				to_chat(user, "<span class='warning'>[src] musi zostać umieszczony nad odsłoniętym, zasilanym węzłem kabla!</span>")
 		else
 			set_mode(DISCONNECTED)
 			user.visible_message( \
-				"[user] detaches \the [src] from the cable.", \
-				"<span class='notice'>You unbolt \the [src] from the floor and detach it from the cable.</span>",
-				"<span class='italics'>You hear some wires being disconnected from something.</span>")
+				"[user] odłącza [src] od kabla.", \
+				"<span class='notice'>Odkręcasz [src] od podłogi i odłączasz go od kabla.</span>",
+				"<span class='italics'>Słyszysz, jak jakieś przewody zostają od czegoś odłączone.</span>")
 
 	else if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		user.visible_message( \
-			"[user] messes with \the [src] for a bit.", \
-			"<span class='notice'>You can't fit the screwdriver into \the [src]'s bolts! Try using a wrench.</span>")
+			"[user] przez chwilę grzebie przy [src].", \
+			"<span class='notice'>Śrubokręt nie pasuje do śrub [src]! Spróbuj klucza.</span>")
 	else
 		return ..()
 
@@ -106,18 +106,18 @@
 
 		if(CLAMPED_OFF)
 			user.visible_message( \
-				"[user] activates \the [src]!", \
-				"<span class='notice'>You activate \the [src].</span>",
-				"<span class='italics'>You hear a click.</span>")
+				"[user] aktywuje [src]!", \
+				"<span class='notice'>Włączasz [src].</span>",
+				"<span class='italics'>Słyszysz kliknięcie.</span>")
 			message_admins("Power sink activated by [ADMIN_LOOKUPFLW(user)] at [ADMIN_VERBOSEJMP(src)]")
 			log_game("Power sink activated by [key_name(user)] at [AREACOORD(src)]")
 			set_mode(OPERATING)
 
 		if(OPERATING)
 			user.visible_message( \
-				"[user] deactivates \the [src]!", \
-				"<span class='notice'>You deactivate \the [src].</span>",
-				"<span class='italics'>You hear a click.</span>")
+				"[user] dezaktywuje [src]!", \
+				"<span class='notice'>Wyłączasz [src].</span>",
+				"<span class='italics'>Słyszysz kliknięcie.</span>")
 			set_mode(CLAMPED_OFF)
 
 /obj/item/powersink/process()

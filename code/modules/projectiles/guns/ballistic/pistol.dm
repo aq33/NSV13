@@ -76,12 +76,12 @@
 
 /obj/item/gun/ballistic/automatic/pistol/stickman/pickup(mob/living/user)
 	..()
-	to_chat(user, "<span class='notice'>As you try to pick up [src], it slips out of your grip..</span>")
+	to_chat(user, "<span class='notice'>Gdy próbujesz podnieść [src], wyślizguje ci się z rąk..</span>")
 	if(prob(50))
-		to_chat(user, "<span class='notice'>..and vanishes from your vision! Where the hell did it go?</span>")
+		to_chat(user, "<span class='notice'>...i znika ci z oczu! Gdzie to się, do diabła, podziało?</span>")
 		qdel(src)
 		user.update_icons()
 	else
-		to_chat(user, "<span class='notice'>..and falls into view. Whew, that was a close one.</span>")
+		to_chat(user, "<span class='notice'>...i pojawia się w polu widzenia. Uff, było blisko.</span>")
 		user.dropItemToGround(src)
 

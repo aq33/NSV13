@@ -29,13 +29,13 @@
 		DC.docking_mode = TRUE
 		if(!length(target.docking_points))
 			if(usr.client?.holder?.marked_datum && isturf(usr.client.holder.marked_datum))
-				switch(alert(usr, "[target] has no docking points. Add marked turf to docking points?", "Warning", "Yes", "No"))
+				switch(alert(usr, "[target] nie ma punktów dokowania. Dodać oznaczone pole do punktów dokowania?", "Warning", "Yes", "No"))
 					if("No")
 						return
 					if("Yes")
 						target.docking_points |= usr.client.holder.marked_datum
 			else
-				alert(usr, "[target] has no docking points. Unable to dock.", "Warning", "OK")
+				alert(usr, "[target] nie ma punktów dokowania. Nie można zadokować.", "Warning", "OK")
 				return
 
 		transfer_from_overmap(target)

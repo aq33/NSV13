@@ -77,8 +77,8 @@
 	key = "deathgasp"
 	key_third_person = "deathgasps"
 	message = "pada bezwładnie i wydaje ostatnie tchnienie"
-	message_robot = "stara się poruszyć, ostatecznie stając i wyłączając się"
-	message_AI = "obraz ekranu zanika, finalnie ginąc w iskrach i wyładowaniach"
+	message_robot = "drży przez chwilę, po czym nieruchomieje i wyłącza się"
+	message_AI = "przygasa, a obraz na ekranie znika w iskrach i wyładowaniach"
 	message_alien = "wydaje z siebie przeraźliwy skowyt i ginie"
 	message_larva = "syczy i pada martwa"
 	message_monkey = "wydaje cichy pisk i umiera"
@@ -307,7 +307,7 @@
 		var/mob/living/carbon/human/H = user
 		if(H.get_num_arms() == 0)
 			if(H.get_num_legs() != 0)
-				message_param = "stara się wskazać nogą na %t, ale <span class='userdanger'>upada!</span>!"
+				message_param = "stara się wskazać nogą na %t, ale <span class='userdanger'>upada!</span>"
 				H.Paralyze(20)
 			else
 				message_param = "<span class='userdanger'>uderza głową o ziemię</span>, próbując wskazać na %t."
@@ -317,7 +317,7 @@
 /datum/emote/living/pout
 	key = "pout"
 	key_third_person = "pouts"
-	message = "nadym twarz"
+	message = "wydyma usta"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/living/scream
@@ -405,7 +405,7 @@
 /datum/emote/living/strech
 	key = "stretch"
 	key_third_person = "stretches"
-	message = "rozciąga ramiona"
+	message = "przeciąga się"
 	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/sulk
@@ -417,7 +417,7 @@
 /datum/emote/living/surrender
 	key = "surrender"
 	key_third_person = "surrenders"
-	message = "kładzie ręce na swojej głowie i kładzie się na podłodze poddając się"
+	message = "kładzie ręce na głowie i kładzie się na podłodze, poddając się"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
@@ -578,7 +578,7 @@
 	. = ..()
 	var/obj/item/circlegame/N = new(user)
 	if(user.put_in_hands(N))
-		to_chat(user, "<span class='notice'>Składasz palce w kółko..</span>")
+		to_chat(user, "<span class='notice'>Składasz palce w kółko.</span>")
 	else
 		qdel(N)
 		to_chat(user, "<span class='warning'>Masz zajęte ręce.</span>")
@@ -639,7 +639,7 @@
 		to_chat(user, "<span class='notice'>Układasz palce w pistolet.</span>")
 	else
 		qdel(N)
-		to_chat(user, "<span class='warning'>ie masz wolnej dłoni do grożenia bronią!.</span>")
+		to_chat(user, "<span class='warning'>Nie masz wolnej ręki, żeby zrobić pistolet z palców!</span>")
 
 /datum/emote/living/click
 	key = "click"
@@ -697,8 +697,8 @@
 /datum/emote/living/thumbs_up
 	key = "thumbsup"
 	key_third_person = "thumbsup"
-	message = "pokazuje kciuk w góre"
-	message_robot = "roboczo układa kciuk w góre swoimi szczypcami'"
+	message = "pokazuje kciuk w górę"
+	message_robot = "mechanicznie unosi kciuk swoimi chwytakami"
 	message_AI = "wyświetla hologram łapki w górę"
 	message_ipc = "wyświetla ikonkę łapki w górę"
 	message_simple = "próbuje pokazać kciuk w górę"
@@ -710,10 +710,10 @@
 	key = "thumbsdown"
 	key_third_person = "thumbsdown"
 	message = "pokazuje kciuk w dół"
-	message_robot = "roboczo układa kciuk w dół swoimi szczypcami"
+	message_robot = "mechanicznie opuszcza kciuk swoimi chwytakami"
 	message_AI = "wyświetla hologram łapki w dół"
 	message_ipc = "wyświetla ikonkę łapki w dół"
-	message_simple = "paróbuje pokazać kciuk w dół"
+	message_simple = "próbuje pokazać kciuk w dół"
 	message_param = "pokazuje kciuk w dół do %t"
 	restraint_check = TRUE
 	emote_type = EMOTE_VISIBLE

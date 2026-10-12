@@ -13,7 +13,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	materials = list(/datum/material/iron=50)
 
-	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
+	attack_verb = list("atakuje", "grzmoci", "okłada", "tłucze", "wali")
 	tool_behaviour = TOOL_CROWBAR
 	toolspeed = 1
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 30, "stamina" = 0)
@@ -21,7 +21,7 @@
 	pickup_sound =  'sound/items/handling/crowbar_pickup.ogg'
 
 /obj/item/crowbar/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is beating [user.p_them()]self to death with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zatłukuje się na śmierć [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	playsound(loc, 'sound/weapons/genhit.ogg', 50, 1, -1)
 	return (BRUTELOSS)
 

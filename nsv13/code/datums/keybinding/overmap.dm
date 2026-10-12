@@ -7,7 +7,7 @@
 /datum/keybinding/overmap/rotate_left
 	key = "Q"
 	name = "rotate_left"
-	full_name = "Rotate Left"
+	full_name = "Obróć w lewo"
 	description = ""
 	keybind_signal = COMSIG_KB_OVERMAP_ROTATELEFT_DOWN
 
@@ -42,7 +42,7 @@
 /datum/keybinding/overmap/rotate_right
 	key = "E"
 	name = "rotate_right"
-	full_name = "Rotate Right"
+	full_name = "Obróć w prawo"
 	description = ""
 	keybind_signal = COMSIG_KB_OVERMAP_ROTATERIGHT_DOWN
 
@@ -78,7 +78,7 @@
 /datum/keybinding/overmap/boost
 	key = "Shift"
 	name = "boost"
-	full_name = "Boost"
+	full_name = "Dopalacz"
 	description = ""
 	keybind_signal = COMSIG_KB_OVERMAP_BOOST_DOWN
 
@@ -110,7 +110,7 @@
 /datum/keybinding/overmap/toggle_brakes
 	key = "Alt"
 	name = "toggle_brakes"
-	full_name = "Toggle Brakes"
+	full_name = "Przełącz hamulce"
 	description = ""
 	keybind_signal = COMSIG_KB_OVERMAP_TOGGLEBRAKES_DOWN
 
@@ -146,7 +146,7 @@
 /datum/keybinding/overmap/toggle_inertia
 	key = "X"
 	name = "toggle_inertia"
-	full_name = "Toggle Inertial Assistance"
+	full_name = "Przełącz wspomaganie inercyjne"
 	description = ""
 	keybind_signal = COMSIG_KB_OVERMAP_TOGGLEINERTIA_DOWN
 
@@ -169,7 +169,7 @@
 /datum/keybinding/overmap/toggle_move_mode
 	key = "C"
 	name = "toggle_move_mode"
-	full_name = "Toggle Mouse Movement"
+	full_name = "Przełącz sterowanie myszą"
 	description = ""
 	keybind_signal = COMSIG_KB_OVERMAP_TOGGLEMOUSEMOVE_DOWN
 
@@ -192,7 +192,7 @@
 /datum/keybinding/overmap/cycle_firemode
 	key = "Space"
 	name = "cycle_firemode"
-	full_name = "Cycle Firemode"
+	full_name = "Zmień tryb ognia"
 	description = ""
 	keybind_signal = COMSIG_KB_OVERMAP_CYCLEFIREMODE_DOWN
 
@@ -224,7 +224,7 @@
 	key = "F"
 	name = "special_weapon_action"
 	full name = "Special Weapon Action"
-	description = "Executes a selected weapon's special action, if one exists."
+	description = "Wykonuje akcję specjalną wybranej broni, jeśli istnieje."
 	keybind_signal = COMSIG_KB_OVERMAP_SPECIAL_WEAPON_ACTION_DOWN
 
 /datum/keybinding/overmap/special_weapon_action/down(client/user)
@@ -244,7 +244,7 @@
 		return
 	. = TRUE
 	if(!current_weapon.has_special_action)
-		to_chat(user, "<span class='warning'>Current weapon has no special action!</span>")
+		to_chat(user, "<span class='warning'>Obecna broń nie ma akcji specjalnej!</span>")
 		return
 	current_weapon.special_action(M)
 
@@ -253,7 +253,7 @@
 /datum/keybinding/overmap/deploy_countermeasure
 	key = "5"
 	name = "deploy_countermeasure"
-	full_name = "Deploy Countermeasure"
+	full_name = "Wypuść środki przeciwdziałania"
 	description = ""
 	keybind_signal = COMSIG_KB_OVERMAP_COUNTERMEASURE_DOWN
 
@@ -273,7 +273,7 @@
 /datum/keybinding/overmap/toggle_safety
 	key = "Capslock"
 	name = "toggle_safety"
-	full_name = "Toggle Safeties"
+	full_name = "Przełącz bezpieczniki"
 	description = ""
 	keybind_signal = COMSIG_KB_OVERMAP_TOGGLESAFETY_DOWN
 
@@ -297,7 +297,7 @@
 /datum/keybinding/overmap/weapon_1
 	key = "1"
 	name = "weapon_1"
-	full_name = "Weapon 1"
+	full_name = "Broń 1"
 	description = ""
 	keybind_signal = COMSIG_KB_OVERMAP_WEAPON1_DOWN
 
@@ -317,7 +317,7 @@
 /datum/keybinding/overmap/weapon_2
 	key = "2"
 	name = "weapon_2"
-	full_name = "Weapon 2"
+	full_name = "Broń 2"
 	description = ""
 	keybind_signal = COMSIG_KB_OVERMAP_WEAPON2_DOWN
 
@@ -337,7 +337,7 @@
 /datum/keybinding/overmap/weapon_3
 	key = "3"
 	name = "weapon_3"
-	full_name = "Weapon 3"
+	full_name = "Broń 3"
 	description = ""
 	keybind_signal = COMSIG_KB_OVERMAP_WEAPON3_DOWN
 
@@ -357,7 +357,7 @@
 /datum/keybinding/overmap/weapon_4
 	key = "4"
 	name = "weapon_4"
-	full_name = "Weapon 4"
+	full_name = "Broń 4"
 	description = ""
 	keybind_signal = COMSIG_KB_OVERMAP_WEAPON4_DOWN
 
@@ -377,7 +377,7 @@
 /datum/keybinding/overmap/unlock
 	key = "6"
 	name = "unlock"
-	full_name = "Unlock All Targets"
+	full_name = "Odblokuj wszystkie cele"
 	description = ""
 	keybind_signal = COMSIG_KB_OVERMAP_UNLOCK_DOWN
 

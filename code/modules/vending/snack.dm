@@ -33,9 +33,9 @@
 				if(!user.transferItemToLoc(W, src))
 					return
 				food_load(W)
-				to_chat(user, "<span class='notice'>You insert [W] into [src]'s chef compartment.</span>")
+				to_chat(user, "<span class='notice'>Wkładasz [W] do komory kucharza [src].</span>")
 		else
-			to_chat(user, "<span class='notice'>[src]'s chef compartment does not accept junk food.</span>")
+			to_chat(user, "<span class='notice'>Komora kucharza [src] nie przyjmuje śmieciowego jedzenia.</span>")
 
 	else if(istype(W, /obj/item/storage/bag/tray))
 		if(!compartment_access_check(user))
@@ -53,9 +53,9 @@
 			else
 				denied_items++
 		if(denied_items)
-			to_chat(user, "<span class='notice'>[src] refuses some items.</span>")
+			to_chat(user, "<span class='notice'>[src] odrzuca niektóre przedmioty.</span>")
 		if(loaded)
-			to_chat(user, "<span class='notice'>You insert [loaded] dishes into [src]'s chef compartment.</span>")
+			to_chat(user, "<span class='notice'>Wkładasz dania do komory kucharza [src] (liczba: [loaded]).</span>")
 		updateUsrDialog()
 		return
 
@@ -70,7 +70,7 @@
 /obj/machinery/vending/snack/proc/compartment_access_check(user)
 	req_access_txt = chef_compartment_access
 	if(!allowed(user) && !(obj_flags & EMAGGED) && scan_id)
-		to_chat(user, "<span class='warning'>[src]'s chef compartment blinks red: Access denied.</span>")
+		to_chat(user, "<span class='warning'>Komora kucharza [src] miga na czerwono: odmowa dostępu.</span>")
 		req_access_txt = "0"
 		return 0
 	req_access_txt = "0"
@@ -78,7 +78,7 @@
 
 /obj/machinery/vending/snack/proc/iscompartmentfull(mob/user)
 	if(contents.len >= 30) // no more than 30 dishes can fit inside
-		to_chat(user, "<span class='warning'>[src]'s chef compartment is full.</span>")
+		to_chat(user, "<span class='warning'>Komora kucharza [src] jest pełna.</span>")
 		return 1
 	return 0
 

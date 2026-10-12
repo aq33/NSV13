@@ -33,7 +33,7 @@
 		sleep(1)
 
 /datum/martial_art/plasma_fist/proc/Tornado(mob/living/carbon/human/A, mob/living/carbon/human/D)
-	A.say("TORNADO SWEEP!", forced="plasma fist")
+	A.say("ZAMIATAJĄCE TORNADO!", forced="plasma fist")
 	TornadoAnimate(A)
 	var/obj/effect/proc_holder/spell/aoe_turf/repulse/R = new(null)
 	R.cast(RANGE_TURFS(1,A))
@@ -41,8 +41,8 @@
 	return
 
 /datum/martial_art/plasma_fist/proc/Throwback(mob/living/carbon/human/A, mob/living/carbon/human/D)
-	D.visible_message("<span class='danger'>[A] hits [D] with Plasma Punch!</span>", \
-								"<span class='userdanger'>[A] hits you with Plasma Punch!</span>")
+	D.visible_message("<span class='danger'>[A] trafia [D] Ciosem Plazmy!</span>", \
+								"<span class='userdanger'>[A] trafia cię Ciosem Plazmy!</span>")
 	playsound(D.loc, 'sound/weapons/punch1.ogg', 50, 1, -1)
 	var/atom/throw_target = get_edge_target_turf(D, get_dir(D, get_step_away(D, A)))
 	D.throw_at(throw_target, 200, 4,A)
@@ -53,9 +53,9 @@
 /datum/martial_art/plasma_fist/proc/Plasma(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
 	playsound(D.loc, 'sound/weapons/punch1.ogg', 50, 1, -1)
-	A.say("PLASMA FIST!", forced="plasma fist")
-	D.visible_message("<span class='danger'>[A] hits [D] with THE PLASMA FIST TECHNIQUE!</span>", \
-								"<span class='userdanger'>[A] hits you with THE PLASMA FIST TECHNIQUE!</span>")
+	A.say("PLAZMOWA PIĘŚĆ!", forced="plasma fist")
+	D.visible_message("<span class='danger'>[A] trafia [D] TECHNIKĄ PLAZMOWEJ PIĘŚCI!</span>", \
+								"<span class='userdanger'>[A] trafia cię TECHNIKĄ PLAZMOWEJ PIĘŚCI!</span>")
 	D.gib()
 	log_combat(A, D, "gibbed (Plasma Fist)")
 	return
@@ -86,7 +86,7 @@
 	set desc = "Remember the martial techniques of the Plasma Fist."
 	set category = "Plasma Fist"
 
-	to_chat(usr, "<b><i>You clench your fists and have a flashback of knowledge...</i></b>")
-	to_chat(usr, "<span class='notice'>Tornado Sweep</span>: Harm Harm Disarm. Repulses target and everyone back.")
-	to_chat(usr, "<span class='notice'>Throwback</span>: Disarm Harm Disarm. Throws the target and an item at them.")
-	to_chat(usr, "<span class='notice'>The Plasma Fist</span>: Harm Disarm Disarm Disarm Harm. Knocks the brain out of the opponent and gibs their body.")
+	to_chat(usr, "<b><i>Zaciskasz pięści i doznajesz przebłysku wiedzy...</i></b>")
+	to_chat(usr, "<span class='notice'>Zamiatające tornado</span>: krzywda, krzywda, rozbrojenie. Odpycha cel i wszystkich wokół.")
+	to_chat(usr, "<span class='notice'>Odrzut</span>: rozbrojenie, krzywda, rozbrojenie. Rzuca celem i rzuca w niego przedmiotem.")
+	to_chat(usr, "<span class='notice'>Plazmowa pięść</span>: krzywda, rozbrojenie, rozbrojenie, rozbrojenie, krzywda. Wybija przeciwnikowi mózg i rozrywa jego ciało.")

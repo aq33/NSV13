@@ -23,7 +23,7 @@
 /obj/item/melee/transforming/energy/suicide_act(mob/user)
 	if(!active)
 		transform_weapon(user, TRUE)
-	user.visible_message("<span class='suicide'>[user] is [pick("slitting [user.p_their()] stomach open with", "falling on")] [src]! It looks like [user.p_theyre()] trying to commit seppuku!</span>")
+	user.visible_message("<span class='suicide'>[user] [pick("rozcina sobie brzuch", "rzuca się na")] [src]! Wygląda na to, że próbuje popełnić seppuku!</span>")
 	return (BRUTELOSS|FIRELOSS)
 
 /obj/item/melee/transforming/energy/add_blood_DNA(list/blood_dna)
@@ -58,8 +58,8 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(C.wear_mask)
-			in_mouth = ", barely missing [C.p_their()] nose"
-	. = "<span class='warning'>[user] swings [user.p_their()] [name][in_mouth]. [user.p_they(TRUE)] light[user.p_s()] [user.p_their()] [A.name] in the process.</span>"
+			in_mouth = ", ledwo omijając nos"
+	. = "<span class='warning'>[user] wymachuje [name][in_mouth], przy okazji zapalając [A.name].</span>"
 	playsound(loc, hitsound, get_clamped_volume(), 1, -1)
 	add_fingerprint(user)
 
@@ -80,12 +80,12 @@
 	w_class_on = WEIGHT_CLASS_HUGE
 	flags_1 = CONDUCT_1
 	armour_penetration = 100
-	attack_verb_off = list("attacked", "chopped", "cleaved", "tore", "cut")
+	attack_verb_off = list("atakuje", "rąbie", "rozłupuje", "rozdziera", "tnie")
 	attack_verb_on = list()
 	light_color = "#40ceff"
 
 /obj/item/melee/transforming/energy/axe/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] swings [src] towards [user.p_their()] head! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zamachuje się [src] w stronę swojej głowy! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return (BRUTELOSS|FIRELOSS)
 
 /obj/item/melee/transforming/energy/sword
@@ -98,7 +98,7 @@
 	throwforce = 5
 	throwforce_on = 35	//Does a lot of damage on throw, but will embed
 	hitsound = "swing_hit" //it starts deactivated
-	attack_verb_off = list("tapped", "poked")
+	attack_verb_off = list("stuka", "szturcha")
 	throw_speed = 3
 	throw_range = 5
 	sharpness = IS_SHARP
@@ -146,7 +146,7 @@
 		var/obj/item/stock_parts/cell/C = R.cell
 		if(active && !(C.use(hitcost)))
 			attack_self(R)
-			balloon_alert(R, "Your [name] is out of charge.")
+			balloon_alert(R, "W [name] skończył się ładunek.")
 			return
 		return ..()
 
@@ -222,7 +222,7 @@
 				icon_state = "swordrainbow"
 				user.update_inv_hands()
 		else
-			balloon_alert(user, "It's already fabulous!")
+			balloon_alert(user, "Już jest bajeczny!")
 	else
 		return ..()
 

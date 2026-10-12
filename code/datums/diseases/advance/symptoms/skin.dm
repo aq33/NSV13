@@ -17,7 +17,7 @@ BONUS
 /datum/symptom/vitiligo
 
 	name = "Vitiligo"
-	desc = "The virus destroys skin pigment cells, causing rapid loss of pigmentation in the host."
+	desc = "Wirus niszczy komórki barwnikowe skóry, powodując szybką utratę pigmentacji u nosiciela."
 	stealth = 2
 	resistance = 0
 	stage_speed = 3
@@ -58,7 +58,7 @@ BONUS
 					H.dna.features["mcolor"] = "EEE" //pure white.
 				H.regenerate_icons()
 			else
-				H.visible_message("<span class='notice'>[H] looks a bit pale.</span>", "<span class='notice'>Your skin suddenly appears lighter.</span>")
+				H.visible_message("<span class='notice'>[H] wygląda na nieco bladego.</span>", "<span class='notice'>Twoja skóra nagle wydaje się jaśniejsza.</span>")
 
 /datum/symptom/vitiligo/End(datum/disease/advance/A)
 	. = ..()
@@ -89,7 +89,7 @@ BONUS
 
 /datum/symptom/revitiligo
 	name = "Revitiligo"
-	desc = "The virus causes increased production of skin pigment cells, making the host's skin grow darker over time."
+	desc = "Wirus zwiększa wytwarzanie komórek barwnikowych skóry, przez co skóra nosiciela z czasem ciemnieje."
 	stealth = 1
 	resistance = 2
 	stage_speed = 1
@@ -130,7 +130,7 @@ BONUS
 					H.dna.features["mcolor"] = "000" //pure black.
 				H.regenerate_icons()
 			else
-				H.visible_message("<span class='notice'>[H] looks a bit dark.</span>", "<span class='notice'>Your skin suddenly appears darker.</span>")
+				H.visible_message("<span class='notice'>[H] wygląda na nieco ciemniejszego.</span>", "<span class='notice'>Twoja skóra nagle wydaje się ciemniejsza.</span>")
 
 /datum/symptom/revitiligo/End(datum/disease/advance/A)
 	. = ..()
@@ -161,7 +161,7 @@ BONUS
 
 /datum/symptom/polyvitiligo
 	name = "Polyvitiligo"
-	desc = "The virus replaces the melanin in the skin with reactive pigment."
+	desc = "Wirus zastępuje melaninę w skórze reaktywnym barwnikiem."
 	stealth = 0
 	resistance = 1
 	stage_speed = 4
@@ -186,7 +186,7 @@ BONUS
 				M.reagents.add_reagent(color, 5)
 		else
 			if (prob(50)) // spam
-				M.visible_message("<span class='notice'>[M] looks rather vibrant.</span>", "<span class='notice'>The colors, man, the colors.</span>")
+				M.visible_message("<span class='notice'>[M] wygląda bardzo żywo.</span>", "<span class='notice'>Te kolory, stary, te kolory.</span>")
 
 /************************************
 Dermagraphic Ovulogenesis
@@ -203,7 +203,7 @@ BONUS
 ***********************************/
 /datum/symptom/skineggs //Thought Exolocomotive Xenomitosis was a weird symptom? Well, this is about 10x weirder.
 	name = "Dermagraphic Ovulogenesis"
-	desc = "The virus causes the host to grow egg-like nodules on their skin, which periodically fall off and contain the disease and some healing chemicals."
+	desc = "Wirus sprawia, że na skórze nosiciela rosną jajowate guzki, które okresowo odpadają i zawierają chorobę oraz trochę substancji leczniczych."
 	stealth = -3 //You are basically growing these weird Egg shits on your skin, this is not stealthy in the slightest
 	resistance = 1
 	stage_speed = 0
@@ -220,11 +220,7 @@ BONUS
 	var/all_disease
 	var/eggsplosion
 	var/sneaky
-	threshold_desc = "<b>Transmission 12:</b> Eggs and Egg Sacs contain all diseases on the host, instead of just the disease containing the symptom.<br>\
-					  <b>Transmission 16:</b> Egg Sacs will 'explode' into eggs after a period of time, covering a larger area with infectious matter.<br>\
-					  <b>Resistance 10:</b> Eggs and Egg Sacs contain more healing chems.<br>\
-					  <b>Stealth 6:</b> Eggs and Egg Sacs become nearly transparent, making them more difficult to see.<br>\
-					  <b>Stage Speed 10:</b> Egg Sacs fall off the host more frequently."
+	threshold_desc = "<b>Transmisja 12:</b> jaja i worki jajowe zawierają wszystkie choroby nosiciela, a nie tylko tę z objawem.<br><b>Transmisja 16:</b> worki jajowe po pewnym czasie „wybuchają” jajami, pokrywając zakaźną materią większy obszar.<br><b>Odporność 10:</b> jaja i worki jajowe zawierają więcej substancji leczniczych.<br><b>Ukrycie 6:</b> jaja i worki jajowe stają się niemal przezroczyste, przez co trudniej je zauważyć.<br><b>Szybkość stadiów 10:</b> worki jajowe częściej odpadają od nosiciela."
 
 /datum/symptom/skineggs/severityset(datum/disease/advance/A)
 	. = ..()
@@ -272,7 +268,7 @@ BONUS
 #define EGGSPLODE_DELAY 100 SECONDS
 /obj/item/food/eggsac
 	name = "Fleshy Egg Sac"
-	desc = "A small Egg Sac which appears to be made out of someone's flesh!"
+	desc = "Mały worek jajowy, który wygląda na zrobiony z czyjegoś ciała!"
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = "eggsac"
 	bite_consumption = 4
@@ -311,7 +307,7 @@ BONUS
 
 /obj/item/food/fleshegg
 	name = "Fleshy Egg"
-	desc = "An Egg which appears to be made out of someone's flesh!"
+	desc = "Jajo, które wygląda na zrobione z czyjegoś ciała!"
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "fleshegg"
 	bite_consumption = 1
@@ -348,7 +344,7 @@ Thresholds
 */
 /datum/symptom/spiked
 	name = "Cornu Cutaneum"
-	desc = "The virus causes the host to unpredictably grow and shed sharp spines, damaging those near them."
+	desc = "Wirus sprawia, że nosicielowi nieprzewidywalnie rosną i odpadają ostre kolce, raniąc osoby w pobliżu."
 	stealth = -3
 	resistance = 3
 	stage_speed = -3
@@ -362,8 +358,7 @@ Thresholds
 	bodies = list("Horn", "Spiked")
 	var/armor = 0
 	var/done = FALSE
-	threshold_desc = "<b>Transmission 6:</b> Spikes deal more damage.<br>\
-					  <b>Resistance 6:</b> Hard spines give the host armor, scaling with resistance."
+	threshold_desc = "<b>Transmisja 6:</b> kolce zadają więcej obrażeń.<br><b>Odporność 6:</b> twarde kolce dają nosicielowi pancerz, rosnący wraz z odpornością."
 
 /datum/symptom/spiked/severityset(datum/disease/advance/A)
 	. = ..()
@@ -385,35 +380,35 @@ Thresholds
 	switch(A.stage)
 		if(1)
 			if(prob(base_message_chance))
-				to_chat(H, "<span class='warning'>You feel goosebumps pop up on your skin.</span>")
+				to_chat(H, "<span class='warning'>Dostajesz gęsiej skórki.</span>")
 		if(2)
 			if(prob(base_message_chance))
-				to_chat(H, "<span class='warning'>Small spines spread to cover your entire body.</span>")
+				to_chat(H, "<span class='warning'>Małe kolce pokrywają całe twoje ciało.</span>")
 		if(3)
 			if(prob(base_message_chance))
-				to_chat(H, "<span class='warning'> Your spines pierce your jumpsuit.</span>")
+				to_chat(H, "<span class='warning'> Twoje kolce przebijają kombinezon.</span>")
 		if(4, 5)
 			if(!done)
 				H.AddComponent(/datum/component/spikes, 5*power, armor, A.GetDiseaseID()) //removal is handled by the component
-				to_chat(H, "<span class='warning'> Your spines harden, growing sharp and lethal.</span>")
+				to_chat(H, "<span class='warning'> Twoje kolce twardnieją, stając się ostre i zabójcze.</span>")
 				done = TRUE
 			if(H.pulling && iscarbon(H.pulling)) //grabbing is handled with the disease instead of the component, so the component doesn't have to be processed
 				var/mob/living/carbon/C = H.pulling
 				var/def_check = C.getarmor(type = "melee")
 				C.apply_damage(1*power, BRUTE, blocked = def_check)
-				C.visible_message("<span class='warning'>[C.name] is pricked on [H.name]'s spikes.</span>")
+				C.visible_message("<span class='warning'>[C.name] kłuje się o kolce [H.name].</span>")
 				playsound(get_turf(C), 'sound/weapons/slice.ogg', 50, 1)
 			for(var/mob/living/carbon/C in ohearers(1, H))
 				if(C.pulling && C.pulling == H)
 					var/def_check = C.getarmor(type = "melee")
 					C.apply_damage(3*power, BRUTE, blocked = def_check)
-					C.visible_message("<span class='warning'>[C.name] is pricked on [H.name]'s spikes.</span>")
+					C.visible_message("<span class='warning'>[C.name] kłuje się o kolce [H.name].</span>")
 					playsound(get_turf(C), 'sound/weapons/slice.ogg', 50, 1)
 
 
 /datum/symptom/pustule
 	name = "Bubonic Infection"
-	desc = "The virus causes festering infections in the host's lymph nodes, leading to festering buboes that deal toxin damage."
+	desc = "Wirus wywołuje ropiejące zakażenia węzłów chłonnych nosiciela, prowadząc do ropiejących dymienic zadających obrażenia od toksyn."
 	stealth = -1
 	resistance = -2
 	stage_speed = 3
@@ -425,8 +420,7 @@ Thresholds
 	prefixes = list("Pestilent ", "Bubonic ")
 	var/pustules = 0
 	var/shoot = FALSE
-	threshold_desc = "<b>Transmission 4:</b>Buboes will occasionally burst when disturbed or left too long, shooting out toxic pus.<br>\
-					<b>Transmission 6:</b> Pustules appear on the host more frequently, dealing more damage."
+	threshold_desc = "<b>Transmisja 4:</b> dymienice czasem pękają, gdy się je naruszy lub zostawi zbyt długo, tryskając toksyczną ropą.<br><b>Transmisja 6:</b> krosty pojawiają się na nosicielu częściej i zadają więcej obrażeń."
 
 /datum/symptom/pustule/severityset(datum/disease/advance/A)
 	. = ..()
@@ -455,13 +449,13 @@ Thresholds
 			M.adjustBruteLoss(buboes / 2)
 			M.adjustToxLoss(buboes)
 			pustules = min(pustules + buboes, 10)
-			to_chat(M, "<span class='warning'>painful sores open on your skin!</span>")
+			to_chat(M, "<span class='warning'>Na twojej skórze otwierają się bolesne wrzody!</span>")
 		if(4, 5)
 			var/buboes = (rand(3, 6) * power)
 			M.adjustBruteLoss(buboes / 2)
 			M.adjustToxLoss(buboes)
 			pustules = min(pustules + buboes, 20)
-			to_chat(M, "<span class='warning'>painful sores open on your skin!</span>")
+			to_chat(M, "<span class='warning'>Na twojej skórze otwierają się bolesne wrzody!</span>")
 			if((prob(pustules * 5) || pustules >= 20) && shoot)
 				var/popped = rand(1, pustules)
 				var/pusdir = pick(GLOB.alldirs)
@@ -474,7 +468,7 @@ Thresholds
 				pustule.variance = rand(50, 200)
 				pustule.fire_casing(T, M, (get_turf(M)))
 				pustules -= popped
-				M.visible_message("<span class='warning'>[popped] pustules on [M]'s body burst open!</span>")
+				M.visible_message("<span class='warning'>Krosty na ciele [M] pękają (liczba: [popped])!</span>")
 
 
 /datum/symptom/pustule/proc/pop_pustules(datum/source, AM, attack_text, damage)
@@ -491,7 +485,7 @@ Thresholds
 				pustule.diseases += A
 		pustule.pellets = popped
 		pustule.fire_casing(AM, C, fired_from = T)
-		C.visible_message("<span class='warning'>[attack_text] bursts [popped] pustules on [source]'s body!</span>")
+		C.visible_message("<span class='warning'>[attack_text] przebija krosty na ciele [source] (liczba: [popped])!</span>")
 		pustules -= popped
 
 		

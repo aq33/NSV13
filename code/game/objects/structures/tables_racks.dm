@@ -44,7 +44,7 @@
 	if(!HAS_TRAIT(H, TRAIT_ALWAYS_STUBS) && (H.shoes || feetCover || !(H.mobility_flags & MOBILITY_STAND) || HAS_TRAIT(H, TRAIT_PIERCEIMMUNE) || H.m_intent == MOVE_INTENT_WALK))
 		return
 	if(HAS_TRAIT(H, TRAIT_ALWAYS_STUBS) || ((world.time >= last_bump + 100) && prob(5)))
-		to_chat(H, "<span class='warning'>You stub your toe on the [name]!</span>")
+		to_chat(H, "<span class='warning'>Uderzasz palcem u nogi o [name]!</span>")
 		H.stub_toe(2)
 	last_bump = world.time //do the cooldown here so walking into a table only checks toestubs once
 
@@ -53,7 +53,7 @@
 	. += deconstruction_hints(user)
 
 /obj/structure/table/proc/deconstruction_hints(mob/user)
-	return "<span class='notice'>The top is <b>screwed</b> on, but the main <b>bolts</b> are also visible.</span>"
+	return "<span class='notice'>Blat jest <b>przykręcony</b>, ale widać też główne <b>śruby</b>.</span>"
 
 /obj/structure/table/update_icon()
 	if(smooth)
@@ -78,19 +78,19 @@
 		if(isliving(user.pulling))
 			var/mob/living/pushed_mob = user.pulling
 			if(pushed_mob.buckled)
-				to_chat(user, "<span class='warning'>[pushed_mob] is buckled to [pushed_mob.buckled]!</span>")
+				to_chat(user, "<span class='warning'>[pushed_mob] jest przypięty do [pushed_mob.buckled]!</span>")
 				return
 			if(user.a_intent == INTENT_GRAB)
 				if(user.grab_state < GRAB_AGGRESSIVE)
-					to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
+					to_chat(user, "<span class='warning'>Do tego potrzebujesz lepszego chwytu!</span>")
 					return
 				if(user.grab_state >= GRAB_NECK)
 					tableheadsmash(user, pushed_mob)
 				else
 					tablepush(user, pushed_mob)
 			if(user.a_intent == INTENT_HELP)
-				pushed_mob.visible_message("<span class='notice'>[user] begins to place [pushed_mob] onto [src]...</span>", \
-									"<span class='userdanger'>[user] begins to place [pushed_mob] onto [src]...</span>")
+				pushed_mob.visible_message("<span class='notice'>[user] zaczyna kłaść [pushed_mob] na [src]...</span>", \
+									"<span class='userdanger'>[user] zaczyna kłaść [pushed_mob] na [src]...</span>")
 				if(do_after(user, 35, target = pushed_mob))
 					tableplace(user, pushed_mob)
 				else
@@ -99,8 +99,8 @@
 		else if(user.pulling.pass_flags & PASSTABLE)
 			user.Move_Pulled(src)
 			if (user.pulling.loc == loc)
-				user.visible_message("<span class='notice'>[user] places [user.pulling] onto [src].</span>",
-					"<span class='notice'>You place [user.pulling] onto [src].</span>")
+				user.visible_message("<span class='notice'>[user] kładzie [user.pulling] na [src].</span>",
+					"<span class='notice'>Kładziesz [user.pulling] na [src].</span>")
 				user.stop_pulling()
 	return ..()
 
@@ -140,13 +140,13 @@
 	pushed_mob.forceMove(loc)
 	if(!isanimal(pushed_mob) || iscat(pushed_mob))
 		pushed_mob.set_resting(TRUE, TRUE)
-	pushed_mob.visible_message("<span class='notice'>[user] places [pushed_mob] onto [src].</span>", \
-								"<span class='notice'>[user] places [pushed_mob] onto [src].</span>")
+	pushed_mob.visible_message("<span class='notice'>[user] kładzie [pushed_mob] na [src].</span>", \
+								"<span class='notice'>[user] kładzie [pushed_mob] na [src].</span>")
 	log_combat(user, pushed_mob, "places", null, "onto [src]")
 
 /obj/structure/table/proc/tablepush(mob/living/user, mob/living/pushed_mob)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, "<span class='danger'>Throwing [pushed_mob] onto the table might hurt them!</span>")
+		to_chat(user, "<span class='danger'>Rzucenie [pushed_mob] na stół mogłoby go zranić!</span>")
 		return
 	var/added_passtable = FALSE
 	if(!(pushed_mob.pass_flags & PASSTABLE))
@@ -164,8 +164,8 @@
 	if(user.mind?.martial_art?.smashes_tables)
 		deconstruct(FALSE)
 	playsound(pushed_mob, "sound/effects/tableslam.ogg", 90, TRUE)
-	pushed_mob.visible_message("<span class='danger'>[user] slams [pushed_mob] onto \the [src]!</span>", \
-								"<span class='userdanger'>[user] slams you onto \the [src]!</span>")
+	pushed_mob.visible_message("<span class='danger'>[user] rzuca [pushed_mob] na [src]!</span>", \
+								"<span class='userdanger'>[user] rzuca cię na [src]!</span>")
 	log_combat(user, pushed_mob, "tabled", null, "onto [src]")
 	SEND_SIGNAL(pushed_mob, COMSIG_ADD_MOOD_EVENT, "table", /datum/mood_event/table)
 
@@ -177,21 +177,21 @@
 	if(user.mind?.martial_art?.smashes_tables)
 		deconstruct(FALSE)
 	playsound(pushed_mob, "sound/effects/tableheadsmash.ogg", 90, TRUE)
-	pushed_mob.visible_message("<span class='danger'>[user] smashes [pushed_mob]'s head against \the [src]!</span>",
-								"<span class='userdanger'>[user] smashes your head against \the [src]</span>")
+	pushed_mob.visible_message("<span class='danger'>[user] wali głową [pushed_mob] o [src]!</span>",
+								"<span class='userdanger'>[user] wali twoją głową o [src]</span>")
 	log_combat(user, pushed_mob, "head slammed", null, "against [src]")
 	SEND_SIGNAL(pushed_mob, COMSIG_ADD_MOOD_EVENT, "table", /datum/mood_event/table_headsmash)
 
 /obj/structure/table/attackby(obj/item/I, mob/user, params)
 	if(!(flags_1 & NODECONSTRUCT_1))
 		if(I.tool_behaviour == TOOL_SCREWDRIVER && deconstruction_ready && user.a_intent != INTENT_HELP)
-			to_chat(user, "<span class='notice'>You start disassembling [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz rozbierać [src]...</span>")
 			if(I.use_tool(src, user, 20, volume=50))
 				deconstruct(TRUE)
 			return
 
 		if(I.tool_behaviour == TOOL_WRENCH && deconstruction_ready && user.a_intent != INTENT_HELP)
-			to_chat(user, "<span class='notice'>You start deconstructing [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz rozbierać [src]...</span>")
 			if(I.use_tool(src, user, 40, volume=50))
 				playsound(src.loc, 'sound/items/deconstruct.ogg', 50, 1)
 				deconstruct(TRUE, 1)
@@ -201,7 +201,7 @@
 		var/obj/item/storage/bag/tray/T = I
 		if(T.contents.len > 0) // If the tray isn't empty
 			SEND_SIGNAL(I, COMSIG_TRY_STORAGE_QUICK_EMPTY, drop_location())
-			user.visible_message("[user] empties [I] on [src].")
+			user.visible_message("[user] opróżnia [I] na [src].")
 			return
 		// If the tray IS empty, continue on (tray will be placed on the table like other items)
 
@@ -223,8 +223,8 @@
 				else if(HAS_TRAIT(user, TRAIT_QUICK_CARRY))
 					tableplace_delay = 2.75 SECONDS
 					skills_space = " quickly"
-				carried_mob.visible_message("<span class='notice'>[user] begins to[skills_space] place [carried_mob] onto [src]...</span>",
-					"<span class='userdanger'>[user] begins to[skills_space] place [carried_mob] onto [src]...</span>")
+				carried_mob.visible_message("<span class='notice'>[user] zaczyna[skills_space] kłaść [carried_mob] na [src]...</span>",
+					"<span class='userdanger'>[user] zaczyna[skills_space] kłaść [carried_mob] na [src]...</span>")
 				if(do_after(user, tableplace_delay, target = carried_mob))
 					user.unbuckle_mob(carried_mob)
 					tableplace(user, carried_mob)
@@ -309,7 +309,7 @@
 
 /obj/structure/table/glass/proc/table_shatter(mob/living/L)
 	visible_message("<span class='warning'>[src] breaks!</span>",
-		"<span class='danger'>You hear breaking glass.</span>")
+		"<span class='danger'>Słyszysz tłuczone szkło.</span>")
 	var/turf/T = get_turf(src)
 	playsound(T, "shatter", 50, 1)
 	for(var/I in debris)
@@ -481,9 +481,9 @@
 
 /obj/structure/table/reinforced/deconstruction_hints(mob/user)
 	if(deconstruction_ready)
-		return "<span class='notice'>The top cover has been <i>welded</i> loose and the main frame's <b>bolts</b> are exposed.</span>"
+		return "<span class='notice'>Górna pokrywa została <i>odspawana</i>, a <b>śruby</b> głównej ramy są odsłonięte.</span>"
 	else
-		return "<span class='notice'>The top cover is firmly <b>welded</b> on.</span>"
+		return "<span class='notice'>Górna pokrywa jest mocno <b>przyspawana</b>.</span>"
 
 /obj/structure/table/reinforced/attackby(obj/item/W, mob/user, params)
 	if(W.tool_behaviour == TOOL_WELDER)
@@ -491,14 +491,14 @@
 			return
 
 		if(deconstruction_ready)
-			to_chat(user, "<span class='notice'>You start strengthening the reinforced table...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz wzmacniać wzmocniony stół...</span>")
 			if (W.use_tool(src, user, 50, volume=50))
-				to_chat(user, "<span class='notice'>You strengthen the table.</span>")
+				to_chat(user, "<span class='notice'>Wzmacniasz stół.</span>")
 				deconstruction_ready = 0
 		else
-			to_chat(user, "<span class='notice'>You start weakening the reinforced table...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz osłabiać wzmocniony stół...</span>")
 			if (W.use_tool(src, user, 50, volume=50))
-				to_chat(user, "<span class='notice'>You weaken the table.</span>")
+				to_chat(user, "<span class='notice'>Osłabiasz stół.</span>")
 				deconstruction_ready = 1
 	else
 		. = ..()
@@ -578,7 +578,7 @@
 	pushed_mob.forceMove(loc)
 	if(!isanimal(pushed_mob) || iscat(pushed_mob))
 		pushed_mob.set_resting(TRUE, TRUE)
-	visible_message("<span class='notice'>[user] has laid [pushed_mob] on [src].</span>")
+	visible_message("<span class='notice'>[user] kładzie [pushed_mob] na [src].</span>")
 	get_patient()
 
 /obj/structure/table/optable/proc/get_patient()
@@ -624,7 +624,7 @@
 
 /obj/structure/rack/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It's held together by a couple of <b>bolts</b>.</span>"
+	. += "<span class='notice'>Trzyma się na kilku <b>śrubach</b>.</span>"
 
 /obj/structure/rack/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
@@ -713,13 +713,13 @@
 	if(building)
 		return
 	building = TRUE
-	to_chat(user, "<span class='notice'>You start constructing a rack...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz budować regał...</span>")
 	if(do_after(user, 50, target = user, progress=TRUE))
 		if(!user.temporarilyRemoveItemFromInventory(src))
 			return
 		var/obj/structure/rack/R = new /obj/structure/rack(user.loc)
 		user.visible_message("<span class='notice'>[user] assembles \a [R].\
-			</span>", "<span class='notice'>You assemble \a [R].</span>")
+			</span>", "<span class='notice'>Składasz [R].</span>")
 		R.add_fingerprint(user)
 		qdel(src)
 	building = FALSE

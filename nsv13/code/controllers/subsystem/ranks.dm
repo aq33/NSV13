@@ -58,7 +58,7 @@ GLOBAL_LIST_INIT(pecking_order, world.file2list("config/ranks/pecking_order.txt"
 		return "<span class='boldnotice'>Przewyższasz jego rangę [theirRank].</span>"
 	if(myClout < theirClout)
 		return "<span class='boldwarning'>Przewyższa cię rangą jako [myRank].</span>"
-	return "<span class='warning'>You've forgotten how ranks work.</span>"
+	return "<span class='warning'>Zapomniałeś, jak działają stopnie.</span>"
 
 /**
 Checks two text ranks, see which one outranks the other. Used for squad rank assignment (to avoid accidental demotions)

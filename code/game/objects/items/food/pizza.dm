@@ -10,7 +10,7 @@
 		/datum/reagent/consumable/tomatojuice = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1)
+	tastes = list("skórka" = 1, "pomidor" = 1, "ser" = 1)
 	foodtypes = GRAIN | DAIRY | VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_2
 	/// type is spawned 6 at a time and replaces this pizza when processed by cutting tool
@@ -54,7 +54,7 @@
 		/datum/reagent/consumable/tomatojuice = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5
 	)
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1)
+	tastes = list("skórka" = 1, "pomidor" = 1, "ser" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	slice_type = /obj/item/food/pizzaslice/margherita
 	boxtag = "Margherita Deluxe"
@@ -82,7 +82,7 @@
 	name = "margherita slice"
 	desc = "A slice of the most cheezy pizza in galaxy."
 	icon_state = "pizzamargheritaslice"
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1)
+	tastes = list("skórka" = 1, "pomidor" = 1, "ser" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -118,7 +118,7 @@
 	name = "meatpizza slice"
 	desc = "A nutritious slice of meatpizza."
 	icon_state = "meatpizzaslice"
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1, "meat" = 1)
+	tastes = list("skórka" = 1, "pomidor" = 1, "ser" = 1, "mięso" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -131,7 +131,7 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 5
 	)
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1, "mushroom" = 1)
+	tastes = list("skórka" = 1, "pomidor" = 1, "ser" = 1, "grzyb" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	slice_type = /obj/item/food/pizzaslice/mushroom
 	boxtag = "Mushroom Special"
@@ -150,7 +150,7 @@
 	name = "mushroom pizza slice"
 	desc = "Maybe it is the last slice of pizza in your life."
 	icon_state = "mushroompizzaslice"
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1, "mushroom" = 1)
+	tastes = list("skórka" = 1, "pomidor" = 1, "ser" = 1, "grzyb" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -163,7 +163,7 @@
 		/datum/reagent/consumable/tomatojuice = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5
 	)
-	tastes = list("crust" = 1, "tomato" = 2, "cheese" = 1, "carrot" = 1)
+	tastes = list("skórka" = 1, "pomidor" = 2, "ser" = 1, "marchewka" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	slice_type = /obj/item/food/pizzaslice/vegetable
 	boxtag = "Gourmet Vegetable"
@@ -182,7 +182,7 @@
 	name = "vegetable pizza slice"
 	desc = "A slice of the most green pizza of all pizzas not containing green ingredients."
 	icon_state = "vegetablepizzaslice"
-	tastes = list("crust" = 1, "tomato" = 2, "cheese" = 1, "carrot" = 1)
+	tastes = list("skórka" = 1, "pomidor" = 2, "ser" = 1, "marchewka" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -197,7 +197,7 @@
 		/datum/reagent/medicine/omnizine = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 5
 	)
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1, "meat" = 1, "laziness" = 1)
+	tastes = list("skórka" = 1, "pomidor" = 1, "ser" = 1, "mięso" = 1, "lenistwo" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY | MEAT | JUNKFOOD
 	slice_type = /obj/item/food/pizzaslice/donkpocket
 	boxtag = "Bangin' Donk"
@@ -216,7 +216,7 @@
 	name = "donkpocket pizza slice"
 	desc = "Smells like donkpocket."
 	icon_state = "donkpocketpizzaslice"
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1, "meat" = 1, "laziness" = 1)
+	tastes = list("skórka" = 1, "pomidor" = 1, "ser" = 1, "mięso" = 1, "lenistwo" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY | MEAT | JUNKFOOD
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -230,7 +230,7 @@
 		/datum/reagent/consumable/tomatojuice = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5
 	)
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1, "meat" = 1)
+	tastes = list("skórka" = 1, "pomidor" = 1, "ser" = 1, "mięso" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	slice_type = /obj/item/food/pizzaslice/dank
 	boxtag = "Fresh Herb"
@@ -249,7 +249,7 @@
 	name = "dank pizza slice"
 	desc = "So good, man..."
 	icon_state = "dankpizzaslice"
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1, "meat" = 1)
+	tastes = list("skórka" = 1, "pomidor" = 1, "ser" = 1, "mięso" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -263,7 +263,7 @@
 		/datum/reagent/consumable/tomatojuice = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 6
 	)
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1, "meat" = 1)
+	tastes = list("skórka" = 1, "pomidor" = 1, "ser" = 1, "mięso" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	slice_type = /obj/item/food/pizzaslice/sassysage
 	boxtag = "Sausage Lovers"
@@ -282,7 +282,7 @@
 	name = "sassysage pizza slice"
 	desc = "Deliciously sassy."
 	icon_state = "sassysagepizzaslice"
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1, "meat" = 1)
+	tastes = list("skórka" = 1, "pomidor" = 1, "ser" = 1, "mięso" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -297,7 +297,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/pineapplejuice = 8
 	)
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1, "pineapple" = 2, "ham" = 2)
+	tastes = list("skórka" = 1, "pomidor" = 1, "ser" = 1, "ananas" = 2, "szynka" = 2)
 	foodtypes = GRAIN | VEGETABLES | DAIRY | MEAT | FRUIT | PINEAPPLE
 	slice_type = /obj/item/food/pizzaslice/pineapple
 	boxtag = "Honolulu Chew"
@@ -316,7 +316,7 @@
 	name = "\improper Hawaiian pizza slice"
 	desc = "A slice of delicious controversy."
 	icon_state = "pineapplepizzaslice"
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1, "pineapple" = 2, "ham" = 2)
+	tastes = list("skórka" = 1, "pomidor" = 1, "ser" = 1, "ananas" = 2, "szynka" = 2)
 	foodtypes = GRAIN | VEGETABLES | DAIRY | MEAT | FRUIT | PINEAPPLE
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -332,7 +332,7 @@
 		/datum/reagent/consumable/tomatojuice = 1,
 		/datum/reagent/toxin/amatoxin = 2,
 	)
-	tastes = list("stale crust" = 1, "rancid cheese" = 2, "mushroom" = 1)
+	tastes = list("czerstwa skórka" = 1, "zjełczały ser" = 2, "grzyb" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY | GROSS
 	preserved_food = TRUE
 
@@ -351,7 +351,7 @@
 		/datum/reagent/iron = 10,
 		/datum/reagent/medicine/omnizine = 30
 	)
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1, "pepperoni" = 2, "9 millimeter bullets" = 2)
+	tastes = list("skórka" = 1, "pomidor" = 1, "ser" = 1, "pepperoni" = 2, "naboje 9 mm" = 2)
 	slice_type = /obj/item/food/pizzaslice/arnold
 	boxtag = "9mm Pepperoni"
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -373,16 +373,16 @@
 	var/did_the_thing = (l_arm?.dismember() || r_arm?.dismember()) //not all limbs can be removed, so important to check that we did. the. thing.
 	if(!did_the_thing)
 		return
-	to_chat(user, "<span class='userdanger'>Maybe I'll give you a pizza, maybe I'll break off your arm.</span>") //makes the reference more obvious
-	user.visible_message("<span class='warning'>\The [src] breaks off [user]'s arm!</span>", "<span class='warning'>\The [src] breaks off your arm!</span>")
+	to_chat(user, "<span class='userdanger'>Może dam ci pizzę, a może urwę ci rękę.</span>") //makes the reference more obvious
+	user.visible_message("<span class='warning'>[src] urywa [user] rękę!</span>", "<span class='warning'>[src] urywa ci rękę!</span>")
 	playsound(user,pick('sound/misc/desecration-01.ogg','sound/misc/desecration-02.ogg','sound/misc/desecration-01.ogg') ,50, TRUE, -1)
 
 /obj/item/food/proc/i_kill_you(obj/item/I, mob/user)
 	if(istype(I, /obj/item/food/pineappleslice))
-		to_chat(user, "<font color='red' size='7'>If you want something crazy like pineapple, I'll kill you.</font>") //this is in bigger text because it's hard to spam something that gibs you, and so that you're perfectly aware of the reason why you died
+		to_chat(user, "<font color='red' size='7'>Jak będziesz chciał czegoś szalonego, na przykład ananasa, to cię zabiję.</font>") //this is in bigger text because it's hard to spam something that gibs you, and so that you're perfectly aware of the reason why you died
 		user.gib() //if you want something crazy like pineapple, i'll kill you
 	else if(istype(I, /obj/item/food/grown/mushroom) && iscarbon(user))
-		to_chat(user, "<span class='userdanger'>So, if you want mushroom, shut up.</span>") //not as large as the pineapple text, because you could in theory spam it
+		to_chat(user, "<span class='userdanger'>Więc jak chcesz grzyby, to się zamknij.</span>") //not as large as the pineapple text, because you could in theory spam it
 		var/mob/living/carbon/shutup = user
 		shutup.gain_trauma(/datum/brain_trauma/severe/mute)
 
@@ -398,7 +398,7 @@
 	name = "\improper Arnold pizza slice"
 	desc = "I come over, maybe I give you a pizza, maybe I break off your arm."
 	icon_state = "arnoldpizzaslice"
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1, "pepperoni" = 2, "9 millimeter bullets" = 2)
+	tastes = list("skórka" = 1, "pomidor" = 1, "ser" = 1, "pepperoni" = 2, "naboje 9 mm" = 2)
 	foodtypes = GRAIN | VEGETABLES | DAIRY | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -419,5 +419,5 @@
 		/datum/reagent/ants = 5,
 		/datum/reagent/consumable/nutriment/protein = 2,
 	)
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1, "insects" = 1)
+	tastes = list("skórka" = 1, "pomidor" = 1, "ser" = 1, "owady" = 1)
 	foodtypes = GRAIN | VEGETABLES | DAIRY | BUGS

@@ -9,15 +9,15 @@
 	name = "large mushrooms"
 	desc = "A number of large mushrooms, covered in a faint layer of ash and what can only be spores."
 	var/harvested_name = "shortened mushrooms"
-	var/harvested_desc = "Some quickly regrowing mushrooms, formerly known to be quite large."
+	var/harvested_desc = "Szybko odrastające grzyby, niegdyś znane z całkiem pokaźnych rozmiarów."
 	var/needs_sharp_harvest = TRUE
 	var/harvest = /obj/item/food/grown/ash_flora/shavings
 	var/harvest_amount_low = 1
 	var/harvest_amount_high = 3
 	var/harvest_time = 60
-	var/harvest_message_low = "You pick a mushroom, but fail to collect many shavings from its cap."
-	var/harvest_message_med = "You pick a mushroom, carefully collecting the shavings from its cap."
-	var/harvest_message_high = "You harvest and collect shavings from several mushroom caps."
+	var/harvest_message_low = "Zrywasz grzyba, ale nie udaje ci się zebrać wielu wiórów z jego kapelusza."
+	var/harvest_message_med = "Zrywasz grzyba, ostrożnie zbierając wióry z jego kapelusza."
+	var/harvest_message_high = "Zbierasz wióry z kilku kapeluszy grzybów."
 	var/destroy_on_harvest = FALSE
 	var/harvested = FALSE
 	var/base_icon
@@ -62,7 +62,7 @@
 
 /obj/structure/flora/ash/attackby(obj/item/W, mob/user, params)
 	if(!harvested && needs_sharp_harvest && W.is_sharp())
-		user.visible_message("<span class='notice'>[user] starts to harvest from [src] with [W].</span>","<span class='notice'>You begin to harvest from [src] with [W].</span>")
+		user.visible_message("<span class='notice'>[user] zaczyna zbierać z [src] za pomocą [W].</span>","<span class='notice'>Zaczynasz zbierać z [src] za pomocą [W].</span>")
 		if(do_after(user, harvest_time, target = src))
 			harvest(user)
 	else
@@ -73,7 +73,7 @@
 	if(.)
 		return
 	if(!harvested && !needs_sharp_harvest)
-		user.visible_message("<span class='notice'>[user] starts to harvest from [src].</span>","<span class='notice'>You begin to harvest from [src].</span>")
+		user.visible_message("<span class='notice'>[user] zaczyna zbierać z [src].</span>","<span class='notice'>Zaczynasz zbierać z [src].</span>")
 		if(do_after(user, harvest_time, target = src))
 			harvest(user)
 
@@ -85,14 +85,14 @@
 	name = "leafy mushrooms"
 	desc = "A number of mushrooms, each of which surrounds a greenish sporangium with a number of leaf-like structures."
 	harvested_name = "leafless mushrooms"
-	harvested_desc = "A bunch of formerly-leafed mushrooms, with their sporangiums exposed. Scandalous?"
+	harvested_desc = "Kępa grzybów, które kiedyś miały liście, z odsłoniętymi zarodniami. Skandal?"
 	harvest = /obj/item/food/grown/ash_flora/mushroom_leaf
 	needs_sharp_harvest = FALSE
 	harvest_amount_high = 4
 	harvest_time = 20
-	harvest_message_low = "You pluck a single, suitable leaf."
-	harvest_message_med = "You pluck a number of leaves, leaving a few unsuitable ones."
-	harvest_message_high = "You pluck quite a lot of suitable leaves."
+	harvest_message_low = "Zrywasz jeden odpowiedni liść."
+	harvest_message_med = "Zrywasz kilka liści, zostawiając parę nieodpowiednich."
+	harvest_message_high = "Zrywasz całkiem sporo odpowiednich liści."
 	regrowth_time_low = 2400
 	regrowth_time_high = 6000
 
@@ -101,13 +101,13 @@
 	name = "tall mushrooms"
 	desc = "Several mushrooms, the larger of which have a ring of conks at the midpoint of their stems."
 	harvested_name = "small mushrooms"
-	harvested_desc = "Several small mushrooms near the stumps of what likely were larger mushrooms."
+	harvested_desc = "Kilka małych grzybów obok pniaków po zapewne większych grzybach."
 	harvest = /obj/item/food/grown/ash_flora/mushroom_cap
 	harvest_amount_high = 4
 	harvest_time = 50
-	harvest_message_low = "You slice the cap off a mushroom."
-	harvest_message_med = "You slice off a few conks from the larger mushrooms."
-	harvest_message_high = "You slice off a number of caps and conks from these mushrooms."
+	harvest_message_low = "Odcinasz kapelusz grzyba."
+	harvest_message_med = "Odcinasz kilka hub z większych grzybów."
+	harvest_message_high = "Odcinasz sporo kapeluszy i hub z tych grzybów."
 	regrowth_time_low = 3000
 	regrowth_time_high = 5400
 
@@ -118,13 +118,13 @@
 	light_range = 1.5
 	light_power = 2.1
 	harvested_name = "tiny mushrooms"
-	harvested_desc = "A few tiny mushrooms around larger stumps. You can already see them growing back."
+	harvested_desc = "Kilka maleńkich grzybów wokół większych pniaków. Już widać, jak odrastają."
 	harvest = /obj/item/food/grown/ash_flora/mushroom_stem
 	harvest_amount_high = 4
 	harvest_time = 40
-	harvest_message_low = "You pick and slice the cap off a mushroom, leaving the stem."
-	harvest_message_med = "You pick and decapitate several mushrooms for their stems."
-	harvest_message_high = "You acquire a number of stems from these mushrooms."
+	harvest_message_low = "Zrywasz grzyba i odcinasz mu kapelusz, zostawiając trzon."
+	harvest_message_med = "Zrywasz kilka grzybów i odcinasz im kapelusze, by zdobyć trzony."
+	harvest_message_high = "Zdobywasz sporo trzonów z tych grzybów."
 	regrowth_time_low = 3000
 	regrowth_time_high = 6000
 
@@ -133,14 +133,14 @@
 	name = "fruiting cacti"
 	desc = "Several prickly cacti, brimming with ripe fruit and covered in a thin layer of ash."
 	harvested_name = "cacti"
-	harvested_desc = "A bunch of prickly cacti. You can see fruits slowly growing beneath the covering of ash."
+	harvested_desc = "Kępa kolczastych kaktusów. Pod warstwą popiołu widać powoli rosnące owoce."
 	harvest = /obj/item/food/grown/ash_flora/cactus_fruit
 	needs_sharp_harvest = FALSE
 	harvest_amount_high = 2
 	harvest_time = 10
-	harvest_message_low = "You pick a cactus fruit."
-	harvest_message_med = "You pick several cactus fruit." //shouldn't show up, because you can't get more than two
-	harvest_message_high = "You pick a pair of cactus fruit."
+	harvest_message_low = "Zrywasz owoc kaktusa."
+	harvest_message_med = "Zrywasz kilka owoców kaktusa." //shouldn't show up, because you can't get more than two
+	harvest_message_high = "Zrywasz parę owoców kaktusa."
 	regrowth_time_low = 4800
 	regrowth_time_high = 7200
 
@@ -153,8 +153,8 @@
 	needs_sharp_harvest = FALSE
 	harvest_amount_high = 2
 	harvest_time = 10
-	harvest_message_low = "You bravely pick a strange plant."
-	harvest_message_high = "You bravely pick a pair of strange plant."
+	harvest_message_low = "Odważnie zrywasz dziwną roślinę."
+	harvest_message_high = "Odważnie zrywasz parę dziwnych roślin."
 	light_range = 1.5
 	light_power = 2.1
 	destroy_on_harvest = TRUE

@@ -19,7 +19,7 @@
 		dat += " | "
 		dat += individual_logging_panel_link(M, INDIVIDUAL_OOC_LOG, LOGSRC_CLIENT, "OOC Log", source, ntype)
 		dat += " | "
-		dat += individual_logging_panel_link(M, INDIVIDUAL_SHOW_ALL_LOG, LOGSRC_CLIENT, "Show All", source, ntype)
+		dat += individual_logging_panel_link(M, INDIVIDUAL_SHOW_ALL_LOG, LOGSRC_CLIENT, "Pokaż wszystko", source, ntype)
 		dat += "</center>"
 	else
 		dat += "<p> No client attached to mob </p>"
@@ -38,7 +38,7 @@
 	dat += " | "
 	dat += individual_logging_panel_link(M, INDIVIDUAL_OOC_LOG, LOGSRC_MOB, "OOC Log", source, ntype)
 	dat += " | "
-	dat += individual_logging_panel_link(M, INDIVIDUAL_SHOW_ALL_LOG, LOGSRC_MOB, "Show All", source, ntype)
+	dat += individual_logging_panel_link(M, INDIVIDUAL_SHOW_ALL_LOG, LOGSRC_MOB, "Pokaż wszystko", source, ntype)
 	dat += "</center>"
 
 	dat += "<hr style='background:#000000; border:0; height:1px'>"

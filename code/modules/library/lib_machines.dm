@@ -34,19 +34,19 @@
 	var/list/dat = list() // <META HTTP-EQUIV='Refresh' CONTENT='10'>
 	switch(screenstate)
 		if(0)
-			dat += "<h2>Search Settings</h2><br>"
-			dat += "<A href='byond://?src=[REF(src)];settitle=1'>Filter by Title: [title]</A><BR>"
-			dat += "<A href='byond://?src=[REF(src)];setcategory=1'>Filter by Category: [category]</A><BR>"
-			dat += "<A href='byond://?src=[REF(src)];setauthor=1'>Filter by Author: [author]</A><BR>"
+			dat += "<h2>Ustawienia wyszukiwania</h2><br>"
+			dat += "<A href='byond://?src=[REF(src)];settitle=1'>Filtruj po tytule: [title]</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];setcategory=1'>Filtruj po kategorii: [category]</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];setauthor=1'>Filtruj po autorze: [author]</A><BR>"
 			dat += "<A href='byond://?src=[REF(src)];search=1'>\[Start Search\]</A><BR>"
 		if(1)
 			if (!SSdbcore.Connect())
-				dat += "<font color=red><b>ERROR</b>: Unable to contact External Archive. Please contact your system administrator for assistance.</font><BR>"
+				dat += "<font color=red><b>BŁĄD</b>: nie można połączyć się z archiwum zewnętrznym. Poproś o pomoc administratora systemu.</font><BR>"
 			else if(QDELETED(user))
 				return
 			else
 				dat += "<table>"
-				dat += "<tr><td>AUTHOR</td><td>TITLE</td><td>CATEGORY</td><td>SS<sup>13</sup>BN</td></tr>"
+				dat += "<tr><td>AUTOR</td><td>TYTUŁ</td><td>KATEGORIA</td><td>SS<sup>13</sup>BN</td></tr>"
 				var/SQLsearch = "isnull(deleted) AND "
 				if(category == "Any")
 					SQLsearch += "author LIKE '%[author]%' AND title LIKE '%[title]%'"
@@ -87,7 +87,7 @@
 					LIMIT :skip, :take
 				"}, list("author" = author, "title" = title, "category" = category, "skip" = booksperpage * search_page, "take" = booksperpage))
 				if(!query_library_list_books.Execute())
-					dat += "<font color=red><b>ERROR</b>: Unable to retrieve book listings. Please contact your system administrator for assistance.</font><BR>"
+					dat += "<font color=red><b>BŁĄD</b>: nie można pobrać listy książek. Poproś o pomoc administratora systemu.</font><BR>"
 				else
 					while(query_library_list_books.NextRow())
 						var/author = query_library_list_books.item[1]
@@ -112,19 +112,19 @@
 		return
 
 	if(href_list["settitle"])
-		var/newtitle = capped_input(usr, "Enter a title to search for:")
+		var/newtitle = capped_input(usr, "Wpisz tytuł do wyszukania:")
 		if(newtitle)
 			title = sanitize(newtitle)
 		else
 			title = null
 	if(href_list["setcategory"])
-		var/newcategory = input("Choose a category to search for:") in list("Any", "Fiction", "Non-Fiction", "Adult", "Reference", "Religion")
+		var/newcategory = input("Wybierz kategorię do wyszukania:") in list("Any", "Fiction", "Non-Fiction", "Adult", "Reference", "Religion")
 		if(newcategory)
 			category = sanitize(newcategory)
 		else
 			category = "Any"
 	if(href_list["setauthor"])
-		var/newauthor = capped_input(usr, "Enter an author to search for:")
+		var/newauthor = capped_input(usr, "Wpisz autora do wyszukania:")
 		if(newauthor)
 			author = sanitize(newauthor)
 		else
@@ -197,9 +197,9 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 	name = "book inventory management console"
 	desc = "Librarian's command station."
 	screenstate = 0 // 0 - Main Menu, 1 - Inventory, 2 - Checked Out, 3 - Check Out a Book
-	verb_say = "beeps"
-	verb_ask = "beeps"
-	verb_exclaim = "beeps"
+	verb_say = "pika"
+	verb_ask = "pika"
+	verb_exclaim = "pika"
 	pass_flags = PASSTABLE
 	var/arcanecheckout = 0
 	var/buffer_book
@@ -241,15 +241,15 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 	switch(screenstate)
 		if(0)
 			// Main Menu
-			dat += "<A href='byond://?src=[REF(src)];switchscreen=1'>1. View General Inventory</A><BR>"
-			dat += "<A href='byond://?src=[REF(src)];switchscreen=2'>2. View Checked Out Inventory</A><BR>"
-			dat += "<A href='byond://?src=[REF(src)];switchscreen=3'>3. Check out a Book</A><BR>"
-			dat += "<A href='byond://?src=[REF(src)];switchscreen=4'>4. Connect to External Archive</A><BR>"
-			dat += "<A href='byond://?src=[REF(src)];switchscreen=5'>5. Upload New Title to Archive</A><BR>"
-			dat += "<A href='byond://?src=[REF(src)];switchscreen=6'>6. Upload Scanned Title to Newscaster</A><BR>"
-			dat += "<A href='byond://?src=[REF(src)];switchscreen=7'>7. Print Corporate Materials</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];switchscreen=1'>1. Przeglądaj katalog ogólny</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];switchscreen=2'>2. Przeglądaj wypożyczone książki</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];switchscreen=3'>3. Wypożycz książkę</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];switchscreen=4'>4. Połącz z archiwum zewnętrznym</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];switchscreen=5'>5. Wgraj nowy tytuł do archiwum</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];switchscreen=6'>6. Wgraj zeskanowany tytuł do serwisu informacyjnego</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];switchscreen=7'>7. Drukuj materiały firmowe</A><BR>"
 			if(obj_flags & EMAGGED)
-				dat += "<A href='byond://?src=[REF(src)];switchscreen=8'>8. Access the Forbidden Lore Vault</A><BR>"
+				dat += "<A href='byond://?src=[REF(src)];switchscreen=8'>8. Wejdź do Skarbca Zakazanej Wiedzy</A><BR>"
 			if(src.arcanecheckout)
 				print_forbidden_lore(user)
 				src.arcanecheckout = 0
@@ -258,10 +258,10 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 			dat += "<H3>Inventory</H3><BR>"
 			for(var/obj/item/book/b in inventory)
 				dat += "[b.name] <A href='byond://?src=[REF(src)];delbook=[REF(b)]'>(Delete)</A><BR>"
-			dat += "<A href='byond://?src=[REF(src)];switchscreen=0'>(Return to main menu)</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];switchscreen=0'>(Powrót do menu głównego)</A><BR>"
 		if(2)
 			// Checked Out
-			dat += "<h3>Checked Out Books</h3><BR>"
+			dat += "<h3>Wypożyczone książki</h3><BR>"
 			for(var/datum/borrowbook/b in checkouts)
 				var/timetaken = world.time - b.getdate
 				timetaken /= 600
@@ -272,75 +272,75 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 					timedue = "<font color=red><b>(OVERDUE)</b> [timedue]</font>"
 				else
 					timedue = round(timedue)
-				dat += "\"[b.bookname]\", Checked out to: [b.mobname]<BR>--- Taken: [timetaken] minutes ago, Due: in [timedue] minutes<BR>"
-				dat += "<A href='byond://?src=[REF(src)];checkin=[REF(b)]'>(Check In)</A><BR><BR>"
-			dat += "<A href='byond://?src=[REF(src)];switchscreen=0'>(Return to main menu)</A><BR>"
+				dat += "\"[b.bookname]\", wypożyczona przez: [b.mobname]<BR>--- Wypożyczono: [timetaken] min temu, zwrot: za [timedue] min<BR>"
+				dat += "<A href='byond://?src=[REF(src)];checkin=[REF(b)]'>(Zwróć)</A><BR><BR>"
+			dat += "<A href='byond://?src=[REF(src)];switchscreen=0'>(Powrót do menu głównego)</A><BR>"
 		if(3)
 			// Check Out a Book
-			dat += "<h3>Check Out a Book</h3><BR>"
+			dat += "<h3>Wypożycz książkę</h3><BR>"
 			dat += "Book: [src.buffer_book] "
 			dat += "<A href='byond://?src=[REF(src)];editbook=1'>\[Edit\]</A><BR>"
 			dat += "Recipient: [src.buffer_mob] "
 			dat += "<A href='byond://?src=[REF(src)];editmob=1'>\[Edit\]</A><BR>"
-			dat += "Checkout Date : [world.time/600]<BR>"
-			dat += "Due Date: [(world.time + checkoutperiod)/600]<BR>"
-			dat += "(Checkout Period: [checkoutperiod] minutes) (<A href='byond://?src=[REF(src)];increasetime=1'>+</A>/<A href='byond://?src=[REF(src)];decreasetime=1'>-</A>)"
-			dat += "<A href='byond://?src=[REF(src)];checkout=1'>(Commit Entry)</A><BR>"
-			dat += "<A href='byond://?src=[REF(src)];switchscreen=0'>(Return to main menu)</A><BR>"
+			dat += "Data wypożyczenia: [world.time/600]<BR>"
+			dat += "Termin zwrotu: [(world.time + checkoutperiod)/600]<BR>"
+			dat += "(Okres wypożyczenia: [checkoutperiod] min) (<A href='byond://?src=[REF(src)];increasetime=1'>+</A>/<A href='byond://?src=[REF(src)];decreasetime=1'>-</A>)"
+			dat += "<A href='byond://?src=[REF(src)];checkout=1'>(Zatwierdź wpis)</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];switchscreen=0'>(Powrót do menu głównego)</A><BR>"
 		if(4)
-			dat += "<h3>External Archive</h3>"
+			dat += "<h3>Archiwum zewnętrzne</h3>"
 			build_library_menu()
 
 			if(!GLOB.cachedbooks)
-				dat += "<font color=red><b>ERROR</b>: Unable to contact External Archive. Please contact your system administrator for assistance.</font>"
+				dat += "<font color=red><b>BŁĄD</b>: nie można połączyć się z archiwum zewnętrznym. Poproś o pomoc administratora systemu.</font>"
 			else
-				dat += "<A href='byond://?src=[REF(src)];orderbyid=1'>(Order book by SS<sup>13</sup>BN)</A><BR><BR>"
+				dat += "<A href='byond://?src=[REF(src)];orderbyid=1'>(Sortuj książki według SS<sup>13</sup>BN)</A><BR><BR>"
 				dat += "<table>"
-				dat += "<tr><td>AUTHOR</td><td>TITLE</td><td>CATEGORY</td><td></td></tr>"
+				dat += "<tr><td>AUTOR</td><td>TYTUŁ</td><td>KATEGORIA</td><td></td></tr>"
 				dat += libcomp_menu[CLAMP(page,1,libcomp_menu.len)]
 				dat += "<tr><td><A href='byond://?src=[REF(src)];page=[(max(1,page-1))]'>&lt;&lt;&lt;&lt;</A></td> <td></td> <td></td> <td><span style='text-align:right'><A href='byond://?src=[REF(src)];page=[(min(libcomp_menu.len,page+1))]'>&gt;&gt;&gt;&gt;</A></span></td></tr>"
 				dat += "</table>"
-			dat += "<BR><A href='byond://?src=[REF(src)];switchscreen=0'>(Return to main menu)</A><BR>"
+			dat += "<BR><A href='byond://?src=[REF(src)];switchscreen=0'>(Powrót do menu głównego)</A><BR>"
 		if(5)
-			dat += "<H3>Upload a New Title</H3>"
+			dat += "<H3>Wgraj nowy tytuł</H3>"
 			if(!scanner)
 				scanner = findscanner(9)
 			if(!scanner)
-				dat += "<FONT color=red>No scanner found within wireless network range.</FONT><BR>"
+				dat += "<FONT color=red>W zasięgu sieci bezprzewodowej nie znaleziono skanera.</FONT><BR>"
 			else if(!scanner.cache)
-				dat += "<FONT color=red>No data found in scanner memory.</FONT><BR>"
+				dat += "<FONT color=red>W pamięci skanera nie znaleziono danych.</FONT><BR>"
 			else
-				dat += "<TT>Data marked for upload...</TT><BR>"
+				dat += "<TT>Dane oznaczone do wgrania...</TT><BR>"
 				dat += "<TT>Title: </TT>[scanner.cache.name]<BR>"
 				if(!scanner.cache.author)
 					scanner.cache.author = "Anonymous"
 				dat += "<TT>Author: </TT><A href='byond://?src=[REF(src)];setauthor=1'>[scanner.cache.author]</A><BR>"
 				dat += "<TT>Category: </TT><A href='byond://?src=[REF(src)];setcategory=1'>[upload_category]</A><BR>"
 				dat += "<A href='byond://?src=[REF(src)];upload=1'>\[Upload\]</A><BR>"
-			dat += "<A href='byond://?src=[REF(src)];switchscreen=0'>(Return to main menu)</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];switchscreen=0'>(Powrót do menu głównego)</A><BR>"
 		if(6)
-			dat += "<h3>Post Title to Newscaster</h3>"
+			dat += "<h3>Opublikuj tytuł w serwisie informacyjnym</h3>"
 			if(!scanner)
 				scanner = findscanner(9)
 			if(!scanner)
-				dat += "<FONT color=red>No scanner found within wireless network range.</FONT><BR>"
+				dat += "<FONT color=red>W zasięgu sieci bezprzewodowej nie znaleziono skanera.</FONT><BR>"
 			else if(!scanner.cache)
-				dat += "<FONT color=red>No data found in scanner memory.</FONT><BR>"
+				dat += "<FONT color=red>W pamięci skanera nie znaleziono danych.</FONT><BR>"
 			else
-				dat += "<TT>Post [scanner.cache.name] to station newscasters?</TT>"
+				dat += "<TT>Opublikować [scanner.cache.name] w stacyjnych serwisach informacyjnych?</TT>"
 				dat += "<A href='byond://?src=[REF(src)];newspost=1'>\[Post\]</A><BR>"
-			dat += "<A href='byond://?src=[REF(src)];switchscreen=0'>(Return to main menu)</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];switchscreen=0'>(Powrót do menu głównego)</A><BR>"
 		if(7)
-			dat += "<h3>NTGanda(tm) Universal Printing Module</h3>"
-			dat += "What would you like to print?<BR>"
+			dat += "<h3>Uniwersalny moduł drukujący NTGanda(tm)</h3>"
+			dat += "Co chcesz wydrukować?<BR>"
 			dat += "<A href='byond://?src=[REF(src)];printbible=1'>\[Bible\]</A><BR>"
 			dat += "<A href='byond://?src=[REF(src)];printspacelaw=1'>\[Space Law\]</A><BR>"
 			dat += "<A href='byond://?src=[REF(src)];printposter=1'>\[Poster\]</A><BR>"
-			dat += "<A href='byond://?src=[REF(src)];switchscreen=0'>(Return to main menu)</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];switchscreen=0'>(Powrót do menu głównego)</A><BR>"
 		if(8)
-			dat += "<h3>Accessing Forbidden Lore Vault v 1.3</h3>"
-			dat += "Are you absolutely sure you want to proceed? EldritchRelics Inc. takes no responsibilities for loss of sanity resulting from this action.<p>"
-			dat += "<A href='byond://?src=[REF(src)];arccheckout=1'>Yes.</A><BR>"
+			dat += "<h3>Dostęp do Skarbca Zakazanej Wiedzy v 1.3</h3>"
+			dat += "Czy na pewno chcesz kontynuować? EldritchRelics Inc. nie ponosi odpowiedzialności za utratę zdrowia psychicznego wynikłą z tego działania.<p>"
+			dat += "<A href='byond://?src=[REF(src)];arccheckout=1'>Tak.</A><BR>"
 			dat += "<A href='byond://?src=[REF(src)];switchscreen=0'>No.</A><BR>"
 
 	var/datum/browser/popup = new(user, "library", name, 600, 400)
@@ -354,21 +354,21 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 	switch(rand(1,3))
 		if(1)
 			new /obj/item/melee/cultblade/dagger(get_turf(src))
-			to_chat(user, "<span class='warning'>Your sanity barely endures the seconds spent in the vault's browsing window. The only thing to remind you of this when you stop browsing is a sinister dagger sitting on the desk. You don't even remember where it came from...</span>")
+			to_chat(user, "<span class='warning'>Twój umysł ledwo wytrzymuje sekundy spędzone w oknie przeglądania skarbca. Gdy przestajesz przeglądać, jedynym, co ci o tym przypomina, jest złowieszczy sztylet leżący na biurku. Nawet nie pamiętasz, skąd się wziął...</span>")
 		if(2)
 			new /obj/item/clockwork/clockwork_slab(get_turf(src))
-			to_chat(user, "<span class='warning'>Your sanity barely endures the seconds spent in the vault's browsing window. The only thing to remind you of this when you stop browsing is a strange metal tablet sitting on the desk. You don't even remember where it came from...</span>")
+			to_chat(user, "<span class='warning'>Twój umysł ledwo wytrzymuje sekundy spędzone w oknie przeglądania skarbca. Gdy przestajesz przeglądać, jedynym, co ci o tym przypomina, jest dziwna metalowa tabliczka leżąca na biurku. Nawet nie pamiętasz, skąd się wzięła...</span>")
 		if(3)
 			new /obj/item/codex_cicatrix(get_turf(src))
-			to_chat(user, "<span class='warning'>Your sanity barely endures the seconds spent in the vault's browsing window. The only thing to remind you of this when you stop browsing is an ominous book, bound by a chain, sitting on the desk. You don't even remember where it came from...</span>")
-	user.visible_message("[user] stares at the blank screen for a few moments, [user.p_their()] expression frozen in fear. When [user.p_they()] finally awaken[user.p_s()] from it, [user.p_they()] look[user.p_s()] a lot older.", 2)
+			to_chat(user, "<span class='warning'>Twój umysł ledwo wytrzymuje sekundy spędzone w oknie przeglądania skarbca. Gdy przestajesz przeglądać, jedynym, co ci o tym przypomina, jest złowróżbna księga skuta łańcuchem, leżąca na biurku. Nawet nie pamiętasz, skąd się wzięła...</span>")
+	user.visible_message("[user] przez kilka chwil wpatruje się w pusty ekran z twarzą zastygłą w strachu. Gdy w końcu się z tego budzi, wygląda na znacznie starszego.", 2)
 
 /obj/machinery/computer/libraryconsole/bookmanagement/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/barcodescanner))
 		var/obj/item/barcodescanner/scanner = W
 		scanner.computer = src
-		to_chat(user, "[scanner]'s associated machine has been set to [src].")
-		audible_message("[src] lets out a low, short blip.")
+		to_chat(user, "Powiązaną maszyną [scanner] jest teraz [src].")
+		audible_message("[src] wydaje niski, krótki pisk.")
 	else
 		return ..()
 
@@ -414,9 +414,9 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 		if(checkoutperiod < 1)
 			checkoutperiod = 1
 	if(href_list["editbook"])
-		buffer_book = stripped_input(usr, "Enter the book's title:")
+		buffer_book = stripped_input(usr, "Wpisz tytuł książki:")
 	if(href_list["editmob"])
-		buffer_mob = stripped_input(usr, "Enter the recipient's name:", max_length=MAX_NAME_LEN)
+		buffer_mob = stripped_input(usr, "Wpisz imię odbiorcy:", max_length=MAX_NAME_LEN)
 	if(href_list["checkout"])
 		var/datum/borrowbook/b = new /datum/borrowbook
 		b.bookname = sanitize(buffer_book)
@@ -433,12 +433,12 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 		if(b && istype(b))
 			inventory.Remove(b)
 	if(href_list["setauthor"])
-		var/newauthor = stripped_input(usr, "Enter the author's name: ")
+		var/newauthor = stripped_input(usr, "Wpisz imię autora: ")
 		if(newauthor)
 			if(length(newauthor) <= 45)
 				scanner.cache.author = newauthor
 			else
-				alert("Unable to set author. The field must be fewer than 45 characters.")
+				alert("Nie można ustawić autora. Pole musi mieć mniej niż 45 znaków.")
 	if(href_list["setcategory"])
 		var/newcategory = input("Choose a category: ") in list("Fiction", "Non-Fiction", "Adult", "Reference", "Religion","Technical")
 		if(newcategory)
@@ -446,12 +446,12 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 	if(href_list["upload"])
 		if(scanner)
 			if(scanner.cache)
-				var/choice = input("Are you certain you wish to upload this title to the Archive?") in list("Confirm", "Abort")
+				var/choice = input("Czy na pewno chcesz wgrać ten tytuł do archiwum?") in list("Confirm", "Abort")
 				if(choice == "Confirm")
 					if (!SSdbcore.Connect())
-						alert("Connection to Archive has been severed. Aborting.")
+						alert("Połączenie z archiwum zostało zerwane. Przerywanie.")
 					else if((length(scanner.cache.name) > 45) || (length(scanner.cache.author) > 45))
-						alert("The title and author fields must each be 45 characters or fewer. Check your entry and try again.")
+						alert("Pola tytułu i autora mogą mieć najwyżej po 45 znaków. Sprawdź wpis i spróbuj ponownie.")
 						return
 					else
 						var/msg = "[key_name(usr)] has uploaded the book titled [scanner.cache.name], [length(scanner.cache.dat)] signs"
@@ -461,15 +461,15 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 						"}, list("title" = scanner.cache.name, "author" = scanner.cache.author, "content" = scanner.cache.dat, "category" = upload_category, "ckey" = usr.ckey, "round_id" = GLOB.round_id))
 						if(!query_library_upload.Execute())
 							qdel(query_library_upload)
-							alert("Database error encountered uploading to Archive")
+							alert("Napotkano błąd bazy danych podczas wgrywania do archiwum")
 							return
 						else
 							log_game(msg)
 							qdel(query_library_upload)
-							alert("Upload Complete. Uploaded title will be unavailable for printing for a short period")
+							alert("Wgrywanie zakończone. Wgrany tytuł będzie przez krótki czas niedostępny do druku")
 	if(href_list["newspost"])
 		if(!GLOB.news_network)
-			alert("No news network found on station. Aborting.")
+			alert("Nie znaleziono na stacji sieci informacyjnej. Przerywanie.")
 		var/channelexists = 0
 		for(var/datum/newscaster/feed_channel/FC in GLOB.news_network.network_channels)
 			if(FC.channel_name == "Nanotrasen Book Club")
@@ -478,12 +478,12 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 		if(!channelexists)
 			GLOB.news_network.CreateFeedChannel("Nanotrasen Book Club", "Library", null)
 		GLOB.news_network.SubmitArticle(scanner.cache.dat, "[scanner.cache.name]", "Nanotrasen Book Club", null)
-		alert("Upload complete. Your uploaded title is now available on station newscasters.")
+		alert("Wgrywanie zakończone. Twój tytuł jest teraz dostępny w stacyjnych serwisach informacyjnych.")
 	if(href_list["orderbyid"])
 		if(cooldown > world.time)
-			say("Printer unavailable. Please allow a short time before attempting to print.")
+			say("Drukarka niedostępna. Odczekaj chwilę przed ponowną próbą druku.")
 		else
-			var/orderid = input("Enter your order:") as num|null
+			var/orderid = input("Wpisz swoje zamówienie:") as num|null
 			if(orderid)
 				if(isnum_safe(orderid) && ISINTEGER(orderid))
 					href_list["targetid"] = num2text(orderid)
@@ -491,9 +491,9 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 	if(href_list["targetid"])
 		var/id = href_list["targetid"]
 		if (!SSdbcore.Connect())
-			alert("Connection to Archive has been severed. Aborting.")
+			alert("Połączenie z archiwum zostało zerwane. Przerywanie.")
 		if(cooldown > world.time)
-			say("Printer unavailable. Please allow a short time before attempting to print.")
+			say("Drukarka niedostępna. Odczekaj chwilę przed ponowną próbą druku.")
 		else
 			cooldown = world.time + PRINTER_COOLDOWN
 			var/datum/DBQuery/query_library_print = SSdbcore.NewQuery(
@@ -502,7 +502,7 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 			)
 			if(!query_library_print.Execute())
 				qdel(query_library_print)
-				say("PRINTER ERROR! Failed to print document (0x0000000F)")
+				say("BŁĄD DRUKARKI! Nie udało się wydrukować dokumentu (0x0000000F)")
 				return
 			while(query_library_print.NextRow())
 				var/author = query_library_print.item[2]
@@ -515,7 +515,7 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 					B.author = author
 					B.dat = content
 					B.icon_state = "book[rand(1,8)]"
-					visible_message("[src]'s printer hums as it produces a completely bound book. How did it do that?")
+					visible_message("Drukarka [src] buczy, wytwarzając całkowicie oprawioną książkę. Jak ona to zrobiła?")
 				break
 			qdel(query_library_print)
 	if(href_list["printbible"])
@@ -528,19 +528,19 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 				B.deity_name = GLOB.deity
 			cooldown = world.time + PRINTER_COOLDOWN
 		else
-			say("Printer currently unavailable, please wait a moment.")
+			say("Drukarka jest obecnie niedostępna, poczekaj chwilę.")
 	if(href_list["printspacelaw"])
 		if(cooldown < world.time)
 			new /obj/item/book/manual/wiki/security_space_law(src.loc)
 			cooldown = world.time + PRINTER_COOLDOWN
 		else
-			say("Printer currently unavailable, please wait a moment.")
+			say("Drukarka jest obecnie niedostępna, poczekaj chwilę.")
 	if(href_list["printposter"])
 		if(cooldown < world.time)
 			new /obj/item/poster/random_official(src.loc)
 			cooldown = world.time + PRINTER_COOLDOWN
 		else
-			say("Printer currently unavailable, please wait a moment.")
+			say("Drukarka jest obecnie niedostępna, poczekaj chwilę.")
 	add_fingerprint(usr)
 	updateUsrDialog()
 
@@ -569,9 +569,9 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 	usr.set_machine(src)
 	var/dat = "" // <META HTTP-EQUIV='Refresh' CONTENT='10'>
 	if(cache)
-		dat += "<FONT color=#005500>Data stored in memory.</FONT><BR>"
+		dat += "<FONT color=#005500>Dane zapisane w pamięci.</FONT><BR>"
 	else
-		dat += "No data stored in memory.<BR>"
+		dat += "Brak danych w pamięci.<BR>"
 	dat += "<A href='byond://?src=[REF(src)];scan=1'>\[Scan\]</A>"
 	if(cache)
 		dat += "       <A href='byond://?src=[REF(src)];clear=1'>\[Clear Memory\]</A><BR><BR><A href='byond://?src=[REF(src)];eject=1'>\[Remove Book\]</A>"
@@ -624,18 +624,18 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 	if(machine_stat)
 		return
 	if(busy)
-		to_chat(user, "<span class='warning'>The book binder is busy. Please wait for completion of previous operation.</span>")
+		to_chat(user, "<span class='warning'>Introligatornia jest zajęta. Poczekaj na zakończenie poprzedniej operacji.</span>")
 		return
 	if(!user.transferItemToLoc(P, src))
 		return
-	user.visible_message("[user] loads some paper into [src].", "You load some paper into [src].")
-	audible_message("[src] begins to hum as it warms up its printing drums.")
+	user.visible_message("[user] ładuje trochę papieru do [src].", "Ładujesz trochę papieru do [src].")
+	audible_message("[src] zaczyna buczeć, rozgrzewając bębny drukujące.")
 	busy = TRUE
 	sleep(rand(200,400))
 	busy = FALSE
 	if(P)
 		if(!machine_stat)
-			visible_message("[src] whirs as it prints and binds a new book.")
+			visible_message("[src] furczy, drukując i oprawiając nową książkę.")
 			var/obj/item/book/B = new(src.loc)
 			var/raw_content = ""
 			for(var/datum/paper_input/text_input as anything in P.raw_text_inputs)

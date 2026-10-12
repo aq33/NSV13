@@ -12,7 +12,7 @@
 	. = ..()
 	if(!I.get_part_rating())
 		if(!stop_messages)
-			M.balloon_alert(M, "The RPED can only hold machine parts!")
+			M.balloon_alert(M, "RPED może przechowywać tylko części maszyn!")
 		return FALSE
 
 /datum/component/storage/concrete/rped/quick_empty(mob/M)
@@ -39,9 +39,9 @@
 		else if(B.get_part_rating() > lowest_rating)
 			things.Remove(B)
 	if(lowest_rating == INFINITY)
-		to_chat(M, "<span class='notice'>There's no parts to dump out from [parent].</span>")
+		to_chat(M, "<span class='notice'>W [parent] nie ma części do wysypania.</span>")
 		return
-	to_chat(M, "<span class='notice'>You start dumping out Tier/Cell rating [lowest_rating] parts from [parent].</span>")
+	to_chat(M, "<span class='notice'>Zaczynasz wysypywać z [parent] części klasy [lowest_rating].</span>")
 	var/turf/T = get_turf(A)
 	var/datum/progressbar/progress = new(M, length(things), T)
 	while (do_after(M, 10, TRUE, T, FALSE, CALLBACK(src, PROC_REF(mass_remove_from_storage), T, things, progress)))
@@ -62,7 +62,7 @@
 	. = ..()
 	if(!I.get_part_rating())
 		if(!stop_messages)
-			M.balloon_alert(M, "The RPED can only hold machine parts!")
+			M.balloon_alert(M, "RPED może przechowywać tylko części maszyn!")
 		return FALSE
 
 /datum/component/storage/concrete/bluespace/rped/quick_empty(mob/M)
@@ -89,9 +89,9 @@
 		else if(B.get_part_rating() > lowest_rating)
 			things.Remove(B)
 	if(lowest_rating == INFINITY)
-		to_chat(M, "<span class='notice'>There's no parts to dump out from [parent].</span>")
+		to_chat(M, "<span class='notice'>W [parent] nie ma części do wysypania.</span>")
 		return
-	to_chat(M, "<span class='notice'>You start dumping out Tier/Cell rating [lowest_rating] parts from [parent].</span>")
+	to_chat(M, "<span class='notice'>Zaczynasz wysypywać z [parent] części klasy [lowest_rating].</span>")
 	var/turf/T = get_turf(A)
 	var/datum/progressbar/progress = new(M, length(things), T)
 	while (do_after(M, 10, TRUE, T, FALSE, CALLBACK(src, PROC_REF(mass_remove_from_storage), T, things, progress)))

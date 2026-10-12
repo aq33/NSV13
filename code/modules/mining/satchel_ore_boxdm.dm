@@ -21,16 +21,16 @@
 		ui_update()
 	else if(SEND_SIGNAL(W, COMSIG_CONTAINS_STORAGE))
 		SEND_SIGNAL(W, COMSIG_TRY_STORAGE_TAKE_TYPE, typecache_to_take, src)
-		to_chat(user, "<span class='notice'>You empty the ore in [W] into \the [src].</span>")
+		to_chat(user, "<span class='notice'>Wysypujesz rudę z [W] do [src].</span>")
 		ui_update()
 	else
 		return ..()
 
 /obj/structure/ore_box/crowbar_act(mob/living/user, obj/item/I)
 	if(I.use_tool(src, user, 50, volume=50))
-		user.visible_message("[user] pries \the [src] apart.",
-			"<span class='notice'>You pry apart \the [src].</span>",
-			"<span class='italics'>You hear splitting wood.</span>")
+		user.visible_message("[user] rozbiera [src] łomem.",
+			"<span class='notice'>Rozbierasz [src] łomem.</span>",
+			"<span class='italics'>Słyszysz pękające drewno.</span>")
 		deconstruct(TRUE, user)
 	return TRUE
 
@@ -93,7 +93,7 @@
 	switch(action)
 		if("removeall")
 			dump_box_contents()
-			to_chat(usr, "<span class='notice'>You open the release hatch on the box..</span>")
+			to_chat(usr, "<span class='notice'>Otwierasz klapę zrzutową skrzyni..</span>")
 			. = TRUE
 
 /obj/structure/ore_box/deconstruct(disassembled = TRUE, mob/user)

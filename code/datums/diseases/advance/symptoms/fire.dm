@@ -18,7 +18,7 @@ Bonus
 /datum/symptom/fire
 
 	name = "Spontaneous Combustion"
-	desc = "The virus turns fat into an extremely flammable compound, and raises the body's temperature, making the host burst into flames spontaneously."
+	desc = "Wirus zamienia tłuszcz w niezwykle łatwopalny związek i podnosi temperaturę ciała, przez co nosiciel samoistnie staje w płomieniach."
 	stealth = 1
 	resistance = -1
 	stage_speed = -2
@@ -32,10 +32,7 @@ Bonus
 	bodies = list("Combustion")
 	suffixes = list(" Combustion")
 	var/infective = FALSE
-	threshold_desc = "<b>Stage Speed 4:</b> Increases the intensity of the flames.<br>\
-					  <b>Stage Speed 8:</b> Further increases flame intensity.<br>\
-					  <b>Transmission 8:</b> Host will spread the virus through skin flakes when bursting into flame.<br>\
-					  <b>Stealth 4:</b> The symptom remains hidden until active."
+	threshold_desc = "<b>Szybkość stadiów 4:</b> zwiększa intensywność płomieni.<br><b>Szybkość stadiów 8:</b> jeszcze bardziej zwiększa intensywność płomieni.<br><b>Transmisja 8:</b> nosiciel roznosi wirusa przez płatki skóry, gdy staje w płomieniach.<br><b>Ukrycie 4:</b> objaw pozostaje ukryty, dopóki nie jest aktywny."
 
 /datum/symptom/fire/Start(datum/disease/advance/A)
 	if(!..())
@@ -60,12 +57,12 @@ Bonus
 		if(4)
 			Firestacks_stage_4(M, A)
 			M.IgniteMob()
-			to_chat(M, "<span class='userdanger'>Your skin bursts into flames!</span>")
+			to_chat(M, "<span class='userdanger'>Twoja skóra staje w płomieniach!</span>")
 			M.emote("scream")
 		if(5)
 			Firestacks_stage_5(M, A)
 			M.IgniteMob()
-			to_chat(M, "<span class='userdanger'>Your skin erupts into an inferno!</span>")
+			to_chat(M, "<span class='userdanger'>Twoja skóra wybucha piekłem ognia!</span>")
 			M.emote("scream")
 
 /datum/symptom/fire/proc/Firestacks_stage_4(mob/living/M, datum/disease/advance/A)
@@ -73,7 +70,7 @@ Bonus
 	M.take_overall_damage(burn = 3 * power, required_status = BODYTYPE_ORGANIC)
 	if(infective && !(A.spread_flags & DISEASE_SPREAD_FALTERED))
 		addtimer(CALLBACK(A, TYPE_PROC_REF(/datum/disease, spread), 2), 20)
-		M.visible_message("<span class='danger'>[M] bursts into flames, spreading burning sparks about the area!</span>")
+		M.visible_message("<span class='danger'>[M] staje w płomieniach, rozsiewając wokół płonące iskry!</span>")
 	return 1
 
 /datum/symptom/fire/proc/Firestacks_stage_5(mob/living/M, datum/disease/advance/A)
@@ -84,7 +81,7 @@ Bonus
 	M.take_overall_damage(burn = 5 * power, required_status = BODYTYPE_ORGANIC)
 	if(infective && !(A.spread_flags & DISEASE_SPREAD_FALTERED))
 		addtimer(CALLBACK(A, TYPE_PROC_REF(/datum/disease, spread), 4), 20)
-		M.visible_message("<span class='danger'>[M] bursts into flames, spreading burning sparks about the area!</span>")
+		M.visible_message("<span class='danger'>[M] staje w płomieniach, rozsiewając wokół płonące iskry!</span>")
 	return 1
 
 
@@ -109,7 +106,7 @@ Bonus
 /datum/symptom/alkali
 
 	name = "Alkali Perspiration"
-	desc = "The virus attaches to sudoriparous glands, synthesizing a chemical that bursts into flames when reacting with water, leading to self-immolation."
+	desc = "Wirus przyczepia się do gruczołów potowych, syntetyzując substancję, która zapala się w reakcji z wodą, prowadząc do samospalenia."
 	stealth = 2
 	resistance = -2
 	stage_speed = -2
@@ -121,7 +118,7 @@ Bonus
 	symptom_delay_max = 90
 	prefixes = list("Explosive ")
 	bodies = list("Hellfire")
-	suffixes = list(" of the Damned")
+	suffixes = list(" potępieńców")
 	var/chems = FALSE
 	var/explosion_power = 1
 	threshold_desc = "<b>Stealth 3:</b> Doubles the intensity of the effect, but reduces its frequency.<br>\
@@ -157,19 +154,19 @@ Bonus
 				to_chat(M, "<span class='warning'>[pick("Your veins boil.", "You feel hot.", "You smell meat cooking.")]</span>")
 		if(4)
 			if(M.fire_stacks < 0)
-				M.visible_message("<span class='warning'>[M]'s sweat sizzles and pops on contact with water!</span>")
+				M.visible_message("<span class='warning'>Pot [M] skwierczy i strzela w kontakcie z wodą!</span>")
 				explosion(get_turf(M),-1,(-1 + explosion_power),(2 * explosion_power))
 			Alkali_fire_stage_4(M, A)
 			M.IgniteMob()
-			to_chat(M, "<span class='userdanger'>Your sweat bursts into flames!</span>")
+			to_chat(M, "<span class='userdanger'>Twój pot staje w płomieniach!</span>")
 			M.emote("scream")
 		if(5)
 			if(M.fire_stacks < 0)
-				M.visible_message("<span class='warning'>[M]'s sweat sizzles and pops on contact with water!</span>")
+				M.visible_message("<span class='warning'>Pot [M] skwierczy i strzela w kontakcie z wodą!</span>")
 				explosion(get_turf(M),-1,(-1 + explosion_power),(2 * explosion_power))
 			Alkali_fire_stage_5(M, A)
 			M.IgniteMob()
-			to_chat(M, "<span class='userdanger'>Your skin erupts into an inferno!</span>")
+			to_chat(M, "<span class='userdanger'>Twoja skóra wybucha piekłem ognia!</span>")
 			M.emote("scream")
 
 /datum/symptom/alkali/proc/Alkali_fire_stage_4(mob/living/M, datum/disease/advance/A)

@@ -28,7 +28,7 @@
 /obj/machinery/transformer/examine(mob/user)
 	. = ..()
 	if(cooldown && (issilicon(user) || isobserver(user)))
-		. += "It will be ready in [DisplayTimeText(cooldown_timer - world.time)]."
+		. += "Będzie gotowy za [DisplayTimeText(cooldown_timer - world.time)]."
 
 /obj/machinery/transformer/Destroy()
 	QDEL_NULL(countdown)

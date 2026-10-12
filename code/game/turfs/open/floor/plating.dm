@@ -25,12 +25,12 @@
 /turf/open/floor/plating/examine(mob/user)
 	. = ..()
 	if(broken || burnt)
-		. += "<span class='notice'>It looks like the dents could be <i>welded</i> smooth.</span>"
+		. += "<span class='notice'>Wygląda na to, że wgniecenia dałoby się wygładzić <i>spawarką</i>.</span>"
 		return
 	if(attachment_holes)
-		. += "<span class='notice'>There are a few attachment holes for a new <i>tile</i>, reinforcement <i>sheets</i> or catwalk <i>rods</i>.</span>"
+		. += "<span class='notice'>Jest tu kilka otworów montażowych na nową <i>płytkę</i>, <i>arkusze</i> wzmocnienia lub <i>pręty</i> pomostu.</span>"
 	else
-		. += "<span class='notice'>You might be able to build ontop of it with some <i>tiles</i>...</span>"
+		. += "<span class='notice'>Może dałoby się na tym coś zbudować za pomocą <i>płytek</i>...</span>"
 
 /turf/open/floor/plating/Initialize(mapload)
 	if (!broken_states)
@@ -54,57 +54,57 @@
 		return
 	if(istype(C, /obj/item/stack/rods) && attachment_holes)
 		if(broken || burnt)
-			to_chat(user, "<span class='warning'>Repair the plating first!</span>")
+			to_chat(user, "<span class='warning'>Najpierw napraw poszycie!</span>")
 			return
 		if(locate(/obj/structure/lattice/catwalk/over, src))
 			return
 		if (istype(C, /obj/item/stack/rods))
 			var/obj/item/stack/rods/R = C
 			if (R.use(2))
-				to_chat(user, "<span class='notice'>You lay down the catwalk.</span>")
+				to_chat(user, "<span class='notice'>Kładziesz pomost.</span>")
 				playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 				new /obj/structure/lattice/catwalk/over(src)
 				return
 	if(istype(C, /obj/item/stack/sheet/iron) && attachment_holes)
 		if(broken || burnt)
-			to_chat(user, "<span class='warning'>Repair the plating first!</span>")
+			to_chat(user, "<span class='warning'>Najpierw napraw poszycie!</span>")
 			return
 		var/obj/item/stack/sheet/iron/R = C
 		if (R.get_amount() < 1)
-			to_chat(user, "<span class='warning'>You need one sheet to make a reinforced floor!</span>")
+			to_chat(user, "<span class='warning'>Potrzebujesz jednego arkusza, by zrobić wzmocnioną podłogę!</span>")
 			return
 		else
-			to_chat(user, "<span class='notice'>You begin reinforcing the floor...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz wzmacniać podłogę...</span>")
 			if(do_after(user, 30, target = src))
 				if (R.get_amount() >= 1 && !istype(src, /turf/open/floor/engine))
 					PlaceOnTop(/turf/open/floor/engine, flags = CHANGETURF_INHERIT_AIR)
 					playsound(src, 'sound/items/deconstruct.ogg', 80, 1)
 					R.use(1)
-					to_chat(user, "<span class='notice'>You reinforce the floor.</span>")
+					to_chat(user, "<span class='notice'>Wzmacniasz podłogę.</span>")
 				return
 	if(istype(C, /obj/item/stack/sheet/plasteel) && attachment_holes)
 		if(broken || burnt)
-			to_chat(user, "<span class='warning'>Repair the plating first!</span>")
+			to_chat(user, "<span class='warning'>Najpierw napraw poszycie!</span>")
 			return
 		var/obj/item/stack/sheet/iron/R = C
 		if (R.get_amount() < 1)
-			to_chat(user, "<span class='warning'>You need one sheet to make a prison secure floor!</span>")
+			to_chat(user, "<span class='warning'>Potrzebujesz jednego arkusza, by zrobić zabezpieczoną podłogę więzienną!</span>")
 			return
 		else
-			to_chat(user, "<span class='notice'>You begin reinforcing the floor to secure the plating..</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz wzmacniać podłogę, by zabezpieczyć poszycie..</span>")
 			if(do_after(user, 30, target = src))
 				if (R.get_amount() >= 1 && !istype(src, /turf/open/floor/prison))
 					PlaceOnTop(/turf/open/floor/prison, flags = CHANGETURF_INHERIT_AIR)
 					playsound(src, 'sound/items/deconstruct.ogg', 80, 1)
 					R.use(1)
-					to_chat(user, "<span class='notice'>You secure the plating.</span>")
+					to_chat(user, "<span class='notice'>Zabezpieczasz poszycie.</span>")
 				return
 	else if(istype(C, /obj/item/stack/tile))//NSV allow placing tiles under open plated catwalks
 		if(!broken && !burnt)
 			for(var/obj/O in src)
 				if(O.level == 1) //ex. pipes laid underneath a tile
 					for(var/M in O.buckled_mobs)
-						to_chat(user, "<span class='warning'>Someone is buckled to \the [O]! Unbuckle [M] to move \him out of the way.</span>")
+						to_chat(user, "<span class='warning'>Ktoś jest przypięty do [O]! Odepnij [M], by go przesunąć.</span>")
 						return
 			var/obj/item/stack/tile/W = C
 			if(!W.use(1))
@@ -116,11 +116,11 @@
 				F.state = L.state
 			playsound(src, 'sound/weapons/genhit.ogg', 50, 1)
 		else
-			to_chat(user, "<span class='warning'>This section is too damaged to support a tile! Use a welder to fix the damage.</span>")
+			to_chat(user, "<span class='warning'>Ta część jest zbyt uszkodzona, by utrzymać płytkę! Napraw uszkodzenia spawarką.</span>")
 
 /turf/open/floor/plating/welder_act(mob/living/user, obj/item/I)
 	if((broken || burnt) && I.use_tool(src, user, 0, volume=80))
-		to_chat(user, "<span class='danger'>You fix some dents on the broken plating.</span>")
+		to_chat(user, "<span class='danger'>Naprawiasz trochę wgnieceń w zepsutym poszyciu.</span>")
 		icon_state = icon_plating
 		burnt = FALSE
 		broken = FALSE
@@ -153,7 +153,7 @@
 			var/obj/L = locate(/obj/structure/lattice) in src
 			if(L)
 				qdel(L)
-			to_chat(user, "<span class='notice'>You reinforce the foamed plating with tiling.</span>")
+			to_chat(user, "<span class='notice'>Wzmacniasz spienione poszycie płytkami.</span>")
 			playsound(src, 'sound/weapons/Genhit.ogg', 50, TRUE)
 			ChangeTurf(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 	else
@@ -161,11 +161,11 @@
 		user.changeNext_move(CLICK_CD_MELEE)
 		user.do_attack_animation(src)
 		if(prob(I.force * 20 - 25))
-			user.visible_message("<span class='danger'>[user] smashes through [src]!</span>", \
-							"<span class='danger'>You smash through [src] with [I]!</span>")
+			user.visible_message("<span class='danger'>[user] przebija się przez [src]!</span>", \
+							"<span class='danger'>Przebijasz się przez [src] za pomocą [I]!</span>")
 			ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 		else
-			to_chat(user, "<span class='danger'>You hit [src], to no effect!</span>")
+			to_chat(user, "<span class='danger'>Uderzasz w [src], bez skutku!</span>")
 
 /turf/open/floor/plating/foam/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	if(the_rcd.mode == RCD_FLOORWALL)
@@ -173,7 +173,7 @@
 
 /turf/open/floor/plating/foam/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
 	if(passed_mode == RCD_FLOORWALL)
-		to_chat(user, "<span class='notice'>You build a floor.</span>")
+		to_chat(user, "<span class='notice'>Budujesz podłogę.</span>")
 		ChangeTurf(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 		return TRUE
 	return FALSE

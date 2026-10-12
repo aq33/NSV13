@@ -38,13 +38,13 @@
 	. = ..()
 
 	if(!machine)
-		to_chat(user, "<span class='notice'>[src] is not linked to a machine!</span>")
+		to_chat(user, "<span class='notice'>[src] nie jest połączony z żadną maszyną!</span>")
 		return
 
 	var/obj/item/stack/sheet/s
 	var/dat
 
-	dat += text("<b>Stacking unit console</b><br><br>")
+	dat += text("<b>Konsola jednostki układającej</b><br><br>")
 
 	for(var/O in machine.stack_list)
 		s = machine.stack_list[O]
@@ -60,7 +60,7 @@
 		return
 	var/obj/item/multitool/M = I
 	M.buffer = src
-	to_chat(user, "<span class='notice'>You store linkage information in [I]'s buffer.</span>")
+	to_chat(user, "<span class='notice'>Zapisujesz informacje o połączeniu w buforze [I].</span>")
 	return TRUE
 
 /obj/machinery/mineral/stacking_unit_console/Topic(href, href_list)
@@ -119,7 +119,7 @@
 	if(istype(AM, /obj/item/stack/sheet) && AM.loc == get_step(src, input_dir))
 		var/obj/effect/portal/P = locate() in AM.loc
 		if(P)
-			visible_message("<span class='warning'>[src] attempts to stack the portal!</span>")
+			visible_message("<span class='warning'>[src] próbuje ułożyć w stos portal!</span>")
 			message_admins("Stacking machine exploded via [P.creator ? key_name(P.creator) : "UNKNOWN"]'s portal at [AREACOORD(src)]")
 			log_game("Stacking machine exploded via [P.creator ? key_name(P.creator) : "UNKNOWN"]'s portal at [AREACOORD(src)]")
 			explosion(src.loc, 0, 1, 2, 3)
@@ -133,7 +133,7 @@
 		if(istype(M.buffer, /obj/machinery/mineral/stacking_unit_console))
 			console = M.buffer
 			console.machine = src
-			to_chat(user, "<span class='notice'>You link [src] to the console in [M]'s buffer.</span>")
+			to_chat(user, "<span class='notice'>Łączysz [src] z konsolą z bufora [M].</span>")
 			return TRUE
 
 /obj/machinery/mineral/stacking_machine/proc/process_sheet(obj/item/stack/sheet/inp)

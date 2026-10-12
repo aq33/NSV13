@@ -15,7 +15,7 @@
 	armour_penetration = 50
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_BELT
 	sharpness = IS_SHARP
 	max_integrity = 200
@@ -33,7 +33,7 @@
 
 /obj/item/energy_katana/attack_self(mob/user)
 	dash_toggled = !dash_toggled
-	to_chat(user, "<span class='notice'>You [dash_toggled ? "enable" : "disable"] the dash function on [src].</span>")
+	to_chat(user, "<span class='notice'>[dash_toggled ? "Włączasz" : "Wyłączasz"] funkcję zrywu w [src].</span>")
 
 /obj/item/energy_katana/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -82,17 +82,17 @@
 	var/msg = ""
 
 	if(user.put_in_hands(src))
-		msg = "Your Energy Katana teleports into your hand!"
+		msg = "Twoja energetyczna katana teleportuje się do twojej dłoni!"
 	else if(user.equip_to_slot_if_possible(src, ITEM_SLOT_BELT, 0, 1, 1))
-		msg = "Your Energy Katana teleports back to you, sheathing itself as it does so!</span>"
+		msg = "Twoja energetyczna katana teleportuje się z powrotem do ciebie, chowając się przy tym do pochwy!</span>"
 	else
-		msg = "Your Energy Katana teleports to your location!"
+		msg = "Twoja energetyczna katana teleportuje się do twojego położenia!"
 
 	if(caught)
 		if(loc == user)
-			msg = "You catch your Energy Katana!"
+			msg = "Łapiesz swoją energetyczną katanę!"
 		else
-			msg = "Your Energy Katana lands at your feet!"
+			msg = "Twoja energetyczna katana ląduje u twoich stóp!"
 
 	if(msg)
 		to_chat(user, "<span class='notice'>[msg]</span>")

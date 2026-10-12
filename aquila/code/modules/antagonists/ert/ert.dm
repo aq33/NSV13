@@ -19,7 +19,7 @@
 	var/datum/objective/mission
 
 /datum/antagonist/ert/official/greet()
-	to_chat(owner, "<B><font size=3 color=red>You are a CentCom Official.</font></B>")
+	to_chat(owner, "<B><font size=3 color=red>Jesteś urzędnikiem Centrali.</font></B>")
 	var/datum/objective/task = ert_team ? ert_team.mission : mission
 	if(task)
 		to_chat(owner, "Centralne Dowództwo wysyła Cię do: [station_name()] z następującym zadaniem: [task.explanation_text]")

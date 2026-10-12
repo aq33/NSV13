@@ -16,5 +16,5 @@
 	name = "garlic"
 	desc = "Delicious, but with a potentially overwhelming odor."
 	icon_state = "garlic"
-	tastes = list("garlic" = 1)
+	tastes = list("czosnek" = 1)
 	wine_power = 10

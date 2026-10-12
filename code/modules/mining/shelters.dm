@@ -33,10 +33,7 @@
 /datum/map_template/shelter/alpha
 	name = "Shelter Alpha"
 	shelter_id = "shelter_alpha"
-	description = "A cosy self-contained pressurized shelter, with \
-		built-in navigation, entertainment, medical facilities and a \
-		sleeping area! Order now, and we'll throw in a TINY FAN, \
-		absolutely free!"
+	description = "Przytulne, samowystarczalne, hermetyczne schronienie z wbudowaną nawigacją, rozrywką, zapleczem medycznym i częścią sypialną! Zamów teraz, a dorzucimy MAŁY WENTYLATOR całkowicie za darmo!"
 	mappath = "_maps/templates/shelter_1.dmm"
 
 /datum/map_template/shelter/alpha/New()
@@ -47,11 +44,7 @@
 /datum/map_template/shelter/beta
 	name = "Shelter Beta"
 	shelter_id = "shelter_beta"
-	description = "An extremely luxurious shelter, containing all \
-		the amenities of home, including carpeted floors, hot and cold \
-		running water, a gourmet three course meal, cooking facilities, \
-		and a deluxe companion to keep you from getting lonely during \
-		an ash storm."
+	description = "Niezwykle luksusowe schronienie ze wszystkimi wygodami domu, w tym wykładziną, ciepłą i zimną bieżącą wodą, trzydaniowym posiłkiem dla smakoszy, zapleczem kuchennym i luksusowym towarzyszem, byś nie czuł się samotny podczas burzy popiołu."
 	mappath = "_maps/templates/shelter_2.dmm"
 
 /datum/map_template/shelter/beta/New()
@@ -62,11 +55,7 @@
 /datum/map_template/shelter/charlie
 	name = "Shelter Charlie"
 	shelter_id = "shelter_charlie"
-	description = "A luxury elite shelter which holds an entire bar \
-		along with two vending machines, tables, and a restroom that \
-		also has a sink. This isn't a survival capsule and so you can \
-		expect that this won't save you if you're bleeding out to \
-		death."
+	description = "Luksusowe, elitarne schronienie mieszczące cały bar, dwa automaty sprzedające, stoły i toaletę z umywalką. To nie jest kapsuła przetrwania, więc nie uratuje cię, jeśli będziesz się wykrwawiać na śmierć."
 	mappath = "_maps/templates/shelter_3.dmm"
 
 /datum/map_template/shelter/charlie/New()
@@ -77,9 +66,7 @@
 /datum/map_template/shelter/delta
 	name = "Shelter Delta"
 	shelter_id = "shelter_delta"
-	description = "A medium-sized mining encampment which contains \
-	a food vendor, a barracks with spare clothes and a floor safe, \
-	a GPS Beacon, and a small building with an equipment vendor."
+	description = "Średniej wielkości obóz górniczy z automatem z jedzeniem, barakami z zapasowymi ubraniami i sejfem w podłodze, nadajnikiem GPS oraz małym budynkiem z automatem ze sprzętem."
 	mappath = "_maps/templates/shelter_4.dmm"
 
 /datum/map_template/shelter/delta/New()
@@ -90,25 +77,23 @@
 /datum/map_template/shelter/echo
 	name = "Shelter Echo"
 	shelter_id = "shelter_echo"
-	description = "A small pod equipped with a sleeper and stasis unit, a \
-	nanomed, and a chemmaster designed for station emergencies."
+	description = "Mała kapsuła wyposażona w kapsułę medyczną i jednostkę stazy, nanomed oraz chemmaster, zaprojektowana na stacyjne sytuacje awaryjne."
 	mappath = "_maps/templates/shelter_5.dmm"
 
 /datum/map_template/shelter/eta
 	name = "Shelter Eta"
 	shelter_id = "shelter_eta"
-	description = "A small, spaceworthy shelter with most of the \
-	amenities of a standard bluespace shelter."
+	description = "Małe schronienie zdolne do lotu w kosmosie, z większością udogodnień standardowego schronienia bluespace."
 	mappath = "_maps/templates/shelter_6.dmm"
 	
 /datum/map_template/shelter/golf
 	name = "Capsule Barricade"
 	shelter_id = "capsule_barricade"
-	description = "A 3x3 glass barricade, perfect for security and laserguns."
+	description = "Szklana barykada 3x3, idealna dla ochrony i laserów."
 	mappath = "_maps/templates/capsule_barricade.dmm"
 
 /datum/map_template/shelter/theta
 	name = "Shelter Theta"
 	shelter_id = "shelter_theta"
-	description = "A large party area fit for station parties."
+	description = "Duża przestrzeń imprezowa, odpowiednia na stacyjne imprezy."
 	mappath = "_maps/templates/shelter_7.dmm"

@@ -24,7 +24,7 @@
 	. = ..()
 
 	if (!isnull(attached_circuit))
-		. += "<span class='notice'>It is attached to [attached_circuit.shell || attached_circuit].</span>"
+		. += "<span class='notice'>Jest podłączony do [attached_circuit.shell || attached_circuit].</span>"
 
 // Look, I'm not happy about this either, but moving an object doesn't call Moved if it's inside something else.
 // There's good reason for this, but there's no element or similar yet to track it as far as I know.
@@ -48,7 +48,7 @@
 	if(signal_result & COMSIG_USB_CABLE_CONNECTED_TO_CIRCUIT)
 		if(isnull(attached_circuit))
 			CRASH("Producers of COMSIG_USB_CABLE_CONNECTED_TO_CIRCUIT must set attached_circuit")
-		balloon_alert(user, "You connected the circuit.")
+		balloon_alert(user, "Podłączasz obwód.")
 
 		playsound(src, 'sound/machines/pda_button1.ogg', 20, TRUE)
 
@@ -69,7 +69,7 @@
 		else if (ismachinery(target))
 			connection_description = "machine"
 
-		balloon_alert(user, "You connect [src] to [connection_description].")
+		balloon_alert(user, "Podłączasz [src] do [connection_description].")
 		playsound(src, 'sound/items/screwdriver2.ogg', 20, TRUE)
 
 		return TRUE
@@ -80,7 +80,7 @@
 	return FALSE
 
 /obj/item/usb_cable/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is wrapping [src] around [user.p_their()] neck! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] owija sobie [src] wokół szyi! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return OXYLOSS
 
 /obj/item/usb_cable/proc/register_circuit_signals()

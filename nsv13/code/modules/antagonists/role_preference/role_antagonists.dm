@@ -1,7 +1,7 @@
 /datum/role_preference/antagonist/bloodling
-	name = "Bloodling"
+	name = "Krwiak"
 	antag_datum = /datum/antagonist/bloodling
 
 /datum/role_preference/antagonist/pvp
-	name = "Syndicate Crewmember (Galactic Conquest)"
+	name = "Członek załogi Syndykatu (Galaktyczny Podbój)"
 	antag_datum = /datum/antagonist/nukeop/syndi_crew

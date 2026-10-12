@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/toggle/labcoat
 	name = "labcoat"
-	desc = "A suit that protects against minor chemical spills."
+	desc = "Strój chroniący przed drobnymi chemicznymi rozlaniami."
 	icon_state = "labcoat"
 	item_state = "labcoat"
 	blood_overlay_type = "coat"
@@ -18,7 +18,7 @@
 
 /obj/item/clothing/suit/toggle/labcoat/paramedic
 	name = "\improper EMT's jacket"
-	desc = "A dark blue jacket with reflective strips for emergency medical technicians."
+	desc = "Granatowa kurtka z odblaskowymi paskami dla ratowników medycznych."
 	icon_state = "labcoat_emt"
 	item_state = "labcoat_cmo"
 

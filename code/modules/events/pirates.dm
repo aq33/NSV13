@@ -36,7 +36,7 @@ GLOBAL_VAR_INIT(pirates_spawned, FALSE)
 	threat.content = "Tutaj[ship_name]. Zapłaćcie [payoff] albo przejdziecie się po desce."
 	threat.possible_answers = list(
 		PIRATE_RESPONSE_PAY = "Zapłacimy.",
-		PIRATE_RESPONSE_NO_PAY = "NIe ma mowy.",
+		PIRATE_RESPONSE_NO_PAY = "Nie ma mowy.",
 	)
 	threat.answer_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(pirates_answered), threat, payoff, ship_name, initial_send_time, response_max_time)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(spawn_pirates), threat, FALSE), response_max_time)
@@ -65,7 +65,7 @@ GLOBAL_VAR_INIT(pirates_spawned, FALSE)
 	if(!skip_answer_check && threat?.answered == PIRATE_RESPONSE_PAY)
 		return
 
-	var/list/candidates = pollGhostCandidates("Do you wish to be considered for pirate crew?", ROLE_SPACE_PIRATE, /datum/role_preference/midround_ghost/space_pirate, 15 SECONDS)
+	var/list/candidates = pollGhostCandidates("Czy chcesz dołączyć do załogi piratów?", ROLE_SPACE_PIRATE, /datum/role_preference/midround_ghost/space_pirate, 15 SECONDS)
 	shuffle_inplace(candidates)
 
 	var/datum/map_template/shuttle/pirate/default/ship = new
@@ -85,11 +85,11 @@ GLOBAL_VAR_INIT(pirates_spawned, FALSE)
 				var/mob/M = candidates[1]
 				spawner.create(M.ckey)
 				candidates -= M
-				notify_ghosts("The pirate ship has an object of interest: [M]!", source=M, action=NOTIFY_ORBIT, header="Something's Interesting!")
+				notify_ghosts("Statek piratów ma ciekawy obiekt: [M]!", source=M, action=NOTIFY_ORBIT, header="Coś ciekawego!")
 			else
-				notify_ghosts("The pirate ship has an object of interest: [spawner]!", source=spawner, action=NOTIFY_ORBIT, header="Something's Interesting!")
+				notify_ghosts("Statek piratów ma ciekawy obiekt: [spawner]!", source=spawner, action=NOTIFY_ORBIT, header="Coś ciekawego!")
 
-	priority_announce("Unidentified armed ship detected near the station.", sound = SSstation.announcer.get_rand_alert_sound())
+	priority_announce("W pobliżu statku wykryto niezidentyfikowaną uzbrojoną jednostkę.", sound = SSstation.announcer.get_rand_alert_sound())
 
 //Shuttle equipment
 
@@ -125,13 +125,13 @@ GLOBAL_VAR_INIT(pirates_spawned, FALSE)
 	SSshuttle.registerTradeBlockade(src)
 	AddComponent(/datum/component/gps, "Nautical Signal")
 	active = TRUE
-	to_chat(user,"<span class='notice'>You toggle [src] [active ? "on":"off"].</span>")
-	to_chat(user,"<span class='warning'>The scrambling signal can be now tracked by GPS.</span>")
+	to_chat(user,"<span class='notice'>[active ? "Włączasz":"Wyłączasz"] [src].</span>")
+	to_chat(user,"<span class='warning'>Sygnał zakłócający można teraz namierzyć przez GPS.</span>")
 	START_PROCESSING(SSobj,src)
 
 /obj/machinery/shuttle_scrambler/interact(mob/user)
 	if(!active)
-		if(alert(user, "Turning the scrambler on will make the shuttle trackable by GPS. Are you sure you want to do it?", "Scrambler", "Yes", "Cancel") != "Yes")
+		if(alert(user, "Włączenie zakłócacza sprawi, że prom będzie można namierzyć przez GPS. Na pewno chcesz to zrobić?", "Scrambler", "Yes", "Cancel") != "Yes")
 			return
 		if(active || !user.canUseTopic(src, BE_CLOSE))
 			return
@@ -152,13 +152,13 @@ GLOBAL_VAR_INIT(pirates_spawned, FALSE)
 /obj/machinery/shuttle_scrambler/proc/dump_loot(mob/user)
 	if(credits_stored)	// Prevents spamming empty holochips
 		new /obj/item/holochip(drop_location(), credits_stored)
-		to_chat(user,"<span class='notice'>You retrieve the siphoned credits!</span>")
+		to_chat(user,"<span class='notice'>Odbierasz wyssane kredyty!</span>")
 		credits_stored = 0
 	else
-		to_chat(user,"<span class='notice'>There's nothing to withdraw.</span>")
+		to_chat(user,"<span class='notice'>Nie ma czego wypłacić.</span>")
 
 /obj/machinery/shuttle_scrambler/proc/send_notification()
-	priority_announce("Data theft signal detected, source registered on local gps units.", sound = SSstation.announcer.get_rand_alert_sound())
+	priority_announce("Wykryto sygnał kradzieży danych, źródło zarejestrowano w lokalnych jednostkach GPS.", sound = SSstation.announcer.get_rand_alert_sound())
 
 /obj/machinery/shuttle_scrambler/proc/toggle_off(mob/user)
 	SSshuttle.clearTradeBlockade(src)
@@ -205,14 +205,14 @@ GLOBAL_VAR_INIT(pirates_spawned, FALSE)
 
 /obj/machinery/loot_locator/interact(mob/user)
 	if(world.time <= next_use)
-		to_chat(user,"<span class='warning'>[src] is recharging.</span>")
+		to_chat(user,"<span class='warning'>[src] się ładuje.</span>")
 		return
 	next_use = world.time + cooldown
 	var/atom/movable/AM = find_random_loot()
 	if(!AM)
-		say("No valuables located. Try again later.")
+		say("Nie znaleziono kosztowności. Spróbuj ponownie później.")
 	else
-		say("Located: [AM.name] at [get_area_name(AM)]")
+		say("Znaleziono: [AM.name] w [get_area_name(AM)]")
 
 /obj/machinery/loot_locator/proc/find_random_loot()
 	if(!GLOB.exports_list.len)
@@ -240,7 +240,7 @@ GLOBAL_VAR_INIT(pirates_spawned, FALSE)
 /obj/machinery/piratepad/multitool_act(mob/living/user, obj/item/multitool/I)
 	. = ..()
 	if (istype(I))
-		to_chat(user, "<span class='notice'>You register [src] in [I]s buffer.</span>")
+		to_chat(user, "<span class='notice'>Zapisujesz [src] w buforze [I].</span>")
 		I.buffer = src
 		return TRUE
 
@@ -248,7 +248,7 @@ GLOBAL_VAR_INIT(pirates_spawned, FALSE)
 	name = "cargo hold control terminal"
 
 
-	var/status_report = "Ready for delivery."
+	var/status_report = "Gotowe do wysyłki."
 	var/obj/machinery/piratepad/pad
 	var/warmup_time = 100
 	var/sending = FALSE
@@ -264,7 +264,7 @@ GLOBAL_VAR_INIT(pirates_spawned, FALSE)
 /obj/machinery/computer/piratepad_control/multitool_act(mob/living/user, obj/item/multitool/I)
 	. = ..()
 	if (istype(I) && istype(I.buffer,/obj/machinery/piratepad))
-		to_chat(user, "<span class='notice'>You link [src] with [I.buffer] in [I] buffer.</span>")
+		to_chat(user, "<span class='notice'>Łączysz [src] z [I.buffer] z bufora [I].</span>")
 		set_pad(I.buffer)
 		ui_update()
 		return TRUE
@@ -331,7 +331,7 @@ GLOBAL_VAR_INIT(pirates_spawned, FALSE)
 	if(sending)
 		return
 
-	status_report = "Predicted value: "
+	status_report = "Przewidywana wartość: "
 	var/value = 0
 	var/datum/export_report/ex = new
 	for(var/atom/movable/AM in get_turf(pad))
@@ -393,7 +393,7 @@ GLOBAL_VAR_INIT(pirates_spawned, FALSE)
 		return
 	sending = TRUE
 	status_report = "Sending..."
-	pad.visible_message("<span class='notice'>[pad] starts charging up.</span>")
+	pad.visible_message("<span class='notice'>[pad] zaczyna się ładować.</span>")
 	pad.icon_state = pad.warmup_state
 	sending_timer = addtimer(CALLBACK(src,PROC_REF(send)),warmup_time, TIMER_STOPPABLE)
 
@@ -401,7 +401,7 @@ GLOBAL_VAR_INIT(pirates_spawned, FALSE)
 	if(!sending)
 		return
 	sending = FALSE
-	status_report = "Ready for delivery."
+	status_report = "Gotowe do wysyłki."
 	pad.icon_state = pad.idle_state
 	deltimer(sending_timer)
 

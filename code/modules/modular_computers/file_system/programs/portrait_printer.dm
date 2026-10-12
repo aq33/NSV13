@@ -10,10 +10,10 @@
  */
 /datum/computer_file/program/portrait_printer
 	filename = "PortraitPrinter"
-	filedesc = "Marlowe Treeby's Art Galaxy"
+	filedesc = "Galaktyka Sztuki Marlowe'a Treeby'ego"
 	category = PROGRAM_CATEGORY_MISC
 	program_icon_state = "dummy"
-	extended_desc = "This program connects to a Spinward Sector community art site for viewing and printing art."
+	extended_desc = "Ten program łączy się ze społecznościową stroną artystyczną Sektora Spinward, pozwalając przeglądać i drukować dzieła."
 	transfer_access = list(ACCESS_LIBRARY)
 	usage_flags = PROGRAM_CONSOLE
 	requires_ntnet = TRUE
@@ -45,10 +45,10 @@
 	if(computer)
 		printer = computer.all_components[MC_PRINT]
 	if(!printer)
-		to_chat(usr, "<span class='notice'>Hardware error: A printer is required to print a canvas.</span>")
+		to_chat(usr, "<span class='notice'>Błąd sprzętu: do drukowania płótna potrzebna jest drukarka.</span>")
 		return
 	if(printer.stored_paper < CANVAS_PAPER_COST)
-		to_chat(usr, "<span class='notice'>Printing error: Your printer needs at least [CANVAS_PAPER_COST] paper to print a canvas.</span>")
+		to_chat(usr, "<span class='notice'>Błąd drukowania: drukarka potrzebuje co najmniej [CANVAS_PAPER_COST] kartek papieru, by wydrukować płótno.</span>")
 		return
 	printer.stored_paper -= CANVAS_PAPER_COST
 
@@ -79,5 +79,5 @@
 	///this is a copy of something that is already in the database- it should not be able to be saved.
 	printed_canvas.no_save = TRUE
 	printed_canvas.update_icon()
-	to_chat(usr, "<span class='notice'>You have printed [title] onto a new canvas.</span>")
+	to_chat(usr, "<span class='notice'>Drukujesz [title] na nowym płótnie.</span>")
 	playsound(computer.physical, 'sound/items/poster_being_created.ogg', 100, TRUE)
