@@ -75,7 +75,6 @@
 
 ///from base of mob/AltClickOn(): (atom/A)
 #define COMSIG_MOB_ALTCLICKON "mob_altclickon"
-	#define COMSIG_MOB_CANCEL_CLICKON (1<<0)
 #define COMSIG_MOB_MIDDLECLICKON "mob_middleclickon"			//from base of mob/MiddleClickOn(): (atom/A)
 /// A mob has just unequipped an item.
 #define COMSIG_MOB_UNEQUIPPED_ITEM "mob_unequipped_item"
