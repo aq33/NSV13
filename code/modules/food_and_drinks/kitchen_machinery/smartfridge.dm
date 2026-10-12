@@ -22,7 +22,7 @@
 	// AQ EDIT START - port BeeStation #13072
 	layout_prefs_used = "tgui_layout_smartfridge"
 	/// Sprite base, icon states are built from it
-	var/base_icon_state = "smartfridge"
+	base_icon_state = "smartfridge"
 	/// Which contents overlay is shown when the fridge is filled: [base_icon_state]-[contents_overlay_icon]-1/2/3
 	var/contents_overlay_icon = "plant"
 	/// Whether the fridge glows when powered

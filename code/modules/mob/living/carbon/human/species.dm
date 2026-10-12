@@ -787,7 +787,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			bodyparts_to_add -= "ears"
 
 	if("wings" in mutant_bodyparts)
-		if(!H.dna.features["wings"] || H.dna.features["wings"] == "None" || (H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT) && (!H.wear_suit.species_exception || !is_type_in_list(src, H.wear_suit.species_exception))))
+		if(!H.dna.features["wings"] || H.dna.features["wings"] == "None" || (H.wear_suit && (H.wear_suit.flags_inv & HIDEMUTWINGS)) || (H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT) && (!H.wear_suit.species_exception || !is_type_in_list(src, H.wear_suit.species_exception))))
 			bodyparts_to_add -= "wings"
 
 	if("wings_open" in mutant_bodyparts)
@@ -797,7 +797,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			bodyparts_to_add -= "wings_open"
 
 	if("moth_antennae" in mutant_bodyparts)
-		if(!H.dna.features["moth_antennae"] || H.dna.features["moth_antennae"] == "None" || !HD)
+		if(!H.dna.features["moth_antennae"] || H.dna.features["moth_antennae"] == "None" || (H.head && (H.head.flags_inv & HIDEANTENNAE)) || !HD)
 			bodyparts_to_add -= "moth_antennae"
 
 	if("ipc_screen" in mutant_bodyparts)
@@ -1086,7 +1086,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				return FALSE
 			if(num_legs < 2)
 				return FALSE
-			if((bodytype & BODYTYPE_DIGITIGRADE) && !(I.supports_variations & DIGITIGRADE_VARIATION))
+			if((bodytype & BODYTYPE_DIGITIGRADE) && !(I.supports_variations & DIGITIGRADE_VARIATION) && !(I.item_flags & IGNORE_DIGITIGRADE))
 				if(!disable_warning)
 					to_chat(H, "<span class='warning'>Tutejsze obuwie nie pasuje na twoje stopy!</span>")
 				return FALSE

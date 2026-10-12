@@ -422,6 +422,8 @@
 		obscured |= ITEM_SLOT_FEET
 	if(hidden_slots & HIDESUITSTORAGE)
 		obscured |= ITEM_SLOT_SUITSTORE
+	if(hidden_slots & HIDEBELT)
+		obscured |= ITEM_SLOT_BELT
 
 	return obscured
 

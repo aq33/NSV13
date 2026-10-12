@@ -83,13 +83,13 @@
 	return 100*charge/maxcharge
 
 // use power from a cell
-/obj/item/stock_parts/cell/use(amount)
+/obj/item/stock_parts/cell/use(amount, force)
 	if(rigged && amount > 0)
 		explode()
 		return 0
-	if(charge < amount)
+	if(!force && charge < amount)
 		return 0
-	charge = (charge - amount)
+	charge = max(charge - amount, 0)
 	if(!istype(loc, /obj/machinery/power/apc))
 		SSblackbox.record_feedback("tally", "cell_used", 1, type)
 	return 1
@@ -268,6 +268,13 @@
 /obj/item/stock_parts/cell/pulse/pistol //10 pulse shots
 	name = "pulse pistol power cell"
 	maxcharge = 2000
+
+/obj/item/stock_parts/cell/ninja
+	name = "black power cell"
+	icon_state = "bscell"
+	maxcharge = 10000
+	custom_materials = list(/datum/material/glass=60)
+	chargerate = 2000
 
 /obj/item/stock_parts/cell/high
 	name = "high-capacity power cell"

@@ -74,3 +74,16 @@
 // /obj/item/pen signals
 #define COMSIG_PEN_ROTATED "pen_rotated"						//! called after rotation in /obj/item/pen/attack_self(): (rotation, mob/living/carbon/user)
 
+
+///called on [/obj/item] before unequip from base of [mob/proc/doUnEquip]: (force, atom/newloc, no_move, invdrop, silent)
+#define COMSIG_ITEM_PRE_UNEQUIP "item_pre_unequip"
+	///only the pre unequip can be cancelled
+	#define COMPONENT_ITEM_BLOCK_UNEQUIP (1<<0)
+/// from base of /obj/item/slimepotion/speed/afterattack(): (obj/target, /obj/src, mob/user)
+///From /datum/proximity_monitor/advanced/demoraliser/proc/on_seen(): (datum/mind/viewer)
+#define COMSIG_DEMORALISING_EVENT "demoralising_event"
+#define COMSIG_SPEED_POTION_APPLIED "speed_potion"
+	#define SPEED_POTION_STOP (1<<0)
+/// From /obj/item/shockpaddles/proc/do_success(): (obj/item/shockpaddles/source)
+#define COMSIG_DEFIBRILLATOR_SUCCESS "defib_success"
+	#define COMPONENT_DEFIB_STOP (1<<0)

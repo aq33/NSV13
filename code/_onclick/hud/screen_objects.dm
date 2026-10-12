@@ -342,7 +342,8 @@
 		to_chat(C, "<span class='notice'>Przestajesz oddychać z butli.</span>")
 		icon_state = "internal0"
 	else
-		if(!C.getorganslot(ORGAN_SLOT_BREATHING_TUBE))
+		var/obj/item/clothing/helmet = C.head
+		if(!C.getorganslot(ORGAN_SLOT_BREATHING_TUBE) && !(istype(helmet) && (helmet.clothing_flags & HEADINTERNALS)))
 			if(!istype(C.wear_mask, /obj/item/clothing/mask))
 				to_chat(C, "<span class='warning'>Nie masz na sobie maski do oddychania!</span>")
 				return 1

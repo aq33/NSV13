@@ -173,3 +173,12 @@
 #define COMSIG_MOUSEDROP_ONTO "mousedrop_onto"					//! from base of atom/MouseDrop(): (/atom/over, /mob/user)
 	#define COMPONENT_NO_MOUSEDROP 1
 #define COMSIG_MOUSEDROPPED_ONTO "mousedropped_onto"			//! from base of atom/MouseDrop_T: (/atom/from, /mob/user)
+
+/// From base of [/atom/proc/attack_hand_secondary]: (mob/user, list/modifiers) - Called when the atom receives a secondary unarmed attack.
+#define COMSIG_ATOM_ATTACK_HAND_SECONDARY "atom_attack_hand_secondary"
+/// from base of [/atom/proc/atom_destruction]: (damage_flag)
+#define COMSIG_ATOM_DESTRUCTION "atom_destruction"
+///from base of atom/expose_reagents():
+#define COMSIG_ATOM_EXPOSE_REAGENTS "atom_expose_reagents"
+///signal sent out by an atom when it is no longer being pulled by something else : (atom/puller)
+#define COMSIG_ATOM_NO_LONGER_PULLED "movable_no_longer_pulled"

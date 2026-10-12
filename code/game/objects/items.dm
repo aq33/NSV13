@@ -726,6 +726,17 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		else if(slot == ITEM_SLOT_HANDS)
 			playsound(src, pickup_sound, PICKUP_SOUND_VOLUME, ignore_walls = FALSE)
 
+/**
+ * Called by the outfit system after this item has been equipped as part of an outfit.
+ *
+ * Arguments:
+ * * outfit_wearer - who the outfit was equipped on
+ * * visuals_only - whether the outfit is only for display (character preview)
+ * * item_slot - the slot the item ended up in
+ */
+/obj/item/proc/on_outfit_equip(mob/living/carbon/human/outfit_wearer, visuals_only, item_slot)
+	return
+
 //sometimes we only want to grant the item's action if it's equipped in a specific slot.
 /obj/item/proc/item_action_slot_check(slot, mob/user)
 	if(slot == ITEM_SLOT_BACKPACK || slot == ITEM_SLOT_LEGCUFFED) //these aren't true slots, so avoid granting actions there

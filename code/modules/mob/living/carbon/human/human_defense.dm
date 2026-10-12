@@ -110,6 +110,8 @@
 
 /mob/living/carbon/human/proc/check_shields(atom/AM, var/damage, attack_text = "atak", attack_type = MELEE_ATTACK, armour_penetration = 0)
 	SEND_SIGNAL(src, COMSIG_HUMAN_ATTACKED, AM, attack_text, damage, attack_type, armour_penetration)
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_CHECK_SHIELDS, AM, damage, attack_text, attack_type, armour_penetration) & SHIELD_BLOCK)
+		return TRUE
 	for(var/obj/item/I in held_items)
 		if(!isclothing(I))
 			if(I.hit_reaction(src, AM, attack_text, damage, attack_type))

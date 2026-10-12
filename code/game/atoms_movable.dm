@@ -638,6 +638,9 @@
 	if(has_gravity(src))
 		return 1
 
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_SPACEMOVE, movement_dir) & COMSIG_MOVABLE_STOP_SPACEMOVE)
+		return 1
+
 	if(pulledby)
 		return 1
 

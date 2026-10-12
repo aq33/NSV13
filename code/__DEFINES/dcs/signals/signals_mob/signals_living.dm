@@ -33,3 +33,9 @@
 #define COMSIG_LIVING_POST_FULLY_HEAL "living_post_fully_heal"	///from end of fully_heal(): (admin_revive)
 /// from base of mob/living/Life() (times_fired)
 #define COMSIG_LIVING_LIFE "living_life"
+
+///From base of mob/living/MobBump() (mob/living)
+#define COMSIG_LIVING_MOB_BUMP "living_mob_bump"
+///From base of mob/living/ZImpactDamage() (mob/living, levels, turf/t)
+#define COMSIG_LIVING_Z_IMPACT "living_z_impact"
+	#define NO_Z_IMPACT_DAMAGE (1<<0)

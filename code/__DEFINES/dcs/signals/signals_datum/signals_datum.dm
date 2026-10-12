@@ -81,3 +81,8 @@
 #define COMSIG_WEATHER_START(event_type) "!weather_start [event_type]"
 #define COMSIG_WEATHER_WINDDOWN(event_type) "!weather_winddown [event_type]"
 #define COMSIG_WEATHER_END(event_type) "!weather_end [event_type]"
+
+/// From the projectile dampener field, when a projectile is captured: (obj/item/projectile/projectile)
+#define COMSIG_DAMPENER_CAPTURE "dampener_capture"
+/// From the projectile dampener field, when a projectile is released: (obj/item/projectile/projectile)
+#define COMSIG_DAMPENER_RELEASE "dampener_release"

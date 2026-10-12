@@ -267,6 +267,7 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 //what happens when the obj's integrity reaches zero.
 /obj/proc/obj_destruction(damage_flag)
+	SEND_SIGNAL(src, COMSIG_ATOM_DESTRUCTION, damage_flag)
 	if(damage_flag == "acid")
 		acid_melt()
 	else if(damage_flag == "fire")
