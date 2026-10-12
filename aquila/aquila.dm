@@ -512,8 +512,10 @@
 #include "code\modules\surgery\bodyparts\bodyparts.dm"
 #include "code\modules\surgery\ear_surgery.dm"
 #include "code\modules\surgery\gender_reassignment.dm"
+#include "code\modules\surgery\identity_recalibration.dm"
 #include "code\modules\surgery\implant_removal.dm"
 #include "code\modules\surgery\organs\heart_blood.dm"
+#include "code\modules\surgery\stomach_pump.dm"
 #include "code\modules\tgui\layout.dm"
 #include "code\modules\tgui_input\say_modal.dm"
 #include "code\modules\tgui_panel\audio.dm"
@@ -541,6 +543,7 @@
 
 #ifdef UNIT_TESTS
 #include "code\modules\unit_tests\antag_huds.dm"
+#include "code\modules\unit_tests\aquila_bee_surgeries.dm"
 #include "code\modules\unit_tests\aquila_bee_windows.dm"
 #include "code\modules\unit_tests\aquila_bleeding.dm"
 #include "code\modules\unit_tests\aquila_blood_types.dm"
