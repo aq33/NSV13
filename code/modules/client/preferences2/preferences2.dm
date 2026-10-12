@@ -86,6 +86,7 @@
 	READPREF_JSONDEC(key_bindings, PREFERENCE_TAG_KEYBINDS)
 	READPREF_JSONDEC(purchased_gear, PREFERENCE_TAG_PURCHASED_GEAR)
 	READPREF_JSONDEC(role_preferences, PREFERENCE_TAG_ROLE_PREFERENCES)
+	READPREF_JSONDEC(completed_tutorials, PREFERENCE_TAG_COMPLETED_TUTORIALS) // AQ EDIT - samouczek
 
 	//Sanitize
 	asaycolor		= sanitize_ooccolor(sanitize_hexcolor(asaycolor, 6, TRUE, initial(asaycolor)))
@@ -177,6 +178,7 @@
 	PREP_WRITEPREF_JSONENC(key_bindings, PREFERENCE_TAG_KEYBINDS)
 	PREP_WRITEPREF_JSONENC(purchased_gear, PREFERENCE_TAG_PURCHASED_GEAR)
 	PREP_WRITEPREF_JSONENC(role_preferences, PREFERENCE_TAG_ROLE_PREFERENCES)
+	PREP_WRITEPREF_JSONENC(get_completed_tutorials(), PREFERENCE_TAG_COMPLETED_TUTORIALS) // AQ EDIT - samouczek
 
 	// QuerySelect can execute many queries at once. That name is dumb but w/e
 	SSdbcore.QuerySelect(write_queries, TRUE, TRUE)

@@ -201,6 +201,7 @@
 #define PREFERENCE_TAG_ROLE_PREFERENCES	"26"
 #define PREFERENCE_TAG_PREFERRED_SYNDIE_ROLE	"27" //NSV13 - syndicate crew role
 #define PREFERENCE_TAG_TESLA_VOLUME		"28"
+#define PREFERENCE_TAG_COMPLETED_TUTORIALS	"29" // AQ EDIT - samouczek: ukończone lekcje (JSON)
 
 // True value of max save slots (3 is default, 8 is byond member, +1 to either if you have the extra slot loadout entry). Potential max is 9
 #define TRUE_MAX_SAVE_SLOTS 9
