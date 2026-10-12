@@ -8,7 +8,7 @@
 	gender = NEUTER
 	mob_biotypes = list()
 	melee_damage = 5
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	attacktext = "bodzie"
 	maxHealth = 100
 	health = 100

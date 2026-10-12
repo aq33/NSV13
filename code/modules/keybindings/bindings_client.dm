@@ -82,6 +82,9 @@ GLOBAL_LIST_INIT(valid_keys, list(
 		holder.key_down(_key, src)  //full_key is not necessary here, _key is enough
 	if(mob.focus)
 		mob.focus.key_down(_key, src) //same as above
+	mob.update_mouse_pointer()
+	if(_key == "Shift") // AQ EDIT - port Bee #11899: Shift+prawy klik otwiera menu kontekstowe
+		update_shift_context_menu(TRUE)
 
 /client/verb/keyUp(_key as text)
 	set instant = TRUE
@@ -110,3 +113,6 @@ GLOBAL_LIST_INIT(valid_keys, list(
 		holder.key_up(_key, src)
 	if(mob.focus)
 		mob.focus.key_up(_key, src)
+	mob.update_mouse_pointer()
+	if(_key == "Shift") // AQ EDIT - port Bee #11899: Shift+prawy klik otwiera menu kontekstowe
+		update_shift_context_menu(FALSE)

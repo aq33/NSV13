@@ -24,6 +24,7 @@
 	transform = M
 	scatter_angle += angle
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(on_throw_scattered_moved), override = TRUE)
+	SEND_SIGNAL(src, COMSIG_ITEM_SCATTER_ROTATED)
 
 /obj/item/proc/on_throw_scattered_moved(datum/source)
 	SIGNAL_HANDLER
@@ -39,6 +40,7 @@
 	M.Turn(-scatter_angle)
 	transform = M
 	scatter_angle = 0
+	SEND_SIGNAL(src, COMSIG_ITEM_SCATTER_ROTATED)
 
 /obj/item/after_throw(datum/callback/callback)
 	. = ..()

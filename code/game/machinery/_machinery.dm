@@ -135,6 +135,10 @@ Class Procs:
 	var/tgui_id // ID of TGUI interface
 	var/ui_style // ID of custom TGUI style (optional)
 
+	/// world.time of last use by [/mob/living]
+	var/last_used_time = 0
+	/// Mobtype of last user. Typecast to [/mob/living] for initial() usage
+	var/mob/living/last_user_mobtype
 	/// Maximum time an EMP will disable this machine for
 	var/emp_disable_time = 2 MINUTES
 
@@ -300,6 +304,9 @@ Class Procs:
 	if((machine_stat & (NOPOWER|BROKEN)) && !(interaction_flags_machine & INTERACT_MACHINE_OFFLINE)) // Check if the machine is broken, and if we can still interact with it if so
 		return FALSE
 
+	if(SEND_SIGNAL(user, COMSIG_TRY_USE_MACHINE, src) & COMPONENT_CANT_USE_MACHINE_INTERACT)
+		return FALSE
+
 	if(panel_open && !(interaction_flags_machine & INTERACT_MACHINE_OPEN)) // Check if we can interact with an open panel machine, if the panel is open
 		if(!silicon || !(interaction_flags_machine & INTERACT_MACHINE_OPEN_SILICON))
 			return FALSE
@@ -363,10 +370,12 @@ Class Procs:
 /obj/machinery/interact(mob/user, special_state)
 	if(interaction_flags_machine & INTERACT_MACHINE_SET_MACHINE)
 		user.set_machine(src)
+	update_last_used(user)
 	. = ..()
 
 /obj/machinery/ui_act(action, params)
 	add_fingerprint(usr)
+	update_last_used(usr)
 	if(isliving(usr) && in_range(src, usr))
 		play_click_sound()
 	return ..()
@@ -378,12 +387,13 @@ Class Procs:
 	if(!usr.canUseTopic(src))
 		return TRUE
 	add_fingerprint(usr)
+	update_last_used(usr)
 	return FALSE
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 /obj/machinery/attack_paw(mob/living/user)
-	if(user.a_intent != INTENT_HARM)
+	if(!user.combat_mode)
 		return attack_hand(user)
 	else
 		user.changeNext_move(CLICK_CD_MELEE)
@@ -404,8 +414,30 @@ Class Procs:
 	else
 		return _try_interact(user)
 
+/obj/machinery/attackby(obj/item/weapon, mob/user, params)
+	. = ..()
+	if(.)
+		return
+	update_last_used(user)
+
+/obj/machinery/attackby_secondary(obj/item/weapon, mob/user, params)
+	. = ..()
+	if(.)
+		return
+	update_last_used(user)
+
+/obj/machinery/tool_act(mob/living/user, obj/item/tool, tool_type)
+	if(SEND_SIGNAL(user, COMSIG_TRY_USE_MACHINE, src) & COMPONENT_CANT_USE_MACHINE_TOOLS)
+		return TOOL_ACT_MELEE_CHAIN_BLOCKING
+	. = ..()
+	if(. & TOOL_ACT_SIGNAL_BLOCKING)
+		return
+	update_last_used(user)
+
 /obj/machinery/_try_interact(mob/user)
 	if((interaction_flags_machine & INTERACT_MACHINE_WIRES_IF_OPEN) && panel_open && (attempt_wire_interaction(user) == WIRE_INTERACTION_BLOCK))
+		return TRUE
+	if(SEND_SIGNAL(user, COMSIG_TRY_USE_MACHINE, src) & COMPONENT_CANT_USE_MACHINE_INTERACT)
 		return TRUE
 	return ..()
 
@@ -643,3 +675,8 @@ Class Procs:
 /obj/machinery/rust_heretic_act()
 	take_damage(500, BRUTE, "melee", 1)
 	return TRUE
+
+/obj/machinery/proc/update_last_used(mob/user)
+	if(isliving(user))
+		last_used_time = world.time
+		last_user_mobtype = user.type

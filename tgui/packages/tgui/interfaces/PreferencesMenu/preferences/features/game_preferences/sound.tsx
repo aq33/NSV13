@@ -40,9 +40,9 @@ export const sound_ghostpoll: FeatureToggle = {
 };
 
 export const sound_combatmode: FeatureToggle = {
-  name: 'Enable combat mode sound',
+  name: 'Dźwięk trybu walki',
   category: 'SOUND',
-  description: 'When enabled, hear sounds when toggling combat mode.',
+  description: 'Odtwarza dźwięk przy włączaniu i wyłączaniu trybu walki.',
   component: CheckboxInput,
 };
 

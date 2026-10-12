@@ -378,7 +378,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		to_chat(user, "<span class='warning'>Najpierw musisz przymocować [src].</span>")
 	return TRUE
 
-/obj/machinery/vending/attackby(obj/item/I, mob/user, params)
+/obj/machinery/vending/attackby(obj/item/I, mob/living/user, params)
 	if(panel_open && is_wire_tool(I))
 		wires.interact(user)
 		return
@@ -400,7 +400,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				else
 					to_chat(user, "<span class='notice'>Nie ma czego uzupełniać!</span>")
 			return
-	if(compartmentLoadAccessCheck(user) && user.a_intent != INTENT_HARM)
+	if(compartmentLoadAccessCheck(user) && !user.combat_mode)
 		if(canLoadItem(I))
 			loadingAttempt(I,user)
 			ui_update() //can't put this on the proc above because we spam it below //AQ EDIT - was updateUsrDialog(), which doesn't refresh tgui

@@ -75,7 +75,20 @@
 			return
 		set_custom_name(new_name)
 		return
-	switch(user.a_intent)
+	// Port Bee #11899: bez trybu walki przytulanie, w trybie walki "atak"; prawy przycisk to druga akcja
+	if(user.uses_legacy_intents())
+		daki_interact(user, user.a_intent)
+	else
+		daki_interact(user, user.combat_mode ? INTENT_HARM : INTENT_HELP)
+
+/obj/item/dakimakura/attack_self_secondary(mob/living/user)
+	if(!custom_name)
+		return attack_self(user)
+	daki_interact(user, user.combat_mode ? INTENT_GRAB : INTENT_DISARM)
+
+/// Hug, kiss, grope or hump, named after the old intents
+/obj/item/dakimakura/proc/daki_interact(mob/living/user, intent)
+	switch(intent)
 		if(INTENT_HELP)
 			user.visible_message("<span class='notice'>[user] przytula [name].</span>")
 			playsound(loc, "rustle", 50, TRUE, -5)

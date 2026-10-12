@@ -465,6 +465,27 @@
 	toggle_var = "toggles"
 	toggle_bit = PREFTOGGLE_INTENT_STYLE
 
+// Port Bee #11899: stary tryb intencji zamiast combat mode, zob. aquila/code/_onclick/legacy_intents.dm
+/datum/preference/toggle/player/legacy_intents
+	db_key = "legacy_intents"
+	toggle_var = "chat_toggles"
+	toggle_bit = CHAT_LEGACY_INTENTS
+
+/datum/preference/toggle/player/legacy_intents/on_changed(datum/preferences/prefs, client/C, old_value, new_value)
+	C?.update_combat_controls()
+
+/datum/preference/toggle/player/sound_combatmode
+	db_key = "sound_combatmode"
+	toggle_var = "chat_toggles"
+	toggle_bit = CHAT_DISABLE_COMBATMODE_SOUND
+	toggle_inverted = TRUE
+
+// Port Bee #14313: Alt+lewy obraca zgodnie z ruchem wskazówek zegara, Alt+prawy przeciwnie
+/datum/preference/toggle/player/inverted_rotation
+	db_key = "inverted_rotation"
+	toggle_var = "chat_toggles"
+	toggle_bit = CHAT_INVERTED_ROTATION
+
 /datum/preference/toggle/player/screentips
 	db_key = "screentips"
 	toggle_var = "toggles2"

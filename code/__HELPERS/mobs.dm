@@ -868,3 +868,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		if(ITEM_SLOT_ICLOTHING)
 			return /obj/item/clothing/under
 	return null
+
+// AQ EDIT - port Bee #11899: u nas zręczność to wciąż proc IsAdvancedToolUser(), bez TRAIT_ADVANCEDTOOLUSER
+#define ISADVANCEDTOOLUSER(mob) (mob?.IsAdvancedToolUser())

@@ -7,3 +7,6 @@
 #define COMSIG_OBJ_DECONSTRUCT "obj_deconstruct"				//! from base of obj/deconstruct(): (disassembled)
 #define COMSIG_OBJ_SETANCHORED "obj_setanchored"				//! called in /obj/structure/setAnchored(): (value)
 
+/// Called on a mob attempting to use a ladder to go in either direction.  (entrance_ladder, exit_ladder, going_up)
+#define COMSIG_LADDER_TRAVEL "ladder-travel"
+	#define LADDER_TRAVEL_BLOCK (1<<0)

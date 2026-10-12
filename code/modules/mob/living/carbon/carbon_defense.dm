@@ -117,8 +117,11 @@
 /mob/living/carbon/attack_drone(mob/living/simple_animal/drone/user)
 	return //so we don't call the carbon's attack_hand().
 
+/mob/living/carbon/attack_drone_secondary(mob/living/simple_animal/drone/user)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/mob/living/carbon/attack_hand(mob/living/carbon/human/user)
+/mob/living/carbon/attack_hand(mob/living/carbon/human/user, modifiers)
 
 	if(SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_HAND, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
 		. = TRUE
@@ -135,13 +138,13 @@
 
 	for(var/datum/surgery/S in surgeries)
 		if(!(mobility_flags & MOBILITY_STAND) || !S.lying_required)
-			if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_DISARM)
-				if(S.next_step(user, user.a_intent))
-					return 1
-	return 0
+			if(!user.combat_mode)
+				if(S.next_step(user, modifiers))
+					return TRUE
+	return FALSE
 
 
-/mob/living/carbon/attack_paw(mob/living/carbon/monkey/M)
+/mob/living/carbon/attack_paw(mob/living/carbon/human/M, modifiers)
 
 	if(can_inject(M, TRUE))
 		for(var/thing in diseases)
@@ -154,9 +157,9 @@
 		if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
 			ContactContractDisease(D)
 
-	if(M.a_intent == INTENT_HELP)
+	if(!M.combat_mode)
 		help_shake_act(M)
-		return 0
+		return FALSE
 
 	if(..() && can_inject(M, TRUE)) //successful monkey bite.
 		for(var/thing in M.diseases)
@@ -165,7 +168,7 @@
 		return 1
 
 
-/mob/living/carbon/attack_slime(mob/living/simple_animal/slime/M)
+/mob/living/carbon/attack_slime(mob/living/simple_animal/slime/M, list/modifiers)
 	if(..()) //successful slime attack
 		if(M.powerlevel > 0)
 			M.powerlevel--
@@ -434,3 +437,20 @@
 	var/obj/item/organ/ears/ears = getorganslot(ORGAN_SLOT_EARS)
 	if(istype(ears) && !ears.deaf)
 		. = TRUE
+
+/mob/living/carbon/proc/grab(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
+	if(target.check_block())
+		target.visible_message("<span class='warning'>[target] blokuje chwyt [user]!</span>", \
+						"<span class='userdanger'>Blokujesz chwyt [user]!</span>", "<span class='hear'>Słyszysz świst!</span>", COMBAT_MESSAGE_RANGE, user)
+		to_chat(user, "<span class='warning'>[target] blokuje twój chwyt!</span>")
+		return FALSE
+	if(attacker_style?.grab_act(user,target) == MARTIAL_ATTACK_SUCCESS)
+		return TRUE
+	target.grabbedby(user)
+	return TRUE
+
+/mob/living/carbon/proc/check_block()
+	if(mind)
+		if(mind.martial_art && prob(mind.martial_art.block_chance) && mind.martial_art.can_use(src) && throw_mode && !incapacitated(FALSE, TRUE))
+			return TRUE
+	return FALSE

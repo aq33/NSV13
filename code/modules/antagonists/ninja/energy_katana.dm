@@ -1,6 +1,6 @@
 /obj/item/energy_katana
 	name = "energy katana"
-	desc = "A katana infused with strong energy."
+	desc = "Katana nasycona potężną energią. Prawy przycisk myszy, by wykonać zryw."
 	icon_state = "energy_katana"
 	item_state = "energy_katana"
 	worn_icon_state = "energy_katana"
@@ -22,7 +22,6 @@
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF | INDESTRUCTIBLE
 	var/datum/effect_system/spark_spread/spark_system
 	var/datum/action/innate/dash/ninja/jaunt
-	var/dash_toggled = TRUE
 
 /obj/item/energy_katana/Initialize(mapload)
 	. = ..()
@@ -31,13 +30,10 @@
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 
-/obj/item/energy_katana/attack_self(mob/user)
-	dash_toggled = !dash_toggled
-	to_chat(user, "<span class='notice'>[dash_toggled ? "Włączasz" : "Wyłączasz"] funkcję zrywu w [src].</span>")
-
 /obj/item/energy_katana/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
-	if(dash_toggled)
+	var/list/modifiers = params2list(click_parameters)
+	if(LAZYACCESS(modifiers, RIGHT_CLICK) && !target.density)
 		jaunt.Teleport(user, target)
 	if(proximity_flag && (isobj(target) || issilicon(target)))
 		spark_system.start()

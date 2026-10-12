@@ -349,7 +349,7 @@
 		to_chat(user, "<span class='notice'>Dodajesz [B] do [src].</span>")
 		updateUsrDialog()
 		update_icon()
-	else if(user.a_intent != INTENT_HARM && !istype(I, /obj/item/card/emag))
+	else if(!user.combat_mode && !istype(I, /obj/item/card/emag))
 		to_chat(user, "<span class='warning'>Nie możesz załadować [I] do [src]!</span>")
 		return ..()
 	else
@@ -418,7 +418,7 @@
 
 /obj/machinery/chem_dispenser/drinks/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE)
+	AddComponent(/datum/component/simple_rotation)
 
 /obj/machinery/chem_dispenser/drinks/setDir()
 	var/old = dir
@@ -662,3 +662,17 @@
 		/datum/reagent/medicine/silibinin,
 		/datum/reagent/medicine/polypyr
 	)
+
+/// Port Bee #11899: right click ejects the beaker (Alt-click still works)
+/obj/machinery/chem_dispenser/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	AltClick(user)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/machinery/chem_dispenser/attack_robot_secondary(mob/user, list/modifiers)
+	return attack_hand_secondary(user, modifiers)
+
+/obj/machinery/chem_dispenser/attack_ai_secondary(mob/user, list/modifiers)
+	return attack_hand_secondary(user, modifiers)

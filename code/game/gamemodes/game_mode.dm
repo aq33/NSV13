@@ -178,8 +178,7 @@
 	if(report)
 		addtimer(CALLBACK(src, PROC_REF(send_intercept), 0), rand(waittime_l, waittime_h))
 	else // goals only become purchasable when on_report is called, this also makes a replacement announcement.
-		for(var/datum/station_goal/G in station_goals)
-			G.prepare_report()
+		addtimer(CALLBACK(src, PROC_REF(send_station_goals_report)), 2 MINUTES) // AQ EDIT - jedno zbiorcze ogłoszenie zamiast osobnego dla każdego celu
 	gamemode_ready = TRUE
 	return 1
 

@@ -35,7 +35,7 @@
 	. = ..()
 	if(mapload)
 		for(var/obj/item/I in loc)
-			if(istype(I, /obj/item/paper) || istype(I, /obj/item/folder) || istype(I, /obj/item/photo))
+			if(I.w_class < WEIGHT_CLASS_NORMAL)
 				I.forceMove(src)
 
 /obj/structure/filingcabinet/deconstruct(disassembled = TRUE)
@@ -45,8 +45,14 @@
 			I.forceMove(loc)
 	qdel(src)
 
-/obj/structure/filingcabinet/attackby(obj/item/P, mob/user, params)
-	if(istype(P, /obj/item/paper) || istype(P, /obj/item/folder) || istype(P, /obj/item/photo) || istype(P, /obj/item/documents))
+/obj/structure/filingcabinet/attackby(obj/item/P, mob/living/user, params)
+	var/list/modifiers = params2list(params)
+	if(P.tool_behaviour == TOOL_WRENCH && LAZYACCESS(modifiers, RIGHT_CLICK))
+		to_chat(user, "<span class='notice'>Zaczynasz [anchored ? "odkręcać" : "przykręcać"] [src].</span>")
+		if(P.use_tool(src, user, 20, volume=50))
+			to_chat(user, "<span class='notice'>[anchored ? "Odkręcasz" : "Przykręcasz"] [src].</span>")
+			setAnchored(!anchored)
+	else if(P.w_class < WEIGHT_CLASS_NORMAL)
 		if(!user.transferItemToLoc(P, src))
 			return
 		to_chat(user, "<span class='notice'>Wkładasz [P] do [src].</span>")
@@ -54,12 +60,7 @@
 		sleep(5)
 		icon_state = initial(icon_state)
 		updateUsrDialog()
-	else if(P.tool_behaviour == TOOL_WRENCH)
-		to_chat(user, "<span class='notice'>Zaczynasz [anchored ? "odkręcać" : "przykręcać"] [src].</span>")
-		if(P.use_tool(src, user, 20, volume=50))
-			to_chat(user, "<span class='notice'>[anchored ? "Odkręcasz" : "Przykręcasz"] [src].</span>")
-			anchored = !anchored
-	else if(user.a_intent != INTENT_HARM)
+	else if(!user.combat_mode)
 		to_chat(user, "<span class='warning'>Nie możesz włożyć [P] do [src]!</span>")
 	else
 		return ..()
@@ -97,7 +98,7 @@
 	to_chat(user, "<span class='notice'>Nic nie znajdujesz w [src].</span>")
 
 /obj/structure/filingcabinet/Topic(href, href_list)
-	if(!usr.canUseTopic(src, BE_CLOSE, ismonkey(usr)))
+	if(!usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, !iscyborg(usr)))
 		return
 	if(href_list["retrieve"])
 		usr << browse(null, "window=filingcabinet") // Close the menu

@@ -106,7 +106,7 @@
 			to_chat(user, "<span class='userdanger'>Próbując podnieść [src], zostajesz ogłuszony!</span>")
 
 /obj/item/food/grown/nettle/death/attack(mob/living/M, mob/user)
-	if(!M.can_inject(user) && user.a_intent == INTENT_HARM)
+	if(!M.can_inject(user) && user.combat_mode)
 		to_chat(user, "<span class='warning'>[src] nieszkodliwie odbija się od [M]! Chroni go przed igłami!</span>")
 		return FALSE
 	else

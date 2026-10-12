@@ -31,7 +31,7 @@
 		var/mob/living/carbon/C = A
 		var/reagentlist = pretty_string_from_reagent_list(reagents)
 		var/log_object = "containing [reagentlist]"
-		if(user.a_intent == INTENT_HARM && !C.is_mouth_covered())
+		if(user.combat_mode && !C.is_mouth_covered())
 			reagents.reaction(C, INGEST)
 			reagents.trans_to(C, reagents.total_volume, transfered_by = user)
 			C.visible_message("<span class='danger'>[user] przyciska [src] do twarzy [C]!</span>", "<span class='userdanger'>[user] przyciska ci [src] do twarzy!</span>", "<span class='italics'>Słyszysz szamotaninę i stłumione okrzyki zaskoczenia.</span>")

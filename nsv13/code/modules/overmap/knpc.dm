@@ -606,7 +606,9 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 	var/obj/item/gun/ballistic/B = null
 	if(istype(A, /obj/item/gun/ballistic))
 		B = A
-	H.a_intent = (prob(65)) ? INTENT_HARM : INTENT_DISARM
+	// AQ EDIT - port Bee #11899: zamiast intencji harm/disarm combat mode i czasem prawy przycisk (odepchnięcie)
+	H.set_combat_mode(TRUE)
+	var/list/knpc_modifiers = prob(35) ? list(RIGHT_CLICK = "1") : null
 	if(G && dist > 0)
 		//We need to reload first.... If that fails we've ditched the gun.
 		if(!G.can_shoot() && !reload(HA, G))
@@ -639,7 +641,7 @@ This is to account for sec Ju-Jitsuing boarding commandos.
 		else
 			//Stop them from trying to knee a mech in the stomach
 			if(iscarbon(target))
-				H.dna.species.spec_attack_hand(H, target)
+				H.dna.species.spec_attack_hand(H, target, null, knpc_modifiers)
 				if(target.incapacitated())
 					//I know kung-fu.
 

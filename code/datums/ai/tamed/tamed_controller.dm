@@ -134,7 +134,7 @@
 /datum/ai_controller/tamed/proc/on_attack_hand(datum/source, mob/living/user)
 	SIGNAL_HANDLER
 
-	if(user.a_intent == INTENT_HARM && !blackboard[BB_DOG_FRIENDS][WEAKREF(user)])
+	if(user.combat_mode && !blackboard[BB_DOG_FRIENDS][WEAKREF(user)])
 		blackboard[BB_ATTACK_TARGET] = user
 		set_command_mode(null, TAMED_COMMAND_ATTACK)
 

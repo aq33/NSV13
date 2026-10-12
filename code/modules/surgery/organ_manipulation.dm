@@ -165,7 +165,7 @@
 		if(H && H.victim == target)
 			user.visible_message("[user] wyciąga [H] z ciała [target]!",
 				"<span class='notice'>Udało ci się wyciągnąć [H] z ciała [target].</span>")
-			log_combat(user, target, "surgically removed [H] from", addition="INTENT: [uppertext(user.a_intent)]")
+			log_combat(user, target, "surgically removed [H] from", addition="COMBAT MODE: [uppertext(user.combat_mode)]")
 			H.leave_victim()
 			return FALSE
 		if(I && I.owner == target)

@@ -65,7 +65,7 @@
 				turret.layer = OBJ_LAYER
 
 /obj/vehicle/ridden/atv/attackby(obj/item/W as obj, mob/user as mob, params)
-	if(W.tool_behaviour == TOOL_WELDER && user.a_intent != INTENT_HARM)
+	if(W.tool_behaviour == TOOL_WELDER && !user.combat_mode)
 		if(obj_integrity < max_integrity)
 			if(W.use_tool(src, user, 0, volume=50, amount=1))
 				user.visible_message("<span class='notice'>[user] naprawia część uszkodzeń [name].</span>", "<span class='notice'>Naprawiasz część uszkodzeń [src].</span>")

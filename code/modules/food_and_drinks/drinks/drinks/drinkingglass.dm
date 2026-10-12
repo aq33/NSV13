@@ -106,7 +106,7 @@
 		..()
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/attack(mob/target, mob/user) //NSV13 changed to mob/target
-	if(user.a_intent == INTENT_HARM && ismob(target) && target.reagents && reagents.total_volume)
+	if(user.combat_mode && ismob(target) && target.reagents && reagents.total_volume)
 		target.visible_message("<span class='danger'>[user] chlusta zawartością [src] na [target]!</span>", \
 						"<span class='userdanger'>[user] chlusta na ciebie zawartością [src]!</span>")
 		log_combat(user, target, "splashed", src)
@@ -128,7 +128,7 @@
 	if((!proximity) || !check_allowed_items(target,target_self=1))
 		return
 
-	else if(reagents.total_volume && user.a_intent == INTENT_HARM)
+	else if(reagents.total_volume && user.combat_mode)
 		user.visible_message("<span class='danger'>[user] chlusta zawartością [src] na [target]!</span>", \
 							"<span class='notice'>Chlustasz zawartością [src] na [target].</span>")
 		reagents.reaction(target, TOUCH)

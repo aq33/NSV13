@@ -35,8 +35,8 @@
 	if(user)
 		to_chat(user, "<span class='danger'>Aktywuje się system antymanipulacyjny skrzyni!</span>")
 		log_bomber(user, "has detonated a", src)
-	for(var/atom/movable/AM in src)
-		qdel(AM)
+	for(var/obj/loot in src)
+		SSexplosions.high_mov_atom += loot
 	explosion(get_turf(src), 0, 1, 5, 5)
 	qdel(src)
 

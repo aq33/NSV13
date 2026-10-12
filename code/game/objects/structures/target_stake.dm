@@ -48,7 +48,7 @@
 		handle_density()
 		to_chat(user, "<span class='notice'>Wsuwasz tarczę na stojak.</span>")
 
-/obj/structure/target_stake/attack_hand(mob/user)
+/obj/structure/target_stake/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return

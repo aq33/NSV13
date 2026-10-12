@@ -78,7 +78,7 @@
 	if(in_range(user, src) || isobserver(user))
 		. += "<span class='notice'>Wyświetlacz stanu pokazuje: wydobywanie <b>[seed_multiplier]</b> nasion na sztukę plonu.<br>Maszyna mieści do <b>[max_seeds]%</b> nasion.</span>"
 
-/obj/machinery/seed_extractor/attackby(obj/item/O, mob/user, params)
+/obj/machinery/seed_extractor/attackby(obj/item/O, mob/living/user, params)
 
 	if(default_deconstruction_screwdriver(user, "sextractor_open", "sextractor", O))
 		return
@@ -114,7 +114,7 @@
 			to_chat(user, "<span class='notice'>Dodajesz [O] do [src.name].</span>")
 			updateUsrDialog()
 		return
-	else if(user.a_intent != INTENT_HARM)
+	else if(!user.combat_mode)
 		to_chat(user, "<span class='warning'>Nie możesz wydobyć żadnych nasion z [O.name]!</span>")
 	else
 		return ..()

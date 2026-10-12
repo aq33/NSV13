@@ -85,3 +85,12 @@ export const intent_style: FeatureToggle = {
     'Clicking on intents will directly select if this is on, otherwise clicking them will rotate the selection clockwise.',
   component: CheckboxInput,
 };
+
+export const legacy_intents: FeatureToggle = {
+  name: 'Stary tryb intencji',
+  category: 'UI',
+  subcategory: 'HUD',
+  description:
+    'Zamiast combat mode: cztery intencje (help, disarm, grab, harm), a prawy przycisk myszy otwiera menu kontekstowe jak dawniej. Disarm działa jak prawy klik, grab pustą ręką jak Ctrl+klik.',
+  component: CheckboxInput,
+};

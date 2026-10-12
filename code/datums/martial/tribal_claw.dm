@@ -6,24 +6,29 @@
 /datum/martial_art/tribal_claw
 	name = "Tribal Claw"
 	id = MARTIALART_TRIBALCLAW
+	display_combos = TRUE
+
+	Move1 = "Zamach ogonem: pchnięcie, pchnięcie, chwyt, cios. Odpycha wszystkich wokół ciebie i ich przewraca."
+	Move2 = "Drapnięcie w twarz: cios, pchnięcie. Rani głowę celu i na krótko go dezorientuje."
+	Move3 = "Cięcie żyły szyjnej: cios, cios, chwyt. Sprawia, że cel szybko traci krew; działa tylko, gdy trzymasz cel za szyję, śpi lub jest w stanie krytycznym."
+	Move4 = "Chwyt ogonem: pchnięcie, cios, chwyt, chwyt. Chwyta cel za szyję i na krótko uniemożliwia mu mówienie."
 	allow_temp_override = FALSE
-	help_verb = /mob/living/carbon/human/proc/tribal_claw_help
 
 /datum/martial_art/tribal_claw/proc/check_streak(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(findtext(streak,TAIL_SWEEP_COMBO))
-		streak = ""
+		reset_streak()
 		tailSweep(A,D)
 		return TRUE
 	if(findtext(streak,FACE_SCRATCH_COMBO))
-		streak = ""
+		reset_streak()
 		faceScratch(A,D)
 		return TRUE
 	if(findtext(streak,JUGULAR_CUT_COMBO))
-		streak = ""
+		reset_streak()
 		jugularCut(A,D)
 		return TRUE
 	if(findtext(streak,TAIL_GRAB_COMBO))
-		streak = ""
+		reset_streak()
 		tailGrab(A,D)
 		return TRUE
 	return FALSE
@@ -66,7 +71,7 @@ Deals 15 brute to head(reduced by armor) and causes a rapid bleeding effect simi
 		A.do_attack_animation(D, ATTACK_EFFECT_CLAW)
 		playsound(get_turf(D), 'sound/weapons/slash.ogg', 50, 1, -1)
 	else
-		return basic_hit(A,D)
+		return FALSE
 
 //Tail Grab, instantly puts your target in a T3 grab and makes them unable to talk for a short time.
 /datum/martial_art/tribal_claw/proc/tailGrab(mob/living/carbon/human/A, mob/living/carbon/human/D)
@@ -97,14 +102,3 @@ Deals 15 brute to head(reduced by armor) and causes a rapid bleeding effect simi
 		return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/tribal_claw_help()
-	set name = "Recall Teachings"
-	set desc = "Remember the martial techniques of the Tribal Claw"
-	set category = "Tribal Claw"
-
-	to_chat(usr, "<b><i>Zagłębiasz się w siebie i przypominasz sobie nauki Plemiennego Pazura...</i></b>")
-
-	to_chat(usr, "<span class='notice'>Zamach ogonem</span>: rozbrojenie, rozbrojenie, chwyt, krzywda. Odpycha wszystkich wokół ciebie i ich przewraca.")
-	to_chat(usr, "<span class='notice'>Drapnięcie w twarz</span>: krzywda, rozbrojenie. Rani głowę celu i na krótko go dezorientuje.")
-	to_chat(usr, "<span class='notice'>Cięcie żyły szyjnej</span>: krzywda, krzywda, chwyt. Sprawia, że cel szybko traci krew; działa tylko, gdy trzymasz cel za szyję, śpi lub jest w stanie krytycznym.")
-	to_chat(usr, "<span class='notice'>Chwyt ogonem</span>: rozbrojenie, krzywda, chwyt, chwyt. Chwyta cel za szyję i na krótko uniemożliwia mu mówienie.")

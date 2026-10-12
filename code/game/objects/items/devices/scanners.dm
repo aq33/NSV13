@@ -126,6 +126,13 @@ GENE SCANNER
 
 	add_fingerprint(user)
 
+/obj/item/healthanalyzer/attack_secondary(mob/living/victim, mob/living/user, params)
+	flick("[icon_state]-scan", src)
+	playsound(src, 'sound/effects/fastbeep.ogg', 10)
+	chemscan(user, victim)
+	add_fingerprint(user)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
 
 // Used by the PDA medical scanner too
 /proc/healthscan(mob/user, mob/living/M, mode = 1, advanced = FALSE)

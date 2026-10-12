@@ -18,8 +18,8 @@
 
 /datum/component/food_storage/Initialize(_minimum_weight_class = WEIGHT_CLASS_SMALL, _bad_chance = 0, _good_chance = 100)
 
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(try_inserting_item))
-	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, PROC_REF(try_removing_item))
+	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY_SECONDARY, PROC_REF(try_inserting_item))
+	RegisterSignal(parent, COMSIG_CLICK_CTRL, PROC_REF(try_removing_item))
 	RegisterSignal(parent, COMSIG_FOOD_EATEN, PROC_REF(consume_food_storage))
 
 	var/atom/food = parent
@@ -44,7 +44,7 @@
   *	inserted_item - the item being placed into the food
   *	user - the person inserting the item
   */
-/datum/component/food_storage/proc/try_inserting_item(datum/source, obj/item/inserted_item, mob/user, params)
+/datum/component/food_storage/proc/try_inserting_item(datum/source, obj/item/inserted_item, mob/living/user, params)
 	SIGNAL_HANDLER
 
 	// No matryoshka-ing food storage
@@ -52,7 +52,7 @@
 		return
 
 	//Harm intent will bypass inserting for injecting food with syringes and such
-	if(user.a_intent == INTENT_HARM)
+	if(user.combat_mode)
 		return
 
 	if(inserted_item.w_class > minimum_weight_class)
@@ -84,9 +84,6 @@
 	SIGNAL_HANDLER
 
 	var/atom/food = parent
-
-	if(user.a_intent != INTENT_GRAB)
-		return
 
 	if(QDELETED(stored_item))
 		return

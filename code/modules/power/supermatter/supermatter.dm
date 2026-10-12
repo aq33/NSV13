@@ -613,7 +613,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 			Consume(dust_arm)
 			Consume(W)
 			return
-		if(cig.lit || user.a_intent != INTENT_HELP)
+		if(cig.lit || user.combat_mode)
 			user.visible_message("<span class='danger'>Rozlega się ohydny dźwięk, gdy [W] obraca się w popiół przy zetknięciu z [src]. To chyba nie był dobry pomysł...</span>")
 			playsound(src, 'sound/effects/supermatter.ogg', 150, 1)
 			Consume(W)

@@ -88,25 +88,16 @@
 
 		var/suicide_message
 
-		if(a_intent == INTENT_DISARM)
-			if(prob(25))
-				disarm_suicide()	// Snowflake suicide for a tired joke.
-				return	//above proc handles logging and death
-			suicide_message = pick("[src] próbuje zepchnąć sobie głowę z ramion! Wygląda na to, że próbuje popełnić samobójstwo.", \
-								"[src] wciska sobie kciuki w oczodoły! Wygląda na to, że próbuje popełnić samobójstwo.")
-		else if(a_intent == INTENT_GRAB)
-			suicide_message = pick("[src] próbuje urwać sobie głowę! Wygląda na to, że próbuje popełnić samobójstwo.", \
-									"[src] agresywnie łapie się za szyję! Wygląda na to, że próbuje popełnić samobójstwo.", \
-									"[src] wyrywa sobie oczy z oczodołów! Wygląda na to, że próbuje popełnić samobójstwo.")
-		else if(a_intent == INTENT_HELP)
-			suicide_message = pick("[src] przytula się na śmierć! Wygląda na to, że próbuje popełnić samobójstwo.", \
-									"[src] przybija sobie piątkę na śmierć! Wygląda na to, że próbuje popełnić samobójstwo.", \
-									"[src] za bardzo odlatuje na haju życia! Wygląda na to, że próbuje popełnić samobójstwo.")
+		if(!combat_mode)
+			suicide_message = pick(
+				"[src] przytula się na śmierć! Wygląda na to, że próbuje popełnić samobójstwo.", \
+				"[src] przybija sobie piątkę na śmierć! Wygląda na to, że próbuje popełnić samobójstwo.", \
+				"[src] za bardzo odlatuje na haju życia! Wygląda na to, że próbuje popełnić samobójstwo.")
 		else
 			suicide_message = pick("[src] próbuje odgryźć sobie język! Wygląda na to, że próbuje popełnić samobójstwo.", \
-								"[src] wbija sobie kciuki w oczodoły! Wygląda na to, że próbuje popełnić samobójstwo.", \
-								"[src] skręca sobie kark! Wygląda na to, że próbuje popełnić samobójstwo.", \
-								"[src] wstrzymuje oddech! Wygląda na to, że próbuje popełnić samobójstwo.")
+				"[src] wbija sobie kciuki w oczodoły! Wygląda na to, że próbuje popełnić samobójstwo.", \
+				"[src] skręca sobie kark! Wygląda na to, że próbuje popełnić samobójstwo.", \
+				"[src] wstrzymuje oddech! Wygląda na to, że próbuje popełnić samobójstwo.")
 
 		visible_message("<span class='danger'>[suicide_message]</span>", "<span class='userdanger'>[suicide_message]</span>")
 

@@ -20,7 +20,7 @@
 	attacktext = "tnie"
 	speak_emote = list("syczy")
 	bubble_icon = "alien"
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 15
@@ -158,7 +158,7 @@
 /mob/living/simple_animal/hostile/alien/maid
 	name = "lusty xenomorph maid"
 	melee_damage = 0
-	a_intent = INTENT_HELP
+	combat_mode = FALSE
 	friendly = "pieści"
 	obj_damage = 0
 	environment_smash = ENVIRONMENT_SMASH_NONE

@@ -237,3 +237,28 @@
   - rscadd: 'Serendipity: nowe xenobio, biuro kapelana, generator tarcz w inżynierii'
   - tweak: 'Serendipity: nowy prom cargo'
   - rscdel: 'Serendipity: usunięta platforma górnicza z magnesem asteroid'
+  - rscadd: 'Combat mode z BeeStation: przełącznik trybu walki (F), prawy przycisk
+      myszy to akcja dodatkowa, Ctrl+klik to chwyt, menu kontekstowe pod Shift+prawy
+      przycisk.'
+  - rscadd: Preferencja „Stary tryb intencji” (menu preferencji i zakładka Preferences)
+      przywraca cztery intencje i menu kontekstowe pod prawym przyciskiem.
+  - rscadd: Sztuki walki mają licznik kombinacji i okno poradnika.
+  - rscadd: 'Akcje prawego przycisku: pobieranie strzykawką, klucz i śrubokręt, dzielenie
+      stosów, rozbiórka RCD, granatnik M-90, hak, zryw katany i inne.'
+  - tweak: 'Obracanie obiektów: Alt+lewy i Alt+prawy przycisk; preferencja odwraca
+      kierunki.'
+  - rscadd: Preferencja dźwięku przełączania trybu walki.
+  - soundadd: Dźwięki przełączania trybu walki i walenia w szybę z BeeStation.
+  - imageadd: Ikony trybu walki we wszystkich stylach HUD i licznik kombinacji.
+  - rscadd: Latarki, latarki na broni, kaski, hełmy, PDA i borgi świecą stożkiem w
+      kierunku patrzenia
+  - rscadd: Rzucona latarka świeci tam, gdzie wskazuje po wylądowaniu
+  - refactor: Świecenie eteryków, luminescentów i mutacji Glowy na nowym systemie
+      światła
+  - bugfix: Granaty flash/disco i błyski wybuchów dają poprawne światło
+  - rscadd: 'Okno wyboru profesji przy dołączaniu w trakcie rundy w nowym interfejsie:
+      ikony ról, obsadzenie, priorytety i powody niedostępności.'
+  - tweak: Cele statku ogłaszane są jednym komunikatem zamiast osobnego dla każdego
+      projektu.
+  - rscadd: 'Duchy mogą raz na minutę nawiedzić okolicę przyciskiem „Nawiedź”: mrugające
+      światła, straszny dźwięk i blady zarys ducha.'

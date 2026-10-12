@@ -86,14 +86,16 @@
 	. += "<span class='notice'>Alt-klik, by wziąć cukierka kukurydzianego.</span>"
 
 /obj/item/clothing/head/fedora/det_hat/AltClick(mob/user)
-	if(user.canUseTopic(src, BE_CLOSE, ismonkey(user)) && loc == user)
-		if(candy_cooldown < world.time)
-			var/obj/item/food/candy_corn/CC = new /obj/item/food/candy_corn(src)
-			user.put_in_hands(CC)
-			to_chat(user, "Wyciągasz z kapelusza cukierka kukurydzianego.")
-			candy_cooldown = world.time+1200
-		else
-			to_chat(user, "Właśnie wziąłeś cukierka kukurydzianego! Poczekaj kilka minut, żeby nie wyczerpać zapasu.")
+	. = ..()
+	if(loc != user || !user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
+		return
+	if(candy_cooldown < world.time)
+		var/obj/item/food/candy_corn/CC = new /obj/item/food/candy_corn(src)
+		user.put_in_hands(CC)
+		to_chat(user, "Wyciągasz z kapelusza cukierka kukurydzianego.")
+		candy_cooldown = world.time+1200
+	else
+		to_chat(user, "Właśnie wziąłeś cukierka kukurydzianego! Poczekaj kilka minut, żeby nie wyczerpać zapasu.")
 
 
 //Mime

@@ -82,12 +82,17 @@
 	icon_state = "host_monitor"
 	required_software = "host scan"
 
-/atom/movable/screen/pai/host_monitor/Click()
-	if(!..())
+/atom/movable/screen/pai/host_monitor/Click(location, control, params)
+	. = ..()
+	if(!.)
 		return
 	var/mob/living/silicon/pai/pAI = usr
+	var/list/modifiers = params2list(params)
 	if(iscarbon(pAI.card.loc))
-		pAI.hostscan.attack(pAI.card.loc, pAI)
+		if(LAZYACCESS(modifiers, RIGHT_CLICK))
+			pAI.hostscan.attack_secondary(pAI.card.loc, pAI)
+		else
+			pAI.hostscan.attack(pAI.card.loc, pAI)
 	else
 		to_chat(src, "Nikt cię nie niesie!")
 		return 0

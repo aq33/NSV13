@@ -146,10 +146,11 @@
 	UnregisterSignal(mod.wearer, COMSIG_HUMAN_EARLY_UNARMED_ATTACK)
 
 // We have no right click attacks, so the hacker works on empty-handed clicks with the grab intent
-/obj/item/mod/module/hacker/proc/hack(mob/living/carbon/human/source, atom/target, proximity)
+/obj/item/mod/module/hacker/proc/hack(mob/living/carbon/human/source, atom/target, proximity, modifiers)
 	SIGNAL_HANDLER
 
-	if(source.a_intent != INTENT_GRAB || !proximity)
+	// right click like on Bee, grab intent for the old intent mode
+	if(!(LAZYACCESS(modifiers, RIGHT_CLICK) || source.a_intent == INTENT_GRAB) || !proximity)
 		return NONE
 	target.add_fingerprint(mod.wearer)
 	return target.ninjadrain_act(mod.wearer, src)

@@ -23,7 +23,7 @@
 	obj_damage = 60
 	melee_damage = 12
 	attacktext = "wgryza się w"
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	speak_emote = list("terkocze")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	vision_range = 2
@@ -72,7 +72,7 @@
 	throw_message = "nieszkodliwie odbija się od"
 	melee_damage = 15
 	attacktext = "przebija"
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	speak_emote = list("woła telepatycznie")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	stat_attack = UNCONSCIOUS
