@@ -134,7 +134,7 @@
 	if(panel_open && default_deconstruction_crowbar(user_item))
 		return
 
-	if(user.a_intent == INTENT_HARM) //so we can hit the machine
+	if(user.combat_mode) //so we can hit the machine
 		return ..()
 
 /obj/machinery/limbgrower/ui_act(action, list/params)

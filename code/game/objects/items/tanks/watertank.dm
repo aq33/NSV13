@@ -129,6 +129,9 @@
 /obj/item/reagent_containers/spray/mister/attack_self()
 	return
 
+/obj/item/reagent_containers/spray/mister/attack_self_secondary(mob/user) // AQ EDIT - port Bee #11899
+	return
+
 /obj/item/reagent_containers/spray/mister/doMove(atom/destination)
 	if(destination && (destination != tank.loc || !ismob(destination)))
 		if (loc != tank)

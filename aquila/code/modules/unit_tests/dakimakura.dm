@@ -21,13 +21,16 @@
 	TEST_ASSERT(daki.name == "Ian dakimakura", "Name not set: [daki.name]")
 	TEST_ASSERT(findtext(daki.desc, "Ian"), "Description does not use the name")
 
-	// Every intent once it has a name, none of them may runtime
+	// Both buttons in and out of combat mode, plus all four actions, none of them may runtime
 	var/mob/living/carbon/human/user = allocate(/mob/living/carbon/human)
 	user.put_in_hands(daki)
 	var/runtimes_before = GLOB.total_runtimes
-	for(var/intent in list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, INTENT_HARM))
-		user.a_intent = intent
+	for(var/combat in list(FALSE, TRUE))
+		user.set_combat_mode(combat)
 		daki.attack_self(user)
+		daki.attack_self_secondary(user)
+	for(var/intent in list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, INTENT_HARM))
+		daki.daki_interact(user, intent)
 	TEST_ASSERT(GLOB.total_runtimes == runtimes_before, "Runtimes while using the dakimakura")
 
 	var/obj/machinery/vending/donksofttoyvendor/vendor = allocate(/obj/machinery/vending/donksofttoyvendor)

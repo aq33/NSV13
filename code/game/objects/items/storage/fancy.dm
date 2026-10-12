@@ -144,8 +144,8 @@
 	. = ..()
 	. += "<span class='notice'>Alt-kliknij, by wyjąć zawartość.</span>"
 
-/obj/item/storage/fancy/cigarettes/AltClick(mob/living/carbon/user)
-	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+/obj/item/storage/fancy/cigarettes/AltClick(mob/user)
+	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
 		return
 	var/obj/item/lighter/I = locate(/obj/item/lighter) in contents
 	if(I && contents.len > 0)

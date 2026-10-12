@@ -1,6 +1,7 @@
 /datum/martial_art/boxing
 	name = "Boxing"
 	id = MARTIALART_BOXING
+	pacifist_style = TRUE
 
 /datum/martial_art/boxing/disarm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	to_chat(A, "<span class='warning'>Podczas boksu nie można rozbrajać!</span>")

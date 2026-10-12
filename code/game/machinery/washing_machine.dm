@@ -282,7 +282,7 @@ GLOBAL_LIST_INIT(dye_registry, list(
 	if(panel_open)
 		add_overlay("wm_panel")
 
-/obj/machinery/washing_machine/attackby(obj/item/W, mob/user, params)
+/obj/machinery/washing_machine/attackby(obj/item/W, mob/living/user, params)
 	if(panel_open && !busy && default_unfasten_wrench(user, W))
 		return
 
@@ -290,7 +290,7 @@ GLOBAL_LIST_INIT(dye_registry, list(
 		update_icon()
 		return
 
-	else if(user.a_intent != INTENT_HARM)
+	else if(!user.combat_mode)
 
 		if (!state_open)
 			to_chat(user, "<span class='warning'>Najpierw otwórz drzwiczki!</span>")
@@ -315,7 +315,7 @@ GLOBAL_LIST_INIT(dye_registry, list(
 	else
 		return ..()
 
-/obj/machinery/washing_machine/attack_hand(mob/user)
+/obj/machinery/washing_machine/attack_hand(mob/living/user)
 	. = ..()
 	if(.)
 		return
@@ -323,14 +323,14 @@ GLOBAL_LIST_INIT(dye_registry, list(
 		to_chat(user, "<span class='warning'>[src] jest zajęta.</span>")
 		return
 
-	if(user.pulling && user.a_intent == INTENT_GRAB && isliving(user.pulling))
+	if(user.pulling && isliving(user.pulling))
 		var/mob/living/L = user.pulling
 		if(L.buckled || L.has_buckled_mobs())
 			return
 		if(state_open)
 			if(istype(L, /mob/living/simple_animal/pet))
 				L.forceMove(src)
-				update_icon()
+				update_appearance()
 		return
 
 	if(!state_open)
@@ -338,6 +338,16 @@ GLOBAL_LIST_INIT(dye_registry, list(
 	else
 		state_open = FALSE //close the door
 		update_icon()
+
+/obj/machinery/washing_machine/attack_hand_secondary(mob/user, modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	AltClick(user) // u nas start prania zostaje też pod Alt-klikiem (stary tryb sterowania)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/machinery/washing_machine/attack_ai_secondary(mob/user, modifiers)
+	return attack_hand_secondary(user, modifiers)
 
 /obj/machinery/washing_machine/deconstruct(disassembled = TRUE)
 	if (!(flags_1 & NODECONSTRUCT_1))

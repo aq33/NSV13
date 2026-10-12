@@ -51,7 +51,7 @@
 					to_chat(user, "<span class='notice'>[recent_speech[spoken_memory]]</span>")
 			if(iscarbon(M))
 				var/mob/living/carbon/human/H = M
-				to_chat(user, "<span class='boldnotice'>Odkrywasz, że jego zamiarem jest [H.a_intent]...</span>")
+				to_chat(user, "<span class='boldnotice'>Odkrywasz, że zamierza [H.combat_mode ? "walczyć" : "pomagać"]...</span>")
 				var/datum/dna/the_dna = H.has_dna()
 				if(the_dna)
 					to_chat(user, "<span class='boldnotice'>Odkrywasz, że jego prawdziwa tożsamość to [the_dna.real_name].</span>")

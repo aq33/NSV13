@@ -6,24 +6,29 @@
 /datum/martial_art/karate
 	name = "Karate"
 	id = MARTIALART_KARATE
+	display_combos = TRUE
+
+	Move1 = "Kopnięcie w łydkę: cios, chwyt, pchnięcie. Paraliżuje jedną z nóg przeciwnika."
+	Move2 = "Kolano z wyskoku: cios, pchnięcie, cios. Zadaje znaczne obrażenia wytrzymałości i na chwilę przewraca przeciwnika."
+	Move3 = "Cios karate: chwyt, cios, pchnięcie. Na bardzo krótko dezorientuje przeciwnika i rozmywa mu wzrok."
+	Move4 = "Nadepnięcie: cios, chwyt, cios. Zadaje urazy i obrażenia wytrzymałości, jeśli przeciwnik nie stoi."
 	allow_temp_override = FALSE
-	help_verb = /mob/living/carbon/human/proc/karate_help
 
 /datum/martial_art/karate/proc/check_streak(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(findtext(streak,JUMPING_KNEE_COMBO))
-		streak = ""
+		reset_streak()
 		jumpingKnee(A,D)
 		return 1
 	if(findtext(streak,KARATE_CHOP_COMBO))
-		streak = ""
+		reset_streak()
 		karateChop(A,D)
 		return 1
 	if(findtext(streak,FLOOR_KICK_COMBO))
-		streak = ""
+		reset_streak()
 		floorKick(A,D)
 		return 1
 	if(findtext(streak,CALF_KICK_COMBO))
-		streak = ""
+		reset_streak()
 		calfKick(A,D)
 		return 1
 	return 0
@@ -42,7 +47,7 @@
 		D.apply_damage(20, A.dna.species.attack_type, BODY_ZONE_HEAD, def_check)
 		D.apply_damage(10, STAMINA, BODY_ZONE_HEAD, def_check)
 		return 1
-	return basic_hit(A,D)
+	return FALSE
 
 //Calf Kick - paralyse one leg with stamina damage
 /datum/martial_art/karate/proc/calfKick(mob/living/carbon/human/A, mob/living/carbon/human/D)
@@ -57,7 +62,7 @@
 		A.do_attack_animation(D, ATTACK_EFFECT_KICK)
 		D.apply_damage(50, STAMINA, pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG), def_check)
 		return 1
-	return basic_hit(A,D)
+	return FALSE
 
 //Jumping Knee - brief knockdown and decent stamina damage
 /datum/martial_art/karate/proc/jumpingKnee(mob/living/carbon/human/A, mob/living/carbon/human/D)
@@ -74,7 +79,7 @@
 		D.apply_damage(30, STAMINA, BODY_ZONE_CHEST, def_check)
 		D.Knockdown(10)
 		return 1
-	return basic_hit(A,D)
+	return FALSE
 
 // Karate Chop - short confusion and blurred eyes
 /datum/martial_art/karate/proc/karateChop(mob/living/carbon/human/A, mob/living/carbon/human/D)
@@ -90,7 +95,7 @@
 		D.confused += 2
 		D.Jitter(20)
 		return 1
-	return basic_hit(A,D)
+	return FALSE
 
 /datum/martial_art/karate/harm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	add_to_streak("H",D)
@@ -110,14 +115,3 @@
 		return 1
 	return ..()
 
-/mob/living/carbon/human/proc/karate_help()
-	set name = "Recall Teachings"
-	set desc = "Remember the martial techniques of Karate."
-	set category = "Karate"
-
-	to_chat(usr, "<b><i>Próbujesz przypomnieć sobie podstawy Karate...</i></b>")
-
-	to_chat(usr, "<span class='notice'>Kopnięcie w łydkę</span>: krzywda, chwyt, rozbrojenie. Paraliżuje jedną z nóg przeciwnika.")
-	to_chat(usr, "<span class='notice'>Kolano z wyskoku</span>: krzywda, rozbrojenie, krzywda. Zadaje znaczne obrażenia wytrzymałości i na chwilę przewraca przeciwnika.")
-	to_chat(usr, "<span class='notice'>Cios karate</span>: chwyt, krzywda, rozbrojenie. Na bardzo krótko dezorientuje przeciwnika i rozmywa mu wzrok.")
-	to_chat(usr, "<span class='notice'>Nadepnięcie</span>: krzywda, chwyt, krzywda. Zadaje urazy i obrażenia wytrzymałości, jeśli przeciwnik nie stoi.")

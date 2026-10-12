@@ -81,7 +81,7 @@
 	foodtypes = CLOTH
 
 /obj/item/clothing/attack(mob/M, mob/user, def_zone)
-	if(user.a_intent != INTENT_HARM && ismoth(M) && !(clothing_flags & NOTCONSUMABLE) && !(resistance_flags & INDESTRUCTIBLE) && (armor.getRating("melee") == 0))
+	if(!user.combat_mode && ismoth(M) && !(clothing_flags & NOTCONSUMABLE) && !(resistance_flags & INDESTRUCTIBLE) && (armor.getRating("melee") == 0))
 		var/obj/item/food/clothing/clothing_as_food = new
 		clothing_as_food.name = name
 		if(clothing_as_food.attack(M, user, def_zone))
@@ -295,12 +295,14 @@ BLIND     // can't see anything
 		return FALSE
 
 	var/list/modes = list("Wyłączone", "Podstawowe funkcje życiowe", "Dokładne funkcje życiowe", "Nadajnik lokalizacyjny")
-	var/switchMode = input("Wybierz tryb czujników:", "Tryb czujników kombinezonu", modes[sensor_mode + 1]) in modes
+	var/switchMode = tgui_input_list(M, "Wybierz tryb czujników", "Czujniki kombinezonu", modes, modes[sensor_mode + 1])
+	if(isnull(switchMode))
+		return
 	if(get_dist(user, src) > 1)
 		to_chat(user, "<span class='warning'>Odszedłeś za daleko!</span>")
 		return
-	var/sensor_selection = modes.Find(switchMode) - 1
 
+	var/sensor_selection = modes.Find(switchMode) - 1
 	if (src.loc == user)
 		switch(sensor_selection)
 			if(SENSORS_OFF)

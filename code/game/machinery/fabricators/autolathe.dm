@@ -81,7 +81,7 @@
 			security_interface_locked = TRUE
 			. = TRUE
 
-/obj/machinery/modular_fabricator/autolathe/attackby(obj/item/O, mob/user, params)
+/obj/machinery/modular_fabricator/autolathe/attackby(obj/item/O, mob/living/user, params)
 
 	if((ACCESS_SECURITY in O.GetAccess()) && !(obj_flags & EMAGGED))
 		security_interface_locked = !security_interface_locked
@@ -92,9 +92,6 @@
 		to_chat(user, "<span class=\"alert\">Autolatarka jest zajęta. Zaczekaj na zakończenie poprzedniej operacji.</span>")
 		return TRUE
 
-	if(default_deconstruction_screwdriver(user, "autolathe_t", "autolathe", O))
-		return TRUE
-
 	if(default_deconstruction_crowbar(O))
 		return TRUE
 
@@ -102,7 +99,7 @@
 		wires.interact(user)
 		return TRUE
 
-	if(user.a_intent == INTENT_HARM) //so we can hit the machine
+	if(user.combat_mode) //so we can hit the machine
 		return ..()
 
 	if(machine_stat)
@@ -117,7 +114,29 @@
 		update_viewer_statics()
 		return TRUE
 
+	if(panel_open)
+		balloon_alert(user, "najpierw zamknij panel!")
+		return FALSE
+
 	return ..()
+
+/obj/machinery/modular_fabricator/autolathe/attackby_secondary(obj/item/weapon, mob/living/user, params)
+	. = SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	if(busy)
+		balloon_alert(user, "jest zajęty!")
+		return
+
+	if(default_deconstruction_screwdriver(user, "autolathe_t", "autolathe", weapon))
+		return
+
+	if(machine_stat)
+		return SECONDARY_ATTACK_CALL_NORMAL
+
+	if(panel_open)
+		balloon_alert(user, "najpierw zamknij panel!")
+		return
+
+	return SECONDARY_ATTACK_CALL_NORMAL
 
 /obj/machinery/modular_fabricator/autolathe/proc/reset(wire)
 	switch(wire)

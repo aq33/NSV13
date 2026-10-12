@@ -171,7 +171,7 @@
 		return TRUE
 
 	if(!weapon.grind_results && !weapon.juice_typepath && !weapon.is_grindable())
-		if(user.a_intent == INTENT_HARM)
+		if(user.combat_mode)
 			return ..()
 		else
 			to_chat(user, "<span class='warning'>Nie możesz zmielić [weapon] na odczynniki!</span>")
@@ -330,3 +330,21 @@
 			var/amount = beaker.reagents.get_reagent_amount(/datum/reagent/consumable/eggyolk)
 			beaker.reagents.remove_reagent(/datum/reagent/consumable/eggyolk, amount)
 			beaker.reagents.add_reagent(/datum/reagent/consumable/mayonnaise, amount)
+
+/// Port Bee #11899: right click ejects the beaker
+/obj/machinery/reagentgrinder/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	if(!can_interact(user) || !user.canUseTopic(src, !issilicon(user), FALSE, NO_TK))
+		return
+	if(operating)
+		return
+	replace_beaker(user)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/machinery/reagentgrinder/attack_robot_secondary(mob/user, list/modifiers)
+	return attack_hand_secondary(user, modifiers)
+
+/obj/machinery/reagentgrinder/attack_ai_secondary(mob/user, list/modifiers)
+	return attack_hand_secondary(user, modifiers)

@@ -1,6 +1,6 @@
 //Fire
 /mob/living/simple_animal/hostile/guardian/fire
-	a_intent = INTENT_HELP
+	combat_mode = FALSE
 	melee_damage = 7
 	attack_sound = 'sound/items/welder.ogg'
 	attacktext = "podpala"

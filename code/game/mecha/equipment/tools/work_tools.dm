@@ -70,7 +70,7 @@
 		var/mob/living/M = target
 		if(M.stat == DEAD)
 			return
-		if(chassis.occupant.a_intent == INTENT_HARM)
+		if(chassis.occupant.combat_mode)
 			M.take_overall_damage(dam_force)
 			if(!M)
 				return
@@ -79,7 +79,7 @@
 			target.visible_message("<span class='danger'>[chassis] squeezes [target]!</span>", \
 								"<span class='userdanger'>[chassis] cię ściska!</span>",\
 								"<span class='italics'>Słyszysz, jak coś pęka.</span>")
-			log_combat(chassis.occupant, M, "attacked", "[name]", "(INTENT: [uppertext(chassis.occupant.a_intent)]) (DAMTYPE: [uppertext(damtype)])")
+			log_combat(chassis.occupant, M, "atakuje", "[name]", "(COMBAT MODE: [chassis.occupant.combat_mode ? "ON" : "OFF"]) (DAMTYPE: [uppertext(damtype)])")
 		else
 			step_away(M,chassis)
 			occupant_message("Odpychasz [target] na bok.")
@@ -102,7 +102,7 @@
 	dam_force = 20
 	real_clamp = TRUE
 
-/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/kill/action(atom/target)
+/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/kill/action(atom/target, params)
 	if(!action_checks(target))
 		return
 	if(!cargo_holder)
@@ -130,7 +130,7 @@
 		var/mob/living/M = target
 		if(M.stat == DEAD)
 			return
-		if(chassis.occupant.a_intent == INTENT_HARM)
+		if(chassis.occupant.combat_mode)
 			if(real_clamp)
 				M.take_overall_damage(dam_force)
 				if(!M)
@@ -139,11 +139,11 @@
 				M.updatehealth()
 				target.visible_message("<span class='danger'>[chassis] niszczy [target] w bezbożnej furii!</span>", \
 									"<span class='userdanger'>[chassis] niszczy cię w bezbożnej furii!</span>")
-				log_combat(chassis.occupant, M, "attacked", "[name]", "(INTENT: [uppertext(chassis.occupant.a_intent)]) (DAMTYPE: [uppertext(damtype)])")
+				log_combat(chassis.occupant, M, "atakuje", "[name]", "(COMBAT MODE: [chassis.occupant.combat_mode ? "ON" : "OFF"]) (DAMTYPE: [uppertext(damtype)])")
 			else
 				target.visible_message("<span class='danger'>[chassis] niszczy [target] w bezbożnej furii!</span>", \
 									"<span class='userdanger'>[chassis] niszczy cię w bezbożnej furii!</span>")
-		else if(chassis.occupant.a_intent == INTENT_DISARM)
+		else if(LAZYACCESS(params2list(params), RIGHT_CLICK)) // AQ EDIT - port Bee #11899: rozbrojenie pod prawym przyciskiem
 			if(real_clamp)
 				var/mob/living/carbon/C = target
 				var/play_sound = FALSE
@@ -162,7 +162,7 @@
 					playsound(src, get_dismember_sound(), 80, TRUE)
 					target.visible_message("<span class='danger'>[chassis] wyrywa [target] ręce!</span>", \
 								   "<span class='userdanger'>[chassis] wyrywa ci ręce!</span>")
-					log_combat(chassis.occupant, M, "dismembered of[limbs_gone],", "[name]", "(INTENT: [uppertext(chassis.occupant.a_intent)]) (DAMTYPE: [uppertext(damtype)])")
+					log_combat(chassis.occupant, M, "dismembered of[limbs_gone],", "[name]", "(COMBAT MODE: [chassis.occupant.combat_mode ? "ON" : "OFF"]) (DAMTYPE: [uppertext(damtype)])")
 			else
 				target.visible_message("<span class='danger'>[chassis] wyrywa [target] ręce!</span>", \
 								   "<span class='userdanger'>[chassis] wyrywa ci ręce!</span>")

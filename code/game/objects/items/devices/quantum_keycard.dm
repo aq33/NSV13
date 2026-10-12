@@ -18,7 +18,7 @@
 		. += "<span class='notice'>Włóż [src] do aktywnego pada kwantowego, by ją połączyć.</span>"
 
 /obj/item/quantum_keycard/AltClick(mob/living/user)
-	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, !iscyborg(user)))
 		return
 	to_chat(user, "<span class='notice'>Zaczynasz wciskać przycisk rozłączania [src]...</span>")
 	if(do_after(user, 40, target = src))

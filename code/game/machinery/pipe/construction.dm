@@ -40,7 +40,7 @@ Buildable meters
 
 /obj/item/pipe/ComponentInitialize()
 	//Flipping handled manually due to custom handling for trinary pipes
-	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE)
+	AddComponent(/datum/component/simple_rotation, ROTATION_NO_FLIPPING)
 
 /obj/item/pipe/Initialize(mapload, _pipe_type, _dir, obj/machinery/atmospherics/make_from)
 	if(make_from)
@@ -189,6 +189,31 @@ Buildable meters
 		C.blood_volume = 0
 	return(OXYLOSS|BRUTELOSS)
 
+/obj/item/pipe/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>Warstwa rur: [piping_layer].</span>"
+	. += "<span class='notice'>Warstwę rur zmienisz prawym przyciskiem myszy.</span>"
+
+/obj/item/pipe/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	var/layer_to_set = (piping_layer >= PIPING_LAYER_MAX) ? PIPING_LAYER_MIN : (piping_layer + 1)
+	set_piping_layer(layer_to_set)
+	balloon_alert(user, "warstwa rur: [piping_layer]")
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/item/pipe/trinary/flippable/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>Prawym przyciskiem myszy odwrócisz urządzenie.</span>"
+
+/obj/item/pipe/trinary/flippable/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	do_a_flip()
+	balloon_alert(user, "odwrócono rurę")
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 /obj/item/pipe_meter
 	name = "meter"
 	desc = "A meter that can be laid on pipes."

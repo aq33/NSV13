@@ -70,7 +70,7 @@
 		. += "<span class='notice'><b>Niepołączony.</b> Użyj na innym odwracaczu spinu kwantowego, by nawiązać połączenie kwantowe.</span>"
 
 /obj/item/swapper/AltClick(mob/living/user)
-	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, !iscyborg(user)))
 		return
 	to_chat(user, "<span class='notice'>Zrywasz obecne połączenie kwantowe.</span>")
 	if(!QDELETED(linked_swapper))

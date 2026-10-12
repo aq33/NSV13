@@ -31,7 +31,7 @@
 		to_chat(user, "<span class='notice'>Odcinasz z [src] nierówne kawałki aluminium i ślady przypaleń.</span>")
 	return TRUE
 
-/obj/item/target/attack_hand(mob/user)
+/obj/item/target/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return

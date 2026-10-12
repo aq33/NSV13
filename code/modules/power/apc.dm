@@ -801,7 +801,7 @@
 //NSV13 changed numbers to defines
 // attack with hand - remove cell (if cover open) or interact with the APC
 
-/obj/machinery/power/apc/attack_hand(mob/user)
+/obj/machinery/power/apc/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -812,7 +812,7 @@
 		if(E.drain_time > world.time)
 			return
 		var/obj/item/organ/stomach/battery/stomach = H.getorganslot(ORGAN_SLOT_STOMACH)
-		if(H.a_intent == INTENT_HARM)
+		if(H.combat_mode)
 			if(!istype(stomach))
 				to_chat(H, "<span class='warning'>Nie możesz przyjąć ładunku!</span>")
 				return
@@ -851,7 +851,7 @@
 			to_chat(H, "<span class='warning'>Nie udaje ci się pobrać ładunku z APC!</span>")
 			E.drain_time = 0
 			return
-		else if(H.a_intent == INTENT_GRAB)
+		else if(LAZYACCESS(modifiers, RIGHT_CLICK)) // AQ EDIT - port Bee #11899: dawniej intencja grab
 			if(!istype(stomach))
 				to_chat(H, "<span class='warning'>Nie możesz przekazać ładunku!</span>")
 				return

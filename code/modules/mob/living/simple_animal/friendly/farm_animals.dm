@@ -157,8 +157,8 @@
 	if(stat == CONSCIOUS)
 		udder.generateMilk()
 
-/mob/living/simple_animal/cow/attack_hand(mob/living/carbon/M)
-	if(!stat && M.a_intent == INTENT_DISARM && icon_state != icon_dead)
+/mob/living/simple_animal/cow/attack_hand(mob/living/carbon/M, list/modifiers)
+	if(!stat && LAZYACCESS(modifiers, RIGHT_CLICK) && icon_state != icon_dead)
 		M.visible_message("<span class='warning'>[M] przewraca [src].</span>",
 			"<span class='notice'>Przewracasz [src].</span>")
 		to_chat(src, "<span class='userdanger'>[M] cię przewraca!</span>")

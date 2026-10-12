@@ -10,12 +10,12 @@
 /datum/martial_art/psychotic_brawling/grab_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(HAS_TRAIT(A, TRAIT_PACIFISM))
 		return FALSE
-	return psycho_attack(A,D)
+	return psycho_attack(A,D, TRUE)
 
 /datum/martial_art/psychotic_brawling/harm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	return psycho_attack(A,D)
 
-/datum/martial_art/psychotic_brawling/proc/psycho_attack(mob/living/carbon/human/A, mob/living/carbon/human/D)
+/datum/martial_art/psychotic_brawling/proc/psycho_attack(mob/living/carbon/human/A, mob/living/carbon/human/D, grab_attack)
 	var/atk_verb
 	switch(rand(1,8))
 		if(1)
@@ -33,7 +33,7 @@
 				if(A.pulling)
 					D.drop_all_held_items()
 					D.stop_pulling()
-					if(A.a_intent == INTENT_GRAB)
+					if(grab_attack)
 						log_combat(A, D, "grabbed", addition="aggressively")
 						D.visible_message("<span class='warning'>[A] brutalnie chwyta [D]!</span>", \
 										"<span class='userdanger'>[A] brutalnie cię chwyta!</span>", "<span class='hear'>Słyszysz odgłosy agresywnego obmacywania!</span>", null, A)
@@ -65,7 +65,7 @@
 			D.throw_at(throwtarget, 4, 2, A)//So stuff gets tossed around at the same time.
 			D.Paralyze(60)
 		if(7,8)
-			basic_hit(A,D)
+			return FALSE //Resume default behaviour
 
 	if(atk_verb)
 		log_combat(A, D, "[atk_verb] (Psychotic Brawling)")

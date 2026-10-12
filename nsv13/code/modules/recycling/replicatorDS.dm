@@ -126,7 +126,7 @@
 			biogen.points -= amount
 
 /obj/machinery/replicator/attackby(obj/item/O, mob/user, params)
-	if(user.a_intent == INTENT_HARM)
+	if(user.combat_mode)
 		return ..()
 
 	if(default_deconstruction_screwdriver(user, "replicator-o", "replicator-on", O))

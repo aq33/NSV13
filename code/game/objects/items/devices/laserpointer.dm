@@ -87,7 +87,7 @@
 			return
 
 	add_fingerprint(user)
-
+	
 	//nothing happens if the battery is drained
 	if(recharge_locked)
 		to_chat(user, "<span class='notice'>Celujesz [src] w [target], ale wciąż się ładuje.</span>")

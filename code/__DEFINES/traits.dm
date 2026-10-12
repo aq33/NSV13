@@ -139,6 +139,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_DUMB				"dumb"
 #define TRAIT_DISCOORDINATED	"discoordinated" //sets IsAdvancedToolUser to FALSE on humans and monkeys // AQ EDIT
 #define TRAIT_PACIFISM			"pacifism"
+#define TRAIT_MARTIAL_ARTS_IMMUNE "martial_arts_immune" // AQ EDIT - port Bee #11899: nikt nie może użyć sztuk walki na tym mobie
 #define TRAIT_IGNORESLOWDOWN	"ignoreslow"
 #define TRAIT_IGNOREDAMAGESLOWDOWN "ignoredamageslowdown"
 #define TRAIT_DEATHCOMA			"deathcoma" //Causes death-like unconsciousness

@@ -14,7 +14,16 @@
 	add_duds(2)
 	..()
 
+/datum/wires/airlock/interact(mob/user)
+	var/obj/machinery/door/airlock/airlock_holder = holder
+	if (!issilicon(user) && airlock_holder.isElectrified() && airlock_holder.shock(user, 100))
+		return
+
+	return ..()
+
 /datum/wires/airlock/interactable(mob/user)
+	if(!..())
+		return FALSE
 	var/obj/machinery/door/airlock/A = holder
 	if(!issilicon(user) && A.isElectrified() && A.shock(user, 100))
 		return FALSE
@@ -71,6 +80,7 @@
 			if(WIRE_SHOCK) // Pulse to shock the door for 10 ticks.
 				if(!A.secondsElectrified)
 					A.set_electrified(MACHINE_DEFAULT_ELECTRIFY_TIME, usr)
+					A.shock(usr, 100)
 			if(WIRE_SAFETY)
 				A.safe = !A.safe
 				if(!A.density)

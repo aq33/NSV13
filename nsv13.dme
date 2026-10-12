@@ -197,6 +197,10 @@
 #include "code\__DEFINES\dcs\signals\signals_obj\signals_machine\signals_machinery.dm"
 #include "code\__DEFINES\dcs\signals\signals_obj\signals_machine\signals_supermatter.dm"
 #include "code\__DEFINES\research\anomalies.dm"
+#include "code\__DEFINES\dcs\signals\signals_atom\signals_tools.dm"
+#include "code\__DEFINES\rotation.dm"
+// AQ EDIT - makra span_* z aquili potrzebne juz w core (kod z Bee, port #11899)
+#include "aquila\code\__DEFINES\span.dm"
 #include "code\__HELPERS\_lists.dm"
 #include "code\__HELPERS\_logging.dm"
 #include "code\__HELPERS\_string_lists.dm"

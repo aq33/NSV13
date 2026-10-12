@@ -22,6 +22,10 @@
 	desc = "A shower frame, that needs 2 plastic sheets to finish construction into a basic shower, or can be made into a blast shower by adding a sheet of titanium instead." //NSV13 - blast shower construction info.
 	anchored = FALSE
 
+/obj/structure/showerframe/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/simple_rotation)
+
 /obj/structure/showerframe/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/stack/sheet/plastic))
 		balloon_alert(user, "Zaczynasz budować prysznic...")
@@ -34,14 +38,6 @@
 			return
 	return ..()
 
-/obj/structure/showerframe/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS, null, CALLBACK(src, PROC_REF(can_be_rotated)))
-
-/obj/structure/showerframe/proc/can_be_rotated(mob/user, rotation_type)
-	if(anchored)
-		to_chat(user, "<span class='warning'>Jest przymocowany do podłogi!</span>")
-	return !anchored
 
 /obj/machinery/shower/Initialize(mapload)
 	. = ..()

@@ -96,7 +96,7 @@
 /obj/item/powersink/attack_ai()
 	return
 
-/obj/item/powersink/attack_hand(mob/user)
+/obj/item/powersink/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return

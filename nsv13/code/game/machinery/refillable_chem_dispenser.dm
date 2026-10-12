@@ -329,7 +329,7 @@
 		to_chat(user, "<span class='notice'>Dodajesz [B] do [src].</span>")
 		updateUsrDialog()
 		update_icon()
-	else if(user.a_intent != INTENT_HARM && !istype(I, /obj/item/card/emag))
+	else if(!user.combat_mode && !istype(I, /obj/item/card/emag))
 		to_chat(user, "<span class='warning'>Nie możesz załadować [I] do [src]!</span>")
 		return ..()
 	else

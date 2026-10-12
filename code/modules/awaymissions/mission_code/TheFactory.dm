@@ -238,7 +238,7 @@
 	do_footstep = TRUE
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	search_objects = 1
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	attack_sound = 'sound/weapons/cqchit2.ogg'
 	attacktext = "uderza"
 	robust_searching = 1
@@ -635,7 +635,7 @@
 	attack_sound = null
 	del_on_death = TRUE
 	stat_attack = UNCONSCIOUS
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	var/det_time = 30
 	var/active = 0
 	var/cooldown = 0

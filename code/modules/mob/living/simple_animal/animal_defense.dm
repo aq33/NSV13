@@ -1,18 +1,15 @@
 
 
-/mob/living/simple_animal/attack_hand(mob/living/carbon/human/M)
+/mob/living/simple_animal/attack_hand(mob/living/carbon/human/M, list/modifiers)
 	..()
-	switch(M.a_intent)
+	switch((M.combat_mode || LAZYACCESS(modifiers, RIGHT_CLICK)) ? "harm" : "help")
 		if("help")
 			if (health > 0)
 				visible_message("<span class='notice'>[M] [response_help] [src].</span>", \
 					"<span class='notice'>[M] [response_help] cię.</span>")
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 
-		if("grab")
-			grabbedby(M)
-
-		if("harm", "disarm")
+		if("harm")
 			if(HAS_TRAIT(M, TRAIT_PACIFISM))
 				to_chat(M, "<span class='notice'>Nie chcesz zrobić krzywdy [src]!</span>")
 				return
@@ -26,7 +23,7 @@
 			return TRUE
 
 /mob/living/simple_animal/attack_hulk(mob/living/carbon/human/user, does_attack_animation = 0)
-	if(user.a_intent == INTENT_HARM)
+	if(user.combat_mode)
 		if(HAS_TRAIT(user, TRAIT_PACIFISM))
 			to_chat(user, "<span class='notice'>Nie chcesz zrobić krzywdy [src]!</span>")
 			return FALSE
@@ -43,16 +40,16 @@
 			var/damage = rand(1, 3)
 			attack_threshold_check(damage)
 			return 1
-	if (M.a_intent == INTENT_HELP)
+	if (!M.combat_mode)
 		if (health > 0)
 			visible_message("<span class='notice'>[M.name] [response_help] [src].</span>", \
 				"<span class='notice'>[M.name] [response_help] cię.</span>")
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 
 
-/mob/living/simple_animal/attack_alien(mob/living/carbon/alien/humanoid/M)
+/mob/living/simple_animal/attack_alien(mob/living/carbon/alien/humanoid/M, list/modifiers)
 	if(..()) //if harm or disarm intent.
-		if(M.a_intent == INTENT_DISARM)
+		if(LAZYACCESS(modifiers, RIGHT_CLICK))
 			playsound(loc, 'sound/weapons/pierce.ogg', 25, 1, -1)
 			visible_message("<span class='danger'>[M] [response_disarm] [name]!</span>", \
 					"<span class='userdanger'>[M] [response_disarm] cię!</span>", null, COMBAT_MESSAGE_RANGE)
@@ -90,8 +87,13 @@
 		return attack_threshold_check(damage)
 
 /mob/living/simple_animal/attack_drone(mob/living/simple_animal/drone/M)
-	if(M.a_intent == INTENT_HARM) //No kicking dogs even as a rogue drone. Use a weapon.
+	if(M.combat_mode) //No kicking dogs even as a rogue drone. Use a weapon.
 		return
+	return ..()
+
+/mob/living/simple_animal/attack_drone_secondary(mob/living/simple_animal/drone/M)
+	if(M.combat_mode)
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	return ..()
 
 /mob/living/simple_animal/proc/attack_threshold_check(damage, damagetype = BRUTE, armorcheck = "melee")

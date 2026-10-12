@@ -64,8 +64,8 @@
 	last_attacker = user
 	return ..()
 
-/mob/living/simple_animal/hostile/retaliate/wojtek/attack_hand(mob/living/carbon/human/M)
-	if(M.a_intent == INTENT_HARM || M.a_intent == INTENT_DISARM)
+/mob/living/simple_animal/hostile/retaliate/wojtek/attack_hand(mob/living/carbon/human/M, list/modifiers)
+	if(M.combat_mode || LAZYACCESS(modifiers, RIGHT_CLICK))
 		last_attacker = M
 	return ..()
 
@@ -104,7 +104,7 @@
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/wojtek/attackby(obj/item/I, mob/living/user, params)
-	if(stat != CONSCIOUS || user.a_intent == INTENT_HARM)
+	if(stat != CONSCIOUS || user.combat_mode)
 		return ..()
 	if(istype(I, /obj/item/clothing/mask/cigarette))
 		visible_message("<span class='notice'>[src] bierze [I] od [user] i ze smakiem go zjada, jak na weterana przystało.</span>")

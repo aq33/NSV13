@@ -56,7 +56,7 @@
 
 	if(suiciding)
 		O.set_suicide(suiciding)
-	O.a_intent = INTENT_HARM
+	O.set_combat_mode(TRUE)
 
 	//keep viruses?
 	if (tr_flags & TR_KEEPVIRUS)
@@ -214,7 +214,7 @@
 
 	if(suiciding)
 		O.set_suicide(suiciding)
-	O.a_intent = INTENT_HARM
+	O.set_combat_mode(TRUE)
 
 	//keep viruses?
 	if (tr_flags & TR_KEEPVIRUS)
@@ -454,7 +454,7 @@
 			QDEL_NULL(O.ai_controller)
 
 
-	O.a_intent = INTENT_HELP
+	O.set_combat_mode(FALSE)
 	if (tr_flags & TR_DEFAULTMSG)
 		to_chat(O, "<B>Jesteś teraz humanoidem.</B>")
 
@@ -569,7 +569,7 @@
 		if("Drone")
 			new_xeno = new /mob/living/carbon/alien/humanoid/drone(loc)
 
-	new_xeno.a_intent = INTENT_HARM
+	new_xeno.set_combat_mode(TRUE)
 	new_xeno.key = key
 
 	to_chat(new_xeno, "<B>Jesteś teraz obcym.</B>")
@@ -592,7 +592,7 @@
 		new_slime = pick(babies)
 	else
 		new_slime = new /mob/living/simple_animal/slime(loc)
-	new_slime.a_intent = INTENT_HARM
+	new_slime.set_combat_mode(TRUE)
 	new_slime.key = key
 
 	to_chat(new_slime, "<B>Jesteś teraz szlamem. Skriii!</B>")
@@ -611,7 +611,7 @@
 		return
 
 	var/mob/living/simple_animal/pet/dog/corgi/new_corgi = new /mob/living/simple_animal/pet/dog/corgi (loc)
-	new_corgi.a_intent = INTENT_HARM
+	new_corgi.set_combat_mode(TRUE)
 	new_corgi.key = key
 
 	to_chat(new_corgi, "<B>Jesteś teraz corgi. Hau hau!</B>")
@@ -622,7 +622,7 @@
 	if(pre_transform())
 		return
 	var/mob/living/simple_animal/hostile/gorilla/new_gorilla = new (get_turf(src))
-	new_gorilla.a_intent = INTENT_HARM
+	new_gorilla.set_combat_mode(TRUE)
 	if(mind)
 		mind.transfer_to(new_gorilla)
 	else
@@ -635,7 +635,7 @@
 	if(pre_transform())
 		return
 	var/mob/living/simple_animal/hostile/gorilla/rabid/new_gorilla = new (get_turf(src))
-	new_gorilla.a_intent = INTENT_HARM
+	new_gorilla.set_combat_mode(TRUE)
 	var/datum/atom_hud/H = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	H.add_hud_to(new_gorilla)
 	if(mind)
@@ -658,10 +658,10 @@
 	if(pre_transform())
 		return
 
-	var/mob/new_mob = new mobpath(src.loc)
+	var/mob/living/new_mob = new mobpath(src.loc)
 
 	new_mob.key = key
-	new_mob.a_intent = INTENT_HARM
+	new_mob.set_combat_mode(TRUE)
 
 
 	to_chat(new_mob, "Nagle czujesz się bardziej... zwierzęco.")
@@ -677,10 +677,10 @@
 		to_chat(usr, "<span class='danger'>Przepraszamy, ten typ moba jest obecnie niedostępny.</span>")
 		return
 
-	var/mob/new_mob = new mobpath(src.loc)
+	var/mob/living/new_mob = new mobpath(src.loc)
 
 	new_mob.key = key
-	new_mob.a_intent = INTENT_HARM
+	new_mob.set_combat_mode(TRUE)
 	to_chat(new_mob, "Czujesz się bardziej... zwierzęco")
 
 	. = new_mob

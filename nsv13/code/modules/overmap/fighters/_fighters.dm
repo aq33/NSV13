@@ -839,7 +839,7 @@ Been a mess since 2018, we'll fix it someday (probably)
 	relay('nsv13/sound/effects/ship/reactor/gasmask.ogg', "<span class='warning'>The air around you rushes out of the breached canopy!</span>", loop = FALSE, channel = CHANNEL_SHIP_ALERT)
 
 /obj/structure/overmap/small_craft/welder_act(mob/living/user, obj/item/I)
-	if(user.a_intent == INTENT_HARM)
+	if(user.combat_mode)
 		return FALSE
 	if(obj_integrity >= max_integrity)
 		to_chat(user, "<span class='notice'>[src] nie wymaga naprawy.</span>")
@@ -1100,7 +1100,7 @@ due_to_damage: If the removal was caused voluntarily (FALSE), or if it was cause
 
 //Sometimes you need to repair your physical armour plates.
 /obj/item/fighter_component/armour_plating/welder_act(mob/living/user, obj/item/I)
-	if(user.a_intent == INTENT_HARM)
+	if(user.combat_mode)
 		return FALSE
 	if(obj_integrity >= max_integrity)
 		to_chat(user, "<span class='notice'>[src] nie wymaga naprawy.</span>")

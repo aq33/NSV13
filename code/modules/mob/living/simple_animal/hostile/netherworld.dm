@@ -87,7 +87,7 @@
 	else
 		. += "Bezpośrednie połączenie z innym wymiarem, pełnym istot niezbyt szczęśliwych na twój widok. <span class='warning'>Wejście w nie byłoby bardzo złym pomysłem.</span>"
 
-/obj/structure/spawner/nether/attack_hand(mob/user)
+/obj/structure/spawner/nether/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(isskeleton(user) || iszombie(user))
 		to_chat(user, "<span class='notice'>Jeszcze nie masz ochoty wracać do domu...</span>")

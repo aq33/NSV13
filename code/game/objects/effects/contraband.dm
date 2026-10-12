@@ -97,7 +97,7 @@
 			to_chat(user, "<span class='notice'>Ostrożnie zdejmujesz plakat ze ściany.</span>")
 			roll_and_drop(user.loc)
 
-/obj/structure/sign/poster/attack_hand(mob/user)
+/obj/structure/sign/poster/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return

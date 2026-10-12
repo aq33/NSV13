@@ -1,6 +1,6 @@
 // Zaklejanie ust taśmą: celuj w usta i kliknij osobę taśmą (bez intencji harm)
 /obj/item/stack/sticky_tape/attack(mob/living/M, mob/living/user)
-	if(iscarbon(M) && user.zone_selected == BODY_ZONE_PRECISE_MOUTH && user.a_intent != INTENT_HARM)
+	if(iscarbon(M) && user.zone_selected == BODY_ZONE_PRECISE_MOUTH && !user.combat_mode)
 		tape_mouth(M, user)
 		return
 	return ..()
