@@ -2,6 +2,7 @@ import { handleArrowKeys } from './arrowKeys';
 import { handleBackspaceDelete } from './backspaceDelete';
 import { handleComponentMount } from './componentMount';
 import { handleComponentUpdate } from './componentUpdate';
+import { handleCycleRadio } from './cycleRadio';
 import { handleClick, handleRightClick } from './click';
 import { handleEnter } from './enter';
 import { handleEscape } from './escape';
@@ -31,6 +32,7 @@ export const eventHandlerMap = (parent: Modal): Modal['events'] => {
     onComponentMount: handleComponentMount.bind(parent),
     onComponentUpdate: handleComponentUpdate.bind(parent),
     onContextMenu: handleRightClick.bind(parent),
+    onCycleRadio: handleCycleRadio.bind(parent),
     onEnter: handleEnter.bind(parent),
     onEscape: handleEscape.bind(parent),
     onForce: handleForce.bind(parent),

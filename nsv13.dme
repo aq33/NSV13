@@ -1867,7 +1867,6 @@
 #include "code\modules\antagonists\nukeop\equipment\nuclear_challenge.dm"
 #include "code\modules\antagonists\nukeop\equipment\nuclearbomb.dm"
 #include "code\modules\antagonists\nukeop\equipment\pinpointer.dm"
-#include "code\modules\antagonists\official\official.dm"
 #include "code\modules\antagonists\overthrow\overthrow.dm"
 #include "code\modules\antagonists\overthrow\overthrow_converter.dm"
 #include "code\modules\antagonists\overthrow\overthrow_team.dm"
