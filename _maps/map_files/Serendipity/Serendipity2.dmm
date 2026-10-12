@@ -67,6 +67,13 @@
 /obj/structure/cable,
 /turf/open/floor/monotile/steel,
 /area/engine/armour_pump)
+"ai" = (
+/obj/machinery/computer/telecomms/monitor{
+	dir = 8;
+	network = "tcommsat"
+	},
+/turf/open/floor/monotile/steel,
+/area/comms)
 "aj" = (
 /obj/machinery/conveyor/auto,
 /obj/machinery/door/window/westright,
@@ -45614,7 +45621,7 @@ Vz
 Bi
 PI
 pk
-FZ
+ai
 Rg
 II
 Rc
