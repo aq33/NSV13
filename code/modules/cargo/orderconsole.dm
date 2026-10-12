@@ -11,10 +11,8 @@
 	var/can_approve_requests = TRUE
 	var/contraband = FALSE
 	var/self_paid = FALSE
-	var/safety_warning = "For safety and ethical reasons, the automated supply shuttle \
-		cannot transport live organisms, human remains, classified nuclear weaponry, \
-		homing beacons, mail, or machinery housing any form of artificial intelligence."
-	var/blockade_warning = "Bluespace instability detected. Shuttle movement impossible."
+	var/safety_warning = "Ze względów bezpieczeństwa i etycznych zautomatyzowany prom zaopatrzenia nie może przewozić żywych organizmów, ludzkich szczątków, tajnej broni jądrowej, nadajników naprowadzających, poczty ani maszyn zawierających jakąkolwiek formę sztucznej inteligencji."
+	var/blockade_warning = "Wykryto niestabilność bluespace. Ruch promu niemożliwy."
 	/// radio used by the console to send messages on supply channel
 	var/obj/item/radio/headset/radio
 	/// var that tracks message cooldown
@@ -56,8 +54,8 @@
 /obj/machinery/computer/cargo/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
-	user.visible_message("<span class='warning'>[user] swipes a suspicious card through [src]!</span>",
-	"<span class='notice'>You adjust [src]'s routing and receiver spectrum, unlocking special supplies and contraband.</span>")
+	user.visible_message("<span class='warning'>[user] przeciąga podejrzaną kartę przez [src]!</span>",
+	"<span class='notice'>Dostosowujesz trasowanie i spektrum odbiornika [src], odblokowując specjalne zaopatrzenie i kontrabandę.</span>")
 
 	obj_flags |= EMAGGED
 	contraband = TRUE
@@ -93,7 +91,7 @@
 	data["loan_dispatched"] = SSshuttle.shuttle_loan && SSshuttle.shuttle_loan.dispatched
 	data["can_send"] = can_send
 	data["can_approve_requests"] = can_approve_requests
-	var/message = "Remember to stamp and send back the supply manifests."
+	var/message = "Pamiętaj, by podstemplować i odesłać manifesty zaopatrzenia."
 	if(SSshuttle.centcom_message)
 		message = SSshuttle.centcom_message
 	if(SSshuttle.supplyBlocked)
@@ -187,11 +185,11 @@
 			if(SSshuttle.supply.getDockedId() == "supply_home")
 				SSshuttle.supply.export_categories = get_export_categories()
 				SSshuttle.moveShuttle("supply", "supply_away", TRUE)
-				say("The supply shuttle is departing.")
+				say("Prom zaopatrzenia odlatuje.")
 				investigate_log("[key_name(usr)] sent the supply shuttle away.", INVESTIGATE_CARGO)
 			else
 				investigate_log("[key_name(usr)] called the supply shuttle.", INVESTIGATE_CARGO)
-				say("The supply shuttle has been called and will arrive in [SSshuttle.supply.timeLeft(600)] minutes.")
+				say("Prom zaopatrzenia został wezwany i przybędzie za [SSshuttle.supply.timeLeft(600)] min.")
 				SSshuttle.moveShuttle("supply", "supply_home", TRUE)
 			//NSV13 - Cargo Sleaker UI - Start
 			if(!length(cart_list))
@@ -200,13 +198,13 @@
 			//create the paper from the cart list
 			var/obj/item/paper/requisition_paper = new(get_turf(src))
 			requisition_paper.name = "requisition form"
-			var/requisition_text= "<h2>[GLOB.station_name] Supply Requisition</h2>"
+			var/requisition_text= "<h2>Zamówienie zaopatrzenia [GLOB.station_name]</h2>"
 			requisition_text += "<hr/>"
-			requisition_text += "Time of Order: [station_time_timestamp()]<br/>"
+			requisition_text += "Czas zamówienia: [station_time_timestamp()]<br/>"
 			for(var/order_name in cart_list)
 				var/datum/supply_order/order = cart_list[order_name]["order"]
 				requisition_text += "[cart_list[order_name]["amount"]] [order.pack.name]("
-				requisition_text += "Access Restrictions: [get_access_desc(order.pack.access)])</br>"
+				requisition_text += "Ograniczenia dostępu: [get_access_desc(order.pack.access)])</br>"
 			requisition_paper.add_raw_text(requisition_text)
 			requisition_paper.update_appearance()
 			//NSV13 - Cargo Sleaker UI - Stop
@@ -223,7 +221,7 @@
 				return
 			else
 				SSshuttle.shuttle_loan.loan_shuttle()
-				say("The supply shuttle has been loaned to CentCom.")
+				say("Prom zaopatrzenia został wypożyczony Centrali.")
 				. = TRUE
 		if("add")
 			if(!COOLDOWN_FINISHED(src, order_cooldown))
@@ -322,7 +320,7 @@
 		return
 
 	var/name = "*None Provided*"
-	var/rank = "*None Provided*"
+	var/rank = "*Nie podano*"
 	var/ckey = usr.ckey
 	if(ishuman(usr))
 		var/mob/living/carbon/human/human = usr
@@ -337,11 +335,11 @@
 		var/mob/living/living_user = usr
 		var/obj/item/card/id/id_card = living_user.get_idcard(TRUE)
 		if(!istype(id_card))
-			say("No ID card detected.")
+			say("Nie wykryto karty identyfikacyjnej.")
 			return
 		account = id_card.registered_account
 		if(!istype(account))
-			say("Invalid bank account.")
+			say("Nieprawidłowe konto bankowe.")
 			return
 
 	var/reason = ""

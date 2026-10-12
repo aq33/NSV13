@@ -142,7 +142,7 @@
 				message_admins("[key_name_admin(user)] disabled scrambled codes on [ADMIN_LOOKUPFLW(borg)].")
 				log_admin("[key_name(user)] disabled scrambled codes on [key_name(borg)].")
 		if ("rename")
-			var/new_name = stripped_input(user,"What would you like to name this cyborg?","Input a name",borg.real_name,MAX_NAME_LEN)
+			var/new_name = stripped_input(user,"Jak chcesz nazwać tego cyborga?","Input a name",borg.real_name,MAX_NAME_LEN)
 			if(!new_name)
 				return
 			message_admins("[key_name_admin(user)] renamed [ADMIN_LOOKUPFLW(borg)] to [new_name].")

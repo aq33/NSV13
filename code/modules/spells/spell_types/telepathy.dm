@@ -16,20 +16,20 @@
 /obj/effect/proc_holder/spell/targeted/telepathy/cast(list/targets, mob/living/simple_animal/revenant/user = usr)
 	for(var/mob/living/M in targets)
 		if(istype(M.get_item_by_slot(ITEM_SLOT_HEAD), /obj/item/clothing/head/foilhat))
-			to_chat(user, "<span class='warning'>It appears the target's mind is ironclad! No getting a message in there!</span>")
+			to_chat(user, "<span class='warning'>Wygląda na to, że umysł celu jest pancerny! Nie da się tam przekazać wiadomości!</span>")
 			return
-		var/msg = stripped_input(usr, "What do you wish to tell [M]?", null, "")
+		var/msg = stripped_input(usr, "Co chcesz przekazać [M]?", null, "")
 		if(!msg)
 			charge_counter = charge_max
 			return
 		if(CHAT_FILTER_CHECK(msg))
-			to_chat(user, "<span class='warning'>Your message contains forbidden words.</span>")
+			to_chat(user, "<span class='warning'>Twoja wiadomość zawiera zakazane słowa.</span>")
 			return
 		msg = user.treat_message_min(msg)
 		log_directed_talk(user, M, msg, LOG_SAY, "[name]")
-		to_chat(user, "<span class='[boldnotice]'>You transmit to [M]:</span> <span class='[notice]'>[msg]</span>")
+		to_chat(user, "<span class='[boldnotice]'>Przekazujesz [M]:</span> <span class='[notice]'>[msg]</span>")
 		if(!M.anti_magic_check(magic_check, holy_check)) //hear no evil
-			to_chat(M, "<span class='[boldnotice]'>You hear something behind you talking...</span> <span class='[notice]'>[msg]</span>")
+			to_chat(M, "<span class='[boldnotice]'>Słyszysz, jak coś za tobą mówi...</span> <span class='[notice]'>[msg]</span>")
 		for(var/ded in GLOB.dead_mob_list)
 			if(!isobserver(ded))
 				continue

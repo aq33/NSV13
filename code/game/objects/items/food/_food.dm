@@ -104,15 +104,15 @@
 /obj/item/food/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/kitchen/fork))
 		if(istype(src, /obj/item/food/soup))
-			to_chat(user, "<span class='warning'>You can't eat soup with a fork!</span>")
+			to_chat(user, "<span class='warning'>Nie zjesz zupy widelcem!</span>")
 			return
 		var/obj/item/kitchen/fork/F = W
 		if(F.forkload)
-			to_chat(user, "<span class='warning'>You already have [src] on your fork!</span>")
+			to_chat(user, "<span class='warning'>Już masz [src] na widelcu!</span>")
 		else
 			F.icon_state = "forkloaded"
-			user.visible_message("[user] takes a piece of [src] with [user.p_their()] fork!", \
-				"<span class='notice'>You take a piece of [src] with your fork.</span>")
+			user.visible_message("[user] nabiera kawałek [src] na widelec!", \
+				"<span class='notice'>Nabierasz kawałek [src] na widelec.</span>")
 
 			var/datum/reagent/R = pick(reagents.reagent_list)
 			reagents.remove_reagent(R.type, 1)
@@ -124,11 +124,11 @@
 		if(istype(src, /obj/item/food/soup))
 			var/obj/item/kitchen/spoon/F = W
 			if(F.forkload)
-				to_chat(user, "<span class='warning'>You already have spoonful of food!</span>")
+				to_chat(user, "<span class='warning'>Już masz łyżkę jedzenia!</span>")
 			else
 				F.icon_state = "spoonloaded"
-				user.visible_message("[user] takes a spoonful of [src] with [user.p_their()] spoon!", \
-					"<span class='notice'>You take a spoonful of [src] with your spoon.</span>")
+				user.visible_message("[user] nabiera łyżkę [src]!", \
+					"<span class='notice'>Nabierasz łyżkę [src].</span>")
 
 				var/datum/reagent/R = pick(reagents.reagent_list)
 				reagents.remove_reagent(R.type, 1)
@@ -137,16 +137,16 @@
 					qdel(src)
 			return
 		else
-			to_chat(user, "<span class='warning'>You can't eat this with a spoon!</span>")
+			to_chat(user, "<span class='warning'>Tego nie zjesz łyżką!</span>")
 			return
 	if(istype(W, /obj/item/pen)) //renaming food (BeeStation#13360), merged into our fork/spoon attackby
 		var/target_name = tgui_input_text(user, "What would you like to name your masterpiece?", "Name:", name || "Food", MAX_MESSAGE_LEN)
 		if(!target_name || !length(target_name))
 			return
 		if(CHAT_FILTER_CHECK(target_name))
-			to_chat(user, "<span class='warning'>The given name contains prohibited word(s).</span>")
+			to_chat(user, "<span class='warning'>Podana nazwa zawiera zakazane słowa.</span>")
 			return
-		to_chat(user, "<span class='notice'>You rename the '[name]' to '[target_name]'.</span>")
+		to_chat(user, "<span class='notice'>Zmieniasz nazwę „[name]” na „[target_name]”.</span>")
 		name = target_name
 		update_appearance()
 		return

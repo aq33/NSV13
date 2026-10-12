@@ -1,6 +1,6 @@
 /datum/bounty/item/mech/New()
 	..()
-	description = "Upper management has requested one [name] mech be sent as soon as possible. Ship it to receive a large payment."
+	description = "Wyższe kierownictwo prosi o jak najszybsze wysłanie jednego mecha [name]. Wyślijcie go, by otrzymać dużą zapłatę."
 
 /datum/bounty/item/mech/ship(obj/O)
 	if(!applies_to(O))

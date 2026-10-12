@@ -6,13 +6,13 @@
 
 /datum/reagent/consumable/orangejuice
 	name = "Orange Juice"
-	description = "Both delicious AND rich in Vitamin C, what more do you need?"
+	description = "Pyszny I bogaty w witaminę C, czego chcieć więcej?"
 	color = "#E78108" // rgb: 231, 129, 8
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "oranges"
+	taste_description = "pomarańcze"
 	glass_icon_state = "glass_orange"
 	glass_name = "glass of orange juice"
-	glass_desc = "Vitamins! Yay!"
+	glass_desc = "Witaminy! Hura!"
 	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/orangejuice/on_mob_life(mob/living/carbon/M)
@@ -23,13 +23,13 @@
 
 /datum/reagent/consumable/tomatojuice
 	name = "Tomato Juice"
-	description = "Tomatoes made into juice. What a waste of big, juicy tomatoes, huh?"
+	description = "Pomidory przerobione na sok. Co za marnotrawstwo dużych, soczystych pomidorów, co?"
 	color = "#731008" // rgb: 115, 16, 8
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "tomatoes"
+	taste_description = "pomidory"
 	glass_icon_state = "glass_red"
 	glass_name = "glass of tomato juice"
-	glass_desc = "Are you sure this is tomato juice?"
+	glass_desc = "Na pewno to sok pomidorowy?"
 	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/tomatojuice/on_mob_life(mob/living/carbon/M)
@@ -40,13 +40,13 @@
 
 /datum/reagent/consumable/limejuice
 	name = "Lime Juice"
-	description = "The sweet-sour juice of limes."
+	description = "Słodko-kwaśny sok z limonek."
 	color = "#365E30" // rgb: 54, 94, 48
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "unbearable sourness"
+	taste_description = "nieznośna kwaśność"
 	glass_icon_state = "glass_green"
 	glass_name = "glass of lime juice"
-	glass_desc = "A glass of sweet-sour lime juice."
+	glass_desc = "Szklanka słodko-kwaśnego soku z limonki."
 	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/limejuice/on_mob_life(mob/living/carbon/M)
@@ -57,13 +57,13 @@
 
 /datum/reagent/consumable/carrotjuice
 	name = "Carrot Juice"
-	description = "It is just like a carrot but without crunching."
+	description = "Jak marchewka, tylko bez chrupania."
 	color = "#973800" // rgb: 151, 56, 0
 	chem_flags = CHEMICAL_GOAL_BARTENDER_SERVING
-	taste_description = "carrots"
+	taste_description = "marchewki"
 	glass_icon_state = "carrotjuice"
 	glass_name = "glass of  carrot juice"
-	glass_desc = "It's just like a carrot but without crunching."
+	glass_desc = "To jak marchewka, tylko bez chrupania."
 	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/carrotjuice/on_mob_life(mob/living/carbon/M)
@@ -80,35 +80,35 @@
 
 /datum/reagent/consumable/berryjuice
 	name = "Berry Juice"
-	description = "A delicious blend of several different kinds of berries."
+	description = "Pyszna mieszanka kilku rodzajów jagód."
 	color = "#863333" // rgb: 134, 51, 51
 	chem_flags = NONE
-	taste_description = "berries"
+	taste_description = "jagody"
 	glass_icon_state = "berryjuice"
 	glass_name = "glass of berry juice"
-	glass_desc = "Berry juice. Or maybe it's jam. Who cares?"
+	glass_desc = "Sok z jagód. A może to dżem. Kogo to obchodzi?"
 	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/applejuice
 	name = "Apple Juice"
-	description = "The sweet juice of an apple, fit for all ages."
+	description = "Słodki sok z jabłka, dla każdego, w każdym wieku."
 	color = "#ECFF56" // rgb: 236, 255, 86
 	chem_flags = NONE
-	taste_description = "apples"
+	taste_description = "jabłka"
 	glass_icon_state = "glass_orange"
 	glass_name = "glass of apple juice"
-	glass_desc = "Apple juice. Or maybe it's cider. Who cares?"
+	glass_desc = "Sok jabłkowy. A może to cydr. Kogo to obchodzi?"
 	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/poisonberryjuice
 	name = "Poison Berry Juice"
-	description = "A tasty juice blended from various kinds of very deadly and toxic berries."
+	description = "Smaczny sok z różnych bardzo śmiercionośnych i trujących jagód."
 	color = "#863353" // rgb: 134, 51, 83
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BARTENDER_SERVING
-	taste_description = "berries"
+	taste_description = "jagody"
 	glass_icon_state = "poisonberryjuice"
 	glass_name = "glass of berry juice"
-	glass_desc = "Berry juice. Or maybe it's poison. Who cares?"
+	glass_desc = "Sok z jagód. A może to trucizna. Kogo to obchodzi?"
 	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/poisonberryjuice/on_mob_life(mob/living/carbon/M)
@@ -118,35 +118,35 @@
 
 /datum/reagent/consumable/watermelonjuice
 	name = "Watermelon Juice"
-	description = "Delicious juice made from watermelon."
+	description = "Pyszny sok z arbuza."
 	color = "#863333" // rgb: 134, 51, 51
 	chem_flags = NONE
-	taste_description = "juicy watermelon"
+	taste_description = "soczysty arbuz"
 	glass_icon_state = "glass_red"
 	glass_name = "glass of watermelon juice"
-	glass_desc = "A glass of watermelon juice."
+	glass_desc = "Szklanka soku z arbuza."
 	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/lemonjuice
 	name = "Lemon Juice"
-	description = "This juice is VERY sour."
+	description = "Ten sok jest BARDZO kwaśny."
 	color = "#863333" // rgb: 175, 175, 0
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "sourness"
+	taste_description = "kwaśność"
 	glass_icon_state  = "lemonglass"
 	glass_name = "glass of lemon juice"
-	glass_desc = "Sour..."
+	glass_desc = "Kwaśne..."
 	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/banana
 	name = "Banana Juice"
-	description = "The raw essence of a banana. HONK"
+	description = "Surowa esencja banana. HONK"
 	color = "#863333" // rgb: 175, 175, 0
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "banana"
+	taste_description = "banan"
 	glass_icon_state = "banana"
 	glass_name = "glass of banana juice"
-	glass_desc = "The raw essence of a banana. HONK."
+	glass_desc = "Surowa esencja banana. HONK."
 	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/banana/on_mob_life(mob/living/carbon/M)
@@ -157,12 +157,12 @@
 
 /datum/reagent/consumable/nothing
 	name = "Nothing"
-	description = "Absolutely nothing."
+	description = "Absolutnie nic."
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "nothing"
+	taste_description = "nic"
 	glass_icon_state = "nothing"
 	glass_name = "nothing"
-	glass_desc = "Absolutely nothing."
+	glass_desc = "Absolutnie nic."
 	shot_glass_icon_state = "shotglass"
 	hydration_factor = 0 * REAGENTS_METABOLISM
 
@@ -177,11 +177,11 @@
 
 /datum/reagent/consumable/laughter
 	name = "Laughter"
-	description = "Some say that this is the best medicine, but recent studies have proven that to be untrue."
+	description = "Niektórzy mówią, że to najlepsze lekarstwo, ale najnowsze badania dowiodły, że to nieprawda."
 	metabolization_rate = INFINITY
 	color = "#FF4DD2"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BOTANIST_HARVEST
-	taste_description = "laughter"
+	taste_description = "śmiech"
 
 
 /datum/reagent/consumable/laughter/on_mob_life(mob/living/carbon/M)
@@ -200,26 +200,26 @@
 
 /datum/reagent/consumable/superlaughter
 	name = "Super Laughter"
-	description = "Funny until you're the one laughing."
+	description = "Zabawne, dopóki to nie ty się śmiejesz."
 	metabolization_rate = 1.5 * REAGENTS_METABOLISM
 	color = "#FF4DD2"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN
-	taste_description = "laughter"
+	taste_description = "śmiech"
 
 /datum/reagent/consumable/superlaughter/on_mob_life(mob/living/carbon/M)
 	if(prob(30))
-		M.visible_message("<span class='danger'>[M] bursts out into a fit of uncontrollable laughter!</span>", "<span class='userdanger'>You burst out in a fit of uncontrollable laughter!</span>")
+		M.visible_message("<span class='danger'>[M] wybucha niekontrolowanym śmiechem!</span>", "<span class='userdanger'>Wybuchasz niekontrolowanym śmiechem!</span>")
 		M.Stun(5)
 		SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "chemical_laughter", /datum/mood_event/chemical_superlaughter)
 	..()
 
 /datum/reagent/consumable/potato_juice
 	name = "Potato Juice"
-	description = "Juice of the potato. Bleh."
+	description = "Sok z ziemniaka. Bleh."
 	nutriment_factor = 2 * REAGENTS_METABOLISM
 	color = "#302000" // rgb: 48, 32, 0
 	chem_flags = NONE
-	taste_description = "irish sadness"
+	taste_description = "irlandzki smutek"
 	glass_icon_state = "glass_brown"
 	glass_name = "glass of potato juice"
 	glass_desc = "Bleh..."
@@ -227,94 +227,94 @@
 
 /datum/reagent/consumable/grapejuice
 	name = "Grape Juice"
-	description = "The juice of a bunch of grapes. Guaranteed non-alcoholic."
+	description = "Sok z kiści winogron. Gwarantowanie bezalkoholowy."
 	color = "#290029" // dark purple
 	chem_flags = NONE
-	taste_description = "grape soda"
+	taste_description = "napój winogronowy"
 	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/milk
 	name = "Milk"
-	description = "An opaque white liquid produced by the mammary glands of mammals."
+	description = "Nieprzezroczysty biały płyn wytwarzany przez gruczoły mleczne ssaków."
 	color = "#DFDFDF" // rgb: 223, 223, 223
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "milk"
+	taste_description = "mleko"
 	glass_icon_state = "glass_white"
 	glass_name = "glass of milk"
-	glass_desc = "White and nutritious goodness!"
+	glass_desc = "Biała i pożywna dobroć!"
 	overdose_threshold = 500 //High calcium intake is bad for bone health. OD is exactly like having taken a normal-ish bone hurt juice. If anyone hits the superoverdose, well I'll be damned
 	hydration_factor = 15 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/milk/goat
 	name = "Goat Milk"
-	description = "An opaque white liquid produced by the mammary glands of goats."
-	taste_description = "goat"
+	description = "Nieprzezroczysty biały płyn wytwarzany przez gruczoły mleczne kóz."
+	taste_description = "koza"
 	glass_name = "glass of goat milk"
 
 /datum/reagent/consumable/milk/sheep
 	name = "Sheep Milk"
-	description = "An opaque white liquid produced by the mammary glands of sheep."
-	taste_description = "sheep"
+	description = "Nieprzezroczysty biały płyn wytwarzany przez gruczoły mleczne owiec."
+	taste_description = "owca"
 	glass_name = "glass of sheep milk"
 
 /datum/reagent/consumable/milk/blue
 	name = "Blue Cheese Milk"
-	description = "An opaque white liquid."
-	taste_description = "bitter"
+	description = "Nieprzezroczysty biały płyn."
+	taste_description = "gorycz"
 	glass_name = "glass of cheese milk"
 
 /datum/reagent/consumable/milk/brie
 	name = "Brie Cheese Milk"
-	description = "An opaque white liquid."
-	taste_description = "bitter"
+	description = "Nieprzezroczysty biały płyn."
+	taste_description = "gorycz"
 	glass_name = "glass of cheese milk"
 
 /datum/reagent/consumable/milk/cheddar
 	name = "Cheddar Cheese Milk"
-	description = "An opaque white liquid."
-	taste_description = "bitter"
+	description = "Nieprzezroczysty biały płyn."
+	taste_description = "gorycz"
 	glass_name = "glass of cheese milk"
 
 /datum/reagent/consumable/milk/feta
 	name = "Feta Cheese Milk"
-	description = "An opaque white liquid."
-	taste_description = "bitter"
+	description = "Nieprzezroczysty biały płyn."
+	taste_description = "gorycz"
 	glass_name = "glass of cheese milk"
 
 /datum/reagent/consumable/milk/goatcheese
 	name = "Goat Cheese Milk"
-	description = "An opaque white liquid."
-	taste_description = "bitter"
+	description = "Nieprzezroczysty biały płyn."
+	taste_description = "gorycz"
 	glass_name = "glass of cheese milk"
 
 /datum/reagent/consumable/milk/shoat
 	name = "Shoat Milk"
-	description = "An opaque white liquid."
-	taste_description = "sheep and goat"
+	description = "Nieprzezroczysty biały płyn."
+	taste_description = "owca i koza"
 	glass_name = "glass of shoat milk"
 
 /datum/reagent/consumable/milk/halloumi
 	name = "Halloumi Cheese Milk"
-	description = "An opaque white liquid."
-	taste_description = "bitter"
+	description = "Nieprzezroczysty biały płyn."
+	taste_description = "gorycz"
 	glass_name = "glass of cheese milk"
 
 /datum/reagent/consumable/milk/mozzarella
 	name = "Mozzarella Cheese Milk"
-	description = "An opaque white liquid."
-	taste_description = "bitter"
+	description = "Nieprzezroczysty biały płyn."
+	taste_description = "gorycz"
 	glass_name = "glass of cheese milk"
 
 /datum/reagent/consumable/milk/parmesan
 	name = "Parmesan Cheese Milk"
-	description = "An opaque white liquid."
-	taste_description = "bitter"
+	description = "Nieprzezroczysty biały płyn."
+	taste_description = "gorycz"
 	glass_name = "glass of cheese milk"
 
 /datum/reagent/consumable/milk/swiss
 	name = "Swiss Cheese Milk"
-	description = "An opaque white liquid."
-	taste_description = "bitter"
+	description = "Nieprzezroczysty biały płyn."
+	taste_description = "gorycz"
 	glass_name = "glass of cheese milk"
 
 /datum/reagent/consumable/milk/on_mob_life(mob/living/carbon/M)
@@ -352,13 +352,13 @@
 
 /datum/reagent/consumable/soymilk
 	name = "Soy Milk"
-	description = "An opaque white liquid made from soybeans."
+	description = "Nieprzezroczysty biały płyn z soi."
 	color = "#DFDFC7" // rgb: 223, 223, 199
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "soy milk"
+	taste_description = "mleko sojowe"
 	glass_icon_state = "glass_white"
 	glass_name = "glass of soy milk"
-	glass_desc = "White and nutritious soy goodness!"
+	glass_desc = "Biała i pożywna sojowa dobroć!"
 	hydration_factor = 12 * REAGENTS_METABOLISM
 
 
@@ -377,13 +377,13 @@
 
 /datum/reagent/consumable/cream
 	name = "Cream"
-	description = "The fatty, still liquid part of milk. Why don't you mix this with sum scotch, eh?"
+	description = "Tłusta, wciąż płynna część mleka. Może zmieszasz to z odrobiną szkockiej, co?"
 	color = "#DFD7AF" // rgb: 223, 215, 175
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "creamy milk"
+	taste_description = "kremowe mleko"
 	glass_icon_state  = "glass_white"
 	glass_name = "glass of cream"
-	glass_desc = "Ewwww..."
+	glass_desc = "Fuuuj..."
 	hydration_factor = 9 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/cream/on_mob_life(mob/living/carbon/M)
@@ -394,15 +394,15 @@
 
 /datum/reagent/consumable/coffee
 	name = "Coffee"
-	description = "Coffee is a brewed drink prepared from roasted seeds, commonly called coffee beans, of the coffee plant."
+	description = "Kawa to napój parzony z palonych nasion, zwanych ziarnami kawy, krzewu kawowca."
 	color = "#482000" // rgb: 72, 32, 0
 	chem_flags = CHEMICAL_BASIC_DRINK
 	nutriment_factor = 0
 	overdose_threshold = 80
-	taste_description = "bitterness"
+	taste_description = "gorycz"
 	glass_icon_state = "glass_brown"
 	glass_name = "glass of coffee"
-	glass_desc = "Don't drop it, or you'll send scalding liquid and glass shards everywhere."
+	glass_desc = "Nie upuść jej, bo wszędzie rozpryśnie się wrzący płyn i odłamki szkła."
 	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/coffee/overdose_process(mob/living/M)
@@ -422,14 +422,14 @@
 
 /datum/reagent/consumable/tea
 	name = "Tea"
-	description = "Tasty black tea, it has antioxidants, it's good for you!"
+	description = "Smaczna czarna herbata, ma przeciwutleniacze, jest zdrowa!"
 	color = "#101000" // rgb: 16, 16, 0
 	chem_flags = CHEMICAL_BASIC_DRINK
 	nutriment_factor = 0
-	taste_description = "tart black tea"
+	taste_description = "cierpka czarna herbata"
 	glass_icon_state = "teaglass"
 	glass_name = "glass of tea"
-	glass_desc = "Drinking it from here would not seem right."
+	glass_desc = "Picie stąd nie wydawałoby się właściwe."
 	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/tea/on_mob_life(mob/living/carbon/M)
@@ -445,27 +445,27 @@
 
 /datum/reagent/consumable/lemonade
 	name = "Lemonade"
-	description = "Sweet, tangy lemonade. Good for the soul."
+	description = "Słodka, orzeźwiająca lemoniada. Dobra dla duszy."
 	chem_flags = CHEMICAL_RNG_BOTANY
 	quality = DRINK_NICE
-	taste_description = "sunshine and summertime"
+	taste_description = "słońce i lato"
 	glass_icon_state = "lemonpitcher"
 	glass_name = "pitcher of lemonade"
-	glass_desc = "This drink leaves you feeling nostalgic for some reason."
+	glass_desc = "Z jakiegoś powodu ten napój budzi nostalgię."
 	hydration_factor = 12 * REAGENTS_METABOLISM
 
 
 /datum/reagent/consumable/tea/arnold_palmer
 	name = "Arnold Palmer"
-	description = "Encourages the patient to go golfing."
+	description = "Zachęca pacjenta do gry w golfa."
 	color = "#FFB766"
 	chem_flags = CHEMICAL_RNG_BOTANY
 	quality = DRINK_NICE
 	nutriment_factor = 2
-	taste_description = "bitter tea"
+	taste_description = "gorzka herbata"
 	glass_icon_state = "arnold_palmer"
 	glass_name = "Arnold Palmer"
-	glass_desc = "You feel like taking a few golf swings after a few swigs of this."
+	glass_desc = "Po kilku łykach masz ochotę na kilka zamachów kijem golfowym."
 
 /datum/reagent/consumable/tea/arnold_palmer/on_mob_life(mob/living/carbon/M)
 	if(prob(5))
@@ -475,14 +475,14 @@
 
 /datum/reagent/consumable/icecoffee
 	name = "Iced Coffee"
-	description = "Coffee and ice, refreshing and cool."
+	description = "Kawa i lód, orzeźwiające i chłodne."
 	color = "#102838" // rgb: 16, 40, 56
 	chem_flags = CHEMICAL_RNG_BOTANY
 	nutriment_factor = 0
-	taste_description = "bitter coldness"
+	taste_description = "gorzki chłód"
 	glass_icon_state = "icedcoffeeglass"
 	glass_name = "iced coffee"
-	glass_desc = "A drink to perk you up and refresh you!"
+	glass_desc = "Napój, który cię ożywi i odświeży!"
 	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/icecoffee/on_mob_life(mob/living/carbon/M)
@@ -496,14 +496,14 @@
 
 /datum/reagent/consumable/icetea
 	name = "Iced Tea"
-	description = "No relation to a certain rap artist/actor."
+	description = "Nie ma związku z pewnym raperem/aktorem."
 	color = "#104038" // rgb: 16, 64, 56
 	chem_flags = CHEMICAL_BASIC_DRINK
 	nutriment_factor = 0
-	taste_description = "sweet tea"
+	taste_description = "słodka herbata"
 	glass_icon_state = "icedteaglass"
 	glass_name = "iced tea"
-	glass_desc = "All natural, antioxidant-rich flavour sensation."
+	glass_desc = "Całkowicie naturalne, bogate w przeciwutleniacze doznanie smakowe."
 	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/icetea/on_mob_life(mob/living/carbon/M)
@@ -518,13 +518,13 @@
 
 /datum/reagent/consumable/space_cola
 	name = "Cola"
-	description = "A refreshing beverage."
+	description = "Orzeźwiający napój."
 	color = "#100800" // rgb: 16, 8, 0
 	chem_flags = CHEMICAL_BASIC_DRINK
 	taste_description = "cola"
 	glass_icon_state  = "glass_brown"
 	glass_name = "glass of Space Cola"
-	glass_desc = "A glass of refreshing Space Cola."
+	glass_desc = "Szklanka orzeźwiającej Space Coli."
 	hydration_factor = 7 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/space_cola/on_mob_life(mob/living/carbon/M)
@@ -534,14 +534,14 @@
 
 /datum/reagent/consumable/nuka_cola
 	name = "Nuka Cola"
-	description = "Cola, cola never changes."
+	description = "Cola, cola nigdy się nie zmienia."
 	color = "#100800" // rgb: 16, 8, 0
 	chem_flags = CHEMICAL_RNG_BOTANY
 	quality = DRINK_VERYGOOD
-	taste_description = "the future"
+	taste_description = "przyszłość"
 	glass_icon_state = "nuka_colaglass"
 	glass_name = "glass of Nuka Cola"
-	glass_desc = "Don't cry, Don't raise your eye, It's only nuclear wasteland."
+	glass_desc = "Nie płacz, nie unoś oczu, to tylko jądrowe pustkowie."
 	hydration_factor = 5 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/nuka_cola/on_mob_metabolize(mob/living/L)
@@ -565,14 +565,14 @@
 
 /datum/reagent/consumable/grey_bull
 	name = "Grey Bull"
-	description = "Grey Bull, it gives you gloves!"
+	description = "Grey Bull doda ci rękawic!"
 	color = "#EEFF00" // rgb: 238, 255, 0
 	chem_flags = CHEMICAL_RNG_BOTANY
 	quality = DRINK_VERYGOOD
-	taste_description = "carbonated oil"
+	taste_description = "gazowany olej"
 	glass_icon_state = "grey_bull_glass"
 	glass_name = "glass of Grey Bull"
-	glass_desc = "Surprisingly it isn't grey."
+	glass_desc = "O dziwo, nie jest szary."
 	hydration_factor = 6 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/grey_bull/on_mob_metabolize(mob/living/L)
@@ -593,13 +593,13 @@
 
 /datum/reagent/consumable/spacemountainwind
 	name = "SM Wind"
-	description = "Blows right through you like a space wind."
+	description = "Przewiewa cię na wylot jak kosmiczny wiatr."
 	color = "#102000" // rgb: 16, 32, 0
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "sweet citrus soda"
+	taste_description = "słodki napój cytrusowy"
 	glass_icon_state = "Space_mountain_wind_glass"
 	glass_name = "glass of Space Mountain Wind"
-	glass_desc = "Space Mountain Wind. As you know, there are no mountains in space, only wind."
+	glass_desc = "Space Mountain Wind. Jak wiadomo, w kosmosie nie ma gór, jest tylko wiatr."
 	hydration_factor = 5 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/spacemountainwind/on_mob_life(mob/living/carbon/M)
@@ -612,13 +612,13 @@
 
 /datum/reagent/consumable/dr_gibb
 	name = "Dr. Gibb"
-	description = "A delicious blend of 42 different flavours."
+	description = "Pyszna mieszanka 42 różnych smaków."
 	color = "#102000" // rgb: 16, 32, 0
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "cherry soda" // FALSE ADVERTISING
+	taste_description = "napój wiśniowy" // FALSE ADVERTISING
 	glass_icon_state = "dr_gibb_glass"
 	glass_name = "glass of Dr. Gibb"
-	glass_desc = "Dr. Gibb. Not as dangerous as the glass_name might imply."
+	glass_desc = "Dr. Gibb. Nie tak niebezpieczny, jak mogłaby sugerować nazwa szklanki."
 	hydration_factor = 5 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/dr_gibb/on_mob_life(mob/living/carbon/M)
@@ -628,13 +628,13 @@
 
 /datum/reagent/consumable/space_up
 	name = "Space-Up"
-	description = "Tastes like a hull breach in your mouth."
+	description = "Smakuje jak wyłom w kadłubie w ustach."
 	color = "#00FF00" // rgb: 0, 255, 0
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "cherry soda"
+	taste_description = "napój wiśniowy"
 	glass_icon_state = "space-up_glass"
 	glass_name = "glass of Space-Up"
-	glass_desc = "Space-up. It helps you keep your cool."
+	glass_desc = "Space-Up. Pomaga zachować spokój."
 	hydration_factor = 6 * REAGENTS_METABOLISM
 
 
@@ -644,13 +644,13 @@
 
 /datum/reagent/consumable/lemon_lime
 	name = "Lemon Lime"
-	description = "A tangy substance made of 0.5% natural citrus!"
+	description = "Wyrazista substancja z 0,5% naturalnych cytrusów!"
 	color = "#8CFF00" // rgb: 135, 255, 0
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "tangy lime and lemon soda"
+	taste_description = "wyrazisty napój cytrynowo-limonkowy"
 	glass_icon_state = "glass_yellow"
 	glass_name = "glass of lemon-lime"
-	glass_desc = "You're pretty certain a real fruit has never actually touched this."
+	glass_desc = "Jesteś prawie pewien, że prawdziwy owoc nigdy tego nie dotknął."
 	hydration_factor = 5 * REAGENTS_METABOLISM
 
 
@@ -660,13 +660,13 @@
 
 /datum/reagent/consumable/pwr_game
 	name = "Pwr Game"
-	description = "The only drink with the PWR that true gamers crave."
+	description = "Jedyny napój z MOCĄ, której pragną prawdziwi gracze."
 	color = "#9385bf" // rgb: 58, 52, 75
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "sweet and salty tang"
+	taste_description = "słodko-słony smak"
 	glass_icon_state = "glass_red"
 	glass_name = "glass of Pwr Game"
-	glass_desc = "Goes well with a Vlad's salad."
+	glass_desc = "Pasuje do sałatki Vlada."
 	hydration_factor = 6 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/pwr_game/on_mob_life(mob/living/carbon/M)
@@ -675,13 +675,13 @@
 
 /datum/reagent/consumable/shamblers
 	name = "Shambler's Juice"
-	description = "~Shake me up some of that Shambler's Juice!~"
+	description = "~Wstrząśnij mi trochę tego soku Shamblera!~"
 	color = "#f00060" // rgb: 94, 0, 38
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "carbonated metallic soda"
+	taste_description = "gazowany metaliczny napój"
 	glass_icon_state = "glass_red"
 	glass_name = "glass of Shambler's juice"
-	glass_desc = "Mmm mm, shambly."
+	glass_desc = "Mmm mm, szamblowate."
 	hydration_factor = 6 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/shamblers/on_mob_life(mob/living/carbon/M)
@@ -689,13 +689,13 @@
 	..()
 /datum/reagent/consumable/sodawater
 	name = "Soda Water"
-	description = "A can of club soda. Why not make a scotch and soda?"
+	description = "Puszka wody sodowej. Może zrobić szkocką z wodą?"
 	color = "#619494" // rgb: 97, 148, 148
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "carbonated water"
+	taste_description = "woda gazowana"
 	glass_icon_state = "glass_clear"
 	glass_name = "glass of soda water"
-	glass_desc = "Soda water. Why not make a scotch and soda?"
+	glass_desc = "Woda sodowa. Może zrobić szkocką z wodą?"
 	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/sodawater/on_mob_life(mob/living/carbon/M)
@@ -706,13 +706,13 @@
 
 /datum/reagent/consumable/tonic
 	name = "Tonic Water"
-	description = "It tastes strange but at least the quinine keeps the Space Malaria at bay."
+	description = "Smakuje dziwnie, ale przynajmniej chinina trzyma z daleka kosmiczną malarię."
 	color = "#0064C8" // rgb: 0, 100, 200
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "tart and fresh"
+	taste_description = "cierpki i świeży"
 	glass_icon_state = "glass_clear"
 	glass_name = "glass of tonic water"
-	glass_desc = "Quinine tastes funny, but at least it'll keep that Space Malaria away."
+	glass_desc = "Chinina dziwnie smakuje, ale przynajmniej trzyma z daleka kosmiczną malarię."
 	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/tonic/on_mob_life(mob/living/carbon/M)
@@ -725,13 +725,13 @@
 
 /datum/reagent/consumable/monkey_energy
 	name = "Monkey Energy"
-	description = "The only drink that will make you unleash the ape."
+	description = "Jedyny napój, który uwolni w tobie małpę."
 	color = "#f39b03" // rgb: 243, 155, 3
 	chem_flags = CHEMICAL_RNG_BOTANY
-	taste_description = "barbecue and nostalgia"
+	taste_description = "grill i nostalgia"
 	glass_icon_state = "monkey_energy_glass"
 	glass_name = "glass of Monkey Energy"
-	glass_desc = "You can unleash the ape, but without the pop of the can?"
+	glass_desc = "Możesz uwolnić małpę, ale bez syknięcia puszki?"
 	hydration_factor = 6 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/monkey_energy/on_mob_life(mob/living/carbon/M)
@@ -753,14 +753,14 @@
 
 /datum/reagent/consumable/ice
 	name = "Ice"
-	description = "Frozen water, your dentist wouldn't like you chewing this."
+	description = "Zamarznięta woda, dentysta nie byłby zadowolony, że to gryziesz."
 	reagent_state = SOLID
 	color = "#619494" // rgb: 97, 148, 148
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "ice"
+	taste_description = "lód"
 	glass_icon_state = "iceglass"
 	glass_name = "glass of ice"
-	glass_desc = "Generally, you're supposed to put something else in there too..."
+	glass_desc = "Zasadniczo powinieneś tam włożyć jeszcze coś..."
 	hydration_factor = 14 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/ice/on_mob_life(mob/living/carbon/M)
@@ -769,14 +769,14 @@
 
 /datum/reagent/consumable/soy_latte
 	name = "Soy Latte"
-	description = "A nice and tasty beverage while you are reading your hippie books."
+	description = "Miły i smaczny napój do czytania hipisowskich książek."
 	color = "#664300" // rgb: 102, 67, 0
 	chem_flags = CHEMICAL_RNG_BOTANY
 	quality = DRINK_NICE
-	taste_description = "creamy coffee"
+	taste_description = "kremowa kawa"
 	glass_icon_state = "soy_latte"
 	glass_name = "soy latte"
-	glass_desc = "A nice and refreshing beverage while you're reading."
+	glass_desc = "Miły i orzeźwiający napój do czytania."
 	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/soy_latte/on_mob_life(mob/living/carbon/M)
@@ -792,14 +792,14 @@
 
 /datum/reagent/consumable/cafe_latte
 	name = "Cafe Latte"
-	description = "A nice, strong and tasty beverage while you are reading."
+	description = "Miły, mocny i smaczny napój do czytania."
 	color = "#664300" // rgb: 102, 67, 0
 	chem_flags = CHEMICAL_RNG_BOTANY
 	quality = DRINK_NICE
-	taste_description = "bitter cream"
+	taste_description = "gorzka śmietanka"
 	glass_icon_state = "cafe_latte"
 	glass_name = "cafe latte"
-	glass_desc = "A nice, strong and refreshing beverage while you're reading."
+	glass_desc = "Miły, mocny i orzeźwiający napój do czytania."
 	hydration_factor = 12 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/cafe_latte/on_mob_life(mob/living/carbon/M)
@@ -815,14 +815,14 @@
 
 /datum/reagent/consumable/doctor_delight
 	name = "The Doctor's Delight"
-	description = "A gulp a day keeps the Medibot away! A mixture of juices that heals most damage types fairly quickly at the cost of hunger."
+	description = "Łyk dziennie trzyma medibota z daleka! Mieszanka soków, która dość szybko leczy większość rodzajów obrażeń kosztem głodu."
 	color = "#FF8CFF" // rgb: 255, 140, 255
 	chem_flags = CHEMICAL_RNG_BOTANY
 	quality = DRINK_VERYGOOD
-	taste_description = "homely fruit"
+	taste_description = "swojskie owoce"
 	glass_icon_state = "doctorsdelightglass"
 	glass_name = "Doctor's Delight"
-	glass_desc = "The space doctor's favorite. Guaranteed to restore bodily injury; side effects include cravings and hunger."
+	glass_desc = "Ulubieniec kosmicznych lekarzy. Gwarantowanie leczy urazy ciała; skutki uboczne to zachcianki i głód."
 	hydration_factor = 8 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/doctor_delight/on_mob_life(mob/living/carbon/M)
@@ -838,94 +838,94 @@
 
 /datum/reagent/consumable/chocolatepudding
 	name = "Chocolate Pudding"
-	description = "A great dessert for chocolate lovers."
+	description = "Świetny deser dla miłośników czekolady."
 	color = "#800000"
 	chem_flags = CHEMICAL_RNG_BOTANY
 	quality = DRINK_VERYGOOD
 	nutriment_factor = 4 * REAGENTS_METABOLISM
-	taste_description = "sweet chocolate"
+	taste_description = "słodka czekolada"
 	glass_icon_state = "chocolatepudding"
 	glass_name = "chocolate pudding"
-	glass_desc = "Tasty."
+	glass_desc = "Smaczne."
 
 /datum/reagent/consumable/vanillapudding
 	name = "Vanilla Pudding"
-	description = "A great dessert for vanilla lovers."
+	description = "Świetny deser dla miłośników wanilii."
 	color = "#FAFAD2"
 	quality = DRINK_VERYGOOD
 	chem_flags = CHEMICAL_RNG_BOTANY
 	nutriment_factor = 4 * REAGENTS_METABOLISM
-	taste_description = "sweet vanilla"
+	taste_description = "słodka wanilia"
 	glass_icon_state = "vanillapudding"
 	glass_name = "vanilla pudding"
-	glass_desc = "Tasty."
+	glass_desc = "Smaczne."
 
 /datum/reagent/consumable/cherryshake
 	name = "Cherry Shake"
-	description = "A cherry flavored milkshake."
+	description = "Wiśniowy koktajl mleczny."
 	color = "#FFB6C1"
 	quality = DRINK_VERYGOOD
 	chem_flags = CHEMICAL_RNG_BOTANY
 	nutriment_factor = 4 * REAGENTS_METABOLISM
-	taste_description = "creamy cherry"
+	taste_description = "kremowa wiśnia"
 	glass_icon_state = "cherryshake"
 	glass_name = "cherry shake"
-	glass_desc = "A cherry flavored milkshake."
+	glass_desc = "Wiśniowy koktajl mleczny."
 	hydration_factor = 6 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/bluecherryshake
 	name = "Blue Cherry Shake"
-	description = "An exotic milkshake."
+	description = "Egzotyczny koktajl mleczny."
 	color = "#00F1FF"
 	chem_flags = CHEMICAL_RNG_BOTANY
 	quality = DRINK_VERYGOOD
 	nutriment_factor = 4 * REAGENTS_METABOLISM
-	taste_description = "creamy blue cherry"
+	taste_description = "kremowa niebieska wiśnia"
 	glass_icon_state = "bluecherryshake"
 	glass_name = "blue cherry shake"
-	glass_desc = "An exotic blue milkshake."
+	glass_desc = "Egzotyczny niebieski koktajl mleczny."
 	hydration_factor = 6 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/pumpkin_latte
 	name = "Pumpkin Latte"
-	description = "A mix of pumpkin juice and coffee."
+	description = "Mieszanka soku z dyni i kawy."
 	color = "#F4A460"
 	chem_flags = CHEMICAL_RNG_BOTANY
 	quality = DRINK_VERYGOOD
 	nutriment_factor = 3 * REAGENTS_METABOLISM
-	taste_description = "creamy pumpkin"
+	taste_description = "kremowa dynia"
 	glass_icon_state = "pumpkin_latte"
 	glass_name = "pumpkin latte"
-	glass_desc = "A mix of coffee and pumpkin juice."
+	glass_desc = "Mieszanka kawy i soku z dyni."
 	hydration_factor = 8 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/gibbfloats
 	name = "Gibb Floats"
-	description = "Ice cream on top of a Dr. Gibb glass."
+	description = "Lody na szklance Dr. Gibba."
 	color = "#B22222"
 	chem_flags = CHEMICAL_RNG_BOTANY
 	quality = DRINK_NICE
 	nutriment_factor = 3 * REAGENTS_METABOLISM
-	taste_description = "creamy cherry"
+	taste_description = "kremowa wiśnia"
 	glass_icon_state = "gibbfloats"
 	glass_name = "Gibbfloat"
-	glass_desc = "Dr. Gibb with ice cream on top."
+	glass_desc = "Dr. Gibb z lodami na wierzchu."
 	hydration_factor = 8 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/pumpkinjuice
 	name = "Pumpkin Juice"
-	description = "Juiced from real pumpkin."
+	description = "Wyciskany z prawdziwej dyni."
 	color = "#FFA500"
 	chem_flags = CHEMICAL_RNG_BOTANY
-	taste_description = "pumpkin"
+	taste_description = "dynia"
 	hydration_factor = 8 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/blumpkinjuice
 	name = "Blumpkin Juice"
-	description = "Juiced from real blumpkin."
+	description = "Wyciskany z prawdziwego blumpkina."
 	color = "#00BFFF"
 	chem_flags = CHEMICAL_RNG_BOTANY
-	taste_description = "a mouthful of pool water"
+	taste_description = "haust wody z basenu"
 	hydration_factor = 8 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/triple_citrus
@@ -934,20 +934,20 @@
 	color = "#EEFF00"
 	chem_flags = CHEMICAL_RNG_BOTANY
 	quality = DRINK_NICE
-	taste_description = "extreme bitterness"
+	taste_description = "skrajna gorycz"
 	glass_icon_state = "triplecitrus" //needs own sprite mine are trash
 	glass_name = "glass of triple citrus"
-	glass_desc = "A mixture of citrus juices. Tangy, yet smooth."
+	glass_desc = "Mieszanka soków cytrusowych. Wyrazista, a jednak gładka."
 	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/grape_soda
 	name = "Grape soda"
-	description = "Beloved of children and teetotalers."
+	description = "Ukochany przez dzieci i abstynentów."
 	color = "#E6CDFF"
 	chem_flags = CHEMICAL_RNG_BOTANY
-	taste_description = "grape soda"
+	taste_description = "napój winogronowy"
 	glass_name = "glass of grape juice"
-	glass_desc = "It's grape (soda)!"
+	glass_desc = "To napój winogronowy!"
 	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/grape_soda/on_mob_life(mob/living/carbon/M)
@@ -956,22 +956,22 @@
 
 /datum/reagent/consumable/milk/chocolate_milk
 	name = "Chocolate Milk"
-	description = "Milk for cool kids."
+	description = "Mleko dla fajnych dzieciaków."
 	color = "#7D4E29"
 	chem_flags = CHEMICAL_RNG_BOTANY
 	quality = DRINK_NICE
-	taste_description = "chocolate milk"
+	taste_description = "mleko czekoladowe"
 	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/menthol
 	name = "Menthol"
-	description = "Alleviates coughing symptoms one might have."
+	description = "Łagodzi objawy kaszlu."
 	color = "#80AF9C"
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "mint"
+	taste_description = "mięta"
 	glass_icon_state = "glass_green"
 	glass_name = "glass of menthol"
-	glass_desc = "Tastes naturally minty, and imparts a very mild numbing sensation."
+	glass_desc = "Ma naturalnie miętowy smak i daje bardzo lekkie uczucie odrętwienia."
 	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/menthol/on_mob_life(mob/living/L)
@@ -980,52 +980,52 @@
 
 /datum/reagent/consumable/grenadine
 	name = "Grenadine"
-	description = "Not cherry flavored!"
+	description = "Nie o smaku wiśni!"
 	color = "#EA1D26"
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "sweet pomegranates"
+	taste_description = "słodkie granaty"
 	glass_name = "glass of grenadine"
-	glass_desc = "Delicious flavored syrup."
+	glass_desc = "Pyszny syrop smakowy."
 	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/parsnipjuice
 	name = "Parsnip Juice"
-	description = "Why..."
+	description = "Czemu..."
 	color = "#FFA500"
 	chem_flags = NONE
-	taste_description = "parsnip"
+	taste_description = "pasternak"
 	glass_name = "glass of parsnip juice"
 	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/peachjuice //Intended to be extremely rare due to being the limiting ingredients in the blazaam drink
 	name = "Peach Juice"
-	description = "Just peachy."
+	description = "Po prostu brzoskwiniowo."
 	color = "#E78108"
 	chem_flags = CHEMICAL_RNG_BOTANY
-	taste_description = "peaches"
+	taste_description = "brzoskwinie"
 	glass_name = "glass of peach juice"
 	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/pineapplejuice
 	name = "Pineapple Juice"
-	description = "Tart, tropical, and hotly debated."
+	description = "Cierpki, tropikalny i budzący gorące spory."
 	color = "#F7D435"
 	chem_flags = CHEMICAL_BASIC_DRINK
-	taste_description = "pineapple"
+	taste_description = "ananas"
 	glass_name = "glass of pineapple juice"
-	glass_desc = "Tart, tropical, and hotly debated."
+	glass_desc = "Cierpki, tropikalny i budzący gorące spory."
 	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/cream_soda
 	name = "Cream Soda"
-	description = "A classic space-American vanilla flavored soft drink."
+	description = "Klasyczny kosmiczno-amerykański napój o smaku wanilii."
 	color = "#dcb137"
 	chem_flags = CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
 	quality = DRINK_VERYGOOD
-	taste_description = "fizzy vanilla"
+	taste_description = "musująca wanilia"
 	glass_icon_state = "cream_soda"
 	glass_name = "Cream Soda"
-	glass_desc = "A classic space-American vanilla flavored soft drink."
+	glass_desc = "Klasyczny kosmiczno-amerykański napój o smaku wanilii."
 	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/cream_soda/on_mob_life(mob/living/carbon/M)
@@ -1034,14 +1034,14 @@
 
 /datum/reagent/consumable/red_queen
 	name = "Red Queen"
-	description = "DRINK ME."
+	description = "WYPIJ MNIE."
 	color = "#e6ddc3"
 	chem_flags = CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
 	quality = DRINK_GOOD
-	taste_description = "wonder"
+	taste_description = "zachwyt"
 	glass_icon_state = "red_queen"
 	glass_name = "Red Queen"
-	glass_desc = "DRINK ME."
+	glass_desc = "WYPIJ MNIE."
 	hydration_factor = 10 * REAGENTS_METABOLISM
 
 	var/current_size = RESIZE_DEFAULT_SIZE
@@ -1068,25 +1068,25 @@
 	name = "Bungo Juice"
 	color = "#F9E43D"
 	chem_flags = CHEMICAL_GOAL_BARTENDER_SERVING
-	description = "Exotic! You feel like you are on vacation already."
-	taste_description = "succulent bungo"
+	description = "Egzotyczne! Czujesz się, jakbyś już był na wakacjach."
+	taste_description = "soczyste bungo"
 	glass_icon_state = "glass_yellow"
 	glass_name = "glass of bungo juice"
-	glass_desc = "Exotic! You feel like you are on vacation already."
+	glass_desc = "Egzotyczne! Czujesz się, jakbyś już był na wakacjach."
 	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/beefbroth
 	name = "Beef Broth"
 	color = "#100800" // rgb: 16, 8, 0 , just like cola
 	chem_flags = CHEMICAL_RNG_BOTANY
-	taste_description = "Pure Beef Essence"
+	taste_description = "czysta esencja wołowiny"
 	glass_icon_state  = "glass_brown"
 	glass_name = "glass of Space Cola?"
-	glass_desc = "A glass of what appears to be refreshing Space Cola."
+	glass_desc = "Szklanka czegoś, co wygląda na orzeźwiającą Space Colę."
 	hydration_factor = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/beefbroth/on_mob_metabolize(mob/living/M)
-	to_chat(M, "<span class='warning'>That drink was way too beefy! You feel sick.</span>")
+	to_chat(M, "<span class='warning'>Ten drink był zdecydowanie za wołowy! Robi ci się niedobrze.</span>")
 	M.adjust_disgust(30)
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "quality_drink", /datum/mood_event/quality_bad)
 	. = ..()

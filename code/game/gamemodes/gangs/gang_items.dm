@@ -14,7 +14,7 @@
 	var/real_cost = get_cost(user, gang, gangtool)
 	if(!spawn_item(user, gang, gangtool))
 		gang.adjust_influence(-real_cost)
-		to_chat(user, "<span class='notice'>You bought \the [name].</span>")
+		to_chat(user, "<span class='notice'>Kupujesz: [name].</span>")
 		return TRUE
 
 /datum/gang_item/proc/spawn_item(mob/living/carbon/user, datum/team/gang/gang, obj/item/device/gangtool/gangtool) // If this returns anything other than null, something fucked up and influence won't lower.
@@ -62,7 +62,7 @@
 	id = "implant_breaker"
 	cost = 25
 	item_path = /obj/item/implanter/gang
-	spawn_msg = "<span class='notice'>The <b>reprogramming implant</b> is a single use implant that will reprogram its target to be part of your gang. Not strong enough to break the latest NT mindshield implants, or reprogram Lieutenants.</span>"
+	spawn_msg = "<span class='notice'><b>Implant przeprogramowujący</b> to jednorazowy implant, który przeprogramowuje cel na członka twojego gangu. Jest za słaby, by przełamać najnowsze implanty ochrony umysłu NT lub przeprogramować poruczników.</span>"
 
 /datum/gang_item/essentials/implant_breaker/spawn_item(mob/living/carbon/user, datum/team/gang/gang, obj/item/device/gangtool/gangtool)
 	var/obj/item/O = new item_path(get_turf(user), gang)
@@ -77,7 +77,7 @@
 	if(gang)
 		item_type = /obj/item/device/gangtool/spare/lt
 		if(gang.leaders.len < MAX_LEADERS_GANG)
-			to_chat(user, "<span class='notice'><b>Gangtools</b> allow you to promote a gangster to be your Lieutenant, enabling them to recruit and purchase items like you. Simply have them register the gangtool. You may promote up to [MAX_LEADERS_GANG-gang.leaders.len] more Lieutenants.</span>")
+			to_chat(user, "<span class='notice'><b>Gangtoole</b> pozwalają awansować gangstera na porucznika, który może werbować i kupować przedmioty jak ty. Wystarczy, że zarejestruje gangtool. Możesz awansować jeszcze maksymalnie [MAX_LEADERS_GANG-gang.leaders.len] poruczników.</span>")
 	else
 		item_type = /obj/item/device/gangtool/spare
 	var/obj/item/device/gangtool/spare/tool = new item_type(user.loc)
@@ -97,7 +97,7 @@
 	id = "pen"
 	cost = 50
 	item_path = /obj/item/pen/gang
-	spawn_msg = "<span class='notice'>More <b>recruitment pens</b> will allow you to recruit gangsters faster. Only gang leaders can recruit with pens.</span>"
+	spawn_msg = "<span class='notice'>Więcej <b>długopisów werbunkowych</b> pozwoli szybciej werbować gangsterów. Werbować długopisami mogą tylko przywódcy gangu.</span>"
 
 /datum/gang_item/essentials/pen/purchase(mob/living/carbon/user, datum/team/gang/gang, obj/item/device/gangtool/gangtool)
 	if(..())
@@ -141,7 +141,7 @@
 	new gang.hat(uniform_box)
 
 	user.put_in_hands(uniform_box)
-	to_chat(user, "<span class='notice'> This is your gang's official uniform, wearing it will increase your influence")
+	to_chat(user, "<span class='notice'> To oficjalny mundur twojego gangu, noszenie go zwiększa twoje wpływy")
 	return TRUE
 
 /datum/gang_item/clothing/armor
@@ -154,14 +154,14 @@
 
 	var/obj/item/clothing/suit/suit = new gang.suit(armor_box)
 	suit.armor = suit.armor.setRating(melee = 20, bullet = 35, laser = 10, energy = 10, bomb = 30, bio = 0, rad = 0, fire = 30, acid = 30)
-	suit.desc += " Tailored for the [gang.name] Gang to offer the wearer moderate protection against ballistics and physical trauma."
+	suit.desc += " Uszyty dla bandy [gang.name], by zapewnić noszącemu umiarkowaną ochronę przed pociskami i urazami fizycznymi."
 
 	var/obj/item/clothing/head/hat = new gang.hat(armor_box)
 	hat.armor = hat.armor.setRating(melee = 20, bullet = 35, laser = 10, energy = 10, bomb = 30, bio = 0, rad = 0, fire = 30, acid = 30)
-	hat.desc += " Tailored for the [gang.name] Gang to offer the wearer moderate protection against ballistics and physical trauma."
+	hat.desc += " Uszyty dla bandy [gang.name], by zapewnić noszącemu umiarkowaną ochronę przed pociskami i urazami fizycznymi."
 
 	user.put_in_hands(armor_box)
-	to_chat(user, "<span class='notice'> This is your gang's official uniform, wearing it will increase your influence")
+	to_chat(user, "<span class='notice'> To oficjalny mundur twojego gangu, noszenie go zwiększa twoje wpływy")
 	return TRUE
 
 /datum/gang_item/clothing/ssuit
@@ -178,7 +178,7 @@
 	suit.heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	suit.min_cold_protection_temperature = SPACE_HELM_MIN_TEMP_PROTECT
 	suit.max_heat_protection_temperature = SPACE_HELM_MAX_TEMP_PROTECT
-	suit.desc += " Tailored for the [gang.name] Gang to offer the wearer moderate protection against ballistics and physical trauma."
+	suit.desc += " Uszyty dla bandy [gang.name], by zapewnić noszącemu umiarkowaną ochronę przed pociskami i urazami fizycznymi."
 
 	var/obj/item/clothing/head/hat = new gang.hat(armor_box)
 	hat.clothing_flags |= STOPSPRESSUREDAMAGE | THICKMATERIAL
@@ -186,10 +186,10 @@
 	hat.heat_protection = HEAD
 	hat.min_cold_protection_temperature = SPACE_HELM_MIN_TEMP_PROTECT
 	hat.max_heat_protection_temperature = SPACE_HELM_MAX_TEMP_PROTECT
-	hat.desc += " Tailored for the [gang.name] Gang to offer the wearer moderate protection against ballistics and physical trauma."
+	hat.desc += " Uszyty dla bandy [gang.name], by zapewnić noszącemu umiarkowaną ochronę przed pociskami i urazami fizycznymi."
 
 	user.put_in_hands(armor_box)
-	to_chat(user, "<span class='notice'> This is your gang's official uniform, wearing it will increase your influence")
+	to_chat(user, "<span class='notice'> To oficjalny mundur twojego gangu, noszenie go zwiększa twoje wpływy")
 	return TRUE
 
 /datum/gang_item/clothing/mask

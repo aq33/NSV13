@@ -86,11 +86,11 @@
 	.= FALSE
 
 /obj/item/clothing/gloves/rapid/attack_self(mob/user)
-	var/input = stripped_input(user,"What do you want your battlecry to be? Max length of 6 characters.", ,"", 7)
+	var/input = stripped_input(user,"Jaki ma być twój okrzyk bojowy? Maksymalnie 6 znaków.", ,"", 7)
 	if(input == "*me") //If they try to do a *me emote it will stop the attack to prompt them for an emote then they can walk away and enter the emote for a punch from far away
-		to_chat(user, "<span class='warning'>Invalid battlecry, please use another. Battlecry cannot contain *me.</span>")
+		to_chat(user, "<span class='warning'>Nieprawidłowy okrzyk bojowy, użyj innego. Okrzyk bojowy nie może zawierać *me.</span>")
 	else if(CHAT_FILTER_CHECK(input))
-		to_chat(user, "<span class='warning'>Invalid battlecry, please use another. Battlecry contains prohibited word(s).</span>")
+		to_chat(user, "<span class='warning'>Nieprawidłowy okrzyk bojowy, użyj innego. Okrzyk bojowy zawiera zakazane słowa.</span>")
 	else if(input)
 		warcry = input
 
@@ -108,7 +108,7 @@
 		if(!wand.used && range == initial(range))
 			wand.used = TRUE
 			range = 6
-			to_chat(user, "<span_class='notice'>You upgrade the [src] with the [wand].</span>")
+			to_chat(user, "<span_class='notice'>Ulepszasz [src] za pomocą [wand].</span>")
 			playsound(user, 'sound/weapons/emitter2.ogg', 25, 1, -1)
 
 /obj/item/clothing/gloves/color/white/magic/Touch(atom/A, proximity)
@@ -116,7 +116,7 @@
 	if(get_dist(A, user) <= 1 )
 		return FALSE
 	if(user in viewers(range, A))
-		user.visible_message("<span class='danger'>[user] waves their hands at [A]</span>", "<span class='notice'>You begin manipulating [A].</span>")
+		user.visible_message("<span class='danger'>[user] macha rękami w stronę [A]</span>", "<span class='notice'>Zaczynasz manipulować [A].</span>")
 		new	/obj/effect/temp_visual/telegloves(A.loc)
 		user.changeNext_move(CLICK_CD_MELEE)
 		if(do_mob(user, A, 0.8 SECONDS))

@@ -125,7 +125,7 @@
 	id = "imitationcarpmeat"
 	required_reagents = list(/datum/reagent/toxin/carpotoxin = 5)
 	required_container = /obj/item/food/tofu
-	mix_message = "The mixture becomes similar to carp meat."
+	mix_message = "Mieszanina zaczyna przypominać mięso karpia."
 
 /datum/chemical_reaction/food/imitationcarpmeat/on_reaction(datum/reagents/holder)
 	var/location = get_turf(holder.my_atom)
@@ -137,7 +137,7 @@
 	name = "Dough"
 	id = "dough"
 	required_reagents = list(/datum/reagent/water = 10, /datum/reagent/consumable/flour = 15)
-	mix_message = "The ingredients form a dough."
+	mix_message = "Składniki tworzą ciasto."
 
 /datum/chemical_reaction/food/dough/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -148,7 +148,7 @@
 	name = "Cake Batter"
 	id = "cakebatter"
 	required_reagents = list(/datum/reagent/consumable/eggyolk = 15, /datum/reagent/consumable/flour = 15, /datum/reagent/consumable/sugar = 5)
-	mix_message = "The ingredients form a cake batter."
+	mix_message = "Składniki tworzą ciasto na tort."
 
 /datum/chemical_reaction/food/cakebatter/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -168,7 +168,7 @@
 	name = "Uncooked Rice"
 	id = "uncookedrice"
 	required_reagents = list(/datum/reagent/consumable/rice = 10, /datum/reagent/water = 10)
-	mix_message = "The rice absorbs the water."
+	mix_message = "Ryż wchłania wodę."
 
 /datum/chemical_reaction/food/uncooked_rice/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)

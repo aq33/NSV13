@@ -27,14 +27,14 @@
 	maxHealth = 800
 	health = 800
 	melee_damage = 20
-	attacktext = "preaches to"
+	attacktext = "wygłasza kazanie do"
 	attack_sound = 'sound/magic/clockwork/ratvar_attack.ogg'
-	throw_message = "doesn't affect the purity of"
+	throw_message = "nie narusza czystości"
 	speed = 4
 	move_to_delay = 10
 	mouse_opacity = MOUSE_OPACITY_ICON
 	deathsound = 'sound/magic/demon_dies.ogg'
-	deathmessage = "begins to shudder as it becomes transparent..."
+	deathmessage = "zaczyna drżeć, stając się przezroczysty..."
 	loot_drop = /obj/item/clothing/neck/cloak/herald_cloak
 
 	can_talk = 1
@@ -64,25 +64,25 @@
 /datum/action/innate/elite_attack/herald_trishot
 	name = "Triple Shot"
 	button_icon_state = "herald_trishot"
-	chosen_message = "<span class='boldwarning'>You are now firing three shots in your chosen direction.</span>"
+	chosen_message = "<span class='boldwarning'>Teraz wystrzeliwujesz trzy pociski w wybranym kierunku.</span>"
 	chosen_attack_num = HERALD_TRISHOT
 
 /datum/action/innate/elite_attack/herald_directionalshot
 	name = "Circular Shot"
 	button_icon_state = "herald_directionalshot"
-	chosen_message = "<span class='boldwarning'>You are firing projectiles in all directions.</span>"
+	chosen_message = "<span class='boldwarning'>Wystrzeliwujesz pociski we wszystkich kierunkach.</span>"
 	chosen_attack_num = HERALD_DIRECTIONALSHOT
 
 /datum/action/innate/elite_attack/herald_teleshot
 	name = "Teleport Shot"
 	button_icon_state = "herald_teleshot"
-	chosen_message = "<span class='boldwarning'>You will now fire a shot which teleports you where it lands.</span>"
+	chosen_message = "<span class='boldwarning'>Teraz wystrzelisz pocisk, który teleportuje cię tam, gdzie upadnie.</span>"
 	chosen_attack_num = HERALD_TELESHOT
 
 /datum/action/innate/elite_attack/herald_mirror
 	name = "Summon Mirror"
 	button_icon_state = "herald_mirror"
-	chosen_message = "<span class='boldwarning'>You will spawn a mirror which duplicates your attacks.</span>"
+	chosen_message = "<span class='boldwarning'>Przywołasz lustro, które powiela twoje ataki.</span>"
 	chosen_attack_num = HERALD_MIRROR
 
 /mob/living/simple_animal/hostile/asteroid/elite/herald/OpenFire()
@@ -192,7 +192,7 @@
 	health = 60
 	maxHealth = 60
 	icon_state = "herald_mirror"
-	deathmessage = "shatters violently!"
+	deathmessage = "roztrzaskuje się z hukiem!"
 	deathsound = 'sound/effects/glassbr1.ogg'
 	movement_type = FLYING
 	del_on_death = TRUE
@@ -266,7 +266,7 @@
 	. = ..()
 	if(rand(1,100) > hit_reaction_chance)
 		return
-	owner.visible_message("<span class='danger'>[owner]'s [src] emits a loud noise as [owner] is struck!</span>")
+	owner.visible_message("<span class='danger'>[src] należący do [owner] wydaje głośny dźwięk, gdy [owner] zostaje trafiony!</span>")
 	var/static/list/directional_shot_angles = list(0, 45, 90, 135, 180, 225, 270, 315)
 	playsound(get_turf(owner), 'sound/magic/clockwork/invoke_general.ogg', 20, TRUE)
 	addtimer(CALLBACK(src, PROC_REF(reactionshot), owner), 10)

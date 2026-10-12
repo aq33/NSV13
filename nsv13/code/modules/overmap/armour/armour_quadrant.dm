@@ -114,7 +114,7 @@
 	obj_integrity = max_integrity //Full structural integrity
 	if(structure_crit) //Cancel SScrit if we are in it
 		stop_relay(channel=CHANNEL_SHIP_FX)
-		priority_announce("Ship structural integrity restored to acceptable levels. ","Automated announcement ([src])")
+		priority_announce("Przywrócono integralność strukturalną okrętu do akceptowalnego poziomu. ","Automatyczny komunikat ([src])")
 		structure_crit = FALSE
 		structure_crit_no_return = FALSE //Even override this
 	if(use_armour_quadrants) //Full armour plates
@@ -146,7 +146,7 @@
 			if(structure_crit_no_return) //Duct tape ain't gonna fix this one.
 				return
 			stop_relay(channel=CHANNEL_SHIP_FX)
-			priority_announce("Ship structural integrity restored to acceptable levels. ","Automated announcement ([src])")
+			priority_announce("Przywrócono integralność strukturalną okrętu do akceptowalnego poziomu. ","Automatyczny komunikat ([src])")
 			structure_crit = FALSE
 
 /**

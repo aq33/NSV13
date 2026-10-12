@@ -153,21 +153,21 @@
 /mob/living/carbon/proc/give()
 	var/obj/item/offered_item = get_active_held_item()
 	if(!offered_item)
-		to_chat(src, "<span class='warning'>You're not holding anything to give!</span>")
+		to_chat(src, "<span class='warning'>Nie trzymasz niczego, co można dać!</span>")
 		return
 
 	if(IS_DEAD_OR_INCAP(src))
-		to_chat(src, "<span class='warning'>You're unable to offer anything in your current state!</span>")
+		to_chat(src, "<span class='warning'>W tym stanie nie możesz niczego oferować!</span>")
 		return
 	if(has_status_effect(STATUS_EFFECT_OFFERING))
-		to_chat(src, "<span class='warning'>You're already offering up something!</span>")
+		to_chat(src, "<span class='warning'>Już coś oferujesz!</span>")
 		return
 
 	if(offered_item.on_offered(src)) // see if the item interrupts with its own behavior
 		return
 
-	visible_message("<span class='notice'>[src] is offering [offered_item].</span>", \
-					"<span class='notice'>You offer [offered_item].</span>", null, 2)
+	visible_message("<span class='notice'>[src] oferuje [offered_item].</span>", \
+					"<span class='notice'>Oferujesz [offered_item].</span>", null, 2)
 
 	apply_status_effect(STATUS_EFFECT_OFFERING, offered_item)
 
@@ -184,19 +184,19 @@
 /mob/living/carbon/proc/take(mob/living/carbon/offerer, obj/item/I)
 	clear_alert("[offerer]")
 	if(get_dist(src, offerer) > 1)
-		to_chat(src, "<span class='warning'>[offerer] is out of range!</span>")
+		to_chat(src, "<span class='warning'>[offerer] jest poza zasięgiem!</span>")
 		return
 	if(!I || offerer.get_active_held_item() != I)
-		to_chat(src, "<span class='warning'>[offerer] is no longer holding the item they were offering! </span>")
+		to_chat(src, "<span class='warning'>[offerer] już nie trzyma oferowanego przedmiotu! </span>")
 		return
 	if(!get_empty_held_indexes())
-		to_chat(src, "<span class='warning'>You have no empty hands!</span>")
+		to_chat(src, "<span class='warning'>Nie masz wolnych rąk!</span>")
 		return
 	if(I.on_offer_taken(offerer, src)) // see if the item has special behavior for being accepted
 		return
 	if(!offerer.temporarilyRemoveItemFromInventory(I))
-		visible_message("<span class='notice'>[offerer] tries to hand over [I] but it's stuck to them....</span>")
+		visible_message("<span class='notice'>[offerer] próbuje podać [I], ale ten przykleił mu się do ręki...</span>")
 		return
-	visible_message("<span class='notice'>[src] takes [I] from [offerer]</span>", \
-					"<span class='notice'>You take [I] from [offerer]</span>")
+	visible_message("<span class='notice'>[src] bierze [I] od [offerer]</span>", \
+					"<span class='notice'>Bierzesz [I] od [offerer]</span>")
 	put_in_hands(I)

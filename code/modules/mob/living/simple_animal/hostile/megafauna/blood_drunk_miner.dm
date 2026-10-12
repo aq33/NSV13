@@ -31,7 +31,7 @@ Difficulty: Medium
 	mob_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
 	light_color = "#E4C7C5"
 	movement_type = GROUND
-	speak_emote = list("roars")
+	speak_emote = list("ryczy")
 	speed = 3
 	move_to_delay = 3
 	projectiletype = /obj/item/projectile/kinetic/miner
@@ -55,7 +55,7 @@ Difficulty: Medium
 	var/dash_cooldown = 15
 	var/guidance = FALSE
 	var/transform_stop_attack = FALSE // stops the blood drunk miner from attacking after transforming his weapon until the next attack chain
-	deathmessage = "falls to the ground, decaying into glowing particles."
+	deathmessage = "pada na ziemię, rozpadając się w świecące cząsteczki."
 	deathsound = "bodyfall"
 	do_footstep = TRUE
 	attack_action_types = list(/datum/action/innate/megafauna_attack/dash,
@@ -70,21 +70,21 @@ Difficulty: Medium
 	name = "Dash To Target"
 	icon_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "sniper_zoom"
-	chosen_message = "<span class='colossus'>You are now dashing to your target.</span>"
+	chosen_message = "<span class='colossus'>Teraz doskakujesz do celu.</span>"
 	chosen_attack_num = 1
 
 /datum/action/innate/megafauna_attack/kinetic_accelerator
 	name = "Fire Kinetic Accelerator"
 	icon_icon = 'icons/obj/guns/energy.dmi'
 	button_icon_state = "kineticgun"
-	chosen_message = "<span class='colossus'>You are now shooting your kinetic accelerator.</span>"
+	chosen_message = "<span class='colossus'>Teraz strzelasz z akceleratora kinetycznego.</span>"
 	chosen_attack_num = 2
 
 /datum/action/innate/megafauna_attack/transform_weapon
 	name = "Transform Weapon"
 	icon_icon = 'icons/obj/lavaland/artefacts.dmi'
 	button_icon_state = "cleaving_saw"
-	chosen_message = "<span class='colossus'>You are now transforming your weapon.</span>"
+	chosen_message = "<span class='colossus'>Teraz przekształcasz swoją broń.</span>"
 	chosen_attack_num = 3
 
 /mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/OpenFire()
@@ -155,7 +155,7 @@ Difficulty: Medium
 		var/mob/living/L = target
 		if(L.stat == DEAD)
 			visible_message("<span class='danger'>[src] butchers [L]!</span>",
-			"<span class='userdanger'>You butcher [L], restoring your health!</span>")
+			"<span class='userdanger'>Ćwiartujesz [L], odzyskując zdrowie!</span>")
 			if(!is_station_level(z) || client) //NPC monsters won't heal while on station
 				if(guidance)
 					adjustHealth(-L.maxHealth)
@@ -187,7 +187,7 @@ Difficulty: Medium
 /mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/proc/shoot_ka()
 	if(ranged_cooldown <= world.time && get_dist(src, target) <= MINER_DASH_RANGE && !Adjacent(target))
 		ranged_cooldown = world.time + ranged_cooldown_time
-		visible_message("<span class='danger'>[src] fires the proto-kinetic accelerator!</span>")
+		visible_message("<span class='danger'>[src] strzela z protokinetycznego akceleratora!</span>")
 		face_atom(target)
 		new /obj/effect/temp_visual/dir_setting/firing_effect(loc, dir)
 		Shoot(target)

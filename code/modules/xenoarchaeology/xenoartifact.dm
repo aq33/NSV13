@@ -25,7 +25,7 @@
 	///Touch hint
 	var/datum/xenoartifact_trait/touch_desc
 	///used for special examine circumstance, science goggles & ghosts
-	var/special_desc = "The artifact is made from a"
+	var/special_desc = "Materiał artefaktu:"
 	///Description used for label, used because directly adding shit to desc isn't a good idea
 	var/label_desc
 	///How far the artifact can reach
@@ -152,7 +152,7 @@
 
 	if(get_trait(/datum/xenoartifact_trait/minor/dense) || anchored)
 		if(process_type == PROCESS_TYPE_LIT) //Snuff out candle
-			to_chat(user, "<span class='notice'>You snuff out [name]</span>")
+			to_chat(user, "<span class='notice'>Gasisz [name]</span>")
 			process_type = null
 			return FALSE
 		if(P?.safety && isliving(loc))
@@ -176,7 +176,7 @@
 		return
 
 	if(process_type == PROCESS_TYPE_LIT) //Snuff out candle
-		to_chat(user, "<span class='notice'>You snuff out [name]</span>")
+		to_chat(user, "<span class='notice'>Gasisz [name]</span>")
 		process_type = null
 		return
 
@@ -209,7 +209,7 @@
 	//abort if safety
 	var/obj/item/clothing/gloves/artifact_pinchers/P = locate(/obj/item/clothing/gloves/artifact_pinchers) in user.contents
 	if(P?.safety)
-		to_chat(user, "<span class='notice'>You perform a safe operation on [src] with [I].</span>")
+		to_chat(user, "<span class='notice'>Wykonujesz bezpieczną operację na [src] za pomocą [I].</span>")
 		return
 	..()
 
@@ -217,7 +217,7 @@
 	//abort if safety
 	var/obj/item/clothing/gloves/artifact_pinchers/P = locate(/obj/item/clothing/gloves/artifact_pinchers) in user.contents
 	if(P?.safety)
-		to_chat(user, "<span class='notice'>You perform a safe operation on [src].</span>")
+		to_chat(user, "<span class='notice'>Wykonujesz bezpieczną operację na [src].</span>")
 		return
 	..()
 
@@ -272,7 +272,7 @@
 
 	var/datum/xenoartifact_trait/desc_holder
 	desc_holder = generate_trait_unique(GLOB.xenoa_activators, blacklist, FALSE) //Activator
-	special_desc = initial(desc_holder.desc) ? "[special_desc] [initial(desc_holder.desc)]" : "[special_desc]n Unknown"
+	special_desc = initial(desc_holder.desc) ? "[special_desc] [initial(desc_holder.desc)]" : "[special_desc] nieznany"
 
 	desc_holder = null
 	var/datum/xenoartifact_trait/minor_desc_holder
@@ -284,13 +284,13 @@
 			if(!touch_desc.on_touch(src, src))
 				touch_desc = null //not setting this to null fucks with check, qdel refuses to be helpful another day
 
-	special_desc = initial(desc_holder?.desc) ? "[special_desc] [initial(desc_holder.desc)] material." : "[special_desc] material."
+	special_desc = initial(desc_holder?.desc) ? "[special_desc] [initial(desc_holder.desc)]" : "[special_desc] nieznany."
 
 	if(malf)
 		generate_trait_unique(GLOB.xenoa_malfs, blacklist) //Malf
 
 	desc_holder = generate_trait_unique(GLOB.xenoa_majors, blacklist, FALSE) //Major
-	special_desc = initial(desc_holder.desc) ? "[special_desc] The shape is [initial(desc_holder.desc)]." : "[special_desc] The shape is Unknown."
+	special_desc = initial(desc_holder.desc) ? "[special_desc] Kształt: [initial(desc_holder.desc)]." : "[special_desc] Kształt: nieznany."
 
 	charge_req = rand(1, 10) * 10
 
@@ -340,7 +340,7 @@
 		var/mob/living/carbon/human/H = target
 		if(H.wear_suit && H.head && isclothing(H.wear_suit) && isclothing(H.head))
 			if(H.anti_artifact_check())
-				to_chat(target, "<span class='warning'>The [name] was unable to target you!</span>")
+				to_chat(target, "<span class='warning'>[name] nie zdołał cię namierzyć!</span>")
 				playsound(get_turf(target), 'sound/weapons/deflect.ogg', 25, TRUE)
 				return
 
@@ -402,13 +402,13 @@
 		if(PROCESS_TYPE_LIT) //Burning
 			true_target = get_target_in_proximity(min(max_range, 5))
 			if(true_target[1])
-				visible_message("<span class='danger' size='4'>The [name] flicks out.</span>")
+				visible_message("<span class='danger' size='4'>[name] gaśnie.</span>")
 				default_activate(25, null, null)
 				process_type = null
 				return PROCESS_KILL
 		if(PROCESS_TYPE_TICK) //Clock-ing
 			playsound(get_turf(src), 'sound/effects/clock_tick.ogg', 50, TRUE)
-			visible_message("<span class='danger' size='10'>The [name] ticks.</span>")
+			visible_message("<span class='danger' size='10'>[name] tyka.</span>")
 			true_target = get_target_in_proximity(min(max_range, 5))
 			default_activate(25, null, null)
 			if(DT_PROB(XENOA_TICK_CANCEL_PROB, delta_time) && COOLDOWN_FINISHED(src, xenoa_cooldown))

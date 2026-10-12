@@ -15,7 +15,7 @@
 	armour_penetration = 10
 	materials = list(/datum/material/iron=1150, /datum/material/glass=2075)
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "poked", "jabbed", "torn", "gored")
+	attack_verb = list("atakuje", "szturcha", "dźga", "rozdziera", "bodzie")
 	sharpness = IS_SHARP
 	max_integrity = 200
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 30, "stamina" = 0)
@@ -33,7 +33,7 @@
 	..()
 
 /obj/item/spear/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] begins to sword-swallow \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaczyna połykać [src] jak miecz! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return BRUTELOSS
 
 /obj/item/spear/CheckParts(list/parts_list)
@@ -67,7 +67,7 @@
 	set_explosive(G)
 
 /obj/item/spear/explosive/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] begins to sword-swallow \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaczyna połykać [src] jak miecz! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	user.say("[war_cry]", forced="spear warcry")
 	explosive.forceMove(user)
 	explosive.prime()
@@ -101,7 +101,7 @@
 	..()
 
 /obj/item/spear/explosive/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] begins to sword-swallow \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaczyna połykać [src] jak miecz! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	user.say("[war_cry]", forced="spear warcry")
 	explosive.forceMove(user)
 	explosive.prime()
@@ -111,13 +111,13 @@
 
 /obj/item/spear/explosive/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click to set your war cry.</span>"
+	. += "<span class='notice'>Alt-kliknij, by ustawić okrzyk bojowy.</span>"
 
 /obj/item/spear/explosive/AltClick(mob/user)
 	if(user.canUseTopic(src, BE_CLOSE))
 		..()
 		if(istype(user) && loc == user)
-			var/input = stripped_input(user,"What do you want your war cry to be? You will shout it when you hit someone in melee.", ,"", 50)
+			var/input = stripped_input(user,"Jaki ma być twój okrzyk bojowy? Wykrzyczysz go, trafiając kogoś wręcz.", ,"", 50)
 			if(input)
 				src.war_cry = input
 
@@ -135,7 +135,7 @@
 /obj/item/spear/grey_tide
 	name = "\improper Grey Tide"
 	desc = "Recovered from the aftermath of a revolt aboard Defense Outpost Theta Aegis, in which a seemingly endless tide of Assistants caused heavy casualities among Nanotrasen military forces."
-	attack_verb = list("gored")
+	attack_verb = list("bodzie")
 	force=15
 
 /obj/item/spear/grey_tide/ComponentInitialize()
@@ -189,7 +189,7 @@
 	embedding = list("armour_block" = 30)
 	armour_penetration = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "poked", "jabbed", "tore", "gored")
+	attack_verb = list("atakuje", "szturcha", "dźga", "rozdziera", "bodzie")
 	sharpness = IS_SHARP
 
 /obj/item/spear/bamboospear/ComponentInitialize()

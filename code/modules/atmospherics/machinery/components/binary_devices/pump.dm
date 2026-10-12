@@ -40,7 +40,7 @@
 /obj/machinery/atmospherics/components/binary/pump/AltClick(mob/user)
 	if(can_interact(user))
 		target_pressure = MAX_OUTPUT_PRESSURE
-		balloon_alert(user, "You set the target pressure to [target_pressure] kPa.")
+		balloon_alert(user, "Ustawiasz docelowe ciśnienie na [target_pressure] kPa.")
 		update_icon()
 		ui_update()
 	return
@@ -169,7 +169,7 @@
 /obj/machinery/atmospherics/components/binary/pump/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz odkręcić [src], najpierw go wyłącz!</span>")
 		return FALSE
 
 

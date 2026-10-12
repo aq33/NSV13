@@ -27,7 +27,7 @@
 	return ""
 
 /datum/orbital_objective/proc/announce()
-	priority_announce(get_text(), "Central Command Report", SSstation.announcer.get_rand_report_sound())
+	priority_announce(get_text(), "Raport Centrali", SSstation.announcer.get_rand_report_sound())
 
 /datum/orbital_objective/proc/generate_payout()
 	payout = rand(min_payout, max_payout)
@@ -47,7 +47,6 @@
 	SSeconomy.distribute_funds(payout)
 	GLOB.exploration_points += payout
 	//Announcement
-	priority_announce("Central Command priority objective completed. [payout] credits have been \
-		distributed across departmental budgets. [payout] points have been distributed to exploration vendors.", "Central Command Report", SSstation.announcer.get_rand_report_sound())
+	priority_announce("Ukończono priorytetowy cel Centrali. [payout] kr rozdzielono między budżety działów. [payout] pkt rozdzielono do automatów eksploracyjnych.", "Raport Centrali", SSstation.announcer.get_rand_report_sound())
 	//Delete
 	QDEL_NULL(SSorbits.current_objective)

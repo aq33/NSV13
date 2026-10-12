@@ -1,7 +1,7 @@
 /datum/role_preference/antagonist/thief
-	name = "Thief"
+	name = "Złodziej"
 	antag_datum = /datum/antagonist/thief
 
 /datum/role_preference/midround_living/opportunist
-	name = "Opportunist"
+	name = "Oportunista"
 	antag_datum = /datum/antagonist/thief

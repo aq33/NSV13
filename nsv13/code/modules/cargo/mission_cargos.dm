@@ -17,7 +17,7 @@ Here we define the cargo crate, as well as the contents
 
 /obj/structure/closet/crate/large/cargo/attackby(obj/item/W, mob/user, params)  
   if(W.tool_behaviour == TOOL_CROWBAR)
-    var/choice = input("WARNING: The client requests that the cargo must not be tampered with. Opening this crate will reduce mission payout. Are you sure you wish to open it?", "WARNING!", "No") in list("Yes", "No")
+    var/choice = input("OSTRZEŻENIE: klient prosi, by nie naruszać ładunku. Otwarcie tej skrzyni zmniejszy wynagrodzenie za misję. Na pewno chcesz ją otworzyć?", "WARNING!", "No") in list("Yes", "No")
     if(choice != "Yes") 
       return
     if(get_dist(user, src) > 1) //Check they are still in range

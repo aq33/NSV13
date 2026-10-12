@@ -7,19 +7,19 @@
 export const SETTINGS_TABS = [
   {
     id: 'general',
-    name: 'General',
+    name: 'Ogólne',
   },
   {
     id: 'chatPage',
-    name: 'Chat Tabs',
+    name: 'Karty czatu',
   },
   {
     id: 'highlightPage',
-    name: 'Highlight',
+    name: 'Podświetlanie',
   },
   {
     id: 'statPanelpage',
-    name: 'Stat Panel',
+    name: 'Panel statystyk',
   },
 ];
 

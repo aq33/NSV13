@@ -111,7 +111,7 @@
 	message_admins("Polling [possible_volunteers.len] players to apply for the [name] ruleset.")
 	log_game("DYNAMIC: Polling [possible_volunteers.len] players to apply for the [name] ruleset.")
 
-	candidates = pollGhostCandidates("The mode is looking for volunteers to become [initial(antag_datum.name)] for [name]", initial(antag_datum.banning_key), role_preference, poll_time = 300)
+	candidates = pollGhostCandidates("Tryb szuka ochotników na rolę [initial(antag_datum.name)] ([name])", initial(antag_datum.banning_key), role_preference, poll_time = 300)
 
 	if(!length(candidates))
 		message_admins("The ruleset [name] received no applications.")
@@ -152,7 +152,7 @@
 
 		finish_setup(new_character, i)
 		assigned += applicant
-		notify_ghosts("[applicant.name] has been picked for the ruleset [name]!", source = new_character, action = NOTIFY_ORBIT, header="Something Interesting!")
+		notify_ghosts("[applicant.name] zostaje wybrany do zestawu zasad [name]!", source = new_character, action = NOTIFY_ORBIT, header="Coś ciekawego!")
 	// No one got the role
 	if(!length(assigned))
 		message_admins("No players were eligible for the ruleset [name] - the previous applicants were revived/left and could no longer take the role.")
@@ -274,7 +274,7 @@
 	M.mind.special_role = "Malf AI"
 	M.mind.add_antag_datum(AI)
 	if(prob(ion_announce))
-		priority_announce("Ion storm detected near the station. Please check all AI-controlled equipment for errors.", "Anomaly Alert", ANNOUNCER_IONSTORM)
+		priority_announce("W pobliżu statku wykryto burzę jonową. Sprawdźcie, czy sprzęt sterowany przez SI działa poprawnie.", "Alarm - anomalia", ANNOUNCER_IONSTORM)
 		if(prob(removeDontImproveChance))
 			M.replace_random_law(generate_ion_law(), list(LAW_INHERENT, LAW_SUPPLIED, LAW_ION))
 		else
@@ -517,7 +517,7 @@
 	playsound(S, 'sound/magic/ethereal_exit.ogg', 50, TRUE, -1)
 	message_admins("[ADMIN_LOOKUPFLW(S)] has been made into a Space Dragon by the midround ruleset.")
 	log_game("DYNAMIC: [key_name(S)] was spawned as a Space Dragon by the midround ruleset.")
-	priority_announce("It appears a lifeform with magical traces is approaching [station_name()], please stand-by.", "Lifesign Alert")
+	priority_announce("Wygląda na to, że do [station_name()] zbliża się forma życia o magicznych śladach, prosimy czekać na dalsze informacje.", "Alarm - formy życia")
 	return S
 
 //////////////////////////////////////////////

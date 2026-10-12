@@ -21,13 +21,13 @@
 	worn_slot_flags = ITEM_SLOT_HEAD
 	ventcrawler = VENTCRAWLER_ALWAYS
 
-	verb_say = "flutters"
-	verb_ask = "flutters inquisitively"
-	verb_exclaim = "flutters loudly"
-	verb_yell = "flutters loudly"
-	response_help = "pets"
-	speak_emote = list("flutters")
-	emote_hear = list("flutters.")
+	verb_say = "trzepocze"
+	verb_ask = "trzepocze pytająco"
+	verb_exclaim = "trzepocze głośno"
+	verb_yell = "trzepocze głośno"
+	response_help = "głaszcze"
+	speak_emote = list("trzepocze")
+	emote_hear = list("trzepocze.")
 	speak_chance = 1
 	attacked_sound = 'sound/voice/moth/scream_moth.ogg'
 

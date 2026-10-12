@@ -17,11 +17,11 @@
 			announcement += "<br><h2 class='alert'>[html_encode(title)]</h2>"
 	else if(type == JOB_NAME_CAPTAIN)
 		announcement += "<h1 class='alert'>Ogłoszenie Kapitana</h1>"
-		GLOB.news_network.SubmitArticle(html_encode(text), "Captain's Announcement", "Station Announcements", null)
+		GLOB.news_network.SubmitArticle(html_encode(text), "Ogłoszenie kapitana", "Ogłoszenia stacji", null)
 
 	else
 		if(!sender_override)
-			announcement += "<h1 class='alert'>[command_name()] Update</h1>"
+			announcement += "<h1 class='alert'>Komunikat: [command_name()]</h1>"
 		else
 			announcement += "<h1 class='alert'>[sender_override]</h1>"
 		if (title && length(title) > 0)
@@ -29,9 +29,9 @@
 
 		if(!sender_override)
 			if(title == "")
-				GLOB.news_network.SubmitArticle(text, "Central Command Update", "Station Announcements", null)
+				GLOB.news_network.SubmitArticle(text, "Komunikat Centrali", "Ogłoszenia stacji", null)
 			else
-				GLOB.news_network.SubmitArticle(title + "<br><br>" + text, "Central Command", "Station Announcements", null)
+				GLOB.news_network.SubmitArticle(title + "<br><br>" + text, "Centrala", "Ogłoszenia stacji", null)
 
 	///If the announcer overrides alert messages, use that message.
 	if(SSstation.announcer.custom_alert_message && !has_important_message)
@@ -51,7 +51,7 @@
 
 /proc/exploration_announce(text, z_value)
 	var/announcement = "<meta charset='UTF-8'>"
-	announcement += "<h1 class='alert'>[command_name()] Update</h1>"
+	announcement += "<h1 class='alert'>Komunikat: [command_name()]</h1>"
 	announcement += "<br><span class='alert'>[html_encode(text)]</span><br>"
 	announcement += "<br>"
 
@@ -65,10 +65,10 @@
 
 /proc/print_command_report(text = "", title = null, announce=TRUE)
 	if(!title)
-		title = "Classified [command_name()] Update"
+		title = "Tajny komunikat: [command_name()]"
 
 	if(announce)
-		priority_announce("A report has been downloaded and printed out at all communications consoles.", "Incoming Classified Message", SSstation.announcer.get_rand_report_sound(), has_important_message = TRUE)
+		priority_announce("Raport został pobrany i wydrukowany na wszystkich konsolach komunikacyjnych.", "Nadchodzi tajna wiadomość", SSstation.announcer.get_rand_report_sound(), has_important_message = TRUE)
 	var/datum/comm_message/M  = new
 	M.title = title
 	M.content =  text

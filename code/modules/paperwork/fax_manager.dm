@@ -96,18 +96,18 @@ GLOBAL_DATUM_INIT(fax_manager, /datum/fax_manager, new)
 		if("logs")
 			var/list/request = get_request(params["id_message"])
 			if(!ismob(request["sender"]))
-				to_chat(usr, "This can only be used on instances of type /mob.")
+				to_chat(usr, "Można tego użyć tylko na instancjach typu /mob.")
 				return TRUE
 			show_individual_logging_panel(request["sender"], null, null)
 			return TRUE
 		if("smite")
 			var/list/request = get_request(params["id_message"])
 			if(!check_rights(R_FUN))
-				to_chat(usr, "Insufficient permissions to smite, you require +FUN")
+				to_chat(usr, "Brak uprawnień do smite, potrzebujesz +FUN")
 				return TRUE
 			var/mob/living/carbon/human/H = request["sender"]
 			if (!H || !istype(H))
-				to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+				to_chat(usr, "Można tego użyć tylko na instancjach typu /mob/living/carbon/human")
 				return TRUE
 			usr.client.smite(H)
 			return TRUE

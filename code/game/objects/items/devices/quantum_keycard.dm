@@ -12,17 +12,17 @@
 /obj/item/quantum_keycard/examine(mob/user)
 	. = ..()
 	if(qpad)
-		. += "It's currently linked to a quantum pad."
-		. += "<span class='notice'>Alt-click to unlink the keycard.</span>"
+		. += "Jest obecnie połączona z padem kwantowym."
+		. += "<span class='notice'>Alt-kliknij, by rozłączyć kartę.</span>"
 	else
-		. += "<span class='notice'>Insert [src] into an active quantum pad to link it.</span>"
+		. += "<span class='notice'>Włóż [src] do aktywnego pada kwantowego, by ją połączyć.</span>"
 
 /obj/item/quantum_keycard/AltClick(mob/living/user)
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
-	to_chat(user, "<span class='notice'>You start pressing [src]'s unlink button...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz wciskać przycisk rozłączania [src]...</span>")
 	if(do_after(user, 40, target = src))
-		to_chat(user, "<span class='notice'>The keycard beeps twice and disconnects the quantum link.</span>")
+		to_chat(user, "<span class='notice'>Karta pika dwa razy i zrywa połączenie kwantowe.</span>")
 		qpad = null
 
 /obj/item/quantum_keycard/update_icon()

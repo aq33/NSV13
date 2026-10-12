@@ -1,9 +1,9 @@
 /datum/computer_file/program/emag_console
 	filename = "emag_console"
-	filedesc = "Crypto-breaker"
+	filedesc = "Łamacz szyfrów"
 	category = PROGRAM_CATEGORY_MISC
 	program_icon_state = "hostile"
-	extended_desc = "The console output from an emag. You shouldn't be seeing this."
+	extended_desc = "Wyjście konsoli z emaga. Nie powinieneś tego widzieć."
 	size = 0
 	available_on_ntnet = FALSE
 	tgui_id = "NtosEmagConsole"

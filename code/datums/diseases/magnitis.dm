@@ -8,7 +8,7 @@
 	viable_mobtypes = list(/mob/living/carbon/human)
 	disease_flags = CAN_CARRY|CAN_RESIST|CURABLE
 	permeability_mod = 0.75
-	desc = "This disease disrupts the magnetic field of your body, making it act as if a powerful magnet. Injections of iron help stabilize the field."
+	desc = "Ta choroba zakłóca pole magnetyczne ciała, przez co działa ono jak potężny magnes. Zastrzyki z żelaza pomagają ustabilizować pole."
 	danger = DISEASE_MEDIUM
 	infectable_biotypes = list(MOB_ORGANIC, MOB_ROBOTIC)
 	process_dead = TRUE
@@ -18,7 +18,7 @@
 	switch(stage)
 		if(2)
 			if(prob(2))
-				to_chat(affected_mob, "<span class='danger'>You feel a slight shock course through your body.</span>")
+				to_chat(affected_mob, "<span class='danger'>Czujesz, jak przez twoje ciało przechodzi lekki wstrząs.</span>")
 			if(prob(2))
 				for(var/obj/M in orange(2,affected_mob))
 					if(!M.anchored && (M.flags_1 & CONDUCT_1))
@@ -29,9 +29,9 @@
 					step_towards(S,affected_mob)
 		if(3)
 			if(prob(2))
-				to_chat(affected_mob, "<span class='danger'>You feel a strong shock course through your body.</span>")
+				to_chat(affected_mob, "<span class='danger'>Czujesz, jak przez twoje ciało przechodzi silny wstrząs.</span>")
 			if(prob(2))
-				to_chat(affected_mob, "<span class='danger'>You feel like clowning around.</span>")
+				to_chat(affected_mob, "<span class='danger'>Masz ochotę się powygłupiać.</span>")
 			if(prob(4))
 				for(var/obj/M in orange(4,affected_mob))
 					if(!M.anchored && (M.flags_1 & CONDUCT_1))
@@ -48,9 +48,9 @@
 						step_towards(S,affected_mob)
 		if(4)
 			if(prob(2))
-				to_chat(affected_mob, "<span class='danger'>You feel a powerful shock course through your body.</span>")
+				to_chat(affected_mob, "<span class='danger'>Czujesz, jak przez twoje ciało przechodzi potężny wstrząs.</span>")
 			if(prob(2))
-				to_chat(affected_mob, "<span class='danger'>You query upon the nature of miracles.</span>")
+				to_chat(affected_mob, "<span class='danger'>Zastanawiasz się nad naturą cudów.</span>")
 			if(prob(8))
 				for(var/obj/M in orange(6,affected_mob))
 					if(!M.anchored && (M.flags_1 & CONDUCT_1))

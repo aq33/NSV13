@@ -33,7 +33,7 @@
 				break
 	//Prevent access to the z-level.
 	//Announcement
-	priority_announce("The orbital body [name] has been destroyed. Transit to this location is no longer possible.", "Nanotrasen Orbital Body Division")
+	priority_announce("Ciało orbitalne [name] zostało zniszczone. Tranzyt do tej lokalizacji nie jest już możliwy.", "Dział Ciał Orbitalnych Nanotrasen")
 	qdel(src)
 
 /datum/orbital_object/z_linked/collision(datum/orbital_object/other)

@@ -1,9 +1,9 @@
 /datum/brain_trauma/special/obsessed
 	name = "Psychotic Schizophrenia"
 	desc = "Patient has a subtype of delusional disorder, becoming irrationally attached to someone."
-	scan_desc = "psychotic schizophrenic delusions"
-	gain_text = "If you see this message, make a github issue report. The trauma initialized wrong."
-	lose_text = "<span class='warning'>The voices in your head fall silent.</span>"
+	scan_desc = "urojenia psychotyczno-schizofreniczne"
+	gain_text = "Jeśli widzisz tę wiadomość, zgłoś błąd na githubie. Uraz zainicjalizował się nieprawidłowo."
+	lose_text = "<span class='warning'>Głosy w twojej głowie milkną.</span>"
 	can_gain = TRUE
 	random_gain = FALSE
 	resilience = TRAUMA_RESILIENCE_SURGERY
@@ -26,7 +26,7 @@
 			qdel(src)
 			return
 	RegisterSignal(obsession.mind, COMSIG_MIND_CRYOED, PROC_REF(on_obsession_cryoed))
-	gain_text = "<span class='warning'>You hear a sickening, raspy voice in your head. It wants one small task of you...</span>"
+	gain_text = "<span class='warning'>Słyszysz w głowie obrzydliwy, chrapliwy głos. Chce od ciebie jednego drobnego zadania...</span>"
 	owner.mind.add_antag_datum(/datum/antagonist/obsessed)
 	antagonist = owner.mind.has_antag_datum(/datum/antagonist/obsessed)
 	antagonist.trauma = src
@@ -85,17 +85,17 @@
 	SIGNAL_HANDLER
 
 	UnregisterSignal(obsession.mind, COMSIG_MIND_CRYOED)
-	var/message = "You get the feeling [obsession] is no longer within reach."
+	var/message = "Masz przeczucie, że [obsession] jest już poza twoim zasięgiem."
 	obsession = find_obsession()
 	if(!obsession)//we didn't find one
-		lose_text = "<span class='warning'>[message] The voices in your head fall silent.</span>"
+		lose_text = "<span class='warning'>[message] Głosy w twojej głowie milkną.</span>"
 		qdel(src)
 		return
 	RegisterSignal(obsession.mind, COMSIG_MIND_CRYOED, PROC_REF(on_obsession_cryoed))
-	to_chat(owner, "<span class='warning'>[message] The voices have a new task for you...</span>")
+	to_chat(owner, "<span class='warning'>[message] Głosy mają dla ciebie nowe zadanie...</span>")
 	antagonist.objectives = list()
 	antagonist.forge_objectives(obsession.mind)
-	to_chat(owner, "<B>You don't know their connection, but The Voices compel you to stalk [obsession], forcing them into a state of constant paranoia.</B>")
+	to_chat(owner, "<B>Nie znasz waszego związku, ale Głosy zmuszają cię do śledzenia [obsession] i trzymania tej osoby w stanie ciągłej paranoi.</B>")
 	owner.mind.announce_objectives()
 
 /datum/brain_trauma/special/obsessed/proc/social_interaction()
@@ -112,11 +112,11 @@
 			owner.dizziness += 10
 			fail = TRUE
 		if(3)
-			to_chat(owner, "<span class='userdanger'>You feel your heart lurching in your chest...</span>")
+			to_chat(owner, "<span class='userdanger'>Czujesz, jak serce podskakuje ci w piersi...</span>")
 			owner.Stun(20)
 			shake_camera(owner, 15, 1)
 		if(4)
-			to_chat(owner, "<span class='warning'>You faint.</span>")
+			to_chat(owner, "<span class='warning'>Mdlejesz.</span>")
 			owner.Unconscious(80)
 			fail = TRUE
 	return fail

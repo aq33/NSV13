@@ -7,7 +7,7 @@
 	earliest_start = 0 MINUTES
 
 /datum/round_event/easter/announce(fake)
-	priority_announce(pick("Hip-hop into Easter!","Find some Bunny's stash!","Today is National 'Hunt a Wabbit' Day.","Be kind, give Chocolate Eggs!"), sound = SSstation.announcer.get_rand_alert_sound())
+	priority_announce(pick("Wskakuj w Wielkanoc!","Find some Bunny's stash!","Dziś Narodowy Dzień Polowania na Króliki.","Bądź miły, dawaj czekoladowe jajka!"), sound = SSstation.announcer.get_rand_alert_sound())
 
 
 /datum/round_event_control/rabbitrelease
@@ -18,7 +18,7 @@
 	max_occurrences = 10
 
 /datum/round_event/rabbitrelease/announce(fake)
-	priority_announce("Unidentified furry objects detected coming aboard [station_name()]. Beware of Adorable-ness.", "Fluffy Alert", ANNOUNCER_ALIENS)
+	priority_announce("Wykryto niezidentyfikowane puchate obiekty wchodzące na pokład [station_name()]. Uwaga na uroczość.", "Fluffy Alert", ANNOUNCER_ALIENS)
 
 
 /datum/round_event/rabbitrelease/start()
@@ -37,18 +37,18 @@
 	icon_state = "rabbit_white"
 	icon_living = "rabbit_white"
 	icon_dead = "rabbit_white_dead"
-	speak = list("Hop into Easter!","Come get your eggs!","Prizes for everyone!")
-	speak_emote = list("sniffles","twitches")
-	emote_hear = list("hops.")
-	emote_see = list("hops around","bounces up and down")
+	speak = list("Wskocz w Wielkanoc!","Chodźcie po jajka!","Nagrody dla wszystkich!")
+	speak_emote = list("pociąga nosem","drga")
+	emote_hear = list("skacze.")
+	emote_see = list("skacze dookoła","podskakuje w górę i w dół")
 	butcher_results = list(/obj/item/food/meat/slab = 1)
 	egg_type = /obj/item/suprise_egg
 	food_type = /obj/item/food/grown/carrot
 	eggsleft = 10
 	eggsFertile = FALSE
 	icon_prefix = "rabbit"
-	feedMessages = list("It nibbles happily.","It noms happily.")
-	layMessage = list("hides an egg.","scampers around suspiciously.","begins making a huge racket.","begins shuffling.")
+	feedMessages = list("Radośnie skubie.","Radośnie chrupie.")
+	layMessage = list("chowa jajko.","scampers around suspiciously.","zaczyna robić straszny harmider.","begins shuffling.")
 
 /mob/living/simple_animal/chicken/rabbit/space
 	icon_prefix = "s_rabbit"
@@ -139,7 +139,7 @@
 
 /obj/item/suprise_egg/attack_self(mob/user)
 	..()
-	to_chat(user, "<span class='notice'>You unwrap [src] and find a prize inside!</span>")
+	to_chat(user, "<span class='notice'>Rozpakowujesz [src] i znajdujesz w środku nagrodę!</span>")
 	dispensePrize(get_turf(user))
 	qdel(src)
 
@@ -150,7 +150,7 @@
 	desc = "The Cross represents the Assistants that died for your sins."
 	icon_state = "hotcrossbun"
 	foodtypes = SUGAR | GRAIN
-	tastes = list("easter")
+	tastes = list("Wielkanoc")
 	crafting_complexity = FOOD_COMPLEXITY_1
 
 /datum/crafting_recipe/food/hotcrossbun

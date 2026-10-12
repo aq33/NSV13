@@ -32,35 +32,35 @@
 	if(user.a_intent == INTENT_GRAB && ishuman(M) && source.is_sharp())
 		var/mob/living/carbon/human/H = M
 		if(H.has_status_effect(/datum/status_effect/neck_slice))
-			user.show_message("<span class='danger'>[H]'s neck has already been already cut, you can't make the bleeding any worse!", 1, \
-							"<span class='danger'>Their neck has already been already cut, you can't make the bleeding any worse!")
+			user.show_message("<span class='danger'>Szyja [H] jest już podcięta, nie możesz bardziej pogorszyć krwawienia!", 1, \
+							"<span class='danger'>Szyja jest już podcięta, nie możesz bardziej pogorszyć krwawienia!")
 			return COMPONENT_ITEM_NO_ATTACK
 		if((H.health <= H.crit_threshold || (user.pulling == H && user.grab_state >= GRAB_NECK) || H.IsSleeping()) && user.zone_selected == BODY_ZONE_HEAD) // Only sleeping, neck grabbed, or crit, can be sliced.
 			INVOKE_ASYNC(src, PROC_REF(startNeckSlice), source, H, user)
 			return COMPONENT_ITEM_NO_ATTACK
 
 /datum/component/butchering/proc/startButcher(obj/item/source, mob/living/M, mob/living/user)
-	to_chat(user, "<span class='notice'>You begin to butcher [M]...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz ćwiartować [M]...</span>")
 	playsound(M.loc, butcher_sound, 50, TRUE, -1)
 	if(do_mob(user, M, speed) && M.Adjacent(source))
 		Butcher(user, M)
 
 /datum/component/butchering/proc/startNeckSlice(obj/item/source, mob/living/carbon/human/H, mob/living/user)
-	user.visible_message("<span class='danger'>[user] is slitting [H]'s throat!</span>", \
-					"<span class='danger'>You start slicing [H]'s throat!</span>", \
-					"<span class='hear'>You hear a cutting noise!</span>")
-	H.show_message("<span class='userdanger'>Your throat is being slit by [user]!</span>", 1, \
-					"<span class = 'userdanger'>Something is cutting into your neck!</span>", NONE)
+	user.visible_message("<span class='danger'>[user] podrzyna gardło [H]!</span>", \
+					"<span class='danger'>Zaczynasz podrzynać gardło [H]!</span>", \
+					"<span class='hear'>Słyszysz odgłos cięcia!</span>")
+	H.show_message("<span class='userdanger'>[user] podrzyna ci gardło!</span>", 1, \
+					"<span class = 'userdanger'>Coś wcina ci się w szyję!</span>", NONE)
 
 	playsound(H.loc, butcher_sound, 50, TRUE, -1)
 	if(do_mob(user, H, CLAMP(500 / source.force, 30, 100)) && H.Adjacent(source))
 		if(H.has_status_effect(/datum/status_effect/neck_slice))
-			user.show_message("<span class='danger'>[H]'s neck has already been already cut, you can't make the bleeding any worse!", 1, \
-							"<span class='danger'>Their neck has already been already cut, you can't make the bleeding any worse!")
+			user.show_message("<span class='danger'>Szyja [H] jest już podcięta, nie możesz bardziej pogorszyć krwawienia!", 1, \
+							"<span class='danger'>Szyja jest już podcięta, nie możesz bardziej pogorszyć krwawienia!")
 			return
 
 		H.visible_message("<span class='danger'>[user] slits [H]'s throat!</span>", \
-					"<span class='userdanger'>[user] slits your throat...</span>")
+					"<span class='userdanger'>[user] podrzyna ci gardło...</span>")
 		H.apply_damage(source.force, BRUTE, BODY_ZONE_HEAD)
 		H.bleed_rate = CLAMP(H.bleed_rate + 20, 0, 30)
 		H.apply_status_effect(/datum/status_effect/neck_slice)
@@ -75,10 +75,10 @@
 		for(var/_i in 1 to amount)
 			if(!prob(final_effectiveness))
 				if(butcher)
-					to_chat(butcher, "<span class='warning'>You fail to harvest some of the [initial(bones.name)] from [meat].</span>")
+					to_chat(butcher, "<span class='warning'>Nie udaje ci się pozyskać z [meat] części surowca: [initial(bones.name)].</span>")
 			else if(prob(bonus_chance))
 				if(butcher)
-					to_chat(butcher, "<span class='info'>You harvest some extra [initial(bones.name)] from [meat]!</span>")
+					to_chat(butcher, "<span class='info'>Pozyskujesz z [meat] dodatkowy surowiec: [initial(bones.name)]!</span>")
 				for(var/i in 1 to 2)
 					new bones (T)
 			else
@@ -92,7 +92,7 @@
 		meat.guaranteed_butcher_results.Remove(sinew)
 	if(butcher)
 		butcher.visible_message("<span class='notice'>[butcher] butchers [meat].</span>", \
-								"<span class='notice'>You butcher [meat].</span>")
+								"<span class='notice'>Ćwiartujesz [meat].</span>")
 	ButcherEffects(meat)
 	meat.harvest(butcher)
 	meat.gib(FALSE, FALSE, TRUE)

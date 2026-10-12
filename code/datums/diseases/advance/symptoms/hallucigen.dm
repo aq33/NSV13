@@ -17,7 +17,7 @@ Bonus
 
 /datum/symptom/hallucigen
 	name = "Hallucigen"
-	desc = "The virus stimulates the brain, causing occasional hallucinations."
+	desc = "Wirus stymuluje mózg, powodując okazjonalne halucynacje."
 	stealth = 1
 	resistance = -1
 	stage_speed = 1
@@ -30,8 +30,7 @@ Bonus
 	prefixes = list("Narcotic ", "Narco", "Psycho-")
 	suffixes = list(" Psychosis")
 	var/fake_healthy = FALSE
-	threshold_desc = "<b>Stage Speed 7:</b> Increases the amount of hallucinations.<br>\
-					  <b>Stealth 2:</b> The virus mimics positive symptoms.."
+	threshold_desc = "<b>Szybkość stadiów 7:</b> zwiększa liczbę halucynacji.<br><b>Ukrycie 2:</b> wirus naśladuje pozytywne objawy.."
 
 /datum/symptom/hallucigen/severityset(datum/disease/advance/A)
 	. = ..()
@@ -51,8 +50,8 @@ Bonus
 	if(!..())
 		return
 	var/mob/living/carbon/M = A.affected_mob
-	var/list/healthy_messages = list("Your lungs feel great.", "You realize you haven't been breathing.", "You don't feel the need to breathe.",\
-					"Your eyes feel great.", "You are now blinking manually.", "You don't feel the need to blink.")
+	var/list/healthy_messages = list("Twoje płuca czują się świetnie.", "Uświadamiasz sobie, że nie oddychałeś.", "Nie czujesz potrzeby oddychania.",\
+					"Twoje oczy czują się świetnie.", "Mrugasz teraz ręcznie.", "Nie czujesz potrzeby mrugania.")
 	switch(A.stage)
 		if(1, 2)
 			if(prob(base_message_chance))

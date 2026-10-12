@@ -3,7 +3,7 @@ GLOBAL_VAR(command_name)
 	if (GLOB.command_name)
 		return GLOB.command_name
 
-	var/name = "Central Command"
+	var/name = "Centrala"
 
 	GLOB.command_name = name
 	return name
@@ -236,36 +236,36 @@ GLOBAL_DATUM(syndicate_code_response_regex, /regex)
 		if(TOOL_SCREWDRIVER)
 			return "a screwdriver"
 		if(TOOL_WIRECUTTER)
-			return "a pair of wirecutters"
+			return "kombinerki"
 		if(TOOL_WRENCH)
 			return "a wrench"
 		if(TOOL_WELDER)
 			return "a welder"
 		if(TOOL_ANALYZER)
-			return "an analyzer tool"
+			return "analizator"
 		if(TOOL_MINING)
-			return "a mining implement"
+			return "narzędzie górnicze"
 		if(TOOL_SHOVEL)
-			return "a digging tool"
+			return "narzędzie do kopania"
 		if(TOOL_RETRACTOR)
 			return "a retractor"
 		if(TOOL_HEMOSTAT)
-			return "something to clamp bleeding"
+			return "coś do zaciśnięcia krwawienia"
 		if(TOOL_CAUTERY)
 			return "a cautery"
 		if(TOOL_DRILL)
-			return "a drilling tool"
+			return "wiertło"
 		if(TOOL_SCALPEL)
-			return "a fine cutting tool"
+			return "precyzyjne narzędzie tnące"
 		if(TOOL_SAW)
 			return "a saw"
 		//if(TOOL_BONESET)
 		//	return "a bone setter"
 		if(TOOL_KNIFE)
-			return "a cutting tool"
+			return "narzędzie tnące"
 		if(TOOL_BLOODFILTER)
-			return "a blood filter"
+			return "filtr krwi"
 		if(TOOL_ROLLINGPIN)
-			return "a rolling pin"
+			return "wałek do ciasta"
 		else
-			return "something... but the gods didn't set this up right (Please report this bug)"
+			return "coś... ale bogowie źle to ustawili (zgłoś ten błąd)"

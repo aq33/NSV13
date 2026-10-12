@@ -11,7 +11,7 @@
 /obj/item/assembly/control/examine(mob/user)
 	. = ..()
 	if(id)
-		. += "<span class='notice'>Its channel ID is '[id]'.</span>"
+		. += "<span class='notice'>Jego identyfikator kanału to „[id]”.</span>"
 
 /obj/item/assembly/control/activate()
 	var/openclose

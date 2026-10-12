@@ -7,7 +7,7 @@
 	var/datum/action/innate/shuttledocker_rotate/rotate_action = new
 	var/datum/action/innate/shuttledocker_place/place_action = new
 	var/shuttlePortId = ""
-	var/shuttlePortName = "custom location"
+	var/shuttlePortName = "własna lokalizacja"
 	var/obj/docking_port/stationary/my_port //the custom docking port placed by this console
 	var/obj/docking_port/mobile/shuttle_port //the mobile docking port of the connected shuttle
 	var/view_range = 0
@@ -135,29 +135,29 @@
 	// AQ EDIT - no supercruise here, shuttles are flown straight from the console (see nsv13/code/modules/shuttle/computer.dm)
 	var/obj/docking_port/mobile/landing_shuttle = SSshuttle.getShuttle(shuttleId)
 	if(!landing_shuttle || landing_shuttle.mode != SHUTTLE_IDLE)
-		to_chat(current_user, "<span class='warning'>Shuttle is not ready to move.</span>")
+		to_chat(current_user, "<span class='warning'>Prom nie jest gotowy do ruchu.</span>")
 		return
 
 	var/mob/camera/ai_eye/remote/shuttle_docker/the_eye = eyeobj
 	var/landing_clear = checkLandingSpot()
 	if(designate_time && (landing_clear != SHUTTLE_DOCKER_BLOCKED))
-		to_chat(current_user, "<span class='warning'>Targeting transit location, please wait [DisplayTimeText(designate_time)]...</span>")
+		to_chat(current_user, "<span class='warning'>Namierzanie lokalizacji tranzytowej, poczekaj [DisplayTimeText(designate_time)]...</span>")
 		designating_target_loc = the_eye.loc
 		var/wait_completed = do_after(current_user, designate_time, FALSE, designating_target_loc, TRUE, CALLBACK(src, PROC_REF(canDesignateTarget)))
 		designating_target_loc = null
 		if(!current_user)
 			return
 		if(!wait_completed)
-			to_chat(current_user, "<span class='warning'>Operation aborted.</span>")
+			to_chat(current_user, "<span class='warning'>Operacja przerwana.</span>")
 			return
 		landing_clear = checkLandingSpot()
 
 	if(landing_clear != SHUTTLE_DOCKER_LANDING_CLEAR)
 		switch(landing_clear)
 			if(SHUTTLE_DOCKER_BLOCKED)
-				to_chat(current_user, "<span class='warning'>Invalid transit location.</span>")
+				to_chat(current_user, "<span class='warning'>Nieprawidłowa lokalizacja tranzytowa.</span>")
 			if(SHUTTLE_DOCKER_BLOCKED_BY_HIDDEN_PORT)
-				to_chat(current_user, "<span class='warning'>Unknown object detected in landing zone. Please designate another location.</span>")
+				to_chat(current_user, "<span class='warning'>W strefie lądowania wykryto nieznany obiekt. Wyznacz inną lokalizację.</span>")
 		return
 
 	///Make one use port that deleted after fly off, to don't lose info that need on to properly fly off.
@@ -203,12 +203,12 @@
 			QDEL_NULL(shuttleObject)
 			//Hold the shuttle in the docking position until ready.
 			M.setTimer(INFINITY)
-			say("Waiting for hyperspace lane...")
+			say("Oczekiwanie na korytarz nadprzestrzenny...")
 			INVOKE_ASYNC(src, PROC_REF(unfreeze_shuttle), M, SSmapping.get_level(eyeobj.z))
 		if(1)
-			to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
+			to_chat(usr, "<span class='warning'>Zażądano nieprawidłowego promu.</span>")
 		else
-			to_chat(usr, "<span class='notice'>Unable to comply.</span>")
+			to_chat(usr, "<span class='notice'>Nie można wykonać.</span>")
 
 	return TRUE
 
@@ -384,7 +384,7 @@
 			L["(L.len)[S.name]"] = S
 
 	playsound(console, 'sound/machines/terminal_prompt.ogg', 25, FALSE)
-	var/selected = input("Choose location to jump to", "Locations", null) as null|anything in L
+	var/selected = input("Wybierz lokalizację, do której chcesz skoczyć", "Locations", null) as null|anything in L
 	if(QDELETED(src) || QDELETED(target) || !isliving(target))
 		return
 	playsound(src, "terminal_type", 25, 0)
@@ -393,7 +393,7 @@
 		if(T)
 			playsound(console, 'sound/machines/terminal_prompt_confirm.ogg', 25, 0)
 			remote_eye.setLoc(T)
-			to_chat(target, "<span class='notice'>Jumped to [selected].</span>")
+			to_chat(target, "<span class='notice'>Skoczono do: [selected].</span>")
 			C.overlay_fullscreen("flash", /atom/movable/screen/fullscreen/flash/static)
 			C.clear_fullscreen("flash", 3)
 	else

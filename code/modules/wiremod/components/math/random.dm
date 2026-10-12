@@ -5,7 +5,7 @@
  */
 /obj/item/circuit_component/random
 	display_name = "Random"
-	display_desc = "A component that returns random values."
+	display_desc = "Komponent, który zwraca losowe wartości."
 
 	/// The minimum value that the random number can be
 	var/datum/port/input/minimum

@@ -18,10 +18,10 @@
 		return ..()
 	var/obj/item/stack/sheet/iron/M = O
 	if(!M.use(1))
-		to_chat(user, "<span class='warning'>You need one iron sheet to finish the light tile!</span>")
+		to_chat(user, "<span class='warning'>Potrzebujesz jednego arkusza żelaza, by dokończyć płytkę świetlną!</span>")
 		return
 	new /obj/item/stack/tile/light(user.drop_location(), null, TRUE, user)
-	to_chat(user, "<span class='notice'>You make a light tile.</span>")
+	to_chat(user, "<span class='notice'>Robisz płytkę świetlną.</span>")
 	use(1)
 
 /obj/item/stack/light_w/wirecutter_act(mob/living/user, obj/item/I)

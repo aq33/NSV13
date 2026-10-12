@@ -403,24 +403,24 @@
 	SEND_SOUND(M, 'sound/misc/notice2.ogg') //Alerting them to their consideration
 	if(flashwindow)
 		window_flash(M.client)
-	switch(ignore_category ? askuser(M,Question,"Please answer in [DisplayTimeText(poll_time)]!","Yes","No","Never for this round", StealFocus=0, Timeout=poll_time) : askuser(M,Question,"Please answer in [DisplayTimeText(poll_time)]!","Yes","No", StealFocus=0, Timeout=poll_time))
+	switch(ignore_category ? askuser(M,Question,"Odpowiedz w ciągu [DisplayTimeText(poll_time)]!","Yes","No","Never for this round", StealFocus=0, Timeout=poll_time) : askuser(M,Question,"Odpowiedz w ciągu [DisplayTimeText(poll_time)]!","Yes","No", StealFocus=0, Timeout=poll_time))
 		if(1)
 			to_chat(M, "<span class='notice'>Choice registered: Yes.</span>")
 			if(time_passed + poll_time <= world.time)
-				to_chat(M, "<span class='danger'>Sorry, you answered too late to be considered!</span>")
+				to_chat(M, "<span class='danger'>Przepraszamy, odpowiedziałeś za późno, by zostać wziętym pod uwagę!</span>")
 				SEND_SOUND(M, 'sound/machines/buzz-sigh.ogg')
 				candidates -= M
 			else
 				candidates += M
 		if(2)
-			to_chat(M, "<span class='danger'>Choice registered: No.</span>")
+			to_chat(M, "<span class='danger'>Zarejestrowano wybór: Nie.</span>")
 			candidates -= M
 		if(3)
 			var/list/L = GLOB.poll_ignore[ignore_category]
 			if(!L)
 				GLOB.poll_ignore[ignore_category] = list()
 			GLOB.poll_ignore[ignore_category] += M.ckey
-			to_chat(M, "<span class='danger'>Choice registered: Never for this round.</span>")
+			to_chat(M, "<span class='danger'>Zarejestrowano wybór: Nigdy w tej rundzie.</span>")
 			candidates -= M
 		else
 			candidates -= M
@@ -438,7 +438,7 @@
 /proc/pollCandidates(Question, banning_key, role_preference_key = null, poll_time = 300, poll_ignore_key = null, flashwindow = TRUE, list/group = null, req_hours = 0)
 	var/time_passed = world.time
 	if (!Question)
-		Question = "Would you like to be a special role?"
+		Question = "Czy chcesz zostać rolą specjalną?"
 	if(isnull(poll_ignore_key)) // FALSE will not put one, no matter what
 		if(role_preference_key)
 			poll_ignore_key = "role_[role_preference_key]"
@@ -533,8 +533,7 @@
 		return
 	var/area/A = get_area(character)
 	var/message = "<span class='game deadsay'><span class='name'>\
-		[character.real_name]</span> ([rank]) has arrived at the station at \
-		<span class='name'>[A.name]</span>.</span>"
+		[character.real_name]</span> ([rank]) przybywa na pokład, do: <span class='name'>[A.name]</span>.</span>"
 	deadchat_broadcast(message, follow_target = character, message_type=DEADCHAT_ARRIVALRATTLE)
 	if((!GLOB.announcement_systems.len) || (!character.mind))
 		return

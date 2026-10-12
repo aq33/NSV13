@@ -1413,7 +1413,7 @@
 "biS" = (
 /obj/structure/table/reinforced,
 /obj/item/paper{
-	info = "WARNING! Please remember that smoking around Antonio is a bad idea, last time it ended badly. And do not forget that you have tamed the spider, he loves machine guns very much.";
+	info = "UWAGA! Pamiętajcie, że palenie przy Antonio to zły pomysł, ostatnio skończyło się to źle. I nie zapominajcie, że oswoiliście pająka, on bardzo kocha karabiny maszynowe.";
 	name = "Master at Arms Reminder"
 	},
 /obj/machinery/airalarm/directional/south,

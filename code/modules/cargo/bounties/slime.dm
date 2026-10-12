@@ -3,7 +3,7 @@
 
 /datum/bounty/item/slime/New()
 	..()
-	description = "Nanotrasen's science lead is hunting for the rare and exotic [name]. A bounty has been offered for finding it."
+	description = "Główny naukowiec Nanotrasen poluje na rzadki i egzotyczny [name]. Za jego znalezienie wyznaczono nagrodę."
 	reward += rand(0, 4) * 500
 
 /datum/bounty/item/slime/green

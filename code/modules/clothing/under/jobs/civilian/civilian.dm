@@ -58,7 +58,7 @@
 
 /obj/item/clothing/under/rank/civilian/altchef
 	name = "red cook's suit"
-	desc = "A flashier chef's suit, if a bit more impractical."
+	desc = "Bardziej efektowny strój kucharza, choć mniej praktyczny."
 	icon_state = "altchef"
 	alt_covers_chest = TRUE
 

@@ -91,10 +91,10 @@
 
 /obj/item/clothing/head/beanie/waldo
 	name = "red striped bobble hat"
-	desc = "If you're going on a worldwide hike, you'll need some cold protection."
+	desc = "Jeśli wybierasz się na wędrówkę dookoła świata, przyda ci się ochrona przed zimnem."
 	icon_state = "waldo_hat"
 
 /obj/item/clothing/head/beanie/rasta
 	name = "rastacap"
-	desc = "Perfect for tucking in those dreadlocks."
+	desc = "Idealna do upchnięcia dredów."
 	icon_state = "beanierasta"

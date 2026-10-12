@@ -27,62 +27,62 @@ Do not modify this unless you know what you're doing. */
 /datum/crime/minor/assault
 	name = "Assault"
 	icon = "hand-rock"
-	tooltip = "To use physical force against someone without the apparent intent to kill them."
+	tooltip = "Użycie siły fizycznej wobec kogoś bez widocznego zamiaru zabicia go."
 
 /datum/crime/minor/pickpocketting
 	name = "Pickpocketting"
 	icon = "mask"
-	tooltip = "To steal items from another's person."
+	tooltip = "Kradzież przedmiotów z osoby innego człowieka."
 
 /datum/crime/minor/minor_vandalism
 	name = "Minor Vandalism"
 	icon = "house-damage"
-	tooltip = "To damage, destroy, or permanently deface non-critical furniture, vendors, or personal property."
+	tooltip = "Uszkodzenie, zniszczenie lub trwałe oszpecenie niekrytycznych mebli, automatów lub mienia osobistego."
 
 /datum/crime/minor/vigilantism
 	name = "Vigilantism"
 	icon = "user-secret"
-	tooltip = "To perform the responsibilities and duties of the security department without approval or due cause to act."
+	tooltip = "Wykonywanie obowiązków i zadań działu ochrony bez zgody lub uzasadnionej przyczyny."
 
 /datum/crime/minor/illegal_distribution
 	name = "Illegal Distribution"
 	icon = "joint"
-	tooltip = "The possession of dangerous or illegal drugs/equipment in a quantity greater than that which is reasonable for personal consumption."
+	tooltip = "Posiadanie niebezpiecznych lub nielegalnych narkotyków/sprzętu w ilości większej niż rozsądna do użytku osobistego."
 
 /datum/crime/minor/disturbing
 	name = "Disturbing the Peace"
 	icon = "fist-raised"
-	tooltip = "To knowingly organize a movement which disrupts the normal operations of a department."
+	tooltip = "Świadome organizowanie ruchu, który zakłóca normalną pracę działu."
 
 /datum/crime/minor/negligence
 	name = "Negligence"
 	icon = "low-vision"
-	tooltip = "To be negligent in one's duty to an extent that it may cause harm, illness, or other negative effect, to another."
+	tooltip = "Zaniedbanie obowiązków w stopniu, który może spowodować krzywdę, chorobę lub inne negatywne skutki dla innej osoby."
 
 /datum/crime/minor/trespass
 	name = "Trespass"
 	icon = "walking"
-	tooltip = "To be in an area which a person has either not purposefully been admitted to, does not have access, or has been asked to leave by someone who has access to that area."
+	tooltip = "Przebywanie w obszarze, do którego dana osoba nie została celowo wpuszczona, nie ma dostępu lub z którego kazała jej wyjść osoba mająca do niego dostęp."
 
 /datum/crime/minor/breaking_and_entering
 	name = "Breaking and Entering"
 	icon = "door-open"
-	tooltip = "To trespass into an area using a method of forcible entry."
+	tooltip = "Wtargnięcie do obszaru z użyciem siłowego wejścia."
 
 /datum/crime/minor/discriminatory_language
 	name = "Discriminatory Language"
 	icon = "comment-slash"
-	tooltip = "To use language which demeans, generalizes, or otherwise de-personafies the individual at which it is targeted."
+	tooltip = "Używanie języka, który poniża, uogólnia lub w inny sposób odczłowiecza osobę, do której jest skierowany."
 
 /datum/crime/minor/fine_evasion
 	name = "Fine Evasion"
 	icon = "dollar-sign"
-	tooltip = "To purposefully avoid or refuse to pay a legal fine."
+	tooltip = "Celowe unikanie lub odmowa zapłaty legalnej grzywny."
 
 /datum/crime/minor/religious_activity
 	name = "Religious Activity outside of the chapel"
 	icon = "cross"
-	tooltip = "To convert, proselytize, hold rituals or otherwise attempt to act in the name of a religion or deity outside of the chapel."
+	tooltip = "Nawracanie, prozelityzm, odprawianie rytuałów lub inne próby działania w imieniu religii lub bóstwa poza kaplicą."
 
 /datum/crime/misdemeanour
 	category = CRIME_MISDEMEANOUR
@@ -92,67 +92,67 @@ Do not modify this unless you know what you're doing. */
 /datum/crime/misdemeanour/aggravated_assault
 	name = "Aggravated Assault"
 	icon = "user-injured"
-	tooltip = "To take physical action against a person with intent to grievously harm, but not to kill."
+	tooltip = "Podjęcie działań fizycznych wobec osoby z zamiarem ciężkiego zranienia, ale nie zabicia."
 
 /datum/crime/misdemeanour/theft
 	name = "Theft"
 	icon = "mask"
-	tooltip = "To steal equipment or items from a workplace, or items of extraordinary value from one's person."
+	tooltip = "Kradzież sprzętu lub przedmiotów z miejsca pracy albo przedmiotów o nadzwyczajnej wartości z osoby."
 
 /datum/crime/misdemeanour/vandilism
 	name = "Major Vandalism"
 	icon = "house-damage"
-	tooltip = "To destroy or damage non-critical furniture, vendors, or personal property in a manor that can not be repaired."
+	tooltip = "Zniszczenie lub uszkodzenie niekrytycznych mebli, automatów lub mienia osobistego w sposób, którego nie da się naprawić."
 
 /datum/crime/misdemeanour/conspiracy
 	name = "Conspiracy"
 	icon = "user-friends"
-	tooltip = "To knowingly work with another person in the interest of committing an illegal action."
+	tooltip = "Świadoma współpraca z inną osobą w celu popełnienia czynu niezgodnego z prawem."
 
 /datum/crime/misdemeanour/hostile_agent
 	name = "Hostile Agent"
 	icon = "user-ninja"
-	tooltip = "To knowingly act as a recruiter, representative, messenger, ally, benefactor, or other associate of a hostile organization as defined within Code 405(EOTC)."
+	tooltip = "Świadome działanie jako rekruter, przedstawiciel, posłaniec, sojusznik, dobroczyńca lub inny współpracownik wrogiej organizacji w rozumieniu Kodeksu 405 (EOTC)."
 
 /datum/crime/misdemeanour/contraband
 	name = "Contraband Equipment Possession"
 	icon = "briefcase"
-	tooltip = "To possess equipment not approved for use or production aboard Nanotrasen stations. This includes equipment produced by The Syndicate, Wizard Federation, or any other hostile organization as defined within Code 405(EOTC)."
+	tooltip = "Posiadanie sprzętu niezatwierdzonego do użytku lub produkcji na stacjach Nanotrasen. Obejmuje to sprzęt wytwarzany przez Syndykat, Federację Czarodziejów lub inną wrogą organizację w rozumieniu Kodeksu 405 (EOTC)."
 
 /datum/crime/misdemeanour/rioting
 	name = "Rioting"
 	icon = "fist-raised"
-	tooltip = "To act as a member in a group which collectively commits acts of major vandalism, sabotage, grand sabotage, or other felony crimes."
+	tooltip = "Działanie jako członek grupy, która wspólnie dopuszcza się poważnego wandalizmu, sabotażu, wielkiego sabotażu lub innych zbrodni."
 
 /datum/crime/misdemeanour/negligence
 	name = "High Negligence"
 	icon = "blind"
-	tooltip = "To be negligent in one's duty to an extent that it may cause harm to multiple individuals, a department, or in a manor which directly leads to a serious injury of another person which requires emergency medical treatment."
+	tooltip = "Zaniedbanie obowiązków w stopniu, który może spowodować krzywdę wielu osób lub działu albo w sposób, który bezpośrednio prowadzi do poważnego obrażenia innej osoby wymagającego pilnej pomocy medycznej."
 
 /datum/crime/misdemeanour/tresspass
 	name = "Trespass, Inherently Dangerous Areas"
 	icon = "door-closed"
-	tooltip = "Trespassing in an area which may lead to the injury of self, or others."
+	tooltip = "Wtargnięcie do obszaru, które może prowadzić do zranienia siebie lub innych."
 
 /datum/crime/misdemeanour/entering
 	name = "Breaking and Entering, Inherently Dangerous Areas"
 	icon = "door-open"
-	tooltip = "To trespass into an area which may lead to the injury of self or others using forcible entry."
+	tooltip = "Wtargnięcie do obszaru, które może prowadzić do zranienia siebie lub innych, z użyciem siłowego wejścia."
 
 /datum/crime/misdemeanour/insubordination
 	name = "Insubordination"
 	icon = "hand-middle-finger"
-	tooltip = "To knowingly disobey a lawful order from a superior."
+	tooltip = "Świadome nieposłuszeństwo wobec zgodnego z prawem rozkazu przełożonego."
 
 /datum/crime/misdemeanour/fraud
 	name = "Fraud"
 	icon = "comment-dollar"
-	tooltip = "To misrepresent ones intention in the interest of gaining property or money from another individual."
+	tooltip = "Wprowadzanie w błąd co do swoich zamiarów w celu uzyskania mienia lub pieniędzy od innej osoby."
 
 /datum/crime/misdemeanour/genetic_mutilation
 	name = "Genetic Mutilation"
 	icon = "dna"
-	tooltip = "To purposefully modify an individual's genetic code without consent, or with intent to harm."
+	tooltip = "Celowa modyfikacja kodu genetycznego osoby bez jej zgody lub z zamiarem wyrządzenia krzywdy."
 
 /datum/crime/major
 	category = CRIME_MAJOR
@@ -162,67 +162,67 @@ Do not modify this unless you know what you're doing. */
 /datum/crime/major/murder
 	name = "Murder"
 	icon = "skull"
-	tooltip = "To purposefully kill someone."
+	tooltip = "Celowe zabicie kogoś."
 
 /datum/crime/major/larceny
 	name = "Larceny"
 	icon = "mask"
-	tooltip = "To steal rare, expensive (Items of greater than 1000 credit value), or restricted equipment from secure areas or one's person."
+	tooltip = "Kradzież rzadkiego, drogiego (przedmioty o wartości ponad 1000 kredytów) lub zastrzeżonego sprzętu z obszarów chronionych lub z osoby."
 
 /datum/crime/major/sabotage
 	name = "Sabotage"
 	icon = "bomb"
-	tooltip = "To destroy station assets or resources critical to normal or emergency station procedures, or cause sections of the station to become uninhabitable."
+	tooltip = "Zniszczenie mienia lub zasobów stacji krytycznych dla normalnych lub awaryjnych procedur stacji albo doprowadzenie do tego, że części stacji nie nadają się do zamieszkania."
 
 /datum/crime/major/conspiracy
 	name = "High Conspiracy"
 	icon = "users"
-	tooltip = "To knowingly work with another person in the interest of committing a major or greater crime."
+	tooltip = "Świadoma współpraca z inną osobą w celu popełnienia poważnego lub cięższego przestępstwa."
 
 /datum/crime/major/hostile
 	name = "Hostile Activity"
 	icon = "thumbs-down"
-	tooltip = "To knowingly commit an act which is in direct opposition to the interests of Nanotrasen, Or to directly assist a known enemy of the corporation."
+	tooltip = "Świadome popełnienie czynu sprzecznego z interesami Nanotrasen albo bezpośrednia pomoc znanemu wrogowi korporacji."
 
 /datum/crime/major/contraband
 	name = "Possession, Illegal Inherently Dangerous Equipment"
 	icon = "exclamation-triangle"
-	tooltip = "To possess restricted or illegal equipment which has a primary purpose of causing harm to others, or large amounts of destruction."
+	tooltip = "Posiadanie zastrzeżonego lub nielegalnego sprzętu, którego głównym przeznaczeniem jest krzywdzenie innych lub powodowanie dużych zniszczeń."
 
 /datum/crime/major/riot
 	name = "Inciting a Riot"
 	icon = "fist-raised"
-	tooltip = "To perform actions in the interest of causing large amounts of unrest up to and including rioting."
+	tooltip = "Podejmowanie działań mających wywołać duże niepokoje, aż po zamieszki włącznie."
 
 /datum/crime/major/manslaughter
 	name = "Manslaughter"
 	icon = "book-dead"
-	tooltip = "To unintentionally kill someone through negligent, but not malicious, actions."
+	tooltip = "Nieumyślne zabicie kogoś w wyniku niedbałych, lecz nie złośliwych działań."
 
 /datum/crime/major/tresspass
 	name = "Trespass, High Security Areas"
 	icon = "running"
-	tooltip = "Trespassing in any of the following without appropriate permission or access: Command areas, Personal offices, Weapons storage, weapon production, explosive storage, explosive production, or other high security areas."
+	tooltip = "Wtargnięcie bez odpowiedniego pozwolenia lub dostępu do któregokolwiek z poniższych: obszarów dowództwa, gabinetów, zbrojowni, produkcji broni, magazynów materiałów wybuchowych, produkcji materiałów wybuchowych lub innych obszarów o wysokim stopniu zabezpieczenia."
 
 /datum/crime/major/break_enter
 	name = "Breaking and Entering, High Security Areas"
 	icon = "door-open"
-	tooltip = "To commit trespassing into a secure area as defined in Code 309(Trespass, High Security Areas) using forcible entry."
+	tooltip = "Wtargnięcie do obszaru chronionego w rozumieniu Kodeksu 309 (Wtargnięcie, obszary wysokiego bezpieczeństwa) z użyciem siłowego wejścia."
 
 /datum/crime/major/dereliction
 	name = "Dereliction"
 	icon = "walking"
-	tooltip = "To willfully abandon an obligation that is critical to the station's continued operation."
+	tooltip = "Umyślne porzucenie obowiązku krytycznego dla dalszego funkcjonowania stacji."
 
 /datum/crime/major/fraud
 	name = "Corporate Fraud"
 	icon = "hand-holding-usd"
-	tooltip = "To misrepresent one's intention in the interest of gaining property or money from Nanotrasen, or to gain or give property or money from Nanotrasen without proper authorization."
+	tooltip = "Wprowadzanie w błąd co do swoich zamiarów w celu uzyskania mienia lub pieniędzy od Nanotrasen albo uzyskiwanie lub przekazywanie mienia lub pieniędzy Nanotrasen bez odpowiedniego upoważnienia."
 
 /datum/crime/major/impersonation
 	name = "Identity Theft"
 	icon = "theater-masks"
-	tooltip = "To assume the identity of another individual."
+	tooltip = "Podszywanie się pod inną osobę."
 
 /datum/crime/capital
 	category = CRIME_CAPITAL
@@ -232,42 +232,42 @@ Do not modify this unless you know what you're doing. */
 /datum/crime/capital/murder
 	name = "Prime Murder"
 	icon = "skull-crossbones"
-	tooltip = "To commit the act of murder, with clear intent to kill, and clear intent or to have materially take steps to prevent the revival of the victim"
+	tooltip = "Popełnienie morderstwa z wyraźnym zamiarem zabicia oraz wyraźnym zamiarem lub faktycznymi działaniami mającymi uniemożliwić wskrzeszenie ofiary"
 
 /datum/crime/capital/larcany
 	name = "Grand Larceny"
 	icon = "mask"
-	tooltip = "To steal inherently dangerous items from their storage, one's person, or other such methods acquire through illicit means."
+	tooltip = "Kradzież z natury niebezpiecznych przedmiotów z ich magazynu, z osoby lub zdobycie ich w inny nielegalny sposób."
 
 /datum/crime/capital/sabotage
 	name = "Grand Sabotage"
 	icon = "bomb"
-	tooltip = "To destroy or modify station assets or equipment without which the station may collapse or otherwise become uninhabitable."
+	tooltip = "Zniszczenie lub modyfikacja mienia lub sprzętu stacji, bez których stacja może się zawalić lub w inny sposób przestać nadawać się do zamieszkania."
 
 /datum/crime/capital/espionage
 	name = "Espionage"
 	icon = "user-secret"
-	tooltip = "To knowingly betray critical information to enemies of the station."
+	tooltip = "Świadome zdradzenie krytycznych informacji wrogom stacji."
 
 /datum/crime/capital/enemy
 	name = "Enemy of the Corporation"
 	icon = "user-alt-slash"
-	tooltip = "To be a member of any of the following organizations: Hostile boarding parties, Wizards, Changeling Hiveminds, cults."
+	tooltip = "Członkostwo w którejkolwiek z poniższych organizacji: wrogie grupy abordażowe, czarodzieje, roje zmiennokształtnych, kulty."
 
 /datum/crime/capital/contraband
 	name = "Possession, Corporate Secrets"
 	icon = "file-invoice"
-	tooltip = "To possess secret documentation or high density tamper-resistant data storage devices (Blackboxes) from any organization without authorization by Nanotrasen."
+	tooltip = "Posiadanie tajnej dokumentacji lub odpornych na manipulację urządzeń do przechowywania danych o dużej gęstości (czarnych skrzynek) dowolnej organizacji bez zgody Nanotrasen."
 
 /datum/crime/capital/subversion
 	name = "Subversion of the Chain of Command"
 	icon = "link"
-	tooltip = "Disrupting the chain of command via either murder of a commanding officer or illegaly declaring oneself to be a commanding officer."
+	tooltip = "Zakłócanie łańcucha dowodzenia przez zabójstwo oficera dowodzącego lub nielegalne ogłoszenie się oficerem dowodzącym."
 
 /datum/crime/capital/biological
 	name = "Biological Terror"
 	icon = "biohazard"
-	tooltip = "To knowingly release, cause, or otherwise cause the station to become affected by a disease, plant, or other biological form which may spread uncontained and or cause serious physical harm."
+	tooltip = "Świadome uwolnienie, spowodowanie lub doprowadzenie w inny sposób do skażenia stacji chorobą, rośliną lub inną formą biologiczną, która może rozprzestrzeniać się bez kontroli i/lub powodować poważne obrażenia fizyczne."
 
 #undef PRESET_SHORT
 #undef PRESET_MEDIUM

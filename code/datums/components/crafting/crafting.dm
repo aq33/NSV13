@@ -182,9 +182,9 @@
 				return "."
 			contents = get_surroundings(a,R.blacklist)
 			if(!check_contents(a, R, contents))
-				return ", missing component."
+				return ", brakuje komponentu."
 			if(!check_tools(a, R, contents))
-				return ", missing tool."
+				return ", brakuje narzędzia."
 			var/list/parts = del_reqs(R, a)
 			var/atom/movable/I
 			if(ispath(R.result, /obj/item/food))
@@ -195,8 +195,8 @@
 			if(send_feedback)
 				SSblackbox.record_feedback("tally", "object_crafted", 1, I.type)
 			return I //Send the item back to whatever called this proc so it can handle whatever it wants to do with the new item
-		return ", missing tool."
-	return ", missing component."
+		return ", brakuje narzędzia."
+	return ", brakuje komponentu."
 
 /datum/component/personal_crafting/proc/construct_item_ui(mob/user, datum/crafting_recipe/TR)
 	var/atom/movable/result = construct_item(user, TR)
@@ -214,7 +214,7 @@
 		to_chat(user, "<span class='notice'>[TR.name] constructed.</span>")
 		TR.on_craft_completion(user, result)
 	else
-		to_chat(user, "<span class='warning'>Construction failed[result]</span>")
+		to_chat(user, "<span class='warning'>Budowa nieudana[result]</span>")
 	busy = FALSE
 	SStgui.update_uis(src)
 

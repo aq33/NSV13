@@ -1,20 +1,20 @@
 /datum/mood_event/favorite_food
-	description = "<span class='nicegreen'>I really enjoyed eating that.</span>"
+	description = "<span class='nicegreen'>Naprawdę smakowało mi to jedzenie.</span>"
 	mood_change = 5
 	timeout = 4 MINUTES
 
 /datum/mood_event/gross_food
-	description = "<span class='warning'>I really didn't like that food.</span>"
+	description = "<span class='warning'>Naprawdę nie smakowało mi to jedzenie.</span>"
 	mood_change = -2
 	timeout = 4 MINUTES
 
 /datum/mood_event/disgusting_food
-	description = "<span class='warning'>That food was disgusting!</span>"
+	description = "<span class='warning'>To jedzenie było obrzydliwe!</span>"
 	mood_change = -6
 	timeout = 4 MINUTES
 
 /datum/mood_event/breakfast
-	description = "<span class='nicegreen'>Nothing like a hearty breakfast to start the shift.</span>"
+	description = "<span class='nicegreen'>Nie ma to jak porządne śniadanie na początek zmiany.</span>"
 	mood_change = 2
 	timeout = 10 MINUTES
 
@@ -25,7 +25,7 @@
 /datum/mood_event/food/New(mob/M, ...)
 	. = ..()
 	mood_change = 2 + 2 * quality
-	description = "That food was [GLOB.food_quality_description[quality]]."
+	description = "To jedzenie było: [GLOB.food_quality_description[quality]]."
 
 /datum/mood_event/food/nice
 	quality = FOOD_QUALITY_NICE

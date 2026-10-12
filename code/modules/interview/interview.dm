@@ -64,7 +64,7 @@
 	if (owner)
 		SEND_SOUND(owner, sound('sound/effects/adminhelp.ogg'))
 		to_chat(owner, "<font color='red' size='4'><b>-- Interview Update --</b></font>" \
-			+ "\n<span class='adminsay'>Your interview was approved, you will now be reconnected in 5 seconds.</span>")
+			+ "\n<span class='adminsay'>Twoja rozmowa kwalifikacyjna została zaakceptowana, za 5 sekund zostaniesz ponownie połączony.</span>")
 		addtimer(CALLBACK(src, PROC_REF(reconnect_owner)), 5 SECONDS)
 
 /**
@@ -86,15 +86,15 @@
 		if (owner)
 			SEND_SOUND(owner, sound('sound/effects/adminhelp.ogg'))
 			to_chat(owner, "<font color='red' size='4'><b>-- Interview Update --</b></font>" \
-				+ "\n<span class='adminsay'>Unfortunately your interview was denied. Please try submitting another questionnaire." \
-				+ " You may do this in three minutes.</span>")
+				+ "\n<span class='adminsay'>Niestety twoja rozmowa kwalifikacyjna została odrzucona. Spróbuj wysłać kolejny kwestionariusz." \
+				+ " Możesz to zrobić za trzy minuty.</span>")
 	else
 		addtimer(CALLBACK(GLOB.interviews, TYPE_PROC_REF(/datum/interview_manager, give_the_boot), owner_ckey), 30 SECONDS)
 		if (owner)
 			SEND_SOUND(owner, sound('sound/effects/adminhelp.ogg'))
 			to_chat(owner, "<font color='red' size='4'><b>-- Interview Update --</b></font>" \
-				+ "\n<span class='adminsay'>Unfortunately your interview was denied. You will be removed for the round's duration." \
-				+ " You will be kicked in 30 seconds.</span>")
+				+ "\n<span class='adminsay'>Niestety twoja rozmowa kwalifikacyjna została odrzucona. Zostaniesz usunięty na czas trwania rundy." \
+				+ " Zostaniesz wyrzucony za 30 sekund.</span>")
 
 /**
   * Forces client to reconnect, used in the callback from approval
@@ -116,7 +116,7 @@
 		if (I) // we can be returned nothing if the user is on cooldown
 			I.ui_interact(M)
 		else
-			to_chat(usr, "<span class='adminsay'>You are on cooldown for interviews. Please wait at least 3 minutes before starting a new questionnaire.</span>")
+			to_chat(usr, "<span class='adminsay'>Musisz odczekać przed kolejną rozmową. Poczekaj co najmniej 3 minuty, zanim zaczniesz nowy kwestionariusz.</span>")
 
 /datum/interview/ui_interact(mob/user, datum/tgui/ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)

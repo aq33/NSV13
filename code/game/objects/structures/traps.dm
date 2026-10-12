@@ -6,7 +6,7 @@
 	density = FALSE
 	anchored = TRUE
 	alpha = 30 //initially quite hidden when not "recharging"
-	var/flare_message = "<span class='warning'>the trap flares brightly!</span>"
+	var/flare_message = "<span class='warning'>pułapka jasno rozbłyska!</span>"
 	var/last_trigger = 0
 	var/time_between_triggers = 600 //takes a minute to recharge
 	var/charges = INFINITY
@@ -20,7 +20,7 @@
 
 /obj/structure/trap/Initialize(mapload)
 	. = ..()
-	flare_message = "<span class='warning'>[src] flares brightly!</span>"
+	flare_message = "<span class='warning'>[src] jasno rozbłyska!</span>"
 	spark_system = new
 	spark_system.set_up(4,1,src)
 	spark_system.attach(src)
@@ -47,7 +47,7 @@
 	if(user.mind && (user.mind in immune_minds))
 		return
 	if(get_dist(user, src) <= 1)
-		. += "<span class='notice'>You reveal [src]!</span>"
+		. += "<span class='notice'>Odkrywasz [src]!</span>"
 		flare()
 
 /obj/structure/trap/proc/flare()
@@ -113,7 +113,7 @@
 /obj/structure/trap/stun/hunter/Initialize(mapload)
 	. = ..()
 	time_between_triggers = 10
-	flare_message = "<span class='warning'>[src] snaps shut!</span>"
+	flare_message = "<span class='warning'>[src] się zatrzaskuje!</span>"
 
 /obj/structure/trap/stun/hunter/Destroy()
 	if(!QDELETED(stored_item))
@@ -163,13 +163,13 @@
 /obj/item/bountytrap/proc/announce_fugitive()
 	spark_system.start()
 	playsound(src, 'sound/machines/ding.ogg', 50, 1)
-	radio.talk_into(src, "Fugitive has triggered this trap in the [get_area_name(src)]!", RADIO_CHANNEL_COMMON)
+	radio.talk_into(src, "Zbieg uruchomił tę pułapkę w [get_area_name(src)]!", RADIO_CHANNEL_COMMON)
 
 /obj/item/bountytrap/attack_self(mob/living/user)
 	var/turf/T = get_turf(src)
 	if(!user || !user.transferItemToLoc(src, T))//visibly unequips
 		return
-	to_chat(user, "<span class=notice>You set up [src]. Examine while close to disarm it.</span>")
+	to_chat(user, "<span class=notice>Rozstawiasz [src]. Obejrzyj ją z bliska, by ją rozbroić.</span>")
 	stored_trap.forceMove(T)//moves trap to ground
 	forceMove(stored_trap)//moves item into trap
 
@@ -187,7 +187,7 @@
 	icon_state = "trap-fire"
 
 /obj/structure/trap/fire/trap_effect(mob/living/L)
-	to_chat(L, "<span class='danger'><B>Spontaneous combustion!</B></span>")
+	to_chat(L, "<span class='danger'><B>Samozapłon!</B></span>")
 	L.Paralyze(20)
 
 /obj/structure/trap/fire/flare()
@@ -201,7 +201,7 @@
 	icon_state = "trap-frost"
 
 /obj/structure/trap/chill/trap_effect(mob/living/L)
-	to_chat(L, "<span class='danger'><B>You're frozen solid!</B></span>")
+	to_chat(L, "<span class='danger'><B>Zamarzasz na kość!</B></span>")
 	L.Paralyze(20)
 	L.adjust_bodytemperature(-300)
 	L.apply_status_effect(/datum/status_effect/freon)
@@ -214,7 +214,7 @@
 
 
 /obj/structure/trap/damage/trap_effect(mob/living/L)
-	to_chat(L, "<span class='danger'><B>The ground quakes beneath your feet!</B></span>")
+	to_chat(L, "<span class='danger'><B>Ziemia trzęsie się pod twoimi stopami!</B></span>")
 	L.Paralyze(100)
 	L.adjustBruteLoss(35)
 

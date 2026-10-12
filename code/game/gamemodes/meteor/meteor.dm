@@ -9,7 +9,7 @@
 	required_players = 0
 
 	announce_span = "danger"
-	announce_text = "A major meteor shower is bombarding the station! The crew needs to evacuate or survive the onslaught."
+	announce_text = "Potężny deszcz meteorów bombarduje statek! Załoga musi się ewakuować albo przetrwać nawałnicę."
 
 	title_icon = "meteor"
 

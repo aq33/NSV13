@@ -370,7 +370,7 @@
 	if(!check_rights(R_BAN))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	var/list/error_state = list()
 	var/player_key
@@ -516,7 +516,7 @@
 	if(!check_rights(R_BAN))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 
 	if(cid_check && config.protected_cids.Find(player_cid))
@@ -649,14 +649,14 @@
 		message_admins("[kna] [msg][roles_to_ban[1] == "Server" ? "" : " Roles: [roles_to_ban.Join("\n")]"]\nReason: [reason]")
 	else
 		log_admin_private("SUPPRESS: [kn] has created a suppressed ban.")
-		to_chat(usr, "Ban issued successfuly, This has not been announced to other admins.")
+		to_chat(usr, "Ban nałożony, nie ogłoszono tego innym adminom.")
 	if(applies_to_admins && !redact) //Should never happen.
 		send2tgs("BAN ALERT","[kn] [msg]")
 	if(player_ckey && !redact)
 		create_message("note", player_ckey, admin_ckey, note_reason, null, null, 0, 0, null, -1, severity)
 	var/client/C = GLOB.directory[player_ckey]
 	var/datum/admin_help/AH = admin_ticket_log(player_ckey, msg)
-	var/appeal_url = "No ban appeal url set!"
+	var/appeal_url = "Nie ustawiono adresu odwołań od banów!"
 	appeal_url = CONFIG_GET(string/banappeals)
 	var/is_admin = FALSE
 	var/special_prefix = ""
@@ -666,7 +666,7 @@
 		special_prefix = "admin "
 	if(C)
 		build_ban_cache(C)
-		to_chat(C, "<span class='boldannounce'>You have been [special_prefix]banned by [usr.client.key] from [roles_to_ban[1] == "Server" ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nReason: [reason]</span><br><span class='danger'>This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] [global_ban ? "This ban applies to all of our servers." : "This is a single-server ban, and only applies to this server."] The round ID is [GLOB.round_id].</span><br><span class='danger'>[redact ? "This ban may not be appealed." : "To appeal this ban go to [appeal_url]"]</span>")
+		to_chat(C, "<span class='boldannounce'>Zostałeś [special_prefix]zbanowany przez [usr.client.key] [roles_to_ban[1] == "Server" ? "na serwerze" : "na role: [roles_to_ban.Join(", ")]"].\nPowód: [reason]</span><br><span class='danger'>Ten ban jest [isnull(duration) ? "permanentny." : "tymczasowy, zostanie zdjęty za [time_message]."] [global_ban ? "Ten ban obowiązuje na wszystkich naszych serwerach." : "To jest ban na jeden serwer i dotyczy tylko tego serwera."] ID rundy: [GLOB.round_id].</span><br><span class='danger'>[redact ? "Od tego bana nie można się odwołać." : "Aby odwołać się od bana, wejdź na [appeal_url]"]</span>")
 		if(GLOB.admin_datums[C.ckey] || GLOB.deadmins[C.ckey])
 			is_admin = TRUE
 		if(roles_to_ban[1] == "Server" && (!is_admin || (is_admin && applies_to_admins)))
@@ -676,7 +676,7 @@
 	for(var/client/i in GLOB.clients - C)
 		if(i.address == player_ip || i.computer_id == player_cid)
 			build_ban_cache(i)
-			to_chat(i, "<span class='boldannounce'>You have been [special_prefix]banned by [usr.client.key] from [roles_to_ban[1] == "Server" ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nReason: [reason]</span><br><span class='danger'>This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] [global_ban ? "This ban applies to all of our servers." : "This is a single-server ban, and only applies to this server."] The round ID is [GLOB.round_id].</span><br><span class='danger'>To appeal this ban go to [appeal_url]</span>")
+			to_chat(i, "<span class='boldannounce'>Zostałeś [special_prefix]zbanowany przez [usr.client.key] [roles_to_ban[1] == "Server" ? "na serwerze" : "na role: [roles_to_ban.Join(", ")]"].\nPowód: [reason]</span><br><span class='danger'>Ten ban jest [isnull(duration) ? "permanentny." : "tymczasowy, zostanie zdjęty za [time_message]."] [global_ban ? "Ten ban obowiązuje na wszystkich naszych serwerach." : "To jest ban na jeden serwer i dotyczy tylko tego serwera."] ID rundy: [GLOB.round_id].</span><br><span class='danger'>Aby odwołać się od bana, wejdź na [appeal_url]</span>")
 			if(GLOB.admin_datums[i.ckey] || GLOB.deadmins[i.ckey])
 				is_admin = TRUE
 			if(roles_to_ban[1] == "Server" && (!is_admin || (is_admin && applies_to_admins)))
@@ -686,7 +686,7 @@
 	if(!check_rights(R_BAN))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	var/datum/browser/unban_panel = new(usr, "unbanpanel", "Unbanning Panel", 850, 600)
 	unban_panel.add_stylesheet("unbanpanelcss", 'html/admin/unbanpanel.css')
@@ -830,10 +830,10 @@
 	if(!check_rights(R_BAN))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	var/target = ban_target_string(player_key, player_ip, player_cid)
-	if(alert(usr, "Please confirm unban of [target] from [role].", "Unban confirmation", "Yes", "No") != "Yes")
+	if(alert(usr, "Potwierdź zdjęcie bana [target] na: [role].", "Unban confirmation", "Yes", "No") != "Yes")
 		return
 	var/kn = key_name(usr)
 	var/kna = key_name_admin(usr)
@@ -855,18 +855,18 @@
 	var/client/C = GLOB.directory[player_key]
 	if(C)
 		build_ban_cache(C)
-		to_chat(C, "<span class='boldannounce'>[usr.client.key] has removed a ban from [role] for your key.")
+		to_chat(C, "<span class='boldannounce'>[usr.client.key] zdjął z twojego klucza bana na: [role].")
 	for(var/client/i in GLOB.clients - C)
 		if(i.address == player_ip || i.computer_id == player_cid)
 			build_ban_cache(i)
-			to_chat(i, "<span class='boldannounce'>[usr.client.key] has removed a ban from [role] for your IP or CID.")
+			to_chat(i, "<span class='boldannounce'>[usr.client.key] zdjął z twojego IP lub CID bana na: [role].")
 	unban_panel(player_key, admin_key, player_ip, player_cid, page)
 
 /datum/admins/proc/edit_ban(ban_id, player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, reason, global_ban, mirror_edit, old_key, old_ip, old_cid, old_applies, old_globalban, admin_key, page, list/changes)
 	if(!check_rights(R_BAN))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 
 	if(cid_check && config.protected_cids.Find(player_cid))
@@ -999,18 +999,18 @@
 	var/client/C = GLOB.directory[old_key]
 	if(C)
 		build_ban_cache(C)
-		to_chat(C, "<span class='boldannounce'>[usr.client.key] has edited the [changes_keys_text] of a ban for your key.")
+		to_chat(C, "<span class='boldannounce'>[usr.client.key] zmienił [changes_keys_text] bana dla twojego klucza.")
 	for(var/client/i in GLOB.clients - C)
 		if(i.address == old_ip || i.computer_id == old_cid)
 			build_ban_cache(i)
-			to_chat(i, "<span class='boldannounce'>[usr.client.key] has edited the [changes_keys_text] of a ban for your IP or CID.")
+			to_chat(i, "<span class='boldannounce'>[usr.client.key] zmienił [changes_keys_text] bana dla twojego IP lub CID.")
 	unban_panel(player_key, null, null, null, page)
 
 /datum/admins/proc/ban_log(ban_id)
 	if(!check_rights(R_BAN))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	var/datum/DBQuery/query_get_ban_edits = SSdbcore.NewQuery({"
 		SELECT edits FROM [format_table_name("ban")] WHERE id = :ban_id

@@ -35,30 +35,30 @@
 			icon_state = icon_empty
 
 /obj/item/reagent_containers/food/condiment/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] is trying to eat the entire [src]! It looks like [user.p_they()] forgot how food works!</span>")
+	user.visible_message("<span class='suicide'>[user] próbuje zjeść całe [src]! Wygląda na to, że zapomniał, jak działa jedzenie!</span>")
 	return OXYLOSS
 
 /obj/item/reagent_containers/food/condiment/attack(mob/M, mob/user, def_zone)
 
 	if(!reagents || !reagents.total_volume)
-		to_chat(user, "<span class='warning'>None of [src] left, oh no!</span>")
+		to_chat(user, "<span class='warning'>[src] już się skończyło, o nie!</span>")
 		return 0
 
 	if(!canconsume(M, user))
 		return 0
 
 	if(M == user)
-		user.visible_message("<span class='notice'>[user] swallows some of the contents of \the [src].</span>", \
-			"<span class='notice'>You swallow some of the contents of \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] połyka trochę zawartości [src].</span>", \
+			"<span class='notice'>Połykasz trochę zawartości [src].</span>")
 	else
-		M.visible_message("<span class='warning'>[user] attempts to feed [M] from [src].</span>", \
-			"<span class='warning'>[user] attempts to feed you from [src].</span>")
+		M.visible_message("<span class='warning'>[user] próbuje nakarmić [M] z [src].</span>", \
+			"<span class='warning'>[user] próbuje nakarmić cię z [src].</span>")
 		if(!do_mob(user, M))
 			return
 		if(!reagents || !reagents.total_volume)
 			return // The condiment might be empty after the delay.
-		M.visible_message("<span class='warning'>[user] fed [M] from [src].</span>", \
-			"<span class='warning'>[user] fed you from [src].</span>")
+		M.visible_message("<span class='warning'>[user] karmi [M] z [src].</span>", \
+			"<span class='warning'>[user] karmi cię z [src].</span>")
 		log_combat(user, M, "fed", reagents.log_list())
 
 	var/fraction = min(10/reagents.total_volume, 1)
@@ -74,26 +74,26 @@
 	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
 
 		if(!target.reagents.total_volume)
-			to_chat(user, "<span class='warning'>[target] is empty!</span>")
+			to_chat(user, "<span class='warning'>[target] jest pusty!</span>")
 			return
 
 		if(reagents.total_volume >= reagents.maximum_volume)
-			to_chat(user, "<span class='warning'>[src] is full!</span>")
+			to_chat(user, "<span class='warning'>[src] jest pełny!</span>")
 			return
 
 		var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user)
-		to_chat(user, "<span class='notice'>You fill [src] with [trans] units of the contents of [target].</span>")
+		to_chat(user, "<span class='notice'>Napełniasz [src] zawartością [target] ([trans] j.).</span>")
 
 	//Something like a glass or a food item. Player probably wants to transfer TO it.
 	else if(target.is_drainable() || IS_EDIBLE(target))
 		if(!reagents.total_volume)
-			to_chat(user, "<span class='warning'>[src] is empty!</span>")
+			to_chat(user, "<span class='warning'>[src] jest pusty!</span>")
 			return
 		if(target.reagents.total_volume >= target.reagents.maximum_volume)
-			to_chat(user, "<span class='warning'>you can't add anymore to [target]!</span>")
+			to_chat(user, "<span class='warning'>Nie możesz już nic dodać do [target]!</span>")
 			return
 		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this, transfered_by = user)
-		to_chat(user, "<span class='notice'>You transfer [trans] units of the condiment to [target].</span>")
+		to_chat(user, "<span class='notice'>Przelewasz [trans] j. przyprawy do [target].</span>")
 
 /obj/item/reagent_containers/food/condiment/enzyme
 	name = "universal enzyme"
@@ -107,8 +107,8 @@
 	var/datum/chemical_reaction/recipe = get_chemical_reaction(/datum/chemical_reaction/food/american) //NSV13 - our milk + enzyme cheese reaction
 	var/milk_required = recipe.required_reagents[/datum/reagent/consumable/milk]
 	var/enzyme_required = recipe.required_catalysts[/datum/reagent/consumable/enzyme]
-	. += "<span class='notice'>[milk_required] milk, [enzyme_required] enzyme and you got cheese.</span>"
-	. += "<span class='warning'>Remember, the enzyme isn't used up, so return it to the bottle, dingus!</span>"
+	. += "<span class='notice'>[milk_required] mleka i [enzyme_required] enzymu – i masz ser.</span>"
+	. += "<span class='warning'>Pamiętaj, enzym się nie zużywa, więc wlej go z powrotem do butelki, głąbie!</span>"
 
 /obj/item/reagent_containers/food/condiment/sugar
 	name = "sugar sack"
@@ -126,7 +126,7 @@
 	var/flour_required = recipe.required_reagents[/datum/reagent/consumable/flour]
 	var/eggyolk_required = recipe.required_reagents[/datum/reagent/consumable/eggyolk]
 	var/sugar_required = recipe.required_reagents[/datum/reagent/consumable/sugar]
-	. += "<span class='notice'>[flour_required] flour, [eggyolk_required] egg yolk (or soy milk), [sugar_required] sugar makes cake dough. You can make pie dough from it.</span>"
+	. += "<span class='notice'>[flour_required] mąki, [eggyolk_required] żółtka (lub mleka sojowego) i [sugar_required] cukru daje ciasto na tort. Można z niego zrobić ciasto na placek.</span>"
 
 /obj/item/reagent_containers/food/condiment/saltshaker		//Separate from above since it's a small shaker rather then
 	name = "salt shaker"											//	a large one.
@@ -141,7 +141,7 @@
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/food/condiment/saltshaker/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] begins to swap forms with the salt shaker! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaczyna zamieniać się formą z solniczką! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	var/newname = "[name]"
 	name = "[user.name]"
 	user.name = newname
@@ -155,9 +155,9 @@
 		return
 	if(isturf(target))
 		if(!reagents.has_reagent(/datum/reagent/consumable/sodiumchloride, 2))
-			to_chat(user, "<span class='warning'>You don't have enough salt to make a pile!</span>")
+			to_chat(user, "<span class='warning'>Masz za mało soli, by usypać kupkę!</span>")
 			return
-		user.visible_message("<span class='notice'>[user] shakes some salt onto [target].</span>", "<span class='notice'>You shake some salt onto [target].</span>")
+		user.visible_message("<span class='notice'>[user] sypie trochę soli na [target].</span>", "<span class='notice'>Sypiesz trochę soli na [target].</span>")
 		reagents.remove_reagent(/datum/reagent/consumable/sodiumchloride, 2)
 		new/obj/effect/decal/cleanable/food/salt(target)
 		return
@@ -221,8 +221,8 @@
 	var/datum/chemical_reaction/recipe = get_chemical_reaction(/datum/chemical_reaction/food/american) //NSV13 - our milk + enzyme cheese reaction
 	var/milk_required = recipe.required_reagents[/datum/reagent/consumable/milk]
 	var/enzyme_required = recipe.required_catalysts[/datum/reagent/consumable/enzyme]
-	. += "<span class='notice'>[milk_required] milk, [enzyme_required] enzyme and you got cheese.</span>"
-	. += "<span class='warning'>Remember, the enzyme isn't used up, so return it to the bottle, dingus!</span>"
+	. += "<span class='notice'>[milk_required] mleka i [enzyme_required] enzymu – i masz ser.</span>"
+	. += "<span class='warning'>Pamiętaj, enzym się nie zużywa, więc wlej go z powrotem do butelki, głąbie!</span>"
 
 /obj/item/reagent_containers/food/condiment/flour
 	name = "flour sack"
@@ -243,9 +243,9 @@
 	var/cakebatter_flour_required = recipe_cakebatter.required_reagents[/datum/reagent/consumable/flour]
 	var/cakebatter_eggyolk_required = recipe_cakebatter.required_reagents[/datum/reagent/consumable/eggyolk]
 	var/cakebatter_sugar_required = recipe_cakebatter.required_reagents[/datum/reagent/consumable/sugar]
-	. += "<b><i>You retreat inward and recall the teachings of... Making Dough...</i></b>"
-	. += "<span class='notice'>[dough_flour_required] flour, [dough_water_required] water makes normal dough. You can make flat dough from it.</span>"
-	. += "<span class='notice'>[cakebatter_flour_required] flour, [cakebatter_eggyolk_required] egg yolk (or soy milk), [cakebatter_sugar_required] sugar makes cake dough. You can make pie dough from it.</span>"
+	. += "<b><i>Zagłębiasz się w sobie i przypominasz sobie nauki o... Robieniu Ciasta...</i></b>"
+	. += "<span class='notice'>[dough_flour_required] mąki i [dough_water_required] wody daje zwykłe ciasto. Można z niego zrobić płaskie ciasto.</span>"
+	. += "<span class='notice'>[cakebatter_flour_required] mąki, [cakebatter_eggyolk_required] żółtka (lub mleka sojowego) i [cakebatter_sugar_required] cukru daje ciasto na tort. Można z niego zrobić ciasto na placek.</span>"
 
 /obj/item/reagent_containers/food/condiment/soymilk
 	name = "soy milk"
@@ -387,19 +387,19 @@
 	  * Since all of them differs only in color should probably be replaced with usual reagentfillings instead
 	  */
 	var/list/possible_states = list(
-		/datum/reagent/consumable/ketchup = list("condi_ketchup", "Ketchup", "You feel more American already."),
-		/datum/reagent/consumable/capsaicin = list("condi_hotsauce", "Hotsauce", "You can almost TASTE the stomach ulcers now!"),
-		/datum/reagent/consumable/soysauce = list("condi_soysauce", "Soy Sauce", "A salty soy-based flavoring"),
-		/datum/reagent/consumable/frostoil = list("condi_frostoil", "Coldsauce", "Leaves the tongue numb in its passage"),
-		/datum/reagent/consumable/sodiumchloride = list("condi_salt", "Salt Shaker", "Salt. From space oceans, presumably"),
-		/datum/reagent/consumable/blackpepper = list("condi_pepper", "Pepper Mill", "Often used to flavor food or make people sneeze"),
-		/datum/reagent/consumable/nutriment/fat/oil = list("condi_cornoil", "Corn Oil", "A delicious oil used in cooking. Made from corn"),
-		/datum/reagent/consumable/sugar = list("condi_sugar", "Sugar", "Tasty spacey sugar!"),
-		/datum/reagent/consumable/astrotame = list("condi_astrotame", "Astrotame", "The sweetness of a thousand sugars but none of the calories."),
-		/datum/reagent/consumable/bbqsauce = list("condi_bbq", "BBQ sauce", "Hand wipes not included."),
+		/datum/reagent/consumable/ketchup = list("condi_ketchup", "Ketchup", "Już czujesz się bardziej amerykańsko."),
+		/datum/reagent/consumable/capsaicin = list("condi_hotsauce", "Hotsauce", "Już niemal CZUJESZ SMAK wrzodów żołądka!"),
+		/datum/reagent/consumable/soysauce = list("condi_soysauce", "Soy Sauce", "Słony dodatek smakowy na bazie soi"),
+		/datum/reagent/consumable/frostoil = list("condi_frostoil", "Coldsauce", "Pozostawia zdrętwiały język"),
+		/datum/reagent/consumable/sodiumchloride = list("condi_salt", "Salt Shaker", "Sól. Pewnie z kosmicznych oceanów"),
+		/datum/reagent/consumable/blackpepper = list("condi_pepper", "Pepper Mill", "Często używany do przyprawiania jedzenia albo do wywoływania kichania"),
+		/datum/reagent/consumable/nutriment/fat/oil = list("condi_cornoil", "Corn Oil", "Pyszny olej używany w kuchni. Z kukurydzy"),
+		/datum/reagent/consumable/sugar = list("condi_sugar", "Sugar", "Smaczny kosmiczny cukier!"),
+		/datum/reagent/consumable/astrotame = list("condi_astrotame", "Astrotame", "Słodycz tysiąca cukrów bez żadnych kalorii."),
+		/datum/reagent/consumable/bbqsauce = list("condi_bbq", "BBQ sauce", "Chusteczki nawilżane nie są w zestawie."),
 		//datum/reagent/consumable/peanut_butter = list("condi_peanutbutter", "Peanut Butter", "A creamy paste made from ground peanuts."),
-		/datum/reagent/consumable/cherryjelly = list("condi_cherryjelly", "Cherry Jelly", "A jar of super-sweet cherry jelly."),
-		/datum/reagent/consumable/mayonnaise = list("condi_mayo", "Mayonnaise", "Not an instrument."),
+		/datum/reagent/consumable/cherryjelly = list("condi_cherryjelly", "Cherry Jelly", "Słoik bardzo słodkiej galaretki wiśniowej."),
+		/datum/reagent/consumable/mayonnaise = list("condi_mayo", "Mayonnaise", "To nie instrument."),
 	)
 	/// Can't use initial(name) for this. This stores the name set by condimasters.
 	var/originalname = "condiment"
@@ -417,15 +417,15 @@
 	//You can tear the bag open above food to put the condiments on it, obviously.
 	if(IS_EDIBLE(target))
 		if(!reagents.total_volume)
-			to_chat(user, "<span class='warning'>You tear open [src], but there's nothing in it.</span>")
+			to_chat(user, "<span class='warning'>Rozrywasz [src], ale nic w nim nie ma.</span>")
 			qdel(src)
 			return
 		if(target.reagents.total_volume >= target.reagents.maximum_volume)
-			to_chat(user, "<span class='warning'>You tear open [src], but [target] is stacked so high that it just drips off!</span>" )
+			to_chat(user, "<span class='warning'>Rozrywasz [src], ale na [target] jest już tak wysoka sterta, że wszystko spływa!</span>" )
 			qdel(src)
 			return
 		else
-			to_chat(user, "<span class='notice'>You tear open [src] above [target] and the condiments drip onto it.</span>")
+			to_chat(user, "<span class='notice'>Rozrywasz [src] nad [target], a przyprawa na nie skapuje.</span>")
 			src.reagents.trans_to(target, amount_per_transfer_from_this, transfered_by = user)
 			qdel(src)
 			return

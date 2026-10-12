@@ -39,19 +39,19 @@ SUBSYSTEM_DEF(pai)
 
 		switch(option)
 			if("name")
-				t = sanitize_name(stripped_input(usr, "Enter a name for your pAI", "pAI Name", candidate.name, MAX_NAME_LEN))
+				t = sanitize_name(stripped_input(usr, "Podaj imię swojego pAI", "pAI Name", candidate.name, MAX_NAME_LEN))
 				if(t)
 					candidate.name = t
 			if("desc")
-				t = stripped_multiline_input(usr, "Enter a description for your pAI", "pAI Description", candidate.description)
+				t = stripped_multiline_input(usr, "Podaj opis swojego pAI", "pAI Description", candidate.description)
 				if(t)
 					candidate.description = t
 			if("role")
-				t = stripped_input(usr, "Enter a role for your pAI", "pAI Role", candidate.role)
+				t = stripped_input(usr, "Podaj rolę swojego pAI", "pAI Role", candidate.role)
 				if(t)
 					candidate.role = t
 			if("ooc")
-				t = stripped_multiline_input(usr, "Enter any OOC comments", "pAI OOC Comments", candidate.comments)
+				t = stripped_multiline_input(usr, "Podaj komentarze OOC", "pAI OOC Comments", candidate.comments)
 				if(t)
 					candidate.comments = t
 			if("save")
@@ -106,19 +106,19 @@ SUBSYSTEM_DEF(pai)
 			</style>
 			"}
 
-	dat += "<p class=\"top\">Please configure your pAI personality's options. Remember, what you enter here could determine whether or not the user requesting a personality chooses you!</p>"
+	dat += "<p class=\"top\">Skonfiguruj opcje osobowości swojego pAI. Pamiętaj, że to, co tu wpiszesz, może przesądzić o tym, czy osoba prosząca o osobowość wybierze właśnie ciebie!</p>"
 	dat += "<table>"
 	dat += "<tr class=\"d0\"><td>Name:</td><td>[candidate.name]</td></tr>"
-	dat += "<tr class=\"d1\"><td><a href='byond://?src=[REF(src)];option=name;new=1;candidate=[REF(candidate)]'>\[Edit\]</a></td><td>What you plan to call yourself. Suggestions: Any character name you would choose for a station character OR an AI.</td></tr>"
+	dat += "<tr class=\"d1\"><td><a href='byond://?src=[REF(src)];option=name;new=1;candidate=[REF(candidate)]'>\[Edytuj\]</a></td><td>Jak zamierzasz się nazywać. Sugestie: dowolne imię, które wybrałbyś dla postaci na stacji ALBO dla SI.</td></tr>"
 
 	dat += "<tr class=\"d0\"><td>Description:</td><td>[candidate.description]</td></tr>"
-	dat += "<tr class=\"d1\"><td><a href='byond://?src=[REF(src)];option=desc;new=1;candidate=[REF(candidate)]'>\[Edit\]</a></td><td>What sort of pAI you typically play; your mannerisms, your quirks, etc. This can be as sparse or as detailed as you like.</td></tr>"
+	dat += "<tr class=\"d1\"><td><a href='byond://?src=[REF(src)];option=desc;new=1;candidate=[REF(candidate)]'>\[Edytuj\]</a></td><td>Jakiego pAI zwykle odgrywasz; twoje maniery, dziwactwa itp. Może to być tak skąpe albo szczegółowe, jak chcesz.</td></tr>"
 
 	dat += "<tr class=\"d0\"><td>Preferred Role:</td><td>[candidate.role]</td></tr>"
-	dat += "<tr class=\"d1\"><td><a href='byond://?src=[REF(src)];option=role;new=1;candidate=[REF(candidate)]'>\[Edit\]</a></td><td>Do you like to partner with sneaky social ninjas? Like to help security hunt down thugs? Enjoy watching an engineer's back while he saves the station yet again? This doesn't have to be limited to just station jobs. Pretty much any general descriptor for what you'd like to be doing works here.</td></tr>"
+	dat += "<tr class=\"d1\"><td><a href='byond://?src=[REF(src)];option=role;new=1;candidate=[REF(candidate)]'>\[Edytuj\]</a></td><td>Lubisz współpracować z podstępnymi ninja towarzyskimi? Lubisz pomagać ochronie w łapaniu bandziorów? Lubisz pilnować pleców inżyniera, gdy po raz kolejny ratuje stację? Nie musi się to ograniczać do stanowisk na stacji. Sprawdzi się tu niemal każdy ogólny opis tego, czym chciałbyś się zajmować.</td></tr>"
 
 	dat += "<tr class=\"d0\"><td>OOC Comments:</td><td>[candidate.comments]</td></tr>"
-	dat += "<tr class=\"d1\"><td><a href='byond://?src=[REF(src)];option=ooc;new=1;candidate=[REF(candidate)]'>\[Edit\]</a></td><td>Anything you'd like to address specifically to the player reading this in an OOC manner. \"I prefer more serious RP.\", \"I'm still learning the interface!\", etc. Feel free to leave this blank if you want.</td></tr>"
+	dat += "<tr class=\"d1\"><td><a href='byond://?src=[REF(src)];option=ooc;new=1;candidate=[REF(candidate)]'>\[Edytuj\]</a></td><td>Wszystko, co chcesz przekazać graczowi czytającemu to w sposób OOC. \"Wolę poważniejszy RP.\", \"Wciąż uczę się interfejsu!\" itp. Możesz zostawić to pole puste.</td></tr>"
 
 	dat += "</table>"
 
@@ -142,7 +142,7 @@ SUBSYSTEM_DEF(pai)
 
 /datum/controller/subsystem/pai/proc/findPAI(obj/item/paicard/p, mob/user)
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_SILICONS))
-		to_chat(user, "<span class='warning'>Due to growing incidents of SELF corrupted independent artificial intelligences, freeform personality devices have been temporarily banned in this sector.</span>")
+		to_chat(user, "<span class='warning'>Z powodu rosnącej liczby incydentów z SAMOUSZKODZONYMI niezależnymi sztucznymi inteligencjami urządzenia z dowolną osobowością zostały tymczasowo zakazane w tym sektorze.</span>")
 		return
 	if(!ghost_spam)
 		ghost_spam = TRUE
@@ -153,7 +153,7 @@ SUBSYSTEM_DEF(pai)
 			//if(!(ROLE_PAI in G.client.prefs.be_special))
 			//	continue
 			//NSV13 - Stop
-			to_chat(G, "<span class='ghostalert'>[user] is requesting a pAI personality! Use the pAI button to submit yourself as one.</span>")
+			to_chat(G, "<span class='ghostalert'>[user] prosi o osobowość pAI! Użyj przycisku pAI, by się zgłosić.</span>")
 		addtimer(CALLBACK(src, PROC_REF(spam_again)), spam_delay)
 	var/list/available = list()
 	for(var/datum/paiCandidate/c in SSpai.candidates)

@@ -1,10 +1,10 @@
 /datum/computer_file/program/atmosscan
 	filename = "atmosscan"
-	filedesc = "Atmospheric Scanner"
+	filedesc = "Skaner atmosferyczny"
 	category = PROGRAM_CATEGORY_ENGI
 	program_icon_state = "atmos_control"
-	extended_desc = "A small built-in sensor reads out the atmospheric conditions around the device."
-	network_destination = "atmos scan"
+	extended_desc = "Mały wbudowany czujnik odczytuje warunki atmosferyczne wokół urządzenia."
+	network_destination = "skan atmosfery"
 	size = 4
 	tgui_id = "NtosAtmos"
 	program_icon = "thermometer-half"
@@ -14,7 +14,7 @@
 	if (!.)
 		return
 	if(!computer?.get_modular_computer_part(MC_SENSORS)) //Giving a clue to users why the program is spitting out zeros.
-		to_chat(user, "<span class='warning'>\The [computer] flashes an error: \"hardware\\sensorpackage\\startup.bin -- file not found\".</span>")
+		to_chat(user, "<span class='warning'>[computer] wyświetla błąd: „hardware\\sensorpackage\\startup.bin – nie znaleziono pliku”.</span>")
 
 
 /datum/computer_file/program/atmosscan/ui_data(mob/user)

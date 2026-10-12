@@ -1,6 +1,6 @@
 /datum/symptom/braindamage
 	name = "Neural Decay"
-	desc = "Causes the host's brain cells to naturally die off, causing severe brain damage."
+	desc = "Powoduje naturalne obumieranie komórek mózgowych nosiciela, prowadząc do poważnych uszkodzeń mózgu."
 	stealth = 1
 	resistance = -2
 	stage_speed = -3
@@ -11,11 +11,10 @@
 	symptom_delay_max = 60
 	prefixes = list("Idiot's ")
 	bodies = list("Idiot")
-	suffixes = list(" Memory Loss")
+	suffixes = list(" Utrata pamięci")
 	var/lethal = FALSE
 	var/moretrauma = FALSE
-	threshold_desc = "<b>transmission 12:</b> The disease's damage reaches lethal levels.<br>\
-					  <b>Speed 9:</b> Host's brain develops even more traumas than normal."
+	threshold_desc = "<b>Transmisja 12:</b> obrażenia od choroby osiągają śmiertelny poziom.<br><b>Szybkość 9:</b> w mózgu nosiciela rozwija się jeszcze więcej urazów niż zwykle."
 
 /datum/symptom/braindamage/severityset(datum/disease/advance/A)
 	. = ..()
@@ -37,19 +36,19 @@
 	switch(A.stage)
 		if(1)
 			if(prob(10))
-				to_chat(M, "<span class='notice'>Your head feels strange...</span>")
+				to_chat(M, "<span class='notice'>Twoja głowa wydaje się dziwna...</span>")
 		if(2, 3)
 			if(prob(10))
-				to_chat(M, "<span class='danger'>Your brain begins hurting...</span>")
+				to_chat(M, "<span class='danger'>Mózg zaczyna cię boleć...</span>")
 		if(4, 5)
 			if(lethal)
 				if(prob(35))
 					M.adjustOrganLoss(ORGAN_SLOT_BRAIN, (rand(5,90)), 200)
-					to_chat(M, "<span class='danger'>Your brain hurts immensely!</span>")
+					to_chat(M, "<span class='danger'>Mózg okropnie cię boli!</span>")
 			else
 				if(prob(35))
 					M.adjustOrganLoss(ORGAN_SLOT_BRAIN, (rand(5,90)), 120)
-					to_chat(M, "<span class='danger'>Your head hurts immensely!</span>")
+					to_chat(M, "<span class='danger'>Głowa okropnie cię boli!</span>")
 			if(moretrauma && A.stage == 5)
 				givetrauma(A, 10)
 

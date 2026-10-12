@@ -48,8 +48,7 @@
 	mutant_organs = list(/obj/item/organ/heart/nightmare)
 	mutant_brain = /obj/item/organ/brain/nightmare
 
-	var/info_text = "You are a <span class='danger'>Nightmare</span>. The ability <span class='warning'>shadow walk</span> allows unlimited, unrestricted movement in the dark while activated. \
-					Your <span class='warning'>light eater</span> will destroy any light producing objects you attack, as well as destroy any lights a living creature may be holding. You will automatically dodge gunfire and melee attacks when on a dark tile. If killed, you will eventually revive if left in darkness."
+	var/info_text = "Jesteś <span class='danger'>Koszmarem</span>. Zdolność <span class='warning'>chodzenia w cieniu</span> pozwala ci po aktywacji poruszać się bez ograniczeń w ciemności. Twój <span class='warning'>pożeracz światła</span> niszczy każde źródło światła, które zaatakujesz, i każde światło trzymane przez żywą istotę. Na ciemnym polu automatycznie unikasz ostrzału i ataków wręcz. Po śmierci w końcu odrodzisz się, jeśli zostaniesz w ciemności."
 
 /datum/species/shadow/nightmare/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	. = ..()
@@ -62,7 +61,7 @@
 	if(istype(T))
 		var/light_amount = T.get_lumcount()
 		if(light_amount < SHADOW_SPECIES_LIGHT_THRESHOLD)
-			H.visible_message("<span class='danger'>[H] dances in the shadows, evading [P]!</span>")
+			H.visible_message("<span class='danger'>[H] tańczy w cieniach, unikając [P]!</span>")
 			playsound(T, "bullet_miss", 75, 1)
 			return BULLET_ACT_FORCE_PIERCE
 	return ..()
@@ -82,7 +81,7 @@
 	..()
 	if(M.dna.species.id != "nightmare")
 		M.set_species(/datum/species/shadow/nightmare)
-		visible_message("<span class='warning'>[M] thrashes as [src] takes root in [M.p_their()] body!</span>")
+		visible_message("<span class='warning'>[M] miota się, gdy [src] zapuszcza korzenie w jego ciele!</span>")
 	var/obj/effect/proc_holder/spell/targeted/shadowwalk/SW = new
 	M.AddSpell(SW)
 	shadowwalk = SW
@@ -108,13 +107,13 @@
 /obj/item/organ/heart/nightmare/attack(mob/M, mob/living/carbon/user, obj/target)
 	if(M != user)
 		return ..()
-	user.visible_message("<span class='warning'>[user] raises [src] to [user.p_their()] mouth and tears into it with [user.p_their()] teeth!</span>", \
-						 "<span class='danger'>[src] feels unnaturally cold in your hands. You raise [src] your mouth and devour it!</span>")
+	user.visible_message("<span class='warning'>[user] podnosi [src] do ust i wgryza się w to zębami!</span>", \
+						 "<span class='danger'>[src] jest w twoich dłoniach nienaturalnie zimne. Podnosisz to do ust i pożerasz!</span>")
 	playsound(user, 'sound/magic/demon_consume.ogg', 50, 1)
 
 
-	user.visible_message("<span class='warning'>Blood erupts from [user]'s arm as it reforms into a weapon!</span>", \
-						 "<span class='userdanger'>Icy blood pumps through your veins as your arm reforms itself!</span>")
+	user.visible_message("<span class='warning'>Z ręki [user] tryska krew, gdy ta zmienia się w broń!</span>", \
+						 "<span class='userdanger'>Lodowata krew płynie ci w żyłach, gdy twoja ręka się przekształca!</span>")
 	user.temporarilyRemoveItemFromInventory(src, TRUE)
 	Insert(user)
 
@@ -127,7 +126,7 @@
 /obj/item/organ/heart/nightmare/Remove(mob/living/carbon/M, special = 0)
 	respawn_progress = 0
 	if(blade && special != HEART_SPECIAL_SHADOWIFY)
-		M.visible_message("<span class='warning'>\The [blade] disintegrates!</span>")
+		M.visible_message("<span class='warning'>[blade] się rozpada!</span>")
 		QDEL_NULL(blade)
 	..()
 
@@ -153,9 +152,9 @@
 			Remove(owner, HEART_SPECIAL_SHADOWIFY)
 			old_owner.set_species(/datum/species/shadow)
 			Insert(old_owner, HEART_SPECIAL_SHADOWIFY)
-			to_chat(owner, "<span class='userdanger'>You feel the shadows invade your skin, leaping into the center of your chest! You're alive!</span>")
+			to_chat(owner, "<span class='userdanger'>Czujesz, jak cienie wnikają w twoją skórę i wskakują w środek klatki piersiowej! Żyjesz!</span>")
 			SEND_SOUND(owner, sound('sound/effects/ghost.ogg'))
-		owner.visible_message("<span class='warning'>[owner] staggers to [owner.p_their()] feet!</span>")
+		owner.visible_message("<span class='warning'>[owner] chwiejnie staje na nogi!</span>")
 		playsound(owner, 'sound/hallucinations/far_noise.ogg', 50, 1)
 		respawn_progress = 0
 
@@ -228,7 +227,7 @@
 	if(!light_range || !light_power || !light_on)
 		return
 	if(light_eater)
-		visible_message("<span class='danger'>[src] is disintegrated by [light_eater]!</span>")
+		visible_message("<span class='danger'>[light_eater] dezintegruje [src]!</span>")
 	burn()
 	playsound(src, 'sound/items/welder.ogg', 50, 1)
 
@@ -254,7 +253,7 @@
 	if(!light_range || !light_power || !light_on)
 		return
 	if(light_eater)
-		visible_message("<span class='danger'>The light bulb of [src] is disintegrated by [light_eater]!</span>")
+		visible_message("<span class='danger'>[light_eater] dezintegruje żarówkę [src]!</span>")
 	break_tile()
 	playsound(src, 'sound/items/welder.ogg', 50, 1)
 

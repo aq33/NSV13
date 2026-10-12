@@ -3,7 +3,7 @@
 	set desc = "Area to jump to"
 	set category = "Adminbus"
 	if(!src.holder)
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "Tylko administratorzy mogą używać tej komendy.")
 		return
 
 	if(!A)
@@ -17,7 +17,7 @@
 
 	var/turf/T = safepick(turfs)
 	if(!T)
-		to_chat(src, "Nowhere to jump to!")
+		to_chat(src, "Nie ma dokąd skoczyć!")
 		return
 	usr.forceMove(T)
 	log_admin("[key_name(usr)] jumped to [AREACOORD(A)]")
@@ -28,7 +28,7 @@
 	set name = "Jump to Turf"
 	set category = "Adminbus"
 	if(!src.holder)
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "Tylko administratorzy mogą używać tej komendy.")
 		return
 
 	log_admin("[key_name(usr)] jumped to [AREACOORD(T)]")
@@ -42,7 +42,7 @@
 	set name = "Jump to Mob"
 
 	if(!src.holder)
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "Tylko administratorzy mogą używać tej komendy.")
 		return
 
 	log_admin("[key_name(usr)] jumped to [key_name(M)]")
@@ -54,14 +54,14 @@
 			SSblackbox.record_feedback("tally", "admin_verb", 1, "Jump To Mob") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 			A.forceMove(M.loc)
 		else
-			to_chat(A, "This mob is not located in the game world.")
+			to_chat(A, "Ten mob nie znajduje się w świecie gry.")
 
 /client/proc/jumptocoord(tx as num, ty as num, tz as num)
 	set category = "Adminbus"
 	set name = "Jump to Coordinate"
 
 	if (!holder)
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "Tylko administratorzy mogą używać tej komendy.")
 		return
 
 	if(src.mob)
@@ -76,15 +76,15 @@
 	set name = "Jump to Key"
 
 	if(!src.holder)
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "Tylko administratorzy mogą używać tej komendy.")
 		return
 
 	var/list/keys = list()
 	for(var/mob/M in GLOB.player_list)
 		keys += M.client
-	var/client/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in sortKey(keys)
+	var/client/selection = input("Wybierz gracza!", "Admin Jumping", null, null) as null|anything in sortKey(keys)
 	if(!selection)
-		to_chat(src, "No keys found.")
+		to_chat(src, "Nie znaleziono kluczy.")
 		return
 	var/mob/M = selection.mob
 	log_admin("[key_name(usr)] jumped to [key_name(M)]")
@@ -99,7 +99,7 @@
 	set name = "Get Mob"
 	set desc = "Mob to teleport"
 	if(!src.holder)
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "Tylko administratorzy mogą używać tej komendy.")
 		return
 
 	var/atom/loc = get_turf(usr)
@@ -121,13 +121,13 @@
 	set desc = "Key to teleport"
 
 	if(!src.holder)
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "Tylko administratorzy mogą używać tej komendy.")
 		return
 
 	var/list/keys = list()
 	for(var/mob/M in GLOB.player_list)
 		keys += M.client
-	var/client/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in sortKey(keys)
+	var/client/selection = input("Wybierz gracza!", "Admin Jumping", null, null) as null|anything in sortKey(keys)
 	if(!selection)
 		return
 	var/mob/M = selection.mob
@@ -148,9 +148,9 @@
 	set category = "Adminbus"
 	set name = "Send Mob"
 	if(!src.holder)
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "Tylko administratorzy mogą używać tej komendy.")
 		return
-	var/area/A = input(usr, "Pick an area.", "Pick an area") in GLOB.sortedAreas|null
+	var/area/A = input(usr, "Wybierz obszar.", "Wybierz obszar") in GLOB.sortedAreas|null
 	if(A && istype(A))
 		if(M.forceMove(safepick(get_area_turfs(A))))
 
@@ -159,5 +159,5 @@
 			message_admins(msg)
 			admin_ticket_log(M, msg, color="orange")
 		else
-			to_chat(src, "Failed to move mob to a valid location.")
+			to_chat(src, "Nie udało się przenieść moba w prawidłowe miejsce.")
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Send Mob") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

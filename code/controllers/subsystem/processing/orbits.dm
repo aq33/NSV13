@@ -158,8 +158,7 @@ PROCESSING_SUBSYSTEM_DEF(orbits)
 		/datum/orbital_objective/vip_recovery = 1
 	)
 	if(!length(possible_objectives))
-		priority_announce("Priority station objective received - Details transmitted to all available objective consoles. \
-			[GLOB.station_name] will have funds distributed upon objective completion.", "Central Command Report", SSstation.announcer.get_rand_report_sound())
+		priority_announce("Otrzymano priorytetowy cel stacji – szczegóły przesłano do wszystkich dostępnych konsol celów. Po wykonaniu celu [GLOB.station_name] otrzyma środki.", "Central Command Report", SSstation.announcer.get_rand_report_sound())
 	var/chosen = pickweight(valid_objectives)
 	if(!chosen)
 		return
@@ -170,9 +169,9 @@ PROCESSING_SUBSYSTEM_DEF(orbits)
 
 /datum/controller/subsystem/processing/orbits/proc/assign_objective(objective_computer, datum/orbital_objective/objective)
 	if(!possible_objectives.Find(objective))
-		return "Selected objective is no longer available or has been claimed already."
+		return "Wybrany cel jest już niedostępny albo został już podjęty."
 	if(current_objective)
-		return "An objective has already been selected and must be completed first."
+		return "Cel został już wybrany i najpierw trzeba go wykonać."
 	objective.on_assign(objective_computer)
 	objective.generate_attached_beacon()
 	objective.announce()

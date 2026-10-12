@@ -18,16 +18,16 @@
 	var/mob/living/living_user = user
 	playsound(user, 'sound/magic/demon_attack1.ogg', 75, TRUE)
 	if(real_target.anti_magic_check())
-		user.balloon_alert(user, "Spell blocked")
+		user.balloon_alert(user, "Zaklęcie zablokowane")
 		real_target.visible_message(
-			"<span class='danger'>The spell bounces off of [real_target]!</span>",
-			"<span class='danger'>The spell bounces off of you!</span>",
+			"<span class='danger'>Zaklęcie odbija się od [real_target]!</span>",
+			"<span class='danger'>Zaklęcie odbija się od ciebie!</span>",
 		)
 		return
 
 	real_target.visible_message(
-		"<span class='danger'>[real_target] turns pale as a red glow envelops [real_target.p_them()]!</span>",
-		"<span class='danger'>You turn pale as a red glow enevelops you!</span>",
+		"<span class='danger'>[real_target] blednie, gdy otacza go czerwona poświata!</span>",
+		"<span class='danger'>Bledniesz, gdy otacza cię czerwona poświata!</span>",
 	)
 
 	real_target.adjustBruteLoss(20)
@@ -43,6 +43,6 @@
 /obj/effect/proc_holder/spell/pointed/blood_siphon/can_target(atom/target, mob/user, silent)
 	if(!isliving(target))
 		if(!silent)
-			target.balloon_alert(user, "Invalid target")
+			target.balloon_alert(user, "Nieprawidłowy cel")
 		return FALSE
 	return TRUE

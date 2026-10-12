@@ -28,7 +28,7 @@
 	return ..()
 
 /obj/item/storage/backpack/gulagpack/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] hooks [user.p_them()]self to the gulagpack and spams the trigger! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] podłącza się do gułagopaka i raz po raz wciska spust! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return (FIRELOSS)
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
@@ -36,7 +36,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(src == C.back)
-			to_chat(user, "<span class='warning'>You need help taking this off!</span>")
+			to_chat(user, "<span class='warning'>Potrzebujesz pomocy, żeby to zdjąć!</span>")
 			return
 	return ..()
 
@@ -44,7 +44,7 @@
 	if(iscarbon(usr))
 		var/mob/living/carbon/C = usr 
 		if(src == C.back)
-			to_chat(C, "<span class='warning'>You need help taking this off!</span>")
+			to_chat(C, "<span class='warning'>Potrzebujesz pomocy, żeby to zdjąć!</span>")
 			return
 	return ..()
 
@@ -54,7 +54,7 @@
 		A.icon = 'icons/obj/assemblies.dmi'
 
 		if(!user.transferItemToLoc(W, A))
-			to_chat(user, "<span class='warning'>[W] is stuck to your hand, you cannot attach it to [src]!</span>")
+			to_chat(user, "<span class='warning'>[W] przykleił się do twojej ręki, nie możesz przymocować go do [src]!</span>")
 			return
 		W.master = A
 		A.helmet_part = W
@@ -80,7 +80,7 @@
 		var/mob/living/L = loc
 		step(L, pick(GLOB.cardinals))
 
-		to_chat(L, "<span class='danger'>You feel a sharp shock!</span>")
+		to_chat(L, "<span class='danger'>Czujesz ostry wstrząs!</span>")
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, L)
 		s.start()

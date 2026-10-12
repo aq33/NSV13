@@ -18,7 +18,7 @@ Bonus
 /datum/symptom/flesh_eating
 
 	name = "Hemorrhaging Fasciitis"
-	desc = "The virus aggressively attacks the skin and blood, leading to extreme bleeding."
+	desc = "Wirus agresywnie atakuje skórę i krew, prowadząc do skrajnego krwawienia."
 	stealth = -3
 	resistance = -2
 	stage_speed = 0
@@ -32,8 +32,7 @@ Bonus
 	bodies = list("Hemophilia")
 	var/bleed = FALSE
 	var/damage = FALSE
-	threshold_desc = "<b>Resistance 10:</b> The host takes brute damage as their flesh is burst open<br>\
-					  <b>Transmission 8:</b> The host will bleed far more violently, losing even more blood, and spraying infected blood everywhere."
+	threshold_desc = "<b>Odporność 10:</b> nosiciel otrzymuje urazy, gdy jego ciało pęka<br><b>Transmisja 8:</b> nosiciel krwawi znacznie gwałtowniej, tracąc jeszcze więcej krwi i rozpryskując zakażoną krew wszędzie."
 
 /datum/symptom/flesh_eating/Start(datum/disease/advance/A)
 	if(!..())
@@ -71,8 +70,8 @@ Bonus
 		var/list/geyserdirs = GLOB.alldirs.Copy()
 		var/turf/T = H.loc
 		playsound(T, 'sound/effects/splat.ogg', 50, 1)
-		H.visible_message("<span class='danger'>Blood bursts from [H]'s flesh!</span>", \
-  "<span class='userdanger'>Blood spews forth from your flesh! It hurts!</span>")
+		H.visible_message("<span class='danger'>Z ciała [H] tryska krew!</span>", \
+  "<span class='userdanger'>Z twojego ciała tryska krew! Boli!</span>")
 		for(var/i in 0 to geysers)
 			var/geyserdir = pick_n_take(geyserdirs)
 			var/geyserdist = rand(1, max(1,bloodsplatters))
@@ -104,7 +103,7 @@ Bonus
 /datum/symptom/flesh_death
 
 	name = "Autophagocytosis Necrosis"
-	desc = "The virus rapidly consumes infected cells, leading to heavy and widespread damage. Contains dormant prions- expert virologists believe it to be the precursor to Romerol, though the mechanism through which they are activated is largely unknown"
+	desc = "Wirus szybko pochłania zarażone komórki, powodując ciężkie i rozległe uszkodzenia. Zawiera uśpione priony – doświadczeni wirusolodzy uważają je za prekursora Romerolu, choć mechanizm ich aktywacji jest w dużej mierze nieznany"
 	stealth = -2
 	resistance = -2
 	stage_speed = 1
@@ -118,8 +117,7 @@ Bonus
 	suffixes = list(" Rot")
 	var/chems = FALSE
 	var/zombie = FALSE
-	threshold_desc = "<b>Stage Speed 7:</b> Synthesizes Heparin and Lipolicide inside the host, causing increased bleeding and hunger.<br>\
-					  <b>Stealth 5:</b> The symptom remains hidden until active."
+	threshold_desc = "<b>Szybkość stadiów 7:</b> syntetyzuje w nosicielu heparynę i lipolicyd, zwiększając krwawienie i głód.<br><b>Ukrycie 5:</b> objaw pozostaje ukryty, dopóki nie jest aktywny."
 
 
 /datum/symptom/flesh_death/severityset(datum/disease/advance/A)
@@ -162,9 +160,9 @@ Bonus
 			var/S = H.dna.species
 			if(zombie && istype(S, /datum/species/zombie/infectious) && !istype(S, /datum/species/zombie/infectious/fast))
 				H.set_species(/datum/species/zombie/infectious/fast)
-				to_chat(M, "<span class='warning'>Your extraneous flesh sloughs off, giving you a boost of speed at the cost of a bit of padding!</span>")
+				to_chat(M, "<span class='warning'>Nadmiar twojego ciała odpada, dając ci przyspieszenie kosztem odrobiny wyściółki!</span>")
 			else if(prob(base_message_chance))
-				to_chat(M, "<span class='warning'>Your body slowly decays... luckily, you're already dead!</span>")
+				to_chat(M, "<span class='warning'>Twoje ciało powoli się rozkłada... na szczęście już nie żyjesz!</span>")
 		return //this symptom wont work on the undead.
 	M.take_overall_damage(brute = get_damage, required_status = BODYTYPE_ORGANIC)
 	if(chems)

@@ -443,7 +443,7 @@ This proc is to be used when someone gets stuck in an overmap ship, gauss, WHATE
 			continue
 		if(target_last_tracked[OM] + target_loss_time < world.time)
 			if(gunner)
-				to_chat(gunner, "<span class='warning'>Target [OM] lost.</span>")
+				to_chat(gunner, "<span class='warning'>Utracono cel [OM].</span>")
 			dump_lock(OM) // We lost the track
 
 /obj/structure/overmap/small_craft/collide(obj/structure/overmap/other, datum/collision_response/c_response, collision_velocity)
@@ -468,7 +468,7 @@ This proc is to be used when someone gets stuck in an overmap ship, gauss, WHATE
 		if(small_craft.docking_act(src))
 			if(!small_craft.pilot || small_craft.pilot.incapacitated())
 				small_craft.brakes = TRUE
-				small_craft.relay(message = "<span class='danger'>Craft anchored by larger vessel, brakes have been engaged!</span>")
+				small_craft.relay(message = "<span class='danger'>Jednostka zakotwiczona przez większy okręt, włączono hamulce!</span>")
 			return
 	//No colliders. But we still get a lot of info anyways!
 	if(!c_response)
@@ -635,7 +635,7 @@ This proc is to be used when someone gets stuck in an overmap ship, gauss, WHATE
 		take_damage(strength*10, BRUTE, "melee", TRUE)
 		O.take_damage(strength*5, BRUTE, "melee", TRUE)
 		log_game("[key_name(pilot)] has impacted an overmap ship into [A] with velocity [bump_velocity]")
-		visible_message("<span class='danger'>The force of the impact causes a shockwave</span>")
+		visible_message("<span class='danger'>Siła uderzenia wywołuje falę uderzeniową</span>")
 	var/atom/movable/AM = A
 	if(istype(AM) && !AM.anchored && bump_velocity > 1)
 		step(AM, dir)
@@ -645,7 +645,7 @@ This proc is to be used when someone gets stuck in an overmap ship, gauss, WHATE
 		take_damage(bump_velocity, BRUTE, "melee", FALSE)
 		playsound(M.loc, "swing_hit", 1000, 1, -1)
 		M.Knockdown(bump_velocity * 2)
-		M.visible_message("<span class='warning'>The force of the impact knocks [M] down!</span>","<span class='userdanger'>The force of the impact knocks you down!</span>")
+		M.visible_message("<span class='warning'>Siła uderzenia przewraca [M]!</span>","<span class='userdanger'>Siła uderzenia cię przewraca!</span>")
 		log_combat(pilot, M, "impacted", src, "with velocity of [bump_velocity]")
 	return ..()
 

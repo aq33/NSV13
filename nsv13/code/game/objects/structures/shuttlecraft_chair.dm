@@ -57,7 +57,7 @@
 
 /obj/structure/chair/shuttlecraft_chair/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click to fold the chair up or down.</span>"
+	. += "<span class='notice'>Alt-kliknij, by złożyć lub rozłożyć fotel.</span>"
 
 /obj/structure/chair/shuttlecraft_chair/attack_paw(mob/user)
 	return attack_hand(user)
@@ -66,10 +66,10 @@
     if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
         return
     if(broken)
-        to_chat(user, "<span class='warning'>[src] is broken [opened?"open":"closed"].</span>")
+        to_chat(user, "<span class='warning'>[src] jest zepsuty w pozycji [opened?"otwartej":"zamkniętej"].</span>")
         return
     if(has_buckled_mobs())
-        to_chat(user, "<span class='warning'>You can't [opened?"open":"close"] [src] while someone is sitting in it!</span>")
+        to_chat(user, "<span class='warning'>Nie możesz [opened?"otworzyć":"zamknąć"] [src], gdy ktoś na nim siedzi!</span>")
         return
     else
         playsound(loc, 'sound/machines/click.ogg', 15, 1, -3)

@@ -60,7 +60,7 @@
 /datum/component/living_heart/proc/on_organ_removed(obj/item/organ/source, mob/living/carbon/old_owner)
 	SIGNAL_HANDLER
 
-	to_chat(old_owner, "<span class='userdanger'>As your living [source.name] leaves your body, you feel less connected to the Mansus!</span>")
+	to_chat(old_owner, "<span class='userdanger'>Gdy żywe [source.name] opuszcza twoje ciało, czujesz słabszą więź z Mansusem!</span>")
 	qdel(src)
 
 /*
@@ -104,7 +104,7 @@
 
 	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(owner)
 	if(!LAZYLEN(heretic_datum.sac_targets))
-		owner.balloon_alert(owner, "No targets, visit a rune")
+		owner.balloon_alert(owner, "Brak celów, odwiedź runę")
 		return TRUE
 
 	var/list/targets_to_choose = list()
@@ -143,16 +143,16 @@
 /datum/action/item_action/organ_action/track_target/proc/track_sacrifice_target(mob/living/carbon/tracked)
 	var/turf/owner_turf = get_turf(owner)
 	var/turf/tracked_turf = get_turf(tracked)
-	var/balloon_message = "Your target is "
+	var/balloon_message = "Twój cel jest "
 	if(tracked.stat == DEAD)
-		balloon_message += "dead and "
+		balloon_message += "martwy i "
 	else if(!tracked.ckey)
-		balloon_message += "catatonic and "
+		balloon_message += "w katatonii i "
 	if(owner_turf.get_virtual_z_level() != tracked_turf.get_virtual_z_level())
 		if(is_reserved_level(tracked_turf.z))
-			balloon_message += "traveling through space"
+			balloon_message += "w podróży przez kosmos"
 		else
-			balloon_message += "on another plane"
+			balloon_message += "na innym planie"
 	else
 		balloon_message += distance_hint(owner_turf, tracked_turf)
 	owner.balloon_alert(owner, balloon_message)
@@ -163,13 +163,13 @@
 	var/dir = get_dir(source, target)
 	switch(dist)
 		if(0 to 15)
-			return "very near, [dir2text(dir)]"
+			return "bardzo blisko, [dir2text(dir)]"
 		if(16 to 31)
 			return "near, [dir2text(dir)]"
 		if(32 to 127)
-			return "far away, [dir2text(dir)]"
+			return "daleko, [dir2text(dir)]"
 		else
-			return "very far away"
+			return "bardzo daleko"
 
 /// Callback for the radial to ensure it's closed when not allowed.
 /datum/action/item_action/organ_action/track_target/proc/check_menu()

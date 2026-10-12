@@ -8,8 +8,8 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	icon_state = "AAS_On"
 
 	verb_say = "ozięble stwierdza"
-	verb_ask = "queries"
-	verb_exclaim = "alarms"
+	verb_ask = "pyta"
+	verb_exclaim = "alarmuje"
 
 	idle_power_usage = 20
 	active_power_usage = 50
@@ -62,12 +62,12 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(P.tool_behaviour == TOOL_SCREWDRIVER)
 		P.play_tool_sound(src)
 		panel_open = !panel_open
-		to_chat(user, "<span class='notice'>You [panel_open ? "open" : "close"] the maintenance hatch of [src].</span>")
+		to_chat(user, "<span class='notice'>[panel_open ? "Otwierasz" : "Zamykasz"] właz serwisowy [src].</span>")
 		update_icon()
 	else if(default_deconstruction_crowbar(P))
 		return
 	else if(P.tool_behaviour == TOOL_MULTITOOL && panel_open && (machine_stat & BROKEN))
-		to_chat(user, "<span class='notice'>You reset [src]'s firmware.</span>")
+		to_chat(user, "<span class='notice'>Resetujesz oprogramowanie [src].</span>")
 		set_machine_stat(machine_stat & ~BROKEN)
 		update_icon()
 	else
@@ -90,11 +90,11 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	else if(message_type == "NEWHEAD" && newheadToggle)
 		message = CompileText(newhead, user, rank)
 	else if(message_type == "AIWIPE" && newheadToggle)
-		message = CompileText("%PERSON has been moved to intelligence storage.", user, rank)
+		message = CompileText("%PERSON został przeniesiony do magazynu inteligencji.", user, rank)
 	else if(message_type == "CRYOSTORAGE")
 		message = CompileText("%PERSON, %RANK został przeniesiony do krio komory.", user, rank)
 	else if(message_type == "ARRIVALS_BROKEN")
-		message = "The arrivals shuttle has been damaged. Docking for repairs."
+		message = "Prom przylotów został uszkodzony. Dokowanie w celu naprawy."
 
 	if(channels.len == 0)
 		radio.talk_into(src, message, null)
@@ -130,7 +130,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(!usr.canUseTopic(src, !issilicon(usr)))
 		return
 	if(machine_stat & BROKEN)
-		visible_message("<span class='warning'>[src] buzzes.</span>", "<span class='hear'>You hear a faint buzz.</span>")
+		visible_message("<span class='warning'>[src] buzzes.</span>", "<span class='hear'>Słyszysz ciche brzęczenie.</span>")
 		playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, TRUE)
 		return
 	switch(action)
@@ -166,7 +166,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(!user.canUseTopic(src, !issilicon(user)))
 		return
 	if(machine_stat & BROKEN)
-		to_chat(user, "<span class='warning'>[src]'s firmware appears to be malfunctioning!</span>")
+		to_chat(user, "<span class='warning'>Oprogramowanie [src] wydaje się działać wadliwie!</span>")
 		return
 	interact(user)
 
@@ -174,8 +174,8 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(!obj_break()) // if badmins flag this unbreakable or its already broken
 		return
 
-	arrival = pick("#!@%ERR-34%2 CANNOT LOCAT@# JO# F*LE!", "CRITICAL ERROR 99.", "ERR)#: DA#AB@#E NOT F(*ND!")
-	newhead = pick("OV#RL()D: \[UNKNOWN??\] DET*#CT)D!", "ER)#R - B*@ TEXT F*O(ND!", "AAS.exe is not responding. NanoOS is searching for a solution to the problem.")
+	arrival = pick("#!@%BŁ-34%2 NIE MOŻN@ ZLOKA#IZOWAĆ PL*KU PR#CY!", "BŁĄD KRYTYCZNY 99.", "BŁ)#: NIE ZN(*LEZIONO B@#Y DA#YCH!")
+	newhead = pick("PRZ#CI()ŻENIE: WYK*#YTO \[NIEZNANE??\]!", "ER)#R - B*@ TEXT F*O(ND!", "AAS.exe nie odpowiada. NanoOS szuka rozwiązania problemu.")
 	ui_update()
 
 /obj/machinery/announcement_system/emp_act(severity)

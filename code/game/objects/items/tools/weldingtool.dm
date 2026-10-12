@@ -90,7 +90,7 @@
 
 
 /obj/item/weldingtool/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] welds [user.p_their()] every orifice closed! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaspawuje sobie wszystkie otwory w ciele! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return (FIRELOSS)
 
 
@@ -118,8 +118,8 @@
 	if(affecting && (!IS_ORGANIC_LIMB(affecting)) && user.a_intent != INTENT_HARM)
 		if(src.use_tool(H, user, 0, volume=50, amount=1))
 			if(user == H)
-				user.visible_message("<span class='notice'>[user] starts to fix some of the dents on [H]'s [parse_zone(affecting.body_zone)].</span>",
-					"<span class='notice'>You start fixing some of the dents on [H == user ? "your" : "[H]'s"] [parse_zone(affecting.body_zone)].</span>")
+				user.visible_message("<span class='notice'>[user] zaczyna naprawiać wgniecenia u [H] ([strefa_pl(affecting.body_zone)]).</span>",
+					"<span class='notice'>Zaczynasz naprawiać wgniecenia [H == user ? "u siebie" : "u [H]"] ([strefa_pl(affecting.body_zone)]).</span>")
 				if(!do_mob(user, H, 50))
 					return
 			item_heal_robotic(H, user, 15, 0)
@@ -137,7 +137,7 @@
 		return
 	if(!status && O.is_refillable())
 		reagents.trans_to(O, reagents.total_volume, transfered_by = user)
-		balloon_alert(user, "You empty the fuel tank.")
+		balloon_alert(user, "Opróżniasz zbiornik paliwa.")
 		update_icon()
 	if(isOn())
 		use(1)
@@ -209,12 +209,12 @@
 //Switches the welder on
 /obj/item/weldingtool/proc/switched_on(mob/user)
 	if(!status)
-		balloon_alert(user, "You try to turn [src] on, but it's unsecured!")
+		balloon_alert(user, "Próbujesz włączyć [src], ale nie jest zabezpieczony!")
 		return
 	set_welding(!welding)
 	if(welding)
 		if(get_fuel() >= 1)
-			balloon_alert(user, "You turn [src] on.")
+			balloon_alert(user, "Włączasz [src].")
 			playsound(loc, acti_sound, 50, 1)
 			force = 15
 			damtype = "fire"
@@ -222,10 +222,10 @@
 			update_icon()
 			START_PROCESSING(SSobj, src)
 		else
-			balloon_alert(user, "The [src] is empty!")
+			balloon_alert(user, "[src] jest pusty!")
 			switched_off(user)
 	else
-		balloon_alert(user, "You turn [src] off.")
+		balloon_alert(user, "Wyłączasz [src].")
 		playsound(loc, deac_sound, 50, 1)
 		switched_off(user)
 
@@ -241,7 +241,7 @@
 
 /obj/item/weldingtool/examine(mob/user)
 	. = ..()
-	. += "It contains [get_fuel()] unit\s of fuel out of [max_fuel]."
+	. += "Zawiera [get_fuel()] z [max_fuel] j. paliwa."
 
 /obj/item/weldingtool/is_hot()
 	return welding * heat
@@ -269,26 +269,26 @@
 // If welding tool ran out of fuel during a construction task, construction fails.
 /obj/item/weldingtool/tool_use_check(mob/living/user, amount)
 	if(!isOn() || !check_fuel())
-		balloon_alert(user, "You need to turn [src] on to do that.")
+		balloon_alert(user, "Aby to zrobić, musisz włączyć [src].")
 		return FALSE
 
 	if(get_fuel() >= amount)
 		return TRUE
 	else
-		balloon_alert(user, "The [src] doesn't have enough fuel to complete this task.")
+		balloon_alert(user, "[src] nie ma dość paliwa, by wykonać to zadanie.")
 		return FALSE
 
 
 /obj/item/weldingtool/proc/flamethrower_screwdriver(obj/item/I, mob/user)
 	if(welding)
-		balloon_alert(user, "You should turn [src] off before doing this...")
+		balloon_alert(user, "Przed tym lepiej wyłącz [src]...")
 		return
 	status = !status
 	if(status)
-		balloon_alert(user, "You close the fuel tank.")
+		balloon_alert(user, "Zamykasz zbiornik paliwa.")
 		DISABLE_BITFIELD(reagents.flags, OPENCONTAINER)
 	else
-		balloon_alert(user, "You can now attach, modify and refuel [src].")
+		balloon_alert(user, "Możesz teraz mocować, modyfikować i tankować [src].")
 		ENABLE_BITFIELD(reagents.flags, OPENCONTAINER)
 	add_fingerprint(user)
 
@@ -301,14 +301,14 @@
 				user.transferItemToLoc(src, F, TRUE)
 			F.weldtool = src
 			add_fingerprint(user)
-			balloon_alert(user, "You start bulding a flamethrower...")
+			balloon_alert(user, "Zaczynasz budować miotacz ognia...")
 			user.put_in_hands(F)
 		else
-			balloon_alert(user, "You need one rod to build a flamethrower!")
+			balloon_alert(user, "Potrzebujesz jednego pręta, by zbudować miotacz ognia!")
 
 /obj/item/weldingtool/ignition_effect(atom/A, mob/user)
 	if(use_tool(A, user, 0, amount=1))
-		return "<span class='notice'>[user] casually lights [A] with [src], what a badass.</span>"
+		return "<span class='notice'>[user] od niechcenia zapala [A] za pomocą [src], co za twardziel.</span>"
 	else
 		return ""
 

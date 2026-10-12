@@ -78,9 +78,9 @@ NOTE:
 	if(length(rewards))
 		for(var/A in rewards)
 			owner.send_supplypod(A)
-		owner.hail("Bounty payout of $[payout] authorised for [owner]. Pre-loaded credit holochip and physical rewards will be delivered to the ship's cargo department.", the_client.name)
+		owner.hail("Zatwierdzono wypłatę nagrody w wysokości $[payout] dla [owner]. Holożeton z kredytami i nagrody rzeczowe zostaną dostarczone do działu zaopatrzenia okrętu.", the_client.name)
 	else
-		owner.hail("Bounty payout of $[payout] authorised for [owner]. Pre-loaded credit holochip will be delivered to the ship's cargo department.", the_client.name)
+		owner.hail("Zatwierdzono wypłatę nagrody w wysokości $[payout] dla [owner]. Holożeton z kredytami zostanie dostarczony do działu zaopatrzenia okrętu.", the_client.name)
 
 /datum/nsv_mission/proc/reward_string() //Output what this mission will reward for tgui
 	var/reward_txt = ""
@@ -122,7 +122,7 @@ NOTE:
 	var/max_threat_level = THREAT_LEVEL_UNSAFE	// If we assign systems, give them a break by not giving them objectives in dangerous systems
 	var/list/target_factions = list(FACTION_ID_SYNDICATE, FACTION_ID_PIRATES)
 
-	rewards = list(/obj/structure/closet/crate/nsv_mission_rewards="an ammo crate")
+	rewards = list(/obj/structure/closet/crate/nsv_mission_rewards="skrzynia amunicji")
 
 /datum/nsv_mission/kill_ships/proc/targets_in_system(var/valid_only = FALSE)
 	var/c = 0
@@ -188,7 +188,7 @@ NOTE:
 	target_faction = list("nanotrasen")
 	target_factions = list(FACTION_ID_NT)
 	rewards = list(/obj/item/stack/telecrystal/twenty="20 telecrystals",
-								/obj/structure/closet/crate/nsv_mission_rewards="an ammo crate")
+								/obj/structure/closet/crate/nsv_mission_rewards="skrzynia amunicji")
 
 // Kill ships in system - Kill X ships owned by Y in specific systems
 
@@ -265,7 +265,7 @@ NOTE:
 	target_factions = list(FACTION_ID_NT)
 	system_alignment = list("nanotrasen","unaligned","uncharted")
 	rewards = list(/obj/item/stack/telecrystal/twenty="20 telecrystals",
-								/obj/structure/closet/crate/nsv_mission_rewards="an ammo crate")
+								/obj/structure/closet/crate/nsv_mission_rewards="skrzynia amunicji")
 
 
 // Wave hold - Destroy several waves of enemy ships
@@ -367,7 +367,7 @@ NOTE:
 	target_faction = list("nanotrasen")
 	target_factions = list(FACTION_ID_NT)
 	rewards = list(/obj/item/stack/telecrystal/twenty="20 telecrystals",
-								/obj/structure/closet/crate/nsv_mission_rewards="an ammo crate")
+								/obj/structure/closet/crate/nsv_mission_rewards="skrzynia amunicji")
 
 /* ideasguys zone - TODO
 
@@ -465,7 +465,7 @@ kill station
 			reward_txt += " and " + rewards[rewards[i]]
 		else
 			reward_txt += ", " + rewards[rewards[i]]
-	return "A maximum of " + num2text(max_payout) + " credits" + reward_txt
+	return "Maksymalnie " + num2text(max_payout) + " credits" + reward_txt
 
 
 /datum/nsv_mission/cargo/proc/report_tampered_cargo(var/datum/component/nsv_mission_cargo/cargo) // We only count the cargo if delivered tampered. This is mostly a hook if you want tampers to be fails
@@ -511,27 +511,27 @@ kill station
 /datum/nsv_mission/cargo/nuke/proc/first_warning()
 	if(stage != MISSION_ACTIVE) // Only report the crate is suspect if the mission is ongoing
 		return
-	owner.hail("[owner.name], we have noticed that a mission was assigned to you, asking to deliver a crate of cargo to [delivery_target.name]. However we don't have the request form from them to send the crate. Please hold off on delivering that crate until we figure out what is going on.", the_client.name)
+	owner.hail("[owner.name], zauważyliśmy, że przydzielono wam misję dostarczenia skrzyni z ładunkiem do [delivery_target.name]. Nie mamy jednak od nich formularza zamówienia, by wysłać skrzynię. Wstrzymajcie się z dostawą, dopóki nie ustalimy, co się dzieje.", the_client.name)
 	addtimer(CALLBACK(src, PROC_REF(second_warning)), 15 MINUTES) // 30 min to go
 
 /datum/nsv_mission/cargo/nuke/proc/second_warning()
 	if(stage != MISSION_ACTIVE) // Only report the crate is suspect if the mission is ongoing
 		return
-	owner.hail("We have looked into that crate you were asked to deliver to [delivery_target.name] and found that someone has tampered with that job listing. We have found the person responsible and will attempt to find out why they want you to move that crate.", the_client.name)
+	owner.hail("Sprawdziliśmy skrzynię, którą mieliście dostarczyć do [delivery_target.name], i odkryliśmy, że ktoś manipulował tym ogłoszeniem o zleceniu. Znaleźliśmy winnego i spróbujemy ustalić, po co chciał, żebyście przewieźli tę skrzynię.", the_client.name)
 	addtimer(CALLBACK(src, PROC_REF(third_warning)), 15 MINUTES) // 15 min to go
 
 /datum/nsv_mission/cargo/nuke/proc/third_warning()
 	if(stage != MISSION_ACTIVE) // Only report the crate is suspect if the mission is ongoing
 		return
-	owner.hail("The person who tampered with the job listing revealed they are a Syndicate agent after a brief 'talking' too. You need to destroy or dispose of that crate as they intended to have you destroy [delivery_target.name].", the_client.name)
+	owner.hail("Osoba, która manipulowała ogłoszeniem, po krótkiej „rozmowie” przyznała, że jest agentem Syndykatu. Musicie zniszczyć lub pozbyć się tej skrzyni, bo zamierzali sprawić, że zniszczycie [delivery_target.name].", the_client.name)
 
 /datum/nsv_mission/cargo/nuke/payout()
 	if(delivered_cargo)
 		. = ..()
-		owner.hail("Thanks, but we don't believe we requested this crate? Wait, why do I hear ticking...", delivery_target.name)
+		owner.hail("Dzięki, ale chyba nie zamawialiśmy tej skrzyni? Chwila, czemu słyszę tykanie...", delivery_target.name)
 		QDEL_IN(delivery_target,10 SECONDS) //f
 	else
-		owner.hail("[owner.name], why did you just try to send us a live nuke? We have spaced it for now but will have to raise this with Central Command.", delivery_target.name)
+		owner.hail("[owner.name], czemu właśnie próbowaliście wysłać nam uzbrojoną bombę atomową? Na razie wyrzuciliśmy ją w kosmos, ale będziemy musieli zgłosić to Centrali.", delivery_target.name)
 
 
 /datum/nsv_mission/cargo/nuke/syndicate/update_description() //Exactly the same as the normal one but with different flavor text/warnings
@@ -541,7 +541,7 @@ kill station
 /datum/nsv_mission/cargo/nuke/syndicate/first_warning()
 	if(stage != MISSION_ACTIVE)
 		return
-	owner.hail("A routine scan of your communication logs has identified that the [owner.name] has been in contact with a Syndicate station. You and your crew will face disciplinary action while we asses just what the fuck you were doing contacting the enemy.", "Central Command")
+	owner.hail("Rutynowy skan waszych logów komunikacyjnych wykazał, że [owner.name] kontaktował się ze stacją Syndykatu. Ty i twoja załoga poniesiecie konsekwencje dyscyplinarne, a my ustalimy, co do kurwy robiliście, kontaktując się z wrogiem.", "Centrala")
 
 // TODO, make the player ship KOS if they deliver the nuke?
 

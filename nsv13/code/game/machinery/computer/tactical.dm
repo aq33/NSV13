@@ -21,12 +21,12 @@
 	if(!has_overmap())
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='warning'>A warning flashes across [src]'s screen: Unable to locate armament parameters, no registered ship stored in microprocessor.</span>")
+		to_chat(user, "<span class='warning'>Na ekranie [src] miga ostrzeżenie: nie można znaleźć parametrów uzbrojenia, w mikroprocesorze nie zapisano zarejestrowanego okrętu.</span>")
 		return
 	if((position & (OVERMAP_USER_ROLE_PILOT | OVERMAP_USER_ROLE_GUNNER)) && linked.ai_controlled)
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='warning'>A warning flashes across [src]'s screen: Automated flight protocols are still active. Unable to comply.</span>")
+		to_chat(user, "<span class='warning'>Na ekranie [src] miga ostrzeżenie: automatyczne protokoły lotu wciąż są aktywne. Nie można wykonać.</span>")
 		return TRUE
 	if(linked.gunner && !linked.gunner.client)
 		linked.stop_piloting(linked.gunner)
@@ -37,13 +37,10 @@
 		ui_users |= user //This sucks but I doubt the edge case here will come up.
 		RegisterSignal(user, COMSIG_STOPPED_PILOTING, PROC_REF(on_user_stopped_piloting))
 
-		to_chat(user, "<span class='notice'> TACTICAL CONTROL: \
-					Mouse 1 will fire the selected weapon (if applicable).</span>")
+		to_chat(user, "<span class='notice'> STEROWANIE TAKTYCZNE: Lewy przycisk myszy strzela z wybranej broni (jeśli dotyczy).</span>")
 		to_chat(user, "<span class='warning'>=Hotkeys=</span>")
-		to_chat(user, "<span class='notice'> Use <b>tab</b> to activate hotkey mode, then:</span>")
-		to_chat(user, "<span class='notice'> Use the <b> Ctrl + Scroll Wheel</b> to zoom in / out. \
-						Press <b>Space</b> to cycle fire modes. \
-						Press <b>F</b> for the current weapon's special action (if available).</span>")
+		to_chat(user, "<span class='notice'> Naciśnij <b>tab</b>, by włączyć tryb skrótów, a następnie:</span>")
+		to_chat(user, "<span class='notice'> Użyj <b>Ctrl + kółka myszy</b>, by przybliżyć/oddalić. Naciśnij <b>spację</b>, by przełączać tryby ognia. Naciśnij <b>F</b>, by wykonać akcję specjalną obecnej broni (jeśli jest dostępna).</span>")
 		return ..()
 	return
 
@@ -68,7 +65,7 @@
 			if(linked.target_lock)
 				var/scan_range = linked.dradis ? linked.dradis.visual_range : SENSOR_RANGE_DEFAULT
 				if(overmap_dist(linked, linked.target_lock) > scan_range)
-					to_chat(linked.gunner, "<span class='warning'>Target out of visual acquisition range.</span>")
+					to_chat(linked.gunner, "<span class='warning'>Cel poza zasięgiem wzrokowym.</span>")
 					return
 				linked.update_gunner_cam(linked.target_lock)
 				return

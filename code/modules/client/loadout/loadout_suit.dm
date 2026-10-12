@@ -168,7 +168,7 @@
 /datum/gear/suit/jacket/joker
 	display_name = "comedian's coat"
 	path = /obj/item/clothing/suit/joker
-	description = "You get what you deserve."
+	description = "Dostajesz to, na co zasłużyłeś."
 	allowed_roles = list(JOB_NAME_CLOWN)
 	cost = 8000
 

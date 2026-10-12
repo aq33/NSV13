@@ -4,8 +4,8 @@
 	ui_icon = "briefcase-medical"
 	cost = 4
 	has_mode = TRUE
-	mode_on_msg = "<span class='danger'><B>You switch to healing mode.</span></B>"
-	mode_off_msg = "<span class='danger'><B>You switch to combat mode.</span></B>"
+	mode_on_msg = "<span class='danger'><B>Przełączasz się w tryb leczenia.</span></B>"
+	mode_off_msg = "<span class='danger'><B>Przełączasz się w tryb walki.</span></B>"
 	arrow_weight = 1.1
 
 /datum/guardian_ability/major/healing/Apply()
@@ -19,7 +19,7 @@
 /datum/guardian_ability/major/healing/Attack(atom/target)
 	if(mode)
 		if(target == guardian)
-			to_chat(guardian, "<span class='danger bold'>You can't heal yourself!</span>")
+			to_chat(guardian, "<span class='danger bold'>Nie możesz uleczyć samego siebie!</span>")
 			return TRUE
 		if(isliving(target))
 			var/mob/living/L = target

@@ -4,7 +4,7 @@
 	density = TRUE
 	icon = 'icons/obj/machines/harvester.dmi'
 	icon_state = "harvester"
-	verb_say = "states"
+	verb_say = "stwierdza"
 	state_open = FALSE
 	idle_power_usage = 50
 	circuit = /obj/item/circuitboard/machine/harvester
@@ -66,15 +66,15 @@
 				continue
 			var/obj/item/I = A
 			if(!(HAS_TRAIT(I, TRAIT_NODROP)))
-				say("Subject may not have abiotic items on.")
+				say("Obiekt nie może mieć na sobie przedmiotów abiotycznych.")
 				playsound(src, 'sound/machines/buzz-sigh.ogg', 30, 1)
 				return
 	if(!(MOB_ORGANIC in C.mob_biotypes))
-		say("Subject is not organic.")
+		say("Obiekt nie jest organiczny.")
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 30, 1)
 		return
 	if(!allow_living && !(C.stat == DEAD || HAS_TRAIT(C, TRAIT_FAKEDEATH)))     //I mean, the machines scanners arent advanced enough to tell you're alive
-		say("Subject is still alive.")
+		say("Obiekt wciąż żyje.")
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 30, 1)
 		return
 	return TRUE
@@ -85,8 +85,8 @@
 	var/mob/living/carbon/C = occupant
 	operation_order = reverseList(C.bodyparts)   //Chest and head are first in bodyparts, so we invert it to make them suffer more
 	harvesting = TRUE
-	visible_message("<span class='notice'>The [name] begins warming up!</span>")
-	say("Initializing harvest protocol.")
+	visible_message("<span class='notice'>[name] zaczyna się nagrzewać!</span>")
+	say("Inicjalizacja protokołu zbioru.")
 	update_icon(TRUE)
 	addtimer(CALLBACK(src, PROC_REF(harvest)), interval)
 
@@ -127,7 +127,7 @@
 /obj/machinery/harvester/proc/end_harvesting()
 	harvesting = FALSE
 	open_machine()
-	say("Subject has been successfully harvested.")
+	say("Zbiór z obiektu zakończony pomyślnie.")
 	playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, 0)
 
 /obj/machinery/harvester/screwdriver_act(mob/living/user, obj/item/I)
@@ -135,10 +135,10 @@
 	if(..())
 		return
 	if(occupant)
-		to_chat(user, "<span class='warning'>[src] is currently occupied!</span>")
+		to_chat(user, "<span class='warning'>[src] jest obecnie zajęty!</span>")
 		return
 	if(state_open)
-		to_chat(user, "<span class='warning'>[src] must be closed to [panel_open ? "close" : "open"] its maintenance hatch!</span>")
+		to_chat(user, "<span class='warning'>[src] musi być zamknięty, by [panel_open ? "zamknąć" : "otworzyć"] właz serwisowy!</span>")
 		return
 	if(default_deconstruction_screwdriver(user, "[initial(icon_state)]-o", initial(icon_state), I))
 		return
@@ -154,7 +154,7 @@
 	. = !(state_open || panel_open || (flags_1 & NODECONSTRUCT_1)) && I.tool_behaviour == TOOL_CROWBAR //We removed is_operational here
 	if(.)
 		I.play_tool_sound(src, 50)
-		visible_message("<span class='notice'>[usr] pries open \the [src].</span>", "<span class='notice'>You pry open [src].</span>")
+		visible_message("<span class='notice'>[usr] wyważa [src].</span>", "<span class='notice'>Wyważasz [src].</span>")
 		open_machine()
 
 /obj/machinery/harvester/emag_act(mob/user)
@@ -162,15 +162,15 @@
 		return
 	obj_flags |= EMAGGED
 	allow_living = TRUE
-	to_chat(user, "<span class='warning'>You overload [src]'s lifesign scanners.</span>")
+	to_chat(user, "<span class='warning'>Przeciążasz skanery funkcji życiowych [src].</span>")
 
 /obj/machinery/harvester/container_resist(mob/living/user)
 	if(!harvesting)
-		visible_message("<span class='notice'>[occupant] emerges from [src]!</span>",
-			"<span class='notice'>You climb out of [src]!</span>")
+		visible_message("<span class='notice'>[occupant] wychodzi z [src]!</span>",
+			"<span class='notice'>Wychodzisz z [src]!</span>")
 		open_machine()
 	else
-		to_chat(user,"<span class='warning'>[src] is active and can't be opened!</span>") //rip
+		to_chat(user,"<span class='warning'>[src] jest aktywny i nie można go otworzyć!</span>") //rip
 
 /obj/machinery/harvester/Exited(atom/movable/gone, direction)
 	. = ..()
@@ -186,8 +186,8 @@
 	if(machine_stat & BROKEN)
 		return
 	if(state_open)
-		. += "<span class='notice'>[src] must be closed before harvesting.</span>"
+		. += "<span class='notice'>[src] musi być zamknięty przed rozpoczęciem zbioru.</span>"
 	else if(!harvesting)
-		. += "<span class='notice'>Alt-click [src] to start harvesting.</span>"
+		. += "<span class='notice'>Alt-kliknij [src], by rozpocząć zbiór.</span>"
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Harvest speed at <b>[interval*0.1]</b> seconds per organ.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: szybkość zbioru: <b>[interval*0.1]</b> s na narząd.</span>"

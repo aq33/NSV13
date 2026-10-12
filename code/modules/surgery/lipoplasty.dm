@@ -16,15 +16,15 @@
 	time = 64
 
 /datum/surgery_step/cut_fat/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	user.visible_message("[user] begins to cut away [target]'s excess fat.", "<span class='notice'>You begin to cut away [target]'s excess fat...</span>")
-	display_results(user, target, "<span class='notice'>You begin to cut away [target]'s excess fat...</span>",
-			"[user] begins to cut away [target]'s excess fat.",
-			"[user] begins to cut [target]'s [target_zone] with [tool].")
+	user.visible_message("[user] zaczyna wycinać nadmiar tłuszczu [target].", "<span class='notice'>Zaczynasz wycinać nadmiar tłuszczu [target]...</span>")
+	display_results(user, target, "<span class='notice'>Zaczynasz wycinać nadmiar tłuszczu [target]...</span>",
+			"[user] zaczyna wycinać nadmiar tłuszczu [target].",
+			"[user] zaczyna nacinać ciało [target] ([strefa_pl(target_zone)]) za pomocą [tool].")
 
 /datum/surgery_step/cut_fat/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You cut [target]'s excess fat loose.</span>",
-			"[user] cuts [target]'s excess fat loose!",
-			"[user] finishes the cut on [target]'s [target_zone].")
+	display_results(user, target, "<span class='notice'>Odcinasz nadmiar tłuszczu [target].</span>",
+			"[user] odcina nadmiar tłuszczu [target]!",
+			"[user] kończy nacinanie ciała [target] ([strefa_pl(target_zone)]).")
 	return 1
 
 //remove fat
@@ -34,12 +34,12 @@
 	time = 32
 
 /datum/surgery_step/remove_fat/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to extract [target]'s loose fat...</span>",
-			"[user] begins to extract [target]'s loose fat!",
-			"[user] begins to extract something from [target]'s [target_zone].")
+	display_results(user, target, "<span class='notice'>Zaczynasz wydobywać odcięty tłuszcz [target]...</span>",
+			"[user] zaczyna wydobywać odcięty tłuszcz [target]!",
+			"[user] zaczyna coś wydobywać z ciała [target] ([strefa_pl(target_zone)]).")
 
 /datum/surgery_step/remove_fat/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You extract [target]'s fat.</span>",
+	display_results(user, target, "<span class='notice'>Wydobywasz tłuszcz [target].</span>",
 			"[user] extracts [target]'s fat!",
 			"[user] extracts [target]'s fat!")
 	target.overeatduration = 0 //patient is unfatted

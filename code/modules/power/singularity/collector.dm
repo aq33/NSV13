@@ -52,7 +52,7 @@
 		if(loaded_tank.air_contents.get_moles(GAS_PLASMA) < 0.0001)
 			investigate_log("<font color='red'>out of fuel</font>.", INVESTIGATE_ENGINES)
 			playsound(src, 'sound/machines/ding.ogg', 50, 1)
-			var/msg = "Plasma depleted, recommend replacing tank."
+			var/msg = "Plazma wyczerpana, zalecana wymiana butli."
 			radio.talk_into(src, msg, RADIO_CHANNEL_ENGINEERING)
 			eject()
 		else
@@ -82,19 +82,19 @@
 	if(anchored)
 		if(!src.locked)
 			toggle_power()
-			user.visible_message("[user.name] turns the [src.name] [active? "on":"off"].", \
-			"<span class='notice'>You turn the [src.name] [active? "on":"off"].</span>")
+			user.visible_message("[user.name] [active? "włącza":"wyłącza"] [src.name].", \
+			"<span class='notice'>[active? "Włączasz":"Wyłączasz"] [src.name].</span>")
 			var/fuel = loaded_tank?.air_contents.get_moles(GAS_PLASMA)
 			investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [key_name(user)]. [loaded_tank?"Fuel: [round(fuel/0.29)]%":"<font color='red'>It is empty</font>"].", INVESTIGATE_ENGINES)
 			return
 		else
-			to_chat(user, "<span class='warning'>The controls are locked!</span>")
+			to_chat(user, "<span class='warning'>Sterowanie jest zablokowane!</span>")
 			return
 
 /obj/machinery/power/rad_collector/can_be_unfasten_wrench(mob/user, silent)
 	if(loaded_tank)
 		if(!silent)
-			to_chat(user, "<span class='warning'>Remove the plasma tank first!</span>")
+			to_chat(user, "<span class='warning'>Najpierw wyjmij butlę z plazmą!</span>")
 		return FAILED_UNFASTEN
 	return ..()
 
@@ -109,13 +109,13 @@
 /obj/machinery/power/rad_collector/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/tank/internals/plasma))
 		if(!anchored)
-			to_chat(user, "<span class='warning'>[src] needs to be secured to the floor first!</span>")
+			to_chat(user, "<span class='warning'>[src] musi być najpierw przymocowany do podłogi!</span>")
 			return TRUE
 		if(loaded_tank)
-			to_chat(user, "<span class='warning'>There's already a plasma tank loaded!</span>")
+			to_chat(user, "<span class='warning'>Butla z plazmą jest już załadowana!</span>")
 			return TRUE
 		if(panel_open)
-			to_chat(user, "<span class='warning'>Close the maintenance panel first!</span>")
+			to_chat(user, "<span class='warning'>Najpierw zamknij panel serwisowy!</span>")
 			return TRUE
 		if(!user.transferItemToLoc(W, src))
 			return
@@ -125,11 +125,11 @@
 		if(allowed(user))
 			if(active)
 				locked = !locked
-				to_chat(user, "<span class='notice'>You [locked ? "lock" : "unlock"] the controls.</span>")
+				to_chat(user, "<span class='notice'>[locked ? "Blokujesz" : "Odblokowujesz"] sterowanie.</span>")
 			else
-				to_chat(user, "<span class='warning'>The controls can only be locked when \the [src] is active!</span>")
+				to_chat(user, "<span class='warning'>Sterowanie można zablokować tylko wtedy, gdy [src] jest aktywny!</span>")
 		else
-			to_chat(user, "<span class='danger'>Access denied.</span>")
+			to_chat(user, "<span class='danger'>Odmowa dostępu.</span>")
 			return TRUE
 	else
 		return ..()
@@ -142,7 +142,7 @@
 	if(..())
 		return TRUE
 	if(loaded_tank)
-		to_chat(user, "<span class='warning'>Remove the plasma tank first!</span>")
+		to_chat(user, "<span class='warning'>Najpierw wyjmij butlę z plazmą!</span>")
 	else
 		default_deconstruction_screwdriver(user, icon_state, icon_state, I)
 	return TRUE
@@ -150,27 +150,27 @@
 /obj/machinery/power/rad_collector/crowbar_act(mob/living/user, obj/item/I)
 	if(loaded_tank)
 		if(locked)
-			to_chat(user, "<span class='warning'>The controls are locked!</span>")
+			to_chat(user, "<span class='warning'>Sterowanie jest zablokowane!</span>")
 			return TRUE
 		eject()
 		return TRUE
 	if(default_deconstruction_crowbar(I))
 		return TRUE
-	to_chat(user, "<span class='warning'>There isn't a tank loaded!</span>")
+	to_chat(user, "<span class='warning'>Nie załadowano butli!</span>")
 	return TRUE
 
 /obj/machinery/power/rad_collector/multitool_act(mob/living/user, obj/item/I)
 	if(!is_station_level(z) && !SSresearch.science_tech)
-		to_chat(user, "<span class='warning'>[src] isn't linked to a research system!</span>")
+		to_chat(user, "<span class='warning'>[src] nie jest połączony z systemem badań!</span>")
 		return TRUE
 	if(locked)
-		to_chat(user, "<span class='warning'>[src] is locked!</span>")
+		to_chat(user, "<span class='warning'>[src] jest zablokowany!</span>")
 		return TRUE
 	if(active)
-		to_chat(user, "<span class='warning'>[src] is currently active, producing [bitcoinmining ? "research points":"power"].</span>")
+		to_chat(user, "<span class='warning'>[src] jest obecnie aktywny i wytwarza [bitcoinmining ? "punkty badań":"energię"].</span>")
 		return TRUE
 	bitcoinmining = !bitcoinmining
-	to_chat(user, "<span class='warning'>You [bitcoinmining ? "enable":"disable"] the research point production feature of [src].</span>")
+	to_chat(user, "<span class='warning'>[bitcoinmining ? "Włączasz":"Wyłączasz"] funkcję wytwarzania punktów badań w [src].</span>")
 	return TRUE
 
 /obj/machinery/power/rad_collector/return_analyzable_air()
@@ -187,14 +187,14 @@
 			// Therefore, its units are joules per SSmachines.wait * 0.1 seconds.
 			// So joules = stored_energy * SSmachines.wait * 0.1
 			var/joules = stored_energy * SSmachines.wait * 0.1
-			. += "<span class='notice'>[src]'s display states that it has stored <b>[display_joules(joules)]</b>, and is processing <b>[display_power(RAD_COLLECTOR_OUTPUT)]</b>.</span>"
+			. += "<span class='notice'>Wyświetlacz [src] pokazuje, że zgromadzono <b>[display_joules(joules)]</b>, a przetwarzane jest <b>[display_power(RAD_COLLECTOR_OUTPUT)]</b>.</span>"
 		else
-			. += "<span class='notice'>[src]'s display states that it has stored a total of <b>[stored_energy*RAD_COLLECTOR_MINING_CONVERSION_RATE]</b>, and is producing [RAD_COLLECTOR_OUTPUT*RAD_COLLECTOR_MINING_CONVERSION_RATE] research points per minute.</span>"
+			. += "<span class='notice'>Wyświetlacz [src] pokazuje, że łącznie zgromadzono <b>[stored_energy*RAD_COLLECTOR_MINING_CONVERSION_RATE]</b>, a wytwarzane jest [RAD_COLLECTOR_OUTPUT*RAD_COLLECTOR_MINING_CONVERSION_RATE] punktów badań na minutę.</span>"
 	else
 		if(!bitcoinmining)
-			. += "<span class='notice'><b>[src]'s display displays the words:</b> \"Power production mode. Please insert <b>Plasma</b>. Use a multitool to change production modes.\"</span>"
+			. += "<span class='notice'><b>Wyświetlacz [src] pokazuje napis:</b> \"Tryb wytwarzania energii. Włóż <b>plazmę</b>. Zmień tryb wytwarzania multitoolem.\"</span>"
 		else
-			. += "<span class='notice'><b>[src]'s display displays the words:</b> \"Research point production mode. Please insert <b>Tritium</b> and <b>Oxygen</b>. Use a multitool to change production modes.\"</span>"
+			. += "<span class='notice'><b>Wyświetlacz [src] pokazuje napis:</b> \"Tryb wytwarzania punktów badań. Włóż <b>tryt</b> i <b>tlen</b>. Zmień tryb wytwarzania multitoolem.\"</span>"
 
 /obj/machinery/power/rad_collector/obj_break(damage_flag)
 	. = ..()

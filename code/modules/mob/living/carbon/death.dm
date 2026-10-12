@@ -24,7 +24,7 @@
 		if(ishorror(M)) // AQ EDIT - Yogstation#13033: the horror dies with its host, so a mind-controlled host can't be gibbed on purpose
 			M.gib()
 		else
-			visible_message("<span class='danger'>[M] bursts out of [src]!</span>")
+			visible_message("<span class='danger'>[M] wyrywa się z [src]!</span>")
 	..()
 
 /mob/living/carbon/spill_organs(no_brain, no_organs, no_bodyparts)

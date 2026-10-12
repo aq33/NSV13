@@ -18,9 +18,7 @@
 	traitors_possible = 10 //hard limit on traitors if scaling is turned off
 	num_modifier = 4 // Four additional traitors
 
-	announce_text = "There are Nanotrasen Internal Affairs Agents trying to kill each other!\n\
-	<span class='danger'>IAA</span>: Eliminate your targets and protect yourself!\n\
-	<span class='notice'>Crew</span>: Stop the IAA agents before they can cause too much mayhem."
+	announce_text = "Na stacji są agenci Wydziału Spraw Wewnętrznych Nanotrasen, którzy próbują się nawzajem pozabijać!\n<span class='danger'>IAA</span>: wyeliminujcie swoje cele i chrońcie się!\n<span class='notice'>Załoga</span>: powstrzymajcie agentów IAA, zanim wywołają zbyt duży chaos."
 
 
 

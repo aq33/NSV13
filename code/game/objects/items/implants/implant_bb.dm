@@ -13,16 +13,16 @@
 /obj/item/implant/bloodbrother/activate()
 	. = ..()
 	if(linked_implants.len)
-		var/input = stripped_input(imp_in, "Enter a message to communicate to your blood brother(s).", "Radio Implant", "")
+		var/input = stripped_input(imp_in, "Wpisz wiadomość do swojego brata (braci) krwi.", "Implant radiowy", "")
 		if(!input || imp_in.stat == DEAD)
 			return
 		if(CHAT_FILTER_CHECK(input))
-			to_chat(imp_in, "<span class='warning'>The message contains prohibited words!</span>")
+			to_chat(imp_in, "<span class='warning'>Wiadomość zawiera zakazane słowa!</span>")
 			return
 		input = imp_in.treat_message_min(input)
 
 		var/my_message = "<font color=\"[implant_colour]\"><b><i>[imp_in.mind.name]:</i></b></font> [input]" //add sender, color source with syndie color
-		var/ghost_message = "<font color=\"[implant_colour]\"><b><i>[imp_in.mind.name] -> Blood Brothers:</i></b></font> [input]"
+		var/ghost_message = "<font color=\"[implant_colour]\"><b><i>[imp_in.mind.name] -> Bracia krwi:</i></b></font> [input]"
 
 		to_chat(imp_in, my_message) // Sends message to the user
 		for(var/obj/item/implant/bloodbrother/i in linked_implants) // Sends message to all linked implnats
@@ -34,7 +34,7 @@
 
 		imp_in.log_talk(input, LOG_SAY, tag="Blood Brother Implant")
 	else
-		to_chat(imp_in, "<span class='bold'>There are no linked implants!</span>")
+		to_chat(imp_in, "<span class='bold'>Brak połączonych implantów!</span>")
 
 /obj/item/implant/bloodbrother/Destroy()
 	. = ..()
@@ -49,13 +49,7 @@
 		BB.linked_implants |= src
 
 /obj/item/implant/bloodbrother/get_data()
-	var/dat = {"<b>Implant Specifications:</b><BR>
-				<b>Name:</b> Donk Corp(tm) Initiate Communication Implant<BR>
-				<b>Life:</b> Indefinite.<BR>
-				<b>Important Notes: <font color='red'>Illegal</font></B><BR>
-				<HR>
-				<b>Implant Details:</b><BR>
-				<b>Function:</b> Contains a small, directly linked radio device along with a small speaker and microphone. Allows communication between two similar implants.<BR>"}
+	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Implant komunikacyjny Donk Corp(tm)<BR><b>Żywotność:</b> nieograniczona.<BR><b>Ważne uwagi: <font color='red'>Nielegalny</font></B><BR><HR><b>Szczegóły implantu:</b><BR><b>Działanie:</b> zawiera małe, bezpośrednio połączone radio z głośniczkiem i mikrofonem. Umożliwia komunikację między dwoma podobnymi implantami.<BR>"}
 	return dat
 
 /obj/item/implanter/bloodbrother

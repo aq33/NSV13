@@ -2,8 +2,8 @@
 	name = "Antenna"
 	desc = "The affected person sprouts an antenna. This is known to allow them to access common radio channels passively."
 	quality = POSITIVE
-	text_gain_indication = "<span class='notice'>You feel an antenna sprout from your forehead.</span>"
-	text_lose_indication = "<span class='notice'>Your antenna shrinks back down.</span>"
+	text_gain_indication = "<span class='notice'>Czujesz, jak z twojego czoła wyrasta antena.</span>"
+	text_lose_indication = "<span class='notice'>Twoja antena kurczy się z powrotem.</span>"
 	instability = 5
 	difficulty = 8
 	var/datum/weakref/radio_weakref

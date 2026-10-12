@@ -10,12 +10,12 @@
 		return
 	if (user.layer != ABOVE_NORMAL_TURF_LAYER)
 		user.layer = ABOVE_NORMAL_TURF_LAYER
-		user.visible_message("<span class='name'>[user] scurries to the ground!</span>", \
-						"<span class='noticealien'>You are now hiding.</span>")
+		user.visible_message("<span class='name'>[user] przypada do ziemi!</span>", \
+						"<span class='noticealien'>Teraz się ukrywasz.</span>")
 	else
 		user.layer = MOB_LAYER
-		user.visible_message("[user] slowly peeks up from the ground...", \
-					"<span class='noticealien'>You stop hiding.</span>")
+		user.visible_message("[user] powoli wychyla się znad ziemi...", \
+					"<span class='noticealien'>Przestajesz się ukrywać.</span>")
 	return 1
 
 
@@ -32,20 +32,20 @@
 	var/mob/living/carbon/alien/larva/L = user
 
 	if(L.handcuffed || L.legcuffed) // Cuffing larvas ? Eh ?
-		to_chat(user, "<span class='danger'>You cannot evolve when you are cuffed.</span>")
+		to_chat(user, "<span class='danger'>Nie możesz ewoluować w kajdankach.</span>")
 		return
 
 	if(L.movement_type & VENTCRAWLING)
-		to_chat(user, "<span class='danger'>You cannot evolve while in a vent.</span>")
+		to_chat(user, "<span class='danger'>Nie możesz ewoluować w wywietrzniku.</span>")
 		return
 
 	if(L.amount_grown >= L.max_grown)	//TODO ~Carn
-		to_chat(L, "<span class='name'>You are growing into a beautiful alien! It is time to choose a caste.</span>")
-		to_chat(L, "<span class='info'>There are three to choose from:</span>")
-		to_chat(L, "<span class='name'>Hunters</span> <span class='info'>are the most agile caste, tasked with hunting for hosts. They are faster than a human and can even pounce, but are not much tougher than a drone.</span>")
-		to_chat(L, "<span class='name'>Sentinels</span> <span class='info'>are tasked with protecting the hive. With their ranged spit, invisibility, and high health, they make formidable guardians and acceptable secondhand hunters.</span>")
-		to_chat(L, "<span class='name'>Drones</span> <span class='info'>are the weakest and slowest of the castes, but can grow into a praetorian and then queen if no queen exists, and are vital to maintaining a hive with their resin secretion abilities.</span>")
-		var/alien_caste = alert(L, "Please choose which alien caste you shall belong to.",,"Hunter","Sentinel","Drone")
+		to_chat(L, "<span class='name'>Wyrastasz na pięknego obcego! Czas wybrać kastę.</span>")
+		to_chat(L, "<span class='info'>Do wyboru są trzy:</span>")
+		to_chat(L, "<span class='name'>Łowcy</span> <span class='info'>to najzwinniejsza kasta, która poluje na nosicieli. Są szybsi od człowieka i potrafią rzucać się na ofiary, ale nie są dużo wytrzymalsi od trutni.</span>")
+		to_chat(L, "<span class='name'>Strażnicy</span> <span class='info'>chronią ul. Dzięki pluciu na odległość, niewidzialności i dużej wytrzymałości są groźnymi obrońcami i niezłymi łowcami pomocniczymi.</span>")
+		to_chat(L, "<span class='name'>Trutnie</span> <span class='info'>to najsłabsza i najwolniejsza kasta, ale mogą wyrosnąć na pretorianina, a potem królową, jeśli królowej nie ma, i są niezbędne do utrzymania ula dzięki wydzielaniu żywicy.</span>")
+		var/alien_caste = alert(L, "Wybierz, do której kasty obcych chcesz należeć.",,"Hunter","Sentinel","Drone")
 
 		if(user.incapacitated()) //something happened to us while we were choosing.
 			return
@@ -62,5 +62,5 @@
 		L.alien_evolve(new_xeno)
 		return 0
 	else
-		to_chat(user, "<span class='danger'>You are not fully grown.</span>")
+		to_chat(user, "<span class='danger'>Nie jesteś w pełni dojrzały.</span>")
 		return 0

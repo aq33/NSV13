@@ -5,7 +5,7 @@
 ***/
 /obj/item/circuit_component/indexer
 	display_name = "Indexer Component"
-	display_desc = "A component base used to access specified indexes of a list; it doesn't work by itself."
+	display_desc = "Baza komponentu do odczytu wskazanych indeksów listy; sama w sobie nie działa."
 
 	/// The input port
 	var/datum/port/input/list_port

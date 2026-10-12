@@ -182,7 +182,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	return ..()
 
 /obj/item/stack/sheet/iron/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] begins whacking [user.p_them()]self over the head with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaczyna walić się [src] po głowie! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return BRUTELOSS
 
 /*
@@ -612,7 +612,7 @@ GLOBAL_LIST_INIT(cardboard_recipes, list ( \
 		var/atom/droploc = drop_location()
 		if(use(1))
 			playsound(I, 'sound/items/bikehorn.ogg', 50, 1, -1)
-			to_chat(user, "<span class='notice'>You stamp the cardboard! It's a clown box! Honk!</span>")
+			to_chat(user, "<span class='notice'>Stemplujesz karton! To pudło klauna! Honk!</span>")
 			if (amount >= 0)
 				new/obj/item/storage/box/clown(droploc) //bugfix
 	else
@@ -650,12 +650,12 @@ GLOBAL_LIST_INIT(runed_metal_recipes, list ( \
 
 /obj/item/stack/sheet/runed_metal/attack_self(mob/living/user)
 	if(!iscultist(user))
-		to_chat(user, "<span class='warning'>Only one with forbidden knowledge could hope to work this metal...</span>")
+		to_chat(user, "<span class='warning'>Tylko ktoś z zakazaną wiedzą mógłby mieć nadzieję na obróbkę tego metalu...</span>")
 		return
 	var/turf/T = get_turf(user) //we may have moved. adjust as needed...
 	var/area/A = get_area(user)
 	if((!is_station_level(T.z) && !is_mining_level(T.z)) || (A && !(A.area_flags & BLOBS_ALLOWED)))
-		to_chat(user, "<span class='warning'>The veil is not weak enough here.</span>")
+		to_chat(user, "<span class='warning'>Zasłona nie jest tu wystarczająco słaba.</span>")
 		return FALSE
 	return ..()
 
@@ -725,7 +725,7 @@ GLOBAL_LIST_INIT(brass_recipes, list ( \
 
 /obj/item/stack/tile/brass/attack_self(mob/living/user)
 	if(!is_servant_of_ratvar(user))
-		to_chat(user, "<span class='danger'>[src] seems far too brittle to build with.</span>") //haha that's because it's actually replicant alloy you DUMMY << WOAH TOOO FAR!
+		to_chat(user, "<span class='danger'>[src] wydaje się zbyt kruchy, by z niego budować.</span>") //haha that's because it's actually replicant alloy you DUMMY << WOAH TOOO FAR!
 	else
 		return ..()
 
@@ -790,7 +790,7 @@ GLOBAL_LIST_INIT(bronze_recipes, list ( \
 
 /obj/item/stack/tile/bronze/attack_self(mob/living/user)
 	if(is_servant_of_ratvar(user))
-		to_chat(user, "<span class='danger'>Wha... what is this cheap imitation crap? This isn't brass at all!</span>")
+		to_chat(user, "<span class='danger'>Co... co to za tania podróbka? To wcale nie jest mosiądz!</span>")
 	else
 		return ..()
 

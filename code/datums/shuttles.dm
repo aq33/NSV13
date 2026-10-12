@@ -241,8 +241,8 @@
 /datum/map_template/shuttle/emergency/construction
 	suffix = "construction"
 	name = "Build your own shuttle kit"
-	description = "For the enterprising shuttle engineer! The chassis will dock upon purchase, but launch will have to be authorized as usual via shuttle call. Comes stocked with construction materials."
-	admin_notes = "No brig, no medical facilities, no shuttle console."
+	description = "Dla przedsiębiorczego inżyniera promów! Kadłub zadokuje zaraz po zakupie, ale start trzeba będzie jak zwykle zatwierdzić przez wezwanie promu. Zaopatrzony w materiały budowlane."
+	admin_notes = "Bez aresztu, bez zaplecza medycznego, bez konsoli promu."
 	credit_cost = -2500
 
 /datum/map_template/shuttle/emergency/airless/prerequisites_met()
@@ -259,59 +259,58 @@
 /datum/map_template/shuttle/emergency/asteroid
 	suffix = "asteroid"
 	name = "Asteroid Station Emergency Shuttle"
-	description = "A respectable mid-sized shuttle that first saw service shuttling Nanotrasen crew to and from their asteroid belt embedded facilities."
+	description = "Szanowany prom średniej wielkości, który po raz pierwszy służył do przewożenia załogi Nanotrasen do i z placówek w pasie asteroid."
 	credit_cost = 3000
 
 /datum/map_template/shuttle/emergency/bar
 	suffix = "bar"
 	name = "The Emergency Escape Bar"
-	description = "Features include sentient bar staff (a Bardrone and a Barmaid), bathroom, a quality lounge for the heads, and a large gathering table."
-	admin_notes = "Bardrone and Barmaid are GODMODE, will be automatically sentienced by the fun balloon at 60 seconds before arrival. \
-	Has medical facilities."
+	description = "Na wyposażeniu: świadoma obsługa baru (Bardron i Barmanka), łazienka, wysokiej klasy salonik dla szefów oraz duży stół do spotkań."
+	admin_notes = "Bardron i Barmanka mają GODMODE i zostaną automatycznie ożywieni przez balon zabawy 60 sekund przed przylotem. Ma zaplecze medyczne."
 	credit_cost = 5000
 
 /datum/map_template/shuttle/emergency/pod
 	suffix = "pod"
 	name = "Emergency Pods"
-	description = "We did not expect an evacuation this quickly. All we have available is two escape pods."
-	admin_notes = "For player punishment."
+	description = "Nie spodziewaliśmy się tak szybkiej ewakuacji. Mamy do dyspozycji tylko dwie kapsuły ratunkowe."
+	admin_notes = "Do karania graczy."
 	can_be_bought = FALSE
 
 /datum/map_template/shuttle/emergency/russiafightpit
 	suffix = "russiafightpit"
 	name = "Mother Russia Bleeds"
-	description = "Dis is a high-quality shuttle, da. Many seats, lots of space, all equipment! Even includes entertainment! Such as lots to drink, and a fighting arena for drunk crew to have fun! If arena not fun enough, simply press button of releasing bears. Do not worry, bears trained not to break out of fighting pit, so totally safe so long as nobody stupid or drunk enough to leave door open. Try not to let asimov babycons ruin fun!"
-	admin_notes = "Includes a small variety of weapons. And bears. Only captain-access can release the bears. Bears won't smash the windows themselves, but they can escape if someone lets them."
+	description = "To jest wysokiej jakości prom, da. Dużo miejsc, dużo przestrzeni, cały sprzęt! Jest nawet rozrywka! Na przykład dużo picia i arena walk, żeby pijana załoga mogła się zabawić! Jak arena za mało zabawna, wystarczy nacisnąć przycisk wypuszczania niedźwiedzi. Nie martw się, niedźwiedzie wytresowane, żeby nie uciekać z areny, więc zupełnie bezpiecznie, dopóki nikt nie jest tak głupi albo pijany, żeby zostawić otwarte drzwi. Postaraj się, żeby asimovowe borgi nie zepsuły zabawy!"
+	admin_notes = "Zawiera niewielki wybór broni. I niedźwiedzie. Tylko dostęp kapitański pozwala wypuścić niedźwiedzie. Niedźwiedzie same nie rozbiją okien, ale mogą uciec, jeśli ktoś je wypuści."
 	credit_cost = 5000 // While the shuttle is rusted and poorly maintained, trained bears are costly.
 
 /datum/map_template/shuttle/emergency/meteor
 	suffix = "meteor"
 	name = "Asteroid With Engines Strapped To It"
-	description = "A hollowed out asteroid with engines strapped to it, the hollowing procedure makes it very difficult to hijack but is very expensive. Due to its size and difficulty in steering it, this shuttle may damage the docking area."
-	admin_notes = "This shuttle will likely crush escape, killing anyone there."
+	description = "Wydrążona asteroida z przypiętymi silnikami; procedura drążenia bardzo utrudnia porwanie, ale jest bardzo droga. Ze względu na rozmiar i trudne sterowanie ten prom może uszkodzić strefę dokowania."
+	admin_notes = "Ten prom najpewniej zmiażdży strefę ewakuacji, zabijając wszystkich, którzy tam są."
 	credit_cost = 15000
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 2)
 
 /datum/map_template/shuttle/emergency/luxury
 	suffix = "luxury"
 	name = "Luxury Shuttle"
-	description = "A luxurious golden shuttle complete with an indoor swimming pool. Each crewmember wishing to board must bring 500 credits, payable in cash and mineral coin."
-	extra_desc = "This shuttle costs 500 credits to board."
-	admin_notes = "Due to the limited space for non paying crew, this shuttle may cause a riot."
+	description = "Luksusowy złoty prom z krytym basenem. Każdy członek załogi, który chce wejść na pokład, musi przynieść 500 kredytów, płatnych gotówką i monetami z minerałów."
+	extra_desc = "Wejście na pokład tego promu kosztuje 500 kredytów."
+	admin_notes = "Z powodu ograniczonego miejsca dla niepłacącej załogi ten prom może wywołać zamieszki."
 	credit_cost = 10000
 
 /datum/map_template/shuttle/emergency/discoinferno
 	suffix = "discoinferno"
 	name = "Disco Inferno"
-	description = "The glorious results of centuries of plasma research done by Nanotrasen employees. This is the reason why you are here. Get on and dance like you're on fire, burn baby burn!"
-	admin_notes = "Flaming hot. The main area has a dance machine as well as plasma floor tiles that will be ignited by players every single time."
+	description = "Wspaniały rezultat wieków badań nad plazmą prowadzonych przez pracowników Nanotrasen. To dlatego tu jesteś. Wsiadaj i tańcz, jakbyś płonął, burn baby burn!"
+	admin_notes = "Rozgrzany do czerwoności. W głównej części jest maszyna do tańca oraz plazmowe płytki podłogowe, które gracze za każdym razem podpalą."
 	credit_cost = 10000
 
 /datum/map_template/shuttle/emergency/arena
 	suffix = "arena"
 	name = "The Arena"
-	description = "The crew must pass through an otherworldy arena to board this shuttle. Expect massive casualties. The source of the Bloody Signal must be tracked down and eliminated to unlock this shuttle."
-	admin_notes = "RIP AND TEAR."
+	description = "Aby wejść na pokład tego promu, załoga musi przejść przez nieziemską arenę. Należy spodziewać się ogromnych strat. Aby odblokować ten prom, trzeba wytropić i zlikwidować źródło Krwawego Sygnału."
+	admin_notes = "ROZERWIJ I ROZSZARP."
 	credit_cost = 10000
 	/// Whether the arena z-level has been created
 	var/arena_loaded = FALSE
@@ -335,64 +334,57 @@
 /datum/map_template/shuttle/emergency/birdboat
 	suffix = "birdboat"
 	name = "Birdboat Station Emergency Shuttle"
-	description = "Though a little on the small side, this shuttle is feature complete, which is more than can be said for the pattern of station it was commissioned for."
+	description = "Choć trochę mały, ten prom ma wszystko, czego trzeba, czego nie da się powiedzieć o typie stacji, dla którego go zamówiono."
 	credit_cost = 1000
 
 /datum/map_template/shuttle/emergency/shelter
 	suffix = "shelter"
 	name = "BSP Collapsable Emergency Shuttle"
-	description = "A new product by a Nanotrasen subsidary, designed to be quick to construct and employ, with the amenities of a small emergency shuttle, including sleepers. Luckily, the shuttle is indeed deployed faster. Un-luckily, that time is supplemented by construction time, so it won't make the transit any faster."
+	description = "Nowy produkt spółki zależnej Nanotrasen, zaprojektowany z myślą o szybkiej budowie i użyciu, z udogodnieniami małego promu ewakuacyjnego, w tym kapsułami medycznymi. Na szczęście prom rzeczywiście szybciej się rozkłada. Na nieszczęście dochodzi do tego czas budowy, więc przelot wcale nie będzie szybszy."
 	credit_cost = 2500
 
 /datum/map_template/shuttle/emergency/box
 	suffix = "box"
 	name = "Box Station Emergency Shuttle"
 	credit_cost = 2000
-	description = "The gold standard in emergency exfiltration, this tried and true design is equipped with everything the crew needs for a safe flight home."
+	description = "Złoty standard ewakuacji awaryjnej; ta sprawdzona konstrukcja ma wszystko, czego załoga potrzebuje do bezpiecznego lotu do domu."
 
 /datum/map_template/shuttle/emergency/clown
 	suffix = "clown"
 	name = "Snappop(tm)!"
-	description = "Hey kids and grownups! \
-	Are you bored of DULL and TEDIOUS shuttle journeys after you're evacuating for probably BORING reasons. Well then order the Snappop(tm) today! \
-	We've got fun activities for everyone, an all access cockpit, and no boring security brig! Boo! Play dress up with your friends! \
-	Collect all the bedsheets before your neighbour does! Check if the AI is watching you with our patent pending \"Peeping Tom AI Multitool Detector\" or PEEEEEETUR for short. \
-	Have a fun ride!"
-	admin_notes = "Brig is replaced by anchored greentext book surrounded by lavaland chasms, stationside door has been removed to prevent accidental dropping. No brig."
+	description = "Hej, dzieciaki i dorośli! Nudzą was NUDNE i MĘCZĄCE podróże promem po ewakuacji z pewnie NUDNYCH powodów? To zamówcie Snappop(tm) już dziś! Mamy zabawy dla każdego, kokpit z pełnym dostępem i żadnego nudnego aresztu! Buu! Przebierajcie się z przyjaciółmi! Zbierzcie wszystkie prześcieradła, zanim zrobi to sąsiad! Sprawdźcie, czy SI was obserwuje, z naszym opatentowanym (w toku) „Wykrywaczem Podglądającej SI Multitool”, w skrócie PEEEEEETUR. Miłej jazdy!"
+	admin_notes = "Areszt zastąpiono przytwierdzoną księgą greentextu otoczoną przepaściami z Lavalandu; drzwi od strony stacji usunięto, by nikt przypadkiem nie spadł. Brak aresztu."
 	credit_cost = 8000
 
 /datum/map_template/shuttle/emergency/cramped
 	suffix = "cramped"
 	name = "Secure Transport Vessel 5 (STV5)"
-	description = "Well, looks like CentCom only had this ship in the area, they probably weren't expecting you to need evac for a while. \
-	Probably best if you don't rifle around in whatever equipment they were transporting. I hope you're friendly with your coworkers, because there is very little space in this thing.\n\
-	\n\
-	Contains contraband armory guns, maintenance loot, and abandoned crates!"
-	admin_notes = "Due to origin as a solo piloted secure vessel, has an active GPS onboard labeled STV5. Has roughly as much space as Hi Daniel, except with explosive crates."
+	description = "Wygląda na to, że Centrala miała w okolicy tylko ten statek; pewnie nie spodziewali się, że tak szybko będziecie potrzebować ewakuacji. Lepiej nie grzebcie w sprzęcie, który przewozili. Mam nadzieję, że lubicie współpracowników, bo miejsca jest tu bardzo mało.\n\nZawiera kontrabandową broń ze zbrojowni, łupy z tuneli technicznych i porzucone skrzynie!"
+	admin_notes = "Jako że był to zabezpieczony statek dla jednego pilota, ma na pokładzie aktywny GPS oznaczony STV5. Ma mniej więcej tyle miejsca co Hi Daniel, tylko ze skrzyniami wybuchowymi."
 
 /datum/map_template/shuttle/emergency/meta
 	suffix = "meta"
 	name = "Meta Station Emergency Shuttle"
 	credit_cost = 4000
-	description = "A fairly standard shuttle, though larger and slightly better equipped than the Box Station variant."
+	description = "Dość standardowy prom, choć większy i nieco lepiej wyposażony niż wariant z Box Station."
 
 /datum/map_template/shuttle/emergency/kilo
 	suffix = "kilo"
 	name = "Kilo Station Emergency Shuttle"
 	credit_cost = 5000
-	description = "A fully functional shuttle including a complete infirmary, storage facilties and regular amenities."
+	description = "W pełni funkcjonalny prom z kompletnym ambulatorium, magazynami i zwykłymi udogodnieniami."
 
 /datum/map_template/shuttle/emergency/corg
 	suffix = "corg"
 	name = "Corg Station Emergency Shuttle"
 	credit_cost = 4000
-	description = "A smaller shuttle with area for cargo, medical and security personnel."
+	description = "Mniejszy prom z miejscem dla personelu zaopatrzenia, medycznego i ochrony."
 
 /datum/map_template/shuttle/emergency/fland
 	suffix = "fland"
 	name = "Flandstation Wide shuttle"
-	description = "It's a fat shuttle for a rather unusual station... huh..."
-	admin_notes = "It's big to spawn, it may or may not collide with the surrounding stuff on other maps that don't have a massive emergency docking area."
+	description = "To gruby prom dla dość nietypowej stacji... hmm..."
+	admin_notes = "Jest duży, więc może zahaczyć o otoczenie na innych mapach, które nie mają ogromnej strefy dokowania awaryjnego."
 	credit_cost = 8000
 
 /datum/map_template/shuttle/emergency/donut //NSV13 - we were using that shuttle
@@ -404,22 +396,21 @@
 	suffix = "mini"
 	name = "Ministation emergency shuttle"
 	credit_cost = 1000
-	description = "Despite its namesake, this shuttle is actually only slightly smaller than standard, and still complete with a brig and medbay."
+	description = "Mimo nazwy ten prom jest tylko nieco mniejszy od standardowego i wciąż ma areszt oraz ambulatorium."
 
 /datum/map_template/shuttle/emergency/scrapheap
 	suffix = "scrapheap"
 	name = "Standby Evacuation Vessel \"Scrapheap Challenge\""
 	credit_cost = -1000
-	description = "Due to a lack of functional emergency shuttles, we bought this second hand from a scrapyard and pressed it into service. Please do not lean too heavily on the exterior windows, they are fragile."
-	admin_notes = "An abomination with no functional medbay, sections missing, and some very fragile windows. Surprisingly airtight."
+	description = "Z powodu braku sprawnych promów ewakuacyjnych kupiliśmy ten z drugiej ręki na złomowisku i wcieliliśmy go do służby. Prosimy nie opierać się zbyt mocno o zewnętrzne okna, są kruche."
+	admin_notes = "Pokraka bez działającego ambulatorium, z brakującymi sekcjami i bardzo kruchymi oknami. Zaskakująco szczelna."
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 2)
 
 /datum/map_template/shuttle/emergency/narnar
 	suffix = "narnar"
 	name = "Shuttle 667"
-	description = "Looks like this shuttle may have wandered into the darkness between the stars on route to the station. Let's not think too hard about where all the bodies came from."
-	admin_notes = "Contains real cult ruins, mob eyeballs, and inactive constructs. Cult mobs will automatically be sentienced by fun balloon. \
-	Cloning pods in 'medbay' area are showcases and nonfunctional."
+	description = "Wygląda na to, że ten prom w drodze na stację zabłądził w ciemność między gwiazdami. Lepiej nie zastanawiać się zbyt długo, skąd się wzięły te wszystkie ciała."
+	admin_notes = "Zawiera prawdziwe ruiny kultu, gałki oczne i nieaktywne konstrukty. Moby kultu zostaną automatycznie ożywione przez balon zabawy. Kapsuły klonujące w „ambulatorium” są atrapami i nie działają."
 
 /datum/map_template/shuttle/emergency/narnar/prerequisites_met()
 	if(SHUTTLE_UNLOCK_NARNAR in SSshuttle.shuttle_purchase_requirements_met)
@@ -429,93 +420,78 @@
 /datum/map_template/shuttle/emergency/pubby
 	suffix = "pubby"
 	name = "Pubby Station Emergency Shuttle"
-	description = "A train but in space! Complete with a first, second class, brig and storage area."
-	admin_notes = "Choo choo motherfucker!"
+	description = "Pociąg, tylko w kosmosie! Z pierwszą i drugą klasą, aresztem i magazynem."
+	admin_notes = "Ciuch ciuch, skurczybyku!"
 	credit_cost = 1000
 
 /datum/map_template/shuttle/emergency/cere
 	suffix = "cere"
 	name = "Cere Station Emergency Shuttle"
-	description = "The large, beefed-up version of the box-standard shuttle. Includes an expanded brig, fully stocked medbay, enhanced cargo storage with mech chargers, \
-	an engine room stocked with various supplies, and a crew capacity of 80+ to top it all off. Live large, live Cere."
-	admin_notes = "Seriously big, even larger than the Delta shuttle."
+	description = "Duża, wzmocniona wersja standardowego promu z Box. Zawiera powiększony areszt, w pełni zaopatrzone ambulatorium, rozbudowany magazyn zaopatrzenia z ładowarkami mechów, maszynownię z różnymi zapasami, a na dokładkę mieści ponad 80 osób załogi. Żyj z rozmachem, żyj jak na Cere."
+	admin_notes = "Naprawdę wielki, nawet większy od promu Delta."
 	credit_cost = 10000
 
 /datum/map_template/shuttle/emergency/supermatter
 	suffix = "supermatter"
 	name = "Hyperfractal Gigashuttle"
-	description = "\"I dunno, this seems kinda needlessly complicated.\"\n\
-	\"This shuttle has very a very high safety record, according to CentCom Officer Cadet Yins.\"\n\
-	\"Are you sure?\"\n\
-	\"Yes, it has a safety record of N-A-N, which is apparently larger than 100%.\""
-	admin_notes = "Supermatter that spawns on shuttle is special anchored 'hugbox' supermatter that cannot take damage and does not take in or emit gas. \
-	Outside of admin intervention, it cannot explode. \
-	It does, however, still dust anything on contact, emits high levels of radiation, and induce hallucinations in anyone looking at it without protective goggles. \
-	Emitters spawn powered on, expect admin notices, they are harmless."
+	description = "„Nie wiem, to wydaje się niepotrzebnie skomplikowane.”\n„Według kadeta Centrali Yinsa ten prom ma bardzo wysoki wskaźnik bezpieczeństwa.”\n„Na pewno?”\n„Tak, ma wskaźnik bezpieczeństwa N-A-N, a to podobno więcej niż 100%.”"
+	admin_notes = "Supermateria pojawiająca się na promie to specjalna, przytwierdzona supermateria „hugbox”, która nie otrzymuje obrażeń i nie pochłania ani nie emituje gazu. Bez ingerencji admina nie może wybuchnąć. Nadal jednak obraca w pył wszystko, czego dotknie, emituje wysokie promieniowanie i wywołuje halucynacje u każdego, kto patrzy na nią bez gogli ochronnych. Emitery pojawiają się włączone; spodziewaj się powiadomień dla adminów, są nieszkodliwe."
 	credit_cost = 100000
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 2)
 
 /datum/map_template/shuttle/emergency/imfedupwiththisworld
 	suffix = "imfedupwiththisworld"
 	name = "Oh, Hi Daniel"
-	description = "How was space work today? Oh, pretty good. We got a new space station and the company will make a lot of money. What space station? I cannot tell you; it's space confidential. \
-	Aw, come space on. Why not? No, I can't. Anyway, how is your space roleplay life?"
-	admin_notes = "Tiny, with a single airlock and wooden walls. What could go wrong?"
+	description = "Jak tam dziś kosmiczna praca? A, całkiem nieźle. Dostaliśmy nową stację kosmiczną i firma zarobi masę pieniędzy. Jaką stację kosmiczną? Nie mogę ci powiedzieć, to kosmicznie poufne. Ej, no kosmicznie weź. Czemu nie? Nie, nie mogę. Tak w ogóle, jak twoje kosmiczne życie roleplayowe?"
+	admin_notes = "Malutki, z jedną śluzą i drewnianymi ścianami. Co mogłoby pójść nie tak?"
 	credit_cost = -5000
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 2)
 
 /datum/map_template/shuttle/emergency/goon
 	suffix = "goon"
 	name = "NES Port"
-	description = "The Nanotrasen Emergency Shuttle Port(NES Port for short) is a shuttle used at other less known Nanotrasen facilities and has a more open inside for larger crowds, but fewer onboard shuttle facilities."
+	description = "Port Promu Ewakuacyjnego Nanotrasen (w skrócie NES Port) to prom używany w innych, mniej znanych placówkach Nanotrasen; ma bardziej otwarte wnętrze dla większych tłumów, ale mniej udogodnień na pokładzie."
 	credit_cost = 500
 
 /datum/map_template/shuttle/emergency/wabbajack
 	suffix = "wabbajack"
 	name = "NT Lepton Violet"
-	description = "The research team based on this vessel went missing one day, and no amount of investigation could discover what happened to them. \
-	The only occupants were a number of dead rodents, who appeared to have clawed each other to death. \
-	Needless to say, no engineering team wanted to go near the thing, and it's only being used as an Emergency Escape Shuttle because there is literally nothing else available."
-	admin_notes = "If the crew can solve the puzzle, they will wake the wabbajack statue. It will likely not end well. There's a reason it's boarded up. Maybe they should have just left it alone."
+	description = "Pewnego dnia zespół badawczy stacjonujący na tym statku zaginął i żadne śledztwo nie zdołało ustalić, co się z nim stało. Jedynymi pasażerami były martwe gryzonie, które najwyraźniej zadrapały się nawzajem na śmierć. Nie trzeba dodawać, że żaden zespół inżynierów nie chciał się do tego zbliżać, a używa się go jako promu ewakuacyjnego tylko dlatego, że dosłownie nic innego nie ma."
+	admin_notes = "Jeśli załoga rozwiąże zagadkę, obudzi posąg wabbajacka. Pewnie nie skończy się to dobrze. Nie bez powodu jest zabity deskami. Może lepiej było go zostawić w spokoju."
 	credit_cost = 15000
 
 /datum/map_template/shuttle/emergency/omega
 	suffix = "omega"
 	name = "Omegastation Emergency Shuttle"
-	description = "On the smaller size with a modern design, this shuttle is for the crew who like the cosier things, while still being able to stretch their legs."
+	description = "Raczej niewielki, o nowoczesnym wyglądzie; ten prom jest dla załogi, która lubi przytulne wnętrza, ale wciąż chce mieć gdzie rozprostować nogi."
 	credit_cost = 1000
 
 /datum/map_template/shuttle/ferry/base
 	suffix = "base"
 	name = "transport ferry"
-	description = "Standard issue Box/Metastation CentCom ferry."
+	description = "Standardowy prom Centrali dla stacji Box/Meta."
 
 /datum/map_template/shuttle/ferry/meat
 	suffix = "meat"
 	name = "\"meat\" ferry"
-	description = "Ahoy! We got all kinds o' meat aft here. Meat from plant people, people who be dark, not in a racist way, just they're dark black. \
-	Oh and lizard meat too,mighty popular that is. Definitely 100% fresh, just ask this guy here. *person on meatspike moans* See? \
-	Definitely high quality meat, nothin' wrong with it, nothin' added, definitely no zombifyin' reagents!"
-	admin_notes = "Meat currently contains no zombifying reagents, lizard on meatspike must be spawned in."
+	description = "Ahoj! Mamy tu na rufie wszelkie mięsiwo. Mięso z ludzi-roślin, z ludzi, co są ciemni, nie w rasistowskim sensie, po prostu są czarni jak smoła. A, i mięso jaszczurów też, cholernie popularne. Na pewno w 100% świeże, spytaj tego gościa. *osoba na haku na mięso jęczy* Widzisz? Na pewno wysokiej jakości mięso, nic mu nie brakuje, nic nie dodane, na pewno żadnych zombifikujących odczynników!"
+	admin_notes = "Mięso obecnie nie zawiera zombifikujących odczynników, jaszczura na haku trzeba zespawnować."
 
 /datum/map_template/shuttle/ferry/lighthouse
 	suffix = "lighthouse"
 	name = "The Lighthouse(?)"
-	description = "*static*... part of a much larger vessel, possibly military in origin. \
-	The weapon markings aren't anything we've seen ...static... by almost never the same person twice, possible use of unknown storage ...static... \
-	seeing ERT officers onboard, but no missions are on file for ...static...static...annoying jingle... only at The LIGHTHOUSE! \
-	Fulfilling needs you didn't even know you had. We've got EVERYTHING, and something else!"
-	admin_notes = "Currently larger than ferry docking port on Box, will not hit anything, but must be force docked. Trader and ERT bodyguards are not included."
+	description = "*szum*... część znacznie większego statku, możliwe, że wojskowego. Oznaczenia broni nie przypominają niczego, co widzieliśmy ...szum... prawie nigdy przez tę samą osobę dwa razy, możliwe użycie nieznanego magazynu ...szum... widząc na pokładzie oficerów ERT, ale w aktach nie ma misji dla ...szum...szum...irytujący dżingiel... tylko w LIGHTHOUSE! Zaspokajamy potrzeby, o których nawet nie wiedziałeś. Mamy WSZYSTKO, i jeszcze coś!"
+	admin_notes = "Obecnie większy niż port dokowania promu na Box; w nic nie uderzy, ale trzeba go dokować siłą. Handlarz i ochroniarze ERT nie są wliczeni."
 
 /datum/map_template/shuttle/ferry/fancy
 	suffix = "fancy"
 	name = "fancy transport ferry"
-	description = "At some point, someone upgraded the ferry to have fancier flooring... and fewer seats."
+	description = "W pewnym momencie ktoś ulepszył prom, dając mu bardziej wymyślną podłogę... i mniej siedzeń."
 
 /datum/map_template/shuttle/ferry/kilo
 	suffix = "kilo"
 	name = "kilo transport ferry"
-	description = "Standard issue CentCom Ferry for Kilo pattern stations. Includes additional equipment and rechargers."
+	description = "Standardowy prom Centrali dla stacji typu Kilo. Zawiera dodatkowy sprzęt i ładowarki."
 
 /datum/map_template/shuttle/whiteship/box
 	suffix = "box"
@@ -560,25 +536,22 @@
 /datum/map_template/shuttle/emergency/delta
 	suffix = "delta"
 	name = "Delta Station Emergency Shuttle"
-	description = "A large shuttle for a large station, this shuttle can comfortably fit all your overpopulation and crowding needs. Complete with all facilities plus additional equipment."
-	admin_notes = "Go big or go home."
+	description = "Duży prom dla dużej stacji; zmieści wygodnie całe twoje przeludnienie i tłok. Ze wszystkimi udogodnieniami i dodatkowym sprzętem."
+	admin_notes = "Na bogato albo wcale."
 	credit_cost = 7500
 
 /datum/map_template/shuttle/emergency/raven
 	suffix = "raven"
 	name = "CentCom Raven Cruiser"
-	description = "The CentCom Raven Cruiser is a former high-risk salvage vessel, now repurposed into an emergency escape shuttle. \
-	Once first to the scene to pick through warzones for valuable remains, it now serves as an excellent escape option for stations under heavy fire from outside forces. \
-	This escape shuttle boasts shields and numerous anti-personnel turrets guarding its perimeter to fend off meteors and enemy boarding attempts."
-	admin_notes = "Comes with turrets that will target anything without the neutral faction (nuke ops, xenos etc, but not pets)."
+	description = "Krążownik Raven Centrali to dawny statek ratowniczy wysokiego ryzyka, przerobiony na prom ewakuacyjny. Kiedyś pierwszy na miejscu, by przeczesywać strefy działań wojennych w poszukiwaniu cennych szczątków, teraz świetnie sprawdza się przy ewakuacji stacji pod ciężkim ostrzałem sił zewnętrznych. Ten prom ma osłony i liczne wieżyczki przeciwpiechotne strzegące jego obwodu, by odpierać meteory i próby abordażu."
+	admin_notes = "Ma wieżyczki, które celują we wszystko spoza neutralnej frakcji (nukeopsi, ksenomorfy itd., ale nie zwierzaki)."
 	credit_cost = 30000
 
 /datum/map_template/shuttle/emergency/zeta
 	suffix = "zeta"
 	name = "Tr%nPo2r& Z3TA"
-	description = "A glitch appears on your monitor, flickering in and out of the options laid before you. \
-	It seems strange and alien, you may need a special technology to access the signal.."
-	admin_notes = "Has an on-board experimental cloner that creates copies of its user, alien surgery tools, and a void core that provides unlimited power."
+	description = "Na twoim monitorze pojawia się zakłócenie, migocząc między wyświetlonymi opcjami. Wydaje się dziwne i obce; możesz potrzebować specjalnej technologii, by odebrać ten sygnał..."
+	admin_notes = "Ma na pokładzie eksperymentalny klonownik tworzący kopie użytkownika, obce narzędzia chirurgiczne i rdzeń pustki, który zapewnia nieograniczoną moc."
 	credit_cost = 8000
 
 /datum/map_template/shuttle/emergency/zeta/prerequisites_met()
@@ -800,7 +773,7 @@
 /datum/map_template/shuttle/ferry/fland
 	suffix = "fland"
 	name = "fland transport ferry"
-	description = "Standard issue CentCom Ferry for the fland station. Includes additional equipment and a recharger."
+	description = "Standardowy prom Centrali dla stacji fland. Zawiera dodatkowy sprzęt i ładowarkę."
 
 /datum/map_template/shuttle/turbolift/semmes/aircraft //NSV13
 	port_id = "aircraft"

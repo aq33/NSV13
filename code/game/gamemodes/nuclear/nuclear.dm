@@ -12,9 +12,7 @@
 	antag_datum = /datum/antagonist/nukeop
 
 	announce_span = "danger"
-	announce_text = "Syndicate forces are approaching the station in an attempt to destroy it!\n\
-	<span class='danger'>Operatives</span>: Secure the nuclear authentication disk and use your nuke to destroy the station.\n\
-	<span class='notice'>Crew</span>: Defend the nuclear authentication disk and ensure that it leaves with you on the emergency shuttle."
+	announce_text = "Siły Syndykatu zbliżają się do stacji, próbując ją zniszczyć!\n<span class='danger'>Operatorzy</span>: zdobądźcie dysk uwierzytelniania jądrowego i użyjcie bomby atomowej, by zniszczyć stację.\n<span class='notice'>Załoga</span>: brońcie dysku uwierzytelniania jądrowego i dopilnujcie, by odleciał z wami promem ewakuacyjnym."
 
 	title_icon = "nukeops"
 

@@ -13,17 +13,17 @@
 	move_to_delay = 40
 	ranged = 1
 	ranged_cooldown_time = 120
-	friendly = "wails at"
-	speak_emote = list("bellows")
+	friendly = "zawodzi na"
+	speak_emote = list("ryczy gromko")
 	vision_range = 4
 	speed = 3
 	maxHealth = 300
 	health = 300
 	obj_damage = 100
 	melee_damage = 25
-	attacktext = "pulverizes"
+	attacktext = "miażdży na proch"
 	attack_sound = 'sound/weapons/punch1.ogg'
-	throw_message = "does nothing to the rocky hide of the"
+	throw_message = "nie przebija skalistej skóry"
 	vision_range = 5
 	aggro_vision_range = 9
 	move_force = MOVE_FORCE_VERY_STRONG
@@ -63,7 +63,7 @@
 	if(!isturf(tturf))
 		return
 	if(get_dist(src, target) <= 7)//Screen range check, so you can't get tentacle'd offscreen
-		visible_message("<span class='warning'>[src] digs its tentacles under [target]!</span>")
+		visible_message("<span class='warning'>[src] wbija macki pod [target]!</span>")
 		new /obj/effect/temp_visual/goliath_tentacle/original(tturf, src)
 		ranged_cooldown = world.time + ranged_cooldown_time
 		icon_state = icon_aggro
@@ -89,7 +89,7 @@
 	icon_living = "goliath"
 	icon_aggro = "goliath"
 	icon_dead = "goliath_dead"
-	throw_message = "does nothing to the tough hide of the"
+	throw_message = "nie przebija twardej skóry"
 	pre_attack_icon = "goliath2"
 	crusher_loot = /obj/item/crusher_trophy/goliath_tentacle
 	butcher_results = list(/obj/item/food/meat/slab/goliath = 2, /obj/item/stack/sheet/bone = 2)
@@ -115,7 +115,7 @@
 	health = 400
 	speed = 4
 	pre_attack_icon = "Goliath_preattack"
-	throw_message = "does nothing to the rocky hide of the"
+	throw_message = "nie przebija skalistej skóry"
 	loot = list(/obj/item/stack/sheet/animalhide/goliath_hide) //A throwback to the asteroid days
 	butcher_results = list(/obj/item/food/meat/slab/goliath = 2, /obj/item/stack/sheet/bone = 2)
 	guaranteed_butcher_results = list()
@@ -186,7 +186,7 @@
 	for(var/mob/living/L in loc)
 		if((!QDELETED(spawner) && spawner.faction_check_mob(L)) || L.stat == DEAD)
 			continue
-		visible_message("<span class='danger'>[src] grabs hold of [L]!</span>")
+		visible_message("<span class='danger'>[src] chwyta [L]!</span>")
 		L.Stun(100)
 		L.adjustBruteLoss(rand(10,15))
 		latched = TRUE

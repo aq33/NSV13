@@ -27,7 +27,7 @@
 
 /datum/admins/proc/check_teams()
 	if(!SSticker.HasRoundStarted())
-		alert("The game hasn't started yet!")
+		alert("Gra jeszcze się nie zaczęła!")
 		return
 
 	var/datum/browser/popup = new(usr, "teams", "Team Listing", 500, 500)
@@ -54,7 +54,7 @@
 	log_admin("[key_name(usr)] renamed [old_name] team to [name]")
 
 /datum/team/proc/admin_communicate(mob/user)
-	var/message = capped_input(user,"Message for the team ?","Team Message")
+	var/message = capped_input(user,"Wiadomość dla drużyny?","Team Message")
 	if(!message)
 		return
 	for(var/datum/mind/M in members)

@@ -20,7 +20,7 @@
 /datum/nanite_program/necrotic/active_effect()
 	host_mob.adjustBruteLoss(0.75, TRUE)
 	if(prob(1))
-		to_chat(host_mob, "<span class='warning'>You feel a mild ache from somewhere inside you.</span>")
+		to_chat(host_mob, "<span class='warning'>Czujesz łagodny ból gdzieś w środku.</span>")
 
 //Programs that don't directly interact with the body will decay into this
 /datum/nanite_program/toxic
@@ -33,7 +33,7 @@
 /datum/nanite_program/toxic/active_effect()
 	host_mob.adjustToxLoss(0.5)
 	if(prob(1))
-		to_chat(host_mob, "<span class='warning'>You feel a bit sick.</span>")
+		to_chat(host_mob, "<span class='warning'>Czujesz się trochę chory.</span>")
 
 //Generic blood-affecting programs will decay into this
 /datum/nanite_program/suffocating
@@ -46,7 +46,7 @@
 /datum/nanite_program/suffocating/active_effect()
 	host_mob.adjustOxyLoss(3, 0)
 	if(prob(1))
-		to_chat(host_mob, "<span class='warning'>You feel short of breath.</span>")
+		to_chat(host_mob, "<span class='warning'>Brakuje ci tchu.</span>")
 
 //Generic brain-affecting programs will decay into this
 /datum/nanite_program/brain_decay
@@ -97,7 +97,7 @@
 		var/can_scratch = !host_mob.incapacitated() && get_location_accessible(host_mob, picked_bodypart)
 
 		host_mob.visible_message("[can_scratch ? "<span class='warning'>[host_mob] scratches [host_mob.p_their()] [bodypart.name].</span>" : ""]",\
-		"<span class='warning'>Your [bodypart.name] itches. [can_scratch ? " You scratch it." : ""]</span>")
+		"<span class='warning'>Swędzi cię [strefa_pl(bodypart.body_zone)].[can_scratch ? " Drapiesz się." : ""]</span>")
 
 //Generic nerve-affecting programs will decay into this
 /datum/nanite_program/nerve_decay
@@ -109,11 +109,11 @@
 
 /datum/nanite_program/nerve_decay/active_effect()
 	if(prob(5))
-		to_chat(host_mob, "<span class='warning'>You feel unbalanced!</span>")
+		to_chat(host_mob, "<span class='warning'>Tracisz równowagę!</span>")
 		host_mob.confused += 10
 	else if(prob(4))
-		to_chat(host_mob, "<span class='warning'>You can't feel your hands!</span>")
+		to_chat(host_mob, "<span class='warning'>Nie czujesz rąk!</span>")
 		host_mob.drop_all_held_items()
 	else if(prob(4))
-		to_chat(host_mob, "<span class='warning'>You can't feel your legs!</span>")
+		to_chat(host_mob, "<span class='warning'>Nie czujesz nóg!</span>")
 		host_mob.Paralyze(30)

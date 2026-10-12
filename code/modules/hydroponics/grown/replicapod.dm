@@ -46,10 +46,10 @@
 				quirks = B.data["quirks"]
 				sampleDNA = B.data["blood_DNA"]
 				contains_sample = TRUE
-				visible_message("<span class='notice'>The [src] is injected with a fresh blood sample.</span>")
+				visible_message("<span class='notice'>Do [src] wstrzyknięto świeżą próbkę krwi.</span>")
 				log_cloning("[key_name(mind)]'s cloning record was added to [src] at [AREACOORD(src)].")
 			else
-				visible_message("<span class='warning'>The [src] rejects the sample!</span>")
+				visible_message("<span class='warning'>[src] odrzuca próbkę!</span>")
 
 	if(!reagents.has_reagent(/datum/reagent/blood))
 		mind = null
@@ -65,7 +65,7 @@
 /obj/item/seeds/replicapod/get_analyzer_text()
 	var/text = ..()
 	if(contains_sample)
-		text += "\n It contains a blood sample with blood DNA ([sampleDNA])." //blood DNA (UE) shows in medical records and is readable by forensics scanners
+		text += "\n Zawiera próbkę krwi z DNA ([sampleDNA])." //blood DNA (UE) shows in medical records and is readable by forensics scanners
 	return text
 
 
@@ -109,18 +109,18 @@
 	if(!make_podman)
 		// Prevent accidental harvesting. Make sure the user REALLY wants to do this if there's a chance of this coming from a living creature.
 		if(mind || ckey)
-			if(alert("The pod is currently devoid of soul. There is a possibility that a soul could claim this creature, or you could harvest it for seeds.", "Harvest Seeds?", "Harvest Seeds", "Cancel") != "Harvest Seeds")
+			if(alert("Strąk jest obecnie pozbawiony duszy. Istnieje szansa, że jakaś dusza zawładnie tym stworzeniem; możesz też zebrać z niego nasiona.", "Zebrać nasiona?", "Harvest Seeds", "Cancel") != "Harvest Seeds")
 				return result
 
 		// If this plant has already been harvested, return early.
 		// parent.update_tray() qdels this seed.
 		if(QDELETED(src))
-			to_chat(user, text = "This pod has already had its seeds harvested!", type = MESSAGE_TYPE_INFO)
+			to_chat(user, text = "Z tego strąka zebrano już nasiona!", type = MESSAGE_TYPE_INFO)
 			return result
 
 		// Make sure they can still interact with the parent hydroponics tray.
 		if(!parent.can_interact(user))
-			to_chat(user, text = "You are no longer able to harvets the seeds from [parent]!", type = MESSAGE_TYPE_INFO)
+			to_chat(user, text = "Nie możesz już zebrać nasion z [parent]!", type = MESSAGE_TYPE_INFO)
 			return result
 
 		var/seed_count = 1
@@ -140,7 +140,7 @@
 	if(realName)
 		podman.real_name = realName
 	else
-		podman.real_name = "Pod Person ([rand(1,999)])"
+		podman.real_name = "Człowiek-strąk ([rand(1,999)])"
 	mind.transfer_to(podman)
 	if(ckey)
 		podman.ckey = ckey
@@ -155,7 +155,7 @@
 	podman.hardset_dna(null,null,podman.real_name,blood_type, new /datum/species/pod,features,null)//Discard SE's and UI's, podman cloning is inaccurate, and always make them a podman
 	podman.set_cloned_appearance()
 	// On harvest
-	to_chat(podman, "<span class='notice'><b>There is a bright flash!</b><br><i>You feel like a new being.</i></span>")
+	to_chat(podman, "<span class='notice'><b>Następuje jasny błysk!</b><br><i>Czujesz się jak nowa istota.</i></span>")
 	podman.flash_act()
 	log_cloning("[key_name(mind)] cloned as a podman via [src] in [parent] at [AREACOORD(parent)].")
 

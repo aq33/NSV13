@@ -3,7 +3,7 @@
 
 /datum/emote/living/carbon/airguitar
 	key = "airguitar"
-	message = "brzdąka w powietrzu i macha głową jak szympans na safari"
+	message = "gra na niewidzialnej gitarze i macha głową jak szympans na safari"
 	restraint_check = TRUE
 	emote_type = EMOTE_VISIBLE
 
@@ -41,7 +41,7 @@
 /datum/emote/living/carbon/gnarl
 	key = "gnarl"
 	key_third_person = "gnarls"
-	message = "warczy i pokazuje zęby.."
+	message = "warczy i pokazuje zęby..."
 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey)
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
@@ -93,7 +93,7 @@
 /datum/emote/living/carbon/sign
 	key = "sign"
 	key_third_person = "signs"
-	message_param = "podpisuje numer %t"
+	message_param = "pokazuje na migi liczbę %t"
 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey, /mob/living/carbon/alien)
 	restraint_check = TRUE
 	emote_type = EMOTE_VISIBLE

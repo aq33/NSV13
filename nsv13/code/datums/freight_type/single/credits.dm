@@ -7,7 +7,7 @@
 	if ( number )
 		credits = number
 
-	item_name = "[credits] credit holochip"
+	item_name = "holożeton na [credits] kredytów"
 
 /datum/freight_type/single/object/credits/add_item_to_crate( var/obj/C )
 	var/obj/item/holochip/newitem = new item_type( C )
@@ -29,4 +29,4 @@
 	return index.get_amount( item_type, target, TRUE )
 
 /datum/freight_type/single/object/credits/get_brief_segment()
-	return "[credits] credit chip"
+	return "chip na [credits] kredytów"

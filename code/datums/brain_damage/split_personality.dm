@@ -4,9 +4,9 @@
 /datum/brain_trauma/severe/split_personality
 	name = "Split Personality"
 	desc = "Patient's brain is split into two personalities, which randomly switch control of the body."
-	scan_desc = "complete lobe separation"
-	gain_text = "<span class='warning'>You feel like your mind was split in two.</span>"
-	lose_text = "<span class='notice'>You feel alone again.</span>"
+	scan_desc = "całkowite rozdzielenie płatów"
+	gain_text = "<span class='warning'>Czujesz, jakby twój umysł podzielono na dwoje.</span>"
+	lose_text = "<span class='notice'>Znów czujesz się samotny.</span>"
 	var/current_controller = OWNER
 	var/initialized = FALSE //to prevent personalities deleting themselves while we wait for ghosts
 	var/mob/living/split_personality/stranger_backseat //there's two so they can swap without overwriting
@@ -31,7 +31,7 @@
 	if(owner.stat == DEAD || !owner.mind)
 		qdel(src)
 		return
-	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Do you want to play as [owner]'s split personality?", ROLE_SPLIT_PERSONALITY, null, 7.5 SECONDS, stranger_backseat)
+	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Chcesz zagrać jako rozszczepiona osobowość [owner]?", ROLE_SPLIT_PERSONALITY, null, 7.5 SECONDS, stranger_backseat)
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
 		stranger_backseat.key = C.key
@@ -77,8 +77,8 @@
 		free_backseat = stranger_backseat
 
 	log_game("[key_name(current_backseat)] assumed control of [key_name(owner)] due to [src]. (Original owner: [current_controller == OWNER ? owner.key : current_backseat.key])")
-	to_chat(owner, "<span class='userdanger'>You feel your control being taken away... your other personality is in charge now!</span>")
-	to_chat(current_backseat, "<span class='userdanger'>You manage to take control of your body!</span>")
+	to_chat(owner, "<span class='userdanger'>Czujesz, jak tracisz kontrolę... teraz rządzi twoja druga osobowość!</span>")
+	to_chat(current_backseat, "<span class='userdanger'>Udaje ci się przejąć kontrolę nad ciałem!</span>")
 
 	//Body to backseat
 
@@ -121,7 +121,7 @@
 
 /mob/living/split_personality
 	name = "split personality"
-	real_name = "unknown conscience"
+	real_name = "nieznane sumienie"
 	var/mob/living/carbon/body
 	var/datum/brain_trauma/severe/split_personality/trauma
 
@@ -150,11 +150,11 @@
 
 /mob/living/split_personality/Login()
 	..()
-	to_chat(src, "<span class='notice'>As a split personality, you cannot do anything but observe. However, you will eventually gain control of your body, switching places with the current personality.</span>")
-	to_chat(src, "<span class='warning'><b>Do not commit suicide or put the body in a deadly position. Behave like you care about it as much as the owner.</b></span>")
+	to_chat(src, "<span class='notice'>Jako rozszczepiona osobowość możesz tylko obserwować. Jednak w końcu przejmiesz kontrolę nad ciałem, zamieniając się miejscami z obecną osobowością.</span>")
+	to_chat(src, "<span class='warning'><b>Nie popełniaj samobójstwa ani nie stawiaj ciała w śmiertelnym położeniu. Zachowuj się tak, jakby zależało ci na nim tak samo jak właścicielowi.</b></span>")
 
 /mob/living/split_personality/say(message, bubble_type, var/list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
-	to_chat(src, "<span class='warning'>You cannot speak, your other self is controlling your body!</span>")
+	to_chat(src, "<span class='warning'>Nie możesz mówić, twoje drugie ja kontroluje ciało!</span>")
 	return FALSE
 
 /mob/living/split_personality/emote(act, m_type = null, message = null, intentional = FALSE)
@@ -165,9 +165,9 @@
 /datum/brain_trauma/severe/split_personality/brainwashing
 	name = "Split Personality"
 	desc = "Patient's brain is split into two personalities, which randomly switch control of the body."
-	scan_desc = "complete lobe separation"
+	scan_desc = "całkowite rozdzielenie płatów"
 	gain_text = ""
-	lose_text = "<span class='notice'>You are free of your brainwashing.</span>"
+	lose_text = "<span class='notice'>Jesteś wolny od prania mózgu.</span>"
 	can_gain = FALSE
 	var/codeword
 	var/objective
@@ -196,7 +196,7 @@
 
 /datum/brain_trauma/severe/split_personality/brainwashing/get_ghost()
 	set waitfor = FALSE
-	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Do you want to play as [owner]'s brainwashed mind?", ROLE_TRAITOR, null, 7.5 SECONDS, stranger_backseat, ignore_category = FALSE)
+	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Chcesz zagrać jako wyprany umysł [owner]?", ROLE_TRAITOR, null, 7.5 SECONDS, stranger_backseat, ignore_category = FALSE)
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
 		stranger_backseat.key = C.key
@@ -220,16 +220,16 @@
 
 /mob/living/split_personality/traitor
 	name = "split personality"
-	real_name = "unknown conscience"
+	real_name = "nieznane sumienie"
 	var/objective
 	var/codeword
 
 /mob/living/split_personality/traitor/Login()
 	..()
-	to_chat(src, "<span class='notice'>As a brainwashed personality, you cannot do anything yet but observe. However, you may gain control of your body if you hear the special codeword, switching places with the current personality.</span>")
-	to_chat(src, "<span class='notice'>Your activation codeword is: <b>[codeword]</b></span>")
+	to_chat(src, "<span class='notice'>Jako wyprana osobowość możesz na razie tylko obserwować. Możesz jednak przejąć kontrolę nad ciałem, gdy usłyszysz specjalne słowo-klucz, zamieniając się miejscami z obecną osobowością.</span>")
+	to_chat(src, "<span class='notice'>Twoje słowo aktywacyjne to: <b>[codeword]</b></span>")
 	if(objective)
-		to_chat(src, "<span class='notice'>Your master left you an objective: <b>[objective]</b>. Follow it at all costs when in control.</span>")
+		to_chat(src, "<span class='notice'>Twój pan zostawił ci cel: <b>[objective]</b>. Gdy masz kontrolę, wykonuj go za wszelką cenę.</span>")
 
 #undef OWNER
 #undef STRANGER

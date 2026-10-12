@@ -91,7 +91,7 @@
 	icon_state = "cannabis"
 	bite_consumption_mod = 4
 	foodtypes = VEGETABLES //i dont really know what else weed could be to be honest
-	tastes = list("cannabis" = 1)
+	tastes = list("konopie" = 1)
 	wine_power = 20
 
 /obj/item/food/grown/cannabis/rainbow

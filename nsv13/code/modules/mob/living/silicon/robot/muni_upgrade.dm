@@ -23,8 +23,8 @@
 /obj/item/borg/apparatus/munitions/examine()
 	. = ..()
 	if(stored)
-		. += "The clamps are currently holding [stored]"
-		. += "<span class='notice'<i>Alt-click</i> will drop the currently stored [stored].</span>"
+		. += "Zaciski trzymają obecnie [stored]"
+		. += "<span class='notice'<i>Alt-kliknięcie</i> upuści obecnie trzymany [stored].</span>"
 
 /obj/item/borg/apparatus/munitions/AltClick(mob/living/silicon/robot/user)
 	if(!stored)
@@ -46,7 +46,7 @@
 	if(.)
 		var/obj/item/borg/apparatus/munitions/M = locate() in R.module.modules
 		if(M)
-			to_chat(user, "<span class='warning'>This unit is already equipped with a munitions apparatus.</span>")
+			to_chat(user, "<span class='warning'>Ta jednostka ma już urządzenie amunicyjne.</span>")
 			return FALSE
 
 		M = new(R.module)

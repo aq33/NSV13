@@ -7,7 +7,7 @@
 	ventcrawler = VENTCRAWLER_ALWAYS
 	sight = SEE_MOBS
 	see_in_dark = 4
-	verb_say = "hisses"
+	verb_say = "syczy"
 	initial_language_holder = /datum/language_holder/alien
 	bubble_icon = "alien"
 	type_of_meat = /obj/item/food/meat/slab/xeno
@@ -122,8 +122,8 @@ Des: Removes all infected images from the alien.
 	return initial(pixel_y)
 
 /mob/living/carbon/alien/proc/alien_evolve(mob/living/carbon/alien/new_xeno)
-	to_chat(src, "<span class='noticealien'>You begin to evolve!</span>")
-	visible_message("<span class='alertalien'>[src] begins to twist and contort!</span>")
+	to_chat(src, "<span class='noticealien'>Zaczynasz ewoluować!</span>")
+	visible_message("<span class='alertalien'>[src] zaczyna się wykręcać i wyginać!</span>")
 	new_xeno.setDir(dir)
 	if(!alien_name_regex.Find(name))
 		new_xeno.name = name

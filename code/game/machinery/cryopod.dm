@@ -26,7 +26,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	var/list/frozen_items = list()
 
 	var/storage_type = "crewmembers"
-	var/storage_name = "Cryogenic Oversight Control"
+	var/storage_name = "Nadzór kriogeniczny"
 	var/allow_items = TRUE
 
 /obj/machinery/computer/cryopod/Initialize(mapload)
@@ -51,11 +51,11 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	dat += "<hr/><br/><b>[storage_name]</b><br/>"
 	dat += "<i>Welcome, [user.real_name].</i><br/><br/><hr/>"
-	dat += "<a href='byond://?src=[REF(src)];log=1'>View storage log</a>.<br>"
+	dat += "<a href='byond://?src=[REF(src)];log=1'>Pokaż log przechowywania</a>.<br>"
 	if(allow_items)
-		dat += "<a href='byond://?src=[REF(src)];view=1'>View objects</a>.<br>"
-		dat += "<a href='byond://?src=[REF(src)];item=1'>Recover object</a>.<br>"
-		dat += "<a href='byond://?src=[REF(src)];allitems=1'>Recover all objects</a>.<br>"
+		dat += "<a href='byond://?src=[REF(src)];view=1'>Pokaż przedmioty</a>.<br>"
+		dat += "<a href='byond://?src=[REF(src)];item=1'>Odzyskaj przedmiot</a>.<br>"
+		dat += "<a href='byond://?src=[REF(src)];allitems=1'>Odzyskaj wszystkie przedmioty</a>.<br>"
 
 	user << browse(HTML_SKELETON(dat), "window=cryopod_console")
 	onclose(user, "cryopod_console")
@@ -70,7 +70,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	if(href_list["log"])
 
-		var/dat = "<b>Recently stored [storage_type]</b><br/><hr/><br/>"
+		var/dat = "<b>Ostatnio przechowane: [storage_type]</b><br/><hr/><br/>"
 		for(var/person in frozen_crew)
 			dat += "[person]<br/>"
 		dat += "<hr/>"
@@ -80,7 +80,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	if(href_list["view"])
 		if(!allow_items) return
 
-		var/dat = "<b>Recently stored objects</b><br/><hr/><br/>"
+		var/dat = "<b>Ostatnio przechowane przedmioty</b><br/><hr/><br/>"
 		for(var/obj/item/I in frozen_items)
 			dat += "[I.name]<br/>"
 		dat += "<hr/>"
@@ -89,38 +89,38 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	else if(href_list["item"])
 		if(!allowed(user))
-			to_chat(user, "<span class='warning'>Access Denied.</span>")
+			to_chat(user, "<span class='warning'>Odmowa dostępu.</span>")
 			return
 		if(!allow_items) return
 
 		if(frozen_items.len == 0)
-			to_chat(user, "<span class='notice'>There is nothing to recover from storage.</span>")
+			to_chat(user, "<span class='notice'>W magazynie nie ma nic do odzyskania.</span>")
 			return
 
-		var/obj/item/I = input(user, "Please choose which object to retrieve.","Object recovery",null) as null|anything in frozen_items
+		var/obj/item/I = input(user, "Wybierz przedmiot do odzyskania.","Odzyskiwanie przedmiotu",null) as null|anything in frozen_items
 		if(!I)
 			return
 
 		if(!(I in frozen_items))
-			to_chat(user, "<span class='notice'>\The [I] is no longer in storage.</span>")
+			to_chat(user, "<span class='notice'>[I] nie jest już w magazynie.</span>")
 			return
 
-		visible_message("<span class='notice'>The console beeps happily as it disgorges \the [I].</span>")
+		visible_message("<span class='notice'>Konsola radośnie pika, wypluwając [I].</span>")
 
 		I.forceMove(get_turf(src))
 		frozen_items -= I
 
 	else if(href_list["allitems"])
 		if(!allowed(user))
-			to_chat(user, "<span class='warning'>Access Denied.</span>")
+			to_chat(user, "<span class='warning'>Odmowa dostępu.</span>")
 			return
 		if(!allow_items) return
 
 		if(frozen_items.len == 0)
-			to_chat(user, "<span class='notice'>There is nothing to recover from storage.</span>")
+			to_chat(user, "<span class='notice'>W magazynie nie ma nic do odzyskania.</span>")
 			return
 
-		visible_message("<span class='notice'>The console beeps happily as it disgorges the desired objects.</span>")
+		visible_message("<span class='notice'>Konsola radośnie pika, wypluwając wybrane przedmioty.</span>")
 
 		for(var/obj/item/I in frozen_items)
 			I.forceMove(get_turf(src))
@@ -144,8 +144,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	anchored = TRUE
 	state_open = TRUE
 
-	var/on_store_message = "has entered long-term storage."
-	var/on_store_name = "Cryogenic Oversight"
+	var/on_store_message = "przechodzi do długoterminowego przechowywania."
+	var/on_store_name = "Nadzór kriogeniczny"
 
 	// 5 minutes-ish safe period before being despawned.
 	var/time_till_despawn = 5 * 600 // This is reduced to 30 seconds if a player manually enters cryo
@@ -213,7 +213,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		..(user)
 		var/mob/living/mob_occupant = occupant
 		if(mob_occupant && mob_occupant.stat != DEAD)
-			to_chat(occupant, "<span class='boldnotice'>You feel cool air surround you. You go numb as your senses turn inward.</span>")
+			to_chat(occupant, "<span class='boldnotice'>Otacza cię chłodne powietrze. Drętwiejesz, a twoje zmysły zwracają się do wewnątrz.</span>")
 		if(mob_occupant.client)//if they're logged in
 			despawn_world_time = world.time + (time_till_despawn * 0.1) // This gives them 30 seconds
 		else
@@ -227,8 +227,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	name = initial(name)
 
 /obj/machinery/cryopod/container_resist(mob/living/user)
-	visible_message("<span class='notice'>[occupant] emerges from [src]!</span>",
-		"<span class='notice'>You climb out of [src]!</span>")
+	visible_message("<span class='notice'>[occupant] wychodzi z [src]!</span>",
+		"<span class='notice'>Wychodzisz z [src]!</span>")
 	open_machine()
 
 /obj/machinery/cryopod/relaymove(mob/user)
@@ -291,10 +291,10 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	if(GLOB.announcement_systems.len)
 		var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
 		if(mob_occupant.job == JOB_NAME_CAPTAIN)
-			minor_announce("[JOB_NAME_CAPTAIN] [mob_occupant.real_name] has entered cryogenic storage.")  // for when the admins do a stupid british gimmick that makes 0 sense cough
+			minor_announce("[JOB_NAME_CAPTAIN] [mob_occupant.real_name] przechodzi do przechowywania kriogenicznego.")  // for when the admins do a stupid british gimmick that makes 0 sense cough
 		else
 			announcer.announce("CRYOSTORAGE", mob_occupant.real_name, announce_rank, list())
-		visible_message("<span class='notice'>\The [src] hums and hisses as it moves [mob_occupant.real_name] into storage.</span>")
+		visible_message("<span class='notice'>[src] buczy i syczy, przenosząc [mob_occupant.real_name] do magazynu.</span>")
 
 
 	for(var/obj/item/W in mob_occupant.GetAllContents())
@@ -337,33 +337,33 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		return
 
 	if(occupant)
-		to_chat(user, "<span class='boldnotice'>The cryo pod is already occupied!</span>")
+		to_chat(user, "<span class='boldnotice'>Kapsuła kriogeniczna jest już zajęta!</span>")
 		return
 
 	if(target.stat == DEAD)
-		to_chat(user, "<span class='notice'>Dead people can not be put into cryo.</span>")
+		to_chat(user, "<span class='notice'>Nie można umieszczać zmarłych w kriokomorze.</span>")
 		return
 
 	if(target.client && user != target)
 		if(iscyborg(target))
-			to_chat(user, "<span class='danger'>You can't put [target] into [src]. They're online.</span>")
+			to_chat(user, "<span class='danger'>Nie możesz umieścić [target] w [src]. Jest online.</span>")
 		else
-			to_chat(user, "<span class='danger'>You can't put [target] into [src]. They're conscious.</span>")
+			to_chat(user, "<span class='danger'>Nie możesz umieścić [target] w [src]. Jest przytomny.</span>")
 		return
 	else if(target.client)
-		if(alert(target,"Would you like to enter cryosleep?",,"Yes","No") != "Yes")
+		if(alert(target,"Czy chcesz wejść w sen kriogeniczny?",,"Yes","No") != "Yes")
 			return
 
-	var/generic_plsnoleave_message = " Please adminhelp before leaving the round, even if there are no administrators online!"
+	var/generic_plsnoleave_message = " Przed opuszczeniem rundy napisz ahelp, nawet jeśli żaden administrator nie jest online!"
 
 	if(target == user && world.time - target.client.cryo_warned > 5 MINUTES)//if we haven't warned them in the last 5 minutes
 		var/caught = FALSE
 		var/datum/antagonist/A = target.mind.has_antag_datum(/datum/antagonist)
 		if(target.mind.assigned_role in GLOB.command_positions)
-			alert("You're a Head of Staff![generic_plsnoleave_message]")
+			alert("Jesteś szefem działu![generic_plsnoleave_message]")
 			caught = TRUE
 		if(A)
-			alert("You're a [A.name]![generic_plsnoleave_message]")
+			alert("Jesteś: [A.name]![generic_plsnoleave_message]")
 			caught = TRUE
 		if(caught)
 			target.client.cryo_warned = world.time
@@ -374,16 +374,16 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		//rerun the checks in case of shenanigans
 
 	if(target == user)
-		visible_message("[user] starts climbing into the cryo pod.")
+		visible_message("[user] zaczyna wchodzić do kapsuły kriogenicznej.")
 	else
-		visible_message("[user] starts putting [target] into the cryo pod.")
+		visible_message("[user] zaczyna wkładać [target] do kapsuły kriogenicznej.")
 
 	if(occupant)
-		to_chat(user, "<span class='boldnotice'>\The [src] is in use.</span>")
+		to_chat(user, "<span class='boldnotice'>[src] jest w użyciu.</span>")
 		return
 	close_machine(target)
 
-	to_chat(target, "<span class='boldnotice'>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</span>")
+	to_chat(target, "<span class='boldnotice'>Jeśli teraz zamienisz się w ducha, wylogujesz się lub zamkniesz klienta, twoja postać wkrótce zostanie trwale usunięta z rundy.</span>")
 	name = "[name] ([occupant.name])"
 	if((world.time - SSticker.round_start_time) < 5 MINUTES)
 		message_admins("<span class='danger'>[key_name_admin(target)], the [target.job] entered a stasis pod. (<A HREF='byond://?_src_=holder;[HrefToken()];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a></span>)")

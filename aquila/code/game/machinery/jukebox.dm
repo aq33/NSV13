@@ -5,7 +5,7 @@
 	desc = "Tradycyjny odtwarzacz muzyczny."
 	icon = 'aquila/icons/obj/jukebox.dmi'
 	icon_state = "jukebox"
-	verb_say = "states"
+	verb_say = "stwierdza"
 	density = TRUE
 	req_access = list(ACCESS_BAR)
 	interaction_flags_machine = INTERACT_MACHINE_SET_MACHINE | INTERACT_MACHINE_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON
@@ -100,12 +100,12 @@
 		if(obj_integrity < max_integrity)
 			if(!I.tool_start_check(user, amount=5))
 				return
-			to_chat(user, "<span class='notice'>You begin repairing [src].</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz naprawiać [src].</span>")
 			if(I.use_tool(src, user, 40, amount=5, volume=50))
 				obj_integrity = max_integrity
 				machine_stat &= ~BROKEN
 				update_icon()
-				to_chat(user, "<span class='notice'>You repair [src].</span>")
+				to_chat(user, "<span class='notice'>Naprawiasz [src].</span>")
 				return
 	return ..()
 

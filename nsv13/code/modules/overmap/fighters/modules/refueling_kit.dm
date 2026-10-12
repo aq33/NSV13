@@ -76,7 +76,7 @@
 		return
 	// We're out of range
 	if(overmap_dist(us, them) > refuel_range)
-		cancel_action(us, them, "<span class='warning'>Target out of range.</span>")
+		cancel_action(us, them, "<span class='warning'>Cel poza zasięgiem.</span>")
 		return
 
 	// Getting here means we should actually try refueling them
@@ -95,7 +95,7 @@
 			is_charging = FALSE
 
 	if(!is_fuelling && !is_charging)
-		cancel_action(us, them, "<span class='notice'>All operations complete. Disconnecting transfer equipment.</span>")
+		cancel_action(us, them, "<span class='notice'>Wszystkie operacje zakończone. Odłączanie sprzętu transferowego.</span>")
 		return
 
 	// See if we need to make a new beam. Comes after the refuel so we can not do this if we fail any checks.
@@ -107,9 +107,9 @@
 /obj/item/fighter_component/primary/utility/refuel/proc/transfer_fuel(obj/structure/overmap/small_craft/us, obj/structure/overmap/small_craft/them)
 	var/transfer_amount = CLAMP((them.get_max_fuel() - them.get_fuel()), 0, fuel_transfer_rate)
 	if(transfer_amount <= 0)
-		return "<span class='notice'>Target craft is fully fueled.</span>"
+		return "<span class='notice'>Jednostka docelowa jest w pełni zatankowana.</span>"
 	if(us.get_fuel() <= minimum_fuel_to_keep) // Don't give away ALL our fuel
-		return "<span class='warning'>Fuel levels below minimum safe transfer level.</span>"
+		return "<span class='warning'>Poziom paliwa poniżej minimalnego bezpiecznego poziomu transferu.</span>"
 	var/obj/item/fighter_component/fuel_tank/ourTank = us.loadout.get_slot(HARDPOINT_SLOT_FUEL)
 	var/obj/item/fighter_component/fuel_tank/theirTank = them.loadout.get_slot(HARDPOINT_SLOT_FUEL)
 	us.relay('nsv13/sound/effects/fighters/refuel.ogg')
@@ -120,14 +120,14 @@
 /obj/item/fighter_component/primary/utility/refuel/proc/jump_battery(obj/structure/overmap/small_craft/us, obj/structure/overmap/small_craft/them)
 	var/obj/item/fighter_component/battery/ourBattery = us.loadout.get_slot(HARDPOINT_SLOT_BATTERY)
 	if(!ourBattery || !istype(ourBattery))
-		return "<span class='warning'>This craft has no battery installed!</span>"
+		return "<span class='warning'>Ta jednostka nie ma zainstalowanej baterii!</span>"
 	var/obj/item/fighter_component/battery/theirBattery = them.loadout.get_slot(HARDPOINT_SLOT_BATTERY)
 	if(!theirBattery || !istype(theirBattery))
-		return "<span class='warning'>The target has no battery installed!</span>"
+		return "<span class='warning'>Cel nie ma zainstalowanej baterii!</span>"
 	if(ourBattery.charge < (battery_recharge_amount * 2))
-		return "<span class='warning'>Battery charge is below minimum safe transfer level.</span>"
+		return "<span class='warning'>Ładunek baterii poniżej minimalnego bezpiecznego poziomu transferu.</span>"
 	if(!(theirBattery.charge < theirBattery.maxcharge))
-		return "<span class='notice'>Target craft is fully charged.</span>"
+		return "<span class='notice'>Jednostka docelowa jest w pełni naładowana.</span>"
 	theirBattery.give(battery_recharge_amount) //Jumpstart their battery
 	ourBattery.use_power(battery_recharge_amount)
 	return

@@ -29,18 +29,18 @@
 	display_results(
 		user,
 		target,
-		"<span class='notice'>You start carving [target]'s outer cerebral cortex into a self-imprinting pattern.</span>",
-		"<span class='notice'>[user] starts carving [target]'s outer cerebral cortex into a self-imprinting pattern.</span>",
-		"<span class='notice'>[user] begins to perform surgery on [target]'s brain.</span>",
+		"<span class='notice'>Zaczynasz rzeźbić zewnętrzną korę mózgową [target] w samoodciskający się wzór.</span>",
+		"<span class='notice'>[user] zaczyna rzeźbić zewnętrzną korę mózgową [target] w samoodciskający się wzór.</span>",
+		"<span class='notice'>[user] zaczyna operację mózgu [target].</span>",
 	)
 
 /datum/surgery_step/imprint_cortex/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	display_results(
 		user,
 		target,
-		"<span class='notice'>You reshape [target]'s outer cerebral cortex into a self-imprinting pattern!</span>",
-		"<span class='notice'>[user] reshapes [target]'s outer cerebral cortex into a self-imprinting pattern!</span>",
-		"<span class='notice'>[user] completes the surgery on [target]'s brain.</span>",
+		"<span class='notice'>Przekształcasz zewnętrzną korę mózgową [target] w samoodciskający się wzór!</span>",
+		"<span class='notice'>[user] przekształca zewnętrzną korę mózgową [target] w samoodciskający się wzór!</span>",
+		"<span class='notice'>[user] kończy operację mózgu [target].</span>",
 	)
 	new /datum/bioware/cortex_imprint(target)
 	return ..()
@@ -50,14 +50,14 @@
 		display_results(
 			user,
 			target,
-			"<span class='warning'>You screw up, damaging the brain!</span>",
-			"<span class='warning'>[user] screws up, damaging the brain!</span>",
-			"<span class='notice'>[user] completes the surgery on [target]'s brain.</span>",
+			"<span class='warning'>Partaczysz, uszkadzając mózg!</span>",
+			"<span class='warning'>[user] partaczy, uszkadzając mózg!</span>",
+			"<span class='notice'>[user] kończy operację mózgu [target].</span>",
 		)
 		target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 60)
 		target.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_RESILIENCE_LOBOTOMY)
 	else
-		user.visible_message("<span class='warning'>[user] suddenly notices that the brain [user.p_they()] [user.p_were()] working on is not there anymore.</span>", "<span class='warning'>You suddenly notice that the brain you were working on is not there anymore.</span>")
+		user.visible_message("<span class='warning'>[user] nagle zauważa, że mózgu, nad którym pracował, już tam nie ma.</span>", "<span class='warning'>Nagle zauważasz, że mózgu, nad którym pracowałeś, już tam nie ma.</span>")
 	return FALSE
 
 /datum/bioware/cortex_imprint

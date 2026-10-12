@@ -17,7 +17,7 @@
 
 /obj/item/desynchronizer/attack_self(mob/living/user)
 	if(world.time < next_use)
-		to_chat(user, "<span class='warning'>[src] is still recharging.</span>")
+		to_chat(user, "<span class='warning'>[src] wciąż się ładuje.</span>")
 		return
 	if(!sync_holder)
 		desync(user)
@@ -27,26 +27,26 @@
 /obj/item/desynchronizer/examine(mob/user)
 	. = ..()
 	if(world.time < next_use)
-		. += "<span class='warning'>Time left to recharge: [DisplayTimeText(next_use - world.time)]</span>"
-	. += "<span class='notice'>Alt-click to customize the duration. Current duration: [DisplayTimeText(duration)].</span>"
-	. += "<span class='notice'>Can be used again to interrupt the effect early. The recharge time is the same as the time spent in desync.</span>"
+		. += "<span class='warning'>Pozostały czas ładowania: [DisplayTimeText(next_use - world.time)]</span>"
+	. += "<span class='notice'>Alt-kliknij, by ustawić czas trwania. Obecny czas trwania: [DisplayTimeText(duration)].</span>"
+	. += "<span class='notice'>Można go użyć ponownie, by wcześniej przerwać efekt. Czas ładowania jest równy czasowi spędzonemu w desynchronizacji.</span>"
 
 /obj/item/desynchronizer/AltClick(mob/living/user)
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
-	var/new_duration = input(user, "Set the duration (5-300):", "Desynchronizer", duration / 10) as null|num
+	var/new_duration = input(user, "Ustaw czas trwania (5-300):", "Desynchronizer", duration / 10) as null|num
 	if(new_duration)
 		new_duration = new_duration SECONDS
 		new_duration = CLAMP(new_duration, 50, max_duration)
 		duration = new_duration
-		to_chat(user, "<span class='notice'>You set the duration to [DisplayTimeText(duration)].</span>")
+		to_chat(user, "<span class='notice'>Ustawiasz czas trwania na [DisplayTimeText(duration)].</span>")
 
 /obj/item/desynchronizer/proc/desync(mob/living/user)
 	if(sync_holder)
 		return
 	sync_holder = new(drop_location())
 	new /obj/effect/temp_visual/desynchronizer(drop_location())
-	to_chat(user, "<span class='notice'>You activate [src], desynchronizing yourself from the present. You can still see your surroundings, but you feel eerily dissociated from reality.</span>")
+	to_chat(user, "<span class='notice'>Aktywujesz [src], desynchronizując się z teraźniejszością. Wciąż widzisz otoczenie, ale czujesz się niepokojąco oderwany od rzeczywistości.</span>")
 	user.forceMove(sync_holder)
 	SEND_SIGNAL(user, COMSIG_MOVABLE_SECLUDED_LOCATION)
 	for(var/thing in user)

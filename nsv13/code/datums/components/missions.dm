@@ -44,7 +44,7 @@
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(display_examine))
 
 /datum/component/nsv_mission_cargo_label/proc/display_examine(datum/source, mob/user, text)
-	text += "<span class='warning'>This item is tagged as cargo, and needs to be delivered to [parent_mission.delivery_target]. <B>Opening this crate will reduce payout!</B></span>\n"
+	text += "<span class='warning'>Ten przedmiot jest oznaczony jako ładunek i musi zostać dostarczony do [parent_mission.delivery_target]. <B>Otwarcie tej skrzyni zmniejszy wynagrodzenie!</B></span>\n"
 
 /datum/component/nsv_mission_cargo_label/proc/register_cargo(datum/source, datum/mission) // Set the mission we are attached to
 	parent_mission = mission
@@ -63,7 +63,7 @@
 
 
 /datum/component/nsv_mission_cargo/proc/display_examine(datum/source, mob/user, text)
-	text += "<span class='warning'>This item is tagged as cargo, but someone seems to have removed it from the crate. <B>You won't get full payout, but are still expected to deliver this to [parent_mission.delivery_target]!</B></span>\n"
+	text += "<span class='warning'>Ten przedmiot jest oznaczony jako ładunek, ale ktoś chyba wyjął go ze skrzyni. <B>Nie dostaniecie pełnego wynagrodzenia, ale nadal oczekuje się, że dostarczycie to do [parent_mission.delivery_target]!</B></span>\n"
 
 /datum/component/nsv_mission_cargo/proc/register_cargo(datum/source, datum/mission) // Set the mission we are attached to
 	parent_mission = mission

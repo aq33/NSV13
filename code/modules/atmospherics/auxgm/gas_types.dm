@@ -176,7 +176,7 @@
 /datum/gas/stimulum
 	id = GAS_STIMULUM
 	specific_heat = 5
-	odor = "the color blue" // fast
+	odor = "kolor niebieski" // fast
 	odor_strength = 10
 	name = "Stimulum"
 	fusion_power = 7

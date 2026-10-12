@@ -28,9 +28,9 @@
 		return ..()
 	var/mob/living/pushed_mob = user.pulling
 	if(pushed_mob.buckled)
-		to_chat(user, "<span class='warning'>[pushed_mob] is buckled to [pushed_mob.buckled]!</span>")
+		to_chat(user, "<span class='warning'>[pushed_mob] jest przypięty do [pushed_mob.buckled]!</span>")
 		return ..()
-	to_chat(user,"<span class='notice>You try to coax [pushed_mob] onto [src]...</span>")
+	to_chat(user,"<span class='notice>Próbujesz nakłonić [pushed_mob], by wszedł na [src]...</span>")
 	if(!do_after(user,(5 SECONDS),target = pushed_mob))
 		return ..()
 	pushed_mob.forceMove(loc)

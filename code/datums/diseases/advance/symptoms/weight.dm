@@ -19,7 +19,7 @@ Bonus
 /datum/symptom/weight_loss
 
 	name = "Weight Loss"
-	desc = "The virus mutates the host's metabolism, making it almost unable to gain nutrition from food."
+	desc = "Wirus mutuje metabolizm nosiciela, przez co prawie nie może on czerpać składników odżywczych z jedzenia."
 	stealth = 0
 	resistance = 2
 	stage_speed = -2
@@ -32,7 +32,7 @@ Bonus
 	var/starving = TRUE
 	prefixes = list("Starving ")
 	bodies = list("Diet")
-	threshold_desc = "<b>Stealth 2:</b> The symptom is less noticeable, and does not cause starvation."
+	threshold_desc = "<b>Ukrycie 2:</b> objaw jest mniej zauważalny i nie powoduje zagłodzenia."
 
 /datum/symptom/weight_loss/severityset(datum/disease/advance/A)
 	. = ..()

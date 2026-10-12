@@ -47,5 +47,5 @@
 				/obj/item/shield/energy)
 
 /mob/living/simple_animal/hostile/syndicate/melee/spacebattle
-	deathmessage = "falls limp as they release their grip from the energy weapons, activating their self-destruct function!"
+	deathmessage = "wiotczeje, puszczając broń energetyczną i aktywując funkcję samozniszczenia!"
 	loot = list(/obj/effect/mob_spawn/human/corpse/syndicatesoldier)

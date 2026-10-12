@@ -13,7 +13,7 @@
 	startWhen = rand(40, 60)
 
 /datum/round_event/dolphin_migration/announce()
-	priority_announce("Unknown biological entities have been detected near [station_name()], please stand-by.", "Lifesign Alert", SSstation.announcer.get_rand_alert_sound())
+	priority_announce("W pobliżu [station_name()] wykryto nieznane formy biologiczne, prosimy czekać na dalsze informacje.", "Alarm - formy życia", SSstation.announcer.get_rand_alert_sound())
 
 
 /datum/round_event/dolphin_migration/start()

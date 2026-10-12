@@ -4,7 +4,7 @@
 	name = "Dolos Assault"
 	config_tag = "hardmode"
 	desc = "Harder gamemode - Defeat the Syndicate in Rubicon and Dolos (intended to be used with the hardmode setting)"
-	brief = "The Syndicate have prepared a strong naval force, fly to Dolos through Rubicon, and put them back in their place! Then clean up the rest of them or return home victorious."
+	brief = "Syndykat przygotował silne siły morskie - lećcie do Dolos przez Rubicon i pokażcie im, gdzie ich miejsce! Potem wykończcie resztę albo wróćcie do domu jako zwycięzcy."
 	starting_system = "Medea" //Start closer to the frontline for immediate action
 	starting_faction = "nanotrasen"
 	objective_reminder_setting = 1
@@ -12,7 +12,7 @@
 	selection_weight = 5
 	required_players = 25 //You'll need a decent sized crew
 	fixed_objectives = list(/datum/overmap_objective/clear_system/rubicon, /datum/overmap_objective/clear_system/dolos)
-	reminder_origin = "Whiterapids QRF Command"
+	reminder_origin = "Dowództwo QRF Whiterapids"
 
 /datum/controller/subsystem/overmap_mode/proc/toggle_hardmode()
 	if(!initialized) //Not yet
@@ -26,7 +26,7 @@
 		var/datum/star_system/R = SSstar_system.system_by_id("Rubicon")
 		R.spawn_fleet(/datum/fleet/interdiction/light) //They're going to assault you immediately, should be replaced with a more general aggressive Syndicate expansion behaviour
 		if(mode_initialised) //Not really needed when they're not in game yet
-			priority_announce("Increased hostile activity detected. Mission objectives for [station_name()] updated. Please consult the communications console for a new mission statement. Mobilize your forces at once.")
+			priority_announce("Wykryto wzmożoną aktywność wroga. Zaktualizowano cele misji dla [station_name()]. Sprawdźcie nowy opis misji na konsoli komunikacyjnej. Natychmiast zmobilizujcie siły.")
 		if(!SSticker.HasRoundStarted()) //No antagonists, you've got enough on your plate
 			GLOB.master_mode = "secret_extended"
 	else //Undo all of that

@@ -89,13 +89,13 @@ Starting Materials
 /obj/machinery/armour_plating_nanorepair_well/examine(mob/user)
 	.=..()
 	if(OM?.linked_apnw != src)
-		. += "<span class='warning'>WARNING: DUPLICATE APNW DETECTED!</span>"
+		. += "<span class='warning'>OSTRZEŻENIE: WYKRYTO ZDUPLIKOWANY APNW!</span>"
 	if(maximum_power_allocation != initial(maximum_power_allocation))
-		. += "<span class='notice'>It hums with energy.</span>"
+		. += "<span class='notice'>Buczy energią.</span>"
 	if(system_stress_threshold != initial(system_stress_threshold))
-		. += "<span class='notice'>It whirrs with vim.</span>"
+		. += "<span class='notice'>Warczy pełen wigoru.</span>"
 	if(system_cooling != initial(system_cooling))
-		. += "<span class='notice'>It resonates with stability.</span>"
+		. += "<span class='notice'>Rezonuje stabilnością.</span>"
 
 /obj/machinery/armour_plating_nanorepair_well/process()
 	if(OM?.linked_apnw == src)
@@ -261,33 +261,33 @@ Starting Materials
 		var/obj/item/multitool/M = I
 		M.buffer = src
 		playsound(src, 'sound/items/flashlight_on.ogg', 100, TRUE)
-		to_chat(user, "<span class='notice'>Buffer loaded</span>")
+		to_chat(user, "<span class='notice'>Wczytano bufor</span>")
 	if(istype(I, /obj/item/apnw_oc_module/power))
 		if(locate(/obj/item/apnw_oc_module/power) in contents)
-			to_chat(user, "<span class='notice'>This type of overclock has already been installed.</span>")
+			to_chat(user, "<span class='notice'>Ten rodzaj podkręcenia jest już zainstalowany.</span>")
 			return
 		else
-			to_chat(user, "<span class='notice'>You install the [I.name] into the [src.name]")
+			to_chat(user, "<span class='notice'>Instalujesz [I.name] w [src.name]")
 			playsound(src.loc, "sparks", 50, 1)
 			I.forceMove(src)
 			maximum_power_allocation = 12000000 //12MW
 
 	if(istype(I, /obj/item/apnw_oc_module/load))
 		if(locate(/obj/item/apnw_oc_module/load) in contents)
-			to_chat(user, "<span class='notice'>This type of overclock has already been installed.</span>")
+			to_chat(user, "<span class='notice'>Ten rodzaj podkręcenia jest już zainstalowany.</span>")
 			return
 		else
-			to_chat(user, "<span class='notice'>You install the [I.name] into the [src.name]")
+			to_chat(user, "<span class='notice'>Instalujesz [I.name] w [src.name]")
 			playsound(src.loc, "sparks", 50, 1)
 			I.forceMove(src)
 			system_stress_threshold = 200 //Double the load
 
 	if(istype(I, /obj/item/apnw_oc_module/cooling))
 		if(locate(/obj/item/apnw_oc_module/cooling) in contents)
-			to_chat(user, "<span class='notice'>This type of overclock has already been installed.</span>")
+			to_chat(user, "<span class='notice'>Ten rodzaj podkręcenia jest już zainstalowany.</span>")
 			return
 		else
-			to_chat(user, "<span class='notice'>You install the [I.name] into the [src.name]")
+			to_chat(user, "<span class='notice'>Instalujesz [I.name] w [src.name]")
 			playsound(src.loc, "sparks", 50, 1)
 			I.forceMove(src)
 			system_cooling = 2.5 //2.5x the stress reduction
@@ -315,7 +315,7 @@ Starting Materials
 /obj/machinery/armour_plating_nanorepair_well/attack_hand(mob/living/carbon/user)
 	.=..()
 	if(OM?.linked_apnw != src)
-		to_chat(user, "<span class='warning'>WARNING: DUPLICATE APNW DETECTED!</span>")
+		to_chat(user, "<span class='warning'>OSTRZEŻENIE: WYKRYTO ZDUPLIKOWANY APNW!</span>")
 		return
 	else
 		ui_interact(user)
@@ -323,7 +323,7 @@ Starting Materials
 /obj/machinery/armour_plating_nanorepair_well/attack_ai(mob/user)
 	.=..()
 	if(OM?.linked_apnw != src)
-		to_chat(user, "<span class='warning'>WARNING: DUPLICATE APNW DETECTED!</span>")
+		to_chat(user, "<span class='warning'>OSTRZEŻENIE: WYKRYTO ZDUPLIKOWANY APNW!</span>")
 		return
 	else
 		ui_interact(user)
@@ -331,7 +331,7 @@ Starting Materials
 /obj/machinery/armour_plating_nanorepair_well/attack_robot(mob/user)
 	.=..()
 	if(OM?.linked_apnw != src)
-		to_chat(user, "<span class='warning'>WARNING: DUPLICATE APNW DETECTED!</span>")
+		to_chat(user, "<span class='warning'>OSTRZEŻENIE: WYKRYTO ZDUPLIKOWANY APNW!</span>")
 		return
 	else
 		ui_interact(user)
@@ -339,7 +339,7 @@ Starting Materials
 /obj/machinery/armour_plating_nanorepair_well/attack_ghost(mob/user)
 	. = ..()
 	if(OM?.linked_apnw != src)
-		to_chat(user, "<span class='warning'>WARNING: DUPLICATE APNW DETECTED!</span>")
+		to_chat(user, "<span class='warning'>OSTRZEŻENIE: WYKRYTO ZDUPLIKOWANY APNW!</span>")
 		return
 	else
 		ui_interact(user)
@@ -365,7 +365,7 @@ Starting Materials
 	switch(action)
 		if("iron")
 			if(material_tier != 0)
-				to_chat(usr, "<span class='notice'>Error: Resources must be purged from the Well before selecting a different alloy</span>")
+				to_chat(usr, "<span class='notice'>Błąd: przed wybraniem innego stopu trzeba usunąć zasoby ze zbiornika</span>")
 				var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 				playsound(src, sound, 100, 1)
 				return
@@ -375,7 +375,7 @@ Starting Materials
 
 		if("plasteel")
 			if(material_tier != 0)
-				to_chat(usr, "<span class='notice'>Error: Resources must be purged from the Well before selecting a different alloy</span>")
+				to_chat(usr, "<span class='notice'>Błąd: przed wybraniem innego stopu trzeba usunąć zasoby ze zbiornika</span>")
 				var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 				playsound(src, sound, 100, 1)
 				return
@@ -385,7 +385,7 @@ Starting Materials
 
 		if("ferrotitanium")
 			if(material_tier != 0)
-				to_chat(usr, "<span class='notice'>Error: Resources must be purged from the Well before selecting a different alloy</span>")
+				to_chat(usr, "<span class='notice'>Błąd: przed wybraniem innego stopu trzeba usunąć zasoby ze zbiornika</span>")
 				var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 				playsound(src, sound, 100, 1)
 				return
@@ -395,7 +395,7 @@ Starting Materials
 
 		if("durasteel")
 			if(material_tier != 0)
-				to_chat(usr, "<span class='notice'>Error: Resources must be purged from the Well before selecting a different alloy</span>")
+				to_chat(usr, "<span class='notice'>Błąd: przed wybraniem innego stopu trzeba usunąć zasoby ze zbiornika</span>")
 				var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 				playsound(src, sound, 100, 1)
 				return
@@ -405,7 +405,7 @@ Starting Materials
 
 		if("duranium")
 			if(material_tier != 0)
-				to_chat(usr, "<span class='notice'>Error: Resources must be purged from the Well before selecting a different alloy</span>")
+				to_chat(usr, "<span class='notice'>Błąd: przed wybraniem innego stopu trzeba usunąć zasoby ze zbiornika</span>")
 				var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 				playsound(src, sound, 100, 1)
 				return
@@ -415,13 +415,13 @@ Starting Materials
 
 		if("purge")
 			if(resourcing_system)
-				to_chat(usr, "<span class='notice'>Error: Resource Processing must first be disabled before purging the Well</span>")
+				to_chat(usr, "<span class='notice'>Błąd: przed oczyszczeniem zbiornika trzeba wyłączyć przetwarzanie zasobów</span>")
 				var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 				playsound(src, sound, 100, 1)
 				return
 
-			else if(alert("Purging the Well will prevent APNPs from functioning until refilled, continue?",name,"Yes","No") != "No" && Adjacent(usr))
-				to_chat(usr, "<span class='warning'>System purging repair resources</span>")
+			else if(alert("Oczyszczenie zbiornika uniemożliwi działanie APNP do czasu ponownego napełnienia, kontynuować?",name,"Yes","No") != "No" && Adjacent(usr))
+				to_chat(usr, "<span class='warning'>System usuwa zasoby naprawcze</span>")
 				playsound(src, 'sound/machines/clockcult/steam_whoosh.ogg', 100, 1)
 				repair_resources = 0
 				material_tier = 0
@@ -436,7 +436,7 @@ Starting Materials
 
 		if("unload")
 			if(resourcing_system)
-				to_chat(usr, "<span class='notice'>Error: Resource Processing must first be disabled before purging the Well</span>")
+				to_chat(usr, "<span class='notice'>Błąd: przed oczyszczeniem zbiornika trzeba wyłączyć przetwarzanie zasobów</span>")
 				var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 				playsound(src, sound, 100, 1)
 				return
@@ -447,7 +447,7 @@ Starting Materials
 
 		if("toggle")
 			if(material_tier == 0)
-				to_chat(usr, "<span class='notice'>Error: An alloy must be selected before commencing Resource Processing</span>")
+				to_chat(usr, "<span class='notice'>Błąd: przed rozpoczęciem przetwarzania zasobów trzeba wybrać stop</span>")
 				var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 				playsound(src, sound, 100, 1)
 			else
@@ -549,20 +549,20 @@ Starting Materials
 
 /obj/item/apnw_oc_module/power/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Allows the allocation of additional power to the APNW - MAY CAUSE OVERHEATING</span>"
+	. += "<span class='notice'>Pozwala przydzielić APNW dodatkową moc - MOŻE POWODOWAĆ PRZEGRZEWANIE</span>"
 
 /obj/item/apnw_oc_module/load //Changes stress threshold to 200%
 	name = "Armour Plating Nano-repair Well Overclocking Module (Overload)"
 
 /obj/item/apnw_oc_module/load/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Allows the allocation of additional system load to the APNW - MAY CAUSE VOLTAGE SPIKES</span>"
+	. += "<span class='notice'>Pozwala przydzielić APNW dodatkowe obciążenie systemu - MOŻE POWODOWAĆ SKOKI NAPIĘCIA</span>"
 
 /obj/item/apnw_oc_module/cooling //Changes stress reduction to 2.5 per cycle
 	name = "Armour Plating Nano-repair Well Overclocking Module (Cooling)"
 
 /obj/item/apnw_oc_module/cooling/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Allows the allocation of additional system load to the APNW - MAY CAUSE REALITY DISTORTIONS</span>" //It really doesn't
+	. += "<span class='notice'>Pozwala przydzielić APNW dodatkowe obciążenie systemu - MOŻE POWODOWAĆ ZNIEKSZTAŁCENIA RZECZYWISTOŚCI</span>" //It really doesn't
 
 #undef RR_MAX

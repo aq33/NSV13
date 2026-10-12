@@ -65,25 +65,25 @@
 //whether the machine can have an item inserted in its current state.
 /obj/machinery/rnd/proc/is_insertion_ready(mob/user)
 	if(panel_open)
-		to_chat(user, "<span class='warning'>You can't load [src] while it's opened!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz załadować [src], gdy jest otwarty!</span>")
 		return FALSE
 	if(disabled)
-		to_chat(user, "<span class='warning'>The insertion belts of [src] won't engage!</span>")
+		to_chat(user, "<span class='warning'>Pasy podające [src] nie chcą zaskoczyć!</span>")
 		return FALSE
 	if(requires_console && !linked_console)
-		to_chat(user, "<span class='warning'>[src] must be linked to an R&D console first!</span>")
+		to_chat(user, "<span class='warning'>[src] musi najpierw zostać połączony z konsolą B+R!</span>")
 		return FALSE
 	if(busy)
-		to_chat(user, "<span class='warning'>[src] is busy right now.</span>")
+		to_chat(user, "<span class='warning'>[src] jest teraz zajęty.</span>")
 		return FALSE
 	if(machine_stat & BROKEN)
-		to_chat(user, "<span class='warning'>[src] is broken.</span>")
+		to_chat(user, "<span class='warning'>[src] jest zepsuty.</span>")
 		return FALSE
 	if(machine_stat & NOPOWER)
-		to_chat(user, "<span class='warning'>[src] has no power.</span>")
+		to_chat(user, "<span class='warning'>[src] nie ma zasilania.</span>")
 		return FALSE
 	if(loaded_item)
-		to_chat(user, "<span class='warning'>[src] is already loaded.</span>")
+		to_chat(user, "<span class='warning'>[src] jest już załadowany.</span>")
 		return FALSE
 	return TRUE
 

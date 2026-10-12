@@ -20,7 +20,7 @@
 		if(owner.current.stat == DEAD)
 			return "<font color=red>(DEAD)</font>"
 		else if(!owner.current.client)
-			return "(No client)"
+			return "(Brak klienta)"
 
 //Builds the common FLW PM TP commands part
 //Probably not going to be overwritten by anything but you never know
@@ -134,7 +134,7 @@
 
 /datum/admins/proc/check_antagonists()
 	if(!SSticker.HasRoundStarted())
-		alert("The game hasn't started yet!")
+		alert("Gra jeszcze się nie zaczęła!")
 		return
 	var/list/dat = list("<h1><B>Round Status</B></h1>")
 	if(SSticker.mode.replacementmode)
@@ -163,7 +163,7 @@
 		dat += "Time limit: <a href='byond://?_src_=holder;[HrefToken()];alter_midround_time_limit=1'>[CONFIG_GET(number/midround_antag_time_check)] minutes into round</a><BR>"
 		dat += "Living crew limit: <a href='byond://?_src_=holder;[HrefToken()];alter_midround_life_limit=1'>[CONFIG_GET(number/midround_antag_life_check) * 100]% of crew alive</a><BR>"
 		dat += "If limits past: <a href='byond://?_src_=holder;[HrefToken()];toggle_noncontinuous_behavior=1'>[SSticker.mode.round_ends_with_antag_death ? "End The Round" : "Continue As Extended"]</a><BR>"
-	dat += "<a href='byond://?_src_=holder;[HrefToken()];end_round=[REF(usr)]'>End Round Now</a><br>"
+	dat += "<a href='byond://?_src_=holder;[HrefToken()];end_round=[REF(usr)]'>Zakończ rundę teraz</a><br>"
 	dat += "<a href='byond://?_src_=holder;[HrefToken()];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</a><br>"
 	dat += "<a href='byond://?_src_=holder;[HrefToken()];check_teams=1'>Check Teams</a>"
 	var/connected_players = GLOB.clients.len

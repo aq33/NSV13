@@ -4,17 +4,17 @@
 /datum/clockcult/scripture/clockwork_armaments
 	name = "Clockwork Armaments"
 	desc = "Summon clockwork armor and weapons, to be ready for battle."
-	tip = "Summon clockwork armor and weapons, to be ready for battle."
+	tip = "Przywołuje mechaniczną zbroję i broń, byś był gotów do walki."
 	button_icon_state = "clockwork_armor"
 	power_cost = 150
 	invokation_time = 20
-	invokation_text = list("Through courage and hope...", "we shall protect thee!")
+	invokation_text = list("Dzięki odwadze i nadziei...", "we shall protect thee!")
 	category = SPELLTYPE_PRESERVATION
 	cogs_required = 0
 
 /datum/clockcult/scripture/clockwork_armaments/invoke_success()
 	var/mob/living/M = invoker
-	var/choice = input(M,"What weapon do you want to call upon?", "Clockwork Armaments") as anything in list("Brass Spear","Brass Battlehammer","Brass Sword", "Brass Bow", "Standard Equipment (Unarmed)")
+	var/choice = input(M,"Jaką broń chcesz przywołać?", "Mechaniczne Uzbrojenie") as anything in list("Brass Spear","Brass Battlehammer","Brass Sword", "Brass Bow", "Standard Equipment (Unarmed)")
 	var/datum/antagonist/servant_of_ratvar/servant = is_servant_of_ratvar(M)
 	if(!servant)
 		return FALSE

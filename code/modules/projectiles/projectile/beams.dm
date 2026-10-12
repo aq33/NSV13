@@ -192,5 +192,5 @@
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
-		M.visible_message("<span class='danger'>[M] explodes into a shower of gibs!</span>")
+		M.visible_message("<span class='danger'>[M] eksploduje deszczem krwawych szczątków!</span>")
 		M.gib()

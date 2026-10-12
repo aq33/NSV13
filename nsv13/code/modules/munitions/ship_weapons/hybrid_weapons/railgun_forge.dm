@@ -479,7 +479,7 @@
 		T2 = M.buffer
 		M.buffer = null
 	playsound(src, 'sound/items/flashlight_on.ogg', 100, TRUE)
-	to_chat(user, "<span class='notice'>Buffer transfered</span>")
+	to_chat(user, "<span class='notice'>Przesłano bufor</span>")
 	return
 
 /obj/machinery/railgun_forge/attack_hand(mob/living/carbon/user)
@@ -511,18 +511,18 @@
 	if(!(in_range(src, usr) || IsAdminGhost(usr)))
 		return
 	if(!T1 || !T2)
-		to_chat(usr, "<span class='notice'>Error: Coating/Core tanks not detected!</span>")
+		to_chat(usr, "<span class='notice'>Błąd: nie wykryto zbiorników powłoki/rdzenia!</span>")
 		return
 	if(T1 && T2)
 		switch(action)
 			if("print_slug")
 				if(T1.tank_alloy_lock == FALSE || T2.tank_alloy_lock == FALSE)
-					to_chat(usr, "<span class='notice'>Error: Fabrication materials not selected</span>")
+					to_chat(usr, "<span class='notice'>Błąd: nie wybrano materiałów do produkcji</span>")
 					var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 					playsound(src, sound, 100, 1)
 					return
 				else if(T1.tank_volume < 4 || T2.tank_volume < 20)
-					to_chat(usr, "<span class='notice'>Error: Insufficent fabrication resources</span>")
+					to_chat(usr, "<span class='notice'>Błąd: za mało zasobów do produkcji</span>")
 					var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 					playsound(src, sound, 100, 1)
 					return
@@ -531,12 +531,12 @@
 
 			if("print_canister")
 				if(T1.tank_alloy_lock == FALSE || T2.tank_alloy_lock == FALSE)
-					to_chat(usr, "<span class='notice'>Error: Fabrication materials not selected</span>")
+					to_chat(usr, "<span class='notice'>Błąd: nie wybrano materiałów do produkcji</span>")
 					var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 					playsound(src, sound, 100, 1)
 					return
 				else if(T1.tank_volume < 20 || T2.tank_volume < 30)
-					to_chat(usr, "<span class='notice'>Error: Insufficent fabrication resources</span>")
+					to_chat(usr, "<span class='notice'>Błąd: za mało zasobów do produkcji</span>")
 					var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 					playsound(src, sound, 100, 1)
 					return
@@ -544,8 +544,8 @@
 					forge_canister()
 
 			if("purge_t1")
-				if(alert("Allocated resources will not be recoverable when purging the coating tank",name,"Continue","Abort") != "Abort" && Adjacent(usr))
-					to_chat(usr, "<span class='warning'>Purging coating tank</span>")
+				if(alert("Przydzielonych zasobów nie da się odzyskać po opróżnieniu zbiornika powłoki",name,"Continue","Abort") != "Abort" && Adjacent(usr))
+					to_chat(usr, "<span class='warning'>Opróżnianie zbiornika powłoki</span>")
 					T1.material_selection = 0
 					T1.tank_alloy_lock = FALSE
 					T1.tank_processing = FALSE
@@ -553,8 +553,8 @@
 					return
 
 			if("purge_t2")
-				if(alert("Allocated resources will not be recoverable when purging the core tank",name,"Continue","Abort") != "Abort" && Adjacent(usr))
-					to_chat(usr, "<span class='warning'>Purging core tank</span>")
+				if(alert("Przydzielonych zasobów nie da się odzyskać po opróżnieniu zbiornika rdzenia",name,"Continue","Abort") != "Abort" && Adjacent(usr))
+					to_chat(usr, "<span class='warning'>Opróżnianie zbiornika rdzenia</span>")
 					T2.material_selection = 0
 					T2.tank_alloy_lock = FALSE
 					T2.tank_processing = FALSE
@@ -571,7 +571,7 @@
 
 			if("t1_set_material")
 				if(T1.tank_alloy_lock)
-					to_chat(usr, "<span class='notice'>Error: Coating tank must be purged before selecting another material</span>")
+					to_chat(usr, "<span class='notice'>Błąd: przed wybraniem innego materiału trzeba opróżnić zbiornik powłoki</span>")
 					var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 					playsound(src, sound, 100, 1)
 					return
@@ -582,7 +582,7 @@
 
 			if("t2_set_material")
 				if(T2.tank_alloy_lock)
-					to_chat(usr, "<span class='notice'>Error: Core tank must be purged before selecting another material</span>")
+					to_chat(usr, "<span class='notice'>Błąd: przed wybraniem innego materiału trzeba opróżnić zbiornik rdzenia</span>")
 					var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 					playsound(src, sound, 100, 1)
 					return
@@ -594,31 +594,31 @@
 			if("t1_set_processing")
 				if(T1.tank_processing)
 					T1.tank_processing = FALSE
-					to_chat(usr, "<span class='notice'>Coating Tank Processing: Disabled.</span>")
+					to_chat(usr, "<span class='notice'>Przetwarzanie w zbiorniku powłoki: wyłączone.</span>")
 					return
 				else if(!T1.tank_alloy_lock)
-					to_chat(usr, "<span class='notice'>Error: Material selection must be locked before processing.</span>")
+					to_chat(usr, "<span class='notice'>Błąd: przed przetwarzaniem trzeba zablokować wybór materiału.</span>")
 					var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 					playsound(src, sound, 100, 1)
 					return
 				else
 					T1.tank_processing = TRUE
-					to_chat(usr, "<span class='notice'>Coating Tank Processing: Enabled.</span>")
+					to_chat(usr, "<span class='notice'>Przetwarzanie w zbiorniku powłoki: włączone.</span>")
 					return
 
 			if("t2_set_processing")
 				if(T2.tank_processing)
 					T2.tank_processing = FALSE
-					to_chat(usr, "<span class='notice'>Core Tank Processing: Disabled.</span>")
+					to_chat(usr, "<span class='notice'>Przetwarzanie w zbiorniku rdzenia: wyłączone.</span>")
 					return
 				else if(!T2.tank_alloy_lock)
-					to_chat(usr, "<span class='notice'>Error: Material selection must be locked before processing.</span>")
+					to_chat(usr, "<span class='notice'>Błąd: przed przetwarzaniem trzeba zablokować wybór materiału.</span>")
 					var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 					playsound(src, sound, 100, 1)
 					return
 				else
 					T2.tank_processing = TRUE
-					to_chat(usr, "<span class='notice'>Core Tank Processing: Enabled.</span>")
+					to_chat(usr, "<span class='notice'>Przetwarzanie w zbiorniku rdzenia: włączone.</span>")
 					return
 
 	return
@@ -662,7 +662,7 @@
 		var/obj/item/multitool/M = I
 		M.buffer = src
 		playsound(src, 'sound/items/flashlight_on.ogg', 100, TRUE)
-		to_chat(user, "<span class='notice'>Buffer loaded</span>")
+		to_chat(user, "<span class='notice'>Wczytano bufor</span>")
 
 /obj/machinery/railgun_forge_coating_tank/RefreshParts()
 	var/comp_number = 0
@@ -708,7 +708,7 @@
 		var/obj/item/multitool/M = I
 		M.buffer = src
 		playsound(src, 'sound/items/flashlight_on.ogg', 100, TRUE)
-		to_chat(user, "<span class='notice'>Buffer loaded</span>")
+		to_chat(user, "<span class='notice'>Wczytano bufor</span>")
 
 /obj/machinery/railgun_forge_core_tank/RefreshParts()
 	var/comp_number = 0
@@ -802,7 +802,7 @@
 	if(!loading)
 		if(istype(I, /obj/item/ship_weapon/ammunition/railgun_ammo_canister))
 			if(user)
-				to_chat(user, "<span class='notice'>You start to load [I] into [src]...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz ładować [I] do [src]...</span>")
 				loading = TRUE
 			if(!user || !do_after(user, 20, target = src))
 				loading = FALSE
@@ -810,10 +810,10 @@
 			F = I
 			F.forceMove(src)
 			loading = FALSE
-			to_chat(user, "<span class='notice'>You load [I] into [src].</span>")
+			to_chat(user, "<span class='notice'>Ładujesz [I] do [src].</span>")
 	if(F)
 		if(user)
-			to_chat(user, "<span class='notice'>There is already an [F] in [src].</span>")
+			to_chat(user, "<span class='notice'>W [src] już jest [F].</span>")
 
 /obj/machinery/atmospherics/components/binary/railgun_filler/attack_hand(mob/living/carbon/user)
 	ui_interact(user)
@@ -847,7 +847,7 @@
 		if("fill")
 			if(F)
 				if(F.canister_sealed)
-					to_chat(usr, "<span class='notice'>Error: Unable to fill canister as it has been permanently sealed shut.</span>")
+					to_chat(usr, "<span class='notice'>Błąd: nie można napełnić kanistra, bo został trwale zaplombowany.</span>")
 					var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 					playsound(src, sound, 100, 1)
 					return
@@ -858,7 +858,7 @@
 		if("empty")
 			if(F)
 				if(F.canister_sealed)
-					to_chat(usr, "<span class='notice'>Error: Unabled to empty canister as it has been permanently sealed shut.</span>")
+					to_chat(usr, "<span class='notice'>Błąd: nie można opróżnić kanistra, bo został trwale zaplombowany.</span>")
 					var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 					playsound(src, sound, 100, 1)
 					return
@@ -868,14 +868,14 @@
 		if("seal")
 			if(F)
 				if(F.canister_sealed)
-					to_chat(usr, "<span class='notice'>Error: Canister has already been sealed shut.</span>")
+					to_chat(usr, "<span class='notice'>Błąd: kanister został już zaplombowany.</span>")
 					var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 					playsound(src, sound, 100, 1)
 					return
 				else
 					F.canister_sealed = TRUE
 					F.icon_state = "railgun_canister_sealed"
-					to_chat(usr, "<span class='notice'>Attention: [F.name] has been been permamently sealed")
+					to_chat(usr, "<span class='notice'>Uwaga: [F.name] został trwale zaplombowany")
 					return
 			return
 		if("eject")
@@ -885,7 +885,7 @@
 				eject_canister()
 				return
 			else
-				to_chat(usr, "<span class='danger'>The canister vents its contents!</span>")
+				to_chat(usr, "<span class='danger'>Kanister wypuszcza zawartość!</span>")
 				eject_unsealed_canister()
 				return
 	return
@@ -1013,7 +1013,7 @@
 	if(!loading)
 		if(istype(I, /obj/item/ship_weapon/ammunition/railgun_ammo_canister))
 			if(user)
-				to_chat(user, "<span class='notice'>You start to load [I] into [src]...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz ładować [I] do [src]...</span>")
 				loading = TRUE
 			if(!user || !do_after(user, 20, target = src))
 				loading = FALSE
@@ -1021,10 +1021,10 @@
 			F = I
 			F.forceMove(src)
 			loading = FALSE
-			to_chat(user, "<span class='notice'>You load [I] into [src].</span>")
+			to_chat(user, "<span class='notice'>Ładujesz [I] do [src].</span>")
 	if(F)
 		if(user)
-			to_chat(user, "<span class='notice'>There is already an [F] in [src].</span>")
+			to_chat(user, "<span class='notice'>W [src] już jest [F].</span>")
 
 /obj/machinery/railgun_charger/attack_hand(mob/living/carbon/user)
 	ui_interact(user)

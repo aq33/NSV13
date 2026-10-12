@@ -5,16 +5,16 @@
 
 /mob/living/simple_animal/hostile/guardian/beam
 	melee_damage = 7
-	attacktext = "shocks"
+	attacktext = "razi prądem"
 	melee_damage_type = BURN
 	attack_sound = 'sound/machines/defib_zap.ogg'
 	damage_coeff = list(BRUTE = 0.7, BURN = 0.7, TOX = 0.7, CLONE = 0.7, STAMINA = 0, OXY = 0.7)
 	range = 7
-	playstyle_string = "<span class='holoparasite'>As a <b>lightning</b> type, you will apply lightning chains to targets on attack and have a lightning chain to your summoner. Lightning chains will shock anyone near them.</span>"
-	magic_fluff_string = "<span class='holoparasite'>..And draw the Tesla, a shocking, lethal source of power.</span>"
-	tech_fluff_string = "<span class='holoparasite'>Boot sequence complete. Lightning modules active. Holoparasite swarm online.</span>"
-	carp_fluff_string = "<span class='holoparasite'>CARP CARP CARP! Caught one! It's a lightning carp! Everyone else goes zap zap.</span>"
-	hive_fluff_string = "<span class='holoparasite'>The mass seems to cause lots of thunder strikes around itself.</span>"
+	playstyle_string = "<span class='holoparasite'>Jako typ <b>lightning</b> atakami zakładasz na cele łańcuchy błyskawic i masz łańcuch błyskawic połączony z przywoływaczem. Łańcuchy razią prądem każdego w pobliżu.</span>"
+	magic_fluff_string = "<span class='holoparasite'>...I wyciągasz Teslę, porażające, zabójcze źródło mocy.</span>"
+	tech_fluff_string = "<span class='holoparasite'>Sekwencja startowa zakończona. Moduły błyskawic aktywne. Rój holoparazytów aktywny.</span>"
+	carp_fluff_string = "<span class='holoparasite'>KARP KARP KARP! Złowiony! To karp-błyskawica! Wszystkich innych kopie prąd.</span>"
+	hive_fluff_string = "<span class='holoparasite'>Masa wydaje się wywoływać wokół siebie mnóstwo uderzeń piorunów.</span>"
 	var/datum/beam/summonerchain
 	var/list/enemychains = list()
 	var/successfulshocks = 0
@@ -111,9 +111,9 @@
 						C.stuttering += 1
 						addtimer(CALLBACK(src, PROC_REF(lower_jitter), C), 20)
 					L.visible_message(
-						"<span class='danger'>[L] was shocked by the lightning chain!</span>", \
-						"<span class='userdanger'>You are shocked by the lightning chain!</span>", \
-						"<span class='italics'>You hear a heavy electrical crack.</span>" \
+						"<span class='danger'>Łańcuch błyskawic razi [L]!</span>", \
+						"<span class='userdanger'>Razi cię łańcuch błyskawic!</span>", \
+						"<span class='italics'>Słyszysz głośny trzask elektryczny.</span>" \
 					)
 				L.adjustFireLoss(1.2) //adds up very rapidly
 				. = 1

@@ -3,7 +3,7 @@
 	set name = "Mentorhelp"
 
 	if(prefs.muted & MUTE_MHELP)
-		to_chat(src, "<span class='danger'>Error: MENTORHELP: You cannot send mentorhelps (Muted).</span>")
+		to_chat(src, "<span class='danger'>Błąd: MENTORHELP: nie możesz wysyłać mentorhelpów (wyciszenie).</span>")
 		return
 
 	//clean the input msg
@@ -26,7 +26,7 @@
 		X << 'sound/items/bikehorn.ogg'
 		to_chat(X, mentor_msg)
 
-	to_chat(src, "<span class='mentornotice'><span class='mentorhelp'>>PM to-<b>Mentors</b>: [msg]</span></span>")
+	to_chat(src, "<span class='mentornotice'><span class='mentorhelp'>>PW do <b>mentorów</b>: [msg]</span></span>")
 	return
 
 /proc/get_mentor_counts()
@@ -94,6 +94,6 @@
 		if(include_link)
 			. += "</a>"
 	else
-		. += "*no key*"
+		. += "*brak klucza*"
 
 	return .

@@ -385,16 +385,16 @@
 	switch(function)
 		if(NTNET_SOFTWAREDOWNLOAD)
 			setting_softwaredownload = !setting_softwaredownload
-			SSnetworks.add_log("Configuration Updated. Wireless network firewall now [setting_softwaredownload ? "allows" : "disallows"] connection to software repositories.")
+			SSnetworks.add_log("Konfiguracja zaktualizowana. Zapora sieci bezprzewodowej teraz [setting_softwaredownload ? "zezwala" : "nie zezwala"] na łączenie z repozytoriami oprogramowania.")
 		if(NTNET_PEERTOPEER)
 			setting_peertopeer = !setting_peertopeer
-			SSnetworks.add_log("Configuration Updated. Wireless network firewall now [setting_peertopeer ? "allows" : "disallows"] peer to peer network traffic.")
+			SSnetworks.add_log("Konfiguracja zaktualizowana. Zapora sieci bezprzewodowej teraz [setting_peertopeer ? "zezwala" : "nie zezwala"] na ruch peer-to-peer.")
 		if(NTNET_COMMUNICATION)
 			setting_communication = !setting_communication
-			SSnetworks.add_log("Configuration Updated. Wireless network firewall now [setting_communication ? "allows" : "disallows"] instant messaging and similar communication services.")
+			SSnetworks.add_log("Konfiguracja zaktualizowana. Zapora sieci bezprzewodowej teraz [setting_communication ? "zezwala" : "nie zezwala"] na komunikatory i podobne usługi łączności.")
 		if(NTNET_SYSTEMCONTROL)
 			setting_systemcontrol = !setting_systemcontrol
-			SSnetworks.add_log("Configuration Updated. Wireless network firewall now [setting_systemcontrol ? "allows" : "disallows"] remote control of station's systems.")
+			SSnetworks.add_log("Konfiguracja zaktualizowana. Zapora sieci bezprzewodowej teraz [setting_systemcontrol ? "zezwala" : "nie zezwala"] na zdalne sterowanie systemami stacji.")
 
 
 

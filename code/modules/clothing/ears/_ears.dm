@@ -24,7 +24,7 @@
 
 /obj/item/clothing/ears/headphones
 	name = "headphones"
-	desc = "Unce unce unce unce. Boop!"
+	desc = "Unce unce unce unce. Bup!"
 	icon = 'icons/obj/clothing/accessories.dmi'
 	icon_state = "headphones"
 	item_state = "headphones"
@@ -50,4 +50,4 @@
 		H.update_inv_ears()
 		H.update_inv_neck()
 		H.update_inv_head()
-	to_chat(owner, "<span class='notice'>You turn the music [headphones_on? "on. Untz Untz Untz!" : "off."]</span>")
+	to_chat(owner, "<span class='notice'>[headphones_on? "Włączasz muzykę. Untz Untz Untz!" : "Wyłączasz muzykę."]</span>")

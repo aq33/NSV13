@@ -5,7 +5,7 @@
 	boozepwr = 20
 	color = "#800101"
 	quality = DRINK_NICE
-	taste_description = "cherry"
+	taste_description = "wiśnia"
 	glass_icon_state = "amarenaglass"
 	glass_name = "kieliszek amareny"
 	glass_desc = "Dobre wino, niska cena, dobre wino, amarena."

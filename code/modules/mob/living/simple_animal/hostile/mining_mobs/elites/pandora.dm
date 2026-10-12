@@ -27,14 +27,14 @@
 	maxHealth = 800
 	health = 800
 	melee_damage = 15
-	attacktext = "smashes into the side of"
+	attacktext = "wbija się w bok"
 	attack_sound = 'sound/weapons/sonic_jackhammer.ogg'
-	throw_message = "merely dinks off of the"
+	throw_message = "jedynie brzęka o"
 	speed = 4
 	move_to_delay = 10
 	mouse_opacity = MOUSE_OPACITY_ICON
 	deathsound = 'sound/magic/repulse.ogg'
-	deathmessage = "'s lights flicker, before its top part falls down."
+	deathmessage = "mruga światłami, po czym jego górna część odpada."
 	loot_drop = /obj/item/clothing/accessory/pandora_hope
 
 	attack_action_types = list(/datum/action/innate/elite_attack/singular_shot,
@@ -48,25 +48,25 @@
 /datum/action/innate/elite_attack/singular_shot
 	name = "Singular Shot"
 	button_icon_state = "singular_shot"
-	chosen_message = "<span class='boldwarning'>You are now creating a single linear magic square.</span>"
+	chosen_message = "<span class='boldwarning'>Teraz tworzysz pojedynczy liniowy magiczny kwadrat.</span>"
 	chosen_attack_num = SINGULAR_SHOT
 
 /datum/action/innate/elite_attack/magic_box
 	name = "Magic Box"
 	button_icon_state = "magic_box"
-	chosen_message = "<span class='boldwarning'>You are now attacking with a box of magic squares.</span>"
+	chosen_message = "<span class='boldwarning'>Teraz atakujesz skrzynią magicznych kwadratów.</span>"
 	chosen_attack_num = MAGIC_BOX
 
 /datum/action/innate/elite_attack/pandora_teleport
 	name = "Line Teleport"
 	button_icon_state = "pandora_teleport"
-	chosen_message = "<span class='boldwarning'>You will now teleport to your target.</span>"
+	chosen_message = "<span class='boldwarning'>Teraz teleportujesz się do celu.</span>"
 	chosen_attack_num = PANDORA_TELEPORT
 
 /datum/action/innate/elite_attack/aoe_squares
 	name = "AOE Blast"
 	button_icon_state = "aoe_squares"
-	chosen_message = "<span class='boldwarning'>Your attacks will spawn an AOE blast at your target location.</span>"
+	chosen_message = "<span class='boldwarning'>Twoje ataki wywołają wybuch obszarowy w miejscu celu.</span>"
 	chosen_attack_num = AOE_SQUARES
 
 /mob/living/simple_animal/hostile/asteroid/elite/pandora/OpenFire()
@@ -141,7 +141,7 @@
 	for(var/t in RANGE_TURFS(1, source))
 		new /obj/effect/temp_visual/hierophant/blast/pandora(t, src)
 	animate(src, alpha = 0, time = 2, easing = EASE_OUT) //fade out
-	visible_message("<span class='hierophant_warning'>[src] fades out!</span>")
+	visible_message("<span class='hierophant_warning'>[src] znika!</span>")
 	density = FALSE
 	addtimer(CALLBACK(src, PROC_REF(pandora_teleport_3), T), 2)
 
@@ -149,7 +149,7 @@
 	forceMove(T)
 	animate(src, alpha = 255, time = 2, easing = EASE_IN) //fade IN
 	density = TRUE
-	visible_message("<span class='hierophant_warning'>[src] fades in!</span>")
+	visible_message("<span class='hierophant_warning'>[src] się pojawia!</span>")
 
 /mob/living/simple_animal/hostile/asteroid/elite/pandora/proc/aoe_squares(target)
 	ranged_cooldown = world.time + cooldown_time

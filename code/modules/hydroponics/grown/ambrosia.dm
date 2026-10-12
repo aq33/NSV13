@@ -7,7 +7,7 @@
 	slot_flags = ITEM_SLOT_HEAD
 	bite_consumption_mod = 3
 	foodtypes = VEGETABLES
-	tastes = list("ambrosia" = 1)
+	tastes = list("ambrozja" = 1)
 
 // Ambrosia Vulgaris
 /obj/item/seeds/ambrosia

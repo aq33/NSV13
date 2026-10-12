@@ -15,7 +15,7 @@
 /obj/effect/proc_holder/spell/pointed/touch/mad_touch/can_target(atom/target, mob/user, silent)
 	if(!ishuman(target))
 		if(!silent)
-			target.balloon_alert(user, "Invalid target")
+			target.balloon_alert(user, "Nieprawidłowy cel")
 		return FALSE
 	return TRUE
 
@@ -25,8 +25,8 @@
 		if(ishuman(targets))
 			var/mob/living/carbon/human/tar = target
 			if(tar.anti_magic_check())
-				tar.visible_message("<span class='danger'>The spell bounces off of [target]!</span>","<span class='danger'>The spell bounces off of you!</span>")
+				tar.visible_message("<span class='danger'>Zaklęcie odbija się od [target]!</span>","<span class='danger'>Zaklęcie odbija się od ciebie!</span>")
 				return
 		if(target.mind && !IS_HERETIC(target))
-			to_chat(user, "<span class='warning'>[target.name] has been cursed!</span>")
+			to_chat(user, "<span class='warning'>[target.name] zostaje przeklęty!</span>")
 			SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "gates_of_mansus", /datum/mood_event/gates_of_mansus)

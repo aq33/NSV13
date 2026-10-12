@@ -21,7 +21,7 @@ RSF
 
 /obj/item/rsf/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It currently holds [matter]/30 fabrication-units.</span>"
+	. += "<span class='notice'>Obecnie zawiera [matter]/30 jednostek fabrykacji.</span>"
 
 /obj/item/rsf/cyborg
 	matter = 30
@@ -29,12 +29,12 @@ RSF
 /obj/item/rsf/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/rcd_ammo))
 		if((matter + 10) > 30)
-			to_chat(user, "The RSF can't hold any more matter.")
+			to_chat(user, "RSF nie pomieści więcej materii.")
 			return
 		qdel(W)
 		matter += 10
 		playsound(src.loc, 'sound/machines/click.ogg', 10, 1)
-		to_chat(user, "The RSF now holds [matter]/30 fabrication-units.")
+		to_chat(user, "RSF zawiera teraz [matter]/30 jednostek fabrykacji.")
 	else
 		return ..()
 
@@ -48,24 +48,24 @@ RSF
 				if(R.emagged)
 					mode = 6
 			if (mode==1)
-				to_chat(user, "Changed dispensing mode to 'Drinking Glass'")
+				to_chat(user, "Zmieniono tryb wydawania na „Szklanka”")
 			else
-				to_chat(user, "Changed dispensing mode to 'Explosive Cigarette'")
+				to_chat(user, "Zmieniono tryb wydawania na „Wybuchowy papieros”")
 		if(6)
 			mode = 1
-			to_chat(user, "Changed dispensing mode to 'Drinking Glass'")
+			to_chat(user, "Zmieniono tryb wydawania na „Szklanka”")
 		if(1)
 			mode = 2
-			to_chat(user, "Changed dispensing mode to 'Paper'")
+			to_chat(user, "Zmieniono tryb wydawania na „Papier”")
 		if(2)
 			mode = 3
-			to_chat(user, "Changed dispensing mode to 'Pen'")
+			to_chat(user, "Zmieniono tryb wydawania na „Długopis”")
 		if(3)
 			mode = 4
-			to_chat(user, "Changed dispensing mode to 'Dice Pack'")
+			to_chat(user, "Zmieniono tryb wydawania na „Zestaw kości”")
 		if(4)
 			mode = 5
-			to_chat(user, "Changed dispensing mode to 'Cigarette'")
+			to_chat(user, "Zmieniono tryb wydawania na „Papieros”")
 	// Change mode
 
 /obj/item/rsf/afterattack(atom/A, mob/user, proximity)
@@ -78,37 +78,37 @@ RSF
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/R = user
 		if(!R.cell || R.cell.charge < 200)
-			to_chat(user, "<span class='warning'>You do not have enough power to use [src].</span>")
+			to_chat(user, "<span class='warning'>Masz za mało energii, by użyć [src].</span>")
 			return
 	else if (matter < 1)
-		to_chat(user, "<span class='warning'>\The [src] doesn't have enough matter left.</span>")
+		to_chat(user, "<span class='warning'>W [src] zostało za mało materii.</span>")
 		return
 
 	var/turf/T = get_turf(A)
 	playsound(src.loc, 'sound/machines/click.ogg', 10, 1)
 	switch(mode)
 		if(1)
-			to_chat(user, "Dispensing Drinking Glass...")
+			to_chat(user, "Wydawanie szklanki...")
 			new /obj/item/reagent_containers/food/drinks/drinkingglass(T)
 			use_matter(20, user)
 		if(2)
-			to_chat(user, "Dispensing Paper Sheet...")
+			to_chat(user, "Wydawanie kartki papieru...")
 			new /obj/item/paper(T)
 			use_matter(10, user)
 		if(3)
-			to_chat(user, "Dispensing Pen...")
+			to_chat(user, "Wydawanie długopisu...")
 			new /obj/item/pen(T)
 			use_matter(50, user)
 		if(4)
-			to_chat(user, "Dispensing Dice Pack...")
+			to_chat(user, "Wydawanie zestawu kości...")
 			new /obj/item/storage/pill_bottle/dice(T)
 			use_matter(200, user)
 		if(5)
-			to_chat(user, "Dispensing Cigarette...")
+			to_chat(user, "Wydawanie papierosa...")
 			new /obj/item/clothing/mask/cigarette(T)
 			use_matter(10, user)
 		if(6)
-			to_chat(user, "Dispensing Explosive Cigarette...")
+			to_chat(user, "Wydawanie wybuchowego papierosa...")
 			new /obj/item/clothing/mask/cigarette/plasma(T)
 			use_matter(20, user)
 
@@ -118,7 +118,7 @@ RSF
 		R.cell.charge -= charge
 	else
 		matter--
-		to_chat(user, "The RSF now holds [matter]/30 fabrication-units.")
+		to_chat(user, "RSF zawiera teraz [matter]/30 jednostek fabrykacji.")
 
 /obj/item/cookiesynth
 	name = "Cookie Synthesizer"
@@ -135,7 +135,7 @@ RSF
 
 /obj/item/cookiesynth/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It currently holds [matter]/10 cookie-units.</span>"
+	. += "<span class='notice'>Obecnie zawiera [matter]/10 jednostek ciasteczek.</span>"
 
 /obj/item/cookiesynth/attackby()
 	return
@@ -143,9 +143,9 @@ RSF
 /obj/item/cookiesynth/emag_act(mob/user)
 	obj_flags ^= EMAGGED
 	if(obj_flags & EMAGGED)
-		to_chat(user, "<span class='warning'>You short out [src]'s reagent safety checker!</span>")
+		to_chat(user, "<span class='warning'>Zwierasz zabezpieczenie odczynników [src]!</span>")
 	else
-		to_chat(user, "<span class='warning'>You reset [src]'s reagent safety checker!</span>")
+		to_chat(user, "<span class='warning'>Resetujesz zabezpieczenie odczynników [src]!</span>")
 		toxin = 0
 
 /obj/item/cookiesynth/attack_self(mob/user)
@@ -154,13 +154,13 @@ RSF
 		P = user
 	if((obj_flags & EMAGGED)&&!toxin)
 		toxin = 1
-		to_chat(user, "Cookie Synthesizer Hacked")
+		to_chat(user, "Syntezator ciasteczek zhakowany")
 	else if(P.emagged&&!toxin)
 		toxin = 1
-		to_chat(user, "Cookie Synthesizer Hacked")
+		to_chat(user, "Syntezator ciasteczek zhakowany")
 	else
 		toxin = 0
-		to_chat(user, "Cookie Synthesizer Reset")
+		to_chat(user, "Syntezator ciasteczek zresetowany")
 
 /obj/item/cookiesynth/process(delta_time)
 	if(matter < 10)
@@ -175,16 +175,16 @@ RSF
 	if (!(istype(A, /obj/structure/table) || isfloorturf(A)))
 		return
 	if(matter < 1)
-		to_chat(user, "<span class='warning'>[src] doesn't have enough matter left. Wait for it to recharge!</span>")
+		to_chat(user, "<span class='warning'>W [src] zostało za mało materii. Zaczekaj, aż się naładuje!</span>")
 		return
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/R = user
 		if(!R.cell || R.cell.charge < 400)
-			to_chat(user, "<span class='warning'>You do not have enough power to use [src].</span>")
+			to_chat(user, "<span class='warning'>Masz za mało energii, by użyć [src].</span>")
 			return
 	var/turf/T = get_turf(A)
 	playsound(src.loc, 'sound/machines/click.ogg', 10, 1)
-	to_chat(user, "Fabricating Cookie..")
+	to_chat(user, "Wytwarzanie ciasteczka..")
 	var/obj/item/food/cookie/S = new /obj/item/food/cookie(T)
 	if(toxin)
 		S.reagents.add_reagent(/datum/reagent/toxin/chloralhydrate, 10)

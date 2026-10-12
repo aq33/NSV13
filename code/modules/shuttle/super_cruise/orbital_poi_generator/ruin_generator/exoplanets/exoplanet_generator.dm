@@ -15,7 +15,7 @@
 	var/deepmountain_height = 0.8
 	var/seed = rand(0, 999999)
 	var/area/new_area = new biome.area_type
-	new_area.setup("Alien Planet")
+	new_area.setup("Obca planeta")
 	for(var/turf/T as() in block(locate(1, 1, center_z), locate(world.maxx, world.maxy, center_z)))
 		if(istype(T.loc, /area/space) && new_area)
 			T.change_area(T.loc, new_area)

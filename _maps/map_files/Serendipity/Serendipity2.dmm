@@ -3260,7 +3260,7 @@
 /obj/item/stack/cable_coil,
 /obj/item/crowbar,
 /obj/item/paper{
-	default_raw_text = "<p>NOTE: The Dominion don't install gravity generators on their ships, we barely had enough time to install one but you're going to have to wire it to the power grid. Remember: Terminal to powerline, SMES to APC.</p>";
+	default_raw_text = "<p>UWAGA: Dominium nie instaluje na swoich statkach generatorów grawitacji; ledwo zdążyliśmy zainstalować jeden, ale musicie sami podłączyć go do sieci. Pamiętajcie: terminal do linii zasilania, SMES do APC.</p>";
 	name = "READ ME."
 	},
 /obj/item/clothing/gloves/color/yellow,
@@ -9125,7 +9125,7 @@
 	},
 /obj/structure/cable,
 /obj/item/paper{
-	default_raw_text = "<p>NOTE: This ship is outfitted with a Tesla reactor. Take extra care to wrench everything down and weld what needs welding. If you want to upgrade the Tesla Coils, be sure to use the BSRPED in the CE's Office or unwrench the coil and take it away from the reactor before opening it up and upgrading it.</p>";
+	default_raw_text = "<p>UWAGA: ten statek ma reaktor Tesli. Szczególnie uważajcie, żeby wszystko przykręcić i zespawać, co trzeba. Jeśli chcecie ulepszyć cewki Tesli, użyjcie BSRPED z biura Głównego Inżyniera albo odkręćcie cewkę i odnieście ją od reaktora, zanim ją otworzycie i ulepszycie.</p>";
 	name = "READ ME."
 	},
 /turf/open/floor/engine,

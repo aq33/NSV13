@@ -10,14 +10,14 @@
 	. = ..()
 	var/obj/item/organ/regenerative_core/C = M
 	if(!istype(C, /obj/item/organ/regenerative_core))
-		to_chat(user, "<span class='warning'>The stabilizer only works on certain types of monster organs, generally regenerative in nature.</span>")
+		to_chat(user, "<span class='warning'>Stabilizator działa tylko na niektóre rodzaje narządów potworów, zwykle o charakterze regeneracyjnym.</span>")
 		return ..()
 	if(C.preserved)
-		to_chat(user, "<span class='notice'>[M] is already stabilised.")
+		to_chat(user, "<span class='notice'>[M] jest już ustabilizowany.")
 		return
 
 	C.preserved()
-	to_chat(user, "<span class='notice'>You inject [M] with the stabilizer. It will no longer go inert.</span>")
+	to_chat(user, "<span class='notice'>Wstrzykujesz stabilizator do [M]. Już nie stanie się bezwładny.</span>")
 	qdel(src)
 
 /************************Hivelord core*******************/
@@ -59,9 +59,9 @@
 
 /obj/item/organ/regenerative_core/ui_action_click()
 	if(!z == 5 && !preserved)
-		to_chat(owner, "<span class='notice'>[src] breaks down as it tries to activate without the necropolis' power.</span>")
+		to_chat(owner, "<span class='notice'>[src] rozpada się, próbując aktywować się bez mocy nekropolii.</span>")
 	else if(inert)
-		to_chat(owner, "<span class='notice'>[src] breaks down as it tries to activate.</span>")
+		to_chat(owner, "<span class='notice'>[src] rozpada się, próbując się aktywować.</span>")
 	else
 		owner.apply_status_effect(STATUS_EFFECT_REGENERATIVE_CORE)
 	qdel(src)
@@ -76,26 +76,26 @@
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		if(inert)
-			to_chat(user, "<span class='notice'>[src] has decayed and can no longer be used to heal.</span>")
+			to_chat(user, "<span class='notice'>[src] uległ rozkładowi i nie nadaje się już do leczenia.</span>")
 			return
 		else
 			if(H.stat == DEAD)
-				to_chat(user, "<span class='notice'>[src] is useless on the dead.</span>")
+				to_chat(user, "<span class='notice'>[src] jest bezużyteczny na martwych.</span>")
 				return
 			if(H != user)
-				to_chat(user, "<span class='notice'>You begin to rub the regenerative core on [H]...</span>")
-				to_chat(H, "<span class='userdanger'>[user] begins to smear the regenerative core all over you...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz wcierać rdzeń regeneracyjny w [H]...</span>")
+				to_chat(H, "<span class='userdanger'>[user] zaczyna rozsmarowywać na tobie rdzeń regeneracyjny...</span>")
 				if(do_mob(user, H, 30))
-					H.visible_message("[user] forces [H] to apply [src]... [H.p_they()] quickly regenerates all injuries!")
+					H.visible_message("[user] zmusza [H] do użycia [src]... Szybko regeneruje wszystkie obrażenia!")
 					SSblackbox.record_feedback("nested tally", "hivelord_core", 1, list("[type]", "used", "other"))
 				else
 					return
 			else
-				to_chat(user, "<span class='notice'>You start to smear [src] on yourself. It feels and smells disgusting, but you feel amazingly refreshed in mere moments.</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz rozsmarowywać na sobie [src]. W dotyku i zapachu jest obrzydliwy, ale już po chwili czujesz się niesamowicie odświeżony.</span>")
 				SSblackbox.record_feedback("nested tally", "hivelord_core", 1, list("[type]", "used", "self"))
 			if(HAS_TRAIT(H, TRAIT_NECROPOLIS_INFECTED))
 				H.ForceContractDisease(new /datum/disease/transformation/legion())
-				to_chat(H, "<span class='userdanger'>You feel the necropolis strengthen its grip on your heart and soul... You're powerless to resist for much longer...</span>")
+				to_chat(H, "<span class='userdanger'>Czujesz, jak nekropolia zacieśnia uścisk na twoim sercu i duszy... Już niedługo nie będziesz w stanie się opierać...</span>")
 			H.apply_status_effect(STATUS_EFFECT_REGENERATIVE_CORE)
 			SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "core", /datum/mood_event/healsbadman) //Now THIS is a miner buff (fixed - nerf)
 			qdel(src)
@@ -113,11 +113,11 @@
 	. = ..()
 	if(!preserved && !inert)
 		preserved(TRUE)
-		owner.visible_message("<span class='notice'>[src] stabilizes as it's inserted.</span>")
+		owner.visible_message("<span class='notice'>[src] stabilizuje się po umieszczeniu.</span>")
 
 /obj/item/organ/regenerative_core/Remove(mob/living/carbon/M, special = 0)
 	if(!inert && !special)
-		owner.visible_message("<span class='notice'>[src] rapidly decays as it's removed.</span>")
+		owner.visible_message("<span class='notice'>[src] gwałtownie się rozkłada po wyjęciu.</span>")
 		go_inert()
 	return ..()
 

@@ -19,7 +19,7 @@
 /obj/item/melee/touch_attack/mansus_fist/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/effect_remover, \
-		success_feedback = "You remove %THEEFFECT.", \
+		success_feedback = "Usuwasz %THEEFFECT.", \
 		on_clear_callback = CALLBACK(src, PROC_REF(after_clear_rune)), \
 		effects_we_clear = list(/obj/effect/heretic_rune))
 
@@ -30,7 +30,7 @@
 	use_charge(user, whisper = TRUE)
 
 /obj/item/melee/touch_attack/mansus_fist/ignition_effect(atom/to_light, mob/user)
-	. = "<span class='notice'>[user] effortlessly snaps [user.p_their()] fingers near [to_light], igniting it with eldritch energies. Fucking badass!</span>"
+	. = "<span class='notice'>[user] bez wysiłku pstryka palcami przy [to_light], podpalając to pradawną energią. Ale to, kurwa, było zajebiste!</span>"
 	use_charge(user)
 
 /obj/item/melee/touch_attack/mansus_fist/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
@@ -57,8 +57,8 @@
 /obj/item/melee/touch_attack/mansus_fist/proc/antimagic_check(mob/living/carbon/human/target, mob/living/carbon/user)
 	if(target.anti_magic_check())
 		target.visible_message(
-			"<span class='danger'>The spell bounces off of [target]!</span>",
-			"<span class='danger'>The spell bounces off of you!</span>",
+			"<span class='danger'>Zaklęcie odbija się od [target]!</span>",
+			"<span class='danger'>Zaklęcie odbija się od ciebie!</span>",
 		)
 		return TRUE
 	return FALSE
@@ -87,7 +87,7 @@
 	return TRUE
 
 /obj/item/melee/touch_attack/mansus_fist/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] covers [user.p_their()] face with [user.p_their()] sickly-looking hand! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zakrywa twarz chorobliwie wyglądającą dłonią! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	var/mob/living/carbon/carbon_user = user //iscarbon already used in spell's parent
 	if(!IS_HERETIC(user))
 		return

@@ -32,14 +32,14 @@
 
 /obj/item/loot_locator/interact(mob/user)
 	if(world.time <= next_use)
-		to_chat(user,"<span class='warning'>[src] is recharging.</span>")
+		to_chat(user,"<span class='warning'>[src] się ładuje.</span>")
 		return
 	next_use = world.time + cooldown
 	var/atom/movable/AM = find_random_loot()
 	if(!AM)
-		say("No valuables located. Try again later.")
+		say("Nie znaleziono kosztowności. Spróbuj później.")
 	else
-		say("Located: [AM.name] at [get_area_name(AM)]")
+		say("Zlokalizowano: [AM.name] w [get_area_name(AM)]")
 
 /obj/item/loot_locator/proc/find_random_loot()
 	if(!GLOB.exports_list.len)

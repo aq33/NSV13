@@ -16,10 +16,10 @@
 	dog_fashion = /datum/dog_fashion/head/chef
 
 /obj/item/clothing/head/chefhat/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is donning [src]! It looks like [user.p_theyre()] trying to become a chef.</span>")
+	user.visible_message("<span class='suicide'>[user] zakłada [src]! Wygląda na to, że próbuje zostać kucharzem.</span>")
 	user.say("Bork Bork Bork!", forced = "chef hat suicide")
 	sleep(20)
-	user.visible_message("<span class='suicide'>[user] climbs into an imaginary oven!</span>")
+	user.visible_message("<span class='suicide'>[user] wchodzi do wyimaginowanego piekarnika!</span>")
 	user.say("BOOORK!", forced = "chef hat suicide")
 	playsound(user, 'sound/machines/ding.ogg', 50, 1)
 	return(FIRELOSS)
@@ -61,7 +61,7 @@
 
 /obj/item/clothing/head/bishopmitre
 	name = "bishop mitre"
-	desc = "An opulent hat that functions as a radio to God. Or as a lightning rod, depending on who you ask."
+	desc = "Okazałe nakrycie głowy, które działa jak radio do Boga. Albo jak piorunochron, zależy, kogo zapytać."
 	icon_state = "bishopmitre"
 
 /obj/item/clothing/head/bishopmitre/black
@@ -83,23 +83,23 @@
 
 /obj/item/clothing/head/fedora/det_hat/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click to take a candy corn.</span>"
+	. += "<span class='notice'>Alt-klik, by wziąć cukierka kukurydzianego.</span>"
 
 /obj/item/clothing/head/fedora/det_hat/AltClick(mob/user)
 	if(user.canUseTopic(src, BE_CLOSE, ismonkey(user)) && loc == user)
 		if(candy_cooldown < world.time)
 			var/obj/item/food/candy_corn/CC = new /obj/item/food/candy_corn(src)
 			user.put_in_hands(CC)
-			to_chat(user, "You slip a candy corn from your hat.")
+			to_chat(user, "Wyciągasz z kapelusza cukierka kukurydzianego.")
 			candy_cooldown = world.time+1200
 		else
-			to_chat(user, "You just took a candy corn! You should wait a couple minutes, lest you burn through your stash.")
+			to_chat(user, "Właśnie wziąłeś cukierka kukurydzianego! Poczekaj kilka minut, żeby nie wyczerpać zapasu.")
 
 
 //Mime
 /obj/item/clothing/head/beret
 	name = "beret"
-	desc = "A beret, a mime's favorite headwear."
+	desc = "Beret, ulubione nakrycie głowy mimów."
 	icon_state = "beret"
 	dog_fashion = /datum/dog_fashion/head/beret
 	dynamic_hair_suffix = "+generic"
@@ -186,21 +186,21 @@
 		return TRUE
 	switch(mode)
 		if(DRILL_DEFAULT)
-			to_chat(user, "<span class='notice'>You set the voice circuit to the middle position.</span>")
+			to_chat(user, "<span class='notice'>Ustawiasz obwód głosowy w środkowej pozycji.</span>")
 			mode = DRILL_SHOUTING
 		if(DRILL_SHOUTING)
-			to_chat(user, "<span class='notice'>You set the voice circuit to the last position.</span>")
+			to_chat(user, "<span class='notice'>Ustawiasz obwód głosowy w ostatniej pozycji.</span>")
 			mode = DRILL_YELLING
 		if(DRILL_YELLING)
-			to_chat(user, "<span class='notice'>You set the voice circuit to the first position.</span>")
+			to_chat(user, "<span class='notice'>Ustawiasz obwód głosowy w pierwszej pozycji.</span>")
 			mode = DRILL_DEFAULT
 		if(DRILL_CANADIAN)
-			to_chat(user, "<span class='danger'>You adjust voice circuit but nothing happens, probably because it's broken.</span>")
+			to_chat(user, "<span class='danger'>Regulujesz obwód głosowy, ale nic się nie dzieje, pewnie dlatego, że jest zepsuty.</span>")
 	return TRUE
 
 /obj/item/clothing/head/warden/drill/wirecutter_act(mob/living/user, obj/item/I)
 	if(mode != DRILL_CANADIAN)
-		to_chat(user, "<span class='danger'>You broke the voice circuit!</span>")
+		to_chat(user, "<span class='danger'>Psujesz obwód głosowy!</span>")
 		mode = DRILL_CANADIAN
 	return TRUE
 

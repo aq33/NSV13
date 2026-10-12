@@ -6,7 +6,7 @@
 	icon = 'icons/obj/food/donuts.dmi'
 	bite_consumption = 5
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/sugar = 3)
-	tastes = list("donut" = 1)
+	tastes = list("pączek" = 1)
 	foodtypes = JUNKFOOD | GRAIN | SUGAR | BREAKFAST
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -75,7 +75,7 @@
 	desc = "Like life, it never quite tastes the same."
 	icon_state = "donut_chaos"
 	bite_consumption = 10
-	tastes = list("donut" = 3, "chaos" = 1)
+	tastes = list("pączek" = 3, "chaos" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -104,7 +104,7 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/ketchup = 3
 	)
-	tastes = list("meat" = 1)
+	tastes = list("mięso" = 1)
 	foodtypes = JUNKFOOD | MEAT | GORE | FRIED | BREAKFAST
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -131,7 +131,7 @@
 		/datum/reagent/consumable/sugar = 3,
 		/datum/reagent/consumable/sprinkles = 1
 	)
-	tastes = list("donut" = 3, "violets" = 1)
+	tastes = list("pączek" = 3, "fiołki" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -145,7 +145,7 @@
 		/datum/reagent/consumable/applejuice = 3,
 		/datum/reagent/consumable/sprinkles = 1
 	)
-	tastes = list("donut" = 3, "green apples" = 1)
+	tastes = list("pączek" = 3, "zielone jabłka" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -159,7 +159,7 @@
 		/datum/reagent/consumable/caramel = 3,
 		/datum/reagent/consumable/sprinkles = 1
 	)
-	tastes = list("donut" = 3, "buttery sweetness" = 1)
+	tastes = list("pączek" = 3, "maślana słodycz" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -173,7 +173,7 @@
 		/datum/reagent/consumable/cocoa/hot_cocoa = 3,
 		/datum/reagent/consumable/sprinkles = 1
 	) //the cocoa reagent is just bitter.
-	tastes = list("donut" = 4, "bitterness" = 1)
+	tastes = list("pączek" = 4, "gorycz" = 1)
 	decorated_icon = "donut_choc_sprinkles"
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -187,7 +187,7 @@
 		/datum/reagent/consumable/blumpkinjuice = 3,
 		/datum/reagent/consumable/sprinkles = 1
 	)
-	tastes = list("donut" = 2, "blumpkin" = 1)
+	tastes = list("pączek" = 2, "blumpkin" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -201,7 +201,7 @@
 		/datum/reagent/consumable/bungojuice = 3,
 		/datum/reagent/consumable/sprinkles = 1
 	)
-	tastes = list("donut" = 3, "tropical sweetness" = 1)
+	tastes = list("pączek" = 3, "tropikalna słodycz" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -210,7 +210,7 @@
 	desc = "Goes great with a cup of tea."
 	icon_state = "donut_olive"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/sugar = 3, /datum/reagent/toxin/teapowder = 3, /datum/reagent/consumable/sprinkles = 1)
-	tastes = list("donut" = 3, "matcha" = 1)
+	tastes = list("pączek" = 3, "matcha" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -228,7 +228,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
 	extra_reagent = /datum/reagent/consumable/berryjuice
-	tastes = list("jelly" = 1, "donut" = 3)
+	tastes = list("galaretka" = 1, "pączek" = 3)
 	foodtypes = JUNKFOOD | GRAIN | FRUIT | SUGAR | BREAKFAST
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -267,7 +267,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "violets" = 1)
+	tastes = list("galaretka" = 1, "pączek" = 3, "fiołki" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -282,7 +282,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "green apples" = 1)
+	tastes = list("galaretka" = 1, "pączek" = 3, "zielone jabłka" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -297,7 +297,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "buttery sweetness" = 1)
+	tastes = list("galaretka" = 1, "pączek" = 3, "maślana słodycz" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -312,7 +312,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	) //the coco reagent is just bitter.
-	tastes = list("jelly" = 1, "donut" = 4, "bitterness" = 1)
+	tastes = list("galaretka" = 1, "pączek" = 4, "gorycz" = 1)
 	decorated_icon = "jelly_choc_sprinkles"
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -327,7 +327,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("jelly" = 1, "donut" = 2, "blumpkin" = 1)
+	tastes = list("galaretka" = 1, "pączek" = 2, "blumpkin" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -342,7 +342,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "tropical sweetness" = 1)
+	tastes = list("galaretka" = 1, "pączek" = 3, "tropikalna słodycz" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -357,7 +357,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "matcha" = 1)
+	tastes = list("galaretka" = 1, "pączek" = 3, "matcha" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -395,7 +395,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "violets" = 1)
+	tastes = list("galaretka" = 1, "pączek" = 3, "fiołki" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -410,7 +410,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "green apples" = 1)
+	tastes = list("galaretka" = 1, "pączek" = 3, "zielone jabłka" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/slimejelly/caramel
@@ -424,7 +424,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "buttery sweetness" = 1)
+	tastes = list("galaretka" = 1, "pączek" = 3, "maślana słodycz" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -439,7 +439,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	) //the cocoa reagent is just bitter.
-	tastes = list("jelly" = 1, "donut" = 4, "bitterness" = 1)
+	tastes = list("galaretka" = 1, "pączek" = 4, "gorycz" = 1)
 	decorated_icon = "jelly_choc_sprinkles"
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -454,7 +454,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("jelly" = 1, "donut" = 2, "blumpkin" = 1)
+	tastes = list("galaretka" = 1, "pączek" = 2, "blumpkin" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -469,7 +469,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "tropical sweetness" = 1)
+	tastes = list("galaretka" = 1, "pączek" = 3, "tropikalna słodycz" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -484,7 +484,7 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "matcha" = 1)
+	tastes = list("galaretka" = 1, "pączek" = 3, "matcha" = 1)
 	is_decorated = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 

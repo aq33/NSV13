@@ -44,7 +44,7 @@
 
 /obj/item/ammo_box/magazine/nsv/examine(mob/user)
 	. = ..()
-	. += "<span class ='notice'>It has [ammo_count()] bullets left.</span>"
+	. += "<span class ='notice'>Zostało naboi: [ammo_count()].</span>"
 
 /obj/item/ammo_box/magazine/nsv/pdc
 	name = "point defense cannon ammo (30.12x82mm)"

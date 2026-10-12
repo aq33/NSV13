@@ -31,12 +31,12 @@
 	if(istype(I, /obj/item/swapper))
 		var/obj/item/swapper/other_swapper = I
 		if(other_swapper.linked_swapper)
-			to_chat(user, "<span class='warning'>[other_swapper] is already linked. Break the current link to establish a new one.</span>")
+			to_chat(user, "<span class='warning'>[other_swapper] jest już połączony. Zerwij obecne połączenie, by nawiązać nowe.</span>")
 			return
 		if(linked_swapper)
-			to_chat(user, "<span class='warning'>[src] is already linked. Break the current link to establish a new one.</span>")
+			to_chat(user, "<span class='warning'>[src] jest już połączony. Zerwij obecne połączenie, by nawiązać nowe.</span>")
 			return
-		to_chat(user, "<span class='notice'>You establish a quantum link between the two devices.</span>")
+		to_chat(user, "<span class='notice'>Nawiązujesz połączenie kwantowe między dwoma urządzeniami.</span>")
 		linked_swapper = other_swapper
 		other_swapper.linked_swapper = src
 		update_icon()
@@ -46,33 +46,33 @@
 
 /obj/item/swapper/attack_self(mob/living/user)
 	if(world.time < next_use)
-		to_chat(user, "<span class='warning'>[src] is still recharging.</span>")
+		to_chat(user, "<span class='warning'>[src] wciąż się ładuje.</span>")
 		return
 	if(QDELETED(linked_swapper))
-		to_chat(user, "<span class='warning'>[src] is not linked with another swapper.</span>")
+		to_chat(user, "<span class='warning'>[src] nie jest połączony z innym zamiennikiem.</span>")
 		return
 	playsound(src, 'sound/weapons/flash.ogg', 25, 1)
-	to_chat(user, "<span class='notice'>You activate [src].</span>")
+	to_chat(user, "<span class='notice'>Aktywujesz [src].</span>")
 	playsound(linked_swapper, 'sound/weapons/flash.ogg', 25, 1)
 	if(ismob(linked_swapper.loc))
 		var/mob/holder = linked_swapper.loc
-		to_chat(holder, "<span class='notice'>[linked_swapper] starts buzzing.</span>")
+		to_chat(holder, "<span class='notice'>[linked_swapper] zaczyna brzęczeć.</span>")
 	next_use = world.time + cooldown //only the one used goes on cooldown
 	addtimer(CALLBACK(src, PROC_REF(swap), user), 25)
 
 /obj/item/swapper/examine(mob/user)
 	. = ..()
 	if(world.time < next_use)
-		. += "<span class='warning'>Time left to recharge: [DisplayTimeText(next_use - world.time)].</span>"
+		. += "<span class='warning'>Pozostały czas ładowania: [DisplayTimeText(next_use - world.time)].</span>"
 	if(linked_swapper)
-		. += "<span class='notice'><b>Linked.</b> Alt-Click to break the quantum link.</span>"
+		. += "<span class='notice'><b>Połączony.</b> Alt-kliknij, by zerwać połączenie kwantowe.</span>"
 	else
-		. += "<span class='notice'><b>Not Linked.</b> Use on another quantum spin inverter to establish a quantum link.</span>"
+		. += "<span class='notice'><b>Niepołączony.</b> Użyj na innym odwracaczu spinu kwantowego, by nawiązać połączenie kwantowe.</span>"
 
 /obj/item/swapper/AltClick(mob/living/user)
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
-	to_chat(user, "<span class='notice'>You break the current quantum link.</span>")
+	to_chat(user, "<span class='notice'>Zrywasz obecne połączenie kwantowe.</span>")
 	if(!QDELETED(linked_swapper))
 		linked_swapper.linked_swapper = null
 		linked_swapper.update_icon()
@@ -111,6 +111,6 @@
 		do_teleport(B, target_A, channel = TELEPORT_CHANNEL_QUANTUM)
 		if(ismob(B))
 			var/mob/M = B
-			to_chat(M, "<span class='warning'>[linked_swapper] activates, and you find yourself somewhere else.</span>")
+			to_chat(M, "<span class='warning'>[linked_swapper] się aktywuje, a ty nagle jesteś gdzie indziej.</span>")
 			log_combat(user, B, "swapped to [AREACOORD(B)]")
 			log_game("[key_name(B)] has been swapped to [AREACOORD(B)]! Quantum Spin Inverter activated by [key_name(user)].")

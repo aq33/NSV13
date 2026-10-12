@@ -58,9 +58,9 @@ SUBSYSTEM_DEF(vote)
 		if(non_voters.len > 0)
 			switch(mode)
 				if("restart")
-					choices["Continue Playing"] += non_voters.len
-					if(choices["Continue Playing"] >= greatest_votes)
-						greatest_votes = choices["Continue Playing"]
+					choices["Gramy dalej"] += non_voters.len
+					if(choices["Gramy dalej"] >= greatest_votes)
+						greatest_votes = choices["Gramy dalej"]
 				if("gamemode")
 					if(GLOB.master_mode in choices)
 						choices[GLOB.master_mode] += non_voters.len
@@ -90,16 +90,16 @@ SUBSYSTEM_DEF(vote)
 							factor = 1.2
 						else
 							factor = 1.4
-					choices["Initiate Crew Transfer"] += round(non_voters.len * factor)
+					choices["Rozpocznij transfer załogi"] += round(non_voters.len * factor)
 				if("Press On Or Return Home?") //NSV13 - Round extension vote
 					var/datum/star_system/target = SSstar_system.return_system
-					choices["Return to [target.name]]"] += non_voters.len
-					if(choices["Return to [target.name]]"] >= greatest_votes)
-						greatest_votes = choices["Return to [target.name]"]
+					choices["Powrót do [target.name]"] += non_voters.len
+					if(choices["Powrót do [target.name]"] >= greatest_votes)
+						greatest_votes = choices["Powrót do [target.name]"]
 				if("hardmode") //NSV13 - Hardmode vote
-					choices["Play a normal round"] += non_voters.len
-					if(choices["Play a normal round"] >= greatest_votes) //You need an absolute majority
-						greatest_votes = choices["Play a normal round"]
+					choices["Zwykła runda"] += non_voters.len
+					if(choices["Zwykła runda"] >= greatest_votes) //You need an absolute majority
+						greatest_votes = choices["Zwykła runda"]
 	//get all options with that many votes and return them in a list
 	. = list()
 	if(greatest_votes)
@@ -126,20 +126,20 @@ SUBSYSTEM_DEF(vote)
 				votes = 0
 			text += "\n<b>[choices[i]]:</b> [votes] ([total_votes ? (round((votes/total_votes), 0.01)*100) : "0"]%"
 			if(mode == "map")
-				text += " chance)"
+				text += " szans)"
 			else
 				text += ")"
 		if(mode != "custom")
 			if(winners.len > 1)
-				text = "\n<b>Vote Tied Between:</b>"
+				text = "\n<b>Remis między:</b>"
 				for(var/option in winners)
 					text += "\n\t[option]"
 			. = pick(winners)
-			text += "\n<b>Vote Result: [.]</b>"
+			text += "\n<b>Wynik głosowania: [.]</b>"
 		else
-			text += "\n<b>Did not vote:</b> [GLOB.clients.len-voted.len]"
+			text += "\n<b>Nie głosowało:</b> [GLOB.clients.len-voted.len]"
 	else
-		text += "<b>Vote Result: Inconclusive - No Votes!</b>"
+		text += "<b>Wynik głosowania: nierozstrzygnięty - brak głosów!</b>"
 	log_vote(text)
 	// NSV13 - record who voted for what during the map vote
 	if(mode == "map")
@@ -163,7 +163,7 @@ SUBSYSTEM_DEF(vote)
 	if(.)
 		switch(mode)
 			if("restart")
-				if(. == "Restart Round")
+				if(. == "Zrestartuj rundę")
 					restart = TRUE
 			if("gamemode")
 				if(GLOB.master_mode != .)
@@ -174,25 +174,25 @@ SUBSYSTEM_DEF(vote)
 				SSmapping.map_voted = TRUE
 				SStgui.close_uis(src) // NSV13 - close any current Vote UIs so the normal one comes back
 			if("transfer")
-				if(. == "Initiate Crew Transfer")
-					SSshuttle.requestEvac(null, "Crew Transfer Requested.")
+				if(. == "Rozpocznij transfer załogi")
+					SSshuttle.requestEvac(null, "Zażądano transferu załogi.")
 					SSshuttle.emergencyNoRecall = TRUE //Prevent Recall.
 					var/obj/machinery/computer/communications/C = locate() in GLOB.machines
 					if(C)
 						C.post_status("shuttle")
 			if("Press On Or Return Home?") //NSV13 - Round extension vote
-				if(. == "Request Additional Objectives")
-					priority_announce("Additional Objectives") //TEMP
+				if(. == "Poproś o dodatkowe cele")
+					priority_announce("Dodatkowe cele") //TEMP
 					SSovermap_mode.round_extended = TRUE
 					SSovermap_mode.request_additional_objectives()
 					SSovermap_mode.already_ended = FALSE
 					SSovermap_mode.objectives_completed = FALSE
 				else
-					priority_announce("Returning to [SSstar_system.return_system.name]") //TEMP
+					priority_announce("Powrót do [SSstar_system.return_system.name]") //TEMP
 					var/obj/structure/overmap/OM = SSstar_system.find_main_overmap()
 					OM.force_return_jump()
 			if("hardmode") //NSV13 - harder gamemode
-				if(. == "Let's GO FOR IT")
+				if(. == "DAWAJ, IDZIEMY NA TO")
 					SSovermap_mode.toggle_hardmode()
 	if(restart)
 		var/active_admins = FALSE
@@ -203,7 +203,7 @@ SUBSYSTEM_DEF(vote)
 		if(!active_admins)
 			SSticker.Reboot("Restart vote successful.", "restart vote")
 		else
-			to_chat(world, "<span style='boldannounce'>Notice:Restart vote will not restart the server automatically because there are active admins on.</span>")
+			to_chat(world, "<span style='boldannounce'>Uwaga: głosowanie nie zrestartuje serwera automatycznie, bo są aktywni admini.</span>")
 			message_admins("A restart vote has passed, but there are active admins on with +server, so it has been canceled. If you wish, you may restart the server.")
 
 	return .
@@ -230,7 +230,7 @@ SUBSYSTEM_DEF(vote)
 		if(started_time)
 			var/next_allowed_time = (started_time + CONFIG_GET(number/vote_delay))
 			if(mode)
-				to_chat(usr, "<span class='warning'>There is already a vote in progress! please wait for it to finish.</span>")
+				to_chat(usr, "<span class='warning'>Trwa już głosowanie! Zaczekaj, aż się skończy.</span>")
 				return 0
 
 			var/lower_admin = FALSE
@@ -239,13 +239,13 @@ SUBSYSTEM_DEF(vote)
 				lower_admin = TRUE
 
 			if(next_allowed_time > world.time && !lower_admin)
-				to_chat(usr, "<span class='warning'>A vote was initiated recently, you must wait [DisplayTimeText(next_allowed_time-world.time)] before a new vote can be started!</span>")
+				to_chat(usr, "<span class='warning'>Niedawno odbyło się głosowanie, musisz zaczekać [DisplayTimeText(next_allowed_time-world.time)], zanim rozpoczniesz nowe!</span>")
 				return 0
 
 		reset()
 		switch(vote_type)
 			if("restart")
-				choices.Add("Restart Round","Continue Playing")
+				choices.Add("Zrestartuj rundę","Gramy dalej")
 			if("gamemode")
 				choices.Add(config.votable_modes)
 			if("map")
@@ -261,18 +261,18 @@ SUBSYSTEM_DEF(vote)
 					choices.Add(valid_map)
 				SStgui.close_uis(src) // NSV13 - close any current Vote UIs so they have to reopen and get the alternate UI
 			if("transfer")
-				choices.Add("Initiate Crew Transfer", "Continue Playing")
+				choices.Add("Rozpocznij transfer załogi", "Gramy dalej")
 			if("Press On Or Return Home?") //NSV13 - Round extension vote
 				var/datum/star_system/target = SSstar_system.return_system
-				choices.Add("Return to [target.name]", "Request Additional Objectives")
+				choices.Add("Powrót do [target.name]", "Poproś o dodatkowe cele")
 			if("hardmode") //NSV13 - Hardmode vote
-				choices.Add("Let's GO FOR IT", "Play a normal round")
+				choices.Add("DAWAJ, IDZIEMY NA TO", "Zwykła runda")
 			if("custom")
-				question = stripped_input(usr,"What is the vote for?")
+				question = stripped_input(usr,"Czego dotyczy głosowanie?")
 				if(!question)
 					return 0
 				for(var/i=1,i<=10,i++)
-					var/option = capitalize(stripped_input(usr,"Please enter an option or hit cancel to finish"))
+					var/option = capitalize(stripped_input(usr,"Wpisz opcję albo kliknij Anuluj, żeby zakończyć"))
 					if(!option || mode || !usr.client)
 						break
 					choices.Add(option)
@@ -281,18 +281,19 @@ SUBSYSTEM_DEF(vote)
 		mode = vote_type
 		initiator = initiator_key
 		started_time = world.time
-		var/text = "[capitalize(mode)] vote started by [initiator ? initiator : "CentCom"]."
+		var/static/list/vote_names_pl = list("restart" = "restart rundy", "gamemode" = "tryb gry", "map" = "mapa", "transfer" = "transfer załogi", "custom" = "własne", "hardmode" = "tryb trudny", "Press On Or Return Home?" = "lecimy dalej czy wracamy?")
+		var/text = "Głosowanie ([vote_names_pl[mode] || mode]) rozpoczęte przez: [initiator ? initiator : "Centrala"]."
 		if(mode == "custom")
 			text += "\n[question]"
 		log_vote(text)
 		var/vp = CONFIG_GET(number/vote_period)
-		to_chat(world, "\n<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='byond://winset?command=vote'>here</a> to place your votes.\nYou have [DisplayTimeText(vp)] to vote.</font>")
+		to_chat(world, "\n<font color='purple'><b>[text]</b>\nWpisz <b>vote</b> albo kliknij <a href='byond://winset?command=vote'>tutaj</a>, żeby zagłosować.\nMasz [DisplayTimeText(vp)] na oddanie głosu.</font>")
 		time_remaining = round(vp/10)
 		for(var/c in GLOB.clients)
 			var/client/C = c
 			var/datum/action/vote/V = new
 			if(question)
-				V.name = "Vote: [question]"
+				V.name = "Głosowanie: [question]"
 			C.player_details.player_actions += V
 			V.Grant(C.mob)
 			generated_actions += V

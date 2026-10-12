@@ -96,7 +96,7 @@ export const Panel = (props, context) => {
                   color="grey"
                   selected={audio.visible}
                   icon="music"
-                  tooltip="Music player"
+                  tooltip="Odtwarzacz muzyki"
                   tooltipPosition="bottom-start"
                   onClick={() => audio.toggle()} />
               </Stack.Item>
@@ -105,8 +105,8 @@ export const Panel = (props, context) => {
                   icon={settings.visible ? 'times' : 'cog'}
                   selected={settings.visible}
                   tooltip={settings.visible
-                    ? 'Close settings'
-                    : 'Open settings'}
+                    ? 'Zamknij ustawienia'
+                    : 'Otwórz ustawienia'}
                   tooltipPosition="bottom-start"
                   onClick={() => settings.toggle()} />
               </Stack.Item>
@@ -137,17 +137,17 @@ export const Panel = (props, context) => {
                     <Button
                       color="white"
                       onClick={() => Byond.command('.reconnect')}>
-                      Reconnect
+                      Połącz ponownie
                     </Button>
                   )}>
-                  You are either AFK, experiencing lag or the connection
-                  has closed.
+                  Jesteś AFK, masz lagi albo połączenie
+                  zostało zerwane.
                 </Notifications.Item>
               )}
               {game.roundRestartedAt && (
                 <Notifications.Item>
-                  The connection has been closed because the server is
-                  restarting. Please wait while you automatically reconnect.
+                  Połączenie zostało zamknięte, bo serwer się restartuje.
+                  Zaczekaj, za chwilę połączysz się automatycznie.
                 </Notifications.Item>
               )}
             </Notifications>

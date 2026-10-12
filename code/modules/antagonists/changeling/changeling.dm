@@ -3,8 +3,8 @@
 #define LING_ABSORB_RECENT_SPEECH			8	//The amount of recent spoken lines to gain on absorbing a mob
 
 /datum/antagonist/changeling
-	name = "Changeling"
-	roundend_category  = "changelings"
+	name = "Zmiennokształtny"
+	roundend_category  = "zmiennokształtni"
 	antagpanel_category = "Changeling"
 	banning_key = ROLE_CHANGELING
 	required_living_playtime = 4
@@ -61,9 +61,9 @@
 /datum/antagonist/changeling/proc/generate_name()
 	var/honorific
 	if(owner.current.gender == FEMALE)
-		honorific = "Ms."
+		honorific = "Pani"
 	else
-		honorific = "Mr."
+		honorific = "Pan"
 	if(GLOB.possible_changeling_IDs.len)
 		changelingID = pick(GLOB.possible_changeling_IDs)
 		GLOB.possible_changeling_IDs -= changelingID
@@ -83,7 +83,7 @@
 	create_initial_profile()
 	if(give_objectives)
 		forge_objectives()
-	handle_clown_mutation(owner.current, "You have evolved beyond your clownish nature, allowing you to wield weapons without harming yourself.")
+	handle_clown_mutation(owner.current, "Ewoluujesz ponad swoją klaunią naturę i możesz używać broni, nie raniąc samego siebie.")
 	owner.current.grant_all_languages(FALSE, FALSE, TRUE)	//Grants omnitongue. We are able to transform our body after all.
 	. = ..()
 
@@ -158,27 +158,27 @@
 			break
 
 	if(!thepower)
-		to_chat(owner.current, "This is awkward. Changeling power purchase failed, please report this bug to a coder!")
+		to_chat(owner.current, "Niezręcznie wyszło. Zakup zdolności zmiennokształtnego się nie powiódł, zgłoś ten błąd koderom!")
 		return
 
 	if(absorbedcount < thepower.req_dna)
-		to_chat(owner.current, "We lack the energy to evolve this ability!")
+		to_chat(owner.current, "Brakuje nam energii, by wyewoluować tę zdolność!")
 		return
 
 	if(has_sting(thepower))
-		to_chat(owner.current, "We have already evolved this ability!")
+		to_chat(owner.current, "Już wyewoluowaliśmy tę zdolność!")
 		return
 
 	if(thepower.dna_cost < 0)
-		to_chat(owner.current, "We cannot evolve this ability.")
+		to_chat(owner.current, "Nie możemy wyewoluować tej zdolności.")
 		return
 
 	if(geneticpoints < thepower.dna_cost)
-		to_chat(owner.current, "We have reached our capacity for abilities.")
+		to_chat(owner.current, "Osiągnęliśmy limit zdolności.")
 		return
 
 	if(HAS_TRAIT(owner.current, TRAIT_DEATHCOMA))//To avoid potential exploits by buying new powers while in stasis, which clears your verblist.
-		to_chat(owner.current, "We lack the energy to evolve new abilities right now.")
+		to_chat(owner.current, "Brakuje nam teraz energii, by wyewoluować nowe zdolności.")
 		return
 
 	log_game("[sting_name] purchased by [owner.current.ckey]/[owner.current.name] the [owner.current.job] for [thepower.dna_cost] GP, [geneticpoints] GP remaining.")
@@ -188,20 +188,20 @@
 
 /datum/antagonist/changeling/proc/readapt()
 	if(!ishuman(owner.current))
-		to_chat(owner.current, "<span class='danger'>We can't remove our evolutions in this form!</span>")
+		to_chat(owner.current, "<span class='danger'>W tej formie nie możemy pozbyć się naszych ewolucji!</span>")
 		return
 	if(isabsorbing)
-		to_chat(owner.current, "<span class='danger'>We cannot readapt right now!</span>")
+		to_chat(owner.current, "<span class='danger'>Nie możemy się teraz ponownie przystosować!</span>")
 		return
 	if(canrespec)
-		to_chat(owner.current, "<span class='notice'>We have removed our evolutions from this form, and are now ready to readapt.</span>")
+		to_chat(owner.current, "<span class='notice'>Pozbyliśmy się ewolucji z tej formy i jesteśmy gotowi, by ponownie się przystosować.</span>")
 		reset_powers()
 		canrespec = 0
 		SSblackbox.record_feedback("tally", "changeling_power_purchase", 1, "Readapt")
 		log_game("Genetic powers refunded by [owner.current.ckey]/[owner.current.name] the [owner.current.job], [geneticpoints] GP remaining.")
 		return 1
 	else
-		to_chat(owner.current, "<span class='danger'>You lack the power to readapt your evolutions!</span>")
+		to_chat(owner.current, "<span class='danger'>Brakuje ci mocy, by ponownie przystosować swoje ewolucje!</span>")
 		return 0
 
 //Called in life()
@@ -235,31 +235,31 @@
 		return
 	if(isipc(target))
 		if(verbose)
-			to_chat(user, "<span class='warning'>We cannot absorb mechanical entities!</span>")
+			to_chat(user, "<span class='warning'>Nie możemy wchłaniać mechanicznych istot!</span>")
 		return
 	if(NO_DNA_COPY in target.dna.species.species_traits)
 		if(verbose)
-			to_chat(user, "<span class='warning'>[target] is not compatible with our biology.</span>")
+			to_chat(user, "<span class='warning'>[target] nie jest zgodny z naszą biologią.</span>")
 		return
 	if(HAS_TRAIT(target, TRAIT_BADDNA))
 		if(verbose)
-			to_chat(user, "<span class='warning'>DNA of [target] is ruined beyond usability!</span>")
+			to_chat(user, "<span class='warning'>DNA [target] jest zbyt zniszczone, by się nadawało!</span>")
 		return
 	if(HAS_TRAIT(target, TRAIT_HUSK))
 		if(verbose)
-			to_chat(user, "<span class='warning'>[target]'s body is ruined beyond usability!</span>")
+			to_chat(user, "<span class='warning'>Ciało [target] jest zbyt zniszczone, by się nadawało!</span>")
 		return
 	if(!ishuman(target))//Absorbing monkeys is entirely possible, but it can cause issues with transforming. That's what lesser form is for anyway!
 		if(verbose)
-			to_chat(user, "<span class='warning'>We could gain no benefit from absorbing a lesser creature.</span>")
+			to_chat(user, "<span class='warning'>Wchłonięcie niższej istoty nic by nam nie dało.</span>")
 		return
 	if(has_dna(target.dna))
 		if(verbose)
-			to_chat(user, "<span class='warning'>We already have this DNA in storage!</span>")
+			to_chat(user, "<span class='warning'>Już mamy to DNA w zapasie!</span>")
 		return
 	if(!target.has_dna())
 		if(verbose)
-			to_chat(user, "<span class='warning'>[target] is not compatible with our biology.</span>")
+			to_chat(user, "<span class='warning'>[target] nie jest zgodny z naszą biologią.</span>")
 		return
 	return 1
 
@@ -367,16 +367,16 @@
 
 /datum/antagonist/changeling/greet()
 	if (you_are_greet)
-		to_chat(owner.current, "<span class='boldannounce'>You are [changelingID], a changeling! You have absorbed and taken the form of a human.</span>")
-	to_chat(owner.current, "<b>You must complete the following tasks:</b>")
+		to_chat(owner.current, "<span class='boldannounce'>Jesteś [changelingID], zmiennokształtny! Wchłonięto człowieka i przybrano jego postać.</span>")
+	to_chat(owner.current, "<b>Musisz wykonać następujące zadania:</b>")
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ling_aler.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 
 	owner.announce_objectives()
 	owner.current.client?.tgui_panel?.give_antagonist_popup("Changeling",
-		"You have absorbed the form of [owner.current] and have infiltrated the station. Use your changeling powers to complete your objectives.")
+		"Przybrano postać [owner.current] i przeniknięto na statek. Użyj mocy zmiennokształtnego, żeby wykonać cele.")
 
 /datum/antagonist/changeling/farewell()
-	to_chat(owner.current, "<span class='userdanger'>You grow weak and lose your powers! You are no longer a changeling and are stuck in your current form!</span>")
+	to_chat(owner.current, "<span class='userdanger'>Słabniesz i tracisz moce! Nie jesteś już zmiennokształtnym i utykasz w obecnej postaci!</span>")
 
 /datum/antagonist/changeling/proc/forge_objectives()
 	//OBJECTIVES - random traitor objectives. Unique objectives "steal brain" and "identity theft".
@@ -481,7 +481,7 @@
 
 /datum/antagonist/changeling/admin_add(datum/mind/new_owner,mob/admin)
 	. = ..()
-	to_chat(new_owner.current, "<span class='boldannounce'>Our powers have awoken. A flash of memory returns to us...we are [changelingID], a changeling!</span>")
+	to_chat(new_owner.current, "<span class='boldannounce'>Nasze moce się przebudziły. Wraca do nas przebłysk wspomnień... jesteśmy [changelingID], zmiennokształtny!</span>")
 
 /datum/antagonist/changeling/get_admin_commands()
 	. = ..()
@@ -549,7 +549,7 @@
 	newprofile.id_hud_state = id_hud_state
 
 /datum/antagonist/changeling/xenobio
-	name = "Xenobio Changeling"
+	name = "Ksenobiologiczny zmiennokształtny"
 	give_objectives = FALSE
 	show_in_roundend = FALSE //These are here for admin tracking purposes only
 	you_are_greet = FALSE
@@ -564,23 +564,23 @@
 	parts += printplayer(owner)
 
 	//Removed sanity if(changeling) because we -want- a runtime to inform us that the changelings list is incorrect and needs to be fixed.
-	parts += "<b>Changeling ID:</b> [changelingID]."
-	parts += "<b>Genomes Extracted:</b> [absorbedcount]"
+	parts += "<b>ID zmiennokształtnego:</b> [changelingID]."
+	parts += "<b>Pozyskane genomy:</b> [absorbedcount]"
 	parts += " "
 	if(objectives.len)
 		var/count = 1
 		for(var/datum/objective/objective in objectives)
 			if(objective.check_completion())
-				parts += "<b>Objective #[count]</b>: [objective.explanation_text] <span class='greentext'>Success!</b></span>"
+				parts += "<b>Cel nr [count]</b>: [objective.explanation_text] <span class='greentext'>Sukces!</b></span>"
 			else
-				parts += "<b>Objective #[count]</b>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
+				parts += "<b>Cel nr [count]</b>: [objective.explanation_text] <span class='redtext'>Porażka.</span>"
 				changelingwin = 0
 			count++
 
 	if(changelingwin)
-		parts += "<span class='greentext'>The changeling was successful!</span>"
+		parts += "<span class='greentext'>Zmiennokształtny odniósł sukces!</span>"
 	else
-		parts += "<span class='redtext'>The changeling has failed.</span>"
+		parts += "<span class='redtext'>Zmiennokształtny poniósł porażkę.</span>"
 
 	return parts.Join("<br>")
 

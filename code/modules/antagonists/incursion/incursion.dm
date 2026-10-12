@@ -1,5 +1,5 @@
 /datum/antagonist/incursion
-	name = "Syndicate Incursion Member"
+	name = "Członek inwazji Syndykatu"
 	antagpanel_category = "Incursion"
 	banning_key = ROLE_INCURSION
 	required_living_playtime = 4
@@ -29,7 +29,7 @@
 /datum/antagonist/incursion/on_removal()
 	SSticker.mode.incursionists -= owner
 	if(owner.current)
-		to_chat(owner.current,"<span class='userdanger'>The Syndicate plans have fallen apart, you are no longer a member of the incursion.</span>")
+		to_chat(owner.current,"<span class='userdanger'>Plany Syndykatu legły w gruzach, nie należysz już do inwazji.</span>")
 	owner.special_role = null
 	return ..()
 
@@ -49,12 +49,12 @@
 	return member_text
 
 /datum/antagonist/incursion/greet()
-	to_chat(owner.current, "<span class='alertsyndie'>You are the member of a Syndicate incursion team!</span>")
-	to_chat(owner.current, "You have formed a team of Syndicate members with a similar mindset and must infiltrate the ranks of the station!")
-	to_chat(owner.current, "You have been implanted with a syndicate headset for communication with your team. This headset can only be heard by you directly and if those pigs at Nanotrasen try to steal it they will violently explode!")
+	to_chat(owner.current, "<span class='alertsyndie'>Należysz do drużyny inwazyjnej Syndykatu!</span>")
+	to_chat(owner.current, "Tworzysz drużynę podobnie myślących członków Syndykatu i musicie przeniknąć w szeregi załogi!")
+	to_chat(owner.current, "Masz wszczepiony zestaw słuchawkowy Syndykatu do komunikacji z drużyną. Słyszysz go tylko ty, a jeśli te świnie z Nanotrasen spróbują go ukraść, gwałtownie wybuchnie!")
 	owner.announce_objectives()
 	owner.current.client?.tgui_panel?.give_antagonist_popup("Incursion",
-		"Work with your team members to complete your objectives.")
+		"Współpracuj z drużyną, by wykonać cele.")
 
 /datum/antagonist/incursion/apply_innate_effects(mob/living/mob_override)
 	if(issilicon(owner))
@@ -97,7 +97,7 @@
 
 /datum/team/incursion
 	name = "syndicate incursion force"
-	member_name = "incursion member"
+	member_name = "członek inwazji"
 
 /datum/team/incursion/is_solo()
 	return FALSE
@@ -111,16 +111,16 @@
 /datum/team/incursion/roundend_report()
 	var/list/parts = list()
 
-	parts += "<span class='header'>The members of the Syndicate incursion were:</span>"
+	parts += "<span class='header'>Członkowie inwazji Syndykatu:</span>"
 	for(var/datum/mind/M in members)
 		parts += printplayer(M)
 	var/win = TRUE
 	var/objective_count = 1
 	for(var/datum/objective/objective in objectives)
 		if(objective.check_completion())
-			parts += "<B>Objective #[objective_count]</B>: [objective.explanation_text] <span class='greentext'>Success!</span>"
+			parts += "<B>Cel nr [objective_count]</B>: [objective.explanation_text] <span class='greentext'>Sukces!</span>"
 		else
-			parts += "<B>Objective #[objective_count]</B>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
+			parts += "<B>Cel nr [objective_count]</B>: [objective.explanation_text] <span class='redtext'>Porażka.</span>"
 			win = FALSE
 		objective_count++
 
@@ -133,12 +133,12 @@
 		if(H)
 			TC_uses += H.total_spent
 			purchases += H.generate_render(show_key = FALSE)
-	parts += "(Syndicates used [TC_uses] TC) [purchases]"
+	parts += "(Syndykat wydał [TC_uses] TC) [purchases]"
 
 	if(win)
-		parts += "<span class='greentext'>The Syndicate were successful with their operation!</span>"
+		parts += "<span class='greentext'>Operacja Syndykatu zakończyła się sukcesem!</span>"
 	else
-		parts += "<span class='redtext'>The Syndicate failed their incursion!</span>"
+		parts += "<span class='redtext'>Inwazja Syndykatu się nie powiodła!</span>"
 
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"
 
@@ -207,9 +207,9 @@
 		log_game("No mind selected.")
 		return
 	target.add_antag_datum(/datum/antagonist/traitor/excommunicate)
-	to_chat(target, "<span class='userdanger'>You have been declared an ex-communicate of the syndicate and are being hunted down.</span>")
-	to_chat(target, "<span class='warning'>You have stolen syndicate objective documents, complete the objectives to throw off the syndicate and sabotage their efforts.</span>")
-	target.store_memory("You have been declared an ex-communicate of the syndicate and are being hunted down by a group of traitors. Be careful!")
+	to_chat(target, "<span class='userdanger'>Syndykat cię wyklął i teraz na ciebie poluje.</span>")
+	to_chat(target, "<span class='warning'>Ukradłeś dokumenty z celami Syndykatu - wykonaj je, by zmylić Syndykat i sabotować jego działania.</span>")
+	target.store_memory("Syndykat cię wyklął i poluje na ciebie grupa zdrajców. Uważaj!")
 	//Create objective
 	var/datum/objective/assassinate/incursion/killchosen = new
 	killchosen.set_target(target)

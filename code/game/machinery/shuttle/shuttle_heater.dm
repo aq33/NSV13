@@ -83,7 +83,7 @@
 /obj/machinery/atmospherics/components/unary/shuttle/heater/examine(mob/user)
 	. = ..()
 	var/datum/gas_mixture/air_contents = airs[1]
-	. += "The engine heater's gas dial reads [air_contents.get_moles(gas_type)] moles of gas.<br>"
+	. += "Pokrętło gazu podgrzewacza silnika pokazuje [air_contents.get_moles(gas_type)] moli gazu.<br>"
 
 /obj/machinery/atmospherics/components/unary/shuttle/heater/proc/updateGasStats()
 	var/datum/gas_mixture/air_contents = airs[1]

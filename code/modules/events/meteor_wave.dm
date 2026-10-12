@@ -49,7 +49,7 @@
 		meteor.target = station_target
 
 /datum/round_event/meteor_wave/on_admin_trigger()
-	if(alert(usr, "Trigger meteors instantly? (This will not change the alert, just send them quicker. Nobody will ever notice!)", "Meteor Trigger", "Yes", "No") == "Yes")
+	if(alert(usr, "Wywołać meteory natychmiast? (Nie zmieni to alarmu, tylko przyśpieszy ich wysłanie. Nikt nigdy nie zauważy!)", "Meteor Trigger", "Yes", "No") == "Yes")
 		announceWhen = 1
 		meteor_time = 1 MINUTES
 
@@ -80,7 +80,7 @@
 			kill()
 
 /datum/round_event/meteor_wave/announce(fake)
-	priority_announce("Meteors have been detected on collision course with the station. Estimated time until impact: 10 MINUTES. Anti-meteor point defense is available for purchase via the station's cargo shuttle.", "Meteor Alert", ANNOUNCER_METEORS)
+	priority_announce("Wykryto meteory na kursie kolizyjnym ze statkiem. Szacowany czas do uderzenia: 10 MINUT. Obronę przeciwmeteorytową można zamówić przez prom zaopatrzeniowy.", "Alarm meteorytowy", ANNOUNCER_METEORS)
 
 /datum/round_event_control/meteor_wave/threatening
 	name = "Meteor Wave: Threatening"

@@ -244,14 +244,14 @@
 		var/datum/nanite_program/NP = X
 		NP.on_death(gibbed)
 
-/datum/component/nanites/proc/receive_signal(datum/source, code, source = "an unidentified source")
+/datum/component/nanites/proc/receive_signal(datum/source, code, source = "niezidentyfikowane źródło")
 	SIGNAL_HANDLER
 
 	for(var/X in programs)
 		var/datum/nanite_program/NP = X
 		NP.receive_signal(code, source)
 
-/datum/component/nanites/proc/receive_comm_signal(datum/source, comm_code, comm_message, comm_source = "an unidentified source")
+/datum/component/nanites/proc/receive_comm_signal(datum/source, comm_code, comm_message, comm_source = "niezidentyfikowane źródło")
 	SIGNAL_HANDLER
 
 	for(var/X in programs)
@@ -349,20 +349,20 @@
 
 	if(!full_scan)
 		if(!stealth)
-			message += "<span class='notice'><b>Nanites Detected</b></span>"
+			message += "<span class='notice'><b>Wykryto nanity</b></span>"
 			message += "<span class='notice'>Saturation: [nanite_volume]/[max_nanites]</span>"
 			. = TRUE
 	else
-		message += "<span class='info'>Nanites Detected</span>"
+		message += "<span class='info'>Wykryto nanity</span>"
 		message += "<span class='info'>================</span>"
 		message += "<span class='info'>Saturation: [nanite_volume]/[max_nanites]</span>"
-		message += "<span class='info'>Safety Threshold: [safety_threshold]</span>"
-		message += "<span class='info'>Cloud ID: [cloud_id ? cloud_id : "None"]</span>"
-		message += "<span class='info'>Cloud Sync: [cloud_active ? "Active" : "Disabled"]</span>"
+		message += "<span class='info'>Próg bezpieczeństwa: [safety_threshold]</span>"
+		message += "<span class='info'>ID chmury: [cloud_id ? cloud_id : "brak"]</span>"
+		message += "<span class='info'>Synchronizacja z chmurą: [cloud_active ? "aktywna" : "wyłączona"]</span>"
 		message += "<span class='info'>================</span>"
-		message += "<span class='info'>Program List:</span>"
+		message += "<span class='info'>Lista programów:</span>"
 		if(!diagnostics)
-			message += "<span class='alert'>Diagnostics Disabled</span>"
+			message += "<span class='alert'>Diagnostyka wyłączona</span>"
 		else
 			for(var/X in programs)
 				var/datum/nanite_program/program = X

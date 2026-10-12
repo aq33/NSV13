@@ -9,7 +9,7 @@
 	viable_mobtypes = list(/mob/living/carbon/human)
 	disease_flags = CAN_CARRY|CAN_RESIST|CURABLE
 	permeability_mod = 0.75
-	desc = "Some speculate that this virus is the cause of the Space Wizard Federation's existence. Subjects affected show the signs of intellectual disability, yelling obscure sentences or total gibberish. On late stages subjects sometime express the feelings of inner power, and, cite, 'the ability to control the forces of cosmos themselves!' A gulp of strong, manly spirits usually reverts them to normal, humanlike, condition."
+	desc = "Niektórzy spekulują, że ten wirus jest przyczyną istnienia Kosmicznej Federacji Czarodziejów. Chorzy wykazują objawy niepełnosprawności intelektualnej, wykrzykując niezrozumiałe zdania lub zupełny bełkot. W późnych stadiach chorzy czasem wyrażają poczucie wewnętrznej mocy i, cytuję, „zdolność sterowania samymi siłami kosmosu!”. Łyk mocnego, męskiego trunku zwykle przywraca ich do normalnego, ludzkiego stanu."
 	danger = DISEASE_HARMFUL
 	required_organs = list(/obj/item/bodypart/head)
 
@@ -29,16 +29,16 @@ STI KALY - blind
 	switch(stage)
 		if(2)
 			if(prob(1))
-				affected_mob.say(pick("You shall not pass!", "Expeliarmus!", "By Merlins beard!", "Feel the power of the Dark Side!"), forced = "wizarditis")
+				affected_mob.say(pick("Nie przejdziesz!", "Expelliarmus!", "Na brodę Merlina!", "Poczuj moc Ciemnej Strony!"), forced = "wizarditis")
 			if(prob(1))
-				to_chat(affected_mob, "<span class='danger'>You feel [pick("that you don't have enough mana", "that the winds of magic are gone", "an urge to summon familiar")].</span>")
+				to_chat(affected_mob, "<span class='danger'>Czujesz, [pick("że brakuje ci many", "że wiatry magii zniknęły", "chęć przywołania chowańca")].</span>")
 
 
 		if(3)
 			if(prob(1))
 				affected_mob.say(pick("NEC CANTIO!","AULIE OXIN FIERA!", "STI KALY!", "TARCOL MINTI ZHERI!"), forced = "wizarditis")
 			if(prob(1))
-				to_chat(affected_mob, "<span class='danger'>You feel [pick("the magic bubbling in your veins","that this location gives you a +1 to INT","an urge to summon familiar")].</span>")
+				to_chat(affected_mob, "<span class='danger'>Czujesz [pick("bulgoczącą w żyłach magię","że to miejsce daje ci +1 do INT","chęć przywołania chowańca")].</span>")
 
 		if(4)
 
@@ -46,7 +46,7 @@ STI KALY - blind
 				affected_mob.say(pick("NEC CANTIO!","AULIE OXIN FIERA!","STI KALY!","EI NATH!"), forced = "wizarditis")
 				return
 			if(prob(1))
-				to_chat(affected_mob, "<span class='danger'>You feel [pick("the tidal wave of raw power building inside","that this location gives you a +2 to INT and +1 to WIS","an urge to teleport")].</span>")
+				to_chat(affected_mob, "<span class='danger'>Czujesz [pick("narastającą w tobie przypływową falę surowej mocy","że to miejsce daje ci +2 do INT i +1 do MDR","chęć teleportacji")].</span>")
 				spawn_wizard_clothes(50)
 			if(prob(1))
 				wizarditis_teleport(affected_mob)

@@ -28,13 +28,13 @@
 		return
 
 	if(H.internal == src)
-		to_chat(H, "<span class='notice'>You close [src] valve.</span>")
+		to_chat(H, "<span class='notice'>Zamykasz zawór [src].</span>")
 		H.internal = null
 		H.update_internals_hud_icon(0)
 	else
 		if(!H.getorganslot(ORGAN_SLOT_BREATHING_TUBE))
 			if(!H.wear_mask)
-				to_chat(H, "<span class='warning'>You need a mask!</span>")
+				to_chat(H, "<span class='warning'>Potrzebujesz maski!</span>")
 				return
 			if(H.wear_mask.mask_adjusted)
 				H.wear_mask.adjustmask(H)
@@ -43,9 +43,9 @@
 				return
 
 		if(H.internal)
-			to_chat(H, "<span class='notice'>You switch your internals to [src].</span>")
+			to_chat(H, "<span class='notice'>Przełączasz zasilanie powietrzem na [src].</span>")
 		else
-			to_chat(H, "<span class='notice'>You open [src] valve.</span>")
+			to_chat(H, "<span class='notice'>Otwierasz zawór [src].</span>")
 		H.internal = src
 		H.update_internals_hud_icon(1)
 	H.update_action_buttons_icon()
@@ -78,28 +78,28 @@
 		icon = src.loc
 	if(!in_range(src, user) && !isobserver(user))
 		if(icon == src)
-			. += "<span class='notice'>If you want any more information you'll need to get closer.</span>"
+			. += "<span class='notice'>Jeśli chcesz więcej informacji, musisz podejść bliżej.</span>"
 		return
 
-	. += "<span class='notice'>The gauge reads [round(air_contents.total_moles(), 0.01)] mol at [round(src.air_contents.return_pressure(),0.01)] kPa.</span>"	//yogs can read mols
+	. += "<span class='notice'>Wskaźnik pokazuje [round(air_contents.total_moles(), 0.01)] mol przy [round(src.air_contents.return_pressure(),0.01)] kPa.</span>"	//yogs can read mols
 
 	var/celsius_temperature = src.air_contents.return_temperature()-T0C
 	var/descriptive
 
 	if (celsius_temperature < 20)
-		descriptive = "cold"
+		descriptive = "zimna"
 	else if (celsius_temperature < 40)
-		descriptive = "room temperature"
+		descriptive = "w temperaturze pokojowej"
 	else if (celsius_temperature < 80)
-		descriptive = "lukewarm"
+		descriptive = "letnia"
 	else if (celsius_temperature < 100)
-		descriptive = "warm"
+		descriptive = "ciepła"
 	else if (celsius_temperature < 300)
-		descriptive = "hot"
+		descriptive = "gorąca"
 	else
-		descriptive = "furiously hot"
+		descriptive = "piekielnie gorąca"
 
-	. += "<span class='notice'>It feels [descriptive].</span>"
+	. += "<span class='notice'>W dotyku jest [descriptive].</span>"
 
 /obj/item/tank/blob_act(obj/structure/blob/B)
 	if(B && B.loc == loc)
@@ -122,7 +122,7 @@
 
 /obj/item/tank/suicide_act(mob/user)
 	var/mob/living/carbon/human/H = user
-	user.visible_message("<span class='suicide'>[user] is putting [src]'s valve to [user.p_their()] lips! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] przykłada zawór [src] do ust! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	playsound(loc, 'sound/effects/spray.ogg', 10, 1, -3)
 	if (!QDELETED(H) && air_contents && air_contents.return_pressure() >= 1000)
 		for(var/obj/item/W in H)

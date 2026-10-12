@@ -312,7 +312,7 @@
 		return
 	set_bolt(TRUE)
 	playsound(src, boltDown, 30, 0, 3)
-	audible_message("<span class='italics'>You hear a click from the bottom of the door.</span>", null,  1)
+	audible_message("<span class='italics'>Słyszysz kliknięcie z dołu drzwi.</span>", null,  1)
 	update_icon()
 
 /obj/machinery/door/airlock/proc/set_bolt(should_bolt)
@@ -331,7 +331,7 @@
 		return
 	set_bolt(FALSE)
 	playsound(src,boltUp,30,0,3)
-	audible_message("<span class='italics'>You hear a click from the bottom of the door.</span>", null,  1)
+	audible_message("<span class='italics'>Słyszysz kliknięcie z dołu drzwi.</span>", null,  1)
 	update_icon()
 
 /obj/machinery/door/airlock/narsie_act()
@@ -365,12 +365,12 @@
 
 /obj/machinery/door/airlock/eminence_act(mob/living/simple_animal/eminence/eminence)
 	..()
-	to_chat(usr, "<span class='brass'>You begin manipulating [src]!</span>")
+	to_chat(usr, "<span class='brass'>Zaczynasz majstrować przy [src]!</span>")
 	if(do_after(eminence, 20, target=get_turf(eminence)))
 		if(welded)
-			to_chat(eminence, text("The airlock has been welded shut!"))
+			to_chat(eminence, text("Śluza została zaspawana!"))
 		else if(locked)
-			to_chat(eminence, text("The door bolts are down!"))
+			to_chat(eminence, text("Rygle drzwi są opuszczone!"))
 		else if(!density)
 			close()
 		else
@@ -725,45 +725,45 @@
 /obj/machinery/door/airlock/examine(mob/user)
 	. = ..()
 	if(obj_flags & EMAGGED)
-		. += "<span class='warning'>Its access panel is smoking slightly.</span>"
+		. += "<span class='warning'>Panel dostępu lekko dymi.</span>"
 	if(charge && !panel_open && in_range(user, src))
-		. += "<span class='warning'>The maintenance panel seems haphazardly fastened.</span>"
+		. += "<span class='warning'>Panel serwisowy wygląda na niedbale przykręcony.</span>"
 	if(charge && panel_open)
-		. += "<span class='warning'>Something is wired up to the airlock's electronics!</span>"
+		. += "<span class='warning'>Coś jest podłączone do elektroniki śluzy!</span>"
 	if(note)
 		if(!in_range(user, src))
-			. += "There's a [note.name] pinned to the front. You can't read it from here."
+			. += "Z przodu przypięto [note.name]. Stąd nie da się tego przeczytać."
 		else
-			. += "There's a [note.name] pinned to the front..."
+			. += "Z przodu przypięto [note.name]..."
 			. += note.examine(user)
 
 	if(panel_open)
 		switch(security_level)
 			if(AIRLOCK_SECURITY_NONE)
-				. += "Its wires are exposed!"
+				. += "Przewody są odsłonięte!"
 			if(AIRLOCK_SECURITY_IRON)
-				. += "Its wires are hidden behind a welded metal cover."
+				. += "Przewody są ukryte za przyspawaną metalową osłoną."
 			if(AIRLOCK_SECURITY_PLASTEEL_I_S)
-				. += "There is some shredded plasteel inside."
+				. += "W środku jest trochę poszarpanej plastali."
 			if(AIRLOCK_SECURITY_PLASTEEL_I)
-				. += "Its wires are behind an inner layer of plasteel."
+				. += "Przewody są za wewnętrzną warstwą plastali."
 			if(AIRLOCK_SECURITY_PLASTEEL_O_S)
-				. += "There is some shredded plasteel inside."
+				. += "W środku jest trochę poszarpanej plastali."
 			if(AIRLOCK_SECURITY_PLASTEEL_O)
-				. += "There is a welded plasteel cover hiding its wires."
+				. += "Przewody zasłania przyspawana osłona z plastali."
 			if(AIRLOCK_SECURITY_PLASTEEL)
-				. += "There is a protective grille over its panel."
+				. += "Na panelu jest ochronna krata."
 	else if(security_level)
 		if(security_level == AIRLOCK_SECURITY_IRON)
-			. += "It looks a bit stronger."
+			. += "Wygląda na nieco wzmocnioną."
 		else
-			. += "It looks very robust."
+			. += "Wygląda na bardzo solidną."
 
 	if(issilicon(user) && !(machine_stat & BROKEN))
-		. += "<span class='notice'>Shift-click [src] to [ density ? "open" : "close"] it.</span>"
-		. += "<span class='notice'>Ctrl-click [src] to [ locked ? "raise" : "drop"] its bolts.</span>"
-		. += "<span class='notice'>Alt-click [src] to [ secondsElectrified ? "un-electrify" : "permanently electrify"] it.</span>"
-		. += "<span class='notice'>Ctrl-Shift-click [src] to [ emergency ? "disable" : "enable"] emergency access.</span>"
+		. += "<span class='notice'>Shift-kliknij [src], by [ density ? "otworzyć" : "zamknąć"].</span>"
+		. += "<span class='notice'>Ctrl-kliknij [src], by [ locked ? "podnieść" : "opuścić"] rygle.</span>"
+		. += "<span class='notice'>Alt-kliknij [src], by [ secondsElectrified ? "wyłączyć elektryfikację" : "trwale zelektryfikować"].</span>"
+		. += "<span class='notice'>Ctrl-Shift-kliknij [src], by [ emergency ? "wyłączyć" : "włączyć"] dostęp awaryjny.</span>"
 
 /obj/machinery/door/airlock/attack_ai(mob/user)
 	if(!canAIControl(user))
@@ -771,15 +771,15 @@
 			hack(user)
 			return
 		else
-			to_chat(user, "<span class='warning'>Airlock AI control has been blocked with a firewall. Unable to hack.</span>")
+			to_chat(user, "<span class='warning'>Sterowanie śluzą przez SI zostało zablokowane zaporą. Nie można zhakować.</span>")
 	if(obj_flags & EMAGGED)
-		to_chat(user, "<span class='warning'>Unable to interface: Airlock is unresponsive.</span>")
+		to_chat(user, "<span class='warning'>Nie można połączyć: śluza nie reaguje.</span>")
 		return
 	if(detonated)
-		to_chat(user, "<span class='warning'>Unable to interface. Airlock control panel damaged.</span>")
+		to_chat(user, "<span class='warning'>Nie można połączyć. Panel sterowania śluzy uszkodzony.</span>")
 		return
 	if(is_jammed())
-		to_chat(user, "<span class='warning'>Unable to interface. Remote communications not responding.</span>")
+		to_chat(user, "<span class='warning'>Nie można połączyć. Komunikacja zdalna nie odpowiada.</span>")
 		return
 
 	ui_interact(user)
@@ -788,43 +788,43 @@
 	set waitfor = 0
 	if(!aiHacking)
 		aiHacking = TRUE
-		to_chat(user, "Airlock AI control has been blocked. Beginning fault-detection.")
+		to_chat(user, "Sterowanie śluzą przez SI zostało zablokowane. Rozpoczynanie wykrywania usterek.")
 		sleep(50)
 		if(canAIControl(user))
-			to_chat(user, "Alert cancelled. Airlock control has been restored without our assistance.")
+			to_chat(user, "Alarm odwołany. Sterowanie śluzą zostało przywrócone bez naszej pomocy.")
 			aiHacking = FALSE
 			return
 		else if(!canAIHack())
-			to_chat(user, "Connection lost! Unable to hack airlock.")
+			to_chat(user, "Utracono połączenie! Nie można zhakować śluzy.")
 			aiHacking = FALSE
 			return
-		to_chat(user, "Fault confirmed: airlock control wire disabled or cut.")
+		to_chat(user, "Usterka potwierdzona: przewód sterujący śluzy wyłączony lub przecięty.")
 		sleep(20)
-		to_chat(user, "Attempting to hack into airlock. This may take some time.")
+		to_chat(user, "Próba zhakowania śluzy. Może to chwilę potrwać.")
 		sleep(200)
 		if(canAIControl(user))
-			to_chat(user, "Alert cancelled. Airlock control has been restored without our assistance.")
+			to_chat(user, "Alarm odwołany. Sterowanie śluzą zostało przywrócone bez naszej pomocy.")
 			aiHacking = FALSE
 			return
 		else if(!canAIHack())
-			to_chat(user, "Connection lost! Unable to hack airlock.")
+			to_chat(user, "Utracono połączenie! Nie można zhakować śluzy.")
 			aiHacking = FALSE
 			return
-		to_chat(user, "Upload access confirmed. Loading control program into airlock software.")
+		to_chat(user, "Potwierdzono dostęp do wgrywania. Wgrywanie programu sterującego do oprogramowania śluzy.")
 		sleep(170)
 		if(canAIControl(user))
-			to_chat(user, "Alert cancelled. Airlock control has been restored without our assistance.")
+			to_chat(user, "Alarm odwołany. Sterowanie śluzą zostało przywrócone bez naszej pomocy.")
 			aiHacking = FALSE
 			return
 		else if(!canAIHack())
-			to_chat(user, "Connection lost! Unable to hack airlock.")
+			to_chat(user, "Utracono połączenie! Nie można zhakować śluzy.")
 			aiHacking = FALSE
 			return
-		to_chat(user, "Transfer complete. Forcing airlock to execute program.")
+		to_chat(user, "Transfer zakończony. Wymuszanie wykonania programu przez śluzę.")
 		sleep(50)
 		//disable blocked control
 		aiControlDisabled = 2
-		to_chat(user, "Receiving control information from airlock.")
+		to_chat(user, "Odbieranie informacji sterujących ze śluzy.")
 		sleep(10)
 		//bring up airlock dialog
 		aiHacking = FALSE
@@ -859,16 +859,16 @@
 		if((HAS_TRAIT(H, TRAIT_DUMB)) && Adjacent(user))
 			playsound(src, 'sound/effects/bang.ogg', 25, TRUE)
 			if(!istype(H.head, /obj/item/clothing/head/helmet))
-				H.visible_message("<span class='danger'>[user] headbutts the airlock.</span>", \
-									"<span class='userdanger'>You headbutt the airlock!</span>")
+				H.visible_message("<span class='danger'>[user] uderza głową w śluzę.</span>", \
+									"<span class='userdanger'>Uderzasz głową w śluzę!</span>")
 				H.Paralyze(100)
 				H.apply_damage(10, BRUTE, BODY_ZONE_HEAD)
 			else
-				visible_message("<span class='danger'>[user] headbutts the airlock. Good thing [user.p_theyre()] wearing a helmet.</span>")
+				visible_message("<span class='danger'>[user] uderza głową w śluzę. Dobrze, że ma hełm.</span>")
 
 /obj/machinery/door/airlock/attempt_wire_interaction(mob/user)
 	if(security_level)
-		to_chat(user, "<span class='warning'>Wires are protected!</span>")
+		to_chat(user, "<span class='warning'>Przewody są zabezpieczone!</span>")
 		return WIRE_INTERACTION_FAIL
 	return ..()
 
@@ -925,28 +925,28 @@
 				if(istype(C, /obj/item/stack/sheet/iron))
 					var/obj/item/stack/sheet/iron/S = C
 					if(S.get_amount() < 2)
-						to_chat(user, "<span class='warning'>You need at least 2 iron sheets to reinforce [src].</span>")
+						to_chat(user, "<span class='warning'>Do wzmocnienia [src] potrzebujesz przynajmniej 2 arkuszy żelaza.</span>")
 						return
-					to_chat(user, "<span class='notice'>You start reinforcing [src].</span>")
+					to_chat(user, "<span class='notice'>Zaczynasz wzmacniać [src].</span>")
 					if(do_after(user, 20, TRUE, src))
 						if(!panel_open || !S.use(2))
 							return
-						user.visible_message("<span class='notice'>[user] reinforces \the [src] with iron.</span>",
-											"<span class='notice'>You reinforce \the [src] with iron.</span>")
+						user.visible_message("<span class='notice'>[user] wzmacnia [src] żelazem.</span>",
+											"<span class='notice'>Wzmacniasz [src] żelazem.</span>")
 						security_level = AIRLOCK_SECURITY_IRON
 						update_icon()
 					return
 				else if(istype(C, /obj/item/stack/sheet/plasteel))
 					var/obj/item/stack/sheet/plasteel/S = C
 					if(S.get_amount() < 2)
-						to_chat(user, "<span class='warning'>You need at least 2 plasteel sheets to reinforce [src].</span>")
+						to_chat(user, "<span class='warning'>Do wzmocnienia [src] potrzebujesz przynajmniej 2 arkuszy plastali.</span>")
 						return
-					to_chat(user, "<span class='notice'>You start reinforcing [src].</span>")
+					to_chat(user, "<span class='notice'>Zaczynasz wzmacniać [src].</span>")
 					if(do_after(user, 20, TRUE, src))
 						if(!panel_open || !S.use(2))
 							return
-						user.visible_message("<span class='notice'>[user] reinforces \the [src] with plasteel.</span>",
-											"<span class='notice'>You reinforce \the [src] with plasteel.</span>")
+						user.visible_message("<span class='notice'>[user] wzmacnia [src] plastalą.</span>",
+											"<span class='notice'>Wzmacniasz [src] plastalą.</span>")
 						security_level = AIRLOCK_SECURITY_PLASTEEL
 						modify_max_integrity(normal_integrity * AIRLOCK_INTEGRITY_MULTIPLIER)
 						damage_deflection = AIRLOCK_DAMAGE_DEFLECTION_R
@@ -956,13 +956,13 @@
 				if(C.tool_behaviour == TOOL_WELDER)
 					if(!C.tool_start_check(user, amount=2))
 						return
-					to_chat(user, "<span class='notice'>You begin cutting the panel's shielding...</span>")
+					to_chat(user, "<span class='notice'>Zaczynasz przecinać osłonę panelu...</span>")
 					if(C.use_tool(src, user, 40, volume=50, amount = 2))
 						if(!panel_open)
 							return
-						user.visible_message("<span class='notice'>[user] cuts through \the [src]'s shielding.</span>",
-										"<span class='notice'>You cut through \the [src]'s shielding.</span>",
-										"<span class='italics'>You hear welding.</span>")
+						user.visible_message("<span class='notice'>[user] przecina osłonę [src].</span>",
+										"<span class='notice'>Przecinasz osłonę [src].</span>",
+										"<span class='italics'>Słyszysz spawanie.</span>")
 						security_level = AIRLOCK_SECURITY_NONE
 						spawn_atom_to_turf(/obj/item/stack/sheet/iron, user.loc, 2)
 						update_icon()
@@ -970,14 +970,14 @@
 			if(AIRLOCK_SECURITY_PLASTEEL_I_S)
 				if(C.tool_behaviour == TOOL_CROWBAR)
 					var/obj/item/crowbar/W = C
-					to_chat(user, "<span class='notice'>You start removing the inner layer of shielding...</span>")
+					to_chat(user, "<span class='notice'>Zaczynasz usuwać wewnętrzną warstwę osłony...</span>")
 					if(W.use_tool(src, user, 40, volume=100))
 						if(!panel_open)
 							return
 						if(security_level != AIRLOCK_SECURITY_PLASTEEL_I_S)
 							return
-						user.visible_message("<span class='notice'>[user] remove \the [src]'s shielding.</span>",
-											"<span class='notice'>You remove \the [src]'s inner shielding.</span>")
+						user.visible_message("<span class='notice'>[user] usuwa osłonę [src].</span>",
+											"<span class='notice'>Usuwasz wewnętrzną osłonę [src].</span>")
 						security_level = AIRLOCK_SECURITY_NONE
 						modify_max_integrity(normal_integrity)
 						damage_deflection = AIRLOCK_DAMAGE_DEFLECTION_N
@@ -988,25 +988,25 @@
 				if(C.tool_behaviour == TOOL_WELDER)
 					if(!C.tool_start_check(user, amount=2))
 						return
-					to_chat(user, "<span class='notice'>You begin cutting the inner layer of shielding...</span>")
+					to_chat(user, "<span class='notice'>Zaczynasz przecinać wewnętrzną warstwę osłony...</span>")
 					if(C.use_tool(src, user, 40, volume=50, amount=2))
 						if(!panel_open)
 							return
-						user.visible_message("<span class='notice'>[user] cuts through \the [src]'s shielding.</span>",
-										"<span class='notice'>You cut through \the [src]'s shielding.</span>",
-										"<span class='italics'>You hear welding.</span>")
+						user.visible_message("<span class='notice'>[user] przecina osłonę [src].</span>",
+										"<span class='notice'>Przecinasz osłonę [src].</span>",
+										"<span class='italics'>Słyszysz spawanie.</span>")
 						security_level = AIRLOCK_SECURITY_PLASTEEL_I_S
 					return
 			if(AIRLOCK_SECURITY_PLASTEEL_O_S)
 				if(C.tool_behaviour == TOOL_CROWBAR)
-					to_chat(user, "<span class='notice'>You start removing outer layer of shielding...</span>")
+					to_chat(user, "<span class='notice'>Zaczynasz usuwać zewnętrzną warstwę osłony...</span>")
 					if(C.use_tool(src, user, 40, volume=100))
 						if(!panel_open)
 							return
 						if(security_level != AIRLOCK_SECURITY_PLASTEEL_O_S)
 							return
-						user.visible_message("<span class='notice'>[user] remove \the [src]'s shielding.</span>",
-											"<span class='notice'>You remove \the [src]'s shielding.</span>")
+						user.visible_message("<span class='notice'>[user] usuwa osłonę [src].</span>",
+											"<span class='notice'>Usuwasz osłonę [src].</span>")
 						security_level = AIRLOCK_SECURITY_PLASTEEL_I
 						spawn_atom_to_turf(/obj/item/stack/sheet/plasteel, user.loc, 1)
 					return
@@ -1014,37 +1014,37 @@
 				if(C.tool_behaviour == TOOL_WELDER)
 					if(!C.tool_start_check(user, amount=2))
 						return
-					to_chat(user, "<span class='notice'>You begin cutting the outer layer of shielding...</span>")
+					to_chat(user, "<span class='notice'>Zaczynasz przecinać zewnętrzną warstwę osłony...</span>")
 					if(C.use_tool(src, user, 40, volume=50, amount=2))
 						if(!panel_open)
 							return
-						user.visible_message("<span class='notice'>[user] cuts through \the [src]'s shielding.</span>",
-										"<span class='notice'>You cut through \the [src]'s shielding.</span>",
-										"<span class='italics'>You hear welding.</span>")
+						user.visible_message("<span class='notice'>[user] przecina osłonę [src].</span>",
+										"<span class='notice'>Przecinasz osłonę [src].</span>",
+										"<span class='italics'>Słyszysz spawanie.</span>")
 						security_level = AIRLOCK_SECURITY_PLASTEEL_O_S
 					return
 			if(AIRLOCK_SECURITY_PLASTEEL)
 				if(C.tool_behaviour == TOOL_WIRECUTTER)
 					if(hasPower() && shock(user, 60)) // Protective grille of wiring is electrified
 						return
-					to_chat(user, "<span class='notice'>You start cutting through the outer grille.</span>")
+					to_chat(user, "<span class='notice'>Zaczynasz przecinać zewnętrzną kratę.</span>")
 					if(C.use_tool(src, user, 10, volume=100))
 						if(!panel_open)
 							return
-						user.visible_message("<span class='notice'>[user] cut through \the [src]'s outer grille.</span>",
-											"<span class='notice'>You cut through \the [src]'s outer grille.</span>")
+						user.visible_message("<span class='notice'>[user] przecina zewnętrzną kratę [src].</span>",
+											"<span class='notice'>Przecinasz zewnętrzną kratę [src].</span>")
 						security_level = AIRLOCK_SECURITY_PLASTEEL_O
 					return
 	if(C.tool_behaviour == TOOL_SCREWDRIVER)
 		if((panel_open && detonated) || protected_door)
-			to_chat(user, "<span class='warning'>[src] has no maintenance panel!</span>")
+			to_chat(user, "<span class='warning'>[src] nie ma panelu serwisowego!</span>")
 			return
 		panel_open = !panel_open
-		to_chat(user, "<span class='notice'>You [panel_open ? "open":"close"] the maintenance panel of the airlock.</span>")
+		to_chat(user, "<span class='notice'>[panel_open ? "Otwierasz":"Zamykasz"] panel serwisowy śluzy.</span>")
 		C.play_tool_sound(src)
 		update_icon()
 	else if((C.tool_behaviour == TOOL_WIRECUTTER) && note)
-		user.visible_message("<span class='notice'>[user] cuts down [note] from [src].</span>", "<span class='notice'>You remove [note] from [src].</span>")
+		user.visible_message("<span class='notice'>[user] odcina [note] z [src].</span>", "<span class='notice'>Zdejmujesz [note] z [src].</span>")
 		C.play_tool_sound(src)
 		note.forceMove(get_turf(user))
 		note = null
@@ -1059,29 +1059,29 @@
 		change_paintjob(C, user)
 	else if(istype(C, /obj/item/doorCharge))
 		if(!panel_open || security_level)
-			to_chat(user, "<span class='warning'>The maintenance panel must be open to apply [C]!</span>")
+			to_chat(user, "<span class='warning'>Panel serwisowy musi być otwarty, by założyć [C]!</span>")
 			return
 		if(obj_flags & EMAGGED)
 			return
 		if(charge && !detonated)
-			to_chat(user, "<span class='warning'>There's already a charge hooked up to this door!</span>")
+			to_chat(user, "<span class='warning'>Do tych drzwi jest już podłączony ładunek!</span>")
 			return
 		if(detonated)
-			to_chat(user, "<span class='warning'>The maintenance panel is destroyed!</span>")
+			to_chat(user, "<span class='warning'>Panel serwisowy jest zniszczony!</span>")
 			return
-		to_chat(user, "<span class='warning'>You apply [C]. Next time someone opens the door, it will explode.</span>")
+		to_chat(user, "<span class='warning'>Zakładasz [C]. Gdy ktoś następnym razem otworzy drzwi, wybuchną.</span>")
 		panel_open = FALSE
 		update_icon()
 		user.transferItemToLoc(C, src, TRUE)
 		charge = C
 	else if(istype(C, /obj/item/paper) || istype(C, /obj/item/photo))
 		if(note)
-			to_chat(user, "<span class='warning'>There's already something pinned to this airlock! Use wirecutters to remove it.</span>")
+			to_chat(user, "<span class='warning'>Do tej śluzy jest już coś przypięte! Użyj nożyc do drutu, by to zdjąć.</span>")
 			return
 		if(!user.transferItemToLoc(C, src))
-			to_chat(user, "<span class='warning'>For some reason, you can't attach [C]!</span>")
+			to_chat(user, "<span class='warning'>Z jakiegoś powodu nie możesz przymocować [C]!</span>")
 			return
-		user.visible_message("<span class='notice'>[user] pins [C] to [src].</span>", "<span class='notice'>You pin [C] to [src].</span>")
+		user.visible_message("<span class='notice'>[user] przypina [C] do [src].</span>", "<span class='notice'>Przypinasz [C] do [src].</span>")
 		note = C
 		update_icon()
 	else if(HAS_TRAIT(C, TRAIT_DOOR_PRYER) && user.a_intent != INTENT_HARM)
@@ -1093,11 +1093,11 @@
 			shock(user,100)
 
 		if(locked)
-			to_chat(user, "<span class='warning'>The bolts are down, it won't budge!</span>")
+			to_chat(user, "<span class='warning'>Rygle są opuszczone, ani drgnie!</span>")
 			return
 
 		if(welded)
-			to_chat(user, "<span class='warning'>It's welded, it won't budge!</span>")
+			to_chat(user, "<span class='warning'>Jest zaspawana, ani drgnie!</span>")
 			return
 
 		var/time_to_open = 5
@@ -1105,10 +1105,10 @@
 			time_to_open = 50
 			playsound(src, 'sound/machines/airlock_alien_prying.ogg', 100, TRUE)
 			prying_so_hard = TRUE
-			to_chat(user, "<span class='warning'>You begin prying open the airlock...</span>")
+			to_chat(user, "<span class='warning'>Zaczynasz wyważać śluzę...</span>")
 			if(do_after(user, time_to_open, TRUE, src))
 				if(!open(2) && density)
-					to_chat(user, "<span class='warning'>Despite your attempts, [src] refuses to open.</span>")
+					to_chat(user, "<span class='warning'>Mimo twoich prób [src] nie chce się otworzyć.</span>")
 			prying_so_hard = FALSE
 		if(!hasPower())
 			INVOKE_ASYNC(src, (density ? PROC_REF(open) : PROC_REF(close)), 2)
@@ -1120,12 +1120,12 @@
 		if(user.a_intent != INTENT_HELP)
 			if(protected_door || !W.tool_start_check(user, amount=0))
 				return
-			user.visible_message("[user] is [welded ? "unwelding":"welding"] the airlock.", \
-							"<span class='notice'>You begin [welded ? "unwelding":"welding"] the airlock...</span>", \
-							"<span class='italics'>You hear welding.</span>")
+			user.visible_message("[user] [welded ? "rozspawuje":"zaspawuje"] śluzę.", \
+							"<span class='notice'>Zaczynasz [welded ? "rozspawywać":"zaspawywać"] śluzę...</span>", \
+							"<span class='italics'>Słyszysz spawanie.</span>")
 			if(W.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, PROC_REF(weld_checks), W, user)))
 				welded = !welded
-				user.visible_message("[user.name] has [welded? "welded shut":"unwelded"] [src].", \
+				user.visible_message("[user.name] [welded? "zaspawuje":"rozspawuje"] [src].", \
 									"<span class='notice'>You [welded ? "weld the airlock shut":"unweld the airlock"].</span>")
 				log_combat(user, src, welded? "welded shut":"unwelded")
 				update_icon()
@@ -1133,17 +1133,17 @@
 			if(obj_integrity < max_integrity)
 				if(!W.tool_start_check(user, amount=0))
 					return
-				user.visible_message("[user] is welding the airlock.", \
-								"<span class='notice'>You begin repairing the airlock...</span>", \
-								"<span class='italics'>You hear welding.</span>")
+				user.visible_message("[user] spawa śluzę.", \
+								"<span class='notice'>Zaczynasz naprawiać śluzę...</span>", \
+								"<span class='italics'>Słyszysz spawanie.</span>")
 				if(W.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, PROC_REF(weld_checks), W, user)))
 					obj_integrity = max_integrity
 					set_machine_stat(machine_stat & ~BROKEN)
-					user.visible_message("[user.name] has repaired [src].", \
-										"<span class='notice'>You finish repairing the airlock.</span>")
+					user.visible_message("[user.name] naprawia [src].", \
+										"<span class='notice'>Kończysz naprawiać śluzę.</span>")
 					update_icon()
 			else
-				to_chat(user, "<span class='notice'>The airlock doesn't need repairing.</span>")
+				to_chat(user, "<span class='notice'>Śluza nie wymaga naprawy.</span>")
 
 /obj/machinery/door/airlock/proc/weld_checks(obj/item/weldingtool/W, mob/user)
 	return !operating && density
@@ -1155,32 +1155,32 @@
 	else
 		beingcrowbarred = 0
 	if(panel_open && charge)
-		to_chat(user, "<span class='notice'>You carefully start removing [charge] from [src]...</span>")
+		to_chat(user, "<span class='notice'>Ostrożnie zaczynasz wyjmować [charge] z [src]...</span>")
 		if(!I.use_tool(src, user, 150, volume=50))
-			to_chat(user, "<span class='warning'>You slip and [charge] detonates!</span>")
+			to_chat(user, "<span class='warning'>Ręka ci się omsknęła i [charge] wybucha!</span>")
 			charge.ex_act(EXPLODE_DEVASTATE)
 			user.Paralyze(60)
 			return
-		user.visible_message("<span class='notice'>[user] removes [charge] from [src].</span>", \
-							 "<span class='notice'>You gently pry out [charge] from [src] and unhook its wires.</span>")
+		user.visible_message("<span class='notice'>[user] wyjmuje [charge] z [src].</span>", \
+							 "<span class='notice'>Delikatnie wyjmujesz [charge] z [src] i odłączasz przewody.</span>")
 		charge.forceMove(get_turf(user))
 		charge = null
 		return
 	if(!security_level && (beingcrowbarred && panel_open && ((obj_flags & EMAGGED) || (density && welded && !operating && !hasPower() && !locked))))
-		user.visible_message("[user] removes the electronics from the airlock assembly.", \
-							 "<span class='notice'>You start to remove electronics from the airlock assembly...</span>")
+		user.visible_message("[user] wyjmuje elektronikę z zespołu śluzy.", \
+							 "<span class='notice'>Zaczynasz wyjmować elektronikę z zespołu śluzy...</span>")
 		if(I.use_tool(src, user, 40, volume=100))
 			deconstruct(TRUE, user)
 			return
 	else if(hasPower())
-		to_chat(user, "<span class='warning'>The airlock's motors resist your efforts to force it!</span>")
+		to_chat(user, "<span class='warning'>Silniki śluzy opierają się twoim próbom jej sforsowania!</span>")
 	else if(locked)
-		to_chat(user, "<span class='warning'>The airlock's bolts prevent it from being forced!</span>")
+		to_chat(user, "<span class='warning'>Rygle śluzy uniemożliwiają jej sforsowanie!</span>")
 	else if(!welded && !operating)
 		if(istype(I, /obj/item/fireaxe)) //being fireaxe'd
 			var/obj/item/fireaxe/F = I
 			if(F && !ISWIELDED(F))
-				to_chat(user, "<span class='warning'>You need to be wielding the fire axe to do that!</span>")
+				to_chat(user, "<span class='warning'>Do tego musisz trzymać topór strażacki oburącz!</span>")
 				return
 		INVOKE_ASYNC(src, (density ? PROC_REF(open) : PROC_REF(close)), 2)
 
@@ -1193,7 +1193,7 @@
 	if(charge && !detonated)
 		panel_open = TRUE
 		update_icon(AIRLOCK_OPENING)
-		visible_message("<span class='warning'>[src]'s panel is blown off in a spray of deadly shrapnel!</span>")
+		visible_message("<span class='warning'>Panel [src] wylatuje w powietrze w fontannie śmiercionośnych odłamków!</span>")
 		charge.forceMove(drop_location())
 		charge.ex_act(EXPLODE_DEVASTATE)
 		detonated = 1
@@ -1312,14 +1312,14 @@
 
 /obj/machinery/door/airlock/proc/change_paintjob(obj/item/airlock_painter/painter, mob/user)
 	if(!allow_repaint)
-		to_chat(user, "<span class='warning'>The airlock painter does not support this airlock.</span>")
+		to_chat(user, "<span class='warning'>Malarz śluz nie obsługuje tej śluzy.</span>")
 		return
 
 	if((!in_range(src, user) && loc != user) || !painter.can_use(user)) // user should be adjacent to the airlock, and the painter should have a toner cartridge that isn't empty
 		return
 
 	// reads from the airlock painter's `available paintjob` list. lets the player choose a paint option, or cancel painting
-	var/current_paintjob = input(user, "Please select a paintjob for this airlock.") as null|anything in sortList(painter.available_paint_jobs)
+	var/current_paintjob = input(user, "Wybierz malowanie dla tej śluzy.") as null|anything in sortList(painter.available_paint_jobs)
 	if(!current_paintjob) // if the user clicked cancel on the popup, return
 		return
 
@@ -1327,7 +1327,7 @@
 	var/obj/machinery/door/airlock/airlock = airlock_type // we need to create a new typed variable of the airlock and assembly to read initial values from them
 	var/obj/structure/door_assembly/assembly = initial(airlock.assemblytype)
 	if(airlock_material == "glass" && initial(assembly.noglass)) // prevents painting glass airlocks with a paint job that doesn't have a glass version, such as the freezer
-		to_chat(user, "<span class='warning'>This paint job can only be applied to non-glass airlocks.</span>")
+		to_chat(user, "<span class='warning'>To malowanie można nałożyć tylko na śluzy bez szyb.</span>")
 		return
 	// applies the user-chosen airlock's icon, overlays, assemblytype anim_parts, panel_attachement and note_attachment to the src airlock
 	painter.use_paint(user)
@@ -1347,7 +1347,7 @@
 
 /obj/machinery/door/airlock/emag_act(mob/user)
 	if(protected_door)
-		to_chat(user, "<span class='warning'>[src] has no maintenance panel!</span>")
+		to_chat(user, "<span class='warning'>[src] nie ma panelu serwisowego!</span>")
 		return
 	if(!operating && density && hasPower() && !(obj_flags & EMAGGED))
 		operating = TRUE
@@ -1372,11 +1372,11 @@
 	if(!density) //Already open
 		return
 	if(locked || welded) //Extremely generic, as aliens only understand the basics of how airlocks work.
-		to_chat(user, "<span class='warning'>[src] refuses to budge!</span>")
+		to_chat(user, "<span class='warning'>[src] ani drgnie!</span>")
 		return
-	user.visible_message("<span class='warning'>[user] begins prying open [src].</span>",\
-						"<span class='noticealien'>You begin digging your claws into [src] with all your might!</span>",\
-						"<span class='warning'>You hear groaning metal...</span>")
+	user.visible_message("<span class='warning'>[user] zaczyna wyważać [src].</span>",\
+						"<span class='noticealien'>Z całej siły wbijasz pazury w [src]!</span>",\
+						"<span class='warning'>Słyszysz jęk metalu...</span>")
 	var/time_to_open = 5
 	if(hasPower())
 		time_to_open = 50 //Powered airlocks take longer to open, and are loud.
@@ -1385,7 +1385,7 @@
 
 	if(do_after(user, time_to_open, TRUE, src))
 		if(density && !open(2)) //The airlock is still closed, but something prevented it opening. (Another player noticed and bolted/welded the airlock in time!)
-			to_chat(user, "<span class='warning'>Despite your efforts, [src] managed to resist your attempts to open it!</span>")
+			to_chat(user, "<span class='warning'>Mimo twoich wysiłków [src] opiera się próbom otwarcia!</span>")
 
 /obj/machinery/door/airlock/hostile_lockdown(mob/origin)
 	// Must be powered and have working AI wire.
@@ -1423,11 +1423,11 @@
 		var/message
 		switch(secondsElectrified)
 			if(MACHINE_ELECTRIFIED_PERMANENT)
-				message = "permanently shocked"
+				message = "trwale pod napięciem"
 			if(MACHINE_NOT_ELECTRIFIED)
 				message = "unshocked"
 			else
-				message = "temp shocked for [secondsElectrified] seconds"
+				message = "pod napięciem przez [secondsElectrified] s"
 		LAZYADD(shockedby, text("\[[time_stamp()]\] [key_name(user)] - ([uppertext(message)])"))
 		log_combat(user, src, message)
 		add_hiddenprint(user)
@@ -1459,10 +1459,10 @@
 				A.obj_integrity = A.max_integrity * 0.5
 		else if(obj_flags & EMAGGED)
 			if(user)
-				to_chat(user, "<span class='warning'>You discard the damaged electronics.</span>")
+				to_chat(user, "<span class='warning'>Wyrzucasz uszkodzoną elektronikę.</span>")
 		else
 			if(user)
-				to_chat(user, "<span class='notice'>You remove the airlock electronics.</span>")
+				to_chat(user, "<span class='notice'>Wyjmujesz elektronikę śluzy.</span>")
 
 			var/obj/item/electronics/airlock/ae
 			if(!electronics)
@@ -1483,7 +1483,7 @@
 	switch(the_rcd.mode)
 		if(RCD_DECONSTRUCT)
 			if(security_level != AIRLOCK_SECURITY_NONE)
-				to_chat(user, "<span class='notice'>[src]'s reinforcement needs to be removed first.</span>")
+				to_chat(user, "<span class='notice'>Najpierw trzeba usunąć wzmocnienie [src].</span>")
 				return FALSE
 			return list("mode" = RCD_DECONSTRUCT, "delay" = 50, "cost" = 32)
 	return FALSE
@@ -1491,7 +1491,7 @@
 /obj/machinery/door/airlock/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_DECONSTRUCT)
-			to_chat(user, "<span class='notice'>You deconstruct the airlock.</span>")
+			to_chat(user, "<span class='notice'>Rozbierasz śluzę.</span>")
 			qdel(src)
 			return TRUE
 	return FALSE
@@ -1567,14 +1567,14 @@
 				loseMainPower()
 				update_icon()
 			else
-				to_chat(usr, "Main power is already offline.")
+				to_chat(usr, "Zasilanie główne jest już wyłączone.")
 			. = TRUE
 		if("disrupt-backup")
 			if(!secondsBackupPowerLost)
 				loseBackupPower()
 				update_icon()
 			else
-				to_chat(usr, "Backup power is already offline.")
+				to_chat(usr, "Zasilanie zapasowe jest już wyłączone.")
 			. = TRUE
 		if("shock-restore")
 			shock_restore(usr)
@@ -1615,7 +1615,7 @@
 	if(!user_allowed(user))
 		return
 	if(wires.is_cut(WIRE_SHOCK))
-		to_chat(user, "Can't un-electrify the airlock - The electrification wire is cut.")
+		to_chat(user, "Nie można wyłączyć napięcia na śluzie - przewód elektryfikacji jest przecięty.")
 	else if(isElectrified())
 		set_electrified(MACHINE_NOT_ELECTRIFIED, user)
 
@@ -1623,7 +1623,7 @@
 	if(!user_allowed(user))
 		return
 	if(wires.is_cut(WIRE_SHOCK))
-		to_chat(user, "The electrification wire has been cut")
+		to_chat(user, "Przewód elektryfikacji został przecięty")
 	else
 		set_electrified(MACHINE_DEFAULT_ELECTRIFY_TIME, user)
 
@@ -1631,7 +1631,7 @@
 	if(!user_allowed(user))
 		return
 	if(wires.is_cut(WIRE_SHOCK))
-		to_chat(user, "The electrification wire has been cut")
+		to_chat(user, "Przewód elektryfikacji został przecięty")
 	else
 		set_electrified(MACHINE_ELECTRIFIED_PERMANENT, user)
 
@@ -1639,11 +1639,11 @@
 	if(!user_allowed(user))
 		return
 	if(wires.is_cut(WIRE_BOLTS))
-		to_chat(user, "<span class='warning'>The door bolt drop wire is cut - you can't toggle the door bolts.</span>")
+		to_chat(user, "<span class='warning'>Przewód opuszczania rygli jest przecięty - nie możesz przełączać rygli.</span>")
 		return
 	if(locked)
 		if(!hasPower())
-			to_chat(user, "<span class='warning'>The door has no power - you can't raise the door bolts.</span>")
+			to_chat(user, "<span class='warning'>Drzwi nie mają zasilania - nie możesz podnieść rygli.</span>")
 		else
 			unbolt()
 			log_combat(user, src, "unbolted")
@@ -1661,9 +1661,9 @@
 	if(!user_allowed(user))
 		return
 	if(welded)
-		to_chat(user, text("The airlock has been welded shut!"))
+		to_chat(user, text("Śluza została zaspawana!"))
 	else if(locked)
-		to_chat(user, text("The door bolts are down!"))
+		to_chat(user, text("Rygle drzwi są opuszczone!"))
 	else if(!density)
 		close()
 	else

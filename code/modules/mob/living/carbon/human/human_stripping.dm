@@ -175,7 +175,7 @@ GLOBAL_LIST_INIT(strippable_human_layout, list(
 	if(isnull(item))
 		return FALSE
 
-	to_chat(user, "<span class='notice'>You try to empty [source]'s [pocket_side] pocket.</span>")
+	to_chat(user, "<span class='notice'>Próbujesz opróżnić kieszeń [source] ([pocket_side]).</span>")
 
 	var/log_message = "[key_name(source)] is being pickpocketed of [item] by [key_name(user)] ([pocket_side])"
 	source.log_message(log_message, LOG_ATTACK, color="red")
@@ -190,7 +190,7 @@ GLOBAL_LIST_INIT(strippable_human_layout, list(
 	return result
 
 /datum/strippable_item/mob_item_slot/needs_jumpsuit/pocket/proc/warn_owner(atom/owner)
-	to_chat(owner, "<span class='warning'>You feel your [pocket_side] pocket being fumbled with!</span>")
+	to_chat(owner, "<span class='warning'>Czujesz, że ktoś grzebie ci w kieszeni ([pocket_side])!</span>")
 
 /datum/strippable_item/mob_item_slot/needs_jumpsuit/pocket/left
 	key = STRIPPABLE_ITEM_LPOCKET
@@ -229,12 +229,12 @@ GLOBAL_LIST_INIT(strippable_human_layout, list(
 		return
 
 	carbon_source.visible_message(
-		"<span class='danger'>[user] tries to [isnull(carbon_source.internal) ? "open": "close"] the valve on [source]'s [item.name].</span>",
-		"<span class='userdanger'>[user] tries to [isnull(carbon_source.internal) ? "open": "close"] the valve on your [item.name].</span>",
+		"<span class='danger'>[user] próbuje [isnull(carbon_source.internal) ? "otworzyć": "zamknąć"] zawór [item.name] [source].</span>",
+		"<span class='userdanger'>[user] próbuje [isnull(carbon_source.internal) ? "otworzyć": "zamknąć"] zawór twojego [item.name].</span>",
 		ignored_mobs = user,
 	)
 
-	to_chat(user, "<span class='notice'>You try to [isnull(carbon_source.internal) ? "open": "close"] the valve on [source]'s [item.name]...</span>")
+	to_chat(user, "<span class='notice'>Próbujesz [isnull(carbon_source.internal) ? "otworzyć": "zamknąć"] zawór [item.name] [source]...</span>")
 
 	if(!do_mob(user, carbon_source, INTERNALS_TOGGLE_DELAY))
 		return
@@ -250,12 +250,12 @@ GLOBAL_LIST_INIT(strippable_human_layout, list(
 			carbon_source.update_internals_hud_icon(1)
 
 	carbon_source.visible_message(
-		"<span class='danger'>[user] [isnull(carbon_source.internal) ? "closes": "opens"] the valve on [source]'s [item.name].</span>",
-		"<span class='userdanger'>[user] [isnull(carbon_source.internal) ? "closes": "opens"] the valve on your [item.name].</span>",
+		"<span class='danger'>[user] [isnull(carbon_source.internal) ? "zamyka": "otwiera"] zawór [item.name] [source].</span>",
+		"<span class='userdanger'>[user] [isnull(carbon_source.internal) ? "zamyka": "otwiera"] zawór twojego [item.name].</span>",
 		ignored_mobs = user,
 	)
 
-	to_chat(user, "<span class='notice'>You [isnull(carbon_source.internal) ? "close" : "open"] the valve on [source]'s [item.name].</span>")
+	to_chat(user, "<span class='notice'>[isnull(carbon_source.internal) ? "Zamykasz" : "Otwierasz"] zawór [item.name] [source].</span>")
 
 #undef INTERNALS_TOGGLE_DELAY
 #undef POCKET_EQUIP_DELAY

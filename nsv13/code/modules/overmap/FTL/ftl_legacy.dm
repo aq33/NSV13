@@ -44,15 +44,15 @@
 		var/obj/item/ftl_slipstream_chip/FI = I
 		if(FI.tier > tier)
 			playsound(src, 'sound/machines/terminal_insert_disc.ogg', 100, 0)
-			to_chat(user, "<span class='notice'>You slot [I] into [src], updating its vector calculation systems.</span>")
+			to_chat(user, "<span class='notice'>Wkładasz [I] do [src], aktualizując jego systemy obliczania wektorów.</span>")
 			tier = FI.tier
 			qdel(FI)
 			upgrade()
 		else
-			to_chat(user, "<span class='notice'>[src] has already been upgraded to a higher tier than [FI] can offer.</span>")
+			to_chat(user, "<span class='notice'>[src] został już ulepszony do wyższego poziomu, niż może zaoferować [FI].</span>")
 
 /obj/machinery/computer/ship/ftl_computer/swarmer_act(mob/living/simple_animal/hostile/swarmer/S)
-	to_chat(S, "<span class='warning'>This equipment should be preserved, it will be a useful resource to our masters in the future. Aborting.</span>")
+	to_chat(S, "<span class='warning'>Ten sprzęt należy zachować, w przyszłości będzie cennym zasobem dla naszych panów. Przerywanie.</span>")
 	S.LoseTarget()
 	return FALSE
 
@@ -177,7 +177,7 @@ A way for syndies to track where the player ship is going in advance, so they ca
 	if(!allowed(user))
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='warning'>Access denied</span>")
+		to_chat(user, "<span class='warning'>Odmowa dostępu</span>")
 		return
 	ui_interact(user)
 
@@ -207,7 +207,7 @@ A way for syndies to track where the player ship is going in advance, so they ca
 			screen = 1
 		if("jump")
 			if(ftl_state != FTL_STATE_READY)
-				visible_message("<span class='warning'>[icon2html(src, viewers(src))] Unable to comply. FTL vector calculation still in progress. 'Blind' FTL jumps are prohibited by the system administrative policy.</span>")
+				visible_message("<span class='warning'>[icon2html(src, viewers(src))] Nie można wykonać. Obliczanie wektora FTL wciąż trwa. Skoki FTL „na ślepo” są zabronione przez politykę administracyjną systemu.</span>")
 				return
 			var/target_name = params["target"]
 			for(var/datum/star_system/S in SSstar_system.systems)
@@ -222,11 +222,11 @@ A way for syndies to track where the player ship is going in advance, so they ca
 			if(world.time > await_emergency_ftl_confirm)
 				return
 			if(world.time < linked.next_emergency_jump)
-				say("Failsafe Capacitor still recharging. Emergency transition unavailable.")
+				say("Kondensator awaryjny wciąż się ładuje. Przejście awaryjne niedostępne.")
 				await_emergency_ftl_confirm = 0
 				return
 			if(progress / spoolup_time < 0.25)
-				say("FTL not sufficiently spooled for emergency transition. 25% of full charge required.")
+				say("FTL nie jest wystarczająco rozkręcony do przejścia awaryjnego. Wymagane 25% pełnego ładunku.")
 				await_emergency_ftl_confirm = 0
 				return
 			await_emergency_ftl_confirm = 0
@@ -264,13 +264,13 @@ A way for syndies to track where the player ship is going in advance, so they ca
 
 /obj/machinery/computer/ship/ftl_computer/proc/jump(datum/star_system/target_system, force=FALSE, misjump = FALSE)
 	if(!target_system)
-		radio.talk_into(src, "ERROR. Specified star_system no longer exists.", radio_channel)
+		radio.talk_into(src, "BŁĄD. Wskazany system gwiezdny już nie istnieje.", radio_channel)
 		return
 	linked?.begin_jump(target_system, force, misjump)
 	playsound(src, 'nsv13/sound/voice/ftl_start.wav', 100, FALSE)
-	radio.talk_into(src, "Initiating FTL translation.", radio_channel)
+	radio.talk_into(src, "Rozpoczynanie translacji FTL.", radio_channel)
 	playsound(src, 'nsv13/sound/effects/ship/freespace2/computer/escape.wav', 100, 1)
-	visible_message("<span class='notice'>Initiating FTL jump.</span>")
+	visible_message("<span class='notice'>Rozpoczynanie skoku FTL.</span>")
 	ftl_state = FTL_STATE_JUMPING
 
 /// Begins a jump regardless of whether we have enough fuel or power. Should only be used for debugging and round events
@@ -284,7 +284,7 @@ A way for syndies to track where the player ship is going in advance, so they ca
 	ftl_state = FTL_STATE_READY
 	icon_state = "ftl_ready"
 	playsound(src, 'nsv13/sound/voice/ftl_ready.wav', 100, FALSE)
-	radio.talk_into(src, "FTL vectors calculated. Ready to commence FTL translation.", radio_channel)
+	radio.talk_into(src, "Obliczono wektory FTL. Gotowość do rozpoczęcia translacji FTL.", radio_channel)
 	playsound(src, 'nsv13/sound/effects/ship/freespace2/computer/escape.wav', 100, 1)
 
 /obj/machinery/computer/ship/ftl_computer/proc/spoolup()
@@ -298,7 +298,7 @@ A way for syndies to track where the player ship is going in advance, so they ca
 /obj/machinery/computer/ship/ftl_computer/proc/cancel_ftl()
 	if(depower())
 		playsound(src, 'nsv13/sound/voice/ftl_cancelled.wav', 100, FALSE)
-		radio.talk_into(src, "FTL translation cancelled.", radio_channel)
+		radio.talk_into(src, "Anulowano translację FTL.", radio_channel)
 		return TRUE
 	return FALSE
 
@@ -347,5 +347,5 @@ A way for syndies to track where the player ship is going in advance, so they ca
 	if(!linked.ftl_safety_override)
 		return
 	await_emergency_ftl_confirm = world.time + 15 SECONDS
-	say("Emergency FTL request signal received from Navigation system. Manual confirmation required.")
-	radio.talk_into(src, "Emergency FTL request signal received from Navigation system. Manual confirmation required.", radio_channel)
+	say("Otrzymano sygnał awaryjnego żądania FTL z systemu nawigacji. Wymagane ręczne potwierdzenie.")
+	radio.talk_into(src, "Otrzymano sygnał awaryjnego żądania FTL z systemu nawigacji. Wymagane ręczne potwierdzenie.", radio_channel)

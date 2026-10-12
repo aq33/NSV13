@@ -16,7 +16,7 @@
 	model = "Securitron"
 	bot_core_type = /obj/machinery/bot_core/secbot
 	window_id = "autosec"
-	window_name = "Automatic Security Unit v1.6"
+	window_name = "Automatyczna Jednostka Ochrony v1.6"
 	allow_pai = 0
 	data_hud_type = DATA_HUD_SECURITY_ADVANCED
 	path_image_color = "#FF0000"
@@ -99,30 +99,22 @@
 
 /mob/living/simple_animal/bot/secbot/set_custom_texts()
 
-	text_hack = "You overload [name]'s target identification system."
-	text_dehack = "You reboot [name] and restore the target identification."
-	text_dehack_fail = "[name] refuses to accept your authority!"
+	text_hack = "Przeciążasz system identyfikacji celów [name]."
+	text_dehack = "Restartujesz [name] i przywracasz identyfikację celów."
+	text_dehack_fail = "[name] nie uznaje twojego autorytetu!"
 
 /mob/living/simple_animal/bot/secbot/get_controls(mob/user)
 	var/dat
 	dat += hack(user)
 	dat += showpai(user)
 	dat += text({"
-<TT><B>Securitron v1.6 controls</B></TT><BR><BR>
-Status: []<BR>
-Behaviour controls are [locked ? "locked" : "unlocked"]<BR>
-Maintenance panel panel is [open ? "opened" : "closed"]"},
+<TT><B>Sterowanie securitronem v1.6</B></TT><BR><BR>\nStan: []<BR>\nSterowanie zachowaniem jest [locked ? "zablokowane" : "odblokowane"]<BR>\nPanel serwisowy jest [open ? "otwarty" : "zamknięty"]"},
 
 "<A href='byond://?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A>" )
 
 	if(!locked || issilicon(user) || IsAdminGhost(user))
 		dat += text({"<BR>
-Arrest Unidentifiable Persons: []<BR>
-Arrest for Unauthorized Weapons: []<BR>
-Arrest for Warrant: []<BR>
-Operating Mode: []<BR>
-Report Arrests[]<BR>
-Auto Patrol: []"},
+Aresztuj niezidentyfikowane osoby: []<BR>\nAresztuj za nieautoryzowaną broń: []<BR>\nAresztuj na podstawie nakazu: []<BR>\nTryb pracy: []<BR>\nZgłaszaj aresztowania[]<BR>\nAutopatrol: []"},
 
 "<A href='byond://?src=[REF(src)];operation=idcheck'>[idcheck ? "Yes" : "No"]</A>",
 "<A href='byond://?src=[REF(src)];operation=weaponscheck'>[weaponscheck ? "Yes" : "No"]</A>",
@@ -199,9 +191,9 @@ Auto Patrol: []"},
 	..()
 	if(emagged == 2)
 		if(user)
-			to_chat(user, "<span class='danger'>You short out [src]'s target assessment circuits.</span>")
+			to_chat(user, "<span class='danger'>Zwierasz obwody oceny celów [src].</span>")
 			oldtarget_name = user.name
-		audible_message("<span class='danger'>[src] buzzes oddly!</span>")
+		audible_message("<span class='danger'>[src] dziwnie brzęczy!</span>")
 		declare_arrests = FALSE
 		update_icon()
 
@@ -236,8 +228,8 @@ Auto Patrol: []"},
 /mob/living/simple_animal/bot/secbot/proc/cuff(mob/living/carbon/C)
 	mode = BOT_ARREST
 	playsound(src, 'sound/weapons/cablecuff.ogg', 30, TRUE, -2)
-	C.visible_message("<span class='danger'>[src] is trying to put zipties on [C]!</span>",\
-						"<span class='userdanger'>[src] is trying to put zipties on you!</span>")
+	C.visible_message("<span class='danger'>[src] próbuje założyć opaski zaciskowe [C]!</span>",\
+						"<span class='userdanger'>[src] próbuje założyć ci opaski zaciskowe!</span>")
 	addtimer(CALLBACK(src, PROC_REF(attempt_handcuff), C), 60)
 
 /mob/living/simple_animal/bot/secbot/proc/attempt_handcuff(mob/living/carbon/C)
@@ -272,9 +264,9 @@ Auto Patrol: []"},
 	log_combat(src,C,"stunned")
 	if(declare_arrests)
 		var/area/location = get_area(src)
-		speak("[arrest_type ? "Detaining" : "Arresting"] level [threat] scumbag <b>[C]</b> in [location].", radio_channel)
-	C.visible_message("<span class='danger'>[src] has stunned [C]!</span>",\
-							"<span class='userdanger'>[src] has stunned you!</span>")
+		speak("[arrest_type ? "Zatrzymuję" : "Aresztuję"] szumowinę poziomu [threat] <b>[C]</b> w [location].", radio_channel)
+	C.visible_message("<span class='danger'>[src] ogłusza [C]!</span>",\
+							"<span class='userdanger'>[src] ogłusza cię!</span>")
 
 /mob/living/simple_animal/bot/secbot/handle_automated_action()
 	if(!..())
@@ -397,9 +389,9 @@ Auto Patrol: []"},
 		else if(threatlevel >= 4)
 			target = C
 			oldtarget_name = C.name
-			speak("Level [threatlevel] infraction alert!")
+			speak("Alarm: wykroczenie poziomu [threatlevel]!")
 			playsound(loc, pick('aquila/sound/voice/beepsky/criminal.ogg', 'aquila/sound/voice/beepsky/justice.ogg', 'aquila/sound/voice/beepsky/freeze.ogg'), 50, FALSE) //AQUILA EDIT original was ('aquila/sound/voice/beepsky/criminal.ogg', 'aquila/sound/voice/beepsky/justice.ogg', 'aquila/sound/voice/beepsky/freeze.ogg')
-			visible_message("<b>[src]</b> points at [C.name]!")
+			visible_message("<b>[src]</b> wskazuje na [C.name]!")
 			mode = BOT_HUNT
 			INVOKE_ASYNC(src, PROC_REF(handle_automated_action))
 			break
@@ -412,7 +404,7 @@ Auto Patrol: []"},
 	return FALSE
 
 /mob/living/simple_animal/bot/secbot/explode()
-	visible_message("<span class='boldannounce'>[src] blows apart!</span>")
+	visible_message("<span class='boldannounce'>[src] rozpada się na kawałki!</span>")
 	var/atom/Tsec = drop_location()
 
 	var/obj/item/bot_assembly/secbot/Sa = new (Tsec)

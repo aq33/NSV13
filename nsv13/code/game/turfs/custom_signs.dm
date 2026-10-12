@@ -96,7 +96,7 @@
 /obj/structure/sign/ship/plaque/examine(mob/user)
 	. = ..()
 	var/obj/structure/overmap/scream = get_overmap()
-	to_chat(user, "<span class='notice'>This plaque records those who attended the launching ceremony of the ship you're on. <br> This plaque names the ship as: <b>[scream?.name]</b> </span>")
+	to_chat(user, "<span class='notice'>Ta tablica upamiętnia uczestników ceremonii wodowania okrętu, na którym jesteś. <br> Tablica podaje nazwę okrętu: <b>[scream?.name]</b> </span>")
 
 /obj/structure/sign/ship/pods
 	name = "Escape pods"

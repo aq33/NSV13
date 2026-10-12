@@ -38,14 +38,14 @@
 	. = ..()
 	switch(maint_state)
 		if(MSTATE_UNSCREWED)
-			. += "There is a button labelled \"<A href='byond://?src=[REF(src)];fire_button=1'>Force Eject Shell</A>\"."
+			. += "Jest przycisk z napisem \"<A href='byond://?src=[REF(src)];fire_button=1'>Wymuś wyrzucenie pocisku</A>\"."
 		if(MSTATE_UNBOLTED)
 			pop(.)// this is the laziest way I know of to change an examine line
-			. += "The inner casing has been <b>unbolted</b>, and the loading tray can be <i>pried out</i>."//deconstruction hint
+			. += "Wewnętrzna obudowa została <b>odkręcona</b>, a tacę ładowniczą można <i>wyważyć</i>."//deconstruction hint
 
 /obj/machinery/ship_weapon/deck_turret/crowbar_act(mob/user, obj/item/tool)
 	if(maint_state == MSTATE_UNBOLTED)
-		to_chat(user, "<span class='notice'>You start removing the loading tray from the [src].</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz wyjmować tacę ładowniczą z [src].</span>")
 		if(!do_after(user, 4 SECONDS, target=src))
 			return
 		var/obj/item/ship_weapon/parts/loading_tray/W = locate() in component_parts
@@ -99,10 +99,10 @@
 	if(!core)
 		link_via_id()
 	if(!core)
-		to_chat(user, "<span class='warning'>No gun core detected to link to. Ensure one is placed directly below the turret. </span>")
+		to_chat(user, "<span class='warning'>Nie wykryto rdzenia działa do połączenia. Upewnij się, że znajduje się bezpośrednio pod wieżyczką. </span>")
 		return
 	core.turret = src
-	to_chat(user, "<span class='notice'>Successfully linked to gun core below deck.</span>")
+	to_chat(user, "<span class='notice'>Pomyślnie połączono z rdzeniem działa pod pokładem.</span>")
 	core.update_parts()
 
 //No cheating! You need to load it from below...
@@ -123,7 +123,7 @@
 /obj/machinery/ship_weapon/deck_turret/proc/rack_load(atom/movable/A)
 	if(length(ammo) < max_ammo && istype(A, ammo_type))
 		if(state in GLOB.busy_states)
-			visible_message("<span class='warning'>Unable to perform operation right now, please wait.</span>")
+			visible_message("<span class='warning'>Nie można teraz wykonać operacji, zaczekaj.</span>")
 			return FALSE
 		if(!core || !core.payload_gate)
 			return FALSE
@@ -231,10 +231,10 @@
 	switch(action)
 		if("load")
 			if(core.turret.maint_state > MSTATE_CLOSED)//Can't load a shell if we're doing maintenance
-				to_chat(usr, "<span class='notice'>Cannot feed shell while undergoing maintenance!</span>")
+				to_chat(usr, "<span class='notice'>Nie można podać pocisku podczas konserwacji!</span>")
 				return
 			if(!core.turret || !core.payload_gate)
-				to_chat(usr, "<span class='warning'>Action error - missing components.</span>")
+				to_chat(usr, "<span class='warning'>Błąd akcji - brak komponentów.</span>")
 				return
 			if(!core.turret.rack_load(core.payload_gate.shell))
 				return
@@ -246,7 +246,7 @@
 				new /obj/effect/temp_visual/heal(get_turf(core), "#375637")
 		if("load_powder")
 			if(!core.payload_gate)
-				to_chat(usr, "<span class='warning'>Action error - missing components.</span>")
+				to_chat(usr, "<span class='warning'>Błąd akcji - brak komponentów.</span>")
 				return
 			core.payload_gate.chamber(target)
 
@@ -313,16 +313,16 @@
 	update_parts()
 	var/list/specialbits = list()
 	if(!anchored)
-		specialbits += "NOT ANCHORED"
+		specialbits += "NIEZAKOTWICZONE"
 	if(!turret)
-		specialbits += "NO TURRET FOUND"
+		specialbits += "NIE ZNALEZIONO WIEŻYCZKI"
 	if(!payload_gate)
-		specialbits += "NO PAYLOAD GATE"
+		specialbits += "BRAK BRAMKI ŁADUNKU"
 	if(!length(powder_gates))
-		specialbits += "NO POWDER GATES"
-	to_chat(user, "<span class='notice'>Linkages updated.</span>")
+		specialbits += "BRAK BRAMEK PROCHU"
+	to_chat(user, "<span class='notice'>Zaktualizowano połączenia.</span>")
 	if(length(specialbits))
-		to_chat(user, "<span class='warning'>ERRORS DETECTED: [jointext(specialbits, ", ")]</span>")
+		to_chat(user, "<span class='warning'>WYKRYTO BŁĘDY: [jointext(specialbits, ", ")]</span>")
 	return TRUE
 
 /obj/machinery/deck_turret/core/default_unfasten_wrench(mob/user, obj/item/I, time)
@@ -433,10 +433,10 @@
 	if(get_dist(I, src) > 1)
 		return FALSE
 	if(bag)
-		to_chat(user, "<span class='notice'>[src] is already loaded with [bag].</span>")
+		to_chat(user, "<span class='notice'>[src] jest już załadowany: [bag].</span>")
 		return FALSE
 	if(loading)
-		to_chat(user, "<span class='notice'>[src] is already being loaded...</span>")
+		to_chat(user, "<span class='notice'>[src] jest już ładowany...</span>")
 		return FALSE
 	if(ammo_type && istype(I, ammo_type))
 		load(I, user)
@@ -465,7 +465,7 @@
 		temp /= 2
 	if(do_after(user, temp, target = src))
 		if(user_has_payload(A, user))
-			to_chat(user, "<span class='notice'>You load [A] into [src].</span>")
+			to_chat(user, "<span class='notice'>Ładujesz [A] do [src].</span>")
 			bag = A
 			bag.forceMove(src)
 			icon_state = "[initial(icon_state)]_loaded"
@@ -527,10 +527,10 @@
 	if(get_dist(user, src) > 1)
 		return FALSE
 	if(shell)
-		to_chat(user, "<span class='notice'>[src] is already loaded with [shell].</span>")
+		to_chat(user, "<span class='notice'>[src] jest już załadowany: [shell].</span>")
 		return FALSE
 	if(loading)
-		to_chat(user, "<span class='notice'>[src] is already being loaded...</span>")
+		to_chat(user, "<span class='notice'>[src] jest już ładowany...</span>")
 		return FALSE
 	if(!ammo_type || !istype(A, ammo_type))
 		return FALSE
@@ -550,14 +550,14 @@
 	var/temp = load_delay
 	var/obj/item/ship_weapon/ammunition/naval_artillery/NA = A
 	if(!NA.armed)
-		to_chat(user, "<span class='warning'>[A] is not armed!</span>")
+		to_chat(user, "<span class='warning'>[A] nie jest uzbrojony!</span>")
 		return FALSE
 	loading = TRUE
 	if(locate(/obj/machinery/deck_turret/autoelevator) in orange(2, src))
 		temp /= 2
 	if(do_after(user, temp, target = src))
 		if(user)
-			to_chat(user, "<span class='notice'>You load [A] into [src].</span>")
+			to_chat(user, "<span class='notice'>Ładujesz [A] do [src].</span>")
 			shell = A
 			shell.forceMove(src)
 			icon_state = "[initial(icon_state)]_loaded"

@@ -32,14 +32,14 @@ export const StatStatus = (props, context) => {
                       onClick={() => dispatch({
                         type: 'stat/clearDeadPopup',
                       })} />
-                    You are <b>dead</b>!
+                    <b>Nie żyjesz</b>!
                   </Box>
                 </Flex.Item>
                 <Flex.Item mt={2}>
                   <Box
                     className="deadsay">
-                    Don&#39;t worry, you can still get back into the game
-                    if your body is revived or through ghost roles.
+                    Spokojnie, możesz jeszcze wrócić do gry, jeśli ktoś
+                    ożywi twoje ciało albo przez role dla duchów.
                   </Box>
                 </Flex.Item>
               </div>
@@ -127,7 +127,7 @@ export const StatStatus = (props, context) => {
                   </Flex.Item>
                   <Flex.Item>
                     <Button
-                      content="Start"
+                      content="Rozpocznij"
                       color="transparent"
                       onClick={e => sendMessage({
                         type: 'stat/pressed',
@@ -137,7 +137,7 @@ export const StatStatus = (props, context) => {
                       })} />
                     <Box inline>
                       <Button
-                        content="Dismiss"
+                        content="Odrzuć"
                         color="transparent"
                         onClick={() => dispatch({
                           type: 'stat/clearAlertBr',
@@ -184,14 +184,14 @@ export const HoboStatStatus = (props, context) => {
                   onClick={() => dispatch({
                     type: 'stat/clearDeadPopup',
                   })} />
-                You are <b>dead</b>!
+                <b>Nie żyjesz</b>!
               </Section>
             </Box>
             <Box>
               <Section
                 className="deadsay">
-                Don&#39;t worry, you can still get back into the game
-                if your body is revived or through ghost roles.
+                Spokojnie, możesz jeszcze wrócić do gry, jeśli ktoś
+                ożywi twoje ciało albo przez role dla duchów.
               </Section>
             </Box>
           </div>
@@ -260,7 +260,7 @@ export const HoboStatStatus = (props, context) => {
                 </Box>
                 <Box>
                   <Button
-                    content="Start"
+                    content="Rozpocznij"
                     color="transparent"
                     onClick={e => sendMessage({
                       type: 'stat/pressed',
@@ -270,7 +270,7 @@ export const HoboStatStatus = (props, context) => {
                     })} />
                   <Box inline>
                     <Button
-                      content="Dismiss"
+                      content="Odrzuć"
                       color="transparent"
                       onClick={() => dispatch({
                         type: 'stat/clearAlertBr',

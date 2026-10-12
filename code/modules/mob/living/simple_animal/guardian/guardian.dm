@@ -8,13 +8,13 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	name = "Guardian Spirit"
 	real_name = "Guardian Spirit"
 	desc = "A mysterious being that stands by its charge, ever vigilant."
-	speak_emote = list("hisses")
+	speak_emote = list("syczy")
 	gender = NEUTER
 	mob_biotypes = list(MOB_INORGANIC)
 	bubble_icon = "guardian"
-	response_help  = "passes through"
-	response_disarm = "flails at"
-	response_harm   = "punches"
+	response_help  = "przenika przez"
+	response_disarm = "macha rękami na"
+	response_harm   = "uderza"
 	icon = 'icons/mob/guardian.dmi'
 	icon_state = "magicbase"
 	icon_living = "magicbase"
@@ -27,7 +27,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = INFINITY
-	attacktext = "punches"
+	attacktext = "uderza"
 	maxHealth = INFINITY //The spirit itself is invincible
 	health = INFINITY
 	healable = FALSE //don't brusepack the guardian
@@ -54,11 +54,11 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	var/mob/living/summoner
 	var/range = 10 //how far from the user the spirit can be
 	var/toggle_button_type = /atom/movable/screen/guardian/ToggleMode/Inactive //what sort of toggle button the hud uses
-	var/playstyle_string = "<span class='holoparasite bold'>You are a standard Guardian. You shouldn't exist!</span>"
-	var/magic_fluff_string = "<span class='holoparasite'>You draw the Coder, symbolizing bugs and errors. This shouldn't happen! Submit a bug report!</span>"
-	var/tech_fluff_string = "<span class='holoparasite'>BOOT SEQUENCE COMPLETE. ERROR MODULE LOADED. THIS SHOULDN'T HAPPEN. Submit a bug report!</span>"
-	var/carp_fluff_string = "<span class='holoparasite'>CARP CARP CARP SOME SORT OF HORRIFIC BUG BLAME THE CODERS CARP CARP CARP</span>"
-	var/hive_fluff_string = "<span class='holoparasite'>The mass seems to be an anomaly, it shouldn't exist... Submit a bug report!</span>"
+	var/playstyle_string = "<span class='holoparasite bold'>Jesteś standardowym Strażnikiem. Nie powinieneś istnieć!</span>"
+	var/magic_fluff_string = "<span class='holoparasite'>Wyciągasz Kodera, symbol błędów i bugów. To nie powinno się zdarzyć! Zgłoś błąd!</span>"
+	var/tech_fluff_string = "<span class='holoparasite'>SEKWENCJA STARTOWA ZAKOŃCZONA. WCZYTANO MODUŁ BŁĘDU. TO NIE POWINNO SIĘ ZDARZYĆ. Zgłoś błąd!</span>"
+	var/carp_fluff_string = "<span class='holoparasite'>KARP KARP KARP JAKIŚ STRASZNY BŁĄD WINNI SĄ KODERZY KARP KARP KARP</span>"
+	var/hive_fluff_string = "<span class='holoparasite'>Masa wydaje się anomalią, nie powinna istnieć... Zgłoś błąd!</span>"
 
 /mob/living/simple_animal/hostile/guardian/Initialize(mapload, theme)
 	GLOB.parasites += src
@@ -110,7 +110,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 			icon_state = "holocarp"
 			icon_living = "holocarp"
 			icon_dead = "holocarp"
-			speak_emote = list("gnashes")
+			speak_emote = list("zgrzyta zębami")
 			desc = "A mysterious fish that stands by its charge, ever vigilant."
 			attack_sound = 'sound/weapons/bite.ogg'
 			recolorentiresprite = TRUE
@@ -121,7 +121,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 			icon_state = "hivebase"
 			icon_living = "hivebase"
 			icon_dead = "hivebase"
-			speak_emote = list("telepathically cries")
+			speak_emote = list("woła telepatycznie")
 			desc = "A truly alien creature, it is a mass of unknown organic material, standing by its' owner's side."
 			attack_sound = 'sound/weapons/pierce.ogg'
 	if(!recolorentiresprite) //we want this to proc before stand logs in, so the overlay isn't gone for some reason
@@ -133,11 +133,11 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	if(mind)
 		mind.name = "[real_name]"
 	if(!summoner)
-		to_chat(src, "<span class='holoparasite bold'>For some reason, somehow, you have no summoner. Please report this bug immediately.</span>")
+		to_chat(src, "<span class='holoparasite bold'>Z jakiegoś powodu nie masz przywoływacza. Natychmiast zgłoś ten błąd.</span>")
 		return
-	to_chat(src, "<span class='holoparasite'>You are a <b>[real_name]</b>, bound to serve [summoner.real_name].</span>")
-	to_chat(src, "<span class='holoparasite'>You are capable of manifesting or recalling to your master with the buttons on your HUD. You will also find a button to communicate with [summoner.p_them()] privately there.</span>")
-	to_chat(src, "<span class='holoparasite'>While personally invincible, you will die if [summoner.real_name] does, and any damage dealt to you will have a portion passed on to [summoner.p_them()] as you feed upon [summoner.p_them()] to sustain yourself.</span>")
+	to_chat(src, "<span class='holoparasite'>Jesteś <b>[real_name]</b>, zobowiązany służyć [summoner.real_name].</span>")
+	to_chat(src, "<span class='holoparasite'>Przyciskami na HUD-zie możesz się zmaterializować lub wrócić do swojego pana. Znajdziesz tam też przycisk do prywatnej rozmowy z nim.</span>")
+	to_chat(src, "<span class='holoparasite'>Choć sam jesteś niezniszczalny, zginiesz, jeśli zginie [summoner.real_name], a część obrażeń, które otrzymasz, przejdzie na niego, bo żywisz się nim, by się utrzymać.</span>")
 	to_chat(src, playstyle_string)
 	guardiancustomize()
 
@@ -146,10 +146,10 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	guardianrename()
 
 /mob/living/simple_animal/hostile/guardian/proc/guardianrecolor()
-	guardiancolor = input(src,"What would you like your color to be?","Choose Your Color","#ffffff") as color|null
+	guardiancolor = input(src,"Jaki chcesz mieć kolor?","Wybierz kolor","#ffffff") as color|null
 	chat_color = guardiancolor
 	if(!guardiancolor) //redo proc until we get a color
-		to_chat(src, "<span class='warning'>Not a valid color, please try again.</span>")
+		to_chat(src, "<span class='warning'>Nieprawidłowy kolor, spróbuj ponownie.</span>")
 		guardianrecolor()
 		return
 	if(!recolorentiresprite)
@@ -160,12 +160,12 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 		add_atom_colour(guardiancolor, FIXED_COLOUR_PRIORITY)
 
 /mob/living/simple_animal/hostile/guardian/proc/guardianrename()
-	var/new_name = sanitize_name(reject_bad_text(stripped_input(src, "What would you like your name to be?", "Choose Your Name", real_name, MAX_NAME_LEN)))
+	var/new_name = sanitize_name(reject_bad_text(stripped_input(src, "Jak chcesz się nazywać?", "Wybierz imię", real_name, MAX_NAME_LEN)))
 	if(!new_name) //redo proc until we get a good name
-		to_chat(src, "<span class='warning'>Not a valid name, please try again.</span>")
+		to_chat(src, "<span class='warning'>Nieprawidłowe imię, spróbuj ponownie.</span>")
 		guardianrename()
 		return
-	visible_message("<span class='notice'>Your new name <span class='name'>[new_name]</span> anchors itself in your mind.</span>")
+	visible_message("<span class='notice'>Twoje nowe imię, <span class='name'>[new_name]</span>, zakotwicza się w twoim umyśle.</span>")
 	fully_replace_character_name(null, new_name)
 
 /mob/living/simple_animal/hostile/guardian/Life() //Dies if the summoner dies
@@ -176,9 +176,9 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	if(!QDELETED(summoner))
 		if(summoner.stat == DEAD)
 			forceMove(summoner.loc)
-			to_chat(src, "<span class='danger'>Your summoner has died!</span>")
-			visible_message("<span class='danger'><B>\The [src] dies along with its user!</B></span>")
-			summoner.visible_message("<span class='danger'><B>[summoner]'s body is completely consumed by the strain of sustaining [src]!</B></span>")
+			to_chat(src, "<span class='danger'>Twój przywoływacz nie żyje!</span>")
+			visible_message("<span class='danger'><B>[src] umiera razem ze swoim użytkownikiem!</B></span>")
+			summoner.visible_message("<span class='danger'><B>Ciało [summoner] zostaje całkowicie wyniszczone wysiłkiem podtrzymywania [src]!</B></span>")
 			for(var/obj/item/W in summoner)
 				if(!summoner.dropItemToGround(W))
 					qdel(W)
@@ -186,8 +186,8 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 			death(TRUE)
 			qdel(src)
 	else
-		to_chat(src, "<span class='danger'>Your summoner has died!</span>")
-		visible_message("<span class='danger'><B>[src] dies along with its user!</B></span>")
+		to_chat(src, "<span class='danger'>Twój przywoływacz nie żyje!</span>")
+		visible_message("<span class='danger'><B>[src] umiera razem ze swoim użytkownikiem!</B></span>")
 		death(TRUE)
 		qdel(src)
 	snapback()
@@ -200,9 +200,9 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 			resulthealth = round((abs(HEALTH_THRESHOLD_DEAD - summoner.health) / abs(HEALTH_THRESHOLD_DEAD - summoner.maxHealth)) * 100)
 		else
 			resulthealth = round((summoner.health / summoner.maxHealth) * 100, 0.5)
-		tab_data["Summoner Health"] = GENERATE_STAT_TEXT("[resulthealth]%")
+		tab_data["Zdrowie przywoływacza"] = GENERATE_STAT_TEXT("[resulthealth]%")
 	if(cooldown >= world.time)
-		tab_data["Manifest/Recall Cooldown Remaining"] = GENERATE_STAT_TEXT("[DisplayTimeText(cooldown - world.time)]")
+		tab_data["Odnowienie przywołania/odwołania"] = GENERATE_STAT_TEXT("[DisplayTimeText(cooldown - world.time)]")
 	return tab_data
 
 /mob/living/simple_animal/hostile/guardian/Move() //Returns to summoner if they move out of range
@@ -214,8 +214,8 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 		if(get_dist(get_turf(summoner),get_turf(src)) <= range)
 			return
 		else
-			to_chat(src, "<span class='holoparasite'>You moved out of range, and were pulled back! You can only move [range] meters from [summoner.real_name]!</span>")
-			visible_message("<span class='danger'>\The [src] jumps back to its user.</span>")
+			to_chat(src, "<span class='holoparasite'>Oddalasz się poza zasięg i zostajesz ściągnięty z powrotem! Możesz oddalić się od [summoner.real_name] najwyżej o [range] m!</span>")
+			visible_message("<span class='danger'>[src] wraca do swojego użytkownika.</span>")
 			if(istype(summoner.loc, /obj/effect))
 				Recall(TRUE)
 			else
@@ -231,7 +231,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 
 /mob/living/simple_animal/hostile/guardian/AttackingTarget()
 	if(!is_deployed())
-		to_chat(src, "<span class='danger'><B>You must be manifested to attack!</span></B>")
+		to_chat(src, "<span class='danger'><B>Musisz się zmaterializować, by atakować!</span></B>")
 		return FALSE
 	else
 		return ..()
@@ -240,7 +240,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	drop_all_held_items()
 	..()
 	if(summoner)
-		to_chat(summoner, "<span class='danger'><B>Your [name] died somehow!</span></B>")
+		to_chat(summoner, "<span class='danger'><B>Twój [name] jakoś zginął!</span></B>")
 		summoner.death()
 
 /mob/living/simple_animal/hostile/guardian/update_health_hud()
@@ -259,10 +259,10 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 			return FALSE
 		summoner.adjustBruteLoss(amount)
 		if(amount > 0)
-			to_chat(summoner, "<span class='danger'><B>Your [name] is under attack! You take damage!</span></B>")
-			summoner.visible_message("<span class='danger'><B>Blood sprays from [summoner] as [src] takes damage!</B></span>")
+			to_chat(summoner, "<span class='danger'><B>Twój [name] jest atakowany! Otrzymujesz obrażenia!</span></B>")
+			summoner.visible_message("<span class='danger'><B>Z [summoner] tryska krew, gdy [src] otrzymuje obrażenia!</B></span>")
 			if(summoner.stat == UNCONSCIOUS)
-				to_chat(summoner, "<span class='danger'><B>Your body can't take the strain of sustaining [src] in this condition, it begins to fall apart!</span></B>")
+				to_chat(summoner, "<span class='danger'><B>Twoje ciało w tym stanie nie wytrzymuje wysiłku podtrzymywania [src] i zaczyna się rozpadać!</span></B>")
 				summoner.adjustCloneLoss(amount * 0.5) //dying hosts take 50% bonus damage as cloneloss
 		update_health_hud()
 
@@ -278,7 +278,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 
 /mob/living/simple_animal/hostile/guardian/gib()
 	if(summoner)
-		to_chat(summoner, "<span class='danger'><B>Your [src] was blown up!</span></B>")
+		to_chat(summoner, "<span class='danger'><B>Twój [src] został wysadzony!</span></B>")
 		summoner.gib()
 	ghostize()
 	qdel(src)
@@ -370,15 +370,15 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	return TRUE
 
 /mob/living/simple_animal/hostile/guardian/proc/ToggleMode()
-	to_chat(src, "<span class='danger'><B>You don't have another mode!</span></B>")
+	to_chat(src, "<span class='danger'><B>Nie masz innego trybu!</span></B>")
 
 
 /mob/living/simple_animal/hostile/guardian/proc/ToggleLight()
 	if(!light_on)
-		to_chat(src, "<span class='notice'>You activate your light.</span>")
+		to_chat(src, "<span class='notice'>Włączasz swoje światło.</span>")
 		set_light_on(TRUE)
 	else
-		to_chat(src, "<span class='notice'>You deactivate your light.</span>")
+		to_chat(src, "<span class='notice'>Wyłączasz swoje światło.</span>")
 		set_light_on(FALSE)
 
 
@@ -392,11 +392,11 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 
 /mob/living/simple_animal/hostile/guardian/proc/Communicate()
 	if(summoner)
-		var/input = stripped_input(src, "Please enter a message to tell your summoner.", "Guardian", "")
+		var/input = stripped_input(src, "Wpisz wiadomość do swojego przywoływacza.", "Guardian", "")
 		if(!input)
 			return
 		if(CHAT_FILTER_CHECK(input))
-			to_chat(usr, "<span class='warning'>Your message contains forbidden words.</span>")
+			to_chat(usr, "<span class='warning'>Twoja wiadomość zawiera zakazane słowa.</span>")
 			return
 		input = treat_message_min(input)
 		var/preliminary_message = "<span class='holoparasite bold'>[input]</span>" //apply basic color/bolding
@@ -416,11 +416,11 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	set name = "Communicate"
 	set category = "Guardian"
 	set desc = "Communicate telepathically with your guardian."
-	var/input = stripped_input(src, "Please enter a message to tell your guardian.", "Message", "")
+	var/input = stripped_input(src, "Wpisz wiadomość do swojego strażnika.", "Message", "")
 	if(!input)
 		return
 	if(CHAT_FILTER_CHECK(input))
-		to_chat(usr, "<span class='warning'>Your message contains forbidden words.</span>")
+		to_chat(usr, "<span class='warning'>Twoja wiadomość zawiera zakazane słowa.</span>")
 		return
 	input = treat_message_min(input)
 	var/preliminary_message = "<span class='holoparasite bold'>[input]</span>" //apply basic color/bolding
@@ -459,14 +459,14 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 		if(P.reset)
 			guardians -= P //clear out guardians that are already reset
 	if(guardians.len)
-		var/mob/living/simple_animal/hostile/guardian/G = input(src, "Pick the guardian you wish to reset", "Guardian Reset") as null|anything in sortNames(guardians)
+		var/mob/living/simple_animal/hostile/guardian/G = input(src, "Wybierz strażnika, którego chcesz zresetować", "Reset strażnika") as null|anything in sortNames(guardians)
 		if(G)
-			to_chat(src, "<span class='holoparasite'>You attempt to reset <font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font>'s personality...</span>")
-			var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as [src.real_name]'s [G.real_name]?", ROLE_HOLOPARASITE, null, 10 SECONDS)
+			to_chat(src, "<span class='holoparasite'>Próbujesz zresetować osobowość <font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font>...</span>")
+			var/list/mob/dead/observer/candidates = pollGhostCandidates("Chcesz zagrać jako [G.real_name] gracza [src.real_name]?", ROLE_HOLOPARASITE, null, 10 SECONDS)
 			if(LAZYLEN(candidates))
 				var/mob/dead/observer/C = pick(candidates)
-				to_chat(G, "<span class='holoparasite'>Your user reset you, and your body was taken over by a ghost. Looks like they weren't happy with your performance.</span>")
-				to_chat(src, "<span class='holoparasite bold'>Your <font color=\"[G.guardiancolor]\">[G.real_name]</font> has been successfully reset.</span>")
+				to_chat(G, "<span class='holoparasite'>Twój użytkownik cię zresetował, a twoje ciało przejął duch. Chyba nie był zadowolony z twojej pracy.</span>")
+				to_chat(src, "<span class='holoparasite bold'>Twój <font color=\"[G.guardiancolor]\">[G.real_name]</font> został pomyślnie zresetowany.</span>")
 				message_admins("[key_name_admin(C)] has taken control of ([ADMIN_LOOKUPFLW(G)])")
 				G.ghostize(0)
 				G.guardiancustomize() //give it a new color, to show it's a new person
@@ -474,20 +474,20 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 				G.reset = 1
 				switch(G.theme)
 					if("tech")
-						to_chat(src, "<span class='holoparasite'><font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> is now online!</span>")
+						to_chat(src, "<span class='holoparasite'><font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> jest teraz aktywny!</span>")
 					if("magic")
-						to_chat(src, "<span class='holoparasite'><font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> has been summoned!</span>")
+						to_chat(src, "<span class='holoparasite'><font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> został przywołany!</span>")
 					if("carp")
-						to_chat(src, "<span class='holoparasite'><font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> has been caught!</span>")
+						to_chat(src, "<span class='holoparasite'><font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> został złowiony!</span>")
 					if("hive")
-						to_chat(src, "<span class='holoparasite'><font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> has been created from the core!</span>")
+						to_chat(src, "<span class='holoparasite'><font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font> został stworzony z rdzenia!</span>")
 				guardians -= G
 				if(!guardians.len)
 					remove_verb(/mob/living/proc/guardian_reset)
 			else
-				to_chat(src, "<span class='holoparasite'>There were no ghosts willing to take control of <font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font>. Looks like you're stuck with it for now.</span>")
+				to_chat(src, "<span class='holoparasite'>Żaden duch nie chciał przejąć kontroli nad <font color=\"[G.guardiancolor]\"><b>[G.real_name]</b></font>. Na razie musisz z nim wytrzymać.</span>")
 		else
-			to_chat(src, "<span class='holoparasite'>You decide not to reset [guardians.len > 1 ? "any of your guardians":"your guardian"].</span>")
+			to_chat(src, "<span class='holoparasite'>Postanawiasz nie resetować [guardians.len > 1 ? "żadnego ze swoich strażników":"swojego strażnika"].</span>")
 	else
 		remove_verb(/mob/living/proc/guardian_reset)
 
@@ -514,10 +514,10 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	var/used = FALSE
 	var/theme = "magic"
 	var/mob_name = "Guardian Spirit"
-	var/use_message = "<span class='holoparasite'>You shuffle the deck...</span>"
-	var/used_message = "<span class='holoparasite'>All the cards seem to be blank now.</span>"
-	var/failure_message = "<span class='holoparasite bold'>..And draw a card! It's...blank? Maybe you should try again later.</span>"
-	var/ling_failure = "<span class='holoparasite bold'>The deck refuses to respond to a souless creature such as you.</span>"
+	var/use_message = "<span class='holoparasite'>Tasujesz talię...</span>"
+	var/used_message = "<span class='holoparasite'>Wszystkie karty wydają się teraz puste.</span>"
+	var/failure_message = "<span class='holoparasite bold'>...I wyciągasz kartę! To... pusta karta? Może spróbuj później.</span>"
+	var/ling_failure = "<span class='holoparasite bold'>Talia nie chce odpowiadać istocie bez duszy, takiej jak ty.</span>"
 	var/list/possible_guardians = list("Assassin", "Chaos", "Charger", "Explosive", "Lightning", "Protector", "Ranged", "Standard", "Support", "Gravitokinetic")
 	var/random = TRUE
 	var/allowmultiple = FALSE
@@ -526,11 +526,11 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 
 /obj/item/guardiancreator/attack_self(mob/living/user)
 	if(isguardian(user) && !allowguardian)
-		to_chat(user, "<span class='holoparasite'>[mob_name] chains are not allowed.</span>")
+		to_chat(user, "<span class='holoparasite'>Łańcuchy ([mob_name]) są niedozwolone.</span>")
 		return
 	var/list/guardians = user.hasparasites()
 	if(guardians.len && !allowmultiple)
-		to_chat(user, "<span class='holoparasite'>You already have a [mob_name]!</span>")
+		to_chat(user, "<span class='holoparasite'>Już masz: [mob_name]!</span>")
 		return
 	if(user.mind && user.mind.has_antag_datum(/datum/antagonist/changeling) && !allowling)
 		to_chat(user, "[ling_failure]")
@@ -540,7 +540,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 		return
 	used = TRUE
 	to_chat(user, "[use_message]")
-	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as the [mob_name] of [user.real_name]?", ROLE_HOLOPARASITE, null, 10 SECONDS)
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Chcesz zagrać jako [mob_name] gracza [user.real_name]?", ROLE_HOLOPARASITE, null, 10 SECONDS)
 
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
@@ -555,7 +555,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	if(random)
 		guardiantype = pick(possible_guardians)
 	else
-		guardiantype = input(user, "Pick the type of [mob_name]", "[mob_name] Creation") as null|anything in sortList(possible_guardians)
+		guardiantype = input(user, "Wybierz rodzaj: [mob_name]", "[mob_name] Creation") as null|anything in sortList(possible_guardians)
 		if(!guardiantype)
 			to_chat(user, "[failure_message]" )
 			used = FALSE
@@ -601,7 +601,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 
 	var/list/guardians = user.hasparasites()
 	if(guardians.len && !allowmultiple)
-		to_chat(user, "<span class='holoparasite'>You already have a [mob_name]!</span>" )
+		to_chat(user, "<span class='holoparasite'>Już masz: [mob_name]!</span>" )
 		used = FALSE
 		return
 	var/mob/living/simple_animal/hostile/guardian/G = new pickedtype(user, theme)
@@ -613,16 +613,16 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	switch(theme)
 		if("tech")
 			to_chat(user, "[G.tech_fluff_string]")
-			to_chat(user, "<span class='holoparasite'><b>[G.real_name]</b> is now online!</span>")
+			to_chat(user, "<span class='holoparasite'><b>[G.real_name]</b> jest teraz aktywny!</span>")
 		if("magic")
 			to_chat(user, "[G.magic_fluff_string]")
-			to_chat(user, "<span class='holoparasite'><b>[G.real_name]</b> has been summoned!</span>")
+			to_chat(user, "<span class='holoparasite'><b>[G.real_name]</b> został przywołany!</span>")
 		if("carp")
 			to_chat(user, "[G.carp_fluff_string]")
-			to_chat(user, "<span class='holoparasite'><b>[G.real_name]</b> has been caught!</span>")
+			to_chat(user, "<span class='holoparasite'><b>[G.real_name]</b> został złowiony!</span>")
 		if("hive")
 			to_chat(user, "[G.hive_fluff_string]")
-			to_chat(user, "<span class='holoparasite'><b>[G.real_name]</b> has been created from the core!</span>")
+			to_chat(user, "<span class='holoparasite'><b>[G.real_name]</b> został stworzony z rdzenia!</span>")
 	user.add_verb(/mob/living/proc/guardian_comm)
 	user.add_verb(/mob/living/proc/guardian_recall)
 	user.add_verb(/mob/living/proc/guardian_reset)
@@ -651,10 +651,10 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	icon_state = "combat_hypo"
 	theme = "tech"
 	mob_name = "Holoparasite"
-	use_message = "<span class='holoparasite'>You start to power on the injector...</span>"
-	used_message = "<span class='holoparasite'>The injector has already been used.</span>"
-	failure_message = "<span class='holoparasite bold'>...ERROR. BOOT SEQUENCE ABORTED. AI FAILED TO INTIALIZE. PLEASE CONTACT SUPPORT OR TRY AGAIN LATER.</span>"
-	ling_failure = "<span class='holoparasite bold'>The holoparasites recoil in horror. They want nothing to do with a creature like you.</span>"
+	use_message = "<span class='holoparasite'>Zaczynasz uruchamiać iniektor...</span>"
+	used_message = "<span class='holoparasite'>Iniektor został już użyty.</span>"
+	failure_message = "<span class='holoparasite bold'>...BŁĄD. PRZERWANO SEKWENCJĘ STARTOWĄ. NIE UDAŁO SIĘ ZAINICJALIZOWAĆ SI. SKONTAKTUJ SIĘ Z POMOCĄ TECHNICZNĄ LUB SPRÓBUJ PÓŹNIEJ.</span>"
+	ling_failure = "<span class='holoparasite bold'>Holoparazyty cofają się z przerażeniem. Nie chcą mieć nic wspólnego z taką istotą jak ty.</span>"
 
 /obj/item/guardiancreator/tech/choose/traitor
 	possible_guardians = list("Assassin", "Chaos", "Charger", "Explosive", "Lightning", "Protector", "Ranged", "Standard", "Support", "Gravitokinetic")
@@ -674,26 +674,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 
 /obj/item/paper/guides/antag/guardian
 	name = "Holoparasite Guide"
-	default_raw_text = {"<b>A list of Holoparasite Types</b><br>
-
- <br>
- <b>Assassin</b>: Does medium damage and takes full damage, but can enter stealth, causing its next attack to do massive damage and ignore armor. However, it becomes briefly unable to recall after attacking from stealth.<br>
- <br>
- <b>Chaos</b>: Ignites enemies on touch and causes them to hallucinate all nearby people as the parasite. Automatically extinguishes the user if they catch on fire.<br>
- <br>
- <b>Charger</b>: Moves extremely fast, does medium damage on attack, and can charge at targets, damaging the first target hit and forcing them to drop any items they are holding.<br>
- <br>
- <b>Explosive</b>: High damage resist and medium power attack that may explosively teleport targets. Can turn any object, including objects too large to pick up, into a bomb, dealing explosive damage to the next person to touch it. The object will return to normal after the trap is triggered or after a delay.<br>
- <br>
- <b>Lightning</b>: Attacks apply lightning chains to targets. Has a lightning chain to the user. Lightning chains shock everything near them, doing constant damage.<br>
- <br>
- <b>Protector</b>: Causes you to teleport to it when out of range, unlike other parasites. Has two modes; Combat, where it does and takes medium damage, and Protection, where it does and takes almost no damage but moves slightly slower.<br>
- <br>
- <b>Ranged</b>: Has two modes. Ranged; which fires a constant stream of weak, armor-ignoring projectiles. Scout; Cannot attack, but can move through walls and is quite hard to see. Can lay surveillance snares, which alert it when crossed, in either mode.<br>
- <br>
- <b>Standard</b>: Devastating close combat attacks and high damage resist. Can smash through weak walls.<br>
- <br>
- <b>Gravitokinetic</b>: Attacks will apply crushing gravity to the target. Can target the ground as well to slow targets advancing on you, but this will affect the user.<br>
+	default_raw_text = {"<b>Lista typów holoparazytów</b><br><br><b>Assassin (zabójca)</b>: zadaje średnie obrażenia i otrzymuje pełne, ale potrafi się ukryć, przez co jego następny atak zadaje ogromne obrażenia i ignoruje pancerz. Po ataku z ukrycia przez chwilę nie może wrócić do użytkownika.<br><br><b>Chaos</b>: podpala wrogów dotykiem i sprawia, że widzą wszystkich wokół jako parazyta. Automatycznie gasi użytkownika, jeśli ten zacznie się palić.<br><br><b>Charger (szarżownik)</b>: porusza się niezwykle szybko, zadaje średnie obrażenia i potrafi szarżować na cele, raniąc pierwszy trafiony i zmuszając go do upuszczenia trzymanych przedmiotów.<br><br><b>Explosive (wybuchowy)</b>: wysoka odporność na obrażenia i średnio silny atak, który może wybuchowo teleportować cele. Potrafi zamienić dowolny obiekt, nawet zbyt duży do podniesienia, w bombę raniącą następną osobę, która go dotknie. Obiekt wraca do normy po zadziałaniu pułapki lub po pewnym czasie.<br><br><b>Lightning (błyskawica)</b>: ataki zakładają na cele łańcuchy błyskawic. Ma łańcuch błyskawic połączony z użytkownikiem. Łańcuchy razią prądem wszystko w pobliżu, zadając ciągłe obrażenia.<br><br><b>Protector (obrońca)</b>: w przeciwieństwie do innych parazytów to ty teleportujesz się do niego, gdy jesteś poza zasięgiem. Ma dwa tryby: bojowy, w którym zadaje i otrzymuje średnie obrażenia, oraz ochronny, w którym prawie nie zadaje ani nie otrzymuje obrażeń, ale porusza się nieco wolniej.<br><br><b>Ranged (dystansowy)</b>: ma dwa tryby. Dystansowy – wystrzeliwuje ciągły strumień słabych pocisków ignorujących pancerz. Zwiadowczy – nie może atakować, ale przenika przez ściany i jest trudny do zauważenia. W obu trybach może zastawiać sidła obserwacyjne, które ostrzegają go, gdy ktoś przez nie przejdzie.<br><br><b>Standard (standardowy)</b>: niszczycielskie ataki w zwarciu i wysoka odporność na obrażenia. Potrafi przebijać się przez słabe ściany.<br><br><b>Gravitokinetic (grawitokinetyczny)</b>: ataki nakładają na cel miażdżącą grawitację. Może też celować w podłoże, by spowolnić nadchodzących wrogów, ale wpływa to także na użytkownika.<br>
  <br>
 "}
 
@@ -702,28 +683,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 
 /obj/item/paper/guides/antag/guardian/wizard
 	name = "Guardian Guide"
-	default_raw_text = {"<b>A list of Guardian Types</b><br>
-
- <br>
- <b>Assassin</b>: Does medium damage and takes full damage, but can enter stealth, causing its next attack to do massive damage and ignore armor. However, it becomes briefly unable to recall after attacking from stealth.<br>
- <br>
- <b>Chaos</b>: Ignites enemies on touch and causes them to hallucinate all nearby people as the guardian. Automatically extinguishes the user if they catch on fire.<br>
- <br>
- <b>Charger</b>: Moves extremely fast, does medium damage on attack, and can charge at targets, damaging the first target hit and forcing them to drop any items they are holding.<br>
- <br>
- <b>Dexterous</b>: Does low damage on attack, but is capable of holding items and storing a single item within it. It will drop items held in its hands when it recalls, but it will retain the stored item.<br>
- <br>
- <b>Explosive</b>: High damage resist and medium power attack that may explosively teleport targets. Can turn any object, including objects too large to pick up, into a bomb, dealing explosive damage to the next person to touch it. The object will return to normal after the trap is triggered or after a delay.<br>
- <br>
- <b>Lightning</b>: Attacks apply lightning chains to targets. Has a lightning chain to the user. Lightning chains shock everything near them, doing constant damage.<br>
- <br>
- <b>Protector</b>: Causes you to teleport to it when out of range, unlike other parasites. Has two modes; Combat, where it does and takes medium damage, and Protection, where it does and takes almost no damage but moves slightly slower.<br>
- <br>
- <b>Ranged</b>: Has two modes. Ranged; which fires a constant stream of weak, armor-ignoring projectiles. Scout; Cannot attack, but can move through walls and is quite hard to see. Can lay surveillance snares, which alert it when crossed, in either mode.<br>
- <br>
- <b>Standard</b>: Devastating close combat attacks and high damage resist. Can smash through weak walls.<br>
- <br>
- <b>Gravitokinetic</b>: Attacks will apply crushing gravity to the target. Can target the ground as well to slow targets advancing on you, but this will affect the user.<br>
+	default_raw_text = {"<b>Lista typów strażników</b><br><br><b>Assassin (zabójca)</b>: zadaje średnie obrażenia i otrzymuje pełne, ale potrafi się ukryć, przez co jego następny atak zadaje ogromne obrażenia i ignoruje pancerz. Po ataku z ukrycia przez chwilę nie może wrócić do użytkownika.<br><br><b>Chaos</b>: podpala wrogów dotykiem i sprawia, że widzą wszystkich wokół jako strażnika. Automatycznie gasi użytkownika, jeśli ten zacznie się palić.<br><br><b>Charger (szarżownik)</b>: porusza się niezwykle szybko, zadaje średnie obrażenia i potrafi szarżować na cele, raniąc pierwszy trafiony i zmuszając go do upuszczenia trzymanych przedmiotów.<br><br><b>Dexterous (zręczny)</b>: zadaje niewielkie obrażenia, ale potrafi trzymać przedmioty i przechowywać w sobie jeden z nich. Po powrocie do użytkownika upuszcza przedmioty trzymane w rękach, ale zachowuje ten schowany.<br><br><b>Explosive (wybuchowy)</b>: wysoka odporność na obrażenia i średnio silny atak, który może wybuchowo teleportować cele. Potrafi zamienić dowolny obiekt, nawet zbyt duży do podniesienia, w bombę raniącą następną osobę, która go dotknie. Obiekt wraca do normy po zadziałaniu pułapki lub po pewnym czasie.<br><br><b>Lightning (błyskawica)</b>: ataki zakładają na cele łańcuchy błyskawic. Ma łańcuch błyskawic połączony z użytkownikiem. Łańcuchy razią prądem wszystko w pobliżu, zadając ciągłe obrażenia.<br><br><b>Protector (obrońca)</b>: w przeciwieństwie do innych parazytów to ty teleportujesz się do niego, gdy jesteś poza zasięgiem. Ma dwa tryby: bojowy, w którym zadaje i otrzymuje średnie obrażenia, oraz ochronny, w którym prawie nie zadaje ani nie otrzymuje obrażeń, ale porusza się nieco wolniej.<br><br><b>Ranged (dystansowy)</b>: ma dwa tryby. Dystansowy – wystrzeliwuje ciągły strumień słabych pocisków ignorujących pancerz. Zwiadowczy – nie może atakować, ale przenika przez ściany i jest trudny do zauważenia. W obu trybach może zastawiać sidła obserwacyjne, które ostrzegają go, gdy ktoś przez nie przejdzie.<br><br><b>Standard (standardowy)</b>: niszczycielskie ataki w zwarciu i wysoka odporność na obrażenia. Potrafi przebijać się przez słabe ściany.<br><br><b>Gravitokinetic (grawitokinetyczny)</b>: ataki nakładają na cel miażdżącą grawitację. Może też celować w podłoże, by spowolnić nadchodzących wrogów, ale wpływa to także na użytkownika.<br>
  <br>
 "}
 
@@ -742,10 +702,10 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	icon_state = "fishfingers"
 	theme = "carp"
 	mob_name = "Holocarp"
-	use_message = "<span class='holoparasite'>You put the fishsticks in your mouth...</span>"
-	used_message = "<span class='holoparasite'>Someone's already taken a bite out of these fishsticks! Ew.</span>"
-	failure_message = "<span class='holoparasite bold'>You couldn't catch any carp spirits from the seas of Lake Carp. Maybe there are none, maybe you fucked up.</span>"
-	ling_failure = "<span class='holoparasite bold'>Carp'sie is fine with changelings, so you shouldn't be seeing this message.</span>"
+	use_message = "<span class='holoparasite'>Wkładasz paluszki rybne do ust...</span>"
+	used_message = "<span class='holoparasite'>Ktoś już ugryzł te paluszki rybne! Fuj.</span>"
+	failure_message = "<span class='holoparasite bold'>Nie udało ci się złowić żadnych duchów karpi z wód Jeziora Karpiowego. Może ich nie ma, a może coś spieprzyłeś.</span>"
+	ling_failure = "<span class='holoparasite bold'>Karp'sie nie ma nic przeciwko zmiennokształtnym, więc nie powinieneś widzieć tej wiadomości.</span>"
 	allowmultiple = TRUE
 
 /obj/item/guardiancreator/carp/choose
@@ -769,10 +729,10 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	icon_state = "roro core 2"
 	theme = "hive"
 	mob_name = "Hivelord"
-	use_message = "<span class='holoparasite'>You place the core near your heart...</span>"
-	used_message = "<span class='holoparasite'>This core seems to have decayed and doesn't work anymore...</span>"
-	failure_message = "<span class='holoparasite bold'>You couldn't gather any mass with the core, maybe try again later.</span>"
-	ling_failure = "<span class='holoparasite bold'>Even the dark energies seem to not want to be near your horrific body.</span>"
+	use_message = "<span class='holoparasite'>Przykładasz rdzeń do serca...</span>"
+	used_message = "<span class='holoparasite'>Ten rdzeń chyba się rozłożył i już nie działa...</span>"
+	failure_message = "<span class='holoparasite bold'>Nie udało ci się zebrać rdzeniem żadnej masy, spróbuj później.</span>"
+	ling_failure = "<span class='holoparasite bold'>Nawet mroczne energie nie chcą zbliżać się do twojego okropnego ciała.</span>"
 
 /obj/item/guardiancreator/hive/choose
 	random = FALSE

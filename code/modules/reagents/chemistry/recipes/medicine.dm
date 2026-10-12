@@ -35,7 +35,7 @@
 	id = /datum/reagent/medicine/charcoal
 	results = list(/datum/reagent/medicine/charcoal = 2)
 	required_reagents = list(/datum/reagent/ash = 1, /datum/reagent/consumable/sodiumchloride = 1)
-	mix_message = "The mixture yields a fine black powder."
+	mix_message = "Mieszanina daje drobny czarny proszek."
 	required_temp = 380
 
 /datum/chemical_reaction/silver_sulfadiazine
@@ -73,7 +73,7 @@
 	id = /datum/reagent/medicine/styptic_powder
 	results = list(/datum/reagent/medicine/styptic_powder = 4)
 	required_reagents = list(/datum/reagent/aluminium = 1, /datum/reagent/hydrogen = 1, /datum/reagent/oxygen = 1, /datum/reagent/toxin/acid = 1)
-	mix_message = "The solution yields an astringent powder."
+	mix_message = "Roztwór daje ściągający proszek."
 
 /datum/chemical_reaction/calomel
 	name = "Calomel"
@@ -118,28 +118,28 @@
 	results = list(/datum/reagent/medicine/perfluorodecalin = 3)
 	required_reagents = list(/datum/reagent/hydrogen = 1, /datum/reagent/fluorine = 1, /datum/reagent/oil = 1)
 	required_temp = 370
-	mix_message = "The mixture rapidly turns into a dense pink liquid."
+	mix_message = "Mieszanina błyskawicznie zamienia się w gęsty różowy płyn."
 
 /datum/chemical_reaction/ephedrine
 	name = "Ephedrine"
 	id = /datum/reagent/medicine/ephedrine
 	results = list(/datum/reagent/medicine/ephedrine = 4)
 	required_reagents = list(/datum/reagent/consumable/sugar = 1, /datum/reagent/oil = 1, /datum/reagent/hydrogen = 1, /datum/reagent/diethylamine = 1)
-	mix_message = "The solution fizzes and gives off toxic fumes."
+	mix_message = "Roztwór musuje i wydziela toksyczne opary."
 
 /datum/chemical_reaction/diphenhydramine
 	name = "Diphenhydramine"
 	id = /datum/reagent/medicine/diphenhydramine
 	results = list(/datum/reagent/medicine/diphenhydramine = 4)
 	required_reagents = list(/datum/reagent/oil = 1, /datum/reagent/carbon = 1, /datum/reagent/bromine = 1, /datum/reagent/diethylamine = 1, /datum/reagent/consumable/ethanol = 1)
-	mix_message = "The mixture dries into a pale blue powder."
+	mix_message = "Mieszanina zasycha w bladoniebieski proszek."
 
 /datum/chemical_reaction/oculine
 	name = "Oculine"
 	id = /datum/reagent/medicine/oculine
 	results = list(/datum/reagent/medicine/oculine = 3)
 	required_reagents = list(/datum/reagent/medicine/charcoal = 1, /datum/reagent/carbon = 1, /datum/reagent/hydrogen = 1)
-	mix_message = "The mixture sputters loudly and becomes a pale pink color."
+	mix_message = "Mieszanina głośno skwierczy i przybiera bladoróżowy kolor."
 
 /datum/chemical_reaction/atropine
 	name = "Atropine"
@@ -164,7 +164,7 @@
 	id = /datum/reagent/medicine/mannitol
 	results = list(/datum/reagent/medicine/mannitol = 3)
 	required_reagents = list(/datum/reagent/consumable/sugar = 1, /datum/reagent/hydrogen = 1, /datum/reagent/water = 1)
-	mix_message = "The solution slightly bubbles, becoming thicker."
+	mix_message = "Roztwór lekko bulgocze, gęstniejąc."
 
 /datum/chemical_reaction/neurine
 	name = "Neurine"
@@ -296,7 +296,7 @@
 	results = list(/datum/reagent/medicine/liquid_solder = 3)
 	required_reagents = list(/datum/reagent/consumable/ethanol = 1, /datum/reagent/copper = 1, /datum/reagent/silver = 1)
 	required_temp = 370
-	mix_message = "The mixture becomes a metallic slurry."
+	mix_message = "Mieszanina zamienia się w metaliczną breję."
 
 /datum/chemical_reaction/carthatoline
 	name = "Carthatoline"
@@ -323,4 +323,4 @@
 	id = /datum/reagent/consumable/liquidelectricity
 	results = list(/datum/reagent/consumable/liquidelectricity = 3)
 	required_reagents = list(/datum/reagent/consumable/ethanol = 3, /datum/reagent/consumable/liquidelectricity = 1, /datum/reagent/toxin/plasma = 1)
-	mix_message = "The mixture sparks and then subsides."
+	mix_message = "Mieszanina iskrzy, po czym się uspokaja."

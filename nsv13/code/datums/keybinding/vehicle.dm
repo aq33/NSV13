@@ -8,8 +8,8 @@
 /datum/keybinding/vehicle/toggle_brakes
 	key = "Alt"
 	name = "toggle_car_brakes"
-	full_name = "Toggle Brakes"
-	description = "Toggle a vehicle's brakes."
+	full_name = "Przełącz hamulce"
+	description = "Przełącza hamulce pojazdu."
 	keybind_signal = COMSIG_KB_VEHICLE_TOGGLE_BRAKES
 
 /datum/keybinding/vehicle/toggle_brakes/down(client/user)

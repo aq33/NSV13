@@ -49,7 +49,7 @@
 
 /obj/machinery/modular_computer/emag_act(mob/user)
 	if(!cpu)
-		to_chat(user, "<span class='warning'>You'd need to turn the [src] on first.</span>")
+		to_chat(user, "<span class='warning'>Najpierw musisz włączyć [src].</span>")
 		return FALSE
 	return (cpu.emag_act(user))
 
@@ -95,7 +95,7 @@
 /obj/machinery/modular_computer/proc/power_failure(malfunction = 0)
 	var/obj/item/computer_hardware/battery/battery_module = cpu.all_components[MC_CELL]
 	if(cpu?.enabled) // Shut down the computer
-		visible_message("<span class='danger'>\The [src]'s screen flickers [battery_module ? "\"BATTERY [malfunction ? "MALFUNCTION" : "CRITICAL"]\"" : "\"EXTERNAL POWER LOSS\""] warning as it shuts down unexpectedly.</span>")
+		visible_message("<span class='danger'>Ekran [src] wyświetla ostrzeżenie [battery_module ? "\"[malfunction ? "AWARIA" : "KRYTYCZNY POZIOM"] BATERII\"" : "\"UTRATA ZASILANIA ZEWNĘTRZNEGO\""] i niespodziewanie się wyłącza.</span>")
 		if(cpu)
 			cpu.shutdown_computer(0)
 	set_machine_stat(machine_stat | NOPOWER)

@@ -78,7 +78,7 @@
 		return
 	else if(!COOLDOWN_FINISHED(src, sticker_cooldown) && isliving(loc))
 		var/mob/living/user = loc
-		to_chat(user, "<span class='warning'>The labeler is still printing.</span>")
+		to_chat(user, "<span class='warning'>Etykieciarka wciąż drukuje.</span>")
 
 	if(action == "clear_traits")
 		clear_selection()
@@ -113,7 +113,7 @@
 		COOLDOWN_START(src, sticker_cooldown, 5 SECONDS)
 		create_label(sticker_name, target, user)
 	else if(!COOLDOWN_FINISHED(src, sticker_cooldown))
-		to_chat(user, "<span class='warning'>The labeler is still printing.</span>")
+		to_chat(user, "<span class='warning'>Etykieciarka wciąż drukuje.</span>")
 
 ///reset all the options
 /obj/item/xenoartifact_labeler/proc/clear_selection()
@@ -180,8 +180,8 @@
 
 /obj/item/xenoartifact_label/proc/attempt_attach(atom/target, mob/user, instant = FALSE)
 	if(istype(target, /mob/living))
-		to_chat(target, "<span class='warning'>[user] attempts to stick a [src] to you!</span>")
-		to_chat(user, "<span class='warning'>You attempt to stick a [src] on [target]!</span>")
+		to_chat(target, "<span class='warning'>[user] próbuje przykleić ci [src]!</span>")
+		to_chat(user, "<span class='warning'>Próbujesz przykleić [src] na [target]!</span>")
 		if(!do_after(user, 30, target = target))
 			if(instant)
 				qdel(src)
@@ -203,7 +203,7 @@
 			xenoa_target.name = name
 		if(info)
 			var/textinfo = list2text(info)
-			xenoa_target.label_desc = "There's a sticker attached, it says-\n[textinfo]"
+			xenoa_target.label_desc = "Jest przyklejona naklejka, na której jest napisane:\n[textinfo]"
 		return TRUE
 
 /obj/item/xenoartifact_label/afterattack(atom/target, mob/user, proximity_flag, click_parameters)

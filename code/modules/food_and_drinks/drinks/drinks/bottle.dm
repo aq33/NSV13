@@ -56,7 +56,7 @@
 		return ..()
 
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, "<span class='warning'>You don't want to harm [target]!</span>")
+		to_chat(user, "<span class='warning'>Nie chcesz zrobić krzywdy [target]!</span>")
 		return
 
 	force = 15 //Smashing bottles over someoen's head hurts.
@@ -95,18 +95,18 @@
 	// You are going to knock someone down for longer if they are not wearing a helmet.
 	var/head_attack_message = ""
 	if(affecting == BODY_ZONE_HEAD && istype(target, /mob/living/carbon/))
-		head_attack_message = " on the head"
+		head_attack_message = " w głowę"
 		//Knock down the target for the duration that we calculated and divide it by 5.
 		if(armor_duration)
 			target.apply_effect(min(armor_duration, 200) , EFFECT_KNOCKDOWN)
 
 	//Display an attack message.
 	if(target != user)
-		target.visible_message("<span class='danger'>[user] hits [target][head_attack_message] with a bottle of [src.name]!</span>", \
-				"<span class='userdanger'>[user] hits you [head_attack_message] with a bottle of [src.name]!</span>")
+		target.visible_message("<span class='danger'>[user] uderza [target][head_attack_message] butelką [src.name]!</span>", \
+				"<span class='userdanger'>[user] uderza cię[head_attack_message] butelką [src.name]!</span>")
 	else
-		target.visible_message("<span class='danger'>[target] hits [target.p_them()]self with a bottle of [src.name][head_attack_message]!</span>", \
-				"<span class='userdanger'>You hit yourself with a bottle of [src.name][head_attack_message]!</span>")
+		target.visible_message("<span class='danger'>[target] uderza się butelką [src.name][head_attack_message]!</span>", \
+				"<span class='userdanger'>Uderzasz się butelką [src.name][head_attack_message]!</span>")
 
 	//Attack logs
 	log_combat(user, target, "attacked", src)
@@ -132,7 +132,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	item_state = "beer"
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("stabbed", "slashed", "attacked")
+	attack_verb = list("dźga", "ciacha", "atakuje")
 	sharpness = IS_SHARP
 	var/static/icon/broken_outline = icon('icons/obj/drinks.dmi', "broken")
 
@@ -315,11 +315,11 @@
 	. = ..()
 	if(prob(10))
 		name = "Fluffy Tail Sake"
-		desc += " On the bottle is a picture of a kitsune with nine touchable tails."
+		desc += " Na butelce jest obrazek kitsune z dziewięcioma ogonami do pogłaskania."
 		icon_state = "sakebottle_k"
 	else if(prob(10))
 		name = "Inubashiri's Home Brew"
-		desc += " Awoo."
+		desc += " Auuu."
 		icon_state = "sakebottle_i"
 
 /obj/item/reagent_containers/food/drinks/bottle/fernet
@@ -524,7 +524,7 @@
 		icon_state = B.icon_state
 		B.reagents.copy_to(src,100)
 		if(!B.isGlass)
-			desc += " You're not sure if making this out of a carton was the brightest idea."
+			desc += " Nie wiesz, czy zrobienie tego z kartonu było najmądrzejszym pomysłem."
 			isGlass = FALSE
 	return
 
@@ -551,7 +551,7 @@
 		active = TRUE
 		log_bomber(user, "has primed a", src, "for detonation")
 
-		to_chat(user, "<span class='info'>You light [src] on fire.</span>")
+		to_chat(user, "<span class='info'>Podpalasz [src].</span>")
 		add_overlay(custom_fire_overlay ? custom_fire_overlay : GLOB.fire_overlay)
 		if(!isGlass)
 			spawn(50)
@@ -571,8 +571,8 @@
 /obj/item/reagent_containers/food/drinks/bottle/molotov/attack_self(mob/user)
 	if(active)
 		if(!isGlass)
-			to_chat(user, "<span class='danger'>The flame's spread too far on it!</span>")
+			to_chat(user, "<span class='danger'>Płomień rozprzestrzenił się za bardzo!</span>")
 			return
-		to_chat(user, "<span class='info'>You snuff out the flame on [src].</span>")
+		to_chat(user, "<span class='info'>Gasisz płomień na [src].</span>")
 		cut_overlay(custom_fire_overlay ? custom_fire_overlay : GLOB.fire_overlay)
 		active = 0

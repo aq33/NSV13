@@ -56,16 +56,16 @@
 		for(var/mob/M in GLOB.player_list)
 			var/area/mob_area = get_area(M)
 			if(istype(mob_area, /area/ctf))
-				to_chat(M, "<span class='userdanger'>\The [src] has been returned to base!</span>")
+				to_chat(M, "<span class='userdanger'>[src] wraca do bazy!</span>")
 		STOP_PROCESSING(SSobj, src)
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/ctf/attack_hand(mob/living/user)
 	if(!is_ctf_target(user) && !anyonecanpickup)
-		to_chat(user, "Non players shouldn't be moving the flag!")
+		to_chat(user, "Nie-gracze nie powinni ruszać flagi!")
 		return
 	if(team in user.faction)
-		to_chat(user, "You can't move your own flag!")
+		to_chat(user, "Nie możesz ruszać własnej flagi!")
 		return
 	if(loc == user)
 		if(!user.dropItemToGround(src))
@@ -79,7 +79,7 @@
 	for(var/mob/M in GLOB.player_list)
 		var/area/mob_area = get_area(M)
 		if(istype(mob_area, /area/ctf))
-			to_chat(M, "<span class='userdanger'>\The [src] has been taken!</span>")
+			to_chat(M, "<span class='userdanger'>[src] została zabrana!</span>")
 	STOP_PROCESSING(SSobj, src)
 	..()
 
@@ -92,7 +92,7 @@
 	for(var/mob/M in GLOB.player_list)
 		var/area/mob_area = get_area(M)
 		if(istype(mob_area, /area/ctf))
-			to_chat(M, "<span class='userdanger'>\The [src] has been dropped!</span>")
+			to_chat(M, "<span class='userdanger'>[src] została upuszczona!</span>")
 	anchored = TRUE
 
 
@@ -228,14 +228,14 @@
 /obj/machinery/capture_the_flag/attack_ghost(mob/user)
 	if(ctf_enabled == FALSE)
 		if(user.client?.holder)
-			var/response = alert("Enable CTF?", "CTF", "Yes", "No")
+			var/response = alert("Włączyć CTF?", "CTF", "Yes", "No")
 			if(response == "Yes")
 				toggle_all_ctf(user)
 			return
 
 
 		if(!(GLOB.ghost_role_flags & GHOSTROLE_MINIGAME))
-			to_chat(user, "<span class='warning'>CTF has been temporarily disabled by admins.</span>")
+			to_chat(user, "<span class='warning'>CTF zostało tymczasowo wyłączone przez adminów.</span>")
 			return
 		people_who_want_to_play |= user.ckey
 		var/num = people_who_want_to_play.len
@@ -244,7 +244,7 @@
 			people_who_want_to_play.Cut()
 			toggle_all_ctf()
 		else
-			to_chat(user, "<span class='notice'>CTF has been requested. [num]/[CTF_REQUIRED_PLAYERS] have readied up.</span>")
+			to_chat(user, "<span class='notice'>Zgłoszono chęć gry w CTF. Gotowych: [num]/[CTF_REQUIRED_PLAYERS].</span>")
 
 		return
 
@@ -252,7 +252,7 @@
 		return
 	if(user.ckey in team_members)
 		if(user.ckey in recently_dead_ckeys)
-			to_chat(user, "It must be more than [DisplayTimeText(respawn_cooldown)] from your last death to respawn!")
+			to_chat(user, "Aby się odrodzić, od twojej ostatniej śmierci musi minąć więcej niż [DisplayTimeText(respawn_cooldown)]!")
 			return
 		var/client/new_team_member = user.client
 		if(user.mind && user.mind.current)
@@ -264,10 +264,10 @@
 		if(CTF == src || CTF.ctf_enabled == FALSE)
 			continue
 		if(user.ckey in CTF.team_members)
-			to_chat(user, "No switching teams while the round is going!")
+			to_chat(user, "Nie można zmieniać drużyn w trakcie rundy!")
 			return
 		if(CTF.team_members.len < src.team_members.len)
-			to_chat(user, "[src.team] has more team members than [CTF.team]. Try joining [CTF.team] team to even things up.")
+			to_chat(user, "[src.team] ma więcej członków niż [CTF.team]. Spróbuj dołączyć do drużyny [CTF.team], by wyrównać siły.")
 			return
 	team_members |= user.ckey
 	var/client/new_team_member = user.client
@@ -311,7 +311,7 @@
 			for(var/mob/M in GLOB.player_list)
 				var/area/mob_area = get_area(M)
 				if(istype(mob_area, /area/ctf))
-					to_chat(M, "<span class='userdanger [team_span]'>[user.real_name] has captured \the [flag], scoring a point for [team] team! They now have [points]/[points_to_win] points!</span>")
+					to_chat(M, "<span class='userdanger [team_span]'>[user.real_name] zdobywa [flag], zdobywając punkt dla drużyny [team]! Ma teraz [points]/[points_to_win] pkt!</span>")
 		if(points >= points_to_win)
 			victory()
 
@@ -319,8 +319,8 @@
 	for(var/mob/M in GLOB.mob_list)
 		var/area/mob_area = get_area(M)
 		if(istype(mob_area, /area/ctf))
-			to_chat(M, "<span class='narsie [team_span]'>[team] team wins!</span>")
-			to_chat(M, "<span class='userdanger'>Teams have been cleared. Click on the machines to vote to begin another round.</span>")
+			to_chat(M, "<span class='narsie [team_span]'>Drużyna [team] wygrywa!</span>")
+			to_chat(M, "<span class='userdanger'>Drużyny zostały wyczyszczone. Kliknij maszyny, by zagłosować za rozpoczęciem kolejnej rundy.</span>")
 			for(var/obj/item/ctf/W in M)
 				M.dropItemToGround(W)
 			M.dust()
@@ -351,7 +351,7 @@
 
 	dead_barricades.Cut()
 
-	notify_ghosts("[name] has been activated!", enter_link="<a href=byond://?src=[REF(src)];join=1>(Click to join the [team] team!)</a> or click on the controller directly!", source = src, action=NOTIFY_ATTACK, header = "CTF has been activated")
+	notify_ghosts("[name] zostało aktywowane!", enter_link="<a href=byond://?src=[REF(src)];join=1>(Kliknij, by dołączyć do drużyny [team]!)</a> albo kliknij bezpośrednio kontroler!", source = src, action=NOTIFY_ATTACK, header = "CTF zostało aktywowane")
 
 	if(!arena_reset)
 		reset_the_arena()
@@ -594,7 +594,7 @@
 	if(!is_ctf_target(L))
 		return
 	if(!(src.team in L.faction))
-		to_chat(L, "<span class='danger'><B>Stay out of the enemy spawn!</B></span>")
+		to_chat(L, "<span class='danger'><B>Nie wchodź do spawnu wroga!</B></span>")
 		L.death()
 
 /obj/structure/trap/ctf/red
@@ -660,7 +660,7 @@
 			for(var/obj/item/gun/G in M)
 				qdel(G)
 			O.equip(M)
-			to_chat(M, "<span class='notice'>Ammunition reloaded!</span>")
+			to_chat(M, "<span class='notice'>Amunicja uzupełniona!</span>")
 			playsound(get_turf(M), 'sound/weapons/shotgunpump.ogg', 50, 1, -1)
 			qdel(src)
 			break
@@ -725,7 +725,7 @@
 				for(var/mob/M in GLOB.player_list)
 					var/area/mob_area = get_area(M)
 					if(istype(mob_area, /area/ctf))
-						to_chat(M, "<span class='userdanger'>[user.real_name] has captured \the [src], claiming it for [CTF.team]! Go take it back!</span>")
+						to_chat(M, "<span class='userdanger'>[user.real_name] zdobywa [src], przejmując go dla drużyny [CTF.team]! Odbijcie go!</span>")
 				break
 
 #undef WHITE_TEAM

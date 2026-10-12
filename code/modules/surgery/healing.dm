@@ -44,9 +44,9 @@
 	if(istype(surgery,/datum/surgery/healing))
 		var/datum/surgery/healing/the_surgery = surgery
 		if(!the_surgery.antispam)
-			display_results(user, target, "<span class='notice'>You attempt to patch some of [target]'s [woundtype].</span>",
-		"[user] attempts to patch some of [target]'s [woundtype].",
-		"[user] attempts to patch some of [target]'s [woundtype].")
+			display_results(user, target, "<span class='notice'>Próbujesz opatrzyć część obrażeń [target] ([woundtype]).</span>",
+		"[user] próbuje opatrzyć część obrażeń [target] ([woundtype]).",
+		"[user] próbuje opatrzyć część obrażeń [target] ([woundtype]).")
 
 
 /datum/surgery_step/heal/initiate(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
@@ -56,8 +56,8 @@
 				break
 
 /datum/surgery_step/heal/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	var/umsg = "You succeed in fixing some of [target]'s wounds" //no period, add initial space to "addons"
-	var/tmsg = "[user] fixes some of [target]'s wounds" //see above
+	var/umsg = "Udaje ci się opatrzyć część ran [target]" //no period, add initial space to "addons"
+	var/tmsg = "[user] opatruje część ran [target]" //see above
 	var/urhealedamt_brute = brutehealing
 	var/urhealedamt_burn = burnhealing
 	if(missinghpbonus)
@@ -70,8 +70,8 @@
 	if(!get_location_accessible(target, target_zone))
 		urhealedamt_brute *= 0.55
 		urhealedamt_burn *= 0.55
-		umsg += " as best as you can while [target.p_they()] [target.p_have()] clothing on"
-		tmsg += " as best as [user.p_they()] can while [target.p_they()] [target.p_have()] clothing on"
+		umsg += " najlepiej, jak potrafisz, gdy pacjent ma na sobie ubranie"
+		tmsg += " najlepiej, jak potrafi, gdy pacjent ma na sobie ubranie"
 	target.heal_bodypart_damage(urhealedamt_brute,urhealedamt_burn)
 	umsg += get_progress(user, target, urhealedamt_brute, urhealedamt_burn)
 
@@ -84,9 +84,9 @@
 	return TRUE
 
 /datum/surgery_step/heal/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='warning'>You screwed up!</span>",
-		"<span class='warning'>[user] screws up!</span>",
-		"<span class='notice'>[user] fixes some of [target]'s wounds.</span>", TRUE)
+	display_results(user, target, "<span class='warning'>Partaczysz!</span>",
+		"<span class='warning'>[user] partaczy!</span>",
+		"<span class='notice'>[user] opatruje część ran [target].</span>", TRUE)
 	var/urdamageamt_burn = brutehealing * 0.8
 	var/urdamageamt_brute = burnhealing * 0.8
 	if(missinghpbonus)
@@ -128,23 +128,23 @@
 	var/estimated_remaining_steps = target.getBruteLoss() / brute_healed
 	var/progress_text
 	if(locate(/obj/item/healthanalyzer) in user.held_items)
-		progress_text = ". Remaining brute: <font color='#ff3333'>[target.getBruteLoss()]</font>"
+		progress_text = ". Pozostałe urazy: <font color='#ff3333'>[target.getBruteLoss()]</font>"
 	else
 		switch(estimated_remaining_steps)
 			if(-INFINITY to 1)
 				return
 			if(1 to 3)
-				progress_text = ", stitching up the last few scrapes"
+				progress_text = ", zszywając ostatnie zadrapania"
 			if(3 to 6)
-				progress_text = ", counting down the last few bruises left to treat"
+				progress_text = ", odliczając ostatnie siniaki do opatrzenia"
 			if(6 to 9)
-				progress_text = ", continuing to plug away at [target.p_their()] extensive rupturing"
+				progress_text = ", dalej zmagając się z rozległymi rozerwaniami"
 			if(9 to 12)
-				progress_text = ", steadying yourself for the long surgery ahead"
+				progress_text = ", szykując się na długą operację"
 			if(12 to 15)
-				progress_text = ", though [target.p_they()] still look[target.p_s()] more like ground beef than a person"
+				progress_text = ", choć pacjent wciąż bardziej przypomina mielone niż człowieka"
 			if(15 to INFINITY)
-				progress_text = ", though you feel like you're barely making a dent in treating [target.p_their()] pulped body"
+				progress_text = ", choć masz wrażenie, że ledwo zaczynasz leczyć to zmasakrowane ciało"
 
 	return progress_text
 
@@ -202,23 +202,23 @@
 	var/estimated_remaining_steps = target.getFireLoss() / burn_healed
 	var/progress_text
 	if(locate(/obj/item/healthanalyzer) in user.held_items)
-		progress_text = ". Remaining burn: <font color='#ff9933'>[target.getFireLoss()]</font>"
+		progress_text = ". Pozostałe oparzenia: <font color='#ff9933'>[target.getFireLoss()]</font>"
 	else
 		switch(estimated_remaining_steps)
 			if(-INFINITY to 1)
 				return
 			if(1 to 3)
-				progress_text = ", finishing up the last few singe marks"
+				progress_text = ", kończąc ostatnie ślady przypaleń"
 			if(3 to 6)
-				progress_text = ", counting down the last few blisters left to treat"
+				progress_text = ", odliczając ostatnie pęcherze do opatrzenia"
 			if(6 to 9)
-				progress_text = ", continuing to plug away at [target.p_their()] thorough roasting"
+				progress_text = ", dalej zmagając się z dokładnym przypieczeniem"
 			if(9 to 12)
-				progress_text = ", steadying yourself for the long surgery ahead"
+				progress_text = ", szykując się na długą operację"
 			if(12 to 15)
-				progress_text = ", though [target.p_they()] still look[target.p_s()] more like burnt steak than a person"
+				progress_text = ", choć pacjent wciąż bardziej przypomina przypalony stek niż człowieka"
 			if(15 to INFINITY)
-				progress_text = ", though you feel like you're barely making a dent in treating [target.p_their()] charred body"
+				progress_text = ", choć masz wrażenie, że ledwo zaczynasz leczyć to zwęglone ciało"
 
 	return progress_text
 
@@ -277,25 +277,25 @@
 
 	if(locate(/obj/item/healthanalyzer) in user.held_items)
 		if(target.getBruteLoss())
-			progress_text = ". Remaining brute: <font color='#ff3333'>[target.getBruteLoss()]</font>"
+			progress_text = ". Pozostałe urazy: <font color='#ff3333'>[target.getBruteLoss()]</font>"
 		if(target.getFireLoss())
-			progress_text += ". Remaining burn: <font color='#ff9933'>[target.getFireLoss()]</font>"
+			progress_text += ". Pozostałe oparzenia: <font color='#ff9933'>[target.getFireLoss()]</font>"
 	else
 		switch(estimated_remaining_steps)
 			if(-INFINITY to 1)
 				return
 			if(1 to 3)
-				progress_text = ", finishing up the last few signs of damage"
+				progress_text = ", kończąc ostatnie ślady obrażeń"
 			if(3 to 6)
-				progress_text = ", counting down the last few patches of trauma"
+				progress_text = ", odliczając ostatnie miejsca urazów"
 			if(6 to 9)
-				progress_text = ", continuing to plug away at [target.p_their()] extensive injuries"
+				progress_text = ", dalej zmagając się z rozległymi obrażeniami"
 			if(9 to 12)
-				progress_text = ", steadying yourself for the long surgery ahead"
+				progress_text = ", szykując się na długą operację"
 			if(12 to 15)
-				progress_text = ", though [target.p_they()] still look[target.p_s()] more like smooshed baby food than a person"
+				progress_text = ", choć pacjent wciąż bardziej przypomina rozgniecioną papkę dla niemowląt niż człowieka"
 			if(15 to INFINITY)
-				progress_text = ", though you feel like you're barely making a dent in treating [target.p_their()] broken body"
+				progress_text = ", choć masz wrażenie, że ledwo zaczynasz leczyć to połamane ciało"
 
 	return progress_text
 
@@ -326,7 +326,7 @@
 	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/heal/combo/upgraded/femto/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='warning'>You screwed up!</span>",
-		"<span class='warning'>[user] screws up!</span>",
-		"<span class='notice'>[user] fixes some of [target]'s wounds.</span>", TRUE)
+	display_results(user, target, "<span class='warning'>Partaczysz!</span>",
+		"<span class='warning'>[user] partaczy!</span>",
+		"<span class='notice'>[user] opatruje część ran [target].</span>", TRUE)
 	target.take_bodypart_damage(5,5)

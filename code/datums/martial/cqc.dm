@@ -54,8 +54,8 @@
 	if(!can_use(A))
 		return FALSE
 	if(D.mobility_flags & MOBILITY_STAND)
-		D.visible_message("<span class='warning'>[A] slams [D] into the ground!</span>", \
-						  	"<span class='userdanger'>[A] slams you into the ground!</span>")
+		D.visible_message("<span class='warning'>[A] rzuca [D] o ziemię!</span>", \
+						  	"<span class='userdanger'>[A] rzuca cię o ziemię!</span>")
 		playsound(get_turf(A), 'sound/weapons/slam.ogg', 50, 1, -1)
 		D.apply_damage(10, BRUTE, blocked = def_check)
 		D.Paralyze(120)
@@ -67,8 +67,8 @@
 	if(!can_use(A))
 		return FALSE
 	if(!D.stat || !D.IsParalyzed())
-		D.visible_message("<span class='warning'>[A] kicks [D] back!</span>", \
-							"<span class='userdanger'>[A] kicks you back!</span>", null, COMBAT_MESSAGE_RANGE)
+		D.visible_message("<span class='warning'>[A] odrzuca [D] kopnięciem!</span>", \
+							"<span class='userdanger'>[A] odrzuca cię kopnięciem!</span>", null, COMBAT_MESSAGE_RANGE)
 		playsound(get_turf(A), 'sound/weapons/cqchit1.ogg', 50, 1, -1)
 		var/atom/throw_target = get_edge_target_turf(D, A.dir)
 		D.throw_at(throw_target, 1, 14, A)
@@ -76,8 +76,8 @@
 		log_combat(A, D, "kicked (CQC)")
 	if(D.IsParalyzed() && !D.stat)
 		log_combat(A, D, "knocked out (Head kick)(CQC)")
-		D.visible_message("<span class='warning'>[A] kicks [D]'s head, knocking [D.p_them()] out!</span>", \
-					  		"<span class='userdanger'>[A] kicks your head, knocking you out!</span>")
+		D.visible_message("<span class='warning'>[A] kopie [D] w głowę, nokautując go!</span>", \
+					  		"<span class='userdanger'>[A] kopie cię w głowę, nokautując cię!</span>")
 		playsound(get_turf(A), 'sound/weapons/genhit1.ogg', 50, 1, -1)
 		D.SetSleeping(300)
 		D.adjustOrganLoss(ORGAN_SLOT_BRAIN, 15, 150)
@@ -88,7 +88,7 @@
 		return FALSE
 	log_combat(A, D, "pressured (CQC)")
 	D.visible_message("<span class='danger'>[A] punches [D]'s neck!</span>", \
-					"<span class='userdanger'>[A] punches your neck!</span>", null, COMBAT_MESSAGE_RANGE)
+					"<span class='userdanger'>[A] uderza cię w szyję!</span>", null, COMBAT_MESSAGE_RANGE)
 	D.adjustStaminaLoss(60)
 	playsound(get_turf(A), 'sound/weapons/cqchit1.ogg', 50, 1, -1)
 	return TRUE
@@ -100,8 +100,8 @@
 		return FALSE
 	if(!D.stat)
 		log_combat(A, D, "restrained (CQC)")
-		D.visible_message("<span class='warning'>[A] locks [D] into a restraining position!</span>", \
-							"<span class='userdanger'>[A] locks you into a restraining position!</span>")
+		D.visible_message("<span class='warning'>[A] unieruchamia [D] w dźwigni!</span>", \
+							"<span class='userdanger'>[A] unieruchamia cię w dźwigni!</span>")
 		D.adjustStaminaLoss(20)
 		D.Stun(100)
 		restraining = TRUE
@@ -114,8 +114,8 @@
 		return FALSE
 	if(!D.stat)
 		log_combat(A, D, "consecutive CQC'd (CQC)")
-		D.visible_message("<span class='warning'>[A] strikes [D]'s abdomen, neck and back consecutively.</span>", \
-							"<span class='userdanger'>[A] strikes your abdomen, neck and back consecutively!</span>", null, COMBAT_MESSAGE_RANGE)
+		D.visible_message("<span class='warning'>[A] uderza kolejno w brzuch, szyję i plecy [D].</span>", \
+							"<span class='userdanger'>[A] uderza cię kolejno w brzuch, szyję i plecy!</span>", null, COMBAT_MESSAGE_RANGE)
 		playsound(get_turf(D), 'sound/weapons/cqchit2.ogg', 50, 1, -1)
 		var/obj/item/I = D.get_active_held_item()
 		if(I && D.temporarilyRemoveItemFromInventory(I))
@@ -138,8 +138,8 @@
 			D.drop_all_held_items()
 			A.setGrabState(GRAB_AGGRESSIVE) //Instant agressive grab if on grab intent
 			log_combat(A, D, "grabbed", addition="aggressively")
-			D.visible_message("<span class='warning'>[A] violently grabs [D]!</span>", \
-								"<span class='userdanger'>[A] violently grabs you!</span>")
+			D.visible_message("<span class='warning'>[A] brutalnie chwyta [D]!</span>", \
+								"<span class='userdanger'>[A] brutalnie cię chwyta!</span>")
 	else
 		D.grabbedby(A, 1)
 	return TRUE
@@ -153,22 +153,22 @@
 		return TRUE
 	log_combat(A, D, "attacked (CQC)")
 	A.do_attack_animation(D)
-	var/picked_hit_type = pick("CQC'd", "Big Bossed")
+	var/picked_hit_type = pick("załatwia CQC", "załatwia jak Big Boss")
 	var/bonus_damage = 13
 	if(!(D.mobility_flags & MOBILITY_STAND))
 		bonus_damage += 5
-		picked_hit_type = "stomps on"
+		picked_hit_type = "depcze"
 	D.apply_damage(bonus_damage, BRUTE, blocked = def_check)
-	if(picked_hit_type == "kicks" || picked_hit_type == "stomps on")
+	if(picked_hit_type == "kopie" || picked_hit_type == "depcze")
 		playsound(get_turf(D), 'sound/weapons/cqchit2.ogg', 50, 1, -1)
 	else
 		playsound(get_turf(D), 'sound/weapons/cqchit1.ogg', 50, 1, -1)
 	D.visible_message("<span class='danger'>[A] [picked_hit_type] [D]!</span>", \
-					  "<span class='userdanger'>[A] [picked_hit_type] you!</span>", null, COMBAT_MESSAGE_RANGE)
+					  "<span class='userdanger'>[A] [picked_hit_type] cię!</span>", null, COMBAT_MESSAGE_RANGE)
 	log_combat(A, D, "[picked_hit_type] (CQC)")
 	if(A.resting && !D.stat && !D.IsParalyzed())
-		D.visible_message("<span class='warning'>[A] leg sweeps [D]!", \
-							"<span class='userdanger'>[A] leg sweeps you!</span>")
+		D.visible_message("<span class='warning'>[A] podcina [D]!", \
+							"<span class='userdanger'>[A] cię podcina!</span>")
 		playsound(get_turf(A), 'sound/effects/hit_kick.ogg', 50, 1, -1)
 		D.apply_damage(10, BRUTE, blocked = def_check)
 		D.Paralyze(60)
@@ -186,22 +186,22 @@
 	if(prob(65))
 		if(!D.stat || !D.IsParalyzed() || !restraining)
 			I = D.get_active_held_item()
-			D.visible_message("<span class='warning'>[A] strikes [D]'s jaw with their hand!</span>", \
-								"<span class='userdanger'>[A] strikes your jaw, disorienting you!</span>", null, COMBAT_MESSAGE_RANGE)
+			D.visible_message("<span class='warning'>[A] uderza [D] dłonią w szczękę!</span>", \
+								"<span class='userdanger'>[A] uderza cię w szczękę, dezorientując cię!</span>", null, COMBAT_MESSAGE_RANGE)
 			playsound(get_turf(D), 'sound/weapons/cqchit1.ogg', 50, 1, -1)
 			if(I && D.temporarilyRemoveItemFromInventory(I))
 				A.put_in_hands(I)
 			D.Jitter(2)
 			D.apply_damage(5, A.dna.species.attack_type, blocked = def_check)
 	else
-		D.visible_message("<span class='danger'>[A] fails to disarm [D]!</span>", \
-							"<span class='userdanger'>[A] fails to disarm you!</span>", null, COMBAT_MESSAGE_RANGE)
+		D.visible_message("<span class='danger'>[A] nie udaje się rozbroić [D]!</span>", \
+							"<span class='userdanger'>[A] nie udaje się cię rozbroić!</span>", null, COMBAT_MESSAGE_RANGE)
 		playsound(D, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 	log_combat(A, D, "disarmed (CQC)", "[I ? " grabbing \the [I]" : ""]")
 	if(restraining && A.pulling == D)
 		log_combat(A, D, "knocked out (Chokehold)(CQC)")
-		D.visible_message("<span class='danger'>[A] puts [D] into a chokehold!</span>", \
-							"<span class='userdanger'>[A] puts you into a chokehold!</span>")
+		D.visible_message("<span class='danger'>[A] zakłada [D] duszenie!</span>", \
+							"<span class='userdanger'>[A] zakłada ci duszenie!</span>")
 		D.SetSleeping(400)
 		restraining = FALSE
 		if(A.grab_state < GRAB_NECK)
@@ -215,12 +215,12 @@
 	set name = "Remember The Basics"
 	set desc = "You try to remember some of the basics of CQC."
 	set category = "CQC"
-	to_chat(usr, "<b><i>You try to remember some of the basics of CQC.</i></b>")
+	to_chat(usr, "<b><i>Próbujesz przypomnieć sobie podstawy CQC.</i></b>")
 
-	to_chat(usr, "<span class='notice'>Slam</span>: Grab Harm. Slam opponent into the ground, knocking them down.")
-	to_chat(usr, "<span class='notice'>CQC Kick</span>: Harm Harm. Knocks opponent away. Knocks out stunned or knocked down opponents.")
-	to_chat(usr, "<span class='notice'>Restrain</span>: Grab Grab. Locks opponents into a restraining position, disarm to knock them out with a chokehold.")
-	to_chat(usr, "<span class='notice'>Pressure</span>: Disarm Grab. Decent stamina damage.")
-	to_chat(usr, "<span class='notice'>Consecutive CQC</span>: Disarm Disarm Harm. Mainly offensive move, huge damage and decent stamina damage.")
+	to_chat(usr, "<span class='notice'>Rzut</span>: chwyt, krzywda. Rzuca przeciwnika o ziemię, przewracając go.")
+	to_chat(usr, "<span class='notice'>Kopnięcie CQC</span>: krzywda, krzywda. Odrzuca przeciwnika. Nokautuje ogłuszonych lub powalonych przeciwników.")
+	to_chat(usr, "<span class='notice'>Dźwignia</span>: chwyt, chwyt. Unieruchamia przeciwnika w dźwigni; rozbrojenie nokautuje go duszeniem.")
+	to_chat(usr, "<span class='notice'>Ucisk</span>: rozbrojenie, chwyt. Spore obrażenia wytrzymałości.")
+	to_chat(usr, "<span class='notice'>Seria CQC</span>: rozbrojenie, rozbrojenie, krzywda. Głównie ofensywny ruch, ogromne obrażenia i spore obrażenia wytrzymałości.")
 
-	to_chat(usr, "<b><i>In addition, by having your throw mode on when being attacked, you enter an active defense mode where you have a chance to block and sometimes even counter attacks done to you.</i></b>")
+	to_chat(usr, "<b><i>Ponadto, mając włączony tryb rzucania podczas ataku, wchodzisz w aktywną obronę, w której masz szansę zablokować, a czasem nawet skontrować wymierzone w ciebie ataki.</i></b>")

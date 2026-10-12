@@ -64,34 +64,34 @@
 			default_deconstruction_screwdriver(user, "button-open", "[skin]",W)
 			update_icon()
 		else
-			to_chat(user, "<span class='danger'>Maintenance Access Denied.</span>")
+			to_chat(user, "<span class='danger'>Odmowa dostępu serwisowego.</span>")
 			flick("[skin]-denied", src)
 		return
 
 	if(panel_open)
 		if(!device && istype(W, /obj/item/assembly))
 			if(!user.transferItemToLoc(W, src))
-				to_chat(user, "<span class='warning'>\The [W] is stuck to you!</span>")
+				to_chat(user, "<span class='warning'>[W] przykleił się do ciebie!</span>")
 				return
 			device = W
-			to_chat(user, "<span class='notice'>You add [W] to the button.</span>")
+			to_chat(user, "<span class='notice'>Dodajesz [W] do przycisku.</span>")
 
 		if(!board && istype(W, /obj/item/electronics/airlock))
 			if(!user.transferItemToLoc(W, src))
-				to_chat(user, "<span class='warning'>\The [W] is stuck to you!</span>")
+				to_chat(user, "<span class='warning'>[W] przykleił się do ciebie!</span>")
 				return
 			board = W
 			if(board.one_access)
 				req_one_access = board.accesses
 			else
 				req_access = board.accesses
-			to_chat(user, "<span class='notice'>You add [W] to the button.</span>")
+			to_chat(user, "<span class='notice'>Dodajesz [W] do przycisku.</span>")
 
 		if(!device && !board && W.tool_behaviour == TOOL_WRENCH)
-			to_chat(user, "<span class='notice'>You start unsecuring the button frame...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz odczepiać ramę przycisku...</span>")
 			W.play_tool_sound(src)
 			if(W.use_tool(src, user, 40))
-				to_chat(user, "<span class='notice'>You unsecure the button frame.</span>")
+				to_chat(user, "<span class='notice'>Odczepiasz ramę przycisku.</span>")
 				transfer_fingerprints_to(new /obj/item/wallframe/button(get_turf(src)))
 				playsound(loc, 'sound/items/deconstruct.ogg', 50, 1)
 				qdel(src)
@@ -114,7 +114,7 @@
 
 /obj/machinery/button/eminence_act(mob/living/simple_animal/eminence/eminence)
 	. = ..()
-	to_chat(usr, "<span class='brass'>You begin manipulating [src]!</span>")
+	to_chat(usr, "<span class='brass'>Zaczynasz majstrować przy [src]!</span>")
 	if(do_after(eminence, 20, target=get_turf(eminence)))
 		attack_hand(eminence)
 
@@ -150,14 +150,14 @@
 				req_one_access = list()
 				board = null
 			update_icon()
-			to_chat(user, "<span class='notice'>You remove electronics from the button frame.</span>")
+			to_chat(user, "<span class='notice'>Wyjmujesz elektronikę z ramy przycisku.</span>")
 
 		else
 			if(skin == "doorctrl")
 				skin = "launcher"
 			else
 				skin = "doorctrl"
-			to_chat(user, "<span class='notice'>You change the button frame's front panel.</span>")
+			to_chat(user, "<span class='notice'>Zmieniasz przedni panel ramy przycisku.</span>")
 		return
 
 	if((machine_stat & (NOPOWER|BROKEN)))
@@ -167,7 +167,7 @@
 		return
 
 	if(!allowed(user) && !istype(user, /mob/living/simple_animal/eminence))
-		to_chat(user, "<span class='danger'>Access Denied.</span>")
+		to_chat(user, "<span class='danger'>Odmowa dostępu.</span>")
 		flick("[skin]-denied", src)
 		return
 

@@ -8,7 +8,7 @@
 	analyzerdesceffect = "Uwalnia płomienie gdy zostanie poparzony, ale otrzymuje obrażenia od wody i innych cieczy do zwalczania ognia."
 	color = "#B68D00"
 	complementary_color = "#BE5532"
-	blobbernaut_message = "splashes"
+	blobbernaut_message = "ochlapuje"
 	message = "Blob bryzga na ciebie gorącym olejem"
 	message_living = ", czujesz że twoja skóra zwęgla się i topi"
 	reagent = /datum/reagent/blob/blazing_oil
@@ -28,7 +28,7 @@
 
 /datum/reagent/blob/blazing_oil
 	name = "Blazing Oil"
-	taste_description = "burning oil"
+	taste_description = "płonący olej"
 	color = "#B68D00"
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
 

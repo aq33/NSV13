@@ -34,9 +34,9 @@ It is possible to destroy the net by the occupant or someone else.
 /obj/structure/energy_net/Destroy()
 	if(!success)
 		if(!QDELETED(affecting))
-			affecting.visible_message("[affecting.name] was recovered from the energy net!", "You were recovered from the energy net!", "<span class='italics'>You hear a grunt.</span>")
+			affecting.visible_message("[affecting.name] zostaje uwolniony z sieci energetycznej!", "Zostajesz uwolniony z sieci energetycznej!", "<span class='italics'>Słyszysz stęknięcie.</span>")
 		if(!QDELETED(master))//As long as they still exist.
-			to_chat(master, "<span class='userdanger'>ERROR</span>: unable to initiate transport protocol. Procedure terminated.")
+			to_chat(master, "<span class='userdanger'>BŁĄD</span>: nie można uruchomić protokołu transportu. Procedura zakończona.")
 	return ..()
 
 /obj/structure/energy_net/process(delta_time)
@@ -65,12 +65,12 @@ It is possible to destroy the net by the occupant or someone else.
 	playsound(affecting, 'sound/effects/sparks4.ogg', 50, 1)
 	new /obj/effect/temp_visual/dir_setting/ninja/phase/out(affecting.drop_location(), affecting.dir)
 
-	visible_message("[affecting] suddenly vanishes!")
+	visible_message("[affecting] nagle znika!")
 	affecting.forceMove(pick(GLOB.holdingfacility)) //Throw mob in to the holding facility.
-	to_chat(affecting, "<span class='danger'>You appear in a strange place!</span>")
+	to_chat(affecting, "<span class='danger'>Pojawiasz się w dziwnym miejscu!</span>")
 
 	if(!QDELETED(master))//As long as they still exist.
-		to_chat(master, "<span class='notice'><b>SUCCESS</b>: transport procedure of [affecting] complete.</span>")
+		to_chat(master, "<span class='notice'><b>SUKCES</b>: procedura transportu [affecting] zakończona.</span>")
 	do_sparks(5, FALSE, affecting)
 	playsound(affecting, 'sound/effects/phasein.ogg', 25, 1)
 	playsound(affecting, 'sound/effects/sparks2.ogg', 50, 1)

@@ -1,10 +1,10 @@
 /datum/language/narsie
 	name = "Nar'Sian"
 	desc = "The ancient, blood-soaked, impossibly complex language of Nar'Sian cultists."
-	speech_verb = "intones"
-	ask_verb = "inquires"
-	exclaim_verb = "invokes"
-	sing_verb = "intones"
+	speech_verb = "intonuje"
+	ask_verb = "dopytuje"
+	exclaim_verb = "inwokuje"
+	sing_verb = "intonuje"
 	key = "n"
 	sentence_chance = 8
 	space_chance = 95 //very high due to the potential length of each syllable

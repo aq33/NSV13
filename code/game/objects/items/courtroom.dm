@@ -10,11 +10,11 @@
 	force = 5
 	throwforce = 6
 	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("bashed", "battered", "judged", "whacked")
+	attack_verb = list("grzmoci", "okłada", "osądza", "wali")
 	resistance_flags = FLAMMABLE
 
 /obj/item/gavelhammer/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] has sentenced [user.p_them()]self to death with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] skazuje się na śmierć za pomocą [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	playsound(loc, 'sound/items/gavel.ogg', 50, 1, -1)
 	return (BRUTELOSS)
 
@@ -31,7 +31,7 @@
 /obj/item/gavelblock/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/gavelhammer))
 		playsound(loc, 'sound/items/gavel.ogg', 100, 1)
-		user.visible_message("<span class='warning'>[user] strikes [src] with [I].</span>")
+		user.visible_message("<span class='warning'>[user] uderza w [src] za pomocą [I].</span>")
 		user.changeNext_move(CLICK_CD_MELEE)
 	else
 		return ..()

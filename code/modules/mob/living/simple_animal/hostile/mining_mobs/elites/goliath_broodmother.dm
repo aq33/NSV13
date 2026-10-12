@@ -29,14 +29,14 @@
 	health = 800
 	melee_damage = 30
 	armour_penetration = 30
-	attacktext = "beats down on"
+	attacktext = "okłada"
 	attack_sound = 'sound/weapons/punch1.ogg'
-	throw_message = "does nothing to the rocky hide of the"
+	throw_message = "nie przebija skalistej skóry"
 	speed = 2
 	move_to_delay = 5
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
 	mouse_opacity = MOUSE_OPACITY_ICON
-	deathmessage = "explodes into gore!"
+	deathmessage = "eksploduje krwawą miazgą!"
 	loot_drop = /obj/item/crusher_trophy/broodmother_tongue
 
 	attack_action_types = list(/datum/action/innate/elite_attack/tentacle_patch,
@@ -50,25 +50,25 @@
 /datum/action/innate/elite_attack/tentacle_patch
 	name = "Tentacle Patch"
 	button_icon_state = "tentacle_patch"
-	chosen_message = "<span class='boldwarning'>You are now attacking with a patch of tentacles.</span>"
+	chosen_message = "<span class='boldwarning'>Teraz atakujesz kępą macek.</span>"
 	chosen_attack_num = TENTACLE_PATCH
 
 /datum/action/innate/elite_attack/spawn_children
 	name = "Spawn Children"
 	button_icon_state = "spawn_children"
-	chosen_message = "<span class='boldwarning'>You will spawn two children at your location to assist you in combat.  You can have up to 8.</span>"
+	chosen_message = "<span class='boldwarning'>Przywołasz w swoim miejscu dwoje dzieci, które pomogą ci w walce.  Możesz mieć ich maksymalnie 8.</span>"
 	chosen_attack_num = SPAWN_CHILDREN
 
 /datum/action/innate/elite_attack/rage
 	name = "Rage"
 	button_icon_state = "rage"
-	chosen_message = "<span class='boldwarning'>You will temporarily increase your movement speed.</span>"
+	chosen_message = "<span class='boldwarning'>Tymczasowo zwiększysz swoją prędkość ruchu.</span>"
 	chosen_attack_num = RAGE
 
 /datum/action/innate/elite_attack/call_children
 	name = "Call Children"
 	button_icon_state = "call_children"
-	chosen_message = "<span class='boldwarning'>You will summon your children to your location.</span>"
+	chosen_message = "<span class='boldwarning'>Przywołasz swoje dzieci do siebie.</span>"
 	chosen_attack_num = CALL_CHILDREN
 
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother/OpenFire()
@@ -113,26 +113,26 @@
 	var/tturf = get_turf(target)
 	if(!isturf(tturf))
 		return
-	visible_message("<span class='warning'>[src] digs its tentacles under [target]!</span>")
+	visible_message("<span class='warning'>[src] wbija macki pod [target]!</span>")
 	new /obj/effect/temp_visual/goliath_tentacle/broodmother/patch(tturf, src)
 
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother/proc/spawn_children(var/target)
 	ranged_cooldown = world.time + 40
-	visible_message("<span class='boldwarning'>The ground churns behind [src]!</span>")
+	visible_message("<span class='boldwarning'>Ziemia za [src] się kotłuje!</span>")
 	for(var/i in 1 to 2)
 		if(children_list.len >= 8)
 			return
 		var/mob/living/simple_animal/hostile/asteroid/elite/broodmother_child/newchild = new /mob/living/simple_animal/hostile/asteroid/elite/broodmother_child(loc)
 		newchild.GiveTarget(target)
 		newchild.faction = faction.Copy()
-		visible_message("<span class='boldwarning'>[newchild] appears below [src]!</span>")
+		visible_message("<span class='boldwarning'>Pod [src] pojawia się [newchild]!</span>")
 		newchild.mother = src
 		children_list += newchild
 
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother/proc/rage()
 	ranged_cooldown = world.time + 70
 	playsound(src,'sound/spookoween/insane_low_laugh.ogg', 200, 1)
-	visible_message("<span class='warning'>[src] starts picking up speed!</span>")
+	visible_message("<span class='warning'>[src] zaczyna nabierać prędkości!</span>")
 	color = "#FF0000"
 	set_varspeed(0)
 	move_to_delay = 3
@@ -145,7 +145,7 @@
 
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother/proc/call_children()
 	ranged_cooldown = world.time + 60
-	visible_message("<span class='warning'>The ground shakes near [src]!</span>")
+	visible_message("<span class='warning'>Ziemia w pobliżu [src] się trzęsie!</span>")
 	var/list/directions = GLOB.cardinals.Copy() + GLOB.diagonals.Copy()
 	for(var/mob/child in children_list)
 		var/spawndir = pick_n_take(directions)
@@ -167,16 +167,16 @@
 	maxHealth = 30
 	health = 30
 	melee_damage = 5
-	attacktext = "bashes against"
+	attacktext = "wali w"
 	attack_sound = 'sound/weapons/punch1.ogg'
-	throw_message = "does nothing to the rocky hide of the"
+	throw_message = "nie przebija skalistej skóry"
 	speed = 2
 	move_to_delay = 5
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
 	mouse_opacity = MOUSE_OPACITY_ICON
 	butcher_results = list()
 	guaranteed_butcher_results = list(/obj/item/stack/sheet/animalhide/goliath_hide = 1)
-	deathmessage = "falls to the ground."
+	deathmessage = "pada na ziemię."
 	status_flags = CANPUSH
 	var/mob/living/simple_animal/hostile/asteroid/elite/broodmother/mother = null
 
@@ -186,7 +186,7 @@
 	if(!isturf(tturf))
 		return
 	if(get_dist(src, target) <= 7)//Screen range check, so it can't attack people off-screen
-		visible_message("<span class='warning'>[src] digs one of its tentacles under [target]!</span>")
+		visible_message("<span class='warning'>[src] wbija jedną z macek pod [target]!</span>")
 		new /obj/effect/temp_visual/goliath_tentacle/broodmother(tturf, src)
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother_child/death()
 	. = ..()
@@ -199,7 +199,7 @@
 	for(var/mob/living/L in loc)
 		if((!QDELETED(spawner) && spawner.faction_check_mob(L)) || L.stat == DEAD)
 			continue
-		visible_message("<span class='danger'>[src] grabs hold of [L]!</span>")
+		visible_message("<span class='danger'>[src] chwyta [L]!</span>")
 		L.Stun(10)
 		L.adjustBruteLoss(rand(30,35))
 		latched = TRUE
@@ -230,7 +230,7 @@
 	bonus_value = 10
 
 /obj/item/crusher_trophy/broodmother_tongue/effect_desc()
-	return "mark detonation to have a <b>[bonus_value]%</b> chance to summon a patch of goliath tentacles at the target's location"
+	return "detonacja znacznika daje <b>[bonus_value]%</b> szansy na przywołanie kępy macek goliata w miejscu celu"
 
 /obj/item/crusher_trophy/broodmother_tongue/on_mark_detonation(mob/living/target, mob/living/user)
 	if(rand(1, 100) <= bonus_value && target.stat != DEAD)

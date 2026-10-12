@@ -6,8 +6,8 @@
 	item_state = "pen"
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY
-	attack_verb = list("poked")
-	var/fail_message = "<span class='warning'>INVALID USER.</span>"
+	attack_verb = list("szturcha")
+	var/fail_message = "<span class='warning'>NIEPRAWIDŁOWY UŻYTKOWNIK.</span>"
 	var/selfdestruct = 0 // Explode when user check is failed.
 	var/force_replace = 0 // Can forcefully replace other pins.
 	var/pin_removeable = 0 // Can be replaced by any pin.
@@ -28,21 +28,21 @@
 			if(G.pin && (force_replace || G.pin.pin_removeable))
 				G.pin.forceMove(get_turf(G))
 				G.pin.gun_remove(user)
-				to_chat(user, "<span class ='notice'>You remove [G]'s old pin.</span>")
+				to_chat(user, "<span class ='notice'>Wyjmujesz starą iglicę z [G].</span>")
 
 			if(!G.pin)
 				if(!user.temporarilyRemoveItemFromInventory(src))
 					return
 				gun_insert(user, G)
-				to_chat(user, "<span class ='notice'>You insert [src] into [G].</span>")
+				to_chat(user, "<span class ='notice'>Wkładasz [src] do [G].</span>")
 			else
-				to_chat(user, "<span class ='notice'>This firearm already has a firing pin installed.</span>")
+				to_chat(user, "<span class ='notice'>Ta broń ma już zamontowaną iglicę.</span>")
 
 /obj/item/firing_pin/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class='notice'>You override the authentication mechanism.</span>")
+	to_chat(user, "<span class='notice'>Obchodzisz mechanizm uwierzytelniania.</span>")
 
 /obj/item/firing_pin/proc/gun_insert(mob/living/user, obj/item/gun/G)
 	gun = G
@@ -63,7 +63,7 @@
 		user.show_message(fail_message, MSG_VISUAL)
 	if(selfdestruct)
 		if(user)
-			user.show_message("<span class='danger'>SELF-DESTRUCTING...</span><br>", MSG_VISUAL)
+			user.show_message("<span class='danger'>AUTODESTRUKCJA...</span><br>", MSG_VISUAL)
 			to_chat(user, "<span class='userdanger'>[gun] explodes!</span>")
 		explosion(get_turf(gun), -1, 0, 2, 3)
 		if(gun)
@@ -80,7 +80,7 @@
 /obj/item/firing_pin/test_range
 	name = "test-range firing pin"
 	desc = "This safety firing pin allows weapons to be fired within proximity to a firing range."
-	fail_message = "<span class='warning'>TEST RANGE CHECK FAILED.</span>"
+	fail_message = "<span class='warning'>KONTROLA STRZELNICY NIEUDANA.</span>"
 	pin_removeable = TRUE
 
 /obj/item/firing_pin/test_range/pin_auth(mob/living/user)
@@ -95,7 +95,7 @@
 /obj/item/firing_pin/implant
 	name = "implant-keyed firing pin"
 	desc = "This is a security firing pin which only authorizes users who are implanted with a certain device."
-	fail_message = "<span class='warning'>IMPLANT CHECK FAILED.</span>"
+	fail_message = "<span class='warning'>KONTROLA IMPLANTU NIEUDANA.</span>"
 	var/obj/item/implant/req_implant = null
 
 /obj/item/firing_pin/implant/pin_auth(mob/living/user)
@@ -159,7 +159,7 @@
 	name = "DNA-keyed firing pin"
 	desc = "This is a DNA-locked firing pin which only authorizes one user. Attempt to fire once to DNA-link."
 	icon_state = "firing_pin_dna"
-	fail_message = "<span class='warning'>DNA CHECK FAILED.</span>"
+	fail_message = "<span class='warning'>KONTROLA DNA NIEUDANA.</span>"
 	var/unique_enzymes = null
 
 /obj/item/firing_pin/dna/afterattack(atom/target, mob/user, proximity_flag)
@@ -168,7 +168,7 @@
 		var/mob/living/carbon/M = target
 		if(M.dna && M.dna.unique_enzymes)
 			unique_enzymes = M.dna.unique_enzymes
-			to_chat(user, "<span class='notice'>DNA-LOCK SET.</span>")
+			to_chat(user, "<span class='notice'>BLOKADA DNA USTAWIONA.</span>")
 
 /obj/item/firing_pin/dna/pin_auth(mob/living/carbon/user)
 	if(user && user.dna && user.dna.unique_enzymes)
@@ -180,7 +180,7 @@
 	if(!unique_enzymes)
 		if(user?.dna?.unique_enzymes)
 			unique_enzymes = user.dna.unique_enzymes
-			to_chat(user, "<span class='notice'>DNA-LOCK SET.</span>")
+			to_chat(user, "<span class='notice'>BLOKADA DNA USTAWIONA.</span>")
 	else
 		..()
 
@@ -204,24 +204,24 @@
 
 /obj/item/firing_pin/paywall/attack_self(mob/user)
 	multi_payment = !multi_payment
-	to_chat(user, "<span class='notice'>You set the pin to [( multi_payment ) ? "process payment for every shot" : "one-time license payment"].</span>")
+	to_chat(user, "<span class='notice'>Ustawiasz iglicę na [( multi_payment ) ? "płatność za każdy strzał" : "jednorazową opłatę licencyjną"].</span>")
 
 /obj/item/firing_pin/paywall/examine(mob/user)
 	. = ..()
 	if(pin_owner)
-		. += "<span class='notice'>This firing pin is currently authorized to pay into the account of [pin_owner.registered_name].</span>"
+		. += "<span class='notice'>Ta iglica jest obecnie upoważniona do wpłat na konto [pin_owner.registered_name].</span>"
 
 /obj/item/firing_pin/paywall/gun_insert(mob/living/user, obj/item/gun/G)
 	if(!pin_owner)
-		to_chat(user, "<span class='warning'>ERROR: Please swipe valid identification card before installing firing pin!</span>")
+		to_chat(user, "<span class='warning'>BŁĄD: przed zamontowaniem iglicy przeciągnij ważną kartę identyfikacyjną!</span>")
 		return
 	gun = G
 	forceMove(gun)
 	gun.pin = src
 	if(multi_payment)
-		gun.desc += "<span class='notice'> This [gun.name] has a per-shot cost of [payment_amount] credit[( payment_amount > 1 ) ? "s" : ""].</span>"
+		gun.desc += "<span class='notice'> Koszt jednego strzału z [gun.name]: [payment_amount] kr.</span>"
 		return
-	gun.desc += "<span class='notice'> This [gun.name] has a license permit cost of [payment_amount] credit[( payment_amount > 1 ) ? "s" : ""].</span>"
+	gun.desc += "<span class='notice'> Koszt licencji na [gun.name]: [payment_amount] kr.</span>"
 	return
 
 
@@ -233,20 +233,20 @@
 	if(istype(M, /obj/item/card/id))
 		var/obj/item/card/id/id = M
 		if(!id.registered_account)
-			to_chat(user, "<span class='warning'>ERROR: Identification card lacks registered bank account!</span>")
+			to_chat(user, "<span class='warning'>BŁĄD: karta identyfikacyjna nie ma zarejestrowanego konta bankowego!</span>")
 			return
 		if(id != pin_owner && owned)
-			to_chat(user, "<span class='warning'>ERROR: This firing pin has already been authorized!</span>")
+			to_chat(user, "<span class='warning'>BŁĄD: ta iglica została już autoryzowana!</span>")
 			return
 		if(id == pin_owner)
-			to_chat(user, "<span class='notice'>You unlink the card from the firing pin.</span>")
+			to_chat(user, "<span class='notice'>Odłączasz kartę od iglicy.</span>")
 			gun_owners -= user
 			pin_owner = null
 			owned = FALSE
 			return
-		var/transaction_amount = input(user, "Insert valid deposit amount for gun purchase", "Money Deposit") as null|num
+		var/transaction_amount = input(user, "Podaj prawidłową kwotę wpłaty za zakup broni", "Wpłata") as null|num
 		if(transaction_amount < 1)
-			to_chat(user, "<span class='warning'>ERROR: Invalid amount designated.</span>")
+			to_chat(user, "<span class='warning'>BŁĄD: podano nieprawidłową kwotę.</span>")
 			return
 		if(!transaction_amount)
 			return
@@ -254,7 +254,7 @@
 		owned = TRUE
 		payment_amount = transaction_amount
 		gun_owners += user
-		to_chat(user, "<span class='notice'>You link the card to the firing pin.</span>")
+		to_chat(user, "<span class='notice'>Łączysz kartę z iglicą.</span>")
 
 /obj/item/firing_pin/paywall/pin_auth(mob/living/user)
 	if(!istype(user))//nice try commie
@@ -269,11 +269,11 @@
 				if(credit_card_details.adjust_money(-payment_amount))
 					pin_owner.registered_account.adjust_money(payment_amount)
 					return TRUE
-				to_chat(user, "<span class='warning'>ERROR: User balance insufficent for successful transaction!</span>")
+				to_chat(user, "<span class='warning'>BŁĄD: niewystarczające saldo użytkownika do przeprowadzenia transakcji!</span>")
 				return FALSE
 			return TRUE
 		if(credit_card_details && !active_prompt)
-			var/license_request = alert(usr, "Do you wish to pay [payment_amount] credit[( payment_amount > 1 ) ? "s" : ""] for [( multi_payment ) ? "each shot of [gun.name]" : "usage license of [gun.name]"]?", "Weapon Purchase", "Yes", "No")
+			var/license_request = alert(usr, "Czy chcesz zapłacić [payment_amount] kr za [( multi_payment ) ? "każdy strzał z [gun.name]" : "licencję na użytkowanie [gun.name]"]?", "Zakup broni", "Yes", "No")
 			active_prompt = TRUE
 			if(!user.canUseTopic(src, BE_CLOSE))
 				active_prompt = FALSE
@@ -283,15 +283,15 @@
 					if(credit_card_details.adjust_money(-payment_amount))
 						pin_owner.registered_account.adjust_money(payment_amount)
 						gun_owners += H
-						to_chat(user, "<span class='notice'>Gun license purchased, have a secure day!</span>")
+						to_chat(user, "<span class='notice'>Licencja na broń zakupiona, bezpiecznego dnia!</span>")
 						active_prompt = FALSE
 						return FALSE //we return false here so you don't click initially to fire, get the prompt, accept the prompt, and THEN the gun
-					to_chat(user, "<span class='warning'>ERROR: User balance insufficent for successful transaction!</span>")
+					to_chat(user, "<span class='warning'>BŁĄD: niewystarczające saldo użytkownika do przeprowadzenia transakcji!</span>")
 					return FALSE
 				if("No")
-					to_chat(user, "<span class='warning'>ERROR: User has declined to purchase gun license!</span>")
+					to_chat(user, "<span class='warning'>BŁĄD: użytkownik odmówił zakupu licencji na broń!</span>")
 					return FALSE
-		to_chat(user, "<span class='warning'>ERROR: User has no valid bank account to substract neccesary funds from!</span>")
+		to_chat(user, "<span class='warning'>BŁĄD: użytkownik nie ma ważnego konta bankowego, z którego można pobrać środki!</span>")
 		return FALSE
 
 
@@ -299,7 +299,7 @@
 /obj/item/firing_pin/tag
 	name = "laser tag firing pin"
 	desc = "A recreational firing pin, used in laser tag units to ensure users have their vests on."
-	fail_message = "<span class='warning'>SUIT CHECK FAILED.</span>"
+	fail_message = "<span class='warning'>KONTROLA STROJU NIEUDANA.</span>"
 	var/obj/item/clothing/suit/suit_requirement = null
 	var/tagcolor = ""
 
@@ -308,7 +308,7 @@
 		var/mob/living/carbon/human/M = user
 		if(istype(M.wear_suit, suit_requirement))
 			return TRUE
-	to_chat(user, "<span class='warning'>You need to be wearing [tagcolor] laser tag armor!</span>")
+	to_chat(user, "<span class='warning'>Musisz mieć na sobie pancerz do laser taga ([tagcolor])!</span>")
 	return FALSE
 
 /obj/item/firing_pin/tag/red

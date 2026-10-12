@@ -102,23 +102,23 @@
 	if (target)
 		var/datum/gas_mixture/environment = target.return_air()
 		if(environment)
-			. = "The pressure gauge reads [round(environment.return_pressure(), 0.01)] kPa; [round(environment.return_temperature(),0.01)] K ([round(environment.return_temperature()-T0C,0.01)]&deg;C)."
+			. = "Manometr pokazuje [round(environment.return_pressure(), 0.01)] kPa; [round(environment.return_temperature(),0.01)] K ([round(environment.return_temperature()-T0C,0.01)]&deg;C)."
 		else
-			. = "The sensor error light is blinking."
+			. = "Miga lampka błędu czujnika."
 	else
-		. = "The connect error light is blinking."
+		. = "Miga lampka błędu połączenia."
 
 /obj/machinery/meter/examine(mob/user)
 	. = ..()
 	. += status()
 
 /obj/machinery/meter/wrench_act(mob/user, obj/item/I)
-	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz odkręcać [src]...</span>")
 	if (I.use_tool(src, user, 40, volume=50))
 		user.visible_message(
-			"[user] unfastens \the [src].",
-			"<span class='notice'>You unfasten \the [src].</span>",
-			"<span class='italics'>You hear ratchet.</span>")
+			"[user] odkręca [src].",
+			"<span class='notice'>Odkręcasz [src].</span>",
+			"<span class='italics'>Słyszysz grzechotkę.</span>")
 		deconstruct()
 	return TRUE
 

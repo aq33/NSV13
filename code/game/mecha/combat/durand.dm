@@ -177,7 +177,7 @@ the shield is disabled by means other than the action button (like running out o
 	if(switching && !signal_args[1])
 		return
 	if(!chassis.defense_mode && (!chassis.cell || chassis.cell.charge < 100)) //If it's off, and we have less than 100 units of power
-		chassis.balloon_alert(chassis.occupant, "Insufficient power.")
+		chassis.balloon_alert(chassis.occupant, "Za mało energii.")
 		return
 	switching = TRUE
 	chassis.defense_mode = !chassis.defense_mode

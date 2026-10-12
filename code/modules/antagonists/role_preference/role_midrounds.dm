@@ -3,57 +3,57 @@
 	antag_datum = /datum/antagonist/blob
 
 /datum/role_preference/midround_ghost/xenomorph
-	name = "Xenomorph"
+	name = "Ksenomorf"
 	antag_datum = /datum/antagonist/xeno
 
 /datum/role_preference/midround_ghost/nightmare
-	name = "Nightmare"
+	name = "Koszmar"
 	antag_datum = /datum/antagonist/nightmare
 
 /datum/role_preference/midround_ghost/space_dragon
-	name = "Space Dragon"
+	name = "Kosmiczny smok"
 	antag_datum = /datum/antagonist/space_dragon
 
 /datum/role_preference/midround_ghost/abductor
-	name = "Abductor"
+	name = "Porywacz"
 	antag_datum = /datum/antagonist/abductor
 
 /datum/role_preference/midround_ghost/space_pirate
-	name = "Space Pirate"
+	name = "Kosmiczny pirat"
 	antag_datum = /datum/antagonist/pirate
 
 /datum/role_preference/midround_ghost/revenant
-	name = "Revenant"
+	name = "Upiór"
 	antag_datum = /datum/antagonist/revenant
 
 /* NSV13 - Disabled because we don't have this ported yet.
 /datum/role_preference/midround_ghost/spider
-	name = "Spider"
+	name = "Pająk"
 	antag_datum = /datum/antagonist/spider
 
 /datum/role_preference/midround_ghost/swarmer
-	name = "Swarmer"
+	name = "Rojowiec"
 	antag_datum = /datum/antagonist/swarmer
 */
 
 /datum/role_preference/midround_ghost/morph
-	name = "Morph"
+	name = "Morf"
 	antag_datum = /datum/antagonist/morph
 
 /datum/role_preference/midround_ghost/fugitive
-	name = "Fugitive"
+	name = "Zbieg"
 	antag_datum = /datum/antagonist/fugitive
 
 /datum/role_preference/midround_ghost/fugitive_hunter
-	name = "Fugitive Hunter"
+	name = "Łowca zbiegów"
 	antag_datum = /datum/antagonist/fugitive_hunter
 
 /datum/role_preference/midround_ghost/slaughter_demon
-	name = "Slaughter Demon"
+	name = "Demon rzezi"
 	antag_datum = /datum/antagonist/slaughter
 
 /datum/role_preference/midround_ghost/devil
-	name = "Devil (Midround)"
+	name = "Diabeł (w trakcie rundy)"
 	antag_datum = /datum/antagonist/devil
 
 /datum/role_preference/midround_ghost/ninja
@@ -61,9 +61,9 @@
 	antag_datum = /datum/antagonist/ninja
 
 /datum/role_preference/midround_living/malfunctioning_ai
-	name = "Malfunctioning AI"
+	name = "Wadliwa SI"
 	antag_datum = /datum/antagonist/traitor
 
 /datum/role_preference/midround_living/obsessed
-	name = "Obsessed"
+	name = "Obsesjonat"
 	antag_datum = /datum/antagonist/obsessed

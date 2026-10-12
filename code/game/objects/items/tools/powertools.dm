@@ -38,10 +38,10 @@
 /obj/item/powertool/hand_drill/toggle_mode(mob/user)
 	playsound(get_turf(user), 'sound/items/change_drill.ogg', 50, 1)
 	if(tool_behaviour == TOOL_SCREWDRIVER)
-		balloon_alert(user, "You attach the bolt driver bit.")
+		balloon_alert(user, "Zakładasz końcówkę do nakrętek.")
 		become_wrench()
 	else
-		balloon_alert(user, "You attach the screw driver bit.")
+		balloon_alert(user, "Zakładasz końcówkę do śrub.")
 		become_screwdriver()
 
 /obj/item/powertool/hand_drill/proc/become_wrench()
@@ -50,7 +50,7 @@
 
 	hitsound = null
 
-	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
+	attack_verb = list("atakuje", "grzmoci", "okłada", "tłucze", "wali")
 	throw_range = 7
 
 /obj/item/powertool/hand_drill/proc/become_screwdriver()
@@ -59,14 +59,14 @@
 
 	hitsound = 'sound/items/drill_hit.ogg'
 
-	attack_verb = list("drilled", "screwed", "jabbed")
+	attack_verb = list("wierci w", "przykręca", "dźga")
 	throw_range = 3
 
 /obj/item/powertool/hand_drill/suicide_act(mob/user)
 	if(tool_behaviour == TOOL_SCREWDRIVER)
-		user.visible_message("<span class='suicide'>[user] is putting [src] to [user.p_their()] temple. It looks like [user.p_theyre()] trying to commit suicide!</span>")
+		user.visible_message("<span class='suicide'>[user] przykłada [src] do skroni. Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	else
-		user.visible_message("<span class='suicide'>[user] is pressing [src] against [user.p_their()] head! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+		user.visible_message("<span class='suicide'>[user] przyciska [src] do głowy! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return BRUTELOSS
 
 /obj/item/powertool/hand_drill/attack(mob/living/M, mob/living/user)
@@ -75,7 +75,7 @@
 	if(user.zone_selected != BODY_ZONE_PRECISE_EYES && user.zone_selected != BODY_ZONE_HEAD)
 		return ..()
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, "<span class='warning'>You don't want to harm [M]!</span>")
+		to_chat(user, "<span class='warning'>Nie chcesz zrobić krzywdy [M]!</span>")
 		return
 	if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
 		M = user
@@ -94,7 +94,7 @@
 
 	force = 15
 	throwforce = 7
-	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
+	attack_verb = list("atakuje", "grzmoci", "okłada", "tłucze", "wali")
 
 /obj/item/powertool/jaws_of_life/Initialize(mapload)
 	. = ..()
@@ -103,10 +103,10 @@
 /obj/item/powertool/jaws_of_life/toggle_mode(mob/user)
 	playsound(get_turf(user), 'sound/items/change_jaws.ogg', 50, 1)
 	if(tool_behaviour == TOOL_CROWBAR)
-		balloon_alert(user, "You attach the cutting jaws.")
+		balloon_alert(user, "Zakładasz szczęki tnące.")
 		become_wirecutters()
 	else
-		balloon_alert(user, "You attach the prying jaws.")
+		balloon_alert(user, "Zakładasz szczęki rozpierające.")
 		become_crowbar()
 
 /obj/item/powertool/jaws_of_life/proc/become_wirecutters()
@@ -115,7 +115,7 @@
 
 	usesound = 'sound/items/jaws_cut.ogg'
 
-	attack_verb = list("pinched", "nipped")
+	attack_verb = list("szczypie", "podgryza")
 	force = 6
 	throw_speed = 3
 
@@ -127,7 +127,7 @@
 
 	usesound = 'sound/items/jaws_pry.ogg'
 
-	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
+	attack_verb = list("atakuje", "grzmoci", "okłada", "tłucze", "wali")
 	force = 15
 	throw_speed = 2
 
@@ -135,10 +135,10 @@
 
 /obj/item/powertool/jaws_of_life/suicide_act(mob/user)
 	if(tool_behaviour == TOOL_CROWBAR)
-		user.visible_message("<span class='suicide'>[user] is putting [user.p_their()] head in [src], it looks like [user.p_theyre()] trying to commit suicide!</span>")
+		user.visible_message("<span class='suicide'>[user] wkłada głowę do [src]; wygląda na to, że próbuje popełnić samobójstwo!</span>")
 		playsound(loc, 'sound/items/jaws_pry.ogg', 50, 1, -1)
 	else
-		user.visible_message("<span class='suicide'>[user] is wrapping \the [src] around [user.p_their()] neck. It looks like [user.p_theyre()] trying to rip [user.p_their()] head off!</span>")
+		user.visible_message("<span class='suicide'>[user] owija [src] wokół szyi. Wygląda na to, że próbuje urwać sobie głowę!</span>")
 		playsound(loc, 'sound/items/jaws_cut.ogg', 50, 1, -1)
 		if(iscarbon(user))
 			var/mob/living/carbon/C = user
@@ -150,7 +150,7 @@
 
 /obj/item/powertool/jaws_of_life/attack(mob/living/carbon/C, mob/living/user)
 	if(tool_behaviour == TOOL_WIRECUTTER && istype(C) && C.handcuffed)
-		user.visible_message("<span class='notice'>[user] cuts [C]'s restraints with [src]!</span>")
+		user.visible_message("<span class='notice'>[user] przecina więzy [C] za pomocą [src]!</span>")
 		log_combat(user, C, "cut handcuffs from")
 		qdel(C.handcuffed)
 		return

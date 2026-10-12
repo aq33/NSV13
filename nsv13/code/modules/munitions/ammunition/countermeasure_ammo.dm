@@ -41,14 +41,14 @@
 /obj/structure/overmap/small_craft/proc/fire_countermeasure()
 	var/obj/item/fighter_component/countermeasure_dispenser/CD = loadout.get_slot(HARDPOINT_SLOT_COUNTERMEASURE)
 	if(!CD) //Check for a dispenser
-		to_chat(usr, "<span class='warning'>Failed to detect countermeasure dispenser!</span>")
+		to_chat(usr, "<span class='warning'>Nie wykryto dozownika środków przeciwdziałania!</span>")
 		return
 	if(!CD.charges) //check to see if we have any countermeasures
-		to_chat(usr, "<span class='warning'>Countermeasures depleted!</span>")
+		to_chat(usr, "<span class='warning'>Środki przeciwdziałania wyczerpane!</span>")
 		return
 	if(CD.obj_integrity <= 0) //check to see if the dispenser is broken
 		if(prob(85))
-			to_chat(usr, "<span class='warning'>Error detected in Countermeasure System! Process Aborted!</span>")
+			to_chat(usr, "<span class='warning'>Wykryto błąd w systemie środków przeciwdziałania! Proces przerwany!</span>")
 			SEND_SOUND(usr, sound('sound/effects/alert.ogg', repeat = FALSE, wait = 0, volume = 100))
 			return
 	CD.charges -= 1

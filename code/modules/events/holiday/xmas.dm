@@ -7,19 +7,19 @@
 
 /obj/item/toy/xmas_cracker/attack(mob/target, mob/user)
 	if( !cracked && ishuman(target) && (target.stat == CONSCIOUS) && !target.get_active_held_item() )
-		target.visible_message("[user] and [target] pop \an [src]! *pop*", "<span class='notice'>You pull \an [src] with [target]! *pop*</span>", "<span class='italics'>You hear a pop.</span>")
+		target.visible_message("[user] i [target] rozrywają [src]! *pyk*", "<span class='notice'>Rozrywasz [src] razem z [target]! *pyk*</span>", "<span class='italics'>Słyszysz pyknięcie.</span>")
 		var/obj/item/paper/joke_paper = new /obj/item/paper(user.loc)
 		joke_paper.name = "[pick("awful","terrible","unfunny")] joke"
-		joke_paper.add_raw_text(pick("What did one snowman say to the other?\n\n<i>'Is it me or can you smell carrots?'</i>",
-			"Why couldn't the snowman get laid?\n\n<i>He was frigid!</i>",
-			"Where are santa's helpers educated?\n\n<i>Nowhere, they're ELF-taught.</i>",
-			"What happened to the man who stole advent calanders?\n\n<i>He got 25 days.</i>",
-			"What does Santa get when he gets stuck in a chimney?\n\n<i>Claus-trophobia.</i>",
-			"Where do you find chili beans?\n\n<i>The north pole.</i>",
-			"What do you get from eating tree decorations?\n\n<i>Tinsilitis!</i>",
-			"What do snowmen wear on their heads?\n\n<i>Ice caps!</i>",
-			"Why is Christmas just like life on ss13?\n\n<i>You do all the work and the fat guy gets all the credit.</i>",
-			"Why doesn't Santa have any children?\n\n<i>Because he only comes down the chimney.</i>"))
+		joke_paper.add_raw_text(pick("Co powiedział jeden bałwan do drugiego?\n\n<i>„Czy to ja, czy tu czuć marchewkę?”</i>",
+			"Czemu bałwan nie mógł znaleźć dziewczyny?\n\n<i>Bo był oziębły!</i>",
+			"Gdzie kształcą się pomocnicy Mikołaja?\n\n<i>Nigdzie, są ELFabetami.</i>",
+			"Co się stało z człowiekiem, który kradł kalendarze adwentowe?\n\n<i>Dostał 25 dni.</i>",
+			"Co dopada Mikołaja, gdy utknie w kominie?\n\n<i>Klaus-trofobia.</i>",
+			"Gdzie można znaleźć fasolkę chili?\n\n<i>Na biegunie północnym.</i>",
+			"Co się dzieje, gdy zje się ozdoby choinkowe?\n\n<i>Łańcuchowa reakcja!</i>",
+			"Co bałwany noszą na głowach?\n\n<i>Lodowe czapy!</i>",
+			"Czemu Boże Narodzenie jest jak życie na SS13?\n\n<i>Ty odwalasz całą robotę, a grubas zgarnia całą zasługę.</i>",
+			"Czemu Mikołaj nie ma dzieci?\n\n<i>Bo zawsze schodzi tylko przez komin.</i>"))
 		joke_paper.update_appearance()
 		new /obj/item/clothing/head/festive(target.loc)
 		user.update_icons()
@@ -83,10 +83,10 @@
 	var/mob/living/carbon/human/santa //who is our santa?
 
 /datum/round_event/santa/announce(fake)
-	priority_announce("Santa is coming to town!", "Unknown Transmission", SSstation.announcer.get_rand_alert_sound())
+	priority_announce("Mikołaj przybywa do miasta!", "Nieznana transmisja", SSstation.announcer.get_rand_alert_sound())
 
 /datum/round_event/santa/start()
-	var/list/candidates = pollGhostCandidates("Santa is coming to town! Do you want to be Santa?", poll_time = 15 SECONDS)
+	var/list/candidates = pollGhostCandidates("Mikołaj przybywa do miasta! Chcesz być Mikołajem?", poll_time = 15 SECONDS)
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
 		santa = new /mob/living/carbon/human(pick(GLOB.blobstart))

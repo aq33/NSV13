@@ -61,7 +61,7 @@
 
 	if(do_spin())
 		playsound(usr, "revolver_spin", 30, FALSE)
-		usr.visible_message("[usr] spins [src]'s chamber.", "<span class='notice'>You spin [src]'s chamber.</span>")
+		usr.visible_message("[usr] spins [src]'s chamber.", "<span class='notice'>Kręcisz bębenkiem [src].</span>")
 	else
 		remove_verb(/obj/item/gun/ballistic/revolver/verb/spin)
 
@@ -83,9 +83,9 @@
 /obj/item/gun/ballistic/revolver/examine(mob/user)
 	. = ..()
 	var/live_ammo = get_ammo(FALSE, FALSE)
-	. += "[live_ammo ? live_ammo : "None"] of those are live rounds."
+	. += "Ostrych naboi: [live_ammo ? live_ammo : "brak"]."
 	if (current_skin)
-		. += "It can be spun with <b>alt+click</b>"
+		. += "Bębenkiem można zakręcić za pomocą <b>alt+klik</b>"
 
 /obj/item/gun/ballistic/revolver/detective
 	name = "\improper Colt Detective Special"
@@ -110,7 +110,7 @@
 	if(magazine.caliber != initial(magazine.caliber))
 		if(prob(70 - (magazine.ammo_count() * 10)))	//minimum probability of 10, maximum of 60
 			playsound(user, fire_sound, fire_sound_volume, vary_fire_sound)
-			to_chat(user, "<span class='userdanger'>[src] blows up in your face!</span>")
+			to_chat(user, "<span class='userdanger'>[src] wybucha ci w twarz!</span>")
 			user.take_bodypart_damage(0,20)
 			explosion(src, 0, 0, 1, 1)
 			user.dropItemToGround(src)
@@ -121,35 +121,35 @@
 	if(..())
 		return TRUE
 	if(magazine.caliber == "38")
-		to_chat(user, "<span class='notice'>You begin to reinforce the barrel of [src]...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz wzmacniać lufę [src]...</span>")
 		if(magazine.ammo_count())
 			afterattack(user, user)	//you know the drill
-			user.visible_message("<span class='danger'>[src] goes off!</span>", "<span class='userdanger'>[src] goes off in your face!</span>")
+			user.visible_message("<span class='danger'>[src] wystrzeliwuje!</span>", "<span class='userdanger'>[src] wystrzeliwuje ci prosto w twarz!</span>")
 			return TRUE
 		if(I.use_tool(src, user, 30))
 			if(magazine.ammo_count())
-				to_chat(user, "<span class='warning'>You can't modify it!</span>")
+				to_chat(user, "<span class='warning'>Nie możesz tego zmodyfikować!</span>")
 				return TRUE
 			magazine.caliber = "357"
 			fire_rate = 1 //worse than a nromal .357
 			fire_sound = 'sound/weapons/revolver357shot.ogg'
 			desc = "The barrel and chamber assembly seems to have been modified."
-			to_chat(user, "<span class='notice'>You reinforce the barrel of [src]. Now it will fire .357 rounds.</span>")
+			to_chat(user, "<span class='notice'>Wzmacniasz lufę [src]. Teraz będzie strzelać nabojami .357.</span>")
 	else
-		to_chat(user, "<span class='notice'>You begin to revert the modifications to [src]...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz cofać modyfikacje [src]...</span>")
 		if(magazine.ammo_count())
 			afterattack(user, user)	//and again
-			user.visible_message("<span class='danger'>[src] goes off!</span>", "<span class='userdanger'>[src] goes off in your face!</span>")
+			user.visible_message("<span class='danger'>[src] wystrzeliwuje!</span>", "<span class='userdanger'>[src] wystrzeliwuje ci prosto w twarz!</span>")
 			return TRUE
 		if(I.use_tool(src, user, 30))
 			if(magazine.ammo_count())
-				to_chat(user, "<span class='warning'>You can't modify it!</span>")
+				to_chat(user, "<span class='warning'>Nie możesz tego zmodyfikować!</span>")
 				return
 			magazine.caliber = "38"
 			fire_rate = null
 			fire_sound = 'sound/weapons/revolver38shot.ogg'
 			desc = initial(desc)
-			to_chat(user, "<span class='notice'>You remove the modifications on [src]. Now it will fire .38 rounds.</span>")
+			to_chat(user, "<span class='notice'>Usuwasz modyfikacje z [src]. Teraz będzie strzelać nabojami .38.</span>")
 	return TRUE
 
 
@@ -218,13 +218,13 @@
 			return
 	if(target != user)
 		if(ismob(target))
-			to_chat(user, "<span class='warning'>A mechanism prevents you from shooting anyone but yourself!</span>")
+			to_chat(user, "<span class='warning'>Mechanizm nie pozwala ci strzelić do nikogo poza sobą!</span>")
 		return
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(!spun)
-			to_chat(user, "<span class='warning'>You need to spin \the [src]'s chamber first!</span>")
+			to_chat(user, "<span class='warning'>Najpierw musisz zakręcić bębenkiem [src]!</span>")
 			return
 
 		spun = FALSE
@@ -238,7 +238,7 @@
 				if(zone == BODY_ZONE_HEAD || zone == BODY_ZONE_PRECISE_EYES || zone == BODY_ZONE_PRECISE_MOUTH)
 					shoot_self(user, affecting)
 				else
-					user.visible_message("<span class='danger'>[user.name] cowardly fires [src] at [user.p_their()] [affecting.name]!</span>", "<span class='userdanger'>You cowardly fire [src] at your [affecting.name]!</span>", "<span class='italics'>You hear a gunshot!</span>")
+					user.visible_message("<span class='danger'>[user.name] tchórzliwie strzela z [src] w swoją [strefa_pl(affecting.body_zone, TRUE)]!</span>", "<span class='userdanger'>Tchórzliwie strzelasz z [src] w swoją [strefa_pl(affecting.body_zone, TRUE)]!</span>", "<span class='italics'>Słyszysz wystrzał!</span>")
 				chambered = null
 				return
 
@@ -248,11 +248,11 @@
 /obj/item/gun/ballistic/revolver/russian/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	add_fingerprint(user)
 	playsound(src, dry_fire_sound, 30, TRUE)
-	user.visible_message("<span class='danger'>[user.name] tries to fire \the [src] at the same time, but only succeeds at looking like an idiot.</span>", "<span class='danger'>\The [src]'s anti-combat mechanism prevents you from firing it at the same time!</span>")
+	user.visible_message("<span class='danger'>[user.name] próbuje wystrzelić z [src] w tym samym momencie, ale wychodzi tylko na idiotę.</span>", "<span class='danger'>Mechanizm antybojowy [src] nie pozwala ci wystrzelić w tym samym momencie!</span>")
 
 /obj/item/gun/ballistic/revolver/russian/proc/shoot_self(mob/living/carbon/human/user, affecting = BODY_ZONE_HEAD)
 	user.apply_damage(300, BRUTE, affecting)
-	user.visible_message("<span class='danger'>[user.name] fires [src] at [user.p_their()] head!</span>", "<span class='userdanger'>You fire [src] at your head!</span>", "<span class='italics'>You hear a gunshot!</span>")
+	user.visible_message("<span class='danger'>[user.name] strzela sobie z [src] w głowę!</span>", "<span class='userdanger'>Strzelasz sobie z [src] w głowę!</span>", "<span class='italics'>Słyszysz wystrzał!</span>")
 
 /obj/item/gun/ballistic/revolver/russian/soul
 	name = "cursed Russian revolver"
@@ -264,7 +264,7 @@
 	if(!SS.transfer_soul("FORCE", user)) //Something went wrong
 		qdel(SS)
 		return
-	user.visible_message("<span class='danger'>[user.name]'s soul is captured by \the [src]!</span>", "<span class='userdanger'>You've lost the gamble! Your soul is forfeit!</span>")
+	user.visible_message("<span class='danger'>[src] pochłania duszę [user.name]!</span>", "<span class='userdanger'>Przegrałeś zakład! Twoja dusza przepada!</span>")
 
 /obj/item/gun/ballistic/revolver/reverse //Fires directly at its user... unless the user is a clown, of course.
 	clumsy_check = 0
@@ -273,7 +273,7 @@
 	if((HAS_TRAIT(user, TRAIT_CLUMSY)) || (user.mind && user.mind.assigned_role == JOB_NAME_CLOWN))
 		return ..()
 	if(process_fire(user, user, FALSE, null, BODY_ZONE_HEAD))
-		user.visible_message("<span class='warning'>[user] somehow manages to shoot [user.p_them()]self in the face!</span>", "<span class='userdanger'>You somehow shoot yourself in the face! How the hell?!</span>")
+		user.visible_message("<span class='warning'>[user] jakimś cudem strzela sobie w twarz!</span>", "<span class='userdanger'>Jakimś cudem strzelasz sobie w twarz! Jak, do diabła?!</span>")
 		user.emote("scream")
 		user.drop_all_held_items()
 		user.Paralyze(80)
@@ -295,7 +295,7 @@
 	throw_speed = 0
 
 /obj/item/gun/ballistic/revolver/mime/shoot_with_empty_chamber(mob/living/user as mob|obj)
-	to_chat(user, "<span class='warning'>Your fingergun is out of ammo!</span>")
+	to_chat(user, "<span class='warning'>Twój palec-pistolet nie ma amunicji!</span>")
 	qdel(src)
 
 /obj/item/gun/ballistic/revolver/mime/attack_self(mob/user)

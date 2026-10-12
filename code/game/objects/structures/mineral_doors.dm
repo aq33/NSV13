@@ -145,37 +145,37 @@
 	if(I.tool_behaviour != TOOL_MINING)
 		return
 	. = TRUE
-	to_chat(user, "<span class='notice'>You start digging [src]...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz kopać [src]...</span>")
 	if(I.use_tool(src, user, 40, volume=50))
-		to_chat(user, "<span class='notice'>You finish digging.</span>")
+		to_chat(user, "<span class='notice'>Kończysz kopać.</span>")
 		deconstruct(TRUE)
 
 /obj/structure/mineral_door/welder_act(mob/living/user, obj/item/I) //override if the door is supposed to be flammable.
 	. = TRUE
 	if(anchored)
-		to_chat(user, "<span class='warning'>[src] is still firmly secured to the ground!</span>")
+		to_chat(user, "<span class='warning'>[src] wciąż jest mocno przytwierdzony do ziemi!</span>")
 		return
 
-	user.visible_message("[user] starts to weld apart [src]!", "<span class='notice'>You start welding apart [src].</span>")
+	user.visible_message("[user] zaczyna rozspawywać [src]!", "<span class='notice'>Zaczynasz rozspawywać [src].</span>")
 	if(!I.use_tool(src, user, 60, 5, 50))
-		to_chat(user, "<span class='warning'>You failed to weld apart [src]!/span>")
+		to_chat(user, "<span class='warning'>Nie udało ci się rozspawać [src]!/span>")
 		return
 
-	user.visible_message("[user] welded [src] into pieces!", "<span class='notice'>You welded apart [src]!</span>")
+	user.visible_message("[user] rozspawuje [src] na kawałki!", "<span class='notice'>Rozspawujesz [src]!</span>")
 	deconstruct(TRUE)
 
 /obj/structure/mineral_door/proc/crowbar_door(mob/living/user, obj/item/I) //if the door is flammable, call this in crowbar_act() so we can still decon it
 	. = TRUE
 	if(anchored)
-		to_chat(user, "<span class='warning'>[src] is still firmly secured to the ground!</span>")
+		to_chat(user, "<span class='warning'>[src] wciąż jest mocno przytwierdzony do ziemi!</span>")
 		return
 
-	user.visible_message("[user] starts to pry apart [src]!", "<span class='notice'>You start prying apart [src].</span>")
+	user.visible_message("[user] zaczyna wyważać [src]!", "<span class='notice'>Zaczynasz wyważać [src].</span>")
 	if(!I.use_tool(src, user, 60, volume = 50))
-		to_chat(user, "<span class='warning'>You failed to pry apart [src]!/span>")
+		to_chat(user, "<span class='warning'>Nie udało ci się wyważyć [src]!/span>")
 		return
 
-	user.visible_message("[user] pried [src] into pieces!", "<span class='notice'>You pried apart [src]!</span>")
+	user.visible_message("[user] wyważa [src] na kawałki!", "<span class='notice'>Wyważasz [src]!</span>")
 	deconstruct(TRUE)
 
 
@@ -317,7 +317,7 @@
 /obj/structure/mineral_door/paperframe/examine(mob/user)
 	. = ..()
 	if(obj_integrity < max_integrity)
-		. += "<span class='info'>It looks a bit damaged, you may be able to fix it with some <b>paper</b>.</span>"
+		. += "<span class='info'>Wygląda na lekko uszkodzone, może uda się to naprawić <b>papierem</b>.</span>"
 
 /obj/structure/mineral_door/paperframe/pickaxe_door(mob/living/user, obj/item/I)
 	return
@@ -334,11 +334,11 @@
 		return
 
 	if((user.a_intent != INTENT_HARM) && istype(I, /obj/item/paper) && (obj_integrity < max_integrity))
-		user.visible_message("[user] starts to patch the holes in [src].", "<span class='notice'>You start patching some of the holes in [src]!</span>")
+		user.visible_message("[user] zaczyna łatać dziury w [src].", "<span class='notice'>Zaczynasz łatać część dziur w [src]!</span>")
 		if(do_after(user, 20, TRUE, src))
 			obj_integrity = min(obj_integrity+4,max_integrity)
 			qdel(I)
-			user.visible_message("[user] patches some of the holes in [src].", "<span class='notice'>You patch some of the holes in [src]!</span>")
+			user.visible_message("[user] łata część dziur w [src].", "<span class='notice'>Łatasz część dziur w [src]!</span>")
 			return TRUE
 
 	return ..()

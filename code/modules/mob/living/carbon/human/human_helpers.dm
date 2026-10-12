@@ -11,7 +11,7 @@
 
 //gets assignment from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
-/mob/living/carbon/human/proc/get_assignment(if_no_id = "No id", if_no_job = "No job", hand_first = TRUE)
+/mob/living/carbon/human/proc/get_assignment(if_no_id = "Brak ID", if_no_job = "Brak zawodu", hand_first = TRUE)
 	var/obj/item/card/id/id = get_idcard(hand_first)
 	if(id)
 		. = id.assignment
@@ -138,14 +138,14 @@
 
 	if(G.trigger_guard == TRIGGER_GUARD_NORMAL)
 		if(src.dna.check_mutation(HULK))
-			to_chat(src, "<span class='warning'>Your meaty finger is much too large for the trigger guard!</span>")
+			to_chat(src, "<span class='warning'>Twój mięsisty palec jest za duży na kabłąk spustu!</span>")
 			return FALSE
 		if(HAS_TRAIT(src, TRAIT_NOGUNS))
-			to_chat(src, "<span class='warning'>Your fingers don't fit in the trigger guard!</span>")
+			to_chat(src, "<span class='warning'>Twoje palce nie mieszczą się w kabłąku spustu!</span>")
 			return FALSE
 	if(mind)
 		if(mind.martial_art && mind.martial_art.no_guns) //great dishonor to famiry
-			to_chat(src, "<span class='warning'>Use of ranged weaponry would bring dishonor to the clan.</span>")
+			to_chat(src, "<span class='warning'>Używanie broni dystansowej przyniosłoby hańbę klanowi.</span>")
 			return FALSE
 
 	return .

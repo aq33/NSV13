@@ -125,18 +125,12 @@
 		// 	segments += type.get_brief_segment()
 
 		var/obj/structure/overmap/S = destination
-		brief = "Complete supply request form #[GLOB.round_id]-[objective_number] by delivering its contents to station [S] (system [S.current_system])"
+		brief = "Zrealizujcie formularz zamówienia nr [GLOB.round_id]-[objective_number], dostarczając jego zawartość na stację [S] (system [S.current_system])"
 
 /datum/overmap_objective/cargo/print_objective_report()
-	var/title = "Secure Supply Request Form: #[GLOB.round_id]-[objective_number]"
+	var/title = "Poufny formularz zamówienia: nr [GLOB.round_id]-[objective_number]"
 
-	var/info = "<strong>[title]</strong><br/> \
-		Destination: [destination]<br/> \
-		Destination system: [destination.current_system]<br/> \
-		Shipment name: [crate_name]<br/> \
-		Deliver the following in a freight torpedo:<br/><br/> \
-		<ul> \
-		[freight_type_group.get_supply_request_form_segment()] \
+	var/info = "<strong>[title]</strong><br/>Cel: [destination]<br/>System docelowy: [destination.current_system]<br/>Nazwa przesyłki: [crate_name]<br/>Dostarczcie w torpedzie transportowej:<br/><br/><ul>[freight_type_group.get_supply_request_form_segment()] \
 		</ul>"
 
 	print_command_report(info, title, FALSE)

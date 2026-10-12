@@ -21,12 +21,12 @@
 	var/in_hive = hive.is_carbon_member(target)
 	var/list/enemies = list()
 
-	to_chat(user, "<span class='notice'>We begin probing [target.name]'s mind!</span>")
+	to_chat(user, "<span class='notice'>Zaczynamy badać umysł [target.name]!</span>")
 	if(do_after(user,50,0,target))
 		if(!in_hive)
-			to_chat(user, "<span class='notice'>Their mind slowly opens up to us.</span>")
+			to_chat(user, "<span class='notice'>Ten umysł powoli się przed nami otwiera.</span>")
 			if(!do_after(user,75,0,target))
-				to_chat(user, "<span class='notice'>Our concentration has been broken!</span>")
+				to_chat(user, "<span class='notice'>Nasza koncentracja została przerwana!</span>")
 				revert_cast()
 				return
 		for(var/datum/antagonist/hivemind/enemy as() in GLOB.hivehosts)
@@ -39,7 +39,7 @@
 				var/mob/living/real_enemy = (M.current)
 				enemies += real_enemy
 				enemy.remove_from_hive(target)
-				to_chat(real_enemy, "<span class='assimilator'>We detect a surge of psionic energy from a far away vessel before they disappear from the hive. Whatever happened, there's a good chance they're after us now.</span>")
+				to_chat(real_enemy, "<span class='assimilator'>Wykrywamy przypływ energii psionicznej z dalekiego naczynia, zanim zniknie z roju. Cokolwiek się stało, bardzo możliwe, że teraz polują na nas.</span>")
 
 			if(enemy.owner == M && IS_HIVEHOST(target))
 				var/atom/throwtarget
@@ -49,15 +49,15 @@
 				flash_color(user, flash_color="#800080", flash_time=10)
 				user.Paralyze(10)
 				user.throw_at(throwtarget, 5, 1,src)
-				to_chat(user, "<span class='userdanger'>A sudden surge of psionic energy, a recognizable presence, this is the host of [hivetarget.hiveID]</span>")
+				to_chat(user, "<span class='userdanger'>Nagły przypływ energii psionicznej, rozpoznawalna obecność - to nosiciel roju [hivetarget.hiveID]</span>")
 				return
 		if(enemies.len)
 			hive.remove_hive_overlay_probe(target)
-			to_chat(user, "<span class='userdanger'>In a moment of clarity, we see all. Another hive. Faces. Our nemesis. They have heard our call. They know we are coming.</span>")
-			to_chat(user, "<span class='assimilator'>This vision has provided us insight on the mental lay, allowing us to track our foes.</span>")
+			to_chat(user, "<span class='userdanger'>W chwili jasności widzimy wszystko. Inny rój. Twarze. Nasz wróg. Usłyszał nasze wezwanie. Wie, że nadchodzimy.</span>")
+			to_chat(user, "<span class='assimilator'>Ta wizja dała nam wgląd w układ umysłów i pozwala namierzać wrogów.</span>")
 			hive.searchcharge += 3
 		else
-			to_chat(user, "<span class='notice'>We delve into the inner depths of their mind and strike at nothing, no enemies lurk inside this mind.</span>")
+			to_chat(user, "<span class='notice'>Zagłębiamy się w ten umysł i trafiamy w pustkę - nie czają się w nim żadni wrogowie.</span>")
 	else
-		to_chat(user, "<span class='notice'>Our concentration has been broken!</span>")
+		to_chat(user, "<span class='notice'>Nasza koncentracja została przerwana!</span>")
 		revert_cast()

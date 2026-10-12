@@ -393,7 +393,7 @@ GLOBAL_LIST_INIT(cable_colors, list(
 	if (target.shock(user, 50))
 		return TOOL_ACT_SIGNAL_BLOCKING
 
-	user.visible_message("[user] cuts [target].", "<span class='notice'>You cut [target].</span>")
+	user.visible_message("[user] cuts [target].", "<span class='notice'>Przecinasz [target].</span>")
 	target.investigate_log("was cut by [key_name(usr)] in [AREACOORD(target)]", INVESTIGATE_WIRES)
 	target.deconstruct()
 	return TOOL_ACT_TOOLTYPE_SUCCESS
@@ -443,9 +443,9 @@ GLOBAL_LIST_INIT(cable_colors, list(
 
 /obj/structure/cable/proc/get_power_info()
 	if(powernet?.avail > 0)
-		return "<span class='danger'>Total power: [display_power(powernet.avail)]\nLoad: [display_power(powernet.load)]\nExcess power: [display_power(surplus())]</span>"
+		return "<span class='danger'>Łączna moc: [display_power(powernet.avail)]\nObciążenie: [display_power(powernet.load)]\nNadwyżka mocy: [display_power(surplus())]</span>"
 	else
-		return "<span class='danger'>The cable is not powered.</span>"
+		return "<span class='danger'>Kabel nie jest zasilany.</span>"
 
 ////////////////////////////////////////////
 // Power related

@@ -1,3 +1,3 @@
 /datum/role_preference/antagonist/monkey
-	name = "Monkey"
+	name = "Małpa"
 	antag_datum = /datum/antagonist/monkey

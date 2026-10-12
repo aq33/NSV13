@@ -8,10 +8,10 @@
 	maxHealth = 80
 	obj_damage = 100
 	melee_damage = 35
-	attacktext = "slashes"
+	attacktext = "tnie"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	faction = list("creature")
-	speak_emote = list("screams")
+	speak_emote = list("krzyczy")
 	gold_core_spawnable = HOSTILE_SPAWN
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
@@ -22,14 +22,14 @@
 /mob/living/simple_animal/hostile/netherworld/migo
 	name = "mi-go"
 	desc = "A pinkish, fungoid crustacean-like creature with numerous pairs of clawed appendages and a head covered with waving antennae."
-	speak_emote = list("screams", "clicks", "chitters", "barks", "moans", "growls", "meows", "reverberates", "roars", "squeaks", "rattles", "exclaims", "yells", "remarks", "mumbles", "jabbers", "stutters", "seethes")
+	speak_emote = list("krzyczy", "klika", "terkocze", "szczeka", "jęczy", "warczy", "miauczy", "dudni", "ryczy", "piszczy", "grzechocze", "woła", "wrzeszczy", "zauważa", "mamrocze", "trajkocze", "jąka się", "kipi złością")
 	icon_state = "mi-go"
 	icon_living = "mi-go"
 	icon_dead = "mi-go-dead"
-	attacktext = "lacerates"
+	attacktext = "rozszarpuje"
 	speed = -0.5
 	var/static/list/migo_sounds
-	deathmessage = "wails as its form turns into a pulpy mush."
+	deathmessage = "zawodzi, gdy jego forma zamienia się w papkę."
 	deathsound = 'sound/voice/hiss6.ogg'
 
 /mob/living/simple_animal/hostile/netherworld/migo/Initialize(mapload)
@@ -61,8 +61,8 @@
 	health = 100
 	maxHealth = 100
 	melee_damage = 10
-	attacktext = "punches"
-	deathmessage = "falls apart into a fine dust."
+	attacktext = "uderza"
+	deathmessage = "rozpada się w drobny pył."
 
 /obj/structure/spawner/nether
 	name = "netherworld link"
@@ -72,7 +72,7 @@
 	spawn_time = 600 //1 minute
 	max_mobs = 15
 	icon = 'icons/mob/nest.dmi'
-	spawn_text = "crawls through"
+	spawn_text = "przeczołguje się przez"
 	mob_types = list(/mob/living/simple_animal/hostile/netherworld/migo, /mob/living/simple_animal/hostile/netherworld, /mob/living/simple_animal/hostile/netherworld/blankbody)
 	faction = list("nether")
 
@@ -83,17 +83,17 @@
 /obj/structure/spawner/nether/examine(mob/user)
 	. = ..()
 	if(isskeleton(user) || iszombie(user))
-		. += "A direct link to another dimension full of creatures very happy to see you. <span class='nicegreen'>You can see your house from here!</span>"
+		. += "Bezpośrednie połączenie z innym wymiarem, pełnym istot bardzo szczęśliwych na twój widok. <span class='nicegreen'>Stąd widać twój dom!</span>"
 	else
-		. += "A direct link to another dimension full of creatures not very happy to see you. <span class='warning'>Entering the link would be a very bad idea.</span>"
+		. += "Bezpośrednie połączenie z innym wymiarem, pełnym istot niezbyt szczęśliwych na twój widok. <span class='warning'>Wejście w nie byłoby bardzo złym pomysłem.</span>"
 
 /obj/structure/spawner/nether/attack_hand(mob/user)
 	. = ..()
 	if(isskeleton(user) || iszombie(user))
-		to_chat(user, "<span class='notice'>You don't feel like going home yet...</span>")
+		to_chat(user, "<span class='notice'>Jeszcze nie masz ochoty wracać do domu...</span>")
 	else
-		user.visible_message("<span class='warning'>[user] is violently pulled into the link!</span>", \
-							"<span class='userdanger'>Touching the portal, you are quickly pulled through into a world of unimaginable horror!</span>")
+		user.visible_message("<span class='warning'>[user] zostaje gwałtownie wciągnięty w połączenie!</span>", \
+							"<span class='userdanger'>Gdy dotykasz portalu, zostajesz błyskawicznie wciągnięty do świata niewyobrażalnej grozy!</span>")
 		contents.Add(user)
 
 /obj/structure/spawner/nether/process(delta_time)
@@ -107,5 +107,5 @@
 				blank = new(loc)
 				blank.name = "[M]"
 				blank.desc = "It's [M], but [M.p_their()] flesh has an ashy texture, and [M.p_their()] face is featureless save an eerie smile."
-				src.visible_message("<span class='warning'>[M] reemerges from the link!</span>")
+				src.visible_message("<span class='warning'>[M] wyłania się z połączenia!</span>")
 				qdel(M)

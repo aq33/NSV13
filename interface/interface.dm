@@ -11,7 +11,7 @@
 		else if (query != null)
 			src << link(wikiurl)
 	else
-		to_chat(src, "<span class='danger'>The wiki URL is not set in the server configuration.</span>")
+		to_chat(src, "<span class='danger'>Adres wiki nie jest ustawiony w konfiguracji serwera.</span>")
 	return
 
 /client/verb/forum()
@@ -20,11 +20,11 @@
 	set hidden = 1
 	var/forumurl = CONFIG_GET(string/forumurl)
 	if(forumurl)
-		if(alert("This will open the forum in your browser. Are you sure?",,"Yes","No")!="Yes")
+		if(alert("To otworzy forum w twojej przeglądarce. Na pewno?",,"Yes","No")!="Yes")
 			return
 		src << link(forumurl)
 	else
-		to_chat(src, "<span class='danger'>The forum URL is not set in the server configuration.</span>")
+		to_chat(src, "<span class='danger'>Adres forum nie jest ustawiony w konfiguracji serwera.</span>")
 	return
 
 /client/verb/rules()
@@ -33,11 +33,11 @@
 	set hidden = 1
 	var/rulesurl = CONFIG_GET(string/rulesurl)
 	if(rulesurl)
-		if(alert("This will open the rules in your browser. Are you sure?",,"Yes","No")!="Yes")
+		if(alert("To otworzy zasady w twojej przeglądarce. Na pewno?",,"Yes","No")!="Yes")
 			return
 		src << link(rulesurl)
 	else
-		to_chat(src, "<span class='danger'>The rules URL is not set in the server configuration.</span>")
+		to_chat(src, "<span class='danger'>Adres zasad nie jest ustawiony w konfiguracji serwera.</span>")
 	return
 
 /client/verb/github()
@@ -46,11 +46,11 @@
 	set hidden = 1
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(githuburl)
-		if(alert("This will open the Github repository in your browser. Are you sure?",,"Yes","No")!="Yes")
+		if(alert("To otworzy repozytorium GitHub w twojej przeglądarce. Na pewno?",,"Yes","No")!="Yes")
 			return
 		src << link(githuburl)
 	else
-		to_chat(src, "<span class='danger'>The Github URL is not set in the server configuration.</span>")
+		to_chat(src, "<span class='danger'>Adres GitHuba nie jest ustawiony w konfiguracji serwera.</span>")
 	return
 
 /client/verb/reportissue()
@@ -59,9 +59,9 @@
 	set hidden = 1
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(githuburl)
-		var/message = "This will open the Github issue reporter in your browser. Are you sure?"
+		var/message = "To otworzy zgłaszanie błędów na GitHubie w twojej przeglądarce. Na pewno?"
 		if(GLOB.revdata.testmerge.len)
-			message += "<br>The following experimental changes are active and are probably the cause of any new or sudden issues you may experience. If possible, please try to find a specific thread for your issue instead of posting to the general issue tracker:<br>"
+			message += "<br>Aktywne są następujące eksperymentalne zmiany, które prawdopodobnie odpowiadają za nowe lub nagłe problemy. Jeśli to możliwe, znajdź konkretny wątek dla swojego problemu, zamiast pisać w ogólnym zgłaszaniu błędów:<br>"
 			message += GLOB.revdata.GetTestMergeInfo(FALSE)
 		// We still use tgalert here because some people were concerned that if someone wanted to report that tgui wasn't working
 		// then the report issue button being tgui-based would be problematic.
@@ -75,7 +75,7 @@
 		var/issue_label = CONFIG_GET(string/issue_label)
 		DIRECT_OUTPUT(src, link("[githuburl]/issues/new?body=[rustg_url_encode(url_params)][issue_label ? "&labels=[rustg_url_encode(issue_label)]" : ""]"))
 	else
-		to_chat(src, "<span class='danger'>The Github URL is not set in the server configuration.</span>")
+		to_chat(src, "<span class='danger'>Adres GitHuba nie jest ustawiony w konfiguracji serwera.</span>")
 	return
 
 /client/verb/hotkeys_help()
@@ -112,63 +112,11 @@ Admin:
 
 /mob/proc/hotkey_help()
 	var/hotkey_mode = {"<font color='purple'>
-Hotkey-Mode: (hotkey-mode must be on)
-\tTAB = toggle hotkey-mode
-\ta = left
-\ts = down
-\td = right
-\tw = up
-\tq = drop
-\te = equip
-\tr = throw
-\tm = me
-\tt = say
-\to = OOC
-\tb = resist
-\t<B></B>h = stop pulling
-\tx = swap-hand
-\tz = activate held object (or y)
-\tShift+e = Put held item into belt(or belt slot) or take out most recent item added.
-\tShift+b = Put held item into backpack(or back slot) or take out most recent item added.
-\tf = cycle-intents-left
-\tg = cycle-intents-right
-\t1 = help-intent
-\t2 = disarm-intent
-\t3 = grab-intent
-\t4 = harm-intent
-\tNumpad = Body target selection (Press 8 repeatedly for Head->Eyes->Mouth)
-\tAlt(HOLD) = Alter movement intent
+Tryb skrótów: (tryb skrótów musi być włączony)\n\tTAB = przełącz tryb skrótów\n\ta = w lewo\n\ts = w dół\n\td = w prawo\n\tw = w górę\n\tq = upuść\n\te = załóż\n\tr = rzuć\n\tm = emotka\n\tt = powiedz\n\to = OOC\n\tb = stawiaj opór\n\t<B></B>h = przestań ciągnąć\n\tx = zmień rękę\n\tz = użyj trzymanego przedmiotu (lub y)\n\tShift+e = włóż trzymany przedmiot do pasa (lub w miejsce pasa) albo wyjmij ostatnio włożony.\n\tShift+b = włóż trzymany przedmiot do plecaka (lub w miejsce na plecach) albo wyjmij ostatnio włożony.\n\tf = poprzednia intencja\n\tg = następna intencja\n\t1 = intencja pomocy\n\t2 = intencja rozbrojenia\n\t3 = intencja chwytu\n\t4 = intencja krzywdzenia\n\tNumpad = wybór celu na ciele (naciskaj 8, by przełączać głowa->oczy->usta)\n\tAlt (przytrzymaj) = zmień tryb ruchu
 </font>"}
 
 	var/other = {"<font color='purple'>
-Any-Mode: (hotkey doesn't need to be on)
-\tCtrl+a = left
-\tCtrl+s = down
-\tCtrl+d = right
-\tCtrl+w = up
-\tCtrl+q = drop
-\tCtrl+e = equip
-\tCtrl+r = throw
-\tCtrl+b = resist
-\tCtrl+h = stop pulling
-\tCtrl+o = OOC
-\tCtrl+x = swap-hand
-\tCtrl+z = activate held object (or Ctrl+y)
-\tCtrl+f = cycle-intents-left
-\tCtrl+g = cycle-intents-right
-\tCtrl+1 = help-intent
-\tCtrl+2 = disarm-intent
-\tCtrl+3 = grab-intent
-\tCtrl+4 = harm-intent
-\tCtrl+'+/-' OR
-\tShift+Mousewheel = Ghost zoom in/out
-\tDEL = stop pulling
-\tINS = cycle-intents-right
-\tHOME = drop
-\tPGUP = swap-hand
-\tPGDN = activate held object
-\tEND = throw
-\tCtrl+Numpad = Body target selection (Press 8 repeatedly for Head->Eyes->Mouth)
+Każdy tryb: (tryb skrótów nie musi być włączony)\n\tCtrl+a = w lewo\n\tCtrl+s = w dół\n\tCtrl+d = w prawo\n\tCtrl+w = w górę\n\tCtrl+q = upuść\n\tCtrl+e = załóż\n\tCtrl+r = rzuć\n\tCtrl+b = stawiaj opór\n\tCtrl+h = przestań ciągnąć\n\tCtrl+o = OOC\n\tCtrl+x = zmień rękę\n\tCtrl+z = użyj trzymanego przedmiotu (lub Ctrl+y)\n\tCtrl+f = poprzednia intencja\n\tCtrl+g = następna intencja\n\tCtrl+1 = intencja pomocy\n\tCtrl+2 = intencja rozbrojenia\n\tCtrl+3 = intencja chwytu\n\tCtrl+4 = intencja krzywdzenia\n\tCtrl+'+/-' LUB\n\tShift+kółko myszy = przybliżanie/oddalanie ducha\n\tDEL = przestań ciągnąć\n\tINS = następna intencja\n\tHOME = upuść\n\tPGUP = zmień rękę\n\tPGDN = użyj trzymanego przedmiotu\n\tEND = rzuć\n\tCtrl+Numpad = wybór celu na ciele (naciskaj 8, by przełączać głowa->oczy->usta)
 </font>"}
 
 	to_chat(src, hotkey_mode)
@@ -177,50 +125,11 @@ Any-Mode: (hotkey doesn't need to be on)
 /mob/living/silicon/robot/hotkey_help()
 	//h = talk-wheel has a nonsense tag in it because \th is an escape sequence in BYOND.
 	var/hotkey_mode = {"<font color='purple'>
-Hotkey-Mode: (hotkey-mode must be on)
-\tTAB = toggle hotkey-mode
-\ta = left
-\ts = down
-\td = right
-\tw = up
-\tq = unequip active module
-\t<B></B>h = stop pulling
-\tm = me
-\tt = say
-\to = OOC
-\tx = cycle active modules
-\tb = resist
-\tz = activate held object (or y)
-\tf = cycle-intents-left
-\tg = cycle-intents-right
-\t1 = activate module 1
-\t2 = activate module 2
-\t3 = activate module 3
-\t4 = toggle intents
+Tryb skrótów: (tryb skrótów musi być włączony)\n\tTAB = przełącz tryb skrótów\n\ta = w lewo\n\ts = w dół\n\td = w prawo\n\tw = w górę\n\tq = zdejmij aktywny moduł\n\t<B></B>h = przestań ciągnąć\n\tm = emotka\n\tt = powiedz\n\to = OOC\n\tx = przełączaj aktywne moduły\n\tb = stawiaj opór\n\tz = użyj trzymanego przedmiotu (lub y)\n\tf = poprzednia intencja\n\tg = następna intencja\n\t1 = aktywuj moduł 1\n\t2 = aktywuj moduł 2\n\t3 = aktywuj moduł 3\n\t4 = przełącz intencje
 </font>"}
 
 	var/other = {"<font color='purple'>
-Any-Mode: (hotkey doesn't need to be on)
-\tCtrl+a = left
-\tCtrl+s = down
-\tCtrl+d = right
-\tCtrl+w = up
-\tCtrl+q = unequip active module
-\tCtrl+x = cycle active modules
-\tCtrl+b = resist
-\tCtrl+h = stop pulling
-\tCtrl+o = OOC
-\tCtrl+z = activate held object (or Ctrl+y)
-\tCtrl+f = cycle-intents-left
-\tCtrl+g = cycle-intents-right
-\tCtrl+1 = activate module 1
-\tCtrl+2 = activate module 2
-\tCtrl+3 = activate module 3
-\tCtrl+4 = toggle intents
-\tDEL = stop pulling
-\tINS = toggle intents
-\tPGUP = cycle active modules
-\tPGDN = activate held object
+Każdy tryb: (tryb skrótów nie musi być włączony)\n\tCtrl+a = w lewo\n\tCtrl+s = w dół\n\tCtrl+d = w prawo\n\tCtrl+w = w górę\n\tCtrl+q = zdejmij aktywny moduł\n\tCtrl+x = przełączaj aktywne moduły\n\tCtrl+b = stawiaj opór\n\tCtrl+h = przestań ciągnąć\n\tCtrl+o = OOC\n\tCtrl+z = użyj trzymanego przedmiotu (lub Ctrl+y)\n\tCtrl+f = poprzednia intencja\n\tCtrl+g = następna intencja\n\tCtrl+1 = aktywuj moduł 1\n\tCtrl+2 = aktywuj moduł 2\n\tCtrl+3 = aktywuj moduł 3\n\tCtrl+4 = przełącz intencje\n\tDEL = przestań ciągnąć\n\tINS = przełącz intencje\n\tPGUP = przełączaj aktywne moduły\n\tPGDN = użyj trzymanego przedmiotu
 </font>"}
 
 	to_chat(src, hotkey_mode)
@@ -235,11 +144,11 @@ Any-Mode: (hotkey doesn't need to be on)
 	set hidden = 1
 	var/donateurl = CONFIG_GET(string/donateurl)
 	if(donateurl)
-		if(alert("This will open the Donation page in your browser. Are you sure?",,"Yes","No")!="Yes")
+		if(alert("To otworzy stronę darowizn w twojej przeglądarce. Na pewno?",,"Yes","No")!="Yes")
 			return
 		src << link(donateurl)
 	else
-		to_chat(src, "<span class='danger'>The Donation URL is not set in the server configuration.</span>")
+		to_chat(src, "<span class='danger'>Adres strony darowizn nie jest ustawiony w konfiguracji serwera.</span>")
 	return
 
 /client/verb/discord()
@@ -248,11 +157,11 @@ Any-Mode: (hotkey doesn't need to be on)
 	set hidden = 1
 	var/discordurl = CONFIG_GET(string/discordurl)
 	if(discordurl)
-		if(alert("This will open the Discord invite in your browser. Are you sure?",,"Yes","No")!="Yes")
+		if(alert("To otworzy zaproszenie na Discorda w twojej przeglądarce. Na pewno?",,"Yes","No")!="Yes")
 			return
 		src << link(discordurl)
 	else
-		to_chat(src, "<span class='danger'>The Discord invite is not set in the server configuration.</span>")
+		to_chat(src, "<span class='danger'>Zaproszenie na Discorda nie jest ustawione w konfiguracji serwera.</span>")
 	return
 
 /client/verb/map()
@@ -260,13 +169,13 @@ Any-Mode: (hotkey doesn't need to be on)
 	set desc = "View the current map in the webviewer"
 	set category = "OOC"
 	if(SSmapping.config.map_link == "None")
-		to_chat(src,"<span class='danger'>The current map does not have a webmap. </span>")
+		to_chat(src,"<span class='danger'>Obecna mapa nie ma mapy w przeglądarce. </span>")
 	else if(SSmapping.config.map_link)
-		if(alert("This will open the current map in your browser. Are you sure?",,"Yes","No")!="Yes")
+		if(alert("To otworzy obecną mapę w twojej przeglądarce. Na pewno?",,"Yes","No")!="Yes")
 			return
 		src << link("https://webmap.affectedarc07.co.uk/maps/aquila/[SSmapping.config.map_link]")
 	else
-		to_chat(src, "<span class='danger'>The current map is either invalid or unavailable. Open an issue on the github. </span>")
+		to_chat(src, "<span class='danger'>Obecna mapa jest nieprawidłowa lub niedostępna. Zgłoś błąd na GitHubie. </span>")
 
 //NSV13 - alias to "map"
 /client/verb/nsv13_map()

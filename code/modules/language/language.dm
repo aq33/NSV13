@@ -7,11 +7,11 @@
 /datum/language
 	var/name = "an unknown language"  // Fluff name of language if any.
 	var/desc = "A language."          // Short description for 'Check Languages'.
-	var/speech_verb = "says"          // 'says', 'hisses', 'farts'.
-	var/ask_verb = "asks"             // Used when sentence ends in a ?
-	var/exclaim_verb = "exclaims"     // Used when sentence ends in a !
-	var/whisper_verb = "whispers"     // Optional. When not specified speech_verb + quietly/softly is used instead.
-	var/sing_verb = "sings"			  // Used for singing.
+	var/speech_verb = "mówi"          // 'says', 'hisses', 'farts'.
+	var/ask_verb = "pyta"             // Used when sentence ends in a ?
+	var/exclaim_verb = "woła"     // Used when sentence ends in a !
+	var/whisper_verb = "szepcze"     // Optional. When not specified speech_verb + quietly/softly is used instead.
+	var/sing_verb = "śpiewa"			  // Used for singing.
 	var/list/signlang_verb = list("signs", "gestures") // list of emotes that might be displayed if this language has NONVERBAL or SIGNLANG flags
 	var/key                           // Character used to speak in language
 	// If key is null, then the language isn't real or learnable.

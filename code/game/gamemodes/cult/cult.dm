@@ -46,9 +46,7 @@
 	recommended_enemies = 4
 
 	announce_span = "cult"
-	announce_text = "Some crew members are trying to start a cult to Nar'Sie!\n\
-	<span class='cult'>Cultists</span>: Carry out Nar'Sie's will.\n\
-	<span class='notice'>Crew</span>: Prevent the cult from expanding and drive it out."
+	announce_text = "Niektórzy członkowie załogi próbują założyć kult Nar'Sie!\n<span class='cult'>Kultyści</span>: wypełniajcie wolę Nar'Sie.\n<span class='notice'>Załoga</span>: powstrzymajcie rozrost kultu i go wypędźcie."
 
 	title_icon = "cult"
 

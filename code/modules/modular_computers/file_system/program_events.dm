@@ -13,6 +13,6 @@
 /datum/computer_file/program/proc/event_networkfailure(background)
 	kill_program(forced = TRUE)
 	if(background)
-		computer.visible_message("<span class='danger'>\The [computer]'s screen displays an \"Process [filename].[filetype] (PID [rand(100,999)]) terminated - Network Error\" error</span>")
+		computer.visible_message("<span class='danger'>Ekran [computer] wyświetla błąd „Proces [filename].[filetype] (PID [rand(100,999)]) zakończony – błąd sieci”</span>")
 	else
-		computer.visible_message("<span class='danger'>\The [computer]'s screen briefly freezes and then shows \"NETWORK ERROR - NTNet connection lost. Please retry. If problem persists contact your system administrator.\" error.</span>")
+		computer.visible_message("<span class='danger'>Ekran [computer] na chwilę zamarza, po czym wyświetla błąd „BŁĄD SIECI – utracono połączenie z NTNet. Spróbuj ponownie. Jeśli problem się powtarza, skontaktuj się z administratorem systemu.”</span>")

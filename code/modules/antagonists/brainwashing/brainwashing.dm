@@ -19,7 +19,7 @@
 			log_objective(M, objective.explanation_text)
 		M.add_antag_datum(B)
 
-	var/begin_message = "<span class='deadsay'><b>[L]</b> has been brainwashed with the following objectives: "
+	var/begin_message = "<span class='deadsay'><b>[L]</b> ma wyprany mózg z następującymi celami: "
 	var/obj_message = english_list(directives)
 	var/end_message = "</b>.</span>"
 	var/rendered = begin_message + obj_message + end_message
@@ -27,9 +27,9 @@
 	L.log_message(rendered, LOG_ATTACK, color="#960000")
 
 /datum/antagonist/brainwashed
-	name = "Brainwashed Victim"
+	name = "Ofiara prania mózgu"
 	banning_key = ROLE_BRAINWASHED
-	roundend_category = "brainwashed victims"
+	roundend_category = "ofiary prania mózgu"
 	show_in_antagpanel = TRUE
 	antagpanel_category = "Other"
 	show_name_in_check_antagonists = TRUE
@@ -44,20 +44,20 @@
 	return ..()
 
 /datum/antagonist/brainwashed/greet()
-	to_chat(owner, "<span class='warning'>Your mind reels as it begins focusing on a single purpose...</span>")
-	to_chat(owner, "<big><span class='warning'><b>Follow the Directives, at any cost!</b></span></big>")
+	to_chat(owner, "<span class='warning'>Twój umysł wiruje, skupiając się na jednym celu...</span>")
+	to_chat(owner, "<big><span class='warning'><b>Wykonuj Dyrektywy za wszelką cenę!</b></span></big>")
 	var/i = 1
 	for(var/X in objectives)
 		var/datum/objective/O = X
 		to_chat(owner, "<b>[i].</b> [O.explanation_text]")
 		i++
 	owner.current.client?.tgui_panel?.give_antagonist_popup("Brainwashed",
-		"You have been brainwashed!\n\
-		Ensure you follow your directive, no matter the cost.")
+		"Wyprano ci mózg!\n\
+		Wykonuj swoją dyrektywę bez względu na koszty.")
 
 /datum/antagonist/brainwashed/farewell()
-	to_chat(owner, "<span class='warning'>Your mind suddenly clears...</span>")
-	to_chat(owner, "<big><span class='warning'><b>You feel the weight of the Directives disappear! You no longer have to obey them.</b></span></big>")
+	to_chat(owner, "<span class='warning'>Twój umysł nagle się rozjaśnia...</span>")
+	to_chat(owner, "<big><span class='warning'><b>Czujesz, jak ciężar Dyrektyw znika! Nie musisz już ich słuchać.</b></span></big>")
 	owner.announce_objectives()
 
 /datum/antagonist/brainwashed/apply_innate_effects(mob/living/mob_override)
@@ -82,13 +82,13 @@
 		return
 	var/list/objectives = list()
 	do
-		var/objective = stripped_input(admin, "Add an objective, or leave empty to finish.", "Brainwashing", null, MAX_MESSAGE_LEN)
+		var/objective = stripped_input(admin, "Dodaj cel albo zostaw puste, by zakończyć.", "Brainwashing", null, MAX_MESSAGE_LEN)
 		if(objective)
 			objectives += objective
 			log_objective(C, objective, admin)
 	while(alert(admin,"Add another objective?","More Brainwashing","Yes","No") == "Yes")
 
-	if(alert(admin,"Confirm Brainwashing?","Are you sure?","Yes","No") != "Yes")
+	if(alert(admin,"Confirm Brainwashing?","Na pewno?","Yes","No") != "Yes")
 		return
 
 	if(!LAZYLEN(objectives))

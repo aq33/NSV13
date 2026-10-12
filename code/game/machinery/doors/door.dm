@@ -45,11 +45,11 @@
 	. = ..()
 	if(red_alert_access)
 		if(GLOB.security_level >= SEC_LEVEL_RED)
-			. += "<span class='notice'>Due to a security threat, its access requirements have been lifted!</span>"
+			. += "<span class='notice'>Z powodu zagrożenia bezpieczeństwa zniesiono jej wymagania dostępu!</span>"
 		else
-			. += "<span class='notice'>In the event of a red alert, its access requirements will automatically lift.</span>"
+			. += "<span class='notice'>W razie czerwonego alarmu jej wymagania dostępu zostaną automatycznie zniesione.</span>"
 	if(!poddoor)
-		. += "<span class='notice'>Its maintenance panel is <b>screwed</b> in place.</span>"
+		. += "<span class='notice'>Jej panel serwisowy jest <b>przykręcony</b>.</span>"
 
 /obj/machinery/door/check_access_list(list/access_list)
 	if(red_alert_access && GLOB.security_level >= SEC_LEVEL_RED)
@@ -76,7 +76,7 @@
 /obj/machinery/door/proc/handle_alert(datum/source, new_alert)
 	SIGNAL_HANDLER
 	if(new_alert >= SEC_LEVEL_RED)
-		visible_message("<span class='notice'>[src] whirs as it automatically lifts access requirements!</span>")
+		visible_message("<span class='notice'>[src] warczy, automatycznie znosząc wymagania dostępu!</span>")
 		playsound(src, 'sound/machines/boltsup.ogg', 50, TRUE)
 
 
@@ -277,7 +277,7 @@
 	if(prob(severity*10 - 20))
 		if(secondsElectrified == MACHINE_NOT_ELECTRIFIED)
 			secondsElectrified = MACHINE_ELECTRIFIED_PERMANENT
-			LAZYADD(shockedby, "\[[time_stamp()]\]EM Pulse")
+			LAZYADD(shockedby, "\[[time_stamp()]\]Impuls EM")
 			addtimer(CALLBACK(src, PROC_REF(unelectrify)), 300)
 
 /obj/machinery/door/proc/unelectrify()
@@ -373,7 +373,7 @@
 
 /obj/machinery/door/proc/crush()
 	for(var/mob/living/L in get_turf(src))
-		L.visible_message("<span class='warning'>[src] closes on [L], crushing [L.p_them()]!</span>", "<span class='userdanger'>[src] closes on you and crushes you!</span>")
+		L.visible_message("<span class='warning'>[src] zamyka się na [L], miażdżąc go!</span>", "<span class='userdanger'>[src] zamyka się na tobie i cię miażdży!</span>")
 		if(isalien(L))  //For xenos
 			L.adjustBruteLoss(DOOR_CRUSH_DAMAGE * 1.5) //Xenos go into crit after aproximately the same amount of crushes as humans.
 			L.emote("roar")

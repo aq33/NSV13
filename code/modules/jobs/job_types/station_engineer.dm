@@ -6,7 +6,7 @@
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "the chief engineer"
+	supervisors = JOB_NAME_CHIEFENGINEER
 	selection_color = "#fff5cc"
 	exp_requirements = 120
 	exp_type = EXP_TYPE_CREW

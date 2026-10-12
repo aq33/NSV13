@@ -126,34 +126,34 @@
 	. = ..()
 
 	if(!queen_bee)
-		. += "<span class='warning'>There is no queen bee! There won't bee any honeycomb without a queen!</span>"
+		. += "<span class='warning'>Nie ma królowej! Bez królowej nie będzie plastrów miodu!</span>"
 
 	var/half_bee = get_max_bees()*0.5
 	if(half_bee && (bees.len >= half_bee))
-		. += "<span class='notice'>This place is aBUZZ with activity... there are lots of bees!</span>"
+		. += "<span class='notice'>To miejsce aż BRZĘCZY od aktywności... jest tu mnóstwo pszczół!</span>"
 
-	. += "<span class='notice'>[bee_resources]/100 resource supply.</span>"
-	. += "<span class='notice'>[bee_resources]% towards a new honeycomb.</span>"
-	. += "<span class='notice'>[bee_resources*2]% towards a new bee.</span>"
+	. += "<span class='notice'>Zapas zasobów: [bee_resources]/100.</span>"
+	. += "<span class='notice'>Postęp do nowego plastra miodu: [bee_resources]%.</span>"
+	. += "<span class='notice'>Postęp do nowej pszczoły: [bee_resources*2]%.</span>"
 
 	if(honeycombs.len)
 		var/plural = honeycombs.len > 1
-		. += "<span class='notice'>There [plural? "are" : "is"] [honeycombs.len] uncollected honeycomb[plural ? "s":""] in the apiary.</span>"
+		. += "<span class='notice'>[plural ? "Nieodebrane plastry" : "Nieodebrany plaster"] miodu w pasiece: [honeycombs.len].</span>"
 
 	if(honeycombs.len >= get_max_honeycomb())
-		. += "<span class='warning'>There's no room for more honeycomb!</span>"
+		. += "<span class='warning'>Nie ma miejsca na więcej plastrów miodu!</span>"
 
 
 /obj/structure/beebox/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/honey_frame))
 		var/obj/item/honey_frame/HF = I
 		if(honey_frames.len < BEEBOX_MAX_FRAMES)
-			visible_message("<span class='notice'>[user] adds a frame to the apiary.</span>")
+			visible_message("<span class='notice'>[user] dodaje ramkę do pasieki.</span>")
 			if(!user.transferItemToLoc(HF, src))
 				return
 			honey_frames += HF
 		else
-			to_chat(user, "<span class='warning'>There's no room for any more frames in the apiary!</span>")
+			to_chat(user, "<span class='warning'>W pasiece nie ma miejsca na więcej ramek!</span>")
 		return
 
 	if(I.tool_behaviour == TOOL_WRENCH)
@@ -162,7 +162,7 @@
 
 	if(istype(I, /obj/item/queen_bee))
 		if(queen_bee)
-			to_chat(user, "<span class='warning'>This hive already has a queen!</span>")
+			to_chat(user, "<span class='warning'>Ten ul ma już królową!</span>")
 			return
 
 		var/obj/item/queen_bee/qb = I
@@ -174,7 +174,7 @@
 		qb.queen = null
 
 		if(queen_bee)
-			visible_message("<span class='notice'>[user] sets [qb] down inside the apiary, making it their new home.</span>")
+			visible_message("<span class='notice'>[user] umieszcza [qb] w pasiece, która staje się jej nowym domem.</span>")
 			var/relocated = 0
 			for(var/b in bees)
 				var/mob/living/simple_animal/hostile/poison/bees/B = b
@@ -185,10 +185,10 @@
 						B.forceMove(drop_location())
 					relocated++
 			if(relocated)
-				to_chat(user, "<span class='warning'>This queen has a different reagent to some of the bees who live here, those bees will not return to this apiary!</span>")
+				to_chat(user, "<span class='warning'>Ta królowa ma inny odczynnik niż niektóre z mieszkających tu pszczół; te pszczoły nie wrócą do tej pasieki!</span>")
 
 		else
-			to_chat(user, "<span class='warning'>The queen bee disappeared! Disappearing bees have been in the news lately...</span>")
+			to_chat(user, "<span class='warning'>Królowa zniknęła! Znikające pszczoły to ostatnio gorący temat w wiadomościach...</span>")
 
 		qdel(qb)
 		return
@@ -209,24 +209,24 @@
 			B.GiveTarget(user)
 			bees = TRUE
 		if(bees)
-			visible_message("<span class='danger'>[user] disturbs the bees!</span>")
+			visible_message("<span class='danger'>[user] niepokoi pszczoły!</span>")
 		else
-			visible_message("<span class='danger'>[user] disturbs the [name] to no effect!</span>")
+			visible_message("<span class='danger'>[user] niepokoi [name], ale bez skutku!</span>")
 	else
-		var/option = alert(user, "What action do you wish to perform?","Apiary","Remove a Honey Frame","Remove the Queen Bee", "Cancel")
+		var/option = alert(user, "Co chcesz zrobić?","Apiary","Remove a Honey Frame","Remove the Queen Bee", "Cancel")
 		if(!Adjacent(user))
 			return
 		switch(option)
 			if("Remove a Honey Frame")
 				if(!honey_frames.len)
-					to_chat(user, "<span class='warning'>There are no honey frames to remove!</span>")
+					to_chat(user, "<span class='warning'>Nie ma ramek z miodem do wyjęcia!</span>")
 					return
 
 				var/obj/item/honey_frame/HF = pick_n_take(honey_frames)
 				if(HF)
 					if(!user.put_in_active_hand(HF))
 						HF.forceMove(drop_location())
-					visible_message("<span class='notice'>[user] removes a frame from the apiary.</span>")
+					visible_message("<span class='notice'>[user] wyjmuje ramkę z pasieki.</span>")
 
 					var/amtH = HF.honeycomb_capacity
 					var/fallen = 0
@@ -238,11 +238,11 @@
 							fallen++
 					if(fallen)
 						var/multiple = fallen > 1
-						visible_message("<span class='notice'>[user] scrapes [multiple ? "[fallen]" : "a"] honeycomb[multiple ? "s" : ""] off of the frame.</span>")
+						visible_message("<span class='notice'>[user] zeskrobuje z ramki [multiple ? "plastry miodu ([fallen])" : "plaster miodu"].</span>")
 
 			if("Remove the Queen Bee")
 				if(!queen_bee || queen_bee.loc != src)
-					to_chat(user, "<span class='warning'>There is no queen bee to remove!</span>")
+					to_chat(user, "<span class='warning'>Nie ma królowej do wyjęcia!</span>")
 					return
 				var/obj/item/queen_bee/QB = new()
 				queen_bee.forceMove(QB)
@@ -251,7 +251,7 @@
 				QB.name = queen_bee.name
 				if(!user.put_in_active_hand(QB))
 					QB.forceMove(drop_location())
-				visible_message("<span class='notice'>[user] removes the queen from the apiary.</span>")
+				visible_message("<span class='notice'>[user] wyjmuje królową z pasieki.</span>")
 				queen_bee = null
 
 /obj/structure/beebox/deconstruct(disassembled = TRUE)

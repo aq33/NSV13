@@ -29,7 +29,7 @@
 	desc = "Opens up the Path of Rust to you. \
 		Allows you to transmute a knife with any trash item into a Rusty Blade. \
 		You can only create two at a time."
-	gain_text = "\"Let me tell you a story\", said the Blacksmith, as he gazed deep into his rusty blade."
+	gain_text = "\"Opowiem ci historię\" - rzekł Kowal, wpatrując się głęboko w swoje zardzewiałe ostrze."
 	next_knowledge = list(/datum/heretic_knowledge/rust_fist)
 	banned_knowledge = list(
 		/datum/heretic_knowledge/limited_amount/base_ash,
@@ -58,7 +58,7 @@
 	name = "Grasp of Rust"
 	desc = "Your Mansus Grasp will deal 500 damage to non-living matter and rust any surface it touches. \
 		Already rusted surfaces are destroyed. Surfaces and structures can only be rusted by using Disarm intent."
-	gain_text = "On the ceiling of the Mansus, rust grows as moss does on a stone."
+	gain_text = "Na sklepieniu Mansusa rdza rośnie jak mech na kamieniu."
 	next_knowledge = list(/datum/heretic_knowledge/rust_regen)
 	cost = 1
 	route = HERETIC_PATH_RUST
@@ -77,7 +77,7 @@
 /datum/heretic_knowledge/rust_regen
 	name = "Leeching Walk"
 	desc = "Grants you passive healing and stun resistance while standing over rust."
-	gain_text = "The speed was unparalleled, the strength unnatural. The Blacksmith was smiling."
+	gain_text = "Szybkość była niezrównana, siła nienaturalna. Kowal się uśmiechał."
 	next_knowledge = list(
 		/datum/heretic_knowledge/rust_mark,
 		/datum/heretic_knowledge/codex_cicatrix,
@@ -133,7 +133,7 @@
 	name = "Mark of Rust"
 	desc = "Your Mansus Grasp now applies the Mark of Rust. The mark is triggered from an attack with your Rusty Blade. \
 		When triggered, the victim's organs and equipment will have a 75% chance to sustain damage and may be destroyed."
-	gain_text = "The Blacksmith looks away. To a place lost long ago. \"The Rusted Hills help those in dire need... at a cost.\""
+	gain_text = "Kowal odwraca wzrok. Ku miejscu dawno utraconemu. \"Rdzawe Wzgórza pomagają tym w potrzebie... za pewną cenę.\""
 	next_knowledge = list(/datum/heretic_knowledge/knowledge_ritual/rust)
 	banned_knowledge = list(
 		/datum/heretic_knowledge/ash_mark,
@@ -177,7 +177,7 @@
 	name = "Aggressive Spread"
 	desc = "Grants you Aggressive Spread, a spell that spreads rust to nearby surfaces. \
 		Already rusted surfaces are destroyed."
-	gain_text = "All wise men know not to visit the Rusted Hills... Yet the Blacksmith's tale was inspiring."
+	gain_text = "Każdy mędrzec wie, by nie odwiedzać Rdzawych Wzgórz... A jednak opowieść Kowala była inspirująca."
 	next_knowledge = list(
 		/datum/heretic_knowledge/rust_blade_upgrade,
 		/datum/heretic_knowledge/reroll_targets,
@@ -191,8 +191,8 @@
 /datum/heretic_knowledge/rust_blade_upgrade
 	name = "Toxic Blade"
 	desc = "Your Rusty Blade now poisons enemies on attack."
-	gain_text = "The Blacksmith hands you their blade. \"The Blade will guide you through the flesh, should you let it.\" \
-		The heavy rust weighs it down. You stare deeply into it. The Rusted Hills call for you, now."
+	gain_text = "Kowal podaje ci swoje ostrze. \"Ostrze poprowadzi cię przez ciało, jeśli mu pozwolisz.\" \
+		Ciężka rdza je przygniata. Wpatrujesz się w nie głęboko. Rdzawe Wzgórza cię teraz wzywają."
 	next_knowledge = list(/datum/heretic_knowledge/spell/entropic_plume)
 	banned_knowledge = list(
 		/datum/heretic_knowledge/ash_blade_upgrade,
@@ -219,8 +219,8 @@
 	desc = "Grants you Entropic Plume, a spell that releases a vexing wave of Rust. \
 		Blinds, poisons, and inflicts Amok on any heathen it hits, causing them to strike \
 		at friend or foe wildly. Also rusts and destroys and surfaces it hits."
-	gain_text = "The corrosion was unstoppable. The rust was unpleasable. \
-		The Blacksmith was gone, and you hold their blade. Champions of hope, the Rustbringer is nigh!"
+	gain_text = "Korozji nie dało się powstrzymać. Rdzy nie dało się zadowolić. \
+		Kowala już nie ma, a ty trzymasz jego ostrze. Czempioni nadziei, Zwiastun Rdzy nadchodzi!"
 	next_knowledge = list(
 		/datum/heretic_knowledge/spell/cleave,
 		/datum/heretic_knowledge/final/rust_final,
@@ -237,8 +237,8 @@
 		When completed, the ritual site will endlessly spread rust onto any surface, stopping for nothing. \
 		Additionally, you will become extremely resilient on rust, healing at triple the rate \
 		and becoming immune to many effects and dangers."
-	gain_text = "Champion of rust. Corruptor of steel. Fear the dark, for the RUSTBRINGER has come! \
-		The Blacksmith forges ahead! Rusted Hills, CALL MY NAME! WITNESS MY ASCENSION!"
+	gain_text = "Czempion rdzy. Kaziciel stali. Lękajcie się ciemności, bo nadszedł ZWIASTUN RDZY! \
+		Kowal kuje naprzód! Rdzawe Wzgórza, WZYWAJCIE MOJE IMIĘ! UJRZYJCIE MOJE WNIEBOWSTĄPIENIE!"
 	route = HERETIC_PATH_RUST
 	/// If TRUE, then immunities are currently active.
 	var/immunities_active = FALSE
@@ -264,7 +264,7 @@
 	if(ritual_location)
 		var/area/our_area = get_area(loc)
 		if(!istype(our_area, ritual_location))
-			loc.balloon_alert(user, "ritual failed, must be in [initial(ritual_location.name)]!") // "must be in bridge"
+			loc.balloon_alert(user, "rytuał nieudany, musisz być w: [initial(ritual_location.name)]!") // "must be in bridge"
 			return FALSE
 	return ..()
 
@@ -277,7 +277,7 @@
 
 /datum/heretic_knowledge/final/rust_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
-	priority_announce("[generate_heretic_text()] Fear the decay, for the Rustbringer, [user.real_name] has ascended! None shall escape the corrosion! [generate_heretic_text()]","[generate_heretic_text()]", ANNOUNCER_SPANOMALIES)
+	priority_announce("[generate_heretic_text()] Lękajcie się rozkładu, bo Zwiastun Rdzy, [user.real_name], dostąpił wniebowstąpienia! Nikt nie ucieknie przed korozją! [generate_heretic_text()]","[generate_heretic_text()]", ANNOUNCER_SPANOMALIES)
 	new /datum/rust_spread(loc)
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
 	RegisterSignal(user, COMSIG_LIVING_LIFE, PROC_REF(on_life))

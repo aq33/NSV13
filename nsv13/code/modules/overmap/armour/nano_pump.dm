@@ -50,13 +50,13 @@
 /obj/machinery/armour_plating_nanorepair_pump/examine(mob/user)
 	.=..()
 	if(quadrant)
-		. += "<span class='notice'>This APNP is aligned to [quadrant]</span>"
+		. += "<span class='notice'>Ta APNP jest przypisana do [quadrant]</span>"
 	if(online)
-		. += "<span class='notice'>It has a maintenance panel that appears to be welded shut</span>"
+		. += "<span class='notice'>Ma panel serwisowy, który wygląda na zaspawany</span>"
 	if(!online)
-		. += "<span class='notice'>The maintenance panel is open</span>"
+		. += "<span class='notice'>Panel serwisowy jest otwarty</span>"
 	if(stress_shutdown)
-		. += "<span class='warning'>The system overload lights are flashing</span>"
+		. += "<span class='warning'>Migają lampki przeciążenia systemu</span>"
 
 /obj/machinery/armour_plating_nanorepair_pump/process(delta_time)
 	if(!OM)
@@ -93,7 +93,7 @@
 					if(OM.structure_crit) //Checking to see if we can exist SS Crit
 						if(OM.obj_integrity >= OM.max_integrity * 0.2) //You need to repair a good chunk of her HP before you're getting outta this fucko.
 							OM.stop_relay(channel=CHANNEL_SHIP_FX)
-							priority_announce("Ship structural integrity restored to acceptable levels. ","Automated announcement ([apnw])")
+							priority_announce("Przywrócono integralność strukturalną okrętu do akceptowalnego poziomu. ","Automatyczny komunikat ([apnw])")
 							OM.structure_crit = FALSE
 
 	else
@@ -131,24 +131,24 @@
 		apnw = M.buffer
 		apnw.apnp += src
 		M.buffer = null
-	quadrant = input(user, "Direct nano-repair pump to which quadrant?", "[name]") as null|anything in list("forward_port", "forward_starboard", "aft_port", "aft_starboard")
+	quadrant = input(user, "Do której ćwiartki skierować pompę nanonaprawczą?", "[name]") as null|anything in list("forward_port", "forward_starboard", "aft_port", "aft_starboard")
 	playsound(src, 'sound/items/flashlight_on.ogg', 100, TRUE)
-	to_chat(user, "<span class='notice'>Buffer transfered</span>")
+	to_chat(user, "<span class='notice'>Przesłano bufor</span>")
 	return
 
 /obj/machinery/armour_plating_nanorepair_pump/welder_act(mob/user, obj/item/tool)
 	. = FALSE
 	if(online)
-		to_chat(user, "<span class='notice'>You start to unseal the maintenance panel cover...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz odpieczętowywać pokrywę panelu serwisowego...</span>")
 		if(tool.use_tool(src, user, 40, volume=100))
-			to_chat(user, "<span class='notice'>You unseal and remove the maintenance panel cover</span>")
+			to_chat(user, "<span class='notice'>Odpieczętowujesz i zdejmujesz pokrywę panelu serwisowego</span>")
 			online = FALSE
 			update_icon()
 			return TRUE
 	if(!online)
-		to_chat(user, "<span class='notice'>You start to replace and seal the maintenance panel cover...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz zakładać i uszczelniać pokrywę panelu serwisowego...</span>")
 		if(tool.use_tool(src, user, 40, volume=100))
-			to_chat(user, "<span class='notice'>You replace the maintenance panel cover and seal it</span>")
+			to_chat(user, "<span class='notice'>Zakładasz pokrywę panelu serwisowego i ją uszczelniasz</span>")
 			online = TRUE
 			update_icon()
 			return TRUE
@@ -156,9 +156,9 @@
 /obj/machinery/armour_plating_nanorepair_pump/wrench_act(mob/user, obj/item/tool)
 	. = FALSE
 	if(!online && stress_shutdown)
-		to_chat(user, "<span class='notice'>You start to purge and restart the pump...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz przepłukiwać i restartować pompę...</span>")
 		if(tool.use_tool(src, user, 100, volume=100))
-			to_chat(user, "<span class='notice'>You restart the pump</span>")
+			to_chat(user, "<span class='notice'>Restartujesz pompę</span>")
 			stress_shutdown = FALSE
 			last_restart = world.time
 			update_icon()
@@ -191,7 +191,7 @@
 	if(!apnw)
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='warning'>Unable to detect linked well</span>")
+		to_chat(user, "<span class='warning'>Nie wykryto połączonego zbiornika</span>")
 		return
 	ui_interact(user)
 
@@ -200,7 +200,7 @@
 	if(!apnw)
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='warning'>Unable to detect linked well</span>")
+		to_chat(user, "<span class='warning'>Nie wykryto połączonego zbiornika</span>")
 		return
 	ui_interact(user)
 
@@ -209,14 +209,14 @@
 	if(!apnw)
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='warning'>Unable to detect linked well</span>")
+		to_chat(user, "<span class='warning'>Nie wykryto połączonego zbiornika</span>")
 		return
 	ui_interact(user)
 
 /obj/machinery/armour_plating_nanorepair_pump/attack_ghost(mob/user)
 	.=..()
 	if(!apnw)
-		to_chat(user, "<span class='warning'>Unable to detect linked well</span>")
+		to_chat(user, "<span class='warning'>Nie wykryto połączonego zbiornika</span>")
 		return
 	ui_interact(user)
 

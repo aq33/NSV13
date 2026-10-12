@@ -79,7 +79,7 @@ MASSIVE THANKS TO MONSTER860 FOR HELP WITH THIS. HE EXPLAINED PHYSICS AND MATH T
 
 /obj/vehicle/sealed/car/realistic/proc/toggle_brakes()
 	brakes = !brakes
-	to_chat(usr, "<span class='notice'>You toggle the brakes [brakes ? "on" : "off"].")
+	to_chat(usr, "<span class='notice'>[brakes ? "Zaciągasz" : "Zwalniasz"] hamulce.")
 
 /obj/effect/decal/cleanable/tyre_marks
 	name = "Tyre tracks"
@@ -104,7 +104,7 @@ MASSIVE THANKS TO MONSTER860 FOR HELP WITH THIS. HE EXPLAINED PHYSICS AND MATH T
 /obj/vehicle/sealed/car/realistic/driver_move(mob/user, direction)
 	if(key_type && !is_key(inserted_key))
 		if(COOLDOWN_FINISHED(src, key_cooldown))
-			to_chat(user, "<span class='warning'>[src] has no key inserted!</span>")
+			to_chat(user, "<span class='warning'>[src] nie ma włożonego kluczyka!</span>")
 			COOLDOWN_START(src, key_cooldown, 1 SECONDS)
 		return FALSE
 	if(world.time >= last_enginesound_time + engine_sound_length)
@@ -373,14 +373,14 @@ MASSIVE THANKS TO MONSTER860 FOR HELP WITH THIS. HE EXPLAINED PHYSICS AND MATH T
 		// wew lad, might wanna slow down there
 		explosion(A, -1, round((strength - 1) / 2), round(strength))
 		take_damage(strength*10, BRUTE, "melee", TRUE)
-		visible_message("<span class='danger'>The force of the impact causes a shockwave</span>")
+		visible_message("<span class='danger'>Siła uderzenia wywołuje falę uderzeniową</span>")
 	else if(isliving(A) && bump_velocity > 2)
 		var/mob/living/M = A
 		M.apply_damage(bump_velocity * 2)
 		take_damage(bump_velocity, BRUTE, "melee", FALSE)
 		playsound(M.loc, "swing_hit", 1000, 1, -1)
 		M.Knockdown(bump_velocity * 2)
-		M.visible_message("<span class='warning'>The force of the impact knocks [M] down!</span>","<span class='userdanger'>The force of the impact knocks you down!</span>")
+		M.visible_message("<span class='warning'>Siła uderzenia przewraca [M]!</span>","<span class='userdanger'>Siła uderzenia cię przewraca!</span>")
 	return ..()
 
 

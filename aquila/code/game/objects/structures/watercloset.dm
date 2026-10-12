@@ -14,7 +14,7 @@
 		if(do_after(usr, 3 SECONDS, target = src))
 			shit(usr)
 	else
-		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
+		to_chat(usr, "<span class='warning'>Ten typ moba nie może użyć tego czasownika.</span>")
 
 /obj/structure/toilet/proc/shit(mob/living/user)
 	if(user.defecation > DEFECATION_VERY)

@@ -162,7 +162,7 @@
 				H.mind.assigned_role = "Syndicate Boarder"
 			log_game("[key_name(H)] became a syndicate drop trooper.")
 			message_admins("[ADMIN_LOOKUPFLW(H)] became a syndicate drop trooper.")
-			to_chat(H, "<span class='danger'>You are a syndicate drop trooper! Cripple [station_name()] to the best of your ability, by any means you see fit. You have been given some objectives to guide you in the pursuit of this goal.")
+			to_chat(H, "<span class='danger'>Jesteś żołnierzem desantu Syndykatu! Okalecz [station_name()] najlepiej, jak potrafisz, wszelkimi sposobami, jakie uznasz za stosowne. Dostajesz kilka celów, które pomogą ci w dążeniu do tego.")
 			operatives += H
 		relay('nsv13/sound/effects/ship/boarding_pod.ogg', "<span class='userdanger'>You can hear several tethers attaching to the ship.</span>")
 

@@ -63,7 +63,7 @@
 		qdel(src)
 		return
 	if(ismegafauna(M))
-		M.visible_message("<span class='warning'>[M] glows fiercely as the containment field flickers out!</span>")
+		M.visible_message("<span class='warning'>[M] jaskrawo rozbłyska, gdy pole izolujące migocze i gaśnie!</span>")
 		FG1.calc_power(INFINITY) //rip that 'containment' field
 		M.adjustHealth(-M.obj_damage)
 	else
@@ -130,9 +130,9 @@
 		if(prob(20))
 			user.Stun(40)
 		user.take_overall_damage(0, shock_damage)
-		user.visible_message("<span class='danger'>[user.name] was shocked by the [src.name]!</span>", \
-		"<span class='userdanger'>Energy pulse detected, system damaged!</span>", \
-		"<span class='italics'>You hear an electrical crack.</span>")
+		user.visible_message("<span class='danger'>[src.name] razi prądem [user.name]!</span>", \
+		"<span class='userdanger'>Wykryto impuls energii, system uszkodzony!</span>", \
+		"<span class='italics'>Słyszysz trzask elektryczny.</span>")
 
 	user.updatehealth()
 	bump_field(user)

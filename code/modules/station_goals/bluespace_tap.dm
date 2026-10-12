@@ -6,13 +6,13 @@
 /datum/station_goal/bluespace_tap/get_report()
 	return list(
 	"<blockquote><b>Bluespace Harvester Experiment</b>",
-	"Another research station has developed a device called a Bluespace Harvester.",
-	"It reaches through bluespace into other dimensions to shift through them for interesting objects.",
-	"Due to unforeseen circumstances the large-scale test of the prototype could not be completed on the original research station. It will instead be carried out on your station.",
-	"Acquire the circuit board, construct the device over a wire knot and feed it enough power to generate [goal] mining points by shift end.",
+	"Inna stacja badawcza opracowała urządzenie zwane Kombajnem Bluespace.",
+	"Sięga ono przez bluespace do innych wymiarów, by przeczesywać je w poszukiwaniu ciekawych obiektów.",
+	"Z powodu nieprzewidzianych okoliczności test prototypu na dużą skalę nie mógł zostać przeprowadzony na pierwotnej stacji badawczej. Zamiast tego zostanie przeprowadzony na waszej stacji.",
+	"Zdobądźcie płytkę, zbudujcie urządzenie na węźle przewodów i dostarczcie mu dość energii, by do końca zmiany wygenerowało [goal] pkt górniczych.",
 	"",
-	"Be advised that the device is experimental and might act in slightly unforeseen ways if sufficiently powered.",
-	"Nanotrasen Science Directorate</blockquote>",
+	"Uwaga: urządzenie jest eksperymentalne i przy wystarczającym zasilaniu może zachowywać się w nieco nieprzewidziany sposób.",
+	"Dyrektoriat Naukowy Nanotrasen</blockquote>",
 	).Join("\n")
 
 /datum/station_goal/bluespace_tap/on_report()
@@ -25,7 +25,7 @@
 	var/highscore = 0
 	for(var/obj/machinery/power/bluespace_tap/T in GLOB.machines)
 		highscore = max(highscore, T.total_points)
-	to_chat(world, "<b>Bluespace Harvester Highscore</b>: [highscore >= goal ? "<span class='greenannounce'>": "<span class='boldannounce'>"][highscore]</span>")
+	to_chat(world, "<b>Rekord Kombajnu Bluespace</b>: [highscore >= goal ? "<span class='greenannounce'>": "<span class='boldannounce'>"][highscore]</span>")
 	if(highscore >= goal)
 		return TRUE
 	return FALSE
@@ -320,7 +320,7 @@
 	else if(input_level > desired_level)
 		input_level--
 	if(prob(input_level - safe_levels + (emagged * 5)))	//at dangerous levels, start doing freaky shit. prob with values less than 0 treat it as 0
-		priority_announce("Unexpected power spike during Bluespace Harvester Operation. Extra-dimensional intruder alert. Expected location: [get_area_name(src)]. [emagged ? "DANGER: Emergency shutdown failed! Please proceed with manual shutdown." : "Emergency shutdown initiated."]", "Bluespace Harvester Malfunction",sound = SSstation.announcer.get_rand_report_sound())
+		priority_announce("Nieoczekiwany skok mocy podczas pracy Kombajnu Bluespace. Alarm: intruz z innego wymiaru. Spodziewana lokalizacja: [get_area_name(src)]. [emagged ? "NIEBEZPIECZEŃSTWO: awaryjne wyłączenie nie powiodło się! Przeprowadźcie ręczne wyłączenie." : "Rozpoczęto awaryjne wyłączenie."]", "Awaria Kombajnu Bluespace",sound = SSstation.announcer.get_rand_report_sound())
 		if(!emagged)
 			input_level = 0	//emergency shutdown unless we're sabotaged
 			desired_level = 0
@@ -415,7 +415,7 @@
 	emagged = TRUE
 	do_sparks(5, FALSE, src)
 	if(user)
-		user.visible_message("<span class='warning'>[user] overrides the safety protocols of [src].</span>", "<span class='warning'>You override the safety protocols.</span>")
+		user.visible_message("<span class='warning'>[user] obchodzi protokoły bezpieczeństwa [src].</span>", "<span class='warning'>Obchodzisz protokoły bezpieczeństwa.</span>")
 
 /obj/structure/spawner/nether/bluespace_tap
 	spawn_time = 30 SECONDS
@@ -428,21 +428,7 @@
 
 /obj/item/paper/bluespace_tap
 	name = "paper- 'The Experimental NT Bluespace Harvester - Mining other universes for science and profit!'"
-	default_raw_text = "<h1>Important Instructions!</h1>Please follow all setup instructions to ensure proper operation. <br>\
-	1. Create a wire node with ample access to spare power. The device operates independently of APCs. <br>\
-	2. Create a machine frame as normal on the wire node, taking into account the device's dimensions (3 by 3 meters). <br>\
-	3. Insert wiring, circuit board and required components and finish construction according to NT engineering standards. <br>\
-	4. Ensure the device is connected to the proper power network and the network contains sufficient power. <br>\
-	5. Set machine to desired level. Check periodically on machine progress. <br>\
-	6. Optionally, spend earned points on fun and exciting rewards. <br><hr>\
-	<h2>Operational Principles</h2> \
-	<p>The Bluespace Harvester is capable of accepting a nearly limitless amount of power to search other universes for valuables to recover. The speed of this search is controlled via the 'level' control of the device. \
-	While it can be run on a low level by almost any power generation system, higher levels require work by a dedicated engineering team to power. \
-	As we are interested in testing how the device performs under stress, we wish to encourage you to stress-test it and see how much power you can provide it. \
-	For this reason, total shift point production will be calculated and announced at shift end. High totals may result in bonus payments to members of the Engineering department. <p>\
-	<p>NT Science Directorate, Extradimensional Exploitation Research Group</p> \
-	<p><small>Device highly experimental. Not for sale. Do not operate near small children or vital NT assets. Do not tamper with machine. In case of existential dread, stop machine immediately. \
-	Please document any and all extradimensional incursions. In case of imminent death, please leave said documentation in plain sight for clean-up teams to recover.</small></p>"
+	default_raw_text = "<h1>Ważne instrukcje!</h1>Postępuj zgodnie ze wszystkimi instrukcjami montażu, by zapewnić prawidłowe działanie. <br>1. Utwórz węzeł przewodu z dużym dostępem do zapasowej mocy. Urządzenie działa niezależnie od APC. <br>2. Zbuduj na węźle przewodu zwykłą ramę maszyny, uwzględniając wymiary urządzenia (3 na 3 metry). <br>3. Włóż okablowanie, płytkę i wymagane komponenty i dokończ budowę zgodnie ze standardami inżynieryjnymi NT. <br>4. Upewnij się, że urządzenie jest podłączone do właściwej sieci energetycznej, a sieć ma dość mocy. <br>5. Ustaw maszynę na żądany poziom. Okresowo sprawdzaj postęp maszyny. <br>6. Opcjonalnie wydaj zdobyte punkty na zabawne i ekscytujące nagrody. <br><hr><h2>Zasady działania</h2> <p>Kombajn Bluespace potrafi przyjąć niemal nieograniczoną ilość mocy, by przeszukiwać inne wszechświaty w poszukiwaniu cennych rzeczy do odzyskania. Szybkość wyszukiwania reguluje się „poziomem” urządzenia. Choć na niskim poziomie może go zasilać niemal każdy system wytwarzania energii, wyższe poziomy wymagają pracy oddanego zespołu inżynieryjnego. Ponieważ interesuje nas, jak urządzenie radzi sobie pod obciążeniem, zachęcamy do testów obciążeniowych i sprawdzenia, ile mocy jesteście w stanie mu dostarczyć. Z tego powodu łączna produkcja punktów w trakcie zmiany zostanie obliczona i ogłoszona na jej końcu. Wysokie wyniki mogą skutkować premiami dla członków działu inżynieryjnego. <p><p>Dyrektoriat Naukowy NT, Grupa Badawcza Eksploatacji Międzywymiarowej</p> <p><small>Urządzenie wysoce eksperymentalne. Nie na sprzedaż. Nie używać w pobliżu małych dzieci ani ważnych zasobów NT. Nie ingerować w maszynę. W razie egzystencjalnego lęku natychmiast zatrzymać maszynę. Prosimy dokumentować wszelkie wtargnięcia z innych wymiarów. W razie bliskiej śmierci prosimy zostawić tę dokumentację na widoku, by mogły ją odzyskać ekipy sprzątające.</small></p>"
 
 #undef kW
 #undef MW

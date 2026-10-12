@@ -18,8 +18,7 @@ BONUS
 /datum/symptom/youth
 
 	name = "Eternal Youth"
-	desc = "The virus becomes symbiotically connected to the cells in the host's body, preventing and reversing aging. \
-	The virus, in turn, becomes more resistant, spreads faster, and is harder to spot, although it doesn't thrive as well without a host."
+	desc = "Wirus łączy się symbiotycznie z komórkami ciała nosiciela, zapobiegając starzeniu i je odwracając. W zamian wirus staje się odporniejszy, szybciej się rozprzestrzenia i trudniej go wykryć, choć bez nosiciela rozwija się gorzej."
 	stealth = 3
 	resistance = 4
 	stage_speed = 4
@@ -41,20 +40,20 @@ BONUS
 			if(1)
 				if(H.age > 41)
 					H.age = 41
-					to_chat(H, "<span class='notice'>You haven't had this much energy in years!</span>")
+					to_chat(H, "<span class='notice'>Od lat nie miałeś tyle energii!</span>")
 			if(2)
 				if(H.age > 36)
 					H.age = 36
-					to_chat(H, "<span class='notice'>You're suddenly in a good mood.</span>")
+					to_chat(H, "<span class='notice'>Nagle masz dobry humor.</span>")
 			if(3)
 				if(H.age > 31)
 					H.age = 31
-					to_chat(H, "<span class='notice'>You begin to feel more lithe.</span>")
+					to_chat(H, "<span class='notice'>Czujesz się gibszy.</span>")
 			if(4)
 				if(H.age > 26)
 					H.age = 26
-					to_chat(H, "<span class='notice'>You feel reinvigorated.</span>")
+					to_chat(H, "<span class='notice'>Czujesz się odnowiony.</span>")
 			if(5)
 				if(H.age > 21)
 					H.age = 21
-					to_chat(H, "<span class='notice'>You feel like you can take on the world!</span>")
+					to_chat(H, "<span class='notice'>Czujesz, że mógłbyś stawić czoła całemu światu!</span>")

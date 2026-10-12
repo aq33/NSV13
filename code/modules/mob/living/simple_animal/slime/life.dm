@@ -98,14 +98,14 @@
 			adjustBruteLoss(plas_amt ? -2 : 0)
 
 		if(stat == CONSCIOUS && stasis)
-			to_chat(src, "<span class='danger'>Nerve gas in the air has put you in stasis!</span>")
+			to_chat(src, "<span class='danger'>Gaz paraliżujący w powietrzu wprowadził cię w stazę!</span>")
 			set_stat(UNCONSCIOUS)
 			powerlevel = 0
 			rabid = 0
 			update_mobility()
 			regenerate_icons()
 		else if(stat == UNCONSCIOUS && !stasis)
-			to_chat(src, "<span class='notice'>You wake up from the stasis.</span>")
+			to_chat(src, "<span class='notice'>Budzisz się ze stazy.</span>")
 			set_stat(CONSCIOUS)
 			update_mobility()
 			regenerate_icons()
@@ -153,7 +153,7 @@
 		qdel(fuel)
 	if(M.stat == DEAD)
 		if(client)
-			to_chat(src, "<i>This subject does not have a strong enough life energy anymore...</i>")
+			to_chat(src, "<i>Ten obiekt nie ma już wystarczająco silnej energii życiowej...</i>")
 		else if(!rabid && !attacked)
 			var/mob/last_to_hurt = M.LAssailant?.resolve()
 			if(last_to_hurt && last_to_hurt != M && prob(50))
@@ -163,7 +163,7 @@
 			rabid = 1
 
 		if(transformeffects & SLIME_EFFECT_GREEN)
-			visible_message("<span class='warning'>[src] slurps up [M]!</span>")
+			visible_message("<span class='warning'>[src] wsysa [M]!</span>")
 			adjust_nutrition(10)
 			layer = initial(layer)
 			qdel(M)
@@ -346,11 +346,11 @@
 		var/phrase = speech_buffer[2] // What did they say?
 		if ((findtext(phrase, num2text(number)) || findtext(phrase, "slimes"))) // Talking to us
 			if (findtext(phrase, "hello") || findtext(phrase, "hi"))
-				to_say = pick("Hello...", "Hi...")
+				to_say = pick("Cześć...", "Hi...")
 			else if (findtext(phrase, "follow"))
 				if (Leader)
 					if (Leader == who) // Already following him
-						to_say = pick("Yes...", "Lead...", "Follow...")
+						to_say = pick("Tak...", "Prowadź...", "Idę za...")
 					else if (Friends[who] > Friends[Leader]) // VIVA
 						set_leader(who)
 						to_say = "Yes... I follow [who]..."
@@ -361,7 +361,7 @@
 						set_leader(who)
 						to_say = "I follow..."
 					else // Not friendly enough
-						to_say = pick("No...", "I no follow...")
+						to_say = pick("No...", "Ja nie iść...")
 			else if (findtext(phrase, "stop"))
 				if (buckled) // We are asked to stop feeding
 					if (Friends[who] >= SLIME_FRIENDSHIP_STOPEAT)
@@ -371,7 +371,7 @@
 							add_friendship(who, -1)
 							to_say = "Grrr..." // I'm angry but I do it
 						else
-							to_say = "Fine..."
+							to_say = "Dobra..."
 				else if (Target) // We are asked to stop chasing
 					if (Friends[who] >= SLIME_FRIENDSHIP_STOPCHASE)
 						set_target(null)
@@ -379,7 +379,7 @@
 							add_friendship(who, -1)
 							to_say = "Grrr..." // I'm angry but I do it
 						else
-							to_say = "Fine..."
+							to_say = "Dobra..."
 				else if (Leader) // We are asked to stop following
 					if (Leader == who)
 						to_say = "Yes... I stay..."
@@ -389,23 +389,23 @@
 							set_leader(null)
 							to_say = "Yes... I stop..."
 						else
-							to_say = "No... keep follow..."
+							to_say = "Nie... dalej iść..."
 			else if (findtext(phrase, "stay"))
 				if (Leader)
 					if (Leader == who)
 						holding_still = Friends[who] * 10
-						to_say = "Yes... stay..."
+						to_say = "Tak... zostać..."
 					else if (Friends[who] > Friends[Leader])
 						holding_still = (Friends[who] - Friends[Leader]) * 10
-						to_say = "Yes... stay..."
+						to_say = "Tak... zostać..."
 					else
-						to_say = "No... keep follow..."
+						to_say = "Nie... dalej iść..."
 				else
 					if (Friends[who] >= SLIME_FRIENDSHIP_STAY)
 						holding_still = Friends[who] * 10
-						to_say = "Yes... stay..."
+						to_say = "Tak... zostać..."
 					else
-						to_say = "No... won't stay..."
+						to_say = "Nie... nie zostać..."
 			else if (findtext(phrase, "attack"))
 				if (rabid && prob(20))
 					set_target(who)
@@ -415,18 +415,18 @@
 					for (var/mob/living/L in view(7,src)-list(src,who))
 						if (findtext(phrase, lowertext(L.name)))
 							if (isslime(L))
-								to_say = "NO... [L] slime friend"
+								to_say = "NIE... [L] przyjaciel szlam"
 								add_friendship(who, -1) //Don't ask a slime to attack its friend
 							else if(!Friends[L] || Friends[L] < 1)
 								set_target(L)
 								special_process = TRUE
 								to_say = "Ok... I attack [Target]"
 							else
-								to_say = "No... like [L] ..."
+								to_say = "Nie... lubić [L] ..."
 								add_friendship(who, -1) //Don't ask a slime to attack its friend
 							break
 				else
-					to_say = "No... no listen"
+					to_say = "Nie... nie słuchać"
 
 		speech_buffer = list()
 
@@ -455,58 +455,58 @@
 		if (prob(2) && prob(t))
 			var/phrases = list()
 			if (Target)
-				phrases += "[Target]... look yummy..."
+				phrases += "[Target]... wyglądać smacznie..."
 			if (nutrition < get_starve_nutrition())
-				phrases += "So... hungry..."
-				phrases += "Very... hungry..."
-				phrases += "Need... food..."
-				phrases += "Must... eat..."
+				phrases += "Tak... głodny..."
+				phrases += "Bardzo... głodny..."
+				phrases += "Potrzeba... jedzenia..."
+				phrases += "Muszę... jeść..."
 			else if (nutrition < get_hunger_nutrition())
-				phrases += "Hungry..."
-				phrases += "Where food?"
-				phrases += "I want to eat..."
+				phrases += "Głodny..."
+				phrases += "Gdzie jedzenie?"
+				phrases += "Chcę jeść..."
 			phrases += "Rawr..."
 			phrases += "Blop..."
-			phrases += "Blorble..."
+			phrases += "Blorbl..."
 			if (rabid || attacked)
 				phrases += "Hrr..."
 				phrases += "Nhuu..."
 				phrases += "Unn..."
 			if (mood == ":3")
-				phrases += "Purr..."
+				phrases += "Mrrr..."
 			if (attacked)
 				phrases += "Grrr..."
 			if (bodytemperature < T0C)
-				phrases += "Cold..."
+				phrases += "Zimno..."
 			if (bodytemperature < T0C - 30)
-				phrases += "So... cold..."
-				phrases += "Very... cold..."
+				phrases += "Tak... zimno..."
+				phrases += "Bardzo... zimno..."
 			if (bodytemperature < T0C - 50)
 				phrases += "..."
 				phrases += "C... c..."
 			if (buckled)
-				phrases += "Nom..."
-				phrases += "Yummy..."
+				phrases += "Mniam..."
+				phrases += "Pyszne..."
 			if (powerlevel > 3)
 				phrases += "Bzzz..."
 			if (powerlevel > 5)
-				phrases += "Zap..."
+				phrases += "Bzyk..."
 			if (powerlevel > 8)
-				phrases += "Zap... Bzz..."
+				phrases += "Bzyk... Bzz..."
 			if (mood == "sad")
-				phrases += "Bored..."
+				phrases += "Nudno..."
 			if (slimes_near)
-				phrases += "Slime friend..."
+				phrases += "Przyjaciel szlam..."
 			if (slimes_near > 1)
-				phrases += "Slime friends..."
+				phrases += "Przyjaciele szlamy..."
 			if (dead_slimes)
-				phrases += "What happened?"
+				phrases += "Co się stać?"
 			if (!slimes_near)
-				phrases += "Lonely..."
+				phrases += "Samotny..."
 			for (var/M in friends_near)
 				phrases += "[M]... friend..."
 				if (nutrition < get_hunger_nutrition())
-					phrases += "[M]... feed me..."
+					phrases += "[M]... nakarm mnie..."
 			if(!stat)
 				INVOKE_ASYNC(src, /atom/movable/proc/say, pick(phrases))
 

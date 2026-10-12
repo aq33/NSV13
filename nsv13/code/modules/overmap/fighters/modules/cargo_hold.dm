@@ -23,6 +23,6 @@
 		return FALSE
 	if((AM.move_resist > MOVE_FORCE_DEFAULT) || !AM.doMove(src))
 		return //Can't put ultra heavy stuff in
-	target.visible_message("[icon2html(src)] [AM] is loaded into the cargo hold")
+	target.visible_message("[icon2html(src)] [AM] zostaje załadowany do ładowni")
 	playsound(target, 'nsv13/sound/effects/ship/mac_load.ogg', 100, 1)
 	return TRUE

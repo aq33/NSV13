@@ -3,7 +3,7 @@
 	use_time = 80
 	slab_overlay = "compromise"
 	desc = "Heal any servant within view, but half of their damage healed will be given to you in the form of toxin damage."
-	tip = "Use on any servant in trouble to heal their wounds."
+	tip = "Użyj na słudze w tarapatach, by uleczyć jego rany."
 	invokation_time = 10
 	button_icon_state = "Sentinel's Compromise"
 	category = SPELLTYPE_PRESERVATION
@@ -14,7 +14,7 @@
 	if(!(invoker in viewers(7, get_turf(A))))
 		return
 	if(!ishuman(invoker))
-		to_chat(invoker, "<span class='warning'>Non humanoid servants can't use this power!</span>")
+		to_chat(invoker, "<span class='warning'>Słudzy niehumanoidalni nie mogą używać tej mocy!</span>")
 		return
 	var/mob/living/M = A
 	if(!istype(M))

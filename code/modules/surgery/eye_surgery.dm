@@ -14,21 +14,21 @@
 /datum/surgery/eye_surgery/can_start(mob/user, mob/living/carbon/target)
 	var/obj/item/organ/eyes/E = target.getorganslot(ORGAN_SLOT_EYES)
 	if(!E)
-		to_chat(user, "It's hard to do surgery on someone's eyes when [target.p_they()] [target.p_do()]n't have any.")
+		to_chat(user, "Trudno operować komuś oczy, gdy ich nie ma.")
 		return FALSE
 	return TRUE
 
 /datum/surgery_step/fix_eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to fix [target]'s eyes...</span>",
-		"[user] begins to fix [target]'s eyes.",
-		"[user] begins to perform surgery on [target]'s eyes.")
+	display_results(user, target, "<span class='notice'>Zaczynasz naprawiać oczy [target]...</span>",
+		"[user] zaczyna naprawiać oczy [target].",
+		"[user] zaczyna operację oczu [target].")
 
 /datum/surgery_step/fix_eyes/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/item/organ/eyes/E = target.getorganslot(ORGAN_SLOT_EYES)
-	user.visible_message("[user] successfully fixes [target]'s eyes!", "<span class='notice'>You succeed in fixing [target]'s eyes.</span>")
-	display_results(user, target, "<span class='notice'>You succeed in fixing [target]'s eyes.</span>",
-		"[user] successfully fixes [target]'s eyes!",
-		"[user] completes the surgery on [target]'s eyes.")
+	user.visible_message("[user] naprawia oczy [target]!", "<span class='notice'>Udaje ci się naprawić oczy [target].</span>")
+	display_results(user, target, "<span class='notice'>Udaje ci się naprawić oczy [target].</span>",
+		"[user] naprawia oczy [target]!",
+		"[user] kończy operację oczu [target].")
 	target.cure_blind(list(EYE_DAMAGE))
 	target.set_blindness(0)
 	target.cure_nearsighted(list(EYE_DAMAGE))
@@ -38,12 +38,12 @@
 
 /datum/surgery_step/fix_eyes/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(target.getorgan(/obj/item/organ/brain))
-		display_results(user, target, "<span class='warning'>You accidentally stab [target] right in the brain!</span>",
-			"<span class='warning'>[user] accidentally stabs [target] right in the brain!</span>",
-			"<span class='warning'>[user] accidentally stabs [target] right in the brain!</span>")
+		display_results(user, target, "<span class='warning'>Przypadkiem dźgasz [target] prosto w mózg!</span>",
+			"<span class='warning'>[user] przypadkiem dźga [target] prosto w mózg!</span>",
+			"<span class='warning'>[user] przypadkiem dźga [target] prosto w mózg!</span>")
 		target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 70)
 	else
-		display_results(user, target, "<span class='warning'>You accidentally stab [target] right in the brain! Or would have, if [target] had a brain.</span>",
-			"<span class='warning'>[user] accidentally stabs [target] right in the brain! Or would have, if [target] had a brain.</span>",
-			"<span class='warning'>[user] accidentally stabs [target] right in the brain!</span>")
+		display_results(user, target, "<span class='warning'>Przypadkiem dźgasz [target] prosto w mózg! A raczej dźgnąłbyś, gdyby [target] miał mózg.</span>",
+			"<span class='warning'>[user] przypadkiem dźga [target] prosto w mózg! A raczej dźgnąłby, gdyby [target] miał mózg.</span>",
+			"<span class='warning'>[user] przypadkiem dźga [target] prosto w mózg!</span>")
 	return FALSE

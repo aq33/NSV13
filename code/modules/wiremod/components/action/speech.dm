@@ -5,7 +5,7 @@
  */
 /obj/item/circuit_component/speech
 	display_name = "Speech"
-	display_desc = "A component that sends a message. Requires a shell."
+	display_desc = "Komponent, który wysyła wiadomość. Wymaga obudowy."
 
 	/// The message to send
 	var/datum/port/input/message

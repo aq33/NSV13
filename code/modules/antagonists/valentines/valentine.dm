@@ -1,6 +1,6 @@
 /datum/antagonist/valentine
-	name = "valentine"
-	roundend_category = "valentines" //there's going to be a ton of them so put them in separate category
+	name = "walentynka"
+	roundend_category = "walentynki" //there's going to be a ton of them so put them in separate category
 	show_in_antagpanel = FALSE
 	prevent_roundtype_conversion = FALSE
 	var/datum/mind/date
@@ -13,7 +13,7 @@
 	protect_objective.set_target(date)
 	if(!ishuman(date.current))
 		protect_objective.human_check = FALSE
-	protect_objective.explanation_text = "Protect [date.name], your date."
+	protect_objective.explanation_text = "Chroń [date.name], swoją randkę."
 	objectives += protect_objective
 	log_objective(owner, protect_objective.explanation_text)
 
@@ -27,7 +27,7 @@
 		L.faction |= date.current.faction
 	if(issilicon(owner))
 		var/mob/living/silicon/S = owner
-		var/laws = list("Protect your date and do not allow them to come to harm.", "Ensure your date has a good time.")
+		var/laws = list("Chroń swoją randkę i nie pozwól, by stała jej się krzywda.", "Dopilnuj, by twoja randka dobrze się bawiła.")
 		S.set_valentines_laws(laws)
 	. = ..()
 
@@ -39,9 +39,9 @@
 		L.faction -= "[REF(date.current)]"
 
 /datum/antagonist/valentine/greet()
-	to_chat(owner, "<span class='clown'><B>You're on a date with [date.name]! Protect [date.p_them()] at all costs. This takes priority over all other loyalties.</B></span>")
-	owner.current.client?.tgui_panel?.give_antagonist_popup("You are on a date with [date.name]",
-		"Protect your date no matter the cost. Your loyalities are insignificant compared to your true love, you may do whatever you can to help and protect them!")
+	to_chat(owner, "<span class='clown'><B>Masz randkę z [date.name]! Chroń tę osobę za wszelką cenę. To ważniejsze niż jakakolwiek inna lojalność.</B></span>")
+	owner.current.client?.tgui_panel?.give_antagonist_popup("Masz randkę z [date.name]",
+		"Chroń swoją randkę bez względu na koszty. Twoja lojalność nic nie znaczy wobec prawdziwej miłości - możesz zrobić wszystko, by jej pomóc i ją chronić!")
 
 //Squashed up a bit
 /datum/antagonist/valentine/roundend_report()
@@ -53,6 +53,6 @@
 				break
 
 	if(objectives_complete)
-		return "<span class='greentext big'>[owner.name] protected [owner.p_their()] date</span>"
+		return "<span class='greentext big'>[owner.name] [plec(owner.current, "ochronił", "ochroniła")] swoją randkę</span>"
 	else
-		return "<span class='redtext big'>[owner.name] date failed!</span>"
+		return "<span class='redtext big'>Randka [owner.name] się nie udała!</span>"

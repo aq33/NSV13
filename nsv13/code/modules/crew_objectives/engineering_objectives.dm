@@ -1,7 +1,7 @@
 /*				ENGINEERING OBJECTIVES				*/
 
 /datum/objective/crew/integrity //ported from old Hippie
-	explanation_text = "Ensure the station's integrity rating is at least (Something broke, yell on GitHub)% when the shift ends."
+	explanation_text = "Dopilnuj, by na koniec zmiany wskaźnik integralności stacji wynosił co najmniej (coś się zepsuło, zgłoś na GitHubie)%."
 	jobs = "chiefengineer,stationengineer"
 
 /datum/objective/crew/integrity/New()
@@ -11,7 +11,7 @@
 
 /datum/objective/crew/integrity/update_explanation_text()
 	. = ..()
-	explanation_text = "Ensure the station's integrity rating is at least [target_amount]% when the shift ends."
+	explanation_text = "Dopilnuj, by na koniec zmiany wskaźnik integralności stacji wynosił co najmniej [target_amount]%."
 
 /datum/objective/crew/integrity/check_completion()
 	var/datum/station_state/end_state = new /datum/station_state()
@@ -23,7 +23,7 @@
 		return FALSE
 
 /datum/objective/crew/poly
-	explanation_text = "Make sure Poly keeps his headset, and stays alive until the end of the shift."
+	explanation_text = "Dopilnuj, by Poly zachował słuchawki i dożył końca zmiany."
 	jobs = "chiefengineer"
 
 /datum/objective/crew/poly/check_completion()
@@ -34,7 +34,7 @@
 	return FALSE
 
 /datum/objective/crew/meltdown
-	explanation_text = "Make sure that the engine does not meltdown while you are on the job."
+	explanation_text = "Dopilnuj, by podczas twojej służby silnik się nie stopił."
 	jobs = "chiefengineer,stationengineer,atmospherictechnician"
 	var/meltdown = FALSE
 
@@ -44,7 +44,7 @@
 	return TRUE
 
 /datum/objective/crew/power_generation
-	explanation_text = "Maintain production of x MW in the engine until the end of the shift."
+	explanation_text = "Utrzymaj wytwarzanie x MW w silniku do końca zmiany."
 	jobs = "chiefengineer,stationengineer,atmospherictechnician"
 	var/obj/machinery/atmospherics/components/binary/stormdrive_reactor/SD
 	var/obj/machinery/atmospherics/components/trinary/nuclear_reactor/RBMK
@@ -66,7 +66,7 @@
 
 /datum/objective/crew/power_generation/update_explanation_text()
 	. = ..()
-	explanation_text = "Maintain production of [target_amount] Watts in an engine until the end of the shift."
+	explanation_text = "Utrzymaj wytwarzanie [target_amount] W w silniku do końca zmiany."
 
 /datum/objective/crew/power_generation/check_completion()
 	if(SD?.last_power_produced >= target_amount)

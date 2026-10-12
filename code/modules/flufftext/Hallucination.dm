@@ -233,7 +233,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	update_icon("alienh_pounce")
 	if(hit_atom == target && target.stat!=DEAD)
 		target.Paralyze(100)
-		target.visible_message("<span class='danger'>[target] flails around wildly.</span>","<span class ='userdanger'>[name] pounces on you!</span>")
+		target.visible_message("<span class='danger'>[target] dziko się miota.</span>","<span class ='userdanger'>[name] rzuca się na ciebie!</span>")
 
 /datum/hallucination/xeno_attack
 	//Xeno crawls from nearby vent,jumps at you, and goes back in
@@ -258,10 +258,10 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		xeno.throw_at(pump,7,1, xeno, FALSE, TRUE)
 		sleep(10)
 		var/xeno_name = xeno.name
-		to_chat(target, "<span class='notice'>[xeno_name] begins climbing into the ventilation system...</span>")
+		to_chat(target, "<span class='notice'>[xeno_name] zaczyna wspinać się do systemu wentylacji...</span>")
 		sleep(30)
 		qdel(xeno)
-		to_chat(target, "<span class='notice'>[xeno_name] scrambles into the ventilation ducts!</span>")
+		to_chat(target, "<span class='notice'>[xeno_name] wdrapuje się do przewodów wentylacyjnych!</span>")
 	qdel(src)
 
 /obj/effect/hallucination/simple/clown
@@ -320,7 +320,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			target.adjustStaminaLoss(40)
 			step_away(target, bubblegum)
 			shake_camera(target, 4, 3)
-			target.visible_message("<span class='warning'>[target] jumps backwards, falling on the ground!</span>","<span class='userdanger'>[bubblegum] slams into you!</span>")
+			target.visible_message("<span class='warning'>[target] odskakuje do tyłu i upada na ziemię!</span>","<span class='userdanger'>[bubblegum] wbija się w ciebie!</span>")
 		sleep(2)
 	sleep(30)
 	qdel(src)
@@ -677,10 +677,10 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		"I'm infected, [pick_list_replacements(HAL_LINES_FILE, "infection_advice")]!")
 
 	var/radio_messages = list("[pick_list_replacements(HAL_LINES_FILE, "people")] is [pick_list_replacements(HAL_LINES_FILE, "accusations")]!",\
-		"Help!",\
+		"Pomocy!",\
 		"[pick_list_replacements(HAL_LINES_FILE, "threat")] in [pick_list_replacements(HAL_LINES_FILE, "location")][prob(50)?"!":"!!"]",\
-		"[pick("Where's [target.first_name()]?", "Set [target.first_name()] to arrest!")]",\
-		"[pick("C","Ai, c","Someone c","Rec")]all the shuttle!",\
+		"[pick("Gdzie jest [target.first_name()]?", "Ustawcie [target.first_name()] do aresztowania!")]",\
+		"[pick("Wezwijcie prom","SI, wezwij prom","Niech ktoś wezwie prom","Wezwać prom")]!",\
 		"AI [pick("rogue", "is dead")]!!")
 
 	var/mob/living/carbon/person = null
@@ -753,18 +753,18 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		message_pool.Add("<B>[other]</B> [pick("sneezes","coughs")].")
 
 	message_pool.Add("<span class='notice'>You hear something squeezing through the ducts...</span>", \
-		"<span class='notice'>Your [pick("arm", "leg", "back", "head")] itches.</span>",\
-		"<span class='warning'>You feel [pick("hot","cold","dry","wet","woozy","faint")].</span>",
-		"<span class='warning'>Your stomach rumbles.</span>",
-		"<span class='warning'>Your head hurts.</span>",
-		"<span class='warning'>You hear a faint buzz in your head.</span>",
+		"<span class='notice'>Swędzi cię [pick("ręka", "noga", "szyja", "głowa")].</span>",\
+		"<span class='warning'>Czujesz się [pick("rozpalony","zmarznięty","wysuszony","przemoczony","oszołomiony","słabo")].</span>",
+		"<span class='warning'>Burczy ci w brzuchu.</span>",
+		"<span class='warning'>Boli cię głowa.</span>",
+		"<span class='warning'>Słyszysz w głowie ciche brzęczenie.</span>",
 		"<B>[target]</B> sneezes.")
 	if(prob(10))
 		message_pool.Add("<span class='warning'>Behind you.</span>",\
-			"<span class='warning'>You hear a faint laughter.</span>",
-			"<span class='warning'>You see something move.</span>",
-			"<span class='warning'>You hear skittering on the ceiling.</span>",
-			"<span class='warning'>You see an inhumanly tall silhouette moving in the distance.</span>")
+			"<span class='warning'>Słyszysz cichy śmiech.</span>",
+			"<span class='warning'>Widzisz, jak coś się porusza.</span>",
+			"<span class='warning'>Słyszysz drapanie na suficie.</span>",
+			"<span class='warning'>Widzisz w oddali nieludzko wysoką sylwetkę.</span>")
 	if(prob(10))
 		message_pool.Add("[pick_list_replacements(HAL_LINES_FILE, "advice")]")
 	var/chosen = pick(message_pool)
@@ -882,8 +882,8 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	feedback_details += "Type: [message]"
 	switch(message)
 		if("blob alert")
-			to_chat(target, "<h1 class='alert'>Biohazard Alert</h1>")
-			to_chat(target, "<br><br><span class='alert'>Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.</span><br><br>")
+			to_chat(target, "<h1 class='alert'>Alarm biologiczny</h1>")
+			to_chat(target, "<br><br><span class='alert'>Potwierdzono ognisko zagrożenia biologicznego poziomu 5 na pokładzie [station_name()]. Cały personel musi powstrzymać ognisko.</span><br><br>")
 			SEND_SOUND(target,  SSstation.announcer.event_sounds[ANNOUNCER_OUTBREAK5])
 		if("ratvar")
 			target.playsound_local(target, 'sound/machines/clockcult/ark_deathrattle.ogg', 50, FALSE, pressure_affected = FALSE)
@@ -891,20 +891,20 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			sleep(27)
 			target.playsound_local(target, 'sound/effects/explosion_distant.ogg', 50, FALSE, pressure_affected = FALSE)
 		if("shuttle dock")
-			to_chat(target, "<h1 class='alert'>Priority Announcement</h1>")
-			to_chat(target, "<br><br><span class='alert'>The Emergency Shuttle has docked with the station. You have 3 minutes to board the Emergency Shuttle.</span><br><br>")
+			to_chat(target, "<h1 class='alert'>Komunikat priorytetowy</h1>")
+			to_chat(target, "<br><br><span class='alert'>Prom ewakuacyjny zadokował przy stacji. Macie 3 minuty, by wejść na pokład promu ewakuacyjnego.</span><br><br>")
 			SEND_SOUND(target, SSstation.announcer.event_sounds[ANNOUNCER_SHUTTLEDOCK])
 		if("malf ai") //AI is doomsdaying!
-			to_chat(target, "<h1 class='alert'>Anomaly Alert</h1>")
-			to_chat(target, "<br><br><span class='alert'>Hostile runtimes detected in all station systems, please deactivate your AI to prevent possible damage to its morality core.</span><br><br>")
+			to_chat(target, "<h1 class='alert'>Alarm o anomalii</h1>")
+			to_chat(target, "<br><br><span class='alert'>Wykryto wrogie błędy wykonania we wszystkich systemach stacji; dezaktywujcie SI, by zapobiec możliwemu uszkodzeniu jej rdzenia moralności.</span><br><br>")
 			SEND_SOUND(target, SSstation.announcer.event_sounds[ANNOUNCER_AIMALF])
 		if("meteors") //Meteors inbound!
-			to_chat(target, "<h1 class='alert'>Meteor Alert</h1>")
-			to_chat(target, "<br><br><span class='alert'>Meteors have been detected on collision course with the station.</span><br><br>")
+			to_chat(target, "<h1 class='alert'>Alarm meteorytowy</h1>")
+			to_chat(target, "<br><br><span class='alert'>Wykryto meteory na kursie kolizyjnym ze stacją.</span><br><br>")
 			SEND_SOUND(target, SSstation.announcer.event_sounds[ANNOUNCER_METEORS])
 		if("supermatter")
 			SEND_SOUND(target, 'sound/magic/charge.ogg')
-			to_chat(target, "<span class='boldannounce'>You feel reality distort for a moment...</span>")
+			to_chat(target, "<span class='boldannounce'>Przez chwilę czujesz, jak rzeczywistość się wykrzywia...</span>")
 
 /datum/hallucination/hudscrew
 
@@ -1124,9 +1124,9 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	if(AM == target)
 		if(istype(target, /obj/effect/dummy/phased_mob))
 			return
-		to_chat(target, "<span class='userdanger'>You fall into the chasm!</span>")
+		to_chat(target, "<span class='userdanger'>Wpadasz w przepaść!</span>")
 		target.Paralyze(40)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), target, "<span class='notice'>It's surprisingly shallow.</span>"), 15)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), target, "<span class='notice'>Jest zaskakująco płytka.</span>"), 15)
 		QDEL_IN(src, 30)
 
 /obj/effect/hallucination/danger/anomaly
@@ -1167,7 +1167,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	target.set_screwyhud(SCREWYHUD_DEAD)
 	target.Paralyze(300)
 	target.silent += 10
-	to_chat(target, "<span class='deadsay'><b>[target.real_name]</b> has died at <b>[get_area_name(target)]</b>.</span>")
+	to_chat(target, "<span class='deadsay'><b>[target.real_name]</b> umiera w <b>[get_area_name(target)]</b>.</span>")
 	if(prob(50))
 		var/mob/fakemob
 		var/list/dead_people = list()
@@ -1179,8 +1179,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			fakemob = target //ever been so lonely you had to haunt yourself?
 		if(fakemob)
 			sleep(rand(20, 50))
-			to_chat(target, "<span class='deadsay'><b>DEAD: [fakemob.name]</b> says, \"[pick("rip","why did i just drop dead?","hey [target.first_name()]","git gud","you too?","is the AI rogue?",\
-			 "i[prob(50)?" fucking":""] hate [pick("blood cult", "clock cult", "revenants", "this round","this","myself","admins","you")]")]\"</span>")
+			to_chat(target, "<span class='deadsay'><b>MARTWI: [fakemob.name]</b> mówi: \"[pick("rip","czemu właśnie padłem martwy?","hej [target.first_name()]","git gud","ty też?","czy SI jest zbuntowana?","[prob(50)?"kurwa, ":""]nienawidzę [pick("kultu krwi", "kultu zegara", "revenantów", "tej rundy","tego","siebie","adminów","ciebie")]")]\"</span>")
 	sleep(rand(70,90))
 	target.set_screwyhud(SCREWYHUD_NONE)
 	target.SetParalyzed(0)
@@ -1199,7 +1198,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	fire_overlay = image('icons/mob/OnFire.dmi', target, "Standing", ABOVE_MOB_LAYER)
 	if(target.client)
 		target.client.images += fire_overlay
-	to_chat(target, "<span class='userdanger'>You're set on fire!</span>")
+	to_chat(target, "<span class='userdanger'>Stajesz w płomieniach!</span>")
 	target.throw_alert("fire", /atom/movable/screen/alert/fire, override = TRUE)
 	sleep(20)
 	for(var/i in 1 to 3)
@@ -1251,7 +1250,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	shock_image.override = TRUE
 	electrocution_skeleton_anim = image('icons/mob/human.dmi', target, icon_state = "electrocuted_base", layer=ABOVE_MOB_LAYER)
 	electrocution_skeleton_anim.appearance_flags |= RESET_COLOR|KEEP_APART
-	to_chat(target, "<span class='userdanger'>You feel a powerful shock course through your body!</span>")
+	to_chat(target, "<span class='userdanger'>Czujesz, jak przez twoje ciało przechodzi potężny wstrząs!</span>")
 	if(target.client)
 		target.client.images |= shock_image
 		target.client.images |= electrocution_skeleton_anim

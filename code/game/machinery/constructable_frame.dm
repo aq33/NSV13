@@ -10,7 +10,7 @@
 /obj/structure/frame/examine(user)
 	. = ..()
 	if(circuit)
-		. += "It has \a [circuit] installed."
+		. += "Ma zainstalowane [circuit]."
 
 
 /obj/structure/frame/deconstruct(disassembled = TRUE)
@@ -32,7 +32,7 @@
 	. = ..()
 	if(state == 3 && req_components && req_component_names)
 		var/hasContent = 0
-		var/requires = "It requires"
+		var/requires = "Wymaga"
 
 		for(var/i = 1 to req_components.len)
 			var/tname = req_components[i]
@@ -46,7 +46,7 @@
 		if(hasContent)
 			. +=  "[requires]."
 		else
-			. += "It does not require any more components."
+			. += "Nie wymaga więcej komponentów."
 
 /obj/structure/frame/machine/proc/update_namelist()
 	if(!req_components)
@@ -75,56 +75,56 @@
 	switch(state)
 		if(1)
 			if(istype(P, /obj/item/circuitboard/machine))
-				to_chat(user, "<span class='warning'>The frame needs wiring first!</span>")
+				to_chat(user, "<span class='warning'>Rama musi być najpierw okablowana!</span>")
 				return
 			else if(istype(P, /obj/item/circuitboard))
-				to_chat(user, "<span class='warning'>This frame does not accept circuit boards of this type!</span>")
+				to_chat(user, "<span class='warning'>Ta rama nie przyjmuje płytek tego typu!</span>")
 				return
 			if(istype(P, /obj/item/stack/cable_coil))
 				if(!P.tool_start_check(user, amount=5))
 					return
 
-				to_chat(user, "<span class='notice'>You start to add cables to the frame...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz podłączać kable do ramy...</span>")
 				if(P.use_tool(src, user, 20, volume=50, amount=5))
-					to_chat(user, "<span class='notice'>You add cables to the frame.</span>")
+					to_chat(user, "<span class='notice'>Podłączasz kable do ramy.</span>")
 					state = 2
 					icon_state = "box_1"
 
 				return
 			if(P.tool_behaviour == TOOL_SCREWDRIVER && !anchored)
-				user.visible_message("<span class='warning'>[user] disassembles the frame.</span>", \
-									"<span class='notice'>You start to disassemble the frame...</span>", "You hear banging and clanking.")
+				user.visible_message("<span class='warning'>[user] rozbiera ramę.</span>", \
+									"<span class='notice'>Zaczynasz rozbierać ramę...</span>", "Słyszysz łomot i szczęk.")
 				if(P.use_tool(src, user, 40, volume=50))
 					if(state == 1)
-						to_chat(user, "<span class='notice'>You disassemble the frame.</span>")
+						to_chat(user, "<span class='notice'>Rozbierasz ramę.</span>")
 						new /obj/item/stack/sheet/iron(drop_location(), 5, TRUE, user)
 						qdel(src)
 				return
 			if(P.tool_behaviour == TOOL_WRENCH)
-				to_chat(user, "<span class='notice'>You start [anchored ? "un" : ""]securing [src]...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz [anchored ? "odczepiać" : "mocować"] [src]...</span>")
 				if(P.use_tool(src, user, 40, volume=75))
 					if(state == 1)
-						to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]secure [src].</span>")
+						to_chat(user, "<span class='notice'>[anchored ? "Odczepiasz" : "Mocujesz"] [src].</span>")
 						setAnchored(!anchored)
 				return
 
 		if(2)
 			if(P.tool_behaviour == TOOL_WRENCH)
-				to_chat(user, "<span class='notice'>You start [anchored ? "un" : ""]securing [src]...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz [anchored ? "odczepiać" : "mocować"] [src]...</span>")
 				if(P.use_tool(src, user, 40, volume=75))
-					to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]secure [src].</span>")
+					to_chat(user, "<span class='notice'>[anchored ? "Odczepiasz" : "Mocujesz"] [src].</span>")
 					setAnchored(!anchored)
 				return
 
 			if(istype(P, /obj/item/circuitboard/machine))
 				var/obj/item/circuitboard/machine/B = P
 				if(!anchored && B.needs_anchored)
-					to_chat(user, "<span class='warning'>The frame needs to be secured first!</span>")
+					to_chat(user, "<span class='warning'>Rama musi być najpierw zamocowana!</span>")
 					return
 				if(!user.transferItemToLoc(B, src))
 					return
 				playsound(src.loc, 'sound/items/deconstruct.ogg', 50, 1)
-				to_chat(user, "<span class='notice'>You add the circuit board to the frame.</span>")
+				to_chat(user, "<span class='notice'>Dodajesz płytkę drukowaną do ramy.</span>")
 				circuit = B
 				icon_state = "box_2"
 				state = 3
@@ -134,12 +134,12 @@
 				return
 
 			else if(istype(P, /obj/item/circuitboard))
-				to_chat(user, "<span class='warning'>This frame does not accept circuit boards of this type!</span>")
+				to_chat(user, "<span class='warning'>Ta rama nie przyjmuje płytek tego typu!</span>")
 				return
 
 			if(P.tool_behaviour == TOOL_WIRECUTTER)
 				P.play_tool_sound(src)
-				to_chat(user, "<span class='notice'>You remove the cables.</span>")
+				to_chat(user, "<span class='notice'>Wyjmujesz kable.</span>")
 				state = 1
 				icon_state = "box_0"
 				new /obj/item/stack/cable_coil(drop_location(), 5)
@@ -153,9 +153,9 @@
 				components.Remove(circuit)
 				circuit = null
 				if(components.len == 0)
-					to_chat(user, "<span class='notice'>You remove the circuit board.</span>")
+					to_chat(user, "<span class='notice'>Wyjmujesz płytkę drukowaną.</span>")
 				else
-					to_chat(user, "<span class='notice'>You remove the circuit board and other components.</span>")
+					to_chat(user, "<span class='notice'>Wyjmujesz płytkę drukowaną i pozostałe komponenty.</span>")
 					for(var/atom/movable/AM in components)
 						AM.forceMove(drop_location())
 				desc = initial(desc)
@@ -165,9 +165,9 @@
 				return
 
 			if(P.tool_behaviour == TOOL_WRENCH && !circuit.needs_anchored)
-				to_chat(user, "<span class='notice'>You start [anchored ? "un" : ""]securing [src]...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz [anchored ? "odczepiać" : "mocować"] [src]...</span>")
 				if(P.use_tool(src, user, 40, volume=75))
-					to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]secure [src].</span>")
+					to_chat(user, "<span class='notice'>[anchored ? "Odczepiasz" : "Mocujesz"] [src].</span>")
 					setAnchored(!anchored)
 				return
 
@@ -232,7 +232,7 @@
 							S.merge(NS)
 					if(!QDELETED(part)) //If we're a stack and we merged we might not exist anymore
 						components += part
-					to_chat(user, "<span class='notice'>You add [part] to [src].</span>") //NSV13 - RPED QoL
+					to_chat(user, "<span class='notice'>Dodajesz [part] do [src].</span>") //NSV13 - RPED QoL
 				if(added_components.len)
 					replacer.play_rped_sound()
 				return
@@ -254,16 +254,16 @@
 									NS.add(used_amt)
 
 								req_components[I] -= used_amt
-								to_chat(user, "<span class='notice'>You add [P] to [src].</span>")
+								to_chat(user, "<span class='notice'>Dodajesz [P] do [src].</span>")
 							return
 						if(!user.transferItemToLoc(P, src))
 							break
-						to_chat(user, "<span class='notice'>You add [P] to [src].</span>")
+						to_chat(user, "<span class='notice'>Dodajesz [P] do [src].</span>")
 						components += P
 						req_components[I]--
 						P.forceMove(src) //For stuff like twohandeds.
 						return 1
-				to_chat(user, "<span class='warning'>You cannot add that to the machine!</span>")
+				to_chat(user, "<span class='warning'>Nie możesz tego dodać do maszyny!</span>")
 				return 0
 	if(user.a_intent == INTENT_HARM)
 		return ..()

@@ -68,11 +68,11 @@ export const SettingsGeneral = (props, context) => {
   return (
     <Section>
       <Flex bold>
-        General Settings
+        Ustawienia ogólne
       </Flex>
       <Divider />
       <LabeledList>
-        <LabeledList.Item label="Theme">
+        <LabeledList.Item label="Motyw">
           <Dropdown
             selected={theme}
             options={THEMES}
@@ -80,7 +80,7 @@ export const SettingsGeneral = (props, context) => {
               theme: value,
             }))} />
         </LabeledList.Item>
-        <LabeledList.Item label="Font style">
+        <LabeledList.Item label="Czcionka">
           {!freeFont && (
             <Dropdown
               selected={fontFamily}
@@ -99,7 +99,7 @@ export const SettingsGeneral = (props, context) => {
         </LabeledList.Item>
         <LabeledList.Item>
           <Button
-            content="Custom font"
+            content="Własna czcionka"
             icon={freeFont? "lock-open" : "lock"}
             color={freeFont? "good" : "bad"}
             ml={1}
@@ -108,16 +108,16 @@ export const SettingsGeneral = (props, context) => {
             }}
           />
         </LabeledList.Item>
-        <LabeledList.Item label="High Contrast">
+        <LabeledList.Item label="Wysoki kontrast">
           <Button.Checkbox
             checked={!highContrast}
             onClick={() => dispatch(updateSettings({
               highContrast: !highContrast,
             }))}>
-            Colored names
+            Kolorowe nazwy
           </Button.Checkbox>
         </LabeledList.Item>
-        <LabeledList.Item label="Font size">
+        <LabeledList.Item label="Rozmiar czcionki">
           <NumberInput
             width="4em"
             step={1}
@@ -131,7 +131,7 @@ export const SettingsGeneral = (props, context) => {
               fontSize: value,
             }))} />
         </LabeledList.Item>
-        <LabeledList.Item label="Line height">
+        <LabeledList.Item label="Wysokość linii">
           <NumberInput
             width="4em"
             step={0.01}
@@ -149,7 +149,7 @@ export const SettingsGeneral = (props, context) => {
       <Button
         icon="save"
         onClick={() => dispatch(saveChatToDisk())}>
-        Save chat log
+        Zapisz log czatu
       </Button>
     </Section>
   );
@@ -161,11 +161,11 @@ export const SettingsStat = (props, context) => {
   return (
     <Section fill>
       <Flex bold>
-        Stat Panel Settings
+        Ustawienia panelu statystyk
       </Flex>
       <Divider />
       <LabeledList>
-        <LabeledList.Item label="Tab Mode">
+        <LabeledList.Item label="Tryb kart">
           <Dropdown
             selected={settings.statTabMode}
             options={["Scroll", "Multiline"]}
@@ -191,12 +191,12 @@ export const SettingsHighlight = (props, context) => {
     <Section fill>
       <Box>
         <Flex bold>
-          Highlight Settings
+          Ustawienia podświetlania
         </Flex>
         <Divider />
         <Flex mb={1} color="label" align="baseline">
           <Flex.Item grow={1}>
-            Highlight text (comma separated):
+            Podświetlany tekst (oddzielony przecinkami):
           </Flex.Item>
           <Flex.Item shrink={0}>
             <ColorBox mr={1} color={highlightColor} />
@@ -219,25 +219,25 @@ export const SettingsHighlight = (props, context) => {
         <Button.Checkbox
           checked={matchWord}
           tooltipPosition="bottom-start"
-          tooltip="Not compatible with punctuation."
+          tooltip="Nie działa ze znakami interpunkcyjnymi."
           onClick={() => dispatch(updateSettings({
             matchWord: !matchWord,
           }))}>
-          Match word
+          Całe słowa
         </Button.Checkbox>
         <Button.Checkbox
           checked={matchCase}
           onClick={() => dispatch(updateSettings({
             matchCase: !matchCase,
           }))}>
-          Match case
+          Wielkość liter
         </Button.Checkbox>
         <Button.Checkbox
           checked={highlightSelf}
           onClick={() => dispatch(updateSettings({
             highlightSelf: !highlightSelf,
           }))}>
-          Highlight own Messages
+          Podświetlaj własne wiadomości
         </Button.Checkbox>
       </Box>
       <Divider />
@@ -245,10 +245,10 @@ export const SettingsHighlight = (props, context) => {
         <Button
           icon="check"
           onClick={() => dispatch(rebuildChat())}>
-          Apply now
+          Zastosuj teraz
         </Button>
         <Box inline fontSize="0.9em" ml={1} color="label">
-          Can freeze the chat for a while.
+          Może na chwilę zamrozić czat.
         </Box>
       </Box>
     </Section>

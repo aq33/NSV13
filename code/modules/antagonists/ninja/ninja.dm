@@ -25,8 +25,8 @@
 	return H.equipOutfit(/datum/outfit/ninja)
 
 /datum/antagonist/ninja/proc/addMemories()
-	antag_memory += "I am an elite mercenary assassin of the mighty Spider Clan. A <font color='red'><B>SPACE NINJA</B></font>!<br>"
-	antag_memory += "Surprise is my weapon. Shadows are my armor. Without them, I am nothing. (initialize your suit by clicking the initialize UI button, to use abilities like stealth)!<br>"
+	antag_memory += "Jestem elitarnym najemnym zabójcą potężnego Klanu Pająka. <font color='red'><B>KOSMICZNYM NINJA</B></font>!<br>"
+	antag_memory += "Zaskoczenie jest moją bronią. Cienie są moją zbroją. Bez nich jestem niczym. (Uruchom strój przyciskiem inicjalizacji w interfejsie, by używać zdolności takich jak kamuflaż)!<br>"
 
 /datum/antagonist/ninja/proc/addObjectives(quantity = 3)
 	if(!give_objectives)
@@ -65,7 +65,7 @@
 				var/datum/objective/assassinate/O = new /datum/objective/assassinate()
 				O.owner = owner
 				O.set_target(M)
-				O.explanation_text = "Slay \the [M.current.real_name], the [M.assigned_role]."
+				O.explanation_text = "Zabij [M.current.real_name] ([M.assigned_role])."
 				objectives += O
 				log_objective(owner, O.explanation_text)
 			if(4)	//capture
@@ -94,11 +94,11 @@
 
 /datum/antagonist/ninja/greet()
 	SEND_SOUND(owner.current, sound('sound/effects/ninja_greeting.ogg'))
-	to_chat(owner.current, "I am an elite mercenary assassin of the mighty Spider Clan. A <font color='red'><B>SPACE NINJA</B></font>!")
-	to_chat(owner.current, "Surprise is my weapon. Shadows are my armor. Without them, I am nothing. (initialize your suit by right clicking on it, to use abilities like stealth)!")
+	to_chat(owner.current, "Jestem elitarnym najemnym zabójcą potężnego Klanu Pająka. <font color='red'><B>KOSMICZNYM NINJA</B></font>!")
+	to_chat(owner.current, "Zaskoczenie jest moją bronią. Cienie są moją zbroją. Bez nich jestem niczym. (Uruchom strój, klikając go prawym przyciskiem, by używać zdolności takich jak kamuflaż)!")
 	owner.announce_objectives()
 	owner.current.client?.tgui_panel?.give_antagonist_popup("Ninja",
-		"Infiltrate the station and complete your assigned objectives.")
+		"Przeniknij na statek i wykonaj przydzielone cele.")
 
 /datum/antagonist/ninja/on_gain()
 	if(give_objectives)

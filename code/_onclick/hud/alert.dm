@@ -322,7 +322,7 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	SIGNAL_HANDLER
 
 	if(!offerer.CanReach(taker))
-		balloon_alert(owner, "You moved out of range of [offerer]!")
+		balloon_alert(owner, "Oddalasz się poza zasięg [offerer]!")
 		owner.clear_alert("[offerer]")
 
 //ALIENS
@@ -482,16 +482,16 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	if(!(servant_antagonist?.team))
 		return
 	desc = "Stored Power - <b>[display_power(GLOB.clockcult_power)]</b>.<br>"
-	desc += "Stored Vitality - <b>[GLOB.clockcult_vitality]</b>.<br>"
+	desc += "Zgromadzona witalność - <b>[GLOB.clockcult_vitality]</b>.<br>"
 	if(GLOB.ratvar_arrival_tick)
 		if(GLOB.ratvar_arrival_tick - world.time > 6000)
-			desc += "The Ark is preparing to open, it will activate in <b>[round((GLOB.ratvar_arrival_tick - world.time - 6000) / 10)]</b> seconds.<br>"
+			desc += "Arka przygotowuje się do otwarcia, aktywuje się za <b>[round((GLOB.ratvar_arrival_tick - world.time - 6000) / 10)]</b> s.<br>"
 		else
-			desc += "Ratvar will rise in <b>[round((GLOB.ratvar_arrival_tick - world.time) / 10)]</b> seconds, protect the Ark with your life!<br>"
+			desc += "Ratvar powstanie za <b>[round((GLOB.ratvar_arrival_tick - world.time) / 10)]</b> s, chroń Arkę za cenę życia!<br>"
 	if(GLOB.human_servants_of_ratvar)
-		desc += "There [GLOB.human_servants_of_ratvar.len == 1?"is" : "are"] currently [GLOB.human_servants_of_ratvar.len] loyal servant\s.<br>"
+		desc += "Wiernych sług: [GLOB.human_servants_of_ratvar.len].<br>"
 	if(GLOB.critical_servant_count)
-		desc += "Upon reaching [GLOB.critical_servant_count] servants, the Ark will open, or it can be opened immediately by invoking Gateway Activation with 6 servants."
+		desc += "Po osiągnięciu [GLOB.critical_servant_count] sług Arka się otworzy. Można ją też otworzyć natychmiast, wywołując Aktywację Bramy z 6 sługami."
 
 //GUARDIANS
 

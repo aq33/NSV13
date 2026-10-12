@@ -97,7 +97,7 @@
 /obj/effect/turf_decal/bot_white/left,
 /obj/item/ammo_box/a357,
 /obj/item/paper{
-	default_raw_text = "IOU - One Very Cool Revolver (Thanks HOP)"
+	default_raw_text = "Weksel - jeden bardzo fajny rewolwer (dzięki, Starszy Oficerze)"
 	},
 /obj/item/reagent_containers/food/drinks/bottle/vodka/badminka,
 /turf/open/floor/plasteel/dark/airless,

@@ -1,15 +1,15 @@
 //Healer
 /mob/living/simple_animal/hostile/guardian/healer
 	a_intent = INTENT_HARM
-	friendly = "heals"
+	friendly = "leczy"
 	speed = 0
 	damage_coeff = list(BRUTE = 0.7, BURN = 0.7, TOX = 0.7, CLONE = 0.7, STAMINA = 0, OXY = 0.7)
 	melee_damage = 15
-	playstyle_string = "<span class='holoparasite'>As a <b>support</b> type, you may toggle your basic attacks to a healing mode. In addition, Alt-Clicking on an adjacent object or mob will warp them to your bluespace beacon after a short delay.</span>"
-	magic_fluff_string = "<span class='holoparasite'>..And draw the CMO, a potent force of life... and death.</span>"
-	carp_fluff_string = "<span class='holoparasite'>CARP CARP CARP! You caught a support carp. It's a kleptocarp!</span>"
-	tech_fluff_string = "<span class='holoparasite'>Boot sequence complete. Support modules active. Holoparasite swarm online.</span>"
-	hive_fluff_string = "<span class='holoparasite'>The mass seems to have regenerative powers, while also possessing strength.</span>"
+	playstyle_string = "<span class='holoparasite'>Jako typ <b>support</b> możesz przełączyć swoje podstawowe ataki w tryb leczenia. Ponadto alt-kliknięcie sąsiedniego obiektu lub istoty po chwili przenosi go do twojego nadajnika bluespace.</span>"
+	magic_fluff_string = "<span class='holoparasite'>...I wyciągasz Ordynatora, potężną siłę życia... i śmierci.</span>"
+	carp_fluff_string = "<span class='holoparasite'>KARP KARP KARP! Złowiony karp wsparcia. To kleptokarp!</span>"
+	tech_fluff_string = "<span class='holoparasite'>Sekwencja startowa zakończona. Moduły wsparcia aktywne. Rój holoparazytów aktywny.</span>"
+	hive_fluff_string = "<span class='holoparasite'>Masa wydaje się mieć moce regeneracyjne, a przy tym jest silna.</span>"
 	toggle_button_type = /atom/movable/screen/guardian/ToggleMode
 	var/obj/structure/receiving_pad/beacon
 	var/beacon_cooldown = 0
@@ -23,7 +23,7 @@
 /mob/living/simple_animal/hostile/guardian/healer/get_stat_tab_status()
 	var/list/tab_data = ..()
 	if(beacon_cooldown >= world.time)
-		tab_data["Beacon Cooldown Remaining"] = GENERATE_STAT_TEXT("[DisplayTimeText(beacon_cooldown - world.time)]")
+		tab_data["Odnowienie radiolatarni"] = GENERATE_STAT_TEXT("[DisplayTimeText(beacon_cooldown - world.time)]")
 
 /mob/living/simple_animal/hostile/guardian/healer/AttackingTarget()
 	. = ..()
@@ -48,17 +48,17 @@
 			speed = 0
 			damage_coeff = list(BRUTE = 0.7, BURN = 0.7, TOX = 0.7, CLONE = 0.7, STAMINA = 0, OXY = 0.7)
 			melee_damage = 15
-			to_chat(src, "<span class='danger'><B>You switch to combat mode.</span></B>")
+			to_chat(src, "<span class='danger'><B>Przełączasz się w tryb bojowy.</span></B>")
 			toggle = FALSE
 		else
 			a_intent = INTENT_HELP
 			speed = 1
 			damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
 			melee_damage = 0
-			to_chat(src, "<span class='danger'><B>You switch to healing mode.</span></B>")
+			to_chat(src, "<span class='danger'><B>Przełączasz się w tryb leczenia.</span></B>")
 			toggle = TRUE
 	else
-		to_chat(src, "<span class='danger'><B>You have to be recalled to toggle modes!</span></B>")
+		to_chat(src, "<span class='danger'><B>Musisz wrócić do użytkownika, by zmienić tryb!</span></B>")
 
 
 /mob/living/simple_animal/hostile/guardian/healer/verb/Beacon()
@@ -67,7 +67,7 @@
 	set desc = "Mark a floor as your beacon point, allowing you to warp targets to it. Your beacon will not work at extreme distances."
 
 	if(beacon_cooldown >= world.time)
-		to_chat(src, "<span class='danger'><B>Your power is on cooldown. You must wait five minutes between placing beacons.</span></B>")
+		to_chat(src, "<span class='danger'><B>Twoja moc się odnawia. Między rozstawieniem nadajników musisz odczekać pięć minut.</span></B>")
 		return
 
 	var/turf/beacon_loc = get_turf(src.loc)
@@ -80,7 +80,7 @@
 
 	beacon = new(beacon_loc, src)
 
-	to_chat(src, "<span class='danger'><B>Beacon placed! You may now warp targets and objects to it, including your user, via Alt+Click.</span></B>")
+	to_chat(src, "<span class='danger'><B>Nadajnik rozstawiony! Możesz teraz przenosić do niego cele i obiekty, w tym swojego użytkownika, za pomocą Alt+kliknięcia.</span></B>")
 
 	beacon_cooldown = world.time + 3000
 
@@ -107,37 +107,37 @@
 	if(!istype(A))
 		return
 	if(src.loc == summoner)
-		to_chat(src, "<span class='danger'><B>You must be manifested to warp a target!</span></B>")
+		to_chat(src, "<span class='danger'><B>Musisz się zmaterializować, by przenieść cel!</span></B>")
 		return
 	if(!beacon)
-		to_chat(src, "<span class='danger'><B>You need a beacon placed to warp things!</span></B>")
+		to_chat(src, "<span class='danger'><B>Musisz mieć rozstawiony nadajnik, by przenosić rzeczy!</span></B>")
 		return
 	if(!Adjacent(A))
-		to_chat(src, "<span class='danger'><B>You must be adjacent to your target!</span></B>")
+		to_chat(src, "<span class='danger'><B>Musisz stać obok celu!</span></B>")
 		return
 	if(A.anchored)
-		to_chat(src, "<span class='danger'><B>Your target cannot be anchored!</span></B>")
+		to_chat(src, "<span class='danger'><B>Cel nie może być zakotwiczony!</span></B>")
 		return
 
 	var/turf/T = get_turf(A)
 	if(beacon.get_virtual_z_level() != T.get_virtual_z_level())
-		to_chat(src, "<span class='danger'><B>The beacon is too far away to warp to!</span></B>")
+		to_chat(src, "<span class='danger'><B>Nadajnik jest za daleko, by się do niego przenieść!</span></B>")
 		return
 
-	to_chat(src, "<span class='danger'><B>You begin to warp [A].</span></B>")
-	A.visible_message("<span class='danger'>[A] starts to glow faintly!</span>", \
-	"<span class='userdanger'>You start to faintly glow, and you feel strangely weightless!</span>")
+	to_chat(src, "<span class='danger'><B>Zaczynasz przenosić [A].</span></B>")
+	A.visible_message("<span class='danger'>[A] zaczyna słabo świecić!</span>", \
+	"<span class='userdanger'>Zaczynasz słabo świecić i czujesz się dziwnie nieważki!</span>")
 	do_attack_animation(A)
 
 	if(!do_mob(src, A, 60)) //now start the channel
-		to_chat(src, "<span class='danger'><B>You need to hold still!</span></B>")
+		to_chat(src, "<span class='danger'><B>Musisz stać w miejscu!</span></B>")
 		return
 
 	new /obj/effect/temp_visual/guardian/phase/out(T)
 	if(isliving(A))
 		var/mob/living/L = A
 		L.flash_act()
-	A.visible_message("<span class='danger'>[A] disappears in a flash of light!</span>", \
-	"<span class='userdanger'>Your vision is obscured by a flash of light!</span>")
+	A.visible_message("<span class='danger'>[A] znika w błysku światła!</span>", \
+	"<span class='userdanger'>Błysk światła przesłania ci widok!</span>")
 	do_teleport(A, beacon, 0, channel = TELEPORT_CHANNEL_BLUESPACE)
 	new /obj/effect/temp_visual/guardian/phase(get_turf(A))

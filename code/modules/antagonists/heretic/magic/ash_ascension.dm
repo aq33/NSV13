@@ -125,13 +125,13 @@
 
 		for(var/mob/living/L in T.contents)
 			if(L.anti_magic_check())
-				L.visible_message("<span class='danger'>The spell bounces off of [L]!</span>","<span class='danger'>The spell bounces off of you!</span>")
+				L.visible_message("<span class='danger'>Zaklęcie odbija się od [L]!</span>","<span class='danger'>Zaklęcie odbija się od ciebie!</span>")
 				continue
 			if(L in hit_list || L == source)
 				continue
 			hit_list += L
 			L.adjustFireLoss(20)
-			to_chat(L, "<span class='userdanger'>You're hit by [source]'s eldritch flames!</span>")
+			to_chat(L, "<span class='userdanger'>Trafiają cię pradawne płomienie [source]!</span>")
 
 		new /obj/effect/hotspot(T)
 		T.hotspot_expose(700,50,1)

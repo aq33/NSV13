@@ -4,7 +4,7 @@
 		return
 
 	if(OOC_FILTER_CHECK(message))
-		to_chat(src, "<span class='warning'>That message contained a word prohibited in OOC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ooc_chat'>\"[message]\"</span></span>")
+		to_chat(src, "<span class='warning'>Ta wiadomość zawiera słowo zakazane na czacie OOC! Zapoznaj się ponownie z zasadami serwera.\n<span replaceRegex='show_filtered_ooc_chat'>\"[message]\"</span></span>")
 		return
 
 	var/list/message_mods = list()

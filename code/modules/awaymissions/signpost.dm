@@ -4,7 +4,7 @@
 	icon_state = "signpost"
 	anchored = TRUE
 	density = TRUE
-	var/question = "Travel back?"
+	var/question = "Wrócić?"
 	var/list/zlevels
 
 /obj/structure/signpost/Initialize(mapload)
@@ -26,9 +26,9 @@
 			user.forceMove(T)
 			if(AM)
 				user.start_pulling(AM)
-			to_chat(user, "<span class='notice'>You blink and find yourself in [get_area_name(T)].</span>")
+			to_chat(user, "<span class='notice'>Mrugasz i znajdujesz się w: [get_area_name(T)].</span>")
 		else
-			to_chat(user, "Nothing happens. You feel that this is a bad sign.")
+			to_chat(user, "Nic się nie dzieje. Czujesz, że to zły znak.")
 
 /obj/structure/signpost/attackby(obj/item/W, mob/user, params)
 	return interact(user)
@@ -61,7 +61,7 @@
 	name = "exit"
 	desc = "Make sure to bring all your belongings with you when you \
 		exit the area."
-	question = "Leave? You might never come back."
+	question = "Odejść? Możesz już nigdy nie wrócić."
 
 /obj/structure/signpost/exit/Initialize(mapload)
 	. = ..()

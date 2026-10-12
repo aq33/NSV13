@@ -20,7 +20,7 @@
 
 /obj/item/papercutter/suicide_act(mob/user)
 	if(storedcutter)
-		user.visible_message("<span class='suicide'>[user] is beheading [user.p_them()]self with [src.name]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+		user.visible_message("<span class='suicide'>[user] ścina sobie głowę [src.name]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 		if(iscarbon(user))
 			var/mob/living/carbon/C = user
 			var/obj/item/bodypart/BP = C.get_bodypart(BODY_ZONE_HEAD)
@@ -29,7 +29,7 @@
 				playsound(loc,pick('sound/misc/desecration-01.ogg','sound/misc/desecration-02.ogg','sound/misc/desecration-01.ogg') ,50, 1, -1)
 		return (BRUTELOSS)
 	else
-		user.visible_message("<span class='suicide'>[user] repeatedly bashes [src.name] against [user.p_their()] head! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+		user.visible_message("<span class='suicide'>[user] raz po raz wali się [src.name] w głowę! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 		playsound(loc, 'sound/items/gavel.ogg', 50, 1, -1)
 		return (BRUTELOSS)
 
@@ -47,21 +47,21 @@
 		if(!user.transferItemToLoc(P, src))
 			return
 		playsound(loc, "pageturn", 60, 1)
-		to_chat(user, "<span class='notice'>You place [P] in [src].</span>")
+		to_chat(user, "<span class='notice'>Umieszczasz [P] w [src].</span>")
 		storedpaper = P
 		update_icon()
 		return
 	if(istype(P, /obj/item/hatchet/cutterblade) && !storedcutter)
 		if(!user.transferItemToLoc(P, src))
 			return
-		to_chat(user, "<span class='notice'>You replace [src]'s [P].</span>")
+		to_chat(user, "<span class='notice'>Wymieniasz [P] w [src].</span>")
 		P.forceMove(src)
 		storedcutter = P
 		update_icon()
 		return
 	if(P.tool_behaviour == TOOL_SCREWDRIVER && storedcutter)
 		P.play_tool_sound(src)
-		to_chat(user, "<span class='notice'>[storedcutter] has been [cuttersecured ? "unsecured" : "secured"].</span>")
+		to_chat(user, "<span class='notice'>[storedcutter] zostaje [cuttersecured ? "odblokowany" : "zablokowany"].</span>")
 		cuttersecured = !cuttersecured
 		return
 	..()
@@ -72,18 +72,18 @@
 		return
 	add_fingerprint(user)
 	if(!storedcutter)
-		to_chat(user, "<span class='notice'>The cutting blade is gone! You can't use [src] now.</span>")
+		to_chat(user, "<span class='notice'>Ostrza tnącego nie ma! Nie możesz teraz używać [src].</span>")
 		return
 
 	if(!cuttersecured)
-		to_chat(user, "<span class='notice'>You remove [src]'s [storedcutter].</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz [storedcutter] z [src].</span>")
 		user.put_in_hands(storedcutter)
 		storedcutter = null
 		update_icon()
 
 	if(storedpaper)
 		playsound(src.loc, 'sound/weapons/slash.ogg', 50, 1)
-		to_chat(user, "<span class='notice'>You neatly cut [storedpaper].</span>")
+		to_chat(user, "<span class='notice'>Starannie przycinasz [storedpaper].</span>")
 		storedpaper = null
 		qdel(storedpaper)
 		new /obj/item/paperslip(get_turf(src))

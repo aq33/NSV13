@@ -7,7 +7,7 @@
 
 /turf/open/floor/plasteel/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>There's a <b>small crack</b> on the edge of it.</span>"
+	. += "<span class='notice'>Przy krawędzi jest <b>małe pęknięcie</b>.</span>"
 
 
 /turf/open/floor/plasteel/rust_heretic_act()

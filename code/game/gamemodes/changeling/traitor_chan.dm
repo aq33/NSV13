@@ -16,8 +16,8 @@
 	var/const/changeling_amount = 1 //hard limit on changelings if scaling is turned off
 
 /datum/game_mode/traitor/changeling/announce()
-	to_chat(world, "<B>The current game mode is - Traitor+Changeling!</B>")
-	to_chat(world, "<B>There are alien creatures on the station along with some syndicate operatives out for their own gain! Do not let the changelings or the traitors succeed!</B>")
+	to_chat(world, "<B>Obecny tryb gry to zdrajca i zmiennokształtny!</B>")
+	to_chat(world, "<B>Na statku są obce istoty i agenci Syndykatu działający dla własnych korzyści! Nie pozwólcie zmiennokształtnym ani zdrajcom wygrać!</B>")
 
 /datum/game_mode/traitor/changeling/can_start()
 	if(!..())

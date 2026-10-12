@@ -35,7 +35,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	dog_fashion = null
 
 /obj/item/radio/headset/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] begins putting \the [src]'s antenna up [user.p_their()] nose! It looks like [user.p_theyre()] trying to give [user.p_them()]self cancer!</span>")
+	user.visible_message("<span class='suicide'>[user] zaczyna wpychać sobie antenę [src] do nosa! Wygląda na to, że próbuje nabawić się raka!</span>")
 	return TOXLOSS
 
 /obj/item/radio/headset/examine(mob/user)
@@ -45,19 +45,19 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 		// construction of frequency description
 		var/list/avail_chans = list("Use [RADIO_KEY_COMMON] for the currently tuned frequency")
 		if(translate_binary)
-			avail_chans += "use [MODE_TOKEN_BINARY] for [MODE_BINARY]"
+			avail_chans += "użyj [MODE_TOKEN_BINARY], by mówić na kanale [MODE_BINARY]"
 		if(length(channels))
 			for(var/i in 1 to length(channels))
 				if(i == 1)
-					avail_chans += "use [MODE_TOKEN_DEPARTMENT] or [GLOB.channel_tokens[channels[i]]] for [lowertext(channels[i])]"
+					avail_chans += "użyj [MODE_TOKEN_DEPARTMENT] lub [GLOB.channel_tokens[channels[i]]], by mówić na kanale [lowertext(channels[i])]"
 				else
-					avail_chans += "use [GLOB.channel_tokens[channels[i]]] for [lowertext(channels[i])]"
+					avail_chans += "użyj [GLOB.channel_tokens[channels[i]]], by mówić na kanale [lowertext(channels[i])]"
 		. += "<span class='notice'>A small screen on the headset displays the following available frequencies:\n[english_list(avail_chans)].</span>"
 
 		if(command)
-			. += "<span class='info'>Alt-click to toggle the high-volume mode.</span>"
+			. += "<span class='info'>Alt-kliknij, by przełączyć tryb wysokiej głośności.</span>"
 	else
-		. += "<span class='notice'>A small screen on the headset flashes, it's too small to read without holding or wearing the headset.</span>"
+		. += "<span class='notice'>Mały ekranik na słuchawkach miga, ale jest za mały, by go odczytać bez trzymania lub noszenia słuchawek.</span>"
 
 /obj/item/radio/headset/Initialize(mapload)
 	. = ..()
@@ -312,14 +312,14 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 
 			recalculateChannels()
 			ui_update()
-			to_chat(user, "<span class='notice'>You pop out the encryption keys in the headset.</span>")
+			to_chat(user, "<span class='notice'>Wyjmujesz klucze szyfrujące ze słuchawek.</span>")
 
 		else
-			to_chat(user, "<span class='warning'>This headset doesn't have any unique encryption keys!  How useless...</span>")
+			to_chat(user, "<span class='warning'>Te słuchawki nie mają żadnych unikalnych kluczy szyfrujących! Ale bezużyteczne...</span>")
 
 	else if(istype(W, /obj/item/encryptionkey))
 		if(keyslot && keyslot2)
-			to_chat(user, "<span class='warning'>The headset can't hold another key!</span>")
+			to_chat(user, "<span class='warning'>Słuchawki nie pomieszczą kolejnego klucza!</span>")
 			return
 
 		if(!keyslot)
@@ -365,4 +365,4 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 		return
 	if (command)
 		use_command = !use_command
-		to_chat(user, "<span class='notice'>You toggle high-volume mode [use_command ? "on" : "off"].</span>")
+		to_chat(user, "<span class='notice'>[use_command ? "Włączasz" : "Wyłączasz"] tryb wysokiej głośności.</span>")

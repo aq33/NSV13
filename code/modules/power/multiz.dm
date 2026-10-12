@@ -18,11 +18,11 @@
 /obj/machinery/power/deck_relay/examine(mob/user)
 	. += ..()
 	if(!anchored)
-		. += "<span class='notice'>The securing bolts are undone.</span>"
+		. += "<span class='notice'>Śruby mocujące są odkręcone.</span>"
 	if(broken_status == RELAY_ADD_CABLE)
-		. += "<span class='notice'>The cable insulation is torn apart and the wires are frayed beyond use.</span>"
+		. += "<span class='notice'>Izolacja kabla jest rozdarta, a przewody postrzępione nie do użytku.</span>"
 	if(broken_status == RELAY_ADD_METAL)
-		. += "<span class='notice'>The cable insulation is torn apart and the wiring is exposed.</span>"
+		. += "<span class='notice'>Izolacja kabla jest rozdarta, a okablowanie odsłonięte.</span>"
 
 /obj/machinery/power/deck_relay/attackby(obj/item/I, mob/user, params)
 	if(default_unfasten_wrench(user, I))
@@ -34,23 +34,23 @@
 	if(istype(I, /obj/item/stack/cable_coil) && broken_status == RELAY_ADD_CABLE)
 		var/obj/item/stack/C = I
 		if(C.use(15))
-			to_chat(user, "<span class='notice'>You fix the frayed wires inside [src].</span>")
+			to_chat(user, "<span class='notice'>Naprawiasz postrzępione przewody w [src].</span>")
 			icon_state = "cablerelay-broken-cable"
 			broken_status = RELAY_ADD_METAL
 			return
 		else
-			to_chat(user, "You need 15 cables to rewire [src].")
+			to_chat(user, "Do ponownego okablowania [src] potrzebujesz 15 kabli.")
 			return
 	if(istype(I, /obj/item/stack/sheet/iron) && broken_status == RELAY_ADD_METAL)
 		var/obj/item/stack/S = I
 		if(S.use(10))
-			to_chat(user, "<span class='notice'>You reseal the insulation for [src].</span>")
+			to_chat(user, "<span class='notice'>Uszczelniasz izolację [src].</span>")
 			icon_state = "cablerelay"
 			broken_status = RELAY_OK
 			obj_integrity = max_integrity
 			return
 		else
-			to_chat(user, "You need 10 metal to mend [src].")
+			to_chat(user, "Do naprawy [src] potrzebujesz 10 jednostek metalu.")
 			return
 	. = ..()
 
@@ -58,7 +58,7 @@
 	..()
 	if(broken_status == RELAY_OK)
 		break_connections()
-		visible_message("<span class='warning'>[src]'s insulation breaks, fraying and severing the cable bundle!</span>")
+		visible_message("<span class='warning'>Izolacja [src] pęka, strzępiąc i przerywając wiązkę kabli!</span>")
 		playsound(loc, 'sound/effects/glassbr3.ogg', 100, TRUE)
 		icon_state = "cablerelay-broken"
 		broken_status = RELAY_ADD_CABLE
@@ -102,15 +102,15 @@
 ///Allows you to scan the relay with a multitool to see stats/reconnect relays
 /obj/machinery/power/deck_relay/multitool_act(mob/user, obj/item/I)
 	if(!anchored)
-		to_chat(user, "<span class='danger'>You need to wrench this into place before getting a reading!</span>")
+		to_chat(user, "<span class='danger'>Musisz to przykręcić, zanim odczytasz wynik!</span>")
 		return TRUE
 	if(broken_status == RELAY_ADD_CABLE || broken_status == RELAY_ADD_METAL)
-		to_chat(user, "<span class='danger'>The [src] isn't in proper shape to get a reading!</span>")
+		to_chat(user, "<span class='danger'>[src] nie jest w odpowiednim stanie do odczytu!</span>")
 		return TRUE
 	if(powernet && (above || below))//we have a powernet and at least one connected relay
-		to_chat(user, "<span class='danger'>Total power: [display_power(powernet.avail)]\nLoad: [display_power(powernet.load)]\nExcess power: [display_power(surplus())]</span>")
+		to_chat(user, "<span class='danger'>Łączna moc: [display_power(powernet.avail)]\nObciążenie: [display_power(powernet.load)]\nNadwyżka mocy: [display_power(surplus())]</span>")
 	if(!above && !below)
-		to_chat(user, "<span class='danger'>Cannot access valid powernet. Attempting to re-establish. Ensure any relays above and below are aligned properly and on cable nodes.</span>")
+		to_chat(user, "<span class='danger'>Brak dostępu do prawidłowej sieci energetycznej. Próba ponownego połączenia. Upewnij się, że przekaźniki powyżej i poniżej są prawidłowo ustawione i stoją na węzłach kabli.</span>")
 		find_relays()
 		addtimer(CALLBACK(src, PROC_REF(refresh)), 20) //Wait a bit so we can find the one below, then get powering
 	return TRUE

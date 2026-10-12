@@ -258,7 +258,7 @@ Any flags related to this should start with OSW.
 	var/list/loaded_ammo = get_loaded_ammo_types()
 	if(!length(loaded_ammo))
 		ammo_filter = null
-		to_chat(user, "<span class='notice'>No loaded ammunition detected, clearing filter.</span>")
+		to_chat(user, "<span class='notice'>Nie wykryto załadowanej amunicji, czyszczenie filtra.</span>")
 		return
 	if(!ammo_filter)
 		for(var/key as() in loaded_ammo)
@@ -286,10 +286,10 @@ Any flags related to this should start with OSW.
 		#undef FILTER_FOUND_NEW
 
 	if(!ammo_filter)
-		to_chat(user, "<span class='notice'>Ammunition filter cleared.</span>")
+		to_chat(user, "<span class='notice'>Wyczyszczono filtr amunicji.</span>")
 	else
 		var/obj/prototype_ammo = ammo_filter
-		to_chat(user, "<span class='notice'>Ammunition filter set to [initial(prototype_ammo.name)].</span>")
+		to_chat(user, "<span class='notice'>Filtr amunicji ustawiony na [initial(prototype_ammo.name)].</span>")
 
 /**
  * Gets this weapons possible controllers in readable (String) form.
@@ -303,7 +303,7 @@ Any flags related to this should start with OSW.
 	if(weapon_control_flags & OSW_CONTROL_GUNNER)
 		controller_strings += "Gunner"
 	if(weapon_control_flags & OSW_CONTROL_MANUAL)
-		controller_strings += "Operated Manually"
+		controller_strings += "Obsługiwane ręcznie"
 	if(weapon_control_flags & OSW_CONTROL_AUTONOMOUS)
 		if(weapon_control_flags & OSW_CONTROL_AI_FULL_AUTONOMY)
 			//This is a blocking case, AI autonomy weapons usually aren't normally autonomous.

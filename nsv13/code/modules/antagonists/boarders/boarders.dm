@@ -1,7 +1,7 @@
 /datum/antagonist/traitor/boarder //TODO: Refactor this to not a traitor extension
-	name = "Boarder" //Not the school kind :b1:
+	name = "Abordażysta" //Not the school kind :b1:
 	antagpanel_category = "Boarder"
-	roundend_category = "boarders"
+	roundend_category = "abordażyści"
 	should_equip = FALSE
 	tips = 'html/antagtips/boarder.html'
 	show_to_ghosts = TRUE

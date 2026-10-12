@@ -6,9 +6,9 @@
 /datum/brain_trauma/special/godwoken
 	name = "Godwoken Syndrome"
 	desc = "Patient occasionally and uncontrollably channels an eldritch god when speaking."
-	scan_desc = "god delusion"
-	gain_text = "<span class='notice'>You feel a higher power inside your mind...</span>"
-	lose_text = "<span class='warning'>The divine presence leaves your head, no longer interested.</span>"
+	scan_desc = "urojenie boskości"
+	gain_text = "<span class='notice'>Czujesz w umyśle wyższą moc...</span>"
+	lose_text = "<span class='warning'>Boska obecność opuszcza twoją głowę, już niezainteresowana.</span>"
 
 /datum/brain_trauma/special/godwoken/on_life()
 	..()
@@ -50,9 +50,9 @@
 /datum/brain_trauma/special/ghost_control
 	name = "Spiritual Connection"
 	desc = "Patient claims to receive impulses from the supernatural that they feel compelled to follow."
-	scan_desc = "spiritual involuntary muscle contraction"
-	gain_text = "<span class='notice'>You hear voices in your head, speaking of different directions...</span>"
-	lose_text = "<span class='warning'>The voices in your head fade into silence.</span>"
+	scan_desc = "duchowy mimowolny skurcz mięśni"
+	gain_text = "<span class='notice'>Słyszysz w głowie głosy mówiące o różnych kierunkach...</span>"
+	lose_text = "<span class='warning'>Głosy w twojej głowie cichną.</span>"
 
 /datum/brain_trauma/special/ghost_control/on_gain()
 	owner._AddComponent(list(/datum/component/deadchat_control, "democracy", list(
@@ -72,9 +72,9 @@
 /datum/brain_trauma/special/bluespace_prophet
 	name = "Bluespace Prophecy"
 	desc = "Patient can sense the bob and weave of bluespace around them, showing them passageways no one else can see."
-	scan_desc = "bluespace attunement"
-	gain_text = "<span class='notice'>You feel the bluespace pulsing around you...</span>"
-	lose_text = "<span class='warning'>The faint pulsing of bluespace fades into silence.</span>"
+	scan_desc = "dostrojenie do bluespace"
+	gain_text = "<span class='notice'>Czujesz pulsowanie bluespace wokół siebie...</span>"
+	lose_text = "<span class='warning'>Ciche pulsowanie bluespace cichnie.</span>"
 	var/next_portal = 0
 
 /datum/brain_trauma/special/bluespace_prophet/on_life()
@@ -129,25 +129,25 @@
 /obj/effect/hallucination/simple/bluespace_stream/attack_hand(mob/user)
 	if(user != seer || !linked_to)
 		return
-	var/slip_in_message = pick("slides sideways in an odd way, and disappears", "jumps into an unseen dimension",\
-		"sticks one leg straight out, wiggles [user.p_their()] foot, and is suddenly gone", "stops, then blinks out of reality", \
-		"is pulled into an invisible vortex, vanishing from sight")
-	var/slip_out_message = pick("silently fades in", "leaps out of thin air","appears", "walks out of an invisible doorway",\
-		"slides out of a fold in spacetime")
-	to_chat(user, "<span class='notice'>You try to align with the bluespace stream...</span>")
+	var/slip_in_message = pick("dziwnie przesuwa się w bok i znika", "wskakuje do niewidzialnego wymiaru",\
+		"wystawia prosto jedną nogę, macha stopą i nagle znika", "zatrzymuje się, po czym znika z rzeczywistości", \
+		"zostaje wciągnięty w niewidzialny wir i znika z oczu")
+	var/slip_out_message = pick("bezgłośnie się pojawia", "wyskakuje znikąd","appears", "wychodzi z niewidzialnych drzwi",\
+		"wysuwa się z fałdy czasoprzestrzeni")
+	to_chat(user, "<span class='notice'>Próbujesz zestroić się z nurtem bluespace...</span>")
 	if(do_after(user, 20, target = src))
 		new /obj/effect/temp_visual/bluespace_fissure(get_turf(src))
 		new /obj/effect/temp_visual/bluespace_fissure(get_turf(linked_to))
 		if(do_teleport(user, get_turf(linked_to), no_effects = TRUE))
 			user.visible_message("<span class='warning'>[user] [slip_in_message].</span>", null, null, null, user)
-			user.visible_message("<span class='warning'>[user] [slip_out_message].</span>", "<span class='notice'>...and find your way to the other side.</span>")
+			user.visible_message("<span class='warning'>[user] [slip_out_message].</span>", "<span class='notice'>...i znajdujesz drogę na drugą stronę.</span>")
 
 /datum/brain_trauma/special/tenacity
 	name = "Tenacity"
 	desc = "Patient is psychologically unaffected by pain and injuries, and can remain standing far longer than a normal person."
-	scan_desc = "traumatic neuropathy"
-	gain_text = "<span class='warning'>You suddenly stop feeling pain.</span>"
-	lose_text = "<span class='warning'>You realize you can feel pain again.</span>"
+	scan_desc = "urazowa neuropatia"
+	gain_text = "<span class='warning'>Nagle przestajesz czuć ból.</span>"
+	lose_text = "<span class='warning'>Uświadamiasz sobie, że znów czujesz ból.</span>"
 
 /datum/brain_trauma/special/tenacity/on_gain()
 	ADD_TRAIT(owner, TRAIT_NOSOFTCRIT, TRAUMA_TRAIT)
@@ -162,9 +162,9 @@
 /datum/brain_trauma/special/death_whispers
 	name = "Functional Cerebral Necrosis"
 	desc = "Patient's brain is stuck in a functional near-death state, causing occasional moments of lucid hallucinations, which are often interpreted as the voices of the dead."
-	scan_desc = "chronic functional necrosis"
-	gain_text = "<span class='warning'>You feel dead inside.</span>"
-	lose_text = "<span class='notice'>You feel alive again.</span>"
+	scan_desc = "przewlekła martwica czynnościowa"
+	gain_text = "<span class='warning'>Czujesz się martwy w środku.</span>"
+	lose_text = "<span class='notice'>Znów czujesz, że żyjesz.</span>"
 	var/active = FALSE
 
 /datum/brain_trauma/special/death_whispers/on_life()
@@ -189,9 +189,9 @@
 /datum/brain_trauma/special/beepsky
 	name = "Criminal"
 	desc = "Patient seems to be a criminal."
-	scan_desc = "criminal mind"
-	gain_text = "<span class='warning'>Justice is coming for you.</span>"
-	lose_text = "<span class='notice'>You were absolved for your crimes.</span>"
+	scan_desc = "umysł przestępczy"
+	gain_text = "<span class='warning'>Sprawiedliwość po ciebie idzie.</span>"
+	lose_text = "<span class='notice'>Twoje zbrodnie zostały ci odpuszczone.</span>"
 	clonable = FALSE
 	random_gain = FALSE
 	var/obj/effect/hallucination/simple/securitron/beepsky
@@ -225,7 +225,7 @@
 		return
 	if(get_dist(owner, beepsky) <= 1)
 		owner.playsound_local(owner, 'sound/weapons/egloves.ogg', 50)
-		owner.visible_message("<span class='warning'>[owner]'s body jerks as if it was shocked.</span>", "<span class='userdanger'>You feel the fist of the LAW.</span>")
+		owner.visible_message("<span class='warning'>Ciałem [owner] wstrząsa, jakby poraził je prąd.</span>", "<span class='userdanger'>Czujesz pięść PRAWA.</span>")
 		owner.take_bodypart_damage(0,0,rand(40, 70))
 		QDEL_NULL(beepsky)
 	if(prob(20) && get_dist(owner, beepsky) <= 8)
@@ -248,7 +248,7 @@
 	if(DT_PROB(60, delta_time))
 		forceMove(get_step_towards(src, victim))
 		if(DT_PROB(5, delta_time))
-			to_chat(victim, "<span class='name'>[name]</span> exclaims, \"<span class='robotic'>Level 10 infraction alert!\"</span>")
+			to_chat(victim, "<span class='name'>[name]</span> wykrzykuje: \"<span class='robotic'>Alarm: wykroczenie poziomu 10!\"</span>")
 
 /obj/effect/hallucination/simple/securitron/Destroy()
 	victim = null

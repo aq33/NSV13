@@ -23,7 +23,7 @@
 
 /obj/item/reagent_containers/food/drinks/coffee/empty/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click to toggle cup lid.</span>"
+	. += "<span class='notice'>Alt-kliknij, by przełączyć pokrywkę kubka.</span>"
 	return
 
 /obj/item/reagent_containers/food/drinks/coffee/empty/AltClick(mob/user)

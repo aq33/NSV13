@@ -114,7 +114,7 @@ SUBSYSTEM_DEF(zclear)
 				announced_zombie_levels["[level.z_value]"] = TRUE
 				var/datum/orbital_object/linked_object = SSorbits.assoc_z_levels["[level.z_value]"]
 				if(linked_object)
-					priority_announce("Nanotrasen long ranged sensors have indicated that all sentient life forms at priority waypoint [linked_object.name] have ceased life functions. Command is recommended to establish a rescue operation to recover the bodies. Due to the nature of the threat at this location, security personnel armed with lethal weaponry is recommended to accompany the rescue team.", "Nanotrasen Long Range Sensors")
+					priority_announce("Dalekosiężne czujniki Nanotrasen wskazują, że wszystkie świadome formy życia w priorytetowym punkcie nawigacyjnym [linked_object.name] przestały wykazywać funkcje życiowe. Dowództwu zaleca się zorganizowanie akcji ratunkowej w celu odzyskania ciał. Ze względu na charakter zagrożenia w tym miejscu zaleca się, by zespołowi ratunkowemu towarzyszył personel ochrony uzbrojony w broń śmiercionośną.", "Nanotrasen Long Range Sensors")
 			continue
 		//Level is free, do the wiping thing.
 		LAZYREMOVE(autowipe, level)
@@ -236,7 +236,7 @@ SUBSYSTEM_DEF(zclear)
 						nullspaced_mob_names += " - [M.name]\n"
 						valid = TRUE
 				if(valid)
-					priority_announce("Sensors indicate that multiple crewmembers have been lost at an abandoned station. They can potentially be recovered by flying to the nearest derelict station and locating their bodies.\n[nullspaced_mob_names]")
+					priority_announce("Czujniki wskazują, że na opuszczonej stacji zaginęło kilku członków załogi. Można ich potencjalnie odzyskać, lecąc do najbliższej opuszczonej stacji i odnajdując ich ciała.\n[nullspaced_mob_names]")
 	cleardata.process_num ++
 
 /*
@@ -269,7 +269,7 @@ SUBSYSTEM_DEF(zclear)
 						//Since the wiping takes 90 seconds they could potentially still be on the z-level as it is wiping if they reconnect in time
 						random_teleport_atom(M)
 						M.Knockdown(5)
-						to_chat(M, "<span class='warning'>You feel sick as your body lurches through space and time, the ripples of the starship that brought you here eminate no more and you get the horrible feeling that you have been left behind.</span>")
+						to_chat(M, "<span class='warning'>Robi ci się niedobrze, gdy twoje ciało szarpie się przez czas i przestrzeń; fale statku, który cię tu przywiózł, już nie docierają, a ty masz okropne przeczucie, że zostałeś w tyle.</span>")
 				else
 					delete_atom(thing)
 			else

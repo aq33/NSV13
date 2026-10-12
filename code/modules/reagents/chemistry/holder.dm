@@ -90,7 +90,7 @@
 // Used in attack logs for reagents in pills and such
 /datum/reagents/proc/log_list()
 	if(!length(reagent_list))
-		return "no reagents"
+		return "brak odczynników"
 
 	var/list/data = list()
 	for(var/r in reagent_list) //no reagents will be left behind
@@ -380,7 +380,7 @@
 						if(30 to 40)
 							need_mob_update += R.addiction_act_stage4(C)
 						if(40 to INFINITY)
-							to_chat(C, "<span class='notice'>You feel like you've gotten over your need for [R.name].</span>")
+							to_chat(C, "<span class='notice'>Czujesz, że twój głód [R.name] minął.</span>")
 							SEND_SIGNAL(C, COMSIG_CLEAR_MOOD_EVENT, "[R.type]_overdose")
 							cached_addictions.Remove(R)
 						else
@@ -529,7 +529,7 @@
 					ME2.Uses--
 					if(ME2.Uses <= 0) // give the notification that the slime core is dead
 						for(var/mob/M as() in seen)
-							to_chat(M, "<span class='notice'>[iconhtml] \The [my_atom]'s power is consumed in the reaction.</span>")
+							to_chat(M, "<span class='notice'>[iconhtml] Moc [my_atom] zostaje zużyta w reakcji.</span>")
 							ME2.name = "used slime extract"
 							ME2.desc = "This extract has been used up."
 
@@ -920,17 +920,17 @@
 				var/percent = tastes[taste_desc]/total_taste * 100
 				if(percent < minimum_percent)
 					continue
-				var/intensity_desc = "a hint of"
+				var/intensity_desc = "ledwo wyczuwalnie"
 				if(percent > minimum_percent * 2 || percent == 100)
 					intensity_desc = ""
 				else if(percent > minimum_percent * 3)
-					intensity_desc = "the strong flavor of"
+					intensity_desc = "bardzo wyraźnie"
 				if(intensity_desc != "")
-					out += "[intensity_desc] [taste_desc]"
+					out += "[taste_desc] ([intensity_desc])"
 				else
 					out += "[taste_desc]"
 
-	return english_list(out, "something indescribable")
+	return english_list(out, "coś nieopisanego")
 
 /datum/reagents/proc/expose_temperature(var/temperature, var/coeff=0.02)
 	var/temp_delta = (temperature - chem_temp) * coeff

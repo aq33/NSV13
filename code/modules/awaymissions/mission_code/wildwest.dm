@@ -34,24 +34,24 @@
  ////////// wildwest papers
 
 /obj/item/paper/fluff/awaymissions/wildwest/grinder
-	default_raw_text = "meat grinder requires sacri"
+	default_raw_text = "maszynka do mięsa wymaga ofia"
 
 
 /obj/item/paper/fluff/awaymissions/wildwest/journal/page1
 	name = "Planer Saul's Journal: Page 1"
-	default_raw_text = "We've discovered something floating in space. We can't really tell how old it is, but it is scraped and bent to hell. There object is the size of about a room with double doors that we have yet to break into.   It is a lot sturdier than we could have imagined.  We have decided to call it 'The Vault' "
+	default_raw_text = "Znaleźliśmy coś dryfującego w kosmosie. Trudno powiedzieć, ile ma lat, ale jest porysowane i powyginane jak diabli. Obiekt ma mniej więcej wielkość pokoju, z dwuskrzydłowymi drzwiami, których jeszcze nie udało nam się sforsować. Jest dużo wytrzymalszy, niż mogliśmy przypuszczać. Postanowiliśmy nazwać go „Kryptą”."
 
 /obj/item/paper/fluff/awaymissions/wildwest/journal/page4
 	name = "Planer Saul's Journal: Page 4"
-	default_raw_text = " The miners in the town have become sick and almost all production has stopped. They, in a fit of delusion, tossed all of their mining equipment into the furnaces.  They all claimed the same thing. A voice beckoning them to lay down their arms. Stupid miners."
+	default_raw_text = " Górnicy w miasteczku zachorowali i niemal całe wydobycie stanęło. W przypływie obłędu wrzucili cały sprzęt górniczy do pieców. Wszyscy twierdzili to samo: że jakiś głos wzywa ich, by złożyli broń. Głupi górnicy."
 
 /obj/item/paper/fluff/awaymissions/wildwest/journal/page7
 	name = "Planer Sauls' Journal: Page 7"
-	default_raw_text = "The Vault...it just keeps growing and growing.  I went on my daily walk through the garden and now it's just right outside the mansion... a few days ago it was only barely visible. But whatever is inside...it's calling to me."
+	default_raw_text = "Krypta... ona ciągle rośnie i rośnie. Poszedłem na codzienny spacer po ogrodzie, a ona jest teraz tuż przed rezydencją... jeszcze kilka dni temu ledwo było ją widać. Ale cokolwiek jest w środku... wzywa mnie."
 
 /obj/item/paper/fluff/awaymissions/wildwest/journal/page8
 	name = "Planer Saul's Journal: Page 8"
-	default_raw_text = "The syndicate have invaded.  Their ships appeared out of nowhere and now they likely intend to kill us all and take everything.  On the off-chance that the Vault may grant us sanctuary, many of us have decided to force our way inside and bolt the door, taking as many provisions with us as we can carry.  In case you find this, send for help immediately and open the Vault. Find us inside."
+	default_raw_text = "Syndykat nas najechał. Ich statki pojawiły się znikąd i zapewne chcą nas wszystkich zabić i zabrać wszystko. Licząc na to, że Krypta da nam schronienie, wielu z nas postanowiło wedrzeć się do środka i zaryglować drzwi, zabierając tyle zapasów, ile zdołamy unieść. Jeśli to znajdziesz, natychmiast wezwij pomoc i otwórz Kryptę. Znajdziesz nas w środku."
 
 
 /*
@@ -71,45 +71,45 @@
 
 /obj/machinery/wish_granter_dark/interact(mob/living/carbon/human/user)
 	if(chargesa <= 0)
-		to_chat(user, "The Wish Granter lies silent.")
+		to_chat(user, "Spełniacz Życzeń milczy.")
 		return
 
 	else if(!ishuman(user))
-		to_chat(user, "You feel a dark stirring inside of the Wish Granter, something you want nothing of. Your instincts are better than any man's.")
+		to_chat(user, "Czujesz w Spełniaczu Życzeń mroczne poruszenie, coś, czego nie chcesz. Twoje instynkty są lepsze niż u jakiegokolwiek człowieka.")
 		return
 
 	else if(is_special_character(user))
-		to_chat(user, "Even to a heart as dark as yours, you know nothing good will come of this.  Something instinctual makes you pull away.")
+		to_chat(user, "Nawet przy sercu tak mrocznym jak twoje wiesz, że nic dobrego z tego nie wyniknie. Coś instynktownego każe ci się odsunąć.")
 
 	else if (!insistinga)
-		to_chat(user, "Your first touch makes the Wish Granter stir, listening to you.  Are you really sure you want to do this?")
+		to_chat(user, "Twój pierwszy dotyk budzi Spełniacza Życzeń, który zaczyna cię słuchać. Czy na pewno chcesz to zrobić?")
 		insistinga++
 
 	else
 		chargesa--
 		insistinga = 0
-		var/wish = input("You want...","Wish") as null|anything in sortList(list("Power","Wealth","Immortality","Peace"))
+		var/wish = input("Pragniesz...","Wish") as null|anything in sortList(list("Power","Wealth","Immortality","Peace"))
 		switch(wish)
 			if("Power")
-				to_chat(user, "<B>Your wish is granted, but at a terrible cost...</B>")
-				to_chat(user, "The Wish Granter punishes you for your selfishness, claiming your soul and warping your body to match the darkness in your heart.")
+				to_chat(user, "<B>Twoje życzenie zostaje spełnione, ale za straszliwą cenę...</B>")
+				to_chat(user, "Spełniacz Życzeń karze cię za twoje samolubstwo, zabierając twoją duszę i wykrzywiając ciało, by pasowało do ciemności w twoim sercu.")
 				user.dna.add_mutation(LASEREYES)
 				user.dna.add_mutation(SPACEMUT)
 				user.dna.add_mutation(XRAY)
 				user.set_species(/datum/species/shadow)
 			if("Wealth")
-				to_chat(user, "<B>Your wish is granted, but at a terrible cost...</B>")
-				to_chat(user, "The Wish Granter punishes you for your selfishness, claiming your soul and warping your body to match the darkness in your heart.")
+				to_chat(user, "<B>Twoje życzenie zostaje spełnione, ale za straszliwą cenę...</B>")
+				to_chat(user, "Spełniacz Życzeń karze cię za twoje samolubstwo, zabierając twoją duszę i wykrzywiając ciało, by pasowało do ciemności w twoim sercu.")
 				new /obj/structure/closet/syndicate/resources/everything(loc)
 				user.set_species(/datum/species/shadow)
 			if("Immortality")
-				to_chat(user, "<B>Your wish is granted, but at a terrible cost...</B>")
-				to_chat(user, "The Wish Granter punishes you for your selfishness, claiming your soul and warping your body to match the darkness in your heart.")
+				to_chat(user, "<B>Twoje życzenie zostaje spełnione, ale za straszliwą cenę...</B>")
+				to_chat(user, "Spełniacz Życzeń karze cię za twoje samolubstwo, zabierając twoją duszę i wykrzywiając ciało, by pasowało do ciemności w twoim sercu.")
 				user.add_verb(/mob/living/carbon/proc/immortality)
 				user.set_species(/datum/species/shadow)
 			if("Peace")
-				to_chat(user, "<B>Whatever alien sentience that the Wish Granter possesses is satisfied with your wish. There is a distant wailing as the last of the Faithless begin to die, then silence.</B>")
-				to_chat(user, "You feel as if you just narrowly avoided a terrible fate...")
+				to_chat(user, "<B>Jakakolwiek obca świadomość zamieszkuje Spełniacza Życzeń, jest usatysfakcjonowana twoim życzeniem. Słychać odległe zawodzenie, gdy ostatni z Niewiernych zaczynają umierać, a potem cisza.</B>")
+				to_chat(user, "Czujesz, że właśnie ledwo uniknąłeś straszliwego losu...")
 				for(var/mob/living/simple_animal/hostile/faithless/F in GLOB.mob_living_list)
 					F.death()
 
@@ -165,10 +165,10 @@
 
 	var/mob/living/carbon/C = usr
 	if(!C.stat)
-		to_chat(C, "<span class='notice'>You're not dead yet!</span>")
+		to_chat(C, "<span class='notice'>Jeszcze nie jesteś martwy!</span>")
 		return
 	if(C.has_status_effect(STATUS_EFFECT_WISH_GRANTERS_GIFT))
-		to_chat(C, "<span class='warning'>You're already resurrecting!</span>")
+		to_chat(C, "<span class='warning'>Już się wskrzeszasz!</span>")
 		return
 	C.apply_status_effect(STATUS_EFFECT_WISH_GRANTERS_GIFT)
 	return 1

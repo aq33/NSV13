@@ -81,13 +81,13 @@
 		set_dos_failure(TRUE)
 		ui_update()
 		update_icon()
-		SSnetworks.add_log("Quantum relay switched from normal operation mode to overload recovery mode.")
+		SSnetworks.add_log("Przekaźnik kwantowy przełączył się z trybu normalnej pracy w tryb odzyskiwania po przeciążeniu.")
 	// If the DoS buffer reaches 0 again, restart.
 	if((dos_overload == 0) && dos_failure)
 		set_dos_failure(FALSE)
 		ui_update()
 		update_icon()
-		SSnetworks.add_log("Quantum relay switched from overload recovery mode to normal operation mode.")
+		SSnetworks.add_log("Przekaźnik kwantowy przełączył się z trybu odzyskiwania po przeciążeniu w tryb normalnej pracy.")
 	..()
 
 
@@ -120,7 +120,7 @@
 			dos_overload = 0
 			set_dos_failure(FALSE)
 			update_icon()
-			SSnetworks.add_log("Quantum relay manually restarted from overload recovery mode to normal operation mode.")
+			SSnetworks.add_log("Przekaźnik kwantowy ręcznie zrestartowany z trybu odzyskiwania po przeciążeniu do trybu normalnej pracy.")
 			return TRUE
 		if("toggle")
 			set_relay_enabled(!relay_enabled)
@@ -135,17 +135,17 @@
 	if(SSnetworks.station_network)
 		SSnetworks.relays.Add(src)
 		NTNet = SSnetworks.station_network
-		SSnetworks.add_log("New quantum relay activated. Current amount of linked relays: [SSnetworks.relays.len]")
+		SSnetworks.add_log("Aktywowano nowy przekaźnik kwantowy. Obecna liczba połączonych przekaźników: [SSnetworks.relays.len]")
 	. = ..()
 
 /obj/machinery/ntnet_relay/Destroy()
 	if(SSnetworks.station_network)
 		SSnetworks.relays.Remove(src)
-		SSnetworks.add_log("Quantum relay connection severed. Current amount of linked relays: [SSnetworks.relays.len]")
+		SSnetworks.add_log("Zerwano połączenie z przekaźnikiem kwantowym. Obecna liczba połączonych przekaźników: [SSnetworks.relays.len]")
 		NTNet = null
 
 	for(var/datum/computer_file/program/ntnet_dos/D in dos_sources)
 		D.target = null
-		D.error = "Connection to quantum relay severed"
+		D.error = "Zerwano połączenie z przekaźnikiem kwantowym"
 
 	return ..()

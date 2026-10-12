@@ -30,7 +30,7 @@
 
 /obj/item/clothing/under/rank/engineering/engineer/hazard
 	name = "engineer's hazard jumpsuit"
-	desc = "A high visibility jumpsuit made from heat and radiation resistant materials."
+	desc = "Dobrze widoczny kombinezon z materiałów odpornych na ciepło i promieniowanie."
 	icon = 'icons/obj/clothing/uniforms.dmi' //NSV13
 	worn_icon = 'icons/mob/uniform.dmi' //NSV13
 	icon_state = "hazard"

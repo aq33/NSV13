@@ -1,8 +1,8 @@
 /datum/reagent/medicine/radioactive_disinfectant
 	name = "Radioactive Disinfectant"
-	description = "Removes irradiation in synthetics."
+	description = "Usuwa napromieniowanie u syntetyków."
 	color = "#806F42"
-	taste_description = "metallic"
+	taste_description = "metal"
 	process_flags = SYNTHETIC
 
 /datum/reagent/medicine/radioactive_disinfectant/on_mob_life(mob/living/carbon/M)

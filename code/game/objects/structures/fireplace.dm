@@ -26,10 +26,10 @@
 
 /obj/structure/fireplace/proc/try_light(obj/item/O, mob/user)
 	if(lit)
-		to_chat(user, "<span class='warning'>It's already lit!</span>")
+		to_chat(user, "<span class='warning'>Już się pali!</span>")
 		return FALSE
 	if(!fuel_added)
-		to_chat(user, "<span class='warning'>[src] needs some fuel to burn!</span>")
+		to_chat(user, "<span class='warning'>[src] potrzebuje paliwa, by się palić!</span>")
 		return FALSE
 	var/msg = O.ignition_effect(src, user)
 	if(msg)
@@ -43,24 +43,20 @@
 		var/space_remaining = MAXIMUM_BURN_TIMER - burn_time_remaining()
 		var/space_for_logs = round(space_remaining / LOG_BURN_TIMER)
 		if(space_for_logs < 1)
-			to_chat(user, "<span class='warning'>You can't fit any more of [T] in [src]!</span>")
+			to_chat(user, "<span class='warning'>Nie zmieścisz więcej [T] w [src]!</span>")
 			return
 		var/logs_used = min(space_for_logs, wood.amount)
 		wood.use(logs_used)
 		adjust_fuel_timer(LOG_BURN_TIMER * logs_used)
-		user.visible_message("<span class='notice'>[user] tosses some \
-			wood into [src].</span>", "<span class='notice'>You add \
-			some fuel to [src].</span>")
+		user.visible_message("<span class='notice'>[user] dorzuca trochę drewna do [src].</span>", "<span class='notice'>Dokładasz trochę paliwa do [src].</span>")
 	else if(istype(T, /obj/item/paper_bin))
 		var/obj/item/paper_bin/paper_bin = T
-		user.visible_message("<span class='notice'>[user] throws [T] into \
-			[src].</span>", "<span class='notice'>You add [T] to [src].\
+		user.visible_message("<span class='notice'>[user] wrzuca [T] do [src].</span>", "<span class='notice'>Dodajesz [T] do [src].\
 			</span>")
 		adjust_fuel_timer(PAPER_BURN_TIMER * paper_bin.total_paper)
 		qdel(paper_bin)
 	else if(istype(T, /obj/item/paper))
-		user.visible_message("<span class='notice'>[user] throws [T] into \
-			[src].</span>", "<span class='notice'>You throw [T] into [src].\
+		user.visible_message("<span class='notice'>[user] wrzuca [T] do [src].</span>", "<span class='notice'>Wrzucasz [T] do [src].\
 			</span>")
 		adjust_fuel_timer(PAPER_BURN_TIMER)
 		qdel(T)

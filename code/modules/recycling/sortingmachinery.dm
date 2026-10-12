@@ -44,25 +44,25 @@
 
 	else if(istype(W, /obj/item/pen))
 		if(!user.is_literate())
-			to_chat(user, "<span class='notice'>You scribble illegibly on the side of [src]!</span>")
+			to_chat(user, "<span class='notice'>Gryzmolisz nieczytelnie na boku [src]!</span>")
 			return
-		var/str = stripped_input(user, "Label text?", "Set label", "", MAX_NAME_LEN)
+		var/str = stripped_input(user, "Tekst etykiety?", "Ustaw etykietę", "", MAX_NAME_LEN)
 		if(!user.canUseTopic(src, BE_CLOSE))
 			return
 		if(!str || !length(str))
-			to_chat(user, "<span class='warning'>Invalid text!</span>")
+			to_chat(user, "<span class='warning'>Nieprawidłowy tekst!</span>")
 			return
-		user.visible_message("[user] labels [src] as [str].")
+		user.visible_message("[user] oznacza [src] jako [str].")
 		name = "[name] ([str])"
 
 	else if(istype(W, /obj/item/stack/wrapping_paper) && !giftwrapped)
 		var/obj/item/stack/wrapping_paper/WP = W
 		if(WP.use(3))
-			user.visible_message("[user] wraps the package in festive paper!")
+			user.visible_message("[user] owija paczkę świątecznym papierem!")
 			giftwrapped = TRUE
 			icon_state = "gift[icon_state]"
 		else
-			to_chat(user, "<span class='warning'>You need more paper!</span>")
+			to_chat(user, "<span class='warning'>Potrzebujesz więcej papieru!</span>")
 	else
 		return ..()
 
@@ -71,17 +71,17 @@
 		var/atom/movable/AM = loc //can't unwrap the wrapped container if it's inside something.
 		AM.relay_container_resist(user, O)
 		return
-	to_chat(user, "<span class='notice'>You lean on the back of [O] and start pushing to rip the wrapping around it.</span>")
+	to_chat(user, "<span class='notice'>Opierasz się o tył [O] i zaczynasz napierać, by rozerwać opakowanie.</span>")
 	if(do_after(user, 50, target = O))
 		if(!user || user.stat != CONSCIOUS || user.loc != O || O.loc != src )
 			return
-		to_chat(user, "<span class='notice'>You successfully removed [O]'s wrapping !</span>")
+		to_chat(user, "<span class='notice'>Udaje ci się zdjąć opakowanie z [O]!</span>")
 		O.forceMove(loc)
 		playsound(src.loc, 'sound/items/poster_ripped.ogg', 50, 1)
 		qdel(src)
 	else
 		if(user.loc == src) //so we don't get the message if we resisted multiple times and succeeded.
-			to_chat(user, "<span class='warning'>You fail to remove [O]'s wrapping!</span>")
+			to_chat(user, "<span class='warning'>Nie udaje ci się zdjąć opakowania z [O]!</span>")
 
 
 /obj/structure/big_delivery/proc/disposal_handling(disposal_source, obj/structure/disposalholder/disposal_holder, obj/machinery/disposal/disposal_machine, hasmob)
@@ -102,9 +102,9 @@
 /obj/item/small_delivery/examine(mob/user)
 	. = ..()
 	if(!CHECK_BITFIELD(interaction_flags_item, INTERACT_ITEM_ATTACK_HAND_PICKUP))
-		. += "<span class='notice'>It's far too large to pick up!</span>"
+		. += "<span class='notice'>To jest o wiele za duże, by to podnieść!</span>"
 	if(density)
-		. += "<span class='notice'>It's far too bulky to squeeze past!</span>"
+		. += "<span class='notice'>To jest o wiele za nieporęczne, by się obok przecisnąć!</span>"
 //NSV13 end.
 
 /obj/item/small_delivery/contents_explosion(severity, target)
@@ -151,15 +151,15 @@
 
 	else if(istype(W, /obj/item/pen))
 		if(!user.is_literate())
-			to_chat(user, "<span class='notice'>You scribble illegibly on the side of [src]!</span>")
+			to_chat(user, "<span class='notice'>Gryzmolisz nieczytelnie na boku [src]!</span>")
 			return
-		var/str = stripped_input(user, "Label text?", "Set label", "", MAX_NAME_LEN)
+		var/str = stripped_input(user, "Tekst etykiety?", "Ustaw etykietę", "", MAX_NAME_LEN)
 		if(!user.canUseTopic(src, BE_CLOSE))
 			return
 		if(!str || !length(str))
-			to_chat(user, "<span class='warning'>Invalid text!</span>")
+			to_chat(user, "<span class='warning'>Nieprawidłowy tekst!</span>")
 			return
-		user.visible_message("[user] labels [src] as [str].")
+		user.visible_message("[user] oznacza [src] jako [str].")
 		name = "[name] ([str])"
 
 	else if(istype(W, /obj/item/stack/wrapping_paper) && !giftwrapped)
@@ -167,15 +167,15 @@
 		if(WP.use(1))
 			icon_state = "gift[icon_state]"
 			giftwrapped = 1
-			user.visible_message("[user] wraps the package in festive paper!")
+			user.visible_message("[user] owija paczkę świątecznym papierem!")
 		else
-			to_chat(user, "<span class='warning'>You need more paper!</span>")
+			to_chat(user, "<span class='warning'>Potrzebujesz więcej papieru!</span>")
 	//NSV13 - cutting open packages. Required if too large to handle inhand.
 	else if(W.force > 0 && W.is_sharp())
-		user.visible_message("<span class='notice'>[user] starts to cut open [src].</span>", "<span class='notice'>You start to cut open [src].</span>")
+		user.visible_message("<span class='notice'>[user] zaczyna rozcinać [src].</span>", "<span class='notice'>Zaczynasz rozcinać [src].</span>")
 		if(!do_after(user, 3 SECONDS, target = src))
 			return TRUE
-		user.visible_message("<span class='notice'>[user] cuts apart [src].</span>", "<span class='notice'>You cut apart [src]!</span>", "<span class='warning'>You hear wrap being cut apart!</span>")
+		user.visible_message("<span class='notice'>[user] rozcina [src].</span>", "<span class='notice'>Rozcinasz [src]!</span>", "<span class='warning'>Słyszysz rozcinanie opakowania!</span>")
 		var/turf/dest_turf = get_turf(src)
 		for(var/atom/movable/AM in contents)
 			AM.forceMove(dest_turf)
@@ -211,7 +211,7 @@
 	desc = "Used to fool the disposal mail network into thinking that you're a harmless parcel. Does actually work as a regular destination tagger as well."
 
 /obj/item/dest_tagger/suicide_act(mob/living/user)
-	user.visible_message("<span class='suicide'>[user] begins tagging [user.p_their()] final destination!  It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaczyna oznaczać swój cel ostateczny! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	if (islizard(user))
 		to_chat(user, "<span class='notice'>*HELL*</span>")//lizard nerf
 	else
@@ -229,7 +229,7 @@
 		if(i%4==0)
 			dat += "</tr><tr>"
 
-	dat += "</tr></table><br>Current Selection: [currTag ? GLOB.TAGGERLOCATIONS[currTag] : "None"]</tt>"
+	dat += "</tr></table><br>Obecny wybór: [currTag ? GLOB.TAGGERLOCATIONS[currTag] : "Brak"]</tt>"
 
 	user << browse(HTML_SKELETON(dat), "window=destTagScreen;size=450x350")
 	onclose(user, "destTagScreen")

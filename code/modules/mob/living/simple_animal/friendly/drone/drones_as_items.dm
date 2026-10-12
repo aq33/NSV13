@@ -15,8 +15,8 @@
 	density = FALSE
 	death = FALSE
 	roundstart = FALSE
-	short_desc = "You are a drone."
-	flavour_text = "You are a drone, a tiny insect-like creature. Follow your assigned laws to the best of your ability."
+	short_desc = "Jesteś dronem."
+	flavour_text = "Jesteś dronem, maleńkim stworzeniem przypominającym owada. Przestrzegaj przypisanych ci praw najlepiej, jak potrafisz."
 	mob_type = /mob/living/simple_animal/drone
 	var/seasonal_hats = TRUE //If TRUE, and there are no default hats, different holidays will grant different hats
 	var/static/list/possible_seasonal_hats //This is built automatically in build_seasonal_hats() but can also be edited by admins!
@@ -25,7 +25,7 @@
 	. = ..()
 	var/area/A = get_area(src)
 	if(A)
-		notify_ghosts("A drone shell has been created in \the [A.name].", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE, ignore_key = POLL_IGNORE_DRONE, notify_suiciders = FALSE)
+		notify_ghosts("W [A.name] powstała powłoka drona.", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE, ignore_key = POLL_IGNORE_DRONE, notify_suiciders = FALSE)
 	GLOB.poi_list |= src
 	if(isnull(possible_seasonal_hats))
 		build_seasonal_hats()
@@ -48,9 +48,9 @@
 	if(is_banned_from(user.ckey, ROLE_DRONE) || QDELETED(src) || QDELETED(user))
 		return
 	if(!SSticker.mode)
-		to_chat(user, "Can't become a drone before the game has started.")
+		to_chat(user, "Nie możesz zostać dronem przed rozpoczęciem gry.")
 		return
-	var/be_drone = alert("Become a drone? (Warning, You can no longer be cloned!)",,"Yes","No")
+	var/be_drone = alert("Zostać dronem? (Uwaga: nie będzie można cię sklonować!)",,"Yes","No")
 	if(be_drone != "Yes" || QDELETED(src) || !isobserver(user))
 		return
 	var/mob/living/simple_animal/drone/D = new mob_type(get_turf(loc))

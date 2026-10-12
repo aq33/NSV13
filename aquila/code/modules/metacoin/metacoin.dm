@@ -12,6 +12,6 @@
 						if(!coeff)
 							coeff = 0
 						if(banking_details)
-							inc_metabalance(FLOOR(banking_details.account_balance * coeff, 1), reason="Bank account balance converted to [CONFIG_GET(string/metacurrency_name)]\s.")
+							inc_metabalance(FLOOR(banking_details.account_balance * coeff, 1), reason="Saldo konta bankowego przeliczono na [CONFIG_GET(string/metacurrency_name)].")
 							if(banking_details.welfare)
-								inc_metabalance(2 * PAYCHECK_WELFARE, reason="Bank account balance conversion welfare bonus.")
+								inc_metabalance(2 * PAYCHECK_WELFARE, reason="Premia socjalna za przeliczenie salda konta bankowego.")

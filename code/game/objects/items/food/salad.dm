@@ -9,9 +9,9 @@
 		/datum/reagent/consumable/nutriment = 7,
 		/datum/reagent/consumable/nutriment/vitamin = 2
 	)
-	tastes = list("leaves" = 1)
+	tastes = list("liście" = 1)
 	foodtypes = VEGETABLES
-	eatverbs = list("devour","nibble","gnaw","gobble","chomp") //who the fuck gnaws and devours on a salad
+	eatverbs = list("pożera","skubie","obgryza","pochłania","chrupie") //who the fuck gnaws and devours on a salad
 	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/salad/aesirsalad
@@ -22,7 +22,7 @@
 		/datum/reagent/consumable/nutriment = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 12
 	)
-	tastes = list("leaves" = 1)
+	tastes = list("liście" = 1)
 	foodtypes = VEGETABLES | FRUIT
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -34,7 +34,7 @@
 		/datum/reagent/consumable/nutriment = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 6
 	)
-	tastes = list("leaves" = 1, "apple" = 1)
+	tastes = list("liście" = 1, "jabłko" = 1)
 	foodtypes = VEGETABLES | FRUIT
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -48,7 +48,7 @@
 		/datum/reagent/consumable/doctor_delight = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 6
 	)
-	tastes = list("leaves" = 1, "potato" = 1, "meat" = 1, "valids" = 1)
+	tastes = list("liście" = 1, "ziemniak" = 1, "mięso" = 1, "validy" = 1)
 	foodtypes = VEGETABLES | MEAT | FRIED | FRUIT
 
 /obj/item/food/salad/fruit
@@ -59,7 +59,7 @@
 		/datum/reagent/consumable/nutriment = 9,
 		/datum/reagent/consumable/nutriment/vitamin = 5
 	)
-	tastes = list("fruit" = 1)
+	tastes = list("owoce" = 1)
 	foodtypes = FRUIT
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -72,7 +72,7 @@
 		/datum/reagent/consumable/banana = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 7
 	)
-	tastes = list("fruit" = 1, "the jungle" = 1)
+	tastes = list("owoce" = 1, "dżungla" = 1)
 	foodtypes = FRUIT
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -84,7 +84,7 @@
 		/datum/reagent/consumable/nutriment = 11,
 		/datum/reagent/consumable/nutriment/vitamin = 7
 	)
-	tastes = list("sourness" = 1, "leaves" = 1)
+	tastes = list("kwaśność" = 1, "liście" = 1)
 	foodtypes = FRUIT
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -93,7 +93,7 @@
 	desc = "A clump of raw rice."
 	icon_state = "uncooked_rice"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4)
-	tastes = list("rice" = 1)
+	tastes = list("ryż" = 1)
 	foodtypes = GRAIN | RAW
 	microwaved_type = /obj/item/food/boiledrice
 
@@ -110,7 +110,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2
 	)
-	tastes = list("rice" = 1)
+	tastes = list("ryż" = 1)
 	foodtypes = GRAIN | BREAKFAST
 	crafting_complexity = FOOD_COMPLEXITY_1
 
@@ -123,7 +123,7 @@
 		/datum/reagent/consumable/sugar = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 3
 	)
-	tastes = list("rice" = 1, "sweetness" = 1)
+	tastes = list("ryż" = 1, "słodycz" = 1)
 	foodtypes = GRAIN | DAIRY | SUGAR
 
 /obj/item/food/salad/ricepork
@@ -135,7 +135,7 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 3
 	)
-	tastes = list("rice" = 1, "meat" = 1)
+	tastes = list("ryż" = 1, "mięso" = 1)
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -148,7 +148,7 @@
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 4
 	)
-	tastes = list("rice" = 1, "egg" = 1)
+	tastes = list("ryż" = 1, "jajko" = 1)
 	foodtypes = GRAIN | MEAT //EGG = MEAT -NinjaNomNom 2017
 	crafting_complexity = FOOD_COMPLEXITY_4
 

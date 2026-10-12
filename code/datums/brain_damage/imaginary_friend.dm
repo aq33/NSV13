@@ -1,9 +1,9 @@
 /datum/brain_trauma/special/imaginary_friend
 	name = "Imaginary Friend"
 	desc = "Patient can see and hear an imaginary person."
-	scan_desc = "partial schizophrenia"
-	gain_text = "<span class='notice'>You feel in good company, for some reason.</span>"
-	lose_text = "<span class='warning'>You feel lonely again.</span>"
+	scan_desc = "częściowa schizofrenia"
+	gain_text = "<span class='notice'>Z jakiegoś powodu czujesz się w dobrym towarzystwie.</span>"
+	lose_text = "<span class='warning'>Znów czujesz się samotny.</span>"
 	var/mob/camera/imaginary_friend/friend
 	var/friend_initialized = FALSE
 
@@ -46,7 +46,7 @@
 	if(owner.stat == DEAD || !owner.mind)
 		qdel(src)
 		return
-	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Do you want to play as [owner]'s imaginary friend?", ROLE_IMAGINARY_FRIEND, null, 7.5 SECONDS, friend)
+	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Chcesz zagrać jako wyimaginowany przyjaciel [owner]?", ROLE_IMAGINARY_FRIEND, null, 7.5 SECONDS, friend)
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
 		friend.key = C.key
@@ -82,9 +82,9 @@
 	Show()
 
 /mob/camera/imaginary_friend/proc/greet()
-	to_chat(src, "<span class='notice'><b>You are the imaginary friend of [owner]!</b></span>")
-	to_chat(src, "<span class='notice'>You are absolutely loyal to your friend, no matter what.</span>")
-	to_chat(src, "<span class='notice'>You cannot directly influence the world around you, but you can see what [owner] cannot.</span>")
+	to_chat(src, "<span class='notice'><b>Jesteś wyimaginowanym przyjacielem [owner]!</b></span>")
+	to_chat(src, "<span class='notice'>Jesteś absolutnie lojalny wobec swojego przyjaciela, bez względu na wszystko.</span>")
+	to_chat(src, "<span class='notice'>Nie możesz bezpośrednio wpływać na otaczający świat, ale widzisz to, czego [owner] nie widzi.</span>")
 
 /mob/camera/imaginary_friend/Initialize(mapload, _trauma)
 	. = ..()
@@ -155,7 +155,7 @@
 	SIGNAL_HANDLER
 	var/list/listening = get_hearers_in_view(6, owner, SEE_INVISIBLE_MAXIMUM)
 	if(!(src in listening))
-		to_chat(src, "<span class='hear'>You hear a distant voice in your head...</span>")
+		to_chat(src, "<span class='hear'>Słyszysz w głowie odległy głos...</span>")
 		to_chat(src, "<span class='game say'><span class='name'>[speaker]</span> <span class='message'>[say_quote(speech_args[SPEECH_MESSAGE])]</span></span>")
 
 /mob/camera/imaginary_friend/say(message, bubble_type, var/list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
@@ -164,7 +164,7 @@
 
 	if (src.client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, "You cannot send IC messages (muted).")
+			to_chat(src, "Nie możesz wysyłać wiadomości IC (wyciszenie).")
 			return
 		if (src.client.handle_spam_prevention(message,MUTE_IC))
 			return
@@ -195,7 +195,7 @@
 			hearers += owner.client
 
 	var/rendered = "<span class='game say'><span class='name'>[name]</span> <span class='message'>[say_quote(message)]</span></span>"
-	var/dead_rendered = "<span class='game say'><span class='name'>[name] (Imaginary friend of [owner])</span> <span class='message'>[say_quote(message)]</span></span>"
+	var/dead_rendered = "<span class='game say'><span class='name'>[name] (wyimaginowany przyjaciel [owner])</span> <span class='message'>[say_quote(message)]</span></span>"
 
 	to_chat(owner, "[rendered]")
 	to_chat(src, "[rendered]")
@@ -226,8 +226,8 @@
 /mob/camera/imaginary_friend/pointed(atom/A as mob|obj|turf in view())
 	if(!..())
 		return FALSE
-	to_chat(owner, "<b>[src]</b> points at [A].")
-	to_chat(src, "<span class='notice'>You point at [A].</span>")
+	to_chat(owner, "<b>[src]</b> wskazuje na [A].")
+	to_chat(src, "<span class='notice'>Wskazujesz na [A].</span>")
 
 	var/turf/our_tile = get_turf(src)
 	var/turf/tile = get_turf(A)
@@ -304,13 +304,13 @@
 
 /mob/camera/imaginary_friend/trapped
 	name = "figment of imagination?"
-	real_name = "figment of imagination?"
+	real_name = "wytwór wyobraźni?"
 	desc = "The previous host of this body."
 
 /mob/camera/imaginary_friend/trapped/greet()
-	to_chat(src, "<span class='notice'><b>You have managed to hold on as a figment of the new host's imagination!</b></span>")
-	to_chat(src, "<span class='notice'>All hope is lost for you, but at least you may interact with your host. You do not have to be loyal to them.</span>")
-	to_chat(src, "<span class='notice'>You cannot directly influence the world around you, but you can see what the host cannot.</span>")
+	to_chat(src, "<span class='notice'><b>Udało ci się utrzymać jako wytwór wyobraźni nowego nosiciela!</b></span>")
+	to_chat(src, "<span class='notice'>Wszelka nadzieja dla ciebie przepadła, ale przynajmniej możesz wchodzić w interakcje z nosicielem. Nie musisz być wobec niego lojalny.</span>")
+	to_chat(src, "<span class='notice'>Nie możesz bezpośrednio wpływać na otaczający świat, ale widzisz to, czego nosiciel nie widzi.</span>")
 
 /mob/camera/imaginary_friend/trapped/setup_friend()
 	real_name = "[owner.real_name]?"

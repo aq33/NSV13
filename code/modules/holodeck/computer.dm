@@ -174,7 +174,7 @@ and clear when youre done! if you dont i will use :newspaper2: on you
 				emergency_shutdown()
 			nerf(obj_flags & EMAGGED,FALSE)
 			obj_flags ^= EMAGGED
-			say("Safeties reset. Restarting...")
+			say("Zabezpieczenia zresetowane. Restartowanie...")
 			. = TRUE
 
 ///this is what makes the holodeck not spawn anything on broken tiles (space and non engine plating / non holofloors)
@@ -194,7 +194,7 @@ and clear when youre done! if you dont i will use :newspaper2: on you
 		force = TRUE
 
 	if (!force && (!COOLDOWN_FINISHED(src, holodeck_cooldown) || spawning_simulation))
-		say("ERROR. Recalibrating projection apparatus.")
+		say("BŁĄD. Ponowna kalibracja aparatu projekcyjnego.")
 		return
 
 	if(spawning_simulation)
@@ -232,7 +232,7 @@ and clear when youre done! if you dont i will use :newspaper2: on you
 	spawned = template.created_atoms //populate the spawned list with the atoms belonging to the holodeck
 
 	if(istype(template, /datum/map_template/holodeck/recreation/thunderdome1218) && !SSshuttle.shuttle_purchase_requirements_met[SHUTTLE_UNLOCK_MEDISIM])
-		say("Special note from \"1218 AD\" developer: I see you too are interested in the REAL dark ages of humanity! I've made this program also unlock some interesting shuttle designs on any communication console around. Have fun!")
+		say("Specjalna notka od twórcy „1218 AD”: widzę, że ty też interesujesz się PRAWDZIWYMI wiekami ciemnymi ludzkości! Ten program odblokowuje też ciekawe projekty promów w każdej konsoli komunikacyjnej. Baw się dobrze!")
 		SSshuttle.shuttle_purchase_requirements_met[SHUTTLE_UNLOCK_MEDISIM] = TRUE
 
 	nerf(!(obj_flags & EMAGGED))
@@ -291,7 +291,7 @@ and clear when youre done! if you dont i will use :newspaper2: on you
 		atom_contents.forceMove(target_turf)
 
 	if(!silent)
-		visible_message("<span class='notice'>[holo_atom] fades away!</span>")
+		visible_message("<span class='notice'>[holo_atom] znika!</span>")
 
 	qdel(holo_atom)
 
@@ -314,7 +314,7 @@ and clear when youre done! if you dont i will use :newspaper2: on you
 	if(!floorcheck()) //if any turfs in the floor of the holodeck are broken
 		emergency_shutdown()
 		damaged = TRUE
-		visible_message("The holodeck overloads!")
+		visible_message("Holodek się przeciąża!")
 		for(var/turf/holo_turf in linked)
 			if(DT_PROB(30, delta_time))
 				do_sparks(2, 1, holo_turf)
@@ -375,12 +375,12 @@ and clear when youre done! if you dont i will use :newspaper2: on you
 	if(obj_flags & EMAGGED)
 		return
 	if(!LAZYLEN(emag_programs))
-		to_chat(user, "[src] does not seem to have a card swipe port. It must be an inferior model.")
+		to_chat(user, "Wygląda na to, że [src] nie ma czytnika kart. To musi być gorszy model.")
 		return
 	playsound(src, "sparks", 75, TRUE)
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class='warning'>You vastly increase projector power and override the safety and security protocols.</span>")
-	say("Warning. Automatic shutoff and derezzing protocols have been corrupted. Please call Nanotrasen maintenance and do not use the simulator.")
+	to_chat(user, "<span class='warning'>Ogromnie zwiększasz moc projektora i obchodzisz protokoły bezpieczeństwa.</span>")
+	say("Ostrzeżenie. Protokoły automatycznego wyłączania i dezintegracji zostały uszkodzone. Wezwij serwis Nanotrasen i nie używaj symulatora.")
 	log_game("[key_name(user)] emagged the Holodeck Control Console")
 	nerf(!(obj_flags & EMAGGED),FALSE)
 	ui_update()

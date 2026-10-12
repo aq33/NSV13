@@ -152,12 +152,12 @@ GLOBAL_VAR_INIT(summon_magic_triggered, FALSE)
 
 	to_chat(H, "<span class='warning'>\A [M] appears [in_hand ? "in your hand" : "at your feet"]!</span>")
 	if(lucky)
-		to_chat(H, "<span class='notice'>You feel incredibly lucky.</span>")
+		to_chat(H, "<span class='notice'>Czujesz się niewiarygodnie szczęśliwy.</span>")
 
 
 /proc/rightandwrong(summon_type, mob/user, survivor_probability)
 	if(user) //in this case either someone holding a spellbook or a badmin
-		to_chat(user, "<span class='warning'>You summoned [summon_type]!</span>")
+		to_chat(user, "<span class='warning'>Przywołujesz: [summon_type]!</span>")
 		message_admins("[ADMIN_LOOKUPFLW(user)] summoned [summon_type]!")
 		log_game("[key_name(user)] summoned [summon_type]!")
 

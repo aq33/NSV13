@@ -6,9 +6,9 @@
 	icon_dead = "bat_dead"
 	icon_gib = "bat_dead"
 	turns_per_move = 1
-	response_help = "brushes aside"
-	response_disarm = "flails at"
-	response_harm = "hits"
+	response_help = "odsuwa na bok"
+	response_disarm = "macha rękami na"
+	response_harm = "uderza"
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
 	speak_chance = 0
 	maxHealth = 15
@@ -16,7 +16,7 @@
 	spacewalk = TRUE
 	see_in_dark = 10
 	melee_damage = 6
-	attacktext = "bites"
+	attacktext = "gryzie"
 	butcher_results = list(/obj/item/food/meat/slab = 1)
 	pass_flags = PASSTABLE
 	faction = list("hostile")
@@ -26,7 +26,7 @@
 	ventcrawler = VENTCRAWLER_ALWAYS
 	mob_size = MOB_SIZE_TINY
 	movement_type = FLYING
-	speak_emote = list("squeaks")
+	speak_emote = list("piszczy")
 	var/max_co2 = 0 //to be removed once metastation map no longer use those for Sgt Araneus
 	var/min_oxy = 0
 	var/max_tox = 0
@@ -46,8 +46,8 @@
 	name = "Sergeant Araneus"
 	real_name = "Sergeant Araneus"
 	desc = "A fierce companion of the Head of Security, this spider has been carefully trained by Nanotrasen specialists. Its beady, staring eyes send shivers down your spine."
-	speak_emote = list("chitters")
-	emote_hear = list("chitters")
+	speak_emote = list("terkocze")
+	emote_hear = list("terkocze")
 	faction = list("spiders")
 	icon_dead = "guard_dead"
 	icon_gib = "guard_dead"
@@ -60,5 +60,5 @@
 	melee_damage = 15
 	min_oxy = 5
 	movement_type = GROUND
-	response_help = "pets"
+	response_help = "głaszcze"
 	turns_per_move = 10

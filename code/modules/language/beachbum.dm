@@ -1,10 +1,10 @@
 /datum/language/beachbum
 	name = "Beachtongue"
 	desc = "An ancient language from the distant Beach Planet. People magically learn to speak it under the influence of space drugs."
-	speech_verb = "mumbles"
-	ask_verb = "grills"
-	exclaim_verb = "hollers"
-	sing_verb = "parties"
+	speech_verb = "mamrocze"
+	ask_verb = "wypytuje"
+	exclaim_verb = "wydziera się"
+	sing_verb = "imprezuje"
 	key = "u"
 	space_chance = 85
 	default_priority = 90

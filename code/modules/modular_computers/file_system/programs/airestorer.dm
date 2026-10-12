@@ -1,9 +1,9 @@
 /datum/computer_file/program/aidiag
 	filename = "aidiag"
-	filedesc = "AI Integrity Restorer"
+	filedesc = "Przywracanie integralności SI"
 	category = PROGRAM_CATEGORY_ROBO
 	program_icon_state = "generic"
-	extended_desc = "This program is capable of reconstructing damaged AI systems. Requires direct AI connection via intellicard slot."
+	extended_desc = "Ten program potrafi odbudować uszkodzone systemy SI. Wymaga bezpośredniego połączenia z SI przez gniazdo intelliCard."
 	size = 12
 	requires_ntnet = FALSE
 	usage_flags = PROGRAM_CONSOLE | PROGRAM_LAPTOP
@@ -44,7 +44,7 @@
 		if("PRG_beginReconstruction")
 			if(A && A.health < 100)
 				restoring = TRUE
-				A.notify_ghost_cloning("Your core files are being restored!", source = computer)
+				A.notify_ghost_cloning("Twoje pliki rdzenia są przywracane!", source = computer)
 			return TRUE
 		if("PRG_eject")
 			if(computer.all_components[MC_AI])

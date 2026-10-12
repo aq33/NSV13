@@ -29,7 +29,7 @@
 		modified = TRUE
 		FD.modified = TRUE
 		FD.damage_type = BRUTE
-		to_chat(user, "<span class='notice'>You pop the safety cap off [src].</span>")
+		to_chat(user, "<span class='notice'>Zdejmujesz nasadkę zabezpieczającą z [src].</span>")
 		update_icon()
 	else if (istype(A, /obj/item/pen))
 		if(modified)
@@ -40,11 +40,11 @@
 				FD.pen = A
 				FD.damage = 5
 				FD.nodamage = FALSE
-				to_chat(user, "<span class='notice'>You insert [A] into [src].</span>")
+				to_chat(user, "<span class='notice'>Wkładasz [A] do [src].</span>")
 			else
-				to_chat(user, "<span class='warning'>There's already something in [src].</span>")
+				to_chat(user, "<span class='warning'>W [src] już coś jest.</span>")
 		else
-			to_chat(user, "<span class='warning'>The safety cap prevents you from inserting [A] into [src].</span>")
+			to_chat(user, "<span class='warning'>Nasadka zabezpieczająca nie pozwala ci włożyć [A] do [src].</span>")
 	else
 		return ..()
 
@@ -54,7 +54,7 @@
 		FD.damage = initial(FD.damage)
 		FD.nodamage = initial(FD.nodamage)
 		user.put_in_hands(FD.pen)
-		to_chat(user, "<span class='notice'>You remove [FD.pen] from [src].</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz [FD.pen] z [src].</span>")
 		FD.pen = null
 
 /obj/item/ammo_casing/caseless/foam_dart/riot

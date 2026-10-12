@@ -117,29 +117,29 @@
 	var/Fact
 	switch(game_age)
 		if(16)
-			Fact = " SS13 is now old enough to drive!"
+			Fact = " SS13 jest już na tyle stare, by prowadzić samochód!"
 		if(18)
-			Fact = " SS13 is now legal!"
+			Fact = " SS13 jest już pełnoletnie!"
 		if(21)
-			Fact = " SS13 can now drink!"
+			Fact = " SS13 może już legalnie pić alkohol!"
 		if(26)
-			Fact = " SS13 can now rent a car!"
+			Fact = " SS13 może już wypożyczyć samochód!"
 		if(30)
-			Fact = " SS13 can now go home and be a family man!"
+			Fact = " SS13 może już wrócić do domu i być głową rodziny!"
 		if(35)
-			Fact = " SS13 can now run for President of the United States!"
+			Fact = " SS13 może już kandydować na prezydenta Stanów Zjednoczonych!"
 		if(40)
-			Fact = " SS13 can now suffer a midlife crisis!"
+			Fact = " SS13 może już przechodzić kryzys wieku średniego!"
 		if(50)
 			Fact = " Happy golden anniversary!"
 		if(65)
-			Fact = " SS13 can now start thinking about retirement!"
+			Fact = " SS13 może już zacząć myśleć o emeryturze!"
 		if(96)
-			Fact = " Please send a time machine back to pick me up, I need to update the time formatting for this feature!" //See you later suckers
+			Fact = " Przyślijcie wehikuł czasu, żeby mnie zabrał, muszę zaktualizować formatowanie czasu dla tej funkcji!" //See you later suckers
 	if(!Fact)
-		Fact = " SS13 is now [game_age] years old!"
+		Fact = " SS13 ma już [game_age] lat!"
 
-	return "Say 'Happy Birthday' to Space Station 13, first publicly playable on February 16th, 2003![Fact]"
+	return "Złóżcie życzenia urodzinowe Space Station 13, publicznie grywalnej po raz pierwszy 16 lutego 2003 roku![Fact]"
 
 /datum/holiday/random_kindness
 	name = "Random Acts of Kindness Day"
@@ -147,7 +147,7 @@
 	begin_month = FEBRUARY
 
 /datum/holiday/random_kindness/greet()
-	return "Go do some random acts of kindness for a stranger!" //haha yeah right
+	return "Zrób kilka przypadkowych dobrych uczynków dla nieznajomego!" //haha yeah right
 
 /datum/holiday/leap
 	name = "Leap Day"
@@ -194,7 +194,7 @@
 	drone_hat = /obj/item/clothing/head/syndicatefake
 
 /datum/holiday/spess/greet()
-	return "On this day over 600 years ago, Comrade Yuri Gagarin first ventured into space!"
+	return "Ponad 600 lat temu tego dnia towarzysz Jurij Gagarin po raz pierwszy poleciał w kosmos!"
 
 /datum/holiday/fourtwenty
 	name = "Four-Twenty"
@@ -284,7 +284,7 @@
 	return pick("Francais","Fromage", "Zut", "Merde")
 
 /datum/holiday/france/greet()
-	return "Do you hear the people sing?"
+	return "Czy słyszysz, jak śpiewa lud?"
 
 /datum/holiday/friendship
 	name = "Friendship Day"
@@ -320,7 +320,7 @@
 	drone_hat = /obj/item/clothing/head/pirate
 
 /datum/holiday/pirate/greet()
-	return "Ye be talkin' like a pirate today or else ye'r walkin' tha plank, matey!"
+	return "Dziś gadaj jak pirat albo pójdziesz po desce, kamracie!"
 
 /datum/holiday/pirate/getStationPrefix()
 	return pick("Yarr","Scurvy","Yo-ho-ho")
@@ -347,7 +347,7 @@
 	begin_month = SEPTEMBER
 
 /datum/holiday/questions/greet()
-	return "Are you having a happy [name]?"
+	return "Czy dobrze się bawisz w święto: [name]?"
 
 /datum/holiday/animal
 	name = "Animal's Day"
@@ -377,7 +377,7 @@
 	end_month = NOVEMBER
 
 /datum/holiday/halloween/greet()
-	return "Have a spooky Halloween!"
+	return "Strasznego Halloween!"
 
 /datum/holiday/halloween/getStationPrefix()
 	return pick("Bone-Rattling","Mr. Bones' Own","2SPOOKY","Spooky","Scary","Skeletons")
@@ -455,7 +455,7 @@
 	begin_weekday = SUNDAY
 
 /datum/holiday/mother/greet()
-	return "Happy Mother's Day in most of the Americas, Asia, and Oceania!"
+	return "Szczęśliwego Dnia Matki w większości obu Ameryk, Azji i Oceanii!"
 
 /datum/holiday/father
 	name = "Father's Day"
@@ -525,7 +525,7 @@ Since Ramadan is an entire month that lasts 29.5 days on average, the start and 
 	drone_hat = /obj/item/clothing/head/santa
 
 /datum/holiday/xmas/greet()
-	return "Have a merry Christmas!"
+	return "Wesołych Świąt!"
 
 /datum/holiday/xmas/celebrate()
 	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(roundstart_celebrate)))
@@ -551,7 +551,7 @@ Since Ramadan is an entire month that lasts 29.5 days on average, the start and 
 	drone_hat = /obj/item/clothing/head/santa
 
 /datum/holiday/festive_season/greet()
-	return "Have a nice festive season!"
+	return "Miłego okresu świątecznego!"
 
 /datum/holiday/boxing
 	name = "Boxing Day"
@@ -606,7 +606,7 @@ Since Ramadan is an entire month that lasts 29.5 days on average, the start and 
 		/obj/item/storage/bag/easterbasket = 15)
 
 /datum/holiday/easter/greet()
-	return "Greetings! Have a Happy Easter and keep an eye out for Easter Bunnies!"
+	return "Pozdrawiamy! Wesołej Wielkanocy i wypatrujcie wielkanocnych zajączków!"
 
 /datum/holiday/easter/getStationPrefix()
 	return pick("Fluffy","Bunny","Easter","Egg")

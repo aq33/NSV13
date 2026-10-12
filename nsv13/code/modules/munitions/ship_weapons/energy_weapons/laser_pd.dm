@@ -28,17 +28,17 @@
 	var/obj/machinery/ship_weapon/energy/laser_pd/stored_gun = tool.buffer
 	if(stored_gun && istype(stored_gun))
 		turret = stored_gun
-		to_chat(user, "<span class='warning'>Successfully linked [src] to [turret].")
+		to_chat(user, "<span class='warning'>Pomyślnie połączono [src] z [turret].")
 	else
-		to_chat(user, "<span class='warning'>No compatible weapon type found in buffer.")
+		to_chat(user, "<span class='warning'>W buforze nie znaleziono kompatybilnego typu broni.")
 
 /obj/machinery/computer/laser_pd/attack_hand(mob/user)
 	. = ..()
 	if(machine_stat & (BROKEN|NOPOWER))
-		to_chat(user, "<span class='warning'>[src] doesn't seem to be working.</span>")
+		to_chat(user, "<span class='warning'>[src] chyba nie działa.</span>")
 		return
 	if(!turret)
-		to_chat(user, "<span class='warning'>[src] is not linked to a laser turret! You can link it with a multitool.</span>")
+		to_chat(user, "<span class='warning'>[src] nie jest połączony z wieżyczką laserową! Możesz go połączyć multitoolem.</span>")
 		return
 	turret.start_gunning(user)
 

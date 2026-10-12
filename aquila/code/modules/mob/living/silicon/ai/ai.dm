@@ -5,15 +5,15 @@
 
 /mob/living/silicon/ai/attack_hand(mob/user)
 	if(hijacking)
-		user.visible_message(span_danger("[user] attempts to disconnect the circuit board from [src]"), span_notice("There appears to be something connected to [src]'s ports! You attempt to disconnect it..."))
+		user.visible_message(span_danger("[user] próbuje odłączyć płytkę drukowaną od [src]"), span_notice("Coś jest podłączone do portów [src]! Próbujesz to odłączyć..."))
 		if (do_after(user,100,target = src))
 			hijacking.forceMove(loc)
 			hijacking = null
 			hijack_start = 0
 			update_icons()
-			to_chat(src, span_bolddanger("Unknown device disconnected. Systems confirmed secure."))
+			to_chat(src, span_bolddanger("Odłączono nieznane urządzenie. Potwierdzono bezpieczeństwo systemów."))
 		else
-			to_chat(user, span_notice("You fail to remove the device."))
+			to_chat(user, span_notice("Nie udaje ci się usunąć urządzenia."))
 		return
 	return ..()
 
@@ -35,8 +35,8 @@
 	. = ..()
 	if(istype(card) && interaction == AI_TRANS_TO_CARD && hijacking)
 		hijacking.forceMove(get_turf(card))
-		hijacking.visible_message(span_warning("[hijacking] falls off of [AI] as it's transferred to [card]!"))
+		hijacking.visible_message(span_warning("[hijacking] odpada od [AI], gdy zostaje przeniesiona do [card]!"))
 		hijacking = null
 		hijack_start = 0
-		to_chat(src, span_bolddanger("Unknown device disconnected. Systems confirmed secure."))
+		to_chat(src, span_bolddanger("Odłączono nieznane urządzenie. Potwierdzono bezpieczeństwo systemów."))
 

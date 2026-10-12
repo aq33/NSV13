@@ -11,7 +11,7 @@
 		/datum/reagent/consumable/cocoa = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("chocolate" = 4, "sweetness" = 1)
+	tastes = list("czekolada" = 4, "słodycz" = 1)
 	foodtypes = JUNKFOOD | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -67,20 +67,20 @@
 		var/clr = C.crayon_color
 
 		if(!(clr in list("blue", "green", "mime", "orange", "purple", "rainbow", "red", "yellow")))
-			to_chat(usr, "<span class='notice'>[src] refuses to take on this colour!</span>")
+			to_chat(usr, "<span class='notice'>[src] nie chce przyjąć tego koloru!</span>")
 			return
 
-		to_chat(usr, "<span class='notice'>You colour [src] with [W].</span>")
+		to_chat(usr, "<span class='notice'>Kolorujesz [src] za pomocą [W].</span>")
 		icon_state = "egg-[clr]"
 
 	else if(istype(W, /obj/item/reagent_containers))
 		var/obj/item/reagent_containers/dunk_test_container = W
 		if(dunk_test_container.is_drainable() && dunk_test_container.reagents.has_reagent(/datum/reagent/water))
-			to_chat(user, "<span class='notice'>You check if [src] is rotten.</span>")
+			to_chat(user, "<span class='notice'>Sprawdzasz, czy [src] jest zepsute.</span>")
 			if(istype(src, /obj/item/food/egg/rotten))
-				to_chat(user, "<span class='warning'>[src] floats in the [dunk_test_container]!</span>")
+				to_chat(user, "<span class='warning'>[src] unosi się w [dunk_test_container]!</span>")
 			else
-				to_chat(user,"<span class='notice'>[src] sinks into the [dunk_test_container]!</span>")
+				to_chat(user,"<span class='notice'>[src] tonie w [dunk_test_container]!</span>")
 	else
 		..()
 
@@ -118,7 +118,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
 	bite_consumption = 1
-	tastes = list("egg" = 4, "salt" = 1, "pepper" = 1)
+	tastes = list("jajko" = 4, "sól" = 1, "pieprz" = 1)
 	foodtypes = MEAT | FRIED | BREAKFAST
 	crafting_complexity = FOOD_COMPLEXITY_1
 
@@ -131,7 +131,7 @@
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("egg" = 1)
+	tastes = list("jajko" = 1)
 	foodtypes = MEAT | BREAKFAST
 	food_flags = FOOD_FINGER_FOOD // pretty sure I've seen people pop these in their mouths... right?
 	w_class = WEIGHT_CLASS_SMALL
@@ -141,7 +141,7 @@
 
 /obj/item/food/boiledegg/rotten
 	food_reagents = list(/datum/reagent/consumable/eggrot = 10)
-	tastes = list("rotten egg" = 1)
+	tastes = list("zgniłe jajko" = 1)
 	foodtypes = GROSS
 	preserved_food = TRUE
 
@@ -156,7 +156,7 @@
 	)
 	bite_consumption = 1
 	w_class = WEIGHT_CLASS_SMALL
-	tastes = list("egg" = 1, "cheese" = 1)
+	tastes = list("jajko" = 1, "ser" = 1)
 	foodtypes = MEAT | BREAKFAST | DAIRY //yeah, I say this just about reaches the threshold of dairy foodgroup
 	crafting_complexity = FOOD_COMPLEXITY_2
 	crafted_food_buff = /datum/status_effect/food/speech/french
@@ -165,11 +165,11 @@
 	if(istype(W, /obj/item/kitchen/fork))
 		var/obj/item/kitchen/fork/F = W
 		if(F.forkload)
-			to_chat(user, "<span class='warning'>You already have omelette on your fork!</span>")
+			to_chat(user, "<span class='warning'>Już masz omlet na widelcu!</span>")
 		else
 			F.icon_state = "forkloaded"
-			user.visible_message("[user] takes a piece of omelette with [user.p_their()] fork!", \
-				"<span class='notice'>You take a piece of omelette with your fork.</span>")
+			user.visible_message("[user] nabiera kawałek omletu na widelec!", \
+				"<span class='notice'>Nabierasz kawałek omletu na widelec.</span>")
 
 			var/datum/reagent/R = pick(reagents.reagent_list)
 			reagents.remove_reagent(R.type, 1)
@@ -190,7 +190,7 @@
 		/datum/reagent/consumable/nutriment = 3
 	)
 	w_class = WEIGHT_CLASS_SMALL
-	tastes = list("egg" = 1, "bacon" = 1, "bun" = 1)
+	tastes = list("jajko" = 1, "bekon" = 1, "bułka" = 1)
 	foodtypes = MEAT | BREAKFAST | GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -204,7 +204,7 @@
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 3
 	)
-	tastes = list("egg" = 1)
+	tastes = list("jajko" = 1)
 	foodtypes = MEAT | VEGETABLES
 	w_class = WEIGHT_CLASS_TINY
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -219,6 +219,6 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 1
 	)
-	tastes = list("custard" = 1)
+	tastes = list("budyń" = 1)
 	foodtypes = MEAT | VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_3

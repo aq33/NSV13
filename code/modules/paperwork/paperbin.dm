@@ -70,7 +70,7 @@
 		P.add_fingerprint(user)
 		P.forceMove(user.loc)
 		user.put_in_hands(P)
-		to_chat(user, "<span class='notice'>You take [P] out of \the [src].</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz [P] z [src].</span>")
 		bin_pen = null
 		update_icon()
 	else if(total_paper >= 1)
@@ -85,16 +85,16 @@
 			P = new papertype(src)
 			if(SSevents.holidays && SSevents.holidays[APRIL_FOOLS])
 				if(prob(30))
-					P.add_raw_text("<font face=\"[CRAYON_FONT]\" color=\"red\"><b>HONK HONK HONK HONK HONK HONK HONK<br>HOOOOOOOOOOOOOOOOOOOOOONK<br>APRIL FOOLS</b></font>")
+					P.add_raw_text("<font face=\"[CRAYON_FONT]\" color=\"red\"><b>HONK HONK HONK HONK HONK HONK HONK<br>HOOOOOOOOOOOOOOOOOOOOOONK<br>PRIMA APRILIS</b></font>")
 					P.AddComponent(/datum/component/honkspam)
 					P.update_appearance()
 
 		P.add_fingerprint(user)
 		P.forceMove(user.loc)
 		user.put_in_hands(P)
-		to_chat(user, "<span class='notice'>You take [P] out of \the [src].</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz [P] z [src].</span>")
 	else
-		to_chat(user, "<span class='warning'>[src] is empty!</span>")
+		to_chat(user, "<span class='warning'>[src] jest pusty!</span>")
 	add_fingerprint(user)
 	return ..()
 
@@ -103,7 +103,7 @@
 		var/obj/item/paper/P = I
 		if(!user.transferItemToLoc(P, src))
 			return
-		to_chat(user, "<span class='notice'>You put [P] in [src].</span>")
+		to_chat(user, "<span class='notice'>Wkładasz [P] do [src].</span>")
 		papers.Add(P)
 		total_paper++
 		update_icon()
@@ -111,7 +111,7 @@
 		var/obj/item/pen/P = I
 		if(!user.transferItemToLoc(P, src))
 			return
-		to_chat(user, "<span class='notice'>You put [P] in [src].</span>")
+		to_chat(user, "<span class='notice'>Wkładasz [P] do [src].</span>")
 		bin_pen = P
 		update_icon()
 	else
@@ -120,9 +120,9 @@
 /obj/item/paper_bin/examine(mob/user)
 	. = ..()
 	if(total_paper)
-		. += "It contains [total_paper > 1 ? "[total_paper] papers" : " one paper"]."
+		. += "Zawiera [total_paper > 1 ? "[total_paper] kartek" : " jedną kartkę"]."
 	else
-		. += "It doesn't contain anything."
+		. += "Nic nie zawiera."
 
 
 /obj/item/paper_bin/update_icon()
@@ -157,7 +157,7 @@
 
 /obj/item/paper_bin/bundlenatural/attackby(obj/item/W, mob/user)
 	if(W.is_sharp())
-		to_chat(user, "<span class='notice'>You snip \the [src], spilling paper everywhere.</span>")
+		to_chat(user, "<span class='notice'>Przecinasz [src], rozsypując wszędzie papier.</span>")
 		var/turf/T = get_turf(src.loc)
 		while(total_paper > 0)
 			total_paper--

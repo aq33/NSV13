@@ -65,11 +65,11 @@ Method to try locate an overmap object that we should attach to. Recursively cal
 
 /datum/reagent/hull_repair_juice
 	name = "Hull Repair Juice"
-	description = "Repairs hull plating rapidly."
+	description = "Szybko naprawia poszycie kadłuba."
 	reagent_state = LIQUID
 	color = "#CC8899"
 	metabolization_rate = 4
-	taste_description = "metallic hull repair juice"
+	taste_description = "metaliczny płyn do naprawy kadłuba"
 	process_flags = ORGANIC | SYNTHETIC
 
 //Hull repair juice -> stabilizing agent, iron, carbon
@@ -141,7 +141,7 @@ Method to try locate an overmap object that we should attach to. Recursively cal
 	update_icon()
 	if(obj_integrity <= max_integrity)
 		if(user)
-			to_chat(user, "<span class='warning'>You have fully repaired [src].</span>")
+			to_chat(user, "<span class='warning'>W pełni naprawiasz [src].</span>")
 		obj_integrity = max_integrity
 		update_icon()
 		if(armour_broken)
@@ -187,7 +187,7 @@ Method to try locate an overmap object that we should attach to. Recursively cal
 		var/obj/item/weldingtool/WT = W
 		if(obj_integrity >= max_integrity)
 			if(user)
-				to_chat(user, "<span class='warning'>[src] is not in need of repair.</span>")
+				to_chat(user, "<span class='warning'>[src] nie wymaga naprawy.</span>")
 			return FALSE
 		var/fuel_required = 1
 		var/list/plates = list()
@@ -197,12 +197,12 @@ Method to try locate an overmap object that we should attach to. Recursively cal
 				plates += S
 				fuel_required ++
 		if(!W.tool_start_check(user, amount=fuel_required))
-			to_chat(user, "<span class='notice'>You need [fuel_required-WT.get_fuel()] more units of welding fuel to repair this hull segment.</span>")
+			to_chat(user, "<span class='notice'>Do naprawy tego segmentu kadłuba potrzebujesz jeszcze [fuel_required-WT.get_fuel()] jednostek paliwa spawalniczego.</span>")
 			return ..()
-		to_chat(user, "<span class='notice'>You begin fixing some of the dents in [src] and the surrounding hull segment...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz naprawiać część wgnieceń w [src] i otaczającym segmencie kadłuba...</span>")
 		if(do_after(user, 4 SECONDS, target = src))
 			if(W.use_tool(src, user, 0, volume=100, amount=fuel_required))
-				to_chat(user, "<span class='notice'>You fix some of the dents in [src] and the surrounding hull segment.</span>")
+				to_chat(user, "<span class='notice'>Naprawiasz część wgnieceń w [src] i otaczającym segmencie kadłuba.</span>")
 				for(var/obj/structure/hull_plate/S in plates)
 					S.try_repair(100, user)
 		return FALSE

@@ -7,9 +7,9 @@
 	analyzerdesceffect = "Gdy zostanie zaatakowany lub zabity, opryskuje pobliskie podłoże gasząc wszystko, co się na nim znajduje."
 	color = "#AAAABB"
 	complementary_color = "#BBBBAA"
-	blobbernaut_message = "emits slime at"
+	blobbernaut_message = "pluje szlamem w"
 	message = "Grzyb rozpryskuje się na ciebie"
-	message_living = ", i zapierasz dech w piersiach"
+	message_living = ", a ty nie możesz złapać tchu"
 	reagent = /datum/reagent/blob/pressurized_slime
 
 /datum/blobstrain/reagent/pressurized_slime/damage_reaction(obj/structure/blob/B, damage, damage_type, damage_flag)
@@ -19,7 +19,7 @@
 
 /datum/blobstrain/reagent/pressurized_slime/death_reaction(obj/structure/blob/B, damage_flag)
 	if(damage_flag == "melee" || damage_flag == "bullet" || damage_flag == "laser")
-		B.visible_message("<span class='boldwarning'>The blob ruptures, spraying the area with liquid!</span>")
+		B.visible_message("<span class='boldwarning'>Grzyb pęka, rozpryskując wokół płyn!</span>")
 		extinguisharea(B, 50)
 
 /datum/blobstrain/reagent/pressurized_slime/proc/extinguisharea(obj/structure/blob/B, probchance)
@@ -34,7 +34,7 @@
 
 /datum/reagent/blob/pressurized_slime
 	name = "Pressurized Slime"
-	taste_description = "a sponge"
+	taste_description = "gąbka"
 	color = "#AAAABB"
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
 

@@ -12,7 +12,7 @@
 	throwforce = 15
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
-	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
+	attack_verb = list("atakuje", "rąbie", "rozłupuje", "rozdziera", "tnie")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP
 	max_integrity = 200
@@ -33,7 +33,7 @@
 	..()
 
 /obj/item/fireaxe/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] axes [user.p_them()]self from head to toe! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] rąbie się toporem od stóp do głów! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return (BRUTELOSS)
 
 /obj/item/fireaxe/afterattack(atom/A, mob/user, proximity)

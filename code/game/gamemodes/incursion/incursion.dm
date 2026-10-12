@@ -12,9 +12,7 @@
 	false_report_weight = 10
 
 	announce_span = "danger"
-	announce_text = "A large force of syndicate operatives have infiltrated the ranks of the station and wish to take it by force!\n\
-	<span class='danger'>Incursionists</span>: Accomplish your objectives.\n\
-	<span class='notice'>Crew</span>: Find and prevent the operatives from completing their goals!"
+	announce_text = "Duże siły agentów Syndykatu przeniknęły w szeregi stacji i chcą ją przejąć siłą!\n<span class='danger'>Najeźdźcy</span>: wykonajcie swoje cele.\n<span class='notice'>Załoga</span>: znajdźcie agentów i nie pozwólcie im osiągnąć celów!"
 
 	required_enemies = 1
 

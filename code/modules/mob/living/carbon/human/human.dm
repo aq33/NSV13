@@ -78,29 +78,29 @@
 		var/obj/item/clothing/suit/space/space_ninja/SN = wear_suit
 		if(!SN)
 			return
-		tab_data["SpiderOS Status"] = GENERATE_STAT_TEXT("[SN.s_initialized ? "Initialized" : "Disabled"]")
-		tab_data["Current Time"] = GENERATE_STAT_TEXT("[station_time_timestamp()]")
+		tab_data["Stan SpiderOS"] = GENERATE_STAT_TEXT("[SN.s_initialized ? "Uruchomiony" : "Wyłączony"]")
+		tab_data["Aktualny czas"] = GENERATE_STAT_TEXT("[station_time_timestamp()]")
 		tab_data["divider_spideros"] = GENERATE_STAT_DIVIDER
 		if(SN.s_initialized)
 			//Suit gear
-			tab_data["Energy Charge"] = GENERATE_STAT_TEXT("[round(SN.cell.charge/100)]%")
-			tab_data["Smoke Bombs"] = GENERATE_STAT_TEXT("[SN.s_bombs]")
+			tab_data["Naładowanie energii"] = GENERATE_STAT_TEXT("[round(SN.cell.charge/100)]%")
+			tab_data["Bomby dymne"] = GENERATE_STAT_TEXT("[SN.s_bombs]")
 			//Ninja status
-			tab_data["Fingerprints"] = GENERATE_STAT_TEXT("[rustg_hash_string(RUSTG_HASH_MD5, dna.uni_identity)]")
-			tab_data["Unique Identity"] = GENERATE_STAT_TEXT("[dna.unique_enzymes]")
-			tab_data["Overall Status"] = GENERATE_STAT_TEXT("[stat > 1 ? "dead" : "[health]% healthy"]")
-			tab_data["Nutrition Status"] = GENERATE_STAT_TEXT("[nutrition]")
-			tab_data["Oxygen Loss"] = GENERATE_STAT_TEXT("[getOxyLoss()]")
-			tab_data["Toxin Levels"] = GENERATE_STAT_TEXT("[getToxLoss()]")
-			tab_data["Burn Severity"] = GENERATE_STAT_TEXT("[getFireLoss()]")
-			tab_data["Brute Trauma"] = GENERATE_STAT_TEXT("[getBruteLoss()]")
-			tab_data["Radiation Levels"] = GENERATE_STAT_TEXT("[radiation] rad")
-			tab_data["Body Temperature"] = GENERATE_STAT_TEXT("[bodytemperature-T0C] degrees C ([bodytemperature*1.8-459.67] degrees F)")
+			tab_data["Odciski palców"] = GENERATE_STAT_TEXT("[rustg_hash_string(RUSTG_HASH_MD5, dna.uni_identity)]")
+			tab_data["Unikalna tożsamość"] = GENERATE_STAT_TEXT("[dna.unique_enzymes]")
+			tab_data["Stan ogólny"] = GENERATE_STAT_TEXT("[stat > 1 ? "martwy" : "[health]% zdrowia"]")
+			tab_data["Odżywienie"] = GENERATE_STAT_TEXT("[nutrition]")
+			tab_data["Niedotlenienie"] = GENERATE_STAT_TEXT("[getOxyLoss()]")
+			tab_data["Poziom toksyn"] = GENERATE_STAT_TEXT("[getToxLoss()]")
+			tab_data["Oparzenia"] = GENERATE_STAT_TEXT("[getFireLoss()]")
+			tab_data["Urazy fizyczne"] = GENERATE_STAT_TEXT("[getBruteLoss()]")
+			tab_data["Poziom promieniowania"] = GENERATE_STAT_TEXT("[radiation] rad")
+			tab_data["Temperatura ciała"] = GENERATE_STAT_TEXT("[bodytemperature-T0C] °C ([bodytemperature*1.8-459.67] °F)")
 
 			//Diseases
 			if(diseases.len)
 				tab_data["DivSpiderOs2"] = GENERATE_STAT_DIVIDER
-				tab_data["Viruses"] = GENERATE_STAT_TEXT("")
+				tab_data["Wirusy"] = GENERATE_STAT_TEXT("")
 				for(var/thing in diseases)
 					var/datum/disease/D = thing
 					tab_data["* [D.name]"] = GENERATE_STAT_TEXT("Type: [D.spread_text], Stage: [D.stage]/[D.max_stages], Possible Cure: [D.cure_text]")
@@ -121,15 +121,15 @@
 		if (!internal.air_contents)
 			qdel(internal)
 		else
-			tab_data["Internal Atmosphere Info"] = GENERATE_STAT_TEXT("[internal.name]")
-			tab_data["Tank Pressure"] = GENERATE_STAT_TEXT("[internal.air_contents.return_pressure()]")
-			tab_data["Distribution Pressure"] = GENERATE_STAT_TEXT("[internal.distribute_pressure]")
+			tab_data["Atmosfera wewnętrzna"] = GENERATE_STAT_TEXT("[internal.name]")
+			tab_data["Ciśnienie w butli"] = GENERATE_STAT_TEXT("[internal.air_contents.return_pressure()]")
+			tab_data["Ciśnienie wyjściowe"] = GENERATE_STAT_TEXT("[internal.distribute_pressure]")
 
 	if(mind)
 		var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
 		if(changeling)
-			tab_data["Chemical Storage"] = GENERATE_STAT_TEXT("[changeling.chem_charges]/[changeling.chem_storage]")
-			tab_data["Absorbed DNA"] = GENERATE_STAT_TEXT("[changeling.absorbedcount]")
+			tab_data["Zapas chemikaliów"] = GENERATE_STAT_TEXT("[changeling.chem_charges]/[changeling.chem_storage]")
+			tab_data["Wchłonięte DNA"] = GENERATE_STAT_TEXT("[changeling.absorbedcount]")
 	var/mob/living/simple_animal/horror/H = has_horror_inside() // AQ EDIT - Yogstation#13033
 	if(H?.controlling)
 		tab_data["Chemikalia horroru"] = GENERATE_STAT_TEXT("[H.chemicals]")
@@ -162,7 +162,7 @@
 	if(href_list["item"]) //canUseTopic check for this is handled by mob/Topic()
 		var/slot = text2num(href_list["item"])
 		if(check_obscured_slots(TRUE) & slot)
-			to_chat(usr, "<span class='warning'>You can't reach that! Something is covering it.</span>")
+			to_chat(usr, "<span class='warning'>Nie możesz tego dosięgnąć! Coś to zakrywa.</span>")
 			return
 
 	//NSV13 - Roleplaying Stuff
@@ -203,53 +203,53 @@
 				return
 			if(href_list["evaluation"])
 				if(!getBruteLoss() && !getFireLoss() && !getOxyLoss() && getToxLoss() < 20)
-					to_chat(usr, "<span class='notice'>No external injuries detected.</span><br>")
+					to_chat(usr, "<span class='notice'>Nie wykryto obrażeń zewnętrznych.</span><br>")
 					return
 				var/span = "notice"
 				var/status = ""
 				if(getBruteLoss())
-					to_chat(usr, "<b>Physical trauma analysis:</b>")
+					to_chat(usr, "<b>Analiza urazów fizycznych:</b>")
 					for(var/obj/item/bodypart/BP as() in bodyparts)
 						var/brutedamage = BP.brute_dam
 						if(brutedamage > 0)
-							status = "received minor physical injuries."
+							status = "odniosła drobne obrażenia."
 							span = "notice"
 						if(brutedamage > 20)
-							status = "been seriously damaged."
+							status = "jest poważnie uszkodzona."
 							span = "danger"
 						if(brutedamage > 40)
-							status = "sustained major trauma!"
+							status = "doznała ciężkiego urazu!"
 							span = "userdanger"
 						if(brutedamage)
-							to_chat(usr, "<span class='[span]'>[BP] appears to have [status]</span>")
+							to_chat(usr, "<span class='[span]'>Kończyna ([BP]) [status]</span>")
 				if(getFireLoss())
-					to_chat(usr, "<b>Analysis of skin burns:</b>")
+					to_chat(usr, "<b>Analiza oparzeń skóry:</b>")
 					for(var/obj/item/bodypart/BP as() in bodyparts)
 						var/burndamage = BP.burn_dam
 						if(burndamage > 0)
-							status = "signs of minor burns."
+							status = "ma ślady drobnych oparzeń."
 							span = "notice"
 						if(burndamage > 20)
-							status = "serious burns."
+							status = "ma poważne oparzenia."
 							span = "danger"
 						if(burndamage > 40)
-							status = "major burns!"
+							status = "ma ciężkie oparzenia!"
 							span = "userdanger"
 						if(burndamage)
-							to_chat(usr, "<span class='[span]'>[BP] appears to have [status]</span>")
+							to_chat(usr, "<span class='[span]'>Kończyna ([BP]) [status]</span>")
 				if(getOxyLoss())
-					to_chat(usr, "<span class='danger'>Patient has signs of suffocation, emergency treatment may be required!</span>")
+					to_chat(usr, "<span class='danger'>Pacjent ma objawy uduszenia, może być potrzebna pilna pomoc!</span>")
 				if(getToxLoss() > 20)
-					to_chat(usr, "<span class='danger'>Gathered data is inconsistent with the analysis, possible cause: poisoning.</span>")
+					to_chat(usr, "<span class='danger'>Zebrane dane nie zgadzają się z analizą, możliwa przyczyna: zatrucie.</span>")
 			if(!H.wear_id) //You require access from here on out.
-				to_chat(H, "<span class='warning'>ERROR: Invalid access</span>")
+				to_chat(H, "<span class='warning'>BŁĄD: brak dostępu</span>")
 				return
 			var/list/access = H.wear_id.GetAccess()
 			if(!(ACCESS_MEDICAL in access))
-				to_chat(H, "<span class='warning'>ERROR: Invalid access</span>")
+				to_chat(H, "<span class='warning'>BŁĄD: brak dostępu</span>")
 				return
 			if(href_list["p_stat"])
-				var/health_status = input(usr, "Specify a new physical status for this person.", "Medical HUD", general_record.fields["p_stat"]) in list("Active", "Physically Unfit", "*Unconscious*", "*Deceased*", "Cancel")
+				var/health_status = input(usr, "Podaj nowy stan fizyczny tej osoby.", "HUD medyczny", general_record.fields["p_stat"]) in list("Active", "Physically Unfit", "*Unconscious*", "*Deceased*", "Cancel")
 				if(!general_record)
 					return
 				if(!H.canUseHUD())
@@ -260,7 +260,7 @@
 					general_record.fields["p_stat"] = health_status
 				return
 			if(href_list["m_stat"])
-				var/health_status = input(usr, "Specify a new mental status for this person.", "Medical HUD", general_record.fields["m_stat"]) in list("Stable", "*Watch*", "*Unstable*", "*Insane*", "Cancel")
+				var/health_status = input(usr, "Podaj nowy stan psychiczny tej osoby.", "HUD medyczny", general_record.fields["m_stat"]) in list("Stable", "*Watch*", "*Unstable*", "*Insane*", "Cancel")
 				if(!general_record)
 					return
 				if(!H.canUseHUD())
@@ -271,9 +271,9 @@
 					general_record.fields["m_stat"] = health_status
 				return
 			if(href_list["medrecords"])
-				to_chat(usr, "<br>Medical Record:</br>[med_record.fields["past_records"]]")
+				to_chat(usr, "<br>Akta medyczne:</br>[med_record.fields["past_records"]]")
 			if(href_list["genrecords"])
-				to_chat(usr, "<b>General Record:</b> [general_record.fields["past_records"]]")
+				to_chat(usr, "<b>Akta ogólne:</b> [general_record.fields["past_records"]]")
 			return //Medical HUD ends here.
 
 		if(href_list["hud"] == "s")
@@ -293,17 +293,17 @@
 						allowed_access = H.get_authentification_name()
 
 			if(!allowed_access)
-				to_chat(H, "<span class='warning'>ERROR: Invalid access.</span>")
+				to_chat(H, "<span class='warning'>BŁĄD: brak dostępu.</span>")
 				return
 
 			if(!perpname)
-				to_chat(H, "<span class='warning'>ERROR: Can not identify target.</span>")
+				to_chat(H, "<span class='warning'>BŁĄD: nie można zidentyfikować celu.</span>")
 				return
 			if(!sec_record)
-				to_chat(usr, "<span class='warning'>ERROR: Unable to locate data core entry for target.</span>")
+				to_chat(usr, "<span class='warning'>BŁĄD: nie znaleziono wpisu celu w rdzeniu danych.</span>")
 				return
 			if(href_list["status"])
-				var/setcriminal = input(usr, "Specify a new criminal status for this person.", "Security HUD", sec_record.fields["criminal"]) in list("None", "Arrest", "Search", "Monitor", "Incarcerated", "Paroled", "Discharged", "Cancel")
+				var/setcriminal = input(usr, "Podaj nowy status karny tej osoby.", "HUD ochrony", sec_record.fields["criminal"]) in list("None", "Arrest", "Search", "Monitor", "Incarcerated", "Paroled", "Discharged", "Cancel")
 				if(setcriminal != "Cancel")
 					if(!sec_record)
 						return
@@ -321,17 +321,17 @@
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
-				to_chat(usr, "<b>Name:</b> [sec_record.fields["name"]]	<b>Criminal Status:</b> [sec_record.fields["criminal"]]")
+				to_chat(usr, "<b>Imię:</b> [sec_record.fields["name"]]	<b>Status karny:</b> [sec_record.fields["criminal"]]")
 				for(var/datum/data/crime/c in sec_record.fields["crim"])
 					to_chat(usr, "<b>Crime:</b> [c.crimeName]")
 					if (c.crimeDetails)
 						to_chat(usr, "<b>Details:</b> [c.crimeDetails]")
 					else
 						to_chat(usr, "<b>Details:</b> <A href='byond://?src=[REF(src)];hud=s;add_details=1;cdataid=[c.dataId]'>\[Add details]</A>")
-					to_chat(usr, "Added by [c.author] at [c.time]")
+					to_chat(usr, "Dodane przez [c.author] o [c.time]")
 					to_chat(usr, "----------")
 				to_chat(usr, "<b>Notes:</b> [sec_record.fields["notes"]]")
-				to_chat(usr, "<br>Security Record:</b> [sec_record.fields["past_records"]]")
+				to_chat(usr, "<br>Akta ochrony:</b> [sec_record.fields["past_records"]]")
 				return
 
 			if(href_list["genrecords"])
@@ -339,12 +339,12 @@
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
-				to_chat(usr, "<b>General Record:</b> [general_record.fields["past_records"]]")
+				to_chat(usr, "<b>Akta ogólne:</b> [general_record.fields["past_records"]]")
 
 			if(href_list["add_citation"])
 				var/maxFine = CONFIG_GET(number/maxfine)
-				var/t1 = stripped_input("Please input citation crime:", "Security HUD", "", null)
-				var/fine = FLOOR(input("Please input citation fine, up to [maxFine]:", "Security HUD", 50) as num|null, 1)
+				var/t1 = stripped_input("Podaj przewinienie do mandatu:", "HUD ochrony", "", null)
+				var/fine = FLOOR(input("Podaj wysokość mandatu (do [maxFine]):", "HUD ochrony", 50) as num|null, 1)
 				if(!sec_record || !t1 || !fine || !allowed_access)
 					return
 				if(!H.canUseHUD())
@@ -352,14 +352,14 @@
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
 				if(fine < 0)
-					to_chat(usr, "<span class='warning'>You're pretty sure that's not how money works.</span>")
+					to_chat(usr, "<span class='warning'>Jesteś prawie pewien, że pieniądze tak nie działają.</span>")
 					return
 				fine = min(fine, maxFine)
 
 				var/datum/data/crime/crime = GLOB.data_core.createCrimeEntry(t1, "", allowed_access, station_time_timestamp(), fine)
 				for (var/obj/item/modular_computer/tablet in GLOB.TabletMessengers)
 					if(tablet.saved_identification == sec_record.fields["name"])
-						var/message = "You have been fined [fine] credits for '[t1]'. Fines may be paid at security."
+						var/message = "Otrzymujesz mandat w wysokości [fine] kredytów za '[t1]'. Mandaty można opłacić w ochronie."
 						var/datum/signal/subspace/messaging/tablet_msg/signal = new(src, list(
 							"name" = "Security Citation",
 							"job" = "Citation Server",
@@ -374,7 +374,7 @@
 				return
 
 			if(href_list["add_crime"])
-				var/t1 = stripped_input("Please input crime name:", "Security HUD", "", null)
+				var/t1 = stripped_input("Podaj nazwę przestępstwa:", "HUD ochrony", "", null)
 				if(!sec_record || !t1 || !allowed_access)
 					return
 				if(!H.canUseHUD())
@@ -384,11 +384,11 @@
 				var/crime = GLOB.data_core.createCrimeEntry(t1, null, allowed_access, station_time_timestamp())
 				GLOB.data_core.addCrime(sec_record.fields["id"], crime)
 				investigate_log("New Crime: <strong>[t1]</strong> | Added to [sec_record.fields["name"]] by [key_name(usr)]", INVESTIGATE_RECORDS)
-				to_chat(usr, "<span class='notice'>Successfully added a crime.</span>")
+				to_chat(usr, "<span class='notice'>Dodano przestępstwo.</span>")
 				return
 
 			if(href_list["add_details"])
-				var/t1 = stripped_input(usr, "Please input crime details:", "Secure. records", "", null)
+				var/t1 = stripped_input(usr, "Podaj szczegóły przestępstwa:", "Tajne akta", "", null)
 				if(!sec_record || !t1 || !allowed_access)
 					return
 				if(!H.canUseHUD())
@@ -398,7 +398,7 @@
 				if(href_list["cdataid"])
 					GLOB.data_core.addCrimeDetails(sec_record.fields["id"], href_list["cdataid"], t1)
 					investigate_log("New Crime details: [t1] | Added to [sec_record.fields["name"]] by [key_name(usr)]", INVESTIGATE_RECORDS)
-					to_chat(usr, "<span class='notice'>Successfully added details.</span>")
+					to_chat(usr, "<span class='notice'>Dodano szczegóły.</span>")
 				return
 
 			if(href_list["view_comment"])
@@ -406,7 +406,7 @@
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
-				to_chat(usr, "<b>Comments/Log:</b>")
+				to_chat(usr, "<b>Komentarze/log:</b>")
 				var/counter = 1
 				while(sec_record.fields[text("com_[]", counter)])
 					to_chat(usr, sec_record.fields[text("com_[]", counter)])
@@ -415,7 +415,7 @@
 				return
 
 			if(href_list["add_comment"])
-				var/t1 = stripped_multiline_input("Add Comment:", "Secure. records", null, null)
+				var/t1 = stripped_multiline_input("Dodaj komentarz:", "Tajne akta", null, null)
 				if (!sec_record || !t1 || !allowed_access)
 					return
 				if(!H.canUseHUD())
@@ -426,7 +426,7 @@
 				while(sec_record.fields[text("com_[]", counter)])
 					counter++
 				sec_record.fields[text("com_[]", counter)] = text("Made by [] on [] [], []<BR>[]", allowed_access, station_time_timestamp(), time2text(world.realtime, "MMM DD"), GLOB.year_integer+YEAR_OFFSET, t1) //NSV13 edit: year offset change
-				to_chat(usr, "<span class='notice'>Successfully added comment.</span>")
+				to_chat(usr, "<span class='notice'>Dodano komentarz.</span>")
 				return
 		//NSV13 - Roleplaying Records - End
 	..() //end of this massive fucking chain. TODO: make the hud chain not spooky.
@@ -453,7 +453,7 @@
 			return TRUE
 		var/obj/item/clothing/head/CH = head
 		if(CH.clothing_flags & THICKMATERIAL)
-			balloon_alert(user, "There is no exposed flesh on [p_their()] head.")
+			balloon_alert(user, "Nie ma odsłoniętej skóry na głowie.")
 			return FALSE
 		return TRUE
 	if(!wear_suit || !isclothing(wear_suit))
@@ -463,19 +463,19 @@
 		switch(target_zone)
 			if(BODY_ZONE_CHEST)
 				if(CS.body_parts_covered & CHEST)
-					balloon_alert(user, "There is no exposed flesh on [p_their()] chest.")
+					balloon_alert(user, "Nie ma odsłoniętej skóry na klatce piersiowej.")
 					return FALSE
 			if(BODY_ZONE_PRECISE_GROIN)
 				if(CS.body_parts_covered & GROIN)
-					balloon_alert(user, "There is no exposed flesh on [p_their()] groin.")
+					balloon_alert(user, "Nie ma odsłoniętej skóry w pachwinie.")
 					return FALSE
 			if(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
 				if(CS.body_parts_covered & ARMS)
-					balloon_alert(user, "There is no exposed flesh on [p_their()] arms.")
+					balloon_alert(user, "Nie ma odsłoniętej skóry na rękach.")
 					return FALSE
 			if(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 				if(CS.body_parts_covered & LEGS)
-					balloon_alert(user, "There is no exposed flesh on [p_their()] legs.")
+					balloon_alert(user, "Nie ma odsłoniętej skóry na nogach.")
 					return FALSE
 	return TRUE
 
@@ -578,27 +578,27 @@
 		for(var/obj/item/hand in held_items)
 			if(prob(current_size * 5) && hand.w_class >= ((11-current_size)/2)  && dropItemToGround(hand))
 				step_towards(hand, src)
-				to_chat(src, "<span class='warning'>\The [S] pulls \the [hand] from your grip!</span>")
+				to_chat(src, "<span class='warning'>[S] wyrywa ci [hand] z uchwytu!</span>")
 	rad_act(current_size * 3)
 
 /mob/living/carbon/human/proc/do_cpr(mob/living/carbon/C)
 	CHECK_DNA_AND_SPECIES(C)
 
 	if(C.stat == DEAD || (HAS_TRAIT(C, TRAIT_FAKEDEATH)))
-		to_chat(src, "<span class='warning'>[C.name] is dead!</span>")
+		to_chat(src, "<span class='warning'>[C.name] nie żyje!</span>")
 		return
 	if(is_mouth_covered())
-		to_chat(src, "<span class='warning'>Remove your mask first!</span>")
+		to_chat(src, "<span class='warning'>Najpierw zdejmij maskę!</span>")
 		return 0
 	if(C.is_mouth_covered())
-		to_chat(src, "<span class='warning'>Remove [p_their()] mask first!</span>")
+		to_chat(src, "<span class='warning'>Najpierw zdejmij jej/jego maskę!</span>")
 		return 0
 
 	if(C.cpr_time < world.time + 30)
-		visible_message("<span class='notice'>[src] is trying to perform CPR on [C.name]!</span>", \
-						"<span class='notice'>You try to perform CPR on [C.name]... Hold still!</span>")
+		visible_message("<span class='notice'>[src] próbuje przeprowadzić resuscytację [C.name]!</span>", \
+						"<span class='notice'>Próbujesz przeprowadzić resuscytację [C.name]... Nie ruszaj się!</span>")
 		if(!do_mob(src, C))
-			to_chat(src, "<span class='warning'>You fail to perform CPR on [C]!</span>")
+			to_chat(src, "<span class='warning'>Nie udaje ci się przeprowadzić resuscytacji [C]!</span>")
 			return 0
 
 		var/they_breathe = !HAS_TRAIT(C, TRAIT_NOBREATH)
@@ -607,7 +607,7 @@
 		if(C.health > C.crit_threshold)
 			return
 
-		src.visible_message("[src] performs CPR on [C.name]!", "<span class='notice'>You perform CPR on [C.name].</span>")
+		src.visible_message("[src] przeprowadza resuscytację [C.name]!", "<span class='notice'>Przeprowadzasz resuscytację [C.name].</span>")
 		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "perform_cpr", /datum/mood_event/perform_cpr)
 		C.cpr_time = world.time
 		log_combat(src, C, "CPRed")
@@ -616,11 +616,11 @@
 			var/suff = min(C.getOxyLoss(), 7)
 			C.adjustOxyLoss(-suff)
 			C.updatehealth()
-			to_chat(C, "<span class='unconscious'>You feel a breath of fresh air enter your lungs. It feels good.</span>")
+			to_chat(C, "<span class='unconscious'>Czujesz, jak do płuc wpływa ci haust świeżego powietrza. To przyjemne.</span>")
 		else if(they_breathe && !they_lung)
-			to_chat(C, "<span class='unconscious'>You feel a breath of fresh air, but you don't feel any better.</span>")
+			to_chat(C, "<span class='unconscious'>Czujesz haust świeżego powietrza, ale nie czujesz się lepiej.</span>")
 		else
-			to_chat(C, "<span class='unconscious'>You feel a breath of fresh air, which is a sensation you don't recognise.</span>")
+			to_chat(C, "<span class='unconscious'>Czujesz haust świeżego powietrza - to uczucie, którego nie znasz.</span>")
 
 /mob/living/carbon/human/cuff_resist(obj/item/I)
 	if(dna && dna.check_mutation(HULK))
@@ -672,12 +672,12 @@
 
 /mob/living/carbon/human/canUseTopic(atom/movable/M, be_close=FALSE, no_dextery=FALSE, no_tk=FALSE)
 	if(!(mobility_flags & MOBILITY_UI))
-		to_chat(src, "<span class='warning'>You can't do that right now!</span>")
+		to_chat(src, "<span class='warning'>Nie możesz teraz tego zrobić!</span>")
 		return FALSE
 	if(!Adjacent(M) && (M.loc != src))
 		if((be_close == FALSE) || (!no_tk && (dna.check_mutation(TK) && tkMaxRangeCheck(src, M))))
 			return TRUE
-		to_chat(src, "<span class='warning'>You are too far away!</span>")
+		to_chat(src, "<span class='warning'>Jesteś za daleko!</span>")
 		return FALSE
 	return TRUE
 
@@ -786,8 +786,8 @@
 /mob/living/carbon/human/vomit(lost_nutrition = 10, blood = 0, stun = 1, distance = 0, message = 1, toxic = 0)
 	if(blood && (NOBLOOD in dna.species.species_traits))
 		if(message)
-			visible_message("<span class='warning'>[src] dry heaves!</span>", \
-							"<span class='userdanger'>You try to throw up, but there's nothing in your stomach!</span>")
+			visible_message("<span class='warning'>[src] ma suche odruchy wymiotne!</span>", \
+							"<span class='userdanger'>Próbujesz zwymiotować, ale masz pusty żołądek!</span>")
 		if(stun)
 			Paralyze(200)
 		return 1
@@ -826,7 +826,7 @@
 			var/qname = initial(T.name)
 			options[has_quirk(T) ? "[qname] (Remove)" : "[qname] (Add)"] = T
 
-		var/result = input(usr, "Choose quirk to add/remove","Quirk Mod") as null|anything in options
+		var/result = input(usr, "Wybierz cechę do dodania/usunięcia","Quirk Mod") as null|anything in options
 		if(result)
 			if(result == "Clear")
 				for(var/datum/quirk/q in roundstart_quirks)
@@ -864,7 +864,7 @@
 	if(href_list[VV_HK_SET_SPECIES])
 		if(!check_rights(R_SPAWN))
 			return
-		var/result = input(usr, "Please choose a new species","Species") as null|anything in GLOB.species_list
+		var/result = input(usr, "Wybierz nowy gatunek","Species") as null|anything in GLOB.species_list
 		if(result)
 			var/newtype = GLOB.species_list[result]
 			admin_ticket_log("[key_name_admin(usr)] has modified the bodyparts of [src] to [result]")
@@ -873,7 +873,7 @@
 		if(!check_rights(R_SPAWN))
 			return
 		if(!ishumanbasic(src))
-			to_chat(usr, "This can only be done to the basic human species at the moment.")
+			to_chat(usr, "Na razie można to zrobić tylko z podstawowym gatunkiem ludzkim.")
 			return
 		var/success = purrbation_toggle(src)
 		if(success)
@@ -935,7 +935,7 @@
 				if(BP)
 					BP.receive_damage(36) //so 3 toolbox hits
 
-				T.visible_message("<span class='warning'>[src] curbstomps [T]!</span>", "<span class='warning'>[src] curbstomps you!</span>")
+				T.visible_message("<span class='warning'>[src] curbstomps [T]!</span>", "<span class='warning'>[src] kopie cię brutalnie!</span>")
 
 				log_combat(src, T, "curbstomped")
 
@@ -962,7 +962,7 @@
 					else
 						BP.receive_damage(15)
 
-				T.visible_message("<span class='warning'>[src] kicks [T] in the groin!</span>", "<span class='warning'>[src] kicks you in the groin!</span")
+				T.visible_message("<span class='warning'>[src] kopie [T] w krocze!</span>", "<span class='warning'>[src] kopie cię w krocze!</span")
 
 				log_combat(src, T, "groinkicked")
 
@@ -995,14 +995,14 @@
 	var/skills_space = "" //cobby told me to do this
 	if(HAS_TRAIT(src, TRAIT_QUICKER_CARRY))
 		carrydelay = 30
-		skills_space = " expertly"
+		skills_space = " fachowo"
 	else if(HAS_TRAIT(src, TRAIT_QUICK_CARRY))
 		carrydelay = 40
-		skills_space = " quickly"
+		skills_space = " szybko"
 	if(can_be_firemanned(target) && !incapacitated(FALSE, TRUE))
-		visible_message("<span class='notice'>[src] starts[skills_space] lifting [target] onto their back..</span>",
+		visible_message("<span class='notice'>[src] zaczyna[skills_space] zarzucać [target] sobie na plecy..</span>",
 		//Joe Medic starts quickly/expertly lifting Grey Tider onto their back..
-		"<span class='notice'>[HAS_TRAIT(src, TRAIT_QUICKER_CARRY) ? "Using your gloves' nanochips, you" : "You"][skills_space] start to lift [target] onto your back[HAS_TRAIT(src, TRAIT_QUICK_CARRY) ? ", while assisted by the nanochips in your gloves..." : "..."]</span>")
+		"<span class='notice'>[HAS_TRAIT(src, TRAIT_QUICKER_CARRY) ? "Dzięki nanoczipom w rękawicach z" : "Z"]aczynasz[skills_space] zarzucać [target] na plecy[HAS_TRAIT(src, TRAIT_QUICK_CARRY) ? ", wspomagany nanoczipami w rękawicach..." : "..."]</span>")
 		//(Using your gloves' nanochips, you/You) ( /quickly/expertly) start to lift Grey Tider onto your back(, while assisted by the nanochips in your gloves../...)
 		if(do_after(src, carrydelay, TRUE, target))
 			//Second check to make sure they're still valid to be carried
@@ -1010,32 +1010,32 @@
 				// AQ EDIT - check_loc FALSE, the carried mob stands next to us and gets moved onto our turf
 				if(buckle_mob(target, TRUE, FALSE, 90, 1, 0))
 					return
-		visible_message("<span class='warning'>[src] fails to fireman carry [target]!</span>")
+		visible_message("<span class='warning'>[src] nie udaje się zarzucić [target] na plecy!</span>")
 	else
-		to_chat(src, "<span class='notice'>You can't fireman carry [target] while they're standing!</span>")
+		to_chat(src, "<span class='notice'>Nie możesz zarzucić [target] na plecy, gdy stoi!</span>")
 
 /mob/living/carbon/human/proc/piggyback(mob/living/carbon/target)
 	if(can_piggyback(target))
-		visible_message("<span class='notice'>[target] starts to climb onto [src].</span>")
+		visible_message("<span class='notice'>[target] zaczyna wspinać się na [src].</span>")
 		if(do_after(target, 15, target = src))
 			if(can_piggyback(target))
 				if(target.incapacitated(FALSE, TRUE) || incapacitated(FALSE, TRUE))
-					target.visible_message("<span class='warning'>[target] can't hang onto [src]!</span>")
+					target.visible_message("<span class='warning'>[target] nie może utrzymać się na [src]!</span>")
 					return
 				// AQ EDIT - check_loc FALSE, the rider stands next to us and gets moved onto our turf
 				if(!buckle_mob(target, TRUE, FALSE, FALSE, 0, 2))
-					target.visible_message("<span class='warning'>[target] fails to climb onto [src]!</span>")
+					target.visible_message("<span class='warning'>[target] nie udaje się wspiąć na [src]!</span>")
 		else
-			visible_message("<span class='warning'>[target] fails to climb onto [src]!</span>")
+			visible_message("<span class='warning'>[target] nie udaje się wspiąć na [src]!</span>")
 	else
-		to_chat(target, "<span class='warning'>You can't piggyback ride [src] right now!</span>")
+		to_chat(target, "<span class='warning'>Nie możesz teraz jechać na barana na [src]!</span>")
 
 
 /mob/living/carbon/human/buckle_mob(mob/living/target, force = FALSE, check_loc = TRUE, lying_buckle = FALSE, hands_needed = 0, target_hands_needed = 0)
 	if(!force)//humans are only meant to be ridden through piggybacking and special cases
 		return
 	if(!is_type_in_typecache(target, can_ride_typecache))
-		target.visible_message("<span class='warning'>[target] really can't seem to mount [src].</span>")
+		target.visible_message("<span class='warning'>[target] naprawdę nie może wsiąść na [src].</span>")
 		return
 	buckle_lying = lying_buckle
 	var/datum/component/riding/human/riding_datum = LoadComponent(/datum/component/riding/human)
@@ -1052,12 +1052,12 @@
 
 	if(hands_needed || target_hands_needed)
 		if(hands_needed && !equipped_hands_self)
-			src.visible_message("<span class='warning'>[src] can't get a grip on [target] because their hands are full!</span>",
-				"<span class='warning'>You can't get a grip on [target] because your hands are full!</span>")
+			src.visible_message("<span class='warning'>[src] nie może chwycić [target], bo ma pełne ręce!</span>",
+				"<span class='warning'>Nie możesz chwycić [target], bo masz pełne ręce!</span>")
 			return
 		else if(target_hands_needed && !equipped_hands_target)
-			target.visible_message("<span class='warning'>[target] can't get a grip on [src] because their hands are full!</span>",
-				"<span class='warning'>You can't get a grip on [src] because your hands are full!</span>")
+			target.visible_message("<span class='warning'>[target] nie może chwycić [src], bo ma pełne ręce!</span>",
+				"<span class='warning'>Nie możesz chwycić [src], bo masz pełne ręce!</span>")
 			return
 
 	stop_pulling()
@@ -1069,7 +1069,7 @@
 		riding_datum.unequip_buckle_inhands(src)
 		riding_datum.unequip_buckle_inhands(target)
 		riding_datum.restore_position(target)
-		to_chat(src, "<span class='warning'>You seem to be unable to carry [target]!</span>")
+		to_chat(src, "<span class='warning'>Wygląda na to, że nie możesz nieść [target]!</span>")
 
 /mob/living/carbon/human/proc/is_shove_knockdown_blocked() //If you want to add more things that block shove knockdown, extend this
 	var/list/body_parts = list(head, wear_mask, wear_suit, w_uniform, back, gloves, shoes, belt, s_store, glasses, ears, wear_id) //Everything but pockets. Pockets are l_store and r_store. (if pockets were allowed, putting something armored, gloves or hats for example, would double up on the armor)
@@ -1084,7 +1084,7 @@
 	remove_movespeed_modifier(MOVESPEED_ID_SHOVE)
 	var/active_item = get_active_held_item()
 	if(is_type_in_typecache(active_item, GLOB.shove_disarming_types))
-		visible_message("<span class='warning'>[src.name] regains their grip on \the [active_item]!</span>", "<span class='warning'>You regain your grip on \the [active_item].</span>", null, COMBAT_MESSAGE_RANGE)
+		visible_message("<span class='warning'>[src.name] odzyskuje chwyt na [active_item]!</span>", "<span class='warning'>Odzyskujesz chwyt na [active_item].</span>", null, COMBAT_MESSAGE_RANGE)
 
 /mob/living/carbon/human/updatehealth()
 	. = ..()
@@ -1132,8 +1132,8 @@
 	if(!left_leg || !right_leg || left_leg.disabled || right_leg.disabled)
 		return ..()
 	//Nailed it!
-	visible_message("<span class='notice'>[src] lands elegantly on [p_their()] feet!</span>",
-		"<span class='warning'>You fall [levels] level[levels > 1 ? "s" : ""] into [T], perfecting the landing!</span>")
+	visible_message("<span class='notice'>[src] zgrabnie ląduje na nogach!</span>",
+		"<span class='warning'>Spadasz [levels] [levels > 1 ? "poziomy" : "poziom"] na [T], idealnie lądując!</span>")
 	Stun(levels * 50)
 
 /mob/living/carbon/human/proc/stub_toe(var/power)

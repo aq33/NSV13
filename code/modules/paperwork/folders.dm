@@ -10,7 +10,7 @@
 	var/bg_color = "#7f7f7f"
 
 /obj/item/folder/suicide_act(mob/living/user)
-	user.visible_message("<span class='suicide'>[user] begins filing an imaginary death warrant! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaczyna wypełniać wyimaginowany wyrok śmierci! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return OXYLOSS
 
 /obj/item/folder/Initialize(mapload)
@@ -27,14 +27,14 @@
 /obj/item/folder/examine()
 	. = ..()
 	if(length(contents))
-		. += "<span class='notice'>Alt-click to remove [contents[1]].</span>"
+		. += "<span class='notice'>Alt-klik, by wyjąć [contents[1]].</span>"
 
 /obj/item/folder/proc/rename(mob/user)
 	if(!user.is_literate())
-		to_chat(user, "<span class='notice'>You scribble illegibly on the cover of [src]!</span>")
+		to_chat(user, "<span class='notice'>Gryzmolisz nieczytelnie na okładce [src]!</span>")
 		return
 
-	var/inputvalue = stripped_input(user, "What would you like to label the folder?", "Folder Labelling", null, MAX_NAME_LEN)
+	var/inputvalue = stripped_input(user, "Jak chcesz podpisać teczkę?", "Podpisywanie teczki", null, MAX_NAME_LEN)
 
 	if(!inputvalue)
 		return
@@ -46,7 +46,7 @@
 	if(istype(I))
 		I.forceMove(user.loc)
 		user.put_in_hands(I)
-		to_chat(user, "<span class='notice'>You remove [I] from [src].</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz [I] z [src].</span>")
 		update_icon()
 		ui_update()
 
@@ -67,7 +67,7 @@
 		//Add paper, photo or documents into the folder
 		if(!user.transferItemToLoc(W, src))
 			return
-		to_chat(user, "<span class='notice'>You put [W] into [src].</span>")
+		to_chat(user, "<span class='notice'>Wkładasz [W] do [src].</span>")
 		update_icon()
 		ui_update()
 	else if(istype(W, /obj/item/pen))

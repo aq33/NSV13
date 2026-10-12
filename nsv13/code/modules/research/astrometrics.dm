@@ -114,7 +114,7 @@ Clean override of the navigation computer to provide scan functionality.
 			if(!scan_target)
 				return
 			playsound(src, 'nsv13/sound/voice/scanning_cancelled.wav', 100, FALSE)
-			message = "Scan of [scan_target] cancelled!"
+			message = "Anulowano skanowanie: [scan_target]!"
 			scan_progress = 0
 			scan_target = null
 		if("info")
@@ -135,7 +135,7 @@ Clean override of the navigation computer to provide scan functionality.
 			finish_scan()
 
 /obj/machinery/computer/ship/navigation/astrometrics/proc/finish_scan()
-	say("Scan of [scan_target] complete!")
+	say("Zakończono skanowanie: [scan_target]!")
 	playsound(src, 'nsv13/sound/voice/scanning_complete.wav', 100, FALSE)
 	radio.talk_into(src, "Skan [scan_target] zakończony!", channel)
 	linked.scanned += scan_target

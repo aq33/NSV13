@@ -24,7 +24,7 @@
 	if(!target || !target.mind  || target.stat == DEAD || !ishuman(target) || !..())
 		return FALSE
 	if (HAS_TRAIT(target, TRAIT_MINDSHIELD))
-		target.visible_message("<span class='warning'>[target] seems to resist the implant!</span>", "<span class='warning'>You resist the gang implant. You are reminded of the anti-gang PSA instead.</span>")
+		target.visible_message("<span class='warning'>[target] zdaje się opierać implantowi!</span>", "<span class='warning'>Opierasz się implantowi gangu. Zamiast tego przypomina ci się kampania przeciw gangom.</span>")
 		return FALSE
 
 	var/datum/antagonist/gang/G = target.mind.has_antag_datum(/datum/antagonist/gang)
@@ -54,7 +54,7 @@
 			return TRUE
 		if(target.mind.has_antag_datum(/datum/antagonist/gang/boss))
 			if(!silent)
-				target.visible_message("<span class='warning'>[target] seems to resist the implant!</span>", "<span class='warning'>You feel something interfering with your mental conditioning, but you resist it!</span>")
+				target.visible_message("<span class='warning'>[target] zdaje się opierać implantowi!</span>", "<span class='warning'>Czujesz, że coś zakłóca twoje mentalne uwarunkowanie, ale się opierasz!</span>")
 			removed(target, 1)
 			qdel(src)
 			return FALSE

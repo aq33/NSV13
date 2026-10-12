@@ -7,11 +7,11 @@
 
 /datum/station_goal/bluespace_cannon/get_report()
 	return list(
-		"<blockquote>Our military presence is inadequate in your sector.",
-		"We need you to construct BSA-[rand(1,99)] Artillery position aboard your ship.",
+		"<blockquote>Nasza obecność wojskowa w waszym sektorze jest niewystarczająca.",
+		"Musicie zbudować na pokładzie stanowisko artyleryjskie BSA-[rand(1,99)].",
 		"",
-		"Base parts are available for shipping via cargo.",
-		"-Nanotrasen Naval Command</blockquote>",
+		"Podstawowe części można zamówić przez zaopatrzenie.",
+		"-Dowództwo Marynarki Nanotrasen</blockquote>",
 	).Join("\n") //NSV13
 
 /datum/station_goal/bluespace_cannon/on_report()
@@ -47,7 +47,7 @@
 		return
 	var/obj/item/multitool/M = I
 	M.buffer = src
-	to_chat(user, "<span class='notice'>You store linkage information in [I]'s buffer.</span>")
+	to_chat(user, "<span class='notice'>Zapisujesz informacje o połączeniu w buforze [I].</span>")
 	return TRUE
 
 /obj/machinery/bsa/front
@@ -60,7 +60,7 @@
 		return
 	var/obj/item/multitool/M = I
 	M.buffer = src
-	to_chat(user, "<span class='notice'>You store linkage information in [I]'s buffer.</span>")
+	to_chat(user, "<span class='notice'>Zapisujesz informacje o połączeniu w buforze [I].</span>")
 	return TRUE
 
 /obj/machinery/bsa/middle
@@ -77,28 +77,28 @@
 	if(M.buffer)
 		if(istype(M.buffer, /obj/machinery/bsa/back))
 			back_ref = WEAKREF(M.buffer)
-			to_chat(user, "<span class='notice'>You link [src] with [M.buffer].</span>")
+			to_chat(user, "<span class='notice'>Łączysz [src] z [M.buffer].</span>")
 			M.buffer = null
-			to_chat(user, "<span class='notice'>You link [src] with [M.buffer].</span>")
+			to_chat(user, "<span class='notice'>Łączysz [src] z [M.buffer].</span>")
 		else if(istype(M.buffer, /obj/machinery/bsa/front))
 			front_ref = WEAKREF(M.buffer)
-			to_chat(user, "<span class='notice'>You link [src] with [M.buffer].</span>")
+			to_chat(user, "<span class='notice'>Łączysz [src] z [M.buffer].</span>")
 			M.buffer = null
 	else
-		to_chat(user, "<span class='warning'>[I]'s data buffer is empty!</span>")
+		to_chat(user, "<span class='warning'>Bufor danych [I] jest pusty!</span>")
 	return TRUE
 
 /obj/machinery/bsa/middle/proc/check_completion()
 	var/obj/machinery/bsa/front/front = front_ref?.resolve()
 	var/obj/machinery/bsa/back/back = back_ref?.resolve()
 	if(!front || !back)
-		return "No linked parts detected!"
+		return "Nie wykryto połączonych części!"
 	if(!front.anchored || !back.anchored || !anchored)
-		return "Linked parts unwrenched!"
+		return "Połączone części są odkręcone!"
 	if(front.y != y || back.y != y || !(front.x > x && back.x < x || front.x < x && back.x > x) || front.z != z || back.z != z)
-		return "Parts misaligned!"
+		return "Części są źle ustawione!"
 	if(!has_space())
-		return "Not enough free space!"
+		return "Za mało wolnego miejsca!"
 
 /obj/machinery/bsa/middle/proc/has_space()
 	var/cannon_dir = get_cannon_direction()
@@ -306,7 +306,7 @@
 	var/list/options = gps_locators
 	if(area_aim)
 		options += GLOB.teleportlocs
-	var/V = input(user,"Select target", "Select target",null) in options|null
+	var/V = input(user,"Wybierz cel", "Wybierz cel",null) in options|null
 	target = options[V]
 
 
@@ -327,10 +327,10 @@
 /obj/machinery/computer/bsa_control/proc/fire(mob/user)
 	var/obj/machinery/bsa/full/cannon = cannon_ref?.resolve()
 	if(!cannon)
-		notice = "No Cannon Exists!"
+		notice = "Działo nie istnieje!"
 		return
 	if(cannon.machine_stat)
-		notice = "Cannon unpowered!"
+		notice = "Działo nie ma zasilania!"
 		return
 	notice = null
 	cannon.fire(user, get_impact_turf())
@@ -342,7 +342,7 @@
 
 	var/obj/machinery/bsa/middle/centerpiece = locate() in range(7)
 	if(!centerpiece)
-		notice = "No BSA parts detected nearby."
+		notice = "W pobliżu nie wykryto części BSA."
 		return null
 	notice = centerpiece.check_completion()
 	if(notice)

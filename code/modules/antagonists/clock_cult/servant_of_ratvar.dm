@@ -3,8 +3,8 @@
 //==========================
 
 /datum/antagonist/servant_of_ratvar
-	name = "Servant Of Ratvar"
-	roundend_category = "clock cultists"
+	name = "Sługa Ratvara"
+	roundend_category = "kultyści zegara"
 	antagpanel_category = "Clockcult"
 	antag_moodlet = /datum/mood_event/cult
 	banning_key = ROLE_SERVANT_OF_RATVAR
@@ -24,16 +24,16 @@
 	if(!owner.current)
 		return
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/clockcultalr.ogg', 60, FALSE, pressure_affected = FALSE)
-	to_chat(owner.current, "<span class='heavy_brass'><font size='7'>You feel a flash of light and the world spin around you!</font></span>")
-	to_chat(owner.current, "<span class='brass'><font size='5'>Using your clockwork slab you can invoke a variety of powers to help you complete Ratvar's will.</font></span>")
-	to_chat(owner.current, "<span class='brass'>Use Rat'varian observation consoles to monitor the crew and warp to the station.</span>")
-	to_chat(owner.current, "<span class='brass'>Use your Clockwork Slab to summon integration cogs to unlock more scriptures and siphon power.</span>")
-	to_chat(owner.current, "<span class='brass'>Unlock Kindle to stun targets, Hateful Manacles to restrain them and use a sigil of submission to convert them!</span>")
-	to_chat(owner.current, "<span class='brass'>When you are ready, gather 6 cultists around the Ark and activate it to summon Rat'var, but be prepared to fight for your life.</span>")
-	owner.current.client?.tgui_panel?.give_antagonist_popup("Servant of Rat'Var",
-		"Use your clockwork slab to unlock and invoke scriptures.\n\
-		Hijack APCs by placing an integration cog into them.\n\
-		Convert the unfaithful to your side but above all else, protect the Gateway!")
+	to_chat(owner.current, "<span class='heavy_brass'><font size='7'>Czujesz błysk światła, a świat wiruje wokół ciebie!</font></span>")
+	to_chat(owner.current, "<span class='brass'><font size='5'>Mechaniczną płytą możesz przywoływać różne moce, które pomogą ci wypełnić wolę Ratvara.</font></span>")
+	to_chat(owner.current, "<span class='brass'>Używaj ratvariańskich konsol obserwacyjnych, by śledzić załogę i przenosić się na statek.</span>")
+	to_chat(owner.current, "<span class='brass'>Mechaniczną płytą przywołuj zębatki integracyjne, by odblokowywać kolejne pisma i wysysać energię.</span>")
+	to_chat(owner.current, "<span class='brass'>Odblokuj Rozpalenie, by ogłuszać cele, Nienawistne Kajdany, by je krępować, i użyj znaku uległości, by je nawracać!</span>")
+	to_chat(owner.current, "<span class='brass'>Gdy będziesz gotowy, zbierz 6 kultystów wokół Arki i aktywuj ją, by przywołać Rat'vara - ale bądź gotów walczyć o życie.</span>")
+	owner.current.client?.tgui_panel?.give_antagonist_popup("Sługa Rat'vara",
+		"Mechaniczną płytą odblokowuj i przywołuj pisma.\n\
+		Przejmuj APC, umieszczając w nich zębatki integracyjne.\n\
+		Nawracaj niewiernych, ale ponad wszystko chroń Bramę!")
 
 /datum/antagonist/servant_of_ratvar/on_gain()
 	. = ..()

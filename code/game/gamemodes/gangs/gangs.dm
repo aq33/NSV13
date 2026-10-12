@@ -13,9 +13,7 @@ GLOBAL_LIST_EMPTY(gangs)
 	recommended_enemies = 2 //NSV13 - down from 3
 
 	announce_span = "danger"
-	announce_text = "A violent turf war has erupted on the station!\n\
-	<span class='danger'>Gangsters</span>: Spread influence and expand the territory of your gang.\n\
-	<span class='notice'>Crew</span>: Spread awareness and prevent your coworkers from killing eachother in turf wars."
+	announce_text = "Na stacji wybuchła brutalna wojna o terytorium!\n<span class='danger'>Gangsterzy</span>: szerzcie wpływy i poszerzajcie terytorium swojej bandy.\n<span class='notice'>Załoga</span>: szerzcie świadomość i nie pozwólcie współpracownikom pozabijać się nawzajem w wojnach o terytorium."
 
 	title_icon = "gang"
 

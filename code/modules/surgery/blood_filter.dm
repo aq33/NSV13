@@ -28,9 +28,9 @@
 	if(istype(surgery,/datum/surgery/blood_filter))
 		var/datum/surgery/blood_filter/the_surgery = surgery
 		if(!the_surgery.antispam)
-			display_results(user, target, "<span class='notice'>You begin filtering [target]'s blood...</span>",
-		"<span class='notice'>[user] uses [tool] to filtering your blood.</span>",
-		"<span class='notice'>[user] uses [tool] on [target]'s chest.</span>")
+			display_results(user, target, "<span class='notice'>Zaczynasz filtrować krew [target]...</span>",
+		"<span class='notice'>[user] filtruje twoją krew za pomocą [tool].</span>",
+		"<span class='notice'>[user] używa [tool] na klatce piersiowej [target].</span>")
 
 /datum/surgery_step/filter_blood/initiate(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	if(..())
@@ -43,20 +43,20 @@
 		for(var/blood_chem in target.reagents.reagent_list)
 			var/datum/reagent/chem = blood_chem
 			target.reagents.remove_reagent(chem.type, min(chem.volume * 0.22, 10)) //Removes more reagent for higher amounts
-		display_results(user, target, "<span class='notice'>[tool] pings as it finishes filtering [target]'s blood.</span>",
-			"<span class='notice'>[tool] pings as it stops pumping your blood.</span>",
-			"[tool] pings as it stops pumping.")
+		display_results(user, target, "<span class='notice'>[tool] pinguje, kończąc filtrowanie krwi [target].</span>",
+			"<span class='notice'>[tool] pinguje, przestając pompować twoją krew.</span>",
+			"[tool] pinguje, przestając pompować.")
 	else
-		display_results(user, target, "<span class='notice'>[tool] flashes, [target]'s blood is clean.</span>",
-			"<span class='notice'>[tool] flashes, your blood is clean.</span>",
-			"[tool] has no chemcials to filter.")
+		display_results(user, target, "<span class='notice'>[tool] błyska: krew [target] jest czysta.</span>",
+			"<span class='notice'>[tool] błyska: twoja krew jest czysta.</span>",
+			"[tool] nie ma substancji do odfiltrowania.")
 	if(istype(surgery, /datum/surgery/blood_filter))
 		var/datum/surgery/blood_filter/the_surgery = surgery
 		the_surgery.antispam = TRUE
 	return TRUE
 
 /datum/surgery_step/filter_blood/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='warning'>You screw up, brusing [target]'s chest!</span>",
-		"<span class='warning'>[user] screws up, brusing [target]'s chest!</span>",
-		"<span class='warning'>[user] screws up!</span>")
+	display_results(user, target, "<span class='warning'>Partaczysz, obijając klatkę piersiową [target]!</span>",
+		"<span class='warning'>[user] partaczy, obijając klatkę piersiową [target]!</span>",
+		"<span class='warning'>[user] partaczy!</span>")
 	target.adjustBruteLoss(5)

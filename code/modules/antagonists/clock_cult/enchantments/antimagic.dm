@@ -2,5 +2,5 @@
 	max_level = 1
 
 /datum/component/enchantment/anti_magic/apply_effect(obj/item/target)
-	examine_description = "It has been blessed with the gift of magic protection, preventing all magic from affecting the wielder."
+	examine_description = "Pobłogosławiono go darem ochrony przed magią - żadna magia nie działa na jego właściciela."
 	target.AddComponent(/datum/component/anti_magic, TRUE, TRUE)

@@ -565,20 +565,20 @@
 	if(custom_materials)
 		for(var/i in custom_materials)
 			var/datum/material/M = i
-			. += "<u>It is made out of [M.name]</u>."
+			. += "<u>Jest wykonany z [M.name]</u>."
 	if(reagents)
 		if(reagents.flags & TRANSPARENT)
-			. += "It contains:"
+			. += "Zawiera:"
 			if(length(reagents.reagent_list))
 				//-------- Reagent checks ---------
 				if(user.can_see_reagents()) //Show each individual reagent
 					for(var/datum/reagent/R in reagents.reagent_list)
-						. += "[R.volume] units of [R.name]"
+						. += "[R.volume] j. [R.name]"
 				else //Otherwise, just show the total volume
 					var/total_volume = 0
 					for(var/datum/reagent/R in reagents.reagent_list)
 						total_volume += R.volume
-					. += "[total_volume] units of various reagents"
+					. += "[total_volume] j. różnych odczynników"
 				//-------- Beer goggles ---------
 				if(user.can_see_boozepower())
 					var/total_boozepower = 0
@@ -591,18 +591,18 @@
 					// gets taste results from all reagents
 					for(var/datum/reagent/R in reagents.reagent_list)
 						if(istype(R, /datum/reagent/consumable/ethanol/fruit_wine) && !(user.stat == DEAD) && !(HAS_TRAIT(src, TRAIT_BARMASTER)) ) // taste of fruit wine is mysterious, but can be known by ghosts/some special bar master trait holders
-							taste_list += "<br/>   - unexplored taste of the winery (from [R.name])"
+							taste_list += "<br/>   - niezbadany smak winnicy (z [R.name])"
 						else
-							taste_list += "<br/>   - [R.taste_description] (from [R.name])"
+							taste_list += "<br/>   - [R.taste_description] (z [R.name])"
 					if(reagents.total_volume)
 						. += "<span class='notice'>Booze Power: total [total_boozepower], average [round(total_boozepower/reagents.total_volume, 0.1)] ([get_boozepower_text(total_boozepower/reagents.total_volume, user)])</span>"
-						. += "<span class='notice'>It would taste like: [english_list(taste_list, comma_text="", and_text="")].</span>"
+						. += "<span class='notice'>Smakowałoby jak: [english_list(taste_list, comma_text="", and_text="")].</span>"
 				//-------------------------------
 			else
 				. += "Nothing."
 		else if(reagents.flags & AMOUNT_VISIBLE)
 			if(reagents.total_volume)
-				. += "<span class='notice'>It has [reagents.total_volume] unit\s left.</span>"
+				. += "<span class='notice'>Pozostało: [reagents.total_volume] j.</span>"
 			else
 				. += "<span class='danger'>It's empty.</span>"
 
@@ -710,7 +710,7 @@
 /atom/proc/relaymove(mob/user)
 	if(buckle_message_cooldown <= world.time)
 		buckle_message_cooldown = world.time + 50
-		to_chat(user, "<span class='warning'>You can't move while buckled to [src]!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz się ruszać, będąc przypiętym do [src]!</span>")
 	return
 
 /// Handle what happens when your contents are exploded by a bomb
@@ -961,7 +961,7 @@
 	while (do_after(user, 10, TRUE, src, FALSE, CALLBACK(STR, TYPE_PROC_REF(/datum/component/storage, handle_mass_item_insertion), things, src_object, user, progress)))
 		stoplag(1)
 	qdel(progress)
-	to_chat(user, "<span class='notice'>You dump as much of [src_object.parent]'s contents into [STR.insert_preposition]to [src] as you can.</span>")
+	to_chat(user, "<span class='notice'>Wsypujesz do [src] tyle zawartości [src_object.parent], ile się da.</span>")
 	STR.orient2hud(user)
 	src_object.orient2hud(user)
 	if(user.active_storage) //refresh the HUD to show the transfered contents
@@ -1117,7 +1117,7 @@
 	if(!ismovableatom(src))
 		var/turf/curturf = get_turf(src)
 		if(curturf)
-			. += "<option value='?_src_=holder;[HrefToken()];adminplayerobservecoodjump=1;X=[curturf.x];Y=[curturf.y];Z=[curturf.z]'>Jump To</option>"
+			. += "<option value='?_src_=holder;[HrefToken()];adminplayerobservecoodjump=1;X=[curturf.x];Y=[curturf.y];Z=[curturf.z]'>Skocz do</option>"
 	VV_DROPDOWN_OPTION(VV_HK_MODIFY_TRANSFORM, "Modify Transform")
 	VV_DROPDOWN_OPTION(VV_HK_ADD_REAGENT, "Add Reagent")
 	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EMP, "EMP Pulse")
@@ -1132,7 +1132,7 @@
 	. = ..()
 	if(href_list[VV_HK_ADD_REAGENT] && check_rights(R_VAREDIT))
 		if(!reagents)
-			var/amount = input(usr, "Specify the reagent size of [src]", "Set Reagent Size", 50) as num
+			var/amount = input(usr, "Podaj pojemność odczynników [src]", "Set Reagent Size", 50) as num
 			if(amount)
 				create_reagents(amount)
 
@@ -1142,7 +1142,7 @@
 				if("Search")
 					var/valid_id
 					while(!valid_id)
-						chosen_id = input(usr, "Enter the ID of the reagent you want to add.", "Search reagents") as null|text
+						chosen_id = input(usr, "Podaj ID odczynnika, który chcesz dodać.", "Search reagents") as null|text
 						if(isnull(chosen_id)) //Get me out of here!
 							break
 						if (!ispath(text2path(chosen_id)))
@@ -1152,7 +1152,7 @@
 						else
 							valid_id = TRUE
 						if(!valid_id)
-							to_chat(usr, "<span class='warning'>A reagent with that ID doesn't exist!</span>")
+							to_chat(usr, "<span class='warning'>Odczynnik o takim ID nie istnieje!</span>")
 
 				if("Choose from a list")
 					chosen_id = input(usr, "Choose a reagent to add.", "Choose a reagent.") as null|anything in subtypesof(/datum/reagent)
@@ -1161,7 +1161,7 @@
 					chosen_id = pick(subtypesof(/datum/reagent))
 
 			if(chosen_id)
-				var/amount = input(usr, "Choose the amount to add.", "Choose the amount.", reagents.maximum_volume) as num
+				var/amount = input(usr, "Wybierz ilość do dodania.", "Wybierz ilość.", reagents.maximum_volume) as num
 
 				if(amount)
 					reagents.add_reagent(chosen_id, amount)
@@ -1175,7 +1175,7 @@
 		usr.client.cmd_admin_emp(src)
 
 	if(href_list[VV_HK_MODIFY_TRANSFORM] && check_rights(R_VAREDIT))
-		var/result = input(usr, "Choose the transformation to apply","Transform Mod") as null|anything in list("Scale","Translate","Rotate")
+		var/result = input(usr, "Wybierz przekształcenie do zastosowania","Transform Mod") as null|anything in list("Scale","Translate","Rotate")
 		var/matrix/M = transform
 		switch(result)
 			if("Scale")
@@ -1189,12 +1189,12 @@
 				if(!isnull(x) && !isnull(y))
 					transform = M.Translate(x,y)
 			if("Rotate")
-				var/angle = input(usr, "Choose angle to rotate","Transform Mod") as null|num
+				var/angle = input(usr, "Wybierz kąt obrotu","Transform Mod") as null|num
 				if(!isnull(angle))
 					transform = M.Turn(angle)
 
 	if(href_list[VV_HK_AUTO_RENAME] && check_rights(R_ADMIN))
-		var/newname = input(usr, "What do you want to rename this to?", "Automatic Rename") as null|text
+		var/newname = input(usr, "Na co chcesz zmienić nazwę?", "Automatic Rename") as null|text
 		if(newname)
 			vv_auto_rename(newname)
 	if(href_list[VV_HK_ADD_AI])
@@ -1333,7 +1333,7 @@
 
 /atom/proc/StartProcessingAtom(mob/living/user, obj/item/process_item, list/chosen_option)
 	var/processing_time = chosen_option[TOOL_PROCESSING_TIME]
-	to_chat(user, "<span class='notice'>You start working on [src]</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz pracować nad [src]</span>")
 	if(process_item.use_tool(src, user, processing_time, volume=50))
 		var/atom/atom_to_create = chosen_option[TOOL_PROCESSING_RESULT]
 		var/list/atom/created_atoms = list()
@@ -1346,7 +1346,7 @@
 				created_atom.pixel_x += rand(-8,8)
 				created_atom.pixel_y += rand(-8,8)
 			created_atom.OnCreatedFromProcessing(user, process_item, chosen_option, src)
-			to_chat(user, "<span class='notice'>You manage to create [chosen_option[TOOL_PROCESSING_AMOUNT]] [initial(atom_to_create.gender) == PLURAL ? "[initial(atom_to_create.name)]" : "[initial(atom_to_create.name)][plural_s(initial(atom_to_create.name))]"] from [src].</span>")
+			to_chat(user, "<span class='notice'>Udaje ci się zrobić z [src]: [initial(atom_to_create.name)] ([chosen_option[TOOL_PROCESSING_AMOUNT]]).</span>")
 			created_atoms.Add(created_atom)
 		SEND_SIGNAL(src, COMSIG_ATOM_PROCESSED, user, process_item, created_atoms)
 		UsedforProcessing(user, process_item, chosen_option)
@@ -1378,7 +1378,7 @@
 /atom/proc/multitool_check_buffer(user, obj/item/I, silent = FALSE)
 	if(!istype(I, /obj/item/multitool))
 		if(user && !silent)
-			to_chat(user, "<span class='warning'>[I] has no data buffer!</span>")
+			to_chat(user, "<span class='warning'>[I] nie ma bufora danych!</span>")
 		return FALSE
 	return TRUE
 

@@ -90,7 +90,7 @@
 		printer_ready = world.time + PRINTER_TIMEOUT
 		new /obj/item/paper/record_printout(loc, record)
 	else if(user)
-		to_chat(user, "<span class='warning'>[src] is busy right now.</span>")
+		to_chat(user, "<span class='warning'>[src] jest teraz zajęty.</span>")
 
 /obj/item/paper/record_printout
 	name = "paper - Log Recording"
@@ -121,17 +121,17 @@
 		if(!anchored && !isinspace())
 			anchored = TRUE
 			power_change()
-			to_chat(user, "<span class='notice'>You fasten [src].</span>")
+			to_chat(user, "<span class='notice'>Przykręcasz [src].</span>")
 		else if(anchored)
 			anchored = FALSE
 			power_change()
-			to_chat(user, "<span class='notice'>You unfasten [src].</span>")
+			to_chat(user, "<span class='notice'>Odkręcasz [src].</span>")
 		I.play_tool_sound(src)
 		return
 	return ..()
 
 /obj/machinery/doppler_array/proc/rot_message(mob/user)
-	to_chat(user, "<span class='notice'>You adjust [src]'s dish to face to the [dir2text(dir)].</span>")
+	to_chat(user, "<span class='notice'>Obracasz antenę [src] w kierunku: [dir2text(dir)].</span>")
 	playsound(src, 'sound/items/screwdriver2.ogg', 50, 1)
 
 /obj/machinery/doppler_array/proc/sense_explosion(datum/source,turf/epicenter,devastation_range,heavy_impact_range,light_impact_range,
@@ -219,7 +219,7 @@
 	if(!.)
 		return
 	if(!istype(linked_techweb))
-		say("Warning: No linked research system!")
+		say("Ostrzeżenie: brak połączonego systemu badań!")
 		return
 
 	var/general_point_gain = 0
@@ -228,7 +228,7 @@
 	/*****The Point Calculator*****/
 
 	if(orig_light_range < 10)
-		say("Explosion not large enough for research calculations.")
+		say("Eksplozja za mała do obliczeń badawczych.")
 		return
 	else if(orig_light_range < 4500)
 		general_point_gain = (83300 * orig_light_range) / (orig_light_range + 3000)
@@ -252,10 +252,10 @@
 			linked_techweb.add_point_type(TECHWEB_POINT_TYPE_DEFAULT, general_point_gain)
 			linked_techweb.add_point_type(TECHWEB_POINT_TYPE_DISCOVERY, discovery_point_gain)
 
-			say("Explosion details and mixture analyzed and sold to the highest bidder for $[general_point_gain], with a reward of [general_point_gain] General Research points and [discovery_point_gain] Discovery Research points.")
+			say("Szczegóły eksplozji i analiza mieszanki zostały sprzedane najwyżej licytującemu za $[general_point_gain], z nagrodą [general_point_gain] ogólnych punktów badań i [discovery_point_gain] punktów odkryć.")
 
 	else //you've made smaller bombs
-		say("Data already captured. Aborting.")
+		say("Dane już zebrano. Przerywanie.")
 		return
 
 /obj/machinery/doppler_array/research/science/Initialize(mapload)

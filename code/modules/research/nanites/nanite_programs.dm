@@ -122,7 +122,7 @@
 	var/datum/nanite_extra_setting/ES = extra_settings[setting]
 	if(istype(ES, /datum/nanite_extra_setting/text))
 		if(CHAT_FILTER_CHECK(value))
-			to_chat(usr, "<span class='warning'>Your message contains forbidden words.</span>")
+			to_chat(usr, "<span class='warning'>Twoja wiadomość zawiera zakazane słowa.</span>")
 			var/logmsg = "attempted to set a forbidden nanite cloud [src] field \"[setting]\" with contents: \"[value]\". The message was filtered and blocked."
 			log_admin_private("[key_name(usr)] [logmsg]")
 			message_admins("[ADMIN_LOOKUPFLW(usr)] [logmsg]")

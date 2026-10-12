@@ -18,19 +18,19 @@ Consuming extracts:
 /obj/item/slimecross/consuming/attackby(obj/item/O, mob/user)
 	if(IS_EDIBLE(O))
 		if(last_produced + cooldown > world.time)
-			to_chat(user, "<span class='warning'>[src] is still digesting after its last meal!</span>")
+			to_chat(user, "<span class='warning'>[src] wciąż trawi poprzedni posiłek!</span>")
 			return
 		var/datum/reagent/N = O.reagents.has_reagent(/datum/reagent/consumable/nutriment)
 		if(N)
 			nutriment_eaten += N.volume
-			to_chat(user, "<span class='notice'>[src] opens up and swallows [O] whole!</span>")
+			to_chat(user, "<span class='notice'>[src] otwiera się i połyka [O] w całości!</span>")
 			qdel(O)
 			playsound(src, 'sound/items/eatfood.ogg', 20, 1)
 		else
-			to_chat(user, "<span class='warning'>[src] burbles unhappily at the offering.</span>")
+			to_chat(user, "<span class='warning'>[src] bulgocze niezadowolony z ofiary.</span>")
 		if(nutriment_eaten >= nutriment_required)
 			nutriment_eaten = 0
-			user.visible_message("<span class='notice'>[src] swells up and produces a small pile of cookies!</span>")
+			user.visible_message("<span class='notice'>[src] pęcznieje i wytwarza małą stertę ciasteczek!</span>")
 			playsound(src, 'sound/effects/splat.ogg', 40, 1)
 			last_produced = world.time
 			for(var/i in 1 to cookies)
@@ -62,18 +62,18 @@ Consuming extracts:
 /obj/item/slime_cookie/attack(mob/living/M, mob/user)
 	var/fed = FALSE
 	if(M == user)
-		M.visible_message("<span class='notice'>[user] eats [src]!</span>", "<span class='notice'>You eat [src].</span>")
+		M.visible_message("<span class='notice'>[user] eats [src]!</span>", "<span class='notice'>Zjadasz [src].</span>")
 		fed = TRUE
 	else
-		M.visible_message("<span class='danger'>[user] tries to force [M] to eat [src]!</span>", "<span class='userdanger'>[user] tries to force you to eat [src]!</span>")
+		M.visible_message("<span class='danger'>[user] próbuje zmusić [M] do zjedzenia [src]!</span>", "<span class='userdanger'>[user] próbuje zmusić cię do zjedzenia [src]!</span>")
 		if(do_after(user, 20, target = M))
 			fed = TRUE
-			M.visible_message("<span class='danger'>[user] forces [M] to eat [src]!</span>", "<span class='warning'>[user] forces you to eat [src].</span>")
+			M.visible_message("<span class='danger'>[user] zmusza [M] do zjedzenia [src]!</span>", "<span class='warning'>[user] zmusza cię do zjedzenia [src].</span>")
 	if(fed)
 		var/mob/living/carbon/human/H = M
 
 		if(!istype(H) || !HAS_TRAIT(H, TRAIT_AGEUSIA))
-			to_chat(M, "Tastes like [taste].")
+			to_chat(M, "Smakuje jak: [taste].")
 		playsound(get_turf(M), 'sound/items/eatfood.ogg', 20, 1)
 		if(nutrition)
 			M.reagents.add_reagent(/datum/reagent/consumable/nutriment,nutrition)
@@ -84,7 +84,7 @@ Consuming extracts:
 
 /obj/item/slimecross/consuming/grey
 	colour = "grey"
-	effect_desc = "Creates a slime cookie."
+	effect_desc = "Tworzy szlamowe ciasteczko."
 	cookietype = /obj/item/slime_cookie/grey
 
 /obj/item/slime_cookie/grey
@@ -96,28 +96,28 @@ Consuming extracts:
 
 /obj/item/slimecross/consuming/orange
 	colour = "orange"
-	effect_desc = "Creates a slime cookie that heats the target up and grants cold immunity for a short time."
+	effect_desc = "Tworzy szlamowe ciasteczko, które rozgrzewa cel i na krótko daje odporność na zimno."
 	cookietype = /obj/item/slime_cookie/orange
 
 /obj/item/slime_cookie/orange
 	name = "fiery cookie"
 	desc = "A orange cookie with a fiery pattern. Feels warm."
 	icon_state = "orange"
-	taste = "cinnamon and burning"
+	taste = "cynamon i spalenizna"
 
 /obj/item/slime_cookie/orange/do_effect(mob/living/M, mob/user)
 	M.apply_status_effect(/datum/status_effect/firecookie)
 
 /obj/item/slimecross/consuming/purple
 	colour = "purple"
-	effect_desc = "Creates a slime cookie that heals the target from every type of damage."
+	effect_desc = "Tworzy szlamowe ciasteczko, które leczy cel ze wszystkich rodzajów obrażeń."
 	cookietype = /obj/item/slime_cookie/purple
 
 /obj/item/slime_cookie/purple
 	name = "health cookie"
 	desc = "A purple cookie with a cross pattern. Soothing."
 	icon_state = "purple"
-	taste = "fruit jam and cough medicine"
+	taste = "dżem owocowy i syrop na kaszel"
 
 /obj/item/slime_cookie/purple/do_effect(mob/living/M, mob/user)
 	M.adjustBruteLoss(-5)
@@ -129,7 +129,7 @@ Consuming extracts:
 
 /obj/item/slimecross/consuming/blue
 	colour = "blue"
-	effect_desc = "Creates a slime cookie that wets the floor around you and makes you immune to water based slipping for a short time."
+	effect_desc = "Tworzy szlamowe ciasteczko, które moczy podłogę wokół ciebie i na krótko daje odporność na poślizgnięcie na wodzie."
 	cookietype = /obj/item/slime_cookie/blue
 
 /obj/item/slime_cookie/blue
@@ -143,7 +143,7 @@ Consuming extracts:
 
 /obj/item/slimecross/consuming/metal
 	colour = "metal"
-	effect_desc = "Creates a slime cookie that increases the target's resistance to brute damage."
+	effect_desc = "Tworzy szlamowe ciasteczko, które zwiększa odporność celu na obrażenia fizyczne."
 	cookietype = /obj/item/slime_cookie/metal
 
 /obj/item/slime_cookie/metal
@@ -157,42 +157,42 @@ Consuming extracts:
 
 /obj/item/slimecross/consuming/yellow
 	colour = "yellow"
-	effect_desc = "Creates a slime cookie that makes the target immune to electricity for a short time."
+	effect_desc = "Tworzy szlamowe ciasteczko, które na krótko daje celowi odporność na prąd."
 	cookietype = /obj/item/slime_cookie/yellow
 
 /obj/item/slime_cookie/yellow
 	name = "sparking cookie"
 	desc = "A yellow cookie with a lightning pattern. Has a rubbery texture."
 	icon_state = "yellow"
-	taste = "lemon cake and rubber gloves"
+	taste = "ciasto cytrynowe i gumowe rękawiczki"
 
 /obj/item/slime_cookie/yellow/do_effect(mob/living/M, mob/user)
 	M.apply_status_effect(/datum/status_effect/sparkcookie)
 
 /obj/item/slimecross/consuming/darkpurple
 	colour = "dark purple"
-	effect_desc = "Creates a slime cookie that reverses how the target's body treats toxins."
+	effect_desc = "Tworzy szlamowe ciasteczko, które odwraca sposób, w jaki ciało celu reaguje na toksyny."
 	cookietype = /obj/item/slime_cookie/darkpurple
 
 /obj/item/slime_cookie/darkpurple
 	name = "toxic cookie"
 	desc = "A dark purple cookie, stinking of plasma."
 	icon_state = "darkpurple"
-	taste = "slime jelly and toxins"
+	taste = "galareta szlamu i toksyny"
 
 /obj/item/slime_cookie/darkpurple/do_effect(mob/living/M, mob/user)
 	M.apply_status_effect(/datum/status_effect/toxincookie)
 
 /obj/item/slimecross/consuming/darkblue
 	colour = "dark blue"
-	effect_desc = "Creates a slime cookie that chills the target and extinguishes them."
+	effect_desc = "Tworzy szlamowe ciasteczko, które schładza cel i go gasi."
 	cookietype = /obj/item/slime_cookie/darkblue
 
 /obj/item/slime_cookie/darkblue
 	name = "frosty cookie"
 	desc = "A dark blue cookie with a snowflake pattern. Feels cold."
 	icon_state = "darkblue"
-	taste = "mint and bitter cold"
+	taste = "mięta i przenikliwe zimno"
 
 /obj/item/slime_cookie/darkblue/do_effect(mob/living/M, mob/user)
 	M.adjust_bodytemperature(-110)
@@ -200,14 +200,14 @@ Consuming extracts:
 
 /obj/item/slimecross/consuming/silver
 	colour = "silver"
-	effect_desc = "Creates a slime cookie that never gets the target fat."
+	effect_desc = "Tworzy szlamowe ciasteczko, po którym cel nigdy nie tyje."
 	cookietype = /obj/item/slime_cookie/silver
 
 /obj/item/slime_cookie/silver
 	name = "waybread cookie"
 	desc = "A warm, crispy cookie, sparkling silver in the light. Smells wonderful."
 	icon_state = "silver"
-	taste = "masterful elven baking"
+	taste = "mistrzowskie elfie wypieki"
 	nutrition = 0 //We don't want normal nutriment
 
 /obj/item/slime_cookie/silver/do_effect(mob/living/M, mob/user)
@@ -215,14 +215,14 @@ Consuming extracts:
 
 /obj/item/slimecross/consuming/bluespace
 	colour = "bluespace"
-	effect_desc = "Creates a slime cookie that teleports the target to a random place in the area."
+	effect_desc = "Tworzy szlamowe ciasteczko, które teleportuje cel w losowe miejsce w okolicy."
 	cookietype = /obj/item/slime_cookie/bluespace
 
 /obj/item/slime_cookie/bluespace
 	name = "space cookie"
 	desc = "A white cookie with green icing. Surprisingly hard to hold."
 	icon_state = "bluespace"
-	taste = "sugar and starlight"
+	taste = "cukier i blask gwiazd"
 
 /obj/item/slime_cookie/bluespace/do_effect(mob/living/M, mob/user)
 	var/list/L = get_area_turfs(get_area(get_turf(M)))
@@ -251,21 +251,21 @@ Consuming extracts:
 
 /obj/item/slimecross/consuming/sepia
 	colour = "sepia"
-	effect_desc = "Creates a slime cookie that makes the target do things slightly faster."
+	effect_desc = "Tworzy szlamowe ciasteczko, dzięki któremu cel robi wszystko nieco szybciej."
 	cookietype = /obj/item/slime_cookie/sepia
 
 /obj/item/slime_cookie/sepia
 	name = "time cookie"
 	desc = "A light brown cookie with a clock pattern. Takes some time to chew."
 	icon_state = "sepia"
-	taste = "brown sugar and a metronome"
+	taste = "brązowy cukier i metronom"
 
 /obj/item/slime_cookie/sepia/do_effect(mob/living/M, mob/user)
 	M.apply_status_effect(/datum/status_effect/timecookie)
 
 /obj/item/slimecross/consuming/cerulean
 	colour = "cerulean"
-	effect_desc = "Creates a slime cookie that has a chance to make another once you eat it."
+	effect_desc = "Tworzy szlamowe ciasteczko, które po zjedzeniu może stworzyć kolejne."
 	cookietype = /obj/item/slime_cookie/cerulean
 	cookies = 3 //You're gonna get more.
 
@@ -273,50 +273,50 @@ Consuming extracts:
 	name = "duplicookie"
 	desc = "A cerulean cookie with strange proportions. It feels like it could break apart easily."
 	icon_state = "cerulean"
-	taste = "a sugar cookie"
+	taste = "ciasteczko cukrowe"
 
 /obj/item/slime_cookie/cerulean/do_effect(mob/living/M, mob/user)
 	if(prob(50))
-		to_chat(M, "<span class='notice'>A piece of [src] breaks off while you chew, and falls to the ground.</span>")
+		to_chat(M, "<span class='notice'>Podczas żucia odłamuje się kawałek [src] i spada na ziemię.</span>")
 		var/obj/item/slime_cookie/cerulean/C = new(get_turf(M))
-		C.taste = taste + " and a sugar cookie"
+		C.taste = taste + " i ciasteczko cukrowe"
 
 /obj/item/slimecross/consuming/pyrite
 	colour = "pyrite"
-	effect_desc = "Creates a slime cookie that randomly colors the target."
+	effect_desc = "Tworzy szlamowe ciasteczko, które losowo barwi cel."
 	cookietype = /obj/item/slime_cookie/pyrite
 
 /obj/item/slime_cookie/pyrite
 	name = "color cookie"
 	desc = "A yellow cookie with rainbow-colored icing. Reflects the light strangely."
 	icon_state = "pyrite"
-	taste = "vanilla and " //Randomly selected color dye.
+	taste = "wanilia i " //Randomly selected color dye.
 	var/colour = "#FFFFFF"
 
 /obj/item/slime_cookie/pyrite/Initialize(mapload)
 	. = ..()
-	var/tastemessage = "paint remover"
+	var/tastemessage = "zmywacz do farby"
 	switch(rand(1,7))
 		if(1)
-			tastemessage = "red dye"
+			tastemessage = "czerwony barwnik"
 			colour = "#FF0000"
 		if(2)
-			tastemessage = "orange dye"
+			tastemessage = "pomarańczowy barwnik"
 			colour = "#FFA500"
 		if(3)
-			tastemessage = "yellow dye"
+			tastemessage = "żółty barwnik"
 			colour = "#FFFF00"
 		if(4)
-			tastemessage = "green dye"
+			tastemessage = "zielony barwnik"
 			colour = "#00FF00"
 		if(5)
-			tastemessage = "blue dye"
+			tastemessage = "niebieski barwnik"
 			colour = "#0000FF"
 		if(6)
-			tastemessage = "indigo dye"
+			tastemessage = "indygo"
 			colour = "#4B0082"
 		if(7)
-			tastemessage = "violet dye"
+			tastemessage = "fioletowy barwnik"
 			colour = "#FF00FF"
 	taste += tastemessage
 
@@ -325,14 +325,14 @@ Consuming extracts:
 
 /obj/item/slimecross/consuming/red
 	colour = "red"
-	effect_desc = "Creates a slime cookie that creates a spatter of blood on the floor, while also restoring some of the target's blood."
+	effect_desc = "Tworzy szlamowe ciasteczko, które rozbryzguje krew na podłodze, a jednocześnie uzupełnia część krwi celu."
 	cookietype = /obj/item/slime_cookie/red
 
 /obj/item/slime_cookie/red
 	name = "blood cookie"
 	desc = "A red cookie, oozing a thick red fluid. Vampires might enjoy it."
 	icon_state = "red"
-	taste = "red velvet and iron"
+	taste = "czerwony aksamit i żelazo"
 
 /obj/item/slime_cookie/red/do_effect(mob/living/M, mob/user)
 	new /obj/effect/decal/cleanable/blood(get_turf(M))
@@ -343,14 +343,14 @@ Consuming extracts:
 
 /obj/item/slimecross/consuming/green
 	colour = "green"
-	effect_desc = "Creates a slime cookie that is absolutely disgusting, makes the target vomit, however all reagent in their body are also removed."
+	effect_desc = "Tworzy szlamowe ciasteczko, które jest absolutnie obrzydliwe i wywołuje u celu wymioty, ale usuwa też wszystkie odczynniki z jego ciała."
 	cookietype = /obj/item/slime_cookie/green
 
 /obj/item/slime_cookie/green
 	name = "gross cookie"
 	desc = "A disgusting green cookie, seeping with pus. You kind of feel ill just looking at it."
 	icon_state = "green"
-	taste = "the contents of your stomach"
+	taste = "zawartość twojego żołądka"
 
 /obj/item/slime_cookie/green/do_effect(mob/living/M, mob/user)
 	if(ishuman(M))
@@ -360,28 +360,28 @@ Consuming extracts:
 
 /obj/item/slimecross/consuming/pink
 	colour = "pink"
-	effect_desc = "Creates a slime cookie that makes the target want to spread the love."
+	effect_desc = "Tworzy szlamowe ciasteczko, po którym cel chce szerzyć miłość."
 	cookietype = /obj/item/slime_cookie/pink
 
 /obj/item/slime_cookie/pink
 	name = "love cookie"
 	desc = "A pink cookie with an icing heart. D'aww."
 	icon_state = "pink"
-	taste = "love and hugs"
+	taste = "miłość i uściski"
 
 /obj/item/slime_cookie/pink/do_effect(mob/living/M, mob/user)
 	M.apply_status_effect(/datum/status_effect/lovecookie)
 
 /obj/item/slimecross/consuming/gold
 	colour = "gold"
-	effect_desc = "Creates a slime cookie that has a gold coin inside."
+	effect_desc = "Tworzy szlamowe ciasteczko ze złotą monetą w środku."
 	cookietype = /obj/item/slime_cookie/gold
 
 /obj/item/slime_cookie/gold
 	name = "gilded cookie"
 	desc = "A buttery golden cookie, closer to a bread than anything. May good fortune find you."
 	icon_state = "gold"
-	taste = "sweet cornbread and wealth"
+	taste = "słodki chleb kukurydziany i bogactwo"
 
 /obj/item/slime_cookie/gold/do_effect(mob/living/M, mob/user)
 	var/obj/item/held = M.get_active_held_item() //This should be itself, but just in case...
@@ -393,63 +393,63 @@ Consuming extracts:
 
 /obj/item/slimecross/consuming/oil
 	colour = "oil"
-	effect_desc = "Creates a slime cookie that slows anyone next to the user."
+	effect_desc = "Tworzy szlamowe ciasteczko, które spowalnia każdego obok użytkownika."
 	cookietype = /obj/item/slime_cookie/oil
 
 /obj/item/slime_cookie/oil
 	name = "tar cookie"
 	desc = "An oily black cookie, which sticks to your hands. Smells like chocolate."
 	icon_state = "oil"
-	taste = "rich molten chocolate and tar"
+	taste = "gęsta roztopiona czekolada i smoła"
 
 /obj/item/slime_cookie/oil/do_effect(mob/living/M, mob/user)
 	M.apply_status_effect(/datum/status_effect/tarcookie)
 
 /obj/item/slimecross/consuming/black
 	colour = "black"
-	effect_desc = "Creates a slime cookie that makes the target look like a spooky skeleton for a little bit."
+	effect_desc = "Tworzy szlamowe ciasteczko, po którym cel przez chwilę wygląda jak straszny szkielet."
 	cookietype = /obj/item/slime_cookie/black
 
 /obj/item/slime_cookie/black
 	name = "spooky cookie"
 	desc = "A pitch black cookie with an icing ghost on the front. Spooky!"
 	icon_state = "black"
-	taste = "ghosts and stuff"
+	taste = "duchy i takie tam"
 
 /obj/item/slime_cookie/black/do_effect(mob/living/M, mob/user)
 	M.apply_status_effect(/datum/status_effect/spookcookie)
 
 /obj/item/slimecross/consuming/lightpink
 	colour = "light pink"
-	effect_desc = "Creates a slime cookie that makes the target, and anyone next to the target, pacifistic for a small amount of time."
+	effect_desc = "Tworzy szlamowe ciasteczko, które na krótko czyni pacyfistami cel i każdego obok niego."
 	cookietype = /obj/item/slime_cookie/lightpink
 
 /obj/item/slime_cookie/lightpink
 	name = "peace cookie"
 	desc = "A light pink cookie with a peace symbol in the icing. Lovely!"
 	icon_state = "lightpink"
-	taste = "strawberry icing and P.L.U.R" //Literal candy raver.
+	taste = "lukier truskawkowy i P.L.U.R" //Literal candy raver.
 
 /obj/item/slime_cookie/lightpink/do_effect(mob/living/M, mob/user)
 	M.apply_status_effect(/datum/status_effect/peacecookie)
 
 /obj/item/slimecross/consuming/adamantine
 	colour = "adamantine"
-	effect_desc = "Creates a slime cookie that increases the target's resistance to burn damage."
+	effect_desc = "Tworzy szlamowe ciasteczko, które zwiększa odporność celu na oparzenia."
 	cookietype = /obj/item/slime_cookie/adamantine
 
 /obj/item/slime_cookie/adamantine
 	name = "crystal cookie"
 	desc = "A translucent rock candy in the shape of a cookie. Surprisingly chewy."
 	icon_state = "adamantine"
-	taste = "crystalline sugar and metal"
+	taste = "krystaliczny cukier i metal"
 
 /obj/item/slime_cookie/adamantine/do_effect(mob/living/M, mob/user)
 	M.apply_status_effect(/datum/status_effect/adamantinecookie)
 
 /obj/item/slimecross/consuming/rainbow
 	colour = "rainbow"
-	effect_desc = "Creates a slime cookie that has the effect of a random cookie."
+	effect_desc = "Tworzy szlamowe ciasteczko o działaniu losowego ciasteczka."
 
 /obj/item/slimecross/consuming/rainbow/spawncookie()
 	var/cookie_type = pick(subtypesof(/obj/item/slime_cookie))

@@ -179,10 +179,10 @@ Borg Hypospray
 	if(!istype(injectee))
 		return
 	if(!selected_reagent)
-		balloon_alert(user, "no reagent selected!")
+		balloon_alert(user, "nie wybrano odczynnika!")
 		return
 	if(!stored_reagents.has_reagent(selected_reagent.type, amount_per_transfer_from_this))
-		balloon_alert(user, "not enough [selected_reagent.name]!")
+		balloon_alert(user, "za mało: [selected_reagent.name]!")
 		return
 
 	if(injectee.can_inject(user, 1, user.zone_selected,bypass_protection))
@@ -192,15 +192,15 @@ Borg Hypospray
 		stored_reagents.remove_reagent(selected_reagent.type, amount_per_transfer_from_this)
 		hypospray_injector.add_reagent(selected_reagent.type, amount_per_transfer_from_this, no_react = TRUE)
 
-		to_chat(injectee, "<span class='warning'>You feel a tiny prick!</span>")
-		to_chat(user, "<span class='notice'>You inject [injectee] with the injector ([selected_reagent.name]).</span>")
+		to_chat(injectee, "<span class='warning'>Czujesz maleńkie ukłucie!</span>")
+		to_chat(user, "<span class='notice'>Wstrzykujesz [injectee] zawartość iniektora ([selected_reagent.name]).</span>")
 
 		if(injectee.reagents)
 			hypospray_injector.trans_to(injectee, amount_per_transfer_from_this, transfered_by = user, method = INJECT)
 			balloon_alert(user, "[amount_per_transfer_from_this] unit\s injected")
 			log_combat(user, injectee, "injected", src, "(CHEMICALS: [selected_reagent])")
 	else
-		balloon_alert(user, "[parse_zone(user.zone_selected)] is blocked!")
+		balloon_alert(user, "[strefa_pl(user.zone_selected)]: zablokowane!")
 
 /obj/item/reagent_containers/borghypo/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -249,8 +249,8 @@ Borg Hypospray
 
 /obj/item/reagent_containers/borghypo/examine(mob/user)
 	. = ..()
-	. += "Currently loaded: [selected_reagent ? "[selected_reagent]. [selected_reagent.description]" : "nothing."]"
-	. += "<span class='notice'><i>Alt+Click</i> to change transfer amount. Currently set to [amount_per_transfer_from_this]u.</span>"
+	. += "Obecnie załadowano: [selected_reagent ? "[selected_reagent]. [selected_reagent.description]" : "nic."]"
+	. += "<span class='notice'><i>Alt+kliknij</i>, by zmienić ilość do przeniesienia. Obecnie: [amount_per_transfer_from_this] j.</span>"
 
 /obj/item/reagent_containers/borghypo/AltClick(mob/living/user)
 	. = ..()
@@ -380,14 +380,14 @@ Borg Hypospray
 	if(!proximity)
 		return
 	if(!selected_reagent)
-		balloon_alert(user, "no reagent selected!")
+		balloon_alert(user, "nie wybrano odczynnika!")
 		return
 	if(target.is_refillable())
 		if(!stored_reagents.has_reagent(selected_reagent.type, amount_per_transfer_from_this))
-			balloon_alert(user, "not enough [selected_reagent.name]!")
+			balloon_alert(user, "za mało: [selected_reagent.name]!")
 			return
 		if(target.reagents.total_volume >= target.reagents.maximum_volume)
-			balloon_alert(user, "[target] is full!")
+			balloon_alert(user, "[target] jest pełny!")
 			return
 
 		// This is the in-between where we're storing the reagent we're going to pour into the container

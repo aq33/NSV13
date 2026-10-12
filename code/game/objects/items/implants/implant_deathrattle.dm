@@ -61,7 +61,7 @@
 			continue
 
 		// Deliberately the same message framing as nanite message + ghost deathrattle
-		to_chat(implant.imp_in, "<i>You hear a strange, robotic voice in your head...</i> \"<span class='robot'><b>[name]</b> has died at <b>[area]</b>.</span>\"")
+		to_chat(implant.imp_in, "<i>Słyszysz w głowie dziwny, robotyczny głos...</i> \"<span class='robot'><b>[name]</b> ginie w <b>[area]</b>.</span>\"")
 
 /obj/item/implant/deathrattle
 	name = "deathrattle implant"

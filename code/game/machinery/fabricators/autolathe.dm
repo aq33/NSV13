@@ -85,11 +85,11 @@
 
 	if((ACCESS_SECURITY in O.GetAccess()) && !(obj_flags & EMAGGED))
 		security_interface_locked = !security_interface_locked
-		to_chat(user, "<span class='warning'>You [security_interface_locked?"lock":"unlock"] the security controls of [src].</span>")
+		to_chat(user, "<span class='warning'>[security_interface_locked?"Blokujesz":"Odblokowujesz"] zabezpieczenia [src].</span>")
 		return TRUE
 
 	if (busy)
-		to_chat(user, "<span class=\"alert\">The autolathe is busy. Please wait for completion of previous operation.</span>")
+		to_chat(user, "<span class=\"alert\">Autolatarka jest zajęta. Zaczekaj na zakończenie poprzedniej operacji.</span>")
 		return TRUE
 
 	if(default_deconstruction_screwdriver(user, "autolathe_t", "autolathe", O))
@@ -109,9 +109,9 @@
 		return TRUE
 
 	if(istype(O, /obj/item/disk/design_disk))
-		user.visible_message("[user] loads \the [O] into \the [src]...",
-			"You load a design from \the [O]...",
-			"You hear the chatter of a floppy drive.")
+		user.visible_message("[user] wczytuje [O] do [src]...",
+			"Wczytujesz wzór z [O]...",
+			"Słyszysz terkot stacji dyskietek.")
 		inserted_disk = O
 		O.forceMove(src)
 		update_viewer_statics()

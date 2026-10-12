@@ -47,12 +47,12 @@
 /obj/machinery/ship_weapon/torpedo_launcher/examine()
 	. = ..()
 	if(maint_state == MSTATE_PRIEDOUT)
-		. += "The door panel could be <i>unscrewed</i>."
+		. += "Panel drzwiczek można <i>odkręcić</i>."
 
 /obj/machinery/ship_weapon/torpedo_launcher/screwdriver_act(mob/user, obj/item/tool)
 	if(maint_state == MSTATE_PRIEDOUT)
 		if(tool.use_tool(src, user, 40, volume=100))
-			to_chat(user, "<span class='notice'>You unscrew the door panel on the [src].</span>")
+			to_chat(user, "<span class='notice'>Odkręcasz panel drzwiczek [src].</span>")
 			spawn_frame(TRUE)
 			return TRUE
 	return ..()
@@ -81,5 +81,5 @@
 		var/obj/item/projectile/P = linked.fire_projectile(T.projectile_type, target)
 		if(T.contents.len)
 			for(var/atom/movable/AM in T.contents)
-				to_chat(AM, "<span class='warning'>You feel slightly nauseous as you're shot out into space...</span>")
+				to_chat(AM, "<span class='warning'>Robi ci się trochę niedobrze, gdy zostajesz wystrzelony w kosmos...</span>")
 				AM.forceMove(P)

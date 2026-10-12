@@ -103,7 +103,7 @@
 /obj/machinery/atmospherics/components/trinary/defence_screen_reactor/examine(mob/user)
 	. = ..()
 	if(issilicon(user))
-		. += "<span class='danger'>Law -1: This object returns null and must be cleared from your memory cache under standard Nanotrasen guidelines.</span>"
+		. += "<span class='danger'>Prawo -1: ten obiekt zwraca null i musi zostać usunięty z twojej pamięci podręcznej zgodnie ze standardowymi wytycznymi Nanotrasen.</span>"
 
 /obj/machinery/atmospherics/components/trinary/defence_screen_reactor/proc/try_use_power(amount)
 	var/turf/T = get_turf(src)
@@ -143,7 +143,7 @@
 
 	if(state == REACTOR_STATE_INITIALIZING)
 		if(power_input < min_power_input)
-			say("Error: Unable to initialise reaction, insufficient power available.")
+			say("Błąd: nie można rozpocząć reakcji, za mało dostępnej mocy.")
 			state = REACTOR_STATE_IDLE
 			return
 
@@ -152,22 +152,22 @@
 		if(reaction_containment >= 100)
 			reaction_containment = 100
 			if(reaction_injection_rate < 2.5)
-				say("Error: Unable to initialise reaction, insufficient nucleium injection.")
+				say("Błąd: nie można rozpocząć reakcji, za mały wtrysk nukleium.")
 				handle_shutdown()
 				return
 
 			if(nuc_in < reaction_injection_rate)
-				say("Error: Unable to initialise reaction, insufficient nucleium available.")
+				say("Błąd: nie można rozpocząć reakcji, za mało dostępnego nukleium.")
 				handle_shutdown()
 				return
 			if(!power_demand_met)
-				say("Error: Power allocation exceeding grid capacity. Failed to initiate reaction.")
+				say("Błąd: przydział mocy przekracza pojemność sieci. Nie udało się rozpocząć reakcji.")
 				handle_shutdown()
 				return
 
 			var/errors = rand(20, 199)
-			say("Initiating Reaction - Injecting Nucleium.")
-			say("Reaction Initialized - [errors] runtimes supressed.")
+			say("Rozpoczynanie reakcji - wtrysk nukleium.")
+			say("Reakcja zainicjalizowana - stłumiono błędów wykonania: [errors].")
 			reaction_temperature = 100 //Flash start to 100
 			shield["stability"] = 50 //begin at 50 during startup.
 			state = REACTOR_STATE_RUNNING
@@ -226,10 +226,10 @@
 			if(reaction_temperature <= 0)
 				reaction_temperature = 0
 				if(min_power_input <= 1e+6)
-					say("Reaction Terminated - Dumping screen caches and cycling containment generators.")
+					say("Reakcja zakończona - zrzucanie buforów ekranu i przełączanie generatorów izolacji.")
 					state = REACTOR_STATE_SHUTTING_DOWN
 				else
-					say("Error: Reaction Prematurely Terminated - Inspect all systems for damage.")
+					say("Błąd: reakcja przedwcześnie zakończona - sprawdź wszystkie systemy pod kątem uszkodzeń.")
 					var/list/overload_candidate = list()
 					for(var/obj/machinery/defence_screen_relay/DSR in GLOB.machines)
 						if(DSR.powered() && DSR.overloaded == FALSE)
@@ -278,7 +278,7 @@
 		var/obj/item/multitool/M = I
 		M.buffer = src
 		playsound(src, 'sound/items/flashlight_on.ogg', 100, TRUE)
-		to_chat(user, "<span class='notice'>Buffer loaded</span>")
+		to_chat(user, "<span class='notice'>Wczytano bufor</span>")
 
 /obj/machinery/atmospherics/components/trinary/defence_screen_reactor/proc/handle_records()
 	if(world.time >= records_next_interval)
@@ -332,7 +332,7 @@
 	if(reaction_containment < 0)
 		reaction_containment = 0
 		emission_tracker = world.time
-		say("Error: Catatstropic Containment Failure - Initializing Emergency Termination Protocols")
+		say("Błąd: katastrofalna awaria izolacji - inicjalizacja awaryjnych protokołów zakończenia")
 		playsound(src, 'sound/magic/lightning_chargeup.ogg', 100, FALSE, 15) //Replace me later?
 		state = REACTOR_STATE_EMISSION //Whoops
 
@@ -349,7 +349,7 @@
 			playsound(src, 'nsv13/sound/effects/ship/pdsr_warning.ogg', 100, FALSE, 10)
 		if(next_alarm_message < world.time)
 			next_alarm_message = world.time + 15 SECONDS
-			say("DANGER: Reaction Containment Critical. Emission Imminent.")
+			say("NIEBEZPIECZEŃSTWO: krytyczny stan izolacji reakcji. Emisja nieuchronna.")
 
 	if(state == REACTOR_STATE_EMISSION)
 		if(next_alarm_sfx < world.time)
@@ -380,7 +380,7 @@
 		radiation_pulse(src, reaction_energy_output * 2)
 		for(var/mob/living/M in orange(12, src))
 			if(in_view_range(M, src))
-				to_chat(M, "<span class='warning'>A stream of particles erupts from the [src]!</span>")
+				to_chat(M, "<span class='warning'>Z [src] wydobywa się strumień cząstek!</span>")
 				M.flash_act(1, 0, 1)
 				playsound(src, 'sound/magic/repulse.ogg', 100, FALSE, 5)
 	//more goes here
@@ -398,7 +398,7 @@
 			M.flash_act(clamp(emission_energy, 30, 100), TRUE, TRUE)
 			M.Knockdown(clamp(emission_energy, 20, 100))
 			M.adjust_disgust(rand(20, 50))
-			to_chat(M, "<span class='warning'>A wash of radiation passes through you!</span>")
+			to_chat(M, "<span class='warning'>Przechodzi przez ciebie fala promieniowania!</span>")
 
 	depower_shield()
 	OM.take_quadrant_hit((emission_energy ** 2) / 2, "forward_port")
@@ -408,8 +408,8 @@
 
 	handle_shutdown() //And reset
 
-	say("Emergency Termination Protocols Enabled - Reaction Halted.")
-	say("Inspect all systems for damage.")
+	say("Włączono awaryjne protokoły zakończenia - reakcja zatrzymana.")
+	say("Sprawdź wszystkie systemy pod kątem uszkodzeń.")
 
 /obj/machinery/atmospherics/components/trinary/defence_screen_reactor/proc/handle_temperature()
 	reaction_containment -= (reaction_temperature / 50) + (current_uptime / 2000)
@@ -551,7 +551,7 @@
 	if(detonating)
 		return
 	detonating = TRUE
-	visible_message("<span class='boldwarning'>[src] destabilizes violently.</span>")
+	visible_message("<span class='boldwarning'>[src] gwałtownie się destabilizuje.</span>")
 	radiation_pulse(src, 5000)
 	explosion(get_turf(src), 5, 8, 0, 10, ignorecap = TRUE, flame_range = 10)
 	qdel(src)
@@ -573,7 +573,7 @@
 /obj/machinery/computer/ship/defence_screen_mainframe_reactor/examine(mob/user)
 	. = ..()
 	if(issilicon(user))
-		. += "<span class='danger'>Law -1: This object returns null and must be cleared from your memory cache under standard Nanotrasen guidelines.</span>"
+		. += "<span class='danger'>Prawo -1: ten obiekt zwraca null i musi zostać usunięty z twojej pamięci podręcznej zgodnie ze standardowymi wytycznymi Nanotrasen.</span>"
 
 /obj/machinery/computer/ship/defence_screen_mainframe_reactor/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_MULTITOOL)
@@ -583,18 +583,18 @@
 		reactor = M.buffer
 		M.buffer = null
 		playsound(src, 'sound/items/flashlight_on.ogg', 100, TRUE)
-		to_chat(user, "<span class='notice'>Buffer transfered</span>")
+		to_chat(user, "<span class='notice'>Przesłano bufor</span>")
 
 /obj/machinery/computer/ship/defence_screen_mainframe_reactor/attack_hand(mob/user)
 	if(!allowed(user))
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, TRUE)
-		to_chat(user, "<span class='warning'>Access denied</span>")
+		to_chat(user, "<span class='warning'>Odmowa dostępu</span>")
 		return
 	if(!reactor)
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, TRUE)
-		to_chat(user, "<span class='warning'>Unable to detect linked reactor</span>")
+		to_chat(user, "<span class='warning'>Nie wykryto połączonego reaktora</span>")
 		return
 
 	ui_interact(user)
@@ -604,7 +604,7 @@
 	if(!reactor)
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, TRUE)
-		to_chat(user, "<span class='warning'>Unable to detect linked reactor</span>")
+		to_chat(user, "<span class='warning'>Nie wykryto połączonego reaktora</span>")
 		return
 	ui_interact(user)
 
@@ -613,13 +613,13 @@
 	if(!reactor)
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, TRUE)
-		to_chat(user, "<span class='warning'>Unable to detect linked reactor</span>")
+		to_chat(user, "<span class='warning'>Nie wykryto połączonego reaktora</span>")
 		return
 	ui_interact(user)
 
 /obj/machinery/computer/ship/defence_screen_mainframe_reactor/attack_ghost(mob/user)
 	if(!reactor)
-		to_chat(user, "<span class='warning'>Unable to detect linked reactor</span>")
+		to_chat(user, "<span class='warning'>Nie wykryto połączonego reaktora</span>")
 		return
 	. = ..() //parent should call ui_interact
 
@@ -653,35 +653,35 @@
 
 		if("ignition")
 			if(world.time < reactor.powerdown_time + 30 SECONDS)
-				reactor.say("Realigning Particle Emitter - Field Unavailable.")
+				reactor.say("Ponowne ustawianie emitera cząstek - pole niedostępne.")
 				return
 			if(reactor.state == REACTOR_STATE_IDLE)
 				if(reactor.power_input >= reactor.min_power_input)
-					reactor.say("Initiating Reaction - Charging Containment Field")
+					reactor.say("Rozpoczynanie reakcji - ładowanie pola izolacji")
 					reactor.state = REACTOR_STATE_INITIALIZING
 				else
-					reactor.say("Error: Unable to initialise reaction, insufficient power available.")
+					reactor.say("Błąd: nie można rozpocząć reakcji, za mało dostępnej mocy.")
 					return
 
 		if("cooling")
 			if(reactor.state == REACTOR_STATE_RUNNING)
 				if(world.time > (reactor.last_coolant_time + 120 SECONDS))
-					reactor.say("Initiating Coolant Flush")
+					reactor.say("Rozpoczynanie płukania chłodziwa")
 					reactor.flushing_coolant = TRUE
 					reactor.last_coolant_time = world.time
 					return
 
 				else
-					reactor.say("Error: Unable to comply - cycling coolant")
+					reactor.say("Błąd: nie można wykonać - trwa wymiana chłodziwa")
 					return
 
 		if("shutdown")
 			if(reactor.state == REACTOR_STATE_RUNNING && reactor.reaction_temperature < 200)
-				reactor.say("Initializing Reactor Shutdown")
+				reactor.say("Rozpoczynanie wyłączania reaktora")
 				reactor.state = REACTOR_STATE_SHUTTING_DOWN
 				return
 			else
-				reactor.say("Error: Unable to comply - Reactor parameters outside safe shutdown limits")
+				reactor.say("Błąd: nie można wykonać - parametry reaktora poza bezpiecznymi limitami wyłączenia")
 				return
 
 
@@ -723,7 +723,7 @@
 /obj/machinery/computer/ship/defence_screen_mainframe_shield/examine(mob/user)
 	. = ..()
 	if(issilicon(user))
-		. += "<span class='danger'>Law -1: This object returns null and must be cleared from your memory cache under standard Nanotrasen guidelines.</span>"
+		. += "<span class='danger'>Prawo -1: ten obiekt zwraca null i musi zostać usunięty z twojej pamięci podręcznej zgodnie ze standardowymi wytycznymi Nanotrasen.</span>"
 
 /obj/machinery/computer/ship/defence_screen_mainframe_shield/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_MULTITOOL)
@@ -733,18 +733,18 @@
 		reactor = M.buffer
 		M.buffer = null
 		playsound(src, 'sound/items/flashlight_on.ogg', 100, TRUE)
-		to_chat(user, "<span class='notice'>Buffer transfered</span>")
+		to_chat(user, "<span class='notice'>Przesłano bufor</span>")
 
 /obj/machinery/computer/ship/defence_screen_mainframe_shield/attack_hand(mob/user)
 	if(!allowed(user))
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, TRUE)
-		to_chat(user, "<span class='warning'>Access denied</span>")
+		to_chat(user, "<span class='warning'>Odmowa dostępu</span>")
 		return
 	if(!reactor)
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, TRUE)
-		to_chat(user, "<span class='warning'>Unable to detect linked reactor</span>")
+		to_chat(user, "<span class='warning'>Nie wykryto połączonego reaktora</span>")
 		return
 
 	ui_interact(user)
@@ -754,7 +754,7 @@
 	if(!reactor)
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, TRUE)
-		to_chat(user, "<span class='warning'>Unable to detect linked reactor</span>")
+		to_chat(user, "<span class='warning'>Nie wykryto połączonego reaktora</span>")
 		return
 	ui_interact(user)
 
@@ -763,13 +763,13 @@
 	if(!reactor)
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, TRUE)
-		to_chat(user, "<span class='warning'>Unable to detect linked reactor</span>")
+		to_chat(user, "<span class='warning'>Nie wykryto połączonego reaktora</span>")
 		return
 	ui_interact(user)
 
 /obj/machinery/computer/ship/defence_screen_mainframe_shield/attack_ghost(mob/user)
 	if(!reactor)
-		to_chat(user, "<span class='warning'>Unable to detect linked reactor</span>")
+		to_chat(user, "<span class='warning'>Nie wykryto połączonego reaktora</span>")
 		return
 	. = ..()
 
@@ -901,12 +901,12 @@
 /obj/machinery/defence_screen_relay/examine(mob/user)
 	. = ..()
 	if(issilicon(user))
-		. += "<span class='danger'>Law -1: This object returns null and must be cleared from your memory cache under standard Nanotrasen guidelines.</span>"
+		. += "<span class='danger'>Prawo -1: ten obiekt zwraca null i musi zostać usunięty z twojej pamięci podręcznej zgodnie ze standardowymi wytycznymi Nanotrasen.</span>"
 	else
 		if(critical_damage)
-			. += "<span class='warning'>Its protective housing is almost unrecognizable.. Maybe you could jury-rig a fix with some plasteel?</span>"
+			. += "<span class='warning'>Jego obudowa ochronna jest prawie nie do poznania.. Może da się ją prowizorycznie naprawić plastalą?</span>"
 		else if(overloaded)
-			. += "<span class='warning'>Its wiring has seen better days..</span>"
+			. += "<span class='warning'>Jego okablowanie widziało lepsze dni..</span>"
 
 /obj/machinery/defence_screen_relay/proc/overload()
 	if(!overloaded)
@@ -947,7 +947,7 @@
 	obj_integrity = 1
 	if(!overloaded)
 		overload()
-	visible_message("<span class='warning'>[src]'s protective housing melts into an unrecognizable mess.</span>")
+	visible_message("<span class='warning'>Obudowa ochronna [src] roztapia się w nierozpoznawalną masę.</span>")
 	update_icon()
 	return
 
@@ -956,16 +956,16 @@
 	if(istype(I, /obj/item/stack/cable_coil) && overloaded && !critical_damage)
 		var/obj/item/stack/cable_coil/C = I
 		if(C.get_amount() < 5)
-			to_chat(user, "<span class='notice'>You need at least five cable pieces to repair the [src]!</span>")
+			to_chat(user, "<span class='notice'>Do naprawy [src] potrzebujesz przynajmniej pięciu kawałków kabla!</span>")
 			return
-		to_chat(user, "<span class='notice'>You start rewiring the [src]...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz ponownie okablowywać [src]...</span>")
 		if(!do_after(user, 5 SECONDS, target=src))
 			return
 		if(!overloaded || critical_damage)
 			return
 		if(!C.use(5))
 			return
-		to_chat(user, "<span class='notice'>You rewire the [src].</span>")
+		to_chat(user, "<span class='notice'>Ponownie okablowujesz [src].</span>")
 		overloaded = FALSE
 		update_icon()
 		return
@@ -973,16 +973,16 @@
 	if(istype(I, /obj/item/stack/sheet/plasteel) && critical_damage)
 		var/obj/item/stack/sheet/plasteel/emergency_fix = I
 		if(emergency_fix.get_amount() < 10)
-			to_chat(user, "<span class='notice'>You need at least ten plasteel sheets to have any chance at fixing this mess!</span>")
+			to_chat(user, "<span class='notice'>Potrzebujesz przynajmniej dziesięciu arkuszy plastali, by mieć jakąkolwiek szansę naprawić ten bałagan!</span>")
 			return
-		to_chat(user, "<span class='notice'>You start improvised housing repairs on [src]</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz prowizorycznie naprawiać obudowę [src]</span>")
 		if(!do_after(user, 8 SECONDS, target=src))
 			return
 		if(!critical_damage)
 			return
 		if(!emergency_fix.use(10))
 			return
-		to_chat(user, "<span class='notice'>You repair [src]'s housing.. Hopefully that thing won't explode in your face.</span>")
+		to_chat(user, "<span class='notice'>Naprawiasz obudowę [src].. Miejmy nadzieję, że to coś nie wybuchnie ci w twarz.</span>")
 		critical_damage = FALSE
 		obj_integrity = 1
 		DISABLE_BITFIELD(resistance_flags, INDESTRUCTIBLE)
@@ -992,7 +992,7 @@
 /obj/machinery/defence_screen_relay/welder_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(critical_damage)
-		to_chat(user, "<span class='warning'>You will need to replace this mess of a housing first before making any further repairs. Maybe some plasteel would help?</span>")
+		to_chat(user, "<span class='warning'>Zanim zaczniesz dalsze naprawy, musisz wymienić tę zrujnowaną obudowę. Może plastal by pomogła?</span>")
 		return
 	while(obj_integrity < max_integrity)
 		if(!do_after(user, 5, target = src))
@@ -1020,13 +1020,13 @@
 	if(!allowed(user))
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, TRUE)
-		visible_message("<span class='warning'>[icon2html(src, viewers(src.loc))] ACCESS DENIED.</span>")
+		visible_message("<span class='warning'>[icon2html(src, viewers(src.loc))] ODMOWA DOSTĘPU.</span>")
 		return FALSE
 	if(!open_panel)
 		if(!active)
 			settings(user)
 		else if(anchored)
-			to_chat(user, "<span class='warning'>The bomb is bolted to the floor!</span>")
+			to_chat(user, "<span class='warning'>Bomba jest przykręcona do podłogi!</span>")
 
 //OVERRIDE
 /obj/machinery/syndicatebomb/self_destruct/pdsr/try_detonate(ignore_active)

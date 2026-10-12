@@ -39,19 +39,19 @@ Slimecrossing Weapons
 	switch(damtype)
 		if(BRUTE)
 			hitsound = 'sound/weapons/bladeslice.ogg'
-			attack_verb = list("slashed","sliced","cut")
+			attack_verb = list("ciacha","kroi","tnie")
 		if(BURN)
 			hitsound = 'sound/weapons/sear.ogg'
-			attack_verb = list("burned","singed","heated")
+			attack_verb = list("parzy","przypala","podgrzewa")
 		if(TOX)
 			hitsound = 'sound/weapons/pierce.ogg'
-			attack_verb = list("poisoned","dosed","toxified")
+			attack_verb = list("truje","dawkuje","zatruwa")
 		if(OXY)
 			hitsound = 'sound/effects/space_wind.ogg'
-			attack_verb = list("suffocated","winded","vacuumed")
+			attack_verb = list("dusi","pozbawia tchu","odkurza")
 		if(CLONE)
 			hitsound = 'sound/items/geiger/ext1.ogg'
-			attack_verb = list("irradiated","mutated","maligned")
+			attack_verb = list("napromieniowuje","mutuje","oczernia")
 	return ..()
 
 //Adamantine shield - Burning Adamantine
@@ -71,7 +71,7 @@ Slimecrossing Weapons
 	block_flags = BLOCKING_PROJECTILE
 	throw_range = 1 //How far do you think you're gonna throw a solid crystalline shield...?
 	throw_speed = 2
-	attack_verb = list("bashed","pounded","slammed")
+	attack_verb = list("grzmoci","tłucze","grzmoci")
 	item_flags = SLOWS_WHILE_IN_HAND
 
 /obj/item/shield/adamantineshield/ComponentInitialize()

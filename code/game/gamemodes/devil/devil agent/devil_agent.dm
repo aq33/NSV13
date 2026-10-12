@@ -14,9 +14,7 @@
 	var/list/devil_late_joining_list = list()
 	minimum_devils = 3
 
-	announce_text = "There are devil agents onboard the station, trying to outbid each other!\n\
-		+	<span class='danger'>Devils</span>: Purchase souls and interfere with your rivals!\n\
-		+	<span class='notice'>Crew</span>: Resist the lure of sin and remain pure!"
+	announce_text = "Na pokładzie stacji są agenci diabłów, próbujący się nawzajem przelicytować!\n+	<span class='danger'>Diabły</span>: kupujcie dusze i przeszkadzajcie rywalom!\n+	<span class='notice'>Załoga</span>: opierajcie się pokusie grzechu i pozostańcie czyści!"
 
 /datum/game_mode/devil/devil_agents/post_setup()
 	var/i = 0

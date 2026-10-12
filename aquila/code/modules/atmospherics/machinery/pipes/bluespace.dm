@@ -46,7 +46,7 @@ GLOBAL_LIST_EMPTY(bluespace_pipe_networks)
 
 /obj/machinery/atmospherics/pipe/bluespace/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>This one is connected to the \"[html_encode(bluespace_network_name)]\" network.</span>"
+	. += "<span class='notice'>Jest połączona z siecią \"[html_encode(bluespace_network_name)]\".</span>"
 
 /obj/machinery/atmospherics/pipe/bluespace/set_init_directions()
 	initialize_directions = dir
@@ -115,10 +115,10 @@ GLOBAL_LIST_EMPTY(bluespace_pipe_networks)
 
 /obj/item/pipe/bluespace/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It is linked to the \"[html_encode(bluespace_network_name)]\" network.</span>"
+	. += "<span class='notice'>Jest połączona z siecią \"[html_encode(bluespace_network_name)]\".</span>"
 
 /obj/item/pipe/bluespace/attack_self(mob/user)
-	var/new_name = stripped_input(user, "Enter identifier for bluespace pipe network", "bluespace pipe", bluespace_network_name, MAX_NAME_LEN)
+	var/new_name = stripped_input(user, "Podaj identyfikator sieci rur bluespace", "bluespace pipe", bluespace_network_name, MAX_NAME_LEN)
 	if(!isnull(new_name) && user.canUseTopic(src, BE_CLOSE))
 		bluespace_network_name = new_name
 
@@ -136,7 +136,7 @@ GLOBAL_LIST_EMPTY(bluespace_pipe_networks)
 	if(istype(W, /obj/item/pipe))
 		var/obj/item/pipe/P = W
 		if(!P.disposable)
-			to_chat(user, "<span class='warning'>\The [P] is too valuable to dispose of!</span>")
+			to_chat(user, "<span class='warning'>[P] jest zbyt cenny, by go wyrzucić!</span>")
 			return
 	return ..()
 
@@ -147,7 +147,7 @@ GLOBAL_LIST_EMPTY(bluespace_pipe_networks)
 	if((mode & RPD_DESTROY_MODE) && istype(A, /obj/item/pipe))
 		var/obj/item/pipe/P = A
 		if(!P.disposable)
-			to_chat(user, "<span class='warning'>\The [P] is too valuable to dispose of!</span>")
+			to_chat(user, "<span class='warning'>[P] jest zbyt cenny, by go wyrzucić!</span>")
 			return TRUE
 	return ..()
 

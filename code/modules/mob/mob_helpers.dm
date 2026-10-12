@@ -136,9 +136,9 @@
 				newletter = " SIE "
 		if(rand(1, 4) == 4)
 			if(newletter == " ")
-				newletter = " no hope... "
+				newletter = " brak nadziei... "
 			else if(newletter == "H")
-				newletter = " IT COMES... "
+				newletter = " ONO NADCHODZI... "
 
 		switch(rand(1, 15))
 			if(1)
@@ -180,9 +180,9 @@
 				newletter = " VAR "
 		if(rand(1, 4) == 4)
 			if(newletter == " ")
-				newletter = " the brass... "
+				newletter = " mosiądz... "
 			else if(newletter == "H")
-				newletter = " CLOCK TICKS... "
+				newletter = " ZEGAR TYKA... "
 
 		switch(rand(1, 15))
 			if(1)
@@ -466,11 +466,11 @@
 		if((brute_heal > 0 && affecting.brute_dam > 0) || (burn_heal > 0 && affecting.burn_dam > 0))
 			if(affecting.heal_damage(brute_heal, burn_heal, 0, BODYTYPE_ROBOTIC))
 				H.update_damage_overlays()
-			user.visible_message("[user] has fixed some of the [dam ? "dents on" : "burnt wires in"] [H]'s [parse_zone(affecting.body_zone)].", \
-			"<span class='notice'>You fix some of the [dam ? "dents on" : "burnt wires in"] [H == user ? "your" : "[H]'s"] [parse_zone(affecting.body_zone)].</span>")
+			user.visible_message("[user] naprawia część [dam ? "wgnieceń" : "przepalonych przewodów"] na kończynie [H] ([strefa_pl(affecting.body_zone)]).", \
+			"<span class='notice'>Naprawiasz część [dam ? "wgnieceń" : "przepalonych przewodów"] na [H == user ? "swojej kończynie" : "kończynie [H]"] ([strefa_pl(affecting.body_zone)]).</span>")
 			return 1 //successful heal
 		else
-			to_chat(user, "<span class='warning'>[affecting] is already in good condition!</span>")
+			to_chat(user, "<span class='warning'>[affecting] jest już w dobrym stanie!</span>")
 
 ///Is the passed in mob an admin ghost
 /proc/IsAdminGhost(var/mob/user)
@@ -492,11 +492,11 @@
   * Automatic logging and uses pollCandidatesForMob, how convenient
   */
 /proc/offer_control(mob/M)
-	to_chat(M, "Control of your mob has been offered to dead players.")
+	to_chat(M, "Kontrolę nad twoją postacią zaoferowano martwym graczom.")
 	if(usr)
 		log_admin("[key_name(usr)] has offered control of ([key_name(M)]) to ghosts.")
 		message_admins("[key_name_admin(usr)] has offered control of ([ADMIN_LOOKUPFLW(M)]) to ghosts")
-	var/poll_message = "Do you want to play as [M.real_name]?"
+	var/poll_message = "Chcesz zagrać jako [M.real_name]?"
 	var/ban_key = BAN_ROLE_ALL_ANTAGONISTS
 	if(M.mind && M.mind.assigned_role)
 		poll_message = "[poll_message] Job:[M.mind.assigned_role]."
@@ -511,13 +511,13 @@
 
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
-		to_chat(M, "Your mob has been taken over by a ghost!")
+		to_chat(M, "Twoją postać przejął duch!")
 		message_admins("[key_name_admin(C)] has taken control of ([ADMIN_LOOKUPFLW(M)])")
 		M.ghostize(0)
 		M.key = C.key
 		return TRUE
 	else
-		to_chat(M, "There were no ghosts willing to take control.")
+		to_chat(M, "Żaden duch nie chciał przejąć kontroli.")
 		message_admins("No ghosts were willing to take control of [ADMIN_LOOKUPFLW(M)])")
 		return FALSE
 
@@ -597,7 +597,7 @@
   */
 /mob/proc/common_trait_examine()
 	if(HAS_TRAIT(src, TRAIT_DISSECTED))
-		. += "<span class='notice'>This body has been dissected and analyzed. It is no longer worth experimenting on.</span><br>"
+		. += "<span class='notice'>To ciało zostało już rozcięte i przebadane. Nie warto na nim dalej eksperymentować.</span><br>"
 
 //Can the mob see reagents inside of containers?
 /mob/proc/can_see_reagents()

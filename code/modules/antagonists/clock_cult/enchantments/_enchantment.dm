@@ -31,9 +31,9 @@
 		return
 	if(is_servant_of_ratvar(user) || !isliving(user))
 		examine_list += "<span class='neovgre'>[examine_description]</span>"
-		examine_list += "<span class='neovgre'>It's blessing has a power of [level]!</span>"
+		examine_list += "<span class='neovgre'>Jego błogosławieństwo ma moc [level]!</span>"
 	else
-		examine_list += "It is glowing slightly!"
+		examine_list += "Lekko świeci!"
 		var/mob/living/L = user
 		if(istype(L.get_item_by_slot(ITEM_SLOT_EYES), /obj/item/clothing/glasses/science))
-			examine_list += "It emits a readable EMF factor of [level]."
+			examine_list += "Emituje mierzalne pole EMF na poziomie [level]."

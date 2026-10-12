@@ -4619,7 +4619,7 @@
 	name = "wooden box"
 	},
 /obj/item/paper{
-	default_raw_text = "Moving these crates through a tunnel that isn't even finished yet is really annoying. It's such a pain in the ass to haul even a single crate to the cabin. It made sense to haul food and other goods however these are fake fucking trophies. Why do they even need these fake artifacts for some asshole's trophy case? We'll just leave the crates in the cave that has all those bones inside. Fuck it.";
+	default_raw_text = "Przenoszenie tych skrzyń przez tunel, który nawet nie jest skończony, jest naprawdę wkurzające. Nawet jedną skrzynię strasznie ciężko dotaszczyć do chaty. Taszczenie jedzenia i innych towarów miało sens, ale to są podróbki pierdolonych trofeów. Po co w ogóle komuś te fałszywe artefakty do gabloty z trofeami jakiegoś dupka? Zostawimy skrzynie w jaskini, w której są te wszystkie kości. Pierdolę to.";
 	name = "Shipment Delivery Note"
 	},
 /turf/open/floor/plating/asteroid/snow,

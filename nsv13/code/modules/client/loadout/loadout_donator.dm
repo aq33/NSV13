@@ -6,7 +6,7 @@
 
 /datum/gear/purchase(client/C)
 	//This can be used to explain the code function of the item or otherwise cover ass.
-	to_chat(C, "<span class='boldwarning'>Your donator item has been added to your account. It will be removed automatically if your donation lapses.</span>")
+	to_chat(C, "<span class='boldwarning'>Twój przedmiot dla darczyńców został dodany do twojego konta. Zostanie automatycznie usunięty, jeśli twoja darowizna wygaśnie.</span>")
 
 /datum/gear/donator/example
 	display_name = "Example Donator Item"
@@ -21,7 +21,7 @@ requisite_type should be the typepath of the "thing" that these reskin. If you n
 
 /obj/item/donator_reskin
 	name = "Donator reskin device"
-	desc = "Apply your donator skin to things!"
+	desc = "Nałóż swój wygląd donatora na przedmioty!"
 	icon = 'nsv13/icons/obj/donator.dmi'
 	icon_state = "painter"
 	var/requisite_type = null
@@ -32,11 +32,11 @@ requisite_type should be the typepath of the "thing" that these reskin. If you n
 	if(requisite_type && istype(A, requisite_type))
 #ifndef TESTING
 		if(user.client?.ckey != ckey)
-			to_chat(user, "<span class='sciradio'>Nothing happens! (These items are usable only by the donator who it belongs to, consider donating to get one of these for yourself!)</span>")
+			to_chat(user, "<span class='sciradio'>Nic się nie dzieje! (Te przedmioty może używać tylko darczyńca, do którego należą. Rozważ darowiznę, by dostać taki dla siebie!)</span>")
 			return
 #else
 		if(user.client?.ckey != ckey)
-			to_chat(user, "<span class='boldwarning'>This donator item is owned by [ckey]! <code>TESTING</code> Has bypassed this check.</span>")
+			to_chat(user, "<span class='boldwarning'>Ten przedmiot dla darczyńców należy do [ckey]! <code>TESTOWANIE</code> pominęło to sprawdzenie.</span>")
 #endif
 		apply_reskin(A)
 		return

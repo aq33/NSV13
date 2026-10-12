@@ -17,7 +17,7 @@
 
 /obj/structure/overmap/trader/try_hail(mob/living/user)
 	if(!isliving(user) || !allowed(user)) //Only cargo auth'd personnel can make purchases.
-		to_chat(user, "<span class='warning'>Warning: You cannot open a communications channel without appropriate requisitions access registered to your ID card.</span>")
+		to_chat(user, "<span class='warning'>Ostrzeżenie: nie możesz otworzyć kanału komunikacyjnego bez odpowiedniego dostępu zaopatrzeniowego zarejestrowanego na karcie ID.</span>")
 		return FALSE
 	if(inhabited_trader)
 		inhabited_trader.greeting = pick(inhabited_trader.greetings)

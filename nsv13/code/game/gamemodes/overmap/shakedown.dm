@@ -2,7 +2,7 @@
 	name = "Shakedown"
 	config_tag = "shakedown"
 	desc = "Do some jumps and light combat"
-	brief = "You have been assigned a newly refurbished vessel for a shakedown cruise. Do a burn-in of the Thirring Drive and test the weapons, then return back to Outpost 45."
+	brief = "Przydzielono wam świeżo wyremontowaną jednostkę na rejs próbny. Rozgrzejcie Napęd Thirringa, przetestujcie uzbrojenie, a potem wróćcie na Posterunek 45."
 	starting_system = "Argo"
 	starting_faction = "nanotrasen"
 

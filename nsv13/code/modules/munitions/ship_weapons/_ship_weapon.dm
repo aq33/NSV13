@@ -186,7 +186,7 @@
 		return
 	var/obj/item/multitool/P = I
 	P.buffer = src
-	to_chat(user, "<span class='notice'>-% Successfully stored [REF(P.buffer)] [P.buffer.name] in buffer %-</span>")
+	to_chat(user, "<span class='notice'>-% Pomyślnie zapisano [REF(P.buffer)] [P.buffer.name] w buforze %-</span>")
 	return TRUE
 
 /**
@@ -225,13 +225,13 @@
 	if(length(ammo) < max_ammo) //Room for one more?
 		if(!loading) //Not already loading a round?
 			if(user)
-				to_chat(user, "<span class='notice'>You start to load [A] into [src]...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz ładować [A] do [src]...</span>")
 			loading = TRUE
 			if(!user || do_after(user, load_delay, target = src))
 				if(!isturf(A.loc) && !ismob(A.loc)) //Fix double-loading torpedos
 					if(user)
 						loading = FALSE
-						to_chat(user, "<span class='warning'>The ammunition has to be next to the weapon!</span>")
+						to_chat(user, "<span class='warning'>Amunicja musi być obok broni!</span>")
 					return FALSE
 				loading = FALSE
 				A.forceMove(src)
@@ -240,7 +240,7 @@
 					playsound(src, load_sound, 100, 1)
 				state = STATE_LOADED
 				if(user)
-					to_chat(user, "<span class='notice'>You load [A] into [src].</span>")
+					to_chat(user, "<span class='notice'>Ładujesz [A] do [src].</span>")
 				if(auto_load) //If we're automatic, get ready to fire
 					feed()
 					chamber()
@@ -248,9 +248,9 @@
 				return TRUE
 			loading = FALSE
 		else if(user)
-			to_chat(user, "<span class='notice'>You're already loading a round into [src]!.</span>")
+			to_chat(user, "<span class='notice'>Już ładujesz pocisk do [src]!</span>")
 	else if(user)
-		to_chat(user, "<span class='warning'>[src] is already fully loaded!</span>")
+		to_chat(user, "<span class='warning'>[src] jest już w pełni załadowany!</span>")
 
 	return FALSE
 
@@ -276,10 +276,10 @@
  */
 /obj/machinery/ship_weapon/proc/load_magazine(obj/A, mob/user)
 	if(loading)
-		to_chat(user, "<span class='warning'>You can't do that right now.</span>")
+		to_chat(user, "<span class='warning'>Nie możesz teraz tego zrobić.</span>")
 		return FALSE
 	if(magazine_type && istype(A, magazine_type))
-		to_chat(user, "<span class='notice'>You start to load [A] into [src].</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz ładować [A] do [src].</span>")
 		loading = TRUE
 		if(do_after(user, load_delay, target = src))
 			if ( !user_has_payload( A, user ) )
@@ -296,7 +296,7 @@
 			magazine = A
 			ammo = magazine.stored_ammo //Lets us handle magazines and single rounds the same way
 			state = STATE_LOADED
-			to_chat(user, "<span class='notice'>You load [A] into [src].</span>")
+			to_chat(user, "<span class='notice'>Ładujesz [A] do [src].</span>")
 
 			if(auto_load) //If we're automatic, get ready to fire
 				feed()
@@ -305,7 +305,7 @@
 			return TRUE
 		loading = FALSE
 	else
-		to_chat(user, "<span class='warning'>You can't load [A] into [src]!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz załadować [A] do [src]!</span>")
 
 	return FALSE
 
@@ -352,7 +352,7 @@
  */
 /obj/machinery/ship_weapon/proc/unload_magazine(mob/user)
 	if((state >= STATE_LOADED) && magazine)
-		to_chat(user, "<span class='notice'>You start to unload [magazine] from [src].</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz wyjmować [magazine] z [src].</span>")
 		if(state >= STATE_FED)
 			unfeed() //Animate properly and make sure we clear any chambered rounds
 		if(do_after(user, unload_delay, target = src))

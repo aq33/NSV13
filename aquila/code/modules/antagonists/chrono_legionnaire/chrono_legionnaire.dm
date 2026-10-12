@@ -86,8 +86,8 @@ GLOBAL_LIST_INIT(aquila_chrono_name_exceptions, list(
 			. += player
 
 /datum/antagonist/chrono_legionnaire
-	name = "Chrono Legionnaire"
-	roundend_category = "Chrono Legionnaires"
+	name = "Chronolegionista"
+	roundend_category = "chronolegioniści"
 	antagpanel_category = "Chrono Legionnaire"
 	banning_key = ROLE_CHRONO_LEGIONNAIRE
 	show_in_antagpanel = FALSE // needs a target named after a tyrant, spawned by the event only

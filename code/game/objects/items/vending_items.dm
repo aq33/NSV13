@@ -33,11 +33,11 @@
 	. = ..()
 	var/num = get_part_rating()
 	if (num == INFINITY)
-		. += "It's sealed tight, completely full of supplies."
+		. += "Jest szczelnie zamknięty i pełen zapasów."
 	else if (num == 0)
 		. += "It's empty!"
 	else
-		. += "It can restock [num] item\s."
+		. += "Może uzupełnić przedmiotów: [num]."
 
 /obj/item/vending_refill/get_part_rating()
 	if (!products || !contraband || !premium)

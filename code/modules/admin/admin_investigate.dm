@@ -55,9 +55,9 @@
 	var/filepath = "[GLOB.log_directory]/[selected].html"
 	var/F = file(filepath)
 	if(!fexists(F))
-		to_chat(src, "<span class='danger'>No [selected] logfile was found.</span>")
+		to_chat(src, "<span class='danger'>Nie znaleziono pliku logów [selected].</span>")
 		return
 
-	var/datum/browser/browser = new(usr, "investigate[selected]", "Investigation of [selected]", 800, 300)
+	var/datum/browser/browser = new(usr, "investigate[selected]", "Śledztwo: [selected]", 800, 300)
 	browser.set_content(rustg_file_read(filepath))
 	browser.open()

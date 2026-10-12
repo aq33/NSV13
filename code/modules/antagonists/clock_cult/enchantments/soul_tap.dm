@@ -2,7 +2,7 @@
 	max_level = 3
 
 /datum/component/enchantment/soul_tap/apply_effect(obj/item/target)
-	examine_description = "It has been blessed with the power of ripping the energy from target's souls and will heal the wielder when a target is struck."
+	examine_description = "Pobłogosławiono go mocą wyrywania energii z dusz - po trafieniu celu leczy właściciela."
 	RegisterSignal(target, COMSIG_ITEM_ATTACK, PROC_REF(tap_soul))
 
 /datum/component/enchantment/soul_tap/proc/tap_soul(datum/source, mob/living/target, mob/living/user)

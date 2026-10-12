@@ -88,7 +88,7 @@
 		docking_target = null
 	//I hate that I have to do this, but people keep flying them away.
 	if(position.x > 20000 || position.x < -20000 || position.y > 20000 || position.y < -20000)
-		priority_announce("Bluespace reality fracture detected, source: [name].")
+		priority_announce("Wykryto pęknięcie rzeczywistości bluespace, źródło: [name].")
 		MOVE_ORBITAL_BODY(src, rand(-2000, 2000), rand(-2000, 2000))
 		velocity.x = 0
 		velocity.y = 0

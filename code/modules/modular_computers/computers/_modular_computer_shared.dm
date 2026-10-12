@@ -36,12 +36,12 @@
 	if(ai_slot)
 		if(ai_slot.stored_card)
 			if(user_is_adjacent)
-				. += "It has a slot installed for an intelliCard which contains: [ai_slot.stored_card.name]"
+				. += "Ma gniazdo na intelliCard, w którym znajduje się: [ai_slot.stored_card.name]"
 			else
-				. += "It has a slot installed for an intelliCard, which appears to be occupied."
-			. += "<span class='info'>Alt-click to eject the intelliCard.</span>"
+				. += "Ma gniazdo na intelliCard, które wydaje się zajęte."
+			. += "<span class='info'>Alt-klik, by wysunąć intelliCard.</span>"
 		else
-			. += "It has a slot installed for an intelliCard."
+			. += "Ma gniazdo na intelliCard."
 
 	var/obj/item/computer_hardware/card_slot/card_slot = get_modular_computer_part(MC_CARD)
 	var/obj/item/computer_hardware/card_slot/card_slot2 = get_modular_computer_part(MC_CARD2)
@@ -52,15 +52,15 @@
 			var/obj/item/card/id/second_ID = card_slot2?.stored_card
 			var/multiple_cards = istype(first_ID) && istype(second_ID)
 			if(user_is_adjacent)
-				. += "It has [multiple_slots ? "two slots" : "a slot"] for identification cards installed[multiple_cards ? " which contain [first_ID] and [second_ID]" : ", one of which contains [first_ID ? first_ID : second_ID]"]."
+				. += "Ma [multiple_slots ? "dwa gniazda" : "gniazdo"] na karty identyfikacyjne[multiple_cards ? ", w których są [first_ID] i [second_ID]" : ", w jednym z nich jest [first_ID ? first_ID : second_ID]"]."
 			else
-				. += "It has [multiple_slots ? "two slots" : "a slot"] for identification cards installed, [multiple_cards ? "both of which appear" : "and one of them appears"] to be occupied."
-			. += "<span class='info'>Alt-click [src] to eject the identification card[multiple_cards ? "s":""].</span>"
+				. += "Ma [multiple_slots ? "dwa gniazda" : "gniazdo"] na karty identyfikacyjne, [multiple_cards ? "oba wydają się zajęte" : "jedno z nich wydaje się zajęte"]."
+			. += "<span class='info'>Alt-klik na [src], by wysunąć [multiple_cards ? "karty identyfikacyjne":"kartę identyfikacyjną"].</span>"
 		else
-			. += "It has [multiple_slots ? "two slots" : "a slot"] installed for identification cards."
+			. += "Ma [multiple_slots ? "dwa gniazda" : "gniazdo"] na karty identyfikacyjne."
 
 	var/obj/item/computer_hardware/printer/printer_slot = get_modular_computer_part(MC_PRINT)
 	if(printer_slot)
-		. += "It has a printer installed."
+		. += "Ma zamontowaną drukarkę."
 		if(user_is_adjacent)
-			. += "The printer's paper levels are at: [printer_slot.stored_paper]/[printer_slot.max_paper].</span>"
+			. += "Poziom papieru w drukarce: [printer_slot.stored_paper]/[printer_slot.max_paper].</span>"

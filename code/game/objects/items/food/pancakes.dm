@@ -7,7 +7,7 @@
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 2
 	)
-	tastes = list("pancakes" = 1)
+	tastes = list("naleśniki" = 1)
 	foodtypes = GRAIN | SUGAR | BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
 	///Used as a base name while generating the icon states when stacked
@@ -22,7 +22,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("pancakes" = 1, "blueberries" = 1)
+	tastes = list("naleśniki" = 1, "borówki" = 1)
 	stack_name = "bbpancakes"
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -34,7 +34,7 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("pancakes" = 1, "chocolate" = 1)
+	tastes = list("naleśniki" = 1, "czekolada" = 1)
 	stack_name = "ccpancakes"
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -75,14 +75,14 @@
 	if (pancakeCount)
 		for(var/obj/item/food/pancakes/ING in contents)
 			ingredients_listed += "[ING.name], "
-		. += "It contains [contents.len?"[ingredients_listed]":"no ingredient, "]on top of a [initial(name)]."
+		. += "Zawiera [contents.len?"[ingredients_listed]":"brak dodatków, "]na [initial(name)]."
 
 /obj/item/food/pancakes/attackby(obj/item/item, mob/living/user, params)
 	if(istype(item, /obj/item/food/pancakes))
 		var/obj/item/food/pancakes/pancake = item
 		if(!user.transferItemToLoc(pancake, src))
 			return
-		to_chat(user, "<span class='notice'>You add the [pancake] to the [src].</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [pancake] do [src].</span>")
 		pancake.name = initial(pancake.name)
 		contents += pancake
 		update_snack_overlays(pancake)

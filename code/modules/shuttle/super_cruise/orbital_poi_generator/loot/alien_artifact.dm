@@ -14,7 +14,7 @@
 		return
 	for(var/datum/artifact_effect/effect in effects)
 		for(var/verb in effect.effect_act_descs)
-			. += "[src] likely does something when [verb]."
+			. += "[src] prawdopodobnie coś robi, gdy jest: [verb]."
 
 /obj/item/alienartifact/ComponentInitialize()
 	AddComponent(/datum/component/discoverable, 10000, TRUE)
@@ -120,7 +120,7 @@
 
 /datum/artifact_effect/soundindark
 	requires_processing = TRUE
-	effect_act_descs = list("in darkness")
+	effect_act_descs = list("w ciemności")
 
 /datum/artifact_effect/soundindark/process(delta_time)
 	var/turf/T = get_turf(source_object)
@@ -167,7 +167,7 @@
 	return ..()
 
 /datum/artifact_effect/projreflect
-	effect_act_descs = list("shot at")
+	effect_act_descs = list("ostrzelany")
 	var/atom/movable/proximity_monitor_holder/monitor_holder
 
 /datum/artifact_effect/projreflect/Initialize(source)
@@ -250,7 +250,7 @@
 //===================
 
 /datum/artifact_effect/access
-	effect_act_descs = list("near something")
+	effect_act_descs = list("blisko czegoś")
 	requires_processing = TRUE
 	var/next_use_time = 0
 
@@ -288,7 +288,7 @@ GLOBAL_LIST_EMPTY(destabliization_exits)
 
 /datum/artifact_effect/reality_destabilizer
 	requires_processing = TRUE
-	effect_act_descs = list("near something")
+	effect_act_descs = list("blisko czegoś")
 	var/cooldown = 0
 	var/list/contained_things = list()
 
@@ -368,7 +368,7 @@ GLOBAL_LIST_EMPTY(destabliization_exits)
 
 /datum/artifact_effect/curse
 	var/used = FALSE
-	effect_act_descs = list("picked up")
+	effect_act_descs = list("podniesiony")
 	signal_types = list(COMSIG_ITEM_PICKUP)
 
 /datum/artifact_effect/curse/register_signals(source)
@@ -407,7 +407,7 @@ GLOBAL_LIST_EMPTY(destabliization_exits)
 /datum/artifact_effect/gas_remove/Initialize(source)
 	. = ..()
 	input = pickweight(valid_inputs)
-	effect_act_descs = list("near gas")
+	effect_act_descs = list("blisko gazu")
 	output = pickweight(valid_outputs)
 
 /datum/artifact_effect/gas_remove/process(delta_time)
@@ -425,7 +425,7 @@ GLOBAL_LIST_EMPTY(destabliization_exits)
 //===================
 
 /datum/artifact_effect/recharger
-	effect_act_descs = list("near something")
+	effect_act_descs = list("blisko czegoś")
 	requires_processing = TRUE
 
 /datum/artifact_effect/recharger/process(delta_time)
@@ -444,7 +444,7 @@ GLOBAL_LIST_EMPTY(destabliization_exits)
 
 /datum/artifact_effect/light_breaker
 	requires_processing = TRUE
-	effect_act_descs = list("near something")
+	effect_act_descs = list("blisko czegoś")
 	var/next_world_time
 
 /datum/artifact_effect/light_breaker/process(delta_time)
@@ -487,7 +487,7 @@ GLOBAL_LIST_EMPTY(destabliization_exits)
 	message_admins("[ADMIN_LOOKUPFLW(pulser)] activated an insanity pulse [first_time ? " (Effects were unknown)" : " (Artifact had been activated before)"].")
 	if(first_time)
 		var/research_reward = rand(5000, 20000)
-		priority_announce("Spacetime anomaly detected at [T.loc]. Data analysis completed, [research_reward] research points rewarded.", "Nanotrasen Research Division", ANNOUNCER_SPANOMALIES)
+		priority_announce("Wykryto anomalię czasoprzestrzenną w [T.loc]. Analiza danych zakończona, przyznano [research_reward] pkt badań.", "Dział Badań Nanotrasen", ANNOUNCER_SPANOMALIES)
 		SSresearch.science_tech.add_points_all(research_reward)
 	first_time = FALSE
 	var/xrange = 50
@@ -514,7 +514,7 @@ GLOBAL_LIST_EMPTY(destabliization_exits)
 			new /obj/effect/temp_visual/mining_scanner(T1)
 			var/mob/living/M = locate() in T1
 			if(M)
-				to_chat(M, "<span class='warning'>A wave of dread washes over you...</span>")
+				to_chat(M, "<span class='warning'>Ogarnia cię fala grozy...</span>")
 				M.blind_eyes(30)
 				M.Knockdown(10)
 				M.emote("scream")

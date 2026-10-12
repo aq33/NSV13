@@ -18,17 +18,17 @@
 	time = 16
 
 /datum/surgery_step/extract_core/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to extract a core from [target]...</span>",
-		"[user] begins to extract a core from [target].",
-		"[user] begins to extract a core from [target].")
+	display_results(user, target, "<span class='notice'>Zaczynasz wydobywać rdzeń z [target]...</span>",
+		"[user] zaczyna wydobywać rdzeń z [target].",
+		"[user] zaczyna wydobywać rdzeń z [target].")
 
 /datum/surgery_step/extract_core/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/mob/living/simple_animal/slime/slime = target
 	if(slime.cores > 0)
 		slime.cores--
-		display_results(user, target, "<span class='notice'>You successfully extract a core from [target]. [slime.cores] core\s remaining.</span>",
-			"[user] successfully extracts a core from [target]!",
-			"[user] successfully extracts a core from [target]!")
+		display_results(user, target, "<span class='notice'>Pomyślnie wydobywasz rdzeń z [target]. Pozostało rdzeni: [slime.cores].</span>",
+			"[user] pomyślnie wydobywa rdzeń z [target]!",
+			"[user] pomyślnie wydobywa rdzeń z [target]!")
 
 		var/obj/item/slime_extract/item = new slime.coretype(slime.loc)
 		if(slime.transformeffects & SLIME_EFFECT_GOLD)
@@ -39,5 +39,5 @@
 		else
 			return 0
 	else
-		to_chat(user, "<span class='warning'>There aren't any cores left in [target]!</span>")
+		to_chat(user, "<span class='warning'>W [target] nie zostały już żadne rdzenie!</span>")
 		return 1

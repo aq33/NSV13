@@ -34,7 +34,7 @@
 	if(!IS_HERETIC(user))
 		return
 
-	examine_list += "<span class='notice'>Allows you to cast advanced heretic spells when worn.</span>"
+	examine_list += "<span class='notice'>Gdy go nosisz, możesz rzucać zaawansowane zaklęcia heretyka.</span>"
 
 /**
  * Signal proc for [COMSIG_ITEM_EQUIPPED].

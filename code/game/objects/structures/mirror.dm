@@ -32,7 +32,7 @@
 
 		//handle facial hair (if necessary)
 		if(H.gender != FEMALE)
-			var/new_style = input(user, "Select a facial hair style", "Grooming")  as null|anything in GLOB.facial_hair_styles_list
+			var/new_style = input(user, "Wybierz styl zarostu", "Grooming")  as null|anything in GLOB.facial_hair_styles_list
 			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 				return	//no tele-grooming
 			if(new_style)
@@ -41,7 +41,7 @@
 			H.facial_hair_style = "Shaved"
 
 		//handle normal hair
-		var/new_style = input(user, "Select a hair style", "Grooming")  as null|anything in GLOB.hair_styles_list
+		var/new_style = input(user, "Wybierz fryzurę", "Grooming")  as null|anything in GLOB.hair_styles_list
 		if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 			return	//no tele-grooming
 		if(new_style)
@@ -79,9 +79,9 @@
 	if(!I.tool_start_check(user, amount=0))
 		return TRUE
 
-	to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz naprawiać [src]...</span>")
 	if(I.use_tool(src, user, 10, volume=50))
-		to_chat(user, "<span class='notice'>You repair [src].</span>")
+		to_chat(user, "<span class='notice'>Naprawiasz [src].</span>")
 		broken = 0
 		icon_state = initial(icon_state)
 		desc = initial(desc)
@@ -131,14 +131,14 @@
 
 	var/mob/living/carbon/human/H = user
 
-	var/choice = input(user, "Something to change?", "Magical Grooming") as null|anything in list("name", "race", "gender", "hair", "eyes")
+	var/choice = input(user, "Coś do zmiany?", "Magiczna pielęgnacja") as null|anything in list("name", "race", "gender", "hair", "eyes")
 
 	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
 
 	switch(choice)
 		if("name")
-			var/newname = sanitize_name(reject_bad_text(stripped_input(H, "Who are we again?", "Name change", H.name, MAX_NAME_LEN)))
+			var/newname = sanitize_name(reject_bad_text(stripped_input(H, "Kim my właściwie jesteśmy?", "Zmiana imienia", H.name, MAX_NAME_LEN)))
 
 			if(!newname)
 				return
@@ -153,7 +153,7 @@
 
 		if("race")
 			var/newrace
-			var/racechoice = input(H, "What are we again?", "Race change") as null|anything in choosable_races
+			var/racechoice = input(H, "Czym my właściwie jesteśmy?", "Zmiana rasy") as null|anything in choosable_races
 			newrace = GLOB.species_list[racechoice]
 
 			if(!newrace)
@@ -163,7 +163,7 @@
 			H.set_species(newrace, icon_update=0)
 
 			if(H.dna.species.use_skintones)
-				var/new_s_tone = input(user, "Choose your skin tone:", "Race change")  as null|anything in GLOB.skin_tones
+				var/new_s_tone = input(user, "Wybierz odcień skóry:", "Zmiana rasy")  as null|anything in GLOB.skin_tones
 				if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 					return
 
@@ -172,7 +172,7 @@
 					H.dna.update_ui_block(DNA_SKIN_TONE_BLOCK)
 
 			if(MUTCOLORS in H.dna.species.species_traits)
-				var/new_mutantcolor = input(user, "Choose your skin color:", "Race change","#"+H.dna.features["mcolor"]) as color|null
+				var/new_mutantcolor = input(user, "Wybierz kolor skóry:", "Zmiana rasy","#"+H.dna.features["mcolor"]) as color|null
 				if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 					return
 				if(new_mutantcolor)
@@ -182,7 +182,7 @@
 						H.dna.features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
 
 					else
-						to_chat(H, "<span class='notice'>Invalid color. Your color is not bright enough.</span>")
+						to_chat(H, "<span class='notice'>Nieprawidłowy kolor. Twój kolor nie jest wystarczająco jasny.</span>")
 
 			H.update_body()
 			H.update_hair()
@@ -197,7 +197,7 @@
 					if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 						return
 					H.gender = "female"
-					to_chat(H, "<span class='notice'>Man, you feel like a woman!</span>")
+					to_chat(H, "<span class='notice'>Człowieku, czujesz się jak kobieta!</span>")
 				else
 					return
 
@@ -206,7 +206,7 @@
 					if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 						return
 					H.gender = "male"
-					to_chat(H, "<span class='notice'>Whoa man, you feel like a man!</span>")
+					to_chat(H, "<span class='notice'>Ojej, czujesz się jak mężczyzna!</span>")
 				else
 					return
 			H.dna.update_ui_block(DNA_GENDER_BLOCK)
@@ -214,27 +214,27 @@
 			H.update_mutations_overlay() //(hulk male/female)
 
 		if("hair")
-			var/hairchoice = alert(H, "Hair style or hair color?", "Change Hair", "Style", "Color")
+			var/hairchoice = alert(H, "Fryzura czy kolor włosów?", "Zmiana włosów", "Style", "Color")
 			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 				return
 			if(hairchoice == "Style") //So you just want to use a mirror then?
 				..()
 			else
-				var/new_hair_color = input(H, "Choose your hair color", "Hair Color","#"+H.hair_color) as color|null
+				var/new_hair_color = input(H, "Wybierz kolor włosów", "Kolor włosów","#"+H.hair_color) as color|null
 				if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 					return
 				if(new_hair_color)
 					H.hair_color = sanitize_hexcolor(new_hair_color)
 					H.dna.update_ui_block(DNA_HAIR_COLOR_BLOCK)
 				if(H.gender == "male")
-					var/new_face_color = input(H, "Choose your facial hair color", "Hair Color","#"+H.facial_hair_color) as color|null
+					var/new_face_color = input(H, "Wybierz kolor zarostu", "Kolor włosów","#"+H.facial_hair_color) as color|null
 					if(new_face_color)
 						H.facial_hair_color = sanitize_hexcolor(new_face_color)
 						H.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
 				H.update_hair()
 
 		if(BODY_ZONE_PRECISE_EYES)
-			var/new_eye_color = input(H, "Choose your eye color", "Eye Color","#"+H.eye_color) as color|null
+			var/new_eye_color = input(H, "Wybierz kolor oczu", "Kolor oczu","#"+H.eye_color) as color|null
 			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 				return
 			if(new_eye_color)

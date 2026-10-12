@@ -2,11 +2,11 @@
 
 /obj/item/paper/fluff/ruins/oldstation
 	name = "Cryo Awakening Alert"
-	default_raw_text = "<B>**WARNING**</B><BR><BR>Catastrophic damage sustained to station. Powernet exhausted to reawaken crew.<BR><BR>Immediate Objectives<br><br>1: Activate emergency power generator<br>2: Lift station lockdown on the bridge<br><br>Please locate the 'Damage Report' on the bridge for a detailed situation report."
+	default_raw_text = "<B>**OSTRZEŻENIE**</B><BR><BR>Stacja doznała katastrofalnych uszkodzeń. Sieć energetyczna wyczerpana, by obudzić załogę.<BR><BR>Cele natychmiastowe<br><br>1: Uruchom awaryjny generator<br>2: Znieś blokadę stacji na mostku<br><br>Szczegółowy raport sytuacyjny znajdziesz w „Raporcie o uszkodzeniach” na mostku."
 
 /obj/item/paper/fluff/ruins/oldstation/damagereport
 	name = "Damage Report"
-	default_raw_text = "<b>*Damage Report*</b><br><br><b>Alpha Station</b> - Destroyed<br><br><b>Beta Station</b> - Catastrophic Damage. Medical, destroyed. Atmospherics, partially destroyed. Engine Core, destroyed.<br><br><b>Charlie Station</b> - Intact. Loss of oxygen to eastern side of main corridor.<br><br><b>Delta Station</b> - Intact. <b>WARNING</b>: Unknown force occupying Delta Station. Intent unknown. Species unknown. Numbers unknown.<br><br>Recommendation - Reestablish station powernet via solar array. Reestablish station atmospherics system to restore air."
+	default_raw_text = "<b>*Raport o uszkodzeniach*</b><br><br><b>Stacja Alfa</b> – zniszczona<br><br><b>Stacja Beta</b> – katastrofalne uszkodzenia. Medyczny – zniszczony. Atmosferyka – częściowo zniszczona. Rdzeń silnika – zniszczony.<br><br><b>Stacja Charlie</b> – nienaruszona. Utrata tlenu we wschodniej części głównego korytarza.<br><br><b>Stacja Delta</b> – nienaruszona. <b>OSTRZEŻENIE</b>: Stację Deltę zajmuje nieznana siła. Zamiary nieznane. Gatunek nieznany. Liczebność nieznana.<br><br>Zalecenie – przywrócić sieć energetyczną stacji za pomocą paneli słonecznych. Przywrócić system atmosferyczny stacji, by odzyskać powietrze."
 
 /obj/item/paper/fluff/ruins/oldstation/protosuit
 	name = "B01-RIG Hardsuit Report"
@@ -38,8 +38,7 @@
 
 /obj/item/paper/fluff/ruins/oldstation/protoinv
 	name = "Laboratory Inventory"
-	default_raw_text = "<b>*Inventory*</b><br><br>(1) Prototype Hardsuit<br><br>(1)Health Analyser<br><br>(1)Prototype Energy Gun<br><br>(1)Singularity Generation Disk<br><br><b>DO NOT REMOVE WITHOUT \
-	THE CAPTAIN AND RESEARCH DIRECTOR'S AUTHORISATION</b>"
+	default_raw_text = "<b>*Inwentarz*</b><br><br>(1) Prototypowy hardsuit<br><br>(1) Analizator zdrowia<br><br>(1) Prototypowa broń energetyczna<br><br>(1) Dysk generowania osobliwości<br><br><b>NIE ZABIERAĆ BEZ ZGODY KAPITANA I DYREKTORA BADAŃ</b>"
 
 /obj/item/paper/fluff/ruins/oldstation/report
 	name = "Crew Reawakening Report"
@@ -50,4 +49,4 @@
 
 /obj/item/paper/fluff/ruins/oldstation/generator_manual
 	name = "S.U.P.E.R.P.A.C.M.A.N.-type portable generator manual"
-	default_raw_text = "You can barely make out a faded sentence... <br><br> Wrench down the generator on top of a wire node connected to either a SMES input terminal or the power grid."
+	default_raw_text = "Ledwo rozróżniasz wyblakłe zdanie... <br><br> Przykręć generator na węźle przewodu podłączonym do terminala wejściowego SMES albo do sieci energetycznej."

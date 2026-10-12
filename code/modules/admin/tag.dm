@@ -58,7 +58,7 @@
 	if (!istype(src, /datum/admins))
 		src = usr.client.holder
 	if (!istype(src, /datum/admins))
-		to_chat(usr, "<span class='warning'>Error: you are not an admin!</span>")
+		to_chat(usr, "<span class='warning'>Błąd: nie jesteś adminem!</span>")
 		return
 
 	var/index = 0

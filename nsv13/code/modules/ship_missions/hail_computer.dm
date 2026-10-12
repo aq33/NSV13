@@ -6,7 +6,7 @@
 	filedesc = "Ship Hail Monitor"
 	ui_header = "ntnrc_idle.gif"
 	program_icon_state = "generic"
-	extended_desc = "This program records outbound and inbound hails. Can also keep a track of missions undertaken by the crew."
+	extended_desc = "Ten program rejestruje wychodzące i przychodzące wywołania. Może też śledzić misje podjęte przez załogę."
 	requires_ntnet = FALSE
 	usage_flags = PROGRAM_ALL
 	category = PROGRAM_CATEGORY_SUPL

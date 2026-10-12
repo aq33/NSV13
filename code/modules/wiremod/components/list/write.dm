@@ -5,7 +5,7 @@
 **/
 /obj/item/circuit_component/indexer/write
 	display_name = "Write Component"
-	display_desc = "A component that writes a given value to a given index in a given list. It then gives that new list back."
+	display_desc = "Komponent, który zapisuje podaną wartość pod podanym indeksem w podanej liście. Następnie zwraca tę nową listę."
 
 	/// The input ports
 	var/datum/port/input/value_port

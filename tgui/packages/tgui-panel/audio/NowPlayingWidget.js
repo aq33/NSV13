@@ -33,18 +33,18 @@ export const NowPlayingWidget = (props, context) => {
               'overflow': 'hidden',
               'text-overflow': 'ellipsis',
             }}>
-            {title || 'Unknown Track'}
+            {title || 'Nieznany utwór'}
           </Flex.Item>
         </>
       ) || (
         <Flex.Item grow={1} color="label">
-          Nothing to play.
+          Nic nie gra.
         </Flex.Item>
       )}
       {audio.playing && (
         <Flex.Item mx={0.5} fontSize="0.9em">
           <Button
-            tooltip="Stop"
+            tooltip="Zatrzymaj"
             icon="stop"
             onClick={() => dispatch({
               type: 'audio/stopMusic',

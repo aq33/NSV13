@@ -5,7 +5,7 @@
  */
 /obj/item/circuit_component/species
 	display_name = "Get Species"
-	display_desc = "A component that returns the species of its input."
+	display_desc = "Komponent, który zwraca gatunek swojego wejścia."
 
 	/// The input port
 	var/datum/port/input/input_port
