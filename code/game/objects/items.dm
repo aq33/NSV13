@@ -855,7 +855,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 /obj/item/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(hit_atom && !QDELETED(hit_atom))
-		SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum)
+		if(SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum) & COMPONENT_MOVABLE_IMPACT_NEVERMIND)
+			return
 		if(is_hot() && isliving(hit_atom))
 			var/mob/living/L = hit_atom
 			L.IgniteMob()

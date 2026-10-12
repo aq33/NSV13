@@ -324,6 +324,9 @@
 	if(HAS_TRAIT(I, TRAIT_NODROP) && !force)
 		return FALSE
 
+	if((SEND_SIGNAL(I, COMSIG_ITEM_PRE_UNEQUIP, force, newloc, no_move, invdrop, silent) & COMPONENT_ITEM_BLOCK_UNEQUIP) && !force)
+		return FALSE
+
 	var/hand_index = get_held_index_of_item(I)
 	if(hand_index)
 		held_items[hand_index] = null
@@ -339,6 +342,7 @@
 			else
 				I.forceMove(newloc)
 		I.dropped(src, was_thrown, silent)
+	SEND_SIGNAL(src, COMSIG_MOB_UNEQUIPPED_ITEM, I, force, newloc, no_move, invdrop, silent)
 	return TRUE
 
 //Outdated but still in use apparently. This should at least be a human proc.

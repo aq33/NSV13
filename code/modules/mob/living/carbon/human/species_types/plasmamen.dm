@@ -45,7 +45,7 @@
 		var/datum/gas_mixture/environment = H.loc.return_air()
 		if(environment)
 			if(environment.total_moles())
-				if(environment.get_moles(GAS_O2) >= 1) //Same threshhold that extinguishes fire
+				if(environment.get_moles(GAS_O2) >= 1 && !HAS_TRAIT(H, TRAIT_NOSELFIGNITION)) //Same threshhold that extinguishes fire
 					H.adjust_fire_stacks(0.5)
 					if(!H.on_fire && H.fire_stacks > 0)
 						H.visible_message("<span class='danger'>Ciało [H] reaguje z atmosferą i staje w płomieniach!</span>","<span class='userdanger'>Twoje ciało reaguje z atmosferą i staje w płomieniach!</span>")

@@ -249,20 +249,24 @@
 	incompatible_modules = list(/obj/item/mod/module/defibrillator)
 	cooldown_time = 0.5 SECONDS
 	required_slots = list(ITEM_SLOT_GLOVES)
-	var/defib_cooldown = 5 SECONDS
 
 /obj/item/mod/module/defibrillator/Initialize(mapload)
 	. = ..()
 	RegisterSignal(device, COMSIG_DEFIBRILLATOR_SUCCESS, PROC_REF(on_defib_success))
 
 /obj/item/mod/module/defibrillator/proc/on_defib_success(obj/item/shockpaddles/source)
+	SIGNAL_HANDLER
+
 	drain_power(use_power_cost)
-	source.recharge(defib_cooldown)
-	return COMPONENT_DEFIB_STOP
 
 /obj/item/shockpaddles/mod
 	name = "MOD defibrillator paddles"
 	req_defib = FALSE
+
+// Our paddles only recharge after a successful shock, so that is where the suit pays for it
+/obj/item/shockpaddles/mod/recharge(time)
+	SEND_SIGNAL(src, COMSIG_DEFIBRILLATOR_SUCCESS)
+	return ..()
 
 ///Thread Ripper - Temporarily rips apart clothing to make it not cover the body.
 /obj/item/mod/module/thread_ripper

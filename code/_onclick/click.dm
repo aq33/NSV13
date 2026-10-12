@@ -121,6 +121,10 @@
 		RestrainedClickOn(A)
 		return
 
+	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED)) //hands busy or locked up, like a MODsuit sphere form
+		changeNext_move(CLICK_CD_HANDCUFFED)
+		return
+
 	if(throw_mode && throw_item(A))
 		changeNext_move(CLICK_CD_THROW)
 		return

@@ -5,6 +5,8 @@
 	Otherwise pretty standard.
 */
 /mob/living/carbon/human/UnarmedAttack(atom/A, proximity)
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_EARLY_UNARMED_ATTACK, A, proximity) & COMPONENT_CANCEL_ATTACK_CHAIN)
+		return
 
 	if(!has_active_hand()) //can't attack without a hand.
 		to_chat(src, "<span class='notice'>Patrzysz na swoją rękę i wzdychasz.</span>")
