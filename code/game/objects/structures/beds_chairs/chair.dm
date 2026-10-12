@@ -85,7 +85,7 @@
 		return TRUE
 	..()
 	weapon.play_tool_sound(src)
-	deconstruct(disassembled = TRUE)
+	deconstruct(TRUE)
 	return TRUE
 
 /obj/structure/chair/attack_tk(mob/user)

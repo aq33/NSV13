@@ -131,7 +131,7 @@
 	if(info_button)
 		to_chat(H, span_boldnotice("Więcej informacji znajdziesz w poradniku sztuki walki. \
 			Zawsze możesz do niego wrócić przyciskiem w lewym górnym rogu."))
-		info_button.Trigger()
+		INVOKE_ASYNC(info_button, TYPE_PROC_REF(/datum/action, Trigger))
 	return TRUE
 
 /datum/martial_art/proc/make_info_button()
