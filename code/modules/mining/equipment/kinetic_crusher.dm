@@ -113,10 +113,10 @@
 /// Port Bee #11899: the destabilizer is fired with right click
 /obj/item/kinetic_crusher/afterattack_secondary(atom/target, mob/living/user, proximity_flag, click_parameters)
 	if(!ISWIELDED(src))
-		balloon_alert(user, "wield it first!")
+		balloon_alert(user, "najpierw chwyć oburącz!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(target == user)
-		balloon_alert(user, "can't aim at yourself!")
+		balloon_alert(user, "nie możesz celować w siebie!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	fire_kinetic_blast(target, user, click_parameters)
 	user.changeNext_move(CLICK_CD_MELEE)

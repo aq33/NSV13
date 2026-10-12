@@ -59,7 +59,7 @@ In all, this is a lot like the monkey code. /N
 			to_chat(M, "<span class='notice'>Nie chcesz skrzywdzić [src]!</span>")
 			return
 		playsound(loc, "punch", 25, 1, -1)
-		visible_message("<span class='danger'>[M] punches [src]!</span>", \
+		visible_message("<span class='danger'>[M] uderza [src]!</span>", \
 				"<span class='userdanger'>[M] uderza cię pięścią!</span>", null, COMBAT_MESSAGE_RANGE)
 		var/obj/item/bodypart/affecting = get_bodypart(ran_zone(M.zone_selected))
 		apply_damage(M.dna.species.punchdamage, BRUTE, affecting)

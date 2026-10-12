@@ -284,38 +284,38 @@
 	if (!user.combat_mode)
 		return FALSE
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, "<span class='notice'>You don't want to hurt anyone!</span>")
+		to_chat(user, "<span class='notice'>Nie chcesz nikogo skrzywdzić!</span>")
 		return FALSE
 
 	if(user.is_muzzled() || user.is_mouth_covered(FALSE, TRUE))
-		to_chat(user, "<span class='warning'>You can't bite with your mouth covered!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz gryźć z zasłoniętymi ustami!</span>")
 		return FALSE
 	user.do_attack_animation(src, ATTACK_EFFECT_BITE)
 	log_combat(user, src, "attacked")
 	playsound(loc, 'sound/weapons/bite.ogg', 50, 1, -1)
-	visible_message("<span class='danger'>[user.name] bites [src]!</span>", \
-					"<span class='userdanger'>[user.name] bites you!</span>", null, COMBAT_MESSAGE_RANGE)
+	visible_message("<span class='danger'>[user.name] gryzie [src]!</span>", \
+					"<span class='userdanger'>[user.name] cię gryzie!</span>", null, COMBAT_MESSAGE_RANGE)
 	return TRUE
 
 /mob/living/attack_larva(mob/living/carbon/alien/larva/L, list/modifiers)
 	if(L.combat_mode)
 		if(HAS_TRAIT(L, TRAIT_PACIFISM))
-			to_chat(L, "<span class='notice'>You don't want to hurt anyone!</span>")
+			to_chat(L, "<span class='notice'>Nie chcesz nikogo skrzywdzić!</span>")
 			return
 
 		L.do_attack_animation(src)
 		if(prob(90))
 			log_combat(L, src, "attacked")
-			visible_message("<span class='danger'>[L.name] bites [src]!</span>", \
-							"<span class='userdanger'>[L.name] bites you!</span>", null, COMBAT_MESSAGE_RANGE)
+			visible_message("<span class='danger'>[L.name] gryzie [src]!</span>", \
+							"<span class='userdanger'>[L.name] cię gryzie!</span>", null, COMBAT_MESSAGE_RANGE)
 			playsound(loc, 'sound/weapons/bite.ogg', 50, 1, -1)
 			return TRUE
 		else
-			visible_message("<span class='danger'>[L.name]'s bite misses [src]!</span>", \
-							"<span class='userdanger'>[L.name]'s bite misses you!</span>", null, COMBAT_MESSAGE_RANGE)
+			visible_message("<span class='danger'>[L.name] chybia, próbując ugryźć [src]!</span>", \
+							"<span class='userdanger'>[L.name] chybia, próbując cię ugryźć!</span>", null, COMBAT_MESSAGE_RANGE)
 	else
-		visible_message("<span class='notice'>[L.name] rubs its head against [src].</span>", \
-						"<span class='notice'>[L.name] rubs its head against you.</span>")
+		visible_message("<span class='notice'>[L.name] ociera się głową o [src].</span>", \
+						"<span class='notice'>[L.name] ociera się głową o ciebie.</span>")
 		return FALSE
 	return FALSE
 

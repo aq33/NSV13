@@ -44,7 +44,7 @@
 /datum/keybinding/living/toggle_combat_mode
 	key = "F"
 	name = "toggle_combat_mode"
-	full_name = "Toggle Combat Mode"
+	full_name = "Przełącz tryb walki"
 	description = "Przełącza tryb walki (w starym trybie intencji: help/harm)."
 	keybind_signal = COMSIG_KB_LIVING_TOGGLE_COMBAT_DOWN
 

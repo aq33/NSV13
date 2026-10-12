@@ -291,7 +291,7 @@
 
 /obj/item/gun/ballistic/shotgun/doublebarrel/hook/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Right-click to shoot the hook.</span>"
+	. += "<span class='notice'>Prawym przyciskiem myszy wystrzelisz hak.</span>"
 
 /obj/item/gun/ballistic/shotgun/doublebarrel/hook/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
 	hook.afterattack(target, user, proximity_flag, click_parameters)

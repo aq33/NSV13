@@ -295,7 +295,7 @@ BLIND     // can't see anything
 		return FALSE
 
 	var/list/modes = list("Wyłączone", "Podstawowe funkcje życiowe", "Dokładne funkcje życiowe", "Nadajnik lokalizacyjny")
-	var/switchMode = tgui_input_list(M, "Select a sensor mode", "Suit Sensors", modes, modes[sensor_mode + 1])
+	var/switchMode = tgui_input_list(M, "Wybierz tryb czujników", "Czujniki kombinezonu", modes, modes[sensor_mode + 1])
 	if(isnull(switchMode))
 		return
 	if(get_dist(user, src) > 1)

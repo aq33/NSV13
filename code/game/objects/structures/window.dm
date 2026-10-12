@@ -176,8 +176,8 @@
 			"<span class='notice'>Pukasz w [src].</span>")
 		playsound(src, knocksound, 50, TRUE)
 	else
-		user.visible_message("<span class='warning'>[user] bashes [src]!</span>", \
-			"<span class='warning'>You bash [src]!</span>")
+		user.visible_message("<span class='warning'>[user] wali w [src]!</span>", \
+			"<span class='warning'>Walisz w [src]!</span>")
 		playsound(src, bashsound, 100, TRUE)
 
 /obj/structure/window/attack_paw(mob/user)

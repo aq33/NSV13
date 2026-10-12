@@ -109,7 +109,7 @@
 
 /obj/structure/disposalconstruct/verb/flip_pipe()
 	set category = "Object"
-	set name = "Flip Pipe"
+	set name = "Odwróć rurę"
 	set src in view(1)
 	if(usr.incapacitated() || !isliving(usr) || !can_be_rotated(usr, ROTATION_FLIP))
 		return

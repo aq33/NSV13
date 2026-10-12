@@ -8,10 +8,10 @@
 	id = MARTIALART_TRIBALCLAW
 	display_combos = TRUE
 
-	Move1 = "Tail Sweep: Disarm Disarm Grab Harm. Pushes everyone around you away and knocks them down."
-	Move2 = "Face Scratch: Harm Disarm. Damages your target's head and confuses them for a short time."
-	Move3 = "Jugular Cut: Harm Harm Grab. Causes your target to rapidly lose blood. Works only if you grab your target by their neck, if they are sleeping, or in critical condition."
-	Move4 = "Tail Grab: Disarm Harm Grab Grab. Grabs your target by their neck and makes them unable to talk for a short time."
+	Move1 = "Zamach ogonem: pchnięcie, pchnięcie, chwyt, cios. Odpycha wszystkich wokół ciebie i ich przewraca."
+	Move2 = "Drapnięcie w twarz: cios, pchnięcie. Rani głowę celu i na krótko go dezorientuje."
+	Move3 = "Cięcie żyły szyjnej: cios, cios, chwyt. Sprawia, że cel szybko traci krew; działa tylko, gdy trzymasz cel za szyję, śpi lub jest w stanie krytycznym."
+	Move4 = "Chwyt ogonem: pchnięcie, cios, chwyt, chwyt. Chwyta cel za szyję i na krótko uniemożliwia mu mówienie."
 	allow_temp_override = FALSE
 
 /datum/martial_art/tribal_claw/proc/check_streak(mob/living/carbon/human/A, mob/living/carbon/human/D)

@@ -35,14 +35,14 @@ export const MartialInfo = (_props) => {
     <Window width={620} height={350} theme="abductor">
       <Window.Content>
         <Stack vertical fill>
-          <Stack.Item fontSize="25px">Guide to the {name} Martial Arts...</Stack.Item>
+          <Stack.Item fontSize="25px">Poradnik sztuki walki: {name}</Stack.Item>
           <Stack.Item>
             <BlockQuote>
-              You are a {name} martial artist, whether by circumstance, training, or brain injury;
+              Znasz sztukę walki {name}, czy to z przypadku, treningu, czy przez uraz mózgu;
               <br />
-              You are a most fearsome foe of any who would oppose you.
+              jesteś najgroźniejszym wrogiem każdego, kto stanie ci na drodze.
               <br />
-              Bring fear to the heart of men through your unique combat moves:
+              Siej strach swoimi wyjątkowymi ruchami:
               <br />
               {Move1 && <span style={goodstyle}>{Move1}</span>}
               <br />

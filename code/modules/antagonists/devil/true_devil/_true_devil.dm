@@ -174,7 +174,7 @@
 					if (prob(25))
 						dropItemToGround(get_active_held_item())
 						playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-						visible_message("<span class='danger'>[M] disarms [src]!</span>", \
+						visible_message("<span class='danger'>[M] rozbraja [src]!</span>", \
 						"<span class='userdanger'>[M] cię rozbraja!</span>")
 					else
 						playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
@@ -183,7 +183,7 @@
 		else if(M.combat_mode)
 			var/damage = rand(1, 5)
 			playsound(loc, "punch", 25, 1, -1)
-			visible_message("<span class='danger'>[M] punches [src]!</span>", \
+			visible_message("<span class='danger'>[M] uderza [src]!</span>", \
 					"<span class='userdanger'>[M] uderza cię pięścią!</span>")
 			adjustBruteLoss(damage)
 			log_combat(M, src, "atakuje")

@@ -220,12 +220,12 @@
 			var/skills_space = ""
 			if(HAS_TRAIT(user, TRAIT_QUICKER_CARRY))
 				tableplace_delay = 2 SECONDS
-				skills_space = " expertly"
+				skills_space = " fachowo"
 			else if(HAS_TRAIT(user, TRAIT_QUICK_CARRY))
 				tableplace_delay = 2.75 SECONDS
-				skills_space = " quickly"
-			carried_mob.visible_message("<span class='notice'>[user] begins to[skills_space] place [carried_mob] onto [src]...</span>",
-				"<span class='userdanger'>[user] begins to[skills_space] place [carried_mob] onto [src]...</span>")
+				skills_space = " szybko"
+			carried_mob.visible_message("<span class='notice'>[user] zaczyna[skills_space] kłaść [carried_mob] na [src]...</span>",
+				"<span class='userdanger'>[user] zaczyna[skills_space] kłaść [carried_mob] na [src]...</span>")
 			if(do_after(user, tableplace_delay, target = carried_mob))
 				user.unbuckle_mob(carried_mob)
 				tableplace(user, carried_mob)

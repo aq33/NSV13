@@ -191,8 +191,8 @@ Buildable meters
 
 /obj/item/pipe/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The pipe layer is set to [piping_layer].</span>"
-	. += "<span class='notice'>You can change the pipe layer by Right-Clicking the device.</span>"
+	. += "<span class='notice'>Warstwa rur: [piping_layer].</span>"
+	. += "<span class='notice'>Warstwę rur zmienisz prawym przyciskiem myszy.</span>"
 
 /obj/item/pipe/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
@@ -200,19 +200,19 @@ Buildable meters
 		return
 	var/layer_to_set = (piping_layer >= PIPING_LAYER_MAX) ? PIPING_LAYER_MIN : (piping_layer + 1)
 	set_piping_layer(layer_to_set)
-	balloon_alert(user, "pipe layer set to [piping_layer]")
+	balloon_alert(user, "warstwa rur: [piping_layer]")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/pipe/trinary/flippable/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>You can flip the device by Right-Clicking it.</span>"
+	. += "<span class='notice'>Prawym przyciskiem myszy odwrócisz urządzenie.</span>"
 
 /obj/item/pipe/trinary/flippable/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 	do_a_flip()
-	balloon_alert(user, "pipe was flipped")
+	balloon_alert(user, "odwrócono rurę")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 /obj/item/pipe_meter
 	name = "meter"

@@ -440,9 +440,9 @@
 
 /mob/living/carbon/proc/grab(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(target.check_block())
-		target.visible_message("<span class='warning'>[target] blocks [user]'s grab!</span>", \
-						"<span class='userdanger'>You block [user]'s grab!</span>", "<span class='hear'>You hear a swoosh!</span>", COMBAT_MESSAGE_RANGE, user)
-		to_chat(user, "<span class='warning'>Your grab at [target] was blocked!</span>")
+		target.visible_message("<span class='warning'>[target] blokuje chwyt [user]!</span>", \
+						"<span class='userdanger'>Blokujesz chwyt [user]!</span>", "<span class='hear'>Słyszysz świst!</span>", COMBAT_MESSAGE_RANGE, user)
+		to_chat(user, "<span class='warning'>[target] blokuje twój chwyt!</span>")
 		return FALSE
 	if(attacker_style?.grab_act(user,target) == MARTIAL_ATTACK_SUCCESS)
 		return TRUE

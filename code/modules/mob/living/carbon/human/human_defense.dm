@@ -252,8 +252,8 @@
 				affecting = get_bodypart(BODY_ZONE_CHEST)
 			var/armor_block = run_armor_check(affecting, "melee","","",10)
 			apply_damage(30, STAMINA, affecting, armor_block)
-			visible_message("<span class='danger'>[M] tackles [src] down!</span>", \
-					"<span class='userdanger'>[M] tackles you down!</span>")
+			visible_message("<span class='danger'>[M] powala [src]!</span>", \
+					"<span class='userdanger'>[M] cię powala!</span>")
 			return 1
 
 		if(M.combat_mode)

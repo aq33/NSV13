@@ -148,7 +148,7 @@
 
 	if(!status && attacked_atom.is_refillable())
 		reagents.trans_to(attacked_atom, reagents.total_volume, transfered_by = user)
-		to_chat(user, span_notice("You empty [src]'s fuel tank into [attacked_atom]."))
+		to_chat(user, span_notice("Opróżniasz zbiornik paliwa [src] do [attacked_atom]."))
 		update_appearance()
 
 /obj/item/weldingtool/attack_qdeleted(atom/attacked_atom, mob/user, proximity)

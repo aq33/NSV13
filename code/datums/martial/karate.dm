@@ -8,10 +8,10 @@
 	id = MARTIALART_KARATE
 	display_combos = TRUE
 
-	Move1 = "Calf Kick: Harm Grab Disarm. Paralyses one of your opponent's legs."
-	Move2 = "Jumping Knee: Harm Disarm Harm. Deals significant stamina damage and knocks your opponent down briefly."
-	Move3 = "Karate Chop: Grab Harm Disarm. Very briefly confuses your opponent and blurs their vision."
-	Move4 = "Floor Stomp: Harm Grab Harm. Deals brute and stamina damage if your opponent isn't standing up."
+	Move1 = "Kopnięcie w łydkę: cios, chwyt, pchnięcie. Paraliżuje jedną z nóg przeciwnika."
+	Move2 = "Kolano z wyskoku: cios, pchnięcie, cios. Zadaje znaczne obrażenia wytrzymałości i na chwilę przewraca przeciwnika."
+	Move3 = "Cios karate: chwyt, cios, pchnięcie. Na bardzo krótko dezorientuje przeciwnika i rozmywa mu wzrok."
+	Move4 = "Nadepnięcie: cios, chwyt, cios. Zadaje urazy i obrażenia wytrzymałości, jeśli przeciwnik nie stoi."
 	allow_temp_override = FALSE
 
 /datum/martial_art/karate/proc/check_streak(mob/living/carbon/human/A, mob/living/carbon/human/D)
