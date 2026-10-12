@@ -145,49 +145,34 @@
 	QDEL_NULL(line)
 	return ..()
 
-/*
-///Radiation Protection - Protects the user from radiation, gives them a geiger counter and rad info in the panel.
+///Radiation Protection - Protects the user from radiation.
 /obj/item/mod/module/rad_protection
 	name = "MOD radiation protection module"
 	desc = "A module utilizing polymers and reflective shielding to protect the user against ionizing radiation; \
-		a common danger in space. This comes with software to notify the wearer that they're even in a radioactive area, \
-		giving a voice to an otherwise silent killer."
+		a common danger in space, especially next to a supermatter crystal."
 	icon_state = "radshield"
 	complexity = 2
 	idle_power_cost = DEFAULT_CHARGE_DRAIN * 0.3
 	incompatible_modules = list(/obj/item/mod/module/rad_protection)
-	tgui_id = "rad_counter"
 	required_slots = list(ITEM_SLOT_HEAD|ITEM_SLOT_MASK, ITEM_SLOT_OCLOTHING|ITEM_SLOT_ICLOTHING, ITEM_SLOT_GLOVES, ITEM_SLOT_FEET)
-	/// Radiation threat level being perceived.
-	var/perceived_threat_level
+	/// Rad armor each part had before we maxed it out
+	var/list/old_rad_armor = list()
 
+// Our radiation still uses rad armor instead of a protection trait, so we max out the rad armor of every part
 /obj/item/mod/module/rad_protection/on_part_activation()
-	AddComponent(/datum/component/geiger_sound)
-	ADD_TRAIT(mod.wearer, TRAIT_BYPASS_EARLY_IRRADIATED_CHECK, REF(src))
-	RegisterSignal(mod.wearer, COMSIG_IN_RANGE_OF_IRRADIATION, PROC_REF(on_pre_potential_irradiation))
-	for(var/obj/item/part in mod.get_parts(all = TRUE))
-		ADD_TRAIT(part, TRAIT_RADIATION_PROTECTED_CLOTHING, MOD_TRAIT)
+	for(var/obj/item/part as anything in mod.get_parts(all = TRUE))
+		old_rad_armor[part] = part.armor.rad
+		part.armor = part.armor.setRating(rad = 100)
 
 /obj/item/mod/module/rad_protection/on_part_deactivation(deleting = FALSE)
-	qdel(GetComponent(/datum/component/geiger_sound))
-	REMOVE_TRAIT(mod.wearer, TRAIT_BYPASS_EARLY_IRRADIATED_CHECK, REF(src))
-	UnregisterSignal(mod.wearer, COMSIG_IN_RANGE_OF_IRRADIATION)
-	for(var/obj/item/part in mod.get_parts(all = TRUE))
-		REMOVE_TRAIT(part, TRAIT_RADIATION_PROTECTED_CLOTHING, MOD_TRAIT)
+	for(var/obj/item/part as anything in old_rad_armor)
+		if(QDELETED(part))
+			continue
+		part.armor = part.armor.setRating(rad = old_rad_armor[part])
+	old_rad_armor.Cut()
 
-/obj/item/mod/module/rad_protection/add_ui_data()
-	. = ..()
-	.["is_user_irradiated"] = mod.wearer ? HAS_TRAIT(mod.wearer, TRAIT_IRRADIATED) : FALSE
-	.["background_radiation_level"] = perceived_threat_level
-	.["health_max"] = mod.wearer?.getMaxHealth() || 0
-	.["loss_tox"] = mod.wearer?.getToxLoss() || 0
-
-/obj/item/mod/module/rad_protection/proc/on_pre_potential_irradiation(datum/source, datum/radiation_pulse_information/pulse_information, insulation_to_target)
-	SIGNAL_HANDLER
-
-	perceived_threat_level = get_perceived_radiation_danger(pulse_information, insulation_to_target)
-	addtimer(VARSET_CALLBACK(src, perceived_threat_level, null), TIME_WITHOUT_RADIATION_BEFORE_RESET, TIMER_UNIQUE | TIMER_OVERRIDE)
-*/
+/obj/item/mod/module/rad_protection/on_uninstall(deleting = FALSE)
+	old_rad_armor.Cut()
 
 ///Constructor - Lets you build quicker and create RCD holograms.
 /obj/item/mod/module/constructor
