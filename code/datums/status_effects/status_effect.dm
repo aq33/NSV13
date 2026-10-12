@@ -71,6 +71,10 @@
 		return
 	duration = world.time + original_duration
 
+/// Merge this status effect by applying new arguments
+/datum/status_effect/proc/merge(...)
+	return
+
 //clickdelay/nextmove modifiers!
 /datum/status_effect/proc/nextmove_modifier()
 	return 1
@@ -107,6 +111,9 @@
 				S.be_replaced()
 			else if(S.status_type == STATUS_EFFECT_REFRESH)
 				S.refresh(arglist(arguments))
+				return
+			else if (S.status_type == STATUS_EFFECT_MERGE)
+				S.merge(arglist(args.Copy(2)))
 				return
 			else
 				return

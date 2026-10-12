@@ -161,6 +161,15 @@ Combat mode and right-click actions are ported in core, at the same paths as in 
 - **NSV13 code converted by hand:** KNPC AI (combat mode, sometimes a right-click shove), jujitsu grab, hugbot tipping (RMB), mech clamp arm ripping (RMB), ethereal APC charging (RMB = give power), overmap F key (special weapon action wins over the combat toggle at the helm or guns).
 - **Assets:** `combat`/`combat_off` states in every `icons/mob/screen_*.dmi` style plus alien and cyborg, `combo*` states in `screen_gen.dmi`, `icons/effects/mouse_pointers/examine_pointer.dmi`, `sound/misc/ui_togglecombat.ogg`, `ui_toggleoffcombat.ogg`, `sound/effects/glassbash.ogg`, all from Bee.
 
+### Bleeding port (BeeStation/BeeStation-Hornet#10372, F)
+
+Bleeding is a status effect (`/datum/status_effect/bleeding` in `mob/living/blood.dm`), ported in core at Bee paths. Post-merge Bee fixes included by hand: #13797 (no blood drop on `add_bleeding()`, dead bodies bleed slower), #13913/#14239 (no blood on groundless turfs or inside containers), #13827 (the cauterise message goes to the victim), #11057 (medbots bandage, rewritten for our tend-wounds medbot). Left out: the blood anomaly event and reactive bleed armour (not medical, needs Bee projectile paths), #11614 self-tend (needs Bee metabolites), #12130 (our operating table does not buckle).
+
+- **`blood.dm` is the Bee file** with our edits on top: the hydration check in blood regeneration (`AQ EDIT`), `DISEASE_SPREAD_FALTERED`, quirks in blood data, `add_bloodiness()`, Polish texts.
+- **Kept from NSV13:** the `armor` lists with string keys (`"bleed"` was added to `/datum/armor` next to our `overmap_*` fields), our medical stacks (only the bleeding check and the `stop_bleeding` values changed), our human `attack_animal()` (bleeding added there instead of Bee's carbon version), blood splatter on hits in `spec_attacked_by()` (Aquila hit splatter), the optable bleeding trait on resting.
+- **Values:** `bleed_force` and the `"bleed"` armour were copied from Bee by type path (Bee paths mapped to ours, e.g. `/obj/projectile` to `/obj/item/projectile`). NSV13/Aquila clothing got the value of its nearest parent, or 50 for armoured clothes (melee or bullet 20+), same as `/obj/item/clothing/suit/armor`.
+- **Assets:** `aquila/icons/hud/screen_alert_bleeding.dmi` (bleeding alerts), `aquila/icons/obj/bleeding.dmi` (pressure offhand), `aquila/sound/surgery/blood_wound.ogg`, all from Bee #10372 (CC-BY-SA 3.0).
+
 ### Data tweaks left in core lists (D-like)
 
 Vending product lists (`wardrobes.dm`, `clothesmate.dm`, `autodrobe.dm`, `plasmaresearch.dm`, `munitions_machinery.dm`), loot lists (`lootdrop.dm`, `mailspawner.dm`, `uplink_kits.dm`, `boxes.dm`, `cargo/packs.dm`, `security.dm` closet), techweb `design_ids` (`all_nodes.dm`), `poll_ignore.dm`, ambience lists. Overriding a whole list in `aquila/` would silently hide upstream additions, which is worse than a visible merge conflict.

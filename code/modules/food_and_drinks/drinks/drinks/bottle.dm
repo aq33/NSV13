@@ -126,6 +126,7 @@
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "broken_bottle"
 	force = 9
+	bleed_force = BLEED_SURFACE
 	throwforce = 5
 	throw_speed = 3
 	throw_range = 5

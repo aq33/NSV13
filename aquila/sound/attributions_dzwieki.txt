@@ -65,3 +65,4 @@ From BeeStation/BeeStation-Hornet, license CC-BY-SA 3.0 unless noted:
   machines/cryo/cryo_1-10.ogg                BeeStation #14436, DudeAwesome, https://freesound.org/people/DudeAwesome/sounds/386023/ (CC BY 4.0)
   items/knell/knell1-4.ogg                   BeeStation #14755, gsb1039, https://freesound.org/people/gsb1039/sounds/415061/
   sound/items/drill_hit.ogg, drill_use.ogg, jaws_cut.ogg, jaws_pry.ogg  replaced with the normalized versions from BeeStation #12229
+  surgery/blood_wound.ogg                    BeeStation #10372 (bleeding), made by PowerfulBacon from surgery sounds, CC-BY-SA 3.0

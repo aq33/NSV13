@@ -11,7 +11,7 @@
 	throw_range = 7
 	attack_verb = list("banuje")
 	max_integrity = 200
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 70, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 70, "stamina" = 0, "bleed" = 0)
 	resistance_flags = FIRE_PROOF
 
 /obj/item/banhammer/suicide_act(mob/user)
@@ -79,8 +79,9 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	block_level = 1
 	block_flags = BLOCKING_ACTIVE | BLOCKING_NASTY
 	sharpness = IS_SHARP
+	bleed_force = BLEED_DEEP_WOUND
 	max_integrity = 200
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50, "stamina" = 0, "bleed" = 0)
 	resistance_flags = FIRE_PROOF
 
 /obj/item/claymore/Initialize(mapload)
@@ -118,7 +119,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		loc.layer = LARGE_MOB_LAYER //NO HIDING BEHIND PLANTS FOR YOU, DICKWEED (HA GET IT, BECAUSE WEEDS ARE PLANTS)
-		H.bleedsuppress = TRUE //AND WE WON'T BLEED OUT LIKE COWARDS
+		H.cauterise_wounds(0.1)
 	else
 		if(!(flags_1 & ADMIN_SPAWNED_1))
 			qdel(src)
@@ -233,7 +234,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	block_level = 0
 	block_power = 30
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50, "stamina" = 0, "bleed" = 0)
 
 /obj/item/katana
 	name = "katana"
@@ -255,8 +256,9 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	block_upgrade_walk = 1
 	block_flags = BLOCKING_ACTIVE | BLOCKING_NASTY | BLOCKING_PROJECTILE
 	sharpness = IS_SHARP
+	bleed_force = BLEED_DEEP_WOUND
 	max_integrity = 200
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50, "stamina" = 0, "bleed" = 0)
 	resistance_flags = FIRE_PROOF
 
 /obj/item/katana/cursed
@@ -314,6 +316,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	lefthand_file = 'icons/mob/inhands/equipment/shields_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/shields_righthand.dmi'
 	force = 2
+	bleed_force = BLEED_CUT
 	throwforce = 24
 	throw_speed = 4
 	embedding = list("pain_mult" = 4, "embed_chance" = 300, "fall_chance" = 0, "armour_block" = 70)
@@ -383,6 +386,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		attack_verb = list("ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 		hitsound = 'sound/weapons/bladeslice.ogg'
 		sharpness = IS_SHARP
+		bleed_force = BLEED_CUT
 	else
 		force = initial(force)
 		w_class = WEIGHT_CLASS_SMALL
@@ -391,6 +395,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		attack_verb = list("przytyka", "szturcha")
 		hitsound = 'sound/weapons/genhit.ogg'
 		sharpness = IS_BLUNT
+		bleed_force = 0
 
 /obj/item/switchblade/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] podrzyna sobie gardło [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
@@ -517,6 +522,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	block_power = 20
 	block_flags = BLOCKING_ACTIVE | BLOCKING_NASTY
 	force = 24
+	bleed_force = BLEED_DEEP_WOUND
 	attack_weight = 2
 	throwforce = 0
 	throw_range = 0
@@ -962,6 +968,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	force = 18
+	bleed_force = BLEED_CUT
 	block_upgrade_walk = 1
 	block_flags = BLOCKING_ACTIVE | BLOCKING_NASTY
 	sharpness = IS_SHARP
@@ -981,6 +988,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	block_flags = BLOCKING_ACTIVE | BLOCKING_NASTY | BLOCKING_PROJECTILE
 	block_sound = 'sound/weapons/genhit.ogg'
 	force = 20
+	bleed_force = BLEED_CUT
 	throwforce = 20
 	throw_speed = 4
 	sharpness = IS_SHARP

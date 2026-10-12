@@ -71,7 +71,7 @@
 		H.visible_message("<span class='danger'>[user] slits [H]'s throat!</span>", \
 					"<span class='userdanger'>[user] podrzyna ci gardło...</span>")
 		H.apply_damage(source.force, BRUTE, BODY_ZONE_HEAD)
-		H.bleed_rate = CLAMP(H.bleed_rate + 20, 0, 30)
+		H.add_bleeding(BLEED_CRITICAL)
 		H.apply_status_effect(/datum/status_effect/neck_slice)
 
 /datum/component/butchering/proc/Butcher(mob/living/butcher, mob/living/meat)

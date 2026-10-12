@@ -356,6 +356,7 @@
 	var/uses = 1
 	var/health_cost = 0 //The amount of health taken from the user when invoking the spell
 	var/datum/action/innate/cult/blood_spell/source
+
 /obj/item/melee/blood_magic/Initialize(mapload, var/spell)
 	. = ..()
 	if(!istype(spell, /datum/action/innate/cult/blood_spell))
@@ -679,7 +680,7 @@
 	if(proximity)
 		if(ishuman(target))
 			var/mob/living/carbon/human/H = target
-			if(NOBLOOD in H.dna.species.species_traits)
+			if((NOBLOOD in H.dna.species.species_traits) || HAS_TRAIT(H, TRAIT_NO_BLOOD))
 				to_chat(user,"<span class='warning'>Rytuały krwi nie działają na gatunki bez krwi!</span>")
 				return
 			if(iscultist(H))

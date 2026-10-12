@@ -12,6 +12,7 @@
 	sharpness = IS_SHARP
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 24
+	bleed_force = BLEED_CUT
 	throwforce = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozszarpuje", "rozrywa", "sieka", "rozszarpuje")

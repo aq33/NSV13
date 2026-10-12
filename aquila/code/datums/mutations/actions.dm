@@ -94,6 +94,7 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	w_class = WEIGHT_CLASS_HUGE
 	force = 20 //this is an undroppable melee weapon. should not be better than the fireaxe
+	bleed_force = BLEED_CUT
 	throwforce = 0 //Just to be on the safe side
 	throw_range = 0
 	throw_speed = 0

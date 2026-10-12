@@ -20,6 +20,8 @@
 ///from base of /mob/living/can_track()
 #define COMSIG_LIVING_CAN_TRACK "mob_can_track"
 	#define COMPONENT_CANT_TRACK 1
+/// Called when a living mob has its resting updated: (resting_state)
+#define COMSIG_LIVING_RESTING_UPDATED "resting_updated"
 
 //ALL OF THESE DO NOT TAKE INTO ACCOUNT WHETHER AMOUNT IS 0 OR LOWER AND ARE SENT REGARDLESS!
 #define COMSIG_LIVING_STATUS_STUN "living_stun"					//! from base of mob/living/Stun() (amount, update, ignore)

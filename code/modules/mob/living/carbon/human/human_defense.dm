@@ -301,6 +301,11 @@
 			affecting = get_bodypart(BODY_ZONE_CHEST)
 		var/armor = run_armor_check(affecting, "melee", armour_penetration = M.armour_penetration)
 		apply_damage(damage, M.melee_damage_type, affecting, armor)
+		// Apply bleeding
+		if(M.melee_damage_type == BRUTE)
+			var/armour_block = run_armor_check(affecting, BLEED, armour_penetration = M.armour_penetration, silent = TRUE)
+			var/hit_amount = (100 - armour_block) / 100
+			add_bleeding(damage * 0.1 * hit_amount)
 
 
 /mob/living/carbon/human/attack_slime(mob/living/simple_animal/slime/M)
@@ -755,8 +760,10 @@
 	for(var/t in missing)
 		msg += "\n<span class='boldannounce'>Brakuje ci kończyny: [strefa_pl(t)]!</span>"
 
-	if(bleed_rate)
+	if(is_bleeding())
 		msg += "\n<span class='danger'>[capitalize(bleed_msg)]!</span>"
+	else if (is_bandaged())
+		msg += "\n<span class='danger'>Twoje krwawienie jest opatrzone.</span>"
 	if(getStaminaLoss())
 		if(getStaminaLoss() > 30)
 			msg += "\n<span class='info'>Jesteś kompletnie wyczerpany.</span>"

@@ -182,6 +182,17 @@
 	burn_msg = burn_msg ? burn_msg : "oparzenia"
 	bleed_msg = bleed_msg ? bleed_msg : "krwawi"
 
+	if (is_bleeding())
+		switch (get_bleed_rate())
+			if (BLEED_DEEP_WOUND to INFINITY)
+				msg += "<span class='warning'><B>[capitalize(bleed_msg)] bardzo szybko!</B></span>\n"
+			if (BLEED_RATE_MINOR to BLEED_DEEP_WOUND)
+				msg += "<span class='warning'>[capitalize(bleed_msg)] mocno.</span>\n"
+			else
+				msg += "<span class='warning'>[capitalize(bleed_msg)] lekko, wygląda na to, że zaraz przestanie.</span>\n"
+	else if (is_bandaged())
+		msg += "Jest czymś obandażowany.\n"
+
 	if(!(user == src && src.hal_screwyhud == SCREWYHUD_HEALTHY)) //fake healthy
 		if(temp)
 			if(temp < 25)
@@ -236,14 +247,6 @@
 
 	if(blood_volume < BLOOD_VOLUME_SAFE)
 		msg += "Ma bladą skórę.\n"
-
-	if(bleedsuppress)
-		msg += "Jest czymś obandażowany.\n"
-	else if(bleed_rate)
-		if(reagents.has_reagent(/datum/reagent/toxin/heparin, needs_metabolizing = TRUE))
-			msg += "<b>Niepowstrzymanie [bleed_msg]!</b>\n"
-		else
-			msg += "<B>[capitalize(bleed_msg)]!</B>\n"
 
 	if(reagents.has_reagent(/datum/reagent/teslium, needs_metabolizing = TRUE))
 		msg += "Emanuje delikatną niebieską poświatą!\n"
