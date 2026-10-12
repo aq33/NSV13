@@ -332,6 +332,7 @@
 #include "code\modules\events\skeleton_closet.dm"
 #include "code\modules\events\ship_partition.dm"
 #include "code\modules\events\teratoma.dm"
+#include "code\modules\events\wallrot.dm"
 #include "code\modules\events\stray_cargo.dm"
 #include "code\modules\food_and_drinks\drinks\drinks.dm"
 #include "code\modules\food_and_drinks\food\slicing.dm"
