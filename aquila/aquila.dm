@@ -351,6 +351,7 @@
 #include "code\modules\mining\machine_bluespaceminer.dm"
 #include "code\modules\mining\mineral_magnet_ui.dm"
 #include "code\modules\mob\dead\crew_manifest.dm"
+#include "code\modules\mob\dead\new_player\lobby_menu.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories.dm"
 #include "code\modules\mob\dead\observer\observer.dm"
 #include "code\modules\mob\dead\observer\orbit.dm"
