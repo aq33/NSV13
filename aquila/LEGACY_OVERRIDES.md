@@ -178,6 +178,12 @@ Bleeding is a status effect (`/datum/status_effect/bleeding` in `mob/living/bloo
 - **Species:** IPCs bleed `Coolant` (light grey) instead of oil, ethereals bleed glowing `E` blood instead of liquid electricity, lizards stay `L` (teal). `species.blood_color` was removed. Blood packs: `E` and `Coolant` added, the old liquid electricity `LE` pack is now an `E` pack.
 - **Left out from Bee:** datum values in DNA lists, `blush_color`, the inventory slot guards, the `trail_holder` rename (ours was already a child of blood).
 
+### Small tgstation medical ports
+
+- **Hearts regenerate blood (tgstation#96129):** `aquila/code/modules/surgery/organs/heart_blood.dm`; core hook: the multiplier in the `AQ EDIT` block of `/mob/living/carbon/human/handle_blood()` (`mob/living/blood.dm`).
+- **Cause of death (tgstation#95655):** `AQ EDIT` lines in `machinery/computer/medical.dm` (shown and editable only for `*Deceased*`, wiped on any other status, printed on the record). Stored in the general record as `fields["cause_of_death"]`.
+- **IV drip tube (tgstation#88217):** `aquila/code/game/machinery/iv_drip_beam.dm` and `aquila/code/datums/components/tug_towards.dm`, synced from `update_icon()`, no core edit. Our old `/datum/beam` has no colour or origin offset, so the tube is a silver `/obj/effect/ebeam/iv_tube` drawn from the drip's centre.
+
 ### Data tweaks left in core lists (D-like)
 
 Vending product lists (`wardrobes.dm`, `clothesmate.dm`, `autodrobe.dm`, `plasmaresearch.dm`, `munitions_machinery.dm`), loot lists (`lootdrop.dm`, `mailspawner.dm`, `uplink_kits.dm`, `boxes.dm`, `cargo/packs.dm`, `security.dm` closet), techweb `design_ids` (`all_nodes.dm`), `poll_ignore.dm`, ambience lists. Overriding a whole list in `aquila/` would silently hide upstream additions, which is worse than a visible merge conflict.

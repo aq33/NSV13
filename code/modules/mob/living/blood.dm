@@ -270,7 +270,8 @@ bleedsuppress has been replaced for is_bandaged(). Note that is_bleeding() retur
 	if(bodytemperature >= TCRYO && !(HAS_TRAIT(src, TRAIT_HUSK))) //cryosleep or husked people do not pump the blood.
 		//Blood regeneration if there is some space
 		// AQ EDIT START
-		if(!is_bleeding() && blood_volume < BLOOD_VOLUME_NORMAL && !HAS_TRAIT(src, TRAIT_NOHUNGER) && !HAS_TRAIT(src, TRAIT_POWERHUNGRY))
+		var/heart_blood_multiplier = get_heart_blood_regeneration_multiplier() // hearts regenerate blood (tgstation#96129)
+		if(heart_blood_multiplier && !is_bleeding() && blood_volume < BLOOD_VOLUME_NORMAL && !HAS_TRAIT(src, TRAIT_NOHUNGER) && !HAS_TRAIT(src, TRAIT_POWERHUNGRY))
 			if(hydration > HYDRATION_LEVEL_DEHYDRATED && !HAS_TRAIT(src, TRAIT_NOTHIRST))
 				var/nutrition_ratio = 0
 				switch(nutrition)
@@ -287,7 +288,7 @@ bleedsuppress has been replaced for is_bandaged(). Note that is_bleeding() retur
 				if(satiety > 80)
 					nutrition_ratio *= 1.25
 				adjust_nutrition(-nutrition_ratio * HUNGER_FACTOR)
-				blood_volume = min(BLOOD_VOLUME_NORMAL, blood_volume + 0.5 * nutrition_ratio)
+				blood_volume = min(BLOOD_VOLUME_NORMAL, blood_volume + 0.5 * nutrition_ratio * heart_blood_multiplier)
 		// AQ EDIT END
 
 		//Effects of bloodloss
