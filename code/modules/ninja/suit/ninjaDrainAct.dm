@@ -144,14 +144,17 @@ They *could* go in their appropriate files, but this is supposed to be modular
 
 	. = DRAIN_RD_HACK_FAILED
 
-	to_chat(H, "<span class='notice'>Hakowanie [src]...</span>")
+	// AQ EDIT START - ninjas wipe research points instead of downloading them (yogstation13/Yogstation#20268)
+	to_chat(H, "<span class='notice'>Wykryto notatki badawcze. Uszkadzanie danych...</span>")
 	AI_notify_hack()
-
+	if(!do_after(H, 30 SECONDS, target = src))
+		return
 	if(stored_research)
-		to_chat(H, "<span class='notice'>Kopiowanie plików...</span>")
-		if(do_after(H, S.s_delay, target = src) && G.candrain && src)
-			stored_research.copy_research_to(S.stored_research)
-	to_chat(H, "<span class='notice'>Dane przeanalizowane. Proces zakończony.</span>")
+		for(var/point_type in stored_research.research_points)
+			stored_research.research_points[point_type] = 0
+	to_chat(H, "<span class='notice'>Sabotaż zakończony. Notatki badawcze uszkodzone.</span>")
+	complete_ninja_research_sabotage(H)
+	// AQ EDIT END
 
 
 //WIRE//

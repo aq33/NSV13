@@ -122,3 +122,6 @@
 #define IS_HIVEHOST(mob) (mob.mind?.has_antag_datum(/datum/antagonist/hivemind))
 ///Checks if given mob is an awakened vessel
 #define IS_WOKEVESSEL(mob) (mob.mind?.has_antag_datum(/datum/antagonist/hivevessel))
+
+/// AQ EDIT - chance for a traitor to get the objective of their job, if it has one (tgstation's JOB_PROB)
+#define TRAITOR_JOB_OBJECTIVE_PROB 40

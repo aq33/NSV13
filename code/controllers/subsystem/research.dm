@@ -76,8 +76,9 @@ SUBSYSTEM_DEF(research)
 	if (!isnull(last_income))
 		var/income_time_difference = world.time - last_income
 		science_tech.last_bitcoins = bitcoins  // Doesn't take tick drift into account
+		var/source_code_multiplier = source_code_multiplier() // AQ EDIT - master R&D server (yogstation13/Yogstation#20268)
 		for(var/i in bitcoins)
-			bitcoins[i] *= income_time_difference / 10
+			bitcoins[i] *= income_time_difference / 10 * source_code_multiplier // AQ EDIT
 		science_tech.add_point_list(bitcoins)
 	last_income = world.time
 

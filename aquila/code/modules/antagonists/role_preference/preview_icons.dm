@@ -23,7 +23,6 @@
 		/datum/antagonist/chrono_legionnaire = /datum/outfit/chrono_legionnaire,
 		/datum/antagonist/fugitive_hunter = /datum/outfit/bountyarmor,
 		/datum/antagonist/vampire = /datum/outfit/aquila_preview/vampire,
-		/datum/antagonist/thief = /datum/outfit/aquila_preview/thief,
 		/datum/antagonist/brother = /datum/outfit/aquila_preview/brother,
 	)
 	for(var/antag_type in outfits)
@@ -92,12 +91,6 @@
 /datum/outfit/aquila_preview/vampire
 	uniform = /obj/item/clothing/under/suit/black
 	suit = /obj/item/clothing/suit/draculacoat
-
-/datum/outfit/aquila_preview/thief
-	uniform = /obj/item/clothing/under/color/black
-	gloves = /obj/item/clothing/gloves/color/black
-	mask = /obj/item/clothing/mask/balaclava
-	back = /obj/item/storage/backpack/duffelbag/syndie
 
 /datum/outfit/aquila_preview/brother
 	uniform = /obj/item/clothing/under/color/grey

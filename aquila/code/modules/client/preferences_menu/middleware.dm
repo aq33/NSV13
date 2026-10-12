@@ -305,7 +305,6 @@
 		/datum/antagonist/horror = list('aquila/icons/mob/horror.dmi', "horror"),
 		/datum/antagonist/nightmare = list('icons/mob/hud.dmi', "shadowling"),
 		/datum/antagonist/bloodling = list('icons/mob/hud.dmi', "bloodling_thrall"),
-		/datum/antagonist/thief = list('icons/mob/hud.dmi', "thief"),
 		/datum/antagonist/paradox_clone = list('icons/mob/hud.dmi', "paradox_clone"),
 		/datum/antagonist/brother = list('icons/mob/hud.dmi', "brother"),
 		/datum/antagonist/cult = list('icons/mob/hud.dmi', "cult"),

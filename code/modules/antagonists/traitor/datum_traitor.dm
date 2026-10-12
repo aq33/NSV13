@@ -88,6 +88,13 @@
 			assign_exchange_role(SSticker.mode.exchange_blue)
 		objective_count += 1					//Exchange counts towards number of objectives
 	var/toa = CONFIG_GET(number/traitor_objectives_amount)
+	// AQ EDIT START - job specific objective, like tgstation's /datum/job/proc/generate_traitor_objective()
+	if(objective_count < toa - 1 && prob(TRAITOR_JOB_OBJECTIVE_PROB))
+		var/datum/objective/job_objective = forge_job_objective()
+		if(job_objective)
+			add_objective(job_objective)
+			objective_count++
+	// AQ EDIT END
 	for(var/i = objective_count, i < toa - 1, i++)
 		forge_single_objective()
 
@@ -153,45 +160,8 @@
 			return forge_single_human_objective()
 
 /datum/antagonist/traitor/proc/forge_single_human_objective() //Returns how many objectives are added
-	.=1
-	if(prob(50) && (GLOB.joined_player_list.len >= CONFIG_GET(number/min_pop_kill_objectives))) //NSV13 - no lowpop murder
-		var/list/active_ais = active_ais()
-		if(active_ais.len && prob(100/GLOB.joined_player_list.len))
-			var/datum/objective/destroy/destroy_objective = new
-			destroy_objective.owner = owner
-			destroy_objective.find_target()
-			add_objective(destroy_objective)
-		else if(prob(30))
-			var/datum/objective/maroon/maroon_objective = new
-			maroon_objective.owner = owner
-			maroon_objective.find_target()
-			add_objective(maroon_objective)
-		else
-			var/datum/objective/assassinate/kill_objective = new
-			kill_objective.owner = owner
-			kill_objective.find_target()
-			add_objective(kill_objective)
-	else
-		if(prob(15) && !(locate(/datum/objective/download) in objectives) && !(owner.assigned_role in list(JOB_NAME_RESEARCHDIRECTOR, JOB_NAME_SCIENTIST, JOB_NAME_ROBOTICIST)))
-			var/datum/objective/download/download_objective = new
-			download_objective.owner = owner
-			download_objective.gen_amount_goal()
-			add_objective(download_objective)
-		else if(prob(50)) // AQ EDIT - half of the steal objectives become break_machinery (aq33/NSV13#248)
-			var/datum/objective/steal/steal_objective = new
-			steal_objective.owner = owner
-			steal_objective.find_target()
-			add_objective(steal_objective)
-		// AQ EDIT START - break_machinery objective (aq33/NSV13#248)
-		else
-			var/datum/objective/break_machinery/break_objective = new
-			break_objective.owner = owner
-			if(break_objective.finalize())
-				add_objective(break_objective)
-			else // nothing on the station to break, pick something else
-				qdel(break_objective)
-				return forge_single_human_objective()
-		// AQ EDIT END
+	// AQ EDIT - the whole objective pool lives in aquila/code/modules/antagonists/traitor/objectives/_forging.dm
+	return forge_aquila_human_objective()
 
 /datum/antagonist/traitor/proc/forge_single_AI_objective()
 	.=1
