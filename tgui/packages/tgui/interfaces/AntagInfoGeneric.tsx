@@ -22,7 +22,7 @@ export const AntagInfoGeneric = (_props) => {
             <AntagInfoHeader name={antag_name || 'Antagonist'} />
           </Stack.Item>
           {!!intro && (
-            <Stack.Item grow>
+            <Stack.Item grow={3}>
               <Section fill scrollable title="Twoja rola">
                 <Box
                   style={{ whiteSpace: 'pre-line' }}
@@ -31,7 +31,8 @@ export const AntagInfoGeneric = (_props) => {
               </Section>
             </Stack.Item>
           )}
-          <Stack.Item grow={!intro}>
+          {/* Cele też rosną, inaczej sekcja z fill dostaje zero wysokości pod wprowadzeniem */}
+          <Stack.Item grow={2}>
             <ObjectivesSection objectives={objectives} />
           </Stack.Item>
         </Stack>
