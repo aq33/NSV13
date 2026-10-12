@@ -72,9 +72,6 @@
 	var/atom/movable/screen/using = new /atom/movable/screen/ghost/observe()
 	using.hud = src
 	static_inventory.Insert(1, using)
-	using = new /atom/movable/screen/ghost/haunt()
-	using.hud = src
-	static_inventory += using
 	if(!CONFIG_GET(flag/norespawn))
 		using = new /atom/movable/screen/ghost/respawn()
 		using.hud = src
@@ -88,7 +85,6 @@
 		/atom/movable/screen/ghost/reenter_corpse,
 		/atom/movable/screen/ghost/respawn,
 		/atom/movable/screen/ghost/teleport,
-		/atom/movable/screen/ghost/haunt,
 		/atom/movable/screen/ghost/pai,
 		/atom/movable/screen/ghost/spawners,
 	)
@@ -100,6 +96,11 @@
 			ghost_buttons += button
 	for(var/atom/movable/screen/ghost/button in static_inventory)
 		ghost_buttons |= button
+	// Nawiedzanie osobno, w lewym górnym rogu
+	using = new /atom/movable/screen/ghost/haunt()
+	using.hud = src
+	using.screen_loc = "NORTH:-6,WEST:6"
+	static_inventory += using
 	language_button = locate() in static_inventory
 	var/left_offset = -(length(ghost_buttons) - 1) / 2
 	var/index = 0
