@@ -373,7 +373,8 @@ GENE SCANNER
 	if(M.tod && (M.stat == DEAD || ((HAS_TRAIT(M, TRAIT_FAKEDEATH)) && !advanced)))
 		message += "<span class='info'>Czas zgonu: [M.tod]</span>"
 		var/tdelta = round(world.time - M.timeofdeath)
-		if(tdelta < (DEFIB_TIME_LIMIT * 10))
+		var/mob/living/carbon/scanned_carbon = M
+		if(istype(scanned_carbon) && scanned_carbon.is_defib_possible()) // AQ EDIT - no defib time limit
 			message += "<span class='alert'><b>Pacjent zmarł [DisplayTimeText(tdelta)] temu, defibrylacja może być możliwa!</b></span>"
 
 	for(var/thing in M.diseases)

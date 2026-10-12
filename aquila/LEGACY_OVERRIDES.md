@@ -183,6 +183,7 @@ Bleeding is a status effect (`/datum/status_effect/bleeding` in `mob/living/bloo
 - **Hearts regenerate blood (tgstation#96129):** `aquila/code/modules/surgery/organs/heart_blood.dm`; core hook: the multiplier in the `AQ EDIT` block of `/mob/living/carbon/human/handle_blood()` (`mob/living/blood.dm`).
 - **Cause of death (tgstation#95655):** `AQ EDIT` lines in `machinery/computer/medical.dm` (shown and editable only for `*Deceased*`, wiped on any other status, printed on the record). Stored in the general record as `fields["cause_of_death"]`.
 - **IV drip tube (tgstation#88217):** `aquila/code/game/machinery/iv_drip_beam.dm` and `aquila/code/datums/components/tug_towards.dm`, synced from `update_icon()`, no core edit. Our old `/datum/beam` has no colour or origin offset, so the tube is a silver `/obj/effect/ebeam/iv_tube` drawn from the drip's centre.
+- **Defibrillation without a time limit (tgstation style):** `aquila/code/game/objects/items/defib_reasons.dm` (`is_defib_possible()`, `has_dnr()`, med HUD refresh when a dead heart or brain decays). Core hooks marked `AQ EDIT`: `shockpaddles/can_defib()` and the DNR reason in `do_help()` (`items/defib.dm`), the defib-able HUD icon (`data_huds.dm`), the analyzer line (`scanners.dm`), the stethoscope (`clothing/neck/_neck.dm`). `DEFIB_TIME_LIMIT` is now only used by the old HUD refresh timer in `living/death.dm`.
 
 ### Data tweaks left in core lists (D-like)
 

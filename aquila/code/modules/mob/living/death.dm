@@ -12,7 +12,7 @@
 
 	dat += "<h3>Ożywienie twojego ciała</h3>"
 	dat += "<ul>"
-	dat += "<li><b>Defibrylator</b> – działa do [DEFIB_TIME_LIMIT / 60] minut od śmierci, jeśli ciało nie jest zbyt zniszczone.</li>"
+	dat += "<li><b>Defibrylator</b> – działa, dopóki serce i mózg nie są zniszczone. Martwe serce psuje się po około 5 minutach (wtedy trzeba je najpierw naprawić), mózg po około 30. Nie działa na zbyt zniszczone ciało.</li>"
 	dat += "<li><b>Strange Reagent</b> – ożywia ciało, które nie ma ciężkich obrażeń ani nie jest wyschnięte (husk).</li>"
 	dat += "<li><b>Klonowanie</b> – jeśli medbay ma cię w bazie skanów.</li>"
 	dat += "<li><b>MMI</b> – twój mózg można włożyć do cyborga, mecha albo rdzenia AI.</li>"

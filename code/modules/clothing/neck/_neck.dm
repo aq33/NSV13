@@ -83,7 +83,7 @@
 					if(!(M.failed_last_breath || M.losebreath))
 						lung_strength = "zdrowy"
 
-			if(M.stat == DEAD && heart && world.time - M.timeofdeath < DEFIB_TIME_LIMIT * 10)
+			if(M.stat == DEAD && heart && !(heart.organ_flags & ORGAN_FAILING)) // AQ EDIT - no defib time limit
 				heart_strength = "<span class='boldannounce'>słaby, trzepoczący</span>"
 
 			var/diagnosis = (body_part == BODY_ZONE_CHEST ? "Puls: [heart_strength], oddech: [lung_strength]." : "Słabo słyszysz puls: [heart_strength].")
