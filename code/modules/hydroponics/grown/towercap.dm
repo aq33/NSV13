@@ -185,7 +185,7 @@
 	)
 	AddComponent(/datum/element/connect_loc, loc_connections)
 
-/obj/structure/bonfire/attackby(obj/item/W, mob/user, params)
+/obj/structure/bonfire/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/stack/rods) && !can_buckle && !grill)
 		var/obj/item/stack/rods/R = W
 		var/choice = input(user, "Co chcesz zbudować?", "Bonfire") as null|anything in list("Stake","Grill")
@@ -208,7 +208,7 @@
 	if(W.is_hot())
 		StartBurning()
 	if(grill)
-		if(user.a_intent != INTENT_HARM && !(W.item_flags & ABSTRACT))
+		if(!user.combat_mode && !(W.item_flags & ABSTRACT))
 			if(user.temporarilyRemoveItemFromInventory(W))
 				W.forceMove(get_turf(src))
 				var/list/click_params = params2list(params)
@@ -222,7 +222,7 @@
 			return ..()
 
 
-/obj/structure/bonfire/attack_hand(mob/user)
+/obj/structure/bonfire/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return

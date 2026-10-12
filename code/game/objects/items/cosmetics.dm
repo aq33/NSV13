@@ -125,7 +125,7 @@
 
 
 /obj/item/razor/attack(mob/M, mob/user)
-	if(ishuman(M) && extended == 1 && user.a_intent != INTENT_HARM)
+	if(ishuman(M) && extended == 1 && !user.combat_mode)
 		var/mob/living/carbon/human/H = M
 		var/location = user.zone_selected
 		var/mirror = FALSE
@@ -135,7 +135,7 @@
 			to_chat(user, "<span class='warning'>[H] nie ma głowy!</span>")
 			return
 		if(location == BODY_ZONE_PRECISE_MOUTH)
-			if(user.a_intent == INTENT_HELP)
+			if(!user.combat_mode)
 				if(H.gender == MALE)
 					INVOKE_ASYNC(src, PROC_REF(new_facial_hairstyle), H, user, mirror)
 					return
@@ -168,7 +168,7 @@
 						shave(H, location)
 
 		else if(location == BODY_ZONE_HEAD)
-			if(user.a_intent == INTENT_HELP)
+			if(!user.combat_mode)
 				INVOKE_ASYNC(src, PROC_REF(new_hairstyle), H, user)
 				return
 			else
@@ -260,7 +260,7 @@
 
 /obj/item/razor/attack(mob/M, mob/user)
 	. = ..()
-	if(ishuman(M) && extended == 1 && (user.a_intent == INTENT_HARM))
+	if(ishuman(M) && extended == 1 && (user.combat_mode))
 		var/mob/living/carbon/human/H = M
 		var/def_check = H.getarmor("melee")
 		H.bleed_rate += ((force * 10) - def_check)/30 //sharp blade causes a shitload of blood loss if on harm intent

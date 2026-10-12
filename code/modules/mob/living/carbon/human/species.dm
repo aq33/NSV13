@@ -1567,6 +1567,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	return
 
 /datum/species/proc/help(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
+	if(attacker_style?.help_act(user, target) == MARTIAL_ATTACK_SUCCESS)
+		return TRUE
+
 	if(!((target.health < 0 || HAS_TRAIT(target, TRAIT_FAKEDEATH)) && !(target.mobility_flags & MOBILITY_STAND)))
 		target.help_shake_act(user)
 		if(target != user)
@@ -1592,38 +1595,37 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		target.visible_message("<span class='warning'>[target] blokuje próbę chwytu [user]!</span>", \
 							"<span class='userdanger'>Blokujesz próbę chwytu [user]!</span>")
 		return FALSE
-	if(attacker_style && attacker_style.grab_act(user,target))
+	if(attacker_style?.grab_act(user,target) == MARTIAL_ATTACK_SUCCESS)
 		return TRUE
-	else
-		//Steal them shoes
-		if(!(target.mobility_flags & MOBILITY_STAND) && (user.zone_selected == BODY_ZONE_L_LEG || user.zone_selected == BODY_ZONE_R_LEG) && user.a_intent == INTENT_GRAB && target.shoes)
-			if(HAS_TRAIT(target.shoes, TRAIT_NODROP))
-				target.grabbedby(user)
-				return TRUE
-			user.visible_message("<span class='warning'>[user] zaczyna kraść buty [target]!</span>",
-								"<span class='warning'>Zaczynasz kraść buty [target]!</span>")
-			var/obj/item/I = target.shoes
-			if(do_after(user, I.strip_delay, TRUE, target, TRUE))
-				target.dropItemToGround(I, TRUE)
-				user.put_in_hands(I)
-				user.visible_message("<span class='warning'>[user] kradnie ci [I]!</span>",
-									"<span class='warning'>Kradniesz [target] [I]!</span>")
-		target.grabbedby(user)
-		return TRUE
+	//Steal them shoes
+	if(!(target.mobility_flags & MOBILITY_STAND) && (user.zone_selected == BODY_ZONE_L_LEG || user.zone_selected == BODY_ZONE_R_LEG) && target.shoes)
+		if(HAS_TRAIT(target.shoes, TRAIT_NODROP))
+			target.grabbedby(user)
+			return TRUE
+		user.visible_message("<span class='warning'>[user] starts stealing [target]'s shoes!</span>",
+							"<span class='warning'>You start stealing [target]'s shoes!</span>")
+		var/obj/item/I = target.shoes
+		if(do_after(user, I.strip_delay, TRUE, target, TRUE))
+			target.dropItemToGround(I, TRUE)
+			user.put_in_hands(I)
+			user.visible_message("<span class='warning'>[user] stole your [I]!</span>",
+								"<span class='warning'>You steal [target]'s [I]!</span>")
+	target.grabbedby(user)
+	return TRUE
 
 /datum/species/proc/harm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(HAS_TRAIT(target, TRAIT_ONEWAYROAD))
 		user.visible_message("<span class='userdanger'>Twój nadgarstek wykręca się nienaturalnie, gdy próbujesz uderzyć [target]!</span>", "<span class='warning'>Nadgarstek [user] nienaturalnie wykręca się od [target]!</span>")
 		user.apply_damage(rand(15, 25), BRUTE, pick(list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)))
 		return FALSE
-	if(HAS_TRAIT(user, TRAIT_PACIFISM))
+	if(HAS_TRAIT(user, TRAIT_PACIFISM) && !attacker_style?.pacifist_style)
 		to_chat(user, "<span class='warning'>Nie chcesz skrzywdzić [target]!</span>")
 		return FALSE
 	if(target.check_block())
 		target.visible_message("<span class='warning'>[target] blocks [user]'s attack!</span>", \
 							"<span class='userdanger'>Blokujesz atak [user]!</span>")
 		return FALSE
-	if(attacker_style && attacker_style.harm_act(user,target))
+	if(attacker_style?.harm_act(user,target) == MARTIAL_ATTACK_SUCCESS)
 		return TRUE
 	else
 
@@ -1679,7 +1681,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			log_combat(user, target, "punched")
 
 /datum/species/proc/spec_unarmedattacked(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	return
+	return FALSE
 
 /datum/species/proc/disarm(mob/living/carbon/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(HAS_TRAIT(target, TRAIT_ONEWAYROAD))
@@ -1690,7 +1692,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		target.visible_message("<span class='warning'>[target] blokuje próbę popchnięcia przez [user]!</span>", \
 							"<span class='userdanger'>Blokujesz próbę popchnięcia przez [user]!</span>")
 		return FALSE
-	if(attacker_style && attacker_style.disarm_act(user,target))
+	if(attacker_style?.disarm_act(user,target) == MARTIAL_ATTACK_SUCCESS)
 		return TRUE
 	if(user.resting || user.IsKnockdown())
 		return FALSE
@@ -1810,7 +1812,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /datum/species/proc/spec_hitby(atom/movable/AM, mob/living/carbon/human/H)
 	return
 
-/datum/species/proc/spec_attack_hand(mob/living/carbon/human/M, mob/living/carbon/human/H, datum/martial_art/attacker_style)
+/datum/species/proc/spec_attack_hand(mob/living/carbon/human/M, mob/living/carbon/human/H, datum/martial_art/attacker_style, modifiers)
 	if(!istype(M))
 		return
 	CHECK_DNA_AND_SPECIES(M)
@@ -1820,27 +1822,23 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		return
 	if(M.mind)
 		attacker_style = M.mind.martial_art
-	if((M != H) && M.a_intent != INTENT_HELP && H.check_shields(M, 0, M.name, attack_type = UNARMED_ATTACK))
+	if((M != H) && M.combat_mode && H.check_shields(M, 0, M.name, attack_type = UNARMED_ATTACK))
 		log_combat(M, H, "attempted to touch")
 		H.visible_message("<span class='warning'>[M] próbuje dotknąć [H]!</span>", \
 						"<span class='userdanger'>[M] próbuje cię dotknąć!</span>")
 		return 0
 	SEND_SIGNAL(M, COMSIG_MOB_ATTACK_HAND, M, H, attacker_style)
 	SEND_SIGNAL(H, COMSIG_MOB_HAND_ATTACKED, H, M, attacker_style)
-	switch(M.a_intent)
-		if("help")
-			help(M, H, attacker_style)
 
-		if("grab")
-			grab(M, H, attacker_style)
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		disarm(M, H, attacker_style)
+		return // dont attack after
+	if(M.combat_mode)
+		harm(M, H, attacker_style)
+	else
+		help(M, H, attacker_style)
 
-		if("harm")
-			harm(M, H, attacker_style)
-
-		if("disarm")
-			disarm(M, H, attacker_style)
-
-/datum/species/proc/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, intent, mob/living/carbon/human/H)
+/datum/species/proc/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, mob/living/carbon/human/H)
 	// Allows you to put in item-specific reactions based on species
 	if(user != H)
 		if(H.check_shields(I, I.force, "[I.name]", MELEE_ATTACK, I.armour_penetration))

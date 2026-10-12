@@ -11,28 +11,35 @@
 	reroute_deflection = TRUE
 	no_guns = TRUE
 	allow_temp_override = FALSE
-	help_verb = /mob/living/carbon/human/proc/sleeping_carp_help
 	smashes_tables = TRUE
+	display_combos = TRUE
+	var/old_grab_state = null
+
+	Move1 = "Wrist Wrench: Disarm Disarm. Forces opponent to drop item in hand."
+	Move2 = "Back Kick: Harm Grab. Opponent must be facing away. Knocks down."
+	Move3 = "Stomach Knee: Grab Harm. Knocks the wind out of opponent and stuns."
+	Move4 = "Head Kick: Disarm Harm Harm. Decent damage, forces opponent to drop item in hand."
+	Move5 = "Elbow Drop: Harm Disarm Harm Disarm Harm. Opponent must be on the ground. Deals huge damage, instantly kills anyone in critical condition."
 
 /datum/martial_art/the_sleeping_carp/proc/check_streak(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(findtext(streak,WRIST_WRENCH_COMBO))
-		streak = ""
+		reset_streak()
 		wristWrench(A,D)
 		return 1
 	if(findtext(streak,BACK_KICK_COMBO))
-		streak = ""
+		reset_streak()
 		backKick(A,D)
 		return 1
 	if(findtext(streak,STOMACH_KNEE_COMBO))
-		streak = ""
+		reset_streak()
 		kneeStomach(A,D)
 		return 1
 	if(findtext(streak,HEAD_KICK_COMBO))
-		streak = ""
+		reset_streak()
 		headKick(A,D)
 		return 1
 	if(findtext(streak,ELBOW_DROP_COMBO))
-		streak = ""
+		reset_streak()
 		elbowDrop(A,D)
 		return 1
 	return 0
@@ -50,7 +57,7 @@
 		D.Stun(60)
 		return 1
 	
-	return basic_hit(A,D)
+	return FALSE
 
 /datum/martial_art/the_sleeping_carp/proc/backKick(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(!D.stat && !D.IsParalyzed())
@@ -67,7 +74,8 @@
 			log_combat(A, D, "missed a back-kick (Sleeping Carp) on")
 			D.visible_message("<span class='warning'>[A] próbuje kopnąć [D] w plecy, ale chybia!</span>", \
 								"<span class='userdanger'>[A] próbuje kopnąć cię w plecy, ale chybia!</span>")
-	return basic_hit(A,D)
+			return TRUE
+	return FALSE
 
 /datum/martial_art/the_sleeping_carp/proc/kneeStomach(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(!D.stat && !D.IsParalyzed())
@@ -80,7 +88,7 @@
 		D.Stun(40)
 		playsound(get_turf(D), 'sound/weapons/punch1.ogg', 50, 1, -1)
 		return 1
-	return basic_hit(A,D)
+	return FALSE
 
 /datum/martial_art/the_sleeping_carp/proc/headKick(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	var/def_check = D.getarmor(BODY_ZONE_HEAD, "melee")
@@ -94,7 +102,7 @@
 		playsound(get_turf(D), 'sound/weapons/punch1.ogg', 50, 1, -1)
 		D.Stun(80)
 		return 1
-	return basic_hit(A,D)
+	return FALSE
 
 /datum/martial_art/the_sleeping_carp/proc/elbowDrop(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	var/def_check = D.getarmor(BODY_ZONE_CHEST, "melee")
@@ -108,25 +116,23 @@
 		D.apply_damage(50, A.dna.species.attack_type, BODY_ZONE_CHEST, blocked = def_check)
 		playsound(get_turf(D), 'sound/weapons/punch1.ogg', 75, 1, -1)
 		return 1
-	return basic_hit(A,D)
+	return FALSE
 
 /datum/martial_art/the_sleeping_carp/grab_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(A==D)
-		return 0 //prevents grabbing yourself
-	if(A.a_intent == INTENT_GRAB)
-		add_to_streak("G",D)
-		if(check_streak(A,D)) //doing combos is prioritized over upgrading grabs
-			return 1
-		D.grabbedby(A, 1)
-		if(A.grab_state == GRAB_PASSIVE)
-			D.drop_all_held_items()
-			A.setGrabState(GRAB_AGGRESSIVE) //Instant agressive grab if on grab intent
-			log_combat(A, D, "grabbed", addition="aggressively")
-			D.visible_message("<span class='warning'>[A] brutalnie chwyta [D]!</span>", \
-								"<span class='userdanger'>[A] brutalnie cię chwyta!</span>")
-	else
-		D.grabbedby(A, 1)
-	return 1
+		return FALSE //prevents grabbing yourself
+	add_to_streak("G",D)
+	if(check_streak(A,D)) //if a combo is made no grab upgrade is done
+		return TRUE
+	old_grab_state = A.grab_state
+	D.grabbedby(A, 1)
+	if(old_grab_state == GRAB_PASSIVE)
+		D.drop_all_held_items()
+		A.setGrabState(GRAB_AGGRESSIVE) //Instant agressive grab if on grab intent
+		log_combat(A, D, "grabbed", addition="aggressively")
+		D.visible_message("<span class='warning'>[A] brutalnie chwyta [D]!</span>", \
+							"<span class='userdanger'>[A] brutalnie cię chwyta!</span>")
+	return TRUE
 
 /datum/martial_art/the_sleeping_carp/harm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	var/def_check = D.getarmor(BODY_ZONE_CHEST, "melee")
@@ -147,20 +153,8 @@
 	add_to_streak("D",D)
 	if(check_streak(A,D))
 		return 1
+	log_combat(A, D, "disarmed (Sleeping Carp)")
 	return ..()
-
-/mob/living/carbon/human/proc/sleeping_carp_help()
-	set name = "Recall Teachings"
-	set desc = "Remember the martial techniques of the Sleeping Carp clan."
-	set category = "Sleeping Carp"
-
-	to_chat(usr, "<b><i>Zagłębiasz się w siebie i przypominasz sobie nauki Śpiącego Karpia...</i></b>")
-
-	to_chat(usr, "<span class='notice'>Wykręcenie nadgarstka</span>: rozbrojenie, rozbrojenie. Zmusza przeciwnika do upuszczenia przedmiotu z ręki.")
-	to_chat(usr, "<span class='notice'>Kopnięcie w plecy</span>: krzywda, chwyt. Przeciwnik musi być odwrócony plecami. Przewraca.")
-	to_chat(usr, "<span class='notice'>Kolano w brzuch</span>: chwyt, krzywda. Pozbawia przeciwnika tchu i ogłusza.")
-	to_chat(usr, "<span class='notice'>Kopnięcie w głowę</span>: rozbrojenie, krzywda, krzywda. Spore obrażenia, zmusza przeciwnika do upuszczenia przedmiotu z ręki.")
-	to_chat(usr, "<span class='notice'>Spadający łokieć</span>: krzywda, rozbrojenie, krzywda, rozbrojenie, krzywda. Przeciwnik musi leżeć na ziemi. Zadaje ogromne obrażenia, natychmiast zabija każdego w stanie krytycznym.")
 
 /obj/item/staff/bostaff
 	name = "bo staff"
@@ -187,7 +181,7 @@
 	icon_state = "bostaff0"
 	..()
 
-/obj/item/staff/bostaff/attack(mob/target, mob/living/user)
+/obj/item/staff/bostaff/attack(mob/target, mob/living/user, params)
 	add_fingerprint(user)
 	if((HAS_TRAIT(user, TRAIT_CLUMSY)) && prob(50))
 		to_chat(user, "<span class ='warning'>Walisz się w głowę [src].</span>")
@@ -206,7 +200,8 @@
 	if(C.stat)
 		to_chat(user, "<span class='warning'>Atakowanie wroga, który nie może oddać, byłoby niehonorowe.</span>")
 		return
-	if(user.a_intent == INTENT_DISARM)
+	var/list/modifiers = params2list(params)
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(!ISWIELDED(src))
 			return ..()
 		if(!ishuman(target))

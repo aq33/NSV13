@@ -51,11 +51,11 @@
 	return attack_hand(user)
 
 /mob/living/silicon/attack_larva(mob/living/carbon/alien/larva/L)
-	if(L.a_intent == INTENT_HELP)
+	if(!L.combat_mode)
 		visible_message("[L.name] ociera się głową o [src].")
 
 /mob/living/silicon/attack_hulk(mob/living/carbon/human/user, does_attack_animation = 0)
-	if(user.a_intent == INTENT_HARM)
+	if(user.combat_mode)
 		..(user, 1)
 		adjustBruteLoss(rand(10, 15))
 		playsound(loc, "punch", 25, 1, -1)
@@ -65,16 +65,14 @@
 	return 0
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/mob/living/silicon/attack_hand(mob/living/carbon/human/M)
+/mob/living/silicon/attack_hand(mob/living/carbon/human/M, list/modifiers)
 	. = FALSE
-	if(SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_HAND, M) & COMPONENT_NO_ATTACK_HAND)
+	if(SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_HAND, M, modifiers) & COMPONENT_NO_ATTACK_HAND)
 		. = TRUE
-	switch(M.a_intent)
+	switch(M.combat_mode ? "harm" : "help")
 		if ("help")
 			M.visible_message("[M] pets [src].", \
 							"<span class='notice'>Głaszczesz [src].</span>")
-		if("grab")
-			grabbedby(M)
 		else
 			if(HAS_TRAIT(M, TRAIT_PACIFISM))
 				to_chat(M, "<span class='notice'>Nie chcesz zrobić krzywdy [src]!</span>")
@@ -93,8 +91,13 @@
 			log_combat(M, src, "tried to punch")
 
 /mob/living/silicon/attack_drone(mob/living/simple_animal/drone/M)
-	if(M.a_intent == INTENT_HARM)
+	if(M.combat_mode)
 		return
+	return ..()
+
+/mob/living/silicon/attack_drone_secondary(mob/living/simple_animal/drone/M)
+	if(M.combat_mode)
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	return ..()
 
 /mob/living/silicon/electrocute_act(shock_damage, source, siemens_coeff = 1, safety = 0, tesla_shock = 0, illusion = 0, stun = TRUE)

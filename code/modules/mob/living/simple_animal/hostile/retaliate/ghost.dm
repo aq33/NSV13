@@ -10,7 +10,7 @@
 	response_help = "przenika przez"
 	response_disarm = "popycha"
 	response_harm = "uderza"
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	healable = 0
 	speed = 0
 	maxHealth = 40

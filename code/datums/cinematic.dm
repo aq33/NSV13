@@ -73,7 +73,7 @@
 		toggle_ooc(FALSE)
 		toggle_looc(FALSE) //nsv13
 
-	//Place /obj/screen/cinematic into everyone's screens, prevent them from moving
+	//Place /atom/movable/cinematic into everyone's screens, prevent them from moving
 	for(var/MM in watchers)
 		var/mob/M = MM
 		show_to(M, M.client)

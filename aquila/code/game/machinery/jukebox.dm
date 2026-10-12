@@ -96,7 +96,7 @@
 	if(panel_open && is_wire_tool(I))
 		wires.interact(user)
 		return TRUE
-	if(I.tool_behaviour == TOOL_WELDER && user.a_intent == INTENT_HELP)
+	if(I.tool_behaviour == TOOL_WELDER && !user.combat_mode)
 		if(obj_integrity < max_integrity)
 			if(!I.tool_start_check(user, amount=5))
 				return

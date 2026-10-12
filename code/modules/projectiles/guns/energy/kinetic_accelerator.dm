@@ -43,6 +43,45 @@
 	else
 		to_chat(user, "<span class='notice'>Obecnie nie zamontowano żadnych modyfikacji.</span>")
 
+/// Port Bee #11899: right click with an empty hand opens a radial to take a modkit out
+/obj/item/gun/energy/kinetic_accelerator/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+	if(!LAZYLEN(modkits))
+		return SECONDARY_ATTACK_CONTINUE_CHAIN
+
+	var/list/display_names = list()
+	var/list/items = list()
+	for(var/modkits_length in 1 to length(modkits))
+		var/obj/item/thing = modkits[modkits_length]
+		display_names["[thing.name] ([modkits_length])"] = REF(thing)
+		var/image/item_image = image(icon = thing.icon, icon_state = thing.icon_state)
+		if(length(thing.overlays))
+			item_image.copy_overlays(thing)
+		items["[thing.name] ([modkits_length])"] = item_image
+
+	var/pick = show_radial_menu(user, src, items, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE, tooltips = TRUE)
+	if(!pick)
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+	var/modkit_reference = display_names[pick]
+	var/obj/item/borg/upgrade/modkit/modkit_to_remove = locate(modkit_reference) in modkits
+	if(!istype(modkit_to_remove))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	modkit_to_remove.uninstall(src)
+	user.put_in_hands(modkit_to_remove)
+	update_icon()
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/item/gun/energy/kinetic_accelerator/proc/check_menu(mob/living/carbon/human/user)
+	if(!istype(user))
+		return FALSE
+	if(user.incapacitated())
+		return FALSE
+	return TRUE
+
 /obj/item/gun/energy/kinetic_accelerator/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/borg/upgrade/modkit))
 		var/obj/item/borg/upgrade/modkit/MK = I

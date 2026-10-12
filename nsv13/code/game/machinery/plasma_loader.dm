@@ -72,7 +72,7 @@
 
 /obj/machinery/atmospherics/components/unary/plasma_loader/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS )
+	AddComponent(/datum/component/simple_rotation)
 
 /obj/machinery/atmospherics/components/unary/plasma_loader/process_atmos()
 	..()

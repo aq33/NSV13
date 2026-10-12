@@ -197,9 +197,10 @@
 /datum/action/changeling/weapon/tentacle
 	name = "Tentacle"
 	desc = "We ready a tentacle to grab items or victims with. Costs 10 chemicals."
-	helptext = "Możemy go użyć raz, by przyciągnąć odległy przedmiot. Na żywych istotach efekt zależy od intencji: \
-	Pomoc po prostu przyciąga cel, Rozbrojenie zabiera to, co cel trzyma, Chwyt łapie ofiarę i ją przytrzymuje, \
-	a Krzywda ją ogłusza i dźga, jeśli trzymamy też ostrą broń. Nie działa w mniejszej formie."
+	helptext = "We can use it once to retrieve a distant item. If used on living creatures, the effect depends on our combat mode: \
+	In our neutral stance, we will simply drag them closer; if we try to shove, we will grab whatever they're holding in their active hand instead of them; \
+	in our combat stance, we will put the victim in our hold after catching them, and we will pull them in and stab them if we're also holding a sharp weapon. \
+	Cannot be used while in lesser form."
 	button_icon_state = "tentacle"
 	chemical_cost = 10
 	dna_cost = 2
@@ -243,7 +244,9 @@
 /obj/item/gun/magic/tentacle/shoot_with_empty_chamber(mob/living/user as mob|obj)
 	to_chat(user, "<span class='warning'>[name] jeszcze nie jest gotowa.</span>")
 
-/obj/item/gun/magic/tentacle/process_chamber()
+/obj/item/gun/magic/tentacle/process_fire(atom/target, mob/living/user, message, params, zone_override, bonus_spread)
+	var/obj/item/projectile/tentacle/tentacle_shot = chambered.BB //Gets the actual projectile we will fire
+	tentacle_shot.fire_modifiers = params2list(params)
 	. = ..()
 	if(charges == 0)
 		qdel(src)
@@ -280,6 +283,8 @@
 	hitsound = 'sound/weapons/thudswoosh.ogg'
 	var/chain
 	var/obj/item/ammo_casing/magic/tentacle/source //the item that shot it
+	///Click params that were used to fire the tentacle shot
+	var/list/fire_modifiers
 
 /obj/item/projectile/tentacle/Initialize(mapload)
 	source = loc
@@ -302,9 +307,6 @@
 			return
 		C.grabbedby(H)
 		C.grippedby(H, instant = TRUE) //instant aggro grab
-
-/obj/item/projectile/tentacle/proc/tentacle_stab(mob/living/carbon/human/H, mob/living/carbon/C)
-	if(H.Adjacent(C))
 		for(var/obj/item/I in H.held_items)
 			if(I.is_sharp())
 				C.visible_message("<span class='danger'>[H] nadziewa [C] na [I.name]!</span>", "<span class='userdanger'>[H] nadziewa cię na [I.name]!</span>")
@@ -331,39 +333,32 @@
 		if(!L.anchored && !L.throwing)//avoid double hits
 			if(iscarbon(L))
 				var/mob/living/carbon/C = L
-				var/firer_intent = INTENT_HARM
-				var/mob/M = firer
-				if(istype(M))
-					firer_intent = M.a_intent
-				switch(firer_intent)
-					if(INTENT_HELP)
-						C.visible_message("<span class='danger'>Macka [H] przyciąga [L]!</span>","<span class='userdanger'>Macka chwyta cię i przyciąga do [H]!</span>")
-						C.throw_at(get_step_towards(H,C), 8, 2)
-						return BULLET_ACT_HIT
-
-					if(INTENT_DISARM)
-						var/obj/item/I = C.get_active_held_item()
-						if(I)
-							if(C.dropItemToGround(I))
-								C.visible_message("<span class='danger'>[src] wyrywa [I] z dłoni [C]!</span>","<span class='userdanger'>Macka wyrywa ci [I]!</span>")
-								on_hit(I) //grab the item as if you had hit it directly with the tentacle
-								return BULLET_ACT_HIT
-							else
-								to_chat(firer, "<span class='danger'>Nie możesz wyrwać [I] z rąk [C]!</span>")
-								return BULLET_ACT_BLOCK
-						else
-							to_chat(firer, "<span class='danger'>[C] nie ma nic w ręce do zabrania!</span>")
+				var/firer_combat_mode = TRUE
+				var/mob/living/living_shooter = firer
+				if(istype(living_shooter))
+					firer_combat_mode = living_shooter.combat_mode
+				if(fire_modifiers && fire_modifiers["right"])
+					var/obj/item/I = C.get_active_held_item()
+					if(I)
+						if(C.dropItemToGround(I))
+							C.visible_message("<span class='danger'>[src] wyrywa [I] z dłoni [C]!</span>","<span class='userdanger'>Macka wyrywa ci [I]!</span>")
+							on_hit(I) //grab the item as if you had hit it directly with the tentacle
 							return BULLET_ACT_HIT
-
-					if(INTENT_GRAB)
-						C.visible_message("<span class='danger'>Macka [H] chwyta [L]!</span>","<span class='userdanger'>Macka chwyta cię i przyciąga do [H]!</span>")
-						C.throw_at(get_step_towards(H,C), 8, 2, H, TRUE, TRUE, callback=CALLBACK(src, PROC_REF(tentacle_grab), H, C))
+						else
+							to_chat(firer, "<span class='warning'>You can't seem to pry [I] off [C]'s hands!</span>")
+							return BULLET_ACT_BLOCK
+					else
+						to_chat(firer, "<span class='danger'>[C] nie ma nic w ręce do zabrania!</span>")
 						return BULLET_ACT_HIT
+				if(firer_combat_mode)
+					C.visible_message("<span class='danger'>[L] is thrown towards [H] by a tentacle!</span>","<span class='userdanger'>A tentacle grabs you and throws you towards [H]!</span>")
+					C.throw_at(get_step_towards(H,C), 8, 2, H, TRUE, TRUE, callback=CALLBACK(src, PROC_REF(tentacle_grab), H, C))
+					return BULLET_ACT_HIT
+				else
+					C.visible_message("<span class='danger'>[L] is grabbed by [H]'s tentacle!</span>","<span class='userdanger'>A tentacle grabs you and pulls you towards [H]!</span>")
+					C.throw_at(get_step_towards(H,C), 8, 2, H, TRUE, TRUE)
+					return BULLET_ACT_HIT
 
-					if(INTENT_HARM)
-						C.visible_message("<span class='danger'>Macka rzuca [L] w stronę [H]!</span>","<span class='userdanger'>Macka chwyta cię i rzuca w stronę [H]!</span>")
-						C.throw_at(get_step_towards(H,C), 8, 2, H, TRUE, TRUE, callback=CALLBACK(src, PROC_REF(tentacle_stab), H, C))
-						return BULLET_ACT_HIT
 			else
 				L.visible_message("<span class='danger'>Macka [H] przyciąga [L]!</span>","<span class='userdanger'>Macka chwyta cię i przyciąga do [H]!</span>")
 				L.throw_at(get_step_towards(H,L), 8, 2)

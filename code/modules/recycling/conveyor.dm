@@ -226,7 +226,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	SSmove_manager.stop_looping(thing, SSconveyors)
 
 // attack with item, place item on conveyor
-/obj/machinery/conveyor/attackby(obj/item/I, mob/user, params)
+/obj/machinery/conveyor/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_CROWBAR)
 		user.visible_message("<span class='notice'>[user] z trudem podważa [src] za pomocą [I].</span>", \
 		"<span class='notice'>Z trudem podważasz [src] za pomocą [I].</span>")
@@ -253,13 +253,13 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 			update_move_direction()
 			to_chat(user, "<span class='notice'>Odwracasz kierunek [src].</span>")
 
-	else if(user.a_intent != INTENT_HARM)
+	else if(!user.combat_mode)
 		user.transferItemToLoc(I, drop_location())
 	else
 		return ..()
 
 // attack with hand, move pulled object onto conveyor
-/obj/machinery/conveyor/attack_hand(mob/user)
+/obj/machinery/conveyor/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return

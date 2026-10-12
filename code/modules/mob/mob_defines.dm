@@ -36,6 +36,8 @@
 	var/list/datum/action/actions = list()
 	/// A special action? No idea why this lives here
 	var/list/datum/action/chameleon_item_actions
+	///Cursor icon used when holding shift over things
+	var/examine_cursor_icon = 'icons/effects/mouse_pointers/examine_pointer.dmi'
 
 	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak (2019, still here)
 	var/stat = CONSCIOUS
@@ -104,10 +106,12 @@
 	/// How many ticks this mob has been over reating
 	var/overeatduration = 0		// How long this guy is overeating //Carbon
 
-	/// The current intent of the mob
+	/// The current intent of the mob. With combat mode only used by the legacy intent mode (preference), see aquila/code/_onclick/legacy_intents.dm
 	var/a_intent = INTENT_HELP//Living
 	/// List of possible intents a mob can have
 	var/list/possible_a_intents = null//Living
+	/// Is the mob in combat mode? Harm intent's replacement, see /mob/living/proc/set_combat_mode() (port Bee #11899). Kept on /mob because a lot of our code types users as /mob
+	var/combat_mode = FALSE
 	/// The movement intent of the mob (run/wal)
 	var/m_intent = MOVE_INTENT_RUN//Living
 
@@ -238,3 +242,5 @@
 
 	///Takes the four cardinal direction defines. Any atoms moving into this atom's tile will be allowed to from the added directions.
 	var/passthroughable = NONE
+	/// Should shift be used to open the context menu?
+	var/shift_to_open_context_menu = TRUE

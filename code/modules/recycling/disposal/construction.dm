@@ -32,8 +32,7 @@
 	pipename = initial(pipe_type.name)
 
 	if(flip)
-		var/datum/component/simple_rotation/rotcomp = GetComponent(/datum/component/simple_rotation)
-		rotcomp.BaseRot(null,ROTATION_FLIP)
+		flip_construct()
 
 	update_icon()
 
@@ -92,7 +91,29 @@
 
 /obj/structure/disposalconstruct/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_FLIP | ROTATION_VERBS ,null,CALLBACK(src, PROC_REF(can_be_rotated)), CALLBACK(src, PROC_REF(after_rot)))
+	AddComponent(/datum/component/simple_rotation, AfterRotation = CALLBACK(src, PROC_REF(after_rot)))
+
+/// Port Bee #11899: rotation component no longer flips, so flipping is done here (right click, or the verb in the legacy mode)
+/obj/structure/disposalconstruct/proc/flip_construct()
+	setDir(turn(dir, ROTATION_FLIP))
+	after_rot(null, ROTATION_FLIP)
+
+/obj/structure/disposalconstruct/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	if(!can_be_rotated(user, ROTATION_FLIP))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	flip_construct()
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/structure/disposalconstruct/verb/flip_pipe()
+	set category = "Object"
+	set name = "Flip Pipe"
+	set src in view(1)
+	if(usr.incapacitated() || !isliving(usr) || !can_be_rotated(usr, ROTATION_FLIP))
+		return
+	flip_construct()
 
 /obj/structure/disposalconstruct/proc/after_rot(mob/user,rotation_type)
 	if(rotation_type == ROTATION_FLIP)

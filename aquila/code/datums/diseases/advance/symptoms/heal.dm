@@ -94,7 +94,7 @@
 	to_chat(user, "<span class='notice'>Fuj. Dotknięcie tego byłoby złym pomysłem. Pewnie da się to zniszczyć skrajnym gorącem spawarki.</span>")
 
 /obj/effect/mob_spawn/teratomamonkey/attackby(obj/item/W, mob/user, params)
-	if(W.tool_behaviour == TOOL_WELDER && user.a_intent != INTENT_HARM)
+	if(W.tool_behaviour == TOOL_WELDER && !user.combat_mode)
 		if(!W.tool_start_check(user, amount = 0)) // an unlit welder has no extreme heat
 			return
 		user.visible_message("<span class='warning'>[user] destroys [src].</span>",

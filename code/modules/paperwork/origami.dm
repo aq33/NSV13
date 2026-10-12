@@ -108,8 +108,8 @@
 	. = ..()
 	. += "<span class='notice'>Alt-klik na [src], by złożyć go w origami.</span>"
 
-/obj/item/paper/AltClick(mob/living/carbon/user, obj/item/I)
-	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+/obj/item/paper/AltClick(mob/living/user, obj/item/I)
+	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
 		return
 
 	var/list/radial_list = list(

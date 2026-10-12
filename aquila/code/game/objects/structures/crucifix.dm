@@ -29,7 +29,7 @@
 	return TRUE
 
 /obj/structure/kitchenspike/crucifix/attack_hand(mob/user)
-	if(VIABLE_MOB_CHECK(user.pulling) && user.a_intent == INTENT_GRAB && !has_buckled_mobs())
+	if(VIABLE_MOB_CHECK(user.pulling) && !has_buckled_mobs())
 		var/mob/living/L = user.pulling
 		if(do_mob(user, src, 120))
 			if(has_buckled_mobs())

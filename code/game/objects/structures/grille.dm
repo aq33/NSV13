@@ -105,7 +105,7 @@ WANTS_POWER_NODE(/obj/structure/grille) // AQ EDIT - Smartwires
 	return 60
 
 /obj/structure/grille/attack_hulk(mob/living/carbon/human/user, does_attack_animation = 0)
-	if(user.a_intent == INTENT_HARM)
+	if(user.combat_mode)
 		if(!shock(user, 70))
 			..(user, 1)
 		return TRUE

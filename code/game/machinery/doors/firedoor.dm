@@ -127,7 +127,7 @@
 	else
 		set_machine_stat(machine_stat | NOPOWER)
 
-/obj/machinery/door/firedoor/attack_hand(mob/user)
+/obj/machinery/door/firedoor/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -237,13 +237,14 @@
 		user.log_message("has opened a firelock with a pressure difference or a fire alarm at [AREACOORD(loc)], using [I]", LOG_ATTACK)
 
 
-/obj/machinery/door/firedoor/try_to_weld(obj/item/weldingtool/W, mob/user)
+/obj/machinery/door/firedoor/try_to_weld_secondary(obj/item/weldingtool/W, mob/user)
 	if(!W.tool_start_check(user, amount=0))
 		return
 	user.visible_message("<span class='notice'>[user] starts [welded ? "unwelding" : "welding"] [src].</span>", "<span class='notice'>Zaczynasz spawać [src].</span>")
 	if(W.use_tool(src, user, 40, volume=50))
 		welded = !welded
-		to_chat(user, "<span class='danger'>[user] [welded?"welds":"unwelds"] [src].</span>", "<span class='notice'>You [welded ? "weld" : "unweld"] [src].</span>")
+		user.visible_message("<span class='danger'>[user] [welded?"welds":"unwelds"] [src].</span>", "<span class='notice'>You [welded ? "weld" : "unweld"] [src].</span>")
+		log_game("[key_name(user)] [welded ? "welded":"unwelded"] firedoor [src] with [W] at [AREACOORD(src)]")
 		update_icon()
 
 
@@ -834,15 +835,9 @@
 	density = FALSE
 	firelock_type = /obj/machinery/door/firedoor/border_only
 
-/obj/structure/firelock_frame/border/ComponentInitialize()
+/obj/structure/reagent_dispensers/plumbed/storage/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS, null, CALLBACK(src, PROC_REF(can_be_rotated)))
-
-/obj/structure/firelock_frame/border/proc/can_be_rotated(mob/user, rotation_type)
-	if (anchored)
-		to_chat(user, "<span class='warning'>Jest przymocowana do podłogi!</span>")
-		return FALSE
-	return TRUE
+	AddComponent(/datum/component/simple_rotation)
 
 /obj/structure/firelock_frame/border/update_icon()
 	return

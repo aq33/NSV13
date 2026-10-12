@@ -783,3 +783,5 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 			if(!QDELETED(carbon_target.last_mind))
 				return carbon_target.last_mind
 
+// AQ EDIT - port Bee #11899: u nas zręczność to wciąż proc IsAdvancedToolUser(), bez TRAIT_ADVANCEDTOOLUSER
+#define ISADVANCEDTOOLUSER(mob) (mob?.IsAdvancedToolUser())

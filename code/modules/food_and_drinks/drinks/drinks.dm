@@ -497,7 +497,7 @@
 	return TOXLOSS
 
 /obj/item/reagent_containers/food/drinks/soda_cans/attack(mob/M, mob/user)
-	if(M == user && !src.reagents.total_volume && user.a_intent == INTENT_HARM && user.zone_selected == BODY_ZONE_HEAD)
+	if(M == user && !src.reagents.total_volume && user.combat_mode && user.zone_selected == BODY_ZONE_HEAD)
 		user.visible_message("<span class='warning'>[user] zgniata puszkę [src] na swoim czole!</span>", "<span class='notice'>Zgniatasz puszkę [src] na swoim czole.</span>")
 		playsound(user.loc,'sound/weapons/pierce.ogg', rand(10,50), 1)
 		var/obj/item/trash/can/crushed_can = new /obj/item/trash/can(user.loc)

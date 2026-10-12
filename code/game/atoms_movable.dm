@@ -40,6 +40,8 @@
 	var/movement_type = GROUND		//Incase you have multiple types, you automatically use the most useful one. IE: Skating on ice, flippers on water, flying over chasm/space, etc.
 	var/atom/movable/pulling
 	var/grab_state = 0
+	/// The strongest grab we can acomplish
+	var/max_grab = GRAB_KILL
 	var/throwforce = 0
 	var/datum/component/orbiter/orbiting
 	var/can_be_z_moved = TRUE
@@ -201,6 +203,7 @@
 				AMob.grabbedby(src)
 			return TRUE
 		stop_pulling()
+
 	if(AM.pulledby)
 		log_combat(AM, AM.pulledby, "pulled from", src)
 		AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
@@ -1025,8 +1028,11 @@
 		return FALSE
 	return TRUE
 
-/// Updates the grab state of the movable
-/// This exists to act as a hook for behaviour
+/**
+ * Updates the grab state of the movable
+ *
+ * This exists to act as a hook for behaviour
+ */
 /atom/movable/proc/setGrabState(newstate)
 	grab_state = newstate
 

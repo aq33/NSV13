@@ -7,7 +7,7 @@
 	armour_penetration = 100
 
 /mob/living/simple_animal/hostile/guardian/ranged
-	a_intent = INTENT_HELP
+	combat_mode = FALSE
 	friendly = "po cichu ocenia"
 	melee_damage = 10
 	damage_coeff = list(BRUTE = 0.9, BURN = 0.9, TOX = 0.9, CLONE = 0.9, STAMINA = 0, OXY = 0.9)

@@ -42,7 +42,7 @@
 	to_chat(user, "<span class='notice'>Podniesienie rojowca może go aktywować. Lepiej uważaj.</span>")
 
 /obj/effect/mob_spawn/swarmer/attackby(obj/item/W, mob/user, params)
-	if(W.tool_behaviour == TOOL_SCREWDRIVER && user.a_intent != INTENT_HARM)
+	if(W.tool_behaviour == TOOL_SCREWDRIVER && !user.combat_mode)
 		user.visible_message("<span class='warning'>[usr.name] deactivates [src].</span>",
 			"<span class='notice'>Po chwili majstrowania znajdujesz sposób, by wyłączyć zasilanie [src].</span>",
 			"<span class='italics'>Słyszysz klikanie.</span>")

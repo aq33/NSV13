@@ -25,17 +25,25 @@
 /datum/component/butchering/proc/onItemAttack(obj/item/source, mob/living/M, mob/living/user)
 	SIGNAL_HANDLER
 
-	if(user.a_intent == INTENT_HARM && M.stat == DEAD && (M.butcher_results || M.guaranteed_butcher_results)) //can we butcher it?
+	if(!user.combat_mode)
+		return
+	if(M.stat == DEAD && (M.butcher_results || M.guaranteed_butcher_results)) //can we butcher it?
 		if(butchering_enabled && (can_be_blunt || source.is_sharp()))
 			INVOKE_ASYNC(src, PROC_REF(startButcher), source, M, user)
 			return COMPONENT_ITEM_NO_ATTACK
-	if(user.a_intent == INTENT_GRAB && ishuman(M) && source.is_sharp())
+
+	if(ishuman(M) && source.force && source.is_sharp())
 		var/mob/living/carbon/human/H = M
-		if(H.has_status_effect(/datum/status_effect/neck_slice))
-			user.show_message("<span class='danger'>Szyja [H] jest już podcięta, nie możesz bardziej pogorszyć krwawienia!", 1, \
-							"<span class='danger'>Szyja jest już podcięta, nie możesz bardziej pogorszyć krwawienia!")
-			return COMPONENT_ITEM_NO_ATTACK
-		if((H.health <= H.crit_threshold || (user.pulling == H && user.grab_state >= GRAB_NECK) || H.IsSleeping()) && user.zone_selected == BODY_ZONE_HEAD) // Only sleeping, neck grabbed, or crit, can be sliced.
+		var/neckslice_conditions = (H.health <= H.crit_threshold || user.grab_state >= GRAB_NECK || H.IsSleeping())
+		if(neckslice_conditions && user.pulling == H && user.zone_selected == BODY_ZONE_HEAD && user.grab_state >= GRAB_AGGRESSIVE) // Only sleeping, neck grabbed, or crit, can be sliced.
+			if(HAS_TRAIT(user, TRAIT_PACIFISM))
+				to_chat(user, "<span class='warning'>Nie chcesz krzywdzić innych żywych istot!</span>")
+				return COMPONENT_ITEM_NO_ATTACK
+
+			if(H.has_status_effect(/datum/status_effect/neck_slice))
+				user.show_message("<span class='danger'>Szyja [H] jest już podcięta, nie możesz bardziej pogorszyć krwawienia!", 1, \
+								"<span class='danger'>Szyja jest już podcięta, nie możesz bardziej pogorszyć krwawienia!")
+				return
 			INVOKE_ASYNC(src, PROC_REF(startNeckSlice), source, H, user)
 			return COMPONENT_ITEM_NO_ATTACK
 
@@ -51,6 +59,7 @@
 					"<span class='hear'>Słyszysz odgłos cięcia!</span>")
 	H.show_message("<span class='userdanger'>[user] podrzyna ci gardło!</span>", 1, \
 					"<span class = 'userdanger'>Coś wcina ci się w szyję!</span>", NONE)
+	log_combat(user, H, "attempted throat slitting", source)
 
 	playsound(H.loc, butcher_sound, 50, TRUE, -1)
 	if(do_mob(user, H, CLAMP(500 / source.force, 30, 100)) && H.Adjacent(source))
@@ -99,3 +108,4 @@
 
 /datum/component/butchering/proc/ButcherEffects(mob/living/meat) //extra effects called on butchering, override this via subtypes
 	return
+

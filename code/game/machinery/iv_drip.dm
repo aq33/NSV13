@@ -8,8 +8,11 @@
 	icon_state = "iv_drip"
 	anchored = FALSE
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
+	///Who are we sticking our needle in?
 	var/mob/living/carbon/attached
+	///Are we donating or injecting?
 	var/mode = IV_INJECTING
+	///Internal beaker
 	var/obj/item/reagent_containers/beaker
 	var/static/list/drip_containers = typecacheof(list(/obj/item/reagent_containers/blood,
 									/obj/item/reagent_containers/chem_bag,
@@ -157,7 +160,7 @@
 			attached.transfer_blood_to(beaker, amount)
 			update_icon()
 
-/obj/machinery/iv_drip/attack_hand(mob/user)
+/obj/machinery/iv_drip/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -181,7 +184,8 @@
 	if(!isliving(usr))
 		to_chat(usr, "<span class='warning'>Nie możesz tego zrobić!</span>")
 		return
-
+	if (!usr.canUseTopic())
+		return
 	if(usr.incapacitated())
 		return
 	if(beaker)
@@ -197,7 +201,8 @@
 	if(!isliving(usr))
 		to_chat(usr, "<span class='warning'>Nie możesz tego zrobić!</span>")
 		return
-
+	if (!usr.canUseTopic())
+		return
 	if(usr.incapacitated())
 		return
 	mode = !mode

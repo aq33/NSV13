@@ -165,7 +165,7 @@
 		to_chat(user, "<span class='warning'>Obrót jest zablokowany!</span>")
 		return FALSE
 	var/new_angle = input(user, "Podaj nowy kąt głównej powierzchni odbijającej.", "Kąt reflektora", rotation_angle) as null|num
-	if(!user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, !iscyborg(user)))
 		return
 	if(!isnull(new_angle))
 		setAngle(SIMPLIFY_DEGREES(new_angle))

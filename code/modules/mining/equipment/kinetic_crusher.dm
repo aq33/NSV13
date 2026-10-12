@@ -82,23 +82,6 @@
 	. = ..()
 	if(!ISWIELDED(src))
 		return
-	if(!proximity_flag && charged)//Mark a target, or mine a tile.
-		var/turf/proj_turf = user.loc
-		if(!isturf(proj_turf))
-			return
-		var/obj/item/projectile/destabilizer/D = new /obj/item/projectile/destabilizer(proj_turf)
-		for(var/t in trophies)
-			var/obj/item/crusher_trophy/T = t
-			T.on_projectile_fire(D, user)
-		D.preparePixelProjectile(target, user, clickparams)
-		D.firer = user
-		D.hammer_synced = src
-		playsound(user, 'sound/weapons/plasma_cutter.ogg', 100, 1)
-		D.fire()
-		charged = FALSE
-		update_icon()
-		addtimer(CALLBACK(src, PROC_REF(Recharge)), charge_time)
-		return
 	if(proximity_flag && isliving(target))
 		var/mob/living/L = target
 		var/datum/status_effect/crusher_mark/CM = L.has_status_effect(STATUS_EFFECT_CRUSHERMARK)
@@ -126,6 +109,37 @@
 				if(!QDELETED(C))
 					C.total_damage += detonation_damage
 				L.apply_damage(detonation_damage, BRUTE, blocked = def_check)
+
+/// Port Bee #11899: the destabilizer is fired with right click
+/obj/item/kinetic_crusher/afterattack_secondary(atom/target, mob/living/user, proximity_flag, click_parameters)
+	if(!ISWIELDED(src))
+		balloon_alert(user, "wield it first!")
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	if(target == user)
+		balloon_alert(user, "can't aim at yourself!")
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	fire_kinetic_blast(target, user, click_parameters)
+	user.changeNext_move(CLICK_CD_MELEE)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/item/kinetic_crusher/proc/fire_kinetic_blast(atom/target, mob/living/user, clickparams)
+	if(!charged)
+		return
+	var/turf/proj_turf = user.loc
+	if(!isturf(proj_turf))
+		return
+	var/obj/item/projectile/destabilizer/D = new /obj/item/projectile/destabilizer(proj_turf)
+	for(var/t in trophies)
+		var/obj/item/crusher_trophy/T = t
+		T.on_projectile_fire(D, user)
+	D.preparePixelProjectile(target, user, clickparams)
+	D.firer = user
+	D.hammer_synced = src
+	playsound(user, 'sound/weapons/plasma_cutter.ogg', 100, 1)
+	D.fire()
+	charged = FALSE
+	update_icon()
+	addtimer(CALLBACK(src, PROC_REF(Recharge)), charge_time)
 
 /obj/item/kinetic_crusher/proc/Recharge()
 	if(!charged)

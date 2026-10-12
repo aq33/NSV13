@@ -222,7 +222,7 @@ GLOBAL_LIST_INIT(oilfry_blacklisted_items, typecacheof(list(
 /obj/machinery/deepfryer/attack_ai(mob/user)
 	return
 
-/obj/machinery/deepfryer/attack_hand(mob/user)
+/obj/machinery/deepfryer/attack_hand(mob/living/user)
 	if(frying)
 		to_chat(user, "<span class='notice'>Wyjmujesz [frying] z [src].</span>")
 		frying.forceMove(drop_location())
@@ -230,7 +230,7 @@ GLOBAL_LIST_INIT(oilfry_blacklisted_items, typecacheof(list(
 			user.put_in_hands(frying)
 		return
 
-	else if(user.pulling && user.a_intent == "grab" && iscarbon(user.pulling) && reagents.total_volume)
+	else if(user.pulling && iscarbon(user.pulling) && reagents.total_volume)
 		if(user.grab_state < GRAB_AGGRESSIVE)
 			to_chat(user, "<span class='warning'>Potrzebujesz lepszego chwytu, żeby to zrobić!</span>")
 			return

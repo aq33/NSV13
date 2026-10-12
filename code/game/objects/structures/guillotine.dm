@@ -53,7 +53,7 @@
 	if (LAZYLEN(buckled_mobs))
 		. += "Ktoś wydaje się być przypięty. Możesz mu pomóc wyjść albo zrobić mu krzywdę, uruchamiając gilotynę."
 
-/obj/structure/guillotine/attack_hand(mob/user)
+/obj/structure/guillotine/attack_hand(mob/living/user)
 	add_fingerprint(user)
 
 	// Currently being used by something
@@ -70,7 +70,7 @@
 			return
 		if (GUILLOTINE_BLADE_RAISED)
 			if (LAZYLEN(buckled_mobs))
-				if (user.a_intent == INTENT_HARM)
+				if (user.combat_mode)
 					user.visible_message("<span class='warning'>[user] zaczyna ciągnąć za dźwignię!</span>",
 						                 "<span class='warning'>Zaczynasz ciągnąć za dźwignię.</span>")
 					current_action = GUILLOTINE_ACTION_INUSE

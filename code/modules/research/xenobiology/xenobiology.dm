@@ -127,7 +127,7 @@
 			user.visible_message("<span class='warning'>[user] zaczyna się gwałtownie trząść!</span>","<span class='warning'>Twój [name] zaczyna gwałtownie pulsować...</span>")
 			if(do_after(user, 5 SECONDS, target = user))
 				var/mob/living/simple_animal/S = create_random_mob(user.drop_location(), HOSTILE_SPAWN)
-				if(user.a_intent != INTENT_HARM)
+				if(!user.combat_mode)
 					S.faction |= "neutral"
 				else
 					S.faction |= "slime"

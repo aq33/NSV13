@@ -82,7 +82,7 @@
 					L.reagents.remove_reagent(R.type, 50*delta_time)
 					holder.add_reagent(R.type, 50*delta_time)
 
-/obj/structure/destructible/clockwork/gear_base/prosperityprism/attack_hand(mob/user)
+/obj/structure/destructible/clockwork/gear_base/prosperityprism/attack_hand(mob/user, list/modifiers)
 	if(is_servant_of_ratvar(user))
 		if(!anchored)
 			to_chat(user, "<span class='warning'>[src] trzeba przymocować do podłogi!</span>")
