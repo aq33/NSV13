@@ -510,6 +510,7 @@
 #include "code\modules\spells\spell_types\godhand.dm"
 #include "code\modules\spells\spell_types\touch_attacks.dm"
 #include "code\modules\spells\spell_types\inflict_handler.dm"
+#include "code\modules\surgery\autopsy.dm"
 #include "code\modules\surgery\bodyparts\bodyparts.dm"
 #include "code\modules\surgery\ear_surgery.dm"
 #include "code\modules\surgery\gender_reassignment.dm"
@@ -544,6 +545,7 @@
 
 #ifdef UNIT_TESTS
 #include "code\modules\unit_tests\antag_huds.dm"
+#include "code\modules\unit_tests\aquila_autopsy.dm"
 #include "code\modules\unit_tests\aquila_bee_surgeries.dm"
 #include "code\modules\unit_tests\aquila_bee_windows.dm"
 #include "code\modules\unit_tests\aquila_bleeding.dm"
