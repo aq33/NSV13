@@ -135,7 +135,7 @@ GENE SCANNER
 
 
 // Used by the PDA medical scanner too
-/proc/healthscan(mob/user, mob/living/M, mode = 1, advanced = FALSE)
+/proc/healthscan(mob/user, mob/living/M, mode = 1, advanced = FALSE, tochat = TRUE) // AQ EDIT - tochat = FALSE returns the text (vitals monitor)
 	var/list/message = list()
 	if(isliving(user) && (user.incapacitated() || user.eye_blind))
 		return
@@ -418,10 +418,12 @@ GENE SCANNER
 			for(var/name in cyberimp_detect)
 				message += "<span class='notice'>[name]</span>"
 
+	if(!tochat) // AQ EDIT - vitals monitor
+		return EXAMINE_BLOCK(jointext(message, "\n"))
 	to_chat(user, EXAMINE_BLOCK(jointext(message, "\n")))
 	SEND_SIGNAL(M, COMSIG_NANITE_SCAN, user, FALSE)
 
-/proc/chemscan(mob/living/user, mob/living/M)
+/proc/chemscan(mob/living/user, mob/living/M, tochat = TRUE) // AQ EDIT - tochat = FALSE returns the text (vitals monitor)
 	var/list/message = list()
 	if(istype(M))
 		if(M.reagents)
@@ -437,6 +439,8 @@ GENE SCANNER
 					message += "<span class='alert'>[R.name]</span>"
 			else
 				message += "<span class='notice'>Pacjent nie jest uzależniony od żadnych odczynników.</span>"
+		if(!tochat) // AQ EDIT - vitals monitor
+			return EXAMINE_BLOCK(jointext(message, "\n"))
 		to_chat(user, EXAMINE_BLOCK(jointext(message, "\n")))
 
 /obj/item/healthanalyzer/advanced
