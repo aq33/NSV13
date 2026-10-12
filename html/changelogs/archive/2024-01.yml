@@ -1,236 +1,212 @@
-2024-01-03:
+'2024-01-03':
   Bokkiewokkie:
-    - imageadd: Changed Syndicate small craft color scheme to be more red
-    - code_imp: Renamed syndicate sabre and rapier sprite files
-2024-01-09:
+  - imageadd: Changed Syndicate small craft color scheme to be more red
+  - code_imp: Renamed syndicate sabre and rapier sprite files
+'2024-01-09':
   Dejaku51:
-    - rscadd: Dodano nullcrate do zemagowanej konsolki cargo
-2024-01-11:
+  - rscadd: Dodano nullcrate do zemagowanej konsolki cargo
+'2024-01-11':
   Dejaku51:
-    - tweak: BSOD przy śmierci IPC
-    - tweak: domyślnie 60 fps
-    - bugfix: przywrócono zmiany
-    - rscadd: changelogi dzialaja(informuje o tym w changelogu kek)
+  - tweak: BSOD przy śmierci IPC
+  - tweak: domyślnie 60 fps
+  - bugfix: przywrócono zmiany
+  - rscadd: changelogi dzialaja(informuje o tym w changelogu kek)
   MACIEKBAKI:
-    - rscadd: Dzwieki gdy ktos gada na radiu
+  - rscadd: Dzwieki gdy ktos gada na radiu
   d-sandmann:
-    - soundadd: Dodano dźwięk komunikatu pkp
-2024-01-12:
+  - soundadd: Dodano dźwięk komunikatu pkp
+'2024-01-12':
   d-sandmann:
-    - rscadd: Dodaje dźwięk wylogowania windows dla śmierci silikonów
-    - soundadd: Dodaje dźwięk windows logout
-    - rscadd: Dodaje skanery medyczne z TG
-    - rscadd: Dodaje apteczki z TG
-    - imageadd: Dodaje sprite skanerów
-    - imageadd: Dodaje sprite apteczek
+  - rscadd: Dodaje dźwięk wylogowania windows dla śmierci silikonów
+  - soundadd: Dodaje dźwięk windows logout
+  - rscadd: Dodaje skanery medyczne z TG
+  - rscadd: Dodaje apteczki z TG
+  - imageadd: Dodaje sprite skanerów
+  - imageadd: Dodaje sprite apteczek
   huusk:
-    - rscadd: Port nowych szyldów barowych 541
-2024-01-13:
+  - rscadd: Port nowych szyldów barowych 541
+'2024-01-13':
   Bokkiewokkie:
-    - rscadd: >-
-        Added the option to get another ticket objective if Rubicon is already
-        cleared
-    - tweak: Increased Rubicon objective player requirement to 10
-    - tweak: Mission briefing names will now be consistent in a round
-    - balance: Fleets will now be stronger after the main mission is done
-    - admin: Added button to hide/unhide a system on the starsystem manager
-    - admin: Automatically unhides systems selected for the "clear system" objective
+  - rscadd: Added the option to get another ticket objective if Rubicon is already
+      cleared
+  - tweak: Increased Rubicon objective player requirement to 10
+  - tweak: Mission briefing names will now be consistent in a round
+  - balance: Fleets will now be stronger after the main mission is done
+  - admin: Added button to hide/unhide a system on the starsystem manager
+  - admin: Automatically unhides systems selected for the "clear system" objective
   DeltaFire15:
-    - rscadd: >-
-        Overmap singularities now have more impactful effects, including but not
-        limited to increased gravity inside nearby vessels, dampener
-        interference, and improved directional pull.
-    - rscadd: >-
-        Full hardsuits now provide 1G gravity protection against damage, though
-        they do not improve movement.
-    - balance: >-
-        Silicons will suffer from consistently very high gravity, starting at
-        above 8G.
-    - tweak: >-
-        Some interactions with high gravity previously limited to grav-sensitive
-        individuals now are accessible to anyone, albeit at lower magnitude
-        (generally 3G higher tolerance)
-    - bugfix: Starsystem persistence should now be slightly less volatile.
-    - config: >-
-        The starsystem persistence config MUST be reset to the default starmap
-        for the fixes in this PR to apply correctly.
+  - rscadd: Overmap singularities now have more impactful effects, including but not
+      limited to increased gravity inside nearby vessels, dampener interference, and
+      improved directional pull.
+  - rscadd: Full hardsuits now provide 1G gravity protection against damage, though
+      they do not improve movement.
+  - balance: Silicons will suffer from consistently very high gravity, starting at
+      above 8G.
+  - tweak: Some interactions with high gravity previously limited to grav-sensitive
+      individuals now are accessible to anyone, albeit at lower magnitude (generally
+      3G higher tolerance)
+  - bugfix: Starsystem persistence should now be slightly less volatile.
+  - config: The starsystem persistence config MUST be reset to the default starmap
+      for the fixes in this PR to apply correctly.
   covertcorvid:
-    - bugfix: fixed the database query for the round endings
-2024-01-16:
+  - bugfix: fixed the database query for the round endings
+'2024-01-16':
   d-sandmann:
-    - rscadd: Wiele nowych programów! Wszystkie spisane są na githubie Aquila Station
-    - balance: >-
-        Rebalans wielu programów! Wszystkie spisane są na githubie Aquila
-        Station
-    - bugfix: >-
-        Naprawiono potencjalne błędy związane z programami zarażającymi innych
-        nanitami
-    - soundadd: dodano damskie wersje kaszli, kichnięć westchnięć i innych takich
-    - soundadd: dodano więcej męskich wersji dźwięków
-    - rscadd: >-
-        IPC i borgi po naprawieniu wydają z siebie dość charakterystyczny
-        dźwięk...
-    - rscadd: ludzie gdy konają wydają z siebie jęk
+  - rscadd: Wiele nowych programów! Wszystkie spisane są na githubie Aquila Station
+  - balance: Rebalans wielu programów! Wszystkie spisane są na githubie Aquila Station
+  - bugfix: Naprawiono potencjalne błędy związane z programami zarażającymi innych
+      nanitami
+  - soundadd: dodano damskie wersje kaszli, kichnięć westchnięć i innych takich
+  - soundadd: dodano więcej męskich wersji dźwięków
+  - rscadd: IPC i borgi po naprawieniu wydają z siebie dość charakterystyczny dźwięk...
+  - rscadd: ludzie gdy konają wydają z siebie jęk
   patpol4:
-    - tweak: dodaje oremagnet na atlas, snake, serendipity
-2024-01-17:
+  - tweak: dodaje oremagnet na atlas, snake, serendipity
+'2024-01-17':
   MACIEKBAKI:
-    - rscadd: Newscastery dostały ulepszenia.
-    - rscadd: Papież wyklęty w sztucznej inteligencji zamknięty
-    - imageadd: Przetłumaczono niektóre ikony przedmiotów / tabliczek na statku.
-    - spellcheck: Przetłumaczeno tabliczki na statku.
-    - rscadd: Nowy implant dla sec który aktywuje się, gdy umierają.
-    - rscadd: Kremówki w cargo - 5 za 2137$
-    - rscadd: Ramen to teraz Zupa Romana
-    - rscadd: Amarena w barze - w butelce albo etanol:woda:cherry jelly 1:2:2
-2024-01-18:
+  - rscadd: Newscastery dostały ulepszenia.
+  - rscadd: Papież wyklęty w sztucznej inteligencji zamknięty
+  - imageadd: Przetłumaczono niektóre ikony przedmiotów / tabliczek na statku.
+  - spellcheck: Przetłumaczeno tabliczki na statku.
+  - rscadd: Nowy implant dla sec który aktywuje się, gdy umierają.
+  - rscadd: Kremówki w cargo - 5 za 2137$
+  - rscadd: Ramen to teraz Zupa Romana
+  - rscadd: Amarena w barze - w butelce albo etanol:woda:cherry jelly 1:2:2
+'2024-01-18':
   MACIEKBAKI:
-    - rscadd: Można robić skróty klawiszowe do emotek teraz.
+  - rscadd: Można robić skróty klawiszowe do emotek teraz.
   srawek:
-    - soundadd: nowe dźwięki w kosmosie
-    - soundadd: Dźwięk nalewania płynu do szklanki
-    - rscadd: nowe piwo - mocny full
-    - soundadd: nowe dźwięki medbota
-2024-01-19:
+  - soundadd: nowe dźwięki w kosmosie
+  - soundadd: Dźwięk nalewania płynu do szklanki
+  - rscadd: nowe piwo - mocny full
+  - soundadd: nowe dźwięki medbota
+'2024-01-19':
   Dejaku51:
-    - rscadd: dodano możliwość przejmowania kontroli przez duchy nad niektórymi mobami
-    - rscadd: dodano więcej zagrożeń w klatce xenobio
-    - rscadd: dodano możliwość odkrycia eksperymentalnego klonera
-    - soundadd: >-
-        nowy dźwięk pistoletu, tłumika, lasera, rewolwera, karabinu, wyrzutni
-        rakiet oraz shotguna
+  - rscadd: dodano możliwość przejmowania kontroli przez duchy nad niektórymi mobami
+  - rscadd: dodano więcej zagrożeń w klatce xenobio
+  - rscadd: dodano możliwość odkrycia eksperymentalnego klonera
+  - soundadd: nowy dźwięk pistoletu, tłumika, lasera, rewolwera, karabinu, wyrzutni
+      rakiet oraz shotguna
   DeltaFire15:
-    - refactor: >-
-        The Torp and Missile factory automation machinery has been rewritten
-        almost entirely to make it less clunky and more fun.
-    - rscadd: >-
-        Automated Assemblers will now pick up components of the last manually
-        inserted type if they pass in front of them!
-    - bugfix: >-
-        The Thirring Drive Core sound loop you have never heard before works
-        now!
-    - bugfix: The client_by_z list shouldn't be getting flooded with nulls anymore.
+  - refactor: The Torp and Missile factory automation machinery has been rewritten
+      almost entirely to make it less clunky and more fun.
+  - rscadd: Automated Assemblers will now pick up components of the last manually
+      inserted type if they pass in front of them!
+  - bugfix: The Thirring Drive Core sound loop you have never heard before works now!
+  - bugfix: The client_by_z list shouldn't be getting flooded with nulls anymore.
   Doktor Kostek, Quartofel:
-    - rscadd: >-
-        Dodano warianty broni energetycznych specjalnie pod wynalezienie, mogą
-        mieć teraz latarki i nie mają spustu
-    - rscadd: Dodano dostrojone bronie energetyczne do wynalezienia
-    - balance: Zmieniono by laser był wiązką, a nie blasterem z gwiezdnych wojen
-    - imageadd: >-
-        Donk-Pockety zostały wycofane z sektora Aquila i zastąpione lokalnymi
-        Donk-Pierogami
-    - imageadd: Dodano sprite pierogów
-    - imageadd: Dodano sprite kartona od pierogów
+  - rscadd: Dodano warianty broni energetycznych specjalnie pod wynalezienie, mogą
+      mieć teraz latarki i nie mają spustu
+  - rscadd: Dodano dostrojone bronie energetyczne do wynalezienia
+  - balance: Zmieniono by laser był wiązką, a nie blasterem z gwiezdnych wojen
+  - imageadd: Donk-Pockety zostały wycofane z sektora Aquila i zastąpione lokalnymi
+      Donk-Pierogami
+  - imageadd: Dodano sprite pierogów
+  - imageadd: Dodano sprite kartona od pierogów
   MACIEKBAKI:
-    - soundadd: dźwięk pracy generatora TEG
-    - soundadd: dźwięk pracy autolathe, techfabów oraz exofaba
-    - soundadd: dźwięk SMES gdy wysyła energię
-    - soundadd: dźwięk komputerów
-    - soundadd: dźwięk pracy space heaterów, freezerów oraz heaterów
-    - soundadd: dźwięk zdeponowania rudy w ORM
-    - soundadd: dźwięk wystrzału PA
-    - soundadd: Dodaje dźwięki rozmów załogantów i nie tylko.
+  - soundadd: dźwięk pracy generatora TEG
+  - soundadd: dźwięk pracy autolathe, techfabów oraz exofaba
+  - soundadd: dźwięk SMES gdy wysyła energię
+  - soundadd: dźwięk komputerów
+  - soundadd: dźwięk pracy space heaterów, freezerów oraz heaterów
+  - soundadd: dźwięk zdeponowania rudy w ORM
+  - soundadd: dźwięk wystrzału PA
+  - soundadd: Dodaje dźwięki rozmów załogantów i nie tylko.
   d-sandmann:
-    - rscadd: dodaje 7 nowych mutacji
-    - balance: mutacja fire breath dostępna u wszystkich ras
-    - balance: >-
-        mutacja laser eyes dostępna w kodzie genetycznym, ale jej użycie rani
-        oczy
-    - refactor: refactor kodu pierdów
+  - rscadd: dodaje 7 nowych mutacji
+  - balance: mutacja fire breath dostępna u wszystkich ras
+  - balance: mutacja laser eyes dostępna w kodzie genetycznym, ale jej użycie rani
+      oczy
+  - refactor: refactor kodu pierdów
   patpol4:
-    - tweak: '[atlas] poprawki'
+  - tweak: '[atlas] poprawki'
   srawek:
-    - rscadd: >-
-        clown, gondola, alien, headcrab, skeleton i giant spider mogą teraz sie
-        zrespić z gold slime'a
-    - rscadd: przywrócono w pełni nasz jukebox
-    - tweak: dostosowano lekko głośność title music
-    - imageadd: dodano nowe sprite jukebox
-2024-01-21:
+  - rscadd: clown, gondola, alien, headcrab, skeleton i giant spider mogą teraz sie
+      zrespić z gold slime'a
+  - rscadd: przywrócono w pełni nasz jukebox
+  - tweak: dostosowano lekko głośność title music
+  - imageadd: dodano nowe sprite jukebox
+'2024-01-21':
   Dejaku51:
-    - rscadd: Dodano bluespace minery
+  - rscadd: Dodano bluespace minery
   MACIEKBAKI:
-    - rscadd: Kilka nowych lawsetów AI.
-    - rscadd: Dron leczy sie kredkami
-    - spellcheck: Tłumaczenia dronów
+  - rscadd: Kilka nowych lawsetów AI.
+  - rscadd: Dron leczy sie kredkami
+  - spellcheck: Tłumaczenia dronów
   patpol4:
-    - tweak: '[snake] zmiana pokoju silnika'
-2024-01-23:
+  - tweak: '[snake] zmiana pokoju silnika'
+'2024-01-23':
   MACIEKBAKI:
-    - spellcheck: Tłumaczenie quirków
-    - spellcheck: Tłumaczenie celów antagów
-    - spellcheck: Tłumaczenie akcji (typu "Toggle wings", "Toggle helm light", itp.)
-    - imageadd: Tłumaczenia części hudów
-    - spellcheck: >-
-        Tłumaczenia części plecaków, HUD-ów (retro midnight plasmafire,
-        częściowo operative), nazw prac, ekranu powitalnego przed rundą,
-        preferencji gry w zakładce Preferences, niektórych PDA, ikon dead i
-        critical, cap+priority announcements
+  - spellcheck: Tłumaczenie quirków
+  - spellcheck: Tłumaczenie celów antagów
+  - spellcheck: Tłumaczenie akcji (typu "Toggle wings", "Toggle helm light", itp.)
+  - imageadd: Tłumaczenia części hudów
+  - spellcheck: Tłumaczenia części plecaków, HUD-ów (retro midnight plasmafire, częściowo
+      operative), nazw prac, ekranu powitalnego przed rundą, preferencji gry w zakładce
+      Preferences, niektórych PDA, ikon dead i critical, cap+priority announcements
   d-sandmann:
-    - rscadd: Dodano wiele kostiumów
-    - rscadd: Dodano wiele kostiumów do gry
-    - tweak: Naukowcy teraz mają mądre okulary
-    - tweak: Zamieniono uniform oraz buty naukowców na nowe
-    - code_imp: Dodano pliki pomocnicze QoL dla modularyzacji od ubrań
-    - imageadd: Dodano mase kostiumów
-    - imageadd: Dodano error ikony, dlatego niektóre dmi są "odrobinę" większe
+  - rscadd: Dodano wiele kostiumów
+  - rscadd: Dodano wiele kostiumów do gry
+  - tweak: Naukowcy teraz mają mądre okulary
+  - tweak: Zamieniono uniform oraz buty naukowców na nowe
+  - code_imp: Dodano pliki pomocnicze QoL dla modularyzacji od ubrań
+  - imageadd: Dodano mase kostiumów
+  - imageadd: Dodano error ikony, dlatego niektóre dmi są "odrobinę" większe
   patpol4:
-    - rscadd: mapa na gulag
+  - rscadd: mapa na gulag
   srawek:
-    - imageadd: Nowe (stare) sprite narzędzi oraz nowy sprite ranged analyzer
-2024-01-24:
+  - imageadd: Nowe (stare) sprite narzędzi oraz nowy sprite ranged analyzer
+'2024-01-24':
   patpol4:
-    - tweak: poprawki na serendipytypy
-2024-01-25:
+  - tweak: poprawki na serendipytypy
+'2024-01-25':
   srawek:
-    - tweak: dźwięk oddychania w masce jest cichszy
-2024-01-26:
+  - tweak: dźwięk oddychania w masce jest cichszy
+'2024-01-26':
   MACIEKBAKI:
-    - rscadd: joker może teraz rozdawać aquilosy
-    - rscadd: mutation toxin w xenobio to z radium zmienia w więcej ras
+  - rscadd: joker może teraz rozdawać aquilosy
+  - rscadd: mutation toxin w xenobio to z radium zmienia w więcej ras
   d-sandmann:
-    - rscadd: Dodano rozbryzg krwi
-    - bugfix: Zmieniono by mob nie był wybredny co do wydawania dźwięków
-    - soundadd: Dodano masę nowych dźwięków
-    - imageadd: Dodano ikony krwi
+  - rscadd: Dodano rozbryzg krwi
+  - bugfix: Zmieniono by mob nie był wybredny co do wydawania dźwięków
+  - soundadd: Dodano masę nowych dźwięków
+  - imageadd: Dodano ikony krwi
   patpol4:
-    - tweak: '[atlas] dodaje bibliotekarza i poprawia rzeczy'
-2024-01-27:
+  - tweak: '[atlas] dodaje bibliotekarza i poprawia rzeczy'
+'2024-01-27':
   Dejaku51:
-    - bugfix: Spray gangów działa
+  - bugfix: Spray gangów działa
   MACIEKBAKI:
-    - spellcheck: pijani naukowcy bełkoczą po polsku
-    - spellcheck: imiona też są polskie
-    - spellcheck: Troche wiecej tłumaczeń. Say, tam popup jak jesteś traktorem, itp.
+  - spellcheck: pijani naukowcy bełkoczą po polsku
+  - spellcheck: imiona też są polskie
+  - spellcheck: Troche wiecej tłumaczeń. Say, tam popup jak jesteś traktorem, itp.
   d-sandmann:
-    - tweak: Tłumaczenia gry
-    - bugfix: Dodaje verb do OOC by restartować tgchuj dla klienta dreamseeker
-2024-01-28:
+  - tweak: Tłumaczenia gry
+  - bugfix: Dodaje verb do OOC by restartować tgchuj dla klienta dreamseeker
+'2024-01-28':
   Dejaku51:
-    - rscadd: >-
-        dodano brakujące ścieżki w aquila.dm więc teraz można kontrolować więcej
-        mobów jako duch
-    - code_imp: posortowano aquila.dm
-    - code_imp: przeniesiono aquila.dm do folderu aquila
+  - rscadd: dodano brakujące ścieżki w aquila.dm więc teraz można kontrolować więcej
+      mobów jako duch
+  - code_imp: posortowano aquila.dm
+  - code_imp: przeniesiono aquila.dm do folderu aquila
   patpol4:
-    - tweak: '[atlas] zmienia medbay dodaje viro itd'
+  - tweak: '[atlas] zmienia medbay dodaje viro itd'
   srawek:
-    - imageadd: dodano spritework Polskiej Policji
-    - rscadd: nowy event monkey uprising dający losowej małpie jungle fever
-    - rscadd: jungle fever powoduje agresję u małp
-    - rscadd: >-
-        małpy zarażone przez jungle fever będą mogły być teraz kontrolowane
-        przez duchy
-    - bugfix: agresywne małpy znowu są agresywne
-2024-01-30:
+  - imageadd: dodano spritework Polskiej Policji
+  - rscadd: nowy event monkey uprising dający losowej małpie jungle fever
+  - rscadd: jungle fever powoduje agresję u małp
+  - rscadd: małpy zarażone przez jungle fever będą mogły być teraz kontrolowane przez
+      duchy
+  - bugfix: agresywne małpy znowu są agresywne
+'2024-01-30':
   Dejaku51:
-    - rscadd: Możliwość ukarania przez kapitana inżynierii za sabotaż.
+  - rscadd: Możliwość ukarania przez kapitana inżynierii za sabotaż.
   patpol4:
-    - rscadd: Dodaje nowy statek, atlantis
-    - tweak: '[atlas] nowy dok escape i poprawki'
+  - rscadd: Dodaje nowy statek, atlantis
+  - tweak: '[atlas] nowy dok escape i poprawki'
   srawek:
-    - tweak: tłumaczenie celów załogi
-    - tweak: Zaaktualizowano do najnowszego NSV13
-2024-01-31:
+  - tweak: tłumaczenie celów załogi
+  - tweak: Zaaktualizowano do najnowszego NSV13
+'2024-01-31':
   srawek:
-    - tweak: mapa gułagu powinna się ładować ze statkami, które ją wspierają
+  - tweak: mapa gułagu powinna się ładować ze statkami, które ją wspierają

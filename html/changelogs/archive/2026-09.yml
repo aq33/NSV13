@@ -1,7 +1,7 @@
-2026-09-11:
+'2026-09-11':
   Chichmuch:
-    - rscadd: heads can now use the point-to verb on overmap
+  - rscadd: heads can now use the point-to verb on overmap
   Neonvolt:
-    - tweak: Tycoon's main magcats are now launch_only
-    - bugfix: Tycoon's Bronze magcats can now be controlled from ATC tower
-    - bugfix: Moved one badly placed disposal bin in Tycoon's dorms
+  - tweak: Tycoon's main magcats are now launch_only
+  - bugfix: Tycoon's Bronze magcats can now be controlled from ATC tower
+  - bugfix: Moved one badly placed disposal bin in Tycoon's dorms

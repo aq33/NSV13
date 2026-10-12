@@ -1,5 +1,3 @@
-2026-04-04:
+'2026-04-04':
   Bokkiewokkie:
-    - bugfix: >-
-        Fixed sabre shuttles not showing their cargo to CentCom's customs
-        office.
+  - bugfix: Fixed sabre shuttles not showing their cargo to CentCom's customs office.
