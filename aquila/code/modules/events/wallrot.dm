@@ -42,7 +42,7 @@
 		W.aquila_rot()
 		if(--rot_left <= 0)
 			break
-	announce_to_ghosts(center)
+	announce_to_ghosts(LAZYACCESS(center.aquila_rot_effects, 1)) // ghosts can only follow movables, not the wall turf itself
 	log_game("Wallrot started at [AREACOORD(center)].")
 
 /datum/round_event/aquila_wallrot/announce(fake)
