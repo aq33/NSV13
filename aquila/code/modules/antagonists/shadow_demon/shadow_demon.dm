@@ -143,7 +143,7 @@
 	target.extinguish_light()
 	target.forceMove(C)
 	var/datum/antagonist/shadow_demon/antag = mind?.has_antag_datum(/datum/antagonist/shadow_demon)
-	if(antag)
+	if(antag && target.mind) // do celu liczą się tylko gracze, nie puste ciała
 		antag.cocooned_victims |= REF(target)
 
 /mob/living/simple_animal/shadow_demon/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum)
