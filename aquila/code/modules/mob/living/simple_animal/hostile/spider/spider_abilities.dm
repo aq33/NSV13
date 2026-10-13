@@ -14,6 +14,8 @@
 	var/targeting_pointer = null
 	/// Czy właśnie celujemy
 	var/targeting = FALSE
+	/// Przycisk idzie na sam początek paska akcji (przed sieć), żeby się nie pomylił
+	var/button_first = FALSE
 
 /datum/action/cooldown/spider/Remove(mob/M)
 	if(targeting)
@@ -266,6 +268,7 @@
 	desc = "Owiń coś lub kogoś w kokon. Żywe istoty przy okazji wysysasz: każda daje 2 ładunki na jaja. Włącz zdolność i kliknij sąsiedni cel."
 	button_icon_state = "wrap_0"
 	click_to_activate = TRUE
+	button_first = TRUE
 	targeting_pointer = 'icons/effects/wrap_target.dmi'
 	/// Ile trwa owijanie
 	var/wrap_time = 5 SECONDS

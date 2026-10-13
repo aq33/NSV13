@@ -83,11 +83,18 @@
 	. = ..()
 	base_move_to_delay = max(1.5, speed + 1.5)
 	move_to_delay = base_move_to_delay
+	// Kolejność przycisków: najpierw te oznaczone button_first (np. owijanie), potem sieć, potem reszta
+	var/list/later_actions = list()
+	for(var/action_type in innate_actions)
+		var/datum/action/cooldown/spider/new_action = new action_type(src)
+		if(istype(new_action) && new_action.button_first)
+			new_action.Grant(src)
+		else
+			later_actions += new_action
 	web_action = new web_type(src)
 	web_action.webbing_time *= web_speed
 	web_action.Grant(src)
-	for(var/action_type in innate_actions)
-		var/datum/action/new_action = new action_type(src)
+	for(var/datum/action/new_action as anything in later_actions)
 		new_action.Grant(src)
 	if(off_web_slowdown)
 		RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(update_web_walking))

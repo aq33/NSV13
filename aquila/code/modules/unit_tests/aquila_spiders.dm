@@ -21,6 +21,7 @@
 	TEST_ASSERT(istype(mother.web_action, /datum/action/cooldown/spider/lay_web/sealer), "Matka nie ma sieci uszczelniającej")
 	TEST_ASSERT(locate(/datum/action/cooldown/spider/lay_eggs/enriched) in mother.actions, "Matka nie umie składać wzbogaconych jaj")
 	TEST_ASSERT(locate(/datum/action/cooldown/spider/wrap) in mother.actions, "Matka nie umie owijać")
+	TEST_ASSERT(istype(mother.actions[1], /datum/action/cooldown/spider/wrap), "Owijanie nie jest pierwszym przyciskiem matki")
 	var/mob/living/simple_animal/hostile/spider/giant/tarantula/tarantula = allocate(/mob/living/simple_animal/hostile/spider/giant/tarantula)
 	TEST_ASSERT(tarantula.charge, "Tarantula nie ma szarży")
 	var/mob/living/simple_animal/hostile/spider/giant/tank/tank = allocate(/mob/living/simple_animal/hostile/spider/giant/tank)
