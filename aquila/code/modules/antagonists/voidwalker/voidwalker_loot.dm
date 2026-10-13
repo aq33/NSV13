@@ -98,6 +98,7 @@
 	structure.alpha = initial(structure.alpha)
 	structure.mouse_opacity = initial(structure.mouse_opacity)
 	voidwalker_undeform_glass(structure)
+	structure.air_update_turf(TRUE)
 
 /// Odłamki szkła, które sypią się z wędrowca
 /obj/effect/spawner/lootdrop/voidwalker_shards

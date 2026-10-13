@@ -171,13 +171,15 @@
 	if(isturf(OldLoc))
 		deform_glass(OldLoc)
 
-/// Zostawione za sobą okna przez chwilę przepuszczają też innych
+/// Zostawione za sobą okna przez chwilę przepuszczają też innych, ale nie powietrze
 /mob/living/simple_animal/hostile/voidwalker/proc/deform_glass(turf/old_turf)
 	for(var/obj/structure/structure in old_turf)
 		if(!structure.density || !(istype(structure, /obj/structure/window) || istype(structure, /obj/structure/grille)))
 			continue
+		if(istype(structure, /obj/structure/window))
+			var/obj/structure/window/window = structure
+			window.void_deformed = TRUE
 		structure.density = FALSE
-		structure.air_update_turf(TRUE)
 		apply_wibbly_filters(structure)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(voidwalker_undeform_glass), structure), VOIDWALKER_DEFORM_GLASS_TIME, TIMER_UNIQUE | TIMER_OVERRIDE)
 
@@ -188,9 +190,19 @@
 		var/obj/structure/grille/grille = structure
 		structure.density = !grille.broken
 	else
+		var/obj/structure/window/window = structure
+		window.void_deformed = FALSE
 		structure.density = initial(structure.density)
-	structure.air_update_turf(TRUE)
 	remove_wibbly_filters(structure)
+
+/obj/structure/window
+	/// Wędrowiec pustki przeszedł przez okno: przepuszcza ludzi, ale wciąż trzyma powietrze
+	var/void_deformed = FALSE
+
+/obj/structure/window/CanAtmosPass(turf/T)
+	if(void_deformed && anchored)
+		return !(FULLTILE_WINDOW_DIR == dir || dir == get_dir(loc, T))
+	return ..()
 
 /// Krata pod prądem nie przepuszcza
 /mob/living/simple_animal/hostile/voidwalker/proc/check_shocked_grille(datum/source, atom/newloc)
@@ -370,7 +382,8 @@
 
 /mob/living/simple_animal/hostile/voidwalker/ClickOn(atom/A, params)
 	var/obj/item/held = get_active_held_item()
-	if(held && !throw_mode && !istype(A, /atom/movable/screen))
+	// Celowanie zdolnością (zryw, niepokój) musi przejść mimo przedmiotu w ręce
+	if(held && !throw_mode && !istype(A, /atom/movable/screen) && !ranged_ability && !click_intercept && !client?.click_intercept)
 		var/list/modifiers = params2list(params)
 		if(!LAZYACCESS(modifiers, SHIFT_CLICK) && !LAZYACCESS(modifiers, ALT_CLICK) && !LAZYACCESS(modifiers, CTRL_CLICK) && !LAZYACCESS(modifiers, MIDDLE_CLICK))
 			if(world.time > next_click)

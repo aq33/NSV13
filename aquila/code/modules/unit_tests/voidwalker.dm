@@ -85,6 +85,12 @@
 	// Okno pustki i tymczasowe rozbijanie szkła
 	var/obj/structure/window/fulltile/voidwalker/window = allocate(/obj/structure/window/fulltile/voidwalker, right)
 	TEST_ASSERT(window.spooky_particles?.particles, "Void window has no particles")
+	// Okno za wędrowcem przepuszcza ludzi, ale nie powietrze
+	walker.deform_glass(right)
+	TEST_ASSERT(!window.density && window.void_deformed, "Window was not deformed")
+	TEST_ASSERT(!window.CanAtmosPass(left), "Deformed window lets air through")
+	voidwalker_undeform_glass(window)
+	TEST_ASSERT(window.density && !window.void_deformed, "Window did not harden back")
 	voidwalker_temporary_shatter(right, 1)
 	TEST_ASSERT(!window.density, "Window was not shattered")
 	voidwalker_unshatter(window)
