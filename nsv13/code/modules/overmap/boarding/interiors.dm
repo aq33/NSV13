@@ -200,6 +200,8 @@ The meat of this file. This will instance the dropship's interior in reserved sp
 	else if(!(target_area.area_flags & UNIQUE_AREA))
 		target_area.name = src.name
 	linked_areas += target_area
+	for(var/obj/machinery/porta_turret/T in target_area) //Turrets initialized before the area was linked to us
+		turrets_in_ship |= T
 	interior_status = INTERIOR_READY
 	return TRUE
 
