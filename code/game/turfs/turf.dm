@@ -35,6 +35,11 @@ GLOBAL_LIST_EMPTY(created_baseturf_lists)
 	/// For the station blueprints, images of objects eg: pipes
 	var/list/image/blueprint_data
 
+	/// If this turf contained an RCD'able object (or IS one, for walls)
+	/// but is now destroyed, this will preserve the value.
+	/// See __DEFINES/construction.dm for RCD_MEMORY_*.
+	var/rcd_memory
+
 	var/explosion_level = 0	//for preventing explosion dodging
 	var/explosion_id = 0
 	var/list/explosion_throw_details
@@ -339,12 +344,11 @@ GLOBAL_LIST_EMPTY(created_baseturf_lists)
 	var/atom/firstbump
 	var/canPassSelf = CanPass(mover, src)
 	if(canPassSelf || (mover.movement_type & PHASING))
-		for(var/i in contents)
+		for(var/atom/movable/thing as anything in contents)
 			if(QDELETED(mover))
 				return FALSE		//We were deleted, do not attempt to proceed with movement.
-			if(i == mover || i == mover.loc) // Multi tile objects and moving out of other objects
+			if(thing == mover || thing == mover.loc) // Multi tile objects and moving out of other objects
 				continue
-			var/atom/movable/thing = i
 			if(!thing.Cross(mover))
 				if(QDELETED(mover))		//Mover deleted from Cross/CanPass, do not proceed.
 					return FALSE

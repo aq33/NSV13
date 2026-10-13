@@ -68,3 +68,10 @@
 	H.fully_replace_character_name(H.real_name, pick(GLOB.clown_names)) //rename the mob AFTER they're equipped so their ID gets updated properly.
 	H.dna.add_mutation(CLOWNMUT)
 	ADD_TRAIT(H, TRAIT_NAIVE, JOB_TRAIT)
+
+/datum/outfit/job/clown/mod
+	name = "Clown (MODsuit)"
+
+	suit_store = /obj/item/tank/internals/oxygen
+	back = /obj/item/mod/control/pre_equipped/cosmohonk
+	internals_slot = ITEM_SLOT_SUITSTORE

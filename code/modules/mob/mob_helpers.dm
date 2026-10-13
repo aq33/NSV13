@@ -614,6 +614,8 @@
 		return TRUE
 	else if(has_unlimited_silicon_privilege)
 		return TRUE
+	else if(HAS_TRAIT(src, TRAIT_REAGENT_SCANNER))
+		return TRUE
 	else if(HAS_TRAIT(src, TRAIT_BARMASTER)) // If they're a bar master, they know what reagents are at a glance
 		return TRUE
 

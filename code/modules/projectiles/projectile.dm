@@ -875,7 +875,8 @@
 		qdel(src)
 
 /proc/calculate_projectile_angle_and_pixel_offsets(mob/user, params)
-	var/list/mouse_control = params2list(params)
+	// AQUILA EDIT: combat mode passes already parsed modifiers; params2list() on a list gave nothing, so every shot went north
+	var/list/mouse_control = islist(params) ? params : params2list(params)
 	var/p_x = 0
 	var/p_y = 0
 	var/angle = 0

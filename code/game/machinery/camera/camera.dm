@@ -52,6 +52,8 @@
 
 	/// A copy of the last paper object that was shown to this camera.
 	var/obj/item/paper/last_shown_paper
+	///Proximity monitor associated with this atom, for motion sensitive cameras.
+	var/datum/proximity_monitor/proximity_monitor
 
 /obj/machinery/camera/preset/toxins //Bomb test site in space
 	name = "Hardened Bomb-Test Camera"

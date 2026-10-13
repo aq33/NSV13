@@ -37,6 +37,11 @@
 /// from base of mob/living/Life() (times_fired)
 #define COMSIG_LIVING_LIFE "living_life"
 
+///From base of mob/living/MobBump() (mob/living)
+#define COMSIG_LIVING_MOB_BUMP "living_mob_bump"
+///From base of mob/living/ZImpactDamage() (mob/living, levels, turf/t)
+#define COMSIG_LIVING_Z_IMPACT "living_z_impact"
+	#define NO_Z_IMPACT_DAMAGE (1<<0)
 // AQ EDIT - port Bee #11899
 ///from /mob/living/UnarmedAttack(): (atom/target, proximity_flag, list/modifiers)
 #define COMSIG_LIVING_UNARMED_ATTACK "living_unarmed_attack"
