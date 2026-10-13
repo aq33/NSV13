@@ -192,7 +192,7 @@
 	var/list/data = list()
 	var/list/antag_bans = list()
 	var/list/hours_left = list()
-	var/exempt = !preferences.parent || preferences.parent.holder
+	var/exempt = !preferences.parent || preferences.parent.holder || !CONFIG_GET(flag/antag_living_playtime_requirements)
 	for(var/pref_type in GLOB.role_preference_entries)
 		var/datum/role_preference/pref = GLOB.role_preference_entries[pref_type]
 		var/datum/antagonist/antag_datum = pref.antag_datum
