@@ -34,7 +34,7 @@
 	if(CONFIG_GET(flag/protect_heads_from_antagonist))
 		restricted_jobs += GLOB.command_positions
 
-	var/num_bloodlings = bloodling_amount
+	var/num_bloodlings = weighted_cap(bloodling_amount) // AQUILA EDIT - weighted rotation antagonist limit
 
 	master = spawn_bloodling()
 	if(!master)

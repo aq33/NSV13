@@ -410,10 +410,11 @@ SUBSYSTEM_DEF(vote)
 	set category = "OOC"
 	set name = "Vote"
 
+	// AQUILA EDIT - src, not usr: initiate_vote() calls this for every client to pop the window up, and then usr is not that player
 	if(!SSvote.initialized)
-		to_chat(usr, "<span class='notice'><i>Voting is not set up yet!</i></span>")
+		to_chat(src, "<span class='notice'><i>Voting is not set up yet!</i></span>")
 		return
-	SSvote.ui_interact(usr)
+	SSvote.ui_interact(src)
 
 /// Action given to mobs that allows players to vote on the current vote
 /datum/action/vote
