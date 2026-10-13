@@ -270,3 +270,7 @@
   - rscadd: 'Nowy event: strajk i niepodległość losowego działu'
   - rscadd: 'Nowy event: inwazja kryształów (Crystal Invasion) i stabilizator supermaterii
       w Badaniach anomalii'
+  - rscadd: 'Demon cieni z Paradise: łowca w ciemności z cienistym pełzem, cień-hakiem,
+      kokonami pochłaniającymi światło i demonicznym szeptem'
+  - rscdel: Koszmar nie pojawia się już jako event ani midround, zastąpił go demon
+      cieni
