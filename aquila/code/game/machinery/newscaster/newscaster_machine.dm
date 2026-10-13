@@ -7,7 +7,7 @@
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "newscaster_off"
 	/// AQUILA: our atoms have no base_icon_state
-	var/base_icon_state = "newscaster"
+	base_icon_state = "newscaster"
 	verb_say = "beeps"
 	verb_ask = "beeps"
 	verb_exclaim = "beeps"

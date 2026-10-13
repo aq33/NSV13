@@ -150,6 +150,23 @@ Turf and target are separate in case you want to teleport some distance from a t
 // result is bounded to map size
 // note range is non-pythagorean
 // used for disposal system
+/**
+ * Get the turf that `range` tiles away from `starting_atom` in the direction of `target`, using the exact angle
+ * instead of the 8 cardinal directions. An `offset` in degrees rotates the line.
+ */
+/proc/get_ranged_target_turf_direct(atom/starting_atom, atom/target, range, offset)
+	var/angle = ATAN2(target.x - starting_atom.x, target.y - starting_atom.y)
+	if(offset)
+		angle += offset
+	var/turf/starting_turf = get_turf(starting_atom)
+	for(var/i in 1 to range)
+		var/turf/check = locate(starting_atom.x + cos(angle) * i, starting_atom.y + sin(angle) * i, starting_atom.z)
+		if(!check)
+			break
+		starting_turf = check
+
+	return starting_turf
+
 /proc/get_ranged_target_turf(atom/target_atom, direction, range)
 
 	var/x = target_atom.x

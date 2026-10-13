@@ -86,7 +86,7 @@
 
 /obj/machinery/camera/motion/thunderdome/Initialize(mapload)
 	. = ..()
-	proximity_monitor.SetRange(7)
+	proximity_monitor.set_range(7)
 
 /obj/machinery/camera/motion/thunderdome/HasProximity(atom/movable/AM as mob|obj)
 	if (!isliving(AM) || get_area(AM) != get_area(src))

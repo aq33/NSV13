@@ -12,6 +12,20 @@
 	initialize_footstep()
 	if (playable)
 		set_playable()	//announce to ghosts
+	RegisterSignal(src, list(
+		SIGNAL_ADDTRAIT(TRAIT_IMMOBILIZED),
+		SIGNAL_REMOVETRAIT(TRAIT_IMMOBILIZED),
+		SIGNAL_ADDTRAIT(TRAIT_HANDS_BLOCKED),
+		SIGNAL_REMOVETRAIT(TRAIT_HANDS_BLOCKED),
+		SIGNAL_ADDTRAIT(TRAIT_FORCED_STANDING),
+		SIGNAL_REMOVETRAIT(TRAIT_FORCED_STANDING),
+	), PROC_REF(on_mobility_trait_changed))
+
+/// Mobility traits (MODsuits and the like) changed, recalculate what we can do
+/mob/living/proc/on_mobility_trait_changed(datum/source)
+	SIGNAL_HANDLER
+
+	update_mobility()
 
 /mob/living/proc/initialize_footstep()
 	AddComponent(/datum/component/footstep)
@@ -59,6 +73,8 @@
 	return ..()
 
 /mob/living/proc/ZImpactDamage(turf/T, levels)
+	if(SEND_SIGNAL(src, COMSIG_LIVING_Z_IMPACT, levels, T) & NO_Z_IMPACT_DAMAGE)
+		return
 	visible_message("<span class='danger'>[src] spada [levels] [levels > 1 ? "poziomy" : "poziom"] na [T] z obrzydliwym odgłosem!</span>")
 	adjustBruteLoss((levels * 5) ** 1.5)
 	Knockdown(levels * 50)
@@ -106,6 +122,7 @@
 
 //Called when we bump onto a mob
 /mob/living/proc/MobBump(mob/M)
+	SEND_SIGNAL(src, COMSIG_LIVING_MOB_BUMP, M)
 	//Even if we don't push/swap places, we "touched" them, so spread fire
 	spreadFire(M)
 
@@ -896,6 +913,8 @@
 /mob/living/float(on)
 	if(throwing)
 		return
+	if(HAS_TRAIT(src, TRAIT_NO_FLOATING_ANIM))
+		on = FALSE
 	var/fixed = 0
 	if(anchored || (buckled && buckled.anchored))
 		fixed = 1
@@ -1204,13 +1223,15 @@
 	var/knockdown = IsKnockdown()
 	var/ignore_legs = get_leg_ignore()
 	var/in_stasis = IsInStasis()
-	var/canmove = !IsImmobilized() && !stun && conscious && !paralyzed && !buckled && (!stat_softcrit || !pulledby) && !chokehold && !IsFrozen() && !in_stasis && (has_arms || ignore_legs || has_legs)
+	var/canmove = !IsImmobilized() && !HAS_TRAIT(src, TRAIT_IMMOBILIZED) && !stun && conscious && !paralyzed && !buckled && (!stat_softcrit || !pulledby) && !chokehold && !IsFrozen() && !in_stasis && (has_arms || ignore_legs || has_legs)
 	if(canmove)
 		mobility_flags |= MOBILITY_MOVE
 	else
 		mobility_flags &= ~MOBILITY_MOVE
 	var/canstand_involuntary = conscious && !stat_softcrit && !knockdown && !chokehold && !paralyzed && (ignore_legs || has_legs) && !(buckled && buckled.buckle_lying)
 	var/canstand = canstand_involuntary && !resting
+	if(HAS_TRAIT(src, TRAIT_FORCED_STANDING) && conscious) //held up by something, like a MODsuit
+		canstand = TRUE
 
 	var/should_be_lying = !canstand
 	if(buckled)
@@ -1248,11 +1269,12 @@
 	if(stat == UNCONSCIOUS)
 		drop_all_held_items()
 	var/canitem = !paralyzed && !stun && conscious && !chokehold && !restrained && has_arms
-	if(canitem)
+	// Blocked hands (MODsuit sphere form, kinesis) can't use items, but keep holding them
+	if(canitem && !HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
 		mobility_flags |= (MOBILITY_USE | MOBILITY_PICKUP | MOBILITY_STORAGE)
 	else
 		mobility_flags &= ~(MOBILITY_USE | MOBILITY_PICKUP | MOBILITY_STORAGE)
-	if(!(mobility_flags & MOBILITY_USE))
+	if(!canitem)
 		drop_all_held_items()
 	if(!(mobility_flags & MOBILITY_PULL))
 		if(pulling)

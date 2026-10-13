@@ -39,6 +39,8 @@
 	return ..() || mob_negates_gravity()
 
 /mob/living/carbon/human/mob_negates_gravity()
+	if(HAS_TRAIT(src, TRAIT_NEGATES_GRAVITY) && !isspaceturf(get_turf(src))) //like magboots, we don't mimick gravity on space turfs
+		return TRUE
 	return ((shoes && shoes.negates_gravity()) || (dna?.species?.negates_gravity(src)))
 
 /mob/living/carbon/human/Move(NewLoc, direct)

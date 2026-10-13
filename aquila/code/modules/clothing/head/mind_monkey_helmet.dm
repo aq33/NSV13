@@ -5,7 +5,7 @@
 	icon = 'aquila/icons/obj/clothing/hats.dmi'
 	icon_state = "monkeymind"
 	worn_icon = 'aquila/icons/mob/head.dmi'
-	var/base_icon_state = "monkeymind"
+	base_icon_state = "monkeymind"
 	strip_delay = 100
 	clothing_flags = EFFECT_HAT | SNUG_FIT
 	COOLDOWN_DECLARE(message_cooldown) //It'll get annoying quick when someone tries to remove their own helmet 20 times a second

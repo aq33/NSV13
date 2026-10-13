@@ -72,3 +72,14 @@
 /// Fires when the user has changed their selected body target.
 #define COMSIG_MOB_SELECTED_ZONE_SET "mob_set_selected_zone"
 ///NSV13 - Surgery QoL - Stop
+
+///from base of mob/AltClickOn(): (atom/A)
+#define COMSIG_MOB_ALTCLICKON "mob_altclickon"
+#define COMSIG_MOB_MIDDLECLICKON "mob_middleclickon"			//from base of mob/MiddleClickOn(): (atom/A)
+/// A mob has just unequipped an item.
+#define COMSIG_MOB_UNEQUIPPED_ITEM "mob_unequipped_item"
+///from /datum/component/speechmod/handle_speech(): ()
+#define COMSIG_TRY_MODIFY_SPEECH "try_modify_speech"
+///from /datum/viewData/proc/apply(): (view)
+#define COMSIG_VIEWDATA_UPDATE "viewdata_update"
+	#define PREVENT_MODIFY_SPEECH 1
