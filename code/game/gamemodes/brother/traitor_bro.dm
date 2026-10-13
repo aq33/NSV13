@@ -39,11 +39,15 @@
 	for(var/j = 1 to num_teams)
 		if(possible_brothers.len < min_team_size || antag_candidates.len <= required_enemies)
 			break
+		// AQUILA EDIT START - no team that would go over the weighted rotation limit
+		if(!isnull(weighted_antag_cap) && weighted_antag_cap - brothers_picked < min_team_size)
+			break
+		// AQUILA EDIT END
 		var/datum/team/brother_team/team = new
 		var/team_size = prob(10) ? min(3, possible_brothers.len) : 2
 		// AQUILA EDIT START
 		if(!isnull(weighted_antag_cap))
-			team_size = min(team_size, max(min_team_size, weighted_antag_cap - brothers_picked))
+			team_size = min(team_size, weighted_antag_cap - brothers_picked)
 		brothers_picked += team_size
 		// AQUILA EDIT END
 		for(var/k = 1 to team_size)

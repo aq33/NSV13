@@ -117,8 +117,8 @@ GLOBAL_DATUM_INIT(weighted_rotation, /datum/weighted_rotation, new)
 		if(WEIGHTED_POOL_HIGH)
 			return "Poważne"
 
-/// Picks the game mode of a weighted round, or returns null when no listed mode can start
-/datum/weighted_rotation/proc/pick_mode()
+/// Every mode the weighted rotation could start now, as pool -> list(mode instance -> weight). The caller owns the instances
+/datum/weighted_rotation/proc/eligible_modes()
 	var/list/pool_config = CONFIG_GET(keyed_list/weighted_pool)
 	var/list/max_antags = CONFIG_GET(keyed_list/weighted_max_antags)
 	var/list/min_pop = CONFIG_GET(keyed_list/min_pop)
@@ -138,8 +138,8 @@ GLOBAL_DATUM_INIT(weighted_rotation, /datum/weighted_rotation, new)
 		if(max_pop[mode.config_tag])
 			mode.maximum_players = max_pop[mode.config_tag]
 		if(max_antags[mode.config_tag])
-			// Blood brothers only come in pairs
-			var/smallest = istype(mode, /datum/game_mode/traitor/bros) ? 2 : 1
+			// Blood brothers come in pairs, and the mixed traitor modes always keep a place for a traitor
+			var/smallest = (istype(mode, /datum/game_mode/traitor/bros) || istype(mode, /datum/game_mode/traitor/changeling) || istype(mode, /datum/game_mode/traitor/vampire)) ? 2 : 1
 			mode.weighted_antag_cap = rand(smallest, max(smallest, max_antags[mode.config_tag]))
 			// "Up to N" also means the mode has to start with just the smallest amount
 			mode.required_enemies = min(mode.required_enemies, smallest)
@@ -157,7 +157,11 @@ GLOBAL_DATUM_INIT(weighted_rotation, /datum/weighted_rotation, new)
 			weight *= (100 - adjustment) / 100
 		LAZYINITLIST(pools[pool])
 		pools[pool][mode] = weight
+	return pools
 
+/// Picks the game mode of a weighted round, or returns null when no listed mode can start
+/datum/weighted_rotation/proc/pick_mode()
+	var/list/pools = eligible_modes()
 	if(!length(pools))
 		return null
 
@@ -169,13 +173,14 @@ GLOBAL_DATUM_INIT(weighted_rotation, /datum/weighted_rotation, new)
 	round_pool = pickweight(pool_draw)
 	var/datum/game_mode/picked = pickweight(pools[round_pool])
 
+	// Like secret, the roundstart "Możliwości" message lists every mode that could have started
+	SSticker.runnable_modes = list()
 	var/list/pool_lines = list()
 	for(var/pool in pools)
 		var/list/mode_names = list()
 		for(var/datum/game_mode/mode as anything in pools[pool])
 			mode_names += mode.config_tag
-			if(mode != picked)
-				qdel(mode)
+			SSticker.runnable_modes += mode
 		pool_lines += "[pool_name(pool)] [odds[pool]]% ([mode_names.Join(", ")])"
 
 	var/cap_text = isnull(picked.weighted_antag_cap) ? "bez limitu" : "max [picked.weighted_antag_cap]"
@@ -200,26 +205,16 @@ GLOBAL_DATUM_INIT(weighted_rotation, /datum/weighted_rotation, new)
 /datum/weighted_rotation/proc/warn_about_wizard()
 	priority_announce("Czujniki dalekiego zasięgu wykryły zaburzenia bluespace typowe dla teleportów Federacji Czarodziejów. Na pokładzie [station_name()] może pojawić się czarodziej. Zachowajcie ostrożność.", "Anomalia magiczna", ANNOUNCER_SPANOMALIES)
 
-/// Lobby chances of every pool for the players that are ready now (who has the antagonist enabled is only known at roundstart)
+/// Lobby chances of every pool for the players that are ready now, counted the same way as the real draw
 /datum/weighted_rotation/proc/lobby_odds()
 	var/players = SSticker.totalPlayersReady
 	if(cached_lobby_odds && cached_lobby_players == players && world.time < cached_lobby_time + 10 SECONDS)
 		return cached_lobby_odds
-	var/list/pool_config = CONFIG_GET(keyed_list/weighted_pool)
-	var/list/min_pop = CONFIG_GET(keyed_list/min_pop)
-	var/list/max_pop = CONFIG_GET(keyed_list/max_pop)
-	var/list/available_pools = list()
-	for(var/datum/game_mode/mode_type as anything in config.gamemode_cache)
-		var/tag = initial(mode_type.config_tag)
-		var/pool = lowertext(pool_config[tag])
-		if(!pool)
-			continue
-		var/needed = min_pop[tag] || initial(mode_type.required_players)
-		var/most = max_pop[tag] || initial(mode_type.maximum_players)
-		if(players < needed || (most >= 0 && players > most))
-			continue
-		available_pools |= pool
-	cached_lobby_odds = pool_odds(available_pools)
+	var/list/pools = eligible_modes()
+	cached_lobby_odds = pool_odds(pools)
+	for(var/pool in pools)
+		for(var/datum/game_mode/mode as anything in pools[pool])
+			qdel(mode)
 	cached_lobby_players = players
 	cached_lobby_time = world.time
 	return cached_lobby_odds

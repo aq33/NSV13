@@ -45,7 +45,8 @@
 		num_vamp = max(1, min( round(num_players()/(CONFIG_GET(number/traitor_scaling_coeff)*4))+2, round(num_players()/(CONFIG_GET(number/traitor_scaling_coeff)*2)) ))
 	else
 		num_vamp = max(1, min(num_players(), vampire_amt/2))
-	num_vamp = weighted_cap(num_vamp) // weighted rotation antagonist limit
+	if(!isnull(weighted_antag_cap)) // weighted rotation antagonist limit, one place stays for a traitor
+		num_vamp = min(num_vamp, weighted_antag_cap - 1)
 
 	var/list/old_antag_candidates = antag_candidates.Copy()
 	if(possible_vamps.len>0)
