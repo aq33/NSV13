@@ -77,6 +77,23 @@
 	TEST_ASSERT_EQUAL(enriched.charges, 0, "Złożenie jaj nie zużyło ładunku")
 	TEST_ASSERT(!eggs.ready, "Świeże jaja są od razu gotowe")
 
+	// Bez duchów gniazdo matki wykluwa się samo: matka pod AI z eskortą
+	allocated -= eggs
+	qdel(eggs)
+	var/obj/structure/spider/eggcluster/midwife/event_eggs = allocate(/obj/structure/spider/eggcluster/midwife, east)
+	event_eggs.auto_hatch()
+	TEST_ASSERT(QDELETED(event_eggs), "Gniazdo matki nie zniknęło po samoczynnym wykluciu")
+	var/hatched = 0
+	var/found_midwife = FALSE
+	for(var/mob/living/simple_animal/hostile/spider/growing/spiderling/hatchling in east)
+		hatched++
+		allocated += hatchling
+		if(istype(hatchling, /mob/living/simple_animal/hostile/spider/growing/spiderling/midwife))
+			found_midwife = TRUE
+		TEST_ASSERT_EQUAL(hatchling.directive, event_eggs.directive, "Pajączek z samoczynnego wyklucia nie dostał rozkazu")
+	TEST_ASSERT_EQUAL(hatched, 3, "Z gniazda matki nie wykluły się trzy pajączki")
+	TEST_ASSERT(found_midwife, "Z gniazda matki nie wykluła się matka")
+
 /// Bity połączeń z nazwy stanu ikony ("stickyweb-21" -> 21); N/S/E/W pokrywają się z kierunkami BYOND
 /datum/unit_test/aquila_spiders/proc/web_junction(obj/structure/spider/web)
 	var/dash = findlasttext(web.icon_state, "-")

@@ -381,6 +381,13 @@
 	var/important_text = "Wypełniaj rozkazy za wszelką cenę."
 	/// Czy jakiś duch właśnie wybiera
 	var/hatching = FALSE
+	/// Po jakim czasie od dojrzenia gniazdo wykluwa się samo, jeśli nikt go nie weźmie
+	var/auto_hatch_delay = 150 SECONDS
+	/// Ile pajączków pod AI wykluwa się samo (min, max)
+	var/auto_hatch_min = 1
+	var/auto_hatch_max = 3
+	/// Timer samoczynnego wyklucia
+	var/auto_hatch_timer
 
 /obj/structure/spider/eggcluster/Initialize(mapload)
 	pixel_x = base_pixel_x + rand(-3, 3)
@@ -391,6 +398,9 @@
 
 /obj/structure/spider/eggcluster/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	if(auto_hatch_timer)
+		deltimer(auto_hatch_timer)
+		auto_hatch_timer = null
 	GLOB.poi_list -= src
 	return ..()
 
@@ -400,7 +410,34 @@
 		return
 	ready = TRUE
 	notify_ghosts("[src] jest gotowe do wyklucia!", source = src, action = NOTIFY_ATTACK, flashwindow = FALSE, ignore_key = POLL_IGNORE_SPIDER, header = "Pajęcza plaga")
+	auto_hatch_timer = addtimer(CALLBACK(src, PROC_REF(auto_hatch)), auto_hatch_delay, TIMER_STOPPABLE)
 	return PROCESS_KILL
+
+/// Nikt z duchów nie wziął gniazda: wykluwają się pajączki pod AI
+/obj/structure/spider/eggcluster/proc/auto_hatch()
+	auto_hatch_timer = null
+	if(QDELETED(src))
+		return
+	if(hatching) // ktoś właśnie wybiera w menu, dajmy mu chwilę
+		auto_hatch_timer = addtimer(CALLBACK(src, PROC_REF(auto_hatch)), 30 SECONDS, TIMER_STOPPABLE)
+		return
+	var/turf/our_turf = get_turf(src)
+	if(!our_turf)
+		return
+	var/list/hatched_types = get_auto_hatch_types()
+	for(var/spider_type in hatched_types)
+		var/mob/living/simple_animal/hostile/spider/baby = new spider_type(our_turf)
+		baby.faction = faction.Copy()
+		baby.directive = directive
+	visible_message(span_warning("[src] pęka i wysypują się z niego pajączki!"))
+	log_game("[src] auto-hatched [length(hatched_types)] AI spiderlings at [AREACOORD(our_turf)].")
+	qdel(src)
+
+/// Co wykluwa się samo
+/obj/structure/spider/eggcluster/proc/get_auto_hatch_types()
+	. = list()
+	for(var/i in 1 to rand(auto_hatch_min, auto_hatch_max))
+		. += pick(potentialspawns)
 
 /obj/structure/spider/eggcluster/examine(mob/user)
 	. = ..()
@@ -509,7 +546,8 @@
 		/mob/living/simple_animal/hostile/spider/growing/spiderling/midwife,
 	)
 
-/// Gniazdo z eventu: zawsze matka, żeby plaga nie skończyła się od razu przez pechowy wybór
+/// Gniazdo z eventu: zawsze matka, żeby plaga nie skończyła się od razu przez pechowy wybór.
+/// Bez duchów wykluwa się matka pod AI z eskortą.
 /obj/structure/spider/eggcluster/midwife
 	name = "gniazdo jaj matki"
 	you_are_text = "Jesteś pająkiem matką."
@@ -528,3 +566,12 @@
 #undef WEB_JUNCTION_SE
 #undef WEB_JUNCTION_SW
 #undef WEB_JUNCTION_NW
+
+/obj/structure/spider/eggcluster/midwife/get_auto_hatch_types()
+	. = list(/mob/living/simple_animal/hostile/spider/growing/spiderling/midwife)
+	for(var/i in 1 to 2)
+		. += pick(
+			/mob/living/simple_animal/hostile/spider/growing/spiderling/guard,
+			/mob/living/simple_animal/hostile/spider/growing/spiderling/hunter,
+			/mob/living/simple_animal/hostile/spider/growing/spiderling/nurse,
+		)
