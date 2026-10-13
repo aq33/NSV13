@@ -98,6 +98,8 @@
 		return
 	to_chat(user, "<span class='notice'>Widzisz [front_panel_screws] śrub. Zaczynasz je wykręcać...</span>")
 	while(tool.use_tool(src, user, 7.5 SECONDS, volume = 100))
+		if(deconstruction_state != HDD_PANEL_CLOSED) // the ninja or someone else got there first
+			return
 		front_panel_screws--
 		if(front_panel_screws <= 0)
 			deconstruction_state = HDD_PANEL_OPEN
@@ -111,6 +113,8 @@
 		return
 	to_chat(user, "<span class='notice'>Za przednim panelem widzisz [source_code_hdd] w zabezpieczonej obudowie. Zaczynasz go podważać...</span>")
 	if(tool.use_tool(src, user, 15 SECONDS, volume = 100))
+		if(deconstruction_state != HDD_PANEL_OPEN || !source_code_hdd)
+			return
 		to_chat(user, "<span class='notice'>Rozbijasz obudowę i wyrywasz [source_code_hdd].</span>")
 		deconstruction_state = HDD_PRIED
 
@@ -119,6 +123,8 @@
 		return
 	to_chat(user, "<span class='notice'>Do [source_code_hdd] podłączonych jest [hdd_wires] kabli. Zaczynasz je przecinać...</span>")
 	while(tool.use_tool(src, user, 7.5 SECONDS, volume = 100))
+		if(deconstruction_state != HDD_PRIED || !source_code_hdd)
+			return
 		hdd_wires--
 		if(hdd_wires <= 0)
 			deconstruction_state = HDD_CUT_LOOSE

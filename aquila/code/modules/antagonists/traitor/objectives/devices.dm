@@ -124,8 +124,11 @@
 		if(!do_after(user, 3 SECONDS, target = src))
 			return TRUE
 		anchored = FALSE
+		planted = FALSE
 		alpha = initial(alpha)
 		layer = initial(layer)
+		if(objective)
+			objective.planted = FALSE
 	return ..()
 
 // Bug a head's office

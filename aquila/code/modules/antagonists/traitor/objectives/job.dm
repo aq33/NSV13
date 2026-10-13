@@ -51,6 +51,6 @@
 		if(!isliving(owner_mind.current))
 			continue
 		for(var/obj/item/card/id/card in owner_mind.current.GetAllContents())
-			if(istype(card, /obj/item/card/id/captains_spare) || card.registered_name == target.name)
+			if(istype(card, /obj/item/card/id/captains_spare) || (card.registered_name == target.name && card.assignment == JOB_NAME_CAPTAIN))
 				return TRUE
 	return FALSE

@@ -33,7 +33,10 @@ GLOBAL_LIST(objective_map_types_present)
 		var/list/wanted_cache = typecacheof(wanted)
 		GLOB.objective_map_types_present = list()
 		for(var/obj/O in world)
-			if(is_type_in_typecache(O, wanted_cache) && is_station_level(O.z))
+			if(!is_type_in_typecache(O, wanted_cache))
+				continue
+			var/turf/object_turf = get_turf(O) // mapped items can sit in lockers and safes
+			if(object_turf && is_station_level(object_turf.z))
 				GLOB.objective_map_types_present[O.type] = TRUE
 	for(var/present_type in GLOB.objective_map_types_present)
 		for(var/wanted_type in types)

@@ -77,6 +77,7 @@
 	if(!crystal)
 		return FALSE
 	START_PROCESSING(SSprocessing, src)
+	update_explanation_text()
 	give_special_equipment(list(/obj/item/paper/guides/antag/supermatter_sabotage))
 	return TRUE
 
