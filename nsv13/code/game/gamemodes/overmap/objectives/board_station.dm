@@ -54,7 +54,13 @@
 	F.add_ship(target_station, "supply")
 
 	// How long should this take?
-	var/list/fastest_route = find_route(SSstar_system.find_system(SSovermap_mode.mode.starting_system), target_system, wormholes_allowed = FALSE)
+	var/datum/star_system/start_system = SSstar_system.find_system(SSovermap_mode.mode.starting_system)
+	var/list/fastest_route = find_route(start_system, target_system, wormholes_allowed = FALSE)
+	if(!islist(fastest_route)) //An admin may have picked a system only reachable through a wormhole
+		fastest_route = find_route(start_system, target_system)
+	if(!islist(fastest_route))
+		message_admins("[name] objective: no FTL route to [target_system], the reminder interval won't account for travel time.")
+		fastest_route = list()
 	var/distance = 0
 	for(var/i = 2; i <= length(fastest_route); i++)
 		var/datum/star_system/start = fastest_route[i-1]
