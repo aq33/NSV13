@@ -52,6 +52,7 @@
 	var/expected_ceiling_gain = JUKEBOX_SHIPWIDE_GAIN * jukebox.volume / 100
 	TEST_ASSERT(abs(jukebox.emitter_max_gain(ceiling.emitter) - expected_ceiling_gain) < 0.001, "Ceiling speaker should play at the broadcast volume")
 	TEST_ASSERT(!(ceiling.emitter in jukebox.active_emitters()), "Ceiling speaker plays without shipwide broadcast")
+	TEST_ASSERT(ceiling.emitter.echo_strength < jukebox.emitter.echo_strength, "Ceiling speakers should echo less than a jukebox")
 	qdel(ceiling)
 	TEST_ASSERT(!(ceiling in SSjukeboxes.ceiling_speakers), "Destroyed ceiling speaker is still registered")
 
