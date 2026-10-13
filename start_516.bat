@@ -40,9 +40,11 @@ if errorlevel 1 (
 	exit /b 1
 )
 
-if not defined BYOND_BIN for /d %%D in ("tools\bootstrap\.cache\byond-516.*") do (
-	if exist "%%~fD\byond\bin\dreamdaemon.exe" set "BYOND_BIN=%%~fD\byond\bin"
-)
+rem The build downloads exactly the version from dependencies.sh, so use that cache folder only.
+set "BYOND_MINOR="
+for /f "tokens=2 delims==" %%V in ('findstr /b /c:"export BYOND_MINOR=" dependencies.sh') do set "BYOND_MINOR=%%V"
+set "CACHE_BIN=%~dp0tools\bootstrap\.cache\byond-516.!BYOND_MINOR!\byond\bin"
+if not defined BYOND_BIN if defined BYOND_MINOR if exist "!CACHE_BIN!\dreamdaemon.exe" if exist "!CACHE_BIN!\dreamseeker.exe" if exist "!CACHE_BIN!\dm.exe" set "BYOND_BIN=!CACHE_BIN!"
 if not defined BYOND_BIN (
 	echo.
 	echo BYOND 516 not found. Install it or set BYOND516 to its bin folder.
