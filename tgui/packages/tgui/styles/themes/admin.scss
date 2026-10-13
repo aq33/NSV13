@@ -1,38 +1,53 @@
 @use 'sass:color';
 @use 'sass:meta';
 
-$generic: #6d697a;
+$generic: hsl(252, 9.3%, 31.6%);
 
 @use '../colors.scss' with (
   $fg-map-keys: (),
   $bg-map-keys: (),
+  $primary: hsl(44.9, 100%, 50%),
+  $yellow: hsl(44.9, 100%, 50%)
 );
 @use '../base.scss' with (
   $color-bg: color.scale($generic, $lightness: -45%),
   $border-radius: 2px,
+  $color-bg-grad-spread: 3%
 );
 
 .theme-admin {
   // Components
-  @include meta.load-css('../components/Button.scss', $with: (
-    'color-default': color.scale($generic, $lightness: -40%),
-    'color-transparent-text': rgba(227, 240, 255, 0.75),
-  ));
-  @include meta.load-css('../components/ProgressBar.scss', $with: (
-    'color-default-fill': $generic,
-    'background-color': rgba(0, 0, 0, 0.5),
-  ));
+  @include meta.load-css(
+    '../components/Button.scss',
+    $with: (
+      'color-default': color.scale($generic, $lightness: -30%),
+      'color-transparent-text': rgba(227, 240, 255, 0.75)
+    )
+  );
+  @include meta.load-css(
+    '../components/ProgressBar.scss',
+    $with: (
+      'color-default-fill': $generic,
+      'background-color': rgba(0, 0, 0, 0.5)
+    )
+  );
   @include meta.load-css('../components/Section.scss');
 
   // Layouts
   @include meta.load-css('../layouts/Layout.scss');
   @include meta.load-css('../layouts/Window.scss');
-  @include meta.load-css('../layouts/TitleBar.scss', $with: (
-    'background-color': color.scale($generic, $lightness: -25%),
-  ));
+  @include meta.load-css(
+    '../layouts/TitleBar.scss',
+    $with: (
+      'background-color': color.scale($generic, $lightness: -50%),
+      'shadow-color': hsl(60, 100%, 50%) 21,
+      'shadow-color-core': hsl(44.9, 100%, 50%),
+      'shadow-core-height': 3px
+    )
+  );
 
   .Layout__content {
-    background-image: none;
+    background-image: url('../../assets/bg-aquila.svg');
     background-size: 70% 100%;
     background-position: center;
     background-repeat: no-repeat;

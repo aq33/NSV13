@@ -132,7 +132,7 @@
 		return FALSE
 	if(A==D)
 		return FALSE //prevents grabbing yourself
-	if(A.a_intent == INTENT_GRAB && A.mobility_flags & MOBILITY_STAND) //Fixes permanent slowdown and missfire
+	if(A.mobility_flags & MOBILITY_STAND) //Fixes permanent slowdown and missfire
 		if(armlockstate == TRUE) // neck grabs if armlocked
 			A.setGrabState(GRAB_NECK)
 			D.visible_message("<span class='warning'>[A] z pozycji dźwigni chwyta [D] za szyję!</span>", \

@@ -1,8 +1,16 @@
+import {
+  Box,
+  Button,
+  Dropdown,
+  LabeledList,
+  Section,
+  Stack,
+} from 'tgui-core/components';
+
+import { BooleanLike } from '../../common/react';
 import { useBackend } from '../backend';
-import { Box, Button, Dropdown, LabeledList, Section, Stack } from '../components';
 import { Window } from '../layouts';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
-import { BooleanLike } from '../../common/react';
 
 export type Data = {
   locked: BooleanLike;
@@ -25,12 +33,12 @@ export type DisabledProps = {
 };
 
 export type NavBeaconStaticControl = {
-  direction_options: String[];
+  direction_options: string[];
   has_codes: BooleanLike;
 };
 
-export const NavBeacon = (props, context) => {
-  const { act, data } = useBackend(context);
+export const NavBeacon = (props) => {
+  const { act, data } = useBackend<Data>();
   return (
     <Window title="Nagivational Beacon" width={400} height={350}>
       <Window.Content>
@@ -40,8 +48,8 @@ export const NavBeacon = (props, context) => {
   );
 };
 
-export const NavBeaconContent = (props, context) => {
-  const { act, data } = useBackend<Data>(context);
+export const NavBeaconContent = (props) => {
+  const { act, data } = useBackend<Data>();
   const { controls, static_controls } = data;
   const disabled = data.locked && !data.siliconUser;
   return (
@@ -53,8 +61,8 @@ export const NavBeaconContent = (props, context) => {
   );
 };
 
-export const NavBeaconControlSection = (props: DisabledProps, context) => {
-  const { act, data } = useBackend<Data>(context);
+export const NavBeaconControlSection = (props: DisabledProps) => {
+  const { act, data } = useBackend<Data>();
   const { controls, static_controls } = data;
   return (
     <Section title="Controls">
@@ -97,13 +105,15 @@ export const NavBeaconControlSection = (props: DisabledProps, context) => {
         </LabeledList.Item>
         <LabeledList.Item label="Delivery Direction">
           <Dropdown
-            disabled={props.disabled}
+            disabled={!!props.disabled}
             options={static_controls.direction_options}
+            selected={null}
             displayText={controls.delivery_direction || 'none'}
             onSelected={(value) =>
               act('set_delivery_direction', {
                 direction: value,
-              })}
+              })
+            }
           />
         </LabeledList.Item>
       </LabeledList>
@@ -111,8 +121,8 @@ export const NavBeaconControlSection = (props: DisabledProps, context) => {
   );
 };
 
-export const NavBeaconMaintenanceSection = (props: DisabledProps, context) => {
-  const { act, data } = useBackend<Data>(context);
+export const NavBeaconMaintenanceSection = (props: DisabledProps) => {
+  const { act, data } = useBackend<Data>();
   const { controls, static_controls } = data;
   return (
     <Section title="Maintenance">

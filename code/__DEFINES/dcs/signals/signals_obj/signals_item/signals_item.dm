@@ -52,6 +52,11 @@
 ///for any tool behaviors: (mob/living/user, obj/item/I, list/recipes)
 #define COMSIG_ATOM_TOOL_ACT(tooltype) "tool_act_[tooltype]"
 	#define COMPONENT_BLOCK_TOOL_ATTACK (1<<0)
+///for any rightclick tool behaviors: (mob/living/user, obj/item/I)
+#define COMSIG_ATOM_SECONDARY_TOOL_ACT(tooltype) "tool_secondary_act_[tooltype]"
+	// We have the same returns here as COMSIG_ATOM_TOOL_ACT
+	// #define COMPONENT_BLOCK_TOOL_ATTACK (1<<0)
+
 //not widely used yet, but has lot of potential
 
 #define COMSIG_ITEM_ATTACK_EFFECT "item_effect_attacked"
@@ -74,3 +79,16 @@
 // /obj/item/pen signals
 #define COMSIG_PEN_ROTATED "pen_rotated"						//! called after rotation in /obj/item/pen/attack_self(): (rotation, mob/living/carbon/user)
 
+
+///called on [/obj/item] before unequip from base of [mob/proc/doUnEquip]: (force, atom/newloc, no_move, invdrop, silent)
+#define COMSIG_ITEM_PRE_UNEQUIP "item_pre_unequip"
+	///only the pre unequip can be cancelled
+	#define COMPONENT_ITEM_BLOCK_UNEQUIP (1<<0)
+/// from base of /obj/item/slimepotion/speed/afterattack(): (obj/target, /obj/src, mob/user)
+///From /datum/proximity_monitor/advanced/demoraliser/proc/on_seen(): (datum/mind/viewer)
+#define COMSIG_DEMORALISING_EVENT "demoralising_event"
+#define COMSIG_SPEED_POTION_APPLIED "speed_potion"
+	#define SPEED_POTION_STOP (1<<0)
+/// From /obj/item/shockpaddles/proc/do_success(): (obj/item/shockpaddles/source)
+#define COMSIG_DEFIBRILLATOR_SUCCESS "defib_success"
+	#define COMPONENT_DEFIB_STOP (1<<0)

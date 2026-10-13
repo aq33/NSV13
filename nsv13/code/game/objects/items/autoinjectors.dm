@@ -58,7 +58,7 @@
 	. = ..()
 
 /obj/item/reagent_containers/hypospray/autoinjector/afterattack(obj/target, mob/user, proximity)
-	if(cap_on && (target.is_refillable() || target.is_drainable() || (reagents.total_volume && user.a_intent == INTENT_HARM)))
+	if(cap_on && (target.is_refillable() || target.is_drainable() || (reagents.total_volume && user.combat_mode)))
 		to_chat(user, "<span class='warning'>Zanim to zrobisz, musisz zdjąć zatyczkę!</span>")
 		return
 

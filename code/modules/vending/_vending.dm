@@ -378,7 +378,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		to_chat(user, "<span class='warning'>Najpierw musisz przymocować [src].</span>")
 	return TRUE
 
-/obj/machinery/vending/attackby(obj/item/I, mob/user, params)
+/obj/machinery/vending/attackby(obj/item/I, mob/living/user, params)
 	if(panel_open && is_wire_tool(I))
 		wires.interact(user)
 		return
@@ -400,7 +400,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				else
 					to_chat(user, "<span class='notice'>Nie ma czego uzupełniać!</span>")
 			return
-	if(compartmentLoadAccessCheck(user) && user.a_intent != INTENT_HARM)
+	if(compartmentLoadAccessCheck(user) && !user.combat_mode)
 		if(canLoadItem(I))
 			loadingAttempt(I,user)
 			ui_update() //can't put this on the proc above because we spam it below //AQ EDIT - was updateUsrDialog(), which doesn't refresh tgui
@@ -656,51 +656,51 @@ GLOBAL_LIST_EMPTY(vending_products)
 		ui = new(user, src, "Vending")
 		ui.open()
 
+// AQ EDIT START - port BeeStation #13072: data in the shape of the Vending window from Bee
+// (categories, DmIcon icons, stock as objects). Prices and the same-department discount work as before.
 /obj/machinery/vending/ui_static_data(mob/user)
 	. = list()
 	.["onstation"] = onstation
+	.["all_products_free"] = !onstation
 	.["department"] = payment_department
-	.["product_records"] = list()
-	for (var/datum/data/vending_product/R in product_records)
-		var/list/data = list(
-			path = replacetext(replacetext("[R.product_path]", "/obj/item/", ""), "/", "-"),
-			name = R.name,
-			price = R.custom_price || default_price,
-			max_amount = R.max_amount,
-			ref = REF(R)
+	.["displayed_currency_icon"] = "coins"
+	.["displayed_currency_name"] = " cr"
+	var/list/categories = list()
+	.["product_records"] = collect_records_for_static_data(product_records, categories, list("name" = "Produkty", "icon" = "cart-shopping"))
+	.["coin_records"] = collect_records_for_static_data(coin_records, categories, list("name" = "Premium", "icon" = "coins"), premium = TRUE)
+	.["hidden_records"] = collect_records_for_static_data(hidden_records, categories, list("name" = "Contraband", "icon" = "mask"), premium = TRUE)
+	.["categories"] = categories
+
+/// Product records for the window, each product put in the given category
+/obj/machinery/vending/proc/collect_records_for_static_data(list/records, list/categories, list/category, premium = FALSE)
+	var/list/out_records = list()
+	for(var/datum/data/vending_product/record as anything in records)
+		var/list/static_record = list(
+			path = replacetext(replacetext("[record.product_path]", "/obj/item/", ""), "/", "-"),
+			name = record.name,
+			price = premium ? (record.custom_premium_price || extra_price) : (record.custom_price || default_price),
+			max_amount = record.max_amount,
+			ref = REF(record),
+			category = category["name"],
 		)
-		.["product_records"] += list(data)
-	.["coin_records"] = list()
-	for (var/datum/data/vending_product/R in coin_records)
-		var/list/data = list(
-			path = replacetext(replacetext("[R.product_path]", "/obj/item/", ""), "/", "-"),
-			name = R.name,
-			price = R.custom_premium_price || extra_price,
-			max_amount = R.max_amount,
-			ref = REF(R),
-			premium = TRUE
-		)
-		.["coin_records"] += list(data)
-	.["hidden_records"] = list()
-	for (var/datum/data/vending_product/R in hidden_records)
-		var/list/data = list(
-			path = replacetext(replacetext("[R.product_path]", "/obj/item/", ""), "/", "-"),
-			name = R.name,
-			price = R.custom_price || default_price,
-			max_amount = R.max_amount,
-			ref = REF(R),
-			premium = TRUE
-		)
-		.["hidden_records"] += list(data)
+		var/atom/printed = record.product_path
+		// Icons that need no recoloring are shown straight from their .dmi, the rest from the vending spritesheet
+		if(ispath(printed, /atom) && (!initial(printed.greyscale_config) || !initial(printed.greyscale_colors)) && !initial(printed.color))
+			static_record["icon"] = initial(printed.icon)
+			static_record["icon_state"] = initial(printed.icon_state)
+		if(premium)
+			static_record["premium"] = TRUE
+		out_records += list(static_record)
+	if(length(out_records) && !(category["name"] in categories))
+		categories[category["name"]] = list("icon" = category["icon"])
+	return out_records
 
 /obj/machinery/vending/ui_data(mob/user)
 	. = list()
-	var/mob/living/carbon/human/H
-	var/obj/item/card/id/C
 	.["user"] = null
 	if(ishuman(user))
-		H = user
-		C = H.get_idcard(TRUE)
+		var/mob/living/carbon/human/H = user
+		var/obj/item/card/id/C = H.get_idcard(TRUE)
 		if(C?.registered_account)
 			.["user"] = list()
 			.["user"]["name"] = C.registered_account.account_holder
@@ -712,9 +712,16 @@ GLOBAL_LIST_EMPTY(vending_products)
 				.["user"]["job"] = "No Job"
 				.["user"]["department"] = "No Department"
 	.["stock"] = list()
-	for (var/datum/data/vending_product/R in product_records + coin_records + hidden_records)
-		.["stock"]["[replacetext(replacetext("[R.product_path]", "/obj/item/", ""), "/", "-")]"] = R.amount
+	for(var/datum/data/vending_product/R in product_records + coin_records + hidden_records)
+		var/path = replacetext(replacetext("[R.product_path]", "/obj/item/", ""), "/", "-")
+		.["stock"][path] = list(
+			name = R.name,
+			path = path,
+			amount = R.amount,
+			colorable = FALSE,
+		)
 	.["extended_inventory"] = extended_inventory
+// AQ EDIT END
 
 /obj/machinery/vending/ui_act(action, params)
 	. = ..()
@@ -983,6 +990,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				name = O,
 				price = price,
 				img = base64,
+				image = base64, //AQ EDIT - the Vending window from BeeStation reads "image"
 				amount = vending_machine_input[O] //AQ EDIT - stock count for the UI
 			)
 			.["vending_machine_input"] += list(data)

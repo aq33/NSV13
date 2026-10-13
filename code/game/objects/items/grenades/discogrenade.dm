@@ -76,7 +76,7 @@
 			new /obj/item/grenade/discogrenade/subgrenade(current_turf)
 
 	//Create the lights
-	new /obj/effect/dummy/lighting_obj (current_turf, rand_hex_color(), 4, 1, 10)
+	new /obj/effect/dummy/lighting_obj (current_turf, 4, 1, rand_hex_color(), 10)
 
 	for(var/mob/living/carbon/human/M in hearers(4, src))
 		forcedance(get_turf(M), M)

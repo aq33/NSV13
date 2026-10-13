@@ -55,6 +55,11 @@
 	else
 		End()
 
+/// Redraws the beam right away, for when the origin or target moved by pixel offsets only
+/datum/beam/proc/redrawing()
+	Reset()
+	Draw()
+
 /datum/beam/proc/afterDraw()
 	return
 

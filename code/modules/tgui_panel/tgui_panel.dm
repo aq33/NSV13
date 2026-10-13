@@ -109,6 +109,10 @@
 			),
 		))
 		return TRUE
+	// AQ EDIT - the chat panel asks for messages it missed
+	if(type == "chat/resend")
+		SSchat.handle_resend(client, payload)
+		return TRUE
 	if(type == "audio/setAdminMusicVolume")
 		client.admin_music_volume = payload["volume"]
 		return TRUE

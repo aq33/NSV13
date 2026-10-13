@@ -3,7 +3,7 @@
 	desc = "A Modello 3 Coffeemaker that brews coffee and holds it at the perfect temperature of 176 fahrenheit. Made by Piccionaia Home Appliances."
 	icon = 'nsv13/icons/obj/coffee.dmi'
 	icon_state = "coffeemaker_nopot_nocart"
-	var/base_icon_state = "coffeemaker"
+	base_icon_state = "coffeemaker"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	circuit = /obj/item/circuitboard/machine/coffeemaker
 	pixel_y = 4 //needed to make it sit nicely on tables

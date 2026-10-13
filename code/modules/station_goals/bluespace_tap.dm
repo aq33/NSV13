@@ -356,7 +356,7 @@
 	return data
 
 
-/obj/machinery/power/bluespace_tap/attack_hand(mob/user)
+/obj/machinery/power/bluespace_tap/attack_hand(mob/user, list/modifiers)
 	add_fingerprint(user)
 	ui_interact(user)
 

@@ -22,7 +22,7 @@
 	response_disarm = "delikatnie odsuwa na bok"
 	response_harm   = "rozgniata"
 	friendly = "szczypie"
-	a_intent = INTENT_HELP
+	combat_mode = FALSE
 	ventcrawler = VENTCRAWLER_ALWAYS
 	gold_core_spawnable = FRIENDLY_SPAWN
 	stat_attack = UNCONSCIOUS

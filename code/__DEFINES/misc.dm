@@ -66,6 +66,7 @@
 
 #define BE_CLOSE TRUE		//! in the case of a silicon, to select if they need to be next to the atom
 #define NO_DEXTERY TRUE		//! if other mobs (monkeys, aliens, etc) can use this
+#define NO_DEXTERITY NO_DEXTERY // AQ EDIT - port Bee #11899: nazwa z Bee
 #define NO_TK TRUE
 //used by canUseTopic()
 
@@ -297,9 +298,6 @@ GLOBAL_LIST_INIT(ghost_others_options, list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DE
 #define SHIP_DESTROYED 29
 //NSV13
 
-#define FIELD_TURF 1
-#define FIELD_EDGE 2
-
 //gibtonite state defines
 #define GIBTONITE_UNSTRUCK 0
 #define GIBTONITE_ACTIVE 1
@@ -351,8 +349,9 @@ GLOBAL_LIST_INIT(ghost_others_options, list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DE
 #define RIDING_OFFSET_ALL "ALL"
 
 //stack recipe placement check types
-#define STACK_CHECK_CARDINALS "cardinals" //! checks if there is an object of the result type in any of the cardinal directions
-#define STACK_CHECK_ADJACENT "adjacent" //! checks if there is an object of the result type within one tile
+// AQ EDIT: bity jak w craftingu z BeeStation (aquila/code/__DEFINES/crafting.dm)
+#define STACK_CHECK_CARDINALS (1<<0) //! checks if there is an object of the result type in any of the cardinal directions
+#define STACK_CHECK_ADJACENT (1<<1) //! checks if there is an object of the result type within one tile
 
 //Fullscreen overlay resolution in tiles.
 #define FULLSCREEN_OVERLAY_RESOLUTION_X 15

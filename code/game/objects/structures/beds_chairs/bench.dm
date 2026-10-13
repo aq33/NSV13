@@ -24,6 +24,10 @@
 	buildstackamount = 3
 	item_chair = null
 
+///This proc adds the rotate component, overwrite this if you for some reason want to change some specific args.
+/obj/structure/chair/fancy/bench/pew/MakeRotate()
+	AddComponent(/datum/component/simple_rotation, ROTATION_REQUIRE_WRENCH|ROTATION_IGNORE_ANCHORED)
+
 /obj/structure/chair/fancy/bench/pew/left
 	name = "left wooden pew end"
 	icon_state = "pewend_left"
@@ -53,7 +57,7 @@
 	name = "corporate bench"
 	desc = "Perfectly designed to be comfortable to sit on, and hellish to sleep on."
 	icon_state = "corporate_bench_middle_mapping"
-	var/base_icon_state = "corporate_bench_middle"
+	base_icon_state = "corporate_bench_middle"
 	///icon for the cover seat
 	var/image/cover
 	///cover seat color, by default this one

@@ -1,4 +1,6 @@
 /obj/structure/girder
+	/// Cooldown for the quick build beep
+	var/next_beep = 0
 	name = "girder"
 	icon_state = "girder"
 	desc = "A large structural assembly made out of iron; It requires a layer of iron before it can be considered a wall."
@@ -28,6 +30,12 @@
 			. += "<span class='notice'>[src] jest rozebrany! Raczej nie powinieneś widzieć tego opisu.</span>"
 
 /obj/structure/girder/attackby(obj/item/W, mob/user, params)
+	var/platingmodifier = 1
+	if(HAS_TRAIT(user, TRAIT_QUICK_BUILD))
+		platingmodifier = 0.7
+		if(next_beep <= world.time)
+			next_beep = world.time + 10
+			playsound(src, 'sound/machines/clockcult/integration_cog_install.ogg', 50, TRUE)
 	add_fingerprint(user)
 
 	if(istype(W, /obj/item/gun/energy/plasmacutter))
@@ -63,7 +71,7 @@
 					to_chat(user, "<span class='warning'>Do stworzenia fałszywej ściany potrzebujesz przynajmniej dwóch prętów!</span>")
 					return
 				balloon_alert(user, "Zaczynasz budować wzmocnioną fałszywą ścianę...")
-				if(do_after(user, 20, target = src))
+				if(do_after(user, 20*platingmodifier, target = src))
 					if(S.get_amount() < 2)
 						return
 					S.use(2)
@@ -77,7 +85,7 @@
 					to_chat(user, "<span class='warning'>Do dodania poszycia potrzebujesz przynajmniej pięciu prętów!</span>")
 					return
 				balloon_alert(user, "Zaczynasz dodawać poszycie...")
-				if(do_after(user, 40, target = src))
+				if(do_after(user, 40*platingmodifier, target = src))
 					if(S.get_amount() < 5)
 						return
 					S.use(5)
@@ -102,7 +110,7 @@
 					to_chat(user, "<span class='warning'>Do stworzenia fałszywej ściany potrzebujesz dwóch arkuszy żelaza!</span>")
 					return
 				balloon_alert(user, "Zaczynasz budować fałszywą ścianę...")
-				if(do_after(user, 20, target = src))
+				if(do_after(user, 20*platingmodifier, target = src))
 					if(S.get_amount() < 2)
 						return
 					S.use(2)
@@ -116,7 +124,7 @@
 					to_chat(user, "<span class='warning'>Do ukończenia ściany potrzebujesz dwóch arkuszy żelaza!</span>")
 					return
 				balloon_alert(user, "Zaczynasz dodawać poszycie...")
-				if (do_after(user, 40, target = src))
+				if (do_after(user, 40*platingmodifier, target = src))
 					if(S.get_amount() < 2)
 						return
 					S.use(2)
@@ -133,7 +141,7 @@
 					to_chat(user, "<span class='warning'>Do stworzenia fałszywej ściany potrzebujesz przynajmniej dwóch arkuszy!</span>")
 					return
 				balloon_alert(user, "Zaczynasz budować wzmocnioną fałszywą ścianę...")
-				if(do_after(user, 20, target = src))
+				if(do_after(user, 20*platingmodifier, target = src))
 					if(S.get_amount() < 2)
 						return
 					S.use(2)
@@ -147,7 +155,7 @@
 					if(S.get_amount() < 1)
 						return
 					balloon_alert(user, "Zaczynasz wykańczać wzmocnioną ścianę...")
-					if(do_after(user, 50, target = src))
+					if(do_after(user, 50*platingmodifier, target = src))
 						if(S.get_amount() < 1)
 							return
 						S.use(1)
@@ -161,7 +169,7 @@
 					if(S.get_amount() < 1)
 						return
 					balloon_alert(user, "Zaczynasz wzmacniać [src]...")
-					if(do_after(user, 60, target = src))
+					if(do_after(user, 60*platingmodifier, target = src))
 						if(S.get_amount() < 1)
 							return
 						S.use(1)
@@ -177,7 +185,7 @@
 				if(S.get_amount() < 2)
 					to_chat(user, "<span class='warning'>Do stworzenia fałszywej ściany potrzebujesz przynajmniej dwóch arkuszy!</span>")
 					return
-				if(do_after(user, 20, target = src))
+				if(do_after(user, 20*platingmodifier, target = src))
 					if(S.get_amount() < 2)
 						return
 					S.use(2)
@@ -192,7 +200,7 @@
 					to_chat(user, "<span class='warning'>Do dodania poszycia potrzebujesz przynajmniej dwóch arkuszy!</span>")
 					return
 				balloon_alert(user, "Zaczynasz dodawać poszycie...")
-				if (do_after(user, 40, target = src))
+				if (do_after(user, 40*platingmodifier, target = src))
 					if(S.get_amount() < 2)
 						return
 					S.use(2)
@@ -381,7 +389,10 @@
 /obj/structure/girder/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	switch(the_rcd.mode)
 		if(RCD_FLOORWALL)
-			return list("mode" = RCD_FLOORWALL, "delay" = 20, "cost" = 8)
+			return rcd_result_with_memory(
+				list("mode" = RCD_FLOORWALL, "delay" = 2 SECONDS, "cost" = 8),
+				get_turf(src), RCD_MEMORY_WALL,
+			)
 		if(RCD_DECONSTRUCT)
 			return list("mode" = RCD_DECONSTRUCT, "delay" = 20, "cost" = 13)
 	return FALSE

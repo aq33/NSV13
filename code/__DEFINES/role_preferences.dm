@@ -7,6 +7,13 @@
 // Banning snowflake - global antag ban. Does not include ghost roles that aren't antagonists or forced antagonists
 #define BAN_ROLE_ALL_ANTAGONISTS			"All Antagonists"
 
+// AQ EDIT START - port BeeStation #13722; w core, bo używa ich pollCandidates() w code/__HELPERS/game.dm
+/// Do not auto-add anyone to the pull
+#define POLL_AUTO_ADD_NONE null
+/// Auto-add ghosts to the poll when created
+#define POLL_AUTO_ADD_GHOSTS "ghosts"
+// AQ EDIT END
+
 //These are synced with the Database, if you change the values of the defines
 //then you MUST update the database!
 #define ROLE_TRAITOR			"Traitor"
@@ -56,6 +63,7 @@
 #define ROLE_CHRONO_LEGIONNAIRE	"Chrono Legionnaire" //AQ
 #define ROLE_THIEF				"Thief" //AQ - port of tgstation#64144
 #define ROLE_HORROR				"Eldritch Horror" //AQ - port of Yogstation#13033
+#define ROLE_SHADOW_DEMON		"Shadow Demon" //AQ - port z ParadiseSS13
 
 /// Roles that are antagonists, roundstart or not, and have passes to do.. antagonistry
 GLOBAL_LIST_INIT(antagonist_bannable_roles, list(
@@ -103,6 +111,7 @@ GLOBAL_LIST_INIT(antagonist_bannable_roles, list(
 	ROLE_CHRONO_LEGIONNAIRE, //AQ
 	ROLE_THIEF, //AQ
 	ROLE_HORROR, //AQ
+	ROLE_SHADOW_DEMON, //AQ
 ))
 //nsv13 - pvp + bloodling modes added here
 
@@ -221,7 +230,7 @@ GLOBAL_LIST_INIT(other_bannable_roles, list(
 			if(feedback)
 				to_chat(src, "<span class='warning'>You are banned from this role!</span>")
 			return FALSE
-	if(req_hours) //minimum living hour count
+	if(req_hours && CONFIG_GET(flag/antag_living_playtime_requirements)) //minimum living hour count // AQUILA EDIT: limit godzin tylko z configu
 		if((src.get_exp_living(TRUE)/60) < req_hours)
 			if(feedback)
 				to_chat(src, "<span class='warning'>You do not have enough living hours to take this role ([req_hours]hrs required)!</span>")

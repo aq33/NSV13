@@ -2,6 +2,7 @@
 	icon = 'icons/mob/screen_ghost.dmi'
 
 /atom/movable/screen/ghost/MouseEntered()
+	..() // AQ EDIT - screentips potrzebują /atom/MouseEntered() (port BeeStation #11938)
 	flick(icon_state + "_anim", src)
 
 /atom/movable/screen/ghost/jumptomob

@@ -26,7 +26,7 @@
 	maxHealth = 350
 	health = 350
 	spacewalk = TRUE
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0.5, OXY = 1)
 	speed = 0
 	attacktext = "chrupie"
@@ -418,7 +418,7 @@
 	message = treat_message_min(message)
 	log_talk(message, LOG_SAY)
 	var/message_a = say_quote(message)
-	var/rendered = "<font color=\"#44aaff\">Karpiowa Mowa Fal <span class='name'>[shown_name]</span> <span class='message'>[message_a]</span></font>"
+	var/rendered = "<span class='carpspeak'>Karpiowa Mowa Fal <span class='name'>[shown_name]</span> <span class='message'>[message_a]</span></span>" // AQ EDIT - port BeeStation #9908
 	if(istype(src, /mob/living/simple_animal/hostile/space_dragon))
 		rendered = "<span class='big'>[rendered]</span>"
 	for(var/mob/S in GLOB.player_list)

@@ -304,6 +304,9 @@
 	set name = "a-intent"
 	set hidden = 1
 
+	if(combat_mode_intent_change(input)) // AQ EDIT - port Bee #11899: w combat mode intencje tylko przełączają tryb walki
+		return
+
 	if(!possible_a_intents || !possible_a_intents.len)
 		return
 
@@ -331,6 +334,7 @@
 
 	if(hud_used && hud_used.action_intent)
 		hud_used.action_intent.icon_state = "[a_intent]"
+	legacy_intent_changed() // AQ EDIT - port Bee #11899: w starym trybie harm włącza combat mode
 
 ///Checks if passed through item is blind
 /proc/is_blind(A)
@@ -605,6 +609,8 @@
 	if(stat == DEAD) // Dead guys and silicons can always see reagents
 		return TRUE
 	else if(has_unlimited_silicon_privilege)
+		return TRUE
+	else if(HAS_TRAIT(src, TRAIT_REAGENT_SCANNER))
 		return TRUE
 	else if(HAS_TRAIT(src, TRAIT_BARMASTER)) // If they're a bar master, they know what reagents are at a glance
 		return TRUE

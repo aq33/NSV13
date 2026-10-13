@@ -20888,7 +20888,7 @@
 /area/medical/patients_rooms/room_a)
 "pum" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/structure/cable,
 /turf/open/floor/carpet/ship/red_carpet,
 /area/crew_quarters/heads/hos)
@@ -27301,7 +27301,7 @@
 /turf/open/floor/engine,
 /area/engine/shield_generator)
 "uhP" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet/ship/blue,
 /area/crew_quarters/heads/cmo)
 "uiu" = (

@@ -40,6 +40,8 @@
 	var/movement_type = GROUND		//Incase you have multiple types, you automatically use the most useful one. IE: Skating on ice, flippers on water, flying over chasm/space, etc.
 	var/atom/movable/pulling
 	var/grab_state = 0
+	/// The strongest grab we can acomplish
+	var/max_grab = GRAB_KILL
 	var/throwforce = 0
 	var/datum/component/orbiter/orbiting
 	var/can_be_z_moved = TRUE
@@ -79,8 +81,11 @@
 
 	if(pulling)
 		stop_pulling()
-	if(light_system == MOVABLE_LIGHT)
-		AddComponent(/datum/component/overlay_lighting)
+	switch(light_system)
+		if(MOVABLE_LIGHT)
+			AddComponent(/datum/component/overlay_lighting)
+		if(MOVABLE_LIGHT_DIRECTIONAL)
+			AddComponent(/datum/component/overlay_lighting, is_directional = TRUE)
 
 
 /atom/movable/proc/update_emissive_block()
@@ -201,6 +206,7 @@
 				AMob.grabbedby(src)
 			return TRUE
 		stop_pulling()
+
 	if(AM.pulledby)
 		log_combat(AM, AM.pulledby, "pulled from", src)
 		AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
@@ -473,7 +479,6 @@
 	return TRUE
 
 /atom/movable/Destroy(force)
-	QDEL_NULL(proximity_monitor)
 	QDEL_NULL(language_holder)
 
 	unbuckle_all_mobs(force=1)
@@ -637,6 +642,9 @@
 //movement_dir == 0 when stopping or any dir when trying to move
 /atom/movable/proc/Process_Spacemove(movement_dir = 0)
 	if(has_gravity(src))
+		return 1
+
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_SPACEMOVE, movement_dir) & COMSIG_MOVABLE_STOP_SPACEMOVE)
 		return 1
 
 	if(pulledby)
@@ -918,6 +926,8 @@
 /atom/movable/proc/float(on)
 	if(throwing)
 		return
+	if(HAS_TRAIT(src, TRAIT_NO_FLOATING_ANIM))
+		on = FALSE
 	if(on && !(movement_type & FLOATING))
 		animate(src, pixel_y = 2, time = 10, loop = -1, flags = ANIMATION_RELATIVE)
 		animate(pixel_y = -2, time = 10, loop = -1, flags = ANIMATION_RELATIVE)
@@ -1025,8 +1035,11 @@
 		return FALSE
 	return TRUE
 
-/// Updates the grab state of the movable
-/// This exists to act as a hook for behaviour
+/**
+ * Updates the grab state of the movable
+ *
+ * This exists to act as a hook for behaviour
+ */
 /atom/movable/proc/setGrabState(newstate)
 	grab_state = newstate
 

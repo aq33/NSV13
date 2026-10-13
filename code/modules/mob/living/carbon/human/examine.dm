@@ -273,7 +273,7 @@
 
 	if(ismob(user))
 		if(HAS_TRAIT(user, TRAIT_EMPATH) && !appears_dead && (src != user))
-			if (a_intent != INTENT_HELP)
+			if (combat_mode)
 				msg += "Wydaje się czujny.\n"
 			if (getOxyLoss() >= 10)
 				msg += "Wydaje się zdyszany.\n"

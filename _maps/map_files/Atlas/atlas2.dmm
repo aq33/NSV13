@@ -842,7 +842,7 @@
 /turf/closed/wall/r_wall,
 /area/ai_monitored/turret_protected/ai)
 "bI" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "bJ" = (
@@ -851,7 +851,7 @@
 /area/maintenance/department/science/xenobiology)
 "bK" = (
 /obj/structure/cable,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -2574,7 +2574,7 @@
 /turf/open/floor/durasteel/alt,
 /area/crew_quarters/fitness/recreation)
 "hh" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/structure/cable,
 /turf/open/floor/durasteel/techfloor,
 /area/ai_monitored/turret_protected/aisat)

@@ -22,7 +22,7 @@
 		return
 
 	if(istype(M))
-		if(user.a_intent == INTENT_HARM)
+		if(user.combat_mode)
 			var/R
 			M.visible_message("<span class='danger'>[user] chlusta zawartością [src] na [M]!</span>", \
 							"<span class='userdanger'>[user] chlusta na ciebie zawartością [src]!</span>")
@@ -88,7 +88,7 @@
 		to_chat(user, "<span class='notice'>Napełniasz [src] [trans] j. zawartości [target].</span>")
 
 	else if(reagents.total_volume)
-		if(user.a_intent == INTENT_HARM)
+		if(user.combat_mode)
 			user.visible_message("<span class='danger'>[user] chlusta zawartością [src] na [target]!</span>", \
 								"<span class='notice'>Chlustasz zawartością [src] na [target].</span>")
 			reagents.reaction(target, TOUCH)
@@ -357,7 +357,7 @@
 	. = ..()
 
 /obj/item/reagent_containers/glass/waterbottle/afterattack(obj/target, mob/user, proximity)
-	if(cap_on && (target.is_refillable() || target.is_drainable() || (reagents.total_volume && user.a_intent == INTENT_HARM)))
+	if(cap_on && (target.is_refillable() || target.is_drainable() || (reagents.total_volume && user.combat_mode)))
 		to_chat(user, "<span class='warning'>Zanim to zrobisz, musisz zdjąć nakrętkę!</span>")
 		return
 

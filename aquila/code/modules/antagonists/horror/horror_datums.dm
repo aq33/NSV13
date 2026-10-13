@@ -17,6 +17,18 @@
 		var/mob/living/simple_animal/horror/H = owner.current
 		H.update_horror_hud()
 
+/// Admin panel: a horror has to live in its own body, so a human gets turned into one first
+/datum/antagonist/horror/admin_add(datum/mind/new_owner, mob/admin)
+	var/mob/living/old_body = new_owner.current
+	if(!ishorror(old_body))
+		var/mob/living/simple_animal/horror/H = new(get_turf(old_body))
+		new_owner.transfer_to(H, TRUE)
+		if(old_body)
+			qdel(old_body)
+	. = ..()
+	var/mob/living/simple_animal/horror/H = new_owner.current
+	to_chat(H, H.playstyle_string)
+
 /datum/antagonist/horror/antag_listing_name()
 	. = ..()
 	var/mob/living/simple_animal/horror/H = owner.current
@@ -140,42 +152,58 @@
 	. = ..()
 	to_chat(user, "<span class='velvet bold'>Zastosowania:</span>")
 	to_chat(user, "<span class='velvet'><b>Wszystkie ataki działają do 2 pól.</b></span>")
-	to_chat(user, "<span class='velvet'><b>Intencja pomocy:</b> zwykła funkcja ręki.</span>")
-	to_chat(user, "<span class='velvet'><b>Intencja rozbrojenia:</b> smagnięcie macką, które rozbraja przeciwnika.</span>")
-	to_chat(user, "<span class='velvet'><b>Intencja chwytu:</b> natychmiastowy agresywny chwyt przeciwnika. Możesz też nim rzucić!</span>")
-	to_chat(user, "<span class='velvet'><b>Intencja ataku:</b> smagnięcie macką, które rani przeciwnika.</span>")
+	to_chat(user, "<span class='velvet'><b>Lewy przycisk bez trybu walki:</b> zwykła funkcja ręki.</span>")
+	to_chat(user, "<span class='velvet'><b>Prawy przycisk bez trybu walki:</b> smagnięcie macką, które rozbraja przeciwnika.</span>")
+	to_chat(user, "<span class='velvet'><b>Prawy przycisk w trybie walki:</b> natychmiastowy agresywny chwyt przeciwnika. Możesz też nim rzucić!</span>")
+	to_chat(user, "<span class='velvet'><b>Lewy przycisk w trybie walki:</b> smagnięcie macką, które rani przeciwnika.</span>")
 	to_chat(user, "<span class='velvet'>Służy też do podważania niezablokowanych śluz.</span>")
 
-/obj/item/horrortentacle/attack(atom/target, mob/living/user)
+/obj/item/horrortentacle/attack(atom/target, mob/living/user, params)
 	if(isliving(target))
-		user.Beam(target, "purpletentacle", 'aquila/icons/effects/horror_beam.dmi', time=5)
 		var/mob/living/L = target
-		switch(user.a_intent)
-			if(INTENT_HELP)
-				L.attack_hand(user)
-				return
-			if(INTENT_GRAB)
-				if(L != user)
-					L.grabbedby(user)
-					L.grippedby(user, instant = TRUE)
-					L.Knockdown(30)
-				return
-			if(INTENT_DISARM)
-				if(iscarbon(L))
-					var/mob/living/carbon/C = L
-					var/obj/item/I = C.get_active_held_item()
-					if(I)
-						if(C.dropItemToGround(I))
-							playsound(loc, "sound/weapons/whipgrab.ogg", 30)
-							target.visible_message("<span class='danger'>[user] wytrąca macką [I] z ręki [C]!</span>","<span class='userdanger'>Macka wytrąca ci [I] z ręki!</span>")
-							return
-						else
-							to_chat(user, "<span class='danger'>Nie możesz wyrwać [I] z rąk [C]!</span>")
-							return
-					else
-						C.attack_hand(user)
-						return
+		// AQ EDIT - port Bee #11899: w starym trybie intencja chwytu nadal chwyta macką
+		if(user.uses_legacy_intents() && user.a_intent == INTENT_GRAB)
+			user.Beam(target, "purpletentacle", 'aquila/icons/effects/horror_beam.dmi', time=5)
+			tentacle_grab(L, user)
+			return
+		if(!user.combat_mode)
+			user.Beam(target, "purpletentacle", 'aquila/icons/effects/horror_beam.dmi', time=5)
+			L.attack_hand(user)
+			return
+		user.Beam(target, "purpletentacle", 'aquila/icons/effects/horror_beam.dmi', time=5)
 	. = ..()
+
+/// Port Bee #11899: prawy przycisk to smagnięcie rozbrajające, a w combat mode chwyt
+/obj/item/horrortentacle/attack_secondary(mob/living/victim, mob/living/user, params)
+	if(!isliving(victim))
+		return SECONDARY_ATTACK_CALL_NORMAL
+	user.Beam(victim, "purpletentacle", 'aquila/icons/effects/horror_beam.dmi', time=5)
+	if(user.combat_mode)
+		tentacle_grab(victim, user)
+	else
+		tentacle_disarm(victim, user)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/item/horrortentacle/proc/tentacle_grab(mob/living/L, mob/living/user)
+	if(L == user)
+		return
+	L.grabbedby(user)
+	L.grippedby(user, instant = TRUE)
+	L.Knockdown(30)
+
+/obj/item/horrortentacle/proc/tentacle_disarm(mob/living/L, mob/living/user)
+	if(!iscarbon(L))
+		return
+	var/mob/living/carbon/C = L
+	var/obj/item/I = C.get_active_held_item()
+	if(!I)
+		C.attack_hand(user, list(RIGHT_CLICK = "1"))
+		return
+	if(C.dropItemToGround(I))
+		playsound(loc, "sound/weapons/whipgrab.ogg", 30)
+		C.visible_message("<span class='danger'>[user] wytrąca macką [I] z ręki [C]!</span>","<span class='userdanger'>Macka wytrąca ci [I] z ręki!</span>")
+	else
+		to_chat(user, "<span class='danger'>Nie możesz wyrwać [I] z rąk [C]!</span>")
 
 /obj/item/horrortentacle/afterattack(atom/target, mob/user, proximity)
 	if(isliving(user.pulling) && user.pulling != target)

@@ -29,7 +29,8 @@
 		update_name()
 	forge_objectives()
 	equipERT()
-	owner.store_memory("Wspólna częstotliwość radiolatarni twojej drużyny to [ert_team.ert_frequency].")
+	if(ert_team) //AQUILA EDIT - oficjel CentComu może nie mieć drużyny
+		owner.store_memory("Wspólna częstotliwość radiolatarni twojej drużyny to [ert_team.ert_frequency].")
 	. = ..()
 
 /datum/antagonist/ert/get_team()

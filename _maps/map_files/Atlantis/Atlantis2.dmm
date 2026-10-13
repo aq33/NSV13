@@ -3899,7 +3899,7 @@
 	dir = 4
 	},
 /obj/structure/cable/green,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/monotile/steel,
 /area/ai_monitored/turret_protected/ai)
 "dYH" = (
@@ -5906,7 +5906,7 @@
 /turf/open/floor/carpet/ship/beige_carpet,
 /area/crew_quarters/heads/xo)
 "gaR" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/plasteel/grid/steel,
 /area/ai_monitored/turret_protected/aisat/foyer)
 "gbQ" = (
@@ -18745,7 +18745,7 @@
 /area/hallway/nsv/deck1/hallway)
 "uaj" = (
 /obj/structure/cable,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -21434,7 +21434,7 @@
 /turf/open/floor/engine/airless,
 /area/space/nearstation)
 "wIh" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/cmo)
 "wIl" = (

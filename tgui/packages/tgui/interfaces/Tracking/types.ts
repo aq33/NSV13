@@ -6,7 +6,7 @@ export type TrackingData = {
 export type Trackable = {
   health?: number;
   job?: string;
-  role_icon?: string ;
+  role_icon?: string;
   name?: string;
   ref: string;
 };

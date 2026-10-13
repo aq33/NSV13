@@ -8,7 +8,7 @@
 	gender = NEUTER
 	mob_biotypes = list()
 	melee_damage = 5
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	attacktext = "bodzie"
 	maxHealth = 100
 	health = 100
@@ -71,3 +71,11 @@
 
 /mob/living/simple_animal/hostile/illusion/escape/AttackingTarget()
 	return FALSE
+
+/mob/living/simple_animal/hostile/illusion/mirage
+	AIStatus = AI_OFF
+	density = FALSE
+
+/mob/living/simple_animal/hostile/illusion/mirage/death(gibbed)
+	do_sparks(rand(3, 6), FALSE, src)
+	return ..()

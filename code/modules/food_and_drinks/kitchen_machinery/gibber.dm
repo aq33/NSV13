@@ -64,7 +64,7 @@
 /obj/machinery/gibber/relaymove(mob/living/user)
 	go_out()
 
-/obj/machinery/gibber/attack_hand(mob/user)
+/obj/machinery/gibber/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -78,7 +78,7 @@
 		to_chat(user, "<span class='notice'>[src] nie może być używana, dopóki nie zostanie przykręcona do podłoża.</span>")
 		return
 
-	if(user.pulling && user.a_intent == INTENT_GRAB && isliving(user.pulling))
+	if(user.pulling && isliving(user.pulling))
 		var/mob/living/L = user.pulling
 		if(!iscarbon(L))
 			to_chat(user, "<span class='danger'>Ten przedmiot nie nadaje się do rozdrabniarki!</span>")
@@ -128,8 +128,9 @@
 	set category = "Object"
 	set name = "empty gibber"
 	set src in oview(1)
-
 	if(usr.incapacitated())
+		return
+	if(!usr.canUseTopic())
 		return
 	src.go_out()
 	add_fingerprint(usr)

@@ -149,7 +149,7 @@
 			return inv_item.Click(location, control, params)
 
 	//Putting into something (if its not in us)
-	if(usr.attack_ui(slot_id))
+	if(usr.attack_ui(slot_id, params))
 		usr.update_inv_hands()
 	return TRUE
 
@@ -290,38 +290,49 @@
 	if(usr.stat == CONSCIOUS)
 		usr.dropItemToGround(usr.get_active_held_item())
 
-/atom/movable/screen/act_intent
-	name = "intent"
-	icon_state = "help"
-	screen_loc = ui_acti
+/atom/movable/screen/combattoggle
+	name = "tryb walki"
+	icon = 'icons/mob/screen_midnight.dmi'
+	icon_state = "combat_off"
+	screen_loc = ui_combat_toggle
 
-/atom/movable/screen/act_intent/Click(location, control, params)
-	usr.a_intent_change(INTENT_HOTKEY_RIGHT)
+/atom/movable/screen/combattoggle/New(loc, ...)
+	. = ..()
+	update_icon()
 
-/atom/movable/screen/act_intent/segmented/Click(location, control, params)
-	if(usr.client.prefs.toggles & PREFTOGGLE_INTENT_STYLE)
-		var/_x = text2num(params2list(params)["icon-x"])
-		var/_y = text2num(params2list(params)["icon-y"])
+/atom/movable/screen/combattoggle/Click()
+	if(isliving(usr))
+		var/mob/living/owner = usr
+		owner.set_combat_mode(!owner.combat_mode, FALSE)
+		update_icon()
 
-		if(_x<=16 && _y<=16)
-			usr.a_intent_change(INTENT_HARM)
+/atom/movable/screen/combattoggle/update_icon_state()
+	var/mob/living/user = hud?.mymob
+	if(!istype(user) || !user.client)
+		return
+	icon_state = user.combat_mode ? "combat" : "combat_off" //Treats the combat_mode
+	return ..()
 
-		else if(_x<=16 && _y>=17)
-			usr.a_intent_change(INTENT_HELP)
+//Version of the combat toggle with the flashy overlay
+/atom/movable/screen/combattoggle/flashy
+	///Mut appearance for flashy border
+	var/mutable_appearance/flashy
 
-		else if(_x>=17 && _y<=16)
-			usr.a_intent_change(INTENT_GRAB)
+/atom/movable/screen/combattoggle/flashy/update_overlays()
+	. = ..()
+	var/mob/living/user = hud?.mymob
+	if(!istype(user) || !user.client)
+		return
 
-		else if(_x>=17 && _y>=17)
-			usr.a_intent_change(INTENT_DISARM)
-	else
-		return ..()
+	if(!user.combat_mode)
+		return
 
-/atom/movable/screen/act_intent/alien
-	icon = 'icons/mob/screen_alien.dmi'
-	screen_loc = ui_movi
+	if(!flashy)
+		flashy = mutable_appearance('icons/mob/screen_gen.dmi', "togglefull_flash")
+		flashy.color = "#C62727"
+	. += flashy
 
-/atom/movable/screen/act_intent/robot
+/atom/movable/screen/combattoggle/robot
 	icon = 'icons/mob/screen_cyborg.dmi'
 	screen_loc = ui_borg_intents
 
@@ -342,7 +353,8 @@
 		to_chat(C, "<span class='notice'>Przestajesz oddychać z butli.</span>")
 		icon_state = "internal0"
 	else
-		if(!C.getorganslot(ORGAN_SLOT_BREATHING_TUBE))
+		var/obj/item/clothing/helmet = C.head
+		if(!C.getorganslot(ORGAN_SLOT_BREATHING_TUBE) && !(istype(helmet) && (helmet.clothing_flags & HEADINTERNALS)))
 			if(!istype(C.wear_mask, /obj/item/clothing/mask))
 				to_chat(C, "<span class='warning'>Nie masz na sobie maski do oddychania!</span>")
 				return 1
@@ -515,6 +527,7 @@
 	return set_selected_zone(choice, usr)
 
 /atom/movable/screen/zone_sel/MouseEntered(location, control, params)
+	..() // AQ EDIT - screentips potrzebują /atom/MouseEntered() (port BeeStation #11938)
 	MouseMove(location, control, params)
 
 /atom/movable/screen/zone_sel/MouseMove(location, control, params)
@@ -669,8 +682,8 @@
 
 /atom/movable/screen/healths/blob/naut/core
 	name = "overmind health"
-	screen_loc = ui_health
 	icon_state = "corehealth"
+	screen_loc = ui_health
 
 /atom/movable/screen/healths/guardian
 	name = "summoner health"
@@ -792,3 +805,34 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/splash)
 /atom/movable/screen/component_button/Click(params)
 	if(parent)
 		parent.component_click(src, params)
+
+/atom/movable/screen/combo
+	icon_state = ""
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	screen_loc = ui_combo
+	plane = ABOVE_HUD_PLANE
+	var/timerid
+
+/atom/movable/screen/combo/proc/clear_streak()
+	animate(src, alpha = 0, 2 SECONDS, SINE_EASING)
+	timerid = addtimer(CALLBACK(src, PROC_REF(reset_icons)), 2 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
+
+/atom/movable/screen/combo/proc/reset_icons()
+	cut_overlays()
+	icon_state = ""
+
+/atom/movable/screen/combo/update_icon_state(streak = "", time = 2 SECONDS)
+	reset_icons()
+	if(timerid)
+		deltimer(timerid)
+	alpha = 255
+	if(!streak)
+		return ..()
+	timerid = addtimer(CALLBACK(src, PROC_REF(clear_streak)), time, TIMER_UNIQUE | TIMER_STOPPABLE)
+	icon_state = "combo"
+	for(var/i = 1; i <= length(streak); ++i)
+		var/intent_text = copytext(streak, i, i + 1)
+		var/image/intent_icon = image(icon,src,"combo_[intent_text]")
+		intent_icon.pixel_x = 16 * (i - 1) - 8 * length(streak)
+		add_overlay(intent_icon)
+	return ..()

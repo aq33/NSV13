@@ -62,7 +62,7 @@
 	if(usr.next_click > world.time)
 		return
 	usr.next_click = world.time + 1
-	linked_action.Trigger()
+	linked_action.Trigger((modifiers["right"] || modifiers["alt"]) ? TRIGGER_SECONDARY_ACTION : NONE)
 	SEND_SOUND(usr, 'sound/effects/pop.ogg')
 	transform = turn(matrix() * 0.9, pick(-8, 8))
 	alpha = 200
@@ -149,6 +149,7 @@
 
 
 /atom/movable/screen/movable/action_button/MouseEntered(location,control,params)
+	..() // AQ EDIT - screentips potrzebują /atom/MouseEntered() (port BeeStation #11938)
 	if(!QDELETED(src))
 		openToolTip(usr,src,params,title = name,content = desc,theme = actiontooltipstyle)
 

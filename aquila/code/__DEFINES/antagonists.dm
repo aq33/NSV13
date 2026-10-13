@@ -9,3 +9,6 @@
 #define WEIGHTED_POOL_LOW "low"
 #define WEIGHTED_POOL_MEDIUM "medium"
 #define WEIGHTED_POOL_HIGH "high"
+
+/// Powyżej tej jasności pola demon cieni się pali i nie może wejść w cień (wartość z Paradise)
+#define SHADOW_DEMON_LIGHT_THRESHOLD 0.2

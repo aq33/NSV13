@@ -88,7 +88,7 @@
 		user.transferItemToLoc(O, src, TRUE)
 		return 1
 	else
-		if(user.a_intent != INTENT_HARM)
+		if(!user.combat_mode)
 			to_chat(user, "<span class='warning'>Tego raczej nie da się zmiksować!</span>")
 			return 1
 		else
@@ -98,7 +98,7 @@
 	if(processing)
 		to_chat(user, "<span class='warning'>[src] jest w trakcie przetwarzania!</span>")
 		return TRUE
-	if(user.a_intent == INTENT_GRAB && ismob(user.pulling) && select_recipe(user.pulling))
+	if(ismob(user.pulling) && select_recipe(user.pulling))
 		if(user.grab_state < GRAB_AGGRESSIVE)
 			to_chat(user, "<span class='warning'>Potrzebujesz lepszego chwytu, żeby to zrobić!</span>")
 			return
@@ -171,6 +171,8 @@
 	name = "slime processor"
 	desc = "An industrial grinder with a sticker saying appropriated for science department. Keep hands clear of intake area while operating."
 	var/sbacklogged = FALSE
+	///Proximity monitor associated with this atom, needed for proximity checks.
+	var/datum/proximity_monitor/proximity_monitor
 
 /obj/machinery/processor/slime/Initialize(mapload)
 	. = ..()

@@ -4,128 +4,52 @@
  * @license MIT
  */
 
-/**
- * Converts a given collection to an array.
- *
- * - Arrays are returned unmodified;
- * - If object was provided, keys will be discarded;
- * - Everything else will result in an empty array.
- *
- * @returns {any[]}
- */
-export const toArray = collection => {
-  if (Array.isArray(collection)) {
-    return collection;
+const binarySearch = <T, U = unknown>(
+  getKey: (value: T) => U,
+  collection: readonly T[],
+  inserting: T,
+): number => {
+  if (collection.length === 0) {
+    return 0;
   }
-  if (typeof collection === 'object') {
-    const hasOwnProperty = Object.prototype.hasOwnProperty;
-    const result = [];
-    for (let i in collection) {
-      if (hasOwnProperty.call(collection, i)) {
-        result.push(collection[i]);
-      }
+
+  const insertingKey = getKey(inserting);
+
+  let [low, high] = [0, collection.length];
+
+  // Because we have checked if the collection is empty, it's impossible
+  // for this to be used before assignment.
+  let compare: U = undefined as unknown as U;
+  let middle = 0;
+
+  while (low < high) {
+    middle = (low + high) >> 1;
+
+    compare = getKey(collection[middle]);
+
+    if (compare < insertingKey) {
+      low = middle + 1;
+    } else if (compare === insertingKey) {
+      return middle;
+    } else {
+      high = middle;
     }
-    return result;
   }
-  return [];
+
+  return compare > insertingKey ? middle : middle + 1;
 };
 
-/**
- * Converts a given object to an array, and appends a key to every
- * object inside of that array.
- *
- * Example input (object):
- * ```
- * {
- *   'Foo': { info: 'Hello world!' },
- *   'Bar': { info: 'Hello world!' },
- * }
- * ```
- *
- * Example output (array):
- * ```
- * [
- *   { key: 'Foo', info: 'Hello world!' },
- *   { key: 'Bar', info: 'Hello world!' },
- * ]
- * ```
- *
- * @template T
- * @param {{ [key: string]: T }} obj Object, or in DM terms, an assoc array
- * @param {string} keyProp Property, to which key will be assigned
- * @returns {T[]} Array of keyed objects
- */
-export const toKeyedArray = (obj, keyProp = 'key') => {
-  return map((item, key) => ({
-    [keyProp]: key,
-    ...item,
-  }))(obj);
+export const binaryInsertWith = <T, U = unknown>(
+  collection: readonly T[],
+  value: T,
+  getKey: (value: T) => U,
+): T[] => {
+  const copy = [...collection];
+  copy.splice(binarySearch(getKey, collection, value), 0, value);
+  return copy;
 };
 
-/** NSV13 - TGUI Core/Style Updates Minor Upstream Port - Start
- * Iterates over elements of collection, returning an array of all elements
- * iteratee returns truthy for. The predicate is invoked with three
- * arguments: (value, index|key, collection).
- *
- * If collection is 'null' or 'undefined', it will be returned "as is"
- * without emitting any errors (which can be useful in some cases).
- *
- * @returns {any[]}
- */
-export const filter
-  = <T>(iterateeFn: (input: T, index: number, collection: T[]) => boolean) =>
-    (collection: T[]): T[] => {
-      if (collection === null || collection === undefined) {
-        return collection;
-      }
-      if (Array.isArray(collection)) {
-        const result: T[] = [];
-        for (let i = 0; i < collection.length; i++) {
-          const item = collection[i];
-          if (iterateeFn(item, i, collection)) {
-            result.push(item);
-          }
-        }
-        return result;
-      }
-      throw new Error(`filter() can't iterate on type ${typeof collection}`);
-    };
-// NSV13 - TGUI Core/Style Updates Minor Upstream Port - Stop
-
-/**
- * Creates an array of values by running each element in collection
- * thru an iteratee function. The iteratee is invoked with three
- * arguments: (value, index|key, collection).
- *
- * If collection is 'null' or 'undefined', it will be returned "as is"
- * without emitting any errors (which can be useful in some cases).
- *
- * @returns {any[]}
- */
-export const map = iterateeFn => collection => {
-  if (collection === null && collection === undefined) {
-    return collection;
-  }
-  if (Array.isArray(collection)) {
-    const result = [];
-    for (let i = 0; i < collection.length; i++) {
-      result.push(iterateeFn(collection[i], i, collection));
-    }
-    return result;
-  }
-  if (typeof collection === 'object') {
-    const hasOwnProperty = Object.prototype.hasOwnProperty;
-    const result = [];
-    for (let i in collection) {
-      if (hasOwnProperty.call(collection, i)) {
-        result.push(iterateeFn(collection[i], i, collection));
-      }
-    }
-    return result;
-  }
-  throw new Error(`map() can't iterate on type ${typeof collection}`);
-};
-
+// Needed by Fabricator.tsx
 const COMPARATOR = (objA, objB) => {
   const criteriaA = objA.criteria;
   const criteriaB = objB.criteria;
@@ -143,156 +67,121 @@ const COMPARATOR = (objA, objB) => {
   return 0;
 };
 
-/** NSV13 - TGUI Core/Style Updates Minor Upstream Port - Start
+/**
  * Creates an array of elements, sorted in ascending order by the results
  * of running each element in a collection thru each iteratee.
  *
  * Iteratees are called with one argument (value).
- *
- * @returns {any[]}
  */
-export const sortBy
-  = <T>(...iterateeFns: ((input: T) => unknown)[]) =>
-    (array: T[]): T[] => {
-      if (!Array.isArray(array)) {
-        return array;
-      }
-      let length = array.length;
-      // Iterate over the array to collect criteria to sort it by
-      let mappedArray: {
+export const sortBy =
+  <T = any>(...iterateeFns: ((input: T) => unknown)[]) =>
+  (array: T[]): T[] => {
+    if (!Array.isArray(array)) {
+      return array;
+    }
+    let length = array.length;
+    // Iterate over the array to collect criteria to sort it by
+    let mappedArray: {
       criteria: unknown[];
       value: T;
     }[] = [];
-      for (let i = 0; i < length; i++) {
-        const value = array[i];
-        mappedArray.push({
-          criteria: iterateeFns.map((fn) => fn(value)),
-          value,
-        });
-      }
-      // Sort criteria using the base comparator
-      mappedArray.sort(COMPARATOR);
+    for (let i = 0; i < length; i++) {
+      const value = array[i];
+      mappedArray.push({
+        criteria: iterateeFns.map((fn) => fn(value)),
+        value,
+      });
+    }
+    // Sort criteria using the base comparator
+    mappedArray.sort(COMPARATOR);
 
-      // Unwrap values
-      const values: T[] = [];
-      while (length--) {
-        values[length] = mappedArray[length].value;
-      }
-      return values;
-    };
-// NSV13 - TGUI Core/Style Updates Minor Upstream Port - Stop
+    // Unwrap values
+    const values: T[] = [];
+    while (length--) {
+      values[length] = mappedArray[length].value;
+    }
+    return values;
+  };
+
+// AQUILA: curried helpers from our pre-React tgui (removed upstream in BeeStation#14299),
+// kept because our interfaces still use them. They work on arrays and on DM assoc lists (objects).
 
 /**
+ * Converts a given collection to an array.
  *
- * returns a range of numbers from start to end, exclusively.
- * for example, range(0, 5) will return [0, 1, 2, 3, 4].
+ * - Arrays are returned unmodified;
+ * - If object was provided, keys will be discarded;
+ * - Everything else will result in an empty array.
+ */
+export const toArray = (collection: any): any[] => {
+  if (Array.isArray(collection)) {
+    return collection;
+  }
+  if (collection && typeof collection === 'object') {
+    return Object.keys(collection).map((key) => collection[key]);
+  }
+  return [];
+};
+
+/**
+ * Iterates over elements of collection, returning an array of all elements
+ * iteratee returns truthy for. If collection is null or undefined, it is returned as is.
+ */
+export const filter =
+  <T = any>(iterateeFn: (input: T, index: number, collection: T[]) => any) =>
+  (collection: T[]): T[] => {
+    if (collection === null || collection === undefined) {
+      return collection;
+    }
+    if (Array.isArray(collection)) {
+      return collection.filter((item, i) => iterateeFn(item, i, collection));
+    }
+    throw new Error(`filter() can't iterate on type ${typeof collection}`);
+  };
+
+/**
+ * Creates an array of values by running each element in collection
+ * thru an iteratee function: (value, index|key, collection).
+ */
+export const map =
+  <T = any, R = any>(iterateeFn: (value: T, key: any, collection: any) => R) =>
+  (collection: any): R[] => {
+    if (collection === null || collection === undefined) {
+      return collection;
+    }
+    if (Array.isArray(collection)) {
+      return collection.map((item, i) => iterateeFn(item, i, collection));
+    }
+    if (typeof collection === 'object') {
+      return Object.keys(collection).map((key) =>
+        iterateeFn(collection[key], key, collection),
+      );
+    }
+    throw new Error(`map() can't iterate on type ${typeof collection}`);
+  };
+
+/**
+ * Returns a range of numbers from start to end, exclusively.
+ * For example, range(0, 5) will return [0, 1, 2, 3, 4].
  */
 export const range = (start: number, end: number): number[] =>
   new Array(end - start).fill(null).map((_, index) => index + start);
 
 /**
- * A fast implementation of reduce.
+ * Creates a duplicate-free version of an array, keeping the first occurrence
+ * of every value (or of every value of iterateeFn).
  */
-export const reduce = (reducerFn, initialValue) => array => {
-  const length = array.length;
-  let i;
-  let result;
-  if (initialValue === undefined) {
-    i = 1;
-    result = array[0];
-  }
-  else {
-    i = 0;
-    result = initialValue;
-  }
-  for (; i < length; i++) {
-    result = reducerFn(result, array[i], i, array);
-  }
-  return result;
-};
-
-/**
- * Creates a duplicate-free version of an array, using SameValueZero for
- * equality comparisons, in which only the first occurrence of each element
- * is kept. The order of result values is determined by the order they occur
- * in the array.
- *
- * It accepts iteratee which is invoked for each element in array to generate
- * the criterion by which uniqueness is computed. The order of result values
- * is determined by the order they occur in the array. The iteratee is
- * invoked with one argument: value.
- */
-/* eslint-disable indent */
-export const uniqBy = <T extends unknown>(
-  iterateeFn?: (value: T) => unknown
-) => (array: T[]) => {
-  const { length } = array;
-  const result = [];
-  const seen = iterateeFn ? [] : result;
-  let index = -1;
-  outer:
-  while (++index < length) {
-    let value: T | 0 = array[index];
-    const computed = iterateeFn ? iterateeFn(value) : value;
-    value = value !== 0 ? value : 0;
-    if (computed === computed) {
-      let seenIndex = seen.length;
-      while (seenIndex--) {
-        if (seen[seenIndex] === computed) {
-          continue outer;
-        }
+export const uniqBy =
+  <T = any>(iterateeFn?: (value: T) => unknown) =>
+  (array: T[]): T[] => {
+    const seen = new Set<unknown>();
+    const result: T[] = [];
+    for (const value of array) {
+      const computed = iterateeFn ? iterateeFn(value) : value;
+      if (!seen.has(computed)) {
+        seen.add(computed);
+        result.push(value);
       }
-      if (iterateeFn) {
-        seen.push(computed);
-      }
-      result.push(value);
     }
-    else if (!seen.includes(computed)) {
-      if (seen !== result) {
-        seen.push(computed);
-      }
-      result.push(value);
-    }
-  }
-  return result;
-};
-/* eslint-enable indent*/
-
-type Zip<T extends unknown[][]> = {
-  [I in keyof T]: T[I] extends (infer U)[] ? U : never;
-}[];
-
-/**
- * Creates an array of grouped elements, the first of which contains
- * the first elements of the given arrays, the second of which contains
- * the second elements of the given arrays, and so on.
- *
- * @returns {any[]}
- */
-export const zip = <T extends unknown[][]>(...arrays: T): Zip<T> => {
-  if (arrays.length === 0) {
-    return;
-  }
-  const numArrays = arrays.length;
-  const numValues = arrays[0].length;
-  const result = [];
-  for (let valueIndex = 0; valueIndex < numValues; valueIndex++) {
-    const entry = [];
-    for (let arrayIndex = 0; arrayIndex < numArrays; arrayIndex++) {
-      entry.push(arrays[arrayIndex][valueIndex]);
-    }
-    result.push(entry);
-  }
-  return result;
-};
-
-/**
- * This method is like "zip" except that it accepts iteratee to
- * specify how grouped values should be combined. The iteratee is
- * invoked with the elements of each group.
- *
- * @returns {any[]}
- */
-export const zipWith = iterateeFn => (...arrays) => {
-  return map(values => iterateeFn(...values))(zip(...arrays));
-};
+    return result;
+  };

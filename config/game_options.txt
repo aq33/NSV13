@@ -744,7 +744,7 @@ SHIFT_TIME_REALTIME
 ECONOMY
 
 ## Allow withdrawing money from departmental budget cards
-ALLOW_BUDGET_MONEY_WITHDRAWAL
+#ALLOW_BUDGET_MONEY_WITHDRAWAL
 
 ## Allow converting money from your shift end bank balance to metacoins
 ALLOW_ENDROUND_BANK_BALANCE_METACOIN_CONVERSION
@@ -802,6 +802,10 @@ BSMINER_RESEARCHABLE
 
 ## AQ Is shitting enabled?
 SHITTING_ENABLED
+
+## AQ Uncomment to require a minimum number of living hours (required_living_playtime on the antagonist datum)
+## before a player can roll an antagonist role. Disabled by default.
+#ANTAG_LIVING_PLAYTIME_REQUIREMENTS
 
 ## NSV13 Do we want the game to save the starmap at the end of the round?
 STARMAP_PERSISTENCE_ENABLED

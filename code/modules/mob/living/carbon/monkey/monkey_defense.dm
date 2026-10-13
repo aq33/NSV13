@@ -27,15 +27,13 @@
 				affecting = get_bodypart(BODY_ZONE_CHEST)
 			apply_damage(damage, BRUTE, affecting)
 
-/mob/living/carbon/monkey/attack_hand(mob/living/carbon/human/M)
+/mob/living/carbon/monkey/attack_hand(mob/living/carbon/human/M, list/modifiers)
 	if(..())	//To allow surgery to return properly.
 		return
 
-	switch(M.a_intent)
+	switch(LAZYACCESS(modifiers, RIGHT_CLICK) ? "disarm" : (M.combat_mode ? "harm" : "help"))
 		if("help")
 			help_shake_act(M)
-		if("grab")
-			grabbedby(M)
 		if("harm")
 			M.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
 			visible_message("<span class='danger'>[M] punches [name]!</span>", \
@@ -57,9 +55,9 @@
 					"<span class='userdanger'>[M] cię przewraca!</span>")
 				dropItemToGround(get_active_held_item())
 
-/mob/living/carbon/monkey/attack_alien(mob/living/carbon/alien/humanoid/M)
+/mob/living/carbon/monkey/attack_alien(mob/living/carbon/alien/humanoid/M, list/modifiers)
 	if(..()) //if harm or disarm intent.
-		if (M.a_intent == INTENT_HARM)
+		if (M.combat_mode && !LAZYACCESS(modifiers, RIGHT_CLICK))
 			if ((prob(95) && health > 0))
 				playsound(loc, 'sound/weapons/slice.ogg', 25, 1, -1)
 				var/damage = rand(15, 30)
@@ -86,7 +84,7 @@
 				visible_message("<span class='danger'>[M] chybia, rzucając się na [name]!</span>", \
 						"<span class='userdanger'>[M] chybia, rzucając się na ciebie!</span>", null, COMBAT_MESSAGE_RANGE)
 
-		if (M.a_intent == INTENT_DISARM)
+		if (LAZYACCESS(modifiers, RIGHT_CLICK))
 			var/obj/item/I = null
 			playsound(loc, 'sound/weapons/pierce.ogg', 25, 1, -1)
 			if(prob(95))

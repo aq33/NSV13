@@ -220,7 +220,7 @@
 		B = new /obj/item/organ/butt()
 	B?.Insert(src)
 
-// Using the pocket: grab intent on the groin
+// Using the pocket: grab (Ctrl-click, or grab intent in the legacy mode) on the groin
 
 /mob/living/carbon/human/grabbedby(mob/living/carbon/user, supress_message = FALSE)
 	if(user.zone_selected != BODY_ZONE_PRECISE_GROIN)
@@ -246,19 +246,31 @@
 	SEND_SIGNAL(B.inv, COMSIG_TRY_STORAGE_SHOW, user)
 	return FALSE
 
-/datum/species/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, intent, mob/living/carbon/human/H)
-	if(user.zone_selected != BODY_ZONE_PRECISE_GROIN || user.a_intent != INTENT_GRAB)
+// Port Bee #11899: w combat mode chowanie przedmiotu to prawy klik w krocze, w starym trybie intencji zostaje grab
+/mob/living/carbon/human/attackby_secondary(obj/item/I, mob/living/user, params)
+	if(user.zone_selected == BODY_ZONE_PRECISE_GROIN && dna?.species?.try_butt_hide(I, user, src))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	return ..()
+
+/datum/species/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, mob/living/carbon/human/H)
+	if(user.zone_selected != BODY_ZONE_PRECISE_GROIN || !user.uses_legacy_intents() || user.a_intent != INTENT_GRAB)
 		return ..()
+	if(try_butt_hide(I, user, H))
+		return FALSE
+	return ..()
+
+/// Tries to hide I in H's butt. Returns TRUE if the attack was handled.
+/datum/species/proc/try_butt_hide(obj/item/I, mob/living/user, mob/living/carbon/human/H)
 	if(H.w_uniform)
 		H.visible_message("<span class='danger'>[user] szturcha [H == user ? "własny tyłek" : "tyłek [H]"] za pomocą [I].</span>", "<span class='danger'>[user] szturcha cię w tyłek za pomocą [I].</span>")
-		return FALSE
+		return TRUE
 	var/obj/item/organ/butt/B = H.getorganslot(ORGAN_SLOT_BUTT)
 	if(!B?.inv)
-		return ..()
+		return FALSE
 	user.visible_message("<span class='warning'>[user] zaczyna chować [I] w [H == user ? "własnym tyłku" : "tyłku [H]"].</span>", "<span class='warning'>Zaczynasz chować [I] w [H == user ? "swoim tyłku" : "tyłku [H]"].</span>")
 	if(do_mob(user, H, 4 SECONDS) && SEND_SIGNAL(B.inv, COMSIG_TRY_STORAGE_INSERT, I, user, TRUE))
 		user.visible_message("<span class='warning'>[user] chowa [I] w [H == user ? "własnym tyłku" : "tyłku [H]"].</span>", "<span class='warning'>Chowasz [I] w [H == user ? "swoim tyłku" : "tyłku [H]"].</span>")
-	return FALSE
+	return TRUE
 
 /obj/item/clothing/equipped(mob/user, slot)
 	. = ..()

@@ -27,7 +27,7 @@
 		/datum/round_event_control/horror,
 		/datum/round_event_control/infiltrators,
 		/datum/round_event_control/morph,
-		/datum/round_event_control/nightmare,
+		/datum/round_event_control/shadow_demon,
 		/datum/round_event_control/ninja,
 		/datum/round_event_control/operative,
 		/datum/round_event_control/paradox_clone,

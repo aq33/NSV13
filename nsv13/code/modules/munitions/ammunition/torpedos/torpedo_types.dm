@@ -73,7 +73,7 @@
 	if(!isliving(user))
 		return
 	var/mob/living/living_user = user
-	if(living_user.a_intent != INTENT_HELP)
+	if(living_user.combat_mode)
 		return
 	living_user.visible_message("<span class='notice'>[living_user] hugs [src].</span>","<span class='notice'>Przytulasz [src].</span>")
 	playsound(src, pick('sound/items/toysqueak1.ogg', 'sound/items/toysqueak2.ogg', 'sound/items/toysqueak3.ogg'), 30, 1, -1)

@@ -15,6 +15,7 @@
 	var/obj/item/clothing/suit/space/suit = null
 	var/obj/item/clothing/head/helmet/space/helmet = null
 	var/obj/item/clothing/mask/mask = null
+	var/obj/item/mod/control/mod = null
 	var/obj/item/storage = null
 	// if you add more storage slots, update cook() to clear their radiation too.
 
@@ -24,6 +25,8 @@
 	var/helmet_type = null
 	/// What type of breathmask the unit starts with when spawned.
 	var/mask_type = null
+	/// What type of MOD the unit starts with when spawned.
+	var/mod_type = null
 	/// What type of additional item the unit starts with when spawned.
 	var/storage_type = null
 
@@ -60,32 +63,38 @@
 	mask_type = /obj/item/clothing/mask/breath
 
 /obj/machinery/suit_storage_unit/captain
-	suit_type = /obj/item/clothing/suit/space/hardsuit/swat/captain
 	mask_type = /obj/item/clothing/mask/gas/sechailer
 	storage_type = /obj/item/tank/jetpack/oxygen/captain
+	mod_type = /obj/item/mod/control/pre_equipped/magnate
+
+/obj/machinery/suit_storage_unit/centcom
+	mask_type = /obj/item/clothing/mask/gas
+	storage_type = /obj/item/tank/jetpack/oxygen/captain
+	mod_type = /obj/item/mod/control/pre_equipped/corporate
 
 /obj/machinery/suit_storage_unit/engine
-	suit_type = /obj/item/clothing/suit/space/hardsuit/engine
 	mask_type = /obj/item/clothing/mask/breath
+	mod_type = /obj/item/mod/control/pre_equipped/engineering
+	storage_type = /obj/item/clothing/shoes/magboots //AQUILA EDIT - port BeeStation/BeeStation-Hornet#9975
+
+/obj/machinery/suit_storage_unit/atmos
+	mask_type = /obj/item/clothing/mask/gas
+	storage_type = /obj/item/watertank/atmos
+	suit_type = /obj/item/clothing/suit/space/hardsuit/engine/atmos
 
 /obj/machinery/suit_storage_unit/ce
-	suit_type = /obj/item/clothing/suit/space/hardsuit/engine/elite
 	mask_type = /obj/item/clothing/mask/breath
-	storage_type= /obj/item/clothing/shoes/magboots/advance
+	storage_type = /obj/item/clothing/shoes/magboots/advance
+	mod_type = /obj/item/mod/control/pre_equipped/advanced
 
 /obj/machinery/suit_storage_unit/security
 	suit_type = /obj/item/clothing/suit/space/hardsuit/security
 	mask_type = /obj/item/clothing/mask/gas/sechailer
 
 /obj/machinery/suit_storage_unit/hos
-	suit_type = /obj/item/clothing/suit/space/hardsuit/security/head_of_security
 	mask_type = /obj/item/clothing/mask/gas/sechailer
 	storage_type = /obj/item/tank/internals/oxygen
-
-/obj/machinery/suit_storage_unit/atmos
-	suit_type = /obj/item/clothing/suit/space/hardsuit/engine/atmos
-	mask_type = /obj/item/clothing/mask/gas
-	storage_type = /obj/item/watertank/atmos
+	mod_type = /obj/item/mod/control/pre_equipped/safeguard
 
 /obj/machinery/suit_storage_unit/mining
 	suit_type = /obj/item/clothing/suit/hooded/explorer
@@ -99,18 +108,25 @@
 	suit_type = /obj/item/clothing/suit/space/hardsuit/exploration
 	mask_type = /obj/item/clothing/mask/breath
 
-/obj/machinery/suit_storage_unit/cmo
-	suit_type = /obj/item/clothing/suit/space/hardsuit/medical/cmo
+/obj/machinery/suit_storage_unit/medical
 	mask_type = /obj/item/clothing/mask/breath
+	storage_type = /obj/item/tank/internals/oxygen
+	mod_type = /obj/item/mod/control/pre_equipped/medical
+
+/obj/machinery/suit_storage_unit/cmo
+	mask_type = /obj/item/clothing/mask/breath
+	storage_type = /obj/item/gps
+	mod_type = /obj/item/mod/control/pre_equipped/rescue
 
 /obj/machinery/suit_storage_unit/rd
-	suit_type = /obj/item/clothing/suit/space/hardsuit/aquila/hazard_suit //AQUILA EDIT
 	mask_type = /obj/item/clothing/mask/breath
+	mod_type = /obj/item/mod/control/pre_equipped/research
+	storage_type = /obj/item/gps
 
 /obj/machinery/suit_storage_unit/syndicate
-	suit_type = /obj/item/clothing/suit/space/hardsuit/syndi
 	mask_type = /obj/item/clothing/mask/gas/syndicate
 	storage_type = /obj/item/tank/jetpack/oxygen/harness
+	mod_type = /obj/item/mod/control/pre_equipped/nuclear
 
 /obj/machinery/suit_storage_unit/ert/command
 	suit_type = /obj/item/clothing/suit/space/hardsuit/ert
@@ -142,6 +158,9 @@
 	state_open = TRUE
 	density = FALSE
 
+/obj/machinery/suit_storage_unit/loader
+	mod_type = /obj/item/mod/control/pre_equipped/loader
+
 /obj/machinery/suit_storage_unit/Initialize(mapload)
 	. = ..()
 	wires = new /datum/wires/suit_storage_unit(src)
@@ -151,8 +170,11 @@
 		helmet = new helmet_type(src)
 	if(mask_type)
 		mask = new mask_type(src)
+	if(mod_type)
+		mod = new mod_type(src)
 	if(storage_type)
 		storage = new storage_type(src)
+	interaction_flags_machine |= INTERACT_MACHINE_OFFLINE //AQUILA EDIT - radial zamiast TGUI (port BeeStation/BeeStation-Hornet#9975)
 	update_icon()
 
 /obj/machinery/suit_storage_unit/Destroy()
@@ -175,7 +197,7 @@
 			add_overlay("broken")
 		else
 			add_overlay("open")
-			if(suit)
+			if(suit || mod)
 				add_overlay("suit")
 			if(helmet)
 				add_overlay("helm")
@@ -196,6 +218,7 @@
 	helmet = null
 	suit = null
 	mask = null
+	mod = null
 	storage = null
 	occupant = null
 
@@ -203,7 +226,6 @@
 	. = ..()
 	uv_super = !uv_super
 	wires.ui_update()
-	ui_update()
 
 /obj/machinery/suit_storage_unit/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
@@ -287,6 +309,8 @@
 				helmet.take_damage(100,BURN,"fire")
 			if(suit)
 				suit.take_damage(100,BURN,"fire")
+			if(mod)
+				mod.take_damage(100,BURN,"fire")
 			if(mask)
 				mask.take_damage(100,BURN,"fire")
 			if(storage)
@@ -311,6 +335,9 @@
 		if(mask)
 			things_to_clear += mask
 			things_to_clear += mask.GetAllContents()
+		if(mod)
+			things_to_clear += mod
+			things_to_clear += mod.GetAllContents()
 		if(storage)
 			things_to_clear += storage
 			things_to_clear += storage.GetAllContents()
@@ -399,6 +426,13 @@
 			if(!user.transferItemToLoc(I, src))
 				return
 			mask = I
+		else if(istype(I, /obj/item/mod/control))
+			if(mod)
+				to_chat(user, "<span class='warning'>The unit already contains a MOD!</span>")
+				return
+			if(!user.transferItemToLoc(I, src))
+				return
+			mod = I
 		else
 			if(storage)
 				to_chat(user, "<span class='warning'>Dodatkowy schowek jest pełny!</span>")
@@ -409,7 +443,6 @@
 
 		visible_message("<span class='notice'>[user] wkłada [I] do [src]</span>", "<span class='notice'>Ładujesz [I] do [src].</span>")
 		update_icon()
-		ui_update()
 		return
 
 	if(panel_open && is_wire_tool(I))
@@ -417,7 +450,6 @@
 		return
 	if(!state_open)
 		if(default_deconstruction_screwdriver(user, "panel", "close", I))
-			ui_update() // Wires might've changed availability of decontaminate button
 			return
 	if(default_pry_open(I))
 		dump_contents()
@@ -444,84 +476,115 @@
 		open_machine()
 
 
-/obj/machinery/suit_storage_unit/ui_state(mob/user)
-	return GLOB.notcontained_state
+//AQUILA EDIT START - radial zamiast TGUI (port BeeStation/BeeStation-Hornet#9975)
+/obj/machinery/suit_storage_unit/interact(mob/living/user)
+	var/static/list/items
 
-/obj/machinery/suit_storage_unit/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "SuitStorageUnit")
-		ui.open()
+	if(!items)
+		items = list(
+			"suit" = create_silhouette_of(/obj/item/clothing/suit/space/eva),
+			"helmet" = create_silhouette_of(/obj/item/clothing/head/helmet/space/eva),
+			"mask" = create_silhouette_of(/obj/item/clothing/mask/breath),
+			"mod" = create_silhouette_of(/obj/item/mod/control),
+			"storage" = create_silhouette_of(/obj/item/tank/internals/oxygen),
+		)
 
-/obj/machinery/suit_storage_unit/ui_data()
-	var/list/data = list()
-	data["locked"] = locked
-	data["open"] = state_open
-	data["safeties"] = safeties
-	data["uv_active"] = uv
-	data["uv_super"] = uv_super
-	if(helmet)
-		data["helmet"] = helmet.name
-	else
-		data["helmet"] = null
-	if(suit)
-		data["suit"] = suit.name
-	else
-		data["suit"] = null
-	if(mask)
-		data["mask"] = mask.name
-	else
-		data["mask"] = null
-	if(storage)
-		data["storage"] = storage.name
-	else
-		data["storage"] = null
-	if(occupant)
-		data["occupied"] = TRUE
-	else
-		data["occupied"] = FALSE
-	return data
-
-/obj/machinery/suit_storage_unit/ui_act(action, params)
-	if(..() || uv)
+	. = ..()
+	if(.)
 		return
-	switch(action)
-		if("door")
+
+	if(!check_interactable(user))
+		return
+
+	var/list/choices = list()
+
+	if(locked)
+		choices["unlock"] = icon('aquila/icons/mob/radial.dmi', "radial_unlock")
+	else if(state_open)
+		choices["close"] = icon('aquila/icons/mob/radial.dmi', "radial_close")
+
+		for(var/item_key in items)
+			var/item = vars[item_key]
+			if(item)
+				choices[item_key] = item
+			else
+				// Pusty slot pokazuje półprzezroczystą sylwetkę
+				choices[item_key] = items[item_key]
+	else
+		choices["open"] = icon('aquila/icons/mob/radial.dmi', "radial_open")
+		choices["disinfect"] = icon('aquila/icons/mob/radial.dmi', "radial_disinfect")
+		choices["lock"] = icon('aquila/icons/mob/radial.dmi', "radial_lock")
+
+	var/choice = show_radial_menu(user, src, choices, custom_check = CALLBACK(src, PROC_REF(check_interactable), user), require_near = !issilicon(user))
+
+	if(!choice || !check_interactable(user))
+		return
+
+	switch(choice)
+		if("open")
+			if(!state_open && !locked)
+				open_machine(drop = FALSE)
+				if(occupant)
+					dump_contents()
+		if("close")
 			if(state_open)
 				close_machine()
-			else
-				open_machine(0)
-				if(occupant)
-					dump_contents() // Dump out contents if someone is in there.
-			. = TRUE
-		if("lock")
-			if(state_open)
+		if("disinfect")
+			if(state_open || locked)
 				return
-			locked = !locked
-			. = TRUE
-		if("uv")
 			if(occupant && safeties)
+				say("Wykryto organizm w komorze. Usuń go przed dezynfekcją.")
 				return
-			else if(!helmet && !mask && !suit && !storage && !occupant)
+			if(!helmet && !mask && !suit && !mod && !storage && !occupant)
 				return
-			else
-				if(occupant)
-					var/mob/living/mob_occupant = occupant
-					to_chat(mob_occupant, "<span class='userdanger'>Wnętrze [src] robi się ciepłe, potem gorące, potem palące. [!mob_occupant.stat ? "Palisz się żywcem" : "Spalasz się na popiół"]!</span>")
-				cook()
-				. = TRUE
-		if("dispense")
+			if(occupant)
+				var/mob/living/mob_occupant = occupant
+				to_chat(mob_occupant, "<span class='userdanger'>Wnętrze [src] robi się ciepłe, potem gorące, potem palące. [!mob_occupant.stat ? "Palisz się żywcem" : "Spalasz się na popiół"]!</span>")
+			cook()
+		if("lock", "unlock")
+			if(!state_open)
+				locked = !locked
+		if("suit", "helmet", "mask", "mod", "storage")
 			if(!state_open)
 				return
+			var/obj/item/item_to_dispense = vars[choice]
+			if(item_to_dispense)
+				vars[choice] = null
+				if(!user.put_in_hands(item_to_dispense))
+					item_to_dispense.forceMove(drop_location())
 
-			var/static/list/valid_items = list("helmet", "suit", "mask", "storage")
-			var/item_name = params["item"]
-			if(item_name in valid_items)
-				var/obj/item/I = vars[item_name]
-				vars[item_name] = null
-				if(I)
-					I.forceMove(loc)
-			. = TRUE
+	update_icon()
+	interact(user)
 
-	if(.)
-		update_icon()
+/// Charges the core of a stored MODsuit
+/obj/machinery/suit_storage_unit/process(delta_time)
+	if(!mod)
+		return
+	var/obj/item/stock_parts/cell/cell = mod.get_charge_source()
+	if(!istype(cell) || cell.charge >= cell.maxcharge)
+		return
+	use_power(charge_rate * delta_time)
+	cell.give(charge_rate * delta_time)
+	mod.update_charge_alert()
+
+/obj/machinery/suit_storage_unit/proc/check_interactable(mob/user)
+	if(state_open && !powered())
+		return FALSE
+
+	if(!state_open && !can_interact(user))
+		return FALSE
+
+	if(panel_open)
+		return FALSE
+
+	if(uv)
+		return FALSE
+
+	return TRUE
+
+/obj/machinery/suit_storage_unit/proc/create_silhouette_of(atom/item)
+	var/image/image = image(initial(item.icon), initial(item.icon_state))
+	image.alpha = 128
+	image.color = COLOR_RED
+	return image
+//AQUILA EDIT END

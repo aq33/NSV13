@@ -127,7 +127,7 @@
 			user.visible_message("<span class='warning'>[user] zaczyna się gwałtownie trząść!</span>","<span class='warning'>Twój [name] zaczyna gwałtownie pulsować...</span>")
 			if(do_after(user, 5 SECONDS, target = user))
 				var/mob/living/simple_animal/S = create_random_mob(user.drop_location(), HOSTILE_SPAWN)
-				if(user.a_intent != INTENT_HARM)
+				if(!user.combat_mode)
 					S.faction |= "neutral"
 				else
 					S.faction |= "slime"
@@ -272,9 +272,9 @@
 				to_chat(user, "<span class='notice'>Zaczynasz świecić jaśniej.</span>")
 				return 60 SECONDS
 			else
-				var/obj/effect/dummy/luminescent_glow/glowth = new(user) //copied from glowy mutation, copied from luminescents
-				glowth.set_light_range_power_color(2.5, 2.5, user.dna.features["mcolor"]) //Weaker than regular luminescents
-				QDEL_IN(glowth, 600)
+				var/obj/effect/dummy/lighting_obj/moblight/glow = new(user) //copied from glowy mutation, copied from luminescents
+				glow.set_light(2.5, 2.5, user.dna.features["mcolor"]) //Weaker than regular luminescents
+				QDEL_IN(glow, 600)
 				return 60 SECONDS
 
 		if(SLIME_ACTIVATE_MAJOR)
@@ -933,12 +933,14 @@
 
 /obj/item/slimepotion/speed/pre_attack(obj/C, mob/user)
 	. = ..()
+	if(SEND_SIGNAL(C, COMSIG_SPEED_POTION_APPLIED, src, user) & SPEED_POTION_STOP)
+		return FALSE
 	if(!istype(C))
 		to_chat(user, "<span class='warning'>Mikstury można użyć tylko na przedmiotach lub pojazdach!</span>")
 		return
 	if(isitem(C))
 		var/obj/item/I = C
-		if(I.slowdown != initial(I.slowdown) || I.obj_flags & IMMUTABLE_SLOW)
+		if(I.slowdown != initial(I.slowdown) || I.obj_flags & IMMUTABLE_SLOW || HAS_TRAIT(I, TRAIT_NO_SPEED_POTION))
 			to_chat(user, "<span class='warning'>Nie da się bardziej przyspieszyć [C]!</span>")
 			return ..()
 		I.slowdown = initial(I.slowdown) * 0.5

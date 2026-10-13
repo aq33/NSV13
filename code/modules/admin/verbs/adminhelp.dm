@@ -214,6 +214,17 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 					type = STAT_BUTTON,
 					action = "open_ticket",
 					params = list("id" = AH.id),
+					// AQ EDIT START - port BeeStation #9655: claim button
+					multirow = TRUE,
+					buttons = list(
+						list(
+							"title" = AH.claimed_admin_key_name ? "Claimed by [AH.claimed_admin_key_name]" : "Claim",
+							"color" = AH.claimed_admin_key_name ? "red" : "green",
+							"action_id" = "claim_ticket",
+							"params" = list("id" = AH.id)
+						)
+					)
+					// AQ EDIT END
 				)
 			else
 				++num_disconnected

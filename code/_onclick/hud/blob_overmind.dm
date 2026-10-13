@@ -3,6 +3,7 @@
 	icon = 'icons/mob/blob.dmi'
 
 /atom/movable/screen/blob/MouseEntered(location,control,params)
+	..() // AQ EDIT - screentips potrzebują /atom/MouseEntered() (port BeeStation #11938)
 	openToolTip(usr,src,params,title = name,content = desc, theme = "blob")
 
 /atom/movable/screen/blob/MouseExited()

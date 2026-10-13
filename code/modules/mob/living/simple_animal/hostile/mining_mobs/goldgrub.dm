@@ -18,7 +18,7 @@
 	melee_damage = 0
 	attacktext = "taranuje"
 	attack_sound = 'sound/weapons/punch1.ogg'
-	a_intent = INTENT_HELP
+	combat_mode = FALSE
 	speak_emote = list("skrzeczy")
 	throw_message = "powoli się zagłębia, po czym zostaje wypchnięty z "
 	deathmessage = "wypluwa zawartość żołądka i zdycha!"

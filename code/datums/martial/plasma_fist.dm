@@ -5,23 +5,42 @@
 /datum/martial_art/plasma_fist
 	name = "Plasma Fist"
 	id = MARTIALART_PLASMAFIST
-	help_verb = /mob/living/carbon/human/proc/plasma_fist_help
+	var/nobomb = FALSE
+	var/plasma_power = 1 //starts at a 1, 2, 4 explosion.
+	var/plasma_increment = 1 //how much explosion power gets added per kill (1 = 1, 2, 4. 2 = 2, 4, 8 and so on)
+	var/plasma_cap = 12 //max size explosion level
+	display_combos = TRUE
 
+	Move1 = "Zamiatające tornado: cios, cios, pchnięcie. Odpycha cel i wszystkich wokół."
+	Move2 = "Odrzut: pchnięcie, cios, pchnięcie. Odrzuca cel i ciska w niego przedmiotem."
+	Move3 = "Plazmowa pięść: cios, pchnięcie, pchnięcie, pchnięcie, cios. Wybija przeciwnikowi mózg i rozrywa jego ciało."
+
+/datum/martial_art/plasma_fist/teach(mob/living/carbon/human/H, make_temporary = FALSE)
+	if(!nobomb)
+		Move4 = "Apoteoza: użyj <span class='notice'>Plazmowej pięści</span> na sobie. Odchodzisz w chwalebnej eksplozji."
+	. = ..()
 
 /datum/martial_art/plasma_fist/proc/check_streak(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(findtext(streak,TORNADO_COMBO))
-		streak = ""
+		if(A == D)//helps using apotheosis
+			return FALSE
+		reset_streak()
 		Tornado(A,D)
-		return 1
+		return TRUE
 	if(findtext(streak,THROWBACK_COMBO))
-		streak = ""
+		if(A == D)//helps using apotheosis
+			return FALSE
+		reset_streak()
 		Throwback(A,D)
-		return 1
+		return TRUE
 	if(findtext(streak,PLASMA_COMBO))
-		streak = ""
-		Plasma(A,D)
-		return 1
-	return 0
+		reset_streak()
+		if(A == D && !nobomb)
+			Apotheosis(A,D)
+		else
+			Plasma(A,D)
+		return TRUE
+	return FALSE
 
 /datum/martial_art/plasma_fist/proc/TornadoAnimate(mob/living/carbon/human/A)
 	set waitfor = FALSE
@@ -51,42 +70,114 @@
 	return
 
 /datum/martial_art/plasma_fist/proc/Plasma(mob/living/carbon/human/A, mob/living/carbon/human/D)
+	var/hasclient = D.client ? TRUE : FALSE
+
 	A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
 	playsound(D.loc, 'sound/weapons/punch1.ogg', 50, 1, -1)
-	A.say("PLAZMOWA PIĘŚĆ!", forced="plasma fist")
+	A.say("PLAZMOWA PIĘŚĆ!", forced="plazmowa pięść")
 	D.visible_message("<span class='danger'>[A] trafia [D] TECHNIKĄ PLAZMOWEJ PIĘŚCI!</span>", \
 								"<span class='userdanger'>[A] trafia cię TECHNIKĄ PLAZMOWEJ PIĘŚCI!</span>")
-	D.gib()
 	log_combat(A, D, "gibbed (Plasma Fist)")
-	return
+	var/turf/Dturf = get_turf(D)
+	D.gib()
+	if(nobomb)
+		return
+	if(!hasclient)
+		to_chat(A, "<span class='warning'>Wzięcie tej energii plazmy do twojej </span><span class='notice'>Apoteozy</span><span class='warning'> okryłoby klan hańbą!</span>")
+		new /obj/effect/temp_visual/plasma_soul(Dturf)//doesn't beam to you, so it just hangs around and poofs.
+		return
+	else if(plasma_power >= plasma_cap)
+		to_chat(A, "<span class='warning'>Nie możesz już bardziej wzmocnić swojej </span><span class='notice'>Apoteozy</span><span class='warning'>!</span>")
+		new /obj/effect/temp_visual/plasma_soul(Dturf)//doesn't beam to you, so it just hangs around and poofs.
+	else
+		plasma_power += plasma_increment
+		to_chat(A, "<span class='nicegreen'>Moc rośnie! Twoja </span><span class='notice'>Apoteoza</span><span class='nicegreen'> ma teraz poziom mocy [plasma_power]!</span>")
+		new /obj/effect/temp_visual/plasma_soul(Dturf, A)
+		var/oldcolor = A.color
+		A.color = "#9C00FF"
+		flash_color(A, flash_color = "#9C00FF", flash_time = 3 SECONDS)
+		animate(A, color = oldcolor, time = 3 SECONDS)
+
+/datum/martial_art/plasma_fist/proc/Apotheosis(mob/living/carbon/human/A, mob/living/carbon/human/D)
+	A.say("APOTEOZA!!", forced="plazmowa pięść")
+	if(ishuman(A))
+		A.set_species(/datum/species/plasmaman)
+		A.unequip_everything()
+		A.underwear = "Nude"
+		A.undershirt = "Nude"
+		A.socks = "Nude"
+		A.update_body()
+	var/turf/boomspot = get_turf(A)
+
+	//before ghosting to prevent issues
+	log_combat(A, A, "triggered final plasma explosion with size [plasma_power], [plasma_power*2], [plasma_power*4] (Plasma Fist)")
+	message_admins("[key_name_admin(A)] triggered final plasma explosion with size [plasma_power], [plasma_power*2], [plasma_power*4].")
+
+	to_chat(A, "<span class='userdanger'>Eksplozja wybija twoją duszę z ciała!</span>")
+	A.ghostize(FALSE) //prevents... horrible memes just believe me
+
+	A.apply_damage(rand(50,70), BRUTE)
+
+	addtimer(CALLBACK(src, PROC_REF(Apotheosis_end), A), 6 SECONDS)
+	playsound(boomspot, 'sound/weapons/punch1.ogg', 50, TRUE, -1)
+	explosion(boomspot, plasma_power, plasma_power*2, plasma_power*4, ignorecap = TRUE)
+	plasma_power = 1 //just in case there is any clever way to cause it to happen again
+
+/datum/martial_art/plasma_fist/proc/Apotheosis_end(mob/living/dying)
+	if(QDELETED(dying) || dying.stat == DEAD)
+		return
+	dying.death()
 
 /datum/martial_art/plasma_fist/harm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	add_to_streak("H",D)
 	if(check_streak(A,D))
-		return 1
-	basic_hit(A,D)
-	return 1
+		return TRUE
+	return FALSE
 
 /datum/martial_art/plasma_fist/disarm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	add_to_streak("D",D)
 	if(check_streak(A,D))
-		return 1
-	basic_hit(A,D)
-	return 1
+		return TRUE
+	if(A == D)//there is no disarming yourself, so we need to let plasma fist user know
+		to_chat(A, "<span class='notice'>Dodajesz pchnięcie do serii.</span>")
+	return FALSE
 
 /datum/martial_art/plasma_fist/grab_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	add_to_streak("G",D)
 	if(check_streak(A,D))
-		return 1
-	basic_hit(A,D)
-	return 1
+		return TRUE
+	return FALSE
 
-/mob/living/carbon/human/proc/plasma_fist_help()
-	set name = "Recall Teachings"
-	set desc = "Remember the martial techniques of the Plasma Fist."
-	set category = "Plasma Fist"
+/obj/effect/temp_visual/plasma_soul
+	name = "energia plazmy"
+	desc = "Resztki energii wyzwolonej przez Plazmową pięść."
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "explosion"
+	duration = 3 SECONDS
+	var/atom/movable/beam_target
 
-	to_chat(usr, "<b><i>Zaciskasz pięści i doznajesz przebłysku wiedzy...</i></b>")
-	to_chat(usr, "<span class='notice'>Zamiatające tornado</span>: krzywda, krzywda, rozbrojenie. Odpycha cel i wszystkich wokół.")
-	to_chat(usr, "<span class='notice'>Odrzut</span>: rozbrojenie, krzywda, rozbrojenie. Rzuca celem i rzuca w niego przedmiotem.")
-	to_chat(usr, "<span class='notice'>Plazmowa pięść</span>: krzywda, rozbrojenie, rozbrojenie, rozbrojenie, krzywda. Wybija przeciwnikowi mózg i rozrywa jego ciało.")
+/obj/effect/temp_visual/plasma_soul/Initialize(mapload, _beam_target)
+	. = ..()
+	beam_target = _beam_target
+	if(beam_target)
+		Beam(beam_target, "plasmabeam", time = 3 SECONDS, maxdistance = INFINITY, beam_type = /obj/effect/ebeam/plasma_fist)
+	animate(src, alpha = 0, transform = matrix()*0.5, time = 3 SECONDS)
+
+/obj/effect/temp_visual/plasma_soul/Destroy()
+	if(!beam_target)
+		visible_message("<span class='notice'>[src] rozwiewa się...</span>")
+	beam_target = null
+	. = ..()
+
+/obj/effect/ebeam/plasma_fist
+	name = "plazma"
+	mouse_opacity = MOUSE_OPACITY_ICON
+	desc = "Płynąca energia."
+
+/datum/martial_art/plasma_fist/nobomb
+	name = "Novice Plasma Fist"
+	nobomb = TRUE
+
+#undef TORNADO_COMBO
+#undef THROWBACK_COMBO
+#undef PLASMA_COMBO

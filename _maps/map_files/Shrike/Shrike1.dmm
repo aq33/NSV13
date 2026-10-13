@@ -10774,7 +10774,7 @@
 /turf/closed/wall/ship,
 /area/quartermaster/miningdock)
 "YK" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/item/radio/intercom/directional/south,
 /turf/open/floor/carpet/black,
 /area/crew_quarters/heads/captain/private)

@@ -424,7 +424,7 @@
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/captain)
 "br" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/captain)
 "bs" = (
@@ -575,7 +575,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/item/radio/intercom{
 	pixel_y = -26
 	},
@@ -1379,7 +1379,7 @@
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "eb" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/structure/cable/yellow,
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/turret_protected/aisat)
@@ -2170,7 +2170,7 @@
 /turf/open/floor/monotile/steel,
 /area/ai_monitored/turret_protected/ai_upload)
 "fU" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -3797,7 +3797,7 @@
 	name = "Executive officer's Office"
 	})
 "jQ" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/hop{
 	name = "Executive officer's Office"
@@ -3988,7 +3988,7 @@
 	name = "Executive officer's Office"
 	})
 "kp" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
 	},
@@ -7299,7 +7299,7 @@
 /turf/open/floor/monotile/dark,
 /area/hallway/primary/aft)
 "NX" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /obj/structure/cable,
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/turret_protected/aisat)

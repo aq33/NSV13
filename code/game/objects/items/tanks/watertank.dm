@@ -117,20 +117,25 @@
 	item_flags = NOBLUDGEON | ABSTRACT  // don't put in storage
 	slot_flags = 0
 
-	var/obj/item/watertank/tank
+	/// What we draw reagents from: a backpack watertank or a MODsuit mister module
+	var/obj/item/tank
 
 /obj/item/reagent_containers/spray/mister/Initialize(mapload)
 	. = ..()
 	tank = loc
-	if(!istype(tank))
+	if(!tank?.reagents)
 		return INITIALIZE_HINT_QDEL
 	reagents = tank.reagents	//This mister is really just a proxy for the tank's reagents
 
 /obj/item/reagent_containers/spray/mister/attack_self()
 	return
 
+/obj/item/reagent_containers/spray/mister/attack_self_secondary(mob/user) // AQ EDIT - port Bee #11899
+	return
+
 /obj/item/reagent_containers/spray/mister/doMove(atom/destination)
-	if(destination && (destination != tank.loc || !ismob(destination)))
+	// MODsuit modules pull the mister back on their own
+	if(istype(tank, /obj/item/watertank) && destination && (destination != tank.loc || !ismob(destination)))
 		if (loc != tank)
 			to_chat(tank.loc, "<span class='notice'>Zraszacz wskakuje z powrotem na zbiornik na wodę.</span>")
 		destination = tank
@@ -215,7 +220,8 @@
 	cooling_power = 5
 	w_class = WEIGHT_CLASS_HUGE
 	item_flags = ABSTRACT  // don't put in storage
-	var/obj/item/watertank/tank
+	/// What we draw reagents from: a backpack watertank or a MODsuit mister module
+	var/obj/item/tank
 	var/nozzle_mode = 0
 	var/metal_synthesis_cooldown = 0
 	COOLDOWN_DECLARE(resin_cooldown)
@@ -223,10 +229,10 @@
 /obj/item/extinguisher/mini/nozzle/Initialize(mapload)
 	. = ..()
 	tank = loc
-	if (!istype(tank))
+	if (!tank?.reagents)
 		return INITIALIZE_HINT_QDEL
 	reagents = tank.reagents
-	max_water = tank.volume
+	max_water = tank.reagents.maximum_volume
 
 /obj/item/extinguisher/mini/nozzle/Destroy()
 	reagents = null
@@ -234,7 +240,8 @@
 	return ..()
 
 /obj/item/extinguisher/mini/nozzle/doMove(atom/destination)
-	if(destination && (destination != tank.loc || !ismob(destination)))
+	// MODsuit modules pull the nozzle back on their own
+	if(istype(tank, /obj/item/watertank) && destination && (destination != tank.loc || !ismob(destination)))
 		if(loc != tank)
 			to_chat(tank.loc, "<span class='notice'>Dysza wskakuje z powrotem na zbiornik!</span>")
 		destination = tank
@@ -244,17 +251,20 @@
 	switch(nozzle_mode)
 		if(EXTINGUISHER)
 			nozzle_mode = RESIN_LAUNCHER
-			tank.icon_state = "waterbackpackatmos_1"
+			if(istype(tank, /obj/item/watertank/atmos))
+				tank.icon_state = "waterbackpackatmos_1"
 			to_chat(user, "Przełączono na wyrzutnię żywicy")
 			return
 		if(RESIN_LAUNCHER)
 			nozzle_mode = RESIN_FOAM
-			tank.icon_state = "waterbackpackatmos_2"
+			if(istype(tank, /obj/item/watertank/atmos))
+				tank.icon_state = "waterbackpackatmos_2"
 			to_chat(user, "Przełączono na spieniacz żywicy")
 			return
 		if(RESIN_FOAM)
 			nozzle_mode = EXTINGUISHER
-			tank.icon_state = "waterbackpackatmos_0"
+			if(istype(tank, /obj/item/watertank/atmos))
+				tank.icon_state = "waterbackpackatmos_0"
 			to_chat(user, "Przełączono na gaśnicę wodną")
 			return
 	return

@@ -32,7 +32,8 @@
 		H.internal = null
 		H.update_internals_hud_icon(0)
 	else
-		if(!H.getorganslot(ORGAN_SLOT_BREATHING_TUBE))
+		var/obj/item/clothing/helmet = H.head
+		if(!H.getorganslot(ORGAN_SLOT_BREATHING_TUBE) && !(istype(helmet) && (helmet.clothing_flags & HEADINTERNALS)))
 			if(!H.wear_mask)
 				to_chat(H, "<span class='warning'>Potrzebujesz maski!</span>")
 				return

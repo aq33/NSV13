@@ -6,7 +6,7 @@
 
 import { AudioPlayer } from './player';
 
-export const audioMiddleware = store => {
+export const audioMiddleware = (store) => {
   const player = new AudioPlayer();
   player.onPlay(() => {
     store.dispatch({ type: 'audio/playing' });
@@ -14,21 +14,22 @@ export const audioMiddleware = store => {
   player.onStop(() => {
     store.dispatch({ type: 'audio/stopped' });
   });
-  return next => action => {
+  return (next) => (action) => {
     const { type, payload } = action;
     if (type === 'audio/playMusic') {
       const { url, ...options } = payload;
       player.play(url, options);
       return next(action);
     }
-    // AQUILA EDIT
+    // AQUILA EDIT - jukebox: volume by distance, echo and muffling (aquila/code/modules/tgui_panel/audio.dm)
     if (type === 'audio/setMusicGain') {
       const { gain, echo, muffle } = payload || {};
       if (typeof gain === 'number') {
         player.setGain(
           gain,
           typeof echo === 'number' ? echo : 0,
-          typeof muffle === 'number' ? muffle : 0);
+          typeof muffle === 'number' ? muffle : 0,
+        );
       }
       return next(action);
     }

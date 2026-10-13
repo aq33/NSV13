@@ -1,0 +1,95 @@
+/*****************************************
+*
+* cf means "chat format"
+* cfc means "chat format color" which means only dedicated for color
+*
+******************************************/
+
+// Standard colors
+// color names are not really accurate due to theme base color visibility. get the feeling.
+.cfc_red {
+  color: hsl(0, 80.1%, 49.2%);
+}
+.cfc_redorange {
+  color: hsl(17.1, 88.2%, 46.7%);
+}
+.cfc_orange {
+  color: hsl(34.1, 81.9%, 47.6%);
+}
+.cfc_yellow {
+  color: hsl(59.1, 86.8%, 47.5%);
+}
+.cfc_lime {
+  color: hsl(85.9, 93.3%, 46.7%);
+}
+.cfc_green {
+  color: hsl(118, 93.8%, 44.3%);
+}
+.cfc_bluegreen {
+  color: #00c975;
+}
+.cfc_cyan {
+  color: hsl(167, 93.8%, 44.3%);
+}
+.cfc_bluesky {
+  color: hsl(193.9, 93.8%, 44.3%);
+}
+.cfc_darkbluesky {
+  color: hsl(193.4, 56.3%, 40.4%);
+}
+.cfc_navy {
+  color: hsl(215.9, 93.8%, 44.3%);
+}
+.cfc_blue {
+  color: hsl(241.1, 93.8%, 44.3%);
+}
+.cfc_indigo {
+  color: hsl(258.1, 93.8%, 44.3%);
+}
+.cfc_purple {
+  color: hsl(275.9, 91%, 47.8%);
+}
+.cfc_violet {
+  color: hsl(293, 90.7%, 46.5%);
+}
+.cfc_magenta {
+  color: hsl(312.9, 98.1%, 42%);
+}
+.cfc_redpurple {
+  color: hsl(335.1, 93.8%, 44.3%);
+}
+.cfc_negative {
+  color: #ffffff;
+}
+
+// psypoza colors
+.cfc_soul_glimmer_azure {
+  color: hsl(205.9, 100%, 50%);
+}
+.cfc_soul_glimmer_vermilion {
+  color: hsl(7.9, 100%, 55.5%);
+}
+.cfc_soul_glimmer_sage {
+  color: hsl(136.9, 100%, 56.1%);
+}
+.cfc_soul_glimmer_teal {
+  color: hsl(173.9, 100%, 50%);
+}
+.cfc_soul_glimmer_terracotta {
+  color: hsl(39.1, 100%, 50%);
+}
+.cfc_soul_glimmer_champagne {
+  color: hsl(323.1, 100%, 50%);
+}
+.cfc_soul_glimmer_sunshine {
+  color: hsl(56, 100%, 58.6%);
+}
+.cfc_soul_glimmer_melancholia {
+  color: hsl(270.1, 100%, 52.4%);
+}
+.cfc_soul_glimmer_submarine {
+  color: hsl(241.1, 100%, 58.6%);
+}
+.cfc_soul_glimmer_humour {
+  color: hsl(289.8, 100%, 76.9%);
+}

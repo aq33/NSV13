@@ -94,7 +94,7 @@
 		return QDEL_HINT_LETMELIVE
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/structure/necropolis_gate/attack_hand(mob/user)
+/obj/structure/necropolis_gate/attack_hand(mob/user, list/modifiers)
 	if(locked)
 		to_chat(user, "<span class='boldannounce'>It's [open ? "stuck open":"locked"].</span>")
 		return
@@ -163,7 +163,7 @@ GLOBAL_DATUM(necropolis_gate, /obj/structure/necropolis_gate/legion_gate)
 		return QDEL_HINT_LETMELIVE
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/structure/necropolis_gate/legion_gate/attack_hand(mob/user)
+/obj/structure/necropolis_gate/legion_gate/attack_hand(mob/user, list/modifiers)
 	if(!open && !changing_openness)
 		var/safety = alert(user, "Myślisz, że to może być zły pomysł...", "Zapukać do drzwi?", "Proceed", "Abort")
 		if(safety == "Abort" || !in_range(src, user) || !src || open || changing_openness || user.incapacitated())

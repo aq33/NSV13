@@ -248,7 +248,7 @@ Misc projectile types, effects, think of this as the special FX file.
 
 /obj/item/projectile/bullet/delayed_prime/relayed_viscerator_torpedo/release_payload(atom/detonation_location)
 	var/turf/detonation_turf = detonation_location
-	new /obj/effect/dummy/lighting_obj(detonation_turf, LIGHT_COLOR_WHITE, 9, 4, 2)
+	new /obj/effect/dummy/lighting_obj(detonation_turf, 9, 4, LIGHT_COLOR_WHITE, 2)
 	playsound(detonation_turf, 'sound/effects/phasein.ogg', 100, 1)
 	for(var/mob/living/L in viewers(7, detonation_turf))
 		L.flash_act(affect_silicon = TRUE)
@@ -276,7 +276,7 @@ Misc projectile types, effects, think of this as the special FX file.
 
 /obj/item/projectile/bullet/delayed_prime/relayed_plushtorp/release_payload(atom/detonation_location)
 	var/turf/detonation_turf = detonation_location
-	new /obj/effect/dummy/lighting_obj(detonation_turf, LIGHT_COLOR_WHITE, 9, 4, 2)
+	new /obj/effect/dummy/lighting_obj(detonation_turf, 9, 4, LIGHT_COLOR_WHITE, 2)
 	for(var/mob/living/L in viewers(7, detonation_turf))
 		L.flash_act(affect_silicon = TRUE)
 	var/list/throwat_turfs = RANGE_TURFS(6, detonation_turf) - RANGE_TURFS(5, detonation_turf)

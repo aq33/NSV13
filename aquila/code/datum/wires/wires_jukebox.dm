@@ -17,6 +17,8 @@
 	..()
 
 /datum/wires/jukebox/interactable(mob/user)
+	if(!..())
+		return FALSE
 	var/obj/machinery/jukebox/J = holder
 	if(J.panel_open)
 		return TRUE

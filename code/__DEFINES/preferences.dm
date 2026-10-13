@@ -55,6 +55,7 @@
 #define PREFTOGGLE_2_FULLSCREEN					(1<<20) //NSV13
 #define PREFTOGGLE_2_RADIO_SOUND				(1<<21) //AQ EDIT
 #define PREFTOGGLE_2_DISABLE_WALK_ANIMATION	(1<<22) //AQ EDIT - domyślnie wyłączona flaga, więc animacja chodu jest włączona
+#define PREFTOGGLE_2_DISABLE_SCREENTIPS		(1<<23) //AQ EDIT - port BeeStation #11938; flaga wyłączająca, więc screentipy są domyślnie włączone. Ostatni wolny bit toggles2
 // AQ EDIT : dodano PREFTOGGLE_2_RADIO_SOUND i PREFTOGGLE_2_DISABLE_WALK_ANIMATION do końca
 
 #define TOGGLES_2_DEFAULT (PREFTOGGLE_2_FANCY_TGUI|PREFTOGGLE_2_LOCKED_TGUI|PREFTOGGLE_2_LOCKED_BUTTONS|PREFTOGGLE_2_WINDOW_FLASHING|PREFTOGGLE_2_CREW_OBJECTIVES|PREFTOGGLE_2_GHOST_HUD|PREFTOGGLE_2_GHOST_INQUISITIVENESS|PREFTOGGLE_2_AMBIENT_OCCLUSION|PREFTOGGLE_2_AUTO_FIT_VIEWPORT|PREFTOGGLE_2_ENABLE_TIPS|PREFTOGGLE_2_SHOW_CREDITS|PREFTOGGLE_2_HOTKEYS|PREFTOGGLE_2_WIDESCREEN|PREFTOGGLE_2_RADIO_SOUND|PREFTOGGLE_2_TGUI_INPUT|PREFTOGGLE_2_BIG_BUTTONS|PREFTOGGLE_2_SWITCHED_BUTTONS|PREFTOGGLE_2_TGUI_SAY) //NSV13 - Widescreen
@@ -73,6 +74,10 @@
 #define CHAT_GHOSTRADIO 	(1<<10)
 #define CHAT_BANKCARD       (1<<11)
 #define CHAT_GHOSTLAWS	    (1<<12)
+#define CHAT_DISABLE_LOOC_RUNECHAT (1<<13) // AQ EDIT - port BeeStation #12918; flaga wyłączająca, więc LOOC nad głową jest domyślnie włączony także dla istniejących zapisów
+#define CHAT_LEGACY_INTENTS (1<<14) // AQ EDIT - port BeeStation #11899; stary tryb intencji zamiast combat mode, flaga włączająca, więc domyślnie combat mode
+#define CHAT_DISABLE_COMBATMODE_SOUND (1<<15) // AQ EDIT - port BeeStation #11899; flaga wyłączająca dźwięk przełączania combat mode
+#define CHAT_INVERTED_ROTATION (1<<16) // AQ EDIT - port BeeStation #14313; odwraca kierunek obracania Alt+klikiem
 
 //nsv13 for below: add chat_looc
 #define TOGGLES_DEFAULT_CHAT (CHAT_OOC|CHAT_LOOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_PULLR|CHAT_GHOSTWHISPER|CHAT_GHOSTPDA|CHAT_GHOSTRADIO|CHAT_BANKCARD|CHAT_GHOSTLAWS)
@@ -196,6 +201,7 @@
 #define PREFERENCE_TAG_ROLE_PREFERENCES	"26"
 #define PREFERENCE_TAG_PREFERRED_SYNDIE_ROLE	"27" //NSV13 - syndicate crew role
 #define PREFERENCE_TAG_TESLA_VOLUME		"28"
+#define PREFERENCE_TAG_MOD_SELECT		"29"
 
 // True value of max save slots (3 is default, 8 is byond member, +1 to either if you have the extra slot loadout entry). Potential max is 9
 #define TRUE_MAX_SAVE_SLOTS 9

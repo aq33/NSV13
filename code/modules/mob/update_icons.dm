@@ -7,6 +7,31 @@
 /mob/proc/update_icons()
 	return
 
+/// Updates the worn overlays of every slot in slot_flags
+/mob/proc/update_clothing(slot_flags)
+	return
+
+/// Updates the item slots that can be obscured by the given flags_inv
+/mob/proc/update_obscured_slots(obscured_flags)
+	if(obscured_flags & HIDEGLOVES)
+		update_inv_gloves()
+	if(obscured_flags & HIDESUITSTORAGE)
+		update_inv_s_store()
+	if(obscured_flags & HIDEJUMPSUIT)
+		update_inv_w_uniform()
+	if(obscured_flags & HIDESHOES)
+		update_inv_shoes()
+	if(obscured_flags & HIDEMASK)
+		update_inv_wear_mask()
+	if(obscured_flags & HIDEBELT)
+		update_inv_belt()
+	if(obscured_flags & HIDEEARS)
+		update_inv_ears()
+	if(obscured_flags & HIDEEYES)
+		update_inv_glasses()
+	if(obscured_flags & HIDENECK)
+		update_inv_neck()
+
 /mob/proc/update_transform()
 	return
 

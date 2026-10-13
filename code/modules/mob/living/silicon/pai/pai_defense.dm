@@ -26,20 +26,19 @@
 			fold_in(force = 1)
 			Paralyze(200)
 
-/mob/living/silicon/pai/attack_hand(mob/living/carbon/human/user)
-	switch(user.a_intent)
-		if("help")
-			visible_message("<span class='notice'>[user] delikatnie klepie [src] po głowie, wywołując nieprzyjemne brzęczenie jej pola holograficznego.</span>")
-		if("disarm")
-			visible_message("<span class='notice'>[user] pstryka [src] w nosek!</span>")
-		if("harm")
-			user.do_attack_animation(src)
-			if (user.name == master)
-				visible_message("<span class='notice'>Reagując na dotyk właściciela, [src] wyłącza emiter holoobudowy, szybko tracąc spójność.</span>")
-				addtimer(CALLBACK(src, PROC_REF(fold_into_hand), user), 10)
-			else
-				visible_message("<span class='danger'>[user] depcze [src]!</span>")
-				take_holo_damage(2)
+/mob/living/silicon/pai/attack_hand(mob/living/carbon/human/user, list/modifiers)
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		visible_message("<span class='notice'>[user] pstryka [src] w nosek!</span>")
+	else if(user.combat_mode)
+		user.do_attack_animation(src)
+		if (user.name == master)
+			visible_message("<span class='notice'>Reagując na dotyk właściciela, [src] wyłącza emiter holoobudowy, szybko tracąc spójność.</span>")
+			addtimer(CALLBACK(src, PROC_REF(fold_into_hand), user), 10)
+		else
+			visible_message("<span class='danger'>[user] depcze [src]!</span>")
+			take_holo_damage(2)
+	else
+		visible_message("<span class='notice'>[user] delikatnie klepie [src] po głowie, wywołując nieprzyjemne brzęczenie jej pola holograficznego.</span>")
 
 /mob/living/silicon/pai/proc/fold_into_hand(mob/user)
 	fold_in()

@@ -39,8 +39,8 @@
 	code = "Green"
 	teamsize = 1
 	opendoors = FALSE
-	leader_role = /datum/antagonist/official
-	roles = list(/datum/antagonist/official)
+	leader_role = /datum/antagonist/ert/official //AQUILA EDIT - port BeeStation/BeeStation-Hornet#11415
+	roles = list(/datum/antagonist/ert/official) //AQUILA EDIT
 	rename_team = "Urzędnicy Centrali"
 	polldesc = "urzędnik Centrali"
 

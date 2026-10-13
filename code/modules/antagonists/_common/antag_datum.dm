@@ -22,7 +22,9 @@ GLOBAL_LIST(admin_antag_list)
 	var/delay_roundend = TRUE
 	var/antag_memory = ""//These will be removed with antag datum
 	var/antag_moodlet //typepath of moodlet that the mob will gain with their status
-	var/ui_name = "AntagInfo"
+	var/ui_name = "AntagInfoGeneric" // AQ EDIT - port BeeStation #9205: every antag has an info window
+	/// AQ EDIT - port BeeStation #9205: weakref to the action button that opens the info window
+	var/datum/weakref/info_button_ref
 
 	var/can_elimination_hijack = ELIMINATION_NEUTRAL //If these antags are alone when a shuttle elimination happens.
 	/// If above 0, this is the multiplier for the speed at which we hijack the shuttle. Do not directly read, use hijack_speed().
@@ -80,6 +82,12 @@ GLOBAL_LIST(admin_antag_list)
 	remove_innate_effects(old_body)
 	if(old_body.stat != DEAD && !LAZYLEN(old_body.mind?.antag_datums))
 		old_body.remove_from_current_living_antags()
+	// AQ EDIT START - port BeeStation #9205: the info button follows the mind
+	var/datum/action/antag_info/info_button = info_button_ref?.resolve()
+	if(info_button)
+		info_button.Remove(old_body)
+		info_button.Grant(new_body)
+	// AQ EDIT END
 	apply_innate_effects(new_body)
 	if(count_against_dynamic_roll_chance && new_body.stat != DEAD)
 		new_body.add_to_current_living_antags()
@@ -103,8 +111,16 @@ GLOBAL_LIST(admin_antag_list)
 		CRASH("[src] ran on_gain() without a mind")
 	if(!owner.current)
 		CRASH("[src] ran on_gain() on a mind without a mob")
-	if(!silent && tips)
-		show_tips(tips)
+	// AQ EDIT START - port BeeStation #9205: info window with a button to reopen it
+	var/datum/action/antag_info/info_button = make_info_button()
+	if(!silent)
+		if(tips)
+			show_tips(tips)
+		if(info_button)
+			to_chat(owner.current, "<span class='boldnotice'>Więcej o swojej roli przeczytasz w oknie, które się otworzyło. Wrócisz do niego przyciskiem w lewym górnym rogu.</span>")
+			// Tik później: podtypy dodają cele dopiero po ..() w swoim on_gain()
+			addtimer(CALLBACK(info_button, /datum/action/proc/Trigger), 1)
+	// AQ EDIT END
 	greet()
 	apply_innate_effects()
 	give_antag_moodies()
@@ -139,6 +155,12 @@ GLOBAL_LIST(admin_antag_list)
 	SHOULD_CALL_PARENT(TRUE)
 	remove_innate_effects()
 	clear_antag_moodies()
+	// AQ EDIT START - port BeeStation #9205
+	var/datum/action/antag_info/info_button = info_button_ref?.resolve()
+	if(info_button)
+		qdel(info_button)
+	info_button_ref = null
+	// AQ EDIT END
 	if(owner)
 		LAZYREMOVE(owner.antag_datums, src)
 		if(!LAZYLEN(owner.antag_datums))
@@ -224,6 +246,7 @@ GLOBAL_LIST(admin_antag_list)
 			"name" = objective.name,
 			"explanation" = objective.explanation_text,
 			"complete" = objective.completed,
+			"optional" = objective.optional, // AQ EDIT - port BeeStation #9205
 		))
 		objective_count++
 	return objective_data

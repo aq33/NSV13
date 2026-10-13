@@ -17,7 +17,7 @@
 			announcement += "<br><h2 class='alert'>[html_encode(title)]</h2>"
 	else if(type == JOB_NAME_CAPTAIN)
 		announcement += "<h1 class='alert'>Ogłoszenie Kapitana</h1>"
-		GLOB.news_network.SubmitArticle(html_encode(text), "Ogłoszenie kapitana", "Ogłoszenia stacji", null)
+		GLOB.news_network.submit_article(html_encode(text), "Ogłoszenie kapitana", "Ogłoszenia stacji", null)
 
 	else
 		if(!sender_override)
@@ -29,9 +29,9 @@
 
 		if(!sender_override)
 			if(title == "")
-				GLOB.news_network.SubmitArticle(text, "Komunikat Centrali", "Ogłoszenia stacji", null)
+				GLOB.news_network.submit_article(text, "Komunikat Centrali", "Ogłoszenia stacji", null)
 			else
-				GLOB.news_network.SubmitArticle(title + "<br><br>" + text, "Centrala", "Ogłoszenia stacji", null)
+				GLOB.news_network.submit_article(title + "<br><br>" + text, "Centrala", "Ogłoszenia stacji", null)
 
 	///If the announcer overrides alert messages, use that message.
 	if(SSstation.announcer.custom_alert_message && !has_important_message)

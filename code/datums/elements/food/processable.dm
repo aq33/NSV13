@@ -12,8 +12,10 @@
 	var/amount_created
 	///Whether or not the atom being processed has to be on a table or tray to process it
 	var/table_required
+	///Verb used in processing food (such as slice, flatten), defaults to process // AQ EDIT - screentips (port BeeStation #11938)
+	var/screentip_verb
 
-/datum/element/processable/Attach(datum/target, tool_behaviour, result_atom_type, amount_created = 3, time_to_process = 2 SECONDS, table_required = FALSE)
+/datum/element/processable/Attach(datum/target, tool_behaviour, result_atom_type, amount_created = 3, time_to_process = 2 SECONDS, table_required = FALSE, screentip_verb = "Przerób") // AQ EDIT - screentip_verb (port BeeStation #11938)
 	. = ..()
 	if(!isatom(target))
 		return ELEMENT_INCOMPATIBLE
@@ -23,13 +25,15 @@
 	src.time_to_process = time_to_process
 	src.result_atom_type = result_atom_type
 	src.table_required = table_required
+	src.screentip_verb = screentip_verb // AQ EDIT - port BeeStation #11938
 
 	RegisterSignal(target, COMSIG_ATOM_TOOL_ACT(tool_behaviour), PROC_REF(try_process))
 	RegisterSignal(target, COMSIG_PARENT_EXAMINE, PROC_REF(OnExamine))
+	RegisterSignal(target, COMSIG_ATOM_ADD_CONTEXT, PROC_REF(on_requesting_context_from_item)) // AQ EDIT - port BeeStation #11938
 
 /datum/element/processable/Detach(datum/target)
 	. = ..()
-	UnregisterSignal(target, list(COMSIG_ATOM_TOOL_ACT(tool_behaviour), COMSIG_PARENT_EXAMINE))
+	UnregisterSignal(target, list(COMSIG_ATOM_TOOL_ACT(tool_behaviour), COMSIG_PARENT_EXAMINE, COMSIG_ATOM_ADD_CONTEXT)) // AQ EDIT - COMSIG_ATOM_ADD_CONTEXT (port BeeStation #11938)
 
 /datum/element/processable/proc/try_process(datum/source, mob/living/user, obj/item/I, list/mutable_recipes)
 	SIGNAL_HANDLER
