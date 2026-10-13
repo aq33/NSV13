@@ -66,6 +66,44 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
 	playsound(src, 'sound/magic/ethereal_exit.ogg', 30, TRUE, -1)
 	update_camo()
 
+///
+/// Piętra: pod pokładem i w kosmosie bez unoszenia się przez 3 s
+///
+
+/mob/living/simple_animal/hostile/voidwalker/up()
+	if(istype(loc, /obj/effect/dummy/phased_mob/voidwalker))
+		var/obj/effect/dummy/phased_mob/voidwalker/holder = loc
+		holder.move_z(UP)
+		return
+	return ..()
+
+/mob/living/simple_animal/hostile/voidwalker/down()
+	if(istype(loc, /obj/effect/dummy/phased_mob/voidwalker))
+		var/obj/effect/dummy/phased_mob/voidwalker/holder = loc
+		holder.move_z(DOWN)
+		return
+	return ..()
+
+/mob/living/simple_animal/hostile/voidwalker/zMove(dir, feedback = FALSE)
+	if(dir != UP && dir != DOWN)
+		return FALSE
+	var/turf/target = get_step_multiz(src, dir)
+	if(!target)
+		if(feedback)
+			balloon_alert(src, "tam nic nie ma!")
+		return FALSE
+	if(!can_zTravel(target, dir))
+		if(feedback)
+			balloon_alert(src, "zanurkuj, by przejść!")
+		return FALSE
+	var/atom/movable/pulled = pulling
+	pulled?.forceMove(target)
+	forceMove(target)
+	if(pulled)
+		start_pulling(pulled)
+	update_camo()
+	return TRUE
+
 /// Uchwyt, w którym wędrowiec porusza się pod statkiem
 /obj/effect/dummy/phased_mob/voidwalker
 	name = "void"
@@ -120,6 +158,15 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
 		INVOKE_ASYNC(src, PROC_REF(attempt_surface), new_turf)
 		return
 	forceMove(new_turf)
+
+/// Pod pokładem między piętrami przechodzi się swobodnie
+/obj/effect/dummy/phased_mob/voidwalker/proc/move_z(direction)
+	var/turf/target = get_step_multiz(src, direction)
+	if(!target)
+		walker.balloon_alert(walker, "tam nic nie ma!")
+		return FALSE
+	forceMove(target)
+	return TRUE
 
 /obj/effect/dummy/phased_mob/voidwalker/proc/attempt_surface(turf/new_turf)
 	if(surfacing)
