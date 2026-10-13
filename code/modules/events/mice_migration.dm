@@ -25,4 +25,4 @@
 		'sound/effects/mousesqueek.ogg')
 
 /datum/round_event/mice_migration/start()
-	SSminor_mapping.trigger_migration(rand(minimum_mice, maximum_mice))
+	SSminor_mapping.trigger_migration(rand(minimum_mice, maximum_mice), 2) // AQUILA EDIT - 2% na mysz, że to szczurzy król
