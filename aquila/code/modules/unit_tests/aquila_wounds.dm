@@ -55,4 +55,27 @@
 			continue
 		TEST_ASSERT(state in icon_states(icon_file), "[path] has no sprite '[state]' in [icon_file]")
 
+/// AQUILA - the health analyzer window (AuriStation#15) sees damage, wounds and bleeding
+/datum/unit_test/aquila_health_analyzer_ui
+
+/datum/unit_test/aquila_health_analyzer_ui/Run()
+	var/mob/living/carbon/human/patient = allocate(/mob/living/carbon/human)
+	var/obj/item/bodypart/arm = patient.get_bodypart(BODY_ZONE_L_ARM)
+	arm.receive_damage(20)
+	var/datum/wound/cut = new /datum/wound/slash/deep()
+	cut.apply_wound(arm, silent = TRUE)
+	var/list/data = get_health_analyzer_data(patient, patient, FALSE)
+	TEST_ASSERT(data["target"] == patient.name, "Wrong patient in the window")
+	var/list/arm_injuries = data["injuries"][BODY_ZONE_L_ARM]
+	var/list/names = list()
+	for(var/list/injury as anything in arm_injuries)
+		names += injury["name"]
+	TEST_ASSERT("Obrażenia fizyczne" in names, "Limb damage is missing")
+	TEST_ASSERT(cut.name in names, "The wound is missing")
+	var/found_bleeding = FALSE
+	for(var/list/injury as anything in data["injuries"]["body"])
+		if(injury["name"] == "Krwawienie")
+			found_bleeding = TRUE
+	TEST_ASSERT(found_bleeding, "Bleeding is missing")
+
 #undef TEST_ASSERT

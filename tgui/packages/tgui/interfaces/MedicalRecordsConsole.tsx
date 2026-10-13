@@ -15,14 +15,14 @@ import {
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
-type TopicButton = {
+type TopicLink = {
   params: Record<string, string>;
   label: string;
 };
 
 type Temp = {
   text: string;
-  buttons: TopicButton[];
+  buttons: TopicLink[];
 };
 
 type RecordRow = {

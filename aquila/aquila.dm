@@ -206,6 +206,7 @@
 #include "code\game\objects\items\devices\flashlight.dm"
 #include "code\game\objects\items\devices\geiger_counter.dm"
 #include "code\game\objects\items\devices\glue.dm"
+#include "code\game\objects\items\devices\health_analyzer_ui.dm"
 #include "code\game\objects\items\devices\multitool.dm"
 #include "code\game\objects\items\devices\powersink.dm"
 #include "code\game\objects\items\devices\radio\radio.dm"
