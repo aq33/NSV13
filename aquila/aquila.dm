@@ -225,6 +225,7 @@
 #include "code\game\objects\items\melee\misc.dm"
 #include "code\game\objects\items\polskie_znaki.dm"
 #include "code\game\objects\items\robot\robot_upgrades.dm"
+#include "code\game\objects\items\stacks\medical_tg.dm"
 #include "code\game\objects\items\stacks\tape.dm"
 #include "code\game\objects\items\storage\commercial.dm"
 #include "code\game\objects\items\storage\toolbox.dm"

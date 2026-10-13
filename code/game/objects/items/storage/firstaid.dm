@@ -13,10 +13,11 @@
 /obj/item/storage/firstaid
 	name = "first-aid kit"
 	desc = "It's an emergency medical kit for those serious boo-boos."
-	icon = 'aquila/icons/obj/storage.dmi' //AQUILA EDIT
-	icon_state = "firstaid"
-	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
+	icon = 'aquila/icons/obj/medical/medkit.dmi' // AQ EDIT - tgstation medkit sprites
+	icon_state = "medkit"
+	item_state = "medkit"
+	lefthand_file = 'aquila/icons/mob/inhands/equipment/medkit_lefthand.dmi'
+	righthand_file = 'aquila/icons/mob/inhands/equipment/medkit_righthand.dmi'
 	throw_speed = 3
 	throw_range = 7
 	var/skin_type = MEDBOT_SKIN_DEFAULT
@@ -24,7 +25,7 @@
 	var/damagetype_healed //defines damage type of the medkit. General ones stay null. Used for medibot healing bonuses
 
 /obj/item/storage/firstaid/regular
-	icon_state = "firstaid"
+	icon_state = "medkit" // AQ EDIT
 	desc = "A first aid kit with the ability to heal common types of injuries."
 
 /obj/item/storage/firstaid/regular/suicide_act(mob/living/carbon/user)
@@ -36,8 +37,8 @@
 		return
 	var/static/items_inside = list(
 		/obj/item/stack/medical/gauze = 1,
-		/obj/item/stack/medical/bruise_pack = 2,
-		/obj/item/stack/medical/ointment = 2,
+		/obj/item/stack/medical/suture = 1, // AQ EDIT - tgstation sutures and mesh
+		/obj/item/stack/medical/mesh = 1, // AQ EDIT
 		/obj/item/reagent_containers/hypospray/medipen = 1,
 		/obj/item/healthanalyzer = 1)
 	generate_items_inside(items_inside,src)
@@ -46,8 +47,8 @@
 //First MD kit
 /obj/item/storage/firstaid/medical
 	name = "medical aid kit"
-	icon_state = "firstaid-surgery"
-	item_state = "firstaid-surgery"
+	icon_state = "medkit_surgery" // AQ EDIT
+	item_state = "medkit-surgical" // AQ EDIT
 	desc = "A high capacity aid kit for doctors, full of medical supplies and basic surgical equipment"
 	skin_type = MEDBOT_SKIN_SURGERY
 
@@ -112,8 +113,8 @@
 		return
 	var/static/items_inside = list(
 		/obj/item/stack/medical/gauze = 1,
-		/obj/item/stack/medical/bruise_pack = 2,
-		/obj/item/stack/medical/ointment = 2,
+		/obj/item/stack/medical/suture = 1, // AQ EDIT - tgstation sutures and mesh
+		/obj/item/stack/medical/mesh = 1, // AQ EDIT
 		/obj/item/reagent_containers/hypospray/medipen = 1,
 		/obj/item/healthanalyzer = 1,
 		/obj/item/surgical_drapes = 1,
@@ -124,14 +125,14 @@
 
 /obj/item/storage/firstaid/medical/doctorbag
 	name = "doctor's bag"
-	icon_state = "firstaid-surgeryalt"
-	item_state = "firstaid-surgeryalt"
+	icon_state = "medbriefcase" // AQ EDIT
+	item_state = "medkit-surgical" // AQ EDIT
 	desc = "A fancy high capacity aid kit for doctors, full of medical supplies and basic surgical equipment"
 	skin_type = null
 
 //First Aid kit (ancient)
 /obj/item/storage/firstaid/ancient
-	icon_state = "firstaid-old"
+	icon_state = "oldfirstaid" // AQ EDIT
 	desc = "A first aid kit with the ability to heal common types of injuries."
 	skin_type = null
 
@@ -140,8 +141,8 @@
 		return
 	var/static/items_inside = list(
 		/obj/item/stack/medical/gauze = 1,
-		/obj/item/stack/medical/bruise_pack = 3,
-		/obj/item/stack/medical/ointment= 3)
+		/obj/item/stack/medical/suture = 2, // AQ EDIT - tgstation sutures and mesh
+		/obj/item/stack/medical/mesh = 2) // AQ EDIT
 	generate_items_inside(items_inside,src)
 
 
@@ -149,8 +150,8 @@
 /obj/item/storage/firstaid/fire
 	name = "burn treatment kit"
 	desc = "A specialized medical kit for when the toxins lab <i>-spontaneously-</i> burns down."
-	icon_state = "firstaid-burn"
-	item_state = "firstaid-burn"
+	icon_state = "medkit_burn" // AQ EDIT
+	item_state = "medkit-ointment" // AQ EDIT
 	damagetype_healed = BURN
 	skin_type = MEDBOT_SKIN_BURN
 
@@ -160,7 +161,7 @@
 
 /obj/item/storage/firstaid/fire/Initialize(mapload)
 	. = ..()
-	icon_state = pick("firstaid-burn","firstaid-burnalt")
+	icon_state = "medkit_burn" // AQ EDIT - tgstation medkits have no alternate sprite
 
 /obj/item/storage/firstaid/fire/PopulateContents()
 	if(empty)
@@ -177,8 +178,8 @@
 /obj/item/storage/firstaid/toxin
 	name = "toxin treatment kit"
 	desc = "Used to treat toxic blood content and radiation poisoning."
-	icon_state = "firstaid-toxin"
-	item_state = "firstaid-toxin"
+	icon_state = "medkit_toxin" // AQ EDIT
+	item_state = "medkit-toxin" // AQ EDIT
 	damagetype_healed = TOX
 	skin_type = MEDBOT_SKIN_TOXIN
 
@@ -188,7 +189,7 @@
 
 /obj/item/storage/firstaid/toxin/Initialize(mapload)
 	. = ..()
-	icon_state = pick("firstaid-toxin","firstaid-toxinalt")
+	icon_state = "medkit_toxin" // AQ EDIT - tgstation medkits have no alternate sprite
 
 /obj/item/storage/firstaid/toxin/PopulateContents()
 	if(empty)
@@ -206,6 +207,9 @@
 /obj/item/storage/firstaid/radbgone
 	name = "radiation treatment kit"
 	desc = "Used to treat minor toxic blood content and major radiation poisoning."
+	icon = 'aquila/icons/obj/storage.dmi' // AQ EDIT - no tgstation sprite, keeps the old one
+	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi' // AQ EDIT
+	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi' // AQ EDIT
 	icon_state = "firstaid-rad"
 	item_state = "firstaid-rad"
 	skin_type = MEDBOT_SKIN_RADIATION
@@ -236,8 +240,8 @@
 /obj/item/storage/firstaid/o2
 	name = "oxygen deprivation treatment kit"
 	desc = "A box full of oxygen goodies."
-	icon_state = "firstaid-o2"
-	item_state = "firstaid-o2"
+	icon_state = "medkit_o2" // AQ EDIT
+	item_state = "medkit-o2" // AQ EDIT
 	damagetype_healed = OXY
 	skin_type = MEDBOT_SKIN_OXY
 
@@ -257,15 +261,15 @@
 
 /obj/item/storage/firstaid/o2/Initialize(mapload)
 	. = ..()
-	icon_state = pick("firstaid-o2","firstaid-o2alt")
+	icon_state = "medkit_o2" // AQ EDIT - tgstation medkits have no alternate sprite
 
 
 //First brute kit
 /obj/item/storage/firstaid/brute
 	name = "brute trauma treatment kit"
 	desc = "A first aid kit for when you get toolboxed."
-	icon_state = "firstaid-brute"
-	item_state = "firstaid-brute"
+	icon_state = "medkit_brute" // AQ EDIT
+	item_state = "medkit-brute" // AQ EDIT
 	damagetype_healed = BRUTE
 	skin_type = MEDBOT_SKIN_BRUTE
 
@@ -285,15 +289,15 @@
 
 /obj/item/storage/firstaid/brute/Initialize(mapload)
 	. = ..()
-	icon_state = pick("firstaid-brute","firstaid-brutealt")
+	icon_state = "medkit_brute" // AQ EDIT - tgstation medkits have no alternate sprite
 
 
 //First Advanced kit
 /obj/item/storage/firstaid/advanced
 	name = "advanced first aid kit"
 	desc = "An advanced kit to help deal with advanced wounds."
-	icon_state = "firstaid-advanced"
-	item_state = "firstaid-advanced"
+	icon_state = "medkit_advanced" // AQ EDIT
+	item_state = "medkit-advanced" // AQ EDIT
 	custom_premium_price = 600
 	skin_type = MEDBOT_SKIN_ADVANCED
 
@@ -309,12 +313,15 @@
 
 /obj/item/storage/firstaid/advanced/Initialize(mapload)
 	. = ..()
-	icon_state = pick("firstaid-advanced","firstaid-advancedalt")
+	icon_state = "medkit_advanced" // AQ EDIT - tgstation medkits have no alternate sprite
 
 //First Random kit
 /obj/item/storage/firstaid/random
 	name = "mystery medical kit"
 	desc = "Are you feeling lucky today?"
+	icon = 'aquila/icons/obj/storage.dmi' // AQ EDIT - no tgstation sprite, keeps the old one
+	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi' // AQ EDIT
+	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi' // AQ EDIT
 	icon_state = "firstaid-mystery"
 	item_state = "firstaid-mystery"
 	skin_type = NONE
@@ -329,8 +336,8 @@
 		return
 	var/supplies = list(
 		/obj/item/stack/medical/gauze,
-		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/ointment,
+		/obj/item/stack/medical/suture, // AQ EDIT - tgstation sutures and mesh
+		/obj/item/stack/medical/mesh, // AQ EDIT
 		/obj/item/reagent_containers/hypospray/medipen,
 		/obj/item/surgical_drapes,
 		/obj/item/scalpel,
@@ -360,13 +367,13 @@
 /obj/item/storage/firstaid/tactical
 	name = "combat medical kit"
 	desc = "I hope you've got insurance."
-	icon_state = "firstaid-combat"
-	item_state = "firstaid-combat"
+	icon_state = "medkit_tactical" // AQ EDIT
+	item_state = "medkit-tactical" // AQ EDIT
 	skin_type = MEDBOT_SKIN_SYNDI
 
 /obj/item/storage/firstaid/tactical/Initialize(mapload)
 	. = ..()
-	icon_state = pick("firstaid-combat","firstaid-combatalt")
+	icon_state = "medkit_tactical" // AQ EDIT - tgstation medkits have no alternate sprite
 
 /obj/item/storage/firstaid/tactical/ComponentInitialize()
 	. = ..()
