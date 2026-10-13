@@ -128,7 +128,7 @@ This section is for the event controller
 /// Turns the turfs around center into crystal, more of them closer to the center
 /datum/round_event/crystal_invasion/proc/crystallize_area(turf/center, range, chance)
 	for(var/turf/turf_loc as anything in RANGE_TURFS(range, center))
-		if(istype(turf_loc, /turf/open/indestructible) || istype(turf_loc, /turf/closed/indestructible))
+		if(isspaceturf(turf_loc) || istype(turf_loc, /turf/open/indestructible) || istype(turf_loc, /turf/closed/indestructible))
 			continue
 		if(!prob(chance / max(get_dist(turf_loc, center), 1)))
 			continue
@@ -389,6 +389,9 @@ This section is for the destabilized crystal
 /obj/machinery/destabilized_crystal/attackby(obj/item/W, mob/living/user, params)
 	if(!istype(user) || !istype(W, /obj/item/crystal_stabilizer))
 		return ..()
+	if(!active)
+		to_chat(user, "<span class='warning'>Na stabilizację [src] jest już za późno!</span>")
+		return TRUE
 	if(length(GLOB.huge_crystal_portals))
 		to_chat(user, "<span class='notice'>Tarcza chroniąca kryształ wciąż działa! Zamknij wszystkie główne portale i spróbuj ponownie!</span>")
 		return TRUE

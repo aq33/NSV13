@@ -37,7 +37,10 @@
 	center.aquila_rot()
 	var/rot_left = rand(10, 20)
 	for(var/turf/closed/wall/W in range(5, center))
-		if(W == center || !prob(50))
+		if(W == center)
+			continue
+		var/area/wall_area = get_area(W)
+		if(!(wall_area.type in GLOB.the_station_areas) || !prob(50))
 			continue
 		W.aquila_rot()
 		if(--rot_left <= 0)

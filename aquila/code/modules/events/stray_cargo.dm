@@ -45,7 +45,9 @@
 	if(!landing_zone)
 		return kill()
 	if(is_blocked_turf(landing_zone, TRUE)) // something was built there in the meantime
-		landing_zone = get_landing_zone() || landing_zone
+		landing_zone = get_landing_zone()
+		if(!landing_zone)
+			return kill()
 	var/obj/structure/closet/supplypod/pod = new
 	var/obj/container = get_contents()
 	if(container)

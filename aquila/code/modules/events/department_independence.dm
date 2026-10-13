@@ -145,6 +145,12 @@ GLOBAL_LIST_INIT(aquila_independence_common_reasons, list(
 /datum/round_event/aquila_department_independence/start()
 	if(!department)
 		return kill()
+	// Someone may have died, left or turned antagonist since setup(), so check the crew again
+	var/list/still_here = get_department_members(department["jobs"])
+	citizens &= still_here
+	if(length(citizens) < 2)
+		department = null // start() runs before announce() on the same tick, so this also skips the announcement
+		return kill()
 	var/datum/team/nation/nation = new
 	nation.name = nation_name
 	nation.member_name = "obywatel"
@@ -155,7 +161,8 @@ GLOBAL_LIST_INIT(aquila_independence_common_reasons, list(
 	for(var/datum/mind/M as anything in citizens)
 		var/datum/antagonist/separatist/aquila_striker/striker = new
 		striker.reason = reason
-		M.add_antag_datum(striker, nation)
+		if(!M.add_antag_datum(striker, nation) || !M.current)
+			continue
 		M.current.log_message("joined the strike of [nation_name] ([department["name"]]).", LOG_ATTACK, color = "red")
 	message_admins("Department Independence: [length(citizens)] crew of the [department["name"]] department formed [nation_name] over \"[reason]\".")
 	log_game("Department Independence: [length(citizens)] crew of the [department["name"]] department formed [nation_name].")
