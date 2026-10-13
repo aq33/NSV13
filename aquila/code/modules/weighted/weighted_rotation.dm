@@ -10,7 +10,8 @@
 #define WEIGHTED_SURVEY_STRENGTH 0.5
 /// Share of the new tilt that comes from the last round's vote, the rest is the old tilt
 #define WEIGHTED_ROUND_INFLUENCE 0.4
-/// A round with fewer "Dynamika rundy" votes than this does not count, the old tilt only fades
+/// A round with 1 to this - 1 "Dynamika rundy" votes does not count, the old tilt only fades. No votes at all leave the tilt
+/// as it is, because a server restart without a played round has no votes either
 #define WEIGHTED_MIN_VOTES 3
 
 GLOBAL_DATUM_INIT(weighted_rotation, /datum/weighted_rotation, new)

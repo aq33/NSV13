@@ -103,10 +103,15 @@ export const DeathInfo = (props) => {
             </Way>
           </Stack>
         </Section>
-        {!!norespawn && (
+        {norespawn ? (
           <NoticeBox info>
             Powrót do lobby (respawn) jest wyłączony. Jeśli nic z powyższych nie
             zadziała, zagrasz w następnej rundzie.
+          </NoticeBox>
+        ) : (
+          <NoticeBox info>
+            Możesz też wrócić do lobby przyciskiem <b>Respawn</b> na ekranie
+            ducha albo w zakładce OOC.
           </NoticeBox>
         )}
       </Window.Content>

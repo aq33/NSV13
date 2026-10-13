@@ -129,6 +129,10 @@
 			return TRUE
 	return FALSE
 
+/// Polling ghosts takes time, the round may have ended or the crew may have left meanwhile
+/datum/weighted_ghost_midround/proc/round_still_running()
+	return SSticker.current_state == GAME_STATE_PLAYING && !EMERGENCY_ESCAPED_OR_ENDGAMED
+
 /datum/weighted_ghost_midround/proc/run_offer(offer)
 	if(offer == WEIGHTED_MIDROUND_WIZARD)
 		used_offers += offer
@@ -147,6 +151,8 @@
 
 /datum/weighted_ghost_midround/proc/spawn_wizard()
 	var/list/candidates = pollGhostCandidates("Czy chcesz zostać czarodziejem Federacji Czarodziejów?", ROLE_WIZARD, /datum/role_preference/midround_ghost/wizard)
+	if(!round_still_running())
+		return
 	if(!length(candidates))
 		message_admins("Weighted: nikt nie zgłosił się na czarodzieja.")
 		return
@@ -163,6 +169,8 @@
 	var/living = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 	var/team_size = operative_cap[min(length(operative_cap), round(living / 5) + 1)]
 	var/list/candidates = pollGhostCandidates("Czy chcesz dołączyć do drużyny nuklearnej Syndykatu?", ROLE_OPERATIVE, /datum/role_preference/midround_ghost/nuclear_operative)
+	if(!round_still_running())
+		return
 	for(var/mob/dead/observer/ghost as anything in candidates)
 		if(!ghost.client)
 			candidates -= ghost
