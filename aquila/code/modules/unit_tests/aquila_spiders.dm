@@ -102,6 +102,13 @@
 	TEST_ASSERT_EQUAL(hatched, 3, "Z gniazda matki nie wykluły się trzy pajączki")
 	TEST_ASSERT(found_midwife, "Z gniazda matki nie wykluła się matka")
 
+	// Ładunki daje każda żywa istota, nie tylko człowiek
+	mother.adjust_egg_charges(-mother.egg_charges)
+	var/mob/living/carbon/monkey/monkey = allocate(/mob/living/carbon/monkey, east)
+	wrap.wrap_target(monkey)
+	TEST_ASSERT_EQUAL(mother.egg_charges, SPIDER_EGG_CHARGES_PER_BODY, "Wyssanie małpy nie dało ładunków")
+	qdel(monkey.loc)
+
 /// Bity połączeń z nazwy stanu ikony ("stickyweb-21" -> 21); N/S/E/W pokrywają się z kierunkami BYOND
 /datum/unit_test/aquila_spiders/proc/web_junction(obj/structure/spider/web)
 	var/dash = findlasttext(web.icon_state, "-")

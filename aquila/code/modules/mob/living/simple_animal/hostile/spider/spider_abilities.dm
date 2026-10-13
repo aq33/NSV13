@@ -263,7 +263,7 @@
 
 /datum/action/cooldown/spider/wrap
 	name = "Owiń"
-	desc = "Owiń coś lub kogoś w kokon. Ludzi przy okazji wysysasz, co pozwala złożyć wzbogacone jaja. Włącz zdolność i kliknij sąsiedni cel."
+	desc = "Owiń coś lub kogoś w kokon. Żywe istoty przy okazji wysysasz: każda daje 2 ładunki na jaja. Włącz zdolność i kliknij sąsiedni cel."
 	button_icon_state = "wrap_0"
 	click_to_activate = TRUE
 	targeting_pointer = 'icons/effects/wrap_target.dmi'
@@ -319,7 +319,7 @@
 	if(isliving(to_wrap))
 		var/mob/living/living_wrapped = to_wrap
 		// Ładunki za każde pożarcie żywego, ale z konkretnych zwłok tylko raz
-		if(ishuman(living_wrapped) && (living_wrapped.stat != DEAD || !HAS_TRAIT(living_wrapped, TRAIT_SPIDER_CONSUMED)))
+		if(!(MOB_ROBOTIC in living_wrapped.mob_biotypes) && (living_wrapped.stat != DEAD || !HAS_TRAIT(living_wrapped, TRAIT_SPIDER_CONSUMED)))
 			var/mob/living/simple_animal/hostile/spider/spider_owner = owner
 			if(istype(spider_owner) && (locate(/datum/action/cooldown/spider/lay_eggs) in owner.actions))
 				spider_owner.adjust_egg_charges(SPIDER_EGG_CHARGES_PER_BODY)
