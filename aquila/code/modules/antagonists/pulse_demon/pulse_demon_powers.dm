@@ -617,7 +617,8 @@
 	if(!length(upgrades))
 		to_chat(user, "<span class='warning'>Wszystko jest już w pełni ulepszone!</span>")
 		return FALSE
-	var/raw_choice = show_radial_menu(user, user, upgrades, radius = 48)
+	// menu na polu, bo demon w APC albo pod podłogą nie jest widoczny na mapie
+	var/raw_choice = show_radial_menu(user, get_turf(user), upgrades, radius = 48)
 	if(!raw_choice || QDELETED(user))
 		return FALSE
 	var/choice = splittext(raw_choice, " (")[1]

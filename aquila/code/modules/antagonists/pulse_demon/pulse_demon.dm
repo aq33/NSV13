@@ -9,6 +9,8 @@
 #define PULSEDEMON_SMESRATE 0.05
 /// Co tyle ticków Life odświeża się podgląd kabli, żeby było widać nowo położone
 #define PULSEDEMON_CABLEVIEW_REFRESH 15
+/// Pod nienaruszoną podłogą demona widzą tylko duchy i on sam
+#define PULSEDEMON_INVISIBILITY 35
 #define ALERT_CATEGORY_NOPOWER "pulse_nopower"
 #define ALERT_CATEGORY_NOREGEN "pulse_noregen"
 
@@ -49,6 +51,7 @@
 	stop_automated_movement = TRUE
 	wander = FALSE
 	see_in_dark = 8
+	see_invisible = PULSEDEMON_INVISIBILITY
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	// Demon wchodzi do APC, kamer i cyborgów przez forceMove
 	allow_movement_on_non_turfs = TRUE
@@ -134,6 +137,8 @@
 	var/obj/machinery/power/apc/apc_being_hijacked
 	/// Licznik ticków do odświeżenia podglądu kabli
 	var/cableview_ticks = 0
+	/// Skąd demon brał prąd w ostatnim ticku, do panelu Status
+	var/power_status = "brak"
 	/// Ujawniony po użyciu zdolności, widać go wtedy nawet pod podłogą
 	var/revealed = FALSE
 	/// Zdolności demona (akcje)
@@ -175,6 +180,9 @@
 	// Bez maszyny i bez kabla demon zginie w następnym ticku
 	if(!current_power)
 		current_cable = locate(/obj/structure/cable) in loc
+	// np. spawn przez admina poza kablem: bez tego demon zginąłby w pierwszym ticku
+	if(!current_power && !current_cable)
+		can_exit_cable = TRUE
 	else
 		forceMove(current_power)
 		RegisterSignal(current_power, COMSIG_ATOM_EMP_ACT, PROC_REF(handle_emp), TRUE)
@@ -260,6 +268,7 @@
 
 /mob/living/simple_animal/pulse_demon/get_stat_tab_status()
 	var/list/tab_data = ..()
+	tab_data["Zasilanie"] = GENERATE_STAT_TEXT(power_status)
 	tab_data["Energia"] = GENERATE_STAT_TEXT(display_joules(charge))
 	tab_data["Maks. energia"] = GENERATE_STAT_TEXT(display_joules(maxcharge))
 	tab_data["Wyssana energia"] = GENERATE_STAT_TEXT(display_joules(charge_drained))
@@ -438,7 +447,7 @@
 /// Pod podłogą widzą go tylko duchy, chyba że się ujawni zdolnością
 /mob/living/simple_animal/pulse_demon/proc/update_tile_visibility()
 	if(isturf(loc) && is_under_tile() && !revealed)
-		invisibility = INVISIBILITY_OBSERVER
+		invisibility = PULSEDEMON_INVISIBILITY
 	else
 		invisibility = 0
 
@@ -470,9 +479,11 @@
 
 	var/got_power = FALSE
 	if(current_cable)
-		if(current_cable.surplus() >= power_per_regen)
-			current_cable.add_load(power_per_regen)
+		// wystarczy, że w kablu jest prąd; bierzemy tyle, ile zostało, najwyżej power_per_regen
+		if(current_cable.avail() > 0)
+			current_cable.add_load(min(current_cable.surplus(), power_per_regen))
 			got_power = TRUE
+			power_status = "kabel"
 			// po ulepszeniu „Wydajność” nadwyżka ponad koszt leczenia trafia do zapasu
 			var/excess = initial(power_per_regen) - power_per_regen
 			if(excess > 0 && do_drain && current_cable.surplus() >= excess)
@@ -484,10 +495,14 @@
 			var/obj/machinery/power/apc/A = current_power
 			// ładunek sprawdzamy przed wysysaniem, które może opróżnić ogniwo do zera
 			got_power = A.cell?.charge > 0
+			if(got_power)
+				power_status = "ogniwo APC"
 			drain_APC(A)
 		else if(istype(current_power, /obj/machinery/power/smes) && do_drain)
 			var/obj/machinery/power/smes/S = current_power
 			got_power = S.charge > 0
+			if(got_power)
+				power_status = "SMES"
 			drain_SMES(S)
 		// pusty APC albo SMES (albo demon skacze po kamerach): bierzemy z sieci, w przypadku APC przez terminal
 		var/obj/machinery/power/net_source = current_power
@@ -497,6 +512,7 @@
 		if(!got_power && net_source?.surplus() >= power_per_regen)
 			net_source.add_load(power_per_regen)
 			got_power = TRUE
+			power_status = "sieć"
 	else if(!can_exit_cable)
 		death()
 		return
@@ -511,6 +527,7 @@
 			// poza kablem tracimy podwójnie (minus ulepszenia)
 			rate += initial(health_loss_rate)
 		adjustHealth(rate)
+		power_status = "BRAK - tracisz zdrowie!"
 		throw_alert(ALERT_CATEGORY_NOPOWER, /atom/movable/screen/alert/pulse_nopower)
 
 	if(regen_lock > 0 && --regen_lock == 0)
@@ -834,5 +851,6 @@
 #undef PULSEDEMON_SMES_DRAIN_MULTIPLIER
 #undef PULSEDEMON_SMESRATE
 #undef PULSEDEMON_CABLEVIEW_REFRESH
+#undef PULSEDEMON_INVISIBILITY
 #undef ALERT_CATEGORY_NOPOWER
 #undef ALERT_CATEGORY_NOREGEN

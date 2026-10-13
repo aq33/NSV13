@@ -16,11 +16,12 @@
 /datum/antagonist/pulse_demon/greet()
 	var/list/greeting = list()
 	greeting += "<span class='big bold'>Jesteś demonem impulsu!</span>"
-	greeting += "<b>Istotą z czystej energii elektrycznej, która podróżuje kablami statku i zagnieżdża się w maszynach.</b>"
-	greeting += "<b>Szukaj w kablach źródeł prądu, z których możesz kraść energię na swoje zdolności.</b>"
-	greeting += "<b>Wejdź do APC, żeby je przejąć. Przejęte APC odblokowują silniejsze zdolności (Alt+klik na przycisku), zwiększają zapas energii i dają władzę nad maszynami w ich pomieszczeniach.</b>"
-	greeting += "<b>Gdy kabel albo źródło, w którym siedzisz, straci prąd, zaczniesz słabnąć i w końcu zginiesz. Poza tym zwykłe obrażenia słabo cię ruszają, groźne są jony i EMP.</b>"
-	greeting += "<b>Mówić możesz tylko przez radio, holopad albo przejętego cyborga.</b>"
+	greeting += "<b>Jesteś prądem, który żyje w kablach statku.</b> Widzisz wszystkie kable na swoim poziomie, nawet przez ściany."
+	greeting += "<b>1. Prąd to życie.</b> Ruszasz się tylko po kablach. Dopóki w kablu, APC albo SMES-ie, w którym siedzisz, jest prąd, leczysz się. Bez prądu tracisz zdrowie (panel Status, „Zasilanie”)."
+	greeting += "<b>2. Przejmuj APC.</b> Wejdź po kablu na pole z APC, a wskoczysz do środka i zaczniesz je przejmować (20 s). W APC wysysasz z ogniwa energię na zdolności."
+	greeting += "<b>3. Steruj pomieszczeniem.</b> Siedząc w przejętym APC, klikasz maszyny w jego pomieszczeniu jak SI: drzwi (Shift/Ctrl/Alt+klik), konsole, kamery, holopad, radio, boty, cyborgi w stacji ładującej. Kliknięcie przejętego APC zawsze zabiera cię z powrotem."
+	greeting += "<b>4. Kupuj zdolności.</b> Każde przejęte APC to punkt do wydania. <b>Alt+klik na przycisku zdolności</b> kupuje ją albo ulepsza. Przycisk „Menu ulepszeń” daje ulepszenia ciała (Alt+klik pokazuje opisy)."
+	greeting += "<b>5. Uważaj na EMP i jony</b>: tylko one robią ci poważną krzywdę. Mówić możesz tylko przez radio, holopad albo przejętego cyborga, a „Demoniczny szept” sięga do umysłu każdego w zasięgu wzroku."
 	to_chat(owner.current, greeting.Join("<br>"))
 	owner.announce_objectives()
 

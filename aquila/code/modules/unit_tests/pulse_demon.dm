@@ -36,7 +36,32 @@
 	var/datum/action/cooldown/pulse_demon/toggle/do_drain/drain_action = locate() in demon.pulse_actions
 	TEST_ASSERT_EQUAL(drain_action.background_icon_state, "bg_pulsedemon", "Drain toggle does not show it is on")
 	if(left.intact)
-		TEST_ASSERT_EQUAL(demon.invisibility, INVISIBILITY_OBSERVER, "Demon under tiles is visible")
+		TEST_ASSERT(demon.invisibility > SEE_INVISIBLE_LIVING && demon.invisibility <= demon.see_invisible, "Demon under tiles is visible to the crew or hidden from itself")
+
+	// Na kablu z prądem się leczy, bez prądu traci zdrowie
+	if(!left_cable.powernet)
+		var/datum/powernet/test_net = new
+		test_net.add_cable(left_cable)
+	TEST_ASSERT(left_cable.powernet, "Test cable has no powernet")
+	var/old_avail = left_cable.powernet.avail
+	left_cable.powernet.avail = 1000
+	demon.health = 10
+	demon.Life(2, 1)
+	TEST_ASSERT(demon.health > 10, "Demon on a powered cable did not heal")
+	left_cable.powernet.avail = 0
+	var/health_before = demon.health
+	demon.Life(2, 1)
+	TEST_ASSERT(demon.health < health_before, "Demon on a dead cable did not lose health")
+	left_cable.powernet.avail = old_avail
+	demon.revive(full_heal = TRUE, admin_revive = TRUE)
+
+	// Alt+klik na przycisku kupuje zdolność
+	var/datum/action/cooldown/pulse_demon/toggle/penetrating_shock/shock_action = locate() in demon.pulse_actions
+	demon.apcs_remaining = shock_action.unlock_cost
+	usr = demon
+	shock_action.button.Click(null, null, "alt=1;left=1")
+	usr = null
+	TEST_ASSERT(!shock_action.locked, "Alt-click on the action button did not buy the ability")
 
 	// Bez kabla nie ma dokąd iść, po kablu idzie dalej
 	demon.Move(right, EAST)
