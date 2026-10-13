@@ -11,7 +11,7 @@
 			continue
 		var/mob/living/carbon/human/W = M.current
 		var/list/candidates = pollGhostCandidates("Chcesz zostać fałszywym czarodziejem?", ROLE_WIZARD, /datum/role_preference/midround_ghost/wizard, ignore_category = POLL_IGNORE_WIZARD_HELPER)
-		if(!candidates)
+		if(!length(candidates)) // AQUILA EDIT - an empty list is not null
 			return //Sad Trombone
 		var/mob/dead/observer/C = pick(candidates)
 

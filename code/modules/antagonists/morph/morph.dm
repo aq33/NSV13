@@ -284,7 +284,7 @@
 
 	var/datum/mind/player_mind = new /datum/mind(selected.key)
 	player_mind.active = 1
-	if(!GLOB.xeno_spawn)
+	if(!length(GLOB.xeno_spawn)) // AQUILA EDIT - an empty list is not null
 		return MAP_ERROR
 	var/mob/living/simple_animal/hostile/morph/S = new /mob/living/simple_animal/hostile/morph(pick(GLOB.xeno_spawn))
 	player_mind.transfer_to(S)

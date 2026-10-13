@@ -422,6 +422,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	if (isnum_safe(cached_player_age) && cached_player_age == -1) //first connection
 		player_age = 0
+		aquila_tutorial_first_connection() // AQ EDIT - samouczek: propozycja dla nowego gracza
 	var/nnpa = CONFIG_GET(number/notify_new_player_age)
 	if (isnum_safe(cached_player_age) && cached_player_age == -1) //first connection
 		if (nnpa >= 0)
