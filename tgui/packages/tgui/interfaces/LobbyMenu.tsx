@@ -25,7 +25,7 @@ export const LobbyMenu = (_) => {
   const { act, data } = useBackend<Data>();
   const { pregame, ready, polls, new_polls } = data;
   return (
-    <Window width={280} height={pregame ? 250 : 290} canClose={false}>
+    <Window width={280} height={pregame ? 280 : 320} canClose={false}>
       <Window.Content>
         <Section fill>
           <Stack vertical fill>
@@ -39,6 +39,17 @@ export const LobbyMenu = (_) => {
                 onClick={() => act('preferences')}
               >
                 Ustaw postać
+              </Button>
+            </Stack.Item>
+            {/* AQUILA: samouczek */}
+            <Stack.Item>
+              <Button
+                fluid
+                icon="graduation-cap"
+                textAlign="center"
+                onClick={() => act('tutorial')}
+              >
+                Samouczek
               </Button>
             </Stack.Item>
             {pregame ? (
