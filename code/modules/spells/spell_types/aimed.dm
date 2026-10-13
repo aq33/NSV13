@@ -4,7 +4,7 @@
 	var/projectile_type = /obj/item/projectile/magic/teleport
 	var/deactive_msg = "Rozładowujesz pocisk..."
 	var/active_msg = "Ładujesz pocisk!"
-	var/base_icon_state = "projectile"
+	base_icon_state = "projectile"
 	var/active_icon_state = "projectile"
 	var/list/projectile_var_overrides = list()
 	var/projectile_amount = 1	//Projectiles per cast.

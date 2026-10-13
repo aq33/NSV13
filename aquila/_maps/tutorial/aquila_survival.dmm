@@ -1,0 +1,193 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/table,
+/turf/open/indestructible,
+/area/aquila_tutorial)
+"ab" = (
+/turf/open/indestructible,
+/area/aquila_tutorial)
+"ac" = (
+/turf/closed/indestructible/riveted,
+/area/aquila_tutorial)
+"ad" = (
+/obj/effect/landmark/tutorial_bottom_left,
+/turf/open/indestructible,
+/area/aquila_tutorial)
+"ae" = (
+/obj/structure/bed,
+/turf/open/indestructible,
+/area/aquila_tutorial)
+"af" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/indestructible,
+/area/aquila_tutorial)
+
+(1,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+
+(2,1,1) = {"
+ac
+ab
+ab
+ab
+ab
+ab
+ab
+ad
+ac
+"}
+
+(3,1,1) = {"
+ac
+af
+ab
+ab
+ab
+ab
+ab
+ab
+ac
+"}
+
+(4,1,1) = {"
+ac
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ac
+"}
+
+(5,1,1) = {"
+ac
+ac
+ac
+ac
+ab
+ac
+ac
+ac
+ac
+"}
+
+(6,1,1) = {"
+ac
+af
+ab
+ab
+ab
+ab
+ab
+ab
+ac
+"}
+
+(7,1,1) = {"
+ac
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ac
+"}
+
+(8,1,1) = {"
+ac
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ac
+"}
+
+(9,1,1) = {"
+ac
+ab
+ab
+ab
+aa
+ab
+ab
+ab
+ac
+"}
+
+(10,1,1) = {"
+ac
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ac
+"}
+
+(11,1,1) = {"
+ac
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ac
+"}
+
+(12,1,1) = {"
+ac
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ac
+"}
+
+(13,1,1) = {"
+ac
+ae
+ab
+ab
+ab
+ab
+ab
+ab
+ac
+"}
+
+(14,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}

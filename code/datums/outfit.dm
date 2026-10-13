@@ -140,6 +140,14 @@
 	//to be overridden for toggling internals, id binding, access etc
 	return
 
+#define EQUIP_OUTFIT_ITEM(item_path, slot_name) if(##item_path) { \
+	H.equip_to_slot_or_del(new item_path(H), ##slot_name, TRUE); \
+	var/obj/item/outfit_item = H.get_item_by_slot(##slot_name); \
+	if (outfit_item && outfit_item.type == ##item_path) { \
+		outfit_item.on_outfit_equip(H, visualsOnly, ##slot_name); \
+	} \
+}
+
 /**
   * Equips all defined types and paths to the mob passed in
   *
@@ -151,33 +159,21 @@
 /datum/outfit/proc/equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	pre_equip(H, visualsOnly)
 
-	//Start with uniform,suit,backpack for additional slots
-	if(uniform)
-		H.equip_to_slot_or_del(new uniform(H),ITEM_SLOT_ICLOTHING, TRUE)
-	if(suit)
-		H.equip_to_slot_or_del(new suit(H),ITEM_SLOT_OCLOTHING, TRUE)
-	if(back)
-		H.equip_to_slot_or_del(new back(H),ITEM_SLOT_BACK, TRUE)
-	if(belt)
-		H.equip_to_slot_or_del(new belt(H),ITEM_SLOT_BELT, TRUE)
-	if(gloves)
-		H.equip_to_slot_or_del(new gloves(H),ITEM_SLOT_GLOVES, TRUE)
-	if(shoes)
-		H.equip_to_slot_or_del(new shoes(H),ITEM_SLOT_FEET, TRUE)
-	if(head)
-		H.equip_to_slot_or_del(new head(H),ITEM_SLOT_HEAD, TRUE)
-	if(mask)
-		H.equip_to_slot_or_del(new mask(H),ITEM_SLOT_MASK, TRUE)
-	if(neck)
-		H.equip_to_slot_or_del(new neck(H),ITEM_SLOT_NECK, TRUE)
-	if(ears)
-		H.equip_to_slot_or_del(new ears(H),ITEM_SLOT_EARS, TRUE)
-	if(glasses)
-		H.equip_to_slot_or_del(new glasses(H),ITEM_SLOT_EYES, TRUE)
-	if(id)
-		H.equip_to_slot_or_del(new id(H),ITEM_SLOT_ID, TRUE)
-	if(suit_store)
-		H.equip_to_slot_or_del(new suit_store(H),ITEM_SLOT_SUITSTORE, TRUE)
+	//Start with uniform,suit for additional slots
+	EQUIP_OUTFIT_ITEM(uniform, ITEM_SLOT_ICLOTHING)
+	EQUIP_OUTFIT_ITEM(suit, ITEM_SLOT_OCLOTHING)
+	EQUIP_OUTFIT_ITEM(belt, ITEM_SLOT_BELT)
+	EQUIP_OUTFIT_ITEM(gloves, ITEM_SLOT_GLOVES)
+	EQUIP_OUTFIT_ITEM(shoes, ITEM_SLOT_FEET)
+	EQUIP_OUTFIT_ITEM(head, ITEM_SLOT_HEAD)
+	EQUIP_OUTFIT_ITEM(mask, ITEM_SLOT_MASK)
+	EQUIP_OUTFIT_ITEM(neck, ITEM_SLOT_NECK)
+	EQUIP_OUTFIT_ITEM(ears, ITEM_SLOT_EARS)
+	EQUIP_OUTFIT_ITEM(glasses, ITEM_SLOT_EYES)
+	//Back goes after the other worn slots so MODsuits can deploy over them
+	EQUIP_OUTFIT_ITEM(back, ITEM_SLOT_BACK)
+	EQUIP_OUTFIT_ITEM(id, ITEM_SLOT_ID)
+	EQUIP_OUTFIT_ITEM(suit_store, ITEM_SLOT_SUITSTORE)
 
 	if(accessory)
 		var/obj/item/clothing/under/U = H.w_uniform
@@ -359,3 +355,5 @@
 			implants += imptype
 	accessory = text2path(outfit_data["accessory"])
 	return TRUE
+
+#undef EQUIP_OUTFIT_ITEM

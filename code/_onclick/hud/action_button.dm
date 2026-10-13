@@ -66,7 +66,7 @@
 	if(usr.next_click > world.time)
 		return
 	usr.next_click = world.time + 1
-	linked_action.Trigger()
+	linked_action.Trigger((modifiers["right"] || modifiers["alt"]) ? TRIGGER_SECONDARY_ACTION : NONE)
 	SEND_SOUND(usr, 'sound/effects/pop.ogg')
 	transform = turn(matrix() * 0.9, pick(-8, 8))
 	alpha = 200

@@ -1,5 +1,6 @@
 // NSV13
 
+// AQUILA: okno przetłumaczone na polski
 import { Button, ProgressBar, Section } from 'tgui-core/components';
 
 import { useBackend } from '../backend';
@@ -43,13 +44,13 @@ export const MunitionsComputer = (props) => {
     <Window theme="hackerman" width={290} height={380}>
       <Window.Content>
         {(!sudo_mode && (
-          <Section title="Weapon system controls:">
+          <Section title="Sterowanie bronią:">
             <Button
               fluid
               icon={loaded ? 'check-circle' : 'square-o'}
               width="100"
               selected={loaded}
-              content="I1 - Payload loaded"
+              content="I1 - Pocisk podany"
               onClick={() => act('toggle_load')}
             />
             <Button
@@ -57,14 +58,14 @@ export const MunitionsComputer = (props) => {
               icon={chambered ? 'check-circle' : 'square-o'}
               width="100"
               selected={chambered}
-              content="I2 - Payload chambered"
+              content="I2 - Pocisk w komorze"
               onClick={() => act('chamber')}
             />
             <Button
               fluid
               icon={safety ? 'power-off' : 'times'}
               color={safety ? 'green' : 'red'}
-              content="I3 - Weapon safeties"
+              content="I3 - Bezpieczniki"
               onClick={() => act('toggle_safety')}
             />
             {!!isgaussgun && (
@@ -72,12 +73,12 @@ export const MunitionsComputer = (props) => {
                 fluid
                 icon={data.canReload ? 'power-off' : 'square-o'}
                 color={data.canReload ? 'green' : 'red'}
-                content="I4 - Reload Rack"
+                content="I4 - Przeładuj ze stojaka"
                 onClick={() => act('load')}
               />
             )}
-            <Section title="Statistics:">
-              <Section title="Ammunition:">
+            <Section title="Statystyki:">
+              <Section title="Amunicja:">
                 <ProgressBar
                   value={(ammo / max_ammo) * 100 * 0.01}
                   ranges={{
@@ -87,7 +88,7 @@ export const MunitionsComputer = (props) => {
                   }}
                 />
               </Section>
-              <Section title="Gun condition:">
+              <Section title="Stan działa:">
                 <ProgressBar
                   value={(maint_req / 25) * 100 * 0.01}
                   ranges={{
@@ -100,32 +101,32 @@ export const MunitionsComputer = (props) => {
             </Section>
           </Section>
         )) || (
-          <Section title="Weapon linking:">
+          <Section title="Łączenie z bronią:">
             <Button
               fluid
               icon="search"
-              content="Auto-link to nearby weapons"
+              content="Połącz z najbliższą bronią"
               onClick={() => act('search')}
             />
             <Button
               fluid
               icon={tool_buffer ? 'link' : 'square-o'}
               selected={tool_buffer}
-              content={`Link to: ${tool_buffer_name}`}
+              content={`Połącz z: ${tool_buffer_name}`}
               onClick={() => act('link')}
             />
             <Button
               fluid
               icon={tool_buffer ? 'exclamation-triangle' : 'square-o'}
               color={tool_buffer ? 'bad' : undefined}
-              content={'Clear multitool buffer'}
+              content={'Wyczyść pamięć multitoola'}
               onClick={() => act('fflush')}
             />
             <Button
               fluid
               icon={has_linked_gun ? 'check-circle' : 'square-o'}
               selected={has_linked_gun}
-              content="Weapon linked."
+              content="Broń połączona."
               onClick={() => act('unlink')}
             />
           </Section>

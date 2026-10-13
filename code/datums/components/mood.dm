@@ -288,6 +288,20 @@
 	if(the_event.timeout)
 		addtimer(CALLBACK(src, PROC_REF(clear_event), null, category), the_event.timeout, TIMER_UNIQUE|TIMER_OVERRIDE)
 
+/**
+ * Returns true if you already have a mood from a provided category.
+ *
+ * Arguments
+ * * category - Mood category to validate against.
+ */
+/datum/component/mood/proc/has_mood_of_category(category)
+	for(var/i in mood_events)
+		var/datum/mood_event/moodlet = mood_events[i]
+		if (moodlet.category == category)
+			return TRUE
+
+	return FALSE
+
 /datum/component/mood/proc/clear_event(datum/source, category)
 	SIGNAL_HANDLER
 
