@@ -13,6 +13,9 @@
 /datum/component/footstep/proc/play_footstep()
 	SIGNAL_HANDLER
 
+	if(HAS_TRAIT(parent, TRAIT_SILENT_FOOTSTEPS))
+		return
+
 	var/turf/open/T = get_turf(parent)
 	if(!istype(T))
 		return

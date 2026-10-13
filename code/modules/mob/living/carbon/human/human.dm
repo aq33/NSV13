@@ -66,47 +66,12 @@
 
 /mob/living/carbon/human/get_stat_tabs()
 	var/list/tabs = ..()
-	if(istype(wear_suit, /obj/item/clothing/suit/space/space_ninja))
-		tabs.Insert(1, "SpiderOS")
 	tabs.Insert(2, "Squad") //NSV13 squad tab
 	return tabs
 
-//Ninja Code
 /mob/living/carbon/human/get_stat(selected_tab)
-	if(selected_tab == "SpiderOS")
-		var/list/tab_data = list()
-		var/obj/item/clothing/suit/space/space_ninja/SN = wear_suit
-		if(!SN)
-			return
-		tab_data["Stan SpiderOS"] = GENERATE_STAT_TEXT("[SN.s_initialized ? "Uruchomiony" : "Wyłączony"]")
-		tab_data["Aktualny czas"] = GENERATE_STAT_TEXT("[station_time_timestamp()]")
-		tab_data["divider_spideros"] = GENERATE_STAT_DIVIDER
-		if(SN.s_initialized)
-			//Suit gear
-			tab_data["Naładowanie energii"] = GENERATE_STAT_TEXT("[round(SN.cell.charge/100)]%")
-			tab_data["Bomby dymne"] = GENERATE_STAT_TEXT("[SN.s_bombs]")
-			//Ninja status
-			tab_data["Odciski palców"] = GENERATE_STAT_TEXT("[rustg_hash_string(RUSTG_HASH_MD5, dna.uni_identity)]")
-			tab_data["Unikalna tożsamość"] = GENERATE_STAT_TEXT("[dna.unique_enzymes]")
-			tab_data["Stan ogólny"] = GENERATE_STAT_TEXT("[stat > 1 ? "martwy" : "[health]% zdrowia"]")
-			tab_data["Odżywienie"] = GENERATE_STAT_TEXT("[nutrition]")
-			tab_data["Niedotlenienie"] = GENERATE_STAT_TEXT("[getOxyLoss()]")
-			tab_data["Poziom toksyn"] = GENERATE_STAT_TEXT("[getToxLoss()]")
-			tab_data["Oparzenia"] = GENERATE_STAT_TEXT("[getFireLoss()]")
-			tab_data["Urazy fizyczne"] = GENERATE_STAT_TEXT("[getBruteLoss()]")
-			tab_data["Poziom promieniowania"] = GENERATE_STAT_TEXT("[radiation] rad")
-			tab_data["Temperatura ciała"] = GENERATE_STAT_TEXT("[bodytemperature-T0C] °C ([bodytemperature*1.8-459.67] °F)")
-
-			//Diseases
-			if(diseases.len)
-				tab_data["DivSpiderOs2"] = GENERATE_STAT_DIVIDER
-				tab_data["Wirusy"] = GENERATE_STAT_TEXT("")
-				for(var/thing in diseases)
-					var/datum/disease/D = thing
-					tab_data["* [D.name]"] = GENERATE_STAT_TEXT("Type: [D.spread_text], Stage: [D.stage]/[D.max_stages], Possible Cure: [D.cure_text]")
-		return tab_data
 	//NSV13 squad tab
-	else if(selected_tab == "Squad")
+	if(selected_tab == "Squad")
 		var/list/tab_data = list()
 		client.stat_update_mode = STAT_SLOW_UPDATE
 		tab_data = get_stat_tab_squad()
@@ -539,7 +504,7 @@
 		//NSV13 - Roleplaying Records - End
 
 	//Check for dresscode violations
-	if(istype(head, /obj/item/clothing/head/wizard) || istype(head, /obj/item/clothing/head/helmet/space/hardsuit/wizard))
+	if(istype(head, /obj/item/clothing/head/wizard) || istype(head, /obj/item/clothing/head/helmet/space/hardsuit/wizard) || (istype(head, /obj/item/clothing) && (head.clothing_flags & CASTING_CLOTHES)))
 		threatcount += 2
 
 	//Check for nonhuman scum

@@ -55,10 +55,17 @@ WANTS_POWER_NODE(/obj/structure/grille) // AQ EDIT - Smartwires
 		if(RCD_DECONSTRUCT)
 			return list("mode" = RCD_DECONSTRUCT, "delay" = 20, "cost" = 5)
 		if(RCD_WINDOWGRILLE)
+			var/cost = 8
+			var/delay = 2 SECONDS
+
 			if(the_rcd.window_type == /obj/structure/window/reinforced/fulltile/ship/interior) //NSV13
-				return list("mode" = RCD_WINDOWGRILLE, "delay" = 40, "cost" = 12)
-			else
-				return list("mode" = RCD_WINDOWGRILLE, "delay" = 20, "cost" = 8)
+				delay = 4 SECONDS
+				cost = 12
+
+			return rcd_result_with_memory(
+				list("mode" = RCD_WINDOWGRILLE, "delay" = delay, "cost" = cost),
+				get_turf(src), RCD_MEMORY_WINDOWGRILLE,
+			)
 	return FALSE
 
 /obj/structure/grille/rcd_act(mob/user, var/obj/item/construction/rcd/the_rcd, passed_mode)

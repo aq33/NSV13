@@ -15,6 +15,7 @@
 			position: absolute;
 			top: 0;
 			left: 0;
+			width: max-content; /* do not shrink to a too-small window viewport */
 			max-width: 298px;
 			border: 2px solid #1B2967;
 		}
@@ -222,8 +223,11 @@
 
 				$wrap.width($wrap.width() + 2); //Dumb hack to fix a bizarre sizing bug
 
-				var docWidth	= $wrap.outerWidth(),
-					docHeight	= $wrap.outerHeight();
+				//winset sizes are in physical pixels, but the page is measured in CSS pixels.
+				//With Windows display scaling above 100% the window would be too small and clip the text.
+				var pixelRatio	= window.devicePixelRatio || 1,
+					docWidth	= Math.ceil($wrap.outerWidth() * pixelRatio),
+					docHeight	= Math.ceil($wrap.outerHeight() * pixelRatio);
 
 				if (posY + docHeight > map.size.y) { //Is the bottom edge below the window? Snap it up if so
 					posY = (posY - docHeight) - realIconSizeY - tooltip.padding;
