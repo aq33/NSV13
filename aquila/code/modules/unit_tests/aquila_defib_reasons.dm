@@ -21,6 +21,9 @@
 	var/obj/item/organ/brain/brain = patient.getorgan(/obj/item/organ/brain)
 	brain.applyOrganDamage(brain.maxHealth)
 	TEST_ASSERT(!paddles.can_defib(patient), "A failing brain can still be defibrillated")
+	// Brain damage rolls random traumas; aphasia runtimes when it is removed while the mob is being deleted
+	brain.cure_all_traumas(TRAUMA_RESILIENCE_ABSOLUTE)
+	brain.setOrganDamage(0)
 
 	TEST_ASSERT(!patient.has_dnr(), "A body without a player counts as DNR")
 
