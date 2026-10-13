@@ -68,6 +68,18 @@
 	TEST_ASSERT(!demon.current_cable, "Demon still thinks it is in a cable")
 	demon.can_exit_cable = FALSE
 
+	// Drabina przenosi demona, a na polu bez kabla włącza samopodtrzymanie
+	var/obj/structure/ladder/lower_ladder = allocate(/obj/structure/ladder, right)
+	var/obj/structure/ladder/upper_ladder = allocate(/obj/structure/ladder, get_step(far_right, EAST))
+	lower_ladder.up = upper_ladder
+	upper_ladder.down = lower_ladder
+	demon.can_exit_cable = FALSE
+	demon.UnarmedAttack(lower_ladder, TRUE)
+	TEST_ASSERT_EQUAL(demon.loc, get_turf(upper_ladder), "Ladder did not move the demon")
+	TEST_ASSERT(demon.can_exit_cable, "Self-sustaining was not enabled on a turf without cable")
+	demon.forceMove(far_right)
+	demon.can_exit_cable = FALSE
+
 	// Energia nie przekracza zapasu, a wyssana liczy się do celu
 	demon.charge = 0
 	demon.charge_drained = 0

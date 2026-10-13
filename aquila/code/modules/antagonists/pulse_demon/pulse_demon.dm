@@ -323,6 +323,22 @@
 			exit_action.sync_state(src)
 			to_chat(src, "<span class='danger'>Samopodtrzymanie włączyło się samo, żebyś nie zginął bez połączenia!</span>")
 
+/// Po przeniesieniu na pole spoza Move() (np. drabiną) podpina demona do kabla na tym polu
+/mob/living/simple_animal/pulse_demon/proc/sync_turf_connection()
+	if(!isturf(loc))
+		return
+	if(current_power)
+		UnregisterSignal(current_power, COMSIG_ATOM_EMP_ACT)
+	current_power = null
+	current_cable = locate(/obj/structure/cable) in loc
+	update_controlling_area()
+	if(!current_cable && !can_exit_cable)
+		var/datum/action/cooldown/pulse_demon/toggle/can_exit_cable/exit_action = locate() in pulse_actions
+		can_exit_cable = TRUE
+		exit_action?.sync_state(src)
+		to_chat(src, "<span class='danger'>Tu nie ma kabla! Samopodtrzymanie włączyło się samo, ale bez prądu szybko słabniesz.</span>")
+	set_varspeed(current_cable ? inside_cable_speed : outside_cable_speed)
+
 /mob/living/simple_animal/pulse_demon/proc/update_controlling_area(reset = FALSE)
 	var/area/prev = controlling_area
 	if(reset || !current_power)
@@ -750,6 +766,14 @@
 /mob/living/simple_animal/pulse_demon/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
 	if(isliving(A))
 		try_attack_mob(A)
+		return
+	// drabiną przechodzi na inne piętro, także poza kablami
+	if(istype(A, /obj/structure/ladder) && isturf(loc))
+		var/obj/structure/ladder/ladder = A
+		var/turf/old_turf = loc
+		ladder.use(src)
+		if(!QDELETED(src) && loc != old_turf)
+			sync_turf_connection()
 		return
 	if(isitem(A) && !is_under_tile())
 		var/obj/item/O = A
