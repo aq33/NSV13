@@ -55,14 +55,6 @@
 	left_cable.powernet.avail = old_avail
 	demon.revive(full_heal = TRUE, admin_revive = TRUE)
 
-	// Alt+klik na przycisku kupuje zdolność
-	var/datum/action/cooldown/pulse_demon/toggle/penetrating_shock/shock_action = locate() in demon.pulse_actions
-	demon.apcs_remaining = shock_action.unlock_cost
-	usr = demon
-	shock_action.button.Click(null, null, "alt=1;left=1")
-	usr = null
-	TEST_ASSERT(!shock_action.locked, "Alt-click on the action button did not buy the ability")
-
 	// Bez kabla nie ma dokąd iść, po kablu idzie dalej
 	demon.Move(right, EAST)
 	TEST_ASSERT_EQUAL(demon.loc, left, "Demon left the cable without self-sustaining")
@@ -83,17 +75,27 @@
 	TEST_ASSERT_EQUAL(demon.charge, demon.maxcharge, "Charge went over the maximum")
 	TEST_ASSERT_EQUAL(demon.charge_drained, demon.maxcharge, "Drained energy not counted")
 
-	// Kupowanie zdolności i ulepszeń za APC
+	// Kupowanie zdolności w menu: przycisk pojawia się dopiero po zakupie
+	TEST_ASSERT(!(emp_action in demon.actions), "Locked ability already has a button")
+	var/datum/pulse_demon_menu/menu = new(demon)
+	var/list/menu_data = menu.ui_data(demon)
+	TEST_ASSERT_EQUAL(length(menu_data["abilities"]), 11, "Menu does not list every ability")
 	demon.apcs_remaining = emp_action.unlock_cost
-	TEST_ASSERT(emp_action.AltTrigger(), "Alt-click on an ability was not handled")
+	TEST_ASSERT(emp_action.buy(demon), "Buying did not work")
 	TEST_ASSERT(!emp_action.locked, "Buying did not unlock the ability")
+	TEST_ASSERT(emp_action in demon.actions, "Bought ability has no button")
 	TEST_ASSERT_EQUAL(demon.apcs_remaining, 0, "Unlocking did not cost APCs")
+	TEST_ASSERT(!emp_action.buy(demon), "Ability bought twice")
 	demon.apcs_remaining = emp_action.upgrade_cost
-	emp_action.AltTrigger()
+	TEST_ASSERT(emp_action.upgrade(demon), "Upgrading did not work")
 	TEST_ASSERT_EQUAL(emp_action.level, 1, "Upgrading did not raise the level")
 	TEST_ASSERT(emp_action.cooldown_time < emp_action.base_cooldown, "Upgrade did not shorten the cooldown")
-	var/datum/action/cooldown/pulse_demon/open_upgrades/upgrades_action = locate() in demon.pulse_actions
-	TEST_ASSERT_EQUAL(upgrades_action.calc_cost(demon, "Pojemność"), 1, "Capacity upgrade should cost one APC")
+	TEST_ASSERT_EQUAL(menu.calc_body_cost("Pojemność"), 1, "Capacity upgrade should cost one APC")
+	demon.apcs_remaining = 1
+	var/old_maxcharge = demon.maxcharge
+	TEST_ASSERT(menu.buy_body_upgrade("Pojemność"), "Body upgrade failed")
+	TEST_ASSERT(demon.maxcharge > old_maxcharge, "Capacity upgrade did nothing")
+	qdel(menu)
 
 	// Zdolności z obszarem działają tylko po przejęciu APC
 	demon.adjust_charge(emp_action.cast_cost, TRUE)

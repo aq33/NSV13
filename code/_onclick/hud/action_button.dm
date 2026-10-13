@@ -59,10 +59,6 @@
 		if(id && usr.client) //try to (un)remember position
 			usr.client.prefs.action_buttons_screen_locs["[name]_[id]"] = locked ? moved : null
 		return TRUE
-	// AQ EDIT - Alt+klik na przycisku (kupowanie zdolności demona impulsu)
-	if(modifiers["alt"] && linked_action.AltTrigger())
-		return TRUE
-	// AQ EDIT END
 	if(usr.next_click > world.time)
 		return
 	usr.next_click = world.time + 1

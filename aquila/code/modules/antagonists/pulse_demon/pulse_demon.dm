@@ -143,6 +143,10 @@
 	var/revealed = FALSE
 	/// Zdolności demona (akcje)
 	var/list/datum/action/cooldown/pulse_demon/pulse_actions = list()
+	/// Okno zakupów, tworzone przy pierwszym otwarciu
+	var/datum/pulse_demon_menu/ability_menu
+	/// Czy pokazywać podgląd kabli
+	var/show_cables = TRUE
 	/// Zdolność celowana, która czeka na kliknięcie
 	var/datum/action/cooldown/pulse_demon/selected_action
 
@@ -207,6 +211,7 @@
 		apc_being_hijacked = null
 	selected_action = null
 	QDEL_LIST(pulse_actions)
+	QDEL_NULL(ability_menu)
 	hijacked_apcs = null
 	hijacked_robots = null
 	QDEL_NULL(access_card)
@@ -247,7 +252,7 @@
 
 /mob/living/simple_animal/pulse_demon/proc/give_actions()
 	for(var/action_type in list(
-		/datum/action/cooldown/pulse_demon/open_upgrades,
+		/datum/action/cooldown/pulse_demon/open_menu,
 		/datum/action/cooldown/pulse_demon/whisper,
 		/datum/action/cooldown/pulse_demon/cycle_camera,
 		/datum/action/cooldown/pulse_demon/toggle/penetrating_shock,
@@ -261,7 +266,9 @@
 		/datum/action/cooldown/pulse_demon/remotedrain,
 	))
 		var/datum/action/cooldown/pulse_demon/action = new action_type(src)
-		action.Grant(src)
+		// kupowane zdolności dostają przycisk dopiero po zakupie
+		if(!action.locked)
+			action.Grant(src)
 		pulse_actions += action
 	for(var/datum/action/cooldown/pulse_demon/toggle/toggle in pulse_actions)
 		toggle.sync_state(src)
@@ -693,6 +700,8 @@
 		cableview_z = our_turf.z
 		for(var/obj/machinery/power/apc/A as anything in hijacked_apcs)
 			add_apc_image(A)
+	if(!show_cables)
+		return
 
 	var/list/removed_images = list()
 	for(var/cable_ref in cable_images.Copy())
@@ -710,6 +719,7 @@
 				continue // kable wielopoziomowe łączą sieci między poziomami
 			// obraz wisi na polu, a nie na kablu, żeby nie trzymać zniszczonych kabli
 			var/image/cable_image = make_overlay_image(C, C.icon, C.icon_state, C.loc)
+			cable_image.alpha = 110 // półprzezroczyste, żeby nie zasłaniały pomieszczeń
 			cable_images[REF(C)] = cable_image
 			new_images += cable_image
 	if(length(new_images))

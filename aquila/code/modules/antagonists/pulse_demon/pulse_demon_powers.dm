@@ -1,5 +1,6 @@
 // AQUILA - zdolności demona impulsu (port z ParadiseSS13, tam były to spelle)
-// Zdolności kupuje się i ulepsza za przejęte APC: Alt+klik na przycisku.
+// Zdolności kupuje się i ulepsza za przejęte APC w menu zdolności (jak emporium changelinga).
+// Przycisk zdolności pojawia się dopiero po jej kupieniu.
 
 #define PULSEDEMON_REMOTE_DRAIN_MULTIPLIER 5
 
@@ -10,10 +11,6 @@
 #define PD_UPGRADE_MAX_HEALTH "Siła"
 #define PD_UPGRADE_HEALTH_COST "Wydajność"
 #define PD_UPGRADE_MAX_CHARGE "Pojemność"
-
-/// Alt+klik na przycisku akcji. Zwraca TRUE, jeśli akcja go obsłużyła.
-/datum/action/proc/AltTrigger()
-	return FALSE
 
 /datum/action/cooldown/pulse_demon
 	button_icon = 'aquila/icons/mob/actions/actions_pulse_demon.dmi'
@@ -61,12 +58,8 @@
 	return ..()
 
 /datum/action/cooldown/pulse_demon/proc/update_info()
-	if(locked)
-		name = "[base_name] (zablokowane, [unlock_cost] APC)"
-		desc = "[base_desc] Odblokowanie kosztuje [unlock_cost] APC. <b>Alt+klik</b> na przycisku, żeby odblokować."
-	else
-		name = "[base_name][cast_cost ? " ([display_joules(cast_cost)])" : ""]"
-		desc = "[base_desc][level >= level_max ? "" : " Ulepszenie kosztuje [upgrade_cost] APC. <b>Alt+klik</b> na przycisku, żeby ulepszyć."]"
+	name = "[base_name][cast_cost ? " ([display_joules(cast_cost)])" : ""][level ? " - poziom [level + 1]" : ""]"
+	desc = base_desc
 	UpdateButtonIcon()
 
 /datum/action/cooldown/pulse_demon/IsAvailable()
@@ -85,7 +78,7 @@
 		return FALSE
 	if(locked)
 		if(show_message)
-			to_chat(user, "<span class='warning'>Ta zdolność jest zablokowana! Alt+klik na przycisku, żeby ją kupić za [unlock_cost] APC.</span>")
+			to_chat(user, "<span class='warning'>Najpierw kup tę zdolność w menu zdolności!</span>")
 		return FALSE
 	if(next_use_time > world.time)
 		if(show_message)
@@ -159,37 +152,31 @@
 /datum/action/cooldown/pulse_demon/proc/try_cast_action(mob/living/simple_animal/pulse_demon/user, atom/target)
 	return FALSE
 
-// Kupowanie i ulepszanie
-/datum/action/cooldown/pulse_demon/AltTrigger()
-	var/mob/living/simple_animal/pulse_demon/user = owner
-	if(!istype(user))
+// Kupowanie i ulepszanie (wołane z menu zdolności)
+
+/// Kupuje zdolność za APC i daje demonowi jej przycisk
+/datum/action/cooldown/pulse_demon/proc/buy(mob/living/simple_animal/pulse_demon/user)
+	if(!locked)
 		return FALSE
-	if(locked)
-		if(user.apcs_remaining < unlock_cost)
-			to_chat(user, "<span class='warning'>Nie stać cię na tę zdolność! Odblokowanie kosztuje [unlock_cost] APC.</span>")
-			return TRUE
-		user.apcs_remaining -= unlock_cost
-		locked = FALSE
-		to_chat(user, "<span class='notice'>Odblokowujesz [base_name]!</span>")
-		if(cast_cost > 0)
-			to_chat(user, "<span class='notice'>Jedno użycie kosztuje [display_joules(cast_cost)].</span>")
-		if(level < level_max)
-			to_chat(user, "<span class='notice'>Ulepszenie będzie kosztować [upgrade_cost] APC.</span>")
-		update_info()
-		return TRUE
-	if(level >= level_max)
-		to_chat(user, "<span class='warning'>Ta zdolność jest już w pełni ulepszona!</span>")
-		return TRUE
+	if(user.apcs_remaining < unlock_cost)
+		to_chat(user, "<span class='warning'>Nie stać cię na [base_name]! Kosztuje [unlock_cost] APC.</span>")
+		return FALSE
+	user.apcs_remaining -= unlock_cost
+	locked = FALSE
+	Grant(user)
+	update_info()
+	to_chat(user, "<span class='notice'>Kupujesz [base_name]! Przycisk pojawił się na pasku zdolności.</span>")
+	return TRUE
+
+/datum/action/cooldown/pulse_demon/proc/upgrade(mob/living/simple_animal/pulse_demon/user)
+	if(locked || level >= level_max)
+		return FALSE
 	if(user.apcs_remaining < upgrade_cost)
 		to_chat(user, "<span class='warning'>Nie stać cię na ulepszenie! Kosztuje [upgrade_cost] APC.</span>")
-		return TRUE
+		return FALSE
 	user.apcs_remaining -= upgrade_cost
 	level = min(level + 1, level_max)
 	do_upgrade(user)
-	if(level == level_max)
-		to_chat(user, "<span class='notice'>[base_name] jest w pełni ulepszone!</span>")
-	else
-		to_chat(user, "<span class='notice'>Kolejne ulepszenie będzie kosztować [upgrade_cost] APC.</span>")
 	update_info()
 	return TRUE
 
@@ -385,6 +372,11 @@
 	background_icon_state = state ? "bg_pulsedemon" : "bg_pulsedemon_disabled"
 	UpdateButtonIcon()
 
+/datum/action/cooldown/pulse_demon/toggle/buy(mob/living/simple_animal/pulse_demon/user)
+	. = ..()
+	if(.)
+		sync_state(user)
+
 /datum/action/cooldown/pulse_demon/toggle/proc/announce(mob/user, state)
 	set_visual_state(state)
 	to_chat(user, "<span class='notice'>Od teraz [state ? "będziesz" : "nie będziesz"] [base_message]</span>")
@@ -392,7 +384,7 @@
 
 /datum/action/cooldown/pulse_demon/toggle/do_drain
 	name = "Przełącz wysysanie"
-	desc = "Włącza i wyłącza wysysanie prądu ze źródeł. Alt+klik ustawia tempo wysysania."
+	desc = "Włącza i wyłącza wysysanie prądu ze źródeł. Tempo ustawisz w menu zdolności."
 	base_message = "wysysać prądu ze źródeł."
 	button_icon_state = "pd_toggle_steal"
 	locked = FALSE
@@ -403,18 +395,6 @@
 
 /datum/action/cooldown/pulse_demon/toggle/do_drain/try_cast_action(mob/living/simple_animal/pulse_demon/user, atom/target)
 	user.do_drain = announce(user, !user.do_drain)
-	return TRUE
-
-/datum/action/cooldown/pulse_demon/toggle/do_drain/AltTrigger()
-	var/mob/living/simple_animal/pulse_demon/user = owner
-	if(!istype(user))
-		return FALSE
-	var/amount = tgui_input_number(user, "Podaj tempo w W, od 1 do [user.max_drain_rate]. 0 ustawia maksimum.", "Tempo wysysania", user.power_drain_rate, user.max_drain_rate, 0)
-	if(isnull(amount) || QDELETED(user))
-		to_chat(user, "<span class='warning'>Tempo wysysania bez zmian.</span>")
-		return TRUE
-	user.power_drain_rate = amount ? clamp(amount, 1, user.max_drain_rate) : user.max_drain_rate
-	to_chat(user, "<span class='notice'>Wysysasz teraz [display_power(user.power_drain_rate)] na cykl.</span>")
 	return TRUE
 
 /datum/action/cooldown/pulse_demon/toggle/can_exit_cable
@@ -459,7 +439,7 @@
 
 /datum/action/cooldown/pulse_demon/cycle_camera
 	name = "Przełącz kamerę"
-	desc = "Skacze między kamerami w obszarze przejętego APC. Alt+klik wraca do APC."
+	desc = "Skacze między kamerami w obszarze przejętego APC. Po ostatniej kamerze wraca do APC."
 	button_icon_state = "pd_camera_view"
 	locked = FALSE
 	cast_cost = 0
@@ -469,16 +449,6 @@
 	targeted = FALSE
 	/// Indeks obecnej kamery w obszarze, 0 = APC
 	var/current_camera = 0
-
-/datum/action/cooldown/pulse_demon/cycle_camera/AltTrigger()
-	var/mob/living/simple_animal/pulse_demon/user = owner
-	if(!istype(user))
-		return FALSE
-	current_camera = 0
-	if(!istype(user.current_power, /obj/machinery/power/apc) || get_area(user) != user.controlling_area)
-		return TRUE
-	user.forceMove(user.current_power)
-	return TRUE
 
 /datum/action/cooldown/pulse_demon/cycle_camera/try_cast_action(mob/living/simple_animal/pulse_demon/user, atom/target)
 	var/list/cameras = user.controlling_area.cameras
@@ -532,134 +502,181 @@
 		G.show_message("<i>Demoniczny szept od <b>[user]</b> [FOLLOW_LINK(G, user)] do <b>[choice]</b> [FOLLOW_LINK(G, choice)]: [msg]</i>")
 	return TRUE
 
-// Menu ulepszeń
+// Menu zdolności
 
-/datum/action/cooldown/pulse_demon/open_upgrades
-	name = "Menu ulepszeń"
-	desc = "Otwiera menu ulepszeń. Alt+klik pokazuje opisy i koszty."
+/datum/action/cooldown/pulse_demon/open_menu
+	name = "Menu zdolności"
+	desc = "Kupuj i ulepszaj zdolności za przejęte APC, ulepszaj swoje ciało i ustaw tempo wysysania."
 	button_icon_state = "pd_upgrade"
 	locked = FALSE
 	cast_cost = 0
 	level_max = 0
 	base_cooldown = 0
 	targeted = FALSE
-	var/static/list/upgrade_icons
-	var/static/list/upgrade_descs = list(
-		PD_UPGRADE_HIJACK_SPEED = "Skraca czas przejmowania APC.",
-		PD_UPGRADE_DRAIN_SPEED = "Zwiększa ilość prądu wysysanego ze źródła w każdym cyklu.",
-		PD_UPGRADE_MAX_HEALTH = "Zwiększa maksymalne zdrowie.",
-		PD_UPGRADE_HEALTH_REGEN = "Zwiększa leczenie w każdym cyklu z zasilaniem.",
-		PD_UPGRADE_HEALTH_LOSS = "Zmniejsza utratę zdrowia w każdym cyklu bez zasilania.",
-		PD_UPGRADE_HEALTH_COST = "Zmniejsza ilość prądu potrzebną do leczenia w każdym cyklu.",
-		PD_UPGRADE_MAX_CHARGE = "Zwiększa maksymalny zapas energii.",
+
+/datum/action/cooldown/pulse_demon/open_menu/try_cast_action(mob/living/simple_animal/pulse_demon/user, atom/target)
+	if(!user.ability_menu)
+		user.ability_menu = new(user)
+	user.ability_menu.ui_interact(user)
+	return TRUE
+
+/// Okno zakupów demona, odpowiednik emporium changelinga
+/datum/pulse_demon_menu
+	var/mob/living/simple_animal/pulse_demon/demon
+	var/static/list/body_upgrade_descs = list(
+		PD_UPGRADE_HIJACK_SPEED = "Skraca czas przejmowania APC o 3 s (najmniej 6 s).",
+		PD_UPGRADE_DRAIN_SPEED = "Pozwala wysysać o 20 kW więcej na cykl.",
+		PD_UPGRADE_MAX_HEALTH = "Zwiększa maksymalne zdrowie o połowę (najwyżej 200).",
+		PD_UPGRADE_HEALTH_REGEN = "Leczysz o 2 zdrowia więcej na cykl z zasilaniem.",
+		PD_UPGRADE_HEALTH_LOSS = "Tracisz o 1 zdrowia mniej na cykl bez zasilania.",
+		PD_UPGRADE_HEALTH_COST = "Leczenie wymaga o 1/3 mniej prądu, a nadwyżka z kabla trafia do zapasu.",
+		PD_UPGRADE_MAX_CHARGE = "Mieścisz o 50 kJ energii więcej.",
 	)
 
-/datum/action/cooldown/pulse_demon/open_upgrades/New(Target)
+/datum/pulse_demon_menu/New(mob/living/simple_animal/pulse_demon/new_demon)
 	. = ..()
-	if(!upgrade_icons)
-		upgrade_icons = list(
-			PD_UPGRADE_HIJACK_SPEED = image(icon = 'icons/obj/power.dmi', icon_state = "apcemag"),
-			PD_UPGRADE_DRAIN_SPEED = image(icon = 'icons/obj/power.dmi', icon_state = "ccharger"),
-			PD_UPGRADE_MAX_HEALTH = image(icon = 'icons/obj/stock_parts.dmi', icon_state = "bluespace_matter_bin"),
-			PD_UPGRADE_HEALTH_REGEN = image(icon = 'icons/obj/stock_parts.dmi', icon_state = "femto_mani"),
-			PD_UPGRADE_HEALTH_LOSS = image(icon = 'icons/obj/stock_parts.dmi', icon_state = "triphasic_scan_module"),
-			PD_UPGRADE_HEALTH_COST = image(icon = 'icons/obj/stock_parts.dmi', icon_state = "quadultra_micro_laser"),
-			PD_UPGRADE_MAX_CHARGE = image(icon = 'icons/obj/stock_parts.dmi', icon_state = "quadratic_capacitor"),
-		)
+	demon = new_demon
 
-/// Koszt ulepszenia w APC albo -1, gdy jest już maksymalne
-/datum/action/cooldown/pulse_demon/open_upgrades/proc/calc_cost(mob/living/simple_animal/pulse_demon/user, upgrade)
+/datum/pulse_demon_menu/Destroy()
+	demon = null
+	return ..()
+
+/datum/pulse_demon_menu/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/pulse_demon_menu/ui_status(mob/user, datum/ui_state/state)
+	if(user != demon || demon.stat == DEAD)
+		return UI_CLOSE
+	return ..()
+
+/datum/pulse_demon_menu/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "PulseDemonMenu", "Zdolności demona impulsu")
+		ui.open()
+
+/datum/pulse_demon_menu/ui_data(mob/user)
+	var/list/data = list()
+	data["apcs_remaining"] = demon.apcs_remaining
+	data["hijacked_apcs"] = length(demon.hijacked_apcs)
+	data["charge"] = display_joules(demon.charge)
+	data["maxcharge"] = display_joules(demon.maxcharge)
+	data["power_status"] = demon.power_status
+	data["controlling_area"] = demon.controlling_area ? "[demon.controlling_area.name]" : null
+	data["drain_rate"] = demon.power_drain_rate
+	data["max_drain_rate"] = demon.max_drain_rate
+	data["do_drain"] = demon.do_drain
+	data["show_cables"] = demon.show_cables
+
+	var/list/abilities = list()
+	for(var/i in 1 to length(demon.pulse_actions))
+		var/datum/action/cooldown/pulse_demon/action = demon.pulse_actions[i]
+		if(istype(action, /datum/action/cooldown/pulse_demon/open_menu))
+			continue
+		abilities += list(list(
+			"id" = i,
+			"name" = action.base_name,
+			"desc" = action.base_desc,
+			"owned" = !action.locked,
+			"unlock_cost" = action.unlock_cost,
+			"upgrade_cost" = action.upgrade_cost,
+			"level" = action.level,
+			"level_max" = action.level_max,
+			"cast_cost" = action.cast_cost ? display_joules(action.cast_cost) : null,
+			"cooldown" = action.cooldown_time ? "[action.cooldown_time / 10] s" : null,
+			"requires_area" = action.requires_area,
+		))
+	data["abilities"] = abilities
+
+	var/list/body = list()
+	for(var/upgrade in body_upgrade_descs)
+		body += list(list(
+			"name" = upgrade,
+			"desc" = body_upgrade_descs[upgrade],
+			"cost" = calc_body_cost(upgrade),
+		))
+	data["body_upgrades"] = body
+	return data
+
+/datum/pulse_demon_menu/ui_act(action, params)
+	if(..())
+		return
+	if(QDELETED(demon) || demon.stat == DEAD)
+		return
+	switch(action)
+		if("buy", "upgrade")
+			var/index = text2num(params["id"])
+			if(!index || index < 1 || index > length(demon.pulse_actions))
+				return
+			var/datum/action/cooldown/pulse_demon/ability = demon.pulse_actions[index]
+			return action == "buy" ? ability.buy(demon) : ability.upgrade(demon)
+		if("body")
+			return buy_body_upgrade(params["name"])
+		if("drain_rate")
+			var/rate = text2num(params["rate"])
+			if(isnull(rate))
+				return
+			demon.power_drain_rate = clamp(round(rate), 1000, demon.max_drain_rate)
+			return TRUE
+		if("toggle_cables")
+			demon.show_cables = !demon.show_cables
+			demon.update_cableview(TRUE)
+			return TRUE
+
+/// Koszt ulepszenia ciała w APC albo -1, gdy jest już maksymalne
+/datum/pulse_demon_menu/proc/calc_body_cost(upgrade)
 	switch(upgrade)
 		if(PD_UPGRADE_HIJACK_SPEED)
-			if(user.hijack_time <= 6 SECONDS)
+			if(demon.hijack_time <= 6 SECONDS)
 				return -1
-			return user.hijack_time > 12 SECONDS ? 1 : 2
+			return demon.hijack_time > 12 SECONDS ? 1 : 2
 		if(PD_UPGRADE_DRAIN_SPEED)
-			return user.max_drain_rate >= 500000 ? -1 : 1
+			return demon.max_drain_rate >= 500000 ? -1 : 1
 		if(PD_UPGRADE_MAX_HEALTH)
-			if(user.maxHealth >= 200)
+			if(demon.maxHealth >= 200)
 				return -1
-			return user.maxHealth <= 100 ? 1 : 2
+			return demon.maxHealth <= 100 ? 1 : 2
 		if(PD_UPGRADE_HEALTH_REGEN)
-			return user.health_regen_rate >= 10 ? -1 : 1
+			return demon.health_regen_rate >= 10 ? -1 : 1
 		if(PD_UPGRADE_HEALTH_LOSS)
-			if(user.health_loss_rate <= 0)
+			if(demon.health_loss_rate <= 0)
 				return -1
-			return user.health_loss_rate >= 3 ? 1 : 2
+			return demon.health_loss_rate >= 3 ? 1 : 2
 		if(PD_UPGRADE_HEALTH_COST)
-			return user.power_per_regen <= 1000 ? -1 : 1
+			return demon.power_per_regen <= 1000 ? -1 : 1
 		if(PD_UPGRADE_MAX_CHARGE)
 			return 1
 	return -1
 
-/datum/action/cooldown/pulse_demon/open_upgrades/proc/get_upgrades(mob/living/simple_animal/pulse_demon/user)
-	var/list/upgrades = list()
-	for(var/upgrade in upgrade_icons)
-		var/cost = calc_cost(user, upgrade)
-		if(cost == -1)
-			continue
-		upgrades["[upgrade] ([cost] APC)"] = upgrade_icons[upgrade]
-	return upgrades
-
-/datum/action/cooldown/pulse_demon/open_upgrades/AltTrigger()
-	var/mob/living/simple_animal/pulse_demon/user = owner
-	if(!istype(user))
-		return FALSE
-	var/list/lines = list("<b>Ulepszenia demona impulsu:</b>")
-	for(var/upgrade in upgrade_descs)
-		var/cost = calc_cost(user, upgrade)
-		lines += "<b>[upgrade]</b> ([cost == -1 ? "w pełni ulepszone" : "[cost] APC"]) - [upgrade_descs[upgrade]]"
-	to_chat(user, lines.Join("<br>"))
-	return TRUE
-
-/datum/action/cooldown/pulse_demon/open_upgrades/try_cast_action(mob/living/simple_animal/pulse_demon/user, atom/target)
-	var/list/upgrades = get_upgrades(user)
-	if(!length(upgrades))
-		to_chat(user, "<span class='warning'>Wszystko jest już w pełni ulepszone!</span>")
-		return FALSE
-	// menu na polu, bo demon w APC albo pod podłogą nie jest widoczny na mapie
-	var/raw_choice = show_radial_menu(user, get_turf(user), upgrades, radius = 48)
-	if(!raw_choice || QDELETED(user))
-		return FALSE
-	var/choice = splittext(raw_choice, " (")[1]
-	var/cost = calc_cost(user, choice)
+/datum/pulse_demon_menu/proc/buy_body_upgrade(choice)
+	var/cost = calc_body_cost(choice)
 	if(cost == -1)
 		return FALSE
-	if(user.apcs_remaining < cost)
-		to_chat(user, "<span class='warning'>Masz za mało niewydanych APC na to ulepszenie!</span>")
+	if(demon.apcs_remaining < cost)
+		to_chat(demon, "<span class='warning'>Masz za mało niewydanych APC na to ulepszenie!</span>")
 		return FALSE
 
-	user.apcs_remaining -= cost
+	demon.apcs_remaining -= cost
 	switch(choice)
 		if(PD_UPGRADE_HIJACK_SPEED)
-			user.hijack_time = max(round(user.hijack_time - 3 SECONDS), 6 SECONDS)
-			to_chat(user, "<span class='notice'>Ulepszasz: [choice]. Przejęcie APC zajmuje teraz [user.hijack_time / 10] s.</span>")
+			demon.hijack_time = max(round(demon.hijack_time - 3 SECONDS), 6 SECONDS)
 		if(PD_UPGRADE_DRAIN_SPEED)
-			var/old = user.max_drain_rate
-			user.max_drain_rate += 20000
-			if(user.power_drain_rate == old)
-				user.power_drain_rate = user.max_drain_rate
-			to_chat(user, "<span class='notice'>Ulepszasz: [choice]. Możesz wysysać [display_power(user.max_drain_rate)].</span>")
+			var/old = demon.max_drain_rate
+			demon.max_drain_rate += 20000
+			if(demon.power_drain_rate == old)
+				demon.power_drain_rate = demon.max_drain_rate
 		if(PD_UPGRADE_MAX_HEALTH)
-			user.maxHealth = min(round(user.maxHealth * 1.5), 200)
-			user.updatehealth()
-			to_chat(user, "<span class='notice'>Ulepszasz: [choice]. Maksymalne zdrowie to teraz [user.maxHealth].</span>")
+			demon.maxHealth = min(round(demon.maxHealth * 1.5), 200)
+			demon.updatehealth()
 		if(PD_UPGRADE_HEALTH_REGEN)
-			user.health_regen_rate = min(round(user.health_regen_rate + 2), 10)
-			to_chat(user, "<span class='notice'>Ulepszasz: [choice]. Z zasilaniem leczysz [user.health_regen_rate] zdrowia na cykl.</span>")
+			demon.health_regen_rate = min(round(demon.health_regen_rate + 2), 10)
 		if(PD_UPGRADE_HEALTH_LOSS)
-			user.health_loss_rate = max(round(user.health_loss_rate - 1), 0)
-			if(user.health_loss_rate == 0)
-				to_chat(user, "<span class='notice'>Ulepszasz: [choice]. Na kablu bez prądu nie tracisz już zdrowia.</span>")
-			else
-				to_chat(user, "<span class='notice'>Ulepszasz: [choice]. Bez zasilania tracisz [user.health_loss_rate] zdrowia na cykl.</span>")
+			demon.health_loss_rate = max(round(demon.health_loss_rate - 1), 0)
 		if(PD_UPGRADE_HEALTH_COST)
-			user.power_per_regen = max(round(user.power_per_regen / 1.5), 1)
-			to_chat(user, "<span class='notice'>Ulepszasz: [choice]. Leczenie wymaga teraz [display_power(user.power_per_regen)].</span>")
-			to_chat(user, "<span class='notice'>Jeśli wysysanie jest włączone, nadwyżka prądu z kabla trafia do twojego zapasu.</span>")
+			demon.power_per_regen = max(round(demon.power_per_regen / 1.5), 1)
 		if(PD_UPGRADE_MAX_CHARGE)
-			user.maxcharge += 50000
-			to_chat(user, "<span class='notice'>Ulepszasz: [choice]. Mieścisz teraz [display_joules(user.maxcharge)].</span>")
+			demon.maxcharge += 50000
+	to_chat(demon, "<span class='notice'>Ulepszasz: [choice].</span>")
 	return TRUE
 
 #undef PULSEDEMON_REMOTE_DRAIN_MULTIPLIER
