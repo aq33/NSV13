@@ -200,6 +200,12 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /// Każde wyjście z lekcji będzie ją liczyć jako ukończoną
 /datum/tutorial/proc/mark_completed()
 	completion_marked = TRUE
+	// Zapis od razu, póki gracz jest połączony: po wylogowaniu end_tutorial() nie znajdzie już jego klienta
+	var/client/player = GLOB.directory[tutorial_ckey]
+	var/list/completed_tutorials = player?.prefs?.get_completed_tutorials()
+	if(completed_tutorials && !(tutorial_id in completed_tutorials))
+		completed_tutorials += tutorial_id
+		player.prefs.save_preferences()
 
 /// Spawn obiektów potrzebnych od początku lekcji
 /datum/tutorial/proc/init_map()

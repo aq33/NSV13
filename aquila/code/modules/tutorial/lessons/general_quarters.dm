@@ -14,8 +14,8 @@
 	tutorial_template = /datum/map_template/tutorial/aquila_gq
 	/// Cele na strzelnicy, które jeszcze nie zostały trafione
 	var/list/targets_left = list()
-	/// Ile pocisków Gaussa jest w lekcji (luźny + w skrzyni)
-	var/gauss_rounds = 0
+	/// Gracz dostał już podpowiedź o niezaładowanym luźnym pocisku
+	var/loose_round_hint_given = FALSE
 
 // Układ (przesunięcia od lewego dolnego rogu podłogi): kwatera z koją i vendorem u góry z lewej,
 // stanowisko Gaussa u góry z prawej, strzelnica na dole.
@@ -173,19 +173,22 @@
 	if(!istype(arrived, /obj/item/ship_weapon/ammunition/gauss))
 		return
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/machinery/ship_weapon/gauss_gun/tutorial, gun)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/ship_weapon/ammunition/gauss, round)
 	if(current_step == "rack_hand")
-		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/ship_weapon/ammunition/gauss, round)
-		remove_highlight(round)
 		require_rack_crate()
+	if(round?.loc == gun.ammo_rack)
+		remove_highlight(round)
+	// Krok kończy się po stanie, nie po liczbie: skrzynia pusta i luźny pocisk na stojaku (kolejność dowolna)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/closet/crate, crate)
+	if(locate(/obj/item/ship_weapon/ammunition/gauss) in crate)
 		return
-	// capacity stojaka rośnie dopiero po wejściu pocisku, więc liczymy zawartość
-	var/loaded = 0
-	for(var/obj/item/ship_weapon/ammunition/gauss/loaded_round in gun.ammo_rack)
-		loaded++
-	if(loaded < gauss_rounds)
+	if(round && round.loc != gun.ammo_rack)
+		if(!loose_round_hint_given)
+			loose_round_hint_given = TRUE
+			message_to_player("Skrzynia jest pusta. Załaduj jeszcze ręcznie <b>luźny pocisk</b> (podświetlony): podnieś go i kliknij nim stojak.")
+			update_objective("Załaduj luźny pocisk na stojak.")
 		return
 	UnregisterSignal(gun.ammo_rack, COMSIG_ATOM_ENTERED)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/closet/crate, crate)
 	remove_highlight(crate)
 	remove_highlight(gun.ammo_rack)
 	require_chair()
@@ -299,7 +302,6 @@
 	for(var/i in 1 to GQ_CRATE_ROUNDS)
 		new /obj/item/ship_weapon/ammunition/gauss(crate)
 	add_to_tracking_atoms(crate)
-	gauss_rounds = GQ_CRATE_ROUNDS + 1
 
 /datum/tutorial/aquila/general_quarters/init_mob()
 	. = ..()

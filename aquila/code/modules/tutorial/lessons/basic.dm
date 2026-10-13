@@ -57,6 +57,10 @@
 	if(!tutorial_mob)
 		return
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/chair, chair)
+	// Gracz mógł się odpiąć, zanim pojawiło się polecenie
+	if(tutorial_mob.buckled != chair)
+		require_swap_hands()
+		return
 	current_step = "unbuckle"
 	message_to_player("Siedzisz przypięty pasami do krzesła. Odepnij się: kliknij krzesło albo naciśnij <b>[retrieve_bind("resist")]</b> (opór).")
 	update_objective("Odepnij się od krzesła (klik na krzesło albo [retrieve_bind("resist")]).")

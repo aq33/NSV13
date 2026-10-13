@@ -19,6 +19,8 @@
 	outfit = /datum/outfit/aquila_tutorial/survival
 	/// Trwa spuszczanie powietrza z pokoju
 	var/draining = FALSE
+	/// Timer następnego kroku spuszczania powietrza (jeden cykl naraz)
+	var/drain_timer
 	/// Gracz już dostał podpowiedź, że internale działają, ale brakuje skafandra
 	var/suit_hint_given = FALSE
 
@@ -66,11 +68,14 @@
 	if(sample.return_air().return_pressure() > SURVIVAL_TARGET_PRESSURE)
 		for(var/turf/open/floor in reserved_block())
 			floor.remove_air_ratio(0.1)
-	addtimer(CALLBACK(src, PROC_REF(drain_air)), 1 SECONDS)
+	drain_timer = addtimer(CALLBACK(src, PROC_REF(drain_air)), 1 SECONDS, TIMER_STOPPABLE)
 
 /// Przywraca zwykłe powietrze w całym pokoju
 /datum/tutorial/aquila/survival/proc/restore_air()
 	draining = FALSE
+	if(drain_timer)
+		deltimer(drain_timer)
+		drain_timer = null
 	for(var/turf/open/floor in reserved_block())
 		floor.air.parse_gas_string(floor.initial_gas_mix)
 		floor.update_visuals()
@@ -114,8 +119,9 @@
 	student.setOxyLoss(0)
 	student.SetUnconscious(0)
 	message_to_player("Straciłeś przytomność z braku tlenu. Przy rozszczelnieniu masz tylko chwilę: od razu sięgaj po pudełko przetrwania. Spróbuj jeszcze raz, to, co już założyłeś, zostaje na tobie.")
+	// restore_air() zatrzymało poprzedni cykl, nowy rusza po chwili przerwy
 	draining = TRUE
-	addtimer(CALLBACK(src, PROC_REF(drain_air)), 4 SECONDS)
+	drain_timer = addtimer(CALLBACK(src, PROC_REF(drain_air)), 4 SECONDS, TIMER_STOPPABLE)
 
 // 2. Rozbieranie: autoinjektor z kieszeni rannego
 
