@@ -22,6 +22,10 @@ type Data = {
   mode: any;
   question: any;
   selectedChoice: any;
+  pace_open?: boolean;
+  pace_can_vote?: boolean;
+  pace_choice?: number | null;
+  pace_counts?: Record<string, number>;
 };
 
 export const MapVote = (props) => {
@@ -60,6 +64,7 @@ export const MapVote = (props) => {
     >
       <Window.Content overflowY="scroll">
         <TimePanel />
+        <PacePanel />
         <Flex>
           <Flex.Item mt={1} mr={1} mb={1}>
             <Section fill fitted>
@@ -95,6 +100,50 @@ export const MapVote = (props) => {
         </Flex>
       </Window.Content>
     </Window>
+  );
+};
+
+// AQUILA - "Dynamika rundy" vote of the weighted rotation (aquila/code/modules/weighted/weighted_pace_vote.dm)
+const PACE_OPTIONS = [
+  { value: -1, key: 'less', label: 'Mniej zagrożeń', icon: 'dove' },
+  { value: 0, key: 'same', label: 'Jest dobrze', icon: 'thumbs-up' },
+  { value: 1, key: 'more', label: 'Więcej zagrożeń', icon: 'skull' },
+];
+
+const PacePanel = (props) => {
+  const { act, data } = useBackend<Data>();
+  const { pace_open, pace_can_vote, pace_choice, pace_counts } = data;
+  if (!pace_open) {
+    return null;
+  }
+  return (
+    <Section mt={1} title="Dynamika rundy">
+      <Box mb={1}>
+        Jakich następnych rund chcesz? Głos zmienia szanse spokojniejszych i
+        groźniejszych trybów w kolejnych rundach.
+      </Box>
+      <Flex>
+        {PACE_OPTIONS.map((option) => (
+          <Flex.Item key={option.key} grow={1} basis={0} mx={0.5}>
+            <Button
+              fluid
+              textAlign="center"
+              icon={option.icon}
+              selected={pace_choice === option.value}
+              disabled={!pace_can_vote}
+              onClick={() => act('pace_vote', { value: option.value })}
+            >
+              {option.label} ({pace_counts ? pace_counts[option.key] : 0})
+            </Button>
+          </Flex.Item>
+        ))}
+      </Flex>
+      {!pace_can_vote && (
+        <Box mt={1} color="label">
+          Głosować mogą tylko gracze, którzy grali postacią w tej rundzie.
+        </Box>
+      )}
+    </Section>
   );
 };
 

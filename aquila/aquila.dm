@@ -505,6 +505,10 @@
 #include "code\modules\research\techweb\all_nodes.dm"
 #include "code\modules\research\xenobiology\xenobio_tubes.dm"
 #include "code\modules\round_survey\round_survey.dm"
+#include "code\modules\weighted\spawn_fallbacks.dm"
+#include "code\modules\weighted\weighted_ghost_midround.dm"
+#include "code\modules\weighted\weighted_pace_vote.dm"
+#include "code\modules\weighted\weighted_rotation.dm"
 #include "code\modules\ruins\objects_and_mobs\sin_ruins.dm"
 #include "code\modules\screentips\atom_extensions.dm"
 #include "code\modules\screentips\client_extensions.dm"
@@ -608,5 +612,6 @@
 #include "code\modules\unit_tests\teratoma_event.dm"
 #include "code\modules\unit_tests\test_room_integrity.dm"
 #include "code\modules\unit_tests\vending_spritesheet.dm"
+#include "code\modules\unit_tests\weighted_rotation.dm"
 #include "code\modules\vehicles\ridden.dm"
 #endif
