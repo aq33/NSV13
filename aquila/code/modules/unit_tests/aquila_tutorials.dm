@@ -110,9 +110,16 @@
 	TEST_ASSERT(!(locate(/obj/effect/tutorial_marker) in corridor_spot), "The corridor marker stayed after the step")
 	var/obj/item/trash/can/can = lesson.tracking_atoms[/obj/item/trash/can]
 	var/obj/structure/closet/crate/bin/bin = lesson.tracking_atoms[/obj/structure/closet/crate/bin]
-	// Puszka, która wylądowała tuż przy koszu, też się liczy
+	// Lądowanie obok kosza po rzucie w podłogę się nie liczy
 	can.forceMove(get_step(bin, SOUTH))
-	SEND_SIGNAL(can, COMSIG_MOVABLE_THROW_LANDED)
+	var/datum/thrownthing/floor_throw = new(can, get_step(bin, SOUTH), SOUTH, 5, 1, student)
+	SEND_SIGNAL(can, COMSIG_MOVABLE_THROW_LANDED, floor_throw)
+	qdel(floor_throw)
+	STEP_ASSERT("throw")
+	// Puszka rzucona w kosz, która wylądowała tuż obok, się liczy
+	var/datum/thrownthing/bin_throw = new(can, bin, SOUTH, 5, 1, student)
+	SEND_SIGNAL(can, COMSIG_MOVABLE_THROW_LANDED, bin_throw)
+	qdel(bin_throw)
 	STEP_ASSERT("pull")
 
 	var/obj/structure/closet/crate/crate = lesson.tracking_atoms[/obj/structure/closet/crate]

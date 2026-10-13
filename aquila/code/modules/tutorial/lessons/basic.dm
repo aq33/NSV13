@@ -185,13 +185,15 @@
 		return
 	can_in_bin()
 
-/datum/tutorial/aquila/basic/proc/on_can_landed(datum/source)
+/datum/tutorial/aquila/basic/proc/on_can_landed(datum/source, datum/thrownthing/throwing_datum)
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/trash/can, can)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/closet/crate/bin, bin)
-	// Puszka czasem odbija się od kosza i leci krótko, więc liczymy też lądowanie tuż przy koszu
-	if(get_dist(can, bin) <= 1)
+	// Puszka czasem odbija się od kosza i leci krótko, więc liczymy też lądowanie tuż przy koszu,
+	// ale tylko po rzucie wymierzonym w kosz (a nie w podłogę obok niego)
+	var/aimed_at_bin = throwing_datum && (throwing_datum.initial_target?.resolve() == bin || throwing_datum.target_turf == get_turf(bin))
+	if(aimed_at_bin && get_dist(can, bin) <= 1)
 		can_in_bin()
 		return
 	message_to_player("Pudło! Podnieś puszkę, podejdź bliżej i spróbuj jeszcze raz: <b>[retrieve_bind("toggle_throw_mode")]</b>, potem klik na kosz.")
