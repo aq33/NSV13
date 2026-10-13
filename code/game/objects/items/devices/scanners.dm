@@ -385,6 +385,10 @@ GENE SCANNER
 		if(!(D.visibility_flags & HIDDEN_SCANNER))
 			message += "<span class='alert'><b>Uwaga: wykryto: [D.form]</b>\nNazwa: [D.name].\nTyp: [D.spread_text].\nStadium: [D.stage]/[D.max_stages].\nMożliwe leczenie: [D.cure_text]</span>"
 
+	if(iscarbon(M)) // AQ EDIT - wounds
+		var/mob/living/carbon/wounded = M
+		message += wounded.get_wound_scan_lines()
+
 	// Blood Level
 	if(M.has_dna())
 		var/mob/living/carbon/C = M
