@@ -7,6 +7,9 @@
 /// Pająk już wyssał te zwłoki, więcej wzbogaconych jaj z nich nie będzie
 #define TRAIT_SPIDER_CONSUMED "spider_consumed"
 
+/// Ile ładunków na jaja daje wyssanie jednego człowieka
+#define SPIDER_EGG_CHARGES_PER_BODY 2
+
 #define span_spiderbroodmother(str) ("<span class='spiderbroodmother'>" + str + "</span>")
 #define span_spiderbreacher(str) ("<span class='spiderbreacher'>" + str + "</span>")
 #define span_spiderscout(str) ("<span class='spiderscout'>" + str + "</span>")

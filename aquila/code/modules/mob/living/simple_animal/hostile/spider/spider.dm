@@ -76,6 +76,8 @@
 	var/list/enemies
 	/// Uciekamy, gdy zdrowie spadnie poniżej tego ułamka (0 = nigdy)
 	var/flee_health_ratio = 0
+	/// Ładunki na jaja z wyssanych ofiar (używa ich matka)
+	var/egg_charges = 0
 
 /mob/living/simple_animal/hostile/spider/Initialize(mapload)
 	. = ..()
@@ -171,6 +173,12 @@
 		patient.adjustFireLoss(-heal_others_amount)
 		visible_message(span_notice("[src] owija rany [patient]."), span_notice("Owijasz rany [patient]."))
 	busy = FALSE
+
+/// Zmienia liczbę ładunków na jaja i odświeża przyciski składania
+/mob/living/simple_animal/hostile/spider/proc/adjust_egg_charges(amount)
+	egg_charges = max(egg_charges + amount, 0)
+	for(var/datum/action/cooldown/spider/lay_eggs/egg_action in actions)
+		egg_action.UpdateButtonIcon()
 
 // AI
 

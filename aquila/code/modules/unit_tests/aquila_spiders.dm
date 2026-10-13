@@ -64,17 +64,25 @@
 	wrap.wrap_target(victim)
 	TEST_ASSERT(istype(victim.loc, /obj/structure/spider/cocoon), "Ofiara nie trafiła do kokonu")
 	TEST_ASSERT_EQUAL(victim.stat, DEAD, "Ofiara przeżyła wyssanie")
-	TEST_ASSERT_EQUAL(enriched.charges, 1, "Wyssanie nie dało ładunku wzbogaconych jaj")
+	TEST_ASSERT_EQUAL(mother.egg_charges, 2, "Wyssanie nie dało dwóch ładunków na jaja")
 	var/obj/structure/spider/cocoon/cocoon = victim.loc
 	qdel(cocoon)
 	TEST_ASSERT(isturf(victim.loc), "Zniszczony kokon nie wypuścił ofiary")
 
 	// Jaja przekazują rozkaz i nie wykluwają się bez dojrzenia
+	// Koszty jaj: zwykłe 1, nietypowe 2, wzbogacone 3
+	var/datum/action/cooldown/spider/lay_eggs/abnormal/abnormal = locate() in mother.actions
+	TEST_ASSERT(!enriched.has_charges(), "Wzbogacone jaja da się złożyć za 2 ładunki")
+	TEST_ASSERT(abnormal.has_charges(), "Nietypowych jaj nie da się złożyć za 2 ładunki")
+	mother.adjust_egg_charges(1)
+	TEST_ASSERT(enriched.has_charges(), "Wzbogaconych jaj nie da się złożyć za 3 ładunki")
 	enriched.lay_egg(start)
 	var/obj/structure/spider/eggcluster/enriched/eggs = locate() in start
 	TEST_ASSERT(eggs, "Nie złożono wzbogaconych jaj")
 	allocated += eggs
-	TEST_ASSERT_EQUAL(enriched.charges, 0, "Złożenie jaj nie zużyło ładunku")
+	TEST_ASSERT_EQUAL(mother.egg_charges, 0, "Wzbogacone jaja nie zużyły 3 ładunków")
+	for(var/datum/action/cooldown/spider/lay_eggs/egg_action in mother.actions)
+		TEST_ASSERT(!egg_action.has_charges(), "[egg_action.name] da się złożyć bez ładunków")
 	TEST_ASSERT(!eggs.ready, "Świeże jaja są od razu gotowe")
 
 	// Bez duchów gniazdo matki wykluwa się samo: matka pod AI z eskortą

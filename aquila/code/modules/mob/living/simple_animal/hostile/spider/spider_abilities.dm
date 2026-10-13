@@ -318,14 +318,13 @@
 	var/obj/structure/spider/cocoon/casing = new(to_wrap.loc)
 	if(isliving(to_wrap))
 		var/mob/living/living_wrapped = to_wrap
-		// Punkt za każde pożarcie żywego, ale za konkretne zwłoki tylko raz
+		// Ładunki za każde pożarcie żywego, ale z konkretnych zwłok tylko raz
 		if(ishuman(living_wrapped) && (living_wrapped.stat != DEAD || !HAS_TRAIT(living_wrapped, TRAIT_SPIDER_CONSUMED)))
-			var/datum/action/cooldown/spider/lay_eggs/enriched/egg_power = locate() in owner.actions
-			if(egg_power)
-				egg_power.charges++
-				egg_power.UpdateButtonIcon()
+			var/mob/living/simple_animal/hostile/spider/spider_owner = owner
+			if(istype(spider_owner) && (locate(/datum/action/cooldown/spider/lay_eggs) in owner.actions))
+				spider_owner.adjust_egg_charges(SPIDER_EGG_CHARGES_PER_BODY)
 				owner.visible_message(span_danger("[owner] wbija ssawkę w [living_wrapped] i wysysa lepką substancję."),
-					span_notice("Wysysasz z [living_wrapped] dość składników odżywczych, by złożyć wzbogacone jaja."))
+					span_notice("Wysysasz z [living_wrapped] składniki odżywcze na jaja (+[SPIDER_EGG_CHARGES_PER_BODY], masz [spider_owner.egg_charges])."))
 			ADD_TRAIT(living_wrapped, TRAIT_SPIDER_CONSUMED, TRAIT_GENERIC)
 			living_wrapped.death()
 			log_combat(owner, living_wrapped, "spider cocooned")
@@ -343,13 +342,15 @@
 
 /datum/action/cooldown/spider/lay_eggs
 	name = "Złóż jaja"
-	desc = "Złóż gniazdo jaj, z którego wkrótce wykluje się zwykły pająk."
+	desc = "Złóż gniazdo jaj, z którego wkrótce wykluje się zwykły pająk. Kosztuje 1 ładunek (ładunki daje owijanie ludzi)."
 	button_icon_state = "lay_eggs"
 	cooldown_time = 20 SECONDS
 	/// Ile trwa składanie
 	var/egg_lay_time = 4 SECONDS
 	/// Jakie jaja składamy
 	var/egg_type = /obj/structure/spider/eggcluster
+	/// Ile ładunków z wyssanych ofiar kosztuje jedno gniazdo
+	var/charge_cost = 1
 
 /datum/action/cooldown/spider/lay_eggs/unavailable_reason()
 	. = ..()
@@ -359,6 +360,20 @@
 		return "złe miejsce!"
 	if(locate(/obj/structure/spider/eggcluster) in owner.loc)
 		return "tu już są jaja!"
+	if(!has_charges())
+		return "potrzeba [charge_cost] ład., nakarm się!"
+
+/datum/action/cooldown/spider/lay_eggs/proc/has_charges()
+	var/mob/living/simple_animal/hostile/spider/spider_owner = owner
+	return istype(spider_owner) && spider_owner.egg_charges >= charge_cost
+
+/// Pokazuje na przycisku ładunki i koszt (gdy nie odlicza odnowienia)
+/datum/action/cooldown/spider/lay_eggs/UpdateButtonIcon(status_only = FALSE, force = FALSE)
+	. = ..()
+	if(!button || next_use_time > world.time)
+		return
+	var/mob/living/simple_animal/hostile/spider/spider_owner = owner
+	button.maptext = istype(spider_owner) ? MAPTEXT("<b>[spider_owner.egg_charges]/[charge_cost]</b>") : ""
 
 /datum/action/cooldown/spider/lay_eggs/Activate()
 	INVOKE_ASYNC(src, PROC_REF(lay_eggs_async))
@@ -378,48 +393,39 @@
 	if(locate(/obj/structure/spider/eggcluster) in egg_turf)
 		owner.balloon_alert(owner, "tu już są jaja!")
 		return
+	if(!has_charges())
+		owner.balloon_alert(owner, "za mało ładunków!")
+		return
 	lay_egg(egg_turf)
 	start_spider_cooldown()
 
 /datum/action/cooldown/spider/lay_eggs/proc/lay_egg(turf/egg_turf)
+	var/mob/living/simple_animal/hostile/spider/spider_owner = owner
+	if(istype(spider_owner))
+		spider_owner.adjust_egg_charges(-charge_cost)
 	var/obj/structure/spider/eggcluster/new_eggs = new egg_type(egg_turf)
 	new_eggs.faction = owner.faction.Copy()
 	// Ustalony rozkaz trafia też do directive matki, więc wystarczy go przepisać
-	if(isspider(owner))
-		var/mob/living/simple_animal/hostile/spider/spider_owner = owner
+	if(istype(spider_owner))
 		new_eggs.directive = spider_owner.directive
 	message_admins("[ADMIN_LOOKUPFLW(owner)] złożył(a) [new_eggs] w [ADMIN_VERBOSEJMP(egg_turf)].")
 	log_game("[key_name(owner)] laid [new_eggs] at [AREACOORD(egg_turf)].")
 
 /datum/action/cooldown/spider/lay_eggs/abnormal
 	name = "Złóż nietypowe jaja"
-	desc = "Złóż gniazdo jaj, z którego wkrótce wykluje się rzadszy pająk."
+	desc = "Złóż gniazdo jaj, z którego wkrótce wykluje się rzadszy pająk. Kosztuje 2 ładunki."
 	button_icon_state = "lay_abnormal_eggs"
 	cooldown_time = 180 SECONDS
 	egg_type = /obj/structure/spider/eggcluster/abnormal
+	charge_cost = 2
 
 /datum/action/cooldown/spider/lay_eggs/enriched
 	name = "Złóż wzbogacone jaja"
-	desc = "Złóż gniazdo jaj, z którego wykluje się rzadki pająk. Na każde gniazdo trzeba wyssać jednego człowieka."
+	desc = "Złóż gniazdo jaj, z którego wykluje się rzadki pająk, w tym kolejna matka. Kosztuje 3 ładunki."
 	button_icon_state = "lay_enriched_eggs"
 	cooldown_time = 60 SECONDS
 	egg_type = /obj/structure/spider/eggcluster/enriched
-	/// Ile gniazd możemy złożyć
-	var/charges = 0
-
-/datum/action/cooldown/spider/lay_eggs/enriched/unavailable_reason()
-	. = ..()
-	if(!. && charges <= 0)
-		return "najpierw się nakarm!"
-
-/datum/action/cooldown/spider/lay_eggs/enriched/UpdateButtonIcon(status_only = FALSE, force = FALSE)
-	. = ..()
-	if(button && !(next_use_time > world.time))
-		button.maptext = charges ? MAPTEXT("<b>[charges]</b>") : ""
-
-/datum/action/cooldown/spider/lay_eggs/enriched/lay_egg(turf/egg_turf)
-	charges--
-	return ..()
+	charge_cost = 3
 
 ///
 /// Rozkazy dla potomstwa i reszty roju
