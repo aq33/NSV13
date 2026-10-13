@@ -283,3 +283,8 @@
       battlemage to zaczarowany MODsuit
   - refactor: Pola i proximity monitory przeniesione na nowy system z BeeStation
   - bugfix: Maska sechailer nie zgłasza już błędu przy usuwaniu
+  - rscadd: 'Samouczek w lobby: lekcje Podstawy, Przetrwanie i Alarm bojowy. Nowi
+      gracze dostają propozycję przy pierwszym połączeniu.'
+  - tweak: 'Działo Gaussa: kamera i wyjście z działa to przyciski akcji strzelca zamiast
+      werbu.'
+  - tweak: Okna konsoli działa i automatu składu są po polsku.
