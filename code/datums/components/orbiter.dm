@@ -105,7 +105,7 @@
 	if(ismob(orbiter))
 		var/mob/orbiter_mob = orbiter
 		orbiter_mob.updating_glide_size = TRUE
-		orbiter_mob.glide_size = 8
+		orbiter_mob.glide_size = DELAY_TO_GLIDE_SIZE(orbiter_mob.cached_multiplicative_slowdown)
 
 	if(!refreshing && !length(orbiters) && !QDELING(src))
 		qdel(src)
