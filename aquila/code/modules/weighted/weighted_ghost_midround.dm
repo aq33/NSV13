@@ -23,6 +23,7 @@
 		/datum/round_event_control/aquila_chrono_legionnaire,
 		/datum/round_event_control/aquila_rogue_drone,
 		/datum/round_event_control/aquila_teratoma,
+		/datum/round_event_control/devil,
 		/datum/round_event_control/fugitives,
 		/datum/round_event_control/horror,
 		/datum/round_event_control/infiltrators,
