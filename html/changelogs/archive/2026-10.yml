@@ -288,3 +288,4 @@
   - tweak: 'Działo Gaussa: kamera i wyjście z działa to przyciski akcji strzelca zamiast
       werbu.'
   - tweak: Okna konsoli działa i automatu składu są po polsku.
+  - bugfix: Tooltipy nie są już ucinane przy skalowaniu ekranu w Windows powyżej 100%.
