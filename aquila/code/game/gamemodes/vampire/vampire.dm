@@ -50,6 +50,7 @@
 		num_vamps = max(1, min(round(num_players() / (tsc * 2)) + 2 + num_modifier, round(num_players() / tsc) + num_modifier))
 	else
 		num_vamps = max(1, min(num_players(), vampires_possible))
+	num_vamps = weighted_cap(num_vamps) // weighted rotation antagonist limit
 
 	for(var/j = 0, j < num_vamps, j++)
 		if (!antag_candidates.len)

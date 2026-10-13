@@ -91,7 +91,7 @@ ALERT_DELTA NIEBEZPIECZEŃSTWO: Sekwencja autodestrukcji została aktywowana. St
 ## GAME MODES ###
 
 #Set the Master (Default) Game Mode.
-MASTER_MODE secret
+MASTER_MODE weighted
 
 ## Uncomment to not send a roundstart intercept report. Gamemodes may override this.
 NO_INTERCEPT_REPORT
@@ -215,7 +215,7 @@ AI_TRAITOR_MIN_PLAYERS 20
 MIN_POP TRAITORBRO 10
 MAX_POP TRAITORBRO -1
 
-MIN_POP TRAITORCHAN 15
+MIN_POP TRAITORCHAN 10
 MAX_POP TRAITORCHAN -1
 
 MIN_POP TRAITORHORROR 10
@@ -233,10 +233,10 @@ MAX_POP REVOLUTION -1
 MIN_POP CULT 15
 MAX_POP CULT -1
 
-MIN_POP CHANGELING 15
+MIN_POP CHANGELING 10
 MAX_POP CHANGELING -1
 
-MIN_POP WIZARD 20
+MIN_POP WIZARD 10
 MAX_POP WIZARD -1
 
 MIN_POP METEOR 0
@@ -274,6 +274,42 @@ MAX_POP OVERTHROW -1
 
 MIN_POP MONKEY 15
 MAX_POP MONKEY -1
+
+MIN_POP VAMPIRE 10
+MIN_POP TRAITORVAMP 10
+MIN_POP BLOODLING 15
+MIN_POP INFILTRATION 5
+
+## WEIGHTED ROTATION (MASTER_MODE weighted) ###
+## Every round a threat pool is drawn first (equal chances by default), then a mode from that pool.
+## The "Dynamika rundy" question of the end of round map vote tilts the pools: "more threats" makes high more likely, "fewer threats" low.
+## Modes without a WEIGHTED_POOL entry are never drawn by the weighted rotation. Minimum players come from MIN_POP above.
+WEIGHTED_POOL TRAITOR low
+WEIGHTED_POOL SECRET_EXTENDED low
+WEIGHTED_POOL CHANGELING low
+WEIGHTED_POOL VAMPIRE low
+WEIGHTED_POOL BLOODLING medium
+WEIGHTED_POOL INFILTRATION medium
+WEIGHTED_POOL TRAITORCHAN medium
+WEIGHTED_POOL TRAITORBRO medium
+WEIGHTED_POOL TRAITORVAMP medium
+WEIGHTED_POOL REVOLUTION high
+WEIGHTED_POOL HERESY high
+WEIGHTED_POOL CULT high
+WEIGHTED_POOL NUCLEAR high
+WEIGHTED_POOL WIZARD high
+WEIGHTED_POOL GANG high
+
+## Most roundstart antagonists of a mode in the weighted rotation, no matter the population: a random amount from 1 to this.
+## Latejoin antagonists are off in these modes. Modes without an entry are not limited.
+WEIGHTED_MAX_ANTAGS TRAITOR 3
+WEIGHTED_MAX_ANTAGS CHANGELING 1
+WEIGHTED_MAX_ANTAGS VAMPIRE 1
+WEIGHTED_MAX_ANTAGS BLOODLING 1
+WEIGHTED_MAX_ANTAGS INFILTRATION 3
+WEIGHTED_MAX_ANTAGS TRAITORCHAN 3
+WEIGHTED_MAX_ANTAGS TRAITORBRO 4
+WEIGHTED_MAX_ANTAGS TRAITORVAMP 3
 
 ## The amount of time it takes for the emergency shuttle to be called, from round start.
 SHUTTLE_REFUEL_DELAY 12000

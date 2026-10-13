@@ -23,7 +23,7 @@
 	var/static/list/areas_that_can_finish = typecacheof(list(/area/shuttle/stealthcruiser, /area/syndicate_mothership/infiltrator_base))
 
 /datum/game_mode/infiltration/pre_setup()
-	var/n_agents = min(max(CEILING(num_players() / 7, 1), 1), antag_candidates.len, agents_possible)
+	var/n_agents = weighted_cap(min(max(CEILING(num_players() / 7, 1), 1), antag_candidates.len, agents_possible)) // weighted rotation antagonist limit
 	if(GLOB.Debug2 || n_agents >= required_enemies)
 		for(var/i = 0, i < n_agents, ++i)
 			var/datum/mind/new_sit = pick_n_take(antag_candidates)
