@@ -78,6 +78,9 @@
 	nograv_required = TRUE
 	qdel_in_time = 20
 
+/datum/effect_system/trail_follow/ion/grav_allowed
+	nograv_required = FALSE
+
 /datum/effect_system/trail_follow/proc/set_dir(obj/effect/particle_effect/ion_trails/I)
 	I.setDir(holder.dir)
 

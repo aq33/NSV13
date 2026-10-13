@@ -443,3 +443,41 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 //NSV13 traits end
 
 #define ELEMENT_TRAIT(source) "element_trait_[source]"
+
+/// This allows a person who has antimagic to cast spells without getting blocked
+#define TRAIT_ANTIMAGIC_NO_SELFBLOCK "anti_magic_no_selfblock"
+/// for something granting you a diagnostic hud
+#define TRAIT_DIAGNOSTIC_HUD "diag_hud"
+/// reduces the use time of syringes, pills, patches and medigels but only when using on someone
+#define TRAIT_FASTMED "fast_med_use"
+/// Forces user to stay standing (ensures the unconscious/immobilized dont enter a lying position in cryopods)
+#define TRAIT_FORCED_STANDING "forcedstanding"
+/// Prevents usage of manipulation appendages (picking, holding or using items, manipulating storage).
+#define TRAIT_HANDS_BLOCKED "handsblocked"
+/// Prevents voluntary movement.
+#define TRAIT_IMMOBILIZED "immobilized"
+#define TRAIT_INCAPACITATED "incapacitated"
+/// Gives us turf vision through walls and slight night vision
+#define TRAIT_MESON_VISION "meson_vision"
+#define TRAIT_MOVE_FLYING		"move_flying"
+#define TRAIT_MOVE_PHASING		"move_phasing"
+#define TRAIT_NEGATES_GRAVITY "negates_gravity"
+/// Prevents plasmamen from self-igniting
+#define TRAIT_NOSELFIGNITION "no_selfignition"
+/// Disables the floating animation. See above.
+#define TRAIT_NO_FLOATING_ANIM		"no-floating-animation"
+/// Prevents items from being speed potion-ed, but allows their speed to be altered in other ways
+#define TRAIT_NO_SPEED_POTION "no_speed_potion"
+#define TRAIT_QUICK_BUILD "quick-build"
+/// Lets us scan reagents
+#define TRAIT_REAGENT_SCANNER "reagent_scanner"
+#define TRAIT_SILENT_FOOTSTEPS "silent_footsteps" //makes your footsteps completely silent
+/// This object has been slathered with a speed potion
+#define TRAIT_SPEED_POTIONED "speed_potioned"
+/// Gives us Night vision
+#define TRAIT_TRUE_NIGHT_VISION "true_night_vision"
+/// The person with this trait always appears as 'unknown'.
+#define TRAIT_UNKNOWN "unknown"
+/// Trait applied by MODsuits.
+#define MOD_TRAIT "mod"
+#define SLIME_POTION_TRAIT "slime_potion"

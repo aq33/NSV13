@@ -76,3 +76,12 @@
 	suit_store = /obj/item/tank/internals/oxygen
 	backpack_contents = list(/obj/item/melee/baton/loaded=1)
 
+/datum/outfit/job/head_of_security/mod
+	name = "Head of Security (MODsuit)"
+
+	back = /obj/item/mod/control/pre_equipped/safeguard
+	suit = null
+	head = null
+	mask = /obj/item/clothing/mask/gas/sechailer
+	suit_store = /obj/item/tank/internals/oxygen
+	internals_slot = ITEM_SLOT_SUITSTORE

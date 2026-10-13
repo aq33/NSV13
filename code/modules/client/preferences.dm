@@ -23,6 +23,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/asaycolor = "#ff4500"			//This won't change the color for current admins, only incoming ones.
 	var/tip_delay = 500 //tip delay in milliseconds
 	var/tesla_volume = 100 //Volume (0-100) of tesla/lightning sounds
+	/// Which click (MIDDLE_CLICK or ALT_CLICK) uses the active MODsuit module
+	var/mod_select = MIDDLE_CLICK
 
 	//Antag preferences
 	var/list/role_preferences = list()		//Special role selection
@@ -712,6 +714,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(SCALING_METHOD_BLUR)
 					button_name = "Bilinear"
 			dat += "<b>Metoda skalowania:</b> <a href='byond://?_src_=prefs;preference=scaling_method'>[button_name]</a><br>"
+
+			dat += "<b>Użycie modułu MODsuita:</b> <a href='byond://?_src_=prefs;preference=mod_select'>[mod_select == ALT_CLICK ? "Alt + klik" : "Środkowy przycisk"]</a><br>"
 
 			dat += "<h2>Głośność</h2>"
 			dat += "<b>Głośność Tesli:</b> <input type='range' min='0' max='100' step='5' value='[tesla_volume]' style='vertical-align:middle;' oninput='document.getElementById(\"tesla_vol_label\").innerText=this.value+\"%\"' onchange='window.location.href=\"byond://?_src_=prefs;preference=tesla_volume;volume=\"+this.value'> <span id='tesla_vol_label'>[tesla_volume]%</span><br>"
@@ -2213,6 +2217,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					parallax = WRAP(parallax - 1, PARALLAX_INSANE, PARALLAX_DISABLE + 1)
 					if (parent && parent.mob && parent.mob.hud_used)
 						parent.mob.hud_used.update_parallax_pref(parent.mob)
+
+				if("mod_select")
+					mod_select = (mod_select == ALT_CLICK) ? MIDDLE_CLICK : ALT_CLICK
 
 				if("tesla_volume")
 					var/new_volume = text2num(href_list["volume"])

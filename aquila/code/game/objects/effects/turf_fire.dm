@@ -43,7 +43,7 @@
 	/// If false, it does not interact with atmos.
 	var/interact_with_atmos = TRUE
 	/// Color prefix of the icon states, "[base_icon_state]_small" etc
-	var/base_icon_state = "red"
+	base_icon_state = "red"
 
 ///All the subtypes are for adminbussery and or mapping
 /obj/effect/abstract/turf_fire/magical

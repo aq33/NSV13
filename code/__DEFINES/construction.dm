@@ -118,3 +118,12 @@
 #define RCD_UPGRADE_FRAMES	1
 #define RCD_UPGRADE_SIMPLE_CIRCUITS	2
 #define RCD_UPGRADE_SILO_LINK	4
+
+#define RCD_MEMORY_WALL 1
+#define RCD_MEMORY_WINDOWGRILLE 2
+
+// How much faster to use the RCD when on a tile with memory
+#define RCD_MEMORY_SPEED_BUFF 5
+
+/// How much less resources the RCD uses when reconstructing
+#define RCD_MEMORY_COST_BUFF 8

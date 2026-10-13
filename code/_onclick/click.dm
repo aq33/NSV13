@@ -126,6 +126,10 @@
 		RestrainedClickOn(A)
 		return
 
+	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED)) //hands busy or locked up, like a MODsuit sphere form
+		changeNext_move(CLICK_CD_HANDCUFFED)
+		return
+
 	if(throw_mode)
 		if(throw_item(A))
 			changeNext_move(CLICK_CD_THROW)
@@ -324,9 +328,12 @@
 	Only used for swapping hands
 */
 /mob/proc/MiddleClickOn(atom/A)
+	SEND_SIGNAL(src, COMSIG_MOB_MIDDLECLICKON, A)
 	return
 
 /mob/living/carbon/MiddleClickOn(atom/A)
+	if(SEND_SIGNAL(src, COMSIG_MOB_MIDDLECLICKON, A) & COMSIG_MOB_CANCEL_CLICKON)
+		return
 	if(!stat && mind && iscarbon(A) && A != src)
 		var/datum/antagonist/changeling/C = mind.has_antag_datum(/datum/antagonist/changeling)
 		if(C?.chosen_sting)
@@ -423,17 +430,21 @@
 	Unused except for AI
 */
 /mob/proc/AltClickOn(atom/A)
+	if(SEND_SIGNAL(src, COMSIG_MOB_ALTCLICKON, A) & COMSIG_MOB_CANCEL_CLICKON)
+		return
 	A.AltClick(src)
 	return
 
 /mob/living/carbon/AltClickOn(atom/A)
+	if(SEND_SIGNAL(src, COMSIG_MOB_ALTCLICKON, A) & COMSIG_MOB_CANCEL_CLICKON)
+		return
 	if(!stat && mind && iscarbon(A) && A != src)
 		var/datum/antagonist/changeling/C = mind.has_antag_datum(/datum/antagonist/changeling)
 		if(C && C.chosen_sting)
 			C.chosen_sting.try_to_sting(src,A)
 			next_click = world.time + 5
 			return
-	..()
+	A.AltClick(src)
 
 /atom/proc/AltClick(mob/user)
 	if(SEND_SIGNAL(src, COMSIG_CLICK_ALT, user) & COMPONENT_INTERCEPT_ALT)
