@@ -926,6 +926,8 @@
 /atom/movable/proc/float(on)
 	if(throwing)
 		return
+	if(HAS_TRAIT(src, TRAIT_NO_FLOATING_ANIM))
+		on = FALSE
 	if(on && !(movement_type & FLOATING))
 		animate(src, pixel_y = 2, time = 10, loop = -1, flags = ANIMATION_RELATIVE)
 		animate(pixel_y = -2, time = 10, loop = -1, flags = ANIMATION_RELATIVE)

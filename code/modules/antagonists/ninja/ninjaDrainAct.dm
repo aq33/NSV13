@@ -74,7 +74,6 @@
 			charge -= drain
 			hacking_module.mod.add_charge(drain)
 			drain_total += drain
-			maxcapacity = TRUE//Reached maximum battery capacity.
 		else
 			break
 	hacking_module.charge_message(src, drain_total)
@@ -88,7 +87,7 @@
 
 /obj/item/stock_parts/cell/proc/ninjadrain_charge(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
 	var/drain_total = 0
-	if(charge && !do_after(ninja, 3 SECONDS, target = src, progress = FALSE))
+	if(charge && do_after(ninja, 3 SECONDS, target = src, progress = FALSE))
 		drain_total = charge
 		if(hacking_module.mod.get_charge() + charge > hacking_module.mod.get_max_charge())
 			drain_total = hacking_module.mod.get_max_charge() - hacking_module.mod.get_charge()

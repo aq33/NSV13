@@ -190,7 +190,7 @@
 			used_signal = null
 	mod.wearer.update_clothing(mod.slot_flags)
 	SEND_SIGNAL(src, COMSIG_MODULE_DEACTIVATED)
-	on_deactivation(display_message = TRUE, deleting = FALSE)
+	on_deactivation(display_message = display_message, deleting = deleting)
 	return TRUE
 
 /// Called when the module is used

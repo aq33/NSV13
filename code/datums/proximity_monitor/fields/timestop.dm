@@ -116,6 +116,10 @@
 		unfreeze_atom(i)
 	for(var/T in frozen_turfs)
 		unfreeze_turf(T)
+	for(var/O in frozen_structures)
+		unfreeze_structure(O)
+	frozen_turfs.Cut()
+	frozen_structures.Cut()
 
 /datum/proximity_monitor/advanced/timestop/proc/unfreeze_atom(atom/movable/A)
 	SIGNAL_HANDLER
@@ -155,14 +159,14 @@
 
 /datum/proximity_monitor/advanced/timestop/proc/freeze_turf(turf/T)
 	into_the_negative_zone(T)
-	frozen_turfs += T
+	frozen_turfs |= T
 
 /datum/proximity_monitor/advanced/timestop/proc/unfreeze_turf(turf/T)
 	escape_the_negative_zone(T)
 
 /datum/proximity_monitor/advanced/timestop/proc/freeze_structure(obj/O)
 	into_the_negative_zone(O)
-	frozen_structures += O
+	frozen_structures |= O
 
 /datum/proximity_monitor/advanced/timestop/proc/unfreeze_structure(obj/O)
 	escape_the_negative_zone(O)

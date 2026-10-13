@@ -78,6 +78,6 @@
 	var/obj/item/shoes = mod.get_part_from_slot(ITEM_SLOT_FEET)
 	if(shoes && !deleting)
 		qdel(shoes.GetComponent(/datum/component/squeak))
-	//mod.wearer.RemoveComponent(/datum/component/waddling)
+	qdel(mod.wearer.GetComponent(/datum/component/waddling))
 	if((mod.wearer.mind?.assigned_role == JOB_NAME_CLOWN))
 		SEND_SIGNAL(mod.wearer, COMSIG_CLEAR_MOOD_EVENT, "clownshoes")

@@ -299,7 +299,7 @@
 
 /mob/living/carbon/proc/get_breath_from_internal(volume_needed)
 	if(internal)
-		if(internal.loc != src && !(wear_mask.clothing_flags & MASKEXTENDRANGE)) // If the mask has extended range, do not check for internal.loc
+		if(internal.loc != src && !(wear_mask?.clothing_flags & MASKEXTENDRANGE)) // If the mask has extended range, do not check for internal.loc
 			internal = null
 			update_internals_hud_icon(0)
 		else if (!can_breathe_internals())

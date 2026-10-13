@@ -404,8 +404,7 @@
 
 /obj/item/mod/control/pre_equipped/responsory/security
 	insignia_type = /obj/item/mod/module/insignia/security
-	additional_module = /obj/item/mod/module/gps
-	additional_module = /obj/item/mod/module/pepper_shoulders
+	additional_module = list(/obj/item/mod/module/gps, /obj/item/mod/module/pepper_shoulders)
 
 /obj/item/mod/control/pre_equipped/responsory/engineer
 	insignia_type = /obj/item/mod/module/insignia/engineer

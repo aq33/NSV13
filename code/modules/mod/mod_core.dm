@@ -251,7 +251,7 @@
 	var/charge_modifier = 0.1
 
 /obj/item/mod/core/ethereal/charge_source()
-	var/obj/item/organ/stomach/battery/ethereal/ethereal_stomach = mod.wearer.getorganslot(ORGAN_SLOT_STOMACH)
+	var/obj/item/organ/stomach/battery/ethereal/ethereal_stomach = mod.wearer?.getorganslot(ORGAN_SLOT_STOMACH)
 	if(!istype(ethereal_stomach))
 		return
 	return ethereal_stomach
@@ -362,7 +362,11 @@
 	return NONE
 
 /obj/item/mod/core/plasma/proc/charge_plasma(obj/item/stack/plasma, mob/user)
-	var/charge_given = is_type_in_list(plasma, charger_list)
+	var/charge_given = 0
+	for(var/charger_type in charger_list)
+		if(istype(plasma, charger_type))
+			charge_given = charger_list[charger_type]
+			break
 	if(!charge_given)
 		return FALSE
 	var/uses_needed = min(plasma.amount, ROUND_UP((max_charge_amount() - charge_amount()) / charge_given))

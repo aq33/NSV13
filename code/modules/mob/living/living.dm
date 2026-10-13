@@ -913,6 +913,8 @@
 /mob/living/float(on)
 	if(throwing)
 		return
+	if(HAS_TRAIT(src, TRAIT_NO_FLOATING_ANIM))
+		on = FALSE
 	var/fixed = 0
 	if(anchored || (buckled && buckled.anchored))
 		fixed = 1
