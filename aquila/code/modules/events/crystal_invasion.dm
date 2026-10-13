@@ -169,6 +169,8 @@ This section is for the event controller
 
 /// 8 seconds after the explosions CentCom announces where the huge portals are
 /datum/round_event/crystal_invasion/proc/announce_locations()
+	if(QDELETED(dest_crystal))
+		return
 	var/list/area_names = list()
 	for(var/area/A as anything in center_areas)
 		area_names += A.name
@@ -254,7 +256,7 @@ This section is for the event controller
 
 /// The ZK-class event itself: portals everywhere and a huge explosion
 /datum/round_event/crystal_invasion/proc/do_zk_event()
-	if(QDELETED(dest_crystal))
+	if(QDELETED(dest_crystal) || dest_crystal.is_stabilized)
 		return
 	var/list/spawners = crystal_invasion_spawners()
 	for(var/i in 1 to rand(15, 25))
@@ -400,16 +402,16 @@ This section is for the destabilized crystal
 		to_chat(user, "<span class='notice'>[W] jest pusty!</span>")
 		return TRUE
 	to_chat(user, "<span class='notice'>Ostrożnie zaczynasz wstrzykiwać [W] w [src]... nie ruszaj się, dopóki nie skończysz wszystkich kroków!</span>")
-	if(!W.use_tool(src, user, 1 SECONDS, volume = 100))
+	if(!W.use_tool(src, user, 1 SECONDS, volume = 100) || !active) // the deadline may pass mid-injection
 		return TRUE
 	to_chat(user, "<span class='notice'>Wewnętrzny rezonans [src] słabnie pod wpływem płynu!</span>")
 	playsound(get_turf(src), 'sound/effects/supermatter.ogg', 35, TRUE)
-	if(!W.use_tool(src, user, 1.5 SECONDS, volume = 100))
+	if(!W.use_tool(src, user, 1.5 SECONDS, volume = 100) || !active) // the deadline may pass mid-injection
 		return TRUE
 	to_chat(user, "<span class='notice'>[src] gwałtownie reaguje z płynem!</span>")
 	fire_nuclear_particle()
 	radiation_pulse(src, 1000, 6)
-	if(!W.use_tool(src, user, 2 SECONDS, volume = 100))
+	if(!W.use_tool(src, user, 2 SECONDS, volume = 100) || !active) // the deadline may pass mid-injection
 		return TRUE
 	to_chat(user, "<span class='notice'>[src] został przywrócony i ustabilizowany!</span>")
 	playsound(get_turf(src), 'sound/effects/supermatter.ogg', 35, TRUE)
