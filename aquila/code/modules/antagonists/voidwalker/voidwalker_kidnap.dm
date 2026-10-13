@@ -9,7 +9,7 @@ GLOBAL_DATUM(voidwalker_void_reservation, /datum/turf_reservation)
 /// Wielkość pustki razem ze ścianami dookoła
 #define VOIDWALKER_VOID_SIZE 34
 /// Ile świecących kulek-jedzenia pływa po pustce
-#define VOIDWALKER_VOID_FOOD 12
+#define VOIDWALKER_VOID_FOOD 6
 
 /area/centcom/voidwalker_void
 	name = "Pustka"
