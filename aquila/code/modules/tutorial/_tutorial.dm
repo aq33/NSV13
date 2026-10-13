@@ -205,7 +205,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	var/list/completed_tutorials = player?.prefs?.get_completed_tutorials()
 	if(completed_tutorials && !(tutorial_id in completed_tutorials))
 		completed_tutorials += tutorial_id
-		player.prefs.save_preferences()
+		INVOKE_ASYNC(player.prefs, TYPE_PROC_REF(/datum/preferences, save_preferences)) // zapis do bazy czeka, a to bywa wołane z sygnałów
 
 /// Spawn obiektów potrzebnych od początku lekcji
 /datum/tutorial/proc/init_map()
