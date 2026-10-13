@@ -209,6 +209,22 @@ GLOBAL_DATUM_INIT(weighted_rotation, /datum/weighted_rotation, new)
 		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(on_round_start)))
 	return picked
 
+/// An admin changed the start timer after the mode was drawn (30 seconds before the start): the lobby may look
+/// very different by the time the round starts, so the mode is drawn again on the next 30 second mark
+/datum/weighted_rotation/proc/redraw_after_delay()
+	if(GLOB.master_mode != "weighted" || SSticker.current_state != GAME_STATE_PREGAME || !SSticker.pre_setup_completed)
+		return
+	// Same guard as Change Game Mode: a mode that already loaded its maps can't be swapped
+	if(SSticker.gamemode_hotswap_disabled)
+		return
+	SSticker.pre_setup_completed = FALSE
+	message_admins("Weighted: start rundy przesunięty po losowaniu, tryb [SSticker.mode?.config_tag] zostanie wylosowany ponownie 30 s przed startem.")
+	log_game("WEIGHTED: round start timer changed after the draw, [SSticker.mode?.config_tag] will be redrawn")
+
+/datum/controller/subsystem/ticker/SetTimeLeft(newtime)
+	. = ..()
+	GLOB.weighted_rotation.redraw_after_delay()
+
 /datum/weighted_rotation/proc/on_round_start()
 	if(GLOB.master_mode != "weighted")
 		return
