@@ -385,7 +385,7 @@
 							src.temp = "<B>Stan psychiczny:</B><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;m_stat=insane'>*Niepoczytalny*</A><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;m_stat=unstable'>*Niestabilny*</A><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;m_stat=watch'>*Obserwacja*</A><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;m_stat=stable'>Stabilny</A><BR>"
 					if("blood_type")
 						if(active2)
-							src.temp = "<B>Blood Type:</B><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;blood_type=an'>A-</A> <A href='byond://?src=[REF(src)];temp=1;blood_type=ap'>A+</A><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;blood_type=bn'>B-</A> <A href='byond://?src=[REF(src)];temp=1;blood_type=bp'>B+</A><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;blood_type=abn'>AB-</A> <A href='byond://?src=[REF(src)];temp=1;blood_type=abp'>AB+</A><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;blood_type=on'>O-</A> <A href='byond://?src=[REF(src)];temp=1;blood_type=op'>O+</A><BR>"
+							src.temp = "<B>Grupa krwi:</B><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;blood_type=an'>A-</A> <A href='byond://?src=[REF(src)];temp=1;blood_type=ap'>A+</A><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;blood_type=bn'>B-</A> <A href='byond://?src=[REF(src)];temp=1;blood_type=bp'>B+</A><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;blood_type=abn'>AB-</A> <A href='byond://?src=[REF(src)];temp=1;blood_type=abp'>AB+</A><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;blood_type=on'>O-</A> <A href='byond://?src=[REF(src)];temp=1;blood_type=op'>O+</A><BR>"
 					if("b_dna")
 						if(active2)
 							var/t1 = stripped_input(usr, "Podaj skrót DNA:", "Akta med.", src.active2.fields["b_dna"], null)

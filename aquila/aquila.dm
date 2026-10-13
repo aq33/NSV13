@@ -147,6 +147,7 @@
 #include "code\game\machinery\computer\_computer.dm"
 #include "code\game\machinery\computer\card_ui.dm"
 #include "code\game\machinery\computer\communications.dm"
+#include "code\game\machinery\computer\medical_records_ui.dm"
 #include "code\game\machinery\computer\orion_trail_ui.dm"
 #include "code\game\machinery\computer\prisoner_management_ui.dm"
 #include "code\game\machinery\computer\security_records_ui.dm"
