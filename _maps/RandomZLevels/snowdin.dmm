@@ -1045,7 +1045,7 @@
 	dir = 5
 	},
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter/ice,
+/mob/living/simple_animal/hostile/spider/giant/hunter/ice,
 /turf/open/floor/plasteel/freezer,
 /area/awaymission/snowdin/post/kitchen)
 "cH" = (
@@ -8482,7 +8482,7 @@
 /turf/open/floor/plating/asteroid/snow/ice,
 /area/awaymission/snowdin/cave/cavern)
 "tL" = (
-/mob/living/simple_animal/hostile/poison/giant_spider/nurse/ice,
+/mob/living/simple_animal/hostile/spider/giant/nurse/ice,
 /turf/open/floor/plating/asteroid/snow/ice,
 /area/awaymission/snowdin/cave/cavern)
 "tN" = (
@@ -8525,7 +8525,7 @@
 /turf/open/floor/plating/ice/smooth,
 /area/awaymission/snowdin/outside)
 "tV" = (
-/mob/living/simple_animal/hostile/poison/giant_spider/ice,
+/mob/living/simple_animal/hostile/spider/giant/ice,
 /turf/open/floor/plating/asteroid/snow/ice,
 /area/awaymission/snowdin/cave/cavern)
 "tW" = (
@@ -8650,7 +8650,7 @@
 /turf/open/floor/plating/asteroid/snow,
 /area/awaymission/snowdin/outside)
 "uw" = (
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter/ice,
+/mob/living/simple_animal/hostile/spider/giant/hunter/ice,
 /turf/open/floor/plating/asteroid/snow/ice,
 /area/awaymission/snowdin/cave/cavern)
 "ux" = (
@@ -8768,7 +8768,7 @@
 /area/awaymission/snowdin/post/cavern1)
 "uP" = (
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter/ice,
+/mob/living/simple_animal/hostile/spider/giant/hunter/ice,
 /turf/open/floor/plating/asteroid/snow/ice,
 /area/awaymission/snowdin/cave/cavern)
 "uQ" = (

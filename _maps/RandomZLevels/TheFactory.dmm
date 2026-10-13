@@ -5314,7 +5314,7 @@
 	},
 /area/awaymission/factory/factoryduring/down/leveltwo)
 "fdQ" = (
-/mob/living/simple_animal/hostile/poison/giant_spider{
+/mob/living/simple_animal/hostile/spider/giant/guard{
 	AIStatus = 4;
 	environment_smash = 0
 	},
@@ -5695,7 +5695,7 @@
 /turf/open/floor/carpet/cyan,
 /area/awaymission/factory/factoryduring/down)
 "fvZ" = (
-/mob/living/simple_animal/hostile/poison/giant_spider{
+/mob/living/simple_animal/hostile/spider/giant/guard{
 	AIStatus = 4;
 	environment_smash = 0
 	},
@@ -7372,7 +7372,7 @@
 /turf/open/floor/plasteel/ameridiner,
 /area/awaymission/factory/factoryduring/down/leveltwo/asylum)
 "hdk" = (
-/mob/living/simple_animal/hostile/poison/giant_spider/tarantula{
+/mob/living/simple_animal/hostile/spider/giant/tarantula{
 	AIStatus = 4;
 	dir = 1;
 	wander = 0
@@ -11245,14 +11245,14 @@
 /turf/open/floor/plating,
 /area/awaymission/factory/factoryduring/down/maint)
 "kHL" = (
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter,
+/mob/living/simple_animal/hostile/spider/giant/hunter,
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered{
 	ambient_buzz = null;
 	teleport_restriction = 1
 	})
 "kHR" = (
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter/viper{
+/mob/living/simple_animal/hostile/spider/giant/viper{
 	AIStatus = 4
 	},
 /turf/open/floor/plating/asteroid,
@@ -11395,7 +11395,7 @@
 /turf/open/floor/plasteel/dark,
 /area/awaymission/factory/factoryduring/down/leveltwo/asylum)
 "kOb" = (
-/mob/living/simple_animal/hostile/poison/giant_spider{
+/mob/living/simple_animal/hostile/spider/giant/guard{
 	AIStatus = 4
 	},
 /obj/structure/spider/stickyweb,
@@ -11429,7 +11429,7 @@
 	})
 "kPs" = (
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/poison/giant_spider/tarantula{
+/mob/living/simple_animal/hostile/spider/giant/tarantula{
 	AIStatus = 4;
 	dir = 1;
 	wander = 0
@@ -23530,7 +23530,7 @@
 /turf/open/floor/plasteel,
 /area/awaymission/factory/factoryafter)
 "uRy" = (
-/mob/living/simple_animal/hostile/poison/giant_spider/tarantula{
+/mob/living/simple_animal/hostile/spider/giant/tarantula{
 	AIStatus = 4;
 	environment_smash = 0
 	},
@@ -24208,7 +24208,7 @@
 	teleport_restriction = 0
 	})
 "vvL" = (
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter/viper{
+/mob/living/simple_animal/hostile/spider/giant/viper{
 	AIStatus = 4;
 	environment_smash = 0
 	},

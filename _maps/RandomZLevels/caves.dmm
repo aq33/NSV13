@@ -362,7 +362,7 @@
 	},
 /area/awaymission/caves/BMP_asteroid/level_four)
 "bb" = (
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter,
+/mob/living/simple_animal/hostile/spider/giant/hunter,
 /turf/open/floor/plating/asteroid/basalt{
 	initial_gas_mix = "n2=23;o2=14;TEMP=2.7"
 	},
@@ -386,7 +386,7 @@
 	},
 /area/awaymission/caves/BMP_asteroid/level_four)
 "bg" = (
-/mob/living/simple_animal/hostile/poison/giant_spider/nurse,
+/mob/living/simple_animal/hostile/spider/giant/nurse,
 /turf/open/floor/plating/asteroid/basalt{
 	initial_gas_mix = "n2=23;o2=14;TEMP=2.7"
 	},
@@ -485,7 +485,7 @@
 /area/awaymission/caves/BMP_asteroid/level_four)
 "bt" = (
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter,
+/mob/living/simple_animal/hostile/spider/giant/hunter,
 /turf/open/floor/plating/asteroid/basalt{
 	initial_gas_mix = "n2=23;o2=14;TEMP=2.7"
 	},
@@ -517,7 +517,7 @@
 /area/awaymission/caves/BMP_asteroid/level_three)
 "by" = (
 /obj/item/mjollnir,
-/mob/living/simple_animal/hostile/poison/giant_spider/nurse,
+/mob/living/simple_animal/hostile/spider/giant/nurse,
 /turf/open/floor/plating/asteroid/basalt{
 	initial_gas_mix = "n2=23;o2=14;TEMP=2.7"
 	},
@@ -1761,7 +1761,7 @@
 	dir = 1
 	},
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter,
+/mob/living/simple_animal/hostile/spider/giant/hunter,
 /turf/open/floor/plasteel,
 /area/awaymission/caves/BMP_asteroid)
 "fs" = (
@@ -1823,7 +1823,7 @@
 /turf/open/floor/plasteel,
 /area/awaymission/caves/BMP_asteroid)
 "fC" = (
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter,
+/mob/living/simple_animal/hostile/spider/giant/hunter,
 /turf/open/floor/plasteel,
 /area/awaymission/caves/BMP_asteroid)
 "fD" = (
@@ -1831,7 +1831,7 @@
 /obj/machinery/sleeper{
 	dir = 8
 	},
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter,
+/mob/living/simple_animal/hostile/spider/giant/hunter,
 /turf/open/floor/plasteel,
 /area/awaymission/caves/BMP_asteroid)
 "fE" = (
