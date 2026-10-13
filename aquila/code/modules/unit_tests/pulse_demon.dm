@@ -66,6 +66,9 @@
 	demon.Move(far_right, EAST)
 	TEST_ASSERT_EQUAL(demon.loc, far_right, "Self-sustaining demon could not leave the cable")
 	TEST_ASSERT(!demon.current_cable, "Demon still thinks it is in a cable")
+	// W teście Life() może tyknąć w każdej chwili, więc demon bez samopodtrzymania czeka na kablu
+	demon.forceMove(right)
+	demon.current_cable = right_cable
 	demon.can_exit_cable = FALSE
 
 	// Drabina przenosi demona, a na polu bez kabla włącza samopodtrzymanie
@@ -73,11 +76,12 @@
 	var/obj/structure/ladder/upper_ladder = allocate(/obj/structure/ladder, get_step(far_right, EAST))
 	lower_ladder.up = upper_ladder
 	upper_ladder.down = lower_ladder
-	demon.can_exit_cable = FALSE
 	demon.UnarmedAttack(lower_ladder, TRUE)
 	TEST_ASSERT_EQUAL(demon.loc, get_turf(upper_ladder), "Ladder did not move the demon")
 	TEST_ASSERT(demon.can_exit_cable, "Self-sustaining was not enabled on a turf without cable")
-	demon.forceMove(far_right)
+	// W teście Life() może tyknąć w każdej chwili, więc demon bez samopodtrzymania czeka na kablu
+	demon.forceMove(right)
+	demon.current_cable = right_cable
 	demon.can_exit_cable = FALSE
 
 	// Energia nie przekracza zapasu, a wyssana liczy się do celu
@@ -124,7 +128,7 @@
 	demon.forceMove(radio)
 	TEST_ASSERT_EQUAL(demon.remote_control, demon, "Movement inside an item is not relayed to the demon")
 	demon.send_speech("test", spans = list(), message_mods = list())
-	demon.forceMove(far_right)
+	demon.forceMove(right)
 	TEST_ASSERT(!demon.remote_control, "Movement still relayed on a turf")
 
 	// Cele
