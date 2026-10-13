@@ -4,6 +4,7 @@
 GLOBAL_DATUM(darkspawn_team, /datum/team/darkspawn)
 
 /proc/get_darkspawn_team()
+	RETURN_TYPE(/datum/team/darkspawn)
 	if(!GLOB.darkspawn_team)
 		GLOB.darkspawn_team = new
 	return GLOB.darkspawn_team
