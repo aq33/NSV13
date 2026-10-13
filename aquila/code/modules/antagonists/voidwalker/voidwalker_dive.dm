@@ -14,7 +14,7 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
 
 /mob/living/simple_animal/hostile/voidwalker/Bump(atom/bumped)
 	. = ..()
-	if(!istype(get_turf(src), home_turf) || istype(loc, /obj/effect/dummy/phased_mob/voidwalker))
+	if(!is_home_turf(get_turf(src)) || istype(loc, /obj/effect/dummy/phased_mob/voidwalker))
 		return
 	if(ismovable(bumped))
 		if(istype(bumped, /obj/machinery/door)) // drzwi grają lepiej bez tego
@@ -157,7 +157,7 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
 	var/turf/new_turf = get_step(src, direction)
 	if(!new_turf)
 		return
-	if(istype(new_turf, walker.home_turf) || (locate(walker.kidnapping_decal) in new_turf))
+	if(walker.is_home_turf(new_turf) || (locate(walker.kidnapping_decal) in new_turf))
 		INVOKE_ASYNC(src, PROC_REF(attempt_surface), new_turf)
 		return
 	forceMove(new_turf)

@@ -149,7 +149,7 @@
 	if(QDELETED(src) || stat == DEAD)
 		return
 	// Leczy się tylko w swoim żywiole
-	if(istype(get_turf(src), home_turf) && (getBruteLoss() || getFireLoss()))
+	if(is_home_turf(get_turf(src)) && (getBruteLoss() || getFireLoss()))
 		adjustBruteLoss(-4)
 		adjustFireLoss(-4)
 	update_camo()
@@ -234,7 +234,7 @@
 ///
 
 /mob/living/simple_animal/hostile/voidwalker/proc/update_camo()
-	var/should_hide = !camo_disabled && reveal_until <= world.time && istype(get_turf(src), home_turf)
+	var/should_hide = !camo_disabled && reveal_until <= world.time && is_home_turf(get_turf(src))
 	if(should_hide == camouflaged)
 		return
 	camouflaged = should_hide
@@ -305,7 +305,7 @@
 		return FALSE
 	if(victim.stat == CONSCIOUS) // jeszcze się broni
 		return TRUE
-	if(!istype(get_turf(victim), home_turf) && !(locate(kidnapping_decal) in get_turf(victim)))
+	if(!is_home_turf(get_turf(victim)) && !(locate(kidnapping_decal) in get_turf(victim)))
 		victim.balloon_alert(src, "nie w kosmosie!")
 		return FALSE
 	if(!kidnapping)
@@ -407,11 +407,18 @@
 		return
 	return ..()
 
+/// Czy pole to nasz żywioł. U nas wyższe pokłady statków otacza otwarta przestrzeń bez powietrza zamiast zwykłego kosmosu
+/mob/living/simple_animal/hostile/voidwalker/proc/is_home_turf(turf/T)
+	if(!T)
+		return FALSE
+	if(istype(T, home_turf))
+		return TRUE
+	return ispath(home_turf, /turf/open/space) && istype(T, /turf/open/openspace/airless)
+
 /// Admin zmieniający home_turf zmienia też wszystko, co od niego zależy
 /mob/living/simple_animal/hostile/voidwalker/vv_edit_var(var_name, var_value)
 	. = ..()
 	if(var_name == NAMEOF(src, home_turf))
-		dash.valid_target_turf = var_value
 		update_camo()
 
 #undef VOIDWALKER_WALL_CONVERT_STRENGTH

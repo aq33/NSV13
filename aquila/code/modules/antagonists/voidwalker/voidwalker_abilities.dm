@@ -121,8 +121,6 @@
 	range = 40
 	active_msg = "Szykujesz się do zrywu..."
 	deactive_msg = "Uspokajasz się..."
-	/// Pole, w które musi trafić zryw
-	var/valid_target_turf = /turf/open/space
 	/// Obrażenia dla każdego staranowanego
 	var/charge_damage = 20
 
@@ -134,7 +132,8 @@
 
 /obj/effect/proc_holder/spell/pointed/voidwalker_dash/can_target(atom/target, mob/user, silent)
 	var/turf/target_turf = get_turf(target)
-	if(!istype(target_turf, valid_target_turf))
+	var/mob/living/simple_animal/hostile/voidwalker/walker = user
+	if(!istype(walker) || !walker.is_home_turf(target_turf))
 		if(!silent)
 			user.balloon_alert(user, "musisz celować w kosmos!")
 		return FALSE
