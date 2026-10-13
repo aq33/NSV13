@@ -329,7 +329,8 @@
 	if(!void_turf)
 		victim.forceMove(get_random_station_turf())
 		victim.heal_overall_damage(80, 20)
-		CRASH("[victim] was instantly dumped after being voidwalker kidnapped, the void could not be created!")
+		stack_trace("[victim] was instantly dumped after being voidwalker kidnapped, the void could not be created!")
+		return
 	victim.heal_and_revive(90)
 	victim.adjustOxyLoss(-100, FALSE)
 	victim.updatehealth()
