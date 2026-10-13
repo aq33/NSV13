@@ -59,6 +59,7 @@
 		/datum/round_event_control/blob,
 		/datum/round_event_control/slaughter,
 		/datum/round_event_control/space_dragon,
+		/datum/round_event_control/spider_infestation,
 	)
 	return events
 
