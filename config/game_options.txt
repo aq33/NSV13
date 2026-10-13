@@ -287,7 +287,7 @@ MIN_POP INFILTRATION 5
 
 ## WEIGHTED ROTATION (MASTER_MODE weighted) ###
 ## Every round a threat pool is drawn first (equal chances by default), then a mode from that pool.
-## The "Dynamika" answer of the end of round survey tilts the pools: too boring makes high more likely, too hectic low.
+## The "Dynamika rundy" question of the end of round map vote tilts the pools: "more threats" makes high more likely, "fewer threats" low.
 ## Modes without a WEIGHTED_POOL entry are never drawn by the weighted rotation. Minimum players come from MIN_POP above.
 WEIGHTED_POOL TRAITOR low
 WEIGHTED_POOL THIEF low

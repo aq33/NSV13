@@ -1,16 +1,16 @@
 // AQUILA - Weighted rotation, master mode "weighted".
 // Game modes are split into three threat pools (WEIGHTED_POOL in game_options.txt). Every round a pool is drawn first,
-// then a mode from inside it. The pools start out equal and the "Dynamika" answer of the end of round survey tilts them:
-// rounds rated too boring make the high pool more likely, rounds rated too hectic the low one. The tilt is kept in a file
+// then a mode from inside it. The pools start out equal, and the "Dynamika rundy" question of the end of round map vote
+// tilts them: "more threats" makes the high pool more likely, "fewer threats" the low one. The tilt is kept in a file
 // between rounds. Weighted rounds also offer ghosts a midround antagonist every 30-60 minutes while most of the crew lives.
 
-/// Where the survey tilt and the votes of the round that has not been counted yet are kept
+/// Where the tilt and the votes of the round that has not been counted yet are kept
 #define WEIGHTED_PACE_FILE "data/weighted_pace.json"
 /// How much the tilt moves the pools: the high pool weighs 1 + this * bias, the low one 1 - this * bias
 #define WEIGHTED_SURVEY_STRENGTH 0.5
-/// Share of the new tilt that comes from the last round's survey, the rest is the old tilt
+/// Share of the new tilt that comes from the last round's vote, the rest is the old tilt
 #define WEIGHTED_ROUND_INFLUENCE 0.4
-/// A round with fewer "Dynamika" answers than this does not vote, the old tilt only fades
+/// A round with fewer "Dynamika rundy" votes than this does not count, the old tilt only fades
 #define WEIGHTED_MIN_VOTES 3
 
 GLOBAL_DATUM_INIT(weighted_rotation, /datum/weighted_rotation, new)
@@ -27,10 +27,8 @@ GLOBAL_DATUM_INIT(weighted_rotation, /datum/weighted_rotation, new)
 /datum/weighted_rotation
 	/// From -1 (players want calmer rounds) to 1 (players want more chaos)
 	var/bias = 0
-	/// Sum of the "Dynamika" answers (1-5) given at the end of the current round
-	var/pending_sum = 0
-	/// How many "Dynamika" answers were given at the end of the current round
-	var/pending_count = 0
+	/// ckey -> "Dynamika rundy" vote of this round: -1 fewer threats, 0 it's fine, 1 more threats
+	var/list/pending_votes = list()
 	/// What happened to the tilt when it was loaded, shown to admins when the mode is picked
 	var/load_report = ""
 	/// The pool the current round was drawn from, null when the round is not weighted
@@ -55,39 +53,53 @@ GLOBAL_DATUM_INIT(weighted_rotation, /datum/weighted_rotation, new)
 	if(!islist(data))
 		return
 	bias = clamp(text2num("[data["bias"]]") || 0, -1, 1)
-	pending_sum = max(text2num("[data["pending_sum"]]") || 0, 0)
-	pending_count = max(text2num("[data["pending_count"]]") || 0, 0)
+	var/list/votes = data["pending_votes"]
+	if(!islist(votes))
+		return
+	for(var/ckey in votes)
+		var/vote = text2num("[votes[ckey]]")
+		if(vote in list(-1, 0, 1))
+			pending_votes[ckey] = vote
 
 /datum/weighted_rotation/proc/save()
-	var/list/data = list("bias" = bias, "pending_sum" = pending_sum, "pending_count" = pending_count)
+	var/list/data = list("bias" = bias, "pending_votes" = pending_votes)
 	fdel(WEIGHTED_PACE_FILE)
 	text2file(json_encode(data), WEIGHTED_PACE_FILE)
 
 /// The votes in the file come from the round before this server start, they are turned into the tilt here
 /datum/weighted_rotation/proc/count_last_round()
-	if(pending_count <= 0)
+	var/count = length(pending_votes)
+	if(!count)
 		load_report = "brak głosów z poprzedniej rundy"
 		return
 	var/old_bias = bias
-	if(pending_count >= WEIGHTED_MIN_VOTES)
-		var/average = pending_sum / pending_count
-		// 1 = too boring -> +1, 3 = fine -> 0, 5 = too hectic -> -1
-		var/round_vote = (3 - average) / 2
-		bias = clamp(bias * (1 - WEIGHTED_ROUND_INFLUENCE) + round_vote * WEIGHTED_ROUND_INFLUENCE, -1, 1)
-		load_report = "[pending_count] głosów, średnia dynamika [round(average, 0.01)]"
+	if(count >= WEIGHTED_MIN_VOTES)
+		var/list/tally = list("-1" = 0, "0" = 0, "1" = 0)
+		var/sum = 0
+		for(var/ckey in pending_votes)
+			sum += pending_votes[ckey]
+			tally["[pending_votes[ckey]]"]++
+		// The average vote is already the direction: -1 fewer threats ... 1 more threats
+		bias = clamp(bias * (1 - WEIGHTED_ROUND_INFLUENCE) + (sum / count) * WEIGHTED_ROUND_INFLUENCE, -1, 1)
+		load_report = "[count] głosów (mniej zagrożeń [tally["-1"]], jest dobrze [tally["0"]], więcej zagrożeń [tally["1"]])"
 	else
 		bias *= (1 - WEIGHTED_ROUND_INFLUENCE)
-		load_report = "tylko [pending_count] głosów (min. [WEIGHTED_MIN_VOTES]), nastawienie słabnie"
+		load_report = "tylko [count] głosów (min. [WEIGHTED_MIN_VOTES]), nastawienie słabnie"
 	load_report += ", nastawienie [round(old_bias, 0.01)] -> [round(bias, 0.01)]"
-	pending_sum = 0
-	pending_count = 0
+	pending_votes.Cut()
 	save()
 
-/// Called by the end of round survey for every "Dynamika" answer of a player who had a character this round
-/datum/weighted_rotation/proc/add_pace_vote(pace)
-	pending_sum += pace
-	pending_count++
+/// Whether a player can vote on "Dynamika rundy" now: after the round ended, and only if they had a character in it
+/datum/weighted_rotation/proc/can_vote_pace(ckey)
+	return SSticker.current_state == GAME_STATE_FINISHED && (ckey in GLOB.joined_player_list)
+
+/// Sets the "Dynamika rundy" vote of a player, a new vote replaces the old one
+/datum/weighted_rotation/proc/set_pace_vote(ckey, vote)
+	if(!can_vote_pace(ckey) || !(vote in list(-1, 0, 1)))
+		return FALSE
+	pending_votes[ckey] = vote
 	save()
+	return TRUE
 
 /// Weight of every pool before empty pools are dropped
 /datum/weighted_rotation/proc/pool_weights()

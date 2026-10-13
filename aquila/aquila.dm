@@ -434,6 +434,7 @@
 #include "code\modules\round_survey\round_survey.dm"
 #include "code\modules\weighted\spawn_fallbacks.dm"
 #include "code\modules\weighted\weighted_ghost_midround.dm"
+#include "code\modules\weighted\weighted_pace_vote.dm"
 #include "code\modules\weighted\weighted_rotation.dm"
 #include "code\modules\ruins\objects_and_mobs\sin_ruins.dm"
 #include "code\modules\shuttle\super_cruise\orbital_map_components\orbital_objects\beacon.dm"
