@@ -11,20 +11,19 @@ SUBSYSTEM_DEF(minor_mapping)
 /datum/controller/subsystem/minor_mapping/proc/trigger_migration(num_mice=10, regal_rat_chance_per_mouse = 0) // AQUILA EDIT - szansa na szczurzego króla przy każdej myszy, jak PROB_MOUSE_SPAWN w tg
 	var/list/exposed_wires = find_exposed_wires()
 
-	var/mob/living/simple_animal/mouse/M
+	var/mob/living/simple_animal/M // AQUILA EDIT - mysz albo szczurzy król
 	var/turf/proposed_turf
 
 	while((num_mice > 0) && exposed_wires.len)
 		proposed_turf = pick_n_take(exposed_wires)
-		// AQUILA EDIT START - szczurzy król z tg, najwyżej jeden na migrację
-		if(prob(regal_rat_chance_per_mouse))
-			regal_rat_chance_per_mouse = 0
-			new /mob/living/simple_animal/hostile/regalrat/controlled(proposed_turf)
-			num_mice -= 1
-			continue
-		// AQUILA EDIT END
 		if(!M)
-			M = new(proposed_turf)
+			// AQUILA EDIT START - szczurzy król z tg, losowany raz na mysz, najwyżej jeden na migrację
+			if(prob(regal_rat_chance_per_mouse))
+				regal_rat_chance_per_mouse = 0
+				M = new /mob/living/simple_animal/hostile/regalrat/controlled(proposed_turf)
+			else
+				M = new /mob/living/simple_animal/mouse(proposed_turf)
+			// AQUILA EDIT END
 		else
 			M.forceMove(proposed_turf)
 		if(M.environment_air_is_safe())
