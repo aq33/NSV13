@@ -482,14 +482,13 @@
 		if(istype(current_power, /obj/machinery/power/apc) && loc == current_power && do_drain)
 			// zasila nas samo ogniwo, nawet gdy przy pełnym zapasie nic już nie wysysamy
 			var/obj/machinery/power/apc/A = current_power
+			// ładunek sprawdzamy przed wysysaniem, które może opróżnić ogniwo do zera
+			got_power = A.cell?.charge > 0
 			drain_APC(A)
-			if(A.cell?.charge > 0)
-				got_power = TRUE
 		else if(istype(current_power, /obj/machinery/power/smes) && do_drain)
 			var/obj/machinery/power/smes/S = current_power
+			got_power = S.charge > 0
 			drain_SMES(S)
-			if(S.charge > 0)
-				got_power = TRUE
 		// pusty APC albo SMES (albo demon skacze po kamerach): bierzemy z sieci, w przypadku APC przez terminal
 		var/obj/machinery/power/net_source = current_power
 		if(istype(current_power, /obj/machinery/power/apc))
