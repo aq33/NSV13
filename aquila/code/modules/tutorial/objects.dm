@@ -163,3 +163,10 @@
 		return
 	to_chat(user, "<span class='notice'>Kamera działa nie ma czego pokazać: samouczek nie jest statkiem w kosmosie.</span>")
 	SEND_SIGNAL(src, COMSIG_TUTORIAL_ITEM_USED, user, "camera")
+
+/// Drzwi samouczka: zaryglowane, dopóki gracz nie wykona bieżącego kroku
+/obj/machinery/door/airlock/public/glass/tutorial
+	name = "drzwi ćwiczeniowe"
+	desc = "Otworzą się, gdy wykonasz bieżące polecenie samouczka."
+	locked = TRUE
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF

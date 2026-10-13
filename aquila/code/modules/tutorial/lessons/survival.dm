@@ -105,7 +105,7 @@
 	if(!tutorial_mob)
 		return
 	restore_air()
-	message_to_player("Powietrze wróciło. Skafander spowalnia, więc możesz go zdjąć, a internale wyłączyć tym samym przyciskiem. W pokoju obok ktoś potrzebuje pomocy.")
+	message_to_player("Powietrze wróciło. Skafander spowalnia, więc możesz go zdjąć, a internale wyłączyć tym samym przyciskiem. Drzwi do pokoju obok się otworzą: ktoś tam potrzebuje pomocy.")
 	addtimer(CALLBACK(src, PROC_REF(require_strip)), 6 SECONDS)
 
 /// Gracz zemdlał z braku powietrza: oddajemy powietrze i zaczynamy krok od nowa (to, co założył, zostaje)
@@ -129,6 +129,7 @@
 	if(!tutorial_mob)
 		return
 	current_step = "strip"
+	open_gate("ward")
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, patient)
 	message_to_player("Ten członek załogi jest w <b>stanie krytycznym</b>: nieprzytomny, a bez pomocy będzie się dusił. W kieszeni ma <b>autoinjektor z epinefryną</b>. Przeciągnij go myszą na swoją postać: otworzy się okno z jego ekwipunkiem. Opróżnij jego <b>kieszeń</b>.")
 	update_objective("Przeciągnij rannego na siebie i opróżnij jego kieszeń.")
@@ -244,6 +245,7 @@
 	return ..()
 
 /datum/tutorial/aquila/survival/init_map()
+	add_gate("ward", 3, 3) // przejście do pokoju z rannym, otwiera się po rozszczelnieniu
 	var/obj/structure/bed/bed = locate() in loc_from_corner(SURVIVAL_BED)
 	if(bed)
 		add_to_tracking_atoms(bed)

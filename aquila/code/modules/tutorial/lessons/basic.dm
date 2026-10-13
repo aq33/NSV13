@@ -1,6 +1,24 @@
 /// Wspólny typ lekcji Aquili
 /datum/tutorial/aquila
 	parent_path = /datum/tutorial/aquila
+	/// Zaryglowane drzwi między pomieszczeniami: nazwa = drzwi. Otwierają się po wykonaniu kroku
+	var/list/gates = list()
+
+/datum/tutorial/aquila/Destroy(force, ...)
+	gates = null // drzwi kasuje rezerwacja razem z pokojem
+	return ..()
+
+/// Stawia zaryglowane drzwi w pomieszczeniu samouczka
+/datum/tutorial/aquila/proc/add_gate(gate_id, offset_x, offset_y)
+	gates[gate_id] = new /obj/machinery/door/airlock/public/glass/tutorial(loc_from_corner(offset_x, offset_y))
+
+/// Odryglowuje i otwiera drzwi, gdy gracz może iść dalej
+/datum/tutorial/aquila/proc/open_gate(gate_id)
+	var/obj/machinery/door/airlock/door = gates[gate_id]
+	if(QDELETED(door) || !door.locked)
+		return
+	door.unbolt()
+	INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/machinery/door, open))
 
 /datum/map_template/tutorial/aquila_basic
 	name = "Samouczek: Podstawy"
@@ -28,12 +46,15 @@
 #define BASIC_CHAIR 1, 7
 #define BASIC_CLOSET 0, 8
 #define BASIC_CORRIDOR_SPOT 3, 4
-#define BASIC_PAPER 7, 7
+#define BASIC_CAN 7, 7
 #define BASIC_BIN 10, 8
 #define BASIC_CRATE 5, 7
 #define BASIC_CRATE_TARGET 9, 6
 #define BASIC_HALL_SPOT 5, 1
 #define BASIC_DUMMY 8, 1
+#define BASIC_GATE_CABIN 1, 5
+#define BASIC_GATE_STORAGE 6, 5
+#define BASIC_GATE_HALL 5, 2
 #define BASIC_WET_FROM_X 4
 #define BASIC_WET_TO_X 7
 #define BASIC_WET_FROM_Y 3
@@ -122,6 +143,7 @@
 // 4. Ruch
 
 /datum/tutorial/aquila/basic/proc/require_corridor()
+	open_gate("cabin")
 	var/turf/target = loc_from_corner(BASIC_CORRIDOR_SPOT)
 	add_highlight(target)
 	current_step = "corridor"
@@ -142,42 +164,43 @@
 // 5. Rzut
 
 /datum/tutorial/aquila/basic/proc/require_throw()
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/paper/crumpled, paper)
+	open_gate("storage")
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/trash/can, can)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/closet/crate/bin, bin)
 	current_step = "throw"
-	message_to_player("Wejdź do magazynu. Podnieś zgniecioną kartkę, włącz rzucanie klawiszem <b>[retrieve_bind("toggle_throw_mode")]</b> i kliknij kosz, żeby do niego trafić. Gdy zechcesz coś po prostu odłożyć, upuścisz to klawiszem <b>[retrieve_bind("drop_item")]</b>.")
-	update_objective("Rzuć zgniecioną kartką w kosz ([retrieve_bind("toggle_throw_mode")], potem klik na kosz).")
-	add_highlight(paper)
+	message_to_player("Drzwi do magazynu się otworzyły. Wejdź do niego, podnieś pustą puszkę, włącz rzucanie klawiszem <b>[retrieve_bind("toggle_throw_mode")]</b> i kliknij kosz, żeby do niego trafić. Gdy zechcesz coś po prostu odłożyć, upuścisz to klawiszem <b>[retrieve_bind("drop_item")]</b>.")
+	update_objective("Rzuć pustą puszką w kosz ([retrieve_bind("toggle_throw_mode")], potem klik na kosz).")
+	add_highlight(can)
 	add_highlight(bin)
 	add_highlight(get_turf(bin))
 	highlight_hud(/atom/movable/screen/throw_catch)
-	RegisterSignal(paper, COMSIG_MOVABLE_IMPACT, PROC_REF(on_paper_impact))
-	RegisterSignal(paper, COMSIG_MOVABLE_THROW_LANDED, PROC_REF(on_paper_landed))
+	RegisterSignal(can, COMSIG_MOVABLE_IMPACT, PROC_REF(on_can_impact))
+	RegisterSignal(can, COMSIG_MOVABLE_THROW_LANDED, PROC_REF(on_can_landed))
 
-/datum/tutorial/aquila/basic/proc/on_paper_impact(datum/source, atom/hit_atom)
+/datum/tutorial/aquila/basic/proc/on_can_impact(datum/source, atom/hit_atom)
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/closet/crate/bin, bin)
 	if(hit_atom != bin)
 		return
-	paper_in_bin()
+	can_in_bin()
 
-/datum/tutorial/aquila/basic/proc/on_paper_landed(datum/source)
+/datum/tutorial/aquila/basic/proc/on_can_landed(datum/source)
 	SIGNAL_HANDLER
 
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/paper/crumpled, paper)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/trash/can, can)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/closet/crate/bin, bin)
-	// Kartka jest lekka i leci krótko, więc liczymy też lądowanie tuż przy koszu
-	if(get_dist(paper, bin) <= 1)
-		paper_in_bin()
+	// Puszka czasem odbija się od kosza i leci krótko, więc liczymy też lądowanie tuż przy koszu
+	if(get_dist(can, bin) <= 1)
+		can_in_bin()
 		return
-	message_to_player("Pudło! Podnieś kartkę, podejdź bliżej i spróbuj jeszcze raz: <b>[retrieve_bind("toggle_throw_mode")]</b>, potem klik na kosz.")
+	message_to_player("Pudło! Podnieś puszkę, podejdź bliżej i spróbuj jeszcze raz: <b>[retrieve_bind("toggle_throw_mode")]</b>, potem klik na kosz.")
 
-/datum/tutorial/aquila/basic/proc/paper_in_bin()
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/paper/crumpled, paper)
+/datum/tutorial/aquila/basic/proc/can_in_bin()
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/trash/can, can)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/closet/crate/bin, bin)
-	UnregisterSignal(paper, list(COMSIG_MOVABLE_IMPACT, COMSIG_MOVABLE_THROW_LANDED))
-	remove_highlight(paper)
+	UnregisterSignal(can, list(COMSIG_MOVABLE_IMPACT, COMSIG_MOVABLE_THROW_LANDED))
+	remove_highlight(can)
 	remove_highlight(bin)
 	remove_highlight(get_turf(bin))
 	unhighlight_hud(/atom/movable/screen/throw_catch)
@@ -214,6 +237,7 @@
 
 /datum/tutorial/aquila/basic/proc/require_walk()
 	wet_corridor()
+	open_gate("hall")
 	current_step = "walk"
 	message_to_player("Ktoś rozlał wodę na korytarzu. W biegu poślizgniesz się na mokrej podłodze, więc przełącz się na <b>chód</b> klawiszem <b>[retrieve_bind("toggle_move_intent")]</b>.")
 	update_objective("Przełącz się na chód ([retrieve_bind("toggle_move_intent")]).")
@@ -489,7 +513,11 @@
 	if(closet)
 		add_to_tracking_atoms(closet)
 		add_to_tracking_atoms(new /obj/item/flashlight/tutorial(closet))
-	add_to_tracking_atoms(new /obj/item/paper/crumpled(loc_from_corner(BASIC_PAPER)))
+	add_to_tracking_atoms(new /obj/item/trash/can(loc_from_corner(BASIC_CAN)))
+	// Drzwi: kajuta, magazyn i sala otwierają się po kolejnych krokach
+	add_gate("cabin", BASIC_GATE_CABIN)
+	add_gate("storage", BASIC_GATE_STORAGE)
+	add_gate("hall", BASIC_GATE_HALL)
 	add_to_tracking_atoms(new /obj/structure/closet/crate/bin(loc_from_corner(BASIC_BIN)))
 	add_to_tracking_atoms(new /obj/structure/closet/crate(loc_from_corner(BASIC_CRATE)))
 
@@ -512,12 +540,15 @@
 #undef BASIC_CHAIR
 #undef BASIC_CLOSET
 #undef BASIC_CORRIDOR_SPOT
-#undef BASIC_PAPER
+#undef BASIC_CAN
 #undef BASIC_BIN
 #undef BASIC_CRATE
 #undef BASIC_CRATE_TARGET
 #undef BASIC_HALL_SPOT
 #undef BASIC_DUMMY
+#undef BASIC_GATE_CABIN
+#undef BASIC_GATE_STORAGE
+#undef BASIC_GATE_HALL
 #undef BASIC_WET_FROM_X
 #undef BASIC_WET_TO_X
 #undef BASIC_WET_FROM_Y

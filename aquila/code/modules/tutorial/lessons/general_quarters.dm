@@ -126,6 +126,7 @@
 
 /datum/tutorial/aquila/general_quarters/proc/require_shooting()
 	current_step = "shooting"
+	open_gate("range")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/table, mag_table)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/squad_pager/tutorial, pager)
 	pager.add_tutorial_message("XO wydał zgodę na broń. Sprawdź się na strzelnicy.")
@@ -159,6 +160,7 @@
 	if(!tutorial_mob)
 		return
 	current_step = "rack_hand"
+	open_gate("gauss")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/machinery/ship_weapon/gauss_gun/tutorial, gun)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/ship_weapon/ammunition/gauss, round)
 	message_to_player("Teraz <b>działo Gaussa</b>. Na statku wisi pod sufitem, a pod nim stoi <b>krzesło strzelca</b> i <b>stojak z amunicją</b>. Podnieś leżący <b>pocisk</b> i kliknij nim stojak, żeby go załadować.")
@@ -277,6 +279,9 @@
 // Przygotowanie
 
 /datum/tutorial/aquila/general_quarters/init_map()
+	// Drzwi z kwatery na strzelnicę i do stanowiska Gaussa, otwierają się po kolejnych krokach
+	add_gate("range", 2, 4)
+	add_gate("gauss", 5, 6)
 	var/obj/structure/bed/bed = locate() in loc_from_corner(GQ_BED)
 	if(bed)
 		add_to_tracking_atoms(bed)

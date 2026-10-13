@@ -85,6 +85,8 @@
 	student.forceMove(chair.loc)
 	chair.buckle_mob(student, TRUE)
 	TEST_ASSERT(student.buckled == chair, "The student is not buckled to the chair")
+	var/obj/machinery/door/airlock/cabin_door = lesson.gates["cabin"]
+	TEST_ASSERT(cabin_door?.locked, "The cabin door is not bolted at the start")
 	lesson.require_unbuckle()
 	STEP_ASSERT("unbuckle")
 	chair.unbuckle_mob(student)
@@ -102,17 +104,21 @@
 	TEST_ASSERT(locate(/obj/effect/tutorial_marker) in corridor_spot, "The corridor target has no floor marker")
 	student.forceMove(corridor_spot)
 	STEP_ASSERT("throw")
+	TEST_ASSERT(!cabin_door.locked, "The cabin door is still bolted after its step")
+	var/obj/machinery/door/airlock/hall_door = lesson.gates["hall"]
+	TEST_ASSERT(hall_door?.locked, "The hall door opened too early")
 	TEST_ASSERT(!(locate(/obj/effect/tutorial_marker) in corridor_spot), "The corridor marker stayed after the step")
-	var/obj/item/paper/crumpled/paper = lesson.tracking_atoms[/obj/item/paper/crumpled]
+	var/obj/item/trash/can/can = lesson.tracking_atoms[/obj/item/trash/can]
 	var/obj/structure/closet/crate/bin/bin = lesson.tracking_atoms[/obj/structure/closet/crate/bin]
-	// Kartka, która wylądowała tuż przy koszu, też się liczy
-	paper.forceMove(get_step(bin, SOUTH))
-	SEND_SIGNAL(paper, COMSIG_MOVABLE_THROW_LANDED)
+	// Puszka, która wylądowała tuż przy koszu, też się liczy
+	can.forceMove(get_step(bin, SOUTH))
+	SEND_SIGNAL(can, COMSIG_MOVABLE_THROW_LANDED)
 	STEP_ASSERT("pull")
 
 	var/obj/structure/closet/crate/crate = lesson.tracking_atoms[/obj/structure/closet/crate]
 	crate.forceMove(lesson.loc_from_corner(9, 6))
 	STEP_ASSERT("walk")
+	TEST_ASSERT(!hall_door.locked, "The hall door is still bolted after the pull step")
 	var/turf/open/wet = lesson.loc_from_corner(5, 4)
 	TEST_ASSERT(wet.GetComponent(/datum/component/slippery), "The corridor is not slippery")
 
