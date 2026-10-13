@@ -28,6 +28,9 @@
 // Toggle defacation and all associated things
 /datum/config_entry/flag/shitting_enabled
 
+// Do antagonist roles need required_living_playtime hours of living time? Off = no hour limits for antags.
+/datum/config_entry/flag/antag_living_playtime_requirements
+
 // Paradox Clone (tgstation#71141 port): can it roll on its own, as a random event or a dynamic midround?
 // Admins can always force it through Trigger Event.
 /datum/config_entry/flag/paradox_clone_enabled

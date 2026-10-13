@@ -45,3 +45,8 @@
 	animate(C, color = animate_color, time = flash_time)
 
 #define RANDOM_COLOUR (rgb(rand(0,255),rand(0,255),rand(0,255)))
+
+/// Checks if a color is dark, using the lightness of its HSL value (0 to 100)
+/proc/is_color_dark_with_saturation(color, threshold = 25)
+	var/hsl = rgb2num(color, COLORSPACE_HSL)
+	return hsl[3] < threshold

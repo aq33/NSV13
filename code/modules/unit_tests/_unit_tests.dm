@@ -73,6 +73,7 @@
 #include "heretic_knowledge.dm"
 #include "heretic_rituals.dm"
 #include "metabolizing.dm"
+#include "modsuit.dm"
 #include "ntnetwork_tests.dm"
 #include "projectiles.dm"
 #include "subsystem_init.dm"

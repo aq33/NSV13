@@ -20,8 +20,6 @@
 	anchored = TRUE
 	density = FALSE
 	max_integrity = 15
-	/// Przedrostek stanów ikony wygładzanej ("stickyweb" -> "stickyweb-21")
-	var/base_icon_state
 	/// Grupa wygładzania. Pusta = bez wygładzania.
 	var/web_smooth_group = null
 	/// Czy łączymy się wizualnie ze ścianami

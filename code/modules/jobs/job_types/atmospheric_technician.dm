@@ -50,3 +50,11 @@
 	suit = /obj/item/clothing/suit/space/hardsuit/engine/atmos
 	suit_store = /obj/item/tank/internals/oxygen
 	internals_slot = ITEM_SLOT_SUITSTORE
+
+/datum/outfit/job/atmospheric_technician/mod
+	name = "Atmospheric Technician (MODsuit)"
+
+	back = /obj/item/mod/control/pre_equipped/atmospheric
+	mask = /obj/item/clothing/mask/gas
+	suit_store = /obj/item/tank/internals/oxygen
+	internals_slot = ITEM_SLOT_SUITSTORE

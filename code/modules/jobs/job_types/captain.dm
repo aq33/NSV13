@@ -69,3 +69,13 @@
 	mask = /obj/item/clothing/mask/gas/sechailer
 	suit = /obj/item/clothing/suit/space/hardsuit/swat/captain
 	suit_store = /obj/item/tank/internals/oxygen
+
+/datum/outfit/job/captain/mod
+	name = "Captain (MODsuit)"
+
+	back = /obj/item/mod/control/pre_equipped/magnate
+	suit = null
+	head = null
+	mask = /obj/item/clothing/mask/gas/sechailer
+	suit_store = /obj/item/tank/internals/oxygen
+	internals_slot = ITEM_SLOT_SUITSTORE
