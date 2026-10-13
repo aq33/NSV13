@@ -3,7 +3,7 @@
 	desc = "A cheap single use autoinjector that injects the user with DNA."
 	icon = 'icons/obj/syringe.dmi'
 	icon_state = "dnainjector"
-	var/base_icon_state = "dnainjector"
+	base_icon_state = "dnainjector"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	throw_speed = 3

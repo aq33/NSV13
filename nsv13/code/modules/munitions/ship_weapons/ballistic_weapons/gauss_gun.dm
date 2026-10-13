@@ -28,7 +28,7 @@
 	var/obj/machinery/portable_atmospherics/canister/internal_tank //Internal air tank reference. Used mostly in small ships. If you want to sabotage a fighter, load a plasma tank into its cockpit :)
 	var/last_pdc_fire = 0 //Pdc cooldown
 	var/BeingLoaded //Used for gunner load
-	var/list/gauss_verbs = list(.verb/show_computer, .verb/show_view)
+	var/list/gauss_verbs = list(.verb/show_computer) // AQ EDIT - kamera to przycisk akcji (aquila/code/modules/munitions/gauss_gunner_actions.dm)
 	circuit = /obj/item/circuitboard/machine/gauss_turret
 
 	weapon_datum_type = /datum/overmap_ship_weapon/gauss
@@ -87,8 +87,8 @@
 //Verbs//
 
 /obj/machinery/ship_weapon/gauss_gun/verb/show_computer()
-	set name = "Access internal computer"
-	set category = "Gauss gun"
+	set name = "Panel działa" // AQ EDIT - tłumaczenie
+	set category = "Działo Gaussa" // AQ EDIT - tłumaczenie
 	set src = usr.loc
 
 	if(gunner.incapacitated() || !isliving(gunner))
@@ -96,15 +96,13 @@
 	ui_interact(gunner)
 	to_chat(gunner, "<span class='notice'>Sięgasz do panelu sterowania [src].</span>")
 
-/obj/machinery/ship_weapon/gauss_gun/verb/show_view()
-	set name = "Access gun camera"
-	set category = "Gauss gun"
-	set src = usr.loc
-
-	if(usr.incapacitated())
+// AQ EDIT START - zamiast werbu „Access gun camera” przycisk akcji „Kamera działa” (aquila/code/modules/munitions/gauss_gunner_actions.dm)
+/obj/machinery/ship_weapon/gauss_gun/proc/show_view(mob/user)
+	if(user != gunner || user.incapacitated())
 		return
-	set_gunner(usr)
+	set_gunner(user)
 	to_chat(gunner, "<span class='notice'>Sięgasz do sterowania kamerą działa [src].</span>")
+// AQ EDIT END
 
 /* TEMP DISABLE BECAUSE REASONS
 /obj/machinery/ship_weapon/gauss_gun/verb/exit()

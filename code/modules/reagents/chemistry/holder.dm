@@ -652,6 +652,7 @@
 	else
 		return
 	var/list/cached_reagents = reagent_list
+	SEND_SIGNAL(A, COMSIG_ATOM_EXPOSE_REAGENTS, cached_reagents, src, method, volume_modifier, show_message)
 	for(var/reagent in cached_reagents)
 		var/datum/reagent/R = reagent
 		switch(react_type)

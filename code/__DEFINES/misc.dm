@@ -298,9 +298,6 @@ GLOBAL_LIST_INIT(ghost_others_options, list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DE
 #define SHIP_DESTROYED 29
 //NSV13
 
-#define FIELD_TURF 1
-#define FIELD_EDGE 2
-
 //gibtonite state defines
 #define GIBTONITE_UNSTRUCK 0
 #define GIBTONITE_ACTIVE 1

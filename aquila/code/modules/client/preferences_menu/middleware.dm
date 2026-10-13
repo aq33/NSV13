@@ -192,7 +192,7 @@
 	var/list/data = list()
 	var/list/antag_bans = list()
 	var/list/hours_left = list()
-	var/exempt = !preferences.parent || preferences.parent.holder
+	var/exempt = !preferences.parent || preferences.parent.holder || !CONFIG_GET(flag/antag_living_playtime_requirements)
 	for(var/pref_type in GLOB.role_preference_entries)
 		var/datum/role_preference/pref = GLOB.role_preference_entries[pref_type]
 		var/datum/antagonist/antag_datum = pref.antag_datum
@@ -303,6 +303,7 @@
 		/datum/antagonist/space_dragon = list('icons/mob/spacedragon.dmi', "spacedragon"),
 		/datum/antagonist/monkey = list('icons/mob/monkey.dmi', "monkey1"),
 		/datum/antagonist/horror = list('aquila/icons/mob/horror.dmi', "horror"),
+		/datum/antagonist/shadow_demon = list('aquila/icons/mob/shadow_demon.dmi', "shadow_demon"),
 		/datum/antagonist/nightmare = list('icons/mob/hud.dmi', "shadowling"),
 		/datum/antagonist/bloodling = list('icons/mob/hud.dmi', "bloodling_thrall"),
 		/datum/antagonist/paradox_clone = list('icons/mob/hud.dmi', "paradox_clone"),

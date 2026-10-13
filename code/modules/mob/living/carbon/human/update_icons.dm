@@ -391,6 +391,47 @@ There are several things that need to be remembered:
 			overlays_standing[HEAD_LAYER] = head_overlay
 	apply_overlay(HEAD_LAYER)
 
+/mob/living/carbon/human/update_clothing(slot_flags)
+	if(slot_flags & ITEM_SLOT_BACK)
+		update_inv_back()
+	if(slot_flags & ITEM_SLOT_MASK)
+		update_inv_wear_mask()
+	if(slot_flags & ITEM_SLOT_NECK)
+		update_inv_neck()
+	if(slot_flags & ITEM_SLOT_HANDCUFFED)
+		update_inv_handcuffed()
+	if(slot_flags & ITEM_SLOT_LEGCUFFED)
+		update_inv_legcuffed()
+	if(slot_flags & ITEM_SLOT_BELT)
+		update_inv_belt()
+	if(slot_flags & ITEM_SLOT_ID)
+		update_inv_wear_id()
+	if(slot_flags & ITEM_SLOT_EARS)
+		update_inv_ears()
+	if(slot_flags & ITEM_SLOT_EYES)
+		update_inv_glasses()
+	if(slot_flags & ITEM_SLOT_GLOVES)
+		update_inv_gloves()
+	if(slot_flags & ITEM_SLOT_HEAD)
+		update_inv_head()
+	if(slot_flags & ITEM_SLOT_FEET)
+		update_inv_shoes()
+	if(slot_flags & ITEM_SLOT_OCLOTHING)
+		update_inv_wear_suit()
+	if(slot_flags & ITEM_SLOT_ICLOTHING)
+		update_inv_w_uniform()
+	if(slot_flags & ITEM_SLOT_SUITSTORE)
+		update_inv_s_store()
+	if(slot_flags & (ITEM_SLOT_LPOCKET|ITEM_SLOT_RPOCKET))
+		update_inv_pockets()
+
+/mob/living/carbon/human/update_obscured_slots(obscured_flags)
+	..()
+	if(obscured_flags & (HIDEMUTWINGS|HIDEANTENNAE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT))
+		update_body()
+		update_hair()
+	sec_hud_set_security_status()
+
 /mob/living/carbon/human/update_inv_belt()
 	remove_overlay(BELT_LAYER)
 
@@ -408,6 +449,10 @@ There are several things that need to be remembered:
 		if(client && hud_used && hud_used.hud_shown)
 			client.screen += belt
 		update_observer_view(belt)
+
+		if(wear_suit && (wear_suit.flags_inv & HIDEBELT))
+			apply_overlay(BELT_LAYER)
+			return
 
 		overlays_standing[BELT_LAYER] = belt.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = icon_file)
 		var/mutable_appearance/belt_overlay = overlays_standing[BELT_LAYER]

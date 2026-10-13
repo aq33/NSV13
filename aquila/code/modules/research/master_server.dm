@@ -158,19 +158,22 @@
 	deconstruction_state = HDD_OVERLOADED
 
 /// Ninja: overloads the source code HDD of the master server, or wipes the research points on any other server.
-/obj/machinery/rnd/server/master/ninjadrain_act(obj/item/clothing/suit/space/space_ninja/S, mob/living/carbon/human/H, obj/item/clothing/gloves/space_ninja/G)
-	if(!S || !H || !G)
-		return INVALID_DRAIN
+/obj/machinery/rnd/server/master/ninjadrain_act(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
+	if(!ninja || !hacking_module)
+		return NONE
 	if(!source_code_hdd)
 		return ..()
-	. = DRAIN_RD_HACK_FAILED
-	to_chat(H, "<span class='notice'>Hakowanie [src]...</span>")
+	to_chat(ninja, span_notice("Wykryto zaszyfrowany kod źródłowy. Przeciążanie nośnika..."))
 	AI_notify_hack()
-	to_chat(H, "<span class='notice'>Wykryto zaszyfrowany kod źródłowy. Przeciążanie nośnika...</span>")
-	if(do_after(H, 30 SECONDS, target = src))
-		overload_source_code_hdd()
-		to_chat(H, "<span class='notice'>Sabotaż zakończony. Nośnik przeciążony.</span>")
-		complete_ninja_research_sabotage(H)
+	INVOKE_ASYNC(src, PROC_REF(ninja_overload_hdd), ninja)
+	return COMPONENT_CANCEL_ATTACK_CHAIN
+
+/obj/machinery/rnd/server/master/proc/ninja_overload_hdd(mob/living/carbon/human/ninja)
+	if(!do_after(ninja, 30 SECONDS, target = src, progress = FALSE))
+		return
+	overload_source_code_hdd()
+	to_chat(ninja, span_notice("Sabotaż zakończony. Nośnik przeciążony."))
+	complete_ninja_research_sabotage(ninja)
 
 /proc/complete_ninja_research_sabotage(mob/living/carbon/human/H)
 	var/datum/antagonist/ninja/ninja_antag = H.mind?.has_antag_datum(/datum/antagonist/ninja)

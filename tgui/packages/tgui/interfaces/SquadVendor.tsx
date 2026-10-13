@@ -1,4 +1,5 @@
 // NSV13
+// AQUILA: okno przetłumaczone na polski
 
 import { Fragment } from 'react';
 import {
@@ -23,26 +24,26 @@ export const SquadVendor = (props) => {
         <br />
         {!!data.already_loaned && (
           <Section
-            title="You have already withdrawn kit"
+            title="Masz już pobrany zestaw"
             buttons={
               <>
                 <Button
                   color="average"
-                  content="Return Loaned Equipment"
-                  tooltip="Place all loaned equipment in your backpack and click this button to return your gear."
+                  content="Zwróć wypożyczony sprzęt"
+                  tooltip="Włóż cały wypożyczony sprzęt do plecaka i kliknij, żeby go zwrócić."
                   onClick={() => act('return_gear')}
                 />
                 <Button
                   color="average"
-                  content="Pay lost item fee"
+                  content="Zapłać za zgubione przedmioty"
                   onClick={() => act('pay_fine')}
                 />
               </>
             }
           />
         )}
-        <Section title="Available kits:">
-          {'Welcome ' + data.user_name}
+        <Section title="Dostępne zestawy:">
+          {'Witaj, ' + data.user_name}
           <br />
           {Object.keys(data.kits).map((key) => {
             let value = data.kits[key];
@@ -53,7 +54,7 @@ export const SquadVendor = (props) => {
                 buttons={
                   <Button
                     disabled={!!data.already_loaned}
-                    content="Vend"
+                    content="Wydaj"
                     icon="eject"
                     onClick={() => act('vend', { item_id: value.id })}
                   />

@@ -184,3 +184,11 @@
 #define BB_BASIC_MOB_CURRENT_TARGET "BB_basic_current_target"
 #define BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION "BB_basic_current_target_hiding_location"
 #define BB_TARGETTING_DATUM "targetting_datum"
+
+///MOD AI keys
+///The target the MODsuit pathfinder is flying to
+#define BB_MOD_TARGET "BB_mod_target"
+///The implant the MODsuit pathfinder AI is attached to
+#define BB_MOD_IMPLANT "BB_mod_implant"
+///Range for a MOD AI controller.
+#define MOD_AI_RANGE 200

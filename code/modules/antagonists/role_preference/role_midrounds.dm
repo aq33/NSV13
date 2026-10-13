@@ -6,9 +6,7 @@
 	name = "Ksenomorf"
 	antag_datum = /datum/antagonist/xeno
 
-/datum/role_preference/midround_ghost/nightmare
-	name = "Koszmar"
-	antag_datum = /datum/antagonist/nightmare
+// AQUILA EDIT - koszmar zastąpiony demonem cieni (aquila/code/modules/antagonists/role_preference/role_shadow_demon.dm)
 
 /datum/role_preference/midround_ghost/space_dragon
 	name = "Kosmiczny smok"

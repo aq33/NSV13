@@ -570,3 +570,19 @@ Takes a string and a datum. The string is well, obviously the string being check
 			return null
 		r += ascii2text(c)
 	return r
+
+/// Converts a body zone to the clothing coverage flags of that zone
+/proc/body_zone2cover_flags(def_zone)
+	switch(def_zone)
+		if(BODY_ZONE_CHEST)
+			return CHEST|GROIN
+		if(BODY_ZONE_HEAD)
+			return HEAD
+		if(BODY_ZONE_L_ARM)
+			return ARM_LEFT|HAND_LEFT
+		if(BODY_ZONE_R_ARM)
+			return ARM_RIGHT|HAND_RIGHT
+		if(BODY_ZONE_L_LEG)
+			return LEG_LEFT|FOOT_LEFT
+		if(BODY_ZONE_R_LEG)
+			return LEG_RIGHT|FOOT_RIGHT

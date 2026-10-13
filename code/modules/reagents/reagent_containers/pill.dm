@@ -44,7 +44,7 @@
 	else
 		M.visible_message("<span class='danger'>[user] próbuje [apply_method == "apply" ? "nakleić [M]" : "zmusić [M] do połknięcia"] [src]!</span>", \
 							"<span class='userdanger'>[user] próbuje [apply_method == "apply" ? "nakleić ci" : "zmusić cię do połknięcia"] [src]!</span>")
-		if(!do_mob(user, M))
+		if(!do_mob(user, M, CHEM_INTERACT_DELAY(3 SECONDS, user)))
 			return FALSE
 		M.visible_message("<span class='danger'>[user] [apply_method == "apply" ? "nakleja [M]" : "zmusza [M] do połknięcia"] [src]!</span>", \
 							"<span class='userdanger'>[user] [apply_method == "apply" ? "nakleja ci" : "zmusza cię do połknięcia"] [src]!</span>")
