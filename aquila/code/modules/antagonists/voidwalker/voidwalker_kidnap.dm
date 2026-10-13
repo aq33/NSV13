@@ -9,7 +9,7 @@ GLOBAL_DATUM(voidwalker_void_reservation, /datum/turf_reservation)
 /// Wielkość pustki razem ze ścianami dookoła
 #define VOIDWALKER_VOID_SIZE 34
 /// Ile świecących kulek-jedzenia pływa po pustce
-#define VOIDWALKER_VOID_FOOD 6
+#define VOIDWALKER_VOID_FOOD 12
 
 /area/centcom/voidwalker_void
 	name = "Pustka"
@@ -38,7 +38,7 @@ GLOBAL_DATUM(voidwalker_void_reservation, /datum/turf_reservation)
 	desc = "Nic. Zupełnie nic, i to bardzo twarde."
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "black"
-	opacity = FALSE
+	opacity = TRUE // za ścianą nic nie widać, pustka wygląda na nieskończoną
 
 /// Zwraca losowe pole pustki, w razie potrzeby najpierw ją tworząc
 /proc/get_voidwalker_void_turf()
