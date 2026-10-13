@@ -7,7 +7,6 @@
 /// Pająk już wyssał te zwłoki, więcej wzbogaconych jaj z nich nie będzie
 #define TRAIT_SPIDER_CONSUMED "spider_consumed"
 
-#define span_spiderlarge(str) ("<span class='spiderlarge'>" + str + "</span>")
 #define span_spiderbroodmother(str) ("<span class='spiderbroodmother'>" + str + "</span>")
 #define span_spiderbreacher(str) ("<span class='spiderbreacher'>" + str + "</span>")
 #define span_spiderscout(str) ("<span class='spiderscout'>" + str + "</span>")
