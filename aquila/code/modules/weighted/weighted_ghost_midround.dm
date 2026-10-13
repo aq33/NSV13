@@ -27,7 +27,6 @@
 		/datum/round_event_control/horror,
 		/datum/round_event_control/infiltrators,
 		/datum/round_event_control/morph,
-		/datum/round_event_control/nightmare,
 		/datum/round_event_control/ninja,
 		/datum/round_event_control/operative,
 		/datum/round_event_control/paradox_clone,
@@ -38,7 +37,21 @@
 		/datum/round_event_control/spawn_swarmer,
 		/datum/round_event_control/wizard/imposter,
 	)
-	return events
+	// Antagoniści z osobnych PR-ów (i koszmar, którego event zastąpił demon cieni) po ścieżce tekstowej,
+	// żeby tryb kompilował się w każdej kolejności merge'ów i brał tylko te, które istnieją
+	var/static/list/optional_events
+	if(isnull(optional_events))
+		optional_events = list()
+		for(var/path_text in list(
+			"/datum/round_event_control/nightmare",
+			"/datum/round_event_control/pulse_demon",
+			"/datum/round_event_control/shadow_demon",
+			"/datum/round_event_control/voidwalker",
+		))
+			var/event_path = text2path(path_text)
+			if(event_path)
+				optional_events += event_path
+	return events + optional_events
 
 /// Ghost antagonist events offered only in rounds from the high pool
 /datum/weighted_ghost_midround/proc/heavy_events()
