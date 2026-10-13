@@ -116,7 +116,8 @@
 		else if(!event.canSpawnEvent(players, SSticker.mode.config_tag))
 			continue
 		. += event
-	if(!heavy)
+	// The wizard and nuclear team poll ghosts through pollGhostCandidates(), which gives nobody with station sentience roles off
+	if(!heavy || !(GLOB.ghost_role_flags & GHOSTROLE_STATION_SENTIENCE))
 		return
 	if(!(WEIGHTED_MIDROUND_WIZARD in used_offers) && length(GLOB.wizardstart) && !living_wizard())
 		. += WEIGHTED_MIDROUND_WIZARD
