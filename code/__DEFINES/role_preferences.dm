@@ -65,6 +65,7 @@
 #define ROLE_HORROR				"Eldritch Horror" //AQ - port of Yogstation#13033
 #define ROLE_VOIDWALKER			"Voidwalker" //AQ - port z tgstation
 #define ROLE_SHADOW_DEMON		"Shadow Demon" //AQ - port z ParadiseSS13
+#define ROLE_DARKSPAWN			"Darkspawn" //AQ - port z Yogstation
 
 /// Roles that are antagonists, roundstart or not, and have passes to do.. antagonistry
 GLOBAL_LIST_INIT(antagonist_bannable_roles, list(
@@ -114,6 +115,7 @@ GLOBAL_LIST_INIT(antagonist_bannable_roles, list(
 	ROLE_HORROR, //AQ
 	ROLE_VOIDWALKER, //AQ
 	ROLE_SHADOW_DEMON, //AQ
+	ROLE_DARKSPAWN, //AQ
 ))
 //nsv13 - pvp + bloodling modes added here
 
