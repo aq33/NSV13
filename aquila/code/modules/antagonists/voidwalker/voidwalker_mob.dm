@@ -80,6 +80,8 @@
 	var/obj/effect/proc_holder/spell/targeted/telepathy/voidwalker/telepathy
 	var/datum/action/innate/voidwalker_camo/camo_action
 	var/datum/action/innate/voidwalker_vomit_jump/vomit_jump
+	var/datum/action/innate/voidwalker_floor/floor_up
+	var/datum/action/innate/voidwalker_floor/down/floor_down
 	/// Radio, które ich tu przywabiło. Słyszą przez nie wszystkie kanały
 	var/obj/item/radio/internal_radio
 
@@ -99,6 +101,10 @@
 	camo_action.Grant(src)
 	vomit_jump = new(src)
 	vomit_jump.Grant(src)
+	floor_up = new(src)
+	floor_up.Grant(src)
+	floor_down = new(src)
+	floor_down.Grant(src)
 
 	internal_radio = new(src)
 	internal_radio.keyslot = new /obj/item/encryptionkey/heads/captain
@@ -120,6 +126,8 @@
 	telepathy = null
 	QDEL_NULL(camo_action)
 	QDEL_NULL(vomit_jump)
+	QDEL_NULL(floor_up)
+	QDEL_NULL(floor_down)
 	QDEL_NULL(internal_radio)
 	client?.images -= self_image
 	self_image = null

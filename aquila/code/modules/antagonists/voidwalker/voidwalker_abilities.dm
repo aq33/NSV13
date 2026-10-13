@@ -200,6 +200,28 @@
 	walker.balloon_alert(walker, walker.camo_disabled ? "kamuflaż wyłączony" : "kamuflaż włączony")
 	walker.update_camo()
 
+/// Przejście piętro wyżej albo niżej: pod pokładem i w kosmosie
+/datum/action/innate/voidwalker_floor
+	name = "Move Upwards"
+	desc = "Przejdź piętro wyżej. Pod pokładem zawsze, w kosmosie gdy nic nie blokuje."
+	icon_icon = 'aquila/icons/mob/actions/actions_voidwalker.dmi'
+	button_icon = 'aquila/icons/mob/actions/actions_voidwalker.dmi'
+	background_icon_state = "bg_void"
+	button_icon_state = "floor_up"
+	/// UP albo DOWN
+	var/direction = UP
+
+/datum/action/innate/voidwalker_floor/down
+	name = "Move Down"
+	desc = "Przejdź piętro niżej. Pod pokładem zawsze, w kosmosie gdy nic nie blokuje."
+	button_icon_state = "floor_down"
+	direction = DOWN
+
+/datum/action/innate/voidwalker_floor/Activate()
+	var/mob/living/simple_animal/hostile/voidwalker/walker = owner
+	if(istype(walker))
+		walker.move_floor(direction)
+
 /datum/action/innate/voidwalker_vomit_jump
 	name = "Jump To Nebula Vomit"
 	desc = "Podczas nurkowania przeskocz do kolejnych mgławicowych wymiocin zostawionych przez oświeconych."

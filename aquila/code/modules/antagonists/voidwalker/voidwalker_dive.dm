@@ -71,18 +71,21 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
 ///
 
 /mob/living/simple_animal/hostile/voidwalker/up()
-	if(istype(loc, /obj/effect/dummy/phased_mob/voidwalker))
-		var/obj/effect/dummy/phased_mob/voidwalker/holder = loc
-		holder.move_z(UP)
-		return
-	return ..()
+	move_floor(UP)
 
 /mob/living/simple_animal/hostile/voidwalker/down()
+	move_floor(DOWN)
+
+/// Wspólne dla przycisków akcji i czasowników góra/dół
+/mob/living/simple_animal/hostile/voidwalker/proc/move_floor(direction)
+	if(incapacitated())
+		return FALSE
 	if(istype(loc, /obj/effect/dummy/phased_mob/voidwalker))
 		var/obj/effect/dummy/phased_mob/voidwalker/holder = loc
-		holder.move_z(DOWN)
-		return
-	return ..()
+		return holder.move_z(direction)
+	if(!isturf(loc))
+		return FALSE
+	return zMove(direction, TRUE)
 
 /mob/living/simple_animal/hostile/voidwalker/zMove(dir, feedback = FALSE)
 	if(dir != UP && dir != DOWN)
