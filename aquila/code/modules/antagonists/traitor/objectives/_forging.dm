@@ -44,6 +44,7 @@
 					/datum/objective/plant_device/bomb = kill_allowed ? 8 : 0,
 					/datum/objective/plant_device/bug = 8,
 					/datum/objective/plant_device/tide = 8,
+					/datum/objective/poison_items = 6,
 					/datum/objective/sabotage/power_sink = 6,
 					/datum/objective/sabotage/integrity = 6,
 					/datum/objective/air_sabotage = 6,

@@ -48,6 +48,7 @@
 		/datum/objective/hack_comms,
 		/datum/objective/sabotage/supermatter,
 		/datum/objective/iff_subvert,
+		/datum/objective/poison_items,
 	)
 	for(var/objective_type in types)
 		var/datum/objective/objective = new objective_type
@@ -87,6 +88,24 @@
 	for(var/obj/machinery/rnd/server/master/master_server as anything in SSresearch.master_servers)
 		TEST_ASSERT(master_server.source_code_hdd, "[master_server] has no source code HDD")
 		TEST_ASSERT(SSresearch.source_code_multiplier() == 1, "Research is slowed down while the HDD is in place")
+
+	// Contact poison: picking the item up without gloves gives the dose, then it's gone
+	var/obj/item/poison_paper/paper = allocate(/obj/item/poison_paper)
+	var/obj/item/poisoned = allocate(/obj/item/pen)
+	poisoned.AddComponent(/datum/component/contact_poison, paper.reagents)
+	TEST_ASSERT(!paper.reagents.total_volume, "The poison stayed on the paper")
+	var/mob/living/carbon/human/victim = make_crew("Ofiara Testowa", JOB_NAME_ASSISTANT)
+	victim.put_in_hands(poisoned)
+	TEST_ASSERT(victim.reagents.has_reagent(/datum/reagent/toxin/initropidril), "Picking the poisoned item up did not poison")
+	TEST_ASSERT(!length(poisoned.GetComponents(/datum/component/contact_poison)), "The poison stayed on the item after the dose")
+
+	// The beacon of the blood brothers sets up without runtimes, whatever the map has
+	var/datum/objective/brother_beacon/beacon = new
+	beacon.owner = second.mind
+	if(beacon.setup_beacon())
+		TEST_ASSERT(!isnull(beacon.channel), "Beacon objective has no channel")
+		TEST_ASSERT(locate(/obj/item/brother_beacon) in second.GetAllContents(), "The brother got no beacon")
+	qdel(beacon)
 
 	var/unbreathable = get_unbreathable_percent()
 	TEST_ASSERT(unbreathable >= 0 && unbreathable <= 100, "Unbreathable percent is [unbreathable]")

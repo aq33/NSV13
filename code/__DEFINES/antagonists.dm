@@ -127,3 +127,5 @@
 
 /// AQ EDIT - chance for a traitor to get the objective of their job, if it has one (tgstation's JOB_PROB)
 #define TRAITOR_JOB_OBJECTIVE_PROB 40
+/// AQ EDIT - chance for a blood brother team to get the beacon objective (BeeStation deploy_beacon directive)
+#define BROTHER_BEACON_PROB 35

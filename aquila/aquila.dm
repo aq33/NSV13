@@ -268,6 +268,7 @@
 #include "code\modules\antagonists\shadow_demon\shadow_demon.dm"
 #include "code\modules\antagonists\shadow_demon\shadow_demon_powers.dm"
 #include "code\modules\antagonists\traitor\objectives\_forging.dm"
+#include "code\modules\antagonists\traitor\objectives\bee_directives.dm"
 #include "code\modules\antagonists\traitor\objectives\devices.dm"
 #include "code\modules\antagonists\traitor\objectives\job.dm"
 #include "code\modules\antagonists\traitor\objectives\kill.dm"

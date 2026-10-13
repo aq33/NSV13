@@ -1065,6 +1065,8 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		/datum/objective/sabotage/ai_law,
 		/datum/objective/air_sabotage,
 		/datum/objective/iff_subvert,
+		/datum/objective/poison_items,
+		/datum/objective/brother_beacon,
 		// AQ EDIT END
 	),GLOBAL_PROC_REF(cmp_typepaths_asc))
 
