@@ -64,6 +64,7 @@
 #define ROLE_THIEF				"Thief" //AQ - port of tgstation#64144
 #define ROLE_HORROR				"Eldritch Horror" //AQ - port of Yogstation#13033
 #define ROLE_PULSE_DEMON		"Pulse Demon" //AQ - port z ParadiseSS13
+#define ROLE_SHADOW_DEMON		"Shadow Demon" //AQ - port z ParadiseSS13
 
 /// Roles that are antagonists, roundstart or not, and have passes to do.. antagonistry
 GLOBAL_LIST_INIT(antagonist_bannable_roles, list(
@@ -112,6 +113,7 @@ GLOBAL_LIST_INIT(antagonist_bannable_roles, list(
 	ROLE_THIEF, //AQ
 	ROLE_HORROR, //AQ
 	ROLE_PULSE_DEMON, //AQ
+	ROLE_SHADOW_DEMON, //AQ
 ))
 //nsv13 - pvp + bloodling modes added here
 

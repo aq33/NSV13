@@ -429,52 +429,7 @@
 	log_game("DYNAMIC: [key_name(new_xeno)] was spawned as an alien by the midround ruleset.")
 	return new_xeno
 
-//////////////////////////////////////////////
-//                                          //
-//           NIGHTMARE (GHOST)              //
-//                                          //
-//////////////////////////////////////////////
-
-/datum/dynamic_ruleset/midround/from_ghosts/nightmare
-	name = "Nightmare"
-	midround_ruleset_style = MIDROUND_RULESET_STYLE_LIGHT
-	antag_datum = /datum/antagonist/nightmare
-	role_preference = /datum/role_preference/midround_ghost/space_dragon
-	enemy_roles = list(JOB_NAME_SECURITYOFFICER, JOB_NAME_DETECTIVE, JOB_NAME_WARDEN, JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN)
-	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
-	required_candidates = 1
-	weight = 3
-	cost = 5
-	minimum_players = 15
-	repeatable = TRUE
-	var/list/spawn_locs = list()
-
-/datum/dynamic_ruleset/midround/from_ghosts/nightmare/execute()
-	for(var/X in GLOB.xeno_spawn)
-		var/turf/T = X
-		var/light_amount = T.get_lumcount()
-		if(light_amount < SHADOW_SPECIES_LIGHT_THRESHOLD)
-			spawn_locs += T
-	if(!length(spawn_locs))
-		log_game("DYNAMIC: [ruletype] ruleset [name] execute failed due to no valid spawn locations.")
-		return FALSE
-	. = ..()
-
-/datum/dynamic_ruleset/midround/from_ghosts/nightmare/generate_ruleset_body(mob/applicant)
-	var/datum/mind/player_mind = new /datum/mind(applicant.key)
-	player_mind.active = TRUE
-
-	var/mob/living/carbon/human/S = new (pick(spawn_locs))
-	player_mind.transfer_to(S)
-	player_mind.assigned_role = "Nightmare"
-	player_mind.special_role = "Nightmare"
-	player_mind.add_antag_datum(/datum/antagonist/nightmare)
-	S.set_species(/datum/species/shadow/nightmare)
-
-	playsound(S, 'sound/magic/ethereal_exit.ogg', 50, TRUE, -1)
-	message_admins("[ADMIN_LOOKUPFLW(S)] has been made into a Nightmare by the midround ruleset.")
-	log_game("DYNAMIC: [key_name(S)] was spawned as a Nightmare by the midround ruleset.")
-	return S
+// AQUILA EDIT - ruleset koszmara (NIGHTMARE (GHOST)) zastąpiony demonem cieni: aquila/code/game/dynamic/dynamic_rulesets_midround_shadow_demon.dm
 
 //////////////////////////////////////////////
 //                                          //
