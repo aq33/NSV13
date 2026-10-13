@@ -638,7 +638,9 @@
 			set_busy(FALSE)
 		return
 	RegisterSignal(charger, COMSIG_MOVABLE_IMPACT, PROC_REF(on_impact))
-	charger.throw_at(target_turf, charge_distance, 1, charger, FALSE, callback = CALLBACK(src, PROC_REF(charge_end), charger))
+	// Nieudany start rzutu nie wywoła callbacku, więc sprzątamy sami
+	if(!charger.throw_at(target_turf, charge_distance, 1, charger, FALSE, callback = CALLBACK(src, PROC_REF(charge_end), charger)))
+		charge_end(charger)
 
 /datum/action/cooldown/spider/charge/proc/charge_end(mob/living/charger)
 	if(QDELETED(charger))

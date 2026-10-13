@@ -120,7 +120,7 @@
 	/// Szansa, że ktoś się zaplącze, wchodząc na pole
 	var/stuck_chance = 50
 	/// Szansa, że pocisk przeleci (reszta grzęźnie)
-	var/projectile_stuck_chance = 30
+	var/projectile_pass_chance = 30
 
 /obj/structure/spider/stickyweb/Initialize(mapload)
 	. = ..()
@@ -149,7 +149,7 @@
 	if(sealed)
 		return FALSE
 	if(isprojectile(mover))
-		return prob(projectile_stuck_chance)
+		return prob(projectile_pass_chance)
 
 /// Czy ten mob przechodzi bez problemu
 /obj/structure/spider/stickyweb/proc/is_whitelisted(mob/living/candidate)
@@ -186,7 +186,7 @@
 	max_integrity = 20
 	desc = "Wyjątkowo lepki jedwab. Łatwo tędy nie przejdziesz."
 	stuck_chance = 100
-	projectile_stuck_chance = 100
+	projectile_pass_chance = 0
 
 /obj/structure/spider/stickyweb/very_sticky/Initialize(mapload)
 	. = ..()
@@ -377,8 +377,8 @@
 	var/you_are_text = "Jesteś pająkiem."
 	var/flavour_text = "Dla roju! Wybierz pająka i wypełnij swoją rolę w przejęciu statku... o ile to zgodne z twoimi rozkazami."
 	var/important_text = "Wypełniaj rozkazy za wszelką cenę."
-	/// Czy jakiś duch właśnie wybiera
-	var/hatching = FALSE
+	/// Do kiedy trwa wybór pająka przez ducha (0 = nikt nie wybiera); po tym czasie blokada wygasa, nawet gdy duch zostawi menu
+	var/hatching = 0
 	/// Po jakim czasie od dojrzenia gniazdo wykluwa się samo, jeśli nikt go nie weźmie
 	var/auto_hatch_delay = 150 SECONDS
 	/// Ile pajączków pod AI wykluwa się samo (min, max)
@@ -416,7 +416,7 @@
 	auto_hatch_timer = null
 	if(QDELETED(src))
 		return
-	if(hatching) // ktoś właśnie wybiera w menu, dajmy mu chwilę
+	if(hatching > world.time) // ktoś właśnie wybiera w menu, dajmy mu chwilę
 		auto_hatch_timer = addtimer(CALLBACK(src, PROC_REF(auto_hatch)), 30 SECONDS, TIMER_STOPPABLE)
 		return
 	var/turf/our_turf = get_turf(src)
@@ -465,7 +465,7 @@
 	if(!ready)
 		to_chat(user, span_warning("[src] nie jest jeszcze gotowe do wyklucia!"))
 		return
-	if(hatching)
+	if(hatching > world.time)
 		to_chat(user, span_warning("Ktoś już wykluwa się z [src]!"))
 		return
 	if(!user.client?.can_take_ghost_spawner(ROLE_ALIEN, TRUE, FALSE, flags_1 & ADMIN_SPAWNED_1))
@@ -473,9 +473,9 @@
 	if(is_banned_from(user.key, ROLE_ALIEN))
 		to_chat(user, span_warning("Masz bana na tę rolę!"))
 		return
-	hatching = TRUE
+	hatching = world.time + 30 SECONDS
 	var/chosen_spider = length(potentialspawns) > 1 ? get_radial_choice(user) : potentialspawns[1]
-	hatching = FALSE
+	hatching = 0
 	if(isnull(chosen_spider) || QDELETED(src) || QDELETED(user) || !user.client || !ready)
 		return
 	hatch(chosen_spider, user)
