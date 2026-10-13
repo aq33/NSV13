@@ -76,7 +76,8 @@
 	if(!old_health)
 		old_health = owner.health
 	var/health_difference = old_health - owner.health
-	if(!health_difference)
+	if(health_difference <= 0) // leczenie nie wydłuża snu
+		old_health = owner.health
 		return
 	owner.visible_message("<span class='warning'>[owner] wzdryga się przez sen, gdy coś go rani!</span>")
 	to_chat(owner, "<span class='boldannounce'>Coś cię uderza i wyrywa ze snu!</span>")

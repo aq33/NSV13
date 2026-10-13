@@ -42,8 +42,7 @@
 	user.visible_message("<span class='danger'>[user] powoli unosi się w powietrze, gubiąc swoje rzeczy, i zaczyna migotać...</span>", \
 		"<span class='velvet big'><b>Zaczynasz zrzucać ludzkie przebranie. Do końca będziesz zupełnie bezbronny.</b></span>")
 	user.setDir(SOUTH)
-	for(var/obj/item/I in user)
-		user.dropItemToGround(I)
+	user.unequip_everything()
 	for(var/turf/T in RANGE_TURFS(1, user))
 		new /obj/structure/psionic_barrier(T, 500)
 	for(var/stage in 1 to 3)
@@ -522,6 +521,16 @@
 		target = input(owner, "Komu chcesz towarzyszyć?", name) as null|anything in targets
 		if(!target || QDELETED(src))
 			return FALSE
+	// Okno wyboru mogło wisieć długo, więc wszystko sprawdzamy jeszcze raz
+	if(QDELETED(target) || target.stat == DEAD || !(target in range(7, owner)) || owner.stat || tagalong)
+		return FALSE
+	var/turf/target_turf = get_turf(target)
+	if(!target_turf || target_turf.get_lumcount() < DARKSPAWN_DIM_LIGHT)
+		to_chat(owner, "<span class='warning'>[target] nie stoi już w świetle!</span>")
+		return FALSE
+	if(owner.get_active_held_item() || owner.get_inactive_held_item())
+		to_chat(owner, "<span class='warning'>Musisz mieć puste ręce, żeby komuś towarzyszyć!</span>")
+		return FALSE
 	var/mob/living/L = owner
 	tagalong = L.apply_status_effect(/datum/status_effect/darkspawn_tagalong, target)
 	if(!tagalong)

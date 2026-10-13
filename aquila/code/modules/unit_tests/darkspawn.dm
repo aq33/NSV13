@@ -11,10 +11,17 @@
 
 /// AQUILA - darkspawn (port z Yogstation): rola, Objawienie, Sieć Psi, Psi, welony, macki i Pełzające cienie
 /datum/unit_test/darkspawn
+	/// Drużyna sprzed testu, wraca w Destroy() także po nieudanej asercji
+	var/datum/team/darkspawn/old_team
+
+/datum/unit_test/darkspawn/Destroy()
+	if(GLOB.darkspawn_team != old_team)
+		old_team = null
+	return ..()
 
 /datum/unit_test/darkspawn/Run()
 	var/runtimes_before = GLOB.total_runtimes
-	var/datum/team/darkspawn/old_team = GLOB.darkspawn_team
+	old_team = GLOB.darkspawn_team
 	GLOB.darkspawn_team = null
 	var/turf/left = run_loc_floor_bottom_left
 	var/turf/right = get_step(left, EAST)
