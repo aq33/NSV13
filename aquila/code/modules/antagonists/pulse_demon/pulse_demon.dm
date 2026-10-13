@@ -118,8 +118,10 @@
 	/// Raz przejętego cyborga można zająć ponownie od razu
 	var/list/hijacked_robots = list()
 
-	/// Obrazy kabli widoczne tylko dla demona, pole -> lista obrazów
+	/// Obrazy kabli widoczne tylko dla demona, REF kabla -> obraz (bez twardych referencji do kabli)
 	var/list/cable_images = list()
+	/// Poziom, dla którego zbudowano podgląd kabli
+	var/cableview_z
 	/// Obrazy przejętych APC widoczne tylko dla demona
 	var/list/apc_images = list()
 	/// Wszystkie przejęte APC
@@ -175,6 +177,7 @@
 		current_cable = locate(/obj/structure/cable) in loc
 	else
 		forceMove(current_power)
+		RegisterSignal(current_power, COMSIG_ATOM_EMP_ACT, PROC_REF(handle_emp), TRUE)
 	update_glow()
 	update_tile_visibility()
 	playsound(get_turf(src), 'aquila/sound/pulsedemon/eleczap.ogg', 30, TRUE)
@@ -182,7 +185,7 @@
 
 /mob/living/simple_animal/pulse_demon/Destroy()
 	if(client)
-		client.images -= flatten_images(cable_images) + flatten_images(apc_images)
+		client.images -= get_cable_images() + flatten_images(apc_images)
 	cable_images.Cut()
 	apc_images.Cut()
 	controlling_area = null
@@ -203,7 +206,7 @@
 
 /mob/living/simple_animal/pulse_demon/Login()
 	. = ..()
-	update_cableview()
+	update_cableview(TRUE)
 
 /mob/living/simple_animal/pulse_demon/vv_edit_var(var_name, var_value)
 	switch(var_name)
@@ -290,6 +293,8 @@
 /// Wychodzi z maszyny na pole pod nią
 /mob/living/simple_animal/pulse_demon/proc/exit_to_turf()
 	var/turf/T = get_turf(src)
+	if(current_power)
+		UnregisterSignal(current_power, COMSIG_ATOM_EMP_ACT)
 	current_power = null
 	update_controlling_area()
 	current_cable = null
@@ -382,6 +387,8 @@
 			forceMove(newloc)
 	else if(moved)
 		current_cable = null
+		if(current_power)
+			UnregisterSignal(current_power, COMSIG_ATOM_EMP_ACT)
 		current_power = null
 		update_controlling_area()
 	return moved
@@ -473,16 +480,21 @@
 				current_cable.add_load(excess)
 	else if(current_power)
 		if(istype(current_power, /obj/machinery/power/apc) && loc == current_power && do_drain)
-			if(drain_APC(current_power) > power_per_regen)
+			// zasila nas samo ogniwo, nawet gdy przy pełnym zapasie nic już nie wysysamy
+			var/obj/machinery/power/apc/A = current_power
+			drain_APC(A)
+			if(A.cell?.charge > 0)
 				got_power = TRUE
 		else if(istype(current_power, /obj/machinery/power/smes) && do_drain)
-			if(drain_SMES(current_power) > power_per_regen)
+			var/obj/machinery/power/smes/S = current_power
+			drain_SMES(S)
+			if(S.charge > 0)
 				got_power = TRUE
 		// pusty APC albo SMES (albo demon skacze po kamerach): bierzemy z sieci, w przypadku APC przez terminal
 		var/obj/machinery/power/net_source = current_power
 		if(istype(current_power, /obj/machinery/power/apc))
-			var/obj/machinery/power/apc/A = current_power
-			net_source = A.terminal
+			var/obj/machinery/power/apc/apc_source = current_power
+			net_source = apc_source.terminal
 		if(!got_power && net_source?.surplus() >= power_per_regen)
 			net_source.add_load(power_per_regen)
 			got_power = TRUE
@@ -626,8 +638,8 @@
 		. += images_by_turf[turf]
 
 /// Obraz kabla albo przejętego APC rysowany nad oświetleniem, widoczny tylko dla demona
-/mob/living/simple_animal/pulse_demon/proc/make_overlay_image(atom/source, icon_file, state)
-	var/image/I = image(icon_file, source, state, ABOVE_LIGHTING_LAYER, source.dir)
+/mob/living/simple_animal/pulse_demon/proc/make_overlay_image(atom/source, icon_file, state, atom/image_loc = source)
+	var/image/I = image(icon_file, image_loc, state, ABOVE_LIGHTING_LAYER, source.dir)
 	I.plane = ABOVE_LIGHTING_PLANE
 	I.color = source.color
 	I.pixel_x = source.pixel_x
@@ -644,30 +656,48 @@
 	LAZYADD(apc_images[T], apc_image)
 	client.images += apc_image
 
-/// Podgląd wszystkich kabli i przejętych APC na tym poziomie
-/mob/living/simple_animal/pulse_demon/proc/update_cableview()
+/mob/living/simple_animal/pulse_demon/proc/get_cable_images()
+	. = list()
+	for(var/cable in cable_images)
+		. += cable_images[cable]
+
+/// Podgląd kabli i przejętych APC na tym poziomie. Pełna przebudowa tylko przy zmianie poziomu albo full = TRUE,
+/// okresowe odświeżenie dokłada nowe kable i usuwa zniszczone.
+/mob/living/simple_animal/pulse_demon/proc/update_cableview(full = FALSE)
 	cableview_ticks = 0
 	if(!client)
 		return
-	client.images -= flatten_images(cable_images) + flatten_images(apc_images)
-	cable_images.Cut()
-	apc_images.Cut()
-
 	var/turf/our_turf = get_turf(src)
 	if(!our_turf)
 		return
+	if(full || cableview_z != our_turf.z)
+		client.images -= get_cable_images() + flatten_images(apc_images)
+		cable_images.Cut()
+		apc_images.Cut()
+		cableview_z = our_turf.z
+		for(var/obj/machinery/power/apc/A as anything in hijacked_apcs)
+			add_apc_image(A)
+
+	var/list/removed_images = list()
+	for(var/cable_ref in cable_images.Copy())
+		var/obj/structure/cable/C = locate(cable_ref)
+		if(!istype(C) || QDELETED(C) || C.z != cableview_z)
+			removed_images += cable_images[cable_ref]
+			cable_images -= cable_ref
+	if(length(removed_images))
+		client.images -= removed_images
+
 	var/list/new_images = list()
 	for(var/datum/powernet/P as anything in SSmachines.powernets)
 		for(var/obj/structure/cable/C as anything in P.cables)
-			if(C.z != our_turf.z)
+			if(C.z != cableview_z || cable_images[REF(C)])
 				continue // kable wielopoziomowe łączą sieci między poziomami
-			var/image/cable_image = make_overlay_image(C, C.icon, C.icon_state)
-			LAZYADD(cable_images[C.loc], cable_image)
+			// obraz wisi na polu, a nie na kablu, żeby nie trzymać zniszczonych kabli
+			var/image/cable_image = make_overlay_image(C, C.icon, C.icon_state, C.loc)
+			cable_images[REF(C)] = cable_image
 			new_images += cable_image
-	client.images += new_images
-
-	for(var/obj/machinery/power/apc/A as anything in hijacked_apcs)
-		add_apc_image(A)
+	if(length(new_images))
+		client.images += new_images
 
 /mob/living/simple_animal/pulse_demon/proc/handle_emp(datum/source, severity)
 	SIGNAL_HANDLER
