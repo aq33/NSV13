@@ -262,3 +262,29 @@
       projektu.
   - rscadd: 'Duchy mogą raz na minutę nawiedzić okolicę przyciskiem „Nawiedź”: mrugające
       światła, straszny dźwięk i blady zarys ducha.'
+'2026-10-13':
+  Joker66613:
+  - rscadd: 'Nowy event: zabłąkana kapsuła zaopatrzeniowa (także w wersji Syndykatu)'
+  - rscadd: 'Nowy event: grzyb na ścianach, które kruszą się od pchnięcia. Usuwa go
+      spawarka albo Plant-B-Gone'
+  - rscadd: 'Nowy event: strajk i niepodległość losowego działu'
+  - rscadd: 'Nowy event: inwazja kryształów (Crystal Invasion) i stabilizator supermaterii
+      w Badaniach anomalii'
+  - rscadd: 'Demon cieni z Paradise: łowca w ciemności z cienistym pełzem, cień-hakiem,
+      kokonami pochłaniającymi światło i demonicznym szeptem'
+  - rscdel: Koszmar nie pojawia się już jako event ani midround, zastąpił go demon
+      cieni
+  - rscadd: 'MODsuity z BeeStation: modułowe kombinezony noszone na plecach, z panelem,
+      rdzeniami i kilkudziesięcioma modułami'
+  - rscadd: MODsuity w research, fabrykatorze egzoszkieletów, SSU, cargo i uplinku;
+      warianty strojów z MODsuitem dla ról, ERT i deathsquadu
+  - rscadd: Skan RCD pokazujący hologramy zniszczonych ścian i okien
+  - tweak: Ninja korzysta z MODsuita i modułów zamiast starego kombinezonu, zbroja
+      battlemage to zaczarowany MODsuit
+  - refactor: Pola i proximity monitory przeniesione na nowy system z BeeStation
+  - bugfix: Maska sechailer nie zgłasza już błędu przy usuwaniu
+  - rscadd: 'Samouczek w lobby: lekcje Podstawy, Przetrwanie i Alarm bojowy. Nowi
+      gracze dostają propozycję przy pierwszym połączeniu.'
+  - tweak: 'Działo Gaussa: kamera i wyjście z działa to przyciski akcji strzelca zamiast
+      werbu.'
+  - tweak: Okna konsoli działa i automatu składu są po polsku.

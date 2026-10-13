@@ -27,7 +27,8 @@
 		INVESTIGATE_RADIATION,
 		INVESTIGATE_NANITES,
 		INVESTIGATE_PRESENTS,
-		INVESTIGATE_ITEMS)
+		INVESTIGATE_ITEMS,
+		INVESTIGATE_DEATHS)
 
 	var/list/logs_present = list("notes, memos, watchlist")
 	var/list/logs_missing = list("---")

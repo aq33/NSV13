@@ -933,12 +933,14 @@
 
 /obj/item/slimepotion/speed/pre_attack(obj/C, mob/user)
 	. = ..()
+	if(SEND_SIGNAL(C, COMSIG_SPEED_POTION_APPLIED, src, user) & SPEED_POTION_STOP)
+		return FALSE
 	if(!istype(C))
 		to_chat(user, "<span class='warning'>Mikstury można użyć tylko na przedmiotach lub pojazdach!</span>")
 		return
 	if(isitem(C))
 		var/obj/item/I = C
-		if(I.slowdown != initial(I.slowdown) || I.obj_flags & IMMUTABLE_SLOW)
+		if(I.slowdown != initial(I.slowdown) || I.obj_flags & IMMUTABLE_SLOW || HAS_TRAIT(I, TRAIT_NO_SPEED_POTION))
 			to_chat(user, "<span class='warning'>Nie da się bardziej przyspieszyć [C]!</span>")
 			return ..()
 		I.slowdown = initial(I.slowdown) * 0.5

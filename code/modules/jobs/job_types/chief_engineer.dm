@@ -70,3 +70,12 @@
 	gloves = /obj/item/clothing/gloves/color/yellow
 	head = null
 	internals_slot = ITEM_SLOT_SUITSTORE
+
+/datum/outfit/job/chief_engineer/mod
+	name = "Chief Engineer (MODsuit)"
+
+	back = /obj/item/mod/control/pre_equipped/advanced
+	mask = /obj/item/clothing/mask/breath
+	shoes = /obj/item/clothing/shoes/magboots/advance
+	suit_store = /obj/item/tank/internals/oxygen
+	internals_slot = ITEM_SLOT_SUITSTORE

@@ -172,6 +172,12 @@
 	#define COMPONENT_NO_MOUSEDROP 1
 #define COMSIG_MOUSEDROPPED_ONTO "mousedropped_onto"			//! from base of atom/MouseDrop_T: (/atom/from, /mob/user)
 
+/// from base of [/atom/proc/atom_destruction]: (damage_flag)
+#define COMSIG_ATOM_DESTRUCTION "atom_destruction"
+///from base of atom/expose_reagents():
+#define COMSIG_ATOM_EXPOSE_REAGENTS "atom_expose_reagents"
+///signal sent out by an atom when it is no longer being pulled by something else : (atom/puller)
+#define COMSIG_ATOM_NO_LONGER_PULLED "movable_no_longer_pulled"
 // AQ EDIT START - port BeeStation #11899 (combat mode, akcje prawego przycisku)
 ///from base of atom/attackby_secondary(): (/obj/item, /mob/living, params)
 #define COMSIG_PARENT_ATTACKBY_SECONDARY "atom_attackby_secondary"

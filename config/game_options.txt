@@ -766,6 +766,10 @@ BSMINER_RESEARCHABLE
 ## AQ Is shitting enabled?
 SHITTING_ENABLED
 
+## AQ Uncomment to require a minimum number of living hours (required_living_playtime on the antagonist datum)
+## before a player can roll an antagonist role. Disabled by default.
+#ANTAG_LIVING_PLAYTIME_REQUIREMENTS
+
 ## NSV13 Do we want the game to save the starmap at the end of the round?
 STARMAP_PERSISTENCE_ENABLED
 

@@ -82,6 +82,8 @@
 /datum/viewData/proc/apply()
 	chief.change_view(getView())
 	safeApplyFormat()
+	if(chief?.mob)
+		SEND_SIGNAL(chief.mob, COMSIG_VIEWDATA_UPDATE, getView())
 
 /datum/viewData/proc/supress()
 	is_suppressed = TRUE
