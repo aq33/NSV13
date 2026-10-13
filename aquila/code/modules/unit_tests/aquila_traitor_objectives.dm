@@ -107,6 +107,27 @@
 		TEST_ASSERT(locate(/obj/item/brother_beacon) in second.GetAllContents(), "The brother got no beacon")
 	qdel(beacon)
 
+	// Backstory (BeeStation#9126): picked after the objectives, the faction decides about the codewords
+	var/mob/living/carbon/human/storyteller = make_crew("Zdrajca Historii", JOB_NAME_ASSISTANT)
+	var/datum/antagonist/traitor/story_traitor = new
+	story_traitor.give_objectives = FALSE
+	storyteller.mind.add_antag_datum(story_traitor)
+	TEST_ASSERT(story_traitor.uses_backstory(), "A plain traitor does not use the backstory menu")
+	story_traitor.setup_backstories(FALSE, FALSE)
+	TEST_ASSERT(length(story_traitor.allowed_backstories) == length(GLOB.traitor_backstories), "Not every backstory is allowed without murderbone")
+	TEST_ASSERT(story_traitor.ui_name == "TraitorBackstoryMenu", "The traitor window is [story_traitor.ui_name]")
+	story_traitor.setup_backstories(TRUE, FALSE)
+	for(var/path in story_traitor.allowed_backstories)
+		var/datum/traitor_backstory/allowed = GLOB.traitor_backstories[path]
+		TEST_ASSERT(!allowed.has_motivation(TRAITOR_MOTIVATION_FORCED), "A forced backstory is allowed for a murderbone traitor")
+	TEST_ASSERT(!story_traitor.faction && !story_traitor.has_codewords, "The traitor got a faction before picking one")
+	story_traitor.set_faction(GLOB.traitor_factions_to_datum[TRAITOR_FACTION_BLACK_MARKET])
+	TEST_ASSERT(story_traitor.faction?.key == TRAITOR_FACTION_BLACK_MARKET, "The faction was not set")
+	TEST_ASSERT(!story_traitor.has_codewords, "A black market traitor got the codewords")
+	story_traitor.set_backstory(GLOB.traitor_backstories["[/datum/traitor_backstory/greedy]"])
+	TEST_ASSERT(findtext(story_traitor.backstory_roundend_text(), "Chciwiec"), "The round end report does not show the backstory")
+	TEST_ASSERT(GLOB.total_runtimes == runtimes_before, "The backstory caused [GLOB.total_runtimes - runtimes_before] runtime(s)")
+
 	var/unbreathable = get_unbreathable_percent()
 	TEST_ASSERT(unbreathable >= 0 && unbreathable <= 100, "Unbreathable percent is [unbreathable]")
 	TEST_ASSERT(GLOB.total_runtimes == runtimes_before, "The test caused [GLOB.total_runtimes - runtimes_before] runtime(s)")

@@ -53,6 +53,8 @@
 /datum/antagonist/traitor/proc/handle_hearing(datum/source, list/hearing_args)
 	SIGNAL_HANDLER
 	var/message = hearing_args[HEARING_RAW_MESSAGE]
+	if(uses_backstory() && !has_codewords) // AQ EDIT - black market and independent traitors don't know the codewords
+		return
 	message = GLOB.syndicate_code_phrase_regex.Replace(message, "<span class='blue'>$1</span>")
 	message = GLOB.syndicate_code_response_regex.Replace(message, "<span class='red'>$1</span>")
 	hearing_args[HEARING_RAW_MESSAGE] = message
@@ -70,6 +72,8 @@
 			forge_ai_objectives()
 		else
 			forge_human_objectives()
+			// AQ EDIT - backstory menu (BeeStation/BeeStation-Hornet#9126), murderbone = martyr
+			setup_backstories(!!(locate(/datum/objective/martyr) in objectives), !!(locate(/datum/objective/hijack) in objectives))
 
 /datum/antagonist/traitor/proc/forge_human_objectives()
 	var/is_hijacker = FALSE
@@ -196,8 +200,10 @@
 /datum/antagonist/traitor/greet()
 	to_chat(owner.current, "<span class='alertsyndie'>Twoja rola: [name].</span>")
 	owner.announce_objectives()
-	if(should_give_codewords)
+	if(should_give_codewords && !uses_backstory()) // AQ EDIT - with a backstory the codewords come with the faction
 		give_codewords()
+	if(uses_backstory())
+		to_chat(owner.current, "<span class='alertsyndie'>W oknie zdrajcy wybierz frakcję i historię postaci. Dopiero wtedy dostaniesz uplink (a w Syndykacie także hasła).</span>")
 	owner.current.client?.tgui_panel?.give_antagonist_popup("Zdrajca",
 		"Wykonaj swoje cele bez względu na koszty.")
 
@@ -219,7 +225,7 @@
 			owner.current.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MALF)
 		if(TRAITOR_HUMAN)
 			// show_tips("traitor") // AQ EDIT - port BeeStation #9205: the AntagInfoTraitor window replaces the HTML tips
-			if(should_equip)
+			if(should_equip && !uses_backstory()) // AQ EDIT - with a backstory the uplink comes with the faction
 				equip(silent)
 			owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 
@@ -351,6 +357,7 @@
 		result += uplink_text
 
 	result += objectives_text
+	result += backstory_roundend_text() // AQ EDIT - BeeStation/BeeStation-Hornet#9126
 
 	var/special_role_text = lowertext(name)
 

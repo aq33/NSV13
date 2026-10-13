@@ -9,3 +9,26 @@
 
 /// Powyżej tej jasności pola demon cieni się pali i nie może wejść w cień (wartość z Paradise)
 #define SHADOW_DEMON_LIGHT_THRESHOLD 0.2
+
+// Traitor factions and backstory motivations (BeeStation/BeeStation-Hornet#9126)
+#define TRAITOR_FACTION_BLACK_MARKET "black_market"
+#define TRAITOR_FACTION_SYNDICATE "syndicate"
+#define TRAITOR_FACTION_INDEPENDENT "independent"
+/// The backstory involves being forced into the job
+#define TRAITOR_MOTIVATION_FORCED "Forced Into It"
+/// The backstory does not involve being forced into the job
+#define TRAITOR_MOTIVATION_NOT_FORCED "Not Forced Into It"
+/// Motivated by money or personal gain
+#define TRAITOR_MOTIVATION_MONEY "Money"
+/// Politically motivated, wanting to "change the world"
+#define TRAITOR_MOTIVATION_POLITICAL "Political"
+/// Motivated by love (family, friends...)
+#define TRAITOR_MOTIVATION_LOVE "Love"
+/// Motivated by reputation or knowledge (blackmail)
+#define TRAITOR_MOTIVATION_REPUTATION "Reputation"
+/// Motivated by the threat of death or personal harm
+#define TRAITOR_MOTIVATION_DEATH_THREAT "Death Threat"
+/// Motivated by their faction or presence in an organization
+#define TRAITOR_MOTIVATION_AUTHORITY "Authority"
+/// Motivated by themselves or the activity
+#define TRAITOR_MOTIVATION_FUN "Fun"
