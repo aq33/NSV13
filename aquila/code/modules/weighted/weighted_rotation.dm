@@ -140,7 +140,10 @@ GLOBAL_DATUM_INIT(weighted_rotation, /datum/weighted_rotation, new)
 		if(max_antags[mode.config_tag])
 			// Blood brothers come in pairs, and the mixed traitor modes always keep a place for a traitor
 			var/smallest = (istype(mode, /datum/game_mode/traitor/bros) || istype(mode, /datum/game_mode/traitor/changeling) || istype(mode, /datum/game_mode/traitor/vampire)) ? 2 : 1
-			mode.weighted_antag_cap = rand(smallest, max(smallest, max_antags[mode.config_tag]))
+			if(max_antags[mode.config_tag] < smallest) // a limit the mode can't fit in, it is left out instead of going over it
+				qdel(mode)
+				continue
+			mode.weighted_antag_cap = rand(smallest, max_antags[mode.config_tag])
 			// "Up to N" also means the mode has to start with just the smallest amount
 			mode.required_enemies = min(mode.required_enemies, smallest)
 		if(!mode.can_start())
