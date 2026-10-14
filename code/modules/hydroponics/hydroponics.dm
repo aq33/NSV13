@@ -466,7 +466,7 @@
 		message_admins("[ADMIN_LOOKUPFLW(user)] caused spiderling pests to spawn in a hydro tray")
 		log_game("[key_name(user)] caused spiderling pests to spawn in a hydro tray")
 		visible_message("<span class='warning'>Szkodniki zachowują się dziwnie...</span>")
-		spawn_atom_to_turf(/obj/structure/spider/spiderling/hunter, src, 3, FALSE)
+		spawn_atom_to_turf(/mob/living/simple_animal/hostile/spider/growing/spiderling/hunter, src, 3, FALSE)
 	else
 		to_chat(user, "<span class='warning'>Szkodniki zachowują się dziwnie, ale szybko się uspokajają...</span>")
 

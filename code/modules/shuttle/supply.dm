@@ -2,7 +2,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		/mob/living,
 		/obj/structure/blob,
 		/obj/effect/rune,
-		/obj/structure/spider/spiderling,
+		/mob/living/simple_animal/hostile/spider/growing/spiderling,
 		/obj/item/disk/nuclear,
 		/obj/machinery/nuclearbomb,
 		/obj/item/beacon,
