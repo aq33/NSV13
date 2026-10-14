@@ -301,3 +301,8 @@
       APC, kradnie prąd i bawi się maszynami w przejętych pomieszczeniach'
   - admin: Komora testowa (Debug → Komora testowa) z zestawami przedmiotów do sprawdzania
       PR-ów.
+  - rscadd: 'Szczurzy król z tg: rzadko pojawia się przy migracji myszy jako rola
+      dla duchów, zmienia myszy w armię szczurów i zatruwa okolicę miazmą.'
+  - rscadd: Wrogie szczury i szczurza ślina.
+  - rscadd: Mysz, która zje królewski ser, zmienia się w szczurzego króla.
+  - rscadd: Szczurzy król ma w HUD przełącznik trybu walki.
