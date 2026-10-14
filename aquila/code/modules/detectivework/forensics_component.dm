@@ -20,8 +20,6 @@
 	return ..()
 
 /datum/component/forensics/clean_act(datum/source, strength)
-	SIGNAL_HANDLER
-
 	// Zwykłe sprzątanie zmywa krew, ale zostawia jej ślad dla luminolu
 	if(strength >= CLEAN_STRENGTH_BLOOD && strength < CLEAN_STRENGTH_LATENT_BLOOD && length(blood_DNA))
 		add_latent_blood_DNA(blood_DNA)
