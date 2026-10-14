@@ -25,11 +25,11 @@
 /// Ile globalnych zleceń jest zawsze na liście (bez premii za graczy)
 #define CIV_BOUNTY_BASELINE 5
 /// Procent nagrody, który dostaje wykonawca zlecenia
-#define CIV_BOUNTY_SPLIT 77
+#define CIV_BOUNTY_SPLIT 30
 /// Szansa, że nowe globalne zlecenie będzie priorytetowe (x1.5)
 #define HIGH_PRIORITY_BOUNTY_ODDS 20
 /// Część nagrody z kostki dla wykonawców (dzielona przy globalnych zleceniach)
-#define BOUNTY_CUT_STANDARD 0.77
+#define BOUNTY_CUT_STANDARD 0.3
 /// Podatek od kostki zleceń dla budżetów działów statku - stawka polskiego VAT
 #define BOUNTY_VAT 0.23
 /// Bazowy SSeconomy.bounty_modifier; nagrody cywilne skalują się względem niego, żeby premia stacji nadal działała
