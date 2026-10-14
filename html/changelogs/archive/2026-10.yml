@@ -340,3 +340,6 @@
   - imageadd: Szare sprite'y krwi, ikony alertów krwawienia, monitora i skanera autopsyjnego
       (z BeeStation i tgstation).
   - soundadd: Dźwięk krwawiącej rany z BeeStation.
+  sh4dow321:
+  - soundadd: Głośniki nagłośnienia i jukeboxy mają mniej echa, zwłaszcza za ścianami;
+      głośniki nagłośnienia grają pełną głośnością w promieniu 3 kratek.
