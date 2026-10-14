@@ -1,6 +1,7 @@
 // AQUILA - kostka zleceń, port z tgstation (civilian_bounty/bounty_cube.dm)
 // Po ukończeniu zlecenia cywilnego powstaje kostka. Zaopatrzenie sprzedaje ją promem:
-// wykonawcy dostają swój udział, zaopatrzenie resztę, a za szybką wysyłkę jest premia.
+// wykonawcy dostają 77% wartości, 23% idzie jako VAT do budżetów działów,
+// a zaopatrzenie zarabia premię za szybką wysyłkę (minus napiwek dla skanującego).
 
 /// Ogłasza wiadomość na kanale zaopatrzenia przez automatyczny system ogłoszeń
 /proc/supply_channel_announce(message)
