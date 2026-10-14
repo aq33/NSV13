@@ -54,7 +54,10 @@ GLOBAL_DATUM(test_chamber, /datum/test_chamber)
 	if(!reservation)
 		log_world("Test chamber: unable to reserve space")
 		return FALSE
-	return place_template()
+	if(!place_template())
+		QDEL_NULL(reservation)
+		return FALSE
+	return TRUE
 
 /datum/test_chamber/proc/bottom_left()
 	return locate(reservation.bottom_left_coords[1], reservation.bottom_left_coords[2], reservation.bottom_left_coords[3])
@@ -132,13 +135,18 @@ GLOBAL_DATUM(test_chamber, /datum/test_chamber)
 
 /// Wspólne menu dla czasownika admina i konsoli w komorze
 /datum/test_chamber/proc/menu(mob/user)
+	if(!check_rights_for(user?.client, R_DEBUG))
+		to_chat(user, "<span class='warning'>Komorą testową sterują tylko admini z uprawnieniem DEBUG.</span>")
+		return
 	var/list/kits = test_chamber_kits()
 	var/list/options = list("Zresetuj komorę") + kits
 	var/choice = tgui_input_list(user, "Zestawy z PR-ów pojawiają się na środku areny.", "Komora testowa", options)
-	if(!choice || QDELETED(user))
+	if(!choice || QDELETED(user) || !check_rights_for(user.client, R_DEBUG))
 		return
 	if(choice == "Zresetuj komorę")
 		if(tgui_alert(user, "Usunąć wszystko z komory (poza graczami) i ułożyć ją od nowa?", "Komora testowa", list("Tak", "Nie")) != "Tak")
+			return
+		if(QDELETED(user) || !check_rights_for(user.client, R_DEBUG))
 			return
 		log_admin("[key_name(user)] reset the test chamber")
 		if(reset())
