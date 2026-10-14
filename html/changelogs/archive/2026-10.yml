@@ -321,6 +321,8 @@
       czarnoksiężnik), sklep Psi Web za wolę i thralle'
   - rscadd: Tryb gry darkspawn i ruleset w dynamicu
   - code_imp: System zaklęć /datum/action/cooldown/spell z tgstation
+  - rscadd: 'Nowa misja: abordaż i obrona placówki Syndykatu (port z BeeStation/NSV13#2823).'
+  - bugfix: Zmiana IFF przez konsolę od razu widzą cele i flota Solgov.
   PowerfulBacon, Tsar-Salat, Nakalon, MrMelbert, JohnFulpWillard, Mothblocks, Time-Green, timothymtorres:
   - rscadd: Krwawienie ma ikonę alertu z tempem; kliknij ją, żeby ucisnąć ranę. Gaza
       opatruje krwawienie, ogień i laser przypalają ranę.

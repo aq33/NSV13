@@ -341,6 +341,10 @@
 	},
 /turf/open/floor/engine/airless/light,
 /area/space/nearstation)
+"aN" = (
+/obj/machinery/restaurant_portal/restaurant,
+/turf/open/floor/grass,
+/area/crew_quarters/dorms/nsv/nature_deck)
 "aO" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -429,6 +433,17 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/genetics)
+"aZ" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/restaurant_portal/bar,
+/turf/open/floor/grass,
+/area/crew_quarters/dorms/nsv/nature_deck)
 "ba" = (
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/carpet/ship/beige_carpet,
@@ -459,6 +474,13 @@
 /obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/wood,
 /area/crew_quarters/kitchen)
+"be" = (
+/obj/machinery/deepfryer,
+/obj/machinery/restaurant_terminal/restaurant{
+	pixel_x = -32
+	},
+/turf/open/floor/wood,
+/area/crew_quarters/kitchen)
 "bf" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
@@ -475,6 +497,25 @@
 /obj/machinery/status_display/ai/north,
 /turf/open/floor/carpet/ship/red_carpet,
 /area/security/prison)
+"bh" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/item/clothing/suit/whitedress,
+/obj/item/clothing/suit/whitedress,
+/obj/item/clothing/suit/whitedress,
+/obj/item/clothing/under/color/white,
+/obj/item/clothing/under/color/white,
+/obj/item/clothing/under/color/white,
+/obj/item/clothing/under/suit/white,
+/obj/item/clothing/under/suit/white,
+/obj/item/clothing/under/suit/white,
+/obj/item/clothing/gloves/color/white,
+/obj/item/clothing/gloves/color/white,
+/obj/item/clothing/gloves/color/white,
+/obj/machinery/restaurant_terminal/bar{
+	pixel_y = 32
+	},
+/turf/open/floor/wood,
+/area/crew_quarters/kitchen)
 "bj" = (
 /obj/structure/disposalpipe/junction{
 	dir = 1
@@ -43001,7 +43042,7 @@ BI
 tx
 uf
 nF
-Ff
+be
 Qe
 Jk
 Ax
@@ -43256,7 +43297,7 @@ FI
 fY
 mz
 tx
-ay
+bh
 Jk
 Kg
 SH
@@ -43519,7 +43560,7 @@ bY
 yi
 hq
 Kb
-nC
+aZ
 kG
 SB
 Fe
@@ -45062,7 +45103,7 @@ ar
 hB
 vE
 ks
-Kb
+aN
 rU
 kK
 os

@@ -431,37 +431,13 @@
 /turf/open/floor/monotile/dark,
 /area/hallway/nsv/deck2/primary)
 "aQ" = (
-/obj/machinery/computer/piratepad_control/civilian,
-/obj/effect/turf_decal/tile/ship/green{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/ship/green{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/durasteel/alt,
-/area/hallway/nsv/deck2/primary)
+/obj/machinery/restaurant_portal/restaurant,
+/turf/open/floor/monotile/dark,
+/area/crew_quarters/bar/mess_hall)
 "aR" = (
-/obj/machinery/piratepad/civilian,
-/obj/effect/turf_decal/tile/ship/green{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/ship/green{
-	dir = 1
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/firealarm{
-	pixel_y = 24
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/durasteel/alt,
-/area/hallway/nsv/deck2/primary)
+/obj/machinery/restaurant_portal/bar,
+/turf/open/floor/monotile/dark,
+/area/crew_quarters/bar/mess_hall)
 "aS" = (
 /obj/machinery/door/airlock/ship/external/glass{
 	name = "Pressurization Chamber";
@@ -485,19 +461,13 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/engine/engine_room)
 "aU" = (
-/obj/machinery/materials_market,
-/obj/effect/turf_decal/tile/ship/green{
-	dir = 4
+/obj/effect/turf_decal/tile/bar/tile_marquee,
+/obj/machinery/vending/wardrobe/chef_wardrobe,
+/obj/machinery/restaurant_terminal/restaurant{
+	pixel_y = 32
 	},
-/obj/effect/turf_decal/tile/ship/green{
-	dir = 1
-	},
-/obj/machinery/airalarm/directional/north,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/durasteel/alt,
-/area/hallway/nsv/deck2/primary)
+/turf/open/floor/durasteel,
+/area/crew_quarters/kitchen)
 "aV" = (
 /turf/template_noop,
 /area/maintenance/nsv/deck2/starboard)
@@ -533,6 +503,16 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/hallway/nsv/deck2/primary)
+"aZ" = (
+/obj/machinery/vending/wardrobe/bar_wardrobe,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/machinery/restaurant_terminal/bar{
+	pixel_x = -32
+	},
+/turf/open/floor/wood,
+/area/crew_quarters/bar)
 "ba" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
@@ -584,6 +564,19 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port)
+"be" = (
+/obj/machinery/computer/piratepad_control/civilian,
+/obj/effect/turf_decal/tile/ship/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/ship/green{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/durasteel/alt,
+/area/hallway/nsv/deck2/primary)
 "bf" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -639,6 +632,25 @@
 /obj/machinery/door/firedoor/border_only/directional/east,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/starboard)
+"bl" = (
+/obj/machinery/piratepad/civilian,
+/obj/effect/turf_decal/tile/ship/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/ship/green{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/firealarm{
+	pixel_y = 24
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/durasteel/alt,
+/area/hallway/nsv/deck2/primary)
 "bm" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
@@ -687,6 +699,20 @@
 /obj/machinery/firealarm/directional/west,
 /turf/open/floor/monotile/dark,
 /area/nsv/weapons/gauss/battery/deck2/starboard)
+"bs" = (
+/obj/machinery/materials_market,
+/obj/effect/turf_decal/tile/ship/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/ship/green{
+	dir = 1
+	},
+/obj/machinery/airalarm/directional/north,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/durasteel/alt,
+/area/hallway/nsv/deck2/primary)
 "bt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -47747,7 +47773,7 @@ Ef
 lw
 rg
 Nl
-Vh
+aZ
 MN
 lw
 Ub
@@ -48008,7 +48034,7 @@ Sw
 MR
 ro
 yU
-vy
+aQ
 YP
 UZ
 oY
@@ -49038,7 +49064,7 @@ AC
 Bw
 mj
 oy
-vy
+aR
 wC
 Jz
 un
@@ -50058,7 +50084,7 @@ OR
 un
 Ef
 QO
-Yh
+aU
 Ln
 tg
 BG
@@ -53674,7 +53700,7 @@ RP
 GM
 FE
 eY
-aQ
+be
 un
 On
 tR
@@ -53931,7 +53957,7 @@ eY
 pd
 Ty
 eY
-aR
+bl
 un
 GP
 pj
@@ -54188,7 +54214,7 @@ Dy
 Dy
 Dy
 Dy
-aU
+bs
 un
 GP
 XK
