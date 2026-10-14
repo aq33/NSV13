@@ -382,9 +382,6 @@
 	if(machine_stat & (NOPOWER|BROKEN))
 		balloon_alert(hacker, "nie da się włamać!")
 		return FALSE
-	if(!is_station_level(z))
-		balloon_alert(hacker, "za słaby sygnał!")
-		return FALSE
 	balloon_alert(hacker, "włamywanie...")
 	AI_notify_hack()
 	if(!do_after(hacker, duration, target = src))

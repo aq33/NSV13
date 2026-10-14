@@ -69,6 +69,19 @@
 		objective.check_completion()
 	TEST_ASSERT(GLOB.total_runtimes == runtimes_before, "Forging the objectives caused [GLOB.total_runtimes - runtimes_before] runtime(s)")
 
+	// Documents exchange: any two traitors can be paired
+	if(SSticker.mode)
+		var/old_red = SSticker.mode.exchange_red
+		var/old_blue = SSticker.mode.exchange_blue
+		SSticker.mode.exchange_red = null
+		SSticker.mode.exchange_blue = null
+		TEST_ASSERT(second_traitor.try_document_exchange(), "Two traitors could not be paired for the exchange")
+		TEST_ASSERT(locate(/datum/objective/steal/exchange) in first_traitor.objectives, "The partner got no exchange objective")
+		TEST_ASSERT(locate(/datum/objective/steal/exchange) in second_traitor.objectives, "The traitor got no exchange objective")
+		TEST_ASSERT(!first_traitor.try_document_exchange(), "A second exchange was set up in the same round")
+		SSticker.mode.exchange_red = old_red
+		SSticker.mode.exchange_blue = old_blue
+
 	// The XO gets the captain as target
 	var/datum/objective/assassinate/captain_replacement/promotion = new
 	promotion.owner = second.mind

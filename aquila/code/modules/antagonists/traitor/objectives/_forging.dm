@@ -2,20 +2,24 @@
 // Every generic slot first rolls a category (kill / steal / sabotage), then a weighted objective inside it.
 // An objective that can't be set up this round (no target, missing machine...) is skipped and the next one in the category is tried.
 
-/// Weight of the kill category. Zero below MIN_POP_KILL_OBJECTIVES.
-#define TRAITOR_CATEGORY_KILL 40
-#define TRAITOR_CATEGORY_STEAL 35
-#define TRAITOR_CATEGORY_SABOTAGE 25
+/// Every category has the same chance. The kill category is zero below MIN_POP_KILL_OBJECTIVES.
+#define TRAITOR_CATEGORY_WEIGHT 1
+/// Every objective inside a category has the same weight
+#define TRAITOR_OBJECTIVE_WEIGHT 10
+/// The flavor objective that took the maroon's place keeps the maroon's old share (30% of kill objectives) instead (Skyrat-SS13/Skyrat13#1115)
+#define TRAITOR_FLAVOR_WEIGHT 20
 
 /// Marker in the kill pool: the slot goes to a flavor objective instead of a maroon (Skyrat-SS13/Skyrat13#1115).
 #define TRAITOR_FLAVOR_INSTEAD_OF_MAROON "flavor"
+/// Marker in the steal pool: document exchange with another traitor
+#define TRAITOR_DOCUMENT_EXCHANGE "exchange"
 
 /datum/antagonist/traitor/proc/forge_aquila_human_objective()
 	var/kill_allowed = length(GLOB.joined_player_list) >= CONFIG_GET(number/min_pop_kill_objectives)
 	var/list/categories = list(
-		"kill" = kill_allowed ? TRAITOR_CATEGORY_KILL : 0,
-		"steal" = TRAITOR_CATEGORY_STEAL,
-		"sabotage" = TRAITOR_CATEGORY_SABOTAGE,
+		"kill" = kill_allowed ? TRAITOR_CATEGORY_WEIGHT : 0,
+		"steal" = TRAITOR_CATEGORY_WEIGHT,
+		"sabotage" = TRAITOR_CATEGORY_WEIGHT,
 	)
 	while(length(categories))
 		var/category = pick_nonzero_weight(categories)
@@ -28,31 +32,32 @@
 				added = forge_kill_objective()
 			if("steal")
 				added = add_rolled_objective(list(
-					/datum/objective/steal = 35,
-					/datum/objective/steal/hdd = 10, // replaces the old research download
-					/datum/objective/steal/heirloom = 8,
-					/datum/objective/tcomms_data = 8,
-					/datum/objective/forged_manifest = 6,
-					/datum/objective/steal_five_of_type/organs = 6,
-					/datum/objective/steal_five_of_type/summon_guns/thief = 6,
-					/datum/objective/hoarder = 6,
-					/datum/objective/hoarder/bodies = kill_allowed ? 2 : 0,
+					/datum/objective/steal = TRAITOR_OBJECTIVE_WEIGHT,
+					/datum/objective/steal/hdd = TRAITOR_OBJECTIVE_WEIGHT, // replaces the old research download
+					/datum/objective/steal/heirloom = TRAITOR_OBJECTIVE_WEIGHT,
+					/datum/objective/tcomms_data = TRAITOR_OBJECTIVE_WEIGHT,
+					/datum/objective/forged_manifest = TRAITOR_OBJECTIVE_WEIGHT,
+					/datum/objective/steal_five_of_type/organs = TRAITOR_OBJECTIVE_WEIGHT,
+					/datum/objective/steal_five_of_type/summon_guns/thief = TRAITOR_OBJECTIVE_WEIGHT,
+					/datum/objective/hoarder = TRAITOR_OBJECTIVE_WEIGHT,
+					/datum/objective/hoarder/bodies = kill_allowed ? TRAITOR_OBJECTIVE_WEIGHT : 0,
+					TRAITOR_DOCUMENT_EXCHANGE = TRAITOR_OBJECTIVE_WEIGHT,
 				))
 			if("sabotage")
 				added = add_rolled_objective(list(
-					/datum/objective/break_machinery = 20,
-					/datum/objective/plant_device/bomb = kill_allowed ? 8 : 0,
-					/datum/objective/plant_device/bug = 8,
-					/datum/objective/plant_device/tide = 8,
-					/datum/objective/poison_items = 6,
-					/datum/objective/sabotage/power_sink = 6,
-					/datum/objective/sabotage/integrity = 6,
-					/datum/objective/air_sabotage = 6,
-					/datum/objective/sabotage/ai_law = 5,
-					/datum/objective/hack_comms = 5,
-					/datum/objective/breakout = 5,
-					/datum/objective/sabotage/supermatter = 4,
-					/datum/objective/iff_subvert = 4,
+					/datum/objective/break_machinery = TRAITOR_OBJECTIVE_WEIGHT,
+					/datum/objective/plant_device/bomb = kill_allowed ? TRAITOR_OBJECTIVE_WEIGHT : 0,
+					/datum/objective/plant_device/bug = TRAITOR_OBJECTIVE_WEIGHT,
+					/datum/objective/plant_device/tide = TRAITOR_OBJECTIVE_WEIGHT,
+					/datum/objective/poison_items = TRAITOR_OBJECTIVE_WEIGHT,
+					/datum/objective/sabotage/power_sink = TRAITOR_OBJECTIVE_WEIGHT,
+					/datum/objective/sabotage/integrity = TRAITOR_OBJECTIVE_WEIGHT,
+					/datum/objective/air_sabotage = TRAITOR_OBJECTIVE_WEIGHT,
+					/datum/objective/sabotage/ai_law = TRAITOR_OBJECTIVE_WEIGHT,
+					/datum/objective/hack_comms = TRAITOR_OBJECTIVE_WEIGHT,
+					/datum/objective/breakout = TRAITOR_OBJECTIVE_WEIGHT,
+					/datum/objective/sabotage/supermatter = TRAITOR_OBJECTIVE_WEIGHT,
+					/datum/objective/iff_subvert = TRAITOR_OBJECTIVE_WEIGHT,
 				))
 		if(added)
 			return 1
@@ -69,13 +74,13 @@
 		if(add_rolled_objective(list(/datum/objective/destroy = 1)))
 			return TRUE
 	return add_rolled_objective(list(
-		/datum/objective/assassinate = 40,
-		TRAITOR_FLAVOR_INSTEAD_OF_MAROON = 20,
-		/datum/objective/assassinate/once = 15,
-		/datum/objective/assassinate/behead = 10,
-		/datum/objective/assassinate/calling_card = 10,
-		/datum/objective/assassinate/photo = 10,
-		/datum/objective/assassinate/traitor = 10,
+		/datum/objective/assassinate = TRAITOR_OBJECTIVE_WEIGHT,
+		/datum/objective/assassinate/once = TRAITOR_OBJECTIVE_WEIGHT,
+		/datum/objective/assassinate/behead = TRAITOR_OBJECTIVE_WEIGHT,
+		/datum/objective/assassinate/calling_card = TRAITOR_OBJECTIVE_WEIGHT,
+		/datum/objective/assassinate/photo = TRAITOR_OBJECTIVE_WEIGHT,
+		/datum/objective/assassinate/traitor = TRAITOR_OBJECTIVE_WEIGHT,
+		TRAITOR_FLAVOR_INSTEAD_OF_MAROON = TRAITOR_FLAVOR_WEIGHT,
 	))
 
 /// Tries the weighted objective types one by one until one can be set up for this traitor. Returns the added objective.
@@ -86,6 +91,10 @@
 		if(!path)
 			return null
 		weighted_types -= path
+		if(path == TRAITOR_DOCUMENT_EXCHANGE)
+			if(try_document_exchange())
+				return TRUE
+			continue
 		if(path == TRAITOR_FLAVOR_INSTEAD_OF_MAROON)
 			var/datum/objective/gimmick/flavor = new
 			flavor.owner = owner
@@ -101,6 +110,28 @@
 		add_objective(rolled)
 		return rolled
 	return null
+
+/// Pairs this traitor with another one for the secret documents exchange. FALSE if there is no partner or an exchange already exists.
+/datum/antagonist/traitor/proc/try_document_exchange()
+	var/datum/game_mode/mode = SSticker.mode
+	if(!mode || mode.exchange_red || mode.exchange_blue || !ishuman(owner.current))
+		return FALSE
+	var/list/partners = list()
+	for(var/datum/antagonist/traitor/other in GLOB.antagonists)
+		if(other == src || other.type != /datum/antagonist/traitor || other.traitor_kind != TRAITOR_HUMAN)
+			continue
+		if(!ishuman(other.owner?.current) || other.owner.current.stat == DEAD)
+			continue
+		partners += other
+	if(!length(partners))
+		return FALSE
+	var/datum/antagonist/traitor/partner = pick(partners)
+	mode.exchange_red = partner.owner
+	mode.exchange_blue = owner
+	partner.assign_exchange_role()
+	partner.owner.announce_objectives()
+	assign_exchange_role()
+	return TRUE
 
 /// pickweight that never returns an entry with zero weight. Null if every weight is zero.
 /proc/pick_nonzero_weight(list/weighted)
@@ -170,7 +201,8 @@
 /datum/objective/iff_subvert/admin_edit(mob/admin)
 	update_explanation_text()
 
-#undef TRAITOR_CATEGORY_KILL
-#undef TRAITOR_CATEGORY_STEAL
-#undef TRAITOR_CATEGORY_SABOTAGE
+#undef TRAITOR_CATEGORY_WEIGHT
+#undef TRAITOR_OBJECTIVE_WEIGHT
+#undef TRAITOR_FLAVOR_WEIGHT
 #undef TRAITOR_FLAVOR_INSTEAD_OF_MAROON
+#undef TRAITOR_DOCUMENT_EXCHANGE

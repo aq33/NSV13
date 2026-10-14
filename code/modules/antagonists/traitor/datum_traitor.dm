@@ -83,14 +83,7 @@
 	if (GLOB.joined_player_list.len >= CONFIG_GET(number/min_pop_kill_objectives))
 		martyr_chance = prob(20)
 	var/objective_count = is_hijacker 			//Hijacking counts towards number of objectives
-	if(!SSticker.mode.exchange_blue && SSticker.mode.traitors.len >= 8) 	//Set up an exchange if there are enough traitors
-		if(!SSticker.mode.exchange_red)
-			SSticker.mode.exchange_red = owner
-		else
-			SSticker.mode.exchange_blue = owner
-			assign_exchange_role(SSticker.mode.exchange_red)
-			assign_exchange_role(SSticker.mode.exchange_blue)
-		objective_count += 1					//Exchange counts towards number of objectives
+	// AQ EDIT - the documents exchange is rolled from the steal pool now, with any 2 traitors (aquila/.../objectives/_forging.dm)
 	var/toa = CONFIG_GET(number/traitor_objectives_amount)
 	// AQ EDIT START - job specific objective, like tgstation's /datum/job/proc/generate_traitor_objective()
 	if(objective_count < toa - 1 && prob(TRAITOR_JOB_OBJECTIVE_PROB))
