@@ -148,8 +148,14 @@
 
 	if(!do_after(spy, bounty.theft_time, TRUE, stealing))
 		return FALSE
+	if(QDELETED(bounty) || QDELETED(stealing))
+		to_chat(spy, "<span class='warning'>Twój uplink mruga na czerwono: zlecenie wygasło w trakcie skanu!</span>")
+		return FALSE
 	if(bounty.claimed)
 		to_chat(spy, "<span class='warning'>Twój uplink mruga na czerwono: zlecenie na [stealing] wykonał już inny szpieg!</span>")
+		return FALSE
+	if(!bounty.is_stealable(stealing))
+		to_chat(spy, "<span class='warning'>Twój uplink mruga na czerwono: [stealing] nie spełnia już warunków zlecenia!</span>")
 		return FALSE
 	if(spy.is_holding(stealing) && !spy.dropItemToGround(stealing))
 		to_chat(spy, "<span class='warning'>Twój uplink mruga na czerwono: [stealing] przykleiło się do twojej ręki!</span>")

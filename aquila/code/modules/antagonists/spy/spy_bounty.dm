@@ -596,6 +596,8 @@ GLOBAL_LIST(spy_bounty_item_typecache)
 	do_sparks(2, FALSE, stealing)
 	var/mob/living/carbon/human/stolen_from = stealing
 	var/obj/item/real_stolen_item = find_desired_thing(stealing)
+	if(isnull(real_stolen_item))
+		return
 	stolen_from.Unconscious(10 SECONDS)
 	to_chat(stolen_from, "<span class='warning'>Czujesz, że czegoś brakuje tam, gdzie było twoje [real_stolen_item.name].</span>")
 	if(istype(real_stolen_item, /obj/item/bodypart))
@@ -605,6 +607,10 @@ GLOBAL_LIST(spy_bounty_item_typecache)
 		var/obj/item/organ/organ = real_stolen_item
 		organ.Remove(stolen_from)
 		organ.forceMove(get_turf(stolen_from))
+	else
+		if(real_stolen_item.loc == stolen_from)
+			stolen_from.temporarilyRemoveItemFromInventory(real_stolen_item, force = TRUE)
+		real_stolen_item.forceMove(get_turf(stolen_from))
 	return ..(real_stolen_item, spy)
 
 /datum/spy_bounty/targets_person/some_item/target_found(mob/crewmember)

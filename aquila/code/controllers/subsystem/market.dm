@@ -56,6 +56,8 @@ SUBSYSTEM_DEF(market)
 			// Find a ltsrbt pad and make it handle the shipping.
 			if(SHIPPING_METHOD_LTSRBT)
 				if(!length(telepads))
+					to_chat(buyer, "<span class='warning'>[purchase.uplink] wyświetla komunikat: brak LTSRBT, zamówienie anulowane.</span>")
+					qdel(purchase)
 					continue
 				// Prioritize pads that don't have a cooldown active.
 				var/obj/machinery/ltsrbt/lowest_cd_pad
@@ -80,6 +82,8 @@ SUBSYSTEM_DEF(market)
 				var/turf/targetturf = get_safe_random_station_turfs()
 				// This shouldn't happen.
 				if (!targetturf)
+					to_chat(buyer, "<span class='warning'>[purchase.uplink] wyświetla komunikat: nie znaleziono miejsca dostawy, zamówienie anulowane.</span>")
+					qdel(purchase)
 					continue
 				queued_purchases -= purchase
 

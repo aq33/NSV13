@@ -65,13 +65,16 @@
 		to_chat(user, "<span class='warning'>Masz za mało kredytów na [item] z dostawą [method].</span>")
 		return FALSE
 
+	if(!uplink.current_user.adjust_money(-price))
+		to_chat(user, "<span class='warning'>Masz za mało kredytów na [item] z dostawą [method].</span>")
+		return FALSE
 	if(item.buy(uplink, user, method))
-		uplink.current_user.adjust_money(-price)
 		if(ismob(user))
 			var/mob/m_user = user
 			m_user.playsound_local(get_turf(m_user), 'sound/machines/twobeep_high.ogg', 50, TRUE)
 		return TRUE
 
+	uplink.current_user.adjust_money(price)
 	return FALSE
 
 /**

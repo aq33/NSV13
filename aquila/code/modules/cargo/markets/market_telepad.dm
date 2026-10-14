@@ -350,7 +350,7 @@
 
 		return
 	if(transmitting)
-		if(transmitting.item.loc == turf)
+		if(transmitting.item && transmitting.item.loc == turf)
 			do_teleport(transmitting.item, get_turf(transmitting.uplink), no_effects = TRUE, channel = TELEPORT_CHANNEL_BLUESPACE)
 			use_power(energy_usage_per_teleport / power_efficiency)
 		QDEL_NULL(transmitting)
