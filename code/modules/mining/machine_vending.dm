@@ -141,6 +141,7 @@
 		new /datum/data/vendor_equipment("Zestaw leczenia obrażeń fizycznych",			/obj/item/storage/firstaid/brute,									600),
 		new /datum/data/vendor_equipment("Zestaw leczenia oparzeń",			/obj/item/storage/firstaid/fire,									600),
 		new /datum/data/vendor_equipment("Zaawansowany zestaw leczniczy",		/obj/item/storage/firstaid/advanced,								1200),
+		new /datum/data/vendor_equipment("Pigułka stoperanu",			/obj/item/reagent_containers/pill/stoperan,							100), // AQ EDIT
 		new /datum/data/vendor_equipment("Nadajnik Fultona",				/obj/item/fulton_core,												500),
 		new /datum/data/vendor_equipment("Pakiet ewakuacyjny Fultona",		/obj/item/extraction_pack,											1000),
 		new /datum/data/vendor_equipment("Jaunter",						/obj/item/wormhole_jaunter,											750),

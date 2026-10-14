@@ -63,8 +63,12 @@
 	// The forging always ends up with an objective
 	for(var/i in 1 to 30)
 		var/objectives_before = length(first_traitor.objectives)
+		var/had_backstab = !!(locate(/datum/objective/steal/exchange/backstab) in first_traitor.objectives)
 		first_traitor.forge_aquila_human_objective()
-		TEST_ASSERT(length(first_traitor.objectives) == objectives_before + 1, "Forging round [i] added [length(first_traitor.objectives) - objectives_before] objectives")
+		var/added = length(first_traitor.objectives) - objectives_before
+		// Wymiana dokumentów w 20% przypadków dokłada drugi cel (backstab)
+		var/got_backstab = !had_backstab && (locate(/datum/objective/steal/exchange/backstab) in first_traitor.objectives)
+		TEST_ASSERT(added == 1 || (added == 2 && got_backstab), "Forging round [i] added [added] objectives")
 	for(var/datum/objective/objective as anything in first_traitor.objectives)
 		objective.check_completion()
 	TEST_ASSERT(GLOB.total_runtimes == runtimes_before, "Forging the objectives caused [GLOB.total_runtimes - runtimes_before] runtime(s)")

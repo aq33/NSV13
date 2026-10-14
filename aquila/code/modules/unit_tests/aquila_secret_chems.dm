@@ -62,9 +62,10 @@
 	beaker.reagents.add_reagent(/datum/reagent/liquid_dark_matter, 1)
 	var/datum/reagent/metalgen/imprinted = beaker.reagents.has_reagent(/datum/reagent/metalgen)
 	TEST_ASSERT(imprinted?.data?["material"] == /datum/material/gold, "Metalgen nie dostał odcisku złota")
-	var/obj/item/toy/eightball/ball = allocate(/obj/item/toy/eightball, start)
-	imprinted.reaction_obj(ball, 10)
-	TEST_ASSERT(ball.custom_materials?[getmaterialref(/datum/material/gold)], "Metalgen nie pozłocił przedmiotu")
+	// Długopis, bo bila ósemka w 1% przypadków kasuje się przy tworzeniu (nawiedzona)
+	var/obj/item/pen/pen = allocate(/obj/item/pen, start)
+	imprinted.reaction_obj(pen, 10)
+	TEST_ASSERT(pen.custom_materials?[getmaterialref(/datum/material/gold)], "Metalgen nie pozłocił przedmiotu")
 
 	// Gorgium zamienia w posąg
 	var/mob/living/carbon/human/statue_victim = allocate(/mob/living/carbon/human, start)
