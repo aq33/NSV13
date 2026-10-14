@@ -189,6 +189,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/debug_huds,
 	/client/proc/map_template_load,
 	/client/proc/map_template_upload,
+	/client/proc/test_chamber, // aquila edit
 	/client/proc/jump_to_ruin,
 	/client/proc/generate_ruin,
 	/client/proc/clear_dynamic_transit,

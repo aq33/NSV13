@@ -537,6 +537,10 @@
 #include "code\modules\research\techweb\all_nodes.dm"
 #include "code\modules\research\xenobiology\xenobio_tubes.dm"
 #include "code\modules\round_survey\round_survey.dm"
+#include "code\modules\test_chamber\test_chamber.dm"
+#include "code\modules\test_chamber\kits\_kit.dm"
+#include "code\modules\test_chamber\kits\test_subjects.dm"
+// Komora testowa - zestawy PR-ów niżej (usuwać razem z plikiem zestawu po przetestowaniu)
 #include "code\modules\weighted\spawn_fallbacks.dm"
 #include "code\modules\weighted\weighted_ghost_midround.dm"
 #include "code\modules\weighted\weighted_pace_vote.dm"
@@ -645,6 +649,7 @@
 #include "code\modules\unit_tests\start_system_protection.dm"
 #include "code\modules\unit_tests\storage_implant.dm"
 #include "code\modules\unit_tests\teratoma_event.dm"
+#include "code\modules\unit_tests\test_chamber.dm"
 #include "code\modules\unit_tests\test_room_integrity.dm"
 #include "code\modules\unit_tests\vending_spritesheet.dm"
 #include "code\modules\unit_tests\voidwalker.dm"
