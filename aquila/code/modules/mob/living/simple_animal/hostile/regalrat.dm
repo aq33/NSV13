@@ -188,8 +188,7 @@ GLOBAL_LIST_EMPTY(hostile_rats)
 	qdel(src)
 	M.evolve_into_regal_rat()
 
-/mob/living/simple_animal/mouse/on_entered(datum/source, atom/movable/AM)
-	SIGNAL_HANDLER
+/mob/living/simple_animal/mouse/on_entered(datum/source, atom/movable/AM) // SIGNAL_HANDLER dziedziczy z bazowego proca
 	. = ..()
 	if(istype(AM, /obj/item/food/royalcheese) && stat == CONSCIOUS && !QDELETED(AM))
 		qdel(AM)
