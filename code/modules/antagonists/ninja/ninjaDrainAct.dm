@@ -100,28 +100,21 @@
 /obj/machinery/rnd/server/ninjadrain_act(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
 	if(!ninja || !hacking_module)
 		return NONE
-	to_chat(ninja, span_notice("Research notes detected. Downloading data..."))
+	// AQ EDIT - ninjas wipe research points instead of downloading them (yogstation13/Yogstation#20268)
+	to_chat(ninja, span_notice("Wykryto notatki badawcze. Uszkadzanie danych..."))
+	AI_notify_hack()
 	INVOKE_ASYNC(src, PROC_REF(ninjadrain_charge), ninja, hacking_module)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/rnd/server/proc/ninjadrain_charge(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
-	if(!do_after(ninja, 10 SECONDS, target = src, progress = FALSE))
+	if(!do_after(ninja, 30 SECONDS, target = src, progress = FALSE))
 		return
-
-	// Copy research data to ninja's internal tech disk
-	var/obj/item/mod/control/pre_equipped/ninja/ninja_suit = ninja.back
-	if(istype(ninja_suit) && ninja_suit.internal_techdisk)
-		stored_research.copy_research_to(ninja_suit.internal_techdisk.stored_research)
-		to_chat(ninja, span_notice("Research data downloaded to MODsuit storage."))
-
-	to_chat(ninja, span_notice("Download complete. Research notes installed."))
-	var/datum/antagonist/ninja/ninja_antag = ninja.mind.has_antag_datum(/datum/antagonist/ninja)
-	if(!ninja_antag)
-		return
-
-	var/datum/objective/download/objective = locate() in ninja_antag.objectives
-	if(objective)
-		to_chat(ninja, span_notice("Research objective progress updated."))
+	if(stored_research)
+		for(var/point_type in stored_research.research_points)
+			stored_research.research_points[point_type] = 0
+	to_chat(ninja, span_notice("Sabotaż zakończony. Notatki badawcze uszkodzone."))
+	complete_ninja_research_sabotage(ninja)
+	// AQ EDIT END
 
 //SECURITY CONSOLE//
 /obj/machinery/computer/secure_data/ninjadrain_act(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)

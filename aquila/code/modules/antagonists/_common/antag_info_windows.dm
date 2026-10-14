@@ -14,8 +14,9 @@
 /datum/antagonist/traitor/ui_static_data(mob/user)
 	var/list/data = list()
 	data["antag_name"] = name
-	data["has_codewords"] = should_give_codewords
-	if(should_give_codewords)
+	var/knows_codewords = uses_backstory() ? has_codewords : should_give_codewords
+	data["has_codewords"] = knows_codewords
+	if(knows_codewords)
 		data["phrases"] = jointext(GLOB.syndicate_code_phrase, ", ")
 		data["responses"] = jointext(GLOB.syndicate_code_response, ", ")
 	data["objectives"] = get_objectives()
@@ -30,6 +31,10 @@
 		data["code"] = islist(uplink.unlock_code) ? english_list(uplink.unlock_code) : uplink.unlock_code
 		data["failsafe_code"] = islist(uplink.failsafe_code) ? english_list(uplink.failsafe_code) : uplink.failsafe_code
 		data["uplink_unlock_info"] = uplink_unlock_info(uplink)
+	if(uses_backstory())
+		var/list/backstory_data = backstory_static_data()
+		for(var/key in backstory_data)
+			data[key] = backstory_data[key]
 	return data
 
 /// How to open the uplink, based on what it is hidden in
