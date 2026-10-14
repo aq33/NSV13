@@ -172,7 +172,6 @@
 	return TRUE
 
 /datum/antagonist/spy/proc/give_random_objectives()
-	load_strings_file(SPY_OBJECTIVE_FILE, "aquila/strings")
 	for(var/i in 1 to rand(1, 3))
 		var/datum/objective/custom/your_mission = new()
 		your_mission.owner = owner

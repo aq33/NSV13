@@ -4,7 +4,7 @@
 
 #define IS_SPY(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/spy))
 
-/// Spy objective flavor texts, in aquila/strings
+/// Spy objective flavor texts, in core strings/ because tools/deploy.sh only ships that folder
 #define SPY_OBJECTIVE_FILE "spy_objective.json"
 
 /// Uplink items costing this much or less go to the easy spy reward pool
