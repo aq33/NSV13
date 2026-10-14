@@ -154,6 +154,9 @@ h1.alert, h2.alert		{color: #000000;}
 
 .spider					{color: #4d004d;}
 .spiderlarge			{color: #4d004d;	font-size: 3 ; font-weight: bold;}
+.spiderbroodmother	{color: #4d004d;	font-size: 2.5 ; font-weight: bold;}
+.spiderbreacher		{color: #c08040;	font-size: 2 ; font-weight: bold;}
+.spiderscout		{color: #3040b0;	font-size: 1.5 ; font-weight: bold;}
 
 .interface				{color: #330033;}
 

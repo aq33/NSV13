@@ -272,7 +272,7 @@
 /obj/item/organ/heart/gland/spiderman/activate()
 	to_chat(owner, "<span class='warning'>Czujesz, jak coś pełza ci pod skórą.</span>")
 	owner.faction |= "spiders"
-	var/obj/structure/spider/spiderling/S = new(owner.drop_location())
+	var/mob/living/simple_animal/hostile/spider/growing/spiderling/S = new(owner.drop_location())
 	S.directive = "Chroń swoje gniazdo w ciele [owner.real_name]."
 
 /obj/item/organ/heart/gland/egg
