@@ -39,6 +39,22 @@
 /obj/effect/proc_holder/spell/aoe_turf/revenant/haunt_object/cast(list/targets, mob/living/simple_animal/revenant/user = usr)
 	if(!attempt_cast(user))
 		return
+	var/turf/user_turf = get_turf(user)
+	for(var/obj/item/victim as anything in get_haunt_candidates(user))
+		var/distance_from_caster = max(get_dist(get_turf(victim), user_turf), 1)
+		if(!prob(150 / distance_from_caster))
+			continue
+		new /obj/effect/temp_visual/revenant(get_turf(victim))
+		victim.AddComponent(/datum/component/haunted_item, \
+			haunt_color = "#823abb", \
+			haunt_duration = rand(1 MINUTES, 3 MINUTES), \
+			aggro_radius = range - 1, \
+			spawn_message = "<span class='revenwarning'>[victim] unosi się i wiruje w powietrzu, świecąc upiornym fioletem!</span>", \
+			despawn_message = "<span class='revenwarning'>[victim] opada na ziemię i znowu nieruchomieje.</span>", \
+		)
+
+/// Do max_targets przedmiotów, które da się nawiedzić, od najbliższego rewenanta
+/obj/effect/proc_holder/spell/aoe_turf/revenant/haunt_object/proc/get_haunt_candidates(mob/user)
 	// range() nie sortuje po odległości, więc kandydaci idą do kubełków według dystansu, a limit bierze najbliższych
 	var/list/by_distance = list()
 	for(var/i in 0 to range)
@@ -63,18 +79,7 @@
 		candidates += bucket
 	if(length(candidates) > max_targets)
 		candidates.Cut(max_targets + 1)
-	for(var/obj/item/victim as anything in candidates)
-		var/distance_from_caster = max(get_dist(get_turf(victim), user_turf), 1)
-		if(!prob(150 / distance_from_caster))
-			continue
-		new /obj/effect/temp_visual/revenant(get_turf(victim))
-		victim.AddComponent(/datum/component/haunted_item, \
-			haunt_color = "#823abb", \
-			haunt_duration = rand(1 MINUTES, 3 MINUTES), \
-			aggro_radius = range - 1, \
-			spawn_message = "<span class='revenwarning'>[victim] unosi się i wiruje w powietrzu, świecąc upiornym fioletem!</span>", \
-			despawn_message = "<span class='revenwarning'>[victim] opada na ziemię i znowu nieruchomieje.</span>", \
-		)
+	return candidates
 
 //Vortex: opróżnia pobliskie pojemniki i wciąga przedmioty do rewenanta
 /obj/effect/proc_holder/spell/aoe_turf/revenant/vortex

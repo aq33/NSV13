@@ -91,6 +91,9 @@
 	var/turf/far_turf = get_step(get_step(right, EAST), EAST)
 	for(var/i in 1 to haunt.max_targets + 1)
 		allocate(/obj/item/screwdriver, far_turf)
+	var/list/candidates = haunt.get_haunt_candidates(rev)
+	TEST_ASSERT_EQUAL(length(candidates), haunt.max_targets, "Haunt Object did not cap its targets")
+	TEST_ASSERT_EQUAL(candidates[1], wrench, "Haunt Object did not pick the closest item first")
 	haunt.locked = FALSE
 	rev.essence = 200
 	haunt.cast(list(left), rev)
