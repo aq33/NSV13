@@ -351,6 +351,9 @@
 		SSstock_market.adjust_material_quantity(mat, -available_quantity)
 
 	if(refund)
+		// prywatny kupujący zapłacił przy dostawie 1,1x, więc tyle też wraca
+		if(paying_account)
+			refund = round(refund * 1.1)
 		var/datum/bank_account/refund_account = paying_account || SSeconomy.get_dep_account(ACCOUNT_CAR)
 		refund_account?.adjust_money(refund)
 		refund_account?.bank_card_talk("Na rynku zabrakło części zamówionych arkuszy. Zwrot: [refund] kr.")
