@@ -297,7 +297,7 @@ Class Procs:
 	return
 
 /obj/machinery/can_interact(mob/user)
-	var/silicon = issilicon(user)
+	var/silicon = issilicon(user) || user.has_remote_machine_access(src) // AQ EDIT - demon impulsu steruje maszynami w przejętym obszarze jak SI
 	var/admin_ghost = IsAdminGhost(user)
 	var/living = isliving(user)
 
