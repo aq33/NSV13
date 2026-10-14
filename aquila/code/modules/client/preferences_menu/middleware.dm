@@ -306,6 +306,7 @@
 		/datum/antagonist/pulse_demon = list('aquila/icons/mob/pulse_demon.dmi', "pulsedem"),
 		/datum/antagonist/voidwalker = list('aquila/icons/mob/voidwalker.dmi', "voidwalker"),
 		/datum/antagonist/shadow_demon = list('aquila/icons/mob/shadow_demon.dmi', "shadow_demon"),
+		/datum/antagonist/darkspawn = list('aquila/icons/mob/darkspawn/smol_progenitor.dmi', "smol_progenitor"),
 		/datum/antagonist/nightmare = list('icons/mob/hud.dmi', "shadowling"),
 		/datum/antagonist/bloodling = list('icons/mob/hud.dmi', "bloodling_thrall"),
 		/datum/antagonist/paradox_clone = list('icons/mob/hud.dmi', "paradox_clone"),

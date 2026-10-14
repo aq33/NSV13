@@ -118,7 +118,7 @@
 				radio.talk_into(src, "Sprzęt zakłóceń EWAR się uruchamia lub wyłącza. Spróbuj później.", radio_channel)
 				return FALSE
 			if(SEND_SIGNAL(linked.active_boarding_target, COMSIG_SHIP_RELEASE_BOARDING))
-				radio.talk_into(src, "Cel jest krytyczny dla misji. Nie można anulować zakłócania EWAR na [linked.active_boarding_target].", radio_channel)
+				radio.talk_into(src, "Cel jest przeznaczony do przejęcia. Nie można anulować zakłócania EWAR na [linked.active_boarding_target].", radio_channel)
 				return FALSE // Something blocked this
 			if(alert("Na pewno? (WSZYSCY ABORDAŻOWCY ZGINĄ)",name,"Zwolnij blokadę","Cancel") == "Cancel")
 				return FALSE
