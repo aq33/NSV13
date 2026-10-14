@@ -543,6 +543,7 @@
 #include "code\modules\reagents\chemistry\reagents\food_reagents.dm"
 #include "code\modules\reagents\chemistry\reagents\other_reagents.dm"
 #include "code\modules\reagents\chemistry\reagents\secret_reagents.dm"
+#include "code\modules\reagents\chemistry\reagents\stoperan.dm"
 #include "code\modules\reagents\chemistry\recipes\other_reagents.dm"
 #include "code\modules\reagents\chemistry\recipes\randomized.dm"
 #include "code\modules\reagents\reagent_containers\bottle.dm"
@@ -589,6 +590,7 @@
 #include "code\modules\test_chamber\kits\test_subjects.dm"
 // Komora testowa - zestawy PR-ów niżej (usuwać razem z plikiem zestawu po przetestowaniu)
 #include "code\modules\test_chamber\kits\pr_436_iskry.dm"
+#include "code\modules\test_chamber\kits\pr_439_stoperan.dm"
 #include "code\modules\test_chamber\kits\pr_429_regal_rat.dm"
 #include "code\modules\test_chamber\kits\pr_430_darkspawn.dm"
 #include "code\modules\test_chamber\kits\pr_433_secret_chems.dm"
