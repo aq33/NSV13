@@ -77,7 +77,6 @@ SUBSYSTEM_DEF(stock_market)
 /datum/controller/subsystem/stock_market/proc/handle_trends_and_price(datum/material/mat)
 	if(prob(MARKET_EVENT_PROBABILITY))
 		handle_market_event(mat)
-	var/trend = materials_trends[mat]
 	var/trend_life = materials_trend_life[mat]
 
 	var/price_units = materials_prices[mat]
@@ -103,6 +102,7 @@ SUBSYSTEM_DEF(stock_market)
 
 	var/price_change = 0
 	var/quantity_change = 0
+	var/trend = materials_trends[mat]
 	switch(trend)
 		if(MARKET_TREND_UPWARD)
 			price_change = CEILING(gaussian(price_units * 0.3, price_baseline * 0.15), 1)

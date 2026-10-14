@@ -244,7 +244,9 @@
 			say("Zamówienie przekroczyłoby [MAX_STACK_LIMIT] stosów! Poczekaj na dostawę, zanim zamówisz więcej.")
 			playsound(src, 'sound/machines/synth_no.ogg', 35, FALSE)
 			return FALSE
-		if(current_order.get_final_cost() + cost > account_payable.account_balance)
+		// prywatne zamówienia kosztują przy dostawie 1,1x - tak samo jak w get_final_cost()
+		var/added_cost = is_ordering_private ? cost * 1.1 : cost
+		if(current_order.get_final_cost() + added_cost > account_payable.account_balance)
 			say("Zamówienie przekracza dostępne środki! Wyślij je, zanim dokupisz więcej.")
 			return FALSE
 		pack.add_sheets(sheet_to_buy, material_bought, quantity, unit_price)
