@@ -39,7 +39,11 @@
 /obj/effect/proc_holder/spell/aoe_turf/revenant/haunt_object/cast(list/targets, mob/living/simple_animal/revenant/user = usr)
 	if(!attempt_cast(user))
 		return
-	var/list/candidates = list()
+	// range() nie sortuje po odległości, więc kandydaci idą do kubełków według dystansu, a limit bierze najbliższych
+	var/list/by_distance = list()
+	for(var/i in 0 to range)
+		by_distance += list(list())
+	var/turf/user_turf = get_turf(user)
 	for(var/obj/item/nearby_item in range(range, user))
 		// Bez przykręconych, gęstych i schowanych w czymś
 		if(nearby_item.anchored || nearby_item.density || !isturf(nearby_item.loc))
@@ -52,11 +56,15 @@
 		// Bez tych, które już straszą
 		if(istype(nearby_item.ai_controller, /datum/ai_controller/haunted))
 			continue
-		candidates += nearby_item
-		if(length(candidates) >= max_targets)
-			break
+		var/list/bucket = by_distance[min(get_dist(nearby_item, user_turf), range) + 1]
+		bucket += nearby_item
+	var/list/candidates = list()
+	for(var/list/bucket as anything in by_distance)
+		candidates += bucket
+	if(length(candidates) > max_targets)
+		candidates.Cut(max_targets + 1)
 	for(var/obj/item/victim as anything in candidates)
-		var/distance_from_caster = max(get_dist(get_turf(victim), get_turf(user)), 1)
+		var/distance_from_caster = max(get_dist(get_turf(victim), user_turf), 1)
 		if(!prob(150 / distance_from_caster))
 			continue
 		new /obj/effect/temp_visual/revenant(get_turf(victim))

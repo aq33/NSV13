@@ -87,6 +87,10 @@
 	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human, get_step(right, EAST))
 	var/obj/item/wrench/wrench = allocate(/obj/item/wrench, right)
 	var/old_throwforce = wrench.throwforce
+	// Dalsze przedmioty ponad limit nie mogą zabrać miejsca temu obok
+	var/turf/far_turf = get_step(get_step(right, EAST), EAST)
+	for(var/i in 1 to haunt.max_targets + 1)
+		allocate(/obj/item/screwdriver, far_turf)
 	haunt.locked = FALSE
 	rev.essence = 200
 	haunt.cast(list(left), rev)
