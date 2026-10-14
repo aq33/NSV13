@@ -7,7 +7,7 @@
 
 /datum/antagonist/revenant/greet()
 	owner.announce_objectives()
-	owner.current.client?.tgui_panel?.give_antagonist_popup("Revenant",
+	owner.current.client?.tgui_panel?.give_antagonist_popup("Upiór",
 		"Jesteś duchem, któremu udało się zostać w świecie śmiertelników. Zemścij się na tych, którzy chodzą po tym planie bez ciebie.")
 
 /datum/antagonist/revenant/proc/forge_objectives()

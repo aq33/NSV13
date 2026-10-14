@@ -1,6 +1,8 @@
 /mob/living/carbon/human/adjust_defecation(var/change)
 	if(HAS_TRAIT(src, TRAIT_NOSHITTING)) // i ain't got shit
 		return FALSE
+	if(change > 0 && has_status_effect(/datum/status_effect/stoperan))
+		return FALSE
 	return ..()
 
 /mob/living/carbon/human/set_defecation(var/change)

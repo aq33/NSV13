@@ -9,6 +9,62 @@
 /mob/living/simple_animal/revenant/Initialize(mapload)
 	. = ..()
 	check_rev_teleport() // they can spawn off the station
+	// Moce z tg: nawiedzanie przedmiotów, wir i rozrzut
+	AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/revenant/haunt_object(null))
+	AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/revenant/vortex(null))
+	AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/revenant/vortex/scatter(null))
+	// Jak w tg słyszy martwy czat, więc zmarli mogą go prosić o przysługi
+	ADD_TRAIT(src, TRAIT_SIXTHSENSE, INNATE_TRAIT)
+
+/// Polskie imię, np. „Widmo wiecznej rozpaczy”: przymiotnik w dopełniaczu zgodny z rodzajem tematu
+/mob/living/simple_animal/revenant/random_revenant_name()
+	..() // bazowa ustawia angielskie imię, nadpisujemy je niżej
+	var/static/list/spirit_types = list("Duch", "Widmo", "Zjawa", "Fantom", "Upiór", "Esencja", "Dusza")
+	// temat w dopełniaczu => rodzaj: "f" żeński, "m" męski i nijaki, "pl" mnoga
+	var/static/list/themes = list(
+		"rozpaczy" = "f", "agonii" = "f", "krzyków" = "pl", "zemsty" = "f", "piekielnego ognia" = "m",
+		"gniewu" = "m", "cierpienia" = "m", "śmierci" = "f", "zniszczenia" = "m", "nienawiści" = "f",
+		"niedoli" = "f", "zarazy" = "f", "desperacji" = "f", "smutku" = "m", "ruiny" = "f",
+		"soli" = "f", "żałoby" = "f", "śmiechu" = "m", "frustracji" = "f", "rozkładu" = "m",
+	)
+	// tematy już z przymiotnikiem nie dostają drugiego
+	var/static/list/adjective_stems = list(
+		"otchłann", "mroczn", "wieczn", "nieskończon", "bezdenn", "okrutn", "nienawistn",
+		"ohydn", "złowrog", "ognist", "cich", "gwałtown", "spokojn", "obojętn", "brutaln", "paląc",
+	)
+	var/theme = pick(themes)
+	var/adjective = ""
+	if(!findtext(theme, " ") && prob(94)) // jak w tg: czasem bez przymiotnika
+		var/stem = pick(adjective_stems)
+		var/soft = copytext(stem, -1) in list("g", "k") // złowrogiej, złowrogiego, złowrogich
+		switch(themes[theme])
+			if("f")
+				adjective = stem + (soft ? "iej" : "ej")
+			if("pl")
+				adjective = stem + (soft ? "ich" : "ych")
+			else
+				adjective = stem + (soft ? "iego" : "ego")
+		adjective += " "
+	name = "[pick(spirit_types)] [adjective][theme]"
+
+// Jak w tg: niewidzialny rewenant może bawić się tablicą spirytystyczną jak duch
+/mob/living/simple_animal/revenant/ClickOn(atom/A, params)
+	var/list/modifiers = params2list(params)
+	if(!istype(A, /obj/structure/spirit_board) || modifiers["shift"] || modifiers["alt"] || modifiers["ctrl"])
+		return ..()
+	if(check_click_intercept(params, A))
+		return
+	if(revealed || notransform || inhibited)
+		return
+	var/obj/structure/spirit_board/board = A
+	INVOKE_ASYNC(board, TYPE_PROC_REF(/obj/structure/spirit_board, spirit_board_pick_letter), src)
+
+// Uwięziony w lustrze nie używa mocy (revenant_prison.dm)
+/mob/living/simple_animal/revenant/castcheck(essence_cost)
+	if(istype(loc, /obj/structure/mirror))
+		to_chat(src, "<span class='revenwarning'>Twoje moce są uwięzione razem z tobą!</span>")
+		return FALSE
+	return ..()
 
 /mob/living/simple_animal/revenant/onTransitZ(old_z, new_z)
 	. = ..()
@@ -36,6 +92,8 @@
 
 /// Orbits A like a ghost would, if the revenant is allowed to
 /mob/living/simple_animal/revenant/proc/check_orbitable(atom/A)
+	if(!isturf(loc)) // uwięziony w lustrze
+		return
 	if(revealed)
 		to_chat(src, "<span class='revenwarning'>Nie możesz orbitować, gdy jesteś ujawniony!</span>")
 		return
@@ -88,17 +146,17 @@
 
 /// Recall to Station: only given while the revenant is off the station
 /obj/effect/proc_holder/spell/self/rev_teleport
-	name = "Recall to Station"
-	desc = "Teleport to the station."
+	name = "Powrót na statek"
+	desc = "Teleportuje cię na statek."
 	charge_max = 0
-	panel = "Revenant Abilities"
+	panel = "Zdolności upiora"
 	action_icon = 'aquila/icons/mob/actions/actions_revenant.dmi'
 	action_icon_state = "r_teleport"
 	action_background_icon_state = "bg_revenant"
 	clothes_req = FALSE
 
 /obj/effect/proc_holder/spell/self/rev_teleport/cast(list/targets, mob/living/simple_animal/revenant/user = usr)
-	if(!isrevenant(user))
+	if(!isrevenant(user) || !isturf(user.loc)) // z lustra się nie teleportuje
 		return
 	if(is_station_level(user.z))
 		to_chat(user, "<span class='revenwarning'>Powrót na statek jest dostępny tylko wtedy, gdy nie jesteś na statku.</span>")

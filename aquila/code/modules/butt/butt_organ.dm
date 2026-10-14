@@ -48,6 +48,30 @@
 	max_combined_w_class = 12
 	max_w_class = WEIGHT_CLASS_NORMAL
 	storage_slots = 4
+	actions_types = list(/datum/action/item_action/organ_action/use)
+	COOLDOWN_DECLARE(bluespace_dump_cooldown)
+
+/// Wypróżnienie na zawołanie: zawartość jelit leci prosto w bluespace, bez bałaganu
+/obj/item/organ/butt/bluebutt/ui_action_click(mob/user, actiontype)
+	var/mob/living/carbon/C = owner
+	if(!C || C.stat != CONSCIOUS)
+		return
+	if(!CONFIG_GET(flag/shitting_enabled))
+		to_chat(C, "<span class='warning'>Wypróżnianie się zostało wyłączone w konfiguracji serwera.</span>")
+		return
+	if(!COOLDOWN_FINISHED(src, bluespace_dump_cooldown))
+		to_chat(C, "<span class='warning'>Kieszeń bluespace jeszcze się nie ustabilizowała.</span>")
+		return
+	if(C.defecation <= DEFECATION_NONE)
+		to_chat(C, "<span class='notice'>Nie masz czego wysyłać w bluespace.</span>")
+		return
+	COOLDOWN_START(src, bluespace_dump_cooldown, 30 SECONDS)
+	C.set_defecation(DEFECATION_NONE)
+	var/datum/reagent/consumable/castor_oil/oil = C.reagents?.get_reagent(/datum/reagent/consumable/castor_oil)
+	oil?.purge(C)
+	playsound(get_turf(C), 'sound/magic/blink.ogg', 30, TRUE)
+	C.visible_message("<span class='notice'>Coś cicho pyka w okolicach pośladków [C].</span>", \
+		"<span class='notice'><i>Ale ulga...</i> Zawartość jelit znika w bluespace.</span>")
 
 /obj/item/organ/butt/Initialize(mapload)
 	. = ..()

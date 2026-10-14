@@ -215,3 +215,13 @@
 /datum/techweb_node/bluespace_travel/New() // bluespace pipes, appended so upstream changes to this node's designs still apply
 	. = ..()
 	design_ids += "bluespace_pipe"
+
+/datum/techweb_node/bluespace_butt
+	id = "bluespace_butt"
+	tech_tier = 5
+	display_name = "Pośladki bluespace"
+	description = "Miniaturyzacja bluespace dotarła tam, gdzie słońce nie dochodzi. Syntetyczny pośladek z kieszenią bluespace i opróżnianiem jelit na zawołanie."
+	prereq_ids = list("bagofholding", "exp_surgery")
+	design_ids = list("bluebutt")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
+	export_price = 5000
