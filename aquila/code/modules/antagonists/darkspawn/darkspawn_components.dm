@@ -29,6 +29,13 @@
 		return
 	if(destination.get_lumcount() > DARKSPAWN_DIM_LIGHT)
 		return
+	// Ciągnięcie może spać, a handler sygnału nie może
+	INVOKE_ASYNC(src, PROC_REF(walk_through), source, destination)
+	return COMSIG_MOB_CLIENT_BLOCK_PRE_MOVE
+
+/datum/component/darkspawn_shadow_walk/proc/walk_through(mob/living/source, turf/destination)
+	if(QDELETED(source) || QDELETED(destination))
+		return
 	var/atom/movable/pulled = source.pulling
 	if(pulled && (pulled.anchored || isliving(pulled)))
 		source.stop_pulling()
@@ -39,7 +46,6 @@
 		source.start_pulling(pulled, supress_message = TRUE)
 	if(source.client)
 		source.client.move_delay = world.time + source.movement_delay()
-	return COMSIG_MOB_CLIENT_BLOCK_PRE_MOVE
 
 /// Zwiadowca z Sigilami wędrówki biega szybciej w ciemności
 /datum/component/darkspawn_shadow_step

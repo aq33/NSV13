@@ -157,13 +157,21 @@
 	SIGNAL_HANDLER
 	if(!charging || isturf(hit_atom))
 		return
+	if(!isobj(hit_atom) && !isliving(hit_atom))
+		return
+	// Niszczenie i tarcze mogą spać, a handler sygnału nie może
+	INVOKE_ASYNC(src, PROC_REF(crash_into), source, hit_atom, throwingdatum?.init_dir)
+	return COMPONENT_MOVABLE_IMPACT_NEVERMIND
+
+/datum/action/cooldown/spell/pointed/shadow_crash/proc/crash_into(atom/source, atom/hit_atom, init_dir)
+	if(QDELETED(hit_atom))
+		return
 	if(isobj(hit_atom))
 		var/obj/thing = hit_atom
 		// dwa razy po 29, żeby łamać słabe rzeczy, a nie ruszać wzmocnionych
 		thing.take_damage(29)
-		thing.take_damage(29)
-		return COMPONENT_MOVABLE_IMPACT_NEVERMIND
-	if(!isliving(hit_atom))
+		if(!QDELETED(thing))
+			thing.take_damage(29)
 		return
 	var/mob/living/target = hit_atom
 	var/blocked = FALSE
@@ -171,12 +179,11 @@
 		var/mob/living/carbon/human/H = target
 		if(H.check_shields(source, 0, "[source]", LEAP_ATTACK))
 			blocked = TRUE
-	var/destination = get_ranged_target_turf(get_turf(target), throwingdatum?.init_dir || get_dir(source, target), 5)
+	var/destination = get_ranged_target_turf(get_turf(target), init_dir || get_dir(source, target), 5)
 	if(blocked)
 		target.throw_at(destination, 3, 2)
 	else
 		target.throw_at(destination, 3, 2, callback = CALLBACK(target, TYPE_PROC_REF(/mob/living, Paralyze), 2 SECONDS))
-	return COMPONENT_MOVABLE_IMPACT_NEVERMIND
 
 // Dylatacja czasu
 
