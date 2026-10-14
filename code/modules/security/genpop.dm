@@ -180,7 +180,7 @@
 	var/our_turf = get_turf(src)
 	var/pushed_turf = get_turf(pushed)
 	if(our_turf == pushed_turf)
-		var/movedir = turn(dir, 180) //Set to be the opposite of the turnstile dir, as that would always be the exit, unless the turnstile has been built incorrectly.
+		var/movedir = pushed.dir //AQ EDIT - keep going the way they walked in; on our maps the free direction (dir) points out of the brig
 		pushed.Move(get_step(pushed, movedir), movedir)
 
 ///Handle movables (especially mobs) bumping into us.

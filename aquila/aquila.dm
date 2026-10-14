@@ -383,6 +383,7 @@
 #include "code\modules\hydroponics\plant_genes.dm"
 #include "code\modules\hygiene\hygiene.dm"
 #include "code\modules\hygiene\hygienebot.dm"
+#include "code\modules\jobs\job_slots.dm"
 #include "code\modules\metacoin\metacoin.dm"
 #include "code\modules\miasma\corpse_flower.dm"
 #include "code\modules\miasma\miasma_breath.dm"
@@ -548,6 +549,7 @@
 #include "code\modules\test_chamber\kits\pr_420_traitor_cele.dm"
 #include "code\modules\test_chamber\kits\test_subjects.dm"
 // Komora testowa - zestawy PR-ów niżej (usuwać razem z plikiem zestawu po przetestowaniu)
+#include "code\modules\test_chamber\kits\pr_436_iskry.dm"
 #include "code\modules\test_chamber\kits\pr_429_regal_rat.dm"
 #include "code\modules\test_chamber\kits\pr_433_secret_chems.dm"
 #include "code\modules\weighted\spawn_fallbacks.dm"

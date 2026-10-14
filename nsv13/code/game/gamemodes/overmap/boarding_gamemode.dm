@@ -10,5 +10,5 @@
 	objective_reminder_setting = 2 // Combat can postpone, but it's not the goal
 	combat_delay = 10 MINUTES
 	selection_weight = 5
-	required_players = 14
+	required_players = 10
 	fixed_objectives = list(/datum/overmap_objective/board_ship)
