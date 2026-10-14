@@ -37,6 +37,7 @@ GLOBAL_LIST_EMPTY(hostile_rats)
 	faction = list("rat")
 	ventcrawler = VENTCRAWLER_ALWAYS
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
+	combat_mode_indicator = TRUE // combat mode decyduje, czy drapie, czy liże
 	flavor_text = "Jesteś szczurzym królem, niezależną, inwazyjną siłą na statku! Gromadź monety, śmieci, ser i co tylko się da w bezpiecznej ciemności. \
 		Myszy w pobliżu zmienisz w swoją armię, a twoja domena zatruwa powietrze miazmą, która cię leczy. \
 		Z wyłączonym trybem walki liżesz jedzenie i ludzi, a twoja ślina z czasem zjednuje ci poddanych."

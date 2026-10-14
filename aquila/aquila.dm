@@ -37,6 +37,7 @@
 #include "code\_onclick\hud\action_palette.dm"
 #include "code\_onclick\hud\alert.dm"
 #include "code\_onclick\hud\ghost.dm"
+#include "code\_onclick\hud\combat_mode_indicator.dm"
 #include "code\_onclick\hud\horror.dm"
 #include "code\_onclick\hud\locked_slots.dm"
 #include "code\_onclick\hud\mouse_pointer.dm"
