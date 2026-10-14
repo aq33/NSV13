@@ -5,6 +5,7 @@
 	name = "pitchfork"
 	desc = "A simple tool used for moving hay."
 	force = 7
+	bleed_force = BLEED_CUT
 	throwforce = 15
 	block_level = 1
 	block_upgrade_walk = 1
@@ -13,7 +14,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP
 	max_integrity = 200
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 30, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 30, "stamina" = 0, "bleed" = 0)
 	resistance_flags = FIRE_PROOF
 
 /obj/item/pitchfork/ComponentInitialize()

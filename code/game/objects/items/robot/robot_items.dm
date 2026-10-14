@@ -585,6 +585,7 @@
 
 
 /obj/item/projectile/bullet/reusable/gumball
+	bleed_force = 0
 	name = "gumball"
 	desc = "Oh noes! A fast-moving gumball!"
 	icon_state = "gumball"
@@ -604,6 +605,7 @@
 	projectile_type = /obj/item/projectile/bullet/reusable/lollipop
 
 /obj/item/projectile/bullet/reusable/lollipop
+	bleed_force = 0
 	name = "lollipop"
 	desc = "Oh noes! A fast-moving lollipop!"
 	icon_state = "lollipop_1"

@@ -8,7 +8,7 @@
 	lefthand_file = 'nsv13/icons/mob/inhands/nsvclothing_lefthand.dmi'
 	righthand_file = 'nsv13/icons/mob/inhands/nsvclothing_righthand.dmi'
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/dominion
-	armor = list("melee" = 15, "bullet" = 0, "laser" = 20, "energy" = 20, "bomb" = 0, "bio" = 100, "rad" = 60, "fire" = 50, "acid" = 50, "stamina" = 5)
+	armor = list("melee" = 15, "bullet" = 0, "laser" = 20, "energy" = 20, "bomb" = 0, "bio" = 100, "rad" = 60, "fire" = 50, "acid" = 50, "stamina" = 5, "bleed" = 70)
 	resistance_flags = FIRE_PROOF
 	flash_protect = 2
 
@@ -31,7 +31,7 @@
 	lefthand_file = 'nsv13/icons/mob/inhands/nsvclothing_lefthand.dmi'
 	righthand_file = 'nsv13/icons/mob/inhands/nsvclothing_righthand.dmi'
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/dominion/engi
-	armor = list("melee" = 30, "bullet" = 5, "laser" = 10, "energy" = 12, "bomb" = 10, "bio" = 100, "rad" = 75, "fire" = 100, "acid" = 75, "stamina" = 20)
+	armor = list("melee" = 30, "bullet" = 5, "laser" = 10, "energy" = 12, "bomb" = 10, "bio" = 100, "rad" = 75, "fire" = 100, "acid" = 75, "stamina" = 20, "bleed" = 50)
 	resistance_flags = FIRE_PROOF
 	flash_protect = 2
 
@@ -54,7 +54,7 @@
 	lefthand_file = 'nsv13/icons/mob/inhands/nsvclothing_lefthand.dmi'
 	righthand_file = 'nsv13/icons/mob/inhands/nsvclothing_righthand.dmi'
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/dominion/atmo
-	armor = list("melee" = 30, "bullet" = 5, "laser" = 10, "energy" = 15, "bomb" = 10, "bio" = 100, "rad" = 25, "fire" = 100, "acid" = 75, "stamina" = 20)
+	armor = list("melee" = 30, "bullet" = 5, "laser" = 10, "energy" = 15, "bomb" = 10, "bio" = 100, "rad" = 25, "fire" = 100, "acid" = 75, "stamina" = 20, "bleed" = 50)
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 
@@ -76,7 +76,7 @@
 	item_state = "dominion-mining"
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF
-	armor = list("melee" = 30, "bullet" = 5, "laser" = 10, "energy" = 20, "bomb" = 50, "bio" = 100, "rad" = 50, "fire" = 50, "acid" = 75, "stamina" = 40)
+	armor = list("melee" = 30, "bullet" = 5, "laser" = 10, "energy" = 20, "bomb" = 50, "bio" = 100, "rad" = 50, "fire" = 50, "acid" = 75, "stamina" = 40, "bleed" = 50)
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/storage/bag/ore, /obj/item/pickaxe)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/dominion/mining
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -95,7 +95,7 @@
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF
 	heat_protection = HEAD
-	armor = list("melee" = 30, "bullet" = 5, "laser" = 10, "energy" = 15, "bomb" = 50, "bio" = 100, "rad" = 50, "fire" = 50, "acid" = 75, "stamina" = 40)
+	armor = list("melee" = 30, "bullet" = 5, "laser" = 10, "energy" = 15, "bomb" = 50, "bio" = 100, "rad" = 50, "fire" = 50, "acid" = 75, "stamina" = 40, "bleed" = 70)
 	light_range = 7
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/resonator, /obj/item/mining_scanner, /obj/item/t_scanner/adv_mining_scanner, /obj/item/gun/energy/kinetic_accelerator)
 	high_pressure_multiplier = 0.6

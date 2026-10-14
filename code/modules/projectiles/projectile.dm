@@ -248,7 +248,7 @@
 					if(prob(25))
 						new /obj/effect/decal/cleanable/oil(target_loca)
 				else
-					new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_loca, splatter_dir)
+					new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_loca, splatter_dir, L.get_blood_color())
 				if(prob(33))
 					L.add_splatter_floor(target_loca)
 		else if(impact_effect_type && !hitscan)

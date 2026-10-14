@@ -7,6 +7,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	force = 40
+	bleed_force = BLEED_DEEP_WOUND
 	throwforce = 20
 	block_power = 50
 	block_level = 1

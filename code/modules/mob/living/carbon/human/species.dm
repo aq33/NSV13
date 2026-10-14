@@ -49,7 +49,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/deathsound //used to set the mobs deathsound on species change
 	var/list/special_step_sounds //Sounds to override barefeet walkng
 	var/grab_sound //Special sound for grabbing
-	var/blood_color //Blood color for decals
 	var/reagent_tag = PROCESS_ORGANIC //Used for metabolizing reagents. We're going to assume you're a meatbag unless you say otherwise.
 	var/species_gibs = GIB_TYPE_HUMAN //by default human gibs are used
 	var/allow_numbers_in_name // Can this species use numbers in its name?
@@ -105,6 +104,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	/// if false, having no tongue makes you unable to speak
 	var/speak_no_tongue = TRUE
+
+	/// What bleed status effect should we apply?
+	var/bleed_effect = STATUS_EFFECT_BLEED
 
 ///////////
 // PROCS //
@@ -1498,6 +1500,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			to_chat(H, "<span class='danger'>Włosy zaczynają ci wypadać garściami.</span>")
 			addtimer(CALLBACK(src, PROC_REF(go_bald), H), 50)
 
+
+/datum/species/proc/handle_blood(mob/living/carbon/human/H)
+	return FALSE
+
 /datum/species/proc/go_bald(mob/living/carbon/human/H)
 	if(QDELETED(H))	//may be called from a timer
 		return
@@ -1862,6 +1868,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/weakness = H.check_weakness(I, user)
 	apply_damage(I.force * weakness, I.damtype, def_zone, armor_block, H)
 
+	if (I.bleed_force)
+		var/armour_block = user.run_armor_check(affecting, BLEED, armour_penetration = I.armour_penetration, silent = (I.force > 0))
+		var/hit_amount = (100 - armour_block) / 100
+		H.add_bleeding(I.bleed_force * hit_amount)
+
 	H.send_item_attack_message(I, user, hit_area)
 
 	if(!I.force)
@@ -1936,6 +1947,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 		if(Iforce > 10 || Iforce >= 5 && prob(33))
 			H.force_say(user)
+	else if (I.damtype == BURN && H.is_bleeding())
+		H.cauterise_wounds(AMOUNT_TO_BLEED_INTENSITY(I.force / 3))
+		to_chat(H, "<span class='userdanger'>Żar [I] przypala twoją ranę i tamuje krwawienie!</span>")
+		playsound(H, 'sound/surgery/cautery2.ogg', 70)
 	return TRUE
 
 /datum/species/proc/apply_damage(damage, damagetype = BRUTE, def_zone = null, blocked, mob/living/carbon/human/H, forced = FALSE)

@@ -91,7 +91,7 @@
 	name = "motorcycle helmet"
 	desc = "You had your chance."
 	icon_state = "biker_helmet"
-	armor = list("melee" = 20, "bullet" = 5, "laser" = 10, "energy" = 20, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 20, "acid" = 0, "stamina" = 0)
+	armor = list("melee" = 20, "bullet" = 5, "laser" = 10, "energy" = 20, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 20, "acid" = 0, "stamina" = 0, "bleed" = 50)
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 

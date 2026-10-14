@@ -98,6 +98,7 @@
 	item_state = "garm"
 	desc = "Do the impossible, see the invisible!"
 	force = 10
+	bleed_force = BLEED_SURFACE
 	throwforce = 10
 	throw_speed = 4
 	attack_verb = list("kroi")
@@ -120,7 +121,7 @@
 	actions_types = list(/datum/action/item_action/toggle_research_scanner)
 	glass_colour_type = /datum/client_colour/glass_colour/purple
 	resistance_flags = ACID_PROOF
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 100, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 100, "stamina" = 0, "bleed" = 0)
 
 /obj/item/clothing/glasses/science/item_action_slot_check(slot)
 	if(slot == ITEM_SLOT_EYES)
@@ -131,7 +132,7 @@
 	desc = "A crude combination between a pair of prescription glasses and the electronics of science goggles."
 	icon_state = "prescscihud"
 	resistance_flags = NONE
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 20, "acid" = 40, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 20, "acid" = 40, "stamina" = 0, "bleed" = 0)
 	vision_correction = 1
 
 /obj/item/clothing/glasses/science/sciencesun
@@ -192,6 +193,7 @@
 	item_state = "garm"
 	desc = "Do the impossible, see the invisible!"
 	force = 10
+	bleed_force = BLEED_SURFACE
 	throwforce = 20
 	throw_speed = 4
 	attack_verb = list("kroi")
@@ -266,6 +268,7 @@
 	icon_state = "garb"
 	item_state = "garb"
 	force = 10
+	bleed_force = BLEED_SURFACE
 	throwforce = 10
 	throw_speed = 4
 	attack_verb = list("kroi")
@@ -286,6 +289,7 @@
 	icon_state = "gar"
 	item_state = "gar"
 	force = 10
+	bleed_force = BLEED_SURFACE
 	throwforce = 10
 	throw_speed = 4
 	attack_verb = list("kroi")

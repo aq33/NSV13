@@ -4,6 +4,7 @@
 	armour_penetration = -20
 
 /obj/item/projectile/bullet/shotgun_beanbag
+	bleed_force = BLEED_TINY
 	name = "beanbag slug"
 	damage = 5
 	stamina = 55
@@ -57,6 +58,7 @@
 	return BULLET_ACT_HIT
 
 /obj/item/projectile/bullet/pellet
+	bleed_force = BLEED_SCRATCH
 	var/tile_dropoff = 0.75
 	var/tile_dropoff_s = 0.5
 	ricochets_max = 1
@@ -69,6 +71,7 @@
 	tile_dropoff = 0.5
 
 /obj/item/projectile/bullet/pellet/shotgun_rubbershot
+	bleed_force = BLEED_TINY
 	name = "rubbershot pellet"
 	damage = 3
 	stamina = 9
@@ -102,11 +105,13 @@
 // Mech Scattershot
 
 /obj/item/projectile/bullet/scattershot
+	bleed_force = BLEED_SURFACE
 	damage = 18
 
 //Breaching Ammo
 
 /obj/item/projectile/bullet/shotgun_breaching
+	bleed_force = BLEED_SURFACE
 	name = "12g breaching round"
 	desc = "A breaching round designed to destroy airlocks and windows with only a few shots, but is ineffective against other targets."
 	hitsound = 'sound/weapons/sonic_jackhammer.ogg'

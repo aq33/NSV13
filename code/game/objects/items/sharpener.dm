@@ -40,6 +40,7 @@
 	user.visible_message("<span class='notice'>[user] ostrzy [I] za pomocą [src]!</span>", "<span class='notice'>Ostrzysz [I], przez co staje się o wiele groźniejszy niż wcześniej.</span>")
 	playsound(src, 'sound/items/unsheath.ogg', 25, 1)
 	I.sharpness = IS_SHARP_ACCURATE
+	I.bleed_force *= 1.1
 	I.throwforce = clamp(I.throwforce + increment, 0, max)
 	I.name = "[prefix] [I.name]"
 	name = "worn out [name]"

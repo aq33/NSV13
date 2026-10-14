@@ -3,6 +3,7 @@
 	desc = "It's red and gooey. Perhaps it's the chef's cooking?"
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "floor1"
+	color = COLOR_BLOOD
 	random_icon_states = list("floor1", "floor2", "floor3", "floor4", "floor5", "floor6", "floor7")
 	blood_state = BLOOD_STATE_HUMAN
 	bloodiness = BLOOD_AMOUNT_PER_DECAL
@@ -75,6 +76,8 @@
 
 /obj/effect/decal/cleanable/blood/gibs/Initialize(mapload, list/datum/disease/diseases)
 	. = ..()
+	var/mutable_appearance/gib_overlay = mutable_appearance(icon, "[icon_state]-overlay", appearance_flags = RESET_COLOR)
+	add_overlay(gib_overlay)
 	name = "rotten [name]"
 	//AddComponent(/datum/component/rot/gibs)
 	RegisterSignal(src, COMSIG_MOVABLE_PIPE_EJECTING, PROC_REF(on_pipe_eject))
@@ -200,6 +203,8 @@
 		src.footprint_sprite = footprint_sprite
 	. = ..(mapload)
 	icon_state = null //rendered through overlays // AQ EDIT
+	if(blood_state != BLOOD_STATE_HUMAN) // only red blood prints are greyscale
+		color = null
 	if(mapload)
 		entered_dirs |= dir //Keep the same appearance as in the map editor
 		update_icon()

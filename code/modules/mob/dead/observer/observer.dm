@@ -403,6 +403,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	can_reenter_corpse = FALSE
 	if(isliving(mind?.current))
+		var/mob/living/dnr_body = mind.current // AQ EDIT - Thanatorenasia (aquila/code/modules/lost_crew/ghostrole_on_revive.dm)
+		dnr_body.on_dnr() // AQ EDIT
 		mind.current.med_hud_set_status()
 	to_chat(src, "Nie można cię już przywrócić do ciała.")
 	return TRUE

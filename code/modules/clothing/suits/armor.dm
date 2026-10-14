@@ -9,7 +9,7 @@
 	equip_delay_other = 40
 	max_integrity = 250
 	resistance_flags = NONE
-	armor = list("melee" = 30, "bullet" = 50, "laser" = 20, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "stamina" = 30) //NSV13
+	armor = list("melee" = 30, "bullet" = 50, "laser" = 20, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "stamina" = 30, "bleed" = 50) //NSV13
 	clothing_flags = THICKMATERIAL
 
 /obj/item/clothing/suit/armor/Initialize(mapload)
@@ -52,7 +52,7 @@
 	icon_state = "secjacket"
 	item_state = "secjacket"
 	body_parts_covered = CHEST|GROIN|ARMS
-	armor = list("melee" = 35, "bullet" = 45, "laser" = 10, "energy" = 30, "bomb" = 20, "bio" = 0, "rad" = 0, "fire" = 45, "acid" = 45, "stamina" = 30) //NSV13
+	armor = list("melee" = 35, "bullet" = 45, "laser" = 10, "energy" = 30, "bomb" = 20, "bio" = 0, "rad" = 0, "fire" = 45, "acid" = 45, "stamina" = 30, "bleed" = 20) //NSV13
 
 /obj/item/clothing/suit/armor/hos
 	name = "armored greatcoat"
@@ -60,7 +60,7 @@
 	icon_state = "hos"
 	item_state = "greatcoat"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-	armor = list("melee" = 40, "bullet" = 60, "laser" = 15, "energy" = 30, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 90, "stamina" = 40) //NSV13
+	armor = list("melee" = 40, "bullet" = 60, "laser" = 15, "energy" = 30, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 90, "stamina" = 40, "bleed" = 40) //NSV13
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 	strip_delay = 80
@@ -107,7 +107,7 @@
 	icon_state = "capcarapace"
 	item_state = "armor"
 	body_parts_covered = CHEST|GROIN
-	armor = list("melee" = 50, "bullet" = 50, "laser" = 20, "energy" = 60, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 90, "stamina" = 40) //NSV13
+	armor = list("melee" = 50, "bullet" = 50, "laser" = 20, "energy" = 60, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 90, "stamina" = 40, "bleed" = 60) //NSV13
 	dog_fashion = null
 	resistance_flags = FIRE_PROOF
 
@@ -128,7 +128,7 @@
 	icon_state = "capjacket"
 	item_state = "capspacesuit"
 	body_parts_covered = CHEST|ARMS
-	armor = list("melee" = 40, "bullet" = 50, "laser" = 20, "energy" = 50, "bomb" = 55, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 80, "stamina" = 40) //NSV13
+	armor = list("melee" = 40, "bullet" = 50, "laser" = 20, "energy" = 50, "bomb" = 55, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 80, "stamina" = 40, "bleed" = 30) //NSV13
 
 /obj/item/clothing/suit/armor/riot
 	name = "riot suit"
@@ -138,7 +138,7 @@
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
-	armor = list("melee" = 60, "bullet" = 10, "laser" = 10, "energy" = 15, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 80, "stamina" = 50) //NSV13
+	armor = list("melee" = 60, "bullet" = 10, "laser" = 10, "energy" = 15, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 80, "stamina" = 50, "bleed" = 70) //NSV13
 	blocks_shove_knockdown = TRUE
 	strip_delay = 80
 	equip_delay_other = 60
@@ -151,7 +151,7 @@
 	icon_state = "bonearmor"
 	item_state = "bonearmor"
 	blood_overlay_type = "armor"
-	armor = list("melee" = 35, "bullet" = 25, "laser" = 25, "energy" = 30, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "stamina" = 20)
+	armor = list("melee" = 35, "bullet" = 25, "laser" = 25, "energy" = 30, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "stamina" = 20, "bleed" = 50)
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS
 
 /obj/item/clothing/suit/armor/bulletproof
@@ -160,7 +160,7 @@
 	icon_state = "bulletproof"
 	item_state = "armor"
 	blood_overlay_type = "armor"
-	armor = list("melee" = 15, "bullet" = 60, "laser" = 10, "energy" = 10, "bomb" = 40, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "stamina" = 40)
+	armor = list("melee" = 15, "bullet" = 60, "laser" = 10, "energy" = 10, "bomb" = 40, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "stamina" = 40, "bleed" = 60)
 	strip_delay = 70
 	equip_delay_other = 50
 
@@ -170,7 +170,7 @@
 	icon_state = "armor_reflec"
 	item_state = "armor_reflec"
 	blood_overlay_type = "armor"
-	armor = list("melee" = 10, "bullet" = 10, "laser" = 60, "energy" = 80, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100, "stamina" = 40)
+	armor = list("melee" = 10, "bullet" = 10, "laser" = 60, "energy" = 80, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100, "stamina" = 40, "bleed" = 10)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	var/hit_reflect_chance = 40
 
@@ -218,7 +218,7 @@
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	slowdown = 3
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-	armor = list("melee" = 80, "bullet" = 80, "laser" = 50, "energy" = 60, "bomb" = 100, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 90, "stamina" = 60)
+	armor = list("melee" = 80, "bullet" = 80, "laser" = 50, "energy" = 60, "bomb" = 100, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 90, "stamina" = 60, "bleed" = 70)
 	move_sound = list('sound/effects/suitstep1.ogg', 'sound/effects/suitstep2.ogg')
 
 /obj/item/clothing/suit/armor/tdome
@@ -226,7 +226,7 @@
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
-	armor = list("melee" = 80, "bullet" = 80, "laser" = 50, "energy" = 60, "bomb" = 100, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 90, "stamina" = 0)
+	armor = list("melee" = 80, "bullet" = 80, "laser" = 50, "energy" = 60, "bomb" = 100, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 90, "stamina" = 0, "bleed" = 0)
 	move_sound = list('sound/effects/suitstep1.ogg', 'sound/effects/suitstep2.ogg')
 
 /obj/item/clothing/suit/armor/tdome/red
@@ -243,7 +243,7 @@
 
 /obj/item/clothing/suit/armor/tdome/holosuit
 	name = "thunderdome suit"
-	armor = list("melee" = 10, "bullet" = 10, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0)
+	armor = list("melee" = 10, "bullet" = 10, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0, "bleed" = 0)
 	cold_protection = null
 	heat_protection = null
 
@@ -285,14 +285,14 @@
 	equip_delay_other = 40
 	max_integrity = 200
 	resistance_flags = FLAMMABLE
-	armor = list("melee" = 25, "bullet" = 25, "laser" = 10, "energy" = 30, "bomb" = 15, "bio" = 0, "rad" = 0, "fire" = 40, "acid" = 50, "stamina" = 30) //NSV13
+	armor = list("melee" = 25, "bullet" = 25, "laser" = 10, "energy" = 30, "bomb" = 15, "bio" = 0, "rad" = 0, "fire" = 40, "acid" = 50, "stamina" = 30, "bleed" = 60) //NSV13
 
 /obj/item/clothing/suit/armor/vest/russian
 	name = "russian vest"
 	desc = "A bulletproof vest with forest camo. Good thing there's plenty of forests to hide in around here, right?"
 	icon_state = "rus_armor"
 	item_state = "rus_armor"
-	armor = list("melee" = 25, "bullet" = 30, "laser" = 0, "energy" = 15, "bomb" = 10, "bio" = 0, "rad" = 20, "fire" = 20, "acid" = 50, "stamina" = 25)
+	armor = list("melee" = 25, "bullet" = 30, "laser" = 0, "energy" = 15, "bomb" = 10, "bio" = 0, "rad" = 20, "fire" = 20, "acid" = 50, "stamina" = 25, "bleed" = 20)
 
 /obj/item/clothing/suit/armor/vest/russian_coat
 	name = "russian battle coat"
@@ -302,4 +302,4 @@
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
-	armor = list("melee" = 25, "bullet" = 30, "laser" = 10, "energy" = 30, "bomb" = 20, "bio" = 50, "rad" = 20, "fire" = -10, "acid" = 50, "stamina" = 30) //NSV13
+	armor = list("melee" = 25, "bullet" = 30, "laser" = 10, "energy" = 30, "bomb" = 20, "bio" = 50, "rad" = 20, "fire" = -10, "acid" = 50, "stamina" = 30, "bleed" = 20) //NSV13

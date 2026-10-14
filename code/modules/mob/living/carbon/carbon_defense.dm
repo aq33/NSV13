@@ -77,6 +77,10 @@
 		affecting = bodyparts[1]
 	SEND_SIGNAL(I, COMSIG_ITEM_ATTACK_ZONE, src, user, affecting)
 	send_item_attack_message(I, user, parse_zone(affecting.body_zone))
+	if (I.bleed_force)
+		var/armour_block = run_armor_check(affecting, BLEED, armour_penetration = I.armour_penetration, silent = (I.force > 0))
+		var/hit_amount = (100 - armour_block) / 100
+		add_bleeding(I.bleed_force * hit_amount)
 	if(I.force)
 		apply_damage(I.force, I.damtype, affecting)
 		if(I.damtype == BRUTE && (IS_ORGANIC_LIMB(affecting)))
@@ -99,6 +103,10 @@
 					if(head)
 						head.add_mob_blood(src)
 						update_inv_head()
+		else if (I.damtype == BURN && is_bleeding() && IS_ORGANIC_LIMB(affecting))
+			cauterise_wounds(AMOUNT_TO_BLEED_INTENSITY(I.force / 3))
+			to_chat(src, "<span class='userdanger'>Żar [I] przypala twoją ranę i tamuje krwawienie!</span>")
+			playsound(src, 'sound/surgery/cautery2.ogg', 70)
 
 		//dismemberment
 		var/dismemberthreshold = (((affecting.max_damage * 2) / max(I.is_sharp(), 0.5)) - (affecting.get_damage() + ((I.w_class - 3) * 10) + ((I.attack_weight - 1) * 15)))
@@ -454,3 +462,18 @@
 		if(mind.martial_art && prob(mind.martial_art.block_chance) && mind.martial_art.can_use(src) && throw_mode && !incapacitated(FALSE, TRUE))
 			return TRUE
 	return FALSE
+
+/mob/living/carbon/bullet_act(obj/item/projectile/P, def_zone, piercing_hit = FALSE)
+	var/obj/item/bodypart/affecting = get_bodypart(check_zone(def_zone))
+	if(!affecting) //missing limb? we select the first bodypart (you can never have zero, because of chest)
+		affecting = bodyparts[1]
+	if (P.bleed_force)
+		var/armour_block = run_armor_check(affecting, BLEED, armour_penetration = P.armour_penetration, silent = TRUE)
+		var/hit_amount = (100 - armour_block) / 100
+		add_bleeding(P.bleed_force * hit_amount)
+	if (P.damage_type == BURN && is_bleeding() && IS_ORGANIC_LIMB(affecting))
+		cauterise_wounds(AMOUNT_TO_BLEED_INTENSITY(P.damage / 3))
+		playsound(src, 'sound/surgery/cautery2.ogg', 70)
+		to_chat(src, "<span class='userdanger'>Żar [P] przypala twoją ranę i tamuje krwawienie!</span>")
+
+	return ..()
