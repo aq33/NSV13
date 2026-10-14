@@ -76,7 +76,9 @@ GLOBAL_DATUM_INIT(economy_leaderboard_ui, /datum/economy_leaderboard_ui, new)
 
 	var/list/earnings = list()
 	for(var/list/result as anything in sortTim(GLOB.economy_round_results.Copy(), GLOBAL_PROC_REF(cmp_economy_result_balance)))
-		earnings += list(result)
+		var/list/entry = result.Copy()
+		entry["badge"] = aquila_badge_data(GLOB.economy_badges[result["ckey"]])
+		earnings += list(entry)
 	data["earnings"] = earnings
 	data["leaderboard"] = GLOB.economy_leaderboard
 	data["my_ckey"] = user.ckey

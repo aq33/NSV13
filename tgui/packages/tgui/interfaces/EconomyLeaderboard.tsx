@@ -6,13 +6,33 @@ import {
   Section,
   Stack,
   Table,
+  Tooltip,
 } from 'tgui-core/components';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
+export type Badge = {
+  name: string;
+  icon: string;
+  color: string;
+};
+
+/** Ckey z odznaką kupioną za aquilosy */
+export const PlayerName = (props: { ckey: string; badge?: Badge | null }) => (
+  <>
+    {!!props.badge && (
+      <Tooltip content={`Odznaka: ${props.badge.name}`}>
+        <Icon name={props.badge.icon} color={props.badge.color} mr={0.5} />
+      </Tooltip>
+    )}
+    {props.ckey}
+  </>
+);
+
 export type LeaderboardEntry = {
   ckey: string;
+  badge?: Badge | null;
   total: number;
   best: number;
   rounds: number;
@@ -66,7 +86,7 @@ const Podium = (props: { leaderboard: LeaderboardEntry[] }) => {
                 color={PODIUM[place].color}
               />
               <Box bold mt={0.5}>
-                {entry.ckey}
+                <PlayerName ckey={entry.ckey} badge={entry.badge} />
               </Box>
               <Box color="good">{entry.total} kr</Box>
               <Box
@@ -119,7 +139,9 @@ export const LeaderboardTable = (props: {
               index + 1
             )}
           </Table.Cell>
-          <Table.Cell bold>{entry.ckey}</Table.Cell>
+          <Table.Cell bold>
+            <PlayerName ckey={entry.ckey} badge={entry.badge} />
+          </Table.Cell>
           <Table.Cell textAlign="right" bold color="good">
             {entry.total} kr
           </Table.Cell>

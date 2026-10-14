@@ -555,6 +555,15 @@ CREATE TABLE IF NOT EXISTS `SS13_economy_earnings` (
   KEY `idx_round` (`round_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- AQUILA: perki kupowane za aquilosy - bilety na pracę, ubezpieczenia, odznaki (aquila/code/modules/metacoin/perks.dm)
+DROP TABLE IF EXISTS `SS13_aquila_perks`;
+CREATE TABLE IF NOT EXISTS `SS13_aquila_perks` (
+  `ckey` varchar(32) NOT NULL,
+  `perk` varchar(32) NOT NULL,
+  `amount` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`ckey`, `perk`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 DROP TABLE IF EXISTS `SS13_achievement_metadata`;
 CREATE TABLE IF NOT EXISTS `SS13_achievement_metadata` (
 	`achievement_key` VARCHAR(32) NOT NULL,

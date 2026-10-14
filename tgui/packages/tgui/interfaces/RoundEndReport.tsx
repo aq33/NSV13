@@ -14,7 +14,12 @@ import {
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { LeaderboardEntry, LeaderboardTable } from './EconomyLeaderboard';
+import {
+  Badge,
+  LeaderboardEntry,
+  LeaderboardTable,
+  PlayerName,
+} from './EconomyLeaderboard';
 
 type Objective = {
   text: string;
@@ -71,6 +76,7 @@ type Earning = {
   balance: number;
   counted: BooleanLike;
   alive: BooleanLike;
+  badge?: Badge | null;
 };
 
 type Data = {
@@ -362,7 +368,9 @@ const EarningsSection = (props) => {
                     index + 1
                   )}
                 </Table.Cell>
-                <Table.Cell bold>{earning.ckey}</Table.Cell>
+                <Table.Cell bold>
+                  <PlayerName ckey={earning.ckey} badge={earning.badge} />
+                </Table.Cell>
                 <Table.Cell>
                   {earning.name}
                   {!!earning.job && <Box color="label">{earning.job}</Box>}

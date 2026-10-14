@@ -124,5 +124,30 @@
 	TEST_ASSERT(islist(data["personal"]), "The report has no personal part")
 	TEST_ASSERT(islist(leaderboard_data["leaderboard"]), "The leaderboard window has no leaderboard")
 
+/// AQUILA - metacurrency perks: consumables can be bought many times, every ranking badge points at real badge data
+/datum/unit_test/aquila_metacoin_perks
+
+/datum/unit_test/aquila_metacoin_perks/Run()
+	for(var/consumable_type in list(/datum/gear/ooc/real_antagtoken, /datum/gear/ooc/job_ticket, /datum/gear/ooc/insurance))
+		var/datum/gear/consumable = new consumable_type
+		TEST_ASSERT(consumable.multi_purchase, "[consumable_type] can not be bought more than once")
+		qdel(consumable)
+	for(var/shop_type in list(/datum/gear/ooc/job_ticket, /datum/gear/ooc/insurance))
+		var/datum/gear/shop_item = new shop_type
+		TEST_ASSERT(GLOB.gear_datums[shop_item.id], "[shop_type] is not in the loadout shop")
+		qdel(shop_item)
+	var/datum/gear/token = new /datum/gear/ooc/real_antagtoken
+	TEST_ASSERT_EQUAL(token.cost, 10000, "The antag token has the wrong price")
+	qdel(token)
+
+	var/list/seen_ids = list()
+	for(var/badge_type in subtypesof(/datum/gear/ooc/badge))
+		var/datum/gear/ooc/badge/badge = new badge_type
+		TEST_ASSERT(aquila_badge_data(badge.badge_id), "[badge_type] points at a missing badge [badge.badge_id]")
+		TEST_ASSERT(!seen_ids[badge.id], "[badge_type] has the same loadout id as another badge")
+		TEST_ASSERT(GLOB.gear_datums[badge.id], "[badge_type] is not in the loadout shop")
+		seen_ids[badge.id] = TRUE
+		qdel(badge)
+
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL

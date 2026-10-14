@@ -428,6 +428,7 @@
 #include "code\modules\hygiene\hygienebot.dm"
 #include "code\modules\jobs\job_slots.dm"
 #include "code\modules\metacoin\metacoin.dm"
+#include "code\modules\metacoin\perks.dm"
 #include "code\modules\miasma\corpse_flower.dm"
 #include "code\modules\miasma\miasma_breath.dm"
 #include "code\modules\miasma\miasma_gas.dm"

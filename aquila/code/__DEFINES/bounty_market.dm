@@ -33,6 +33,14 @@
 /// Bazowy SSeconomy.bounty_modifier; nagrody cywilne skalują się względem niego, żeby premia stacji nadal działała
 #define CIV_BOUNTY_MODIFIER_BASE 3
 
+// Perki kupowane za aquilosy (aquila/code/modules/metacoin/perks.dm)
+/// Bilet: pierwszeństwo do pracy z najwyższym priorytetem w następnej rundzie
+#define PERK_JOB_TICKET "job_ticket"
+/// Ubezpieczenie: po śmierci albo bez ewakuacji połowa salda i tak przechodzi na aquilosy
+#define PERK_INSURANCE "insurance"
+/// Wybrana odznaka w rankingu (numer z GLOB.aquila_badges)
+#define PERK_BADGE "badge"
+
 // Trendy na giełdzie materiałów
 #define MARKET_TREND_UPWARD 1
 #define MARKET_TREND_DOWNWARD -1

@@ -12,6 +12,7 @@ In any query remember to add a prefix to the table names if you use one.
 Version 6.5, 14 October 2026 by Aquila
 Added the economy earnings table: end-of-round ID card balance of evacuated crew, for the round-end report and the all-time earnings leaderboard
 (the game also creates it itself if missing)
+Also added the aquila perks table (job tickets, balance insurance, ranking badges bought with metacurrency).
 
 CREATE TABLE IF NOT EXISTS `SS13_economy_earnings` (
 	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -24,6 +25,13 @@ CREATE TABLE IF NOT EXISTS `SS13_economy_earnings` (
 	PRIMARY KEY (`id`),
 	KEY `idx_ckey` (`ckey`),
 	KEY `idx_round` (`round_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `SS13_aquila_perks` (
+	`ckey` VARCHAR(32) NOT NULL,
+	`perk` VARCHAR(32) NOT NULL,
+	`amount` INT NOT NULL DEFAULT 0,
+	PRIMARY KEY (`ckey`, `perk`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -----------------------------------------------------

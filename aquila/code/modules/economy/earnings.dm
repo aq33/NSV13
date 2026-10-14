@@ -13,6 +13,8 @@
 GLOBAL_LIST_EMPTY(economy_round_results)
 /// Ranking z poprzednich rund, wczytany z bazy albo pliku
 GLOBAL_LIST_EMPTY(economy_leaderboard)
+/// ckey => numer odznaki w rankingu (perki za aquilosy)
+GLOBAL_LIST_EMPTY(economy_badges)
 /// Czy wyniki tej rundy zostały już zapisane
 GLOBAL_VAR_INIT(economy_results_saved, FALSE)
 /// Czy ranking był już wczytany w tej rundzie (żeby czasownik nie pytał bazy przy każdym kliknięciu)
@@ -150,6 +152,9 @@ GLOBAL_VAR_INIT(economy_leaderboard_loaded, FALSE)
 		leaderboard = sortTim(leaderboard, GLOBAL_PROC_REF(cmp_leaderboard_total))
 		if(length(leaderboard) > EARNINGS_LEADERBOARD_SIZE)
 			leaderboard.Cut(EARNINGS_LEADERBOARD_SIZE + 1)
+	GLOB.economy_badges = aquila_all_badges()
+	for(var/list/entry as anything in leaderboard)
+		entry["badge"] = aquila_badge_data(GLOB.economy_badges[entry["ckey"]])
 	GLOB.economy_leaderboard = leaderboard
 	GLOB.economy_leaderboard_loaded = TRUE
 	return leaderboard
