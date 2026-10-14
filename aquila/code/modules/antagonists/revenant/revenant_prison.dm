@@ -104,7 +104,7 @@
 
 /datum/component/revenant_prison/proc/on_parent_break()
 	var/obj/source = parent
-	source.visible_message("<span class='revenwarning'>Rewenant zanosi się chichotem, uciekając z [source]!</span>")
+	source.visible_message("<span class='revenwarning'>Upiór zanosi się chichotem, uciekając z [source]!</span>")
 	playsound(source.loc, 'sound/effects/ghost2.ogg', 100, TRUE)
 	release_revenant("rozbicie [source]")
 
@@ -165,8 +165,8 @@
 
 /// Uwięziony rewenant mówi do żywych przez lustro
 /datum/action/mirror_talk
-	name = "Mirror Talk"
-	desc = "Communicate with the living world through your prison."
+	name = "Mowa przez lustro"
+	desc = "Przemawiaj do świata żywych przez swoje więzienie."
 	icon_icon = 'aquila/icons/mob/actions/actions_revenant.dmi'
 	button_icon_state = "mirror_talk"
 	background_icon_state = "bg_revenant"

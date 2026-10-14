@@ -1,7 +1,7 @@
 #define REVENANT_SPAWN_THRESHOLD 20
 
 /datum/round_event_control/revenant
-	name = "Spawn Revenant" // Did you mean 'griefghost'?
+	name = "Pojawienie się upiora" // Did you mean 'griefghost'?
 	typepath = /datum/round_event/ghost_role/revenant
 	weight = 7
 	max_occurrences = 1
@@ -11,7 +11,7 @@
 
 /datum/round_event/ghost_role/revenant
 	var/ignore_mobcheck = FALSE
-	role_name = "revenant"
+	role_name = "upiór"
 
 /datum/round_event/ghost_role/revenant/New(my_processing = TRUE, new_ignore_mobcheck = FALSE)
 	..()

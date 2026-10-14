@@ -79,6 +79,7 @@
 	var/turf/right = get_step(left, EAST)
 	var/mob/living/simple_animal/revenant/rev = allocate(/mob/living/simple_animal/revenant, left)
 	TEST_ASSERT(HAS_TRAIT(rev, TRAIT_SIXTHSENSE), "Revenant cannot hear the dead")
+	TEST_ASSERT(!findtext(rev.name, " of "), "Revenant got an English name: [rev.name]")
 	var/obj/effect/proc_holder/spell/aoe_turf/revenant/haunt_object/haunt = locate() in rev.mob_spell_list
 	TEST_ASSERT(haunt, "Revenant has no Haunt Object")
 	TEST_ASSERT(locate(/obj/effect/proc_holder/spell/aoe_turf/revenant/vortex) in rev.mob_spell_list, "Revenant has no Vortex")

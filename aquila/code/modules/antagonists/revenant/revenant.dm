@@ -16,6 +16,36 @@
 	// Jak w tg słyszy martwy czat, więc zmarli mogą go prosić o przysługi
 	ADD_TRAIT(src, TRAIT_SIXTHSENSE, INNATE_TRAIT)
 
+/// Polskie imię, np. „Widmo wiecznej rozpaczy”: przymiotnik w dopełniaczu zgodny z rodzajem tematu
+/mob/living/simple_animal/revenant/random_revenant_name()
+	var/static/list/spirit_types = list("Duch", "Widmo", "Zjawa", "Fantom", "Upiór", "Esencja", "Dusza")
+	// temat w dopełniaczu => rodzaj: "f" żeński, "m" męski i nijaki, "pl" mnoga
+	var/static/list/themes = list(
+		"rozpaczy" = "f", "agonii" = "f", "krzyków" = "pl", "zemsty" = "f", "piekielnego ognia" = "m",
+		"gniewu" = "m", "cierpienia" = "m", "śmierci" = "f", "zniszczenia" = "m", "nienawiści" = "f",
+		"niedoli" = "f", "zarazy" = "f", "desperacji" = "f", "smutku" = "m", "ruiny" = "f",
+		"soli" = "f", "żałoby" = "f", "śmiechu" = "m", "frustracji" = "f", "rozkładu" = "m",
+	)
+	// tematy już z przymiotnikiem nie dostają drugiego
+	var/static/list/adjective_stems = list(
+		"otchłann", "mroczn", "wieczn", "nieskończon", "bezdenn", "okrutn", "nienawistn",
+		"ohydn", "złowrog", "ognist", "cich", "gwałtown", "spokojn", "obojętn", "brutaln", "paląc",
+	)
+	var/theme = pick(themes)
+	var/adjective = ""
+	if(!findtext(theme, " ") && prob(94)) // jak w tg: czasem bez przymiotnika
+		var/stem = pick(adjective_stems)
+		var/soft = copytext(stem, -1) in list("g", "k") // złowrogiej, złowrogiego, złowrogich
+		switch(themes[theme])
+			if("f")
+				adjective = stem + (soft ? "iej" : "ej")
+			if("pl")
+				adjective = stem + (soft ? "ich" : "ych")
+			else
+				adjective = stem + (soft ? "iego" : "ego")
+		adjective += " "
+	name = "[pick(spirit_types)] [adjective][theme]"
+
 // Jak w tg: niewidzialny rewenant może bawić się tablicą spirytystyczną jak duch
 /mob/living/simple_animal/revenant/ClickOn(atom/A, params)
 	var/list/modifiers = params2list(params)
@@ -115,10 +145,10 @@
 
 /// Recall to Station: only given while the revenant is off the station
 /obj/effect/proc_holder/spell/self/rev_teleport
-	name = "Recall to Station"
-	desc = "Teleport to the station."
+	name = "Powrót na statek"
+	desc = "Teleportuje cię na statek."
 	charge_max = 0
-	panel = "Revenant Abilities"
+	panel = "Zdolności upiora"
 	action_icon = 'aquila/icons/mob/actions/actions_revenant.dmi'
 	action_icon_state = "r_teleport"
 	action_background_icon_state = "bg_revenant"

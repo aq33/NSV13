@@ -24,8 +24,8 @@
 
 //Haunt Object: nawiedza pobliskie przedmioty, które rzucają się na ludzi
 /obj/effect/proc_holder/spell/aoe_turf/revenant/haunt_object
-	name = "Haunt Object"
-	desc = "Empower nearby objects with ghostly energy, causing them to attack nearby mortals. Items closer to you are more likely to be haunted."
+	name = "Nawiedzenie przedmiotów"
+	desc = "Nasyca pobliskie przedmioty upiorną energią, przez co atakują śmiertelników w pobliżu. Bliższe przedmioty łatwiej nawiedzić."
 	action_icon = 'aquila/icons/mob/actions/actions_revenant.dmi'
 	action_icon_state = "r_haunt"
 	range = 5
@@ -83,8 +83,8 @@
 
 //Vortex: opróżnia pobliskie pojemniki i wciąga przedmioty do rewenanta
 /obj/effect/proc_holder/spell/aoe_turf/revenant/vortex
-	name = "Vortex"
-	desc = "Causes nearby objects to dump their contents and get sucked towards your location."
+	name = "Wir"
+	desc = "Pobliskie pojemniki wysypują zawartość, a przedmioty wokół są wciągane w twoją stronę."
 	action_icon = 'aquila/icons/mob/actions/actions_revenant.dmi'
 	action_icon_state = "r_vortex"
 	charge_max = 150
@@ -115,8 +115,8 @@
 
 //Scatter: to samo, ale rozrzuca przedmioty na boki
 /obj/effect/proc_holder/spell/aoe_turf/revenant/vortex/scatter
-	name = "Scatter"
-	desc = "Causes nearby objects to dump their contents and get thrown away from your location."
+	name = "Rozrzut"
+	desc = "Pobliskie pojemniki wysypują zawartość, a przedmioty wokół są odrzucane od ciebie."
 	action_icon_state = "r_scatter"
 	charge_max = 250
 	stun = 30
