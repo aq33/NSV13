@@ -16,6 +16,7 @@
 	)
 
 /datum/test_chamber_kit/pr_433/setup(list/spawned, list/turfs, turf/center, mob/user)
+	. = ..()
 	var/turf/drop = turfs[min(length(items) + 1, length(turfs))]
 	new /obj/item/paper/secretrecipe(drop) // tu, bo test komory liczy podtypy z items
 

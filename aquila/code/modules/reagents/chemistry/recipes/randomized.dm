@@ -64,7 +64,7 @@
 /datum/chemical_reaction/randomized/proc/load_recipe(list/recipe_data)
 	var/list/loaded_reagents = unwrap_reagent_list(recipe_data["required_reagents"])
 	var/list/loaded_catalysts = unwrap_reagent_list(recipe_data["required_catalysts"])
-	if(!length(loaded_reagents) || isnull(loaded_catalysts))
+	if(!length(loaded_reagents) || isnull(loaded_catalysts) || !isnum(recipe_data["required_temp"]))
 		return FALSE
 	var/container
 	if(recipe_data["required_container"])

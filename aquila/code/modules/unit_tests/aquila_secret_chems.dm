@@ -34,6 +34,9 @@
 	TEST_ASSERT(islist(broken_save) && !length(broken_save), "Uszkodzony zapis nie dał pustej listy")
 	var/datum/chemical_reaction/randomized/metalgen/fresh = new
 	TEST_ASSERT(!fresh.load_recipe(list("required_reagents" = "zepsute")), "Wczytano recepturę z uszkodzonych danych")
+	var/list/bad_temp = saved.Copy()
+	bad_temp["required_temp"] = "gorąco"
+	TEST_ASSERT(!fresh.load_recipe(bad_temp), "Wczytano recepturę z nieliczbową temperaturą")
 	TEST_ASSERT(length(fresh.required_reagents), "Receptura bez zapisu nie ma składników")
 	qdel(fresh)
 
