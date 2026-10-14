@@ -78,4 +78,36 @@
 			found_bleeding = TRUE
 	TEST_ASSERT(found_bleeding, "Bleeding is missing")
 
+/// AQUILA - the advanced analyzer tells the next surgery step and its tools
+/datum/unit_test/aquila_surgery_progress
+
+/datum/unit_test/aquila_surgery_progress/Run()
+	var/mob/living/carbon/human/patient = allocate(/mob/living/carbon/human)
+	var/datum/surgery/surgery = new /datum/surgery/organ_manipulation(patient, BODY_ZONE_CHEST, patient.get_bodypart(BODY_ZONE_CHEST))
+	var/list/progress = patient.get_surgery_progress()
+	TEST_ASSERT(length(progress) == 1, "The ongoing surgery is missing")
+	var/list/entry = progress[1]
+	TEST_ASSERT(entry["step"] == "nacięcie" && findtext(entry["tools"], "skalpel"), "Wrong first step: [entry["step"]] / [entry["tools"]]")
+	surgery.status = 3
+	entry = patient.get_surgery_progress()[1]
+	TEST_ASSERT(entry["step"] == "piłowanie kości", "Wrong third step: [entry["step"]]")
+	var/list/data = get_health_analyzer_data(patient, patient, TRUE)
+	TEST_ASSERT(length(data["surgeries"]) == 1, "The advanced analyzer window does not show the surgery")
+	TEST_ASSERT(isnull(get_health_analyzer_data(patient, patient, FALSE)["surgeries"]), "The basic analyzer shows the surgery")
+	qdel(surgery)
+
+/// AQUILA - vitals monitors mapped over stasis beds are connected to their own bed
+/datum/unit_test/aquila_mapped_vitals_monitors
+
+/datum/unit_test/aquila_mapped_vitals_monitors/Run()
+	var/checked = 0
+	for(var/obj/machinery/vitals_reader/monitor in GLOB.machines)
+		if(!findtext(monitor.id_tag, "aq_vitals_"))
+			continue
+		checked++
+		TEST_ASSERT(istype(monitor.connected, /obj/machinery/stasis), "Monitor at [monitor.x],[monitor.y],[monitor.z] is not connected to a stasis bed")
+		var/obj/machinery/stasis/bed = monitor.connected
+		TEST_ASSERT(bed.id_tag == monitor.id_tag, "Monitor at [monitor.x],[monitor.y],[monitor.z] picked the wrong bed")
+	log_world("aquila_mapped_vitals_monitors: [checked] mapped monitors checked")
+
 #undef TEST_ASSERT

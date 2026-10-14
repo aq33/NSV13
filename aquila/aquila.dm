@@ -702,6 +702,7 @@
 #include "code\modules\surgery\organs\liver_cirrhosis.dm"
 #include "code\modules\surgery\stomach_pump.dm"
 #include "code\modules\surgery\surgery_pain.dm"
+#include "code\modules\surgery\surgery_progress.dm"
 #include "code\modules\wounds\_wounds.dm"
 #include "code\modules\wounds\blunt.dm"
 #include "code\modules\wounds\burn.dm"

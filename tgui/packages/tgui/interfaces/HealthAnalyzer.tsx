@@ -94,7 +94,17 @@ type ReagentEntry = {
   volume: number;
 };
 
+type SurgeryProgress = {
+  name: string;
+  zone: string;
+  step: string;
+  step_number: number;
+  step_count: number;
+  tools: string;
+};
+
 type Data = {
+  surgeries?: SurgeryProgress[] | null;
   target?: string;
   is_dead?: boolean;
   consciousness?: number;
@@ -329,6 +339,20 @@ export const HealthAnalyzer = (props) => {
                 <div>Temperatura: {data.body_temperature}</div>
               )}
             </Section>
+            {!!data.surgeries?.length && (
+              <Section title="Trwające operacje">
+                {data.surgeries.map((surgery, index) => (
+                  <div key={index} className="surgery_entry">
+                    <b>{surgery.name}</b> ({surgery.zone})
+                    <br />
+                    Następny krok {surgery.step_number}/{surgery.step_count}
+                    : <b>{surgery.step}</b>
+                    <br />
+                    Narzędzie: {surgery.tools}
+                  </div>
+                ))}
+              </Section>
+            )}
             {!!data.injuries?.body && MapZone('body', data.injuries.body)}
             {selectedSection !== 'body' &&
               !!data.injuries?.[selectedSection] &&

@@ -388,6 +388,8 @@ GENE SCANNER
 	if(iscarbon(M)) // AQ EDIT - wounds
 		var/mob/living/carbon/wounded = M
 		message += wounded.get_wound_scan_lines()
+		if(advanced) // AQ EDIT - next surgery step
+			message += wounded.get_surgery_scan_lines()
 
 	// Blood Level
 	if(M.has_dna())
