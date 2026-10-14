@@ -58,12 +58,12 @@
 	if(.)
 		return
 	var/datum/team/darkspawn/team = GLOB.darkspawn_team
-	if(team && !team.sacrament_done && team.all_darkspawn_dead())
+	if(team && !GLOB.sacrament_done && team.check_darkspawn_death())
 		return TRUE
 
 /datum/game_mode/darkspawn/set_round_result()
 	..()
-	if(GLOB.darkspawn_team?.sacrament_done)
+	if(GLOB.sacrament_done)
 		SSticker.mode_result = "win - the darkspawn have completed the Sacrament"
 	else
 		SSticker.mode_result = "loss - staff stopped the darkspawn"

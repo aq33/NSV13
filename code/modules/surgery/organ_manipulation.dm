@@ -168,6 +168,10 @@
 			log_combat(user, target, "surgically removed [H] from", addition="COMBAT MODE: [uppertext(user.combat_mode)]")
 			H.leave_victim()
 			return FALSE
+		if(istype(I, /obj/item/organ/shadowtumor/thrall)) // AQ EDIT - darkspawn z Yogstation: przytomny thrall odpycha operujących
+			var/obj/item/organ/shadowtumor/thrall/tumor = I
+			if(tumor.resist(target))
+				return FALSE
 		if(I && I.owner == target)
 			display_results(user, target, "<span class='notice'>Pomyślnie wydobywasz [I] z ciała [target] ([strefa_pl(target_zone)]).</span>",
 				"[user] pomyślnie wydobywa [I] z ciała [target] ([strefa_pl(target_zone)])!",

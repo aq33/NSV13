@@ -37,7 +37,7 @@
 
 /datum/dynamic_ruleset/roundstart/darkspawn/round_result()
 	..()
-	if(GLOB.darkspawn_team?.sacrament_done)
+	if(GLOB.sacrament_done)
 		SSticker.mode_result = "win - the darkspawn have completed the Sacrament"
 	else
 		SSticker.mode_result = "loss - staff stopped the darkspawn"
