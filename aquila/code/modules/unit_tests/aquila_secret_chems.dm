@@ -29,6 +29,14 @@
 	TEST_ASSERT(reloaded.required_temp == metalgen_recipe.required_temp, "Wczytana temperatura różni się od zapisanej")
 	qdel(reloaded)
 
+	// Uszkodzony zapis nie wywala dekodowania, a receptura i tak dostaje składniki
+	var/list/broken_save = decode_randomized_recipes("{\"/datum/chemical_reaction/randomized/metalgen\": {\"timestamp\": ")
+	TEST_ASSERT(islist(broken_save) && !length(broken_save), "Uszkodzony zapis nie dał pustej listy")
+	var/datum/chemical_reaction/randomized/metalgen/fresh = new
+	TEST_ASSERT(!fresh.load_recipe(list("required_reagents" = "zepsute")), "Wczytano recepturę z uszkodzonych danych")
+	TEST_ASSERT(length(fresh.required_reagents), "Receptura bez zapisu nie ma składników")
+	qdel(fresh)
+
 	// Kartki: skamieniała z gorgium, uranowa z metalgenem
 	var/obj/item/paper/secretrecipe/gorgium/rock_paper = allocate(/obj/item/paper/secretrecipe/gorgium, start)
 	TEST_ASSERT(LAZYLEN(rock_paper.raw_text_inputs), "Kartka gorgium jest pusta")

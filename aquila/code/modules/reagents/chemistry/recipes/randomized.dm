@@ -15,14 +15,18 @@
 	if(isnull(saved_recipes))
 		saved_recipes = list()
 		if(fexists(RANDOMIZED_RECIPES_FILE))
-			// Uszkodzony zapis (np. przerwany po fdel) nie może zatrzymać budowania reakcji
-			try
-				var/list/decoded = json_decode(file2text(RANDOMIZED_RECIPES_FILE))
-				if(islist(decoded))
-					saved_recipes = decoded
-			catch(var/exception/decode_error)
-				log_game("Nie udało się wczytać zapisanych losowych receptur: [decode_error]")
+			saved_recipes = decode_randomized_recipes(file2text(RANDOMIZED_RECIPES_FILE))
 	return saved_recipes
+
+/// Dekoduje zapis receptur; uszkodzony zapis (np. przerwany po fdel) daje pustą listę zamiast błędu
+/proc/decode_randomized_recipes(json_text)
+	. = list()
+	try
+		var/list/decoded = json_decode(json_text)
+		if(islist(decoded))
+			. = decoded
+	catch(var/exception/decode_error)
+		log_game("Nie udało się wczytać zapisanych losowych receptur: [decode_error]")
 
 /datum/chemical_reaction/randomized
 	/// Co ile dni receptura się zmienia
