@@ -38,11 +38,16 @@
 	cube.bounty_holder_accounts[holder] = 1
 
 	var/start_balance = holder.account_balance
-	// 1000 + 20% speed bonus - 30% holder cut
-	TEST_ASSERT_EQUAL(cube.pay_out(dry_run = TRUE), 900, "Cargo share of the cube is wrong")
+	var/datum/bank_account/department/civ_budget = SSeconomy.get_dep_account(ACCOUNT_CIV)
+	var/civ_start = civ_budget.account_balance
+	var/vat_per_department = round(230 / length(SSeconomy.department_accounts))
+	// 1000 + 20% speed bonus - 30% holder cut - 23% VAT
+	TEST_ASSERT_EQUAL(cube.pay_out(dry_run = TRUE), 670, "Cargo share of the cube is wrong")
 	TEST_ASSERT_EQUAL(holder.account_balance, start_balance, "A dry run paid the holder")
-	TEST_ASSERT_EQUAL(cube.pay_out(), 900, "Cargo share of the cube changed after paying out")
+	TEST_ASSERT_EQUAL(civ_budget.account_balance, civ_start, "A dry run paid the VAT")
+	TEST_ASSERT_EQUAL(cube.pay_out(), 670, "Cargo share of the cube changed after paying out")
 	TEST_ASSERT_EQUAL(holder.account_balance, start_balance + 300, "The holder did not get their 30% cut")
+	TEST_ASSERT_EQUAL(civ_budget.account_balance, civ_start + vat_per_department, "A department budget did not get its share of the VAT")
 	qdel(holder)
 
 /// AQUILA - market prices stay inside their limits and stock blocks sell for their locked price

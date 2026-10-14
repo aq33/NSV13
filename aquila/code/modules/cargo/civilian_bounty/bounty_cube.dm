@@ -24,6 +24,8 @@
 	var/speed_bonus = 0.2
 	/// Część wartości dla wykonawców, dzielona przy zleceniach globalnych
 	var/holder_cut = BOUNTY_CUT_STANDARD
+	/// Część wartości, która jako VAT idzie po równo do budżetów działów statku
+	var/station_vat = BOUNTY_VAT
 	/// Napiwek dla osoby, która zarejestrowała się skanerem eksportu
 	var/handler_tip = 0.1
 	/// Czas do kolejnego przypomnienia
@@ -52,6 +54,8 @@
 	. = ..()
 	if(speed_bonus)
 		. += "<span class='notice'>Zostało <b>[DisplayTimeText(COOLDOWN_TIMELEFT(src, next_nag_time), round_seconds_to = 1)]</b>, zanim przepadnie premia za szybką dostawę: <b>[round(bounty_value * speed_bonus)]</b> kr.</span>"
+	if(station_vat && bounty_value)
+		. += "<span class='notice'>Przy sprzedaży [round(station_vat * 100)]% wartości (<b>[round(bounty_value * station_vat)]</b> kr) trafi jako VAT do budżetów działów statku.</span>"
 	if(handler_tip && !bounty_handler_account)
 		. += "<span class='notice'>Zeskanuj kostkę skanerem eksportu, by zarejestrować swoje konto do napiwku za obsługę: <b>[round(bounty_value * handler_tip)]</b> kr.</span>"
 
@@ -120,7 +124,26 @@
 			bounty_handler_account.adjust_money(tip)
 			bounty_handler_account.bank_card_talk("Sprzedano [src]. Napiwek za obsługę: [tip] kr.")
 
+	// VAT: część wartości dzielona po równo między budżety działów statku, potrącana z części zaopatrzenia
+	var/vat = round(bounty_value * station_vat)
+	cargo_share -= vat
+	if(!dry_run && vat)
+		pay_station_vat(vat)
+
 	return max(0, cargo_share)
+
+/// Dzieli VAT po równo między budżety działów statku
+/obj/item/bounty_cube/proc/pay_station_vat(vat)
+	var/list/station_budgets = list()
+	for(var/department_id in SSeconomy.department_accounts)
+		var/datum/bank_account/budget = SSeconomy.get_dep_account(department_id)
+		if(budget)
+			station_budgets += budget
+	if(!length(station_budgets))
+		return
+	var/per_department = round(vat / length(station_budgets))
+	for(var/datum/bank_account/budget as anything in station_budgets)
+		budget.adjust_money(per_department)
 
 /// Kostka do testów - użyj w ręce, by ustawić ją z losowym zleceniem
 /obj/item/bounty_cube/debug_cube
