@@ -24,6 +24,7 @@
 		/datum/antagonist/fugitive_hunter = /datum/outfit/bountyarmor,
 		/datum/antagonist/vampire = /datum/outfit/aquila_preview/vampire,
 		/datum/antagonist/brother = /datum/outfit/aquila_preview/brother,
+		/datum/antagonist/spy = /datum/outfit/aquila_preview/spy,
 	)
 	for(var/antag_type in outfits)
 		if(ispath(antag_datum, antag_type))
@@ -105,3 +106,12 @@
 	head = /obj/item/clothing/head/helmet/space/syndicate/black
 	mask = /obj/item/clothing/mask/gas/syndicate
 	r_hand = /obj/item/gun/ballistic/automatic/pistol
+
+/datum/outfit/aquila_preview/spy
+	uniform = /obj/item/clothing/under/suit/black
+	gloves = /obj/item/clothing/gloves/color/black
+	shoes = /obj/item/clothing/shoes/jackboots
+	head = /obj/item/clothing/head/fedora
+	suit = /obj/item/clothing/suit/jacket/leather/overcoat
+	glasses = /obj/item/clothing/glasses/sunglasses
+	ears = /obj/item/radio/headset
