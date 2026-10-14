@@ -61,10 +61,20 @@
 	TEST_ASSERT(GLOB.total_runtimes == runtimes_before, "Setting up the objectives caused [GLOB.total_runtimes - runtimes_before] runtime(s)")
 
 	// The forging always ends up with an objective
+	// The documents exchange can add a second (backstab) objective, so it is blocked here and tested on its own below
+	var/datum/mind/forge_old_red = SSticker.mode?.exchange_red
+	if(SSticker.mode && !forge_old_red)
+		SSticker.mode.exchange_red = first_traitor.owner
+	var/forge_failure
 	for(var/i in 1 to 30)
 		var/objectives_before = length(first_traitor.objectives)
 		first_traitor.forge_aquila_human_objective()
-		TEST_ASSERT(length(first_traitor.objectives) == objectives_before + 1, "Forging round [i] added [length(first_traitor.objectives) - objectives_before] objectives")
+		if(length(first_traitor.objectives) != objectives_before + 1)
+			forge_failure = "Forging round [i] added [length(first_traitor.objectives) - objectives_before] objectives"
+			break
+	if(SSticker.mode)
+		SSticker.mode.exchange_red = forge_old_red
+	TEST_ASSERT(!forge_failure, forge_failure)
 	for(var/datum/objective/objective as anything in first_traitor.objectives)
 		objective.check_completion()
 	TEST_ASSERT(GLOB.total_runtimes == runtimes_before, "Forging the objectives caused [GLOB.total_runtimes - runtimes_before] runtime(s)")
