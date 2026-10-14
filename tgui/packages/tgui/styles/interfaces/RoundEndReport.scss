@@ -1,0 +1,89 @@
+// AQUILA - raport końca rundy i ranking zarobków
+
+.RoundEndReport__tile {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  height: 100%;
+}
+
+.RoundEndReport__mine {
+  background-color: rgba(64, 160, 255, 0.18);
+}
+
+.RoundEndReport__podium {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-top: 3px solid;
+  border-radius: 6px 6px 0 0;
+}
+
+// Sekcje z serwera przychodzą jako HTML ze starymi klasami raportu (html/browser/roundend.css)
+.RoundEndReport__html {
+  line-height: 1.4;
+
+  .panel {
+    background: none;
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+
+  .greentext {
+    color: #6fd36f;
+    font-weight: bold;
+  }
+
+  .redtext {
+    color: #ef4f5b;
+    font-weight: bold;
+  }
+
+  .bluetext {
+    color: #6f95ff;
+    font-weight: bold;
+  }
+
+  .neutraltext {
+    font-weight: bold;
+  }
+
+  .marooned {
+    color: #8c8cff;
+    font-weight: bold;
+  }
+
+  .header {
+    display: block;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 0.4em 0 0.2em;
+  }
+
+  .big {
+    font-size: 1.3em;
+  }
+
+  .medaltext {
+    color: #add8e6;
+  }
+
+  .codephrase {
+    color: #ef4f5b;
+  }
+
+  ul {
+    margin: 0.3em 0;
+    padding-left: 1.4em;
+  }
+
+  li {
+    margin-bottom: 0.2em;
+  }
+
+  img {
+    vertical-align: middle;
+  }
+}

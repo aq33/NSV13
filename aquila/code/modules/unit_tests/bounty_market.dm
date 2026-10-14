@@ -111,5 +111,18 @@
 	TEST_ASSERT_EQUAL(vendor.default_price, base_price, "Vending prices did not go back after the crash")
 	TEST_ASSERT(!length(bad_prices), "Materials not at minimum during the crash: [bad_prices.Join(", ")]")
 
+/// AQUILA - the TGUI round-end report and the leaderboard window build their data without runtimes
+/datum/unit_test/roundend_report_ui
+
+/datum/unit_test/roundend_report_ui/Run()
+	var/mob/living/carbon/human/viewer = allocate(/mob/living/carbon/human)
+	var/runtimes_before = GLOB.total_runtimes
+	var/list/data = GLOB.roundend_report_ui.ui_static_data(viewer)
+	var/list/leaderboard_data = GLOB.economy_leaderboard_ui.ui_static_data(viewer)
+	TEST_ASSERT(GLOB.total_runtimes == runtimes_before, "Building the round-end report data caused [GLOB.total_runtimes - runtimes_before] runtime(s)")
+	TEST_ASSERT(islist(data["stats"]) && data["stats"]["duration"], "The report has no round stats")
+	TEST_ASSERT(islist(data["personal"]), "The report has no personal part")
+	TEST_ASSERT(islist(leaderboard_data["leaderboard"]), "The leaderboard window has no leaderboard")
+
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL

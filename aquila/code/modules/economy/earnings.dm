@@ -18,20 +18,43 @@ GLOBAL_VAR_INIT(economy_results_saved, FALSE)
 /// Czy ranking był już wczytany w tej rundzie (żeby czasownik nie pytał bazy przy każdym kliknięciu)
 GLOBAL_VAR_INIT(economy_leaderboard_loaded, FALSE)
 
-/// Zapisuje saldo z karty gracza na koniec rundy (wołane z declare_completion obok aquilosów)
+/// Zapisuje saldo z karty gracza na koniec rundy (wołane z declare_completion obok aquilosów).
+/// Zapisuje każdego gracza z postacią; do rankingu (counted) liczą się tylko ewakuowani, jak przy aquilosach.
 /client/proc/record_endround_balance()
-	var/datum/bank_account/account = get_endround_bank_account()
-	if(!account || account.account_balance <= 0)
+	var/datum/mind/player_mind = mob?.mind
+	var/mob/living/carbon/human/body = player_mind?.current
+	if(!ishuman(body))
+		return
+	var/datum/bank_account/account = body.get_bank_account() || find_bank_account_by_id(body.account_id)
+	if(!account)
 		return
 	for(var/list/result as anything in GLOB.economy_round_results)
 		if(result["ckey"] == ckey)
 			return
+	var/counted = (get_endround_bank_account() == account)
 	GLOB.economy_round_results += list(list(
 		"ckey" = ckey,
 		"name" = account.account_holder,
-		"job" = mob?.mind?.assigned_role || account.account_job?.title || "",
+		"job" = player_mind.assigned_role || account.account_job?.title || "",
 		"balance" = round(account.account_balance),
+		"counted" = counted,
+		"alive" = body.stat != DEAD,
 	))
+
+/proc/find_bank_account_by_id(account_id)
+	if(!account_id)
+		return null
+	for(var/datum/bank_account/account as anything in SSeconomy.bank_accounts)
+		if(account.account_id == account_id)
+			return account
+	return null
+
+/// Wyniki rundy, które liczą się do rankingu
+/proc/economy_counted_results()
+	. = list()
+	for(var/list/result as anything in GLOB.economy_round_results)
+		if(result["counted"] && result["balance"] > 0)
+			. += list(result)
 
 /proc/cmp_economy_result_balance(list/a, list/b)
 	return b["balance"] - a["balance"]
@@ -66,12 +89,13 @@ GLOBAL_VAR_INIT(economy_leaderboard_loaded, FALSE)
 	if(GLOB.economy_results_saved)
 		return
 	GLOB.economy_results_saved = TRUE
-	if(!length(GLOB.economy_round_results))
+	var/list/counted_results = economy_counted_results()
+	if(!length(counted_results))
 		return
 
 	if(GLOB.round_id && economy_ensure_table())
 		var/list/rows = list()
-		for(var/list/result as anything in GLOB.economy_round_results)
+		for(var/list/result as anything in counted_results)
 			rows += list(list(
 				"round_id" = text2num(GLOB.round_id),
 				"ckey" = result["ckey"],
@@ -84,7 +108,7 @@ GLOBAL_VAR_INIT(economy_leaderboard_loaded, FALSE)
 
 	// bez bazy: sumy per ckey w pliku
 	var/list/totals = economy_load_fallback()
-	for(var/list/result as anything in GLOB.economy_round_results)
+	for(var/list/result as anything in counted_results)
 		var/list/entry = totals[result["ckey"]] || list("total" = 0, "best" = 0, "rounds" = 0)
 		entry["total"] += result["balance"]
 		entry["best"] = max(entry["best"], result["balance"])
@@ -139,7 +163,7 @@ GLOBAL_VAR_INIT(economy_leaderboard_loaded, FALSE)
 		lines += "[position]. <b>[entry["ckey"]]</b> - [entry["total"]] kr w [entry["rounds"]] rundach (rekord rundy: [entry["best"]] kr)"
 	return lines
 
-/// Część raportu końca rundy: najbogatsi w tej rundzie i ranking wszech czasów
+/// Część raportu końca rundy (wersja HTML do pliku poprzedniego raportu): saldo wszystkich graczy i ranking
 /datum/controller/subsystem/ticker/proc/economy_report()
 	var/list/results = sortTim(GLOB.economy_round_results.Copy(), GLOBAL_PROC_REF(cmp_economy_result_balance))
 	economy_save_round_results()
@@ -148,13 +172,14 @@ GLOBAL_VAR_INIT(economy_leaderboard_loaded, FALSE)
 		return ""
 
 	var/list/parts = list()
-	parts += "<span class='header'>Najbogatsi ewakuowani w tej rundzie (saldo z karty):</span>"
+	parts += "<span class='header'>Zarobki w tej rundzie (saldo z karty):</span>"
 	if(length(results))
-		for(var/i in 1 to min(EARNINGS_REPORT_SIZE, length(results)))
-			var/list/result = results[i]
-			parts += "[i]. <b>[result["name"]]</b>[result["job"] ? " ([result["job"]])" : ""] - [result["balance"]] kr"
+		var/position = 0
+		for(var/list/result as anything in results)
+			position++
+			parts += "[position]. <b>[result["ckey"]]</b> jako [result["name"]][result["job"] ? " ([result["job"]])" : ""] - [result["balance"]] kr[result["counted"] ? "" : " <i>(nie liczy się do rankingu)</i>"]"
 	else
-		parts += "Nikt nie ewakuował się z pieniędzmi na koncie."
+		parts += "Nikt nie miał pieniędzy na koncie."
 
 	if(length(GLOB.economy_leaderboard))
 		parts += "<br><span class='header'>Ranking zarobków wszech czasów:</span>"
@@ -169,15 +194,7 @@ GLOBAL_VAR_INIT(economy_leaderboard_loaded, FALSE)
 
 	if(!GLOB.economy_leaderboard_loaded)
 		economy_load_leaderboard()
-	var/list/lines = list("<b>Ranking zarobków wszech czasów</b><br>Liczy się saldo z karty ID na koniec rundy, jeśli postać przeżyła i się ewakuowała.<br><br>")
-	if(length(GLOB.economy_leaderboard))
-		var/list/entries = economy_leaderboard_lines()
-		lines += entries.Join("<br>")
-	else
-		lines += "Ranking jest jeszcze pusty."
-	var/datum/browser/popup = new(usr, "economy_leaderboard", "Ranking zarobków", 450, 450)
-	popup.set_content(lines.Join(""))
-	popup.open()
+	GLOB.economy_leaderboard_ui.ui_interact(mob)
 
 #undef EARNINGS_REPORT_SIZE
 #undef EARNINGS_LEADERBOARD_SIZE

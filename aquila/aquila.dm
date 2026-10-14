@@ -358,6 +358,7 @@
 #include "code\modules\cargo\materials_market\materials_market.dm"
 #include "code\modules\economy\earnings.dm"
 #include "code\modules\economy\inflation.dm"
+#include "code\modules\roundend\roundend_ui.dm"
 #include "code\modules\research\designs\bounty_market_designs.dm"
 #include "code\modules\cargo\exports\large_objects.dm"
 #include "code\modules\client\loadout\loadout_ooc.dm"

@@ -328,27 +328,34 @@
 	//NSV13 Gamemode Report
 	parts += overmap_report()
 
+	//AQ EDIT - sekcje zapamiętane osobno dla okna raportu w TGUI (aquila/code/modules/roundend/roundend_ui.dm)
+	var/list/sections = list()
 	//Gamemode specific things. Should be empty most of the time.
-	parts += mode.special_report()
+	sections += list(list("Tryb gry", mode.special_report()))
 
 	CHECK_TICK
 
 	//AI laws
-	parts += law_report()
+	sections += list(list("Prawa SI", law_report()))
 
 	CHECK_TICK
 
 	//Antagonists
-	parts += antag_report()
+	sections += list(list("Antagoniści", antag_report()))
 
 	CHECK_TICK
 	//Medals
-	parts += medal_report()
+	sections += list(list("Medale", medal_report()))
 	//Station Goals
-	parts += goal_report()
+	sections += list(list("Cele stacji", goal_report()))
 //	CHECK_TICK
 	//AQ EDIT szczury
-	parts += mouse_report()
+	sections += list(list("Myszy", mouse_report()))
+	GLOB.roundend_report_sections = list()
+	for(var/list/section as anything in sections)
+		if(section[2])
+			GLOB.roundend_report_sections += list(section)
+			parts += section[2]
 	//AQ EDIT zarobki i ranking
 	parts += economy_report()
 
