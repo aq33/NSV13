@@ -193,6 +193,8 @@
 	faction = list(ROLE_DARKSPAWN)
 	var/time_to_next_roar = 0
 	var/roar_cooldown = 30 SECONDS
+	/// Gracz widzi swój pełny sprite zamiast małego podglądu
+	var/full_view = FALSE
 	/// Losowe zdania przy ryku: majaczenia, poezja i biały szum
 	var/list/roar_text = list(
 		"Stoisz sparaliżowany w cieniu chłodu, który zstępuje z wysoka.",
@@ -224,6 +226,14 @@
 	radio.wires.cut(WIRE_TX) // ale nie mówi przez nie
 	var/datum/action/cooldown/spell/pointed/progenitor_curse/curse = new(src)
 	curse.Grant(src)
+	var/datum/action/innate/progenitor_view/view = new(src)
+	view.Grant(src)
+	// Ikony HUD-ów (np. znaczek antagonisty) dziedziczą przesunięcie wielkiego sprite'a, więc wracają nad kratkę moba
+	for(var/hud_key in hud_list)
+		var/image/hud_image = hud_list[hud_key]
+		if(istype(hud_image))
+			hud_image.pixel_x = -base_pixel_x
+			hud_image.pixel_y = -base_pixel_y
 	var/prefix = pick("Prastary", "Pustkowy", "Kosmiczny", "Cienisty", "Darkspawnowy", "Zasłonny")
 	var/suffix = pick("Potomek", "Wzniesiony")
 	if(rand(0, 10000) == 0)
@@ -243,12 +253,28 @@
 /// Gracz widzi siebie w małej wersji, żeby widzieć, gdzie jest
 /mob/living/simple_animal/hostile/darkspawn_progenitor/Login()
 	. = ..()
+	if(!full_view)
+		show_small_self()
+	time_to_next_roar = world.time + roar_cooldown
+
+/mob/living/simple_animal/hostile/darkspawn_progenitor/proc/show_small_self()
+	if(alternate_appearances?["smolgenitor"])
+		return
 	var/image/I = image(icon = 'aquila/icons/mob/darkspawn/smol_progenitor.dmi', icon_state = "smol_progenitor", loc = src)
 	I.override = TRUE
-	I.pixel_x -= pixel_x
-	I.pixel_y -= pixel_y
+	I.pixel_x = -base_pixel_x
+	I.pixel_y = -base_pixel_y
 	add_alt_appearance(/datum/atom_hud/alternate_appearance/basic, "smolgenitor", I)
-	time_to_next_roar = world.time + roar_cooldown
+
+/// Przełącza, czy gracz widzi siebie w małej wersji, czy jak wszyscy inni
+/mob/living/simple_animal/hostile/darkspawn_progenitor/proc/toggle_full_view()
+	full_view = !full_view
+	if(full_view)
+		remove_alt_appearance("smolgenitor")
+		to_chat(src, "<span class='velvet'>Widzisz siebie tak, jak widzą cię inni.</span>")
+	else
+		show_small_self()
+		to_chat(src, "<span class='velvet'>Widzisz siebie w małej postaci.</span>")
 
 /mob/living/simple_animal/hostile/darkspawn_progenitor/Life()
 	. = ..()
@@ -288,6 +314,26 @@
 
 /mob/living/simple_animal/hostile/darkspawn_progenitor/gib(no_brain, no_organs, no_bodyparts)
 	return
+
+/// Przycisk: mały podgląd albo pełny sprite potomka
+/datum/action/innate/progenitor_view
+	name = "Pokaż pełną postać"
+	desc = "Przełącza, czy widzisz siebie w małej postaci, czy tak jak wszyscy inni."
+	icon_icon = 'aquila/icons/mob/darkspawn/actions_darkspawn.dmi'
+	button_icon_state = "panopticon"
+	background_icon_state = "bg_alien"
+	buttontooltipstyle = "alien"
+
+/datum/action/innate/progenitor_view/Trigger()
+	if(!..())
+		return FALSE
+	var/mob/living/simple_animal/hostile/darkspawn_progenitor/progenitor = owner
+	if(!istype(progenitor))
+		return FALSE
+	progenitor.toggle_full_view()
+	name = progenitor.full_view ? "Pokaż małą postać" : "Pokaż pełną postać"
+	UpdateButtonIcon()
+	return TRUE
 
 /// Rozszarpanie umysłu: atak potomka
 /datum/action/cooldown/spell/pointed/progenitor_curse

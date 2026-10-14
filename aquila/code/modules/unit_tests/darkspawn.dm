@@ -232,6 +232,16 @@
 	// Potomek ma swoją klątwę
 	var/mob/living/simple_animal/hostile/darkspawn_progenitor/progenitor = allocate(/mob/living/simple_animal/hostile/darkspawn_progenitor, right)
 	TEST_ASSERT(locate(/datum/action/cooldown/spell/pointed/progenitor_curse) in progenitor.actions, "Progenitor has no curse")
+	var/image/progenitor_hud = progenitor.hud_list[ANTAG_HUD]
+	TEST_ASSERT(progenitor_hud && progenitor_hud.pixel_x == 48 && progenitor_hud.pixel_y == 32, "Progenitor HUD icons are not moved back over its tile")
+	var/datum/action/innate/progenitor_view/view = locate() in progenitor.actions
+	TEST_ASSERT(view, "Progenitor has no view toggle")
+	progenitor.show_small_self()
+	TEST_ASSERT(progenitor.alternate_appearances?["smolgenitor"], "No small self view")
+	view.Trigger()
+	TEST_ASSERT(progenitor.full_view && !progenitor.alternate_appearances?["smolgenitor"], "Toggle did not show the full sprite")
+	view.Trigger()
+	TEST_ASSERT(!progenitor.full_view && progenitor.alternate_appearances?["smolgenitor"], "Toggle did not bring back the small view")
 
 	// Zdjęcie roli sprząta przyciski i klasę
 	dark.mind.remove_antag_datum(/datum/antagonist/darkspawn)
