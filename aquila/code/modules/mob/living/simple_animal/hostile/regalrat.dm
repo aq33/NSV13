@@ -165,18 +165,55 @@ GLOBAL_LIST_EMPTY(hostile_rats)
 	name = "regal rat"
 	unique_name = FALSE
 
-/mob/living/simple_animal/hostile/regalrat/controlled/Initialize(mapload)
+/// make_playable = FALSE, gdy od razu wejdzie w niego czyjś umysł (np. opętana mysz po królewskim serze)
+/mob/living/simple_animal/hostile/regalrat/controlled/Initialize(mapload, make_playable = TRUE)
 	. = ..()
 	var/title = pick("Król", "Lord", "Książę", "Cesarz", "Władca", "Suweren", "Pan", "Szogun", "Bojar", "Car")
 	var/kingdom = pick("Zarazy", "Miazmy", "Techów", "Śmieci", "Odpadków", "Szczurów", "Robactwa", "Sera")
 	name = "[title] [kingdom]"
 	real_name = name
-	set_playable(ROLE_SENTIENCE)
+	if(make_playable)
+		set_playable(ROLE_SENTIENCE)
 
 /mob/living/simple_animal/hostile/regalrat/controlled/give_mind(mob/user)
 	. = ..()
 	if(key)
 		notify_ghosts("Powstańcie przed szczurzym królem, który zasiadł na tronie w [get_area_name(src)].", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Szczurzy król")
+
+/**
+ * Królewski ser (przepis już był w craftingu): mysz, która go zje albo dostanie pod łapy, staje się szczurzym królem.
+ * Z tg mouse.dm (evolve()), u nas przez mouse_eat() z aquilowych myszy.
+ */
+/obj/item/food/royalcheese/mouse_eat(mob/living/simple_animal/mouse/M)
+	qdel(src)
+	M.evolve_into_regal_rat()
+
+/mob/living/simple_animal/mouse/on_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
+	. = ..()
+	if(istype(AM, /obj/item/food/royalcheese) && stat == CONSCIOUS && !QDELETED(AM))
+		qdel(AM)
+		INVOKE_ASYNC(src, PROC_REF(evolve_into_regal_rat))
+
+/mob/living/simple_animal/mouse/handle_automated_action()
+	. = ..()
+	if(stat != CONSCIOUS || QDELETED(src))
+		return
+	var/obj/item/food/royalcheese/bigcheese = locate() in range(1, src)
+	if(bigcheese)
+		qdel(bigcheese)
+		evolve_into_regal_rat()
+
+/mob/living/simple_animal/mouse/proc/evolve_into_regal_rat()
+	if(QDELETED(src))
+		return
+	var/mob/living/simple_animal/hostile/regalrat/controlled/regalrat = new(loc, !mind)
+	visible_message("<span class='warning'>[src] pożera ser! Zmienia się w coś... większego!</span>")
+	INVOKE_ASYNC(regalrat, TYPE_PROC_REF(/atom/movable, say), "POWSTAŃCIE, MOI PODDANI! SKRIIIIII!")
+	if(mind)
+		mind.transfer_to(regalrat)
+		regalrat.faction = list("rat") // opętane myszy mają frakcję "neutral"
+	qdel(src)
 
 /**
  * Domena szczurzego króla: miazma i brud pod łapami
