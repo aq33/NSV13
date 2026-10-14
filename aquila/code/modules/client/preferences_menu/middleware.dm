@@ -303,6 +303,7 @@
 		/datum/antagonist/space_dragon = list('icons/mob/spacedragon.dmi', "spacedragon"),
 		/datum/antagonist/monkey = list('icons/mob/monkey.dmi', "monkey1"),
 		/datum/antagonist/horror = list('aquila/icons/mob/horror.dmi', "horror"),
+		/datum/antagonist/pulse_demon = list('aquila/icons/mob/pulse_demon.dmi', "pulsedem"),
 		/datum/antagonist/voidwalker = list('aquila/icons/mob/voidwalker.dmi', "voidwalker"),
 		/datum/antagonist/shadow_demon = list('aquila/icons/mob/shadow_demon.dmi', "shadow_demon"),
 		/datum/antagonist/darkspawn = list('aquila/icons/mob/darkspawn/smol_progenitor.dmi', "smol_progenitor"),

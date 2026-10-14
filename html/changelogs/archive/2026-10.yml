@@ -295,3 +295,9 @@
       w kosmos i wymioty mgławicą'
   - rscadd: Kosmiczna czaszka po wędrowcu daje stabilną klątwę i ramię rozbijające
       szkło
+'2026-10-14':
+  Joker66613:
+  - rscadd: 'Demon impulsu z Paradise: elektryczny demon żyjący w kablach, który przejmuje
+      APC, kradnie prąd i bawi się maszynami w przejętych pomieszczeniach'
+  - admin: Komora testowa (Debug → Komora testowa) z zestawami przedmiotów do sprawdzania
+      PR-ów.

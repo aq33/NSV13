@@ -23,6 +23,7 @@
 		/datum/round_event_control/aquila_chrono_legionnaire,
 		/datum/round_event_control/aquila_rogue_drone,
 		/datum/round_event_control/aquila_teratoma,
+		/datum/round_event_control/devil,
 		/datum/round_event_control/fugitives,
 		/datum/round_event_control/horror,
 		/datum/round_event_control/infiltrators,
@@ -59,6 +60,7 @@
 		/datum/round_event_control/blob,
 		/datum/round_event_control/slaughter,
 		/datum/round_event_control/space_dragon,
+		/datum/round_event_control/spider_infestation,
 	)
 	return events
 
