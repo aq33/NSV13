@@ -37,6 +37,7 @@
 #include "code\_onclick\hud\action_palette.dm"
 #include "code\_onclick\hud\alert.dm"
 #include "code\_onclick\hud\ghost.dm"
+#include "code\_onclick\hud\combat_mode_indicator.dm"
 #include "code\_onclick\hud\horror.dm"
 #include "code\_onclick\hud\locked_slots.dm"
 #include "code\_onclick\hud\mouse_pointer.dm"
@@ -465,6 +466,7 @@
 #include "code\modules\mob\living\simple_animal\hostile\kurwinoxy.dm"
 #include "code\modules\mob\living\simple_animal\hostile\macrophage.dm"
 #include "code\modules\mob\living\simple_animal\hostile\mining_mobs\hivelord.dm"
+#include "code\modules\mob\living\simple_animal\hostile\regalrat.dm"
 #include "code\modules\mob\living\simple_animal\hostile\retaliate\clown.dm"
 #include "code\modules\mob\living\simple_animal\hostile\retaliate\dolphin.dm"
 #include "code\modules\mob\living\simple_animal\hostile\retaliate\wojtek.dm"
@@ -541,6 +543,7 @@
 #include "code\modules\test_chamber\kits\_kit.dm"
 #include "code\modules\test_chamber\kits\test_subjects.dm"
 // Komora testowa - zestawy PR-ów niżej (usuwać razem z plikiem zestawu po przetestowaniu)
+#include "code\modules\test_chamber\kits\pr_429_regal_rat.dm"
 #include "code\modules\test_chamber\kits\pr_433_secret_chems.dm"
 #include "code\modules\weighted\spawn_fallbacks.dm"
 #include "code\modules\weighted\weighted_ghost_midround.dm"
