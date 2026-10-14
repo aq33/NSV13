@@ -682,6 +682,7 @@
 				return
 			var/desired_sentence = calculate_sentence(crimes, adjust, attempted, elevated, resisted)
 			if (!desired_sentence)
+				say("Wyrok wynosi zero minut. Zmień korektę czasu albo zarzuty.")
 				return
 			var/desired_crime = (attempted ? "Usiłowanie: " : "") + jointext(crimes, ", ") + (elevated ? " (recydywa)" : "") + (resisted ? " (opór przy zatrzymaniu)" : "")
 			print_id(usr, desired_crime, desired_sentence)

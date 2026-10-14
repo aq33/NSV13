@@ -64,6 +64,7 @@
 				to_chat(user, "<span class='warning'>Na drodze taśmy stoi [O].</span>")
 				return
 	var/placed = 0
+	var/line_id = "[REF(user)]-[world.time]"
 	for(var/turf/T as anything in line)
 		var/already = FALSE
 		for(var/obj/structure/barrier_tape/existing in T)
@@ -73,6 +74,7 @@
 		if(already)
 			continue
 		var/obj/structure/barrier_tape/tape = new tape_type(T, tape_dir)
+		tape.line_id = line_id
 		tape.add_hiddenprint(user)
 		placed++
 	playsound(user, 'sound/items/poster_being_created.ogg', 30, TRUE)
@@ -120,6 +122,8 @@
 	var/torn = FALSE
 	/// Typ strzępu zostawianego po przecięciu
 	var/scrap_type = /obj/item/barrier_tape_scrap
+	/// Odcinki rozciągnięte jednym ruchem mają ten sam identyfikator; przecięcie usuwa tylko je
+	var/line_id
 
 /obj/structure/barrier_tape/police
 	name = "taśma policyjna"
@@ -217,8 +221,11 @@
 
 /obj/structure/barrier_tape/attackby(obj/item/I, mob/living/user, params)
 	add_fingerprint(user)
-	if(I.is_sharp() || user.combat_mode)
+	if(I.is_sharp())
 		cut_line(user, I)
+		return TRUE
+	if(user.combat_mode)
+		tear(user)
 		return TRUE
 	if(allowed(user))
 		lift_tape(4 SECONDS)
@@ -251,14 +258,15 @@
 	transfer_fingerprints_to(scrap)
 	if(user)
 		scrap.add_fingerprint(user)
+	return scrap
 
 /// Przecięcie całej linii. Na miejscu cięcia zostaje strzęp z odciskami.
 /obj/structure/barrier_tape/proc/cut_line(mob/living/user, obj/item/tool)
 	user.visible_message("<span class='warning'>[user] przecina taśmę!</span>", "<span class='warning'>Przecinasz taśmę.</span>")
 	playsound(src, 'sound/items/poster_ripped.ogg', 80, TRUE)
 	log_game("[key_name(user)] cut [src] at [AREACOORD(src)]")
-	leave_scrap(user)
-	if(tape_dir != "door")
+	var/obj/item/scrap = leave_scrap(user)
+	if(tape_dir != "door" && line_id)
 		var/list/dirs = (tape_dir == "h") ? list(EAST, WEST) : list(NORTH, SOUTH)
 		for(var/direction in dirs)
 			var/turf/T = get_step(src, direction)
@@ -266,11 +274,13 @@
 			while(T && steps < TAPE_MAX_LENGTH)
 				var/obj/structure/barrier_tape/next
 				for(var/obj/structure/barrier_tape/candidate in T)
-					if(candidate.tape_dir == tape_dir && !QDELETED(candidate))
+					if(candidate.line_id == line_id && !QDELETED(candidate))
 						next = candidate
 						break
 				if(!next)
 					break
+				// Odciski z każdego usuwanego odcinka trafiają na strzęp
+				next.transfer_fingerprints_to(scrap)
 				qdel(next)
 				T = get_step(T, direction)
 				steps++

@@ -67,10 +67,11 @@
 		return
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(H.gloves)
-			H.gloves.add_gunshot_residue(residue)
-		else if(H.wear_suit && (H.wear_suit.body_parts_covered & HANDS))
+		// Najbardziej zewnętrzna warstwa na dłoniach: skafander, potem rękawice
+		if(H.wear_suit && (H.wear_suit.body_parts_covered & HANDS))
 			H.wear_suit.add_gunshot_residue(residue)
+		else if(H.gloves)
+			H.gloves.add_gunshot_residue(residue)
 		else
 			H.add_gunshot_residue(residue)
 	else

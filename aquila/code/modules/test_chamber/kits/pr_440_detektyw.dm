@@ -45,6 +45,7 @@
 	)
 
 /datum/test_chamber_kit/pr_440_scene/setup(list/spawned, list/turfs, turf/center, mob/user)
+	..()
 	for(var/obj/machinery/door/airlock/security/door in spawned)
 		door.req_access = list(ACCESS_SECURITY)
 

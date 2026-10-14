@@ -148,15 +148,18 @@ export const GenPop = (props) => {
                     ? 'Usiłowanie wykroczenia karze się grzywną, nie odsiadką!'
                     : selectedCrimes.length === 0
                       ? 'Nie wybrano żadnego zarzutu.'
-                      : !data.desired_name
-                        ? 'Karta więźnia wymaga imienia.'
-                        : null
+                      : getProcessedTime() === 0
+                        ? 'Wyrok wynosi zero minut.'
+                        : !data.desired_name
+                          ? 'Karta więźnia wymaga imienia.'
+                          : null
                 }
                 color="good"
                 disabled={
                   !data.canPrint ||
                   attemptedTooLow ||
                   selectedCrimes.length === 0 ||
+                  getProcessedTime() === 0 ||
                   !data.desired_name
                 }
                 onClick={() => {

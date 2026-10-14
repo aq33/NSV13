@@ -115,13 +115,10 @@
 /datum/reagent/luminol/reaction_mob(mob/living/M, method = TOUCH, reac_volume, show_message = 1, touch_protection = 0, obj/item/bodypart/affecting)
 	if(method == TOUCH || method == VAPOR)
 		var/list/glowing = list()
-		if(M.luminol_act())
-			glowing += "dłonie"
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			for(var/obj/item/I in list(H.wear_suit, H.w_uniform, H.gloves, H.shoes, H.head))
-				if(I.luminol_act())
-					glowing += "[I.name]"
+		var/list/exposed = M.aq_exposed_surfaces()
+		for(var/atom/A as anything in exposed)
+			if(A.luminol_act())
+				glowing += (A == M) ? "dłonie" : "[A.name]"
 		if(length(glowing))
 			M.visible_message("<span class='notice'>Na [M] zaczynają świecić niebieskie plamy ([jointext(glowing, ", ")]).</span>")
 	return ..()
@@ -150,13 +147,31 @@
 	. = ..()
 	if(!(method in list(TOUCH, VAPOR)) || !istype(C))
 		return
-	C.wipe_latent_blood_DNA()
+	for(var/atom/A as anything in C.aq_exposed_surfaces())
+		A.wipe_latent_blood_DNA()
 	for(var/obj/item/I in C.held_items)
 		I.wipe_latent_blood_DNA()
-	if(ishuman(C))
-		var/mob/living/carbon/human/H = C
-		for(var/obj/item/I in list(H.wear_suit, H.w_uniform, H.gloves, H.shoes, H.head))
-			I.wipe_latent_blood_DNA()
+
+/// Powierzchnie, do których dociera spray: wierzchnie ubrania i sam mob (dłonie), jeśli dłonie są odsłonięte.
+/mob/living/proc/aq_exposed_surfaces()
+	return list(src)
+
+/mob/living/carbon/human/aq_exposed_surfaces()
+	. = list()
+	var/obscured = check_obscured_slots()
+	var/hands_covered = gloves || (wear_suit && (wear_suit.body_parts_covered & HANDS))
+	if(!hands_covered)
+		. += src
+	if(wear_suit)
+		. += wear_suit
+	if(head)
+		. += head
+	if(w_uniform && !(obscured & ITEM_SLOT_ICLOTHING))
+		. += w_uniform
+	if(gloves && !(obscured & ITEM_SLOT_GLOVES))
+		. += gloves
+	if(shoes && !(obscured & ITEM_SLOT_FEET))
+		. += shoes
 
 // Spray
 
