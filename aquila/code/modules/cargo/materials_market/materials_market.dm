@@ -298,8 +298,8 @@
 	crate_type = /obj/structure/closet/crate
 	/// Typ arkusza => typ materiału
 	var/list/sheet_materials = list()
-	/// Typ arkusza => zapłacona cena za arkusz
-	var/list/sheet_prices = list()
+	/// Typ arkusza => łączna kwota zapłacona za arkusze tego typu (ceny mogły się zmieniać między zakupami)
+	var/list/sheet_costs = list()
 
 /datum/supply_pack/custom/minerals/New(purchaser)
 	. = ..()
@@ -315,7 +315,7 @@
 /datum/supply_pack/custom/minerals/proc/add_sheets(sheet_type, datum/material/mat, quantity, unit_price)
 	contains[sheet_type] = (contains[sheet_type] || 0) + quantity
 	sheet_materials[sheet_type] = mat
-	sheet_prices[sheet_type] = unit_price
+	sheet_costs[sheet_type] = (sheet_costs[sheet_type] || 0) + unit_price * quantity
 	cost += unit_price * quantity
 
 /// Ile stosów będzie w zamówieniu, opcjonalnie po dorzuceniu extra_sheets arkuszy typu extra_type
@@ -335,7 +335,8 @@
 		var/market_quantity = SSstock_market.materials_quantity[mat] || 0
 		var/available_quantity = contains[sheet_type]
 		if(available_quantity > market_quantity)
-			refund += (available_quantity - market_quantity) * sheet_prices[sheet_type]
+			// zwrot po średniej cenie zapłaconej za ten typ arkuszy
+			refund += round((available_quantity - market_quantity) * sheet_costs[sheet_type] / available_quantity)
 			available_quantity = market_quantity
 			if(!available_quantity)
 				contains -= sheet_type
