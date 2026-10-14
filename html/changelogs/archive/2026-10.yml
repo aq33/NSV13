@@ -317,6 +317,10 @@
       badania o połowę.
   - rscdel: Usunięto cel pobierania badań i rolę złodzieja; cele złodzieja dostaje
       teraz traitor.
+  - rscadd: 'Darkspawn z Yogstation w nowej wersji: trzy klasy (wojownik, zwiadowca,
+      czarnoksiężnik), sklep Psi Web za wolę i thralle'
+  - rscadd: Tryb gry darkspawn i ruleset w dynamicu
+  - code_imp: System zaklęć /datum/action/cooldown/spell z tgstation
   PowerfulBacon, Tsar-Salat, Nakalon, MrMelbert, JohnFulpWillard, Mothblocks, Time-Green, timothymtorres:
   - rscadd: Krwawienie ma ikonę alertu z tempem; kliknij ją, żeby ucisnąć ranę. Gaza
       opatruje krwawienie, ogień i laser przypalają ranę.
