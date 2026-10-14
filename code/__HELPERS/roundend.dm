@@ -213,6 +213,7 @@
 
 			C?.process_endround_metacoin()
 			C?.process_aquila_endround_metacoin() // AQ EDIT
+			C?.record_endround_balance() // AQ EDIT ranking zarobków
 			C?.playtitlemusic(20) // AQUILA EDIT 40 -> 20
 
 			if(CONFIG_GET(flag/allow_crew_objectives))

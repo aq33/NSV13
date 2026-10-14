@@ -67,40 +67,26 @@
 	TEST_ASSERT_EQUAL(block_export.get_cost(block), 770, "A locked stock block did not sell for its locked price")
 	qdel(block_export)
 
-/// AQUILA - only real income counts towards the earnings report: no player transfers, cash deposits, starting money or refunds
-/datum/unit_test/economy_round_income
+/// AQUILA - the round-end report lists the richest evacuated crew from the recorded ID card balances, richest first
+/datum/unit_test/economy_endround_report
 
-/datum/unit_test/economy_round_income/Run()
-	var/datum/job/assistant = SSjob.GetJobType(/datum/job/assistant)
-	var/datum/bank_account/earner = new("Test Earner", assistant)
-	var/datum/bank_account/friend = new("Test Friend", assistant)
-	var/datum/bank_account/department/budget = SSeconomy.get_dep_account(ACCOUNT_CIV)
+/datum/unit_test/economy_endround_report/Run()
+	var/list/old_results = GLOB.economy_round_results
+	var/old_saved = GLOB.economy_results_saved
+	GLOB.economy_results_saved = TRUE // nie zapisuj testowych wyników do bazy ani pliku
+	GLOB.economy_round_results = list(
+		list("ckey" = "testpoor", "name" = "Biedny Tester", "job" = "Assistant", "balance" = 100),
+		list("ckey" = "testrich", "name" = "Bogaty Tester", "job" = "Captain", "balance" = 9000),
+	)
+	var/report = SSticker.economy_report()
+	GLOB.economy_round_results = old_results
+	GLOB.economy_results_saved = old_saved
 
-	earner.payday(5, TRUE)
-	TEST_ASSERT_EQUAL(earner.round_income, 0, "Starting paychecks counted as income")
-
-	friend.adjust_money(1000)
-	earner.transfer_money(friend, 500)
-	TEST_ASSERT_EQUAL(earner.round_income, 0, "A transfer from another player counted as income")
-
-	earner.refund_money(100)
-	TEST_ASSERT_EQUAL(earner.round_income, 0, "A refund counted as income")
-
-	budget.adjust_money(1000)
-	earner.transfer_money(budget, 200)
-	TEST_ASSERT_EQUAL(earner.round_income, 200, "A transfer from a department budget did not count as income")
-
-	earner.adjust_money(300)
-	TEST_ASSERT_EQUAL(earner.round_income, 500, "A plain payment did not count as income")
-
-	var/obj/item/card/id/card = allocate(/obj/item/card/id)
-	card.registered_account = earner
-	var/obj/item/stack/spacecash/c100/cash = allocate(/obj/item/stack/spacecash/c100)
-	card.insert_money(cash, null)
-	TEST_ASSERT_EQUAL(earner.round_income, 500, "A cash deposit counted as income")
-
-	qdel(earner)
-	qdel(friend)
+	var/rich_at = findtext(report, "Bogaty Tester")
+	var/poor_at = findtext(report, "Biedny Tester")
+	TEST_ASSERT(rich_at && poor_at, "The report does not list the recorded crew")
+	TEST_ASSERT(rich_at < poor_at, "The report is not sorted by balance")
+	TEST_ASSERT(findtext(report, "9000 kr"), "The report does not show the balance")
 
 /// AQUILA - a market crash drops every material to its minimum price and multiplies vending prices
 /datum/unit_test/economy_market_crash

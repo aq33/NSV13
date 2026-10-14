@@ -540,7 +540,7 @@ END
 $$
 DELIMITER ;
 
--- AQUILA: zarobki graczy w rundach, ranking zarobków (aquila/code/modules/economy/earnings.dm)
+-- AQUILA: saldo z karty ewakuowanych na koniec rundy, ranking zarobków (aquila/code/modules/economy/earnings.dm)
 DROP TABLE IF EXISTS `SS13_economy_earnings`;
 CREATE TABLE IF NOT EXISTS `SS13_economy_earnings` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -548,7 +548,7 @@ CREATE TABLE IF NOT EXISTS `SS13_economy_earnings` (
   `ckey` varchar(32) NOT NULL,
   `character_name` varchar(64) NOT NULL,
   `job` varchar(64) NOT NULL,
-  `earned` int(10) unsigned NOT NULL,
+  `balance` int(10) unsigned NOT NULL,
   `datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `idx_ckey` (`ckey`),

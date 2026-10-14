@@ -359,7 +359,7 @@
 		if(paying_account)
 			refund = round(refund * 1.1)
 		var/datum/bank_account/refund_account = paying_account || SSeconomy.get_dep_account(ACCOUNT_CAR)
-		refund_account?.refund_money(refund)
+		refund_account?.adjust_money(refund)
 		refund_account?.bank_card_talk("Na rynku zabrakło części zamówionych arkuszy. Zwrot: [refund] kr.")
 
 /datum/supply_pack/custom/minerals/generate(atom/A, datum/bank_account/paying_account)
