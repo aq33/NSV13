@@ -353,8 +353,10 @@
 	var/config_file = file("config/space_law.json")
 	/// A list of all of the available crimes in a formated served to the user interface.
 	var/static/list/crime_list
-	var/crime_names = list()
-	var/static/regex/valid_crime_name_regex = null
+	// AQ EDIT - kilka zarzutów naraz, wyrok liczony po stronie serwera
+	/// Nazwa przestępstwa => wyrok (w decysekundach), do liczenia i sprawdzania zarzutów.
+	var/static/list/crime_sentences
+	// AQ EDIT END
 
 //Prisoner interface wallframe
 /obj/item/wallframe/genpop_interface
@@ -379,7 +381,7 @@
 		buildstage = 0
 		panel_open = TRUE
 
-	if (!crime_list || !valid_crime_name_regex)
+	if (!crime_list || !crime_sentences) // AQ EDIT
 		build_static_information()
 
 	Radio = new/obj/item/radio(src)
@@ -393,19 +395,7 @@
 		message_admins("<span class='boldannounce'>[e] caught on [e.file]:[e.line].</span>")
 		load_default_crimelist()
 		return
-	//we need to get the names of each crime for the regex
-	for(var/key in crime_list)
-		var/value = crime_list[key]
-		for(var/second_key in value)
-			var/second_value = second_key["name"]
-			LAZYADD(crime_names, second_value)
-
-	if (valid_crime_name_regex)
-		return
-
-	// Form the valid crime regex
-	var/regex_string = "^(Attempted )?([jointext(crime_names, "|")])( \\(Repeat offender\\))?$"
-	valid_crime_name_regex = regex(regex_string, "gm")
+	build_crime_sentences() // AQ EDIT
 
 /obj/machinery/genpop_interface/proc/load_default_crimelist()
 	crime_list = list()
@@ -415,8 +405,6 @@
 		// Ignore this crime, it is abstract
 		if (isnull(initial(crime_path.name)))
 			continue
-		// We need to know about this crime for the regex
-		crime_names += initial(crime_path.name)
 		// Create the category if it is needed
 		if (!islist(crime_list[initial(crime_path.category)]))
 			crime_list[initial(crime_path.category)] = list()
@@ -428,8 +416,34 @@
 			"icon" = initial(crime_path.icon),
 			"sentence" = initial(crime_path.sentence),
 			))
-	var/regex_string = "^(Attempted )?([jointext(crime_names, "|")])( \\(Repeat offender\\))?$"
-	valid_crime_name_regex = regex(regex_string, "gm")
+	build_crime_sentences() // AQ EDIT
+
+// AQ EDIT - kilka zarzutów naraz
+/obj/machinery/genpop_interface/proc/build_crime_sentences()
+	crime_sentences = list()
+	for(var/category in crime_list)
+		for(var/list/crime as anything in crime_list[category])
+			crime_sentences[crime["name"]] = crime["sentence"]
+
+/**
+ * Liczy wyrok (w decysekundach) dla listy zarzutów. Tę samą regułę ma podgląd w GenPop.tsx.
+ * Czasy zarzutów się sumują, zbrodnia (MAX_TIMER) od razu daje dożywocie.
+ * Usiłowanie: -5 min, dożywocie spada do 15 min. Recydywa: od 15 min w górę dożywocie, poniżej +5 min.
+ * Opór przy zatrzymaniu: +20% na końcu.
+ */
+/obj/machinery/genpop_interface/proc/calculate_sentence(list/crimes, adjust = 0, attempted = FALSE, elevated = FALSE, resisted = FALSE)
+	var/time = 0
+	for(var/crime in crimes)
+		time += crime_sentences[crime]
+	time = clamp(time + adjust, 0, MAX_TIMER)
+	if(attempted)
+		time = time >= MAX_TIMER ? PRESET_LONG : time - PRESET_SHORT
+	if(elevated)
+		time = time >= PRESET_LONG ? MAX_TIMER : time + PRESET_SHORT
+	if(resisted)
+		time *= 1.2
+	return clamp(round(time, 10), 0, MAX_TIMER)
+// AQ EDIT END
 
 /obj/machinery/genpop_interface/update_icon()
 	if(buildstage< 2)
@@ -593,9 +607,13 @@
 			playsound(loc, 'sound/machines/ping.ogg', 50, 1)
 
 	var/obj/item/card/id/id = new /obj/item/card/id/prisoner(get_turf(src), desired_sentence * 0.1, desired_crime, desired_name)
-	Radio.talk_into(src, "Więzień [id.registered_name] został osadzony na [desired_sentence / 600 ] min.")
+	// AQ EDIT - tłumaczenie, dożywocie zamiast 600 min
+	var/sentence_text = desired_sentence >= MAX_TIMER ? "dożywocie" : "[desired_sentence / 600] min"
+	Radio.talk_into(src, "Więzień [id.registered_name] został osadzony za: [desired_crime]. Wyrok: [sentence_text].")
 	var/obj/item/paper/paperwork = new /obj/item/paper(get_turf(src))
-	paperwork.add_raw_text("<h1 id='record-of-incarceration'>Record Of Incarceration:</h1> <hr> <h2 id='name'>Name: </h2> <p>[desired_name]</p> <h2 id='crime'>Crime: </h2> <p>[desired_crime]</p> <h2 id='sentence-min'>Sentence (Min)</h2> <p>[desired_sentence/600]</p> <h2 id='description'>Description </h2> <p>[desired_details]</p> <p>WhiteRapids Military Council, disciplinary authority.</p>") //NSV13 Nanotrasen replaced with WhiteRapids
+	paperwork.name = "protokół osadzenia ([desired_name])"
+	paperwork.add_raw_text("<h1 id='record-of-incarceration'>Protokół osadzenia</h1> <hr> <h2 id='name'>Imię i nazwisko:</h2> <p>[desired_name]</p> <h2 id='crime'>Zarzuty:</h2> <p>[desired_crime]</p> <h2 id='sentence-min'>Wyrok:</h2> <p>[sentence_text]</p> <h2 id='description'>Opis zdarzenia:</h2> <p>[desired_details]</p> <p>Rada Wojskowa WhiteRapids, organ dyscyplinarny.</p>") //NSV13 Nanotrasen replaced with WhiteRapids
+	// AQ EDIT END
 	paperwork.update_appearance()
 	desired_name = null
 	desired_details = null
@@ -643,14 +661,31 @@
 					say("Podaj prawidłowy opis zdarzenia, które doprowadziło do zarzutu.")
 					return
 				desired_details = prisoner_details
-			var/desired_sentence = text2num(params["desired_sentence"])
+			// AQ EDIT - kilka zarzutów, wyrok liczy serwer
+			var/list/crimes = params["crimes"]
+			if (!islist(crimes) || !length(crimes))
+				return
+			crimes = uniqueList(crimes)
+			for(var/crime in crimes)
+				if(!istext(crime) || isnull(crime_sentences[crime]))
+					log_href_exploit(usr, "Entered a crime which is not in the space law list.")
+					return
+			var/attempted = !!params["attempted"]
+			var/elevated = !!params["elevated"]
+			var/resisted = !!params["resisted"]
+			var/adjust = text2num(params["adjust"]) || 0
+			var/base_time = 0
+			for(var/crime in crimes)
+				base_time += crime_sentences[crime]
+			if (attempted && base_time <= PRESET_SHORT)
+				say("Usiłowanie wykroczenia karze się grzywną, nie odsiadką.")
+				return
+			var/desired_sentence = calculate_sentence(crimes, adjust, attempted, elevated, resisted)
 			if (!desired_sentence)
 				return
-			var/desired_crime = params["desired_crime"]
-			if (!valid_crime_name_regex.Find(desired_crime))
-				log_href_exploit(usr, "Entered a desired crime which was not permitted by the desired crime regex.")
-				return
+			var/desired_crime = (attempted ? "Usiłowanie: " : "") + jointext(crimes, ", ") + (elevated ? " (recydywa)" : "") + (resisted ? " (opór przy zatrzymaniu)" : "")
 			print_id(usr, desired_crime, desired_sentence)
+			// AQ EDIT END
 
 		// For adjusting the time of pre-existing prisoners
 		if("adjust_time")
@@ -668,7 +703,7 @@
 			var/obj/item/card/id/prisoner/id = locate(params["id"]) in GLOB.prisoner_ids
 			if(!istype(id))
 				return
-			if(alert("Czy na pewno chcesz zwolnić [id.registered_name]", "Zwolnienie więźnia", "Yes", "No") != "Yes")
+			if(alert("Czy na pewno chcesz zwolnić [id.registered_name]? Karta więźnia od razu zaliczy cały wyrok i otworzy mu bramki wyjścia.", "Zwolnienie więźnia", "Tak", "Nie") != "Tak") // AQ EDIT
 				return
 			Radio.talk_into(src, "Więzień [id.registered_name] został zwolniony.")
 			investigate_log("[key_name(usr)] has early-released [id] ([id.loc])", INVESTIGATE_RECORDS)
@@ -678,8 +713,18 @@
 			var/obj/item/card/id/prisoner/id = locate(params["id"]) in GLOB.prisoner_ids
 			if(!istype(id))
 				return
-			if(alert("Czy chcesz zresetować wyrok [id.registered_name]?", "Confirmation", "Yes", "No") != "Yes")
+			if(alert("Czy chcesz zresetować wyrok [id.registered_name]? Odsiedziany czas spadnie do zera.", "Ucieczka więźnia", "Tak", "Nie") != "Tak") // AQ EDIT
 				return
+			// AQ EDIT - zwolniony już więzień (Ex-Convict) wraca za kratki: karta traci dostęp i znowu liczy czas
+			if(id.served_time >= id.sentence)
+				id.assignment = "Convict"
+				id.access = list()
+				id.update_label(id.registered_name, id.assignment)
+				START_PROCESSING(SSobj, id)
+				var/datum/data/record/R = find_record("name", id.registered_name, GLOB.data_core.general)
+				if(R)
+					R.fields["criminal"] = "Incarcerated"
+			// AQ EDIT END
 			Radio.talk_into(src, "Czas odbywania kary więźnia [id.registered_name] został zresetowany.")
 			investigate_log("[key_name(usr)] has reset the timer of [id] ([id.loc])", INVESTIGATE_RECORDS)
 			usr.log_message("[key_name(usr)] has reset the timer of [id] ([id.loc])", LOG_ATTACK)
@@ -718,7 +763,10 @@ GLOBAL_LIST_EMPTY(prisoner_ids)
 /obj/item/card/id/prisoner/examine(mob/user)
 	. = ..()
 	if(sentence)
-		. += "<span class='notice'>Odbyłeś [DisplayTimeText(served_time*10, 1)] z [DisplayTimeText(sentence*10, 1)].</span>"
+		if(sentence * 10 >= MAX_TIMER) // AQ EDIT
+			. += "<span class='notice'>Wyrok: dożywocie. Odsiedziano [DisplayTimeText(served_time*10, 1)].</span>"
+		else
+			. += "<span class='notice'>Odbyłeś [DisplayTimeText(served_time*10, 1)] z [DisplayTimeText(sentence*10, 1)].</span>"
 	if(crime)
 		. += "<span class='warning'>Wygląda na to, że właściciel został skazany za: <b>[crime]</b></span>"
 
@@ -739,3 +787,6 @@ GLOBAL_LIST_EMPTY(prisoner_ids)
 		return PROCESS_KILL
 
 #undef MAX_TIMER
+#undef PRESET_SHORT // AQ EDIT
+#undef PRESET_MEDIUM
+#undef PRESET_LONG

@@ -48,6 +48,7 @@ GLOBAL_LIST_INIT(military_storage_allowed, typecacheof(list(
 	/obj/item/ammo_box,
 	/obj/item/ammo_casing,
 	/obj/item/detective_scanner,
+	/obj/item/reagent_containers/spray/luminol,
 	/obj/item/taperecorder,
 	/obj/item/gun,
 	/obj/item/melee,
