@@ -18,6 +18,7 @@
 
 /// Polskie imię, np. „Widmo wiecznej rozpaczy”: przymiotnik w dopełniaczu zgodny z rodzajem tematu
 /mob/living/simple_animal/revenant/random_revenant_name()
+	..() // bazowa ustawia angielskie imię, nadpisujemy je niżej
 	var/static/list/spirit_types = list("Duch", "Widmo", "Zjawa", "Fantom", "Upiór", "Esencja", "Dusza")
 	// temat w dopełniaczu => rodzaj: "f" żeński, "m" męski i nijaki, "pl" mnoga
 	var/static/list/themes = list(

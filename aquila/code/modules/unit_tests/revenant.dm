@@ -180,5 +180,36 @@
 	ecto2.scatter()
 	TEST_ASSERT(QDELETED(doomed), "Revenant survived scattering next to a broken mirror")
 
+/// AQUILA - rozebranie lustra też wypuszcza upiora, zamiast usunąć go razem z komponentem
+/datum/unit_test/revenant_mirror_deconstruct
+
+/datum/unit_test/revenant_mirror_deconstruct/Run()
+	var/turf/left = run_loc_floor_bottom_left
+	var/turf/right = get_step(left, EAST)
+	var/obj/structure/mirror/mirror = allocate(/obj/structure/mirror, right)
+	var/datum/component/revenant_prison/roundstart_curse = mirror.GetComponent(/datum/component/revenant_prison)
+	if(roundstart_curse)
+		qdel(roundstart_curse)
+	var/mob/living/simple_animal/revenant/rev = allocate(/mob/living/simple_animal/revenant, left)
+	var/obj/item/ectoplasm/revenant/ecto = allocate(/obj/item/ectoplasm/revenant, left)
+	ecto.revenant = rev
+	ecto.essence = 120
+	ecto.scatter()
+	TEST_ASSERT_EQUAL(rev.loc, mirror, "Revenant did not flee into the mirror")
+
+	mirror.deconstruct(FALSE)
+	TEST_ASSERT(QDELETED(mirror), "Mirror was not deconstructed")
+	// Jak przy rozbiciu: bez chętnych w ankiecie upiór rozsypuje się w bezwładny pył przy lustrze
+	if(!QDELETED(rev))
+		TEST_ASSERT_EQUAL(rev.loc, right, "Revenant was not released where the mirror stood")
+		TEST_ASSERT_EQUAL(rev.essence_regen_cap, 120, "Released revenant lost its essence cap")
+		qdel(rev)
+	else
+		var/obj/item/ectoplasm/revenant/dust = locate() in right
+		TEST_ASSERT(dust?.inert, "Deconstructing the mirror deleted the revenant instead of releasing it")
+		qdel(dust)
+	for(var/obj/item/shard/shard in right)
+		qdel(shard)
+
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL
