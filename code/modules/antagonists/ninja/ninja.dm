@@ -45,9 +45,8 @@
 	while(objectives.len < quantity)
 		switch(pick_n_take(possible_objectives))
 			if(1)	//research
-				var/datum/objective/download/O = new /datum/objective/download()
+				var/datum/objective/research_secrets/O = new /datum/objective/research_secrets() // AQ EDIT - yogstation13/Yogstation#20268
 				O.owner = owner
-				O.gen_amount_goal()
 				objectives += O
 				log_objective(owner, O.explanation_text)
 

@@ -61,7 +61,6 @@
 #define ROLE_SINFULDEMON 		"Demon of Sin"//AQ
 #define ROLE_PARADOX_CLONE		"Paradox Clone" //AQ - port of tgstation#71141
 #define ROLE_CHRONO_LEGIONNAIRE	"Chrono Legionnaire" //AQ
-#define ROLE_THIEF				"Thief" //AQ - port of tgstation#64144
 #define ROLE_HORROR				"Eldritch Horror" //AQ - port of Yogstation#13033
 #define ROLE_PULSE_DEMON		"Pulse Demon" //AQ - port z ParadiseSS13
 #define ROLE_VOIDWALKER			"Voidwalker" //AQ - port z tgstation
@@ -111,7 +110,6 @@ GLOBAL_LIST_INIT(antagonist_bannable_roles, list(
 	ROLE_HIJACKED_AI, //AQ
 	ROLE_PARADOX_CLONE, //AQ
 	ROLE_CHRONO_LEGIONNAIRE, //AQ
-	ROLE_THIEF, //AQ
 	ROLE_HORROR, //AQ
 	ROLE_PULSE_DEMON, //AQ
 	ROLE_VOIDWALKER, //AQ
