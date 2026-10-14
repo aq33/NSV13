@@ -38,6 +38,10 @@ The other ~60 same-type redefinitions in `aquila/` call `..()`, so they are alre
 
 | Hook | Location | Feature |
 |---|---|---|
+| `QDEL_IN(src, 20)` in `/obj/effect/particle_effect/sparks/Initialize()` | `code/game/objects/effects/effect_system/effects_sparks.dm` | Sparks are cleaned up even if their `LateInitialize()` never runs |
+| `late_loaders` swapped for a fresh list before the late init loop | `code/controllers/subsystem/atoms.dm`, `InitializeAtoms()` | Overlapping map loads no longer wipe each other's late loaders (stuck sparks and other lateload atoms) |
+| `exit_push()` pushes along `pushed.dir` | `code/modules/security/genpop.dm` | Turnstiles on our maps have the free direction pointing out of the brig |
+| Opt-in role preferences (`role_preference_enabled()`, the old prefs toggle, no drafting in `get_players_for_role()`) | `code/__DEFINES/role_preferences.dm`, `code/modules/client/preferences.dm`, `code/game/gamemodes/game_mode.dm` | Antagonist roles are off unless the player enables them (`aquila/.../preferences_menu/middleware.dm` matches) |
 | `on_drain(drained)` call | `code/game/objects/items/devices/powersink.dm`, `process()` | Aquila power sink APC draining and infiltrator objective |
 | `dat += aquila_one_click_antag_links()` | `code/modules/admin/verbs/one_click_antag.dm` | Aquila "Create Antagonist" buttons |
 | `ROLE_PARADOX_CLONE` + `antagonist_bannable_roles` entry | `code/__DEFINES/role_preferences.dm` | Paradox Clone (tgstation#71141 port); the define has to be in core because `aquila.dm` is included after the list |
