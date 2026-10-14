@@ -15,14 +15,15 @@
 
 	for(var/name in test_chamber_kits())
 		var/datum/test_chamber_kit/kit = test_chamber_kits()[name]
+		// Liczymy różnicę, bo komora i wcześniejsze zestawy mogą już mieć obiekty tego typu
+		var/list/before = list()
+		for(var/path in kit.items)
+			before[path] = count_in_chamber(chamber, path)
 		chamber.spawn_kit(kit, null)
 		for(var/path in kit.items)
-			var/found = FALSE
-			for(var/turf/T as anything in chamber.reservation.reserved_turfs)
-				if(locate(path) in T)
-					found = TRUE
-					break
-			TEST_ASSERT(found, "Kit [name] did not spawn [path]")
+			var/spawned = count_in_chamber(chamber, path) - before[path]
+			var/expected = kit.items[path] || 1
+			TEST_ASSERT(spawned == expected, "Kit [name] spawned [spawned] of [expected] [path]")
 
 	var/turf/open/floor/F = chamber.kit_center
 	F.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
@@ -32,6 +33,13 @@
 	TEST_ASSERT(istype(chamber.kit_center, /turf/open/floor/plasteel/dark), "Reset did not restore the arena floor")
 	fail = check_room(chamber)
 	TEST_ASSERT(!fail, fail)
+
+/datum/unit_test/test_chamber/proc/count_in_chamber(datum/test_chamber/chamber, path)
+	. = 0
+	for(var/turf/T as anything in chamber.reservation.reserved_turfs)
+		for(var/atom/movable/AM in T)
+			if(istype(AM, path))
+				.++
 
 /datum/unit_test/test_chamber/proc/check_room(datum/test_chamber/chamber)
 	var/consoles = 0
