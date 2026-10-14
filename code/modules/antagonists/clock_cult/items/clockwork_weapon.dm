@@ -1,4 +1,5 @@
 /obj/item/clockwork/weapon
+	bleed_force = BLEED_CUT
 	name = "Clockwork Weapon"
 	desc = "Something"
 	icon = 'icons/obj/clockwork_objects.dmi'

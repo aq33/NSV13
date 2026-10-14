@@ -53,6 +53,8 @@
 	var/skin_tone = ""
 	var/should_draw_greyscale = TRUE //Limbs need this information as a back-up incase they are generated outside of a carbon (limbgrower)
 	var/species_color = ""
+	/// The colour of brute damage overlays on this bodypart (the owner's blood colour)
+	var/damage_color = COLOR_BLOOD
 	var/mutation_color = ""
 	var/no_update = 0
 
@@ -330,6 +332,9 @@
 		C = owner
 		no_update = FALSE
 
+	if(C)
+		damage_color = C.get_blood_color()
+
 	if(HAS_TRAIT(C, TRAIT_HUSK) && IS_ORGANIC_LIMB(src))
 		dmg_overlay_type = "" //no damage overlay shown when husked
 		is_husked = TRUE
@@ -413,7 +418,9 @@
 		image_dir = SOUTH
 		if(dmg_overlay_type)
 			if(brutestate)
-				. += image('icons/mob/dam_mob.dmi', "[dmg_overlay_type]_[body_zone]_[brutestate]0", -DAMAGE_LAYER, image_dir)
+				var/image/brute_overlay = image('icons/mob/dam_mob.dmi', "[dmg_overlay_type]_[body_zone]_[brutestate]0", -DAMAGE_LAYER, image_dir)
+				brute_overlay.color = damage_color
+				. += brute_overlay
 			if(burnstate)
 				. += image('icons/mob/dam_mob.dmi', "[dmg_overlay_type]_[body_zone]_0[burnstate]", -DAMAGE_LAYER, image_dir)
 

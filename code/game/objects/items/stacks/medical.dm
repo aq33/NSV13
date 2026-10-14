@@ -14,7 +14,7 @@
 	var/heal_brute = 0
 	///How much burn does it heal?
 	var/heal_burn = 0
-	///For how long does it stop bleeding?
+	///How much bleeding rate does it suppress?
 	var/stop_bleeding = 0
 	///How long does it take to apply on yourself?
 	var/self_delay = 2 SECONDS
@@ -58,16 +58,18 @@
 		to_chat(user, "<span class='warning'>[C] nie ma tej części ciała: [strefa_pl(user.zone_selected)]!</span>")
 		return
 
-	if(ishuman(C)) //apparently only humans bleed? funky.
-		var/mob/living/carbon/human/H = C
-		if(stop_bleeding)
-			if(!H.bleed_rate)
-				to_chat(user, "<span class='warning'>[H] isn't bleeding!</span>")
-				return
-			if(H.bleedsuppress) //so you can't stack bleed suppression
-				to_chat(user, "<span class='warning'>Krwawienie [H] jest już opatrzone!</span>")
-				return
-			H.suppress_bloodloss(stop_bleeding)
+	if(stop_bleeding)
+		if(!C.is_bleeding())
+			if(C.is_bandaged()) //so you can't stack bleed suppression
+				to_chat(user, "<span class='warning'>Krwawienie [C] jest już opatrzone!</span>")
+			else
+				to_chat(user, "<span class='warning'>[C] nie krwawi!</span>")
+			return
+		C.suppress_bloodloss(stop_bleeding)
+		if(C.is_bleeding())
+			C.balloon_alert(user, "krwawienie zmniejszone do [C.get_bleed_rate_string()]")
+		else
+			C.balloon_alert(user, "krwawienie zatamowane!")
 
 	if(!IS_ORGANIC_LIMB(affecting))
 		to_chat(user, "<span class='warning'>Lekarstwo nie zadziała na robotyczną kończynę!</span>")
@@ -130,7 +132,7 @@
 	name = "medical gauze"
 	desc = "A roll of elastic cloth that is extremely effective at stopping bleeding, heals minor bruising."
 	icon_state = "gauze"
-	stop_bleeding = 1800
+	stop_bleeding = BLEED_CRITICAL
 	heal_brute = 5 //Reminder that you can not stack healing thus you wait out the 1800 timer.
 	max_amount = 12
 
@@ -155,7 +157,7 @@
 	name = "improvised gauze"
 	singular_name = "improvised gauze"
 	desc = "A roll of cloth roughly cut from something that can stop bleeding, but does not heal wounds."
-	stop_bleeding = 900
+	stop_bleeding = BLEED_SURFACE
 	heal_brute = 0
 
 /obj/item/stack/medical/gauze/adv

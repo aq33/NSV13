@@ -135,7 +135,7 @@ GENE SCANNER
 
 
 // Used by the PDA medical scanner too
-/proc/healthscan(mob/user, mob/living/M, mode = 1, advanced = FALSE)
+/proc/healthscan(mob/user, mob/living/M, mode = 1, advanced = FALSE, tochat = TRUE) // AQ EDIT - tochat = FALSE returns the text (vitals monitor)
 	var/list/message = list()
 	if(isliving(user) && (user.incapacitated() || user.eye_blind))
 		return
@@ -373,7 +373,8 @@ GENE SCANNER
 	if(M.tod && (M.stat == DEAD || ((HAS_TRAIT(M, TRAIT_FAKEDEATH)) && !advanced)))
 		message += "<span class='info'>Czas zgonu: [M.tod]</span>"
 		var/tdelta = round(world.time - M.timeofdeath)
-		if(tdelta < (DEFIB_TIME_LIMIT * 10))
+		var/mob/living/carbon/scanned_carbon = M
+		if(istype(scanned_carbon) && scanned_carbon.is_defib_possible()) // AQ EDIT - no defib time limit
 			message += "<span class='alert'><b>Pacjent zmarł [DisplayTimeText(tdelta)] temu, defibrylacja może być możliwa!</b></span>"
 
 	for(var/thing in M.diseases)
@@ -388,8 +389,10 @@ GENE SCANNER
 		if(blood_id)
 			if(ishuman(C))
 				var/mob/living/carbon/human/H = C
-				if(H.bleed_rate)
-					message += "<span class='alert'><b>Pacjent krwawi!</b></span>"
+				if(H.is_bleeding())
+					message += "<span class='alert'><b>Pacjent krwawi z szybkością [round(H.get_bleed_rate(), 0.1)]/s!</b></span>"
+				else if (H.is_bandaged())
+					message += "<span class='alert'><b>Pacjent krwawi (rany opatrzone)!</b></span>"
 			var/blood_percent =  round((C.blood_volume / BLOOD_VOLUME_NORMAL)*100)
 			var/blood_type = C.dna.blood_type
 			if(blood_id != /datum/reagent/blood)//special blood substance
@@ -398,12 +401,13 @@ GENE SCANNER
 					blood_type = R.name
 				else
 					blood_type = blood_id
+			var/blood_info = "[blood_type] (zgodne: [jointext(get_safe_blood(blood_type), ", ")])"
 			if(C.blood_volume <= BLOOD_VOLUME_SAFE && C.blood_volume > BLOOD_VOLUME_OKAY)
-				message += "<span class='alert'>Poziom krwi: NISKI [blood_percent] %, [C.blood_volume] cl,</span> <span class='info'>grupa: [blood_type]</span>"
+				message += "<span class='alert'>Poziom krwi: NISKI [blood_percent] %, [C.blood_volume] cl,</span> <span class='info'>grupa: [blood_info]</span>"
 			else if(C.blood_volume <= BLOOD_VOLUME_OKAY)
-				message += "<span class='alert'>Poziom krwi: <b>KRYTYCZNY [blood_percent] %</b>, [C.blood_volume] cl,</span> <span class='info'>grupa: [blood_type]</span>"
+				message += "<span class='alert'>Poziom krwi: <b>KRYTYCZNY [blood_percent] %</b>, [C.blood_volume] cl,</span> <span class='info'>grupa: [blood_info]</span>"
 			else
-				message += "<span class='info'>Poziom krwi: [blood_percent] %, [C.blood_volume] cl, grupa: [blood_type]</span>"
+				message += "<span class='info'>Poziom krwi: [blood_percent] %, [C.blood_volume] cl, grupa: [blood_info]</span>"
 
 		var/list/cyberimp_detect = list()
 		for(var/obj/item/organ/cyberimp/CI in C.internal_organs)
@@ -414,10 +418,12 @@ GENE SCANNER
 			for(var/name in cyberimp_detect)
 				message += "<span class='notice'>[name]</span>"
 
+	if(!tochat) // AQ EDIT - vitals monitor
+		return EXAMINE_BLOCK(jointext(message, "\n"))
 	to_chat(user, EXAMINE_BLOCK(jointext(message, "\n")))
 	SEND_SIGNAL(M, COMSIG_NANITE_SCAN, user, FALSE)
 
-/proc/chemscan(mob/living/user, mob/living/M)
+/proc/chemscan(mob/living/user, mob/living/M, tochat = TRUE) // AQ EDIT - tochat = FALSE returns the text (vitals monitor)
 	var/list/message = list()
 	if(istype(M))
 		if(M.reagents)
@@ -433,6 +439,8 @@ GENE SCANNER
 					message += "<span class='alert'>[R.name]</span>"
 			else
 				message += "<span class='notice'>Pacjent nie jest uzależniony od żadnych odczynników.</span>"
+		if(!tochat) // AQ EDIT - vitals monitor
+			return EXAMINE_BLOCK(jointext(message, "\n"))
 		to_chat(user, EXAMINE_BLOCK(jointext(message, "\n")))
 
 /obj/item/healthanalyzer/advanced

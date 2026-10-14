@@ -60,7 +60,7 @@
 /obj/structure/carp_rift
 	name = "carp rift"
 	desc = "A rift akin to the ones space carp use to travel long distances."
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 50, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 50, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100, "stamina" = 0, "bleed" = 0)
 	max_integrity = 300
 	icon = 'icons/obj/carp_rift.dmi'
 	icon_state = "carp_rift_carpspawn"

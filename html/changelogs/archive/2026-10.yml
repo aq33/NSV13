@@ -317,3 +317,35 @@
       badania o połowę.
   - rscdel: Usunięto cel pobierania badań i rolę złodzieja; cele złodzieja dostaje
       teraz traitor.
+  - rscadd: 'Darkspawn z Yogstation w nowej wersji: trzy klasy (wojownik, zwiadowca,
+      czarnoksiężnik), sklep Psi Web za wolę i thralle'
+  - rscadd: Tryb gry darkspawn i ruleset w dynamicu
+  - code_imp: System zaklęć /datum/action/cooldown/spell z tgstation
+  - rscadd: 'Nowa misja: abordaż i obrona placówki Syndykatu (port z BeeStation/NSV13#2823).'
+  - bugfix: Zmiana IFF przez konsolę od razu widzą cele i flota Solgov.
+  PowerfulBacon, Tsar-Salat, Nakalon, MrMelbert, JohnFulpWillard, Mothblocks, Time-Green, timothymtorres:
+  - rscadd: Krwawienie ma ikonę alertu z tempem; kliknij ją, żeby ucisnąć ranę. Gaza
+      opatruje krwawienie, ogień i laser przypalają ranę.
+  - rscadd: 'Nowe operacje: kauteryzacja krwawienia, płukanie żołądka, rekalibracja
+      tożsamości (IPC) i autopsja.'
+  - rscadd: Skaner autopsyjny drukuje raport z autopsji (NanoMed Plus, protolathe).
+  - rscadd: Ścienny monitor funkcji życiowych łączony multitoolem ze stołem, łóżkiem
+      stazy, sleeperem albo kriokomorą.
+  - rscadd: 'Paczka cargo „Odzyskana załoga”: ożyw zwłoki, a przejmie je duch; medycyna
+      dostaje premię.'
+  - rscadd: 'Quirk Tanatorenazja: po DNR twoje ciało może przejąć inny duch.'
+  - rscadd: Pole „Przyczyna zgonu” w aktach medycznych.
+  - rscadd: Operację wybiera się z menu radialnego wokół pacjenta.
+  - balance: Broń zadaje krwawienie, a pancerz przed nim chroni.
+  - balance: Defibrylator nie ma limitu czasu; reanimację blokuje rozkład serca i
+      mózgu albo DNR.
+  - balance: Krew odnawia się tylko przy sprawnym sercu.
+  - tweak: 'Krew ma kolor gatunku: IPC krwawią chłodziwem, eterealne świecą, jaszczury
+      mają turkusową krew.'
+  - tweak: Kroplówka pokazuje rurkę do pacjenta i przyciąga go do stojaka.
+  - imageadd: Szare sprite'y krwi, ikony alertów krwawienia, monitora i skanera autopsyjnego
+      (z BeeStation i tgstation).
+  - soundadd: Dźwięk krwawiącej rany z BeeStation.
+  sh4dow321:
+  - soundadd: Głośniki nagłośnienia i jukeboxy mają mniej echa, zwłaszcza za ścianami;
+      głośniki nagłośnienia grają pełną głośnością w promieniu 3 kratek.

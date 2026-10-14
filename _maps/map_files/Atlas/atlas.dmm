@@ -430,6 +430,14 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/hallway/nsv/deck2/primary)
+"aQ" = (
+/obj/machinery/restaurant_portal/restaurant,
+/turf/open/floor/monotile/dark,
+/area/crew_quarters/bar/mess_hall)
+"aR" = (
+/obj/machinery/restaurant_portal/bar,
+/turf/open/floor/monotile/dark,
+/area/crew_quarters/bar/mess_hall)
 "aS" = (
 /obj/machinery/door/airlock/ship/external/glass{
 	name = "Pressurization Chamber";
@@ -452,6 +460,14 @@
 	},
 /turf/open/floor/plasteel/tech/grid,
 /area/engine/engine_room)
+"aU" = (
+/obj/effect/turf_decal/tile/bar/tile_marquee,
+/obj/machinery/vending/wardrobe/chef_wardrobe,
+/obj/machinery/restaurant_terminal/restaurant{
+	pixel_y = 32
+	},
+/turf/open/floor/durasteel,
+/area/crew_quarters/kitchen)
 "aV" = (
 /turf/template_noop,
 /area/maintenance/nsv/deck2/starboard)
@@ -487,6 +503,16 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/hallway/nsv/deck2/primary)
+"aZ" = (
+/obj/machinery/vending/wardrobe/bar_wardrobe,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/machinery/restaurant_terminal/bar{
+	pixel_x = -32
+	},
+/turf/open/floor/wood,
+/area/crew_quarters/bar)
 "ba" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
@@ -8400,7 +8426,7 @@
 /area/crew_quarters/kitchen/coldroom)
 "xr" = (
 /obj/machinery/turnstile{
-	dir = 4
+	dir = 8
 	},
 /obj/effect/turf_decal/loading_area{
 	dir = 8
@@ -47701,7 +47727,7 @@ Ef
 lw
 rg
 Nl
-Vh
+aZ
 MN
 lw
 Ub
@@ -47962,7 +47988,7 @@ Sw
 MR
 ro
 yU
-vy
+aQ
 YP
 UZ
 oY
@@ -48992,7 +49018,7 @@ AC
 Bw
 mj
 oy
-vy
+aR
 wC
 Jz
 un
@@ -50012,7 +50038,7 @@ OR
 un
 Ef
 QO
-Yh
+aU
 Ln
 tg
 BG

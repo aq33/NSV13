@@ -247,6 +247,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_HIVE_BURNT		 "hive-burnt"
 ///Prevents natural body temperature stabilization.
 #define TRAIT_COLDBLOODED		"cold_blooded" //NSV13 species trait.
+#define TRAIT_BLEED_HELD		"bleed_held" // For when a mob is holding their wounds, preventing them from bleeding further
+#define TRAIT_NO_BLOOD			"no_blood" // Bleeding heals itself and bleeding is impossible
+#define TRAIT_NO_BLEEDING		"no_bleed" // The user can acquire the bleeding status effect, but will no lose blood
+#define TRAIT_BLOOD_COOLANT		"blood_coolant" // Replaces blood with coolant, meaning we overheat instead of losing air
 
 // You can stare into the abyss, but it does not stare back.
 // You're immune to the hallucination effect of the supermatter, either
@@ -429,6 +433,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 ///Mob is being tracked on glob suit sensors list
 #define TRACKED_SENSORS_TRAIT "tracked_sensors"
+#define ACTION_TRAIT "action_trait"
+#define TABLE_TRAIT "table_trait"
 ///Mob is tracked by suit sensors, and on glob suit sensors list
 #define TRAIT_SUIT_SENSORS "suit_sensors"
 ///Mob is tracked by nanites, and on glob suit sensors list

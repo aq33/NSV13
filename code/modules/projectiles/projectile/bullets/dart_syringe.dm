@@ -1,4 +1,5 @@
 /obj/item/projectile/bullet/dart
+	bleed_force = BLEED_SURFACE
 	name = "dart"
 	icon_state = "cbbolt"
 	damage = 6

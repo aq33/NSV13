@@ -268,7 +268,7 @@
 	canSmoothWith = null
 	max_integrity = 70
 	resistance_flags = ACID_PROOF
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 100, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 100, "stamina" = 0, "bleed" = 0)
 	var/list/debris = list()
 
 /obj/structure/table/glass/Initialize(mapload)
@@ -475,7 +475,7 @@
 	canSmoothWith = list(/obj/structure/table/reinforced, /obj/structure/table)
 	max_integrity = 200
 	integrity_failure = 50
-	armor = list("melee" = 10, "bullet" = 30, "laser" = 30, "energy" = 100, "bomb" = 20, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 70, "stamina" = 0)
+	armor = list("melee" = 10, "bullet" = 30, "laser" = 30, "energy" = 100, "bomb" = 20, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 70, "stamina" = 0, "bleed" = 0)
 
 /obj/structure/table/reinforced/deconstruction_hints(mob/user)
 	if(deconstruction_ready)
@@ -578,20 +578,36 @@
 	visible_message("<span class='notice'>[user] kładzie [pushed_mob] na [src].</span>")
 	get_patient()
 
+/obj/structure/table/optable/proc/table_entered()
+	SIGNAL_HANDLER
+	get_patient()
+
 /obj/structure/table/optable/proc/get_patient()
 	var/mob/living/carbon/M = locate(/mob/living/carbon) in loc
 	if(M)
-		if(M.resting)
-			set_patient(M)
+		set_patient(M)
 	else
 		set_patient(null)
 
 /obj/structure/table/optable/proc/set_patient(new_patient)
 	if(patient)
 		UnregisterSignal(patient, COMSIG_PARENT_QDELETING)
+		UnregisterSignal(patient, COMSIG_LIVING_RESTING_UPDATED)
+		REMOVE_TRAIT(patient, TRAIT_NO_BLEEDING, TABLE_TRAIT)
 	patient = new_patient
 	if(patient)
 		RegisterSignal(patient, COMSIG_PARENT_QDELETING, PROC_REF(patient_deleted))
+		RegisterSignal(patient, COMSIG_LIVING_RESTING_UPDATED, PROC_REF(check_bleed_trait))
+		check_bleed_trait()
+
+/obj/structure/table/optable/proc/check_bleed_trait()
+	SIGNAL_HANDLER
+	if (!patient)
+		return
+	if (patient.resting)
+		ADD_TRAIT(patient, TRAIT_NO_BLEEDING, TABLE_TRAIT)
+	else
+		REMOVE_TRAIT(patient, TRAIT_NO_BLEEDING, TABLE_TRAIT)
 
 /obj/structure/table/optable/proc/patient_deleted(datum/source)
 	SIGNAL_HANDLER
@@ -600,6 +616,8 @@
 /obj/structure/table/optable/proc/check_eligible_patient()
 	get_patient()
 	if(!patient)
+		return FALSE
+	if (!patient.resting)
 		return FALSE
 	if(ishuman(patient) || ismonkey(patient))
 		return TRUE

@@ -27,7 +27,7 @@
 	flags_1 = CONDUCT_1
 	attack_verb = list("atakuje", "dźga", "szturcha")
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 30, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 30, "stamina" = 0, "bleed" = 0)
 	var/datum/reagent/forkload //NSV13 - used to eat any food (who coded this to just work for omlettes?)
 
 /obj/item/kitchen/fork/suicide_act(mob/living/carbon/user)
@@ -136,6 +136,7 @@
 	desc = "A general purpose Chef's Knife made by SpaceCook Incorporated. Guaranteed to stay sharp for years to come."
 	flags_1 = CONDUCT_1
 	force = 10
+	bleed_force = BLEED_CUT
 	w_class = WEIGHT_CLASS_SMALL
 	throwforce = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -276,7 +277,7 @@
 	throwforce = 12//fuck git
 	materials = list()
 	attack_verb = list("kosi nożem", "dźga kosą")
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0, "bleed" = 0)
 
 // Shank - Makeshift weapon that can embed on throw
 /obj/item/kitchen/knife/shank

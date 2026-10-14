@@ -6,6 +6,7 @@
 	name = "spear"
 	desc = "A haphazardly-constructed yet still deadly weapon of ancient design."
 	force = 10
+	bleed_force = BLEED_CUT
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
 	block_upgrade_walk = 1
@@ -18,7 +19,7 @@
 	attack_verb = list("atakuje", "szturcha", "dźga", "rozdziera", "bodzie")
 	sharpness = IS_SHARP
 	max_integrity = 200
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 30, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 30, "stamina" = 0, "bleed" = 0)
 	var/war_cry = "AAAAARGH!!!"
 	var/icon_prefix = "spearglass"
 
@@ -181,6 +182,7 @@
 	name = "bamboo spear"
 	desc = "A haphazardly-constructed bamboo stick with a sharpened tip, ready to poke holes into unsuspecting people."
 	force = 10
+	bleed_force = BLEED_CUT
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
 	block_upgrade_walk = 1

@@ -1,6 +1,7 @@
 // 40mm (Grenade Launcher
 
 /obj/item/projectile/bullet/a40mm
+	bleed_force = 0
 	name ="40mm grenade"
 	desc = "USE A WEEL GUN"
 	icon_state= "bolter"

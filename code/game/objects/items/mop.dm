@@ -123,6 +123,7 @@
 	desc = "A mop with a sharpened handle. Careful!"
 	name = "sharpened mop"
 	force = 10
+	bleed_force = BLEED_SURFACE
 	throwforce = 18
 	throw_speed = 4
 	attack_verb = list("mopuje", "dźga", "kosi nożem", "potyka się z")

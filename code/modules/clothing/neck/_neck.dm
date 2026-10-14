@@ -13,7 +13,9 @@
 			if(damaged_clothes)
 				. += mutable_appearance('icons/effects/item_damage.dmi', "damagedmask")
 			if(HAS_BLOOD_DNA(src))
-				. += mutable_appearance('icons/effects/blood.dmi', "maskblood")
+				var/mutable_appearance/bloody_neck = mutable_appearance('icons/effects/blood.dmi', "maskblood")
+				bloody_neck.color = get_blood_dna_color(return_blood_DNA())
+				. += bloody_neck
 
 /obj/item/clothing/neck/tie
 	name = "tie"
@@ -81,7 +83,7 @@
 					if(!(M.failed_last_breath || M.losebreath))
 						lung_strength = "zdrowy"
 
-			if(M.stat == DEAD && heart && world.time - M.timeofdeath < DEFIB_TIME_LIMIT * 10)
+			if(M.stat == DEAD && heart && !(heart.organ_flags & ORGAN_FAILING)) // AQ EDIT - no defib time limit
 				heart_strength = "<span class='boldannounce'>słaby, trzepoczący</span>"
 
 			var/diagnosis = (body_part == BODY_ZONE_CHEST ? "Puls: [heart_strength], oddech: [lung_strength]." : "Słabo słyszysz puls: [heart_strength].")

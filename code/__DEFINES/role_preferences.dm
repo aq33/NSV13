@@ -65,6 +65,7 @@
 #define ROLE_PULSE_DEMON		"Pulse Demon" //AQ - port z ParadiseSS13
 #define ROLE_VOIDWALKER			"Voidwalker" //AQ - port z tgstation
 #define ROLE_SHADOW_DEMON		"Shadow Demon" //AQ - port z ParadiseSS13
+#define ROLE_DARKSPAWN			"Darkspawn" //AQ - port z Yogstation
 
 /// Roles that are antagonists, roundstart or not, and have passes to do.. antagonistry
 GLOBAL_LIST_INIT(antagonist_bannable_roles, list(
@@ -114,6 +115,7 @@ GLOBAL_LIST_INIT(antagonist_bannable_roles, list(
 	ROLE_PULSE_DEMON, //AQ
 	ROLE_VOIDWALKER, //AQ
 	ROLE_SHADOW_DEMON, //AQ
+	ROLE_DARKSPAWN, //AQ
 ))
 //nsv13 - pvp + bloodling modes added here
 
@@ -209,9 +211,10 @@ GLOBAL_LIST_INIT(other_bannable_roles, list(
 	if(initial(pref.per_character))
 		source = src.prefs.active_character.role_preferences_character
 	var/role_preference_value = source["[role_preference_key]"]
-	if(isnum(role_preference_value) && !role_preference_value) // explicitly disabled and not null
-		return FALSE
-	return TRUE
+	//AQ EDIT - antagonist roles are opt-in: only an explicit TRUE enables them
+	if(isnum(role_preference_value) && role_preference_value)
+		return TRUE
+	return FALSE
 
 /// If the client given is fit for a given role based on the arguments passed
 /// banning_key: ROLE_X used for this role - to check if the player is banned.

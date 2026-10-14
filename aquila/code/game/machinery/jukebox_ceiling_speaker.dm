@@ -25,8 +25,10 @@
 	. = ..()
 	if(range)
 		speaker_range = range
-	// ściany tłumią słabiej niż przy jukeboxie, żeby nagłośnienie było lekko słychać w działach obok korytarza
-	emitter = new(src, speaker_range, 1, 3, 0.6)
+	// pełna głośność do 3 kratek (mniejsze głośniki: 2), ściany tłumią słabiej niż przy jukeboxie, żeby nagłośnienie
+	// było lekko słychać w działach obok korytarza; mało echa, bo głośnik wisi blisko słuchacza
+	var/full_range = speaker_range >= JUKEBOX_CEILING_RANGE ? 3 : 2
+	emitter = new(src, speaker_range, full_range, 3, 0.6, 0.3)
 	SSjukeboxes.ceiling_speakers += src
 
 /obj/machinery/ceiling_speaker/Destroy()

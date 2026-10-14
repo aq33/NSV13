@@ -96,6 +96,7 @@
 	desc = "It's an expensive Oak fountain pen. The nib is quite sharp."
 	icon_state = "pen-fountain-o"
 	force = 5
+	bleed_force = BLEED_SURFACE
 	throwforce = 5
 	throw_speed = 4
 	colour = "crimson"

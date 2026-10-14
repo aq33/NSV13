@@ -11,6 +11,9 @@
 #define STAMINA 	"stamina"
 #define BRAIN		"brain"
 
+/// Armour flag for bleed prevention
+#define BLEED "bleed"
+
 //bitflag damage defines used for suicide_act
 #define BRUTELOSS 	            	(1<<0)
 #define FIRELOSS 	            	(1<<1)
