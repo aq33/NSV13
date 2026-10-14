@@ -107,6 +107,8 @@ GLOBAL_LIST_INIT(maintenance_loot, list(
 	/obj/item/storage/toolbox/artistic = 2,
 	/obj/item/toy/eightball = 1,
 	/obj/item/reagent_containers/pill/floorpill = 4,
+	/obj/item/paper/secretrecipe/gorgium = 1, // AQ EDIT - tgstation/tgstation#95952
+	/obj/item/paper/secretrecipe/metalgen = 1, // AQ EDIT
 	/obj/item/food/canned/peaches/maint = 1,
 	/obj/item/reagent_containers/food/drinks/bottle/homemaderum = 1,
 	/obj/item/food/grown/poppy = 10,
