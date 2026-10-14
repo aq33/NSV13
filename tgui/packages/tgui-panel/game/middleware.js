@@ -42,6 +42,7 @@ export const gameMiddleware = (store) => {
     if (
       game.roundRestartedAt &&
       game.connectionLostAt &&
+      pingsAreFailing &&
       now >= game.roundRestartedAt + AUTO_RECONNECT_AFTER &&
       now >= lastReconnectAt + AUTO_RECONNECT_INTERVAL
     ) {
