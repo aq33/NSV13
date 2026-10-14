@@ -6,7 +6,11 @@
 
 import { pingSuccess } from '../ping/actions';
 import { connectionLost, connectionRestored, roundRestarted } from './actions';
-import { CONNECTION_LOST_AFTER } from './constants';
+import {
+  AUTO_RECONNECT_AFTER,
+  AUTO_RECONNECT_INTERVAL,
+  CONNECTION_LOST_AFTER,
+} from './constants';
 import { selectGame } from './selectors';
 
 const withTimestamp = (action) => ({
@@ -19,6 +23,7 @@ const withTimestamp = (action) => ({
 
 export const gameMiddleware = (store) => {
   let lastPingedAt;
+  let lastReconnectAt = 0;
   setInterval(() => {
     const state = store.getState();
     if (!state) {
@@ -32,6 +37,16 @@ export const gameMiddleware = (store) => {
     }
     if (game.connectionLostAt && !pingsAreFailing) {
       store.dispatch(withTimestamp(connectionRestored()));
+    }
+    const now = Date.now();
+    if (
+      game.roundRestartedAt &&
+      game.connectionLostAt &&
+      now >= game.roundRestartedAt + AUTO_RECONNECT_AFTER &&
+      now >= lastReconnectAt + AUTO_RECONNECT_INTERVAL
+    ) {
+      lastReconnectAt = now;
+      Byond.command('.reconnect');
     }
   }, 1000);
   return (next) => (action) => {
