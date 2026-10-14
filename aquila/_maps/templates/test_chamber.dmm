@@ -124,6 +124,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/test_chamber/arena)
+"ay" = (
+/obj/machinery/light/floor,
+/turf/open/floor/plasteel/dark,
+/area/test_chamber/arena)
 
 (1,1,1) = {"
 aa
@@ -361,17 +365,17 @@ aa
 au
 as
 as
+ay
 as
 as
 as
 as
+ay
 as
 as
 as
 as
-as
-as
-as
+ay
 as
 as
 at
@@ -466,7 +470,7 @@ aa
 au
 as
 as
-as
+ay
 as
 as
 as
@@ -476,7 +480,7 @@ as
 as
 as
 as
-as
+ay
 as
 as
 at
@@ -571,17 +575,17 @@ aa
 au
 as
 as
+ay
 as
 as
 as
 as
+ay
 as
 as
 as
 as
-as
-as
-as
+ay
 as
 as
 at
