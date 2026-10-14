@@ -64,7 +64,9 @@
 				to_chat(user, "<span class='warning'>Na drodze taśmy stoi [O].</span>")
 				return
 	var/placed = 0
-	var/line_id = "[REF(user)]-[world.time]"
+	// Zajęte pole przerywa linię - każdy spójny kawałek dostaje własny line_id, żeby cut_line obejmował go w całości
+	var/segment = 0
+	var/line_id = "[REF(user)]-[world.time]-[segment]"
 	for(var/turf/T as anything in line)
 		var/already = FALSE
 		for(var/obj/structure/barrier_tape/existing in T)
@@ -72,6 +74,7 @@
 				already = TRUE
 				break
 		if(already)
+			line_id = "[REF(user)]-[world.time]-[++segment]"
 			continue
 		var/obj/structure/barrier_tape/tape = new tape_type(T, tape_dir)
 		tape.line_id = line_id
