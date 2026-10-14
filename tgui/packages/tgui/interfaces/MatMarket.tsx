@@ -154,7 +154,7 @@ export const MatMarket = (props) => {
                         material.price * amount * multiplier ||
                       material.requested + amount > material.quantity
                     }
-                    tooltip={`${formatMoney(material.price * amount)} kr`}
+                    tooltip={`${formatMoney(Math.round(material.price * amount * multiplier))} kr`}
                     onClick={() =>
                       act('buy', {
                         quantity: amount,

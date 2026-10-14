@@ -280,6 +280,7 @@
 			"maximum" = global_bounty.get_max(),
 			"priority" = global_bounty.high_priority,
 			"unique" = global_bounty.unique,
+			"ref" = REF(global_bounty),
 		))
 	data["listBounty"] = global_bounties
 	return data
@@ -432,12 +433,18 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "beacon"
 	var/uses = 2
+	/// Czeka na zrzut - bez tego szybkie klikanie zrzuciłoby kilka padów
+	var/launching = FALSE
 
 /obj/item/civ_bounty_beacon/attack_self(mob/user)
+	if(launching)
+		return
+	launching = TRUE
 	loc.visible_message("<span class='warning'>[src] zaczyna głośno piszczeć!</span>")
 	addtimer(CALLBACK(src, PROC_REF(launch_payload)), 1 SECONDS)
 
 /obj/item/civ_bounty_beacon/proc/launch_payload()
+	launching = FALSE
 	playsound(src, "sparks", 80, TRUE)
 	switch(uses)
 		if(2)

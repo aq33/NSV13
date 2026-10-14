@@ -12,6 +12,8 @@
 
 	/// Komponent pilnujący ruchów karty, także gdy siedzi w portfelu, PDA albo w kieszeni
 	var/datum/tracker
+	/// Śledzona karta - zapamiętana, żeby zawsze dało się zdjąć z niej sygnał
+	var/obj/item/card/id/tracked_card
 	/// Typ obszaru do patrolowania
 	var/area/demanded_area
 	/// Ile metrów trzeba przejść
@@ -45,7 +47,7 @@
 	reward = round(reward * (needed_coverage / 100))
 
 /datum/bounty/patrol/Destroy()
-	QDEL_NULL(tracker)
+	stop_tracking()
 	return ..()
 
 /datum/bounty/patrol/can_get()
@@ -94,13 +96,21 @@
 /datum/bounty/patrol/proc/start_tracking(obj/item/card/id/id_card)
 	if(id_card.registered_account)
 		contribution |= id_card.registered_account
+	stop_tracking()
+	tracked_card = id_card
 	tracker = AddComponent(/datum/component/connect_containers, id_card, list(COMSIG_MOVABLE_MOVED = PROC_REF(on_card_moved)))
 	RegisterSignal(id_card, COMSIG_MOVABLE_MOVED, PROC_REF(on_card_moved))
+	RegisterSignal(id_card, COMSIG_PARENT_QDELETING, PROC_REF(on_card_deleted))
 
 /datum/bounty/patrol/proc/stop_tracking(obj/item/card/id/id_card)
 	QDEL_NULL(tracker)
-	if(id_card)
-		UnregisterSignal(id_card, COMSIG_MOVABLE_MOVED)
+	if(tracked_card)
+		UnregisterSignal(tracked_card, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
+		tracked_card = null
+
+/datum/bounty/patrol/proc/on_card_deleted(datum/source)
+	SIGNAL_HANDLER
+	stop_tracking()
 
 /datum/bounty/patrol/proc/on_card_moved(atom/movable/moving, atom/old_loc)
 	SIGNAL_HANDLER

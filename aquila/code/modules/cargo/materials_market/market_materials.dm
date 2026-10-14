@@ -15,13 +15,13 @@
 	tradable = TRUE
 	tradable_base_quantity = MATERIAL_QUANTITY_COMMON
 	market_value = 5
-	market_minimum_override = 0
+	market_minimum_override = 1
 
 /datum/material/glass
 	tradable = TRUE
 	tradable_base_quantity = MATERIAL_QUANTITY_COMMON
 	market_value = 5
-	market_minimum_override = 0
+	market_minimum_override = 1
 
 /datum/material/silver
 	tradable = TRUE

@@ -240,8 +240,8 @@
 			say("Na rynku nie ma tyle arkuszy! Poczekaj, aż ktoś coś sprzeda, zanim dorzucisz więcej.")
 			playsound(src, 'sound/machines/synth_no.ogg', 35, FALSE)
 			return FALSE
-		if(pack.total_stacks() >= MAX_STACK_LIMIT)
-			say("W zamówieniu jest już [MAX_STACK_LIMIT] stosów! Poczekaj na dostawę, zanim zamówisz więcej.")
+		if(pack.total_stacks(sheet_to_buy, quantity) > MAX_STACK_LIMIT)
+			say("Zamówienie przekroczyłoby [MAX_STACK_LIMIT] stosów! Poczekaj na dostawę, zanim zamówisz więcej.")
 			playsound(src, 'sound/machines/synth_no.ogg', 35, FALSE)
 			return FALSE
 		if(current_order.get_final_cost() + cost > account_payable.account_balance)
@@ -249,6 +249,12 @@
 			return FALSE
 		pack.add_sheets(sheet_to_buy, material_bought, quantity, unit_price)
 		return TRUE
+
+	var/obj/item/stack/stack_type = sheet_to_buy
+	if(CEILING(quantity / initial(stack_type.max_amount), 1) > MAX_STACK_LIMIT)
+		say("Jedno zamówienie może mieć najwyżej [MAX_STACK_LIMIT] stosów!")
+		playsound(src, 'sound/machines/synth_no.ogg', 35, FALSE)
+		return FALSE
 
 	var/datum/supply_pack/custom/minerals/mineral_pack = new(is_ordering_private ? user.real_name : "Zaopatrzenie")
 	mineral_pack.add_sheets(sheet_to_buy, material_bought, quantity, unit_price)
@@ -312,11 +318,14 @@
 	sheet_prices[sheet_type] = unit_price
 	cost += unit_price * quantity
 
-/// Ile pełnych stosów jest w zamówieniu
-/datum/supply_pack/custom/minerals/proc/total_stacks()
+/// Ile stosów będzie w zamówieniu, opcjonalnie po dorzuceniu extra_sheets arkuszy typu extra_type
+/datum/supply_pack/custom/minerals/proc/total_stacks(extra_type, extra_sheets = 0)
 	. = 0
-	for(var/obj/item/stack/sheet_type as anything in contains)
-		. += CEILING(contains[sheet_type] / initial(sheet_type.max_amount), 1)
+	var/list/counted = contains.Copy()
+	if(extra_type)
+		counted[extra_type] = (counted[extra_type] || 0) + extra_sheets
+	for(var/obj/item/stack/sheet_type as anything in counted)
+		. += CEILING(counted[sheet_type] / initial(sheet_type.max_amount), 1)
 
 /// Rozlicza zamówienie z rynkiem: zmniejsza podaż, podbija cenę i zwraca pieniądze za arkusze, których zabrakło
 /datum/supply_pack/custom/minerals/proc/adjust_market(datum/bank_account/paying_account)
@@ -334,9 +343,7 @@
 		contains[sheet_type] = available_quantity
 
 		// cena rośnie, gdy materiału na rynku zostaje mało
-		var/fraction = available_quantity
-		if(market_quantity != available_quantity)
-			fraction /= (market_quantity - available_quantity)
+		var/fraction = available_quantity / max(market_quantity, 1)
 		SSstock_market.adjust_material_price(mat, SSstock_market.materials_prices[mat] * fraction)
 		SSstock_market.adjust_material_quantity(mat, -available_quantity)
 

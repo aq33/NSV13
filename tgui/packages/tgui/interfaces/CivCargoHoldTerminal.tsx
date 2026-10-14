@@ -31,6 +31,7 @@ type SingleBounty = {
   maximum: number;
   priority: BooleanLike;
   unique: BooleanLike;
+  ref: string;
 };
 
 type Data = {
@@ -204,8 +205,8 @@ const GlobalBountyBlock = (props) => {
     claimed_bounties,
     cut_percent,
   } = data;
-  const [selectedName, setSelectedName] = useState<string | null>(null);
-  const selected = listBounty.find((bounty) => bounty.name === selectedName);
+  const [selectedRef, setSelectedRef] = useState<string | null>(null);
+  const selected = listBounty.find((bounty) => bounty.ref === selectedRef);
 
   return (
     <Stack>
@@ -227,15 +228,15 @@ const GlobalBountyBlock = (props) => {
           </Tabs.Tab>
           {listBounty.map((bounty) => (
             <Tabs.Tab
-              key={bounty.name}
+              key={bounty.ref}
               icon={
                 bounty.priority ? 'star' : bounty.unique ? 'gem' : undefined
               }
               color={
                 bounty.priority ? 'yellow' : bounty.unique ? 'teal' : undefined
               }
-              selected={bounty.name === selectedName}
-              onClick={() => setSelectedName(bounty.name)}
+              selected={bounty.ref === selectedRef}
+              onClick={() => setSelectedRef(bounty.ref)}
             >
               {bounty.name}
             </Tabs.Tab>
