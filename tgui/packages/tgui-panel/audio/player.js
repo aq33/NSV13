@@ -39,8 +39,8 @@ const PLAIN_MUFFLE_VOLUME = 0.3;
 // echo 0 and grow up to (1 + TAP_DELAY_GROWTH) times with distance, so far
 // away sounds like a bigger hall. Every copy is another download of the stream.
 const PLAIN_TAPS = [
-  { delay: 0.03, level: 0.45 },
-  { delay: 0.07, level: 0.25 },
+  { delay: 0.03, level: 0.3 },
+  { delay: 0.07, level: 0.15 },
 ];
 const TAP_DELAY_GROWTH = 1;
 // How much the direct sound is lowered at full echo
@@ -311,7 +311,7 @@ export class AudioPlayer {
 
   // How loud the echo copies are (0-1): distance echo, more of it through a deck
   tapMix() {
-    return Math.max(this.echo, this.muffle * 0.8);
+    return Math.max(this.echo, this.muffle * 0.4);
   }
 
   // Keeps the echo copies of the plain element playing, lagging behind it

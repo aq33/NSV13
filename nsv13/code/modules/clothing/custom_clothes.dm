@@ -23,7 +23,7 @@
 	icon_state = "peacekeeper"
 	worn_icon_state = "peacekeeper"
 	item_state = "bl_suit"
-	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30, "stamina" = 30)
+	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30, "stamina" = 30, "bleed" = 10)
 	strip_delay = 50
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
@@ -69,7 +69,7 @@
 	icon_state = "assistant_jacket"
 	worn_icon_state = "assistant_jacket"
 	desc = "Stylowa, ale ciężka kurtka, chroniąca noszącego przed typowymi zagrożeniami podczas służby na statku."
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 0, "rad" = 10, "fire" = 10, "acid" = 10)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 0, "rad" = 10, "fire" = 10, "acid" = 10, "bleed" = 5)
 
 /obj/item/clothing/suit/ship/peacekeeper
 	name = "Peacekeeper vest"
@@ -85,7 +85,7 @@
 	equip_delay_other = 40
 	max_integrity = 250
 	resistance_flags = NONE
-	armor = list("melee" = 30, "bullet" = 50, "laser" = 15, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 90, "stamina" = 30)
+	armor = list("melee" = 30, "bullet" = 50, "laser" = 15, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 90, "stamina" = 30, "bleed" = 5)
 
 /obj/item/clothing/suit/ship/peacekeeper/Initialize(mapload)
 	. = ..()
@@ -97,14 +97,14 @@
 	item_state = "peacekeeper_jacket"
 	desc = "A comfortable grey leather jacket. Despite its heavy armour, it's still extremely comfortable to wear."
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	armor = list("melee" = 30, "bullet" = 60, "laser" = 15, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 90, "stamina" = 40)
+	armor = list("melee" = 30, "bullet" = 60, "laser" = 15, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 90, "stamina" = 40, "bleed" = 50)
 
 /obj/item/clothing/suit/ship/peacekeeper/detective
 	name = "DET jacket"
 	desc = "A smart blue jacket, identifying the wearer as a forensics expert."
 	icon_state = "det"
 	item_state = "det"
-	armor = list("melee" = 30, "bullet" = 40, "laser" = 10, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 40, "acid" = 50)
+	armor = list("melee" = 30, "bullet" = 40, "laser" = 10, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 40, "acid" = 50, "bleed" = 50)
 	body_parts_covered = CHEST|ARMS
 
 /obj/item/clothing/suit/ship/peacekeeper/marine
@@ -112,7 +112,7 @@
 	icon_state = "marine"
 	item_state = "marine"
 	desc = "A bulky vest worn by the colonial peacekeepers. Its nanocarbon mesh fabrics are sure to stop almost any projectile."
-	armor = list("melee" = 30, "bullet" = 45, "laser" = 10, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 60)
+	armor = list("melee" = 30, "bullet" = 45, "laser" = 10, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 60, "bleed" = 50)
 
 /obj/item/clothing/suit/ship/officer
 	name = "Officer's dress jacket"
@@ -159,7 +159,7 @@
 	worn_icon = 'nsv13/icons/mob/head.dmi'
 	icon_state = "marine"
 	worn_icon_state = null
-	armor = list("melee" = 20, "bullet" = 20, "laser" = 10,"energy" = 5, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
+	armor = list("melee" = 20, "bullet" = 20, "laser" = 10,"energy" = 5, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "bleed" = 50)
 
 /obj/item/clothing/head/beret/ship
 	name = "beret"
@@ -213,7 +213,7 @@
 	item_state = "hardsuit0-pilot"
 	hardsuit_type = "pilot"
 	desc = "A lightweight space-helmet designed to protect fighter pilots in combat situations."
-	armor = list("melee" = 20, "bullet" = 12, "laser" = 10, "energy" = 10, "bomb" = 10, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 75)
+	armor = list("melee" = 20, "bullet" = 12, "laser" = 10, "energy" = 10, "bomb" = 10, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 75, "bleed" = 70)
 
 /obj/item/clothing/suit/space/hardsuit/pilot
 	name = "fighter pilot flightsuit"
@@ -224,7 +224,7 @@
 	item_state = "pilot"
 	worn_icon_state = "pilot"
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/pilot
-	armor = list("melee" = 20, "bullet" = 12, "laser" = 10, "energy" = 10, "bomb" = 10, "bio" = 100, "rad" = 50, "fire" = 90, "acid" = 75)
+	armor = list("melee" = 20, "bullet" = 12, "laser" = 10, "energy" = 10, "bomb" = 10, "bio" = 100, "rad" = 50, "fire" = 90, "acid" = 75, "bleed" = 70)
 
 /obj/item/clothing/under/ship/pilot
 	name = "Pilot's combat jumpsuit"
@@ -271,7 +271,7 @@
 	worn_icon_state = null
 	flags_inv = HIDEEARS|HIDEHAIR
 	bang_protect = 1
-	armor = list("melee" = 20, "bullet" = 20, "laser" = 10,"energy" = 5, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
+	armor = list("melee" = 20, "bullet" = 20, "laser" = 10,"energy" = 5, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "bleed" = 50)
 
 /obj/item/clothing/head/helmet/space/hardsuit/syndi/peacekeeper //Ironic type path. We're inheriting the "dual mode" behaviour from the syndie hardsuit.
 	name = "SG-1 Mjolnir Helmet"
@@ -282,7 +282,7 @@
 	hardsuit_type = "peacekeeper_space"
 	desc = "A hardsuit helmet fitted with highly experimental magnetic interlocks, allowing it to create a vacuum seal around the user, permitting usage in a hard vacuum. It is currently in EVA mode."
 	alt_desc = "Hełm skafandra wyposażony w wysoce eksperymentalne blokady magnetyczne, które tworzą próżniowe uszczelnienie wokół użytkownika, pozwalając używać go w próżni. Jest obecnie w trybie IVA."
-	armor = list("melee" = 40, "bullet" = 50, "laser" = 15,"energy" = 30, "bomb" = 25, "bio" = 100, "rad" = 50, "fire" = 75, "acid" = 75, "stamina" = 50)
+	armor = list("melee" = 40, "bullet" = 50, "laser" = 15,"energy" = 30, "bomb" = 25, "bio" = 100, "rad" = 50, "fire" = 75, "acid" = 75, "stamina" = 50, "bleed" = 70)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT //we want to see the mask
 
@@ -297,7 +297,7 @@
 	hardsuit_type = "peacekeeper_space"
 	allowed = list(/obj/item/gun, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/restraints/handcuffs, /obj/item/tank/internals, /obj/item/stock_parts/cell)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/syndi/peacekeeper
-	armor = list("melee" = 40, "bullet" = 50, "laser" = 15, "energy" = 30, "bomb" = 25, "bio" = 100, "rad" = 50, "fire" = 75, "acid" = 75, "stamina" = 50)
+	armor = list("melee" = 40, "bullet" = 50, "laser" = 15, "energy" = 30, "bomb" = 25, "bio" = 100, "rad" = 50, "fire" = 75, "acid" = 75, "stamina" = 50, "bleed" = 70)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	var/stomp_cooldown_time = 0.5 SECONDS
 	var/current_cooldown = 0
@@ -479,7 +479,7 @@
 	desc = "It's a jumpsuit worn by those with the experience to be \"Master At Arms\". It provides minor fire protection."
 	icon_state = "tactifool" //PLACEHOLDER
 	item_state = "bl_suit"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 50, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 50, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0, "bleed" = 10)
 
 /obj/item/clothing/under/ship/decktech
 	name = "munitions tech overalls"
@@ -532,7 +532,7 @@
 	worn_icon = 'nsv13/icons/mob/head.dmi'
 	icon_state = "hardsuit0-maa"
 	hardsuit_type = "maa"
-	armor = list("melee" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 100, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 65, "stamina" = 10)
+	armor = list("melee" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 100, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 65, "stamina" = 10, "bleed" = 70)
 	min_cold_protection_temperature = EMERGENCY_HELM_MIN_TEMP_PROTECT
 
 /obj/item/clothing/suit/space/hardsuit/master_at_arms
@@ -541,7 +541,7 @@
 	icon = 'nsv13/icons/obj/clothing/suits.dmi'
 	worn_icon = 'nsv13/icons/mob/suit.dmi'
 	icon_state = "maa_bombsuit"
-	armor = list("melee" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 100, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 65, "stamina" = 10)
+	armor = list("melee" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 100, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 65, "stamina" = 10, "bleed" = 70)
 	min_cold_protection_temperature = EMERGENCY_SUIT_MIN_TEMP_PROTECT
 	slowdown = 1.5
 	permeability_coefficient = 0.01
@@ -556,7 +556,7 @@
 	icon_state = "syndicate_tech"
 	worn_icon_state = "syndicate_tech"
 	item_state = "bl_suit"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30, "bleed" = 10)
 	can_adjust = TRUE
 
 /obj/item/clothing/suit/ship/syndicate_crew
@@ -735,7 +735,7 @@
 	desc = "A sinister looking vest of advanced armor worn over a black and red fireproof jacket. The gold collar and shoulders denote that this belongs to a high ranking syndicate officer. This one has been modified to be space proof, and highly resistant to Nanotrasen's laser based weapons."
 	icon_state = "syndievest_space"
 	worn_icon = 'icons/mob/suit.dmi'
-	armor = list("melee" = 60, "bullet" = 70, "laser" = 40, "energy" = 80, "bomb" = 60, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100)
+	armor = list("melee" = 60, "bullet" = 70, "laser" = 40, "energy" = 80, "bomb" = 60, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100, "bleed" = 60)
 	clothing_flags = THICKMATERIAL | STOPSPRESSUREDAMAGE
 	cold_protection = CHEST | GROIN | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
@@ -751,7 +751,7 @@
 	item_state = "skinsuit_helmet"
 	desc = "An airtight helmet meant to protect the wearer during emergency situations."
 	permeability_coefficient = 0.01
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 20, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 20, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0, "bleed" = 50)
 	min_cold_protection_temperature = EMERGENCY_HELM_MIN_TEMP_PROTECT
 	heat_protection = NONE
 	flash_protect = 0
@@ -771,7 +771,7 @@
 	clothing_flags = STOPSPRESSUREDAMAGE
 	gas_transfer_coefficient = 0.5
 	permeability_coefficient = 0.5
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0, "bleed" = 50)
 	min_cold_protection_temperature = EMERGENCY_SUIT_MIN_TEMP_PROTECT
 	heat_protection = NONE
 	max_heat_protection_temperature = 100

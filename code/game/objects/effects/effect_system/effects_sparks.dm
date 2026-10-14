@@ -25,6 +25,7 @@
 
 /obj/effect/particle_effect/sparks/Initialize(mapload)
 	..()
+	QDEL_IN(src, 20) //AQ EDIT - queued here, so sparks still go away when their LateInitialize never comes
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/effect/particle_effect/sparks/LateInitialize()
@@ -33,7 +34,6 @@
 	var/turf/T = loc
 	if(isturf(T))
 		T.hotspot_expose(1000,100)
-	QDEL_IN(src, 20)
 
 /obj/effect/particle_effect/sparks/Destroy()
 	var/turf/T = loc

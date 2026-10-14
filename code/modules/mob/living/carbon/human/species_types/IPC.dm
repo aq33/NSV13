@@ -4,7 +4,7 @@
 	bodyflag = FLAG_IPC
 	sexes = FALSE
 	species_traits = list(NOTRANSSTING,NOEYESPRITES,NO_DNA_COPY,NOZOMBIE,MUTCOLORS,REVIVESBYHEALING,NOHUSK,NOMOUTH)
-	inherent_traits = list(TRAIT_RESISTCOLD,TRAIT_NOBREATH,TRAIT_LIMBATTACHMENT,TRAIT_EASYDISMEMBER,TRAIT_POWERHUNGRY,TRAIT_XENO_IMMUNE,TRAIT_TOXIMMUNE,TRAIT_MUTATEIMMUNE,TRAIT_IPCRADBRAINDAMAGE, TRAIT_NOTHIRST, TRAIT_NOSHITTING) //NSV13 - removed radiation immunity, added TRAIT_MUTATEIMMUNE and TRAIT_IPCRADBRAINDAMAGE // AQ - added TRAIT_NOTHIRST and TRAIT_NOSHITTING
+	inherent_traits = list(TRAIT_BLOOD_COOLANT,TRAIT_RESISTCOLD,TRAIT_NOBREATH,TRAIT_LIMBATTACHMENT,TRAIT_EASYDISMEMBER,TRAIT_POWERHUNGRY,TRAIT_XENO_IMMUNE,TRAIT_TOXIMMUNE,TRAIT_MUTATEIMMUNE,TRAIT_IPCRADBRAINDAMAGE, TRAIT_NOTHIRST, TRAIT_NOSHITTING) //NSV13 - removed radiation immunity, added TRAIT_MUTATEIMMUNE and TRAIT_IPCRADBRAINDAMAGE // AQ - added TRAIT_NOTHIRST and TRAIT_NOSHITTING
 	inherent_biotypes = list(MOB_ROBOTIC, MOB_HUMANOID)
 	mutant_brain = /obj/item/organ/brain/positron
 	mutanteyes = /obj/item/organ/eyes/robotic
@@ -18,7 +18,7 @@
 	default_features = list("mcolor" = "#7D7D7D", "ipc_screen" = "Static", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)")
 	meat = /obj/item/stack/sheet/plasteel{amount = 5}
 	skinned_type = /obj/item/stack/sheet/iron{amount = 10}
-	exotic_blood = /datum/reagent/oil
+	exotic_bloodtype = "Coolant"
 	damage_overlay_type = "synth"
 	mutant_bodyparts = list("ipc_screen", "ipc_antenna", "ipc_chassis")
 	default_features = list("ipc_screen" = "BSOD", "ipc_antenna" = "None")
@@ -28,7 +28,7 @@
 	clonemod = 0
 	staminamod = 0.8
 	siemens_coeff = 1.5
-	blood_color = "#000000"
+	bleed_effect = /datum/status_effect/bleeding/robotic
 	reagent_tag = PROCESS_SYNTHETIC
 	species_gibs = GIB_TYPE_ROBOTIC
 	attack_sound = 'sound/items/trayhit1.ogg'
@@ -255,3 +255,37 @@
 		BP.limb_id = chassis_of_choice.limbs_id
 		BP.name = "\improper[chassis_of_choice.name] [parse_zone(BP.body_zone)]"
 		BP.update_limb()
+
+/datum/status_effect/bleeding/robotic
+	alert_type = /atom/movable/screen/alert/status_effect/bleeding/robotic
+	bleed_heal_multiplier = 0
+
+/datum/status_effect/bleeding/robotic/tick()
+	// Since we don't have flesh, we will instantly repair any sealed wounds
+	bandaged_bleeding = 0
+	..()
+
+/datum/status_effect/bleeding/robotic/update_icon()
+	// The actual rate of bleeding, can be reduced by holding wounds
+	// Calculate the message to show to the user
+	if (HAS_TRAIT(owner, TRAIT_BLEED_HELD))
+		linked_alert.name = "Wyciek (uciskany)"
+		if (bleed_rate > BLEED_RATE_MINOR)
+			linked_alert.desc = "Wykryto krytyczne wycieki w układzie, wymagają spawania. Ucisk spowalnia wyciek."
+		else
+			linked_alert.desc = "Wykryto drobne wycieki w układzie, wymagają spawania. Ucisk spowalnia wyciek."
+	else
+		if (bleed_rate < BLEED_RATE_MINOR)
+			linked_alert.name = "Wyciek (lekki)"
+			linked_alert.desc = "Wykryto drobne wycieki w układzie, wymagają spawania."
+		else
+			linked_alert.name = "Wyciek (silny)"
+			linked_alert.desc = "Wykryto krytyczne wycieki w układzie, wymagają spawania."
+	linked_alert.icon_state = "bleed_robo"
+
+	linked_alert.maptext = MAPTEXT(owner.get_bleed_rate_string())
+
+/atom/movable/screen/alert/status_effect/bleeding/robotic
+	name = "Wyciek"
+	desc = "Coś z ciebie wycieka. Zaspawaj wycieki, bo zginiesz."
+	icon_state = "bleed_robo"

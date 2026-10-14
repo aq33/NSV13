@@ -112,6 +112,8 @@
 						dat += "<tr><td>Gatunek:</td><td><A href='byond://?src=[REF(src)];field=species'>&nbsp;[active1.fields["species"]]&nbsp;</A></td></tr>"
 						dat += "<tr><td>Odcisk palca:</td><td><A href='byond://?src=[REF(src)];field=fingerprint'>&nbsp;[active1.fields["fingerprint"]]&nbsp;</A></td></tr>"
 						dat += "<tr><td>Stan fizyczny:</td><td><A href='byond://?src=[REF(src)];field=p_stat'>&nbsp;[active1.fields["p_stat"]]&nbsp;</A></td></tr>"
+						if(active1.fields["p_stat"] == "*Deceased*") // AQ EDIT - cause of death (tgstation#95655)
+							dat += "<tr><td>Przyczyna zgonu:</td><td><A href='byond://?src=[REF(src)];field=cause_of_death'>&nbsp;[active1.fields["cause_of_death"] || "nieustalona"]&nbsp;</A></td></tr>"
 						dat += "<tr><td>Stan psychiczny:</td><td><A href='byond://?src=[REF(src)];field=m_stat'>&nbsp;[active1.fields["m_stat"]]&nbsp;</A></td></tr>"
 						dat += "<tr><td>Akta ogólne:</td><td><A href='byond://?src=[REF(src)];choice=View Past General'>Pokaż&nbsp;</A></td></tr>" //NSV13 - Roleplaying Records
 					else
@@ -372,6 +374,12 @@
 					if("p_stat")
 						if(active1)
 							src.temp = "<B>Stan fizyczny:</B><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;p_stat=deceased'>*Zmarły*</A><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;p_stat=unconscious'>*Nieprzytomny*</A><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;p_stat=active'>Aktywny</A><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;p_stat=unfit'>Niezdolny fizycznie</A><BR>"
+					if("cause_of_death") // AQ EDIT START - cause of death (tgstation#95655)
+						if(active1 && active1.fields["p_stat"] == "*Deceased*")
+							var/t1 = stripped_input(usr, "Podaj przyczynę zgonu:", "Akta med.", src.active1.fields["cause_of_death"], MAX_MESSAGE_LEN)
+							if(!canUseMedicalRecordsConsole(usr, t1, a1))
+								return
+							src.active1.fields["cause_of_death"] = t1 // AQ EDIT END
 					if("m_stat")
 						if(active1)
 							src.temp = "<B>Stan psychiczny:</B><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;m_stat=insane'>*Niepoczytalny*</A><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;m_stat=unstable'>*Niestabilny*</A><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;m_stat=watch'>*Obserwacja*</A><BR>\n\t<A href='byond://?src=[REF(src)];temp=1;m_stat=stable'>Stabilny</A><BR>"
@@ -409,6 +417,8 @@
 							src.active1.fields["p_stat"] = "Active"
 						if("unfit")
 							src.active1.fields["p_stat"] = "Physically Unfit"
+					if(src.active1.fields["p_stat"] != "*Deceased*") // AQ EDIT - cause of death is wiped once declared alive again
+						src.active1.fields["cause_of_death"] = null
 
 			else if(href_list["m_stat"])
 				if(active1)
@@ -533,6 +543,8 @@
 						final_paper_text += text("Imię: [] ID: []<BR>\nPłeć: []<BR>\nPłeć biologiczna: []<BR>\nWiek: []<BR>", src.active1.fields["name"], src.active1.fields["id"], src.active1.fields["gender"], src.active1.fields["sex"], src.active1.fields["age"]) //NSV13
 						final_paper_text += "\nSpecies: [active1.fields["species"]]<BR>"
 						final_paper_text += text("\nOdcisk palca: []<BR>\nStan fizyczny: []<BR>\nStan psychiczny: []<BR>", src.active1.fields["fingerprint"], src.active1.fields["p_stat"], src.active1.fields["m_stat"])
+						if(src.active1.fields["cause_of_death"]) // AQ EDIT - cause of death (tgstation#95655)
+							final_paper_text += "Przyczyna zgonu: [src.active1.fields["cause_of_death"]]<BR>"
 						//NSV13 - Roleplaying Records - Start
 						if(!(active1.fields["past_records"] == ""))
 							final_paper_text += "\nAkta ogólne:\n[active1.fields["past_records"]]\n"

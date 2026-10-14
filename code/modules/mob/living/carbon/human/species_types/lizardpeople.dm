@@ -76,3 +76,8 @@
 /datum/species/lizard/ashwalker/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	C.mind?.forget_crafting_recipe(/datum/crafting_recipe/primal_lasso)
 	return ..()
+/datum/species/lizard/ashwalker/spec_life(mob/living/carbon/human/H)
+	. = ..()
+	H.cauterise_wounds(0.1)
+	if (H.blood_volume < BLOOD_VOLUME_NORMAL && !H.is_bleeding())
+		H.blood_volume += 0.5

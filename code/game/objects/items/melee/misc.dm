@@ -40,6 +40,7 @@
 	w_class = WEIGHT_CLASS_HUGE
 	block_flags = BLOCKING_ACTIVE | BLOCKING_NASTY
 	force = 20
+	bleed_force = BLEED_CUT
 	throwforce = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
@@ -59,6 +60,7 @@
 	flags_1 = CONDUCT_1
 	obj_flags = UNIQUE_RENAME
 	force = 15
+	bleed_force = BLEED_CUT
 	block_level = 1
 	block_upgrade_walk = 1
 	block_power = 50

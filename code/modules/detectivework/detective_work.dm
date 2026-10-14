@@ -80,6 +80,11 @@
 	. = ..()
 	transfer_blood = rand(2, 4)
 
+/obj/effect/decal/cleanable/blood/add_blood_DNA(list/blood_dna, list/datum/disease/diseases)
+	. = ..()
+	if(length(blood_dna) && blood_state == BLOOD_STATE_HUMAN)
+		color = get_blood_dna_color(blood_dna)
+
 /turf/add_blood_DNA(list/blood_dna, list/datum/disease/diseases)
 	var/obj/effect/decal/cleanable/blood/splatter/B = locate() in src
 	if(!B)

@@ -209,9 +209,10 @@ GLOBAL_LIST_INIT(other_bannable_roles, list(
 	if(initial(pref.per_character))
 		source = src.prefs.active_character.role_preferences_character
 	var/role_preference_value = source["[role_preference_key]"]
-	if(isnum(role_preference_value) && !role_preference_value) // explicitly disabled and not null
-		return FALSE
-	return TRUE
+	//AQ EDIT - antagonist roles are opt-in: only an explicit TRUE enables them
+	if(isnum(role_preference_value) && role_preference_value)
+		return TRUE
+	return FALSE
 
 /// If the client given is fit for a given role based on the arguments passed
 /// banning_key: ROLE_X used for this role - to check if the player is banned.

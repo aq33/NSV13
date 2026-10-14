@@ -8400,7 +8400,7 @@
 /area/crew_quarters/kitchen/coldroom)
 "xr" = (
 /obj/machinery/turnstile{
-	dir = 4
+	dir = 8
 	},
 /obj/effect/turf_decal/loading_area{
 	dir = 8

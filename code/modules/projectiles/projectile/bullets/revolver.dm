@@ -31,6 +31,7 @@
 	ricochet_decay_damage = 1
 
 /obj/item/projectile/bullet/c38/match/bouncy
+	bleed_force = BLEED_SCRATCH
 	name = ".38 Bouncy Rubber bullet"
 	damage = 10
 	stamina = 30
@@ -89,6 +90,7 @@
 		M.adjust_bodytemperature(((100-blocked)/100)*(temperature - M.bodytemperature))
 
 /obj/item/projectile/bullet/c38/mime
+	bleed_force = 0
 	name = "invisible .38 bullet"
 	icon_state = null
 	damage = 0

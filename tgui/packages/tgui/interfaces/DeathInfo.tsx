@@ -6,7 +6,6 @@ import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 type Data = {
-  defib_minutes: number;
   norespawn: boolean;
 };
 
@@ -34,7 +33,7 @@ const Way = (props: WayProps) => {
 
 export const DeathInfo = (props) => {
   const { data } = useBackend<Data>();
-  const { defib_minutes, norespawn } = data;
+  const { norespawn } = data;
 
   return (
     <Window title="Nie żyjesz" width={500} height={680}>
@@ -49,8 +48,9 @@ export const DeathInfo = (props) => {
         <Section title="Ożywienie twojego ciała">
           <Stack vertical>
             <Way icon="heartbeat" name="Defibrylator">
-              działa do {defib_minutes} minut od śmierci, jeśli ciało nie jest
-              zbyt zniszczone.
+              działa, dopóki serce i mózg nie są zniszczone. Martwe serce psuje
+              się po około 5 minutach (wtedy trzeba je najpierw naprawić), mózg
+              po około 30. Nie działa na zbyt zniszczone ciało.
             </Way>
             <Way icon="flask" name="Strange Reagent">
               ożywia ciało, które nie ma ciężkich obrażeń ani nie jest

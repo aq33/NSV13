@@ -1,4 +1,5 @@
 /obj/item/projectile/bullet/reusable/foam_dart
+	bleed_force = 0
 	name = "foam dart"
 	desc = "I hope you're wearing eye protection."
 	damage = 0 // It's a damn toy.

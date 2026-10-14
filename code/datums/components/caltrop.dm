@@ -111,6 +111,7 @@
 
 
 	H.apply_damage(damage, BRUTE, picked_def_zone) //NSV13 - no wounds/bleeding system here
+	H.add_bleeding(BLEED_SCRATCH)
 
 	if(!(flags & CALTROP_NOSTUN)) // Won't set off the paralysis.
 		H.Paralyze(60)

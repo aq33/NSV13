@@ -71,7 +71,7 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 	var/auth_id = "Unknown" //Will contain the name and and job of the person who verified it
 	var/static/list/departments_with_squads = list("bridge", "cic", "medbay", "medical", "engineering", "security", "munitions", "hangar")
 	max_integrity = 300
-	armor = list("melee" = 70, "bullet" = 30, "laser" = 30, "energy" = 30, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 90, "stamina" = 0)
+	armor = list("melee" = 70, "bullet" = 30, "laser" = 30, "energy" = 30, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 90, "stamina" = 0, "bleed" = 0)
 
 	light_color = LIGHT_COLOR_GREEN
 	light_power = 1.5

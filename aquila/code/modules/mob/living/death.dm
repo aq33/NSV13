@@ -24,6 +24,5 @@ GLOBAL_DATUM_INIT(death_info, /datum/death_info, new)
 
 /datum/death_info/ui_static_data(mob/user)
 	return list(
-		"defib_minutes" = DEFIB_TIME_LIMIT / 60,
 		"norespawn" = CONFIG_GET(flag/norespawn),
 	)

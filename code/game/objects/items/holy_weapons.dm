@@ -352,6 +352,7 @@
 	shield_icon = "shield-old"
 
 /obj/item/nullrod/claymore
+	bleed_force = BLEED_CUT
 	icon_state = "claymore"
 	item_state = "claymore"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
@@ -462,6 +463,7 @@
 	return ..()
 
 /obj/item/nullrod/scythe
+	bleed_force = BLEED_CUT
 	icon_state = "scythe1"
 	item_state = "scythe1"
 	lefthand_file = 'icons/mob/inhands/weapons/polearms_lefthand.dmi'
@@ -578,6 +580,7 @@
 	attack_weight = 2
 
 /obj/item/nullrod/chainsaw
+	bleed_force = BLEED_CUT
 	name = "chainsaw hand"
 	desc = "Good? Bad? You're the guy with the chainsaw hand."
 	icon_state = "chainsaw_on"
@@ -601,6 +604,7 @@
 	AddComponent(/datum/component/butchering, 30, 100, 0, hitsound)
 
 /obj/item/nullrod/clown
+	bleed_force = BLEED_CUT
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "clownrender"
 	item_state = "render"
@@ -651,6 +655,7 @@
 	slot_flags = ITEM_SLOT_HEAD
 	icon = 'icons/obj/clothing/hats.dmi'
 	force = 0
+	bleed_force = BLEED_CUT
 	throw_speed = 4
 	throw_range = 7
 	throwforce = 30
@@ -658,6 +663,7 @@
 	attack_verb = list("oświeca", "redpilluje")
 
 /obj/item/nullrod/armblade
+	bleed_force = BLEED_CUT
 	name = "dark blessing"
 	desc = "Particularly twisted deities grant gifts of dubious value."
 	icon = 'icons/obj/changeling_items.dmi'
@@ -717,6 +723,7 @@
 	righthand_file = 'icons/mob/inhands/weapons/staves_righthand.dmi'
 
 /obj/item/nullrod/tribal_knife
+	bleed_force = BLEED_CUT
 	icon_state = "crysknife"
 	item_state = "crysknife"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
@@ -747,6 +754,7 @@
 			wielder.update_equipment_speed_mods()
 
 /obj/item/nullrod/pitchfork
+	bleed_force = BLEED_CUT
 	icon_state = "pitchfork0"
 	lefthand_file = 'icons/mob/inhands/weapons/polearms_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/polearms_righthand.dmi'
@@ -783,6 +791,7 @@
 	hitsound = 'sound/effects/sparks4.ogg'
 
 /obj/item/nullrod/spear
+	bleed_force = BLEED_CUT
 	name = "ancient spear"
 	desc = "An ancient spear made of brass, I mean gold, I mean bronze. It looks highly mechanical."
 	icon_state = "ratvarian_spear"

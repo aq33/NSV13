@@ -180,7 +180,7 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 	desc = "A durable uniform worn by military police officers, who enforce ship-law."
 	icon_state = "military_police"
 	item_state = "bl_suit"
-	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30, "stamina" = 30)
+	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30, "stamina" = 30, "bleed" = 10)
 	can_adjust = TRUE
 
 /obj/item/clothing/suit/ship/squad/military_police
@@ -188,7 +188,7 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 	desc = "A heavy-duty chestplate and shinpad combo which denotes that the user is a military police officer. Protects legs unlike a normal vest."
 	icon_state = "military_police"
 	w_class = 2
-	armor = list("melee" = 25, "bullet" = 40, "laser" = 15, "energy" = 10, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 35, "acid" = 50)
+	armor = list("melee" = 25, "bullet" = 40, "laser" = 15, "energy" = 10, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 35, "acid" = 50, "bleed" = 50)
 	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
 	body_parts_covered = CHEST|GROIN|LEGS
 
