@@ -520,6 +520,7 @@
 #include "code\modules\reagents\chemistry\reagents\food_reagents.dm"
 #include "code\modules\reagents\chemistry\reagents\other_reagents.dm"
 #include "code\modules\reagents\chemistry\reagents\secret_reagents.dm"
+#include "code\modules\reagents\chemistry\reagents\stoperan.dm"
 #include "code\modules\reagents\chemistry\recipes\other_reagents.dm"
 #include "code\modules\reagents\chemistry\recipes\randomized.dm"
 #include "code\modules\reagents\reagent_containers\bottle.dm"
