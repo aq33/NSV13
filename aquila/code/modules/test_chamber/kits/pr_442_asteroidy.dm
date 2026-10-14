@@ -25,7 +25,10 @@
 		list(/turf/closed/mineral/copper, /turf/closed/mineral/silver, /turf/closed/mineral/gold, /turf/closed/mineral/plasma),
 		list(/turf/closed/mineral/diamond, /turf/closed/mineral/uranium, /turf/closed/mineral/bscrystal))
 	var/datum/map_template/asteroid/template = new(maps[choice], null, FALSE, core)
-	template.load(bottom_left, FALSE, TRUE)
+	if(!template.load(bottom_left, FALSE, TRUE))
+		reservation.Release()
+		to_chat(user, "<span class='warning'>Nie udało się załadować [choice].</span>")
+		return
 
 	// Lądujemy na wolnym, nie-kosmicznym polu najbliżej środka mapy
 	var/turf/middle = locate(bottom_left.x + 20, bottom_left.y + 20, bottom_left.z)

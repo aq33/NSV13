@@ -665,12 +665,12 @@
 /area/ruin/space/has_grav/storage/central2)
 "cs" = (
 /obj/structure/table/wood/fancy/orange,
-/obj/item/construction/rcd/combat,
+/obj/item/construction/rcd/loaded,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/storage/central2)
 "ct" = (
 /obj/structure/table/wood/fancy/red,
-/obj/item/gun/ballistic/automatic/proto/unrestricted,
+/obj/effect/spawner/lootdrop/maintenance/three,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/storage/central2)
 "cu" = (
