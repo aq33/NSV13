@@ -9,6 +9,24 @@ INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (6, 0);
 In any query remember to add a prefix to the table names if you use one.
 
 -----------------------------------------------------
+Version 6.5, 14 October 2026 by Aquila
+Added the economy earnings table for the round-end earnings report and the all-time earnings leaderboard
+(the game also creates it itself if missing)
+
+CREATE TABLE IF NOT EXISTS `SS13_economy_earnings` (
+	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	`round_id` INT UNSIGNED NOT NULL,
+	`ckey` VARCHAR(32) NOT NULL,
+	`character_name` VARCHAR(64) NOT NULL,
+	`job` VARCHAR(64) NOT NULL,
+	`earned` INT UNSIGNED NOT NULL,
+	`datetime` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (`id`),
+	KEY `idx_ckey` (`ckey`),
+	KEY `idx_round` (`round_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-----------------------------------------------------
 Version 6.4, 26 July 2023 by Bobbanz1
 Updated antag prefs to be per character
 

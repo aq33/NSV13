@@ -103,6 +103,16 @@ GLOBAL_LIST_EMPTY(shared_crew_bounties)
 			return pick(subtypesof(/datum/bounty/item/medical))
 		if(CIV_JOB_GROW)
 			return pick(subtypesof(/datum/bounty/item/botany))
+		if(CIV_JOB_MUNITIONS)
+			return pick(subtypesof(/datum/bounty/item/munitions))
+		if(CIV_JOB_PILOT)
+			return pick(subtypesof(/datum/bounty/item/pilot))
+		if(CIV_JOB_MINE)
+			return pick(subtypesof(/datum/bounty/item/asteroid_mining))
+		if(CIV_JOB_BRIDGE)
+			return pick(subtypesof(/datum/bounty/item/bridge))
+		if(CIV_JOB_JANITOR)
+			return pick(subtypesof(/datum/bounty/item/janitor))
 
 	stack_trace("Nie udało się wylosować zlecenia cywilnego dla kategorii [input_bounty_type]")
 	return null
@@ -171,8 +181,14 @@ GLOBAL_LIST_EMPTY(shared_crew_bounties)
 /datum/job/atmospheric_technician
 	bounty_types = CIV_JOB_ENG
 
+/datum/job/air_traffic_controller
+	bounty_types = CIV_JOB_BRIDGE
+
 /datum/job/bartender
 	bounty_types = CIV_JOB_DRINK
+
+/datum/job/bridge
+	bounty_types = CIV_JOB_BRIDGE
 
 /datum/job/botanist
 	bounty_types = CIV_JOB_GROW
@@ -208,7 +224,7 @@ GLOBAL_LIST_EMPTY(shared_crew_bounties)
 	bounty_types = CIV_JOB_RANDOM
 
 /datum/job/deck_tech
-	bounty_types = CIV_JOB_ENG
+	bounty_types = CIV_JOB_PILOT
 
 /datum/job/deputy
 	bounty_types = CIV_JOB_SEC
@@ -217,7 +233,7 @@ GLOBAL_LIST_EMPTY(shared_crew_bounties)
 	bounty_types = CIV_JOB_SEC
 
 /datum/job/exploration_crew
-	bounty_types = CIV_JOB_RANDOM
+	bounty_types = CIV_JOB_MINE
 
 /datum/job/geneticist
 	bounty_types = CIV_JOB_SCI
@@ -229,13 +245,13 @@ GLOBAL_LIST_EMPTY(shared_crew_bounties)
 	bounty_types = CIV_JOB_SEC
 
 /datum/job/janitor
-	bounty_types = CIV_JOB_RANDOM
+	bounty_types = CIV_JOB_JANITOR
 
 /datum/job/lawyer
 	bounty_types = CIV_JOB_RANDOM
 
 /datum/job/master_at_arms
-	bounty_types = CIV_JOB_ENG
+	bounty_types = CIV_JOB_MUNITIONS
 
 /datum/job/medical_doctor
 	bounty_types = CIV_JOB_MED
@@ -244,13 +260,13 @@ GLOBAL_LIST_EMPTY(shared_crew_bounties)
 	bounty_types = CIV_JOB_RANDOM
 
 /datum/job/munitions_tech
-	bounty_types = CIV_JOB_ENG
+	bounty_types = CIV_JOB_MUNITIONS
 
 /datum/job/paramedic
 	bounty_types = CIV_JOB_MED
 
 /datum/job/pilot
-	bounty_types = CIV_JOB_RANDOM
+	bounty_types = CIV_JOB_PILOT
 
 /datum/job/quartermaster
 	bounty_types = CIV_JOB_RANDOM
@@ -268,7 +284,7 @@ GLOBAL_LIST_EMPTY(shared_crew_bounties)
 	bounty_types = CIV_JOB_SEC
 
 /datum/job/shaft_miner
-	bounty_types = CIV_JOB_RANDOM
+	bounty_types = CIV_JOB_MINE
 
 /datum/job/station_engineer
 	bounty_types = CIV_JOB_ENG

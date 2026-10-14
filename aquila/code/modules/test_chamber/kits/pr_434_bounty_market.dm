@@ -7,7 +7,10 @@
 	Kostka testowa: użyj jej w ręce z kartą, zeskanuj skanerem eksportu (napiwek), obejrzyj odliczanie premii. \
 	Beacon: kliknij kilka razy szybko - ma zrzucić tylko jeden pad, a za drugim użyciem konsolę. \
 	Giełda: kup arkusze z karty i (karta cargo) z budżetu zaopatrzenia, włóż złoto/żelazo do maszyny i obejrzyj stock block. \
-	Jeden blok jest już płynny - jego wartość ma iść za ceną z rynku. Debug -> SSstock_market: fire() przyspiesza zmiany cen."
+	Jeden blok jest już płynny - jego wartość ma iść za ceną z rynku (ceny zmieniają się co minutę). \
+	Krach: Fun -> Trigger Event -> Market Crash - automaty drożeją, rynek pokazuje ostrzeżenie i blokuje handel. \
+	Nowe zlecenia: karty amunicji, pilota, górnika, mostka i woźnego dostają własne kategorie. \
+	Zarobki: OOC -> Ranking zarobków; na koniec rundy raport najlepiej zarabiających."
 	items = list(
 		/obj/machinery/piratepad/civilian = 1,
 		/obj/machinery/computer/piratepad_control/civilian = 1,
@@ -25,6 +28,12 @@
 	test_card(drop, /datum/job/security_officer, list(ACCESS_SECURITY))
 	test_card(drop, /datum/job/cook, list(ACCESS_KITCHEN))
 	test_card(drop, /datum/job/cargo_technician, list(ACCESS_CARGO))
+	// Prace NSV z własnymi kategoriami zleceń
+	test_card(drop, /datum/job/munitions_tech, list())
+	test_card(drop, /datum/job/pilot, list())
+	test_card(drop, /datum/job/shaft_miner, list())
+	test_card(drop, /datum/job/bridge, list())
+	test_card(drop, /datum/job/janitor, list())
 
 	// Materiały do sprzedaży na giełdzie - osobne pola, żeby stosy się nie połączyły z niczym w items
 	new /obj/item/stack/sheet/mineral/gold/fifty(drop)

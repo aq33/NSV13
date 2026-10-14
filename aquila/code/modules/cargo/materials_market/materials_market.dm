@@ -168,6 +168,7 @@
 	data["canOrderCargo"] = can_buy_via_budget
 	data["hasId"] = used_id_card ? TRUE : FALSE
 	data["updateTime"] = max(0, SSstock_market.next_fire - world.time)
+	data["catastrophe"] = SSeconomy.market_crashing
 	return data
 
 /obj/machinery/materials_market/ui_act(action, params)
@@ -207,6 +208,9 @@
 /obj/machinery/materials_market/proc/buy_material(mob/living/user, obj/item/card/id/used_id_card, material_name, quantity, is_ordering_private)
 	quantity = round(quantity)
 	if(!quantity || quantity < 1)
+		return FALSE
+	if(SSeconomy.market_crashing)
+		say("Rynek jest w trakcie krachu! Handel wstrzymany do odwołania.")
 		return FALSE
 
 	var/datum/material/material_bought
@@ -355,7 +359,7 @@
 		if(paying_account)
 			refund = round(refund * 1.1)
 		var/datum/bank_account/refund_account = paying_account || SSeconomy.get_dep_account(ACCOUNT_CAR)
-		refund_account?.adjust_money(refund)
+		refund_account?.refund_money(refund)
 		refund_account?.bank_card_talk("Na rynku zabrakło części zamówionych arkuszy. Zwrot: [refund] kr.")
 
 /datum/supply_pack/custom/minerals/generate(atom/A, datum/bank_account/paying_account)

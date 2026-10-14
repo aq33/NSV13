@@ -348,6 +348,8 @@
 //	CHECK_TICK
 	//AQ EDIT szczury
 	parts += mouse_report()
+	//AQ EDIT zarobki i ranking
+	parts += economy_report()
 
 	listclearnulls(parts)
 

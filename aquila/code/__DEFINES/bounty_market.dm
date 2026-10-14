@@ -12,9 +12,15 @@
 #define CIV_JOB_ENG 9
 #define CIV_JOB_MED 10
 #define CIV_JOB_GROW 11
-#define CIV_JOB_RANDOM 12
+// kategorie Aquili dla prac NSV
+#define CIV_JOB_MUNITIONS 12
+#define CIV_JOB_PILOT 13
+#define CIV_JOB_MINE 14
+#define CIV_JOB_BRIDGE 15
+#define CIV_JOB_JANITOR 16
+#define CIV_JOB_RANDOM 17
 /// Najwyższa kategoria losowana dla CIV_JOB_RANDOM
-#define MAXIMUM_BOUNTY_JOBS 11
+#define MAXIMUM_BOUNTY_JOBS 16
 
 /// Ile globalnych zleceń jest zawsze na liście (bez premii za graczy)
 #define CIV_BOUNTY_BASELINE 5

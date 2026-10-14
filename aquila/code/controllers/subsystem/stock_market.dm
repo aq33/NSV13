@@ -17,10 +17,8 @@ SUBSYSTEM_DEF(stock_market)
 	var/list/materials_quantity = list()
 	/// Trwające wydarzenia giełdowe
 	var/list/active_events = list()
-	/// Wiadomości o wydarzeniach czekające na publikację w newscasterze
+	/// Wiadomości o wydarzeniach, dołączane do raportu ekonomicznego SSeconomy
 	var/news_string = ""
-	/// Kiedy wysłać zebrane wiadomości do newscastera
-	COOLDOWN_DECLARE(news_cooldown)
 
 /datum/controller/subsystem/stock_market/Initialize(timeofday)
 	for(var/datum/material/possible_market as anything in subtypesof(/datum/material))
@@ -31,7 +29,6 @@ SUBSYSTEM_DEF(stock_market)
 		materials_trends[possible_market] = rand(MARKET_TREND_DOWNWARD, MARKET_TREND_UPWARD)
 		materials_trend_life[possible_market] = rand(1, 3)
 		materials_quantity[possible_market] = round(base_quantity + rand(-base_quantity * 0.5, base_quantity * 0.5))
-	COOLDOWN_START(src, news_cooldown, 10 MINUTES)
 	return ..()
 
 /datum/controller/subsystem/stock_market/stat_entry(msg)
@@ -43,8 +40,6 @@ SUBSYSTEM_DEF(stock_market)
 		handle_trends_and_price(market)
 	for(var/datum/stock_market_event/event as anything in active_events)
 		event.handle()
-	if(news_string && COOLDOWN_FINISHED(src, news_cooldown))
-		publish_news()
 
 /// Cena bazowa materiału (za arkusz)
 /datum/controller/subsystem/stock_market/proc/price_baseline(datum/material/mat)
@@ -75,8 +70,6 @@ SUBSYSTEM_DEF(stock_market)
 
 /// Przesuwa cenę i podaż materiału zgodnie z trendem, czasem odpala wydarzenie
 /datum/controller/subsystem/stock_market/proc/handle_trends_and_price(datum/material/mat)
-	if(prob(MARKET_EVENT_PROBABILITY))
-		handle_market_event(mat)
 	var/trend_life = materials_trend_life[mat]
 
 	var/price_units = materials_prices[mat]
@@ -85,6 +78,20 @@ SUBSYSTEM_DEF(stock_market)
 	var/price_baseline = price_baseline(mat)
 	var/quantity_baseline = initial(mat.tradable_base_quantity)
 	var/stock_quantity = materials_quantity[mat]
+
+	// krach: najgorsza cena i zalew podaży, dopóki trwa
+	if(SSeconomy.market_crashing)
+		materials_prices[mat] = price_minimum
+		materials_quantity[mat] = round(clamp(stock_quantity * 2, 0, quantity_baseline * 2))
+		materials_trends[mat] = MARKET_TREND_DOWNWARD
+		materials_trend_life[mat] = 1
+		return
+
+	if(prob(MARKET_EVENT_PROBABILITY))
+		handle_market_event(mat)
+		trend_life = materials_trend_life[mat]
+		price_units = materials_prices[mat]
+		stock_quantity = materials_quantity[mat]
 
 	if(trend_life <= 0)
 		// im bliżej granicy ceny, tym większa szansa na odbicie w drugą stronę
@@ -125,16 +132,8 @@ SUBSYSTEM_DEF(stock_market)
 	else
 		qdel(event)
 
-/// Publikuje zebrane wiadomości giełdowe w newscasterze
-/datum/controller/subsystem/stock_market/proc/publish_news()
-	var/channel_name = "Wiadomości giełdowe"
-	var/has_channel = FALSE
-	for(var/datum/feed_channel/channel as anything in GLOB.news_network.network_channels)
-		if(channel.channel_name == channel_name)
-			has_channel = TRUE
-			break
-	if(!has_channel)
-		GLOB.news_network.create_feed_channel(channel_name, "Galaktyczny Rynek Materiałów", "Notowania i wydarzenia z galaktycznego rynku materiałów.", locked = TRUE)
-	GLOB.news_network.submit_article(news_string, "Galaktyczny Rynek Materiałów", channel_name, null, allow_comments = FALSE)
-	news_string = ""
-	COOLDOWN_START(src, news_cooldown, 10 MINUTES)
+/// Krach rynku: od razu ścina wszystkie ceny do minimum
+/datum/controller/subsystem/stock_market/proc/handle_market_crash()
+	for(var/datum/material/mat as anything in materials_prices)
+		handle_trends_and_price(mat)
+	news_string += "<b>Krach na giełdzie!</b> Ceny wszystkich materiałów spadły do minimum.<br>"

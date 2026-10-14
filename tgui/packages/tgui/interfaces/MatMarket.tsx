@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Collapsible,
+  Modal,
   NoticeBox,
   Section,
   Stack,
@@ -34,6 +35,7 @@ type Data = {
   orderBalance: number;
   materials: Material[];
   updateTime: number;
+  catastrophe: BooleanLike;
 };
 
 const BUY_AMOUNTS = [1, 5, 10, 25, 50];
@@ -50,6 +52,7 @@ export const MatMarket = (props) => {
     orderingPrive,
     canOrderCargo,
     hasId,
+    catastrophe,
     creditBalance,
     orderBalance,
     materials = [],
@@ -63,6 +66,20 @@ export const MatMarket = (props) => {
   return (
     <Window title="Galaktyczny rynek materiałów" width={900} height={600}>
       <Window.Content scrollable>
+        {!!catastrophe && (
+          <Modal textAlign="center">
+            UWAGA! NA RYNKU TRWA KRACH
+            <br />
+            <br />
+            WSZYSTKIE MATERIAŁY SĄ TERAZ BEZWARTOŚCIOWE
+            <br />
+            <br />
+            HANDEL ZOSTAŁ WSTRZYMANY DLA WSZYSTKICH HANDLARZY
+            <br />
+            <br />
+            <b>BEZ PANIKI, NAPRAWIAMY TO</b>
+          </Modal>
+        )}
         <Section
           title="Materiały na sprzedaż"
           buttons={
@@ -149,6 +166,7 @@ export const MatMarket = (props) => {
                     key={amount}
                     disabled={
                       !hasId ||
+                      !!catastrophe ||
                       !material.price ||
                       creditBalance - orderBalance <
                         material.price * amount * multiplier ||

@@ -67,5 +67,63 @@
 	TEST_ASSERT_EQUAL(block_export.get_cost(block), 770, "A locked stock block did not sell for its locked price")
 	qdel(block_export)
 
+/// AQUILA - only real income counts towards the earnings report: no player transfers, cash deposits, starting money or refunds
+/datum/unit_test/economy_round_income
+
+/datum/unit_test/economy_round_income/Run()
+	var/datum/job/assistant = SSjob.GetJobType(/datum/job/assistant)
+	var/datum/bank_account/earner = new("Test Earner", assistant)
+	var/datum/bank_account/friend = new("Test Friend", assistant)
+	var/datum/bank_account/department/budget = SSeconomy.get_dep_account(ACCOUNT_CIV)
+
+	earner.payday(5, TRUE)
+	TEST_ASSERT_EQUAL(earner.round_income, 0, "Starting paychecks counted as income")
+
+	friend.adjust_money(1000)
+	earner.transfer_money(friend, 500)
+	TEST_ASSERT_EQUAL(earner.round_income, 0, "A transfer from another player counted as income")
+
+	earner.refund_money(100)
+	TEST_ASSERT_EQUAL(earner.round_income, 0, "A refund counted as income")
+
+	budget.adjust_money(1000)
+	earner.transfer_money(budget, 200)
+	TEST_ASSERT_EQUAL(earner.round_income, 200, "A transfer from a department budget did not count as income")
+
+	earner.adjust_money(300)
+	TEST_ASSERT_EQUAL(earner.round_income, 500, "A plain payment did not count as income")
+
+	var/obj/item/card/id/card = allocate(/obj/item/card/id)
+	card.registered_account = earner
+	var/obj/item/stack/spacecash/c100/cash = allocate(/obj/item/stack/spacecash/c100)
+	card.insert_money(cash, null)
+	TEST_ASSERT_EQUAL(earner.round_income, 500, "A cash deposit counted as income")
+
+	qdel(earner)
+	qdel(friend)
+
+/// AQUILA - a market crash drops every material to its minimum price and multiplies vending prices
+/datum/unit_test/economy_market_crash
+
+/datum/unit_test/economy_market_crash/Run()
+	var/obj/machinery/vending/cola/vendor = allocate(/obj/machinery/vending/cola)
+	var/base_price = vendor.default_price
+	SSeconomy.market_crashing = TRUE
+	SSeconomy.inflation_value = 3
+	vendor.reset_prices()
+	var/crash_price = vendor.default_price
+	SSstock_market.handle_market_crash()
+	var/list/bad_prices = list()
+	for(var/datum/material/mat as anything in SSstock_market.materials_prices)
+		if(SSstock_market.materials_prices[mat] != SSstock_market.price_minimum(mat))
+			bad_prices += "[mat]"
+	SSeconomy.market_crashing = FALSE
+	SSeconomy.inflation_value = 1
+	vendor.reset_prices()
+
+	TEST_ASSERT_EQUAL(crash_price, base_price * 3, "Vending prices were not multiplied during the crash")
+	TEST_ASSERT_EQUAL(vendor.default_price, base_price, "Vending prices did not go back after the crash")
+	TEST_ASSERT(!length(bad_prices), "Materials not at minimum during the crash: [bad_prices.Join(", ")]")
+
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL

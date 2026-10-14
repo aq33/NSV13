@@ -463,7 +463,7 @@ CREATE TABLE IF NOT EXISTS `SS13_schema_revision` (
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`major`,`minor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (6, 4);
+INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (6, 5);
 
 
 
@@ -539,6 +539,21 @@ UPDATE `SS13_poll_textreply` SET deleted = 1 WHERE pollid = poll_id;
 END
 $$
 DELIMITER ;
+
+-- AQUILA: zarobki graczy w rundach, ranking zarobków (aquila/code/modules/economy/earnings.dm)
+DROP TABLE IF EXISTS `SS13_economy_earnings`;
+CREATE TABLE IF NOT EXISTS `SS13_economy_earnings` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `round_id` int(10) unsigned NOT NULL,
+  `ckey` varchar(32) NOT NULL,
+  `character_name` varchar(64) NOT NULL,
+  `job` varchar(64) NOT NULL,
+  `earned` int(10) unsigned NOT NULL,
+  `datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `idx_ckey` (`ckey`),
+  KEY `idx_round` (`round_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `SS13_achievement_metadata`;
 CREATE TABLE IF NOT EXISTS `SS13_achievement_metadata` (
