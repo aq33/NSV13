@@ -9,6 +9,31 @@
 /mob/living/simple_animal/revenant/Initialize(mapload)
 	. = ..()
 	check_rev_teleport() // they can spawn off the station
+	// Moce z tg: nawiedzanie przedmiotów, wir i rozrzut
+	AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/revenant/haunt_object(null))
+	AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/revenant/vortex(null))
+	AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/revenant/vortex/scatter(null))
+	// Jak w tg słyszy martwy czat, więc zmarli mogą go prosić o przysługi
+	ADD_TRAIT(src, TRAIT_SIXTHSENSE, INNATE_TRAIT)
+
+// Jak w tg: niewidzialny rewenant może bawić się tablicą spirytystyczną jak duch
+/mob/living/simple_animal/revenant/ClickOn(atom/A, params)
+	var/list/modifiers = params2list(params)
+	if(!istype(A, /obj/structure/spirit_board) || modifiers["shift"] || modifiers["alt"] || modifiers["ctrl"])
+		return ..()
+	if(check_click_intercept(params, A))
+		return
+	if(revealed || notransform || inhibited)
+		return
+	var/obj/structure/spirit_board/board = A
+	INVOKE_ASYNC(board, TYPE_PROC_REF(/obj/structure/spirit_board, spirit_board_pick_letter), src)
+
+// Uwięziony w lustrze nie używa mocy (revenant_prison.dm)
+/mob/living/simple_animal/revenant/castcheck(essence_cost)
+	if(istype(loc, /obj/structure/mirror))
+		to_chat(src, "<span class='revenwarning'>Twoje moce są uwięzione razem z tobą!</span>")
+		return FALSE
+	return ..()
 
 /mob/living/simple_animal/revenant/onTransitZ(old_z, new_z)
 	. = ..()
@@ -36,6 +61,8 @@
 
 /// Orbits A like a ghost would, if the revenant is allowed to
 /mob/living/simple_animal/revenant/proc/check_orbitable(atom/A)
+	if(!isturf(loc)) // uwięziony w lustrze
+		return
 	if(revealed)
 		to_chat(src, "<span class='revenwarning'>Nie możesz orbitować, gdy jesteś ujawniony!</span>")
 		return
@@ -98,7 +125,7 @@
 	clothes_req = FALSE
 
 /obj/effect/proc_holder/spell/self/rev_teleport/cast(list/targets, mob/living/simple_animal/revenant/user = usr)
-	if(!isrevenant(user))
+	if(!isrevenant(user) || !isturf(user.loc)) // z lustra się nie teleportuje
 		return
 	if(is_station_level(user.z))
 		to_chat(user, "<span class='revenwarning'>Powrót na statek jest dostępny tylko wtedy, gdy nie jesteś na statku.</span>")
