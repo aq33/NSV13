@@ -1,10 +1,10 @@
-/datum/test_chamber_kit/pr_000
+/datum/test_chamber_kit/pr_442
 	name = "Nowe asteroidy górnicze"
-	pr = "aq33/AquilaStation#000"
+	pr = "aq33/AquilaStation#442"
 	description = "Wybierz mapę z puli magnesu: ładuje się w osobnym miejscu z losowym rdzeniem rudy, a ty lądujesz na niej z kombinezonem i wiertłem. \
 		Nowe mapy to asteroid21-30 i mining31-52. Sprawdź wygląd, czy rdzeń rudy jest w skale, moby, łupy i billboardy (mining48, mining50)."
 
-/datum/test_chamber_kit/pr_000/setup(list/spawned, list/turfs, turf/center, mob/user)
+/datum/test_chamber_kit/pr_442/setup(list/spawned, list/turfs, turf/center, mob/user)
 	if(!user)
 		return
 	var/list/maps = list()

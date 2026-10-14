@@ -560,7 +560,7 @@
 #include "code\modules\test_chamber\kits\pr_436_iskry.dm"
 #include "code\modules\test_chamber\kits\pr_429_regal_rat.dm"
 #include "code\modules\test_chamber\kits\pr_433_secret_chems.dm"
-#include "code\modules\test_chamber\kits\pr_000_asteroidy.dm"
+#include "code\modules\test_chamber\kits\pr_442_asteroidy.dm"
 #include "code\modules\weighted\spawn_fallbacks.dm"
 #include "code\modules\weighted\weighted_ghost_midround.dm"
 #include "code\modules\weighted\weighted_pace_vote.dm"
