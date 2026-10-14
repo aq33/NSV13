@@ -80,6 +80,13 @@
 		var/mob/living/simple_animal/mouse/M = target
 		visible_message("<span class='boldannounce'>SPLAT!</span>")
 		M.splat()
+	else if(israt(target)) // AQUILA EDIT - szczury z tg
+		var/mob/living/simple_animal/hostile/rat/rat = target
+		visible_message("<span class='boldannounce'>Klik!</span>")
+		rat.apply_damage(5) // nie zabija, ale zostawia ślad
+		rat.Stun(1 SECONDS)
+	else if(isregalrat(target)) // za duży na małą pułapkę
+		visible_message("<span class='boldannounce'>Skriiii!</span>")
 	playsound(src, 'sound/effects/snap.ogg', 50, TRUE)
 	armed = FALSE
 	update_icon()
@@ -130,7 +137,7 @@
 						INVOKE_ASYNC(src, PROC_REF(triggered), H)
 						H.visible_message("<span class='warning'>[H] przypadkowo nadeptuje na [src].</span>", \
 										  "<span class='warning'>Przypadkowo nadeptujesz na [src]</span>")
-				else if(ismouse(MM))
+				else if(ismouse(MM) || israt(MM) || isregalrat(MM)) // AQUILA EDIT - szczury z tg
 					INVOKE_ASYNC(src, PROC_REF(triggered), MM)
 		else if(AM.density) // For mousetrap grenades, set off by anything heavy
 			INVOKE_ASYNC(src, PROC_REF(triggered), AM)

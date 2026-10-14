@@ -299,3 +299,21 @@
   Joker66613:
   - rscadd: 'Demon impulsu z Paradise: elektryczny demon żyjący w kablach, który przejmuje
       APC, kradnie prąd i bawi się maszynami w przejętych pomieszczeniach'
+  - admin: Komora testowa (Debug → Komora testowa) z zestawami przedmiotów do sprawdzania
+      PR-ów.
+  - rscadd: 'Szczurzy król z tg: rzadko pojawia się przy migracji myszy jako rola
+      dla duchów, zmienia myszy w armię szczurów i zatruwa okolicę miazmą.'
+  - rscadd: Wrogie szczury i szczurza ślina.
+  - rscadd: Mysz, która zje królewski ser, zmienia się w szczurzego króla.
+  - rscadd: Szczurzy król ma w HUD przełącznik trybu walki.
+  - rscadd: 'Traitor ma nowe cele: zależne od pracy, zabójstwa z twistem, przedmioty
+      działowe, dysk z głównego serwera B+R, bomby, podsłuchy, wirus T1de, włamanie
+      do łączności, sabotaż powietrza, subwersję IFF i więcej.'
+  - rscadd: Zdrajca wybiera frakcję i historię postaci w nowym oknie; czarny rynek
+      i niezależni nie znają haseł.
+  - rscadd: Traitor może dostać cel zatrucia przedmiotów, a bracia krwi wyścig o beacon
+      łączności (z reworku traitora BeeStation).
+  - rscadd: Pierwszy serwer B+R na statku jest główny; kradzież jego dysku spowalnia
+      badania o połowę.
+  - rscdel: Usunięto cel pobierania badań i rolę złodzieja; cele złodzieja dostaje
+      teraz traitor.

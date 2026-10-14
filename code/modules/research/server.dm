@@ -34,6 +34,10 @@
 
 /obj/machinery/rnd/server/Initialize(mapload)
 	. = ..()
+	// AQ EDIT - the first server on the ship becomes the master server (yogstation13/Yogstation#20268)
+	if(mapload && type == /obj/machinery/rnd/server && try_become_master_server())
+		return INITIALIZE_HINT_QDEL
+	// AQ EDIT END
 
 	server_id = 0
 	while(server_id == 0)

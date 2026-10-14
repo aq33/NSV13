@@ -157,7 +157,20 @@
 /datum/team/brother_team/proc/forge_brother_objectives()
 	objectives = list()
 	var/is_hijacker = prob(10)
-	for(var/i = 1 to max(1, CONFIG_GET(number/brother_objectives_amount) + (members.len > 2) - is_hijacker))
+	var/objectives_left = max(1, CONFIG_GET(number/brother_objectives_amount) + (members.len > 2) - is_hijacker)
+	// AQ EDIT START - deploy beacon from the BeeStation traitor rework, one of the slots
+	if(objectives_left > 1 && prob(BROTHER_BEACON_PROB))
+		var/datum/objective/brother_beacon/beacon = new
+		beacon.team = src
+		if(beacon.setup_beacon())
+			objectives += beacon
+			for(var/datum/mind/member in members)
+				log_objective(member, beacon.explanation_text)
+			objectives_left--
+		else
+			qdel(beacon)
+	// AQ EDIT END
+	for(var/i = 1 to objectives_left)
 		forge_single_objective()
 	if(is_hijacker)
 		if(!locate(/datum/objective/hijack) in objectives)
