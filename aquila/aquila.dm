@@ -541,6 +541,7 @@
 #include "code\modules\test_chamber\kits\_kit.dm"
 #include "code\modules\test_chamber\kits\test_subjects.dm"
 // Komora testowa - zestawy PR-ów niżej (usuwać razem z plikiem zestawu po przetestowaniu)
+#include "code\modules\test_chamber\kits\pr_433_secret_chems.dm"
 #include "code\modules\weighted\spawn_fallbacks.dm"
 #include "code\modules\weighted\weighted_ghost_midround.dm"
 #include "code\modules\weighted\weighted_pace_vote.dm"
