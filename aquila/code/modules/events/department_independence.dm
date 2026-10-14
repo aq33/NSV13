@@ -6,7 +6,7 @@
 GLOBAL_LIST_INIT(aquila_independence_departments, list(
 	list(
 		"name" = "medyczny",
-		"jobs" = list(JOB_NAME_CHIEFMEDICALOFFICER, JOB_NAME_MEDICALDOCTOR, JOB_NAME_PARAMEDIC, JOB_NAME_CHEMIST, JOB_NAME_VIROLOGIST, JOB_NAME_GENETICIST, JOB_NAME_BRIGPHYSICIAN, JOB_NAME_PSYCHIATRIST),
+		"jobs" = list(JOB_NAME_CHIEFMEDICALOFFICER, JOB_NAME_MEDICALDOCTOR, JOB_NAME_PARAMEDIC, JOB_NAME_CHEMIST, JOB_NAME_VIROLOGIST, JOB_NAME_GENETICIST, JOB_NAME_PSYCHIATRIST),
 		"prefixes" = list("Lekar", "Medy", "Szpital", "Chemi", "Wiro", "Bandaż", "Strzykaw"),
 		"reasons" = list(
 			list("od tygodnia brakuje rękawiczek nitrylowych", "natychmiastowej dostawy rękawiczek"),
@@ -56,7 +56,7 @@ GLOBAL_LIST_INIT(aquila_independence_departments, list(
 	),
 	list(
 		"name" = "amunicji",
-		"jobs" = list(JOB_NAME_MASTERATARMS, JOB_NAME_MUNITIONSTECHNICIAN, JOB_NAME_PILOT, JOB_NAME_AIRTRAFFICCONTROLLER),
+		"jobs" = list(JOB_NAME_MASTERATARMS, JOB_NAME_MUNITIONSTECHNICIAN, JOB_NAME_PILOT),
 		"prefixes" = list("Torpedo", "Amunicjo", "Pocisko", "Hangaro", "Piloto", "Działo"),
 		"reasons" = list(
 			list("zabroniono przerwy na papierosa przy dziale", "przywrócenia przerwy na papierosa"),
