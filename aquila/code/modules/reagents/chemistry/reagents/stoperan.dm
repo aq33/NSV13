@@ -11,6 +11,13 @@
 	. = ..()
 	L.apply_status_effect(/datum/status_effect/stoperan)
 
+// Kolejna pigułka, gdy poprzednia jeszcze się wchłania, też odświeża czas
+/datum/reagent/medicine/stoperan/on_merge(data, amount)
+	. = ..()
+	var/mob/living/L = holder?.my_atom
+	if(metabolizing && istype(L))
+		L.apply_status_effect(/datum/status_effect/stoperan)
+
 /datum/status_effect/stoperan
 	id = "stoperan"
 	duration = 5 MINUTES
