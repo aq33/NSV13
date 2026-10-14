@@ -1,0 +1,69 @@
+/**
+ * Copyright (c) 2020 Aleksej Komarov
+ * Motyw darkspawna (port z Yogstation)
+ * SPDX-License-Identifier: MIT
+ */
+
+@use 'sass:color';
+@use 'sass:meta';
+
+@use '../colors' with (
+  $primary: #15024c,
+  $fg-map-keys: (),
+  $bg-map-keys: ()
+);
+@use '../base' with (
+  $color-bg: #0a041b,
+  $color-bg-grad-spread: 6%,
+  $border-radius: 2px
+);
+
+.theme-darkspawn {
+  // Atomic classes
+  @include meta.load-css('../atomic/color.scss');
+
+  // Components
+  @include meta.load-css(
+    '../components/Button.scss',
+    $with: (
+      'color-default': colors.$primary,
+      'color-disabled': hsl(0, 0%, 21.2%),
+      'color-selected': #1f0177,
+      'color-caution': hsl(29.5, 91%, 39%),
+      'color-danger': hsl(61.1, 100%, 30.8%)
+    )
+  );
+  @include meta.load-css(
+    '../components/Input.scss',
+    $with: ('border-color': #404b6e)
+  );
+  @include meta.load-css(
+    '../components/NoticeBox.scss',
+    $with: ('background-color': #a82d55)
+  );
+  @include meta.load-css(
+    '../components/NumberInput.scss',
+    $with: ('border-color': #404b6e)
+  );
+  @include meta.load-css(
+    '../components/ProgressBar.scss',
+    $with: ('background-color': rgba(0, 0, 0, 0.5))
+  );
+  @include meta.load-css('../components/Section.scss');
+  @include meta.load-css(
+    '../components/Tooltip.scss',
+    $with: ('background-color': #0f0331)
+  );
+
+  // Layouts
+  @include meta.load-css('../layouts/Layout.scss');
+  @include meta.load-css('../layouts/Window.scss');
+  @include meta.load-css(
+    '../layouts/TitleBar.scss',
+    $with: ('background-color': #120340)
+  );
+
+  .Layout__content {
+    background-image: none;
+  }
+}
