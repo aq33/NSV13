@@ -463,6 +463,7 @@
 #include "code\modules\miasma\miasma_sources.dm"
 #include "code\modules\lost_crew\ghostrole_on_revive.dm"
 #include "code\modules\lost_crew\lost_crew.dm"
+#include "code\modules\lost_crew\lost_crew_delivery.dm"
 #include "code\modules\mining\equipment\mineral_scanner.dm"
 #include "code\modules\mining\machine_bluespaceminer.dm"
 #include "code\modules\mining\mineral_magnet_ui.dm"
