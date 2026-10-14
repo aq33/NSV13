@@ -16,15 +16,20 @@
 /obj/machinery/restaurant_portal/Initialize(mapload)
 	. = ..()
 	linked_venue = SSrestaurant.get_venue(linked_venue)
-	// Lokal ma jeden portal. Nowy (np. postawiony przez admina) przejmuje gości
+	// Goście przychodzą przez najnowszy portal (np. postawiony przez admina albo w komorze testowej)
+	linked_venue.all_portals += src
 	linked_venue.restaurant_portal = src
-	update_appearance()
+	linked_venue.update_machines()
 
 /obj/machinery/restaurant_portal/Destroy()
-	if(linked_venue?.restaurant_portal == src)
-		linked_venue.restaurant_portal = null
-		linked_venue.close()
-		linked_venue.update_machines()
+	if(istype(linked_venue))
+		linked_venue.all_portals -= src
+		if(linked_venue.restaurant_portal == src)
+			// Wracamy do poprzedniego portalu, a jeśli żadnego nie ma, lokal się zamyka
+			linked_venue.restaurant_portal = length(linked_venue.all_portals) ? linked_venue.all_portals[length(linked_venue.all_portals)] : null
+			if(!linked_venue.restaurant_portal)
+				linked_venue.close()
+			linked_venue.update_machines()
 	linked_venue = null
 	return ..()
 

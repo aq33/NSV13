@@ -79,10 +79,9 @@
 		qdel(seat)
 	venue.customers_served = old_served
 	venue.total_income = old_income
-	// Testowy portal zostanie usunięty, lokal wraca do portalu z mapy
+	// Po usunięciu testowego portalu lokal sam wraca do portalu z mapy (jeśli mapa go ma)
 	qdel(portal)
-	if(!QDELETED(map_portal))
-		venue.restaurant_portal = map_portal
+	TEST_ASSERT_EQUAL(venue.restaurant_portal, map_portal, "Venue did not fall back to the previous portal")
 
 /// AQUILA - the bar only accepts a glass that is mostly the ordered drink
 /datum/unit_test/aquila_restaurant_bar_orders

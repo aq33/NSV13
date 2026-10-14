@@ -103,13 +103,12 @@
 
 /////PLANOWANIE/////
 /datum/ai_planning_subtree/robot_customer/SelectBehaviors(datum/ai_controller/controller, delta_time)
-	var/datum/venue/attending_venue = controller.blackboard[BB_CUSTOMER_ATTENDING_VENUE]
-
 	if(controller.blackboard[BB_CUSTOMER_LEAVING])
-		if(!attending_venue?.restaurant_portal) //Portal zniknął, robot po prostu się teleportuje
+		var/obj/machinery/restaurant_portal/exit_portal = robot_customer_exit_portal(controller)
+		if(!exit_portal) //Portalu nie ma albo jest za daleko, robot po prostu się teleportuje
 			qdel(controller.pawn)
 			return SUBTREE_RETURN_FINISH_PLANNING
-		controller.queue_behavior(/datum/ai_behavior/leave_venue, BB_CUSTOMER_ATTENDING_VENUE)
+		controller.queue_behavior(/datum/ai_behavior/leave_venue)
 		return SUBTREE_RETURN_FINISH_PLANNING
 
 	var/mob/living/target = controller.blackboard[BB_CUSTOMER_CURRENT_TARGET]
@@ -287,14 +286,25 @@
 	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT
 	required_distance = 1
 
-/datum/ai_behavior/leave_venue/setup(datum/ai_controller/controller, venue_key)
+/datum/ai_behavior/leave_venue/setup(datum/ai_controller/controller)
 	. = ..()
-	var/datum/venue/attending_venue = controller.blackboard[venue_key]
-	if(!attending_venue?.restaurant_portal)
+	var/obj/machinery/restaurant_portal/exit_portal = robot_customer_exit_portal(controller)
+	if(!exit_portal)
 		return FALSE
-	controller.current_movement_target = attending_venue.restaurant_portal
+	controller.current_movement_target = exit_portal
 
-/datum/ai_behavior/leave_venue/perform(delta_time, datum/ai_controller/controller, venue_key)
+///Portal, którym robot wyjdzie: ten, którym przyszedł, a jeśli go nie ma, aktywny portal lokalu. Null, gdy żaden nie jest w zasięgu
+/proc/robot_customer_exit_portal(datum/ai_controller/controller)
+	var/datum/weakref/portal_ref = controller.blackboard[BB_CUSTOMER_EXIT_PORTAL]
+	var/obj/machinery/restaurant_portal/portal = portal_ref?.resolve()
+	if(QDELETED(portal))
+		var/datum/venue/attending_venue = controller.blackboard[BB_CUSTOMER_ATTENDING_VENUE]
+		portal = attending_venue?.restaurant_portal
+	if(QDELETED(portal) || portal.z != controller.pawn.z || get_dist(portal, controller.pawn) > controller.max_target_distance)
+		return null
+	return portal
+
+/datum/ai_behavior/leave_venue/perform(delta_time, datum/ai_controller/controller)
 	. = ..()
 	var/mob/living/pawn = controller.pawn
 	pawn.visible_message("<span class='notice'>[pawn] wchodzi do portalu i znika.</span>")

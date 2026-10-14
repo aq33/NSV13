@@ -19,4 +19,5 @@
 #define DRINK_PRICE_MEDIUM 80
 #define DRINK_PRICE_HIGH 200
 
-#define BB_CUSTOMER_ORDER_IMAGE "BB_customer_order_image"
+///Portal, którym robot przyszedł i którym wyjdzie (weakref)
+#define BB_CUSTOMER_EXIT_PORTAL "BB_customer_exit_portal"

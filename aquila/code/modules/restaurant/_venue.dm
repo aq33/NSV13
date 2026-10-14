@@ -54,6 +54,8 @@ SUBSYSTEM_DEF(restaurant)
 	var/open = FALSE
 	///Portal, przez który przychodzą goście
 	var/obj/machinery/restaurant_portal/restaurant_portal
+	///Wszystkie portale tego lokalu; po zniknięciu aktywnego goście wracają do poprzedniego
+	var/list/obj/machinery/restaurant_portal/all_portals = list()
 	///Terminale obsługujące ten lokal
 	var/list/obj/machinery/restaurant_terminal/terminals = list()
 	///Obecni goście
@@ -122,6 +124,7 @@ SUBSYSTEM_DEF(restaurant)
 
 	var/mob/living/simple_animal/robot_customer/new_customer = new(get_turf(restaurant_portal), customer_type, src)
 	current_visitors += new_customer
+	new_customer.ai_controller?.blackboard[BB_CUSTOMER_EXIT_PORTAL] = WEAKREF(restaurant_portal)
 	playsound(restaurant_portal, 'sound/effects/phasein.ogg', 30, TRUE)
 	return new_customer
 
