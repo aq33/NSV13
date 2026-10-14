@@ -116,6 +116,34 @@
 		. += "<span class='notice'>Zamówienie: [attending_venue.get_order_name(wanted_item)].</span>"
 		. += "<span class='notice'>Podaj mu je do ręki albo połóż na stole przed nim.</span>"
 
+/mob/living/simple_animal/robot_customer/bullet_act(obj/item/projectile/Proj, def_zone, piercing_hit = FALSE)
+	. = ..()
+	if(!Proj.nodamage && (Proj.damage || Proj.stamina) && isliving(Proj.firer))
+		report_harm(Proj.firer)
+
+/mob/living/simple_animal/robot_customer/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum)
+	. = ..()
+	if(isitem(AM))
+		var/obj/item/thrown_item = AM
+		if(thrown_item.throwforce && throwingdatum?.thrower)
+			report_harm(throwingdatum.thrower)
+
+/mob/living/simple_animal/robot_customer/attack_animal(mob/living/simple_animal/M)
+	. = ..()
+	if(.)
+		report_harm(M)
+
+/mob/living/simple_animal/robot_customer/attack_paw(mob/living/carbon/monkey/M)
+	. = ..()
+	if(M.combat_mode)
+		report_harm(M)
+
+///Przekazuje AI, kto skrzywdził robota
+/mob/living/simple_animal/robot_customer/proc/report_harm(mob/living/attacker)
+	var/datum/ai_controller/robot_customer/controller = ai_controller
+	if(istype(controller) && stat != DEAD)
+		controller.on_harmed(attacker)
+
 ///Ciągnięcie robota: obsługa lokalu może go prowadzić, reszta dostaje ostrzeżenie
 /mob/living/simple_animal/robot_customer/can_be_pulled(user, grab_state, force)
 	. = ..()

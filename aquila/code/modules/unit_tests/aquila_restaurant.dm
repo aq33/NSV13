@@ -74,6 +74,21 @@
 	TEST_ASSERT_EQUAL(payment.credits, FOOD_PRICE_CHEAP, "Robot paid the wrong amount")
 	TEST_ASSERT(!controller.blackboard[BB_CUSTOMER_CURRENT_ORDER], "Order was not cleared after eating")
 
+	// Personel z dostępem może robota ciągnąć, ale bicie zawsze daje ostrzeżenie
+	var/mob/living/carbon/human/staff = allocate(/mob/living/carbon/human, chair_turf)
+	staff.equip_to_slot_or_del(new /obj/item/clothing/under/color/grey(staff), ITEM_SLOT_ICLOTHING)
+	var/obj/item/card/id/staff_card = new(staff)
+	staff_card.access = list(ACCESS_KITCHEN)
+	staff.equip_to_slot_or_del(staff_card, ITEM_SLOT_ID)
+	TEST_ASSERT(venue.has_access(staff), "Kitchen card does not grant venue access")
+	controller.on_get_pulled(staff)
+	TEST_ASSERT(!venue.mob_blacklist[REF(staff)], "Pulling by kitchen staff gave a warning")
+	staff.combat_mode = TRUE
+	customer.attack_hand(staff, list())
+	customer.attack_hand(staff, list())
+	TEST_ASSERT_EQUAL(venue.mob_blacklist[REF(staff)], 2, "Punches from kitchen staff did not give warnings")
+	venue.mob_blacklist -= REF(staff)
+
 	venue.close()
 	for(var/seat in venue.linked_seats.Copy())
 		qdel(seat)

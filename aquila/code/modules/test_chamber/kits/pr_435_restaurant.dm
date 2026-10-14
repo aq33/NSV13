@@ -4,7 +4,7 @@
 	description = "Weź kartę kuchni i baru. Na terminalu restauracji kliknij Otwórz lokal: pierwszy robot przychodzi po kilku sekundach, kolejne co 80-100 s (bar co 40-60 s). \
 		Miejsca przy stolikach i stołkach są już rozstawione; sprawdź też Zdejmij wolne, Rozstaw miejsca i Wydaj projektor. \
 		Robot siada, obraca się do stołu i zamawia (dymek nad głową, terminal mówi zamówienie). Podaj danie do ręki albo połóż na stole przed nim: ma zostawić holochip i zniknąć w portalu. \
-		Złe danie ma odrzucić. W skrzyniach są gotowe dania i napoje (napój w szklance, min. 10u). Bez karty szarpnij robota albo uderz go w trybie walki: dwa ostrzeżenia, za trzecim się broni. \
+		Złe danie ma odrzucić. W skrzyniach są gotowe dania i napoje (napój w szklance, min. 10u). Uderz robota w trybie walki (pięścią, bronią, strzałem albo rzutem; karta nie chroni): dwa ostrzeżenia, za trzecim miażdży napastnika uściskiem. Z kartą możesz go ciągnąć bez ostrzeżeń, bez karty ciągnięcie też jest ostrzeżeniem. \
 		Ćma przychodzi tylko, gdy otwierający ma czapkę, rękawice albo buty (w skrzyni jest czapka kucharza)."
 	items = list(
 		/obj/machinery/restaurant_portal/restaurant = 1,

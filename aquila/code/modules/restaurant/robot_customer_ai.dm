@@ -40,7 +40,7 @@
 	if(!I.force || !user.combat_mode)
 		INVOKE_ASYNC(src, PROC_REF(dont_want_that))
 		return COMPONENT_NO_AFTERATTACK
-	INVOKE_ASYNC(src, PROC_REF(warn_greytider), user)
+	on_harmed(user)
 
 ///Robot dostaje zamówienie
 /datum/ai_controller/robot_customer/proc/eat_order(obj/item/order_item, datum/venue/attending_venue)
@@ -91,14 +91,18 @@
 	blackboard[BB_CUSTOMER_CURRENT_TARGET] = greytider
 	CancelActions()
 
+///Cios ręką liczy się tylko w trybie walki. Dostęp do lokalu nie chroni: bicie gościa to bicie gościa
 /datum/ai_controller/robot_customer/proc/on_get_punched(datum/source, mob/living/living_hitter)
 	SIGNAL_HANDLER
 	if(!istype(living_hitter) || !living_hitter.combat_mode)
 		return
-	var/datum/venue/attending_venue = blackboard[BB_CUSTOMER_ATTENDING_VENUE]
-	if(attending_venue.has_access(living_hitter))
+	on_harmed(living_hitter)
+
+///Robota ktoś skrzywdził (cios, broń, pocisk, rzut, atak zwierzęcia)
+/datum/ai_controller/robot_customer/proc/on_harmed(mob/living/attacker)
+	if(!istype(attacker) || attacker == pawn || istype(attacker, /mob/living/simple_animal/robot_customer))
 		return
-	INVOKE_ASYNC(src, PROC_REF(warn_greytider), living_hitter)
+	INVOKE_ASYNC(src, PROC_REF(warn_greytider), attacker)
 
 
 /////PLANOWANIE/////
@@ -113,7 +117,8 @@
 
 	var/mob/living/target = controller.blackboard[BB_CUSTOMER_CURRENT_TARGET]
 	if(target)
-		if(QDELETED(target) || target.stat == DEAD)
+		// Robot daje spokój, gdy napastnik padnie albo ucieknie
+		if(QDELETED(target) || target.stat == DEAD || target.z != controller.pawn.z || get_dist(target, controller.pawn) > 9)
 			controller.blackboard -= BB_CUSTOMER_CURRENT_TARGET
 		else
 			controller.queue_behavior(/datum/ai_behavior/break_spine, BB_CUSTOMER_CURRENT_TARGET)
