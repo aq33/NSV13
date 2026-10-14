@@ -195,8 +195,8 @@
 
 //Toggle Night Vision
 /obj/effect/proc_holder/spell/targeted/night_vision
-	name = "Toggle Nightvision \[ON\]"
-	desc = "Toggle your nightvision mode."
+	name = "Widzenie w ciemności \[WŁ.\]"
+	desc = "Przełącza twoje widzenie w ciemności."
 
 	charge_max = 10
 	clothes_req = 0
@@ -210,16 +210,16 @@
 		switch(target.lighting_alpha)
 			if (LIGHTING_PLANE_ALPHA_VISIBLE)
 				target.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
-				name = "Toggle Nightvision \[More]"
+				name = "Widzenie w ciemności \[MOCNIEJ]"
 			if (LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE)
 				target.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-				name = "Toggle Nightvision \[Full]"
+				name = "Widzenie w ciemności \[PEŁNE]"
 			if (LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
 				target.lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
-				name = "Toggle Nightvision \[OFF]"
+				name = "Widzenie w ciemności \[WYŁ.]"
 			else
 				target.lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
-				name = "Toggle Nightvision \[ON]"
+				name = "Widzenie w ciemności \[WŁ.]"
 		target.update_sight()
 
 /mob/living/simple_animal/hostile/statue/sentience_act()
