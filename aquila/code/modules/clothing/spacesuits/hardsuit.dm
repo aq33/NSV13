@@ -8,7 +8,7 @@
 	hardsuit_type = "hev"
 	resistance_flags = ACID_PROOF | FIRE_PROOF
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
-	armor = list("melee" = 30, "bullet" = 10, "laser" = 10, "energy" = 15, "bomb" = 100, "bio" = 100, "rad" = 60, "fire" = 60, "acid" = 80, "stamina" = 30)
+	armor = list("melee" = 30, "bullet" = 10, "laser" = 10, "energy" = 15, "bomb" = 100, "bio" = 100, "rad" = 60, "fire" = 60, "acid" = 80, "stamina" = 30, "bleed" = 70)
 	clothing_flags =  SHOWEROKAY | SCAN_REAGENTS //te borowiki z bee zrobily burdel w hardsuit.dm, w przyszlosci bedzie trzeba zrobic refactor i sanitisation
 	var/obj/machinery/doppler_array/integrated/bomb_radar
 	actions_types = list(/datum/action/item_action/toggle_research_scanner, /datum/action/item_action/toggle_helmet_light)
@@ -37,7 +37,7 @@
 	supports_variations = DIGITIGRADE_VARIATION_NO_NEW_ICON //jak ci sie nie podoba to dostosuj sprite i zmien var na DIGITIGRADE_VARIATION
 	resistance_flags = ACID_PROOF | FIRE_PROOF
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT //Same as an emergency firesuit. Not ideal for extended exposure.
-	armor = list("melee" = 30, "bullet" = 10, "laser" = 10, "energy" = 15, "bomb" = 100, "bio" = 100, "rad" = 60, "fire" = 60, "acid" = 80, "stamina" = 30)
+	armor = list("melee" = 30, "bullet" = 10, "laser" = 10, "energy" = 15, "bomb" = 100, "bio" = 100, "rad" = 60, "fire" = 60, "acid" = 80, "stamina" = 30, "bleed" = 70)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/aquila/hazard_suit
 	var/morphine_cooldown = 0
 	var/morphine_cooldown_duration = 500
@@ -82,7 +82,7 @@
 	righthand_file = 'aquila/icons/mob/inhands/kapitanbomba_righthand.dmi'
 	icon_state = "kpt_kask"
 	item_state = "kpt_kask"
-	armor = list("melee" = 30, "bullet" = 30, "laser" = 30,"energy" = 40, "bomb" = 30, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 70, "stamina" = 10)
+	armor = list("melee" = 30, "bullet" = 30, "laser" = 30,"energy" = 40, "bomb" = 30, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 70, "stamina" = 10, "bleed" = 50)
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT
 
 /obj/item/clothing/suit/kapitanbomba
@@ -102,7 +102,7 @@
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/ammo_box/magazine, /obj/item/gun)
 	slowdown = 0.1 // Malutko bo to Kapitan bomba jest tępe chuje
-	armor = list("melee" = 40, "bullet" = 40, "laser" = 40,"energy" = 40, "bomb" = 40, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 70, "stamina" = 10)
+	armor = list("melee" = 40, "bullet" = 40, "laser" = 40,"energy" = 40, "bomb" = 40, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 70, "stamina" = 10, "bleed" = 5)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /*************************************\

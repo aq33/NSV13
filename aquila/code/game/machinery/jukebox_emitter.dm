@@ -12,17 +12,20 @@
 	var/deck_penalty = 4
 	/// Mnożnik wygłuszenia przez ściany, okna i drzwi (np. słabszy głośnik słabiej je przebija)
 	var/wall_multiplier = 1
+	/// Mnożnik echa z odległości (głośniki nagłośnienia są blisko słuchacza - mało echa)
+	var/echo_strength = 1
 	/// Pamięć wygłuszenia przeszkód: turf słuchacza -> suma (odświeżana co sekundę)
 	var/list/dampening_cache = list()
 	var/dampening_cache_time = 0
 	var/turf/dampening_cache_from
 
-/datum/music_emitter/New(atom/parent, range = 20, full_range = 3, deck_penalty = 4, wall_multiplier = 1)
+/datum/music_emitter/New(atom/parent, range = 20, full_range = 3, deck_penalty = 4, wall_multiplier = 1, echo_strength = 1)
 	src.parent = parent
 	src.range = range
 	src.full_range = full_range
 	src.deck_penalty = deck_penalty
 	src.wall_multiplier = wall_multiplier
+	src.echo_strength = echo_strength
 
 /datum/music_emitter/Destroy(force, ...)
 	parent = null
@@ -70,7 +73,7 @@
 	var/fraction = hearing_fraction(M)
 	if(isnull(fraction))
 		return 0
-	return clamp((fraction - 0.1) / 0.6, 0, 1)
+	return clamp((fraction - 0.1) / 0.6, 0, 1) * echo_strength
 
 /// Przytłumienie 0-1 (jak zza ściany): pełne na innym pokładzie, na tym samym - suma wygłuszenia przeszkód po drodze.
 /datum/music_emitter/proc/muffle_amount(mob/M)

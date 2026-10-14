@@ -39,7 +39,7 @@
 			"<span class='danger'>Twoje żyły pękają od środka, a z krwi wybucha nieświęty płomień!</span>"
 		)
 
-		victim.bleed_rate += 5
+		victim.add_bleeding(BLEED_DEEP_WOUND)
 		victim.adjustFireLoss(20)
 		new /obj/effect/temp_visual/cleave(victim.drop_location())
 

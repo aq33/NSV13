@@ -1,4 +1,5 @@
 /obj/item/projectile/bullet/dnainjector
+	bleed_force = BLEED_SURFACE
 	name = "\improper DNA injector"
 	icon_state = "syringeproj"
 	var/obj/item/dnainjector/injector

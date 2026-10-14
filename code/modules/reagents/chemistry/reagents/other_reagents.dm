@@ -49,6 +49,9 @@
 /datum/reagent/blood/on_new(list/data)
 	if(istype(data))
 		SetViruses(src, data)
+		var/datum/blood_type/blood_type = get_blood_type(data["blood_type"])
+		if(blood_type)
+			color = blood_type.blood_color
 
 /datum/reagent/blood/on_merge(list/mix_data)
 	if(data && mix_data)
@@ -358,6 +361,12 @@
 		M.reagents.add_reagent(type,reac_volume/4)
 		return
 	return ..()
+
+/datum/reagent/fuel/unholywater/on_mob_metabolize(mob/living/L)
+	ADD_TRAIT(L, TRAIT_NO_BLEEDING, type)
+
+/datum/reagent/fuel/unholywater/on_mob_end_metabolize(mob/living/L)
+	REMOVE_TRAIT(L, TRAIT_NO_BLEEDING, type)
 
 /datum/reagent/fuel/unholywater/on_mob_life(mob/living/carbon/M)
 	if(iscultist(M))

@@ -29,7 +29,7 @@
 	allowed = list(/obj/item/melee/sickly_blade)
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/eldritch
 	// Slightly better than normal cult robes
-	armor = list("melee" = 50, "bullet" = 50, "laser" = 50,"energy" = 50, "bomb" = 35, "bio" = 20, "rad" = 20, "fire" = 20, "acid" = 20, "stamina" = 50)
+	armor = list("melee" = 50, "bullet" = 50, "laser" = 50,"energy" = 50, "bomb" = 35, "bio" = 20, "rad" = 20, "fire" = 20, "acid" = 20, "stamina" = 50, "bleed" = 40)
 
 /obj/item/clothing/suit/hooded/cultrobes/eldritch/examine(mob/user)
 	. = ..()
@@ -47,7 +47,7 @@
 	flags_cover = NONE
 	desc = "Black like tar and doesn't reflect any light. Runic symbols line the outside, with each flash you lose comprehension of what you are seeing."
 	item_flags = EXAMINE_SKIP
-	armor = list("melee" = 30, "bullet" = 30, "laser" = 30,"energy" = 30, "bomb" = 15, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 30)
+	armor = list("melee" = 30, "bullet" = 30, "laser" = 30,"energy" = 30, "bomb" = 15, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 30, "bleed" = 40)
 
 /obj/item/clothing/suit/hooded/cultrobes/void
 	name = "void cloak"
@@ -58,7 +58,7 @@
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/void
 	flags_inv = NONE
 	// slightly worse than normal cult robes
-	armor = list("melee" = 30, "bullet" = 30, "laser" = 30,"energy" = 30, "bomb" = 15, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 30)
+	armor = list("melee" = 30, "bullet" = 30, "laser" = 30,"energy" = 30, "bomb" = 15, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 30, "bleed" = 40)
 	body_parts_covered = CHEST|GROIN|ARMS
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/void_cloak
 	qdel_hood = TRUE

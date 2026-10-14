@@ -77,6 +77,7 @@
 		display_results(user, target, "<span class='notice'>Udaje ci się wymienić [strefa_pl(target_zone, TRUE)] [target].</span>",
 			"[user] pomyślnie wymienia [strefa_pl(target_zone, TRUE)] [target] na [tool]!",
 			"[user] pomyślnie wymienia [strefa_pl(target_zone, TRUE)] [target]!")
+		target.cauterise_wounds()
 		return 1
 	else
 		var/obj/item/bodypart/L = target.newBodyPart(target_zone, FALSE, FALSE)
@@ -90,16 +91,20 @@
 		if(istype(tool, /obj/item/chainsaw/energy/doom))
 			var/obj/item/mounted_chainsaw/super/new_arm = new(target)
 			target_zone == BODY_ZONE_R_ARM ? target.put_in_r_hand(new_arm) : target.put_in_l_hand(new_arm)
+			target.cauterise_wounds()
 			return 1
 		else if(istype(tool, /obj/item/chainsaw/energy))
 			var/obj/item/mounted_chainsaw/energy/new_arm = new(target)
 			target_zone == BODY_ZONE_R_ARM ? target.put_in_r_hand(new_arm) : target.put_in_l_hand(new_arm)
+			target.cauterise_wounds()
 			return 1
 		else if(istype(tool, /obj/item/chainsaw))
 			var/obj/item/mounted_chainsaw/normal/new_arm = new(target)
 			target_zone == BODY_ZONE_R_ARM ? target.put_in_r_hand(new_arm) : target.put_in_l_hand(new_arm)
+			target.cauterise_wounds()
 			return 1
 		else if(istype(tool, /obj/item/melee/synthetic_arm_blade))
 			var/obj/item/melee/arm_blade/new_arm = new(target,TRUE,TRUE)
 			target_zone == BODY_ZONE_R_ARM ? target.put_in_r_hand(new_arm) : target.put_in_l_hand(new_arm)
+			target.cauterise_wounds()
 			return 1

@@ -190,34 +190,6 @@
 /datum/game_mode/revolution/generate_report()
 	return "W ostatnich czasach dostaliśmy raporty o zamieszkach ze strony naszych ukochanych pracowników, z kilkoma próbami buntu oraz zamachów na głowy departamentów. Z obserwacji wynika że kilkoro załogantów używa urządzeń typu 'flash' na swoich kolegach, którzy później wykonują ich rozkazy bez pytań. Ogranizują bunt i zamieszki by wyeliminować głowy departamentów. Zwracajcie szczególną uwagę na dziwne zachowania oraz losowe oślepianie załogantów. Jeżeli załoga spróbuje zorganizować rewoltę, macie pełne prawo do ekzegucji oraz użycia ostrej amunicji - zostaną później sklonowani w Centrali w celu przesłuchania."
 
-/datum/game_mode/revolution/extended
-	name = "extended_revolution"
-	config_tag = "extended_revolution"
-	end_when_heads_dead = FALSE
-
-/datum/game_mode/revolution/speedy
-	name = "speedy_revolution"
-	config_tag = "speedy_revolution"
-	end_when_heads_dead = FALSE
-	var/endtime = null
-	var/fuckingdone = FALSE
-
-/datum/game_mode/revolution/speedy/pre_setup()
-	endtime = world.time + 20 MINUTES
-	return ..()
-
-/datum/game_mode/revolution/speedy/process()
-	..()
-	if(check_counter == 0)
-		if (world.time > endtime && !fuckingdone)
-			fuckingdone = TRUE
-			for (var/obj/machinery/nuclearbomb/N in GLOB.nuke_list)
-				if (!N.timing)
-					N.timer_set = 200
-					N.set_safety()
-					N.set_active()
-
-
 /datum/game_mode/revolution/generate_credit_text()
 	var/list/round_credits = list()
 	var/len_before_addition

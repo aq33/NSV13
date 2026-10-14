@@ -440,6 +440,8 @@ GLOBAL_VAR(medibot_unique_id_gen)
 			var/obj/item/clothing/CH = H.head
 			if (CS.clothing_flags & CH.clothing_flags & THICKMATERIAL)
 				return FALSE // Skip over them if they have no exposed flesh.
+		if(H.is_bleeding())
+			return TRUE
 
 	if(declare_crit && C.health <= 0) //Critical condition! Call for help!
 		declare(C)
@@ -518,7 +520,10 @@ GLOBAL_VAR(medibot_unique_id_gen)
 
 		var/treatment_method = null
 
-		if(C.getBruteLoss() >= heal_threshold)
+		if(C.is_bleeding() && emagged != 2)
+			treatment_method = "bleed"
+
+		else if(C.getBruteLoss() >= heal_threshold)
 			treatment_method = BRUTE
 
 		else if(C.getFireLoss() >= heal_threshold)
@@ -544,7 +549,15 @@ GLOBAL_VAR(medibot_unique_id_gen)
 				"<span class='userdanger'>[src] próbuje opatrzyć twoje rany!</span>")
 
 			if(do_mob(src, patient, 20)) //Slightly faster than default tend wounds, but does less HPS
-				if((get_dist(src, patient) <= 1) && (on) && assess_patient(patient))
+				if(treatment_method == "bleed")
+					if((get_dist(src, patient) <= 1) && (on) && C.is_bleeding())
+						C.suppress_bloodloss(BLEED_SURFACE) // as good as an improvised medical gauze
+						log_combat(src, patient, "bandaged", "internal tools")
+						C.visible_message("<span class='danger'>[src] bandażuje rany [patient]!</span>", \
+							"<span class='userdanger'>[src] bandażuje twoje rany!</span>")
+					else
+						tending = FALSE
+				else if((get_dist(src, patient) <= 1) && (on) && assess_patient(patient))
 					var/healies = heal_amount
 					var/obj/item/storage/firstaid/FA = firstaid
 					if(treatment_method == TOX && isoozeling(patient))

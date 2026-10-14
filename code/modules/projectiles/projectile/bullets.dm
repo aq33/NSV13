@@ -1,4 +1,5 @@
 /obj/item/projectile/bullet
+	bleed_force = BLEED_DEEP_WOUND
 	name = "bullet"
 	icon_state = "bullet"
 	damage = 60

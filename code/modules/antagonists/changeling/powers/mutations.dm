@@ -153,6 +153,7 @@
 	item_flags = NEEDS_PERMIT | ABSTRACT | DROPDEL
 	w_class = WEIGHT_CLASS_HUGE
 	force = 20 //this is an undroppable melee weapon. should not be better than the fireaxe
+	bleed_force = BLEED_CUT
 	throwforce = 0 //Just to be on the safe side
 	throw_range = 0
 	throw_speed = 0
@@ -395,7 +396,7 @@
 	item_flags = DROPDEL
 	clothing_flags = STOPSPRESSUREDAMAGE //Not THICKMATERIAL because it's organic tissue, so if somebody tries to inject something into it, it still ends up in your blood. (also balance but muh fluff)
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/oxygen)
-	armor = list("melee" = 35, "bullet" = 25, "laser" = 25,"energy" = 30, "bomb" = 30, "bio" = 20, "rad" = 20, "fire" = 90, "acid" = 90, "stamina" = 10)//Bit less armoured than the Syndicate space suit
+	armor = list("melee" = 35, "bullet" = 25, "laser" = 25,"energy" = 30, "bomb" = 30, "bio" = 20, "rad" = 20, "fire" = 90, "acid" = 90, "stamina" = 10, "bleed" = 80)//Bit less armoured than the Syndicate space suit
 	slowdown = 0.2
 	var/datum/reagent/salbutamol = /datum/reagent/medicine/salbutamol
 
@@ -417,7 +418,7 @@
 	desc = "A covering of armored pressure and temperature-resistant organic tissue with a glass-like chitin front."
 	item_flags = DROPDEL
 	clothing_flags = STOPSPRESSUREDAMAGE
-	armor = list("melee" = 35, "bullet" = 25, "laser" = 25,"energy" = 30, "bomb" = 30, "bio" = 20, "rad" = 20, "fire" = 90, "acid" = 90, "stamina" = 10)
+	armor = list("melee" = 35, "bullet" = 25, "laser" = 25,"energy" = 30, "bomb" = 30, "bio" = 20, "rad" = 20, "fire" = 90, "acid" = 90, "stamina" = 10, "bleed" = 80)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 
 /obj/item/clothing/head/helmet/space/changeling/Initialize(mapload)
@@ -449,7 +450,7 @@
 	icon_state = "lingarmor"
 	item_flags = DROPDEL
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
-	armor = list("melee" = 40, "bullet" = 40, "laser" = 50, "energy" = 50, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 25, "acid" = 25, "stamina" = 30)
+	armor = list("melee" = 40, "bullet" = 40, "laser" = 50, "energy" = 50, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 25, "acid" = 25, "stamina" = 30, "bleed" = 90)
 	flags_inv = HIDEJUMPSUIT
 	cold_protection = 0
 	heat_protection = 0
@@ -467,7 +468,7 @@
 	desc = "A tough, hard covering of black chitin with transparent chitin in front."
 	icon_state = "lingarmorhelmet"
 	item_flags = DROPDEL
-	armor = list("melee" = 40, "bullet" = 40, "laser" = 50, "energy" = 50, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 25, "acid" = 25, "stamina" = 30)
+	armor = list("melee" = 40, "bullet" = 40, "laser" = 50, "energy" = 50, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 25, "acid" = 25, "stamina" = 30, "bleed" = 90)
 	flags_inv = HIDEEARS|HIDEHAIR|HIDEEYES|HIDEFACIALHAIR|HIDEFACE|HIDESNOUT
 
 /obj/item/clothing/head/helmet/changeling/Initialize(mapload)

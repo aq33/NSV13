@@ -486,6 +486,7 @@
 	icon_state = "hook"
 
 /obj/item/projectile/hook
+	bleed_force = BLEED_SURFACE
 	name = "hook"
 	icon_state = "hook"
 	icon = 'icons/obj/lavaland/artefacts.dmi'
@@ -770,6 +771,7 @@
 	name = "cleaving saw"
 	desc = "This saw, effective at drawing the blood of beasts, transforms into a long cleaver that makes use of centrifugal force."
 	force = 8
+	bleed_force = BLEED_CUT
 	force_on = 15 //force when active
 	throwforce = 20
 	throwforce_on = 20
@@ -879,6 +881,7 @@
 	sharpness = IS_SHARP
 	w_class = WEIGHT_CLASS_BULKY
 	force = 1
+	bleed_force = BLEED_CUT
 	throwforce = 1
 	block_upgrade_walk = 1
 	block_level = 1

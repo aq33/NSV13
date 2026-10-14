@@ -295,6 +295,7 @@
 	desc = "Keep away from children, paperwork, and children doing paperwork."
 	catchphrase = null
 	icon = 'icons/effects/blood.dmi'
+	color = COLOR_BLOOD
 	var/icon_left = "bloodhand_left"
 	var/icon_right = "bloodhand_right"
 	icon_state = "bloodhand_left"

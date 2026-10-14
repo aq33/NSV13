@@ -541,6 +541,7 @@
 /mob/living/proc/update_resting()
 	update_rest_hud_icon()
 	update_mobility()
+	SEND_SIGNAL(src, COMSIG_LIVING_RESTING_UPDATED, resting)
 
 //Recursive function to find everything a mob is holding. Really shitty proc tbh.
 /mob/living/get_contents()
@@ -779,12 +780,22 @@
 
 						if(spec_color)
 							TH.color = spec_color
+						var/datum/blood_type/trail_blood = get_blood_type(dna_blood_type())
+						if(trail_blood?.glowy && !TH.light_range)
+							TH.set_light(1, 0.5, trail_blood.blood_color)
 
 /mob/living/carbon/human/makeTrail(turf/T, turf/start, direction, spec_color)
-	if((NOBLOOD in dna.species.species_traits) || !bleed_rate || bleedsuppress)
+	if((NOBLOOD in dna.species.species_traits) || !is_bleeding())
 		return
-	spec_color = dna.species.blood_color
+	spec_color = get_blood_color()
 	..()
+
+/// Name of this mob's blood type, if it has DNA
+/mob/living/proc/dna_blood_type()
+	return null
+
+/mob/living/carbon/dna_blood_type()
+	return dna?.blood_type
 
 /mob/living/proc/getTrail()
 	if(getBruteLoss() < 300)
@@ -919,8 +930,9 @@
 	if(anchored || (buckled && buckled.anchored))
 		fixed = 1
 	if(on && !(movement_type & FLOATING) && !fixed)
-		animate(src, pixel_y = base_pixel_y + 2, time = 10, loop = -1, flags = ANIMATION_RELATIVE)
-		animate(pixel_y = base_pixel_y - 2, time = 10, loop = -1, flags = ANIMATION_RELATIVE)
+		// AQ EDIT - animacja jest względna, więc samo +2/-2; dodawanie base_pixel_y spychało moby z przesunięciem (np. potomka darkspawna) coraz niżej
+		animate(src, pixel_y = 2, time = 10, loop = -1, flags = ANIMATION_RELATIVE)
+		animate(pixel_y = -2, time = 10, loop = -1, flags = ANIMATION_RELATIVE)
 		setMovetype(movement_type | FLOATING)
 	else if(((!on || fixed) && (movement_type & FLOATING)))
 		animate(src, pixel_y = base_pixel_y + get_standard_pixel_y_offset(lying), time = 1 SECONDS)

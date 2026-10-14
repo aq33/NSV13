@@ -178,6 +178,8 @@
 			armor_list += list("RADIATION" = armor.rad)
 		if(armor.stamina)
 			armor_list += list("STAMINA" = armor.stamina)
+		if(armor.bleed)
+			armor_list += list("BLEEDING" = armor.bleed)
 
 		if(length(durability_list))
 			durability_list.Cut()

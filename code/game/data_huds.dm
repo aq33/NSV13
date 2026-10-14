@@ -199,7 +199,7 @@
 				return
 			if(tod)
 				var/tdelta = round(world.time - timeofdeath)
-				if(tdelta < (DEFIB_TIME_LIMIT * 10))
+				if(tdelta && is_defib_possible()) // AQ EDIT - no defib time limit
 					if(!client && key)
 						holder.icon_state = "huddefib-ssd"
 						return

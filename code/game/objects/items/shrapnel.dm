@@ -27,6 +27,7 @@
 	embedding = list(embed_chance=70, fall_chance=7, jostle_chance=7, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 
 /obj/item/projectile/bullet/shrapnel
+	bleed_force = BLEED_SURFACE
 	name = "flying shrapnel shard"
 	damage = 9
 	range = 10
@@ -39,6 +40,7 @@
 	hit_stunned_targets = TRUE
 
 /obj/item/projectile/bullet/shrapnel/mega
+	bleed_force = BLEED_CUT
 	name = "flying shrapnel hunk"
 	range = 25
 	dismemberment = 10

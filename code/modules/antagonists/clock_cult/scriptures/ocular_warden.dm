@@ -32,7 +32,7 @@
 	break_message = "<span class='warning'>Ze strażnika ocznego wycieka czarna maź, a on powoli osuwa się na ziemię.</span>"
 	icon_state = "ocular_warden"
 	max_integrity = 60
-	armor = list("melee" = -80, "bullet" = -50, "laser" = 40, "energy" = 40, "bomb" = 20, "bio" = 0, "rad" = 0, "stamina" = 0)
+	armor = list("melee" = -80, "bullet" = -50, "laser" = 40, "energy" = 40, "bomb" = 20, "bio" = 0, "rad" = 0, "stamina" = 0, "bleed" = 0)
 	var/cooldown
 
 /obj/structure/destructible/clockwork/ocular_warden/process(delta_time)

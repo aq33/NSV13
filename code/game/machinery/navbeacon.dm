@@ -10,7 +10,7 @@
 	level = 1		// underfloor
 	layer = UNDER_CATWALK
 	max_integrity = 500
-	armor = list("melee" = 70, "bullet" = 70, "laser" = 70, "energy" = 70, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 80, "stamina" = 0)
+	armor = list("melee" = 70, "bullet" = 70, "laser" = 70, "energy" = 70, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 80, "stamina" = 0, "bleed" = 0)
 
 	//NSV13 - Start
 	circuit = /obj/item/circuitboard/machine/navbeacon

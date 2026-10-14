@@ -123,7 +123,7 @@
 	worn_icon = 'nsv13/icons/mob/suit.dmi'
 	icon_state = "squad"
 	w_class = 2
-	armor = list("melee" = 30, "bullet" = 40, "laser" = 10, "energy" = 10, "bomb" = 30, "bio" = 20, "rad" = 25, "fire" = 25, "acid" = 50)
+	armor = list("melee" = 30, "bullet" = 40, "laser" = 10, "energy" = 10, "bomb" = 30, "bio" = 20, "rad" = 25, "fire" = 25, "acid" = 50, "bleed" = 5)
 	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
 	body_parts_covered = CHEST|GROIN|LEGS|FEET
 	var/datum/squad/squad = null
@@ -138,7 +138,7 @@
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals)
 	slowdown = 1
-	armor = list("melee" = 20, "bullet" = 30, "laser" = 5,"energy" = 0, "bomb" = 10, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 70, "stamina" = 10)
+	armor = list("melee" = 20, "bullet" = 30, "laser" = 5,"energy" = 0, "bomb" = 10, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 70, "stamina" = 10, "bleed" = 50)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	cold_protection = CHEST | GROIN | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
@@ -155,7 +155,7 @@
 	worn_icon = 'nsv13/icons/mob/head.dmi'
 	icon_state = "squad"
 	w_class = WEIGHT_CLASS_NORMAL
-	armor = list("melee" = 30, "bullet" = 40, "laser" = 10, "energy" = 10, "bomb" = 30, "bio" = 20, "rad" = 25, "fire" = 25, "acid" = 50)
+	armor = list("melee" = 30, "bullet" = 40, "laser" = 10, "energy" = 10, "bomb" = 30, "bio" = 20, "rad" = 25, "fire" = 25, "acid" = 50, "bleed" = 50)
 	min_cold_protection_temperature = SPACE_HELM_MIN_TEMP_PROTECT
 	var/has_headcam = TRUE
 	var/datum/squad/squad = null
@@ -167,7 +167,7 @@
 	desc = "A special helmet with solar UV shielding to protect your eyes from harmful rays. It bears a squad's insignia."
 	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL | SNUG_FIT
 	permeability_coefficient = 0.01
-	armor = list("melee" = 15, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 70, "stamina" = 10)
+	armor = list("melee" = 15, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 70, "stamina" = 10, "bleed" = 50)
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	dynamic_hair_suffix = ""
 	dynamic_fhair_suffix = ""
@@ -354,7 +354,7 @@
 	worn_icon = 'nsv13/icons/mob/suit.dmi'
 	icon_state = "squadbomber"
 	desc = "Stylowa kurtka z insygniami i charakterystycznymi barwami oddziału."
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "bleed" = 5)
 	body_parts_covered = CHEST
 
 //DC stuff:

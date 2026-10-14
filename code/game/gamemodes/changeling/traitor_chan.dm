@@ -93,8 +93,3 @@
 
 /datum/game_mode/traitor/changeling/generate_report()
 	return "Niedawno Syndykat rozpoczął badania nad zmiennokształtnymi humanoidami. Wycieki z ich bazy danych sugerują, że ta technologia jest testowana na jednej z naszych stacji. Dodatkowo informujemy że Syndykat przydzielił agentów by bronić zmiennokształtnych. Nie ufajcie nikomu - każdy może być jednym z nich. Nie ogłaszajcie tego załodze, paranoja i strach obniżają produktywność."
-
-/datum/game_mode/traitor/changeling/trustnobody
-	name = "traitor + lings + no protected roles"
-	config_tag = "trustnobody"
-	protected_jobs = list()

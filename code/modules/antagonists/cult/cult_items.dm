@@ -52,6 +52,7 @@ Uderzenie niekultysty rozrywa za to jego ciało."}
 	block_upgrade_walk = 1
 	block_flags = BLOCKING_ACTIVE | BLOCKING_NASTY
 	force = 30
+	bleed_force = BLEED_CUT
 	throwforce = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "rozszarpuje")
@@ -300,7 +301,7 @@ Uderzenie niekultysty rozrywa za to jego ciało."}
 	item_state = "cultrobes"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	allowed = list(/obj/item/tome, /obj/item/melee/cultblade)
-	armor = list("melee" = 30, "bullet" = 30, "laser" = 20,"energy" = 20, "bomb" = 25, "bio" = 10, "rad" = 0, "fire" = 10, "acid" = 10, "stamina" = 40)
+	armor = list("melee" = 30, "bullet" = 30, "laser" = 20,"energy" = 20, "bomb" = 25, "bio" = 10, "rad" = 0, "fire" = 10, "acid" = 10, "stamina" = 40, "bleed" = 20)
 	flags_inv = HIDEJUMPSUIT
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	min_cold_protection_temperature = ARMOR_MIN_TEMP_PROTECT
@@ -351,7 +352,7 @@ Uderzenie niekultysty rozrywa za to jego ciało."}
 	item_state = "magusred"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	allowed = list(/obj/item/tome, /obj/item/melee/cultblade)
-	armor = list("melee" = 50, "bullet" = 30, "laser" = 50,"energy" = 20, "bomb" = 25, "bio" = 10, "rad" = 0, "fire" = 10, "acid" = 10, "stamina" = 50)
+	armor = list("melee" = 50, "bullet" = 30, "laser" = 50,"energy" = 20, "bomb" = 25, "bio" = 10, "rad" = 0, "fire" = 10, "acid" = 10, "stamina" = 50, "bleed" = 20)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 
 /obj/item/clothing/head/helmet/space/hardsuit/cult
@@ -393,7 +394,7 @@ Uderzenie niekultysty rozrywa za to jego ciało."}
 	icon_state = "cult_armor"
 	item_state = "cult_armor"
 	w_class = WEIGHT_CLASS_BULKY
-	armor = list("melee" = 40, "bullet" = 30, "laser" = 40,"energy" = 30, "bomb" = 50, "bio" = 30, "rad" = 30, "fire" = 50, "acid" = 60, "stamina" = 40)
+	armor = list("melee" = 40, "bullet" = 30, "laser" = 40,"energy" = 30, "bomb" = 50, "bio" = 30, "rad" = 30, "fire" = 50, "acid" = 60, "stamina" = 40, "bleed" = 20)
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	allowed = list(/obj/item/tome, /obj/item/melee/cultblade)
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie
@@ -414,7 +415,7 @@ Uderzenie niekultysty rozrywa za to jego ciało."}
 	name = "empowered cultist helmet"
 	desc = "Empowered helmet which creates a powerful shield around the user."
 	icon_state = "cult_hoodalt"
-	armor = list("melee" = 40, "bullet" = 30, "laser" = 40,"energy" = 30, "bomb" = 50, "bio" = 30, "rad" = 30, "fire" = 50, "acid" = 60, "stamina" = 40)
+	armor = list("melee" = 40, "bullet" = 30, "laser" = 40,"energy" = 30, "bomb" = 50, "bio" = 30, "rad" = 30, "fire" = 50, "acid" = 60, "stamina" = 40, "bleed" = 20)
 	body_parts_covered = HEAD
 	flags_inv = HIDEHAIR|HIDEFACE|HIDEEARS
 
@@ -435,7 +436,7 @@ Uderzenie niekultysty rozrywa za to jego ciało."}
 	flags_inv = HIDEJUMPSUIT
 	allowed = list(/obj/item/tome, /obj/item/melee/cultblade)
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	armor = list("melee" = -45, "bullet" = -45, "laser" = -45,"energy" = -45, "bomb" = -45, "bio" = -45, "rad" = -45, "fire" = 0, "acid" = 0, "stamina" = 40)
+	armor = list("melee" = -45, "bullet" = -45, "laser" = -45,"energy" = -45, "bomb" = -45, "bio" = -45, "rad" = -45, "fire" = 0, "acid" = 0, "stamina" = 40, "bleed" = 20)
 	slowdown = -0.6
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/berserkerhood
 
@@ -444,7 +445,7 @@ Uderzenie niekultysty rozrywa za to jego ciało."}
 	desc = "Blood-soaked hood infused with dark magic."
 	icon_state = "culthood"
 	flags_inv = HIDEHAIR|HIDEFACE|HIDEEARS
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0, "bleed" = 20)
 
 /obj/item/clothing/suit/hooded/cultrobes/berserker/equipped(mob/living/user, slot)
 	..()
@@ -651,6 +652,7 @@ Uderzenie niekultysty rozrywa za to jego ciało."}
 	righthand_file = 'icons/mob/inhands/weapons/polearms_righthand.dmi'
 	slot_flags = 0
 	force = 17
+	bleed_force = BLEED_CUT
 	throwforce = 40
 	throw_speed = 2
 	armour_penetration = 30

@@ -29,7 +29,7 @@
 
 	max_integrity = 160		//the turret's health
 	integrity_failure = 80
-	armor = list("melee" = 50, "bullet" = 30, "laser" = 30, "energy" = 30, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 90, "stamina" = 0)
+	armor = list("melee" = 50, "bullet" = 30, "laser" = 30, "energy" = 30, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 90, "stamina" = 0, "bleed" = 0)
 
 	var/locked = TRUE			//if the turret's behaviour control access is locked
 	var/controllock = FALSE		//if the turret responds to control panels
@@ -99,6 +99,8 @@
 		underlays += base
 	if(!has_cover)
 		INVOKE_ASYNC(src, PROC_REF(popUp))
+	//NSV13 Keep track of turrets on a ship
+	get_overmap()?.turrets_in_ship |= src
 
 /obj/machinery/porta_turret/proc/toggle_on(var/set_to)
 	var/current = on
@@ -186,6 +188,8 @@
 	QDEL_NULL(stored_gun)
 	QDEL_NULL(spark_system)
 	remove_control()
+	//NSV13 Keep track of turrets on a ship
+	get_overmap()?.turrets_in_ship -= src
 	return ..()
 
 
@@ -742,7 +746,7 @@
 	lethal_projectile = /obj/item/projectile/bullet/p50/penetrator/shuttle
 	lethal_projectile_sound = 'sound/weapons/gunshot_smg.ogg'
 	stun_projectile_sound = 'sound/weapons/gunshot_smg.ogg'
-	armor = list("melee" = 50, "bullet" = 30, "laser" = 30, "energy" = 30, "bomb" = 80, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 90, "stamina" = 0)
+	armor = list("melee" = 50, "bullet" = 30, "laser" = 30, "energy" = 30, "bomb" = 80, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 90, "stamina" = 0, "bleed" = 0)
 
 /obj/machinery/porta_turret/syndicate/shuttle/target(atom/movable/target)
 	if(target)

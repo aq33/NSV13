@@ -1,6 +1,7 @@
 // Honker
 
 /obj/item/projectile/bullet/honker
+	bleed_force = 0
 	name = "banana"
 	damage = 0
 	paralyze = 60
