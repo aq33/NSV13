@@ -184,7 +184,7 @@
 
 /datum/preference_middleware/antags/proc/role_enabled(list/source, pref_type)
 	var/value = source["[pref_type]"]
-	return !(isnum(value) && !value)
+	return isnum(value) && value // Opt-in - unset counts as disabled
 
 /datum/preference_middleware/antags/get_ui_static_data(mob/user)
 	if(preferences.current_window != PREFERENCE_TAB_CHARACTER_PREFERENCES)

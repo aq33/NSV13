@@ -377,6 +377,7 @@
 #include "code\modules\hydroponics\plant_genes.dm"
 #include "code\modules\hygiene\hygiene.dm"
 #include "code\modules\hygiene\hygienebot.dm"
+#include "code\modules\jobs\job_slots.dm"
 #include "code\modules\metacoin\metacoin.dm"
 #include "code\modules\miasma\corpse_flower.dm"
 #include "code\modules\miasma\miasma_breath.dm"

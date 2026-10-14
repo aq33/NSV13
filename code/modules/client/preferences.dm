@@ -2123,8 +2123,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						var/current = prefsource["[role_preference_type]"]
 						if(isnum(current))
 							prefsource["[role_preference_type]"] = !current
-						else // not set, we assume it's on, so turn it off.
-							prefsource["[role_preference_type]"] = FALSE
+						else // not set, we assume it's off, so turn it on. //AQ EDIT - opt-in
+							prefsource["[role_preference_type]"] = TRUE
 
 				if("role_preferences_enableall")
 					var/role_preference_type = href_list["role_preference_type"]
