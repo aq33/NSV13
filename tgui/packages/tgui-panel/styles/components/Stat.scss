@@ -127,3 +127,119 @@ $border-color: color.scale(
 .StatWordWrap {
   white-space: normal;
 }
+
+// Zakładki w trybie „Multiline”: równe odstępy, pigułki zamiast gołego tekstu.
+.StatTabWrap {
+  .StatTab {
+    margin: 2px 2px 2px 0;
+    padding: 0 0.75em;
+    border-radius: 0.6em;
+  }
+}
+
+// Wyszukiwarka komend nad treścią zakładki.
+.StatSearch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 4px 0;
+
+  .Input {
+    flex: 1 1 auto;
+  }
+
+  .Input__input {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+}
+
+.StatSearch__icon {
+  position: absolute;
+  left: 0.6em;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.StatSearch__clear {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
+.StatSearchCount,
+.StatEmpty {
+  opacity: 0.6;
+  font-style: italic;
+  margin: 2px 0 6px;
+}
+
+// Informacje ze Statusu jako tabela: etykieta po lewej, wartość po prawej.
+.StatInfo {
+  margin-bottom: 6px;
+}
+
+.StatInfoRow {
+  display: flex;
+  align-items: baseline;
+  padding: 2px 4px;
+  border-radius: 2px;
+
+  &:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+}
+
+.StatInfoLabel {
+  flex: 0 0 13em;
+  max-width: 45%;
+  padding-right: 1em;
+  opacity: 0.65;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.StatInfoValue {
+  flex: 1 1 auto;
+  font-weight: bold;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+// Komendy w kolumnach: alfabet czyta się z góry na dół, kolumna po kolumnie.
+.StatVerbGrid {
+  column-width: 15em;
+  column-gap: 1.5em;
+  column-rule: 1px solid rgba(127, 127, 127, 0.15);
+}
+
+.StatVerb {
+  break-inside: avoid;
+
+  .Button {
+    text-align: left;
+  }
+}
+
+// W wynikach wyszukiwania: nazwa ucięta wielokropkiem, zakładka zawsze z prawej.
+.StatVerb--tagged .Button__content {
+  display: flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+.StatVerbName {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.StatVerbTab {
+  flex: 0 0 auto;
+  margin-left: 0.5em;
+  font-size: 0.85em;
+  opacity: 0.5;
+}
