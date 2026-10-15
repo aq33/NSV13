@@ -5321,6 +5321,25 @@
 	dir = 1
 	},
 /area/hallway/primary/fore)
+"lQ" = (
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=2";
+	location = "Medbay";
+	name = "Delivery Medbay"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/effect/turf_decal/tile/ship/blue,
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/duct,
+/turf/open/floor/plasteel/dark/side{
+	dir = 1
+	},
+/area/hallway/primary/central)
 "lV" = (
 /obj/structure/table,
 /obj/item/assembly/igniter{
@@ -50885,7 +50904,7 @@ gi
 ga
 fZ
 rg
-lG
+lQ
 os
 oP
 RD
