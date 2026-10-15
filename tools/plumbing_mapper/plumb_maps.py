@@ -222,6 +222,34 @@ class Plumber:
             return None
         return best[1], best[2], best[3]
 
+    def tank_ports(self, z):
+        """Tiles the output of every tank already on the map faces"""
+        ports = []
+        for x in range(1, self.size.x + 1):
+            for y in range(1, self.size.y + 1):
+                for atom in self.tile(x, y, z):
+                    if base_path(atom).startswith(TANK):
+                        direction = re.search(r'dir = (\d+)', atom)
+                        dx, dy = DIRS[int(direction.group(1)) if direction else 2]
+                        ports.append((x + dx, y + dy))
+        return ports
+
+    @staticmethod
+    def flood(ducts, sources):
+        """Ducts connected to any of the sources, as the game joins neighbouring ducts"""
+        wet = set()
+        stack = [s for s in sources if s in ducts]
+        while stack:
+            cur = stack.pop()
+            if cur in wet:
+                continue
+            wet.add(cur)
+            for dx, dy in DIRS.values():
+                nxt = (cur[0] + dx, cur[1] + dy)
+                if nxt in ducts and nxt not in wet:
+                    stack.append(nxt)
+        return wet
+
     def run(self):
         report = []
         for z in self.map.coords_z:
@@ -233,21 +261,25 @@ class Plumber:
             # ducts already on the map count, so running this twice adds nothing
             ducts = {(x, y) for x in range(1, self.size.x + 1) for y in range(1, self.size.y + 1) if self.has_duct(x, y, z)}
             existing = set(ducts)
+            # where tanks already on the map push water into
+            tank_ports = self.tank_ports(z)
+            wet = self.flood(ducts, tank_ports)
             for fixture in fixtures:
                 if fixture in fed:
                     continue
-                if any(p in ducts for p in self.ports(fixture, z)):
+                if any(p in wet for p in self.ports(fixture, z)):
                     fed.add(fixture)
                     continue
-                # branch off a line we already have before putting down another tank
-                if ducts:
-                    dist, parent = self.bfs(ducts, z, set(tanks), MAX_BRANCH)
+                # branch off a line that already carries water before putting down another tank
+                if wet:
+                    dist, parent = self.bfs(wet, z, set(tanks), MAX_BRANCH)
                     reachable = [(dist[p], p) for p in self.ports(fixture, z) if p in dist]
                     if reachable:
                         node = min(reachable)[1]
-                        while node is not None and node not in ducts:
+                        while node is not None and node not in wet:
                             ducts.add(node)
                             node = parent[node]
+                        wet = self.flood(ducts, tank_ports)
                         fed.add(fixture)
                         report.append(f'  z{z}: {fixture} joined an existing line')
                         continue
@@ -257,6 +289,7 @@ class Plumber:
                     continue
                 tank, port, direction = placed
                 tanks.append(tank)
+                tank_ports.append(port)
                 tree = {port}
                 ducts.add(port)
                 # grow the line to every fixture we can reach
@@ -284,6 +317,7 @@ class Plumber:
                         ducts.add(node)
                         node = parent[node]
                     fed.add(targets[goal])
+                wet = self.flood(ducts, tank_ports)
                 self.add(tank[0], tank[1], z, TANK if direction == 2 else f'{TANK}{{dir = {direction}}}')
                 report.append(f'  z{z}: tank at {tank} feeds {len(tree)} ducts')
             for (x, y) in sorted(ducts - existing):
