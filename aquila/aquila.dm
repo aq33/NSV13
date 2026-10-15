@@ -640,6 +640,7 @@
 #include "code\modules\research\nanites\program_disks.dm"
 #include "code\modules\research\stock_parts.dm"
 #include "code\modules\research\techweb\all_nodes.dm"
+#include "code\modules\research\xenobiology\special_slimes.dm"
 #include "code\modules\research\xenobiology\xenobio_tubes.dm"
 #include "code\modules\round_survey\round_survey.dm"
 #include "code\modules\test_chamber\test_chamber.dm"
@@ -649,6 +650,7 @@
 // Komora testowa - zestawy PR-ów niżej (usuwać razem z plikiem zestawu po przetestowaniu)
 #include "code\modules\test_chamber\kits\pr_440_detektyw.dm"
 #include "code\modules\test_chamber\kits\pr_443_kanalizacja.dm"
+#include "code\modules\test_chamber\kits\pr_450_ekstrakty.dm"
 #include "code\modules\test_chamber\kits\pr_436_iskry.dm"
 #include "code\modules\test_chamber\kits\pr_439_stoperan.dm"
 #include "code\modules\test_chamber\kits\pr_429_regal_rat.dm"
