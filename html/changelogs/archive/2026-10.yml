@@ -392,6 +392,8 @@
   - bugfix: Przycisk „Uciekł” przywraca karcie zwolnionego więźnia wyrok
   - imageadd: Ikony taśmy, znaczników, holobariery i strefy zamkniętej
   - soundadd: Alarm strefy zamkniętej
+  - code_imp: Komora testowa ma pewne powietrze po załadowaniu i dokładniej czyści
+      się przy resecie.
   MrMelbert, joker:
   - rscadd: 'Nowy antagonista: szpieg. Kradnie cele zleceń uplinkiem ukrytym w PDA,
       długopisie albo słuchawkach i dostaje za nie sprzęt z uplinka.'

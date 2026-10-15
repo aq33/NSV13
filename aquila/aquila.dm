@@ -658,6 +658,7 @@
 #include "code\modules\test_chamber\kits\pr_437_revenant_tg.dm"
 #include "code\modules\test_chamber\kits\pr_438_spy.dm"
 #include "code\modules\test_chamber\kits\pr_445_cowiek_maupa.dm"
+#include "code\modules\test_chamber\kits\pr_447_mule_poczta.dm"
 #include "code\modules\test_chamber\kits\pr_448_struktury_paradise.dm"
 #include "code\modules\weighted\spawn_fallbacks.dm"
 #include "code\modules\weighted\weighted_ghost_midround.dm"
