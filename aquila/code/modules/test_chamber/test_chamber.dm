@@ -82,15 +82,17 @@ GLOBAL_DATUM(test_chamber, /datum/test_chamber)
 
 /// Usuwa wszystko poza graczami (i tym, co mają przy sobie) i układa komorę od nowa
 /datum/test_chamber/proc/reset()
-	for(var/turf/T as anything in reservation.reserved_turfs)
-		for(var/atom/movable/AM as anything in T)
-			if(ismob(AM))
-				var/mob/M = AM
-				if(M.key || isobserver(M))
-					continue
-			else if(!isobj(AM))
-				continue // lighting objects itp.
-			qdel(AM)
+	// Drugie przejście sprząta to, co wysypało się z usuniętych szafek i skrzyń
+	for(var/pass in 1 to 2)
+		for(var/turf/T as anything in reservation.reserved_turfs)
+			for(var/atom/movable/AM as anything in T)
+				if(ismob(AM))
+					var/mob/M = AM
+					if(M.key || isobserver(M))
+						continue
+				else if(!isobj(AM))
+					continue // lighting objects itp.
+				qdel(AM)
 	for(var/turf/T as anything in reservation.reserved_turfs)
 		// Świeży turf tego samego typu: czyste powietrze, bez spalonej i rozbitej podłogi
 		T.ChangeTurf(T.type, flags = CHANGETURF_FORCEOP | CHANGETURF_IGNORE_AIR)
