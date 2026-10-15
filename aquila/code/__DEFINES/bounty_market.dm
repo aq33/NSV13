@@ -42,6 +42,8 @@
 #define PERK_BADGE "badge"
 /// Event token: gracz odpala wybrany event
 #define PERK_EVENT_TOKEN "event_token"
+/// Admin item token: gracz przywołuje zabawny przedmiot z listy adminowskich
+#define PERK_ADMIN_ITEM_TOKEN "admin_item_token"
 
 // Trendy na giełdzie materiałów
 #define MARKET_TREND_UPWARD 1

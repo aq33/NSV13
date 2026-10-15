@@ -179,6 +179,57 @@ GLOBAL_LIST_EMPTY(event_tokens_in_use)
 		to_chat(src, "<span class='warning'>Event „[chosen.name]” nie wystartował (anulowany albo warunki nie są spełnione). Token wraca do ciebie.</span>")
 	GLOB.event_tokens_in_use -= ckey
 
+/datum/gear/ooc/admin_item_token
+	display_name = "admin item token"
+	description = "Przywołaj jeden zabawny przedmiot, który normalnie mają tylko admini (OOC -> Przywołaj przedmiot admina): deskorolka Board Of Directors, nieskończona pizza, wódka Badminka, aparat widzący duchy, mundury i pościel CentComu, wieczna świeca."
+	cost = 5000
+	multi_purchase = TRUE
+
+/datum/gear/ooc/admin_item_token/purchase(client/C)
+	aquila_perk_adjust(C.ckey, PERK_ADMIN_ITEM_TOKEN, 1)
+	to_chat(C, "<span class='notice'>Masz admin item tokenów: [aquila_perk_get(C.ckey, PERK_ADMIN_ITEM_TOKEN)].</span>")
+
+/// Przedmioty adminowskie do przywołania za token: tylko zabawne i kosmetyczne (nazwa => typ)
+GLOBAL_LIST_INIT(admin_item_token_items, list(
+	"Board Of Directors (deskorolka admina)" = /obj/item/melee/skateboard/hoverboard/admin,
+	"Nieskończone pudełko pizzy" = /obj/item/pizzabox/infinite,
+	"Wódka Badminka" = /obj/item/reagent_containers/food/drinks/bottle/vodka/badminka,
+	"Aparat widzący duchy" = /obj/item/camera/spooky/badmin,
+	"Mundur oficera CentComu" = /obj/item/clothing/under/rank/centcom/commander,
+	"Mundur funkcjonariusza CentComu" = /obj/item/clothing/under/rank/centcom/officer,
+	"Mundur stażysty CentComu" = /obj/item/clothing/under/rank/centcom/intern,
+	"Pościel CentComu" = /obj/item/bedsheet/centcom,
+	"Podwójna pościel CentComu" = /obj/item/bedsheet/double/centcom,
+	"Wieczna świeca" = /obj/item/candle/infinite,
+))
+
+/// Admin item token: wybrany przedmiot z listy ląduje w ręce postaci
+/client/verb/use_admin_item_token()
+	set name = "Przywołaj przedmiot admina"
+	set category = "OOC"
+	set desc = "Przywołuje zabawny przedmiot adminowski za admin item token kupiony za aquilosy."
+
+	var/mob/living/carbon/human/user = mob
+	if(SSticker.current_state != GAME_STATE_PLAYING || !ishuman(user) || user.stat == DEAD)
+		to_chat(src, "<span class='warning'>Przedmiot możesz przywołać tylko żywą postacią w trakcie rundy.</span>")
+		return
+	if(aquila_perk_get(ckey, PERK_ADMIN_ITEM_TOKEN) < 1)
+		to_chat(src, "<span class='warning'>Nie masz admin item tokenów - kupisz je w loadoucie, w kategorii OOC.</span>")
+		return
+	var/choice = tgui_input_list(src, "Który przedmiot przywołać?", "Admin item token", GLOB.admin_item_token_items)
+	var/item_type = GLOB.admin_item_token_items[choice]
+	if(!item_type || mob != user || user.stat == DEAD)
+		return
+	if(aquila_perk_get(ckey, PERK_ADMIN_ITEM_TOKEN) < 1)
+		return
+	aquila_perk_adjust(ckey, PERK_ADMIN_ITEM_TOKEN, -1)
+	var/obj/item/summoned = new item_type(get_turf(user))
+	user.put_in_hands(summoned)
+	playsound(user, 'sound/magic/summonitems_generic.ogg', 50, TRUE)
+	user.visible_message("<span class='notice'>W rękach [user] pojawia się [summoned]!</span>", "<span class='notice'>Przywołujesz [summoned].</span>")
+	message_admins("[key_name_admin(src)] przywołał przedmiot za admin item token: [summoned] ([item_type]).")
+	log_game("[key_name(src)] summoned [item_type] with an admin item token")
+
 // Odznaki w rankingu
 
 /// Odznaki: numer => list(nazwa, ikona Font Awesome 5, kolor)

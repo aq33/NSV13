@@ -128,17 +128,23 @@
 /datum/unit_test/aquila_metacoin_perks
 
 /datum/unit_test/aquila_metacoin_perks/Run()
-	for(var/consumable_type in list(/datum/gear/ooc/real_antagtoken, /datum/gear/ooc/job_ticket, /datum/gear/ooc/insurance, /datum/gear/ooc/event_token))
+	for(var/consumable_type in list(/datum/gear/ooc/real_antagtoken, /datum/gear/ooc/job_ticket, /datum/gear/ooc/insurance, /datum/gear/ooc/event_token, /datum/gear/ooc/admin_item_token))
 		var/datum/gear/consumable = new consumable_type
 		TEST_ASSERT(consumable.multi_purchase, "[consumable_type] can not be bought more than once")
 		qdel(consumable)
-	for(var/shop_type in list(/datum/gear/ooc/job_ticket, /datum/gear/ooc/insurance, /datum/gear/ooc/event_token))
+	for(var/shop_type in list(/datum/gear/ooc/job_ticket, /datum/gear/ooc/insurance, /datum/gear/ooc/event_token, /datum/gear/ooc/admin_item_token))
 		var/datum/gear/shop_item = new shop_type
 		TEST_ASSERT(GLOB.gear_datums[shop_item.id], "[shop_type] is not in the loadout shop")
 		qdel(shop_item)
 	var/datum/gear/token = new /datum/gear/ooc/real_antagtoken
 	TEST_ASSERT_EQUAL(token.cost, 10000, "The antag token has the wrong price")
 	qdel(token)
+
+	for(var/item_name in GLOB.admin_item_token_items)
+		var/item_type = GLOB.admin_item_token_items[item_name]
+		TEST_ASSERT(ispath(item_type, /obj/item), "Admin item token entry [item_name] is not an item")
+		var/obj/item/summoned = allocate(item_type)
+		TEST_ASSERT(!QDELETED(summoned), "Admin item token entry [item_name] could not be spawned")
 
 	var/list/seen_ids = list()
 	for(var/badge_type in subtypesof(/datum/gear/ooc/badge))
