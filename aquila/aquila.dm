@@ -87,6 +87,7 @@
 #include "code\datums\ai_laws.dm"
 #include "code\datums\components\storage\concrete\pockets.dm"
 #include "code\datums\ert.dm"
+#include "code\datums\cogbar.dm"
 #include "code\datums\dna.dm"
 #include "code\datums\emote_names.dm"
 #include "code\datums\emotes.dm"

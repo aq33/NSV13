@@ -23,7 +23,7 @@
 
 	to_chat(originator, "<span class='notice'>Zaczynasz łączyć umysł [target] ze swoim...</span>")
 	to_chat(target, "<span class='warning'>Czujesz, jak twój umysł jest ciągnięty... łączony... splatany z samą tkanką rzeczywistości...</span>")
-	if(!do_after(originator, 6 SECONDS, target = target))
+	if(!do_after(originator, 6 SECONDS, target = target, hidden = TRUE))
 		return
 	if(!originator.link_mob(target))
 		to_chat(originator, "<span class='warning'>Nie możesz połączyć się z umysłem [target]...</span>")

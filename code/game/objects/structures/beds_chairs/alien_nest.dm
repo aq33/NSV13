@@ -34,7 +34,7 @@
 					"<span class='warning'>[M.name] próbuje wyrwać się z galaretowatej żywicy!</span>",\
 					"<span class='notice'>Próbujesz wyrwać się z galaretowatej żywicy... (Nie ruszaj się przez dwie minuty.)</span>",\
 					"<span class='italics'>Słyszysz mlaskanie...</span>")
-				if(!do_after(M, 1200, target = src))
+				if(!do_after(M, 1200, target = src, hidden = TRUE))
 					if(M?.buckled)
 						to_chat(M, "<span class='warning'>Nie udaje ci się uwolnić!</span>")
 					return
