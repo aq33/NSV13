@@ -601,6 +601,7 @@
 #include "code\modules\test_chamber\kits\pr_442_asteroidy.dm"
 #include "code\modules\test_chamber\kits\pr_435_restaurant.dm"
 #include "code\modules\test_chamber\kits\pr_437_revenant_tg.dm"
+#include "code\modules\test_chamber\kits\pr_445_cowiek_maupa.dm"
 #include "code\modules\weighted\spawn_fallbacks.dm"
 #include "code\modules\weighted\weighted_ghost_midround.dm"
 #include "code\modules\weighted\weighted_pace_vote.dm"
