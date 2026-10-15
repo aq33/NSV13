@@ -632,6 +632,7 @@
 #include "code\modules\detectivework\luminol.dm"
 #include "code\modules\detectivework\gunshot_residue.dm"
 #include "code\modules\detectivework\ballistics.dm"
+#include "code\modules\detectivework\wound_log.dm"
 #include "code\modules\reagents\chemistry\machinery\chem_heater.dm"
 
 #ifdef UNIT_TESTS

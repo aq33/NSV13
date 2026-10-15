@@ -5,7 +5,7 @@
 	pr = "aq33/AquilaStation#440"
 	description = "Weź zestaw obiektów testowych. Zrań człowieka nożem, umyj krew mopem lub cleanerem, popsikaj luminolem i zeskanuj świecący ślad. \
 	Strzel z Makarowa (ostra amunicja) i zeskanuj swoje dłonie, broń, łuskę i ciało (fragmenty pocisków; wyjmij je chirurgią ciał obcych). \
-	Spiłuj numer seryjny PPM śrubokrętem, obetnij lufę dwururki piłą i porównaj sygnatury. Umyj ręce mydłem - ślady prochu znikają."
+	Spiłuj numer seryjny PPM śrubokrętem, obetnij lufę dwururki piłą i porównaj sygnatury. Umyj ręce mydłem - ślady prochu znikają. \n	Na koniec zabij obiekt (nóż, pięść, strzał, rzut) i zeskanuj zwłoki skanerem do autopsji - przy kończynach widać rany, czym zadane, kiedy, oraz kule w ciele."
 	items = list(
 		/obj/item/detective_scanner = 1,
 		/obj/item/reagent_containers/spray/luminol = 2,
@@ -23,6 +23,7 @@
 		/obj/item/scalpel = 1,
 		/obj/item/hemostat = 1,
 		/obj/item/retractor = 1,
+		/obj/item/autopsy_scanner = 1,
 	)
 
 /datum/test_chamber_kit/pr_440_scene
