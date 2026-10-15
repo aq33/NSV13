@@ -405,6 +405,7 @@
 #include "code\modules\bitrunning\virtual_domain\domains\domain_terrain.dm"
 #include "code\modules\bitrunning\virtual_domain\domains\domain_types.dm"
 #include "code\modules\bitrunning\virtual_domain\domains\domains.dm"
+#include "code\modules\bitrunning\virtual_domain\domains\domains_extra.dm"
 #include "code\modules\bitrunning\virtual_domain\modular_mob_segment.dm"
 #include "code\modules\bitrunning\virtual_domain\virtual_domain.dm"
 #include "code\modules\cargo\packs.dm"
