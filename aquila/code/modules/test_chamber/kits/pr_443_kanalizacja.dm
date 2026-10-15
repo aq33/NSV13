@@ -5,7 +5,7 @@
 		Wyczerp wodę w umywalce (napełniaj zlewkę) i patrz, jak dolewa się z rury. Prawy klik zlewką wylewa ją do odpływu, łom wyjmuje odzysk wody. \
 		Sedes: prawy klik spuszcza wodę, bez wody nie spłucze. Prysznic: multitool zmienia tryb, pryska zawartością rury. \
 		Konstruktorem rur zbuduj syntezator, komorę mieszania, filtr i wyjście; alt-klik zmienia warstwę, przepychaczka w dłoni przełącza tryb warstw. \
-		Na mapie: rury idą pod podłogą (T-ray) od zbiorników do łazienek."
+		Prawy klik zlewką na zbiorniku wody dolewa do niego zawartość. Na mapie: rury idą pod podłogą (T-ray) od zbiorników do łazienek."
 	items = list(
 		/obj/structure/reagent_dispensers/plumbed = 1,
 		/obj/item/stack/ducts/fifty = 1,

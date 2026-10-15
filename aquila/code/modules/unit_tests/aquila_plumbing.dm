@@ -30,6 +30,15 @@
 	TEST_ASSERT(sink.reagents.get_reagent_amount(/datum/reagent/water) >= MACHINE_REAGENT_TRANSFER, "The sink did not draw water from the tank")
 	TEST_ASSERT(tank.reagents.total_volume < tank_water, "The tank did not lose the water the sink drew")
 
+	// The tank can be topped up by hand
+	var/obj/item/reagent_containers/glass/beaker/refill = allocate(/obj/item/reagent_containers/glass/beaker)
+	refill.reagents.add_reagent(/datum/reagent/water, 5)
+	var/mob/living/carbon/human/refiller = allocate(/mob/living/carbon/human, middle)
+	var/before_refill = tank.reagents.total_volume
+	tank.attackby_secondary(refill, refiller)
+	TEST_ASSERT(tank.reagents.total_volume > before_refill, "Pouring a beaker into the water tank did not refill it")
+	TEST_ASSERT(!refill.reagents.total_volume, "Pouring a beaker into the water tank left it full")
+
 	// Cutting the line leaves the sink without a source
 	qdel(first)
 	TEST_ASSERT(!(supply in second.net.suppliers), "The tank stayed in the network after its duct was removed")

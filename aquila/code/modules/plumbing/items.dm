@@ -39,6 +39,22 @@
 /obj/structure/reagent_dispensers/plumbed/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'>Wydaje płyn do rur przez złącze z przodu. Można go odkręcić <b>kluczem</b>.</span>"
+	. += "<span class='notice'>Zawiera [round(reagents.total_volume)]/[reagents.maximum_volume] j. <b>Prawym klikiem</b> pojemnikiem dolejesz do niego jego zawartość.</span>"
+
+/// Pouring a container back in, so the station's water supply can be topped up by hand
+/obj/structure/reagent_dispensers/plumbed/attackby_secondary(obj/item/weapon, mob/user, params)
+	if(!istype(weapon, /obj/item/reagent_containers))
+		return ..()
+	if(!weapon.reagents?.total_volume)
+		balloon_alert(user, "pojemnik jest pusty!")
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	if(reagents.holder_full())
+		balloon_alert(user, "zbiornik jest pełny!")
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	var/poured = weapon.reagents.trans_to(src, weapon.reagents.total_volume, transfered_by = user)
+	playsound(src, 'sound/effects/slosh.ogg', 25, TRUE)
+	user.visible_message("<span class='notice'>[user] dolewa zawartość [weapon] do [src].</span>", 		"<span class='notice'>Dolewasz [round(poured, 0.1)] j. z [weapon] do [src].</span>")
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/structure/reagent_dispensers/plumbed/storage
 	name = "stationary storage tank"
