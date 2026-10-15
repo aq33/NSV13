@@ -3,6 +3,7 @@ import {
   Button,
   Divider,
   Flex,
+  Icon,
   Input,
   ScrollableBox,
   Section,
@@ -12,7 +13,7 @@ import {
 import { useSettings } from '../settings';
 import { selectStatPanel } from './selectors';
 import { StatStatus } from './StatStatus';
-import { StatText } from './StatText';
+import { findVerbs, StatText } from './StatText';
 import { StatTicket } from './StatTicket';
 import { translateTab } from './translations';
 
@@ -43,6 +44,11 @@ export const StatTabs = (props) => {
           )}
         </div>
       </Flex.Item>
+      {stat.selectedTab !== '(!) Admin PM' && (
+        <Flex.Item shrink={0}>
+          <StatVerbSearch />
+        </Flex.Item>
+      )}
       <ScrollableBox overflowY="scroll" height="100%">
         <div className="StatBackground">
           <Flex.Item mt={1}>{statSection}</Flex.Item>
@@ -69,6 +75,65 @@ export const StatTabs = (props) => {
   );
 };
 
+const StatVerbSearch = (props) => {
+  const stat = useSelector(selectStatPanel);
+  const dispatch = useDispatch();
+  const search = stat.verbSearch || '';
+  const setSearch = (value) =>
+    dispatch({
+      type: 'stat/setVerbSearch',
+      payload: value,
+    });
+  return (
+    <div className="StatSearch">
+      <Icon name="search" className="StatSearch__icon" />
+      <Input
+        fluid
+        value={search}
+        placeholder="Szukaj komendy we wszystkich zakładkach…"
+        onInput={(e, value) => setSearch(value)}
+        onEscape={(e) => {
+          e.target.value = '';
+          setSearch('');
+        }}
+        onEnter={(e, value) => {
+          // Enter odpala komendę tylko, gdy wynik jest jednoznaczny.
+          const results = findVerbs(stat.verbData, value);
+          if (results.length !== 1) {
+            return;
+          }
+          Byond.sendMessage('stat/pressed', {
+            action_id: results[0].data.action,
+            params: results[0].data.params || [],
+          });
+          e.target.value = '';
+          setSearch('');
+        }}
+      />
+      {!!search && (
+        <Button
+          className="StatSearch__clear"
+          icon="times"
+          color="transparent"
+          tooltip="Wyczyść"
+          onClick={() => setSearch('')}
+        />
+      )}
+    </div>
+  );
+};
+
+const selectTab = (dispatch, tab) => {
+  dispatch({
+    type: 'stat/setTab',
+    payload: tab,
+  });
+  dispatch({
+    type: 'stat/setVerbSearch',
+    payload: '',
+  });
+};
+
 export const StatTabScroll = (props) => {
   const stat = useSelector(selectStatPanel);
   const dispatch = useDispatch();
@@ -83,12 +148,7 @@ export const StatTabScroll = (props) => {
               <Tabs.Tab
                 key={tab}
                 selected={tab === stat.selectedTab}
-                onClick={() =>
-                  dispatch({
-                    type: 'stat/setTab',
-                    payload: tab,
-                  })
-                }
+                onClick={() => selectTab(dispatch, tab)}
               >
                 {translateTab(tab)}
               </Tabs.Tab>
@@ -106,20 +166,14 @@ export const StatTabWrap = (props) => {
   // Map the input data into tabs, then filter out extra_data
   let statTabs = stat.statTabs;
   return (
-    <Section overflowX="auto">
+    <Section overflowX="auto" className="StatTabWrap">
       {statTabs.map((tab) => (
         <Button
           key={tab}
+          className="StatTab"
           color="transparent"
-          pr={1.5}
-          pl={1.5}
           selected={tab === stat.selectedTab}
-          onClick={() =>
-            dispatch({
-              type: 'stat/setTab',
-              payload: tab,
-            })
-          }
+          onClick={() => selectTab(dispatch, tab)}
         >
           {translateTab(tab)}
         </Button>

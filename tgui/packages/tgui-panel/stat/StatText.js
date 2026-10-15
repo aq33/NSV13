@@ -11,12 +11,89 @@ import {
   STAT_TEXT,
 } from './constants';
 import { selectStatPanel } from './selectors';
-import { translateVerb } from './translations';
+import { translateTab, translateVerb } from './translations';
 
 const sortVerbs = (verbs) =>
   Object.keys(verbs).sort((a, b) =>
     translateVerb(a).localeCompare(translateVerb(b), 'pl'),
   );
+
+// Do wyszukiwania: bez wielkości liter i polskich znaków, żeby „pokaz”
+// znalazło „Pokaż”.
+export const normalizeSearch = (text) =>
+  String(text)
+    .toLowerCase()
+    .replace(/ł/g, 'l')
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '');
+
+const verbMatches = (verb, query) =>
+  normalizeSearch(translateVerb(verb)).includes(query) ||
+  normalizeSearch(verb).includes(query);
+
+/**
+ * Komendy pasujące do wyszukiwania ze wszystkich zakładek,
+ * posortowane po nazwie. Każdy wpis: { tab, verb, data }.
+ */
+export const findVerbs = (verbData, search) => {
+  const query = normalizeSearch(search.trim());
+  if (!query || !verbData) {
+    return [];
+  }
+  const results = [];
+  for (const tab of Object.keys(verbData)) {
+    const verbs = verbData[tab] || {};
+    for (const verb of Object.keys(verbs)) {
+      if (verbMatches(verb, query)) {
+        results.push({ tab, verb, data: verbs[verb] });
+      }
+    }
+  }
+  return results.sort((a, b) =>
+    translateVerb(a.verb).localeCompare(translateVerb(b.verb), 'pl'),
+  );
+};
+
+const renderStatEntry = (key, entry) => {
+  if (!entry) {
+    return null;
+  }
+  switch (entry.type) {
+    case STAT_TEXT:
+      return <StatTextText key={key} title={key} text={entry.text} />;
+    case STAT_BUTTON:
+      return (
+        <StatTextButton
+          key={key}
+          title={key}
+          text={entry.text}
+          action_id={entry.action}
+          params={entry.params}
+          multirow={entry.multirow}
+          buttons={entry.buttons}
+        />
+      );
+    case STAT_ATOM:
+      return (
+        <StatTextAtom
+          key={key}
+          atom_ref={key}
+          atom_name={entry.text}
+          atom_tag={entry.tag}
+          atom_icon={entry.image}
+        />
+      );
+    case STAT_DIVIDER:
+      return <StatTextDivider key={key} />;
+    case STAT_BLANK:
+      return (
+        <Flex.Item key={key} width="100%">
+          <br />
+        </Flex.Item>
+      );
+  }
+  return null;
+};
 
 export const StatText = (props) => {
   const stat = useSelector(selectStatPanel);
@@ -28,65 +105,75 @@ export const StatText = (props) => {
       </Box>
     );
   }
+  if (stat.verbSearch && stat.verbSearch.trim()) {
+    return <StatVerbSearchResults />;
+  }
   let verbs = {};
   if (stat.verbData !== null) {
     verbs = stat.verbData[stat.selectedTab] || {};
   }
+  const keys = Object.keys(statPanelData)
+    .filter((x) => x !== null && !!statPanelData[x])
+    .sort(
+      (a, b) =>
+        StatTagToPriority(statPanelData[b].tag) -
+        StatTagToPriority(statPanelData[a].tag),
+    );
+  const verbNames = sortVerbs(verbs);
   return (
     <div className="StatBorder">
-      <Flex direction="row" wrap>
-        {statPanelData
-          ? Object.keys(statPanelData)
-              .filter((x) => x !== null)
-              .sort((a, b) => {
-                return (
-                  StatTagToPriority(statPanelData[b].tag) -
-                  StatTagToPriority(statPanelData[a].tag)
-                );
-              })
-              .map(
-                (key) =>
-                  !!statPanelData[key] &&
-                  ((statPanelData[key].type === STAT_TEXT && (
-                    <StatTextText title={key} text={statPanelData[key].text} />
-                  )) ||
-                    (statPanelData[key].type === STAT_BUTTON && (
-                      <StatTextButton
-                        title={key}
-                        text={statPanelData[key].text}
-                        action_id={statPanelData[key].action}
-                        params={statPanelData[key].params}
-                        multirow={statPanelData[key].multirow}
-                        buttons={statPanelData[key].buttons}
-                      />
-                    )) ||
-                    (statPanelData[key].type === STAT_ATOM && (
-                      <StatTextAtom
-                        atom_ref={key}
-                        atom_name={statPanelData[key].text}
-                        atom_tag={statPanelData[key].tag}
-                        atom_icon={statPanelData[key].image}
-                      />
-                    )) ||
-                    (statPanelData[key].type === STAT_DIVIDER && (
-                      <StatTextDivider />
-                    )) ||
-                    (statPanelData[key].type === STAT_BLANK && (
-                      <Flex.Item width="100%">
-                        <br />
-                      </Flex.Item>
-                    ))),
-              )
-          : 'Brak danych'}
-        {sortVerbs(verbs).map((verb) => (
+      {keys.length > 0 && (
+        <Flex direction="row" wrap className="StatInfo">
+          {keys.map((key) => renderStatEntry(key, statPanelData[key]))}
+        </Flex>
+      )}
+      {verbNames.length > 0 && (
+        <div className="StatVerbGrid">
+          {verbNames.map((verb) => (
+            <StatTextVerb
+              key={verb}
+              title={verb}
+              action_id={verbs[verb].action}
+              params={verbs[verb].params}
+            />
+          ))}
+        </div>
+      )}
+      {keys.length === 0 && verbNames.length === 0 && (
+        <Box className="StatEmpty">Brak danych</Box>
+      )}
+    </div>
+  );
+};
+
+export const StatVerbSearchResults = (props) => {
+  const stat = useSelector(selectStatPanel);
+  const results = findVerbs(stat.verbData, stat.verbSearch);
+  if (results.length === 0) {
+    return (
+      <div className="StatBorder">
+        <Box className="StatEmpty">
+          Brak komend pasujących do „{stat.verbSearch.trim()}”.
+        </Box>
+      </div>
+    );
+  }
+  return (
+    <div className="StatBorder">
+      <Box className="StatSearchCount">
+        Znaleziono: {results.length}
+      </Box>
+      <div className="StatVerbGrid StatVerbGrid--search">
+        {results.map((result) => (
           <StatTextVerb
-            key={verb}
-            title={verb}
-            action_id={verbs[verb].action}
-            params={verbs[verb].params}
+            key={result.tab + '/' + result.verb}
+            title={result.verb}
+            tab={result.tab}
+            action_id={result.data.action}
+            params={result.data.params}
           />
         ))}
-      </Flex>
+      </div>
     </div>
   );
 };
@@ -138,9 +225,9 @@ const StatTagToClassName = (text) => {
 export const StatTextText = (props) => {
   const { title, text } = props;
   return (
-    <Flex.Item mt={1} width="100%">
-      <b>{title}: </b>
-      {text}
+    <Flex.Item width="100%" className="StatInfoRow">
+      <span className="StatInfoLabel">{title}</span>
+      <span className="StatInfoValue">{text}</span>
     </Flex.Item>
   );
 };
@@ -320,22 +407,40 @@ export const StatTextDivider = (props) => {
 };
 
 export const StatTextVerb = (props) => {
-  const { title, action_id, params = [] } = props;
+  const { title, tab, action_id, params = [] } = props;
+  const name = translateVerb(title);
+  const hint = name === title ? name : name + ' (' + title + ')';
+  const onClick = () =>
+    Byond.sendMessage('stat/pressed', {
+      action_id: action_id,
+      params: params,
+    });
+  if (!tab) {
+    return (
+      <div className="StatVerb">
+        <Button
+          tooltip={hint}
+          ellipsis
+          onClick={onClick}
+          color="transparent"
+          fluid
+        >
+          {name}
+        </Button>
+      </div>
+    );
+  }
   return (
-    <Box shrink={1} inline width="200px">
+    <div className="StatVerb StatVerb--tagged">
       <Button
-        content={translateVerb(title)}
-        tooltip={translateVerb(title)}
-        ellipsis
-        onClick={() =>
-          Byond.sendMessage('stat/pressed', {
-            action_id: action_id,
-            params: params,
-          })
-        }
+        tooltip={translateTab(tab) + ' › ' + hint}
+        onClick={onClick}
         color="transparent"
         fluid
-      />
-    </Box>
+      >
+        <span className="StatVerbName">{name}</span>
+        <span className="StatVerbTab">{translateTab(tab)}</span>
+      </Button>
+    </div>
   );
 };
