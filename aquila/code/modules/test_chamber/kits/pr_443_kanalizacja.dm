@@ -13,7 +13,6 @@
 		/obj/structure/toilet = 1,
 		/obj/machinery/shower = 1,
 		/obj/item/construction/plumbing = 1,
-		/obj/item/construction/plumbing/service = 1,
 		/obj/item/plunger = 1,
 		/obj/item/stock_parts/water_recycler = 1,
 		/obj/item/reagent_containers/glass/beaker/large = 2,
