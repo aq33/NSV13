@@ -267,9 +267,15 @@
 /obj/structure/exile_gate/Initialize(mapload)
 	. = ..()
 	add_atom_colour("#6BC906", FIXED_COLOUR_PRIORITY)
+	RegisterSignal(loc, COMSIG_ATOM_ENTERED, PROC_REF(on_enter))
 
-/obj/structure/exile_gate/Crossed(atom/movable/arrived)
-	. = ..()
+/obj/structure/exile_gate/Destroy()
+	if(loc)
+		UnregisterSignal(loc, COMSIG_ATOM_ENTERED)
+	return ..()
+
+/obj/structure/exile_gate/proc/on_enter(datum/source, atom/movable/arrived, atom/old_loc)
+	SIGNAL_HANDLER
 	if(isliving(arrived))
 		INVOKE_ASYNC(src, PROC_REF(try_enter), arrived)
 

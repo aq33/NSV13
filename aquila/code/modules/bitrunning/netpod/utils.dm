@@ -47,7 +47,7 @@
 	if(!cause_damage)
 		return
 
-	mob_occupant.flash_act(override_blindness_check = TRUE, visual = TRUE)
+	mob_occupant.flash_act(1, TRUE, FALSE, TRUE)
 	mob_occupant.adjustOrganLoss(ORGAN_SLOT_BRAIN, disconnect_damage)
 	INVOKE_ASYNC(mob_occupant, TYPE_PROC_REF(/mob, emote), "scream")
 	to_chat(mob_occupant, span_danger("Zostałeś siłą odłączony od awatara! Myśli ci się plączą!"))

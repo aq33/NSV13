@@ -24,7 +24,8 @@
 	announcement_line = "Bitrunner zamówił sprzęt, który przyleci promem zaopatrzenia! Dopilnujcie, żeby jak najszybciej do niego trafił!"
 
 /obj/machinery/computer/order_console/bitrunning/update_overlays()
-	. = list()
+	..()
+	return list() // ekran jest w samym icon_state, bez nakładek konsoli
 
 /obj/machinery/computer/order_console/bitrunning/update_icon_state()
 	icon_state = "[initial(icon_state)][powered() ? null : "_off"]"
