@@ -23,6 +23,7 @@
 	add_cog_to_user()
 
 	RegisterSignal(user, COMSIG_PARENT_QDELETING, PROC_REF(on_user_delete))
+	RegisterSignal(user, COMSIG_MOB_CLIENT_LOGIN, PROC_REF(on_user_client_login))
 
 
 /datum/cogbar/Destroy()
@@ -55,12 +56,16 @@
 	if(isnull(user_client))
 		return
 
+	create_blank()
+	user_client.images += blank
+
+
+/// Creates the image that hides the cog from the user
+/datum/cogbar/proc/create_blank()
 	blank = image('icons/effects/effects.dmi', cog, "nothing")
 	blank.plane = GAME_PLANE
 	blank.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 	blank.override = TRUE
-
-	user_client.images += blank
 
 
 /// Removes the cog from the user
@@ -72,6 +77,19 @@
 	animate(cog, alpha = 0, time = COGBAR_ANIMATION_TIME)
 
 	QDEL_IN(src, COGBAR_ANIMATION_TIME)
+
+
+/// When the user reconnects mid-action, hide the cog from the new client too
+/datum/cogbar/proc/on_user_client_login(datum/source, client/new_client)
+	SIGNAL_HANDLER
+
+	user_client?.images -= blank
+	user_client = new_client
+	if(isnull(user_client) || isnull(cog))
+		return
+	if(isnull(blank))
+		create_blank()
+	user_client.images += blank
 
 
 /// When the user is deleted, remove the cog
