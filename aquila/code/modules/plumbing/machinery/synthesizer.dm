@@ -4,9 +4,6 @@
 	desc = "Produces a single chemical at a given volume. Must be plumbed. Most effective when working in unison with other chemical synthesizers, heaters and filters."
 
 	icon_state = "synthesizer"
-	icon = 'icons/obj/plumbing/plumbers.dmi'
-	rcd_cost = 25
-	rcd_delay = 15
 	active_power_usage = 500
 
 	///Amount we produce for every process. Ideally keep under 5 since thats currently the standard duct capacity
@@ -17,8 +14,6 @@
 	var/static/list/possible_amounts = list(0,1,2,3,4,5)
 	///The reagent we are producing. We are a typepath, but are also typecast because there's several occations where we need to use initial.
 	var/datum/reagent/reagent_id = null
-	///reagent overlay. its the colored pipe thingies. we track this because overlays.Cut() is bad
-	var/image/r_overlay
 	///The amount of reagent dispensable before requiring a refill from a compressed matter cartridge.
 	var/volume_left = 0
 	///The maximum amount of precursor in a synthesizer.
@@ -26,7 +21,7 @@
 	///Dirty slowdowns for not maintaining this
 	var/slowdown_count = 0	//NSV13
 	///straight up copied from chem dispenser. Being a subtype would be extremely tedious and making it global would restrict potential subtypes using different dispensable_reagents
-	var/list/dispensable_reagents = list(
+	var/static/list/default_reagents = list(
 		/datum/reagent/aluminium,
 		/datum/reagent/bromine,
 		/datum/reagent/carbon,
@@ -58,9 +53,14 @@
 
 
 
-/obj/machinery/plumbing/synthesizer/Initialize(mapload, bolt)
+	///reagents this synthesizer can dispense
+	var/list/dispensable_reagents
+
+/obj/machinery/plumbing/synthesizer/Initialize(mapload, layer)
 	. = ..()
-	AddComponent(/datum/component/plumbing/simple_supply, bolt)
+	AddComponent(/datum/component/plumbing/simple_supply, layer)
+	dispensable_reagents = default_reagents
+	update_appearance()
 
 /obj/machinery/plumbing/synthesizer/process(delta_time)
 	if(machine_stat & NOPOWER || !reagent_id || !amount)
@@ -145,18 +145,79 @@
 				reagent_id = new_reagent
 				. = TRUE
 	if(.)
-		update_icon()
+		update_appearance()
 		reagents.clear_reagents()
 
-/obj/machinery/plumbing/synthesizer/update_icon()
-	if(!r_overlay)
-		r_overlay = image(icon, "[icon_state]_overlay")
-	else
-		overlays -= r_overlay //we remove it because overlays are completely unnaffected by changing the object, you need to reapply it
+/obj/machinery/plumbing/synthesizer/update_overlays()
+	. = ..()
+	var/mutable_appearance/r_overlay = mutable_appearance(icon, "[initial(icon_state)]_overlay")
+	r_overlay.color = reagent_id ? initial(reagent_id.color) : "#FFFFFF"
+	. += r_overlay
 
-	if(reagent_id)
-		r_overlay.color = initial(reagent_id.color)
-	else
-		r_overlay.color = "#FFFFFF"
+/obj/machinery/plumbing/synthesizer/soda
+	name = "soda synthesizer"
+	desc = "Produces a single chemical at a given volume. Must be plumbed."
+	icon_state = "synthesizer_soda"
 
-	overlays += r_overlay
+	//Copied from soda dispenser
+	var/static/list/soda_reagents = list(
+		/datum/reagent/consumable/coffee,
+		/datum/reagent/consumable/space_cola,
+		/datum/reagent/consumable/cream,
+		/datum/reagent/consumable/dr_gibb,
+		/datum/reagent/consumable/grenadine,
+		/datum/reagent/consumable/ice,
+		/datum/reagent/consumable/icetea,
+		/datum/reagent/consumable/lemonjuice,
+		/datum/reagent/consumable/lemon_lime,
+		/datum/reagent/consumable/limejuice,
+		/datum/reagent/consumable/menthol,
+		/datum/reagent/consumable/orangejuice,
+		/datum/reagent/consumable/pineapplejuice,
+		/datum/reagent/consumable/pwr_game,
+		/datum/reagent/consumable/shamblers,
+		/datum/reagent/consumable/spacemountainwind,
+		/datum/reagent/consumable/sodawater,
+		/datum/reagent/consumable/space_up,
+		/datum/reagent/consumable/sugar,
+		/datum/reagent/consumable/tea,
+		/datum/reagent/consumable/tomatojuice,
+		/datum/reagent/consumable/tonic,
+		/datum/reagent/water,
+	)
+
+/obj/machinery/plumbing/synthesizer/soda/Initialize(mapload, layer)
+	. = ..()
+	dispensable_reagents = soda_reagents
+
+/obj/machinery/plumbing/synthesizer/beer
+	name = "beer synthesizer"
+	desc = "Produces a single chemical at a given volume. Must be plumbed."
+	icon_state = "synthesizer_booze"
+
+	//Copied from beer dispenser
+	var/static/list/beer_reagents = list(
+		/datum/reagent/consumable/ethanol/absinthe,
+		/datum/reagent/consumable/ethanol/ale,
+		/datum/reagent/consumable/ethanol/applejack,
+		/datum/reagent/consumable/ethanol/beer,
+		/datum/reagent/consumable/ethanol/cognac,
+		/datum/reagent/consumable/ethanol/creme_de_cacao,
+		/datum/reagent/consumable/ethanol/creme_de_coconut,
+		/datum/reagent/consumable/ethanol/creme_de_menthe,
+		/datum/reagent/consumable/ethanol/gin,
+		/datum/reagent/consumable/ethanol/hcider,
+		/datum/reagent/consumable/ethanol/kahlua,
+		/datum/reagent/consumable/ethanol/rum,
+		/datum/reagent/consumable/ethanol/sake,
+		/datum/reagent/consumable/ethanol/tequila,
+		/datum/reagent/consumable/ethanol/triple_sec,
+		/datum/reagent/consumable/ethanol/vermouth,
+		/datum/reagent/consumable/ethanol/vodka,
+		/datum/reagent/consumable/ethanol/whiskey,
+		/datum/reagent/consumable/ethanol/wine,
+	)
+
+/obj/machinery/plumbing/synthesizer/beer/Initialize(mapload, layer)
+	. = ..()
+	dispensable_reagents = beer_reagents

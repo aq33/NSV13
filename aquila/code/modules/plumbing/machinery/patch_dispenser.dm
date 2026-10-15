@@ -20,9 +20,9 @@
 	. = ..()
 	. += "<span class='notice'>[name] ma obecnie zmagazynowane: [stored_patches.len]. Aby kontynuować wydawanie, na podłodze musi być mniej niż [max_floor_patches].</span>"
 
-/obj/machinery/plumbing/patch_dispenser/Initialize(mapload, bolt)
+/obj/machinery/plumbing/patch_dispenser/Initialize(mapload, layer)
 	. = ..()
-	AddComponent(/datum/component/plumbing/simple_demand, bolt)
+	AddComponent(/datum/component/plumbing/simple_demand, layer, 3)
 
 /obj/machinery/plumbing/patch_dispenser/process()
 	if(machine_stat & NOPOWER)

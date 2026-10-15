@@ -83,7 +83,6 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 	"Fluid Ducts" = list(
 		new /datum/pipe_info/plumbing("Duct",				/obj/machinery/duct, PIPE_ONEDIR),
-		new /datum/pipe_info/plumbing/multilayer("Duct Layer-Manifold",/obj/machinery/duct/multilayered, PIPE_STRAIGHT)
 	)
 ))
 
@@ -511,17 +510,13 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 				to_chat(user, "<span class='notice'>Zaczynasz budować przewód płynów...</span>")
 				playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 				if(do_after(user, plumbing_build_speed, target = A))
-					var/obj/machinery/duct/D
-					if(recipe.type == /datum/pipe_info/plumbing/multilayer)
-						var/temp_connects = NORTH + SOUTH
-						if(queued_p_dir == EAST)
-							temp_connects = EAST + WEST
-						D = new queued_p_type (A, TRUE, GLOB.pipe_paint_colors[paint_color], ducting_layer, temp_connects)
-					else
-						D = new queued_p_type (A, TRUE, GLOB.pipe_paint_colors[paint_color], ducting_layer)
+					// AQ EDIT START - plumbing port from tg, ducts connect on their own
+					if(!isnull(ducting_layer_check(A, ducting_layer)))
+						to_chat(user, "<span class='warning'>Na tym polu jest już rura lub maszyna na tej warstwie!</span>")
+						return
+					var/obj/machinery/duct/D = new queued_p_type (A, paint_color, ducting_layer)
 					D.add_fingerprint(usr)
-					if(mode & WRENCH_MODE)
-						D.wrench_act(user, src)
+					// AQ EDIT END
 
 			else
 				return ..()

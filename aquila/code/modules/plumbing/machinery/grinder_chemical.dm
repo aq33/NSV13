@@ -4,20 +4,23 @@
 	icon_state = "grinder_chemical"
 	layer = ABOVE_ALL_MOB_LAYER
 	reagent_flags = TRANSPARENT | DRAINABLE
-	rcd_cost = 30
-	rcd_delay = 30
 	buffer = 400
 	active_power_usage = 80
 
-/obj/machinery/plumbing/grinder_chemical/Initialize(mapload, bolt)
+/obj/machinery/plumbing/grinder_chemical/Initialize(mapload, layer)
 	. = ..()
-	AddComponent(/datum/component/plumbing/simple_supply, bolt)
+	AddComponent(/datum/component/plumbing/simple_supply, layer)
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/machinery/plumbing/grinder_chemical/attackby(obj/item/weapon, mob/user, params)
+	if(user.combat_mode || istype(weapon, /obj/item/plunger) || istype(weapon, /obj/item/construction/plumbing) || weapon.tool_behaviour)
+		return ..()
+	if(!anchored)
+		to_chat(user, "<span class='warning'>Najpierw przykręć [src].</span>")
+		return TRUE
 	if(istype(weapon, /obj/item/storage/bag))
 		to_chat(user, "<span class='notice'>Wysypujesz przedmioty z [weapon] do młynka.</span>")
 		for(var/obj/item/obj_item in weapon.contents)
@@ -47,7 +50,7 @@
  * * [AM][atom] - the atom to grind or juice
  */
 /obj/machinery/plumbing/grinder_chemical/proc/grind(atom/AM)
-	if(machine_stat & NOPOWER)
+	if(machine_stat & NOPOWER || !anchored)
 		return
 	if(reagents.holder_full())
 		return
