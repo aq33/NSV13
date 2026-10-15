@@ -603,6 +603,7 @@
 #include "code\modules\test_chamber\kits\pr_430_darkspawn.dm"
 #include "code\modules\test_chamber\kits\pr_433_secret_chems.dm"
 #include "code\modules\test_chamber\kits\pr_442_asteroidy.dm"
+#include "code\modules\test_chamber\kits\pr_444_konwersja_zegary.dm"
 #include "code\modules\test_chamber\kits\pr_435_restaurant.dm"
 #include "code\modules\test_chamber\kits\pr_437_revenant_tg.dm"
 #include "code\modules\weighted\spawn_fallbacks.dm"
