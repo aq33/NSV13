@@ -8,3 +8,13 @@
 	build_path = /obj/item/implantcase/security_down
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY  // available only in the seclathe to stop medbay jokers from implanting non-secs
+
+/datum/design/bluebutt
+	name = "Butt of Holding"
+	desc = "Syntetyczny pośladek z kieszenią bluespace. Pozwala też wypróżnić się na zawołanie prosto w bluespace."
+	id = "bluebutt"
+	build_type = PROTOLATHE
+	materials = list(/datum/material/iron = 1000, /datum/material/silver = 1000, /datum/material/diamond = 500, /datum/material/bluespace = 1000)
+	build_path = /obj/item/organ/butt/bluebutt
+	category = list("Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE

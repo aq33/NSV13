@@ -110,8 +110,10 @@
 
 //Toggle night vision: lets the revenant toggle its night vision
 /obj/effect/proc_holder/spell/targeted/night_vision/revenant
+	name = "Widzenie w ciemności \[WŁ.\]"
+	desc = "Przełącza twoje widzenie w ciemności."
 	charge_max = 0
-	panel = "Revenant Abilities"
+	panel = "Zdolności upiora"
 	message = "<span class='revennotice'>Przełączasz widzenie w ciemności.</span>"
 	action_icon = 'icons/mob/actions/actions_revenant.dmi'
 	action_icon_state = "r_nightvision"
@@ -119,8 +121,9 @@
 
 //Transmit: the revemant's only direct way to communicate. Sends a single message silently to a single mob
 /obj/effect/proc_holder/spell/targeted/telepathy/revenant
-	name = "Revenant Transmit"
-	panel = "Revenant Abilities"
+	name = "Przekaz upiora"
+	desc = "Telepatycznie przesyła jedną wiadomość wybranej osobie."
+	panel = "Zdolności upiora"
 	action_icon = 'icons/mob/actions/actions_revenant.dmi'
 	action_icon_state = "r_transmit"
 	action_background_icon_state = "bg_revenant"
@@ -129,9 +132,9 @@
 	holy_check = TRUE
 
 /obj/effect/proc_holder/spell/self/revenant_phase_shift
-	name = "Phase Shift"
-	desc = "Shift in and out of your corporeal form"
-	panel = "Revenant Abilities"
+	name = "Przesunięcie fazowe"
+	desc = "Przechodź między formą cielesną a bezcielesną."
+	panel = "Zdolności upiora"
 	action_icon = 'icons/mob/actions/actions_revenant.dmi'
 	action_icon_state = "r_phase"
 	action_background_icon_state = "bg_revenant"
@@ -148,8 +151,8 @@
 	clothes_req = 0
 	action_icon = 'icons/mob/actions/actions_revenant.dmi'
 	action_background_icon_state = "bg_revenant"
-	panel = "Revenant Abilities (Locked)"
-	name = "Report this to a coder"
+	panel = "Zdolności upiora (zablokowane)"
+	name = "Zgłoś to koderom"
 	var/reveal = 80 //How long it reveals the revenant in deciseconds
 	var/stun = 20 //How long it stuns the revenant in deciseconds
 	var/locked = TRUE //If it's locked and needs to be unlocked before use
@@ -181,7 +184,7 @@
 	if(!istype(user)) //If you're not a revenant, it works. Please, please, please don't give this to a non-revenant.
 		name = "[initial(name)]"
 		if(locked)
-			panel = "Revenant Abilities"
+			panel = "Zdolności upiora"
 			locked = FALSE
 		return TRUE
 	if(locked)
@@ -190,7 +193,7 @@
 			return FALSE
 		name = "[initial(name)] ([cast_amount]E)"
 		to_chat(user, "<span class='revennotice'>Odblokowujesz: [initial(name)]!</span>")
-		panel = "Revenant Abilities"
+		panel = "Zdolności upiora"
 		locked = FALSE
 		charge_counter = charge_max
 		return FALSE
@@ -206,8 +209,8 @@
 
 //Overload Light: Breaks a light that's online and sends out lightning bolts to all nearby people.
 /obj/effect/proc_holder/spell/aoe_turf/revenant/overload
-	name = "Overload Lights"
-	desc = "Directs a large amount of essence into nearby electrical lights, causing lights to shock those nearby."
+	name = "Przeciążenie świateł"
+	desc = "Kieruje dużą ilość esencji do pobliskich lamp, które zaczynają razić prądem ludzi obok."
 	charge_max = 200
 	range = 5
 	stun = 30
@@ -248,8 +251,8 @@
 
 //Defile: Corrupts nearby stuff, unblesses floor tiles.
 /obj/effect/proc_holder/spell/aoe_turf/revenant/defile
-	name = "Defile"
-	desc = "Twists and corrupts the nearby area as well as dispelling holy auras on floors."
+	name = "Zbezczeszczenie"
+	desc = "Wypacza i niszczy okolicę oraz rozprasza święte aury na podłodze."
 	charge_max = 150
 	range = 4
 	stun = 20
@@ -300,8 +303,8 @@
 
 //Malfunction: Makes bad stuff happen to robots and machines.
 /obj/effect/proc_holder/spell/aoe_turf/revenant/malfunction
-	name = "Malfunction"
-	desc = "Corrupts and damages nearby machines and mechanical objects."
+	name = "Awaria"
+	desc = "Psuje i uszkadza pobliskie maszyny i urządzenia mechaniczne."
 	charge_max = 200
 	range = 4
 	cast_amount = 60
@@ -347,8 +350,8 @@
 
 //Blight: Infects nearby humans and in general messes living stuff up.
 /obj/effect/proc_holder/spell/aoe_turf/revenant/blight
-	name = "Blight"
-	desc = "Causes nearby living things to waste away."
+	name = "Zaraza"
+	desc = "Sprawia, że pobliskie żywe istoty marnieją."
 	charge_max = 200
 	range = 3
 	cast_amount = 50

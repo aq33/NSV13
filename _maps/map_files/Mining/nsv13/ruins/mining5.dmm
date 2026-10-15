@@ -946,6 +946,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
 	dir = 8
 	},
+/turf/open/floor/durasteel/padded,
 /area/ruin/unpowered)
 "dj" = (
 /obj/structure/disposalpipe/segment{

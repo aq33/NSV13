@@ -68,7 +68,7 @@
 	airs[3] = air3
 
 /obj/machinery/atmospherics/components/trinary/mixer/process_atmos()
-	if(!on || !(nodes[1] && nodes[2] && nodes[3]) && !is_operational)
+	if(!on || !(nodes[1] && nodes[2] && nodes[3]) || !is_operational) // AQUILA EDIT - było "&& !is_operational", więc niepodłączony mikser sięgał do pustej sieci rur
 		return
 
 	//Get those gases, mah boiiii
