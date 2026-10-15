@@ -20,7 +20,7 @@
 
 /mob/living/simple_animal/pet/dog/corgi/seccie/Initialize(mapload)
 	..()
-	var/obj/item/clothing/head/helmet/hat = new (src)
+	var/obj/item/clothing/head/helmet/sec/hat = new (src) // AQUILA EDIT - zwykły hełm nie ma dog_fashion, regenerate_icons() sypało runtime
 	inventory_head = hat
 	update_corgi_fluff()
 	regenerate_icons()
