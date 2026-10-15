@@ -611,6 +611,7 @@
 #include "code\modules\test_chamber\kits\pr_420_traitor_cele.dm"
 #include "code\modules\test_chamber\kits\test_subjects.dm"
 // Komora testowa - zestawy PR-ów niżej (usuwać razem z plikiem zestawu po przetestowaniu)
+#include "code\modules\test_chamber\kits\pr_443_kanalizacja.dm"
 #include "code\modules\test_chamber\kits\pr_436_iskry.dm"
 #include "code\modules\test_chamber\kits\pr_439_stoperan.dm"
 #include "code\modules\test_chamber\kits\pr_429_regal_rat.dm"
