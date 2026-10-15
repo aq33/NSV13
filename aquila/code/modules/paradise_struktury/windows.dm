@@ -117,8 +117,10 @@
 	alpha = 200
 	color = "#94bbd1"
 
+// Krata pod ścianą: inaczej jej czarna siatka wyłazi spod okna i spod górnej części ściany od południa
 /obj/structure/grille
 	icon = 'aquila/icons/paradise/obj/structures.dmi'
+	layer = GRILLE_LAYER
 
 // Kraty „ścienne” NSV jako zwykła krata, jak w Paradise
 /obj/structure/grille/wall

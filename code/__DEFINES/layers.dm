@@ -34,13 +34,17 @@
 #define CLOSED_TURF_LAYER 2.05
 #define BULLET_HOLE_LAYER 2.06
 #define ABOVE_NORMAL_TURF_LAYER 2.08
-#define LATTICE_LAYER 2.2
-#define DISPOSAL_PIPE_LAYER 2.3
-#define GAS_PIPE_HIDDEN_LAYER 2.35
-#define WIRE_LAYER 2.4
-#define WIRE_TERMINAL_LAYER 2.45
-#define UNDER_CATWALK 2.454
-#define CATWALK_LAYER 2.455
+// AQ EDIT START - rzeczy na podłodze pod ścianami 3/4 z Paradise, jak w Paradise; ściany na GAME_PLANE przykrywają je górną częścią sprite'a
+#define LATTICE_LAYER 1.701
+#define DISPOSAL_PIPE_LAYER 1.71
+#define GAS_PIPE_HIDDEN_LAYER 1.72
+#define WIRE_LAYER 1.73
+#define WIRE_TERMINAL_LAYER 1.75
+#define UNDER_CATWALK 1.754
+#define CATWALK_LAYER 1.755
+/// AQUILA - krata pod oknem, pod ścianą (w Paradise MAP_EDITOR_TURF_LAYER - 0.1)
+#define GRILLE_LAYER 1.76
+// AQ EDIT END
 #define GAS_SCRUBBER_LAYER 2.46
 #define GAS_PIPE_VISIBLE_LAYER 2.47
 #define GAS_FILTER_LAYER 2.48

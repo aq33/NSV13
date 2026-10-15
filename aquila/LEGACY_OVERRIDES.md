@@ -39,6 +39,7 @@ The other ~60 same-type redefinitions in `aquila/` call `..()`, so they are alre
 
 | Hook | Location | Feature |
 |---|---|---|
+| Lower `LATTICE_LAYER` … `CATWALK_LAYER`, new `GRILLE_LAYER` | `code/__DEFINES/layers.dm` | Floor-level objects (lattices, disposals, hidden pipes, cables, catwalks, grilles) go below `CLOSED_TURF_LAYER` like in Paradise, so the 8 px overhang of 3/4 walls covers them |
 | `A.bitmask_smooth_icon()` branch in `smooth_icon()` | `code/__HELPERS/icon_smoothing.dm` | Paradise walls, windows and doors (32x40, 47-state bitmask) skip corner and legacy smoothing; logic in `aquila/code/modules/paradise_struktury/smoothing.dm` |
 | `QDEL_IN(src, 20)` in `/obj/effect/particle_effect/sparks/Initialize()` | `code/game/objects/effects/effect_system/effects_sparks.dm` | Sparks are cleaned up even if their `LateInitialize()` never runs |
 | `late_loaders` swapped for a fresh list before the late init loop | `code/controllers/subsystem/atoms.dm`, `InitializeAtoms()` | Overlapping map loads no longer wipe each other's late loaders (stuck sparks and other lateload atoms) |
