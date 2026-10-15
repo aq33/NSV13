@@ -341,11 +341,10 @@
 /datum/emote/living/snap/three/get_sound(mob/living/user)
 	return 'aquila/sound/emotes/snap3.ogg'
 
-// Animacja skoku: port z tgstation (code/modules/mob/emote.dm, jump_animation)
+// Animacja skoku: jak jump_animation z tgstation, ale względnie, żeby nie nadpisać obrotu leżenia
 /datum/emote/living/jump/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
 	if(!.)
 		return
-	var/original_transform = user.transform
-	animate(user, transform = user.transform.Translate(0, 4), time = 0.1 SECONDS, flags = ANIMATION_PARALLEL)
-	animate(transform = original_transform, time = 0.1 SECONDS)
+	animate(user, pixel_y = 4, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
+	animate(pixel_y = -4, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)

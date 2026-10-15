@@ -49,13 +49,16 @@
 	var/matrix/reset_matrix = matrix()
 	reset_matrix.Turn(-5)
 	// Offset animation
-	animate(src, time = 1, pixel_x = rand(-2, 2), pixel_y = rand(-1, 1), easing = ELASTIC_EASING, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
+	var/start_x = rand(-2, 2)
+	var/start_y = rand(-1, 1)
+	animate(src, time = 1, pixel_x = start_x, pixel_y = start_y, easing = ELASTIC_EASING, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
 	for (var/i in 1 to 4)
 		var/dx = rand(-4, 2)
 		var/dy = rand(-4, 2)
 		animate(time = 1, pixel_x = dx, pixel_y = dy, easing = ELASTIC_EASING, flags = ANIMATION_RELATIVE)
 		animate(time = 0, pixel_x = -dx, pixel_y = -dy, easing = ELASTIC_EASING, flags = ANIMATION_RELATIVE)
-	animate(time = 1, pixel_x = base_pixel_x , pixel_y = base_pixel_y)
+	// Cofnięcie tylko własnego przesunięcia, żeby nie zgubić offsetu leżenia
+	animate(time = 1, pixel_x = -start_x, pixel_y = -start_y, flags = ANIMATION_RELATIVE)
 	// Rotational Animation
 	animate(src, time = 3, transform = rotation_matrix, flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE)
 	animate(time = 2, flags = ANIMATION_RELATIVE)
