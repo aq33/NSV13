@@ -76,6 +76,9 @@ GLOBAL_LIST_INIT(revolution_conversion_text, list(
 			to_chat(user, "<span class='warning'>Przestajesz tłumaczyć teorię rewolucji. Konwersja się nie udała!</span>")
 			return
 	converting = FALSE
+	if(target.last_attacked_time + REV_CONVERT_ATTACK_COOLDOWN > world.time)
+		to_chat(user, "<span class='warning'>Cel został zaatakowany i przestał cię słuchać. Konwersja się nie udała!</span>")
+		return
 	if(!rev_datum.add_revolutionary(target.mind, FALSE))
 		to_chat(user, "<span class='warning'>Ten umysł wydaje się odporny na twoje słowa!</span>")
 		return
@@ -104,22 +107,22 @@ GLOBAL_LIST_INIT(revolution_conversion_text, list(
 	var/revolution_delay_active = FALSE
 
 /datum/controller/subsystem/shuttle/proc/delay_for_revolutionary_station()
-	if(revolution_delay_active || !check_revolution_environment())
+	if(revolution_delay_active || !check_revolution_environment() || emergency?.mode != SHUTTLE_CALL)
 		return
 	revolution_delay_active = TRUE
 	emergencyNoRecall = TRUE
 	priority_announce("Wykryto aktywność rewolucyjną: uruchomiono kryzysowe protokoły promu. Sygnały odwołania są zagłuszane na wszystkich częstotliwościach.", null, null, "Priority")
-	if(emergency.mode == SHUTTLE_CALL)
-		emergency.setTimer(REV_SHUTTLE_DELAY)
+	// Extend the current ETA instead of replacing it
+	emergency.setTimer(emergency.timeLeft(1) + REV_SHUTTLE_DELAY)
 
 /obj/docking_port/mobile/emergency
 	/// Timer of the delayed revolution alert
 	var/revolution_alert_timer
 
 /obj/docking_port/mobile/emergency/proc/check_revolution_delay(call_time)
-	if(SSshuttle.revolution_delay_active || !SSshuttle.check_revolution_environment())
+	// A pending alert also covers later calls; it checks the shuttle state when it fires
+	if(SSshuttle.revolution_delay_active || timeleft(revolution_alert_timer) || !SSshuttle.check_revolution_environment())
 		return
-	deltimer(revolution_alert_timer)
 	// Random moment between 2:30 and the full call time, like the infestation delay upstream
 	revolution_alert_timer = addtimer(CALLBACK(SSshuttle, TYPE_PROC_REF(/datum/controller/subsystem/shuttle, delay_for_revolutionary_station)), rand(150 SECONDS, max(150 SECONDS, call_time)), TIMER_STOPPABLE)
 

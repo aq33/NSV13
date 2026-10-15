@@ -54,5 +54,7 @@
 /datum/job/deputy/map_check()
 	return FALSE
 
+// Inżynier przejął atmosferykę
 /datum/job/atmospheric_technician/map_check()
+	..()
 	return FALSE

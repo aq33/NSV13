@@ -20,10 +20,13 @@
 /obj/item/organ/liver/on_life()
 	. = ..()
 	var/mob/living/carbon/drinker = owner
-	if(!istype(drinker) || HAS_TRAIT(drinker, TRAIT_NOMETABOLISM) || (organ_flags & ORGAN_FAILING) || alcohol_tolerance <= 0)
+	if(!istype(drinker) || HAS_TRAIT(drinker, TRAIT_NOMETABOLISM))
+		return
+	handle_cirrhosis(drinker)
+	// A failing liver doesn't process alcohol, so it takes no new alcohol damage
+	if((organ_flags & ORGAN_FAILING) || alcohol_tolerance <= 0)
 		return
 	handle_alcohol_abuse(drinker)
-	handle_cirrhosis(drinker)
 
 /// Extra liver damage from hard liquor and from drinking a lot at once
 /obj/item/organ/liver/proc/handle_alcohol_abuse(mob/living/carbon/drinker)

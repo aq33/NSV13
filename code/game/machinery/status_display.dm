@@ -349,6 +349,7 @@
 			current_mode = SD_EMERGENCY
 			current_picture = ""
 			set_messages("", "")
+			update_appearance()
 		if("message")
 			current_mode = SD_MESSAGE
 			set_messages(signal.data["msg1"] || signal.data["top_text"] || "", signal.data["msg2"] || signal.data["bottom_text"] || "")
