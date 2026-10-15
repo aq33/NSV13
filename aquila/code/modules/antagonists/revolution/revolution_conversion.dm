@@ -110,10 +110,11 @@ GLOBAL_LIST_INIT(revolution_conversion_text, list(
 	if(revolution_delay_active || !check_revolution_environment() || emergency?.mode != SHUTTLE_CALL)
 		return
 	revolution_delay_active = TRUE
-	emergencyNoRecall = TRUE
 	priority_announce("Wykryto aktywność rewolucyjną: uruchomiono kryzysowe protokoły promu. Sygnały odwołania są zagłuszane na wszystkich częstotliwościach.", null, null, "Priority")
-	// Extend the current ETA instead of replacing it
-	emergency.setTimer(emergency.timeLeft(1) + REV_SHUTTLE_DELAY)
+	// Extend the current ETA instead of replacing it, and block recalls only for this call
+	var/revolution_call_time = emergency.timeLeft(1) + REV_SHUTTLE_DELAY
+	emergency.setTimer(revolution_call_time)
+	block_recall(revolution_call_time)
 
 /obj/docking_port/mobile/emergency
 	/// Timer of the delayed revolution alert

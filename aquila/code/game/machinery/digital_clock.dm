@@ -105,6 +105,8 @@ PROCESSING_SUBSYSTEM_DEF(digital_clock)
 
 /obj/machinery/digital_clock/power_change()
 	. = ..()
+	if(!(machine_stat & (NOPOWER|BROKEN)))
+		update_time()
 	update_appearance()
 
 /obj/machinery/digital_clock/process()
