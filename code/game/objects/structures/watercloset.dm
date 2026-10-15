@@ -9,12 +9,101 @@
 	var/cistern = 0			//if the cistern bit is open
 	var/w_items = 0			//the combined w_class of all the items in the cistern
 	var/mob/living/swirlie = null	//the mob being given a swirlie
+	// AQ EDIT START - plumbing port from tg
+	/// Does the toilet have a water recycler to recollect its water supply?
+	var/has_water_reclaimer = TRUE
+	/// Units of water to reclaim per second
+	var/reclaim_rate = WATER_RECLAIM_RATE
+	/// What reagent does the toilet flush with
+	var/reagent_id = /datum/reagent/water
+	/// How much reagent can the cistern contain
+	var/reagent_capacity = TOILET_CAPACITY
+	/// Is the toilet currently flushing
+	var/flushing = FALSE
+	// AQ EDIT END
 
 
 /obj/structure/toilet/Initialize(mapload)
 	. = ..()
 	open = round(rand(0, 1))
 	update_icon()
+	// AQ EDIT START - plumbing port from tg
+	create_reagents(reagent_capacity, NO_REACT)
+	if(has_water_reclaimer)
+		reagents.add_reagent(reagent_id, reagent_capacity)
+	AddComponent(/datum/component/plumbing/fixture)
+
+/obj/structure/toilet/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>W spłuczce jest [round(reagents.total_volume)]/[reagents.maximum_volume] j. wody. <b>Prawy klik</b> spuszcza wodę.</span>"
+	if(cistern && has_water_reclaimer)
+		. += "<span class='notice'>W spłuczce siedzi odzysk wody, przykręcony dwoma <b>śrubkami</b>.</span>"
+
+/obj/structure/toilet/process(delta_time)
+	if(!has_water_reclaimer || reagents.holder_full())
+		return PROCESS_KILL
+	reagents.add_reagent(reagent_id, reclaim_rate * delta_time)
+
+/// Starts refilling with the recycler after water was used
+/obj/structure/toilet/proc/begin_reclamation()
+	if(has_water_reclaimer)
+		START_PROCESSING(SSobj, src)
+
+/// Uses up a flush worth of water, returns FALSE when the cistern is too empty
+/obj/structure/toilet/proc/flush(mob/user, silent = FALSE)
+	if(flushing)
+		return FALSE
+	if(reagents.total_volume < TOILET_FLUSH_VOLUME)
+		if(user && !silent)
+			to_chat(user, "<span class='warning'>Naciskasz spłuczkę, ale nic się nie dzieje. Brakuje wody.</span>")
+		return FALSE
+	flushing = TRUE
+	reagents.remove_all(TOILET_FLUSH_VOLUME)
+	begin_reclamation()
+	if(!silent)
+		playsound(src, 'aquila/sound/misc/toilet_flush.ogg', open ? 40 : 20, vary = FALSE)
+	addtimer(CALLBACK(src, PROC_REF(end_flushing)), 4 SECONDS)
+	return TRUE
+
+/obj/structure/toilet/proc/end_flushing()
+	flushing = FALSE
+
+/obj/structure/toilet/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	if(!user.canUseTopic(src, BE_CLOSE))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	flush(user)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/structure/toilet/screwdriver_act(mob/living/user, obj/item/tool)
+	if(!cistern)
+		return FALSE
+	if(!has_water_reclaimer)
+		to_chat(user, "<span class='warning'>W spłuczce nie ma odzysku wody.</span>")
+		return TRUE
+	tool.play_tool_sound(src)
+	has_water_reclaimer = FALSE
+	new /obj/item/stock_parts/water_recycler(drop_location())
+	to_chat(user, "<span class='notice'>Odkręcasz odzysk wody ze spłuczki.</span>")
+	return TRUE
+
+/obj/structure/toilet/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
+	user.balloon_alert_to_viewers("zajadle przepycha...")
+	if(!do_after(user, 3 SECONDS, target = src))
+		return TRUE
+	user.balloon_alert_to_viewers("przepchane")
+	reagents.reaction(get_turf(src), TOUCH) //splash on the floor
+	reagents.clear_reagents()
+	begin_reclamation()
+	return TRUE
+
+/obj/structure/toilet/deconstruct(disassembled = TRUE)
+	if(!(flags_1 & NODECONSTRUCT_1) && has_water_reclaimer)
+		new /obj/item/stock_parts/water_recycler(drop_location())
+	return ..()
+	// AQ EDIT END
 
 
 /obj/structure/toilet/attack_hand(mob/living/user)
@@ -42,6 +131,11 @@
 				to_chat(user, "<span class='warning'>[GM] musi być na [src]!</span>")
 				return
 			if(!swirlie)
+				// AQ EDIT START - plumbing port from tg
+				if(open && !reagents.total_volume)
+					to_chat(user, "<span class='notice'>[src] jest sucha!</span>")
+					return
+				// AQ EDIT END
 				if(open)
 					GM.visible_message("<span class='danger'>[user] zaczyna robić [GM] kibelkowy prysznic!</span>", "<span class='userdanger'>[user] zaczyna robić ci kibelkowy prysznic...</span>")
 					swirlie = GM
@@ -90,6 +184,18 @@
 			cistern = !cistern
 			update_icon()
 
+	// AQ EDIT START - plumbing port from tg
+	else if(cistern && istype(I, /obj/item/stock_parts/water_recycler))
+		if(has_water_reclaimer)
+			to_chat(user, "<span class='warning'>W spłuczce jest już odzysk wody.</span>")
+			return
+		if(!user.temporarilyRemoveItemFromInventory(I))
+			return
+		qdel(I)
+		has_water_reclaimer = TRUE
+		begin_reclamation()
+		to_chat(user, "<span class='notice'>Montujesz odzysk wody w spłuczce.</span>")
+	// AQ EDIT END
 	else if(cistern && !user.combat_mode)
 		if(I.w_class > WEIGHT_CLASS_NORMAL)
 			to_chat(user, "<span class='warning'>[I] się nie mieści!</span>")
@@ -107,7 +213,15 @@
 		if (!open)
 			return
 		var/obj/item/reagent_containers/RG = I
-		RG.reagents.add_reagent(/datum/reagent/water, min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
+		// AQ EDIT START - plumbing port from tg
+		if(!RG.is_refillable() || RG.reagents.holder_full())
+			return ..()
+		if(!reagents.total_volume)
+			to_chat(user, "<span class='notice'>[src] jest sucha!</span>")
+			return
+		reagents.trans_to(RG, RG.amount_per_transfer_from_this, transfered_by = user)
+		begin_reclamation()
+		// AQ EDIT END
 		to_chat(user, "<span class='notice'>Napełniasz [RG] z [src]. Obrzydliwe.</span>")
 	else
 		return ..()
@@ -218,10 +332,71 @@
 	name = "sink"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "sink"
-	desc = "A sink used for washing one's hands and face."
+	desc = "A sink used for washing one's hands and face. Passively reclaims water over time."
 	anchored = TRUE
 	var/busy = FALSE 	//Something's being washed at the moment
 	var/dispensedreagent = /datum/reagent/water // for whenever plumbing happens
+	// AQ EDIT START - plumbing port from tg
+	///Capacity of this sink
+	var/capacity = SINK_CAPACITY
+	///Does the sink have a water recycler to recollect its water supply?
+	var/has_water_reclaimer = TRUE
+	///Units of water to reclaim per second
+	var/reclaim_rate = WATER_RECLAIM_RATE
+
+/obj/structure/sink/Initialize(mapload)
+	. = ..()
+	create_reagents(capacity, NO_REACT)
+	if(has_water_reclaimer)
+		reagents.add_reagent(dispensedreagent, capacity)
+	AddComponent(/datum/component/plumbing/fixture)
+
+/obj/structure/sink/examine(mob/user)
+	. = ..()
+	if(has_water_reclaimer)
+		. += "<span class='notice'>Ma zamontowany odzysk wody. Można go wyważyć <b>łomem</b>.</span>"
+	. += "<span class='notice'>Zostało [round(reagents.total_volume)]/[reagents.maximum_volume] j. wody.</span>"
+	. += "<span class='notice'><b>Prawym klikiem</b> pojemnikiem wylejesz jego zawartość do odpływu.</span>"
+
+/obj/structure/sink/process(delta_time)
+	// Water reclamation complete?
+	if(!has_water_reclaimer || reagents.holder_full())
+		return PROCESS_KILL
+	reagents.add_reagent(dispensedreagent, reclaim_rate * delta_time)
+
+/// Starts refilling with the recycler after water was used
+/obj/structure/sink/proc/begin_reclamation()
+	if(has_water_reclaimer)
+		START_PROCESSING(SSobj, src)
+
+/obj/structure/sink/attackby_secondary(obj/item/weapon, mob/user, params)
+	if(!istype(weapon, /obj/item/reagent_containers) && !istype(weapon, /obj/item/mop))
+		return ..()
+
+	if(busy)
+		to_chat(user, "<span class='warning'>Ktoś już się tu myje!</span>")
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+	if(!weapon.reagents?.total_volume)
+		balloon_alert(user, "już puste!")
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+	weapon.reagents.clear_reagents()
+	playsound(src, 'sound/effects/slosh.ogg', 25, TRUE)
+	user.visible_message("<span class='notice'>[user] wylewa zawartość [weapon] do [src].</span>", \
+		"<span class='notice'>Wylewasz zawartość [weapon] do odpływu [src].</span>")
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/structure/sink/crowbar_act(mob/living/user, obj/item/tool)
+	if(!has_water_reclaimer)
+		to_chat(user, "<span class='warning'>[src] nie ma odzysku wody.</span>")
+		return TRUE
+	tool.play_tool_sound(src)
+	has_water_reclaimer = FALSE
+	new /obj/item/stock_parts/water_recycler(drop_location())
+	to_chat(user, "<span class='notice'>Wyważasz odzysk wody z [src].</span>")
+	return TRUE
+	// AQ EDIT END
 
 
 /obj/structure/sinkframe
@@ -265,6 +440,11 @@
 	if(busy)
 		to_chat(user, "<span class='notice'>Ktoś już się tu myje.</span>")
 		return
+	// AQ EDIT START - plumbing port from tg
+	if(reagents.total_volume < SINK_WASH_VOLUME)
+		to_chat(user, "<span class='warning'>[src] jest sucha!</span>")
+		return
+	// AQ EDIT END
 	var/selected_area = parse_zone(user.zone_selected)
 	var/washing_face = 0
 	if(selected_area in list(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES))
@@ -278,6 +458,15 @@
 		return
 
 	busy = FALSE
+
+	// AQ EDIT START - plumbing port from tg
+	if(reagents.total_volume < SINK_WASH_VOLUME)
+		to_chat(user, "<span class='warning'>[src] jest sucha!</span>")
+		return
+	reagents.reaction(user, TOUCH, SINK_WASH_VOLUME / max(reagents.total_volume, SINK_WASH_VOLUME))
+	reagents.remove_all(SINK_WASH_VOLUME)
+	begin_reclamation()
+	// AQ EDIT END
 
 	user.visible_message("<span class='notice'>[user] myje [washing_face ? "twarz" : "ręce"] w [src].</span>", \
 						"<span class='notice'>Myjesz [washing_face ? "twarz" : "ręce"] w [src].</span>")
@@ -305,7 +494,13 @@
 		var/obj/item/reagent_containers/RG = O
 		if(RG.is_refillable())
 			if(!RG.reagents.holder_full())
-				RG.reagents.add_reagent(dispensedreagent, min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
+				// AQ EDIT START - plumbing port from tg
+				if(!reagents.total_volume)
+					to_chat(user, "<span class='warning'>[src] jest sucha!</span>")
+					return FALSE
+				reagents.trans_to(RG, RG.amount_per_transfer_from_this, transfered_by = user)
+				begin_reclamation()
+				// AQ EDIT END
 				to_chat(user, "<span class='notice'>Napełniasz [RG] z [src].</span>")
 				return TRUE
 			to_chat(user, "<span class='notice'>[RG] jest pełny.</span>")
@@ -326,7 +521,13 @@
 				return
 
 	if(istype(O, /obj/item/mop))
-		O.reagents.add_reagent(dispensedreagent, 5)
+		// AQ EDIT START - plumbing port from tg
+		if(!reagents.total_volume)
+			to_chat(user, "<span class='warning'>[src] jest sucha!</span>")
+			return
+		reagents.trans_to(O, 5, transfered_by = user)
+		begin_reclamation()
+		// AQ EDIT END
 		to_chat(user, "<span class='notice'>Moczysz [O] w [src].</span>")
 		playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		return
@@ -343,7 +544,26 @@
 	if(O.item_flags & ABSTRACT) //Abstract items like grabs won't wash. No-drop items will though because it's still technically an item in your hand.
 		return
 
+	// AQ EDIT START - plumbing port from tg
+	if(istype(O, /obj/item/stock_parts/water_recycler))
+		if(has_water_reclaimer)
+			to_chat(user, "<span class='warning'>[src] ma już odzysk wody.</span>")
+			return
+		if(!user.temporarilyRemoveItemFromInventory(O))
+			return
+		qdel(O)
+		has_water_reclaimer = TRUE
+		begin_reclamation()
+		to_chat(user, "<span class='notice'>Montujesz odzysk wody w [src].</span>")
+		return
+	// AQ EDIT END
+
 	if(!user.combat_mode)
+		// AQ EDIT START - plumbing port from tg
+		if(reagents.total_volume < SINK_WASH_VOLUME)
+			to_chat(user, "<span class='warning'>[src] jest sucha!</span>")
+			return
+		// AQ EDIT END
 		to_chat(user, "<span class='notice'>Zaczynasz prać [O]...</span>")
 		busy = TRUE
 		if(!do_after(user, 40, target = src))
@@ -352,9 +572,11 @@
 		busy = FALSE
 		SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRENGTH_BLOOD)
 		O.acid_level = 0
-		create_reagents(5)
-		reagents.add_reagent(dispensedreagent, 5)
-		reagents.reaction(O, TOUCH)
+		// AQ EDIT START - plumbing port from tg
+		reagents.reaction(O, TOUCH, SINK_WASH_VOLUME / max(reagents.total_volume, SINK_WASH_VOLUME))
+		reagents.remove_all(SINK_WASH_VOLUME)
+		begin_reclamation()
+		// AQ EDIT END
 		user.visible_message("<span class='notice'>[user] pierze [O] w [src].</span>", \
 							"<span class='notice'>Pierzesz [O] w [src].</span>")
 		return 1
@@ -363,6 +585,10 @@
 
 /obj/structure/sink/deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/iron (loc, 3)
+	// AQ EDIT START - plumbing port from tg
+	if(has_water_reclaimer)
+		new /obj/item/stock_parts/water_recycler(loc)
+	// AQ EDIT END
 	qdel(src)
 
 
@@ -376,6 +602,7 @@
 	desc = "A puddle used for washing one's hands and face."
 	icon_state = "puddle"
 	resistance_flags = UNACIDABLE
+	reclaim_rate = 5 // AQ EDIT - plumbing port from tg, natural water refills fast
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/structure/sink/puddle/attack_hand(mob/M)
@@ -390,6 +617,11 @@
 
 /obj/structure/sink/puddle/deconstruct(disassembled = TRUE)
 	qdel(src)
+
+// AQ EDIT START - plumbing port from tg
+/obj/structure/sink/puddle/crowbar_act(mob/living/user, obj/item/tool)
+	return FALSE
+// AQ EDIT END
 
 
 //Shower Curtains//
