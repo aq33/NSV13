@@ -56,7 +56,16 @@
 
 	template.should_place_on_top = place_on_top
 	template.returns_created_atoms = TRUE
-	var/list/bounds = template.load(bottom_left)
+	// Atomy dużej mapy inicjują się przez kilka ticków; bez pauzy SSair widzi niezainicjowane powietrze i rozrzuca meble
+	var/air_could_fire = SSair.can_fire
+	SSair.can_fire = FALSE
+	var/list/bounds
+	try
+		bounds = template.load(bottom_left)
+	catch(var/exception/load_error)
+		SSair.can_fire = air_could_fire
+		throw load_error
+	SSair.can_fire = air_could_fire
 	if(!bounds)
 		reservations -= reservation
 		reservation.Release()
