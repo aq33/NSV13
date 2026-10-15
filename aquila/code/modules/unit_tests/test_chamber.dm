@@ -11,7 +11,7 @@
 	TEST_ASSERT(istype(chamber.kit_center?.loc, /area/test_chamber/arena), "Kit center is outside the arena")
 	TEST_ASSERT(!(locate(/obj/effect/landmark/test_chamber) in chamber.arrival), "Landmarks were not cleaned up")
 	var/fail = check_room(chamber)
-	TEST_ASSERT(!fail, fail)
+	TEST_ASSERT(!fail, "Fresh chamber: [fail]")
 
 	for(var/name in test_chamber_kits())
 		var/datum/test_chamber_kit/kit = test_chamber_kits()[name]
@@ -29,10 +29,11 @@
 	F.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 	TEST_ASSERT(chamber.reset(), "Test chamber failed to reset")
 	for(var/turf/T as anything in chamber.reservation.reserved_turfs)
-		TEST_ASSERT(!(locate(/mob/living) in T), "Reset left a mob at [T.x],[T.y]")
+		var/mob/living/leftover = locate() in T
+		TEST_ASSERT(!leftover, "Reset left [leftover?.type] at [T.x],[T.y]")
 	TEST_ASSERT(istype(chamber.kit_center, /turf/open/floor/plasteel/dark), "Reset did not restore the arena floor")
 	fail = check_room(chamber)
-	TEST_ASSERT(!fail, fail)
+	TEST_ASSERT(!fail, "After reset: [fail]")
 
 /datum/unit_test/test_chamber/proc/count_in_chamber(datum/test_chamber/chamber, path)
 	. = 0
@@ -50,6 +51,10 @@
 	var/datum/gas_mixture/air = chamber.arrival.return_air()
 	var/pressure = air.return_pressure()
 	if(pressure < 90 || pressure > 110)
-		return "Chamber has unsafe pressure [pressure] kPa"
+		var/list/space = list()
+		for(var/turf/T as anything in chamber.reservation.reserved_turfs)
+			if(!isclosedturf(T) && !T.blocks_air && T.return_air()?.return_pressure() < 1)
+				space += "[T.type]@[T.x],[T.y]"
+		return "Chamber has unsafe pressure [pressure] kPa (arrival [chamber.arrival.type], [length(space)] empty turfs: [english_list(space.Copy(1, min(length(space), 6) + 1))])"
 
 #undef TEST_ASSERT
