@@ -118,6 +118,8 @@
 		autopsy_information += "URAZY: [round(bodypart.brute_dam, 1)] | OPARZENIA: [round(bodypart.burn_dam, 1)]<br>"
 		for(var/obj/item/embedded as anything in bodypart.embedded_objects)
 			autopsy_information += "Ciało obce: [embedded.name]<br>"
+		for(var/line in bodypart.aq_autopsy_lines()) // dziennik ran i pociski w ciele
+			autopsy_information += "[line]<br>"
 
 	autopsy_information += "<center>Organy</center>"
 	for(var/obj/item/organ/organ as anything in scanned.internal_organs)

@@ -323,6 +323,9 @@ SUBSYSTEM_DEF(job)
 
 	HandleFeedbackGathering()
 
+	//AQ EDIT - bilety na pracę kupione za aquilosy mają pierwszeństwo (aquila/code/modules/metacoin/perks.dm)
+	assign_job_tickets()
+
 	//People who wants to be the overflow role, sure, go on.
 	JobDebug("DO, Running Overflow Check 1")
 	var/datum/job/overflow = GetJob(SSjob.overflow_role)
