@@ -347,6 +347,8 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		if("laser")
 			var/hits = 0
 			for(var/i in 1 to rand(5, 10))
+				if(QDELETED(target)) // cel mógł zniknąć w trakcie sleep()
+					break
 				target.playsound_local(source, 'sound/weapons/laser.ogg', 25, 1)
 				if(prob(50))
 					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), source, 'sound/weapons/sear.ogg', 25, 1), rand(5,10))
@@ -354,12 +356,16 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 				else
 					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), source, 'sound/weapons/effects/searwall.ogg', 25, 1), rand(5,10))
 				sleep(rand(CLICK_CD_RANGE, CLICK_CD_RANGE + 6))
+				if(QDELETED(target)) // cel mógł zniknąć w trakcie sleep()
+					break
 				if(hits >= 4 && prob(70))
 					target.playsound_local(source, get_sfx("bodyfall"), 25, 1)
 					break
 		if("disabler")
 			var/hits = 0
 			for(var/i in 1 to rand(5, 10))
+				if(QDELETED(target)) // cel mógł zniknąć w trakcie sleep()
+					break
 				target.playsound_local(source, 'sound/weapons/taser2.ogg', 25, 1)
 				if(prob(50))
 					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), source, 'sound/weapons/tap.ogg', 25, 1), rand(5,10))
@@ -367,20 +373,27 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 				else
 					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), source, 'sound/weapons/effects/searwall.ogg', 25, 1), rand(5,10))
 				sleep(rand(CLICK_CD_RANGE, CLICK_CD_RANGE + 6))
+				if(QDELETED(target)) // cel mógł zniknąć w trakcie sleep()
+					break
 				if(hits >= 3 && prob(70))
 					target.playsound_local(source, get_sfx("bodyfall"), 25, 1)
 					break
 		if("esword")
 			target.playsound_local(source, 'sound/weapons/saberon.ogg',15, 1)
 			for(var/i in 1 to rand(4, 8))
+				if(QDELETED(target)) // cel mógł zniknąć w trakcie sleep()
+					break
 				target.playsound_local(source, 'sound/weapons/blade1.ogg', 50, 1)
 				if(i == 4)
 					target.playsound_local(source, get_sfx("bodyfall"), 25, 1)
 				sleep(rand(CLICK_CD_MELEE, CLICK_CD_MELEE + 6))
-			target.playsound_local(source, 'sound/weapons/saberoff.ogg', 15, 1)
+			if(!QDELETED(target))
+				target.playsound_local(source, 'sound/weapons/saberoff.ogg', 15, 1)
 		if("gun")
 			var/hits = 0
 			for(var/i in 1 to rand(3, 6))
+				if(QDELETED(target)) // cel mógł zniknąć w trakcie sleep()
+					break
 				target.playsound_local(source, "sound/weapons/gunshot.ogg", 25, TRUE)
 				if(prob(60))
 					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), source, 'sound/weapons/pierce.ogg', 25, 1), rand(5,10))
@@ -388,6 +401,8 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 				else
 					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), source, "ricochet", 25, 1), rand(5,10))
 				sleep(rand(CLICK_CD_RANGE, CLICK_CD_RANGE + 6))
+				if(QDELETED(target)) // cel mógł zniknąć w trakcie sleep()
+					break
 				if(hits >= 2 && prob(80))
 					target.playsound_local(source, get_sfx("bodyfall"), 25, 1)
 					break
@@ -395,16 +410,21 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			target.playsound_local(source, 'sound/weapons/egloves.ogg', 40, 1)
 			target.playsound_local(source, get_sfx("bodyfall"), 25, 1)
 			sleep(20)
-			target.playsound_local(source, 'sound/weapons/cablecuff.ogg', 15, 1)
+			if(!QDELETED(target))
+				target.playsound_local(source, 'sound/weapons/cablecuff.ogg', 15, 1)
 		if("harmbaton") //zap n slap
 			target.playsound_local(source, 'sound/weapons/egloves.ogg', 40, 1)
 			target.playsound_local(source, get_sfx("bodyfall"), 25, 1)
 			sleep(20)
 			for(var/i in 1 to rand(5, 12))
+				if(QDELETED(target)) // cel mógł zniknąć w trakcie sleep()
+					break
 				target.playsound_local(source, "swing_hit", 50, 1)
 				sleep(rand(CLICK_CD_MELEE, CLICK_CD_MELEE + 4))
 		if("bomb") // Tick Tock
 			for(var/i in 1 to rand(3, 11))
+				if(QDELETED(target)) // cel mógł zniknąć w trakcie sleep()
+					break
 				target.playsound_local(source, 'sound/items/timer.ogg', 25, 0)
 				sleep(15)
 	qdel(src)

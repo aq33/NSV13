@@ -6,8 +6,8 @@
 #define INVISIBILITY_REVENANT 50
 
 /mob/living/simple_animal/revenant
-	name = "revenant"
-	desc = "A malevolent spirit."
+	name = "upiór"
+	desc = "Złowrogi duch."
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "revenant_idle"
 	var/icon_idle = "revenant_idle"
@@ -168,7 +168,7 @@
 		return
 	message = treat_message_min(message)
 	src.log_talk(message, LOG_SAY)
-	var/rendered = "<span class='revennotice'><b>[src]</b> says, \"[message]\"</span>"
+	var/rendered = "<span class='revennotice'><b>[src]</b> mówi: \"[message]\"</span>"
 	for(var/mob/M in GLOB.mob_list)
 		if(isrevenant(M))
 			to_chat(M, rendered)
@@ -356,9 +356,9 @@
 	update_action_buttons_icon()
 	if(!silent)
 		if(essence_amt > 0)
-			to_chat(src, "<span class='revennotice'>Gained [essence_amt]E[source ? " from [source]":""].</span>")
+			to_chat(src, "<span class='revennotice'>Zyskujesz [essence_amt]E[source ? " od [source]":""].</span>")
 		else
-			to_chat(src, "<span class='revenminor'>Lost [essence_amt]E[source ? " from [source]":""].</span>")
+			to_chat(src, "<span class='revenminor'>Tracisz [abs(essence_amt)]E[source ? " przez [source]":""].</span>")
 	return 1
 
 /mob/living/simple_animal/revenant/proc/death_reset()
@@ -376,8 +376,8 @@
 
 //reforming
 /obj/item/ectoplasm/revenant
-	name = "glimmering residue"
-	desc = "A pile of fine blue dust. Small tendrils of violet mist swirl around it."
+	name = "lśniący osad"
+	desc = "Kupka drobnego niebieskiego pyłu. Wokół niej wiją się cienkie smugi fioletowej mgły."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "revenantEctoplasm"
 	w_class = WEIGHT_CLASS_SMALL

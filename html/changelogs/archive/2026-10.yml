@@ -317,6 +317,12 @@
       badania o połowę.
   - rscdel: Usunięto cel pobierania badań i rolę złodzieja; cele złodzieja dostaje
       teraz traitor.
+  - rscadd: 'Darkspawn z Yogstation w nowej wersji: trzy klasy (wojownik, zwiadowca,
+      czarnoksiężnik), sklep Psi Web za wolę i thralle'
+  - rscadd: Tryb gry darkspawn i ruleset w dynamicu
+  - code_imp: System zaklęć /datum/action/cooldown/spell z tgstation
+  - rscadd: 'Nowa misja: abordaż i obrona placówki Syndykatu (port z BeeStation/NSV13#2823).'
+  - bugfix: Zmiana IFF przez konsolę od razu widzą cele i flota Solgov.
   PowerfulBacon, Tsar-Salat, Nakalon, MrMelbert, JohnFulpWillard, Mothblocks, Time-Green, timothymtorres:
   - rscadd: Krwawienie ma ikonę alertu z tempem; kliknij ją, żeby ucisnąć ranę. Gaza
       opatruje krwawienie, ogień i laser przypalają ranę.
@@ -343,3 +349,11 @@
   sh4dow321:
   - soundadd: Głośniki nagłośnienia i jukeboxy mają mniej echa, zwłaszcza za ścianami;
       głośniki nagłośnienia grają pełną głośnością w promieniu 3 kratek.
+'2026-10-15':
+  Joker66613:
+  - rscadd: '32 nowe mapy dla magnesu górniczego i asteroid: dawne ruiny kosmiczne
+      oraz porty z tg, Yogstation, Monkestation i Novy'
+  - rscadd: billboardy z tg
+  - bugfix: ruiny górnicze mining4 i mining5 ładują się bez błędów
+  - bugfix: corgi-ochroniarz nie sypie błędem przy pojawieniu się
+  - code_imp: CI sprawdza mapy górnicze, test ładowania wszystkich asteroid

@@ -25,7 +25,7 @@
 /area/ruin/powered)
 "g" = (
 /obj/item/shovel,
-/obj/item/modular_computer/tablet/pda/engineering,
+/obj/item/modular_computer/tablet/pda/station_engineer,
 /turf/open/floor/plating,
 /area/ruin/powered)
 "h" = (

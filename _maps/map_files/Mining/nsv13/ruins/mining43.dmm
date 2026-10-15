@@ -1,0 +1,2704 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"ab" = (
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"ac" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"ad" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"ae" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/food/egg_smudge,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"af" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"ag" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"ah" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/food/egg_smudge,
+/obj/effect/decal/cleanable/food/flour,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"ai" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/food/egg_smudge,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"aj" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"ak" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"al" = (
+/obj/effect/decal/cleanable/food/egg_smudge,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"am" = (
+/obj/effect/decal/cleanable/food/flour,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"an" = (
+/obj/effect/decal/cleanable/food/flour,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"ao" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"ap" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aq" = (
+/obj/item/bedsheet/patriot,
+/obj/item/bedsheet/patriot,
+/obj/item/bedsheet/patriot,
+/obj/machinery/vending/wardrobe/bar_wardrobe,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"ar" = (
+/obj/item/food/bearsteak,
+/obj/structure/table/wood/fancy/blue,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"as" = (
+/obj/item/food/burger/baconburger,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"at" = (
+/obj/item/food/burger/baseball,
+/obj/structure/table/wood/fancy/royalblue,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"au" = (
+/obj/item/food/burger/clown,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"av" = (
+/obj/item/food/burger/empoweredburger{
+	pixel_x = 5;
+	pixel_y = -6
+	},
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aw" = (
+/obj/item/food/burger/human,
+/obj/structure/table/wood/fancy/royalblue,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"ax" = (
+/obj/item/food/burger/mime,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"ay" = (
+/obj/item/food/burger/rat,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"az" = (
+/obj/item/food/burger/spell{
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/obj/structure/table/wood/fancy/blue,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aA" = (
+/obj/item/food/burger/xeno,
+/obj/structure/table/wood/fancy/royalblue,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"aB" = (
+/obj/item/food/burrito,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aC" = (
+/obj/item/food/carneburrito,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aD" = (
+/obj/item/food/crab_rangoon,
+/obj/structure/table/wood/fancy/blue,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"aE" = (
+/obj/item/food/cubancarp,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"aF" = (
+/obj/item/food/fishandchips,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aG" = (
+/obj/item/food/fishfingers,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aH" = (
+/obj/item/food/grilled_cheese_sandwich,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"aI" = (
+/obj/item/food/grilled_cheese_sandwich,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aJ" = (
+/obj/item/food/honkdae,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"aK" = (
+/obj/item/food/kebab/human,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"aL" = (
+/obj/item/food/kebab/rat/double,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aM" = (
+/obj/item/food/kebab/tail,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"aN" = (
+/obj/item/food/omelette,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aO" = (
+/obj/item/food/pie/appletart,
+/obj/structure/table/wood/fancy/blue,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aP" = (
+/obj/item/food/pie/grapetart,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aQ" = (
+/obj/item/food/pizza/dank,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aR" = (
+/obj/item/food/pizza/donkpocket,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aS" = (
+/obj/item/food/pizza/meat,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aT" = (
+/obj/item/food/pizza/mushroom{
+	pixel_x = -5
+	},
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aU" = (
+/obj/item/food/pizza/pineapple,
+/obj/structure/table/wood/fancy/blue,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aV" = (
+/obj/item/food/pizza/sassysage,
+/obj/structure/table/wood/fancy/blue,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aW" = (
+/obj/item/food/salad/validsalad,
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aX" = (
+/obj/item/gps{
+	gpstag = "MacSpace"
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aY" = (
+/obj/item/gun/ballistic/shotgun,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"aZ" = (
+/obj/item/toy/figure/assistant,
+/obj/structure/chair/wood/wings{
+	dir = 8
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"ba" = (
+/obj/item/toy/figure/bartender,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bb" = (
+/obj/item/toy/figure/botanist,
+/obj/structure/chair/wood/wings{
+	dir = 8
+	},
+/obj/item/toy/plush/beeplushie,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bc" = (
+/obj/item/toy/figure/botanist,
+/obj/structure/chair/wood/wings{
+	dir = 8
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bd" = (
+/obj/item/toy/figure/cargotech,
+/obj/structure/chair/wood/wings{
+	dir = 1
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"be" = (
+/obj/item/toy/figure/chaplain,
+/obj/structure/chair/wood/wings{
+	dir = 4
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bf" = (
+/obj/item/toy/figure/chef,
+/obj/effect/decal/cleanable/food/flour,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bg" = (
+/obj/item/toy/figure/chef,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bh" = (
+/obj/item/toy/figure/chef,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bi" = (
+/obj/item/toy/figure/clown,
+/obj/effect/decal/cleanable/food/tomato_smudge,
+/obj/structure/chair/wood/wings{
+	dir = 4
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bj" = (
+/obj/item/toy/figure/curator,
+/obj/structure/chair/wood/wings,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bk" = (
+/obj/item/toy/figure/detective,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/food/salt,
+/obj/structure/chair/wood/wings,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"bl" = (
+/obj/item/toy/figure/hos,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/food/salt,
+/obj/structure/chair/wood/wings,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"bm" = (
+/obj/item/toy/figure/janitor,
+/obj/structure/chair/wood/wings{
+	dir = 8
+	},
+/obj/item/toy/plush/lizardplushie,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bn" = (
+/obj/item/toy/figure/lawyer,
+/obj/structure/chair/wood/wings{
+	dir = 1
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bo" = (
+/obj/item/toy/figure/mime,
+/obj/effect/decal/cleanable/food/salt,
+/obj/structure/chair/wood/wings{
+	dir = 8
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bp" = (
+/obj/item/toy/figure/miner,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/wood/wings,
+/obj/item/toy/plush/bubbleplush,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"bq" = (
+/obj/item/toy/figure/qm,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/chair/wood/wings{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/food/salt,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"br" = (
+/obj/item/toy/figure/secofficer,
+/obj/structure/chair/wood/wings{
+	dir = 1
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bs" = (
+/obj/item/toy/figure/syndie,
+/obj/item/gun/ballistic/automatic/toy/pistol,
+/obj/item/toy/syndicateballoon,
+/obj/item/toy/sword,
+/obj/effect/decal/cleanable/food/tomato_smudge,
+/obj/structure/chair/wood/wings{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/food/salt,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bt" = (
+/obj/item/toy/figure/warden,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/food/salt,
+/obj/structure/chair/wood/wings,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bu" = (
+/obj/item/toy/figure/wizard,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/food/pie_smudge,
+/obj/structure/chair/wood/wings{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"bv" = (
+/obj/item/toy/plush/snakeplushie,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bw" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/pump,
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/powered/macspace)
+"bx" = (
+/obj/machinery/atmospherics/components/unary/tank/air,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"by" = (
+/obj/machinery/atmospherics/components/unary/tank/oxygen,
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/powered/macspace)
+"bz" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bA" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/powered/macspace)
+"bB" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bC" = (
+/obj/machinery/atmospherics/pipe/manifold4w,
+/turf/closed/wall,
+/area/ruin/space/has_grav/powered/macspace)
+"bD" = (
+/obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bE" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/vending/dinnerware,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bF" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/closed/wall,
+/area/ruin/space/has_grav/powered/macspace)
+"bG" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bH" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 5
+	},
+/turf/closed/wall,
+/area/ruin/space/has_grav/powered/macspace)
+"bI" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 5
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bJ" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/food/egg_smudge,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bK" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
+	},
+/turf/closed/wall,
+/area/ruin/space/has_grav/powered/macspace)
+"bL" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
+	},
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/powered/macspace)
+"bM" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 9
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bN" = (
+/obj/machinery/deepfryer,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bO" = (
+/obj/machinery/door/airlock/freezer,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bP" = (
+/obj/machinery/door/airlock/gold/glass,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bQ" = (
+/obj/machinery/door/airlock/silver,
+/obj/structure/fans/tiny,
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/powered/macspace)
+"bR" = (
+/obj/machinery/door/airlock/silver,
+/turf/open/floor/mineral/gold,
+/area/ruin/space/has_grav/powered/macspace)
+"bS" = (
+/obj/machinery/door/airlock/silver,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bT" = (
+/obj/machinery/gibber,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bU" = (
+/obj/machinery/jukebox,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bV" = (
+/obj/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bW" = (
+/obj/machinery/light,
+/obj/item/kitchen/knife/butcher,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bX" = (
+/obj/machinery/light,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"bY" = (
+/obj/machinery/light/floor,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"bZ" = (
+/obj/machinery/light/floor,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/water/air,
+/area/ruin/space/has_grav/powered/macspace)
+"ca" = (
+/obj/machinery/light/floor,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cb" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cc" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cd" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"ce" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/toy/prize/honk,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cf" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/reagent_dispensers/beerkeg,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cg" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"ch" = (
+/obj/machinery/mech_bay_recharge_port,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/powered/macspace)
+"ci" = (
+/obj/machinery/microwave{
+	pixel_y = 5
+	},
+/obj/structure/table,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cj" = (
+/obj/machinery/processor,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"ck" = (
+/obj/machinery/reagentgrinder{
+	pixel_y = 5
+	},
+/obj/structure/table,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cl" = (
+/obj/machinery/smartfridge/food,
+/turf/closed/wall,
+/area/ruin/space/has_grav/powered/macspace)
+"cm" = (
+/obj/machinery/space_heater,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cn" = (
+/obj/machinery/vending/boozeomat/all_access,
+/turf/closed/wall,
+/area/ruin/space/has_grav/powered/macspace)
+"co" = (
+/obj/machinery/vending/cola,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cp" = (
+/obj/machinery/vending/donksofttoyvendor,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cq" = (
+/obj/machinery/vending/wardrobe/chef_wardrobe,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cr" = (
+/obj/structure/chair/stool/bar,
+/obj/item/toy/figure/assistant,
+/obj/effect/decal/cleanable/food/tomato_smudge,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cs" = (
+/obj/structure/chair/stool/bar,
+/obj/item/toy/figure/assistant,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/effect/decal/cleanable/food/tomato_smudge,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"ct" = (
+/obj/structure/chair/stool/bar,
+/obj/item/toy/figure/atmos,
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cu" = (
+/obj/structure/chair/stool/bar,
+/obj/item/toy/figure/captain,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cv" = (
+/obj/structure/chair/stool/bar,
+/obj/item/toy/figure/ce,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cw" = (
+/obj/structure/chair/stool/bar,
+/obj/item/toy/figure/engineer,
+/obj/item/toy/plush/carpplushie,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cx" = (
+/obj/structure/chair/stool/bar,
+/obj/item/toy/figure/engineer,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cy" = (
+/obj/structure/chair/stool/bar,
+/obj/item/toy/figure/hop,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cz" = (
+/obj/structure/chair/stool/bar,
+/obj/item/toy/figure/ian,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cA" = (
+/obj/structure/chair/stool/bar,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cB" = (
+/obj/structure/chair/stool/bar,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cC" = (
+/obj/structure/chair/wood/wings,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cD" = (
+/obj/structure/chair/wood/wings,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cE" = (
+/obj/structure/chair/wood/wings,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cF" = (
+/obj/structure/chair/wood/wings{
+	dir = 1
+	},
+/obj/item/toy/plush/nukeplushie,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cG" = (
+/obj/structure/chair/wood/wings{
+	dir = 1
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cH" = (
+/obj/structure/chair/wood/wings{
+	dir = 4
+	},
+/obj/item/toy/figure/chemist,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cI" = (
+/obj/structure/chair/wood/wings{
+	dir = 4
+	},
+/obj/item/toy/figure/cmo,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cJ" = (
+/obj/structure/chair/wood/wings{
+	dir = 4
+	},
+/obj/item/toy/figure/geneticist,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cK" = (
+/obj/structure/chair/wood/wings{
+	dir = 4
+	},
+/obj/item/toy/figure/roboticist,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cL" = (
+/obj/structure/chair/wood/wings{
+	dir = 4
+	},
+/obj/item/toy/figure/scientist,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cM" = (
+/obj/structure/chair/wood/wings{
+	dir = 4
+	},
+/obj/item/toy/toy_xeno,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cN" = (
+/obj/structure/chair/wood/wings{
+	dir = 4
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cO" = (
+/obj/structure/chair/wood/wings{
+	dir = 8
+	},
+/obj/item/toy/figure/md,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cP" = (
+/obj/structure/chair/wood/wings{
+	dir = 8
+	},
+/obj/item/toy/figure/virologist,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cQ" = (
+/obj/structure/chair/wood/wings{
+	dir = 8
+	},
+/obj/item/toy/plush/slimeplushie,
+/obj/item/toy/figure/rd,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cR" = (
+/obj/structure/chair/wood/wings{
+	dir = 8
+	},
+/obj/item/toy/talking/AI,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cS" = (
+/obj/structure/chair/wood/wings{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"cT" = (
+/obj/structure/chair/wood/wings{
+	dir = 8
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cU" = (
+/obj/structure/closet/crate/freezer/blood,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cV" = (
+/obj/structure/closet/secure/loot,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cW" = (
+/obj/structure/closet/secure_closet/bar{
+	req_access = null
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cX" = (
+/obj/structure/closet/secure_closet/freezer/kitchen{
+	locked = 0;
+	req_access = null
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cY" = (
+/obj/structure/closet/secure_closet/freezer/kitchen{
+	req_access = null
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"cZ" = (
+/obj/structure/closet/secure_closet/freezer/meat{
+	req_access = null
+	},
+/obj/item/aicard/aitater,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"da" = (
+/obj/structure/closet/secure_closet/freezer/meat{
+	req_access = null
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"db" = (
+/obj/structure/reagent_dispensers/nutriment/fat/oil,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"dc" = (
+/obj/structure/sign/poster/contraband/eat,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/closed/wall,
+/area/ruin/space/has_grav/powered/macspace)
+"dd" = (
+/obj/structure/sign/poster/contraband/eat,
+/turf/closed/wall,
+/area/ruin/space/has_grav/powered/macspace)
+"de" = (
+/obj/structure/sink/kitchen{
+	pixel_y = 20
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"df" = (
+/obj/structure/statue/silver/sec,
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/powered/macspace)
+"dg" = (
+/obj/structure/table/wood/fancy/blue,
+/obj/item/food/burger/jelly/slime,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"dh" = (
+/obj/structure/table/wood/fancy/blue,
+/obj/item/food/pizza/margherita,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"di" = (
+/obj/structure/table/wood/fancy/blue,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"dj" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/food/burger/fish,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"dk" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/food/burger/superbite,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"dl" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/food/burger/superbite,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"dm" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/food/butter/on_a_stick,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"dn" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/food/carrotfries,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"do" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/food/fishfingers,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"dp" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/food/friedegg,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"dq" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/food/fries,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"dr" = (
+/obj/structure/table/wood/fancy/red,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"ds" = (
+/obj/structure/table/wood/fancy/royalblue,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"dt" = (
+/obj/structure/table/wood/fancy/royalblue,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"du" = (
+/obj/structure/tank_dispenser,
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/powered/macspace)
+"dv" = (
+/obj/vehicle/ridden/atv,
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/powered/macspace)
+"dw" = (
+/obj/vehicle/ridden/janicart/upgraded,
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/powered/macspace)
+"dx" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/powered)
+"dy" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/powered/macspace)
+"dz" = (
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/powered/macspace)
+"dA" = (
+/turf/open/floor/mech_bay_recharge_floor,
+/area/ruin/space/has_grav/powered/macspace)
+"dB" = (
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/powered/macspace)
+"dC" = (
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/has_grav/powered/macspace)
+"dD" = (
+/turf/open/floor/plasteel/stairs,
+/area/ruin/space/has_grav/powered/macspace)
+"dE" = (
+/turf/open/floor/plating/asteroid/airless,
+/area/ruin/space/has_grav/powered)
+"dF" = (
+/turf/open/floor/plating/asteroid/airless,
+/area/ruin/space/has_grav/powered/macspace)
+"dG" = (
+/turf/open/space/basic,
+/area/space)
+"dH" = (
+/turf/template_noop,
+/area/template_noop)
+
+(1,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(2,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(3,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(4,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(5,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dG
+dG
+dG
+dE
+dE
+dE
+dE
+dG
+dG
+dG
+dG
+dE
+dE
+dG
+dG
+dG
+dG
+dE
+dG
+dG
+dG
+dG
+dG
+dG
+dG
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(6,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dG
+dG
+dG
+dE
+dE
+dE
+dE
+dG
+dG
+dE
+dE
+dE
+dE
+dE
+dG
+dG
+dE
+dE
+dE
+dE
+dE
+dG
+dG
+dG
+dG
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(7,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dG
+dG
+dG
+dE
+dE
+dE
+dE
+dE
+dE
+dx
+dx
+dx
+dE
+dE
+dE
+dE
+dE
+dE
+dE
+dE
+dE
+dE
+dG
+dG
+dG
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(8,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dG
+dF
+dE
+dE
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dE
+dE
+dE
+dG
+dG
+dG
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(9,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dG
+dF
+dE
+dE
+dy
+cm
+be
+dC
+ce
+bi
+cN
+cg
+dC
+bq
+cN
+cg
+dC
+dC
+dy
+dE
+dE
+dE
+dE
+dG
+dG
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(10,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dG
+dE
+dF
+dE
+dy
+bj
+av
+cG
+ag
+au
+aN
+dC
+al
+az
+ar
+bt
+aL
+bn
+dy
+dE
+dE
+dE
+dE
+dG
+dG
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(11,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dG
+dE
+dF
+dE
+dy
+bv
+aZ
+ap
+dC
+ax
+aE
+dz
+aj
+aH
+aD
+bl
+aW
+br
+dy
+dx
+dE
+dE
+dE
+dE
+dE
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(12,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dG
+dE
+dE
+dF
+dy
+ag
+ag
+ag
+ag
+bo
+cS
+af
+ad
+cS
+bu
+bk
+ay
+br
+dy
+dx
+dE
+dE
+dE
+dE
+dE
+dE
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(13,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dG
+dE
+dE
+dE
+dy
+dC
+di
+di
+dC
+dC
+ao
+af
+af
+ca
+af
+dz
+al
+bX
+dy
+dx
+dx
+dE
+dE
+dE
+dE
+dE
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(14,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dE
+dE
+dE
+dF
+dy
+bU
+cT
+cT
+cd
+cB
+cw
+cA
+dz
+af
+af
+cD
+aB
+cG
+dy
+dy
+dy
+dy
+dy
+dB
+dB
+dE
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(15,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dE
+dE
+dE
+dF
+dy
+dy
+dy
+dy
+dy
+dr
+dj
+ct
+ao
+af
+ac
+cD
+di
+cG
+dy
+dB
+du
+du
+dy
+dv
+dB
+dE
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(16,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dE
+dE
+dE
+dE
+dy
+cV
+dC
+dy
+cW
+ba
+dr
+cA
+dz
+aj
+ai
+cD
+aB
+cG
+dd
+dB
+dB
+dB
+dd
+dB
+dB
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(17,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dE
+dE
+dE
+dE
+dy
+de
+dC
+dy
+cW
+bh
+do
+cx
+aA
+ds
+at
+dz
+dC
+bX
+dy
+df
+dB
+dB
+dy
+dv
+dB
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(18,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dE
+dE
+dE
+dx
+dy
+cj
+dC
+bP
+dC
+al
+dl
+cv
+dt
+bZ
+ds
+dz
+ag
+dC
+bR
+dD
+dB
+dB
+bQ
+dB
+dB
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(19,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dE
+dE
+dE
+dx
+dy
+ck
+bW
+dy
+cb
+dC
+dr
+cu
+aA
+ds
+aw
+dz
+ae
+ag
+bR
+dD
+dB
+dB
+bQ
+dB
+dB
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(20,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dE
+dy
+dy
+dy
+dy
+ci
+dC
+cl
+dC
+dC
+dn
+cA
+dz
+af
+af
+dz
+dC
+bV
+dy
+df
+dB
+dB
+dy
+dB
+dB
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(21,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dE
+dy
+bx
+bI
+dy
+bN
+dC
+dy
+bJ
+bg
+dk
+cs
+cM
+cL
+cK
+cC
+aG
+cG
+dc
+ch
+bA
+dB
+dd
+dB
+dB
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(22,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dE
+dy
+bx
+bD
+bF
+bE
+bG
+bF
+bB
+bz
+dp
+cA
+as
+dh
+dg
+cD
+aC
+cG
+dy
+dA
+bL
+bw
+dy
+dv
+dB
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(23,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dx
+dy
+bx
+bM
+bS
+dC
+dC
+cn
+dC
+dC
+dq
+cr
+cQ
+cR
+cR
+cD
+aF
+cG
+dy
+bK
+bC
+bH
+dy
+dv
+dB
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(24,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dx
+dy
+cq
+dC
+dy
+dC
+bX
+dy
+dC
+bf
+dl
+cr
+dz
+dz
+dz
+aj
+dC
+bX
+dy
+by
+by
+by
+dy
+dB
+dB
+dE
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(25,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dE
+dy
+aq
+dC
+dy
+dC
+an
+dy
+dC
+an
+dr
+cy
+af
+bY
+af
+cD
+aR
+bd
+dy
+dy
+dy
+dy
+dy
+dB
+dw
+dE
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(26,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dE
+dy
+dy
+dy
+dy
+dC
+dC
+bP
+dC
+dC
+dm
+cz
+dz
+dz
+am
+cD
+aQ
+bd
+dy
+dx
+dE
+dE
+dE
+dE
+dE
+dE
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(27,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dE
+dx
+dx
+dx
+dy
+cp
+dC
+dy
+dC
+dC
+dr
+cA
+cJ
+cI
+cH
+bp
+aT
+bd
+dy
+dE
+dE
+dE
+dE
+dE
+dE
+dE
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(28,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dE
+dE
+dE
+dx
+dy
+co
+dC
+dy
+ab
+cd
+dC
+cA
+aJ
+aK
+aM
+dz
+dC
+bX
+dy
+dE
+dE
+dE
+dE
+dE
+dE
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(29,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dG
+dE
+dE
+dE
+dy
+dy
+bO
+dy
+dy
+dy
+dy
+dC
+cT
+cO
+cP
+cE
+aV
+cG
+dy
+dE
+dE
+dE
+dG
+dE
+dG
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(30,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dE
+dE
+dE
+dE
+dy
+aa
+an
+cf
+dC
+aY
+dy
+dC
+dC
+ak
+dC
+cE
+aS
+cF
+dy
+dE
+dE
+dE
+dG
+dE
+dG
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(31,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dG
+dE
+dE
+dE
+dy
+cX
+an
+ah
+aX
+db
+dy
+dC
+cN
+cN
+cN
+cE
+aU
+bs
+dy
+dE
+dE
+dE
+dE
+dE
+dG
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(32,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dE
+dE
+dE
+dE
+dy
+cY
+al
+dC
+dC
+dC
+dy
+dC
+aI
+aP
+aO
+ak
+ak
+bX
+dy
+dE
+dE
+dE
+dE
+dG
+dG
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(33,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dG
+dE
+dE
+dx
+dy
+dC
+cU
+da
+cZ
+bT
+dy
+cc
+bm
+bb
+bc
+cd
+dC
+dC
+dy
+dE
+dE
+dE
+dE
+dG
+dG
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(34,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dG
+dE
+dx
+dx
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dE
+dE
+dG
+dG
+dG
+dG
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(35,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dG
+dG
+dE
+dE
+dx
+dx
+dx
+dE
+dE
+dE
+dx
+dE
+dE
+dx
+dx
+dx
+dx
+dx
+dE
+dE
+dG
+dG
+dG
+dG
+dG
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(36,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dG
+dG
+dG
+dE
+dx
+dE
+dE
+dE
+dE
+dG
+dG
+dG
+dG
+dG
+dE
+dE
+dE
+dG
+dG
+dG
+dG
+dG
+dG
+dG
+dG
+dG
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(37,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(38,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(39,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}
+(40,1,1) = {"
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+dH
+"}

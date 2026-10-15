@@ -659,7 +659,9 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                       }}
                       setGender={createSetPreference(act, 'gender')}
                       showGender={
-                        currentSpeciesData ? !!currentSpeciesData.sexes : true
+                        // Bez płci od serwera (rasa AGENDER, postać jeszcze niewczytana) nie ma czego pokazać
+                        !!GENDERS[data.character_preferences.misc.gender] &&
+                        (currentSpeciesData ? !!currentSpeciesData.sexes : true)
                       }
                     />
                   </Stack.Item>
