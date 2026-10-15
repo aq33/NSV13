@@ -66,6 +66,10 @@ GLOBAL_DATUM(test_chamber, /datum/test_chamber)
 	if(!template.load(bottom_left()))
 		log_world("Test chamber: unable to load the template")
 		return FALSE
+	// Na CI komora potrafiła wyjść z ładowania z 0 kPa (loader robi stoplag(), a dookoła jest kosmos
+	// rezerwacji), więc po załadowaniu wypełniamy pokój domyślnym powietrzem.
+	for(var/turf/open/T in reservation.reserved_turfs)
+		T.Initalize_Atmos(0)
 	arrival = null
 	kit_center = null
 	for(var/turf/T as anything in reservation.reserved_turfs)
@@ -82,15 +86,22 @@ GLOBAL_DATUM(test_chamber, /datum/test_chamber)
 
 /// Usuwa wszystko poza graczami (i tym, co mają przy sobie) i układa komorę od nowa
 /datum/test_chamber/proc/reset()
-	for(var/turf/T as anything in reservation.reserved_turfs)
-		for(var/atom/movable/AM as anything in T)
-			if(ismob(AM))
-				var/mob/M = AM
-				if(M.key || isobserver(M))
-					continue
-			else if(!isobj(AM))
-				continue // lighting objects itp.
-			qdel(AM)
+	// Kilka przebiegów: usuwane rzeczy potrafią coś po sobie zostawić na już wyczyszczonym polu
+	// (np. zawartość usuniętych szafek i skrzyń albo ektoplazma rewenanta z zestawu)
+	for(var/pass in 1 to 5)
+		var/deleted = 0
+		for(var/turf/T as anything in reservation.reserved_turfs)
+			for(var/atom/movable/AM as anything in T)
+				if(ismob(AM))
+					var/mob/M = AM
+					if(M.key || isobserver(M))
+						continue
+				else if(!isobj(AM))
+					continue // lighting objects itp.
+				qdel(AM)
+				deleted++
+		if(!deleted)
+			break
 	for(var/turf/T as anything in reservation.reserved_turfs)
 		// Świeży turf tego samego typu: czyste powietrze, bez spalonej i rozbitej podłogi
 		T.ChangeTurf(T.type, flags = CHANGETURF_FORCEOP | CHANGETURF_IGNORE_AIR)

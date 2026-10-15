@@ -56,6 +56,14 @@
 	},
 /turf/closed/wall/r_wall/ship,
 /area/engine/atmos)
+"ah" = (
+/obj/machinery/computer/piratepad_control/civilian,
+/obj/machinery/airalarm/directional/north,
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/turf/open/floor/monotile/light,
+/area/quartermaster/lobby)
 "ai" = (
 /obj/machinery/computer/telecomms/monitor{
 	dir = 8;
@@ -76,6 +84,22 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /turf/open/floor/carpet/ship/beige_carpet,
 /area/hallway/nsv/deck1/hallway)
+"al" = (
+/obj/machinery/piratepad/civilian,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/firealarm/directional/south,
+/turf/open/floor/monotile/light,
+/area/quartermaster/lobby)
+"am" = (
+/obj/machinery/materials_market,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/monotile/light,
+/area/quartermaster)
 "an" = (
 /obj/item/radio/intercom/directional/south,
 /obj/structure/chair/fancy/gauss/east,
@@ -185,11 +209,79 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/plating,
 /area/maintenance/starboard/central)
+"aA" = (
+/obj/machinery/conveyor/auto{
+	dir = 1
+	},
+/obj/machinery/door/window/eastleft,
+/turf/open/floor/plating,
+/area/maintenance/disposal)
+"aB" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/conveyor/auto{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/maintenance/disposal)
 "aC" = (
 /obj/structure/closet/secure_closet/munitions_technician,
 /obj/structure/window/reinforced/spawner/east,
 /turf/open/floor/plasteel/dark,
 /area/nsv/weapons)
+"aD" = (
+/obj/structure/cable,
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=8";
+	location = "Cargo Bay";
+	name = "navigation beacon (Cargo Bay Delivery)"
+	},
+/mob/living/simple_animal/bot/mulebot{
+	home_destination = "Cargo Bay";
+	name = "Furman"
+	},
+/turf/open/floor/monotile/light,
+/area/quartermaster)
+"aE" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/structure/disposaloutlet{
+	dir = 2
+	},
+/turf/open/floor/monotile/light,
+/area/quartermaster)
+"aF" = (
+/obj/structure/disposalpipe/sorting/wrap/flip{
+	dir = 8
+	},
+/obj/effect/landmark/start/cargo_technician,
+/obj/machinery/light/floor,
+/turf/open/floor/monotile/light,
+/area/quartermaster)
+"aG" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/structure/cable,
+/obj/structure/disposalpipe/junction/flip{
+	dir = 4
+	},
+/turf/open/floor/monotile/light,
+/area/quartermaster)
+"aH" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/light/floor,
+/obj/structure/cable,
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=2";
+	location = "Engineering";
+	name = "navigation beacon (Engineering Delivery)"
+	},
+/turf/open/floor/carpet/ship/beige_carpet,
+/area/hallway/nsv/deck1/hallway)
 "aI" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 9;
@@ -224,6 +316,22 @@
 /obj/structure/cable,
 /turf/open/floor/monotile/steel,
 /area/engine/armour_pump)
+"aN" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=1";
+	location = "Munitions";
+	name = "navigation beacon (Munitions Delivery)"
+	},
+/turf/open/floor/carpet/ship/beige_carpet,
+/area/hallway/nsv/deck1/hallway)
 "aO" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
 /obj/machinery/newscaster/directional/north,
@@ -836,7 +944,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/visible/layer2{
 	dir = 5
 	},
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /turf/open/floor/engine,
 /area/engine/atmos)
 "eu" = (
@@ -2512,7 +2620,7 @@
 /turf/open/floor/carpet/ship/beige_carpet,
 /area/hallway/nsv/deck1/hallway)
 "nh" = (
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark/side{
 	dir = 10
@@ -2637,7 +2745,7 @@
 /area/quartermaster)
 "nV" = (
 /obj/machinery/airalarm/directional/east,
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /turf/open/floor/monotile/steel,
 /area/engine/engineering)
 "nW" = (
@@ -6193,7 +6301,7 @@
 /area/quartermaster)
 "HP" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /turf/open/floor/plasteel/ridged/steel,
 /area/engine/break_room)
 "HS" = (
@@ -8082,7 +8190,7 @@
 	name = "Engineering RC";
 	pixel_x = -30
 	},
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /turf/open/floor/plasteel/dark/side{
 	dir = 4
 	},
@@ -36225,8 +36333,8 @@ Sg
 Sg
 Sg
 pC
-UT
-sy
+aB
+aA
 rm
 He
 Od
@@ -36747,7 +36855,7 @@ Od
 tW
 Eb
 Ig
-RE
+aD
 dE
 jF
 Fm
@@ -37772,8 +37880,8 @@ bG
 gs
 cJ
 Dc
-KN
-kx
+aF
+aE
 kx
 kZ
 Iy
@@ -38799,7 +38907,7 @@ wM
 uO
 qo
 It
-RB
+aG
 tS
 oG
 NQ
@@ -39568,9 +39676,9 @@ SU
 lq
 gK
 Gt
-jI
+al
 CY
-vB
+am
 Oy
 kx
 kx
@@ -39823,7 +39931,7 @@ KU
 lj
 lj
 CY
-Oe
+ah
 oW
 Ql
 dt
@@ -40841,7 +40949,7 @@ PL
 nh
 mY
 tQ
-sP
+aH
 Ta
 RS
 Uv
@@ -43680,7 +43788,7 @@ rA
 rA
 rA
 tj
-Mt
+aN
 My
 Pw
 td

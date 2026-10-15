@@ -537,7 +537,7 @@
 				"allowed_roles" = gear.allowed_roles,
 				"is_equippable" = !!gear.path,
 				"can_preview" = gear.can_preview(),
-				"multi_purchase" = FALSE,
+				"multi_purchase" = gear.multi_purchase,
 			))
 		categories += list(list(
 			"name" = category.category,
@@ -551,7 +551,7 @@
 /// Zakup jak w starym menu, z rozróżnieniem przedmiotów za monety i darczyńców NSV
 /datum/preference_middleware/loadout/proc/purchase_gear(list/params, mob/user)
 	var/datum/gear/gear = GLOB.gear_datums[params["id"]]
-	if(!istype(gear) || (gear.id in preferences.purchased_gear))
+	if(!istype(gear) || (!gear.multi_purchase && (gear.id in preferences.purchased_gear)))
 		return FALSE
 	var/client/C = user.client
 	switch(gear.unlocktype)
@@ -564,9 +564,10 @@
 			if(gear.cost >= cached_balance)
 				to_chat(user, "<span class='warning'>You don't have enough [CONFIG_GET(string/metacurrency_name)]s to purchase \the [gear.display_name]!</span>")
 				return TRUE
-			preferences.purchased_gear += gear.id
-			gear.purchase(C)
+			if(!gear.multi_purchase) // towar zużywalny (np. antag token) można kupować wiele razy
+				preferences.purchased_gear += gear.id
 			C.inc_metabalance((gear.cost * -1), TRUE, "Purchased [gear.display_name].")
+			gear.purchase(C)
 			preferences.save_preferences()
 			refresh_balance()
 		if(GEAR_DONATOR)

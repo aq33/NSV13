@@ -357,3 +357,50 @@
   - bugfix: ruiny górnicze mining4 i mining5 ładują się bez błędów
   - bugfix: corgi-ochroniarz nie sypie błędem przy pojawieniu się
   - code_imp: CI sprawdza mapy górnicze, test ładowania wszystkich asteroid
+  - rscadd: 'Zlecenia cywilne z tgstation: konsola i pad zleceń, propozycje zależne
+      od pracy, wspólna lista zleceń statku, kostki zleceń z udziałem dla wykonawców
+      i napiwkiem dla zaopatrzenia, patrole dla ochrony.'
+  - rscadd: 'Galaktyczny rynek materiałów z tgstation: ceny materiałów zmieniają się
+      co minutę, sprzedaż przez stock blocki, kupno arkuszy na prom zaopatrzenia,
+      wiadomości giełdowe w newscasterze.'
+  - balance: Żelazo, szkło, srebro, złoto, uran, tytan, diamenty i kryształy bluespace
+      sprzedają się promem po cenie z giełdy.
+  - imageadd: Ikony kostki zleceń, stock blocka, maszyny rynku i ekranu konsoli zleceń
+      cywilnych z tgstation.
+  - rscadd: Inflacja i raport ekonomiczny w newscasterze, event krachu rynku podnoszący
+      ceny w automatach.
+  - rscadd: Zlecenia cywilne dla amunicji, pilotów, górników, mostka i woźnego.
+  - rscadd: Raport najbogatszych ewakuowanych na koniec rundy (saldo z karty ID, jak
+      przy aquilosach) i ranking zarobków wszech czasów zapisywany w bazie (czasownik
+      OOC „Ranking zarobków”).
+  - server: Nowe tabele bazy SS13_economy_earnings i SS13_aquila_perks (gra tworzy
+      je sama, schemat w SQL/).
+  - rscadd: 'Raport końca rundy w nowym oknie: wynik, statystyki, misja, zarobki wszystkich
+      graczy i ranking; ranking zarobków z podium.'
+  - rscadd: 'Sklep za aquilosy: antag token za 10 000 (do kupowania wielokrotnie),
+      bilet na pracę, ubezpieczenie salda, odznaki w rankingu, event token i admin
+      item token.'
+  - rscadd: Luminol ujawnia zmytą krew, ślady prochu na strzelcu i broni, balistyka
+      (sygnatury broni na łuskach i kulach, numery seryjne)
+  - rscadd: Autopsja pokazuje, czym, ile i kiedy zraniono każdą kończynę, oraz kule
+      w ciele
+  - rscadd: Program NTOS do czytania logów dostępu drzwi i szafek
+  - rscadd: Taśma policyjna, znaczniki dowodów, kreda z obrysem, holobariera detektywa,
+      strefa zamknięta na projektorze ochrony
+  - tweak: Interfejs więźniów i kodeks po polsku, można wybrać kilka zarzutów i czasy
+      się sumują
+  - bugfix: Przycisk „Uciekł” przywraca karcie zwolnionego więźnia wyrok
+  - imageadd: Ikony taśmy, znaczników, holobariery i strefy zamkniętej
+  - soundadd: Alarm strefy zamkniętej
+  - code_imp: Komora testowa ma pewne powietrze po załadowaniu i dokładniej czyści
+      się przy resecie.
+  MrMelbert, joker:
+  - rscadd: 'Nowy antagonista: szpieg. Kradnie cele zleceń uplinkiem ukrytym w PDA,
+      długopisie albo słuchawkach i dostaje za nie sprzęt z uplinka.'
+  - rscadd: 'Czarny rynek: uplink czarnego rynku (crafting), maszyna LTSRBT do odbioru
+      i sprzedaży towarów, kategoria z rzeczami skradzionymi przez szpiegów.'
+  - rscadd: Nowy tryb gry „spy” w łagodnej puli.
+  - soundadd: Muzyka szpiega i dźwięk wykonanego zlecenia z tgstation.
+  - imageadd: Ikony uplinku czarnego rynku, LTSRBT i promienia skanu z tgstation.
+  - config: Wpisy PROBABILITY, CONTINUOUS, MIN_POP, MAX_POP i WEIGHTED_POOL dla trybu
+      SPY.

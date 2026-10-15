@@ -105,7 +105,6 @@
 	log_admin("[key_name(admin)] has head-rev'ed [O].")
 
 /datum/antagonist/rev/head/admin_add(datum/mind/new_owner,mob/admin)
-	give_flash = TRUE
 	give_hud = TRUE
 	remove_clumsy = TRUE
 	new_owner.add_antag_datum(src)
@@ -116,40 +115,7 @@
 /datum/antagonist/rev/head/get_admin_commands()
 	. = ..()
 	. -= "Promote"
-	.["Take flash"] = CALLBACK(src,PROC_REF(admin_take_flash))
-	.["Give flash"] = CALLBACK(src,PROC_REF(admin_give_flash))
-	.["Repair flash"] = CALLBACK(src,PROC_REF(admin_repair_flash))
 	.["Demote"] = CALLBACK(src,PROC_REF(admin_demote))
-
-/datum/antagonist/rev/head/proc/admin_take_flash(mob/admin)
-	var/list/L = owner.current.get_contents()
-	var/obj/item/assembly/flash/flash = locate() in L
-	if (!flash)
-		to_chat(admin, "<span class='danger'>Deleting flash failed!</span>")
-		return
-	qdel(flash)
-
-/datum/antagonist/rev/head/proc/admin_give_flash(mob/admin)
-	//This is probably overkill but making these impact state annoys me
-	var/old_give_flash = give_flash
-	var/old_give_hud = give_hud
-	var/old_remove_clumsy = remove_clumsy
-	give_flash = TRUE
-	give_hud = FALSE
-	remove_clumsy = FALSE
-	equip_rev()
-	give_flash = old_give_flash
-	give_hud = old_give_hud
-	remove_clumsy = old_remove_clumsy
-
-/datum/antagonist/rev/head/proc/admin_repair_flash(mob/admin)
-	var/list/L = owner.current.get_contents()
-	var/obj/item/assembly/flash/flash = locate() in L
-	if (!flash)
-		to_chat(admin, "<span class='danger'>Repairing flash failed!</span>")
-	else
-		flash.burnt_out = FALSE
-		flash.update_icon()
 
 /datum/antagonist/rev/head/proc/admin_demote(datum/mind/target,mob/user)
 	message_admins("[key_name_admin(user)] has demoted [key_name_admin(owner)] from head revolutionary.")
@@ -162,7 +128,6 @@
 	banning_key = ROLE_REV_HEAD
 	required_living_playtime = 4
 	var/remove_clumsy = FALSE
-	var/give_flash = FALSE
 	var/give_hud = TRUE
 
 /datum/antagonist/rev/head/antag_listing_name()
@@ -192,11 +157,7 @@
 	if(!can_be_converted(rev_mind.current))
 		return FALSE
 	if(stun)
-		if(iscarbon(rev_mind.current))
-			var/mob/living/carbon/carbon_mob = rev_mind.current
-			carbon_mob.silent = max(carbon_mob.silent, 5)
-			carbon_mob.flash_act(1, 1)
-		rev_mind.current.Stun(100)
+		rev_mind.current.Stun(30)
 	rev_mind.add_antag_datum(/datum/antagonist/rev,rev_team)
 	rev_mind.special_role = ROLE_REV
 	return TRUE
@@ -269,18 +230,8 @@
 	if(remove_clumsy)
 		handle_clown_mutation(H, "Dzięki szkoleniu przezwyciężasz swoją klaunią naturę i możesz używać broni, nie raniąc samego siebie.")
 
-	if(give_flash)
-		var/obj/item/assembly/flash/handheld/T = new(H)
-		var/list/slots = list (
-			"backpack" = ITEM_SLOT_BACKPACK,
-			"left pocket" = ITEM_SLOT_LPOCKET,
-			"right pocket" = ITEM_SLOT_RPOCKET
-		)
-		var/where = H.equip_in_one_of_slots(T, slots)
-		if (!where)
-			to_chat(H, "Syndykat niestety nie zdołał zdobyć dla ciebie flesza.")
-		else
-			to_chat(H, "Flesz (miejsce: [where]) pomoże ci przekonać załogę do przyłączenia się do sprawy.")
+	// Aquila: conversion is a spell now (aquila/code/modules/antagonists/revolution/revolution_conversion.dm), not a flash
+	give_conversion_spell()
 
 	if(give_hud)
 		var/obj/item/organ/cyberimp/eyes/hud/security/syndicate/S = new(H)
@@ -446,6 +397,8 @@
 		priority_announce("Ostatnia ocena waszego statku uznała go za obszar wysokiego ryzyka dla wysokich rangą urzędników Nanotrasen. \
 		Dla bezpieczeństwa naszego personelu wstrzymaliśmy nowe zatrudnienia w ochronie i dowództwie waszego statku. \
 		[pick(world.file2list("strings/anti_union_propaganda.txt"))]", null, SSstation.announcer.get_rand_report_sound(), null, "Wydział Nadzoru Lojalności Centrali")
+		if(seclevel2num(get_security_level()) < SEC_LEVEL_RED)
+			set_security_level(SEC_LEVEL_RED)
 		addtimer(CALLBACK(SSshuttle.emergency, TYPE_PROC_REF(/obj/docking_port/mobile/emergency, request), null, 1), 50)
 
 /// Mutates the ticker to report that the revs have won
