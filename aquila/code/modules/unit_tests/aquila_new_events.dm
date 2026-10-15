@@ -53,9 +53,13 @@
 /datum/unit_test/aquila_department_independence
 
 /datum/unit_test/aquila_department_independence/Run()
+	// Tytuły wszystkich prac, także wyłączonych konfiguracją mapy (np. Kontroler Lotów na Serendipity)
+	var/list/all_job_titles = list()
+	for(var/datum/job/job_type as anything in subtypesof(/datum/job))
+		all_job_titles[initial(job_type.title)] = TRUE
 	for(var/list/department in GLOB.aquila_independence_departments)
 		for(var/job in department["jobs"])
-			TEST_ASSERT(SSjob.GetJob(job), "the [department["name"]] department lists an unknown job: [job]")
+			TEST_ASSERT(all_job_titles[job], "the [department["name"]] department lists an unknown job: [job]")
 		TEST_ASSERT(length(department["prefixes"]), "the [department["name"]] department has no nation name prefixes")
 		for(var/list/grievance in department["reasons"])
 			TEST_ASSERT(length(grievance) == 2, "a grievance of the [department["name"]] department is not a reason and demand pair")
