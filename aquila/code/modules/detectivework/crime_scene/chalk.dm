@@ -23,7 +23,15 @@
 	for(var/obj/effect/decal/cleanable/crayon/old in T)
 		if(old.name == "obrys ciała")
 			qdel(old)
-	var/obj/effect/decal/cleanable/crayon/outline = new(T, paint_color, "body", "obrys ciała", L.lying)
+	// Sprite "body" już leży (głowa w prawo, jak ciało z lying = 90), więc nie obracamy go o kąt leżenia,
+	// tylko odbijamy w poziomie dla lying = 270. Figura w sprite'cie jest 4 px pod środkiem, ciało ma własne przesunięcie.
+	var/obj/effect/decal/cleanable/crayon/outline = new(T, paint_color, "body", "obrys ciała")
+	var/matrix/flip = matrix()
+	if(L.lying == 270)
+		flip.Scale(-1, 1)
+	outline.transform = flip
+	outline.pixel_x = L.pixel_x
+	outline.pixel_y = L.pixel_y + 4
 	outline.desc = "Kredowy obrys ciała. Ktoś tu leżał."
 	outline.add_hiddenprint(user)
 	to_chat(user, "<span class='notice'>Kończysz obrys.</span>")
