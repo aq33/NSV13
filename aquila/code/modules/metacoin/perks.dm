@@ -181,7 +181,7 @@ GLOBAL_LIST_EMPTY(event_tokens_in_use)
 
 /datum/gear/ooc/admin_item_token
 	display_name = "admin item token"
-	description = "Przywołaj jeden zabawny przedmiot, który normalnie mają tylko admini (OOC -> Przywołaj przedmiot admina): deskorolka Board Of Directors, nieskończona pizza, wódka Badminka, aparat widzący duchy, mundury i pościel CentComu, wieczna świeca."
+	description = "Przywołaj jeden zabawny przedmiot, który normalnie mają tylko admini (OOC -> Przywołaj przedmiot admina): deskorolka Board Of Directors, nieskończona pizza, wódka Badminka, aparat widzący duchy, mundury CentComu."
 	cost = 5000
 	multi_purchase = TRUE
 
@@ -198,9 +198,6 @@ GLOBAL_LIST_INIT(admin_item_token_items, list(
 	"Mundur oficera CentComu" = /obj/item/clothing/under/rank/centcom/commander,
 	"Mundur funkcjonariusza CentComu" = /obj/item/clothing/under/rank/centcom/officer,
 	"Mundur stażysty CentComu" = /obj/item/clothing/under/rank/centcom/intern,
-	"Pościel CentComu" = /obj/item/bedsheet/centcom,
-	"Podwójna pościel CentComu" = /obj/item/bedsheet/double/centcom,
-	"Wieczna świeca" = /obj/item/candle/infinite,
 ))
 
 /// Admin item token: wybrany przedmiot z listy ląduje w ręce postaci
