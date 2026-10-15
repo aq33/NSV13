@@ -15,6 +15,8 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'mapmerge2'))
 import dmm  # noqa: E402
 
 DUCT = '/obj/machinery/duct'
+# THIRD_DUCT_LAYER, what fixtures, tanks and our ducts use
+DUCT_LAYER_DEFAULT = 4
 TANK = '/obj/structure/reagent_dispensers/plumbed'
 
 # how far a fixture may be from the line before it gets its own tank
@@ -149,7 +151,14 @@ class Plumber:
         return found
 
     def has_duct(self, x, y, z):
-        return DUCT in self.objects(self.tile(x, y, z))
+        """A duct on the default layer, the only one fixtures and our tanks connect to"""
+        for atom in self.tile(x, y, z):
+            if base_path(atom) != DUCT:
+                continue
+            layer = re.search(r'duct_layer = (\d+)', atom)
+            if not layer or int(layer.group(1)) & DUCT_LAYER_DEFAULT:
+                return True
+        return False
 
     def ports(self, fixture, z):
         """Tiles a duct can sit on to feed this fixture"""

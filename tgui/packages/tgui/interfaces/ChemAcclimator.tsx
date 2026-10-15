@@ -7,7 +7,7 @@ type Data = {
   chem_temp: number;
   target_temperature: number;
   max_volume: number;
-  acclimate_state: string;
+  acclimate_state: number;
 };
 
 const States = ['Filling', 'Heating', 'Cooling', 'Emptying'] as const;
@@ -28,7 +28,7 @@ export const ChemAcclimator = (props) => {
               value={target_temperature}
               unit="K"
               width="59px"
-              minValue={0}
+              minValue={1}
               maxValue={1000}
               step={5}
               stepPixelSize={2}

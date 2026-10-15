@@ -3,7 +3,7 @@
 	name = "Plumbing Constructor"
 	desc = "An expertly modified RCD outfitted to construct plumbing machinery."
 	icon_state = "plumberer2"
-	icon = 'icons/obj/tools.dmi'
+	icon = 'aquila/icons/obj/plumbing/plumbing_items.dmi'
 	slot_flags = ITEM_SLOT_BELT
 
 	matter = 200

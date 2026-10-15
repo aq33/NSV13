@@ -29,9 +29,6 @@
 	. = ..()
 	design_ids |= list("water_recycler", "plumbing_rcd_service")
 
-/obj/item/construction/plumbing
-	icon = 'aquila/icons/obj/plumbing/plumbing_items.dmi'
-
 // Plumbed tanks: the water sources for station sinks, toilets and showers
 /obj/structure/reagent_dispensers/plumbed
 	name = "stationary water tank"
