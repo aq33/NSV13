@@ -306,8 +306,8 @@
 		return TRUE
 
 /// A utility function for `/datum/strippable_item`s to start unequipping an item from a mob.
-/proc/start_unequip_mob(obj/item/item, mob/source, mob/user, strip_delay)
-	if(!do_mob(user, source, strip_delay || item.strip_delay))
+/proc/start_unequip_mob(obj/item/item, mob/source, mob/user, strip_delay, hidden = FALSE)
+	if(!do_mob(user, source, strip_delay || item.strip_delay, hidden = hidden))
 		return FALSE
 
 	return TRUE

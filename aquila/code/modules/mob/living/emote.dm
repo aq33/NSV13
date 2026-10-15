@@ -253,26 +253,20 @@
 /datum/emote/living/surrender/get_sound(mob/living/user)
 	return pick('sound/effects/bodyfall1.ogg', 'sound/effects/bodyfall2.ogg', 'sound/effects/bodyfall3.ogg', 'sound/effects/bodyfall4.ogg')
 
-/datum/emote/living/jump/run_emote(mob/living/user, params, type_override, intentional)
-	. = ..()
-	if(!.)
-		return FALSE
-	animate(user, pixel_y = user.pixel_y + 4, time = 0.1 SECONDS)
-	animate(pixel_y = user.pixel_y - 4, time = 0.1 SECONDS)
-
 /datum/emote/living/jump/get_sound(mob/living/user)
 	return 'sound/weapons/thudswoosh.ogg'
 
+// Animacje emotek: port z BeeStation-Hornet (code/modules/mob/living/emote.dm)
 #define SHIVER_LOOP_DURATION (1 SECONDS)
 /datum/emote/living/shiver/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
 	if(!.)
-		return FALSE
-	animate(user, pixel_x = user.pixel_x + 1, time = 0.1 SECONDS)
+		return
+	animate(user, pixel_x = 1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
 	for(var/i in 1 to SHIVER_LOOP_DURATION / (0.2 SECONDS)) //desired total duration divided by the iteration duration to give the necessary iteration count
-		animate(pixel_x = user.pixel_x - 1, time = 0.1 SECONDS)
-		animate(pixel_x = user.pixel_x + 1, time = 0.1 SECONDS)
-	animate(pixel_x = user.pixel_x - 1, time = 0.1 SECONDS)
+		animate(pixel_x = -2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
+		animate(pixel_x = 2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
+	animate(pixel_x = -1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)
 #undef SHIVER_LOOP_DURATION
 
 /datum/emote/living/smirk
@@ -284,41 +278,42 @@
 /datum/emote/living/sway/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
 	if(!.)
-		return FALSE
-	animate(user, pixel_x = user.pixel_x + 2, time = 0.5 SECONDS)
+		return
+	animate(user, pixel_x = 2, time = 0.5 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
 	for(var/i in 1 to 2)
-		animate(pixel_x = user.pixel_x - 4, time = 1.0 SECONDS)
-		animate(pixel_x = user.pixel_x + 4, time = 1.0 SECONDS)
-	animate(pixel_x = user.pixel_x - 2, time = 0.5 SECONDS)
+		animate(pixel_x = -6, time = 1.0 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
+		animate(pixel_x = 6, time = 1.0 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
+	animate(pixel_x = -2, time = 0.5 SECONDS, flags = ANIMATION_RELATIVE)
 
 #define TREMBLE_LOOP_DURATION (4.4 SECONDS)
 /datum/emote/living/tremble/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
 	if(!.)
-		return FALSE
-	animate(user, pixel_x = user.pixel_x + 2, time = 0.2 SECONDS)
+		return
+	animate(user, pixel_x = 2, time = 0.2 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
 	for(var/i in 1 to TREMBLE_LOOP_DURATION / (0.4 SECONDS)) //desired total duration divided by the iteration duration to give the necessary iteration count
-		animate(pixel_x = user.pixel_x - 2, time = 0.2 SECONDS)
-		animate(pixel_x = user.pixel_x + 2, time = 0.2 SECONDS)
-	animate(pixel_x = user.pixel_x - 2, time = 0.2 SECONDS)
+		animate(pixel_x = -4, time = 0.2 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
+		animate(pixel_x = 4, time = 0.2 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
+	animate(pixel_x = -2, time = 0.2 SECONDS, flags = ANIMATION_RELATIVE)
 #undef TREMBLE_LOOP_DURATION
 
 /datum/emote/living/twitch/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
 	if(!.)
-		return FALSE
-	animate(user, pixel_x = user.pixel_x - 1, time = 0.1 SECONDS)
-	animate(pixel_x = user.pixel_x + 1, time = 0.1 SECONDS)
+		return
+	animate(user, pixel_x = 1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
+	animate(pixel_x = -2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)
 	animate(time = 0.1 SECONDS)
-	animate(pixel_x = user.pixel_x - 1, time = 0.1 SECONDS)
-	animate(pixel_x = user.pixel_x + 1, time = 0.1 SECONDS)
+	animate(pixel_x = 2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)
+	animate(pixel_x = -1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)
 
 /datum/emote/living/twitch_s/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
 	if(!.)
-		return FALSE
-	animate(user, pixel_x = user.pixel_x - 1, time = 0.1 SECONDS)
-	animate(pixel_x = user.pixel_x + 1, time = 0.1 SECONDS)
+		return
+	animate(user, pixel_x = -1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
+	animate(pixel_x = 1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)
+
 
 /datum/emote/living/giggle/get_sound(mob/living/user)
 	if(!ishuman(user))
@@ -345,3 +340,11 @@
 
 /datum/emote/living/snap/three/get_sound(mob/living/user)
 	return 'aquila/sound/emotes/snap3.ogg'
+
+// Animacja skoku: jak jump_animation z tgstation, ale względnie, żeby nie nadpisać obrotu leżenia
+/datum/emote/living/jump/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+	animate(user, pixel_y = 4, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
+	animate(pixel_y = -4, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)

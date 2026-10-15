@@ -203,7 +203,7 @@ GLOBAL_LIST_EMPTY(species_list)
 		else
 			return "unknown"
 
-/proc/do_mob(mob/user , mob/target, time = 30, uninterruptible = 0, progress = 1, datum/callback/extra_checks = null)
+/proc/do_mob(mob/user , mob/target, time = 30, uninterruptible = 0, progress = 1, datum/callback/extra_checks = null, hidden = FALSE) // AQ EDIT - hidden (cogbar)
 	if(!user || !target)
 		return FALSE
 	var/user_loc = user.loc
@@ -221,6 +221,9 @@ GLOBAL_LIST_EMPTY(species_list)
 	var/datum/progressbar/progbar
 	if(progress)
 		progbar = new(user, time, target)
+	var/datum/cogbar/cog // AQ EDIT - cogbar
+	if(progress && !hidden && time >= 1 SECONDS)
+		cog = new(user)
 
 	var/endtime = world.time+time
 	var/starttime = world.time
@@ -244,6 +247,7 @@ GLOBAL_LIST_EMPTY(species_list)
 			break
 	if(progress)
 		qdel(progbar)
+	cog?.remove() // AQ EDIT - cogbar
 
 	if(!QDELETED(target))
 		LAZYREMOVE(user.do_afters, target)
@@ -263,7 +267,7 @@ GLOBAL_LIST_EMPTY(species_list)
 		checked_health["health"] = health
 	return ..()
 
-/proc/do_after(mob/user, var/delay, needhand = 1, atom/target = null, progress = 1, datum/callback/extra_checks = null)
+/proc/do_after(mob/user, var/delay, needhand = 1, atom/target = null, progress = 1, datum/callback/extra_checks = null, hidden = FALSE) // AQ EDIT - hidden (cogbar)
 	if(!user)
 		return FALSE
 	var/atom/Tloc = null
@@ -291,6 +295,9 @@ GLOBAL_LIST_EMPTY(species_list)
 	var/datum/progressbar/progbar
 	if(progress)
 		progbar = new(user, delay, target)
+	var/datum/cogbar/cog // AQ EDIT - cogbar
+	if(progress && !hidden && delay >= 1 SECONDS)
+		cog = new(user)
 
 	var/endtime = world.time + delay
 	var/starttime = world.time
@@ -335,6 +342,7 @@ GLOBAL_LIST_EMPTY(species_list)
 				break
 	if(progress)
 		qdel(progbar)
+	cog?.remove() // AQ EDIT - cogbar
 
 	if(!QDELETED(target))
 		LAZYREMOVE(user.do_afters, target)

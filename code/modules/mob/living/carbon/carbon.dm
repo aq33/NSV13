@@ -229,7 +229,7 @@
 			buckle_cd = O.breakouttime
 		visible_message("<span class='warning'>[src] próbuje się odpiąć!</span>", \
 					"<span class='notice'>Próbujesz się odpiąć... (Zajmie to około [round(buckle_cd/600,1)] min i musisz się nie ruszać.)</span>")
-		if(do_after(src, buckle_cd, 0, target = src))
+		if(do_after(src, buckle_cd, 0, target = src, hidden = TRUE))
 			if(!buckled)
 				return
 			buckled.user_unbuckle_mob(src,src)
@@ -280,7 +280,7 @@
 	if(!cuff_break)
 		visible_message("<span class='warning'>[src] próbuje zdjąć [I]!</span>")
 		to_chat(src, "<span class='notice'>Próbujesz zdjąć [I]... (Zajmie to około [DisplayTimeText(breakouttime)] i musisz się nie ruszać.)</span>")
-		if(do_after(src, breakouttime, 0, target = src))
+		if(do_after(src, breakouttime, 0, target = src, hidden = TRUE))
 			clear_cuffs(I, cuff_break)
 		else
 			to_chat(src, "<span class='warning'>Nie udaje ci się zdjąć [I]!</span>")

@@ -86,7 +86,7 @@
 		user.visible_message("<span class='notice'>Widzisz, jak [user] kopie w drzwi [src]!</span>", \
 			"<span class='notice'>Opierasz się o tył [src] i zaczynasz pchać drzwi... (zajmie to około [DisplayTimeText(breakout_time)].)</span>", \
 			"<span class='italics'>Słyszysz metaliczne skrzypienie z [src].</span>")
-		if(do_after(user, breakout_time, target = src))
+		if(do_after(user, breakout_time, target = src, hidden = TRUE))
 			if(!user || user.stat != CONSCIOUS || user.loc != src || state_open)
 				return
 			free_exit = TRUE
