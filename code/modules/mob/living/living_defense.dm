@@ -49,6 +49,7 @@
 	SEND_SIGNAL(src, COMSIG_ATOM_BULLET_ACT, P, def_zone)
 	var/armor = run_armor_check(def_zone, P.flag, "","",P.armour_penetration)
 	if(!P.nodamage)
+		last_attacked_time = world.time
 		apply_damage(P.damage, P.damage_type, def_zone, armor)
 		if(P.dismemberment)
 			check_projectile_dismemberment(P, def_zone)

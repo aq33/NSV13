@@ -255,6 +255,10 @@
 	},
 /turf/open/floor/plating/airless,
 /area/nsv/hanger/notkmcstupidhanger)
+"aJ" = (
+/obj/machinery/computer/piratepad_control/civilian,
+/turf/open/floor/plasteel,
+/area/maintenance/fore)
 "aK" = (
 /obj/effect/turf_decal/tile/ship/red,
 /obj/structure/sign/poster/official/random{
@@ -282,6 +286,10 @@
 "aM" = (
 /turf/closed/wall/r_wall,
 /area/science/xenobiology)
+"aN" = (
+/obj/machinery/piratepad/civilian,
+/turf/open/floor/plasteel,
+/area/maintenance/fore)
 "aO" = (
 /obj/machinery/door/poddoor/shutters/ship{
 	id = "riot_storage";
@@ -298,6 +306,10 @@
 /obj/structure/lattice/catwalk,
 /turf/open/openspace/airless,
 /area/space/nearstation)
+"aQ" = (
+/obj/machinery/materials_market,
+/turf/open/floor/plasteel,
+/area/maintenance/fore)
 "aT" = (
 /turf/closed/wall/r_wall,
 /area/maintenance/aft)
@@ -534,6 +546,18 @@
 /obj/structure/extinguisher_cabinet/east,
 /turf/open/floor/carpet/royalblack,
 /area/crew_quarters/heads/chief)
+"bK" = (
+/obj/machinery/light/small,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/duct,
+/turf/open/floor/plasteel/white,
+/area/medical/surgery)
 "bM" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
@@ -2313,6 +2337,15 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
+"hC" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/effect/landmark/start/virologist,
+/obj/machinery/duct,
+/turf/open/floor/plasteel/white,
+/area/medical/virology)
 "hD" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 8
@@ -3127,6 +3160,13 @@
 /obj/machinery/power/apc/auto_name/west,
 /turf/open/floor/plasteel/white,
 /area/medical/apothecary)
+"nq" = (
+/obj/machinery/light/small{
+	dir = 2
+	},
+/obj/machinery/duct,
+/turf/open/floor/plasteel/showroomfloor,
+/area/crew_quarters/toilet)
 "nv" = (
 /obj/machinery/power/apc/auto_name/north,
 /obj/structure/cable,
@@ -3607,6 +3647,14 @@
 /obj/item/storage/box/evidence,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
+"qL" = (
+/obj/structure/ladder,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/layer2,
+/obj/machinery/duct,
+/turf/open/floor/plasteel/white,
+/area/medical/surgery)
 "qM" = (
 /obj/structure/cable,
 /obj/structure/grille,
@@ -3888,6 +3936,13 @@
 /obj/machinery/camera/autoname,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/cmo)
+"sG" = (
+/obj/machinery/door/airlock/ship/public{
+	name = "Toilet"
+	},
+/obj/machinery/duct,
+/turf/open/floor/plating,
+/area/crew_quarters/toilet)
 "sH" = (
 /obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume{
 	dir = 1
@@ -4028,6 +4083,20 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/cmo)
+"tA" = (
+/obj/effect/turf_decal/tile/ship/orange{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/duct,
+/turf/open/floor/plasteel/white,
+/area/medical/apothecary)
 "tB" = (
 /obj/machinery/light{
 	dir = 8
@@ -4124,6 +4193,15 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
+"ui" = (
+/obj/effect/turf_decal/tile/ship/orange{
+	dir = 8
+	},
+/obj/structure/reagent_dispensers/plumbed{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/apothecary)
 "uk" = (
 /obj/structure/closet/l3closet/scientist,
 /obj/item/extinguisher,
@@ -4722,6 +4800,15 @@
 	},
 /turf/open/openspace/airless,
 /area/space)
+"yg" = (
+/obj/effect/turf_decal/tile/ship/orange{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/west,
+/obj/machinery/duct,
+/turf/open/floor/plasteel/white,
+/area/medical/apothecary)
 "yh" = (
 /obj/machinery/button/door{
 	id = "rd_blast";
@@ -6272,6 +6359,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
+"Io" = (
+/obj/structure/reagent_dispensers/plumbed{
+	dir = 4
+	},
+/turf/open/floor/plasteel/showroomfloor,
+/area/crew_quarters/toilet)
 "Iq" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/north,
@@ -7333,6 +7426,11 @@
 	dir = 1
 	},
 /area/ai_monitored/security/armory)
+"NZ" = (
+/obj/structure/curtain,
+/obj/machinery/duct,
+/turf/open/floor/plasteel/showroomfloor,
+/area/crew_quarters/toilet)
 "Oc" = (
 /obj/item/ship_weapon/ammunition/torpedo/freight,
 /turf/open/floor/plasteel,
@@ -7984,6 +8082,23 @@
 /obj/machinery/light/small,
 /turf/open/floor/engine,
 /area/ai_monitored/security/armory)
+"RZ" = (
+/obj/machinery/door/airlock/ship/medical/glass{
+	name = "Chemical Factory";
+	req_one_access_txt = "33"
+	},
+/obj/structure/cable,
+/obj/machinery/door/firedoor/border_only/directional/east,
+/obj/machinery/door/firedoor/border_only/directional/west,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/duct,
+/turf/open/floor/plasteel/white,
+/area/medical/apothecary)
 "Sb" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/west,
@@ -7996,6 +8111,13 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/maintenance/fore)
+"Sk" = (
+/obj/effect/turf_decal/tile/ship/orange{
+	dir = 8
+	},
+/obj/machinery/duct,
+/turf/open/floor/plasteel/white,
+/area/medical/apothecary)
 "Sn" = (
 /obj/machinery/firealarm/directional/south,
 /turf/open/floor/monotile/dark,
@@ -8067,6 +8189,27 @@
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/kitchen/coldroom)
+"SJ" = (
+/obj/machinery/doorButtons/access_button{
+	idDoor = "virology_airlock_exterior";
+	idSelf = "virology_airlock_control";
+	name = "Virology Access Button";
+	pixel_x = 24;
+	req_access_txt = "39"
+	},
+/obj/machinery/door/airlock/ship/medical{
+	id_tag = "virology_airlock_exterior";
+	name = "Virology";
+	req_one_access_txt = "39"
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/structure/cable,
+/obj/machinery/door/firedoor/border_only/directional/south,
+/obj/machinery/door/firedoor/border_only/directional/north,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/duct,
+/turf/open/floor/plasteel/white,
+/area/medical/virology)
 "SK" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
@@ -8294,6 +8437,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/maintenance/aft)
+"Uv" = (
+/obj/machinery/duct,
+/turf/open/floor/plasteel/showroomfloor,
+/area/crew_quarters/toilet)
 "UB" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/closed/wall/r_wall,
@@ -8457,6 +8604,16 @@
 	},
 /turf/open/floor/engine,
 /area/ai_monitored/security/armory)
+"Vq" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/duct,
+/turf/open/floor/plasteel/showroomfloor,
+/area/crew_quarters/toilet)
 "Vr" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
@@ -43117,9 +43274,9 @@ Yf
 Ok
 HC
 wH
-JU
-fl
-nM
+qL
+SJ
+hC
 RU
 uO
 zQ
@@ -43374,7 +43531,7 @@ cw
 vb
 Ov
 Ga
-PJ
+bK
 uO
 AD
 tb
@@ -43631,7 +43788,7 @@ RJ
 RJ
 RJ
 RJ
-mP
+RZ
 RJ
 RJ
 RJ
@@ -43888,10 +44045,10 @@ cv
 tm
 tm
 kD
-MX
-np
-KZ
-KZ
+tA
+yg
+Sk
+ui
 RJ
 zQ
 mv
@@ -48260,7 +48417,7 @@ bR
 ed
 ea
 ea
-ea
+Io
 Hl
 zQ
 zQ
@@ -48517,7 +48674,7 @@ bR
 ed
 ea
 ea
-ea
+Uv
 Hl
 zQ
 zQ
@@ -48769,12 +48926,12 @@ ay
 cb
 ew
 es
+Uv
+sG
+Uv
 ea
-bU
 ea
-ea
-ea
-er
+nq
 Hl
 zQ
 zQ
@@ -49024,14 +49181,14 @@ gm
 lE
 sk
 KB
-ez
-ea
-ea
+Vq
+Uv
+Uv
 bR
-ea
-ex
-ea
-ex
+Uv
+NZ
+Uv
+NZ
 Hl
 zQ
 zQ
@@ -56987,7 +57144,7 @@ DU
 AU
 bo
 pc
-Oz
+aJ
 vj
 ck
 KM
@@ -57760,7 +57917,7 @@ DG
 zz
 Jl
 wQ
-Oz
+aN
 yQ
 RR
 zD
@@ -58017,7 +58174,7 @@ IC
 lc
 BE
 FT
-Oz
+aQ
 KM
 KM
 KM

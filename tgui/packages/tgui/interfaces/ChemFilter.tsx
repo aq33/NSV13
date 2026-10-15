@@ -1,40 +1,41 @@
 import { Fragment } from 'react';
-import { Button, Input, Section, Stack } from 'tgui-core/components';
+import { Button, Section, Stack } from 'tgui-core/components';
 
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 type Data = {
-  left: any;
-  right: any;
+  left: string[];
+  right: string[];
 };
 
-export const ChemFilterPane = (props) => {
-  const { act } = useBackend<Data>();
-  const { title, list, reagentName, onReagentInput } = props;
+type Props = {
+  title: string;
+  list: string[];
+  buttonColor: string;
+};
+
+export const ChemFilterPane = (props: Props) => {
+  const { act } = useBackend();
+  const { title, list, buttonColor } = props;
   const titleKey = title.toLowerCase();
+
   return (
     <Section
       title={title}
       minHeight="240px"
       buttons={
-        <>
-          <Input
-            placeholder="Reagent"
-            width="140px"
-            onInput={(e, value) => onReagentInput(value)}
-          />
-          <Button
-            ml={1}
-            icon="plus"
-            onClick={() =>
-              act('add', {
-                which: titleKey,
-                name: reagentName,
-              })
-            }
-          />
-        </>
+        <Button
+          icon="plus"
+          color={buttonColor}
+          onClick={() =>
+            act('add', {
+              which: titleKey,
+            })
+          }
+        >
+          Add Reagent
+        </Button>
       }
     >
       {list.map((filter) => (
@@ -42,14 +43,15 @@ export const ChemFilterPane = (props) => {
           <Button
             fluid
             icon="minus"
-            content={filter}
             onClick={() =>
               act('remove', {
                 which: titleKey,
                 reagent: filter,
               })
             }
-          />
+          >
+            {filter}
+          </Button>
         </Fragment>
       ))}
     </Section>
@@ -57,29 +59,18 @@ export const ChemFilterPane = (props) => {
 };
 
 export const ChemFilter = (props) => {
-  const { act, data } = useBackend<Data>();
+  const { data } = useBackend<Data>();
   const { left = [], right = [] } = data;
-  const [leftName, setLeftName] = useLocalState('leftName', '');
-  const [rightName, setRightName] = useLocalState('rightName', '');
+
   return (
     <Window width={500} height={300}>
       <Window.Content scrollable>
         <Stack>
           <Stack.Item grow>
-            <ChemFilterPane
-              title="Left"
-              list={left}
-              reagentName={leftName}
-              onReagentInput={(value) => setLeftName(value)}
-            />
+            <ChemFilterPane title="Right" list={right} buttonColor="red" />
           </Stack.Item>
           <Stack.Item grow>
-            <ChemFilterPane
-              title="Right"
-              list={right}
-              reagentName={rightName}
-              onReagentInput={(value) => setRightName(value)}
-            />
+            <ChemFilterPane title="Left" list={left} buttonColor="yellow" />
           </Stack.Item>
         </Stack>
       </Window.Content>
