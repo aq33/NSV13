@@ -205,7 +205,7 @@ $border-color: color.scale(
   flex: 1 1 auto;
   font-weight: bold;
   white-space: normal;
-  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 // Komendy w kolumnach: alfabet czyta się z góry na dół, kolumna po kolumnie.

@@ -97,6 +97,10 @@ const StatVerbSearch = (props) => {
           setSearch('');
         }}
         onEnter={(e, value) => {
+          // Enter w trakcie kompozycji IME tylko zatwierdza znak.
+          if (e.nativeEvent?.isComposing || e.isComposing) {
+            return;
+          }
           // Enter odpala komendę tylko, gdy wynik jest jednoznaczny.
           const results = findVerbs(stat.verbData, value);
           if (results.length !== 1) {

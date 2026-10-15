@@ -36,7 +36,7 @@ const verbMatches = (verb, query) =>
  * posortowane po nazwie. Każdy wpis: { tab, verb, data }.
  */
 export const findVerbs = (verbData, search) => {
-  const query = normalizeSearch(search.trim());
+  const query = normalizeSearch((search || '').trim());
   if (!query || !verbData) {
     return [];
   }
