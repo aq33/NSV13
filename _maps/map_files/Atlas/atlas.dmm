@@ -1056,7 +1056,7 @@
 /obj/structure/chair{
 	dir = 8
 	},
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /turf/open/floor/durasteel/riveted,
 /area/engine/atmospherics_engine)
 "cg" = (
@@ -6043,7 +6043,7 @@
 	dir = 4
 	},
 /obj/machinery/airalarm/directional/north,
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/ship/blue,
 /obj/effect/turf_decal/tile/ship/yellow{
@@ -13800,7 +13800,7 @@
 /turf/open/floor/plasteel/ridged/steel,
 /area/engine/armour_pump)
 "Ml" = (
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /turf/open/floor/durasteel/riveted,
 /area/engine/atmos)
 "Mm" = (
