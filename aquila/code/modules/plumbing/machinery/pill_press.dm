@@ -29,9 +29,9 @@
 	. = ..()
 	. += "<span class='notice'>[name] ma obecnie zmagazynowane: [stored_pills.len]. Aby kontynuować wydawanie, na podłodze musi być mniej niż [max_floor_pills].</span>"
 
-/obj/machinery/plumbing/pill_press/Initialize(mapload, bolt)
+/obj/machinery/plumbing/pill_press/Initialize(mapload, layer)
 	. = ..()
-	AddComponent(/datum/component/plumbing/simple_demand, bolt)
+	AddComponent(/datum/component/plumbing/simple_demand, layer, 3)
 
 	//expertly copypasted from chemmasters
 	if(!length(pill_styles))

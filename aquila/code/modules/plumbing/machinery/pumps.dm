@@ -2,7 +2,7 @@
 /obj/machinery/power/liquid_pump
 	name = "liquid pump"
 	desc = "Pump up those sweet liquids from under the surface."
-	icon = 'icons/obj/plumbing/plumbers.dmi'
+	icon = 'aquila/icons/obj/plumbing/plumbers.dmi'
 	icon_state = "pump"
 	anchored = FALSE
 	density = TRUE
@@ -23,7 +23,7 @@
 /obj/machinery/power/liquid_pump/Initialize(mapload)
 	. = ..()
 	create_reagents(volume)
-	AddComponent(/datum/component/plumbing/simple_supply, TRUE)
+	AddComponent(/datum/component/plumbing/simple_supply)
 
 /obj/machinery/power/liquid_pump/attackby(obj/item/W, mob/user, params)
 	if(!powered)
