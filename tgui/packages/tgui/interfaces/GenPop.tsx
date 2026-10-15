@@ -1,29 +1,52 @@
 // Adapted From NSV13
+// AQ EDIT - tłumaczenie, kilka zarzutów naraz (czasy się sumują)
 
 import { clamp, toFixed } from 'common/math';
-import { Fragment } from 'react';
-import { Button, ProgressBar, Section } from 'tgui-core/components';
+import { Box, Button, ProgressBar, Section } from 'tgui-core/components';
 
 import { useBackend, useSharedState } from '../backend';
 import { Window } from '../layouts';
 
-type Data = {
-  allPrisoners: any;
-  canPrint: any;
-  crime_list: any;
-  desired_details: any;
-  desired_name: any;
+type Crime = {
+  name: string;
+  tooltip: string;
+  colour: string;
+  icon: string;
+  sentence: number;
 };
+
+type Prisoner = {
+  name: string;
+  id: string;
+  served_time: number;
+  sentence: number;
+  crime: string;
+};
+
+type Data = {
+  allPrisoners: Prisoner[];
+  canPrint: boolean;
+  crime_list: Record<string, Crime[]>;
+  desired_details: string;
+  desired_name: string;
+};
+
+// Te same stałe co w code/modules/security/crimes.dm (decysekundy).
+const PRESET_SHORT = 3000;
+const PRESET_LONG = 9000;
+const MAX_TIMER = 360000;
+
+const formatSentence = (time: number) =>
+  time >= MAX_TIMER ? 'dożywocie' : `${toFixed(time / 600, 1)} min`;
 
 export const GenPop = (props) => {
   const { act, data } = useBackend<Data>();
 
-  const { desired_name = '', desired_details = '', crime_list = {} } = data;
+  const { desired_details = '', crime_list = {} } = data;
 
-  // Local state for the time of the prisoner.
-  const [time, setTime] = useSharedState('time', 0);
+  // Ręczna korekta czasu (strzałki), doliczana do sumy zarzutów.
+  const [adjust, setAdjust] = useSharedState('adjust', 0);
 
-  // Local state to determine which modifiers we have active
   const [resistedMod, setResistedMod] = useSharedState('resisted', false);
   const [attemptedMod, setAttemptedMod] = useSharedState('attempted', false);
   const [elevatedMod, setElevatedMod] = useSharedState(
@@ -31,253 +54,290 @@ export const GenPop = (props) => {
     false,
   );
 
-  // Local state for the name of the crime being issued
-  const [crimeName, setCrimeName] = useSharedState('crimeName', 'No crime');
-
-  // Local state for the name of the crime details
-  const [crimeDetails, setCrimeDetails] = useSharedState(
-    'crimeDetails',
-    'No details provided',
+  // Wybrane zarzuty (nazwy).
+  const [selectedCrimes, setSelectedCrimes] = useSharedState<string[]>(
+    'selectedCrimes',
+    [],
   );
 
-  // Local state for the current category that we are browsing
-  const [crimeCategory, setCrimeCategory] = useSharedState<any>(
+  // Pomijamy puste kategorie, żeby nie wywalić interfejsu.
+  const categories = Object.keys(crime_list).filter(
+    (category) => crime_list[category].length > 0,
+  );
+
+  const [crimeCategory, setCrimeCategory] = useSharedState<string | null>(
     'crimeCategory',
-    crime_list && crime_list.length > 0 ? Object.keys(crime_list)[0] : null,
+    categories.length > 0 ? categories[0] : null,
   );
+
+  const sentenceOf = (name: string) => {
+    for (const category of categories) {
+      const crime = crime_list[category].find((c) => c.name === name);
+      if (crime) {
+        return crime.sentence;
+      }
+    }
+    return 0;
+  };
+
+  const baseTime = selectedCrimes.reduce(
+    (sum, name) => sum + sentenceOf(name),
+    0,
+  );
+
+  // Ta sama reguła co calculate_sentence() w genpop.dm.
+  const getProcessedTime = () => {
+    let time = clamp(baseTime + adjust, 0, MAX_TIMER);
+    if (attemptedMod) {
+      time = time >= MAX_TIMER ? PRESET_LONG : time - PRESET_SHORT;
+    }
+    if (elevatedMod) {
+      time = time >= PRESET_LONG ? MAX_TIMER : time + PRESET_SHORT;
+    }
+    if (resistedMod) {
+      time *= 1.2;
+    }
+    return clamp(Math.round(time / 10) * 10, 0, MAX_TIMER);
+  };
 
   const resetLocalState = () => {
-    // Set back to the default crime name
-    setCrimeName('No crime');
-    setTime(3000);
-    setCrimeDetails('No details provided');
+    setSelectedCrimes([]);
+    setAdjust(0);
     setResistedMod(false);
     setAttemptedMod(false);
     setElevatedMod(false);
   };
 
-  const getProcessedTime = () => {
-    return (
-      (time +
-        // Back to major crime (9000)
-        (attemptedMod ? (time >= 36000 ? -27000 : -3000) : 0) +
-        // Set to 36000 if a crime over 900 deciseconds was repeated.
-        (elevatedMod ? (time >= 9000 ? 360000 - time : 3000) : 0)) *
-      // Resisting arrest applies to everything at the end
-      (resistedMod ? 1.2 : 1)
-    );
+  const toggleCrime = (name: string) => {
+    if (selectedCrimes.includes(name)) {
+      setSelectedCrimes(selectedCrimes.filter((c) => c !== name));
+    } else {
+      setSelectedCrimes([...selectedCrimes, name]);
+    }
   };
 
+  const crimeText =
+    selectedCrimes.length === 0
+      ? 'brak zarzutów'
+      : (attemptedMod ? 'Usiłowanie: ' : '') +
+        selectedCrimes.join(', ') +
+        (elevatedMod ? ' (recydywa)' : '') +
+        (resistedMod ? ' (opór przy zatrzymaniu)' : '');
+
+  const attemptedTooLow = attemptedMod && baseTime <= PRESET_SHORT;
+
+  const adjustText =
+    adjust === 0
+      ? ''
+      : ` (korekta ${adjust > 0 ? '+' : ''}${adjust / 600} min)`;
+
   return (
-    <Window width={625} height={400}>
+    <Window width={680} height={560} title="Interfejs zarządzania więźniami">
       <Window.Content scrollable>
         <Section
-          title="Prisoner ID Printer:"
+          title="Drukarka karty więźnia"
           buttons={
             <>
-              <Button
-                icon="id-card-alt"
-                content={
-                  data.desired_name ? data.desired_name : 'Enter Prisoner Name'
-                }
-                onClick={() => act('prisoner_name')}
-              />
+              <Button icon="id-card-alt" onClick={() => act('prisoner_name')}>
+                {data.desired_name || 'Podaj imię więźnia'}
+              </Button>
               <Button
                 icon="print"
-                content="Finalize ID"
                 tooltip={
-                  attemptedMod && time <= 3000
-                    ? 'Attempted minor crimes must be met with fines!'
-                    : crimeName === 'No crime'
-                      ? 'You have not selected a crime.'
-                      : !data.desired_name
-                        ? 'The prisoner requires an identifier for their card.'
-                        : null
+                  attemptedTooLow
+                    ? 'Usiłowanie wykroczenia karze się grzywną, nie odsiadką!'
+                    : selectedCrimes.length === 0
+                      ? 'Nie wybrano żadnego zarzutu.'
+                      : getProcessedTime() === 0
+                        ? 'Wyrok wynosi zero minut.'
+                        : !data.desired_name
+                          ? 'Karta więźnia wymaga imienia.'
+                          : null
                 }
                 color="good"
                 disabled={
                   !data.canPrint ||
-                  (attemptedMod && time <= 3000) ||
-                  crimeName === 'No crime' ||
+                  attemptedTooLow ||
+                  selectedCrimes.length === 0 ||
+                  getProcessedTime() === 0 ||
                   !data.desired_name
                 }
                 onClick={() => {
                   act('print', {
-                    desired_sentence: getProcessedTime(),
-                    desired_crime:
-                      (attemptedMod ? 'Attempted ' : '') +
-                      crimeName +
-                      (elevatedMod ? ' (Repeat offender)' : ''),
+                    crimes: selectedCrimes,
+                    adjust: adjust,
+                    attempted: attemptedMod,
+                    elevated: elevatedMod,
+                    resisted: resistedMod,
                   });
-                  // Reset to the default state
                   resetLocalState();
                 }}
-              />
+              >
+                Wydrukuj kartę
+              </Button>
             </>
           }
         >
           <Button
             icon="fast-backward"
-            onClick={() => setTime(clamp(time - 1200, 0, 36000))}
+            tooltip="-2 min"
+            onClick={() => setAdjust(adjust - 1200)}
           />
           <Button
             icon="backward"
-            onClick={() => setTime(clamp(time - 600, 0, 36000))}
+            tooltip="-1 min"
+            onClick={() => setAdjust(adjust - 600)}
           />
-          {String(getProcessedTime() / 600)} min:{' '}
+          {' Wyrok: '}
+          <b>{formatSentence(getProcessedTime())}</b>
+          {adjustText}{' '}
           <Button
             icon="forward"
-            onClick={() => setTime(clamp(time + 600, 0, 36000))}
+            tooltip="+1 min"
+            onClick={() => setAdjust(adjust + 600)}
           />
           <Button
             icon="fast-forward"
-            onClick={() => setTime(clamp(time + 1200, 0, 36000))}
+            tooltip="+2 min"
+            onClick={() => setAdjust(adjust + 1200)}
           />
-          <br />
-          {Object.keys(crime_list)
-            // Remove any categories with no crimes so we don't bluescreen in the event that a category has no crimes.
-            .filter((crime) => crime_list[crime].length > 0)
-            .map((category) => (
+          <Button icon="undo" onClick={resetLocalState}>
+            Wyczyść
+          </Button>
+          <Box mt={1}>
+            {categories.map((category) => (
               <Button
                 key={category}
                 icon={
-                  category === 'Capital'
+                  crime_list[category][0].sentence >= MAX_TIMER
                     ? 'exclamation-triangle'
                     : 'hourglass-start'
                 }
-                content={category}
                 color={crime_list[category][0].colour}
-                onClick={() => {
-                  // Set the crime category
-                  setCrimeCategory(category);
-                  // Set the default crime length
-                  setTime(crime_list[category][0].sentence);
-                }}
-              />
+                selected={crimeCategory === category}
+                onClick={() => setCrimeCategory(category)}
+              >
+                {category}
+              </Button>
             ))}
-          <br />
+          </Box>
         </Section>
-        <Section title="Infractions">
-          {Object.keys(crime_list[crimeCategory] || {}).map((key) => {
-            let value = crime_list[crimeCategory][key];
-            return (
+        <Section title="Zarzuty (można wybrać kilka, czasy się sumują)">
+          {(crimeCategory ? crime_list[crimeCategory] || [] : []).map(
+            (crime) => (
               <Button
-                key={key}
-                content={value.name}
-                color={value.colour}
-                icon={value.icon}
-                tooltip={value.tooltip}
-                selected={crimeName === value.name}
-                onClick={() => {
-                  if (crimeName === value.name) {
-                    setCrimeName('No crime');
-                    setTime(3000);
-                    return;
-                  }
-                  setTime(value.sentence);
-                  setCrimeName(value.name);
-                }}
-              />
-            );
-          })}
+                key={crime.name}
+                color={crime.colour}
+                icon={crime.icon}
+                tooltip={`${crime.tooltip} (${formatSentence(crime.sentence)})`}
+                selected={selectedCrimes.includes(crime.name)}
+                onClick={() => toggleCrime(crime.name)}
+              >
+                {crime.name}
+              </Button>
+            ),
+          )}
         </Section>
-        <Section title="Modifiers">
+        <Section title="Modyfikatory">
           <Button
             icon="hand-paper"
-            content="Attempted crime"
             color="orange"
+            tooltip="-5 min, dożywocie spada do 15 min. Samo usiłowanie wykroczenia karze się grzywną."
             selected={attemptedMod}
-            onClick={() => {
-              setAttemptedMod(!attemptedMod);
-            }}
-          />
+            onClick={() => setAttemptedMod(!attemptedMod)}
+          >
+            Usiłowanie
+          </Button>
           <Button
             icon="thumbs-down"
-            content="Resisted Arrest"
             color="orange"
+            tooltip="+20% do całego wyroku."
             selected={resistedMod}
-            onClick={() => {
-              setResistedMod(!resistedMod);
-            }}
-          />
+            onClick={() => setResistedMod(!resistedMod)}
+          >
+            Opór przy zatrzymaniu
+          </Button>
           <Button
             icon="redo"
-            content="Elevated Sentencing"
             color="bad"
+            tooltip="Przy wyroku od 15 min dożywocie, poniżej +5 min."
             selected={elevatedMod}
-            onClick={() => {
-              setElevatedMod(!elevatedMod);
-            }}
-          />
+            onClick={() => setElevatedMod(!elevatedMod)}
+          >
+            Recydywa
+          </Button>
         </Section>
-        <Section title="Preview">
-          Identity: {String(data.desired_name || 'No name entered')} <br />
-          Crime: {String(crimeName)} <br />
-          Sentence: {String(getProcessedTime() / 600)} min <br />
+        <Section title="Podgląd">
+          Więzień: {data.desired_name || 'nie podano imienia'} <br />
+          Zarzuty: {crimeText} <br />
+          Wyrok: {formatSentence(getProcessedTime())} <br />
           <Section
-            title="Crime details"
+            title="Opis zdarzenia"
             buttons={
-              <Button
-                content="Edit"
-                icon="pen"
-                onClick={() => act('edit_details')}
-              />
+              <Button icon="pen" onClick={() => act('edit_details')}>
+                Edytuj
+              </Button>
             }
           >
             {desired_details}
           </Section>
         </Section>
-        <Section title="Prison Management:">
-          {Object.keys(data.allPrisoners).map((key) => {
-            let value = data.allPrisoners[key];
-            return (
-              <Section
-                key={value}
-                title={value.name}
-                buttons={
-                  <>
-                    <Button
-                      icon="backward"
-                      onClick={() =>
-                        act('adjust_time', { adjust: -60, id: value.id })
-                      }
-                    />
-                    <Button
-                      icon="forward"
-                      onClick={() =>
-                        act('adjust_time', { adjust: 60, id: value.id })
-                      }
-                    />
-                    <Button
-                      icon="check"
-                      content="Release"
-                      color="good"
-                      onClick={() => act('release', { id: value.id })}
-                    />
-                    <Button
-                      icon="running"
-                      content="Escaped"
-                      color="bad"
-                      onClick={() => act('escaped', { id: value.id })}
-                    />
-                  </>
-                }
+        <Section title="Więźniowie">
+          {(data.allPrisoners || []).map((prisoner) => (
+            <Section
+              key={prisoner.id}
+              title={prisoner.name}
+              buttons={
+                <>
+                  <Button
+                    icon="backward"
+                    tooltip="-1 min wyroku"
+                    onClick={() =>
+                      act('adjust_time', { adjust: -60, id: prisoner.id })
+                    }
+                  />
+                  <Button
+                    icon="forward"
+                    tooltip="+1 min wyroku"
+                    onClick={() =>
+                      act('adjust_time', { adjust: 60, id: prisoner.id })
+                    }
+                  />
+                  <Button
+                    icon="check"
+                    color="good"
+                    tooltip="Wcześniejsze zwolnienie: karta od razu zalicza cały wyrok i dostaje dostęp do bramek wyjścia, a w kartotece status zmienia się na Discharged."
+                    onClick={() => act('release', { id: prisoner.id })}
+                  >
+                    Zwolnij
+                  </Button>
+                  <Button
+                    icon="running"
+                    color="bad"
+                    tooltip="Ucieczka: odsiedziany czas spada do zera, a zwolniona już karta traci dostęp i znowu liczy wyrok."
+                    onClick={() => act('escaped', { id: prisoner.id })}
+                  >
+                    Uciekł
+                  </Button>
+                </>
+              }
+            >
+              Osadzony za: {prisoner.crime} <br />
+              <ProgressBar
+                value={prisoner.served_time / prisoner.sentence}
+                ranges={{
+                  good: [0.99, Infinity],
+                  average: [0.4, 0.99],
+                  bad: [-Infinity, 0.4],
+                }}
               >
-                Incarcerated for: {value.crime} <br />
-                <ProgressBar
-                  value={value.served_time / value.sentence}
-                  ranges={{
-                    good: [0.99, Infinity],
-                    average: [0.4, 0.99],
-                    bad: [-Infinity, 0.4],
-                  }}
-                >
-                  {toFixed(value.served_time / 60)} min /{' '}
-                  {toFixed(value.sentence / 60)} min
-                </ProgressBar>
-              </Section>
-            );
-          })}
+                {toFixed(prisoner.served_time / 60)} min /{' '}
+                {prisoner.sentence * 10 >= MAX_TIMER
+                  ? 'dożywocie'
+                  : `${toFixed(prisoner.sentence / 60)} min`}
+              </ProgressBar>
+            </Section>
+          ))}
         </Section>
       </Window.Content>
     </Window>

@@ -32,6 +32,10 @@
 			for(var/obj/item/I in L.embedded_objects)
 				objects++
 				H.remove_embedded_object(I)
+			// AQ EDIT - fragmenty pocisków (balistyka), aquila/code/modules/detectivework/ballistics.dm
+			for(var/obj/item/bullet_fragment/fragment in L)
+				objects++
+				fragment.forceMove(H.drop_location())
 
 			if(objects > 0)
 				display_results(user, target, "<span class='notice'>Pomyślnie usuwasz ciała obce ([objects]) z [H] ([L.name]).</span>",
