@@ -146,7 +146,8 @@ class Plumber:
         for x in range(1, self.size.x + 1):
             for y in range(1, self.size.y + 1):
                 tile = self.tile(x, y, z)
-                if any(FIXTURE.match(o) for o in self.objects(tile)) and self.is_floor(tile) and not self.area(tile).startswith(SKIP_AREAS):
+                # fixtures hang on walls too, the duct only has to reach a floor next to them
+                if any(FIXTURE.match(o) for o in self.objects(tile)) and not self.area(tile).startswith(SKIP_AREAS):
                     found.append((x, y))
         return found
 
@@ -238,6 +239,18 @@ class Plumber:
                 if any(p in ducts for p in self.ports(fixture, z)):
                     fed.add(fixture)
                     continue
+                # branch off a line we already have before putting down another tank
+                if ducts:
+                    dist, parent = self.bfs(ducts, z, set(tanks), MAX_BRANCH)
+                    reachable = [(dist[p], p) for p in self.ports(fixture, z) if p in dist]
+                    if reachable:
+                        node = min(reachable)[1]
+                        while node is not None and node not in ducts:
+                            ducts.add(node)
+                            node = parent[node]
+                        fed.add(fixture)
+                        report.append(f'  z{z}: {fixture} joined an existing line')
+                        continue
                 placed = self.place_tank(fixture, z, tanks, ducts)
                 if not placed:
                     report.append(f'  z{z}: no tank spot near {fixture}')

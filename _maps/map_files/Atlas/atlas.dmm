@@ -2915,6 +2915,23 @@
 /obj/structure/cable,
 /turf/open/floor/monotile/steel,
 /area/security/brig)
+"hm" = (
+/obj/machinery/button/door{
+	id = "kitchen";
+	pixel_x = -24;
+	pixel_y = -21;
+	name = "Kitchen Shutters"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/bar/tile_marquee,
+/obj/effect/turf_decal/arrows{
+	dir = 8
+	},
+/obj/machinery/duct,
+/turf/open/floor/durasteel,
+/area/crew_quarters/kitchen)
 "hn" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
@@ -9401,6 +9418,20 @@
 /obj/item/ship_weapon/parts/missile/propulsion_system,
 /turf/open/floor/engine,
 /area/nsv/weapons)
+"zN" = (
+/obj/effect/turf_decal/tile/bar/tile_marquee,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/duct,
+/turf/open/floor/durasteel,
+/area/crew_quarters/kitchen)
 "zO" = (
 /obj/machinery/door/poddoor/shutters/ship{
 	dir = 4;
@@ -10048,6 +10079,12 @@
 /area/crew_quarters/abandoned_gambling_den{
 	name = "Abandoned Bar"
 	})
+"BR" = (
+/obj/machinery/processor,
+/obj/effect/turf_decal/tile/bar/tile_marquee,
+/obj/machinery/duct,
+/turf/open/floor/durasteel,
+/area/crew_quarters/kitchen)
 "BS" = (
 /obj/machinery/xenoartifact_inbox,
 /obj/item/xenoartifact,
@@ -10201,6 +10238,12 @@
 /obj/structure/table,
 /turf/open/floor/plasteel/techmaint,
 /area/science/robotics/lab)
+"Cj" = (
+/obj/effect/turf_decal/tile/bar/tile_marquee,
+/obj/machinery/griddle,
+/obj/machinery/duct,
+/turf/open/floor/durasteel,
+/area/crew_quarters/kitchen)
 "Ck" = (
 /obj/machinery/power/solar_control{
 	dir = 4
@@ -11866,6 +11909,12 @@
 /obj/structure/cable,
 /turf/open/floor/carpet/red,
 /area/nsv/weapons)
+"Hg" = (
+/obj/machinery/deepfryer,
+/obj/effect/turf_decal/tile/bar/tile_marquee,
+/obj/machinery/duct,
+/turf/open/floor/durasteel,
+/area/crew_quarters/kitchen)
 "Hh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -12043,6 +12092,16 @@
 /obj/structure/closet/crate/large,
 /turf/open/floor/plating,
 /area/maintenance/department/science)
+"HG" = (
+/obj/machinery/door/firedoor/border_only/directional/east,
+/obj/machinery/door/firedoor/border_only/directional/west,
+/obj/effect/landmark/zebra_interlock_point,
+/obj/structure/stairs_dummy{
+	dir = 4
+	},
+/obj/machinery/duct,
+/turf/open/floor/plating,
+/area/crew_quarters/bar)
 "HH" = (
 /obj/machinery/conveyor/slow{
 	dir = 6;
@@ -14824,6 +14883,12 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/nsv/weapons)
+"Ps" = (
+/obj/effect/turf_decal/tile/bar/tile_marquee,
+/obj/machinery/oven,
+/obj/machinery/duct,
+/turf/open/floor/durasteel,
+/area/crew_quarters/kitchen)
 "Pt" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
@@ -49276,7 +49341,7 @@ aM
 lw
 Wu
 xI
-xI
+HG
 hj
 of
 zd
@@ -49533,7 +49598,7 @@ Lh
 QO
 bx
 Mp
-Es
+hm
 BU
 AC
 Bw
@@ -49790,7 +49855,7 @@ Ef
 QO
 aJ
 uq
-FB
+Hg
 LT
 nN
 Qn
@@ -50047,7 +50112,7 @@ ny
 QO
 nZ
 rw
-ai
+Cj
 LT
 JU
 eQ
@@ -50304,7 +50369,7 @@ Ef
 QO
 AL
 Lf
-aC
+Ps
 mZ
 bU
 at
@@ -50560,8 +50625,8 @@ un
 Ef
 QO
 HL
-Ln
-tg
+zN
+BR
 BG
 QO
 Mt
