@@ -63,8 +63,13 @@
 /datum/component/spy_uplink/proc/on_attack_self(obj/item/source, mob/user)
 	SIGNAL_HANDLER
 
-	if(IS_SPY(user))
-		INVOKE_ASYNC(src, TYPE_PROC_REF(/datum, ui_interact), user)
+	if(!IS_SPY(user))
+		return NONE
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/datum, ui_interact), user)
+	// A spy pen opens the bounties instead of asking for the cap rotation
+	if(istype(source, /obj/item/pen))
+		return COMPONENT_NO_INTERACT
+	return NONE
 
 /datum/component/spy_uplink/proc/on_pre_attack_secondary(obj/item/source, atom/target, mob/living/user, params)
 	SIGNAL_HANDLER
@@ -219,3 +224,9 @@
 	icon_state = "scan_beam"
 	color = "#3ba0ff"
 	alpha = 200
+
+// Our pen never calls the parent attack_self, so COMSIG_ITEM_ATTACK_SELF (and the spy uplink on it) never fired
+/obj/item/pen/attack_self(mob/living/carbon/user)
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user) & COMPONENT_NO_INTERACT)
+		return
+	return ..()
