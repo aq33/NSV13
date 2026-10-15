@@ -394,6 +394,13 @@
   - soundadd: Alarm strefy zamkniętej
   - code_imp: Komora testowa ma pewne powietrze po załadowaniu i dokładniej czyści
       się przy resecie.
+  - rscadd: Emotki *shiver, *sway, *tremble, *twitch i *jump mają animacje, które
+      nie przesuwają postaci na stałe.
+  - rscadd: Postać szarpie się przy ogłuszeniu pałką kontraktorską i chwieje, gdy
+      ktoś nią potrząsa.
+  - rscadd: Nad postacią wykonującą dłuższą czynność widać zębatkę. Akcje skryte,
+      np. kradzież z kieszeni, jej nie pokazują.
+  - imageadd: Ikona zębatki z BeeStation.
   MrMelbert, joker:
   - rscadd: 'Nowy antagonista: szpieg. Kradnie cele zleceń uplinkiem ukrytym w PDA,
       długopisie albo słuchawkach i dostaje za nie sprzęt z uplinka.'

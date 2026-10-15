@@ -103,7 +103,7 @@
 				to_chat(victim, "<span class='warning'>[H] próbuje cię ugryźć, ale odskakuje z obrzydzeniem!</span>")
 				to_chat(H, "<span class='warning'>[victim] cuchnie czosnkiem! Nie potrafisz się zmusić do wysysania tak skażonej krwi.</span>")
 				return
-			if(!do_after(H, 30, target = victim))
+			if(!do_after(H, 30, target = victim, hidden = TRUE))
 				return
 			var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - H.blood_volume //How much capacity we have left to absorb blood
 			var/drained_blood = min(victim.blood_volume, VAMP_DRAIN_AMOUNT, blood_volume_difference)
