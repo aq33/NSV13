@@ -56,6 +56,15 @@
 	},
 /turf/closed/wall/r_wall/ship,
 /area/engine/atmos)
+"ah" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/structure/cable,
+/obj/structure/disposalpipe/junction/flip{
+	dir = 4
+	},
+/turf/open/floor/monotile/light,
+/area/quartermaster)
 "ai" = (
 /obj/machinery/computer/telecomms/monitor{
 	dir = 8;
@@ -76,6 +85,22 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /turf/open/floor/carpet/ship/beige_carpet,
 /area/hallway/nsv/deck1/hallway)
+"al" = (
+/obj/machinery/conveyor/auto{
+	dir = 1
+	},
+/obj/machinery/door/window/eastleft,
+/turf/open/floor/plating,
+/area/maintenance/disposal)
+"am" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/conveyor/auto{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/maintenance/disposal)
 "an" = (
 /obj/item/radio/intercom/directional/south,
 /obj/structure/chair/fancy/gauss/east,
@@ -185,11 +210,70 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/plating,
 /area/maintenance/starboard/central)
+"aA" = (
+/obj/structure/disposalpipe/sorting/wrap/flip{
+	dir = 8
+	},
+/obj/effect/landmark/start/cargo_technician,
+/obj/machinery/light/floor,
+/turf/open/floor/monotile/light,
+/area/quartermaster)
 "aC" = (
 /obj/structure/closet/secure_closet/munitions_technician,
 /obj/structure/window/reinforced/spawner/east,
 /turf/open/floor/plasteel/dark,
 /area/nsv/weapons)
+"aD" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/structure/disposaloutlet{
+	dir = 2
+	},
+/turf/open/floor/monotile/light,
+/area/quartermaster)
+"aE" = (
+/obj/structure/cable,
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=8";
+	location = "Cargo Bay";
+	name = "navigation beacon (Cargo Bay Delivery)"
+	},
+/mob/living/simple_animal/bot/mulebot{
+	home_destination = "Cargo Bay";
+	name = "Furman"
+	},
+/turf/open/floor/monotile/light,
+/area/quartermaster)
+"aF" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/light/floor,
+/obj/structure/cable,
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=2";
+	location = "Engineering";
+	name = "navigation beacon (Engineering Delivery)"
+	},
+/turf/open/floor/carpet/ship/beige_carpet,
+/area/hallway/nsv/deck1/hallway)
+"aG" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=1";
+	location = "Munitions";
+	name = "navigation beacon (Munitions Delivery)"
+	},
+/turf/open/floor/carpet/ship/beige_carpet,
+/area/hallway/nsv/deck1/hallway)
 "aI" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 9;
@@ -36225,8 +36309,8 @@ Sg
 Sg
 Sg
 pC
-UT
-sy
+am
+al
 rm
 He
 Od
@@ -36747,7 +36831,7 @@ Od
 tW
 Eb
 Ig
-RE
+aE
 dE
 jF
 Fm
@@ -37772,8 +37856,8 @@ bG
 gs
 cJ
 Dc
-KN
-kx
+aA
+aD
 kx
 kZ
 Iy
@@ -38799,7 +38883,7 @@ wM
 uO
 qo
 It
-RB
+ah
 tS
 oG
 NQ
@@ -40841,7 +40925,7 @@ PL
 nh
 mY
 tQ
-sP
+aF
 Ta
 RS
 Uv
@@ -43680,7 +43764,7 @@ rA
 rA
 rA
 tj
-Mt
+aG
 My
 Pw
 td
