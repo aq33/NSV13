@@ -16,7 +16,7 @@ GLOBAL_LIST_INIT(aquila_independence_departments, list(
 	),
 	list(
 		"name" = "inżynieryjny",
-		"jobs" = list(JOB_NAME_CHIEFENGINEER, JOB_NAME_STATIONENGINEER, JOB_NAME_ATMOSPHERICTECHNICIAN),
+		"jobs" = list(JOB_NAME_CHIEFENGINEER, JOB_NAME_STATIONENGINEER),
 		"prefixes" = list("Spawal", "Atomo", "Kablo", "Ruro", "Silniko", "Izolo"),
 		"reasons" = list(
 			list("ktoś znowu ukradł wszystkie izolowane rękawice", "zwrotu izolowanych rękawic"),

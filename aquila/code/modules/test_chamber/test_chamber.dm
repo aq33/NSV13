@@ -87,7 +87,7 @@ GLOBAL_DATUM(test_chamber, /datum/test_chamber)
 /// Usuwa wszystko poza graczami (i tym, co mają przy sobie) i układa komorę od nowa
 /datum/test_chamber/proc/reset()
 	// Kilka przebiegów: usuwane rzeczy potrafią coś po sobie zostawić na już wyczyszczonym polu
-	// (np. zawartość skrzyń albo ektoplazma rewenanta z zestawu)
+	// (np. zawartość usuniętych szafek i skrzyń albo ektoplazma rewenanta z zestawu)
 	for(var/pass in 1 to 5)
 		var/deleted = 0
 		for(var/turf/T as anything in reservation.reserved_turfs)

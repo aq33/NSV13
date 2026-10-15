@@ -269,6 +269,4 @@ Do not modify this unless you know what you're doing. */
 	icon = "biohazard"
 	tooltip = "Świadome uwolnienie, spowodowanie lub doprowadzenie w inny sposób do skażenia stacji chorobą, rośliną lub inną formą biologiczną, która może rozprzestrzeniać się bez kontroli i/lub powodować poważne obrażenia fizyczne."
 
-#undef PRESET_SHORT
-#undef PRESET_MEDIUM
-#undef PRESET_LONG
+// AQ EDIT - PRESET_* są #undef na końcu genpop.dm (używa ich calculate_sentence)

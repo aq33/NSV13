@@ -56,7 +56,7 @@ GLOBAL_LIST(objective_map_types_present)
 /datum/objective_item/steal/traitor_fireaxe
 	name = "topór strażacki."
 	targetitem = /obj/item/fireaxe
-	excludefromjob = list(JOB_NAME_ATMOSPHERICTECHNICIAN, JOB_NAME_CHIEFENGINEER, JOB_NAME_CAPTAIN, JOB_NAME_HEADOFPERSONNEL, JOB_NAME_BRIDGESTAFF)
+	excludefromjob = list(JOB_NAME_STATIONENGINEER, JOB_NAME_CHIEFENGINEER, JOB_NAME_CAPTAIN, JOB_NAME_HEADOFPERSONNEL, JOB_NAME_BRIDGESTAFF)
 	map_check_types = list(/obj/structure/fireaxecabinet)
 	difficulty = 3
 

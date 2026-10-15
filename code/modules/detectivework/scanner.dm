@@ -155,6 +155,10 @@
 				add_log("[fiber]")
 			found_something = 1
 
+		// AQ EDIT - utajona krew (luminol), ślady prochu i balistyka, aquila/code/modules/detectivework/forensics_component.dm
+		if(scan_aquila_forensics(A))
+			found_something = 1
+
 		//Reagents
 		if(length(reagents))
 			sleep(30)
