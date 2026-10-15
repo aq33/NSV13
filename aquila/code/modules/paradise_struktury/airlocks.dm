@@ -35,6 +35,14 @@
 	var/direction = paradise_door_direction(src)
 	if(direction)
 		setDir(direction)
+	// W rzucie 3/4 bliższe (południowe) zasłania dalsze: czubek drzwi pod pełnym oknem ma przykryć dół okna, a nie odwrotnie
+	closingLayer = initial(closingLayer)
+	for(var/obj/structure/window/W in get_step(src, NORTH))
+		if(W.fulltile)
+			closingLayer = ABOVE_OBJ_LAYER + 0.01
+			break
+	if(density)
+		layer = closingLayer
 
 // Śluza na dwa kafle ma stały kierunek z mapy
 /obj/machinery/door/airlock/glass_large/paradise_face_walls()

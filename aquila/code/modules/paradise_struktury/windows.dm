@@ -11,6 +11,9 @@
 	return paradise_structure_connects(T)
 
 /obj/structure/window/bitmask_smoothed()
+	for(var/obj/machinery/door/airlock/A in get_step(src, SOUTH))
+		if(A.paradise_sprites)
+			A.paradise_face_walls()
 	cut_overlay(edge_overlay)
 	edge_overlay = null
 	if(!edge_overlay_file)
