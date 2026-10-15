@@ -349,3 +349,11 @@
   sh4dow321:
   - soundadd: Głośniki nagłośnienia i jukeboxy mają mniej echa, zwłaszcza za ścianami;
       głośniki nagłośnienia grają pełną głośnością w promieniu 3 kratek.
+'2026-10-15':
+  Joker66613:
+  - rscadd: '32 nowe mapy dla magnesu górniczego i asteroid: dawne ruiny kosmiczne
+      oraz porty z tg, Yogstation, Monkestation i Novy'
+  - rscadd: billboardy z tg
+  - bugfix: ruiny górnicze mining4 i mining5 ładują się bez błędów
+  - bugfix: corgi-ochroniarz nie sypie błędem przy pojawieniu się
+  - code_imp: CI sprawdza mapy górnicze, test ładowania wszystkich asteroid
