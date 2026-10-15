@@ -41,6 +41,7 @@
 		num_spies = max(1, min(round(num_players() / (tsc * 2)) + 1, round(num_players() / tsc)))
 	else
 		num_spies = max(1, min(num_players(), spies_possible))
+	num_spies = weighted_cap(num_spies) // weighted rotation antagonist limit
 
 	for(var/j = 0, j < num_spies, j++)
 		if(!antag_candidates.len)
