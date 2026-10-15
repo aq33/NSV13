@@ -123,6 +123,62 @@ GLOBAL_LIST_EMPTY(armed_job_tickets)
 	aquila_perk_adjust(C.ckey, PERK_INSURANCE, 1)
 	to_chat(C, "<span class='notice'>Masz ubezpieczeń: [aquila_perk_get(C.ckey, PERK_INSURANCE)].</span>")
 
+/datum/gear/ooc/event_token
+	display_name = "event token"
+	description = "Odpal dowolny event w trakcie rundy (OOC -> Użyj event tokena). Admini mają 10 sekund, żeby go anulować - wtedy token wraca."
+	cost = 5000
+	multi_purchase = TRUE
+
+/datum/gear/ooc/event_token/purchase(client/C)
+	aquila_perk_adjust(C.ckey, PERK_EVENT_TOKEN, 1)
+	to_chat(C, "<span class='notice'>Masz event tokenów: [aquila_perk_get(C.ckey, PERK_EVENT_TOKEN)].</span>")
+
+/// ckey => TRUE, gdy gracz właśnie odpala event (żeby nie zużyć dwóch tokenów naraz)
+GLOBAL_LIST_EMPTY(event_tokens_in_use)
+
+/// Event token: wybór eventu z listy i odpalenie go tak jak przez admina (z 10 s na anulowanie)
+/client/verb/use_event_token()
+	set name = "Użyj event tokena"
+	set category = "OOC"
+	set desc = "Odpala wybrany event za event token kupiony za aquilosy."
+
+	if(SSticker.current_state != GAME_STATE_PLAYING)
+		to_chat(src, "<span class='warning'>Event token działa tylko w trakcie rundy.</span>")
+		return
+	if(GLOB.event_tokens_in_use[ckey])
+		to_chat(src, "<span class='warning'>Już odpalasz event.</span>")
+		return
+	if(aquila_perk_get(ckey, PERK_EVENT_TOKEN) < 1)
+		to_chat(src, "<span class='warning'>Nie masz event tokenów - kupisz je w loadoucie, w kategorii OOC.</span>")
+		return
+
+	var/list/choices = list()
+	for(var/datum/round_event_control/event_control as anything in SSevents.control)
+		if(event_control.holidayID && !(event_control.holidayID in SSevents.holidays))
+			continue
+		choices["[event_control.name]"] = event_control
+	var/choice = tgui_input_list(src, "Który event odpalić?", "Event token", sortList(choices))
+	var/datum/round_event_control/chosen = choices[choice]
+	if(!chosen || GLOB.event_tokens_in_use[ckey])
+		return
+	if(tgui_alert(src, "Odpalić „[chosen.name]”? To zużyje event token.", "Event token", list("Tak", "Nie")) != "Tak")
+		return
+	if(aquila_perk_get(ckey, PERK_EVENT_TOKEN) < 1 || SSticker.current_state != GAME_STATE_PLAYING)
+		return
+
+	GLOB.event_tokens_in_use[ckey] = TRUE
+	message_admins("[key_name_admin(src)] używa event tokena: [chosen.name].")
+	log_game("[key_name(src)] used an event token: [chosen.name] ([chosen.type])")
+	chosen.random = FALSE
+	var/result = chosen.preRunEvent() // daje adminom 10 s na anulowanie
+	if(result == EVENT_READY)
+		aquila_perk_adjust(ckey, PERK_EVENT_TOKEN, -1)
+		chosen.runEvent()
+		to_chat(src, "<span class='notice'>Event „[chosen.name]” odpalony. Zostało ci tokenów: [aquila_perk_get(ckey, PERK_EVENT_TOKEN)].</span>")
+	else
+		to_chat(src, "<span class='warning'>Event „[chosen.name]” nie wystartował (anulowany albo warunki nie są spełnione). Token wraca do ciebie.</span>")
+	GLOB.event_tokens_in_use -= ckey
+
 // Odznaki w rankingu
 
 /// Odznaki: numer => list(nazwa, ikona Font Awesome 5, kolor)

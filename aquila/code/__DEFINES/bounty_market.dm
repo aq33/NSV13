@@ -40,6 +40,8 @@
 #define PERK_INSURANCE "insurance"
 /// Wybrana odznaka w rankingu (numer z GLOB.aquila_badges)
 #define PERK_BADGE "badge"
+/// Event token: gracz odpala wybrany event
+#define PERK_EVENT_TOKEN "event_token"
 
 // Trendy na giełdzie materiałów
 #define MARKET_TREND_UPWARD 1

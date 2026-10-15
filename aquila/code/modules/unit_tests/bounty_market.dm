@@ -128,11 +128,11 @@
 /datum/unit_test/aquila_metacoin_perks
 
 /datum/unit_test/aquila_metacoin_perks/Run()
-	for(var/consumable_type in list(/datum/gear/ooc/real_antagtoken, /datum/gear/ooc/job_ticket, /datum/gear/ooc/insurance))
+	for(var/consumable_type in list(/datum/gear/ooc/real_antagtoken, /datum/gear/ooc/job_ticket, /datum/gear/ooc/insurance, /datum/gear/ooc/event_token))
 		var/datum/gear/consumable = new consumable_type
 		TEST_ASSERT(consumable.multi_purchase, "[consumable_type] can not be bought more than once")
 		qdel(consumable)
-	for(var/shop_type in list(/datum/gear/ooc/job_ticket, /datum/gear/ooc/insurance))
+	for(var/shop_type in list(/datum/gear/ooc/job_ticket, /datum/gear/ooc/insurance, /datum/gear/ooc/event_token))
 		var/datum/gear/shop_item = new shop_type
 		TEST_ASSERT(GLOB.gear_datums[shop_item.id], "[shop_type] is not in the loadout shop")
 		qdel(shop_item)
