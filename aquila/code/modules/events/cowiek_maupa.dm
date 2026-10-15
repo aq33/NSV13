@@ -71,6 +71,7 @@
 	. = ..()
 	if(istype(loc, /obj/structure/closet))
 		toggle_ai(AI_OFF) // a wandering AI would push the door open by itself
+		COOLDOWN_START(src, roar_cooldown, rand(1 MINUTES, 3 MINUTES)) // first muffled roar from the locker
 
 /mob/living/simple_animal/hostile/cowiek_maupa/Moved(atom/OldLoc, Dir, Forced = FALSE)
 	. = ..()
@@ -81,6 +82,18 @@
 	visible_message("<span class='userdanger'>[src] wyskakuje z szafki z rykiem!</span>")
 	roar()
 	toggle_ai(AI_ON)
+
+/mob/living/simple_animal/hostile/cowiek_maupa/Life()
+	. = ..()
+	if(stat != CONSCIOUS || client || !istype(loc, /obj/structure/closet))
+		return
+	if(!COOLDOWN_FINISHED(src, roar_cooldown))
+		return
+	COOLDOWN_START(src, roar_cooldown, rand(1 MINUTES, 3 MINUTES))
+	var/obj/structure/closet/closet = loc
+	closet.visible_message("<span class='warning'>Z [closet] dobiega stłumiony ryk!</span>", blind_message = "<span class='warning'>Słyszysz gdzieś blisko stłumiony ryk!</span>")
+	playsound(closet, 'aquila/sound/creatures/cowiek_maupa_ryk.ogg', 50, FALSE, -1)
+	closet.Shake(2, 2, 1 SECONDS)
 
 /mob/living/simple_animal/hostile/cowiek_maupa/AttackingTarget()
 	. = ..()
