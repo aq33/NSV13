@@ -1,10 +1,11 @@
-/datum/test_chamber_kit/struktury_paradise
+/datum/test_chamber_kit/pr_448
 	name = "Struktury z Paradise"
+	pr = "aq33/AquilaStation#448"
 	description = "Pokój ze ścian 3/4: śluzy z przodu i z boku (zwykła, otwarta, zaryglowana, zespawana, szklana), okna z kratami, \
 		fałszywa ściana, rozbierana ściana wzmocniona, drzwi przeciwpożarowe, grodzie, roleta, drzwi okienne, cienkie okna i dźwigar. \
 		Sprawdź wygładzanie po rozebraniu ściany i postawieniu nowej, odkręcenie okna i animacje drzwi."
 
-/datum/test_chamber_kit/struktury_paradise/setup(list/spawned, list/turfs, turf/center, mob/user)
+/datum/test_chamber_kit/pr_448/setup(list/spawned, list/turfs, turf/center, mob/user)
 	// '#' ściana, 'R' wzmocniona, 'W' pełne okno z kratą, 'D' śluza, 'F' fałszywa ściana, 'd' rozbierana wzmocniona
 	var/list/layout = list(
 		"RRRWWWRRR",
