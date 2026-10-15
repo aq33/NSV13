@@ -141,8 +141,6 @@
 #include "code\game\machinery\computer\orion_trail_ui.dm"
 #include "code\game\machinery\computer\prisoner_management_ui.dm"
 #include "code\game\machinery\computer\security_records_ui.dm"
-#include "code\game\machinery\doors\airlock_types.dm"
-#include "code\game\machinery\doors\firedoor.dm"
 #include "code\game\machinery\fabricators\modular_fabricator.dm"
 #include "code\game\machinery\iv_drip_beam.dm"
 #include "code\game\machinery\jukebox.dm"
@@ -232,7 +230,6 @@
 #include "code\game\objects\structures\crate_lockers\closets\secure\engineering.dm"
 #include "code\game\objects\structures\crate_lockers\closets\secure\scientist.dm"
 #include "code\game\objects\structures\crate_lockers\closets\secure\security.dm"
-#include "code\game\objects\structures\door_assembly_types.dm"
 #include "code\game\objects\structures\janicart.dm"
 #include "code\game\objects\structures\safe.dm"
 #include "code\game\objects\structures\stairs_dummy.dm"
@@ -601,6 +598,7 @@
 #include "code\modules\test_chamber\kits\pr_442_asteroidy.dm"
 #include "code\modules\test_chamber\kits\pr_435_restaurant.dm"
 #include "code\modules\test_chamber\kits\pr_437_revenant_tg.dm"
+#include "code\modules\test_chamber\kits\struktury_paradise.dm"
 #include "code\modules\weighted\spawn_fallbacks.dm"
 #include "code\modules\weighted\weighted_ghost_midround.dm"
 #include "code\modules\weighted\weighted_pace_vote.dm"
@@ -662,6 +660,15 @@
 #include "code\modules\modular_computers\file_system\programs\jukebox_broadcast.dm"
 #include "code\modules\modular_computers\hardware\printer.dm"
 #include "code\modules\reagents\chemistry\machinery\chem_heater.dm"
+
+// Struktury z Paradise: ściany, okna i drzwi 3/4. Na końcu, żeby nadpisać wcześniejsze ikony (także te z aquila/).
+#include "code\modules\paradise_struktury\smoothing.dm"
+#include "code\modules\paradise_struktury\walls.dm"
+#include "code\modules\paradise_struktury\false_walls.dm"
+#include "code\modules\paradise_struktury\windows.dm"
+#include "code\modules\paradise_struktury\airlock_types.dm"
+#include "code\modules\paradise_struktury\airlocks.dm"
+#include "code\modules\paradise_struktury\doors.dm"
 
 #ifdef UNIT_TESTS
 #include "code\modules\unit_tests\antag_huds.dm"
