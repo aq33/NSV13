@@ -5,6 +5,8 @@
 /obj/machinery/door/airlock
 	LEGACY_OVERLAYS = TRUE
 	anim_parts = ""
+	// Bez KEEP_TOGETHER: grupa była przycinana do kafla i sprite 32x40 tracił górne 8 px (czubek drzwi w ścianie nad nimi)
+	appearance_flags = TILE_BOUND | LONG_GLIDE | PIXEL_SCALE
 	/// AQUILA - drzwi używają sprite'ów z Paradise i obracają się do ściany
 	var/paradise_sprites = TRUE
 
@@ -72,6 +74,7 @@
 
 // Brak w Paradise: zostają nasze śluzy z ruchomymi częściami
 /obj/machinery/door/airlock/copper
+	appearance_flags = TILE_BOUND | LONG_GLIDE | PIXEL_SCALE | KEEP_TOGETHER
 	icon = 'icons/obj/doors/airlocks/station/copper.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/station/overlays.dmi'
 	paradise_sprites = FALSE
@@ -79,10 +82,12 @@
 	anim_parts = "left=-14,0;right=13,0"
 
 /obj/machinery/door/airlock/arrivals_external
+	appearance_flags = TILE_BOUND | LONG_GLIDE | PIXEL_SCALE | KEEP_TOGETHER
 	paradise_sprites = FALSE
 	LEGACY_OVERLAYS = FALSE
 
 /obj/machinery/door/airlock/turbolift
+	appearance_flags = TILE_BOUND | LONG_GLIDE | PIXEL_SCALE | KEEP_TOGETHER
 	paradise_sprites = FALSE
 	LEGACY_OVERLAYS = FALSE
 	anim_parts = "left=-14,0;right=13,0"

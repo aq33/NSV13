@@ -55,14 +55,14 @@
 /atom/proc/bitmask_smoothed()
 	return
 
-/// Ściany, fałszywe ściany, pełne okna, śluzy i pełne drzwi przeciwpożarowe łączą się ze sobą jak w Paradise.
+/// Ściany, fałszywe ściany, pełne okna, śluzy, grodzie, rolety i pełne drzwi przeciwpożarowe łączą się ze sobą jak w Paradise.
 /proc/paradise_structure_connects(turf/T)
 	if(!T)
 		return FALSE
 	if(istype(T, /turf/closed/wall) || istype(T, /turf/closed/indestructible/riveted) || istype(T, /turf/closed/indestructible/fakeglass))
 		return TRUE
 	for(var/atom/movable/AM as anything in T)
-		if(istype(AM, /obj/machinery/door/airlock))
+		if(istype(AM, /obj/machinery/door/airlock) || istype(AM, /obj/machinery/door/poddoor))
 			return TRUE
 		if(istype(AM, /obj/machinery/door/firedoor) && !istype(AM, /obj/machinery/door/firedoor/border_only) && !istype(AM, /obj/machinery/door/firedoor/window))
 			return TRUE
