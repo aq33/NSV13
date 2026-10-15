@@ -1,0 +1,3 @@
+Tiny Unicode created by Jakob Riedle/DuffsDevice. Website indicates free for commercial use.
+(https://fontmeme.com/fonts/tiny-unicode-font/)
+Taken from tgstation/tgstation (interface/fonts).
